@@ -1,4 +1,4 @@
-//  $Id: System.cc,v 1.39 2002/02/17 14:16:27 grumbel Exp $
+//  $Id: System.cc,v 1.40 2002/06/02 21:09:11 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -146,6 +146,27 @@ System::dirname (std::string filename)
     }
   
   return filename.substr(0, i);
+}
+
+std::string
+System::extension (std::string filename)
+{
+  const char* str = filename.c_str ();
+  int i;
+  int last_char = filename.size() - 1;
+
+  for(i = last_char; i >= 0; --i) 
+    {
+      if (str[i] == '.' ) {
+	if (i != last_char)
+	  return filename.substr (i+1);
+	else
+	  return "";
+      } else if (str[i] == '/' ) {
+	return "";
+      }
+    }
+  return "";
 }
 
 bool

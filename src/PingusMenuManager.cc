@@ -1,4 +1,4 @@
-//  $Id: PingusMenuManager.cc,v 1.6 2002/02/24 20:40:26 grumbel Exp $
+//  $Id: PingusMenuManager.cc,v 1.7 2002/06/02 21:09:11 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -49,11 +49,24 @@ PingusMenuManager::~PingusMenuManager ()
 void 
 PingusMenuManager::register_events ()
 {
-  puts ("register_events ()");
-  ++event_register_counter;
-  on_button_press_slot = CL_Input::sig_button_press ().connect (this, &PingusMenuManager::on_button_press);
-  on_button_release_slot = CL_Input::sig_button_release ().connect (this, &PingusMenuManager::on_button_release);
-  on_mouse_move_slot = CL_Input::sig_mouse_move ().connect (this, &PingusMenuManager::on_mouse_move);
+  //FIXME: I don't like event handling in pingus, should be handled
+  //FIXME: otherwise. 
+
+  if (event_register_counter == 0)
+    {
+      ++event_register_counter;
+
+      on_button_press_slot
+	= CL_Input::sig_button_press ().connect (this, &PingusMenuManager::on_button_press);
+      on_button_release_slot
+	= CL_Input::sig_button_release ().connect (this, &PingusMenuManager::on_button_release);
+      on_mouse_move_slot
+	= CL_Input::sig_mouse_move ().connect (this, &PingusMenuManager::on_mouse_move);
+    }
+  else
+    {
+      std::cout << "PingusMenuManager::register_events (): handler already registered" << std::endl;
+    }
 }
 
 /// Unregister all event-handling stuff
@@ -117,7 +130,7 @@ PingusMenuManager::on_mouse_move (CL_InputDevice* device, int x, int y)
 void 
 PingusMenuManager::display ()
 {
-  std::cout << "Pingusmenumanager: display ()" << std::endl;
+  //std::cout << "Pingusmenumanager: display ()" << std::endl;
   DeltaManager delta_manager;
   float delta;
   
@@ -125,6 +138,7 @@ PingusMenuManager::display ()
   register_events ();
   loop = true;
 
+  // Main loop for the menu
   while (loop)
     {
       //std::cout << "Displaying menu..." << std::endl;

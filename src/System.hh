@@ -1,4 +1,4 @@
-//  $Id: System.hh,v 1.21 2002/02/17 14:16:27 grumbel Exp $
+//  $Id: System.hh,v 1.22 2002/06/02 21:09:11 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -79,6 +79,14 @@ public:
   /** Strips basename from pathnames (see dirname(3))
       @param filename The complete filename */
   static std::string dirname(std::string filename);
+
+  /** Return the extension of the given filename:
+
+      System::extension ("foobar.jpg")    => "jpg"
+      System::extension ("/bla/bla.blub/") => ""
+      System::extension ("/bla/blabl") => ""
+  */
+  static std::string extension (std::string filename);
 
   /** Returns the directory where Pingus can store its user specific
       state and config data (savegames, config files, demos, etc.) */

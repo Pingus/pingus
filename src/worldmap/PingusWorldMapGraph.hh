@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapGraph.hh,v 1.15 2002/06/01 18:05:37 torangan Exp $
+//  $Id: PingusWorldMapGraph.hh,v 1.16 2002/06/02 21:09:11 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -70,31 +70,22 @@ class PingusWorldMapLevelNode
 private:
   Sprite green_dot;
   Sprite red_dot;
+  Sprite invalid_dot;
   Sprite dot_border;
   Sprite green_flag;
 
   boost::shared_ptr<PLF> plf;
+  
+  /** true if the level is invalid, which means that the levelfile
+      could not be loaded or had errors. false is the default */
+  bool invalid;
 
 public:
   std::string levelname;
   bool finished;
   boost::shared_ptr<PLF> get_plf ();
 
-  PingusWorldMapLevelNode () 
-    : green_dot ("worldmap/dot_green", "core"),
-      red_dot ("worldmap/dot_red", "core"),
-      dot_border ("Game/dot_border", "game"),
-      green_flag ("worldmap/flaggreen", "core")
-  {
-    accessible = false;
-    finished = false;
-
-    green_flag.set_align (-24, -36);
-    green_dot.set_align_center ();
-    red_dot.set_align_center ();
-    dot_border.set_align_center ();
-  }
-
+  PingusWorldMapLevelNode ();
   void on_click ();
   void mark (bool value);
   void draw (CL_Vector offset);

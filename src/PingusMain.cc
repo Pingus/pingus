@@ -1,4 +1,4 @@
-//   $Id: PingusMain.cc,v 1.57 2002/03/01 23:30:23 japj Exp $
+//   $Id: PingusMain.cc,v 1.58 2002/06/02 21:09:11 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -789,6 +789,8 @@ PingusMain::start_game(void)
 
   //pingus_story.display ();
 
+  /* start the level or editor if a levelname was given on the command
+     line */
   if (!levelfile.empty ())
     {
       bool successfull = true;
@@ -817,6 +819,7 @@ PingusMain::start_game(void)
       
     }
 
+  // show the main menu, the rest of the game is spawn from there
   try {
     PingusMenuManager menu;
     menu.display ();
@@ -840,8 +843,8 @@ PingusMain::main(int argc, char** argv)
   // Register the segfault_handler
   // signal(SIGSEGV, segfault_handler);
 #ifdef WIN32
-	CL_ConsoleWindow console(PACKAGE VERSION);
-	console.redirect_stdio();
+  CL_ConsoleWindow console(PACKAGE VERSION);
+  console.redirect_stdio();
 #endif
 
   executable_name = argv[0];

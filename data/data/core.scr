@@ -108,6 +108,7 @@ section worldmap
 {
 	tube = ../images/core/worldmap/tube.png (type=surface, x=0, y=0, width=32, height=37);
 
+	dot_invalid = ../images/core/worldmap/dot_invalid.png (type=surface);
 	dot_green = ../images/core/worldmap/dot_green.png (type=surface, x=0, y=0, width=32, height=12);
         dot_red = ../images/core/worldmap/dot_red.png (type=surface, x=0, y=0, width=32, height=12);
         dot_border = ../images/core/worldmap/dot_border.png (type=surface, x=0, y=0, width=44, height=22);

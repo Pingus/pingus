@@ -1,4 +1,4 @@
-//  $Id: PingusGameSession.cc,v 1.10 2001/08/15 22:01:45 grumbel Exp $
+//  $Id: PingusGameSession.cc,v 1.11 2002/06/02 21:09:11 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,47 +22,11 @@
 #include "Client.hh"
 #include "TrueServer.hh"
 #include "MouseController.hh"
-
+#include "System.hh"
 #include "PingusGameSession.hh"
 
 using boost::shared_ptr;
 using boost::dummy_ptr;
-
-static 
-boost::shared_ptr<PLF>
-create_plf (std::string filename)
-{
-  if (filename.length () > 4)
-    {
-      //std::cout << "Extension is: " << filename.substr(filename.size() - 4) << std::endl;
-
-      if (filename.substr(filename.size() - 4) == ".xml")
-	return boost::shared_ptr<PLF> (new XMLPLF (filename));
-      else
-	return boost::shared_ptr<PLF> (new PLFPLF (filename));
-    }
-  else
-    return boost::shared_ptr<PLF> (new XMLPLF (filename));
-}
-
-bool
-PingusGameSessionResult::finished ()
-{
-  // FIXME: Always success
-  return true;
-}
-
-float
-PingusGameSessionResult::percentage_saved ()
-{
-  return 100.0;
-}
-
-float 
-PingusGameSessionResult::percentage_time ()
-{
-  return 100.0;
-}
 
 PingusGameSession::PingusGameSession (std::string arg_filename)
   : filename (arg_filename),
@@ -89,6 +53,19 @@ PingusGameSessionResult
 PingusGameSession::get_result ()
 {
   return PingusGameSessionResult ();
+}
+
+boost::shared_ptr<PLF>
+PingusGameSession::create_plf (std::string pathname)
+{
+  std::string extension = System::extension (pathname);
+
+  if (extension == "xml")
+    return boost::shared_ptr<PLF> (new XMLPLF (filename));
+  else if (extension == "plf")
+    return boost::shared_ptr<PLF> (new PLFPLF (filename));
+  else // filename does not have an extension, default to xml
+    return boost::shared_ptr<PLF> (new XMLPLF (filename));
 }
 
 /* EOF */

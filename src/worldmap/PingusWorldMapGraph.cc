@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapGraph.cc,v 1.26 2002/01/16 23:51:00 grumbel Exp $
+//  $Id: PingusWorldMapGraph.cc,v 1.27 2002/06/02 21:09:11 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -62,25 +62,50 @@ PingusWorldMapTubeNode::get_string ()
   return str;
 }
 
+PingusWorldMapLevelNode::PingusWorldMapLevelNode ()
+  : green_dot ("worldmap/dot_green", "core"),
+    red_dot ("worldmap/dot_red", "core"),
+    invalid_dot ("worldmap/dot_invalid", "core"),
+    dot_border ("Game/dot_border", "game"),
+    green_flag ("worldmap/flaggreen", "core"),
+    invalid (false)
+{
+  accessible = false;
+  finished = false;
+
+  green_flag.set_align (-24, -36);
+  green_dot.set_align_center ();
+  invalid_dot.set_align_center ();
+  red_dot.set_align_center ();
+  dot_border.set_align_center ();
+}
+
 void 
 PingusWorldMapLevelNode::on_click ()
 {
-  if (maintainer_mode) 
-    std::cout << "Start a level...: " << levelname << std::endl;
-		  
-  PingusSound::play_sound(path_manager.complete("sounds/letsgo.wav"));
-  PingusGameSession game (path_manager.complete(levelname));
-      
-  // Launch the game and wait until it is finished
-  game.start ();
-
-  if (game.get_result ().finished ())
+  if (!invalid)
     {
-      finished = true;	
+      if (maintainer_mode) 
+	std::cout << "Start a level...: " << levelname << std::endl;
+		  
+      PingusSound::play_sound(path_manager.complete("sounds/letsgo.wav"));
+      PingusGameSession game (path_manager.complete(levelname));
+      
+      // Launch the game and wait until it is finished
+      game.start ();
+
+      if (game.get_result ().finished ())
+	{
+	  finished = true;	
+	}
+      else
+	{
+	  console.puts("Please try again!");
+	}
     }
   else
     {
-      console.puts("Please try again!");
+      std::cout << "PingusWorldMapLevelNode::on_click (): Error: level is invalid" << std::endl;
     }
 }
 
@@ -95,16 +120,23 @@ PingusWorldMapLevelNode::draw (CL_Vector offset)
 {
   if (!levelname.empty())
     {
-      if (accessible) 
+      if (!invalid)
 	{
-	  green_dot.put_screen (pos + offset);
-	  if (finished) {
-	    green_flag.put_screen (pos + offset);
-	  }
+	  if (accessible) 
+	    {
+	      green_dot.put_screen (pos + offset);
+	      if (finished) {
+		green_flag.put_screen (pos + offset);
+	      }
+	    }
+	  else
+	    {
+	      red_dot.put_screen (pos + offset);
+	    }
 	}
       else
 	{
-	  red_dot.put_screen (pos + offset);
+	  invalid_dot.put_screen (pos + offset);
 	}
     }
 }
@@ -112,22 +144,36 @@ PingusWorldMapLevelNode::draw (CL_Vector offset)
 std::map<std::string, std::string>
 PingusWorldMapLevelNode::get_string ()
 {
-  return get_plf ()->get_levelname ();
+  boost::shared_ptr<PLF> plf = get_plf ();
+  
+  if (!invalid)
+    return plf->get_levelname ();
+  else
+    return std::map<std::string, std::string>();
 }
 
 boost::shared_ptr<PLF>
 PingusWorldMapLevelNode::get_plf ()
 {
-  if (plf.get () == 0) 
+  if (plf.get () == 0)
     {
-      //console << "Loading " << levelname << std::endl;
-      try {
-	plf = boost::shared_ptr<PLF> (new XMLPLF (path_manager.complete (levelname)));
-      } catch (PingusError e) {
-	std::cout << "PingusWorldMapGraph: Caught PingusError (" << e.get_message () << ")" << std::endl;
-	std::cout << "PingusWorldMapGraph: Failed to load '" << levelname << "', fallback to level1.xml" << std::endl;
-	plf = boost::shared_ptr<PLF> (new XMLPLF (path_manager.complete ("levels/level1.xml")));
-      }
+      if (!invalid) 
+	{
+	  //console << "Loading " << levelname << std::endl;
+	  try {
+	    plf = boost::shared_ptr<PLF> (new XMLPLF (path_manager.complete (levelname)));
+	  } catch (PingusError& e) {
+	    std::cout << "PingusWorldMapGraph: Caught PingusError (" << e.get_message () << ")" << std::endl;
+	    std::cout << "PingusWorldMapGraph: Failed to load '" << levelname << "', fallback to level1.xml" << std::endl;
+	    //plf = boost::shared_ptr<PLF> (new XMLPLF (path_manager.complete ("levels/level1.xml")));
+	    invalid = true;
+	    return boost::shared_ptr<PLF>();
+	  }
+	}
+      else
+	{
+	  return boost::shared_ptr<PLF>();
+	}
     }
   
   return plf;
@@ -361,10 +407,10 @@ PingusWorldMapGraph::get_music ()
 }
 
 /*Graph<PingusWorldMapNode>* 
-PingusWorldMapGraph::get_graph ()
-{
+  PingusWorldMapGraph::get_graph ()
+  {
   return graph;
-}*/
+  }*/
 
 void
 PingusWorldMapGraph::draw (const CL_Vector& offset)
@@ -391,21 +437,21 @@ PingusWorldMapGraph::draw (const CL_Vector& offset)
     }
 }
 
-      /* Fade out, fixme, doesn't work at the moment 
-	 CL_SurfaceProvider* provider = new TargetProvider (target);
-	 CL_Surface* sur = CL_Surface::create (provider);
+/* Fade out, fixme, doesn't work at the moment 
+   CL_SurfaceProvider* provider = new TargetProvider (target);
+   CL_Surface* sur = CL_Surface::create (provider);
 
-	 for (int y = 0; y < CL_Display::get_height(); 
-	 y += CL_Display::get_height() / 40)
-	 {
-	 CL_System::keep_alive ();
-	 CL_Display::clear_display ();
-	 sur->put_screen (0, y);
-	 Display::flip_display ();
-	 }
+   for (int y = 0; y < CL_Display::get_height(); 
+   y += CL_Display::get_height() / 40)
+   {
+   CL_System::keep_alive ();
+   CL_Display::clear_display ();
+   sur->put_screen (0, y);
+   Display::flip_display ();
+   }
 		      
-	 delete sur;
-	 delete provider;
-      */
+   delete sur;
+   delete provider;
+*/
 
 /* EOF */

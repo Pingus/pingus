@@ -1,4 +1,4 @@
-//  $Id: PingusGameSession.hh,v 1.6 2001/08/15 22:01:45 grumbel Exp $
+//  $Id: PingusGameSession.hh,v 1.7 2002/06/02 21:09:11 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,25 +22,9 @@
 
 #include <string>
 
+#include "PingusGameSessionResult.hh"
 #include "Server.hh"
 #include "Client.hh"
-
-/** With this class you can obtain information about the success or
-    failure of a level, in addition you can get details like how many
-    penguins where saved or killed, etc. */
-class PingusGameSessionResult
-{
-public:
-  /** Gives information if the level was succeeded or not 
-      @return true if the level was succeeded, otherwise false */
-  bool finished ();
-
-  /** @return The percentage of pingus which where saved in this level */
-  float percentage_saved ();
-
-  /** @return The percentage of time, which was used to finish this level */
-  float percentage_time ();
-};
 
 /** You can use this class to start up a game session, which consist
     of a single level. */
@@ -58,6 +42,9 @@ private:
 
   /// The client
   boost::shared_ptr<Client> client;
+
+  /** */
+  boost::shared_ptr<PLF> create_plf (std::string filename);
 
 public:
   /** Create a new game session which is launched on start ()

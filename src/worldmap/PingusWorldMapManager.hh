@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapManager.hh,v 1.7 2001/07/24 09:10:12 grumbel Exp $
+//  $Id: PingusWorldMapManager.hh,v 1.8 2002/06/02 21:09:11 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,7 @@
 
 #include "PingusWorldMap.hh"
 
+/**  */
 class PingusWorldMapManager
 {
 private:
@@ -45,7 +46,7 @@ public:
   ~PingusWorldMapManager ();
   
 private:
-  /// Load all required resources if not already don
+  /// Load all required resources if not already done
   void init ();
   ///
   void on_button_press (CL_InputDevice *device, const CL_Key &key);
@@ -60,6 +61,7 @@ public:
   /// Display the worldmap and let the user select a level
   void display ();
   void change_map (std::string filename, int node);
+
   static PingusWorldMapManager* get_current () { return current_manager; } 
 };
 
