@@ -1,4 +1,4 @@
-//  $Id: server_event.cxx,v 1.5 2003/01/15 21:16:41 torangan Exp $
+//  $Id: server_event.cxx,v 1.6 2003/04/18 09:22:28 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -73,7 +73,7 @@ ServerEvent::write_xml(std::ostream& xml) const
       break;
     case PINGU_ACTION_EVENT:
       xml << "  <pingu-action time=\"" << to_string(time_stamp) << "\" id=\"" << pingu_id 
-	  << "\" action=\"" << Actions::action_to_string(pingu_action) << "\"/>" << std::endl;
+	  << "\" action=\"" << Actions::action_to_string(pingu_action, Actions::ENGLISH) << "\"/>" << std::endl;
       break;
     default:
       assert(!"Unknown type");

@@ -1,4 +1,4 @@
-//  $Id: pingu_enums.hxx,v 1.10 2003/02/12 22:40:47 torangan Exp $
+//  $Id: pingu_enums.hxx,v 1.11 2003/04/18 09:22:28 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -62,8 +62,10 @@ enum ActionName
     Waiter,
     Walker
   };
-     
-std::string action_to_string (ActionName action);
+
+enum NameType { ENGLISH, TRANSLATED };
+
+std::string action_to_string (ActionName action, NameType choice);
 ActionName  action_from_string (const std::string& action);
 
 } // namespace Actions

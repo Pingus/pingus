@@ -1,4 +1,4 @@
-//  $Id: pingu_enums.cxx,v 1.4 2003/03/25 00:56:33 grumbel Exp $
+//  $Id: pingu_enums.cxx,v 1.5 2003/04/18 09:22:28 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "my_gettext.hxx"
 #include "pingu_enums.hxx"
 
 // Pingu "globals".  Make [deadly_velocity = 20 * sqrt("normal gravity")] so
@@ -26,34 +27,34 @@ const int pingu_height = 26;
 
 namespace Actions {
 
-  std::string action_to_string(ActionName action) {
+  std::string action_to_string (ActionName action, NameType choice) {
 
     switch (action) {
 
-      case Angel          : return "angel";
-      case Basher         : return "basher";
-      case Blocker        : return "blocker";
-      case Boarder        : return "boarder";
-      case Bomber         : return "bomber";
-      case Bridger        : return "bridger";
-      case Climber        : return "climber";
-      case Digger         : return "digger";
-      case Drown          : return "drown";
-      case Exiter         : return "exiter";
-      case Faller         : return "faller";
-      case Floater        : return "floater";
-      case Jumper         : return "jumper";
-      case Laserkill      : return "laserkill";
-      case Miner          : return "miner";
-      case Rocketlauncher : return "rocketlauncher";
-      case Slider         : return "slider";
-      case Smashed        : return "smashed";
-      case Splashed       : return "splashed";
-      case Superman       : return "superman";
-      case Teleported     : return "teleported";
-      case Waiter         : return "waiter";
-      case Walker         : return "walker";
-      default             : return "Fehler";
+      case Angel          : return (choice == ENGLISH) ? "angel"          : _("Angel");
+      case Basher         : return (choice == ENGLISH) ? "basher"         : _("Basher");
+      case Blocker        : return (choice == ENGLISH) ? "blocker"        : _("Blocker");
+      case Boarder        : return (choice == ENGLISH) ? "boarder"        : _("Boarder");
+      case Bomber         : return (choice == ENGLISH) ? "bomber"         : _("Bomber");
+      case Bridger        : return (choice == ENGLISH) ? "bridger"        : _("Bridger");
+      case Climber        : return (choice == ENGLISH) ? "climber"        : _("Climber");
+      case Digger         : return (choice == ENGLISH) ? "digger"         : _("Digger");
+      case Drown          : return (choice == ENGLISH) ? "drown"          : _("Drown");
+      case Exiter         : return (choice == ENGLISH) ? "exiter"         : _("Exiter");
+      case Faller         : return (choice == ENGLISH) ? "faller"         : _("Faller");
+      case Floater        : return (choice == ENGLISH) ? "floater"        : _("Floater");
+      case Jumper         : return (choice == ENGLISH) ? "jumper"         : _("Jumper");
+      case Laserkill      : return (choice == ENGLISH) ? "laserkill"      : _("Laserkill");
+      case Miner          : return (choice == ENGLISH) ? "miner"          : _("Miner");
+      case Rocketlauncher : return (choice == ENGLISH) ? "rocketlauncher" : _("Rocketlauncher");
+      case Slider         : return (choice == ENGLISH) ? "slider"         : _("Slider");
+      case Smashed        : return (choice == ENGLISH) ? "smashed"        : _("Smashed");
+      case Splashed       : return (choice == ENGLISH) ? "splashed"       : _("Splashed");
+      case Superman       : return (choice == ENGLISH) ? "superman"       : _("Superman");
+      case Teleported     : return (choice == ENGLISH) ? "teleported"     : _("Teleported");
+      case Waiter         : return (choice == ENGLISH) ? "waiter"         : _("Waiter");
+      case Walker         : return (choice == ENGLISH) ? "walker"         : _("Walker");
+      default             : return "Unknown ActionName";
    }
   }
 

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Pingus 0.5.0\n"
-"POT-Creation-Date: 2003-04-17 18:38+0200\n"
+"POT-Creation-Date: 2003-04-18 11:16+0200\n"
 "PO-Revision-Date: 2003-04-15 17:28+0200\n"
 "Last-Translator: Çaðrý Çöltekin <cagri@metu.edu.tr>\n"
 "Language-Team: Giray Devlet <giray@devlet.cc>, Caðrý Çöltekin <cagri@metu."
@@ -70,27 +70,27 @@ msgstr "-Özel"
 msgid "-Thanks to"
 msgstr "-Þükranlarýmýz"
 
-#: src/credits.cxx:141
+#: src/credits.cxx:142
 msgid "_And a very Special Thanks"
 msgstr "_Ve Özgür Yazýlýma"
 
-#: src/credits.cxx:142
+#: src/credits.cxx:143
 msgid "_to all the people who"
 msgstr "_katkýda bulunan"
 
-#: src/credits.cxx:143
+#: src/credits.cxx:144
 msgid "_contribute to"
 msgstr "_herkese..."
 
-#: src/credits.cxx:144
+#: src/credits.cxx:145
 msgid "_Free Software!"
 msgstr "_Teþekkürler!"
 
-#: src/credits.cxx:150
+#: src/credits.cxx:151
 msgid "_Thank you for"
 msgstr "_Oynadýðýnýz için"
 
-#: src/credits.cxx:151
+#: src/credits.cxx:152
 msgid "_playing!"
 msgstr "_teþekkürler!"
 
@@ -668,6 +668,102 @@ msgstr "..:: Çok oyunculu kipler... Deneysel þeyler ::.."
 #: src/menu_button.cxx:395
 msgid "Multi"
 msgstr "Çoklu"
+
+#: src/pingu_enums.cxx:34
+msgid "Angel"
+msgstr ""
+
+#: src/pingu_enums.cxx:35
+msgid "Basher"
+msgstr ""
+
+#: src/pingu_enums.cxx:36
+#, fuzzy
+msgid "Blocker"
+msgstr "kapalý"
+
+#: src/pingu_enums.cxx:37
+msgid "Boarder"
+msgstr ""
+
+#: src/pingu_enums.cxx:38
+msgid "Bomber"
+msgstr ""
+
+#: src/pingu_enums.cxx:39
+msgid "Bridger"
+msgstr ""
+
+#: src/pingu_enums.cxx:40
+msgid "Climber"
+msgstr ""
+
+#: src/pingu_enums.cxx:41
+msgid "Digger"
+msgstr ""
+
+#: src/pingu_enums.cxx:42
+msgid "Drown"
+msgstr ""
+
+#: src/pingu_enums.cxx:43
+#, fuzzy
+msgid "Exiter"
+msgstr "Çýkýþ"
+
+#: src/pingu_enums.cxx:44
+msgid "Faller"
+msgstr ""
+
+#: src/pingu_enums.cxx:45
+msgid "Floater"
+msgstr ""
+
+#: src/pingu_enums.cxx:46
+#, fuzzy
+msgid "Jumper"
+msgstr "7 - Ýtici"
+
+#: src/pingu_enums.cxx:47
+msgid "Laserkill"
+msgstr ""
+
+#: src/pingu_enums.cxx:48
+msgid "Miner"
+msgstr ""
+
+#: src/pingu_enums.cxx:49
+msgid "Rocketlauncher"
+msgstr ""
+
+#: src/pingu_enums.cxx:50
+msgid "Slider"
+msgstr ""
+
+#: src/pingu_enums.cxx:51
+msgid "Smashed"
+msgstr ""
+
+#: src/pingu_enums.cxx:52
+msgid "Splashed"
+msgstr ""
+
+#: src/pingu_enums.cxx:53
+msgid "Superman"
+msgstr ""
+
+#: src/pingu_enums.cxx:54
+#, fuzzy
+msgid "Teleported"
+msgstr "1 - Iþýnlayýcý"
+
+#: src/pingu_enums.cxx:55
+msgid "Waiter"
+msgstr ""
+
+#: src/pingu_enums.cxx:56
+msgid "Walker"
+msgstr ""
 
 #: src/pingus_counter.cxx:49
 #, c-format

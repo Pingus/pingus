@@ -1,4 +1,4 @@
-//  $Id: action_button.cxx,v 1.27 2003/02/19 09:50:34 grumbel Exp $
+//  $Id: action_button.cxx,v 1.28 2003/04/18 09:22:28 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -49,7 +49,7 @@ ActionButton::init(int x, int y, ActionName name_, int owner_id)
   font   = PingusResource::load_font("Fonts/pingus_small", "fonts");
   font_b = PingusResource::load_font("Fonts/pingus",       "fonts");
 
-  sprite = Sprite("Pingus/" + action_to_string(name) + to_string(owner_id), "pingus", 25.0f);
+  sprite = Sprite("Pingus/" + action_to_string(name, TRANSLATED) + to_string(owner_id), "pingus", 25.0f);
   sprite.set_align_center_bottom();
 
   // FIXME: Big fat hack
@@ -146,7 +146,7 @@ VerticalActionButton::draw (GraphicContext& gc)
       && CL_Mouse::get_x() > x_pos      && CL_Mouse::get_x() < x_pos + 60
       && CL_Mouse::get_y() < y_pos + 35 && CL_Mouse::get_y() > y_pos) 
     {
-      font_b->print_left(x_pos + 65, y_pos, action_to_string(name).c_str());
+      font_b->print_left(x_pos + 65, y_pos, action_to_string(name, TRANSLATED).c_str());
     }
 
   if (Cheat::unlimited_actions)

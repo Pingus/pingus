@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Pingus 0.6.0\n"
-"POT-Creation-Date: 2003-04-17 18:38+0200\n"
+"POT-Creation-Date: 2003-04-18 11:16+0200\n"
 "PO-Revision-Date: 2003-04-15 17:31+0200\n"
 "Last-Translator: Ingo Ruhnke <grumbel@gmx.de>\n"
 "Language-Team: David Philippi <david@torangan.de>, Ingo Ruhnke <grumbel@gmx."
@@ -70,27 +70,27 @@ msgstr "-Besonderen"
 msgid "-Thanks to"
 msgstr "-Dank an"
 
-#: src/credits.cxx:141
+#: src/credits.cxx:142
 msgid "_And a very Special Thanks"
 msgstr "_Und einen besonderen Dank"
 
-#: src/credits.cxx:142
+#: src/credits.cxx:143
 msgid "_to all the people who"
 msgstr "_an alle Leute die"
 
-#: src/credits.cxx:143
+#: src/credits.cxx:144
 msgid "_contribute to"
 msgstr "_an Freier Software"
 
-#: src/credits.cxx:144
+#: src/credits.cxx:145
 msgid "_Free Software!"
 msgstr "_mitarbeiten!"
 
-#: src/credits.cxx:150
+#: src/credits.cxx:151
 msgid "_Thank you for"
 msgstr "_Dankeschön fürs"
 
-#: src/credits.cxx:151
+#: src/credits.cxx:152
 msgid "_playing!"
 msgstr "_spielen!"
 
@@ -659,6 +659,98 @@ msgstr "..:: Mehrspieler Modus ::.. Experimentelles Zeug ::.."
 #: src/menu_button.cxx:395
 msgid "Multi"
 msgstr "Multi"
+
+#: src/pingu_enums.cxx:34
+msgid "Angel"
+msgstr "Angel"
+
+#: src/pingu_enums.cxx:35
+msgid "Basher"
+msgstr "Basher"
+
+#: src/pingu_enums.cxx:36
+msgid "Blocker"
+msgstr "Blocker"
+
+#: src/pingu_enums.cxx:37
+msgid "Boarder"
+msgstr "Boarder"
+
+#: src/pingu_enums.cxx:38
+msgid "Bomber"
+msgstr "Bomber"
+
+#: src/pingu_enums.cxx:39
+msgid "Bridger"
+msgstr "Bridger"
+
+#: src/pingu_enums.cxx:40
+msgid "Climber"
+msgstr "Climber"
+
+#: src/pingu_enums.cxx:41
+msgid "Digger"
+msgstr "Digger"
+
+#: src/pingu_enums.cxx:42
+msgid "Drown"
+msgstr "Drown"
+
+#: src/pingu_enums.cxx:43
+msgid "Exiter"
+msgstr "Exiter"
+
+#: src/pingu_enums.cxx:44
+msgid "Faller"
+msgstr "Faller"
+
+#: src/pingu_enums.cxx:45
+msgid "Floater"
+msgstr "Floater"
+
+#: src/pingu_enums.cxx:46
+msgid "Jumper"
+msgstr "Jumper"
+
+#: src/pingu_enums.cxx:47
+msgid "Laserkill"
+msgstr "Laserkill"
+
+#: src/pingu_enums.cxx:48
+msgid "Miner"
+msgstr "Miner"
+
+#: src/pingu_enums.cxx:49
+msgid "Rocketlauncher"
+msgstr "Rocketlauncher"
+
+#: src/pingu_enums.cxx:50
+msgid "Slider"
+msgstr "Slider"
+
+#: src/pingu_enums.cxx:51
+msgid "Smashed"
+msgstr "Smashed"
+
+#: src/pingu_enums.cxx:52
+msgid "Splashed"
+msgstr "Splashed"
+
+#: src/pingu_enums.cxx:53
+msgid "Superman"
+msgstr "Superman"
+
+#: src/pingu_enums.cxx:54
+msgid "Teleported"
+msgstr "Teleported"
+
+#: src/pingu_enums.cxx:55
+msgid "Waiter"
+msgstr "Waiter"
+
+#: src/pingu_enums.cxx:56
+msgid "Walker"
+msgstr "Walker"
 
 #: src/pingus_counter.cxx:49
 #, c-format
