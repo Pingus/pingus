@@ -155,7 +155,6 @@ src/PLFPLF.cc
 src/PLFPreview.cc
 src/PLTParser.cc
 src/PLTXML.cc
-src/Position.cc
 src/PSMParser.cc
 src/Range.cc
 src/ResDescriptor.cc
@@ -186,9 +185,6 @@ src/traps/smasher.cc
 src/traps/Spike.cc
 src/TrueServer.cc
 src/View.cc
-src/war/WarGame.cc
-src/war/WarGlobals.cc
-src/war/WarMain.cc
 src/WeatherData.cc
 src/World.cc
 src/worldmap/PingusWorldMap.cc
