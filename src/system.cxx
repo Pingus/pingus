@@ -1,4 +1,4 @@
-//  $Id: system.cxx,v 1.3 2002/06/20 11:23:53 grumbel Exp $
+//  $Id: system.cxx,v 1.4 2002/06/22 17:40:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -225,14 +225,30 @@ System::init_directories()
   std::string vardir   = get_vardir();
   
   create_dir(statdir);
+
+  // FIXME: We need a better seperation between user created levels,
+  // FIXME: third party levels and levels from the base distri
   create_dir(statdir + "levels/");
   create_dir(statdir + "levels/dist");
-  create_dir(statdir + "stat/");
-  create_dir(statdir + "cache/");
-  create_dir(statdir + "demos/");
-  create_dir(statdir + "screenshots/");
   create_dir(statdir + "themes/");
 
+  // Savegames (FIXME: rename to savegames/?)
+  create_dir(statdir + "stat/");
+
+  // Backups of edited levels in the level editor
+  create_dir(statdir + "backup/");
+  
+  // User created images 
+  create_dir(statdir + "images/");
+
+  // Thumbnail cache
+  create_dir(statdir + "cache/");
+
+  // Recorded demos will per default be writen in this directory
+  create_dir(statdir + "demos/");
+
+  // Screenshots will be dumped to that directory:
+  create_dir(statdir + "screenshots/");
   // create_dir(vardir);
 }
  

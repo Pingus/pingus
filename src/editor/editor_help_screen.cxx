@@ -1,4 +1,4 @@
-//  $Id: editor_help_screen.cxx,v 1.1 2002/06/12 19:11:31 grumbel Exp $
+//  $Id: editor_help_screen.cxx,v 1.2 2002/06/22 17:40:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,7 +43,7 @@ EditorHelpScreen::draw ()
   x_pos = 32;
   y_pos = 100;
   font->print_left (x_pos, y_pos +   0, _("F1 - show/hide this help screen"));
-  font->print_left (x_pos, y_pos +  20, _("F2 - [unset]"));
+  font->print_left (x_pos, y_pos +  20, _("F2 - launch level building tutorial"));
   font->print_left (x_pos, y_pos +  40, _("F3 - toggle background color"));
   font->print_left (x_pos, y_pos +  60, _("F4 - play/test the level"));
   font->print_left (x_pos, y_pos +  80, _("F5 - load a level"));

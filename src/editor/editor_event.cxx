@@ -1,4 +1,4 @@
-//  $Id: editor_event.cxx,v 1.4 2002/06/22 15:24:06 grumbel Exp $
+//  $Id: editor_event.cxx,v 1.5 2002/06/22 17:40:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,6 +25,7 @@
 #include <ClanLib/Display/Display/display.h>
 #include <ClanLib/Display/Input/mouse.h>
 
+#include "../html_browser.hxx"
 #include "../debug.hxx"
 #include "../globals.hxx"
 #include "../game_session.hxx"
@@ -242,6 +243,10 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key& key)
 
 	case CL_KEY_F1:
 	  editor->toggle_help_screen ();
+	  break;
+
+	case CL_KEY_F2:
+	  HTMLBrowser::launch ("http://pingus.seul.org/levels.html");
 	  break;
 
 	  // Change the width and height of the current level.
