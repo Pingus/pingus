@@ -1,4 +1,4 @@
-//  $Id: faller.cxx,v 1.31 2002/10/20 18:28:49 torangan Exp $
+//  $Id: faller.cxx,v 1.32 2002/11/03 13:29:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -64,9 +64,10 @@ Faller::update ()
 
   // Move the Faller according to the forces that currently exist, which
   // includes gravity.
-  move_with_forces (0.0, 0.0);
+  move_with_forces ();
 
   // Now that the Pingu is moved, check if he hits the ground.
+  // FIXME: shouldn't this be done by move_with_forces
   if (rel_getpixel(0, -1) == Groundtype::GP_NOTHING)
     { // if pingu is not on ground
       ++falling;
@@ -77,13 +78,14 @@ Faller::update ()
   else // Ping is on ground/water/something
     {
       if (   rel_getpixel(0, -1) == Groundtype::GP_WATER
-	  || rel_getpixel(0, -1) == Groundtype::GP_LAVA) 
+	  || rel_getpixel(0, -1) == Groundtype::GP_LAVA)
 	{
 	  pingu->set_action(Actions::Drown);
 	  return;
 	}
       else
 	{
+          std::cout << "Ground hit velocity: " << fabs(pingu->get_velocity().y) << "/" << deadly_velocity << std::endl;
 	  // Did we stop too fast?
 	  if (fabs(pingu->get_velocity().y) > deadly_velocity) 
 	    {

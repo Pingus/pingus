@@ -1,4 +1,4 @@
-//  $Id: pingu.hxx,v 1.23 2002/10/12 13:30:51 grumbel Exp $
+//  $Id: pingu.hxx,v 1.24 2002/11/03 13:29:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -119,8 +119,6 @@ public:
       (number of blocks, etc.) */
   std::string get_name();
 
-  Actions::ActionName get_action ();
-
   /// Returns the unique id of the pingu
   unsigned int  get_id (void); 
     
@@ -200,7 +198,17 @@ public:
       another action can be applied, false otherwise (exiter,
       splashed, etc.) */
   bool catchable ();
-  
+
+  /** @return the name of the action the Pingu currently has */
+  Actions::ActionName get_action ();
+
+  /** @return the action that was active before the action returned by
+      get_action() took place. This is used in a few situations where
+      an action needs to now what the Pingu was doing before the
+      action took place (faller->bomber translation is different
+      walker->bomber, etc.). */
+  Actions::ActionName get_previous_action() const { return previous_action; }
+
 private:
   Pingu (const Pingu&);
   Pingu& operator= (const Pingu&);  

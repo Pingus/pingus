@@ -1,4 +1,4 @@
-//  $Id: pingu_action.cxx,v 1.12 2002/11/02 17:13:56 grumbel Exp $
+//  $Id: pingu_action.cxx,v 1.13 2002/11/03 13:29:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -51,6 +51,7 @@ PinguAction::need_catch ()
 int
 PinguAction::rel_getpixel (int x, int y)
 {
+  // FIXME: Inline me
   return WorldObj::get_world()->get_colmap()->getpixel(static_cast<int>(pingu->get_x() + (x * pingu->direction)),
                                                        static_cast<int>(pingu->get_y() - y));
 }
@@ -100,13 +101,9 @@ PinguAction::collision_on_walk (int x, int y)
 }
 
 void
-PinguAction::move_with_forces (float x_to_add, float y_to_add)
+PinguAction::move_with_forces ()
 {
   Vector force_to_apply = pingu->get_velocity();
-
-  // Add any additional forces that are required
-  force_to_apply.x += x_to_add;
-  force_to_apply.y += y_to_add;
 
   // Put the force together with any existing forces, including gravity
   pingu->set_velocity( ForcesHolder::apply_forces(pingu->get_pos(),
@@ -144,8 +141,10 @@ PinguAction::move_with_forces (float x_to_add, float y_to_add)
   Vector force_counter = resultant_force;
 
   // Keep moving the Pingu until there is only a fraction left
-  while (force_counter.x <= -1 || force_counter.x >= 1
-	  || force_counter.y <= -1 || force_counter.y >= 1)
+  while (   force_counter.x <= -1 
+         || force_counter.x >=  1
+         || force_counter.y <= -1
+         || force_counter.y >=  1)
     {
       x_numerator += x_inc;
 
@@ -154,6 +153,8 @@ PinguAction::move_with_forces (float x_to_add, float y_to_add)
 	{
 	  // Revert back to being a fraction
 	  x_numerator -= denominator;
+
+          // FIXME: Symmetric code is EXTREMLY UGLY!!!!
 
 	  // Move the Pingu depending on what the direction of the force is
 	  if (force_counter.x >= 1)
@@ -183,7 +184,7 @@ PinguAction::move_with_forces (float x_to_add, float y_to_add)
 		{
 		  // Make the Pingu reflect off the wall
 		  force_counter.x = -(force_counter.x);
-		  resultant_force.x = -(resultant_force.x);
+		  resultant_force.x = -(resultant_force.x/3);
 
 		  pingu->set_velocity(resultant_force);
 
@@ -244,7 +245,7 @@ PinguAction::move_with_forces (float x_to_add, float y_to_add)
 		}
 	    }
 	}
-    }
+   }
 
 }
 

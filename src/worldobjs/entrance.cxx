@@ -1,4 +1,4 @@
-//  $Id: entrance.cxx,v 1.7 2002/10/10 12:25:54 grumbel Exp $
+//  $Id: entrance.cxx,v 1.8 2002/11/03 13:29:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,6 +35,7 @@ Entrance::Entrance (const WorldObjsData::EntranceData& data_)
     smallmap_symbol("misc/smallmap_entrance", "core"),
     last_release(-data->release_rate)
 {
+  smallmap_symbol.set_align_center_bottom();
   if (verbose > 2)
     std::cout << "Creating Entrance" << std::endl;
 }

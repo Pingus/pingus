@@ -1,4 +1,4 @@
-//  $Id: button_panel.cxx,v 1.20 2002/11/02 18:01:10 grumbel Exp $
+//  $Id: button_panel.cxx,v 1.21 2002/11/03 13:29:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -45,20 +45,18 @@ ButtonPanel::ButtonPanel(PLF* plf, int arg_x_pos, int arg_y_pos)
 
   std::vector<ActionData> buttons_data = plf->get_actions();
 
+  if (buttons_data.size() == 0)
+    {
+      std::cout << "Error: ButtonPanel: No actions given in this level! Using defaults" << std::endl;
+      buttons_data = default_actions;
+    }
+
   // Sort the action so that they always have the same order in the
   // panel
   std::sort(buttons_data.begin(), buttons_data.end(), action_sorter());
 
   y_pos -= (buttons_data.size() * 38)/2 + 70;
 
-  if (buttons_data.size() == 0)
-    {
-      std::cout << "ButtonPanel: No actions given in this level, fall back to default" << std::endl;
-      buttons_data.push_back(ActionData(Bridger, 20));
-      buttons_data.push_back(ActionData(Basher, 20));
-      buttons_data.push_back(ActionData(Digger, 20));
-      buttons_data.push_back(ActionData(Miner, 20));
-    }
 
   for(std::vector<ActionData>::size_type i = 0; i < buttons_data.size(); ++i)
     {

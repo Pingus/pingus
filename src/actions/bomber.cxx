@@ -1,4 +1,4 @@
-//  $Id: bomber.cxx,v 1.22 2002/10/22 00:07:56 grumbel Exp $
+//  $Id: bomber.cxx,v 1.23 2002/11/03 13:29:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -80,10 +80,8 @@ Bomber::update ()
 {
   sprite.update ();
 
-  // Move the Bomber according to the forces that currently exist, subtracting
-  // the velocity due to the fact that the Pingu is ballooning up.  Best to
-  // make it -1.0 so that exploding Walkers etc... remain "stationary."
-  move_with_forces (0.0, -1.0);
+  if (pingu->get_previous_action() == Actions::Faller)
+    move_with_forces();
 
   // If the Bomber hasn't 'exploded' yet and it has hit Water or Lava
   if (sprite.get_frame () <= 9 && (rel_getpixel(0, -1) == Groundtype::GP_WATER

@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.33 2002/11/02 22:10:52 grumbel Exp $
+//   $Id: pingus_main.cxx,v 1.34 2002/11/03 13:29:09 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -862,6 +862,14 @@ PingusMain::deinit_clanlib()
 void
 PingusMain::init_pingus()
 {
+  // Init error/warning/notice streams
+  pout.add (std::cout);
+  pout.add (console);
+  pwarn.add (std::cout);
+  pout.add (console);
+  perr.add (std::cout);
+  perr.add (console);
+  
   PingusSound::init();
 
   PingusResource::init();
@@ -869,13 +877,9 @@ PingusMain::init_pingus()
   fps_counter.init();
   console.init();
   XMLhelper::init();
-
-  pout.add (std::cout);
-  pout.add (console);
-  pwarn.add (std::cout);
-  pout.add (console);
-  perr.add (std::cout);
-  perr.add (console);
+ 
+  // FIXME: See action_data.hxx, a bit ugly
+  init_default_actions();
 }
 
 void
