@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.69 2003/04/09 23:57:03 grumbel Exp $
+//   $Id: pingus_main.cxx,v 1.70 2003/04/10 14:36:35 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -638,6 +638,7 @@ PingusMain::init_path_finder()
 #else /* !WIN32 */
   //If the User uses Windows, the Datadir is always the Subdirectory "data"
   path_manager.set_path("data");
+  path_manager.set_path(".");
 #endif /* !WIN32 */
  
 #ifdef HAVE_GETTEXT
@@ -810,8 +811,8 @@ PingusMain::main(int argc, char** argv)
   //signal(SIGINT,  signal_handler);
 
   // Redirect stdout to somewhere where it is readable
-  CL_ConsoleWindow cl_console(PACKAGE VERSION);
-  cl_console.redirect_stdio();
+  //CL_ConsoleWindow cl_console(PACKAGE VERSION);
+  //cl_console.redirect_stdio();
 
   try 
     {

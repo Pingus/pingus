@@ -1,4 +1,4 @@
-//  $Id: level_dot.cxx,v 1.18 2003/04/10 11:51:32 grumbel Exp $
+//  $Id: level_dot.cxx,v 1.19 2003/04/10 14:36:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <ClanLib/Display/Input/mouse.h>
 #include <iostream>
 #include "../my_gettext.hxx"
 #include "../globals.hxx"
@@ -76,15 +77,31 @@ LevelDot::LevelDot(xmlDocPtr doc, xmlNodePtr cur)
 void
 LevelDot::draw(GraphicContext& gc)
 {
+  Vector mpos = gc.screen_to_world(Vector(CL_Mouse::get_x(), CL_Mouse::get_y()));
+
+  float x = mpos.x - pos.x;
+  float y = mpos.y - pos.y;
+  
+  bool highlight = false;
+
+  if (sqrt(x*x + y*y) < 30.0f)
+    highlight = true;
+  
   Savegame* savegame = SavegameManager::instance()->get(levelname);
   if (savegame 
       && (savegame->status == Savegame::FINISHED
           || savegame->status == Savegame::ACCESSIBLE))
     {
       if (savegame->status == Savegame::FINISHED)
-        gc.draw (green_dot_sur, pos);
+        if (highlight)
+          gc.draw (highlight_green_dot_sur, pos);
+        else
+          gc.draw (green_dot_sur, pos);
       else
-        gc.draw (red_dot_sur, pos);
+        if (highlight)
+          gc.draw (highlight_red_dot_sur, pos);
+        else
+          gc.draw (red_dot_sur, pos);
     }
   else
     {
@@ -129,17 +146,6 @@ LevelDot::accessible()
 void
 LevelDot::draw_hover(GraphicContext& gc)
 {
-  Savegame* savegame = SavegameManager::instance()->get(levelname);
-  if (savegame 
-      && (savegame->status == Savegame::FINISHED
-          || savegame->status == Savegame::ACCESSIBLE))
-    {
-      if (savegame->status == Savegame::FINISHED)
-        gc.draw (highlight_green_dot_sur, pos);
-      else
-        gc.draw (highlight_red_dot_sur, pos);
-    }
-
   if (accessible())
     {
       gc.print_center(Fonts::pingus_small,

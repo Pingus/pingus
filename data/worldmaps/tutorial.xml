@@ -240,7 +240,7 @@
           <position>
             <x-pos>962</x-pos>
             <y-pos>383</y-pos>
-            <z-pos>150</z-pos>
+            <z-pos>0</z-pos>
           </position>
         </dot>
         <levelname>tutorial/snow7-grumbel</levelname>
@@ -253,7 +253,7 @@
           <position>
             <x-pos>1028</x-pos>
             <y-pos>388</y-pos>
-            <z-pos>150</z-pos>
+            <z-pos>0</z-pos>
           </position>
         </dot>
         <levelname>tutorial/snow11-grumbel</levelname>

@@ -1,4 +1,4 @@
-//  $Id: pingus.cxx,v 1.30 2003/04/10 11:51:32 grumbel Exp $
+//  $Id: pingus.cxx,v 1.31 2003/04/10 14:36:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,7 +29,7 @@ namespace WorldMapNS {
 Pingus::Pingus (PathGraph* arg_path)
   : Drawable("pingus"),
     path(arg_path),
-    sprite ("worldmap/pingus", "core", 20.0f, Sprite::RIGHT),
+    sprite ("worldmap/pingus", "core", 27.0f, Sprite::RIGHT),
     sprite_standing ("worldmap/pingus_standing", "core"),
     arrow ("worldmap/arrow", "core")
 {
