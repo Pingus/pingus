@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMap.cc,v 1.7 2000/09/29 16:21:17 grumbel Exp $
+//  $Id: PingusWorldMap.cc,v 1.8 2000/10/01 21:29:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,7 @@
 #include "../globals.hh"
 #include "../algo.hh"
 #include "../PingusGame.hh"
+#include "../blitter.hh"
 #include "PingusWorldMap.hh"
 
 PingusWorldMap::PingusWorldMap (std::string filename)
@@ -35,8 +36,9 @@ PingusWorldMap::PingusWorldMap (std::string filename)
 
   background = PingusResource::load_surface (graph_data.get_background ());
 
+  background = Blitter::scale_surface (background, CL_Display::get_width (), CL_Display::get_height ());
+  
   pingus = new PingusWorldMapPingus;
-
   pingus->set_position (&(*graph_data.nodes.begin ()));
 }
 
@@ -44,6 +46,7 @@ PingusWorldMap::~PingusWorldMap ()
 {
   delete graph;
   delete pingus;
+  delete background;
 }
 
 void 
@@ -111,7 +114,13 @@ PingusWorldMap::on_button_release (CL_InputDevice *device, const CL_Key &key)
 void
 PingusWorldMap::draw ()
 {
-  background->put_screen (0,0, CL_Display::get_width (), CL_Display::get_height ());
+  // The node positions are based up on a 800x600 screen, so we need
+  // to scale if the screen has another size
+  float x_scale = CL_Display::get_width () / 800.0;
+  float y_scale = CL_Display::get_height () / 600.0;
+
+  //background->put_screen (0,0, CL_Display::get_width (), CL_Display::get_height ());
+  background->put_screen (0,0);
 
   graph_data.draw();
 
@@ -123,23 +132,23 @@ PingusWorldMap::draw ()
 	{
 	  if (i->accessible) 
 	    {
-	      green_dot->put_screen (i->pos.x_pos - (red_dot->get_width()/2),
-				     i->pos.y_pos - (red_dot->get_height()/2));
+	      green_dot->put_screen ((i->pos.x_pos - (red_dot->get_width()/2)) * x_scale,
+				     (i->pos.y_pos - (red_dot->get_height()/2)) * y_scale);
 	    }
 	  else
 	    {
-	      red_dot->put_screen (i->pos.x_pos - (red_dot->get_width()/2),
-				   i->pos.y_pos - (red_dot->get_height()/2));
+	      red_dot->put_screen ((i->pos.x_pos - (red_dot->get_width()/2)) * x_scale,
+				   (i->pos.y_pos - (red_dot->get_height()/2)) * y_scale);
 	    }
 	}
     }
   
-  PingusWorldMapNode* node = get_node (CL_Mouse::get_x (), CL_Mouse::get_y ());
+  PingusWorldMapNode* node = get_node (CL_Mouse::get_x () * x_scale, CL_Mouse::get_y () * y_scale);
 
   if (node)
     {
-      dot_border->put_screen (node->pos.x_pos - (dot_border->get_width()/2),
-			      node->pos.y_pos - (dot_border->get_height()/2));
+      dot_border->put_screen ((node->pos.x_pos - (dot_border->get_width()/2)) * x_scale,
+			      (node->pos.y_pos - (dot_border->get_height()/2)) * y_scale);
     }
 
   pingus->draw ();
