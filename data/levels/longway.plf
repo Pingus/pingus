@@ -1,7 +1,8 @@
 /* This level was created with the PLE
- * $Id: longway.plf,v 1.1 2000/05/21 12:03:24 grumbel Exp $
+ * $Id: longway.plf,v 1.2 2000/06/12 11:44:59 grumbel Exp $
  */
 global {
+  author = "Craig Timpany <timpany@pingus.cx>";
   start_x_pos = 0;
   start_y_pos = 0;
   levelname = "Long Way Down";
@@ -27,6 +28,10 @@ background {
   blue  = "0";
   scroll_x = 0;
   scroll_y = 0;
+  para_x = 0.5;
+  para_y = 0.5;
+  stretch_x = 0;
+  stretch_y = 0;
 }
 
 buttons {

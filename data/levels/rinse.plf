@@ -1,5 +1,5 @@
 /* This level was created with the PLE
- * $Id: rinse.plf,v 1.1 2000/05/25 15:45:52 grumbel Exp $
+ * $Id: rinse.plf,v 1.2 2000/06/12 11:44:59 grumbel Exp $
  */
 global {
   start_x_pos = 0;
@@ -22,12 +22,16 @@ ground {
 
 background {
   image = (resource:textures.dat)"Textures/enchantedjungle";
-  dim = "0.2";
-	red = "0.8";
-	green = "1.2";
-	blue = "1.2";
+  dim   = "0.2";
+  red   = "0.8";
+  green = "1.2";
+  blue  = "1.2";
   scroll_x = 0;
   scroll_y = 0;
+  para_x = 0.5;
+  para_y = 0.5;
+  stretch_x = 0;
+  stretch_y = 0;
 }
 
 buttons {
@@ -39,8 +43,8 @@ buttons {
 
 entrance {
   type  = woodthing;
-  x_pos = 186;
-  y_pos = 120;
+  x_pos = 178;
+  y_pos = 72;
   z_pos = 0;
   release_rate = 25;
   direction = left;
@@ -55,16 +59,17 @@ exit {
 
 hotspot {
   image = (resource)"Entrances/woodthing_nmov";
-  x_pos = 110;
-  y_pos = -14;
+  x_pos = 102;
+  y_pos = -62;
   z_pos = 100;
   speed = -1;
+  para = "1";
 }
 
 liquid {
   image = (resource)"Liquid/water";
-  x_pos = -8;
-  y_pos = 386;
+  x_pos = -76;
+  y_pos = 464;
   z_pos = -100;
   width = 192;
   speed = 50;
@@ -82,7 +87,7 @@ liquid {
 liquid {
   image = (resource)"Liquid/water";
   x_pos = 1;
-  y_pos = 576;
+  y_pos = 578;
   z_pos = 100;
   width = 1024;
   speed = 30;
