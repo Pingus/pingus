@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.12 2000/05/28 19:54:06 grumbel Exp $
+#  $Id: Makefile.am,v 1.13 2000/06/08 06:14:18 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,413 +17,360 @@
 #  along with this program; if not, write to the Free Software
 #  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-EXITS = \
-        exits/stone.pcx \
-        exits/ice.pcx   \
-        exits/desertexit.pcx \
-        exits/space1.tga     \
-        exits/sweetexit.pcx  \
-        exits/sortie.pcx \
-        exits/sortie.tga
-
-EDITOR = \
-        editor/logo.tga           \
-        editor/button.pcx          \
-        editor/button_pressed.pcx  \
-        editor/tb_clock_run.pcx    \
-        editor/tb_copy.pcx         \
-        editor/tb_edit.pcx         \
-        editor/tb_exit.pcx         \
-        editor/tb_help.pcx         \
-        editor/tb_index.pcx        \
-        editor/tb_new.pcx          \
-        editor/tb_open.pcx         \
-        editor/tb_preferences.pcx  \
-        editor/tb_save.pcx         \
-        editor/tb_trash.pcx 
-
-TRAPS = \
-        traps/hammer.tga         \
-        traps/fake_exit.pcx      \
-        traps/smasher.tga        \
-        traps/smasher_cmap.pcx   \
-        traps/spike.pcx          \
-        traps/laser_exit.pcx     \
-        traps/guillotineidle.pcx \
-        traps/guillotinekill.pcx \
-	traps/teleporter.tga  \
-        traps/bumper.pcx \
-        traps/bumper_cmap.pcx
-
-HOTSPOTS = \
-        hotspots/left_arrow.pcx     \
-        hotspots/right_arrow.pcx    \
-        hotspots/up_arrow.pcx       \
-        hotspots/down_arrow.pcx     \
-        hotspots/danger.pcx         \
-        hotspots/bridge.pcx       \
-        hotspots/colum.pcx        \
-        hotspots/colum_flat.pcx   \
-        hotspots/colum_pice1.pcx  \
-        hotspots/colum_pice2.pcx  \
-        hotspots/colum_pice3.pcx  \
-        hotspots/cabin.pcx        \
-        hotspots/cabin_winter.pcx \
-        hotspots/dragon.pcx       \
-        hotspots/plate.pcx        \
-        hotspots/plate2.pcx       \
-        hotspots/pillar1.pcx      \
-        hotspots/pillar2.pcx      \
-        hotspots/pillar3.pcx      \
-        hotspots/plate.pcx        \
-        hotspots/plate2.pcx       \
-        hotspots/plate_small.pcx       \
-        hotspots/tree.pcx         \
-        hotspots/stone0.pcx       \
-        hotspots/stone1.pcx       \
-        hotspots/stone2.pcx       \
-        hotspots/well.pcx         \
-        hotspots/crystal.tga      \
-        \
-        hotspots/tutorial_digger.pcx \
-        hotspots/tutorial_bridger.pcx \
-        hotspots/tutorial_left.pcx   \
-        hotspots/tutorial_right.pcx
-
-BUTTONS = \
-        buttons/armageddon.tga      \
-        buttons/armageddon_anim.tga \
-        buttons/down.pcx            \
-        buttons/down.tga            \
-        buttons/editor.tga          \
-        buttons/editor_p.tga        \
-        buttons/fast_forward.tga    \
-        buttons/load.tga            \
-        buttons/load_p.tga          \
-        buttons/options.tga         \
-        buttons/options_p.tga       \
-        buttons/pause.tga           \
-        buttons/play.tga            \
-        buttons/play_p.tga          \
-        buttons/quit.tga            \
-        buttons/quit_p.tga          \
-        buttons/up.tga              \
-        buttons/worlds.tga            \
-        buttons/worlds_p.tga
-
-TEXTURES = \
-        textures/README          \
-        textures/stones.pcx      \
-        textures/rocktile.jpg    \
-        textures/rooftile.jpg    \
-        textures/crystal.jpg     \
-        textures/icetile.jpg     \
-        textures/lunartile.jpg   \
-        textures/rooftile2.jpg   \
-        textures/rockagglo.jpg   \
-        textures/stars.jpg       \
-        textures/blueflame.jpg   \
-        textures/flamebg.jpg     \
-        textures/anim_fire.jpg     \
-        textures/stone.jpg       \
-        textures/nightjungle.jpg     \
-        textures/latejungle.jpg      \
-        textures/darkjungle.jpg      \
-        textures/enchantedjungle.jpg \
-        textures/clouds.jpg          \
-        textures/happyclouds.jpg
-
-#        textures/greenjungle.pcx
-#        textures/solartile.jpg   
-
-PINGUS = \
-        pingus/explo.pcx      \
-        pingus/basher.pcx     \
-        pingus/blocker.pcx    \
-        pingus/bomber.pcx     \
-        pingus/bridger.pcx     \
-        pingus/bridgerl.pcx   \
-        pingus/bridger2.pcx   \
-        pingus/climber.pcx    \
-        pingus/digger.pcx      \
-        pingus/faller.pcx     \
-        pingus/floater.pcx   \
-        pingus/miner.pcx     \
-        pingus/stopper.pcx   \
-        pingus/tumble.pcx    \
-        pingus/walker.pcx    \
-        pingus/laser_kill.tga \
-        pingus/bash_radius.pcx   \
-        pingus/bomber_radius.pcx \
-        pingus/digger_radius.pcx \
-        pingus/xmas-walker.pcx
-
-FONTS = \
-        fonts/font.pcx           \
-        fonts/courier.pcx        \
-        fonts/courier_small.tga  \
-        fonts/courier_small2.tga \
-        fonts/courier_h.pcx      \
-        fonts/smallfont.pcx      \
-        fonts/smallfont_h.pcx    \
-        fonts/number_fnt.pcx     \
-        fonts/pingus2.tga        \
-        fonts/pingus_small3.tga       
-
-#        fonts/clanfont.pcx       \
-
-
-CURSORS = \
-        cursors/cursor.pcx  \
-        cursors/scroll.pcx  \
-        cursors/cap.tga      \
-        cursors/capwrong.tga \
-        cursors/arrow_left.pcx \
-        cursors/arrow_right.pcx \
-        cursors/cross.tga \
-        cursors/editor.pcx \
-        cursors/capture.tga
-
-ENTRANCES = \
-             entrances/woodthing_mov.pcx  \
-             entrances/woodthing_nmov.tga \
-             entrances/entrance.pcx       \
-             entrances/cloudent.pcx       
-
-#             entrances/gate.tga
-
-GROUNDPIECES = \
-               groundpieces/pipe1.pcx  \
-               groundpieces/pipe2.pcx  \
-               groundpieces/pipe3.pcx  \
-               groundpieces/pipe4.pcx  \
-               groundpieces/pipe5.pcx  \
-               groundpieces/pipe6.pcx  \
-               groundpieces/pipe7.pcx  \
-               groundpieces/pipe8.pcx  \
-               groundpieces/bpice4.pcx \
-               groundpieces/gpice2.pcx \
-               groundpieces/gpice6.pcx \
-               groundpieces/pipe2.pcx  \
-               groundpieces/bpice1.pcx \
-               groundpieces/bpice5.pcx \
-               groundpieces/gpice3.pcx \
-               groundpieces/green1.pcx \
-               groundpieces/bpice2.pcx \
-               groundpieces/bpice6.pcx \
-               groundpieces/gpice4.pcx \
-               groundpieces/green2.pcx \
-               groundpieces/bpice3.pcx \
-               groundpieces/gpice1.pcx \
-               groundpieces/gpice5.pcx \
-                                                      \
-               groundpieces/misc/bigprickpiece.pcx    \
-               groundpieces/misc/middleprickpiece.pcx \
-               groundpieces/misc/smallbrickpiece.pcx  \
-               groundpieces/misc/brick1.pcx \
-               groundpieces/misc/brick2.pcx \
-               groundpieces/misc/brick3.pcx \
-               groundpieces/misc/brick4.pcx \
-               groundpieces/misc/piece1.pcx \
-               groundpieces/misc/piece2.pcx \
-               groundpieces/misc/piece3.pcx \
-               groundpieces/misc/piece4.pcx \
-               groundpieces/misc/piece5.pcx \
-               groundpieces/misc/piece6.pcx \
-               groundpieces/misc/piece7.pcx \
-               groundpieces/misc/piece8.pcx \
-               groundpieces/misc/piece9.pcx \
-               groundpieces/misc/spike.pcx \
-               groundpieces/misc/stoneblock1.pcx \
-               groundpieces/misc/stoneblock2.pcx \
-               groundpieces/misc/stoneblock3.pcx \
-                                                      \
-               groundpieces/crystal/block.pcx         \
-               groundpieces/crystal/column.pcx        \
-               groundpieces/crystal/diagcrystal.pcx   \
-               groundpieces/crystal/hexcrystal.pcx    \
-               groundpieces/crystal/horiz.pcx         \
-               groundpieces/crystal/horiz2.pcx        \
-               groundpieces/crystal/pipe.pcx          \
-               groundpieces/crystal/pipeend.pcx       \
-               groundpieces/crystal/platform.pcx      \
-               groundpieces/crystal/platform2.pcx     \
-               groundpieces/crystal/pointleft.pcx     \
-               groundpieces/crystal/pointright.pcx    \
-               groundpieces/crystal/skinnycrystal.pcx \
-               groundpieces/crystal/smcrystal.pcx     \
-               groundpieces/crystal/tesselate.pcx     \
-                                                      \
-               groundpieces/snow/ice2.pcx             \
-               groundpieces/snow/ice1.pcx             \
-               groundpieces/snow/gpiece1.pcx          \
-               groundpieces/snow/slopedr.pcx          \
-               groundpieces/snow/piece1.pcx           \
-               groundpieces/snow/piece2.pcx           \
-               groundpieces/snow/piece3.pcx           \
-               groundpieces/snow/igloo.pcx            \
-               groundpieces/snow/snowman.pcx          \
-               groundpieces/snow/xmas-tree.pcx        \
-                                                      \
-               groundpieces/misc/pfosten.pcx          \
-               groundpieces/misc/way.pcx              \
-               groundpieces/misc/way_left.pcx         \
-               groundpieces/misc/way_right.pcx        \
-               groundpieces/misc/bridge1.pcx         \
-               groundpieces/weed1.pcx                 \
-               groundpieces/weed2.pcx                 \
-               groundpieces/tree.pcx                  \
-               groundpieces/misc/black.tga            \
-                                                      \
-               groundpieces/jungle/twist.pcx            \
-               groundpieces/jungle/twistsmooth.pcx      \
-               groundpieces/jungle/carabatree.pcx       \
-               groundpieces/jungle/carabatreemedium.pcx \
-               groundpieces/jungle/carabatreesmall.pcx  \
-               groundpieces/jungle/branch1.pcx          \
-               groundpieces/jungle/branch2.pcx          \
-               groundpieces/jungle/branch3.pcx          \
-               groundpieces/jungle/branch4.pcx          \
-               groundpieces/jungle/branch5.pcx          \
-               groundpieces/jungle/branch6.pcx          \
-               groundpieces/jungle/stick1.pcx           \
-               groundpieces/jungle/stick2.pcx           \
-               groundpieces/jungle/stick3.pcx           \
-               groundpieces/jungle/stick4.pcx           \
-               groundpieces/jungle/stick5.pcx           \
-                                                        \
-               groundpieces/foliage/flax1.pcx            \
-               groundpieces/foliage/flax2.pcx            \
-               groundpieces/foliage/midtree1.pcx         \
-               groundpieces/foliage/midtree2.pcx         \
-               groundpieces/foliage/oak1.pcx             \
-               groundpieces/foliage/smallbush.pcx        \
-               groundpieces/foliage/smallbush2.pcx       \
-               groundpieces/foliage/smallbush3.pcx       \
-               groundpieces/foliage/talltree.pcx         \
-               groundpieces/foliage/turfconcave.pcx      \
-               groundpieces/foliage/turfslopeleft20.pcx  \
-               groundpieces/foliage/turfsmallbump.pcx    \
-               groundpieces/foliage/turfflat.pcx         \
-               groundpieces/foliage/turfsloperight.pcx   \
-               groundpieces/foliage/turfsmallnook.pcx    \
-               groundpieces/foliage/turfslopeleft.pcx    \
-               groundpieces/foliage/turfsloperight20.pcx \
-               groundpieces/foliage/turftufty.pcx        \
-                                             \
-               groundpieces/rock/granit1.pcx  \
-               groundpieces/rock/granit2.pcx  \
-               groundpieces/rock/granit3.pcx  \
-               groundpieces/rock/granit4.pcx  \
-               groundpieces/rock/granit5.pcx  \
-               groundpieces/rock/granit6.pcx  \
-               \
-               groundpieces/rock/rock1.pcx  \
-               groundpieces/rock/rock2.pcx  \
-               groundpieces/rock/rock3.pcx  \
-               groundpieces/rock/rock4.pcx  \
-               groundpieces/rock/rock5.pcx  \
-               groundpieces/rock/rock6.pcx  \
-                                            \
-               groundpieces/test/test1.pcx  \
-               groundpieces/test/test2.pcx  \
-               groundpieces/test/test3.pcx  \
-               groundpieces/test/test4.pcx  \
-               groundpieces/test/test5.pcx  \
-                                            \
-               groundpieces/space/grid1.pcx \
-               groundpieces/space/grid2.pcx \
-               groundpieces/space/grid3.pcx \
-               groundpieces/space/block1.pcx \
-               groundpieces/space/tower1.pcx \
-               groundpieces/space/smalltower.pcx \
-               groundpieces/space/way.pcx \
-               \
-               groundpieces/sweets/allsort1.pcx \
-               groundpieces/sweets/allsort2.pcx \
-               groundpieces/sweets/aquachoc.pcx  \
-               groundpieces/sweets/canestalk.pcx  \
-               groundpieces/sweets/canestub.pcx  \
-               groundpieces/sweets/canetop.pcx  \
-               groundpieces/sweets/chocbar.pcx  \
-               groundpieces/sweets/chocbloc-lowleft.pcx  \
-               groundpieces/sweets/chocbloc-lowright.pcx  \
-               groundpieces/sweets/chocbloc-topleft.pcx  \
-               groundpieces/sweets/chocbloc-topright.pcx  \
-               groundpieces/sweets/chocbloc.pcx  \
-               groundpieces/sweets/icecream.pcx  \
-               groundpieces/sweets/jellybaby.tga  \
-               groundpieces/sweets/jellybaby2.tga  \
-               groundpieces/sweets/jube1.tga  \
-               groundpieces/sweets/jube2.tga  \
-               groundpieces/sweets/lollipop-purp.tga  \
-               groundpieces/sweets/lollipop.tga  \
-               groundpieces/sweets/mmblue.pcx    \
-               groundpieces/sweets/mmbrown.pcx   \
-               groundpieces/sweets/mmred.pcx     \
-               groundpieces/sweets/mmyellow.pcx  \
-               groundpieces/sweets/purplechoc.pcx \
-               \
-               groundpieces/mushroom/toadstool1.pcx \
-               groundpieces/mushroom/toadstool2.pcx \
-               groundpieces/mushroom/toadstool3.pcx \
-               groundpieces/mushroom/toadstool4.pcx \
-               \
-               groundpieces/sortie/column.pcx \
-               groundpieces/sortie/column2.pcx \
-               groundpieces/sortie/column3.pcx \
-               groundpieces/sortie/plate_forme.pcx \
-               groundpieces/sortie/plate_forme_left.pcx \
-               groundpieces/sortie/plate_forme_right.pcx \
-               \
-               groundpieces/desert/Sluggydu.pcx \
-               groundpieces/desert/blobdune.pcx \
-               groundpieces/desert/pillar1.pcx \
-               groundpieces/desert/pillar2.pcx \
-               groundpieces/desert/pillar3.pcx
-
-LIQUIDS = \
-          liquids/water.pcx  \
-          liquids/water2.pcx \
-          liquids/water3.pcx \
-          liquids/water4.tga \
-          liquids/water3.tga \
-          liquids/swater.pcx \
-          liquids/water_cmap.pcx \
-          liquids/lava.pcx
-
-PARTICLES = \
-            particles/particle.pcx \
-            particles/ground.tga   \
-            particles/smoke.tga
-
-MISC = \
-       misc/cap.pcx      \
-       misc/capwrong.pcx \
-       misc/brick.pcx    \
-       misc/logo.tga     \
-       misc/loading.pcx  \
-       misc/pingubw.pcx  \
-       misc/brick_right.pcx \
-       misc/brick_left.pcx \
-       misc/smallmap_entrance.pcx \
-       misc/smallmap_exit.pcx
-
-THEMES = \
-         themes/crystal.pcx \
-         themes/xmas99.tga  \
-         themes/tutorial.tga \
-         themes/space.tga
-
-STORY = \
-        story/story1.jpg \
-        story/story2.jpg \
-        story/story3.jpg \
-        story/story0.jpg
+# Trying to get all the image names out of the .scr files...
 
 EXTRA_DIST = \
-             $(EXITS) $(TRAPS) $(BUTTONS) $(TEXTURES) $(PINGUS)   \
-             $(FONTS) $(CURSORS) $(HOTSPOTS) $(GROUNDPIECES)      \
-             $(ENTRANCES) $(LIQUIDS) $(PARTICLES) \
-             $(MISC) $(THEMES) $(EDITOR) $(STORY)
+editor/tb_copy.pcx \
+editor/tb_new.pcx \
+editor/tb_open.pcx \
+editor/tb_save.pcx \
+editor/tb_exit.pcx \
+editor/tb_clock_run.pcx \
+editor/tb_edit.pcx \
+editor/tb_preferences.pcx \
+editor/tb_help.pcx \
+editor/tb_trash.pcx \
+editor/tb_index.pcx \
+editor/button.pcx \
+editor/button_pressed.pcx \
+editor/logo.tga \
+fonts/font.pcx \
+fonts/number_fnt.pcx \
+fonts/courier.pcx \
+fonts/courier_h.pcx \
+fonts/smallfont.pcx \
+fonts/smallfont_h.pcx \
+fonts/courier_small2.tga \
+fonts/pingus2.tga \
+fonts/pingus_small3.tga \
+misc/logo.tga \
+misc/loading.pcx \
+misc/pingubw.pcx \
+cursors/editor.pcx \
+cursors/cursor.pcx \
+cursors/scroll.pcx \
+cursors/cap.tga \
+cursors/capwrong.tga \
+cursors/cross.tga \
+cursors/arrow_right.pcx \
+cursors/arrow_left.pcx \
+misc/smallmap_entrance.pcx \
+misc/smallmap_exit.pcx \
+liquids/water_cmap.pcx \
+liquids/water.pcx \
+liquids/water2.pcx \
+liquids/water3.pcx \
+liquids/water4.tga \
+liquids/water3.tga \
+liquids/swater.pcx \
+liquids/lava.pcx \
+buttons/down.pcx \
+buttons/armageddon_anim.tga \
+buttons/fast_forward.tga \
+buttons/pause.tga \
+pingus/bomber.pcx \
+pingus/basher.pcx \
+pingus/climber.pcx \
+pingus/faller.pcx \
+pingus/tumble.pcx \
+pingus/bridger.pcx \
+pingus/walker.pcx \
+pingus/blocker.pcx \
+pingus/floater.pcx \
+pingus/digger.pcx \
+pingus/miner.pcx \
+buttons/up.tga \
+buttons/down.tga \
+hotspots/left_arrow.pcx \
+hotspots/right_arrow.pcx \
+hotspots/up_arrow.pcx \
+hotspots/down_arrow.pcx \
+hotspots/danger.pcx \
+hotspots/crystal.tga \
+hotspots/tree.pcx \
+groundpieces/weed1.pcx \
+groundpieces/weed2.pcx \
+hotspots/colum.pcx \
+hotspots/colum_flat.pcx \
+hotspots/colum_pice1.pcx \
+hotspots/colum_pice2.pcx \
+hotspots/colum_pice3.pcx \
+hotspots/bridge.pcx \
+hotspots/stone0.pcx \
+hotspots/stone1.pcx \
+hotspots/stone2.pcx \
+hotspots/cabin.pcx \
+hotspots/cabin_winter.pcx \
+hotspots/dragon.pcx \
+hotspots/pillar1.pcx \
+hotspots/pillar2.pcx \
+hotspots/pillar3.pcx \
+hotspots/well.pcx \
+hotspots/plate.pcx \
+hotspots/plate2.pcx \
+hotspots/plate_small.pcx \
+hotspots/tutorial_digger.pcx \
+hotspots/tutorial_bridger.pcx \
+hotspots/tutorial_left.pcx \
+hotspots/tutorial_right.pcx \
+exits/ice.pcx \
+exits/stone.pcx \
+exits/desertexit.pcx \
+exits/space1.tga \
+exits/sweetexit.pcx \
+exits/sortie.pcx \
+exits/sortie.tga \
+entrances/entrance.pcx \
+entrances/woodthing_nmov.tga \
+entrances/woodthing_mov.pcx \
+entrances/cloudent.pcx \
+groundpieces/bpice1.pcx \
+groundpieces/bpice2.pcx \
+groundpieces/bpice3.pcx \
+groundpieces/bpice4.pcx \
+groundpieces/bpice5.pcx \
+groundpieces/bpice6.pcx \
+groundpieces/gpice1.pcx \
+groundpieces/gpice2.pcx \
+groundpieces/gpice3.pcx \
+groundpieces/gpice4.pcx \
+groundpieces/gpice5.pcx \
+groundpieces/green1.pcx \
+groundpieces/green2.pcx \
+groundpieces/pipe1.pcx \
+groundpieces/pipe2.pcx \
+groundpieces/pipe4.pcx \
+groundpieces/pipe5.pcx \
+groundpieces/pipe3.pcx \
+groundpieces/pipe3.pcx \
+groundpieces/pipe3.pcx \
+groundpieces/pipe3.pcx \
+groundpieces/tree.pcx \
+groundpieces/jungle/branch1.pcx \
+groundpieces/jungle/branch2.pcx \
+groundpieces/jungle/branch3.pcx \
+groundpieces/jungle/branch4.pcx \
+groundpieces/jungle/branch5.pcx \
+groundpieces/jungle/branch6.pcx \
+groundpieces/jungle/carabatree.pcx \
+groundpieces/jungle/carabatreemedium.pcx \
+groundpieces/jungle/carabatreesmall.pcx \
+groundpieces/jungle/twist.pcx \
+groundpieces/jungle/twist.pcx \
+groundpieces/jungle/stick1.pcx \
+groundpieces/jungle/stick2.pcx \
+groundpieces/jungle/stick3.pcx \
+groundpieces/jungle/stick4.pcx \
+groundpieces/jungle/stick5.pcx \
+groundpieces/crystal/block.pcx \
+groundpieces/crystal/column.pcx \
+groundpieces/crystal/diagcrystal.pcx \
+groundpieces/crystal/hexcrystal.pcx \
+groundpieces/crystal/horiz.pcx \
+groundpieces/crystal/horiz2.pcx \
+groundpieces/crystal/pipe.pcx	 \
+groundpieces/crystal/pipeend.pcx \
+groundpieces/crystal/platform.pcx \
+groundpieces/crystal/platform2.pcx \
+groundpieces/crystal/pointleft.pcx \
+groundpieces/crystal/pointright.pcx \
+groundpieces/crystal/skinnycrystal.pcx \
+groundpieces/crystal/smcrystal.pcx \
+groundpieces/crystal/tesselate.pcx \
+groundpieces/snow/snowman.pcx \
+groundpieces/snow/xmas-tree.pcx \
+groundpieces/snow/piece1.pcx \
+groundpieces/snow/slopedr.pcx \
+groundpieces/snow/piece2.pcx \
+groundpieces/snow/piece3.pcx \
+groundpieces/snow/ice1.pcx \
+groundpieces/snow/ice2.pcx \
+groundpieces/snow/igloo.pcx \
+groundpieces/snow/gpiece1.pcx \
+groundpieces/rock/granit1.pcx \
+groundpieces/rock/granit2.pcx \
+groundpieces/rock/granit3.pcx \
+groundpieces/rock/granit4.pcx \
+groundpieces/rock/granit5.pcx \
+groundpieces/rock/granit6.pcx \
+groundpieces/rock/rock1.pcx \
+groundpieces/rock/rock2.pcx \
+groundpieces/rock/rock3.pcx \
+groundpieces/rock/rock4.pcx \
+groundpieces/rock/rock5.pcx \
+groundpieces/rock/rock6.pcx \
+groundpieces/test/test1.pcx \
+groundpieces/test/test2.pcx \
+groundpieces/test/test3.pcx \
+groundpieces/test/test4.pcx \
+groundpieces/test/test5.pcx \
+groundpieces/foliage/flax1.pcx \
+groundpieces/foliage/flax2.pcx \
+groundpieces/foliage/midtree1.pcx \
+groundpieces/foliage/midtree2.pcx \
+groundpieces/foliage/oak1.pcx \
+groundpieces/foliage/smallbush.pcx \
+groundpieces/foliage/smallbush2.pcx \
+groundpieces/foliage/smallbush3.pcx \
+groundpieces/foliage/talltree.pcx \
+groundpieces/foliage/turfconcave.pcx \
+groundpieces/foliage/turfflat.pcx \
+groundpieces/foliage/turfslopeleft.pcx \
+groundpieces/foliage/turfslopeleft20.pcx \
+groundpieces/foliage/turfsloperight.pcx \
+groundpieces/foliage/turfsloperight20.pcx \
+groundpieces/foliage/turfsmallbump.pcx \
+groundpieces/foliage/turfsmallnook.pcx \
+groundpieces/foliage/turftufty.pcx \
+groundpieces/mushroom/toadstool1.pcx \
+groundpieces/mushroom/toadstool2.pcx \
+groundpieces/mushroom/toadstool3.pcx \
+groundpieces/mushroom/toadstool4.pcx \
+groundpieces/sweets/allsort1.pcx \
+groundpieces/sweets/allsort2.pcx \
+groundpieces/sweets/aquachoc.pcx \
+groundpieces/sweets/canestalk.pcx \
+groundpieces/sweets/canestub.pcx \
+groundpieces/sweets/canetop.pcx \
+groundpieces/sweets/chocbar.pcx \
+groundpieces/sweets/chocbloc-lowleft.pcx \
+groundpieces/sweets/chocbloc-lowright.pcx \
+groundpieces/sweets/chocbloc-topleft.pcx \
+groundpieces/sweets/chocbloc-topright.pcx \
+groundpieces/sweets/chocbloc.pcx \
+groundpieces/sweets/icecream.pcx \
+groundpieces/sweets/mmblue.pcx \
+groundpieces/sweets/mmbrown.pcx \
+groundpieces/sweets/mmred.pcx \
+groundpieces/sweets/mmyellow.pcx \
+groundpieces/sweets/purplechoc.pcx \
+groundpieces/sweets/jellybaby.tga \
+groundpieces/sweets/jellybaby2.tga \
+groundpieces/sweets/jube1.tga \
+groundpieces/sweets/jube2.tga \
+groundpieces/sweets/lollipop-purp.tga \
+groundpieces/sweets/lollipop.tga \
+groundpieces/misc/black.tga \
+groundpieces/misc/bridge1.pcx \
+groundpieces/misc/way.pcx \
+groundpieces/misc/way_left.pcx \
+groundpieces/misc/way_right.pcx \
+groundpieces/misc/spike.pcx \
+groundpieces/misc/bigprickpiece.pcx \
+groundpieces/misc/middleprickpiece.pcx \
+groundpieces/misc/smallbrickpiece.pcx \
+groundpieces/misc/piece1.pcx \
+groundpieces/misc/piece2.pcx \
+groundpieces/misc/piece3.pcx \
+groundpieces/misc/piece4.pcx \
+groundpieces/misc/piece5.pcx \
+groundpieces/misc/piece6.pcx \
+groundpieces/misc/piece7.pcx \
+groundpieces/misc/piece8.pcx \
+groundpieces/misc/piece9.pcx \
+groundpieces/misc/brick1.pcx \
+groundpieces/misc/brick2.pcx \
+groundpieces/misc/brick3.pcx \
+groundpieces/misc/brick4.pcx \
+groundpieces/misc/stoneblock1.pcx \
+groundpieces/misc/stoneblock2.pcx \
+groundpieces/misc/stoneblock3.pcx \
+groundpieces/misc/pfosten.pcx \
+groundpieces/space/grid1.pcx \
+groundpieces/space/grid2.pcx \
+groundpieces/space/grid3.pcx \
+groundpieces/space/block1.pcx \
+groundpieces/space/tower1.pcx \
+groundpieces/space/smalltower.pcx \
+groundpieces/space/way.pcx \
+groundpieces/desert/Sluggydu.pcx \
+groundpieces/desert/blobdune.pcx \
+groundpieces/desert/pillar1.pcx \
+groundpieces/desert/pillar2.pcx \
+groundpieces/desert/pillar3.pcx \
+groundpieces/sortie/column.pcx \
+groundpieces/sortie/column2.pcx \
+groundpieces/sortie/column3.pcx \
+groundpieces/sortie/plate_forme.pcx \
+groundpieces/sortie/plate_forme_left.pcx \
+groundpieces/sortie/plate_forme_right.pcx \
+themes/crystal.pcx \
+themes/xmas99.tga \
+themes/tutorial.tga \
+themes/space.tga \
+buttons/editor.tga \
+buttons/editor_p.tga \
+buttons/load.tga \
+buttons/load_p.tga \
+buttons/quit.tga \
+buttons/quit_p.tga \
+buttons/play.tga \
+buttons/play_p.tga \
+buttons/options.tga \
+buttons/options_p.tga \
+buttons/worlds.tga \
+buttons/worlds_p.tga \
+pingus/bomber.pcx \
+pingus/basher.pcx \
+pingus/climber.pcx \
+pingus/faller.pcx \
+pingus/faller.pcx \
+pingus/tumble.pcx \
+pingus/bridgerl.pcx \
+pingus/walker.pcx \
+pingus/blocker.pcx \
+pingus/floater.pcx \
+pingus/digger.pcx \
+pingus/miner.pcx \
+pingus/splash.pcx \
+pingus/splash_debris.pcx \
+misc/brick_right.pcx \
+misc/brick_left.pcx \
+pingus/bash_radius.pcx \
+pingus/digger_radius.pcx \
+pingus/bomber_radius.pcx \
+pingus/explo.pcx \
+pingus/laser_kill.tga \
+pingus/xmas-walker.pcx \
+particles/particle.pcx \
+particles/ground.tga \
+particles/smoke.tga \
+particles/smoke2.tga \
+story/story1.jpg \
+story/story2.jpg \
+story/story3.jpg \
+textures/clouds.jpg \
+textures/crystal.jpg \
+textures/stones.pcx \
+textures/rocktile.jpg \
+textures/rooftile.jpg \
+textures/rooftile2.jpg \
+textures/rockagglo.jpg \
+textures/icetile.jpg \
+textures/lunartile.jpg \
+textures/blueflame.jpg \
+textures/stone.jpg \
+textures/flamebg.jpg \
+textures/anim_fire.jpg \
+textures/stars.jpg \
+textures/enchantedjungle.jpg \
+textures/darkjungle.jpg \
+textures/latejungle.jpg \
+textures/nightjungle.jpg \
+textures/happyclouds.jpg \
+traps/smasher.tga \
+traps/smasher_cmap.pcx \
+traps/hammer.tga \
+traps/fake_exit.pcx \
+traps/spike.pcx \
+traps/guillotinekill.pcx \
+traps/guillotineidle.pcx \
+traps/laser_exit.pcx \
+traps/teleporter.tga \
+traps/bumper.pcx \
+traps/bumper_cmap.pcx
 
+
+# cat ../data/*.scr | sed -n "s/^[ 	]*[A-Za-z0-9_]*[ 	]*=[ 	]*\([^ ]*\) (.*);/\1/p"
+
+## EOF ##

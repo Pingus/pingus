@@ -12,10 +12,7 @@ section Fonts
 	smallfont_h = ../images/fonts/smallfont_h.pcx (type=font, x=1, y=1, tcol=0, spacelen=8, letters="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890_-\/=[]().,");
 //	clanfont  = ../images/fonts/clanfont.pcx (type=font, x=129, y=209, tcol=0, spacelen=6, letters=ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789);
 
-	courier_small = ../images/fonts/courier_small2.tga (type=font,
-					                    spacelen=8,
-					   		    trans_limit=0.25,
-                                    				subtract_width=0,letters="!""#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~");
+	courier_small = ../images/fonts/courier_small2.tga (type=font, spacelen=8, trans_limit=0.25, subtract_width=0,letters="!""#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~");
 
 	pingus = ../images/fonts/pingus2.tga (type=font, spacelen=8, trans_limit=0.25, subtract_width=0,letters="!""#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~");
 	pingus_small = ../images/fonts/pingus_small3.tga (type=font, spacelen=8, trans_limit=0.25, subtract_width=0,letters="!""#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~");

@@ -1,4 +1,4 @@
-//   $Id: Pingus.cc,v 1.27 2000/05/26 18:00:18 grumbel Exp $
+//   $Id: Pingus.cc,v 1.28 2000/06/08 06:14:19 grumbel Exp $
 //    ___
 //   |  _\ A free Lemmings clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -550,6 +550,13 @@ PingusMain::get_filenames()
 	    std::cout << "Assuming that you haven't installed pingus, overriding current value." << std::endl;
 	
 	  pingus_datadir += ":../data/";
+	}
+      else if (System::exist("./data/data/global.dat"))
+	{
+	  if (verbose > 1)
+	    std::cout << "Assuming that you are running the binary version" << std::endl;
+	
+	  pingus_datadir += ":./data/"; 
 	}
 
       if (!pingus_datadir_set) 

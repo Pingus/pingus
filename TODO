@@ -1,5 +1,7 @@
 Release Critical:
 ~~~~~~~~~~~~~~~~~
+ o check for ./configure --disable-sound
+ o bottom tile isn't draw (foliage1.plf)
  o many segfaults when quitting the game
  o Basher doesn't care about solid objects
  o Change the config file syntax
@@ -9,7 +11,6 @@ Release Critical:
    1. Creation of main game components
    2. other important game events
    3. Loading of data
- o Level replay should be possible without reloading
  o Bridger, if in waiting state, can recive another new action
  o Editor doesn't handle entrance direction!!
  o Segfault when the quit button is pressed
@@ -21,11 +22,12 @@ Release Critical:
  o Segfaults in CL_MouseCursor...?!
  o basher isn't falling if he goes over a hole in the ground
  o Splashed can be captured.
+ o Bombers with unlimited actions turn crazy
  o z_pos handlig im editor braucht nen fix
  o miner doesn't dick to the complete ground, some pixel are left.
  o QuickPlay sollte den Level anzeigen, bzw entfernt werden.
  o Standard World braucht hoeheren feuer-hintergrund.
- o Jumper hacken sich fest
+ o Jumper harken sich fest
  o glibc2.1 as requirement auf Pingus site
 
 Probably fixed:
@@ -41,8 +43,10 @@ Probably fixed:
 
 Wishlist:
 ~~~~~~~~~
+ o Level replay should be possible without reloading
  o Limit liquids to multiples of width, get rid of cliprect stuff
  o Demo Mode/automatisches abspielen von demos 
+ o put_target() with alpha channel doesn't work (opace blits)
  o Extrem kleine Maps klappen nicht (overdrawing)
  o ButtonPanel needs to be rewritten/redesigned.
  o Hotkeys fuers Main menu.
@@ -155,6 +159,6 @@ DOOR.WAV      MOUSEPRE.WAV  OING.WAV	     THUD.WAV
 
 
 
-$Date: 2000/05/28 19:54:05 $
+$Date: 2000/06/08 06:14:18 $
 
 -= EOF =-

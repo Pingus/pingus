@@ -181,7 +181,7 @@ section GroundPieces
 	section Snow 
 	{
 		snowman   = ../images/groundpieces/snow/snowman.pcx  (type=surface, x=0, y=0, width=67,  height=110, tcol=0);
-		xmas-tree = ../images/groundpieces/snow/xmas-tree.pcx  (type=surface, x=0, y=0, width=74,  height=98, tcol=0);
+		xmas-tree = ../images/groundpieces/snow/xmas-tree.pcx (type=surface, x=0, y=0, width=74,  height=98, tcol=0);
 		piece1    = ../images/groundpieces/snow/piece1.pcx  (type=surface, x=0, y=0, width=126,  height=73, tcol=0);
 		slopedr = ../images/groundpieces/snow/slopedr.pcx (type=surface, x=0, y=0, width=126, height=73, tcol=0);
 
