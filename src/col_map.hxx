@@ -1,4 +1,4 @@
-//  $Id: col_map.hxx,v 1.3 2002/06/25 17:05:25 grumbel Exp $
+//  $Id: col_map.hxx,v 1.4 2002/06/25 18:15:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -47,23 +47,6 @@ private:
   bool    init;
   
 public:
-  /** Each pixel contains of bit vector... 
-      (FIXME: difference between PixelStatus and GroundpieceData::GPType?!)
-
-      Answer: a GroundpieceData::GPType defines how a pingu behaves
-      when hitting the ground type, aposed to that the PixelStatus
-      mainly handles how the blitting is handled.      
-   */
-  enum PixelStatus { 
-	 NOTHING     = 0,
-	 WALL        = 1<<0,
-	 OUTOFSCREEN = 1<<1,
-	 BRIDGE      = 1<<2,
-	 SOLID       = 1<<3,
-	 WATER       = 1<<4,
-	 LAVA        = 1<<5
-  };
-
   /// Default constructor, it does nothing
   ColMap();
 
@@ -94,7 +77,7 @@ public:
   /** Return true if the given GroundType i*/
   bool blit_allowed (int x, int y,  GroundpieceData::GPType);
 
-  void put(int x, int y, PixelStatus p = WALL);
+  void put(int x, int y, GroundpieceData::GPType p = GroundpieceData::GP_GROUND);
   void put(const CL_Surface&, int x, int y, GroundpieceData::GPType);
   void put(CL_SurfaceProvider*, int x, int y, GroundpieceData::GPType);
 

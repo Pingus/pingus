@@ -1,4 +1,4 @@
-//  $Id: blocker.cxx,v 1.1 2002/06/12 19:01:42 grumbel Exp $
+//  $Id: blocker.cxx,v 1.2 2002/06/25 18:15:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -40,12 +40,14 @@ Blocker::init(void)
 
   is_finished = false;
 
-  if (rel_getpixel(0,-1) == ColMap::NOTHING && rel_getpixel(0, -2) == ColMap::WALL) 
+  if (rel_getpixel(0,-1)     ==  GroundpieceData::GP_NOTHING
+      && rel_getpixel(0, -2) ==  GroundpieceData::GP_GROUND)
     {
       ++pingu->pos.x;
     } 
-  else if (rel_getpixel(0,-1) == ColMap::NOTHING && rel_getpixel(0, -2) == ColMap::NOTHING
-	   && rel_getpixel(0,-3) == ColMap::WALL) 
+  else if (rel_getpixel(0,-1) ==  GroundpieceData::GP_NOTHING
+	   && rel_getpixel(0, -2) ==  GroundpieceData::GP_NOTHING
+	   && rel_getpixel(0,-3) ==  GroundpieceData::GP_GROUND)
     {
       ++pingu->pos.y;
       ++pingu->pos.y;
@@ -70,7 +72,7 @@ Blocker::draw_offset(int x, int y, float /*s*/)
 bool
 Blocker::standing_on_ground()
 {
-  return (rel_getpixel(0,-1) != ColMap::NOTHING);
+  return (rel_getpixel(0,-1) !=  GroundpieceData::GP_NOTHING);
 }
 
 bool

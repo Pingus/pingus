@@ -1,4 +1,4 @@
-//  $Id: spot_map.cxx,v 1.4 2002/06/20 16:48:11 grumbel Exp $
+//  $Id: spot_map.cxx,v 1.5 2002/06/25 18:15:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -402,7 +402,7 @@ PingusSpotMap::put_alpha_surface(CL_Canvas* provider, CL_SurfaceProvider* sprovi
 	    {
 	      if (pingus_debug_flags & PINGUS_DEBUG_ACTIONS)
 		{
-		  if (!(colmap->getpixel(real_x, real_y) & ColMap::SOLID)) 
+		  if (!(colmap->getpixel(real_x, real_y) == GroundpieceData::GP_SOLID)) 
 		    {
 		      tbuffer[i + 0] = 255;
 		      tbuffer[i + 1] = 255;
@@ -419,7 +419,7 @@ PingusSpotMap::put_alpha_surface(CL_Canvas* provider, CL_SurfaceProvider* sprovi
 		}
 	      else
 		{
-		  if (!(colmap->getpixel(real_x, real_y) & ColMap::SOLID))
+		  if (!(colmap->getpixel(real_x, real_y) == GroundpieceData::GP_SOLID))
 		    {
 		      tbuffer[i + 0] = 0;		      
 		    }
@@ -512,7 +512,7 @@ PingusSpotMap::get_colmap(void)
       }
       for(int i=0; i < width * height; ++i) 
 	{
-	  buffer[i] = 0;
+	  buffer[i] = GroundpieceData::GP_NOTHING;
 	}
       
       if (verbose) std::cout << "done " << timer.stop() << std::endl;

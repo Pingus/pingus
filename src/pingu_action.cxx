@@ -1,4 +1,4 @@
-//  $Id: pingu_action.cxx,v 1.3 2002/06/21 07:45:35 grumbel Exp $
+//  $Id: pingu_action.cxx,v 1.4 2002/06/25 18:15:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -78,7 +78,7 @@ PinguAction::head_collision_on_walk (int x, int y)
 {
   int pixel = rel_getpixel(x, y + pingu_height);
 
-  if (pixel != ColMap::NOTHING && !(pixel & ColMap::BRIDGE))
+  if (pixel != GroundpieceData::GP_NOTHING && !(pixel &  GroundpieceData::GP_BRIDGE))
     return true;
 
   return false;

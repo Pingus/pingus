@@ -1,4 +1,4 @@
-// $Id: miner.cxx,v 1.3 2002/06/25 17:05:25 grumbel Exp $
+// $Id: miner.cxx,v 1.4 2002/06/25 18:15:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -67,7 +67,7 @@ Miner::update(float delta)
       pingu->pos.y += 1;
     }
   
-  if (rel_getpixel(0, -1) == ColMap::NOTHING)
+  if (rel_getpixel(0, -1) ==  GroundpieceData::GP_NOTHING)
     {
       pingu->get_world()->get_colmap()->remove(miner_radius, 
 					       pingu->get_x () - 16 + pingu->direction, 
@@ -77,7 +77,7 @@ Miner::update(float delta)
 						pingu->get_y () - 29);
       is_finished = true;
     }
-  else if (rel_getpixel(0, -1) == ColMap::SOLID)
+  else if (rel_getpixel(0, -1) ==  GroundpieceData::GP_SOLID)
     {
       PingusSound::play_sound("sounds/chink.wav");
       pingu->get_world()->get_colmap()->remove(miner_radius, pingu->get_x () - 16 + pingu->direction, 

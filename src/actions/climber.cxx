@@ -1,4 +1,4 @@
-//  $Id: climber.cxx,v 1.3 2002/06/25 17:05:25 grumbel Exp $
+//  $Id: climber.cxx,v 1.4 2002/06/25 18:15:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -57,16 +57,16 @@ Climber::update(float delta)
   sprite.update(delta);
 
   // If above is free
-  if (rel_getpixel(0, 1) == ColMap::NOTHING
-      || rel_getpixel (0, 1) == ColMap::BRIDGE)
+  if (rel_getpixel(0, 1) ==  GroundpieceData::GP_NOTHING
+      || rel_getpixel (0, 1) ==  GroundpieceData::GP_BRIDGE)
     {
       // and there is still ground to walk on
-      if (rel_getpixel(1, 1) != ColMap::NOTHING) 
+      if (rel_getpixel(1, 1) !=  GroundpieceData::GP_NOTHING) 
 	{
 	  --pingu->pos.y;
 	  return;
 	}
-      else if (rel_getpixel(1, 1) == ColMap::NOTHING) 
+      else if (rel_getpixel(1, 1) ==  GroundpieceData::GP_NOTHING) 
 	{
 	  //  std::cout << "Climber failed, no more wall" << std::endl;
 

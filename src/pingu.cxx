@@ -1,4 +1,4 @@
-//  $Id: pingu.cxx,v 1.11 2002/06/25 17:05:25 grumbel Exp $
+//  $Id: pingu.cxx,v 1.12 2002/06/25 18:15:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,9 +41,9 @@ Pingu::Pingu(const CL_Vector& arg_pos, int owner)
     countdown_action (0),
     id (++id_counter),
     font (PingusResource::load_font("Fonts/numbers", "fonts")),
+    owner_id (owner),
     environment (ENV_LAND),
     status (PS_ALIVE),
-    owner_id (owner),
     pos (arg_pos)
 {
   action_time = -1;
@@ -248,7 +248,8 @@ void
 Pingu::update_persistent(float /*delta*/)
 {
   // set floater action if required
-  if (environment == ENV_AIR && action->get_type() != (ActionType)FALL && rel_getpixel(0, -1) == ColMap::NOTHING) 
+  if (environment == ENV_AIR
+      && action->get_type() != (ActionType)FALL && rel_getpixel(0, -1) == GroundpieceData::GP_NOTHING) 
     {
       for (unsigned int i=0; i < persist.size(); ++i) 
 	{
@@ -273,7 +274,7 @@ Pingu::update(float delta)
   // FIXME: Out of screen check is ugly
   /** The Pingu has hit the edge of the screen, a good time to let him
       die. */
-  if (rel_getpixel(0, -1) == ColMap::OUTOFSCREEN) 
+  if (rel_getpixel(0, -1) == GroundpieceData::GP_OUTOFSCREEN) 
     {
       PingusSound::play_sound("sounds/die.wav");
       status = PS_DEAD;
@@ -303,7 +304,7 @@ void
 Pingu::update_action(float /*delta*/)
 {
   pout(PINGUS_DEBUG_ACTIONS) << "Pingu: No action set, setting action." << std::endl;
-  if (rel_getpixel(0,-1) == ColMap::NOTHING)
+  if (rel_getpixel(0,-1) == GroundpieceData::GP_NOTHING)
     set_action("faller");
   else
     set_action("walker");

@@ -1,4 +1,4 @@
-//  $Id: basher.cxx,v 1.5 2002/06/25 17:05:25 grumbel Exp $
+//  $Id: basher.cxx,v 1.6 2002/06/25 18:15:18 grumbel Exp $
 //
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -90,7 +90,7 @@ Basher::bash()
 void
 Basher::walk_forward()
 {
-  if (rel_getpixel(0, -1) == ColMap::NOTHING) {
+  if (rel_getpixel(0, -1) ==  GroundpieceData::GP_NOTHING) {
     // We ar e in the air... lets fall...
     is_finished = true;
   } else {
@@ -115,7 +115,7 @@ Basher::have_something_to_dig()
       // up to head collision height.
       for (int j = bash_height + 1; j <= 26; j++)
         {
-          if (rel_getpixel(i,j) == ColMap::WALL)
+          if (rel_getpixel(i,j) == GroundpieceData::GP_GROUND)
 	    {
 	      pout(PINGUS_DEBUG_ACTIONS) << "Basher: Found something to dig..." << std::endl;
 	      return true;

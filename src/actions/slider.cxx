@@ -1,4 +1,4 @@
-//  $Id: slider.cxx,v 1.1 2002/06/12 19:01:42 grumbel Exp $
+//  $Id: slider.cxx,v 1.2 2002/06/25 18:15:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -49,7 +49,7 @@ Slider::update(float delta)
     {
       pingu->pos.x += pingu->direction;
       
-      if (rel_getpixel(0, -1) == ColMap::NOTHING)
+      if (rel_getpixel(0, -1) ==  GroundpieceData::GP_NOTHING)
 	{
 	  speed = (speed > 5 ? 5 : speed);
 

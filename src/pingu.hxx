@@ -1,4 +1,4 @@
-//  $Id: pingu.hxx,v 1.4 2002/06/24 22:52:55 grumbel Exp $
+//  $Id: pingu.hxx,v 1.5 2002/06/25 18:15:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -76,8 +76,8 @@ public:
 
   // The stat of the pingu, these can be modified by PinguActions
   
-  PinguStatus status;
   PinguEnvironment environment;
+  PinguStatus status;
   /// The postion of the pingu (CL_Vector::z is always zero)
   CL_Vector pos;
   Direction direction;

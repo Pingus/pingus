@@ -1,4 +1,4 @@
-//  $Id: bridger.cxx,v 1.3 2002/06/24 09:40:59 grumbel Exp $
+//  $Id: bridger.cxx,v 1.4 2002/06/25 18:15:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -164,7 +164,7 @@ Bridger::update_build (float delta)
 bool
 Bridger::way_is_free()
 {
-  return (rel_getpixel(4,2) == ColMap::NOTHING)
+  return (rel_getpixel(4,2) ==  GroundpieceData::GP_NOTHING)
     && !head_collision_on_walk(4, 2)
     && !head_collision_on_walk(8, 4);
 }

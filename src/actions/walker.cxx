@@ -1,4 +1,4 @@
-//  $Id: walker.cxx,v 1.6 2002/06/25 17:05:25 grumbel Exp $
+//  $Id: walker.cxx,v 1.7 2002/06/25 18:15:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -63,7 +63,7 @@ Walker::update(float delta)
   // FIXME: pingu environment needs to get reviewed
   pingu->environment = ENV_LAND;
 
-  if (rel_getpixel(0, -1) == ColMap::WATER)
+  if (rel_getpixel(0, -1) ==  GroundpieceData::GP_WATER)
     {
       pingu->set_paction ("drown");
       return;
@@ -71,7 +71,7 @@ Walker::update(float delta)
 
   // The Pingu stands no longer on ground, the cause for this could be
   // a digger, miner or a bomber
-  if (rel_getpixel(0, -1) == ColMap::NOTHING)
+  if (rel_getpixel(0, -1) ==  GroundpieceData::GP_NOTHING)
     { 
       // We search for the nearest ground below the pingu, if we can't
       // find anything within a few pixels, we will turn into a faller
@@ -79,7 +79,7 @@ Walker::update(float delta)
       int i;
       for (i = -2; i > -5; --i)
 	{
-	  if (!(rel_getpixel(0, i) == ColMap::NOTHING))
+	  if (!(rel_getpixel(0, i) == GroundpieceData::GP_NOTHING))
 	    {
 	      found_ground = true;
 	      break;
@@ -98,7 +98,7 @@ Walker::update(float delta)
     }
 
   
-  if (rel_getpixel(1, 0) == ColMap::BRIDGE
+  if (rel_getpixel(1, 0) == GroundpieceData::GP_BRIDGE
       && !head_collision_on_walk(1, 1))  // bridge
     {
       // simple, stupid, but working bridge code
@@ -122,8 +122,8 @@ Walker::update(float delta)
       int y_inc = 0;
       bool found_next_step = false;
        for(y_inc=-max_steps; y_inc <= max_steps; y_inc++) // up-hill
-	if (rel_getpixel(1, y_inc) == ColMap::NOTHING
-	    && rel_getpixel(1, y_inc - 1) != ColMap::NOTHING)
+	if (rel_getpixel(1, y_inc) ==  GroundpieceData::GP_NOTHING
+	    && rel_getpixel(1, y_inc - 1) !=  GroundpieceData::GP_NOTHING)
 	  {
 	    found_next_step = true;
 	    break;
@@ -136,7 +136,7 @@ Walker::update(float delta)
 	}
       else
 	{
-	  if (rel_getpixel(1, 0) != ColMap::NOTHING)
+	  if (rel_getpixel(1, 0) !=  GroundpieceData::GP_NOTHING)
 	    {
 	      // We reached a wall
 

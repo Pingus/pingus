@@ -1,4 +1,4 @@
-//  $Id: faller.cxx,v 1.7 2002/06/25 17:05:25 grumbel Exp $
+//  $Id: faller.cxx,v 1.8 2002/06/25 18:15:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -64,7 +64,7 @@ Faller::update (float delta)
   }
 
   // Pingu stands on ground
-  if (rel_getpixel(0, -1) != ColMap::NOTHING)
+  if (rel_getpixel(0, -1) !=  GroundpieceData::GP_NOTHING)
     { 
       pingu->set_paction ("walker");
       return;
@@ -78,7 +78,7 @@ Faller::update (float delta)
   
   // Update x and y by moving the penguin to it's target *slowly*
   // and checking if the penguin has hit the bottom at each loop
-  while(rel_getpixel(0, 0) == ColMap::NOTHING
+  while(rel_getpixel(0, 0) == GroundpieceData::GP_NOTHING
 	&& (fabs(newp.x) >= 1 || fabs(newp.y) >= 1))
     {
       last_pos = pingu->pos;
@@ -115,7 +115,7 @@ Faller::update (float delta)
     }
 
   // Now that the Pingu is moved, check if he hits the ground.
-  if (rel_getpixel(0, 0) == ColMap::NOTHING)
+  if (rel_getpixel(0, 0) == GroundpieceData::GP_NOTHING)
     { // if pingu is not on ground
       ++falling;
 	  
@@ -124,7 +124,7 @@ Faller::update (float delta)
     }
   else // Ping is on ground/water/something
     {
-      if (rel_getpixel(0, 0) == ColMap::WATER)
+      if (rel_getpixel(0, 0) == GroundpieceData::GP_WATER)
 	{
 	  pingu->set_paction("drown");
 	  return;
