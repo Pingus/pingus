@@ -1,4 +1,4 @@
-//  $Id: start_screen.cxx,v 1.15 2003/04/11 15:15:34 torangan Exp $
+//  $Id: start_screen.cxx,v 1.16 2003/04/12 12:35:53 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -184,6 +184,9 @@ StartScreenComponent::format_description(int length)
     return description;
     
   description = System::translate(plf->get_description());
+  
+  if (description != "")
+    return description;
 
   unsigned int pos = 0;
   while ((pos = description.find('\t', pos)) != std::string::npos)
@@ -196,15 +199,33 @@ StartScreenComponent::format_description(int length)
   pos = 0;  
   while ((pos = description.find('\n', pos)) != std::string::npos)
     {
-      if (description[pos + 1] == '\n')          // double enter marks paragraph
-        description.replace(pos++, 2, 1, '\n');  // replace the two \n by one and move pos behind it
+      if (pos < description.length() && description[pos + 1] == '\n')   // double enter marks paragraph
+      	{
+          description.replace(pos, 2, 1, '\n');  			// replace the two \n by one
+	}
+      else if (pos < description.length() - 1 && description[pos + 1] == ' ' && description[pos + 2] == '\n')
+        {
+            description.replace(pos, 3, 1, '\n');			// whitespace between the two \n doesn't matter
+	}
       else
-        description.replace(pos, 1, 1, ' ');
+        {
+          description.replace(pos, 1, 1, ' ');
+	  continue;							// no \n here anymore, so continue searching
+        }
+
+      if (pos && description[pos - 1] == ' ')
+        description.replace(pos - 1, 2, 1, '\n');			// no whitespace in front
+	
+      if (pos < description.length() && description[pos + 1] == ' ')
+        description.replace(pos, 2, 1, '\n');				// no whitespace behind
+	
+      ++pos;								// we don't want to find it again
     }
         
   pos = 0;
   while ((pos = description.find("  ", pos)) != std::string::npos)
     description.replace(pos, 2, 1, ' ');
+
 
   int start_pos      = 0;
   int previous_space = 0;
@@ -221,6 +242,7 @@ StartScreenComponent::format_description(int length)
 
       previous_space = pos;
     }
+    
   return description;
 }
 
