@@ -8,7 +8,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2004-03-02 19:33+0100\n"
 "PO-Revision-Date: 2003-04-15 17:31+0200\n"
-"Last-Translator: Ingo Ruhnke <grumbel@gmx.de>\n"
+"Last-Translator: David Philippi <david@torangan.de>\n"
 "Language-Team: David Philippi <david@torangan.de>, Ingo Ruhnke <grumbel@gmx."
 "de>, Giray Devlet <giray@devlet.cc>\n"
 "MIME-Version: 1.0\n"
@@ -189,11 +189,11 @@ msgstr "Eingabe - Setze Standard Zoom (1:1)"
 
 #: src/editor/editor_help_screen.cxx:70
 msgid "d - duplicate object"
-msgstr "d - Aktuelles Objekt kopieren"
+msgstr "d - Objekt kopieren"
 
 #: src/editor/editor_help_screen.cxx:71
 msgid "a - mark all objects"
-msgstr "a - Markierte Objecte löschen"
+msgstr "a - Alle Objekte markieren"
 
 #: src/editor/editor_help_screen.cxx:72
 msgid "shift leftmouseclick - add object to selection"
@@ -266,7 +266,7 @@ msgstr "7 - Stosser"
 
 #: src/editor/object_selector.cxx:187
 msgid "Select a WorldObj"
-msgstr "Wähle ein WorldObj"
+msgstr "Wähle ein WeltObjekt"
 
 #: src/editor/object_selector.cxx:188
 msgid "1 - teleporter"
@@ -302,7 +302,7 @@ msgstr "2 - Regen"
 
 #: src/editor/object_selector.cxx:266
 msgid "Select an entrance"
-msgstr "Wähle einen Ausgang"
+msgstr "Wähle einen Eingang"
 
 #: src/editor/object_selector.cxx:267
 msgid "1 - generic"
@@ -414,7 +414,7 @@ msgstr "4 - Gewitter Hintergrund"
 
 #: src/editor/panel_icons.cxx:32
 msgid "Load a level (F5)"
-msgstr "Level Laden (F5)"
+msgstr "Level laden (F5)"
 
 #: src/editor/panel_icons.cxx:45
 msgid "Exit the editor (Escape)"
@@ -430,7 +430,7 @@ msgstr "Markierte Objekte Löschen (Entfernen)"
 
 #: src/editor/panel_icons.cxx:81
 msgid "Duplicate current object (d)"
-msgstr "Aktuelles Object kopieren (d)"
+msgstr "Aktuelles Objekt kopieren (d)"
 
 #: src/editor/panel_icons.cxx:93
 msgid "Edit Level Properties"
@@ -442,7 +442,7 @@ msgstr "Objekteigenschaften ändern"
 
 #: src/editor/panel_icons.cxx:117
 msgid "Start the level and test it (F4)"
-msgstr "Level starten und testen(F4)"
+msgstr "Level starten und testen (F4)"
 
 #: src/editor/panel_icons.cxx:129
 msgid "Create a new level from scratch"
@@ -454,15 +454,15 @@ msgstr "Objekt einfuegen (Einfg)"
 
 #: src/editor/panel_icons.cxx:153
 msgid "Zoom into a region"
-msgstr "in eine Region Zoomen"
+msgstr "Einen Bereich vergrössern"
 
 #: src/editor/panel_icons.cxx:165
 msgid "Zoom in"
-msgstr "Ausschnitt vergroessern"
+msgstr "Vergroessern"
 
 #: src/editor/panel_icons.cxx:178
 msgid "Zoom out"
-msgstr "Ausschnitt verkleinern"
+msgstr "Verkleinern"
 
 #: src/editor/panel_icons.cxx:191
 msgid "Setup Number of Actions"
@@ -571,7 +571,7 @@ msgstr "Genau die Hälfte! Rettest du nur die Weibchen?"
 
 #: src/level_result.cxx:113
 msgid "If I were a Pingu, I never would have left that entrance."
-msgstr "Wenn ich ein Pingu wäre, hätte ich den Ausgang nie verlassen."
+msgstr "Wenn ich ein Pingu wäre, hätte ich den Eingang nie verlassen."
 
 #: src/level_result.cxx:115
 msgid "Maybe you would feel more at home playing Quake."
