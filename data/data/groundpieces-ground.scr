@@ -112,6 +112,7 @@ section misc
         bpiece6 = ../images/groundpieces/ground/misc/bpiece6.png (type=surface);
         bpiece7 = ../images/groundpieces/ground/misc/bpiece7.png (type=surface);
         bpiece8 = ../images/groundpieces/ground/misc/bpiece8.png (type=surface);
+        bpiece9 = ../images/groundpieces/ground/misc/bpiece9.png (type=surface);
         brick1 = ../images/groundpieces/ground/misc/brick1.png (type=surface);
         brick2 = ../images/groundpieces/ground/misc/brick2.png (type=surface);
         brick3 = ../images/groundpieces/ground/misc/brick3.png (type=surface);
