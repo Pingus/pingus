@@ -1,4 +1,4 @@
-//  $Id: Client.cc,v 1.40 2001/04/10 21:51:22 grumbel Exp $
+//  $Id: Client.cc,v 1.41 2001/04/11 11:28:24 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -224,7 +224,18 @@ Client::play_level(std::string plf_filename, std::string psm_filename)
   // Main Game Loop
   while (!server->is_finished()) 
     {     
+      if (!max_cpu_usage)
+	{
+	  int sleepcount = 0;
+	  while (delta_manager.get () < 0.035){
+	    CL_System::sleep (10);
+	    ++sleepcount;
+	  }
+	  std::cout << "Sleepcount: " << sleepcount << std::endl;
+	}
+
       delta = delta_manager.getset ();
+
       CL_System::keep_alive(); 
     
       // Let the server process a game loop
@@ -269,7 +280,7 @@ Client::play_level(std::string plf_filename, std::string psm_filename)
 		    obj[i]->update(delta);
 		}
 	      
-	      obj[i]->draw_clipped();
+		obj[i]->draw_clipped();
 	    }
       
 	  //std::cout << "Flipping display" << std::endl;

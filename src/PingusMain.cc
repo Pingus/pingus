@@ -1,4 +1,4 @@
-//   $Id: PingusMain.cc,v 1.21 2001/04/06 12:49:19 grumbel Exp $
+//   $Id: PingusMain.cc,v 1.22 2001/04/11 11:28:24 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -207,6 +207,7 @@ PingusMain::check_args(int argc, char* argv[])
     {"enable-bg-manipulation", no_argument,  0, 148},
     {"use-datafile",      no_argument,       0, 150},
     {"use-scriptfile",    no_argument,       0, 151},
+    {"max-cpu-usage",     no_argument,       0, 153},
 
     // FIXME: is the number stuff correct?
     {"fs-preload",      no_argument,       0, 130},
@@ -458,6 +459,9 @@ For more information about these matters, see the files named COPYING.\
 
       break;
 
+    case 153:
+      
+
     default:
       if (verbose) std::cout << _("Unknow char: ") << c << std::endl << std::endl;
       std::cout << _("Usage: ") << argv[0] << _(" [OPTIONS]... [LEVELFILE]") << std::endl;
@@ -486,6 +490,8 @@ For more information about these matters, see the files named COPYING.\
 	"   --enable-swcursor        Enable software cursor\n"
 	"   --no-cfg-file            Don't read ~/.pingus/config\n"
 	"   --config-file FILE       Read config from FILE (default: ~/.pingus/config)\n"
+	"   --max-cpu-usage          Use all of the cpu power available, instead of trying to\n"
+	"                            reduce CPU usage, might speed up the game on slower machines\n"
 
 	"\nDebugging and experimental stuff:\n"
 	"   --maintainer-mode        Enables some features, only interesting programmers\n"

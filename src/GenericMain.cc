@@ -1,4 +1,4 @@
-//  $Id: GenericMain.cc,v 1.5 2000/10/30 16:17:49 grumbel Exp $
+//  $Id: GenericMain.cc,v 1.6 2001/04/11 11:28:24 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -58,7 +58,7 @@ GenericMain::main(int argc, char* argv[])
   CL_SetupPNG::init ();
   CL_SetupJPEG::init ();
 
-  std::cout << _("Starting...") << std::endl;
+  std::cout << std::string(_("Starting Pingus ")) + VERSION  << std::endl;
 
   if (System::basename(argv[0]) == "warpingus")
     {
