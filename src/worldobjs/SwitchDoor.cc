@@ -1,4 +1,4 @@
-//  $Id: SwitchDoor.cc,v 1.18 2001/08/09 12:04:49 grumbel Exp $
+//  $Id: SwitchDoor.cc,v 1.19 2001/08/10 19:59:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -145,10 +145,6 @@ SwitchDoor::SwitchDoor (WorldObjData* data)
   switch_pos  = switchdoor->switch_pos;
 }
 
-SwitchDoor::~SwitchDoor ()
-{
-}
-
 void 
 SwitchDoor::draw_colmap()
 {
@@ -230,10 +226,6 @@ EditorSwitchDoorSwitchObj::EditorSwitchDoorSwitchObj (SwitchDoorData* data)
   height = surf.get_height ();
 }
 
-EditorSwitchDoorSwitchObj::~EditorSwitchDoorSwitchObj ()
-{
-}
-
 void
 EditorSwitchDoorSwitchObj::save_xml (std::ofstream* xml)
 {
@@ -244,6 +236,13 @@ std::string
 EditorSwitchDoorSwitchObj::status_line()
 {
   return "--- EditorSwitchDoorSwitchObj ---";
+}
+
+boost::shared_ptr<EditorObj> 
+EditorSwitchDoorSwitchObj::duplicate()
+{
+  std::cout << "EditorSwitchDoorSwitchObj::duplicate(): not implemented" << std::endl;
+  return boost::shared_ptr<EditorObj> ();
 }
 
 /////////////////////////
@@ -270,10 +269,6 @@ EditorSwitchDoorObj::EditorSwitchDoorObj (WorldObjData* data)
   position = &door_pos;
 }
 
-EditorSwitchDoorObj::~EditorSwitchDoorObj ()
-{
-}
-
 std::list<boost::shared_ptr<EditorObj> > 
 EditorSwitchDoorObj::create (WorldObjData* obj)
 {
@@ -284,6 +279,13 @@ EditorSwitchDoorObj::create (WorldObjData* obj)
   objs.push_back (boost::shared_ptr<EditorObj>(new EditorSwitchDoorSwitchObj (switchdoor_obj.get())));
 
   return objs;
+}
+
+boost::shared_ptr<EditorObj> 
+EditorSwitchDoorObj::duplicate()
+{
+  std::cout << "EditorSwitchDoorObj::duplicate(): not implemented" << std::endl;
+  return boost::shared_ptr<EditorObj> ();
 }
 
 /** Create this object (and child objects) with resonable defaults

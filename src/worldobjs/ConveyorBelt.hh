@@ -1,4 +1,4 @@
-//  $Id: ConveyorBelt.hh,v 1.15 2001/08/09 08:56:45 grumbel Exp $
+//  $Id: ConveyorBelt.hh,v 1.16 2001/08/10 19:59:20 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,11 +33,10 @@ public:
   double speed;
 
   ConveyorBeltData ();
-  virtual ~ConveyorBeltData () {}
 
   /** Write the content of this object formatted as xml to the given
       stream */
-  virtual void write_xml(std::ofstream* xml);
+  void write_xml(std::ofstream* xml);
   ///
   static boost::shared_ptr<WorldObjData> create(xmlDocPtr doc, xmlNodePtr cur);
 
@@ -58,18 +57,12 @@ private:
   float counter;
 
 public:
-  ///
   ConveyorBelt (WorldObjData*);
-  ///
-  virtual ~ConveyorBelt () {}
-  ///
-  virtual void draw_offset (int x_of, int y_of, float s = 1.0);
-  ///
-  virtual void draw_colmap();
-  ///
-  virtual void update(float delta);
-  ///
-  virtual int  get_z_pos() const { return (int) pos.z; }
+  
+  void draw_offset (int x_of, int y_of, float s = 1.0);
+  void draw_colmap();
+  void update(float delta);
+  int  get_z_pos() const { return (int) pos.z; }
 };
 
 class EditorConveyorBeltObj : public EditorWorldObj,
@@ -83,11 +76,10 @@ private:
 
 public:
   EditorConveyorBeltObj (WorldObjData* obj);
-  virtual ~EditorConveyorBeltObj ();
 
-  virtual boost::shared_ptr<EditorObj> duplicate();
-  virtual void draw (boost::dummy_ptr<EditorView> view);
-  virtual void draw_scroll_map(int x_pos, int y_pos, int arg_width, int arg_height);
+  boost::shared_ptr<EditorObj> duplicate();
+  void draw (boost::dummy_ptr<EditorView> view);
+  void draw_scroll_map(int x_pos, int y_pos, int arg_width, int arg_height);
   
   /// The saving will be done in EditorTeleporterObj::save_xml
   static std::list<boost::shared_ptr<EditorObj> > create (WorldObjData* obj);
@@ -95,8 +87,8 @@ public:
   /** Create the object with reasonable defaults */
   static std::list<boost::shared_ptr<EditorObj> > create (const CL_Vector& pos);
 
-  virtual void save_xml (std::ofstream* xml);
-  virtual std::string status_line();
+  void save_xml (std::ofstream* xml);
+  std::string status_line();
 };
 
 #endif

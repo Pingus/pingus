@@ -1,4 +1,4 @@
-//  $Id: Teleporter.cc,v 1.23 2001/08/09 12:04:49 grumbel Exp $
+//  $Id: Teleporter.cc,v 1.24 2001/08/10 19:59:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -154,9 +154,11 @@ EditorTeleporterObj::EditorTeleporterObj (const TeleporterData& data)
   //std::cout << "EditorTeleporter(): " << &target_pos << " - " << target_pos << std::endl;
 }
 
-EditorTeleporterObj::~EditorTeleporterObj ()
+boost::shared_ptr<EditorObj> 
+EditorTeleporterObj::duplicate()
 {
-  // FIXME: delete the target obj here
+  std::cout << "EditorTeleporterObj::duplicate(): not implemented" << std::endl;
+  return boost::shared_ptr<EditorObj> ();
 }
 
 std::list<boost::shared_ptr<EditorObj> > 
@@ -187,6 +189,18 @@ EditorTeleporterObj::create (const CL_Vector& pos)
   data.target_pos.y = pos.y + 50;
 
   return data.create_EditorObj ();
+}
+
+void
+EditorTeleporterObj::draw (boost::dummy_ptr<EditorView> view)
+{
+  //std::cout << "Drawing line" << std::endl;
+  view->draw_line (int(pos.x + width/2), 
+		   int(pos.y + height/2),
+		   int(target_pos.x), 
+		   int(target_pos.y),
+		   0.0, 1.0, 0.0, 0.5);
+  EditorObj::draw (view);
 }
 
 void
@@ -224,16 +238,11 @@ EditorTeleporterTargetObj::EditorTeleporterTargetObj (EditorTeleporterObj* telep
   //std::cout << "EditorTeleporterTargetObj: " << pos << " - " << *pos << std::endl;
 }
 
-void
-EditorTeleporterObj::draw (boost::dummy_ptr<EditorView> view)
+boost::shared_ptr<EditorObj> 
+EditorTeleporterTargetObj::duplicate()
 {
-  //std::cout << "Drawing line" << std::endl;
-  view->draw_line (int(pos.x + width/2), 
-		   int(pos.y + height/2),
-		   int(target_pos.x), 
-		   int(target_pos.y),
-		   0.0, 1.0, 0.0, 0.5);
-  EditorObj::draw (view);
+  std::cout << "EditorTeleporterTargetObj::duplicate(): not implemented" << std::endl;
+  return boost::shared_ptr<EditorObj> ();
 }
 
 void

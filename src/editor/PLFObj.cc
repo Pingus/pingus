@@ -1,4 +1,4 @@
-//  $Id: PLFObj.cc,v 1.48 2001/08/10 10:56:14 grumbel Exp $
+//  $Id: PLFObj.cc,v 1.49 2001/08/10 19:59:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -99,6 +99,7 @@ HotspotObj::save_xml(std::ofstream* xml)
 EntranceObj::EntranceObj(const EntranceData& data)
   : EntranceData (data)
 {
+  std::cout << "EntranceObj::EntranceObj(const EntranceData& data)" << std::endl;
   *position  = data.pos;
 
   if (type == "generic")
@@ -148,6 +149,7 @@ EntranceObj::save_xml(std::ofstream* xml)
 boost::shared_ptr<EditorObj>
 EntranceObj::duplicate()
 {
+  std::cout << "EntranceObj::duplicate()" << std::endl;
   return boost::shared_ptr<EditorObj>(new EntranceObj(*this));
 }
 

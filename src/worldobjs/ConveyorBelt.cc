@@ -1,4 +1,4 @@
-//  $Id: ConveyorBelt.cc,v 1.21 2001/08/09 12:04:49 grumbel Exp $
+//  $Id: ConveyorBelt.cc,v 1.22 2001/08/10 19:59:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -170,10 +170,6 @@ EditorConveyorBeltObj::EditorConveyorBeltObj (WorldObjData* obj)
   speed = conveyor_belt->speed;
   ConveyorBeltData::width = conveyor_belt->width;
   counter = 0.0f;
-}
-
-EditorConveyorBeltObj::~EditorConveyorBeltObj ()
-{
 }
 
 boost::shared_ptr<EditorObj> 

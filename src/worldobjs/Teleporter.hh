@@ -1,4 +1,4 @@
-//  $Id: Teleporter.hh,v 1.17 2001/08/09 12:04:49 grumbel Exp $
+//  $Id: Teleporter.hh,v 1.18 2001/08/10 19:59:20 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,12 +35,11 @@ public:
   
   TeleporterData () {}
   TeleporterData (const TeleporterData& data);
-  virtual ~TeleporterData () {}
-
+  
   /** Write the content of this object formatted as xml to the given
       stream */
-  virtual void write_xml(std::ofstream* xml);
-  ///
+  void write_xml(std::ofstream* xml);
+  
   static boost::shared_ptr<WorldObjData> create(xmlDocPtr doc, xmlNodePtr cur);
 
   /** Create an WorldObj from the given data object */
@@ -58,11 +57,10 @@ private:
   
 public:
   Teleporter (const TeleporterData& data);
-  virtual ~Teleporter () {}
   
-  virtual void draw (boost::dummy_ptr<EditorView> view);
-  virtual void update(float delta);
-  virtual int  get_z_pos() const { return (int) pos.z; }
+  void draw (boost::dummy_ptr<EditorView> view);
+  void update(float delta);
+  int  get_z_pos() const { return (int) pos.z; }
 };
 
 /** A pseudo object to represent the teleporter target; all the
@@ -75,14 +73,14 @@ public:
   /// Basic constructor
   EditorTeleporterTargetObj (EditorTeleporterObj* obj);
   virtual ~EditorTeleporterTargetObj () {}
-    
-  static std::list<boost::shared_ptr<EditorObj> > create (TeleporterData*);
+
+  boost::shared_ptr<EditorObj> duplicate();
 
   CL_Vector get_position () { return *position; }
 
   /// The saving will be done in EditorTeleporterObj::save_xml
-  virtual void save_xml (std::ofstream* xml);
-  virtual std::string status_line();
+  void save_xml (std::ofstream* xml);
+  std::string status_line();
 };
 
 class EditorTeleporterObj : public EditorWorldObj, 
@@ -93,19 +91,19 @@ private:
 
 public:
   EditorTeleporterObj (const TeleporterData& data);
-  virtual ~EditorTeleporterObj ();
-
+  
   CL_Vector* get_target_pos_p () { return &target_pos; }
 
+  boost::shared_ptr<EditorObj> duplicate();
   static std::list<boost::shared_ptr<EditorObj> > create (const TeleporterData& data);
 
   /** Create this object (and child objects) with reasonable defaults
       for the editor */
   static std::list<boost::shared_ptr<EditorObj> > create (const CL_Vector& pos);
 
-  virtual void draw (boost::dummy_ptr<EditorView> view);
-  virtual void save_xml (std::ofstream* xml);
-  virtual std::string status_line();
+  void draw (boost::dummy_ptr<EditorView> view);
+  void save_xml (std::ofstream* xml);
+  std::string status_line();
 };
 
 #endif

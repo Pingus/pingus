@@ -1,4 +1,4 @@
-//  $Id: IceBlock.hh,v 1.12 2001/08/09 12:04:49 grumbel Exp $
+//  $Id: IceBlock.hh,v 1.13 2001/08/10 19:59:20 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,7 +38,7 @@ public:
 
   /** Write the content of this object formatted as xml to the given
       stream */
-  virtual void write_xml(std::ofstream* xml);
+  void write_xml(std::ofstream* xml);
   ///
   static boost::shared_ptr<WorldObjData> create(xmlDocPtr doc, xmlNodePtr cur);
 
@@ -57,18 +57,12 @@ private:
   float thickness;
   bool is_finished;
 public:
-  ///
   IceBlock (const IceBlockData& data);
-  ///
-  virtual ~IceBlock ();
-  ///
-  virtual int  get_z_pos() const { return 100; }
-  ///
-  virtual void draw_colmap();
-  ///
-  virtual void draw_offset(int x, int y, float s = 1.0);
-  ///
-  virtual void update(float delta);
+
+  int  get_z_pos() const { return 100; }
+  void draw_colmap();
+  void draw_offset(int x, int y, float s = 1.0);
+  void update(float delta);
 };
 
 
@@ -78,17 +72,15 @@ class EditorIceBlockObj : public EditorWorldObj,
 private:
   
 public:
-  EditorIceBlockObj();
   EditorIceBlockObj (const IceBlockData& data);
-  virtual ~EditorIceBlockObj ();
 
   static std::list<boost::shared_ptr<EditorObj> > create (WorldObjData* obj);
 
   /** Create the object with resonable defaults */
   static std::list<boost::shared_ptr<EditorObj> > create (const CL_Vector& pos);
 
-  virtual void save_xml (std::ofstream* xml);
-  virtual std::string status_line();
+  void save_xml (std::ofstream* xml);
+  std::string status_line();
 };
 
 #endif

@@ -1,4 +1,4 @@
-//  $Id: EditorObj.hh,v 1.33 2001/08/10 10:56:14 grumbel Exp $
+//  $Id: EditorObj.hh,v 1.34 2001/08/10 19:59:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -158,7 +158,7 @@ public:
   ///
   virtual std::string status_line();
   ///
-  virtual boost::shared_ptr<EditorObj> duplicate() { return boost::shared_ptr<EditorObj>(); }
+  virtual boost::shared_ptr<EditorObj> duplicate() =0;
   
   static void set_editor(Editor* e) { editor = e; }
 };

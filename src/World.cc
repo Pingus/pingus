@@ -1,4 +1,4 @@
-//  $Id: World.cc,v 1.54 2001/08/10 10:56:13 grumbel Exp $
+//  $Id: World.cc,v 1.55 2001/08/10 19:59:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,7 +36,6 @@
 #include "Result.hh"
 #include "Liquid.hh"
 #include "ActionHolder.hh"
-#include "entrances/entrances.hh"
 #include "FVec.hh"
 #include "Timer.hh"
 #include "particles/WeatherGenerator.hh"

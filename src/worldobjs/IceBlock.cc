@@ -1,4 +1,4 @@
-//  $Id: IceBlock.cc,v 1.17 2001/08/09 12:50:49 grumbel Exp $
+//  $Id: IceBlock.cc,v 1.18 2001/08/10 19:59:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -93,11 +93,6 @@ IceBlock::IceBlock (const IceBlockData& data)
 }
 
 ///
-IceBlock::~IceBlock ()
-{
-}
-
-///
 void
 IceBlock::draw_colmap()
 {
@@ -154,9 +149,6 @@ EditorIceBlockObj::EditorIceBlockObj (const IceBlockData& data)
   IceBlockData::width = data.width;
 }
 
-EditorIceBlockObj::~EditorIceBlockObj ()
-{
-}
 /*
 std::list<boost::shared_ptr<EditorObj> > 
 EditorIceBlockObj::create (WorldObjData* obj)

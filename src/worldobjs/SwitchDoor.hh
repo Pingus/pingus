@@ -1,4 +1,4 @@
-//  $Id: SwitchDoor.hh,v 1.15 2001/08/09 08:56:45 grumbel Exp $
+//  $Id: SwitchDoor.hh,v 1.16 2001/08/10 19:59:20 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,7 +46,7 @@ public:
 
   /** Write the content of this object formatted as xml to the given
       stream */
-  virtual void write_xml(std::ofstream* xml);
+  void write_xml(std::ofstream* xml);
   ///
   static boost::shared_ptr<WorldObjData> create(xmlDocPtr doc, xmlNodePtr cur);
 
@@ -76,18 +76,13 @@ private:
   int current_door_height;
 
 public:
-  ///
   SwitchDoor (WorldObjData* data);
-  ///
-  virtual ~SwitchDoor ();
-  ///
-  virtual void draw_colmap();
-  ///
-  virtual void draw_offset(int x, int y, float s = 1.0);
-  ///
-  virtual void update(float delta);
+  
+  void draw_colmap();
+  void draw_offset(int x, int y, float s = 1.0);
+  void update(float delta);
   /// The switch and the door should stay above the pingus
-  virtual int  get_z_pos() const { return 100; }
+  int  get_z_pos() const { return 100; }
 };
 
 /** A dummy object to represent the switch for a switchdoor, all real
@@ -96,10 +91,11 @@ class EditorSwitchDoorSwitchObj : public EditorObj
 {
 public:
   EditorSwitchDoorSwitchObj (SwitchDoorData* obj);
-  virtual ~EditorSwitchDoorSwitchObj ();
+  
+  boost::shared_ptr<EditorObj> duplicate();
 
-  virtual void save_xml (std::ofstream* xml);
-  virtual std::string status_line();
+  void save_xml (std::ofstream* xml);
+  std::string status_line();
 };
 
 class EditorSwitchDoorObj : public SwitchDoorData,
@@ -111,13 +107,14 @@ private:
 
 public:
   EditorSwitchDoorObj (WorldObjData* obj);
-  virtual ~EditorSwitchDoorObj ();
-
+  
   static std::list<boost::shared_ptr<EditorObj> > create (WorldObjData* obj);
 
   /** Create this object (and child objects) with reasonable defaults
       for the editor */
   static std::list<boost::shared_ptr<EditorObj> > create (const CL_Vector& pos);
+
+  boost::shared_ptr<EditorObj> duplicate();
 
   void make_larger ();
   void make_smaller ();
