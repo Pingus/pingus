@@ -1,4 +1,4 @@
-//  $Id: Config.cc,v 1.14 2001/08/18 09:54:26 grumbel Exp $
+//  $Id: Config.cc,v 1.15 2001/12/05 09:15:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,11 @@
 #include "audio.hh"
 #include "PingusError.hh"
 #include "Config.hh"
+
+/* Headers needed for i18n / gettext */
+#include <clocale>
+#include <config.h>
+#include "my_gettext.hh"
 
 struct ConfigParserEOF {};
 
@@ -63,7 +68,7 @@ ConfigParser::open(std::string filename)
   eof = false;
 
   if (!in) 
-    throw PingusError("Couldn't open: " + filename);
+    throw PingusError(_("Couldn't open: ") + filename);
     
   if (verbose > 1)
     std::cout << "Successfully opened plf file." << std::endl;
@@ -162,7 +167,7 @@ ConfigParser::get_valueid(void)
 	}
       else 
 	{
-	  syntax_error(std::string("Unexpected char: '") + atom + "'");
+	  syntax_error(std::string(_("Unexpected char: '")) + atom + "'");
 	}
     } 
   
@@ -196,7 +201,7 @@ ConfigParser::get_value(void)
       if (isspace(atom)){
 	return ret_val;
       } else {
-	syntax_error(std::string("Unexpected char '") + atom + "'");
+	syntax_error(std::string(_("Unexpected char '")) + atom + "'");
       }
     }
     
@@ -226,7 +231,7 @@ ConfigParser::jump_after(char c)
 	  return;
       }
     } 
-  syntax_error(std::string("jump_after(): Expected '") + c + "', got '" + atom + "'" );
+  syntax_error(std::string(_("jump_after(): Expected '")) + c + "', got '" + atom + "'" );
 }
 
 void
@@ -251,7 +256,7 @@ ConfigParser::syntax_error(std::string error = "")
 
   sprintf(tmp, "%d\n", lineno);
   
-  error_str = std::string("PLF: Syntax Error at line ") + tmp;
+  error_str = std::string(_("PLF: Syntax Error at line ")) + tmp;
 
   if (error != "")
     error_str += "PLF:" + error + "\n";
@@ -400,7 +405,7 @@ Config::set_value(std::string valueid,
     }
   else
     {
-      throw PingusError("Config: Unknown valueid: " + valueid);
+      throw PingusError(_("Config: Unknown valueid: ") + valueid);
     }
 }
 
@@ -417,7 +422,7 @@ Config::str_to_bool(const std::string& str)
     }
   else
     {
-      throw PingusError("Config: value: " + str + " is not of type bool.");
+      throw PingusError(_("Config: value: ") + str + _(" is not of type bool."));
     }
 }
 
@@ -428,10 +433,11 @@ Config::str_to_int(const std::string& str)
 
   if (sscanf(str.c_str(), "%d", &ret_val) != 1) 
     {
-      throw PingusError("Config: Couldn't convert std::string to integer: " + str);
+      throw PingusError(_("Config: Couldn't convert std::string to integer: ") + str);
     }
 
   return ret_val;
 }
 
 /* EOF */
+

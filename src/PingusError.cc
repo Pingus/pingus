@@ -1,4 +1,4 @@
-//  $Id: PingusError.cc,v 1.4 2000/12/30 23:54:05 grumbel Exp $
+//  $Id: PingusError.cc,v 1.5 2001/12/05 09:15:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,12 @@
 
 #include "PingusError.hh"
 
+/* Headers needed for i18n / gettext */
+#include <clocale>
+#include <config.h>
+#include "my_gettext.hh"
+
+
 PingusException::PingusException ()
 {
 }
@@ -32,25 +38,25 @@ PingusException::~PingusException ()
 PingusBug::PingusBug(std::string mes)
 {
   message = mes;
-  std::cout << "PingusBug: " << message << std::endl;
+  std::cout << _("PingusBug: ") << message << std::endl;
 }
 
 std::string
 PingusBug::get_message ()
 {
-  return "PingusBug: " + message;
+  return _("PingusBug: ") + message;
 }
 
 PingusError::PingusError(std::string mes)
 {
   message = mes;
-  std::cout << "PingusError: " << message << std::endl;
+  std::cout << _("PingusError: ") << message << std::endl;
 }
 
 std::string
 PingusError::get_message ()
 {
-  return "PingusError: " + message;
+  return _("PingusError: ") + message;
 }
 
 /* EOF */

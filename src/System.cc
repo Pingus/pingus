@@ -1,4 +1,4 @@
-//  $Id: System.cc,v 1.36 2001/11/18 00:03:29 grumbel Exp $
+//  $Id: System.cc,v 1.37 2001/12/05 09:15:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,12 +33,16 @@
 #include <cstdio>
 #include <iostream>
 
-#include "my_gettext.hh"
-
 //#include "PingusError.hh" 
 #include "globals.hh"
 #include "StringConverter.hh"
 #include "System.hh"
+
+/* Headers needed for i18n / gettext */
+#include <clocale>
+#include <config.h>
+#include "my_gettext.hh"
+
 
 int System::verbose;
 std::string System::default_email;

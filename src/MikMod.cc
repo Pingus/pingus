@@ -1,4 +1,4 @@
-//  $Id: MikMod.cc,v 1.2 2000/04/08 20:20:25 grumbel Exp $
+//  $Id: MikMod.cc,v 1.3 2001/12/05 09:15:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,12 @@
 #include "PingusError.hh"
 #include "globals.hh"
 #include "MikMod.hh"
+
+/* Headers needed for i18n / gettext */
+#include <clocale>
+#include <config.h>
+#include "my_gettext.hh"
+
 
 bool MikMod::is_init;
 bool MikMod::delete_on_stop;
@@ -71,7 +77,7 @@ MikMod::load(string filename, bool del_on_stop, int maxchan, bool curious)
 
       if (!current_module)
 	{
-	  throw PingusError("Couldn't find: " + filename);
+	  throw PingusError(_("Couldn't find: ") + filename);
 	}
     }
   return current_module;

@@ -1,4 +1,4 @@
-//  $Id: Intro.cc,v 1.21 2001/12/01 17:53:56 torangan Exp $
+//  $Id: Intro.cc,v 1.22 2001/12/05 09:15:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,7 +25,12 @@
 #include "algo.hh"
 #include "Story.hh"
 #include "Intro.hh"
+
+/* Headers needed for i18n / gettext */
+#include <clocale>
+#include <config.h>
 #include "my_gettext.hh"
+
 
 Intro::Intro(PingusMenuManager* m)
   : PingusSubMenu (m)

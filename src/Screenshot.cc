@@ -1,4 +1,4 @@
-//  $Id: Screenshot.cc,v 1.11 2001/06/17 17:18:27 grumbel Exp $
+//  $Id: Screenshot.cc,v 1.12 2001/12/05 09:15:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,15 +17,18 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <config.h>
 #include <cstdio>
 #include <time.h>
 
-#include "my_gettext.hh"
 
 #include "globals.hh"
 #include "System.hh"
 #include "Screenshot.hh"
+
+/* Headers needed for i18n / gettext */
+#include <clocale>
+#include <config.h>
+#include "my_gettext.hh"
 
 
 // Saves a screenshot to file, it return the filename the screenshot

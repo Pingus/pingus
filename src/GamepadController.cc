@@ -1,4 +1,4 @@
-//  $Id: GamepadController.cc,v 1.11 2001/08/18 09:54:26 grumbel Exp $
+//  $Id: GamepadController.cc,v 1.12 2001/12/05 09:15:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,12 @@
 #include "PingusError.hh"
 #include "GamepadController.hh"
 
+/* Headers needed for i18n / gettext */
+#include <clocale>
+#include <config.h>
+#include "my_gettext.hh"
+
+
 GamepadController::GamepadController (CL_InputDevice* arg_device, int arg_owner_id)
   : Controller (arg_owner_id),
     device (arg_device),
@@ -28,13 +34,13 @@ GamepadController::GamepadController (CL_InputDevice* arg_device, int arg_owner_
     acceleration (1.0)
 {
   if (!device)
-    throw PingusError ("GamepadController: Couldn't find a gamepad controlling device!");
+    throw PingusError (_("GamepadController: Couldn't find a gamepad controlling device!"));
   
   x_axis = device->get_axis (0);
   y_axis = device->get_axis (1);
 
   if (!x_axis || !y_axis)
-    throw PingusError ("Couldn't find enough axes on joystick");
+    throw PingusError (_("Couldn't find enough axes on joystick"));
   
   set_range (CL_Rect(0, 0, CL_Display::get_width () - 1, CL_Display::get_height () - 1));
 

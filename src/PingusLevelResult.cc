@@ -1,4 +1,4 @@
-//  $Id: PingusLevelResult.cc,v 1.24 2001/11/30 09:11:17 grumbel Exp $
+//  $Id: PingusLevelResult.cc,v 1.25 2001/12/05 09:15:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,14 +20,17 @@
 #include <cstdio>
 #include <ClanLib/core.h>
 
-#include <config.h>
-
-#include "my_gettext.hh"
 #include "globals.hh"
 #include "PingusResource.hh"
 #include "PingusLevelResult.hh"
 #include "Display.hh"
 #include "PingusSound.hh"
+
+/* Headers needed for i18n / gettext */
+#include <clocale>
+#include <config.h>
+#include "my_gettext.hh"
+
 
 PingusLevelResult::PingusLevelResult(World* w, boost::shared_ptr<Controller> c)
   : controller (c)

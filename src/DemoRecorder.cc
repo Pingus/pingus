@@ -1,4 +1,4 @@
-//  $Id: DemoRecorder.cc,v 1.7 2001/04/06 12:49:19 grumbel Exp $
+//  $Id: DemoRecorder.cc,v 1.8 2001/12/05 09:15:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,12 @@
 #include "Console.hh"
 #include "PingusError.hh"
 #include "DemoRecorder.hh"
+
+/* Headers needed for i18n / gettext */
+#include <clocale>
+#include <config.h>
+#include "my_gettext.hh"
+
 
 using namespace std;
 
@@ -50,7 +56,7 @@ DemoRecorder::set_levelname(const string& levelname)
   out << levelname << std::endl;
 
   if (!out)
-    throw PingusError("DemoRecorder: Couldn't open: " + filename);
+    throw PingusError(_("DemoRecorder: Couldn't open: ") + filename);
 }
 
 void

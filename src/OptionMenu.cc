@@ -1,4 +1,4 @@
-//  $Id: OptionMenu.cc,v 1.36 2001/11/30 09:11:16 grumbel Exp $
+//  $Id: OptionMenu.cc,v 1.37 2001/12/05 09:15:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,9 +23,14 @@
 #include "PingusResource.hh"
 #include "Display.hh"
 #include "OptionMenu.hh"
-#include "my_gettext.hh"
 #include "StringConverter.hh"
 #include "PingusMenuManager.hh"
+
+/* Headers needed for i18n / gettext */
+#include <clocale>
+#include <config.h>
+#include "my_gettext.hh"
+
 
 // Define the global option menu
 OptionMenu   option_menu (0);

@@ -1,4 +1,4 @@
-//  $Id: Controller.cc,v 1.8 2001/07/27 15:00:47 grumbel Exp $
+//  $Id: Controller.cc,v 1.9 2001/12/05 09:15:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,12 @@
 
 #include "PingusError.hh"
 #include "Controller.hh"
+
+/* Headers needed for i18n / gettext */
+#include <clocale>
+#include <config.h>
+#include "my_gettext.hh"
+
 
 ControllerButton::ControllerButton (boost::dummy_ptr<Controller> arg_controller)
   : controller (arg_controller),
@@ -53,7 +59,7 @@ InputDeviceButton::InputDeviceButton (Controller* arg_controller, CL_InputButton
     button (arg_button)
 {
   if (!button) {
-    throw PingusError ("InputDeviceButton: Button not found.");
+    throw PingusError (_("InputDeviceButton: Button not found."));
   } 
 }
 

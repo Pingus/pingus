@@ -1,4 +1,4 @@
-//   $Id: PingusMain.cc,v 1.45 2001/12/04 12:18:50 grumbel Exp $
+//   $Id: PingusMain.cc,v 1.46 2001/12/05 09:15:51 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -22,8 +22,6 @@
 //   You should have received a copy of the GNU General Public License
 //   along with this program; if not, write to the Free Software
 //   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-
-#include <config.h>
 
 #include <iostream>
 #include <string>
@@ -49,6 +47,9 @@
 
 #include <boost/smart_ptr.hpp>
 
+/* Headers needed for i18n / gettext */
+#include <clocale>
+#include <config.h>
 #include "my_gettext.hh"
 
 // #include "efence.h"
@@ -85,20 +86,20 @@ segfault_handler(int signo)
   switch(signo)
     {
     case SIGSEGV:
-      puts("\n----------------------------------------------------------");
-      puts("segfault_handler: catched a SIGSEGV.\n");
-      puts("Woops, Pingus just crashed, congratulations you've found a bug.");
-      puts("Please write a little bug report to <grumbel@pingus.cx>, include informations");
-      puts("where exacly the SIGSEGV occured and how to reproduce it.");
-      puts("Also try include a backtrace, you can get it like this:\n");
-      puts("$ gdb pingus core");
-      puts("(gdb) bt");
-      puts("...\n");
-      puts("If that doesn't work, try this:\n");
-      puts("$ gdb pingus");
-      puts("(gdb) r");
-      puts("[play until it crashes again]");
-      puts("...\n");
+      puts(_("\n----------------------------------------------------------"));
+      puts(_("segfault_handler: catched a SIGSEGV.\n"));
+      puts(_("Woops, Pingus just crashed, congratulations you've found a bug."));
+      puts(_("Please write a little bug report to <grumbel@pingus.cx>, include informations"));
+      puts(_("where exacly the SIGSEGV occured and how to reproduce it."));
+      puts(_("Also try include a backtrace, you can get it like this:\n"));
+      puts(_("$ gdb pingus core"));
+      puts(_("(gdb) bt"));
+      puts(_("...\n"));
+      puts(_("If that doesn't work, try this:\n"));
+      puts(_("$ gdb pingus"));
+      puts(_("(gdb) r"));
+      puts(_("[play until it crashes again]"));
+      puts(_("...\n"));
       break;
 
     default:
@@ -278,13 +279,13 @@ PingusMain::check_args(int argc, char* argv[])
     case 's': // -s, --enable-sound
       if (verbose) std::cout << "check_args: Sound Effects enabled" << std::endl;
       std::cout <<
-	"\n"
-	"=================================================================\n"
-	"                            WARNING!                             \n"
-	"=================================================================\n"
-	"Be warned, at the moment there is only some sound code pressent, \n"
-	"there are *no* sound files, so this will fail.\n"
-	"=================================================================\n" << std::endl;
+	_("\n"
+	  "=================================================================\n"
+	  "                            WARNING!                             \n"
+	  "=================================================================\n"
+	  "Be warned, at the moment there is only some sound code pressent, \n"
+	  "there are *no* sound files, so this will fail.\n"
+	  "=================================================================\n") << std::endl;
       sound_enabled = true;
       break;
     case 'g':
@@ -486,16 +487,20 @@ For more information about these matters, see the files named COPYING.\
       if (verbose) std::cout << _("Unknow char: ") << c << std::endl << std::endl;
       std::cout << _("Usage: ") << argv[0] << _(" [OPTIONS]... [LEVELFILE]") << std::endl;
       std::cout <<
-	"\n"
-	"Options:\n"
+	_("\n"
+	  "Options:\n"
 	"   -g, --geometry {width}x{height}\n"
 	"                            Set the resolution for pingus (default: 640x480)\n"
 	"   -h, --help               Displays this screen\n"
-	"   --disable-intro          Disable intro\n"
+	"   --disable-intro          Disable intro\n")
+		<< std::endl;
 #ifdef HAVE_LIBCLANGL
-	"   -G, --use-opengl         Use OpenGL\n"
+      std::cout <<
+	_("   -G, --use-opengl         Use OpenGL\n")
+	<< std::endl;
 #endif
-	"   -F, --disable-fullscreen Disable Fullscreen\n"
+      std::cout <<
+	_("   -F, --disable-fullscreen Disable Fullscreen\n"
 	"   -f, --enable-fullscreen  Enable Fullscreen (default)\n"
        	"   -d, --datadir PATH       Set the path to load the data files to `path'\n"
 	"   --use-datafile           Use the pre-compiled datafile (default)\n"
@@ -504,7 +509,7 @@ For more information about these matters, see the files named COPYING.\
 	"   -v, --verbose            Print some more messages to stdout, can be set\n"
 	"                            multible times to increase verbosity\n"
 	"   -V, --version            Prints version number and exit\n"
-	//	"   --fs-preload             Preload all Levelpreviews\n"
+	//	"   --fs-preload             Preload all Levelpreviews\n"a
 	"   --fast                   Disable some cpu intensive features\n"
 	//	"   --disable-previews       Disables all level preview in the level selector\n"
 	"   -e, --editor             Launch the Level editor (experimental)\n"
@@ -532,17 +537,19 @@ For more information about these matters, see the files named COPYING.\
 
 	"\nDemo playing and recording:\n"
 	"   -r, --record-demo FILE   Record a demo session to FILE\n"
-	"   -p, --play-demo FILE     Plays a demo session from FILE\n"
+	"   -p, --play-demo FILE     Plays a demo session from FILE\n")
+	<< std::endl;
 #ifdef HAVE_LIBSDL_MIXER
-	"\nSound:\n"
+      std::cout <<
+	_("\nSound:\n"
 	"   -s, --enable-sound       Enable sound\n"
 	"   -m, --enable-music       Enable music\n"
 	"   --audio-format {8,16}    Number of bits (default: 16)\n"
 	"   --audio-rate INT         Audio rate in Hz (default: 44000)\n"
 	"   --audio-channels {1,2}   Mono(1) or Stereo(2) output (default: 2)\n"
-	"   --audio-buffers INT      Audio buffer (default: 4096)\n"
+	"   --audio-buffers INT      Audio buffer (default: 4096)\n")
+       << std::endl;
 #endif
-		<< std::endl;
       exit(EXIT_SUCCESS);
       break;
     }
@@ -576,12 +583,17 @@ PingusMain::init_pingus()
 {
   if (verbose) 
     {
-      std::cout << "-----------------------------------------------------------------\n" 
-		<< " Verbosity set to: " << verbose  << "\n"
-		<< " If you don't like to get lots of debug messages, than set the\n"
-		<< " verbosity down to 0, like this:\n\n" 
-		<< "   $ ./pingus --verbose 0\n" 
-		<< "-----------------------------------------------------------------\n" 
+      std::cout << 
+	           _("-----------------------------------------------------------------\n")
+		<< std::endl;
+      std::cout << 
+		   _(" Verbosity set to: ") << verbose  << "\n"
+		<< std::endl;
+      std::cout << 
+		   _(" If you don't like to get lots of debug messages, than set the\n"
+		     " verbosity down to 0, like this:\n\n"
+		     "   $ ./pingus --verbose 0\n"
+		     "-----------------------------------------------------------------\n")
 		<< std::endl;
     }
 

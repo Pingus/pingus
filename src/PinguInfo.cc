@@ -1,4 +1,4 @@
-//  $Id: PinguInfo.cc,v 1.8 2001/11/30 09:11:17 grumbel Exp $
+//  $Id: PinguInfo.cc,v 1.9 2001/12/05 09:15:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,7 +23,12 @@
 #include "PinguAction.hh"
 #include "PingusResource.hh"
 #include "PinguInfo.hh"
+
+/* Headers needed for i18n / gettext */
+#include <clocale>
+#include <config.h>
 #include "my_gettext.hh"
+
 
 PinguInfo::PinguInfo()
 {

@@ -1,4 +1,4 @@
-//  $Id: Credits.cc,v 1.19 2001/11/18 12:43:18 grumbel Exp $
+//  $Id: Credits.cc,v 1.20 2001/12/05 09:15:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,13 +17,18 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "my_gettext.hh"
 
 #include "DeltaManager.hh"
 #include "Display.hh"
 #include "PingusSound.hh"
 #include "PingusResource.hh"
 #include "Credits.hh"
+
+/* Headers needed for i18n / gettext */
+#include <clocale>
+#include <config.h>
+#include "my_gettext.hh"
+
 
 Credits credit_screen;
 

@@ -1,4 +1,4 @@
-//  $Id: FPSCounter.cc,v 1.5 2001/05/18 19:17:08 grumbel Exp $
+//  $Id: FPSCounter.cc,v 1.6 2001/12/05 09:15:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,10 @@
 #include <ClanLib/core.h>
 #include "PingusResource.hh"
 #include "FPSCounter.hh"
+
+/* Headers needed for i18n / gettext */
+#include <clocale>
+#include <config.h>
 #include "my_gettext.hh"
 
 FPSCounter fps_counter;

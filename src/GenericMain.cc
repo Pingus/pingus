@@ -1,4 +1,4 @@
-//  $Id: GenericMain.cc,v 1.13 2001/11/30 09:11:16 grumbel Exp $
+//  $Id: GenericMain.cc,v 1.14 2001/12/05 09:15:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,13 +17,8 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <config.h>
 
 #include <iostream>
-
-#include <clocale>
-
-#include "my_gettext.hh"
 
 #include <ClanLib/core.h>
 #include <ClanLib/jpeg.h>
@@ -33,6 +28,12 @@
 #include "war/WarMain.hh"
 #include "PingusMain.hh"
 #include "GenericMain.hh"
+
+/* Headers needed for i18n / gettext */
+#include <clocale>
+#include <config.h>
+#include "my_gettext.hh"
+
 
 GenericMain my_app; // notice this line. It creates the global instance.
 
@@ -55,7 +56,7 @@ GenericMain::main(int argc, char* argv[])
 
   // Init stuff needed by gettext
 #ifdef HAVE_GETTEXT
-  std::cout << "Gettext: PACKAGE=" << PACKAGE  << ", LOCALEDIR=" << LOCALEDIR << std::endl;
+  std::cout << _("Gettext: PACKAGE=") << PACKAGE  << _(", LOCALEDIR=") << LOCALEDIR << std::endl;
   // FIXME: We try to read from the install directory, even if we are
   // not installed
   bindtextdomain (PACKAGE, LOCALEDIR);
@@ -69,7 +70,7 @@ GenericMain::main(int argc, char* argv[])
   CL_SetupJPEG::init ();
 
   std::cout << std::string(_("Starting Pingus ")) + VERSION  << std::endl;
-  std::cout << "Build:" << __TIME__ << " " << __DATE__ << std::endl;
+  std::cout << _("Build:") << __TIME__ << " " << __DATE__ << std::endl;
 
 
   if (System::basename(argv[0]) == "warpingus")
@@ -82,8 +83,8 @@ GenericMain::main(int argc, char* argv[])
     }
   else
     {
-      std::cout << "GenericMain: Executable name \"" 
-		<< argv[0] << "\" unknown, default to Pingus mode" << std::endl;
+      std::cout << _("GenericMain: Executable name \"") 
+		<< argv[0] << _("\" unknown, default to Pingus mode") << std::endl;
       main_obj = new PingusMain();
     }
 

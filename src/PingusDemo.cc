@@ -1,4 +1,4 @@
-//  $Id: PingusDemo.cc,v 1.5 2000/03/10 19:33:29 grumbel Exp $
+//  $Id: PingusDemo.cc,v 1.6 2001/12/05 09:15:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,12 @@
 #include "PingusDemo.hh"
 #include "PingusError.hh"
 
+/* Headers needed for i18n / gettext */
+#include <clocale>
+#include <config.h>
+#include "my_gettext.hh"
+
+
 PingusDemo::PingusDemo()
 {
 }
@@ -44,12 +50,12 @@ PingusDemo::open(std::string filename, PingusDemoMode mode)
       in.open(filename.c_str());
     
       if (!in) 
-	throw PingusError("PingusDemo: Couldn't open out file: " + filename);
+	throw PingusError(_("PingusDemo: Couldn't open out file: ") + filename);
       break;
     case (PingusDemoMode)record:
       out.open(filename.c_str());
       if (!out) 
-	throw PingusError("PingusDemo: Couldn't open in file: " + filename);
+	throw PingusError(_("PingusDemo: Couldn't open in file: ") + filename);
       break;
     }
 }

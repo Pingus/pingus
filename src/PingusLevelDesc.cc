@@ -1,4 +1,4 @@
-//  $Id: PingusLevelDesc.cc,v 1.24 2001/11/30 09:11:17 grumbel Exp $
+//  $Id: PingusLevelDesc.cc,v 1.25 2001/12/05 09:15:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,12 +21,16 @@
 #include <cstdio>
 #include <string>
 
-#include "my_gettext.hh"
-
 #include "Display.hh"
 #include "PingusResource.hh"
 #include "PingusLevelDesc.hh"
 #include "System.hh"
+
+/* Headers needed for i18n / gettext */
+#include <clocale>
+#include <config.h>
+#include "my_gettext.hh"
+
 
 PingusLevelDesc::PingusLevelDesc(boost::shared_ptr<PLF> arg_plf,
 				 boost::shared_ptr<Controller> arg_controller)
