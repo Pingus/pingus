@@ -1,4 +1,4 @@
-//  $Id: bridger.cxx,v 1.2 2002/06/19 15:19:26 torangan Exp $
+//  $Id: bridger.cxx,v 1.3 2002/06/24 09:40:59 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -60,6 +60,8 @@ Bridger::init(void)
 			"pingus", 15.0f, Sprite::NONE, Sprite::ONCE);
   build_sprite.set_align_center_bottom ();
   walk_sprite.set_align_center_bottom ();
+
+  last_pos = pingu->pos;
 }
 
 void
@@ -102,6 +104,8 @@ Bridger::update(float delta)
       update_walk (delta);
       break;
     }
+
+  last_pos = pingu->pos;
 }
 
 void
@@ -118,8 +122,11 @@ Bridger::update_walk (float delta)
 	 }
       else // We reached a wall...
 	 {
-           // Let Walker sort out change of direction
-	   is_finished = true;
+           // Let Walker sort out change of direction (so that in case
+           // of a climber, we would start to climb instead of direction change)
+	   pingu->set_action ("walker");
+	   pingu->pos = last_pos;
+	   return;
 	 }
     }
   else
@@ -157,29 +164,9 @@ Bridger::update_build (float delta)
 bool
 Bridger::way_is_free()
 {
-  bool ret_val;
-  
-  if (rel_getpixel(4,2) == ColMap::NOTHING)
-    {
-      ret_val = true;
-    }
-  else
-    {
-      //cout << "Touched a wall" << endl;
-      return false;
-    }
-
-  if (!head_collision_on_walk(4, 2))
-    {
-      ret_val = true;
-    }
-  else
-    {
-      //cout << "Ouch, my head" << endl;
-      return false;
-    }
-
-  return ret_val;
+  return (rel_getpixel(4,2) == ColMap::NOTHING)
+    && !head_collision_on_walk(4, 2)
+    && !head_collision_on_walk(8, 4);
 }
 
 void

@@ -1,4 +1,4 @@
-//  $Id: pingu.cxx,v 1.8 2002/06/23 19:16:41 torangan Exp $
+//  $Id: pingu.cxx,v 1.9 2002/06/24 09:40:58 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -247,7 +247,8 @@ Pingu::update_persistent(float /*delta*/)
 	{
 	  if (persist[i]->get_type() == (ActionType)FALL) 
 	    {
-              set_paction(persist[i]->get_name());
+	      // FIXME: Use action slots instead of the persistend vector
+              set_paction("floater");
 	    }
 	}
     }

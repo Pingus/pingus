@@ -1,4 +1,4 @@
-//  $Id: blitter.cxx,v 1.8 2002/06/23 19:16:41 torangan Exp $
+//  $Id: blitter.cxx,v 1.9 2002/06/24 09:40:58 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -336,7 +336,7 @@ Blitter::create_canvas(CL_SurfaceProvider* prov)
 	
 	for (int si = 0, ti = 0; si < buffer_size; si += 3, ti += 4)
 	  {
-	    tbuffer[ti + 0] = 0;
+	    tbuffer[ti + 0] = 255; // Alpha
 	    tbuffer[ti + 1] = sbuffer[si + 0];
 	    tbuffer[ti + 2] = sbuffer[si + 1];
 	    tbuffer[ti + 3] = sbuffer[si + 2];

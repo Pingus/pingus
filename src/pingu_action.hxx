@@ -1,4 +1,4 @@
-//  $Id: pingu_action.hxx,v 1.1 2002/06/12 19:06:12 grumbel Exp $
+//  $Id: pingu_action.hxx,v 1.2 2002/06/24 09:40:58 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -58,7 +58,13 @@ public:
   /// Gives the PinguAction class access to the data of the Pingu.
   void set_pingu(Pingu*);
 
-  /// Get the pixel from the colmap, relative to the pingu position. 
+  /** Get the pixel from the colmap, relative to the pingu position.
+
+      @param x x is relative to the direction, so 1 is the pixel
+      infront of the pingu
+
+      @param y 1 is up, -1 is down
+   */
   int  rel_getpixel(int x, int y);
 
   /** Returns the enviroment, used to check if an action can be

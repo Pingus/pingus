@@ -1,4 +1,4 @@
-//  $Id: bridger.hxx,v 1.2 2002/06/19 15:19:26 torangan Exp $
+//  $Id: bridger.hxx,v 1.3 2002/06/24 09:40:59 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #ifndef BRIDGER_HH
 #define BRIDGER_HH
 
+#include <ClanLib/Core/Math/cl_vector.h>
 #include "../game_counter.hxx"
 #include "../pingu_action.hxx"
 #include "../sprite.hxx"
@@ -43,6 +44,8 @@ private:
   //int step;
   //int do_steps;
   bool block_build;
+
+  CL_Vector last_pos;
 
   enum Mode { B_WALKING, B_BUILDING } mode;
 public:
