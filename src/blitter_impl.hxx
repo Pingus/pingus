@@ -180,24 +180,21 @@ struct transform_rot270_flip
 
 template<class TransF>
 inline
-CL_Surface modify(const CL_Surface& sur, const TransF&)
+CL_PixelBuffer modify(CL_PixelBuffer prov, const TransF&)
 {
-  CL_PixelBuffer prov = sur.get_pixeldata();
-
   if (prov.get_format().get_type() ==  pixelformat_index)
     {
-#if CLANLIB_0_6
-      // FIXME: Needs indexed pixelbuffer
-      CL_PixelBuffer canvas(TransF::get_width (pwidth, pheight),
-                            TransF::get_height(pwidth, pheight));
-
-      if (prov.get_format().has_colorkey())
-        canvas.get_format().set_colorkey(prov.get_format().get_colorkey());
+      CL_PixelFormat format(8, 0, 0, 0, 0, 
+                            prov.get_format().has_colorkey(), prov.get_format().get_colorkey(),
+                            pixelformat_index);
+      
+      CL_PixelBuffer canvas(TransF::get_width (prov.get_width(), prov.get_height()), 
+                            TransF::get_height(prov.get_width(), prov.get_height()),
+                            TransF::get_width (prov.get_width(), prov.get_height()),
+                            format, prov.get_palette());
 
       prov.lock ();
       canvas.lock ();
-
-      canvas.set_palette(prov.get_palette());
 
       unsigned char* source_buf = static_cast<unsigned char*>(prov.get_data());
       unsigned char* target_buf = static_cast<unsigned char*>(canvas.get_data());
@@ -213,13 +210,12 @@ CL_Surface modify(const CL_Surface& sur, const TransF&)
 
       canvas.unlock ();
       prov.unlock ();
-      return CL_Surface(new CL_PixelBuffer(&canvas), true);
-#endif
-      return CL_Surface();
+      
+      return canvas;
     }
   else
     {
-      CL_PixelBuffer canvas(sur.get_height(), sur.get_width(), sur.get_width()*4, CL_PixelFormat::rgba8888);
+      CL_PixelBuffer canvas(prov.get_height(), prov.get_width(), prov.get_width()*4, CL_PixelFormat::rgba8888);
 
       prov.lock();
       canvas.lock();
@@ -227,8 +223,8 @@ CL_Surface modify(const CL_Surface& sur, const TransF&)
       int pwidth  = prov.get_width();
       int pheight = prov.get_height();
       
-      for (int y = 0; y < sur.get_height (); ++y)
-        for (int x = 0; x < sur.get_width (); ++x)
+      for (int y = 0; y < prov.get_height (); ++y)
+        for (int x = 0; x < prov.get_width (); ++x)
           {
             CL_Color color = prov.get_pixel(x, y);
             canvas.draw_pixel(TransF::get_x(pwidth, pheight, x, y),
@@ -238,7 +234,8 @@ CL_Surface modify(const CL_Surface& sur, const TransF&)
 
       canvas.unlock ();
       prov.unlock ();
-      return CL_Surface(new CL_PixelBuffer(canvas), true);
+
+      return canvas;
     }
 }
 

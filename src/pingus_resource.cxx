@@ -129,24 +129,24 @@ PingusResource::load_sprite_desc(const std::string& res_name,
 }
 
 CL_PixelBuffer
-PingusResource::load_pixelbuffer(const ResDescriptor& desc)
+PingusResource::load_pixelbuffer(const ResDescriptor& desc_)
 {
-  return load_pixelbuffer(desc.res_name, desc.datafile);
+  CL_SpriteDescription desc = load_sprite_desc(desc_.res_name, desc_.datafile);
+
+  if (desc.get_frames().size() == 0)
+    {
+      std::cout << "Error: load_pixelbuffer: " << desc_.res_name << " " << desc_.datafile << std::endl;
+      assert(0);
+    }
+
+  return apply_modifier_to_pixelbuffer(*desc.get_frames().begin()->first, desc_);
 }
 
 CL_PixelBuffer
 PingusResource::load_pixelbuffer(const std::string& res_name,
-                                      const std::string& datafile)
+                                 const std::string& datafile)
 {
-  CL_SpriteDescription desc = load_sprite_desc(res_name, datafile);
-
-  if (desc.get_frames().size() == 0)
-    {
-      std::cout << "Error: load_pixelbuffer: " << res_name << " " << datafile << std::endl;
-      assert(0);
-    }
-
-  return *desc.get_frames().begin()->first;
+  return load_pixelbuffer(ResDescriptor(res_name, datafile));
 }
 
 CL_Surface
@@ -205,39 +205,75 @@ PingusResource::load_from_cache (const ResDescriptor& res_desc)
     }
 }
 
-CL_Surface
-PingusResource::apply_modifier (const CL_Surface& surf, const ResDescriptor& res_desc)
+CL_PixelBuffer
+PingusResource::apply_modifier_to_pixelbuffer(CL_PixelBuffer prov, const ResDescriptor& res_desc)
 {
   switch (res_desc.modifier)
     {
-      // FIXME: muahhhaa... I write slower code than you....
     case ResourceModifierNS::ROT0:
-      return surf;
+      return prov;
 
     case ResourceModifierNS::ROT90:
-      return Blitter::rotate_90(surf);
+      return Blitter::rotate_90(prov);
 
     case ResourceModifierNS::ROT180:
-      return Blitter::rotate_180(surf);
+      return Blitter::rotate_180(prov);
 
     case ResourceModifierNS::ROT270:
-      return Blitter::rotate_270(surf);
+      return Blitter::rotate_270(prov);
 
     case ResourceModifierNS::ROT0FLIP:
-      return Blitter::flip_horizontal(surf);
+      return Blitter::flip_horizontal(prov);
 
     case ResourceModifierNS::ROT90FLIP:
-      return Blitter::rotate_90_flip(surf);
+      return Blitter::rotate_90_flip(prov);
 
     case ResourceModifierNS::ROT180FLIP:
-      return Blitter::rotate_180_flip(surf);
+      return Blitter::rotate_180_flip(prov);
 
     case ResourceModifierNS::ROT270FLIP:
-      return Blitter::rotate_270_flip(surf);
+      return Blitter::rotate_270_flip(prov);
 
     default:
       perr << "PingusResource: Unhandled modifier: " << res_desc.modifier << std::endl;
-      return surf;
+      return prov;
+    }
+}
+
+CL_Surface
+PingusResource::apply_modifier (const CL_Surface& surf, const ResDescriptor& res_desc)
+{
+  CL_PixelBuffer prov = surf.get_pixeldata();
+
+  switch (res_desc.modifier)
+    {
+    case ResourceModifierNS::ROT0:
+      return CL_Surface(new CL_PixelBuffer(prov), true);
+
+    case ResourceModifierNS::ROT90:
+      return CL_Surface(new CL_PixelBuffer(Blitter::rotate_90(prov)), true);
+
+    case ResourceModifierNS::ROT180:
+      return CL_Surface(new CL_PixelBuffer(Blitter::rotate_180(prov)), true);
+                        
+    case ResourceModifierNS::ROT270:
+      return CL_Surface(new CL_PixelBuffer(Blitter::rotate_270(prov)), true);
+
+    case ResourceModifierNS::ROT0FLIP:
+      return CL_Surface(new CL_PixelBuffer(Blitter::flip_horizontal(prov)), true);
+
+    case ResourceModifierNS::ROT90FLIP:
+      return CL_Surface(new CL_PixelBuffer(Blitter::rotate_90_flip(prov)), true);
+
+    case ResourceModifierNS::ROT180FLIP:
+      return CL_Surface(new CL_PixelBuffer(Blitter::rotate_180_flip(prov)), true);
+
+    case ResourceModifierNS::ROT270FLIP:
+      return CL_Surface(new CL_PixelBuffer(Blitter::rotate_270_flip(prov)), true);
+
+    default:
+      perr << "PingusResource: Unhandled modifier: " << res_desc.modifier << std::endl;
+      return CL_Surface(new CL_PixelBuffer(prov), true);
     }
 }
 

@@ -85,23 +85,23 @@ public:
   static CL_Surface scale_surface (const CL_Surface& sur, int width, int height);
 
   /** Flip a surface horizontal */
-  static CL_Surface flip_horizontal (const CL_Surface& sur);
+  static CL_PixelBuffer flip_horizontal (CL_PixelBuffer sur);
 
   /** Flip a surface vertical */
-  static CL_Surface flip_vertical (const CL_Surface& sur);
+  static CL_PixelBuffer flip_vertical (CL_PixelBuffer sur);
 
   /** Rotate a surface 90 degrees */
-  static CL_Surface rotate_90 (const CL_Surface& sur);
+  static CL_PixelBuffer rotate_90 (CL_PixelBuffer sur);
 
-  static CL_Surface rotate_180 (const CL_Surface& sur);
+  static CL_PixelBuffer rotate_180 (CL_PixelBuffer sur);
 
-  static CL_Surface rotate_270 (const CL_Surface& sur);
+  static CL_PixelBuffer rotate_270 (CL_PixelBuffer sur);
 
-  static CL_Surface rotate_90_flip (const CL_Surface& sur);
+  static CL_PixelBuffer rotate_90_flip (CL_PixelBuffer sur);
 
-  static CL_Surface rotate_180_flip (const CL_Surface& sur);
+  static CL_PixelBuffer rotate_180_flip (CL_PixelBuffer sur);
 
-  static CL_Surface rotate_270_flip (const CL_Surface& sur);
+  static CL_PixelBuffer rotate_270_flip (CL_PixelBuffer sur);
 
   /** Creates a new canvas with the given width and height and
       stretches the source surface onto it, the caller is responsible

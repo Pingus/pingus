@@ -70,6 +70,8 @@ void
 Blitter::put_surface_8bit(CL_PixelBuffer target, CL_PixelBuffer source,
                           int x_pos, int y_pos)
 {
+  //std::cout << "8bit blit" << std::endl;
+
   assert(target.get_format().get_depth() == 32);
 
   target.lock();
@@ -110,6 +112,10 @@ Blitter::put_surface_8bit(CL_PixelBuffer target, CL_PixelBuffer source,
                   *tptr++ = palette.colors[*sptr].get_green();
                   *tptr++ = palette.colors[*sptr].get_red();
                 }
+              else
+                {
+                  tptr += 4;
+                }
               sptr += 1;
             }
         }
@@ -141,6 +147,8 @@ void
 Blitter::put_surface_32bit(CL_PixelBuffer target, CL_PixelBuffer source,
 			   const int x_pos, const int y_pos)
 {
+  //std::cout << "32bit blit" << std::endl;
+
   target.lock();
   source.lock();
 
@@ -601,25 +609,23 @@ Blitter::convert_to_emptyprovider(CL_PixelBuffer& sprov)
 */
 
 /** Flip a surface horizontal */
-CL_Surface
-Blitter::flip_horizontal (const CL_Surface& sur)
+CL_PixelBuffer
+Blitter::flip_horizontal (CL_PixelBuffer prov)
 {
-  return BlitterImpl::modify(sur, BlitterImpl::transform_flip());
+  return BlitterImpl::modify(prov, BlitterImpl::transform_flip());
 }
 
 /** Flip a surface vertical */
-CL_Surface
-Blitter::flip_vertical (const CL_Surface& sur)
+CL_PixelBuffer
+Blitter::flip_vertical (CL_PixelBuffer sur)
 {
   return BlitterImpl::modify(sur, BlitterImpl::transform_rot180_flip());
 }
 
 /** Rotate a surface 90 degrees */
-CL_Surface
-Blitter::rotate_90 (const CL_Surface& sur)
+CL_PixelBuffer
+Blitter::rotate_90 (CL_PixelBuffer prov)
 {
-  CL_PixelBuffer prov = sur.get_pixeldata();
-
   if (prov.get_format().get_type() ==  pixelformat_index)
     {
       //std::cout << "Using indexed blitter" << std::endl;
@@ -646,61 +652,59 @@ Blitter::rotate_90 (const CL_Surface& sur)
       canvas.unlock();
       prov.unlock();
 
-      return CL_Surface(new CL_PixelBuffer(canvas), true);
+      return canvas;
     }
   else
     {
-      CL_PixelBuffer canvas(sur.get_height (), sur.get_width (), sur.get_height()*4, CL_PixelFormat::rgba8888);
+      CL_PixelBuffer canvas(prov.get_height (), prov.get_width (), prov.get_height()*4, CL_PixelFormat::rgba8888);
 
       prov.lock ();
       canvas.lock ();
 
       CL_Color color;
-      for (int y = 0; y < sur.get_height (); ++y)
-        for (int x = 0; x < sur.get_width (); ++x)
+      for (int y = 0; y < prov.get_height (); ++y)
+        for (int x = 0; x < prov.get_width (); ++x)
           {
             color = prov.get_pixel (x, y);
-            canvas.draw_pixel (sur.get_height () - 1 - y, x , color);
+            canvas.draw_pixel (prov.get_height () - 1 - y, x , color);
           }
 
       canvas.unlock ();
       prov.unlock ();
-      return CL_Surface(new CL_PixelBuffer(canvas), true);
+
+      return canvas;
     }
 }
 
 
-CL_Surface
-Blitter::rotate_180 (const CL_Surface& sur)
+CL_PixelBuffer
+Blitter::rotate_180 (CL_PixelBuffer sur)
 {
   return BlitterImpl::modify(sur, BlitterImpl::transform_rot180());
 }
 
-CL_Surface
-Blitter::rotate_270 (const CL_Surface& sur)
+CL_PixelBuffer
+Blitter::rotate_270 (CL_PixelBuffer sur)
 {
   return BlitterImpl::modify(sur, BlitterImpl::transform_rot270());
 }
 
-CL_Surface
-Blitter::rotate_90_flip (const CL_Surface& sur)
+CL_PixelBuffer
+Blitter::rotate_90_flip (CL_PixelBuffer sur)
 {
   return BlitterImpl::modify(sur, BlitterImpl::transform_rot90_flip());
-  //return Blitter::flip_horizontal(Blitter::rotate_90(sur));
 }
 
-CL_Surface
-Blitter::rotate_180_flip (const CL_Surface& sur)
+CL_PixelBuffer
+Blitter::rotate_180_flip (CL_PixelBuffer sur)
 {
   return BlitterImpl::modify(sur, BlitterImpl::transform_rot180_flip());
-  //return Blitter::flip_horizontal(Blitter::rotate_180(sur));
 }
 
-CL_Surface
-Blitter::rotate_270_flip (const CL_Surface& sur)
+CL_PixelBuffer
+Blitter::rotate_270_flip (CL_PixelBuffer sur)
 {
   return BlitterImpl::modify(sur, BlitterImpl::transform_rot270_flip());
-  //return Blitter::flip_horizontal(Blitter::rotate_270(sur));
 }
 
 } // namespace Pingus

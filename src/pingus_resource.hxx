@@ -36,11 +36,12 @@ class PingusResource
 private:
   static std::map<std::string, CL_ResourceManager> resource_map;
   static std::map<ResDescriptor, CL_Surface> surface_map;
-  static std::map<ResDescriptor, CL_Font> font_map;
+  static std::map<ResDescriptor, CL_Font>    font_map;
 
   static CL_Surface load_from_source (const ResDescriptor& res_desc);
   static CL_Surface load_from_cache (const ResDescriptor& res_desc);
   static CL_Surface apply_modifier (const CL_Surface&, const ResDescriptor& res_desc);
+  static CL_PixelBuffer apply_modifier_to_pixelbuffer(CL_PixelBuffer, const ResDescriptor& res_desc);
 
 public:
   static void init();
