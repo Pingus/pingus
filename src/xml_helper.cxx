@@ -1,4 +1,4 @@
-//  $Id: xml_helper.cxx,v 1.9 2002/08/04 19:57:15 grumbel Exp $
+//  $Id: xml_helper.cxx,v 1.10 2002/08/14 12:00:05 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -210,11 +210,8 @@ XMLhelper::parse_surface(xmlDocPtr doc, xmlNodePtr cur)
 		    }
 		  else
 		    {
-		      std::cout << __FILE__ ":"
-#ifndef _MSC_VER
-				<<__FUNCTION__ << ":" 
-#endif
-				<< __LINE__ << ": unhandled: " << ccur->name << std::endl;
+		      std::cout << "XMLhelper::parse_surface: "
+				<< ": unhandled: " << ccur->name << std::endl;
 		    }
 		  ccur = ccur->next;
 		}
