@@ -28,3 +28,7 @@ ground : (resource:global.dat)GroundPieces/Foliage/smallbush : 949 : 350;
 ground : (resource:global.dat)GroundPieces/Foliage/smallbush2 : 842 : 188;
 ground : (resource:global.dat)GroundPieces/Foliage/smallbush3 : 948 : 274;
 ground : (resource:global.dat)GroundPieces/Foliage/midtree2 : 630 : 331;
+ground : (resource:global.dat)GroundPieces/Foliage/turfconcave : 297 : 497;
+ground : (resource:global.dat)GroundPieces/Foliage/turftufty : 624 : 538;
+ground : (resource:global.dat)GroundPieces/Foliage/turfflat : 649 : 504;
+ground : (resource:global.dat)GroundPieces/Foliage/turfslopeleft : 356 : 494;
