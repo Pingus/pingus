@@ -267,6 +267,10 @@ time_display.cxx \
 time_display.hxx \
 timer.cxx \
 timer.hxx \
+gettext.h \
+gettext.cxx \
+tinygettext.cxx \
+tinygettext.hxx \
 true_server.cxx \
 true_server.hxx \
 vector.cxx \

@@ -40,9 +40,8 @@ class Groundpiece : public WorldObj
 {
 private:
   Vector        pos;
-
+  ResDescriptor desc;
   Groundtype::GPType gptype;
-  CL_Sprite surface;
 
 public:
   Groundpiece(const FileReader& reader);

@@ -43,20 +43,9 @@ XMLPingusLevel::XMLPingusLevel(const std::string& filename)
 
   CL_DomElement root = doc.get_document_element();
 
-  int version = 0;
-  {
-    CL_DomNode node = root.get_attributes().get_named_item("version");
-    if (node.is_attr())
-      version = CL_String::to_int(node.to_attr().get_node_value());
-  }
-  
   if (root.get_tag_name() != "pingus-level")
     {
       PingusError::raise("Error: " + filename + ": not a <pingus-level> file");
-    }
-  else if (version != 1)
-    {
-      PingusError::raise("Error: Can only handle level files of version 1, use pingusv0tov1.xsl to convert them");
     }
   else 
     {
@@ -66,7 +55,17 @@ XMLPingusLevel::XMLPingusLevel(const std::string& filename)
         {
           CL_DomElement node = lst.item(i).to_element();
 
-          if (node.get_tag_name() == "head")
+          if (node.get_tag_name() == "version")
+            {
+              int version = CL_String::to_int(node.get_first_child().get_node_value());
+              
+              if (version < 2)
+                {
+                  PingusError::raise("Error: Level version is " + node.get_node_value()
+                                     + ", can only handle level files of version 2 or larger, use pingusv0tov1.xsl to convert them");
+                }
+            }
+          else if (node.get_tag_name() == "head")
             {
               // FIXME: Move default stuff to pingus_level_impl
               impl->ambient_light = CL_Colorf(1.0f, 1.0f, 1.0f, 1.0f);
@@ -109,7 +108,7 @@ XMLPingusLevel::XMLPingusLevel(const std::string& filename)
             }
         }
     }
-}
+  }
 
 } // namespace Pingus
 

@@ -29,15 +29,10 @@ namespace WorldObjs {
 
 Groundpiece::Groundpiece(const FileReader& reader)
 {
-  ResDescriptor desc;
-
   reader.read_vector("position", pos);
   reader.read_desc  ("surface",  desc);
-
-  surface = Resource::load_sprite(desc);
-
+  
   gptype = Groundtype::GP_GROUND;
-
   reader.read_enum("type", gptype, &Groundtype::string_to_type);
 
   // FIXME: we don't need to load surfaces here, providers would be

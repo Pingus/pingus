@@ -590,35 +590,10 @@ PingusMain::init_path_finder()
       exit(EXIT_FAILURE);
     }
 
-#ifdef HAVE_GETTEXT
-  if (maintainer_mode)
-    std::cout << "Setting gettext path to: " << path_manager.get_base_path () + "/../../locale" << std::endl;
-  const char* ret;
-
-  if ((ret = setlocale (LC_MESSAGES, "")) == NULL)
-    {
-      std::cout << "ERROR: setlocale LC_MESSAGES failed!" <<  std::endl;
-    }
-  else
-    {
-      if (maintainer_mode)
-        std::cout << "setlocale returned '" << ret << "'" << std::endl;
-    }
-
-#ifndef WIN32
-  bindtextdomain(PACKAGE, path_manager.complete("/../../locale/").c_str());
-#else
-  bindtextdomain(PACKAGE, path_manager.complete("../locale/").c_str());
-#endif
-
-  // We use another LOCALEDIR to make static binaries possible
-  // bindtextdomain (PACKAGE, LOCALEDIR);
-  textdomain(PACKAGE);
-
-  // Forcing codeset to ISO-8859-1, since usage of
-  // setlocate(LC_CTYPE,"") causes all sorts of throuble
-  bind_textdomain_codeset(PACKAGE, "ISO-8859-1");
-#endif
+  dictionary_manager.add_directory(path_manager.complete("po/"));
+  // Language is automatically picked from env variable
+  dictionary_manager.set_language("de"); 
+  dictionary_manager.set_charset("ISO-8859-1");
 
   if (maintainer_mode)
     std::cout << "BasePath: " << path_manager.get_base_path () << std::endl;
