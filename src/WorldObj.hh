@@ -1,4 +1,4 @@
-//  $Id: WorldObj.hh,v 1.20 2001/08/15 07:35:29 grumbel Exp $
+//  $Id: WorldObj.hh,v 1.21 2001/12/01 17:53:56 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -60,7 +60,7 @@ public:
    *  @param y the $y$-coordinate of this object
    *  @param s the scalar by with the object is zoomed (1.0 is default)
    */
-  virtual void draw_offset(int x, int y, float s = 1.0) {}
+  virtual void draw_offset(int x, int y, float s = 1.0) { if (x || y || s); /* no warnings */}
 
   /** Draws the objects collision map to the main collision map, this
    *  can be used for traps which need a solid ground. */

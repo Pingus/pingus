@@ -1,4 +1,4 @@
-//  $Id: Intro.cc,v 1.20 2001/11/30 09:11:16 grumbel Exp $
+//  $Id: Intro.cc,v 1.21 2001/12/01 17:53:56 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -67,8 +67,8 @@ Intro::draw()
       break;
     }
 
-  logo.put_screen (pos.x - (logo.get_width ()/2),
-		   pos.y - (logo.get_height ()/2));
+  logo.put_screen ((int)pos.x - (logo.get_width ()/2),
+		   (int)pos.y - (logo.get_height ()/2));
 }
 
 void 
