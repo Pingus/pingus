@@ -1,4 +1,4 @@
-//  $Id: pingu_action.cxx,v 1.10 2002/10/20 18:28:49 torangan Exp $
+//  $Id: pingu_action.cxx,v 1.11 2002/10/28 15:41:42 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -79,6 +79,26 @@ PinguAction::head_collision_on_walk (int x, int y)
   return false;
 }
 
+bool
+PinguAction::collision_on_walk (int x, int y)
+{
+  bool collision = false;
+  int pixel = Groundtype::GP_NOTHING;
+
+  for (int pingu_y = 0; pingu_y <= pingu_height; ++pingu_y)
+    {
+      pixel = rel_getpixel(x, y + pingu_y);
+
+      if (pixel != Groundtype::GP_NOTHING && pixel != Groundtype::GP_BRIDGE)
+	{
+	  collision = true;
+	  break;
+	}
+    }
+
+  return collision;
+}
+
 void
 PinguAction::move_with_forces (float x_to_add, float y_to_add)
 {
@@ -121,9 +141,11 @@ PinguAction::move_with_forces (float x_to_add, float y_to_add)
       y_inc = denominator;
     }
 
+  Vector force_counter = resultant_force;
+
   // Keep moving the Pingu until there is only a fraction left
-  while (resultant_force.x <= -1 || resultant_force.x >= 1
-	  || resultant_force.y <= -1 || resultant_force.y >= 1)
+  while (force_counter.x <= -1 || force_counter.x >= 1
+	  || force_counter.y <= -1 || force_counter.y >= 1)
     {
       x_numerator += x_inc;
 
@@ -134,29 +156,55 @@ PinguAction::move_with_forces (float x_to_add, float y_to_add)
 	  x_numerator -= denominator;
 
 	  // Move the Pingu depending on what the direction of the force is
-	  if (resultant_force.x >= 1)
+	  if (force_counter.x >= 1)
 	    {
-	      // Check what is to the right of the Pingu
-	      if (rel_getpixel(pingu->direction, 0) != Groundtype::GP_NOTHING
-		    || head_collision_on_walk(pingu->direction, 0))
+	      // If there is something to the right of the Pingu
+	      if (collision_on_walk(pingu->direction, 0))
 		{
-		  break;
-		}
+		  // Make it so that the Pingu won't go right any further.
+		  force_counter.x = 0;
+		  resultant_force.x = 0;
 
-	      pingu->set_x(pingu->get_x() + 1);
-	      resultant_force.x--;
+		  // Stop Pingu from still going up
+		  if (force_counter.y < 0)
+		    {
+		      force_counter.y = 0;
+		      resultant_force.y = 0;
+		    }
+
+		  pingu->set_velocity(resultant_force);
+		}
+	      else
+		{
+		  // Move the Pingu right
+		  pingu->set_x(pingu->get_x() + 1);
+		  force_counter.x--;
+		}
 	    }
-	  else if (resultant_force.x <= -1)
+	  else if (force_counter.x <= -1)
 	    {
-	      // Check what is to the left of the Pingu
-	      if (rel_getpixel(-(pingu->direction), 0) != Groundtype::GP_NOTHING
-		    || head_collision_on_walk(-(pingu->direction), 0) )
+	      // If there is something to the left of the Pingu
+	      if (collision_on_walk(-(pingu->direction), 0))
 		{
-		  break;
-		}
+		  // Make it so that the Pingu won't go left any further.
+		  force_counter.x = 0;
+		  resultant_force.x = 0;
 
-	      pingu->set_x(pingu->get_x() - 1);
-	      resultant_force.x++;
+		  // Stop Pingu from still going up
+		  if (force_counter.y < 0)
+		    {
+		      force_counter.y = 0;
+		      resultant_force.y = 0;
+		    }
+
+		  pingu->set_velocity(resultant_force);
+		}
+	      else
+		{
+		  // Move the Pingu left
+		  pingu->set_x(pingu->get_x() - 1);
+		  force_counter.x++;
+		}
 	    }
 	}
 
@@ -169,21 +217,41 @@ PinguAction::move_with_forces (float x_to_add, float y_to_add)
 	  y_numerator -= denominator;
 
 	  // Move the Pingu depending on what the direction of the force is
-	  if (resultant_force.y >= 1)
+	  if (force_counter.y >= 1)
 	    {
+	      // If there is something below the Pingu
 	      if (rel_getpixel(0, -1) != Groundtype::GP_NOTHING)
-		break;
+		{
+		  // Make it so that the Pingu won't go down any further.
+		  force_counter.y = 0;
+		  resultant_force.y = 0;
 
-	      pingu->set_y(pingu->get_y() + 1);
-	      resultant_force.y--;
+		  pingu->set_velocity(resultant_force);
+		}
+	      else
+		{
+		  // Move the Pingu down
+		  pingu->set_y(pingu->get_y() + 1);
+		  force_counter.y--;
+		}
 	    }
-	  else if (resultant_force.y <= -1)
+	  else if (force_counter.y <= -1)
 	    {
+	      // If there is something in the way above the Pingu
 	      if (head_collision_on_walk(0, 1))
-		break;
+		{
+		  // Make it so that the Pingu won't go up any further.
+		  force_counter.y = 0;
+		  resultant_force.y = 0;
 
-	      pingu->set_y(pingu->get_y() - 1);
-	      resultant_force.y++;
+		  pingu->set_velocity(resultant_force);
+		}
+	      else
+		{
+		  // Move the Pingu up
+		  pingu->set_y(pingu->get_y() - 1);
+		  force_counter.y++;
+		}
 	    }
 	}
     }

@@ -1,4 +1,4 @@
-//  $Id: pingu_action.hxx,v 1.22 2002/10/22 19:31:11 torangan Exp $
+//  $Id: pingu_action.hxx,v 1.23 2002/10/28 15:41:42 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -103,13 +103,16 @@ public:
   /// True if Pingu in specified position would bang its head if it were walking
   bool head_collision_on_walk (int x, int y);
   
+  /// True if Pingu in specified position would have a collision if it were walking
+  bool collision_on_walk (int x, int y);
+  
   /** Called if the action was successfully applied via request_set_action */
   virtual void on_successfull_apply () { }
 
   /** Called if the request_set_action failded to apply this action */
   virtual void on_failed_apply (Pingu*) { }
   
-  /** FIXME: document me */
+  /** Move Pingu according to the forces applied to it */
   void move_with_forces (float x_to_add, float y_to_add);
 
 private:
