@@ -1,4 +1,4 @@
-#  $Id: configure.in,v 1.13 2000/05/01 10:35:37 grumbel Exp $
+#  $Id: configure.in,v 1.14 2000/05/01 17:43:34 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -82,6 +82,11 @@ dnl LIBS="$LIBS -lHermes"
 
 
 AC_CHECK_HEADER(ClanLib/core.h,, [echo "Please get ClanLib from http://www.clanlib.org"; exit])
+
+dnl -- Testing for this libs cause some systems need them in addition
+dnl -- to clanCore and SDL 
+AC_CHECK_LIB(pthread,   main,,)
+AC_CHECK_LIB(Hermes,   main,,)
 
 dnl Checking for SDL libraries, used for sound and music support
 AC_CHECK_LIB(SDL,   main,,)
