@@ -1,4 +1,4 @@
-//  $Id: pingus.hxx,v 1.2 2002/09/11 12:45:57 grumbel Exp $
+//  $Id: pingus.hxx,v 1.3 2002/09/27 11:32:44 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,6 +30,9 @@
 
 #ifdef WIN32
 #  define for if(0);else for
+
+#  define snprintf _snprintf
+
 #  pragma warning(disable:4786)
 #endif
 
