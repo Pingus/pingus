@@ -1,4 +1,4 @@
-//  $Id: plf.hxx,v 1.3 2002/08/23 15:49:50 torangan Exp $
+//  $Id: plf.hxx,v 1.4 2002/09/14 23:31:12 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -86,16 +86,14 @@ protected:
   std::vector<WorldObjData*> worldobjs_data;
 
 public:
-  ///
   PLF();
-  ///
   virtual ~PLF();
+
+  //ResDescriptor get_foreground(void);
   ///
-  ResDescriptor get_foreground(void);
+  //ResDescriptor get_mapfile(void);
   ///
-  ResDescriptor get_mapfile(void);
-  ///
-  void set_psm_filename(std::string name);
+  //void set_psm_filename(std::string name);
   
   /** Returns the ResDescriptor where the music for this level can be
       found. The ResDescriptor points normaly to a file. */

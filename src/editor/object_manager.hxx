@@ -1,4 +1,4 @@
-//  $Id: object_manager.hxx,v 1.17 2002/09/11 12:45:58 grumbel Exp $
+//  $Id: object_manager.hxx,v 1.18 2002/09/14 23:31:12 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,7 +29,8 @@ namespace EditorNS {
 
 class EditorView;
 
-/// Manager for all level objects.
+/** Manager for all level objects. This class is kind of analog to the
+    World. */
 class ObjectManager
 {
 private:
@@ -148,6 +149,9 @@ public:
       the object has not yet been deleted */
   bool has_object (EditorObj* obj);
   
+  /** sort all objects acording to there z_position */
+  void z_pos_sort ();
+
 private:
   ObjectManager (const ObjectManager&);
   ObjectManager operator= (const ObjectManager&);

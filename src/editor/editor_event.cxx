@@ -1,4 +1,4 @@
-//  $Id: editor_event.cxx,v 1.32 2002/09/11 12:45:58 grumbel Exp $
+//  $Id: editor_event.cxx,v 1.33 2002/09/14 23:31:12 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -307,6 +307,10 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key& key)
 		object_manager->height = theight;
 	      }
 	  }
+	  break;
+
+	case CL_KEY_S:
+	  object_manager->z_pos_sort ();
 	  break;
 
 	case CL_KEY_Z: // FIXME: stupid key binding

@@ -1,4 +1,4 @@
-//  $Id: object_manager.cxx,v 1.28 2002/09/11 12:45:58 grumbel Exp $
+//  $Id: object_manager.cxx,v 1.29 2002/09/14 23:31:12 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -375,6 +375,12 @@ bool
 ObjectManager::has_object (EditorObj* obj)
 {
   return std::find (editor_objs.begin (), editor_objs.end (), obj) != editor_objs.end ();
+}
+
+void
+ObjectManager::z_pos_sort ()
+{
+  std::stable_sort(editor_objs.begin (), editor_objs.end (), EditorObj_z_pos_sorter);
 }
 
 } // namespace EditorNS

@@ -1,4 +1,4 @@
-//  $Id: spot_map.cxx,v 1.12 2002/09/11 12:45:57 grumbel Exp $
+//  $Id: spot_map.cxx,v 1.13 2002/09/14 23:31:12 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -102,22 +102,8 @@ MapTileSurface::check_empty()
 PingusSpotMap::PingusSpotMap(PLF* plf)
 {
   colmap = 0;
-
-  switch(plf->get_foreground().type) 
-    {
-    case ResDescriptor::RD_RESOURCE:
-      PingusError::raise("PingusSpotMap: ResType RESOURCE is not implemented, sorry");
-      break;
-
-    case ResDescriptor::RD_FILE:
-      load(plf);
-      gen_tiles();
-      break;
-
-    default:
-      PingusError::raise("PingusSpotMap: Unknown resource type, bailing out");
-      break;
-    }
+  load(plf);
+  gen_tiles();
 }
 
 PingusSpotMap::~PingusSpotMap(void)
@@ -154,8 +140,6 @@ PingusSpotMap::gen_tiles(void)
 void
 PingusSpotMap::load(PLF* plf)
 {
-  ResDescriptor name = plf->get_foreground();
-
   width  = plf->get_width();
   height = plf->get_height();
 
