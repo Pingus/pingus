@@ -1,4 +1,4 @@
-//  $Id: PingusSpotMap.cc,v 1.16 2000/05/03 16:34:52 grumbel Exp $
+//  $Id: PingusSpotMap.cc,v 1.17 2000/05/24 15:40:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <algorithm>
 #include <cstdio>
 
 #include "PingusResource.hh"
@@ -24,7 +25,7 @@
 #include "blitter.hh"
 #include "algo.hh"
 #include "globals.hh"
-
+#include "Timer.hh"
 #include "PingusSpotMap.hh"
 
 using namespace std;
@@ -43,6 +44,12 @@ bool
 MapTileSurface::is_empty()
 {
   return empty;
+}
+
+void
+MapTileSurface::set_empty(bool e)
+{
+  empty = e;
 }
 
 void
@@ -100,11 +107,9 @@ PingusSpotMap::PingusSpotMap(PLF* plf)
       break;
 
     case ResDescriptor::FILE:
-      if (verbose) std::cout << "PingusSpotMap: Loading..." << std::endl;
+      //if (verbose) std::cout << "PingusSpotMap: Loading... " << CL_System::get_time() << std::endl;
       load(plf);
-      if (verbose) std::cout << "PingusSpotMap: Generating Tiles..." << std::flush;
       gen_tiles();
-      if (verbose) std::cout << "done" << std::endl;    
       break;
 
     default:
@@ -131,28 +136,36 @@ PingusSpotMap::~PingusSpotMap(void)
 void
 PingusSpotMap::gen_tiles(void)
 {
+  Timer timer;
+
+  timer.start();
+
+  if (verbose) std::cout << "PingusSpotMap: Generating Tiles..." << std::flush;
+
   if (verbose > 1) 
     {
       std::cout << "PingusSpotMap_TilewWidth: " << width / tile_size << std::endl;
       std::cout << "PingusSpotMap_TilewHeight: " << height / tile_size << std::endl;
     }  
   
-  tile.resize(width/tile_size);
-  
-  for(TileIter i=0; i < tile.size(); ++i) 
-    {
-      tile[i].resize(height/tile_size);
-    }
-  
-  create_maptiles();
+   create_maptiles();
+
+  if (verbose) std::cout << " done " << timer.stop() << std::endl;    
 }
 
 void
 PingusSpotMap::load(PLF* plf)
 {
   ResDescriptor name = plf->get_fg();
+
   width  = plf->get_width();
   height = plf->get_height();
+
+  // Allocating tile map
+  tile.resize(width/tile_size);
+  for(TileIter i=0; i < tile.size(); ++i) 
+    tile[i].resize(height/tile_size);
+  
   load(plf->get_fg().res_name);
 }
 
@@ -160,14 +173,20 @@ PingusSpotMap::load(PLF* plf)
 void
 PingusSpotMap::load(std::string filename)
 {
-  std::cout << "PingusSpotMap: Parsing file... " << std::flush;
-  psm_parser.parse(filename);
-  std::cout << "done" << std::endl;
-  std::cout << "PingusSpotMap: Loading surfaces... " << std::flush;
-  psm_parser.load_surfaces();
-  std::cout << "done" << std::endl;
+  Timer timer;
 
-  std::cout << "PingusSpotMap: Generating Map... " << std::flush;
+  timer.start();
+  std::cout << "PingusSpotMap: Parsing file..." << std::flush;
+  psm_parser.parse(filename);
+  std::cout << " done " << timer.stop() << std::endl;
+
+  timer.start();
+  std::cout << "PingusSpotMap: Loading surfaces..." << std::flush;
+  psm_parser.load_surfaces();
+  std::cout << " done " << timer.stop() << std::endl;
+
+  timer.start();
+  std::cout << "PingusSpotMap: Generating Map..." << std::flush;
   surfaces = psm_parser.get_surfaces();
 
   if ((width % tile_size) != 0) 
@@ -195,22 +214,23 @@ PingusSpotMap::load(std::string filename)
       // test cause png
       if (i->surface->get_provider()->get_depth() == 8)
 	{
+	  mark_tiles_not_empty(i->x_pos, i->y_pos,
+			      i->surface->get_width(), i->surface->get_height());
+	  //i->surface->put_target(i->x_pos, i->y_pos, 0, canvas);
+	  // FIXME: Replace this with a ClanLib built in
 	  put_surface(canvas, i->surface->get_provider(),
 		      i->x_pos, i->y_pos);
 	}
       else
 	{
 	  std::cout << "Color depth: " << i->surface->get_provider()->get_depth() << std::endl;
-	  //canvas->lock();
 	  i->surface->put_target(i->x_pos, i->y_pos, 0, canvas);
-	  //canvas->unlock();  
 	}
     }
 
   // Generate the map surface
-  map_provider = canvas;
-  map_surface = CL_Surface::create(map_provider, true);
-  std::cout << "done" << std::endl;
+  map_surface = CL_Surface::create(canvas, true);
+  std::cout << " done " << timer.stop() << std::endl;
 }
 
 void
@@ -246,11 +266,6 @@ PingusSpotMap::draw(int x_pos, int y_pos, int w, int h,
 	  if (start_y < 0)
 	    start_y = 0;
 
-	  /*	  std::cout << "StartX: " << start_x << std::endl;
-	  std::cout << "StartY: " << start_y << std::endl;
-	  std::cout << "width: " << tilemap_width << std::endl;
-	  std::cout << "height: " << tilemap_height << std::endl;
-	  */
 	  // drawing the stuff
 	  for (TileIter x = start_x; 
 	       x < (start_x + tilemap_width) && x < tile.size();
@@ -264,6 +279,13 @@ PingusSpotMap::draw(int x_pos, int y_pos, int w, int h,
 		    {
 		      tile[x][y].surface->put_screen(x * tile_size + of_x, 
 						     y * tile_size + of_y);
+		    }
+		  else
+		    {
+		      if (debug_tiles)
+			CL_Display::fill_rect(x * tile_size + of_x, y * tile_size + of_y,
+					      x * tile_size + of_x + tile_size, y * tile_size + of_y + tile_size,
+					      1.0, 0.0, 0.0, 0.3);
 		    }
 		}
 	    }
@@ -309,8 +331,8 @@ PingusSpotMap::remove(CL_SurfaceProvider* sprovider, int x, int y)
 				sprovider,
 				x - (ix * tile_size), y - (iy * tile_size),
 				// FIXME, I am broken
-				MAX(x, ix * tile_size),
-				MAX(y, iy * tile_size));
+				max(x, ix * tile_size),
+				max(y, iy * tile_size));
 	      tile[ix][iy].reload();
 	    }
 	}
@@ -446,39 +468,51 @@ PingusSpotMap::put(CL_SurfaceProvider* sprovider, int x, int y)
 ColMap*
 PingusSpotMap::get_colmap(void)
 {
+  Timer timer;
+
   if (colmap) 
     {
       return colmap;
     } 
   else 
     {
-      if (verbose) std::cout << "PingusSpotMap: Starting ColMap creation" << std::endl;
+      if (verbose) {
+	std::cout << "PingusSpotMap: Starting ColMap creation..." << std::endl;
+      }
       unsigned char* buffer;
       
       // Allocate the space for the colmap buffer
       // But don't delete it, since the ColMap will do that.
       buffer = new unsigned char[width * height];
       
-      if (verbose) std::cout << "PingusSpotMap: Clearing ColMap buffer..." << std::flush;
+      if (verbose) {
+	timer.start();
+	std::cout << "PingusSpotMap: Clearing ColMap buffer..." << std::flush;
+      }
       for(int i=0; i < width * height; ++i) 
 	{
 	  buffer[i] = 0;
 	}
       
-      if (verbose) std::cout << " done" << std::endl;
+      if (verbose) std::cout << "done " << timer.stop() << std::endl;
 
       // Create a empty ColMap
       colmap = new ColMap(buffer, width, height);
       
-      if (verbose) std::cout << "PingusSpotMap: Generating Colision Map..." << std::flush;
-      
-      for(std::vector<surface_data>::iterator i = surfaces.begin(); i != surfaces.end(); i++) 
+      if (verbose) {
+	timer.start();
+	std::cout << "PingusSpotMap: Generating Colision Map..." << std::flush;
+      }
+
+      for(std::vector<surface_data>::iterator i = surfaces.begin(); 
+	  i != surfaces.end(); 
+	  i++) 
 	{
 	  colmap->put(i->surface, i->x_pos, i->y_pos, i->type);
 	}
       
       if (verbose)
-	std::cout << "done" << std::endl;
+	std::cout << "done " << timer.stop() << std::endl;
       
       return colmap;
     }
@@ -505,9 +539,28 @@ PingusSpotMap::create_maptiles()
 	  map_surface->put_target(-x * tile_size, -y * tile_size, 0, canvas);
 	  canvas->unlock();
 	  tile[x][y].surface = CL_Surface::create(canvas, true);
-	  tile[x][y].check_empty();
+	  // FIXME: Include that for the next release
+	  // tile[x][y].check_empty();
 	}
     }
+}
+
+void
+PingusSpotMap::mark_tiles_not_empty(int x_pos, int y_pos, int sur_width, int sur_height)
+{
+  int start_x = max(0, x_pos / tile_size);
+  int start_y = max(0, y_pos / tile_size);
+  int stop_x  = min(width / tile_size,  (x_pos + sur_width - 1) / tile_size + 1);
+  int stop_y  = min(height / tile_size, (y_pos + sur_height - 1) / tile_size + 1);
+
+  //cout << "X: " << start_x << " Y: " << start_y << endl;
+  //cout << "stop_X: " << stop_x << " stop_Y: " << stop_y << endl;
+
+  for(int y = start_y; y < stop_y; y++) {
+    for(int x = start_x; x < stop_x; x++) {
+      tile[x][y].set_empty(false);
+    }
+  }
 }
 
 /* EOF */

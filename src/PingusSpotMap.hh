@@ -1,4 +1,4 @@
-//  $Id: PingusSpotMap.hh,v 1.7 2000/05/03 16:53:14 grumbel Exp $
+//  $Id: PingusSpotMap.hh,v 1.8 2000/05/24 15:40:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,6 +46,7 @@ public:
   bool is_empty(void);
   void mark_dirty(void);
   void check_empty(void);
+  void set_empty(bool);
 };
 
 // This map type is the defaulh maptype, it is should be used for the
@@ -87,6 +88,7 @@ public:
 			 int x, int y, int real_x, int real_y);
   void put(CL_SurfaceProvider*, int, int);
   void create_maptiles();
+  void mark_tiles_not_empty(int, int, int, int);
 };
 
 #endif
