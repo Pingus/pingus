@@ -1,4 +1,4 @@
-//  $Id: manager.cxx,v 1.30 2003/04/02 19:11:28 grumbel Exp $
+//  $Id: manager.cxx,v 1.31 2003/04/03 17:03:24 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -40,6 +40,7 @@ public:
   WorldMapManagerCloseButton();
   void on_click();
   void draw (GraphicContext& gc);
+  void on_pointer_enter();
 };
 
 class WorldMapManagerEnterButton
@@ -49,6 +50,7 @@ public:
   WorldMapManagerEnterButton();
   void on_click();
   void draw (GraphicContext& gc);
+  void on_pointer_enter();
 };
 
 WorldMapManagerCloseButton::WorldMapManagerCloseButton()
@@ -57,6 +59,13 @@ WorldMapManagerCloseButton::WorldMapManagerCloseButton()
                        ResDescriptor("worldmap/leave_button_pressed", "core"),
                        ResDescriptor("worldmap/leave_button_hover", "core"))
 {
+}
+
+void
+WorldMapManagerCloseButton::on_pointer_enter()
+{
+  SurfaceButton::on_pointer_enter();
+  PingusSound::play_sound ("tick");
 }
 
 void
@@ -78,6 +87,16 @@ WorldMapManagerEnterButton::WorldMapManagerEnterButton()
                        ResDescriptor("worldmap/enter_button_pressed", "core"),
                        ResDescriptor("worldmap/enter_button_hover", "core"))
 {
+}
+
+void
+WorldMapManagerEnterButton::on_pointer_enter()
+{
+  SurfaceButton::on_pointer_enter();
+  if (!WorldMapManager::instance()->get_worldmap()->get_pingus()->is_walking())
+    {
+      PingusSound::play_sound ("tick");
+    }
 }
 
 void

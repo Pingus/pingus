@@ -1,4 +1,4 @@
-//  $Id: blitter_impl.hxx,v 1.8 2003/04/02 20:47:45 grumbel Exp $
+//  $Id: blitter_impl.hxx,v 1.9 2003/04/03 17:03:24 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -179,6 +179,7 @@ struct transform_rot270_flip
 };
 
 template<class TransF>
+inline
 CL_Surface modify(const CL_Surface& sur)
 {
   CL_SurfaceProvider* prov = sur.get_provider ();
@@ -187,7 +188,7 @@ CL_Surface modify(const CL_Surface& sur)
 
   if (prov->is_indexed())
     {
-      std::cout << "Using indexed blitter" << std::endl;
+      //std::cout << "Using indexed blitter" << std::endl;
 
       IndexedCanvas* canvas = new IndexedCanvas(TransF::get_width (pwidth, pheight),
                                                 TransF::get_height(pwidth, pheight));

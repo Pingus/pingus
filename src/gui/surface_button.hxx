@@ -1,4 +1,4 @@
-//  $Id: surface_button.hxx,v 1.6 2003/04/01 13:21:20 grumbel Exp $
+//  $Id: surface_button.hxx,v 1.7 2003/04/03 17:03:24 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -54,8 +54,8 @@ public:
   void on_primary_button_release (int x, int y);
   void on_primary_button_click (int x, int y);
 
-  void on_pointer_enter ();
-  void on_pointer_leave ();
+  virtual void on_pointer_enter ();
+  virtual void on_pointer_leave ();
     
   virtual void on_click() =0;
 private:

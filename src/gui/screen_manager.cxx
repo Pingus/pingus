@@ -1,4 +1,4 @@
-//  $Id: screen_manager.cxx,v 1.4 2003/03/28 12:06:32 grumbel Exp $
+//  $Id: screen_manager.cxx,v 1.5 2003/04/03 17:03:24 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,7 +32,7 @@ ScreenManager* ScreenManager::instance_ = 0;
 ScreenManager::ScreenManager ()
   : display_gc (0, 0, CL_Display::get_width (), CL_Display::get_height (), 0, 0)
 {
-  cached_action = none;
+  cached_action = CA_NONE;
 }
 
 ScreenManager::~ScreenManager ()
@@ -77,24 +77,25 @@ ScreenManager::display ()
       if (screens.empty ())
 	continue;
 
-      if (cached_action == pop)
-	{
-	  real_pop_screen ();
-	  cached_action = none;
-	}
-      else if (cached_action == replace)
-	{
-	  real_replace_screen (replace_screen_arg);
-	  cached_action = none;
-	}
-      else
+      switch (cached_action)
         {
-	  cached_action = none;
+        case CA_POP:
+	  real_pop_screen ();
+          break;
+        case CA_REPLACE:
+          real_replace_screen (replace_screen_arg);
+          break;
+        case CA_CLEAR:
+          real_clear();
+          break;
+        default:
+          break;
         }
+      cached_action = CA_NONE;
 
       // FIXME: is there a more gentel way to do that instead of spreading the checks all around here?
       // Last screen has poped, so we are going to end here
-      if (screens.empty ())
+      if (screens.empty())
 	continue;
       
       // skip draw if the screen changed to avoid glitches
@@ -145,15 +146,15 @@ ScreenManager::push_screen (Screen* screen, bool delete_screen)
 void
 ScreenManager::pop_screen ()
 {
-  assert (cached_action == none);
-  cached_action = pop;
+  assert (cached_action == CA_NONE);
+  cached_action = CA_POP;
 }
 
 void
 ScreenManager::replace_screen (Screen* screen, bool delete_screen)
 {
-  assert (cached_action == none);
-  cached_action = replace;
+  assert (cached_action == CA_NONE);
+  cached_action = CA_REPLACE;
   replace_screen_arg = ScreenPtr(screen, delete_screen);
 }
 
@@ -176,6 +177,18 @@ ScreenManager::real_pop_screen ()
     {
       screens.back ()->on_startup ();
     }
+}
+
+void
+ScreenManager::clear()
+{
+  cached_action = CA_CLEAR;
+}
+
+void
+ScreenManager::real_clear()
+{
+  screens.clear();
 }
 
 void

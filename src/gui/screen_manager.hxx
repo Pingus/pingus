@@ -1,4 +1,4 @@
-//  $Id: screen_manager.hxx,v 1.2 2003/03/22 23:28:51 grumbel Exp $
+//  $Id: screen_manager.hxx,v 1.3 2003/04/03 17:03:24 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,7 +43,7 @@ private:
   /** the screen that was used in the last update() */
   ScreenPtr last_screen;
 
-  enum { none, pop, replace } cached_action;
+  enum { CA_NONE, CA_POP, CA_REPLACE, CA_CLEAR } cached_action;
   ScreenPtr replace_screen_arg;
 
 protected:
@@ -67,7 +67,11 @@ public:
   /** Fade the screen out, this call blocks till the screen is black */
   void fade_out();
 
+  /** Remove all screens from the stack */
+  void clear();
 private:
+  void real_clear();
+
   /** Replace the current screen */
   void real_replace_screen (const ScreenPtr&);
     

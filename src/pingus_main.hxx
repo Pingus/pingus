@@ -1,4 +1,4 @@
-//  $Id: pingus_main.hxx,v 1.9 2003/03/31 21:52:03 grumbel Exp $
+//  $Id: pingus_main.hxx,v 1.10 2003/04/03 17:03:24 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -40,6 +40,7 @@ private:
   CL_Slot on_button_press_slot;
   CL_Slot on_button_release_slot;
 
+  CL_Slot on_exit_press_slot;
 public:
   PingusMain();
   virtual ~PingusMain();
@@ -47,6 +48,7 @@ public:
   virtual int main(int argc, char** argv);
   virtual char* get_title();
 
+  void on_exit_press();
 private:
   /** After all subsystems have been inited, the screen will get
       setup, the game (the menu, the editor or a level, depending on

@@ -1,4 +1,4 @@
-//  $Id: result_screen.cxx,v 1.9 2003/03/30 22:09:33 grumbel Exp $
+//  $Id: result_screen.cxx,v 1.10 2003/04/03 17:03:24 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -60,8 +60,15 @@ public:
   {
   }
 
+  void on_pointer_enter ()
+  {
+    SurfaceButton::on_pointer_enter();
+    PingusSound::play_sound("tick");
+  }
+
   void on_click() {
     parent->close_screen();
+    PingusSound::play_sound("yipee");
   }
 };
 
@@ -80,8 +87,20 @@ public:
   {
   }
 
+  void draw(GraphicContext& gc) {
+    SurfaceButton::draw(gc);
+    gc.print_center(Fonts::chalk_normal, x_pos + 55, y_pos, _("Abort"));
+  }
+
   void on_click() {
     parent->close_screen();
+  }
+
+
+  void on_pointer_enter()
+  {
+    SurfaceButton::on_pointer_enter();
+    PingusSound::play_sound ("tick");
   }
 };
 
@@ -104,6 +123,12 @@ public:
   {
     parent->retry_level();
   }
+
+  void on_pointer_enter()
+  {
+    SurfaceButton::on_pointer_enter();
+    PingusSound::play_sound ("tick");
+  }
 };
 
 ResultScreenComponent::ResultScreenComponent(Result arg_result)
@@ -123,42 +148,77 @@ ResultScreenComponent::draw(GraphicContext& gc)
   gc.draw(background, 0, 0);
 
   if (!result.success())
-    gc.print_left(Fonts::chalk_small, 635, 415, "Retry?");
+    gc.print_left(Fonts::chalk_normal, 635, 410, _("Retry"));
 
-  gc.print_center(Fonts::chalk_large, gc.get_width()/2, 100, System::translate(result.plf->get_levelname()));
+  gc.print_center(Fonts::chalk_large, gc.get_width()/2, 100, 
+                  System::translate(result.plf->get_levelname()));
 
   if (result.success())
     {
-      gc.print_left(Fonts::chalk_large, 150, 180, _("Result: Success!"));
-      gc.print_center(Fonts::pingus_small, gc.get_width()/2, gc.get_height()-30,
-                      "..:: Press Space to continue ::..");
+      gc.print_center(Fonts::chalk_large, gc.get_width()/2, 160, _("Success!"));
+      /*gc.print_center(Fonts::pingus_small, gc.get_width()/2, gc.get_height()-30,
+        "..:: Press Space to continue ::..");*/
     }
   else
     {
-      gc.print_left(Fonts::chalk_large, 150, 180, _("Result: Failure! :("));
-      gc.print_center(Fonts::pingus_small, gc.get_width()/2, gc.get_height()-30,
-                      "..:: Press Space to retry the level ::..");
+      gc.print_center(Fonts::chalk_large, gc.get_width()/2, 160, _("Failure!"));
+      /*gc.print_center(Fonts::pingus_normal, gc.get_width()/2, gc.get_height()-30,
+                      "..:: Press Space to retry the level ::..");*/
     }
+  
+  std::string message;
+  if (result.success())
+    {
+      if (result.killed == 0 && result.saved == result.total)
+        message = _("Perfect! You saved everybody possibly, great!");
+      else if (result.killed == 0)
+        message = _("None got killed, pretty good work");
+      else if (result.saved == result.needed)
+        message = _("You saved just what you needed, you made it, but\n"
+                    "maybe you can do better?");
+      else if (result.killed >= 5)
+        message = _("Not everybody could get saved, but still good work!");
+      else
+        message = _("What can I say, you made it, congratulasions!");
+    }
+  else
+    {
+      if (result.killed == result.total)
+        message = _("You killed everybody, not good.");
+      else if (result.saved == 0)
+        message = _("None got saved, I know you can do better.");
+      else if (result.saved > 0)
+        message = _("You didn't saved enough, but still saved a few, next\n"
+                    "time you might be better.");
+      else if (result.saved + 1 >= result.needed)
+        message = _("Only one more and you would have made it, try again!");
+      else if (result.saved + 5 >= result.needed)
+        message = _("Only a handfull more and you would have made it, try again!");
+      else
+        message = _("Better luck next time!");
+    }
+  gc.print_center(Fonts::chalk_normal, gc.get_width()/2, 230, message);
 
-  gc.print_left(Fonts::chalk_small, 150, 280, "Saved: ");
+
+#if 0
   for (int i = 0; i < result.saved; ++i)
     {
       gc.draw(chalk_pingus[rand() % chalk_pingus.size()], 230 + i * 15, 210);
     }
-  gc.print_left(Fonts::chalk_small, 650, 280, to_string(result.saved));
+#endif
+  gc.print_left(Fonts::chalk_normal,  300, 310, _("Saved: "));
+  gc.print_right(Fonts::chalk_normal, 500, 310, to_string(result.saved) 
+                 + "/" + to_string(result.needed));;
 
-  gc.print_left(Fonts::chalk_small, 150, 310, "Killed: ");    
-  gc.print_left(Fonts::chalk_small, 250, 310, to_string(result.killed));
+  gc.print_left(Fonts::chalk_normal,  300, 340, _("Killed: "));
+  gc.print_right(Fonts::chalk_normal, 500, 340, to_string(result.killed));
 
 
-  gc.print_left(Fonts::chalk_small, 150, 340, "Needed: ");    
-  gc.print_left(Fonts::chalk_small, 250, 340, to_string(result.needed));
-
-  gc.print_left(Fonts::chalk_small, 150, 370, "Time left: ");    
+  gc.print_left(Fonts::chalk_normal,   300, 370, _("Time left: "));
   if (result.max_time == -1)
-    gc.print_left(Fonts::chalk_small, 250, 370, "-");
+    gc.print_right(Fonts::chalk_normal, 500, 370, "-");
   else
-    gc.print_left(Fonts::chalk_small, 250, 370, to_string(result.max_time - result.used_time));
+    gc.print_right(Fonts::chalk_normal, 500, 370, to_string(result.max_time - result.used_time));
 }
 
 ResultScreen::ResultScreen(Result arg_result)

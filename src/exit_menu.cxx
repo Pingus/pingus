@@ -1,4 +1,4 @@
-//  $Id: exit_menu.cxx,v 1.15 2003/04/02 19:11:27 grumbel Exp $
+//  $Id: exit_menu.cxx,v 1.16 2003/04/03 17:03:24 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,7 @@
 #include "pingus_resource.hxx"
 #include "gui/surface_button.hxx"
 #include "gui/gui_manager.hxx"
+#include "sound/sound.hxx"
 
 class ExitMenuYesButton : public GUI::SurfaceButton
 {
@@ -40,12 +41,19 @@ public:
  
   void draw (GraphicContext& gc) {
     SurfaceButton::draw(gc);
-    gc.print_left(Fonts::chalk_large, 250,  325, _(" Yes"));
+    gc.print_left(Fonts::chalk_large, 250,  325, _("Yes"));
   }
 
   void on_click()
   {
+    PingusSound::play_sound ("yipee");
     manager->exit ();
+  }
+
+  void on_pointer_enter()
+  {
+    SurfaceButton::on_pointer_enter();
+    PingusSound::play_sound ("tick");
   }
 };
 
@@ -55,7 +63,7 @@ private:
   PingusMenuManager* manager;
 public:
   ExitMenuNoButton (PingusMenuManager* m)
-    : GUI::SurfaceButton(420, 315,
+    : GUI::SurfaceButton(400, 315,
                          ResDescriptor("menu/exit_button_normal", "core"),
                          ResDescriptor("menu/exit_button_pressed", "core"),
                          ResDescriptor("menu/exit_button_hover", "core")),
@@ -69,7 +77,14 @@ public:
   }
 
   void on_click() {
+    PingusSound::play_sound ("yipee");
     manager->pop_menu();
+  }
+
+  void on_pointer_enter()
+  {
+    SurfaceButton::on_pointer_enter();
+    PingusSound::play_sound ("tick");
   }
 };
 

@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.63 2003/04/02 10:34:58 grumbel Exp $
+//   $Id: pingus_main.cxx,v 1.64 2003/04/03 17:03:24 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -869,6 +869,8 @@ PingusMain::init_clanlib()
 
   CL_SetupDisplay::init();
 
+  on_exit_press_slot = CL_System::sig_quit().connect(this, &PingusMain::on_exit_press);
+
   if (verbose) 
     {
       std::cout << "Using resolution: " 
@@ -889,6 +891,13 @@ PingusMain::init_clanlib()
       glEnable (GL_BLEND);
     }
 #endif
+}
+
+void
+PingusMain::on_exit_press()
+{
+  std::cout << "Exit pressed" << std::endl;
+  ScreenManager::instance()->clear();
 }
 
 void

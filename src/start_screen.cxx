@@ -1,4 +1,4 @@
-//  $Id: start_screen.cxx,v 1.8 2003/03/30 20:43:52 grumbel Exp $
+//  $Id: start_screen.cxx,v 1.9 2003/04/03 17:03:24 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -59,10 +59,22 @@ public:
   {
   }
 
+  void draw(GraphicContext& gc) {
+    SurfaceButton::draw(gc);
+    gc.print_center(Fonts::chalk_normal, x_pos + 32, y_pos - 17, _("Ok"));
+  }
+
   void on_click() 
   {
     PingusSound::play_sound("yipee");
     parent->start_game();
+  }
+
+
+  void on_pointer_enter()
+  {
+    SurfaceButton::on_pointer_enter();
+    PingusSound::play_sound ("tick");
   }
 };
 
@@ -82,8 +94,19 @@ public:
   {
   }
 
+  void draw(GraphicContext& gc) {
+    SurfaceButton::draw(gc);
+    gc.print_center(Fonts::chalk_normal, x_pos + 55, y_pos, _("Abort"));
+  }
+
   void on_click() {
     parent->cancel_game();
+  }
+
+  void on_pointer_enter()
+  {
+    SurfaceButton::on_pointer_enter();
+    PingusSound::play_sound ("tick");
   }
 };
 
