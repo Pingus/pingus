@@ -1,4 +1,4 @@
-//  $Id: basher.cxx,v 1.19 2002/10/05 12:40:02 torangan Exp $
+//  $Id: basher.cxx,v 1.20 2002/10/08 17:53:10 grumbel Exp $
 //
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -96,13 +96,28 @@ Basher::bash()
 void
 Basher::walk_forward()
 {
-  if (rel_getpixel(0, -1) ==  Groundtype::GP_NOTHING) {
-    // We are in the air... lets fall...
+  int y_inc = 0;
+
+  // Find the correct y position to go to next
+  for (y_inc = 0; y_inc >= -max_steps_down; --y_inc)
+    {
+      // If there is something below, get out of this loop
+      if (rel_getpixel(0, y_inc - 1) != Groundtype::GP_NOTHING)
+	break;
+    }
+
+  if (y_inc < -max_steps_down)
+    {
+    // The step down is too much.  So stop being a Basher and be a Faller.
     pingu->set_action(Actions::Faller);
-  } else {
-    // On ground, walk forward...
-    pingu->set_x(pingu->get_x() + static_cast<int>(pingu->direction));
-  }
+    }
+  else
+    {
+    // Note that Pingu::set_pos() is the 'reverse' of the y co-ords of
+    // rel_getpixel()
+    pingu->set_pos(pingu->get_x() + static_cast<int>(pingu->direction),
+		   pingu->get_y() - y_inc);
+    }
 }
 
 bool

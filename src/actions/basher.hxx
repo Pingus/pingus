@@ -1,4 +1,4 @@
-//  $Id: basher.hxx,v 1.12 2002/10/01 19:53:45 grumbel Exp $
+//  $Id: basher.hxx,v 1.13 2002/10/08 17:53:10 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,6 +36,10 @@ private:
     
   /// Defines "wall" height needed so as to determine whether it should be bashed.
   enum { bash_height = 4 };
+
+  /** Defines the maximum no. of steps down a Basher can go down before it
+      stops being a Basher and turns into a Faller. */
+  enum { max_steps_down = 3 };
     
 public:
   Basher ();
