@@ -1,4 +1,4 @@
-//  $Id: system.hxx,v 1.8 2003/03/07 18:49:20 grumbel Exp $
+//  $Id: system.hxx,v 1.9 2003/04/13 23:33:19 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -133,7 +133,13 @@ public:
    generation is very primitiv and should probably be replaced by CRC
    or md5. */
   static std::string checksum (std::string filename);
-  
+
+  /** @return true if \a filename is a symbolic link, false otherwise */
+  static bool is_symlink(const std::string& filename);
+
+  /** Return the value to which the symbolic link \a filename is
+      pointing to, on error \a filename is returned */
+  static std::string readlink(const std::string& filename);
 private:
   System (const System&);
   System& operator= (const System&);

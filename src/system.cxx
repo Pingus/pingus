@@ -1,4 +1,4 @@
-//  $Id: system.cxx,v 1.16 2003/04/13 12:30:10 grumbel Exp $
+//  $Id: system.cxx,v 1.17 2003/04/13 23:33:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -457,5 +457,42 @@ System::get_mtime(const std::string& filename)
 #endif
 }
 
+bool
+System::is_symlink(const std::string& filename)
+{
+#ifdef WIN32
+  return false;
+#else
+  struct stat buf;
+  if (lstat(filename.c_str(), &buf) == 0)
+    {
+      return S_ISLNK(buf.st_mode);
+    }
+  else
+    {
+      return false;
+    }
+#endif
+}
+
+std::string
+System::readlink(const std::string& filename)
+{
+#ifdef WIN32
+  return filename;
+#else
+  char path_buf[PATH_MAX + 1];
+  int ret = ::readlink(filename.c_str(), path_buf, PATH_MAX);
+  if (ret == -1)
+    {
+      return filename;
+    }
+  else
+    {
+      path_buf[ret] = '\0';
+      return path_buf;
+    }
+#endif
+}
 
 /* EOF */

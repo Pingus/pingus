@@ -1,4 +1,4 @@
-//  $Id: globals.hxx,v 1.14 2003/04/10 19:38:51 grumbel Exp $
+//  $Id: globals.hxx,v 1.15 2003/04/13 23:33:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -75,6 +75,7 @@ enum { PINGUS_DEBUG_ACTIONS    = (1 << 0),
        PINGUS_DEBUG_GUI        = (1 << 9),
        PINGUS_DEBUG_INPUT      = (1 << 10),
        PINGUS_DEBUG_WORLDMAP   = (1 << 11),
+       PINGUS_DEBUG_PATHMGR    = (1 << 12),
        PINGUS_DEBUG_ALL        = (~0)
      };
 

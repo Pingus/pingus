@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.79 2003/04/13 22:22:12 grumbel Exp $
+//   $Id: pingus_main.cxx,v 1.80 2003/04/13 23:33:19 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -23,20 +23,12 @@
 //   along with this program; if not, write to the Free Software
 //   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
+#include <config.h>
 #include <sys/stat.h>
 #include <stdio.h>
 #include <signal.h>
-
 #include <locale.h>
-
-#ifndef WIN32
-#  include <config.h>
-#  include <getopt.h>
-#else /* !WIN32 */
-#  include <direct.h>
-#  include "win32/config.h"
-#  include "win32/getopt.h"
-#endif /* !WIN32 */
+#include <getopt.h>
 
 #include <ClanLib/Core/System/console_window.h>
 #include <ClanLib/Display/setupdisplay.h>
@@ -257,14 +249,17 @@ PingusMain::check_args(int argc, char** argv)
       break;
 
     switch(c) {
+
     case 'c': // -c, --enable-cursor
       cursor_enabled = true;
       if (verbose) std::cout << "PingusMain:check_args: Cursor enabled" << std::endl;
       break;
+
     case 'b': // -b, --print-fps
       print_fps = true;
       if (verbose) std::cout << "PingusMain:check_args: Printing fps enabled" << std::endl;
       break;
+
     case 158: // --worldmap
       worldmapfile = optarg;
       break;
@@ -274,19 +269,13 @@ PingusMain::check_args(int argc, char** argv)
       break;
 
     case 'l': // -l, --level
-      {
-	// FIXME: Quick hack to get an absolute path
-	char cwd[1024];
-	levelfile = optarg;
-	if (getcwd (cwd, 1024))
-	  levelfile = std::string(cwd) + "/" + levelfile;
-	if (verbose) 
-	  std::cout << "PingusMain:check_args: Levelfile = " << levelfile << std::endl;
-      }
+      levelfile = optarg;
       break;
+
     case 't': // -t, --set-speed
       game_speed = atoi(optarg);
       break;
+
     case 'e':
       start_editor = true;
       //std::cout << "PingusMain: Starting Editor" << std::endl;
@@ -309,6 +298,10 @@ PingusMain::check_args(int argc, char** argv)
             std::cout << "Resolution std::string is wrong, it should be like: \n" 
                       << "\"640x480\" or \"800x600\"" << std::endl;
             exit(EXIT_FAILURE);
+          }
+        if (screen_width > 800 || screen_height > 600)
+          {
+            std::cout << _("Warning: Larger resolution than 800x600 will result in visual problems") << std::endl;
           }
       }
       break;
@@ -451,6 +444,10 @@ PingusMain::check_args(int argc, char** argv)
         {
           pingus_debug_flags |= PINGUS_DEBUG_WORLDMAP;
         }
+      else if (strcmp (optarg, "pathmgr") == 0)
+        {
+          pingus_debug_flags |= PINGUS_DEBUG_PATHMGR;
+        }
       else
 	{
 	  std::cout << "PingusMain: Unhandled debug flag: " << optarg << std::endl;
@@ -517,7 +514,7 @@ PingusMain::check_args(int argc, char** argv)
         << "\n   --maintainer-mode        " << _("Enables some features, only interesting programmers")
         << "\n   --debug OPTION           " << _("Enable the output of debugging infos, possible")
         << "\n                            " << _("OPTION's are tiles, gametime, actions, sound, resources, gui,")
-        << "\n                            " << _("input")
+        << "\n                            " << _("input, pathmgr")
         << "\n   --min-frame-skip N       " << _("Skip at least N frames, larger values speed the game up")
         << "\n   --max-frame-skip N       " << _("Skip at most N frames")
         << "\n   --frame-skip N           " << _("Set both min and max frameskip to N")
@@ -580,15 +577,29 @@ PingusMain::init_path_finder()
     path_manager.add_path (pingus_datadir_env);
 
   /* Some magic for detecting the path */
-  path_manager.add_path (System::dirname(executable_name) + "/../data/");
-  path_manager.add_path ("../data/");     // started from 'src/'
-  path_manager.add_path ("data/");        // started from base directory with 'src/pingus'
-  path_manager.add_path ("share/games/pingus/");  // started from base directory of the binary
-  path_manager.add_path ("../share/games/pingus/");  // started from base directory of the binary
-  path_manager.add_path (PINGUS_DATADIR); // started from $PATH
+  path_manager.add_path(System::dirname(executable_name) + "/../data/");
+  path_manager.add_path("../data/");     // started from 'src/'
+  path_manager.add_path("data/");        // started from base directory with 'src/pingus'
+  path_manager.add_path("share/games/pingus/");  // started from base directory of the binary
+  path_manager.add_path("../share/games/pingus/");  // started from base directory of the binary
+  path_manager.add_path(PINGUS_DATADIR); // started from $PATH
+  
+  // somebody created a symlink in /usr/bin/ or so to the real binary elsewhere
+  if (System::is_symlink(executable_name))
+    {
+      std::string real_path = System::dirname(System::readlink(executable_name));
+      path_manager.add_path(real_path + "/../data/");     // started from 'src/'
+      path_manager.add_path(real_path + "/data/");        // started from base directory with 'src/pingus'
+      path_manager.add_path(real_path + "/share/games/pingus/");  // started from base directory of the binary
+      path_manager.add_path(real_path + "/../share/games/pingus/");  // started from base directory of the binary
+    }
+
+  // somebody added the real binary to PATH
+  //path_manager.add_path();
+
   // As a last hope we try this:
-  path_manager.add_path ("/usr/share/pingus/");
   path_manager.add_path ("/usr/local/share/pingus/");
+  path_manager.add_path ("/usr/share/pingus/");
 
   std::list<std::string> file_list;
 
@@ -786,12 +797,22 @@ PingusMain::main(int argc, char** argv)
   executable_name = argv[0];
   
   // Register the segfault_handler
-  //signal(SIGSEGV, signal_handler);
+#ifndef WIN32
+  signal(SIGSEGV, signal_handler);
+#endif
   //signal(SIGINT,  signal_handler);
 
   // Redirect stdout to somewhere where it is readable
   //CL_ConsoleWindow cl_console(PACKAGE VERSION);
   //cl_console.redirect_stdio();
+
+  // Init error/warning/notice streams
+  pout.add (std::cout);
+  pout.add (console);
+  pwarn.add (std::cout);
+  pout.add (console);
+  perr.add (std::cout);
+  perr.add (console);
 
   try 
     {
@@ -905,14 +926,6 @@ PingusMain::deinit_clanlib()
 void
 PingusMain::init_pingus()
 {
-  // Init error/warning/notice streams
-  pout.add (std::cout);
-  pout.add (console);
-  pwarn.add (std::cout);
-  pout.add (console);
-  perr.add (std::cout);
-  perr.add (console);
-
   SavegameManager::instance();
   StatManager::init();
  
