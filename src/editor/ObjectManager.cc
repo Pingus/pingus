@@ -1,4 +1,4 @@
-//  $Id: ObjectManager.cc,v 1.26 2000/08/04 16:08:40 grumbel Exp $
+//  $Id: ObjectManager.cc,v 1.27 2000/08/05 18:52:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -75,8 +75,8 @@ ObjectManager::new_level ()
   bg.g = 0.3;
   bg.b = 0.3;
 
-  number_to_save   = 50;
-  number_of_pingus = 100;
+  number_to_save   = 25;
+  number_of_pingus = 50;
 
   background.desc.datafile = "textures";
   background.desc.res_name = "Textures/default";
@@ -143,6 +143,7 @@ ObjectManager::load_level (string filename)
   vector<ExitData>     temp_exits    = plf->get_exit();
   vector<LiquidData>   temp_liquid   = plf->get_liquids();
   vector<TrapData>     temp_traps    = plf->get_traps();
+  vector<WeatherData>  temp_weather  = plf->get_weather();
 
   for(vector<SurfaceData>::iterator i = temp_surfaces.begin(); i != temp_surfaces.end(); ++i)
     editor_objs.push_back(EditorObj::create(*i));
@@ -160,6 +161,9 @@ ObjectManager::load_level (string filename)
     editor_objs.push_back(EditorObj::create(*i));
       
   for(vector<TrapData>::iterator i = temp_traps.begin(); i != temp_traps.end(); ++i)
+    editor_objs.push_back(EditorObj::create(*i));
+
+  for(vector<WeatherData>::iterator i = temp_weather.begin(); i != temp_weather.end(); ++i)
     editor_objs.push_back(EditorObj::create(*i));
 
 #ifndef WIN32 // FIXME: Compiler error in Windows
@@ -226,7 +230,7 @@ ObjectManager::save_level (string filename)
   // FIXME: we need some error checking
   
   plf_out << "/* This level was created with the PLE\n"
-	  << " * $Id: ObjectManager.cc,v 1.26 2000/08/04 16:08:40 grumbel Exp $\n"
+	  << " * $Id: ObjectManager.cc,v 1.27 2000/08/05 18:52:22 grumbel Exp $\n"
 	  << " */"
 	  << endl;
   

@@ -1,4 +1,4 @@
-//  $Id: World.cc,v 1.30 2000/08/04 22:16:28 grumbel Exp $
+//  $Id: World.cc,v 1.31 2000/08/05 18:52:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -260,7 +260,8 @@ World::init_worldobjs()
   vector<TrapData>     trap_d     = plf->get_traps();
   vector<HotspotData>  hspot_d    = plf->get_hotspot();
   vector<LiquidData>   liquid_d   = plf->get_liquids();
-
+  vector<WeatherData>  weather_d  = plf->get_weather();
+  
   // Creating Exit and Entrance
   for(vector<ExitData>::iterator i = exit_d.begin(); i != exit_d.end(); i++) 
     exits.push_back(new Exit(*i));
@@ -278,9 +279,20 @@ World::init_worldobjs()
   for(vector<LiquidData>::size_type i=0; i < liquid_d.size(); i++) 
     liquid.push_back(new Liquid(liquid_d[i]));
   
-  // world_obj.push_back(map);
+  for(vector<WeatherData>::iterator i = weather_d.begin();
+      i != weather_d.end();
+      i++)
+    {
+      WeatherGenerator* weather_gen = WeatherGenerator::create(*i);
 
-  world_obj_bg.push_back(new SnowGenerator(100));
+      if (weather_gen)
+	{
+	  if (weather_gen->get_z_pos() > 0)
+	    world_obj_fg.push_back(weather_gen);
+	  else
+	    world_obj_bg.push_back(weather_gen);
+	}
+    }
 
   // Push all objects to world_obj vector
   for(vector<HotspotData>::size_type i = 0; i < hotspot.size(); i++)

@@ -1,4 +1,4 @@
-//  $Id: XMLhelper.hh,v 1.3 2000/08/05 18:52:22 grumbel Exp $
+//  $Id: WeatherObj.hh,v 1.1 2000/08/05 18:52:22 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,28 +17,26 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef XMLHELPER_HH
-#define XMLHELPER_HH
+#ifndef WEATHEROBJ_HH
+#define WEATHEROBJ_HH
 
-#include <string>
-#include <gnome-xml/parser.h> 
-#include "ResDescriptor.hh"
-#include "Position.hh"
-#include "Color.hh"
+#include "../WeatherData.hh"
+#include "EditorObj.hh"
 
-class XMLhelper
+class WeatherObj : public EditorObj, public WeatherData
 {
 private:
-
+  
 public:
-  static std::string XMLhelper::encode_entities(const std::string& arg_str);
+  WeatherObj(const WeatherObj&);
+  WeatherObj(WeatherData data);
+  virtual ~WeatherObj();
 
-  static ResDescriptor parse_surface(xmlDocPtr doc, xmlNodePtr cur);
-  static Position      parse_position(xmlDocPtr doc, xmlNodePtr cur);
-  static std::string   parse_string(xmlDocPtr doc, xmlNodePtr cur);
-  static int           parse_int(xmlDocPtr doc, xmlNodePtr cur);
-  static float         parse_float(xmlDocPtr doc, xmlNodePtr cur);
-  static Color         parse_color(xmlDocPtr doc, xmlNodePtr cur);
+  virtual void save(std::ofstream* plf, std::ofstream* psm) {}
+  ///
+  virtual void   save_xml(std::ofstream* xml);
+  ///
+  virtual EditorObj* duplicate();
 };
 
 #endif

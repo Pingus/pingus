@@ -1,4 +1,4 @@
-//  $Id: XMLhelper.cc,v 1.2 2000/08/05 00:00:42 grumbel Exp $
+//  $Id: XMLhelper.cc,v 1.3 2000/08/05 18:52:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -208,6 +208,26 @@ XMLhelper::parse_surface(xmlDocPtr doc, xmlNodePtr cur)
   //std::cout << "XML: parse_surface(): " << desc.res_name << " " << desc.datafile  << std::endl;
 
   return desc;
+}
+
+std::string 
+XMLhelper::parse_string(xmlDocPtr doc, xmlNodePtr cur)
+{
+  std::string ret_str;
+  cur = cur->childs;
+
+  char* str = (char*)xmlNodeListGetString(doc, cur, 1);
+  if (str) 
+    {
+      ret_str = str;
+      free(str);
+      return ret_str;
+    }
+  else
+    {  
+      std::cout << "XMLhelper::parse_string: Field empty" << std::endl;
+      return "";
+    }
 }
 
 /* EOF */

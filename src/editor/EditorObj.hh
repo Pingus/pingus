@@ -1,4 +1,4 @@
-//  $Id: EditorObj.hh,v 1.15 2000/08/01 22:40:06 grumbel Exp $
+//  $Id: EditorObj.hh,v 1.16 2000/08/05 18:52:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,6 +27,7 @@
 #include "../ResDescriptor.hh"
 #include "../ExitData.hh"
 #include "../EntranceData.hh"
+#include "../WeatherData.hh"
 
 // FIXME: The definitions for trap_data and hotspot_data should go to
 // a seperate file.
@@ -93,6 +94,8 @@ public:
   static EditorObj* create(HotspotData);
   ///
   static EditorObj* create(LiquidData);
+  ///
+  static EditorObj* create(WeatherData);
 
   /** @name Z-Pos sort operators */
   //@{

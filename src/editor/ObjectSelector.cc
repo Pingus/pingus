@@ -1,4 +1,4 @@
-//  $Id: ObjectSelector.cc,v 1.28 2000/08/01 22:40:06 grumbel Exp $
+//  $Id: ObjectSelector.cc,v 1.29 2000/08/05 18:52:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,9 +25,10 @@
 #include "StringReader.hh"
 #include "../Display.hh"
 #include "../PingusResource.hh"
+#include "../Position.hh"
 #include "../Display.hh"
 #include "../Loading.hh"
-
+#include "WeatherObj.hh"
 #include "ObjectSelector.hh"
 
 using namespace std;
@@ -160,6 +161,39 @@ ObjectSelector::get_hotspot()
 }
 
 EditorObj*
+ObjectSelector::get_weather()
+{
+  WeatherData weather;
+  bool done = false;
+
+  /*  weather.pos = Position(CL_Mouse::get_x() - x_offset,
+			 CL_Mouse::get_y() - y_offset);
+  */
+  CL_Display::clear_display();
+  font->print_left(20, 20, "Select an weather");
+  font->print_left(20, 50, "1 - snow");
+  font->print_left(20, 70, "2 - rain");
+  Display::flip_display();
+
+  while (!done) 
+    {
+      switch (read_key()) 
+	{
+	case CL_KEY_1:
+	  weather.type = "snow";
+	  done = true;
+	  break;
+	case CL_KEY_2:
+	  weather.type = "rain";
+	  done = true;
+	  break;
+	}
+    }
+  
+  return new WeatherObj(weather);
+}
+
+EditorObj*
 ObjectSelector::get_entrance()
 {
   EntranceData entrance;
@@ -247,6 +281,7 @@ ObjectSelector::select_obj_type()
   font->print_left(20,170, "e - Entrance");
   font->print_left(20,190, "x - Exit");
   font->print_left(20,210, "l - Liquid");
+  font->print_left(20,230, "w - Weather");
   Display::flip_display();
 
   exit_loop = false;
@@ -281,6 +316,9 @@ ObjectSelector::select_obj_type()
 	  break;
 	case CL_KEY_L:
 	  return get_liquid();
+	  break;
+	case CL_KEY_W:
+	  return get_weather();
 	  break;
 	case CL_KEY_ESCAPE:
 	  exit_loop = true;
@@ -372,6 +410,10 @@ ObjectSelector::read_string(string description, string def_str)
 /*
 
 $Log: ObjectSelector.cc,v $
+Revision 1.29  2000/08/05 18:52:22  grumbel
+Added support for weather loading/saving and inserting into the editor
+Weather is now saved in the level file
+
 Revision 1.28  2000/08/01 22:40:06  grumbel
 Some more improvements to the grouping (capture rectangle), fixed the group sorting
 

@@ -1,4 +1,4 @@
-//  $Id: XMLPLF.cc,v 1.6 2000/08/05 00:00:42 grumbel Exp $
+//  $Id: XMLPLF.cc,v 1.7 2000/08/05 18:52:22 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -102,6 +102,10 @@ XMLPLF::parse_file()
 	    {
 	      parse_start_pos(cur);
 	    }
+	  else if (strcmp ((char*)cur->name, "weather") == 0)
+	    {
+	      parse_weather(cur);
+	    }	  
 	  else
 	    {
 	      printf("Unhandled: %s\n", (char*)cur->name);
@@ -132,6 +136,27 @@ XMLPLF::parse_start_pos(xmlNodePtr cur)
 	}
       cur = cur->next;
     }
+}
+
+void
+XMLPLF::parse_weather(xmlNodePtr cur)
+{
+  WeatherData weather;
+  cur = cur->childs;
+
+  while (cur != NULL)
+    {
+      if (strcmp((char*)cur->name, "type") == 0)
+	{
+	  weather.type = XMLhelper::parse_string(doc, cur);
+	}
+      else
+	{
+	  std::cout << "XMLPLF: Unhandeld: " << cur->name << std::endl;
+	}
+      cur = cur->next;
+    }
+  weathers.push_back(weather);
 }
 
 void

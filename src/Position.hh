@@ -1,4 +1,4 @@
-//  $Id: Position.hh,v 1.1 2000/07/30 02:35:56 grumbel Exp $
+//  $Id: Position.hh,v 1.2 2000/08/05 18:52:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,11 @@
 class Position
 {
 public:
+  Position(int arg_x_pos = 0, int arg_y_pos = 0, int arg_z_pos = 0) {
+    x_pos = arg_x_pos;
+    y_pos = arg_y_pos;
+    z_pos = arg_z_pos;
+  }
   int x_pos;
   int y_pos; 
   int z_pos;

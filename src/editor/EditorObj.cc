@@ -1,4 +1,4 @@
-// $Id: EditorObj.cc,v 1.13 2000/08/01 22:40:06 grumbel Exp $
+// $Id: EditorObj.cc,v 1.14 2000/08/05 18:52:22 grumbel Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,7 @@
 #include "../PingusResource.hh"
 #include "PSMObj.hh"
 #include "PLFObj.hh"
+#include "WeatherObj.hh"
 #include "EditorObj.hh"
 #include "config.h"
 
@@ -89,6 +90,12 @@ EditorObj*
 EditorObj::create(LiquidData data)
 {
   return new LiquidObj(data);
+}
+
+EditorObj*
+EditorObj::create(WeatherData data)
+{
+  return new WeatherObj(data);
 }
 
 bool
@@ -243,6 +250,10 @@ EditorObj::save_position_xml(std::ofstream* xml, Position pos)
   
 /*
 $Log: EditorObj.cc,v $
+Revision 1.14  2000/08/05 18:52:22  grumbel
+Added support for weather loading/saving and inserting into the editor
+Weather is now saved in the level file
+
 Revision 1.13  2000/08/01 22:40:06  grumbel
 Some more improvements to the grouping (capture rectangle), fixed the group sorting
 

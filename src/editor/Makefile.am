@@ -45,4 +45,6 @@ libpingus_editor_a_SOURCES = \
      SurfaceSelector.cc   \
      SurfaceSelector.hh   \
      StartPos.cc          \
-     StartPos.hh
+     StartPos.hh          \
+     WeatherObj.cc        \
+     WeatherObj.hh
