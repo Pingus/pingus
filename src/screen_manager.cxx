@@ -1,4 +1,4 @@
-//  $Id: screen_manager.cxx,v 1.26 2002/11/05 03:02:48 grumbel Exp $
+//  $Id: screen_manager.cxx,v 1.27 2002/11/27 20:05:42 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -48,11 +48,11 @@ ScreenManager::display ()
   // Main loop for the menu
   while (!screens.empty())
     {
-      float time_delta = delta_manager.getset ();
+      delta_manager.set ();
       
-      if (time_delta > 1.0)
+      if (delta_manager.get() > 1.0)
 	{
-	  std::cout << "ScreenManager: detected large delta (" << time_delta
+	  std::cout << "ScreenManager: detected large delta (" << delta_manager.get()
 		    << "), ignoring and doing frameskip" << std::endl;
 	  continue;
 	}
@@ -61,10 +61,10 @@ ScreenManager::display ()
       CL_System::keep_alive ();
 
       // Get new events from ClanLib
-      input_controller.update (time_delta);
+      input_controller.update (delta_manager.get());
 
       // Fill the delta with values
-      GameDelta delta (time_delta, input_controller.get_events ());
+      GameDelta delta (delta_manager, input_controller.get_events ());
 
       last_screen = get_current_screen();
 
@@ -188,6 +188,12 @@ ScreenManager::real_pop_screen ()
     {
       screens.back ()->on_startup ();
     }
+}
+
+void
+ScreenManager::fade_out()
+{
+  FadeOut::black_rect();
 }
 
 void

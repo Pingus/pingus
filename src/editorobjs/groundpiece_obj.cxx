@@ -1,4 +1,4 @@
-//  $Id: groundpiece_obj.cxx,v 1.4 2002/10/07 13:12:48 grumbel Exp $
+//  $Id: groundpiece_obj.cxx,v 1.5 2002/11/27 20:05:42 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -51,6 +51,10 @@ GroundpieceObj::duplicate ()
 void
 GroundpieceObj::write_xml (std::ostream& xml)
 {
+  data->pos.x = int(data->pos.x);
+  data->pos.y = int(data->pos.y);
+  data->pos.z = int(data->pos.z);
+
   data->write_xml(xml);
 }
 

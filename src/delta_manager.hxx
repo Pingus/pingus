@@ -1,4 +1,4 @@
-//  $Id: delta_manager.hxx,v 1.6 2002/10/26 17:31:42 grumbel Exp $
+//  $Id: delta_manager.hxx,v 1.7 2002/11/27 20:05:42 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,10 +26,12 @@
 class DeltaManager
 {
 private:
+  unsigned int absolute_time;
   unsigned int last_time;
 public:
   DeltaManager ()
-    : last_time (CL_System::get_time ())
+    : absolute_time(0),
+      last_time (CL_System::get_time ())
   {}
 
   float getset ()
@@ -42,14 +44,21 @@ public:
   void set () 
   {
     last_time = CL_System::get_time ();
+    absolute_time += last_time;
   }
   
-  float get () 
+  float get () const
   {
     assert (CL_System::get_time () >= last_time);
     return (CL_System::get_time () - last_time) / 1000.0f;
   }
   
+  /** @return time in miliseconds passed since the start of the DeltaManager */
+  unsigned int get_absolute() const
+  {
+    return absolute_time;
+  }
+
 private:
   DeltaManager (const DeltaManager&);
   DeltaManager& operator= (const DeltaManager&);

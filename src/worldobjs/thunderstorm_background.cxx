@@ -1,4 +1,4 @@
-//  $Id: thunderstorm_background.cxx,v 1.3 2002/10/01 19:53:46 grumbel Exp $
+//  $Id: thunderstorm_background.cxx,v 1.4 2002/11/27 20:05:42 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,7 @@
 
 #include "../pingus_resource.hxx"
 #include "../worldobjsdata/thunderstorm_background_data.hxx"
+#include "../graphic_context.hxx"
 #include "thunderstorm_background.hxx"
 
 namespace WorldObjs {
@@ -52,9 +53,9 @@ ThunderstormBackground::update ()
 }
 
 void
-ThunderstormBackground::draw_offset (int x_of, int y_of, float /*s*/)
+ThunderstormBackground::draw (GraphicContext& gc)
 {
-  clouds_sur.put_screen(x_pos + x_of, y_of);
+  gc.draw(clouds_sur, x_pos, 0);
 }
 
 } // namespace WorldObjs

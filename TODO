@@ -3,10 +3,6 @@ Roadmap for Pingus 0.5.0
 
 Major Items:
 
-* 
-
-* replace draw_offset(int x, int y, float s) with draw(GraphicContext& gc);
-
 * two worlds should be provided
 	- tutorial world (maybe 25 levels)
 	- Hellmouth(story?: the earth opens and pingus face trouble...)
@@ -16,7 +12,8 @@ Major Items:
 
 * contrib levels need better sorting, removing 'dead' maps, and some cleaning up
 
-* multiplayer mode should be ripped out if not working correctly
+* multiplayer mode should be ripped out if not working correctly (will
+   be ripied out)
 
 * meta objects [nearly done]:
 
@@ -107,17 +104,13 @@ Current Bugs:
   - all docu should be included in the tarball (source code docu might
     only be on the webpage due to space issues)
 
-- why the f*** is GameTime a class with static member function?! It
-  should be a normal non-static class and placed in World.
-
-- temporary saving should be reworked
+- temporary saving should be reworked [rotation buffer]
 
 - duplicating multilpe iceblocks leads to a crash
 
 - seperate colmap and gfx remover surfaces for digger, miner, etc. would be nice
   the current ones don't work very good since the remove path is too smooth
   - keep_trans,alpha blitters would also be very nice (darken the border of a digging path or something like that)
-
 - diggers leave a small pixel barier when finished with there digging,
   which can be abused as a step
 
@@ -129,16 +122,7 @@ Current Bugs:
 
 - update email addrs and missing author fields in level files
 
-- floater and jumper don't work together
-
 - hint system via herring or flower (it should show the path to walk)
-
-- [important] diggers seem to be extremly slow in some situations
-  (transparent groundpieces?!), no idea what could causing this...
-  Node: this is caused by RGB groundpieces, so they shall *never* be
-  used as groundpieces!
-
-- convert all remaining plf's to xml (nameing convention, etc.)
 
 - smasher doesn't correctly check the y-coordinate
 
@@ -170,8 +154,6 @@ Current Bugs:
 | #5  0x401d4f0a in pthread_start_thread () from /lib/libpthread.so.0
 | #6  0x401d4f51 in pthread_start_thread_event () from /lib/libpthread.so.0
 `----
-
-- Pingu::id handling is very dirty
 
 - music and sound should be up and running and included in the game [important - release critical]
 
@@ -240,7 +222,7 @@ Random crash while scrolling
 'grep' at the sources for "Bug" or "FIXME" that should give you some
 more known bugs and other stuff. 
 
-$Date: 2002/11/26 21:30:37 $
+$Date: 2002/11/27 20:05:41 $
 
 =======
 
@@ -320,8 +302,6 @@ Todo and Bugs from ROADMAP:
 | #5  0x401d4f0a in pthread_start_thread () from /lib/libpthread.so.0
 | #6  0x401d4f51 in pthread_start_thread_event () from /lib/libpthread.so.0
 `----
-
-- Pingu::id handling is very dirty
 
 - music and sound should be up and running and included in the game [important - release critical]
 
@@ -684,11 +664,6 @@ Older:
   especially obvious when bashing through wells. They can also bash
   through metal, which they shouldn't be able to.
 
-* Pengu should be shown on the mini-map in an obvious color (I think
-  Lemmings used yellow on a colored mini-map)
-
-* Snowmen are really skinny on the min-map
-
 * All entrances should have graphics
 
 * Bridgers seem to move backwards when they first start stacking
@@ -723,3 +698,43 @@ Older:
 
 * In space levels, Pingu that fall off of a cliff into space don't
   die, though they should just like in water or lava.
+
+Missing Groundpieces
+====================
+
+Desert Theme:
+ - all bocks need to be available as solid in addition to the
+   non-solid blocks, some level already abuse the non-solid blocks as
+   solid.
+
+Sortie Theme:
+ - this theme needs 'normal' groundpieces which can be used to dig
+   throught and things like that, it currently only has horizontal and
+   vertical bars, which make building levels quite difficult
+
+Wed Nov 27 19:20:28 2002 - crashes on level exit
+Program received signal SIGSEGV, Segmentation fault.
+[Switching to Thread 16384 (LWP 7072)]
+0x0807b225 in PinguActionFactory::delete_actions() (this=0x88cbbe8)
+    at /usr/include/c++/3.2/bits/stl_iterator.h:593
+593	      operator*() const { return *_M_current; }
+Current language:  auto; currently c++
+(gdb) where
+#0  0x0807b225 in PinguActionFactory::delete_actions() (this=0x88cbbe8)
+    at /usr/include/c++/3.2/bits/stl_iterator.h:593
+#1  0x08055bde in ~ActionHolder (this=0x824945c) at action_holder.cxx:48
+#2  0x08090086 in ~Server (this=0x8249450) at server.cxx:53
+#3  0x080a722e in ~TrueServer (this=0x8249450) at true_server.cxx:38
+#4  0x0806e6b9 in ~PingusGameSession (this=0x8248c38)
+    at /usr/include/c++/3.2/bits/basic_string.h:187
+#5  0x0808fe34 in ScreenPtr::decrease_refcount() (this=0x8a6ced0) at screen_ptr.cxx:40
+#6  0x0808ee78 in ~ScreenManager (this=0x88cd178) at screen_ptr.hxx:83
+#7  0x0808f8dd in ScreenManager::deinit() () at screen_manager.cxx:252
+#8  0x08080e6e in PingusMain::main(int, char**) (this=0x816a6dc, argc=2, argv=0xbffffac4)
+    at pingus_main.cxx:783
+#9  0x401a8d5b in main (argc=2, argv=0xbffffac4) at Sources/Application/Unix/clanapp.cpp:32
+(gdb) 
+
+
+
+# EOF #

@@ -1,4 +1,4 @@
-//  $Id: thunderstorm_background.hxx,v 1.5 2002/10/01 19:53:46 grumbel Exp $
+//  $Id: thunderstorm_background.hxx,v 1.6 2002/11/27 20:05:42 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -44,7 +44,7 @@ public:
   float get_z_pos () const;
   
   void update ();
-  void draw_offset (int x_of, int y_of, float s = 1.0);
+  void draw (GraphicContext& gc);
   
 private:
   ThunderstormBackground (const ThunderstormBackground&);

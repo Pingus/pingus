@@ -1,4 +1,4 @@
-//  $Id: level_dot.cxx,v 1.5 2002/10/17 16:06:21 grumbel Exp $
+//  $Id: level_dot.cxx,v 1.6 2002/11/27 20:05:42 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -81,6 +81,7 @@ void
 LevelDot::on_click()
 {
   std::cout << "Starting level: " << levelname << std::endl;
+  ScreenManager::instance()->fade_out();
   ScreenManager::instance()->push_screen(new PingusGameSession (path_manager.complete("levels/") + levelname),
                                          true);
 }

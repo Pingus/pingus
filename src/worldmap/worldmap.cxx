@@ -1,4 +1,4 @@
-//  $Id: worldmap.cxx,v 1.27 2002/11/03 23:31:35 grumbel Exp $
+//  $Id: worldmap.cxx,v 1.28 2002/11/27 20:05:42 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,7 +38,9 @@
 #include "drawable_factory.hxx"
 #include "drawable.hxx"
 #include "dot.hxx"
+#include "level_dot.hxx"
 #include "path_graph.hxx"
+#include "../plf.hxx"
 #include "../math.hxx"
 
 namespace WorldMapNS {
@@ -186,6 +188,33 @@ WorldMap::draw (GraphicContext& gc)
     {
       (*i)->draw (display_gc);
     }
+
+  if (pingus->get_node() != NoNode)
+    {
+      LevelDot* leveldot = dynamic_cast<LevelDot*>(path_graph->get_dot(pingus->get_node()));
+
+      if (leveldot)
+        gc.print_center(Fonts::pingus_small, gc.get_width ()/2, gc.get_height() - 40,
+                        System::translate(leveldot->get_plf()->get_levelname()));
+    }
+  
+  
+  Vector mpos = display_gc.screen_to_world(Vector(mouse_x, mouse_y));
+  Dot* dot = path_graph->get_dot(mpos.x, mpos.y);
+  if (dot)
+    {
+      LevelDot* leveldot = dynamic_cast<LevelDot*>(dot);
+
+      if (leveldot)
+        {
+          gc.print_center(Fonts::pingus_small, mouse_x, mouse_y - 30,
+                          System::translate(leveldot->get_plf()->get_levelname()));
+
+          if (maintainer_mode)
+            gc.print_center(Fonts::pingus_small, mouse_x, mouse_y - 56,
+                            leveldot->get_plf()->get_filename());
+        }
+    }
 }
 
 void
@@ -213,6 +242,13 @@ void
 WorldMap::set_pingus(NodeId id)
 {
   UNUSED_ARG(id);
+}
+
+void
+WorldMap::on_pointer_move(int x, int y)
+{
+  mouse_x = x;
+  mouse_y = y;
 }
 
 void

@@ -1,4 +1,4 @@
-//  $Id: manager.hxx,v 1.14 2002/11/03 23:31:35 grumbel Exp $
+//  $Id: manager.hxx,v 1.15 2002/11/27 20:05:42 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,7 +36,8 @@ typedef int NodeId;
 class WorldMap;
 
 /** The WorldMapManager manages the worldmaps and the translation
-    between two worldmaps */
+    between two worldmaps, it also holds the GUI elements that are
+    accessible in the WorldMap Screen */
 class WorldMapManager : public GUIScreen
 {
   /** FIXME: Workaround class to let the worldmap play with well
@@ -48,7 +49,8 @@ class WorldMapManager : public GUIScreen
       
     void on_primary_button_press (int x, int y);
     void on_secondary_button_press (int x, int y);
- 
+    void on_pointer_move(int x, int y);
+    
     void draw (GraphicContext& gc);
     void update (float delta);
       

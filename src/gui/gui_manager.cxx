@@ -1,4 +1,4 @@
-//  $Id: gui_manager.cxx,v 1.15 2002/10/14 11:15:15 torangan Exp $
+//  $Id: gui_manager.cxx,v 1.16 2002/11/27 20:05:42 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -50,7 +50,7 @@ GUIManager::draw (GraphicContext& gc)
 void
 GUIManager::update (const GameDelta& delta)
 {
-  process_input (delta.get_events ());
+  process_input (delta);
 
   for (std::vector<Component*>::iterator i = components.begin (); 
        i != components.end (); ++i)
@@ -60,8 +60,10 @@ GUIManager::update (const GameDelta& delta)
 }
 
 void
-GUIManager::process_input (const std::list<Input::Event*>& events)
+GUIManager::process_input (const GameDelta& delta)
 {
+  const std::list<Input::Event*>& events = delta.get_events();
+
   for (std::list<Event*>::const_iterator i = events.begin (); i != events.end (); ++i)
     {
       switch ((*i)->get_type())
@@ -75,7 +77,7 @@ GUIManager::process_input (const std::list<Input::Event*>& events)
 	case Input::ButtonEventType:
 	  {
 	    ButtonEvent* event = dynamic_cast<ButtonEvent*>(*i);
-	    process_button_event (event);
+	    process_button_event (delta.get_absolute_time(), event);
 	    break;
 	  }
 	  
@@ -176,11 +178,11 @@ GUIManager::process_pointer_event (Input::PointerEvent* event)
 }
 
 void
-GUIManager::process_button_event (Input::ButtonEvent* event)
+GUIManager::process_button_event (unsigned int time_stamp, Input::ButtonEvent* event)
 {
   //std::cout << "GUIManager: Got button event: " << event->name << " " << event->state << std::endl;
 
-  Component* comp = component_at (x_pos, y_pos);//FIXME
+  Component* comp = component_at (x_pos, y_pos);//FIXME: x/y_pos should be inside controller
 
   if (comp)
     {
@@ -188,6 +190,8 @@ GUIManager::process_button_event (Input::ButtonEvent* event)
 	{
 	  primary_pressed_component = comp;
 	  comp->on_primary_button_press (x_pos, y_pos);
+
+          // FIXME: add double click detection here
 	}
       else if (event->name == primary && event->state == Input::released) 
 	{

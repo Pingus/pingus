@@ -1,4 +1,4 @@
-//  $Id: game_delta.hxx,v 1.9 2002/09/27 11:26:43 torangan Exp $
+//  $Id: game_delta.hxx,v 1.10 2002/11/27 20:05:42 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,8 +20,9 @@
 #ifndef HEADER_PINGUS_GAME_DELTA_HXX
 #define HEADER_PINGUS_GAME_DELTA_HXX
 
-#include "pingus.hxx"
 #include <list>
+#include "pingus.hxx"
+#include "delta_manager.hxx"
 
 namespace Input
 {
@@ -33,7 +34,7 @@ class GameDelta
 {
 private:
   /** time delta since the last update */
-  float time_delta;
+  const DeltaManager& time_delta;
     
   /** Reference to the event list from the controller, we must not
       delete the Event* */
@@ -41,11 +42,16 @@ private:
     
 public:
   /** Construct a GameDelta with both time and events */
-  GameDelta (float d,std::list<Input::Event*>& e)
+  GameDelta (const DeltaManager& d,
+             const std::list<Input::Event*>& e)
     : time_delta (d), events (e) {}
 
   /** Return the time that has passed in seconds since the last update() */
-  float get_time () const { return time_delta; }
+  float get_time () const { return time_delta.get(); }
+
+  /** @return the time since the application startup in miliseconds
+      (1/1000 second) */
+  unsigned int get_absolute_time () const { return time_delta.get_absolute(); }
 
   /** Return the events */
   const std::list<Input::Event*>& get_events () const { return events; }

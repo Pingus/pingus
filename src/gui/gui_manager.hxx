@@ -1,4 +1,4 @@
-//  $Id: gui_manager.hxx,v 1.11 2002/09/27 11:26:46 torangan Exp $
+//  $Id: gui_manager.hxx,v 1.12 2002/11/27 20:05:42 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -61,9 +61,9 @@ namespace GUI
     int x_pos;
     int y_pos;
 
-    void process_input (const std::list<Input::Event*>& events);
+    void process_input (const GameDelta& delta);
     void process_pointer_event (Input::PointerEvent* event);
-    void process_button_event (Input::ButtonEvent* event);
+    void process_button_event (unsigned int time_stamp, Input::ButtonEvent* event);
   public:
     GUIManager ();
     virtual ~GUIManager () {}

@@ -1,4 +1,4 @@
-//  $Id: component.hxx,v 1.12 2002/09/28 22:24:24 grumbel Exp $
+//  $Id: component.hxx,v 1.13 2002/11/27 20:05:42 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -47,6 +47,8 @@ public:
     
   /** Gets issued once the primary button is released */
   virtual void on_primary_button_release (int x, int y) { UNUSED_ARG(x); UNUSED_ARG(y); }
+
+  virtual void on_primary_button_double_click (int x, int y) { UNUSED_ARG(x); UNUSED_ARG(y); }
 
   virtual void on_secondary_button_press (int x, int y) { UNUSED_ARG(x); UNUSED_ARG(y); }
   virtual void on_secondary_button_release (int x, int y) { UNUSED_ARG(x); UNUSED_ARG(y); }

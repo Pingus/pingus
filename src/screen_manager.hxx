@@ -1,4 +1,4 @@
-//  $Id: screen_manager.hxx,v 1.15 2002/11/05 03:02:48 grumbel Exp $
+//  $Id: screen_manager.hxx,v 1.16 2002/11/27 20:05:42 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -68,6 +68,9 @@ public:
 
   /** Remove the current screen and fall back to the last one */
   void pop_screen ();
+
+  /** Fade the screen out, this call blocks till the screen is black */
+  void fade_out();
 
 private:
   /** Replace the current screen */

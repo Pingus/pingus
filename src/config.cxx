@@ -1,4 +1,4 @@
-//  $Id: config.cxx,v 1.7 2002/11/08 01:38:27 grumbel Exp $
+//  $Id: config.cxx,v 1.8 2002/11/27 20:05:42 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -308,15 +308,15 @@ Config::set_value(std::string valueid,
     {
       fullscreen_enabled = str_to_bool(value);
     }
-  else if (valueid == "tile_size")
+  else if (valueid == "tile-size")
     {
       tile_size = str_to_int(value);
     }
-  else if (valueid == "game_speed")
+  else if (valueid == "game-speed")
     {
       game_speed = str_to_int(value);
     }
-  else if (valueid == "print_fps")
+  else if (valueid == "print-fps")
     {
       print_fps = str_to_bool(value);
     }
@@ -324,27 +324,27 @@ Config::set_value(std::string valueid,
     {
       intro_disabled = !str_to_bool(value);
     }
-  else if (valueid == "fast_mode")
+  else if (valueid == "fast-mode")
     {
       fast_mode = str_to_bool(value);
     }
-  else if (valueid == "maintainer_mode")
+  else if (valueid == "maintainer-mode")
     {
       maintainer_mode = str_to_bool(value);
     }
-  else if (valueid == "unlimited_actions")
+  else if (valueid == "unlimited-actions")
     {
       Cheat::unlimited_actions = str_to_bool(value);
     }
-  else if (valueid == "quick_play")
+  else if (valueid == "quick-play")
     {
       quick_play = str_to_bool(value);
     }
-  else if (valueid == "cursor_enabled")
+  else if (valueid == "cursor-enabled")
     {
       cursor_enabled = str_to_bool(value);
     }
-  else if (valueid == "auto_scrolling")
+  else if (valueid == "auto-scrolling")
     {
       auto_scrolling = str_to_bool(value);
     }
@@ -360,7 +360,7 @@ Config::set_value(std::string valueid,
     {
       screen_height = str_to_int(value);
     }
-  else if (valueid == "preload_data")
+  else if (valueid == "preload-data")
     {
       preload_data = str_to_bool(value);
     }

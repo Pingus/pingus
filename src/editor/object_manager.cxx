@@ -1,4 +1,4 @@
-//  $Id: object_manager.cxx,v 1.36 2002/10/07 23:11:09 grumbel Exp $
+//  $Id: object_manager.cxx,v 1.37 2002/11/27 20:05:42 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -69,8 +69,8 @@ ObjectManager::new_level ()
 
   start_x_pos = 0;
   start_y_pos = 0;
-  width = 1216;
-  height = 608;
+  width = 1200;
+  height = 600;
   level_time = -1;
   difficulty = 40;
   playable = 0;

@@ -1,4 +1,4 @@
-//  $Id: game_time.hxx,v 1.7 2002/09/27 11:26:43 torangan Exp $
+//  $Id: game_time.hxx,v 1.8 2002/11/27 20:05:42 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,9 +25,7 @@
 /** The GameTime represents the time which passes in the Pingus World.
     Its behaviour is analogue to CL_System::get_time (), but with the
     difference that it only increases if the game runs, if the game is
-    in pause mode, the time will not continue. 
-    
-    FIXME: This should not be a static singletone class */
+    in pause mode, the time will not continue. */
 class GameTime
 {
 private:

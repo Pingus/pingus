@@ -1,4 +1,4 @@
-//  $Id: solid_color_background.cxx,v 1.2 2002/09/27 18:36:41 torangan Exp $
+//  $Id: solid_color_background.cxx,v 1.3 2002/11/27 20:05:42 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,14 +34,10 @@ SolidColorBackground::~SolidColorBackground ()
 }
 
 void
-SolidColorBackground::draw_offset (int x_of, int y_of, float s)
+SolidColorBackground::draw (GraphicContext& gc)
 {
-  // FIXME: Probally fill_rect is better here, but slower?
+  // FIXME: should use GraphicContext, not CL_Display
   CL_Display::clear_display (data->color.red, data->color.green, data->color.blue, data->color.alpha);
-
-  UNUSED_ARG(x_of);
-  UNUSED_ARG(y_of);
-  UNUSED_ARG(s);
 }
 
 } // namespace WorldObjs
