@@ -1,4 +1,4 @@
-//  $Id: fonts.cxx,v 1.7 2003/12/13 15:10:44 grumbel Exp $
+//  $Id: fonts.cxx,v 1.8 2003/12/13 23:41:11 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,7 +41,7 @@ CL_Font lcd;
 void
 init ()
 {
-#ifndef CLANLIB_0_6
+#ifdef CLANLIB_0_6
   // FIXME: Just a workaround, no fix
   pingus_small = PingusResource::load_font("Fonts/pingus_small","fonts");
   xterm        = pingus_small;
@@ -60,21 +60,24 @@ init ()
 
   lcd          = pingus_small;
 #else 
-  pingus_small = PingusResource::load_font("Fonts/pingus_small", "fonts");
-  pingus_small_fix_num = PingusResource::load_font("Fonts/pingus_small_fix_num", "fonts");
-  pingus_large = PingusResource::load_font("Fonts/pingus","fonts");
-
-  chalk_large  = PingusResource::load_font("Fonts/chalk_large","fonts");
+  chalk_large  = PingusResource::load_font("Fonts/chalk_normal","fonts"); 
+  //PingusResource::load_font("Fonts/chalk_large","fonts");
   chalk_normal = PingusResource::load_font("Fonts/chalk_normal","fonts");
   chalk_small  = PingusResource::load_font("Fonts/chalk_small","fonts");
 
+  pingus_small = PingusResource::load_font("Fonts/pingus_small", "fonts");
+  pingus_small_fix_num = PingusResource::load_font("Fonts/pingus_small_fix_num", "fonts");
+  pingus_large = PingusResource::load_font("Fonts/pingus_small", "fonts");
+  //PingusResource::load_font("Fonts/pingus","fonts");
+
   courier_small = PingusResource::load_font("Fonts/courier_small", "fonts");
 
-  xterm        = PingusResource::load_font("Fonts/xterm","fonts");
-  smallfont    = PingusResource::load_font("Fonts/smallfont","fonts");
-  smallfont_h  = PingusResource::load_font("Fonts/smallfont_h","fonts");
+  xterm        = PingusResource::load_font("Fonts/courier_small", "fonts");
+  //PingusResource::load_font("Fonts/xterm","fonts");
+  smallfont    = PingusResource::load_font("Fonts/courier_small", "fonts"); //PingusResource::load_font("Fonts/smallfont","fonts");
+  smallfont_h  = PingusResource::load_font("Fonts/courier_small", "fonts"); // PingusResource::load_font("Fonts/smallfont_h","fonts");
 
-  lcd          = PingusResource::load_font("Fonts/numbers", "fonts");
+  lcd          = PingusResource::load_font("Fonts/courier_small", "fonts"); // PingusResource::load_font("Fonts/numbers", "fonts");
 #endif
 }
 

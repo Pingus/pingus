@@ -1,4 +1,4 @@
-//  $Id: editor.cxx,v 1.58 2003/12/13 16:23:39 grumbel Exp $
+//  $Id: editor.cxx,v 1.59 2003/12/13 23:41:11 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -109,21 +109,16 @@ Editor::Editor () : event_handler_ref_counter(0),
   scroll_map->editor_event = event;
 
   //std::cout << "Editor: registering event handler" << event << "... " << std::flush;
-#ifdef CLANLIB_0_6
-  on_button_press_slot   = CL_Input::sig_button_press ().connect(event, &EditorEvent::on_button_press);
-  on_button_release_slot = CL_Input::sig_button_release ().connect(event, &EditorEvent::on_button_release);
-#endif
+  slots.push_back(CL_Keyboard::sig_key_down().connect(event, &EditorEvent::on_button_press));
+  slots.push_back(CL_Keyboard::sig_key_up().connect(event, &EditorEvent::on_button_release));
+  slots.push_back(CL_Mouse::sig_key_down().connect(event, &EditorEvent::on_button_press));
+  slots.push_back(CL_Mouse::sig_key_up().connect(event, &EditorEvent::on_button_release));
 }
 
 Editor::~Editor ()
 {
   StatManager::instance()->set_bool("show-editor-help-screen", show_help_screen);
-
-#ifdef CLANLIB_0_6
-  CL_Input::sig_button_press ().disconnect (on_button_press_slot);
-  CL_Input::sig_button_release ().disconnect (on_button_release_slot);
-#endif 
-
+  
   delete object_manager;
   delete status_line;
   delete object_selector;
@@ -161,12 +156,10 @@ Editor::update (const GameDelta& delta)
 	{
 	  EditorObj* obj = selection->get_current_obj();
 	  property_window->update_frame(obj);
-	  //CL_Component* comp = obj->get_gui_dialog (editor->property_window);
 	}
       else
 	{
 	  property_window->update_frame(0);
-	  //std::cout << "EditorEvent::editor_show_object_properties (): error: multiple objects selected" << std::endl;
 	}
     }
 

@@ -1,4 +1,4 @@
-//  $Id: editor.hxx,v 1.26 2003/10/18 23:17:27 grumbel Exp $
+//  $Id: editor.hxx,v 1.27 2003/12/13 23:41:12 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -52,8 +52,7 @@ private:
   EditorEvent* event;
   friend class EditorEvent;
 
-  CL_Slot on_button_press_slot;
-  CL_Slot on_button_release_slot;
+  std::vector<CL_Slot> slots;
 
   int event_handler_ref_counter;
 

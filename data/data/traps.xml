@@ -1,15 +1,63 @@
 <resources>
   <section name="Traps">
-    <surface file="../images/traps/tut.png" height="115" name="tut" tcol="0" width="732" x="0" y="0" />
-    <surface array="6x1" file="../images/traps/smasher.png" height="189" name="smasher" width="282" x="0" y="0" />
-    <surface file="../images/traps/smasher_cmap.png" height="189" name="smasher_cmap" tcol="0" width="281" x="0" y="0" />
-    <surface array="13x1" file="../images/traps/hammer.png" height="181" name="hammer" width="151" x="0" y="0" />
-    <surface array="9x1" file="../images/traps/fake_exit.png" height="112" name="fake_exit" tcol="0" width="75" x="0" y="0" />
-    <surface array="14x1" file="../images/traps/spike.png" height="32" name="spike" tcol="0" width="32" x="0" y="0" />
-    <surface array="12x2" file="../images/traps/guillotinekill.png" height="96" name="guillotinekill" tcol="0" width="80" x="0" y="0" />
-    <surface array="7x1" file="../images/traps/guillotineidle.png" height="96" name="guillotineidle" tcol="0" width="80" x="0" y="0" />
-    <surface array="6x1" file="../images/traps/laser_exit.png" height="60" name="laser_exit" tcol="0" width="75" x="0" y="0" />
-    <surface array="6x1" file="../images/traps/bumper.png" height="102" name="bumper" tcol="0" width="60" x="0" y="0" />
-    <surface file="../images/traps/bumper_cmap.png" height="102" name="bumper_cmap" tcol="0" width="60" x="0" y="0" />
+    <sprite name="tut">
+      <image file="../images/traps/tut.png" />
+    </sprite>
+
+    <sprite name="smasher_cmap">
+      <image file="../images/traps/smasher_cmap.png" />
+    </sprite>
+
+    <sprite name="smasher">
+      <image file="../images/traps/smasher.png">
+        <grid array="6,1"  height="189" width="282" x="0" y="0" />
+      </image>
+    </sprite>
+
+    <sprite name="hammer">
+      <image file="../images/traps/hammer.png">
+        <grid array="13,1"  height="181" width="151" x="0" y="0" />
+      </image>
+    </sprite>
+
+    <sprite name="fake_exit">
+      <image file="../images/traps/fake_exit.png">
+        <grid array="9,1" height="112" tcol="0" width="75" x="0" y="0" />
+      </image>
+    </sprite>
+
+    <sprite name="spike">
+      <image file="../images/traps/spike.png">
+        <grid array="14,1" height="32" tcol="0" width="32" x="0" y="0" />
+      </image>
+    </sprite>
+
+    <sprite name="guillotinekill">
+      <image file="../images/traps/guillotinekill.png">
+        <grip array="12x2"  height="96" tcol="0" width="80" x="0" y="0" />
+      </image>
+    </sprite>
+    
+    <sprite name="guillotineidle">
+      <image file="../images/traps/guillotineidle.png">
+        <grip array="7,1"  height="96"  tcol="0" width="80" x="0" y="0" />
+      </image>
+    </sprite>
+
+    <sprite name="laser_exit">
+      <image file="../images/traps/laser_exit.png">
+        <grid array="6,1" height="60" tcol="0" width="75" x="0" y="0" />
+      </image>
+    </sprite>
+
+    <sprite name="bumper">
+      <image file="../images/traps/bumper.png">
+        <grid array="6,1" height="102" tcol="0" width="60" x="0" y="0" />
+      </image>
+    </sprite>
+
+    <sprite name="bumper_cmap">
+      <image file="../images/traps/bumper_cmap.png" />
+    </sprite>
   </section>
 </resources>
