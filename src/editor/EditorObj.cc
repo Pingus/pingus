@@ -1,4 +1,4 @@
-// $Id: EditorObj.cc,v 1.9 2000/07/14 12:18:50 grumbel Exp $
+// $Id: EditorObj.cc,v 1.10 2000/07/14 17:45:36 grumbel Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -215,7 +215,7 @@ EditorGroup::save(std::ofstream* plf, std::ofstream* psm)
 EditorObj* 
 EditorGroup::duplicate()
 {
-  EditorObj* editor_obj = new EditorGroup();
+  EditorGroup* editor_obj = new EditorGroup();
   
   for(list<EditorObj*>::iterator i = objs.begin();
       i != objs.end();
@@ -228,6 +228,9 @@ EditorGroup::duplicate()
   
 /*
 $Log: EditorObj.cc,v $
+Revision 1.10  2000/07/14 17:45:36  grumbel
+little typo fixe
+
 Revision 1.9  2000/07/14 12:18:50  grumbel
 Fixed misc glitches for the 0.4.0 release
 
