@@ -1,4 +1,4 @@
-//  $Id: result.hxx,v 1.5 2003/03/10 11:29:49 grumbel Exp $
+//  $Id: result.hxx,v 1.6 2003/03/16 22:54:32 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,17 +20,31 @@
 #ifndef HEADER_PINGUS_RESULT_HXX
 #define HEADER_PINGUS_RESULT_HXX
 
+#include "plf_handle.hxx"
 #include "pingus.hxx"
 
 /** Result of a Pingus game */
 struct Result
 {
+  /** Leveldata */
+  PLFHandle plf;
+
+  /** Total number of that got saved */
   int saved;
+
+  /** Total number of that got killed */
   int killed;
+
+  /** Total number of Pingus */
   int total;
-  int time;
-  int unknown;
-  int status;
+  
+  /** Time used to finish this level */
+  int used_time;
+  
+  /** Maximum time available for this level */
+  int max_time;
+  
+  /** Number of Pingus needed to save */
   int needed;
 };
 

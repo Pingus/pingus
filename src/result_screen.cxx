@@ -1,4 +1,4 @@
-//  $Id: result_screen.cxx,v 1.1 2003/03/10 11:29:49 grumbel Exp $
+//  $Id: result_screen.cxx,v 1.2 2003/03/16 22:54:32 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,8 +23,20 @@
 #include "gui/screen_manager.hxx"
 #include "res_descriptor.hxx"
 #include "fonts.hxx"
+#include "plf.hxx"
 #include "string_converter.hxx"
+#include "game_session.hxx"
+#include "system.hxx"
 #include "result_screen.hxx"
+
+class ResultScreenComponent : public GUI::Component
+{
+public:
+  Result result;
+
+  ResultScreenComponent(Result arg_result);
+  void draw(GraphicContext& gc) ;
+};
 
 class ResultScreenOkButton 
   : public GUI::SurfaceButton
@@ -44,31 +56,69 @@ public:
   }
 };
 
-class ResultComponent : public GUI::Component
+class ResultScreenRetryButton 
+  : public GUI::SurfaceButton
 {
 private:
-  Result result;
+  ResultScreenComponent* parent;
 public:
-  ResultComponent(Result arg_result)
-    : result(arg_result)
+  ResultScreenRetryButton(ResultScreenComponent* p)
+    : GUI::SurfaceButton(500, 500, 
+                         ResDescriptor("result/retry", "core", ResDescriptor::RD_RESOURCE),
+                         ResDescriptor("result/retry", "core", ResDescriptor::RD_RESOURCE),
+                         ResDescriptor("result/retry", "core", ResDescriptor::RD_RESOURCE)),
+      parent(p)
   {
   }
 
-  void draw(GraphicContext& gc) {
-    gc.print_left(Fonts::pingus_small, 100, 100, "Saved: ");
-    gc.print_left(Fonts::pingus_small, 200, 100, to_string(result.saved));
-    gc.print_left(Fonts::pingus_small, 100, 130, "Killed: ");    
-    gc.print_left(Fonts::pingus_small, 200, 130, to_string(result.killed));
+  void on_click() 
+  {
+    std::cout << "Got CLICK on Retry!!!" << std::endl;
+    ScreenManager::instance()->replace_screen(new PingusGameSession (parent->result.plf), true);
   }
 };
+
+ResultScreenComponent::ResultScreenComponent(Result arg_result)
+  : result(arg_result)
+{
+}
+
+void
+ResultScreenComponent::draw(GraphicContext& gc) 
+{
+  gc.clear(.0f, .0f, .0f);
+  gc.print_center(Fonts::pingus_large, gc.get_width()/2, 20, "Results for ");
+  gc.print_center(Fonts::pingus_large, gc.get_width()/2, 70, System::translate(result.plf->get_levelname()));
+
+  gc.print_left(Fonts::pingus_small, 100, 180, "Saved: ");
+  gc.print_left(Fonts::pingus_small, 200, 180, to_string(result.saved));
+  gc.print_left(Fonts::pingus_small, 100, 210, "Killed: ");    
+  gc.print_left(Fonts::pingus_small, 200, 210, to_string(result.killed));
+
+  gc.print_left(Fonts::pingus_small, 100, 240, "Needed: ");    
+  gc.print_left(Fonts::pingus_small, 200, 240, to_string(result.needed));
+
+  gc.print_left(Fonts::pingus_small, 100, 270, "Time left: ");    
+  if (result.max_time == -1)
+    gc.print_left(Fonts::pingus_small, 200, 270, "-");
+  else
+    gc.print_left(Fonts::pingus_small, 200, 270, to_string(result.max_time - result.used_time));
+
+  if (result.saved >= result.needed)
+    gc.print_center(Fonts::pingus_large, gc.get_width()/2, 350, "Success! =:-)");
+  else
+    gc.print_center(Fonts::pingus_large, gc.get_width()/2, 350, "Failure! :-(");
+}
 
 ResultScreen::ResultScreen(Result result)
 {
   ResDescriptor ok_desc("result/ok", "core", ResDescriptor::RD_RESOURCE);
   ResDescriptor cancel_desc("result/retry", "core", ResDescriptor::RD_RESOURCE);
 
-  gui_manager->add(new ResultComponent(result));
+  ResultScreenComponent* comp = new ResultScreenComponent(result);
+  gui_manager->add(comp);
   gui_manager->add(new ResultScreenOkButton());
+  gui_manager->add(new ResultScreenRetryButton(comp));
   //gui_manager->add(new GUI::SurfaceButton(500, 500, cancel_desc, cancel_desc, cancel_desc));
 }
 
