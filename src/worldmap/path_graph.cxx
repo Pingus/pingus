@@ -1,4 +1,4 @@
-//  $Id: path_graph.cxx,v 1.1 2002/10/12 23:34:43 grumbel Exp $
+//  $Id: path_graph.cxx,v 1.2 2002/10/13 01:09:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,15 +17,21 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <iostream>
 #include "../xml_helper.hxx"
 #include "../pingus_error.hxx"
+#include "dot.hxx"
 #include "dot_factory.hxx"
+#include "worldmap.hxx"
 #include "path_graph.hxx"
 
 namespace WorldMapNS {
 
-PathGraph::PathGraph(WorldMap* worldmap, xmlDocPtr doc, xmlNodePtr cur)
+PathGraph::PathGraph(WorldMap* arg_worldmap, xmlDocPtr doc, xmlNodePtr cur)
+  : worldmap(arg_worldmap)
 {
+  std::cout << "PathGraph::PathGraph(WorldMap* arg_worldmap, xmlDocPtr doc, xmlNodePtr cur)" << std::endl;
+
   // cur is at <graph>...
   cur = cur->children;
   cur = XMLhelper::skip_blank(cur);
@@ -34,27 +40,62 @@ PathGraph::PathGraph(WorldMap* worldmap, xmlDocPtr doc, xmlNodePtr cur)
     {
       if (XMLhelper::equal_str(cur->name, "nodes"))
         {
-
+          parse_nodes(doc, cur);
         }
       else if (XMLhelper::equal_str(cur->name, "edges"))
         {
-          
+          parse_edges(doc, cur);
         }
+      else
+        {
+          std::cout << "PathGraph: Can't parse: " << cur->name << std::endl;
+        }
+
+      cur = cur->next;
+      cur = XMLhelper::skip_blank(cur);
     }
 }
 
 void
 PathGraph::parse_nodes(xmlDocPtr doc, xmlNodePtr cur)
 {
+  cur = cur->children;
+  cur = XMLhelper::skip_blank(cur);
+
+  std::cout << "PathGraph::parse_nodes(xmlDocPtr doc, xmlNodePtr cur)" << std::endl;
+  
   while (cur)
     {
-      DotFactory::create(doc, cur);
+      std::cout << "parsing nodes" << std::endl;
+
+      Dot* dot = DotFactory::create(doc, cur);
+      if (dot)
+        {
+          // add the dot to the pathfinding
+          NodeId id = graph.add_node(dot);
+          node_lookup[dot->get_name()] = id;
+
+          // add the dot to the list of drawables
+          worldmap->add_drawable(dot);
+        }
+      else
+        {
+          std::cout << "PathGraph: Couldn't create node" << std::endl;
+        }
+
+      cur = cur->next;
+      cur = XMLhelper::skip_blank(cur);
     }  
 }
 
 void
 PathGraph::parse_edges(xmlDocPtr doc, xmlNodePtr cur)
 {
+  cur = cur->children;
+  cur = XMLhelper::skip_blank(cur);
+
+  std::cout << "PathGraph::parse_edges(xmlDocPtr doc, xmlNodePtr cur)" << std::endl;
+
   while (cur)
     {
       if (XMLhelper::equal_str(cur->name, "edge"))
@@ -63,7 +104,7 @@ PathGraph::parse_edges(xmlDocPtr doc, xmlNodePtr cur)
           std::string source;
           std::string destination;
 
-          if (!XMLhelper::get_prop(cur, "id", name))
+          if (!XMLhelper::get_prop(cur, "name", name))
             {
               PingusError::raise("PathGraph: Missing Edge Name");
             }
@@ -80,8 +121,9 @@ PathGraph::parse_edges(xmlDocPtr doc, xmlNodePtr cur)
 
           // FIXME: add path-data parsing here
 
-          // FIXME: No error checking
-          graph.add_bi_edge((Path*)0, node_lookup[source], node_lookup[destination], 
+          // FIXME: No error checking, 
+          graph.add_bi_edge(new Path(), // FIXME: Memory leak!
+                            node_lookup[source], node_lookup[destination], 
                             0 /* costs */);
         }
       else

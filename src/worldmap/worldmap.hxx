@@ -1,4 +1,4 @@
-//  $Id: worldmap.hxx,v 1.15 2002/10/12 23:34:43 grumbel Exp $
+//  $Id: worldmap.hxx,v 1.16 2002/10/13 01:09:18 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -72,6 +72,10 @@ public:
   
   /** The the pingu to the given Node */
   void set_pingus(NodeId id);
+  
+  /** FIXME: Memory leak?! */
+  void add_drawable(Drawable* drawable);
+  void remove_drawable(Drawable* drawable);
 
   /** @return the shortest path between node1 and node2  */
   std::vector<EdgeId> find_path (NodeId node1, NodeId node2);

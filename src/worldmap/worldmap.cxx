@@ -1,4 +1,4 @@
-//  $Id: worldmap.cxx,v 1.16 2002/10/12 23:34:43 grumbel Exp $
+//  $Id: worldmap.cxx,v 1.17 2002/10/13 01:09:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -116,7 +116,7 @@ WorldMap::parse_objects(xmlDocPtr doc, xmlNodePtr cur)
         }
       else
         {
-          std::cout << "Parse Error" << std::endl;
+          std::cout << "WorldMap::parse_objects: Parse Error" << std::endl;
         }
       
       cur = cur->next;
@@ -127,9 +127,6 @@ WorldMap::parse_objects(xmlDocPtr doc, xmlNodePtr cur)
 void
 WorldMap::parse_graph(xmlDocPtr doc, xmlNodePtr cur)
 {
-  cur = cur->children;
-  cur = XMLhelper::skip_blank(cur);
-  
   path_graph = new PathGraph(this, doc, cur);
 }
 
@@ -158,6 +155,18 @@ WorldMap::update ()
     {
       (*i)->update ();
     }
+}
+
+void
+WorldMap::add_drawable(Drawable* drawable)
+{
+  drawables.push_back(drawable);
+}
+
+void
+WorldMap::remove_drawable(Drawable* drawable)
+{
+  
 }
 
 void

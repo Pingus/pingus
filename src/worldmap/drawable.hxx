@@ -1,4 +1,4 @@
-//  $Id: drawable.hxx,v 1.1 2002/10/12 23:37:23 grumbel Exp $
+//  $Id: drawable.hxx,v 1.2 2002/10/13 01:09:18 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -49,7 +49,7 @@ public:
   Drawable(xmlDocPtr doc, xmlNodePtr cur) 
     : visible(true)
   {
-    if (!XMLhelper::get_prop (cur, "id", name))
+    if (!XMLhelper::get_prop (cur, "name", name))
       {
         PingusError::raise("Drawable: Couldn't get name of object");
       }

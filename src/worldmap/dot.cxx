@@ -1,4 +1,4 @@
-//  $Id: dot_factory.cxx,v 1.3 2002/10/13 01:09:18 grumbel Exp $
+//  $Id: dot.cxx,v 1.1 2002/10/13 01:09:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,30 +17,20 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "../pingus_error.hxx"
-#include "../xml_helper.hxx"
-#include "level_dot.hxx"
-#include "dot_factory.hxx"
+#include "dot.hxx"
 
 namespace WorldMapNS {
 
-Dot*
-DotFactory::create(xmlDocPtr doc, xmlNodePtr cur)
+Dot::Dot(xmlDocPtr doc, xmlNodePtr cur)
+  : Drawable("bla")
 {
-  if (XMLhelper::equal_str(cur->name, "leveldot"))
-    {
-      
-    }
-  else if (XMLhelper::equal_str(cur->name, "tubedot"))
-    {
-      
-    }
-  else
-    {
-      //PingusError::raise("DotFactory: unknown tag: ");
-    }
+  
+}
 
-  return new LevelDot(doc, cur);
+std::string
+Dot::get_name()
+{
+  return name;
 }
 
 } // namespace WorldMapNS

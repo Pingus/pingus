@@ -1,5 +1,5 @@
-//  $Id: dot_factory.cxx,v 1.3 2002/10/13 01:09:18 grumbel Exp $
-//
+//  $Id: level_dot.hxx,v 1.1 2002/10/13 01:09:18 grumbel Exp $
+// 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -12,37 +12,35 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//
+// 
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "../pingus_error.hxx"
-#include "../xml_helper.hxx"
-#include "level_dot.hxx"
-#include "dot_factory.hxx"
+#ifndef HEADER_PINGUS_WORLDMAP_LEVEL_DOT_HXX
+#define HEADER_PINGUS_WORLDMAP_LEVEL_DOT_HXX
+
+#include "dot.hxx"
 
 namespace WorldMapNS {
 
-Dot*
-DotFactory::create(xmlDocPtr doc, xmlNodePtr cur)
+/** */
+class LevelDot : public Dot
 {
-  if (XMLhelper::equal_str(cur->name, "leveldot"))
-    {
-      
-    }
-  else if (XMLhelper::equal_str(cur->name, "tubedot"))
-    {
-      
-    }
-  else
-    {
-      //PingusError::raise("DotFactory: unknown tag: ");
-    }
+private:
+public:
+  LevelDot(xmlDocPtr doc, xmlNodePtr cur);
 
-  return new LevelDot(doc, cur);
-}
+  void draw(GraphicContext& gc);
+  void update();
+
+private:
+  LevelDot (const LevelDot&);
+  LevelDot& operator= (const LevelDot&);
+};
 
 } // namespace WorldMapNS
+
+#endif
 
 /* EOF */

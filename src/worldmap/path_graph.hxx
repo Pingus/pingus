@@ -1,4 +1,4 @@
-//  $Id: path_graph.hxx,v 1.1 2002/10/12 23:34:43 grumbel Exp $
+//  $Id: path_graph.hxx,v 1.2 2002/10/13 01:09:18 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,6 +38,8 @@ typedef std::vector<Vector> Path;
 class PathGraph
 {
 private:
+  WorldMap* worldmap;
+
   // FIXME: Memory leak? Where do we free stuff data inside the graph?
   Graph<Dot*, Path*> graph;
 
