@@ -290,7 +290,11 @@ Blitter::put_alpha_surface(CL_PixelBuffer provider, CL_PixelBuffer sprovider,
 void
 Blitter::fill_rect(CL_PixelBuffer target, const CL_Rect& rect, const CL_Color& color)
 {
-  assert(target.get_format().get_depth() == 32);
+  if (target.get_format().get_depth() != 32)
+    {
+      std::cout << "Blitter::fill_rect: depth must be 32 but is " << target.get_format().get_depth() << std::endl;
+      return;
+    }
 
   target.lock();
   

@@ -57,7 +57,8 @@ MapTile::remove(CL_PixelBuffer obj, int x, int y)
 {
   if (surface)
     {
-      
+      Blitter::put_alpha_surface(pixelbuffer, obj, x, y);
+      surface = CL_Surface(new CL_PixelBuffer(pixelbuffer), true);
     }
 }
 

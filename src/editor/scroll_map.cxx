@@ -79,7 +79,11 @@ ScrollMap::draw()
 {
   CL_Display::fill_rect (CL_Rect(x_pos, y_pos, x_pos + width, y_pos + height),
 			 CL_Color(100, 100, 0));
+#ifdef CLANLIB_0_6  
+  // disabled, since without scaling its useless
   Editor::instance()->get_object_manager()->draw(view);
+#endif
+
   /*
   int viewarea_width = (CL_Display::get_width() * width
 			/ editor_event->object_manager->get_width());
