@@ -1897,6 +1897,14 @@ SOURCE=.\src\string_converter.hxx
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\string_format.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\string_format.hxx
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\string_tokenizer.cxx
 # End Source File
 # Begin Source File
