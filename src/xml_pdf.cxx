@@ -1,4 +1,4 @@
-//  $Id: xml_pdf.cxx,v 1.3 2002/10/06 19:23:43 torangan Exp $
+//  $Id: xml_pdf.cxx,v 1.4 2002/10/06 19:29:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,13 +17,13 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <algorithm>
+
 #include "xml_helper.hxx"
 #include "pingus_error.hxx"
 #include "plf.hxx"
 #include "path_manager.hxx"
 #include "xml_pdf.hxx"
-
-#include <algorithm>
 
 XMLPDF::XMLPDF(const std::string& filename)
   : plf(0)
