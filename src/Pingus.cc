@@ -1,4 +1,4 @@
-//   $Id: Pingus.cc,v 1.15 2000/03/16 21:46:21 grumbel Exp $
+//   $Id: Pingus.cc,v 1.16 2000/03/20 18:55:26 grumbel Exp $
 //    ___
 //   |  _\ A free Lemmings clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -52,6 +52,7 @@
 #include "Playfield.hh"
 #include "PingusError.hh"
 #include "Loading.hh"
+#include "MikMod.hh"
 #include "Config.hh"
 
 #include "PingusMenu.hh"
@@ -319,15 +320,16 @@ PingusMain::check_args(int argc, char* argv[])
   }
 
   // Treating non option arguments
-  for(int i = optind; i < argc; ++i) {
-    if (levelfile.empty()) {
-      levelfile = argv[i];
-    } else {
-      std::cout << "Wrong argument: '" << argv[i] << "'" << std::endl;
-      std::cout << "A levelfile is already given," << std::endl;
-      exit(EXIT_FAILURE);
+  for(int i = optind; i < argc; ++i) 
+    {
+      if (levelfile.empty()) {
+	levelfile = argv[i];
+      } else {
+	std::cout << "Wrong argument: '" << argv[i] << "'" << std::endl;
+	std::cout << "A levelfile is already given," << std::endl;
+	exit(EXIT_FAILURE);
+      }
     }
-  }
 }
 
 void
@@ -343,6 +345,9 @@ PingusMain::init_pingus()
 		<< "-----------------------------------------------------------------\n" 
 		<< std::endl;
     }
+
+  if (music_enabled)
+    MikMod::init();
 }
 
 // Get all filenames and directories
@@ -527,7 +532,7 @@ PingusMain::do_lemmings_mode(void)
     {
       PingusMenu menu; 
       menu.select();
-  }
+    }
   
   catch (CL_Error err) 
     {
@@ -542,6 +547,9 @@ PingusMain::do_lemmings_mode(void)
       PingusMessageBox(" PingusError: " + err.message);
     }
   
+  if (music_enabled)
+    MikMod::deinit();
+
   std::cout << "\n"
 	    << ",-------------------------------------------.\n"
 	    << "| Thank you for playing Pingus!             |\n"

@@ -9,6 +9,8 @@ global {
   time = 8000;
 }
 
+music {	data = (file)"pingus-4.it"; }
+
 ground {
   maptype = "SPOT";
   data    = (file)"snow2.psm";

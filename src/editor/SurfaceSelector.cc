@@ -1,4 +1,4 @@
-//  $Id: SurfaceSelector.cc,v 1.1 2000/03/19 00:04:53 grumbel Exp $
+//  $Id: SurfaceSelector.cc,v 1.2 2000/03/20 18:55:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,12 +19,14 @@
 
 #include <ClanLib/core.h>
 #include "../Display.hh"
+#include "../PingusResource.hh"
 #include "SurfaceSelector.hh"
 
 SurfaceSelector::SurfaceSelector(vector<surface_obj>* s)
 {
   y_of = 0;
   sur_list = s;
+  font = CL_Font::load("Fonts/courier_small",PingusResource::get("fonts.dat"));
 }
 
 SurfaceSelector::~SurfaceSelector()

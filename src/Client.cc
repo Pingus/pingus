@@ -1,4 +1,4 @@
-//  $Id: Client.cc,v 1.14 2000/03/16 21:28:05 grumbel Exp $
+//  $Id: Client.cc,v 1.15 2000/03/20 18:55:26 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,8 @@
 #include "LevelInterrupt.hh"
 #include "System.hh"
 #include "Result.hh"
+#include "MikMod.hh"
+#include "algo.hh"
 #include "PingusResource.hh"
 #include "PingusLevelResult.hh"
 
@@ -138,8 +140,10 @@ Client::resize_display()
 void
 Client::play_level(std::string plf_filename, std::string psm_filename)
 {
+  MODULE* module;
   std::cout << "Client::play_level(), Reading PLF..." << std::flush;
   plf          = new PLF(plf_filename);
+
   std::cout << "done" << std::endl;
 
   // FIXME: dirty hack, should replace or merge the psm files
@@ -161,40 +165,44 @@ Client::play_level(std::string plf_filename, std::string psm_filename)
   if (verbose)
     std::cout << "Client: Entering main_loop. Startup time: " 
 	      << CL_System::get_time() << " msec." << std::endl;
-
-
+  
   // Clear both buffers
   CL_Display::clear_display();
   CL_Display::flip_display();
   CL_Display::clear_display();
     
+  module = MikMod::load(find_file(pingus_datadir, "music/" + plf->get_music().res_name));
+  MikMod::play(module);
+  
   // Main Game Loop
-  while (!server->is_finished()) {
-    CL_System::keep_alive(); // Update all input
+  while (!server->is_finished()) 
+    {
+      CL_System::keep_alive(); 
+      MikMod::keep_alive();
     
-    server->let_move();
+      server->let_move();
     
-    // Let the window move its content
-    for(std::vector<GuiObj*>::size_type i=0; i < obj.size(); ++i) 
-      obj[i]->let_move();
+      // Let the window move its content
+      for(std::vector<GuiObj*>::size_type i=0; i < obj.size(); ++i) 
+	obj[i]->let_move();
     
-    if (!fast_forward || skip_frame >= 10) 
-      {
-	skip_frame = 0;
+      if (!fast_forward || skip_frame >= 10) 
+	{
+	  skip_frame = 0;
 
-	for(std::vector<GuiObj*>::size_type i=0; i < obj.size(); ++i) 
-	  obj[i]->draw_clipped();
+	  for(std::vector<GuiObj*>::size_type i=0; i < obj.size(); ++i) 
+	    obj[i]->draw_clipped();
       
-	CL_Display::flip_display();
+	  CL_Display::flip_display();
       
-	count_fps();
-      }
-    else 
-      {
-	++skip_frame;
-      }
-  }
-
+	  count_fps();
+	}
+      else 
+	{
+	  ++skip_frame;
+	}
+    }
+  MikMod::free(module);
   event->unregister_event_handler();
 }
 

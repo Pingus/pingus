@@ -12,7 +12,6 @@ section Liquid
 	lava        = ../images/liquids/lava.pcx       (type=surface, x=0, y=0, width=64,  height=64, tcol=0, array=12x1);
 }
 
-
 // The surfaces for the different buttons
 section Buttons
 {

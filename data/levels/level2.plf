@@ -7,7 +7,7 @@ global {
 and of the new water animation.
 ";
   number_of_pingus = 100;
-  number_to_save = 0;
+  number_to_save = 30;
 }
 
 ground {

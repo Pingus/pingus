@@ -1,4 +1,4 @@
-//  $Id: SurfaceSelector.hh,v 1.2 2000/03/20 18:55:26 grumbel Exp $
+//  $Id: MikMod.hh,v 1.1 2000/03/20 18:55:26 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,37 +17,37 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef SURFACESELECTOR_HH
-#define SURFACESELECTOR_HH
+#ifndef MIKMOD_HH
+#define MIKMOD_HH
 
 #include <string>
-#include <vector>
+#include <config.h>
 
-struct surface_obj
-{
-  CL_Surface* sur;
-  std::string      name;
-};
+#if HAVE_LIBMIKMOD
+#  include <mikmod.h>
+#else
+typedef void MODULE;
+#endif /* HAVE_LIBMIKMOD */
 
-class SurfaceSelector
+class MikMod
 {
 private:
-  CL_Font* font;
-  vector<surface_obj>* sur_list;
-  int y_of;
-  int width;
-  int height;
+  static bool is_init;
+  static bool delete_on_stop;
 
-  void   draw();
-  void scroll();
-  vector<surface_obj>::iterator get_current_obj();
+  static MODULE* current_module;
+
 public:
-  SurfaceSelector(vector<surface_obj>*);
-  ~SurfaceSelector();
-
-  std::string select();
-}; 
-
+  static void init();
+  static void deinit();
+  
+  static MODULE* load(string, bool del_on_stop = true, int maxchan = 64, bool curious = 0);
+  static void play(MODULE* m = 0);
+  static void stop();
+  static void free(MODULE*);
+  static bool is_playing();
+  static void keep_alive();
+};
 
 #endif
 

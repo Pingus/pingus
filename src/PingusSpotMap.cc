@@ -1,4 +1,4 @@
-//  $Id: PingusSpotMap.cc,v 1.10 2000/03/19 00:12:00 grumbel Exp $
+//  $Id: PingusSpotMap.cc,v 1.11 2000/03/20 18:55:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -217,12 +217,14 @@ PingusSpotMap::draw(int x, int y, int w, int h,
 
   if (s == 1.0) 
     {
+      // Trying to calc which parts of the tilemap needs to be drawn
       int start_x = -of_x/tile_size;
       int start_y = -of_y/tile_size; 
-      unsigned int tilemap_width = w / tile_size + 1;
-      unsigned int tilemap_height = h / tile_size + 1;
+      unsigned int tilemap_width = w / tile_size;
+      unsigned int tilemap_height = h / tile_size;
 
-      if (tilemap_width > tile[0].size())
+      // Correcting the calced values
+      if (tilemap_width >= tile[0].size())
 	tilemap_width = tile[0].size() - 1;
       else if (tilemap_width < 0)
 	tilemap_width = 0;
@@ -232,6 +234,7 @@ PingusSpotMap::draw(int x, int y, int w, int h,
       else if (tilemap_height < 0)
 	tilemap_height = 0;          
 
+      // drawing the stuff
       for (TileIter x = start_x; x < start_x + tilemap_width; ++x)
 	{
 	  assert(x >= 0);

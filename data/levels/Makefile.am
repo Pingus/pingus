@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.5 2000/03/12 02:09:31 grumbel Exp $
+#  $Id: Makefile.am,v 1.6 2000/03/20 18:58:33 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,7 +26,6 @@ pkgdata_DATA = level1.plf  level1.psm  \
                level3.plf  level3.psm  \
                level4.plf              \
                level5.plf  level5.psm  \
-               level6.plf  level6.psm  \
                level7.plf  level7.psm  \
                level8.plf  level8.psm  \
                level9.plf  level9.psm  \

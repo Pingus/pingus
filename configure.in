@@ -1,4 +1,4 @@
-#  $Id: configure.in,v 1.6 2000/03/02 02:29:00 grumbel Exp $
+#  $Id: configure.in,v 1.7 2000/03/20 18:58:33 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -81,6 +81,9 @@ dnl FIXME this is a hack:
 LIBS="$LIBS -lHermes"
 
 AC_CHECK_HEADER(ClanLib/core.h,, [echo "Please get ClanLib from http://www.clanlib.org"; exit])
+
+AC_CHECK_LIB(mikmod,   main, HAVE_LIBMIKMOD=yes, HAVE_LIBMIKMOD=no)
+AC_CHECK_HEADER(mikmod.h, HAVE_LIBMIKMOD=yes, HAVE_LIBMIKMOD=no)
 
 AC_CHECK_LIB( clanCore,   main,, [
 	echo "ClanLib installed, but -lclanCore not found, run 'ldconfig' and try again,"
@@ -178,6 +181,10 @@ dnl Checking for the install prefix and then use it to define PINGUS_DATADIR
 PINGUS_EXPAND_DIR(pingus_datadir, "$datadir/games/$PACKAGE")
 AC_DEFINE_UNQUOTED( PINGUS_DATADIR, "$pingus_datadir")
 
+if test x$HAVE_LIBMIKMOD=xyes ;  then
+	AC_DEFINE_UNQUOTED( HAVE_LIBMIKMOD, 1)
+fi
+
 AC_OUTPUT( Makefile 
            src/Makefile 
            src/actions/Makefile
@@ -199,6 +206,13 @@ dnl         tools/ple/src/Makefile
            )
 
 # ----------------------------------------
+
+echo 
+if test x$HAVE_LIBMIKMOD=xyes ;  then
+	echo "The music support is enabled"
+else
+	echo "You don't have LibMikMod installed, the music support is therefore disabled."
+fi
 
 echo ""
 echo "Pingus is now configured, now you can start \`make'."

@@ -7,7 +7,6 @@ level1.plf
 level2.plf
 level3.plf
 level5.plf
-level6.plf
 level7.plf
 level8.plf
 level9.plf

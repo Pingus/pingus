@@ -1,5 +1,5 @@
 /* This level was created with the PLE
- * $Id: crystal2.plf,v 1.1 2000/03/13 19:18:13 grumbel Exp $
+ * $Id: crystal2.plf,v 1.2 2000/03/20 18:58:33 grumbel Exp $
  */
 global {
   start_x_pos = 0;
@@ -28,6 +28,10 @@ background {
   blue  = "0";
   scroll_x = 0;
   scroll_y = 0;
+  para_x = "0.0";
+  para_y = "0.0";
+  stretch_x = 0;
+  stretch_y = 1;
 }
 
 buttons {

@@ -1,4 +1,4 @@
-//  $Id: PLFParser.cc,v 1.6 2000/03/10 18:54:12 grumbel Exp $
+//  $Id: PLFParser.cc,v 1.7 2000/03/20 18:55:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -221,13 +221,14 @@ PLFParser::get_value(void)
       return ret_val;
     }
    
-    if (!isalnum(atom) && atom != '-' && atom != '_') {
-      if (isspace(atom)){
-	return ret_val;
-      } else {
-	syntax_error(string("Unexpected char '") + atom + "'");
+    if (!isalnum(atom) && atom != '-' && atom != '_' && atom != '.')
+      {
+	if (isspace(atom)){
+	  return ret_val;
+	} else {
+	  syntax_error(string("Unexpected char '") + atom + "'");
+	}
       }
-    }
     
     ret_val += atom;
   }
