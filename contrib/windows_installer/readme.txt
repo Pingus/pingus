@@ -10,4 +10,4 @@ The things the installer does not do:
   Cancel an active install
   Allow you to uninstall Pingus
 
-Written by Neil Mitchell, neil__mitchell@hotmail.com for help if required, or the Pingus mailing list.
+Written by Neil Mitchell,  ndmitchell -AT- gmail.com for help if required, or the Pingus mailing list.
