@@ -1,0 +1,132 @@
+/* This level was created with the PLE
+ * $Id: hot_mush.plf,v 1.1 2000/12/31 01:08:27 grumbel Exp $
+ */
+global {
+  author = "Ashleigh Gordon";
+  start_x_pos = 0;
+  start_y_pos = 0;
+  levelname = "Hot Mush";
+  description = "Get past the lava and enjoy the toasted mushrooms. But be quick, find the exit before the ice melts.
+
+";
+  number_of_pingus = 40;
+  number_to_save = 20;
+  time = 5000;
+}
+
+ground {
+  maptype = "SPOT";
+  width   = 1200;
+  height  = 600;
+  colmap  = (auto);
+}
+
+background {
+  image = (resource:textures)"Textures/anim_fire";
+  dim   = "0";
+  red   = "0";
+  green = "0";
+  blue  = "0";
+  scroll_x = 0;
+  scroll_y = 0;
+  para_x = 0.5;
+  para_y = 0.5;
+  stretch_x = 0;
+  stretch_y = 0;
+}
+
+buttons {
+  basher = 10;
+  blocker = 10;
+  bomber = 0;
+  bridger = 20;
+  climber = 0;
+  digger = 10;
+  floater = 0;
+  jumper = 20;
+  miner = 60;
+}
+
+liquid {
+  image = (resource:global)"Liquid/lava";
+  x_pos = 278;
+  y_pos = 538;
+  z_pos = -100;
+  width = 270;
+  speed = 50;
+}
+
+trap {
+  name = "laser_exit";
+  x_pos = 724;
+  y_pos = 278;
+  z_pos = -100;
+}
+
+trap {
+  name = "laser_exit";
+  x_pos = 688;
+  y_pos = 17;
+  z_pos = -100;
+}
+
+entrance {
+  type  = cloud;
+  x_pos = 150;
+  y_pos = 89;
+  z_pos = 0;
+  release_rate = 25;
+  direction = left;
+}
+
+exit {
+  image = (resource:global)"Exits/stone";
+  x_pos = 117;
+  y_pos = 359;
+  z_pos = 0;
+}
+
+trap {
+  name = "guillotine";
+  x_pos = 425;
+  y_pos = 147;
+  z_pos = 0;
+}
+
+liquid {
+  image = (resource:global)"Liquid/lava";
+  x_pos = 23;
+  y_pos = 539;
+  z_pos = 100;
+  width = 270;
+  speed = 50;
+}
+
+liquid {
+  image = (resource:global)"Liquid/lava";
+  x_pos = 529;
+  y_pos = 538;
+  z_pos = 100;
+  width = 270;
+  speed = 50;
+}
+
+liquid {
+  image = (resource:global)"Liquid/lava";
+  x_pos = 0;
+  y_pos = 243;
+  z_pos = 100;
+  width = 270;
+  speed = 50;
+}
+
+liquid {
+  image = (resource:global)"Liquid/lava";
+  x_pos = 10;
+  y_pos = 599;
+  z_pos = 100;
+  width = 800;
+  speed = 50;
+}
+
+/* EOF */

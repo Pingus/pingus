@@ -1,0 +1,80 @@
+/* This level was created with the PLE
+ * $Id: cave-cave1-mw.plf,v 1.1 2000/12/31 01:08:27 grumbel Exp $
+ */
+global {
+  author = "Michael Wand <mwand@gmx.de>";
+  start_x_pos = 0;
+  start_y_pos = 0;
+  levelname = "First steps";
+  description = "The Pingus are advancing in the cave.";
+  number_of_pingus = 50;
+  number_to_save = 30;
+  time = 9000;
+}
+
+ground {
+  maptype = "SPOT";
+  width   = 2400;
+  height  = 1200;
+  colmap  = (auto);
+}
+
+background {
+  image = (resource:textures)"Textures/rockagglo";
+  dim   = "0.8";
+  red   = "0";
+  green = "0.2";
+  blue  = "0.2";
+  scroll_x = 0;
+  scroll_y = 0;
+  para_x = 0.5;
+  para_y = 0.5;
+  stretch_x = 0;
+  stretch_y = 0;
+}
+
+buttons {
+  basher = 20;
+  blocker = 20;
+  bomber = 20;
+  bridger = 20;
+  climber = 20;
+  digger = 20;
+  floater = 20;
+  jumper = 20;
+  miner = 20;
+}
+
+entrance {
+  type  = cloud;
+  x_pos = 420;
+  y_pos = 208;
+  z_pos = 0;
+  release_rate = 25;
+  direction = left;
+}
+
+entrance {
+  type  = cloud;
+  x_pos = 1960;
+  y_pos = 272;
+  z_pos = 0;
+  release_rate = 25;
+  direction = left;
+}
+
+exit {
+  image = (resource:global)"Exits/stone";
+  x_pos = 957;
+  y_pos = 999;
+  z_pos = 0;
+}
+
+trap {
+  name = "fake_exit";
+  x_pos = 224;
+  y_pos = 860;
+  z_pos = 0;
+}
+
+/* EOF */

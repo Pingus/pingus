@@ -1,0 +1,70 @@
+/* This level was created with the PLE
+ * $Id: space-loop-timpany.plf,v 1.1 2000/12/31 01:08:27 grumbel Exp $
+ */
+global {
+  author = "";
+  start_x_pos = 600;
+  start_y_pos = 0;
+  levelname = "Endless Loop";
+  description = "";
+  number_of_pingus = 75;
+  number_to_save = 50;
+  time = 9000;
+}
+
+ground {
+  maptype = "SPOT";
+  width   = 1200;
+  height  = 600;
+  colmap  = (auto);
+}
+
+background {
+  image = (resource:textures)"Textures/stars";
+  dim   = "0";
+  red   = "0";
+  green = "0";
+  blue  = "0";
+  scroll_x = 0;
+  scroll_y = 0;
+  para_x = 0.5;
+  para_y = 0.5;
+  stretch_x = 0;
+  stretch_y = 0;
+}
+
+buttons {
+  basher = 20;
+  bridger = 20;
+  climber = 20;
+  floater = 20;
+  jumper = 20;
+}
+
+entrance {
+  type  = generic;
+  x_pos = 842;
+  y_pos = 115;
+  z_pos = 0;
+  release_rate = 25;
+  direction = left;
+}
+
+exit {
+  image = (resource:exits)"Exits/space";
+  x_pos = 139;
+  y_pos = 383;
+  z_pos = 0;
+}
+
+/*
+trap {
+  name = "teleport";
+  x_pos = 566;
+  y_pos = 62;
+  z_pos = 100;
+  x_target = 930;
+  y_target = 100;
+}
+*/
+/* EOF */

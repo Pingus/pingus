@@ -1,0 +1,61 @@
+/* This level was created with the PLE
+ * $Id: Industrial-plumber-timpany.plf,v 1.1 2000/12/31 01:08:27 grumbel Exp $
+ */
+global {
+  author = "Craig Timpany, timpany@pingus.cx";
+  start_x_pos = 0;
+  start_y_pos = 0;
+  levelname = "Plumber's Joke";
+  description = "
+
+";
+  number_of_pingus = 30;
+  number_to_save = 20;
+  time = 9000;
+}
+
+ground {
+  maptype = "SPOT";
+  width   = 800;
+  height  = 608;
+  colmap  = (auto);
+}
+
+background {
+  image = (resource:textures)"Textures/crystal";
+  dim   = "0";
+  red   = "0";
+  green = "0";
+  blue  = "0";
+  scroll_x = 0;
+  scroll_y = 0;
+  para_x = 0.5;
+  para_y = 0.5;
+  stretch_x = 0;
+  stretch_y = 0;
+}
+
+buttons {
+  basher = 10;
+  blocker = 1;
+  bridger = 20;
+  digger = 10;
+}
+
+entrance {
+  type  = generic;
+  x_pos = 297;
+  y_pos = 125;
+  z_pos = 0;
+  release_rate = 25;
+  direction = left;
+}
+
+exit {
+  image = (resource)"Exits/stone";
+  x_pos = 603;
+  y_pos = 415;
+  z_pos = 0;
+}
+
+/* EOF */
