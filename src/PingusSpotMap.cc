@@ -1,4 +1,4 @@
-//  $Id: PingusSpotMap.cc,v 1.17 2000/05/24 15:40:50 grumbel Exp $
+//  $Id: PingusSpotMap.cc,v 1.18 2000/05/25 15:55:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,6 +34,7 @@ MapTileSurface::MapTileSurface()
 {
   empty = true;
   needs_reload = false;
+  surface = 0;
 }
 
 MapTileSurface::~MapTileSurface()
@@ -120,16 +121,18 @@ PingusSpotMap::PingusSpotMap(PLF* plf)
 
 PingusSpotMap::~PingusSpotMap(void)
 {
-  delete map_surface;
-
   std::cout << "Trying to delete the map..." << std::flush;
+
+  delete map_surface;
+  delete map_canvas;
+  delete colmap;
+
   for(std::vector<std::vector<MapTileSurface> >::size_type x = 0; x < tile.size(); x++) 
     {
       for(std::vector<MapTileSurface>::size_type y = 0; y < tile[x].size(); y++) {
 	delete tile[x][y].surface;
       }
     }
-  delete colmap;
   std::cout << "finished" << std::endl;
 }
 
@@ -204,7 +207,7 @@ PingusSpotMap::load(std::string filename)
     }
   
   // Allocating the map provider
-  CL_Canvas* canvas = new CL_Canvas(width, height);
+   map_canvas = new CL_Canvas(width, height);
 
   // Drawing all surfaces to the provider
   for(std::vector<surface_data>::iterator i = surfaces.begin(); 
@@ -218,18 +221,18 @@ PingusSpotMap::load(std::string filename)
 			      i->surface->get_width(), i->surface->get_height());
 	  //i->surface->put_target(i->x_pos, i->y_pos, 0, canvas);
 	  // FIXME: Replace this with a ClanLib built in
-	  put_surface(canvas, i->surface->get_provider(),
+	  put_surface(map_canvas, i->surface->get_provider(),
 		      i->x_pos, i->y_pos);
 	}
       else
 	{
 	  std::cout << "Color depth: " << i->surface->get_provider()->get_depth() << std::endl;
-	  i->surface->put_target(i->x_pos, i->y_pos, 0, canvas);
+	  i->surface->put_target(i->x_pos, i->y_pos, 0, map_canvas);
 	}
     }
 
   // Generate the map surface
-  map_surface = CL_Surface::create(canvas, true);
+  map_surface = CL_Surface::create(map_canvas);
   std::cout << " done " << timer.stop() << std::endl;
 }
 
@@ -450,16 +453,29 @@ PingusSpotMap::put(CL_SurfaceProvider* sprovider, int x, int y)
     {
       for(int iy = start_y; iy <= end_y; ++iy) 
 	{
-	  // PNG change
-	  put_surface(static_cast<CL_Canvas*>(tile[ix][iy].surface->get_provider()),
-		      sprovider,
-		      x - (ix * tile_size), y - (iy * tile_size));
+	  if (tile[ix][iy].surface == 0)
+	    {
+	      CL_Canvas* canvas;
+	      std::cout << "PingusSpotMap: Drawing to an emtpy tile" << std::endl;
+	      canvas = new CL_Canvas(tile_size, tile_size);
+
+	      put_surface(canvas, sprovider,
+			  x - (ix * tile_size), y - (iy * tile_size));
+	      
+	      tile[ix][iy].surface = CL_Surface::create(canvas, true);
+	    }
+	  else
+	    {
+	      put_surface(static_cast<CL_Canvas*>(tile[ix][iy].surface->get_provider()),
+			  sprovider,
+			  x - (ix * tile_size), y - (iy * tile_size));
+	    }
 	  /*
 	  CL_Surface* s = CL_Surface::create(sprovider);
 	  s->put_target(x - (ix * tile_size), y - (iy * tile_size), 0, 
 			tile[ix][iy].surface->get_provider());*/
 	  tile[ix][iy].reload();
-	  tile[ix][iy].mark_dirty();
+	  tile[ix][iy].set_empty(false);
 	}
     }
 }
@@ -534,11 +550,12 @@ PingusSpotMap::create_maptiles()
     {
       for(TileIter y=0; y < tile[x].size(); ++y) 
 	{
-	  canvas = new CL_Canvas(tile_size, tile_size);
-	  canvas->lock();
-	  map_surface->put_target(-x * tile_size, -y * tile_size, 0, canvas);
-	  canvas->unlock();
-	  tile[x][y].surface = CL_Surface::create(canvas, true);
+	  if (!tile[x][y].is_empty())
+	    {
+	      canvas = new CL_Canvas(tile_size, tile_size);
+	      map_surface->put_target(-x * tile_size, -y * tile_size, 0, canvas);
+	      tile[x][y].surface = CL_Surface::create(canvas, true);
+	    }
 	  // FIXME: Include that for the next release
 	  // tile[x][y].check_empty();
 	}
