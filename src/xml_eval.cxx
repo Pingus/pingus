@@ -27,6 +27,27 @@ namespace XMLEval {
 std::map<std::string, int> variables;
 std::map<std::string, CL_DomNode> functions;
 
+int lookup(const std::string& name)
+{
+  int value = 0;
+  
+  if (from_string(name, value))
+    {
+      return value;
+    }
+  else
+    {
+      std::map<std::string, int>::iterator i = variables.find(name);
+
+      if (i != variables.end())
+        {
+          return i->second;
+        }
+      std::cout << "Error: No variable named: '" << name << "'" << std::endl;
+      return 0;
+    }
+}
+
 void eval_block(CL_DomNode child)
 {
   while(!child.is_null())
@@ -46,14 +67,10 @@ void eval(const CL_DomNode& cur)
     {
       if (cur.get_node_name() == "for")
         {         
-          std::string var   = el.get_attribute("name");
-          int start = 0;
-          int end   = 0;
+          std::string var = el.get_attribute("name");
 
-          from_string(el.get_attribute("start"), start);
-          from_string(el.get_attribute("end"), end);
-
-          for(int i = start; i <= end; ++i)
+          for(int i = lookup(el.get_attribute("start")); 
+              i <= lookup(el.get_attribute("end")); ++i)
             {
               variables[var] = i;
               eval_block(cur.get_first_child());
@@ -65,7 +82,7 @@ void eval(const CL_DomNode& cur)
         }
       else if (cur.get_node_name() == "printvar")
         {
-          std::cout << variables[el.get_attribute("var")] << std::flush;          
+          std::cout << lookup(el.get_attribute("var")) << std::flush;          
         }
       else if (cur.get_node_name() == "print")
         {
@@ -79,49 +96,40 @@ void eval(const CL_DomNode& cur)
         {
           eval_block(cur.get_first_child());
         }
-      else if (cur.get_node_name() == "defvar")
+      else if (cur.get_node_name() == "set")
         {
-          int value = 0;
-          from_string(el.get_attribute("value"), value);
-          variables[el.get_attribute("name")] = value;
+          variables[el.get_attribute("name")] = lookup(el.get_attribute("var"));
         }
-      else if (cur.get_node_name() == "defun")
+      else if (cur.get_node_name() == "function")
         {
           functions[el.get_attribute("name")] = el.get_first_child();
         }
-      else if (cur.get_node_name() == "defvarvar")
-        {
-          variables[el.get_attribute("name")] = variables[el.get_attribute("var")];
-        }
       else if (cur.get_node_name() == "modulo")
         {
-          int value = 0;
-          from_string(el.get_attribute("value"), value);
-          variables[el.get_attribute("var")] = variables[el.get_attribute("var")] % value;
+          variables[el.get_attribute("name")] 
+            = lookup(el.get_attribute("name")) % lookup(el.get_attribute("var"));
         }
       else if (cur.get_node_name() == "add")
         {
-          int value = 0;
-          from_string(el.get_attribute("value"), value);
-          variables[el.get_attribute("var")] = variables[el.get_attribute("var")] + value;
+          variables[el.get_attribute("name")] 
+            = lookup(el.get_attribute("name")) + lookup(el.get_attribute("var"));
         }
       else if (cur.get_node_name() == "if-non-zero")
         {
-          int var = variables[el.get_attribute("var")];
+          int var = lookup(el.get_attribute("var"));
           if (var != 0)
             eval_block(cur.get_first_child());
         }
       else if (cur.get_node_name() == "if-zero")
         {
-          int var = variables[el.get_attribute("var")];
+          int var = lookup(el.get_attribute("var"));
           if (var == 0)
             eval_block(cur.get_first_child());
         }
       else if (cur.get_node_name() == "mult")
         {
-          int value = 0;
-          from_string(el.get_attribute("value"), value);
-          variables[el.get_attribute("var")] = variables[el.get_attribute("var")] * value;
+          variables[el.get_attribute("name")]
+            = lookup(el.get_attribute("name")) * lookup(el.get_attribute("val"));
         }
       else if (cur.get_node_name() == "funcall")
         {
@@ -145,7 +153,12 @@ int main(int argc, char** argv)
   try {
   CL_SetupCore::init();
 
-  CL_DomDocument dom(new CL_InputSource_File("test.xml"), true);
+  std::string filename = "test.xml";
+
+  if (argc > 1)
+    filename = argv[1];
+
+  CL_DomDocument dom(new CL_InputSource_File(filename), true);
 
   CL_DomNode cur = dom.get_document_element();
   
