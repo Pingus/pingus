@@ -95,9 +95,6 @@ LINK32=link.exe
 # Begin Group "Headers"
 
 # PROP Default_Filter "h;hpp;hxx;hm;inl;hh"
-# Begin Group "Boost"
-
-# PROP Default_Filter ""
 # Begin Source File
 
 SOURCE=.\src\action_button.cxx

@@ -63,8 +63,12 @@ core/editor/weather_rain.png \
 core/editor/weather_snow.png \
 core/editor/zoom-in.png \
 core/editor/zoom-out.png \
+core/menu/close_highlight.png \
+core/menu/close_normal.png \
+core/menu/close_pressed.png \
 core/menu/create_on.png \
 core/menu/credits_on.png \
+core/menu/enterlevel.png \
 core/menu/exit_on.png \
 core/menu/exitmenu.png \
 core/menu/ice_off.png \
@@ -79,6 +83,8 @@ core/menu/options_on.png \
 core/menu/play_on.png \
 core/menu/result_ok.png \
 core/menu/result_retry.png \
+core/menu/startscreenbg.jpg \
+core/menu/worldscreenbg.jpg \
 core/misc/404.png \
 core/misc/flag0.png \
 core/misc/flag1.png \
@@ -92,6 +98,7 @@ core/misc/smallmap_entrance.png \
 core/misc/smallmap_exit.png \
 core/misc/unplayable.png \
 core/misc/unplayable2.png \
+core/worldmap/arrow.png \
 core/worldmap/dot_border.png \
 core/worldmap/dot_green.png \
 core/worldmap/dot_invalid.png \
@@ -126,6 +133,9 @@ exits/sortie_anim.png \
 exits/space.png \
 exits/stone.png \
 exits/sweetexit.png \
+fonts/chalk_large.png \
+fonts/chalk_normal.png \
+fonts/chalk_small.png \
 fonts/clanfont.png \
 fonts/courier.png \
 fonts/courier_h.png \
@@ -767,6 +777,8 @@ traps/smasher_cmap.png \
 traps/spike.png \
 traps/tut.png \
 worldmaps/pacman.jpg \
+worldmaps/tutorial_button.jpg \
+worldmaps/tutorial_button_hl.jpg \
 worldmaps/tutorial_layer0.jpg \
 worldmaps/tutorial_layer1.png \
 worldmaps/tutorial_layer2.png \
