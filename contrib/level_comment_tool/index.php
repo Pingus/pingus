@@ -412,7 +412,7 @@ else
 	// ==================================================================
     // Save uploaded Demofile
     // ==================================================================
-    if ( isset($_POST["adddemo"]))
+    if ( $_POST["adddemo"] == 1)
     {
       //create directory if necessary
       if ( !is_dir("comments/$c/$l/demos") &&

@@ -34,7 +34,7 @@ global $db_host;
 global $db_user;
 global $db_pass;
 
-$DBMS = 'DBA';
+$DBMS = 'MySQL';
 $db_handle = False;
 $db_tablename = 'lct_cache';
 $db_name = 'pingus';
@@ -69,11 +69,13 @@ function create_table( $tablename )
 
 function open_cache()
 {
-  global $db_handle;
   global $DBMS;
+  global $db_handle;
   global $db_tablename;
   global $db_name;
-
+  global $db_host;
+  global $db_user;
+  global $db_pass;
 
   if ( !$db_handle )
   {
