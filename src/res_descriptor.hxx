@@ -1,4 +1,4 @@
-//  $Id: res_descriptor.hxx,v 1.9 2002/09/27 11:26:44 torangan Exp $
+//  $Id: res_descriptor.hxx,v 1.10 2003/03/10 11:29:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -47,7 +47,6 @@ public:
 		 ResourceType type,
 		 ResourceModifierNS::ResourceModifier modifier 
 		 = ResourceModifierNS::ROT0);
-  ResDescriptor (const std::string& cast, const std::string& value);
   ResDescriptor (const std::string& str);
 
   bool operator< (const ResDescriptor&) const;

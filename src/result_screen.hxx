@@ -1,7 +1,7 @@
-//  $Id: result.hxx,v 1.5 2003/03/10 11:29:49 grumbel Exp $
-//
+//  $Id: result_screen.hxx,v 1.1 2003/03/10 11:29:49 grumbel Exp $
+// 
 //  Pingus - A free Lemmings clone
-//  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
+//  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
 //
 //  This program is free software; you can redistribute it and/or
 //  modify it under the terms of the GNU General Public License
@@ -12,26 +12,26 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//
+// 
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef HEADER_PINGUS_RESULT_HXX
-#define HEADER_PINGUS_RESULT_HXX
+#ifndef HEADER_PINGUS_RESULT_SCREEN_HXX
+#define HEADER_PINGUS_RESULT_SCREEN_HXX
 
-#include "pingus.hxx"
+#include "result.hxx"
+#include "gui/gui_screen.hxx"
 
-/** Result of a Pingus game */
-struct Result
+/** */
+class ResultScreen : public GUIScreen
 {
-  int saved;
-  int killed;
-  int total;
-  int time;
-  int unknown;
-  int status;
-  int needed;
+private:
+public:
+  ResultScreen(Result result);
+private:
+  ResultScreen (const ResultScreen&);
+  ResultScreen& operator= (const ResultScreen&);
 };
 
 #endif

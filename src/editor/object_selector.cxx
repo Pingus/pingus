@@ -1,4 +1,4 @@
-//  $Id: object_selector.cxx,v 1.33 2003/03/09 22:07:10 grumbel Exp $
+//  $Id: object_selector.cxx,v 1.34 2003/03/10 11:29:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -156,7 +156,7 @@ ObjectSelector::get_groundpiece (const Groundtype::GPType& gptype)
 
   if (!str.empty())
     {
-      data.desc = ResDescriptor("resource:" + datafile, str);
+      data.desc = ResDescriptor(str, datafile, ResDescriptor::RD_RESOURCE);
       data.gptype = gptype;
 
       obj_mgr->add(new EditorObjs::GroundpieceObj(data));
@@ -172,7 +172,7 @@ ObjectSelector::get_hotspot (const std::string& filename)
 
   if (!str.empty())
     {
-      data.desc = ResDescriptor("resource:" + filename, str);
+      data.desc = ResDescriptor(str, filename, ResDescriptor::RD_RESOURCE);
       data.speed = -1;
     }
   
@@ -317,7 +317,7 @@ ObjectSelector::get_exit ()
   if (str.empty())
     return;
   
-  data.desc = ResDescriptor("resource:exits", str);
+  data.desc = ResDescriptor(str, "exits", ResDescriptor::RD_RESOURCE);
   
   data.insert_EditorObjs (obj_mgr);
 }

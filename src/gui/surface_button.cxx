@@ -1,4 +1,4 @@
-//  $Id: surface_button.cxx,v 1.5 2002/10/14 11:15:15 torangan Exp $
+//  $Id: surface_button.cxx,v 1.6 2003/03/10 11:29:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "../pingus_resource.hxx"
+#include "graphic_context.hxx"
 #include "surface_button.hxx"
 
 using namespace GUI;
@@ -38,14 +39,14 @@ SurfaceButton::~SurfaceButton ()
 }
 
 void
-SurfaceButton::draw ()
+SurfaceButton::draw (GraphicContext& gc)
 {
   if (pressed && mouse_over)
-    button_pressed_surface.put_screen (x_pos, y_pos);
+    gc.draw(button_pressed_surface, x_pos, y_pos);
   else if (!pressed && mouse_over)
-    button_mouse_over_surface.put_screen (x_pos, y_pos);
+    gc.draw(button_mouse_over_surface, x_pos, y_pos);
   else
-    button_surface.put_screen (x_pos, y_pos);
+    gc.draw(button_surface, x_pos, y_pos);
 }
 
 bool
@@ -97,7 +98,8 @@ void
 SurfaceButton::on_primary_button_click (int x, int y)
 {
   std::cout << "Surfacebutton got click" << std::endl;
-  
+
+  on_click();
   UNUSED_ARG(x);
   UNUSED_ARG(y);
 }

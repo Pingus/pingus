@@ -1,4 +1,4 @@
-//  $Id: res_descriptor.cxx,v 1.12 2002/09/27 11:26:44 torangan Exp $
+//  $Id: res_descriptor.cxx,v 1.13 2003/03/10 11:29:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,13 @@
 #include <iostream>
 #include "res_descriptor.hxx"
 #include "pingus_error.hxx"
+
+/* 
+   uri -> file:///home/ingo/.pingus/images/...
+   uri -> resource://core/result/ok
+   uri -> file://bla.png (relative to ~/.pingus/images/)
+   ResDescriptor(const std::string& uri);
+*/
 
 ResDescriptor::ResDescriptor()
 {
@@ -89,6 +96,7 @@ ResDescriptor::ResDescriptor(const std::string& str)
     }
 }
 
+#if 0
 ResDescriptor::ResDescriptor(const std::string& c_cast, const std::string& value) 
 {
   modifier = ResourceModifierNS::ROT0;
@@ -113,6 +121,7 @@ ResDescriptor::ResDescriptor(const std::string& c_cast, const std::string& value
   }
   res_name = value;
 }
+#endif
 
 bool
 ResDescriptor::operator<(const ResDescriptor& res_desc) const

@@ -1,4 +1,4 @@
-//  $Id: surface_button.hxx,v 1.4 2002/09/27 11:26:46 torangan Exp $
+//  $Id: surface_button.hxx,v 1.5 2003/03/10 11:29:50 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,40 +27,41 @@ class ResDescriptor;
 
 namespace GUI
 {
-  /** A simple surface button, which different surfaces for pressed,
-      released and mouse over */
-  class SurfaceButton : public Component
-  {
-  private:
-    int x_pos;
-    int y_pos;
-    CL_Surface button_surface;
-    CL_Surface button_pressed_surface;
-    CL_Surface button_mouse_over_surface;
+/** A simple surface button, which different surfaces for pressed,
+    released and mouse over */
+class SurfaceButton : public Component
+{
+private:
+  int x_pos;
+  int y_pos;
+  CL_Surface button_surface;
+  CL_Surface button_pressed_surface;
+  CL_Surface button_mouse_over_surface;
 
-    bool pressed;
-    bool mouse_over;
-  public:
-    SurfaceButton (int x_pos, int y_pos,
-		   const ResDescriptor& button_surface,
-		   const ResDescriptor& button_pressed_surface,
-		   const ResDescriptor& button_mouse_over_surface);
-    virtual ~SurfaceButton ();
+  bool pressed;
+  bool mouse_over;
+public:
+  SurfaceButton (int x_pos, int y_pos,
+                 const ResDescriptor& button_surface,
+                 const ResDescriptor& button_pressed_surface,
+                 const ResDescriptor& button_mouse_over_surface);
+  virtual ~SurfaceButton ();
 
-    void draw ();
-    bool is_at (int x, int y);
+  void draw (GraphicContext& gc);
+  bool is_at (int x, int y);
 
-    void on_primary_button_press (int x, int y);
-    void on_primary_button_release (int x, int y);
-    void on_primary_button_click (int x, int y);
+  void on_primary_button_press (int x, int y);
+  void on_primary_button_release (int x, int y);
+  void on_primary_button_click (int x, int y);
 
-    void on_pointer_enter ();
-    void on_pointer_leave ();
+  void on_pointer_enter ();
+  void on_pointer_leave ();
     
-  private:
-    SurfaceButton (const SurfaceButton&);
-    SurfaceButton& operator= (const SurfaceButton&);
-  };
+  virtual void on_click() =0;
+private:
+  SurfaceButton (const SurfaceButton&);
+  SurfaceButton& operator= (const SurfaceButton&);
+};
 }
 
 #endif

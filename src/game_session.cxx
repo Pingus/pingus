@@ -1,4 +1,4 @@
-//  $Id: game_session.cxx,v 1.31 2003/03/04 17:02:51 grumbel Exp $
+//  $Id: game_session.cxx,v 1.32 2003/03/10 11:29:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,6 +26,7 @@
 #include "timer.hxx"
 #include "pingus_resource.hxx"
 #include "plf.hxx"
+#include "result_screen.hxx"
 #include "globals.hxx"
 
 PingusGameSession::PingusGameSession (PLFHandle arg_plf)
@@ -93,7 +94,10 @@ PingusGameSession::update (const GameDelta& delta)
   // FIXME: Timing code could need another rewrite...
   if (server->is_finished())
     {
-      ScreenManager::instance()->pop_screen();
+      //ScreenManager::instance()->pop_screen();
+      Result result;
+      ScreenManager::instance()->replace_screen(new ResultScreen(result));
+      return;
     }
 
   int time_passed = int(delta.get_time() * 1000) + left_over_time;
