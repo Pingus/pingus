@@ -5,24 +5,22 @@
     <levelname lang="en">EditorDefaultValue: Please give me a name...</levelname>
     <description lang="en">EditorDefaultValue: ...and a short description</description>
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
-    <number-of-pingus>50</number-of-pingus>
-    <number-to-save>25</number-to-save>
-    <time>9000</time>
+    <number-of-pingus>30</number-of-pingus>
+    <number-to-save>20</number-to-save>
+    <time>-1</time>
     <width>1216</width>
     <height>608</height>
+    <playable>1</playable>
+    <comment></comment>
   </global>
 
   <action-list>
-    <slider count="20"/>
-    <basher count="20"/>
-    <blocker count="20"/>
-    <bomber count="20"/>
-    <bridger count="20"/>
-    <climber count="20"/>
-    <digger count="20"/>
-    <floater count="20"/>
-    <jumper count="20"/>
-    <miner count="20"/>
+    <slider count="10"/>
+    <basher count="5"/>
+    <blocker count="5"/>
+    <bomber count="5"/>
+    <digger count="5"/>
+    <miner count="5"/>
   </action-list>
 
 <background type="surface">
