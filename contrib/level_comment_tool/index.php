@@ -172,9 +172,9 @@ if  ( !isset($_GET["l"]) || !isset($_GET["c"]) )
           if ( $show_thumbs )//additional column only when thumbs are shown
 	      {
             print "<table width='100%' border='0'>\n" .
-             "<tr><td style='width:160px; height:120px;'>" .
+             "<tr><td style='width:160px; height:120px;' align='center'>" .
              "<a href='$PHP_SELF?c=" . urlencode($c["name"]) . "&l=" . urlencode($l) . "'>".
-             "<img src='/levels/thumb/$jpg' align='left' border='0' alt='thumbnail'>".
+             "<img src='/levels/thumb/$jpg' border='0' alt='thumbnail'>".
              "</a></td><td>\n";
           }
 
@@ -276,7 +276,7 @@ else
       if ( $i++ == 0)
       {
         $jpg = htmlentities($c) . "/" . htmlentities($l) . ".jpg";
-        print ("<td rowspan='5' valign='top' align='center' style='width:160px;'><small>\n".
+        print ("<td rowspan='5' valign='top' align='center' style='width:160px;' align='center'><small>\n".
           "  <img src='/levels/thumb/$jpg' border='1' alt='thumbnail'><br/>\n".
           "  see <a href='/levels/33/$jpg' target='levelview'>third</a> /".
           " <a href='/levels/50/$jpg' target='levelview'>half</a> / \n".
