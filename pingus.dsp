@@ -43,8 +43,8 @@ RSC=rc.exe
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /YX /FD /c
-# ADD CPP /nologo /MT /W3 /WX /Gi /vd0 /GR /GX /I "src" /I "src\win32" /D "NDEBUG" /D "WIN32" /D "_WINDOWS" /D "_MBCS" /D "LIBXML_2" /D "HAVE_LIBCLANVORBIS" /YX /FD /TP /c
-# SUBTRACT CPP /Gf /Gy /u /Fr
+# ADD CPP /nologo /MT /W3 /Gi /vd0 /GR /GX /I "src" /I "src\win32" /D "NDEBUG" /D "WIN32" /D "_WINDOWS" /D "_MBCS" /D "LIBXML_2" /D "HAVE_LIBCLANVORBIS" /YX /FD /TP /c
+# SUBTRACT CPP /WX /Gf /Gy /u /Fr
 # ADD BASE MTL /nologo /D "NDEBUG" /mktyplib203 /win32
 # ADD MTL /nologo /D "NDEBUG" /mktyplib203 /win32
 # ADD BASE RSC /l 0x807 /d "NDEBUG"
@@ -272,19 +272,15 @@ SOURCE=.\src\editor\editorobj_group_data.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\editor\entrance_window.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editor\exit_window.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editor\groundpiece_window.cxx
+SOURCE=.\src\editor\generic_property_frame.cxx
 # End Source File
 # Begin Source File
 
 SOURCE=.\src\editor\level_property_window.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\editor\level_resizer.cxx
 # End Source File
 # Begin Source File
 
@@ -293,6 +289,10 @@ SOURCE=.\src\editor\object_manager.cxx
 # Begin Source File
 
 SOURCE=.\src\editor\object_selector.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\editor\object_selector_window.cxx
 # End Source File
 # Begin Source File
 
@@ -954,14 +954,6 @@ SOURCE=.\src\alpha_button.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\anim_counter.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\audio.cxx
-# End Source File
-# Begin Source File
-
 SOURCE=.\src\blitter.cxx
 # End Source File
 # Begin Source File
@@ -1146,15 +1138,23 @@ SOURCE=.\src\menu_background.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\message_box.cxx
-# End Source File
-# Begin Source File
-
 SOURCE=.\src\multiline_text.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\music_provider.cxx
+SOURCE=.\src\multiplayer_client.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\multiplayer_client_child.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\multiplayer_config.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\multiplayer_game.cxx
 # End Source File
 # Begin Source File
 
@@ -1386,11 +1386,15 @@ SOURCE=.\src\worldobj.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\worldobj_data.cxx
+SOURCE=.\src\worldobj_data_factory.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\worldobj_data_factory.cxx
+SOURCE=.\src\xml_file_reader.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\xml_file_writer.cxx
 # End Source File
 # Begin Source File
 
