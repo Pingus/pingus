@@ -1,4 +1,4 @@
-//  $Id: TrueServer.cc,v 1.29 2002/06/07 19:10:33 grumbel Exp $
+//  $Id: TrueServer.cc,v 1.30 2002/06/08 20:19:54 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,7 @@
 #include "globals.hh"
 #include "PLF.hh"
 #include "TrueServer.hh"
+#include "World.hh"
 
 using namespace std;
 

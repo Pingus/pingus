@@ -1,4 +1,4 @@
-//  $Id: XMLPLF.cc,v 1.42 2002/02/11 00:09:49 grumbel Exp $
+//  $Id: XMLPLF.cc,v 1.43 2002/06/08 20:19:54 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,6 +27,12 @@
 #include "StringConverter.hh"
 #include "WorldObjDataFactory.hh"
 #include "WorldObjGroupData.hh"
+#include "ExitData.hh"
+#include "EntranceData.hh"
+#include "TrapData.hh"
+#include "HotspotData.hh"
+#include "LiquidData.hh"
+#include "Position.hh"
 
 using namespace std;
 

@@ -1,4 +1,4 @@
-//  $Id: IceBlock.hh,v 1.19 2002/06/07 20:35:14 torangan Exp $
+//  $Id: IceBlock.hh,v 1.20 2002/06/08 20:19:55 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,18 +20,13 @@
 #ifndef ICEBLOCK_HH
 #define ICEBLOCK_HH
 
+#include <iosfwd>
 #include <ClanLib/core.h>
 
 #include "../WorldObjData.hh"
 #include "../editor/SpriteEditorObj.hh"
 
 class WorldObj;
-
-namespace std {
-  template <class T> class char_traits;
-  template <class T1, class T2> struct basic_ofstream;
-  typedef struct basic_ofstream<char, char_traits<char> > ofstream;
-}
 
 namespace boost {
   template <class T> class shared_ptr;

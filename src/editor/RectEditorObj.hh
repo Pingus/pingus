@@ -1,4 +1,4 @@
-//  $Id: RectEditorObj.hh,v 1.2 2002/06/07 14:50:35 torangan Exp $
+//  $Id: RectEditorObj.hh,v 1.3 2002/06/08 20:19:54 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,8 +19,6 @@
 
 #ifndef RECTEDITOROBJ_HH
 #define RECTEDITOROBJ_HH
-
-#include "../boost/smart_ptr.hpp"
 
 #include "EditorObj.hh"
 

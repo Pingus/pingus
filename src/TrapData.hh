@@ -1,4 +1,4 @@
-// $Id: TrapData.hh,v 1.12 2002/01/21 12:06:09 grumbel Exp $
+// $Id: TrapData.hh,v 1.13 2002/06/08 20:19:54 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,10 +22,16 @@
 
 #include <config.h>
 #include <string>
-#include <iostream>
-
-#include "boost/smart_ptr.hpp"
+#include <iosfwd>
+#include <ClanLib/core.h>
 #include "WorldObjData.hh"
+
+class _xmlDoc;  typedef _xmlDoc*  xmlDocPtr;
+class _xmlNode; typedef _xmlNode* xmlNodePtr;
+
+namespace boost {
+  template <class T> class shared_ptr;
+}
 
 /// Structure holding all the data needed for a trap.
 class TrapData : public WorldObjData

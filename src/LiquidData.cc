@@ -1,4 +1,4 @@
-//  $Id: LiquidData.cc,v 1.6 2002/01/15 10:48:49 grumbel Exp $
+//  $Id: LiquidData.cc,v 1.7 2002/06/08 20:19:53 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,8 @@
 #include "editor/PLFObj.hh"
 #include "StringConverter.hh"
 #include "LiquidData.hh"
+#include "XMLhelper.hh"
+#include "Position.hh"
 
 void 
 LiquidData::write_xml(std::ofstream* xml)

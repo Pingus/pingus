@@ -1,4 +1,4 @@
-//  $Id: PinguBmpMap.cc,v 1.6 2001/12/05 09:15:51 grumbel Exp $
+//  $Id: PinguBmpMap.cc,v 1.7 2002/06/08 20:19:53 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #include "globals.hh"
 #include "PingusError.hh"
 #include "PingusResource.hh"
+#include "ColMap.hh"
 
 /* Headers needed for i18n / gettext */
 #include <clocale>

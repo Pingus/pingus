@@ -1,4 +1,4 @@
-//  $Id: Trap.hh,v 1.21 2002/06/08 16:08:16 grumbel Exp $
+//  $Id: Trap.hh,v 1.22 2002/06/08 20:19:54 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,11 +20,8 @@
 #ifndef TRAP_HH
 #define TRAP_HH
 
-#include <string>
-#include <ClanLib/core.h>
 #include <ClanLib/display.h>
 #include "GameCounter.hh"
-#include "Pingu.hh"
 #include "WorldObj.hh"
 #include "TrapData.hh"
 

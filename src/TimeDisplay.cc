@@ -1,4 +1,4 @@
-//  $Id: TimeDisplay.cc,v 1.9 2002/01/15 11:10:17 grumbel Exp $
+//  $Id: TimeDisplay.cc,v 1.10 2002/06/08 20:19:54 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,8 @@
 #include "GameTime.hh"
 #include "PingusResource.hh"
 #include "TimeDisplay.hh"
+#include "World.hh"
+#include "Server.hh"
 
 TimeDisplay::TimeDisplay()
 {

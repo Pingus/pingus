@@ -1,4 +1,4 @@
-//  $Id: DemoPlayer.cc,v 1.6 2001/12/05 09:15:50 grumbel Exp $
+//  $Id: DemoPlayer.cc,v 1.7 2002/06/08 20:19:53 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,7 @@
 #include "algo.hh"
 #include "PingusError.hh"
 #include "DemoPlayer.hh"
+#include "my_gettext.hh"
 
 using namespace std;
 

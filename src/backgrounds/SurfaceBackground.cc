@@ -1,4 +1,4 @@
-//  $Id: SurfaceBackground.cc,v 1.19 2002/06/01 18:05:36 torangan Exp $
+//  $Id: SurfaceBackground.cc,v 1.20 2002/06/08 20:19:54 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -16,9 +16,6 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
-
-#include <iostream>
-#include <ClanLib/core.h>
 
 #include <cassert>
 

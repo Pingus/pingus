@@ -1,4 +1,4 @@
-//  $Id: PinguMap.hh,v 1.10 2001/08/15 07:35:27 grumbel Exp $
+//  $Id: PinguMap.hh,v 1.11 2002/06/08 20:19:53 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,11 +20,12 @@
 #ifndef PINGUMAP_HH
 #define PINGUMAP_HH
 
-#include <ClanLib/core.h>
-#include <ClanLib/display.h>
 #include "WorldObj.hh"
 
 class ColMap;
+class CL_Surface;
+class CL_SurfaceProvider;
+
 
 /** The type of the map, currently we have a random, a bitmap and a
     spot map, the only map, which is currently supported is the spot

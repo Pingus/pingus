@@ -1,4 +1,4 @@
-//  $Id: WeatherData.hh,v 1.2 2001/08/10 10:56:13 grumbel Exp $
+//  $Id: WeatherData.hh,v 1.3 2002/06/08 20:19:54 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,9 +22,13 @@
 
 #include <string>
 #include <list>
-#include "boost/smart_ptr.hpp"
 
 class EditorObj;
+
+namespace boost {
+
+  template <class T> class shared_ptr;
+}
 
 class WeatherData
 {

@@ -1,4 +1,4 @@
-//  $Id: SwitchDoor.hh,v 1.20 2002/06/07 14:50:35 torangan Exp $
+//  $Id: SwitchDoor.hh,v 1.21 2002/06/08 20:19:55 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,6 +25,9 @@
 #include "../WorldObj.hh"
 #include "../WorldObjData.hh"
 #include "../editor/SpriteEditorObj.hh"
+
+class _xmlDoc;  typedef _xmlDoc*  xmlDocPtr;
+class _xmlNode; typedef _xmlNode* xmlNodePtr;
 
 /** A variable height door which can block the way and which can be
     opened by a switch */

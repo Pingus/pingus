@@ -1,4 +1,4 @@
-//  $Id: StartPos.cc,v 1.10 2001/08/11 18:53:39 grumbel Exp $
+//  $Id: StartPos.cc,v 1.11 2002/06/08 20:19:54 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,8 @@
 
 #include "../XMLhelper.hh"
 #include "../PingusResource.hh"
+#include "../boost/smart_ptr.hpp"
+#include "../Position.hh"
 #include "StartPos.hh"
 
 StartPos::StartPos(int arg_x_pos, int arg_y_pos)

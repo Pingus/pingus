@@ -1,4 +1,4 @@
-//  $Id: PinguBmpMap.hh,v 1.5 2000/12/14 21:35:55 grumbel Exp $
+//  $Id: PinguBmpMap.hh,v 1.6 2002/06/08 20:19:53 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,10 +20,12 @@
 #ifndef PINGUBMPMAP_HH
 #define PINGUBMPMAP_HH
 
-#include <ClanLib/core.h>
+#include <ClanLib/display.h>
 
 #include "PinguMap.hh"
-#include "ColMap.hh"
+
+class ColMap;
+class ResDescriptor;
 
 ///
 class PinguBmpMap : public PinguMap 

@@ -1,4 +1,4 @@
-//  $Id: Range.hh,v 1.3 2000/06/18 17:01:50 grumbel Exp $
+//  $Id: Range.hh,v 1.4 2002/06/08 20:19:54 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,8 +21,6 @@
 #define RANGE_HH
 
 // A class similar to an integer, but keeps the value in a given range.
-
-#include <iostream>
 
 ///
 class Range

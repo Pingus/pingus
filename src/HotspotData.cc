@@ -1,4 +1,4 @@
-//  $Id: HotspotData.cc,v 1.4 2002/01/15 10:48:49 grumbel Exp $
+//  $Id: HotspotData.cc,v 1.5 2002/06/08 20:19:53 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,8 @@
 #include "Hotspot.hh"
 #include "EditorHotspot.hh"
 #include "HotspotData.hh"
+#include "XMLhelper.hh"
+#include "Position.hh"
 
 void 
 HotspotData::write_xml(std::ofstream* xml)

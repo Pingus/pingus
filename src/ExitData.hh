@@ -1,4 +1,4 @@
-//  $Id: ExitData.hh,v 1.7 2001/12/04 12:18:49 grumbel Exp $
+//  $Id: ExitData.hh,v 1.8 2002/06/08 20:19:53 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,9 @@
 #include <ClanLib/core.h>
 #include "ResDescriptor.hh"
 #include "WorldObjData.hh"
+
+class _xmlDoc;  typedef _xmlDoc*  xmlDocPtr;
+class _xmlNode; typedef _xmlNode* xmlNodePtr;
 
 ///
 class ExitData : public WorldObjData

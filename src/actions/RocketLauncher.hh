@@ -1,4 +1,4 @@
-//  $Id: RocketLauncher.hh,v 1.3 2001/08/16 17:46:51 grumbel Exp $
+//  $Id: RocketLauncher.hh,v 1.4 2002/06/08 20:19:54 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,6 @@
 #ifndef ROCKETLAUNCHER_HH
 #define ROCKETLAUNCHER_HH
 
-#include "../PingusResource.hh"
 #include "../Sprite.hh"
 #include "../PinguAction.hh"
 

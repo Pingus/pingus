@@ -1,4 +1,4 @@
-//  $Id: WeatherData.cc,v 1.1 2001/08/10 11:05:32 grumbel Exp $
+//  $Id: WeatherData.cc,v 1.2 2002/06/08 20:19:54 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,7 @@
 
 #include "editor/EditorObj.hh"
 #include "WeatherData.hh"
+#include "boost/smart_ptr.hpp"
 
 std::list<boost::shared_ptr<EditorObj> > 
 WeatherData::create_EditorObj ()

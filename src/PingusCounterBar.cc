@@ -1,4 +1,4 @@
-//  $Id: PingusCounterBar.cc,v 1.6 2002/06/07 14:50:34 torangan Exp $
+//  $Id: PingusCounterBar.cc,v 1.7 2002/06/08 20:19:53 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,8 @@
 #include <ClanLib/display.h>
 
 #include "PingusCounterBar.hh"
+#include "Server.hh"
+#include "World.hh"
 
 std::ostream& operator<<(std::ostream& s, const CL_Rect& rect)
 {

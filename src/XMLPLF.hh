@@ -1,4 +1,4 @@
-//  $Id: XMLPLF.hh,v 1.12 2001/08/10 10:56:14 grumbel Exp $
+//  $Id: XMLPLF.hh,v 1.13 2002/06/08 20:19:54 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,10 +20,10 @@
 #ifndef XMLPLF_HH
 #define XMLPLF_HH
 
-#include "XMLhelper.hh"
-#include "Position.hh"
-#include "Color.hh"
 #include "PLF.hh"
+
+class _xmlDoc;  typedef _xmlDoc*  xmlDocPtr;
+class _xmlNode; typedef _xmlNode* xmlNodePtr;
 
 class XMLPLF : public PLF
 {

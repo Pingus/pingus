@@ -1,4 +1,4 @@
-//  $Id: Pingu.cc,v 1.72 2002/06/01 18:05:34 torangan Exp $
+//  $Id: Pingu.cc,v 1.73 2002/06/08 20:19:53 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -40,6 +40,7 @@ using namespace boost;
 #include "ColMap.hh"
 #include "PinguActionFactory.hh"
 #include "FVec.hh"
+#include "my_gettext.hh"
 
 const float deadly_velocity = 20.0;
 int   Pingu::id_counter = 0;

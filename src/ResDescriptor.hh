@@ -1,4 +1,4 @@
-//  $Id: ResDescriptor.hh,v 1.10 2002/01/15 10:48:49 grumbel Exp $
+//  $Id: ResDescriptor.hh,v 1.11 2002/06/08 20:19:54 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,7 @@
 #ifndef RESDESCRIPTOR_HH
 #define RESDESCRIPTOR_HH
 
-#include <iostream>
+#include <iosfwd>
 #include <string>
 #include <assert.h>
 

@@ -1,4 +1,4 @@
-//  $Id: SmallMapImage.hh,v 1.2 2002/06/07 14:50:34 torangan Exp $
+//  $Id: SmallMapImage.hh,v 1.3 2002/06/08 20:19:54 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,8 +21,10 @@
 #define SMALLMAPIMAGE_HH
 
 #include <ClanLib/display.h>
+#include <ClanLib/Core/Math/cl_vector.h>
 #include "GuiObj.hh"
-#include "Server.hh"
+
+class Server;
 
 /** The base image of the small map, it doesn't handle any userinput,
     it only generates the surface */

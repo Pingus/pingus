@@ -1,4 +1,4 @@
-//  $Id: PlayfieldView.cc,v 1.7 2002/06/08 16:08:16 grumbel Exp $
+//  $Id: PlayfieldView.cc,v 1.8 2002/06/08 20:19:54 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,7 @@
 
 #include <ClanLib/display.h>
 #include "PlayfieldView.hh"
+#include "World.hh"
 
 PlayfieldView::PlayfieldView (World * w, const CL_Rect& rect)
   : world (w), x_offset (0), y_offset (0)

@@ -1,4 +1,4 @@
-//  $Id: PingusSubMenu.hh,v 1.1 2001/06/14 11:07:19 grumbel Exp $
+//  $Id: PingusSubMenu.hh,v 1.2 2002/06/08 20:19:54 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,8 @@
 #ifndef PINGUSSUBMENU_HH
 #define PINGUSSUBMENU_HH
 
-#include <ClanLib/display.h>
+class CL_Key;
+class CL_InputDevice;
 
 class PingusMenuManager;
 

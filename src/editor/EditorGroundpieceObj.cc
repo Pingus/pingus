@@ -1,4 +1,4 @@
-//  $Id: EditorGroundpieceObj.cc,v 1.6 2001/08/31 07:51:51 grumbel Exp $
+//  $Id: EditorGroundpieceObj.cc,v 1.7 2002/06/08 20:19:54 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,13 +17,10 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <fstream>
-#include <ClanLib/core.h>
-#include "../XMLhelper.hh"
-#include "../algo.hh"
-#include "../globals.hh"
 #include "../PingusResource.hh"
+#include "../boost/smart_ptr.hpp"
 
+#include "EditorObj.hh"
 #include "EditorGroundpieceObj.hh"
 
 EditorGroundpieceObj::EditorGroundpieceObj(const GroundpieceData& data)

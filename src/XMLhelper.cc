@@ -1,4 +1,4 @@
-//  $Id: XMLhelper.cc,v 1.15 2002/03/01 23:04:33 japj Exp $
+//  $Id: XMLhelper.cc,v 1.16 2002/06/08 20:19:54 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,8 +17,12 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <fstream>
 #include "StringConverter.hh"
 #include "XMLhelper.hh"
+#include "Position.hh"
+#include "Color.hh"
+#include "ResDescriptor.hh"
 
 // Hack: if xmlIsBlankNode() is not present, we define an empty dummy
 #ifdef NO_XMLISBLANKNODE

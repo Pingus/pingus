@@ -1,4 +1,4 @@
-//  $Id: PingusMenuManager.hh,v 1.4 2002/06/07 14:50:34 torangan Exp $
+//  $Id: PingusMenuManager.hh,v 1.5 2002/06/08 20:19:54 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,13 +21,14 @@
 #define PINGUSMENUMANAGER_HH
 
 #include <list>
-#include "PingusSubMenu.hh"
 #include "MenuBackground.hh"
 #include "ExitMenu.hh"
 #include "Story.hh"
 
 #include "PingusMenu.hh"
 #include "Intro.hh"
+
+class PingusSubMenu;
 
 class PingusMenuManager
 {

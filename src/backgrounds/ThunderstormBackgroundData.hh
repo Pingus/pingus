@@ -1,4 +1,4 @@
-//  $Id: ThunderstormBackgroundData.hh,v 1.7 2002/01/26 10:53:37 grumbel Exp $
+//  $Id: ThunderstormBackgroundData.hh,v 1.8 2002/06/08 20:19:54 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,10 @@
 #define THUNDERSTORMBACKGROUNDDATA_HH
 
 #include "../WorldObjData.hh"
+#include "../editor/SpriteEditorObj.hh"
+
+class _xmlDoc;  typedef _xmlDoc*  xmlDocPtr;
+class _xmlNode; typedef _xmlNode* xmlNodePtr;
 
 class ThunderstormBackgroundData : public WorldObjData
 {

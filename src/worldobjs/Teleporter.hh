@@ -1,4 +1,4 @@
-//  $Id: Teleporter.hh,v 1.26 2002/06/07 14:50:35 torangan Exp $
+//  $Id: Teleporter.hh,v 1.27 2002/06/08 20:19:55 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,15 +20,21 @@
 #ifndef TELEPORTER_HH
 #define TELEPORTER_HH
 
-#include <fstream>
+#include <iosfwd>
 
-#include "../boost/smart_ptr.hpp"
 #include "../Sprite.hh"
 #include "../WorldObj.hh"
 #include "../WorldObjData.hh"
 #include "../editor/SpriteEditorObj.hh"
 
 class EditorTeleporterObj;
+class _xmlDoc;  typedef _xmlDoc*  xmlDocPtr;
+class _xmlNode; typedef _xmlNode* xmlNodePtr;
+
+namespace boost {
+
+  template <class T> class shared_ptr;
+}
 
 class TeleporterData : public WorldObjData
 {

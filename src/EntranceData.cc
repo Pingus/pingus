@@ -1,4 +1,4 @@
-//  $Id: EntranceData.cc,v 1.4 2002/06/07 20:35:14 torangan Exp $
+//  $Id: EntranceData.cc,v 1.5 2002/06/08 20:19:53 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,8 @@
 #include "EntranceData.hh"
 #include "PingusError.hh"
 #include "StringConverter.hh"
+#include "XMLhelper.hh"
+#include "Position.hh"
 
 
 boost::shared_ptr<WorldObjData> 

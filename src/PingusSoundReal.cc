@@ -1,4 +1,4 @@
-//  $Id: PingusSoundReal.cc,v 1.18 2002/01/13 15:24:18 grumbel Exp $
+//  $Id: PingusSoundReal.cc,v 1.19 2002/06/08 20:19:54 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,7 @@
 
 // Needed cause of missing include in some sound file...
 #include <ClanLib/core.h>
+#include <ClanLib/sound.h>
 
 #ifdef HAVE_LIBCLANVORBIS
 #  include <ClanLib/vorbis.h>

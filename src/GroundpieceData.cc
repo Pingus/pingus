@@ -1,4 +1,4 @@
-//  $Id: GroundpieceData.cc,v 1.3 2001/08/31 07:51:51 grumbel Exp $
+//  $Id: GroundpieceData.cc,v 1.4 2002/06/08 20:19:53 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #include <list>
 #include "XMLhelper.hh"
 #include "editor/EditorGroundpieceObj.hh"
+#include "boost/smart_ptr.hpp"
 
 GroundpieceData::GPType 
 GroundpieceData::string_to_type(const std::string& arg_type) 

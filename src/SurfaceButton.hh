@@ -1,4 +1,4 @@
-//  $Id: SurfaceButton.hh,v 1.22 2002/06/06 14:05:44 grumbel Exp $
+//  $Id: SurfaceButton.hh,v 1.23 2002/06/08 20:19:54 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,10 +24,7 @@
 
 #include <ClanLib/core.h>
 
-#include "PingusMenu.hh"
 #include "worldmap/PingusWorldMapManager.hh"
-#include "ThemeSelector.hh"
-#include "PingusMenu.hh"
 #include "MultiplayerConfig.hh"
 // #include "FileSelector.hh"
 

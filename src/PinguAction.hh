@@ -1,4 +1,4 @@
-//  $Id: PinguAction.hh,v 1.30 2002/06/01 18:04:23 torangan Exp $
+//  $Id: PinguAction.hh,v 1.31 2002/06/08 20:19:53 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,14 +20,8 @@
 #ifndef PINGU_ACTION_HH
 #define PINGU_ACTION_HH
 
-#include <ClanLib/core.h>
-#include "boost/smart_ptr.hpp"
-
-#include "Sprite.hh"
 #include "WorldObj.hh"
 #include "PinguEnums.hh"
-#include "Pingu.hh"
-#include "my_gettext.hh"
 
 ///
 class Pingu;

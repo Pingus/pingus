@@ -1,4 +1,4 @@
-//  $Id: PingusGameSession.hh,v 1.8 2002/06/07 19:10:33 grumbel Exp $
+//  $Id: PingusGameSession.hh,v 1.9 2002/06/08 20:19:53 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,10 +22,10 @@
 
 #include <string>
 
-#include "PingusGameSessionResult.hh"
 class Client;
 class Server;
 class PLF;
+class PingusGameSessionResult;
 
 /** You can use this class to start up a game session, which consist
     of a single level. */

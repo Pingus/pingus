@@ -1,4 +1,4 @@
-//  $Id: Spike.hh,v 1.9 2002/06/08 16:08:16 grumbel Exp $
+//  $Id: Spike.hh,v 1.10 2002/06/08 20:19:55 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,10 +20,9 @@
 #ifndef SPIKE_HH
 #define SPIKE_HH
 
-#include <ClanLib/core.h>
-
 #include "../Trap.hh"
-#include "../TrapData.hh"
+
+class TrapData;
 
 ///
 class Spike : public Trap

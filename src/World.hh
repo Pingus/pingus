@@ -1,4 +1,4 @@
-//  $Id: World.hh,v 1.34 2002/06/08 16:08:16 grumbel Exp $
+//  $Id: World.hh,v 1.35 2002/06/08 20:19:54 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,11 +20,12 @@
 #ifndef WORLD_HH
 #define WORLD_HH
 
-#include <ClanLib/core.h>
+#include <list>
 #include "boost/smart_ptr.hpp"
-#include "Pingu.hh"
+#include "WorldObj.hh"
 
 // Forward declarations
+class CL_Vector;
 class ActionHolder;
 class Entrance;
 class Exit;
@@ -34,11 +35,10 @@ class PLF;
 class ParticleHolder;
 class PinguHolder;
 class PinguMap;
+class Pingu;
 class Trap;
 class View;
 class ColMap;
-class WorldObj;
-
 class WorldImpl;
 
 /** The World holds all objects of the pingu enviroment. 

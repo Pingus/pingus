@@ -1,4 +1,4 @@
-//  $Id: Walker.hh,v 1.5 2002/06/04 10:32:09 torangan Exp $
+//  $Id: Walker.hh,v 1.6 2002/06/08 20:19:54 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #define WALKER_HH
 
 #include "../PinguAction.hh"
+#include "../Sprite.hh"
 
 class Walker : public PinguAction
 {

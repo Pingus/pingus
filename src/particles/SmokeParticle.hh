@@ -1,4 +1,4 @@
-//  $Id: SmokeParticle.hh,v 1.7 2001/04/03 10:45:50 grumbel Exp $
+//  $Id: SmokeParticle.hh,v 1.8 2002/06/08 20:19:54 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,8 +19,6 @@
 
 #ifndef SMOKEPARTICLE_HH
 #define SMOKEPARTICLE_HH
-
-#include <ClanLib/core.h>
 
 #include "Particle.hh"
 

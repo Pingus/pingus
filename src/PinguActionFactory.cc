@@ -1,4 +1,4 @@
-//  $Id: PinguActionFactory.cc,v 1.3 2002/01/26 00:36:39 grumbel Exp $
+//  $Id: PinguActionFactory.cc,v 1.4 2002/06/08 20:19:53 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -45,6 +45,7 @@
 #include "actions/Walker.hh"
 
 #include "PinguActionFactory.hh"
+#include "boost/smart_ptr.hpp"
 
 PinguActionFactory::PinguActionFactory ()
 {

@@ -1,4 +1,4 @@
-//  $Id: Theme.hh,v 1.15 2002/06/01 17:55:29 torangan Exp $
+//  $Id: Theme.hh,v 1.16 2002/06/08 20:19:54 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,12 +23,11 @@
 
 #include <string>
 #include <vector>
-#include <fstream>
-#include <sstream>
-#include <ClanLib/core.h>
 
 #include "MultiLineText.hh"
 #include "PLTXML.hh"
+
+class CL_Font;
 
 ///
 class Theme

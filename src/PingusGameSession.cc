@@ -1,4 +1,4 @@
-//  $Id: PingusGameSession.cc,v 1.13 2002/06/07 19:10:33 grumbel Exp $
+//  $Id: PingusGameSession.cc,v 1.14 2002/06/08 20:19:53 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,7 @@
 #include "MouseController.hh"
 #include "System.hh"
 #include "PingusGameSession.hh"
+#include "PingusGameSessionResult.hh"
 
 using boost::shared_ptr;
 

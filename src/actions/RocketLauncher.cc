@@ -1,4 +1,4 @@
-//  $Id: RocketLauncher.cc,v 1.6 2002/06/07 20:35:14 torangan Exp $
+//  $Id: RocketLauncher.cc,v 1.7 2002/06/08 20:19:54 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,8 @@
 #include "../particles/ExplosiveParticle.hh"
 #include "../World.hh"
 #include "../StringConverter.hh"
+#include "../PingusResource.hh"
+#include "../Pingu.hh"
 #include "RocketLauncher.hh"
 
 void

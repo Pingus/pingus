@@ -1,4 +1,4 @@
-//  $Id: PLF.hh,v 1.28 2002/02/11 00:09:49 grumbel Exp $
+//  $Id: PLF.hh,v 1.29 2002/06/08 20:19:53 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,21 +20,13 @@
 #ifndef PLF_HH
 #define PLF_HH
 
-#include <iostream>
 #include <string>
 #include <vector>
 #include <map>
 
 #include "boost/smart_ptr.hpp"
 
-#include "WeatherData.hh"
 #include "ActionData.hh"
-#include "EntranceData.hh"
-#include "ExitData.hh"
-#include "HotspotData.hh"
-#include "LiquidData.hh"
-#include "TrapData.hh"
-#include "PinguMap.hh"
 #include "WeatherData.hh"
 #include "WorldObjData.hh"
 #include "GroundpieceData.hh"

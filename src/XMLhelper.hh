@@ -1,4 +1,4 @@
-//  $Id: XMLhelper.hh,v 1.16 2002/05/07 08:49:23 grumbel Exp $
+//  $Id: XMLhelper.hh,v 1.17 2002/06/08 20:19:54 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,12 +21,10 @@
 #define XMLHELPER_HH
 
 #include <config.h>
-#include <iostream>
 #include <string>
-#include <fstream>
+#include <iosfwd>
 
 #include <config.h>
-#include <ClanLib/core.h>
 
 // FIX: Under windows, it's necessary to use libxml/parser.h, or MS's
 // compiler will fails.
@@ -35,33 +33,33 @@
   #include <libxml/parser.h>
   #undef list
 #else
-#ifdef LIBXML_2
-#include <libxml/parser.h>
-#else
-#include <parser.h>
+  #ifdef LIBXML_2
+    #include <libxml/parser.h>
+  #else
+    #include <parser.h>
+  #endif
 #endif
-#endif
-
-#include "ResDescriptor.hh"
-#include "Position.hh"
-#include "Color.hh"
 
 // Some compatibility stuff
 #ifdef LIBXML_2
-#define ROOT children
+  #define ROOT children
 #else // libxml 1.x
-#define children childs
-#define ROOT root
+  #define children childs
+  #define ROOT root
 #endif
 
 // Hack: if xmlIsBlankNode() is not present, we define an empty dummy
 #ifdef NO_XMLISBLANKNODE
-int xmlIsBlankNode(xmlNodePtr node);
+  int xmlIsBlankNode(xmlNodePtr node);
 #endif
+
+class CL_Vector;
+class Color;
+class Position;
+class ResDescriptor;
 
 class XMLhelper
 {
-private:
 
 public:
   static std::string XMLhelper::encode_entities(const std::string& arg_str);

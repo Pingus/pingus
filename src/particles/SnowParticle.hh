@@ -1,4 +1,4 @@
-//  $Id: SnowParticle.hh,v 1.7 2001/04/03 10:45:51 grumbel Exp $
+//  $Id: SnowParticle.hh,v 1.8 2002/06/08 20:19:54 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,6 @@
 #ifndef SNOWPARTICLE_HH
 #define SNOWPARTICLE_HH
 
-#include <ClanLib/core.h>
 #include "Particle.hh"
 
 ///

@@ -1,4 +1,4 @@
-//  $Id: ScrollMap.hh,v 1.5 2002/06/07 14:50:35 torangan Exp $
+//  $Id: ScrollMap.hh,v 1.6 2002/06/08 20:19:54 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,7 +22,6 @@
 
 #include "../boost/smart_ptr.hpp"
 #include "EditorView.hh"
-#include "EditorEvent.hh"
 
 class EditorEvent;
 

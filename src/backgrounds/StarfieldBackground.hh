@@ -1,4 +1,4 @@
-//  $Id: StarfieldBackground.hh,v 1.13 2002/02/05 10:01:00 grumbel Exp $
+//  $Id: StarfieldBackground.hh,v 1.14 2002/06/08 20:19:54 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,12 +20,14 @@
 #ifndef STARFIELDBACKGROUND_HH
 #define STARFIELDBACKGROUND_HH
 
-#include <ClanLib/core.h>
 #include "../StringConverter.hh"
 #include "../boost/smart_ptr.hpp"
 #include "../WorldObj.hh"
-#include "../PingusResource.hh"
 #include "../WorldObjData.hh"
+#include "../Position.hh"
+
+class _xmlDoc;  typedef _xmlDoc*  xmlDocPtr;
+class _xmlNode; typedef _xmlNode* xmlNodePtr;
 
 class StarfieldBackgroundData : public WorldObjData
 {

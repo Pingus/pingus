@@ -1,4 +1,4 @@
-//  $Id: SolidColorBackground.hh,v 1.13 2002/06/07 14:50:34 torangan Exp $
+//  $Id: SolidColorBackground.hh,v 1.14 2002/06/08 20:19:54 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,13 +21,16 @@
 #define SOLIDCOLORBACKGROUND_HH
 
 #include "../StringConverter.hh"
-#include "../editor/EditorView.hh"
 #include "../boost/smart_ptr.hpp"
 #include "../Color.hh"
 #include "../WorldObj.hh"
 #include "../WorldObjData.hh"
-#include "../editor/SpriteEditorObj.hh"
-#include "../editor/EditorObj.hh"
+#include "../editor/RectEditorObj.hh"
+#include "../editor/EditorView.hh"
+#include "../Position.hh"
+
+class _xmlDoc;  typedef _xmlDoc*  xmlDocPtr;
+class _xmlNode; typedef _xmlNode* xmlNodePtr;
 
 class SolidColorBackgroundData : public WorldObjData
 {

@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapStat.hh,v 1.4 2002/06/06 09:34:28 grumbel Exp $
+//  $Id: PingusWorldMapStat.hh,v 1.5 2002/06/08 20:19:55 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,7 +22,10 @@
 
 #include <string>
 #include "PingusWorldMapGraph.hh"
-#include "../XMLhelper.hh"
+
+class _xmlDoc;  typedef _xmlDoc*  xmlDocPtr;
+class _xmlNode; typedef _xmlNode* xmlNodePtr;
+
 
 /** This class holds the information on a level's completeness, etc.
     It's only here for internal use by PingusWorldMapStat. */

@@ -1,4 +1,4 @@
-//  $Id: PLTXML.hh,v 1.10 2002/03/23 07:37:09 grumbel Exp $
+//  $Id: PLTXML.hh,v 1.11 2002/06/08 20:19:53 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,8 +23,10 @@
 #include <vector>
 #include <string>
 #include <map>
-#include "XMLhelper.hh"
 #include "backgrounds/SurfaceBackgroundData.hh"
+
+class _xmlDoc;  typedef _xmlDoc*  xmlDocPtr;
+class _xmlNode; typedef _xmlNode* xmlNodePtr;
 
 class PLTXML
 {

@@ -1,4 +1,4 @@
-//  $Id: bomber.cc,v 1.30 2002/06/01 18:05:36 torangan Exp $
+//  $Id: bomber.cc,v 1.31 2002/06/08 20:19:54 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,6 +25,7 @@
 #include "../PingusResource.hh"
 #include "../FVec.hh"
 #include "../StringConverter.hh"
+#include "../Pingu.hh"
 #include "bomber.hh"
 #include "../particles/ParticleHolder.hh"
 

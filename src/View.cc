@@ -1,4 +1,4 @@
-//  $Id: View.cc,v 1.17 2002/06/08 16:08:16 grumbel Exp $
+//  $Id: View.cc,v 1.18 2002/06/08 20:19:54 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,7 @@
 #include "MouseController.hh"
 #include "View.hh"
 #include "globals.hh"
+#include "World.hh"
 
 // static variables
 World* View::world;

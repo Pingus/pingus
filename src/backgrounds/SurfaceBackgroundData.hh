@@ -1,4 +1,4 @@
-//  $Id: SurfaceBackgroundData.hh,v 1.12 2002/01/26 10:53:36 grumbel Exp $
+//  $Id: SurfaceBackgroundData.hh,v 1.13 2002/06/08 20:19:54 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,10 +22,19 @@
 
 #include "../StringConverter.hh"
 #include "../editor/SpriteEditorObj.hh"
-#include "../boost/smart_ptr.hpp"
 #include "../WorldObjData.hh"
+#include "../Color.hh"
+#include "../ResDescriptor.hh"
+#include "../Position.hh"
 
 class SurfaceBackground;
+class _xmlDoc;  typedef _xmlDoc*  xmlDocPtr;
+class _xmlNode; typedef _xmlNode* xmlNodePtr;
+
+namespace boost {
+
+  template <class T> class shared_ptr;
+}
 
 class SurfaceBackgroundData : public WorldObjData
 {
@@ -96,7 +105,7 @@ public:
   }
 
   std::string status_line () { 
-    return "SurfaceBackground: " + to_string (pos);
+    return "SurfaceBackground: " + to_string (pos); 
   }
 };
 

@@ -1,4 +1,4 @@
-//  $Id: PLFObj.hh,v 1.28 2002/06/07 14:50:34 torangan Exp $
+//  $Id: PLFObj.hh,v 1.29 2002/06/08 20:19:54 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,10 +20,7 @@
 #ifndef PLFOBJ_HH
 #define PLFOBJ_HH
 
-#include "../WorldObjData.hh"
-#include "../Direction.hh"
 #include "../Liquid.hh"
-#include "../HotspotData.hh"
 #include "../EntranceData.hh"
 #include "../ExitData.hh"
 #include "../TrapData.hh"

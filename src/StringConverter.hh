@@ -1,4 +1,4 @@
-//  $Id: StringConverter.hh,v 1.8 2001/08/04 12:46:22 grumbel Exp $
+//  $Id: StringConverter.hh,v 1.9 2002/06/08 20:19:54 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,6 +33,8 @@
 #include <strstream>
 #endif
 
+class CL_Vector;
+
 template <class T>
 std::string to_string(const T& any)
 {
@@ -48,6 +50,7 @@ std::string to_string(const T& any)
   return temp;
 #endif
 }
+
 
 template <class T>
 void from_string(const std::string& rep, T& x)

@@ -1,4 +1,4 @@
-//  $Id: SurfaceBackgroundData.cc,v 1.16 2002/01/29 20:43:18 grumbel Exp $
+//  $Id: SurfaceBackgroundData.cc,v 1.17 2002/06/08 20:19:54 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -136,5 +136,6 @@ SurfaceBackgroundData::create_EditorObj()
   lst.push_back(boost::shared_ptr<EditorObj> (new EditorSurfaceBackground (*this)));
   return lst;
 }
+
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: digger.hh,v 1.14 2002/02/17 23:49:32 grumbel Exp $
+//  $Id: digger.hh,v 1.15 2002/06/08 20:19:54 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #define DIGGER_HH
 
 #include "../PinguAction.hh"
+#include "../Sprite.hh"
 
 /** FIXME: Not delta capable! */
 class Digger : public PinguAction

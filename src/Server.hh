@@ -1,4 +1,4 @@
-//  $Id: Server.hh,v 1.16 2002/06/07 19:10:33 grumbel Exp $
+//  $Id: Server.hh,v 1.17 2002/06/08 20:19:54 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,11 +21,12 @@
 #define SERVER_HH
 
 #include <string>
-#include <fstream>
 
-#include "World.hh"
+#include "PLF.hh"
 #include "ActionHolder.hh"
 #include "DemoRecorder.hh"
+
+class World;
 
 /** An Event in the Pingus World
 

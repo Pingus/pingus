@@ -1,4 +1,4 @@
-//  $Id: Position.hh,v 1.7 2001/04/27 20:44:37 grumbel Exp $
+//  $Id: Position.hh,v 1.8 2002/06/08 20:19:54 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,7 @@
 #ifndef POSITION_HH
 #define POSITION_HH
 
-#include <iostream>
+#include <iosfwd>
 #include <ClanLib/core.h>
 
 /**

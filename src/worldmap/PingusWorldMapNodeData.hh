@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapNodeData.hh,v 1.2 2002/06/06 09:34:28 grumbel Exp $
+//  $Id: PingusWorldMapNodeData.hh,v 1.3 2002/06/08 20:19:55 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,7 +23,10 @@
 #include <list>
 #include <string>
 #include <ClanLib/core.h>
-#include "../XMLhelper.hh"
+
+class _xmlDoc;  typedef _xmlDoc*  xmlDocPtr;
+class _xmlNode; typedef _xmlNode* xmlNodePtr;
+
 
 /* Wannabe syntax of worldmaps:
    ----------------------------

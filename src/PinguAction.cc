@@ -1,4 +1,4 @@
-//  $Id: PinguAction.cc,v 1.22 2002/04/03 21:00:07 grumbel Exp $
+//  $Id: PinguAction.cc,v 1.23 2002/06/08 20:19:53 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,7 @@
 #include "World.hh"
 #include "PingusResource.hh"
 #include "PinguAction.hh"
+#include "Pingu.hh"
 
 // Initialise class static.
 const int PinguAction::pingu_height = 26;

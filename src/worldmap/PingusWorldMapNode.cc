@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapNode.cc,v 1.4 2002/06/08 16:36:20 grumbel Exp $
+//  $Id: PingusWorldMapNode.cc,v 1.5 2002/06/08 20:19:55 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,7 @@
 #include "../PathManager.hh"
 #include "../System.hh"
 #include "../PingusGameSession.hh"
+#include "../PingusGameSessionResult.hh"
 #include "../Console.hh"
 #include "../XMLPLF.hh"
 #include "../PingusError.hh"

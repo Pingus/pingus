@@ -1,4 +1,4 @@
-//  $Id: Boarder.hh,v 1.4 2001/08/16 17:46:51 grumbel Exp $
+//  $Id: Boarder.hh,v 1.5 2002/06/08 20:19:54 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #define BOARDER_HH
 
 #include "../PinguAction.hh"
+#include "../Sprite.hh"
 
 /** The Boarder action causes a pingu to use a skateboard to move
     forward. */

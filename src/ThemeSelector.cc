@@ -1,4 +1,4 @@
-//  $Id: ThemeSelector.cc,v 1.56 2002/06/01 18:05:35 torangan Exp $
+//  $Id: ThemeSelector.cc,v 1.57 2002/06/08 20:19:54 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,6 +29,7 @@
 #include "PingusSound.hh"
 #include "PathManager.hh"
 #include "System.hh"
+#include "Theme.hh"
 
 using namespace std;
 

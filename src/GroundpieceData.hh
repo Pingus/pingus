@@ -1,4 +1,4 @@
-//  $Id: GroundpieceData.hh,v 1.12 2002/06/07 20:35:14 torangan Exp $
+//  $Id: GroundpieceData.hh,v 1.13 2002/06/08 20:19:53 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,18 +20,13 @@
 #ifndef GROUNDPIECEDATA_HH
 #define GROUNDPIECEDATA_HH
 
+#include <iosfwd>
 #include <ClanLib/core.h>
 #include <ClanLib/display.h>
 
 #include "ResDescriptor.hh"
 
 class EditorObj;
-
-namespace std {
-  template <class T> class char_traits;
-  template <class T1, class T2> struct basic_ofstream;
-  typedef struct basic_ofstream<char, char_traits<char> > ofstream;
-}
 
 namespace boost {
   template <class T> class shared_ptr;

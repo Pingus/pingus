@@ -1,4 +1,4 @@
-//  $Id: PinguActionFactory.hh,v 1.2 2001/08/16 22:00:50 grumbel Exp $
+//  $Id: PinguActionFactory.hh,v 1.3 2002/06/08 20:19:53 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,10 +22,13 @@
 
 #include <map>
 #include <string>
-#include "boost/smart_ptr.hpp"
 
 class PinguActionAbstractFactory;
 class PinguAction;
+
+namespace boost {
+  template <class T> class shared_ptr;
+}
 
 class PinguActionFactory
 {

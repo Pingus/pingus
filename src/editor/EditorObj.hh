@@ -1,4 +1,4 @@
-//  $Id: EditorObj.hh,v 1.40 2002/06/07 20:35:14 torangan Exp $
+//  $Id: EditorObj.hh,v 1.41 2002/06/08 20:19:54 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #define EDITOROBJ_HH
 
 #include <string>
+#include <iosfwd>
 
 using namespace std;
 
@@ -28,13 +29,6 @@ class CL_Rect;
 class CL_Vector;
 class EditorView;
 class Editor;
-
-// looks strange, but it's just a predeclaration of ofstream
-namespace std {
-  template <class T> class char_traits;
-  template <class T1, class T2> struct basic_ofstream;
-  typedef struct basic_ofstream<char, char_traits<char> > ofstream;
-}
 
 namespace boost {
   template <class T> class shared_ptr;

@@ -1,4 +1,4 @@
-//  $Id: WeatherGenerator.cc,v 1.4 2001/11/22 20:08:39 grumbel Exp $
+//  $Id: WeatherGenerator.cc,v 1.5 2002/06/08 20:19:54 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "../PingusError.hh"
+#include "../WeatherData.hh"
 #include "SnowGenerator.hh"
 #include "RainGenerator.hh"
 #include "WeatherGenerator.hh"

@@ -1,4 +1,4 @@
-//  $Id: ThunderstormBackground.hh,v 1.10 2001/08/13 21:35:37 grumbel Exp $
+//  $Id: ThunderstormBackground.hh,v 1.11 2002/06/08 20:19:54 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,11 +20,9 @@
 #ifndef THUNDERSTORMBACKGROUND_HH
 #define THUNDERSTORMBACKGROUND_HH
 
-#include <ClanLib/core.h>
-#include <ClanLib/display.h>
 #include <vector>
-#include "../boost/smart_ptr.hpp"
-#include "SurfaceBackground.hh"
+#include <ClanLib/display.h>
+#include "../WorldObj.hh"
 #include "ThunderstormBackgroundData.hh"
 
 class ThunderstormBackground : public WorldObj,

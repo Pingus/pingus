@@ -1,4 +1,4 @@
-//  $Id: Faller.cc,v 1.12 2002/06/07 20:35:14 torangan Exp $
+//  $Id: Faller.cc,v 1.13 2002/06/08 20:19:54 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,6 +25,7 @@
 #include "../FVec.hh"
 #include "../World.hh"
 #include "../StringConverter.hh"
+#include "../Pingu.hh"
 #include "Faller.hh"
 
 const float Faller::deadly_velocity = 20.0f;

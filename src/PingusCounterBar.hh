@@ -1,4 +1,4 @@
-//  $Id: PingusCounterBar.hh,v 1.2 2002/06/07 14:50:34 torangan Exp $
+//  $Id: PingusCounterBar.hh,v 1.3 2002/06/08 20:19:53 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,8 +21,9 @@
 #define PINGUSCOUNTERBAR_HH
 
 #include <ClanLib/core.h>
-#include "Server.hh"
 #include "GuiObj.hh"
+
+class Server;
 
 class PingusCounterBar : public GuiObj
 {

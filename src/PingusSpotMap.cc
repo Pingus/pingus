@@ -1,4 +1,4 @@
-//  $Id: PingusSpotMap.cc,v 1.52 2002/06/07 19:10:33 grumbel Exp $
+//  $Id: PingusSpotMap.cc,v 1.53 2002/06/08 20:19:54 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,6 +29,7 @@
 #include "Timer.hh"
 #include "PingusSpotMap.hh"
 #include "my_gettext.hh"
+#include "ColMap.hh"
 
 using namespace std;
 

@@ -1,4 +1,4 @@
-//  $Id: ThunderstormBackgroundData.cc,v 1.10 2002/01/26 10:53:36 grumbel Exp $
+//  $Id: ThunderstormBackgroundData.cc,v 1.11 2002/06/08 20:19:54 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #include <iostream>
 #include <ClanLib/core.h>
 #include "../editor/SpriteEditorObj.hh"
+#include "../XMLhelper.hh"
 #include "ThunderstormBackground.hh"
 #include "ThunderstormBackgroundData.hh"
 

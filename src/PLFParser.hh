@@ -1,4 +1,4 @@
-//  $Id: PLFParser.hh,v 1.7 2000/06/19 07:26:08 grumbel Exp $
+//  $Id: PLFParser.hh,v 1.8 2002/06/08 20:19:53 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,7 +22,6 @@
 
 #include <fstream>
 #include <string>
-#include <vector>
 
 /** This gets thrown if a end of file is found inside a PLF file */
 class PLFParserEOF {

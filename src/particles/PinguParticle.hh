@@ -1,4 +1,4 @@
-//  $Id: PinguParticle.hh,v 1.9 2001/04/03 10:45:50 grumbel Exp $
+//  $Id: PinguParticle.hh,v 1.10 2002/06/08 20:19:54 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,8 +20,9 @@
 #ifndef PINGUPARTICLE_HH
 #define PINGUPARTICLE_HH
 
-#include <ClanLib/display.h>
 #include "Particle.hh"
+
+class CL_Surface;
 
 ///
 class PinguParticle : public Particle

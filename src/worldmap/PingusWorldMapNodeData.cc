@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapNodeData.cc,v 1.2 2002/06/06 09:34:28 grumbel Exp $
+//  $Id: PingusWorldMapNodeData.cc,v 1.3 2002/06/08 20:19:55 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "../StringConverter.hh"
+#include "../XMLhelper.hh"
 #include "PingusWorldMapNode.hh"
 #include "PingusWorldMapNodeData.hh"
 

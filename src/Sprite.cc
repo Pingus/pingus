@@ -1,4 +1,4 @@
-//  $Id: Sprite.cc,v 1.15 2002/01/15 10:48:49 grumbel Exp $
+//  $Id: Sprite.cc,v 1.16 2002/06/08 20:19:54 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <ClanLib/Core/Math/cl_vector.h>
 #include "PingusResource.hh"
 #include "Sprite.hh"
 

@@ -1,4 +1,4 @@
-//  $Id: View.hh,v 1.10 2002/06/08 16:08:16 grumbel Exp $
+//  $Id: View.hh,v 1.11 2002/06/08 20:19:54 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,9 +21,10 @@
 #define VIEW_HH
 
 #include "Range.hh"
-#include "World.hh"
 #include "Controller.hh"
 #include "CaptureRectangle.hh"
+
+class World;
 
 /** A class to controll the rentering of the playfield, each display on 
     the screen, which displays the pingus world is an view object. */
