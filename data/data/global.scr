@@ -198,6 +198,15 @@ section GroundPieces
 
 	section Rock 
 	{
+	        real1 = ../images/groundpieces/rock/real1.pcx (type=surface, x=0, y=0, width=222, height=134, tcol=0);
+	        real2 = ../images/groundpieces/rock/real2.pcx (type=surface, x=0, y=0, width=351, height=163, tcol=0);
+	        real3 = ../images/groundpieces/rock/real3.pcx (type=surface, x=0, y=0, width=263, height=156, tcol=0);
+	        real4 = ../images/groundpieces/rock/real4.pcx (type=surface, x=0, y=0, width=200, height=93, tcol=0);
+	        real5 = ../images/groundpieces/rock/real5.pcx (type=surface, x=0, y=0, width=220, height=49, tcol=0);
+	        real6 = ../images/groundpieces/rock/real6.pcx (type=surface, x=0, y=0, width=110, height=206, tcol=0);
+	        real7 = ../images/groundpieces/rock/real7.pcx (type=surface, x=0, y=0, width=247, height=132, tcol=0);
+	        real8 = ../images/groundpieces/rock/real8.pcx (type=surface, x=0, y=0, width=263, height=132, tcol=0);
+
 	        granit1 = ../images/groundpieces/rock/granit1.pcx (type=surface, x=0, y=0, width=173, height=107, tcol=0);
 	        granit2 = ../images/groundpieces/rock/granit2.pcx (type=surface, x=0, y=0, width=139, height=112, tcol=0);
 	        granit3 = ../images/groundpieces/rock/granit3.pcx (type=surface, x=0, y=0, width=126, height=182, tcol=0);
