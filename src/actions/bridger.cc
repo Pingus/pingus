@@ -1,4 +1,4 @@
-//  $Id: bridger.cc,v 1.8 2000/03/12 02:07:27 grumbel Exp $
+//  $Id: bridger.cc,v 1.9 2000/04/09 17:34:33 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -47,6 +47,8 @@ Bridger::init(void)
   is_multi_direct = true;
   step = 0;
   do_steps = 0;
+
+  // FIXME: This needs to be moved to let_move()
 
   // Ressetting the bridger position a bit, so that we don't get a
   // hole at the start of the bridge
