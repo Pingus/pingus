@@ -17,5 +17,6 @@ section Fonts
 	pingus = ../images/fonts/pingus2.tga (type=font, spacelen=8, trans_limit=0.25, subtract_width=0,letters="!""#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~");
 	pingus_small = ../images/fonts/pingus_small3.tga (type=font, spacelen=8, trans_limit=0.25, subtract_width=0,letters="!""#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~");
 	
-	xterm = ../images/fonts/xterm.tga  (type=font, spacelen=8, trans_limit=0.25, subtract_width=0,letters="!""#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~");
+//	xterm = ../images/fonts/xterm.tga  (type=font, spacelen=8, trans_limit=0.25, subtract_width=0,letters="!""#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~");
+	xterm = ../images/fonts/xterm.pcx  (type=font, tcol=0, x=1, y=1, spacelen=6,letters="!""#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~");
 }
