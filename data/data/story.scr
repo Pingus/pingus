@@ -2,10 +2,10 @@
 
 section Story
 {
-	story0 = ../images/story/story0.jpg (type=surface, x=0, y=0, width=640, height=200);
-	story1 = ../images/story/story1.jpg (type=surface, x=0, y=0, width=640, height=200);
-	story2 = ../images/story/story2.jpg (type=surface, x=0, y=0, width=640, height=200);
-	story3 = ../images/story/story3.jpg (type=surface, x=0, y=0, width=640, height=200);
+	story0 = ../images/story/story0.png (type=surface);
+	story1 = ../images/story/story1.jpg (type=surface);
+	story2 = ../images/story/story2.jpg (type=surface);
+	story3 = ../images/story/story3.jpg (type=surface);
         background = ../images/core/menu/worldscreenbg.jpg (type=surface);
 }
 

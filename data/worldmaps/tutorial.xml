@@ -43,7 +43,7 @@
           <position>
             <x-pos>326</x-pos>
             <y-pos>360</y-pos>
-            <z-pos>0</z-pos>
+            <z-pos>-55</z-pos>
           </position>
         </dot>
         <levelname>tutorial/snow8-grumbel</levelname>
@@ -55,7 +55,7 @@
           <position>
             <x-pos>415</x-pos>
             <y-pos>325</y-pos>
-            <z-pos>0</z-pos>
+            <z-pos>-55</z-pos>
           </position>
 
         </dot>
@@ -251,8 +251,8 @@
         <dot>
           <name>leveldot_19</name>
           <position>
-            <x-pos>1035</x-pos>
-            <y-pos>378</y-pos>
+            <x-pos>1028</x-pos>
+            <y-pos>388</y-pos>
             <z-pos>150</z-pos>
           </position>
         </dot>
@@ -420,7 +420,7 @@
       </surface>
 
       <position>
-        <x-pos>705</x-pos>
+        <x-pos>701</x-pos>
         <y-pos>405</y-pos>
         <z-pos>100</z-pos>
       </position>
@@ -436,9 +436,9 @@
       </surface>
 
       <position>
-        <x-pos>209</x-pos>
-        <y-pos>307</y-pos>
-        <z-pos>0</z-pos>
+        <x-pos>208</x-pos>
+        <y-pos>309</y-pos>
+        <z-pos>-50</z-pos>
       </position>
       <auto-uncover>1</auto-uncover>
     </surface>
