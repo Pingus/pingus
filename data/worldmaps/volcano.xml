@@ -18,7 +18,7 @@
             <z-pos>10</z-pos>
           </position>
         </dot>
-        <levelname>blabla</levelname>
+        <levelname>hellmouth1-grumbel.xml</levelname>
       </leveldot>
 
       <leveldot>
@@ -30,7 +30,7 @@
             <z-pos>10</z-pos>
           </position>
         </dot>
-        <levelname>blabla</levelname>
+        <levelname>hellmouth2-grumbel.xml</levelname>
       </leveldot>
 
       <leveldot>
@@ -42,7 +42,7 @@
             <z-pos>10</z-pos>
           </position>
         </dot>
-        <levelname>blabla</levelname>
+        <levelname>hellmouth3-grumbel.xml</levelname>
       </leveldot>
 
 
@@ -55,7 +55,7 @@
             <z-pos>10</z-pos>
           </position>
         </dot>
-        <levelname>blabla</levelname>
+        <levelname>hellmouth4-grumbel.xml</levelname>
       </leveldot>
 
 
@@ -68,7 +68,7 @@
             <z-pos>10</z-pos>
           </position>
         </dot>
-        <levelname>blabla</levelname>
+        <levelname>hellmouth5-grumbel.xml</levelname>
       </leveldot>
 
       <leveldot>
@@ -80,7 +80,7 @@
             <z-pos>10</z-pos>
           </position>
         </dot>
-        <levelname>blabla</levelname>
+        <levelname>hellmouth6-grumbel.xml</levelname>
       </leveldot>
 
 
@@ -93,7 +93,7 @@
             <z-pos>10</z-pos>
           </position>
         </dot>
-        <levelname>blabla</levelname>
+        <levelname>hellmouth7-grumbel.xml</levelname>
       </leveldot>
 
 
@@ -106,7 +106,7 @@
             <z-pos>10</z-pos>
           </position>
         </dot>
-        <levelname>blabla</levelname>
+        <levelname>hellmouth8-grumbel.xml</levelname>
       </leveldot>
 
 
@@ -119,7 +119,7 @@
             <z-pos>10</z-pos>
           </position>
         </dot>
-        <levelname>blabla</levelname>
+        <levelname>hellmouth9-grumbel.xml</levelname>
       </leveldot>
 
       <leveldot>
@@ -131,7 +131,7 @@
             <z-pos>10</z-pos>
           </position>
         </dot>
-        <levelname>blabla</levelname>
+        <levelname>hellmouth10-grumbel.xml</levelname>
       </leveldot>
 
       <leveldot>
@@ -143,7 +143,7 @@
             <z-pos>10</z-pos>
           </position>
         </dot>
-        <levelname>blabla</levelname>
+        <levelname>hellmouth11-grumbel.xml</levelname>
       </leveldot>
 
       <leveldot>
@@ -155,7 +155,7 @@
             <z-pos>10</z-pos>
           </position>
         </dot>
-        <levelname>blabla</levelname>
+        <levelname>hellmouth12-grumbel.xml</levelname>
       </leveldot>
 
       <leveldot>
@@ -167,7 +167,7 @@
             <z-pos>10</z-pos>
           </position>
         </dot>
-        <levelname>blabla</levelname>
+        <levelname>hellmouth13-grumbel.xml</levelname>
       </leveldot>
 
       <leveldot>
@@ -179,7 +179,7 @@
             <z-pos>10</z-pos>
           </position>
         </dot>
-        <levelname>blabla</levelname>
+        <levelname>hellmouth14-grumbel.xml</levelname>
       </leveldot>
 
       <leveldot>
@@ -191,7 +191,7 @@
             <z-pos>10</z-pos>
           </position>
         </dot>
-        <levelname>blabla</levelname>
+        <levelname>hellmouth15-grumbel.xml</levelname>
       </leveldot>
 
       <leveldot>
@@ -203,9 +203,34 @@
             <z-pos>10</z-pos>
           </position>
         </dot>
-        <levelname>blabla</levelname>
+        <levelname>hellmouth16-grumbel.xml</levelname>
       </leveldot>
 
+
+      <leveldot>
+        <dot>
+          <name>leveldot_17</name>
+          <position>
+            <x-pos>497</x-pos>
+            <y-pos>280</y-pos>
+            <z-pos>10</z-pos>
+          </position>
+        </dot>
+        <levelname>hellmouth17-grumbel.xml</levelname>
+      </leveldot>
+
+      <leveldot>
+        <dot>
+          <name>leveldot_18</name>
+          <position>
+            <x-pos>593</x-pos>
+            <y-pos>259</y-pos>
+            <z-pos>10</z-pos>
+          </position>
+        </dot>
+
+        <levelname>hellmouth18-grumbel.xml</levelname>
+      </leveldot>
 
     </nodes>
     
@@ -385,7 +410,7 @@
       <position>
         <x-pos>0</x-pos>
         <y-pos>0</y-pos>
-        <z-pos>0</z-pos>
+        <z-pos>-100</z-pos>
       </position>
     </surface>
 

@@ -1,4 +1,4 @@
-//  $Id: level_dot.cxx,v 1.4 2002/10/13 19:28:34 grumbel Exp $
+//  $Id: level_dot.cxx,v 1.5 2002/10/17 16:06:21 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,10 @@
 #include "../xml_helper.hxx"
 #include "../pingus_resource.hxx"
 #include "../graphic_context.hxx"
+#include "../plf.hxx"
+#include "../path_manager.hxx"
+#include "../screen_manager.hxx"
+#include "../game_session.hxx"
 #include "level_dot.hxx"
 
 namespace WorldMapNS {
@@ -28,10 +32,37 @@ namespace WorldMapNS {
 LevelDot::LevelDot(xmlDocPtr doc, xmlNodePtr cur)
   : Dot(doc, XMLhelper::skip_blank(cur->children)),
     green_dot_sur("misc/dot_green", "core"),
-    red_dot_sur("misc/dot_red", "core")
+    red_dot_sur("misc/dot_red", "core"),
+    plf(0)
 {
   green_dot_sur.set_align_center();
   red_dot_sur.set_align_center();
+
+  cur = cur->children;
+  // Skip dot entry
+  cur = cur->next;
+  cur = XMLhelper::skip_blank(cur);
+
+  cur = cur->next;
+  cur = XMLhelper::skip_blank(cur);
+
+
+  while(cur)
+    {
+      if (XMLhelper::equal_str(cur->name, "levelname"))
+        {
+          levelname = XMLhelper::parse_string(doc, cur);
+          std::cout << "Levelname: " << levelname << std::endl;         
+          plf = PLF::create(path_manager.complete("levels/") + levelname);
+        }
+      else
+        {
+          std::cout << "92834Unknown: " << cur->name  << std::endl;
+        }
+      
+      cur = cur->next;
+      cur = XMLhelper::skip_blank(cur);
+    }
 }
 
 void
@@ -44,6 +75,14 @@ LevelDot::draw(GraphicContext& gc)
 void
 LevelDot::update()
 {
+}
+
+void
+LevelDot::on_click()
+{
+  std::cout << "Starting level: " << levelname << std::endl;
+  ScreenManager::instance()->push_screen(new PingusGameSession (path_manager.complete("levels/") + levelname),
+                                         true);
 }
 
 } // namespace WorldMapNS

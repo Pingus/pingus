@@ -1,4 +1,4 @@
-//  $Id: dot.hxx,v 1.4 2002/10/13 19:28:34 grumbel Exp $
+//  $Id: dot.hxx,v 1.5 2002/10/17 16:06:21 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,6 +39,9 @@ public:
   
   Vector get_pos() { return pos; }
   float  get_z_pos() const { return pos.z; }
+
+  virtual void on_click() =0;
+
 private:
   Dot (const Dot&);
   Dot& operator= (const Dot&);

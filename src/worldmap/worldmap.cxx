@@ -1,4 +1,4 @@
-//  $Id: worldmap.cxx,v 1.23 2002/10/15 22:22:59 grumbel Exp $
+//  $Id: worldmap.cxx,v 1.24 2002/10/17 16:06:21 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -210,9 +210,17 @@ WorldMap::on_primary_button_press(int x, int y)
   if (dot)
     {
       std::cout << "Clicked on: " << dot->get_name() << std::endl;
-      if (!pingus->walk_to_node(path_graph->lookup_node(dot->get_name())))
+      if (path_graph->lookup_node(dot->get_name()) == pingus->get_node())
         {
-          std::cout << "NO PATH TO NODE FOUND!" << std::endl;
+          std::cout << "Pingu is on node, issue on_click()" << std::endl;
+          dot->on_click();
+        }
+      else
+        {
+          if (!pingus->walk_to_node(path_graph->lookup_node(dot->get_name())))
+            {
+              std::cout << "NO PATH TO NODE FOUND!" << std::endl;
+            }
         }
     }
 }

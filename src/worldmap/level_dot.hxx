@@ -1,4 +1,4 @@
-//  $Id: level_dot.hxx,v 1.3 2002/10/13 16:39:17 grumbel Exp $
+//  $Id: level_dot.hxx,v 1.4 2002/10/17 16:06:21 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,8 @@
 #include "../sprite.hxx"
 #include "dot.hxx"
 
+class PLF;
+
 namespace WorldMapNS {
 
 /** */
@@ -31,12 +33,16 @@ class LevelDot : public Dot
 private:
   Sprite green_dot_sur;
   Sprite red_dot_sur;
+  std::string levelname;
+  PLF* plf;
 
 public:
   LevelDot(xmlDocPtr doc, xmlNodePtr cur);
 
   void draw(GraphicContext& gc);
   void update();
+
+  void on_click(); 
 
 private:
   LevelDot (const LevelDot&);

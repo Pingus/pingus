@@ -1,4 +1,4 @@
-//  $Id: path.cxx,v 1.3 2002/10/15 21:58:50 grumbel Exp $
+//  $Id: path.cxx,v 1.4 2002/10/17 16:06:21 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -58,7 +58,6 @@ Path::calc_length()
     }
   else
     {
-      std::cout << "Edgepath size: " << vec.size() << std::endl;
       float length = 0;
       Vec::iterator prev = vec.begin();
       for(Vec::iterator next = prev + 1; next != vec.end(); ++next)
