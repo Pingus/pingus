@@ -7,12 +7,12 @@
       </axis-pointer>
 
       <axis-pointer>
-	<button-axis angle=0>
+	<button-axis angle="0">
 	  <key-button key="KP_4"/>
 	  <key-button key="KP_6"/>
 	</button-axis>
 	
-	<button-axis angle=90>
+	<button-axis angle="90">
 	  <key-button key="KP_8"/>
 	  <key-button key="KP_2"/>
 	</button-axis>
@@ -77,6 +77,6 @@
       <action-button>
         <key-button key="F4"/>
       </action-button>
-    <action-buttons>
+    </action-buttons>
   </controller-config>
 </pingus-controller>
