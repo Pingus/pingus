@@ -1,4 +1,4 @@
-#  $Id: configure.in,v 1.9 2000/04/13 20:27:12 grumbel Exp $
+#  $Id: configure.in,v 1.10 2000/04/14 18:25:25 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -88,6 +88,8 @@ AC_CHECK_HEADER(ClanLib/core.h,, [echo "Please get ClanLib from http://www.clanl
 
 AC_CHECK_LIB(mikmod,   main,, HAVE_LIBMIKMOD=no)
 AC_CHECK_HEADER(mikmod.h, HAVE_LIBMIKMOD=yes, HAVE_LIBMIKMOD=no)
+AC_CHECK_LIB(SDL,   main,,)
+AC_CHECK_LIB(SDL_mixer,   main,,)
 
 AC_CHECK_LIB( clanCore,   main,, [
 	echo "ClanLib installed, but -lclanCore not found, run 'ldconfig' and try again,"
