@@ -1,4 +1,4 @@
-//  $Id: bridger.cc,v 1.22 2000/07/30 01:47:37 grumbel Exp $
+//  $Id: bridger.cc,v 1.23 2000/07/30 02:35:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -101,7 +101,7 @@ Bridger::let_move()
 	    }
 	  else // We reached a wall...
 	    {
-	      direction.change();
+	      pingu->direction.change();
 	      is_finished = true;
 	    }
 	}
