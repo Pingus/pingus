@@ -10,7 +10,7 @@ else
     echo "### Levelnames and description, automatically  extracted from levelfiles" > $OUTPUTFILE
     echo "" >> $OUTPUTFILE
 
-    for filename in ../data/levels/playable/*.xml; do
+    for filename in ../data/levels/tutorial/*.xml; do
         echo "Extracting text from $filename"
         shortname=`basename $filename`
         xalan \

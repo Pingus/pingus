@@ -1,4 +1,4 @@
-//  $Id: groundpiece_obj.cxx,v 1.12 2003/03/30 13:12:35 grumbel Exp $
+//  $Id: groundpiece_obj.cxx,v 1.13 2003/04/02 19:11:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -62,13 +62,9 @@ GroundpieceObj::write_xml (std::ostream& xml)
 std::string 
 GroundpieceObj::status_line ()
 {
-  char str[1024];  
-  std::string type_name = Groundtype::type_to_string(data->gptype);
-  
-  snprintf(str, 1024, "Groundpiece: %s Type: %s",
-	   data->desc.res_name.c_str(), type_name.c_str());
-
-  return str;
+  return "Groundpiece: " + data->desc.res_name
+    + " Type: " + Groundtype::type_to_string(data->gptype)
+    + " Rot: " + rs_to_string(data->desc.modifier);
 }
 
 void

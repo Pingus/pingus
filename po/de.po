@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Pingus 0.5.0\n"
-"POT-Creation-Date: 2003-04-01 11:23+0200\n"
-"PO-Revision-Date: 2003-04-01 11:36+0200\n"
+"POT-Creation-Date: 2003-04-02 16:33+0200\n"
+"PO-Revision-Date: 2003-04-02 16:32+0200\n"
 "Last-Translator: Ingo Ruhnke <grumbel@gmx.de>\n"
 "Language-Team: Ingo Ruhnke <grumbel@gmx.de>, Giray Devlet <giray@devlet.cc>\n"
 "MIME-Version: 1.0\n"
@@ -100,7 +100,7 @@ msgstr "-Dank an"
 
 #: src/editor/editor_event.cxx:580
 #, fuzzy
-msgid "Enter filename to save as (without .xml!)"
+msgid "Enter filename to save as:"
 msgstr "Datei speichern als:  "
 
 #: src/editor/editor_help_screen.cxx:45
@@ -489,12 +489,23 @@ msgstr "Anzahl an Pingus: %d"
 msgid "Display Help Screen (F1)"
 msgstr "Hilfe Anzeigen (F1)"
 
+#: src/exit_menu.cxx:43
+msgid " Yes"
+msgstr "Ja"
+
+#: src/exit_menu.cxx:68
+msgid "No"
+msgstr "Nein"
+
+#: src/exit_menu.cxx:94
+msgid "Exit Pingus?"
+msgstr "Pingus beenden?"
+
 #: src/fps_counter.cxx:46
 msgid "unknown"
 msgstr "unbekannt"
 
 #: src/intro.cxx:62 src/intro.cxx:113
-#, fuzzy
 msgid "..:: Press Start ::.."
 msgstr "..:: Druecke start ::.."
 
@@ -530,7 +541,7 @@ msgstr "Resultaten:"
 #. get_message(100 * world->get_saved_pingus() / world->get_allowed_pingus()).c_str());
 #.
 #: src/level_result.cxx:65
-#, fuzzy, c-format
+#, c-format
 msgid "Pingus saved:   %3d/%3d"
 msgstr "Zu rettende Pingus: %d"
 
@@ -627,7 +638,6 @@ msgstr "Mitwirkende"
 #. 150;
 #. 330;
 #: src/menu_button.cxx:214
-#, fuzzy
 msgid "..:: Takes you to the options menu ::.."
 msgstr "..:: Einstellungen, Cheats und Debugging stuff ::.."
 
@@ -659,9 +669,8 @@ msgid "Level"
 msgstr "Level"
 
 #: src/menu_button.cxx:346
-#, fuzzy
 msgid "..:: Start the game ::.."
-msgstr "..:: Contrib level Spielen ::.."
+msgstr "..:: das Spiel starten ::.."
 
 #. desc["de"] = "..:: Such dir eine Welt zum beginnen aus ::..";
 #: src/menu_button.cxx:349
@@ -685,7 +694,6 @@ msgid "Multi"
 msgstr "Multi"
 
 #: src/option_menu.cxx:145
-#, fuzzy
 msgid "on"
 msgstr "an"
 
@@ -749,14 +757,12 @@ msgid "Verbose"
 msgstr ""
 
 #: src/option_menu.cxx:284
-#, fuzzy
 msgid "Music"
-msgstr "-Musik"
+msgstr "Musik"
 
 #: src/option_menu.cxx:285
-#, fuzzy
 msgid "Sound"
-msgstr "Gefunden: "
+msgstr "Sound"
 
 #: src/option_menu.cxx:286
 msgid "Level Previews"
@@ -778,9 +784,8 @@ msgstr ""
 
 #. draw_background();
 #: src/option_menu.cxx:332
-#, fuzzy
 msgid "Pingus Option Menu"
-msgstr "Zu rettende Pingus: %d"
+msgstr "Options Menu"
 
 #: src/pingu.cxx:122
 msgid "Setting action to a dead pingu"
@@ -880,8 +885,7 @@ msgstr ""
 msgid "`------------------------------------------------------------------------\n"
 msgstr ""
 
-#: src/pingus_main.cxx:344
-#, fuzzy
+#: src/pingus_main.cxx:351
 msgid ""
 "\n"
 "Copyright (C) 2003 Ingo Ruhnke <grumbel@pingus.cx>\n"
@@ -890,19 +894,19 @@ msgid ""
 "For more information about these matters, see the files named COPYING."
 msgstr ""
 
-#: src/pingus_main.cxx:500
+#: src/pingus_main.cxx:507
 msgid "Unknow char: "
 msgstr "Unbekannter Buchstabe: "
 
-#: src/pingus_main.cxx:501
+#: src/pingus_main.cxx:508
 msgid "Usage: "
 msgstr "Benutzung: "
 
-#: src/pingus_main.cxx:501
+#: src/pingus_main.cxx:508
 msgid " [OPTIONS]... [LEVELFILE]"
 msgstr "[OPTIONEN]... [LEVELDATEI]"
 
-#: src/pingus_main.cxx:503
+#: src/pingus_main.cxx:510
 msgid ""
 "\n"
 "Options:\n"
@@ -913,13 +917,13 @@ msgid ""
 "   --disable-intro          Disable intro\n"
 msgstr ""
 
-#: src/pingus_main.cxx:512
+#: src/pingus_main.cxx:519
 msgid "   -G, --use-opengl         Use OpenGL\n"
 msgstr ""
 
 #. 	"   --fs-preload             Preload all Levelpreviews\n"a
 #. 	"   --disable-previews       Disables all level preview in the level selector\n"
-#: src/pingus_main.cxx:516
+#: src/pingus_main.cxx:523
 msgid ""
 "   -F, --disable-fullscreen Disable Fullscreen\n"
 "   -f, --enable-fullscreen  Enable Fullscreen (default)\n"
@@ -968,7 +972,7 @@ msgid ""
 "   -p, --play-demo FILE     Plays a demo session from FILE\n"
 msgstr ""
 
-#: src/pingus_main.cxx:559
+#: src/pingus_main.cxx:566
 msgid ""
 "\n"
 "Sound:\n"
@@ -976,76 +980,89 @@ msgid ""
 "   -m, --enable-music       Enable music\n"
 msgstr ""
 
-#: src/pingus_main.cxx:664
+#: src/pingus_main.cxx:675
 msgid "clanVorbis support:           ok"
 msgstr ""
 
-#: src/pingus_main.cxx:666
+#: src/pingus_main.cxx:677
 msgid "clanVoribs support:  missing (.ogg music files will not be playable)"
 msgstr ""
 
-#: src/pingus_main.cxx:670
+#: src/pingus_main.cxx:681
 msgid "clanMikMod support:           ok"
 msgstr ""
 
-#: src/pingus_main.cxx:672
+#: src/pingus_main.cxx:683
 msgid "clanMikMod support:  missing (music files will not be playable)"
 msgstr ""
 
-#: src/pingus_main.cxx:676
+#: src/pingus_main.cxx:687
 msgid "getext support:               ok"
 msgstr ""
 
-#: src/pingus_main.cxx:677
+#: src/pingus_main.cxx:688
 #, fuzzy
 msgid "gettext language:        english"
 msgstr "gettext Sprache:         deutsch"
 
-#: src/pingus_main.cxx:683
+#: src/pingus_main.cxx:694
 msgid "sound support:           enabled"
 msgstr "Sound Unterst,b|(Bzung:           an"
 
-#: src/pingus_main.cxx:685
+#: src/pingus_main.cxx:696
 msgid "sound support:          disabled"
 msgstr "Sound Unterst,b|(Bzung:          aus"
 
-#: src/pingus_main.cxx:688
+#: src/pingus_main.cxx:699
 msgid "music support:           enabled"
 msgstr "Musik Unterst,b|(Btzung:          an"
 
-#: src/pingus_main.cxx:690
+#: src/pingus_main.cxx:701
 msgid "music support:          disabled"
 msgstr "Musik Unterst,b|(Btzung:         aus"
 
-#: src/pingus_main.cxx:692
+#: src/pingus_main.cxx:703
 msgid "resolution set to:       "
 msgstr "Aufl,bv(Bsung:               "
 
-#: src/pingus_main.cxx:701
+#: src/pingus_main.cxx:704
+msgid "fullcscreen:            "
+msgstr ""
+
+#: src/pingus_main.cxx:705
+#, fuzzy
+msgid " enabled"
+msgstr "Cursor"
+
+#: src/pingus_main.cxx:705
+msgid "disabled"
+msgstr ""
+
+#: src/pingus_main.cxx:715
 msgid "PingusMain: Starting Main: "
 msgstr "PingusMain: Hauptteil wird gestartet: "
 
-#: src/pingus_main.cxx:727
+#: src/pingus_main.cxx:741
 msgid "PingusMain: Levelfile not found, ignoring: "
 msgstr "PingusMain: Leveldatei nicht gefunden, Fehler wird ignoriert: "
 
-#: src/pingus_main.cxx:818
+#: src/pingus_main.cxx:832
 msgid "Error caught from ClanLib: "
 msgstr "ClanLib Fehler abgefangen: "
 
-#: src/pingus_main.cxx:822
+#: src/pingus_main.cxx:836
 msgid "Error caught from Pingus: "
 msgstr "Pingus Fehler wurde abgefangen: "
 
-#: src/pingus_main.cxx:826
+#: src/pingus_main.cxx:840
 msgid "Pingus: Out of memory!"
 msgstr "Pingus: Speicher ist ausgegangen"
 
-#: src/pingus_main.cxx:830
+#: src/pingus_main.cxx:844
 msgid "Pingus: Standard exception caught!:\n"
 msgstr "Pingus: Standard Ausnahme abgefangen!:\n"
 
-#: src/pingus_main.cxx:834
+#: src/pingus_main.cxx:848
 msgid "Pingus: Unknown throw caught!"
 msgstr "Pingus: Unbekannte Ausnahme abgefangen!"
 
@@ -1127,19 +1144,33 @@ msgstr "Umgebungs Variable $HOME ist nicht gesetzt."
 
 #: src/system.cxx:422
 msgid "System::checksum: Couldn't open file: "
-msgstr "System::checksum: Datei oder Verzeichnis konnte nicht geoeffnet werden: "
+msgstr ""
+"System::checksum: Datei oder Verzeichnis konnte nicht geoeffnet werden: "
 
 #: src/system.cxx:432
 msgid "System:checksum: file read error"
 msgstr "System:checksum: Fehler beim Lesen von Datei"
 
-#: src/worldmap/level_dot.cxx:144
+#: src/worldmap/level_dot.cxx:137
 msgid "locked"
 msgstr "gesperrt"
 
-#: src/worldmap/worldmap.cxx:67
+#: src/worldmap/manager.cxx:66
+msgid "Leave?"
+msgstr "Verlassen?"
+
+#: src/worldmap/manager.cxx:93
+msgid "Enter?"
+msgstr "Betreten?"
+
+#: src/worldmap/worldmap.cxx:68
 msgid "WorldMap: File not found: "
 msgstr "Worldmap: Datei nicht gefunden: "
+
+#: src/worldmap/worldmap.cxx:241
+#, fuzzy
+msgid "...walking..."
+msgstr "Ladevorgang läuft..."
 
 #, fuzzy
 #~ msgid "..:: Lets you select a world to start ::.."
@@ -1209,12 +1240,6 @@ msgstr "Worldmap: Datei nicht gefunden: "
 
 #~ msgid " (without sound support)"
 #~ msgstr " (ohne Sound Unterstützung)"
-
-#~ msgid "Yes"
-#~ msgstr "Ja"
-
-#~ msgid "No"
-#~ msgstr "Nein"
 
 #, fuzzy
 #~ msgid "Pingus Datadir"

@@ -25,6 +25,7 @@ entrances.scr \
 traps.scr     \
 game.scr      \
 exits.scr     \
+liquids.scr   \
 hotspots.scr  \
 textures.scr  \
 story.scr     \

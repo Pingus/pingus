@@ -819,7 +819,7 @@ worldobjs/switchdoor_tile_cmap.png \
 worldobjs/teleporter.png \
 worldobjs/teleporter2.png \
 worldobjs/teleportertarget.png \
-gui/font_black.tga gui/font_gray.tga
+gui/font_black.tga gui/font_white.tga gui/font_gray.tga
 
 EXTRA_DIST = $(nobase_pkgdata_DATA)
 

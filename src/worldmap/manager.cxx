@@ -1,4 +1,4 @@
-//  $Id: manager.cxx,v 1.29 2003/04/01 13:21:20 grumbel Exp $
+//  $Id: manager.cxx,v 1.30 2003/04/02 19:11:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
+#include "../my_gettext.hxx"
 #include "../fonts.hxx"
 #include "../gui/screen_manager.hxx"
 #include "../gui/surface_button.hxx"
@@ -62,7 +63,7 @@ void
 WorldMapManagerCloseButton::draw (GraphicContext& gc)
 {
   SurfaceButton::draw(gc);
-  gc.print_left(Fonts::chalk_small, 10, 580, "Leave?");
+  gc.print_left(Fonts::chalk_small, 10, 580, _("Leave?"));
 }
 
 void
@@ -89,7 +90,7 @@ WorldMapManagerEnterButton::draw (GraphicContext& gc)
   else
     {
       SurfaceButton::draw(gc);
-      gc.print_left(Fonts::chalk_small, 700, 580, "Enter?");
+      gc.print_left(Fonts::chalk_small, 700, 580, _("Enter?"));
     }
 }
 

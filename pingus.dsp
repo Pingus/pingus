@@ -2579,6 +2579,22 @@ SOURCE=.\src\xml_plf.cxx
 
 SOURCE=.\src\xml_plf.hxx
 # End Source File
+# Begin Source File
+
+SOURCE=.\src\win32\Getopt.c
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\win32\Getopt1.c
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\win32\Getopt.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\win32\config.h
+# End Source File
 # End Group
 # End Target
 # End Project
