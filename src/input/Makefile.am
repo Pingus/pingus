@@ -25,6 +25,9 @@ libpingus_input_a_SOURCES =       \
         button_axis.hxx button_axis.cxx \
 	button_factory.hxx button_factory.cxx \
 	controller.hxx controller.cxx \
+	dummy_axis.hxx \
+	dummy_button.hxx \
+	dummy_pointer.hxx \
 	inverted_axis.hxx inverted_axis.cxx \
 	joystick_axis.hxx joystick_axis.cxx \
         joystick_button.hxx joystick_button.cxx \
