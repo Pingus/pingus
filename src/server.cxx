@@ -74,15 +74,14 @@ Server::send_pingu_action_event (Pingu* pingu, Actions::ActionName action)
   if (action_holder.pop_action(action))
     {
       if (!(pingu->request_set_action(action)))
-	{
-	  action_holder.push_action(action);
-	}
+      	{
+      	  action_holder.push_action(action);
+      	}
+			else if (demo_recorder)
+			  {
+          demo_recorder->record_event(ServerEvent::make_pingu_action_event(get_time(), pingu->get_id(), action));
+				}
     }
-
-  if (demo_recorder)
-    demo_recorder->record_event(ServerEvent::make_pingu_action_event(get_time(),
-                                                                     pingu->get_id(),
-                                                                     action));
 }
 
 bool
