@@ -1,4 +1,4 @@
-//  $Id: pingu_holder.cxx,v 1.7 2002/09/18 10:50:57 grumbel Exp $
+//  $Id: pingu_holder.cxx,v 1.8 2002/09/18 11:03:00 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #include <iostream>
 #include "pingu_holder.hxx"
 #include "pingu.hxx"
+#include "pingu_action.hxx"
 
 PinguHolder::PinguHolder()
 {
@@ -64,10 +65,35 @@ PinguHolder::create_pingu (const CL_Vector& pos, int owner_id)
 void
 PinguHolder::draw (GraphicContext& gc)
 {
+  // Draw all walkers
+  for(std::list<Pingu*>::iterator pingu = pingus.begin(); 
+      pingu != pingus.end(); 
+      ++pingu)
+    {
+      if ((*pingu)->get_action()->get_type() == Actions::Walker) 
+	(*pingu)->draw (gc);
+    }
+  
+  // Draw all non-walkers, so that they are easier spotable
+  // FIXME: This might be usefull, but looks kind of ugly
+  for(std::list<Pingu*>::iterator pingu = pingus.begin(); 
+      pingu != pingus.end(); 
+      ++pingu)
+    {
+      if ((*pingu)->get_action()->get_type() != Actions::Walker)
+	(*pingu)->draw (gc);
+    }
+}
+
+void
+PinguHolder::update(float delta)
+{
   PinguIter pingu = pingus.begin();
   
   while(pingu != pingus.end())
     {
+      (*pingu)->update(delta);
+      
       // FIXME: The draw-loop is not the place for things like this,
       // this belongs in the update loop
       if ((*pingu)->get_status() == PS_DEAD)
@@ -84,33 +110,9 @@ PinguHolder::draw (GraphicContext& gc)
 	}
       else 
 	{
-	  // We don't draw the actions here, since we want them above
-	  // all other pingus, for better visibility
-	  if (!(*pingu)->get_action())
-	    (*pingu)->draw (gc);
-	  
 	  // move to the next Pingu
 	  pingu++;
 	}
-    }
-
-  // We draw all actions here, so we have them above all others
-  for(pingu = pingus.begin(); pingu != pingus.end(); pingu++)
-    {
-      if ((*pingu)->get_action()) 
-	(*pingu)->draw (gc);
-    }
-}
-
-void
-PinguHolder::update(float delta)
-{
-  // FIXME: This is a relictn, pingus should handle that themself
-  // FIXME: WorldObj::for_each_pingu (Func f); might cause throuble
-  // FIXME: with MSVC
-  for(PinguIter pingu = begin(); pingu != end(); ++pingu)
-    {
-      (*pingu)->update(delta);
     }
 }
 
