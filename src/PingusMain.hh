@@ -1,4 +1,4 @@
-//  $Id: PingusMain.hh,v 1.2 2000/08/10 15:13:07 grumbel Exp $
+//  $Id: PingusMain.hh,v 1.3 2000/10/09 19:17:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,13 +37,6 @@ private:
   bool    pingus_datadir_set;
   ///
   bool    no_config_file;
-
-  ///
-  std::string pingus_datafile;
-  /// 
-  std::string global_datafile;
-  ///
-  std::string pingus_soundfile;
   ///
   std::string levelfile;
   ///

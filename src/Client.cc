@@ -1,4 +1,4 @@
-//  $Id: Client.cc,v 1.34 2000/07/30 01:47:35 grumbel Exp $
+//  $Id: Client.cc,v 1.35 2000/10/09 19:17:30 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -78,7 +78,7 @@ Client::start(DemoPlayer* player)
   assert(player);
   this->player = player;
 
-  std::string demo_level_file = find_file(pingus_datadir, "levels/" + player->get_levelname());
+  std::string demo_level_file = "levels/" + player->get_levelname();
 
   std::cout << "Demo_level_file: " << demo_level_file << std::endl;
 

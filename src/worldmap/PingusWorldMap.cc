@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMap.cc,v 1.9 2000/10/02 14:30:04 grumbel Exp $
+//  $Id: PingusWorldMap.cc,v 1.10 2000/10/09 19:17:31 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -47,6 +47,12 @@ PingusWorldMap::~PingusWorldMap ()
   delete graph;
   delete pingus;
   delete background;
+}
+
+void
+PingusWorldMap::init ()
+{
+  std::cout << "PingusWorldMap::init" << std::endl;
 }
 
 void 

@@ -1,4 +1,4 @@
-//   $Id: PingusMain.cc,v 1.8 2000/09/30 21:34:42 grumbel Exp $
+//   $Id: PingusMain.cc,v 1.9 2000/10/09 19:17:30 grumbel Exp $
 //    ___
 //   |  _\ A free Lemmings clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -278,9 +278,10 @@ PingusMain::check_args(int argc, char* argv[])
       resolution = optarg;
       break;
     case 'S':
-      pingus_soundfile = optarg;
-      if (verbose) 
-	std::cout << "check_args: Sound File = " << pingus_soundfile << std::endl;
+      std::cout << "not impl. XALA" << std::endl;
+      //pingus_soundfile = optarg;
+      //if (verbose) 
+	//std::cout << "check_args: Sound File = " << pingus_soundfile << std::endl;
       break;
     case 'm': // -m, --enable-music
       if (verbose) std::cout << "check_args: Music enabled" << std::endl;
@@ -595,99 +596,60 @@ PingusMain::get_filenames()
   System::init_directories();
 
 #ifndef WIN32
-  char* env;
-
-  if (pingus_datadir_set)
-    pingus_datadir += ":";
-  
-  pingus_datadir += System::get_statdir();
-
-  // Search different places for the datadir path, if none can be
-  // found, then fail.
-  // Bug: could also check for relative or absolute pathnames
-  if (pingus_datadir_set) 
+  if (!pingus_datadir_set)
     {
-      pingus_datadir += ":";
-      pingus_datadir += PINGUS_DATADIR;
-    } 
-  else 
-    {
-      env = getenv("PINGUS_DATADIR");
-    
-      if (env) 
-	{
-	  if (verbose)
-	    std::cout << "Using envar $PINGUS_DATADIR" << std::endl;
-	
-	  pingus_datadir = env;
-	  pingus_datadir_set = true;
-	}
-
-      // Correct the path name, if no slash is pressent
-      // add_slash(pingus_datadir);
-      
       if (System::exist("../data/data/global.scr"))
 	{
-	  if (verbose)
-	    std::cout << "Assuming that you haven't installed pingus, overriding current value." << std::endl;
-	  
-	  pingus_datadir += ":../data/";
-
-	  chdir("../data");
+	  if (verbose) std::cout << "Assuming that you haven't installed pingus" << std::cout;
+      
+	  pingus_datadir = "../data/";
+	  pingus_datadir_set = true;
 	}
       else if (System::exist("./data/data/global.scr"))
 	{
-	  if (verbose)
-	    std::cout << "Assuming that you are running the binary version" << std::endl;
-	  
-	  pingus_datadir += ":./data/"; 
+	  if (verbose) std::cout << "Assuming that you are running the binary version" << std::endl;
+      
+	  pingus_datadir += "./data/"; 
+	  pingus_datadir_set = true; 
 	}
-
-      if (!pingus_datadir_set) 
+      else
 	{
 	  if (verbose)
 	    std::cout << "Using intern macro PINGUS_DATADIR" << std::endl;
-	
+      
 	  pingus_datadir += ":";
 	  pingus_datadir += PINGUS_DATADIR;
 	}
     }
-
-  if (verbose)
-    std::cout << "pingus_datadir: " << pingus_datadir << std::endl;
-
-  // FIXME: find_file() sucks.
-  global_datafile   = find_file(pingus_datadir, "data/global.scr");
-  pingus_datafile   = find_file(pingus_datadir, "data/pingus.scr");
-  
-  if (System::exist(pingus_datafile)) 
-    {
-      if (verbose > 1)
-	std::cout << "Pingus Datadir exist, all looks ok" << std::endl;
-    } 
-  else 
-    {
-      std::cout << "Pingus Datafile: " << pingus_datafile
-		<< std::endl << std::endl;
-      std::cout << "Couldn't find `global.scr', please set the enviroment variable\n"
-		<< "PINGUS_DATADIR to the path of the file `pingus.scr' or use the\n"
-		<< "-d option." << std::endl;
-      exit(EXIT_SUCCESS);
-    } 
-
 #else /* !WIN32 */
   //If the User uses Windows, the Datadir is always the Subdirectory "data"
   pingus_datadir_set = true;
   pingus_datadir = "data\\";
-  global_datafile = pingus_datadir + "data\\global.scr";
-  pingus_datafile = pingus_datadir + "data\\pingus.scr";
 #endif /* !WIN32 */
+
+  if (verbose)
+    std::cout << "pingus_datadir: " << pingus_datadir << std::endl;
+
+  if (System::exist (pingus_datadir))
+    {
+      if (verbose > 1)
+	std::cout << "Pingus Datadir exist, all looks ok" << std::endl;
+      System::change_dir (pingus_datadir);
+    } 
+  else 
+    {
+      std::cout << "FIXME: Couldn't find `global.scr', please set the enviroment variable\n"
+		<< "PINGUS_DATADIR to the path of the file `pingus.scr' or use the\n"
+		<< "-d option." << std::endl;
+      exit(EXIT_FAILURE);
+    }
   
   // First we try to open the file which was given, if that is not
   // there then we try again with filename+".plf". If still no success
   // we try to search for that file in the pingus_path, if its not
   // there, then we try to search for the filename+".plf" in the
   // pingus_path.
+  /* This code really shouldn't be here
   std::string custom_levelfile = levelfile;
   bool levelfile_not_found = false;
   if (!custom_levelfile.empty() && !System::exist(custom_levelfile))
@@ -723,6 +685,7 @@ PingusMain::get_filenames()
   
   if (verbose)
     std::cout << "Pingus Level File: " << levelfile << std::endl;
+  */
 }
   
 void

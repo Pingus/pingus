@@ -1,4 +1,4 @@
-//  $Id: PLF.cc,v 1.18 2000/09/24 00:22:06 grumbel Exp $
+//  $Id: PLF.cc,v 1.19 2000/10/09 19:17:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -66,7 +66,7 @@ PLF::get_foreground()
     
     switch(foreground.type) {
     case  ResDescriptor::FILE:
-      ret_val.res_name = find_file(pingus_datadir, "levels/" + foreground.res_name);
+      ret_val.res_name = "levels/" + foreground.res_name;
       break;
     case  ResDescriptor::RESOURCE:
       if (verbose > 1) cout << "Not supported" << endl;
@@ -90,7 +90,7 @@ PLF::get_mapfile()
 {
   switch(col.type) {
   case  ResDescriptor::FILE:
-    col.res_name = find_file(pingus_datadir, "levels/" + col.res_name);
+    col.res_name = "levels/" + col.res_name;
     break;
   case  ResDescriptor::RESOURCE:
     break;

@@ -1,4 +1,4 @@
-//  $Id: Theme.cc,v 1.20 2000/09/13 00:14:56 grumbel Exp $
+//  $Id: Theme.cc,v 1.21 2000/10/09 19:17:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -312,7 +312,7 @@ Theme::load_levels()
 
   for(std::vector<std::string>::iterator i = levels.begin(); i < levels.end(); i++)
     {
-      filename = find_file(pingus_datadir, "levels/" + *i);
+      filename = "levels/" + *i;
 
       try
 	{

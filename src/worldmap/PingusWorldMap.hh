@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMap.hh,v 1.7 2000/10/01 21:29:30 grumbel Exp $
+//  $Id: PingusWorldMap.hh,v 1.8 2000/10/09 19:17:32 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -48,6 +48,10 @@ public:
   /** Destruct the worldmap */
   virtual ~PingusWorldMap ();
 
+  /** Start up the music and other things that need only to me run
+      once on startup of a new WorldMap */
+  void init ();
+  
   /** React on button press:
       - calculate which level was clicked
       - calculate the shortest path

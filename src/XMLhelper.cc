@@ -1,4 +1,4 @@
-//  $Id: XMLhelper.cc,v 1.6 2000/09/23 18:19:00 grumbel Exp $
+//  $Id: XMLhelper.cc,v 1.7 2000/10/09 19:17:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,11 @@
 
 #include "StringConverter.hh"
 #include "XMLhelper.hh"
+
+// Hack: if xmlIsBlankNode() is not present, we define an empty dummy
+#ifdef NO_XMLISBLANKNODE
+int xmlIsBlankNode(xmlNodePtr node) { return 0; }
+#endif
 
 std::string
 XMLhelper::encode_entities(const std::string& arg_str)

@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapManager.cc,v 1.5 2000/09/21 17:26:42 grumbel Exp $
+//  $Id: PingusWorldMapManager.cc,v 1.6 2000/10/09 19:17:32 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -51,6 +51,8 @@ PingusWorldMapManager::display ()
   init ();
 
   worldmap = new PingusWorldMap (find_file (pingus_datadir, "worldmaps/volcano.xml"));
+
+  worldmap->init ();
 
   while (true)
     {

@@ -1,4 +1,4 @@
-//  $Id: WarMain.cc,v 1.4 2000/10/03 20:01:25 grumbel Exp $
+//  $Id: WarMain.cc,v 1.5 2000/10/09 19:17:31 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -52,6 +52,8 @@ WarMain::get_title()
 int
 WarMain::main (int argc, char* argv[])
 {
+  //use_datafile = false;
+
   try 
     {
       decode_switches(argc, argv);

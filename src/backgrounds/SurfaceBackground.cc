@@ -1,4 +1,4 @@
-//  $Id: SurfaceBackground.cc,v 1.2 2000/09/29 15:43:52 grumbel Exp $
+//  $Id: SurfaceBackground.cc,v 1.3 2000/10/09 19:17:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -63,17 +63,18 @@ SurfaceBackground::SurfaceBackground(SurfaceBackgroundData* bg_data)
     }
   else
     {
-      if (background_manipulation_enabled)
+      if (background_manipulation_enabled && bg_data->color.alpha != 0.0)
 	{
+	  std::cout << "SurfaceBackground:: Manipulatin background" << std::endl;
 	  // FIXME: This is extremly buggy and it will crash, no idea why....
 	  CL_Surface* source_surface = PingusResource::load_surface(bg_data->desc);
 
-	  CL_Canvas* canvas = new CL_Canvas(source_surface->get_width(),
-					    source_surface->get_height());/// Blitter::create_canvas(source_surface);
-	  source_surface->put_target(0, 0, 0, canvas);
-	  canvas->fill_rect(0, 0, canvas->get_width(), canvas->get_height(),
-			    bg_data->color.red, bg_data->color.green, bg_data->color.blue, 
-			    bg_data->color.alpha);
+	  CL_Canvas* canvas = Blitter::create_canvas(source_surface);
+	  //	  canvas->fill_rect(0, 0, 
+			    //			    canvas->get_width(), canvas->get_height(),
+			    //			    bg_data->color.red, bg_data->color.green, bg_data->color.blue, 
+			    //			    bg_data->color.alpha);
+
 	  bg_surface = CL_Surface::create(canvas, true);
 	}
       else

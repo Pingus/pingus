@@ -1,4 +1,4 @@
-//  $Id: ColMap.hh,v 1.7 2000/07/30 01:47:35 grumbel Exp $
+//  $Id: ColMap.hh,v 1.8 2000/10/09 19:17:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -57,8 +57,7 @@ public:
 	 SOLID       = 1<<3,
 	 WATER       = 1<<4,
 	 LAVA        = 1<<5
-  }///
-;
+  };
 
   /// Default constructor, it does nothing
   ColMap();

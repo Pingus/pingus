@@ -1,4 +1,4 @@
-//  $Id: blitter.cc,v 1.19 2000/10/03 20:01:23 grumbel Exp $
+//  $Id: blitter.cc,v 1.20 2000/10/09 19:17:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -286,18 +286,38 @@ Blitter::create_canvas(CL_SurfaceProvider* prov)
 {
   CL_Canvas* canvas = new CL_Canvas(prov->get_width(), prov->get_height());
 
-  switch (prov->get_depth())
+  switch (prov->get_bytes_per_pixel())
     {
-      /*    case 32:
+    case 3:
+      {
+	canvas->lock();
+	prov->lock();
+	
+	int buffer_size = prov->get_pitch () * prov->get_height ();
+	unsigned char* sbuffer = static_cast<unsigned char*>(prov->get_data ());
+	unsigned char* tbuffer = static_cast<unsigned char*>(canvas->get_data ());
+	
+	for (int si = 0, ti = 0; si < buffer_size; si += 3, ti += 4)
+	  {
+	    tbuffer[ti + 0] = 255;
+	    tbuffer[ti + 1] = sbuffer[si + 0];
+	    tbuffer[ti + 2] = sbuffer[si + 1];
+	    tbuffer[ti + 3] = sbuffer[si + 2];
+	  }
+	  
+	prov->unlock();
+	canvas->unlock();
+      }
+
+    case 4:
       canvas->lock();
       prov->lock();
-      
       memcpy(canvas->get_data(), prov->get_data(),
-	     sizeof(unsigned char) * prov->get_height() * prov->get_pitch());
-      
+ 	     sizeof(unsigned char) * prov->get_height() * prov->get_pitch());
       prov->unlock();
       canvas->unlock();
-      break;*/
+      break;
+
     default:
       put_surface(canvas, prov, 0, 0);
       break;

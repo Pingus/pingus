@@ -1,4 +1,4 @@
-//  $Id: Pingu.cc,v 1.33 2000/10/03 20:01:23 grumbel Exp $
+//  $Id: Pingu.cc,v 1.34 2000/10/09 19:17:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -204,7 +204,7 @@ Pingu::set_action(PinguAction* act)
 	    }
 	  action_time = act->activation_time();
 	  sec_action = act;
-	  PingusSound::play_wav("sound/OHNO.WAV");
+	  PingusSound::play_wav("OHNO");
 	}
       return true;
     }
@@ -307,7 +307,7 @@ Pingu::let_move(void)
     
   if (rel_getpixel(0, -1) == ColMap::OUTOFSCREEN) 
     {
-      PingusSound::play_wav("sound/DIE.WAV");
+      PingusSound::play_wav("DIE");
       status = dead;
       return;
     }
@@ -425,7 +425,7 @@ Pingu::do_walking()
 
   if (rel_getpixel(0,-1) & ColMap::WATER)
     {
-      //PingusSound::play_wav("sound/SPLASH.WAV");
+      //PingusSound::play_wav("SPLASH");
       //status = dead;
       set_paction(world->get_action_holder()->get_uaction("drown"));
       std::cout << "Gluck..." << std::endl;

@@ -1,4 +1,4 @@
-//  $Id: PinguMap.hh,v 1.6 2000/08/03 10:31:17 grumbel Exp $
+//  $Id: PinguMap.hh,v 1.7 2000/10/09 19:17:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,7 +38,16 @@ public:
   PinguMap();
   ///
   virtual ~PinguMap();
-  ///
+
+  /** Draws the map onto the screen
+      @param x1 The x-position on the screen
+      @param y1 The y-position on the screen
+      @param w  The width of the area to draw
+      @param h The height of the area to draw
+      @param x_of The X-Offset of the viewpoint, used to scroll on the map
+      @param y_of The Y-Offset of the viewpoint, used to scroll on the map
+      @param s  The scale factor by which the map is zoomed
+   */
   virtual void draw(int x1, int y1, int w, int h,
 		    int x_of, int y_of, float s=1.0) = 0;
   ///
@@ -50,8 +59,7 @@ public:
   ///
   virtual int  get_height() = 0;
   ///
-  virtual void remove(int, int) {}///
-;
+  virtual void remove(int, int) {};
   ///
   virtual void remove(CL_SurfaceProvider*, int, int);
   ///

@@ -1,4 +1,4 @@
-//  $Id: digger.cc,v 1.11 2000/09/12 11:11:36 grumbel Exp $
+//  $Id: digger.cc,v 1.12 2000/10/09 19:17:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -98,8 +98,8 @@ Digger::have_something_to_dig()
 void
 Digger::dig()
 {
-  pingu->get_world()->get_colmap()->remove(digger_radius, pingu->x_pos - 16, pingu->y_pos - 13);
-  pingu->get_world()->get_gfx_map()->remove(digger_radius, pingu->x_pos - 16, pingu->y_pos - 13);
+  pingu->get_world()->get_colmap()->remove(digger_radius, pingu->x_pos - 16, pingu->y_pos - 14);
+  pingu->get_world()->get_gfx_map()->remove(digger_radius, pingu->x_pos - 16, pingu->y_pos - 14);
       
   ++pingu->y_pos;
 }

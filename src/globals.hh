@@ -1,4 +1,4 @@
-//  $Id: globals.hh,v 1.22 2000/09/30 21:34:42 grumbel Exp $
+//  $Id: globals.hh,v 1.23 2000/10/09 19:17:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,7 +29,17 @@ extern bool   print_fps;         /// --print-fps
 extern int    verbose;           /// -v, --verbose
 extern bool   music_enabled;     /// -m, --enable-music
 extern bool   sound_enabled;     /// -s, --enable-sound
-extern std::string pingus_datadir;    /// -p, --datadir
+
+/** The value of pingus_datadir is the main directory from where all
+    core data is loaded. The pathname of this directory *must* be
+    ending with a trailing slash. On startup the game will chdir()
+    into this directory.
+
+    Example Value: ../data/
+    
+   -d, --datadir */
+extern std::string pingus_datadir; 
+
 extern bool   gimmicks_enabled;  /// -i, --enable-gimmicks
 extern bool   intro_disabled;    /// -n, --disable-intro
 extern bool   record_demo;       /// --record-demo

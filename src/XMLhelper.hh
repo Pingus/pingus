@@ -1,4 +1,4 @@
-//  $Id: XMLhelper.hh,v 1.8 2000/09/30 22:20:03 grumbel Exp $
+//  $Id: XMLhelper.hh,v 1.9 2000/10/09 19:17:30 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,7 +42,7 @@
 
 // Hack: if xmlIsBlankNode() is not present, we define an empty dummy
 #ifdef NO_XMLISBLANKNODE
-int xmlIsBlankNode(xmlNodePtr node) { return 0; }
+int xmlIsBlankNode(xmlNodePtr node);
 #endif
 
 class XMLhelper

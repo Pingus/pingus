@@ -1,4 +1,4 @@
-//  $Id: System.cc,v 1.19 2000/09/29 16:21:17 grumbel Exp $
+//  $Id: System.cc,v 1.20 2000/10/09 19:17:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -152,6 +152,13 @@ System::create_dir(std::string directory)
 #else
   CreateDirectory(directory.c_str(), 0);
 #endif
+}
+
+/** Change into the directory named dir, on error throw an PingusError */
+void
+System::change_dir (std::string dir)
+{
+  chdir (dir.c_str ());
 }
 
 void

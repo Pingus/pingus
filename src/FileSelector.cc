@@ -1,4 +1,4 @@
-//  $Id: FileSelector.cc,v 1.4 2000/06/27 16:05:16 grumbel Exp $
+//  $Id: FileSelector.cc,v 1.5 2000/10/09 19:17:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -252,7 +252,7 @@ FileSelector::readdir(std::string path, std::string pattern)
     }
 #else /* !WIN32 */
   WIN32_FIND_DATA coFindData;
-  std::string FindFileDir = pingus_datadir + "levels\\*.plf";
+  std::string FindFileDir = "levels\\*.plf";
   std::string LevelLocation;
   HANDLE hFind = FindFirstFile(TEXT(FindFileDir.c_str()),&coFindData);
 

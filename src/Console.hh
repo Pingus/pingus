@@ -1,4 +1,4 @@
-//  $Id: Console.hh,v 1.11 2000/06/23 18:39:56 grumbel Exp $
+//  $Id: Console.hh,v 1.12 2000/10/09 19:17:30 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,7 +31,7 @@ class Console : public DisplayHook
 {
 private:
   /// 
-  class Endl {};
+  struct Endl {};
   ///
   CL_Font* font;
   ///

@@ -1,4 +1,4 @@
-//  $Id: SurfaceButton.cc,v 1.14 2000/09/20 14:33:10 grumbel Exp $
+//  $Id: SurfaceButton.cc,v 1.15 2000/10/09 19:17:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -255,7 +255,7 @@ LoadButton::~LoadButton()
 void LoadButton::on_click()
 {
   /*  std::string levelfile;
-  levelfile = file.select(pingus_datadir, "*.plf");
+  levelfile = file.select(pXXXus_datadir, "*.plf");
   if (!levelfile.empty()) {
     PingusGame game;
     game.start(levelfile);

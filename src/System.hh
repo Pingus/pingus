@@ -1,4 +1,4 @@
-//  $Id: System.hh,v 1.13 2000/09/29 16:21:17 grumbel Exp $
+//  $Id: System.hh,v 1.14 2000/10/09 19:17:30 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -59,7 +59,10 @@ public:
   /** Creates directory if it does not already exist.
       @param dir The name of the directory */
   static void create_dir(std::string dir);
-  
+
+  /** Change into the directory named dir, on error throw an PingusError */
+  static void change_dir (std::string dir);
+ 
   /** Check if all needed directories are available, if not then create 
       them. */
   static void init_directories();

@@ -1,4 +1,4 @@
-//  $Id: PingusSoundReal.cc,v 1.1 2000/09/29 16:21:17 grumbel Exp $
+//  $Id: PingusSoundReal.cc,v 1.2 2000/10/09 19:17:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -102,7 +102,7 @@ PingusSoundReal::clean_up()
 void
 PingusSoundReal::play_wav(std::string arg_str)
 {
-  std::string str = find_file(pingus_datadir, arg_str);
+  std::string str = "sound/" +  arg_str + ".wav";
   
   if (!is_init)
     {

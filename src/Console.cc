@@ -1,4 +1,4 @@
-//  $Id: Console.cc,v 1.14 2000/06/27 16:05:16 grumbel Exp $
+//  $Id: Console.cc,v 1.15 2000/10/09 19:17:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,7 +19,7 @@
 
 #include <algorithm>
 #include <cstdio>
-#include <stdio.h> 
+#include <stdio.h>
 #include <stdarg.h>
 #include <assert.h>
 #include "PingusResource.hh"
@@ -178,11 +178,11 @@ Console::printf(char* format, ...)
   va_list argp;
 
   va_start(argp, format);
-  #ifndef WIN32
+#ifndef WIN32
   vsnprintf(str_buffer, 1024, format, argp);
-  #else
+#else
   vsprintf(str_buffer, format, argp);
-  #endif
+#endif
   va_end(argp);
 
  add_line(str_buffer);

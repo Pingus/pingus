@@ -1,4 +1,4 @@
-//  $Id: PingusResource.cc,v 1.11 2000/09/23 18:19:00 grumbel Exp $
+//  $Id: PingusResource.cc,v 1.12 2000/10/09 19:17:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -69,31 +69,7 @@ PingusResource::PingusResource()
 {
   //std::cout << "PingusResource Constructor called" << std::endl;
 }
-/*
-void
-PingusResource::open(const std::string& filename)
-{
-  std::string file_n;
 
-  if (verbose > 1)
-    std::cout << "PingusResource: Searching for file: " << filename << std::endl;
-
-  file_n = find_file(pingus_datadir, "data/" + filename);
-
-  if (verbose > 1)
-    std::cout << "PingusResource: Found file: " << file_n << std::endl;
-
-  if (filename != file_n) {
-    Res res;
-    res.res = CL_ResourceManager::create(file_n.c_str(), true);
-    res.filename = filename;
-    
-    resource.push_back(res);
-  } else {
-    throw PingusError("PingusResource: Couldn't find resource file: " + filename);
-  }
-}
-*/
 CL_ResourceManager*
 PingusResource::get(const std::string& arg_filename)
 {
@@ -111,7 +87,8 @@ PingusResource::get(const std::string& arg_filename)
     }
   else
     {
-      std::string res_filename = find_file(pingus_datadir, "data/" + filename);
+      std::string res_filename = "data/" + filename;
+
       res_manager = CL_ResourceManager::create(res_filename.c_str(),
 					       /* is_datafile = */ use_datafile);
       resource_map[filename] = res_manager;
@@ -160,9 +137,9 @@ PingusResource::load_surface(const ResDescriptor& res_desc)
 	  return surf;
 	  
 	case ResDescriptor::FILE:
-	  surf = CL_PCXProvider::create(find_file(pingus_datadir, res_desc.res_name), 0);
+	  std::cout << "PingusResource: ResDescriptor::FILE not implemented" << std::endl;
+	  surf = CL_PCXProvider::create(find_file("", res_desc.res_name), 0);
 	  surface_map[res_desc] = surf;	  
-	  //std::cout << "PingusResource: ResDescriptor::FILE not implemented" << std::endl;
 	  return surf;
 	  
 	case ResDescriptor::AUTO:
