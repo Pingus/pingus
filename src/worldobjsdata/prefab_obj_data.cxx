@@ -1,4 +1,4 @@
-//  $Id: prefab_obj_data.cxx,v 1.8 2003/03/04 12:53:47 grumbel Exp $
+//  $Id: prefab_obj_data.cxx,v 1.9 2003/03/04 20:18:33 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -49,6 +49,7 @@ PrefabObjData::insert_WorldObjs ()
 void
 PrefabObjData::insert_EditorObjs (EditorNS::ObjectManager* obj_mgr)
 {
+  UNUSED_ARG(obj_mgr);
   // FIXME:
 }
 
