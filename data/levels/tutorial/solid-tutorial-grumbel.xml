@@ -12,8 +12,8 @@
 
     <description lang="en">As you have learned in earlier levels your Pingus can dig through
                            basically any terrain, but there is one material which they can't
-                           penetrate and that is steal. These regions are marked
-                           dark grey on the levelmap and cannot be destroyed, so
+                           penetrate: steel. These regions are marked
+                           dark grey on the level map and cannot be destroyed, so
 			   you must find a way around them.
     </description>
     <description lang="it">Come avrai appreso nei livelli precedenti, i Pingus possono

@@ -3,7 +3,7 @@
 <pingus-level>
   <global>
     <levelname lang="en">Sacrifice a few and save the rest</levelname>
-    <levelname lang="en">Sacrificane alcuni, ma salva gli altri</levelname>
+    <levelname lang="it">Sacrificane alcuni, ma salva gli altri</levelname>
     <levelname lang="de">Opfere einige und rette den Rest</levelname>
     <levelname lang="cs">Par obetuj a zachran ostatni</levelname>
     <levelname lang="tr">Çoðunluk için birkaçýný feda etmek gerek</levelname>
@@ -11,7 +11,7 @@
     <levelname lang="sr">Zrtvuj nekoliko da spases ostale</levelname>
 
     <description lang="en">Sometimes no other actions are available, so you have to bomb your
-                           way through the ground. The Pingus can do this by actually self
+                           way through the ground. The Pingus can do this by actually self-
                            destructing. This will kill them, but it is sometimes
                            necessary to sacrifice a few to save the rest.
     </description>

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Pingus 0.6.0\n"
-"POT-Creation-Date: 2003-04-19 10:12+0200\n"
+"POT-Creation-Date: 2003-04-23 18:10+0200\n"
 "PO-Revision-Date: 2003-04-15 17:29+0200\n"
 "Last-Translator: Milan Babuskov <mbabuskov@yahoo.com>\n"
 "Language-Team: <mbabuskov@yahoo.com>\n"
@@ -70,27 +70,27 @@ msgstr "-Posebno"
 msgid "-Thanks to"
 msgstr "-se zahvaljujemo"
 
-#: src/credits.cxx:144
+#: src/credits.cxx:145
 msgid "_And a very Special Thanks"
 msgstr "_A narocito se zahvaljujemo"
 
-#: src/credits.cxx:145
+#: src/credits.cxx:146
 msgid "_to all the people who"
 msgstr "_svim ljudima"
 
-#: src/credits.cxx:146
+#: src/credits.cxx:147
 msgid "_contribute to"
 msgstr "_koji doprinose"
 
-#: src/credits.cxx:147
+#: src/credits.cxx:148
 msgid "_Free Software!"
 msgstr "_Free Softveru!"
 
-#: src/credits.cxx:153
+#: src/credits.cxx:154
 msgid "_Thank you for"
 msgstr "_Hvala sto"
 
-#: src/credits.cxx:154
+#: src/credits.cxx:155
 msgid "_playing!"
 msgstr "_ste igrali!"
 
@@ -98,135 +98,135 @@ msgstr "_ste igrali!"
 msgid "Enter filename to save as:"
 msgstr "Unesi naziv fajla za snimanje:"
 
-#: src/editor/editor_help_screen.cxx:38
+#: src/editor/editor_help_screen.cxx:39
 msgid "Editor Helpscreen (hide with F1)"
 msgstr "Pomoc za editor (sakrij sa F1)"
 
-#: src/editor/editor_help_screen.cxx:45
+#: src/editor/editor_help_screen.cxx:46
 msgid "F1 - show/hide this help screen"
 msgstr "F1 - prikazi/sakrij ovaj pomocni ekran"
 
-#: src/editor/editor_help_screen.cxx:46
+#: src/editor/editor_help_screen.cxx:47
 msgid "F2 - launch level building tutorial"
 msgstr "F2 - pokreni kurs za kreiranje nivoa"
 
-#: src/editor/editor_help_screen.cxx:47
+#: src/editor/editor_help_screen.cxx:48
 msgid "F3 - toggle background color"
 msgstr "F3 - izmeni boju pozadine"
 
-#: src/editor/editor_help_screen.cxx:48
+#: src/editor/editor_help_screen.cxx:49
 msgid "F4 - play/test the level"
 msgstr "F4 - igraj/testiraj nivo"
 
-#: src/editor/editor_help_screen.cxx:49
+#: src/editor/editor_help_screen.cxx:50
 msgid "F5 - load a level"
 msgstr "F5 - ucitaj nivo"
 
-#: src/editor/editor_help_screen.cxx:50
+#: src/editor/editor_help_screen.cxx:51
 msgid "F6 - save this level"
 msgstr "F6 - snimi ovaj nivo"
 
-#: src/editor/editor_help_screen.cxx:51
+#: src/editor/editor_help_screen.cxx:52
 msgid "F7 - [unset]"
 msgstr "F7 - [nista]"
 
-#: src/editor/editor_help_screen.cxx:52
+#: src/editor/editor_help_screen.cxx:53
 msgid "F8 - quick save/backup save?!"
 msgstr "F9 - brzo snimi/snimi rezervu?!"
 
-#: src/editor/editor_help_screen.cxx:53
+#: src/editor/editor_help_screen.cxx:54
 msgid "F9 - change level width and height"
 msgstr "F9 - promeni sirinu i visinu nivoa"
 
-#: src/editor/editor_help_screen.cxx:54
+#: src/editor/editor_help_screen.cxx:55
 msgid "F10 - [unset]"
 msgstr "F10 - [nista]"
 
-#: src/editor/editor_help_screen.cxx:55
+#: src/editor/editor_help_screen.cxx:56
 msgid "F11 - toggle fps counter"
 msgstr "F11 - promeni brojac fps"
 
-#: src/editor/editor_help_screen.cxx:56
+#: src/editor/editor_help_screen.cxx:57
 msgid "F12 - make screenshot"
 msgstr "F12 - uslikaj ekran"
 
-#: src/editor/editor_help_screen.cxx:60
+#: src/editor/editor_help_screen.cxx:61
 msgid "Home - increase object size"
 msgstr "Posl - povecaj objekat"
 
-#: src/editor/editor_help_screen.cxx:61
+#: src/editor/editor_help_screen.cxx:62
 msgid "End  - decrease object size"
 msgstr "End  - smanji objekat"
 
-#: src/editor/editor_help_screen.cxx:62
+#: src/editor/editor_help_screen.cxx:63
 msgid "Cursor Keys - Move object"
 msgstr "Kursorske strelice - Pomeri objekat"
 
-#: src/editor/editor_help_screen.cxx:63
+#: src/editor/editor_help_screen.cxx:64
 msgid "Shift 'Cursor Keys' - Move objects fast "
 msgstr "Shift i 'Kursorske strelice' - Brzo pomeri objekte"
 
-#: src/editor/editor_help_screen.cxx:64
+#: src/editor/editor_help_screen.cxx:65
 msgid "PageUp   - level object up"
 msgstr "PageUp   - podigni objekat"
 
-#: src/editor/editor_help_screen.cxx:65
+#: src/editor/editor_help_screen.cxx:66
 msgid "PageDown - level object down"
 msgstr "PageDown - spusti objekat"
 
-#: src/editor/editor_help_screen.cxx:66
+#: src/editor/editor_help_screen.cxx:67
 msgid "Shift PageUp   - increase objects z-pos by 50"
 msgstr "Shift PageUp   - povecaj z-koordinatu za 50"
 
-#: src/editor/editor_help_screen.cxx:67
+#: src/editor/editor_help_screen.cxx:68
 msgid "Shift PageDown - decrease objects z-pos by 50"
 msgstr "Shift PageDown - smanji z-koordinatu za 50"
 
-#: src/editor/editor_help_screen.cxx:68
+#: src/editor/editor_help_screen.cxx:69
 msgid "Enter - Set default zoom (1:1)"
 msgstr "Enter - Postavi standardni zum (1:1)"
 
-#: src/editor/editor_help_screen.cxx:69
+#: src/editor/editor_help_screen.cxx:70
 msgid "d - duplicate object"
 msgstr "d - dupliraj objekat"
 
-#: src/editor/editor_help_screen.cxx:70
+#: src/editor/editor_help_screen.cxx:71
 msgid "a - mark all objects"
 msgstr "a - oznaci sve objekte"
 
-#: src/editor/editor_help_screen.cxx:71
+#: src/editor/editor_help_screen.cxx:72
 msgid "shift leftmouseclick - add object to selection"
 msgstr "shift levo_dugme_misa - dodaj objekat odabiru"
 
-#: src/editor/editor_help_screen.cxx:72
+#: src/editor/editor_help_screen.cxx:73
 msgid "leftmouseclick - select object"
 msgstr "levo_dugme_misa - izaberi objekat"
 
-#: src/editor/editor_help_screen.cxx:73
+#: src/editor/editor_help_screen.cxx:74
 msgid "Insert - insert new object"
 msgstr "Insert - ubaci novi objekat"
 
-#: src/editor/editor_help_screen.cxx:74
+#: src/editor/editor_help_screen.cxx:75
 msgid "Remove - remove selected object"
 msgstr "Remove - ukloni izabrani objekat"
 
-#: src/editor/editor_help_screen.cxx:75
+#: src/editor/editor_help_screen.cxx:76
 msgid "g - ungroup/group current selection"
 msgstr "g - grupisi/razdvoj trenutni odabir"
 
-#: src/editor/editor_help_screen.cxx:76
+#: src/editor/editor_help_screen.cxx:77
 msgid "Ctrl PageUp   - increase objects z-pos by 1"
 msgstr "Ctrl PageUp   - povecaj z-koordinatu za 1"
 
-#: src/editor/editor_help_screen.cxx:77
+#: src/editor/editor_help_screen.cxx:78
 msgid "Ctrl PageDown - decrease objects z-pos by 1"
 msgstr "Ctrl PageDown - smanji z-koordinatu za 1"
 
-#: src/editor/editor_help_screen.cxx:83
+#: src/editor/editor_help_screen.cxx:84
 msgid "Naming Convention: <LEVELNAME><NUMBER>-<CREATOR>.xml"
 msgstr "Konvencija Nazivanja: <NAZIVNIVOA><BROJ>-<AUTOR>.xml"
 
-#: src/editor/editor_help_screen.cxx:85
+#: src/editor/editor_help_screen.cxx:86
 msgid ""
 "When you have created a level and want to have it in the next Pingus "
 "release,\n"
@@ -235,179 +235,179 @@ msgstr ""
 "Ako si kreirao nivo i zelis da se pojavi u sledecem izdanju Pingusa,\n"
 "treba poslati e-mail na pingus-devel@nongnu.org."
 
-#: src/editor/object_selector.cxx:106
+#: src/editor/object_selector.cxx:107
 msgid "1 - guillotine"
 msgstr "1 - giljotina"
 
-#: src/editor/object_selector.cxx:107
+#: src/editor/object_selector.cxx:108
 msgid "2 - hammer"
 msgstr "2 - cekic"
 
-#: src/editor/object_selector.cxx:108
+#: src/editor/object_selector.cxx:109
 msgid "3 - spike"
 msgstr "3 - koplje"
 
-#: src/editor/object_selector.cxx:109
+#: src/editor/object_selector.cxx:110
 msgid "4 - laser_exit"
 msgstr "4 - laserski_izlaz"
 
-#: src/editor/object_selector.cxx:110
+#: src/editor/object_selector.cxx:111
 msgid "5 - fake_exit"
 msgstr "5 - lazni_izlaz"
 
-#: src/editor/object_selector.cxx:111
+#: src/editor/object_selector.cxx:112
 msgid "6 - smasher"
 msgstr "6 - gnjecilica"
 
-#: src/editor/object_selector.cxx:112
+#: src/editor/object_selector.cxx:113
 msgid "7 - bumper"
 msgstr "7 - odbijac"
 
-#: src/editor/object_selector.cxx:186
+#: src/editor/object_selector.cxx:187
 msgid "Select a WorldObj"
 msgstr "Izaberi SvetskiObj"
 
-#: src/editor/object_selector.cxx:187
+#: src/editor/object_selector.cxx:188
 msgid "1 - teleporter"
 msgstr "1 - teleport"
 
-#: src/editor/object_selector.cxx:188
+#: src/editor/object_selector.cxx:189
 msgid "2 - switch and door"
 msgstr "2 - prekidac i vrata"
 
-#: src/editor/object_selector.cxx:189
+#: src/editor/object_selector.cxx:190
 msgid "3 - ConveyorBelt"
 msgstr "3 - PokretnaTraka"
 
-#: src/editor/object_selector.cxx:190
+#: src/editor/object_selector.cxx:191
 msgid "4 - IceBlock"
 msgstr "4 - SantaLeda"
 
-#: src/editor/object_selector.cxx:191
+#: src/editor/object_selector.cxx:192
 msgid "5 - InfoBox"
 msgstr "5 - Obavestenje"
 
-#: src/editor/object_selector.cxx:232
+#: src/editor/object_selector.cxx:233
 msgid "Select a weather"
 msgstr "Odaberi vreme"
 
-#: src/editor/object_selector.cxx:233
+#: src/editor/object_selector.cxx:234
 msgid "1 - snow"
 msgstr "1 - sneg"
 
-#: src/editor/object_selector.cxx:234
+#: src/editor/object_selector.cxx:235
 msgid "2 - rain"
 msgstr "2 - kisa"
 
-#: src/editor/object_selector.cxx:265
+#: src/editor/object_selector.cxx:266
 msgid "Select an entrance"
 msgstr "Odaberi ulaz"
 
-#: src/editor/object_selector.cxx:266
+#: src/editor/object_selector.cxx:267
 msgid "1 - generic"
 msgstr "1 - genericki"
 
-#: src/editor/object_selector.cxx:267
+#: src/editor/object_selector.cxx:268
 msgid "2 - woodthing"
 msgstr "2 - drveni"
 
-#: src/editor/object_selector.cxx:268
+#: src/editor/object_selector.cxx:269
 msgid "3 - cloud"
 msgstr "3 - oblak"
 
-#: src/editor/object_selector.cxx:269
+#: src/editor/object_selector.cxx:270
 msgid "h - entrance surface (hotspot)"
 msgstr "h - povrsina ulaza (senzor)"
 
-#: src/editor/object_selector.cxx:343
+#: src/editor/object_selector.cxx:344
 msgid "What object type do you want?"
 msgstr "Koju vrstu objekta zelis?"
 
-#: src/editor/object_selector.cxx:344 src/editor/object_selector.cxx:400
+#: src/editor/object_selector.cxx:345 src/editor/object_selector.cxx:401
 msgid "h - Hotspot"
 msgstr "h - Senzor"
 
-#: src/editor/object_selector.cxx:345
+#: src/editor/object_selector.cxx:346
 msgid "g - Groundpiece (ground) [not implemented]"
 msgstr "g - Zemljiste (zemlja) [nije napravljeno]"
 
-#: src/editor/object_selector.cxx:394 src/editor/object_selector.cxx:562
+#: src/editor/object_selector.cxx:395 src/editor/object_selector.cxx:563
 msgid "Which object do you want?"
 msgstr "Koji objekat zelis?"
 
-#: src/editor/object_selector.cxx:395
+#: src/editor/object_selector.cxx:396
 msgid "g - Groundpiece (ground)"
 msgstr "g - Zemljiste (zemlja)"
 
-#: src/editor/object_selector.cxx:396
+#: src/editor/object_selector.cxx:397
 msgid "s - Groundpiece (solid)"
 msgstr "s - Zemljiste (cvrsto)"
 
-#: src/editor/object_selector.cxx:397
+#: src/editor/object_selector.cxx:398
 msgid "b - Groundpiece (bridge)"
 msgstr "b - Zemljiste (most)"
 
-#: src/editor/object_selector.cxx:398
+#: src/editor/object_selector.cxx:399
 msgid "n - Groundpiece (transparent)"
 msgstr "n - Zemljiste (providno)"
 
-#: src/editor/object_selector.cxx:399
+#: src/editor/object_selector.cxx:400
 msgid "r - Groundpiece (remove)"
 msgstr "r - Zemljiste (ukloni)"
 
-#: src/editor/object_selector.cxx:401
+#: src/editor/object_selector.cxx:402
 msgid "e - Entrance"
 msgstr "e - Ulaz"
 
-#: src/editor/object_selector.cxx:402
+#: src/editor/object_selector.cxx:403
 msgid "x - Exit"
 msgstr "x - Izlaz"
 
-#: src/editor/object_selector.cxx:403
+#: src/editor/object_selector.cxx:404
 msgid "l - Liquid"
 msgstr "l - Tecnost"
 
-#: src/editor/object_selector.cxx:404
+#: src/editor/object_selector.cxx:405
 msgid "w - Weather"
 msgstr "w - Vreme"
 
-#: src/editor/object_selector.cxx:405
+#: src/editor/object_selector.cxx:406
 msgid "t - Traps"
 msgstr "t - Zamke"
 
-#: src/editor/object_selector.cxx:406
+#: src/editor/object_selector.cxx:407
 msgid "o - WorldObject"
 msgstr "o - ObjekatSveta"
 
-#: src/editor/object_selector.cxx:407
+#: src/editor/object_selector.cxx:408
 msgid "z - Background"
 msgstr "z - Pozadina"
 
-#: src/editor/object_selector.cxx:408
+#: src/editor/object_selector.cxx:409
 msgid "p - Prefab (ObjectGroup)"
 msgstr "p - Montaza (GrupaObjekata)"
 
-#: src/editor/object_selector.cxx:409
+#: src/editor/object_selector.cxx:410
 msgid "f - something from file (~/.pingus/images/)"
 msgstr "f - nesto iz fajla (~/.pingus/images/)"
 
-#: src/editor/object_selector.cxx:498
+#: src/editor/object_selector.cxx:499
 msgid "Which prefab do you want?"
 msgstr "Koju montazu zelis?"
 
-#: src/editor/object_selector.cxx:563
+#: src/editor/object_selector.cxx:564
 msgid "1 - Surface Background"
 msgstr "1 - Pozadina sa dezenom"
 
-#: src/editor/object_selector.cxx:564
+#: src/editor/object_selector.cxx:565
 msgid "2 - Solid Color Background"
 msgstr "2 - Jednobojna Pozadina"
 
-#: src/editor/object_selector.cxx:565
+#: src/editor/object_selector.cxx:566
 msgid "3 - Starfield Background"
 msgstr "3 - Zvezdana Pozadina"
 
-#: src/editor/object_selector.cxx:566
+#: src/editor/object_selector.cxx:567
 msgid "4 - Thunderstorm Background"
 msgstr "4 - Olujna Pozadina"
 
@@ -491,47 +491,47 @@ msgstr "nepoznato"
 msgid "unlimited"
 msgstr "neograniceno"
 
-#: src/level_desc.cxx:71
+#: src/level_desc.cxx:72
 msgid "Designed by "
 msgstr "Dizajnirao"
 
-#: src/level_desc.cxx:76
+#: src/level_desc.cxx:77
 #, c-format
 msgid "Pingus to Save: %d"
 msgstr "Spasiti Pingusa: %d"
 
-#: src/level_desc.cxx:78
+#: src/level_desc.cxx:79
 #, c-format
 msgid "Number of Pingus: %d"
 msgstr "Broj Pingusa: %d"
 
-#: src/level_desc.cxx:83
+#: src/level_desc.cxx:84
 msgid "Loading..."
 msgstr "Ucitavanje..."
 
-#: src/level_desc.cxx:86
+#: src/level_desc.cxx:87
 msgid "Loading finished. Press a mouse button to start the level"
 msgstr "Ucitavanje gotovo. Pritisni dugme misa da pocne nivo"
 
-#: src/level_result.cxx:57
+#: src/level_result.cxx:58
 msgid "Results:"
 msgstr "Rezultati:"
 
-#: src/level_result.cxx:63
+#: src/level_result.cxx:64
 #, c-format
 msgid "Pingus saved:   %3d/%3d"
 msgstr "Spaseno Pingusa:   %3d/%3d"
 
-#: src/level_result.cxx:68
+#: src/level_result.cxx:69
 #, c-format
 msgid "Pingus killed:  %3d/%3d"
 msgstr "Ubijeno Pingusa:  %3d/%3d"
 
-#: src/level_result.cxx:84
+#: src/level_result.cxx:85
 msgid "Press button to continue..."
 msgstr "Pritisni dugme za nastavak..."
 
-#: src/level_result.cxx:98
+#: src/level_result.cxx:99
 msgid ""
 "As many Pingus escaped as entered the level. That's going to be hard to "
 "beat.... unless this game becomes pornographic."
@@ -539,19 +539,19 @@ msgstr ""
 "Spaseno je onoliko Pingusa koliko je uslo u nivo. To ce biti tesko "
 "nadmasiti.... osim ako igra postane pornografska."
 
-#: src/level_result.cxx:100
+#: src/level_result.cxx:101
 msgid "Very impressive indeed."
 msgstr "Zaista vrlo impresivno."
 
-#: src/level_result.cxx:102
+#: src/level_result.cxx:103
 msgid "Good work. Still room for improvement though."
 msgstr "Dobro uradjeno. Mada, moze to i bolje."
 
-#: src/level_result.cxx:104
+#: src/level_result.cxx:105
 msgid "Not too shabby, not too shabby at all."
 msgstr "Nije lose, uopste nije lose."
 
-#: src/level_result.cxx:106
+#: src/level_result.cxx:107
 msgid ""
 "That was OK, but Pingu life insurance premiums have just gotten more "
 "expensive."
@@ -559,23 +559,23 @@ msgstr ""
 "To je bilo dobro, ali polise zivotnog osiguranja za Pinguse upravo "
 "poskupljuju."
 
-#: src/level_result.cxx:108
+#: src/level_result.cxx:109
 msgid "Maybe this level calls for a different strategy."
 msgstr "Mozda ovaj nivo zahteva drugaciji pristup."
 
-#: src/level_result.cxx:110
+#: src/level_result.cxx:111
 msgid "Exactly half. Are you saving only the female ones?"
 msgstr "Tacno pola. Da li mozda spasavas samo zenske?"
 
-#: src/level_result.cxx:112
+#: src/level_result.cxx:113
 msgid "If I were a Pingu, I never would have left that entrance."
 msgstr "Da sam ja Pingus, nikad ne bih ni krenuo sa ulaza."
 
-#: src/level_result.cxx:114
+#: src/level_result.cxx:115
 msgid "Maybe you would feel more at home playing Quake."
 msgstr "Mozda si vrsta osobe koja vise voli Quake."
 
-#: src/level_result.cxx:116
+#: src/level_result.cxx:117
 msgid ""
 "Maybe this level calls for a different strategy. Like attempting to save "
 "them, for example."
@@ -583,19 +583,19 @@ msgstr ""
 "Mozda ovaj nivo zahteva drugaciji pristup. Na primer, bilo bi dobro da ih "
 "probas spasiti."
 
-#: src/level_result.cxx:118
+#: src/level_result.cxx:119
 msgid "Ever considered a career as a Pingu exterminator?"
 msgstr "Da li razmisljas da se profesionalno bavis ubijanjem Pingusa?"
 
-#: src/level_result.cxx:120
+#: src/level_result.cxx:121
 msgid "You missed one! What's your excuse!?"
 msgstr "Propustio si jednog! Koji je tvoj izgovor?!"
 
-#: src/level_result.cxx:122
+#: src/level_result.cxx:123
 msgid "Please reassure me that you hit the Armageddon button."
 msgstr "Molim te, ubedi me da si aktivirao Armageddon dugme."
 
-#: src/level_result.cxx:124
+#: src/level_result.cxx:125
 msgid "You've got a negative save/total value, something is buggy."
 msgstr "Imas negativan odnos spaseno/ukupno, postoji neka greska."
 
@@ -751,7 +751,7 @@ msgstr "Cekac"
 msgid "Walker"
 msgstr "Hodac"
 
-#: src/pingus_counter.cxx:49
+#: src/pingus_counter.cxx:50
 #, c-format
 msgid "Released:%3d/%-3d   Out:%3d   Saved:%3d/%-3d"
 msgstr "Pusteno:%3d/%-3d   Izaslo:%3d   Spaseno:%3d/%-3d"
@@ -1073,27 +1073,27 @@ msgid "Failure!"
 msgstr "Neuspeh!"
 
 #: src/result_screen.cxx:189
-msgid "Perfect! You saved everybody possibly, great!"
+msgid "Perfect! You saved everyone possible - great!"
 msgstr "Savrseno! Spaseni su svi moguci, sjajno!"
 
 #: src/result_screen.cxx:191
-msgid "None got killed, pretty good work"
+msgid "No-one got killed, pretty good work."
 msgstr "Niko nije zaginuo, prilicno dobro uradjeno"
 
 #: src/result_screen.cxx:193
 msgid ""
-"You saved just what you needed, you made it, but\n"
+"You saved exactly what you needed - you made it, but\n"
 "maybe you can do better?"
 msgstr ""
 "Spaseno je koliko je i trebalo, svaka cast, ali\n"
 "mozda mozes jos bolje?"
 
 #: src/result_screen.cxx:196
-msgid "Not everybody could get saved, but still good work!"
+msgid "Not everybody was saved, but still good work!"
 msgstr "Nisu svi mogli biti spaseni, ali ipak dobro uradjeno!"
 
 #: src/result_screen.cxx:198
-msgid "What can I say, you made it, congratulations!"
+msgid "What can I say, you made it - congratulations!"
 msgstr "Sta da kazem, uspesno obavljeno, cestitam!"
 
 #: src/result_screen.cxx:203
@@ -1101,23 +1101,23 @@ msgid "You killed everybody, not good."
 msgstr "Sve si ih pobio, ne valja."
 
 #: src/result_screen.cxx:205
-msgid "None got saved, I know you can do better."
+msgid "No-one got saved - I know you can do better."
 msgstr "Niko nije spasen, znam da mozes bolje."
 
 #: src/result_screen.cxx:207
 msgid ""
-"You didn't saved enough, but still saved a few, next\n"
-"time you might be better."
+"You didn't save enough, but you saved a few.  Next\n"
+"time you might do better."
 msgstr ""
 "Nisi spasao dovoljno, ali si spasao nekoliko, mozda\n"
 "ce sledeci put biti bolje."
 
 #: src/result_screen.cxx:210
-msgid "Only one more and you would have made it, try again!"
+msgid "Only one more and you would have made it - try again!"
 msgstr "Samo jos jedan i uspeo bi, probaj ponovo!"
 
 #: src/result_screen.cxx:212
-msgid "Only a handfull more and you would have made it, try again!"
+msgid "Only a handful more and you would have made it - try again!"
 msgstr "Samo jos nekoliko i uspeo bi, probaj ponovo!"
 
 #: src/result_screen.cxx:214
@@ -1141,7 +1141,7 @@ msgid "Screenshot: Saving screenshot to: "
 msgstr "Snimak ekrana: Snimam snimak u: "
 
 #: src/screenshot.cxx:45
-msgid "Screnshot: Screenshot is done."
+msgid "Screenshot: Screenshot is done."
 msgstr "Snimak ekrana: snimak napravljen."
 
 #: src/screenshot.cxx:51
@@ -1193,9 +1193,9 @@ msgstr "Putovanje se nastavlja"
 msgid ""
 "Now after you and the Pingus have learned the basics and\n"
 "practiced a bit it is time to move on and begin the journey into\n"
-"the world. Since the floe with which the Pingus traveled to the\n"
-"Tutorial Island isn't going to hold the whole way into the warmer\n"
-"climated regions the Pingus have to find something else to guide\n"
+"the world. Since the flow with which the Pingus traveled to the\n"
+"Tutorial Island isn't going to hold on the whole way into the warmer\n"
+"climates the Pingus have to find something else to guide\n"
 "them on their journey.\n"
 msgstr ""
 "Sada kada si sa Pingusima naucio osnove i malo vezbao\n"
@@ -1208,10 +1208,10 @@ msgstr ""
 #: src/story.cxx:56
 msgid ""
 "But as the eldest have said, the Tutorial Island provides not\n"
-"only a way to practive, but it is also the starting point into\n"
-"the world. After some search the Pingus discovered the meaning\n"
-"of this, the large tree at the end of the island provides good\n"
-"wood to construct a float.\n"
+"only a good way to practice, but it is also the starting point into\n"
+"the world. After some searching the Pingus discovered the meaning\n"
+"of this, and they found the large tree at the end of the island\n"
+"which gave them wood to construct a float.\n"
 msgstr ""
 "Ali, kao sto su najstariji rekli, Tutorsko ostrvo ne pruza\n"
 "samo mogucnost vezbanja, vec je takodje i pocetna tacka ka\n"
@@ -1220,9 +1220,9 @@ msgstr ""
 
 #: src/story.cxx:67
 msgid ""
-"So the Pingus set out and constructed some large floats, enough\n"
-"to carry them all. After also packaging up a bunch of provisions\n"
-"they where prepared to finally start of their journey and leave\n"
+"So the Pingus set out and constructed some large rafts, enough\n"
+"to carry them all. After also packing a bunch of provisions\n"
+"they were prepared to start their journey and leave\n"
 "their familiar ground and enter the unknown parts of the world.\n"
 msgstr ""
 "Tako su Pingusi otisli i napravili nekoliko velikih splavova,\n"
@@ -1233,7 +1233,7 @@ msgstr ""
 
 #: src/story.cxx:77
 msgid ""
-"So the Pingus sat on their float, worrying whats to come and\n"
+"So the Pingus sit on their raft, worrying about what's to come and\n"
 "where to go, while floating into the sunset.\n"
 "\n"
 "To be continued..."
@@ -1249,10 +1249,10 @@ msgstr "Putovanje pocinje"
 
 #: src/story.cxx:94
 msgid ""
-"For a long time now the Pingus have lived happily in peace on the\n"
-"south pole along with all the other animals. Everything was in\n"
+"For a long time, the Pingus have lived happily in peace on the\n"
+"South Pole along with all the other animals. Everything was in\n"
 "balance and it seemed like nothing could disrupt their peace.  The\n"
-"Pingus where happy and it seemed like this could never end.\n"
+"Pingus were happy and it seemed like this could never end.\n"
 msgstr ""
 "Dugo vremena su Pingusi ziveli srecno i u miru na juznom polu uz\n"
 "sve druge zivotinje. Sve je bilo u ravnotezi i izgledalo je kao\n"
@@ -1261,8 +1261,8 @@ msgstr ""
 
 #: src/story.cxx:104
 msgid ""
-"But then one day, things began to slowly change, the sky got darker\n"
-"and the earth got warmer, first of they thought this was just a\n"
+"But then one day, things began to change slowly: the sky got darker\n"
+"and the earth got warmer. Firstly, they thought this was just a\n"
 "normal fluctuation in the world's climate, but things seemed to get\n"
 "worse and worse with every year."
 msgstr ""
@@ -1273,10 +1273,10 @@ msgstr ""
 
 #: src/story.cxx:115
 msgid ""
-"The snow began to melt away in a few regions and food became an\n"
-"issue. Other animals tended to leave the region to search\n"
-"for colder areas, but the Pingus knew that this wouldn't help,\n"
-"they knew that they had to do something about this problem."
+"The snow began to melt away in a few areas and food became an\n"
+"issue. Other animals tried to leave the region to search\n"
+"for colder areas, but the Pingus knew that this wouldn't help:\n"
+"they knew that they had to do something about it."
 msgstr ""
 "Sneg je poceo da se topi i u nekim delovima hrana je postala\n"
 "vazno pitanje. Druge zivotinje su vec pocele da napustaju\n"
@@ -1287,8 +1287,8 @@ msgstr ""
 msgid ""
 "So the circle of the eldest came together to decide what to do\n"
 "about it. They decided to send out an expedition around the world\n"
-"to find the cause for this warming. The expedition consisted of\n"
-"hundreds of the bravest Pingus around on the south pole."
+"to find the cause of this warming. The expedition consisted of\n"
+"hundreds of the bravest Pingus on the South Pole."
 msgstr ""
 "Tako se okupio krug najstarijih da odluce sta ce da urade\n"
 "povodom situacije. Odlucili su da posalju ekspediciju na put oko\n"
@@ -1299,9 +1299,9 @@ msgstr ""
 msgid ""
 "And they picked you to lead them on their journey around the\n"
 "world. Since the journey will be dangerous and difficult, your\n"
-"first goal is the Island of Mogorok, also known has Tutorial\n"
+"first goal is the Island of Mogorok, also known as the Tutorial\n"
 "Island. According to the eldest, this island has always been the\n"
-"first stop of Pingus that where send out into the world."
+"first stop of Pingus that were sent out into the world."
 msgstr ""
 "A tebe su izabrali da ih vodis na njihovom putuovanju oko\n"
 "sveta. Posto ce putovanje biti opasno i tesko, tvoj prvi cilj\n"
@@ -1311,10 +1311,10 @@ msgstr ""
 
 #: src/story.cxx:146
 msgid ""
-"The island consists of many regions which are ideal to train the\n"
-"abilities of the Pingus. The Pingus can there train their ability\n"
-"to build bridges, climb, bash and all the rest of their talents\n"
-"which they will surely need on their long and dangerous journey."
+"The island consists of many areas that are ideal to teach the\n"
+"Pingus their abilities. The Pingus can learn to build\n"
+"bridges, climb, bash and use many other talents which they\n"
+"will need on their long and dangerous journey."
 msgstr ""
 "Ostrvo se sastoji iz mnostva regiona, koji su idealni za\n"
 "uvezbavanje sposobnosti Pingusa. Pingusi mogu tamo vezbati svoje\n"
@@ -1323,10 +1323,10 @@ msgstr ""
 
 #: src/story.cxx:156
 msgid ""
-"You may, on the other hand, practice there your ability to\n"
-"command and guide the Pingus. You can also get familiar with\n"
+"While there, you can practice your abilities in commanding\n"
+"and guiding the Pingus. You can also get familiar with\n"
 "all the abilities the Pingus provide and learn to master them,\n"
-"since you will need them all for sure on your journey around the\n"
+"since you will need all of them on your journey around the\n"
 "world."
 msgstr ""
 "Sa druge strane, ti mozes uvezbati svoju sposobnost da\n"

@@ -1,4 +1,4 @@
-//  $Id: screenshot.cxx,v 1.12 2003/04/19 10:23:17 torangan Exp $
+//  $Id: screenshot.cxx,v 1.13 2003/04/23 16:16:37 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,7 +42,7 @@ Screenshot::make_screenshot()
 
       std::cout << _("Screenshot: Saving screenshot to: ") << filename << std::endl;
       save_target_to_file(target, filename);
-      std::cout << _("Screnshot: Screenshot is done.") << std::endl;
+      std::cout << _("Screenshot: Screenshot is done.") << std::endl;
 
       return filename;
     }

@@ -1,4 +1,4 @@
-//  $Id: result_screen.cxx,v 1.15 2003/04/19 10:23:17 torangan Exp $
+//  $Id: result_screen.cxx,v 1.16 2003/04/23 16:16:37 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -186,30 +186,30 @@ ResultScreenComponent::draw(GraphicContext& gc)
   if (result.success())
     {
       if (result.killed == 0 && result.saved == result.total)
-        message = _("Perfect! You saved everybody possibly, great!");
+        message = _("Perfect! You saved everyone possible - great!");
       else if (result.killed == 0)
-        message = _("None got killed, pretty good work");
+        message = _("No-one got killed, pretty good work.");
       else if (result.saved == result.needed)
-        message = _("You saved just what you needed, you made it, but\n"
+        message = _("You saved exactly what you needed - you made it, but\n"
                     "maybe you can do better?");
       else if (result.killed >= 5)
-        message = _("Not everybody could get saved, but still good work!");
+        message = _("Not everybody was saved, but still good work!");
       else
-        message = _("What can I say, you made it, congratulations!");
+        message = _("What can I say, you made it - congratulations!");
     }
   else
     {
       if (result.killed == result.total)
         message = _("You killed everybody, not good.");
       else if (result.saved == 0)
-        message = _("None got saved, I know you can do better.");
+        message = _("No-one got saved - I know you can do better.");
       else if (result.saved > 0)
-        message = _("You didn't saved enough, but still saved a few, next\n"
-                    "time you might be better.");
+        message = _("You didn't save enough, but you saved a few.  Next\n"
+                    "time you might do better.");
       else if (result.saved + 1 >= result.needed)
-        message = _("Only one more and you would have made it, try again!");
+        message = _("Only one more and you would have made it - try again!");
       else if (result.saved + 5 >= result.needed)
-        message = _("Only a handfull more and you would have made it, try again!");
+        message = _("Only a handful more and you would have made it - try again!");
       else
         message = _("Better luck next time!");
     }
