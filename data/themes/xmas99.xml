@@ -1,0 +1,23 @@
+<pingus-world>
+  <world-name>Xmas</world-name>
+  <description>-</description>
+  
+  <background>
+    <surface>
+      <resource type="datafile">
+	<resource-datafile>textures</resource-datafile>
+	<resource-ident>Textures/blueflame</resource-ident>
+      </resource>
+    </surface>
+  </background>
+
+  <level-list>
+    <level>snow1.plf</level>
+    <level>snow2.plf</level>
+    <level>snow3.plf</level>
+    <level>snow4.plf</level>
+    <level>snow5.plf</level>
+    <level>snow6.plf</level>
+  </level-list>
+</pingus-world>
+

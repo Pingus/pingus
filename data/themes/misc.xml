@@ -1,0 +1,21 @@
+<pingus-world>
+  <world-name lang="en">Experimental</world-name>
+  <description lang="en">All this level are experimental and *not* playable.</description>
+
+  <background>
+    <surface>
+      <resource type="datafile">
+	<resource-datafile>textures</resource-datafile>
+	<resource-ident>Textures/rooftile2</resource-ident>
+      </resource>
+    </surface>
+  </background>
+
+  <level-list>
+    <level>stone.plf</level>
+    <level>block.plf</level>
+    <level>foliage1.plf</level>
+    <level>foliage3.plf</level>
+    <level>foliage4.plf</level>
+  </level-list>
+</pingus-world>

@@ -1,0 +1,23 @@
+<pingus-world>
+  <world-name lang="en">More levels 15/7</world-name>
+    <description lang="en">-</description>
+
+  <background>
+    <surface>
+      <resource type="datafile">
+	<resource-datafile>textures</resource-datafile>
+	<resource-ident>Textures/stone</resource-ident>
+      </resource>
+    </surface>
+  </background>
+
+  <level-list>
+    <level>intersec.plf</level>
+    <level>headbang.plf</level>
+    <level>sas.plf</level>
+    <level>parallel.plf</level>
+    <level>lonely.plf</level>
+    <level>block-timpany.plf</level>
+  </level-list>
+
+</pingus-world>

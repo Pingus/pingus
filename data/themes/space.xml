@@ -1,0 +1,19 @@
+<pingus-world>
+  <world-name lang="en">Space</world-name>
+    <description lang="en">In space, no one can hear you scream.</description>
+
+  <background>
+    <surface>
+      <resource type="datafile">
+	<resource-datafile>textures</resource-datafile>
+	<resource-ident>Textures/stars</resource-ident>
+      </resource>
+    </surface>
+  </background>
+
+  <level-list>
+    <level>space1.plf</level>
+    <level>space2.plf</level>
+    <level>space3.plf</level>
+  </level-list>
+</pingus-world>

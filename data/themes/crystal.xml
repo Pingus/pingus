@@ -1,0 +1,23 @@
+<pingus-world>
+  <world-name lang="en">Crystal</world-name>
+  <description lang="en">-</description>
+  
+  <background>
+    <surface>
+      <resource type="datafile">
+	<resource-datafile>textures</resource-datafile>
+	<resource-ident>Textures/crystal</resource-ident>
+      </resource>
+    </surface>
+  </background>
+  
+  <level-list>
+    <level>crystal1.plf</level>
+    <level>crystal2.plf</level>
+    <level>crystal3.plf</level>
+    <level>crystal4.plf</level>
+    <level>crystal5.plf</level>
+  </level-list>
+
+</pingus-world>
+

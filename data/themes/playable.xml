@@ -1,0 +1,27 @@
+<pingus-world>
+  <world-name lang="en">Levels (Hard)</world-name>
+  <description lang="en">When we have enough, these levels will be catagorised into worlds. More levels are very welcome.</description>
+
+  <background>
+    <surface>
+      <resource type="datafile">
+	<resource-datafile>textures</resource-datafile>
+	<resource-ident>Textures/rooftile</resource-ident>
+      </resource>
+    </surface>
+  </background>
+  
+  <level-list>
+    <level>longway.plf</level>
+    <level>rinse.plf</level>
+    <level>Lev4.plf</level>
+    <level>wland.plf</level>
+    <level>particle.plf</level>
+    <level>Stair.plf</level>
+    <level>cages.plf</level>
+    <level>partic2.plf</level>
+    <level>jewel.plf</level>
+    <level>bombing.plf</level>
+  </level-list>
+  
+</pingus-world>

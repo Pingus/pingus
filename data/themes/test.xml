@@ -1,0 +1,22 @@
+<pingus-world>
+  <world-name lang="en">.:: Testing Zone ::..</world-name>
+  <description lang="en">If programmers needs to test, they normaly went to this world, normal users shouldn't try to solve this puzzles or they might end in the madhouse...</description>
+
+  <background>
+    <surface>
+      <resource type="datafile">
+	<resource-datafile>textures</resource-datafile>
+	<resource-ident>Textures/default</resource-ident>
+      </resource>
+    </surface>
+  </background>
+
+  <level-list>
+    <level>test1.plf</level>
+    <level>test2.plf</level>
+    <level>test3.plf</level>
+    <level>test4.plf</level>
+  </level-list>
+
+</pingus-world>
+

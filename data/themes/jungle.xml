@@ -1,0 +1,18 @@
+<pingus-world>
+  <world-name lang="en">Jungle</world-name>
+    <description lang="en">-</description>
+
+  <background>
+    <surface>
+      <resource type="datafile">
+	<resource-datafile>textures</resource-datafile>
+	<resource-ident>Textures/latejungle</resource-ident>
+      </resource>
+    </surface>
+  </background>
+
+  <level-list>
+    <level>jungle1.plf</level>
+    <level>jungle2.plf</level>
+  </level-list>
+</pingus-world>

@@ -1,6 +1,15 @@
 Name:        All Standard
 Image:       -
 Description: -
+
+  <background>
+    <surface>
+      <resource type="datafile">
+	<resource-datafile>textures</resource-datafile>
+	<resource-ident>Textures/happyclouds</resource-ident>
+      </resource>
+    </surface>
+  </background>
 Background:  (resource:textures.dat)Textures/happyclouds
 
 level1.plf

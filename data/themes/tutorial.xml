@@ -1,0 +1,22 @@
+<pingus-world>
+  <world-name lang="en">Tutorials</world-name>
+  <description lang="en">Before the real life starts, the Pingus can do some practice in this tutorial levels.</description>
+  
+  <background>
+    <surface>
+      <resource type="datafile">
+	<resource-datafile>textures</resource-datafile>
+	<resource-ident>Textures/latejungle</resource-ident>
+      </resource>
+    </surface>
+  </background>
+  
+  <level-list>
+    <level>tutorial1.plf</level>
+    <level>tutorial2.plf</level>
+    <level>tutorial3.plf</level>
+    <level>tutorial4.plf</level>
+    <level>tutorial5.plf</level>
+  </level-list>
+  
+</pingus-world>
