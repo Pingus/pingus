@@ -1,4 +1,4 @@
-//  $Id: blocker.hh,v 1.3 2000/03/08 01:44:33 grumbel Exp $
+//  $Id: blocker.hh,v 1.4 2000/03/10 18:55:14 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,11 +31,12 @@ public:
 
   PinguAction* allocate(void);
 
-  void   init(void);
-  void   let_move();
-  bool   standing_on_ground();
-  bool   need_catch();
-  void   catch_pingu(Pingu* pingu);
+  int   y_offset();
+  void  init(void);
+  void  let_move();
+  bool  standing_on_ground();
+  bool  need_catch();
+  void  catch_pingu(Pingu* pingu);
 };
 
 #endif
