@@ -1,4 +1,4 @@
-//  $Id: Pingus.hh,v 1.4 2000/03/10 19:00:43 grumbel Exp $
+//  $Id: Pingus.hh,v 1.5 2000/03/12 02:05:14 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,24 +29,14 @@
 class PingusMain : public CL_ClanApplication
 {
 private:
-  char*  title;
-  std::string argv_0;
   bool    pingus_datadir_set;
 
-  std::string  pingus_datafile;
-
-  std::string  global_datafile;
-
-  std::string  pingus_soundfile;
-  std::string  levelfile;
+  std::string pingus_datafile;
+  std::string global_datafile;
+  std::string pingus_soundfile;
+  std::string levelfile;
   std::string resolution;
   
-  int   level;  // the number of the current level, -1 if the level is custom  
-
-  // Functions
-  void remove_comments(char*);
-  bool line_empty(char*);
-
   Intro intro;
 
 public:
@@ -60,7 +50,7 @@ public:
   virtual void init_modules();
   virtual void deinit_modules();
 
- GameMode select_game_mode(void);
+  GameMode select_game_mode(void);
   bool do_lemmings_mode(void);
   bool do_worms_mode(void);
   void check_args(int argc, char* argv[]);
