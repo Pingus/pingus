@@ -1,4 +1,4 @@
-//  $Id: PinguParticle.cc,v 1.2 2000/02/09 21:43:44 grumbel Exp $
+//  $Id: PinguParticle.cc,v 1.3 2000/03/08 01:36:58 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,9 @@
 #include "../PingusResource.hh"
 #include "PinguParticle.hh"
 
+static const float x_collision_decrease = 0.3;
+static const float y_collision_decrease = 0.6;
+
 PinguParticle::PinguParticle()
 {
   surface = CL_Surface::load("Particles/particle", PingusResource::get("pingus.dat"));
@@ -29,7 +32,7 @@ PinguParticle::PinguParticle()
   size_add = (frand() - 0.2) / 35;
 }
 
-PinguParticle::PinguParticle(int x, int y, double x_a, double y_a)
+PinguParticle::PinguParticle(int x, int y, float x_a, float y_a)
 {
   x_pos = x;
   y_pos = y;
@@ -38,16 +41,24 @@ PinguParticle::PinguParticle(int x, int y, double x_a, double y_a)
   size  = 1.0;
   size_add = (frand() - 0.2) / 35;
   livetime = 50 + (rand() % 25);
+  // FIXME: Evil and slow..., should be static
   surface = CL_Surface::load("Particles/particle", PingusResource::get("pingus.dat"));
 }
 
 void
-PinguParticle::load_data()
+PinguParticle::init(int x, int y, float x_a, float y_a)
 {
+  x_pos = x;
+  y_pos = y;
+  x_add = x_a;
+  y_add = y_a;
+  size  = 1.0;
+  size_add = (frand() - 0.2) / 35;
+  livetime = 50 + (rand() % 25);
 }
 
 void
-PinguParticle::draw_offset(int ofx, int ofy, double s) const
+PinguParticle::draw_offset(int ofx, int ofy, float s) const
 {
   surface->put_screen(x_pos + ofx, y_pos + ofy);
   /* Particle resizeing is disabled, because it is to slow
@@ -65,12 +76,78 @@ PinguParticle::draw_offset(int ofx, int ofy, double s) const
 void
 PinguParticle::let_move()
 {
-  // Comment this to get unzoomed particles
+  float tmp_x_add = 0.0;
+  float tmp_y_add = 0.0;
+  
+  // Simulated gravity
+  y_add += 0.2;
+  
+  if (y_add > 0)
+    {
+      for (tmp_y_add = y_add; tmp_y_add >= 1.0; tmp_y_add -= 1.0)
+	{
+	  if (colmap->getpixel((int)x_pos, (int)y_pos)) {
+	    y_add = y_add * -y_collision_decrease;
+	    tmp_y_add = -tmp_y_add;
+	    y_pos -= 1.0;
+	    break;
+	  }
+	  y_pos += 1.0;
+	}
+      y_pos += tmp_y_add;
+    }
+  else
+    {
+      for (tmp_y_add = y_add; tmp_y_add <= -1.0; tmp_y_add += 1.0)
+	{
+	  if (colmap->getpixel((int)x_pos, (int)y_pos)) {
+	    y_add = y_add * -y_collision_decrease;
+	    tmp_y_add = -tmp_y_add;
+	    y_pos += 1.0;
+	    break;
+	  }
+	  y_pos -= 1.0;
+	}
+      y_pos += tmp_y_add;
+    }
+
+  if (x_add > 0)
+    {
+      for (tmp_x_add = x_add; tmp_x_add >= 1.0; tmp_x_add -= 1.0)
+	{
+	  if (colmap->getpixel((int)x_pos, (int)y_pos)) {
+	    x_add = x_add * -x_collision_decrease;
+	    tmp_x_add = -tmp_x_add;
+	    x_pos -= 1.0;
+	    break;
+	  }
+	  x_pos += 1.0;
+	}
+      x_pos += tmp_x_add;
+    }
+  else
+    {
+      for (tmp_x_add = x_add; tmp_x_add <= -1.0; tmp_x_add += 1.0)
+	{
+	  if (colmap->getpixel((int)x_pos, (int)y_pos)) {
+	    x_add = x_add * -x_collision_decrease;
+	    tmp_x_add = -tmp_x_add;
+	    x_pos += 1.0;
+	    break;
+	  }
+	  x_pos -= 1.0;
+	}
+      x_pos += tmp_x_add;
+    }
+
+  // Simple physics
+#if 0
   size += size_add;
   
   x_pos += x_add * size;
   y_pos += y_add * size;
   y_add += 0.1;
+#endif
 
   if (livetime > 0)
     --livetime;
