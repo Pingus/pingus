@@ -62,7 +62,7 @@ HammerData::insert_WorldObjs (World* world)
 void
 HammerData::insert_EditorObjs (EditorNS::EditorObjMgr* obj_mgr)
 {
-  obj_mgr->add(new EditorObjs::HammerObj(*this));
+  //  obj_mgr->add(new EditorObjs::HammerObj(*this));
 }
 
 } // namespace WorldObjsData

@@ -25,7 +25,6 @@
 #include "resource.hxx"
 #include "pingus_menu_manager.hxx"
 #include "credits.hxx"
-#include "editor/editor.hxx"
 #include "theme_selector.hxx"
 #include "menu_button.hxx"
 #include "gui/screen_manager.hxx"
@@ -36,8 +35,6 @@
 #include "story.hxx"
 
 namespace Pingus {
-
-using EditorNS::Editor;
 
 MenuButton::MenuButton(const CL_Point& pos_, const CL_Sprite& sprite_, 
                              const std::string& text_, const std::string& desc_)

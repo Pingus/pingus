@@ -75,7 +75,7 @@ ConveyorBeltData::insert_WorldObjs (World* world)
 void
 ConveyorBeltData::insert_EditorObjs (EditorNS::EditorObjMgr* obj_mgr)
 {
-  obj_mgr->add(new EditorObjs::ConveyorBeltObj(*this));
+  //obj_mgr->add(new EditorObjs::ConveyorBeltObj(*this));
 }
 
 } // namespace WorldObjsData

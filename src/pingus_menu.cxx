@@ -27,7 +27,6 @@
 #include "stat_manager.hxx"
 #include "story_screen.hxx"
 #include "story.hxx"
-#include "editor/editor.hxx"
 #include "worldmap/manager.hxx"
 #include "gui/screen_manager.hxx"
 #include "pingus_menu_manager.hxx"
@@ -35,19 +34,11 @@
 
 namespace Pingus {
 
-using EditorNS::Editor;
-
 PingusMenu::PingusMenu (PingusMenuManager* m)
   : PingusSubMenu (m)
 {
   is_init = false;
-  
-  editor_button = new MenuButton(CL_Point(CL_Display::get_width() * 150 / 800,
-                                          CL_Display::get_height() * 370 / 600),
-                                 Resource::load_sprite("menu/create_on", "core"),
-                                 _("Create a\nLevel"),
-                                 _("..:: Launch the level editor ::.."));
-  
+    
   start_button = new MenuButton(CL_Point(CL_Display::get_width() * 400 / 800,
                                          CL_Display::get_height() * 370 / 600),
                                 Resource::load_sprite("menu/play_on", "core"),
@@ -78,7 +69,6 @@ PingusMenu::PingusMenu (PingusMenuManager* m)
                                       _("Multiplayer"),
                                       _("..:: Multiplayer Match ::.."));
 
-  slots.push_back(editor_button->sig_click().connect(this, &PingusMenu::do_editor));
   slots.push_back(start_button->sig_click().connect(this, &PingusMenu::setup_game_menu));
   slots.push_back(quit_button->sig_click().connect(this, &PingusMenu::do_quit));
 
@@ -95,7 +85,6 @@ PingusMenu::setup_main_menu()
 
   gui_manager->add(quit_button);
   gui_manager->add(start_button);
-  gui_manager->add(editor_button);
 }
 
 void
@@ -103,7 +92,6 @@ PingusMenu::setup_game_menu()
 {
   gui_manager->remove(quit_button);
   gui_manager->remove(start_button);
-  gui_manager->remove(editor_button);
 
   gui_manager->add(contrib_button);
   gui_manager->add(story_button);
@@ -148,12 +136,6 @@ PingusMenu::do_start()
     {
       ScreenManager::instance()->push_screen(WorldMapNS::WorldMapManager::instance ());
     }
-}
-
-void
-PingusMenu::do_editor()
-{
-  ScreenManager::instance()->push_screen (Editor::instance(), false);
 }
 
 void

@@ -71,10 +71,10 @@ TeleporterData::insert_WorldObjs (World* world)
 void
 TeleporterData::insert_EditorObjs (EditorNS::EditorObjMgr* obj_mgr)
 {
-  EditorObjs::TeleporterObj* teleporter = new EditorObjs::TeleporterObj(*this);
+  //EditorObjs::TeleporterObj* teleporter = new EditorObjs::TeleporterObj(*this);
 
-  obj_mgr->add(teleporter);
-  obj_mgr->add(new EditorObjs::TeleporterTargetObj(teleporter));
+  //obj_mgr->add(teleporter);
+  //obj_mgr->add(new EditorObjs::TeleporterTargetObj(teleporter));
 }
 
 } // namespace WorldObjsData

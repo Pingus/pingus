@@ -64,7 +64,7 @@ LaserExitData::insert_WorldObjs (World* world)
 void
 LaserExitData::insert_EditorObjs (EditorNS::EditorObjMgr* obj_mgr)
 {
-  obj_mgr->add(new EditorObjs::LaserExitObj(*this));
+  //  obj_mgr->add(new EditorObjs::LaserExitObj(*this));
 }
 
 } // namespace WorldObjsData

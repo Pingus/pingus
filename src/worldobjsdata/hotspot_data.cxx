@@ -71,7 +71,7 @@ HotspotData::insert_WorldObjs (World* world)
 void
 HotspotData::insert_EditorObjs (EditorNS::EditorObjMgr* obj_mgr)
 {
-  obj_mgr->add(new EditorObjs::HotspotObj(*this));
+  //  obj_mgr->add(new EditorObjs::HotspotObj(*this));
 }
 
 } // namespace WorldObjsData

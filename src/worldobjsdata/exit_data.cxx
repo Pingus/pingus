@@ -82,7 +82,7 @@ ExitData::insert_WorldObjs (World* world)
 void
 ExitData::insert_EditorObjs (EditorNS::EditorObjMgr* obj_mgr)
 {
-  obj_mgr->add(new EditorObjs::ExitObj(*this));
+  //  obj_mgr->add(new EditorObjs::ExitObj(*this));
 }
 
 } // namespace WorldObjsData

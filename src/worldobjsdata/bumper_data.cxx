@@ -64,7 +64,7 @@ BumperData::insert_WorldObjs (World* world)
 void
 BumperData::insert_EditorObjs (EditorNS::EditorObjMgr* obj_mgr)
 {
-  obj_mgr->add(new EditorObjs::BumperObj(*this));
+  //obj_mgr->add(new EditorObjs::BumperObj(*this));
 }
 
 } // namespace WorldObjsData

@@ -28,8 +28,6 @@ SUBDIRS = \
 	actions             \
 	caimagemanipulation \
 	colliders           \
-	editor              \
-	editorobjs          \
         gui                 \
         input               \
 	movers		    \
@@ -60,17 +58,14 @@ pingus_LDADD = \
         @LIBS@     \
         \
         caimagemanipulation/libcaimagemanipulation.a \
-	editorobjs/libpingus_editorobjs.a \
         worldobjs/entrances/libpingus_worldobjs_entrances.a \
 	worldobjsdata/libpingus_worldobjsdata.a \
         worldobjs/libpingus_worldobjs.a \
 	worldobjsdata/libpingus_worldobjsdata.a \
         worldobjs/entrances/libpingus_worldobjs_entrances.a \
-	editorobjs/libpingus_editorobjs.a \
         actions/libpingus_actions.a      \
 	movers/libpingus_movers.a \
 	colliders/libpingus_colliders.a \
-        editor/libpingus_editor.a       \
         particles/libpingus_particle.a  \
         sound/libpingus_sound.a  \
         worldmap/libpingus_worldmap.a \

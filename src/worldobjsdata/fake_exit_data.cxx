@@ -64,7 +64,7 @@ FakeExitData::insert_WorldObjs (World* world)
 void
 FakeExitData::insert_EditorObjs (EditorNS::EditorObjMgr* obj_mgr)
 {
-  obj_mgr->add(new EditorObjs::FakeExitObj(*this));
+  //  obj_mgr->add(new EditorObjs::FakeExitObj(*this));
 }
 
 } // namespace WorldObjsData

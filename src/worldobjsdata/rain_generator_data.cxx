@@ -42,7 +42,7 @@ RainGeneratorData::insert_WorldObjs (World* world)
 void
 RainGeneratorData::insert_EditorObjs (EditorNS::EditorObjMgr* obj_mgr)
 {
-  obj_mgr->add(new EditorNS::WeatherObj("rain-generator"));
+  //obj_mgr->add(new EditorNS::WeatherObj("rain-generator"));
 }
 
 } // namespace WorldObjsData

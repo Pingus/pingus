@@ -85,7 +85,7 @@ LiquidData::insert_WorldObjs (World* world)
 void
 LiquidData::insert_EditorObjs (EditorNS::EditorObjMgr* obj_mgr)
 {
-  obj_mgr->add(new EditorObjs::LiquidObj(*this));
+  //  obj_mgr->add(new EditorObjs::LiquidObj(*this));
 }
 
 } // namespace WorldObjsData

@@ -49,7 +49,6 @@ private:
   LayerManager layer_manager;
   CL_Surface cursor_sur;
 
-  MenuButton* editor_button;
   MenuButton* start_button;
   MenuButton* quit_button;
 
@@ -64,7 +63,6 @@ private:
 
   void do_quit();
   void do_start();
-  void do_editor();
 
 public:
   PingusMenu (PingusMenuManager* m);

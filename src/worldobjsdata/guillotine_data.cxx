@@ -69,7 +69,7 @@ GuillotineData::insert_WorldObjs (World* world)
 void
 GuillotineData::insert_EditorObjs (EditorNS::EditorObjMgr* obj_mgr)
 {
-  obj_mgr->add(new EditorObjs::GuillotineObj(*this));
+  //  obj_mgr->add(new EditorObjs::GuillotineObj(*this));
 }
 
 } // namespace WorldObjsData

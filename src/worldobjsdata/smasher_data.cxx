@@ -64,7 +64,7 @@ SmasherData::insert_WorldObjs (World* world)
 void
 SmasherData::insert_EditorObjs (EditorNS::EditorObjMgr* obj_mgr)
 {
-  obj_mgr->add(new EditorObjs::SmasherObj(*this));
+  //  obj_mgr->add(new EditorObjs::SmasherObj(*this));
 }
 
 } // namespace WorldObjsData

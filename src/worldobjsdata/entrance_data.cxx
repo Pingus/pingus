@@ -121,7 +121,7 @@ EntranceData::insert_WorldObjs (World* world)
 void
 EntranceData::insert_EditorObjs (EditorNS::EditorObjMgr* obj_mgr)
 {
-  obj_mgr->add(new EditorObjs::EntranceObj(*this));
+  //  obj_mgr->add(new EditorObjs::EntranceObj(*this));
 }
 
 } // namespace WorldObjsData

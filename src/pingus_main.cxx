@@ -1,6 +1,6 @@
 //   $Id: pingus_main.cxx,v 1.104 2004/04/01 15:18:05 torangan Exp $
 //    ___
-//   |  _\ A Free Lemmings[tm] Clone
+//   |  _\ 
 //   |   /_  _ _  ___  _   _  ___
 //   |  || || \ || _ || |_| ||_ -'
 //   |__||_||_\_||_  ||_____||___|
@@ -59,7 +59,6 @@
 #include "stat_manager.hxx"
 #include "demo_session.hxx"
 #include "debug.hxx"
-#include "editor/editor.hxx"
 #include "action_data.hxx"
 #include "fonts.hxx"
 #include "xml_helper.hxx"
@@ -77,8 +76,6 @@
 #include "worldobj_data_factory.hxx"
 
 namespace Pingus {
-
-using EditorNS::Editor;
 
 void
 signal_handler(int signo)
@@ -209,7 +206,6 @@ PingusMain::check_args(int argc, char** argv)
       {"print-fps",         no_argument,       0, 'b'},
       {"sound-specs",       required_argument, 0, 'S'},
       {"geometry",          required_argument, 0, 'g'},
-      {"editor",            no_argument,       0, 'e'},
       {"quick-play",        no_argument,       0, 'q'},
       {"fullscreen",        no_argument,       0, 'f'},
       {"window",            no_argument,       0, 'w'},
@@ -275,11 +271,6 @@ PingusMain::check_args(int argc, char** argv)
 
     case 't': // -t, --set-speed
       game_speed = atoi(optarg);
-      break;
-
-    case 'e':
-      start_editor = true;
-      //std::cout << "PingusMain: Starting Editor" << std::endl;
       break;
 
     case 'G':
@@ -512,7 +503,6 @@ PingusMain::check_args(int argc, char** argv)
         << "\n   -v, --verbose            " << _("Print some more messages to stdout, can be set")
         << "\n                            " << _("multiple times to increase verbosity")
         << "\n   -V, --version            " << _("Prints version number and exit")
-        << "\n   -e, --editor             " << _("Launch the Level editor (experimental)")
         << "\n   --disable-auto-scrolling " << _("Disable automatic scrolling")
         //          "   --disable-swcursor       Disable software cursor, use hw cursor instead\n"
         << "\n   --enable-swcursor        " << _("Enable software cursor")
@@ -742,23 +732,10 @@ PingusMain::start_game ()
 
       if (successfull)
         {
-          if (start_editor)
-            {
-              Editor::instance ()->load_level (levelfile);
-              levelfile = "";
-              ScreenManager::instance()->push_screen(Editor::instance (), false);
-            }
-          else
-            {
-              ScreenManager::instance()->push_screen
-                (new StartScreen(PLFResMgr::load_plf_from_filename(levelfile)),
-                 true);
-            }
+          ScreenManager::instance()->push_screen
+            (new StartScreen(PLFResMgr::load_plf_from_filename(levelfile)),
+             true);
         }
-    }
-  else if (start_editor) // Start an empty editor workspace
-    {
-      ScreenManager::instance()->push_screen(Editor::instance (), false);
     }
   else if (!demo_file.empty()) // start a demo
     {
@@ -946,7 +923,6 @@ PingusMain::init_pingus()
   Sound::PingusSound::init();
   XMLhelper::init();
   PinguActionFactory::init();
-  Editor::init();
   Credits::init();
 
   fps_counter.init();
@@ -960,7 +936,6 @@ void
 PingusMain::deinit_pingus()
 {
   Credits::deinit();
-  Editor::deinit();
   PinguActionFactory::deinit();
   XMLhelper::deinit();
   Sound::PingusSound::deinit();

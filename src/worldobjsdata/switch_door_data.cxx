@@ -80,9 +80,9 @@ SwitchDoorData::insert_WorldObjs (World* world)
 void
 SwitchDoorData::insert_EditorObjs (EditorNS::EditorObjMgr* obj_mgr)
 {
-  EditorObjs::SwitchDoorObj* obj = new EditorObjs::SwitchDoorObj(*this);
-  obj_mgr->add(obj);
-  obj_mgr->add(new EditorObjs::SwitchDoorSwitchObj(obj));
+  //  EditorObjs::SwitchDoorObj* obj = new EditorObjs::SwitchDoorObj(*this);
+  // obj_mgr->add(obj);
+  // obj_mgr->add(new EditorObjs::SwitchDoorSwitchObj(obj));
 }
 
 } // namespace WorldObjsData

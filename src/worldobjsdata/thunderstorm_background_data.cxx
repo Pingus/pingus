@@ -57,7 +57,7 @@ ThunderstormBackgroundData::insert_WorldObjs (World* world)
 void
 ThunderstormBackgroundData::insert_EditorObjs (EditorNS::EditorObjMgr* obj_mgr)
 {
-  obj_mgr->add(new EditorObjs::ThunderstormBackgroundObj(*this));
+  //obj_mgr->add(new EditorObjs::ThunderstormBackgroundObj(*this));
 }
 
 } // namespace WorldObjsData

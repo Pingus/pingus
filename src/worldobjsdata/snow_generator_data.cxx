@@ -54,7 +54,7 @@ SnowGeneratorData::insert_WorldObjs (World* world)
 void
 SnowGeneratorData::insert_EditorObjs (EditorNS::EditorObjMgr* obj_mgr)
 {
-  obj_mgr->add(new EditorNS::WeatherObj("snow-generator"));
+  //obj_mgr->add(new EditorNS::WeatherObj("snow-generator"));
 }
 
 } // namespace WorldObjsData

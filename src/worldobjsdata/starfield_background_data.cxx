@@ -76,7 +76,7 @@ StarfieldBackgroundData::insert_WorldObjs (World* world)
 void
 StarfieldBackgroundData::insert_EditorObjs (EditorNS::EditorObjMgr* obj_mgr)
 {
-  obj_mgr->add(new EditorObjs::StarfieldBackgroundObj(*this));
+  //  obj_mgr->add(new EditorObjs::StarfieldBackgroundObj(*this));
 }
 
 } // namespace WorldObjsData

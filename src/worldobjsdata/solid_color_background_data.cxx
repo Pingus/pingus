@@ -60,7 +60,7 @@ SolidColorBackgroundData::insert_WorldObjs (World* world)
 void
 SolidColorBackgroundData::insert_EditorObjs(EditorNS::EditorObjMgr* obj_mgr)
 {
-  obj_mgr->add(new EditorObjs::SolidColorBackgroundObj(*this));
+  //  obj_mgr->add(new EditorObjs::SolidColorBackgroundObj(*this));
 }
 
 } // namespace WorldObjsData

@@ -65,7 +65,7 @@ SpikeData::insert_WorldObjs (World* world)
 void
 SpikeData::insert_EditorObjs (EditorNS::EditorObjMgr* obj_mgr)
 {
-  obj_mgr->add(new EditorObjs::SpikeObj(*this));
+  //  obj_mgr->add(new EditorObjs::SpikeObj(*this));
 }
 
 } // namespace WorldObjsData

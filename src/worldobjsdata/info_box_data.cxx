@@ -46,7 +46,7 @@ InfoBoxData::insert_WorldObjs (World* world)
 void
 InfoBoxData::insert_EditorObjs (EditorNS::EditorObjMgr* obj_mgr)
 {
-  obj_mgr->add(new EditorObjs::InfoBoxObj(*this));
+  //  obj_mgr->add(new EditorObjs::InfoBoxObj(*this));
 }
 
 InfoBoxData::InfoBoxData (xmlDocPtr doc, xmlNodePtr cur)

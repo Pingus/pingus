@@ -113,7 +113,7 @@ SurfaceBackgroundData::insert_WorldObjs (World* world)
 void
 SurfaceBackgroundData::insert_EditorObjs (EditorNS::EditorObjMgr* obj_mgr)
 {
-  obj_mgr->add(new EditorObjs::SurfaceBackgroundObj(*this));
+  //  obj_mgr->add(new EditorObjs::SurfaceBackgroundObj(*this));
 }
 
 } // namespace WorldObjsData

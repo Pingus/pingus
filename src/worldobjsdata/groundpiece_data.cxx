@@ -86,7 +86,7 @@ GroundpieceData::~GroundpieceData ()
 void
 GroundpieceData::insert_EditorObjs (EditorNS::EditorObjMgr* obj_mgr)
 {
-  obj_mgr->add(new EditorObjs::GroundpieceObj(*this));
+  //  obj_mgr->add(new EditorObjs::GroundpieceObj(*this));
 }
 
 void

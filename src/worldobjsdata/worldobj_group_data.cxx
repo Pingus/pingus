@@ -92,7 +92,7 @@ WorldObjGroupData::insert_WorldObjs (World* world)
 void
 WorldObjGroupData::insert_EditorObjs (EditorNS::EditorObjMgr* obj_mgr)
 {
-  EditorNS::EditorObjGroup* group = new EditorNS::EditorObjGroup();
+  /*EditorNS::EditorObjGroup* group = new EditorNS::EditorObjGroup();
 
   for (ObjsIter i = objs.begin (); i != objs.end (); ++i)
     {
@@ -100,6 +100,7 @@ WorldObjGroupData::insert_EditorObjs (EditorNS::EditorObjMgr* obj_mgr)
     }
 
   obj_mgr->add(group);
+  */
 }
 
 } // namespace WorldObjsData
