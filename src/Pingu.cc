@@ -1,4 +1,4 @@
-//  $Id: Pingu.cc,v 1.44 2001/04/01 18:00:37 grumbel Exp $
+//  $Id: Pingu.cc,v 1.45 2001/04/07 16:48:29 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -213,7 +213,7 @@ Pingu::set_action(shared_ptr<PinguAction> act)
 	    }
 	  action_time = act->activation_time();
 	  sec_action = act;
-	  PingusSound::play_wav("ohno");
+	  //PingusSound::play_wav("ohno");
 	}
       return true;
     }

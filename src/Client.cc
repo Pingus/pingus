@@ -1,4 +1,4 @@
-//  $Id: Client.cc,v 1.36 2001/03/31 11:21:50 grumbel Exp $
+//  $Id: Client.cc,v 1.37 2001/04/07 16:48:29 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -129,7 +129,8 @@ Client::init_display()
   Display::show_cursor();
   
   if (!playfield) playfield    = new Playfield(plf, server->get_world());
-  else throw PingusError("Memory hole");
+  else
+    std::cout << "Playfield already there, assuming thats right" << std::endl;
   
   button_panel = new ButtonPanel(plf);
   pcounter     = new PingusCounter();

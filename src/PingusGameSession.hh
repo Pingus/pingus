@@ -1,4 +1,4 @@
-//  $Id: PingusGameSession.hh,v 1.1 2001/04/06 12:49:19 grumbel Exp $
+//  $Id: PingusGameSession.hh,v 1.2 2001/04/07 16:48:30 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,9 @@
 
 #include <string>
 
+#include "Server.hh"
+#include "Client.hh"
+
 /** With this class you can obtain information about the success or
     failure of a level, in addition you can get details like how many
     penguins where saved or killed, etc. */
@@ -44,8 +47,15 @@ public:
 class PingusGameSession
 {
 private:
+  /// The filename of the level
   std::string filename;
 
+  /// The server
+  boost::shared_ptr<Server> server;
+
+  /// The client
+  boost::shared_ptr<Client> client;
+  
 public:
   /** Create a new game session which is launched on start ()
       @param filename The filename of a Pingus Level file */

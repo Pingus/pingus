@@ -1,4 +1,4 @@
-//  $Id: Client.hh,v 1.17 2001/04/01 18:00:37 grumbel Exp $
+//  $Id: Client.hh,v 1.18 2001/04/07 16:48:29 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,6 +41,7 @@ class ButtonPanel;
 class PingusCounter;
 class HurryUp;
 
+/** Bla bla.... rewrite this class... */
 class Client
 {
 private:

@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMap.cc,v 1.19 2001/04/06 18:07:58 grumbel Exp $
+//  $Id: PingusWorldMap.cc,v 1.20 2001/04/07 16:48:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,8 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "../PingusError.hh"
+#include "../System.hh"
 #include "../globals.hh"
 #include "../Display.hh"
 #include "../TargetProvider.hh"
@@ -29,11 +31,14 @@
 #include "../Console.hh"
 #include "PingusWorldMap.hh"
 
-PingusWorldMap::PingusWorldMap (std::string filename)
-  : green_dot ("worldmap/dot_green", "core"),
-    red_dot ("worldmap/dot_red", "core"),
-    dot_border ("Game/dot_border", "game"),
-    green_flag ("worldmap/flaggreen", "core")
+PingusWorldMap::PingusWorldMap (std::string filename) :
+  font (PingusResource::load_font ("Fonts/pingus_small", "fonts")),
+  green_dot ("worldmap/dot_green", "core"),
+  red_dot ("worldmap/dot_red", "core"),
+  dot_border ("Game/dot_border", "game"),
+  green_flag ("worldmap/flaggreen", "core"),
+  catch_input (true),
+  do_quit (false)
 {
   green_flag.set_align (-24, -36);
   green_dot.set_align_center ();
@@ -48,12 +53,34 @@ PingusWorldMap::PingusWorldMap (std::string filename)
   
   pingus = new PingusWorldMapPingus;
   pingus->set_position (&(*graph_data.nodes.begin ()));
+
+  stat = boost::shared_ptr<PingusWorldMapStat>(new PingusWorldMapStat (System::basename(filename)));
+  
+  if (!stat->empty ())
+    {
+      for (list<PingusWorldMapNode>::iterator i = graph_data.nodes.begin ();
+	   i != graph_data.nodes.end ();
+	   ++i)
+	{
+	  i->finished = stat->finished (i->id);
+      
+	  if (!i->accessible)
+	    i->accessible = stat->accessible (i->id);
+	}
+    }
 }
 
 PingusWorldMap::~PingusWorldMap ()
 {
   delete graph;
   delete pingus;
+}
+
+void 
+PingusWorldMap::save ()
+{
+  std::cout << "PingusWorldMap:save()" << std::endl;
+  stat->save (graph_data.nodes);
 }
 
 CL_Vector 
@@ -103,9 +130,34 @@ PingusWorldMap::init ()
 }
 
 void 
+PingusWorldMap::disable_button_events ()
+{
+  catch_input = false;
+}
+  
+void 
+PingusWorldMap::enable_button_events ()
+{
+  catch_input = true;
+}
+
+void 
 PingusWorldMap::on_button_press (CL_InputDevice *device, const CL_Key &key)
 {
-  if (device == CL_Input::pointers[0])
+  if (!catch_input) return;
+
+  if (device == CL_Input::keyboards[0])
+    {
+      switch(key.id)
+	{
+	case CL_KEY_ESCAPE:
+	  do_quit = true;
+	  break;
+	default:
+	  break;
+	}
+    }
+  else if (device == CL_Input::pointers[0])
     {
       CL_Vector offset = get_offset ();
       
@@ -166,6 +218,7 @@ PingusWorldMap::on_button_press (CL_InputDevice *device, const CL_Key &key)
 void 
 PingusWorldMap::on_button_release (CL_InputDevice *device, const CL_Key &key)
 {
+  if (!catch_input) return;
 }
 
 void
@@ -203,7 +256,10 @@ PingusWorldMap::start_level (PingusWorldMapNode* node)
       delete provider;
 
       PingusGameSession game (node->levelname);
+      
+      // Launch the game and wait until it is finished
       game.start ();
+
       if (game.get_results ().finished ())
 	{
 	  node->finished = true;
@@ -220,6 +276,8 @@ PingusWorldMap::start_level (PingusWorldMapNode* node)
 		    i->accessible = true;
 		}
 	    }
+	  // Save the changes
+	  save ();
 	}
       else
 	{
@@ -233,6 +291,9 @@ PingusWorldMap::draw ()
 {
   CL_Vector offset = get_offset ();
   
+  if (offset.x > 0)
+    CL_Display::clear_display ();
+
   background.put_screen (offset.x, offset.y);
 
   graph_data.draw(offset);
@@ -256,12 +317,27 @@ PingusWorldMap::draw ()
 	    }
 	}
     }
-  
+
   PingusWorldMapNode* node = get_node (CL_Mouse::get_x () - offset.x,
 				       CL_Mouse::get_y () - offset.y);
+  // The mouse is over a node
   if (node)
     {
       dot_border.put_screen (node->pos + offset);
+      
+      PingusWorldMapNode* node = pingus->get_node ();
+      if (node)
+	{
+	  font->print_center (CL_Display::get_width ()/2, CL_Display::get_height () - 40,
+			      ("Levelname: " + System::translate(node->get_plf ()->get_levelname ())).c_str ());
+
+	  if (node->finished)
+	    font->print_center (CL_Display::get_width ()/2, CL_Display::get_height () - 20,
+				"100%");
+	  else
+	    font->print_center (CL_Display::get_width ()/2, CL_Display::get_height () - 20,
+				"0%");
+	}
     }
 
   pingus->draw (offset);

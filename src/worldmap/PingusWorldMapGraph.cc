@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapGraph.cc,v 1.10 2001/04/06 15:04:46 grumbel Exp $
+//  $Id: PingusWorldMapGraph.cc,v 1.11 2001/04/07 16:48:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,9 +20,23 @@
 #include <ClanLib/core.h>
 #include <ClanLib/display.h>
 
+#include "../XMLPLF.hh"
+#include "../Console.hh"
 #include "../XMLhelper.hh"
 #include "../StringConverter.hh"
 #include "PingusWorldMapGraph.hh"
+
+boost::shared_ptr<PLF>
+PingusWorldMapNode::get_plf ()
+{
+  if (plf.get () == 0) 
+    {
+      console << "Loading levelname" << std::endl;
+      plf = boost::shared_ptr<PLF> (new XMLPLF (levelname));
+    }
+  
+  return plf;
+}
 
 PingusWorldMapGraph::PingusWorldMapGraph ()
 {
@@ -130,7 +144,7 @@ PingusWorldMapGraph::parse_node (xmlNodePtr cur)
 	{
 	  char* level = (char*)xmlGetProp(cur, (xmlChar*)"name");
 	  if (level)
-	    node.levelname = level;
+	    node.levelname = std::string("levels/") + level;
 	  else
 	    std::cout << "PingusWorldMapGraph::parse_node: no levelname given" << std::endl;
 	}

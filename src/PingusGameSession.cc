@@ -1,4 +1,4 @@
-//  $Id: PingusGameSession.cc,v 1.2 2001/04/06 13:21:44 grumbel Exp $
+//  $Id: PingusGameSession.cc,v 1.3 2001/04/07 16:48:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "TrueServer.hh"
 #include "PingusGameSession.hh"
 
 bool
@@ -39,17 +40,20 @@ PingusGameSessionResults::percentage_time ()
 }
 
 PingusGameSession::PingusGameSession (std::string arg_filename)
-  : filename (arg_filename)
+  : filename (arg_filename),
+    server (new TrueServer ()),
+    client (new Client(server.get ()))
 {
 }
 
 PingusGameSession::~PingusGameSession ()
-{
-}
+{}
 
 void 
 PingusGameSession::start ()
 {
+  // Giving control to the client here... Client should be rewritten
+  client->start(filename);
 }
 
 PingusGameSessionResults 

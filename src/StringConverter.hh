@@ -1,4 +1,4 @@
-//  $Id: StringConverter.hh,v 1.3 2001/03/30 09:19:23 grumbel Exp $
+//  $Id: StringConverter.hh,v 1.4 2001/04/07 16:48:30 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,6 +37,7 @@ public:
   static float to_float(const std::string&);
 
   static std::string to_string (int i);
+  static std::string to_string (long int i);
   static std::string to_string (float i);
 };
 
