@@ -1,5 +1,5 @@
 /* This level was created with the PLE
- * $Id: sortie2.plf,v 1.4 2000/07/14 12:10:17 grumbel Exp $
+ * $Id: sortie2.plf,v 1.5 2000/08/14 21:49:23 grumbel Exp $
  */
 global {
   author = "Ingo Ruhnke <grumbel@gmx.de>";
@@ -9,7 +9,7 @@ global {
   description = "And again, two troops of Pingus which you have to coordinate.";
   number_of_pingus = 100;
   number_to_save = 60;
-  time = 15000;
+  time = -1;
 }
 
 ground {

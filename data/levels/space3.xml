@@ -13,24 +13,24 @@
     <height>1600</height>
   </global>
 
-  <background>
-    <surface><resource type="datafile">
-	<resource-datafile>textures.dat</resource-datafile>
-	<resource-ident>Textures/stars</resource-ident>
-      </resource></surface>
-    <color>
-      <red>0</red>
-      <green>0</green>
-      <blue>0</blue>
-      <alpha>0</alpha>
-    </color>
-    <scroll-x>0</scroll-x>
-    <scroll-y>10</scroll-y>
-    <para-x>0.5</para-x>
-    <para-y>0.5</para-y>
-    <stretch-x>0</stretch-x>
-    <stretch-y>0</stretch-y>
-  </background>
+<background>
+  <surface><resource type="datafile">
+    <resource-datafile>textures.dat</resource-datafile>
+  <resource-ident>Textures/cyanspace</resource-ident>
+  </resource></surface>
+  <color>
+    <red>0</red>
+    <green>0</green>
+    <blue>0</blue>
+    <alpha>0</alpha>
+  </color>
+  <scroll-x>0</scroll-x>
+  <scroll-y>10</scroll-y>
+  <para-x>0.5</para-x>
+  <para-y>0.5</para-y>
+  <stretch-x>0</stretch-x>
+  <stretch-y>0</stretch-y>
+</background>
 
   <action-list>
     <basher>20</basher>
@@ -43,13 +43,6 @@
     <jumper>20</jumper>
     <miner>20</miner>
   </action-list>
-
-  <start-position>
-    <position>
-      <x-pos>980</x-pos>
-      <y-pos>550</y-pos>
-    </position>
-  </start-position>
 
 <entrance>
   <position>
@@ -1375,6 +1368,14 @@
   <speed>1</speed>
   <parallax>1</parallax>
 </hotspot>
+
+  <start-position>
+  <position>
+    <x-pos>980</x-pos>
+    <y-pos>550</y-pos>
+    <z-pos>1000</z-pos>
+  </position>
+  </start-position>
 
 </pingus-level>
 

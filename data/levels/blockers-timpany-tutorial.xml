@@ -424,7 +424,7 @@ can make it stop by giving it another job.
 <hotspot>
   <surface><resource type="datafile">
     <resource-datafile>global</resource-datafile>
-  <resource-ident>Hotspots/tutorial_blocker</resource-ident>
+  <resource-ident>Hotspots/signposts/blocker</resource-ident>
   </resource></surface>
   <position>
     <x-pos>457</x-pos>

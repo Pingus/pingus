@@ -25,5 +25,5 @@ ground : (resource:global)GroundPieces/Snow/slopedr : -46 : 304;
 ground : (resource:global)GroundPieces/Snow/piece2 : 684 : 402;
 ground : (resource:global)GroundPieces/Snow/piece2 : 451 : 240;
 ground : (resource:global)GroundPieces/Snow/piece1 : 598 : 357;
-transparent : (resource:global)Hotspots/tutorial_blocker : 453 : 198;
+transparent : (resource:global)Hotspots/signposts/blocker : 453 : 198;
 transparent : (resource:global)Entrances/entrance : 273 : 207;

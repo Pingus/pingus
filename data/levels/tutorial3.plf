@@ -1,5 +1,5 @@
 /* This level was created with the PLE
- * $Id: tutorial3.plf,v 1.6 2000/07/14 12:10:17 grumbel Exp $
+ * $Id: tutorial3.plf,v 1.7 2000/08/14 21:49:23 grumbel Exp $
  */
 global {
   author = "Ingo Ruhnke <grumbel@gmx.de>";
@@ -71,7 +71,7 @@ hotspot {
 }
 
 hotspot {
-  image = (resource)"Hotspots/tutorial_bridger";
+  image = (resource)"Hotspots/signposts/bridger";
   x_pos = 400;
   y_pos = 434;
   z_pos = 100;
