@@ -1,4 +1,4 @@
-//  $Id: World.cc,v 1.59 2001/08/16 17:46:51 grumbel Exp $
+//  $Id: World.cc,v 1.60 2001/08/16 22:00:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -110,7 +110,7 @@ World::update(float delta)
 
   if (do_armageddon && armageddon_count != pingus->end())
     {
-      (*armageddon_count)->set_action(action_holder->get_uaction("bomber"));
+      (*armageddon_count)->set_action("bomber");
       armageddon_count++;
     }
   

@@ -1,4 +1,4 @@
-//  $Id: Pingu.hh,v 1.37 2001/08/13 21:35:37 grumbel Exp $
+//  $Id: Pingu.hh,v 1.38 2001/08/16 22:00:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -125,12 +125,12 @@ public:
   // Set the pingu in the gives direction
   void set_direction(Direction d);
 
-  ///
-  int  set_action(boost::shared_ptr<PinguAction>);
-  ///
-  void set_action (const std::string action_name);
-  ///
-  int  set_paction(boost::shared_ptr<PinguAction>);
+  int  set_action (boost::shared_ptr<PinguAction>);
+  void set_action (const std::string& action_name);
+
+  /// FIXME: Stupid function name, need a better one.
+  void  set_paction (boost::shared_ptr<PinguAction>);
+  void  set_paction (const std::string& action_name);
 
   ///
   boost::shared_ptr<PinguAction> get_action();

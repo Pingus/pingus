@@ -1,4 +1,4 @@
-//  $Id: ActionHolder.hh,v 1.13 2001/04/21 14:40:21 grumbel Exp $
+//  $Id: ActionHolder.hh,v 1.14 2001/08/16 22:00:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,8 +39,6 @@ class PinguAction;
 class ActionHolder
 {
 private:
-  static bool is_registered;
-
   /** A map holding the number of available actions. 
    *  For each action <i>name</i> there is a map (<i>name</i>, <i>n</i>)
    *  where the integer <i>n</i> indicates how much more actions 
@@ -48,26 +46,7 @@ private:
    */
   std::map<std::string, int> available_actions;
 
-  /** A stack of all the allocated actions, they will be deleted on
-   *  destruction. 
-   */
-  std::vector<boost::shared_ptr<PinguAction> > action_stack;
-
-  /** Returns a newed action coresponding to the given name.
-   */
-  static boost::shared_ptr<PinguAction> translate_action(const std::string&);
-
 public:
-  /**
-   * Creates a new ActionHolder
-   */
-  ActionHolder();
-
-  /**
-   * Destroys this ActionHolder
-   */
-  ~ActionHolder();
-
   /** Sets the number of actions, which are available in the pool.
    * @param name the name of the action
    * @param available the number of actions available
@@ -97,15 +76,6 @@ public:
    *  The deletion of the action is handled by this class.  
    */
   boost::shared_ptr<PinguAction> get_action(const std::string&);
-
-  /** Returns a newly allocated action by a given name. The action is not 
-   *  taken from the pool, so an unlimited number of actions
-   *  can be returned. In other words, this will never return 0, 
-   *  but it throws an exception if the given action name is unknown.
-   *
-   * @exception PingusError
-   */
-  boost::shared_ptr<PinguAction> get_uaction(const std::string&);
 };
 
 #endif

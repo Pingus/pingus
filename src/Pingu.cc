@@ -1,4 +1,4 @@
-//  $Id: Pingu.cc,v 1.65 2001/08/16 17:46:51 grumbel Exp $
+//  $Id: Pingu.cc,v 1.66 2001/08/16 22:00:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -61,7 +61,7 @@ Pingu::Pingu(const CL_Vector& arg_pos, int owner)
   velocity.x = 0;
   velocity.y = 0;
 
-  set_action(world->get_action_holder()->get_uaction("faller"));
+  set_action("faller");
 }
 
 Pingu::~Pingu()
@@ -192,19 +192,23 @@ Pingu::set_action(shared_ptr<PinguAction> act)
 }
 
 void 
-Pingu::set_action (const std::string action_name)
+Pingu::set_action (const std::string& action_name)
 {
-  set_action (shared_ptr<PinguAction>(PinguActionFactory::instance ()->create (action_name)));
+  set_action (PinguActionFactory::instance ()->create_sp (action_name));
+}
+
+void
+Pingu::set_paction(const std::string& action_name) 
+{
+  set_paction (PinguActionFactory::instance ()->create_sp (action_name));
 }
 
 // Sets an action without any checking
-int
+void
 Pingu::set_paction(shared_ptr<PinguAction> act) 
 {
   action = act;
   action->set_pingu(this);
-
-  return true;
 }
 
 PinguStatus
@@ -266,7 +270,7 @@ Pingu::update_persistent(float delta)
 		} 
 	      else 
 		{
-		  set_paction(world->get_action_holder()->get_uaction(persist[i]->get_name()));
+		  set_paction(persist[i]->get_name());
 		}
 	    }
 	}
@@ -320,9 +324,9 @@ Pingu::update_normal(float delta)
 {
   std::cout << "Pingu: No action set, setting action." << std::endl;
   if (rel_getpixel(0,-1) == ColMap::NOTHING)
-    set_action(get_world ()->get_action_holder()->get_uaction("faller"));
+    set_action("faller");
   else
-    set_action(get_world ()->get_action_holder()->get_uaction("walker"));
+    set_action("walker");
 }
 
 // Draws the pingu on the screen with the given offset

@@ -1,4 +1,4 @@
-//  $Id: PinguActionFactory.cc,v 1.1 2001/08/16 17:46:51 grumbel Exp $
+//  $Id: PinguActionFactory.cc,v 1.2 2001/08/16 22:00:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -99,6 +99,12 @@ PinguActionFactory::create (const std::string& id)
     throw PingusError("PinguActionFactory: Invalid id: " + id);
   else 
     return it->second->create ();
+}
+
+boost::shared_ptr<PinguAction> 
+PinguActionFactory::create_sp (const std::string& id)
+{
+  return boost::shared_ptr<PinguAction>(create (id));
 }
 
 void 

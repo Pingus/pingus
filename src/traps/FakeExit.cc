@@ -1,4 +1,4 @@
-//  $Id: FakeExit.cc,v 1.15 2001/08/10 10:56:14 grumbel Exp $
+//  $Id: FakeExit.cc,v 1.16 2001/08/16 22:00:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,7 @@
 #include "../World.hh"
 #include "FakeExit.hh"
 #include "../PingusResource.hh"
-#include "../ActionHolder.hh"
+#include "../PinguActionFactory.hh"
 
 FakeExit::FakeExit(const TrapData& data)
 {
@@ -65,7 +65,7 @@ FakeExit::catch_pingu(boost::shared_ptr<Pingu> pingu)
       }
 
       if (counter >= 3 && counter <= 5) {
-	pingu->set_action(world->get_action_holder()->get_uaction("smashed"));
+	pingu->set_action(PinguActionFactory::instance ()->create_sp ("smashed"));
       }
     }
 }

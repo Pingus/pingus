@@ -1,4 +1,4 @@
-//  $Id: PinguActionFactory.hh,v 1.1 2001/08/16 17:46:51 grumbel Exp $
+//  $Id: PinguActionFactory.hh,v 1.2 2001/08/16 22:00:50 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,7 @@
 
 #include <map>
 #include <string>
+#include "boost/smart_ptr.hpp"
 
 class PinguActionAbstractFactory;
 class PinguAction;
@@ -36,8 +37,12 @@ private:
   void register_core_actions ();
 public:
   static PinguActionFactory* instance ();
-  PinguAction* create (const std::string& id);
   void register_factory (const std::string& id, PinguActionAbstractFactory*);
+
+  /** Allocate the given action */
+  PinguAction* create (const std::string& id);
+  /** Allocate the given action into a shared_ptr<> */
+  boost::shared_ptr<PinguAction> create_sp (const std::string& id);
 };
 
 class PinguActionAbstractFactory

@@ -1,4 +1,4 @@
-//  $Id: Walker.cc,v 1.4 2001/08/12 18:36:41 grumbel Exp $
+//  $Id: Walker.cc,v 1.5 2001/08/16 22:00:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -75,7 +75,7 @@ Walker::update(float delta)
 		    {
 		      if (pingus_debug_flags & PINGUS_DEBUG_ACTIONS)
 			std::cout << "Pingu: We are in front of a wall, setting persistant action" << std::endl;
-		      pingu->set_paction(pingu->get_world ()->get_action_holder()->get_uaction(pingu->persist[i]->get_name()));
+		      pingu->set_paction(pingu->persist[i]->get_name());
 		    }
 		  return;
 		}
@@ -94,14 +94,14 @@ Walker::update(float delta)
 
   if (rel_getpixel(0,-1) & ColMap::WATER)
     {
-      pingu->set_paction(pingu->get_world ()->get_action_holder()->get_uaction("drown"));
+      pingu->set_paction ("drown");
       return;
     }
   else if (rel_getpixel(0,-1) == ColMap::NOTHING
 	   && rel_getpixel(0,-2) == ColMap::NOTHING)
     {
       // FIXME: We need better translation between walker and faller
-      pingu->set_action(pingu->get_world ()->get_action_holder()->get_uaction("faller"));
+      pingu->set_action("faller");
     }
 }
 

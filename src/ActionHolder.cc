@@ -1,4 +1,4 @@
-//  $Id: ActionHolder.cc,v 1.31 2001/08/16 17:46:50 grumbel Exp $
+//  $Id: ActionHolder.cc,v 1.32 2001/08/16 22:00:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,55 +29,6 @@
 
 using namespace boost;
 
-bool ActionHolder::is_registered = false;
-
-ActionHolder::ActionHolder()
-{
-  if (!is_registered)
-    {
-      //std::cout << "ActionHolder: Registering all actions..." <<
-      //std::endl; FIXME: Looks ugly, could use static init()
-      //functions or something like that.
-
-      /*      new RocketLauncherFactory ();
-
-      new WalkerFactory ();
-      new FallerFactory ();
-      new AngelFactory ();
-      new BasherFactory ();
-      new BoarderFactory ();
-      new BlockerFactory ();
-      new BomberFactory ();
-      new BridgerFactory ();
-      new ClimberFactory ();
-      new DiggerFactory ();
-      new ExiterFactory ();
-      new FloaterFactory ();
-      new MinerFactory ();
-      new JumperFactory ();
-      new TeleportedFactory ();
-      new ExiterFactory ();
-      new SmashedFactory ();
-      new LaserKillFactory ();
-      new SplashedFactory ();
-      new WaiterFactory ();
-      new DrownFactory ();
-      new SupermanFactory ();*/
-      //std::cout << "ActionHolder: Registering all actions...done" << std::endl;
-      is_registered = true;
-    }
-}
-
-ActionHolder::~ActionHolder()
-{
-  /*  for (std::vector<shared_ptr<PinguAction> >::iterator i = action_stack.begin(); 
-      i != action_stack.end();
-      i++)
-      {
-      delete *i;
-      }*/
-}
-
 void
 ActionHolder::set_actions(const std::string& name, int available)
 {
@@ -99,45 +50,23 @@ ActionHolder::get_available(const std::string& name)
 boost::shared_ptr<PinguAction>
 ActionHolder::get_action(const std::string& name)
 {
-  int* count;
-  
-  count = &(available_actions[name]);
-
-
-  if (*count > 0) 
+  if (unlimited_actions) // runtime option; defined in global.hh
+    {    
+      return shared_ptr<PinguAction>(PinguActionFactory::instance ()->create(name));
+    } 
+  else 
     {
-      (*count)--;
-      return get_uaction(name);
+      int& count = available_actions[name];
+      if (count > 0) 
+	{
+	  --count;
+	  return shared_ptr<PinguAction>(PinguActionFactory::instance ()->create(name));
+	}
+      else // Out of actions
+	{
+	  return shared_ptr<PinguAction>();
+	}
     }
-  else
-    {
-      if (unlimited_actions) {    // runtime option; defined in global.hh
-      	return get_uaction(name);
-      } else {
-        return shared_ptr<PinguAction>();
-      }
-    }
-}
-
-// Allocates an action from the given name
-shared_ptr<PinguAction>
-ActionHolder::translate_action(const std::string& name)
-{
-  return shared_ptr<PinguAction>(PinguActionFactory::instance ()->create(name));
-}
-
-// Returns an newly allocated action and adds it to the action_stack
-// to ensure a later cleanup.
-shared_ptr<PinguAction>
-ActionHolder::get_uaction(const std::string& name)
-{
-  shared_ptr<PinguAction> tmp_action;
-
-  tmp_action = translate_action(name);
-  
-  action_stack.push_back(tmp_action);
-
-  return tmp_action;
 }
 
 /* EOF */

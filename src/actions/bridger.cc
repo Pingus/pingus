@@ -1,4 +1,4 @@
-//  $Id: bridger.cc,v 1.44 2001/08/15 07:35:29 grumbel Exp $
+//  $Id: bridger.cc,v 1.45 2001/08/16 22:00:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -141,7 +141,7 @@ Bridger::update_build (float delta)
       	}
       else // Out of bricks
 	{
-	  pingu->set_action(pingu->get_world()->get_action_holder()->get_uaction("waiter"));
+	  pingu->set_action("waiter");
 	}     
     }
 

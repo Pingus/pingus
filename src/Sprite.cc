@@ -1,4 +1,4 @@
-//  $Id: Sprite.cc,v 1.13 2001/08/05 23:50:14 grumbel Exp $
+//  $Id: Sprite.cc,v 1.14 2001/08/16 22:00:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -206,6 +206,7 @@ Sprite::update (float delta)
       }
 
       if (round(frame) >= max_frames ()) {
+	is_finished = true;
 	frame = 0;
       }
       break;
@@ -228,7 +229,7 @@ Sprite::finished ()
   switch (looptype)
     {
     case ENDLESS:
-      return false;
+      return is_finished;
 
     case ONCE:
       return is_finished;

@@ -1,4 +1,4 @@
-//  $Id: basher.cc,v 1.25 2001/08/12 18:36:41 grumbel Exp $
+//  $Id: basher.cc,v 1.26 2001/08/16 22:00:50 grumbel Exp $
 //
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -68,7 +68,7 @@ Basher::update(float delta)
 	  if (basher_c % 2 == 0)
 	    bash();
 	}
-      else
+      else if (sprite.get_progress () > 0.6f)
 	{
 	  is_finished = true;
 	}

@@ -1,4 +1,4 @@
-//  $Id: LaserExit.cc,v 1.15 2001/08/10 10:56:14 grumbel Exp $
+//  $Id: LaserExit.cc,v 1.16 2001/08/16 22:00:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #include "../World.hh"
 #include "../ActionHolder.hh"
 #include "../PingusResource.hh"
+#include "../PinguActionFactory.hh"
 #include "LaserExit.hh"
 
 LaserExit::LaserExit(const TrapData& data)
@@ -66,7 +67,7 @@ LaserExit::catch_pingu(boost::shared_ptr<Pingu> pingu)
       {
 	if (!(pingu->get_action().get() && pingu->get_action()->get_name() == "LaserKill")) {
 	  killing = true;
-	  pingu->set_action(world->get_action_holder()->get_uaction("laserkill"));
+	  pingu->set_action(PinguActionFactory::instance ()->create_sp ("laserkill"));
 	}
       }
   }
