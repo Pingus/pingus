@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.84 2003/04/15 23:12:29 grumbel Exp $
+//   $Id: pingus_main.cxx,v 1.85 2003/04/15 23:56:40 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -522,7 +522,7 @@ PingusMain::check_args(int argc, char** argv)
         << "\n   --maintainer-mode        " << _("Enables some features, only interesting programmers")
         << "\n   --debug OPTION           " << _("Enable the output of debugging infos, possible")
         << "\n                            " << _("OPTION's are tiles, gametime, actions, sound, resources, gui,")
-        << "\n                            " << _("input, pathmgr")
+        << "\n                            " << "input, pathmgr"
         << "\n   --min-frame-skip N       " << _("Skip at least N frames, larger values speed the game up")
         << "\n   --max-frame-skip N       " << _("Skip at most N frames")
         << "\n   --frame-skip N           " << _("Set both min and max frameskip to N")

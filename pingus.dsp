@@ -1573,14 +1573,6 @@ SOURCE=.\src\pingu_holder.hxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\pingu_info.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\pingu_info.hxx
-# End Source File
-# Begin Source File
-
 SOURCE=.\src\pingu_map.cxx
 # End Source File
 # Begin Source File
