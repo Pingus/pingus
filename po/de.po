@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Pingus 0.6.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-08-30 14:55+0200\n"
+"POT-Creation-Date: 2004-03-02 19:33+0100\n"
 "PO-Revision-Date: 2003-04-15 17:31+0200\n"
 "Last-Translator: Ingo Ruhnke <grumbel@gmx.de>\n"
 "Language-Team: David Philippi <david@torangan.de>, Ingo Ruhnke <grumbel@gmx."
@@ -47,51 +47,51 @@ msgstr "-Portierung (Win32)"
 msgid "-Gfx"
 msgstr "-Grafiken"
 
-#: src/credits.cxx:80
+#: src/credits.cxx:81
 msgid "-Music"
 msgstr "-Musik"
 
-#: src/credits.cxx:86
+#: src/credits.cxx:87
 msgid "-Level Design"
 msgstr "-Level Design"
 
-#: src/credits.cxx:91
+#: src/credits.cxx:92
 msgid "-Story"
 msgstr "-Geschichte"
 
-#: src/credits.cxx:95
+#: src/credits.cxx:96
 msgid "-Translation"
 msgstr "-Übersetzung"
 
-#: src/credits.cxx:108
+#: src/credits.cxx:110
 msgid "-Special"
 msgstr "-Besonderen"
 
-#: src/credits.cxx:109
+#: src/credits.cxx:111
 msgid "-Thanks to"
 msgstr "-Dank an"
 
-#: src/credits.cxx:150
+#: src/credits.cxx:152
 msgid "_And a very Special Thanks"
 msgstr "_Und einen besonderen Dank"
 
-#: src/credits.cxx:151
+#: src/credits.cxx:153
 msgid "_to all the people who"
 msgstr "_an alle Leute die"
 
-#: src/credits.cxx:152
+#: src/credits.cxx:154
 msgid "_contribute to"
 msgstr "_an Freier Software"
 
-#: src/credits.cxx:153
+#: src/credits.cxx:155
 msgid "_Free Software!"
 msgstr "_mitarbeiten!"
 
-#: src/credits.cxx:159
+#: src/credits.cxx:161
 msgid "_Thank you for"
 msgstr "_Dankeschön fürs"
 
-#: src/credits.cxx:160
+#: src/credits.cxx:162
 msgid "_playing!"
 msgstr "_spielen!"
 
@@ -362,7 +362,7 @@ msgstr "e - Eingang"
 
 #: src/editor/object_selector.cxx:403
 msgid "x - Exit"
-msgstr "x - Beenden"
+msgstr "x - Ausgang"
 
 #: src/editor/object_selector.cxx:404
 msgid "l - Liquid"
@@ -764,7 +764,8 @@ msgstr "| segfault_handler: SIGSEGV abgefangen."
 
 #: src/pingus_main.cxx:98
 msgid "| Woops, Pingus just crashed, congratulations you've found a bug."
-msgstr "| Woops, Pingus ist abgestürzt. Gratuliere, du hast einen Bug gefunden."
+msgstr ""
+"| Woops, Pingus ist abgestürzt. Gratuliere, du hast einen Bug gefunden."
 
 #: src/pingus_main.cxx:99
 msgid ""
@@ -1222,8 +1223,8 @@ msgid ""
 "which gave them wood to construct a float.\n"
 msgstr ""
 "Aber wie die Weisen sagten, ist Tutorial Island nicht nur\n"
-"eine Möglichkeit zum üben, es ist auch der erste Schritt in\n" 
-"die Welt, denn das Holz der Bäume am Ende der Insel liefert\n" 
+"eine Möglichkeit zum üben, es ist auch der erste Schritt in\n"
+"die Welt, denn das Holz der Bäume am Ende der Insel liefert\n"
 "gutes Material, um ein Floß zu bauen.\n"
 
 #: src/story.cxx:67
