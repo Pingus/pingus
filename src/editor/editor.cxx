@@ -1,4 +1,4 @@
-//  $Id: editor.cxx,v 1.48 2003/03/30 13:12:35 grumbel Exp $
+//  $Id: editor.cxx,v 1.49 2003/04/11 22:01:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -45,6 +45,7 @@
 #include "editor.hxx"
 #include "../path_manager.hxx"
 #include "../stat_manager.hxx"
+#include "../string_converter.hxx"
 #include "editor_view.hxx"
 
 #include <cstdio>
@@ -339,7 +340,15 @@ Editor::save_tmp_level ()
   localtime_r (&t, &current_time);
   strftime (buffer, 32, "%s", &current_time);
 */
-  std::string filename = System::get_backupdir () + "pingus-backup" + ".xml";
+  int backup_id = 0;
+  StatManager::instance()->get_int("next-backup-id", backup_id);
+
+  if (backup_id >= 50)
+    backup_id = 0;
+
+  StatManager::instance()->set_int("next-backup-id", backup_id + 1);
+  
+  std::string filename = System::get_backupdir () + "pingus-backup-" + to_string(backup_id) + ".xml";
   std::cout << "Editor: saving backup level to: " << filename << std::endl;
   object_manager->save_level_xml(filename.c_str());
   return filename;
