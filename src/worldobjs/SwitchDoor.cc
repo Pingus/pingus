@@ -1,4 +1,4 @@
-//  $Id: SwitchDoor.cc,v 1.29 2002/06/08 23:11:09 torangan Exp $
+//  $Id: SwitchDoor.cc,v 1.30 2002/06/09 13:03:11 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,25 +30,8 @@ SwitchDoorData::SwitchDoorData ()
   door_height = 10;
 }
 
-void 
-SwitchDoorData::write_xml(std::ofstream* xml)
+SwitchDoorData::SwitchDoorData (xmlDocPtr doc, xmlNodePtr cur)
 {
-  (*xml) << "  <worldobj type=\"switchdoor\">\n";
-  (*xml) << "    <switch>\n";
-  XMLhelper::write_vector_xml (xml, switch_pos);
-  (*xml) << "    </switch>\n"
-	 << "    <door>\n"
-	 << "    <height>\n" << door_height << "</height>\n";
-  XMLhelper::write_vector_xml (xml, door_pos);
-  (*xml) << "    </door>\n"
-	 << "  </worldobj>\n" << std::endl;
-}
-
-boost::shared_ptr<WorldObjData>
-SwitchDoorData::create(xmlDocPtr doc, xmlNodePtr cur)
-{
-  SwitchDoorData* data = new SwitchDoorData ();
-
   cur = cur->children;
   
   while (cur != NULL)
@@ -71,7 +54,7 @@ SwitchDoorData::create(xmlDocPtr doc, xmlNodePtr cur)
 	      
 	      if (strcmp((char*)subcur->name, "position") == 0)
 		{
-		  data->switch_pos = XMLhelper::parse_vector (doc, subcur);
+		  switch_pos = XMLhelper::parse_vector (doc, subcur);
 		}
 	      else
 		std::cout << "SwitchDoorData: switch: Unhandled " << subcur->name << std::endl;
@@ -92,11 +75,11 @@ SwitchDoorData::create(xmlDocPtr doc, xmlNodePtr cur)
 	      
 	      if (strcmp((char*)subcur->name, "position") == 0)
 		{
-		  data->door_pos = XMLhelper::parse_vector (doc, subcur);
+		  door_pos = XMLhelper::parse_vector (doc, subcur);
 		}
 	      else if (strcmp((char*)subcur->name, "height") == 0)
 		{
-		  data->door_height = XMLhelper::parse_int (doc, subcur);
+		  door_height = XMLhelper::parse_int (doc, subcur);
 		}
 	      else
 		std::cout << "SwitchDoor::door: Unhandled " << subcur->name << std::endl;
@@ -106,8 +89,20 @@ SwitchDoorData::create(xmlDocPtr doc, xmlNodePtr cur)
 	}
       cur = cur->next;
     }
-  
-  return   boost::shared_ptr<WorldObjData>(data);
+}
+
+void 
+SwitchDoorData::write_xml(std::ofstream* xml)
+{
+  (*xml) << "  <worldobj type=\"switchdoor\">\n";
+  (*xml) << "    <switch>\n";
+  XMLhelper::write_vector_xml (xml, switch_pos);
+  (*xml) << "    </switch>\n"
+	 << "    <door>\n"
+	 << "    <height>\n" << door_height << "</height>\n";
+  XMLhelper::write_vector_xml (xml, door_pos);
+  (*xml) << "    </door>\n"
+	 << "  </worldobj>\n" << std::endl;
 }
 
 /** Create an WorldObj from the given data object */

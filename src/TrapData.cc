@@ -1,4 +1,4 @@
-//  $Id: TrapData.cc,v 1.10 2002/06/08 21:43:36 grumbel Exp $
+//  $Id: TrapData.cc,v 1.11 2002/06/09 13:03:11 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,20 +31,8 @@
 #include "XMLhelper.hh"
 #include "TrapData.hh"
 
-void
-TrapData::write_xml(std::ofstream* xml)
+TrapData::TrapData (xmlDocPtr doc, xmlNodePtr cur)
 {
-    (*xml) << "<trap>\n"
-	 << "  <type>" << type << "</type>\n";
-  XMLhelper::write_vector_xml(xml, pos);
-  (*xml) << "</trap>\n"
-	 << std::endl;
-}
-
-boost::shared_ptr<WorldObjData>
-TrapData::create(xmlDocPtr doc, xmlNodePtr cur)
-{
-  TrapData* trap = new TrapData ();
   cur = cur->children;
   while (cur != NULL)
     {
@@ -60,18 +48,27 @@ TrapData::create(xmlDocPtr doc, xmlNodePtr cur)
 	  if (name)
 	    {
 	      // std::cout << "parse_trap: name = " << name << std::endl;
-	      trap->type = name;
+	      type = name;
 	      free(name);
 	    }
 	} 
       else if (strcmp((char*)cur->name, "position") == 0) 
 	{
-	  trap->pos = XMLhelper::parse_vector(doc, cur);
+	  pos = XMLhelper::parse_vector(doc, cur);
 	}
 
       cur = cur->next;
     }
-  return boost::shared_ptr<WorldObjData>(trap);
+}
+
+void
+TrapData::write_xml(std::ofstream* xml)
+{
+    (*xml) << "<trap>\n"
+	 << "  <type>" << type << "</type>\n";
+  XMLhelper::write_vector_xml(xml, pos);
+  (*xml) << "</trap>\n"
+	 << std::endl;
 }
 
 boost::shared_ptr<WorldObj> 

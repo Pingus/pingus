@@ -1,4 +1,4 @@
-//  $Id: HotspotData.cc,v 1.7 2002/06/08 23:11:07 torangan Exp $
+//  $Id: HotspotData.cc,v 1.8 2002/06/09 13:03:11 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,10 +34,8 @@ HotspotData::write_xml(std::ofstream* xml)
 	 << std::endl;  
 }
 
-boost::shared_ptr<WorldObjData> 
-HotspotData::create(xmlDocPtr doc, xmlNodePtr cur)
+HotspotData::HotspotData (xmlDocPtr doc, xmlNodePtr cur)
 {
-  HotspotData* hotspot = new HotspotData ();
   cur = cur->children;
   while (cur != NULL)
     {
@@ -49,19 +47,19 @@ HotspotData::create(xmlDocPtr doc, xmlNodePtr cur)
       
       if (strcmp((char*)cur->name, "surface") == 0)
 	{
-	  hotspot->desc = XMLhelper::parse_surface(doc, cur);
+	  desc = XMLhelper::parse_surface(doc, cur);
 	} 
       else if (strcmp((char*)cur->name, "position") == 0) 
 	{
-	  hotspot->pos = XMLhelper::parse_vector(doc, cur);
+	  pos = XMLhelper::parse_vector(doc, cur);
 	}
       else if (strcmp((char*)cur->name, "speed") == 0) 
 	{
-	  hotspot->speed = XMLhelper::parse_int(doc, cur);
+	  speed = XMLhelper::parse_int(doc, cur);
 	}
       else if (strcmp((char*)cur->name, "parallax") == 0) 
 	{
-	  hotspot->para = XMLhelper::parse_int(doc, cur);
+	  para = XMLhelper::parse_int(doc, cur);
 	}
       else
 	{
@@ -69,8 +67,6 @@ HotspotData::create(xmlDocPtr doc, xmlNodePtr cur)
 	}
       cur = cur->next;
     }
-  
-  return boost::shared_ptr<WorldObjData> (hotspot);
 }
 
 boost::shared_ptr<WorldObj> 

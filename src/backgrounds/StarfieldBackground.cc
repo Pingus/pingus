@@ -1,4 +1,4 @@
-//  $Id: StarfieldBackground.cc,v 1.20 2002/06/08 20:19:54 torangan Exp $
+//  $Id: StarfieldBackground.cc,v 1.21 2002/06/09 13:03:11 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,14 +43,11 @@ StarfieldBackgroundData::write_xml(std::ofstream* xml)
 	 << std::endl;
 }
  
-boost::shared_ptr<WorldObjData>
-StarfieldBackgroundData::create(xmlDocPtr /*doc*/, xmlNodePtr cur)
+StarfieldBackgroundData::StarfieldBackgroundData (xmlDocPtr /*doc*/, xmlNodePtr cur)
 {
-  StarfieldBackgroundData* data = new StarfieldBackgroundData ();
-
-  data->small_stars_count = 100;
-  data->middle_stars_count = 50;
-  data->large_stars_count = 25;
+  small_stars_count = 100;
+  middle_stars_count = 50;
+  large_stars_count = 25;
 
   cur = cur->children;
 
@@ -67,7 +64,7 @@ StarfieldBackgroundData::create(xmlDocPtr /*doc*/, xmlNodePtr cur)
 	  char* count = (char*)xmlGetProp(cur, (xmlChar*)"count");
 	  if (count)
 	    {
-	      data->small_stars_count = StringConverter::to_int(count);
+	      small_stars_count = StringConverter::to_int(count);
 	      free (count);
 	    }
 	}
@@ -76,7 +73,7 @@ StarfieldBackgroundData::create(xmlDocPtr /*doc*/, xmlNodePtr cur)
 	  char* count = (char*)xmlGetProp(cur, (xmlChar*)"count");
 	  if (count)
 	    {
-	      data->middle_stars_count = StringConverter::to_int(count);
+	      middle_stars_count = StringConverter::to_int(count);
 	      free (count);
 	    }	  
 	}
@@ -85,7 +82,7 @@ StarfieldBackgroundData::create(xmlDocPtr /*doc*/, xmlNodePtr cur)
 	  char* count = (char*)xmlGetProp(cur, (xmlChar*)"count");
 	  if (count)
 	    {
-	      data->large_stars_count = StringConverter::to_int(count);
+	      large_stars_count = StringConverter::to_int(count);
 	      free (count);
 	    }	  
 	}
@@ -95,8 +92,6 @@ StarfieldBackgroundData::create(xmlDocPtr /*doc*/, xmlNodePtr cur)
 	} 
       cur = cur->next;
     }
-
-    return boost::shared_ptr<WorldObjData>(data);
 }
 
 boost::shared_ptr<WorldObj> 

@@ -1,4 +1,4 @@
-//  $Id: ConveyorBelt.hh,v 1.20 2002/06/07 14:50:35 torangan Exp $
+//  $Id: ConveyorBelt.hh,v 1.21 2002/06/09 13:03:11 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,12 +33,12 @@ public:
   double speed;
 
   ConveyorBeltData ();
+  ConveyorBeltData (xmlDocPtr doc, xmlNodePtr cur);
 
   /** Write the content of this object formatted as xml to the given
       stream */
   void write_xml(std::ofstream* xml);
   ///
-  static boost::shared_ptr<WorldObjData> create(xmlDocPtr doc, xmlNodePtr cur);
 
   /** Create an WorldObj from the given data object */
   boost::shared_ptr<WorldObj> create_WorldObj ();

@@ -1,4 +1,4 @@
-//  $Id: XMLPLF.cc,v 1.44 2002/06/08 21:43:36 grumbel Exp $
+//  $Id: XMLPLF.cc,v 1.45 2002/06/09 13:03:11 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -114,23 +114,23 @@ XMLPLF::parse_file()
 	    }
 	  else if (strcmp((char*)cur->name, "exit") == 0)
 	    {
-	      worldobjs_data.push_back (ExitData::create (doc, cur));
+	      worldobjs_data.push_back (new ExitData (doc, cur));
 	    }
 	  else if (strcmp((char*)cur->name, "entrance") == 0)
 	    {
-	      worldobjs_data.push_back (EntranceData::create (doc, cur));
+	      worldobjs_data.push_back (new EntranceData (doc, cur));
 	    }
 	  else if (strcmp((char*)cur->name, "trap") == 0)
 	    {
-	      worldobjs_data.push_back (TrapData::create (doc, cur));
+	      worldobjs_data.push_back (new TrapData (doc, cur));
 	    }
 	  else if (strcmp((char*)cur->name, "hotspot") == 0)
 	    {
-	      worldobjs_data.push_back(HotspotData::create (doc, cur));
+	      worldobjs_data.push_back(new HotspotData (doc, cur));
 	    }
 	  else if (strcmp((char*)cur->name, "liquid") == 0)
 	    {
-	      worldobjs_data.push_back(LiquidData::create (doc, cur));
+	      worldobjs_data.push_back(new LiquidData (doc, cur));
 	    }
 	  else if (strcmp ((char*)cur->name, "worldobj") == 0)
 	    {
@@ -235,23 +235,23 @@ XMLPLF::parse_group(xmlNodePtr cur)
 	}
       else if (strcmp((char*)cur->name, "exit") == 0)
 	{
-	  group->add (ExitData::create (doc, cur));
+	  group->add (new ExitData (doc, cur));
 	}
       else if (strcmp((char*)cur->name, "entrance") == 0)
 	{
-	  group->add (EntranceData::create (doc, cur));
+	  group->add (new EntranceData (doc, cur));
 	}
       else if (strcmp((char*)cur->name, "trap") == 0)
 	{
-	  group->add (TrapData::create (doc, cur));
+	  group->add (new TrapData (doc, cur));
 	}
       else if (strcmp((char*)cur->name, "hotspot") == 0)
 	{
-	  group->add(HotspotData::create (doc, cur));
+	  group->add(new HotspotData (doc, cur));
 	}
       else if (strcmp((char*)cur->name, "liquid") == 0)
 	{
-	  group->add(LiquidData::create (doc, cur));
+	  group->add(new LiquidData (doc, cur));
 	}
       else if (strcmp((char*)cur->name, "group") == 0)
 	{
@@ -268,7 +268,7 @@ XMLPLF::parse_group(xmlNodePtr cur)
       cur = cur->next;
     }
 
-  worldobjs_data.push_back (boost::shared_ptr<WorldObjData> (group));
+  worldobjs_data.push_back (group);
 }
 
 void 

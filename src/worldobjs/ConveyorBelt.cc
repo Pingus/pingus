@@ -1,4 +1,4 @@
-//  $Id: ConveyorBelt.cc,v 1.33 2002/06/08 21:43:36 grumbel Exp $
+//  $Id: ConveyorBelt.cc,v 1.34 2002/06/09 13:03:11 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -44,11 +44,8 @@ ConveyorBeltData::write_xml(std::ofstream* xml)
 	 << "  </worldobj>\n" << std::endl;
 }
 
-boost::shared_ptr<WorldObjData>
-ConveyorBeltData::create(xmlDocPtr doc, xmlNodePtr cur)
+ConveyorBeltData::ConveyorBeltData (xmlDocPtr doc, xmlNodePtr cur)
 {
-  ConveyorBeltData* data = new ConveyorBeltData ();
-
   cur = cur->children;
   
   while (cur != NULL)
@@ -60,22 +57,20 @@ ConveyorBeltData::create(xmlDocPtr doc, xmlNodePtr cur)
 	}
       else if (strcmp((char*)cur->name, "position") == 0)
 	{
-	  data->pos = XMLhelper::parse_vector (doc, cur);
+	  pos = XMLhelper::parse_vector (doc, cur);
 	}
       else if (strcmp((char*)cur->name, "width") == 0)
 	{
-	  data->width = XMLhelper::parse_int (doc, cur);
+	  width = XMLhelper::parse_int (doc, cur);
 	}
       else if (strcmp((char*)cur->name, "speed") == 0)
 	{
-	  data->speed = XMLhelper::parse_int (doc, cur);
+	  speed = XMLhelper::parse_int (doc, cur);
 	}
       else
 	std::cout << "ConveyorBeltData::create (): Unhandled " << cur->name << std::endl;
       cur = cur->next;
     }
-  
-  return boost::shared_ptr<WorldObjData>(data); 
 }
 
 boost::shared_ptr<WorldObj> 

@@ -1,4 +1,4 @@
-//  $Id: WorldObjDataFactory.cc,v 1.5 2001/11/30 20:22:20 grumbel Exp $
+//  $Id: WorldObjDataFactory.cc,v 1.6 2002/06/09 13:03:11 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -74,7 +74,7 @@ WorldObjDataFactory::instance ()
   return instance_;
 }
 
-boost::shared_ptr<WorldObjData>
+WorldObjData*
 WorldObjDataFactory::create (xmlDocPtr doc, xmlNodePtr cur)
 {
   std::cout << "WorldObjDataFactory::create (xmlDocPtr doc, xmlNodePtr cur)" << std::endl;
@@ -89,7 +89,7 @@ WorldObjDataFactory::create (xmlDocPtr doc, xmlNodePtr cur)
     }
 }
 
-boost::shared_ptr<WorldObjData> 
+WorldObjData*
 WorldObjDataFactory::create (const std::string& id,
 			     xmlDocPtr doc, xmlNodePtr cur)
 {
@@ -100,7 +100,7 @@ WorldObjDataFactory::create (const std::string& id,
   if (it == factories.end())
     throw PingusError("WorldObjDataFactory: Invalid id: " + id);
   else 
-    return boost::shared_ptr<WorldObjData> (it->second->create (doc, cur));
+    return it->second->create (doc, cur);
 }
 
 void

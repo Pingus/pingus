@@ -1,4 +1,4 @@
-//  $Id: PLF.hh,v 1.30 2002/06/08 23:11:07 torangan Exp $
+//  $Id: PLF.hh,v 1.31 2002/06/09 13:03:11 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -79,7 +79,10 @@ protected:
   std::vector<ActionData>   actions;
   std::vector<GroundpieceData>  groundpieces;
   std::vector<WeatherData>  weathers;
-  std::vector<boost::shared_ptr<WorldObjData> > worldobjs_data;
+
+  /** FIXME: PLF should probally become and interface only, it currently is a
+      bit overfull */
+  std::vector<WorldObjData*> worldobjs_data;
 
 public:
   ///
@@ -144,7 +147,14 @@ public:
   std::vector<ActionData>    get_actions(void);
   std::vector<GroundpieceData>   get_groundpieces(void);
   std::vector<WeatherData>   get_weather(void);
-  std::vector<boost::shared_ptr<WorldObjData> > get_worldobjs_data ();
+
+  /** Return a access to the worldobj_data, the caller must not delete
+      anything in this vector */
+  std::vector<WorldObjData*> get_worldobjs_data ();
+
+  /** Creates a PLF (XMLPLF or PLFPLF, depending on the file
+      extension) from a file. The pathname must be complete */
+  static PLF* create (const std::string& pathname);
 };
 
 #endif

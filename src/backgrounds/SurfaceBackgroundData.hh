@@ -1,4 +1,4 @@
-//  $Id: SurfaceBackgroundData.hh,v 1.15 2002/06/08 21:48:49 grumbel Exp $
+//  $Id: SurfaceBackgroundData.hh,v 1.16 2002/06/09 13:03:11 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -67,6 +67,11 @@ public:
   /// Init all fields with some usefull defaults values.
   SurfaceBackgroundData();
   
+  /** Parse the xml snip and return a newly allocated
+      SurfaceBackgroundData*, the user is responsible to delete the
+      object */
+  SurfaceBackgroundData(xmlDocPtr doc, xmlNodePtr cur);
+
   /// Empty destructor
   virtual ~SurfaceBackgroundData();
 
@@ -74,11 +79,6 @@ public:
       stream */
   void write_xml(std::ofstream* xml);
   
-  /** Parse the xml snip and return a newly allocated
-      SurfaceBackgroundData*, the user is responsible to delete the
-      object */
-  static boost::shared_ptr<WorldObjData> create(xmlDocPtr doc, xmlNodePtr cur);
-
   boost::shared_ptr<WorldObj> create_WorldObj();
   EditorObjLst create_EditorObj();
 };

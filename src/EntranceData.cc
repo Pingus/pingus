@@ -1,4 +1,4 @@
-//  $Id: EntranceData.cc,v 1.7 2002/06/08 23:11:07 torangan Exp $
+//  $Id: EntranceData.cc,v 1.8 2002/06/09 13:03:11 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,10 +24,8 @@
 #include "StringConverter.hh"
 #include "XMLhelper.hh"
 
-boost::shared_ptr<WorldObjData> 
-EntranceData::create(xmlDocPtr doc, xmlNodePtr cur)
+EntranceData::EntranceData (xmlDocPtr doc, xmlNodePtr cur)
 {
-  EntranceData* entrance = new EntranceData ();
   cur = cur->children;  
   while (cur != NULL)
     {
@@ -40,35 +38,35 @@ EntranceData::create(xmlDocPtr doc, xmlNodePtr cur)
       if (strcmp((char*)cur->name, "type") == 0)
 	{
 	  char* name = (char*)xmlNodeListGetString(doc, cur->children, 1); 
-	  entrance->type = name;
+	  type = name;
 	  free(name);
 	}
       else if (strcmp((char*)cur->name, "owner-id") == 0)
 	{
-	  entrance->owner_id = XMLhelper::parse_int(doc, cur);
+	  owner_id = XMLhelper::parse_int(doc, cur);
 	}
       else if (strcmp((char*)cur->name, "position") == 0)
 	{
-	  entrance->pos = XMLhelper::parse_vector(doc, cur);
+	  pos = XMLhelper::parse_vector(doc, cur);
 	}
       else if (strcmp((char*)cur->name, "release-rate") == 0)
 	{
-	  char* release_rate = (char*)xmlNodeListGetString(doc, cur->children, 1);
-	  entrance->release_rate = StringConverter::to_int(release_rate);
-	  free(release_rate);
+	  char* release_rate_str = (char*)xmlNodeListGetString(doc, cur->children, 1);
+	  release_rate = StringConverter::to_int(release_rate_str);
+	  free(release_rate_str);
 	}
       else if (strcmp((char*)cur->name, "direction") == 0)
 	{
-	  char* direction = (char*)xmlNodeListGetString(doc, cur->children, 1);
+	  char* direction_str = (char*)xmlNodeListGetString(doc, cur->children, 1);
 
-	  if (strcmp(direction, "left") == 0)
-	    entrance->direction = EntranceData::LEFT;
-	  else if (strcmp(direction, "right") == 0)
-	    entrance->direction = EntranceData::RIGHT;
-	  else if (strcmp(direction, "misc") == 0)
-	    entrance->direction = EntranceData::MISC;
+	  if (strcmp(direction_str, "left") == 0)
+	    direction = EntranceData::LEFT;
+	  else if (strcmp(direction_str, "right") == 0)
+	    direction = EntranceData::RIGHT;
+	  else if (strcmp(direction_str, "misc") == 0)
+	    direction = EntranceData::MISC;
 	  
-	  free(direction);
+	  free(direction_str);
 	}
       else
 	{
@@ -76,8 +74,6 @@ EntranceData::create(xmlDocPtr doc, xmlNodePtr cur)
 	}	
       cur = cur->next;	
     }
-  
-  return boost::shared_ptr<WorldObjData>(entrance);
 }
 
 void 

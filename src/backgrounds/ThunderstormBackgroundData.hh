@@ -1,4 +1,4 @@
-//  $Id: ThunderstormBackgroundData.hh,v 1.8 2002/06/08 20:19:54 torangan Exp $
+//  $Id: ThunderstormBackgroundData.hh,v 1.9 2002/06/09 13:03:11 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,15 +31,15 @@ class ThunderstormBackgroundData : public WorldObjData
 public:
   CL_Vector pos;
 
-  ThunderstormBackgroundData() {}
+  ThunderstormBackgroundData () {}
+  ThunderstormBackgroundData (xmlDocPtr doc, xmlNodePtr cur);
+
   virtual ~ThunderstormBackgroundData() {}
 
   /** Writte the content of this object formated as xml to the given
       stream */
   virtual void write_xml(std::ofstream* xml);
   
-  static boost::shared_ptr<WorldObjData> create(xmlDocPtr doc, xmlNodePtr cur);
-
   boost::shared_ptr<WorldObj> create_WorldObj();
   EditorObjLst create_EditorObj();
 };

@@ -1,4 +1,4 @@
-//  $Id: LiquidData.cc,v 1.8 2002/06/08 21:43:36 grumbel Exp $
+//  $Id: LiquidData.cc,v 1.9 2002/06/09 13:03:11 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,23 +36,21 @@ LiquidData::write_xml(std::ofstream* xml)
 	 << "</liquid>\n" << std::endl;
 }
 
-boost::shared_ptr<WorldObjData> 
-LiquidData::create(xmlDocPtr doc, xmlNodePtr cur)
+LiquidData::LiquidData (xmlDocPtr doc, xmlNodePtr cur)
 {
   std::cout << "LiquidData::create(xmlDocPtr doc, xmlNodePtr cur)" << std::endl;
-  LiquidData* liquid = new LiquidData ();
   
   char* width_handling = (char*)xmlGetProp(cur, (xmlChar*)"use-old-width-handling");
   if (width_handling)
     {
       std::cout << "XMLPLF: Use Old Width Handling: " << width_handling << std::endl;
-      liquid->old_width_handling 
+      old_width_handling 
 	= static_cast<bool>(StringConverter::to_int (width_handling));
       free (width_handling);
     }
   else
     {
-      liquid->old_width_handling = true;
+      old_width_handling = true;
     }
 
   cur = cur->children;
@@ -65,13 +63,13 @@ LiquidData::create(xmlDocPtr doc, xmlNodePtr cur)
 	}
 
       if (strcmp((char*)cur->name, "position") == 0)
-	liquid->pos = XMLhelper::parse_vector(doc, cur);
+	pos = XMLhelper::parse_vector(doc, cur);
       else if (strcmp((char*)cur->name, "surface") == 0)
-	liquid->desc = XMLhelper::parse_surface(doc, cur);
+	desc = XMLhelper::parse_surface(doc, cur);
       else if (strcmp((char*)cur->name, "speed") == 0)
-	liquid->speed = XMLhelper::parse_int(doc, cur);
+	speed = XMLhelper::parse_int(doc, cur);
       else if (strcmp((char*)cur->name, "width") == 0)
-	liquid->width = XMLhelper::parse_int(doc, cur);
+	width = XMLhelper::parse_int(doc, cur);
       else
 	{
 	  std::cout << "XMLPLF::parse_liquid: Unhandled: " << cur->name << std::endl;
@@ -79,8 +77,6 @@ LiquidData::create(xmlDocPtr doc, xmlNodePtr cur)
 
       cur = cur->next;
     }
-
-  return boost::shared_ptr<WorldObjData> (liquid);
 }
 
 boost::shared_ptr<WorldObj> 

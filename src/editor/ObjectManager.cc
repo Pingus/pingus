@@ -1,4 +1,4 @@
-//  $Id: ObjectManager.cc,v 1.63 2002/06/08 23:11:08 torangan Exp $
+//  $Id: ObjectManager.cc,v 1.64 2002/06/09 13:03:11 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -152,7 +152,7 @@ ObjectManager::load_level (const std::string & filename)
     }
 
   vector<WeatherData>  temp_weather  = plf->get_weather();
-  vector<boost::shared_ptr<WorldObjData> > temp_worldobj = plf->get_worldobjs_data();
+  vector<WorldObjData*> temp_worldobj = plf->get_worldobjs_data();
 
   for (vector<GroundpieceData>::iterator i = temp_surfaces.begin(); i != temp_surfaces.end(); ++i) {
     const list<boost::shared_ptr<EditorObj> > & temp = i->create_EditorObj();
@@ -165,7 +165,7 @@ ObjectManager::load_level (const std::string & filename)
     editor_objs.insert(editor_objs.end(), temp.begin(), temp.end() );
   }
 
-  for (vector<boost::shared_ptr<WorldObjData> >::iterator i = temp_worldobj.begin();
+  for (vector<WorldObjData*>::iterator i = temp_worldobj.begin();
       i != temp_worldobj.end();
       ++i) {
     const list<boost::shared_ptr<EditorObj> > & temp = (*i)->create_EditorObj();

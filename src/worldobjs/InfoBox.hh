@@ -1,4 +1,4 @@
-//  $Id: InfoBox.hh,v 1.5 2002/06/08 23:11:09 torangan Exp $
+//  $Id: InfoBox.hh,v 1.6 2002/06/09 13:03:11 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,6 +31,7 @@ class InfoBoxData : public WorldObjData
 {
 public:
   InfoBoxData ();
+  InfoBoxData (xmlDocPtr doc, xmlNodePtr cur);
   ~InfoBoxData ();
 
   std::string info_text;
@@ -40,7 +41,6 @@ public:
   void write_xml(std::ofstream* xml);  
   boost::shared_ptr<WorldObj> create_WorldObj();
   EditorObjLst create_EditorObj();
-  static boost::shared_ptr<WorldObjData> create(xmlDocPtr doc, xmlNodePtr cur);
 };
 
 class InfoBox : public InfoBoxData,

@@ -1,4 +1,4 @@
-//  $Id: ExitData.hh,v 1.8 2002/06/08 20:19:53 torangan Exp $
+//  $Id: ExitData.hh,v 1.9 2002/06/09 13:03:11 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -44,6 +44,8 @@ public:
 
   ///
   ExitData() { clean (); }
+  ExitData (xmlDocPtr doc, xmlNodePtr cur);
+
   /// Reset the values to default
   void clean(void) 
   { 
@@ -52,7 +54,6 @@ public:
   }
 
   void write_xml(std::ofstream *);
-  static boost::shared_ptr<WorldObjData> create(xmlDocPtr doc, xmlNodePtr cur);
   
   boost::shared_ptr<WorldObj> create_WorldObj();
   EditorObjLst create_EditorObj();

@@ -1,4 +1,4 @@
-//  $Id: World.cc,v 1.69 2002/06/08 16:08:16 grumbel Exp $
+//  $Id: World.cc,v 1.70 2002/06/09 13:03:11 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -194,8 +194,8 @@ World::init_map()
 void
 World::init_worldobjs()
 {
-  vector<WeatherData>  weather_d  = plf->get_weather();
-  vector<shared_ptr<WorldObjData> > worldobj_d = plf->get_worldobjs_data ();
+  vector<WeatherData>   weather_d  = plf->get_weather();
+  vector<WorldObjData*> worldobj_d = plf->get_worldobjs_data ();
 
   for(vector<WeatherData>::iterator i = weather_d.begin();
       i != weather_d.end();
@@ -204,7 +204,7 @@ World::init_worldobjs()
       world_obj.push_back(WeatherGenerator::create(*i));
     }
 
-  for (vector<shared_ptr<WorldObjData> >::iterator i = worldobj_d.begin ();
+  for (vector<WorldObjData*>::iterator i = worldobj_d.begin ();
        i != worldobj_d.end ();
        i++)
     {

@@ -1,4 +1,4 @@
-//  $Id: IceBlock.cc,v 1.27 2002/06/08 23:11:09 torangan Exp $
+//  $Id: IceBlock.cc,v 1.28 2002/06/09 13:03:11 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,11 +41,8 @@ IceBlockData::write_xml(std::ofstream* xml)
 }
 
 ///
-boost::shared_ptr<WorldObjData>
-IceBlockData::create(xmlDocPtr doc, xmlNodePtr cur)
+IceBlockData::IceBlockData (xmlDocPtr doc, xmlNodePtr cur)
 {
-  IceBlockData* data = new IceBlockData ();
-
   cur = cur->children;
   
   while (cur != NULL)
@@ -57,18 +54,16 @@ IceBlockData::create(xmlDocPtr doc, xmlNodePtr cur)
 	}
       else if (strcmp((char*)cur->name, "position") == 0)
 	{
-	  data->pos = XMLhelper::parse_vector (doc, cur);
+	  pos = XMLhelper::parse_vector (doc, cur);
 	}
       else if (strcmp((char*)cur->name, "width") == 0)
 	{
-	  data->width = XMLhelper::parse_int (doc, cur);
+	  width = XMLhelper::parse_int (doc, cur);
 	}
       else
 	std::cout << "IceBlockData::creata (): Unhandled " << cur->name << std::endl;
       cur = cur->next;
     }
-  
-  return boost::shared_ptr<WorldObjData>(data);
 }
 
 boost::shared_ptr<WorldObj> 

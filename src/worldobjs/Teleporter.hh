@@ -1,4 +1,4 @@
-//  $Id: Teleporter.hh,v 1.27 2002/06/08 20:19:55 torangan Exp $
+//  $Id: Teleporter.hh,v 1.28 2002/06/09 13:03:11 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,14 +43,14 @@ public:
   CL_Vector target_pos;
   
   TeleporterData () {}
+  TeleporterData (xmlDocPtr doc, xmlNodePtr cur);
+
   TeleporterData (const TeleporterData& data);
   
   /** Write the content of this object formatted as xml to the given
       stream */
   void write_xml(std::ofstream* xml);
   
-  static boost::shared_ptr<WorldObjData> create(xmlDocPtr doc, xmlNodePtr cur);
-
   /** Create an WorldObj from the given data object */
   boost::shared_ptr<WorldObj> create_WorldObj ();
 

@@ -1,4 +1,4 @@
-//  $Id: EntranceData.hh,v 1.10 2002/06/08 23:11:07 torangan Exp $
+//  $Id: EntranceData.hh,v 1.11 2002/06/09 13:03:11 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,6 +41,8 @@ public:
   /// The type of the entrance type (woodthing, generic, etc.)
   std::string type;
 
+  EntranceData (xmlDocPtr doc, xmlNodePtr cur);
+
   EntranceData() {
     clean();
   }
@@ -55,7 +57,6 @@ public:
   }
 
   void write_xml(std::ofstream *);
-  static boost::shared_ptr<WorldObjData> create(xmlDocPtr doc, xmlNodePtr cur);
 
   EditorObjLst create_EditorObj();
   boost::shared_ptr<WorldObj> create_WorldObj();

@@ -1,4 +1,4 @@
-//  $Id: HotspotData.hh,v 1.8 2002/06/08 23:11:07 torangan Exp $
+//  $Id: HotspotData.hh,v 1.9 2002/06/09 13:03:11 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,6 +39,8 @@ public:
   HotspotData() {
     clean();
   }
+  HotspotData (xmlDocPtr doc, xmlNodePtr cur);
+
 
   void clean() {
     pos.x = 0;
@@ -49,7 +51,6 @@ public:
   }
 
   void write_xml(std::ofstream *);
-  static boost::shared_ptr<WorldObjData> create(xmlDocPtr doc, xmlNodePtr cur);
 
   boost::shared_ptr<WorldObj> create_WorldObj();
   EditorObjLst create_EditorObj();

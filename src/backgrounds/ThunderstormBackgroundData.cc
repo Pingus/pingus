@@ -1,4 +1,4 @@
-//  $Id: ThunderstormBackgroundData.cc,v 1.11 2002/06/08 20:19:54 torangan Exp $
+//  $Id: ThunderstormBackgroundData.cc,v 1.12 2002/06/09 13:03:11 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,11 +32,8 @@ ThunderstormBackgroundData::write_xml(std::ofstream* xml)
 	 << "</background>" << std::endl;
 }
 
-boost::shared_ptr<WorldObjData>
-ThunderstormBackgroundData::create(xmlDocPtr doc, xmlNodePtr cur)
+ThunderstormBackgroundData::ThunderstormBackgroundData (xmlDocPtr doc, xmlNodePtr cur)
 {
-  ThunderstormBackgroundData* data = new ThunderstormBackgroundData ();
-
   cur = cur->children; 
   while (cur != NULL)
     {
@@ -46,13 +43,11 @@ ThunderstormBackgroundData::create(xmlDocPtr doc, xmlNodePtr cur)
       }
 
       if (strcmp ((char*) cur->name, "position") == 0) {
-	data->pos = XMLhelper::parse_vector (doc, cur);
+	pos = XMLhelper::parse_vector (doc, cur);
       } else {
 	std::cout << "ThunderstormBackgroundData::create(xmlDocPtr doc, xmlNodePtr cur) error" << std::endl;
       }
     }
-
-  return boost::shared_ptr<WorldObjData>(data);
 }
 
 boost::shared_ptr<WorldObj> 

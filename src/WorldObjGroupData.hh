@@ -1,4 +1,4 @@
-//  $Id: WorldObjGroupData.hh,v 1.2 2002/01/15 10:48:49 grumbel Exp $
+//  $Id: WorldObjGroupData.hh,v 1.3 2002/06/09 13:03:11 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,11 +29,14 @@
 class WorldObjGroupData : public WorldObjData
 {
 private:
-  std::list<boost::shared_ptr<WorldObjData> > objs;
-  typedef std::list<boost::shared_ptr<WorldObjData> >::iterator ObjsIter;
+  std::vector<WorldObjData*> objs;
+  typedef std::vector<WorldObjData*>::iterator ObjsIter;
   
 public:
-  void add (boost::shared_ptr<WorldObjData>);
+  WorldObjGroupData ();
+  ~WorldObjGroupData ();
+
+  void add (WorldObjData*);
   
   void write_xml (std::ofstream* xml);
 

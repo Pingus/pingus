@@ -1,4 +1,4 @@
-//  $Id: InfoBox.cc,v 1.6 2002/06/08 21:43:37 grumbel Exp $
+//  $Id: InfoBox.cc,v 1.7 2002/06/09 13:03:11 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -45,11 +45,8 @@ InfoBoxData::create_EditorObj()
   return lst;
 }
 
-boost::shared_ptr<WorldObjData>
-InfoBoxData::create(xmlDocPtr doc, xmlNodePtr cur)
+InfoBoxData::InfoBoxData (xmlDocPtr doc, xmlNodePtr cur)
 {
-  InfoBoxData* data = new InfoBoxData ();
-
   cur = cur->children;
   
   while (cur != NULL)
@@ -61,18 +58,16 @@ InfoBoxData::create(xmlDocPtr doc, xmlNodePtr cur)
 	}
       else if (strcmp((char*)cur->name, "position") == 0)
 	{
-	  data->pos = XMLhelper::parse_vector (doc, cur);
+	  pos = XMLhelper::parse_vector (doc, cur);
 	}
       else if (strcmp((char*)cur->name, "info-text") == 0)
 	{
-	  data->info_text = XMLhelper::parse_string (doc, cur);
+	  info_text = XMLhelper::parse_string (doc, cur);
 	}
       else
 	std::cout << "InfoBox::creata (): Unhandled " << cur->name << std::endl;
       cur = cur->next;
     }
-
-  return boost::shared_ptr<WorldObjData>(data);
 }
 
 void 

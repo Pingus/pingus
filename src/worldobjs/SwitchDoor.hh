@@ -1,4 +1,4 @@
-//  $Id: SwitchDoor.hh,v 1.22 2002/06/08 23:11:09 torangan Exp $
+//  $Id: SwitchDoor.hh,v 1.23 2002/06/09 13:03:11 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -44,13 +44,12 @@ public:
   int door_height;
 
   SwitchDoorData ();
+  SwitchDoorData (xmlDocPtr doc, xmlNodePtr cur);
 
   /** Write the content of this object formatted as xml to the given
       stream */
   void write_xml(std::ofstream* xml);
-  ///
-  static boost::shared_ptr<WorldObjData> create(xmlDocPtr doc, xmlNodePtr cur);
-
+  
   /** Create an WorldObj from the given data object */
   boost::shared_ptr<WorldObj> create_WorldObj ();
 

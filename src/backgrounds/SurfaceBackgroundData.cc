@@ -1,4 +1,4 @@
-//  $Id: SurfaceBackgroundData.cc,v 1.18 2002/06/08 23:11:08 torangan Exp $
+//  $Id: SurfaceBackgroundData.cc,v 1.19 2002/06/09 13:03:11 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -60,12 +60,9 @@ SurfaceBackgroundData::write_xml(std::ofstream* xml)
 	  << std::endl;
 }
 
-boost::shared_ptr<WorldObjData>
-SurfaceBackgroundData::create(xmlDocPtr doc, xmlNodePtr cur)
+SurfaceBackgroundData::SurfaceBackgroundData(xmlDocPtr doc, xmlNodePtr cur)
 {
-  SurfaceBackgroundData* background = new SurfaceBackgroundData ();
-
-  background->pos.z = -150;
+  pos.z = -150;
 
   cur = cur->children;  
   while (cur != NULL)
@@ -78,39 +75,39 @@ SurfaceBackgroundData::create(xmlDocPtr doc, xmlNodePtr cur)
 
       if (strcmp((char*)cur->name, "surface") == 0)
 	{
-	  background->desc = XMLhelper::parse_surface(doc, cur);
+	  desc = XMLhelper::parse_surface(doc, cur);
 	}
       else if (strcmp((char*)cur->name, "color") == 0)
 	{
-	  background->color = XMLhelper::parse_color(doc, cur);
+	  color = XMLhelper::parse_color(doc, cur);
 	}
       else if (strcmp((char*)cur->name, "para-x") == 0)
 	{
-	  background->para_x = XMLhelper::parse_float(doc, cur);
+	  para_x = XMLhelper::parse_float(doc, cur);
 	}
       else if (strcmp((char*)cur->name, "para-y") == 0)
 	{
-	  background->para_y = XMLhelper::parse_float(doc, cur);
+	  para_y = XMLhelper::parse_float(doc, cur);
 	}
       else if (strcmp((char*)cur->name, "scroll-x") == 0)
 	{
-	  background->scroll_x = XMLhelper::parse_float(doc, cur);
+	  scroll_x = XMLhelper::parse_float(doc, cur);
 	}
       else if (strcmp((char*)cur->name, "scroll-y") == 0)
 	{
-	  background->scroll_y = XMLhelper::parse_float(doc, cur);
+	  scroll_y = XMLhelper::parse_float(doc, cur);
 	}
       else if (strcmp((char*)cur->name, "stretch-x") == 0)
 	{
-	  background->stretch_x = XMLhelper::parse_float(doc, cur);
+	  stretch_x = XMLhelper::parse_float(doc, cur);
 	}
       else if (strcmp((char*)cur->name, "stretch-y") == 0)
 	{
-	  background->stretch_y = XMLhelper::parse_float(doc, cur);
+	  stretch_y = XMLhelper::parse_float(doc, cur);
 	}
       else if (strcmp((char*)cur->name, "position") == 0)
 	{
-	  background->pos = XMLhelper::parse_vector(doc, cur);  
+	  pos = XMLhelper::parse_vector(doc, cur);  
 	}
       else
 	{
@@ -118,7 +115,6 @@ SurfaceBackgroundData::create(xmlDocPtr doc, xmlNodePtr cur)
 	}
       cur = cur->next;
     }      
-  return boost::shared_ptr<WorldObjData>(background);
 }
 
 boost::shared_ptr<WorldObj> 

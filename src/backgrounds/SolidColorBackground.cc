@@ -1,4 +1,4 @@
-//  $Id: SolidColorBackground.cc,v 1.13 2002/06/08 23:11:08 torangan Exp $
+//  $Id: SolidColorBackground.cc,v 1.14 2002/06/09 13:03:11 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,11 +27,8 @@ SolidColorBackgroundData:: write_xml(std::ofstream* xml)
   (*xml) << "<worldobj type=\"solidcolor-background\"></worldobj>" << std::endl;
 }
 
-boost::shared_ptr<WorldObjData> 
-SolidColorBackgroundData::create (xmlDocPtr doc, xmlNodePtr cur)
+SolidColorBackgroundData::SolidColorBackgroundData(xmlDocPtr doc, xmlNodePtr cur)
 {
-  SolidColorBackgroundData* data = new SolidColorBackgroundData ();
-
   cur = cur->children;
   while (cur != NULL)
     {
@@ -43,7 +40,7 @@ SolidColorBackgroundData::create (xmlDocPtr doc, xmlNodePtr cur)
 
       if (strcmp ((char*) cur->name, "color") == 0)
 	{
-	  data->color = XMLhelper::parse_color (doc, cur);
+	  color = XMLhelper::parse_color (doc, cur);
 	}
       else
 	{
@@ -51,7 +48,6 @@ SolidColorBackgroundData::create (xmlDocPtr doc, xmlNodePtr cur)
 	}
       cur = cur->next;
     }
-  return boost::shared_ptr<WorldObjData>(data);
 }
 
 boost::shared_ptr<WorldObj> 

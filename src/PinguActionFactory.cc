@@ -1,4 +1,4 @@
-//  $Id: PinguActionFactory.cc,v 1.6 2002/06/09 11:18:50 grumbel Exp $
+//  $Id: PinguActionFactory.cc,v 1.7 2002/06/09 13:03:11 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -117,6 +117,7 @@ PinguActionFactory::delete_actions ()
     {
       delete *i;
     }
+  all_actions.clear ();
   std::cout << "PinguActionFactory::delete_actions (): Deleting all Actions: done" << std::endl;
 }
 

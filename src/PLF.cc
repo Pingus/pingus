@@ -1,4 +1,4 @@
-//  $Id: PLF.cc,v 1.31 2002/06/08 23:11:07 torangan Exp $
+//  $Id: PLF.cc,v 1.32 2002/06/09 13:03:11 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,7 +22,8 @@
 #include <cstdlib>
 #include <fstream>
 
-#include "PLF.hh"
+#include "XMLPLF.hh"
+#include "PLFPLF.hh"
 #include "algo.hh"
 #include "globals.hh"
 #include "PingusError.hh"
@@ -49,6 +50,12 @@ PLF::PLF()
 // Destroy all data
 PLF::~PLF()
 {
+  std::cout << "PLF::~PLF: Deleting std::vector<WorldObjData*>" << std::endl;
+  for (std::vector<WorldObjData*>::iterator i = worldobjs_data.begin ();
+       i != worldobjs_data.end (); ++i)
+    {
+      delete *i;
+    }
 }
 /*
 vector<shared_ptr<BackgroundData> >
@@ -217,11 +224,24 @@ PLF::get_weather(void)
 }
 
 ///
-std::vector<shared_ptr<WorldObjData> > 
+std::vector<WorldObjData*> 
 PLF::get_worldobjs_data ()
 {
   //std::cout << "World: " << worldobjs_data.size () << std::endl;
   return worldobjs_data;
+}
+
+PLF* 
+PLF::create (const std::string& pathname)
+{
+  std::string extension = System::extension (pathname);
+
+  if (extension == "xml")
+    return new XMLPLF (pathname);
+  else if (extension == "plf")
+    return new PLFPLF (pathname);
+  else // filename does not have an extension, default to xml
+    return new XMLPLF (pathname);
 }
 
 /* EOF */

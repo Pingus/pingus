@@ -1,4 +1,4 @@
-//  $Id: Teleporter.cc,v 1.36 2002/06/08 21:43:37 grumbel Exp $
+//  $Id: Teleporter.cc,v 1.37 2002/06/09 13:03:11 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,11 +41,8 @@ TeleporterData::write_xml(std::ofstream* xml)
   (*xml) << "  </worldobj>" << std::endl;
 }
 
-boost::shared_ptr<WorldObjData>
-TeleporterData::create(xmlDocPtr doc, xmlNodePtr cur)
+TeleporterData::TeleporterData (xmlDocPtr doc, xmlNodePtr cur)
 {
-  TeleporterData* data = new TeleporterData ();
-  
   cur = cur->children;
   
   while (cur != NULL)
@@ -58,7 +55,7 @@ TeleporterData::create(xmlDocPtr doc, xmlNodePtr cur)
 
       if (strcmp((char*)cur->name, "position") == 0)
 	{
-	  data->pos = XMLhelper::parse_vector (doc, cur);
+	  pos = XMLhelper::parse_vector (doc, cur);
 	}
       else if (strcmp((char*)cur->name, "target") == 0)
 	{
@@ -67,7 +64,7 @@ TeleporterData::create(xmlDocPtr doc, xmlNodePtr cur)
 	  if (xmlIsBlankNode(ncur)) ncur = ncur->next;
 	    
 	  if (ncur != NULL)
-	    data->target_pos = XMLhelper::parse_vector (doc, ncur);
+	    target_pos = XMLhelper::parse_vector (doc, ncur);
 	  else
 	    std::cout << "TeleporterData::create (): <target> is empty" << std::endl;
 	}
@@ -78,7 +75,6 @@ TeleporterData::create(xmlDocPtr doc, xmlNodePtr cur)
 
       cur = cur->next;
     }
-  return boost::shared_ptr<WorldObjData> (data);
 }
 
 boost::shared_ptr<WorldObj> 

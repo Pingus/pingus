@@ -1,4 +1,4 @@
-//  $Id: ExitData.cc,v 1.10 2002/06/08 23:11:07 torangan Exp $
+//  $Id: ExitData.cc,v 1.11 2002/06/09 13:03:11 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,49 @@
 #include "StringConverter.hh"
 #include "XMLhelper.hh"
 
+ExitData::ExitData (xmlDocPtr doc, xmlNodePtr cur)
+{
+  char* pos_handling = (char*)xmlGetProp(cur, (xmlChar*)"use-old-pos-handling");
+  if (pos_handling)
+    {
+      std::cout << "XMLPLF: Use Old Pos Handling: " << pos_handling << std::endl;
+      use_old_pos_handling = static_cast<bool>(StringConverter::to_int (pos_handling));
+      free (pos_handling);
+    }
+  else
+    {
+      use_old_pos_handling = true;
+    }
+
+  cur = cur->children;
+  while (cur != NULL)
+    {
+      if (xmlIsBlankNode(cur)) 
+	{
+	  cur = cur->next;
+	  continue;
+	}
+      
+      if (strcmp((char*)cur->name, "position") == 0)
+	{
+	  pos = XMLhelper::parse_vector(doc, cur);
+	}
+      else if (strcmp((char*)cur->name, "surface") == 0)
+	{
+	  desc = XMLhelper::parse_surface(doc, cur);
+	}
+      else if (strcmp((char*)cur->name, "owner-id") == 0)
+	{
+	  owner_id = XMLhelper::parse_int(doc, cur);
+	}
+      else
+	{
+	  std::cout << "XMLPLF: Unhandled exit tag: " << (char*)cur->name << std::endl;
+	}
+      cur = cur->next;	
+    }
+}
+
 void 
 ExitData::write_xml(std::ofstream* xml)
 {
@@ -36,54 +79,6 @@ ExitData::write_xml(std::ofstream* xml)
   (*xml) << "  <owner-id>" << owner_id << "</owner-id>"
 	 << "</exit>\n"
 	 << std::endl;
-}
-
-boost::shared_ptr<WorldObjData> 
-ExitData::create(xmlDocPtr doc, xmlNodePtr cur)
-{
-  ExitData* exit  = new ExitData ();
-
-  char* pos_handling = (char*)xmlGetProp(cur, (xmlChar*)"use-old-pos-handling");
-  if (pos_handling)
-    {
-      std::cout << "XMLPLF: Use Old Pos Handling: " << pos_handling << std::endl;
-      exit->use_old_pos_handling = static_cast<bool>(StringConverter::to_int (pos_handling));
-      free (pos_handling);
-    }
-  else
-    {
-      exit->use_old_pos_handling = true;
-    }
-
-  cur = cur->children;
-  while (cur != NULL)
-    {
-      if (xmlIsBlankNode(cur)) 
-	{
-	  cur = cur->next;
-	  continue;
-	}
-      
-      if (strcmp((char*)cur->name, "position") == 0)
-	{
-	  exit->pos = XMLhelper::parse_vector(doc, cur);
-	}
-      else if (strcmp((char*)cur->name, "surface") == 0)
-	{
-	  exit->desc = XMLhelper::parse_surface(doc, cur);
-	}
-      else if (strcmp((char*)cur->name, "owner-id") == 0)
-	{
-	  exit->owner_id = XMLhelper::parse_int(doc, cur);
-	}
-      else
-	{
-	  std::cout << "XMLPLF: Unhandled exit tag: " << (char*)cur->name << std::endl;
-	}
-      cur = cur->next;	
-    }
-
-  return boost::shared_ptr<WorldObjData> (exit);
 }
 
 boost::shared_ptr<WorldObj> 

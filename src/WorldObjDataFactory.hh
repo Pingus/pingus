@@ -1,4 +1,4 @@
-//  $Id: WorldObjDataFactory.hh,v 1.5 2002/01/15 11:27:34 grumbel Exp $
+//  $Id: WorldObjDataFactory.hh,v 1.6 2002/06/09 13:03:11 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -48,13 +48,13 @@ public:
 
   /** Create a WorldObjData type from a given piece of xml, use the
       'type' property for determinating the object type. */
-  boost::shared_ptr<WorldObjData> create (xmlDocPtr doc, xmlNodePtr cur);
+  WorldObjData* create (xmlDocPtr doc, xmlNodePtr cur);
 
   /** Create a WorldObjData type from a given piece of xml, use the
       given id value for determinating the object type instead of the
       'type' property. This is for backward compatibility only! */
-  boost::shared_ptr<WorldObjData> create (const std::string& id,
-					  xmlDocPtr doc, xmlNodePtr cur);
+  WorldObjData* create (const std::string& id,
+			xmlDocPtr doc, xmlNodePtr cur);
 };
 
 /** WorldObjDataAbstractFactory, interface for creating factories */
@@ -65,7 +65,7 @@ public:
     WorldObjDataFactory::instance ()-> register_factory (id, this);
   }
   
-  virtual boost::shared_ptr<WorldObjData> create (xmlDocPtr doc, xmlNodePtr cur) =0;
+  virtual WorldObjData* create (xmlDocPtr doc, xmlNodePtr cur) =0;
 };
 
 /** Template to create factories, usage:
@@ -77,8 +77,8 @@ public:
   WorldObjDataFactoryImpl (const std::string& id)
     : WorldObjDataAbstractFactory (id) {}
 
-  boost::shared_ptr<WorldObjData> create (xmlDocPtr doc, xmlNodePtr cur) {
-    return T::create (doc, cur); 
+  WorldObjData* create (xmlDocPtr doc, xmlNodePtr cur) {
+    return new T (doc, cur); 
   }
   
 };

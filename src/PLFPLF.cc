@@ -1,4 +1,4 @@
-//  $Id: PLFPLF.cc,v 1.14 2002/06/08 23:11:07 torangan Exp $
+//  $Id: PLFPLF.cc,v 1.15 2002/06/09 13:03:11 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -331,32 +331,32 @@ PLFPLF::set_group_end(void)
   // flush collected data
   switch(current_group) {
   case PLFPLF::BACKGROUND:
-    worldobjs_data.push_back(boost::shared_ptr<WorldObjData> (new SurfaceBackgroundData(sur_background)));
+    worldobjs_data.push_back(new SurfaceBackgroundData(sur_background));
     sur_background = SurfaceBackgroundData ();
     break;
 
   case PLFPLF::EXIT:
-    worldobjs_data.push_back(boost::shared_ptr<WorldObjData> (new ExitData(exit_s)));
+    worldobjs_data.push_back(new ExitData(exit_s));
     exit_s.clean();
     break;
     
   case PLFPLF::ENTRANCE:
-    worldobjs_data.push_back(boost::shared_ptr<WorldObjData> (new EntranceData(entrance_s)));
+    worldobjs_data.push_back(new EntranceData(entrance_s));
     entrance_s.clean();
     break;
 
   case PLFPLF::TRAP:
-    worldobjs_data.push_back(boost::shared_ptr<WorldObjData> (new TrapData (trap_s)));
+    worldobjs_data.push_back(new TrapData (trap_s));
     trap_s.clean();
     break;
 
   case PLFPLF::HOTSPOT:
-    worldobjs_data.push_back(boost::shared_ptr<WorldObjData> (new HotspotData (hotspot_s)));
+    worldobjs_data.push_back(new HotspotData (hotspot_s));
     hotspot_s.clean();
     break;
 
   case PLFPLF::LIQUID:
-    worldobjs_data.push_back(boost::shared_ptr<WorldObjData> (new LiquidData(liquid_s)));
+    worldobjs_data.push_back(new LiquidData(liquid_s));
     liquid_s.clean();
     break;
 

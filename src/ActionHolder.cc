@@ -1,4 +1,4 @@
-//  $Id: ActionHolder.cc,v 1.34 2002/06/09 00:56:25 grumbel Exp $
+//  $Id: ActionHolder.cc,v 1.35 2002/06/09 13:03:11 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,6 +41,10 @@ ActionHolder::ActionHolder (PLF* plf)
 
 ActionHolder::~ActionHolder ()
 {
+  //FIXME: This is not really a good place to free the actions
+  //FIXME: But not otherwise to possible at the moment due to the
+  //FIXME: singleton thing.
+  PinguActionFactory::instance ()->delete_actions ();
 }
 
 void
