@@ -1,4 +1,4 @@
-//  $Id: Debug.cc,v 1.1 2002/06/05 17:51:08 grumbel Exp $
+//  $Id: Debug.cc,v 1.2 2002/06/06 13:56:48 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,12 +20,12 @@
 #include "Debug.hh"
 
 /* Stream for error messages */
-MultiplexStream perr("[Error] ");
+DebugStream perr("[Error] ");
 
 /* Stream for warnings */
-MultiplexStream pwarn("[Warning] ");
+DebugStream pwarn("[Warning] ");
 
 /* For everything else (temporary stuff only) */
-MultiplexStream pout ("[Output] ");
+DebugStream pout ("[Output] ");
 
 /* EOF */

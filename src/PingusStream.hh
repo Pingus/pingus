@@ -1,4 +1,4 @@
-//  $Id: PingusStream.hh,v 1.1 2002/06/05 17:51:08 grumbel Exp $
+//  $Id: PingusStream.hh,v 1.2 2002/06/06 13:56:48 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,43 +24,52 @@
 #include <vector>
 #include <iostream>
 
-class MultiplexStreamBuffer
-  : public std::streambuf
-{
-private:
-  static const int buffersize;
 
-  std::vector<std::ostream*> out_streams;
-
-  std::string current_line;
-  bool continue_last;
-  std::vector<std::string> buffer;
-  char char_buffer[200];
-  
-  std::string prefix;
-
-  void put_line (const std::string& line);
-public:
-  MultiplexStreamBuffer (const std::string& prefix);
-  virtual ~MultiplexStreamBuffer ();
-
-  int overflow (int c);  
-  int sync ();
-
-  void add (std::ostream& s);
-};
-
-class MultiplexStream
+class DebugStream
   : public std::ostream
 {
+
 private:
-  MultiplexStreamBuffer buffer;
+
+  class Buffer
+    : public std::streambuf
+  {
+  private:
+
+    // unnessecary complex in this case
+    // static const int buffersize;
+    enum { buffersize = 200 };
+
+    std::vector<std::ostream*> out_streams;
+
+    char char_buffer[200];
+    std::string prefix;
   
+  public:
+
+    Buffer (const std::string& prefix);
+    virtual ~Buffer ();
+
+    int overflow (int c);  
+    int sync ();
+
+    void add (std::ostream& s);
+    void set_prefix (const std::string & prefix_);
+  
+  private:
+
+    void put_line (const std::string& line);
+  
+  } buffer;
+
+
 public:
-  MultiplexStream (const std::string& prefix);
-  virtual ~MultiplexStream ();
+
+  DebugStream (const std::string& prefix);
+  virtual ~DebugStream ();
 
   void add (std::ostream& s);
+  void set_prefix (const std::string & prefix);
 };
 
 #endif

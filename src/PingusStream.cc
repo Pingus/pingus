@@ -1,4 +1,4 @@
-//  $Id: PingusStream.cc,v 1.1 2002/06/05 17:51:08 grumbel Exp $
+//  $Id: PingusStream.cc,v 1.2 2002/06/06 13:56:48 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,9 +19,7 @@
 
 #include "PingusStream.hh"
 
-const int MultiplexStreamBuffer::buffersize = 200;
-
-MultiplexStreamBuffer::MultiplexStreamBuffer (const std::string& p)
+DebugStream::Buffer::Buffer (const std::string& p)
   : prefix (p)
 {
   // Set the output buffer
@@ -31,13 +29,13 @@ MultiplexStreamBuffer::MultiplexStreamBuffer (const std::string& p)
   setg(0, 0, 0);
 }
 
-MultiplexStreamBuffer::~MultiplexStreamBuffer ()
+DebugStream::Buffer::~Buffer ()
 {
   sync ();
 }
 
 int
-MultiplexStreamBuffer::overflow (int c)
+DebugStream::Buffer::overflow (int c)
 {
   std::string str;
     
@@ -59,7 +57,7 @@ MultiplexStreamBuffer::overflow (int c)
 }
 
 void
-MultiplexStreamBuffer::put_line (const std::string& line)
+DebugStream::Buffer::put_line (const std::string& line)
 {
   if (!out_streams.empty ())
     {
@@ -71,12 +69,12 @@ MultiplexStreamBuffer::put_line (const std::string& line)
     }
   else
     {
-      std::cout << "[MultiplexStreamBuffer fallback stream] " << line;
+      std::cout << "[DebugStream::Buffer fallback stream] " << line;
     }
 }
 
 int
-MultiplexStreamBuffer::sync ()
+DebugStream::Buffer::sync ()
 {
   std::string str;
     
@@ -102,25 +100,43 @@ MultiplexStreamBuffer::sync ()
 }
 
 void
-MultiplexStreamBuffer::add (std::ostream& s)
+DebugStream::Buffer::add (std::ostream& s)
 {
   out_streams.push_back (&s);
 }
 
-MultiplexStream::MultiplexStream (const std::string& prefix)
+
+void
+DebugStream::Buffer::set_prefix (const std::string & prefix_)
+{
+  prefix = prefix_;
+}
+
+
+// ----------------------------------------------------------------
+
+
+DebugStream::DebugStream (const std::string& prefix)
   : std::ostream (&buffer),
     buffer (prefix)
 {
 }
 
-MultiplexStream::~MultiplexStream ()
+DebugStream::~DebugStream ()
 {
 }
 
 void
-MultiplexStream::add (std::ostream& s)
+DebugStream::add (std::ostream& s)
 {
   buffer.add (s);
 }
+
+void
+DebugStream::set_prefix (const std::string & prefix)
+{
+  buffer.set_prefix(prefix);
+}
+
 
 /* EOF */

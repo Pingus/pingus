@@ -1,4 +1,4 @@
-//  $Id: Debug.hh,v 1.1 2002/06/05 17:51:08 grumbel Exp $
+//  $Id: Debug.hh,v 1.2 2002/06/06 13:56:48 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,13 +23,13 @@
 #include "PingusStream.hh"
 
 /* Stream for error messages */
-extern MultiplexStream perr;
+extern DebugStream perr;
 
 /* Stream for warnings */
-extern MultiplexStream pwarn;
+extern DebugStream pwarn;
 
 /* Stream for warnings */
-extern MultiplexStream pout;
+extern DebugStream pout;
 
 #endif
 
