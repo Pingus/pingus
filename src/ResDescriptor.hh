@@ -1,4 +1,4 @@
-//  $Id: ResDescriptor.hh,v 1.4 2000/06/18 17:01:50 grumbel Exp $
+//  $Id: ResDescriptor.hh,v 1.5 2000/06/18 22:19:48 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,23 +22,29 @@
 
 #include <string>
 
-/// Resource descriptor, tells were to find a resource
+/// Resource descriptor, tells were to find a resource.
 class ResDescriptor
 {
 public:
   ///
-  enum ResourceType { RESOURCE, FILE, AUTO } ///
- type; /// Where to get the data from?
-  std::string filename; /// The name of the resource file
-  std::string res_name; /// The name of the data, filename or resourcename.
+  enum ResourceType { RESOURCE, FILE, AUTO };
+  
+  /// Where to get the data from?
+  ResourceType type; 
+  
+  /// The name of the resource file
+  std::string filename;
+  
+  /// The name of the data, filename or resourcename.
+  std::string res_name;
 
+  ///
   ResDescriptor();
   ///
   ResDescriptor(std::string cast, std::string value);
   ///
   ResDescriptor(std::string str);
-}///
-;
+};
 
 #endif
 

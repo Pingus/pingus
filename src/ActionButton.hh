@@ -1,4 +1,4 @@
-//  $Id: ActionButton.hh,v 1.8 2000/06/18 18:06:56 grumbel Exp $
+//  $Id: ActionButton.hh,v 1.9 2000/06/18 22:19:48 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,7 +29,9 @@
 #include "Server.hh"
 #include "AnimCounter.hh"
 
-/// ----------------- snip --------------------
+
+// ----------------- snip --------------------
+///
 class Button
 {
 protected:

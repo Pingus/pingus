@@ -1,4 +1,4 @@
-//  $Id: Console.hh,v 1.7 2000/06/18 17:01:49 grumbel Exp $
+//  $Id: Console.hh,v 1.8 2000/06/18 22:19:48 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,10 +25,12 @@
 #include <ClanLib/core.h>
 #include "Display.hh"
 
-///
+/** A "Quake" like console, but it can just handle output, you can't
+    type anything. */
 class Console : public DisplayHook
 {
 private:
+  /// 
   class Endl {};
   ///
   CL_Font* font;
@@ -48,7 +50,8 @@ private:
   ///
   void add_line(string);
 public:
-  ///
+  /** A incarnation of the Endl class, just there to make the
+      operator<<() behave like the standard std::cout stuff. */
   static Endl endl;
 
   ///
@@ -61,18 +64,29 @@ public:
   ///
   virtual void on_event();
 
-  ///
+  /// Sets the number of lines to the given int.
   void set_height(int);
-  ///
+
+  /// Returns the height in number of lines, <em>not</em> in pixels.
   int  get_height();
 
-  ///
+  /** Output operators, similar to std::cout */
+  //@{
+  /** Wrapper around the end-of-line operator, its just insert a
+      newline in the console. */
   Console& operator<<(const Console::Endl&);
-  ///
-  Console& operator<<(string);
-  ///
+
+  /** Prints the given string to the console. */
+  Console& operator<<(std::string);
+
+  /** Converts the given int to a string and prints it to the console. */
   Console& operator<<(int);
-  ///
+  //@}
+
+  /** Print to the console, just like a normal printf(). All format
+      specifies available in printf() are also available here, since
+      this is just a wrapper around vsnprintf(). This function prints
+      only up to 1023 characters at a time, the rest is lost. */
   void printf(char* format, ...);
   ///
   void puts(string);

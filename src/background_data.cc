@@ -1,4 +1,4 @@
-// $Id: background_data.cc,v 1.4 2000/03/16 18:20:19 grumbel Exp $
+// $Id: background_data.cc,v 1.5 2000/06/18 22:19:48 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,7 +23,7 @@ background_data::background_data()
 {
   scroll_x = 0.0;
   scroll_y = 0.0;
-  dim = 0.0;
+  alpha = 0.0;
   red = green = blue = 0.0;
   para_x = 0.5;
   para_y = 0.5;

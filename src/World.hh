@@ -1,4 +1,4 @@
-//  $Id: World.hh,v 1.10 2000/06/18 17:01:50 grumbel Exp $
+//  $Id: World.hh,v 1.11 2000/06/18 22:19:48 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,9 +38,11 @@
 #include "traps/traps.hh"
 #include "particles/ParticleHolder.hh"
 
-// World holds all object of the pingu world (pingus, traps, exits,
-// entrances, etc.). It keeps control that all objects become time to
-/// move and can catch each other. 
+/** The World holds all objects of the pingu enviroment. 
+    
+    It holds the pingus, traps, exits, entrances, etc.. It keeps
+    control that all objects become time to move and can catch each
+    other. */
 class World
 {
 private:
@@ -112,14 +114,21 @@ public:
   void    init_worldobjs (void);
   ///
   void    init_map (void);
-  ///
+
+  /** Draws the world onto the screen
+      @param x1 The left corner of the drawing area.
+      @param y1 The upper corner of the drawing area.
+      @param w  The width of the drawing area.
+      @param h  The height of the drawing area. */
   void    draw(int x1, int y1, int w, int h,
 	       int x_of, int y_of, float s);
   ///
   void    let_move (void);
-  ///
+
+  /// Issue an armageddon, all Pingus will explode in some seconds.
   void    armageddon (void);
-  ///
+
+  /// @return The absolute height of the world.
   int     get_height (void);
   ///
   int     get_width(void);
@@ -147,8 +156,7 @@ public:
   PinguHolder* get_pingu_p(void);
   ///
   void set_action_holder(ActionHolder*);
-}///
-;
+};
 
 #endif
 

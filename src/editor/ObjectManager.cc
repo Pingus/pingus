@@ -1,4 +1,4 @@
-//  $Id: ObjectManager.cc,v 1.12 2000/06/06 18:51:52 grumbel Exp $
+//  $Id: ObjectManager.cc,v 1.13 2000/06/18 22:19:48 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -178,7 +178,7 @@ ObjectManager::save_level (string filename)
   // FIXME: we need some error checking
   
   plf_out << "/* This level was created with the PLE\n"
-	  << " * $Id: ObjectManager.cc,v 1.12 2000/06/06 18:51:52 grumbel Exp $\n"
+	  << " * $Id: ObjectManager.cc,v 1.13 2000/06/18 22:19:48 grumbel Exp $\n"
 	  << " */"
 	  << endl;
   
@@ -204,7 +204,7 @@ ObjectManager::save_level (string filename)
   
   plf_out << "background {\n"
 	  << "  image = (resource:" << background.desc.filename << ")\"" << background.desc.res_name << "\";\n"
-	  << "  dim   = \""   << background.dim   << "\";\n"
+	  << "  dim   = \""   << background.alpha   << "\";\n"
 	  << "  red   = \""   << background.red   << "\";\n"
 	  << "  green = \""   << background.green << "\";\n"
 	  << "  blue  = \""   << background.blue << "\";\n"

@@ -1,4 +1,4 @@
-// $Id: background_data.hh,v 1.4 2000/06/18 17:01:50 grumbel Exp $
+// $Id: background_data.hh,v 1.5 2000/06/18 22:19:48 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,36 +23,47 @@
 #include "ResDescriptor.hh"
 
 ///
-struct background_data
+class background_data
 {
+public:
   ///
   ResDescriptor desc;
   ///
   float para_x;
   ///
   float para_y;
-  ///
-  float scroll_x;
-  ///
-  float scroll_y;
-  ///
-  float dim;
-  ///
-  float red;
-  ///
-  float green;
-  ///
-  float blue;
 
-  ///
+  /** The amount of pixel the background is scrolled each frame in x
+      direction. */
+  float scroll_x;
+
+  /** The amount of pixel the background is scrolled each frame in x
+      direction. */
+  float scroll_y;
+
+  /**@name fill_rect() components
+     An fill_rect() can be drawn over the background, the following
+     for components are passed to the fill_rect() call. */
+  //@{
+  /// The red component of the fill_rect() call
+  float red;
+  /// The green component of the fill_rect() call
+  float green;
+  /// The blue component of the fill_rect() call
+  float blue;
+  /// The alpha component of the fill_rect() call
+  float alpha;
+  //@}
+
+  /// Stretch the background to the full screen size in x direction
   bool stretch_x;
-  ///
+
+  /// Stretch the background to the full screen size in x direction
   bool stretch_y;
 
-  ///
+  /// Init all fields with some usefull defaults values.
   background_data();
-}///
-;
+};
 
 #endif
 

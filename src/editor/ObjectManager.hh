@@ -1,4 +1,4 @@
-//  $Id: ObjectManager.hh,v 1.5 2000/06/18 17:01:50 grumbel Exp $
+//  $Id: ObjectManager.hh,v 1.6 2000/06/18 22:19:48 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -69,15 +69,17 @@ private:
   int move_offset;
 
   ///
-  struct { 
+  struct RGB { 
     ///
     float r;
     ///
     float g;
     ///
     float b; 
-  } ///
- bg;
+  };
+  
+  ///
+  RGB bg;
   
 public:
   ///
