@@ -1,3 +1,428 @@
+2003-04-16 03:15  grumbel
+
+	* NEWS, src/config.cxx: - added check if config file is present -
+	updated NEWS
+
+2003-04-16 03:00  grumbel
+
+	* data/levels/tutorial/: basher-tutorial-grumbel.xml,
+	bomber-tutorial2-grumbel.xml, digger-tutorial2-grumbel.xml,
+	floater-tutorial-grumbel.xml, jumper-tutorial-grumbel.xml,
+	miner-tutorial2-grumbel.xml, snow10-grumbel.xml,
+	snow11-grumbel.xml, snow12-grumbel.xml, snow14-grumbel.xml,
+	snow15-grumbel.xml, snow16-grumbel.xml, snow17-grumbel.xml,
+	snow19-grumbel.xml, snow20-grumbel.xml, snow21-grumbel.xml,
+	snow22-grumbel.xml, snow7-grumbel.xml, snow8-grumbel.xml,
+	snow9-grumbel.xml, solid-tutorial-grumbel.xml: added french
+	translation
+
+2003-04-16 02:25  grumbel
+
+	* m4/ChangeLog: [no log message]
+
+2003-04-16 01:56  grumbel
+
+	* configure.ac, pingus.dsp, src/pingus_main.cxx: removed file,
+	added fr translation
+
+2003-04-16 01:55  grumbel
+
+	* po/: cs.po, de.po, fr.po, sr.po, tr.po: and another update of the
+	fr.po
+
+2003-04-16 01:51  grumbel
+
+	* po/fr.po: updates
+
+2003-04-16 01:41  grumbel
+
+	* po/: POTFILES.in, fr.po, cs.po, de.po, nl.po, sr.po, tr.po: rerun
+	update-po
+
+2003-04-16 01:12  grumbel
+
+	* src/: Makefile.am, pingu_info.cxx, pingu_info.hxx,
+	pingus_main.cxx, playfield.cxx, playfield.hxx, story_screen.cxx: -
+	removed obsolete file - fixed double-click bug in story
+
+2003-04-16 00:52  grumbel
+
+	* po/fr.po: - added french translation (level files still missing)
+
+2003-04-16 00:17  cagri
+
+	* po/: cs.po, de.po, it.po, nl.po, sr.po, tr.po: 
+	Turkish translation update. Latest status:
+	
+	de.po: 287 translated.	tr.po: 287 translated.	cs.po: 286
+	translated, 1 untranslated message.  sr.po: 284 translated, 3
+	untranslated.  it.po: 134 translated, 40 fuzzy translations, 107
+	untranslated.  nl.po:  99 translated, 34 fuzzy translations, 154
+	untranslated.
+
+2003-04-15 22:12  torangan
+
+	* po/: cs.po, de.po, sr.po, tr.po: translation updates
+
+2003-04-15 22:08  torangan
+
+	* src/level_result.cxx: finally remove this incredible annoying
+	typo
+
+2003-04-15 21:42  grumbel
+
+	* src/worldmap/level_dot.cxx: added missing include
+
+2003-04-15 21:23  grumbel
+
+	* data/controller/gamepad.xml: reconfigured buttons a bit and moved
+	joystick id to 0
+
+2003-04-15 21:06  grumbel
+
+	* src/: client.cxx, level_result.cxx, loading.cxx, pingu.cxx,
+	pingus_main.cxx, theme_selector.cxx, editor/editor.cxx,
+	editor/object_selector.cxx, gui/cursor.cxx, gui/display.cxx,
+	gui/display.hxx, gui/screen_manager.cxx, input/controller.cxx,
+	input/controller.hxx, worldmap/level_dot.cxx: - removed obsolete
+	mouse show/hide stuff - fixed software cursor a bit - made the
+	current controller globally reachable
+
+2003-04-15 20:56  grumbel
+
+	* data/controller/: gamepad.xml, Makefile.am: - added controller
+	configuration for a gamepad
+
+2003-04-15 18:27  torangan
+
+	* po/sr.po: some more translations
+
+2003-04-15 17:41  grumbel
+
+	* clangui_patch: [no log message]
+
+2003-04-15 17:32  grumbel
+
+	* po/: cs.po, de.po, nl.po, sr.po, tr.po: updated translation
+
+2003-04-15 17:27  grumbel
+
+	* AUTHORS, Makefile.am, NEWS, README, po/de.po: updated readmes a
+	bit
+
+2003-04-15 17:25  grumbel
+
+	* INSTALL, INSTALL.unix: renamed INSTALL to INSTALL.unix
+
+2003-04-15 17:24  grumbel
+
+	* src/credits.cxx: - added translators
+
+2003-04-15 17:12  grumbel
+
+	* src/input/buttons/joystick_button.cxx: added id to error message
+
+2003-04-15 15:38  grumbel
+
+	* po/: Rules-quot, boldquot.sed, cs.po, de.po, en@boldquot.header,
+	en@quot.header, insert-header.sin, nl.po, quot.sed, sr.po, tr.po:
+	rerun update-po
+
+2003-04-15 15:34  grumbel
+
+	* data/levels/test/: actions.xml, bg-test.xml, bla.xml,
+	blablub.xml, bug-test.xml, chink.xml, crash_on_entrance_remove.xml,
+	exit.xml, fallbug.xml, jumperbounce.xml, newgroundpiece.xml,
+	order.xml, prefab.xml, sorting.xml: a bunch of test levels
+
+2003-04-15 15:19  grumbel
+
+	* configure.ac: updated versions number and translations
+
+2003-04-15 15:14  grumbel
+
+	* contrib/README: missing file
+
+2003-04-15 14:34  grumbel
+
+	* intl/: config.charset, dcigettext.c, dcngettext.c, dngettext.c,
+	eval-plural.h, gmo.h, libgnuintl.h, localcharset.c, locale.alias,
+	localename.c, ngettext.c, os2compat.c, os2compat.h, osdep.c,
+	plural-exp.c, plural-exp.h, plural.c, plural.y, ref-add.sin,
+	ref-del.sin: updated intl/ directory
+
+2003-04-15 13:56  grumbel
+
+	* data/levels/tutorial/: basher-tutorial-grumbel.xml,
+	digger-tutorial2-grumbel.xml, floater-tutorial-grumbel.xml,
+	miner-tutorial2-grumbel.xml: fixed broken xml
+
+2003-04-15 12:54  grumbel
+
+	* po/: de.po, nl.po: updated nl.po (by running update-po, not by
+	translating it)
+
+2003-04-15 12:33  grumbel
+
+	* src/: globals.cxx, globals.hxx, pingus_main.cxx,
+	editor/editor_help_screen.cxx, gui/screen_manager.cxx: - added
+	config flag for the controller - replaced setlocale (LC_CTYPE, ) by
+	bind_textdomain_codeset(PACKAGE, ISO-8859-1);
+
+2003-04-15 09:40  torangan
+
+	* po/de.po: add one missing translation
+
+2003-04-15 09:29  torangan
+
+	* po/: cs.po, de.po, sr.po, tr.po: update to actual source code
+
+2003-04-15 00:47  cagri
+
+	* po/cs.po, po/tr.po, src/editor/editor_help_screen.cxx: 
+	- corrections to Turkish translation - gettextized one more string
+	(the "Editor Helpscreen" title) - cs.po corrections (Tomas Blaha's)
+
+2003-04-14 22:31  torangan
+
+	* po/cs.po: updated translation by Tomas Blaha
+
+2003-04-14 21:40  grumbel
+
+	* src/: string_tokenizer.cxx, string_tokenizer.hxx: cleanup
+
+2003-04-14 19:56  grumbel
+
+	* AUTHORS, pingus.dsp, data/gen-scrfile.scm,
+	data/images/groundpieces/ground/rock/rock1.png,
+	data/images/groundpieces/ground/rock/rock2.png,
+	data/images/groundpieces/ground/rock/rock3.png,
+	data/images/groundpieces/ground/rock/rock4.png,
+	data/images/groundpieces/ground/rock/rock5.png,
+	data/images/groundpieces/ground/rock/rock6.png, po/POTFILES.in,
+	src/Makefile.am, src/pingus_main.cxx, src/string_tokenizer.cxx,
+	src/string_tokenizer.hxx: - added some more voodo to find the
+	correct data path under linux
+
+2003-04-14 18:39  torangan
+
+	* po/tr.po: ran make update-po
+
+2003-04-14 18:26  torangan
+
+	* po/sr.po: Translations by Milan Babuskov
+
+2003-04-14 18:12  torangan
+
+	* data/levels/tutorial/: basher-tutorial-grumbel.xml,
+	bomber-tutorial2-grumbel.xml, digger-tutorial2-grumbel.xml,
+	floater-tutorial-grumbel.xml, jumper-tutorial-grumbel.xml,
+	miner-tutorial2-grumbel.xml, snow10-grumbel.xml,
+	snow11-grumbel.xml, snow12-grumbel.xml, snow14-grumbel.xml,
+	snow15-grumbel.xml, snow16-grumbel.xml, snow17-grumbel.xml,
+	snow19-grumbel.xml, snow20-grumbel.xml, snow21-grumbel.xml,
+	snow22-grumbel.xml, snow7-grumbel.xml, snow8-grumbel.xml,
+	snow9-grumbel.xml, solid-tutorial-grumbel.xml: serbian translation
+	by Milan Babuskov
+
+2003-04-14 02:59  cagri
+
+	* data/data/fonts.scr, data/images/fonts/chalk_large.png,
+	data/images/fonts/chalk_normal.png,
+	data/images/fonts/chalk_small.png,
+	data/images/fonts/courier_small2.png, po/tr.po: 
+	- added some more symbols to courier_small2.png [Bug #3204] - made
+	the accents (more) visible on other fonts.  - Turkish translation
+	update
+
+2003-04-14 02:00  grumbel
+
+	* INSTALL, README, contrib/pingus-cvs-build, po/cs.po, po/de.po,
+	po/tr.po: updated translation
+
+2003-04-14 01:33  grumbel
+
+	* src/: globals.hxx, path_manager.cxx, pingus_main.cxx, system.cxx,
+	system.hxx: - added some more path-finding magic - some cleanup -
+	added Sytem:: stuff for symlink handling
+
+2003-04-14 00:22  grumbel
+
+	* src/pingus_main.cxx: [no log message]
+
+2003-04-14 00:00  grumbel
+
+	* src/: pingus_main.cxx, playfield.cxx, story_screen.cxx,
+	worldmap/pingus.cxx, worldmap/worldmap.cxx: inited some uninited
+	variables
+
+2003-04-13 23:50  grumbel
+
+	* src/game_time.cxx: added missing include
+
+2003-04-13 23:27  torangan
+
+	* data/levels/tutorial/: basher-tutorial-grumbel.xml,
+	bomber-tutorial2-grumbel.xml, floater-tutorial-grumbel.xml,
+	jumper-tutorial-grumbel.xml, snow11-grumbel.xml,
+	snow12-grumbel.xml, snow14-grumbel.xml, snow15-grumbel.xml,
+	snow16-grumbel.xml, snow17-grumbel.xml, snow19-grumbel.xml,
+	snow20-grumbel.xml, snow21-grumbel.xml, snow22-grumbel.xml,
+	snow7-grumbel.xml, snow8-grumbel.xml, snow9-grumbel.xml,
+	solid-tutorial-grumbel.xml: -update to czech translation by Tomas
+	Blaha
+
+2003-04-13 19:42  torangan
+
+	* po/cs.po: updated to current state
+
+2003-04-13 19:29  grumbel
+
+	* configure.ac: [no log message]
+
+2003-04-13 15:12  grumbel
+
+	* README.languages: updated file
+
+2003-04-13 14:30  grumbel
+
+	* src/system.cxx: added handling for setlocale returning NULL
+
+2003-04-13 12:34  torangan
+
+	* po/de.po, src/system.cxx: removed some errors messages from
+	gettext
+
+2003-04-13 11:38  torangan
+
+	* src/system.cxx: replaced getenv() by setlocale() to find the
+	current locale
+
+2003-04-13 01:42  cagri
+
+	* data/levels/tutorial/basher-tutorial-grumbel.xml,
+	data/levels/tutorial/bomber-tutorial2-grumbel.xml,
+	data/levels/tutorial/digger-tutorial2-grumbel.xml,
+	data/levels/tutorial/floater-tutorial-grumbel.xml,
+	data/levels/tutorial/jumper-tutorial-grumbel.xml,
+	data/levels/tutorial/miner-tutorial2-grumbel.xml,
+	data/levels/tutorial/snow10-grumbel.xml,
+	data/levels/tutorial/snow11-grumbel.xml,
+	data/levels/tutorial/snow12-grumbel.xml,
+	data/levels/tutorial/snow14-grumbel.xml,
+	data/levels/tutorial/snow15-grumbel.xml,
+	data/levels/tutorial/snow16-grumbel.xml,
+	data/levels/tutorial/snow17-grumbel.xml,
+	data/levels/tutorial/snow19-grumbel.xml,
+	data/levels/tutorial/snow20-grumbel.xml,
+	data/levels/tutorial/snow21-grumbel.xml,
+	data/levels/tutorial/snow22-grumbel.xml,
+	data/levels/tutorial/snow7-grumbel.xml,
+	data/levels/tutorial/snow8-grumbel.xml,
+	data/levels/tutorial/snow9-grumbel.xml,
+	data/levels/tutorial/solid-tutorial-grumbel.xml, po/tr.po: 
+	Turkish translation, should be complete.
+
+2003-04-12 18:43  grumbel
+
+	* data/levels/tutorial/jumper-tutorial-grumbel.xml: made some more
+	stuff solid
+
+2003-04-12 18:14  torangan
+
+	* src/: globals.cxx, pingus_main.cxx: made demo recording default
+	behaviour
+
+2003-04-12 17:52  torangan
+
+	* src/start_screen.cxx: copy and paste bug
+
+2003-04-12 17:39  grumbel
+
+	* po/de.po, src/pingus_main.cxx: turned enable sound/music into
+	disable, cause both are enabled per default
+
+2003-04-12 17:33  grumbel
+
+	* src/sound/sound.cxx: added catch to disable sound on problems
+	from CL_SetupSound::init()
+
+2003-04-12 15:34  grumbel
+
+	* data/levels/Makefile.am: [no log message]
+
+2003-04-12 15:18  grumbel
+
+	* src/: menu_button.cxx, menu_button.hxx: fixed bug
+
+2003-04-12 14:35  torangan
+
+	* src/start_screen.cxx: some boundary checks and better handling of
+	linebreaks
+
+2003-04-12 13:08  torangan
+
+	* po/sr.po: initial version
+
+2003-04-12 11:44  torangan
+
+	* data/levels/tutorial/: basher-tutorial-grumbel.xml,
+	bomber-tutorial2-grumbel.xml, digger-tutorial2-grumbel.xml,
+	floater-tutorial-grumbel.xml, jumper-tutorial-grumbel.xml,
+	miner-tutorial2-grumbel.xml, snow10-grumbel.xml,
+	snow11-grumbel.xml, snow12-grumbel.xml, snow14-grumbel.xml,
+	snow15-grumbel.xml, snow16-grumbel.xml, snow17-grumbel.xml,
+	snow19-grumbel.xml, snow20-grumbel.xml, snow21-grumbel.xml,
+	snow22-grumbel.xml, snow7-grumbel.xml, snow8-grumbel.xml,
+	snow9-grumbel.xml, solid-tutorial-grumbel.xml: czech translation by
+	Tomas Blaha
+
+2003-04-12 04:22  grumbel
+
+	* data/images/groundpieces/ground/foliage/: rock1.png, rock2.png,
+	rock3.png, rock4.png, rock5.png, rock6.png: moved few images
+
+2003-04-12 04:05  grumbel
+
+	* src/sound/sound_real.cxx: fixed music volume
+
+2003-04-12 04:00  grumbel
+
+	* data/images/: README, generate_makefile.pl: obsolete file removal
+
+2003-04-12 03:58  grumbel
+
+	* data/: data/global.scr, data/groundpieces-ground.scr,
+	images/Makefile.am, images/backgrounds/otherstuff.jpg,
+	images/core/buttons/back.png, images/core/buttons/back2.png,
+	images/core/menu/close_highlight.png,
+	images/core/menu/close_normal.png,
+	images/core/menu/close_pressed.png,
+	images/core/menu/enterlevel.png, images/core/menu/exitmenu.png,
+	images/core/menu/ice_off.png, images/core/menu/result_ok.png,
+	images/core/menu/result_retry.png,
+	images/core/worldmap/dot_border.png, images/fonts/clanfont.png,
+	images/fonts/courier.png, images/fonts/courier_h.png,
+	images/fonts/down_arrow.png, images/fonts/font.png,
+	images/fonts/left_arrow.png, images/fonts/right_arrow.png,
+	images/fonts/up_arrow.png,
+	images/groundpieces/ground/desert/column_piece1.png,
+	images/groundpieces/ground/desert/column_piece2.png,
+	images/groundpieces/ground/desert/column_piece3.png,
+	images/story/story0.jpg, images/story/story1.jpg,
+	images/story/story2.jpg, images/story/story3.jpg,
+	images/textures/weather-test.jpg: - removed a bunch of images -
+	'fixed' colors of some desert images
+
+2003-04-12 02:57  grumbel
+
+	* src/color.cxx: missing return fixed
+
+2003-04-12 02:13  grumbel
+
+	* ChangeLog, INSTALL, Makefile.am, NEWS, po/de.po: added INSTALL
+	file
+
 2003-04-12 01:52  grumbel
 
 	* po/de.po, po/tr.po, src/story.cxx: some spelling fixes
