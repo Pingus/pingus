@@ -1,4 +1,4 @@
-//  $Id: System.hh,v 1.8 2000/06/19 07:26:08 grumbel Exp $
+//  $Id: System.hh,v 1.9 2000/06/20 20:30:53 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -74,6 +74,11 @@ public:
   /** Returns the directory were Pingus can store its system wide
       variable game data (highscores, cache images, ...) */
   static std::string get_vardir();
+
+  /** Asks different variables to check were the directory for
+      temporary files is located 
+      @return The location of the tmp directory */
+  static std::string get_tmpdir();
 };
 
 #endif

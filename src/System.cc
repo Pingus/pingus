@@ -1,4 +1,4 @@
-//  $Id: System.cc,v 1.10 2000/06/12 14:42:11 grumbel Exp $
+//  $Id: System.cc,v 1.11 2000/06/20 20:30:53 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -185,8 +185,20 @@ System::get_vardir()
 {
 #ifdef WIN32   
   return "var\\";
-#endif
+#else
   return "/var/games/pingus/";
+#endif
+}
+
+std::string
+System::get_tmpdir()
+{
+#ifdef WIN32   
+  // FIXME: Warrning this hardcoded values are mostlikly wrong!
+  return "c:\\windows\\temp\\";
+#else
+  return "/tmp/";
+#endif
 }
 
 /* EOF */
