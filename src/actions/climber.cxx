@@ -1,4 +1,4 @@
-//  $Id: climber.cxx,v 1.19 2002/10/26 09:14:23 torangan Exp $
+//  $Id: climber.cxx,v 1.20 2002/10/27 17:29:24 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,18 +42,6 @@ Climber::update ()
     printf("%3d %3d %3d\n", rel_getpixel(1,0), rel_getpixel(0,0), rel_getpixel(-1,0));
     printf("%3d %3d %3d\n", rel_getpixel(1,-1), rel_getpixel(0,-1),rel_getpixel(-1, -1));
   */  
-
-  // This is necessary to prevent climber walking inside a wall.
-  if (pingu->direction.is_left()) 
-    {
-      sprite.set_align(0, -sprite_height/2);
-      sprite.set_direction(Sprite::LEFT); 
-    } 
-  else 
-    {
-      sprite.set_align(-sprite_width, -sprite_height/2);
-      sprite.set_direction(Sprite::RIGHT);
-    }
 
   sprite.update();
 
@@ -100,6 +88,18 @@ Climber::update ()
 void
 Climber::draw (GraphicContext& gc)
 {
+  // This is necessary to prevent climber walking inside a wall.
+  if (pingu->direction.is_left()) 
+    {
+      sprite.set_align(0, -sprite_height/2);
+      sprite.set_direction(Sprite::LEFT); 
+    } 
+  else 
+    {
+      sprite.set_align(-sprite_width, -sprite_height/2);
+      sprite.set_direction(Sprite::RIGHT);
+    }
+
   gc.draw (sprite, pingu->get_pos());
 }
 
