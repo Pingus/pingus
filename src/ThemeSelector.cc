@@ -1,4 +1,4 @@
-//  $Id: ThemeSelector.cc,v 1.6 2000/02/16 23:34:11 grumbel Exp $
+//  $Id: ThemeSelector.cc,v 1.7 2000/04/08 16:57:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,11 +17,13 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <algorithm>
 #include "globals.hh"
 #include "System.hh"
 #include "PingusError.hh"
 #include "PingusResource.hh"
 #include "AlphaButton.hh"
+#include "Display.hh"
 #include "Loading.hh"
 #include "ThemeSelector.hh"
 
@@ -111,6 +113,29 @@ ThemeSelector::Event::on_button_press(CL_InputDevice *device, const CL_Key &key)
       switch (key.id)
 	{
 	case 0:
+	  std::cout << "X: " << key.x << std::endl;
+	  std::cout << "Y: " << key.y << std::endl;
+
+	  if (key.x > 0 && key.x < theme_selector->left_arrow->get_width()
+	      && key.y > (CL_Display::get_height() - theme_selector->left_arrow->get_height()) / 2
+	      && key.y < (CL_Display::get_height() + theme_selector->left_arrow->get_height()) / 2)
+	    {
+	      std::cout << "Left pressed" << std::endl;
+	      theme_selector->current_theme++;
+	      if (theme_selector->current_theme == theme_selector->themes.end()) 
+		theme_selector->current_theme = theme_selector->themes.begin();
+	    }
+	  else if (key.x > CL_Display::get_width() - theme_selector->right_arrow->get_width()
+		   && key.x < CL_Display::get_width()
+		   && key.y > (CL_Display::get_height() - theme_selector->right_arrow->get_height()) / 2
+		   && key.y < (CL_Display::get_height() + theme_selector->right_arrow->get_height()) / 2)
+	    {
+	      std::cout << "Right pressed" << std::endl;
+	      if (theme_selector->current_theme == theme_selector->themes.begin()) 
+		theme_selector->current_theme = theme_selector->themes.end();
+	      theme_selector->current_theme--;
+	    }
+
 	  break;
 	default:
 	  break;
@@ -167,45 +192,12 @@ ThemeSelector::select()
     }
   current_theme = themes.begin();
 
-  //  (*current_theme)->draw_title();
   draw();
 
   while(!key_pressed(CL_KEY_ESCAPE)) 
     {
       CL_System::keep_alive();
-      /*
-      if (key_pressed(CL_KEY_LEFT)) 
-	{
-	  current_theme++;
-	  if (current_theme ==  themes.end()) 
-	    {
-	      current_theme = themes.begin();
-	    }
-	} 
-      else if (key_pressed(CL_KEY_RIGHT)) 
-	{
-	  if (current_theme == themes.begin()) 
-	    {
-	      current_theme = themes.end();
-	    }
-	  current_theme--;
-	}
-      else if (key_pressed(CL_KEY_ENTER)) 
-	{
-	  (*current_theme)->play();
-	  (*current_theme)->draw_title();      
-	}
-      else if (key_pressed(CL_KEY_DOWN)) 
-	{
-	  (*current_theme)->next_level();
-	  draw();
-	}
-      else if (key_pressed(CL_KEY_UP)) 
-	{
-	  (*current_theme)->previous_level();
-	  draw();
-	}
-      */
+
       if (temp_theme != current_theme) 
 	{
 	  (*current_theme)->draw_title();
@@ -222,9 +214,18 @@ ThemeSelector::draw()
 
   (*current_theme)->draw_title();
   
-  left_arrow->put_screen(0, (CL_Display::get_height() + left_arrow->get_height()) / 2);
+  {
+    int item_width = (CL_Display::get_width() / themes.size());
+    int item_index = themes.size() - distance(themes.begin(), current_theme) - 1;
+    
+    Display::draw_rect(item_index * item_width, CL_Display::get_height() - 15, 
+		       (item_index + 1) * item_width, CL_Display::get_height(),
+		       0.0, 1.0, 0.0, 1.0);
+  }
+  
+  left_arrow->put_screen(0, (CL_Display::get_height() - left_arrow->get_height()) / 2);
   right_arrow->put_screen(CL_Display::get_width() - right_arrow->get_width(),
-			  (CL_Display::get_height() + right_arrow->get_height()) / 2);
+			  (CL_Display::get_height() - right_arrow->get_height()) / 2);
   
   theme_font->print_center(CL_Display::get_width()/2, CL_Display::get_height() - 50,
 			   "..:: Use the cursor keys to select a level ::..");
