@@ -1,4 +1,4 @@
-//  $Id: controller.hxx,v 1.9 2002/08/17 17:20:51 torangan Exp $
+//  $Id: controller.hxx,v 1.10 2002/08/19 08:28:03 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,13 +42,12 @@ namespace Input
       Pointer*  standard_pointer;
       Scroller* scroller;
     
-      std::map<ButtonName, Button*> buttons;
+      std::map<ButtonName, std::pair<Button*, bool> > buttons;
       
       std::list<Event*> events;
 
       float             std_pointer_x;
       float             std_pointer_y;
-      std::vector<bool> button_states;
 
     public:
       explicit Controller (const std::string& configfile);

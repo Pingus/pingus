@@ -1,4 +1,4 @@
-//  $Id: controller.cxx,v 1.16 2002/08/17 17:20:51 torangan Exp $
+//  $Id: controller.cxx,v 1.17 2002/08/19 08:28:03 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -76,22 +76,22 @@ namespace Input
 	  scroller = ScrollerFactory::create(XMLhelper::skip_blank(cur->children));
 	  
 	else if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "primary-button"))
-	  buttons[primary] = ButtonFactory::create(XMLhelper::skip_blank(cur->children));
+	  buttons[primary].first = ButtonFactory::create(XMLhelper::skip_blank(cur->children));
 	  
 	else if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "secondary-button"))
-	  buttons[secondary] = ButtonFactory::create(XMLhelper::skip_blank(cur->children));
+	  buttons[secondary].first = ButtonFactory::create(XMLhelper::skip_blank(cur->children));
 	  
 	else if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "pause-button"))
-	  buttons[pause] = ButtonFactory::create(XMLhelper::skip_blank(cur->children));
+	  buttons[pause].first = ButtonFactory::create(XMLhelper::skip_blank(cur->children));
 
 	else if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "fast-forward-button"))
-	  buttons[fast_forward] = ButtonFactory::create(XMLhelper::skip_blank(cur->children));
+	  buttons[fast_forward].first = ButtonFactory::create(XMLhelper::skip_blank(cur->children));
 	
 	else if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "armageddon-button"))
-	  buttons[armageddon] = ButtonFactory::create(XMLhelper::skip_blank(cur->children));
+	  buttons[armageddon].first = ButtonFactory::create(XMLhelper::skip_blank(cur->children));
 	
 	else if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "escape-button"))
-	  buttons[escape] = ButtonFactory::create(XMLhelper::skip_blank(cur->children));
+	  buttons[escape].first = ButtonFactory::create(XMLhelper::skip_blank(cur->children));
 	
 	else if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "action-buttons"))
 	  create_action_buttons(XMLhelper::skip_blank(cur->children));
@@ -130,44 +130,42 @@ namespace Input
       
     if (!buttons.count(primary))
       {
-        buttons[primary] = new DummyButton;
+        buttons[primary].first = new DummyButton;
 	pwarn << "Controller: No primary button - inserting dummy" << std::endl;
       }
       
     if (!buttons.count(secondary))
       {
-        buttons[secondary] = new DummyButton;
+        buttons[secondary].first = new DummyButton;
 	pwarn << "Controller: No secondary button - inserting dummy" << std::endl;
       }
 
     if (!buttons.count(pause))
       {
-        buttons[pause] = new DummyButton;
+        buttons[pause].first = new DummyButton;
 	pwarn << "Controller: No pause button - inserting dummy" << std::endl;
       }
 
     if (!buttons.count(fast_forward))
       {
-        buttons[fast_forward] = new DummyButton;
+        buttons[fast_forward].first = new DummyButton;
 	pwarn << "Controller: No fast_forward button - inserting dummy" << std::endl;
       }
       
     if (!buttons.count(armageddon))
       {
-        buttons[armageddon] = new DummyButton;
+        buttons[armageddon].first = new DummyButton;
 	pwarn << "Controller: No armageddon button - inserting dummy" << std::endl;
       }
 
     if (!buttons.count(escape))
       {
-        buttons[escape] = new DummyButton;
+        buttons[escape].first = new DummyButton;
 	pwarn << "Controller: No escape button - inserting dummy" << std::endl;
       }
 
-    button_states.resize(buttons.size());
-    std::map<ButtonName, Button*>::const_iterator it = buttons.begin();
-    for (unsigned int i=0; i < buttons.size(); ++i, ++it)
-      button_states[i] = it->second->is_pressed();
+    for (std::map<ButtonName, std::pair<Button*, bool> >::iterator it = buttons.begin(); it != buttons.end(); ++it)
+      it->second.second = it->second.first->is_pressed();
   }
 
   void
@@ -184,7 +182,7 @@ namespace Input
 	  }
 	  
 	if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "action-button"))
-	  buttons[static_cast<ButtonName>(action_1 + count)] = ButtonFactory::create(XMLhelper::skip_blank(cur->children));
+	  buttons[static_cast<ButtonName>(action_1 + count)].first = ButtonFactory::create(XMLhelper::skip_blank(cur->children));
 	else
 	  PingusError::raise(std::string("Wrong Element in Controller Config (action-buttons): ") + reinterpret_cast<const char*>(cur->name));
 	
@@ -205,8 +203,8 @@ namespace Input
     standard_pointer->update(delta);
     action_axis     ->update(delta);
 
-    for (std::map<ButtonName, Button*>::iterator it = buttons.begin(); it != buttons.end(); ++it)
-      it->second->update(delta);
+    for (std::map<ButtonName, std::pair<Button*, bool> >::iterator it = buttons.begin(); it != buttons.end(); ++it)
+      it->second.first->update(delta);
 
     if (std_pointer_x != standard_pointer->get_x_pos() || std_pointer_y != standard_pointer->get_y_pos())
       {
@@ -219,12 +217,11 @@ namespace Input
     if (scroller->get_x_delta() || scroller->get_y_delta())
       events.push_back(new ScrollEvent(scroller->get_x_delta(), scroller->get_y_delta()));
     
-    std::map<ButtonName, Button*>::const_iterator it = buttons.begin();
-    for (unsigned int i=0; i < buttons.size(); ++i, ++it)
-      if (it->second->is_pressed() != button_states[i])
+    for (std::map<ButtonName, std::pair<Button*, bool> >::iterator it = buttons.begin(); it != buttons.end(); ++it)
+      if (it->second.first->is_pressed() != it->second.second)
         {
-	  button_states[i] = it->second->is_pressed();
-	  if (button_states[i])
+	  it->second.second = ! it->second.second;
+	  if (it->second.second)
   	    events.push_back(new ButtonEvent(it->first, pressed));
 	  else
 	    events.push_back(new ButtonEvent(it->first, released));
@@ -239,7 +236,7 @@ namespace Input
   Controller::get_button (ButtonName name)
   {
     if (buttons.count(name))
-      return buttons[name];
+      return buttons[name].first;
 
     return 0;
   }
