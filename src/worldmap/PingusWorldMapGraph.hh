@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapGraph.hh,v 1.20 2002/06/06 09:34:28 grumbel Exp $
+//  $Id: PingusWorldMapGraph.hh,v 1.21 2002/06/06 14:05:44 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,36 +29,43 @@
 #include "../XMLhelper.hh"
 #include "PingusWorldMapNode.hh"
 
-class PingusWorldMapGraph
+namespace Pingus
 {
-private:
-  //Graph<Node>* graph;
-  ResDescriptor bg_desc;
-  std::string music;
-  xmlDocPtr doc;
-  
-public:
-  std::list<boost::shared_ptr<Pingus::WorldMap::Node> >   nodes;
-  typedef std::list<boost::shared_ptr<Pingus::WorldMap::Node> >::iterator iterator;
+  namespace WorldMap
+  {
 
-  PingusWorldMapGraph ();
-  ~PingusWorldMapGraph ();
+    class Graph
+    {
+    private:
+      //Graph<Node>* graph;
+      ResDescriptor bg_desc;
+      std::string music;
+      xmlDocPtr doc;
+  
+    public:
+      std::list<boost::shared_ptr<Pingus::WorldMap::Node> >   nodes;
+      typedef std::list<boost::shared_ptr<Pingus::WorldMap::Node> >::iterator iterator;
+
+      Graph ();
+      ~Graph ();
  
-  ResDescriptor              get_background ();
-  //Graph<Node>* get_graph ();
-  std::string get_music ();
+      ResDescriptor              get_background ();
+      //Graph<Node>* get_graph ();
+      std::string get_music ();
   
-  void draw (const CL_Vector&);
+      void draw (const CL_Vector&);
 
-  /// Some functions to parse the data out of an xml file
-  //@{ 
-  void parse_file (std::string filename);
-private:
-  void parse_node_list (xmlNodePtr);
-  void parse_music (xmlNodePtr);
-  void parse_background (xmlNodePtr);
-  //@}
-};
+      /// Some functions to parse the data out of an xml file
+      //@{ 
+      void parse_file (std::string filename);
+    private:
+      void parse_node_list (xmlNodePtr);
+      void parse_music (xmlNodePtr);
+      void parse_background (xmlNodePtr);
+      //@}
+    };
+  }
+}
 
 #endif
 

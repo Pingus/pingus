@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapNode.cc,v 1.2 2002/06/06 09:34:28 grumbel Exp $
+//  $Id: PingusWorldMapNode.cc,v 1.3 2002/06/06 14:05:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,7 +43,7 @@ void
 TubeNode::on_click ()
 {
   std::cout << "Not Supported" << std::endl;
-  PingusWorldMapManager::get_current ()->change_map (worldmap_name, link_node);
+  WorldMapManager::get_current ()->change_map (worldmap_name, link_node);
 }
 
 void 

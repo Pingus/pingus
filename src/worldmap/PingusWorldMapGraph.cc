@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapGraph.cc,v 1.31 2002/06/06 09:34:28 grumbel Exp $
+//  $Id: PingusWorldMapGraph.cc,v 1.32 2002/06/06 14:05:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,24 +37,24 @@
 
 using namespace Pingus::WorldMap;
 
-PingusWorldMapGraph::PingusWorldMapGraph ()
+Graph::Graph ()
 {
   music = "pingus-1.it";
   //graph = 0;
 }
 
-PingusWorldMapGraph::~PingusWorldMapGraph ()
+Graph::~Graph ()
 {
   //llif (graph) delete graph;
 }
  
 void
-PingusWorldMapGraph::parse_file (std::string filename)
+Graph::parse_file (std::string filename)
 {
   doc = xmlParseFile(filename.c_str());
 
   if (!doc) {
-    throw PingusError (_("PingusWorldMapGraph: File not found: ") + filename);
+    throw PingusError (_("Graph: File not found: ") + filename);
   }    
 
   xmlNodePtr cur = doc->ROOT;
@@ -85,7 +85,7 @@ PingusWorldMapGraph::parse_file (std::string filename)
 	    }
 	  else
 	    {
-	      printf("PingusWorldMapGraph: Unhandled: %s\n", (char*)cur->name);
+	      printf("Graph: Unhandled: %s\n", (char*)cur->name);
 	    }
 	  cur = cur->next;
 	}      
@@ -95,7 +95,7 @@ PingusWorldMapGraph::parse_file (std::string filename)
 }
 
 void
-PingusWorldMapGraph::parse_node_list (xmlNodePtr cur)
+Graph::parse_node_list (xmlNodePtr cur)
 {
   cur = cur->children;
   while (cur != NULL)
@@ -129,20 +129,20 @@ PingusWorldMapGraph::parse_node_list (xmlNodePtr cur)
 	}
       else
 	{
-	  printf("PingusWorldMapGraph:parse_node_list: Unhandled: %s\n", (char*)cur->name);	  
+	  printf("Graph:parse_node_list: Unhandled: %s\n", (char*)cur->name);	  
 	}
       cur = cur->next;
     } 
 }
 
 void
-PingusWorldMapGraph::parse_background (xmlNodePtr cur)
+Graph::parse_background (xmlNodePtr cur)
 {
   bg_desc = XMLhelper::parse_surface(doc, cur);
 }
 
 void
-PingusWorldMapGraph::parse_music (xmlNodePtr cur)
+Graph::parse_music (xmlNodePtr cur)
 {
   char* file = (char*)xmlGetProp(cur, (xmlChar*)"file");
 
@@ -150,30 +150,30 @@ PingusWorldMapGraph::parse_music (xmlNodePtr cur)
     music = file;
   else
     {
-      std::cout << "PingusWorldMapGraph: No music file given" << std::endl;
+      std::cout << "Graph: No music file given" << std::endl;
     }
 }
 
 ResDescriptor 
-PingusWorldMapGraph::get_background ()
+Graph::get_background ()
 {
   return bg_desc;
 }
 
 std::string 
-PingusWorldMapGraph::get_music ()
+Graph::get_music ()
 {
   return music;
 }
 
 /*Graph<PingusWorldMapNode>* 
-  PingusWorldMapGraph::get_graph ()
+  Graph::get_graph ()
   {
   return graph;
   }*/
 
 void
-PingusWorldMapGraph::draw (const CL_Vector& offset)
+Graph::draw (const CL_Vector& offset)
 {
   //float x_scale = CL_Display::get_width () / 800.0;
   //float y_scale = CL_Display::get_height () / 600.0;

@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMap.cc,v 1.37 2002/06/06 09:34:28 grumbel Exp $
+//  $Id: PingusWorldMap.cc,v 1.38 2002/06/06 14:05:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,7 +34,7 @@
 
 using namespace Pingus::WorldMap;
 
-PingusWorldMap::PingusWorldMap (std::string filename) :
+WorldMap::WorldMap (std::string filename) :
   font (PingusResource::load_font ("Fonts/pingus_small", "fonts")),
   green_dot ("worldmap/dot_green", "core"),
   red_dot ("worldmap/dot_red", "core"),
@@ -80,21 +80,21 @@ PingusWorldMap::PingusWorldMap (std::string filename) :
     }
 }
 
-PingusWorldMap::~PingusWorldMap ()
+WorldMap::~WorldMap ()
 {
   //delete graph;
   delete pingus;
 }
 
 void 
-PingusWorldMap::save ()
+WorldMap::save ()
 {
   std::cout << "PingusWorldMap:save()" << std::endl;
   stat->save (graph_data.nodes);
 }
 
 CL_Vector 
-PingusWorldMap::get_offset ()
+WorldMap::get_offset ()
 {
   // FIXME: Handling of background smaller than screen isn't handled
   assert (pingus);
@@ -132,7 +132,7 @@ PingusWorldMap::get_offset ()
 }
 
 void
-PingusWorldMap::init ()
+WorldMap::init ()
 {
   std::cout << "PingusWorldMap::init" << std::endl;
   if (!graph_data.get_music ().empty ())
@@ -140,19 +140,19 @@ PingusWorldMap::init ()
 }
 
 void 
-PingusWorldMap::disable_button_events ()
+WorldMap::disable_button_events ()
 {
   catch_input = false;
 }
   
 void 
-PingusWorldMap::enable_button_events ()
+WorldMap::enable_button_events ()
 {
   catch_input = true;
 }
 
 void 
-PingusWorldMap::on_button_press (CL_InputDevice *device, const CL_Key &key)
+WorldMap::on_button_press (CL_InputDevice *device, const CL_Key &key)
 {
   if (!catch_input) return;
 
@@ -254,19 +254,19 @@ PingusWorldMap::on_button_press (CL_InputDevice *device, const CL_Key &key)
 }
  
 void 
-PingusWorldMap::on_button_release (CL_InputDevice * /*device*/, const CL_Key & /*key*/)
+WorldMap::on_button_release (CL_InputDevice * /*device*/, const CL_Key & /*key*/)
 {
   if (!catch_input) return;
 }
 
 void
-PingusWorldMap::start_level (Pingus::WorldMap::Node* /*node*/)
+WorldMap::start_level (Pingus::WorldMap::Node* /*node*/)
 {
 
 }
 
 void
-PingusWorldMap::draw ()
+WorldMap::draw ()
 {
   CL_Vector offset = get_offset ();
   
@@ -322,13 +322,13 @@ PingusWorldMap::draw ()
 }
 
 void
-PingusWorldMap::update (float delta)
+WorldMap::update (float delta)
 {
   pingus->update (delta);
 }
 
 boost::shared_ptr<Pingus::WorldMap::Node>
-PingusWorldMap::get_node (int x, int y)
+WorldMap::get_node (int x, int y)
 {
   for (GraphIter i = graph_data.nodes.begin ();
        i != graph_data.nodes.end ();
@@ -349,7 +349,7 @@ PingusWorldMap::get_node (int x, int y)
 }
 
 void 
-PingusWorldMap::set_pingus (int node_id)
+WorldMap::set_pingus (int node_id)
 {
   for (GraphIter i = graph_data.nodes.begin ();
        i != graph_data.nodes.end ();

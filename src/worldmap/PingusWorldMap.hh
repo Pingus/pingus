@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMap.hh,v 1.21 2002/06/06 09:34:28 grumbel Exp $
+//  $Id: PingusWorldMap.hh,v 1.22 2002/06/06 14:05:44 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,88 +28,96 @@
 #include "PingusWorldMapPingus.hh"
 #include "PingusWorldMapStat.hh"
 
-/** A class for loading, displaying and managing the worldmap. */
-class PingusWorldMap
+namespace Pingus
 {
-private:
-  CL_Surface background;
-  CL_Font*   font;
+  namespace WorldMap
+  {
 
-  Sprite green_dot;
-  Sprite red_dot;
-  Sprite dot_border;
-  Sprite green_flag; 
+    /** A class for loading, displaying and managing the worldmap. */
+    class WorldMap
+    {
+    private:
+      CL_Surface background;
+      CL_Font*   font;
 
-  //Graph<PingusWorldMapNode>* graph;
-  PingusWorldMapGraph graph_data;
-  typedef PingusWorldMapGraph::iterator GraphIter;
+      Sprite green_dot;
+      Sprite red_dot;
+      Sprite dot_border;
+      Sprite green_flag; 
 
-  PingusWorldMapPingus* pingus;
+      //Graph<PingusWorldMapNode>* graph;
+      Graph graph_data;
+      typedef Graph::iterator GraphIter;
+
+      PingusWorldMapPingus* pingus;
   
-  bool catch_input;
+      bool catch_input;
 
-  bool do_quit;
-  boost::shared_ptr<Pingus::WorldMap::Node> last_node;
-  typedef boost::shared_ptr<Pingus::WorldMap::Node> NodePtr;
-  unsigned int last_node_time;
+      bool do_quit;
+      boost::shared_ptr<Pingus::WorldMap::Node> last_node;
+      typedef boost::shared_ptr<Pingus::WorldMap::Node> NodePtr;
+      unsigned int last_node_time;
   
-  boost::shared_ptr<PingusWorldMapStat> stat;
-public:
-  /** Load a worldmap from a given worldmap description file */
-  PingusWorldMap (std::string filename);
+      boost::shared_ptr<PingusWorldMapStat> stat;
+    public:
+      /** Load a worldmap from a given worldmap description file */
+      WorldMap (std::string filename);
 
-  /** Destruct the worldmap */
-  virtual ~PingusWorldMap ();
+      /** Destruct the worldmap */
+      virtual ~WorldMap ();
 
-  /** Launch the level at the given node
-      @param node The current node from which the level should be started */
-  void start_level (Pingus::WorldMap::Node* node);
+      /** Launch the level at the given node
+	  @param node The current node from which the level should be started */
+      void start_level (Pingus::WorldMap::Node* node);
 
-  /** Start up the music and other things that need only to me run
-      once on startup of a new WorldMap */
-  void init ();
+      /** Start up the music and other things that need only to me run
+	  once on startup of a new WorldMap */
+      void init ();
 
-  /** Save the current status to a file */
-  void save ();
+      /** Save the current status to a file */
+      void save ();
   
-  /** React on button press:
-      - calculate which level was clicked
-      - calculate the shortest path
-      - let the pingu walk */
-  void on_button_press (CL_InputDevice *device, const CL_Key &key);
+      /** React on button press:
+	  - calculate which level was clicked
+	  - calculate the shortest path
+	  - let the pingu walk */
+      void on_button_press (CL_InputDevice *device, const CL_Key &key);
  
-  /** React on button release */
-  void on_button_release (CL_InputDevice *device, const CL_Key &key);
+      /** React on button release */
+      void on_button_release (CL_InputDevice *device, const CL_Key &key);
 
-  /** Disable all event catching */
-  void disable_button_events ();
+      /** Disable all event catching */
+      void disable_button_events ();
   
-  /** Enable all event catching */
-  void enable_button_events ();
+      /** Enable all event catching */
+      void enable_button_events ();
   
-  /** Draw the world worldmap */
-  virtual void draw ();
+      /** Draw the world worldmap */
+      virtual void draw ();
   
-  /** Returns true if the worldmap is finished and the
-      PingusWorldMapManager can quit */
-  bool do_exit () { return do_quit; }
+      /** Returns true if the worldmap is finished and the
+	  PingusWorldMapManager can quit */
+      bool do_exit () { return do_quit; }
 
-  /** Let the woldmap do some stuff, like animating smoke, playing
-      sounds or reacting on special events */
-  virtual void update (float delta);
+      /** Let the woldmap do some stuff, like animating smoke, playing
+	  sounds or reacting on special events */
+      virtual void update (float delta);
 
-  /** Returns a pointer to the node under the given coordinates */
-  NodePtr get_node (int x, int y);
+      /** Returns a pointer to the node under the given coordinates */
+      NodePtr get_node (int x, int y);
   
-  /** Callculate the offset which is used for drawing and collision
-      detection. The offset will be used for scrolling when the
-      background is larger than the screen. 
-      @return the currently used draw offset */
-  CL_Vector get_offset ();
+      /** Callculate the offset which is used for drawing and collision
+	  detection. The offset will be used for scrolling when the
+	  background is larger than the screen. 
+	  @return the currently used draw offset */
+      CL_Vector get_offset ();
 
-  /** Set the pingu to the given node with 'id' */
-  void set_pingus (int node_id);
-};
+      /** Set the pingu to the given node with 'id' */
+      void set_pingus (int node_id);
+    };
+
+  }
+}
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapStat.cc,v 1.5 2002/06/06 09:34:28 grumbel Exp $
+//  $Id: PingusWorldMapStat.cc,v 1.6 2002/06/06 14:05:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -148,7 +148,7 @@ PingusWorldMapStat::save (std::list<boost::shared_ptr<Node> >& nodes)
   else
     {
       out << "<pingus-worldmap-stat>" << std::endl;
-      for (PingusWorldMapGraph::iterator i = nodes.begin ();
+      for (Graph::iterator i = nodes.begin ();
 	   i != nodes.end (); ++i)
 	{
 	  LevelNode* node = dynamic_cast<LevelNode*>((*i).get ());

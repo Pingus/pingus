@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapManager.cc,v 1.21 2002/06/01 18:05:37 torangan Exp $
+//  $Id: PingusWorldMapManager.cc,v 1.22 2002/06/06 14:05:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,20 +24,23 @@
 #include "../Display.hh"
 #include "PingusWorldMapManager.hh"
 
-PingusWorldMapManager* PingusWorldMapManager::current_manager;
+using namespace Pingus;
+using namespace Pingus::WorldMap;
 
-PingusWorldMapManager::PingusWorldMapManager ()
+WorldMapManager* WorldMapManager::current_manager;
+
+WorldMapManager::WorldMapManager ()
 {
   current_manager = this;
   is_init = false;
 }
 
-PingusWorldMapManager::~PingusWorldMapManager ()
+WorldMapManager::~WorldMapManager ()
 {
 }
 
 void 
-PingusWorldMapManager::init ()
+WorldMapManager::init ()
 {
   if (!is_init)
     {
@@ -47,16 +50,16 @@ PingusWorldMapManager::init ()
 }
 
 void
-PingusWorldMapManager::display ()
+WorldMapManager::display ()
 {
-  on_button_press_slot   = CL_Input::sig_button_press ().connect (this, &PingusWorldMapManager::on_button_press);
-  on_button_release_slot = CL_Input::sig_button_release ().connect (this, &PingusWorldMapManager::on_button_release);
-  on_mouse_move_slot     = CL_Input::sig_mouse_move ().connect (this, &PingusWorldMapManager::on_mouse_move);
+  on_button_press_slot   = CL_Input::sig_button_press ().connect (this, &WorldMapManager::on_button_press);
+  on_button_release_slot = CL_Input::sig_button_release ().connect (this, &WorldMapManager::on_button_release);
+  on_mouse_move_slot     = CL_Input::sig_mouse_move ().connect (this, &WorldMapManager::on_mouse_move);
 
   init ();
 
-  worldmap = boost::shared_ptr<PingusWorldMap>
-    (new PingusWorldMap (path_manager.complete("worldmaps/volcano.xml")));
+  worldmap = boost::shared_ptr<WorldMap::WorldMap>
+    (new WorldMap::WorldMap (path_manager.complete("worldmaps/volcano.xml")));
 
   worldmap->init ();
 
@@ -70,7 +73,7 @@ PingusWorldMapManager::display ()
       if (new_worldmap.get ())
 	{
 	  worldmap = new_worldmap;
-	  new_worldmap = boost::shared_ptr<PingusWorldMap>();
+	  new_worldmap = boost::shared_ptr<WorldMap::WorldMap>();
 	}
 
       CL_System::sleep (20);
@@ -84,34 +87,34 @@ PingusWorldMapManager::display ()
 }
 
 void
-PingusWorldMapManager::on_mouse_move (CL_InputDevice *, int /*mouse_x*/, int /*mouse_y*/)
+WorldMapManager::on_mouse_move (CL_InputDevice *, int /*mouse_x*/, int /*mouse_y*/)
 {
   //  std::cout << "mouse: " << mouse_x << " " << mouse_y << std::endl;  
 }
 
 void 
-PingusWorldMapManager::on_button_press (CL_InputDevice *device, const CL_Key &key)
+WorldMapManager::on_button_press (CL_InputDevice *device, const CL_Key &key)
 {
   worldmap->on_button_press (device, key);
 }
 
 void 
-PingusWorldMapManager::on_button_release (CL_InputDevice * /*device*/, const CL_Key & /*key*/)
+WorldMapManager::on_button_release (CL_InputDevice * /*device*/, const CL_Key & /*key*/)
 {
   //  std::cout << "key release: " << key.id << std::endl;
 }
 
 void
-PingusWorldMapManager::on_resize(int w, int h)
+WorldMapManager::on_resize(int w, int h)
 {
   std::cout << "Width: " << w << " Height: " << h << std::endl;
 }
 
 void 
-PingusWorldMapManager::change_map (std::string filename, int node)
+WorldMapManager::change_map (std::string filename, int node)
 {
-  new_worldmap = boost::shared_ptr<PingusWorldMap>
-    (new PingusWorldMap (path_manager.complete("worldmaps/" + filename)));
+  new_worldmap = boost::shared_ptr<WorldMap::WorldMap>
+    (new WorldMap::WorldMap (path_manager.complete("worldmaps/" + filename)));
   new_worldmap->set_pingus (node);
 }
 

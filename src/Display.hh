@@ -1,4 +1,4 @@
-//  $Id: Display.hh,v 1.10 2002/01/21 11:13:54 grumbel Exp $
+//  $Id: Display.hh,v 1.11 2002/06/06 14:05:44 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,51 +24,41 @@
 #include <ClanLib/display.h>
 #include <list>
 
-///
+/** A flip display hook can be used to attach an event to a
+    flip_screen(). An example usage for this is a software mouse
+    cursor or a frame counter */
 class DisplayHook
 {
 protected:
-  ///
   bool is_visible;
 public:
-  ///
   DisplayHook();
-  ///
   virtual ~DisplayHook() {}
   /** Called sortly before a flip_display () */
   virtual void on_event() = 0;
-  ///
   virtual void toggle_display();
 };
 
-///
+/** This is a kind of wrapper class around CL_Display, it provides
+    ways to set the cursor and hooks for flip_display() */
 class Display
 {
 private:
-  ///
   static bool displaying_cursor;
-  ///
   static std::list<DisplayHook*> display_hooks;
 public:
-  ///
   static void draw_rect(int x1, int y1, int x2, int y2, float r, float g, float b, float a);
 
-  ///
   static void show_cursor(bool show_async=true);
-  ///
   static void hide_cursor();
-  ///
   static void set_cursor(CL_MouseCursorProvider *provider, int frame=0);
-  ///
   static bool cursor_shown();
-  ///
+
   static void flip_display(bool sync=false);
-  ///
+
   static void add_flip_screen_hook(DisplayHook*);
-  ///
   static void remove_flip_screen_hook(DisplayHook*);
-}///
-;
+};
 
 #endif
 
