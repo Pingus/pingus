@@ -1,4 +1,4 @@
-//  $Id: ActionHolder.cc,v 1.30 2001/08/04 12:46:21 grumbel Exp $
+//  $Id: ActionHolder.cc,v 1.31 2001/08/16 17:46:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,30 +24,7 @@
 #include "Timer.hh"
 #include "globals.hh"
 
-#include "actions/RocketLauncher.hh"
-#include "actions/Boarder.hh"
-#include "actions/Superman.hh"
-#include "actions/Angel.hh"
-#include "actions/basher.hh"
-#include "actions/blocker.hh"
-#include "actions/bomber.hh"
-#include "actions/bridger.hh"
-#include "actions/climber.hh"
-#include "actions/digger.hh"
-#include "actions/exiter.hh"
-#include "actions/floater.hh"
-#include "actions/miner.hh"
-#include "actions/Jumper.hh"
-#include "actions/teleported.hh"
-#include "actions/exiter.hh"
-#include "actions/smashed.hh"
-#include "actions/LaserKill.hh"
-#include "actions/Splashed.hh"
-#include "actions/Waiter.hh"
-#include "actions/Drown.hh"
-#include "actions/Faller.hh"
-#include "actions/Walker.hh"
-
+#include "PinguActionFactory.hh"
 #include "ActionHolder.hh"
 
 using namespace boost;
@@ -61,7 +38,8 @@ ActionHolder::ActionHolder()
       //std::cout << "ActionHolder: Registering all actions..." <<
       //std::endl; FIXME: Looks ugly, could use static init()
       //functions or something like that.
-      new RocketLauncherFactory ();
+
+      /*      new RocketLauncherFactory ();
 
       new WalkerFactory ();
       new FallerFactory ();
@@ -84,7 +62,7 @@ ActionHolder::ActionHolder()
       new SplashedFactory ();
       new WaiterFactory ();
       new DrownFactory ();
-      new SupermanFactory ();
+      new SupermanFactory ();*/
       //std::cout << "ActionHolder: Registering all actions...done" << std::endl;
       is_registered = true;
     }
@@ -145,7 +123,7 @@ ActionHolder::get_action(const std::string& name)
 shared_ptr<PinguAction>
 ActionHolder::translate_action(const std::string& name)
 {
-  return PinguActionFactory::create(name);
+  return shared_ptr<PinguAction>(PinguActionFactory::instance ()->create(name));
 }
 
 // Returns an newly allocated action and adds it to the action_stack

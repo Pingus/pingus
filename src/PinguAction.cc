@@ -1,4 +1,4 @@
-//  $Id: PinguAction.cc,v 1.19 2001/08/12 18:36:40 grumbel Exp $
+//  $Id: PinguAction.cc,v 1.20 2001/08/16 17:46:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,31 +23,6 @@
 #include "World.hh"
 #include "PingusResource.hh"
 #include "PinguAction.hh"
-
-std::map<std::string, PinguActionFactory*> PinguActionFactory::actions;
-
-PinguActionFactory::PinguActionFactory (std::string name)
-{
-  //std::cout << "Registering: " << name << " " << this << std::endl;
-  // FIXME: Why do we use insert, instead of actions[name] = this ?
-  actions.insert( std::make_pair( name, this ));
-  //std::cout << "Registering done" << std::endl;
-}
-
-PinguActionFactory::~PinguActionFactory () 
-{
-}
-
-boost::shared_ptr<PinguAction>
-PinguActionFactory::create (std::string name)
-{
-  std::map<std::string, PinguActionFactory*>::iterator it = actions.find(name);
-
-  if (it == actions.end())
-    throw PingusError("PinguAction: Invalid action: " + name);
-  else 
-    return boost::shared_ptr<PinguAction> (it->second->create ());
-}
 
 PinguAction::PinguAction()
 {

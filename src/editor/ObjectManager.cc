@@ -1,4 +1,4 @@
-//  $Id: ObjectManager.cc,v 1.51 2001/08/13 21:35:37 grumbel Exp $
+//  $Id: ObjectManager.cc,v 1.52 2001/08/16 17:46:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -150,39 +150,19 @@ ObjectManager::load_level (std::string filename)
       i->surface = PingusResource::load_surface(i->desc);
     }
 
-  vector<EntranceData> temp_entraces = plf->get_entrance();
-  vector<HotspotData>  temp_hotspots = plf->get_hotspot();
-  vector<ExitData>     temp_exits    = plf->get_exit();
-  vector<LiquidData>   temp_liquid   = plf->get_liquids();
-  vector<TrapData>     temp_traps    = plf->get_traps();
   vector<WeatherData>  temp_weather  = plf->get_weather();
   vector<boost::shared_ptr<WorldObjData> > temp_worldobj = plf->get_worldobjs_data();
 
-  for(vector<GroundpieceData>::iterator i = temp_surfaces.begin(); i != temp_surfaces.end(); ++i)
+  for (vector<GroundpieceData>::iterator i = temp_surfaces.begin(); i != temp_surfaces.end(); ++i)
     ListHelper::append (editor_objs, i->create_EditorObj ());
 
-  for(vector<EntranceData>::iterator i = temp_entraces.begin(); i != temp_entraces.end(); ++i)
-    ListHelper::append (editor_objs, i->create_EditorObj());
-
-  for(vector<ExitData>::iterator i = temp_exits.begin(); i != temp_exits.end(); ++i)
-    ListHelper::append (editor_objs, i->create_EditorObj ());
-      
-  for(vector<HotspotData>::iterator i = temp_hotspots.begin(); i != temp_hotspots.end(); ++i)
-    ListHelper::append (editor_objs, i->create_EditorObj ());
-  
-  for(vector<TrapData>::iterator i = temp_traps.begin(); i != temp_traps.end(); ++i)
+  for (vector<WeatherData>::iterator i = temp_weather.begin(); i != temp_weather.end(); ++i)
     ListHelper::append (editor_objs, i->create_EditorObj ());
 
-  for(vector<WeatherData>::iterator i = temp_weather.begin(); i != temp_weather.end(); ++i)
-    ListHelper::append (editor_objs, i->create_EditorObj ());
-
-  for(vector<boost::shared_ptr<WorldObjData> >::iterator i = temp_worldobj.begin();
+  for (vector<boost::shared_ptr<WorldObjData> >::iterator i = temp_worldobj.begin();
       i != temp_worldobj.end();
       ++i)
     ListHelper::append (editor_objs, (*i)->create_EditorObj ());
-
-  for(vector<LiquidData>::iterator i = temp_liquid.begin(); i != temp_liquid.end(); ++i)
-    ListHelper::append (editor_objs, i->create_EditorObj ());
 
 #ifndef WIN32 // FIXME: Compiler error in Windows
   editor_objs.sort(EditorObj_z_pos_sorter());

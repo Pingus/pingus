@@ -1,4 +1,4 @@
-//  $Id: Walker.hh,v 1.1 2001/08/04 12:44:10 grumbel Exp $
+//  $Id: Walker.hh,v 1.2 2001/08/16 17:46:51 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,8 +36,6 @@ public:
   PinguEnvironment get_environment() const { return ENV_ALWAYS; }
   std::string get_name() const { return "Walker"; }
 };
-
-REGISTER_PINGUACTION(WalkerFactory, Walker, "walker");
 
 #endif
 

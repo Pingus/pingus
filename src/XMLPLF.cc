@@ -1,4 +1,4 @@
-//  $Id: XMLPLF.cc,v 1.37 2001/08/12 23:05:22 grumbel Exp $
+//  $Id: XMLPLF.cc,v 1.38 2001/08/16 17:46:51 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,6 +26,7 @@
 #include "PingusError.hh"
 #include "StringConverter.hh"
 #include "WorldObjDataFactory.hh"
+#include "WorldObjGroupData.hh"
 
 XMLPLF::XMLPLF(const std::string& filename)
 {
@@ -211,6 +212,9 @@ XMLPLF::parse_group(xmlNodePtr cur)
 {
   cur = cur->children;
 
+  WorldObjGroupData* group (new WorldObjGroupData ());
+  boost::shared_ptr<WorldObjData> data (group);
+
   while (cur != NULL)
     {
       if (xmlIsBlankNode(cur)) 
@@ -225,23 +229,23 @@ XMLPLF::parse_group(xmlNodePtr cur)
 	}
       else if (strcmp((char*)cur->name, "exit") == 0)
 	{
-	  worldobjs_data.push_back (ExitData::create (doc, cur));
+	  group->add (ExitData::create (doc, cur));
 	}
       else if (strcmp((char*)cur->name, "entrance") == 0)
 	{
-	  worldobjs_data.push_back (EntranceData::create (doc, cur));
+	  group->add (EntranceData::create (doc, cur));
 	}
       else if (strcmp((char*)cur->name, "trap") == 0)
 	{
-	  worldobjs_data.push_back (TrapData::create (doc, cur));
+	  group->add (TrapData::create (doc, cur));
 	}
       else if (strcmp((char*)cur->name, "hotspot") == 0)
 	{
-	  worldobjs_data.push_back(HotspotData::create (doc, cur));
+	  group->add(HotspotData::create (doc, cur));
 	}
       else if (strcmp((char*)cur->name, "liquid") == 0)
 	{
-	  worldobjs_data.push_back(LiquidData::create (doc, cur));
+	  group->add(LiquidData::create (doc, cur));
 	}
       else if (strcmp((char*)cur->name, "group") == 0)
 	{
@@ -249,14 +253,16 @@ XMLPLF::parse_group(xmlNodePtr cur)
 	}
       else if (strcmp ((char*)cur->name, "worldobj") == 0)
 	{
-	  worldobjs_data.push_back(WorldObjDataFactory::instance ()->create (doc, cur));
+	  group->add(WorldObjDataFactory::instance ()->create (doc, cur));
 	}
       else
 	{
 	  printf("Unhandled: %s\n", (char*)cur->name);
 	}
       cur = cur->next;
-    } 
+    }
+
+  worldobjs_data.push_back (data);
 }
 
 void 

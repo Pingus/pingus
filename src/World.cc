@@ -1,4 +1,4 @@
-//  $Id: World.cc,v 1.58 2001/08/15 07:35:28 grumbel Exp $
+//  $Id: World.cc,v 1.59 2001/08/16 17:46:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -216,26 +216,8 @@ World::init_map()
 void
 World::init_worldobjs()
 {
-  vector<ExitData>     exit_d     = plf->get_exit();
-  vector<EntranceData> entrance_d = plf->get_entrance();
-  vector<TrapData>     trap_d     = plf->get_traps();
-  vector<HotspotData>  hspot_d    = plf->get_hotspot();
-  vector<LiquidData>   liquid_d   = plf->get_liquids();
   vector<WeatherData>  weather_d  = plf->get_weather();
   vector<shared_ptr<WorldObjData> > worldobj_d = plf->get_worldobjs_data ();
-  vector<shared_ptr<WorldObjData> > tmy_worldobj = plf->get_worldobjs_data ();
-
-  for(vector<EntranceData>::iterator i = entrance_d.begin ();
-      i != entrance_d.end (); ++i)
-    {
-      world_obj.push_back(i->create_WorldObj ());
-    }
-
-  for(vector<EntranceData>::iterator i = entrance_d.begin ();
-      i != entrance_d.end (); ++i)
-    {
-      world_obj.push_back(i->create_WorldObj ());
-    }
 
   for(vector<WeatherData>::iterator i = weather_d.begin();
       i != weather_d.end();
@@ -245,17 +227,13 @@ World::init_worldobjs()
       world_obj.push_back(weather_gen);
     }
 
-  for(vector<TrapData>::iterator i = trap_d.begin (); i < trap_d.end(); ++i)
-    {
-      world_obj.push_back(i->create_WorldObj ());
-    }
-
   for (vector<shared_ptr<WorldObjData> >::iterator i = worldobj_d.begin ();
        i != worldobj_d.end ();
        i++)
     {
       shared_ptr<WorldObj> obj = (*i)->create_WorldObj ();
-      world_obj.push_back(obj);
+      if (obj.get ())
+	world_obj.push_back(obj);
     }
 
   world_obj.push_back(pingus);

@@ -1,4 +1,4 @@
-//  $Id: PLFPLF.hh,v 1.5 2001/08/12 18:36:40 grumbel Exp $
+//  $Id: PLFPLF.hh,v 1.6 2001/08/16 17:46:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,6 +34,7 @@
 #include "HotspotData.hh"
 #include "LiquidData.hh"
 #include "TrapData.hh"
+#include "backgrounds/SurfaceBackgroundData.hh"
 
 class SurfaceBackgroundData;
 
@@ -45,8 +46,7 @@ class SurfaceBackgroundData;
 class PLFPLF : public PLFParser, public PLF
 {
 private:
-  boost::shared_ptr<SurfaceBackgroundData> sur_background;
-
+  SurfaceBackgroundData sur_background;
   EntranceData entrance_s;
   ExitData     exit_s;
   HotspotData  hotspot_s;

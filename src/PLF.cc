@@ -1,4 +1,4 @@
-//  $Id: PLF.cc,v 1.26 2001/08/15 22:01:45 grumbel Exp $
+//  $Id: PLF.cc,v 1.27 2001/08/16 17:46:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -126,30 +126,6 @@ PLF::get_height(void)
   return height;
 }
 
-vector<HotspotData>
-PLF::get_hotspot()
-{
-  return hotspots;
-}
-
-vector<ExitData>
-PLF::get_exit()
-{
-  return exits;
-}
-
-vector<EntranceData>
-PLF::get_entrance()
-{
-  return entrances;
-}
-
-vector<TrapData> 
-PLF::get_traps()
-{
-  return traps;
-}
-
 int
 PLF::get_pingus()
 {
@@ -184,12 +160,6 @@ map<std::string, std::string>
 PLF::get_levelname()
 {
   return levelname;
-}
-
-vector<LiquidData>
-PLF::get_liquids(void)
-{
-  return liquids;
 }
 
 int

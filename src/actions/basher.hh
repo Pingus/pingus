@@ -1,4 +1,4 @@
-//  $Id: basher.hh,v 1.15 2001/08/12 18:36:41 grumbel Exp $
+//  $Id: basher.hh,v 1.16 2001/08/16 17:46:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -44,8 +44,6 @@ public:
   void walk_forward();
   void bash();
 };
-
-REGISTER_PINGUACTION(BasherFactory, Basher, "basher");
 
 #endif
 

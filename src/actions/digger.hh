@@ -1,4 +1,4 @@
-//  $Id: digger.hh,v 1.12 2001/08/02 21:51:03 grumbel Exp $
+//  $Id: digger.hh,v 1.13 2001/08/16 17:46:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -40,8 +40,6 @@ public:
   void update(float delta);
   void draw_offset(int x, int y, float s);
 };
-
-REGISTER_PINGUACTION(DiggerFactory, Digger, "digger");
 
 #endif
 

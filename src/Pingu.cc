@@ -1,4 +1,4 @@
-//  $Id: Pingu.cc,v 1.64 2001/08/12 18:36:40 grumbel Exp $
+//  $Id: Pingu.cc,v 1.65 2001/08/16 17:46:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,6 +38,7 @@ using namespace boost;
 #include "algo.hh"
 #include "actions/smashed.hh"
 #include "ColMap.hh"
+#include "PinguActionFactory.hh"
 #include "FVec.hh"
 
 const float deadly_velocity = 20.0;
@@ -193,7 +194,7 @@ Pingu::set_action(shared_ptr<PinguAction> act)
 void 
 Pingu::set_action (const std::string action_name)
 {
-  set_action (PinguActionFactory::create (action_name));
+  set_action (shared_ptr<PinguAction>(PinguActionFactory::instance ()->create (action_name)));
 }
 
 // Sets an action without any checking

@@ -1,4 +1,4 @@
-//  $Id: WorldObjData.hh,v 1.9 2001/08/11 18:53:39 grumbel Exp $
+//  $Id: WorldObjData.hh,v 1.10 2001/08/16 17:46:51 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,6 +29,7 @@ class WorldObj;
 class EditorObj;
 
 typedef std::list<boost::shared_ptr<EditorObj> > EditorObjLst;
+typedef std::list<boost::shared_ptr<EditorObj> >::iterator EditorObjLstIter;
 
 /** The root data class for all objects in the Pingus world.  Each
     objects needs a data object for creating, which should be

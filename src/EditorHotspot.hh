@@ -1,40 +1,48 @@
-//  $Id: exiter.hh,v 1.12 2001/08/16 17:46:51 grumbel Exp $
-//
+//  $Id: EditorHotspot.hh,v 1.1 2001/08/16 17:46:51 grumbel Exp $
+// 
 //  Pingus - A free Lemmings clone
-//  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
+//  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //
 //  This program is free software; you can redistribute it and/or
 //  modify it under the terms of the GNU General Public License
 //  as published by the Free Software Foundation; either version 2
 //  of the License, or (at your option) any later version.
-// 
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//
+// 
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef EXITER_HH
-#define EXITER_HH
+#ifndef EDITORHOTSPOT_HH
+#define EDITORHOTSPOT_HH
 
-#include "../Sprite.hh"
-#include "../PinguAction.hh"
+#include "HotspotData.hh"
+#include "StringConverter.hh"
+#include "editor/SpriteEditorObj.hh" 
 
-///
-class Exiter : public PinguAction
+class EditorHotspot : public HotspotData,
+		      public SpriteEditorObj
 {
 private:
-  Sprite sprite;
 public:
-  void init(void);
-  std::string get_name () const { return "Exiter"; }
-  PinguEnvironment get_environment() const { return (PinguEnvironment)ENV_LAND; }
-  void update(float delta);
-  void draw_offset(int x, int y, float s);
+  EditorHotspot (const HotspotData& data)
+    : HotspotData (data),
+      SpriteEditorObj (desc, pos)
+  {}
+
+  void write_xml(ofstream* xml) { HotspotData::write_xml (xml); }
+
+  boost::shared_ptr<EditorObj> duplicate() {
+    return boost::shared_ptr<EditorObj>(new EditorHotspot(*this));
+  }
+
+  std::string status_line () { return "Hotspot: " + to_string(pos); }
 };
+
 
 #endif
 

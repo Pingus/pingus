@@ -1,4 +1,4 @@
-//  $Id: Boarder.hh,v 1.3 2001/08/02 21:51:02 grumbel Exp $
+//  $Id: Boarder.hh,v 1.4 2001/08/16 17:46:51 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,8 +41,6 @@ public:
 private:
   bool on_ground ();
 };
-
-REGISTER_PINGUACTION(BoarderFactory, Boarder, "boarder");
 
 #endif
 

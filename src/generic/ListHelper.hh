@@ -1,4 +1,4 @@
-//  $Id: ListHelper.hh,v 1.3 2001/08/10 10:56:14 grumbel Exp $
+//  $Id: ListHelper.hh,v 1.4 2001/08/16 17:46:51 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,8 @@
 
 #ifndef LISTHELPER_HH
 #define LISTHELPER_HH
+
+#include <list>
 
 namespace ListHelper
 {

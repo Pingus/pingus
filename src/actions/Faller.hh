@@ -1,4 +1,4 @@
-//  $Id: Faller.hh,v 1.2 2001/08/05 21:20:53 grumbel Exp $
+//  $Id: Faller.hh,v 1.3 2001/08/16 17:46:51 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,8 +42,6 @@ public:
   std::string get_name() const { return "Faller"; }
   bool is_tumbling () const;
 };
-
-REGISTER_PINGUACTION(FallerFactory, Faller, "faller");
 
 #endif
 

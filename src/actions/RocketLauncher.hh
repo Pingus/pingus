@@ -1,4 +1,4 @@
-//  $Id: RocketLauncher.hh,v 1.2 2001/08/02 21:51:03 grumbel Exp $
+//  $Id: RocketLauncher.hh,v 1.3 2001/08/16 17:46:51 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -40,8 +40,6 @@ public:
   void  update(float delta);
   void  draw_offset(int, int, float s);
 };
-
-REGISTER_PINGUACTION(RocketLauncherFactory, RocketLauncher, "rocketlauncher");
 
 #endif
 

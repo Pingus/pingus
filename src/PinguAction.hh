@@ -1,4 +1,4 @@
-//  $Id: PinguAction.hh,v 1.26 2001/08/13 21:35:37 grumbel Exp $
+//  $Id: PinguAction.hh,v 1.27 2001/08/16 17:46:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -103,34 +103,6 @@ public:
   // FIXME: z_pos is currently unused for pingu actions
   virtual float get_z_pos () const { return 0; }
 };
-
-class PinguActionFactory
-{  
-private:
-  static std::map<std::string, PinguActionFactory*>  actions;
-  
-protected:
-  PinguActionFactory (std::string);
-  virtual ~PinguActionFactory ();
-  virtual PinguAction* create () =0; 
-
-public:
-  static  boost::shared_ptr<PinguAction> create (std::string action_name);
-};
-
-// Now follows a little Factory Macro
-//
-#define REGISTER_PINGUACTION(f_class, a_class, name)   \
-class f_class : public PinguActionFactory              \
-{                                                      \
-public:                                                \
-  f_class () : PinguActionFactory (name) {             \
-     /*std::cout << _("Name: ") << name << std::endl;*/\
-  }                                                    \
-  PinguAction* create () {                             \
-    return new a_class ();                             \
-  }                                                    \
-}
 
 #endif /* PINGU_ACTION_HH */
 

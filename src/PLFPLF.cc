@@ -1,4 +1,4 @@
-//  $Id: PLFPLF.cc,v 1.12 2001/08/12 18:36:40 grumbel Exp $
+//  $Id: PLFPLF.cc,v 1.13 2001/08/16 17:46:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -100,61 +100,53 @@ PLFPLF::set_value(string valueid,
 
   case PLFPLF::BACKGROUND:
     {
-      assert(sur_background.get());
-      /*      SurfaceBackgroundData* sur_background;
-
-      // FIXME: Memory leak, but not important, this file will be
-      // FIXME: deleted soon 
-      sur_background = new SurfaceBackgroundData();
-      backgrounds.push_back(sur_background);
-      */
       if (valueid == "image") 
 	{
-	  sur_background->desc = ResDescriptor(cast, value);
+	  sur_background.desc = ResDescriptor(cast, value);
 	} 
       else if (valueid == "scroll_x") 
 	{
-	  sur_background->scroll_x  = str_to_float(value);
+	  sur_background.scroll_x  = str_to_float(value);
 	} 
       else if (valueid == "scroll_y") 
 	{
-	  sur_background->scroll_y = str_to_float(value);
+	  sur_background.scroll_y = str_to_float(value);
 	} 
       else if (valueid == "para_x")
 	{
-	  sur_background->para_x = str_to_float(value);
+	  sur_background.para_x = str_to_float(value);
 	}
       else if (valueid == "para_y")
 	{
-	  sur_background->para_y = str_to_float(value);
+	  sur_background.para_y = str_to_float(value);
 	}
       else if (valueid == "stretch_x")
 	{
-	  sur_background->stretch_x = str_to_bool(value);
+	  sur_background.stretch_x = str_to_bool(value);
 	}
       else if (valueid == "stretch_y")
 	{
-	  sur_background->stretch_y = str_to_bool(value);
+	  sur_background.stretch_y = str_to_bool(value);
 	}
       else if (valueid == "dim") 
 	{
-	  sur_background->color.alpha = str_to_float(value);
+	  sur_background.color.alpha = str_to_float(value);
 	} 
       else if (valueid == "alpha") 
 	{
-	  sur_background->color.alpha = str_to_float(value);
+	  sur_background.color.alpha = str_to_float(value);
 	} 
       else if (valueid == "red") 
 	{
-	  sur_background->color.red = str_to_float(value);	
+	  sur_background.color.red = str_to_float(value);	
 	} 
       else if (valueid == "green") 
 	{
-	  sur_background->color.green = str_to_float(value);	
+	  sur_background.color.green = str_to_float(value);	
 	} 
       else if (valueid == "blue") 
 	{
-	  sur_background->color.blue = str_to_float(value);	
+	  sur_background.color.blue = str_to_float(value);	
 	} 
       else 
 	{
@@ -315,8 +307,6 @@ PLFPLF::set_group_start(string groupname)
     current_group = PLFPLF::GLOBAL;
   } else if (groupname == "background") {
     current_group = PLFPLF::BACKGROUND;
-    sur_background = boost::shared_ptr<SurfaceBackgroundData>(new SurfaceBackgroundData());
-    //backgrounds.push_back(sur_background);
   } else if (groupname == "ground") {
     current_group = PLFPLF::GROUND;
   } else if (groupname == "music") {
@@ -343,23 +333,28 @@ PLFPLF::set_group_end(void)
 {
   // flush collected data
   switch(current_group) {
-  case PLFPLF::EXIT:
-    exits.push_back(exit_s);
-    exit_s.clean();
+  case PLFPLF::BACKGROUND:
+    worldobjs_data.push_back(boost::shared_ptr<WorldObjData> (new SurfaceBackgroundData(sur_background)));
+    sur_background = SurfaceBackgroundData ();
     break;
 
+  case PLFPLF::EXIT:
+    worldobjs_data.push_back(boost::shared_ptr<WorldObjData> (new ExitData(exit_s)));
+    exit_s.clean();
+    break;
+    
   case PLFPLF::ENTRANCE:
-    entrances.push_back(entrance_s);
+    worldobjs_data.push_back(boost::shared_ptr<WorldObjData> (new EntranceData(entrance_s)));
     entrance_s.clean();
     break;
 
   case PLFPLF::TRAP:
-    traps.push_back(trap_s);
+    worldobjs_data.push_back(boost::shared_ptr<WorldObjData> (new TrapData (trap_s)));
     trap_s.clean();
     break;
 
   case PLFPLF::HOTSPOT:
-    hotspots.push_back(hotspot_s);
+    worldobjs_data.push_back(boost::shared_ptr<WorldObjData> (new HotspotData (hotspot_s)));
     hotspot_s.clean();
     break;
 

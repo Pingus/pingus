@@ -41,8 +41,6 @@ public:
   int x_target, y_target; // <- FIXME: Ugly!
 };
 
-REGISTER_PINGUACTION(TeleportedFactory, Teleported, "teleported");
-
 #endif
 
 /* EOF */

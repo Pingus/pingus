@@ -1,4 +1,4 @@
-//  $Id: PLF.hh,v 1.25 2001/08/15 07:35:27 grumbel Exp $
+//  $Id: PLF.hh,v 1.26 2001/08/16 17:46:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -71,14 +71,10 @@ protected:
   int  difficulty;
   
   std::vector<ActionData>   actions;
-  std::vector<EntranceData> entrances;
-  std::vector<ExitData>     exits;
-  std::vector<HotspotData>  hotspots;
-  std::vector<LiquidData>   liquids;
-  std::vector<TrapData>     traps;
   std::vector<GroundpieceData>  groundpieces;
   std::vector<WeatherData>  weathers;
   std::vector<boost::shared_ptr<WorldObjData> > worldobjs_data;
+
 public:
   ///
   PLF();
@@ -117,9 +113,6 @@ public:
   /// Returns the difficulty of the current level
   int         get_difficulty();
 
-  ///
-  //MapType     map_type(void);
-
   /// Returns the number of pingus you need to save in this level.
   int         get_number_to_save();
 
@@ -136,26 +129,10 @@ public:
   /// Returns the name of the author, who creates this level
   std::string get_author();
 
-  /// 
-  std::vector<HotspotData>   get_hotspot(void);
-  ///
-  std::vector<EntranceData>  get_entrance(void);
-  ///
-  std::vector<ExitData>      get_exit(void);
-  ///
-  std::vector<TrapData>      get_traps(void);
-  ///
   std::vector<ActionData>    get_actions(void);
-  ///
-  std::vector<LiquidData>    get_liquids(void);
-  ///
   std::vector<GroundpieceData>   get_groundpieces(void);
-  ///
   std::vector<WeatherData>   get_weather(void);
-  ///
   std::vector<boost::shared_ptr<WorldObjData> > get_worldobjs_data ();
-  //
-  //std::vector<EmptyData>            get_groups(void);
 };
 
 #endif

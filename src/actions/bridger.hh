@@ -1,4 +1,4 @@
-//  $Id: bridger.hh,v 1.14 2001/08/05 23:50:14 grumbel Exp $
+//  $Id: bridger.hh,v 1.15 2001/08/16 17:46:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -57,8 +57,6 @@ public:
   void   place_a_brick();
   void   walk_one_step_up();
 };
-
-REGISTER_PINGUACTION(BridgerFactory, Bridger, "bridger");
 
 #endif
 
