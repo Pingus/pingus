@@ -1,4 +1,4 @@
-//  $Id: pingu.hxx,v 1.20 2002/10/02 19:20:19 grumbel Exp $
+//  $Id: pingu.hxx,v 1.21 2002/10/04 16:54:04 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -50,7 +50,7 @@ private:
 
   /** The uniq id of the Pingu, this is used to refer to the Pingu in
       a demo file or in a network connection */
-  int id;
+  unsigned int id;
 
   int action_time;
   int owner_id;
@@ -113,7 +113,7 @@ public:
   PinguAction* get_action ();
 
   /// Returns the unique id of the pingu
-  int  get_id (void); 
+  unsigned int  get_id (void); 
     
   /// Set the pingu to the given coordinates
   void set_pos (float x, float y);

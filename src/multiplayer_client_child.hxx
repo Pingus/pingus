@@ -1,4 +1,4 @@
-//  $Id: multiplayer_client_child.hxx,v 1.7 2002/09/28 11:52:22 torangan Exp $
+//  $Id: multiplayer_client_child.hxx,v 1.8 2002/10/04 16:54:04 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,13 +27,12 @@
 #include "pingus_counter_bar.hxx"
 
 #include <string>
-class Server;
+class TrueServer;
 
 class MultiplayerClientChild : public GuiObj
 {
 private:
-
-  Server*      server;
+  TrueServer*  server;
   Cursor*      cursor;
   ButtonPanel* button_panel;
   Sprite       capture_rect;
@@ -49,7 +48,7 @@ private:
   Vector scroll_vec;
 
 public:
-  MultiplayerClientChild (Server * s, const CL_Rect& arg_rect);
+  MultiplayerClientChild (TrueServer * s, const CL_Rect& arg_rect);
   ~MultiplayerClientChild ();
 
   void draw ();

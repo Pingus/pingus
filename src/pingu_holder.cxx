@@ -1,4 +1,4 @@
-//  $Id: pingu_holder.cxx,v 1.14 2002/10/04 13:46:56 grumbel Exp $
+//  $Id: pingu_holder.cxx,v 1.15 2002/10/04 16:54:04 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,10 +20,11 @@
 #include <iostream>
 #include "pingu_holder.hxx"
 #include "pingu.hxx"
+#include "plf.hxx"
 #include "pingu_action.hxx"
 
-PinguHolder::PinguHolder()
-  : id_count(0),
+PinguHolder::PinguHolder(PLF* plf)
+  : number_of_allowed(plf->get_pingus()),
     number_of_exited(0)
 {
 }
@@ -40,15 +41,24 @@ PinguHolder::~PinguHolder()
 Pingu*
 PinguHolder::create_pingu (const Vector& pos, int owner_id)
 {
-  Pingu* pingu = new Pingu (id_count++, pos, owner_id);
+  if (number_of_allowed > get_number_of_released())
+    {
+      // We use all_pingus.size() as pingu_id, so that id == array
+      // index
+      Pingu* pingu = new Pingu (all_pingus.size(), pos, owner_id);
 
-  // This list will deleted
-  all_pingus.push_back (pingu);
+      // This list will deleted
+      all_pingus.push_back (pingu);
 
-  // This list holds the active pingus
-  pingus.push_back(pingu);
+      // This list holds the active pingus
+      pingus.push_back(pingu);
 
-  return pingu;
+      return pingu;
+    }
+  else
+    {
+      return 0;
+    }
 }
 
 void
@@ -111,16 +121,23 @@ PinguHolder::update()
 }
 
 Pingu*
-PinguHolder::get_pingu(int id)
+PinguHolder::get_pingu(unsigned int id)
 {
-  for(std::list<Pingu*>::iterator pingu = pingus.begin(); 
-      pingu != pingus.end(); 
-      ++pingu)
+  if (id < all_pingus.size())
     {
-      if ((*pingu)->get_id() == id)
-	return *pingu;
+      Pingu* pingu = all_pingus[id];
+
+      assert(pingu->get_id() == id);
+
+      if (pingu->get_status() == PS_ALIVE)
+        return pingu;
+      else
+        return 0;
     }
-  return 0;
+  else
+    {
+      return 0;
+    }
 }
 
 float
@@ -151,6 +168,12 @@ int
 PinguHolder::get_number_of_released()
 {
   return all_pingus.size();
+}
+
+int
+PinguHolder::get_number_of_allowed()
+{
+  return number_of_allowed;
 }
 
 /* EOF */

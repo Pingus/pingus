@@ -1,4 +1,4 @@
-//  $Id: plf.cxx,v 1.10 2002/09/28 11:52:22 torangan Exp $
+//  $Id: plf.cxx,v 1.11 2002/10/04 16:54:04 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,7 +28,7 @@ PLF::PLF()
   start_x_pos = start_y_pos = 0;
   width = 1600; height = 800;
   number_of_pingus = 100;
-  max_time = 9000;
+  max_time = -1;
   number_to_save = 0;
   number_of_pingus = 100;
   difficulty = 5;  

@@ -1,4 +1,4 @@
-//  $Id: pingus_counter.cxx,v 1.9 2002/10/04 13:46:56 grumbel Exp $
+//  $Id: pingus_counter.cxx,v 1.10 2002/10/04 16:54:04 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,7 +26,7 @@
 #include "world.hxx"
 #include "pingu_holder.hxx"
 #include "server.hxx"
-
+#include "plf.hxx"
 
 PingusCounter::PingusCounter(Server* s)
   : server(s),
@@ -46,10 +46,10 @@ PingusCounter::draw(GraphicContext& gc)
   
   snprintf(str, 128, _("Released: %3d/%3d  Out: %3d  Saved: %3d/%3d"),
 	   world->get_pingus()->get_number_of_released(),
-	   world->get_allowed_pingus(),
+	   world->get_pingus()->get_number_of_allowed(),
 	   world->get_pingus()->get_number_of_alive(),
 	   world->get_pingus()->get_number_of_exited(),
-	   world->get_number_to_save());
+	   server->get_plf()->get_number_to_save());
 
   font->print_center(CL_Display::get_width ()/2,3, str);
   UNUSED_ARG(gc);

@@ -1,4 +1,4 @@
-//  $Id: game_session.cxx,v 1.16 2002/10/03 12:33:08 grumbel Exp $
+//  $Id: game_session.cxx,v 1.17 2002/10/04 16:54:04 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,6 +26,7 @@
 #include "timer.hxx"
 #include "plf.hxx"
 #include "globals.hxx"
+#include "screen_manager.hxx"
 
 PingusGameSession::PingusGameSession (std::string arg_filename)
   : filename (arg_filename)
@@ -84,6 +85,11 @@ PingusGameSession::draw(GraphicContext& gc)
 void
 PingusGameSession::update (const GameDelta& delta)
 {
+  if (server->is_finished())
+    {
+      ScreenManager::instance()->pop_screen();
+    }
+
   //std::cout << "Left Over Time: " << left_over_time << std::endl;
 
   int time_passed = (CL_System::get_time() - last_update) + left_over_time;
@@ -109,7 +115,6 @@ PingusGameSession::update (const GameDelta& delta)
     {
       CL_System::sleep(-left_over_time);
     }
-      
   
   // Client is independend of the update limit, well, not completly...
   client->update (delta);

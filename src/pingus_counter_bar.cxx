@@ -1,4 +1,4 @@
-//  $Id: pingus_counter_bar.cxx,v 1.3 2002/10/04 13:46:56 grumbel Exp $
+//  $Id: pingus_counter_bar.cxx,v 1.4 2002/10/04 16:54:04 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -45,7 +45,7 @@ PingusCounterBar::draw ()
 {
   int length = rect.y2 - rect.y1;
   
-  int complete      = server->get_world ()->get_allowed_pingus ();
+  int complete      = server->get_world ()->get_pingus()->get_number_of_allowed();
   int current_out   = server->get_world ()->get_pingus()->get_number_of_released();
   int current_saved = server->get_world ()->get_pingus()->get_number_of_exited();
 

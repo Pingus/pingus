@@ -1,4 +1,4 @@
-//  $Id: pingu_holder.hxx,v 1.12 2002/10/04 13:46:56 grumbel Exp $
+//  $Id: pingu_holder.hxx,v 1.13 2002/10/04 16:54:04 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,7 @@
 #include <vector>
 #include "worldobj.hxx"
 
+class PLF;
 class Vector;
 class Pingu;
 
@@ -33,9 +34,9 @@ typedef std::list<Pingu*>::iterator PinguIter;
 class PinguHolder : public WorldObj
 {
 private:
-  /** The uniq id for the next Pingu, starts at 0 and is increased
-      with every Pingu. Id's are not recycled if Pingus die. */
-  int id_count;
+  /** The total number of pingus that will get released in this
+      level */
+  int number_of_allowed;
 
   /** Number of pingus that made it to the exit, we cache this, since
       else we would have to iterate over the whole list and count them
@@ -51,7 +52,7 @@ private:
   std::list<Pingu*> pingus;
   
 public:
-  PinguHolder();
+  PinguHolder(PLF*);
   ~PinguHolder();
 
   /*@{ 
@@ -76,21 +77,30 @@ public:
   int  get_number_of_killed();
 
   /** @return the number of pingus that are still alive, this is shown
-      in the PingusCounter panel as 'Out' */
+      in the PingusCounter panel as 'Out'. Exited pingus are *not*
+      counted. FIXME: name should be different (out, active?!) */
   int  get_number_of_alive();
 
   /** @return the total number of pingus released, this is alive +
       killed + exited */
   int get_number_of_released();
+  
+  /** @return the maximal number of pingus that will get released in
+      this level */
+  int get_number_of_allowed();
 
-  /** Return a reference to a newly create Pingu, the PinguHolder will
-      take care of the deletion. The caller *must* not delete the
-      Pingu */
+  /** @return a reference to a newly create Pingu, the PinguHolder
+      will take care of the deletion. The caller *must* not delete the
+      Pingu. Might return 0 if all available pingus are already
+      released */
   Pingu* create_pingu(const Vector& pos, int owner_id);
 
-  /** Get a pingu by id 
-      @return the pingu with the id, or 0 if none found */
-  Pingu* get_pingu(int id);
+  /** Get a pingu by id, references to dead or exited Pingus are not
+      returned, but 0 instead
+      
+      @return the pingu with the id, or 0 if none found or pingu is
+      dead or exited */
+  Pingu* get_pingu(unsigned int id);
 
   // FIXME: Dirty cruft, needs cleanup
   std::list<Pingu*>::iterator  begin () { return pingus.begin (); }

@@ -1,4 +1,4 @@
-//  $Id: action_button.cxx,v 1.15 2002/10/04 11:38:28 torangan Exp $
+//  $Id: action_button.cxx,v 1.16 2002/10/04 16:54:03 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,7 +24,8 @@
 #include "globals.hxx"
 #include "pingus_resource.hxx"
 #include "action_button.hxx"
-#include "server.hxx"
+#include "true_server.hxx"
+#include "world.hxx"
 #include "string_converter.hxx"
 
 using namespace Actions;
@@ -171,7 +172,7 @@ VerticalActionButton::draw (GraphicContext& gc)
   UNUSED_ARG(gc);
 }
 
-ArmageddonButton::ArmageddonButton (Server* s, int x, int y)
+ArmageddonButton::ArmageddonButton (TrueServer* s, int x, int y)
   : server (s),
     x_pos (x),
     y_pos (y),
@@ -189,7 +190,7 @@ ArmageddonButton::~ArmageddonButton () { }
 void
 ArmageddonButton::draw (GraphicContext& gc)
 {
-  if (server->get_armageddon ())
+  if (server->get_world()->check_armageddon ())
     {
       backgroundhl.put_screen (x_pos, y_pos);
       surface.put_screen(x_pos, y_pos, ++counter);
@@ -249,7 +250,7 @@ ArmageddonButton::on_primary_button_click (int x, int y)
   if(x); if(y);
 }
 
-ForwardButton::ForwardButton (Server* s, int x, int y) 
+ForwardButton::ForwardButton (TrueServer* s, int x, int y) 
   : server (s),
     x_pos (x), y_pos (y),
     background  (PingusResource::load_surface("buttons/hbuttonbgb", "core")),
@@ -296,7 +297,7 @@ ForwardButton::on_primary_button_click (int x, int y)
   if(x); if(y);
 }
 
-PauseButton::PauseButton (Server* s, int x, int y) 
+PauseButton::PauseButton (TrueServer* s, int x, int y) 
   : server (s),
     x_pos(x), y_pos(y),
     background  (PingusResource::load_surface("buttons/hbuttonbgb", "core")),

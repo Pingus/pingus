@@ -1,4 +1,4 @@
-//  $Id: button_panel.cxx,v 1.15 2002/09/28 11:52:21 torangan Exp $
+//  $Id: button_panel.cxx,v 1.16 2002/10/04 16:54:03 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,7 @@
 #include <ClanLib/Core/System/system.h>
 #include "globals.hxx"
 #include "button_panel.hxx"
-#include "server.hxx"
+#include "true_server.hxx"
 #include "plf.hxx"
 
 using namespace Actions;
@@ -107,7 +107,7 @@ ButtonPanel::draw(GraphicContext& gc)
 }
 
 void
-ButtonPanel::set_server(Server* s)
+ButtonPanel::set_server(TrueServer* s)
 {
   server = s;
 

@@ -1,4 +1,4 @@
-//  $Id: server.cxx,v 1.21 2002/10/03 12:33:08 grumbel Exp $
+//  $Id: server.cxx,v 1.22 2002/10/04 16:54:04 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,74 +30,26 @@
 #include "game_time.hxx"
 #include "world.hxx"
 #include "demo_recorder.hxx"
+#include "goal_manager.hxx"
 
 using namespace std;
 using Actions::action_from_string;
 
-/** PinguID search functor */
-struct PinguId : public unary_function<Pingu*, bool>
-{
-  int pingu_id;
-
-  PinguId(){}
-  PinguId(int i) {
-    pingu_id = i;
-  }
- 
-  bool operator()(Pingu* pingu) {
-    return (pingu->get_id() == pingu_id);
-  }
-};
-
-PingusEvent::PingusEvent ()
-{
-}
-
-PingusEvent::PingusEvent (const std::string& event_str)
-{
-  std::string game_time_str;
-  std::string::size_type split_pos = event_str.find(":");
-  
-  game_time_str = event_str.substr(0, split_pos);
-  str = event_str.substr(split_pos + 1);
-
-  if (sscanf(game_time_str.c_str(), "%d", &game_time) != 1) {
-    PingusError::raise("PingusEvent: Unable to parse: " + event_str);
-  }
-}
-
-PingusEvent::PingusEvent (const PingusEvent& old) : game_time(old.game_time),
-                                                    str(old.str)
-{
-}
-
-PingusEvent&
-PingusEvent::operator= (const PingusEvent& old)
-{
-  if (this == &old)
-    return *this;
-    
-  game_time = old.game_time;
-  str       = old.str;
-  
-  return *this;
-}
-
-
 Server::Server (PLF* arg_plf)
   : plf(arg_plf),
-    action_holder (plf)
+    world(new World (plf)),
+    action_holder (plf),
+    goal_manager(new GoalManager(this)),
+    demo_recorder(new DemoRecorder(this))
 {
-  demo_mode = false;
-  get_next_event = true;
-  finished = false;
-  demo_recorder = new DemoRecorder(this);
 }
 
 Server::~Server ()
 {
   // Demo Server is exited and writes down its log
+  delete goal_manager;
   delete demo_recorder;
+  delete world;
 }
 
 World*
@@ -109,15 +61,17 @@ Server::get_world()
 void
 Server::update()
 {
+  world->update();
+  goal_manager->update();
 }
 
 void
 Server::send_armageddon_event()
 {
-  armageddon = true;
   world->armageddon();
 
-  demo_recorder->record_event(ServerEvent::make_armageddon_event(get_time()));
+  if (demo_recorder)
+    demo_recorder->record_event(ServerEvent::make_armageddon_event(get_time()));
 }
 
 void
@@ -133,23 +87,22 @@ Server::send_pingu_action_event(Pingu* pingu, Actions::ActionName action)
 	}
     }
 
-  demo_recorder->record_event(ServerEvent::make_pingu_action_event(get_time(), pingu->get_id(), action));
+  if (demo_recorder)
+    demo_recorder->record_event(ServerEvent::make_pingu_action_event(get_time(), 
+                                                                     pingu->get_id(), 
+                                                                     action));
 }
 
 bool
 Server::is_finished()
 {
-  if (finished) {
-    return true;
-  } else {
-    return world->is_finished();
-  }
+  goal_manager->is_finished();
 }
 
 void
 Server::set_finished()
 {
-  finished = true;
+  goal_manager->set_abort_goal();
 }
 
 ActionHolder*

@@ -1,4 +1,4 @@
-//  $Id: smallmap.cxx,v 1.18 2002/10/04 13:46:56 grumbel Exp $
+//  $Id: smallmap.cxx,v 1.19 2002/10/04 16:54:04 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,7 +26,7 @@
 #include "pingus_resource.hxx"
 #include "smallmap.hxx"
 #include "col_map.hxx"
-#include "server.hxx"
+#include "true_server.hxx"
 #include "pingu.hxx"
 #include "math.hxx"
 

@@ -1,4 +1,4 @@
-//  $Id: hurry_up.cxx,v 1.3 2002/09/06 17:33:29 torangan Exp $
+//  $Id: hurry_up.cxx,v 1.4 2002/10/04 16:54:04 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,16 +24,17 @@
 #include "hurry_up.hxx"
 #include "client.hxx"
 #include "world.hxx"
-#include "server.hxx"
+#include "true_server.hxx"
 
-HurryUp::HurryUp () : font(PingusResource::load_font("Fonts/pingus","fonts")),
-                      is_running(false),
-		      is_finished(false),
-		      center_reached(false),
-		      client(0),
-		      wait_counter(0),
-		      x_pos(-200.0),
-		      speed(3.0f)
+HurryUp::HurryUp () 
+  : font(PingusResource::load_font("Fonts/pingus","fonts")),
+    is_running(false),
+    is_finished(false),
+    center_reached(false),
+    client(0),
+    wait_counter(0),
+    x_pos(-200.0),
+    speed(3.0f)
 {
 }
 
@@ -93,9 +94,12 @@ HurryUp::update(float /*delta*/)
     }
   else if (!is_finished)
     {
+      // FIXME: broken
+#if 0
       if (   client->get_server()->get_world()->get_time_left() != -1
-          && client->get_server()->get_world()->get_time_left() < 10 * 15)
+             && client->get_server()->get_world()->get_time_left() < 10 * 15)
 	is_running = true;
+#endif
     }
 }
 

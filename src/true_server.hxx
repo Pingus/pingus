@@ -1,4 +1,4 @@
-//  $Id: true_server.hxx,v 1.10 2002/10/03 12:33:08 grumbel Exp $
+//  $Id: true_server.hxx,v 1.11 2002/10/04 16:54:04 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,21 +29,18 @@ class TrueServer : public Server
 private:
   bool fast_forward;
   bool pause;
-  unsigned int  last_time;
-  float delta;
 
 public:
   TrueServer(PLF* plf);
   virtual ~TrueServer();
 
   void update();
+
   void set_fast_forward(bool value);
   bool get_fast_forward();
   
   void set_pause(bool);
   bool get_pause();
-
-  bool get_armageddon ();
   
 private: 
   TrueServer (const TrueServer&);

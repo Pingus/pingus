@@ -1,4 +1,4 @@
-//  $Id: world.hxx,v 1.16 2002/10/04 13:46:56 grumbel Exp $
+//  $Id: world.hxx,v 1.17 2002/10/04 16:54:04 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -67,23 +67,6 @@ private:
       of them, should use pingus_id instead */
   std::list<Pingu*>::iterator armageddon_count;
 
-  /** number of total pingus available in this level */
-  unsigned int allowed_pingus;
-
-  /** number of pingus to save */
-  unsigned int number_to_save;
-
-  /** */
-  bool exit_world;
-  
-  /** End the world when the given time is reached, this is set by
-      armageddon or similar events.  */
-  int  shutdown_time;  
-
-  /** The time in which you have to finish a level, aka the time limit
-      of a level */
-  int exit_time;
-
   std::vector<WorldObj*> world_obj;
   typedef std::vector<WorldObj*>::iterator WorldObjIter;
   
@@ -119,17 +102,10 @@ public:
   /** @return true if the world is finished, meaning the time limit
       has passed or the world is out of pingus (which is simulated by
       the time => FIXME: hack) */
-  bool    is_finished ();
+  bool    finished ();
 
   /** Returns the time passed since the level was started */
   int get_time_passed();
-
-  /** Returns the time left until the time is out or -1 if there is no
-      time limit */
-  int get_time_left();
-
-  /** True if there is a time limit in this world */
-  bool    has_time_limit();
 
   /** @return A pointer to the collision map used in this world */
   ColMap* get_colmap();
@@ -142,13 +118,6 @@ public:
   
   /** @return true if the world is currently doing an armageddon */
   bool check_armageddon() { return do_armageddon; }
-
-  /** @return the number of totally allowed pingus */
-  unsigned int get_allowed_pingus() { return allowed_pingus; }
-
-  /** @return number of pingus which need to get saved in this level
-      to finish it successfull */
-  unsigned int get_number_to_save() { return number_to_save; }
 
   /** Play a sound as if it would have been generated at the given
       position, adjust panning and volume by the position relative to

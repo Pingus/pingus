@@ -1,4 +1,4 @@
-//  $Id: server.hxx,v 1.11 2002/10/03 12:33:08 grumbel Exp $
+//  $Id: server.hxx,v 1.12 2002/10/04 16:54:04 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,56 +28,27 @@ class Pingu;
 class PLF;
 class World;
 class DemoRecorder;
-
-/** An Event in the Pingus World
-
-    Possible events are the applying of an action, an armageddon,
-    scrolling, etc.
-
-    FIXME: The concept is ok, but implementation sucks 
-*/
-class PingusEvent {
-public:
-  /// The GameTime at which the event happend
-  int          game_time;
-  /// A string describing the event
-  std::string  str;
-
-public:
-  PingusEvent ();
-  PingusEvent (const std::string& event_str);
-  
-  PingusEvent (const PingusEvent& old);
-  PingusEvent& operator= (const PingusEvent&);
-};
+class GoalManager;
 
 /** A abstract server-like class */
 class Server
 {
-protected:
+private:
   PLF* plf;
-  DemoRecorder* demo_recorder;
   World* world;
-  ActionHolder action_holder;
-  bool demo_mode;
-  std::string demo_file;
 
-  bool get_next_event;
-  bool finished;
-  bool armageddon;
+  /** Manager class for the number of available actions */
+  ActionHolder action_holder;
+
+  GoalManager* goal_manager;
+
+  DemoRecorder* demo_recorder;
+
 public:
   Server(PLF*);
   virtual ~Server();
 
   virtual void update();
-  
-  virtual void set_fast_forward(bool) = 0;
-  virtual bool get_fast_forward() = 0;
-
-  virtual bool get_pause() = 0;
-  virtual void set_pause(bool) = 0;
-
-  virtual bool get_armageddon () { return armageddon; }
 
   PLF* get_plf () { return plf; }
 
@@ -85,7 +56,13 @@ public:
 
   World* get_world();
   ActionHolder* get_action_holder();
+
+  /** @return true if the server is finished and the game can be
+      exited */
   bool is_finished();
+
+  /** set the server into the finshed state, this is used when you
+      press ESCAPE inside a game */
   void set_finished();
 
   /* Event handling stuff */

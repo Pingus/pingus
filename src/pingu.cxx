@@ -1,4 +1,4 @@
-//  $Id: pingu.cxx,v 1.32 2002/10/04 11:38:28 torangan Exp $
+//  $Id: pingu.cxx,v 1.33 2002/10/04 16:54:04 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -59,7 +59,7 @@ Pingu::~Pingu ()
   delete velocity;
 }
 
-int
+unsigned int
 Pingu::get_id ()
 {
   return id;

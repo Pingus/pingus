@@ -1,4 +1,4 @@
-//  $Id: entrance.cxx,v 1.5 2002/10/04 13:46:56 grumbel Exp $
+//  $Id: entrance.cxx,v 1.6 2002/10/04 16:54:04 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -67,48 +67,51 @@ Entrance::create_pingu ()
 
   Pingu* pingu = world->get_pingus()->create_pingu(data->pos, data->owner_id);
 
-  switch (data->direction) 
+  if (pingu) // still pingus in the pool 
     {
-    case WorldObjsData::EntranceData::LEFT:
-      d.left();
-      pingu->set_direction(d);
-      break;
+      switch (data->direction) 
+        {
+        case WorldObjsData::EntranceData::LEFT:
+          d.left();
+          pingu->set_direction(d);
+          break;
 
-    case WorldObjsData::EntranceData::MISC:
-      if (last_direction) 
-	{
-	  d.left();
-	  last_direction = 0;
-	} 
-      else
-	{
-	  d.right();
-	  last_direction = 1;
-	}
-      pingu->set_direction(d);
-      break;
+        case WorldObjsData::EntranceData::MISC:
+          if (last_direction) 
+            {
+              d.left();
+              last_direction = 0;
+            } 
+          else
+            {
+              d.right();
+              last_direction = 1;
+            }
+          pingu->set_direction(d);
+          break;
 	
-    case WorldObjsData::EntranceData::RIGHT:  
-      d.right();
-      pingu->set_direction(d);
-      break;
+        case WorldObjsData::EntranceData::RIGHT:  
+          d.right();
+          pingu->set_direction(d);
+          break;
     
-    default:
-      std::cout << "Entrance:: Warning direction is wrong: " << data->direction << std::endl;
-      d.right();
-      pingu->set_direction(d);
-      break;
+        default:
+          std::cout << "Entrance:: Warning direction is wrong: " << data->direction << std::endl;
+          d.right();
+          pingu->set_direction(d);
+          break;
+        }
     }
-
+  else
+    {
+      //std::cout << "Entrance: pingu couldn't get created" << std::endl;
+    }
 }
 
 void
 Entrance::update ()
 {
-  if (   pingu_ready() 
-         && (world->get_pingus()->get_number_of_released() 
-             < static_cast<int>(world->get_allowed_pingus()))
-      && (! world->check_armageddon()))
+  if (pingu_ready() && (! world->check_armageddon()))
     {
       create_pingu();
     }

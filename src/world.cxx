@@ -1,4 +1,4 @@
-//  $Id: world.cxx,v 1.29 2002/10/04 13:46:56 grumbel Exp $
+//  $Id: world.cxx,v 1.30 2002/10/04 16:54:04 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -54,21 +54,13 @@ bool WorldObj_less (WorldObj* a, WorldObj* b)
 World::World(PLF* plf)
   : game_time (new GameTime (game_speed)),
     particle_holder (new ParticleHolder()),
-    pingus (new PinguHolder()),
+    pingus (new PinguHolder(plf)),
     view (0)
 { 
   // Not perfect, but works
   WorldObj::set_world(this);
 
-  exit_world    = false;
   do_armageddon = false;
-  allowed_pingus = plf->get_pingus();
-  number_to_save = plf->get_number_to_save();
-
-  exit_time = plf->get_time();
-  if (exit_time != -1 && !(exit_time > 100))
-    std::cout << "World: Time is not in the tolerated range: " << exit_time << std::endl;
-  shutdown_time = -1;
 
   // Create the groundmap
   gfx_map = new PingusSpotMap(plf);
@@ -158,19 +150,6 @@ World::update()
 {
   game_time->update ();
 
-  // if a exit condition is schedule a shutdown of the world in the
-  // next 75 ticks
-  if (!exit_world && (static_cast<int>(allowed_pingus) == pingus->get_number_of_released()
-		      || do_armageddon)
-      && pingus->size() == 0) 
-    {
-      if (verbose)
-	std::cout << "World: world finished, going down in the next seconds..." << std::endl;
-
-      exit_world = true;
-      shutdown_time = game_time->get_ticks() + 75;
-    }
-
   if (do_armageddon && armageddon_count != pingus->end())
     {
       // The iterator here might be invalid
@@ -217,19 +196,6 @@ World::get_height()
 }
 
 int
-World::get_time_left()
-{
-  if (exit_time != -1) // There is a time limit
-    {
-      return exit_time - game_time->get_ticks();
-    }
-  else // No timelimit given
-    {
-      return -1;
-    }  
-}
-
-int
 World::get_time_passed()
 {
   return game_time->get_ticks();
@@ -242,24 +208,6 @@ World::armageddon(void)
   do_armageddon = true;
   // FIXME: Ugly to use iterator, since it can get invalid
   armageddon_count = pingus->begin();
-}
-
-bool
-World::is_finished(void)
-{
-  // Return true if the world is finished and some time has passed
-  if (((exit_time != -1) && (exit_time < (game_time->get_ticks())))
-      || ((shutdown_time != -1) && shutdown_time < game_time->get_ticks()))
-    {
-      std::cout << "ExitTime: " << exit_time << std::endl
-		<< "GameTime: " << game_time->get_ticks() << std::endl
-		<< "ShutDown: " << shutdown_time << std::endl;
-      return true;
-    } 
-  else 
-    {
-      return false;
-    }
 }
 
 ColMap*

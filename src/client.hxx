@@ -1,4 +1,4 @@
-//  $Id: client.hxx,v 1.22 2002/10/03 12:33:08 grumbel Exp $
+//  $Id: client.hxx,v 1.23 2002/10/04 16:54:03 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -47,7 +47,7 @@ class HurryUp;
 class PLF;
 class PingusCounter;
 class Playfield;
-class Server;
+class TrueServer;
 class SmallMap;
 class TimeDisplay;
 
@@ -56,7 +56,7 @@ class Client : public GUIScreen
 {
 private:
   Result result;
-  Server* server;
+  TrueServer* server;
 
   int  skip_frame;
   bool do_replay;
@@ -71,18 +71,12 @@ private:
   SmallMap*      small_map;
   HurryUp*       hurry_up;
 
-#if 0  
-  void process_button_event (Input::ButtonEvent*);
-  void process_pointer_event (Input::PointerEvent*);
-  void process_axis_event (Input::AxisEvent*);
-#endif 
-
   bool enabled;
 public:
-  Client(Server * s);
+  Client(TrueServer* s);
   virtual ~Client();
 
-  Server* get_server() { return server; }
+  TrueServer* get_server() { return server; }
   Playfield* get_playfield() { return playfield; }
 
   bool replay();

@@ -1,4 +1,4 @@
-//  $Id: multiplayer_client_child.cxx,v 1.12 2002/09/28 11:52:21 torangan Exp $
+//  $Id: multiplayer_client_child.cxx,v 1.13 2002/10/04 16:54:04 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,10 +19,10 @@
 
 #include <stdio.h>
 #include <ClanLib/Display/Input/key.h>
-#include "server.hxx"
+#include "true_server.hxx"
 #include "multiplayer_client_child.hxx"
 
-MultiplayerClientChild::MultiplayerClientChild (Server * s, const CL_Rect& arg_rect)
+MultiplayerClientChild::MultiplayerClientChild (TrueServer * s, const CL_Rect& arg_rect)
   : server (s),
     cursor (new Cursor ("cursors/cross", "core")),
     button_panel (new ButtonPanel (s->get_plf (), arg_rect.x1, arg_rect.y1)),

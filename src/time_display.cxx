@@ -1,4 +1,4 @@
-//  $Id: time_display.cxx,v 1.7 2002/09/06 17:33:29 torangan Exp $
+//  $Id: time_display.cxx,v 1.8 2002/10/04 16:54:04 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,6 +26,7 @@
 #include "time_display.hxx"
 #include "world.hxx"
 #include "server.hxx"
+#include "plf.hxx"
 
 TimeDisplay::TimeDisplay ()
 {
@@ -36,7 +37,7 @@ TimeDisplay::TimeDisplay ()
 void
 TimeDisplay::draw (GraphicContext& gc)
 {
-  int time_value = server->get_world()->get_time_left();
+  int  time_value = server->get_plf()->get_time() - server->get_world()->get_time_passed();
   char time_string[8];
   
   if (time_value == -1 && !(pingus_debug_flags & PINGUS_DEBUG_GAMETIME))

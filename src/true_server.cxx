@@ -1,4 +1,4 @@
-//  $Id: true_server.cxx,v 1.15 2002/10/03 12:33:08 grumbel Exp $
+//  $Id: true_server.cxx,v 1.16 2002/10/04 16:54:04 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,22 +29,12 @@ using namespace std;
 TrueServer::TrueServer(PLF* arg_plf)
   : Server (arg_plf)
 {
-  armageddon = false;
-  world = 0;
-  finished = false;
   fast_forward = false;
   pause = false;
-  last_time = 0;
-
-  world = new World (plf);
 }
 
 TrueServer::~TrueServer()
 {
-  if (world) {
-    std::cout << "TrueServer: Deleting World" << std::endl;
-    delete world;
-  }
 }
 
 void
@@ -56,13 +46,13 @@ TrueServer::update()
       // times
       for (int i = 0; i < 4; ++i)
 	{
-	  world->update();
+          Server::update();
 	}
     }
   else
     {
       if (!pause)
-	world->update();
+        Server::update();
     }
 }
 
@@ -88,12 +78,6 @@ bool
 TrueServer::get_pause()
 {
   return pause;
-}
-
-bool
-TrueServer::get_armageddon ()
-{
-  return armageddon;
 }
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: action_button.hxx,v 1.13 2002/09/28 11:52:21 torangan Exp $
+//  $Id: action_button.hxx,v 1.14 2002/10/04 16:54:03 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,7 +28,7 @@
 
 using Actions::ActionName;
 
-class Server;
+class TrueServer;
 class ActionHolder;
 class CL_Font;
 class Vector;
@@ -40,7 +40,7 @@ class Vector;
 class ArmageddonButton : public GUI::Component
 {
 private:
-  Server* server;
+  TrueServer* server;
   int x_pos;
   int y_pos;
   bool pressed;
@@ -52,7 +52,7 @@ private:
   AnimCounter counter;
   friend class ButtonPanel;
 public:
-  ArmageddonButton(Server*, int x, int y);
+  ArmageddonButton(TrueServer*, int x, int y);
   virtual ~ArmageddonButton();
 
   void draw(GraphicContext& gc);
@@ -74,7 +74,7 @@ private:
 class ForwardButton : public GUI::Component
 {
 private:
-  Server* server;
+  TrueServer* server;
   int x_pos;
   int y_pos;
   CL_Surface surface;
@@ -82,7 +82,7 @@ private:
   CL_Surface backgroundhl;
   friend class ButtonPanel;
 public:
-  ForwardButton(Server*, int x, int y);
+  ForwardButton(TrueServer*, int x, int y);
   virtual ~ForwardButton();
 
   void draw(GraphicContext& gc);
@@ -103,7 +103,7 @@ private:
 class PauseButton : public GUI::Component
 {
 private:
-  Server* server;
+  TrueServer* server;
   int x_pos;
   int y_pos;
   CL_Surface surface;
@@ -111,7 +111,7 @@ private:
   CL_Surface backgroundhl;
   friend class ButtonPanel;
 public:
-  PauseButton(Server*, int x, int y);
+  PauseButton(TrueServer*, int x, int y);
   virtual ~PauseButton();
 
   void draw(GraphicContext& gc);
