@@ -1,4 +1,4 @@
-//  $Id: story.hxx,v 1.4 2002/08/01 21:40:01 grumbel Exp $
+//  $Id: story.hxx,v 1.5 2002/08/17 00:31:06 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -53,7 +53,9 @@ public:
 
   bool is_at (int x, int y);
 
-  void unhandled_event ();
+  void on_pause_press ();
+  void on_fast_forward_press ();
+  void on_escape_press ();
 };
 
 #endif

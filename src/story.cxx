@@ -1,4 +1,4 @@
-//  $Id: story.cxx,v 1.4 2002/08/14 12:45:02 torangan Exp $
+//  $Id: story.cxx,v 1.5 2002/08/17 00:31:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -118,8 +118,20 @@ Story::display_string(std::string /*current_line*/)
     }*/
 }
 
+void
+Story::on_fast_forward_press ()
+{
+  on_pause_press ();
+}
+
+void
+Story::on_escape_press ()
+{
+  manager->set_menu (&manager->mainmenu);
+}
+
 void 
-Story::unhandled_event ()
+Story::on_pause_press ()
 {
   // FIXME: Since we havn't yet a button to continue with the story,
   // we contiune on the first unhandled event (most likly a button
