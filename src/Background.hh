@@ -1,4 +1,4 @@
-//  $Id: Background.hh,v 1.2 2000/02/09 21:43:39 grumbel Exp $
+//  $Id: Background.hh,v 1.3 2000/03/16 21:26:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,21 +23,26 @@
 #include <ClanLib/core.h>
 
 #include "AnimCounter.hh"
+#include "GameCounter.hh"
 #include "ResDescriptor.hh"
 #include "background_data.hh"
 
-class Background
+class Background : public background_data
 {
 private:
   CL_Surface* bg_surface_raw;
   CL_Surface* bg_surface;
-  int x1, x2, y1, y2;
+
   AnimCounter scroll;
-  double scroll_x, scroll_y;
-  double scroll_ox, scroll_oy;
+  GameCounter counter;
+
+  int x1, x2, y1, y2;
+  float scroll_ox, scroll_oy;
+
 public:
   Background(background_data);
   ~Background();
+  
   void let_move(void);
   void draw_offset(int x_of, int y_of, float s = 1.0);
 };

@@ -1,4 +1,4 @@
-//  $Id: Background.cc,v 1.7 2000/03/10 18:52:32 grumbel Exp $
+//  $Id: Background.cc,v 1.8 2000/03/16 21:26:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,6 +41,7 @@ Background::Background(background_data bg)
     {
       try
 	{
+	  /* Testing animatied backgrounds...
 	  sur = CL_Surface::load(bg.desc.res_name.c_str(), PingusResource::get(bg.desc.filename));
 
 	  canvas = new CL_Canvas(sur->get_width(), sur->get_height());
@@ -56,6 +57,13 @@ Background::Background(background_data bg)
 	  bg_surface = CL_Surface::create(canvas, false);
 
 	  delete canvas;
+	  */
+
+	  bg_surface = CL_Surface::load(bg.desc.res_name.c_str(), PingusResource::get(bg.desc.filename));
+
+	  counter.set_size(bg_surface->get_num_frames());
+	  //	  counter.set_type(Counter::loop);
+	  counter.set_speed(1.0);
 	}
 
       catch (CL_Error err)
@@ -68,11 +76,21 @@ Background::Background(background_data bg)
 	  bg_surface = 0;
 	}
     }
+
+  stretch_x = bg.stretch_x;
+  stretch_y = bg.stretch_y;
+
   scroll_x = bg.scroll_x;
   scroll_y = bg.scroll_y;
 
+  para_x = bg.para_x;
+  para_y = bg.para_y;
+
   scroll_ox = 0;
   scroll_oy = 0;
+
+  cout << "Stretch_X: " << stretch_x << endl;
+  cout << "Stretch_Y: " << stretch_y << endl;
 }
 
 Background::~Background()
@@ -82,6 +100,8 @@ Background::~Background()
 void
 Background::let_move()
 {
+  counter++;
+
   if (bg_surface)
     {
       scroll_ox += scroll_x;
@@ -119,8 +139,8 @@ Background::draw_offset(int x_of, int y_of, float s)
       int start_x;
       int start_y;
       
-      start_x = int((x_of / 2) + scroll_ox);
-      start_y = int((y_of / 2) + scroll_oy);
+      start_x = int((x_of * para_x) + scroll_ox);
+      start_y = int((y_of * para_y) + scroll_oy);
       
       if (start_x >= 0)
 	start_x = start_x - bg_surface->get_width();
@@ -132,14 +152,21 @@ Background::draw_offset(int x_of, int y_of, float s)
       
       if (s == 1.0) 
 	{
-	  for(int y = start_y; y < CL_Display::get_height(); y += bg_surface->get_height()) {
-	    for(int x = start_x; x < CL_Display::get_width(); x += bg_surface->get_width()) {
-	      bg_surface->put_screen(x, y);
-  	    }
-	  }
-	} 
+	  for(int y = start_y; 
+	      y < CL_Display::get_height(); 
+	      y += bg_surface->get_height()) 
+	    {
+	      for(int x = start_x;
+		  x < CL_Display::get_width(); 
+		  x += bg_surface->get_width())
+		{
+		  bg_surface->put_screen(x, y, counter);
+		}
+	    }
+	}
       else 
 	{
+	  cout << "Zooming not supported" << endl;
 	  for(int y=(y_of/2); y < CL_Display::get_height(); y += (int)(bg_surface->get_height() * s)) {
 	    for(int x = start_x; x < CL_Display::get_width(); x += (int)(bg_surface->get_width() * s)) {
 	      bg_surface->put_screen(x, y, s, s);
