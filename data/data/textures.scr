@@ -1,0 +1,27 @@
+section Textures
+{
+	clouds          = ../images/textures/clouds.jpg  (type=surface, x=0, y=0, width=256, height=480);
+	crystal         = ../images/textures/crystal.jpg  (type=surface, x=0, y=0, width=169, height=286);
+	stone		= ../images/textures/stones.pcx (type=surface, x=0, y=0, width=256, height=256);
+	rocktile	= ../images/textures/rocktile.jpg (type=surface, x=0, y=0, width=256, height=256);
+	rooftile	= ../images/textures/rooftile.jpg (type=surface, x=0, y=0, width=256, height=256);
+	rooftile2	= ../images/textures/rooftile2.jpg (type=surface, x=0, y=0, width=256, height=256);
+
+	rockagglo	= ../images/textures/rockagglo.jpg (type=surface, x=0, y=0, width=256, height=256);
+
+	icetile         = ../images/textures/icetile.jpg (type=surface, x=0, y=0, width=150, height=400);
+//	solartile       = ../images/textures/solartile.jpg (type=surface, x=0, y=0, width=150, height=400);
+	lunartile       = ../images/textures/lunartile.jpg (type=surface, x=0, y=0, width=150, height=400);
+
+	blueflame       = ../images/textures/blueflame.jpg (type=surface, x=0, y=0, width=150, height=400);
+	stones           = ../images/textures/stone.jpg (type=surface, x=0, y=0, width=148, height=398);
+	flame           = ../images/textures/flamebg.jpg (type=surface, x=0, y=0, width=256, height=480);
+
+	stars         =   ../images/textures/stars.jpg (type=surface, x=0, y=0, width=256, height=480);
+
+//  jungle section
+	enchantedjungle = ../images/textures/enchantedjungle.jpg (type=surface, x=0, y=0, width=300,height=500);
+	darkjungle = ../images/textures/darkjungle.jpg (type=surface, x=0, y=0, width=300,height=500);
+	latejungle = ../images/textures/latejungle.jpg (type=surface, x=0, y=0, width=300,height=500);
+	nightjungle = ../images/textures/nightjungle.jpg (type=surface, x=0, y=0, width=300,height=500);
+}
