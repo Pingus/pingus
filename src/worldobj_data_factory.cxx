@@ -1,4 +1,4 @@
-//  $Id: worldobj_data_factory.cxx,v 1.12 2002/09/15 09:54:33 torangan Exp $
+//  $Id: worldobj_data_factory.cxx,v 1.13 2002/09/15 20:33:45 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,6 +31,8 @@
 #include "entrance_data.hxx"
 #include "worldobj_data_factory.hxx"
 
+#include "worldobjsdata/worldobj_group_data.hxx"
+#include "exit_data.hxx"
 #include "worldobjsdata/bumper_data.hxx"
 #include "worldobjsdata/conveyor_belt_data.hxx"
 #include "worldobjsdata/fake_exit_data.hxx"
@@ -65,6 +67,8 @@ WorldObjDataFactory::instance ()
       new WorldObjDataFactoryImpl<LiquidData>("liquid");
       new WorldObjDataFactoryImpl<HotspotData>("hotspot");
       new WorldObjDataFactoryImpl<EntranceData>("entrance");
+      new WorldObjDataFactoryImpl<ExitData>("exit");
+      new WorldObjDataFactoryImpl<WorldObjGroupData>("group");
 
       // traps
       new WorldObjDataFactoryImpl<BumperData>("bumper");

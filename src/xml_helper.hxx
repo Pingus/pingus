@@ -1,4 +1,4 @@
-//  $Id: xml_helper.hxx,v 1.9 2002/09/10 21:03:32 torangan Exp $
+//  $Id: xml_helper.hxx,v 1.10 2002/09/15 20:33:45 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -63,10 +63,18 @@ class XMLhelper
 public:
   static std::string encode_entities (const std::string& arg_str);
 
+  /** @return if \a cur is a blank-node, goto the next, else return \a
+      cur */
   static xmlNodePtr skip_blank (xmlNodePtr cur);
   
+  /** Compare a xmlChar* string with a char* one 
+      @return true if both strings are equal */
   static bool equal_str (const xmlChar* comp, const char* orig);
   
+  /** @return the value of the attribute with the name \a name, caller
+      must free the returned  value via xmlFree()
+
+      FIXME: any reason we don't return a std::string here? */
   static char* get_prop (xmlNodePtr cur, const char* name);
 
   /// A set of function to parse an xml file

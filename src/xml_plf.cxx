@@ -1,4 +1,4 @@
-//  $Id: xml_plf.cxx,v 1.14 2002/09/10 21:03:32 torangan Exp $
+//  $Id: xml_plf.cxx,v 1.15 2002/09/15 20:33:45 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,7 +24,7 @@
 #include "pingus_error.hxx"
 #include "string_converter.hxx"
 #include "worldobj_data_factory.hxx"
-#include "worldobj_group_data.hxx"
+#include "worldobjsdata/worldobj_group_data.hxx"
 #include "exit_data.hxx"
 #include "entrance_data.hxx"
 #include "hotspot_data.hxx"
@@ -54,14 +54,14 @@ XMLPLF::~XMLPLF()
   /*
   // Free all the allocated memory
   for(vector<BackgroundData*>::iterator i = backgrounds.begin ();
-      i != backgrounds.end ();
-      i++)
-    delete *i;
+  i != backgrounds.end ();
+  i++)
+  delete *i;
 
   for(vector<WorldObjData*>::iterator i = worldobjs_data.begin ();
-      i != worldobjs_data.end ();
-      i++)
-    delete *i;
+  i != worldobjs_data.end ();
+  i++)
+  delete *i;
   */
 }
 
@@ -93,7 +93,9 @@ XMLPLF::parse_file()
 	      continue;
 	    }
 
-	  //puts("global loop");
+	  // FIXME: This can mostly be unified with the
+	  // WorldObjDataFactory, exit, backgrounds, etc. are all
+	  // WorldObjs
 	  if (XMLhelper::equal_str(cur->name, "global"))
 	    {
 	      parse_global(cur);
@@ -136,7 +138,7 @@ XMLPLF::parse_file()
 	    }
 	  else if (XMLhelper::equal_str(cur->name, "group"))
 	    {
-	      parse_group(cur);
+	      worldobjs_data.push_back (new WorldObjGroupData (doc, cur));
 	    }
 	  else if (XMLhelper::equal_str(cur->name, "start-position"))
 	    {
@@ -211,63 +213,6 @@ XMLPLF::parse_weather (xmlNodePtr cur)
     }
     
   weathers.push_back(weather);
-}
-
-void
-XMLPLF::parse_group (xmlNodePtr cur)
-{
-  cur = cur->children;
-
-  WorldObjGroupData* group = new WorldObjGroupData;
-
-  while (cur)
-    {
-      if (xmlIsBlankNode(cur)) 
-	{
-	  cur = cur->next;
-	  continue;
-	}
-      
-      if (XMLhelper::equal_str(cur->name, "groundpiece"))
-	{
-	  parse_groundpiece(cur);
-	}
-      else if (XMLhelper::equal_str(cur->name, "exit"))
-	{
-	  group->add (new ExitData (doc, cur));
-	}
-      else if (XMLhelper::equal_str(cur->name, "entrance"))
-	{
-	  group->add (new EntranceData (doc, cur));
-	}
-      else if (XMLhelper::equal_str(cur->name, "trap"))
-	{
-	  parse_traps (cur);
-	}
-      else if (XMLhelper::equal_str(cur->name, "hotspot"))
-	{
-	  group->add(new HotspotData (doc, cur));
-	}
-      else if (XMLhelper::equal_str(cur->name, "liquid"))
-	{
-	  group->add(new LiquidData (doc, cur));
-	}
-      else if (XMLhelper::equal_str(cur->name, "group"))
-	{
-	  parse_group(cur);
-	}
-      else if (XMLhelper::equal_str(cur->name, "worldobj"))
-	{
-	  group->add(WorldObjDataFactory::instance ()->create(doc, cur));
-	}
-      else
-	{
-	  printf("Unhandled: %s\n", reinterpret_cast<const char*>(cur->name));
-	}
-      cur = cur->next;
-    }
-
-  worldobjs_data.push_back (group);
 }
 
 void 

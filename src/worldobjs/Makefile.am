@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.8 2002/09/15 09:54:34 torangan Exp $
+#  $Id: Makefile.am,v 1.9 2002/09/15 20:33:45 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,6 +32,7 @@ libpingus_worldobjs_a_SOURCES = \
 	solid_color_background.cxx solid_color_background.hxx \
 	spike.cxx                  spike.hxx         \
         switch_door.cxx            switch_door.hxx   \
-        teleporter.cxx             teleporter.hxx
+        teleporter.cxx             teleporter.hxx    \
+        worldobj_group.hxx         worldobj_group.cxx
 
 ## EOF ##

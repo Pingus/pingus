@@ -1,4 +1,4 @@
-//  $Id: prefab.cxx,v 1.2 2002/09/15 16:49:20 grumbel Exp $
+//  $Id: prefab.cxx,v 1.3 2002/09/15 20:33:45 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,10 +20,13 @@
 #include <iostream>
 #include "xml_helper.hxx"
 #include "prefab.hxx"
-#include "worldobj_group_data.hxx"
+#include "worldobjsdata/worldobj_group_data.hxx"
+#include "worldobj_data_factory.hxx"
 #include "path_manager.hxx"
+#include "pingus_error.hxx"
 
 Prefab::Prefab (const std::string& filename)
+  : data (0)
 {
   std::cout << "Prefab::create: " << filename << std::endl;
   xmlDocPtr doc = xmlParseFile(filename.c_str ());
@@ -31,15 +34,66 @@ Prefab::Prefab (const std::string& filename)
   if (doc)
     {
       xmlNodePtr cur = doc->ROOT;
-      WorldObjGroupData* group = new WorldObjGroupData (doc, cur);
-      //const EditorObjLst& temp = group->create_EditorObj ();
-      //editor_objs.insert(editor_objs.end(),temp.begin(), temp.end());
-      //delete group;
+      
+      cur = XMLhelper::skip_blank (cur);
+
+      if (XMLhelper::equal_str(cur->name, "pingus-prefab"))
+	{
+	  cur = cur->children;
+
+	  while (cur)
+	    {
+	      cur = XMLhelper::skip_blank (cur);
+	     
+	      if (XMLhelper::equal_str (cur->name, "name"))
+		{
+		  name = XMLhelper::parse_string (doc, cur);
+		}
+	      else if (XMLhelper::equal_str (cur->name, "description"))
+		{
+		  description = XMLhelper::parse_string (doc, cur);
+		}
+	      else if (XMLhelper::equal_str (cur->name, "uid"))
+		{
+		  uid = XMLhelper::parse_string (doc, cur);
+		}
+	      else if (XMLhelper::equal_str (cur->name, "thumbnail"))
+		{
+		  std::cout << "Prefab: thumbnail handling not implemented" << std::endl;
+		}
+	      else if (XMLhelper::equal_str (cur->name, "object"))
+		{
+		  if (data)
+		    {
+		      std::cout << "Prefab: object defined twice! Overwriting first object!" << std::endl;
+		      delete data; 
+		    }
+
+		  data = WorldObjDataFactory::instance ()->create (doc, cur->children);
+		}
+	      else
+		{
+		  std::cout << "Prefab: Unhandled: " << cur->name << std::endl;
+		}
+ 
+	      cur = cur->next;
+	    }
+	}
+      else
+	{
+	  //std::cout << "Prefab: Not a valid prefab file" << std::endl;
+	  PingusError::raise ("Prefab: Not a valid prefab file");
+	}
     }
   else
     {
       std::cout << "ObjectManager::add_prefab_from_file: read error: " << filename << std::endl;
     }
+}
+
+Prefab::~Prefab ()
+{
+  delete data;
 }
 
 Prefab*

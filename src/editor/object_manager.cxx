@@ -1,4 +1,4 @@
-//  $Id: object_manager.cxx,v 1.30 2002/09/15 15:30:21 grumbel Exp $
+//  $Id: object_manager.cxx,v 1.31 2002/09/15 20:33:45 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,7 +26,7 @@
 #include "../xml_helper.hxx"
 #include "../pingus_resource.hxx"
 #include "../pingus_error.hxx"
-#include "../worldobj_group_data.hxx"
+#include "../worldobjsdata/worldobj_group_data.hxx"
 #include "start_pos.hxx"
 #include "object_manager.hxx"
 #include "editor_view.hxx"

@@ -1,4 +1,4 @@
-//  $Id: xml_plf.hxx,v 1.7 2002/09/15 20:33:45 grumbel Exp $
+//  $Id: worldobj_group_data.hxx,v 1.1 2002/09/15 20:33:45 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,37 +17,36 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef HEADER_PINGUS_XML_PLF_HXX
-#define HEADER_PINGUS_XML_PLF_HXX
+#ifndef HEADER_PINGUS_WORLDOBJ_GROUP_DATA_HXX
+#define HEADER_PINGUS_WORLDOBJ_GROUP_DATA_HXX
 
-#include "plf.hxx"
-#include "libxmlfwd.hxx"
+#include "../worldobj_data.hxx"
+#include "../libxmlfwd.hxx"
 
-class XMLPLF : public PLF
+class WorldObjGroupData : public WorldObjData
 {
 private:
-  xmlDocPtr doc;  
-
-  void parse_file ();
-
-  void parse_background  (xmlNodePtr cur);
-  void parse_actions     (xmlNodePtr cur);
-  void parse_global      (xmlNodePtr cur);
-  void parse_groundpiece (xmlNodePtr cur);
-  void parse_start_pos   (xmlNodePtr cur);
-  void parse_weather     (xmlNodePtr cur);
-
-  /** trap parsing is only here for backward compatibility, traps are
-      worldobjs now */
-  void parse_traps       (xmlNodePtr node);
-
+  std::vector<WorldObjData*> objs;
+  typedef std::vector<WorldObjData*>::iterator ObjsIter;
+  
 public:
-  XMLPLF (const std::string& filename);
-  virtual ~XMLPLF();
+  WorldObjGroupData ();
+  WorldObjGroupData (xmlDocPtr doc, xmlNodePtr cur);
+  ~WorldObjGroupData ();
+
+  void add (WorldObjData*);
+  
+  void write_xml (std::ostream& xml);
+
+  /** Create an WorldObj from the given data object */
+  WorldObj* create_WorldObj ();
+
+  /** Create an EditorObj from the given data object */
+  EditorObjLst create_EditorObj ();
   
 private:
-  XMLPLF (const XMLPLF&);
-  XMLPLF operator= (const XMLPLF&);
+  WorldObjGroupData (const WorldObjGroupData&);
+  WorldObjGroupData operator= (const WorldObjGroupData&);
 };
 
 #endif

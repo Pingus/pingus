@@ -1,4 +1,4 @@
-//  $Id: prefab_obj_data.cxx,v 1.2 2002/09/15 16:49:20 grumbel Exp $
+//  $Id: prefab_obj_data.cxx,v 1.3 2002/09/15 20:33:45 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "../xml_helper.hxx"
 #include "../prefab.hxx"
 #include "prefab_obj_data.hxx"
 
@@ -24,6 +25,36 @@ namespace WorldObjsData {
 
 PrefabObjData::PrefabObjData (xmlDocPtr doc, xmlNodePtr cur)
 {
+  char* uid_cstr = XMLhelper::get_prop(cur, "type");
+  if (uid_cstr)
+    uid = uid_cstr;
+  else
+    {
+      std::cout << "PrefabObjData: missing type! Default to test" << std::endl;
+      uid = "test";
+    }
+  xmlFree (uid_cstr);
+
+  cur = cur->children;
+
+  while (cur)
+    {
+      cur = XMLhelper::skip_blank (cur);
+      
+      if (XMLhelper::equal_str(cur->name, "position"))
+	{
+	  pos = XMLhelper::parse_vector (doc, cur);
+	}
+      else
+	{
+	  std::cout << "PrefabObjData(): Unhandled " << cur->name << std::endl;
+	}
+
+      cur = cur->next;
+    }
+  
+  // try to load the data for this prefab-uid
+  data = Prefab::create (uid);
 }
 
 WorldObj*

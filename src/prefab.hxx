@@ -1,4 +1,4 @@
-//  $Id: prefab.hxx,v 1.2 2002/09/15 16:49:20 grumbel Exp $
+//  $Id: prefab.hxx,v 1.3 2002/09/15 20:33:45 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,11 +34,18 @@ class WorldObjData;
 class Prefab
 {
 private:
+  WorldObjData* data;
+
+  std::string name;
+  std::string description;
+  std::string uid;
 public:
   /** Create a Prefab object from a given prefab description file
       @param filename The fully qualitfied filename of the prefab
       description file */
   Prefab (const std::string& filename);
+
+  ~Prefab ();
 
   /** Create a prefab object from a given uid, name must be the uniq
       identifer of the prefab, like "stony-entrance", not a
