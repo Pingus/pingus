@@ -1,4 +1,4 @@
-//  $Id: Teleporter.cc,v 1.1 2000/09/23 20:28:18 grumbel Exp $
+//  $Id: Teleporter.cc,v 1.2 2000/09/24 00:22:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,8 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "PingusResource.hh"
+#include "PinguHolder.hh"
 #include "XMLhelper.hh"
 #include "Teleporter.hh"
 
@@ -40,15 +42,24 @@ TeleporterData::create(xmlDocPtr doc, xmlNodePtr cur)
   
   while (cur != NULL)
     {
+      if (xmlIsBlankNode(cur)) 
+	{
+	  cur = cur->next;
+	  continue;
+	}
+
       if (strcmp((char*)cur->name, "position") == 0)
 	{
 	  data->pos = XMLhelper::parse_position (doc, cur);
 	}
       else if (strcmp((char*)cur->name, "target") == 0)
 	{
-	  cur = cur->children;
-	  if (cur != NULL)
-	    data->target_pos = XMLhelper::parse_position (doc, cur);
+	  xmlNodePtr ncur = cur->children;
+
+	  if (xmlIsBlankNode(ncur)) ncur = ncur->next;
+	    
+	  if (ncur != NULL)
+	    data->target_pos = XMLhelper::parse_position (doc, ncur);
 	  else
 	    std::cout << "TeleporterData::create (): <target> is empty" << std::endl;
 	}
@@ -69,19 +80,39 @@ TeleporterData::create(xmlDocPtr doc, xmlNodePtr cur)
 
 Teleporter::Teleporter (WorldObjData* data)
 {
+  TeleporterData* teleporter = dynamic_cast<TeleporterData*>(data);
+  assert (teleporter);
   
+  sur = PingusResource::load_surface("Traps/teleporter", "traps");
+
+  pos = teleporter->pos;
+  target_pos = teleporter->target_pos;
+
+  std::cout << "pos: " << pos.x_pos << " "  << pos.y_pos << " " << pos.z_pos << std::endl;
 }
 
 void 
 Teleporter::draw_offset (int x_of, int y_of, float s = 1.0)
 {
-  
+  std::cout << "Teleporter::draw_offset ()" << std::endl;
+  sur->put_screen (pos.x_pos + x_of, pos.y_pos + y_of);
 }
 
 void 
-Teleporter::let_move(void)
+Teleporter::let_move ()
 {
-  
+  std::cout << "Teleporter::let_move ()" << std::endl;  
+
+  PinguHolder* holder = world->get_pingu_p();
+
+  for (PinguIter pingu = holder->begin (); pingu != holder->end (); pingu++)
+    {
+      if ((*pingu)->get_x() > pos.x_pos  && (*pingu)->get_x() < pos.x_pos + 35
+	  && (*pingu)->get_y() > pos.y_pos && (*pingu)->get_y() < pos.y_pos + 52)
+	{
+	  (*pingu)->set_pos (target_pos.x_pos, target_pos.y_pos);
+	}
+    }
 }
 
 /* EOF */

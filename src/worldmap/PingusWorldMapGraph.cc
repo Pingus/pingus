@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapGraph.cc,v 1.2 2000/09/21 15:23:57 grumbel Exp $
+//  $Id: PingusWorldMapGraph.cc,v 1.3 2000/09/24 00:22:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -44,6 +44,12 @@ PingusWorldMapGraph::parse_file (std::string filename)
       
       while (cur != NULL)
 	{
+	  if (xmlIsBlankNode(cur)) 
+	    {
+	      cur = cur->next;
+	      continue;
+	    }
+
 	  if (strcmp ((char*)cur->name, "node-list") == 0)
 	    {
 	      parse_node_list (cur);
@@ -70,6 +76,12 @@ PingusWorldMapGraph::parse_node_list (xmlNodePtr cur)
 
   while (cur != NULL)
     {
+      if (xmlIsBlankNode(cur)) 
+	{
+	  cur = cur->next;
+	  continue;
+	}
+
       if (strcmp((char*)cur->name, "node") == 0)
 	{
 	  parse_node (cur);
@@ -87,7 +99,7 @@ PingusWorldMapGraph::parse_node (xmlNodePtr cur)
 {
   PingusWorldMapNode node;
 
-  char* id = (char*)xmlGetProp(cur, (xmlChar*)"id");	  
+  char* id = (char*)xmlGetProp(cur, (xmlChar*)"id");
   if (id)
     node.id = StringConverter::to_int (id);
   else
@@ -97,6 +109,12 @@ PingusWorldMapGraph::parse_node (xmlNodePtr cur)
 
   while (cur != NULL)
     {
+      if (xmlIsBlankNode(cur)) 
+	{
+	  cur = cur->next;
+	  continue;
+	}
+
       if (strcmp((char*)cur->name, "level") == 0)
 	{
 	  char* level = (char*)xmlGetProp(cur, (xmlChar*)"name");

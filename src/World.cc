@@ -1,4 +1,4 @@
-//  $Id: World.cc,v 1.34 2000/09/07 09:45:39 grumbel Exp $
+//  $Id: World.cc,v 1.35 2000/09/24 00:22:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -40,6 +40,7 @@
 #include "FVec.hh"
 #include "Timer.hh"
 #include "particles/WeatherGenerator.hh"
+#include "WorldObjData.hh"
 
 using namespace std;
 
@@ -273,7 +274,8 @@ World::init_worldobjs()
   vector<HotspotData>  hspot_d    = plf->get_hotspot();
   vector<LiquidData>   liquid_d   = plf->get_liquids();
   vector<WeatherData>  weather_d  = plf->get_weather();
-  
+  vector<WorldObjData*> worldobj_d = plf->get_worldobjs_data ();
+
   // Creating Exit and Entrance
   for(vector<ExitData>::iterator i = exit_d.begin(); i != exit_d.end(); i++) 
     exits.push_back(new Exit(*i));
@@ -345,6 +347,22 @@ World::init_worldobjs()
 	world_obj_bg.push_back(traps[i]);
       else 
 	world_obj_fg.push_back(traps[i]);
+    }
+
+  for (vector<WorldObjData*>::iterator i = worldobj_d.begin ();
+       i != worldobj_d.end ();
+       i++)
+    {
+      std::cout << "Adding worldobj's" << std::endl;
+
+      WorldObj* obj = WorldObj::create(*i);
+
+      std::cout << "z_pos: " << obj->get_z_pos() << std::endl;
+
+      if (obj->get_z_pos() <= 0)
+	world_obj_bg.push_back(obj);
+      else 
+	world_obj_fg.push_back(obj);
     }
 
   world_obj_fg.push_back(pingus);
@@ -449,13 +467,13 @@ World::get_colmap()
 }
 
 PinguMap* 
-World::get_gfx_map()
+World::get_gfx_map ()
 {
   return gfx_map;
 }
 
 ActionHolder*
-World::get_action_holder()
+World::get_action_holder ()
 {
   return action_holder;
 }

@@ -1,4 +1,4 @@
-//  $Id: Teleporter.hh,v 1.1 2000/09/23 20:28:18 grumbel Exp $
+//  $Id: Teleporter.hh,v 1.2 2000/09/24 00:22:06 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,7 +26,7 @@
 
 class TeleporterData : public WorldObjData
 {
-private:
+public:
   Position pos;
   Position target_pos;
   
@@ -41,7 +41,7 @@ public:
   static WorldObjData* create(xmlDocPtr doc, xmlNodePtr cur);
 };
 
-class Teleporter : public TeleporterData,
+class Teleporter : private TeleporterData,
 		   public WorldObj
 {
 private:
@@ -58,6 +58,8 @@ public:
   virtual void draw_offset (int x_of, int y_of, float s = 1.0);
   ///
   virtual void let_move(void);
+  ///
+  virtual int  get_z_pos() const { return pos.z_pos; }
 };
 
 #endif

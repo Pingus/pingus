@@ -1,4 +1,4 @@
-//  $Id: WorldObjData.cc,v 1.1 2000/09/23 18:19:46 grumbel Exp $
+//  $Id: WorldObjData.cc,v 1.2 2000/09/24 00:22:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,7 +23,8 @@
 WorldObjData* 
 WorldObjData::create(xmlDocPtr doc, xmlNodePtr cur)
 {
-  WorldObjData* data;
+  std::cout << "WroldObjDATa:create" << std::endl;
+  WorldObjData* data = 0;
   char* type = (char*)xmlGetProp(cur, (xmlChar*)"type");
   
   if (type == 0)

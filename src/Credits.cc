@@ -1,4 +1,4 @@
-//  $Id: Credits.cc,v 1.8 2000/09/18 12:22:15 grumbel Exp $
+//  $Id: Credits.cc,v 1.9 2000/09/24 00:22:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,52 +32,57 @@ Credits::Credits()
 void
 Credits::init ()
 {
-  surface = PingusResource::load_surface("Game/pingubw", "game");
-  font = PingusResource::load_font("Fonts/pingus","fonts");
-  font_small = PingusResource::load_font("Fonts/pingus_small","fonts");
+  if (!is_init)
+    {
+      is_init = true;
+      
+      surface = PingusResource::load_surface("Game/pingubw", "game");
+      font = PingusResource::load_font("Fonts/pingus","fonts");
+      font_small = PingusResource::load_font("Fonts/pingus_small","fonts");
 
-  // The credits vector holds the strings to display. The first
-  // character of each string is a special character, which indicates
-  // the size of the font or other special stuff. "-" means large
-  // font, "_" is a small font and "n" means a newline.
+      // The credits vector holds the strings to display. The first
+      // character of each string is a special character, which indicates
+      // the size of the font or other special stuff. "-" means large
+      // font, "_" is a small font and "n" means a newline.
 
-  credits.push_back("_If I forgot somebody in this");
-  credits.push_back("_list, just drop me a line and");
-  credits.push_back("_I'll fix this.");
-  credits.push_back("_Last Updated: 2000/06/27");
-  credits.push_back("n");
+      credits.push_back("_If I forgot somebody in this");
+      credits.push_back("_list, just drop me a line and");
+      credits.push_back("_I'll fix this.");
+      credits.push_back("_Last Updated: 2000/06/27");
+      credits.push_back("n");
 
-  credits.push_back("-Programming");
-  credits.push_back("_Ingo Ruhnke");
-  credits.push_back("_Michael K\"aser");
-  credits.push_back("_Peter Todd");
-  credits.push_back("n");
+      credits.push_back("-Programming");
+      credits.push_back("_Ingo Ruhnke");
+      credits.push_back("_Michael K\"aser");
+      credits.push_back("_Peter Todd");
+      credits.push_back("n");
 
-  credits.push_back("-Gfx");
-  credits.push_back("_Stefan Stiasny");
-  credits.push_back("_Alan Tennent");
-  credits.push_back("_Craig Timpany");
-  credits.push_back("_Joel Fauche");
-  credits.push_back("_Michael Mestre");
-  credits.push_back("n");
+      credits.push_back("-Gfx");
+      credits.push_back("_Stefan Stiasny");
+      credits.push_back("_Alan Tennent");
+      credits.push_back("_Craig Timpany");
+      credits.push_back("_Joel Fauche");
+      credits.push_back("_Michael Mestre");
+      credits.push_back("n");
 
-  credits.push_back("-Music");
-  credits.push_back("_H. Matthew Smith"); 
-  credits.push_back("_Joseph Toscano");
-  credits.push_back("n");
+      credits.push_back("-Music");
+      credits.push_back("_H. Matthew Smith"); 
+      credits.push_back("_Joseph Toscano");
+      credits.push_back("n");
 
-  credits.push_back("-Special");
-  credits.push_back("-Thanks to");
-  credits.push_back("_Jules Bean");
-  credits.push_back("_David Philippi");
-  credits.push_back("_Kenneth Gangstø");
-  credits.push_back("_Johnny Taporg");
-  credits.push_back("_Werner Steiner");
-  credits.push_back("_Kenneth Gangstø");
-  credits.push_back("_Tuomas (Tigert) Kuosmanen");
-  credits.push_back("_Keir Fraser");  
+      credits.push_back("-Special");
+      credits.push_back("-Thanks to");
+      credits.push_back("_Jules Bean");
+      credits.push_back("_David Philippi");
+      credits.push_back("_Kenneth Gangstø");
+      credits.push_back("_Johnny Taporg");
+      credits.push_back("_Werner Steiner");
+      credits.push_back("_Kenneth Gangstø");
+      credits.push_back("_Tuomas (Tigert) Kuosmanen");
+      credits.push_back("_Keir Fraser");  
 
-  credits.push_back("n");
+      credits.push_back("n");
+    }
 }
 
 Credits::~Credits()
@@ -90,6 +95,8 @@ Credits::~Credits()
 void
 Credits::display()
 {
+  init ();
+
   int x;
   int y;
   int yof;

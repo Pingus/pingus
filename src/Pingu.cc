@@ -1,4 +1,4 @@
-//  $Id: Pingu.cc,v 1.31 2000/09/12 11:11:36 grumbel Exp $
+//  $Id: Pingu.cc,v 1.32 2000/09/24 00:22:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -423,21 +423,14 @@ Pingu::do_walking()
 {
   environment = land;
 
-  if (rel_getpixel(2, 26) != ColMap::NOTHING && !(rel_getpixel(2, 26) & ColMap::BRIDGE))
+  if (rel_getpixel(0,-1) & ColMap::WATER)
     {
-      std::cout << "Pingu: Head collision" << std::endl;
-      direction.change();
+      //PingusSound::play_wav("sound/SPLASH.WAV");
+      //status = dead;
+      set_paction(world->get_action_holder()->get_uaction("drown"));
+      std::cout << "Gluck..." << std::endl;
       return;
     }
-
- if (rel_getpixel(0,-1) & ColMap::WATER)
-   {
-     //PingusSound::play_wav("sound/SPLASH.WAV");
-     //status = dead;
-     set_paction(world->get_action_holder()->get_uaction("drown"));
-     std::cout << "Gluck..." << std::endl;
-     return;
-   }
 
   if (rel_getpixel(1, 0) == ColMap::NOTHING) 
     { // if infront is free
@@ -482,7 +475,13 @@ Pingu::do_walking()
 	  direction.change();
 	}
     }
-
+  
+  if (rel_getpixel(2, 26) != ColMap::NOTHING && !(rel_getpixel(2, 26) & ColMap::BRIDGE))
+    {
+      std::cout << "Pingu: Head collision" << std::endl;
+      direction.change();
+      return;
+    }
 }
 
 // Draws the pingu on the screen with the given offset

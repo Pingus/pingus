@@ -1,4 +1,4 @@
-//  $Id: XMLPLF.cc,v 1.12 2000/09/23 18:19:00 grumbel Exp $
+//  $Id: XMLPLF.cc,v 1.13 2000/09/24 00:22:06 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -122,6 +122,10 @@ XMLPLF::parse_file()
 	  else if (strcmp((char*)cur->name, "liquid") == 0)
 	    {
 	      parse_liquid(cur);
+	    }
+	  else if (strcmp ((char*)cur->name, "worldobj") == 0)
+	    {
+	      parse_worldobj (cur);
 	    }
 	  else if (strcmp((char*)cur->name, "group") == 0)
 	    {
