@@ -547,37 +547,39 @@ section Entrances {
 
 section Ywlam
 {
-	bigsand = images/ywlam/old/bigsand.tga (type=surface, x=0, y=0, width=300,  height=150); 
-	mediumsand = images/ywlam/old/mediumsand.tga (type=surface, x=0, y=0, width=150,  height=75); 
-	smallsand = images/ywlam/old/smallsand.tga (type=surface, x=0, y=0, width=75,  height=37); 
-	rightsmallsand = images/ywlam/old/rightsmallsand.tga (type=surface, x=0, y=0, width=75,  height=37); 
-	leftsmallsand = images/ywlam/old/leftsmallsand.tga (type=surface, x=0, y=0, width=75,  height=37); 
-	bigblack = images/ywlam/old/bigblack.tga (type=surface, x=0, y=0, width=300,  height=150); 
-	mediumblack = images/ywlam/old/mediumblack.tga (type=surface, x=0, y=0, width=150,  height=75); 
-	smallblack = images/ywlam/old/smallblack.tga (type=surface, x=0, y=0, width=75,  height=37); 
-	rightsmallbrick = images/ywlam/old/rightsmallbrick.tga (type=surface, x=0, y=0, width=76,  height=38); 
-	leftsmallbrick = images/ywlam/old/leftsmallbrick.tga (type=surface, x=0, y=0, width=76,  height=38); 
-	bigegpytpict = images/ywlam/old/bigegyptpic.tga (type=surface, x=0, y=0, width=386,  height=485); 
-	mediumegpytpict = images/ywlam/old/mediumegyptpic.tga (type=surface, x=0, y=0, width=193,  height=242); 
-	smallegpytpict = images/ywlam/old/smallegyptpic.tga (type=surface, x=0, y=0, width=96,  height=121); 
-	bigdimwall = images/ywlam/old/bigdimwall.tga (type=surface, x=0, y=0, width=300,  height=150); 
-	mediumdimwall = images/ywlam/old/mediumdimwall.tga (type=surface, x=0, y=0, width=150,  height=75); 
-	smalldimwall = images/ywlam/old/smalldimwall.tga (type=surface, x=0, y=0, width=75,  height=37); 
-	mediummummy = images/ywlam/old/mediummummy.tga (type=surface, x=0, y=0, width=133,  height=56); 
-	mediumsphinx = images/ywlam/old/mediumsphinx.tga (type=surface, x=0, y=0, width=150,  height=97); 
-	smallsphinx = images/ywlam/old/smallsphinx.tga (type=surface, x=0, y=0, width=75,  height=48); 
-	smallD = images/ywlam/old/smallD.tga (type=surface, x=0, y=0, width=30,  height=38); 
-	smallO = images/ywlam/old/smallO.tga (type=surface, x=0, y=0, width=30,  height=38); 
-	smallG = images/ywlam/old/smallG.tga (type=surface, x=0, y=0, width=30,  height=38); 
-	smallE = images/ywlam/old/smallE.tga (type=surface, x=0, y=0, width=30,  height=38); 
-	pacmaze = images/ywlam/old/pacman-maze.tga (type=surface, x=0, y=0, width=453,  height=582); 
-	pacframe = images/ywlam/old/pacman-frame.tga (type=surface, x=0, y=0, width=453,  height=582); 
-	pacbkg = images/ywlam/old/pacman-bkg.tga (type=surface, x=0, y=0, width=453,  height=582); 
-	pacman = images/ywlam/old/pacman.tga (type=surface, x=0, y=0, width=32,  height=32); 
-	inky = images/ywlam/old/inky.tga (type=surface, x=0, y=0, width=32,  height=32); 
-	blinky = images/ywlam/old/blinky.tga (type=surface, x=0, y=0, width=32,  height=32); 
-	pinky = images/ywlam/old/pinky.tga (type=surface, x=0, y=0, width=32,  height=32); 
-	clyde = images/ywlam/old/clyde.tga (type=surface, x=0, y=0, width=32,  height=32); 
+	bigsand = images/groundpieces/ground/desert/bigsand.png (type=surface, x=0, y=0, width=300,  height=150); 
+	mediumsand = images/groundpieces/ground/desert/mediumsand.png (type=surface, x=0, y=0, width=150,  height=75); 
+	smallsand = images/groundpieces/ground/desert/smallsand.png (type=surface, x=0, y=0, width=75,  height=37); 
+	rightsmallsand = images/groundpieces/ground/desert/rightsmallsand.png (type=surface, x=0, y=0, width=75,  height=37); 
+	leftsmallsand = images/groundpieces/ground/desert/leftsmallsand.png (type=surface, x=0, y=0, width=75,  height=37); 
+//	bigblack = images/groundpieces/ground/desert/bigblack.png (type=surface, x=0, y=0, width=300,  height=150); 
+//	mediumblack = images/groundpieces/ground/desert/mediumblack.png (type=surface, x=0, y=0, width=150,  height=75); 
+//	smallblack = images/groundpieces/ground/desert/smallblack.png (type=surface, x=0, y=0, width=75,  height=37); 
+	rightsmallbrick = images/groundpieces/ground/desert/rightsmallbrick.png (type=surface, x=0, y=0, width=76,  height=38); 
+	leftsmallbrick = images/groundpieces/ground/desert/leftsmallbrick.png (type=surface, x=0, y=0, width=76,  height=38); 
+//	bigegpytpict = images/groundpieces/ground/desert/bigegyptpic.png (type=surface, x=0, y=0, width=386,  height=485); 
+	mediumegpytpict = images/hotspots/desert/mediumegyptpic.png (type=surface, x=0, y=0, width=193,  height=242); 
+	smallegpytpict = images/hotspots/desert/smallegyptpic.png (type=surface, x=0, y=0, width=96,  height=121); 
+	bigdimwall = images/hotspots/desert/bigdimwall.png (type=surface, x=0, y=0, width=300,  height=150); 
+	mediumdimwall = images/hotspots/desert/mediumdimwall.png (type=surface, x=0, y=0, width=150,  height=75); 
+	smalldimwall = images/hotspots/desert/smalldimwall.png (type=surface, x=0, y=0, width=75,  height=37); 
+	mediummummy = images/hotspots/desert/mediummummy.png (type=surface, x=0, y=0, width=133,  height=56); 
+	mediumsphinx = images/hotspots/desert/mediumsphinx.png (type=surface, x=0, y=0, width=150,  height=97); 
+	smallsphinx = images/hotspots/desert/smallsphinx.png (type=surface, x=0, y=0, width=75,  height=48); 
+	smallD = images/hotspots/desert/smallD.png (type=surface, x=0, y=0, width=30,  height=38); 
+	smallO = images/hotspots/desert/smallO.png (type=surface, x=0, y=0, width=30,  height=38); 
+	smallG = images/hotspots/desert/smallG.png (type=surface, x=0, y=0, width=30,  height=38); 
+	smallE = images/hotspots/desert/smallE.png (type=surface, x=0, y=0, width=30,  height=38); 
+
+        // Pacman stuff
+	pacmaze = images/special/pacman/pacman-maze.png (type=surface, x=0, y=0, width=453,  height=582); 
+	pacframe = images/special/pacman/pacman-frame.png (type=surface, x=0, y=0, width=453,  height=582); 
+	pacbkg = images/special/pacman/pacman-bkg.png (type=surface, x=0, y=0, width=453,  height=582); 
+	pacman = images/special/pacman/pacman.png (type=surface, x=0, y=0, width=32,  height=32); 
+	inky = images/special/pacman/inky.png (type=surface, x=0, y=0, width=32,  height=32); 
+	blinky = images/special/pacman/blinky.png (type=surface, x=0, y=0, width=32,  height=32); 
+	pinky = images/special/pacman/pinky.png (type=surface, x=0, y=0, width=32,  height=32); 
+	clyde = images/special/pacman/clyde.png (type=surface, x=0, y=0, width=32,  height=32); 
 }
 
 // EOF //

@@ -1,4 +1,4 @@
-//   $Id: PingusMain.cc,v 1.31 2001/07/22 21:17:58 grumbel Exp $
+//   $Id: PingusMain.cc,v 1.32 2001/07/23 09:20:02 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -256,7 +256,9 @@ PingusMain::check_args(int argc, char* argv[])
 	levelfile = optarg;
 	if (getcwd (cwd, 1024))
 	  levelfile = std::string(cwd) + "/" + levelfile;
-	if (verbose) std::cout << "PingusMain:check_args: Levelfile = " << levelfile << std::endl;
+	if (verbose) 
+	  std::cout << "PingusMain:check_args: Levelfile = " << levelfile << std::endl;
+	intro_disabled = true;
       }
       break;
     case 't': // -t, --set-speed
@@ -546,6 +548,7 @@ For more information about these matters, see the files named COPYING.\
 	char cwd[1024];
 	if (getcwd (cwd, 1024))
 	  levelfile = std::string(cwd) + "/" + levelfile;
+	intro_disabled = true;
       } else {
 	std::cout << "Wrong argument: '" << argv[i] << "'" << std::endl;
 	std::cout << "A levelfile is already given," << std::endl;
