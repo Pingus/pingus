@@ -1,3 +1,8 @@
+ClanLib 0.4.4 error message when compiling (lua.h not found...)
+
+glibc2.1 as requirement auf Pingus site
+
+
 Pingus splash even if they are floaters if they were to fast when the floater was appied
 
 Clearing stuff which are outsite the View
@@ -87,6 +92,33 @@ Star Wars - Escape from the death star.
 Vulcan - Run as fast as you can.
 
 
-$Date: 2000/04/14 18:42:09 $
+Sound Samples:
+~~~~~~~~~~~~~~
+BANG.WAV      ELECTRIC.WAV  	     README	 THUNK.WAV
+CHAIN.WAV     EXPLODE.WAV         SCRAPE.WAV  TING.WAV
+CHANGEOP.WAV  FIRE.WAV	      SLICER.WAV  YIPPEE.WAV
+CHINK.WAV     GLUG.WAV	          SPLASH.WAV  
+CVS/	      LETSGO.WAV      SPLAT.WAV
+DIE.WAV       MANTRAP.WAV   OHNO.WAV	     TENTON.WAV
+DOOR.WAV      MOUSEPRE.WAV  OING.WAV	     THUD.WAV
+
+ * some splash sound if a Pingu hits the ground to fast
+ * some sounds for the different traps (smasher, guillotine,
+   teleporter,...) 
+ * some "tock, tock" sound, when the briger ran out of bridge stones
+ * some sound when a Pingu starts to jump (yipee...?)
+ * water splash and lava burn sound
+ * electricity
+ * level start sound ("lets go", but better something different, we
+   don't need to reasamble lemmings)
+ * a entrance open door
+ * thunder
+ * when a pingu starts to tumple, he should meantion that somehow
+   (oh, oh...) 
+ * some metal-hit-sound when a digger hits solid ground
+ * some "slish.."-sound if a pingu looses controll on ice
+ * ...
+
+$Date: 2000/05/01 10:35:37 $
 
 -= EOF =-

@@ -1,4 +1,4 @@
-#  $Id: configure.in,v 1.12 2000/04/21 13:50:52 grumbel Exp $
+#  $Id: configure.in,v 1.13 2000/05/01 10:35:37 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -69,9 +69,6 @@ AC_LANG_CPLUSPLUS
 dnl What are we doing here?
 PINGUS_EXTRA_PATHS
 
-dnl ENABLE_LIBMIKMOD=true
-dnl AC_ARG_WITH(mikmod, [  --enable-mikmod         Enable music support throu libmikmod. ], [ ENABLE_LIBMIKMOD=true ], [ ENABLE_LIBMIKMOD=false ] )
-
 dnl BUG This guesses that the X libs are in that directory
 dnl LIBS="-L/usr/X11R6/lib $LIBS"
 dnl BUG end
@@ -85,9 +82,6 @@ dnl LIBS="$LIBS -lHermes"
 
 
 AC_CHECK_HEADER(ClanLib/core.h,, [echo "Please get ClanLib from http://www.clanlib.org"; exit])
-
-dnl AC_CHECK_LIB(mikmod,   main,, HAVE_LIBMIKMOD=no)
-dnl AC_CHECK_HEADER(mikmod.h, HAVE_LIBMIKMOD=yes, HAVE_LIBMIKMOD=no)
 
 dnl Checking for SDL libraries, used for sound and music support
 AC_CHECK_LIB(SDL,   main,,)
@@ -190,9 +184,6 @@ dnl Checking for the install prefix and then use it to define PINGUS_DATADIR
 PINGUS_EXPAND_DIR(pingus_datadir, "$datadir/games/$PACKAGE")
 AC_DEFINE_UNQUOTED( PINGUS_DATADIR, "$pingus_datadir")
 
-AC_SUBST(MIKMOD_CC_FILE)
-AC_SUBST(MIKMOD_O_FILE)
-
 AC_OUTPUT( Makefile 
            src/Makefile 
            src/actions/Makefile
@@ -208,9 +199,6 @@ AC_OUTPUT( Makefile
            data/demos/Makefile
            data/data/Makefile
            doc/Makefile
-dnl         tools/Makefile
-dnl         tools/ple/Makefile
-dnl         tools/ple/src/Makefile
            )
 
 # ----------------------------------------

@@ -9,6 +9,7 @@ Pingus BUGS:
 * Some non Critical Errors quit Pingus, when it still should be able to contiune
 * After some minutes of playing the game begans havyly to swap and
   ends 
+* Extremly short mouse clicks are not registered.
 
 'grep' at the sources for 'Bug' or "FIXME" that should give you some
 more known bugs and other stuff. 
