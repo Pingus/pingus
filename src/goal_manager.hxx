@@ -1,4 +1,4 @@
-//  $Id: goal_manager.hxx,v 1.1 2002/10/04 16:54:04 grumbel Exp $
+//  $Id: goal_manager.hxx,v 1.2 2002/10/09 23:09:45 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,6 +35,9 @@ private:
                   GT_ARMAGEDDON, // if armageddon as destroyed all pingus
                   GT_GAME_ABORTED }; // if the user pressed Escape to exit the level };
   GoalType goal;
+
+  /** time at which is_finished() will return true */
+  unsigned int exit_time;
 
 public:
   GoalManager(Server* plf);

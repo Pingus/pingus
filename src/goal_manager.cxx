@@ -1,4 +1,4 @@
-//  $Id: goal_manager.cxx,v 1.1 2002/10/04 16:54:04 grumbel Exp $
+//  $Id: goal_manager.cxx,v 1.2 2002/10/09 23:09:45 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,7 +24,7 @@
 #include "goal_manager.hxx"
 
 GoalManager::GoalManager(Server* s)
-  : server(s), goal(GT_NONE)
+  : server(s), goal(GT_NONE), exit_time(0)
 {
 }
 
@@ -35,40 +35,51 @@ GoalManager::is_finished()
     {
       return false;
     }
+  else if (exit_time == 0)
+    {
+      // we are finished, now wait a few second so that everybody can
+      // the the particles, etc.
+      std::cout << "XXXX goal reached: " << goal << std::endl;
+      exit_time = server->get_time() + 125;
+      return false;
+    }
   else
     {
-      std::cout << "XXXX goal reached: " << goal << std::endl;
-      return true;
+      return (exit_time < server->get_time());
     }
 }
 
 void
 GoalManager::update()
 {
-  World*       world  = server->get_world();
-  PinguHolder* pingus = world->get_pingus();
-  PLF*         plf    = server->get_plf();
+  if (exit_time == 0)
+    {
+      World*       world  = server->get_world();
+      PinguHolder* pingus = world->get_pingus();
+      PLF*         plf    = server->get_plf();
 
-  if (pingus->get_number_of_allowed() == pingus->get_number_of_released()
-      && pingus->get_number_of_alive() == 0)
-    {
-      goal = GT_NO_PINGUS_IN_WORLD;
-    }
-  else if (pingus->get_number_of_alive() == 0 && world->check_armageddon())
-    {
-      goal = GT_ARMAGEDDON;
-    }
-  else if (plf->get_time() != -1
-           && plf->get_time() <= server->get_time())
-    {
-      goal = GT_OUT_OF_TIME;
+      if (pingus->get_number_of_allowed() == pingus->get_number_of_released()
+          && pingus->get_number_of_alive() == 0)
+        {
+          goal = GT_NO_PINGUS_IN_WORLD;
+        }
+      else if (pingus->get_number_of_alive() == 0 && world->check_armageddon())
+        {
+          goal = GT_ARMAGEDDON;
+        }
+      else if (plf->get_time() != -1
+               && plf->get_time() <= server->get_time())
+        {
+          goal = GT_OUT_OF_TIME;
+        }
     }
 }
 
 void
 GoalManager::set_abort_goal()
 {
-  goal = GT_GAME_ABORTED;
+  if (exit_time == 0)
+    goal = GT_GAME_ABORTED;
 }
 
 /* EOF */
