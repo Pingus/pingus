@@ -50,6 +50,7 @@ src/DemoRecorder.cc
 src/Direction.cc
 src/Display.cc
 src/editor/Editor.cc
+src/editor/EditorHelpScreen.cc
 src/editor/EditorEvent.cc
 src/editor/EditorGroundpieceObj.cc
 src/editor/EditorObj.cc

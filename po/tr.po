@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Pingus 0.5.0\n"
-"POT-Creation-Date: 2002-01-11 19:39+0100\n"
+"POT-Creation-Date: 2002-01-20 15:10+0100\n"
 "PO-Revision-Date: 2001-12-04 22:50+02:00\n"
 "Last-Translator: Giray Devlet <giray@devlet.cc>\n"
 "Language-Team: Giray Devlet <giray@devlet.cc>, Caðrý Çöltekin <cagri@metu."
@@ -54,19 +54,19 @@ msgstr "ump_after(): Beklenen '"
 msgid "PLF: Syntax Error at line "
 msgstr "PLF: Sözdizimi hattasi. Satýr: "
 
-#: src/Config.cc:408
+#: src/Config.cc:404
 msgid "Config: Unknown valueid: "
 msgstr "Config: Bilinmeyen valueid: "
 
-#: src/Config.cc:425
+#: src/Config.cc:421
 msgid "Config: value: "
 msgstr "Config: deðer: "
 
-#: src/Config.cc:425
+#: src/Config.cc:421
 msgid " is not of type bool."
 msgstr " bool tipinde deðil."
 
-#: src/Config.cc:436
+#: src/Config.cc:432
 msgid "Config: Couldn't convert std::string to integer: "
 msgstr "Config: std::string'i integer'e dönüþtürelemedi"
 
@@ -128,150 +128,276 @@ msgstr "Sistem: Açýlamayan dosya: "
 msgid "DemoRecorder: Couldn't open: "
 msgstr "Sistem: Açýlamayan dosya: "
 
-#: src/editor/EditorEvent.cc:552
+#: src/editor/EditorHelpScreen.cc:43
+msgid "F1 - show/hide this help screen"
+msgstr ""
+
+#: src/editor/EditorHelpScreen.cc:44
+msgid "F2 - [unset]"
+msgstr ""
+
+#: src/editor/EditorHelpScreen.cc:45
+msgid "F3 - toggle background color"
+msgstr ""
+
+#: src/editor/EditorHelpScreen.cc:46
+msgid "F4 - play/test the level"
+msgstr ""
+
+#: src/editor/EditorHelpScreen.cc:47
+#, fuzzy
+msgid "F5 - load a level"
+msgstr "Seviye yükle"
+
+#: src/editor/EditorHelpScreen.cc:48
+#, fuzzy
+msgid "F6 - save this level"
+msgstr "Seviyeyi kayýt et"
+
+#: src/editor/EditorHelpScreen.cc:49
+msgid "F7 - [unset]"
+msgstr ""
+
+#: src/editor/EditorHelpScreen.cc:50
+msgid "F8 - quick save/backup save?!"
+msgstr ""
+
+#: src/editor/EditorHelpScreen.cc:51
+msgid "F9 - change level width and height"
+msgstr ""
+
+#: src/editor/EditorHelpScreen.cc:52
+msgid "F10 - set/configure background"
+msgstr ""
+
+#: src/editor/EditorHelpScreen.cc:53
+#, fuzzy
+msgid "F11 - toggle fps counter"
+msgstr "1 - Iþýnlayýcý"
+
+#: src/editor/EditorHelpScreen.cc:54
+msgid "F12 - make screenshot"
+msgstr ""
+
+#: src/editor/EditorHelpScreen.cc:58
+msgid "Pos1 - increase object size"
+msgstr ""
+
+#: src/editor/EditorHelpScreen.cc:59
+msgid "End  - decrease object size"
+msgstr ""
+
+#: src/editor/EditorHelpScreen.cc:60
+msgid "Cursor Keys - Move object"
+msgstr ""
+
+#: src/editor/EditorHelpScreen.cc:61
+msgid "Shift 'Cursor Keys' - Move objects fast "
+msgstr ""
+
+#: src/editor/EditorHelpScreen.cc:62
+msgid "PageUp   - level object up"
+msgstr ""
+
+#: src/editor/EditorHelpScreen.cc:63
+msgid "PageDown - level object down"
+msgstr ""
+
+#: src/editor/EditorHelpScreen.cc:64
+msgid "Shift PageUp   - increase objects z-pos"
+msgstr ""
+
+#: src/editor/EditorHelpScreen.cc:65
+msgid "Shift PageDown - decrease objects z-pos"
+msgstr ""
+
+#: src/editor/EditorHelpScreen.cc:66
+msgid "Enter - Set default zoom (1:1)"
+msgstr ""
+
+#: src/editor/EditorHelpScreen.cc:67
+#, fuzzy
+msgid "d - duplicate object"
+msgstr "Seçili nesneleri çiftle"
+
+#: src/editor/EditorHelpScreen.cc:68
+#, fuzzy
+msgid "a - mark all objects"
+msgstr "Seçili nesneleri sil"
+
+#: src/editor/EditorHelpScreen.cc:69
+msgid "shift leftmouseclick - add object to selection"
+msgstr ""
+
+#: src/editor/EditorHelpScreen.cc:70
+msgid "leftmouseclick - select object"
+msgstr ""
+
+#: src/editor/EditorHelpScreen.cc:71
+msgid "Insert - insert selected object"
+msgstr ""
+
+#: src/editor/EditorHelpScreen.cc:72
+msgid "Remove - remove selected object"
+msgstr ""
+
+#: src/editor/EditorHelpScreen.cc:73
+msgid "g - ungroup/group current selection"
+msgstr ""
+
+#: src/editor/EditorEvent.cc:555
 msgid "Enter filename to save as (without .plf!)"
 msgstr "Dosyayý ne olarak kayit edelim : "
 
-#: src/editor/ObjectSelector.cc:83
+#: src/editor/ObjectSelector.cc:80
 msgid "1 - guillotine"
 msgstr "1 - Keser"
 
-#: src/editor/ObjectSelector.cc:84
+#: src/editor/ObjectSelector.cc:81
 msgid "2 - hammer"
 msgstr "2 - Çekiç"
 
-#: src/editor/ObjectSelector.cc:85
+#: src/editor/ObjectSelector.cc:82
 msgid "3 - spike"
 msgstr "3 - Ýðne"
 
-#: src/editor/ObjectSelector.cc:86
+#: src/editor/ObjectSelector.cc:83
 msgid "4 - laser_exit"
 msgstr "4 - Laser Çýkýþ"
 
-#: src/editor/ObjectSelector.cc:87
+#: src/editor/ObjectSelector.cc:84
 msgid "5 - fake_exit"
 msgstr "5 - Yalancý Çýkýþ"
 
-#: src/editor/ObjectSelector.cc:88
+#: src/editor/ObjectSelector.cc:85
 msgid "6 - smasher"
 msgstr "6 - Ezici"
 
-#: src/editor/ObjectSelector.cc:89
+#: src/editor/ObjectSelector.cc:86
 msgid "7 - bumper"
 msgstr "7 - Ýtici"
 
-#: src/editor/ObjectSelector.cc:176
+#: src/editor/ObjectSelector.cc:173
 msgid "Select a WorldObj"
 msgstr "Bir WorldObj seç"
 
-#: src/editor/ObjectSelector.cc:177
+#: src/editor/ObjectSelector.cc:174
 msgid "1 - teleporter"
 msgstr "1 - Iþýnlayýcý"
 
-#: src/editor/ObjectSelector.cc:178
+#: src/editor/ObjectSelector.cc:175
 msgid "2 - switch and door"
 msgstr "2 - Þalter ve Kapý"
 
-#: src/editor/ObjectSelector.cc:179
+#: src/editor/ObjectSelector.cc:176
 msgid "3 - ConveyorBelt"
 msgstr "3 - YürüyenBant"
 
-#: src/editor/ObjectSelector.cc:180
+#: src/editor/ObjectSelector.cc:177
 msgid "4 - IceBlock"
 msgstr "4 - BuzBloðu"
 
-#: src/editor/ObjectSelector.cc:181
+#: src/editor/ObjectSelector.cc:178
 msgid "5 - InfoBox"
 msgstr "5 - BilgiKutusu"
 
-#: src/editor/ObjectSelector.cc:217
+#: src/editor/ObjectSelector.cc:214
 msgid "Select a weather"
 msgstr "Hava durumunu seç"
 
-#: src/editor/ObjectSelector.cc:218
+#: src/editor/ObjectSelector.cc:215
 msgid "1 - snow"
 msgstr "1 - Kar"
 
-#: src/editor/ObjectSelector.cc:219
+#: src/editor/ObjectSelector.cc:216
 msgid "2 - rain"
 msgstr "2 - Yaðmur"
 
-#: src/editor/ObjectSelector.cc:250
+#: src/editor/ObjectSelector.cc:247
 msgid "Select an entrance"
 msgstr "Bir çýkýþ seç"
 
-#: src/editor/ObjectSelector.cc:251
+#: src/editor/ObjectSelector.cc:248
 msgid "1 - generic"
 msgstr "1 - Genel"
 
-#: src/editor/ObjectSelector.cc:252
+#: src/editor/ObjectSelector.cc:249
 msgid "2 - woodthing"
 msgstr "2 - Ahþap"
 
-#: src/editor/ObjectSelector.cc:253
+#: src/editor/ObjectSelector.cc:250
 msgid "3 - cloud"
 msgstr "3 - Bulut"
 
-#: src/editor/ObjectSelector.cc:325
+#: src/editor/ObjectSelector.cc:251
+msgid "h - entrance surface (hotspot)"
+msgstr ""
+
+#: src/editor/ObjectSelector.cc:327
 #, fuzzy
 msgid "What object type do you want?"
 msgstr "Hangi nesneyi istiyorsun?"
 
 # buna daha iyi biþi uydurabiliyormusun?  -gd
-#: src/editor/ObjectSelector.cc:326 src/editor/ObjectSelector.cc:386
+#: src/editor/ObjectSelector.cc:328 src/editor/ObjectSelector.cc:389
 msgid "h - Hotspot"
 msgstr "h - GrafikParçasý"
 
-#: src/editor/ObjectSelector.cc:327 src/editor/ObjectSelector.cc:381
-msgid "g - Groundpiece (ground)"
+#: src/editor/ObjectSelector.cc:329
+#, fuzzy
+msgid "g - Groundpiece (ground) [not implemented]"
 msgstr "g - Yer (ground)"
 
-#: src/editor/ObjectSelector.cc:379
+#: src/editor/ObjectSelector.cc:382
 msgid "Which object do you want?"
 msgstr "Hangi nesneyi istiyorsun?"
 
-#: src/editor/ObjectSelector.cc:380
+#: src/editor/ObjectSelector.cc:383
 msgid "t - Trap"
 msgstr "t - Tuzak"
 
-#: src/editor/ObjectSelector.cc:382
+#: src/editor/ObjectSelector.cc:384
+msgid "g - Groundpiece (ground)"
+msgstr "g - Yer (ground)"
+
+#: src/editor/ObjectSelector.cc:385
 msgid "s - Groundpiece (solid)"
 msgstr "s - YerParçasi (solid)"
 
-#: src/editor/ObjectSelector.cc:383
+#: src/editor/ObjectSelector.cc:386
 msgid "b - Groundpiece (bridge)"
 msgstr "b - Köprü (bridge)"
 
-#: src/editor/ObjectSelector.cc:384
+#: src/editor/ObjectSelector.cc:387
 msgid "n - Groundpiece (transparent)"
 msgstr "n - YerParçasý (transparan)"
 
-#: src/editor/ObjectSelector.cc:385
+#: src/editor/ObjectSelector.cc:388
 msgid "r - Groundpiece (remove)"
 msgstr "r - YerParçasý (sil)"
 
-#: src/editor/ObjectSelector.cc:387
+#: src/editor/ObjectSelector.cc:390
 msgid "e - Entrance"
 msgstr "e - Giriþ"
 
-#: src/editor/ObjectSelector.cc:388
+#: src/editor/ObjectSelector.cc:391
 #, fuzzy
 msgid "x - Exit"
 msgstr "x - Bitir"
 
-#: src/editor/ObjectSelector.cc:389
+#: src/editor/ObjectSelector.cc:392
 msgid "l - Liquid"
 msgstr "l - Sývý"
 
-#: src/editor/ObjectSelector.cc:390
+#: src/editor/ObjectSelector.cc:393
 msgid "w - Weather"
 msgstr "w - Ýklim"
 
-#: src/editor/ObjectSelector.cc:391
+#: src/editor/ObjectSelector.cc:394
 msgid "o - WorldObject"
 msgstr "o - DünyaNesnesi"
 
-#: src/editor/ObjectSelector.cc:392
+#: src/editor/ObjectSelector.cc:395
 msgid "f - something from file (~/.pingus/images/)"
 msgstr "f - dosyadan (~/.pingus/images/)"
 
@@ -345,27 +471,27 @@ msgstr "GamepadController: Gamepad'i kullanmak için aygýt bulunamadý"
 msgid "Couldn't find enough axes on joystick"
 msgstr "Dentim Kolunda (Joystick) yeterli eksen bulunamadý"
 
-#: src/GenericMain.cc:59
+#: src/GenericMain.cc:58
 msgid "Gettext: PACKAGE="
 msgstr "Gettext: Paket="
 
-#: src/GenericMain.cc:59
+#: src/GenericMain.cc:58
 msgid ", LOCALEDIR="
 msgstr "LOCALEDÝZÝNÝ="
 
-#: src/GenericMain.cc:72
+#: src/GenericMain.cc:71
 msgid "Starting Pingus "
 msgstr "Pingus baþlatýlýyor "
 
-#: src/GenericMain.cc:73
+#: src/GenericMain.cc:72
 msgid "Build:"
 msgstr "Derleme:"
 
-#: src/GenericMain.cc:86
+#: src/GenericMain.cc:85
 msgid "GenericMain: Executable name \""
 msgstr "GenericMain: Çalýþtýrabilir isim \""
 
-#: src/GenericMain.cc:87
+#: src/GenericMain.cc:86
 msgid "\" unknown, default to Pingus mode"
 msgstr "\" bilinmiyor, Pingus kipine git"
 
@@ -378,11 +504,6 @@ msgstr "..:: Güle güle... ::.."
 #, fuzzy
 msgid "Start menu"
 msgstr "Baþla"
-
-#: src/MikMod.cc:80
-#, fuzzy
-msgid "Couldn't find: "
-msgstr "Bulunamayan palet: %d"
 
 #: src/OptionMenu.cc:89
 #, fuzzy
@@ -473,22 +594,18 @@ msgstr "Seviye Önizleme"
 msgid "Draw ColMap"
 msgstr "RenkHaritasi Çiz"
 
-#: src/OptionMenu.cc:225
-msgid "Horizontal Button Panel"
-msgstr "Yatay buton paneli"
-
 #. add_entry(_("Debug GameTime"), &debug_game_time);
 #. add_entry(_("Debug Tiles"), &debug_tiles);
-#: src/OptionMenu.cc:228
+#: src/OptionMenu.cc:227
 msgid "Auto Scrolling"
 msgstr "Otomatik Kaydýrma"
 
-#: src/OptionMenu.cc:229
+#: src/OptionMenu.cc:228
 msgid "Action Help Strings"
 msgstr ""
 
 #. draw_background();
-#: src/OptionMenu.cc:268
+#: src/OptionMenu.cc:267
 #, fuzzy
 msgid "Pingus Option Menu"
 msgstr "Pingus Seçenekler Menüsü"
@@ -502,22 +619,22 @@ msgstr "Sistem: Açýlamayan dosya: "
 msgid "Setting action to a dead pingu"
 msgstr "Ölü pingu'ya atanan aksiyon"
 
-#: src/PinguInfo.cc:50
+#: src/PinguInfo.cc:53
 #, c-format
 msgid "pingu_id %d"
 msgstr ""
 
-#: src/PinguInfo.cc:56
+#: src/PinguInfo.cc:59
 #, fuzzy, c-format
 msgid "action %s"
 msgstr "Seçenekler"
 
-#: src/PinguInfo.cc:58
+#: src/PinguInfo.cc:61
 msgid "action none"
 msgstr ""
 
 #. FIXME: Buffer overflow...
-#: src/PingusCounter.cc:44
+#: src/PingusCounter.cc:47
 #, c-format
 msgid "Released: %3d/%3d  Out: %3d  Saved: %3d/%3d"
 msgstr "Çýkan: %3d/%3d Dýþarýda olan: %3d  Kurtulan: %3d/%3d"
@@ -653,58 +770,58 @@ msgstr "Bu da bir baþarý tabii. Hepsini nasil helak ettin?"
 msgid "You've got a negative save/total value, something is buggy."
 msgstr "Eksi sayýda Pingus kurtardýn, biyerde kesin hata var."
 
-#: src/PingusMain.cc:89
+#: src/PingusMain.cc:90
 msgid ""
 "\n"
 "----------------------------------------------------------"
 msgstr ""
 
-#: src/PingusMain.cc:90
+#: src/PingusMain.cc:91
 msgid "segfault_handler: catched a SIGSEGV.\n"
 msgstr ""
 
-#: src/PingusMain.cc:91
+#: src/PingusMain.cc:92
 msgid "Woops, Pingus just crashed, congratulations you've found a bug."
 msgstr "Amanin booo ...  Pingus çöktü! Tebrikler bir böcek (hata) buldun!"
 
-#: src/PingusMain.cc:92
+#: src/PingusMain.cc:93
 msgid ""
 "Please write a little bug report to <grumbel@pingus.cx>, include informations"
 msgstr "Lütfen inglizce/almanca olarak <grumbel@gmx.de> adresine kýsa bir hata"
 
-#: src/PingusMain.cc:93
+#: src/PingusMain.cc:94
 msgid "where exacly the SIGSEGV occured and how to reproduce it."
 msgstr "raporu yaz. SIGSEGV'in nerede oluþtuðunu ve nasýl tekrarlanabileceðini"
 
-#: src/PingusMain.cc:94
+#: src/PingusMain.cc:95
 msgid "Also try include a backtrace, you can get it like this:\n"
 msgstr "anlat.  Bir de bir 'backtrace' ekle ... Aþagýdaki gibi mesela:\n"
 
-#: src/PingusMain.cc:95
+#: src/PingusMain.cc:96
 msgid "$ gdb pingus core"
 msgstr "$ gdb pingus core"
 
-#: src/PingusMain.cc:96
+#: src/PingusMain.cc:97
 msgid "(gdb) bt"
 msgstr "(gdb) bt"
 
-#: src/PingusMain.cc:97 src/PingusMain.cc:102
+#: src/PingusMain.cc:98 src/PingusMain.cc:103
 msgid "...\n"
 msgstr "...\n"
 
-#: src/PingusMain.cc:98
+#: src/PingusMain.cc:99
 msgid "If that doesn't work, try this:\n"
 msgstr "Bu çalýþmazsa, þöyle de olabilir:\n"
 
-#: src/PingusMain.cc:99
+#: src/PingusMain.cc:100
 msgid "$ gdb pingus"
 msgstr "$ gdb pingus"
 
-#: src/PingusMain.cc:100
+#: src/PingusMain.cc:101
 msgid "(gdb) r"
 msgstr "(gdb) r"
 
-#: src/PingusMain.cc:101
+#: src/PingusMain.cc:102
 msgid "[play until it crashes again]"
 msgstr " [... ve çökene kadar tekrar oyna ... ]"
 
@@ -734,19 +851,19 @@ msgstr ""
 "özgürce daðýtýlabilir. Ayrýntýlar için kaynak \n"
 "kodunda COPYING belgesini okuyun."
 
-#: src/PingusMain.cc:496
+#: src/PingusMain.cc:493
 msgid "Unknow char: "
 msgstr "Bilinmeyen karakter: "
 
-#: src/PingusMain.cc:497
+#: src/PingusMain.cc:494
 msgid "Usage: "
 msgstr "Kullaným: "
 
-#: src/PingusMain.cc:497
+#: src/PingusMain.cc:494
 msgid " [OPTIONS]... [LEVELFILE]"
 msgstr "[SEÇENEKLER]... [SEVÝYE DOSYASI]"
 
-#: src/PingusMain.cc:499
+#: src/PingusMain.cc:496
 msgid ""
 "\n"
 "Options:\n"
@@ -757,13 +874,13 @@ msgid ""
 "   --disable-intro          Disable intro\n"
 msgstr ""
 
-#: src/PingusMain.cc:508
+#: src/PingusMain.cc:505
 msgid "   -G, --use-opengl         Use OpenGL\n"
 msgstr "   -G, --use-opengl         OpenGL kullan\n"
 
 #. 	"   --fs-preload             Preload all Levelpreviews\n"a
 #. 	"   --disable-previews       Disables all level preview in the level selector\n"
-#: src/PingusMain.cc:512
+#: src/PingusMain.cc:509
 msgid ""
 "   -F, --disable-fullscreen Disable Fullscreen\n"
 "   -f, --enable-fullscreen  Enable Fullscreen (default)\n"
@@ -802,16 +919,14 @@ msgid ""
 "   -i, --enable-gimmicks    Enable some buggy development stuff\n"
 "   -S, --sound-specs FILE   Use files mentioned in FILE\n"
 "   --tile-size INT          Set the size of the map tiles (default: 32)\n"
-"   --broken-clres-handling  Assume broken resource handling inside ClanLib "
-"and\n"
-"                            workaround it (needed for ClanLib < 0.5.2)\n"
+"\n"
 "\n"
 "Demo playing and recording:\n"
 "   -r, --record-demo FILE   Record a demo session to FILE\n"
 "   -p, --play-demo FILE     Plays a demo session from FILE\n"
 msgstr ""
 
-#: src/PingusMain.cc:555
+#: src/PingusMain.cc:550
 msgid ""
 "\n"
 "Sound:\n"
@@ -823,15 +938,15 @@ msgid ""
 "   --audio-buffers INT      Audio buffer (default: 4096)\n"
 msgstr ""
 
-#: src/PingusMain.cc:598
+#: src/PingusMain.cc:590
 msgid "-----------------------------------------------------------------\n"
 msgstr ""
 
-#: src/PingusMain.cc:601
+#: src/PingusMain.cc:593
 msgid " Verbosity set to: "
 msgstr ""
 
-#: src/PingusMain.cc:604
+#: src/PingusMain.cc:596
 msgid ""
 " If you don't like to get lots of debug messages, than set the\n"
 " verbosity down to 0, like this:\n"
@@ -841,33 +956,33 @@ msgid ""
 msgstr ""
 
 # 'Main' yerine baþka biþi uydurmak lazim buraya -gd
-#: src/PingusMain.cc:826
+#: src/PingusMain.cc:800
 msgid "PingusMain: Starting Main: "
 msgstr "PingusMain: Main Baþlatýlýyor: "
 
-#: src/PingusMain.cc:848
+#: src/PingusMain.cc:822
 msgid "PingusMain: Levelfile not found, ignoring: "
 msgstr "PingusMain: Seviye Dosyasý bulunamadý, yok sayýlacak: "
 
-#: src/PingusMain.cc:902
+#: src/PingusMain.cc:876
 msgid "Error caught from ClanLib: "
 msgstr "ClanLib hatasý: "
 
-#: src/PingusMain.cc:906
+#: src/PingusMain.cc:880
 msgid "Error caught from Pingus: "
 msgstr "Pingus'ta hata saptandý: "
 
-#: src/PingusMain.cc:910
+#: src/PingusMain.cc:884
 msgid "Pingus: Out of memory!"
 msgstr "Pingus: Bellek yetersiz!"
 
 # bu komik oldu -cagri
 # daha mi iyi boyle :) -gd
-#: src/PingusMain.cc:914
+#: src/PingusMain.cc:888
 msgid "Pingus: Standard exception caught!:\n"
 msgstr "Pingus: Genel olaðan dýþý durum saptandý!:\n"
 
-#: src/PingusMain.cc:918
+#: src/PingusMain.cc:892
 msgid "Pingus: Unknown throw caught!"
 msgstr "Pingus: Bilinmeyen bir hata saptandý!"
 
@@ -899,12 +1014,12 @@ msgid "Screenshot: Couldn't write file: "
 msgstr "Screenshot: Dosyaya yazýlamýyor: "
 
 #.  desc["en"] = "..:: Starts the level you played at last ::..";
-#: src/SurfaceButton.cc:159
+#: src/SurfaceButton.cc:160
 msgid "..:: The people who brought this game to you ::.."
 msgstr "..:: Bu oyunu sizin için hazýrlayanlar... ::.."
 
 #. desc["de"] = "..:: Wer hat den dieses Spiel verbrochen...? ::..";
-#: src/SurfaceButton.cc:162
+#: src/SurfaceButton.cc:163
 msgid "Credits"
 msgstr "Yardýmcý olanlar"
 
@@ -912,26 +1027,26 @@ msgstr "Yardýmcý olanlar"
 #. y_pos = CL_Display::get_height() * 330 / 480; //330;
 #. 150;
 #. 330;
-#: src/SurfaceButton.cc:201
+#: src/SurfaceButton.cc:204
 #, fuzzy
 msgid "..:: Takes you to the options menu ::.."
 msgstr "..:: Seçenekler Menüsüne gider ::.."
 
 #.  desc["de"] = "..:: Einstellungen und Mogeleien ::..";
-#: src/SurfaceButton.cc:204
+#: src/SurfaceButton.cc:207
 msgid "Options"
 msgstr "Seçenekler"
 
-#: src/SurfaceButton.cc:237
+#: src/SurfaceButton.cc:240
 msgid "..:: Bye, bye ::.."
 msgstr "..:: Güle güle... ::.."
 
 #. desc["de"] = "..:: Auf Wiedersehen ::..";
-#: src/SurfaceButton.cc:240
+#: src/SurfaceButton.cc:243
 msgid "Exit"
 msgstr "Çýkýþ"
 
-#: src/SurfaceButton.cc:295
+#: src/SurfaceButton.cc:299
 msgid "..:: Launch the level editor ::.."
 msgstr "..:: Seviye Editörünü Çalýþtýr ::.."
 
@@ -940,67 +1055,67 @@ msgstr "..:: Seviye Editörünü Çalýþtýr ::.."
 # Yav tabii turkce'nin yapisindan ortaya cikan bir sorun var .. 'yarat'i cumle
 # sonuna koymak gerekecek ... neyse bi compile edince nasil gozukuyor bakalim ... -gd
 #. desc["de"] = "..:: Den Level Editor starten ::..";
-#: src/SurfaceButton.cc:298
+#: src/SurfaceButton.cc:302
 msgid "Create a"
 msgstr "Yeni Seviye"
 
-#: src/SurfaceButton.cc:299
+#: src/SurfaceButton.cc:303
 msgid "Level"
 msgstr "Yarat"
 
 # bu olmadi -cagri
 # þimdi daha iyi mi? -gd
-#: src/SurfaceButton.cc:341
+#: src/SurfaceButton.cc:345
 #, fuzzy
 msgid "..:: Lets you select a world to start ::.."
 msgstr "..:: Oynamak için bir dünya seçmenizi saðlar ::.."
 
 #. desc["de"] = "..:: Such dir eine Welt zum beginnen aus ::..";
-#: src/SurfaceButton.cc:344
+#: src/SurfaceButton.cc:348
 msgid "Start"
 msgstr "Baþla"
 
 # bu nasil olmuþ? contrib -> katýlýmcý, dýþarlýklý :))) -gd 
-#: src/SurfaceButton.cc:370
+#: src/SurfaceButton.cc:375
 msgid "..:: Start a contrib level ::.."
 msgstr "..:: Harici bir seviye baþlat ::.."
 
 # bu olmadi -cagri
 # bu daha da olmadi galiba -gd
-#: src/SurfaceButton.cc:372
+#: src/SurfaceButton.cc:377
 msgid "Contrib"
 msgstr "Harici"
 
-#: src/SurfaceButton.cc:394
+#: src/SurfaceButton.cc:399
 msgid "..:: Multiplayer Modes... experimental stuff ::.."
 msgstr "..:: Çok oyunculu kipler... Deneysel þeyler ::.."
 
-#: src/SurfaceButton.cc:396
+#: src/SurfaceButton.cc:401
 msgid "Multi"
 msgstr "Çoklu"
 
-#: src/System.cc:69 src/System.cc:101
+#: src/System.cc:70 src/System.cc:102
 msgid "System: Couldn't open: "
 msgstr "Sistem: Açýlamayan dosya: "
 
-#: src/System.cc:160
+#: src/System.cc:161
 msgid "Successfully created: "
 msgstr "Yaratýlan dosya: "
 
-#: src/System.cc:165
+#: src/System.cc:166
 msgid "Found: "
 msgstr "Bulundu: "
 
-#: src/System.cc:216
+#: src/System.cc:217
 #, fuzzy
 msgid "Environment variable $HOME not set, fix that and start again."
 msgstr "$HOME deðiþkeni atanmamýþ, düzeltip yeniden dene."
 
-#: src/System.cc:358
+#: src/System.cc:359
 msgid "System::checksum: Couldn't open file: "
 msgstr "Sistem::checksum: Açýlamayan dosya: "
 
-#: src/System.cc:368
+#: src/System.cc:369
 msgid "System:checksum: file read error"
 msgstr "Sistem:checksum: Dosya okunurken hata oluþtu"
 
@@ -1012,6 +1127,13 @@ msgstr "Savaþ vaktidir ey ahali - haydi savaþa!"
 #, fuzzy
 msgid "PingusWorldMapGraph: File not found: "
 msgstr "PingusWorldMapGraph: Dosya bulunamadý: "
+
+#, fuzzy
+#~ msgid "Couldn't find: "
+#~ msgstr "Bulunamayan palet: %d"
+
+#~ msgid "Horizontal Button Panel"
+#~ msgstr "Yatay buton paneli"
 
 #~ msgid "=================================================================\n"
 #~ msgstr "=================================================================\n"

@@ -1,4 +1,4 @@
-//   $Id: PingusMain.cc,v 1.52 2002/01/19 20:30:45 grumbel Exp $
+//   $Id: PingusMain.cc,v 1.53 2002/01/20 14:17:26 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -670,6 +670,10 @@ PingusMain::get_filenames()
   path_manager.set_path("data\\");
 #endif /* !WIN32 */
  
+#ifdef HAVE_GETTEXT
+  bindtextdomain (PACKAGE, (path_manager.get_base_path () + "/../../locale/").c_str());
+  textdomain (PACKAGE);
+#endif 
   std::cout << "BasePath: " << path_manager.get_base_path () << std::endl;
 
   // First we try to open the file which was given, if that is not
