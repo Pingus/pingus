@@ -1,11 +1,11 @@
 /* This level was created with the PLE
- * $Id: space2.plf,v 1.1 2000/02/11 17:08:23 grumbel Exp $
+ * $Id: space2.plf,v 1.2 2000/02/12 12:00:32 grumbel Exp $
  */
 global {
   start_x_pos = 0;
   start_y_pos = 0;
-  levelname = "PLE Level";
-  description = "This level has no name
+  levelname = "Lost in Space";
+  description = "
 
 ";
   number_of_pingus = 100;
@@ -15,9 +15,9 @@ global {
 
 ground {
   maptype = "SPOT";
-  data    = (file)"space2.psm";
-  width   = 1200;
-  height  = 600;
+  data    = (file)"space2aoeudthode.psm";
+  width   = 1600;
+  height  = 608;
   colmap  = (auto);
 }
 
@@ -40,6 +40,22 @@ buttons {
   digger = 20;
   floater = 20;
   miner = 20;
+}
+
+entrance {
+  type  = generic;
+  x_pos = 456;
+  y_pos = 266;
+  z_pos = 0;
+  release_rate = 25;
+  direction = left;
+}
+
+exit {
+  image = (resource)"Exits/space";
+  x_pos = 1058;
+  y_pos = 280;
+  z_pos = 0;
 }
 
 /* EOF */

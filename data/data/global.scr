@@ -101,6 +101,8 @@ section Entrances {
 
 	woodthing_nmov = ../images/entrances/woodthing_nmov.tga   (type=surface, x=0, y=0, width=151, height=157);
 	woodthing_mov  = ../images/entrances/woodthing_mov.pcx   (type=surface, x=0, y=0, width=105, height=17, array=17x1, tcol=0);
+
+	cloud  = ../images/entrances/cloudent.pcx   (type=surface, x=0, y=0, width=188, height=90, tcol=0);
 }
 
 section GroundPieces
@@ -220,6 +222,16 @@ section GroundPieces
 		smallbush2 = ../images/groundpieces/foliage/smallbush2.pcx (type=surface, x=0, y=0, width=107,  height=88, tcol=0);
 		smallbush3 = ../images/groundpieces/foliage/smallbush3.pcx (type=surface, x=0, y=0, width=95,  height=37, tcol=0);
 		talltree  = ../images/groundpieces/foliage/talltree.pcx  (type=surface, x=0, y=0, width=84,  height=200, tcol=0);
+
+		turfconcave      =  ../images/groundpieces/foliage/turfconcave.pcx     (type=surface, x=0, y=0, width=59,  height=16, tcol=0);
+		turfflat         =  ../images/groundpieces/foliage/turfflat.pcx        (type=surface, x=0, y=0, width=90,  height=13, tcol=0);
+		turfslopeleft    =  ../images/groundpieces/foliage/turfslopeleft.pcx   (type=surface, x=0, y=0, width=70,  height=17, tcol=0);
+		turfslopeleft20  =  ../images/groundpieces/foliage/turfslopeleft20.pcx (type=surface, x=0, y=0, width=52,  height=20, tcol=0);
+		turfsloperight   =  ../images/groundpieces/foliage/turfsloperight.pcx  (type=surface, x=0, y=0, width=40,  height=17, tcol=0);
+		turfsloperight20 = ../images/groundpieces/foliage/turfsloperight20.pcx (type=surface, x=0, y=0, width=52,  height=20, tcol=0);
+		turfsmallbump    =  ../images/groundpieces/foliage/turfsmallbump.pcx   (type=surface, x=0, y=0, width=20,  height=16, tcol=0);
+		turfsmallnook    =  ../images/groundpieces/foliage/turfsmallnook.pcx   (type=surface, x=0, y=0, width=20,  height=17, tcol=0);
+		turftufty        = ../images/groundpieces/foliage/turftufty.pcx        (type=surface, x=0, y=0, width=20,  height=17, tcol=0);
 	}
 
 	section Misc
@@ -264,14 +276,14 @@ section GroundPieces
 		grid3 = ../images/groundpieces/space/grid3.pcx  (type=surface, x=0, y=0, width=41,  height=41, tcol=0); 
 
 		block1 = ../images/groundpieces/space/block1.pcx  (type=surface, x=0, y=0, width=201,  height=61); 
-		tower1 = ../images/groundpieces/space/tower1.pcx  (type=surface, x=0, y=0, width=64,  height=166); 
+		tower1 = ../images/groundpieces/space/tower1.pcx  (type=surface, x=0, y=0, width=64,  height=166, tcol=0); 
 	}
 }
 
 section Themes
 {
 	crystal = ../images/themes/crystal.pcx   (type=surface, x=0, y=0, width=256,  height=128);
-	xmas99  = ../images/themes/xmas99.tga    (type=surface, x=0, y=0, width=512,  height=256);
+	xmas99  = ../images/themes/xmas99.tga    (type=surface, x=0, y=0, width=240,  height=98);
 	tutorial = ../images/themes/tutorial.tga    (type=surface, x=0, y=0, width=236,  height=154);
 	space = ../images/themes/space.tga    (type=surface, x=0, y=0, width=258,  height=145);
 }

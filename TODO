@@ -1,20 +1,14 @@
 Last updated: Sat Jul 31 15:11:43 1999
 
-For 0.3.1
+For 0.3.x
 ~~~~~~~~~
+* limiting the number of Pingus
 left/right buttons in Themes
-fix missing levels
-* fixed Cursor keys for scrolling
 * fixed PgUp/PgDown for zooming
 * fixed Info pannel for dead, etc pingus
 tump nail for level
-Actions in the foreground
-* fixed hotkeys F1-F6
-blendout is to fast.
 colmap manipulation for liquid
-Animated entrances
 right/left/random/left'n'right
-hotspot in leveldescritpion
 
 Important Things:
 ~~~~~~~~~~~~~~~~~
@@ -38,12 +32,6 @@ Important Things:
 -= SOUND WORK =-
 * Creating some sound effects
 
--= OTHER =-
-* Create some levels
-
--= BIG STUFF =-
-* Create a level editor.
-
 Less Important Things:
 ~~~~~~~~~~~~~~~~~~~~~~
 -= FEATURES =-
@@ -63,22 +51,5 @@ Less Important Things:
 
 -= BIG STUFF =-
 * "Worms" mode. 
-
-Misc:
-~~~~~
-Level Start Screen:
-===================
-Number of Pingus     XX
-Number to be saved  XXX
-Release Rate         XX
-
-Time               X:XX
-
-Level End Screen
-================
-Congratulation, you finished this level successfull.
-
-You needed: X
-You saved:  X
 
 -= EOF =-

@@ -1,4 +1,4 @@
-//   $Id: Pingus.cc,v 1.3 2000/02/11 16:58:26 grumbel Exp $
+//   $Id: Pingus.cc,v 1.4 2000/02/12 12:00:33 grumbel Exp $
 //    ___
 //   |  _\ A free Lemmings clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -363,17 +363,14 @@ PingusMain::check_args(int argc, char* argv[])
 void
 PingusMain::init_pingus()
 {
-  /*
-    if (verbose) 
+  if (verbose) 
     {
-    std::cout << "Loading data... " << std::endl;
-      std::cout << "Pingus Datafile: " << pingus_datafile << std::endl;
-      std::cout << "Global Datafile: " << global_datafile << std::endl;
+      std::cout << "------------------------------------------------------\n" 
+		<< " Verbosity set to: " << verbose  << "\n"
+		<< " If you don't like lots of debug messages set the\n"
+		<< "verbosity down to 0, like this:\n" 
+		<< "$ ./pingus --verbose 0" << std::endl;
     }
-  
-  if (verbose)
-    std::cout << "PingusMain::load_data: created resource successfully" << std::endl;
-    */
 }
 
 // Get all filenames and directories
@@ -397,24 +394,24 @@ PingusMain::get_filenames()
   
   if (exist(pingus_homedir)) 
     {
-      std::cout << "PingusMain: pingus_homedir = " << pingus_homedir << std::endl;
+      if (verbose) std::cout << "PingusMain: pingus_homedir = " << pingus_homedir << std::endl;
     } 
   else 
     {
-      std::cout << "PingusMain: Creating directory: " << pingus_homedir << "... " << std::flush;
+      if (verbose) std::cout << "PingusMain: Creating directory: " << pingus_homedir << "... " << std::flush;
       
       if (mkdir(pingus_homedir.c_str(), S_IRUSR | S_IWUSR | S_IXUSR | S_IRGRP | S_IXGRP) == 0
 	  && mkdir((pingus_homedir + "levels/").c_str(), S_IRUSR | S_IWUSR | S_IXUSR | S_IWGRP | S_IXGRP) == 0
 	  && mkdir((pingus_homedir + "stat").c_str(), S_IRUSR | S_IWUSR | S_IXUSR | S_IRGRP | S_IXGRP) == 0)
 	{
-	  std::cout << "finished" << std::endl;
+	  if (verbose) std::cout << "finished" << std::endl;
 	}
       else 
 	{
-	  std::cout << "error" << std::endl;
-	  std::cout << "---------------------------------------------------------------" << std::endl;
+	  if (verbose) std::cout << "error" << std::endl;
+	  if (verbose) std::cout << "---------------------------------------------------------------" << std::endl;
 	  perror(pingus_homedir.c_str());
-	  std::cout << "---------------------------------------------------------------" << std::endl;
+	  if (verbose) std::cout << "---------------------------------------------------------------" << std::endl;
 	}
     }
   

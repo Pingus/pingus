@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.2 2000/02/09 22:13:20 grumbel Exp $
+#  $Id: Makefile.am,v 1.3 2000/02/12 12:00:31 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -175,7 +175,9 @@ CURSORS = \
 ENTRANCES = \
              entrances/woodthing_mov.pcx  \
              entrances/woodthing_nmov.tga \
-             entrances/entrance.pcx       
+             entrances/entrance.pcx       \
+             entrances/cloudent.pcx       
+
 #             entrances/gate.tga
 
 GROUNDPIECES = \
@@ -275,29 +277,38 @@ GROUNDPIECES = \
                groundpieces/jungle/stick4.pcx           \
                groundpieces/jungle/stick5.pcx           \
                                                         \
-               groundpieces/foliage/flax1.pcx           \
-               groundpieces/foliage/flax2.pcx           \
-               groundpieces/foliage/midtree1.pcx        \
-               groundpieces/foliage/midtree2.pcx        \
-               groundpieces/foliage/oak1.pcx            \
-               groundpieces/foliage/smallbush.pcx       \
+               groundpieces/foliage/flax1.pcx            \
+               groundpieces/foliage/flax2.pcx            \
+               groundpieces/foliage/midtree1.pcx         \
+               groundpieces/foliage/midtree2.pcx         \
+               groundpieces/foliage/oak1.pcx             \
+               groundpieces/foliage/smallbush.pcx        \
                groundpieces/foliage/smallbush2.pcx       \
                groundpieces/foliage/smallbush3.pcx       \
-               groundpieces/foliage/talltree.pcx        \
-                                                        \
-               groundpieces/rock/rock1.pcx    \
-               groundpieces/rock/rock2.pcx    \
-               groundpieces/rock/rock3.pcx    \
-               groundpieces/rock/rock4.pcx    \
-               groundpieces/rock/rock5.pcx    \
-               groundpieces/rock/rock6.pcx    \
-                                              \
-               groundpieces/test/test1.pcx    \
-               groundpieces/test/test2.pcx     \
-               groundpieces/test/test3.pcx     \
-               groundpieces/test/test4.pcx     \
-               groundpieces/test/test5.pcx   \
-                    \
+               groundpieces/foliage/talltree.pcx         \
+               groundpieces/foliage/turfconcave.pcx      \
+               groundpieces/foliage/turfslopeleft20.pcx  \
+               groundpieces/foliage/turfsmallbump.pcx    \
+               groundpieces/foliage/turfflat.pcx         \
+               groundpieces/foliage/turfsloperight.pcx   \
+               groundpieces/foliage/turfsmallnook.pcx    \
+               groundpieces/foliage/turfslopeleft.pcx    \
+               groundpieces/foliage/turfsloperight20.pcx \
+               groundpieces/foliage/turftufty.pcx        \
+                                                         \
+               groundpieces/rock/rock1.pcx  \
+               groundpieces/rock/rock2.pcx  \
+               groundpieces/rock/rock3.pcx  \
+               groundpieces/rock/rock4.pcx  \
+               groundpieces/rock/rock5.pcx  \
+               groundpieces/rock/rock6.pcx  \
+                                            \
+               groundpieces/test/test1.pcx  \
+               groundpieces/test/test2.pcx  \
+               groundpieces/test/test3.pcx  \
+               groundpieces/test/test4.pcx  \
+               groundpieces/test/test5.pcx  \
+                                            \
                groundpieces/space/grid1.pcx \
                groundpieces/space/grid2.pcx \
                groundpieces/space/grid3.pcx \

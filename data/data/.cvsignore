@@ -3,3 +3,8 @@ Makefile
 pingus.dat
 global.dat
 menu.dat
+fonts.dat
+editor.dat
+textures.dat
+game.dat
+traps.dat

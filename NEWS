@@ -13,6 +13,7 @@ Release 0.3.1 (0?/Feb/1999)
 * Input handling is now event based
 * some new levels
 * some new gfx
+* the source should now be namespace clean
 
 
 Release 0.3.0 (24/Dec/1999)

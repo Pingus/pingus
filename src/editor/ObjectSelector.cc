@@ -1,4 +1,4 @@
-//  $Id: ObjectSelector.cc,v 1.4 2000/02/11 21:26:38 grumbel Exp $
+//  $Id: ObjectSelector.cc,v 1.5 2000/02/12 12:00:34 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -160,6 +160,9 @@ ObjectSelector::get_hotspot()
   data.y_pos = CL_Mouse::get_y() - y_offset;
   data.z_pos = 0;
   
+  if (last_object.empty())
+    last_object = "Hotspots/";
+
   str = read_string("Input Hotspot gfx:", last_object);
   
   last_object = str;
@@ -312,6 +315,9 @@ ObjectSelector::read_string(std::string description, std::string def_str)
 /*
 
 $Log: ObjectSelector.cc,v $
+Revision 1.5  2000/02/12 12:00:34  grumbel
+Misc changes
+
 Revision 1.4  2000/02/11 21:26:38  grumbel
 Misc namespace cleanups
 

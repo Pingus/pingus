@@ -1,7 +1,7 @@
 ground : (resource:global.dat)GroundPieces/Foliage/flax1 : 288 : 418;
 ground : (resource:global.dat)GroundPieces/Foliage/flax2 : 540 : 412;
 ground : (resource:global.dat)GroundPieces/Foliage/flax2 : 832 : 409;
-ground : (resource:global.dat)GroundPieces/Foliage/oak1 : 121 : 270;
+ground : (resource:global.dat)GroundPieces/Foliage/oak1 : 97 : 277;
 ground : (resource:global.dat)GroundPieces/Rock/rock1 : 125 : 478;
 ground : (resource:global.dat)GroundPieces/Rock/rock1 : 317 : 548;
 ground : (resource:global.dat)GroundPieces/Rock/rock1 : 490 : 558;
@@ -17,7 +17,7 @@ ground : (resource:global.dat)GroundPieces/Rock/rock4 : 930 : 435;
 ground : (resource:global.dat)GroundPieces/Foliage/smallbush : 194 : 475;
 ground : (resource:global.dat)GroundPieces/Rock/rock6 : 947 : 299;
 ground : (resource:global.dat)GroundPieces/Rock/rock5 : 898 : 449;
-ground : (resource:global.dat)GroundPieces/Foliage/talltree : 433 : 293;
+ground : (resource:global.dat)GroundPieces/Foliage/talltree : 480 : 302;
 ground : (resource:global.dat)GroundPieces/Foliage/smallbush : 459 : 491;
 ground : (resource:global.dat)GroundPieces/Foliage/smallbush : 538 : 530;
 ground : (resource:global.dat)GroundPieces/Foliage/smallbush : 938 : 450;

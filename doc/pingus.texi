@@ -71,6 +71,23 @@ The newest version of Pingus can always be found at:
 Set the screen resolution or the window size to GEOMETRY, where
 GEOMETRIE is WIDTHxHEIGHT. For example the option could look like this: 
 
+@item -V, --version
+
+Prints the current version of Pingus.
+
+@item -t, --speed SPEED
+
+Set the speed (0 = maximum speed)
+
+@item -v, --verbose VERBOSITY
+
+Sets the verboseness of Pingus to VERBOSITY. The default value is 1 for
+the moment.  
+
+@item --disable-intro
+
+Disables the intro scroller.
+
 @example
 $ pingus -g 800x600
 @end example
@@ -243,17 +260,26 @@ $ ls -cl /tmp/*pingus.plf | head -n 1
 @item Resources
 
 If you want to insert an object in the editor you need to now the exact
-resource name of it. If you have compiled Pingus yourself, just have a
-look at the file @file{global.scr}. If you are using a binary version of
-Pingus (RPM or Deb package) then search for a file @file{global.dat} and
-do the following:
+resource name of it, the tab-completion might help, but if you want a
+complete list of all resources, you might try the following.  If you
+have compiled Pingus yourself, just have a look at the file
+@file{global.scr}. If you are using a binary version of Pingus (RPM or
+Deb package) then search for a file @file{global.dat} and do the
+following:
 
 @example
 $ strings global.dat | egrep "^[A-Za-z0-9_/]+/[A-Za-z0-9_/]+$"
 @end example
 
-This will give you a complete list of all resources. Sorry about that
-hard way, but I'll fix that later.
+This will give you a complete list of all resources. 
+
+@item Editing Levels files by hand
+
+If you are playing with the editor you might ask yourself, how you can
+add this or that feature. The answer might be by some obscure keypress
+or probably you will have to edit the level files yourself. Some intro
+to the level format is given in this manual, the syntax should be easy
+to understand.
 
 @end itemize
 

@@ -1,33 +1,22 @@
 Needed GFX stuff:
 ~~~~~~~~~~~~~~~~~
-* groundpices (see level9 for some examples)
-* animated water
 * An animated entrance
 
-0.2.4
+0.3.x
 ~~~~~
-* Double klicks in FileSelector (rewrite)
 * Level Start Screen
 * Level End Screen
-* Smasher is smashing when pingus in the middle of it
-* entrance is stopping animation after opening
-* one way passing allowed for the entrance
-
-0.3.0
-~~~~~
+* Double klicks in FileSelector (rewrite)
 * ColMaps for hotspot objects (see the objects in the water in level9)
 * A better MessageBox
 * caching for level prviews
 * more ground gfx's
 * Better music support
-* All standard actions basically working actions
-* blendout fine tuning (is to fast at the moment)
 * colmap manipulation for liquid
 * right/left/random/left'n'right for entrances
 * Support for animated exits and entrances
 * More Backgrounds (tileable/fullscreen/resized)
 * Creating some sound effects
-* Some more levels
 * Integrading Demo recording/playing to the menu    
 * snow particles
 * A ground smashing animation
@@ -36,18 +25,13 @@ Needed GFX stuff:
 ~~~~~
 * Collisions between water/lava and particles
 * Parallax scrolling backgrounds
-* Some more music
-* A set of ground pieces for more flexible level creation
-* "Forces" - which push pingus and other mobile objects. eg a fan (a
-  la Lemmings 2), and from explosions
 * All standard actions fine tuned working actions
 
 1.0.0
 ~~~~~
 * Full Animated backgrounds, like Plasma and Fire effects
 * Dynamic loadable backgrounds, actions and traps
-* A nice level editor
-* All memory leaks fixed (AFAIK there a lots of them at the moment)
+* All memory leaks fixed
 
 Other Wishes:
 ~~~~~~~~~~~~~
