@@ -1,4 +1,4 @@
-//  $Id: TrapData.cc,v 1.13 2002/06/10 11:00:27 torangan Exp $
+//  $Id: TrapData.cc,v 1.14 2002/06/11 18:28:33 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -70,23 +70,23 @@ TrapData::write_xml(std::ofstream* xml)
 	 << std::endl;
 }
 
-boost::shared_ptr<WorldObj> 
+WorldObj* 
 TrapData::create_WorldObj ()
 {
   if (type == "smasher") {
-    return boost::shared_ptr<WorldObj>(new Smasher(*this));
+    return new Smasher(*this);
   } else if (type == "hammer") {
-    return boost::shared_ptr<WorldObj>(new Hammer(*this));
+    return new Hammer(*this);
   } else if (type == "fake_exit") {
-    return boost::shared_ptr<WorldObj>(new FakeExit(*this));
+    return new FakeExit(*this);
   } else if (type == "spike") {
-    return boost::shared_ptr<WorldObj>(new Spike(*this));
+    return new Spike(*this);
   } else if (type == "guillotine") {
-    return boost::shared_ptr<WorldObj>(new Guillotine(*this));
+    return new Guillotine(*this);
   } else if (type == "laser_exit") {
-    return boost::shared_ptr<WorldObj>(new LaserExit(*this));
+    return new LaserExit(*this);
   } else if (type == "bumper") {
-    return boost::shared_ptr<WorldObj>(new Bumper(*this));
+    return new Bumper(*this);
   }
   throw PingusError("Trap: `" + type + "' is unknown");
 }
@@ -100,3 +100,4 @@ TrapData::create_EditorObj ()
 }
 
 /* EOF */
+

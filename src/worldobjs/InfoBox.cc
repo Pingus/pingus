@@ -1,4 +1,4 @@
-//  $Id: InfoBox.cc,v 1.9 2002/06/10 13:03:36 torangan Exp $
+//  $Id: InfoBox.cc,v 1.10 2002/06/11 18:28:37 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,10 +35,10 @@ InfoBoxData::~InfoBoxData ()
 {
 }
 
-boost::shared_ptr<WorldObj> 
+WorldObj* 
 InfoBoxData::create_WorldObj()
 {
-  return boost::shared_ptr<WorldObj> (new InfoBox (*this));
+  return new InfoBox (*this);
 }
 
 EditorObjLst

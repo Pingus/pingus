@@ -1,4 +1,4 @@
-//  $Id: SwitchDoor.cc,v 1.32 2002/06/10 13:03:36 torangan Exp $
+//  $Id: SwitchDoor.cc,v 1.33 2002/06/11 18:28:37 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -108,10 +108,10 @@ SwitchDoorData::write_xml(std::ofstream* xml)
 }
 
 /** Create an WorldObj from the given data object */
-boost::shared_ptr<WorldObj> 
+WorldObj* 
 SwitchDoorData::create_WorldObj ()
 {
-  return boost::shared_ptr<WorldObj> (new SwitchDoor (*this));
+  return new SwitchDoor (*this);
 }
 
 /** Create an EditorObj from the given data object */

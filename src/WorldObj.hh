@@ -1,4 +1,4 @@
-//  $Id: WorldObj.hh,v 1.23 2002/06/08 16:08:16 grumbel Exp $
+//  $Id: WorldObj.hh,v 1.24 2002/06/11 18:28:35 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,7 +42,7 @@ public:
   static World* get_world () { return world; }
 
 public:
-  /** Creates a new WorldObj */
+  /** Creates a new WorldObj*/
   WorldObj();
 
   /** Destroys a world object */
@@ -73,3 +73,4 @@ public:
 #endif
 
 /* EOF */
+

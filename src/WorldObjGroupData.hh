@@ -1,4 +1,4 @@
-//  $Id: WorldObjGroupData.hh,v 1.7 2002/06/10 15:01:23 torangan Exp $
+//  $Id: WorldObjGroupData.hh,v 1.8 2002/06/11 18:28:35 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,7 +39,7 @@ public:
   void write_xml (std::ofstream* xml);
 
   /** Create an WorldObj from the given data object */
-  boost::shared_ptr<WorldObj> create_WorldObj ();
+  WorldObj* create_WorldObj ();
 
   /** Create an EditorObj from the given data object */
   EditorObjLst create_EditorObj ();

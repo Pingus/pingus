@@ -1,4 +1,4 @@
-//  $Id: World.cc,v 1.75 2002/06/10 15:01:23 torangan Exp $
+//  $Id: World.cc,v 1.76 2002/06/11 18:28:34 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -44,7 +44,7 @@ using namespace std;
 using boost::shared_ptr;
 
 static 
-bool WorldObj_less (shared_ptr<WorldObj>& a, shared_ptr<WorldObj>& b) 
+bool WorldObj_less (WorldObj* a, WorldObj* b) 
 {
   return a->get_z_pos () < b->get_z_pos ();
 }
@@ -53,9 +53,9 @@ bool WorldObj_less (shared_ptr<WorldObj>& a, shared_ptr<WorldObj>& b)
 //FIXME: ingo: This is a workaround around the std::list::sort()
 //FIXME: problem under MSVC6. This is copy&paste from an usenet
 //FIXME: article, so it might work or not, never tested it.
-typedef shared_ptr<WorldObj>& CWorldObjPtr;
+typedef WorldObj* CWorldObjPtr;
 template<>
-bool std::greater<CWorldObjPtr>::operator()(shared_ptr<WorldObj>& a, shared_ptr<WorldObj>& b) const
+bool std::greater<CWorldObjPtr>::operator()(WorldObj* a, WorldObj* b) const
 {
   return WorldObj_less (a, b);
 } 
@@ -87,6 +87,10 @@ World::World(PLF* arg_plf)
 World::~World()
 {
   delete particle_holder;
+  
+  for (WorldObjIter it = world_obj.begin(); it != world_obj.end(); ++it) {
+    delete *it;
+  }
 }
 
 // Merge the different layers on the screen together
@@ -177,11 +181,10 @@ World::update(float delta)
 void
 World::init_map()
 {
-  // FIXME: Warning! Weird memory handling, could cause crash or memleak!11
   gfx_map = new PingusSpotMap(plf);
   colmap = gfx_map->get_colmap();
 
-  world_obj.push_back (boost::shared_ptr<WorldObj>(gfx_map));
+  world_obj.push_back (gfx_map);
 }
 
 void
@@ -201,13 +204,12 @@ World::init_worldobjs()
        i != worldobj_d.end ();
        i++)
     {
-      shared_ptr<WorldObj> obj = (*i)->create_WorldObj ();
-      if (obj.get ())
-	world_obj.push_back(obj);
+      WorldObj* obj = (*i)->create_WorldObj ();
+      if (obj)
+      	world_obj.push_back(obj);
     }
 
-  // FIXME: Weird memory handling, shared_ptr<> are evil!
-  world_obj.push_back(boost::shared_ptr<WorldObj>(pingus));
+  world_obj.push_back(pingus);
 
   // After all objects are in world_obj, sort them to there z_pos
 #ifdef WIN32
@@ -393,3 +395,4 @@ World::get_pingu (const CL_Vector& pos)
 }
 
 /* EOF */
+

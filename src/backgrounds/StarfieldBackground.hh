@@ -1,4 +1,4 @@
-//  $Id: StarfieldBackground.hh,v 1.17 2002/06/09 13:03:11 grumbel Exp $
+//  $Id: StarfieldBackground.hh,v 1.18 2002/06/11 18:28:37 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,7 +41,7 @@ public:
   void write_xml(std::ofstream* xml);
   static boost::shared_ptr<WorldObjData> create(xmlDocPtr doc, xmlNodePtr cur);
 
-  boost::shared_ptr<WorldObj> create_WorldObj();
+  WorldObj* create_WorldObj();
   EditorObjLst create_EditorObj();
 };
 
@@ -123,3 +123,4 @@ public:
 #endif
 
 /* EOF */
+

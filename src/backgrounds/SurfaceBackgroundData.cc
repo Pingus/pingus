@@ -1,4 +1,4 @@
-//  $Id: SurfaceBackgroundData.cc,v 1.20 2002/06/10 11:00:28 torangan Exp $
+//  $Id: SurfaceBackgroundData.cc,v 1.21 2002/06/11 18:28:37 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -118,10 +118,10 @@ SurfaceBackgroundData::SurfaceBackgroundData(xmlDocPtr doc, xmlNodePtr cur)
     }      
 }
 
-boost::shared_ptr<WorldObj> 
+WorldObj* 
 SurfaceBackgroundData::create_WorldObj()
 {
-  return boost::shared_ptr<WorldObj> (new SurfaceBackground (*this));
+  return new SurfaceBackground (*this);
 }
 
 EditorObjLst 
@@ -135,3 +135,4 @@ SurfaceBackgroundData::create_EditorObj()
 
 
 /* EOF */
+

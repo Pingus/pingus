@@ -1,4 +1,4 @@
-//  $Id: WorldObjGroupData.cc,v 1.6 2002/06/09 14:04:10 torangan Exp $
+//  $Id: WorldObjGroupData.cc,v 1.7 2002/06/11 18:28:35 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -49,11 +49,11 @@ WorldObjGroupData::write_xml (std::ofstream* xml)
 }
 
 /** Create an WorldObj from the given data object */
-boost::shared_ptr<WorldObj> 
+WorldObj* 
 WorldObjGroupData::create_WorldObj ()
 {
   std::cout << "WorldObjGroupData::create_WorldObj (): not implemented" << std::endl;
-  return boost::shared_ptr<WorldObj> ();
+  return NULL;
 }
 
 /** Create an EditorObj from the given data object */

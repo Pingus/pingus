@@ -1,4 +1,4 @@
-//  $Id: SolidColorBackground.cc,v 1.15 2002/06/10 11:00:28 torangan Exp $
+//  $Id: SolidColorBackground.cc,v 1.16 2002/06/11 18:28:37 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -51,10 +51,10 @@ SolidColorBackgroundData::SolidColorBackgroundData(xmlDocPtr doc, xmlNodePtr cur
     }
 }
 
-boost::shared_ptr<WorldObj> 
+WorldObj* 
 SolidColorBackgroundData::create_WorldObj()
 {
-  return boost::shared_ptr<WorldObj> (new SolidColorBackground (*this));
+  return new SolidColorBackground (*this);
 }
 
 EditorObjLst 
@@ -78,4 +78,5 @@ SolidColorBackground::draw_offset (int /*x_of*/, int /*y_of*/, float /*s*/)
 }
 
 /* EOF */
+
 

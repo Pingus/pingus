@@ -1,4 +1,4 @@
-//  $Id: WeatherGenerator.cc,v 1.7 2002/06/10 13:03:35 torangan Exp $
+//  $Id: WeatherGenerator.cc,v 1.8 2002/06/11 18:28:37 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,13 +23,13 @@
 #include "RainGenerator.hh"
 #include "../boost/smart_ptr.hpp"
 
-boost::shared_ptr<WorldObj>
+WorldObj*
 WeatherGenerator::create(WeatherData data)
 {
   if (data.type == "snow")
-    return boost::shared_ptr<WorldObj>(new SnowGenerator());
+    return new SnowGenerator();
   else if (data.type == "rain")
-    return boost::shared_ptr<WorldObj>(new RainGenerator());
+    return new RainGenerator();
   else
     {
       throw PingusError ("WeatherGenerator: Unknown type: " + data.type);
@@ -37,3 +37,4 @@ WeatherGenerator::create(WeatherData data)
 }
 
 /* EOF */
+

@@ -1,4 +1,4 @@
-//  $Id: StarfieldBackground.cc,v 1.23 2002/06/10 15:01:23 torangan Exp $
+//  $Id: StarfieldBackground.cc,v 1.24 2002/06/11 18:28:37 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -94,10 +94,10 @@ StarfieldBackgroundData::StarfieldBackgroundData (xmlDocPtr /*doc*/, xmlNodePtr 
     }
 }
 
-boost::shared_ptr<WorldObj> 
+WorldObj* 
 StarfieldBackgroundData::create_WorldObj()
 {
-  return boost::shared_ptr<WorldObj> (new StarfieldBackground (*this));
+  return new StarfieldBackground (*this);
 }
 
 EditorObjLst
@@ -223,3 +223,4 @@ StarfieldBackground::draw_offset(int x_of, int y_of, float /*s*/)
 }
 
 /* EOF */
+

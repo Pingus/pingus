@@ -1,4 +1,4 @@
-//  $Id: ConveyorBelt.cc,v 1.37 2002/06/10 15:01:24 torangan Exp $
+//  $Id: ConveyorBelt.cc,v 1.38 2002/06/11 18:28:37 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -74,10 +74,10 @@ ConveyorBeltData::ConveyorBeltData (xmlDocPtr doc, xmlNodePtr cur)
     }
 }
 
-boost::shared_ptr<WorldObj> 
+WorldObj* 
 ConveyorBeltData::create_WorldObj ()
 {
-  return boost::shared_ptr<WorldObj> (new ConveyorBelt (this));
+  return new ConveyorBelt (this);
 }
 
 std::list<boost::shared_ptr<EditorObj> > 

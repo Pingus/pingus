@@ -1,4 +1,4 @@
-//  $Id: ExitData.hh,v 1.10 2002/06/10 11:00:25 torangan Exp $
+//  $Id: ExitData.hh,v 1.11 2002/06/11 18:28:31 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -55,13 +55,14 @@ public:
 
   void write_xml(std::ofstream *);
   
-  boost::shared_ptr<WorldObj> create_WorldObj();
+  WorldObj* create_WorldObj();
   EditorObjLst create_EditorObj();
 };
 
 #endif
 
 /* EOF */
+
 
 
 

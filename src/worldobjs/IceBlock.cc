@@ -1,4 +1,4 @@
-//  $Id: IceBlock.cc,v 1.30 2002/06/10 13:03:36 torangan Exp $
+//  $Id: IceBlock.cc,v 1.31 2002/06/11 18:28:37 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -68,10 +68,10 @@ IceBlockData::IceBlockData (xmlDocPtr doc, xmlNodePtr cur)
     }
 }
 
-boost::shared_ptr<WorldObj> 
+WorldObj* 
 IceBlockData::create_WorldObj ()
 {
-  return boost::shared_ptr<WorldObj> (new IceBlock (*this));
+  return new IceBlock (*this);
 }
 
 std::list<boost::shared_ptr<EditorObj> > 

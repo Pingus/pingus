@@ -1,4 +1,4 @@
-//  $Id: ConveyorBelt.hh,v 1.22 2002/06/10 11:00:29 torangan Exp $
+//  $Id: ConveyorBelt.hh,v 1.23 2002/06/11 18:28:37 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -40,7 +40,7 @@ public:
   ///
 
   /** Create an WorldObj from the given data object */
-  boost::shared_ptr<WorldObj> create_WorldObj ();
+  WorldObj* create_WorldObj ();
 
   /** Create an EditorObj from the given data object */
   std::list<boost::shared_ptr<EditorObj> > create_EditorObj ();

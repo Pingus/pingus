@@ -1,4 +1,4 @@
-//  $Id: SwitchDoor.hh,v 1.23 2002/06/09 13:03:11 grumbel Exp $
+//  $Id: SwitchDoor.hh,v 1.24 2002/06/11 18:28:37 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -51,7 +51,7 @@ public:
   void write_xml(std::ofstream* xml);
   
   /** Create an WorldObj from the given data object */
-  boost::shared_ptr<WorldObj> create_WorldObj ();
+  WorldObj* create_WorldObj ();
 
   /** Create an EditorObj from the given data object */
   std::list<boost::shared_ptr<EditorObj> > create_EditorObj ();

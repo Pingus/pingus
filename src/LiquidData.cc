@@ -1,4 +1,4 @@
-//  $Id: LiquidData.cc,v 1.11 2002/06/10 15:01:23 torangan Exp $
+//  $Id: LiquidData.cc,v 1.12 2002/06/11 18:28:32 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -79,11 +79,11 @@ LiquidData::LiquidData (xmlDocPtr doc, xmlNodePtr cur)
     }
 }
 
-boost::shared_ptr<WorldObj> 
+WorldObj* 
 LiquidData::create_WorldObj ()
 {
   std::cout << "LiquidData::create_WorldObj ()" << std::endl;
-  return boost::shared_ptr<WorldObj>(new Liquid (*this));
+  return new Liquid (*this);
 }
 
 EditorObjLst
@@ -96,3 +96,4 @@ LiquidData::create_EditorObj ()
 }
 
 /* EOF */
+

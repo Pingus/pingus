@@ -1,4 +1,4 @@
-//  $Id: Teleporter.hh,v 1.30 2002/06/10 13:03:36 torangan Exp $
+//  $Id: Teleporter.hh,v 1.31 2002/06/11 18:28:37 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -48,7 +48,7 @@ public:
   void write_xml(std::ofstream* xml);
   
   /** Create an WorldObj from the given data object */
-  boost::shared_ptr<WorldObj> create_WorldObj ();
+  WorldObj* create_WorldObj ();
 
   /** Create an EditorObj from the given data object */
   std::list<boost::shared_ptr<EditorObj> > create_EditorObj ();

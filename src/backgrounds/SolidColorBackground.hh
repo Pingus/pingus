@@ -1,4 +1,4 @@
-//  $Id: SolidColorBackground.hh,v 1.19 2002/06/10 15:01:23 torangan Exp $
+//  $Id: SolidColorBackground.hh,v 1.20 2002/06/11 18:28:37 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,7 +46,7 @@ public:
       stream */
   virtual void write_xml(std::ofstream* xml);
 
-  boost::shared_ptr<WorldObj> create_WorldObj();
+  WorldObj* create_WorldObj();
   EditorObjLst create_EditorObj();
 };
 
@@ -112,3 +112,4 @@ public:
 #endif
 
 /* EOF */
+

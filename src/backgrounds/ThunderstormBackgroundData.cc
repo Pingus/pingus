@@ -1,4 +1,4 @@
-//  $Id: ThunderstormBackgroundData.cc,v 1.14 2002/06/10 15:01:23 torangan Exp $
+//  $Id: ThunderstormBackgroundData.cc,v 1.15 2002/06/11 18:28:37 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -47,10 +47,10 @@ ThunderstormBackgroundData::ThunderstormBackgroundData (xmlDocPtr doc, xmlNodePt
     }
 }
 
-boost::shared_ptr<WorldObj> 
+WorldObj* 
 ThunderstormBackgroundData::create_WorldObj()
 {
-  return boost::shared_ptr<WorldObj> (new ThunderstormBackground ());
+  return new ThunderstormBackground ();
 }
 
 EditorObjLst 
@@ -62,3 +62,4 @@ ThunderstormBackgroundData::create_EditorObj()
 }
 
 /* EOF */
+
