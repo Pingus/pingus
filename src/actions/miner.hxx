@@ -1,4 +1,4 @@
-//  $Id: miner.hxx,v 1.11 2002/10/13 16:40:01 grumbel Exp $
+//  $Id: miner.hxx,v 1.12 2002/10/22 00:07:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,6 +32,13 @@ private:
   CL_Surface miner_radius_gfx;
   Sprite sprite;
   int slow_count;
+
+  /** Width of the miner_radius surface */
+  unsigned int miner_radius_width;
+
+  /** Width of the miner_radius_gfx surface */
+  unsigned int miner_radius_gfx_width;
+
 public:
   Miner (Pingu* p);
   virtual ~Miner () {}

@@ -1,4 +1,4 @@
-// $Id: miner.cxx,v 1.16 2002/10/13 20:25:00 torangan Exp $
+// $Id: miner.cxx,v 1.17 2002/10/22 00:07:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,6 +36,9 @@ Miner::Miner (Pingu* p)
     slow_count(0)
 {
   sprite.set_align_center_bottom();
+
+  miner_radius_width = miner_radius.get_width();
+  miner_radius_gfx_width = miner_radius_gfx.get_width();
 }
 
 void
@@ -55,11 +58,11 @@ Miner::update ()
       if (!(slow_count % 3))
 	{
 	  WorldObj::get_world()->get_colmap()->remove(miner_radius.get_provider(), 
-						      static_cast<int>(pingu->get_x() - 16 + pingu->direction), 
-						      static_cast<int>(pingu->get_y() - 31));
+						      static_cast<int>(pingu->get_x() - (miner_radius_width / 2) + pingu->direction), 
+						      static_cast<int>(pingu->get_y() - miner_radius_width + 1) );
 	  WorldObj::get_world()->get_gfx_map()->remove(miner_radius_gfx.get_provider(), 
-						       static_cast<int>(pingu->get_x() - 16 + pingu->direction),
-						       static_cast<int>(pingu->get_y() - 31));
+						       static_cast<int>(pingu->get_x() - (miner_radius_gfx_width / 2) + pingu->direction),
+						       static_cast<int>(pingu->get_y() - miner_radius_gfx_width + 1) );
 	}
 
       pingu->set_pos(pingu->get_x() + pingu->direction, pingu->get_y() + 1);
@@ -68,22 +71,22 @@ Miner::update ()
   if (rel_getpixel(0, -1) == Groundtype::GP_NOTHING)
     {
       WorldObj::get_world()->get_colmap()->remove(miner_radius, 
-					          static_cast<int>(pingu->get_x() - 16 + pingu->direction),
-					          static_cast<int>(pingu->get_y () - 29));
+						  static_cast<int>(pingu->get_x() - (miner_radius_width / 2) + pingu->direction), 
+						  static_cast<int>(pingu->get_y() - miner_radius_width + 3) );
       WorldObj::get_world()->get_gfx_map()->remove(miner_radius_gfx,
-						   static_cast<int>(pingu->get_x() - 16 + pingu->direction),
-						   static_cast<int>(pingu->get_y() - 29));
+						   static_cast<int>(pingu->get_x() - (miner_radius_width / 2) + pingu->direction), 
+						   static_cast<int>(pingu->get_y() - miner_radius_width + 3) );
       pingu->set_action(Actions::Walker);
     }
   else if (rel_getpixel(0, -1) == Groundtype::GP_SOLID)
     {
       PingusSound::play_sound("sounds/chink.wav");
       WorldObj::get_world()->get_colmap ()->remove(miner_radius,
-	                                           static_cast<int>(pingu->get_x() - 16 + pingu->direction),
-					           static_cast<int>(pingu->get_y() - 31));
+						   static_cast<int>(pingu->get_x() - (miner_radius_width / 2) + pingu->direction), 
+						   static_cast<int>(pingu->get_y() - miner_radius_width + 1) );
       WorldObj::get_world()->get_gfx_map()->remove(miner_radius_gfx,
-	                                           static_cast<int>(pingu->get_x() - 16 + pingu->direction),
-						   static_cast<int>(pingu->get_y() - 31));
+						   static_cast<int>(pingu->get_x() - (miner_radius_gfx_width / 2) + pingu->direction),
+						   static_cast<int>(pingu->get_y() - miner_radius_gfx_width + 1) );
       pingu->set_action(Actions::Walker);
     }
 }
