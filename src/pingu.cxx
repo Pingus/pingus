@@ -1,4 +1,4 @@
-//  $Id: pingu.cxx,v 1.13 2002/06/26 16:49:33 grumbel Exp $
+//  $Id: pingu.cxx,v 1.14 2002/06/26 17:43:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -54,7 +54,7 @@ Pingu::Pingu(const CL_Vector& arg_pos, int owner)
   velocity.x = 0;
   velocity.y = 0;
 
-  set_paction("faller");
+  set_action("faller");
 }
 
 Pingu::~Pingu()
@@ -114,7 +114,7 @@ Pingu::set_pos(const CL_Vector& arg_pos)
 // When you select a function on the button panel and click on a
 // pingu, this action will be called with the action name
 bool
-Pingu::set_action(PinguAction* act)
+Pingu::request_set_action(PinguAction* act)
 {
   assert(act);
 
@@ -183,21 +183,21 @@ Pingu::set_action(PinguAction* act)
     }
 }
 
-void 
-Pingu::set_action (const std::string& action_name)
+bool 
+Pingu::request_set_action (const std::string& action_name)
+{
+  return request_set_action (PinguActionFactory::instance ()->create (action_name));
+}
+
+void
+Pingu::set_action(const std::string& action_name) 
 {
   set_action (PinguActionFactory::instance ()->create (action_name));
 }
 
-void
-Pingu::set_paction(const std::string& action_name) 
-{
-  set_paction (PinguActionFactory::instance ()->create (action_name));
-}
-
 // Sets an action without any checking
 void
-Pingu::set_paction(PinguAction* act) 
+Pingu::set_action(PinguAction* act) 
 {
   assert(act);
   action = act;
@@ -258,7 +258,7 @@ Pingu::update_persistent(float /*delta*/)
 	  if (persist[i]->get_type() == (ActionType)FALL) 
 	    {
 	      // FIXME: Use action slots instead of the persistend vector
-              set_paction("floater");
+              set_action("floater");
 	    }
 	}
     }
@@ -291,7 +291,7 @@ Pingu::update(float delta)
     {
       std::cout << "COUNTDOWNACTIAN SET: " << countdown_action->get_name () << std::endl;
 
-      set_paction(countdown_action);
+      set_action(countdown_action);
       // Reset the countdown action handlers 
       countdown_action = 0;
       action_time = -1;

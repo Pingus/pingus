@@ -1,4 +1,4 @@
-//  $Id: faller.cxx,v 1.8 2002/06/25 18:15:18 grumbel Exp $
+//  $Id: faller.cxx,v 1.9 2002/06/26 17:43:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -58,7 +58,7 @@ Faller::update (float delta)
   // FIXME: deadly_velocity or something like that
   for (unsigned int i=0; i < pingu->persist.size(); ++i) {
     if (pingu->persist[i]->get_name() == "Floater") {
-      pingu->set_paction("floater");
+      pingu->set_action("floater");
       return;
     }
   }
@@ -66,7 +66,7 @@ Faller::update (float delta)
   // Pingu stands on ground
   if (rel_getpixel(0, -1) !=  GroundpieceData::GP_NOTHING)
     { 
-      pingu->set_paction ("walker");
+      pingu->set_action ("walker");
       return;
     }
 
@@ -126,7 +126,7 @@ Faller::update (float delta)
     {
       if (rel_getpixel(0, 0) == GroundpieceData::GP_WATER)
 	{
-	  pingu->set_paction("drown");
+	  pingu->set_action("drown");
 	  return;
 	}
       else
@@ -134,7 +134,7 @@ Faller::update (float delta)
 	  // Did we stop too fast?
 	  if (fabs(pingu->velocity.y) > deadly_velocity) 
 	    {
-	      pingu->set_paction("splashed");
+	      pingu->set_action("splashed");
 	      return;
 	    }
 	  else if (fabs(pingu->velocity.x) > deadly_velocity)

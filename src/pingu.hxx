@@ -1,4 +1,4 @@
-//  $Id: pingu.hxx,v 1.5 2002/06/25 18:15:18 grumbel Exp $
+//  $Id: pingu.hxx,v 1.6 2002/06/26 17:43:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -139,16 +139,17 @@ public:
   // Set the pingu in the gives direction
   void set_direction(Direction d);
 
-  /** Set an action if it is appliable to the current pingu, if its a
-      persistent action, it will be hold back for later execution */
-  bool set_action (PinguAction*);
-  void set_action (const std::string& action_name);
+  /** Request an action to be set to the pingu, if its a persistent
+      action, it will be hold back for later execution, same with a
+      timed action, normal action will be applied if the current
+      action allows that. */
+  bool request_set_action (PinguAction*);
+  bool request_set_action (const std::string& action_name);
 
   /** Set an action without any checking, the action will take
-      instantly control */
-  void  set_paction (PinguAction*);
-
-  void  set_paction (const std::string& action_name);
+      instantly control. */
+  void  set_action (PinguAction*);
+  void  set_action (const std::string& action_name);
 
   ///
   PinguAction* get_action();

@@ -1,4 +1,4 @@
-//  $Id: smasher.cxx,v 1.3 2002/06/19 15:19:26 torangan Exp $
+//  $Id: smasher.cxx,v 1.4 2002/06/26 17:43:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -70,7 +70,7 @@ Smasher::update(float /*delta*/)
 		  if ((*pingu)->is_inside (int(pos.x + 30), int(pos.y + 90),
 					   int(pos.x + 250), int(pos.y + 190)))
 		    {
-		      (*pingu)->set_action (PinguActionFactory::instance ()->create ("splashed"));
+		      (*pingu)->set_action ("splashed");
 		    }
 		}
 	    }

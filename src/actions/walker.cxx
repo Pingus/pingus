@@ -1,4 +1,4 @@
-//  $Id: walker.cxx,v 1.7 2002/06/25 18:15:18 grumbel Exp $
+//  $Id: walker.cxx,v 1.8 2002/06/26 17:43:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -65,7 +65,7 @@ Walker::update(float delta)
 
   if (rel_getpixel(0, -1) ==  GroundpieceData::GP_WATER)
     {
-      pingu->set_paction ("drown");
+      pingu->set_action ("drown");
       return;
     }
 
@@ -92,7 +92,7 @@ Walker::update(float delta)
 	}
       else
 	{
-	  pingu->set_paction ("faller");
+	  pingu->set_action ("faller");
 	  return;
 	}
     }
@@ -153,7 +153,7 @@ Walker::update(float delta)
 		      // use capitalised names everywhere. 
   
 		      // Do we set  any other action here?
-		      pingu->set_paction("climber");
+		      pingu->set_action("climber");
 		      return;
 		    }
 		}
