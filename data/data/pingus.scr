@@ -27,6 +27,7 @@ section Pingus
 	exit0       = ../images/pingus/exit.png (type=surface, x=0, y=0, width=32, height=32, array=9x2);
 	drownfall0  = ../images/pingus/drownfall.png (type=surface, x=0, y=0, width=32, height=32, array=15x2);
 	drownwalk0  = ../images/pingus/drownwalk.png (type=surface, x=0, y=0, width=32, height=32, array=15x2);
+	waiter      = ../images/pingus/waiter.png (type=surface, x=0, y=0, width=32, height=32, array=6x1);
 
 	slider0      = ../images/pingus/slider.png     (type=surface, x=0, y=0, width=32, height=15, array=1x2);
 
