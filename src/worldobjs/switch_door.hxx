@@ -1,4 +1,4 @@
-//  $Id: switch_door.hxx,v 1.3 2002/06/24 22:53:00 grumbel Exp $
+//  $Id: switch_door.hxx,v 1.4 2002/06/25 12:20:34 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -47,7 +47,7 @@ public:
 
   /** Write the content of this object formatted as xml to the given
       stream */
-  void write_xml(std::ofstream* xml);
+  void write_xml(std::ostream& xml);
   
   /** Create an WorldObj from the given data object */
   WorldObj* create_WorldObj ();
@@ -98,7 +98,7 @@ public:
   
   boost::shared_ptr<EditorObj> duplicate();
 
-  void write_xml (std::ofstream* /*xml*/) {}
+  void write_xml (std::ostream& /*xml*/) {}
   std::string status_line();
 };
 
@@ -126,13 +126,13 @@ public:
 
   void make_larger ();
   void make_smaller ();
-  void write_xml (std::ofstream* xml) { SwitchDoorData::write_xml (xml); }
+  void write_xml (std::ostream& xml) { SwitchDoorData::write_xml (xml); }
   CL_Vector get_upper_left_corner() { return door_pos; }
 
   void set_position_offset(const CL_Vector &);
 
   void draw (EditorView * view);
-  void save_xml (std::ofstream* xml);
+  void save_xml (std::ostream& xml);
   std::string status_line();
 };
 

@@ -1,4 +1,4 @@
-//  $Id: conveyor_belt.hxx,v 1.2 2002/06/24 22:52:59 grumbel Exp $
+//  $Id: conveyor_belt.hxx,v 1.3 2002/06/25 12:20:34 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,7 +36,7 @@ public:
 
   /** Write the content of this object formatted as xml to the given
       stream */
-  void write_xml(std::ofstream* xml);
+  void write_xml(std::ostream& xml);
   ///
 
   /** Create an WorldObj from the given data object */
@@ -95,7 +95,7 @@ public:
 
   CL_Vector get_upper_left_corner() { return pos; }
 
-  void write_xml (std::ofstream* xml) { ConveyorBeltData::write_xml (xml); }
+  void write_xml (std::ostream& xml) { ConveyorBeltData::write_xml (xml); }
   std::string status_line();
 
   void make_larger ();

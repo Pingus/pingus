@@ -1,4 +1,4 @@
-//  $Id: worldobj_group_data.cxx,v 1.3 2002/06/24 18:53:14 grumbel Exp $
+//  $Id: worldobj_group_data.cxx,v 1.4 2002/06/25 12:20:31 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -103,12 +103,12 @@ WorldObjGroupData::add (WorldObjData* data)
 }
 
 void 
-WorldObjGroupData::write_xml (std::ofstream* xml)
+WorldObjGroupData::write_xml (std::ostream& xml)
 {
-  (*xml) << "<group>\n";
+  xml << "<group>\n";
   for (ObjsIter i = objs.begin (); i != objs.end (); ++i)
     (*i)->write_xml (xml);
-  (*xml) << "</group>\n\n";
+  xml << "</group>\n\n";
 }
 
 /** Create an WorldObj from the given data object */

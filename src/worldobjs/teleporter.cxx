@@ -1,4 +1,4 @@
-//  $Id: teleporter.cxx,v 1.1 2002/06/12 19:03:10 grumbel Exp $
+//  $Id: teleporter.cxx,v 1.2 2002/06/25 12:20:34 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,14 +33,14 @@ TeleporterData::TeleporterData (const TeleporterData& data) : WorldObjData(data)
 }
 
 void 
-TeleporterData::write_xml(std::ofstream* xml)
+TeleporterData::write_xml(std::ostream& xml)
 {
-  (*xml) << "  <worldobj type=\"teleporter\">";
+  xml << "  <worldobj type=\"teleporter\">";
   XMLhelper::write_vector_xml (xml, pos);
-  (*xml) << "    <target>" << std::endl;
+  xml << "    <target>" << std::endl;
   XMLhelper::write_vector_xml (xml, target_pos);
-  (*xml) << "    </target>" << std::endl;
-  (*xml) << "  </worldobj>" << std::endl;
+  xml << "    </target>" << std::endl;
+  xml << "  </worldobj>" << std::endl;
 }
 
 TeleporterData::TeleporterData (xmlDocPtr doc, xmlNodePtr cur)
@@ -211,7 +211,7 @@ EditorTeleporterObj::draw (EditorView * view)
 }
 
 void
-EditorTeleporterObj::save_xml (std::ofstream* xml)
+EditorTeleporterObj::save_xml (std::ostream& xml)
 {
   // Before we write down the xml stuff, we need to get the positions
   // of the objects

@@ -1,4 +1,4 @@
-//  $Id: trap_data.cxx,v 1.1 2002/06/12 19:09:38 grumbel Exp $
+//  $Id: trap_data.cxx,v 1.2 2002/06/25 12:20:31 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -62,13 +62,13 @@ TrapData::TrapData (xmlDocPtr doc, xmlNodePtr cur)
 }
 
 void
-TrapData::write_xml(std::ofstream* xml)
+TrapData::write_xml(std::ostream& xml)
 {
-    (*xml) << "<trap>\n"
-	 << "  <type>" << type << "</type>\n";
+  xml << "<trap>\n"
+      << "  <type>" << type << "</type>\n";
   XMLhelper::write_vector_xml(xml, pos);
-  (*xml) << "</trap>\n"
-	 << std::endl;
+  xml << "</trap>\n"
+      << std::endl;
 }
 
 WorldObj* 

@@ -1,4 +1,4 @@
-//  $Id: solidcolor_background.cxx,v 1.1 2002/06/12 19:02:30 grumbel Exp $
+//  $Id: solidcolor_background.cxx,v 1.2 2002/06/25 12:20:33 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,9 +23,9 @@
 #include "../xml_helper.hxx"
 
 void
-SolidColorBackgroundData:: write_xml(std::ofstream* xml)
+SolidColorBackgroundData:: write_xml(std::ostream& xml)
 {
-  (*xml) << "<worldobj type=\"solidcolor-background\"></worldobj>" << std::endl;
+  xml << "<worldobj type=\"solidcolor-background\"></worldobj>" << std::endl;
 }
 
 SolidColorBackgroundData::SolidColorBackgroundData(xmlDocPtr doc, xmlNodePtr cur)

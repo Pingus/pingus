@@ -1,4 +1,4 @@
-//  $Id: xml_helper.hxx,v 1.4 2002/06/24 22:52:57 grumbel Exp $
+//  $Id: xml_helper.hxx,v 1.5 2002/06/25 12:20:31 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -76,9 +76,9 @@ public:
   /// A set of functions to write data down to an xml file
   //@{
   /** Writes the given res_desc to the ofstream */
-  static void write_desc_xml(std::ofstream* xml, ResDescriptor desc);
+  static void write_desc_xml(std::ostream& xml, ResDescriptor desc);
   /** Write a CL_Vector to an xml stream */
-  static void write_vector_xml(std::ofstream* xml, const CL_Vector& pos);
+  static void write_vector_xml(std::ostream& xml, const CL_Vector& pos);
   //@}
 };
 

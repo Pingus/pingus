@@ -1,4 +1,4 @@
-//  $Id: surface_background_data.cxx,v 1.1 2002/06/12 19:02:30 grumbel Exp $
+//  $Id: surface_background_data.cxx,v 1.2 2002/06/25 12:20:33 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,26 +39,26 @@ SurfaceBackgroundData::~SurfaceBackgroundData()
 }
 
 void
-SurfaceBackgroundData::write_xml(std::ofstream* xml)
+SurfaceBackgroundData::write_xml(std::ostream& xml)
 {
-  (*xml) << "<background type=\"surface\">\n";
+  xml << "<background type=\"surface\">\n";
   XMLhelper::write_desc_xml(xml, desc);
   
-  (*xml)  << "  <color>\n"
-	  << "    <red>"   << color.red   << "</red>\n"
-	  << "    <green>" << color.green << "</green>\n"
-	  << "    <blue>"  << color.blue << "</blue>\n"
-	  << "    <alpha>" << color.alpha   << "</alpha>\n"
-	  << "  </color>\n"
-	  << "  <scroll-x>"  << scroll_x << "</scroll-x>\n"
-	  << "  <scroll-y>"  << scroll_y << "</scroll-y>\n"
-	  << "  <para-x>"    << para_x << "</para-x>\n"
-	  << "  <para-y>"    << para_y << "</para-y>\n"
-	  << "  <stretch-x>" << stretch_x << "</stretch-x>\n"
-	  << "  <stretch-y>" << stretch_y << "</stretch-y>\n";
+  xml << "  <color>\n"
+      << "    <red>"   << color.red   << "</red>\n"
+      << "    <green>" << color.green << "</green>\n"
+      << "    <blue>"  << color.blue << "</blue>\n"
+      << "    <alpha>" << color.alpha   << "</alpha>\n"
+      << "  </color>\n"
+      << "  <scroll-x>"  << scroll_x << "</scroll-x>\n"
+      << "  <scroll-y>"  << scroll_y << "</scroll-y>\n"
+      << "  <para-x>"    << para_x << "</para-x>\n"
+      << "  <para-y>"    << para_y << "</para-y>\n"
+      << "  <stretch-x>" << stretch_x << "</stretch-x>\n"
+      << "  <stretch-y>" << stretch_y << "</stretch-y>\n";
   XMLhelper::write_vector_xml(xml, pos);
-  (*xml)  << "</background>\n"
-	  << std::endl;
+  xml << "</background>\n"
+      << std::endl;
 }
 
 SurfaceBackgroundData::SurfaceBackgroundData(xmlDocPtr doc, xmlNodePtr cur)

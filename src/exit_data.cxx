@@ -1,4 +1,4 @@
-//  $Id: exit_data.cxx,v 1.1 2002/06/12 19:09:37 grumbel Exp $
+//  $Id: exit_data.cxx,v 1.2 2002/06/25 12:20:31 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -70,9 +70,9 @@ ExitData::ExitData (xmlDocPtr doc, xmlNodePtr cur)
 }
 
 void 
-ExitData::write_xml(std::ofstream* xml)
+ExitData::write_xml(std::ostream& xml)
 {
-  (*xml) << "<exit use-old-pos-handling=\"" << use_old_pos_handling << "\">\n";
+  xml << "<exit use-old-pos-handling=\"" << use_old_pos_handling << "\">\n";
 
   // FIXME: Repair me
   //pos.x += surf.get_width ()/2;
@@ -80,9 +80,9 @@ ExitData::write_xml(std::ofstream* xml)
   XMLhelper::write_vector_xml(xml, pos);
   
   XMLhelper::write_desc_xml(xml, desc);
-  (*xml) << "  <owner-id>" << owner_id << "</owner-id>"
-	 << "</exit>\n"
-	 << std::endl;
+  xml << "  <owner-id>" << owner_id << "</owner-id>"
+      << "</exit>\n"
+      << std::endl;
 }
 
 WorldObj* 

@@ -1,4 +1,4 @@
-//  $Id: plfobj.hxx,v 1.2 2002/06/24 22:52:58 grumbel Exp $
+//  $Id: plfobj.hxx,v 1.3 2002/06/25 12:20:33 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,7 +38,7 @@ public:
   EntranceObj(const EntranceData&);
 
   boost::shared_ptr<EditorObj> duplicate();
-  void write_xml(std::ofstream* xml) { EntranceData::write_xml (xml); }
+  void write_xml(std::ostream& xml) { EntranceData::write_xml (xml); }
   std::string status_line();
 };
 
@@ -51,7 +51,7 @@ public:
   ExitObj(const ExitData&);
 
   boost::shared_ptr<EditorObj> duplicate();
-  void write_xml(std::ofstream* xml) { ExitData::write_xml (xml); }
+  void write_xml(std::ostream& xml) { ExitData::write_xml (xml); }
   std::string  status_line();
 };
 
@@ -66,7 +66,7 @@ public:
   TrapObj(const TrapData&);
 
   boost::shared_ptr<EditorObj> duplicate();
-  void write_xml(std::ofstream* xml) { TrapData::write_xml (xml); }
+  void write_xml(std::ostream& xml) { TrapData::write_xml (xml); }
   void draw (EditorView * view);
   std::string  status_line();
 };
@@ -82,8 +82,8 @@ public:
   boost::shared_ptr<EditorObj> duplicate();
   void draw (EditorView * view);
   void draw_mark (EditorView * view);
-  void save(std::ofstream* plf, std::ofstream* psm);
-  void write_xml(std::ofstream* xml) { LiquidData::write_xml (xml); }
+  void save(std::ostream& plf, std::ofstream* psm);
+  void write_xml(std::ostream& xml) { LiquidData::write_xml (xml); }
   std::string  status_line();
 
   int get_width () { return  sprite.get_width () * width; }

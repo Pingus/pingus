@@ -1,4 +1,4 @@
-//  $Id: thunderstorm_background_data.hxx,v 1.3 2002/06/24 22:52:58 grumbel Exp $
+//  $Id: thunderstorm_background_data.hxx,v 1.4 2002/06/25 12:20:33 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,7 +38,7 @@ public:
 
   /** Writte the content of this object formated as xml to the given
       stream */
-  virtual void write_xml(std::ofstream* xml);
+  virtual void write_xml(std::ostream& xml);
   
   WorldObj* create_WorldObj();
   EditorObjLst create_EditorObj();
@@ -56,7 +56,7 @@ public:
     pos = CL_Vector(-128.0f, 0.0f);
   }
 
-  void write_xml(std::ofstream* xml) { this->ThunderstormBackgroundData::write_xml (xml); }
+  void write_xml(std::ostream& xml) { this->ThunderstormBackgroundData::write_xml (xml); }
   
   boost::shared_ptr<EditorObj> duplicate() {
     return boost::shared_ptr<EditorObj>

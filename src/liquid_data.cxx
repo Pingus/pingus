@@ -1,4 +1,4 @@
-//  $Id: liquid_data.cxx,v 1.2 2002/06/13 14:25:12 torangan Exp $
+//  $Id: liquid_data.cxx,v 1.3 2002/06/25 12:20:31 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,15 +25,15 @@
 #include "boost/smart_ptr.hpp"
 
 void 
-LiquidData::write_xml(std::ofstream* xml)
+LiquidData::write_xml(std::ostream& xml)
 {
-  std::cout << "LiquidData::write_xml(std::ofstream* xml)" << std::endl;
-  (*xml) << "<liquid use-old-width-handling=\"" << int(old_width_handling) << "\">\n";
+  std::cout << "LiquidData::write_xml(std::ostream& xml)" << std::endl;
+  xml << "<liquid use-old-width-handling=\"" << int(old_width_handling) << "\">\n";
   XMLhelper::write_desc_xml(xml, desc);
   XMLhelper::write_vector_xml(xml, pos);
-  (*xml) << "  <width>" << width << "</width>\n"
-	 << "  <speed>" << speed << "</speed>\n"
-	 << "</liquid>\n" << std::endl;
+  xml << "  <width>" << width << "</width>\n"
+      << "  <speed>" << speed << "</speed>\n"
+      << "</liquid>\n" << std::endl;
 }
 
 LiquidData::LiquidData (xmlDocPtr doc, xmlNodePtr cur)

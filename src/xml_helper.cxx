@@ -1,4 +1,4 @@
-//  $Id: xml_helper.cxx,v 1.3 2002/06/21 07:45:35 grumbel Exp $
+//  $Id: xml_helper.cxx,v 1.4 2002/06/25 12:20:31 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -266,19 +266,19 @@ XMLhelper::parse_string(xmlDocPtr doc, xmlNodePtr cur)
 
 
 void
-XMLhelper::write_desc_xml(std::ofstream* xml, ResDescriptor desc)
+XMLhelper::write_desc_xml(std::ostream& xml, ResDescriptor desc)
 {
-  (*xml) << "  <surface><resource type=\"";
+  xml << "  <surface><resource type=\"";
   switch (desc.type)
     {
     case ResDescriptor::RD_FILE:
-      (*xml) << "file\">\n"
+      xml << "file\">\n"
 	     << "    <resource-file>"
 	     << desc.res_name
 	     << "</resource-file>\n";
       break;
     case ResDescriptor::RD_RESOURCE:
-      (*xml) << "datafile\">\n"
+      xml << "datafile\">\n"
 	     << "    <resource-datafile>"
 	     << desc.datafile
 	     << "</resource-datafile>\n"
@@ -291,17 +291,17 @@ XMLhelper::write_desc_xml(std::ofstream* xml, ResDescriptor desc)
       break;
     }
   
-  (*xml) << "  </resource></surface>" << std::endl;
+  xml << "  </resource></surface>" << std::endl;
 }
 
 void 
-XMLhelper::write_vector_xml(std::ofstream* xml, const CL_Vector& pos)
+XMLhelper::write_vector_xml(std::ostream& xml, const CL_Vector& pos)
 {
-  (*xml) << "  <position>\n"
-	 << "    <x-pos>" << pos.x << "</x-pos>\n"
-	 << "    <y-pos>" << pos.y << "</y-pos>\n"
-	 << "    <z-pos>" << pos.z << "</z-pos>\n"
-	 << "  </position>\n";
+  xml << "  <position>\n"
+      << "    <x-pos>" << pos.x << "</x-pos>\n"
+      << "    <y-pos>" << pos.y << "</y-pos>\n"
+      << "    <z-pos>" << pos.z << "</z-pos>\n"
+      << "  </position>\n";
 }
 
 /* EOF */

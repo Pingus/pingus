@@ -1,4 +1,4 @@
-//  $Id: editor_event.cxx,v 1.7 2002/06/24 23:31:24 grumbel Exp $
+//  $Id: editor_event.cxx,v 1.8 2002/06/25 12:20:33 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -747,7 +747,7 @@ EditorEvent::editor_export_object_group_from_selection ()
   std::cout << "EditorEvent:editor_export_object_group_from_selection ()" << std::endl;
   EditorObjGroup group (editor->object_manager->current_objs);
   std::ofstream xml ("/tmp/metaobj.xml");
-  group.write_xml (&xml);
+  group.write_xml (xml);
 }
 
 void

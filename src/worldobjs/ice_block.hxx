@@ -1,4 +1,4 @@
-//  $Id: ice_block.hxx,v 1.2 2002/06/24 22:53:00 grumbel Exp $
+//  $Id: ice_block.hxx,v 1.3 2002/06/25 12:20:34 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -45,7 +45,7 @@ public:
 
   /** Write the content of this object formatted as xml to the given
       stream */
-  void write_xml(std::ofstream* xml);
+  void write_xml(std::ostream& xml);
   
   /** Create an WorldObj from the given data object */
   WorldObj* create_WorldObj ();
@@ -82,7 +82,7 @@ public:
   /** Create the object with resonable defaults */
   static std::list<boost::shared_ptr<EditorObj> > create (const CL_Vector& pos);
 
-  void write_xml(std::ofstream* xml) { IceBlockData::write_xml (xml); }
+  void write_xml(std::ostream& xml) { IceBlockData::write_xml (xml); }
   boost::shared_ptr<EditorObj> duplicate();
   std::string status_line();
 };

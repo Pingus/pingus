@@ -1,4 +1,4 @@
-//  $Id: conveyor_belt.cxx,v 1.2 2002/06/19 15:19:26 torangan Exp $
+//  $Id: conveyor_belt.cxx,v 1.3 2002/06/25 12:20:34 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,13 +35,13 @@ ConveyorBeltData::ConveyorBeltData () : width(5), speed(2)
 /** Writte the content of this object formated as xml to the given
     stream */
 void 
-ConveyorBeltData::write_xml(std::ofstream* xml)
+ConveyorBeltData::write_xml(std::ostream& xml)
 {
-  (*xml) << "  <worldobj type=\"conveyorbelt\">";
+  xml << "  <worldobj type=\"conveyorbelt\">";
   XMLhelper::write_vector_xml (xml, pos);
-  (*xml) << "    <width>" << width << "</width>\n"
-	 << "    <speed>" << speed << "</speed>\n"
-	 << "  </worldobj>\n" << std::endl;
+  xml << "    <width>" << width << "</width>\n"
+      << "    <speed>" << speed << "</speed>\n"
+      << "  </worldobj>\n" << std::endl;
 }
 
 ConveyorBeltData::ConveyorBeltData (xmlDocPtr doc, xmlNodePtr cur)

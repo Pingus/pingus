@@ -1,4 +1,4 @@
-//  $Id: entrance_data.cxx,v 1.1 2002/06/12 19:09:37 grumbel Exp $
+//  $Id: entrance_data.cxx,v 1.2 2002/06/25 12:20:31 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -81,7 +81,7 @@ EntranceData::EntranceData (xmlDocPtr doc, xmlNodePtr cur)
 }
 
 void 
-EntranceData::write_xml(std::ofstream *xml)
+EntranceData::write_xml(std::ostream& xml)
 {
   std::string dir_str;
   
@@ -99,14 +99,14 @@ EntranceData::write_xml(std::ofstream *xml)
       break;
     }
 
-  (*xml) << "<entrance>\n";
+  xml << "<entrance>\n";
   XMLhelper::write_vector_xml(xml, pos);
-  (*xml) << "  <type>" << type << "</type>\n"
-	 << "  <direction>" << dir_str << "</direction>\n"
-	 << "  <release-rate>" << release_rate << "</release-rate>\n"
-	 << "  <owner-id>" << owner_id << "</owner-id>\n"
-	 << "</entrance>\n"
-	 << std::endl;  
+  xml << "  <type>" << type << "</type>\n"
+      << "  <direction>" << dir_str << "</direction>\n"
+      << "  <release-rate>" << release_rate << "</release-rate>\n"
+      << "  <owner-id>" << owner_id << "</owner-id>\n"
+      << "</entrance>\n"
+      << std::endl;  
 }
 
 

@@ -1,4 +1,4 @@
-//  $Id: editorobj_group.hxx,v 1.5 2002/06/24 22:52:58 grumbel Exp $
+//  $Id: editorobj_group.hxx,v 1.6 2002/06/25 12:20:33 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -52,7 +52,7 @@ public:
   bool is_over(const CL_Vector &);
   bool is_in_rect(const CL_Rect &);
     
-  void   write_xml(std::ofstream* xml);
+  void   write_xml(std::ostream& xml);
   boost::shared_ptr<EditorObj> duplicate();
 
   unsigned int size () { return objs.size (); }

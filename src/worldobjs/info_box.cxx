@@ -1,4 +1,4 @@
-//  $Id: info_box.cxx,v 1.1 2002/06/12 19:03:10 grumbel Exp $
+//  $Id: info_box.cxx,v 1.2 2002/06/25 12:20:34 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -76,13 +76,12 @@ InfoBoxData::InfoBoxData (xmlDocPtr doc, xmlNodePtr cur)
 }
 
 void 
-InfoBoxData::write_xml(std::ofstream* xml)
+InfoBoxData::write_xml(std::ostream& xml)
 {
-  (*xml) << "  <worldobj type=\"infobox\">\n";
+  xml << "  <worldobj type=\"infobox\">\n";
   XMLhelper::write_vector_xml (xml, pos);
-  
-  (*xml) << "   <info-text>" << info_text << "</info-text>\n" 
-	 << "  </worldobj>\n" << std::endl;
+  xml << "   <info-text>" << info_text << "</info-text>\n" 
+      << "  </worldobj>\n" << std::endl;
 }
 
 InfoBox::InfoBox (const InfoBoxData& data)

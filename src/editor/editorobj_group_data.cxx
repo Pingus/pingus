@@ -1,4 +1,4 @@
-//  $Id: editorobj_group_data.cxx,v 1.1 2002/06/12 19:11:31 grumbel Exp $
+//  $Id: editorobj_group_data.cxx,v 1.2 2002/06/25 12:20:33 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,7 @@
 #include "editorobj_group_data.hxx"
 
 void 
-EditorObjGroupData::write_xml(std::ofstream* xml)
+EditorObjGroupData::write_xml(std::ostream& xml)
 {
   (*xml) << "<worldobj type=\"group\">\n" 
 	 << "</worldobj type=\"group\">\n"

@@ -1,4 +1,4 @@
-//  $Id: editorobj_group.cxx,v 1.2 2002/06/24 18:53:14 grumbel Exp $
+//  $Id: editorobj_group.cxx,v 1.3 2002/06/25 12:20:33 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -121,9 +121,9 @@ EditorObjGroup::get_objs()
 
 ///
 void
-EditorObjGroup::write_xml(std::ofstream* xml)
+EditorObjGroup::write_xml(std::ostream& xml)
 {
-  (*xml) << "<group>\n";
+  xml << "<group>\n";
 
   for(std::list<boost::shared_ptr<EditorObj> >::iterator i = objs.begin();
       i != objs.end();
@@ -131,7 +131,7 @@ EditorObjGroup::write_xml(std::ofstream* xml)
     {
       (*i)->write_xml(xml);
     }
-  (*xml) << "</group>\n" << std::endl;
+  xml << "</group>\n" << std::endl;
 }
 
 boost::shared_ptr<EditorObj> 

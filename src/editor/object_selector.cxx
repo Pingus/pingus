@@ -1,4 +1,4 @@
-//  $Id: object_selector.cxx,v 1.4 2002/06/24 23:31:24 grumbel Exp $
+//  $Id: object_selector.cxx,v 1.5 2002/06/25 12:20:33 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -475,19 +475,23 @@ ObjectSelector::select_obj_type()
 std::list<boost::shared_ptr<EditorObj> >
 ObjectSelector::get_prefab()
 {
+  CL_DirectoryScanner dir;
+  std::vector<std::string> dir_lst;
+  if (dir.scan(path_manager.complete ("prefabs/"), "*.xml"))
+    {
+      while (dir.next ()) {
+	dir_lst.push_back (dir.get_name ());
+      }
+    }
+
   CL_Display::clear_display();
   font->print_left(20, 20, _("Which prefab do you want?"));
-
-  CL_DirectoryScanner dir;
-  
-  int y = 60;
-  dir.scan(path_manager.complete ("prefabs/"), "*.xml");
-  while (dir.next ())
+ 
+  for (std::vector<std::string>::size_type i = 0; i < dir_lst.size (); ++i)
     {
-      font->print_left(20, y, dir.get_name ().c_str ());
-      y += 30;
+      font->print_left(20, 60 + i * 30, to_string(i) + " - " + dir_lst[i]); 
     }
-  
+
   Display::flip_display();
 
   bool exit_loop = false;
@@ -496,9 +500,10 @@ ObjectSelector::get_prefab()
     {
       switch (read_key()) 
 	{
-	default: 
+	case CL_KEY_ESCAPE: 
 	  exit_loop = true;
-	}      
+	  break;
+	}
     }
   return std::list<boost::shared_ptr<EditorObj> >();
 }

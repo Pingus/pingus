@@ -1,4 +1,4 @@
-//  $Id: worldobj_data.hxx,v 1.2 2002/06/24 22:52:57 grumbel Exp $
+//  $Id: worldobj_data.hxx,v 1.3 2002/06/25 12:20:31 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -48,7 +48,7 @@ public:
  
   /** Writte the content of this object formated as xml to the given
       stream */
-  virtual void write_xml (std::ofstream* xml) =0;
+  virtual void write_xml (std::ostream& xml) =0;
 
   /** Create an WorldObj from the given data object */
   virtual WorldObj* create_WorldObj () =0;

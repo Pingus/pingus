@@ -1,4 +1,4 @@
-//  $Id: switch_door.cxx,v 1.2 2002/06/22 22:06:18 grumbel Exp $
+//  $Id: switch_door.cxx,v 1.3 2002/06/25 12:20:34 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -95,17 +95,17 @@ SwitchDoorData::SwitchDoorData (xmlDocPtr doc, xmlNodePtr cur)
 }
 
 void 
-SwitchDoorData::write_xml(std::ofstream* xml)
+SwitchDoorData::write_xml(std::ostream& xml)
 {
-  (*xml) << "  <worldobj type=\"switchdoor\">\n";
-  (*xml) << "    <switch>\n";
+  xml << "  <worldobj type=\"switchdoor\">\n";
+  xml << "    <switch>\n";
   XMLhelper::write_vector_xml (xml, switch_pos);
-  (*xml) << "    </switch>\n"
-	 << "    <door>\n"
-	 << "    <height>\n" << door_height << "</height>\n";
+  xml << "    </switch>\n"
+      << "    <door>\n"
+      << "    <height>\n" << door_height << "</height>\n";
   XMLhelper::write_vector_xml (xml, door_pos);
-  (*xml) << "    </door>\n"
-	 << "  </worldobj>\n" << std::endl;
+  xml << "    </door>\n"
+      << "  </worldobj>\n" << std::endl;
 }
 
 /** Create an WorldObj from the given data object */
@@ -261,7 +261,7 @@ EditorSwitchDoorObj::create (const CL_Vector& pos)
 }
 
 void
-EditorSwitchDoorObj::save_xml (std::ofstream* xml)
+EditorSwitchDoorObj::save_xml (std::ostream& xml)
 {
   write_xml (xml);
 }

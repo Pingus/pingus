@@ -1,4 +1,4 @@
-// $Id: editor_groundpiece_obj.hxx,v 1.2 2002/06/24 22:52:58 grumbel Exp $
+// $Id: editor_groundpiece_obj.hxx,v 1.3 2002/06/25 12:20:33 grumbel Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,7 +30,7 @@ class EditorGroundpieceObj : public GroundpieceData,
 public:
   EditorGroundpieceObj(const GroundpieceData& data);
 
-  void write_xml(std::ofstream* xml) { GroundpieceData::write_xml (xml); }
+  void write_xml(std::ostream& xml) { GroundpieceData::write_xml (xml); }
   boost::shared_ptr<EditorObj> duplicate();
   std::string status_line();
 };

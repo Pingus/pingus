@@ -1,4 +1,4 @@
-//  $Id: starfield_background.cxx,v 1.3 2002/06/21 07:45:35 grumbel Exp $
+//  $Id: starfield_background.cxx,v 1.4 2002/06/25 12:20:33 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,14 +32,14 @@ StarfieldBackgroundData::StarfieldBackgroundData ()
 }
 
 void 
-StarfieldBackgroundData::write_xml(std::ofstream* xml)
+StarfieldBackgroundData::write_xml(std::ostream& xml)
 {
-  (*xml) << "<background type=\"starfield\">\n"
-	 << "  <small-stars count=\"" << small_stars_count << "\"/>\n"
-	 << "  <middle-stars count=\"" << middle_stars_count << "\"/>\n"
-	 << "  <large-stars count=\"" << large_stars_count << "\"/>\n"
-	 << "</background>\n"
-	 << std::endl;
+  xml << "<background type=\"starfield\">\n"
+      << "  <small-stars count=\"" << small_stars_count << "\"/>\n"
+      << "  <middle-stars count=\"" << middle_stars_count << "\"/>\n"
+      << "  <large-stars count=\"" << large_stars_count << "\"/>\n"
+      << "</background>\n"
+      << std::endl;
 }
  
 StarfieldBackgroundData::StarfieldBackgroundData (xmlDocPtr /*doc*/, xmlNodePtr cur)
@@ -50,7 +50,7 @@ StarfieldBackgroundData::StarfieldBackgroundData (xmlDocPtr /*doc*/, xmlNodePtr 
 
   cur = cur->children;
 
-    while (cur != NULL)
+  while (cur != NULL)
     {
       if (xmlIsBlankNode(cur)) 
 	{

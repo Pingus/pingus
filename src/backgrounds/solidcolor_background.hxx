@@ -1,4 +1,4 @@
-//  $Id: solidcolor_background.hxx,v 1.3 2002/06/24 22:52:58 grumbel Exp $
+//  $Id: solidcolor_background.hxx,v 1.4 2002/06/25 12:20:33 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -44,7 +44,7 @@ public:
 
   /** Writte the content of this object formated as xml to the given
       stream */
-  virtual void write_xml(std::ofstream* xml);
+  virtual void write_xml(std::ostream& xml);
 
   WorldObj* create_WorldObj();
   EditorObjLst create_EditorObj();
@@ -74,7 +74,7 @@ public:
     : SolidColorBackgroundData (data),
       pos (0.0f, 0.0f)
   {}
-  void write_xml(std::ofstream* xml) { this->SolidColorBackgroundData::write_xml (xml); }
+  void write_xml(std::ostream& xml) { this->SolidColorBackgroundData::write_xml (xml); }
 
   /// Return the object width
   int get_width() { return 256; }

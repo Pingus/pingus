@@ -1,4 +1,4 @@
-//  $Id: editorobj.hxx,v 1.2 2002/06/24 22:52:58 grumbel Exp $
+//  $Id: editorobj.hxx,v 1.3 2002/06/25 12:20:33 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -87,7 +87,7 @@ public:
   virtual void drop () {}
 
   /** Write the given object down into a XML file */
-  virtual void write_xml(std::ofstream* xml) =0;
+  virtual void write_xml(std::ostream& xml) =0;
 
   /** Return a string that is shown in the status line */
   virtual std::string status_line();

@@ -1,4 +1,4 @@
-//  $Id: weather_obj.cxx,v 1.2 2002/06/13 14:25:13 torangan Exp $
+//  $Id: weather_obj.cxx,v 1.3 2002/06/25 12:20:33 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -74,13 +74,13 @@ WeatherObj::draw (EditorView * view)
 }
   
 void   
-WeatherObj::write_xml(std::ofstream* xml)
+WeatherObj::write_xml(std::ostream& xml)
 {
-  (*xml) << "  <weather>\n"
-	 << "    <type>" << type << "</type>\n";
+  xml << "  <weather>\n"
+      << "    <type>" << type << "</type>\n";
   XMLhelper::write_vector_xml(xml, pos);
-  (*xml) << "  </weather>\n"
-	 << std::endl;
+  xml << "  </weather>\n"
+      << std::endl;
 }
  
 boost::shared_ptr<EditorObj>

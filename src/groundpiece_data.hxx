@@ -1,4 +1,4 @@
-//  $Id: groundpiece_data.hxx,v 1.5 2002/06/24 22:52:54 grumbel Exp $
+//  $Id: groundpiece_data.hxx,v 1.6 2002/06/25 12:20:31 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -58,7 +58,7 @@ public:
   GroundpieceData (xmlDocPtr doc, xmlNodePtr cur);
 
   std::list<boost::shared_ptr<EditorObj> > create_EditorObj();
-  void write_xml(std::ofstream* xml);
+  void write_xml(std::ostream& xml);
 
   static GPType string_to_type(const std::string& arg_type);
   static std::string type_to_string(GPType arg_type);

@@ -1,4 +1,4 @@
-//  $Id: hotspot_data.cxx,v 1.1 2002/06/12 19:09:37 grumbel Exp $
+//  $Id: hotspot_data.cxx,v 1.2 2002/06/25 12:20:31 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,15 +23,15 @@
 #include "hotspot.hxx"
 
 void 
-HotspotData::write_xml(std::ofstream* xml)
+HotspotData::write_xml(std::ostream& xml)
 {
-  (*xml) << "<hotspot>\n";
+  xml << "<hotspot>\n";
   XMLhelper::write_desc_xml(xml, desc);
   XMLhelper::write_vector_xml(xml, pos);
-  (*xml) << "  <speed>" << speed << "</speed>\n"
-	 << "  <parallax>" << para << "</parallax>\n"
-	 << "</hotspot>\n"
-	 << std::endl;  
+  xml << "  <speed>" << speed << "</speed>\n"
+      << "  <parallax>" << para << "</parallax>\n"
+      << "</hotspot>\n"
+      << std::endl;  
 }
 
 HotspotData::HotspotData (xmlDocPtr doc, xmlNodePtr cur)

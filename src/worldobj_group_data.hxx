@@ -1,4 +1,4 @@
-//  $Id: worldobj_group_data.hxx,v 1.3 2002/06/24 22:52:57 grumbel Exp $
+//  $Id: worldobj_group_data.hxx,v 1.4 2002/06/25 12:20:31 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,7 +37,7 @@ public:
 
   void add (WorldObjData*);
   
-  void write_xml (std::ofstream* xml);
+  void write_xml (std::ostream& xml);
 
   /** Create an WorldObj from the given data object */
   WorldObj* create_WorldObj ();

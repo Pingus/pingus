@@ -1,4 +1,4 @@
-//  $Id: exit_data.hxx,v 1.3 2002/06/24 22:52:54 grumbel Exp $
+//  $Id: exit_data.hxx,v 1.4 2002/06/25 12:20:31 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -52,7 +52,7 @@ public:
     use_old_pos_handling = true;
   }
 
-  void write_xml(std::ofstream *);
+  void write_xml(std::ostream&);
   
   WorldObj* create_WorldObj();
   EditorObjLst create_EditorObj();
