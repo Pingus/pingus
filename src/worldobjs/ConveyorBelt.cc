@@ -1,4 +1,4 @@
-//  $Id: ConveyorBelt.cc,v 1.3 2000/11/17 19:09:22 grumbel Exp $
+//  $Id: ConveyorBelt.cc,v 1.4 2000/11/17 21:50:57 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,10 +31,10 @@ ConveyorBeltData::ConveyorBeltData ()
 void 
 ConveyorBeltData::write_xml(ofstream* xml)
 {
-  (*xml) << "  <worldobj type=\"iceblock\">";
+  (*xml) << "  <worldobj type=\"conveyorbelt\">";
   XMLhelper::write_position_xml (xml, pos);
   (*xml) << "    <width>" << width << "</width>"
-	 << "  </worldobj>" << std::endl;
+	 << "  </worldobj>\n" << std::endl;
 }
 
 WorldObjData* 
@@ -146,7 +146,7 @@ EditorConveyorBeltObj::EditorConveyorBeltObj (WorldObjData* obj)
 
   EditorObj::width  = left_sur->get_width() + right_sur->get_width()
     + ConveyorBeltData::width * middle_sur->get_width ();
-  EditorObj::height = 10;
+  EditorObj::height = middle_sur->get_height ();
 
   pos = conveyor_belt->pos;
   position = &pos;
