@@ -1,4 +1,4 @@
- //  $Id: PingusLevelDesc.cc,v 1.17 2000/12/14 21:35:55 grumbel Exp $
+//  $Id: PingusLevelDesc.cc,v 1.18 2001/04/07 21:49:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>

@@ -1,4 +1,4 @@
-//  $Id: System.cc,v 1.27 2001/04/07 21:03:42 grumbel Exp $
+//  $Id: System.cc,v 1.28 2001/04/07 21:49:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -295,15 +295,27 @@ System::get_language()
 const std::string&
 System::translate(const std::map<std::string, std::string>& strs)
 {
-  const std::string& str = strs.find(System::get_language())->second;
+  // FIXME: Hack...
+  static std::string nothing;
+
+  std::map<std::string, std::string>::const_iterator p = strs.find(System::get_language());
+
+  if (p != strs.end ())
+    {
+      const std::string& str = p->second;
   
-  if (str.empty())
-    {
-      return strs.find(default_language)->second;
+      if (str.empty())
+	return strs.find(default_language)->second;
+      else
+	return str;
     }
-  else 
+
+  std::map<std::string, std::string>::const_iterator ret = strs.find(System::get_language());
+  if (ret != strs.end ())
+    return ret->second;
+  else
     {
-      return str;
+      return nothing;
     }
 }
 
