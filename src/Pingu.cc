@@ -1,4 +1,4 @@
-//  $Id: Pingu.cc,v 1.8 2000/02/27 21:05:06 grumbel Exp $
+//  $Id: Pingu.cc,v 1.9 2000/02/28 03:41:46 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -82,9 +82,8 @@ Pingu::Pingu(int x, int y)
   environment = (PinguEnvironment)land;
 
   // Set the velocity to zero
-  v.x = 0;
-  v.y = 0;
-  old_v = v;
+  velocity.x = 0;
+  velocity.y = 0;
 }
 
 Pingu::~Pingu()
@@ -326,143 +325,152 @@ Pingu::let_move(void)
     }
   else 
     { // if we have no action, let the pingu walk
-      // Forces are only applied if the pingu isn't going something else
-      // Apply forces
-      CL_Vector tmpvec;
-      tmpvec.x = x_pos;
-      tmpvec.y = y_pos;
-      
-      // Apply all forces
-      v = ForcesHolder::apply_forces(tmpvec,v);
+      do_normal();
+    }
+}
+
+// Check if the pingu is on ground and then do something.
+void 
+Pingu::do_normal()
+{
+  if (rel_getpixel(0, -1) == ColMap::NOTHING)
+    {
+      do_falling();
+    }
+  else 
+    {
+      do_walking();
+    }
+}
+
+// The Pingu is not on ground, so lets fall...
+void Pingu::do_falling()
+{
+  // Apply all forces
+  v = ForcesHolder::apply_forces(CL_Vector(x_pos, y_pos), v);
     
-      // Update x and y by moving the penguin to it's target *slowly*
-      // and checking if the penguin has hit the bottom at each loop
-      CL_Vector newp = v;
+  // Update x and y by moving the penguin to it's target *slowly*
+  // and checking if the penguin has hit the bottom at each loop
+  CL_Vector newp = v;
 	  
-      while((rel_getpixel(0, -1) == ColMap::NOTHING) 
-	    && !((newp.x < 1 && newp.x > -1) && (newp.y < 1 && newp.y > -1)))
-	{
-	  if (!(newp.x < 1 && newp.x > -1)) 
-	    { 
-	      // Since the velocity might be a
-	      // fraction stop when we are within 1 unit of the target
-	      if (newp.x > 0)
-		{
-		  x_pos++;
-		  newp.x--;
-		}
-	      else
-		{
-		  x_pos--;
-		  newp.x++;
-		}
-	    }
-
-	  if (!(newp.y < 1 && newp.y > -1)) 
+  while(rel_getpixel(0, -1) == ColMap::NOTHING
+	&& !(fabs(newp.x) < 1 && fabs(newp.y) < 1))
+    {
+      if (!(fabs(newp.x) < 1))
+	{ 
+	  // Since the velocity might be a
+	  // fraction stop when we are within 1 unit of the target
+	  if (newp.x > 0)
 	    {
-	      if (newp.y > 0)
-		{
-		  y_pos++;
-		  newp.y--;
-		}
-	      else 
-		{
-		  y_pos--;
-		  newp.y++;
-		}
+	      x_pos++;
+	      newp.x--;
 	    }
-	  /*
-	    if ((rel_getpixel(0, -1) != ColMap::NOTHING) 
-	    || ((newp.x < 1 && newp.x > -1) && (newp.y < 1 && newp.y > -1))) 
+	  else
 	    {
-	    break;
-	    }*/
+	      x_pos--;
+	      newp.x++;
+	    }
 	}
-    
-      if (rel_getpixel(0, -1) == ColMap::NOTHING)
-	{ // if pingu is not on ground
-	  ++falling;
-	  old_v = v;
-	  
-	  if (falling > 3) 
-	    environment = sky;
-	  
-	  // If we are going fast enough to get smashed set falling to 80
-	  if (((v.x > 15) || (v.x < - 15))
-	      || ((v.y > 15) || (v.y < - 15))) 
-	    {
-	      falling = 80;
-	    }
-	} 
-      else
+
+      if (!(fabs(newp.y) < 1))
 	{
-	  // Did we stop too fast?
-	  if (std::fabs(v.x - old_v.x) > 15)
+	  if (newp.y > 0)
 	    {
-	      // FIXME: This is a LinuxTag Hack and should be replaced
-	      // with a real ground smashing action! 
-	      set_action(new Smashed);
-	    }
-	  else if (std::fabs(v.y - old_v.y) > 15)
-	    {
-	      cout << "x Smashed on ground, jumping" << endl;
-	    }
-	  
-	  // Reset the velocity
-	  v.x = 0;
-	  v.y = 0;
-	  
-	  falling = 0;
-	}
-	
-
-      if (rel_getpixel(0, -1) != ColMap::NOTHING)
-	{ // if pingu is on ground
-	  environment = land;
-
-	  if (rel_getpixel(1, 0) == ColMap::NOTHING) 
-	    { // if infront is free
-	      x_pos += direction;    
+	      y_pos++;
+	      newp.y--;
 	    }
 	  else 
-	    { // if infront is a pixel 
-	      // Pingu is walking up the mountain 
-	      if (rel_getpixel(1,1) == ColMap::NOTHING) 
-		{
-		  x_pos += direction;
-		  y_pos -= 1;
-		} 
-	      else if (rel_getpixel(1,2) == ColMap::NOTHING)
-		{
-		  x_pos += direction;
-		  y_pos -= 2;
-		} 
-	      else if (rel_getpixel(1,2) == ColMap::BRIDGE) 
-		{
-		  x_pos += direction;
-		  y_pos -=3;
-		}
-	      else
-		{ // WALL
-		  for (unsigned int i=0; i < persist.size(); ++i) 
-		    {
-		      if (persist[i]->get_type() & (ActionType)WALL) 
-			{
-			  if (action && persist[i]->name() == action->name()) 
-			    {
-			      if (verbose) std::cout << "Not using action, we have allready" << std::endl;
-			    } 
-			  else 
-			    {
-			      if (verbose) std::cout << "We are infront of a wall, setting persistant action" << std::endl;
-			      set_paction(ActionHolder::get_uaction(persist[i]->name()));
-			    }
-			  return;
-			} 
-		    }
-		  direction.change();
-		}
+	    {
+	      y_pos--;
+	      newp.y++;
 	    }
+	}
+    }
+    
+  if (rel_getpixel(0, -1) == ColMap::NOTHING)
+    { // if pingu is not on ground
+      ++falling;
+	  
+      if (falling > 3) 
+	environment = sky;
+	  
+      // If we are going fast enough to get smashed set falling to 80
+      if (fabs(velocity.x) > 15 || fabs(velocity.y) > 15)
+	{
+	  falling = 80;
+	}
+    } 
+  else // Ping is on ground
+    {
+      cout << "Fabs: " << std::fabs(velocity.y) << endl;
+
+      // Did we stop too fast?
+      if (std::fabs(velocity.y) > 30)
+	{
+	  // FIXME: This is a LinuxTag Hack and should be replaced
+	  // with a real ground smashing action! 
+	  cout << "Smashing..." << endl;
+	  set_action(new Smashed);
+	}
+      else if (std::fabs(velocity.x) > 15)
+	{
+	  cout << "x Smashed on ground, jumping" << endl;
+	}
+
+      // Reset the velocity
+      velocity.x = 0;
+      velocity.y = 0;
+      falling = 0;
+    }
+}
+
+// If the Pingu is on ground he can do his walking stuff here.
+void 
+Pingu::do_walking()
+{
+  environment = land;
+
+  if (rel_getpixel(1, 0) == ColMap::NOTHING) 
+    { // if infront is free
+      x_pos += direction;    
+    }
+  else 
+    { // if infront is a pixel 
+      // Pingu is walking up the mountain 
+      if (rel_getpixel(1,1) == ColMap::NOTHING) 
+	{
+	  x_pos += direction;
+	  y_pos -= 1;
+	} 
+      else if (rel_getpixel(1,2) == ColMap::NOTHING)
+	{
+	  x_pos += direction;
+	  y_pos -= 2;
+	} 
+      else if (rel_getpixel(1,2) == ColMap::BRIDGE) 
+	{
+	  x_pos += direction;
+	  y_pos -=3;
+	}
+      else
+	{ // WALL
+	  for (unsigned int i=0; i < persist.size(); ++i) 
+	    {
+	      if (persist[i]->get_type() & (ActionType)WALL) 
+		{
+		  if (action && persist[i]->name() == action->name()) 
+		    {
+		      if (verbose) std::cout << "Not using action, we have allready" << std::endl;
+		    } 
+		  else 
+		    {
+		      if (verbose) std::cout << "We are infront of a wall, setting persistant action" << std::endl;
+		      set_paction(ActionHolder::get_uaction(persist[i]->name()));
+		    }
+		  return;
+		} 
+	    }
+	  direction.change();
 	}
     }
 }

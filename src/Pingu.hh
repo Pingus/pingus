@@ -1,4 +1,4 @@
-//  $Id: Pingu.hh,v 1.3 2000/02/26 03:17:06 grumbel Exp $
+//  $Id: Pingu.hh,v 1.4 2000/02/28 03:41:46 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -72,7 +72,7 @@ public:
   Direction direction;
 
   // Force Vector stuff:
-  CL_Vector v,old_v; // Current velocity and last velocity
+  CL_Vector velocity; // Current velocity and last velocity
 
   int  get_x(void);
   int  get_y(void);
@@ -95,8 +95,12 @@ public:
   bool need_catch();
   
   void draw_offset(int x, int y, float s = 1.0) const;
+
   void let_move();
   void do_persistent();
+  void do_normal();
+  void do_falling();
+  void do_walking();
 
   bool   is_over(int x, int y);
   double dist(int x, int y);
