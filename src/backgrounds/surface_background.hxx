@@ -1,4 +1,4 @@
-//  $Id: surface_background.hxx,v 1.4 2002/07/02 13:36:06 torangan Exp $
+//  $Id: surface_background.hxx,v 1.5 2002/08/23 15:49:54 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,7 +24,6 @@
 #include "../game_counter.hxx"
 #include "surface_background_data.hxx"
 
-///
 class SurfaceBackground : public WorldObj, 
 			  private SurfaceBackgroundData
 {
@@ -41,16 +40,17 @@ private:
   float scroll_oy;
 
 public:
-  SurfaceBackground(const SurfaceBackgroundData&);
-  ///
-  virtual ~SurfaceBackground();
+  SurfaceBackground (const SurfaceBackgroundData&);
+  virtual ~SurfaceBackground ();
 
-  float get_z_pos() const { return pos.z; }
+  float get_z_pos () const { return pos.z; }
 
-  ///
-  void update(float delta);
-  ///
-  void draw_offset(int x_of, int y_of, float s = 1.0);
+  void update (float delta);
+  void draw_offset (int x_of, int y_of, float s = 1.0);
+  
+private:
+  SurfaceBackground (const SurfaceBackground&);
+  SurfaceBackground operator= (const SurfaceBackground&);
 };
 
 #endif

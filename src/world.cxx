@@ -1,4 +1,4 @@
-//  $Id: world.cxx,v 1.17 2002/08/22 14:37:51 grumbel Exp $
+//  $Id: world.cxx,v 1.18 2002/08/23 15:49:52 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,7 +34,6 @@
 #include "game_time.hxx"
 
 using namespace std;
-using boost::shared_ptr;
 using Pingus::Actions::Bomber;
 
 static 

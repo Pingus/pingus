@@ -1,4 +1,4 @@
-//  $Id: system.hxx,v 1.3 2002/08/16 13:03:35 torangan Exp $
+//  $Id: system.hxx,v 1.4 2002/08/23 15:49:51 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,10 +21,10 @@
 #ifndef HEADER_PINGUS_SYSTEM_HXX
 #define HEADER_PINGUS_SYSTEM_HXX
 
+#include "pingus.hxx"
 #include <string>
 #include <list>
 #include <map>
-#include "pingus.hxx"
 
 /** A wrapper class around some system dependend functions (mostly
     POSIX stuff) */
@@ -123,6 +123,10 @@ public:
    generation is very primitiv and should probably be replaced by CRC
    or md5. */
   static std::string checksum (std::string filename);
+  
+private:
+  System (const System&);
+  System operator= (const System&);
 };
 
 #endif

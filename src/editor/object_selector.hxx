@@ -1,4 +1,4 @@
-// $Id: object_selector.hxx,v 1.6 2002/07/02 13:36:07 torangan Exp $
+// $Id: object_selector.hxx,v 1.7 2002/08/23 15:49:54 torangan Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -64,6 +64,10 @@ public:
   EditorObjLst get_from_file();
   EditorObjLst get_background();
   EditorObjLst get_prefab();
+  
+private:
+  ObjectSelector (const ObjectSelector&);
+  ObjectSelector operator= (const ObjectSelector&);
 };
 
 #endif

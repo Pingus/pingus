@@ -1,4 +1,4 @@
-//  $Id: graph.hxx,v 1.4 2002/07/02 13:36:07 torangan Exp $
+//  $Id: graph.hxx,v 1.5 2002/08/23 15:49:56 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -58,6 +58,9 @@ namespace Pingus
       void parse_music (xmlNodePtr);
       void parse_background (xmlNodePtr);
       //@}
+      
+      Graph (const Graph&);
+      Graph operator= (const Graph&);
     };
   }
 }

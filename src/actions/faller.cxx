@@ -1,4 +1,4 @@
-//  $Id: faller.cxx,v 1.14 2002/08/13 18:44:50 grumbel Exp $
+//  $Id: faller.cxx,v 1.15 2002/08/23 15:49:53 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -54,7 +54,7 @@ Faller::update (float delta)
   // Pingu stands on ground
   if (rel_getpixel(0, -1) !=  GroundpieceData::GP_NOTHING)
     { 
-      pingu->set_action (Walker);
+      pingu->set_action (Pingus::Actions::Walker);
       return;
     }
 
@@ -119,7 +119,7 @@ Faller::update (float delta)
     {
       if (rel_getpixel(0, 0) == GroundpieceData::GP_WATER)
 	{
-	  pingu->set_action(Drown);
+	  pingu->set_action(Pingus::Actions::Drown);
 	  return;
 	}
       else
@@ -127,7 +127,7 @@ Faller::update (float delta)
 	  // Did we stop too fast?
 	  if (fabs(pingu->velocity.y) > deadly_velocity) 
 	    {
-	      pingu->set_action(Splashed);
+	      pingu->set_action(Pingus::Actions::Splashed);
 	      return;
 	    }
 	  else if (fabs(pingu->velocity.x) > deadly_velocity)
@@ -174,7 +174,7 @@ Faller::is_tumbling () const
 bool
 Faller::change_allowed (ActionName new_action)
 {
-  if (new_action == Floater)
+  if (new_action == Pingus::Actions::Floater)
     return true;
   else
     return false;

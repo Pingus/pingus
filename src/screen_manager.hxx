@@ -1,4 +1,4 @@
-//  $Id: screen_manager.hxx,v 1.9 2002/08/17 12:32:23 grumbel Exp $
+//  $Id: screen_manager.hxx,v 1.10 2002/08/23 15:49:50 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,8 +20,8 @@
 #ifndef HEADER_PINGUS_SCREEN_MANAGER_HXX
 #define HEADER_PINGUS_SCREEN_MANAGER_HXX
 
-#include <vector>
 #include "pingus.hxx"
+#include <vector>
 
 class Screen;
 
@@ -45,11 +45,12 @@ private:
   enum { none, pop, replace } cached_action;
   std::pair<Screen*, bool> replace_screen_arg;
 
+protected:
   ScreenManager ();
 public:
   ~ScreenManager ();
 
-  /** Start the screen manager and let it take controll, this will
+  /** Start the screen manager and let it take control, this will
       not return until the somebody signals a quit() */
   void display ();
 
@@ -73,6 +74,10 @@ private:
   void fade_over (Screen* old_screen, Screen* new_screen);
 public:  
   static ScreenManager* instance ();
+  
+private:
+  ScreenManager (const ScreenManager&);
+  ScreenManager operator= (const ScreenManager&);
 };
 
 #endif

@@ -1,4 +1,4 @@
-//  $Id: fps_counter.hxx,v 1.2 2002/06/24 22:52:54 grumbel Exp $
+//  $Id: fps_counter.hxx,v 1.3 2002/08/23 15:49:48 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -60,6 +60,10 @@ public:
 
   /** Load all the gfx and fonts... */
   void init();
+  
+private:
+  FPSCounter (const FPSCounter&);
+  FPSCounter operator= (const FPSCounter&);
 };
 
 /** The fps_counter is a global object, so we don't need to construct

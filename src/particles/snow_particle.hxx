@@ -1,4 +1,4 @@
-//  $Id: snow_particle.hxx,v 1.2 2002/06/24 22:52:59 grumbel Exp $
+//  $Id: snow_particle.hxx,v 1.3 2002/08/23 15:49:56 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,22 +22,20 @@
 
 #include "particle.hxx"
 
-///
 class SnowParticle : public Particle
 {
-private:
-
 public:
-  SnowParticle();
-  ///
-  SnowParticle(int x, int y);
-  ///
-  void init(int x, int y);
-  ///
-  virtual ~SnowParticle();
+  SnowParticle ();
+  SnowParticle (int x, int y);
+  void init (int x, int y);
+  virtual ~SnowParticle ();
 
-  virtual void update(float delta);
-  virtual bool is_alive();
+  virtual void update (float delta);
+  virtual bool is_alive ();
+  
+private:
+  SnowParticle (const SnowParticle&); 
+  SnowParticle operator= (const SnowParticle&);
 };
 
 class CollidingSnowParticle : public SnowParticle
@@ -45,13 +43,18 @@ class CollidingSnowParticle : public SnowParticle
 private:
   bool alive;
   static CL_Surface ground_snow;
+  
 public:
-  CollidingSnowParticle();
-  CollidingSnowParticle(int x, int y);
-  virtual ~CollidingSnowParticle();
+  CollidingSnowParticle ();
+  CollidingSnowParticle (int x, int y);
+  virtual ~CollidingSnowParticle ();
 
-  virtual void update(float delta);
-  virtual bool is_alive();  
+  virtual void update (float delta);
+  virtual bool is_alive ();  
+  
+private:
+  CollidingSnowParticle (const CollidingSnowParticle&);
+  CollidingSnowParticle operator= (const CollidingSnowParticle&);
 };
 
 #endif

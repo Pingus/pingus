@@ -1,4 +1,4 @@
-//  $Id: credits.hxx,v 1.6 2002/08/17 00:25:06 grumbel Exp $
+//  $Id: credits.hxx,v 1.7 2002/08/23 15:49:48 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -51,9 +51,9 @@ private:
   */
   std::vector<std::string> credits;
 
-  Credits();
 public:
-  virtual ~Credits();
+  Credits ();
+  virtual ~Credits ();
 
   void init ();
   void update (float);
@@ -66,6 +66,12 @@ public:
   void on_pause_press ();
   void on_fast_forward_press ();
   void on_escape_press ();
+  
+  
+private:
+  Credits (const Credits&);
+  Credits operator= (const Credits&);
+
 };
 
 #endif

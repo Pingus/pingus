@@ -1,4 +1,4 @@
-//  $Id: target_provider.hxx,v 1.3 2002/08/16 13:03:35 torangan Exp $
+//  $Id: target_provider.hxx,v 1.4 2002/08/23 15:49:51 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,8 +20,8 @@
 #ifndef HEADER_PINGUS_TARGET_PROVIDER_HXX
 #define HEADER_PINGUS_TARGET_PROVIDER_HXX
 
-#include <ClanLib/Display/Display/surfaceprovider.h>
 #include "pingus.hxx"
+#include <ClanLib/Display/Display/surfaceprovider.h>
 
 class CL_Target;
 class CL_Palette;
@@ -54,12 +54,12 @@ public:
   unsigned int get_src_colorkey () const { return 0; }
   
   static CL_Canvas* create_canvas (CL_Target*);
+  
+private:
+  TargetProvider (const TargetProvider&);
+  TargetProvider operator= (const TargetProvider&);
 };
 
 #endif
 
 /* EOF */
-
-
-
-

@@ -1,4 +1,4 @@
-//  $Id: generic_main.hxx,v 1.3 2002/08/16 13:03:35 torangan Exp $
+//  $Id: generic_main.hxx,v 1.4 2002/08/23 15:49:48 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,8 +20,8 @@
 #ifndef HEADER_PINGUS_GENERIC_MAIN_HXX
 #define HEADER_PINGUS_GENERIC_MAIN_HXX
 
-#include <ClanLib/application.h>
 #include "pingus.hxx"
+#include <ClanLib/application.h>
 
 class AbstractMain
 {

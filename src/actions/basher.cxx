@@ -1,4 +1,4 @@
-//  $Id: basher.cxx,v 1.9 2002/08/17 17:56:23 torangan Exp $
+//  $Id: basher.cxx,v 1.10 2002/08/23 15:49:53 torangan Exp $
 //
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -78,7 +78,7 @@ Basher::update(float delta)
 	}
       else if (sprite.get_progress () > 0.6f)
 	{
-	  pingu->set_action(Walker);
+	  pingu->set_action(Pingus::Actions::Walker);
 	}
     }
 }
@@ -99,7 +99,7 @@ Basher::walk_forward()
 {
   if (rel_getpixel(0, -1) ==  GroundpieceData::GP_NOTHING) {
     // We are in the air... lets fall...
-    pingu->set_action(Faller);
+    pingu->set_action(Pingus::Actions::Faller);
   } else {
     // On ground, walk forward...
     pingu->pos.x += pingu->direction;

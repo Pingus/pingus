@@ -1,4 +1,4 @@
-//  $Id: display.hxx,v 1.3 2002/08/16 13:03:34 torangan Exp $
+//  $Id: display.hxx,v 1.4 2002/08/23 15:49:48 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,8 +20,8 @@
 #ifndef HEADER_PINGUS_DISPLAY_HXX
 #define HEADER_PINGUS_DISPLAY_HXX
 
-#include <list>
 #include "pingus.hxx"
+#include <list>
 
 class DisplayHook;
 class CL_MouseCursorProvider;
@@ -39,6 +39,10 @@ public:
   /** Called sortly before a flip_display () */
   virtual void on_event() = 0;
   virtual void toggle_display();
+  
+private:
+  DisplayHook (const DisplayHook&);
+  DisplayHook operator= (const DisplayHook&);
 };
 
 /** This is a kind of wrapper class around CL_Display, it provides
@@ -60,6 +64,11 @@ public:
 
   static void add_flip_screen_hook(DisplayHook*);
   static void remove_flip_screen_hook(DisplayHook*);
+  
+private:
+  Display ();
+  Display (const Display&);
+  Display operator= (const Display&);
 };
 
 #endif

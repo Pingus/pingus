@@ -1,4 +1,4 @@
-//  $Id: gui_manager.hxx,v 1.8 2002/08/17 01:02:38 grumbel Exp $
+//  $Id: gui_manager.hxx,v 1.9 2002/08/23 15:49:55 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -83,6 +83,10 @@ namespace GUI
 
     Component* component_at (int x, int y);  
     virtual bool is_at (int x, int y);
+    
+  private:
+    GUIManager (const GUIManager&);
+    GUIManager operator= (const GUIManager&);
   };
 }
 

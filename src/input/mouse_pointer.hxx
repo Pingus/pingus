@@ -1,4 +1,4 @@
-//  $Id: mouse_pointer.hxx,v 1.4 2002/08/14 12:41:22 torangan Exp $
+//  $Id: mouse_pointer.hxx,v 1.5 2002/08/23 15:49:56 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,13 +36,18 @@ namespace Input
       float y_pos;
       
     public:
-
+      MousePointer ();
+    
       virtual const float& get_x_pos () const;
       virtual const float& get_y_pos () const;
       
       virtual void  set_pos (float new_x, float new_y);
       
       virtual void  update (float);
+      
+    private:
+      MousePointer (const MousePointer&);
+      MousePointer operator= (const MousePointer&);
   };
 }
 

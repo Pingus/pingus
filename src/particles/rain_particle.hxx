@@ -1,4 +1,4 @@
-//  $Id: rain_particle.hxx,v 1.2 2002/06/24 22:52:59 grumbel Exp $
+//  $Id: rain_particle.hxx,v 1.3 2002/08/23 15:49:56 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,6 +43,10 @@ public:
   virtual void draw_offset(int, int, float);
   virtual void update(float delta);
   virtual bool is_alive();
+  
+private:
+  RainParticle (const RainParticle&);
+  RainParticle operator= (const RainParticle&);
 };
 
 #endif

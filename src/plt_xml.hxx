@@ -1,4 +1,4 @@
-//  $Id: plt_xml.hxx,v 1.3 2002/06/24 22:52:56 grumbel Exp $
+//  $Id: plt_xml.hxx,v 1.4 2002/08/23 15:49:50 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,24 +42,20 @@ private:
   void parse_level_list(xmlNodePtr cur);
   
 public:
-  ///
-  PLTXML();
-  ///
-  ~PLTXML();
+  PLTXML ();
+  ~PLTXML ();
 
-  ///
-  void parse(std::string filename);
+  void parse (std::string filename);
 
-  ///
-  std::map<std::string,std::string> get_name();
-  ///
-  std::map<std::string,std::string> get_description();
-  ///
-  SurfaceBackgroundData get_background();
-  ///
-  std::string get_surface() { return ""; }
-  ///
-  std::vector<std::string> get_levels();
+  std::map<std::string,std::string> get_name ();
+  std::map<std::string,std::string> get_description ();
+  SurfaceBackgroundData get_background ();
+  std::string get_surface () { return ""; }
+  std::vector<std::string> get_levels ();
+  
+private:
+  PLTXML (const PLTXML&);
+  PLTXML operator= (const PLTXML&);
 };
 
 #endif

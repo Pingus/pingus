@@ -1,4 +1,4 @@
-//  $Id: weather_generator.hxx,v 1.2 2002/06/24 22:52:59 grumbel Exp $
+//  $Id: weather_generator.hxx,v 1.3 2002/08/23 15:49:56 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,29 +24,23 @@
 
 class WeatherData;
 
-namespace boost {
-  template <class T> class shared_ptr;
-}
-
 class WeatherGenerator : public WorldObj
 {
 private:
   
 public:
-  ///
   WeatherGenerator() {}
-  ///
   virtual ~WeatherGenerator() {}
-  ///
   virtual void update(float delta) =0;
-  ///
   float get_z_pos() const { return 1000; }
-  ///
   void draw_offset(int, int, float) {}
-
 
   /** Generate an WeatherGenerator which fits to the given data */
   static WorldObj* create(WeatherData);
+  
+private:
+  WeatherGenerator (const WeatherGenerator&);
+  WeatherGenerator operator= (const WeatherGenerator&);
 };
 
 #endif

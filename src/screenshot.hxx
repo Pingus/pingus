@@ -1,4 +1,4 @@
-//  $Id: screenshot.hxx,v 1.3 2002/08/16 13:03:35 torangan Exp $
+//  $Id: screenshot.hxx,v 1.4 2002/08/23 15:49:50 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,8 +20,8 @@
 #ifndef HEADER_PINGUS_SCREENSHOT_HXX
 #define HEADER_PINGUS_SCREENSHOT_HXX
 
-#include <string>
 #include "pingus.hxx"
+#include <string>
 
 class CL_Target;
 
@@ -29,19 +29,18 @@ class CL_Target;
 class Screenshot
 {
 private:
-  ///
   static std::string get_date();
-  ///
   static std::string get_filename();
-  ///
   static void save_16bit_target_to_file(CL_Target*, std::string filename);
-  ///
   static void save_generic_target_to_file(CL_Target*, std::string filename);
 public:
-  ///
   static std::string make_screenshot();
-  ///
   static void save_target_to_file(CL_Target*, std::string filename);
+  
+private:
+  Screenshot ();
+  Screenshot (const Screenshot&);
+  Screenshot operator= (const Screenshot&);
 };
 
 #endif

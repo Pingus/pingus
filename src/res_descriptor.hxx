@@ -1,4 +1,4 @@
-//  $Id: res_descriptor.hxx,v 1.5 2002/06/25 21:31:40 grumbel Exp $
+//  $Id: res_descriptor.hxx,v 1.6 2002/08/23 15:49:50 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -40,15 +40,17 @@ public:
   
   Pingus::ResourceModifier modifier;
 
-  ResDescriptor();
-  ResDescriptor(const ResDescriptor&);
+  ResDescriptor ();
+  ResDescriptor (const ResDescriptor& old);
+  ResDescriptor operator= (const ResDescriptor&);
 
-  ResDescriptor(const std::string& res_name, const std::string& datafile,
+  ResDescriptor (const std::string& res_name, const std::string& datafile,
 		ResourceType type, Pingus::ResourceModifier modifier = Pingus::ROT0);
-  ResDescriptor(const std::string& cast, const std::string& value);
-  ResDescriptor(const std::string& str);
+  ResDescriptor (const std::string& cast, const std::string& value);
+  ResDescriptor (const std::string& str);
 
-  bool operator<(const ResDescriptor&) const;
+  bool operator< (const ResDescriptor&) const;
+  
 };
 
 /// Our own function to print out the ResDescriptor

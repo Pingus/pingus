@@ -1,4 +1,4 @@
-//  $Id: starfield_background.cxx,v 1.7 2002/08/22 00:36:30 grumbel Exp $
+//  $Id: starfield_background.cxx,v 1.8 2002/08/23 15:49:54 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,6 +31,29 @@ StarfieldBackgroundData::StarfieldBackgroundData ()
 {
 }
 
+StarfieldBackgroundData::StarfieldBackgroundData (const StarfieldBackgroundData& old)
+                                                : WorldObjData(old),
+						  small_stars_count(old.small_stars_count),
+					          middle_stars_count(old.middle_stars_count),
+						  large_stars_count(old.large_stars_count)
+{
+}
+
+StarfieldBackgroundData
+StarfieldBackgroundData::operator= (const StarfieldBackgroundData& old)
+{
+  if (this == &old)
+    return *this;
+
+  WorldObjData::operator=(old);
+     
+   small_stars_count = old. small_stars_count;
+  middle_stars_count = old.middle_stars_count;
+   large_stars_count = old. large_stars_count;
+   
+  return *this;
+}
+
 void 
 StarfieldBackgroundData::write_xml(std::ostream& xml)
 {
@@ -42,7 +65,7 @@ StarfieldBackgroundData::write_xml(std::ostream& xml)
       << std::endl;
 }
  
-StarfieldBackgroundData::StarfieldBackgroundData (xmlDocPtr /*doc*/, xmlNodePtr cur)
+StarfieldBackgroundData::StarfieldBackgroundData (xmlDocPtr doc, xmlNodePtr cur)
 {
   small_stars_count = 100;
   middle_stars_count = 50;
@@ -91,6 +114,8 @@ StarfieldBackgroundData::StarfieldBackgroundData (xmlDocPtr /*doc*/, xmlNodePtr 
 	} 
       cur = cur->next;
     }
+    
+  UNUSED_ARG(doc);
 }
 
 WorldObj* 
@@ -138,6 +163,33 @@ StarfieldBackgroundStars::StarfieldBackgroundStars (Type type)
   
   x_add = rand () % 5 + 1.0;
   y_add = 0.0;
+}
+
+StarfieldBackgroundStars::StarfieldBackgroundStars (const StarfieldBackgroundStars& old)
+                                                  : WorldObj(old),
+						    sur(old.sur),
+						    x_pos(old.x_pos),
+						    y_pos(old.y_pos),
+						    x_add(old.x_add),
+						    y_add(old.y_add)
+{
+}
+
+StarfieldBackgroundStars
+StarfieldBackgroundStars::operator= (const StarfieldBackgroundStars& old)
+{
+  if (this == &old)
+    return *this;
+
+  WorldObj::operator=(old);
+
+  sur   = old.sur;
+  x_pos = old.x_pos;
+  y_pos = old.y_pos;
+  x_add = old.x_add;
+  y_add = old.y_add;
+ 
+  return *this;
 }
 
 void

@@ -1,4 +1,4 @@
-//  $Id: pingu_action.cxx,v 1.5 2002/06/28 15:12:22 torangan Exp $
+//  $Id: pingu_action.cxx,v 1.6 2002/08/23 15:49:49 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,17 +26,16 @@
 // Initialise class static.
 const int PinguAction::pingu_height = 26;
 
-PinguAction::PinguAction()
-  : pingu (0)
+PinguAction::PinguAction () : pingu (0)
 {
 }
 
-PinguAction::~PinguAction()
+PinguAction::~PinguAction ()
 {
 }
 
 void
-PinguAction::set_pingu(Pingu* pingu_data)
+PinguAction::set_pingu (Pingu* pingu_data)
 {
   pingu = pingu_data;
   assert(pingu);
@@ -54,13 +53,13 @@ PinguAction::need_catch()
 // Wrapper around the colmap, to get the pixels infront of the pingu,
 // from is current position
 int
-PinguAction::rel_getpixel(int x, int y)
+PinguAction::rel_getpixel (int x, int y)
 {
   return pingu->get_world()->get_colmap()->getpixel(pingu->get_x() + (x * pingu->direction), (pingu->get_y ()) - y);
 }
 
 ActionType
-PinguAction::get_activation_mode() const
+PinguAction::get_activation_mode () const
 {
   return INSTANT;
 }

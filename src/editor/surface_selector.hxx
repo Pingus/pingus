@@ -1,4 +1,4 @@
-//  $Id: surface_selector.hxx,v 1.5 2002/08/16 13:03:36 torangan Exp $
+//  $Id: surface_selector.hxx,v 1.6 2002/08/23 15:49:55 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,14 +20,13 @@
 #ifndef HEADER_PINGUS_EDITOR_SURFACE_SELECTOR_HXX
 #define HEADER_PINGUS_EDITOR_SURFACE_SELECTOR_HXX
 
+#include "../pingus.hxx"
 #include <string>
 #include <vector>
 #include <ClanLib/Display/Display/surface.h>
-#include "../pingus.hxx"
 
 class CL_Font;
 
-///
 struct surface_obj
 {
   /** Thumbnail of the surface */
@@ -45,39 +44,36 @@ struct surface_obj
   /** The time the small tumbnail was selected, when the mouse is
       longer than 1sec above the surface it will be enlarged */
   unsigned int display_time;
+  
+  surface_obj ();
+  surface_obj (const surface_obj& old);
+  surface_obj operator= (const surface_obj& old);
 };
 
-///
 class SurfaceSelector
 {
 private:
-  ///
   CL_Font* font;
-  ///
   std::vector<surface_obj>* sur_list;
-  ///
   int y_of;
-  ///
   int width;
-  ///
   int height;
 
-  ///
-  void   draw();
-  ///
-  void scroll();
-  ///
-  std::vector<surface_obj>::iterator get_current_obj();
+  void   draw ();
+  void scroll ();
+  std::vector<surface_obj>::iterator get_current_obj ();
 
   std::vector<surface_obj>::iterator c_obj;
+  
 public:
-  ///
-  SurfaceSelector(std::vector<surface_obj>*);
-  ///
-  ~SurfaceSelector();
+  SurfaceSelector (std::vector<surface_obj>*);
+  ~SurfaceSelector ();
 
-  ///
-  std::string select();
+  std::string select ();
+  
+private:
+  SurfaceSelector (const SurfaceSelector&);
+  SurfaceSelector operator= (const SurfaceSelector&);
 }; 
 
 

@@ -1,4 +1,4 @@
-//  $Id: plfobj.hxx,v 1.6 2002/07/01 18:36:40 grumbel Exp $
+//  $Id: plfobj.hxx,v 1.7 2002/08/23 15:49:54 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,54 +26,60 @@
 #include "../trap_data.hxx"
 #include "sprite_editorobj.hxx"
 
-///
 class EntranceObj : public SpriteEditorObj,
 		    public EntranceData
 {
-private:
 public:
-  EntranceObj(const EntranceData&);
+  EntranceObj (const EntranceData&);
 
-  EditorObj* duplicate();
-  void write_xml(std::ostream& xml) { EntranceData::write_xml (xml); }
-  std::string status_line();
+  EditorObj* duplicate ();
+  void write_xml (std::ostream& xml) { EntranceData::write_xml (xml); }
+  std::string status_line ();
   Pingus::Editor::PropertyFrame* get_gui_dialog (CL_Component* parent);
+  
+private:
+  EntranceObj (const EntranceObj&);
+  EntranceObj operator= (const EntranceObj&);
 };
 
-///
 class ExitObj : public SpriteEditorObj,
 		public ExitData
 {
-private:
 public:
-  ExitObj(const ExitData&);
+  ExitObj (const ExitData&);
 
   EditorObj* duplicate();
   void write_xml(std::ostream& xml) { ExitData::write_xml (xml); }
   std::string  status_line();
+  
+private:
+  ExitObj (const ExitObj&);
+  ExitObj operator= (const ExitObj&);
 };
 
 
-///
 class TrapObj : public SpriteEditorObj,
 		protected TrapData
 {
 private:
   int frame;
 public:
-  TrapObj(const TrapData&);
+  TrapObj (const TrapData&);
 
-  EditorObj* duplicate();
-  void write_xml(std::ostream& xml) { TrapData::write_xml (xml); }
+  EditorObj* duplicate ();
+  void write_xml (std::ostream& xml) { TrapData::write_xml (xml); }
   void draw (EditorView * view);
-  std::string  status_line();
+  std::string status_line ();
+  
+private:
+  TrapObj (const TrapObj&);
+  TrapObj operator= (const TrapObj&);
 };
 
 ///
 class LiquidObj : public SpriteEditorObj,
 		  protected LiquidData
 {
-private:
 public:
   LiquidObj(const LiquidData& data);
 
@@ -88,6 +94,10 @@ public:
 
   void make_larger ();
   void make_smaller ();
+  
+private:
+  LiquidObj (const LiquidObj&);
+  LiquidObj operator= (const LiquidObj&);
 };
 
 #endif

@@ -1,4 +1,4 @@
-//  $Id: pingu_info.hxx,v 1.3 2002/07/02 15:46:58 torangan Exp $
+//  $Id: pingu_info.hxx,v 1.4 2002/08/23 15:49:49 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,6 +36,10 @@ public:
 
   void draw();
   void set_pingu(Pingu* p);
+  
+private:
+  PinguInfo (const PinguInfo&);
+  PinguInfo operator= (const PinguInfo&);
 };
 
 #endif

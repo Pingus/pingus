@@ -1,4 +1,4 @@
-//  $Id: spot_map.cxx,v 1.7 2002/08/17 17:56:23 torangan Exp $
+//  $Id: spot_map.cxx,v 1.8 2002/08/23 15:49:50 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,13 +33,28 @@
 using namespace Pingus;
 using namespace std;
 
-MapTileSurface::MapTileSurface()
+MapTileSurface::MapTileSurface () : empty(true)
 {
-  empty = true;
 }
 
 MapTileSurface::~MapTileSurface()
 {
+}
+
+MapTileSurface::MapTileSurface (const MapTileSurface& old) : empty(old.empty),
+                                                             surface(old.surface)
+{
+}
+
+MapTileSurface MapTileSurface::operator= (const MapTileSurface& old)
+{
+  if (this == &old)
+    return *this;
+
+  empty   = old.empty;
+  surface = old.surface;
+  
+  return *this;
 }
 
 void

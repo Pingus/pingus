@@ -1,4 +1,4 @@
-//  $Id: axis_scroller.hxx,v 1.2 2002/08/14 12:41:22 torangan Exp $
+//  $Id: axis_scroller.hxx,v 1.3 2002/08/23 15:49:55 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -53,6 +53,10 @@ namespace Input {
       void  get_delta (float& x, float& y) const;
       
       void  update (float delta);
+      
+    private:
+      AxisScroller (const AxisScroller&);
+      AxisScroller operator= (const AxisScroller&);
   };
 }
 

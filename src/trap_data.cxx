@@ -1,4 +1,4 @@
-//  $Id: trap_data.cxx,v 1.5 2002/08/22 00:36:30 grumbel Exp $
+//  $Id: trap_data.cxx,v 1.6 2002/08/23 15:49:51 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,7 +29,10 @@
 #include "pingus_error.hxx"
 #include "editor/plfobj.hxx"
 #include "xml_helper.hxx"
-#include "boost/smart_ptr.hpp"
+
+TrapData::TrapData ()
+{
+}
 
 TrapData::TrapData (xmlDocPtr doc, xmlNodePtr cur)
 {
@@ -59,6 +62,30 @@ TrapData::TrapData (xmlDocPtr doc, xmlNodePtr cur)
 
       cur = cur->next;
     }
+}
+
+TrapData::TrapData (const TrapData& old) : WorldObjData(old),
+                                           type(old.type),
+                                           pos(old.pos),
+					   x_target(old.x_target),
+					   y_target(old.y_target)
+{
+}
+
+TrapData
+TrapData::operator= (const TrapData& old)
+{
+  if (this == &old)
+    return *this;
+    
+  WorldObjData::operator=(old);
+  
+  type     = old.type;
+  pos      = old.pos;
+  x_target = old.x_target;
+  y_target = old.y_target;
+  
+  return *this;
 }
 
 void
@@ -103,4 +130,3 @@ TrapData::create_EditorObj ()
 }
 
 /* EOF */
-

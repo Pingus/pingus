@@ -1,4 +1,4 @@
-//  $Id: axis_event.hxx,v 1.2 2002/08/16 18:13:36 torangan Exp $
+//  $Id: axis_event.hxx,v 1.3 2002/08/23 15:49:55 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,6 +36,10 @@ namespace Input {
       AxisEvent (float dir_, AxisName name_=action) : dir(dir_), name(name_) { }
       
       EventType get_type () { return AxisEventType; }
+      
+    private:
+      AxisEvent (const AxisEvent&);
+      AxisEvent operator= (const AxisEvent&);
   };
 
 }

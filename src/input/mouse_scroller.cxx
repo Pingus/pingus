@@ -1,4 +1,4 @@
-//  $Id: mouse_scroller.cxx,v 1.2 2002/08/14 12:41:22 torangan Exp $
+//  $Id: mouse_scroller.cxx,v 1.3 2002/08/23 15:49:56 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,7 +22,11 @@
 #include <ClanLib/Display/Input/inputcursor.h>
 #include "mouse_scroller.hxx"
 
-namespace Input {
+namespace Input
+{
+  MouseScroller::MouseScroller () : old_x(0), old_y(0), x_delta(0), y_delta(0)
+  {
+  }  
 
   const float&
   MouseScroller::get_x_delta () const

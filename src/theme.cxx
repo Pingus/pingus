@@ -1,4 +1,4 @@
- //  $Id: theme.cxx,v 1.5 2002/08/22 02:24:59 grumbel Exp $
+ //  $Id: theme.cxx,v 1.6 2002/08/23 15:49:51 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,7 +17,6 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "pingus.hxx"
 #include <ClanLib/Core/System/error.h>
 #include <ClanLib/Core/System/system.h>
 #include <ClanLib/Display/Display/display.h>
@@ -36,21 +35,20 @@
 #include "xml_plf.hxx"
 #include "screen_manager.hxx"
 
-Theme::Theme(std::string filename)
-  : filename (filename)
+Theme::Theme (const std::string& filename) 
+            : font(PingusResource::load_font("Fonts/pingus_small","fonts")),
+	      title(PingusResource::load_font("Fonts/pingus","fonts")),
+	      filename (filename),
+	      is_loaded(false)
 {
-  //std::cout << "Theme: Constructing: " << filename << std::endl;
-  title = PingusResource::load_font("Fonts/pingus","fonts");
-  font  = PingusResource::load_font("Fonts/pingus_small","fonts");
-  is_loaded = false;
 }
 
-Theme::~Theme()
+Theme::~Theme ()
 {
 }
   
 void
-Theme::load(std::string filename)
+Theme::load (const std::string& filename)
 {
   if (verbose) std::cout << "Theme: loading: " << filename << std::endl;
   plt.parse(filename);

@@ -1,4 +1,4 @@
-//  $Id: multiline_text.hxx,v 1.3 2002/08/16 13:03:35 torangan Exp $
+//  $Id: multiline_text.hxx,v 1.4 2002/08/23 15:49:49 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,42 +20,33 @@
 #ifndef HEADER_PINGUS_MULTILINE_TEXT_HXX
 #define HEADER_PINGUS_MULTILINE_TEXT_HXX
 
+#include "pingus.hxx"
 #include <string>
 #include <vector>
-#include "pingus.hxx"
 
 class CL_Font;
 
-///
 class MultiLineText
 {
 private:
-  ///
   CL_Font* font;
-  ///
   std::vector<std::string> text;
-  ///
   int width, height;
 public:
-  ///
   MultiLineText();
 
-  ///
   void set_font(CL_Font*);
-  ///
   void set_text(const std::string&, int width);
-  ///
   void print_left(int, int);
-  ///
   void print_right(int, int);
-  ///
   void print_center(int, int);
-  ///
   int  get_width();
-  ///
   int  get_height();
-}///
-;
+  
+private:
+  MultiLineText (const MultiLineText&);
+  MultiLineText operator= (const MultiLineText&);
+};
 
 #endif
 

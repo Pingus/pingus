@@ -1,4 +1,4 @@
-//  $Id: pingus_menu_manager.hxx,v 1.8 2002/08/04 15:42:23 grumbel Exp $
+//  $Id: pingus_menu_manager.hxx,v 1.9 2002/08/23 15:49:50 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -49,8 +49,6 @@ private:
 
   /// Unregister all event-handling stuff
   void unregister_events ();
-  PingusMenuManager ();
-
 public:
   /* Menu's FIXME: These shouldn't get exported to the outsite,
      instead only handles (enum's) should be visible */
@@ -93,6 +91,13 @@ public:
   void push_menu (PingusSubMenu * menu);
 
   static PingusMenuManager* instance ();
+
+protected:
+  PingusMenuManager ();
+  
+private:
+  PingusMenuManager (const PingusMenuManager&);
+  PingusMenuManager operator= (const PingusMenuManager&);
 };
 
 #endif

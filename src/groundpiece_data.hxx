@@ -1,4 +1,4 @@
-//  $Id: groundpiece_data.hxx,v 1.9 2002/07/02 10:42:38 grumbel Exp $
+//  $Id: groundpiece_data.hxx,v 1.10 2002/08/23 15:49:48 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,11 +29,6 @@
 
 class EditorObj;
 
-namespace boost {
-  template <class T> class shared_ptr;
-}
-
-///
 class GroundpieceData 
 {
 public:
@@ -42,7 +37,7 @@ public:
   ResDescriptor desc;
   CL_Vector pos;
 
-  typedef enum { 
+  enum GPType { 
     GP_NOTHING,
     GP_SOLID, 
     GP_TRANSPARENT,
@@ -52,15 +47,17 @@ public:
     GP_LAVA,
     GP_REMOVE, 
     GP_OUTOFSCREEN
-  } GPType;
+  };
+  
   GPType gptype; 
-
-  /********************/
-  /* Static Functions */
-  /********************/
 
   GroundpieceData ();
   GroundpieceData (xmlDocPtr doc, xmlNodePtr cur);
+  
+  GroundpieceData (const GroundpieceData& old);
+  GroundpieceData operator= (const GroundpieceData& old);
+
+  virtual ~GroundpieceData ();
 
   EditorObjLst create_EditorObj();
   void write_xml(std::ostream& xml);

@@ -1,4 +1,4 @@
-//  $Id: button_factory.hxx,v 1.3 2002/07/11 15:38:07 torangan Exp $
+//  $Id: button_factory.hxx,v 1.4 2002/08/23 15:49:55 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,6 +38,11 @@ namespace Input {
     
     public:
       static Button* create (xmlNodePtr cur);
+      
+    private:
+      ButtonFactory ();
+      ButtonFactory (const ButtonFactory&);
+      ButtonFactory operator= (const ButtonFactory&);
   };
 }
 

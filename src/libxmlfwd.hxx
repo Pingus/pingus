@@ -1,4 +1,4 @@
-//  $Id: libxmlfwd.hxx,v 1.2 2002/08/16 13:03:35 torangan Exp $
+//  $Id: libxmlfwd.hxx,v 1.3 2002/08/23 15:49:49 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,7 @@
 
 #ifndef WIN32
 // FIXME: This might not work with each and every version of libxml
+//        maybe some #ifdef for different versions are required
 class _xmlDoc;  typedef _xmlDoc*  xmlDocPtr;
 class _xmlNode; typedef _xmlNode* xmlNodePtr;
 #else

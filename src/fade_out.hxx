@@ -1,4 +1,4 @@
-//  $Id: fade_out.hxx,v 1.2 2002/06/24 22:52:54 grumbel Exp $
+//  $Id: fade_out.hxx,v 1.3 2002/08/23 15:49:48 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -57,6 +57,10 @@ public:
   static void fade_to_black(int steps = 20);
   ///
   static void clear(void);
+  
+private:
+  FadeOut (const FadeOut&);
+  FadeOut operator= (const FadeOut&);
 };
 
 class EnlargingRectFadeOut : public FadeOut
@@ -68,6 +72,10 @@ public:
   ~EnlargingRectFadeOut () {}
   
   void draw ();
+  
+private:
+  EnlargingRectFadeOut (const EnlargingRectFadeOut&);
+  EnlargingRectFadeOut operator= (const EnlargingRectFadeOut&);
 };
 
 #endif

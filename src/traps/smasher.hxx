@@ -1,4 +1,4 @@
-//  $Id: smasher.hxx,v 1.2 2002/06/24 22:52:59 grumbel Exp $
+//  $Id: smasher.hxx,v 1.3 2002/08/23 15:49:56 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,7 +24,6 @@
 
 class TrapData;
 
-///
 class Smasher : public Trap
 {
 private:
@@ -33,13 +32,19 @@ private:
   int  count;
 
 public:
-  Smasher(const TrapData& data);
-  virtual ~Smasher();
+  Smasher (const TrapData& data);
+  virtual ~Smasher ();
 
-  void draw_offset(int x, int y, float s);
-  void draw_colmap();
-  void update(float delta);
-  void catch_pingu(Pingu* pingu);
+  void draw_offset (int x, int y, float s);
+  void draw_colmap ();
+  void update (float delta);
+  
+protected:
+  void catch_pingu (Pingu* pingu);
+  
+private:
+  Smasher (const Smasher&);
+  Smasher operator= (const Smasher&);
 };
 
 #endif

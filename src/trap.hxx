@@ -1,4 +1,4 @@
-//  $Id: trap.hxx,v 1.2 2002/06/24 22:52:57 grumbel Exp $
+//  $Id: trap.hxx,v 1.3 2002/08/23 15:49:51 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -45,9 +45,12 @@ public:
   virtual void draw_offset(int x, int y, float s = 1.0);
   virtual void update(float delta);
   
-  // FIXME: catch_pingu() need not be public. now, it is only called
-  // from update()
+protected:
   virtual void catch_pingu(Pingu*) =0;
+  
+private:
+  Trap (const Trap&);
+  Trap operator= (const Trap&);
 };
 
 #endif

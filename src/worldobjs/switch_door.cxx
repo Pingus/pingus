@@ -1,4 +1,4 @@
-//  $Id: switch_door.cxx,v 1.6 2002/08/17 17:56:24 torangan Exp $
+//  $Id: switch_door.cxx,v 1.7 2002/08/23 15:49:57 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,11 +26,9 @@
 #include "../xml_helper.hxx"
 #include "switch_door.hxx"
 #include "../pingu.hxx"
-#include "../boost/smart_ptr.hpp"
 
-SwitchDoorData::SwitchDoorData ()
+SwitchDoorData::SwitchDoorData () : door_height(10)
 {
-  door_height = 10;
 }
 
 SwitchDoorData::SwitchDoorData (xmlDocPtr doc, xmlNodePtr cur)
@@ -94,6 +92,28 @@ SwitchDoorData::SwitchDoorData (xmlDocPtr doc, xmlNodePtr cur)
     }
 }
 
+SwitchDoorData::SwitchDoorData (const SwitchDoorData& old) : WorldObjData(old),
+                                                             door_pos(old.door_pos),
+							     switch_pos(old.switch_pos),
+							     door_height(old.door_height)
+{
+}
+
+SwitchDoorData 
+SwitchDoorData::operator= (const SwitchDoorData& old)
+{
+  if (this == &old)
+    return *this;
+    
+  WorldObjData::operator=(old);
+  
+  door_pos    = old.door_pos;
+  switch_pos  = old.switch_pos;
+  door_height = old.door_height;
+  
+  return *this;
+}
+  
 void 
 SwitchDoorData::write_xml(std::ostream& xml)
 {

@@ -1,4 +1,4 @@
-//  $Id: component.hxx,v 1.8 2002/08/16 13:03:36 torangan Exp $
+//  $Id: component.hxx,v 1.9 2002/08/23 15:49:55 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,26 +31,28 @@ namespace GUI
   private:
 
   public:
-    virtual void draw () =0;
-    virtual void update (float delta) { if(delta);}
+    Component () { }
     
-    virtual bool is_at (int x, int y) { if(x); if (y); return false; }
+    virtual void draw () =0;
+    virtual void update (float delta) { UNUSED_ARG(delta);}
+    
+    virtual bool is_at (int x, int y) { UNUSED_ARG(x); UNUSED_ARG(y); return false; }
 
     // Events
     /** Gets issued once the primary button is pressed */
-    virtual void on_primary_button_press (int x, int y) { if(x); if (y); }
+    virtual void on_primary_button_press (int x, int y) { UNUSED_ARG(x); UNUSED_ARG(y); }
     
     /** Gets issued once the primary button is released */
-    virtual void on_primary_button_release (int x, int y) { if(x); if (y); }
+    virtual void on_primary_button_release (int x, int y) { UNUSED_ARG(x); UNUSED_ARG(y); }
 
-    virtual void on_secondary_button_press (int x, int y) { if(x); if (y); }
-    virtual void on_secondary_button_release (int x, int y) { if(x); if (y); }
+    virtual void on_secondary_button_press (int x, int y) { UNUSED_ARG(x); UNUSED_ARG(y); }
+    virtual void on_secondary_button_release (int x, int y) { UNUSED_ARG(x); UNUSED_ARG(y); }
 
     /** Gets emmited when a button is pressed and released over the
 	same component */
-    virtual void on_primary_button_click (int x, int y) { if(x); if (y); }
+    virtual void on_primary_button_click (int x, int y) { UNUSED_ARG(x); UNUSED_ARG(y); }
 
-    virtual void on_secondary_button_click (int x, int y) { if(x); if (y); }
+    virtual void on_secondary_button_click (int x, int y) { UNUSED_ARG(x); UNUSED_ARG(y); }
 
     /** Emmitted when pointer enters the region of the component */
     virtual void on_pointer_enter () {}
@@ -60,7 +62,7 @@ namespace GUI
 
     /** Emitted when the pointer moved, x and y are the new pointer
 	coordinates */
-    virtual void on_pointer_move (int x, int y) { if(x); if (y); }
+    virtual void on_pointer_move (int x, int y) { UNUSED_ARG(x); UNUSED_ARG(y); }
 
     // status functions for use in the update() function
     /** return true if currently pressed */
@@ -69,6 +71,10 @@ namespace GUI
     /** true if mouse is currently over, FIXME: these seem to be
 	unimplementable without renaming on_pointer_enter() and wrapp them */
     bool pointer_over ();
+    
+  private:
+    Component (const Component&);
+    Component operator= (const Component&); 
   };
 }
 

@@ -1,4 +1,4 @@
-//  $Id: html_browser.hxx,v 1.2 2002/08/16 13:03:35 torangan Exp $
+//  $Id: html_browser.hxx,v 1.3 2002/08/23 15:49:49 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,8 +20,8 @@
 #ifndef PINGUS_HTML_BROWSER_HXX
 #define PINGUS_HTML_BROWSER_HXX
 
-#include <string>
 #include "pingus.hxx"
+#include <string>
 
 /** Class for launching a HTMLBrowser */
 class HTMLBrowser

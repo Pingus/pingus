@@ -1,4 +1,4 @@
-//  $Id: pingus_map_manager.cxx,v 1.1 2002/06/12 19:06:12 grumbel Exp $
+//  $Id: pingus_map_manager.cxx,v 1.2 2002/08/23 15:49:50 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,13 +24,14 @@
 std::string PingusMapManager::directory;
 
 CL_Surface 
-PingusMapManager::get_surface (std::string /*level_filename*/)
+PingusMapManager::get_surface (const std::string& level_filename)
 {
+  UNUSED_ARG(level_filename);
   return CL_Surface ();
 }
 
 void 
-PingusMapManager::set_surface (std::string /*level_filename*/, const CL_Surface& surf)
+PingusMapManager::set_surface (const std::string& level_filename, const CL_Surface& surf)
 {
   CL_SurfaceProvider* provider = surf.get_provider ();
 
@@ -41,6 +42,8 @@ PingusMapManager::set_surface (std::string /*level_filename*/, const CL_Surface&
   //provider->get_data ();
   
   provider->unlock ();
+  
+  UNUSED_ARG(level_filename);
 }
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: specs_reader.hxx,v 1.3 2002/08/16 13:03:35 torangan Exp $
+//  $Id: specs_reader.hxx,v 1.4 2002/08/23 15:49:50 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,39 +20,32 @@
 #ifndef HEADER_PINGUS_SPECS_READER_HXX
 #define HEADER_PINGUS_SPECS_READER_HXX
 
+#include "pingus.hxx"
 #include <map>
 #include <fstream>
 #include <string>
-#include "pingus.hxx"
 
-///
 class SpecsReader
 {
 private:
-  ///
   std::map<std::string, int> token_ids;
-  ///
   std::map<int, std::string> values;
 
-  ///
   std::ifstream in;
 
 public:
-  ///
   SpecsReader();
   
-  ///
   int  open(const char*);
-  ///
   void close();
-  ///
   int  next_token();
-  ///
   void register_token(int token_id, std::string token_value);
-  ///
   std::string operator[](int t);
-}///
-;
+  
+private:
+  SpecsReader (const SpecsReader&);
+  SpecsReader operator= (const SpecsReader&);
+};
 
 #endif
 

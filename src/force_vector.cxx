@@ -1,4 +1,4 @@
-//  $Id: force_vector.cxx,v 1.4 2002/08/17 17:56:23 torangan Exp $
+//  $Id: force_vector.cxx,v 1.5 2002/08/23 15:49:48 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,6 +26,29 @@ CL_Vector grav(0.0,1.0);
 
 std::vector<GravityForce>   ForcesHolder::grav_array;
 std::vector<ExplosionForce> ForcesHolder::explo_array;
+
+
+GravityForce GravityForce::operator= (const GravityForce& old)
+{
+  if (this == &old)
+    return *this;
+    
+  ifv = old.ifv;
+  
+  return *this;
+}
+
+ExplosionForce ExplosionForce::operator= (const ExplosionForce& old)
+{
+  if (this == &old)
+    return *this;
+  
+  iinten = old.iinten;
+  isize  = old.isize;
+  ip     = old.ip;
+  
+  return *this;
+}
 
 // Apply the explosion force
 CL_Vector

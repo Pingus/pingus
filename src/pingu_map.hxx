@@ -1,4 +1,4 @@
-//  $Id: pingu_map.hxx,v 1.2 2002/06/24 22:52:55 grumbel Exp $
+//  $Id: pingu_map.hxx,v 1.3 2002/08/23 15:49:49 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,7 +35,6 @@ enum MapType { BMP, SPOT, RANDOM, UNDEF };
 ///
 class PinguMap : public WorldObj
 {
-private:
 public:
   ///
   PinguMap();
@@ -53,26 +52,26 @@ public:
    */
   virtual void draw(int x1, int y1, int w, int h,
 		    int x_of, int y_of, float s=1.0) = 0;
+		    
   virtual void update (float delta); 
+  
   virtual void draw_offset (int, int, float delta); 
-  ///
   virtual void mark_dirty(int,int,int,int);
-  ///
   virtual ColMap *get_colmap();
-  ///
+  
   virtual int  get_width() = 0;
-  ///
   virtual int  get_height() = 0;
-  ///
+  
   virtual void remove(int, int) {};
-  ///
   virtual void remove(CL_SurfaceProvider*, int, int);
-  ///
   virtual void remove(const CL_Surface&, int, int);
-  ///
+  
   virtual void put(const CL_Surface&, int, int);
-  ///
   virtual void put(CL_SurfaceProvider*, int, int);
+  
+private:
+  PinguMap (const PinguMap&);
+  PinguMap operator= (const PinguMap&);
 };
 
 #endif

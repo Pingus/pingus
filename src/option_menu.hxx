@@ -1,4 +1,4 @@
-//  $Id: option_menu.hxx,v 1.3 2002/07/02 15:46:58 torangan Exp $
+//  $Id: option_menu.hxx,v 1.4 2002/08/23 15:49:49 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,112 +29,90 @@ class CL_Key;
 class CL_Font;
 class CL_InputDevice;
 
-///
 class OptionEntry
 {
 private:
-  ///
-  std::string str;
-  ///
-  bool*   value_bool;
-  ///
+  bool*        value_bool;
+  int*         value_int;
   std::string* value_str;
-  ///
-  int*    value_int;
-  ///
-  int x_pos, y_pos;
-  ///
-  CL_Font* font;
+  CL_Font*     font;
+  int          x_pos;
+  int          y_pos;
+  std::string  str;
 
 public:
-  ///
-  OptionEntry(std::string, bool*, int, int);
-  ///
-  OptionEntry(std::string, int*, int, int);
-  ///
-  OptionEntry(std::string, std::string*, int, int);
-  ///
+  OptionEntry (const std::string&, bool*, int, int);
+  OptionEntry (const std::string&, int*, int, int);
+  OptionEntry (const std::string&, std::string*, int, int);
+  
+  OptionEntry (const OptionEntry& old);
+  OptionEntry operator= (const OptionEntry& old);
+
+  ~OptionEntry ();
+    
   bool mouse_over();
-  ///
   void draw();
-  ///
   void toggle();
-  ///
   void rtoggle();
-}///
-;
+};
 
 /** F***ing, stupid, ugly option menu, need to rewrite that... */
 class OptionMenu : public PingusSubMenu
 {
 private:
-  ///
   CL_Font* font;
-  ///
   CL_Font* title_font;
-  ///
   CL_Surface background;
-  ///
   CL_Surface back;
-  ///
   bool quit;
-  ///
   bool is_init;
-  ///
   int entry_x, entry_y;
-  ///
   typedef std::vector<OptionEntry>::iterator EntryIter;
-  ///
   std::vector<OptionEntry> entry;
 
-  ///
   class Event //: public CL_Event_ButtonPress, public CL_Event_ButtonRelease
   {
   public:
-    ///
     OptionMenu* option_menu;
-    ///
-    virtual void on_button_press(CL_InputDevice *device, const CL_Key &key);
-    ///
-    virtual void on_button_release(CL_InputDevice *device, const CL_Key &key);
+    
+  public:
+    Event ();
+    
+    virtual void on_button_press (CL_InputDevice *device, const CL_Key &key);
+    virtual void on_button_release (CL_InputDevice *device, const CL_Key &key);
+    
+  private:
+    Event (const Event&);
+    Event operator= (const Event&);
   };
-  ///
+  
+  
   friend class Event;
-  ///
   Event* event;
 
 public:
-  ///
-  OptionMenu(PingusMenuManager* m);
-  ///
-  ~OptionMenu();
+  OptionMenu (PingusMenuManager* m);
+  ~OptionMenu ();
 
-  ///
-  void init();
-  ///
-  void display();
-  ///
-  void draw_background();
-  ///
+  void init ();
+  void display ();
+  void draw_background ();
   void preload () { init (); }
   void update (float delta);
-  void draw();
-  ///
-  void check_click();
-  ///
-  EntryIter current_item();
-  ///
-  void add_entry(std::string e, bool* v);
-  ///
-  void add_entry(std::string e, int* v);
-  ///
-  void add_entry(std::string e, std::string* v);
+  void draw ();
+  void check_click ();
+  EntryIter current_item ();
+  void add_entry (const std::string& e, bool* v);
+  void add_entry (const std::string& e, int* v);
+  void add_entry (const std::string& e, std::string* v);
+  
+private:
+  OptionMenu (const OptionMenu&);
+  OptionMenu operator= (const OptionMenu&);
 };
 
-///
 extern OptionMenu option_menu;
 
 #endif
 
 /* EOF */
-

@@ -1,4 +1,4 @@
-//  $Id: starfield_background.hxx,v 1.6 2002/07/02 13:36:06 torangan Exp $
+//  $Id: starfield_background.hxx,v 1.7 2002/08/23 15:49:54 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,13 +34,17 @@ public:
   int large_stars_count;
 
   StarfieldBackgroundData ();
-  StarfieldBackgroundData (xmlDocPtr /*doc*/, xmlNodePtr cur);
+  StarfieldBackgroundData (xmlDocPtr doc, xmlNodePtr cur);
+  StarfieldBackgroundData (const StarfieldBackgroundData& old);
+  StarfieldBackgroundData operator= (const StarfieldBackgroundData& old);
+  
   virtual ~StarfieldBackgroundData () {}
 
   void write_xml(std::ostream& xml);
 
   WorldObj* create_WorldObj();
   EditorObjLst create_EditorObj();
+  
 };
 
 class StarfieldBackgroundStars : public WorldObj
@@ -64,6 +68,9 @@ public:
 
   StarfieldBackgroundStars () {}
   StarfieldBackgroundStars (Type type);
+  
+  StarfieldBackgroundStars (const StarfieldBackgroundStars& old);
+  StarfieldBackgroundStars operator= (const StarfieldBackgroundStars& old);
   
   // Never used
   float get_z_pos() const { return -100; }
@@ -90,6 +97,10 @@ public:
 
   void update(float delta);
   void draw_offset(int x_of, int y_of, float s = 1.0);
+  
+private:
+  StarfieldBackground (const StarfieldBackground&);
+  StarfieldBackground operator= (const StarfieldBackground&);
 };
 
 class EditorStarfieldBackground : public StarfieldBackgroundData,
@@ -97,6 +108,7 @@ class EditorStarfieldBackground : public StarfieldBackgroundData,
 {
 private:
   CL_Vector pos;
+  
 public:
   EditorStarfieldBackground (const StarfieldBackgroundData& data)
     : StarfieldBackgroundData (data),
@@ -114,6 +126,10 @@ public:
 				 + to_string (pos.x) + ", "
 				 + to_string (pos.y) + ", "
 				 + to_string (pos.z); }
+
+private:
+  EditorStarfieldBackground (const EditorStarfieldBackground&);
+  EditorStarfieldBackground operator= (const EditorStarfieldBackground&);
 };
 
 #endif

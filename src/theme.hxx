@@ -1,4 +1,4 @@
-//  $Id: theme.hxx,v 1.2 2002/06/24 22:52:57 grumbel Exp $
+//  $Id: theme.hxx,v 1.3 2002/08/23 15:49:51 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,19 +26,13 @@
 
 class CL_Font;
 
-///
 class Theme
 {
 private:
-  ///
   PLTXML plt;
-  ///
   CL_Surface surface;
-  ///
   CL_Surface background;
-  ///
   CL_Font*    font;
-  ///
   CL_Font*    title;
 
   /** The last level, which is accessible */
@@ -55,7 +49,6 @@ private:
   /** The filenames of the levels */
   std::vector<std::string> level_filenames;
 
-  ///
   std::string title_name;
   std::string status_file;
 
@@ -63,40 +56,33 @@ private:
       used to calculate mark_level_at_point() */
   int level_start_y_pos;
 
-  ///
   bool has_description;
-  ///
   MultiLineText description;
   
   bool is_loaded;
 
-  ///
   void load_status(std::string);
-  ///
   void load_levels();
 
 public:
-  ///
-  Theme(std::string);
-  ///
-  ~Theme();
+  Theme (const std::string& filename);
+  ~Theme ();
 
   void preload ();
 
   /** Marks the level, which is under the given coordinates 
       @param x X-Position (normaly CL_Mouse::get_x())
       @param y Y-Position (normaly CL_Mouse::get_y()) */
-  int mark_level_at_point(int x, int y);
-  ///
-  void next_level();
-  ///
-  void previous_level();
-  ///
-  void load(std::string);
-  ///
-  void draw_title();
-  ///
-  void play();
+  int mark_level_at_point (int x, int y);
+  void next_level ();
+  void previous_level ();
+  void load (const std::string& filename);
+  void draw_title ();
+  void play ();
+  
+private:
+  Theme (const Theme&);
+  Theme operator= (const Theme&);
 };
 
 #endif

@@ -21,21 +21,6 @@
 #include <ClanLib/Display/SurfaceProviders/canvas.h>
 #include "caimagemanipulation.h"
 
-/** Constructor.
-*/
-CAImageManipulation::CAImageManipulation()
-{
-}
-
-
-/** Destructor.
-*/
-CAImageManipulation::~CAImageManipulation()
-{
-}
-
-
-
 /** Returns a pointer to a new image, based on 'surface'
     but rotated by an angle of 'degrees' degrees.
     \param surface The original surface

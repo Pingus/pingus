@@ -1,4 +1,4 @@
-//  $Id: world.hxx,v 1.7 2002/08/22 02:17:19 grumbel Exp $
+//  $Id: world.hxx,v 1.8 2002/08/23 15:49:52 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,10 +20,10 @@
 #ifndef HEADER_PINGUS_WORLD_HXX
 #define HEADER_PINGUS_WORLD_HXX
 
+#include "pingus.hxx"
 #include <list>
 #include <vector>
 #include <string>
-#include "pingus.hxx"
 
 // Forward declarations
 class CL_Vector;
@@ -171,6 +171,10 @@ public:
   
   /** Return a pointer to the GameTime object of this World */
   GameTime* get_game_time ();
+  
+private:
+  World (const World&);
+  World operator= (const World&);
 };
 
 #endif

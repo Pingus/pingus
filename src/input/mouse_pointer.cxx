@@ -1,4 +1,4 @@
-//  $Id: mouse_pointer.cxx,v 1.3 2002/08/14 12:41:22 torangan Exp $
+//  $Id: mouse_pointer.cxx,v 1.4 2002/08/23 15:49:56 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,9 @@
 
 namespace Input
 {
+  MousePointer::MousePointer () : x_pos(0), y_pos(0)
+  {
+  }
 
   const float&
   MousePointer::get_x_pos () const

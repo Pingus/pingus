@@ -1,4 +1,4 @@
-//  $Id: stat.hxx,v 1.4 2002/07/02 13:36:07 torangan Exp $
+//  $Id: stat.hxx,v 1.5 2002/08/23 15:49:57 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,14 +28,18 @@
 class PingusWorldMapNodeStat
 {
 public:
-  PingusWorldMapNodeStat ();
-
-  int id;
-  std::string levelfile;
-  std::string checksum;
   bool finished;
   bool accessible;
+  int id;
   int  percentage;
+  std::string levelfile;
+  std::string checksum;
+  
+public:
+  PingusWorldMapNodeStat ();
+
+  PingusWorldMapNodeStat (const PingusWorldMapNodeStat& old);
+  PingusWorldMapNodeStat operator= (const PingusWorldMapNodeStat& old);
 };
 
 /** Loads a status file and gives you access to the information, which
@@ -68,8 +72,11 @@ public:
   /// @return true if the node with the given id is accessible, false otherwise
   bool accessible (int id);
 
-  ///
   bool empty () { return is_empty; } 
+  
+private:
+  PingusWorldMapStat (const PingusWorldMapStat&);
+  PingusWorldMapStat operator= (const PingusWorldMapStat&);
 };
 
 #endif

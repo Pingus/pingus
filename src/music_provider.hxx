@@ -1,4 +1,4 @@
-//  $Id: music_provider.hxx,v 1.2 2002/06/24 22:52:55 grumbel Exp $
+//  $Id: music_provider.hxx,v 1.3 2002/08/23 15:49:49 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,31 +20,22 @@
 #ifndef HEADER_PINGUS_MUSIC_PROVIDER_HXX
 #define HEADER_PINGUS_MUSIC_PROVIDER_HXX
 
-#include <list>
+#include <map>
 #include <string>
 #include "audio.hxx"
 
-///
 class PingusMusicProvider
 {
-private:
-  ///
-  struct music_pair {
-    ///
-    Mix_Music* data;
-    ///
-    std::string     filename;
-  }///
-;
-  ///
-  static std::list<music_pair> music;
+  static std::map<std::string, Mix_Music*> music;
+
 public:
-  ///
-  static Mix_Music* load(std::string);
-  ///
-  static Mix_Music* get(std::string);
-}///
-;
+  static Mix_Music* load (const std::string& str);
+  static Mix_Music* get (const std::string& str);
+  
+private:
+  PingusMusicProvider (const PingusMusicProvider&);
+  PingusMusicProvider operator= (const PingusMusicProvider&);
+};
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: plf.cxx,v 1.3 2002/08/22 02:24:59 grumbel Exp $
+//  $Id: plf.cxx,v 1.4 2002/08/23 15:49:50 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,14 +17,12 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "pingus.hxx"
 #include "xml_plf.hxx"
 #include "plf_plf.hxx"
 #include "globals.hxx"
 #include "system.hxx"
 
 using namespace std;
-using namespace boost;
 
 PLF::PLF()
 {

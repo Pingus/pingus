@@ -1,4 +1,4 @@
-//  $Id: angel.hxx,v 1.5 2002/08/12 22:52:04 grumbel Exp $
+//  $Id: angel.hxx,v 1.6 2002/08/23 15:49:53 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,10 +42,13 @@ public:
   Angel ();
   void  init();
   std::string get_name() const { return "Angel"; }
-  ActionName get_type() const { return Pingus::Actions::Angel; }
+  Pingus::Actions::ActionName get_type() const { return Pingus::Actions::Angel; }
   void  update(float delta);
   void  draw_offset(int, int, float s);
 
+private:
+  Angel (const Angel&);
+  Angel operator= (const Angel&);
 };
 
 #endif

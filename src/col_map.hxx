@@ -1,4 +1,4 @@
-//  $Id: col_map.hxx,v 1.4 2002/06/25 18:15:18 grumbel Exp $
+//  $Id: col_map.hxx,v 1.5 2002/08/23 15:49:48 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -86,6 +86,10 @@ public:
   void remove(CL_SurfaceProvider*, int x, int y);
 
   void draw(int, int, float);
+  
+private:
+  ColMap (const ColMap&);
+  ColMap operator= (const ColMap&);
 };
 
 #endif /* COLMAP_HH */

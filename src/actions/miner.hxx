@@ -1,4 +1,4 @@
-//  $Id: miner.hxx,v 1.4 2002/06/28 15:12:22 torangan Exp $
+//  $Id: miner.hxx,v 1.5 2002/08/23 15:49:53 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,7 +23,6 @@
 #include "../pingu_action.hxx"
 #include "../sprite.hxx"
 
-///
 class Miner : public PinguAction
 {
 private:  
@@ -32,15 +31,18 @@ private:
   Sprite sprite;
   int slow_count;
 public:
-  ///
-  Miner();
+  Miner ();
   virtual ~Miner () {}
 
-  void init(void);
-  std::string get_name() const { return "Miner"; }
-  ActionName get_type() const { return Pingus::Actions::Miner; }
-  void update(float delta);
-  void draw_offset(int x, int y, float s);
+  void init (void);
+  std::string get_name () const { return "Miner"; }
+  Pingus::Actions::ActionName get_type () const { return Pingus::Actions::Miner; }
+  void update (float delta);
+  void draw_offset (int x, int y, float s);
+  
+private:
+  Miner (const Miner&);
+  Miner operator= (const Miner&); 
 };
 
 #endif

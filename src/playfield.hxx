@@ -1,4 +1,4 @@
-//  $Id: playfield.hxx,v 1.9 2002/08/14 12:45:02 torangan Exp $
+//  $Id: playfield.hxx,v 1.10 2002/08/23 15:49:50 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #ifndef HEADER_PINGUS_PLAYFIELD_HXX
 #define HEADER_PINGUS_PLAYFIELD_HXX
 
+#include <ClanLib/Core/Math/rect.h>
 #include "view.hxx"
 #include "client.hxx"
 #include "gui/component.hxx"
@@ -55,23 +56,12 @@ private:
   int scroll_center_x;
   int scroll_center_y;
 
-  // FIXME: can be replaced with CL_Rect
-  struct Rect {
-    Rect(int arg_x1, int arg_y1, int arg_x2, int arg_y2) {
-      x1 = arg_x1;
-      y1 = arg_y1;
-      x2 = arg_x2;
-      y2 = arg_y2;
-    }
-    int x1, y1, x2, y2;
-  };
-
-  std::vector<Rect> clipping_rectangles;
+  std::vector<CL_Rect> clipping_rectangles;
 
   int mouse_x;
   int mouse_y;
 public:
-  Playfield(Client*, PLF* plf, World*);
+  Playfield (Client*, PLF* plf, World*);
   virtual ~Playfield();
 
   int get_x_offset();
@@ -103,7 +93,11 @@ public:
   void set_server(Server*);
   void set_client(Client*);
 
-  bool is_at (int x, int y) { if(x); if(y); return true; }
+  bool is_at (int x, int y) { UNUSED_ARG(x); UNUSED_ARG(y); return true; }
+  
+private:
+  Playfield (const Playfield&);
+  Playfield operator= (const Playfield&);
 };
 
 #endif

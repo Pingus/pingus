@@ -1,4 +1,4 @@
-//  $Id: res_descriptor.cxx,v 1.8 2002/08/16 15:13:59 torangan Exp $
+//  $Id: res_descriptor.cxx,v 1.9 2002/08/23 15:49:50 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,12 +33,25 @@ ResDescriptor::ResDescriptor()
   modifier = ROT0;
 }
 
-ResDescriptor::ResDescriptor(const ResDescriptor& res_desc)
+ResDescriptor::ResDescriptor (const ResDescriptor& res_desc)
+                            : type(res_desc.type),
+			      datafile(res_desc.datafile),
+			      res_name(res_desc.res_name),
+			      modifier(res_desc.modifier)
 {
-  type     = res_desc.type;
-  datafile = res_desc.datafile;
-  res_name = res_desc.res_name;
-  modifier = res_desc.modifier;
+}
+
+ResDescriptor ResDescriptor::operator= (const ResDescriptor& old)
+{
+  if (this == &old)
+    return *this;
+    
+  type     = old.type;
+  datafile = old.datafile;
+  res_name = old.res_name;
+  modifier = old.modifier;
+  
+  return *this; 
 }
 
 ResDescriptor::ResDescriptor(const std::string& arg_res_name,

@@ -1,4 +1,4 @@
-//  $Id: path_manager.hxx,v 1.3 2002/08/16 13:03:35 torangan Exp $
+//  $Id: path_manager.hxx,v 1.4 2002/08/23 15:49:49 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,15 +20,15 @@
 #ifndef HEADER_PINGUS_PATH_MANAGER_HXX
 #define HEADER_PINGUS_PATH_MANAGER_HXX
 
+#include "pingus.hxx"
 #include <string>
 #include <list>
-#include "pingus.hxx"
 
 class PathManager
 {
 private:
   std::list<std::string> path_list;
-  typedef std::list<std::string>::iterator PathIter;
+  typedef std::list<std::string>::const_iterator PathIter;
 
   bool path_found;
   std::string base_path;
@@ -38,27 +38,27 @@ public:
 
   /** Search for a path which contains all the files given in
       file_list */
-  bool find_path (std::list<std::string> file_list);
+  bool find_path (const std::list<std::string>& file_list);
 
   /** Search for a path which contains the file 'file' */
-  bool find_path (std::string file);
+  bool find_path (const std::string& file);
 
   /** Set the path directly without using find_path/add_path 
       Must include trailing slash */
-  void set_path (std::string path);
+  void set_path (const std::string& path);
 
   /** Add a path to the search list */
-  void add_path (std::string path);
-
-  /** Set the executable name (argv[0]), its use as a hint to find the
-      correct path */
-  void set_executable (std::string executable);
+  void add_path (const std::string& path);
 
   std::string get_base_path () { return base_path; }
 
   /** Complete a releative path to the absolute path, the returned
       path contains a trailing slash */
-  std::string complete (std::string relative_path);
+  std::string complete (const std::string& relative_path);
+  
+private:
+  PathManager (const PathManager&);
+  PathManager operator= (const PathManager&);
 };
 
 extern PathManager path_manager;

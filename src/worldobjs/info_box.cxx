@@ -1,4 +1,4 @@
-//  $Id: info_box.cxx,v 1.4 2002/07/02 10:42:39 grumbel Exp $
+//  $Id: info_box.cxx,v 1.5 2002/08/23 15:49:57 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,7 +26,6 @@
 #include "../xml_helper.hxx"
 #include "info_box.hxx"
 #include "../pingu.hxx"
-#include "../boost/smart_ptr.hpp"
 
 InfoBoxData::InfoBoxData ()
 {
@@ -73,6 +72,28 @@ InfoBoxData::InfoBoxData (xmlDocPtr doc, xmlNodePtr cur)
 	std::cout << "InfoBox::creata (): Unhandled " << cur->name << std::endl;
       cur = cur->next;
     }
+}
+
+InfoBoxData::InfoBoxData (const InfoBoxData& old) : WorldObjData(old),
+                                                    info_text(old.info_text),
+						    pos(old.pos),
+						    text_pos(old.text_pos)
+{
+}
+
+InfoBoxData
+InfoBoxData::operator= (const InfoBoxData& old)
+{
+  if (this == &old)
+    return *this;
+  
+  WorldObjData::operator=(old);
+  
+  info_text = old.info_text;
+  pos       = old.pos;
+  text_pos  = old.text_pos;
+  
+  return *this;
 }
 
 void 
@@ -138,6 +159,23 @@ EditorInfoBox::EditorInfoBox(const InfoBoxData& data)
     SpriteEditorObj ("infobox", "worldobjs", pos)
 {
   sprite.set_align_center_bottom ();
+}
+
+EditorInfoBox::EditorInfoBox (const EditorInfoBox& old) : InfoBoxData(old), 
+                                                          SpriteEditorObj(old)
+{
+}
+
+EditorInfoBox
+EditorInfoBox::operator= (const EditorInfoBox& old)
+{
+  if (this == &old)
+    return *this;
+    
+  InfoBoxData::operator=(old);
+  SpriteEditorObj::operator=(old);
+  
+  return *this;
 }
 
 EditorObjLst

@@ -1,4 +1,4 @@
-//  $Id: exit_data.cxx,v 1.4 2002/08/22 00:36:30 grumbel Exp $
+//  $Id: exit_data.cxx,v 1.5 2002/08/23 15:49:48 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,7 +22,6 @@
 #include "editor/plfobj.hxx"
 #include "string_converter.hxx"
 #include "xml_helper.hxx"
-#include "boost/smart_ptr.hpp"
 
 ExitData::ExitData (xmlDocPtr doc, xmlNodePtr cur)
 {
@@ -67,6 +66,30 @@ ExitData::ExitData (xmlDocPtr doc, xmlNodePtr cur)
 	}
       cur = cur->next;	
     }
+}
+
+ExitData::ExitData (const ExitData& old) : WorldObjData(old),
+                                           pos(old.pos),
+					   desc(old.desc),
+					   owner_id(old.owner_id),
+					   use_old_pos_handling(old.use_old_pos_handling)
+{
+}
+
+ExitData
+ExitData::operator= (const ExitData& old)
+{
+  if (this == &old)
+    return *this;
+    
+  WorldObjData::operator=(old);
+  
+  pos                  = old.pos;
+  desc                 = old.desc;
+  owner_id             = old.owner_id;
+  use_old_pos_handling = old.use_old_pos_handling;
+  
+  return *this;
 }
 
 void 

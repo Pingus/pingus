@@ -1,4 +1,4 @@
-//  $Id: pingus_menu.hxx,v 1.5 2002/08/17 00:28:30 grumbel Exp $
+//  $Id: pingus_menu.hxx,v 1.6 2002/08/23 15:49:50 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -53,15 +53,19 @@ private:
   LayerManager layer_manager;
   CL_Surface cursor_sur;
   
-  void on_resize(int w, int h);
+  void on_resize (int w, int h);
 public:
-  PingusMenu(PingusMenuManager* m);
+  PingusMenu (PingusMenuManager* m);
   ~PingusMenu();
 
   /// Load all images and other stuff for the menu
   void preload ();
 
   void on_escape_press ();
+  
+private:
+  PingusMenu (const PingusMenu&);
+  PingusMenu operator= (const PingusMenu&);
 };
 
 #endif

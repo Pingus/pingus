@@ -1,4 +1,4 @@
-//  $Id: plf_plf.hxx,v 1.2 2002/06/24 22:52:56 grumbel Exp $
+//  $Id: plf_plf.hxx,v 1.3 2002/08/23 15:49:50 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -62,6 +62,10 @@ private:
 public:
   PLFPLF(std::string);
   virtual ~PLFPLF();
+  
+private:
+  PLFPLF (const PLFPLF&);
+  PLFPLF operator= (const PLFPLF&);
 };
 
 #endif

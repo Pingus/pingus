@@ -1,4 +1,4 @@
-//  $Id: boarder.hxx,v 1.5 2002/06/28 15:12:22 torangan Exp $
+//  $Id: boarder.hxx,v 1.6 2002/08/23 15:49:53 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,12 +35,18 @@ private:
 public:
   Boarder ();
   void  init();
+  
   std::string get_name() const { return "Boarder"; }
-  ActionName get_type() const { return Pingus::Actions::Boarder; }
+  Pingus::Actions::ActionName get_type() const { return Pingus::Actions::Boarder; }
+  
   void  update(float delta);
   void  draw_offset(int, int, float s);
+  
 private:
   bool on_ground ();
+  
+  Boarder (const Boarder&); 
+  Boarder operator= (const Boarder&); 
 };
 
 #endif

@@ -1,4 +1,4 @@
-//  $Id: pingu.cxx,v 1.18 2002/08/22 10:21:29 grumbel Exp $
+//  $Id: pingu.cxx,v 1.19 2002/08/23 15:49:49 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -208,6 +208,8 @@ Pingu::request_set_action(PinguAction* act)
     {
       act->on_failed_apply (this);
     }
+    
+  return ret_val;
 }
 
 bool 

@@ -1,4 +1,4 @@
-//  $Id: screen_manager_impl.hxx,v 1.3 2002/08/16 13:03:35 torangan Exp $
+//  $Id: screen_manager_impl.hxx,v 1.4 2002/08/23 15:49:50 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,6 +31,10 @@ public:
   ~ScreenManagerImpl ();
 
   void display ();
+  
+private:
+  ScreenManagerImpl (const ScreenManagerImpl&);
+  ScreenManagerImpl operator= (const ScreenManagerImpl&);
 };
 
 #endif

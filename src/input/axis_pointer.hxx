@@ -1,4 +1,4 @@
-//  $Id: axis_pointer.hxx,v 1.6 2002/08/14 12:41:22 torangan Exp $
+//  $Id: axis_pointer.hxx,v 1.7 2002/08/23 15:49:55 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -58,6 +58,10 @@ namespace Input {
       virtual void  set_pos(float new_x, float new_y);
       
       virtual void  update (float delta);
+      
+    private:
+      AxisPointer (const AxisPointer&);
+      AxisPointer operator= (const AxisPointer&);
   };
 }
 

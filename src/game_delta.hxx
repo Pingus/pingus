@@ -1,4 +1,4 @@
-//  $Id: game_delta.hxx,v 1.7 2002/08/16 13:03:35 torangan Exp $
+//  $Id: game_delta.hxx,v 1.8 2002/08/23 15:49:48 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,8 +20,8 @@
 #ifndef HEADER_PINGUS_GAME_DELTA_HXX
 #define HEADER_PINGUS_GAME_DELTA_HXX
 
-#include <list>
 #include "pingus.hxx"
+#include <list>
 
 namespace Input
 {
@@ -49,6 +49,10 @@ public:
 
   /** Return the events */
   const std::list<Input::Event*>& get_events () const { return events; }
+  
+private:
+  GameDelta (const GameDelta&);
+  GameDelta operator= (const GameDelta&);
 };
 
 #endif

@@ -1,5 +1,5 @@
 
-//  $Id: particle.hxx,v 1.2 2002/06/24 22:52:59 grumbel Exp $
+//  $Id: particle.hxx,v 1.3 2002/08/23 15:49:56 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,8 +26,6 @@
 
 #include "../worldobj.hxx"
 
-
-///
 class Particle : public WorldObj
 {
 protected:
@@ -60,12 +58,12 @@ public:
 
   /// Draw the particle with the correct zoom resize
   virtual void draw_offset(int, int, float);
+  
+private:
+  Particle (const Particle&);
+  Particle operator= (const Particle&);
 };
 
 #endif
 
 /* EOF */
-
-
-
-

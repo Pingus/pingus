@@ -1,4 +1,4 @@
-//  $Id: pingus_main.hxx,v 1.3 2002/06/29 14:01:32 grumbel Exp $
+//  $Id: pingus_main.hxx,v 1.4 2002/08/23 15:49:50 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,15 +25,13 @@
 
 #include "generic_main.hxx"
 
-///
 void segfault_handler(int);
 
-///
 class PingusMain : public AbstractMain
 {
 private:
   bool    no_config_file;
-  // the name of the exe: argv[0]
+  /// the name of the exe: argv[0]
   std::string executable_name;
   std::string levelfile;
   std::string resolution;
@@ -59,6 +57,10 @@ public:
   void init_clanlib(void);
   /// void intro(void);
   void init_pingus(void);
+  
+private:
+  PingusMain (const PingusMain&);
+  PingusMain operator= (const PingusMain&);
 };
 
 

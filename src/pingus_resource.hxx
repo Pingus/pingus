@@ -1,4 +1,4 @@
-//  $Id: pingus_resource.hxx,v 1.6 2002/06/28 17:02:25 grumbel Exp $
+//  $Id: pingus_resource.hxx,v 1.7 2002/08/23 15:49:50 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -71,9 +71,12 @@ public:
 
   /** */
   static CL_ResourceManager* get(const std::string&);
+  
+private:
+  PingusResource (const PingusResource&);
+  PingusResource operator= (const PingusResource&);
 };
 
 #endif
 
 /* EOF */
-

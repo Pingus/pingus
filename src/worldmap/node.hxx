@@ -1,4 +1,4 @@
-//  $Id: node.hxx,v 1.3 2002/07/02 13:36:07 torangan Exp $
+//  $Id: node.hxx,v 1.4 2002/08/23 15:49:57 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -48,12 +48,14 @@ namespace Pingus
       virtual int  get_id () =0;
       virtual CL_Vector get_pos () =0;
       virtual std::list<int>& get_links () =0;
+      
+    private:
+      Node (const Node&);
+      Node operator= (const Node&);
     };
 
     /** A wrap object which brings you to the next worldmap */
-    class TubeNode
-      : public Node,
-	public TubeNodeData
+    class TubeNode : public Node, public TubeNodeData
     {
     public:
       std::string worldmap_name;
@@ -65,17 +67,18 @@ namespace Pingus
       void draw (CL_Vector offset);
       std::string get_string ();
 
-      /** FIXME: this looks unnecesarry, could probally replaced by
-	  FIXME: templates or something like that */
-      int  get_id () { return NodeData::get_id (); }
-      CL_Vector get_pos () { return NodeData::get_pos (); }
-      std::list<int>& get_links () { return NodeData::get_links (); }
+      int  get_id ()               { return NodeData::get_id();    }
+      CL_Vector get_pos ()         { return NodeData::get_pos();   }
+      std::list<int>& get_links () { return NodeData::get_links(); }
+
+    private:
+      TubeNode (const TubeNode&);
+      TubeNode operator= (const TubeNode&);
     };
 
     /** The entrance to a level */
-    class LevelNode
-      :  public Pingus::WorldMap::Node,
-	 public Pingus::WorldMap::LevelNodeData
+    class LevelNode :  public Pingus::WorldMap::Node,
+                       public Pingus::WorldMap::LevelNodeData
     {
     private:
       Sprite green_dot;
@@ -101,12 +104,13 @@ namespace Pingus
       void draw (CL_Vector offset);
       std::string get_string ();
 
-
-      /** FIXME: this looks unnecesarry, could probally replaced by
-	  FIXME: templates or something like that */
-      int  get_id () { return NodeData::get_id (); }
-      CL_Vector get_pos () { return NodeData::get_pos (); }
-      std::list<int>& get_links () { return NodeData::get_links (); }
+      int  get_id ()               { return NodeData::get_id(); }
+      CL_Vector get_pos ()         { return NodeData::get_pos(); }
+      std::list<int>& get_links () { return NodeData::get_links(); }
+      
+    private:
+      LevelNode (const LevelNode&);
+      LevelNode operator= (const LevelNode&);
     };
   }
 }

@@ -1,4 +1,4 @@
-//  $Id: capture_rectangle.cxx,v 1.4 2002/06/28 15:12:22 torangan Exp $ 
+//  $Id: capture_rectangle.cxx,v 1.5 2002/08/23 15:49:48 torangan Exp $ 
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,8 +24,6 @@
 #include "capture_rectangle.hxx"
 #include "pingu_action.hxx"
 #include "button_panel.hxx"
-
-using namespace boost;
 
 CaptureRectangle::CaptureRectangle(ButtonPanel* arg_button_panel)
   : pingu (0),

@@ -1,4 +1,4 @@
-//  $Id: smallmap_image.hxx,v 1.5 2002/08/16 13:03:35 torangan Exp $
+//  $Id: smallmap_image.hxx,v 1.6 2002/08/23 15:49:50 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,9 +20,9 @@
 #ifndef HEADER_PINGUS_SMALLMAP_IMAGE_HXX
 #define HEADER_PINGUS_SMALLMAP_IMAGE_HXX
 
+#include "pingus.hxx"
 #include <ClanLib/Display/Display/surface.h>
 #include <ClanLib/Core/Math/cl_vector.h>
-#include "pingus.hxx"
 
 class Server;
 
@@ -43,6 +43,10 @@ public:
   bool mouse_over (int x, int y);
 
   static CL_Surface create_surface (Server * server, int width, int height);
+  
+private:
+  SmallMapImage (const SmallMapImage&);
+  SmallMapImage operator= (const SmallMapImage&);
 };
 
 #endif

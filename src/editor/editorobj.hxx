@@ -1,4 +1,4 @@
-//  $Id: editorobj.hxx,v 1.12 2002/08/16 13:03:36 torangan Exp $
+//  $Id: editorobj.hxx,v 1.13 2002/08/23 15:49:54 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,9 +20,9 @@
 #ifndef HEADER_PINGUS_EDITOR_EDITOROBJ_HXX
 #define HEADER_PINGUS_EDITOR_EDITOROBJ_HXX
 
+#include "../pingus.hxx"
 #include <string>
 #include <iosfwd>
-#include "../pingus.hxx"
 
 class CL_Rect;
 class CL_Vector;
@@ -118,6 +118,10 @@ public:
       CL_Component* should/must be a CL_Frame so that it can get
       embedded in the properties window */
   virtual Pingus::Editor::PropertyFrame* get_gui_dialog (Editor* parent);
+  
+protected:
+  EditorObj (const EditorObj&) { }
+  void operator= (const EditorObj&) { }
 };
 
 #endif

@@ -1,4 +1,4 @@
-//  $Id: entrance_data.hxx,v 1.4 2002/06/25 12:20:31 grumbel Exp $
+//  $Id: entrance_data.hxx,v 1.5 2002/08/23 15:49:48 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,6 +30,8 @@ class EntranceData : public WorldObjData
 {
 public:
   enum EntranceDirection { LEFT, RIGHT, MISC };
+  
+public:
   EntranceDirection direction;
   ResDescriptor desc;
   CL_Vector pos;
@@ -39,25 +41,29 @@ public:
   /// The type of the entrance type (woodthing, generic, etc.)
   std::string type;
 
+public:
   EntranceData (xmlDocPtr doc, xmlNodePtr cur);
 
-  EntranceData() {
+  EntranceData () {
     clean();
   }
   
+  EntranceData (const EntranceData& old);
+  EntranceData operator= (const EntranceData& old);
+  
   virtual ~EntranceData () {}
 
-  void clean(void) {
+  void clean (void) {
     type = "generic";
     direction = MISC;
     release_rate = 50;
     owner_id = 0;
   }
 
-  void write_xml(std::ostream&);
+  void write_xml (std::ostream&);
 
-  EditorObjLst create_EditorObj();
-  WorldObj* create_WorldObj();
+  EditorObjLst create_EditorObj ();
+  WorldObj* create_WorldObj ();
 };
 
 #endif

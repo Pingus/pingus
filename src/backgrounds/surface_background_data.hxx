@@ -1,4 +1,4 @@
-//  $Id: surface_background_data.hxx,v 1.7 2002/07/02 13:36:06 torangan Exp $
+//  $Id: surface_background_data.hxx,v 1.8 2002/08/23 15:49:54 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -59,27 +59,31 @@ public:
   /// Stretch the background to the full screen size in x direction
   bool stretch_y;
 
+public:
   /// Init all fields with some usefull defaults values.
-  SurfaceBackgroundData();
+  SurfaceBackgroundData ();
   
   /** Parse the xml snip and return a newly allocated
       SurfaceBackgroundData*, the user is responsible to delete the
       object */
-  SurfaceBackgroundData(xmlDocPtr doc, xmlNodePtr cur);
+  SurfaceBackgroundData (xmlDocPtr doc, xmlNodePtr cur);
 
+  SurfaceBackgroundData (const SurfaceBackgroundData& old);
+  SurfaceBackgroundData operator= (const SurfaceBackgroundData& old);
+  
   /// Empty destructor
-  virtual ~SurfaceBackgroundData();
+  virtual ~SurfaceBackgroundData ();
 
   /** Write the content of this object formated as xml to the given
       stream */
-  void write_xml(std::ostream& xml);
+  void write_xml (std::ostream& xml);
   
-  WorldObj* create_WorldObj();
-  EditorObjLst create_EditorObj();
+  WorldObj* create_WorldObj ();
+  EditorObjLst create_EditorObj ();
+  
 };
 
 
-// FIXME: this should get into its own file
 class EditorSurfaceBackground : public SurfaceBackgroundData,
 				public SpriteEditorObj
 {
@@ -102,6 +106,10 @@ public:
 				 + to_string (pos.x) + ", "
 				 + to_string (pos.y) + ", "
 				 + to_string (pos.z); }
+
+private:
+  EditorSurfaceBackground (const EditorSurfaceBackground&);
+  EditorSurfaceBackground operator= (const EditorSurfaceBackground&);
 };
 
 #endif

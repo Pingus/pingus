@@ -1,4 +1,4 @@
-//  $Id: action_button.hxx,v 1.7 2002/08/03 12:00:58 grumbel Exp $
+//  $Id: action_button.hxx,v 1.8 2002/08/23 15:49:47 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -57,6 +57,10 @@ public:
   void update(float);
   bool is_at(int x, int y);
   void on_primary_button_click (int x, int y);
+  
+private:
+  ArmageddonButton (const ArmageddonButton&);
+  ArmageddonButton operator= (const ArmageddonButton&);
 };
 
 // ----------------- snip --------------------
@@ -79,6 +83,10 @@ public:
   void draw();
   bool is_at (int x, int y);
   void on_primary_button_click (int x, int y);
+  
+private:
+  ForwardButton (const ForwardButton&);
+  ForwardButton operator= (const ForwardButton&);
 };
 
 // ----------------- snip --------------------
@@ -101,6 +109,10 @@ public:
   void draw();
   bool is_at (int x, int y);
   void on_primary_button_click (int x, int y);
+  
+private:
+  PauseButton (const PauseButton&);
+  PauseButton operator= (const PauseButton&);
 };
 
 // ----------------- snip --------------------
@@ -147,6 +159,10 @@ public:
   virtual bool   is_at(int x, int y) = 0;
 
   void set_action_holder(ActionHolder* h);
+  
+private:
+  ActionButton (const ActionButton&);
+  ActionButton operator= (const ActionButton&);
 };
 
 // ----------------- snip --------------------
@@ -163,6 +179,10 @@ public:
 
   void draw();
   bool is_at (int x, int y);
+  
+private:
+  VerticalActionButton (const VerticalActionButton&);
+  VerticalActionButton operator= (const VerticalActionButton&);
 };
 
 // ----------------- snip --------------------
@@ -170,7 +190,3 @@ public:
 #endif /* ACTIONBUTTON */
 
 /* EOF */
-
-
-
-

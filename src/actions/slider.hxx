@@ -1,4 +1,4 @@
-//  $Id: slider.hxx,v 1.4 2002/06/28 15:12:22 torangan Exp $
+//  $Id: slider.hxx,v 1.5 2002/08/23 15:49:53 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,9 +33,13 @@ public:
 
   void  init(void);
   std::string get_name() const { return "Slider"; }
-  ActionName get_type() const { return Pingus::Actions::Slider; }
+  Pingus::Actions::ActionName get_type() const { return Pingus::Actions::Slider; }
   void  update(float delta);
   void  draw_offset(int x, int y, float s);
+  
+private:
+  Slider (const Slider&);
+  Slider operator= (const Slider&);
 };
 
 #endif

@@ -1,4 +1,4 @@
-//  $Id: blocker.hxx,v 1.5 2002/07/02 13:36:06 torangan Exp $
+//  $Id: blocker.hxx,v 1.6 2002/08/23 15:49:53 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,7 +36,7 @@ public:
   ///
   void  init();
   std::string get_name () const { return "Blocker"; }
-  ActionName get_type() const { return Pingus::Actions::Blocker; }
+  Pingus::Actions::ActionName get_type() const { return Pingus::Actions::Blocker; }
  
   void  update(float delta);
   void  draw_offset(int, int, float s);
@@ -45,6 +45,10 @@ public:
   bool  need_catch();
   ///
   void  catch_pingu(Pingu* pingu);
+  
+private:
+  Blocker (const Blocker&);
+  Blocker operator= (const Blocker&);
 };
 
 #endif

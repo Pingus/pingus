@@ -1,4 +1,4 @@
-//  $Id: smallmap_image.cxx,v 1.4 2002/07/29 10:44:12 grumbel Exp $
+//  $Id: smallmap_image.cxx,v 1.5 2002/08/23 15:49:50 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,8 +24,6 @@
 #include "col_map.hxx"
 #include "server.hxx"
 
-using boost::shared_ptr;
-
 SmallMapImage::SmallMapImage (Server * s, CL_Vector arg_pos, int width, int height)
   : sur (create_surface (s, width, height)),
     pos (arg_pos)
@@ -43,9 +41,10 @@ SmallMapImage::draw ()
 }
 
 void 
-SmallMapImage::update (float /*delta*/)
+SmallMapImage::update (float delta)
 {
   // FIXME: Updating not implemented!
+  UNUSED_ARG(delta);
 }
 
 CL_Surface

@@ -1,4 +1,4 @@
-//  $Id: switch_door.hxx,v 1.6 2002/07/02 10:42:39 grumbel Exp $
+//  $Id: switch_door.hxx,v 1.7 2002/08/23 15:49:57 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,8 +30,6 @@
     opened by a switch */
 class SwitchDoorData : public WorldObjData
 {
-private:
-  
 public:
   /// The upper/middle pos of the door 
   CL_Vector door_pos;
@@ -44,6 +42,9 @@ public:
 
   SwitchDoorData ();
   SwitchDoorData (xmlDocPtr doc, xmlNodePtr cur);
+  
+  SwitchDoorData (const SwitchDoorData& old);
+  SwitchDoorData operator= (const SwitchDoorData& old);
 
   /** Write the content of this object formatted as xml to the given
       stream */
@@ -82,6 +83,10 @@ public:
   void update(float delta);
   /// The switch and the door should stay above the pingus
   float get_z_pos() const { return 100; }
+  
+private:
+  SwitchDoor (const SwitchDoor&);
+  SwitchDoor operator= (const SwitchDoor&);
 };
 
 class EditorSwitchDoorObj;
@@ -100,6 +105,10 @@ public:
 
   void write_xml (std::ostream& /*xml*/) {}
   std::string status_line();
+  
+private:
+  EditorSwitchDoorSwitchObj (const EditorSwitchDoorSwitchObj&);
+  EditorSwitchDoorSwitchObj operator= (const EditorSwitchDoorSwitchObj&);
 };
 
 class EditorSwitchDoorObj : public SwitchDoorData,
@@ -134,6 +143,10 @@ public:
   void draw (EditorView * view);
   void save_xml (std::ostream& xml);
   std::string status_line();
+  
+private:
+  EditorSwitchDoorObj (const EditorSwitchDoorObj&);
+  EditorSwitchDoorObj operator= (const EditorSwitchDoorObj&);
 };
 
 #endif

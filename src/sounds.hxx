@@ -1,4 +1,4 @@
-//  $Id: sounds.hxx,v 1.1 2002/08/22 01:13:23 grumbel Exp $
+//  $Id: sounds.hxx,v 1.2 2002/08/23 15:49:50 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,8 @@
 
 #ifndef HEADER_PINGUS_SOUNDS_HXX
 #define HEADER_PINGUS_SOUNDS_HXX
+
+#include "pingus.hxx"
 
 namespace Sound
 {

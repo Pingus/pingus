@@ -1,4 +1,4 @@
-//  $Id: globals.hxx,v 1.7 2002/08/17 00:27:21 grumbel Exp $
+//  $Id: globals.hxx,v 1.8 2002/08/23 15:49:48 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,8 +23,8 @@
 #ifndef HEADER_PINGUS_GLOBALS_HXX
 #define HEADER_PINGUS_GLOBALS_HXX
 
-#include <string>
 #include "pingus.hxx"
+#include <string>
 
 extern int         game_speed;                      ///< -t, --set-speed
 extern bool        print_fps;                       ///< --print-fps

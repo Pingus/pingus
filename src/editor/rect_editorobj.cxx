@@ -1,4 +1,4 @@
-// $Id: rect_editorobj.cxx,v 1.2 2002/06/13 14:25:13 torangan Exp $
+// $Id: rect_editorobj.cxx,v 1.3 2002/08/23 15:49:54 torangan Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,17 @@
 
 RectEditorObj::RectEditorObj()
 {
+}
+
+RectEditorObj::RectEditorObj (const RectEditorObj& old) : EditorObj(old)
+{
+}
+
+void
+RectEditorObj::operator= (const RectEditorObj& old)
+{
+  if (this != &old)
+    EditorObj::operator=(old);
 }
 
 RectEditorObj::~RectEditorObj()

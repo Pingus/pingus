@@ -1,4 +1,4 @@
-//  $Id: editor_view.hxx,v 1.3 2002/08/16 13:03:36 torangan Exp $
+//  $Id: editor_view.hxx,v 1.4 2002/08/23 15:49:54 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,8 +20,8 @@
 #ifndef header_pingus_editor_editor_view_hxx
 #define header_pingus_editor_editor_view_hxx
 
-#include <ClanLib/Core/Math/cl_vector.h>
 #include "../pingus.hxx"
+#include <ClanLib/Core/Math/cl_vector.h>
 
 class Sprite;
 class CL_Rect;
@@ -91,6 +91,10 @@ public:
 		   float r, float g, float b, float a = 1.0f);
   void draw_circle (int x_pos, int y_pos, int radius,
 		   float r, float g, float b, float a = 1.0f);
+
+private:
+  EditorView (const EditorView&);
+  EditorView operator= (const EditorView&);
 };
 
 #endif

@@ -1,4 +1,4 @@
-//  $Id: rect_editorobj.hxx,v 1.2 2002/06/24 22:52:58 grumbel Exp $
+//  $Id: rect_editorobj.hxx,v 1.3 2002/08/23 15:49:54 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,39 +27,32 @@
 class RectEditorObj : public EditorObj
 {
 public:
-  RectEditorObj();
-  virtual ~RectEditorObj();
+  RectEditorObj ();
+  virtual ~RectEditorObj ();
 
   /** Returns the position of the upper left corner of the object */
   virtual CL_Vector get_upper_left_corner () =0;
 
   /// Return the object width
-  virtual int get_width() =0;
+  virtual int get_width () =0;
   /// Return the object height
-  virtual int get_height() =0;
+  virtual int get_height () =0;
 
   /** Draw the caputre rectangle around the object */
   virtual void   draw_mark (EditorView * view);
   
   /** Return true when the object is under the given coordinates */
-  virtual bool   is_over(const CL_Vector&);
+  virtual bool   is_over (const CL_Vector&);
 
   /** Return true if the current object is inside the current
       selection rectangle */
-  virtual bool   is_in_rect(const CL_Rect&);
+  virtual bool   is_in_rect (const CL_Rect&);
+  
+protected:
+  RectEditorObj (const RectEditorObj& old);
+  void operator= (const RectEditorObj& old);
 };
 
-/*
-// Structure for the sorting algorithm (stable_sort)
-class EditorObj_less : public std::binary_function<boost::shared_ptr<EditorObj>, boost::shared_ptr<EditorObj>, bool>
-{
-public:
-  bool operator() (boost::shared_ptr<EditorObj> a, boost::shared_ptr<EditorObj> b) const 
-    {
-      return (*a) < (*b);
-    }
-};
-*/
 #endif
 
 /* EOF */

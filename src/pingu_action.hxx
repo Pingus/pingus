@@ -1,4 +1,4 @@
-//  $Id: pingu_action.hxx,v 1.10 2002/08/22 10:21:29 grumbel Exp $
+//  $Id: pingu_action.hxx,v 1.11 2002/08/23 15:49:49 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,9 +24,6 @@
 #include "pingu_enums.hxx"
 
 class Pingu;
-
-using namespace Pingus::Actions;
-
 class ActionHolder;
 
 enum ActionType
@@ -37,10 +34,10 @@ enum ActionType
   COUNTDOWN_TRIGGERED
 };
 
-// This class provides an abstract interface for pingu actions. It is 
-// used to inherit classes which represent the actions. The actions
-// are stored in a seperate library, have a look in actions/ for some
-/// examples.
+/** This class provides an abstract interface for pingu actions. It is 
+    used to inherit classes which represent the actions. The actions
+    are stored in a seperate library, have a look in actions/ for some
+    examples. */
 class PinguAction : public WorldObj
 {
 protected:
@@ -68,29 +65,29 @@ public:
   int  rel_getpixel(int x, int y);
 
   /** Checks if this action allows to be overwritten with the given new action */
-  virtual bool change_allowed (ActionName) { return true; }
+  virtual bool change_allowed (Pingus::Actions::ActionName) { return true; }
   
   /** Used to load all data, which is needed by the action, its
       seperated and called in set_pingu(), because some data will be
       only valid if set_pingu() is called. */
-  virtual void  init(void) {};
+  virtual void init (void) {};
 
   /// The "AI" of the pingu.
-  virtual void  update(float delta) = 0;
+  virtual void update (float delta) = 0;
 
   /** Draws the surfaced defined by the action, can be overwritten if
       the action needs a more complicated way of drawing. */
-  virtual void  draw_offset(int x, int y, float s) =0;
+  virtual void draw_offset (int x, int y, float s) =0;
 
   /// Returns the activation mode
-  virtual ActionType get_activation_mode(void) const;
+  virtual ActionType get_activation_mode (void) const;
 
   /** The name of the action, this is used in the CaputreRectangle, so
       it can contain more than just the name */
-  virtual std::string get_name(void) const =0;
+  virtual std::string get_name () const =0;
   
   /// The type of the action
-  virtual ActionName get_type() const =0;
+  virtual Pingus::Actions::ActionName get_type () const =0;
   
   /** Return the character that is shown when a persitent action is
       activated in the CaptureRectangle. */
@@ -117,10 +114,14 @@ public:
   bool head_collision_on_walk (int x, int y);
 
   /** Called if the action was successfully applied via request_set_action */
-  virtual void on_successfull_apply (Pingu*) {}
+  virtual void on_successfull_apply (Pingu*) { }
 
   /** Called if the request_set_action failded to apply this action */
-  virtual void on_failed_apply (Pingu*) {}
+  virtual void on_failed_apply (Pingu*) { }
+
+private:
+  PinguAction (const PinguAction&);
+  PinguAction operator= (const PinguAction&);
 };
 
 #endif /* PINGU_ACTION_HH */

@@ -1,4 +1,4 @@
-//  $Id: plt_parser.hxx,v 1.2 2002/06/24 22:52:56 grumbel Exp $
+//  $Id: plt_parser.hxx,v 1.3 2002/08/23 15:49:50 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,67 +25,43 @@
 
 #include "res_descriptor.hxx"
 
-///
-struct PLTEOF {}///
-;
+struct PLTEOF {};
 
-///
 class PLTParser
 {
 private:
-  ///
   std::ifstream in;
-  ///
   int lineno;
-  ///
   bool in_header;
 
-  ///
   std::vector<std::string> levels;
-  ///
   std::string theme_name;
-  ///
   std::string theme_description;
-  ///
   std::string theme_image;
-  ///
   std::string background_image;
 public:
-  ///
   PLTParser();
-  ///
   ~PLTParser();
 
-  ///
   void   parse(std::string);
-  ///
   std::vector<std::string> get_levels();
-  ///
   std::string get_name();
-  ///
   std::string get_description();
-  ///
   std::string get_surface();
-  ///
   ResDescriptor get_background();
 
 private:
-  ///
   char   get_char();
-  ///
   void   expect(char);
-  ///
   void   jump_spaces();
-  ///
   std::string get_string();
-  ///
   void   check_newline();
-  ///
   std::string get_line();
-  ///
   void   add_pair(std::string, std::string);
-}///
-;
+  
+  PLTParser (const PLTParser&);
+  PLTParser operator= (const PLTParser&);
+};
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: usb_mouse_controller.hxx,v 1.4 2002/08/16 13:03:35 torangan Exp $
+//  $Id: usb_mouse_controller.hxx,v 1.5 2002/08/23 15:49:51 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #ifndef HEADER_PINGUS_USB_MOUSE_CONTROLLER_HXX
 #define HEADER_PINGUS_USB_MOUSE_CONTROLLER_HXX
 
+#include "pingus.hxx"
 #include <stdio.h>
 #include <sys/time.h>
 #include <sys/types.h>
@@ -27,7 +28,6 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
-#include "pingus.hxx"
 
 #ifdef WIN32
 #  error "This file must not included in Win32, its GNU/Linux only"

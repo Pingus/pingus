@@ -1,4 +1,4 @@
-//  $Id: surface_button.hxx,v 1.2 2002/08/02 22:55:19 grumbel Exp $
+//  $Id: surface_button.hxx,v 1.3 2002/08/23 15:49:55 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -56,6 +56,10 @@ namespace GUI
 
     void on_pointer_enter ();
     void on_pointer_leave ();
+    
+  private:
+    SurfaceButton (const SurfaceButton&);
+    SurfaceButton operator= (const SurfaceButton&);
   };
 }
 

@@ -1,4 +1,4 @@
-//  $Id: config.hxx,v 1.3 2002/08/16 13:03:34 torangan Exp $
+//  $Id: config.hxx,v 1.4 2002/08/23 15:49:48 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,10 +20,10 @@
 #ifndef HEADER_PINGUS_CONFIG_HXX
 #define HEADER_PINGUS_CONFIG_HXX
 
+#include "pingus.hxx"
 #include <string>
 #include <fstream>
-#include "pingus.hxx"
-///
+
 class ConfigParser
 {
 private:
@@ -61,6 +61,10 @@ public:
   virtual ~ConfigParser();      /// Close the file
     
   void init(std::string);      /// Init the PLFParser and start parsing
+  
+private:
+  ConfigParser (const ConfigParser&);
+  ConfigParser operator= (const ConfigParser&);
 };
 
 ///
@@ -84,6 +88,10 @@ public:
   ///
   void set_value(std::string valueid,
 		 std::string value);
+		 
+private:
+  Config (const Config&);
+  Config operator= (const Config&);
 }///
 ;
 

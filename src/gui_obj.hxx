@@ -1,4 +1,4 @@
-//  $Id: gui_obj.hxx,v 1.5 2002/08/16 13:03:35 torangan Exp $
+//  $Id: gui_obj.hxx,v 1.6 2002/08/23 15:49:48 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -45,13 +45,13 @@ public:
   virtual void draw_clipped();
 
   /** Return true if the mouse is over this GUI component */
-  virtual bool mouse_over (int x, int y) { if(x); if(y); return false; }
+  virtual bool mouse_over (int x, int y) { UNUSED_ARG(x); UNUSED_ARG(y); return false; }
 
   /// Draw the gui element
   virtual void draw() = 0;
 
   /// Move the world one step further
-  virtual void update(float delta);
+  virtual void update (float delta);
 
   /** Update all elements, which are indepented of the world speed
       (for example scrolling). */
@@ -65,6 +65,10 @@ public:
   virtual void on_mouse_click () {}
   virtual void on_mouse_press () {}
   virtual void on_mouse_release () {}
+  
+private:
+  GuiObj (const GuiObj&);
+  GuiObj operator= (const GuiObj&);
 };
 
 #endif

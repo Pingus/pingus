@@ -1,4 +1,4 @@
-//  $Id: pingus_error.cxx,v 1.3 2002/08/16 15:13:59 torangan Exp $
+//  $Id: pingus_error.cxx,v 1.4 2002/08/23 15:49:49 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,8 +17,6 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <iostream>
-
 #include "pingus_error.hxx"
 
 /* Headers needed for i18n / gettext */
@@ -27,7 +25,7 @@
 #include "my_gettext.hxx"
 
 
-PingusException::PingusException ()
+PingusException::PingusException (const std::string& mes) : message(mes)
 {
 }
 
@@ -35,40 +33,78 @@ PingusException::~PingusException ()
 {
 }
 
-PingusBug::PingusBug(std::string mes)
+PingusException::PingusException (const PingusException& old) : message(old.message)
 {
-  message = mes;
-  std::cout << _("PingusBug: ") << message << std::endl;
 }
 
 void
-PingusBug::raise (std::string msg)
+PingusException::operator= (const PingusException& old)
+{
+  if (this != &old)
+    message = old.message;
+}
+
+
+PingusBug::PingusBug (const std::string& mes) : PingusException(_("PingusBug: ") + mes)
+{
+}
+
+PingusBug::PingusBug (const PingusBug& old) : PingusException(old)
+{
+}
+
+PingusBug
+PingusBug::operator= (const PingusBug& old)
+{
+  if (this == &old);
+    return *this;
+    
+  PingusException::operator=(old);
+  
+  return *this;
+}
+
+void
+PingusBug::raise (const std::string& msg)
 {
   throw PingusBug(msg);
 }
 
-std::string
+const std::string&
 PingusBug::get_message () const
 {
-  return _("PingusBug: ") + message;
+  return message;
 }
 
-PingusError::PingusError(std::string mes)
+PingusError::PingusError (const std::string& mes) : PingusException(_("PingusError: ") + mes)
 {
-  message = mes;
-  std::cout << _("PingusError: ") << message << std::endl;
+}
+
+PingusError::PingusError (const PingusError& old) : PingusException(old)
+{
+}
+
+PingusError
+PingusError::operator= (const PingusError& old)
+{
+  if (this == &old);
+    return *this;
+    
+  PingusException::operator=(old);
+  
+  return *this;
 }
 
 void
-PingusError::raise (std::string msg)
+PingusError::raise (const std::string& msg)
 {
   throw PingusError(msg);
 }
 
-std::string
+const std::string&
 PingusError::get_message () const
 {
-  return _("PingusError: ") + message;
+  return message;
 }
 
 /* EOF */

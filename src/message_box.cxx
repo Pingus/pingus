@@ -1,4 +1,4 @@
-//  $Id: message_box.cxx,v 1.1 2002/06/12 19:09:37 grumbel Exp $
+//  $Id: message_box.cxx,v 1.2 2002/08/23 15:49:49 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,11 +26,11 @@
 #include "pingus_resource.hxx"
 #include "message_box.hxx"
 
-PingusMessageBox::PingusMessageBox(std::string s)
+PingusMessageBox::PingusMessageBox (const std::string& s)
+                                  : str(s),
+                                    font (PingusResource::load_font("Fonts/xterm","fonts"))
 {
-  str = s;
   std::cout << "Error: " << str << std::endl;
-  font = PingusResource::load_font("Fonts/xterm","fonts");
   draw();
 }
 

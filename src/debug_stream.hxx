@@ -1,4 +1,4 @@
-//  $Id: debug_stream.hxx,v 1.7 2002/08/17 17:21:25 torangan Exp $
+//  $Id: debug_stream.hxx,v 1.8 2002/08/23 15:49:48 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,10 +20,10 @@
 #ifndef HEADER_PINGUS_DEBUG_STREAM_HXX
 #define HEADER_PINGUS_DEBUG_STREAM_HXX
 
+#include "pingus.hxx"
 #include <string>
 #include <vector>
 #include <iostream>
-#include "pingus.hxx"
 
 class NilStream;
 
@@ -71,6 +71,10 @@ public:
 
   void add (std::ostream& s);
   void set_prefix (const std::string & prefix);
+  
+private:
+  DebugStream (const DebugStream&);
+  DebugStream operator= (const DebugStream&); 
 };
 
 

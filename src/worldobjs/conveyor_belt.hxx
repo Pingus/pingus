@@ -1,4 +1,4 @@
-//  $Id: conveyor_belt.hxx,v 1.5 2002/07/02 10:42:39 grumbel Exp $
+//  $Id: conveyor_belt.hxx,v 1.6 2002/08/23 15:49:57 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,6 +33,9 @@ public:
 
   ConveyorBeltData ();
   ConveyorBeltData (xmlDocPtr doc, xmlNodePtr cur);
+  
+  ConveyorBeltData (const ConveyorBeltData& old);
+  ConveyorBeltData operator= (const ConveyorBeltData& old);
 
   /** Write the content of this object formatted as xml to the given
       stream */
@@ -62,6 +65,10 @@ public:
   void draw_colmap();
   void update(float delta);
   float get_z_pos() const { return pos.z; }
+  
+private:
+  ConveyorBelt (const ConveyorBelt&);
+  ConveyorBelt operator= (const ConveyorBelt&);
 };
 
 class EditorConveyorBeltObj : public RectEditorObj,
@@ -100,11 +107,12 @@ public:
 
   void make_larger ();
   void make_smaller ();
+  
+private:
+  EditorConveyorBeltObj (const EditorConveyorBeltObj&);
+  EditorConveyorBeltObj operator= (const EditorConveyorBeltObj&);
 };
 
 #endif
 
 /* EOF */
-
-
-

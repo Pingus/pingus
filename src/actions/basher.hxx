@@ -1,4 +1,4 @@
-//  $Id: basher.hxx,v 1.5 2002/06/28 15:12:22 torangan Exp $
+//  $Id: basher.hxx,v 1.6 2002/08/23 15:49:53 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,7 +38,7 @@ public:
   
   void   init(void);
   std::string get_name () const { return "Basher"; }
-  ActionName get_type() const { return Pingus::Actions::Basher; }
+  Pingus::Actions::ActionName get_type() const { return Pingus::Actions::Basher; }
   void draw_offset(int x, int y, float s);
   void update(float delta);
   bool have_something_to_dig();
@@ -47,6 +47,10 @@ public:
   
   /// Defines "wall" height needed so as to determine whether it should be bashed.
   static const int bash_height;
+  
+private:
+  Basher (const Basher&);
+  Basher operator= (const Basher&);
 };
 
 #endif

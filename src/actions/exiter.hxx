@@ -1,4 +1,4 @@
-//  $Id: exiter.hxx,v 1.4 2002/06/28 15:12:22 torangan Exp $
+//  $Id: exiter.hxx,v 1.5 2002/08/23 15:49:53 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,12 +28,18 @@ class Exiter : public PinguAction
 {
 private:
   Sprite sprite;
+  
 public:
+  Exiter () { }
   void init(void);
   std::string get_name () const { return "Exiter"; }
-  ActionName get_type() const { return Pingus::Actions::Exiter; }
+  Pingus::Actions::ActionName get_type() const { return Pingus::Actions::Exiter; }
   void update(float delta);
   void draw_offset(int x, int y, float s);
+  
+private:
+  Exiter (const Exiter&);
+  Exiter operator= (const Exiter&);
 };
 
 #endif

@@ -1,4 +1,4 @@
-//  $Id: rocket_launcher.hxx,v 1.4 2002/06/28 15:12:22 torangan Exp $
+//  $Id: rocket_launcher.hxx,v 1.5 2002/08/23 15:49:53 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,8 +23,7 @@
 #include "../sprite.hxx"
 #include "../pingu_action.hxx"
 
-class RocketLauncher
-  : public PinguAction
+class RocketLauncher : public PinguAction
 {
 private:
   Sprite sprite;
@@ -33,11 +32,17 @@ public:
   RocketLauncher () {}
   ~RocketLauncher () {}
 
-  void  init();
-  std::string get_name() const { return "RocketLauncher"; }
-  ActionName get_type() const { return Pingus::Actions::Rocketlauncher; }
-  void  update(float delta);
-  void  draw_offset(int, int, float s);
+  void  init ();
+  
+  std::string get_name () const { return "RocketLauncher"; }
+  Pingus::Actions::ActionName get_type () const { return Pingus::Actions::Rocketlauncher; }
+  
+  void update (float delta);
+  void draw_offset (int, int, float s);
+  
+private:
+  RocketLauncher (const RocketLauncher&);
+  RocketLauncher operator= (const RocketLauncher&);
 };
 
 #endif

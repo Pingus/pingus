@@ -1,4 +1,4 @@
-//  $Id: string_converter.hxx,v 1.4 2002/08/16 13:03:35 torangan Exp $
+//  $Id: string_converter.hxx,v 1.5 2002/08/23 15:49:51 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,9 +20,9 @@
 #ifndef HEADER_PINGUS_STRING_CONVERTER_HXX
 #define HEADER_PINGUS_STRING_CONVERTER_HXX
 
+#include "pingus.hxx"
 #include <string>
 #include <stdexcept>
-#include "pingus.hxx"
 
 #ifdef HAVE_CONFIG_H
 #include <config.h>
@@ -41,15 +41,13 @@ std::string to_string(const T& any)
 {
 #ifdef HAVE_SSTREAM
   std::ostringstream oss;
-  oss << any;
-  return oss.str();
 #else
   std::ostrstream oss;
-  oss << any << std::ends;
-  std::string temp(oss.str());
-  oss.freeze(false); // tell the ostrstream that it should free the memory
-  return temp;
 #endif
+  oss << any;
+  return oss.str();
+  oss << any << std::ends;
+  oss.str();
 }
 
 
@@ -90,6 +88,11 @@ public:
   static std::string to_string (int i);
   static std::string to_string (long int i);
   static std::string to_string (float i);
+  
+private:
+  StringConverter ();
+  StringConverter (const StringConverter&);
+  StringConverter operator= (const StringConverter&);
 };
 
 #endif

@@ -1,4 +1,4 @@
-//  $Id: particle_cache.hxx,v 1.3 2002/08/16 13:03:36 torangan Exp $
+//  $Id: particle_cache.hxx,v 1.4 2002/08/23 15:49:56 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,26 +20,21 @@
 #ifndef HEADER_PINGUS_PARTICLES_PARTICLE_CACHE_HXX
 #define HEADER_PINGUS_PARTICLES_PARTICLE_CACHE_HXX
 
-#include <vector>
 #include "../pingus.hxx"
+#include <vector>
 
 class Particle;
 
-///
 class ParticleCache
 {
 private:
-  ///
   std::vector<Particle*>::iterator position;
-  ///
   std::vector<Particle*> particles;
 public:
-  ///
   ParticleCache();
-  ///
   ~ParticleCache();
 
-  /// Returns an allready allocated object
+  /// Returns an already allocated object
   Particle* create();
   
   /// Allocates the given number of objects
@@ -47,8 +42,11 @@ public:
   
   /// Deletes all allocated objects
   void clear();
-}///
-;
+  
+private:
+  ParticleCache (const ParticleCache&);
+  ParticleCache operator= (const ParticleCache&);
+};
 
 #endif
 

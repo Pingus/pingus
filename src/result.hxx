@@ -1,4 +1,4 @@
-//  $Id: result.hxx,v 1.3 2002/08/16 13:03:35 torangan Exp $
+//  $Id: result.hxx,v 1.4 2002/08/23 15:49:50 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,25 +22,16 @@
 
 #include "pingus.hxx"
 
-///
 struct Result
 {
-  ///
   int saved;
-  ///
   int killed;
-  ///
   int total;
-  ///
   int time;
-  ///
   int unknown;
-  ///
   int status;
-  ///
   int needed;
-}///
-;
+};
 
 #endif
 

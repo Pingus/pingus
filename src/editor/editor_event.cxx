@@ -1,4 +1,4 @@
-//  $Id: editor_event.cxx,v 1.29 2002/08/17 17:56:23 torangan Exp $
+//  $Id: editor_event.cxx,v 1.30 2002/08/23 15:49:54 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -516,11 +516,11 @@ EditorEvent::editor_start_current_level()
       std::string levelfile = editor->save_tmp_level();
       ScreenManager::instance()->push_screen(new PingusGameSession (levelfile), true);
     }
-  catch(PingusError err) 
+  catch(const PingusError& err) 
     {
       std::cout << "Editor: Error caught from Pingus: " << err.get_message () << std::endl;
     }  
-  catch (CL_Error err) 
+  catch (const CL_Error& err) 
     {
       std::cout << "Editor: Error caught from ClanLib: " << err.message << std::endl;
     }
@@ -561,7 +561,7 @@ EditorEvent::editor_load_level()
 	object_manager->load_level(str);
 	editor->last_level = str;
       }
-      catch(PingusError err) {
+      catch(const PingusError& err) {
 	std::cout << err.get_message () << std::endl;
 	PingusMessageBox(err.get_message ());
       }

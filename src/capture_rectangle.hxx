@@ -1,4 +1,4 @@
-//  $Id: capture_rectangle.hxx,v 1.3 2002/06/24 22:52:54 grumbel Exp $
+//  $Id: capture_rectangle.hxx,v 1.4 2002/08/23 15:49:48 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,11 +26,6 @@ class Pingu;
 class PinguAction;
 class Pingu;
 class CL_Font;
-
-namespace boost {
-  template <class T> class shared_ptr;
-}
-
 class ButtonPanel;
 
 /** The rectangle that is shown when the mouse cursor is above a
@@ -59,6 +54,10 @@ public:
   void set_pingu(Pingu* pingu);  
 
   void draw_offset(int x_offset, int y_offset, float s = 1.0); 
+  
+private:
+  CaptureRectangle (const CaptureRectangle&);
+  CaptureRectangle operator= (const CaptureRectangle&);
 };
 
 #endif

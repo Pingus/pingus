@@ -1,4 +1,4 @@
-//  $Id: music_provider.cxx,v 1.2 2002/08/17 17:56:23 torangan Exp $
+//  $Id: music_provider.cxx,v 1.3 2002/08/23 15:49:49 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,10 +21,10 @@
 #include "pingus_error.hxx"
 #include "music_provider.hxx"
 
-std::list<PingusMusicProvider::music_pair> PingusMusicProvider::music;
+std::map<std::string, Mix_Music*> PingusMusicProvider::music;
 
 Mix_Music*
-PingusMusicProvider::load(std::string str)
+PingusMusicProvider::load (const std::string& str)
 {
 #ifdef HAVE_LIBSDL_MIXER
   Mix_Music* music_data;
@@ -37,33 +37,29 @@ PingusMusicProvider::load(std::string str)
     }
   else
     {
-      music_pair song;
-      song.filename = str;
-      song.data = Mix_LoadMUS(str.c_str()); 
+      music_data = Mix_LoadMUS(str.c_str()); 
 
-      if (!song.data) 
+      if (!music_data) 
 	{
 	  throw PingusError("PingusMusicProvider: Couldn't load " + str + ": " + SDL_GetError());
 	} 
       else
 	{
-	  music.push_back(song);
-	  return song.data;
+	  music[str] = music_data;
+	  return music_data;
 	}
     }
 #endif /* HAVE_LIBSDL_MIXER */
-  if (str.size()); // suppress warning about unused argument
+  UNUSED_ARG(str);
   return 0;
 }
 
 Mix_Music*
-PingusMusicProvider::get(std::string str)
+PingusMusicProvider::get (const std::string& str)
 {
-  for(std::list<music_pair>::iterator i = music.begin(); i != music.end(); ++i)
-    {
-      if (i->filename == str)
-	return i->data;
-    }
+  if (music.count(str))
+    return music[str];
+    
   return 0;
 }
 

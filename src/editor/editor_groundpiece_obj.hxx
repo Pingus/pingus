@@ -1,4 +1,4 @@
-// $Id: editor_groundpiece_obj.hxx,v 1.7 2002/07/01 18:36:39 grumbel Exp $
+// $Id: editor_groundpiece_obj.hxx,v 1.8 2002/08/23 15:49:54 torangan Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -47,6 +47,10 @@ public:
   std::string status_line();
 
   Pingus::Editor::PropertyFrame* get_gui_dialog(CL_Component* parent);
+  
+private:
+  EditorGroundpieceObj (const EditorGroundpieceObj&);
+  EditorGroundpieceObj operator= (const EditorGroundpieceObj&);
 };
 
 #endif

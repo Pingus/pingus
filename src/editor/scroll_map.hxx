@@ -1,4 +1,4 @@
-//  $Id: scroll_map.hxx,v 1.2 2002/06/24 22:52:58 grumbel Exp $
+//  $Id: scroll_map.hxx,v 1.3 2002/08/23 15:49:54 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -45,6 +45,10 @@ public:
   void  on_button_press(CL_InputDevice *device, const CL_Key& key);
   void  on_button_release(CL_InputDevice *device, const CL_Key& key);
   bool  mouse_over(int x, int y);
+  
+private:
+  ScrollMap (const ScrollMap&);
+  ScrollMap operator= (const ScrollMap&);
 };
 
 #endif

@@ -1,4 +1,4 @@
-//  $Id: worldobj_data.hxx,v 1.4 2002/07/02 10:42:38 grumbel Exp $
+//  $Id: worldobj_data.hxx,v 1.5 2002/08/23 15:49:52 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,10 +27,6 @@
 class WorldObj;
 class EditorObj;
 
-namespace boost {
-  template <class T> class shared_ptr;
-}
-
 typedef std::vector<EditorObj*> EditorObjLst;
 
 /** The root data class for all objects in the Pingus world.  Each
@@ -43,6 +39,13 @@ class WorldObjData
 public:
   /// Empty placeholder
   WorldObjData() {}
+  
+  /// Empty placeholder
+  WorldObjData (const WorldObjData&) { }
+  
+  /// Empty placeholder
+  void operator= (const WorldObjData&) { }
+  
   /// Empty placeholder
   virtual ~WorldObjData() {}
  

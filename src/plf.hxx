@@ -1,4 +1,4 @@
-//  $Id: plf.hxx,v 1.2 2002/06/24 22:52:56 grumbel Exp $
+//  $Id: plf.hxx,v 1.3 2002/08/23 15:49:50 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -156,6 +156,10 @@ public:
   /** Creates a PLF (XMLPLF or PLFPLF, depending on the file
       extension) from a file. The pathname must be complete */
   static PLF* create (const std::string& pathname);
+  
+private:
+  PLF (const PLF&);
+  PLF operator= (const PLF&);
 };
 
 #endif

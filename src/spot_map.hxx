@@ -1,4 +1,4 @@
-//  $Id: spot_map.hxx,v 1.3 2002/06/24 22:52:57 grumbel Exp $
+//  $Id: spot_map.hxx,v 1.4 2002/08/23 15:49:51 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,14 +37,17 @@ private:
 public:
   CL_Surface surface;
 
-  MapTileSurface();
-  virtual ~MapTileSurface();
+  MapTileSurface ();
+  virtual ~MapTileSurface ();
+  
+  MapTileSurface (const MapTileSurface& old);
+  MapTileSurface operator= (const MapTileSurface& old);
 
-  void reload(void);
-  inline bool is_empty(void) { return empty; }
-  void mark_dirty(void);
-  void check_empty(void);
-  void set_empty(bool);
+  void reload (void);
+  inline bool is_empty (void) { return empty; }
+  void mark_dirty (void);
+  void check_empty (void);
+  void set_empty (bool);
 };
 
 /** This map type is the defaulh maptype, it is should be used for the
@@ -92,6 +95,10 @@ public:
   void mark_tiles_not_empty(int, int, int, int);
 
   float get_z_pos () const { return 0; }
+  
+private:
+  PingusSpotMap (const PingusSpotMap&);
+  PingusSpotMap operator= (const PingusSpotMap&);
 };
 
 #endif

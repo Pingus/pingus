@@ -1,4 +1,4 @@
-//  $Id: panel_icons.hxx,v 1.4 2002/07/01 12:46:22 grumbel Exp $
+//  $Id: panel_icons.hxx,v 1.5 2002/08/23 15:49:54 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,6 +27,10 @@ class PanelIconNew : public PanelIcon
 public:
   PanelIconNew();
   virtual void on_click();
+  
+private:
+  PanelIconNew (const PanelIconNew&);
+  PanelIconNew operator= (const PanelIconNew&);
 };
 
 class PanelIconLoad : public PanelIcon
@@ -34,6 +38,10 @@ class PanelIconLoad : public PanelIcon
 public:
   PanelIconLoad();
   virtual void on_click();
+  
+private:
+  PanelIconLoad (const PanelIconLoad&);
+  PanelIconLoad operator= (const PanelIconLoad&);
 };
 
 class PanelIconSave : public PanelIcon
@@ -41,6 +49,10 @@ class PanelIconSave : public PanelIcon
 public:
   PanelIconSave();
   virtual void on_click();
+  
+private:
+  PanelIconSave (const PanelIconSave&);
+  PanelIconSave operator= (const PanelIconSave&);
 };
 
 class PanelIconCopy : public PanelIcon
@@ -48,6 +60,10 @@ class PanelIconCopy : public PanelIcon
 public:
   PanelIconCopy();
   virtual void on_click();
+  
+private:
+  PanelIconCopy (const PanelIconCopy&);
+  PanelIconCopy operator= (const PanelIconCopy&);
 };
 
 class PanelIconPaste : public PanelIcon
@@ -55,6 +71,10 @@ class PanelIconPaste : public PanelIcon
 public:
   PanelIconPaste();
   virtual void on_click();
+  
+private:
+  PanelIconPaste (const PanelIconPaste&);
+  PanelIconPaste operator= (const PanelIconPaste&);
 };
 
 class PanelIconLevelProperties : public PanelIcon
@@ -62,6 +82,10 @@ class PanelIconLevelProperties : public PanelIcon
 public:
   PanelIconLevelProperties();
   virtual void on_click();
+  
+private:
+  PanelIconLevelProperties (const PanelIconLevelProperties&);
+  PanelIconLevelProperties operator= (const PanelIconLevelProperties&);
 };
 
 class PanelIconObjectProperties : public PanelIcon
@@ -69,6 +93,10 @@ class PanelIconObjectProperties : public PanelIcon
 public:
   PanelIconObjectProperties();
   virtual void on_click();
+  
+private:
+  PanelIconObjectProperties (const PanelIconObjectProperties&);
+  PanelIconObjectProperties operator= (const PanelIconObjectProperties&);
 };
 
 class PanelIconDelete : public PanelIcon
@@ -76,6 +104,10 @@ class PanelIconDelete : public PanelIcon
 public:
   PanelIconDelete();
   virtual void on_click();
+  
+private:
+  PanelIconDelete (const PanelIconDelete&);
+  PanelIconDelete operator= (const PanelIconDelete&);
 };
 
 class PanelIconExit : public PanelIcon
@@ -83,6 +115,10 @@ class PanelIconExit : public PanelIcon
 public:
   PanelIconExit();
   virtual void on_click();
+  
+private:
+  PanelIconExit (const PanelIconExit&);
+  PanelIconExit operator= (const PanelIconExit&);
 };
 
 class PanelIconRun : public PanelIcon
@@ -90,6 +126,10 @@ class PanelIconRun : public PanelIcon
 public:
   PanelIconRun();
   virtual void on_click();
+  
+private:
+  PanelIconRun (const PanelIconRun&);
+  PanelIconRun operator= (const PanelIconRun&);
 };
 
 class PanelIconInsertObject : public PanelIcon
@@ -97,6 +137,10 @@ class PanelIconInsertObject : public PanelIcon
 public:
   PanelIconInsertObject();
   virtual void on_click();
+  
+private:
+  PanelIconInsertObject (const PanelIconInsertObject&);
+  PanelIconInsertObject operator= (const PanelIconInsertObject&);
 };
 
 class PanelIconZoomOut : public PanelIcon
@@ -104,6 +148,10 @@ class PanelIconZoomOut : public PanelIcon
 public:
   PanelIconZoomOut();
   virtual void on_click();
+  
+private:
+  PanelIconZoomOut (const PanelIconZoomOut&);
+  PanelIconZoomOut operator= (const PanelIconZoomOut&);
 };
 
 class PanelIconZoomIn : public PanelIcon
@@ -111,6 +159,10 @@ class PanelIconZoomIn : public PanelIcon
 public:
   PanelIconZoomIn();
   virtual void on_click();
+  
+private:
+  PanelIconZoomIn (const PanelIconZoomIn&);
+  PanelIconZoomIn operator= (const PanelIconZoomIn&);
 };
 
 class PanelIconRegionZoom : public PanelIcon
@@ -118,6 +170,10 @@ class PanelIconRegionZoom : public PanelIcon
 public:
   PanelIconRegionZoom();
   virtual void on_click();
+  
+private:
+  PanelIconRegionZoom (const PanelIconRegionZoom&);
+  PanelIconRegionZoom operator= (const PanelIconRegionZoom&);
 };
 
 class PanelIconSetupActions : public PanelIcon
@@ -125,6 +181,10 @@ class PanelIconSetupActions : public PanelIcon
 public:
   PanelIconSetupActions ();
   virtual void on_click();
+  
+private:
+  PanelIconSetupActions (const PanelIconSetupActions&);
+  PanelIconSetupActions operator= (const PanelIconSetupActions&);
 };
 
 #endif

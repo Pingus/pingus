@@ -1,4 +1,4 @@
-//  $Id: button_event.hxx,v 1.2 2002/07/10 17:22:11 torangan Exp $
+//  $Id: button_event.hxx,v 1.3 2002/08/23 15:49:55 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,6 +38,10 @@ namespace Input {
       ButtonEvent (ButtonName name_, State state_) : name(name_), state(state_) { }
       
       EventType get_type () { return ButtonEventType; }
+      
+    private:
+      ButtonEvent (const ButtonEvent&);
+      ButtonEvent operator= (const ButtonEvent&);
   };
 
 }

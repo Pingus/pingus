@@ -1,4 +1,4 @@
-//  $Id: walker.cxx,v 1.15 2002/08/04 12:56:11 grumbel Exp $
+//  $Id: walker.cxx,v 1.16 2002/08/23 15:49:53 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,8 +23,6 @@
 #include "../pingu.hxx"
 #include "../debug.hxx"
 #include "walker.hxx"
-
-const int Walker::max_steps=5;
 
 void
 Walker::init(void)
@@ -62,7 +60,7 @@ Walker::update(float delta)
 
   if (rel_getpixel(0, -1) ==  GroundpieceData::GP_WATER)
     {
-      pingu->set_action (Drown);
+      pingu->set_action (Pingus::Actions::Drown);
       return;
     }
 
@@ -89,7 +87,7 @@ Walker::update(float delta)
 	}
       else
 	{
-	  pingu->set_action (Faller);
+	  pingu->set_action (Pingus::Actions::Faller);
 	  return;
 	}
     }
@@ -158,7 +156,7 @@ Walker::update(float delta)
 	      // We take the step, so that we are in the air
 	      pingu->pos.x += pingu->direction;
 	      // We reached a cliff
-	      pingu->set_action (Faller);
+	      pingu->set_action (Pingus::Actions::Faller);
 	      return;
 	    }
 	}

@@ -1,4 +1,4 @@
-//  $Id: pingu.hxx,v 1.9 2002/06/28 18:11:10 grumbel Exp $
+//  $Id: pingu.hxx,v 1.10 2002/08/23 15:49:49 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -78,12 +78,10 @@ public:
   CL_Vector velocity; 
 
 
-public:
   bool request_set_action (PinguAction*);
   
   void  set_action (PinguAction*);
 
-public:
   /** Creates a new Pingu at the given coordinates
       @param pos The start position of the pingu
       @param owner The owner id of the pingu (used for multiplayer) */
@@ -199,6 +197,10 @@ public:
       another action can be applied, false otherwise (exiter,
       splashed, etc.) */
   bool catchable ();
+  
+private:
+  Pingu (const Pingu&);
+  Pingu operator= (const Pingu&);  
 };
 
 #endif /* PINGU_HH */

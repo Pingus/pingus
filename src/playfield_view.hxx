@@ -1,4 +1,4 @@
-//  $Id: playfield_view.hxx,v 1.2 2002/06/24 22:52:56 grumbel Exp $
+//  $Id: playfield_view.hxx,v 1.3 2002/08/23 15:49:50 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -48,6 +48,10 @@ public:
   
   // Return the pingu at the given *screen* coordinates
   Pingu* get_pingu (const CL_Vector& pos);
+  
+private:
+  PlayfieldView (const PlayfieldView&);
+  PlayfieldView operator= (const PlayfieldView&);
 };
 
 #endif

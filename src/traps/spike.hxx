@@ -1,4 +1,4 @@
-//  $Id: spike.hxx,v 1.2 2002/06/24 22:52:59 grumbel Exp $
+//  $Id: spike.hxx,v 1.3 2002/08/23 15:49:56 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,19 +24,24 @@
 
 class TrapData;
 
-///
 class Spike : public Trap
 {
 private:
   bool killing;
 
 public:
-  Spike(const TrapData& data);
-  virtual ~Spike();
+  Spike (const TrapData& data);
+  virtual ~Spike ();
   
-  void draw_offset(int x_of, int y_of, float s = 1.0);
-  void update(float delta);
-  void catch_pingu(Pingu*);
+  void draw_offset (int x_of, int y_of, float s = 1.0);
+  void update (float delta);
+  
+protected:
+  void catch_pingu (Pingu*);
+  
+private:
+  Spike (const Spike&);
+  Spike operator= (const Spike&);
 };
 
 #endif

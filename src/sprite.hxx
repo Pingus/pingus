@@ -1,4 +1,4 @@
-//  $Id: sprite.hxx,v 1.4 2002/08/16 13:03:35 torangan Exp $
+//  $Id: sprite.hxx,v 1.5 2002/08/23 15:49:51 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,8 +20,8 @@
 #ifndef HEADER_PINGUS_SPRITE_HXX
 #define HEADER_PINGUS_SPRITE_HXX
 
-#include <ClanLib/Display/Display/surface.h>
 #include "pingus.hxx"
+#include <ClanLib/Display/Display/surface.h>
 
 class CL_Vector;
 class ResDescriptor;
@@ -30,7 +30,7 @@ class Sprite
 {
 public:
   typedef enum { NONE, LEFT, RIGHT } Direction;
-  typedef enum { ENDLESS, ONCE, } LoopType;
+  typedef enum { ENDLESS, ONCE } LoopType;
   
 private:
   float frame;
@@ -51,6 +51,9 @@ public:
 
   /// Copy a sprite
   Sprite (const Sprite& sprite);
+  
+  /// Copy a sprite
+  Sprite operator= (const Sprite& sprite);
   
   Sprite (std::string arg_sur_name,
 	  std::string arg_datafile,

@@ -1,4 +1,4 @@
-//  $Id: wav_provider.hxx,v 1.3 2002/08/16 13:03:35 torangan Exp $
+//  $Id: wav_provider.hxx,v 1.4 2002/08/23 15:49:51 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,20 +20,24 @@
 #ifndef HEADER_PINGUS_WAV_PROVIDER_HXX
 #define HEADER_PINGUS_WAV_PROVIDER_HXX
 
+#include "pingus.hxx"
 #include <map>
 #include <string>
-#include "pingus.hxx"
 
 class Mix_Chunk;
 
-///
 class PingusWavProvider
 {
 private:
   static std::map<std::string, Mix_Chunk*> wave;
+  
 public:
-  ///
-  static Mix_Chunk* load(std::string);
+  static Mix_Chunk* load (const std::string& str);
+  
+private:
+  PingusWavProvider ();
+  PingusWavProvider (const PingusWavProvider&);
+  PingusWavProvider operator= (const PingusWavProvider&);
 };
 
 #endif

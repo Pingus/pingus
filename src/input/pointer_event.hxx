@@ -1,4 +1,4 @@
-//  $Id: pointer_event.hxx,v 1.2 2002/07/12 15:08:45 torangan Exp $
+//  $Id: pointer_event.hxx,v 1.3 2002/08/23 15:49:56 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,6 +36,10 @@ namespace Input {
       PointerEvent (Type type_, float x_, float y_) : type(type_), x(x_), y(y_) { }
       
       EventType get_type () { return PointerEventType; }
+      
+    private:
+      PointerEvent (const PointerEvent&);
+      PointerEvent operator= (const PointerEvent&);
   };
 
 }

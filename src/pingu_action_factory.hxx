@@ -1,4 +1,4 @@
-//  $Id: pingu_action_factory.hxx,v 1.3 2002/06/28 15:12:22 torangan Exp $
+//  $Id: pingu_action_factory.hxx,v 1.4 2002/08/23 15:49:49 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -49,6 +49,10 @@ public:
 
   /** Allocate the given action */
   PinguAction* create (ActionName id);
+  
+private:
+  PinguActionFactory (const PinguActionFactory&);
+  PinguActionFactory operator= (const PinguActionFactory&);
 };
 
 class PinguActionAbstractFactory
@@ -59,6 +63,10 @@ public:
   }
   
   virtual PinguAction* create () =0;
+  
+private:
+  PinguActionAbstractFactory (const PinguActionAbstractFactory&);
+  PinguActionAbstractFactory operator= (const PinguActionAbstractFactory&);
 };
 
 template<class T>
@@ -73,6 +81,10 @@ public:
   PinguAction* create () {
     return new T ();
   }
+  
+private:
+  PinguActionFactoryImpl (const PinguActionFactoryImpl&);
+  PinguActionFactoryImpl operator= (const PinguActionFactoryImpl&);
 };
 
 #endif

@@ -1,4 +1,4 @@
-//  $Id: demo_player.hxx,v 1.3 2002/06/24 22:52:54 grumbel Exp $
+//  $Id: demo_player.hxx,v 1.4 2002/08/23 15:49:48 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -53,6 +53,10 @@ public:
   bool empty() { 
     return event_queue.empty(); 
   }
+  
+private:
+  DemoPlayer (const DemoPlayer&);
+  DemoPlayer operator= (const DemoPlayer&);
 }///
 ;
 

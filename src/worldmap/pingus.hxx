@@ -1,4 +1,4 @@
-//  $Id: pingus.hxx,v 1.6 2002/08/22 09:24:18 grumbel Exp $
+//  $Id: pingus.hxx,v 1.7 2002/08/23 15:49:57 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,7 +24,6 @@
 #include <math.h>
 #include <queue>
 #include "node.hxx"
-
 
 namespace boost {
   template <class T> class shared_ptr;
@@ -52,6 +51,10 @@ public:
   void set_position (boost::shared_ptr<Pingus::WorldMap::Node> node);
   CL_Vector get_pos () { return pos; }
   Pingus::WorldMap::Node* get_node ();
+  
+private:
+  PingusWorldMapPingus (const PingusWorldMapPingus&);
+  PingusWorldMapPingus operator= (const PingusWorldMapPingus&);
 };
 
 #endif

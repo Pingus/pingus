@@ -1,4 +1,4 @@
-//  $Id: level_property_window.hxx,v 1.5 2002/08/16 13:03:36 torangan Exp $
+//  $Id: level_property_window.hxx,v 1.6 2002/08/23 15:49:54 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,11 +20,11 @@
 #ifndef HEADER_PINGUS_LEVEL_PROPERTY_WINDOW_HXX
 #define HEADER_PINGUS_LEVEL_PROPERTY_WINDOW_HXX
 
+#include "../pingus.hxx"
 #include <ClanLib/GUI/label.h>
 #include <ClanLib/GUI/window.h>
 #include <ClanLib/GUI/checkbox.h>
 #include <ClanLib/GUI/inputbox.h>
-#include "../pingus.hxx"
 
 class ObjectManager;
 
@@ -70,6 +70,10 @@ namespace Pingus
     public:
       LevelPropertyWindow (CL_Component* parent, ObjectManager*);
       ~LevelPropertyWindow ();
+      
+    private:
+      LevelPropertyWindow (const LevelPropertyWindow&);
+      LevelPropertyWindow operator= (const LevelPropertyWindow&);
     };
   }
 }

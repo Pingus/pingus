@@ -1,4 +1,4 @@
-//  $Id: option_menu.cxx,v 1.2 2002/06/13 14:25:12 torangan Exp $
+//  $Id: option_menu.cxx,v 1.3 2002/08/23 15:49:49 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,37 +41,92 @@ OptionMenu   option_menu (0);
 
 // ----- OptionEntry -----
 
-OptionEntry::OptionEntry(std::string s, bool* v, int x, int y)
+OptionEntry::OptionEntry (const std::string& s, bool* v, int x, int y)
+                        : value_bool(v),
+			  value_int(0),
+			  value_str(0),
+			  font(PingusResource::load_font("Fonts/smallfont_h", "fonts")),
+			  x_pos(x),
+			  y_pos(y),
+			  str(s)
 {
-  font = PingusResource::load_font("Fonts/smallfont_h", "fonts");
-  str = s;
-  value_bool = v;
-  value_int = 0;
-  value_str = 0;
-  x_pos = x;
-  y_pos = y;
 }
 
-OptionEntry::OptionEntry(std::string s, std::string* v, int x, int y)
+OptionEntry::OptionEntry (const std::string& s, std::string* v, int x, int y)
+                        : value_bool(0),
+			  value_int(0),
+			  value_str(v),
+			  font(PingusResource::load_font("Fonts/smallfont_h", "fonts")),
+			  x_pos(x),
+			  y_pos(y),
+			  str(s)
 {
-  font = PingusResource::load_font("Fonts/smallfont_h", "fonts");
-  str = s;
-  value_str = v;
-  value_int = 0;
-  value_bool = 0;
-  x_pos = x;
-  y_pos = y;
 }
 
-OptionEntry::OptionEntry(std::string s, int* v, int x, int y)
+OptionEntry::OptionEntry (const std::string& s, int* v, int x, int y) 
+                        : value_bool(0),
+                          value_int(v),
+			  value_str(0),
+			  font(PingusResource::load_font("Fonts/smallfont_h", "fonts")),
+			  x_pos(x),
+			  y_pos(y),
+			  str(s)
 {
-  font = PingusResource::load_font("Fonts/smallfont_h", "fonts");
-  str = s;
-  value_str = 0;
-  value_int = v;
-  value_bool = 0;
-  x_pos = x;
-  y_pos = y;
+}
+
+OptionEntry::OptionEntry (const OptionEntry& old) : value_bool(0),
+                                                    value_int(0),
+						    value_str(0),
+						    font(new CL_Font(*(old.font))),
+                                                    x_pos(old.x_pos),
+					            y_pos(old.y_pos),
+					            str(old.str)
+{
+  if (old.value_bool)
+    value_bool = new bool(*(old.value_bool));
+
+  if (old.value_int)
+    value_int = new int(*(old.value_int));
+
+  if (old.value_str)
+    value_str = new std::string(*(old.value_str));
+}
+
+OptionEntry
+OptionEntry::operator= (const OptionEntry& old)
+{
+  if (this == &old)
+    return *this;
+    
+  font       = new CL_Font(*(old.font));
+  x_pos      = old.x_pos;
+  y_pos      = old.y_pos;
+  str        = old.str;
+  
+  if (old.value_bool)
+    value_bool = new bool(*(old.value_bool));
+  else
+    value_bool = 0;
+
+  if (old.value_int)
+    value_int = new int(*(old.value_int));
+  else
+    value_int = 0;
+
+  if (old.value_str)
+    value_str = new std::string(*(old.value_str));
+  else
+    value_str = 0;
+  
+  return *this;
+}
+
+OptionEntry::~OptionEntry ()
+{
+  delete value_bool;
+  delete value_int;
+  delete value_str;
+  delete font;
 }
 
 void
@@ -137,9 +192,15 @@ OptionEntry::mouse_over()
   }
 }
 
-void
-OptionMenu::Event::on_button_press(CL_InputDevice * /*device*/, const CL_Key & /*key*/)
+OptionMenu::Event::Event ()
 {
+}
+
+void
+OptionMenu::Event::on_button_press(CL_InputDevice * device, const CL_Key & key)
+{
+  UNUSED_ARG(device);
+  UNUSED_ARG(key);
 }
 
 void
@@ -233,21 +294,21 @@ OptionMenu::init()
 }
 
 void
-OptionMenu::add_entry(std::string e, bool* v)
+OptionMenu::add_entry (const std::string& e, bool* v)
 {
   entry.push_back(OptionEntry(e, v, entry_x, entry_y));
   entry_y += 20;
 }
 
 void 
-OptionMenu::add_entry(std::string e, int* v)
+OptionMenu::add_entry (const std::string& e, int* v)
 {
   entry.push_back(OptionEntry(e, v, entry_x, entry_y));
   entry_y += 20;
 }
 
 void 
-OptionMenu::add_entry(std::string e, std::string* v)
+OptionMenu::add_entry (const std::string& e, std::string* v)
 {
   entry.push_back(OptionEntry(e, v, entry_x, entry_y));
   entry_y += 20;

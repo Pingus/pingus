@@ -1,4 +1,4 @@
-//  $Id: action_holder.hxx,v 1.3 2002/06/28 15:12:22 torangan Exp $
+//  $Id: action_holder.hxx,v 1.4 2002/08/23 15:49:47 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -72,6 +72,10 @@ public:
    *  The deletion of the action is handled by this class.  
    */
   PinguAction* get_action(ActionName);
+  
+private:
+  ActionHolder (const ActionHolder&);
+  ActionHolder operator= (const ActionHolder&);
 };
 
 #endif

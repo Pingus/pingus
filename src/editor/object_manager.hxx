@@ -1,4 +1,4 @@
-//  $Id: object_manager.hxx,v 1.15 2002/07/03 09:53:32 grumbel Exp $
+//  $Id: object_manager.hxx,v 1.16 2002/08/23 15:49:54 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -145,6 +145,10 @@ public:
       to varify that an referenc to and object is still valid and that
       the object has not yet been deleted */
   bool has_object (EditorObj* obj);
+  
+private:
+  ObjectManager (const ObjectManager&);
+  ObjectManager operator= (const ObjectManager&);
 };
 
 #endif

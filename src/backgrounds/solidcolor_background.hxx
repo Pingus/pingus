@@ -1,4 +1,4 @@
-//  $Id: solidcolor_background.hxx,v 1.6 2002/07/02 13:36:06 torangan Exp $
+//  $Id: solidcolor_background.hxx,v 1.7 2002/08/23 15:49:54 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,17 +36,20 @@ public:
 
   // FIXME: Add z_pos handling here
 
-  SolidColorBackgroundData() {}
-  SolidColorBackgroundData(xmlDocPtr doc, xmlNodePtr cur);
+  SolidColorBackgroundData () {}
+  SolidColorBackgroundData (xmlDocPtr doc, xmlNodePtr cur);
+  SolidColorBackgroundData (const SolidColorBackgroundData& old);
+  SolidColorBackgroundData operator= (const SolidColorBackgroundData& old);
 
   virtual ~SolidColorBackgroundData() {}
 
   /** Writte the content of this object formated as xml to the given
       stream */
-  virtual void write_xml(std::ostream& xml);
+  virtual void write_xml (std::ostream& xml);
 
-  WorldObj* create_WorldObj();
-  EditorObjLst create_EditorObj();
+  WorldObj* create_WorldObj ();
+  EditorObjLst create_EditorObj ();
+  
 };
 
 class SolidColorBackground : public WorldObj,
@@ -60,6 +63,10 @@ public:
   float get_z_pos() const { return -10; }  
   void update (float /*delta*/) {}
   void draw_offset (int x_of, int y_of, float s = 1.0);
+  
+private:
+  SolidColorBackground (const SolidColorBackground&);
+  SolidColorBackground operator= (const SolidColorBackground&);
 };
 
 
@@ -68,11 +75,13 @@ class EditorSolidColorBackground : public SolidColorBackgroundData,
 {
 private:
   CL_Vector pos;
+  
 public:
   EditorSolidColorBackground (const SolidColorBackgroundData& data)
     : SolidColorBackgroundData (data),
       pos (0.0f, 0.0f)
   {}
+  
   void write_xml(std::ostream& xml) { this->SolidColorBackgroundData::write_xml (xml); }
 
   /// Return the object width
@@ -105,6 +114,10 @@ public:
 				 + to_string (pos.x) + ", "
 				 + to_string (pos.y) + ", "
 				 + to_string (pos.z); }
+				 
+private:
+  EditorSolidColorBackground (const EditorSolidColorBackground&);
+  EditorSolidColorBackground operator= (const EditorSolidColorBackground&);
 };
 
 #endif

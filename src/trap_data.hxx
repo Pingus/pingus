@@ -1,4 +1,4 @@
-// $Id: trap_data.hxx,v 1.5 2002/07/02 10:42:38 grumbel Exp $
+// $Id: trap_data.hxx,v 1.6 2002/08/23 15:49:51 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,10 +26,6 @@
 
 #include "libxmlfwd.hxx"
 
-namespace boost {
-  template <class T> class shared_ptr;
-}
-
 /// Structure holding all the data needed for a trap.
 class TrapData : public WorldObjData
 {
@@ -39,14 +35,13 @@ public:
 
   int x_target, y_target;
   
-  TrapData(){}
-  TrapData(const TrapData& data) 
-    : WorldObjData(data),
-      type (data.type),
-      pos (data.pos) {}
+  TrapData ();
   TrapData (xmlDocPtr doc, xmlNodePtr cur);
-  virtual ~TrapData(){}
-  void clean(){}
+  TrapData (const TrapData& old);
+  TrapData operator= (const TrapData& old);
+  
+  virtual ~TrapData () {}
+  void clean () {}
 
   void write_xml(std::ostream& xml);
 
@@ -60,7 +55,3 @@ public:
 #endif
 
 /* EOF */
-
-
-
-

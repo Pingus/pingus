@@ -1,4 +1,4 @@
-//  $Id: credits.cxx,v 1.8 2002/08/22 02:24:59 grumbel Exp $
+//  $Id: credits.cxx,v 1.9 2002/08/23 15:49:48 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,7 +17,6 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "pingus.hxx"
 #include <iostream>
 #include <ClanLib/Display/Display/display.h>
 #include <ClanLib/Display/Input/keyboard.h>
@@ -38,12 +37,10 @@
 
 Credits* Credits::instance_ = 0;
 
-Credits::Credits() 
-  : is_init(false)
+Credits::Credits() : is_init(false)
 {
 }
 
-///
 void
 Credits::init ()
 {
@@ -71,6 +68,7 @@ Credits::init ()
       credits.push_back("_Ingo Ruhnke");
       credits.push_back("_Michael K\"aser");
       credits.push_back("_Peter Todd");
+      credits.push_back("_David Philippi");
       credits.push_back("n");
 
       credits.push_back(_("-Gfx"));
@@ -89,7 +87,6 @@ Credits::init ()
       credits.push_back(_("-Special"));
       credits.push_back(_("-Thanks to"));
       credits.push_back("_Jules Bean");
-      credits.push_back("_David Philippi");
       credits.push_back("_Kenneth Gangstø");
       credits.push_back("_Johnny Taporg");
       credits.push_back("_Werner Steiner");
@@ -103,9 +100,8 @@ Credits::init ()
     }
 }
 
-Credits::~Credits()
+Credits::~Credits ()
 {
-  
 }
 
 void 

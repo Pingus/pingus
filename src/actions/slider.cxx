@@ -1,4 +1,4 @@
-//  $Id: slider.cxx,v 1.3 2002/06/28 15:12:22 torangan Exp $
+//  $Id: slider.cxx,v 1.4 2002/08/23 15:49:53 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -59,19 +59,20 @@ Slider::update(float delta)
 	    pingu->velocity += CL_Vector(-speed, 0.0);
 	  }
 
-	  pingu->set_action(Walker);
+	  pingu->set_action(Pingus::Actions::Walker);
 	}
     }
 
   speed -= 7 * delta;
   if (speed < 1)
-    pingu->set_action(Walker);
+    pingu->set_action(Pingus::Actions::Walker);
 }
 
 void
-Slider::draw_offset(int x, int y, float /*s*/)
+Slider::draw_offset(int x, int y, float s)
 {
   sprite.put_screen (pingu->pos + CL_Vector(x, y - 2));
+  UNUSED_ARG(s);
 }
 
 /* EOF */

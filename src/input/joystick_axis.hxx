@@ -1,4 +1,4 @@
-//  $Id: joystick_axis.hxx,v 1.4 2002/08/14 12:41:22 torangan Exp $
+//  $Id: joystick_axis.hxx,v 1.5 2002/08/23 15:49:55 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,20 +31,24 @@ namespace Input
     */
   class JoystickAxis : public Axis {
 
-  private:
-    int     id;
-    int     axis;
-    float   pos;
-    float   angle;
-    
-  public:
+    private:
+      int     id;
+      int     axis;
+      float   pos;
+      float   angle;
   
-    JoystickAxis(int id_, int axis_, float angle_);
+    public:
 
-    virtual const float& get_pos   () const;
-    virtual const float& get_angle () const;
-    
-    virtual void  update (float);
+      JoystickAxis (int id_, int axis_, float angle_);
+
+      virtual const float& get_pos   () const;
+      virtual const float& get_angle () const;
+  
+      virtual void  update (float);
+  
+    private:
+      JoystickAxis (const JoystickAxis&);
+      JoystickAxis operator= (const JoystickAxis&);
   };
 }
 

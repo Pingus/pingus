@@ -1,4 +1,4 @@
-//  $Id: delta_manager.hxx,v 1.3 2002/08/16 13:03:34 torangan Exp $
+//  $Id: delta_manager.hxx,v 1.4 2002/08/23 15:49:48 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,8 +20,8 @@
 #ifndef HEADER_PINGUS_DELTA_MANAGER_HXX
 #define HEADER_PINGUS_DELTA_MANAGER_HXX
 
-#include <ClanLib/Core/System/system.h>
 #include "pingus.hxx"
+#include <ClanLib/Core/System/system.h>
 
 class DeltaManager
 {
@@ -48,6 +48,10 @@ public:
   {
     return (CL_System::get_time () - last_time) / 1000.0f;
   }
+  
+private:
+  DeltaManager (const DeltaManager&);
+  DeltaManager operator= (const DeltaManager&);
 };
 
 #endif

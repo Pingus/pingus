@@ -1,4 +1,4 @@
-//  $Id: plf_parser.hxx,v 1.3 2002/08/16 13:03:35 torangan Exp $
+//  $Id: plf_parser.hxx,v 1.4 2002/08/23 15:49:50 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,14 +20,18 @@
 #ifndef HEADER_PINGUS_PLF_PARSER_HXX
 #define HEADER_PINGUS_PLF_PARSER_HXX
 
+#include "pingus.hxx"
 #include <fstream>
 #include <string>
-#include "pingus.hxx"
 
 /** This gets thrown if a end of file is found inside a PLF file */
 class PLFParserEOF {
 public:
-  PLFParserEOF();
+  PLFParserEOF ();
+  
+private:
+  PLFParserEOF (const PLFParserEOF&);
+  PLFParserEOF operator= (const PLFParserEOF&);
 };
 
 /** A parser for PLF files */
@@ -47,40 +51,40 @@ private:
   // private functions  
   
   /// Return the next char and to a eof check  
-  char   get_char(void);
+  char   get_char ();
   
   /// Return the next atom and keep the old one
-  char   get_atom(void);
+  char   get_atom ();
   
   /// Return the next atom (removes all comments)
-  char   get_raw_atom(void);  
+  char   get_raw_atom (); 
   
   /// Return the groupname and check for errors
-  std::string get_groupname(void);  
+  std::string get_groupname ();  
   
   /// Return the value identifer
-  std::string get_valueid(void);
+  std::string get_valueid ();
   
   /// Return the value
-  std::string get_value(void);
+  std::string get_value ();
 
   /// Return the cast, else ""
-  std::string get_cast(void);
+  std::string get_cast ();
   
   /// Jump to the next token, after char
-  void   jump_after(char);   
+  void   jump_after (char);   
 
   /// Jump over spaces to the next token
-  void   jump(void);
+  void   jump ();
 
   /// Do a clean shutdown on a syntax error
-  void   syntax_error(std::string);
+  void   syntax_error (std::string);
 
   /// Parse the opened file
-  void   parse(void);          
+  void   parse ();
 
   /// Open the file
-  void  open(std::string);
+  void open (const std::string&);
 
   /** Some virtual functions
       Put the retrieved value in the correct struct */
@@ -100,7 +104,11 @@ public:
 
   /** Init the PLFParser and start parsing
       @param filename The filename which should be parsed */
-  void init(std::string filename); 
+  void init (const std::string& filename); 
+  
+private:
+  PLFParser (const PLFParser&);
+  PLFParser operator= (const PLFParser&);
 };
 
 #endif

@@ -1,4 +1,4 @@
-//  $Id: console.hxx,v 1.6 2002/08/17 17:21:25 torangan Exp $
+//  $Id: console.hxx,v 1.7 2002/08/23 15:49:48 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -49,6 +49,9 @@ public:
 private:
   /// helper function used by overflow and sync
   std::string fill_buffer (bool append);
+  
+  ConsoleBuffer (const ConsoleBuffer&);
+  ConsoleBuffer operator= (const ConsoleBuffer&);
 };
 
 /** A "Quake" like console, but it can just handle output, you can't
@@ -101,6 +104,10 @@ public:
   void puts(const std::string&);
   ///
   void newline();
+  
+private:
+  Console (const Console&);
+  Console operator= (const Console&);
 };
 
 /** The globale console object to which you can send messages */

@@ -1,4 +1,4 @@
-//  $Id: manager.hxx,v 1.6 2002/08/03 09:59:23 grumbel Exp $
+//  $Id: manager.hxx,v 1.7 2002/08/23 15:49:57 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,13 +43,21 @@ namespace Pingus
     class WorldMapComponent : public GUI::Component
     {
     public:
+      WorldMapComponent () { }
+      
       void on_primary_button_press (int x, int y);
  
       void draw ();
       void update (float delta);
       
       bool is_at (int, int) { return true; }
+      
+    private:
+      WorldMapComponent (const WorldMapComponent&);
+      WorldMapComponent operator= (const WorldMapComponent&);
+
     } worldmap_component;
+
     
     friend class WorldMapComponent;
   private:
@@ -74,6 +82,10 @@ namespace Pingus
   public:
     void change_map (const std::string& filename, int node);
     static WorldMapManager* instance ();
+    
+  private:
+    WorldMapManager (const WorldMapManager&);
+    WorldMapManager operator= (const WorldMapManager&);
   };
 
 }

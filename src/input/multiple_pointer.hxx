@@ -1,4 +1,4 @@
-//  $Id: multiple_pointer.hxx,v 1.4 2002/08/14 12:41:22 torangan Exp $
+//  $Id: multiple_pointer.hxx,v 1.5 2002/08/23 15:49:56 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,7 +46,6 @@ namespace Input
       float y_pos;
 
     public:
-
       MultiplePointer (const std::vector<Pointer*>& pointers_);
      ~MultiplePointer ();
     
@@ -56,6 +55,10 @@ namespace Input
       virtual void set_pos (float x_pos, float y_pos);
     
       virtual void update (float delta);
+      
+    private:
+      MultiplePointer (const MultiplePointer&);
+      MultiplePointer operator= (const MultiplePointer&);
   };
 }
 

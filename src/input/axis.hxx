@@ -1,4 +1,4 @@
-//  $Id: axis.hxx,v 1.5 2002/08/16 13:03:36 torangan Exp $
+//  $Id: axis.hxx,v 1.6 2002/08/23 15:49:55 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,6 +28,7 @@ namespace Input
   class Axis {
   
     public:
+      Axis () { }
       virtual ~Axis () { }
     
       /// yields the position of the axis in [-1;1]
@@ -37,6 +38,10 @@ namespace Input
       virtual const float& get_angle () const =0;
       
       virtual void  update(float) =0;
+      
+    private:
+      Axis (const Axis&);
+      Axis operator= (const Axis&);
   };
 }
 

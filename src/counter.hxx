@@ -1,4 +1,4 @@
-//  $Id: counter.hxx,v 1.3 2002/08/16 13:03:34 torangan Exp $
+//  $Id: counter.hxx,v 1.4 2002/08/23 15:49:48 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,59 +22,35 @@
 
 #include "pingus.hxx"
 
-///
 class Counter
 {
 public:
-  ///
-  enum CounterType { loop, once, ping_pong, ping_pong_once }///
-;
+  enum CounterType { loop, once, ping_pong, ping_pong_once };
 
 private:
-  ///
   int s;
-  ///
   int count;
-  ///
   int add;
-  ///
   CounterType type;
 
 public:
-  ///
   Counter(int s);
-  ///
   Counter();
-  ///
   Counter(const Counter&);
-  ///
   virtual ~Counter();
 
-  ///
   Counter& operator=(const Counter&);
-  ///
   int  inc();
-  ///
   int  operator++();
-  ///
   int  operator--();
-  ///
   int  operator=(int i);
-  ///
   int  get_value() const;
-  ///
   int  size() const;
-  ///
   int  set_count(int i);
-  ///
   int  set_size(int s);
-  ///
   void set_type(CounterType);
-  ///
-  operator int() const { return count; }///
-;
-}///
-;
+  operator int() const { return count; };
+};
 
 #endif
 

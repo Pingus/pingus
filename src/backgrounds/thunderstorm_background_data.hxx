@@ -1,4 +1,4 @@
-//  $Id: thunderstorm_background_data.hxx,v 1.6 2002/07/02 13:36:06 torangan Exp $
+//  $Id: thunderstorm_background_data.hxx,v 1.7 2002/08/23 15:49:54 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,11 +27,17 @@
 
 class ThunderstormBackgroundData : public WorldObjData
 {
-public:
+protected:
   CL_Vector pos;
+  
+public:
 
   ThunderstormBackgroundData () {}
   ThunderstormBackgroundData (xmlDocPtr doc, xmlNodePtr cur);
+
+  ThunderstormBackgroundData (const ThunderstormBackgroundData& old);
+  
+  ThunderstormBackgroundData operator= (const ThunderstormBackgroundData& old);
 
   virtual ~ThunderstormBackgroundData() {}
 
@@ -41,6 +47,7 @@ public:
   
   WorldObj* create_WorldObj();
   EditorObjLst create_EditorObj();
+  
 };
 
 class EditorThunderstormBackground : public ThunderstormBackgroundData,
@@ -62,9 +69,12 @@ public:
   }
   
   std::string status_line () { return "ThunderstormBackground"; }
+  
+private:
+  EditorThunderstormBackground (const EditorThunderstormBackground&);
+  EditorThunderstormBackground operator= (const EditorThunderstormBackground&);
 };
 
 #endif
 
 /* EOF */
-

@@ -1,4 +1,4 @@
-//  $Id: rocket_launcher.cxx,v 1.3 2002/07/02 13:36:06 torangan Exp $
+//  $Id: rocket_launcher.cxx,v 1.4 2002/08/23 15:49:53 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -45,20 +45,22 @@ RocketLauncher::update(float delta)
 {
   if (sprite.finished ())
     {
-      pingu->set_action(Walker);
+      pingu->set_action(Pingus::Actions::Walker);
     }
 
   sprite.update (delta);
 }
 
 void
-RocketLauncher::draw_offset(int x, int y, float /*s*/)
+RocketLauncher::draw_offset(int x, int y, float s)
 {
   if (pingu->direction.is_left ())
     sprite.set_direction (Sprite::LEFT);
   else
     sprite.set_direction (Sprite::RIGHT);
   sprite.put_screen (pingu->pos + CL_Vector (x, y));
+  
+  UNUSED_ARG(s);
 }
 
 /* EOF */

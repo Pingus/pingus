@@ -1,4 +1,4 @@
-//  $Id: smoke_particle.hxx,v 1.3 2002/06/28 17:48:42 grumbel Exp $
+//  $Id: smoke_particle.hxx,v 1.4 2002/08/23 15:49:56 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,19 +22,23 @@
 
 #include "particle.hxx"
 
-///
 class SmokeParticle : public Particle
 {
 private:
   int time;
   static CL_Surface surf1;
   static CL_Surface surf2;
+  
 public:
-  SmokeParticle();
-  SmokeParticle(int, int, float, float);
+  SmokeParticle ();
+  SmokeParticle (int, int, float, float);
 
-  void update(float delta);
-  void draw_offset(int ofx, int ofy, float s);
+  void update (float delta);
+  void draw_offset (int ofx, int ofy, float s);
+  
+private:
+  SmokeParticle (const SmokeParticle&);
+  SmokeParticle operator= (const SmokeParticle&);
 };
 
 #endif

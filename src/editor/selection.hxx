@@ -1,4 +1,4 @@
-//  $Id: selection.hxx,v 1.7 2002/07/02 13:36:07 torangan Exp $
+//  $Id: selection.hxx,v 1.8 2002/08/23 15:49:54 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -70,6 +70,10 @@ public:
   void rotate_270();
 
   void draw(EditorView* view);  
+  
+private:
+  EditorSelection (const EditorSelection&);
+  EditorSelection operator= (const EditorSelection&);
 };
 
 #endif

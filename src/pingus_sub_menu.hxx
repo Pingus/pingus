@@ -1,4 +1,4 @@
-//  $Id: pingus_sub_menu.hxx,v 1.5 2002/08/17 00:28:49 grumbel Exp $
+//  $Id: pingus_sub_menu.hxx,v 1.6 2002/08/23 15:49:50 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -40,6 +40,10 @@ public:
 
   /// Return a handle to the parent menu manager
   PingusMenuManager* get_manager () { return manager; }
+  
+private:
+  PingusSubMenu (const PingusSubMenu&);
+  PingusSubMenu operator= (const PingusSubMenu&);
 };
 
 #endif

@@ -1,4 +1,4 @@
-//  $Id: groundpiece_data.cxx,v 1.6 2002/08/22 00:36:30 grumbel Exp $
+//  $Id: groundpiece_data.cxx,v 1.7 2002/08/23 15:49:48 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,15 +20,15 @@
 #include <fstream>
 #include "xml_helper.hxx"
 #include "editor/editor_groundpiece_obj.hxx"
-#include "boost/smart_ptr.hpp"
 #include "xml_helper.hxx"
 
-GroundpieceData::GroundpieceData ()
+GroundpieceData::GroundpieceData () : resource(0)
 {
   // do nothing
 }
 
 GroundpieceData::GroundpieceData (xmlDocPtr doc, xmlNodePtr cur)
+                                 : resource(0)
 {
   gptype = GroundpieceData::GP_GROUND;
 
@@ -65,6 +65,35 @@ GroundpieceData::GroundpieceData (xmlDocPtr doc, xmlNodePtr cur)
 	}
       cur = cur->next;	
     }
+}
+
+GroundpieceData::GroundpieceData (const GroundpieceData& old) 
+                                 : surface(old.surface),
+				   resource(new CL_Resource(*(old.resource))),
+				   desc(old.desc),
+				   pos(old.pos),
+				   gptype(old.gptype)
+{
+}
+
+GroundpieceData
+GroundpieceData::operator= (const GroundpieceData& old)
+{
+  if (this == &old)
+    return *this;
+    
+  surface  = old.surface;
+  resource = new CL_Resource(*(old.resource));
+  desc     = old.desc;
+  pos      = old.pos;
+  gptype   = old.gptype;
+  
+  return *this;
+}
+
+GroundpieceData::~GroundpieceData ()
+{
+  delete resource;
 }
 
 GroundpieceData::GPType 

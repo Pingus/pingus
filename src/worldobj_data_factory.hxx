@@ -1,4 +1,4 @@
-//  $Id: worldobj_data_factory.hxx,v 1.4 2002/07/02 15:46:58 torangan Exp $
+//  $Id: worldobj_data_factory.hxx,v 1.5 2002/08/23 15:49:52 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -55,6 +55,10 @@ public:
       'type' property. This is for backward compatibility only! */
   WorldObjData* create (const std::string& id,
 			xmlDocPtr doc, xmlNodePtr cur);
+
+private:
+  WorldObjDataFactory (const WorldObjDataFactory&);
+  WorldObjDataFactory operator= (const WorldObjDataFactory&);
 };
 
 /** WorldObjDataAbstractFactory, interface for creating factories */
@@ -66,6 +70,10 @@ public:
   }
   
   virtual WorldObjData* create (xmlDocPtr doc, xmlNodePtr cur) =0;
+  
+private:
+  WorldObjDataAbstractFactory (const WorldObjDataAbstractFactory&);
+  WorldObjDataAbstractFactory operator= (const WorldObjDataAbstractFactory&);
 };
 
 /** Template to create factories, usage:
@@ -80,7 +88,10 @@ public:
   WorldObjData* create (xmlDocPtr doc, xmlNodePtr cur) {
     return new T (doc, cur); 
   }
-  
+
+private:
+  WorldObjDataFactoryImpl (const WorldObjDataFactoryImpl&);
+  WorldObjDataFactoryImpl operator= (const WorldObjDataFactoryImpl&);  
 };
 
 #endif

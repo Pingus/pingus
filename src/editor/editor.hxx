@@ -1,4 +1,4 @@
-//  $Id: editor.hxx,v 1.12 2002/08/14 12:45:02 torangan Exp $
+//  $Id: editor.hxx,v 1.13 2002/08/23 15:49:54 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -129,6 +129,10 @@ public:
 
   void on_startup ();
   void on_shutdown ();
+  
+private:
+  Editor (const Editor&);
+  Editor operator= (const Editor&);
 };
 
 #endif

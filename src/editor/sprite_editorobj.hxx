@@ -1,4 +1,4 @@
-//  $Id: sprite_editorobj.hxx,v 1.2 2002/06/24 22:52:58 grumbel Exp $
+//  $Id: sprite_editorobj.hxx,v 1.3 2002/08/23 15:49:54 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -59,6 +59,10 @@ public:
   /** This will be overritten to provide pixel exact click
       detection */
   virtual bool   is_over(const CL_Vector&);
+  
+protected:
+  SpriteEditorObj (const SpriteEditorObj& old);
+  void operator= (const SpriteEditorObj& old);
 };
 
 #endif

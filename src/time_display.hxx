@@ -1,4 +1,4 @@
-//  $Id: time_display.hxx,v 1.4 2002/08/02 11:53:52 grumbel Exp $
+//  $Id: time_display.hxx,v 1.5 2002/08/23 15:49:51 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,12 +30,17 @@ class TimeDisplay : public GUI::Component
 private:
   Server*  server;
   CL_Font* font;
+  
 public:
   TimeDisplay();
   virtual ~TimeDisplay() {}
 
   void draw();
   void set_server(Server*);
+  
+private:
+  TimeDisplay (const TimeDisplay&);
+  TimeDisplay operator= (const TimeDisplay&);
 };
 
 #endif

@@ -1,4 +1,4 @@
-//  $Id: scroll_event.hxx,v 1.1 2002/07/11 15:15:19 torangan Exp $
+//  $Id: scroll_event.hxx,v 1.2 2002/08/23 15:49:56 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,6 +34,10 @@ namespace Input {
       ScrollEvent (float x_delta_, float y_delta_) : x_delta(x_delta_), y_delta(y_delta_) { }
       
       EventType get_type () { return ScrollEventType; }
+      
+    private:
+      ScrollEvent (const ScrollEvent&);
+      ScrollEvent operator= (const ScrollEvent&);
   };
 
 }

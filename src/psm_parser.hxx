@@ -1,4 +1,4 @@
-//  $Id: psm_parser.hxx,v 1.2 2002/06/24 22:52:56 grumbel Exp $
+//  $Id: psm_parser.hxx,v 1.3 2002/08/23 15:49:50 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,65 +24,47 @@
 #include <fstream>
 #include "groundpiece_data.hxx"
 
-///
-struct PSMEOF {}///
-;
+struct PSMEOF {};
 
-///
 struct PSMParseError 
 {
-  ///
   std::string message;
+  PSMParseError(std::string str) : message(str) { }
+  
+  PSMParseError (const PSMParseError& old) : message(old.message) { }
+  
+private:
+  PSMParseError operator= (const PSMParseError&);
+};
 
-  ///
-  PSMParseError(std::string str) { 
-    message = str; 
-  }
-}///
-;
-
-///
 class PSMParser
 {
 private:
-  ///
   std::vector<GroundpieceData> surface;
-  ///
   bool file_parsed;
-  ///
   std::ifstream in;
-  ///
   int lines;
 
-  ///
   char   get_char(void);
-  ///
   char   get_atom(void);
-  ///
   int    get_int(void);
-  ///
   std::string get_string(void);
-  ///
   ResDescriptor get_resdesc(void);
-  ///
   void   jump_spaces(void);
 
-  ///
   void   expect(char);
 public:
-  ///
   PSMParser();
-  ///
   ~PSMParser();
 
-  ///
   void   load_surfaces(void);
-  ///
   void   parse(std::string filename);
-  ///
   std::vector<GroundpieceData> get_surfaces(void);
-}///
-;
+  
+private:
+  PSMParser (const PSMParser&);
+  PSMParser operator= (const PSMParser&);
+};
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: faller.hxx,v 1.9 2002/08/13 18:44:50 grumbel Exp $
+//  $Id: faller.hxx,v 1.10 2002/08/23 15:49:53 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,11 +42,15 @@ public:
   void  update(float delta);
   void  draw_offset(int x, int y, float s);
 
-  bool change_allowed (ActionName new_action);
+  bool change_allowed (Pingus::Actions::ActionName new_action);
   
   std::string get_name() const { return "Faller"; }
-  ActionName get_type() const { return Pingus::Actions::Faller; }
+  Pingus::Actions::ActionName get_type() const { return Pingus::Actions::Faller; }
   bool is_tumbling () const;
+  
+private:
+  Faller (const Faller&);
+  Faller operator= (const Faller&);
 };
 
 #endif

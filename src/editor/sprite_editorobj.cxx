@@ -1,4 +1,4 @@
-//  $Id: sprite_editorobj.cxx,v 1.2 2002/06/27 17:16:40 torangan Exp $
+//  $Id: sprite_editorobj.cxx,v 1.3 2002/08/23 15:49:54 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -40,6 +40,24 @@ SpriteEditorObj::SpriteEditorObj (const std::string& sur_name,
   : sprite (sur_name, datafile),
     pos_ref (arg_pos)
 {
+}
+
+SpriteEditorObj::SpriteEditorObj (const SpriteEditorObj& old) : RectEditorObj(old),
+                                                                sprite(old.sprite),
+								pos_ref(old.pos_ref)
+{
+}
+
+void
+SpriteEditorObj::operator= (const SpriteEditorObj& old)
+{
+  if (this != &old)
+    {    
+      RectEditorObj::operator=(old);
+  
+      sprite  = old.sprite;
+      pos_ref = old.pos_ref;
+    }
 }
 
 SpriteEditorObj::~SpriteEditorObj ()

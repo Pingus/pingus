@@ -1,4 +1,4 @@
-//  $Id: theme_selector.hxx,v 1.3 2002/08/16 13:03:35 torangan Exp $
+//  $Id: theme_selector.hxx,v 1.4 2002/08/23 15:49:51 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,11 +20,11 @@
 #ifndef HEADER_PINGUS_THEME_SELECTOR_HXX
 #define HEADER_PINGUS_THEME_SELECTOR_HXX
 
+#include "pingus.hxx"
 #include <vector>
 #include <string>
 #include <ClanLib/Signals/slot.h>
 #include <ClanLib/Display/Display/surface.h>
-#include "pingus.hxx"
 
 class CL_Key;
 class CL_Font;
@@ -32,79 +32,70 @@ class CL_InputDevice;
 class Theme;
 class AlphaButton;
 
-///
 class ListItem
 {
 private:
-  ///
   std::string label;
-  ///
   CL_Font* font;
+  
 public:
-  ///
   ListItem(std::string);
-  ///
   void draw_offset(int x, int y);
-  ///
   bool mouse_over();
+  
+  ListItem (const ListItem& old);
+  ListItem operator= (const ListItem& old);
 };
 
-///
 class ListBox
 {
 private:
-  ///
   std::vector<ListItem> items;
-  ///
   typedef std::vector<ListItem>::iterator ListIter;
 public:
-  ///
   ListBox();
-  ///
   void add_item(std::string);
-  ///
   void draw_offset(int x, int y);
+  
+private:
+  ListBox (const ListBox&);
+  ListBox operator= (const ListBox&);
 };
 
-///
 class ThemeSelector
 {
 public:
-  ///
   CL_Slot on_button_press_slot;
-  ///
   CL_Slot on_button_release_slot;
-  ///
   CL_Slot on_mouse_move_slot;
 
-  ///
   class Event /*: public CL_Event_ButtonPress, 
 		public CL_Event_ButtonRelease,
 		public CL_Event_MouseMove*/
   {
   public:
-    ///
     bool enabled;
-    ///
     ThemeSelector* theme_selector;
-    ///
+    
+  public:
+    Event () { }
+    
     virtual void on_button_press(CL_InputDevice *device, const CL_Key &key);
-    ///
     virtual void on_button_release(CL_InputDevice *device, const CL_Key &key);
-    ///
     virtual void on_mouse_move(CL_InputDevice *,int mouse_x, int mouse_y);
+    
+  private:
+    Event (const Event&);
+    Event operator= (const Event&);
   };
-  ///
+  
   friend class Event;
-  ///
+
   Event* event;
   
 private:
-  ///
   std::vector<AlphaButton*> theme;
-  ///
   std::vector<Theme*> themes;
-  ///
   std::vector<Theme*>::iterator current_theme;
 
   /** A large font, used for the Title Name */
@@ -120,15 +111,11 @@ private:
   /// The back button
   CL_Surface back;
 
-  ///
   bool dir_read;
-  ///
   bool finished;
-  ///
   ListBox list_box;
-  ///
+
   void   draw();
-  ///
   bool key_pressed(int key);
 
   /** Marks the level, which is under the given coordinates 
@@ -137,23 +124,20 @@ private:
       @return The current_level at point or -1 if no level is under point */
   int mark_level_at_point(int x, int y);
 
-  ///
   void   readdir(std::string path);
 
 public:
-  ///
   ThemeSelector();
-  ///
   ~ThemeSelector();
  
   /** Display the theme selector */
   void   display ();
+  
+private:
+  ThemeSelector (const ThemeSelector&);
+  ThemeSelector operator= (const ThemeSelector&);
 };
 
 #endif
 
 /* EOF */
-
-
-
-

@@ -1,4 +1,4 @@
-//  $Id: pointer.hxx,v 1.6 2002/08/16 13:03:36 torangan Exp $
+//  $Id: pointer.hxx,v 1.7 2002/08/23 15:49:56 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,7 +28,7 @@ namespace Input
   class Pointer
   {
   public:
-
+    Pointer () { }
     virtual ~Pointer() { }  
     
     /// returns the X coordinate of the pointer
@@ -41,6 +41,10 @@ namespace Input
     virtual void  set_pos (float, float) =0;
     
     virtual void  update (float) =0;
+    
+   private:
+     Pointer (const Pointer&);
+     Pointer operator= (const Pointer&);
   };
 }
 

@@ -1,4 +1,4 @@
-//  $Id: input_event.hxx,v 1.6 2002/08/16 13:03:35 torangan Exp $
+//  $Id: input_event.hxx,v 1.7 2002/08/23 15:49:49 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,8 +22,8 @@
 
 #error "Don't used this the moment, its underdevelopment and not compilable"
 
-#include <ClanLib/Core/Math/cl_vector.h>
 #include "pingus.hxx"
+#include <ClanLib/Core/Math/cl_vector.h>
 
 /** This will need some^H^H^H^H a lot of work */
 typedef enum {

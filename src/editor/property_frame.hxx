@@ -1,4 +1,4 @@
-//  $Id: property_frame.hxx,v 1.3 2002/08/16 13:03:36 torangan Exp $
+//  $Id: property_frame.hxx,v 1.4 2002/08/23 15:49:54 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,8 +20,8 @@
 #ifndef HEADER_PINGUS_EDITOR_PROPERTY_FRAME_HXX
 #define HEADER_PINGUS_EDITOR_PROPERTY_FRAME_HXX
 
-#include <ClanLib/GUI/frame.h>
 #include "../pingus.hxx"
+#include <ClanLib/GUI/frame.h>
 
 class CL_Component;
 
@@ -31,12 +31,14 @@ namespace Pingus
   {
     class PropertyFrame : public CL_Frame
     {
-    private:
-
     public:
       PropertyFrame (int width, int height, CL_Component*);
 
       virtual std::string get_title () =0;
+      
+    private:
+      PropertyFrame (const PropertyFrame&);
+      PropertyFrame operator= (const PropertyFrame&);
     };
   }
 }

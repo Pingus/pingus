@@ -1,4 +1,4 @@
-//  $Id: multiplayer_client.hxx,v 1.4 2002/07/02 15:46:58 torangan Exp $
+//  $Id: multiplayer_client.hxx,v 1.5 2002/08/23 15:49:49 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -45,6 +45,10 @@ public:
 
   void update (float delta);
   void draw ();
+  
+private:
+  MultiplayerClient (const MultiplayerClient&);
+  MultiplayerClient operator= (const MultiplayerClient&);
 };
 
 #endif

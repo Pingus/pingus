@@ -1,4 +1,4 @@
-//  $Id: bmp_map.hxx,v 1.2 2002/06/24 22:52:54 grumbel Exp $
+//  $Id: bmp_map.hxx,v 1.3 2002/08/23 15:49:48 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -53,6 +53,10 @@ public:
   ColMap* get_colmap(void);
   ///
   CL_Surface get_surface(void);
+  
+private:
+  PinguBmpMap (const PinguBmpMap&);
+  PinguBmpMap operator= (const PinguBmpMap&); 
 };
 
 #endif

@@ -1,4 +1,4 @@
-//  $Id: thumb_cache.hxx,v 1.5 2002/08/16 13:03:36 torangan Exp $
+//  $Id: thumb_cache.hxx,v 1.6 2002/08/23 15:49:55 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,8 +20,8 @@
 #ifndef HEADER_PINGUS_EDITOR_THUMB_CACHE_HXX
 #define HEADER_PINGUS_EDITOR_THUMB_CACHE_HXX
 
-#include <string>
 #include "../pingus.hxx"
+#include <string>
 
 class CL_Surface;
 
@@ -29,8 +29,6 @@ class CL_Surface;
     of surfaces for selection */
 class ThumbCache
 {
-private:
-  
 public:
   /** Load a surface from its source, instead of from the cache */
   static CL_Surface uncached_load (const std::string & res_ident, const std::string & datafile);
@@ -43,6 +41,10 @@ public:
   /** Add a surface as thumbnail to the cache, the surface will be
       resized to a 50x50 size, the return value is the resized surface */
   static CL_Surface cache (const CL_Surface&, const std::string & res_ident, const std::string & datafile);
+  
+private:
+  ThumbCache (const ThumbCache&);
+  ThumbCache operator= (const ThumbCache&);  
 };
 
 #endif

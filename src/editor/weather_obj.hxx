@@ -1,4 +1,4 @@
-//  $Id: weather_obj.hxx,v 1.4 2002/07/01 18:36:40 grumbel Exp $
+//  $Id: weather_obj.hxx,v 1.5 2002/08/23 15:49:55 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,15 +23,14 @@
 #include "../weather_data.hxx"
 #include "sprite_editorobj.hxx"
 
-class WeatherObj 
-  : public SpriteEditorObj,
-    public WeatherData
+class WeatherObj : public SpriteEditorObj, public WeatherData
 {
 private:
   CL_Vector pos;
   bool dragging;
+  
 public:
-   WeatherObj(const WeatherData& data);
+  WeatherObj (const WeatherData& data);
   virtual ~WeatherObj();
 
   virtual void drag ();
@@ -40,6 +39,10 @@ public:
   virtual void draw (EditorView * view);
   virtual void write_xml(std::ostream& xml);
   virtual EditorObj* duplicate();
+  
+private:
+  WeatherObj (const WeatherObj&);
+  WeatherObj operator= (const WeatherObj&);
 };
 
 #endif

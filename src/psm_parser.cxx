@@ -1,4 +1,4 @@
-//  $Id: psm_parser.cxx,v 1.4 2002/08/16 15:13:59 torangan Exp $
+//  $Id: psm_parser.cxx,v 1.5 2002/08/23 15:49:50 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -72,11 +72,11 @@ PSMParser::parse(string filename)
       surface.push_back(temp);
     }
   }
-  catch (PSMParseError err) {
+  catch (const PSMParseError& err) {
     cout << "PSMParseError occured: " << err.message << " at line: " << lines << endl;
     PingusError::raise(err.message);
   }
-  catch (PSMEOF) {}
+  catch (const PSMEOF&) {}
   file_parsed = true;
   in.close();
 }

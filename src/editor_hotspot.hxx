@@ -1,4 +1,4 @@
-//  $Id: editor_hotspot.hxx,v 1.5 2002/08/16 13:03:34 torangan Exp $
+//  $Id: editor_hotspot.hxx,v 1.6 2002/08/23 15:49:48 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -44,6 +44,10 @@ public:
 				 + to_string(pos.x) + ", "
 				 + to_string(pos.y) + ", "
 				 + to_string(pos.z); }
+
+private:
+  EditorHotspot (const EditorHotspot&);
+  EditorHotspot operator= (const EditorHotspot&);
 };
 
 

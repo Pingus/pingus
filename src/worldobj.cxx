@@ -1,4 +1,4 @@
-//  $Id: worldobj.cxx,v 1.2 2002/06/13 14:25:12 torangan Exp $
+//  $Id: worldobj.cxx,v 1.3 2002/08/23 15:49:52 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,6 +33,18 @@ WorldObj::WorldObj()
 {
   // z_pos = 0;
 }
+
+WorldObj::WorldObj (const WorldObj& old)
+{
+  UNUSED_ARG(old);
+}
+
+void
+WorldObj::operator= (const WorldObj& old)
+{
+  UNUSED_ARG(old);
+}
+
 
 WorldObj::~WorldObj()
 {

@@ -1,4 +1,4 @@
-//  $Id: plf_preview.hxx,v 1.4 2002/08/16 13:03:35 torangan Exp $
+//  $Id: plf_preview.hxx,v 1.5 2002/08/23 15:49:50 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,8 +20,8 @@
 #ifndef HEADER_PINGUS_PLF_PREVIEW_HXX
 #define HEADER_PINGUS_PLF_PREVIEW_HXX
 
-#include <ClanLib/Display/Display/surface.h>
 #include "pingus.hxx"
+#include <ClanLib/Display/Display/surface.h>
 
 class CL_Canvas;
 class PLF;
@@ -37,6 +37,10 @@ public:
   PLFPreview(PLF*);
   void load(PLF*);
   CL_Surface get_surface();
+  
+private:
+  PLFPreview (const PLFPreview&);
+  PLFPreview operator= (const PLFPreview&);
 };
 
 #endif

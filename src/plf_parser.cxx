@@ -1,4 +1,4 @@
-//  $Id: plf_parser.cxx,v 1.3 2002/08/16 15:13:59 torangan Exp $
+//  $Id: plf_parser.cxx,v 1.4 2002/08/23 15:49:50 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -40,7 +40,7 @@ PLFParser::~PLFParser()
 }
 
 void
-PLFParser::init(string filename)
+PLFParser::init(const string& filename)
 {
   // Init local vars
   last_atom = ' ';
@@ -53,7 +53,7 @@ PLFParser::init(string filename)
 
 // Open the file and do some error checking.
 void
-PLFParser::open(string filename)
+PLFParser::open(const string& filename)
 {
   in.open(filename.c_str());
   eof = false;

@@ -1,4 +1,4 @@
-//  $Id: editor_help_screen.hxx,v 1.3 2002/08/16 13:03:36 torangan Exp $
+//  $Id: editor_help_screen.hxx,v 1.4 2002/08/23 15:49:54 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,6 +33,10 @@ public:
   EditorHelpScreen ();
   void draw ();
   void update (float delta);
+  
+private:
+  EditorHelpScreen (const EditorHelpScreen&);
+  EditorHelpScreen operator= (const EditorHelpScreen&);
 };
 
 #endif

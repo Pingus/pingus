@@ -1,4 +1,4 @@
-//  $Id: level_desc.hxx,v 1.3 2002/08/09 22:02:13 grumbel Exp $
+//  $Id: level_desc.hxx,v 1.4 2002/08/23 15:49:49 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,6 +43,10 @@ public:
   PingusLevelDesc(PLF*);
   
   void draw(PingusLevelDesc::LoadingStatus status);
+  
+private:
+  PingusLevelDesc (const PingusLevelDesc&);
+  PingusLevelDesc operator= (const PingusLevelDesc&);
 };
 
 #endif

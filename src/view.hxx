@@ -1,4 +1,4 @@
-//  $Id: view.hxx,v 1.5 2002/08/02 13:17:42 grumbel Exp $
+//  $Id: view.hxx,v 1.6 2002/08/23 15:49:51 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -48,7 +48,6 @@ private:
   /// Static objects which are equal for all Views
   static World* world;
 
-  ///
   void make_range();
 
 public:
@@ -57,13 +56,9 @@ public:
       The View should reach from [x1_pos, x2_pos), x2_pos is not
       included in the View, just like in {\tt CL_Display::fill_rect()}. */
   //@{
-  /// 
   int x1_pos;
-  ///
   int y1_pos;
-  ///
   int x2_pos;
-  ///
   int y2_pos;
   //@}
 
@@ -96,6 +91,10 @@ public:
   static void set_world(World*);
 
   void on_pointer_move (int x, int y);
+  
+private:
+  View (const View&);
+  View operator= (const View&);
 };
 
 #endif

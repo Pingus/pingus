@@ -1,4 +1,4 @@
-//  $Id: worldmap.hxx,v 1.5 2002/08/03 09:59:23 grumbel Exp $
+//  $Id: worldmap.hxx,v 1.6 2002/08/23 15:49:57 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -110,6 +110,10 @@ namespace Pingus
 
       /** Set the pingu to the given node with 'id' */
       void set_pingus (int node_id);
+      
+    private:
+      WorldMap (const WorldMap&);
+      WorldMap operator= (const WorldMap&);
     };
 
   }

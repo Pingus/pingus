@@ -1,4 +1,4 @@
-//  $Id: floater.cxx,v 1.9 2002/08/14 12:45:02 torangan Exp $
+//  $Id: floater.cxx,v 1.10 2002/08/23 15:49:53 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -47,14 +47,15 @@ Floater::update(float delta)
       step = 0;
     }
   } else {
-    pingu->set_action (Walker);
+    pingu->set_action (Pingus::Actions::Walker);
   }
 }
 
 void 
-Floater::draw_offset (int x, int y, float /*s*/)
+Floater::draw_offset (int x, int y, float s)
 {
   sprite.put_screen (pingu->pos + CL_Vector (x, y));
+  UNUSED_ARG(s);
 }
 
 bool

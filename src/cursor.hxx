@@ -1,4 +1,4 @@
-//  $Id: cursor.hxx,v 1.3 2002/08/09 22:02:13 grumbel Exp $
+//  $Id: cursor.hxx,v 1.4 2002/08/23 15:49:48 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,6 +38,10 @@ public:
   
   virtual void update (float delta);
   virtual void on_event();
+  
+private:
+  Cursor (const Cursor&);
+  Cursor operator= (const Cursor&);
 };
 
 #endif

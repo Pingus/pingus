@@ -1,4 +1,4 @@
-//  $Id: waiter.hxx,v 1.4 2002/06/28 15:12:23 torangan Exp $
+//  $Id: waiter.hxx,v 1.5 2002/08/23 15:49:53 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,14 +32,18 @@ private:
   float countdown;
   Sprite sprite;
 public:
-  ///
   Waiter();
-  /// 
   void init();
+  
   std::string get_name() const { return "Waiter"; }
-  ActionName get_type() const { return Pingus::Actions::Waiter; }
+  Pingus::Actions::ActionName get_type() const { return Pingus::Actions::Waiter; }
+  
   void update(float delta);
   void  draw_offset(int x, int y, float s);
+  
+private:
+  Waiter (const Waiter&);
+  Waiter operator= (const Waiter&);
 };
 
 #endif

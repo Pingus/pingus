@@ -1,4 +1,4 @@
-//  $Id: range.hxx,v 1.3 2002/08/16 13:03:35 torangan Exp $
+//  $Id: range.hxx,v 1.4 2002/08/23 15:49:50 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,49 +24,33 @@
 
 // A class similar to an integer, but keeps the value in a given range.
 
-///
 class Range
 {
 private:
-  ///
   int count;
-  ///
   int start;
-  ///
   int stop;
-  ///
   void check_range();
 public:
-  ///
   Range();
-  ///
   Range(int b);
-  ///
   Range(int a, int b);
-  ///
   Range(const Range&);
-  ///
   ~Range();
   
-  ///
   Range& operator=(const Range&);
   
-  ///
   operator int() const {
     return count;
   }
-  ///
+  
   Range& operator++();
-  ///
   Range& operator+=(int a);
-  ///
   Range& operator-=(int a);
-  ///
   Range& operator=(int a);
-  ///
+
   void set_range(int, int);
-}///
-;
+};
 
 #endif
 

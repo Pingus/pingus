@@ -1,4 +1,4 @@
-//  $Id: surface_background_data.cxx,v 1.3 2002/07/02 10:42:38 grumbel Exp $
+//  $Id: surface_background_data.cxx,v 1.4 2002/08/23 15:49:54 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,17 +22,52 @@
 #include "../string_converter.hxx"
 #include "surface_background.hxx"
 
-SurfaceBackgroundData::SurfaceBackgroundData()
+SurfaceBackgroundData::SurfaceBackgroundData () : para_x(0.5),
+						  para_y(0.5),
+						  pos(CL_Vector(0, 0, -150)),
+						  scroll_x(0.0),
+                                                  scroll_y(0.0),
+						  color(Color(0,0,0,0)),
+						  stretch_x(false),
+						  stretch_y(false)
 {
-  scroll_x = 0.0;
-  scroll_y = 0.0;
-  para_x = 0.5;
-  para_y = 0.5;
-  stretch_x = false;
-  stretch_y = false;
-  pos = CL_Vector (0, 0, -150);
-  color = Color (0,0,0,0);
 }
+
+SurfaceBackgroundData::SurfaceBackgroundData (const SurfaceBackgroundData& old) 
+                                             : WorldObjData(old),
+					       desc(old.desc),
+                                               para_x(old.para_x),
+					       para_y(old.para_y),
+					       pos(old.pos),
+					       scroll_x(old.scroll_x),
+					       scroll_y(old.scroll_y),
+					       color(old.color),
+					       stretch_x(old.stretch_x),
+					       stretch_y(old.stretch_y)
+{
+}
+
+SurfaceBackgroundData
+SurfaceBackgroundData::operator= (const SurfaceBackgroundData& old)
+{
+  if (this == &old)
+    return *this;
+
+  WorldObjData::operator=(old);
+        
+  desc      = old.desc;
+  para_x    = old.para_x;
+  para_y    = old.para_y;
+  pos       = old.pos;
+  scroll_x  = old.scroll_x;
+  scroll_y  = old.scroll_y;
+  color     = old.color;
+  stretch_x = old.stretch_x;
+  stretch_y = old.stretch_y;
+  
+  return *this;
+}
+
 
 SurfaceBackgroundData::~SurfaceBackgroundData()
 {
@@ -135,4 +170,3 @@ SurfaceBackgroundData::create_EditorObj()
 
 
 /* EOF */
-

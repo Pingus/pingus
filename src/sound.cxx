@@ -1,4 +1,4 @@
-//  $Id: sound.cxx,v 1.5 2002/08/22 00:36:30 grumbel Exp $
+//  $Id: sound.cxx,v 1.6 2002/08/23 15:49:50 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -51,19 +51,19 @@ PingusSound::play_sound(Sound::Name name, float volume, float panning)
   switch (name)
     {
     case Sound::DIGGER:
-      play_sound (path_manager.complete ("sounds/digger.wav"));
+      play_sound (path_manager.complete ("sounds/digger.wav"), volume, panning);
       break;
     case Sound::PLOP:
-      play_sound (path_manager.complete ("sounds/plop.wav"));
+      play_sound (path_manager.complete ("sounds/plop.wav"), volume, panning);
       break;
     case Sound::GOODIDEA:
-      play_sound (path_manager.complete ("sounds/goodidea.wav"));
+      play_sound (path_manager.complete ("sounds/goodidea.wav"), volume, panning);
       break;
     case Sound::OHNO:
-      play_sound (path_manager.complete ("sounds/ohno.wav"));
+      play_sound (path_manager.complete ("sounds/ohno.wav"), volume, panning);
       break;
     case Sound::TICK:
-      play_sound (path_manager.complete ("sounds/tick.wav"));
+      play_sound (path_manager.complete ("sounds/tick.wav"), volume, panning);
       break;
     }
 }

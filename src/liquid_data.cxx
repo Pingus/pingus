@@ -1,4 +1,4 @@
-//  $Id: liquid_data.cxx,v 1.5 2002/08/22 00:36:30 grumbel Exp $
+//  $Id: liquid_data.cxx,v 1.6 2002/08/23 15:49:49 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,7 +22,6 @@
 #include "editor/plfobj.hxx"
 #include "string_converter.hxx"
 #include "xml_helper.hxx"
-#include "boost/smart_ptr.hpp"
 
 void 
 LiquidData::write_xml(std::ostream& xml)
@@ -77,6 +76,32 @@ LiquidData::LiquidData (xmlDocPtr doc, xmlNodePtr cur)
 
       cur = cur->next;
     }
+}
+
+LiquidData::LiquidData (const LiquidData& old) : WorldObjData(old),
+                                                 desc(old.desc),
+						 pos(old.pos),
+						 old_width_handling(old.old_width_handling),
+						 width(old.width),
+						 speed(old.speed)
+{
+}
+
+LiquidData
+LiquidData::operator= (const LiquidData& old)
+{
+  if (this == &old)
+    return *this;
+    
+  WorldObjData::operator=(old);
+  
+  desc               = old.desc;
+  pos                = old.pos;
+  old_width_handling = old.old_width_handling;
+  width              = old.width;
+  speed              = old.speed;
+  
+  return *this;
 }
 
 WorldObj* 

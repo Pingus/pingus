@@ -1,4 +1,4 @@
-//  $Id: conveyor_belt.cxx,v 1.6 2002/08/17 17:56:24 torangan Exp $
+//  $Id: conveyor_belt.cxx,v 1.7 2002/08/23 15:49:57 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,22 +26,9 @@
 #include "../xml_helper.hxx"
 #include "conveyor_belt.hxx"
 #include "../pingu.hxx"
-#include "../boost/smart_ptr.hpp"
 
 ConveyorBeltData::ConveyorBeltData () : width(5), speed(2)
 {
-}
-
-/** Writte the content of this object formated as xml to the given
-    stream */
-void 
-ConveyorBeltData::write_xml(std::ostream& xml)
-{
-  xml << "  <worldobj type=\"conveyorbelt\">";
-  XMLhelper::write_vector_xml (xml, pos);
-  xml << "    <width>" << width << "</width>\n"
-      << "    <speed>" << speed << "</speed>\n"
-      << "  </worldobj>\n" << std::endl;
 }
 
 ConveyorBeltData::ConveyorBeltData (xmlDocPtr doc, xmlNodePtr cur)
@@ -71,6 +58,40 @@ ConveyorBeltData::ConveyorBeltData (xmlDocPtr doc, xmlNodePtr cur)
 	std::cout << "ConveyorBeltData::create (): Unhandled " << cur->name << std::endl;
       cur = cur->next;
     }
+}
+
+ConveyorBeltData::ConveyorBeltData (const ConveyorBeltData& old) : WorldObjData(old),
+                                                                   pos(old.pos),
+								   width(old.width),
+								   speed(old.speed)
+{
+}
+
+ConveyorBeltData
+ConveyorBeltData::operator= (const ConveyorBeltData& old)
+{
+  if (this == &old)
+    return *this;
+    
+  WorldObjData::operator=(old);
+  
+  pos   = old.pos;
+  width = old.width;
+  speed = old.speed;
+  
+  return *this;
+}
+
+/** Writte the content of this object formated as xml to the given
+    stream */
+void 
+ConveyorBeltData::write_xml(std::ostream& xml)
+{
+  xml << "  <worldobj type=\"conveyorbelt\">";
+  XMLhelper::write_vector_xml (xml, pos);
+  xml << "    <width>" << width << "</width>\n"
+      << "    <speed>" << speed << "</speed>\n"
+      << "  </worldobj>\n" << std::endl;
 }
 
 WorldObj* 

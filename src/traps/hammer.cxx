@@ -1,4 +1,4 @@
-//  $Id: hammer.cxx,v 1.6 2002/08/22 02:33:56 grumbel Exp $
+//  $Id: hammer.cxx,v 1.7 2002/08/23 15:49:56 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,7 +17,6 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "../pingus.hxx"
 #include "../world.hxx"
 #include "hammer.hxx"
 #include "../pingus_resource.hxx"

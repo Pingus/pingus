@@ -1,4 +1,4 @@
-//  $Id: string_reader.hxx,v 1.4 2002/08/16 13:03:36 torangan Exp $
+//  $Id: string_reader.hxx,v 1.5 2002/08/23 15:49:55 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,57 +20,40 @@
 #ifndef HEADER_PINGUS_EDITOR_STRING_READER_HXX
 #define HEADER_PINGUS_EDITOR_STRING_READER_HXX
 
+#include "../pingus.hxx"
 #include <list>
 #include <string>
-#include "../pingus.hxx"
 
 class CL_Font;
 
-///
 class StringReader
 {
 private:
-  ///
   std::list<std::string>* strings;
-  ///
   std::list<std::string*> completions;
-  ///
   std::string current_string;
-  ///
   std::string default_string;
-  ///
   bool finished;
-  ///
   std::string description;
-  ///
   CL_Font* font;
 
 public:
-  ///
-  StringReader();
-  ///
-  StringReader(const std::string &, const std::string &);
-  ///
-  virtual ~StringReader();
+  StringReader ();
+  StringReader (const std::string &, const std::string &);
+  virtual ~StringReader ();
 
-  ///
-  void   set_strings(std::list<std::string>*);
-  ///
-  std::string read_string();
-  ///
-  void   draw();
-  ///
-  std::string find_uniq();
-  ///
-  std::string while_eq(const std::string& a, const std::string& b);
-  ///
-  void   complete_string();
-}///
-;
+  void   set_strings (std::list<std::string>*);
+  std::string read_string ();
+  void draw ();
+  std::string find_uniq ();
+  std::string while_eq (const std::string& a, const std::string& b);
+  void complete_string ();
+  
+private:
+  StringReader (const StringReader&);
+  StringReader operator= (const StringReader&);
+};
 
 #endif
 
 /* EOF */
-
-
-

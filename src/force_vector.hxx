@@ -1,4 +1,4 @@
-//  $Id: force_vector.hxx,v 1.3 2002/08/16 13:03:35 torangan Exp $
+//  $Id: force_vector.hxx,v 1.4 2002/08/23 15:49:48 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,9 +22,9 @@
 #ifndef HEADER_PINGUS_FORCE_VECTOR_HXX
 #define HEADER_PINGUS_FORCE_VECTOR_HXX
 
+#include "pingus.hxx"
 #include <vector>
 #include <ClanLib/Core/Math/cl_vector.h>
-#include "pingus.hxx"
 
 /// Gravity
 extern CL_Vector grav;
@@ -37,16 +37,24 @@ protected:
   
 public:
   ///
-  GravityForce(CL_Vector fv){
-    ifv = fv;
+  GravityForce(CL_Vector fv) : ifv(fv)
+  {
   }
   
   /** Applies the force to a velocity vector, v, a position p and
       returns the new velicty vector. Just adds fv to v, p is ignored
       as gravity is universal. */
-  CL_Vector apply_forces(CL_Vector /*p*/,CL_Vector v){
+  CL_Vector apply_forces(CL_Vector p,CL_Vector v)
+  {
+    UNUSED_ARG(p);
     return v + ifv;
   }
+  
+  GravityForce (const GravityForce& old) : ifv(old.ifv)
+  {
+  }
+
+  GravityForce operator= (const GravityForce& old);
 };
 
 /** An Explosion Force is a radial force which points away from its
@@ -63,15 +71,18 @@ protected:
   CL_Vector ip;
 
 public:
-  ///
-  ExplosionForce(float inten, float size,CL_Vector p){
-    iinten = inten;
-    isize = size;
-    ip = p;
+  ExplosionForce(float inten, float size,CL_Vector p) : iinten(inten), isize(size), ip(p) 
+  {
   }
 
-  ///
+  ExplosionForce (const ExplosionForce& old) : iinten(old.iinten), isize(old.isize), ip(old.ip)
+  {
+  }
+
+  ExplosionForce operator= (const ExplosionForce& old);
+
   CL_Vector apply_forces(CL_Vector p,CL_Vector v);
+
 };
 
 /// The force holder
@@ -103,6 +114,10 @@ public:
 
   /// Apply forces
   static CL_Vector apply_forces(CL_Vector p,CL_Vector v);
+  
+private:
+  ForcesHolder (const ForcesHolder&);
+  ForcesHolder operator= (const ForcesHolder&);
 };
 
 #endif /* FVEC_HH */

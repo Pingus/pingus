@@ -1,4 +1,4 @@
-//  $Id: layer_manager.hxx,v 1.4 2002/08/16 13:03:35 torangan Exp $
+//  $Id: layer_manager.hxx,v 1.5 2002/08/23 15:49:49 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,9 +20,9 @@
 #ifndef HEADER_PINGUS_LAYER_MANAGER_HXX
 #define HEADER_PINGUS_LAYER_MANAGER_HXX
 
+#include "pingus.hxx"
 #include <cmath>
 #include <ClanLib/Display/Display/surface.h>
-#include "pingus.hxx"
 
 class LayerManager
 {
@@ -30,9 +30,7 @@ private:
   class Layer
   {
   public:
-    Layer () {
-      x_pos = 0.0f;
-      y_pos = 0.0f;
+    Layer () : x_pos(0.0f), y_pos(0.0f) {
     }
     
     void draw () {
@@ -57,6 +55,27 @@ private:
 
     float x_pos;
     float y_pos;
+    
+    Layer (const Layer& old) : sur(old.sur), 
+                               x_update(old.x_update), y_update(old.y_update),
+                               x_offset(old.x_offset), y_offset(old.y_offset),
+			       x_pos(old.x_pos), y_pos(old.y_pos)
+    { }
+
+    Layer operator= (const Layer& old) {
+      if (this == &old)
+        return *this;
+	
+      sur      = old.sur;
+      x_update = old.x_update;
+      y_update = old.y_update;
+      x_offset = old.x_offset;
+      y_offset = old.y_offset;
+      x_pos    = old.x_pos;
+      y_pos    = old.y_pos;
+      
+      return *this;
+    }
   };
 
   std::vector<Layer> layers;
@@ -68,9 +87,12 @@ public:
   void add_layer (const CL_Surface& sur, float x_o, float y_o, float x_u, float y_u);
   void draw ();
   void update (float delta);
+  
+private:
+  LayerManager (const LayerManager&);
+  LayerManager operator= (const LayerManager&);
 };
 
 #endif
 
 /* EOF */
-

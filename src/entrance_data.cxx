@@ -1,4 +1,4 @@
-//  $Id: entrance_data.cxx,v 1.5 2002/08/22 00:36:30 grumbel Exp $
+//  $Id: entrance_data.cxx,v 1.6 2002/08/23 15:49:48 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,7 +24,6 @@
 #include "pingus_error.hxx"
 #include "string_converter.hxx"
 #include "xml_helper.hxx"
-#include "boost/smart_ptr.hpp"
 
 EntranceData::EntranceData (xmlDocPtr doc, xmlNodePtr cur)
 {
@@ -78,6 +77,34 @@ EntranceData::EntranceData (xmlDocPtr doc, xmlNodePtr cur)
 	}	
       cur = cur->next;	
     }
+}
+
+EntranceData::EntranceData (const EntranceData& old) : WorldObjData(old),
+                                                       direction(old.direction),
+						       desc(old.desc),
+						       pos(old.pos),
+						       release_rate(old.release_rate),
+						       owner_id(old.owner_id),
+						       type(old.type)
+{
+}
+
+EntranceData
+EntranceData::operator= (const EntranceData& old)
+{
+  if (this == &old)
+    return *this;
+    
+  WorldObjData::operator=(old);
+  
+  direction    = old.direction;
+  desc         = old.desc;
+  pos          = old.pos;
+  release_rate = old.release_rate;
+  owner_id     = old.owner_id;
+  type         = old.type;
+  
+  return *this;
 }
 
 void 

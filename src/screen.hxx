@@ -1,4 +1,4 @@
-//  $Id: screen.hxx,v 1.6 2002/08/04 19:57:15 grumbel Exp $
+//  $Id: screen.hxx,v 1.7 2002/08/23 15:49:50 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,6 +30,9 @@ class Screen
 private:
     
 public:
+
+  Screen () { }
+  
   /** Draw this screen */
   virtual void draw () =0;
 
@@ -43,6 +46,10 @@ public:
   /** Called once the screen gets replaced or poped or shadowed by a
       newly pushed screen */ 
   virtual void on_shutdown () {}
+  
+private:
+  Screen (const Screen&);
+  Screen operator= (const Screen&);
 };
 
 #endif

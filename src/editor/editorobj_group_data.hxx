@@ -1,4 +1,4 @@
-//  $Id: editorobj_group_data.hxx,v 1.4 2002/07/02 13:36:06 torangan Exp $
+//  $Id: editorobj_group_data.hxx,v 1.5 2002/08/23 15:49:54 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,6 +36,10 @@ public:
 
   virtual void write_xml(std::ostream& xml);
   static WorldObjData* create(xmlDocPtr doc, xmlNodePtr cur);  
+  
+private:
+  EditorObjGroupData (const EditorObjGroupData&);
+  EditorObjGroupData operator= (const EditorObjGroupData&);
 };
 
 #endif

@@ -1,4 +1,4 @@
-//  $Id: node_data.cxx,v 1.1 2002/06/12 19:03:33 grumbel Exp $
+//  $Id: node_data.cxx,v 1.2 2002/08/23 15:49:57 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,25 @@
 
 using namespace Pingus::WorldMap;
 
+NodeData::NodeData (const NodeData& old) : id(old.id),
+                                           links(old.links),
+					   pos(old.pos)
+{
+}
+
+NodeData
+NodeData::operator= (const NodeData& old)
+{
+  if (this == &old)
+    return *this;
+    
+  id    = old.id;
+  links = old.links;
+  pos   = old.pos;
+  
+  return *this;
+}
+
 Node*
 NodeData::create ()
 {
@@ -33,15 +52,93 @@ NodeData::create ()
 }
 
 Node*
-TubeNodeData::create ()
-{
-  return new TubeNode (*this);
-}
-
-Node*
 LevelNodeData::create ()
 {
   return new LevelNode (*this);
+}
+
+LevelNodeData::LevelNodeData (const LevelNodeData& old) : NodeData(old),
+                                                          levelname(old.levelname)
+{
+}
+
+LevelNodeData
+LevelNodeData::operator= (const LevelNodeData& old)
+{
+  if (this == &old)
+    return *this;
+    
+  NodeData::operator=(old);
+  
+  levelname = old.levelname;
+  
+  return *this;
+}
+
+LevelNodeData*
+LevelNodeData::create(xmlDocPtr doc, xmlNodePtr cur)
+{
+  LevelNodeData* node = new LevelNodeData ();
+
+  cur = cur->children;
+  
+  while (cur != NULL)
+    {
+      if (xmlIsBlankNode(cur)) 
+	{
+	  cur = cur->next;
+	  continue;
+	}
+
+      if (strcmp((char*)cur->name, "node") == 0)
+	{
+	  NodeData* node_data = NodeData::create (doc, cur);
+	  node->assign(*node_data);
+	  delete node_data;
+	}
+      else if (strcmp((char*)cur->name, "level") == 0)
+	{
+	  char* level = (char*)xmlGetProp(cur, (xmlChar*)"name");
+	  if (level)
+	    node->levelname = std::string("levels/") + level;
+	  else
+	    std::cout << "PingusWorldMapGraph::parse_node: no levelname given" << std::endl;
+	}
+      else
+	{
+	  std::cout << "PingusWorldMapLevelNodeData::create: unhandled" << std::endl;
+	}
+
+      cur = cur->next;
+    }
+  
+  return node;  
+}
+
+TubeNodeData::TubeNodeData (const TubeNodeData& old) : NodeData(old),
+                                                       worldmap(old.worldmap),
+						       link_node(old.link_node)
+{
+}
+
+TubeNodeData
+TubeNodeData::operator= (const TubeNodeData& old)
+{
+  if (this == &old)
+    return *this;
+    
+  NodeData::operator=(old);
+  
+  worldmap  = old.worldmap;
+  link_node = old.link_node;
+  
+  return *this;
+}
+      
+Node*
+TubeNodeData::create ()
+{
+  return new TubeNode (*this);
 }
 
 Node*
@@ -147,47 +244,6 @@ TubeNodeData::create(xmlDocPtr doc, xmlNodePtr cur)
       cur = cur->next;
     }
   return node;
-}
-
-
-LevelNodeData*
-LevelNodeData::create(xmlDocPtr doc, xmlNodePtr cur)
-{
-  LevelNodeData* node = new LevelNodeData ();
-
-  cur = cur->children;
-  
-  while (cur != NULL)
-    {
-      if (xmlIsBlankNode(cur)) 
-	{
-	  cur = cur->next;
-	  continue;
-	}
-
-      if (strcmp((char*)cur->name, "node") == 0)
-	{
-	  NodeData* node_data = NodeData::create (doc, cur);
-	  node->assign(*node_data);
-	  delete node_data;
-	}
-      else if (strcmp((char*)cur->name, "level") == 0)
-	{
-	  char* level = (char*)xmlGetProp(cur, (xmlChar*)"name");
-	  if (level)
-	    node->levelname = std::string("levels/") + level;
-	  else
-	    std::cout << "PingusWorldMapGraph::parse_node: no levelname given" << std::endl;
-	}
-      else
-	{
-	  std::cout << "PingusWorldMapLevelNodeData::create: unhandled" << std::endl;
-	}
-
-      cur = cur->next;
-    }
-  
-  return node;  
 }
 
 NodeData* 

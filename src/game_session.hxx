@@ -1,4 +1,4 @@
-//  $Id: game_session.hxx,v 1.5 2002/08/02 13:17:42 grumbel Exp $
+//  $Id: game_session.hxx,v 1.6 2002/08/23 15:49:48 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -72,6 +72,10 @@ public:
   void on_fast_forward_press ();
   void on_armageddon_press ();
   void on_escape_press ();
+
+private:  
+  PingusGameSession (const PingusGameSession&);
+  PingusGameSession operator= (const PingusGameSession&);
 };
 
 #endif

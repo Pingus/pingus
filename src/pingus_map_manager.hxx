@@ -1,4 +1,4 @@
-//  $Id: pingus_map_manager.hxx,v 1.3 2002/08/16 13:03:35 torangan Exp $
+//  $Id: pingus_map_manager.hxx,v 1.4 2002/08/23 15:49:50 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,9 +20,9 @@
 #ifndef HEADER_PINGUS_PINGUS_MAP_MANAGER_HXX
 #define HEADER_PINGUS_PINGUS_MAP_MANAGER_HXX
 
+#include "pingus.hxx"
 #include <string>
 #include <assert.h>
-#include "pingus.hxx"
 
 class CL_Surface;
 
@@ -32,8 +32,12 @@ private:
   static std::string directory;
   
 public:
-  static CL_Surface get_surface (std::string level_filename);
-  static void set_surface (std::string level_filename, const CL_Surface&);
+  static CL_Surface get_surface (const std::string& level_filename);
+  static void set_surface (const std::string& level_filename, const CL_Surface&);
+  
+private:
+  PingusMapManager (const PingusMapManager&);
+  PingusMapManager operator= (const PingusMapManager&);
 };
 
 #endif

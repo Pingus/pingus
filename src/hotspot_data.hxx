@@ -1,4 +1,4 @@
-//  $Id: hotspot_data.hxx,v 1.4 2002/06/25 12:20:31 grumbel Exp $
+//  $Id: hotspot_data.hxx,v 1.5 2002/08/23 15:49:49 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,7 +37,11 @@ public:
   HotspotData() {
     clean();
   }
+  
   HotspotData (xmlDocPtr doc, xmlNodePtr cur);
+  
+  HotspotData (const HotspotData& old);
+  HotspotData operator= (const HotspotData& old);
 
 
   void clean() {

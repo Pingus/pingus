@@ -1,4 +1,4 @@
-//  $Id: pingu_enums.hxx,v 1.5 2002/08/16 13:03:35 torangan Exp $
+//  $Id: pingu_enums.hxx,v 1.6 2002/08/23 15:49:49 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,8 +20,8 @@
 #ifndef HEADER_PINGUS_PINGU_ENUMS_HXX
 #define HEADER_PINGUS_PINGU_ENUMS_HXX
 
-#include <string>
 #include "pingus.hxx"
+#include <string>
 
 /** Haven't yet experimented much with pingu status, but maybe it is a
     good idea. Maybe that should be changed to a bitmask. */
@@ -62,8 +62,8 @@ namespace Pingus {
                        Walker
                   };
      
-     std::string action_to_string(ActionName action);
-     ActionName  action_from_string(const std::string& action);
+     std::string action_to_string (ActionName action);
+     ActionName  action_from_string (const std::string& action);
    }
 }
 

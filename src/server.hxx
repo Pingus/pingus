@@ -1,4 +1,4 @@
-//  $Id: server.hxx,v 1.3 2002/08/03 12:00:58 grumbel Exp $
+//  $Id: server.hxx,v 1.4 2002/08/23 15:49:50 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,13 +35,17 @@ class World;
 */
 class PingusEvent {
 public:
-  PingusEvent();
-  PingusEvent(std::string);
-
   /// The GameTime at which the event happend
   int          game_time;
   /// A string describing the event
   std::string  str;
+
+public:
+  PingusEvent ();
+  PingusEvent (std::string);
+  
+  PingusEvent (const PingusEvent& old);
+  PingusEvent operator= (const PingusEvent&);
 };
 
 /** A abstract server-like class */
@@ -88,6 +92,10 @@ public:
   void send_event(std::string);
   void set_demo(std::string);
   void record_demo();
+  
+private:
+  Server (const Server&);
+  Server operator= (const Server&);
 };
 
 #endif

@@ -1,4 +1,4 @@
-//  $Id: intro.hxx,v 1.3 2002/08/16 17:15:31 grumbel Exp $
+//  $Id: intro.hxx,v 1.4 2002/08/23 15:49:49 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,12 +42,16 @@ private:
 
   unsigned int blink_time;
 public:
-  Intro(PingusMenuManager* m);
+  Intro (PingusMenuManager* m);
   ~Intro();
 
   void draw();
   void update (float delta);
   void preload ();
+  
+private:
+  Intro (const Intro&);
+  Intro operator= (const Intro&);
 };
 
 #endif

@@ -1,4 +1,4 @@
-//  $Id: walker.hxx,v 1.4 2002/06/28 15:12:23 torangan Exp $
+//  $Id: walker.hxx,v 1.5 2002/08/23 15:49:53 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,16 +28,21 @@ class Walker : public PinguAction
 private:
   Sprite walker; 
 
-  static const int max_steps; // max nr. of pixels that pingu can walk up/down
+  enum { max_steps = 5 }; // max nr. of pixels that pingu can walk up/down
 
 public:
-  void  init(void);
+  Walker () { }
+  void init (void);
 
-  void  update(float delta);
-  void  draw_offset(int x, int y, float s);
+  void update (float delta);
+  void draw_offset (int x, int y, float s);
 
-  std::string get_name() const { return "Walker"; }
-  ActionName get_type() const { return Pingus::Actions::Walker; }
+  std::string get_name () const { return "Walker"; }
+  Pingus::Actions::ActionName get_type () const { return Pingus::Actions::Walker; }
+  
+private:
+  Walker (const Walker&);
+  Walker operator= (const Walker&);
 };
 
 #endif

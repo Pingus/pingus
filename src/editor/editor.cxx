@@ -1,4 +1,4 @@
-//  $Id: editor.cxx,v 1.27 2002/08/22 02:33:56 grumbel Exp $
+//  $Id: editor.cxx,v 1.28 2002/08/23 15:49:54 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,7 +17,6 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "../pingus.hxx"
 #include <ClanLib/Core/System/system.h>
 #include <ClanLib/Core/Resources/resource_manager.h>
 #include <ClanLib/Display/Display/display.h>

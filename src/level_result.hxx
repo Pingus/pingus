@@ -1,4 +1,4 @@
-//  $Id: level_result.hxx,v 1.3 2002/08/16 13:03:35 torangan Exp $
+//  $Id: level_result.hxx,v 1.4 2002/08/23 15:49:49 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,14 +20,13 @@
 #ifndef HEADER_PINGUS_LEVEL_RESULT_HXX
 #define HEADER_PINGUS_LEVEL_RESULT_HXX
 
-#include <ClanLib/Display/Display/surface.h>
 #include "pingus.hxx"
+#include <ClanLib/Display/Display/surface.h>
 
 class CL_Font;
 class World;
 class Controller;
 
-///
 class PingusLevelResult
 {
 private:
@@ -42,6 +41,10 @@ public:
 
   void   draw(void);
   std::string get_message(int);
+  
+private:
+  PingusLevelResult (const PingusLevelResult&);
+  PingusLevelResult operator= (const PingusLevelResult&);
 };
 
 #endif

@@ -1,4 +1,4 @@
-//  $Id: node_data.hxx,v 1.5 2002/08/17 17:21:25 torangan Exp $
+//  $Id: node_data.hxx,v 1.6 2002/08/23 15:49:57 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -69,7 +69,12 @@ namespace Pingus
       CL_Vector pos;
 
     public:
-      virtual ~NodeData () {}
+      NodeData () { }
+      
+      NodeData (const NodeData& old);
+      NodeData operator= (const NodeData& old);
+      
+      virtual ~NodeData () { }
 
       int       get_id () { return id; } 
       CL_Vector get_pos () { return pos; } 
@@ -87,21 +92,23 @@ namespace Pingus
     };
 
     /** EmptyNode */ 
-    class EmptyNodeData
-      : public NodeData
+    class EmptyNodeData : public NodeData
     {
-    protected:
     public:
-      virtual ~EmptyNodeData () {}
+      EmptyNodeData () { }
+      virtual ~EmptyNodeData () { }
 
       virtual Node* create ();
 
       static NodeData* create(xmlDocPtr doc, xmlNodePtr cur);
+      
+    private:
+      EmptyNodeData (const EmptyNodeData&);
+      EmptyNodeData operator= (const EmptyNodeData&);
     };
 
     /** Level */
-    class LevelNodeData
-      : public NodeData
+    class LevelNodeData : public NodeData
     {
     protected:
       /** The filename of the level to start 
@@ -111,6 +118,11 @@ namespace Pingus
       */
       std::string levelname;
     public:
+      LevelNodeData () { }
+      
+      LevelNodeData (const LevelNodeData& old);
+      LevelNodeData operator= (const LevelNodeData& old);
+      
       virtual ~LevelNodeData () {}
 
       virtual Node* create ();
@@ -120,8 +132,7 @@ namespace Pingus
     };
 
     /** Tube */
-    class TubeNodeData
-      : public NodeData
+    class TubeNodeData : public NodeData
     {
     protected:
       /** The world to which this tupe 'beams' */
@@ -129,8 +140,14 @@ namespace Pingus
   
       /** The node id in the worldmap to which this tube beams/links */
       int link_node;
+
     public:
-      virtual ~TubeNodeData () {}
+      TubeNodeData () { }
+      
+      TubeNodeData (const TubeNodeData& old);
+      TubeNodeData operator= (const TubeNodeData& old);
+  
+      virtual ~TubeNodeData () { }
 
       virtual Node* create ();
 
@@ -142,6 +159,5 @@ namespace Pingus
 #endif
 
 /* EOF */
-
 
 

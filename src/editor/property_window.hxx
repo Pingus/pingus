@@ -1,4 +1,4 @@
-//  $Id: property_window.hxx,v 1.5 2002/08/16 13:03:36 torangan Exp $
+//  $Id: property_window.hxx,v 1.6 2002/08/23 15:49:54 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,9 +20,9 @@
 #ifndef PINGUS_EDITOR_PROPERTY_WINDOW_HXX
 #define PINGUS_EDITOR_PROPERTY_WINDOW_HXX
 
+#include "../pingus.hxx"
 #include <ClanLib/GUI/label.h>
 #include <ClanLib/GUI/window.h>
-#include "../pingus.hxx"
 
 class Editor;
 class EditorObj;
@@ -43,6 +43,10 @@ namespace Pingus
       PropertyWindow (::Editor* parent);
 
       void update_frame (EditorObj*);
+      
+    private:
+      PropertyWindow (const PropertyWindow&);
+      PropertyWindow operator= (const PropertyWindow&);
     };
   }
 }

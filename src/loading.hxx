@@ -1,4 +1,4 @@
-//  $Id: loading.hxx,v 1.3 2002/08/16 13:03:35 torangan Exp $
+//  $Id: loading.hxx,v 1.4 2002/08/23 15:49:49 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,37 +20,31 @@
 #ifndef HEADER_PINGUS_LOADING_HXX
 #define HEADER_PINGUS_LOADING_HXX
 
-#include <ClanLib/Display/Display/surface.h>
 #include "pingus.hxx"
+#include <ClanLib/Display/Display/surface.h>
 
 class CL_Font;
 
-///
 class Loading
 {
 private:
-  ///
   CL_Surface sur;
-  ///
   CL_Font*    font;
-  ///
   bool is_init;
 
 public:
-  ///
-  Loading();
-  ///
-  ~Loading();
-  ///
-  void init();
-  ///
-  void draw();
-  ///
-  void draw_progress(std::string, float);
-}///
-;
+  Loading ();
+  ~Loading ();
+  
+  void init ();
+  void draw ();
+  void draw_progress (const std::string& str, float progress);
+  
+private:
+  Loading (const Loading&);
+  Loading operator= (const Loading&);
+};
 
-///
 extern Loading loading_screen;
 
 #endif

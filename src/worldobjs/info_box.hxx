@@ -1,4 +1,4 @@
-//  $Id: info_box.hxx,v 1.6 2002/07/02 10:42:39 grumbel Exp $
+//  $Id: info_box.hxx,v 1.7 2002/08/23 15:49:57 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,13 +32,18 @@ class CL_Vector;
 class InfoBoxData : public WorldObjData
 {
 public:
-  InfoBoxData ();
-  InfoBoxData (xmlDocPtr doc, xmlNodePtr cur);
-  ~InfoBoxData ();
-
   std::string info_text;
   CL_Vector pos;
   CL_Vector text_pos;
+
+public:
+  InfoBoxData ();
+  InfoBoxData (xmlDocPtr doc, xmlNodePtr cur);
+  
+  InfoBoxData (const InfoBoxData& old);
+  InfoBoxData operator= (const InfoBoxData& old);
+  
+  ~InfoBoxData ();
 
   void write_xml(std::ostream& xml);  
   WorldObj* create_WorldObj();
@@ -59,6 +64,10 @@ public:
   void draw_offset (int x, int y, float s = 1.0);
   void update (float delta);
   float get_z_pos() const { return pos.z; }
+  
+private:
+  InfoBox (const InfoBox&);
+  InfoBox operator= (const InfoBox&);
 };
 
 class EditorInfoBox : public InfoBoxData,
@@ -72,6 +81,10 @@ public:
   void write_xml(std::ostream& xml) { InfoBoxData::write_xml (xml); }
   EditorObj* duplicate();
   std::string status_line ();
+  
+private:
+  EditorInfoBox (const EditorInfoBox& old);
+  EditorInfoBox operator= (const EditorInfoBox& old);
 };
 
 #endif

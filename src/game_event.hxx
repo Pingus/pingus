@@ -1,4 +1,4 @@
-//  $Id: game_event.hxx,v 1.5 2002/08/16 13:03:35 torangan Exp $
+//  $Id: game_event.hxx,v 1.6 2002/08/23 15:49:48 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,8 +22,8 @@
 
 #error "Don't used this the moment, its underdevelopment and not compilable"
 
-#include <string>
 #include "pingus.hxx"
+#include <string>
 
 /** This will need some^H^H^H^H a lot of work */
 typedef enum {

@@ -1,4 +1,4 @@
-//  $Id: entrance.hxx,v 1.2 2002/06/24 22:52:54 grumbel Exp $
+//  $Id: entrance.hxx,v 1.3 2002/08/23 15:49:48 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,7 +36,7 @@ protected:
   int last_release;
   
 public:
-  Entrance(const EntranceData& data);
+  Entrance (const EntranceData& data);
   virtual ~Entrance() {}
 
   float get_z_pos() const { return int(pos.z); }
@@ -44,6 +44,10 @@ public:
   virtual Pingu* get_pingu(void);
   virtual void   update(float delta);
   virtual void   draw_offset(int x, int y, float s = 1.0);
+  
+private:
+  Entrance (const Entrance&);
+  Entrance operator= (const Entrance&);
 };
 
 #endif

@@ -1,4 +1,4 @@
-//  $Id: start_pos.hxx,v 1.4 2002/07/01 18:36:40 grumbel Exp $
+//  $Id: start_pos.hxx,v 1.5 2002/08/23 15:49:55 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,16 +22,20 @@
 
 #include "sprite_editorobj.hxx"
 
-class StartPos 
-  : public SpriteEditorObj
+class StartPos : public SpriteEditorObj
 {
 private:
   CL_Vector pos;
+  
 public:
   StartPos(int arg_x_pos, int arg_y_pos);
 
   virtual void write_xml(std::ostream& xml);
   virtual EditorObj* duplicate();
+  
+private:
+  StartPos (const StartPos&);
+  StartPos operator= (const StartPos&);
 };
 
 #endif

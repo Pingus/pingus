@@ -1,4 +1,4 @@
-//  $Id: multiplayer_config.hxx,v 1.3 2002/08/16 13:03:35 torangan Exp $
+//  $Id: multiplayer_config.hxx,v 1.4 2002/08/23 15:49:49 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,6 +33,10 @@ public:
 
   void display ();
   void start ();
+  
+private:
+  MultiplayerConfig (const MultiplayerConfig&);
+  MultiplayerConfig operator= (const MultiplayerConfig&);
 };
 
 #endif

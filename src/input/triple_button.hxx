@@ -1,4 +1,4 @@
-//  $Id: triple_button.hxx,v 1.2 2002/08/14 12:41:22 torangan Exp $
+//  $Id: triple_button.hxx,v 1.3 2002/08/23 15:49:56 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -49,6 +49,10 @@ namespace Input {
 
       virtual bool is_pressed () const;
       virtual void update (float delta);
+      
+    private:
+      TripleButton (const TripleButton&);
+      TripleButton operator= (const TripleButton&);
   };
 }
 

@@ -1,4 +1,4 @@
-//  $Id: pointer_factory.hxx,v 1.1 2002/07/09 16:50:26 torangan Exp $
+//  $Id: pointer_factory.hxx,v 1.2 2002/08/23 15:49:56 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,6 +35,11 @@ namespace Input {
     
     public:
       static Pointer* create (xmlNodePtr cur);
+      
+    private:
+      PointerFactory ();
+      PointerFactory (const PointerFactory&);
+      PointerFactory operator= (const PointerFactory&);
   };
 }
 

@@ -1,4 +1,4 @@
-//  $Id: global_event.hxx,v 1.4 2002/08/16 17:15:31 grumbel Exp $
+//  $Id: global_event.hxx,v 1.5 2002/08/23 15:49:48 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,12 +27,15 @@ class CL_InputDevice;
 
 class GlobalEvent  
 {
-private:
-  
 public:
+  GlobalEvent ();
+  
   virtual void on_button_press(CL_InputDevice *device, const CL_Key &key);
   virtual void on_button_release(CL_InputDevice *device, const CL_Key &key);
-  
+
+private:
+   GlobalEvent (const GlobalEvent&);
+   GlobalEvent operator= (const GlobalEvent&);
 };
 
 extern GlobalEvent global_event;

@@ -1,4 +1,4 @@
-//  $Id: pingus_error.hxx,v 1.5 2002/08/16 15:13:59 torangan Exp $
+//  $Id: pingus_error.hxx,v 1.6 2002/08/23 15:49:49 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,17 +20,21 @@
 #ifndef HEADER_PINGUS_PINGUS_ERROR_HXX
 #define HEADER_PINGUS_PINGUS_ERROR_HXX
 
-#include <string>
 #include "pingus.hxx"
+#include <string>
 
 class PingusException  
 {
 protected:
   std::string message;  
 public:
-  PingusException ();
+  PingusException (const std::string& mes);
   virtual ~PingusException ();
-  virtual std::string get_message () const =0;
+  virtual const std::string& get_message () const =0;
+  
+protected:
+  PingusException (const PingusException& old);
+  void operator= (const PingusException& old);
 };
 
 /** PingusBug gets thrown on events which are a bug in Pingus, this
@@ -38,13 +42,15 @@ public:
     when the thing is properly working. */
 class PingusBug : public PingusException 
 {
-private:
-  PingusBug(std::string mes);
+protected:
+  PingusBug (const std::string& mes);
+  PingusBug (const PingusBug& old);
+  PingusBug operator= (const PingusBug& old);
 
 public:
-  virtual std::string get_message() const;
+  virtual const std::string& get_message () const;
   
-  static void raise (std::string msg);
+  static void raise (const std::string& msg);
 };
 
 
@@ -52,13 +58,15 @@ public:
     invalid user input, file not found events or similar stuff. */
 class PingusError : public PingusException
 {
-private:
-  PingusError(std::string mes);
+protected:
+  PingusError (const std::string& mes);
+  PingusError (const PingusError& old);
+  PingusError operator= (const PingusError& old);
 
 public:
-  virtual std::string get_message () const;
+  virtual const std::string& get_message () const;
   
-  static void raise (std::string msg);
+  static void raise (const std::string& msg);
 };
 
 #endif

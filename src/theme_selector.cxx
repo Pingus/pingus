@@ -1,4 +1,4 @@
-//  $Id: theme_selector.cxx,v 1.4 2002/08/17 17:56:23 torangan Exp $
+//  $Id: theme_selector.cxx,v 1.5 2002/08/23 15:49:51 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -65,6 +65,21 @@ ListItem::ListItem(std::string l)
 {
   label = l;
   font = PingusResource::load_font("Fonts/smallfont_h","fonts");
+}
+
+ListItem::ListItem (const ListItem& old) : label(old.label), font(new CL_Font(*(old.font)))
+{
+}
+
+ListItem ListItem::operator= (const ListItem& old)
+{
+  if (this == &old)
+    return *this;
+    
+  label = old.label;
+  font  = new CL_Font(*(old.font));
+  
+  return *this;
 }
 
 void

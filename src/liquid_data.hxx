@@ -1,4 +1,4 @@
-// $Id: liquid_data.hxx,v 1.5 2002/07/02 10:42:38 grumbel Exp $
+// $Id: liquid_data.hxx,v 1.6 2002/08/23 15:49:49 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,7 +26,6 @@
 
 #include "libxmlfwd.hxx"
 
-///
 class LiquidData : public WorldObjData
 {
 public:
@@ -38,13 +37,17 @@ public:
   
   int width;
   int speed;
-  
-  ///
+
+public:  
   LiquidData() 
   {
     clean();
   }
+  
   LiquidData (xmlDocPtr doc, xmlNodePtr cur);
+  
+  LiquidData (const LiquidData& old);
+  LiquidData operator= (const LiquidData& old);
 
   /** Reset the object to some reasonable defaults */
   void clean() 

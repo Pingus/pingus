@@ -1,4 +1,4 @@
-//  $Id: controller.cxx,v 1.19 2002/08/22 02:33:56 grumbel Exp $
+//  $Id: controller.cxx,v 1.20 2002/08/23 15:49:55 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,24 +17,19 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "../pingus.hxx"
 #include "../debug.hxx"
 #include "../xml_helper.hxx"
 #include "../pingus_error.hxx"
-#include "axis.hxx"
 #include "axis_event.hxx"
 #include "axis_factory.hxx"
-#include "button.hxx"
 #include "button_factory.hxx"
 #include "controller.hxx"
 #include "dummy_axis.hxx"
 #include "dummy_button.hxx"
 #include "dummy_pointer.hxx"
 #include "dummy_scroller.hxx"
-#include "pointer.hxx"
 #include "pointer_event.hxx"
 #include "pointer_factory.hxx"
-#include "scroller.hxx"
 #include "scroller_factory.hxx"
 #include "scroll_event.hxx"
 

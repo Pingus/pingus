@@ -1,4 +1,4 @@
-//  $Id: teleporter.hxx,v 1.7 2002/08/16 13:03:36 torangan Exp $
+//  $Id: teleporter.hxx,v 1.8 2002/08/23 15:49:57 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,6 +37,7 @@ public:
   TeleporterData (xmlDocPtr doc, xmlNodePtr cur);
 
   TeleporterData (const TeleporterData& data);
+  TeleporterData operator= (const TeleporterData& data);
   
   /** Write the content of this object formatted as xml to the given
       stream */
@@ -63,6 +64,10 @@ public:
   void draw_offset (int x, int y, float s = 1.0);
   void update(float delta);
   float get_z_pos() const { return (int) pos.z; }
+  
+private:
+  Teleporter (const Teleporter&);
+  Teleporter operator= (const Teleporter&);
 };
 
 class EditorTeleporterTargetObj;
@@ -90,6 +95,10 @@ public:
   void draw (EditorView * view);
   void save_xml (std::ostream& xml);
   std::string status_line();
+  
+private:
+  EditorTeleporterObj (const EditorTeleporterObj&);
+  EditorTeleporterObj operator= (const EditorTeleporterObj&);
 };
 
 /** A pseudo object to represent the teleporter target; all the
@@ -109,8 +118,12 @@ public:
   EditorObj* duplicate() { return teleporter->duplicate (); }
 
   /// The saving will be done in EditorTeleporterObj::save_xml
-  void write_xml (std::ostream& /*xml*/) {}
+  void write_xml (std::ostream& xml) { UNUSED_ARG(xml); }
   std::string status_line();
+  
+private:
+  EditorTeleporterTargetObj (const EditorTeleporterTargetObj&);
+  EditorTeleporterTargetObj operator= (const EditorTeleporterTargetObj&);
 };
 
 #endif

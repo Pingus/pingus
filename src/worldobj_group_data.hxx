@@ -1,4 +1,4 @@
-//  $Id: worldobj_group_data.hxx,v 1.4 2002/06/25 12:20:31 grumbel Exp $
+//  $Id: worldobj_group_data.hxx,v 1.5 2002/08/23 15:49:52 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -44,6 +44,10 @@ public:
 
   /** Create an EditorObj from the given data object */
   EditorObjLst create_EditorObj ();
+  
+private:
+  WorldObjGroupData (const WorldObjGroupData&);
+  WorldObjGroupData operator= (const WorldObjGroupData&);
 };
 
 #endif

@@ -1,4 +1,4 @@
-//  $Id: server.cxx,v 1.10 2002/08/22 00:36:30 grumbel Exp $
+//  $Id: server.cxx,v 1.11 2002/08/23 15:49:50 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -48,6 +48,23 @@ PingusEvent::PingusEvent(std::string event_str)
     PingusError::raise("PingusEvent: Unable to parse: " + event_str);
   }
 }
+
+PingusEvent::PingusEvent (const PingusEvent& old) : game_time(old.game_time),
+                                                    str(old.str)
+{
+}
+
+PingusEvent PingusEvent::operator= (const PingusEvent& old)
+{
+  if (this == &old)
+    return *this;
+    
+  game_time = old.game_time;
+  str       = old.str;
+  
+  return *this;
+}
+
 
 Server::Server(PLF* plf)
   : action_holder (plf)

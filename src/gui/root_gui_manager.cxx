@@ -1,4 +1,4 @@
-//  $Id: root_gui_manager.cxx,v 1.5 2002/08/14 12:45:02 torangan Exp $
+//  $Id: root_gui_manager.cxx,v 1.6 2002/08/23 15:49:55 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #include <iostream>
 #include <list>
 #include "root_gui_manager.hxx"
+#include "../input/controller.hxx"
 
 using namespace GUI;
 using namespace Input;
@@ -41,7 +42,7 @@ RootGUIManager::update (float delta)
   //GUIManager::update (delta);
   //process_input (controller->get_events ());
   
-  if (delta);
+  UNUSED_ARG(delta);
 }
 
 /* EOF */

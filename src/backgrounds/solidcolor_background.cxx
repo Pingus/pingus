@@ -1,4 +1,4 @@
-//  $Id: solidcolor_background.cxx,v 1.3 2002/07/02 10:42:38 grumbel Exp $
+//  $Id: solidcolor_background.cxx,v 1.4 2002/08/23 15:49:54 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -49,6 +49,25 @@ SolidColorBackgroundData::SolidColorBackgroundData(xmlDocPtr doc, xmlNodePtr cur
 	}
       cur = cur->next;
     }
+}
+
+SolidColorBackgroundData::SolidColorBackgroundData (const SolidColorBackgroundData& old)
+                                                   : WorldObjData(old),
+						     color(old.color)
+{
+}
+
+SolidColorBackgroundData
+SolidColorBackgroundData::operator= (const SolidColorBackgroundData& old)
+{
+  if (this == &old)
+    return *this;
+    
+  WorldObjData::operator=(old);
+  
+  color = old.color;
+  
+  return *this;
 }
 
 WorldObj* 

@@ -1,4 +1,4 @@
-//  $Id: anim_counter.hxx,v 1.2 2002/06/24 22:52:53 grumbel Exp $
+//  $Id: anim_counter.hxx,v 1.3 2002/08/23 15:49:48 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -50,6 +50,10 @@ public:
 
   /// Returs the speed which is used for this counter
   int  get_speed() const;
+  
+private:
+  AnimCounter (const AnimCounter&);
+  AnimCounter operator= (const AnimCounter&);
 }///
 ;
 

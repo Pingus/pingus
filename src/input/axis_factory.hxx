@@ -1,4 +1,4 @@
-//  $Id: axis_factory.hxx,v 1.3 2002/07/10 11:22:29 torangan Exp $
+//  $Id: axis_factory.hxx,v 1.4 2002/08/23 15:49:55 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,6 +37,11 @@ namespace Input {
     
     public:
       static Axis* create (xmlNodePtr cur);
+      
+    private:
+      AxisFactory ();
+      AxisFactory (const AxisFactory&);
+      AxisFactory operator= (const AxisFactory&);
   };
 }
 

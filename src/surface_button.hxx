@@ -1,4 +1,4 @@
-//  $Id: surface_button.hxx,v 1.7 2002/08/14 12:45:02 torangan Exp $
+//  $Id: surface_button.hxx,v 1.8 2002/08/23 15:49:51 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -65,6 +65,10 @@ public:
   void on_primary_button_click (int x, int y) { on_click (); if(x); if(y); }
 
   virtual void on_click () =0;
+  
+private:
+  SurfaceButton (const SurfaceButton&);
+  SurfaceButton operator= (const SurfaceButton&);
 };
 
 class CreditButton : public SurfaceButton
@@ -75,6 +79,10 @@ public:
   CreditButton(PingusMenu* menu);
   virtual ~CreditButton();
   void on_click();
+  
+private:
+  CreditButton (const CreditButton&);
+  CreditButton operator= (const CreditButton&);
 };
 
 class OptionsButton : public SurfaceButton
@@ -85,6 +93,10 @@ public:
   OptionsButton(PingusMenu* menu);
   virtual ~OptionsButton();
   void on_click();
+  
+private:
+  OptionsButton (const OptionsButton&);
+  OptionsButton operator= (const OptionsButton&);
 };
 
 class QuitButton : public SurfaceButton
@@ -95,6 +107,10 @@ public:
   QuitButton(PingusMenu*);
   virtual ~QuitButton();
   void on_click();
+  
+private:
+  QuitButton (const QuitButton&);
+  QuitButton operator= (const QuitButton&);
 };
 
 class LoadButton : public SurfaceButton
@@ -103,6 +119,10 @@ public:
   LoadButton();
   virtual ~LoadButton();
   void on_click();
+  
+private:
+  LoadButton (const LoadButton&);
+  LoadButton operator= (const LoadButton&);
 };
 
 class EditorButton : public SurfaceButton
@@ -116,6 +136,10 @@ public:
 
   void on_click();
   void load_level(const std::string& str);
+  
+private:
+  EditorButton (const EditorButton&);
+  EditorButton operator= (const EditorButton&);
 };
 
 class StoryButton : public SurfaceButton
@@ -126,6 +150,10 @@ public:
   StoryButton(PingusMenu* menu);
   ~StoryButton();
   void on_click();
+  
+private:
+  StoryButton (const StoryButton&);
+  StoryButton operator= (const StoryButton&);
 };
 
 class ThemeButton : public SurfaceButton
@@ -135,6 +163,10 @@ private:
 public:
   ThemeButton(PingusMenu* menu);
   void on_click();
+  
+private:
+  ThemeButton (const ThemeButton&);
+  ThemeButton operator= (const ThemeButton&);
 };
 
 class MultiplayerButton : public SurfaceButton
@@ -146,11 +178,12 @@ public:
   MultiplayerButton(PingusMenu* menu);
   virtual ~MultiplayerButton();
   void on_click();
+  
+private:
+  MultiplayerButton (const MultiplayerButton&);
+  MultiplayerButton operator= (const MultiplayerButton&);
 };
 
 #endif
 
 /* EOF */
-
-
-

@@ -1,4 +1,4 @@
-//  $Id: pingu_holder.cxx,v 1.3 2002/06/17 09:54:44 torangan Exp $
+//  $Id: pingu_holder.cxx,v 1.4 2002/08/23 15:49:49 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,10 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "pingu_holder.hxx"
-#include "boost/smart_ptr.hpp"
 #include "pingu.hxx"
-
-using namespace boost;
 
 PinguHolder::PinguHolder()
 {

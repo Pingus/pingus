@@ -1,4 +1,4 @@
-//  $Id: story.hxx,v 1.5 2002/08/17 00:31:06 grumbel Exp $
+//  $Id: story.hxx,v 1.6 2002/08/23 15:49:51 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,11 +37,11 @@ private:
   CL_Font*  small_font;
 
 public:
-  Story(PingusMenuManager* manager);
-  ~Story();
+  Story (PingusMenuManager* manager);
+  ~Story ();
 
   /// Load all surfaces into memory.
-  void init();
+  void init ();
 
   void preload () { init (); }
 
@@ -49,13 +49,17 @@ public:
   void update (float delta);
 
   /// Display a string at the right position
-  void display_string(std::string);
+  void display_string (std::string);
 
   bool is_at (int x, int y);
 
   void on_pause_press ();
   void on_fast_forward_press ();
   void on_escape_press ();
+  
+private:
+  Story (const Story&);
+  Story operator= (const Story&);
 };
 
 #endif

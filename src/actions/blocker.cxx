@@ -1,4 +1,4 @@
-//  $Id: blocker.cxx,v 1.3 2002/06/28 15:12:22 torangan Exp $
+//  $Id: blocker.cxx,v 1.4 2002/08/23 15:49:53 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -53,18 +53,21 @@ Blocker::init(void)
 }
 
 void
-Blocker::update(float /*delta*/)
+Blocker::update(float delta)
 {
   if (!standing_on_ground())
     {
-      pingu->set_action(Faller);
+      pingu->set_action(Pingus::Actions::Faller);
     }
+    
+  UNUSED_ARG(delta);
 }
 
 void
-Blocker::draw_offset(int x, int y, float /*s*/)
+Blocker::draw_offset(int x, int y, float s)
 {
   sprite.put_screen (pingu->pos + CL_Vector(x, y));
+  UNUSED_ARG(s);
 }
 
 bool

@@ -1,4 +1,4 @@
-//  $Id: weather_data.hxx,v 1.3 2002/07/02 10:42:38 grumbel Exp $
+//  $Id: weather_data.hxx,v 1.4 2002/08/23 15:49:52 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,19 +25,18 @@
 
 class EditorObj;
 
-namespace boost {
-
-  template <class T> class shared_ptr;
-}
-
 class WeatherData
 {
-private:
-  
 public:
   std::string type;
+  
+public:
+  WeatherData () { }
+  WeatherData (const WeatherData& old) : type(old.type) { }
+  WeatherData operator= (const WeatherData& old);
 
   EditorObjLst create_EditorObj ();
+  
 };
 
 #endif

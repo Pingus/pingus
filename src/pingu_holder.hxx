@@ -1,4 +1,4 @@
-//  $Id: pingu_holder.hxx,v 1.2 2002/06/24 22:52:55 grumbel Exp $
+//  $Id: pingu_holder.hxx,v 1.3 2002/08/23 15:49:49 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,10 +36,8 @@ private:
   /// The uniq id for the next Pingu
   int id_count;
 
-  /// ???
   int total_size_count;
 
-  /// ???
   int saved_pingus;
 
   /** This vector holds all pingus which are ever allocated in the
@@ -72,6 +70,10 @@ public:
   std::list<Pingu*>::iterator  begin () { return pingus.begin (); }
   std::list<Pingu*>::iterator  end ()   { return pingus.end (); }
   std::list<Pingu*>::size_type size ()  { return pingus.size (); }
+  
+private:
+  PinguHolder (const PinguHolder&);
+  PinguHolder operator= (const PinguHolder&);
 };
 
 #endif

@@ -1,4 +1,4 @@
-//  $Id: game_time.hxx,v 1.5 2002/08/16 13:03:35 torangan Exp $
+//  $Id: game_time.hxx,v 1.6 2002/08/23 15:49:48 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -55,6 +55,10 @@ public:
   
   /** Start from zero */
   void reset(void);
+  
+private:
+  GameTime (const GameTime&);
+  GameTime operator= (const GameTime&);
 };
 
 #endif

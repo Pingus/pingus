@@ -1,4 +1,4 @@
-//  $Id: panel.hxx,v 1.5 2002/08/16 13:03:36 torangan Exp $
+//  $Id: panel.hxx,v 1.6 2002/08/23 15:49:54 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,9 +20,9 @@
 #ifndef HEADER_PINGUS_EDITOR_PANEL_HXX
 #define HEADER_PINGUS_EDITOR_PANEL_HXX
 
+#include "../pingus.hxx"
 #include <vector>
 #include <ClanLib/Display/Display/surface.h>
-#include "../pingus.hxx"
 
 class CL_Font;
 class Editor;
@@ -47,6 +47,10 @@ public:
   void start();
   void put_screen(int x, int y);
   virtual void on_click();
+  
+private:
+  PanelIcon (const PanelIcon&);
+  PanelIcon operator= (const PanelIcon&);
 };
 
 class Panel
@@ -68,11 +72,12 @@ public:
   void on_release();
   bool mouse_over(int x, int y);
   void set_editor(Editor* e);
+  
+private:
+  Panel (const Panel&);
+  Panel operator= (const Panel&);
 };
 
 #endif
 
 /* EOF */
-
-
-

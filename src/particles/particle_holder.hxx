@@ -1,4 +1,4 @@
-//  $Id: particle_holder.hxx,v 1.2 2002/06/24 22:52:59 grumbel Exp $
+//  $Id: particle_holder.hxx,v 1.3 2002/08/23 15:49:56 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,37 +25,29 @@
 
 class Particle;
 
-///
 class ParticleHolder : public std::list<Particle*>
 {
 private:
-  ///
   std::vector<Particle*> all_particles;
-  ///
   ParticleCache     pingu_particles;
   
 public:
-  ///
-  ParticleHolder();
-  ///
-  virtual ~ParticleHolder();
+  ParticleHolder ();
+  virtual ~ParticleHolder ();
 
-  ///
-  void update(float delta);
-  ///
-  void draw_offset(int, int, float); /// const;
-  void add_pingu_explo(int x, int y);
-  ///
-  void add_particle(Particle* p);
+  void update (float delta);
+  void draw_offset (int, int, float); /// const;
+  void add_pingu_explo (int x, int y);
+  void add_particle (Particle* p);
   
-  ///
-  void init_particles();
-  ///
-  void clear_particles();
-  ///
-  void add_pingu_particle(int, int, float, float);
-}///
-;
+  void init_particles ();
+  void clear_particles ();
+  void add_pingu_particle (int, int, float, float);
+  
+private:
+  ParticleHolder (const ParticleHolder&);
+  ParticleHolder operator= (const ParticleHolder&);
+};
 
 #endif
 

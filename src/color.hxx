@@ -1,4 +1,4 @@
-//  $Id: color.hxx,v 1.3 2002/08/16 13:03:34 torangan Exp $
+//  $Id: color.hxx,v 1.4 2002/08/23 15:49:48 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,25 +30,39 @@ public:
   float blue;
   float alpha;
  
-  Color() {
-    red = green = blue = 0.0;
-      alpha = 1.0;
+  Color () : red(0.0), green(0.0), blue(0.0), alpha(1.0)
+  {
   }
  
-  Color(float red, float green, float blue, float alpha = 1.0) {
-    this->red   = red;
-    this->green = green;
-    this->blue  = blue;
-    this->alpha = alpha;
+  Color (float red_, float green_, float blue_, float alpha_ = 1.0) : red(red_), green(green_), blue(blue_), alpha(alpha_)
+  {
   }
 
-  bool operator!=(const Color& color) const {
+  Color (const Color& old): red(old.red), green(old.green), blue(old.blue), alpha(old.alpha)
+  {
+  }
+  
+  Color operator= (const Color& old)
+  {
+    if (this == &old)
+      return *this;
+      
+    red   = old.red;
+    green = old.green;
+    blue  = old.blue;
+    alpha = old.alpha;
+    
+    return *this;
+  }
+  
+  bool operator!= (const Color& color) const {
     return !operator==(color);
   }
 
-  bool operator==(const Color& color) const {
+  bool operator== (const Color& color) const {
     return red == color.red && green == color.green && blue == color.blue && alpha == color.alpha;
   }
+  
 };
 
 #endif

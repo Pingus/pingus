@@ -1,4 +1,4 @@
-//  $Id: teleporter.cxx,v 1.4 2002/07/02 10:42:39 grumbel Exp $
+//  $Id: teleporter.cxx,v 1.5 2002/08/23 15:49:57 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,10 +26,24 @@
 #include "teleporter.hxx"
 #include "../pingu.hxx"
 
-TeleporterData::TeleporterData (const TeleporterData& data) : WorldObjData(data)
+TeleporterData::TeleporterData (const TeleporterData& data) : WorldObjData(data),
+                                                              pos(data.pos),
+							      target_pos(data.target_pos)
 {
+}
+
+TeleporterData
+TeleporterData::operator= (const TeleporterData& data)
+{
+  if (this == &data)
+    return *this;
+
+  WorldObjData::operator=(data);
+  
   pos = data.pos;
   target_pos = data.target_pos;
+
+  return *this;
 }
 
 void 

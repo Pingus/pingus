@@ -1,4 +1,4 @@
-//  $Id: pingus_counter.hxx,v 1.5 2002/08/02 11:53:52 grumbel Exp $
+//  $Id: pingus_counter.hxx,v 1.6 2002/08/23 15:49:49 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,6 +39,10 @@ public:
 
   void draw(void);
   void set_client(Client*);
+  
+private:
+  PingusCounter (const PingusCounter&);
+  PingusCounter operator= (const PingusCounter&);
 };
 
 #endif

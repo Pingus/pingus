@@ -1,4 +1,4 @@
-//  $Id: thunderstorm_background.hxx,v 1.3 2002/07/02 13:36:06 torangan Exp $
+//  $Id: thunderstorm_background.hxx,v 1.4 2002/08/23 15:49:54 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,17 +31,19 @@ private:
   CL_Surface clouds_sur;
   std::vector<CL_Surface> flash_sur;
   int x_pos;
+
 public:
-  ///
   ThunderstormBackground();
-  ///
   virtual ~ThunderstormBackground();
-  ///
 
   float get_z_pos() const { return pos.z; }
   
   void update(float delta);
   void draw_offset(int x_of, int y_of, float s = 1.0);
+  
+private:
+  ThunderstormBackground (const ThunderstormBackground&);
+  ThunderstormBackground operator= (const ThunderstormBackground&);
 };
 
 #endif

@@ -1,4 +1,4 @@
-//  $Id: smallmap.hxx,v 1.7 2002/08/02 22:55:19 grumbel Exp $
+//  $Id: smallmap.hxx,v 1.8 2002/08/23 15:49:50 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -63,6 +63,10 @@ public:
   // Events
   void on_pointer_enter ();
   void on_pointer_leave ();
+  
+private:
+  SmallMap (const SmallMap&);
+  SmallMap operator= (const SmallMap&);
 };
 
 #endif

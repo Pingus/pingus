@@ -1,4 +1,4 @@
-//  $Id: demo_recorder.hxx,v 1.3 2002/08/16 13:03:34 torangan Exp $
+//  $Id: demo_recorder.hxx,v 1.4 2002/08/23 15:49:48 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,9 +20,9 @@
 #ifndef HEADER_PINGUS_DEMO_RECORDER_HXX
 #define HEADER_PINGUS_DEMO_RECORDER_HXX
 
+#include "pingus.hxx"
 #include <fstream>
 #include <string>
-#include "pingus.hxx"
 
 ///
 class DemoRecorder
@@ -47,6 +47,10 @@ public:
   void queue_event(const std::string&);
   ///
   void set_levelname(const std::string&);
+  
+private:
+  DemoRecorder (const DemoRecorder&);
+  DemoRecorder operator= (const DemoRecorder&);
 }///
 ;
 

@@ -1,4 +1,4 @@
-//  $Id: game_counter.hxx,v 1.3 2002/08/16 13:03:35 torangan Exp $
+//  $Id: game_counter.hxx,v 1.4 2002/08/23 15:49:48 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,61 +22,40 @@
 
 #include "pingus.hxx"
 
-///
 class GameCounter
 {
 public:
-  ///
-  enum CounterType { loop, once, ping_pong }///
-;
+  enum CounterType { loop, once, ping_pong };
 private:
-  ///
   int last_time;
-  ///
   double count;
-  ///
   double add;
-  ///
   double size;
-  ///
   bool is_finished;
-  ///
   CounterType type;
 
-  ///
   void check_overflow(void);
 public:
-  ///
   GameCounter();
-  ///
   ~GameCounter();
 
-  ///
   void set_type(CounterType t);
-  ///
   void set_size(int);
-  ///
   int  get_size();
-  ///
   bool finished();
-  ///
   void set_speed(double i);
-  ///
   int  value();
-  ///
   bool enough_time_passed();
-  ///
   int  operator++();
-  ///
   int  operator++(int);
-  ///
   int  operator--();
-  ///
   int  operator=(int i);
-  ///
   operator int ();
-}///
-;
+  
+private:
+  GameCounter (const GameCounter&);
+  GameCounter operator= (const GameCounter&);
+};
 
 #endif
 

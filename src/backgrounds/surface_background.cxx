@@ -1,4 +1,4 @@
-//  $Id: surface_background.cxx,v 1.4 2002/06/24 09:40:59 grumbel Exp $
+//  $Id: surface_background.cxx,v 1.5 2002/08/23 15:49:54 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,8 +26,12 @@
 #include "../blitter.hxx"
 #include "surface_background.hxx"
 
-SurfaceBackground::SurfaceBackground(const SurfaceBackgroundData& bg_data)
-  : SurfaceBackgroundData (bg_data)
+SurfaceBackground::SurfaceBackground (const SurfaceBackgroundData& bg_data)
+  : SurfaceBackgroundData(bg_data),
+    surface_need_deletion(false),
+    scroll_ox(0),
+    scroll_oy(0)
+
 {
   Timer timer;
 
@@ -35,8 +39,6 @@ SurfaceBackground::SurfaceBackground(const SurfaceBackgroundData& bg_data)
     timer.start();
     std::cout << "Creating Background..." << std::flush;
   }
-  
-  surface_need_deletion = false;
 
   if (bg_data.color.alpha > 1.0) 
     std::cout << "Background: Warning dim larger than 1.0 are no longer supported" << std::endl;
@@ -88,9 +90,6 @@ SurfaceBackground::SurfaceBackground(const SurfaceBackgroundData& bg_data)
   //bg_surface = CAImageManipulation::changeHSV(bg_surface, 150, 100, 0);
   counter.set_size(bg_surface.get_num_frames());
   counter.set_speed(1.0);
-
-  scroll_ox = 0;
-  scroll_oy = 0;
 
   if (verbose > 1)
     {
