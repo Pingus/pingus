@@ -1,4 +1,4 @@
-//  $Id: globals.hh,v 1.15 2000/06/18 17:01:50 grumbel Exp $
+//  $Id: globals.hh,v 1.16 2000/06/24 20:51:25 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -56,6 +56,7 @@ extern bool   draw_collision_map; ///
 extern bool   debug_tiles; ///
 extern bool   swcursor_enabled; /// --enable-swcursor
 extern std::string config_file;  // --config-file
+extern bool   background_manipulation_enabled; // --enable-bg-manipulation
 
 #endif
 

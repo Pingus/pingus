@@ -1,4 +1,4 @@
-//   $Id: Pingus.cc,v 1.40 2000/06/23 17:13:32 grumbel Exp $
+//   $Id: Pingus.cc,v 1.41 2000/06/24 20:51:25 grumbel Exp $
 //    ___
 //   |  _\ A free Lemmings clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -193,6 +193,7 @@ PingusMain::check_args(int argc, char* argv[])
     {"disable-fullscreen",no_argument,       0, 'F'},
     {"disable-swcursor",  no_argument,       0, 145},
     {"enable-swcursor",   no_argument,       0, 146},
+    {"enable-bg-manipulation", no_argument,  0, 148},
 
     // FIXME: is the number stuff correct?
     {"debug-actions",   no_argument,       0, 129},
@@ -401,6 +402,10 @@ PingusMain::check_args(int argc, char* argv[])
     case 147:
       config_file = optarg;
       break;
+      
+    case 148:
+      background_manipulation_enabled = true;
+      break;
 
     default:
       
@@ -415,27 +420,30 @@ PingusMain::check_args(int argc, char* argv[])
 	"   --disable-intro          Disable intro\n"
 	"   -F, --disable-fullscreen Disable Fullscreen (default)\n"
 	"   -f, --enable-fullscreen  Enable Fullscreen\n"
-	"   -i, --enable-gimmicks    Enable some buggy development stuff\n"
-	"   -S, --sound-specs FILE   Use files mentioned in FILE\n"
        	"   -d, --datadir PATH       Set the path to load the data files to `path'\n"
 	"   -l, --level FILE         Load a custom level from `file'\n"
-	"   -t, --speed SPEED        Set the game speed (0=fastest, >0=slower)\n"
-	"   -b, --print-fps          Prints the fps to stdout\n"
 	"   -v, --verbose            Print some more messages to stdout, can be set\n"
 	"                            multible times to increase verbosity\n"
 	"   -V, --version            Prints version number and exit\n"
 	//	"   --fs-preload             Preload all Levelpreviews\n"
 	"   --fast                   Disable some cpu intensive features\n"
 	//	"   --disable-previews       Disables all level preview in the level selector\n"
-	"   --maintainer-mode        Enables some features, only interesting programmers\n"
 	"   -e, --editor             Launch the Level editor (experimental)\n"
 	"   --disable-auto-scrolling Disable automatic scrolling\n"
-	"   --debug-tiles            Draw empty tiles\n"
-	"   --tile-size INT          Set the size of the map tiles (default: 32)\n"
 	"   --disable-swcursor       Disable software cursor, use hw cursor instead\n"
 	"   --enable-swcursor        Enable software cursor\n"
 	"   --no-cfg-file            Don't read ~/.pingus/config\n"
 	"   --config-file FILE       Read config from FILE (default: ~/.pingus/config)\n"
+
+	"\nDebugging and experimental stuff:\n"
+	"   --maintainer-mode        Enables some features, only interesting programmers\n"
+	"   --enable-bg-manipulation Enables color manipulation of level backgrounds\n"
+	"   --debug-tiles            Draw empty tiles\n"
+	"   -t, --speed SPEED        Set the game speed (0=fastest, >0=slower)\n"
+	"   -b, --print-fps          Prints the fps to stdout\n"
+	"   -i, --enable-gimmicks    Enable some buggy development stuff\n"
+	"   -S, --sound-specs FILE   Use files mentioned in FILE\n"
+	"   --tile-size INT          Set the size of the map tiles (default: 32)\n"
 	
 	"\nDemo playing and recording:\n"
 	"   -r, --record-demo FILE   Record a demo session to FILE\n"
