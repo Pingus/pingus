@@ -30,7 +30,7 @@ Waiter::Waiter (Pingu* p)
   : PinguAction(p),
     countdown(2.0f)
 {
-  sprite = Resource::load_sprite("pingus/waiter");
+  sprite = Resource::load_sprite("pingus/waiter/left");
 }
 
 void

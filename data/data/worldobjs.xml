@@ -1,18 +1,58 @@
 <resources>
   <section name="worldobjs">
-    <surface array="6x1" file="../images/worldobjs/teleporter.png" height="52" name="teleporter" width="35" x="0" y="0" />
-    <surface array="7x1" file="../images/worldobjs/teleportertarget.png" height="64" name="teleportertarget" width="64" x="0" y="0" />
-    <surface file="../images/worldobjs/teleporter2.png" name="teleporter2" />
-    <surface array="6x1" file="../images/worldobjs/iceblock.png" height="10" name="iceblock" width="25" x="0" y="0" />
-    <surface file="../images/worldobjs/iceblock_cmap.png" height="10" name="iceblock_cmap" width="25" x="0" y="0" />
-    <surface array="15x1" file="../images/worldobjs/conveyorbelt_left.png" height="14" name="conveyorbelt_left" width="15" x="0" y="0" />
-    <surface array="15x1" file="../images/worldobjs/conveyorbelt_middle.png" height="14" name="conveyorbelt_middle" width="15" x="0" y="0" />
-    <surface array="15x1" file="../images/worldobjs/conveyorbelt_right.png" height="14" name="conveyorbelt_right" width="15" x="0" y="0" />
-    <surface file="../images/worldobjs/conveyorbelt_cmap.png" height="14" name="conveyorbelt_cmap" width="15" x="0" y="0" />
-    <surface file="../images/worldobjs/switchdoor_box.png" name="switchdoor_box" />
-    <surface file="../images/worldobjs/switchdoor_switch.png" name="switchdoor_switch" />
-    <surface file="../images/worldobjs/switchdoor_tile.png" name="switchdoor_tile" />
-    <surface file="../images/worldobjs/switchdoor_tile_cmap.png" name="switchdoor_tile_cmap" />
-    <surface file="../images/worldobjs/infobox.png" name="infobox" />
+    <sprite name="switchdoor_box">
+      <image file="../images/worldobjs/switchdoor_box.png"/>
+    </sprite>
+    <sprite name="switchdoor_tile">
+      <image file="../images/worldobjs/switchdoor_tile.png"/>
+    </sprite>
+    <sprite name="switchdoor_switch">
+      <image file="../images/worldobjs/switchdoor_switch.png"/>
+    </sprite>
+    <sprite name="switchdoor_tile_cmap">
+      <image file="../images/worldobjs/switchdoor_tile_cmap.png"/>
+    </sprite>
+    <sprite name="teleporter2">
+      <image file="../images/worldobjs/teleporter2.png"/>
+    </sprite>
+    <sprite name="infobox">
+      <image file="../images/worldobjs/infobox.png"/>
+    </sprite>
+    <sprite name="teleporter">
+      <image file="../images/worldobjs/teleporter.png">
+        <grid pos="0,0" size="35,52" array="6,1"/>
+      </image>
+    </sprite>
+    <sprite name="teleportertarget">
+      <image file="../images/worldobjs/teleportertarget.png">
+        <grid pos="0,0" size="64,64" array="7,1"/>
+      </image>
+    </sprite>
+    <sprite name="conveyorbelt_left">
+      <image file="../images/worldobjs/conveyorbelt_left.png">
+        <grid pos="0,0" size="15,14" array="15,1"/>
+      </image>
+    </sprite>
+    <sprite name="conveyorbelt_middle">
+      <image file="../images/worldobjs/conveyorbelt_middle.png">
+        <grid pos="0,0" size="15,14" array="15,1"/>
+      </image>
+    </sprite>
+    <sprite name="conveyorbelt_right">
+      <image file="../images/worldobjs/conveyorbelt_right.png">
+        <grid pos="0,0" size="15,14" array="15,1"/>
+      </image>
+    </sprite>
+    <sprite name="iceblock">
+      <image file="../images/worldobjs/iceblock.png">
+        <grid pos="0,0" size="25,10" array="6,1"/>
+      </image>
+    </sprite>
+    <sprite name="iceblock_cmap">
+      <image file="../images/worldobjs/iceblock_cmap.png"/>
+    </sprite>
+    <sprite name="conveyorbelt_cmap">
+      <image file="../images/worldobjs/conveyorbelt_cmap.png"/>
+    </sprite>
   </section>
 </resources>
