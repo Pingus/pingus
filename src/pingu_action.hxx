@@ -1,4 +1,4 @@
-//  $Id: pingu_action.hxx,v 1.20 2002/10/20 18:28:49 torangan Exp $
+//  $Id: pingu_action.hxx,v 1.21 2002/10/22 00:21:02 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -111,6 +111,9 @@ public:
 
   /** Called if the request_set_action failded to apply this action */
   virtual void on_failed_apply (Pingu*) { }
+  
+  /** FIXME: document me */
+  void move_with_forces (float x_to_add, float y_to_add);
 
 private:
   PinguAction (const PinguAction&);
