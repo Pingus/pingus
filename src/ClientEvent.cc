@@ -1,4 +1,4 @@
-//  $Id: ClientEvent.cc,v 1.8 2000/05/03 16:53:14 grumbel Exp $
+//  $Id: ClientEvent.cc,v 1.9 2000/05/03 18:41:14 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -128,7 +128,9 @@ ClientEvent::on_keyboard_button_release(const CL_Key& key)
     {
     case CL_KEY_O:
       enabled = false;
+      CL_MouseCursor::hide();
       option_menu.display();
+      CL_MouseCursor::show(true);
       enabled = true;
       break;
 

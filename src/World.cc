@@ -1,4 +1,4 @@
-//  $Id: World.cc,v 1.16 2000/05/03 16:53:14 grumbel Exp $
+//  $Id: World.cc,v 1.17 2000/05/03 18:41:14 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -361,7 +361,6 @@ World::get_time(void)
 void 
 World::armageddon(void)
 {
-  cout << "Doing armo" << endl;
   do_armageddon = true;
   armageddon_count = pingus.begin();
 }

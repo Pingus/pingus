@@ -1,4 +1,4 @@
-//  $Id: Pingu.cc,v 1.18 2000/04/29 13:13:26 grumbel Exp $
+//  $Id: Pingu.cc,v 1.19 2000/05/03 18:41:14 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -331,12 +331,6 @@ Pingu::let_move(void)
     }
 }
 
-PinguEnvironment
-Pingu::check_enviroment()
-{
-  // FIXME: We need some code here...
-}
-
 // Check if the pingu is on ground and then do something.
 void 
 Pingu::do_normal()
@@ -439,7 +433,6 @@ Pingu::do_walking()
 
  if (rel_getpixel(0,-1) & ColMap::WATER)
    {
-     std::cout << "Blub, blub, blub, blub...." << std::endl;
      PingusSound::play_wav(find_file(pingus_datadir, "sound/SPLASH.WAV"));
      status = dead;
      return;

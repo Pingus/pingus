@@ -1,4 +1,4 @@
-//  $Id: Pingu.hh,v 1.7 2000/04/24 13:15:41 grumbel Exp $
+//  $Id: Pingu.hh,v 1.8 2000/05/03 18:41:14 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -104,7 +104,6 @@ public:
   void do_normal();
   void do_falling();
   void do_walking();
-  PinguEnvironment check_enviroment();
 
   bool   is_over(int x, int y);
   double dist(int x, int y);
