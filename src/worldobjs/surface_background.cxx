@@ -1,4 +1,4 @@
-//  $Id: surface_background.cxx,v 1.10 2003/08/16 20:51:28 grumbel Exp $
+//  $Id: surface_background.cxx,v 1.11 2003/08/16 21:04:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -158,7 +158,7 @@ SurfaceBackground::draw (GraphicContext& gc)
       if (render_preview)
         {
           for(int y = 0; y < gc.get_height();  y += bg_surface.get_height())
-            for(int x = 0; x < gc.get_width(); x += bg_surface.get_height())
+            for(int x = 0; x < gc.get_width(); x += bg_surface.get_width())
               gc.draw(bg_surface, x, y, counter);
         }
       else
