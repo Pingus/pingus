@@ -329,6 +329,11 @@
 <alias name="Hotspots/plate" link="groundpieces/solid/misc/metalplate_horiz" />
 <alias name="Hotspots/plate2" link="groundpieces/solid/misc/metalplate_large" />
 <alias name="Hotspots/plate_small" link="groundpieces/solid/misc/metalplate_small" />
+
+<alias name="global/Hotspots/plate" link="groundpieces/solid/misc/metalplate_horiz" />
+<alias name="global/Hotspots/plate2" link="groundpieces/solid/misc/metalplate_large" />
+<alias name="global/Hotspots/plate_small" link="groundpieces/solid/misc/metalplate_small" />
+
 <alias name="GroundPieces/Rock/granit1" link="groundpieces/solid/rock/granit1" />
 <alias name="GroundPieces/Rock/granit2" link="groundpieces/solid/rock/granit2" />
 <alias name="GroundPieces/Rock/granit3" link="groundpieces/solid/rock/granit3" />

@@ -21,6 +21,7 @@
 #define HEADER_PINGUS_ACTIONS_BLOCKER_HXX
 
 #include <ClanLib/Display/sprite.h>
+#include "../state_sprite.hxx"
 #include "../pingu_action.hxx"
 
 namespace Pingus {
@@ -29,7 +30,7 @@ namespace Actions {
 class Blocker : public PinguAction
 {
 private:
-  CL_Sprite sprite;
+  StateSprite sprite;
 
 public:
   Blocker (Pingu* p);

@@ -32,10 +32,10 @@ namespace Pingus {
 namespace Actions {
 
 Blocker::Blocker(Pingu* p)
-  : PinguAction(p),
-    sprite(Resource::load_sprite("pingus/blocker")) // 6.0f)
+  : PinguAction(p)
 {
-  sprite.set_alignment(origin_bottom_center);
+  sprite.load(Direction::LEFT,  Resource::load_sprite("pingus/blocker/left"));
+  sprite.load(Direction::RIGHT, Resource::load_sprite("pingus/blocker/right"));
 
   if (   rel_getpixel(0,-1)  ==  Groundtype::GP_NOTHING
       && rel_getpixel(0, -2) ==  Groundtype::GP_GROUND)
@@ -72,7 +72,7 @@ Blocker::update()
 void
 Blocker::draw (GraphicContext& gc)
 {
-  gc.draw(sprite, pingu->get_pos());
+  gc.draw(sprite[pingu->direction], pingu->get_pos());
 }
 
 bool

@@ -41,12 +41,16 @@ CL_Surface Bridger::static_surface;
 Bridger::Bridger (Pingu* p)
   : PinguAction(p),
     mode(B_BUILDING),
-    walk_sprite(Sprite("pingus/bridger_walk", "", 15.0f, Sprite::NONE, Sprite::ONCE)),
-    build_sprite(Sprite("pingus/bridger_build", "", 15.0f, Sprite::NONE, Sprite::ONCE)),
     bricks(MAX_BRICKS),
     block_build(false),
     name(_("Bridger") + std::string(" (") + to_string(bricks) + ")")
 {
+  walk_sprite.load (Direction::LEFT,  Resource::load_sprite("pingus/bridger_walk/left"));
+  walk_sprite.load (Direction::RIGHT, Resource::load_sprite("pingus/bridger_walk/right"));
+
+  build_sprite.load (Direction::LEFT,  Resource::load_sprite("pingus/bridger/left"));
+  build_sprite.load (Direction::RIGHT, Resource::load_sprite("pingus/bridger/right"));
+
   if (!static_surfaces_loaded)
     {
       static_surface = Resource::load_surface ("pingus/bridger");
@@ -54,9 +58,6 @@ Bridger::Bridger (Pingu* p)
       brick_r = Resource::load_pixelbuffer("other/brick_right");
       static_surfaces_loaded = true;
     }
-
-  build_sprite.set_align_center_bottom();
-  walk_sprite.set_align_center_bottom();
 }
 
 void
@@ -79,22 +80,13 @@ Bridger::draw (GraphicContext& gc)
   switch (mode)
     {
     case B_BUILDING:
-      if (pingu->direction.is_left ())
-	build_sprite.set_direction (Sprite::LEFT);
-      else
-	build_sprite.set_direction (Sprite::RIGHT);
-
-      gc.draw(build_sprite, Vector(pingu->get_x () - (x_offset * pingu->direction),
-				   pingu->get_y () + y_offset));
+      gc.draw(build_sprite[pingu->direction], Vector(pingu->get_x () - (x_offset * pingu->direction),
+                                                     pingu->get_y () + y_offset));
       break;
 
     case B_WALKING:
-      if (pingu->direction.is_left ())
-	walk_sprite.set_direction (Sprite::LEFT);
-      else
-	walk_sprite.set_direction (Sprite::RIGHT);
-      gc.draw (walk_sprite, Vector(pingu->get_x () - (x_offset * pingu->direction),
-				   pingu->get_y () + y_offset));
+      gc.draw(walk_sprite[pingu->direction], Vector(pingu->get_x () - (x_offset * pingu->direction),
+                                                    pingu->get_y () + y_offset));
       break;
     }
 }
@@ -117,13 +109,13 @@ Bridger::update()
 void
 Bridger::update_walk ()
 {
-  if (walk_sprite.finished ()) // FIXME: Dangerous! might not be fixed timing
+  if (walk_sprite[pingu->direction].is_finished ()) // FIXME: Dangerous! might not be fixed timing
     {
       if (way_is_free())
 	{
 	  mode = B_BUILDING;
 	  block_build = false;
-	  walk_sprite.reset ();
+	  walk_sprite[pingu->direction].restart();
 	  walk_one_step_up();
 	}
       else // We reached a wall...
@@ -142,9 +134,9 @@ Bridger::update_walk ()
 void
 Bridger::update_build ()
 {
-  build_sprite.update ();
+  build_sprite[pingu->direction].update ();
 
-  if (build_sprite.get_frame () >= 7 && !block_build)
+  if (build_sprite[pingu->direction].get_current_frame () >= 7 && !block_build)
     {
       block_build = true;
 
@@ -166,10 +158,10 @@ Bridger::update_build ()
 	}
     }
 
-  if (build_sprite.finished ())
+  if (build_sprite[pingu->direction].is_finished ())
     {
       mode = B_WALKING;
-      build_sprite.reset ();
+      build_sprite[pingu->direction].restart();
     }
 }
 

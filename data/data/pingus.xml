@@ -74,6 +74,7 @@
 
     <section name="bomber">
       <sprite name="left">
+        <animation speed="60" loop="no" />
         <translation origin="bottom_center" x="0" y="2"/>
         <image file="../images/pingus/bomber.png">
           <grid pos="0,0" size="32,32" array="16,1"/>
@@ -81,6 +82,7 @@
       </sprite>
 
       <sprite name="right">
+        <animation speed="60" loop="no" />
         <translation origin="bottom_center" x="0" y="2"/>
         <image file="../images/pingus/bomber.png">
           <grid pos="0,0" size="32,32" array="16,1"/>
@@ -168,6 +170,7 @@
 
     <section name="bridger">
       <sprite name="left">
+        <animation speed="66" loop="no" />
         <translation origin="bottom_center" x="0" y="2"/>
         <image file="../images/pingus/bridger.png">
           <grid pos="0,0" size="32,32" array="15,1"/>
@@ -175,6 +178,7 @@
       </sprite>
 
       <sprite name="right">
+        <animation speed="66" loop="no" />
         <translation origin="bottom_center" x="0" y="2"/>
         <image file="../images/pingus/bridger.png">
           <grid pos="0,32" size="32,32" array="15,1"/>
@@ -184,12 +188,14 @@
 
     <section name="bridger_walk">
       <sprite name="left">
+        <animation speed="66" loop="no" />
         <image file="../images/pingus/bridger_walk.png">
           <grid pos="0,0" size="32,32" array="4,1"/>
         </image>
       </sprite>
       
       <sprite name="right">
+        <animation speed="66" loop="no" />
         <image file="../images/pingus/bridger_walk.png">
           <grid pos="0,32" size="32,32" array="4,1"/>
         </image>
@@ -414,20 +420,8 @@
       <image file="../images/pingus/bomber_radius_gfx.png">
       </image>
     </sprite>
-    <sprite name="explo0">
+    <sprite name="explo">
       <image file="../images/pingus/explo0.png">
-      </image>
-    </sprite>
-    <sprite name="explo1">
-      <image file="../images/pingus/explo1.png">
-      </image>
-    </sprite>
-    <sprite name="explo2">
-      <image file="../images/pingus/explo2.png">
-      </image>
-    </sprite>
-    <sprite name="explo3">
-      <image file="../images/pingus/explo3.png">
       </image>
     </sprite>
     <sprite name="laser_kill">

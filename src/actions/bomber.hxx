@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_ACTIONS_BOMBER_HXX
 #define HEADER_PINGUS_ACTIONS_BOMBER_HXX
 
-#include "../sprite.hxx"
+#include "../state_sprite.hxx"
 #include "../pingu_action.hxx"
 
 namespace Pingus {
@@ -40,8 +40,8 @@ private:
   static CL_PixelBuffer bomber_radius;
   static CL_PixelBuffer bomber_radius_gfx;
 
-  Sprite     sprite;
-  CL_Sprite  explo_surf;
+  StateSprite sprite;
+  CL_Sprite   explo_surf;
 
 public:
   Bomber (Pingu* p);

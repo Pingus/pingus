@@ -23,7 +23,7 @@
 #include "../vector.hxx"
 #include "../game_counter.hxx"
 #include "../pingu_action.hxx"
-#include "../sprite.hxx"
+#include "../state_sprite.hxx"
 
 namespace Pingus {
 namespace Actions {
@@ -36,8 +36,8 @@ private:
   enum { brick_length = 16 };
 
 private:
-  Sprite walk_sprite;
-  Sprite build_sprite;
+  StateSprite walk_sprite;
+  StateSprite build_sprite;
 
   GameCounter counter;
 

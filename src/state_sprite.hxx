@@ -37,6 +37,8 @@ public:
   StateSprite();
   
   void update(float delta);
+  void update();
+
   void load(int state, CL_Sprite);
   CL_Sprite& operator[](int state);
 };

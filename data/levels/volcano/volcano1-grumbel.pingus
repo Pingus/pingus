@@ -844,7 +844,7 @@
 <liquid use-old-width-handling="0">
   <surface><resource type="datafile">
     <resource-datafile>liquids</resource-datafile>
-  <resource-ident>Liquid/water2</resource-ident>
+  <resource-ident>water2</resource-ident>
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>

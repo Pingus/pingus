@@ -32,6 +32,12 @@ StateSprite::load(int state, CL_Sprite sprite)
   sprites[state] = sprite;
 }
 
+void
+StateSprite::update()
+{
+  update(0.033f);
+}
+
 void 
 StateSprite::update(float delta)
 {

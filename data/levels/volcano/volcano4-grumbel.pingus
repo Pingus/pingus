@@ -266,7 +266,7 @@
   </position>
   <surface><resource type="datafile">
     <resource-datafile>exits</resource-datafile>
-  <resource-ident>exits/stone</resource-ident>
+  <resource-ident>stone</resource-ident>
     <modifier>ROT0</modifier>
   </resource></surface>
   <owner-id>0</owner-id></exit>
