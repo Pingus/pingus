@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.119 2002/11/02 19:03:40 grumbel Exp $
+#  $Id: Makefile.am,v 1.120 2002/11/03 14:37:20 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -133,8 +133,6 @@ fade_out.cxx \
 fade_out.hxx \
 fonts.hxx \
 fonts.cxx \
-force_vector.cxx \
-force_vector.hxx \
 fps_counter.cxx \
 fps_counter.hxx \
 game_counter.cxx \

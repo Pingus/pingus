@@ -1,4 +1,4 @@
-//  $Id: pingu_action.cxx,v 1.14 2002/11/03 13:41:29 grumbel Exp $
+//  $Id: pingu_action.cxx,v 1.15 2002/11/03 14:37:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,8 +19,8 @@
 
 #include <assert.h>
 #include <math.h>
+#include "vector.hxx"
 #include "col_map.hxx"
-#include "force_vector.hxx"
 #include "world.hxx"
 #include "pingu.hxx"
 #include "pingu_action.hxx"
@@ -103,12 +103,9 @@ PinguAction::collision_on_walk (int x, int y)
 void
 PinguAction::move_with_forces ()
 {
-  Vector force_to_apply = pingu->get_velocity();
-
-  // Put the force together with any existing forces, including gravity
-  pingu->set_velocity( ForcesHolder::apply_forces(pingu->get_pos(),
-						  force_to_apply) );
-
+  // Apply gravity
+  pingu->set_velocity(pingu->get_velocity() + Vector(0.0f, 1.0f));
+    
   Vector resultant_force = pingu->get_velocity();
 
   // Strictly speaking x_numerator should be initialised with
@@ -142,9 +139,9 @@ PinguAction::move_with_forces ()
 
   // Keep moving the Pingu until there is only a fraction left
   while (   force_counter.x <= -1 
-            || force_counter.x >=  1
-            || force_counter.y <= -1
-            || force_counter.y >=  1)
+         || force_counter.x >=  1
+         || force_counter.y <= -1
+         || force_counter.y >=  1)
     {
       x_numerator += x_inc;
 

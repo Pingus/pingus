@@ -1,4 +1,4 @@
-//  $Id: bomber.cxx,v 1.23 2002/11/03 13:29:09 grumbel Exp $
+//  $Id: bomber.cxx,v 1.24 2002/11/03 14:37:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,7 +22,6 @@
 #include "../debug.hxx"
 #include "../globals.hxx"
 #include "../col_map.hxx"
-#include "../force_vector.hxx"
 #include "../graphic_context.hxx"
 #include "../pingu.hxx"
 #include "../pingu_map.hxx"
@@ -80,8 +79,18 @@ Bomber::update ()
 {
   sprite.update ();
 
-  if (pingu->get_previous_action() == Actions::Faller)
-    move_with_forces();
+  switch (pingu->get_previous_action())
+    {
+    case Actions::Faller:
+      move_with_forces();
+      break;
+    case Actions::Floater:
+      if (rel_getpixel(0, -1) == Groundtype::GP_NOTHING)
+        pingu->set_y(pingu->get_y() + 0.5f);
+      break;
+    default:
+      break;
+    }
 
   // If the Bomber hasn't 'exploded' yet and it has hit Water or Lava
   if (sprite.get_frame () <= 9 && (rel_getpixel(0, -1) == Groundtype::GP_WATER
@@ -114,11 +123,7 @@ Bomber::update ()
 						  static_cast<int>(pingu->get_y () - 16 - (bomber_radius.get_width()/2)));
       WorldObj::get_world()->get_gfx_map()->remove(bomber_radius_gfx, 
 						   static_cast<int>(pingu->get_x () - (bomber_radius.get_width()/2)),
-						   static_cast<int>(pingu->get_y () - 16 - (bomber_radius.get_width()/2)));
-      
-      // Add an explosion to the forces list
-      ForcesHolder::add_force(ExplosionForce(5,30,Vector(pingu->get_x (),
-							    pingu->get_y () - 20)));
+						   static_cast<int>(pingu->get_y () - 16 - (bomber_radius.get_width()/2)));    
     }
 
 
@@ -127,14 +132,6 @@ Bomber::update ()
     {
       pingu->set_status(PS_DEAD);
     }
-}
-
-void
-Bomber::update_position ()
-{
-  // Apply all forces
-  pingu->set_velocity(ForcesHolder::apply_forces(pingu->get_pos(), pingu->get_velocity()));
-  pingu->set_pos(pingu->get_pos() + pingu->get_velocity());
 }
 
 } // namespace Actions

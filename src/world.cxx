@@ -1,4 +1,4 @@
-//  $Id: world.cxx,v 1.32 2002/10/10 12:25:53 grumbel Exp $
+//  $Id: world.cxx,v 1.33 2002/11/03 14:37:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,6 @@
 #include <algorithm>
 #include <assert.h>
 #include <iostream>
-#include "force_vector.hxx"
 #include "plf.hxx"
 #include "pingu_holder.hxx"
 #include "sound.hxx"
@@ -99,11 +98,6 @@ World::init_worldobjs(PLF* plf)
   // objects want to do
   for(WorldObjIter obj = world_obj.begin(); obj != world_obj.end(); ++obj)
     (*obj)->on_startup();
-
-  // Setup the gravity force
-  // Clear all old forces
-  ForcesHolder::clear_all_forces();
-  ForcesHolder::add_force(GravityForce(grav));
 }
 
 World::~World()
@@ -192,9 +186,6 @@ World::update()
 
   // FIXME: Why is the particle holder still a seperate object?
   particle_holder->update();
-
-  // Clear the explosion force list
-  ForcesHolder::clear_explo_list();
 }
 
 PinguHolder*
