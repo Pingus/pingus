@@ -1,4 +1,4 @@
-//  $Id: bridger.cc,v 1.6 2000/03/08 01:44:33 grumbel Exp $
+//  $Id: bridger.cc,v 1.7 2000/03/10 18:56:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -48,13 +48,10 @@ Bridger::init(void)
   step = 0;
   do_steps = 0;
 
-  pingu->colmap->put(brick_r, pingu->x_pos - brick_r->get_width(),
-		     pingu->y_pos - 1,
-		     surface_data::BRIDGE);
-  pingu->map->put(brick_l->get_provider(), 
-		  pingu->x_pos - brick_r->get_width(),
-		  pingu->y_pos - 1);
-}
+  // Ressetting the bridger position a bit, so that we don't get a
+  // hole at the start of the bridge
+  pingu->x_pos -= pingu->direction * 2;
+} 
 
 void
 Bridger::draw_offset(int x, int y, float s)
