@@ -1,4 +1,4 @@
-//  $Id: PingusCounter.hh,v 1.2 2000/02/09 21:43:40 grumbel Exp $
+//  $Id: PingusCounter.hh,v 1.3 2000/03/16 21:28:05 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,18 +22,23 @@
 
 #include <ClanLib/core.h>
 
+#include "Client.hh"
 #include "World.hh"
 #include "GuiObj.hh"
+
+class Client;
 
 class PingusCounter : public GuiObj
 {
 private:
   CL_Font* font;
   World* world;
+  Client* client;
 public:
   PingusCounter();
+
   void draw(void);
-  void set_world(World*);
+  void set_client(Client*);
 };
 
 #endif

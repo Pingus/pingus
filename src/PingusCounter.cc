@@ -1,4 +1,4 @@
-//  $Id: PingusCounter.cc,v 1.3 2000/02/15 12:30:45 grumbel Exp $
+//  $Id: PingusCounter.cc,v 1.4 2000/03/16 21:28:05 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #include <cstdio>
 #include <ClanLib/core.h>
 
+#include "globals.hh"
 #include "PingusResource.hh"
 #include "PingusCounter.hh"
 
@@ -33,22 +34,33 @@ PingusCounter::draw(void)
 {
   char str[256];
 
-  //CL_Display::fill_rect(0,0, 400, 20,
-  //			0.0, 0.0, 0.0, 0.5);
-
-  sprintf(str, "Released: %3d/%3d  Out: %3d  Saved: %3d/%3d",
-	  world->get_released_pingus(),
-	  world->get_allowed_pingus(),
-	  world->get_pingus_out(),
-	  world->get_saved_pingus(),
-	  world->get_number_to_save());
+  if (!print_fps)
+    {
+      sprintf(str, "Released: %3d/%3d  Out: %3d  Saved: %3d/%3d",
+	      world->get_released_pingus(),
+	      world->get_allowed_pingus(),
+	      world->get_pingus_out(),
+	      world->get_saved_pingus(),
+	      world->get_number_to_save());
+    }
+  else
+    {
+      sprintf(str, "Released: %3d/%3d  Out: %3d  Saved: %3d/%3d FPS: %3d",
+	      world->get_released_pingus(),
+	      world->get_allowed_pingus(),
+	      world->get_pingus_out(),
+	      world->get_saved_pingus(),
+	      world->get_number_to_save(),
+	      client->get_fps());
+    }
   font->print_left(10,5, str);
 }
 
 void
-PingusCounter::set_world(World* w)
+PingusCounter::set_client(Client* c)
 {
-  world = w;
+  client = c;
+  world = client->get_server()->get_world();
 }
 
 /* EOF */

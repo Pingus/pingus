@@ -1,4 +1,4 @@
-//  $Id: Client.cc,v 1.13 2000/03/08 01:36:14 grumbel Exp $
+//  $Id: Client.cc,v 1.14 2000/03/16 21:28:05 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -86,7 +86,7 @@ Client::init_display()
   button_panel->set_server(server);
   time_display->set_server(server);
   button_panel->set_client(this);
-  pcounter->set_world(server->get_world());
+  pcounter->set_client(this);
   small_map->set_client(this);
   
   event->playfield = playfield;
@@ -201,18 +201,25 @@ Client::play_level(std::string plf_filename, std::string psm_filename)
 void
 Client::count_fps()
 {
-  unsigned int last_time = 0;
-  int fps_count = 0;
+  static unsigned int last_time;
+  static int fps_count;
   
   ++fps_count;
   // Print the fps rate every 2secs
-  if (print_fps && (last_time + 1000 < CL_System::get_time())) 
+  if (print_fps && (last_time + 1000 < CL_System::get_time()))
     {
-      cout << "Client: " << fps_count << "fps" << std::endl;
+      //cout << "Client: " << fps_count << "fps" << std::endl;
+      current_fps = fps_count;
       fps_count = 0;
       last_time = CL_System::get_time();
     }
 } 
+
+int
+Client::get_fps()
+{
+  return current_fps;
+}
 
 void
 Client::set_fast_forward(bool value)

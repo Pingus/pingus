@@ -1,4 +1,4 @@
-//  $Id: Client.hh,v 1.7 2000/03/12 01:57:32 grumbel Exp $
+//  $Id: Client.hh,v 1.8 2000/03/16 21:28:05 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,6 +35,7 @@
 class ClientEvent;
 class Playfield;
 class ButtonPanel;
+class PingusCounter;
 
 class Client
 {
@@ -49,6 +50,7 @@ private:
   bool fast_forward;
   bool pause;
   int  skip_frame;
+  int  current_fps;
   bool do_replay;
   bool is_finished;
 
@@ -81,6 +83,7 @@ public:
   void set_pause(bool value);
 
   void count_fps();
+  int  get_fps();
   bool replay();
   void do_restart();
   bool finished();
