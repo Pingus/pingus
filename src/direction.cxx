@@ -21,7 +21,7 @@
 
 namespace Pingus {
 
-Direction::Direction() : direction(0)
+Direction::Direction() : direction(NONE)
 {
 }
 
@@ -47,37 +47,34 @@ Direction::operator=(const Direction& dir)
 void
 Direction::change()
 {
-  direction = -direction;
+  if (direction == LEFT)
+    direction = RIGHT;
+  else
+    direction = LEFT;
 }
 
 void
 Direction::left()
 {
-  direction = -1;
+  direction = LEFT;
 }
 
 void
 Direction::right()
 {
-  direction = 1;
+  direction = RIGHT;
 }
 
 bool
 Direction::is_left() const
 {
-  if (direction == -1)
-    return true;
-  else
-    return false;
+  return (direction == LEFT);
 }
 
 bool
 Direction::is_right() const
 {
-  if (direction == 1)
-    return true;
-  else
-    return false;
+  return direction == RIGHT;
 }
 
 } // namespace Pingus

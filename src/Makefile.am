@@ -256,6 +256,8 @@ spot_map.cxx \
 spot_map.hxx \
 sprite.cxx \
 sprite.hxx \
+state_sprite.hxx \
+state_sprite.cxx \
 start_screen.hxx \
 start_screen.cxx \
 stat_manager.hxx \

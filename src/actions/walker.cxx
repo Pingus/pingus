@@ -22,6 +22,7 @@
 #include "../gui/graphic_context.hxx"
 #include "../string_converter.hxx"
 #include "../pingu.hxx"
+#include "../pingus_resource.hxx"
 #include "../debug.hxx"
 #include "walker.hxx"
 
@@ -29,12 +30,13 @@ namespace Pingus {
 namespace Actions {
 
 Walker::Walker (Pingu* p)
-  : PinguAction(p),
-    walker("Pingus/walker" + to_string(pingu->get_owner()), "pingus", 15.0f),
-    floaterlayer("Pingus/floaterlayer", "pingus", 15.0f)
+  : PinguAction(p)
 {
-  walker.set_align_center_bottom();
-  floaterlayer.set_align_center_bottom();
+  walker.load(Direction::LEFT,  PingusResource::load_sprite("Pingus/walker/left", "pingus"));
+  walker.load(Direction::RIGHT, PingusResource::load_sprite("Pingus/walker/right" , "pingus"));
+
+  floaterlayer.load(Direction::LEFT,  PingusResource::load_sprite("Pingus/floaterlayer/left",  "pingus"));
+  floaterlayer.load(Direction::RIGHT, PingusResource::load_sprite("Pingus/floaterlayer/right", "pingus"));
 
   // Reset the velocity
   pingu->set_velocity(Vector());
@@ -44,8 +46,8 @@ void
 Walker::update ()
 {
   // update the sprite
-  walker.update();
-  floaterlayer.update();
+  walker(pingu->direction).update(0.033);
+  floaterlayer(pingu->direction).update(0.033);
 
   Vector last_pos = pingu->get_pos();
 
@@ -205,22 +207,11 @@ Walker::update ()
 void
 Walker::draw (GraphicContext& gc)
 {
-  if (pingu->direction.is_left())
-    {
-      walker.set_direction(Sprite::LEFT);
-      floaterlayer.set_direction(Sprite::LEFT);
-    }
-  else
-    {
-      walker.set_direction(Sprite::RIGHT);
-      floaterlayer.set_direction(Sprite::RIGHT);
-    }
-
-  gc.draw(walker, pingu->get_pos() + Vector (0, +2));
+  gc.draw(walker(pingu->direction), pingu->get_pos());
 
   if (pingu->get_fall_action() && pingu->get_fall_action()->get_type() == Actions::Floater)
     {
-      gc.draw(floaterlayer, pingu->get_pos() + Vector(0, +2));
+      gc.draw(floaterlayer(pingu->direction), pingu->get_pos());
     }
 }
 

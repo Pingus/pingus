@@ -27,8 +27,10 @@ namespace Pingus {
 /// Simple class for managing the direction of a pingu
 class Direction
 {
+public:
+  enum Dir { LEFT = -1, NONE = 0, RIGHT = +1 };
 private:
-  int direction;
+  Dir direction;
 
 public:
   Direction ();

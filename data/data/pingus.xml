@@ -1,10 +1,23 @@
 <resources>
   <section name="Pingus">
-    <sprite name="floaterlayer">
-      <image file="../images/pingus/floaterlayer.png">
-        <grid pos="0,0" size="32,32" array="8,2"/>
-      </image>
-    </sprite>
+
+    <section name="floaterlayer">
+
+      <sprite name="left">
+        <translation origin="bottom_center" x="0" y="2"/>
+        <image file="../images/pingus/floaterlayer.png">
+          <grid pos="0,0" size="32,32" array="8,1"/>
+        </image>
+      </sprite>
+
+      <sprite name="right">
+        <translation origin="bottom_center" x="0" y="2"/>
+        <image file="../images/pingus/floaterlayer.png">
+          <grid pos="0,32" size="32,32" array="8,1"/>
+        </image>
+      </sprite>
+    </section>
+
     <sprite name="rocketlauncher0">
       <image file="../images/pingus/rocketlauncher.png">
         <grid pos="0,0" size="32,32" array="7,2"/>
@@ -70,6 +83,25 @@
         <grid pos="0,0" size="32,32" array="11,2"/>
       </image>
     </sprite>
+    
+    <section name="walker">
+      <sprite name="left">
+        <animation speed="60" />
+        <translation origin="bottom_center" x="0" y="2"/>
+        <image file="../images/pingus/walker.png">
+          <grid pos="0,0" size="32,32" array="8,1"/>
+        </image>
+      </sprite>
+
+      <sprite name="right">
+        <animation speed="60" />
+        <translation origin="bottom_center" x="0" y="2"/>
+        <image file="../images/pingus/walker.png">
+          <grid pos="0,32" size="32,32" array="8,1"/>
+        </image>
+      </sprite>
+    </section>
+
     <sprite name="walker0">
       <image file="../images/pingus/walker.png">
         <grid pos="0,0" size="32,32" array="8,2"/>

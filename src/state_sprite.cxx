@@ -1,7 +1,7 @@
-//  $Id: walker.hxx,v 1.15 2003/10/18 23:17:27 grumbel Exp $
+//  $Id$
 //
 //  Pingus - A free Lemmings clone
-//  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
+//  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
 //
 //  This program is free software; you can redistribute it and/or
 //  modify it under the terms of the GNU General Public License
@@ -17,40 +17,35 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef HEADER_PINGUS_ACTIONS_WALKER_HXX
-#define HEADER_PINGUS_ACTIONS_WALKER_HXX
-
-#include "../pingu_action.hxx"
-#include "../state_sprite.hxx"
-#include "../sprite.hxx"
+#include "pingus_error.hxx"
+#include "state_sprite.hxx"
 
 namespace Pingus {
-namespace Actions {
 
-class Walker : public PinguAction
+StateSprite::StateSprite()
 {
-private:
-  StateSprite walker;
-  StateSprite floaterlayer;
+}
 
-  enum { max_steps = 5 }; // max nr. of pixels that pingu can walk up/down
+void
+StateSprite::load(int state, CL_Sprite sprite)
+{
+  sprites[state] = sprite;
+}
 
-public:
-  Walker (Pingu*);
+CL_Sprite&
+StateSprite::operator()(int state)
+{
+  Sprites::iterator i = sprites.find(state);
+  if (i != sprites.end())
+    {
+      return i->second;
+    }
+  else
+    {
+      throw PingusError("StateSprite error");
+    }
+}
 
-  void draw (GraphicContext& gc);
-  void update ();
-
-  ActionName get_type () const { return Actions::Walker; }
-
-private:
-  Walker (const Walker&);
-  Walker& operator= (const Walker&);
-};
-
-} // namespace Actions
 } // namespace Pingus
-
-#endif
 
 /* EOF */
