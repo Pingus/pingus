@@ -1,4 +1,4 @@
-//  $Id: plfobj.hxx,v 1.5 2002/07/01 16:40:30 grumbel Exp $
+//  $Id: plfobj.hxx,v 1.6 2002/07/01 18:36:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,7 +34,7 @@ private:
 public:
   EntranceObj(const EntranceData&);
 
-  boost::shared_ptr<EditorObj> duplicate();
+  EditorObj* duplicate();
   void write_xml(std::ostream& xml) { EntranceData::write_xml (xml); }
   std::string status_line();
   Pingus::Editor::PropertyFrame* get_gui_dialog (CL_Component* parent);
@@ -48,7 +48,7 @@ private:
 public:
   ExitObj(const ExitData&);
 
-  boost::shared_ptr<EditorObj> duplicate();
+  EditorObj* duplicate();
   void write_xml(std::ostream& xml) { ExitData::write_xml (xml); }
   std::string  status_line();
 };
@@ -63,7 +63,7 @@ private:
 public:
   TrapObj(const TrapData&);
 
-  boost::shared_ptr<EditorObj> duplicate();
+  EditorObj* duplicate();
   void write_xml(std::ostream& xml) { TrapData::write_xml (xml); }
   void draw (EditorView * view);
   std::string  status_line();
@@ -77,7 +77,7 @@ private:
 public:
   LiquidObj(const LiquidData& data);
 
-  boost::shared_ptr<EditorObj> duplicate();
+  EditorObj* duplicate();
   void draw (EditorView * view);
   void draw_mark (EditorView * view);
   void save(std::ostream& plf, std::ofstream* psm);

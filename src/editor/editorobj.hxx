@@ -1,4 +1,4 @@
-//  $Id: editorobj.hxx,v 1.8 2002/07/01 16:40:30 grumbel Exp $
+//  $Id: editorobj.hxx,v 1.9 2002/07/01 18:36:39 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -113,7 +113,7 @@ public:
 
   /** Duplicate the given editor object and return a the copied
       object */
-  virtual boost::shared_ptr<EditorObj> duplicate() =0;
+  virtual EditorObj* duplicate() =0;
 
   /** Return a pointer to a CL_Component which can be used to
       manipulate the properties of this gameobject. The caller is

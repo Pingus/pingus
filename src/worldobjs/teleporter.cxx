@@ -1,4 +1,4 @@
-//  $Id: teleporter.cxx,v 1.2 2002/06/25 12:20:34 grumbel Exp $
+//  $Id: teleporter.cxx,v 1.3 2002/07/01 18:36:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -163,11 +163,11 @@ EditorTeleporterObj::EditorTeleporterObj (const TeleporterData& data)
   target_pos = data.target_pos;
 }
 
-boost::shared_ptr<EditorObj> 
+EditorObj*
 EditorTeleporterObj::duplicate()
 {
   std::cout << "EditorTeleporterObj::duplicate(): not implemented" << std::endl;
-  return boost::shared_ptr<EditorObj> ();
+  return 0;
 }
 
 std::list<boost::shared_ptr<EditorObj> > 

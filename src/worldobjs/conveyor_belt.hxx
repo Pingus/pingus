@@ -1,4 +1,4 @@
-//  $Id: conveyor_belt.hxx,v 1.3 2002/06/25 12:20:34 grumbel Exp $
+//  $Id: conveyor_belt.hxx,v 1.4 2002/07/01 18:36:40 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -76,7 +76,7 @@ private:
 public:
   EditorConveyorBeltObj (const ConveyorBeltData&);
 
-  boost::shared_ptr<EditorObj> duplicate();
+  EditorObj* duplicate();
   void draw (EditorView * view);
   void draw_scroll_map(int x_pos, int y_pos, int arg_width, int arg_height);
 

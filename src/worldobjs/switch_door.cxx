@@ -1,4 +1,4 @@
-//  $Id: switch_door.cxx,v 1.3 2002/06/25 12:20:34 grumbel Exp $
+//  $Id: switch_door.cxx,v 1.4 2002/07/01 18:36:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -222,7 +222,7 @@ EditorSwitchDoorSwitchObj::status_line()
   return "--- EditorSwitchDoorSwitchObj ---";
 }
 
-boost::shared_ptr<EditorObj> 
+EditorObj*
 EditorSwitchDoorSwitchObj::duplicate() 
 { 
   return door->duplicate (); 
@@ -239,11 +239,11 @@ EditorSwitchDoorObj::EditorSwitchDoorObj (const SwitchDoorData& data)
   door_tile  = PingusResource::load_surface("switchdoor_tile", "worldobjs");
 }
 
-boost::shared_ptr<EditorObj> 
+EditorObj*
 EditorSwitchDoorObj::duplicate()
 {
   std::cout << "EditorSwitchDoorObj::duplicate(): not implemented" << std::endl;
-  return boost::shared_ptr<EditorObj> ();
+  return 0;
 }
 
 /** Create this object (and child objects) with resonable defaults

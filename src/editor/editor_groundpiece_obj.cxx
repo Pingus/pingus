@@ -1,4 +1,4 @@
-//  $Id: editor_groundpiece_obj.cxx,v 1.7 2002/07/01 09:09:31 grumbel Exp $
+//  $Id: editor_groundpiece_obj.cxx,v 1.8 2002/07/01 18:36:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,11 +31,10 @@ EditorGroundpieceObj::EditorGroundpieceObj(const GroundpieceData& data)
 {
 }
 
-boost::shared_ptr<EditorObj>   
+EditorObj*
 EditorGroundpieceObj::duplicate()
 {
-  return boost::shared_ptr<EditorObj>(new EditorGroundpieceObj
-				      (static_cast<GroundpieceData>(*this)));
+  return new EditorGroundpieceObj (static_cast<GroundpieceData>(*this));
 }
 
 std::string 

@@ -1,4 +1,4 @@
-//  $Id: info_box.hxx,v 1.4 2002/06/25 12:20:34 grumbel Exp $
+//  $Id: info_box.hxx,v 1.5 2002/07/01 18:36:40 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -70,7 +70,7 @@ public:
   static std::list<boost::shared_ptr<EditorObj> > create (const CL_Vector& pos);
 
   void write_xml(std::ostream& xml) { InfoBoxData::write_xml (xml); }
-  boost::shared_ptr<EditorObj> duplicate();
+  EditorObj* duplicate();
   std::string status_line ();
 };
 

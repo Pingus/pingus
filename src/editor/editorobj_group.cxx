@@ -1,4 +1,4 @@
-//  $Id: editorobj_group.cxx,v 1.3 2002/06/25 12:20:33 grumbel Exp $
+//  $Id: editorobj_group.cxx,v 1.4 2002/07/01 18:36:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,9 +28,18 @@ EditorObjGroup::EditorObjGroup()
 {
 }
 
-EditorObjGroup::EditorObjGroup(const std::list<boost::shared_ptr<EditorObj> >& arg_objs)
-  : objs (arg_objs)
+EditorObjGroup::EditorObjGroup(const std::vector<EditorObj*>& arg_objs)
 {
+  for(std::vector<EditorObj*>::const_iterator i = arg_objs.begin(); i != arg_objs.end (); ++i)
+    {
+      EditorObj* new_obj = (*i)->duplicate ();
+      if (new_obj)
+	objs.push_back (new_obj);
+      else
+	{
+	  std::cout << "EditorObjGroup: Duplicate not implemented" << std::endl;
+	}
+    }
 }
 
 EditorObjGroup::~EditorObjGroup()
@@ -41,7 +50,7 @@ void
 EditorObjGroup::set_position_offset(const CL_Vector& offset)
 {
   upper_left_corner += offset;
-  for(std::list<boost::shared_ptr<EditorObj> >::iterator i = objs.begin();
+  for(std::vector<EditorObj*>::iterator i = objs.begin();
       i != objs.end();
       i++)
     {
@@ -53,9 +62,7 @@ EditorObjGroup::set_position_offset(const CL_Vector& offset)
 void
 EditorObjGroup::draw (EditorView * view)
 {
-  for(std::list<boost::shared_ptr<EditorObj> >::iterator i = objs.begin();
-      i != objs.end();
-      ++i)
+  for(std::vector<EditorObj*>::iterator i = objs.begin(); i != objs.end(); ++i)
     {
       (*i)->draw (view);
     }
@@ -64,7 +71,7 @@ EditorObjGroup::draw (EditorView * view)
 float 
 EditorObjGroup::get_z_pos()
 {
-  /*for(std::list<boost::shared_ptr<EditorObj> >::iterator i = objs.begin();
+  /*for(std::vector<boost::shared_ptr<EditorObj> >::iterator i = objs.begin();
       i != objs.end();
       ++i)
     {
@@ -77,7 +84,7 @@ EditorObjGroup::get_z_pos()
 void
 EditorObjGroup::draw_mark (EditorView * view)
 {
-  for(std::list<boost::shared_ptr<EditorObj> >::iterator i = objs.begin();
+  for(std::vector<EditorObj*>::iterator i = objs.begin();
       i != objs.end();
       ++i)
     {
@@ -86,7 +93,7 @@ EditorObjGroup::draw_mark (EditorView * view)
 }
 
 void
-EditorObjGroup::add (boost::shared_ptr<EditorObj> obj)
+EditorObjGroup::add (EditorObj* obj)
 {
   // Updating the width/height and x_pos/y_pos of the object group
   /*
@@ -110,10 +117,13 @@ EditorObjGroup::add (boost::shared_ptr<EditorObj> obj)
       height = obj->get_height ();
     }
   */
-  objs.push_back(obj);
+
+  EditorObj* new_obj = obj->duplicate ();
+  if (new_obj)
+    objs.push_back(new_obj);
 }
 
-std::list<boost::shared_ptr<EditorObj> >* 
+std::vector<EditorObj*>* 
 EditorObjGroup::get_objs()
 {
   return &objs;
@@ -125,7 +135,7 @@ EditorObjGroup::write_xml(std::ostream& xml)
 {
   xml << "<group>\n";
 
-  for(std::list<boost::shared_ptr<EditorObj> >::iterator i = objs.begin();
+  for(std::vector<EditorObj*>::iterator i = objs.begin();
       i != objs.end();
       i++)
     {
@@ -134,26 +144,26 @@ EditorObjGroup::write_xml(std::ostream& xml)
   xml << "</group>\n" << std::endl;
 }
 
-boost::shared_ptr<EditorObj> 
+EditorObj*
 EditorObjGroup::duplicate()
 {
   EditorObjGroup* editor_obj = new EditorObjGroup();
   
-  for(std::list<boost::shared_ptr<EditorObj> >::iterator i = objs.begin();
+  for(std::vector<EditorObj*>::iterator i = objs.begin();
       i != objs.end();
       ++i)
     {
-      boost::shared_ptr<EditorObj> obj = (*i)->duplicate();
-      if (obj.get())
+      EditorObj* obj = (*i)->duplicate();
+      if (obj)
 	editor_obj->objs.push_back(obj);
     }
-  return boost::shared_ptr<EditorObj> (editor_obj);
+  return editor_obj;
 }
 
 bool 
 EditorObjGroup::is_over(const CL_Vector& pos)
 {
-  for(std::list<boost::shared_ptr<EditorObj> >::iterator i = objs.begin();
+  for(std::vector<EditorObj*>::iterator i = objs.begin();
       i != objs.end();
       ++i)
     {
@@ -166,7 +176,7 @@ EditorObjGroup::is_over(const CL_Vector& pos)
 bool 
 EditorObjGroup::is_in_rect(const CL_Rect& rect)
 {
-  for(std::list<boost::shared_ptr<EditorObj> >::iterator i = objs.begin();
+  for(std::vector<EditorObj*>::iterator i = objs.begin();
       i != objs.end();
       ++i)
     {

@@ -1,4 +1,4 @@
-//  $Id: object_manager.cxx,v 1.16 2002/07/01 16:47:30 grumbel Exp $
+//  $Id: object_manager.cxx,v 1.17 2002/07/01 18:36:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -47,6 +47,20 @@ static bool EditorObj_z_pos_sorter (const boost::shared_ptr<EditorObj>& a,
 {
   return a->get_z_pos () < b->get_z_pos ();
 }
+
+class EditorObj_finder
+{
+private:
+  EditorObj* object;
+public:
+  EditorObj_finder (EditorObj* obj) 
+    : object (obj)
+  {}
+
+  bool operator() (boost::shared_ptr<EditorObj> a) {
+    return (a.get() == object);
+  }
+};
 
 #ifdef WIN32
 //FIXME: ingo: This is a workaround around the std::list::sort()
@@ -179,7 +193,7 @@ ObjectManager::load_level (const std::string& filename)
   // Alpha notes that this does NOT work.
   //  world_obj.sort(std::greater<CWorldObjPtr>());
 #else
-  editor_objs.sort(EditorObj_z_pos_sorter);
+  std::sort(editor_objs.begin (), editor_objs.end (), EditorObj_z_pos_sorter);
 #endif
 
   std::cout << "Reading props" << std::endl;
@@ -354,12 +368,12 @@ ObjectManager::lower_current_objs()
 */
 
 bool
-ObjectManager::lower_obj(boost::shared_ptr<EditorObj> obj)
+ObjectManager::lower_obj(EditorObj* obj)
 {
   EditorObjIter current;
   EditorObjIter prev;
   
-  current = find(editor_objs.begin(), editor_objs.end(), obj);
+  current = std::find_if(editor_objs.begin(), editor_objs.end(), EditorObj_finder(obj));
 
   if (current == editor_objs.begin()) 
     {
@@ -380,12 +394,12 @@ ObjectManager::lower_obj(boost::shared_ptr<EditorObj> obj)
 }
 
 bool
-ObjectManager::raise_obj(boost::shared_ptr<EditorObj> obj)
+ObjectManager::raise_obj(EditorObj* obj)
 {
   EditorObjIter current;
   EditorObjIter next;
   
-  current = find(editor_objs.begin(), editor_objs.end(), obj);
+  current = std::find_if (editor_objs.begin(), editor_objs.end(), EditorObj_finder(obj));
   next    = current;
   next++;
   
@@ -436,6 +450,24 @@ ObjectManager::rect_get_objs(int x1, int y1, int x2, int y2)
       retval.push_back(it->get ());
       
   return retval;
+}
+
+void
+ObjectManager::add (EditorObj*)
+{
+  std::cout << "ObjectManager::add (EditorObj*)" << std::endl;
+}
+
+void
+ObjectManager::erase (EditorObj*)
+{
+  std::cout << "ObjectManager::erase (EditorObj*): Not implemented" << std::endl;
+}
+
+void
+ObjectManager::erase (std::vector<EditorObj*> obj)
+{
+  std::cout << "ObjectManager::erase (std::vector<EditorObj*> obj): Not implemented" << std::endl;
 }
 
 /*

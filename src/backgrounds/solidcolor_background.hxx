@@ -1,4 +1,4 @@
-//  $Id: solidcolor_background.hxx,v 1.4 2002/06/25 12:20:33 grumbel Exp $
+//  $Id: solidcolor_background.hxx,v 1.5 2002/07/01 18:36:39 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -81,9 +81,8 @@ public:
   /// Return the object height
   int get_height() { return 256; }
 
-  boost::shared_ptr<EditorObj> duplicate() {
-    return boost::shared_ptr<EditorObj>
-      (new EditorSolidColorBackground (static_cast<SolidColorBackgroundData>(*this)));
+  EditorObj* duplicate() {
+    return new EditorSolidColorBackground (static_cast<SolidColorBackgroundData>(*this));
   }
 
   float get_z_pos () { return pos.z; }

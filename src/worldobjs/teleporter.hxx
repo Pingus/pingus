@@ -1,4 +1,4 @@
-//  $Id: teleporter.hxx,v 1.4 2002/06/25 12:20:34 grumbel Exp $
+//  $Id: teleporter.hxx,v 1.5 2002/07/01 18:36:40 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -83,7 +83,7 @@ public:
   
   CL_Vector& get_target_pos_ref () { return target_pos; }
 
-  boost::shared_ptr<EditorObj> duplicate();
+  EditorObj* duplicate();
   static std::list<boost::shared_ptr<EditorObj> > create (const TeleporterData& data);
   
   void write_xml(std::ostream& xml) { TeleporterData::write_xml(xml); }
@@ -111,7 +111,7 @@ public:
   EditorTeleporterTargetObj (EditorTeleporterObj* obj);
   virtual ~EditorTeleporterTargetObj () {}
 
-  boost::shared_ptr<EditorObj> duplicate() { return teleporter->duplicate (); }
+  EditorObj* duplicate() { return teleporter->duplicate (); }
 
   /// The saving will be done in EditorTeleporterObj::save_xml
   void write_xml (std::ostream& /*xml*/) {}

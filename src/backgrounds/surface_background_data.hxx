@@ -1,4 +1,4 @@
-//  $Id: surface_background_data.hxx,v 1.5 2002/06/29 11:54:22 grumbel Exp $
+//  $Id: surface_background_data.hxx,v 1.6 2002/07/01 18:36:39 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -94,9 +94,8 @@ public:
 
   void write_xml(std::ostream& xml) { this->SurfaceBackgroundData::write_xml (xml); }
 
-  boost::shared_ptr<EditorObj> duplicate() {
-    return boost::shared_ptr<EditorObj>
-      (new EditorSurfaceBackground (static_cast<SurfaceBackgroundData>(*this)));
+  EditorObj* duplicate() {
+    return new EditorSurfaceBackground (static_cast<SurfaceBackgroundData>(*this));
   }
 
   std::string status_line () { return "SurfaceBackground: " 

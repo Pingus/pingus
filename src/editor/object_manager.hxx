@@ -1,4 +1,4 @@
-//  $Id: object_manager.hxx,v 1.9 2002/07/01 16:47:30 grumbel Exp $
+//  $Id: object_manager.hxx,v 1.10 2002/07/01 18:36:40 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -60,11 +60,11 @@ private:
   std::string comment;
 
   /** All objects which are visible in the editor */ 
-  std::list<boost::shared_ptr<EditorObj> > editor_objs;
+  std::vector<boost::shared_ptr<EditorObj> > editor_objs;
 
   /** This list contains all objects, which are in the current
       selection */
-  //std::list<boost::shared_ptr<EditorObj> > current_objs;
+  //std::vector<boost::shared_ptr<EditorObj> > current_objs;
 
   int move_offset;
 
@@ -72,9 +72,9 @@ private:
   PLF* plf;
   
 public:
-  typedef std::list<boost::shared_ptr<EditorObj> >::iterator EditorObjIter;
-  typedef std::list<boost::shared_ptr<EditorObj> >::reverse_iterator EditorObjRIter;
-  typedef std::list<boost::shared_ptr<EditorObj> >::iterator CurrentObjIter;
+  typedef std::vector<boost::shared_ptr<EditorObj> >::iterator EditorObjIter;
+  typedef std::vector<boost::shared_ptr<EditorObj> >::reverse_iterator EditorObjRIter;
+  typedef std::vector<boost::shared_ptr<EditorObj> >::iterator CurrentObjIter;
 
   ObjectManager();
   ~ObjectManager();
@@ -113,11 +113,22 @@ public:
   //void drop_current_objs ();
 
   //void add_to_selection(boost::shared_ptr<EditorObj> obj);
-  //void add_to_selection(std::list<boost::shared_ptr<EditorObj> > objs);
+  //void add_to_selection(std::vector<boost::shared_ptr<EditorObj> > objs);
 
-  bool raise_obj(boost::shared_ptr<EditorObj> obj);
+  bool raise_obj(EditorObj* obj);
   //void raise_current_objs();
-  bool lower_obj(boost::shared_ptr<EditorObj> obj);
+  bool lower_obj(EditorObj* obj);
+
+  /** Add a new object to the ObjectManager. The ObjectManager will
+      take controll over the object and delele it, if its no longer
+      needed! */
+  void add (EditorObj*);
+
+  /** Erase the object from the ObjectManager and delete it */
+  void erase (EditorObj*);
+
+  /** Erase objects from the ObjectManager and delete them */
+  void erase (std::vector<EditorObj*>);
 
   //void lower_current_objs();
 

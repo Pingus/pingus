@@ -1,4 +1,4 @@
-//  $Id: selection.hxx,v 1.4 2002/07/01 16:47:30 grumbel Exp $
+//  $Id: selection.hxx,v 1.5 2002/07/01 18:36:40 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,9 +46,11 @@ public:
   void drag();
   void drop();
     
+  /** Add the given object to the selection */
   void add(EditorObj* obj);
   void add(std::vector<EditorObj*> objs);
     
+  /** Remove the given object from the selection */
   void remove(EditorObj* obj);
     
   void raise();

@@ -1,4 +1,4 @@
-//  $Id: switch_door.hxx,v 1.4 2002/06/25 12:20:34 grumbel Exp $
+//  $Id: switch_door.hxx,v 1.5 2002/07/01 18:36:40 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -96,7 +96,7 @@ private:
 public:
   EditorSwitchDoorSwitchObj (EditorSwitchDoorObj* data);
   
-  boost::shared_ptr<EditorObj> duplicate();
+  EditorObj* duplicate();
 
   void write_xml (std::ostream& /*xml*/) {}
   std::string status_line();
@@ -118,7 +118,7 @@ public:
       for the editor */
   static std::list<boost::shared_ptr<EditorObj> > create (const CL_Vector& pos);
 
-  boost::shared_ptr<EditorObj> duplicate();
+  EditorObj* duplicate();
   float get_z_pos() { return door_pos.z; }
 
   int get_width()  { return door_box.get_width (); }

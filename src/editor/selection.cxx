@@ -1,4 +1,4 @@
-//  $Id: selection.cxx,v 1.4 2002/07/01 16:47:30 grumbel Exp $
+//  $Id: selection.cxx,v 1.5 2002/07/01 18:36:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -68,13 +68,13 @@ void EditorSelection::remove(EditorObj* obj) {
 void EditorSelection::raise() {
 
   for (vector<EditorObj*>::iterator it = obj_list.begin(); it != obj_list.end(); it++)
-    object_manager->raise_obj(boost::shared_ptr<EditorObj>(*it));
+    object_manager->raise_obj(*it);
 }
 
 void EditorSelection::lower() {
 
   for (vector<EditorObj*>::iterator it = obj_list.begin(); it != obj_list.end(); it++)
-    object_manager->lower_obj(boost::shared_ptr<EditorObj>(*it));
+    object_manager->lower_obj(*it);
 }
 
 void

@@ -1,4 +1,4 @@
-//  $Id: editorobj_group.hxx,v 1.6 2002/06/25 12:20:33 grumbel Exp $
+//  $Id: editorobj_group.hxx,v 1.7 2002/07/01 18:36:40 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,19 +23,19 @@
 #include <ClanLib/Core/Math/cl_vector.h>
 #include "../boost/smart_ptr.hpp"
 #include "editorobj.hxx"
-#include <list>
+#include <vector>
 
 class EditorObjGroup : public EditorObj
 {
 private:
-  std::list<boost::shared_ptr<EditorObj> > objs;
+  std::vector<EditorObj*> objs;
   
   CL_Vector upper_left_corner;
   //int width, height;
   //bool init;
 public:
   EditorObjGroup();
-  EditorObjGroup(const std::list<boost::shared_ptr<EditorObj> >& arg_objs);
+  EditorObjGroup(const std::vector<EditorObj*>& arg_objs);
   virtual ~EditorObjGroup();
 
   float get_z_pos();
@@ -44,16 +44,17 @@ public:
   void draw(EditorView *);
   void draw_mark (EditorView * view);
   
-  /** Add an object to the group */
-  void add (boost::shared_ptr<EditorObj>);
+  /** Add an object to the group, the object will get duplicated and
+      stay untouched */
+  void add (EditorObj*);
   ///
-  std::list<boost::shared_ptr<EditorObj> >* get_objs();
+  std::vector<EditorObj*>* get_objs();
   
   bool is_over(const CL_Vector &);
   bool is_in_rect(const CL_Rect &);
     
   void   write_xml(std::ostream& xml);
-  boost::shared_ptr<EditorObj> duplicate();
+  EditorObj* duplicate();
 
   unsigned int size () { return objs.size (); }
 };

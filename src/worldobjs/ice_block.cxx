@@ -1,4 +1,4 @@
-//  $Id: ice_block.cxx,v 1.5 2002/06/28 09:51:46 grumbel Exp $
+//  $Id: ice_block.cxx,v 1.6 2002/07/01 18:36:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -174,11 +174,11 @@ EditorIceBlockObj::status_line()
   return str;
 }
 
-boost::shared_ptr<EditorObj> 
+EditorObj*
 EditorIceBlockObj::duplicate()
 {
   std::cout << "EditorIceBlockObj::duplicate(): Not implemented" << std::endl;
-  return boost::shared_ptr<EditorObj> ();    
+  return 0;
 }
 
 /* EOF */

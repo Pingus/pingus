@@ -1,4 +1,4 @@
-//  $Id: weather_obj.cxx,v 1.3 2002/06/25 12:20:33 grumbel Exp $
+//  $Id: weather_obj.cxx,v 1.4 2002/07/01 18:36:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -83,10 +83,10 @@ WeatherObj::write_xml(std::ostream& xml)
       << std::endl;
 }
  
-boost::shared_ptr<EditorObj>
+EditorObj*
 WeatherObj::duplicate()
 {
-  return boost::shared_ptr<EditorObj>(new WeatherObj(*this));
+  return new WeatherObj(*this);
 }
 
 void 

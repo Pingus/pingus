@@ -1,4 +1,4 @@
-//  $Id: weather_obj.hxx,v 1.3 2002/06/25 12:20:33 grumbel Exp $
+//  $Id: weather_obj.hxx,v 1.4 2002/07/01 18:36:40 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,7 +39,7 @@ public:
 
   virtual void draw (EditorView * view);
   virtual void write_xml(std::ostream& xml);
-  virtual boost::shared_ptr<EditorObj> duplicate();
+  virtual EditorObj* duplicate();
 };
 
 #endif

@@ -1,4 +1,4 @@
-//  $Id: conveyor_belt.cxx,v 1.3 2002/06/25 12:20:34 grumbel Exp $
+//  $Id: conveyor_belt.cxx,v 1.4 2002/07/01 18:36:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -164,11 +164,10 @@ EditorConveyorBeltObj::EditorConveyorBeltObj (const ConveyorBeltData& data)
   counter = 0.0f;
 }
 
-boost::shared_ptr<EditorObj> 
+EditorObj*
 EditorConveyorBeltObj::duplicate()
 {
-  return boost::shared_ptr<EditorObj>(new EditorConveyorBeltObj 
-				      (static_cast<ConveyorBeltData> (*this)));
+  return new EditorConveyorBeltObj (static_cast<ConveyorBeltData> (*this));
 }
 
 void

@@ -1,4 +1,4 @@
-//  $Id: plfobj.cxx,v 1.4 2002/07/01 09:09:31 grumbel Exp $
+//  $Id: plfobj.cxx,v 1.5 2002/07/01 18:36:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -57,12 +57,11 @@ EntranceObj::EntranceObj(const EntranceData& data)
     }
 }
 
-boost::shared_ptr<EditorObj>
+EditorObj*
 EntranceObj::duplicate()
 {
   std::cout << "EntranceObj::duplicate()" << std::endl;
-  boost::shared_ptr<EditorObj> entrance (new EntranceObj(static_cast<EntranceData>(*this)));
-  return entrance;
+  return new EntranceObj(static_cast<EntranceData>(*this));
 }
 
 std::string
@@ -112,11 +111,11 @@ ExitObj::ExitObj(const ExitData& data)
     }
 }
 
-boost::shared_ptr<EditorObj>   
+EditorObj*
 ExitObj::duplicate()
 {
   // FIXME: The static_cast<> looks ugly.. 
-  return boost::shared_ptr<EditorObj>(new ExitObj(static_cast<ExitData>(*this)));
+  return new ExitObj(static_cast<ExitData>(*this));
 }
 
 std::string 
@@ -171,10 +170,10 @@ TrapObj::TrapObj(const TrapData& data)
   }
 }
 
-boost::shared_ptr<EditorObj>
+EditorObj*
 TrapObj::duplicate()
 {
-  return boost::shared_ptr<EditorObj>(new TrapObj(static_cast<TrapData>(*this)));
+  return new TrapObj(static_cast<TrapData>(*this));
 }
 
 void
@@ -202,10 +201,10 @@ LiquidObj::LiquidObj(const LiquidData& data)
     }
 }
 
-boost::shared_ptr<EditorObj>
+EditorObj*
 LiquidObj::duplicate()
 {
-  return boost::shared_ptr<EditorObj>(new LiquidObj(static_cast<LiquidData>(*this)));
+  return new LiquidObj(static_cast<LiquidData>(*this));
 }
 
 void

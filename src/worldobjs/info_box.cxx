@@ -1,4 +1,4 @@
-//  $Id: info_box.cxx,v 1.2 2002/06/25 12:20:34 grumbel Exp $
+//  $Id: info_box.cxx,v 1.3 2002/07/01 18:36:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -150,10 +150,10 @@ EditorInfoBox::create (const CL_Vector& pos)
   return lst;
 }
 
-boost::shared_ptr<EditorObj>
+EditorObj*
 EditorInfoBox::duplicate()
 {
-  return boost::shared_ptr<EditorObj>(new EditorInfoBox (*this));
+  return new EditorInfoBox (*this);
 }
 
 std::string 

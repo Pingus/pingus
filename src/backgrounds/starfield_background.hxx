@@ -1,4 +1,4 @@
-//  $Id: starfield_background.hxx,v 1.4 2002/06/25 12:20:33 grumbel Exp $
+//  $Id: starfield_background.hxx,v 1.5 2002/07/01 18:36:39 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -107,9 +107,8 @@ public:
 
   void write_xml(std::ostream& xml) { this->StarfieldBackgroundData::write_xml (xml); }
 
-  boost::shared_ptr<EditorObj> duplicate() {
-    return boost::shared_ptr<EditorObj>
-      (new EditorStarfieldBackground (static_cast<StarfieldBackgroundData>(*this)));
+  EditorObj* duplicate() {
+    return new EditorStarfieldBackground (static_cast<StarfieldBackgroundData>(*this));
   }
 
   std::string status_line () { return "StarfieldBackground: " 

@@ -1,4 +1,4 @@
-//  $Id: editor_event.cxx,v 1.19 2002/07/01 16:47:30 grumbel Exp $
+//  $Id: editor_event.cxx,v 1.20 2002/07/01 18:36:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -391,21 +391,28 @@ EditorEvent::editor_convert_group_to_selection()
 
       if (group)
 	{      
-	  std::list<boost::shared_ptr<EditorObj> >* objs = group->get_objs();
+	  std::vector<EditorObj*>* objs = group->get_objs();
 	  object_manager->editor_objs.erase(std::find(object_manager->editor_objs.begin(), 
 						      object_manager->editor_objs.end(),
 						      obj));
 	  selection->clear();
-
-	  for(std::list<boost::shared_ptr<EditorObj> >::iterator i = objs->begin();
+	  for(std::vector<EditorObj*>::iterator i = objs->begin();
 	      i != objs->end();
 	      i++)
 	    {
-	      object_manager->editor_objs.push_back(*i);
-	      selection->add((*i).get());
+	      EditorObj* obj = (*i)->duplicate ();
+	      if (obj)
+		{
+		  object_manager->add (obj);
+		  selection->add(obj);
+		}
+	      else
+		{
+		  std::cout << "EditorEvent::editor_convert_group_to_selection(): duplicate not implemented" << std::endl;
+		}
 	    }
 
-	  objs->clear();
+	  object_manager->erase(group);
 	}
       else
 	{
@@ -425,7 +432,7 @@ EditorEvent::editor_convert_selection_to_group()
     {
       EditorObjGroup* group = new EditorObjGroup();
       boost::shared_ptr<EditorObj> group_obj(group);
-      std::vector<std::list<boost::shared_ptr<EditorObj> >::iterator> to_erase;
+      std::vector<EditorObj*> to_erase;
 
       // We need to collect the objects out of the editor_objs list to keep the correct sorting
       for (ObjectManager::EditorObjIter j = object_manager->editor_objs.begin();
@@ -438,17 +445,16 @@ EditorEvent::editor_convert_selection_to_group()
 	    { 
 	      if ((*j).get() == *i)
 		{
-		  group->add (boost::shared_ptr<EditorObj>(*i));
-		  to_erase.push_back(std::find(object_manager->editor_objs.begin(), object_manager->editor_objs.end(),
-		                               boost::shared_ptr<EditorObj>(*i)));
+		  group->add (*i);
+		  to_erase.push_back(*i);
 		}
 	    }
 	}
 
-      for(std::vector<std::list<boost::shared_ptr<EditorObj> >::iterator>::iterator i = to_erase.begin();
+      for(std::vector<EditorObj*>::iterator i = to_erase.begin();
 	  i != to_erase.end();
 	  i++)
-	object_manager->editor_objs.erase(*i);
+	object_manager->erase(*i);
 
       object_manager->editor_objs.push_back(group_obj);
       selection->clear();
@@ -495,16 +501,8 @@ EditorEvent::editor_toggle_background_color()
 void
 EditorEvent::editor_delete_selected_objects()
 {
-  editor->save_tmp_level ();
-      
-  for (std::vector<EditorObj*>::const_iterator i = selection->get_objects().begin();
-       i != selection->get_objects().end();
-       i++)
-    { 
-      object_manager->editor_objs.erase(std::find(object_manager->editor_objs.begin(), object_manager->editor_objs.end(), 
-                                                  boost::shared_ptr<EditorObj>(*i)));
-    }
-  
+  editor->save_tmp_level ();     
+  object_manager->erase (selection->get_objects());
   selection->clear();
 }
 
@@ -627,18 +625,20 @@ EditorEvent::editor_duplicate_current_selection()
        i != selection->get_objects().end();
        i++)
     {
-      ObjectManager::EditorObjIter iter = std::find(object_manager->editor_objs.begin(), 
+      /*ObjectManager::EditorObjIter iter = std::find(object_manager->editor_objs.begin(), 
 						    object_manager->editor_objs.end(), 
-						    boost::shared_ptr<EditorObj>(*i));
+						    *i);*/
       
-      boost::shared_ptr<EditorObj> obj = (*i)->duplicate();
-
-      if (obj.get ())
+      EditorObj* obj = (*i)->duplicate();
+      if (obj)
 	{
+	  // Apply object offset (not really needed, but makes it
+	  // easier to see that the object got duplicated)
 	  obj->set_position_offset (CL_Vector(8, 8));
 
-	  object_manager->editor_objs.insert(iter, obj);
-	  new_objs.push_back(obj.get());
+	  // FIXME: We don't take the object position into account!
+	  object_manager->add (obj); // ObjectManager will take care of the deletion
+	  new_objs.push_back(obj);
 	}
     }
 
@@ -764,10 +764,10 @@ EditorEvent::editor_export_object_group_from_selection ()
 {
   std::cout << "EditorEvent:editor_export_object_group_from_selection ()" << std::endl;
   
-  std::list<boost::shared_ptr<EditorObj> > temp;
+  std::vector<EditorObj*> temp;
   for (std::vector<EditorObj*>::const_iterator it  = selection->get_objects().begin();
        it != selection->get_objects().end(); ++it)
-    temp.push_back(boost::shared_ptr<EditorObj>(*it));
+    temp.push_back(*it);
   
   EditorObjGroup group (temp);
   std::ofstream xml ("/tmp/metaobj.xml");
