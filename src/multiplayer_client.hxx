@@ -1,4 +1,4 @@
-//  $Id: multiplayer_client.hxx,v 1.1 2002/06/12 19:09:37 grumbel Exp $
+//  $Id: multiplayer_client.hxx,v 1.2 2002/06/13 10:49:06 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,26 +21,25 @@
 #define MULTIPLAYERCLIENT_HH
 
 #include "gui_obj.hxx"
-#include "boost/smart_ptr.hpp"
 
 class Server;
 
 class MultiplayerClient : public GuiObj
 {
 private:
-  std::vector<boost::shared_ptr<GuiObj> > gui_objs;
-  typedef std::vector<boost::shared_ptr<GuiObj> >::iterator GuiObjIter;
+  std::vector<GuiObj*> gui_objs;
+  typedef std::vector<GuiObj*>::iterator GuiObjIter;
   Server * server;
     
 public:
   MultiplayerClient (Server * s,
-		     boost::shared_ptr<GuiObj> child1,
-		     boost::shared_ptr<GuiObj> child2);
+		     GuiObj* child1,
+		     GuiObj* child2);
   MultiplayerClient (Server * s,
-		     boost::shared_ptr<GuiObj> child1,
-		     boost::shared_ptr<GuiObj> child2,
-		     boost::shared_ptr<GuiObj> child3,
-		     boost::shared_ptr<GuiObj> child4);
+		     GuiObj* child1,
+		     GuiObj* child2,
+		     GuiObj* child3,
+		     GuiObj* child4);
   ~MultiplayerClient ();
 
   void update (float delta);

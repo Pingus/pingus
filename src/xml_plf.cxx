@@ -1,4 +1,4 @@
-//  $Id: xml_plf.cxx,v 1.1 2002/06/12 19:09:38 grumbel Exp $
+//  $Id: xml_plf.cxx,v 1.2 2002/06/13 10:49:06 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -276,7 +276,6 @@ XMLPLF::parse_background(xmlNodePtr cur)
 {
   // The allocated objects are delete'd in the destructor
   //FIXME: Repair me backgrounds.push_back(BackgroundData::create (doc, cur));
-  //boost::shared_ptr<WorldObjData> data;
   char* type_cstr = (char*)xmlGetProp(cur, (xmlChar*)"type");
 
   if (type_cstr != 0)

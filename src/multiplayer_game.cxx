@@ -1,4 +1,4 @@
-//  $Id: multiplayer_game.cxx,v 1.1 2002/06/12 19:09:37 grumbel Exp $
+//  $Id: multiplayer_game.cxx,v 1.2 2002/06/13 10:49:06 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,8 +30,6 @@
 #include "multiplayer_game.hxx"
 #include "multiplayer_client_child.hxx"
 
-using boost::shared_ptr;
-
 MultiplayerGame::MultiplayerGame ()
 {
 }
@@ -46,7 +44,7 @@ MultiplayerGame::start ()
   std::cout << "Starting Multiplayer Game" << std::endl;
   try {
     PLF* plf = new XMLPLF (path_manager.complete("levels/multi2-grumbel.xml"));
-    shared_ptr<Server>     server (new TrueServer (plf));
+    std::auto_ptr<Server>     server (new TrueServer (plf));
     std::auto_ptr<Controller> controller1;
     std::auto_ptr<Controller> controller2;
     std::auto_ptr<Controller> controller3;
@@ -69,54 +67,62 @@ MultiplayerGame::start ()
 
     controller4 = std::auto_ptr<Controller>(new MouseController (3));
 
-    shared_ptr<MultiplayerClient> client;
+    std::auto_ptr<MultiplayerClient> client;
     int player = 2;
     if (player == 2)
       {
-	client = shared_ptr<MultiplayerClient> 
-	  (new MultiplayerClient 
-	   (server.get (),
-	    shared_ptr<GuiObj>(new MultiplayerClientChild (controller1.get(),
-							   server.get (),
-							   CL_Rect (0,0, 
-								    CL_Display::get_width ()/2-2,
-								    CL_Display::get_height ()))),
-	    shared_ptr<GuiObj>(new MultiplayerClientChild (controller2.get(),
-							   server.get (),
-							   CL_Rect (CL_Display::get_width ()/2, 0,
-								    CL_Display::get_width (), 
-								    CL_Display::get_height ())))));
+	client = new MultiplayerClient (server.get (),
+                                        new MultiplayerClientChild (controller1.get(),
+				                                    server.get (),
+					                            CL_Rect (0,0, 
+				                                             CL_Display::get_width ()/2-2,
+                                                                             CL_Display::get_height ()
+                                                                            )
+                                                                   ),
+                                        new MultiplayerClientChild (controller2.get(),
+					                            server.get (),
+                                                                    CL_Rect (CL_Display::get_width ()/2, 0,
+                                                                             CL_Display::get_width (), 
+                                                                             CL_Display::get_height ()
+                                                                            )
+                                                                   )
+                                       );
       }
     else
       {
-	client = shared_ptr<MultiplayerClient> 
-	  (new MultiplayerClient 
-	   (server.get (),
-	    shared_ptr<GuiObj>(new MultiplayerClientChild (controller1.get(),
-							   server.get (),
-							   CL_Rect (0,
-								    0, 
-								    CL_Display::get_width ()/2 - 4,
-								    CL_Display::get_height ()/2 - 4))),
-	    shared_ptr<GuiObj>(new MultiplayerClientChild (controller2.get(),
-							   server.get (),
-							   CL_Rect (CL_Display::get_width ()/2 + 4,
-								    0,
-								    CL_Display::get_width (), 
-								    CL_Display::get_height ()/2 - 4))),
-	    shared_ptr<GuiObj>(new MultiplayerClientChild (controller3.get(),
-							   server.get (),
-							   CL_Rect (0,
-								    CL_Display::get_height ()/2 + 4,
-								    CL_Display::get_width ()/2 - 4, 
-								    CL_Display::get_height ()))),
-	    shared_ptr<GuiObj>(new MultiplayerClientChild (controller4.get(),
-							   server.get (),
-							   CL_Rect (CL_Display::get_width ()/2 + 4,
-								    CL_Display::get_height ()/2 + 4,
-								    CL_Display::get_width (), 
-								    CL_Display::get_height ())))
-	    ));
+	client = new MultiplayerClient (server.get (),
+                                        new MultiplayerClientChild (controller1.get(),
+					                            server.get (),
+					                            CL_Rect (0,
+					                                     0,
+						                             CL_Display::get_width  ()/2 - 4,
+						                             CL_Display::get_height ()/2 - 4)
+						                            ),
+                                 	new MultiplayerClientChild (controller2.get(),
+					                            server.get (),
+					                            CL_Rect (CL_Display::get_width ()/2 + 4,
+						                             0,
+						                             CL_Display::get_width (), 
+						                             CL_Display::get_height ()/2 - 4
+						                            )
+						                   ),
+                                        new MultiplayerClientChild (controller3.get(),
+					                            server.get (),
+					                            CL_Rect (0,
+						                             CL_Display::get_height ()/2 + 4,
+						                             CL_Display::get_width ()/2 - 4,
+						                             CL_Display::get_height ()
+						                            )
+						                   ),
+	                                new MultiplayerClientChild (controller4.get(),
+					                            server.get (),
+					                            CL_Rect (CL_Display::get_width ()/2 + 4,
+					                                     CL_Display::get_height ()/2 + 4,
+					                                     CL_Display::get_width (),
+					                                     CL_Display::get_height ()
+					                                    )
+					                           )
+	                               );
       }
 
     DeltaManager delta_manager;

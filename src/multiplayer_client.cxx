@@ -1,4 +1,4 @@
-//  $Id: multiplayer_client.cxx,v 1.1 2002/06/12 19:09:37 grumbel Exp $
+//  $Id: multiplayer_client.cxx,v 1.2 2002/06/13 10:49:06 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,31 +21,28 @@
 #include "smallmap_image.hxx"
 #include "multiplayer_client.hxx"
 
-using boost::shared_ptr;
-
 MultiplayerClient::MultiplayerClient (Server * s,
-				      boost::shared_ptr<GuiObj> child1,
-				      boost::shared_ptr<GuiObj> child2,
-				      boost::shared_ptr<GuiObj> child3,
-				      boost::shared_ptr<GuiObj> child4)
-  : server (s)
+				      GuiObj* child1,
+				      GuiObj* child2,
+				      GuiObj* child3,
+				      GuiObj* child4)
+  : gui_objs(5), server (s)
 {
-  gui_objs.push_back (child1);
-  gui_objs.push_back (child2);
-  gui_objs.push_back (child3);
-  gui_objs.push_back (child4);
-  gui_objs.push_back (shared_ptr<GuiObj> (new SmallMapImage (s, CL_Vector (CL_Display::get_width ()/2 - 100,
-									   CL_Display::get_height ()/2 - 75), 
-							     200, 150)));
+  gui_objs[0] = child1;
+  gui_objs[1] = child2;
+  gui_objs[2] = child3;
+  gui_objs[3] = child4;
+  gui_objs[4] = new SmallMapImage (s, CL_Vector (CL_Display::get_width ()/2 - 100,
+ 				   CL_Display::get_height ()/2 - 75), 200, 150);
 }
 
 MultiplayerClient::MultiplayerClient (Server * s,
-				      boost::shared_ptr<GuiObj> child1,
-				      boost::shared_ptr<GuiObj> child2)
-  : server (s)
+				      GuiObj* child1,
+				      GuiObj* child2)
+  : gui_objs(2), server (s)
 {
-  gui_objs.push_back (child1);
-  gui_objs.push_back (child2);
+  gui_objs[0] = child1;
+  gui_objs[1] = child2;
 }
 
 MultiplayerClient::~MultiplayerClient ()
