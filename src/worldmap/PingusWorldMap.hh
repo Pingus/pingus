@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMap.hh,v 1.4 2000/09/21 15:23:57 grumbel Exp $
+//  $Id: PingusWorldMap.hh,v 1.5 2000/09/25 16:29:43 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,6 +33,8 @@ private:
   CL_Surface* background;
   CL_Surface* green_dot;
   CL_Surface* red_dot;
+  CL_Surface* dot_border;
+
   Graph<PingusWorldMapNode>* graph;
   PingusWorldMapGraph graph_data;
 
@@ -59,6 +61,9 @@ public:
   /** Let the woldmap do some stuff, like animating smoke, playing
       sounds or reacting on special events */
   virtual void let_move ();
+
+  /** Returns a pointer to the node under the given coordinates */
+  PingusWorldMapNode* get_node (int x, int y);
 };
 
 #endif

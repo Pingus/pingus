@@ -1,4 +1,4 @@
-//  $Id: EditorWorldObj.cc,v 1.1 2000/09/23 18:19:00 grumbel Exp $
+//  $Id: EditorWorldObj.cc,v 1.2 2000/09/25 16:29:43 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,7 +17,19 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "../PingusResource.hh"
 #include "EditorWorldObj.hh"
+
+EditorWorldObj::EditorWorldObj ()
+{
+  surf = PingusResource::load_surface ("Game/404", "game");
+}
+
+EditorWorldObj* 
+EditorWorldObj::create (WorldObjData* data)
+{
+  return new EditorWorldObj ();
+}
 
 EditorObj* 
 EditorWorldObj::duplicate()

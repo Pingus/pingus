@@ -1,4 +1,4 @@
-//  $Id: System.cc,v 1.17 2000/08/28 00:34:39 grumbel Exp $
+//  $Id: System.cc,v 1.18 2000/09/25 16:29:43 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -237,6 +237,8 @@ System::get_email()
       char* email = getenv("EMAIL");
 
       if (email)
+	// FIXME: $EMAIL contains the complete from header, not only
+	// the email address
 	return std::string(email);
       else
 	return "";

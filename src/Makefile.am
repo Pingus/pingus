@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.38 2000/09/23 18:19:00 grumbel Exp $
+#  $Id: Makefile.am,v 1.39 2000/09/25 16:29:43 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -153,7 +153,8 @@ pingus_SOURCES = \
                  XMLhelper.cc         XMLhelper.hh \
                  PLTXML.cc            PLTXML.hh   \
                  WeatherData.hh   \
-                 Teleporter.cc Teleporter.hh
+                 Teleporter.cc Teleporter.hh \
+                 TargetProvider.hh    TargetProvider.cc
 
 #                 PinguRandomMap.cc    PinguRandomMap.hh    
 

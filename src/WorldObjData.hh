@@ -1,4 +1,4 @@
-//  $Id: WorldObjData.hh,v 1.1 2000/09/23 18:19:46 grumbel Exp $
+//  $Id: WorldObjData.hh,v 1.2 2000/09/25 16:29:43 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,6 +36,8 @@ public:
   virtual void write_xml(ofstream* xml) =0;
   ///
   static WorldObjData* create(xmlDocPtr doc, xmlNodePtr cur);
+  ///
+  WorldObjData* create (WorldObjData*);
 };
 
 #endif

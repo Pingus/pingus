@@ -1,4 +1,4 @@
-//  $Id: XMLPLF.cc,v 1.13 2000/09/24 00:22:06 grumbel Exp $
+//  $Id: XMLPLF.cc,v 1.14 2000/09/25 16:29:43 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -267,6 +267,12 @@ XMLPLF::parse_liquid(xmlNodePtr cur)
 
   while (cur != NULL)
     {
+      if (xmlIsBlankNode(cur)) 
+	{
+	  cur = cur->next;
+	  continue;
+	}
+
       if (strcmp((char*)cur->name, "position") == 0)
 	liquid.pos = XMLhelper::parse_position(doc, cur);
       else if (strcmp((char*)cur->name, "surface") == 0)
@@ -308,16 +314,26 @@ XMLPLF::parse_actions(xmlNodePtr cur)
       ActionData button;
       button.name = (char*)cur->name;
 
-      char* number = (char*)xmlNodeListGetString(doc, cur->children, 1);
-      if (number) {
-	std::cout << "xmlNoder..Result: " << number << std::endl;
-	button.number_of = StringConverter::to_int(number);
-      } else {
-	std::cout << "XMLPLF:parse_actions: no action number given" << std::endl;
-      }
+      char* count = (char*)xmlGetProp(cur, (xmlChar*)"count");
+      if (count)
+	{
+	  button.number_of = StringConverter::to_int(count);
+	  free (count);
+	}
+      else
+	{
+	  std::cout << "XMLPLF::parse_actions (): No 'count' given, fallback to the old format" << std::endl;
+	  char* number = (char*)xmlNodeListGetString(doc, cur->children, 1);
+	  if (number) {
+	    //std::cout << "xmlNoder..Result: " << number << std::endl;
+	    button.number_of = StringConverter::to_int(number);
+	  } else {
+	    std::cout << "XMLPLF:parse_actions: no action number given" << std::endl;
+	  }
+	  free(number);
+	}
       actions.push_back(button);
-
-      free(number);
+	  
       cur = cur->next;
     }      
 }

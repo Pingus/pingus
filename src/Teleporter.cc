@@ -1,4 +1,4 @@
-//  $Id: Teleporter.cc,v 1.2 2000/09/24 00:22:06 grumbel Exp $
+//  $Id: Teleporter.cc,v 1.3 2000/09/25 16:29:43 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,12 @@
 #include "PinguHolder.hh"
 #include "XMLhelper.hh"
 #include "Teleporter.hh"
+
+TeleporterData::TeleporterData (const TeleporterData& data)
+{
+  pos = data.pos;
+  target_pos = data.target_pos;
+}
 
 void 
 TeleporterData::write_xml(ofstream* xml)
@@ -94,14 +100,14 @@ Teleporter::Teleporter (WorldObjData* data)
 void 
 Teleporter::draw_offset (int x_of, int y_of, float s = 1.0)
 {
-  std::cout << "Teleporter::draw_offset ()" << std::endl;
+  //std::cout << "Teleporter::draw_offset ()" << std::endl;
   sur->put_screen (pos.x_pos + x_of, pos.y_pos + y_of);
 }
 
 void 
 Teleporter::let_move ()
 {
-  std::cout << "Teleporter::let_move ()" << std::endl;  
+  //std::cout << "Teleporter::let_move ()" << std::endl;  
 
   PinguHolder* holder = world->get_pingu_p();
 

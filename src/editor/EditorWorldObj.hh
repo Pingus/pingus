@@ -1,4 +1,4 @@
-//  $Id: EditorWorldObj.hh,v 1.1 2000/09/23 18:19:00 grumbel Exp $
+//  $Id: EditorWorldObj.hh,v 1.2 2000/09/25 16:29:43 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,23 +24,24 @@
 #include "PLFObj.hh"
 
 ///
-class EditorWorldObj : public PLFObj,
-		       public WorldObjData
+class EditorWorldObj : public PLFObj
 {
 private:
 public:
   ///
-  EditorWorldObj () {}
+  EditorWorldObj ();
   ///
   virtual ~EditorWorldObj () {}
   ///
-  EditorObj* duplicate();
+  static EditorWorldObj* create (WorldObjData*);
   ///
-  void save(std::ofstream* plf, std::ofstream* psm) {}
+  virtual EditorObj* duplicate();
   ///
-  void save_xml(std::ofstream* xml);
+  virtual void save(std::ofstream* plf, std::ofstream* psm) {}
   ///
-  std::string obj_type() { return "Trap"; };
+  virtual void save_xml(std::ofstream* xml);
+  ///
+  virtual std::string obj_type() { return "WorldObj"; };
 };
 
 #endif

@@ -1,4 +1,4 @@
-//  $Id: WorldObjData.cc,v 1.2 2000/09/24 00:22:06 grumbel Exp $
+//  $Id: WorldObjData.cc,v 1.3 2000/09/25 16:29:43 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,6 +43,20 @@ WorldObjData::create(xmlDocPtr doc, xmlNodePtr cur)
 	}
     }
   return data;
+}
+
+WorldObjData* 
+WorldObjData::create (WorldObjData* data)
+{
+  if (dynamic_cast<TeleporterData*>(data))
+    {
+      return new TeleporterData (*dynamic_cast<TeleporterData*>(data));
+    }
+  else
+    {
+      std::cout << "Unhandled WorldObjData" << std::endl;
+      return 0;
+    }
 }
 
 /* EOF */

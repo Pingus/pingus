@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapGraph.hh,v 1.2 2000/09/21 15:23:57 grumbel Exp $
+//  $Id: PingusWorldMapGraph.hh,v 1.3 2000/09/25 16:29:43 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,6 +34,7 @@ public:
   Position pos;
   list<int> links;
   int id;
+  bool accessible;
 };
 
 class PingusWorldMapGraph

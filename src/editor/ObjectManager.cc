@@ -1,4 +1,4 @@
-//  $Id: ObjectManager.cc,v 1.31 2000/09/07 09:45:39 grumbel Exp $
+//  $Id: ObjectManager.cc,v 1.32 2000/09/25 16:29:43 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,6 +28,8 @@
 #include "../PingusError.hh"
 #include "../XMLhelper.hh"
 #include "../backgrounds/SurfaceBackgroundData.hh"
+#include "../WorldObjData.hh"
+#include "EditorWorldObj.hh"
 #include "StartPos.hh"
 #include "ObjectManager.hh"
 
@@ -148,6 +150,7 @@ ObjectManager::load_level (string filename)
   vector<LiquidData>   temp_liquid   = plf->get_liquids();
   vector<TrapData>     temp_traps    = plf->get_traps();
   vector<WeatherData>  temp_weather  = plf->get_weather();
+  vector<WorldObjData*> temp_worldobj = plf->get_worldobjs_data();
 
   for(vector<SurfaceData>::iterator i = temp_surfaces.begin(); i != temp_surfaces.end(); ++i)
     editor_objs.push_back(EditorObj::create(*i));
@@ -169,6 +172,9 @@ ObjectManager::load_level (string filename)
 
   for(vector<WeatherData>::iterator i = temp_weather.begin(); i != temp_weather.end(); ++i)
     editor_objs.push_back(EditorObj::create(*i));
+
+  for(vector<WorldObjData*>::iterator i = temp_worldobj.begin(); i != temp_worldobj.end(); ++i)
+    editor_objs.push_back (EditorWorldObj::create (*i));
 
 #ifndef WIN32 // FIXME: Compiler error in Windows
   editor_objs.sort(EditorObj_less());
@@ -256,7 +262,7 @@ ObjectManager::save_level (string filename)
   // FIXME: we need some error checking
   
   plf_out << "/* This level was created with the PLE\n"
-	  << " * $Id: ObjectManager.cc,v 1.31 2000/09/07 09:45:39 grumbel Exp $\n"
+	  << " * $Id: ObjectManager.cc,v 1.32 2000/09/25 16:29:43 grumbel Exp $\n"
 	  << " */"
 	  << endl;
   
@@ -393,7 +399,7 @@ ObjectManager::save_level_xml (std::string filename)
   // Printing actions to file
   xml << "  <action-list>\n";
   for (vector<ActionData>::iterator i = actions.begin(); i != actions.end(); ++i) {
-    xml << "    <" << (*i).name << ">" << (*i).number_of << "</" << (*i).name << ">" << endl;
+    xml << "    <" << (*i).name << " count=\"" << (*i).number_of << "\"/>" << endl;
   }
   xml << "  </action-list>\n" << std::endl;
 

@@ -1,4 +1,4 @@
-//  $Id: Teleporter.hh,v 1.2 2000/09/24 00:22:06 grumbel Exp $
+//  $Id: Teleporter.hh,v 1.3 2000/09/25 16:29:43 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,6 +32,7 @@ public:
   
 public:
   TeleporterData () {}
+  TeleporterData (const TeleporterData& data);
   virtual ~TeleporterData () {}
 
   /** Writte the content of this object formated as xml to the given
