@@ -1,4 +1,4 @@
-//  $Id: PingusLevelResult.hh,v 1.3 2000/02/11 16:58:26 grumbel Exp $
+//  $Id: PingusLevelResult.hh,v 1.4 2000/02/16 03:06:25 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,7 @@
 #ifndef PINGUSLEVELRESULT_HH
 #define PINGUSLEVELRESULT_HH
 
-#include "Result.hh"
+#include "World.hh"
 
 class PingusLevelResult
 {
@@ -28,10 +28,9 @@ private:
   CL_Surface* background;
   CL_Font*    title;
   CL_Font*    font;
-  Result      result;
-
+  World*      world;
 public:
-  PingusLevelResult(Result);
+  PingusLevelResult(World*);
 
   void   draw(void);
   std::string get_message(int);

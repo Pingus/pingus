@@ -1,4 +1,4 @@
-//  $Id: PingusLevelResult.cc,v 1.5 2000/02/15 12:30:45 grumbel Exp $
+//  $Id: PingusLevelResult.cc,v 1.6 2000/02/16 03:06:24 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,12 +24,13 @@
 #include "PingusResource.hh"
 #include "PingusLevelResult.hh"
 
-PingusLevelResult::PingusLevelResult(Result r)
+PingusLevelResult::PingusLevelResult(World* w)
 {
   font = CL_Font::load("Fonts/pingus_small", PingusResource::get("fonts.dat"));
   title = CL_Font::load("Fonts/pingus", PingusResource::get("fonts.dat"));
   background = CL_Surface::load("Textures/stone", PingusResource::get("textures.dat"));
-  result = r;
+  //result = r;
+  world = w;
 }
 
 void
@@ -42,26 +43,32 @@ PingusLevelResult::draw(void)
       background->put_screen(x, y);
 
   CL_Display::fill_rect(0, 0, CL_Display::get_width(), CL_Display::get_height(), 0.0, 0.0, 0.0, 0.5);
-
+  
   title->print_center(CL_Display::get_width() / 2, 50, "Results:");
-
   font->print_center(CL_Display::get_width() / 2, 100,
-		     get_message(100 * result.saved / result.total).c_str());
+		     get_message(100 * world->get_saved_pingus() / world->get_allowed_pingus()).c_str());
 
-  sprintf(str,  "Pingus saved:   %3d/%3d", result.saved, result.total);
+  sprintf(str,  "Pingus saved:   %3d/%3d", 
+	  world->get_saved_pingus(),
+	  world->get_allowed_pingus());
   font->print_center(CL_Display::get_width() / 2, 140, str);
 
-  sprintf(str,  "Pingus killed:  %3d/%3d", result.killed, result.total);
+  sprintf(str,  "Pingus killed:  %3d/%3d", 
+	  world->get_allowed_pingus() - world->get_saved_pingus(),
+	  world->get_allowed_pingus());
   font->print_center(CL_Display::get_width() / 2, 160, str);
 
+  /*
   sprintf(str,  "Required Time: %2d:%2d:%2d", 
 	  result.time / (60 * game_speed),
 	  result.time / game_speed % 60, 
 	  (result.time * 100) / game_speed % 100);
-  font->print_center(CL_Display::get_width() / 2, 180, str);
+  */
+
+  //font->print_center(CL_Display::get_width() / 2, 180, str);
 
   font->print_center(CL_Display::get_width()/2, CL_Display::get_height() - 80,
-		     "Press button to continue...");  
+		     "Press mouse button to continue...");  
   CL_Display::flip_display();
 
   while(!CL_Mouse::left_pressed())

@@ -8,7 +8,7 @@ global {
 ground {
 	maptype = "SPOT";
 	data    = (file)"level7.psm";
-	width = 1400;
+	width = 1408;
 	height = 480;
 //	colmap  = (resource)"ColMaps/level1";
 	colmap  = (auto);

@@ -1,4 +1,4 @@
-//  $Id: OptionMenu.cc,v 1.5 2000/02/15 12:33:04 grumbel Exp $
+//  $Id: OptionMenu.cc,v 1.6 2000/02/16 03:06:23 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -129,7 +129,6 @@ OptionEntry::mouse_over()
 bool
 OptionMenu::Event::on_button_press(CL_InputDevice *device, const CL_Key &key)
 {
-  if (verbose) std::cout << "Got putten press" << std::endl;
   return true;
 }
 
@@ -153,7 +152,7 @@ OptionMenu::Event::on_button_release(CL_InputDevice *device, const CL_Key &key)
       switch(key.id)
 	{
 	case 0:
-	  if (verbose)std::cout << "Button 0 pressed" << std::endl;
+	  if (verbose) std::cout << "Button 0 pressed" << std::endl;
 	  break;
 	case 1:
 	  option_menu->quit = true;
@@ -293,10 +292,8 @@ OptionMenu::display()
 
   quit = false;
 
-  std::cout << "Registering" << endl;
   CL_Input::chain_button_press.push_back(event);
   CL_Input::chain_button_release.push_back(event);
-  std::cout << "Registering don" << endl;
 
   draw();
 

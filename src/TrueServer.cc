@@ -1,4 +1,4 @@
-//  $Id: TrueServer.cc,v 1.3 2000/02/11 16:58:26 grumbel Exp $
+//  $Id: TrueServer.cc,v 1.4 2000/02/16 03:06:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,7 +23,7 @@
 
 #include "TrueServer.hh"
 
-TrueServer::TrueServer(PLF* level_data, Result& r)
+TrueServer::TrueServer(PLF* level_data)
 {
   local_game_speed = game_speed;
   world = 0;

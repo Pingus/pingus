@@ -1,4 +1,4 @@
-//  $Id: World.hh,v 1.3 2000/02/15 13:09:50 grumbel Exp $
+//  $Id: World.hh,v 1.4 2000/02/16 03:06:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,7 +36,6 @@
 #include "Liquid.hh"
 #include "Trap.hh"
 #include "traps/traps.hh"
-#include "Result.hh"
 #include "particles/ParticleHolder.hh"
 
 // World holds all object of the pingu world (pingus, traps, exits,
@@ -53,14 +52,11 @@ private:
 
   unsigned int released_pingus;
   unsigned int allowed_pingus;
-  unsigned int pingus_out;
-  unsigned int saved_pingus;
+
   unsigned int number_to_save;
 
   bool exit_world;
   int  exit_time;  
-
-  Result result;
 
   vector<WorldObj*> world_obj;
   vector<Entrance*> entrance;
@@ -88,23 +84,17 @@ public:
   void    let_move (void);
   void    armageddon (void);
   int     get_height (void);
+  int     get_width(void);
   bool    is_finished(void);
   int     get_time (void);
 
   unsigned int get_released_pingus() { return released_pingus; }
   unsigned int get_allowed_pingus() { return allowed_pingus; }
-  unsigned int get_pingus_out() { return pingus_out; } 
-  unsigned int get_saved_pingus() { return saved_pingus; }
+  unsigned int get_pingus_out() { return pingus.size(); } 
+  unsigned int get_saved_pingus() { return pingus.get_saved(); }
   unsigned int get_number_to_save() { return number_to_save; }
 
-  int   get_width(void);
-  void  write_result(void);
-  void  print_status(void);
   PinguHolder* get_pingu_p(void);
-  Result get_result();
-
-  // Static Functions
-  static void load_data();
 };
 
 #endif

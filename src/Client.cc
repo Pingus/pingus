@@ -1,4 +1,4 @@
-//  $Id: Client.cc,v 1.4 2000/02/11 21:26:37 grumbel Exp $
+//  $Id: Client.cc,v 1.5 2000/02/16 03:06:22 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -56,7 +56,7 @@ Client::start(std::string filename, PingusGameMode m)
 
   std::cout << "Displaying results..." << std::flush;
   
-  PingusLevelResult r(server->get_world()->get_result());
+  PingusLevelResult r(server->get_world());
   r.draw();
   
   std::cout << "finished" << std::endl;

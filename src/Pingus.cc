@@ -1,4 +1,4 @@
-//   $Id: Pingus.cc,v 1.7 2000/02/15 12:33:04 grumbel Exp $
+//   $Id: Pingus.cc,v 1.8 2000/02/16 03:06:24 grumbel Exp $
 //    ___
 //   |  _\ A free Lemmings clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -112,7 +112,7 @@ PingusMain::read_rc_file(void)
   if (!homedir) {
     rcfile = ".pingus/options";
   } else {
-    rcfile = string(homedir) + "/.pingus/options";
+    rcfile = string(homedir) + "/.pingus/config";
   }
 
   ifstream in(rcfile.c_str());

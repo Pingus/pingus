@@ -1,4 +1,4 @@
-//  $Id: Theme.cc,v 1.4 2000/02/15 12:31:46 grumbel Exp $
+//  $Id: Theme.cc,v 1.5 2000/02/16 03:06:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -68,10 +68,12 @@ Theme::load(std::string filename)
   try {
     background = CL_Surface::load(plt.get_background().res_name.c_str(), PingusResource::get(plt.get_background().filename));
   }
-  catch (CL_Error err) {
-    std::cout << err.message << std::endl;
-    background = 0;
-  }
+  catch (CL_Error err) 
+    {
+      std::cout << "Theme:" << filename  << ":" << err.message << std::endl;
+      std::cout << "Theme: Ignoring missing resource, disable background." << std::endl;
+      background = 0;
+    }
   load_status(filename);
 }
 

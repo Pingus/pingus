@@ -1,4 +1,4 @@
-//  $Id: basher.cc,v 1.2 2000/02/09 21:43:42 grumbel Exp $
+//  $Id: basher.cc,v 1.3 2000/02/16 03:06:30 grumbel Exp $
 //
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -61,12 +61,12 @@ Basher::let_move()
       pingu->map->remove(bash_radius->get_provider(), pingu->x_pos - 16, pingu->y_pos - 32);
       pingu->x_pos += pingu->direction;
     }
-
+  /* Particles are ugly and slow, so this is disabled
   pingu->particle->add_particle(new GroundParticle(pingu->x_pos,
 						   pingu->y_pos - 16,
 						   frand() * -4 * pingu->direction,
 						   frand() * -3));
-
+  */
    i=2;
    while( is_finished == false && i <= 6 ) {
      i++;

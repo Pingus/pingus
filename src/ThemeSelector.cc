@@ -1,4 +1,4 @@
-//  $Id: ThemeSelector.cc,v 1.4 2000/02/15 12:31:46 grumbel Exp $
+//  $Id: ThemeSelector.cc,v 1.5 2000/02/16 03:06:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -75,8 +75,6 @@ ThemeSelector::Event::on_button_press(CL_InputDevice *device, const CL_Key &key)
 {
   if (!enabled) return true;
 
-  cout << "Event triggert" << endl;
-  
   if (device == CL_Input::keyboards[0])
     {
       switch (key.id)
@@ -218,7 +216,6 @@ ThemeSelector::select()
 void
 ThemeSelector::draw()
 {
-  cout << "Drawing ThemeSelector" << endl;
   CL_Display::fill_rect(0,0,640,480,0.5,0.0,0.0,0.5);
 
   (*current_theme)->draw_title();

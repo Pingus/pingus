@@ -1,4 +1,4 @@
-//  $Id: ActionHolder.cc,v 1.5 2000/02/15 13:09:50 grumbel Exp $
+//  $Id: ActionHolder.cc,v 1.6 2000/02/16 03:06:21 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -59,7 +59,7 @@ ActionHolder::~ActionHolder()
     {
       for (std::vector<PinguAction*>::iterator j = action[(*i)].action.begin(); j != action[(*i)].action.end(); j++)
 	{
-	  std::cout << "ActionHolder: Deleting action from: " << *i << std::endl;
+	  if (verbose) std::cout << "ActionHolder: Deleting action from: " << *i << std::endl;
 	  delete *j;
 	}
     }
@@ -197,7 +197,8 @@ ActionHolder::init_uactions()
 void
 ActionHolder::clear_uactions()
 {
-  std::cout << "ActionHolder: Clearing Uactions" << std::endl;
+  if (verbose) std::cout << "ActionHolder: Clearing Uactions" << std::endl;
+
   for(std::vector<PinguAction*>::iterator act = uactions.begin(); act != uactions.end(); act++)
     {
       delete *act;

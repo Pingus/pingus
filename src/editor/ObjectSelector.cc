@@ -1,4 +1,4 @@
-//  $Id: ObjectSelector.cc,v 1.6 2000/02/15 13:09:51 grumbel Exp $
+//  $Id: ObjectSelector.cc,v 1.7 2000/02/16 03:06:33 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,7 +29,7 @@
 
 ObjectSelector::ObjectSelector()
 {
-  last_object = "GroundPieces/Snow/snowman";
+  last_object = "GroundPieces/";
   font = CL_Font::load("Fonts/courier_small",PingusResource::get("fonts.dat"));
 }
 
@@ -318,6 +318,12 @@ ObjectSelector::read_string(std::string description, std::string def_str)
 /*
 
 $Log: ObjectSelector.cc,v $
+Revision 1.7  2000/02/16 03:06:33  grumbel
+Disabled smoke particles
+Fixed saved Pingus counter
+Fixed time handling
+Changed start object in the editor
+
 Revision 1.6  2000/02/15 13:09:51  grumbel
 Misc cleanups, changes some messages to only appear when verbose > 0
 

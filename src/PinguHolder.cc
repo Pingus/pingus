@@ -1,4 +1,4 @@
-//  $Id: PinguHolder.cc,v 1.3 2000/02/15 13:09:50 grumbel Exp $
+//  $Id: PinguHolder.cc,v 1.4 2000/02/16 03:06:24 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,7 @@ PinguHolder::PinguHolder()
   id_count = 0;
   z_pos = 10;
   total_size_count = 0;
+  saved_pingus = 0;
 }
 
 PinguHolder::~PinguHolder()
@@ -53,17 +54,9 @@ PinguHolder::push_back(Pingu* pingu)
 void
 PinguHolder::draw_offset(int x_of, int y_of, float s)
 {
-  // No optimisation here for s==1.0, because this is done in Pingu
-  // itself.
   for(PinguIter pingu = this->begin(); pingu != this->end(); pingu++)
     {
-      if ((*pingu)->get_status() != dead
-	  && (*pingu)->get_status() != exited) 
-	{
-	  if (!(*pingu)->get_action())
-	    (*pingu)->draw_offset(x_of, y_of, s);
-	}
-      else 
+      if ((*pingu)->get_status() == dead)
 	{
 	  // Removing the dead pingu and setting the iterator back to
 	  // the correct possition, no memory hole since pingus will
@@ -71,14 +64,23 @@ PinguHolder::draw_offset(int x_of, int y_of, float s)
 	  pingu = this->erase(pingu);
 	  pingu--;
 	}
+      else if ((*pingu)->get_status() == exited) 
+	{
+	  saved_pingus++;
+	  pingu = this->erase(pingu);
+	  pingu--;	  
+	}
+      else 
+	{
+	  if (!(*pingu)->get_action())
+	    (*pingu)->draw_offset(x_of, y_of, s);
+	}
     }
 
   for(PinguIter pingu = this->begin(); pingu != this->end(); pingu++)
     {
       if ((*pingu)->get_action()) 
-	{
-	  (*pingu)->draw_offset(x_of, y_of, s);
-	}
+	(*pingu)->draw_offset(x_of, y_of, s);
     }
 }
 

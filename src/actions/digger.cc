@@ -1,4 +1,4 @@
-//  $Id: digger.cc,v 1.3 2000/02/11 16:58:27 grumbel Exp $
+//  $Id: digger.cc,v 1.4 2000/02/16 03:06:31 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -62,12 +62,13 @@ Digger::let_move()
       
     ++pingu->y_pos;
 
-    if (rand() % 2 == 0) {
+    /* Particles are ugly and slow, so this is disabled
+       if (rand() % 2 == 0) {
       pingu->particle->add_particle(new GroundParticle(pingu->x_pos,
 						       pingu->y_pos,
 						       frand() * 2 - 1,
 						       frand() * - 1.5));
-    }
+						       }*/
   }
 
   if (rel_getpixel(0, -1) == ColMap::NOTHING

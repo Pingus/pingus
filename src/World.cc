@@ -1,4 +1,4 @@
-//  $Id: World.cc,v 1.4 2000/02/15 13:09:50 grumbel Exp $
+//  $Id: World.cc,v 1.5 2000/02/16 03:06:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -57,7 +57,6 @@ struct WorldObj_less : public binary_function<WorldObj*, WorldObj*, bool>
 World::World()
 {
   released_pingus = 0;
-  saved_pingus = 0;
 
   exit_world = false;
 }
@@ -108,9 +107,9 @@ void
 World::let_move()
 {
   if (!exit_world && (allowed_pingus == released_pingus || do_armageddon)
-      && pingus_out == 0) 
+      && pingus.size() == 0) 
     {
-      std::cout << "World: world finished, going down in the next seconds..." << std::endl;
+      if (verbose) std::cout << "World: world finished, going down in the next seconds..." << std::endl;
       exit_world = true;
       exit_time = GameTime::get_time() + 75;
     }
@@ -122,7 +121,7 @@ World::let_move()
     }
   
   // Create new pingus, if enough time is passed
-  if (!do_armageddon && (int)pingus.total_size() < allowed_pingus)
+  if (!do_armageddon && (unsigned int)pingus.total_size() < allowed_pingus)
     {
       for(std::vector<Entrance*>::iterator i = entrance.begin(); i != entrance.end(); i++) 
 	{
@@ -138,21 +137,11 @@ World::let_move()
   // Let the pingus catch each other and
   // Let the traps catch the pingus and
   // Let the exit catch the pingus
-  pingus_out = pingus.size();
-  saved_pingus = 0;
 
   for(PinguIter pingu = pingus.begin(); pingu != pingus.end(); ++pingu)
     {
       (*pingu)->let_move();
-      
-      if ((*pingu)->get_status() == dead
-	  || (*pingu)->get_status() == exited) {
-	if ((*pingu)->get_status() == exited)
-	  ++saved_pingus;
-	--pingus_out;
-	continue;
-      }
-    
+
       if ((*pingu)->need_catch()) {
 	for(PinguIter i = pingus.begin(); i != pingus.end(); i++) {
 	  (*pingu)->catch_pingu(*i);
@@ -188,7 +177,6 @@ World::init(PLF* plf_data)
   allowed_pingus = plf->get_pingus();
   number_to_save = plf->get_number_to_save();
   released_pingus = 0;
-  pingus_out = 0;
 
   exit_time = plf->get_time();
   
@@ -210,32 +198,20 @@ World::init_map()
     {
     case SPOT:
       map = new PingusSpotMap(plf);
+      if (verbose) std::cout << "World: Loaded pingu map" << std::endl;
       break;
     case BMP:
     case RANDOM:
     default:
-      throw PingusError("Error in PLF file: Undef or unsupported Maptype");
+      throw PingusError("World: Error in PLF file: Undef or unsupported Maptype");
       break;
     }
   
-  //  if (plf->get_mapfile().type == ResDescriptor::AUTO) 
-  //    {
-      if (verbose) std::cout << "Using AutoColMap" << std::endl;
-      colmap = map->get_colmap();
+  if (verbose) std::cout << "World: Using AutoColMap" << std::endl;
+  
+  colmap = map->get_colmap();
 
-      /*    } 
-       else
-    {
-      if (verbose) std::cout << "Using StaticColMap" << std::endl;
-      colmap = new ColMap;
-      colmap->load(plf->get_mapfile());
-    }
-      */
-  if (verbose) 
-    {
-      std::cout << "Loaded Colmap" << std::endl;
-      std::cout << "Loaded pingu map" << std::endl;
-    }
+  if (verbose) std::cout << "World: Loaded Colmap" << std::endl;
 }
 
 void 
@@ -351,38 +327,6 @@ World::get_time(void)
     }
 }
 
-void
-World::write_result(void)
-{
-  result.killed  = 0;
-  result.saved   = 0;
-  result.unknown = 0;
-  result.total   = allowed_pingus;
-  result.time    = GameTime::get_time();
-  
-  for(PinguIter pingu = pingus.begin(); pingu != pingus.end(); pingu++)
-    {
-      switch((*pingu)->get_status()) 
-	{
-	case dead:
-	  result.killed++;
-	  break;
-	case exited:
-	  result.saved++;
-	  break;
-	default:
-	  result.unknown++;
-	}
-    }
-}
-
-Result
-World::get_result()
-{
-  write_result();
-  return result;
-}
-
 void 
 World::armageddon(void)
 {
@@ -395,27 +339,19 @@ bool
 World::is_finished(void)
 {
   // Return true if the world is finished and some time has passed
-  if (exit_world && exit_time < GameTime::get_time()) 
+  if (exit_time < GameTime::get_time()) 
     {
       return true;
     } 
   else if (exit_world)
     {
       //      std::cout << "The world will exit in: " << exit_time << " : " << GameTime::get_time() << std::endl;
-      return false;
+      return true;
     } 
   else 
     {
       return false;
     }
-}
-
-void
-World::print_status(void)
-{
-  std::cout << "Released Pingus: " << released_pingus << std::endl;
-  std::cout << "Allowed Pingus:  " << allowed_pingus << std::endl;
-  std::cout << "Pingus Out:      " << pingus_out << std::endl;
 }
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: System.cc,v 1.4 2000/02/11 21:26:37 grumbel Exp $
+//  $Id: System.cc,v 1.5 2000/02/16 03:06:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,7 +46,7 @@ System::opendir(const std::string& pathname, const std::string& pattern)
 
   if (dp == 0)
     {
-      std::cout << "Couldn't open: " << pathname << std::endl;
+      std::cout << "System: Couldn't open: " << pathname << std::endl;
     }
   else
     {
@@ -78,7 +78,7 @@ System::opendir(const std::string& pathname, const std::string& pattern)
   if (hFind == INVALID_HANDLE_VALUE)
     {
       //BUG, errors aren't supported :)
-      std::cout << "Error: No theme files found";
+      std::cout << "System: Error: No theme files found";
     }
   
   do

@@ -1,4 +1,4 @@
-//  $Id: PinguHolder.hh,v 1.4 2000/02/15 12:30:45 grumbel Exp $
+//  $Id: PinguHolder.hh,v 1.5 2000/02/16 03:06:24 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,6 +32,7 @@ private:
   // The uniq id for the next Pingu
   int id_count;
   int total_size_count;
+  int saved_pingus;
 
   // A std::list holding all Pingus, the PinguHolder itself has only the
   // active (not dead) ones  
@@ -42,6 +43,7 @@ public:
   void draw_offset(int, int, float s = 1.0);
   void push_back(Pingu*);
   int  total_size();
+  int  get_saved() { return saved_pingus; }
 };
 
 #endif

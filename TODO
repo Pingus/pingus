@@ -2,8 +2,10 @@ Last updated: Sat Jul 31 15:11:43 1999
 
 For 0.3.x
 ~~~~~~~~~
+Level replays gehen schief
+
 left/right buttons in Themes
-check if file exist before overwriteing it
+editor, check if file exist before overwriteing it
 fixed PgUp/PgDown for zooming
 tump nail for level
 colmap manipulation for liquid
@@ -13,14 +15,6 @@ Important Things:
 ~~~~~~~~~~~~~~~~~
 
 -= FEATURES =-
-* Fix unfinished actions
-* Implement persitant action for example the floater and the climber
-* Make the map paintable 
-* Water
-* Scrolling backgrounds
-* Scroll the screen if the cursor is near the borders
-* Support for animated exits and entrances
-* require double click on the armageddon button
 * animated backgrounds (using derived objects)
 
 -= GRAPHIC WORK =-
@@ -41,12 +35,6 @@ Less Important Things:
   la Lemmings 2), and from explosions      
 * Implementing Demo recording/playing to the menu    
 * Parallax scrolling backgrounds
-
--= GRAPHIC WORK =-
-* Draw more pingu actions. 
-
--= SOUND WORK =-
-* Creating some more music
 
 -= BIG STUFF =-
 * "Worms" mode. 

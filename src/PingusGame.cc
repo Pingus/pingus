@@ -1,4 +1,4 @@
-//  $Id: PingusGame.cc,v 1.4 2000/02/15 13:09:50 grumbel Exp $
+//  $Id: PingusGame.cc,v 1.5 2000/02/16 03:06:24 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,7 @@
 #include "PingusError.hh"
 #include "PingusMessageBox.hh"
 #include "algo.hh"
+#include "TrueServer.hh"
 #include "PingusGame.hh"
 
 // A wrapper class around the client and the server, to allow a much
@@ -56,11 +57,11 @@ PingusGame::read_lastlevel_file()
   in.open(filename.c_str());
 
   if (!in) {
-    std::cout << "Warrning: Couldn't open lastlevel file \"" << filename << "\", using default level1.plf" << std::endl;
+    if (verbose) std::cout << "PingusGame: Warrning: Couldn't open lastlevel file \"" << filename << "\", using default level1.plf" << std::endl;
     return find_file(pingus_datadir, "levels/level1.plf");
   } else {
     in >> levelfile;
-    std::cout << "Read lastlevel file: " << levelfile << std::endl;
+    if (verbose) std::cout << "PingusGame: Read lastlevel file: " << levelfile << std::endl;
     in.close();
     return levelfile;
   }
@@ -77,9 +78,9 @@ PingusGame::write_lastlevel_file(std::string levelfile)
   out.open(filename.c_str());
   
   if (!out) {
-    std::cout << "Warrning: Couldn't write lastlevel file: " << filename << std::endl;
+    if (verbose) std::cout << "Warrning: Couldn't write lastlevel file: " << filename << std::endl;
   } else {
-    std::cout << "Writing lastlevel file: " << levelfile << std::endl;
+    if (verbose) std::cout << "Writing lastlevel file: " << levelfile << std::endl;
     out <<  levelfile << std::endl;
     out.close();
   }
@@ -124,13 +125,6 @@ PingusGame::start(std::string plf_filename, std::string psm_filename)
     {
       PingusMessageBox(" PingusError: " + err.message);
     }
-}
-
-// Returns the results, which were created by the last level.
-Result
-PingusGame::get_result()
-{
-  return server->get_world()->get_result();
 }
 
 /* EOF */

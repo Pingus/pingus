@@ -1,4 +1,4 @@
-//  $Id: PSMParser.cc,v 1.3 2000/02/11 16:58:25 grumbel Exp $
+//  $Id: PSMParser.cc,v 1.4 2000/02/16 03:06:23 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -40,7 +40,7 @@ void
 PSMParser::parse(std::string filename)
 {
   try {
-    std::cout << "PSMParser: Filename: " << filename << std::endl;
+    if (verbose) std::cout << "PSMParser: Filename: " << filename << std::endl;
     in.open(filename.c_str());
 
     if (!in) 
