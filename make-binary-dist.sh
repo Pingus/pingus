@@ -28,8 +28,12 @@ echo "Stripping"
 strip /tmp/$DIRNAME/src/pingus
 
 echo "Copying docs..."
+cp -iuvP AUTHORS /tmp/$DIRNAME/
+cp -iuvP README /tmp/$DIRNAME/
+cp -iuvP TODO /tmp/$DIRNAME/
+cp -iuvP BUGS /tmp/$DIRNAME/
 cp -iuvP README.binary /tmp/$DIRNAME/
-cp -iuvP COPYING.binary /tmp/$DIRNAME/
+cp -iuvP COPYING /tmp/$DIRNAME/
 cp -iuvP doc/pingus.info /tmp/$DIRNAME/
 cp -iuvP doc/pingus.texi /tmp/$DIRNAME/
 cp -iuvP doc/pingus.6 /tmp/$DIRNAME/
@@ -42,7 +46,7 @@ cp -iuvP data/themes/*.plt /tmp/$DIRNAME
 echo "Creating wrapper..."
 
 echo "cd data/data/" > /tmp/$DIRNAME/pingus
-echo '../../src/pingus --use-scriptfile -d .. $@' >> /tmp/$DIRNAME/pingus
+echo 'exec echo x11 | ../../src/pingus --use-scriptfile -d .. $@' >> /tmp/$DIRNAME/pingus
 chmod +x /tmp/$DIRNAME/pingus
 
 

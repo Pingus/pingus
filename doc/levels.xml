@@ -1,5 +1,5 @@
+<!DOCTYPE pingus-level SYSTEM "pingus-level.dtd">
 <?xml version="1.0"?>
-<!DOCTYPE pingus-world SYSTEM "pingus-world.dtd">
 <pingus-level>
   <global>
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>

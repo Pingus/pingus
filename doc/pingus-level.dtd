@@ -1,6 +1,7 @@
-<!ELEMENT pingus-level (global,background,(liquid|entrance|exit|groundpiece|trap|hotspot)*)>
+<!ELEMENT pingus-level 
+        (global,background,(liquid|entrance|exit|groundpiece|trap|hotspot|group)*)>
 
-<!ELEMENT global (levelname+,description+,author,number-of-pingus,number-to-save,time,width,height)>
+<!ELEMENT global (author,levelname+,description+,number-of-pingus,number-to-save,time,width,height)>
         <!ELEMENT levelname (#PCDATA)>
                 <!ATTLIST levelname          
                         xml:lang CDATA #REQUIRED>
@@ -13,6 +14,8 @@
         <!ELEMENT time (#PCDATA)>
         <!ELEMENT width (#PCDATA)>
         <!ELEMENT height (#PCDATA)>
+
+<!ELEMENT group (liquid|entrance|exit|groundpiece|trap|hotspot|group)*>
 
 <!ELEMENT surface (resource)>
         <!ELEMENT resource (resource-file|(resource-datafile,resource-ident))>
