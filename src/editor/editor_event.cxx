@@ -1,4 +1,4 @@
-//  $Id: editor_event.cxx,v 1.39 2002/10/12 13:01:40 grumbel Exp $
+//  $Id: editor_event.cxx,v 1.40 2002/10/16 00:25:27 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -525,7 +525,7 @@ EditorEvent::editor_load_level()
   std::list<std::string> strings;
   std::string temp_str;
 
-  StringReader reader("Input filename to load the file (without .plf!)", editor->last_level);
+  StringReader reader("Input filename to load the file (without .xml!)", editor->last_level);
   std::cout << "Loading level, input filename" << std::endl;
 
   dir = System::opendir(System::get_statdir() + "levels/", "*");
@@ -568,7 +568,7 @@ EditorEvent::editor_save_level_as()
   System::Directory dir;
   std::list<std::string> strings;
 
-  StringReader reader(_("Enter filename to save as (without .plf!)"), editor->last_level);
+  StringReader reader(_("Enter filename to save as (without .xml!)"), editor->last_level);
 
   // FIXME: The pattern '*' will not work on windows, we should use
   // FIXME: *.xml or better switch to CL_DirectoryScanner
