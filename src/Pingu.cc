@@ -1,4 +1,4 @@
-//  $Id: Pingu.cc,v 1.9 2000/02/28 03:41:46 grumbel Exp $
+//  $Id: Pingu.cc,v 1.10 2000/02/28 04:12:23 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -347,11 +347,11 @@ Pingu::do_normal()
 void Pingu::do_falling()
 {
   // Apply all forces
-  v = ForcesHolder::apply_forces(CL_Vector(x_pos, y_pos), v);
+  velocity = ForcesHolder::apply_forces(CL_Vector(x_pos, y_pos), velocity);
     
   // Update x and y by moving the penguin to it's target *slowly*
   // and checking if the penguin has hit the bottom at each loop
-  CL_Vector newp = v;
+  CL_Vector newp = velocity;
 	  
   while(rel_getpixel(0, -1) == ColMap::NOTHING
 	&& !(fabs(newp.x) < 1 && fabs(newp.y) < 1))
