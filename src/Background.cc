@@ -1,4 +1,4 @@
-//  $Id: Background.cc,v 1.6 2000/03/09 00:20:04 grumbel Exp $
+//  $Id: Background.cc,v 1.7 2000/03/10 18:52:32 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -53,7 +53,9 @@ Background::Background(background_data bg)
 	  canvas->fill_rect(0, 0, sur->get_width(), sur->get_height(),
 			    bg.red, bg.green, bg.blue, bg.dim);
 	  canvas->unlock();
-	  bg_surface = CL_Surface::create(canvas, true);
+	  bg_surface = CL_Surface::create(canvas, false);
+
+	  delete canvas;
 	}
 
       catch (CL_Error err)
@@ -75,7 +77,6 @@ Background::Background(background_data bg)
 
 Background::~Background()
 {
-  delete bg_surface;
 }
 
 void
