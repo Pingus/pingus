@@ -1,4 +1,4 @@
-#  $Id: configure.in,v 1.59 2002/06/08 10:57:20 giray Exp $
+#  $Id: configure.in,v 1.60 2002/06/09 00:10:15 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -333,7 +333,6 @@ AC_OUTPUT( Makefile
            src/entrances/Makefile
            src/editor/Makefile
            src/caimagemanipulation/Makefile
-           src/war/Makefile
            src/worldobjs/Makefile
 	   src/generic/Makefile
 	   src/worldmap/Makefile
