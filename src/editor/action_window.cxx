@@ -1,4 +1,4 @@
-//  $Id: action_window.cxx,v 1.14 2003/04/18 09:22:29 torangan Exp $
+//  $Id: action_window.cxx,v 1.15 2003/04/18 17:08:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -57,7 +57,7 @@ ActionWindow::ActionWindow (CL_Component* arg_parent, std::vector<ActionData>* a
 
   for (std::vector<ActionData>::iterator i = default_actions.begin (); i != default_actions.end (); ++i)
     {
-      checkboxes.push_back(new CL_CheckBox(CL_Point (10, y), action_to_string(i->name, TRANSLATED), window));
+      checkboxes.push_back(new CL_CheckBox(CL_Point (10, y), action_to_screenname(i->name), window));
       inputs.push_back(new CL_InputBox (CL_Rect(100, y, 190, 0), to_string(i->number_of), window));
       y += 20;
     }

@@ -1,4 +1,4 @@
-//  $Id: exiter.hxx,v 1.12 2003/03/05 17:31:29 grumbel Exp $
+//  $Id: exiter.hxx,v 1.13 2003/04/18 17:08:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,7 +34,6 @@ private:
 public:
   Exiter(Pingu*);
   void init(void);
-  std::string get_name () const { return "Exiter"; }
   ActionName get_type() const { return Actions::Exiter; }
 
   void draw (GraphicContext& gc);

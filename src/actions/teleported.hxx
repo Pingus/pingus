@@ -32,7 +32,6 @@ private:
 public:
   Teleported (Pingu*);
 
-  std::string get_name() const { return "Teleported"; }
   ActionName get_type() const { return Actions::Teleported; }
 
   void draw (GraphicContext& gc);

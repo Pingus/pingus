@@ -1,4 +1,4 @@
-//  $Id: basher.hxx,v 1.15 2002/10/14 11:15:15 torangan Exp $
+//  $Id: basher.hxx,v 1.16 2003/04/18 17:08:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -59,7 +59,6 @@ private:
 public:
   Basher (Pingu* p);
     
-  std::string get_name () const { return "Basher"; }
   ActionName get_type () const { return Actions::Basher; }
     
   void draw (GraphicContext& gc);

@@ -1,4 +1,4 @@
-//  $Id: waiter.hxx,v 1.12 2002/10/13 20:25:00 torangan Exp $
+//  $Id: waiter.hxx,v 1.13 2003/04/18 17:08:56 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,7 +37,6 @@ private:
 public:
   Waiter (Pingu*);
   
-  std::string get_name () const { return "Waiter"; }
   ActionName get_type () const { return Actions::Waiter; }
   
   void draw (GraphicContext& gc);

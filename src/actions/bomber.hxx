@@ -1,4 +1,4 @@
-//  $Id: bomber.hxx,v 1.18 2003/03/21 22:08:06 grumbel Exp $
+//  $Id: bomber.hxx,v 1.19 2003/04/18 17:08:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -45,7 +45,6 @@ private:
 public:
   Bomber (Pingu* p);
 
-  std::string get_name () const { return "Bomber"; }
   ActionName get_type() const { return Actions::Bomber; }
   ActionType get_activation_mode() const { return COUNTDOWN_TRIGGERED; }
 

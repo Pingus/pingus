@@ -1,4 +1,4 @@
-//  $Id: pingu_enums.hxx,v 1.11 2003/04/18 09:22:28 torangan Exp $
+//  $Id: pingu_enums.hxx,v 1.12 2003/04/18 17:08:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -63,10 +63,17 @@ enum ActionName
     Walker
   };
 
-enum NameType { ENGLISH, TRANSLATED };
+/** Converts a action enum into its internal string representation, as
+    used in the xml or the resource files Bomber => "bomber" */
+std::string action_to_string(ActionName action);
 
-std::string action_to_string (ActionName action, NameType choice);
-ActionName  action_from_string (const std::string& action);
+/** Converts a internal action string back into its action enum
+    representation  "bomber" => Bomber */
+ActionName  action_from_string(const std::string& action);
+
+/** Convert a action enum into its visual representation, aka the
+    thing that is seen on the screen for the user Bomber => "Bomber" */
+std::string action_to_screenname(ActionName action);
 
 } // namespace Actions
 

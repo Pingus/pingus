@@ -1,4 +1,4 @@
-//  $Id: faller.hxx,v 1.18 2003/02/12 22:40:47 torangan Exp $
+//  $Id: faller.hxx,v 1.19 2003/04/18 17:08:56 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,7 +42,6 @@ public:
 
   bool change_allowed (Actions::ActionName new_action);
   
-  std::string get_name() const { return "Faller"; }
   ActionName get_type() const { return Actions::Faller; }
   bool is_tumbling () const;
   

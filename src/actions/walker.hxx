@@ -1,4 +1,4 @@
-//  $Id: walker.hxx,v 1.12 2003/03/04 11:26:18 grumbel Exp $
+//  $Id: walker.hxx,v 1.13 2003/04/18 17:08:56 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,7 +39,6 @@ public:
   void draw (GraphicContext& gc);
   void update ();
 
-  std::string get_name () const { return "Walker"; }
   ActionName get_type () const { return Actions::Walker; }
   
 private:

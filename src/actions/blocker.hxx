@@ -1,4 +1,4 @@
-//  $Id: blocker.hxx,v 1.13 2002/10/13 16:40:01 grumbel Exp $
+//  $Id: blocker.hxx,v 1.14 2003/04/18 17:08:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,7 +35,6 @@ public:
 
   int   y_offset ();
   
-  std::string get_name () const { return "Blocker"; }
   ActionName get_type() const { return Actions::Blocker; }
  
   void  draw (GraphicContext& gc);

@@ -1,4 +1,4 @@
-//  $Id: miner.hxx,v 1.12 2002/10/22 00:07:56 grumbel Exp $
+//  $Id: miner.hxx,v 1.13 2003/04/18 17:08:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,7 +43,6 @@ public:
   Miner (Pingu* p);
   virtual ~Miner () {}
 
-  std::string get_name () const { return "Miner"; }
   ActionName get_type () const { return Actions::Miner; }
 
   void draw (GraphicContext& gc);

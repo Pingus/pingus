@@ -1,4 +1,4 @@
-//  $Id: climber.hxx,v 1.13 2002/10/26 09:14:23 torangan Exp $
+//  $Id: climber.hxx,v 1.14 2003/04/18 17:08:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,7 +35,6 @@ private:
 public:
   Climber (Pingu*);
     
-  std::string get_name () const { return "Climber"; }
   ActionName get_type () const { return Actions::Climber; }
   ActionType get_activation_mode () const { return WALL_TRIGGERED; }
     

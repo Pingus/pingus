@@ -1,4 +1,4 @@
-//  $Id: laser_kill.hxx,v 1.12 2002/10/13 16:40:01 grumbel Exp $
+//  $Id: laser_kill.hxx,v 1.13 2003/04/18 17:08:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,7 +35,6 @@ private:
 public:
   LaserKill (Pingu*);
 
-  std::string get_name () const { return "LaserKill"; }
   ActionName get_type () const { return Actions::Laserkill; }
   void init (void);
 

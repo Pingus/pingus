@@ -1,4 +1,4 @@
-//  $Id: pingu_action.hxx,v 1.25 2003/02/12 22:40:47 torangan Exp $
+//  $Id: pingu_action.hxx,v 1.26 2003/04/18 17:08:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -74,7 +74,7 @@ public:
 
   /** The name of the action, this is used in the CaputreRectangle, so
       it can contain more than just the name */
-  virtual std::string get_name () const =0;
+  virtual std::string get_name () const;
   
   /// The type of the action
   virtual Actions::ActionName get_type () const =0;

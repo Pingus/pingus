@@ -1,4 +1,4 @@
-//  $Id: pingu_action.cxx,v 1.23 2003/02/12 22:40:47 torangan Exp $
+//  $Id: pingu_action.cxx,v 1.24 2003/04/18 17:08:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -95,6 +95,12 @@ PinguAction::collision_on_walk (int x, int y)
     }
 
   return collision;
+}
+
+std::string
+PinguAction::get_name () const
+{
+  return action_to_screenname(get_type());
 }
 
 void
