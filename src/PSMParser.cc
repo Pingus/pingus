@@ -1,4 +1,4 @@
-//  $Id: PSMParser.cc,v 1.10 2000/06/25 20:22:18 grumbel Exp $
+//  $Id: PSMParser.cc,v 1.11 2000/06/26 06:45:59 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -105,8 +105,8 @@ PSMParser::load_surfaces(void)
       cout << "Surface: " << "(" << surface[i].res_desc.res_name << ":" << surface[i].res_desc.datafile << ") " 
 	   << surface[i].name << endl;
     }
-    surface[i].surface = CL_Surface::load(surface[i].name.c_str(), 
-					      PingusResource::get(surface[i].res_name));
+    surface[i].surface = PingusResource::load_surface(surface[i].name,
+						      surface[i].res_desc.datafile);
   }
 }
 
@@ -189,6 +189,7 @@ PSMParser::get_int(void)
   return i;
 }
 
+// FIXME: This is broken the res_name is actually the cast...
 ResDescriptor
 PSMParser::get_resdesc(void)
 {

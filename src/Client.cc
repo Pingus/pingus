@@ -1,4 +1,4 @@
-//  $Id: Client.cc,v 1.27 2000/06/12 14:42:10 grumbel Exp $
+//  $Id: Client.cc,v 1.28 2000/06/26 06:45:59 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -202,10 +202,11 @@ Client::play_level(std::string plf_filename, std::string psm_filename)
     plf->set_psm_filename(filename + ".psm");
   }
 
+  server->start(plf);
+
   if (!player)
     server->record_demo();
 
-  server->start(plf);
   event->register_event_handler();
 
   init_display(); 

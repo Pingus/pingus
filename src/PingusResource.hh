@@ -1,4 +1,4 @@
-//  $Id: PingusResource.hh,v 1.6 2000/06/25 20:22:18 grumbel Exp $
+//  $Id: PingusResource.hh,v 1.7 2000/06/26 06:45:59 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -49,7 +49,7 @@ public:
 
   /** Load a font with res_name from datafile */
   static CL_Font* load_font(const std::string& res_name,
-			       const std::string& datafile);
+			    const std::string& datafile);
 
   /** Load a font from the ResDescriptor */
   static CL_Font* load_font(const ResDescriptor&);

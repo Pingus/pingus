@@ -1,4 +1,4 @@
-//  $Id: PingusResource.cc,v 1.6 2000/06/25 20:22:18 grumbel Exp $
+//  $Id: PingusResource.cc,v 1.7 2000/06/26 06:45:59 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,6 +27,19 @@
 std::map<std::string, CL_ResourceManager*> PingusResource::resource_map;
 std::map<ResDescriptor, CL_Surface*>       PingusResource::surface_map;
 std::map<ResDescriptor, CL_Font*>          PingusResource::font_map;
+
+
+std::string
+sufix_fixer(const std::string& filename)
+{
+  //std::cout << "Filename: " << filename.substr(filename.size() - 4, std::string::npos) << std::endl;
+
+  if (filename.substr(filename.size() - 4, std::string::npos) != ".dat")
+    {
+      return (filename + ".dat");
+    }
+  return filename;
+}
 
 PingusResource::PingusResource()
 {
@@ -97,18 +110,22 @@ PingusResource::load_surface(const ResDescriptor& res_desc)
     }
   else
     {
+      std::cout << "PingusResource: Loading resource: " << res_desc.type << ":" 
+		<< res_desc.datafile << " - " << res_desc.res_name << std::endl;
+
       switch(res_desc.type)
 	{
 	case ResDescriptor::RESOURCE:
 	  surf = CL_Surface::load(res_desc.res_name.c_str(),
-				  get(res_desc.datafile + ".dat"));
+				  get(sufix_fixer(res_desc.datafile)));
 	  surface_map[res_desc] = surf;
 	  return surf;
-	  break;
 	  
 	case ResDescriptor::FILE:
-	  std::cout << "PingusResource: ResDescriptor::FILE not implemented" << std::endl;
-	  return 0;
+	  surf = CL_PCXProvider::create(find_file(pingus_datadir, res_desc.res_name), 0);
+	  surface_map[res_desc] = surf;	  
+	  //std::cout << "PingusResource: ResDescriptor::FILE not implemented" << std::endl;
+	  return surf;
 	  
 	case ResDescriptor::AUTO:
 	  std::cout << "PingusResource: ResDescriptor::AUTO not implemented" << std::endl;
@@ -144,7 +161,7 @@ PingusResource::load_font(const ResDescriptor& res_desc)
 	{
 	case ResDescriptor::RESOURCE:
 	  font = CL_Font::load(res_desc.res_name.c_str(),
-				  get(res_desc.datafile + ".dat"));
+			       get(sufix_fixer(res_desc.datafile)));
 	  font_map[res_desc] = font;
 	  return font;
 	  
