@@ -1,4 +1,4 @@
-//  $Id: string_tokenizer.cxx,v 1.1 2003/04/14 17:56:36 grumbel Exp $
+//  $Id: string_tokenizer.cxx,v 1.2 2003/04/14 19:40:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -40,16 +40,5 @@ StringTokenizer::StringTokenizer(const std::string& str, char split_char)
       start = end + 1;
     }
 }
-
-#ifdef TEST_ME
-#include <iostream>
-
-int main()
-{
-  StringTokenizer tokenizer("Hello World:aoeu:aoeu:aeu:aeuaoeu::Aoeuaoe123::1", ':');
-  for(StringTokenizer::iterator i = tokenizer.begin(); i != tokenizer.end(); ++i)
-    std::cout << "Str: '" << *i << "'" << std::endl;
-}
-#endif
 
 /* EOF */

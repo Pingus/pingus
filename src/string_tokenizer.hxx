@@ -1,4 +1,4 @@
-//  $Id: string_tokenizer.hxx,v 1.1 2003/04/14 17:56:36 grumbel Exp $
+//  $Id: string_tokenizer.hxx,v 1.2 2003/04/14 19:40:41 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,8 +35,8 @@ public:
   /** Splits a string at \a split_char, empty tokens are ignored */
   StringTokenizer(const std::string& arg_str, char split_char);
 
-  Token::const_iterator begin() const { return tokens.begin(); }
-  Token::const_iterator end() const { return tokens.end(); }
+  iterator begin() const { return tokens.begin(); }
+  iterator end() const { return tokens.end(); }
 private:
   StringTokenizer (const StringTokenizer&);
   StringTokenizer& operator= (const StringTokenizer&);
