@@ -1,4 +1,4 @@
-//  $Id: system.cxx,v 1.15 2003/04/13 10:34:55 torangan Exp $
+//  $Id: system.cxx,v 1.16 2003/04/13 12:30:10 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -343,7 +343,11 @@ System::get_email()
 std::string
 System::get_language()
 {
-  std::string lang = setlocale(LC_MESSAGES, NULL);
+  char* lang_c = setlocale(LC_MESSAGES, NULL);
+  std::string lang;
+  
+  if (lang_c)
+    lang = lang_c;
   
   if (lang.empty() || lang == "C")
     return default_language;
