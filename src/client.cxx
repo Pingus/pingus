@@ -1,4 +1,4 @@
-//  $Id: client.cxx,v 1.33 2002/10/29 12:47:55 grumbel Exp $
+//  $Id: client.cxx,v 1.34 2002/10/30 09:34:22 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -126,9 +126,21 @@ Client::process_events (const GameDelta& delta)
 	case Input::ButtonEventType:
           {
             Input::ButtonEvent* ev = dynamic_cast<Input::ButtonEvent* const>(*i);
-            if (ev->name >= Input::action_1 && ev->name <= Input::action_10)
+            
+            if (ev->state == Input::pressed)
               {
-                button_panel->set_button(ev->name - Input::action_1);
+                if (ev->name >= Input::action_1 && ev->name <= Input::action_10)
+                  {
+                    button_panel->set_button(ev->name - Input::action_1);
+                  }
+                else if (ev->name == Input::action_down)
+                  {
+                    button_panel->next_action();
+                  }
+                else if (ev->name == Input::action_up)
+                  {
+                    button_panel->previous_action();
+                  }
               }
           }
 	  break;
