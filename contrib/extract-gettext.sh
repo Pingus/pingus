@@ -5,7 +5,11 @@ TMPFILE=`tempfile`
 
 if [ -e $OUTPUTFILE ]; then
     echo "$OUTPUTFILE exist, move it out of the way please."
+    exit 1;
 else
+    echo "### Levelnames and description, automatically  extracted from levelfiles" > $OUTPUTFILE
+    echo "" >> $OUTPUTFILE
+
     for filename in ../data/levels/playable/*.xml; do
         echo "Extracting text from $filename"
         shortname=`basename $filename`
@@ -18,6 +22,8 @@ else
             -XSL extract-gettext.xsl
         cat $TMPFILE >> $OUTPUTFILE
     done
+
+    echo "### EOF ###" >> $OUTPUTFILE
 fi
 
 # EOF #
