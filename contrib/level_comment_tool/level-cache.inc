@@ -25,27 +25,106 @@
 
 require_once("xml-search.inc");
 
+// set some globals for various DBMS
+global $DBMS;
 global $db_handle;
+global $db_tablename;
+global $db_name;
+global $db_host;
+global $db_user;
+global $db_pass;
+
+$DBMS = 'DBA';
 $db_handle = False;
+$db_tablename = 'lct_cache';
+$db_name = 'pingus';
+$db_host = 'localhost';
+$db_user = '';
+$db_pass = '';
+
+function create_table( $tablename )
+{
+  global $db_name;
+  global $db_handle;
+
+  $table_exists = False;
+  $res = mysql_list_tables( $db_name );
+
+  for ($i=0;$i<mysql_num_rows( $res );$i++)
+    if (mysql_tablename( $res, $i ) == $tablename)
+      $table_exists = True;
+
+  if (!$table_exists)
+  {
+    $SQL = "CREATE TABLE `$tablename` (`Key` VARCHAR( 255 ) NOT NULL ,`Value` TEXT NOT NULL , PRIMARY KEY ( `Key` ) );";    
+    $res = mysql_query( $SQL, $db_handle );       
+	if (!$res)
+	  return False;
+	else
+	  return $tablename;  
+  }
+  else
+    return $tablename;
+}
 
 function open_cache()
 {
   global $db_handle;
+  global $DBMS;
+  global $db_tablename;
+  global $db_name;
+
+
   if ( !$db_handle )
   {
-    $db_driver = "db3";
-    //$db_driver = "db4";
-
-    $dbfile = "/home/pingus/public_html/level_comment_tool/comments/cache.db";
-    //$dbfile = "/var/www/pingus/comments/cache.db";
-
-    $db_handle = @dba_open ($dbfile, "w", $db_driver);
-    if (!$db_handle)
-      $db_handle = dba_open ($dbfile, "c", $db_driver);
-    if (!$db_handle)
+    switch( $DBMS )
     {
-      echo '<p><font color="red"><b>ERROR: Cannot open cache file!</b></font></p>';
-      exit;
+	  //DBA is used as cache
+      case "DBA":
+        $db_driver = "db3";
+
+        $dbfile = "/home/pingus/public_html/level_comment_tool/comments/cache.db";
+        //$dbfile = "/var/www/pingus/comments/cache.db";
+
+        $db_handle = @dba_open ($dbfile, "w", $db_driver);
+        if (!$db_handle)
+          $db_handle = dba_open ($dbfile, "c", $db_driver);
+        if (!$db_handle)
+        {
+          echo '<p><font color="red"><b>ERROR: Cannot open cache file!</b></font></p>';
+          exit;
+        }
+        break;
+
+      //MySQL is used as cache
+      case "MySQL":
+		$db_handle = mysql_connect( $db_host, $db_user, $db_pass );
+		if (!$db_handle)
+		{
+          echo "<p><font color=\"red\"><b>ERROR: Cannot open connection to database server ($db_host)!</b></font></p>";
+          exit;
+        }
+
+        if (! mysql_select_db( $db_name, $db_handle ))
+		{
+          echo "<p><font color=\"red\"><b>ERROR: Cannot select database '$db_name'!</b></font></p>";
+          exit;
+        }
+
+        $db_tablename = create_table($db_tablename);//creates the table if necessary and returns the tablename
+
+        if (!$db_tablename)
+        {
+          echo '<p><font color="red"><b>ERROR: Cannot create cache table!</b></font></p>';
+          echo mysql_error( $db_handle );
+          exit;
+        }
+        break;
+
+      // unsupported DBMS
+      default:
+	    echo '<p><font color="red"><b>ERROR: specified DBMS is not yet supported!</b></font></p>';
+        exit;
     }
   }
 }
@@ -53,10 +132,24 @@ function open_cache()
 function close_cache()
 {
   global $db_handle;
-  if ( $db_handle !== False )
+  global $DBMS;
+
+  if ($db_handle !== False)
   {
-    dba_close($db_handle);
-    $db_handle = False;
+    switch ($DBMS)
+    {
+      //DBA is used as cache
+      case "DBA":
+        dba_close($db_handle);
+        $db_handle = False;
+        break;
+
+      //MySQL is used as cache
+      case "MySQL":
+		mysql_close($db_handle);
+		$db_handle = False;
+  	    break;
+    }
   }
 }
 
@@ -65,12 +158,52 @@ function make_db_key( $cathegory, $level )
   return $cathegory . "//" . $level;
 }
 
-function level_cache_get( $cathegory, $level )
+function fetch_from_DB( $cathegory, $level )
+{
+  global $db_handle;
+  global $DBMS;
+  global $db_tablename;
+
+  switch ($DBMS)
+  {
+    case "DBA":
+      $data = dba_fetch( make_db_key( $cathegory, $level ), $db_handle );
+      break;
+
+    case "MySQL":
+      $SQL = "SELECT * FROM `$db_tablename` WHERE `Key`='" . make_db_key( $cathegory, $level ) . "'";
+      $res = mysql_query( $SQL, $db_handle );
+      if (mysql_num_rows($res) != 1)
+      	$data = False;
+      else	
+        list(,$data) = mysql_fetch_row( $res );  
+      break;
+  }
+  
+  if ( !$data )
+    return False;
+  else
+  {
+    $ret = Array();
+    $arr = explode("\255", $data);
+    while (list(,$fld) = each($arr))
+    {
+      if ( strlen($fld))
+      {
+        list($k,$v) = explode("=", $fld, 2);
+        $ret[$k] = $v;
+      }
+    }
+    return $ret;
+  }
+}
+
+function level_cache_get( $cathegory, $level, $recache )
 {
   global $db_handle;
   open_cache();
-  $data = dba_fetch( make_db_key( $cathegory, $level ), $db_handle );
-  if ( $data === False )
+  $data = fetch_from_DB( $cathegory, $level );
+  if ( $data == False || $recache == True )
   {
     $levelfile = sandbox_check( "data/levels/$cathegory/$level.pingus", "data/" );
     $leveldata = parse_level( $levelfile );
@@ -90,46 +223,77 @@ function level_cache_get( $cathegory, $level )
     level_cache_save( $cathegory, $level, $leveldata );
     return $leveldata;
   }
-  $ret = Array();
-  $arr = explode("\255", $data);
-  while (list(,$fld) = each($arr))
-  {
-    if ( strlen($fld))
-    {
-      list($k,$v) = explode("=", $fld, 2);
-      $ret[$k] = $v;
-    }
-  }
-  unset( $data );
-  return $ret;
+  return $data;
 }
 
 function level_cache_del( $cathegory, $level )
 {
   global $db_handle;
+  global $DBMS;
+  global $db_tablename;
+
   open_cache();
-  if ( !dba_delete(make_db_key( $cathegory, $level ), $db_handle))
+
+  switch ($DBMS)
+  {
+    case "DBA":
+      $ret = dba_delete(make_db_key( $cathegory, $level ), $db_handle);
+  	  break;
+
+  	case "MySQL":
+  	  $key = make_db_key( $cathegory, $level );
+  	  $SQL = "DELETE * FROM $db_tablename WHERE LevelID='$key'";
+  	  $ret = mysql_query( $SQL, $db_handle );
+  	  break;
+  }
+
+  if ( !$ret )
   {
     echo '<p><font color="red"><b>ERROR: Cannot delete cache key!</b></font></p>';
     return False;
   }
-  else return True;
+  else
+    return True;
 }
 
 function level_cache_save( $cathegory, $level, $arr )
 {
   global $db_handle;
+  global $db_tablename;
+  global $DBMS;
+
   open_cache();
   $data = "";
+  $key = make_db_key( $cathegory, $level );
   reset( $arr );
+  
   while (list($k,$v) = each($arr))
     $data .= $k . "=" . $v . "\255";
-  if (!dba_replace( make_db_key( $cathegory, $level ), $data, $db_handle ))
+        
+  switch ($DBMS)
+  {
+    case "DBA":
+	  $ret = dba_replace( make_db_key( $cathegory, $level ), $data, $db_handle );
+      break;
+
+    case "MySQL":
+      $SQL = "SELECT * FROM `$db_tablename` WHERE `Key`='" . make_db_key( $cathegory, $level ) . "'";
+      $ret = mysql_query( $SQL, $db_handle );
+      if (mysql_num_rows( $ret ) == 1)
+        $SQL = "UPDATE `$db_tablename` SET `Value`='" . str_replace( "'", "\'", $data ) . "' WHERE `Key`='$key'";
+      else
+        $SQL = "INSERT INTO $db_tablename (`Key`,`Value`) VALUES ('$key','" . str_replace( "'", "\'", $data ) . "')";          
+      $ret = mysql_query( $SQL, $db_handle );
+      break;
+  }
+
+  if (!$ret)
   {
     echo '<p><font color="red"><b>ERROR: Cannot save level cache entry!</b></font></p>';
     return False;
   }
-  else return True;
+  else
+    return True;
 }
 
 function parse_level( $filename )

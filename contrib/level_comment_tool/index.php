@@ -159,7 +159,7 @@ if  ( !isset($_GET["l"]) || !isset($_GET["c"]) )
         while( list(,$l) = each( $c["levels"] ))
         {
           unset( $ldata );
-          $ldata = level_cache_get( $c["name"], $l );
+          $ldata = level_cache_get( $c["name"], $l, False );
           $cnt = $ldata["totalcomments"];
 
           if ( ($i++) % 2 )
@@ -170,19 +170,19 @@ if  ( !isset($_GET["l"]) || !isset($_GET["c"]) )
           $jpg = htmlentities($c["name"]) . "/" . htmlentities($l) . ".jpg";
           print "<td valign='top' $celcolor width='50%'>\n";
           if ( $show_thumbs )//additional column only when thumbs are shown
-	  {
+	      {
             print "<table width='100%' border='0'>\n" .
              "<tr><td style='width:160px; height:120px;'>" .
              "<a href='$PHP_SELF?c=" . urlencode($c["name"]) . "&l=" . urlencode($l) . "'>".
              "<img src='http://pingus.seul.org/levels/thumb/$jpg' align='left' border='0'>".
              "</a></td><td>\n";
           }
-            
+
           print "<small>".
           "<a href='$PHP_SELF?c=" .
           urlencode($c["name"]) . "&l=" . urlencode($l) . "'>".
           urlencode($l) . "</a>\n";
-            
+
           if ( $cnt < 1 ) $cnt = "-";
           print " (<strong>$cnt</strong>)<br>";
           print "<em>&quot;" . htmlentities($ldata["name"]) . "&quot;</em><br>";
@@ -240,9 +240,9 @@ else
     print "<h2>" . htmlentities($c) . " / " . htmlentities($l) . "</h2>\n";
 
     $curlevelmd5 = md5(implode("", file($levelfile)));
-    $leveldata = level_cache_get( $c, $l );
+    $leveldata = level_cache_get( $c, $l, False );
     if ( $leveldata["md5sum"] !== $curlevelmd5 )
-      $leveldata = parse_level( $levelfile );
+      $leveldata = level_cache_get( $c, $l, True );
     $leveldata["totalcomments"] = 0;
     $leveldata["avgrating"] = 0;
     $leveldata["md5sum"] = $curlevelmd5;
