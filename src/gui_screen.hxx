@@ -1,4 +1,4 @@
-//  $Id: gui_screen.hxx,v 1.8 2002/09/05 12:24:02 grumbel Exp $
+//  $Id: gui_screen.hxx,v 1.9 2002/09/19 13:30:08 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,6 @@
 #define HEADER_PINGUS_GUISCREEN_HXX
 
 #include "screen.hxx"
-#include "gui/gui_manager.hxx"
 
 namespace GUI
 {

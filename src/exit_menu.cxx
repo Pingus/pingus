@@ -1,4 +1,4 @@
-//  $Id: exit_menu.cxx,v 1.8 2002/09/14 19:06:33 torangan Exp $
+//  $Id: exit_menu.cxx,v 1.9 2002/09/19 13:30:08 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #include <ClanLib/Display/Display/display.h>
 #include "pingus_menu_manager.hxx"
 #include "pingus_resource.hxx"
+#include "gui/gui_manager.hxx"
 
 class ExitMenuYesButton : public GUI::Component
 {

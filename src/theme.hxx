@@ -1,4 +1,4 @@
-//  $Id: theme.hxx,v 1.3 2002/08/23 15:49:51 torangan Exp $
+//  $Id: theme.hxx,v 1.4 2002/09/19 13:30:08 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #ifndef HEADER_PINGUS_THEME_HXX
 #define HEADER_PINGUS_THEME_HXX
 
+#include <ClanLib/Display/Display/surface.h>
 #include "multiline_text.hxx"
 #include "plt_xml.hxx"
 

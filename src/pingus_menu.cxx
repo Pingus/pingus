@@ -1,4 +1,4 @@
-//  $Id: pingus_menu.cxx,v 1.8 2002/09/14 19:06:33 torangan Exp $
+//  $Id: pingus_menu.cxx,v 1.9 2002/09/19 13:30:08 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,7 @@
 #include "sound.hxx"
 #include "debug.hxx"
 #include "pingus_menu_manager.hxx"
+#include "gui/gui_manager.hxx"
 
 PingusMenu::PingusMenu (PingusMenuManager* m)
   : PingusSubMenu (m)
@@ -42,12 +43,12 @@ PingusMenu::preload ()
       background = PingusResource::load_surface("misc/logo", "core");
 
       // FIXME: Lilla... memory leak
-      gui_manager->add(new OptionsButton (this));
-      gui_manager->add(new CreditButton (this));
-      gui_manager->add(new QuitButton (this));
-      gui_manager->add(new MultiplayerButton (this));
-      gui_manager->add(new ThemeButton (this));
-      gui_manager->add(new StoryButton (this));
+      gui_manager->add(new OptionsButton(this));
+      gui_manager->add(new CreditButton(this));
+      gui_manager->add(new QuitButton(this));
+      gui_manager->add(new MultiplayerButton(this));
+      gui_manager->add(new ThemeButton(this));
+      gui_manager->add(new StoryButton(this));
       gui_manager->add(editor_button);
     }
 

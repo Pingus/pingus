@@ -1,4 +1,4 @@
-//  $Id: pingu_action_factory.hxx,v 1.5 2002/08/25 09:08:48 torangan Exp $
+//  $Id: pingu_action_factory.hxx,v 1.6 2002/09/19 13:30:08 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,7 @@
 #include <string>
 #include "pingu.hxx"
 
+class PinguAction;
 class PinguActionAbstractFactory;
 
 class PinguActionFactory

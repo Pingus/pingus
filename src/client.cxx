@@ -1,4 +1,4 @@
-//  $Id: client.cxx,v 1.22 2002/09/17 23:11:26 grumbel Exp $
+//  $Id: client.cxx,v 1.23 2002/09/19 13:30:08 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,6 +36,7 @@
 #include "server.hxx"
 #include "button_panel.hxx"
 #include "screen_manager.hxx"
+#include "gui/gui_manager.hxx"
 
 Client::Client (Server * s)
   : server       (s),
