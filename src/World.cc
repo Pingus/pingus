@@ -1,4 +1,4 @@
-//  $Id: World.cc,v 1.72 2002/06/09 14:28:03 grumbel Exp $
+//  $Id: World.cc,v 1.73 2002/06/10 10:28:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,14 +43,23 @@
 using namespace std;
 using boost::shared_ptr;
 
-// Structure for the sorting algorithm (stable_sort)
-struct WorldObj_less
+static 
+bool WorldObj_less (shared_ptr<WorldObj>& a, shared_ptr<WorldObj>& b) 
 {
-  bool operator() (shared_ptr<WorldObj>& a, shared_ptr<WorldObj>& b) const 
-  {
-    return a->get_z_pos () < b->get_z_pos ();
-  }
-};
+  return a->get_z_pos () < b->get_z_pos ();
+}
+
+#ifdef WIN32
+//FIXME: ingo: This is a workaround around the std::list::sort()
+//FIXME: problem under MSVC6. This is copy&paste from an usenet
+//FIXME: article, so it might work or not, never tested it.
+typedef shared_ptr<WorldObj>& CWorldObjPtr;
+template<>
+bool std::greater<CWorldObjPtr>::operator()(shared_ptr<WorldObj>& a, shared_ptr<WorldObj>& b) const
+{
+  return WorldObj_less (a, b);
+} 
+#endif
 
 World::World(PLF* arg_plf)
   : particle_holder (new ParticleHolder()),
@@ -202,9 +211,12 @@ World::init_worldobjs()
 
   // After all objects are in world_obj, sort them to there z_pos
 #ifdef WIN32
-  // FIXME: Insert something here which will sort a list under win32
+  //FIXME: ingo: This is a workaround around the std::list::sort()
+  //FIXME: problem under MSVC6. This is copy&paste from an usenet
+  //FIXME: article, so it might work or not, never tested it.
+ world_obj.sort(std::greater<CWorldObjPtr>());
 #else
-  world_obj.sort(WorldObj_less());
+  world_obj.sort(WorldObj_less);
 #endif
   // FIXME: If the above thing causes throuble under windows we could
   // use a vector instead of a list and use stable_sort() instead.

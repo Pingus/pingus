@@ -1,4 +1,4 @@
-//  $Id: ObjectManager.cc,v 1.64 2002/06/09 13:03:11 grumbel Exp $
+//  $Id: ObjectManager.cc,v 1.65 2002/06/10 10:32:03 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,15 +38,23 @@
 using namespace std;
 
 /** */
-class EditorObj_z_pos_sorter
+static bool EditorObj_z_pos_sorter (const boost::shared_ptr<EditorObj>& a, 
+				    const boost::shared_ptr<EditorObj>& b)
 {
-public:
-  bool operator() (const boost::shared_ptr<EditorObj>& a, 
-		   const boost::shared_ptr<EditorObj>& b) const 
-  {
-    return a->get_z_pos () < b->get_z_pos ();
-  }
-};
+  return a->get_z_pos () < b->get_z_pos ();
+}
+
+#ifdef WIN32
+//FIXME: ingo: This is a workaround around the std::list::sort()
+//FIXME: problem under MSVC6. This is copy&paste from an usenet
+//FIXME: article, so it might work or not, never tested it.
+typedef boost::shared_ptr<EditorObj>& CEditorObjPtr;
+template<>
+bool std::greater<CEditorObjPtr>::operator()(shared_ptr<EditorObj>& a, shared_ptr<EditorObj>& b) const
+{
+  return EditorObj_z_pos_sorter (a, b);
+} 
+#endif
 
 ObjectManager::ObjectManager()
 {
@@ -172,8 +180,13 @@ ObjectManager::load_level (const std::string & filename)
     editor_objs.insert(editor_objs.end(), temp.begin(), temp.end() );
   }
 
-#ifndef WIN32 // FIXME: Compiler error in Windows
-  editor_objs.sort(EditorObj_z_pos_sorter());
+#ifdef WIN32
+//FIXME: ingo: This is a workaround around the std::list::sort()
+//FIXME: problem under MSVC6. This is copy&paste from an usenet
+//FIXME: article, so it might work or not, never tested it.
+  world_obj.sort(std::greater<CWorldObjPtr>());
+#else
+  editor_objs.sort(EditorObj_z_pos_sorter);
 #endif
 
   std::cout << "Reading props" << std::endl;
