@@ -24,6 +24,7 @@
 #include <list>
 #include <string>
 #include <vector>
+#include <ClanLib/signals.h>
 #include "../libxmlfwd.hxx"
 
 #include "event.hxx"
@@ -42,12 +43,14 @@ private:
   Pointer*  standard_pointer;
   Scroller* scroller;
 
-  std::map<ButtonName, std::pair<Button*, bool> > buttons;
+  std::map<ButtonName, Button*> buttons;
 
   std::vector<Event> events;
 
   float             std_pointer_x;
   float             std_pointer_y;
+
+  std::vector<CL_Slot> slots;
 
 public:
   Controller (const std::string& configfile);
@@ -62,6 +65,7 @@ public:
   const Button* get_button (ButtonName name);
 
   void update (float delta);
+  void clear();
 
   static void set_current(Controller* controller) { current_controller = controller; }
   static Controller* get_current() { return current_controller; }
@@ -69,6 +73,8 @@ public:
 private:
   static Controller* current_controller;
 
+  void on_button_down(ButtonName name);
+  void on_button_up(ButtonName name);
   void create_action_buttons (xmlNodePtr cur);
 
   Controller (const Controller&);

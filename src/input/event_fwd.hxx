@@ -27,7 +27,7 @@
 namespace Pingus {
 namespace Input {
 
-union Event;
+struct Event;
 typedef std::vector<Event> EventLst;
 
 } // namespace Input

@@ -32,8 +32,15 @@ StateSprite::load(int state, CL_Sprite sprite)
   sprites[state] = sprite;
 }
 
+void 
+StateSprite::update(float delta)
+{
+  for(Sprites::iterator i = sprites.begin(); i != sprites.end(); ++i)
+    (*i).second.update(delta);
+}
+
 CL_Sprite&
-StateSprite::operator()(int state)
+StateSprite::operator[](int state)
 {
   Sprites::iterator i = sprites.find(state);
   if (i != sprites.end())

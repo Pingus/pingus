@@ -22,7 +22,7 @@
 
 #include <list>
 #include "../delta_manager.hxx"
-#include "../input/event_fwd.hxx"
+#include "../input/event.hxx"
 
 namespace Pingus {
 
@@ -37,7 +37,7 @@ private:
 
   /** Reference to the event list from the controller, we must not
       delete the Event* */
-  const Input::EventLst& events;
+  Input::EventLst events;
 
 public:
   /** Construct a GameDelta with both time and events */

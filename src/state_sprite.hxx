@@ -36,8 +36,9 @@ private:
 public:
   StateSprite();
   
+  void update(float delta);
   void load(int state, CL_Sprite);
-  CL_Sprite& operator()(int state);
+  CL_Sprite& operator[](int state);
 };
 
 } // namespace Pingus

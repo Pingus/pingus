@@ -88,11 +88,13 @@ ScreenManager::display ()
       CL_System::keep_alive ();
 
       // Get new events from ClanLib
-      input_controller->update (time_delta);
+      input_controller->update(time_delta);
 
       // Fill the delta with values
       GameDelta delta(time_delta, delta_manager.get_absolute(),
-                      input_controller->get_events ());
+                      input_controller->get_events());
+
+      input_controller->clear();
 
       last_screen = get_current_screen();
 

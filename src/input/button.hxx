@@ -20,6 +20,7 @@
 #ifndef HEADER_PINGUS_INPUT_BUTTON_HXX
 #define HEADER_PINGUS_INPUT_BUTTON_HXX
 
+#include <ClanLib/signals.h>
 #include "../pingus.hxx"
 
 namespace Pingus {
@@ -35,6 +36,13 @@ public:
   /// returns true if the button is pressed, false otherwise
   virtual bool is_pressed ()      const =0;
   virtual void update     (float)       =0;
+
+  CL_Signal_v0& sig_button_down() { return button_down; }
+  CL_Signal_v0& sig_button_up() { return button_up; }
+
+protected:
+  CL_Signal_v0 button_down; 
+  CL_Signal_v0 button_up; 
 
 private:
   Button (const Button&);

@@ -61,7 +61,6 @@ WorldObjGroupData::WorldObjGroupData (const WorldObjGroupData& data)
 
 WorldObjGroupData::~WorldObjGroupData ()
 {
-  std::cout << "WorldObjGroupData::~WorldObjGroupData ()" << std::endl;
   for (ObjsIter i = objs.begin (); i != objs.end (); ++i)
     delete *i;
 }

@@ -55,13 +55,13 @@ Basher::Basher (Pingu* p)
 void
 Basher::draw (GraphicContext& gc)
 {
-  gc.draw(sprite(pingu->direction), pingu->get_pos());
+  gc.draw(sprite[pingu->direction], pingu->get_pos());
 }
 
 void
 Basher::update ()
 {
-  sprite(pingu->direction).update();
+  sprite[pingu->direction].update();
 
   ++basher_c;
   if (basher_c % 3 == 0)
@@ -94,8 +94,8 @@ Basher::update ()
 	      if (basher_c % 2 == 0)
 		bash();
 	    }
-	  else if (sprite(pingu->direction).get_current_frame() 
-                   / float(sprite(pingu->direction).get_frame_count()) > 0.6f) 
+	  else if (sprite[pingu->direction].get_current_frame() 
+                   / float(sprite[pingu->direction].get_frame_count()) > 0.6f) 
 	    { // FIXME: EVIL! Engine must not relay on graphic
 	      pingu->set_action(Actions::Walker);
 	    }

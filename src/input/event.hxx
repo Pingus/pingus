@@ -36,53 +36,43 @@ enum State { pressed, released };
 
 struct ButtonEvent
 {
-  EventType  type;
   ButtonName name;
   State      state;
 };
-
-//#include "pointer_event.hxx"
 
 enum PointerName { standard };
 
 struct PointerEvent
 {
-  EventType type;
   PointerName  name;
   float x;
   float y;
-
 };
 
-
-//#include "axis_event.hxx"
 enum AxisName  { action };
 
 struct AxisEvent
 {
-  EventType type;
   float     dir;
   AxisName  name;
 };
 
-
-//#include "scroll_event.hxx"
-
 struct ScrollEvent
 {
-  EventType type;
   float x_delta;
   float y_delta;
 };
 
-union Event
+struct Event
 {
   EventType type;
 
-  ButtonEvent  button;
-  PointerEvent pointer;
-  AxisEvent    axis;
-  ScrollEvent  scroll;
+  union {
+    ButtonEvent  button;
+    PointerEvent pointer;
+    AxisEvent    axis;
+    ScrollEvent  scroll;
+  };
 };
 
 typedef std::vector<Event> EventLst;
@@ -91,7 +81,7 @@ inline Event makeButtonEvent (ButtonName name, State state)
 {
   Event event;
 
-  event.button.type  = ButtonEventType;
+  event.type  = ButtonEventType;
   event.button.name  = name;
   event.button.state = state;
 
@@ -102,7 +92,7 @@ inline Event makePointerEvent(PointerName name, float x, float y)
 {
   Event event;
 
-  event.pointer.type = PointerEventType;
+  event.type = PointerEventType;
   event.pointer.name = name;
   event.pointer.x    = x;
   event.pointer.y    = y;
@@ -114,7 +104,7 @@ inline Event makeAxisEvent (float dir, AxisName name = action)
 {
   Event event;
 
-  event.axis.type = AxisEventType;
+  event.type = AxisEventType;
   event.axis.dir  = dir;
   event.axis.name = name;
 
@@ -125,7 +115,7 @@ inline Event makeScrollEvent (float x_delta, float y_delta)
 {
   Event event;
 
-  event.scroll.type    = ScrollEventType;
+  event.type    = ScrollEventType;
   event.scroll.x_delta = x_delta;
   event.scroll.y_delta = y_delta;
 

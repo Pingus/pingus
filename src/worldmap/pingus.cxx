@@ -68,9 +68,9 @@ Pingus::draw (GraphicContext& gc)
       float direction = get_direction();
       
       if (direction >= 0 && direction < 180)
-        gc.draw(sprite(Direction::RIGHT), pos);
+        gc.draw(sprite[Direction::RIGHT], pos);
       else
-        gc.draw(sprite(Direction::LEFT), pos);
+        gc.draw(sprite[Direction::LEFT], pos);
     }
 }
 
@@ -79,9 +79,9 @@ Pingus::update (float delta)
 {
   float direction = get_direction();
   if (direction >= 0 && direction < 180)
-    sprite(Direction::RIGHT).update(delta);
+    sprite[Direction::RIGHT].update(delta);
   else
-    sprite(Direction::LEFT).update(delta);
+    sprite[Direction::LEFT].update(delta);
   
   if (is_walking())
     update_walk(delta);

@@ -49,8 +49,8 @@ Faller::~Faller () { }
 void
 Faller::update ()
 {
-  tumbler(pingu->direction).update();
-  faller(pingu->direction).update();
+  tumbler[pingu->direction].update();
+  faller[pingu->direction].update();
 
   // Pingu stands on ground
   if (rel_getpixel(0, -1) !=  Groundtype::GP_NOTHING)
@@ -148,9 +148,9 @@ void
 Faller::draw (GraphicContext& gc)
 {
   if (is_tumbling()) {
-    gc.draw(tumbler(pingu->direction), pingu->get_pos ());
+    gc.draw(tumbler[pingu->direction], pingu->get_pos ());
   } else {
-    gc.draw(faller(pingu->direction), pingu->get_pos ());
+    gc.draw(faller[pingu->direction], pingu->get_pos ());
   }
 }
 

@@ -51,18 +51,24 @@ MouseButton::press_handler (const CL_InputEvent& signal) // may not be a member 
   switch (button)
     {
     case 0:
-      if (signal.id == CL_MOUSE_LEFT)
+      if (signal.id == CL_MOUSE_LEFT) {
         pressed = true;
+        button_down();
+      }
       break;
             
     case 1:
-      if (signal.id == CL_MOUSE_MIDDLE)
+      if (signal.id == CL_MOUSE_MIDDLE) {
         pressed = true;
+        button_down();
+      }
       break;
             
     case 2:
-      if (signal.id == CL_MOUSE_RIGHT)
+      if (signal.id == CL_MOUSE_RIGHT) {
         pressed = true;
+        button_down();
+      }
       break;
             
     default: // only three buttons support so far
@@ -76,18 +82,24 @@ MouseButton::release_handler (const CL_InputEvent& signal) // may not be a membe
   switch (button)
     {
     case 0:
-      if (signal.id == CL_MOUSE_LEFT)
+      if (signal.id == CL_MOUSE_LEFT) {
         pressed = false;
+        button_up();
+      }
       break;
             
     case 1:
-      if (signal.id == CL_MOUSE_MIDDLE)
+      if (signal.id == CL_MOUSE_MIDDLE) {
         pressed = false;
+        button_up();
+      }
       break;
             
     case 2:
-      if (signal.id == CL_MOUSE_RIGHT)
+      if (signal.id == CL_MOUSE_RIGHT) {
         pressed = false;
+        button_up();
+      }
       break;
             
     default: // only three buttons support so far

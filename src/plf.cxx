@@ -41,7 +41,6 @@ PLF::PLF()
 // Destroy all data
 PLF::~PLF()
 {
-  std::cout << "PLF::~PLF: Deleting std::vector<WorldObjData*>" << std::endl;
   for (std::vector<WorldObjData*>::iterator i = worldobjs_data.begin ();
        i != worldobjs_data.end (); ++i)
     {

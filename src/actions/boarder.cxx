@@ -39,7 +39,7 @@ Boarder::Boarder (Pingu* p)
 void
 Boarder::update ()
 {
-  sprite(pingu->direction).update();
+  sprite[pingu->direction].update();
 
   if (on_ground())
     {
@@ -79,7 +79,7 @@ Boarder::update ()
 void
 Boarder::draw (GraphicContext& gc)
 {
-  gc.draw(sprite(pingu->direction), pingu->get_pos ());
+  gc.draw(sprite[pingu->direction], pingu->get_pos ());
 }
 
 bool

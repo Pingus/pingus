@@ -46,8 +46,8 @@ void
 Walker::update ()
 {
   // update the sprite
-  walker(pingu->direction).update(0.033);
-  floaterlayer(pingu->direction).update(0.033);
+  walker[pingu->direction].update(0.033);
+  floaterlayer[pingu->direction].update(0.033);
 
   Vector last_pos = pingu->get_pos();
 
@@ -207,11 +207,11 @@ Walker::update ()
 void
 Walker::draw (GraphicContext& gc)
 {
-  gc.draw(walker(pingu->direction), pingu->get_pos());
+  gc.draw(walker[pingu->direction], pingu->get_pos());
 
   if (pingu->get_fall_action() && pingu->get_fall_action()->get_type() == Actions::Floater)
     {
-      gc.draw(floaterlayer(pingu->direction), pingu->get_pos());
+      gc.draw(floaterlayer[pingu->direction], pingu->get_pos());
     }
 }
 

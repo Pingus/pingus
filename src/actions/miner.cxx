@@ -45,7 +45,7 @@ Miner::Miner (Pingu* p)
 void
 Miner::update ()
 {
-  sprite(pingu->direction).update();
+  sprite[pingu->direction].update();
 
   ++slow_count;
   if (!(slow_count % 4))
@@ -95,7 +95,7 @@ Miner::update ()
 void
 Miner::draw (GraphicContext& gc)
 {
-  gc.draw(sprite(pingu->direction), pingu->get_pos());
+  gc.draw(sprite[pingu->direction], pingu->get_pos());
 }
 
 } // namespace Actions
