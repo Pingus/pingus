@@ -1,4 +1,4 @@
-//  $Id: Entrance.cc,v 1.30 2002/06/09 11:18:50 grumbel Exp $
+//  $Id: Entrance.cc,v 1.31 2002/06/09 13:29:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -57,6 +57,7 @@ Entrance::get_pingu()
   Direction d;
 
   Pingu* pingu = world->get_pingu_p()->create_pingu (pos, owner_id);
+
   switch (direction) 
     {
     case EntranceData::LEFT:

@@ -1,4 +1,4 @@
-//  $Id: EntranceData.cc,v 1.8 2002/06/09 13:03:11 grumbel Exp $
+//  $Id: EntranceData.cc,v 1.9 2002/06/09 13:29:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,6 +26,8 @@
 
 EntranceData::EntranceData (xmlDocPtr doc, xmlNodePtr cur)
 {
+  clean ();
+
   cur = cur->children;  
   while (cur != NULL)
     {

@@ -1,4 +1,4 @@
-//  $Id: ExitData.cc,v 1.11 2002/06/09 13:03:11 grumbel Exp $
+//  $Id: ExitData.cc,v 1.12 2002/06/09 13:29:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,8 @@
 
 ExitData::ExitData (xmlDocPtr doc, xmlNodePtr cur)
 {
+  clean ();
+
   char* pos_handling = (char*)xmlGetProp(cur, (xmlChar*)"use-old-pos-handling");
   if (pos_handling)
     {
