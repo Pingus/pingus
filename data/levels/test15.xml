@@ -1,0 +1,219 @@
+<?xml version="1.0"  encoding="ISO-8859-1"?>
+
+<pingus-level>
+  <global>
+    <levelname lang="en">EditorDefaultValue: Please give me a name...</levelname>
+    <description lang="en">EditorDefaultValue: ...and a short description</description>
+    <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
+    <number-of-pingus>50</number-of-pingus>
+    <number-to-save>25</number-to-save>
+    <time>9000</time>
+    <width>1216</width>
+    <height>608</height>
+  </global>
+
+  <action-list>
+    <basher count="20"/>
+    <blocker count="20"/>
+    <bomber count="20"/>
+    <bridger count="20"/>
+    <climber count="20"/>
+    <digger count="20"/>
+    <floater count="20"/>
+    <jumper count="20"/>
+    <miner count="20"/>
+  </action-list>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>desert/rightsmallbrick</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>249.309</x-pos>
+    <y-pos>217.042</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>desert/rightsmallbrick</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>325</x-pos>
+    <y-pos>141</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>desert/leftsmallbrick</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>553.016</x-pos>
+    <y-pos>217.961</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>desert/leftsmallbrick</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>477.325</x-pos>
+    <y-pos>141.876</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>desert/smallbrickpiece</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>477.121</x-pos>
+    <y-pos>217.348</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>desert/smallbrickpiece</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>401.416</x-pos>
+    <y-pos>217.348</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>desert/smallbrickpiece</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>325.429</x-pos>
+    <y-pos>217.616</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>desert/smallbrickpiece</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>477.39</x-pos>
+    <y-pos>179.58</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>desert/smallbrickpiece</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>325.698</x-pos>
+    <y-pos>179.849</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>desert/smallbrickpiece</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>401.304</x-pos>
+    <y-pos>141.346</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+  <start-position>
+  <position>
+    <x-pos>50</x-pos>
+    <y-pos>50</y-pos>
+    <z-pos>1000</z-pos>
+  </position>
+  </start-position>
+
+<group>
+<exit use-old-pos-handling="0">
+  <position>
+    <x-pos>383</x-pos>
+    <y-pos>387</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+  <surface><resource type="datafile">
+    <resource-datafile>exits</resource-datafile>
+  <resource-ident>Exits/stone</resource-ident>
+  </resource></surface>
+  <owner-id>0</owner-id></exit>
+
+<exit use-old-pos-handling="0">
+  <position>
+    <x-pos>304</x-pos>
+    <y-pos>398</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+  <surface><resource type="datafile">
+    <resource-datafile>exits</resource-datafile>
+  <resource-ident>Exits/stone</resource-ident>
+  </resource></surface>
+  <owner-id>0</owner-id></exit>
+
+<exit use-old-pos-handling="0">
+  <position>
+    <x-pos>422</x-pos>
+    <y-pos>455</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+  <surface><resource type="datafile">
+    <resource-datafile>exits</resource-datafile>
+  <resource-ident>Exits/stone</resource-ident>
+  </resource></surface>
+  <owner-id>0</owner-id></exit>
+
+<exit use-old-pos-handling="0">
+  <position>
+    <x-pos>215</x-pos>
+    <y-pos>384</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+  <surface><resource type="datafile">
+    <resource-datafile>exits</resource-datafile>
+  <resource-ident>Exits/stone</resource-ident>
+  </resource></surface>
+  <owner-id>0</owner-id></exit>
+
+<exit use-old-pos-handling="0">
+  <position>
+    <x-pos>231</x-pos>
+    <y-pos>443</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+  <surface><resource type="datafile">
+    <resource-datafile>exits</resource-datafile>
+  <resource-ident>Exits/stone</resource-ident>
+  </resource></surface>
+  <owner-id>0</owner-id></exit>
+
+</group>
+
+</pingus-level>
+
