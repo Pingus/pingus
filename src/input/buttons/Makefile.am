@@ -22,7 +22,6 @@ libpingus_input_buttons_a_SOURCES =       \
 	dummy_button.hxx \
         joystick_button.hxx joystick_button.cxx \
         key_button.hxx key_button.cxx \
-        key_helper.hxx key_helper.cxx \
 	mouse_button.hxx mouse_button.cxx \
 	multiple_button.hxx multiple_button.cxx \
 	triple_button.hxx triple_button.cxx

@@ -1,4 +1,4 @@
-//  $Id: button_factory.cxx,v 1.8 2002/08/24 11:37:29 torangan Exp $
+//  $Id: button_factory.cxx,v 1.9 2002/09/09 09:38:48 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,7 +24,7 @@
 #include "buttons/double_button.hxx"
 #include "buttons/joystick_button.hxx"
 #include "buttons/key_button.hxx"
-#include "buttons/key_helper.hxx"
+#include "key_helper.hxx"
 #include "buttons/mouse_button.hxx"
 #include "buttons/multiple_button.hxx"
 #include "buttons/triple_button.hxx"

@@ -32,6 +32,7 @@ libpingus_input_a_SOURCES =       \
 	button_factory.hxx button_factory.cxx \
 	controller.hxx controller.cxx \
 	event.hxx \
+	key_helper.hxx key_helper.cxx \
 	pointer.hxx \
 	pointer_event.hxx \
 	pointer_factory.hxx pointer_factory.cxx \

@@ -1,4 +1,4 @@
-//  $Id: laser_exit_obj.cxx,v 1.2 2002/09/08 18:13:04 grumbel Exp $
+//  $Id: laser_exit_obj.cxx,v 1.3 2002/09/09 09:38:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <stdio.h>
 #include "laser_exit_obj.hxx"
 #include "../editor/editor_view.hxx"
 #include "../worldobjsdata/laser_exit_data.hxx"
