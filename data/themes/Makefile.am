@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.4 2000/02/16 23:34:10 grumbel Exp $
+#  $Id: Makefile.am,v 1.5 2000/06/18 18:06:55 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,6 @@
 # Tweaking the `datadir' to install the files in the correct location
 pkgdatadir = $(datadir)/games/@PACKAGE@/themes
 
-pkgdata_DATA = misc.plt standard.plt xmas99.plt tutorial.plt space.plt jungle.plt
+pkgdata_DATA = $(wildcard *.plt)
 
 EXTRA_DIST = $(pkgdata_DATA)

@@ -1,4 +1,4 @@
-//  $Id: ActionButton.hh,v 1.7 2000/06/18 17:01:49 grumbel Exp $
+//  $Id: ActionButton.hh,v 1.8 2000/06/18 18:06:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -54,7 +54,7 @@ public:
 }///
 ;
 
-/// ----------------- snip --------------------
+// ----------------- snip --------------------
 
 class EventButton : public Button
 {
@@ -72,7 +72,7 @@ public:
 }///
 ;
 
-/// ----------------- snip --------------------
+// ----------------- snip --------------------
 
 class ArmageddonButton : public Button
 {
@@ -96,8 +96,9 @@ public:
 }///
 ;
 
-/// ----------------- snip --------------------
+// ----------------- snip --------------------
 
+///
 class ForwardButton : public Button
 {
 private:
@@ -115,11 +116,11 @@ public:
   void draw();
   ///
   bool mouse_over();
-}///
-;
+};
 
-/// ----------------- snip --------------------
+// ----------------- snip --------------------
 
+///
 class PauseButton : public Button
 {
 private:
@@ -142,8 +143,8 @@ public:
 
 // ----------------- snip --------------------
 
-// The button class manage a simple button for the button_panel. It
-/// keeps his position, his surfaces and his font.
+/** The button class manage a simple button for the button_panel. It
+    keeps his position, his surfaces and his font. */
 class ActionButton : public Button
 {
 protected:
@@ -195,8 +196,9 @@ public:
 }///
 ;
 
-/// ----------------- snip --------------------
+// ----------------- snip --------------------
 
+///
 class HorizontalActionButton : public ActionButton 
 {
 private:
@@ -212,8 +214,8 @@ public:
 }///
 ;
 
-/// ----------------- snip --------------------
-
+// ----------------- snip --------------------
+///
 class VerticalActionButton : public ActionButton 
 {
 private:
@@ -226,8 +228,7 @@ public:
   void draw();
   ///
   bool mouse_over();
-}///
-;
+};
 
 // ----------------- snip --------------------
 

@@ -1,4 +1,4 @@
-//  $Id: Pingu.hh,v 1.11 2000/06/18 17:01:50 grumbel Exp $
+//  $Id: Pingu.hh,v 1.12 2000/06/18 18:06:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -129,6 +129,8 @@ public:
 
   /// Return the status of the pingu
   PinguStatus get_status(void) const; 
+
+  ///
   PinguStatus set_status(PinguStatus);
 
   /// Returns the unique id of the pingu

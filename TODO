@@ -1,5 +1,6 @@
 Release Critical:
 ~~~~~~~~~~~~~~~~~
+ o Miner graebt durch solid
  o Add feature flag to list features compiled into pingus
  o You can scroll when you shoudn't be able to scroll (800x600)
  o bottom tiles aren't displayed
@@ -163,6 +164,6 @@ DOOR.WAV      MOUSEPRE.WAV  OING.WAV	     THUD.WAV
 
 
 
-$Date: 2000/06/16 17:41:54 $
+$Date: 2000/06/18 18:06:55 $
 
 -= EOF =-

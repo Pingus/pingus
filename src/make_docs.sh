@@ -1,5 +1,5 @@
 #! /bin/sh
 
-doc++ -d ../doc/html/  `find . -name "*.hh"`
+doc++ -j -T classHeader.inc -d ../doc/html/  `find . -name "*.hh"`
 
 # EOF #

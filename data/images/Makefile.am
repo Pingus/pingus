@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.14 2000/06/16 17:41:55 grumbel Exp $
+#  $Id: Makefile.am,v 1.15 2000/06/18 18:06:55 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -121,6 +121,7 @@ exits/sweetexit.pcx \
 exits/sortie.pcx \
 exits/sortie.tga \
 entrances/entrance.pcx \
+entrances/generic.pcx \
 entrances/woodthing_nmov.tga \
 entrances/woodthing_mov.pcx \
 entrances/cloudent.pcx \
@@ -378,8 +379,6 @@ traps/laser_exit.pcx \
 traps/teleporter.tga \
 traps/bumper.pcx \
 traps/bumper_cmap.pcx 
-
-
 
 # cat ../data/*.scr | sed -n "s/^[ 	]*[A-Za-z0-9_]*[ 	]*=[ 	]*\([^ ]*\) (.*);/\1/p"
 
