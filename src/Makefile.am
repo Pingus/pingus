@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.80 2002/06/25 21:31:40 grumbel Exp $
+#  $Id: Makefile.am,v 1.81 2002/06/28 12:50:21 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -65,144 +65,279 @@ pingus_LDADD = \
         generic/libpingus_generic.a
 
 pingus_SOURCES = \
-action_button.hxx	      multiplayer_game.hxx \
-action_data.hxx		      multiplex_controller.hxx \
-action_holder.hxx	      music_provider.hxx \
-algo.hxx		      my_gettext.hxx \
-alpha_button.hxx	      option_menu.hxx \
-anim_counter.hxx	      path_manager.hxx \
-audio.hxx		      pingu.hxx \
-blitter.hxx		      pingu_action.hxx \
-bmp_map.hxx		      pingu_action_factory.hxx \
-button_panel.hxx	      pingu_enums.hxx \
-capture_rectangle.hxx	      pingu_holder.hxx \
-client.hxx		      pingu_info.hxx \
-col_map.hxx		      pingu_map.hxx \
-color.hxx		      pingus_counter.hxx \
-config.hxx		      pingus_counter_bar.hxx \
-console.hxx		      pingus_error.hxx \
-controllable.hxx	      pingus_main.hxx \
-controller.hxx		      pingus_map_manager.hxx \
-counter.hxx		      pingus_menu.hxx \
-credits.hxx		      pingus_menu_manager.hxx \
-cursor.hxx		      pingus_resource.hxx \
-debug.hxx		      pingus_sub_menu.hxx \
-debug_gui.hxx		      playfield.hxx \
-debug_stream.hxx	      playfield_view.hxx \
-delta_manager.hxx	      plf.hxx \
-demo_player.hxx		      plf_parser.hxx \
-demo_recorder.hxx	      plf_plf.hxx \
-direction.hxx		      plf_preview.hxx \
-display.hxx		      plt_parser.hxx \
-editor_hotspot.hxx	      plt_xml.hxx \
-entrance.hxx		      psm_parser.hxx \
-entrance_data.hxx	      range.hxx \
-exit.hxx		      res_descriptor.hxx \
-exit_data.hxx		      result.hxx \
-exit_menu.hxx		      \
-fade_out.hxx		      \
-force_vector.hxx	      \
-fps_counter.hxx		      screenshot.hxx \
-game_counter.hxx	      server.hxx \
-		      smallmap.hxx \
-game_event.hxx		      smallmap_image.hxx \
-game_session.hxx	      sound.hxx \
-game_session_result.hxx       sound_dummy.hxx \
-game_time.hxx		      sound_real.hxx \
-gamepad_controller.hxx	      specs_reader.hxx \
-generic_main.hxx	      spot_map.hxx \
-global_event.hxx	      sprite.hxx \
-globals.hxx		      story.hxx \
-groundpiece_data.hxx	      string_converter.hxx \
-gui_obj.hxx		      surface_button.hxx \
-hotspot.hxx		      system.hxx \
-hotspot_data.hxx	      target_provider.hxx \
-hurry_up.hxx		      theme.hxx \
-input_event.hxx		      theme_selector.hxx \
-intro.hxx		      time_display.hxx \
-keyboard_controller.hxx       timer.hxx \
-layer_manager.hxx	      trap.hxx \
-level_desc.hxx		      trap_data.hxx \
-level_interrupt.hxx	      true_server.hxx \
-level_result.hxx	      usb_mouse_controller.hxx \
-liquid.hxx		      view.hxx \
-liquid_data.hxx		      wav_provider.hxx \
-loading.hxx		      weather_data.hxx \
-main_menu.hxx		      world.hxx \
-menu_background.hxx	      worldobj.hxx \
-message_box.hxx		      worldobj_data.hxx \
-mouse_controller.hxx	      worldobj_data_factory.hxx \
-multiline_text.hxx	      worldobj_group_data.hxx \
-multiplayer_client.hxx	      xml_helper.hxx \
-multiplayer_client_child.hxx  xml_plf.hxx \
-multiplayer_config.hxx \
-action_button.cxx	      music_provider.cxx \
-action_holder.cxx	      option_menu.cxx \
-algo.cxx		      path_manager.cxx \
-alpha_button.cxx	      pingu.cxx \
-anim_counter.cxx	      pingu_action.cxx \
-audio.cxx		      pingu_action_factory.cxx \
-blitter.cxx		      pingu_holder.cxx \
-bmp_map.cxx		      pingu_info.cxx \
-button_panel.cxx	      pingu_map.cxx \
-capture_rectangle.cxx	      pingus_counter.cxx \
-client.cxx		      pingus_counter_bar.cxx \
-col_map.cxx		      pingus_error.cxx \
-config.cxx		      pingus_main.cxx \
-console.cxx		      pingus_map_manager.cxx \
-controllable.cxx	      pingus_menu.cxx \
-controller.cxx		      pingus_menu_manager.cxx \
-counter.cxx		      pingus_resource.cxx \
-credits.cxx		      pingus_sub_menu.cxx \
-cursor.cxx		      playfield.cxx \
-debug.cxx		      playfield_view.cxx \
-debug_gui.cxx		      plf.cxx \
-debug_stream.cxx	      plf_parser.cxx \
-demo_player.cxx		      plf_plf.cxx \
-demo_recorder.cxx	      plf_preview.cxx \
-direction.cxx		      plt_parser.cxx \
-display.cxx		      plt_xml.cxx \
-entrance.cxx		      psm_parser.cxx \
-entrance_data.cxx	      range.cxx \
-exit.cxx		      res_descriptor.cxx \
-exit_data.cxx		      result.cxx \
-exit_menu.cxx		      \
-fade_out.cxx		      \
-force_vector.cxx	      screenshot.cxx \
-fps_counter.cxx		      server.cxx \
-game_counter.cxx	      smallmap.cxx \
-game_session.cxx	      smallmap_image.cxx \
-game_session_result.cxx       sound.cxx \
-game_time.cxx		      sound_dummy.cxx \
-gamepad_controller.cxx	      sound_real.cxx \
-generic_main.cxx	      specs_reader.cxx \
-global_event.cxx	      spot_map.cxx \
-globals.cxx		      sprite.cxx \
-groundpiece_data.cxx	      story.cxx \
-gui_obj.cxx		      string_converter.cxx \
-hotspot.cxx		      surface_button.cxx \
-hotspot_data.cxx	      system.cxx \
-hurry_up.cxx		      target_provider.cxx \
-intro.cxx		      theme.cxx \
-keyboard_controller.cxx       theme_selector.cxx \
-layer_manager.cxx	      time_display.cxx \
-level_desc.cxx		      timer.cxx \
-level_interrupt.cxx	      trap.cxx \
-level_result.cxx	      trap_data.cxx \
-liquid.cxx		      true_server.cxx \
-liquid_data.cxx		      usb_mouse_controller.cxx \
-loading.cxx		      view.cxx \
-main_menu.cxx		      wav_provider.cxx \
-menu_background.cxx	      weather_data.cxx \
-message_box.cxx		      world.cxx \
-mouse_controller.cxx	      worldobj.cxx \
-multiline_text.cxx	      worldobj_data.cxx \
-multiplayer_client.cxx	      worldobj_data_factory.cxx \
-multiplayer_client_child.cxx  worldobj_group_data.cxx \
-multiplayer_config.cxx	      xml_helper.cxx \
-multiplayer_game.cxx	      xml_plf.cxx \
+action_button.cxx \
+action_button.hxx \
+action_data.hxx \
+action_holder.cxx \
+action_holder.hxx \
+algo.cxx \
+algo.hxx \
+alpha_button.cxx \
+alpha_button.hxx \
+anim_counter.cxx \
+anim_counter.hxx \
+audio.cxx \
+audio.hxx \
+blitter.cxx \
+blitter.hxx \
+bmp_map.cxx \
+bmp_map.hxx \
+button_panel.cxx \
+button_panel.hxx \
+capture_rectangle.cxx \
+capture_rectangle.hxx \
+client.cxx \
+client.hxx \
+col_map.cxx \
+col_map.hxx \
+color.hxx \
+config.cxx \
+config.hxx \
+console.cxx \
+console.hxx \
+controllable.cxx \
+controllable.hxx \
+controller.cxx \
+controller.hxx \
+counter.cxx \
+counter.hxx \
+credits.cxx \
+credits.hxx \
+cursor.cxx \
+cursor.hxx \
+debug.cxx \
+debug.hxx \
+debug_gui.cxx \
+debug_gui.hxx \
+debug_stream.cxx \
+debug_stream.hxx \
+delta_manager.hxx \
+demo_player.cxx \
+demo_player.hxx \
+demo_recorder.cxx \
+demo_recorder.hxx \
+direction.cxx \
+direction.hxx \
+display.cxx \
+display.hxx \
+editor_hotspot.hxx \
+entrance.cxx \
+entrance.hxx \
+entrance_data.cxx \
+entrance_data.hxx \
+exit.cxx \
+exit.hxx \
+exit_data.cxx \
+exit_data.hxx \
+exit_menu.cxx \
+exit_menu.hxx \
+fade_out.cxx \
+fade_out.hxx \
+force_vector.cxx \
+force_vector.hxx \
+fps_counter.cxx \
+fps_counter.hxx \
+game_counter.cxx \
+game_counter.hxx \
+game_delta.hxx \
+game_event.hxx \
+game_session.cxx \
+game_session.hxx \
+game_session_result.cxx \
+game_session_result.hxx \
+game_time.cxx \
+game_time.hxx \
+gamepad_controller.cxx \
+gamepad_controller.hxx \
+generic_main.cxx \
+generic_main.hxx \
+global_event.cxx \
+global_event.hxx \
+globals.cxx \
+globals.hxx \
+groundpiece_data.cxx \
+groundpiece_data.hxx \
+gui_obj.cxx \
+gui_obj.hxx \
+hotspot.cxx \
+hotspot.hxx \
+hotspot_data.cxx \
+hotspot_data.hxx \
+html_browser.cxx \
+html_browser.hxx \
+hurry_up.cxx \
+hurry_up.hxx \
+input_event.hxx \
+intro.cxx \
+intro.hxx \
+keyboard_controller.cxx \
+keyboard_controller.hxx \
+layer_manager.cxx \
+layer_manager.hxx \
+level_desc.cxx \
+level_desc.hxx \
+level_interrupt.cxx \
+level_interrupt.hxx \
+level_result.cxx \
+level_result.hxx \
+libxmlfwd.hxx \
+liquid.cxx \
+liquid.hxx \
+liquid_data.cxx \
+liquid_data.hxx \
+loading.cxx \
+loading.hxx \
+main_menu.cxx \
+main_menu.hxx \
 math.hxx \
-html_browser.hxx              html_browser.cxx \
-resource_modifier.hxx         resource_modifier.cxx
+menu_background.cxx \
+menu_background.hxx \
+message_box.cxx \
+message_box.hxx \
+mouse_controller.cxx \
+mouse_controller.hxx \
+multiline_text.cxx \
+multiline_text.hxx \
+multiplayer_client.cxx \
+multiplayer_client.hxx \
+multiplayer_client_child.cxx \
+multiplayer_client_child.hxx \
+multiplayer_config.cxx \
+multiplayer_config.hxx \
+multiplayer_game.cxx \
+multiplayer_game.hxx \
+multiplex_controller.hxx \
+music_provider.cxx \
+music_provider.hxx \
+my_gettext.hxx \
+option_menu.cxx \
+option_menu.hxx \
+path_manager.cxx \
+path_manager.hxx \
+pingu.cxx \
+pingu.hxx \
+pingu_action.cxx \
+pingu_action.hxx \
+pingu_action_factory.cxx \
+pingu_action_factory.hxx \
+pingu_enums.hxx \
+pingu_holder.cxx \
+pingu_holder.hxx \
+pingu_info.cxx \
+pingu_info.hxx \
+pingu_map.cxx \
+pingu_map.hxx \
+pingus_counter.cxx \
+pingus_counter.hxx \
+pingus_counter_bar.cxx \
+pingus_counter_bar.hxx \
+pingus_error.cxx \
+pingus_error.hxx \
+pingus_main.cxx \
+pingus_main.hxx \
+pingus_map_manager.cxx \
+pingus_map_manager.hxx \
+pingus_menu.cxx \
+pingus_menu.hxx \
+pingus_menu_manager.cxx \
+pingus_menu_manager.hxx \
+pingus_resource.cxx \
+pingus_resource.hxx \
+pingus_sub_menu.cxx \
+pingus_sub_menu.hxx \
+playfield.cxx \
+playfield.hxx \
+playfield_view.cxx \
+playfield_view.hxx \
+plf.cxx \
+plf.hxx \
+plf_parser.cxx \
+plf_parser.hxx \
+plf_plf.cxx \
+plf_plf.hxx \
+plf_preview.cxx \
+plf_preview.hxx \
+plt_parser.cxx \
+plt_parser.hxx \
+plt_xml.cxx \
+plt_xml.hxx \
+prefab_data.hxx \
+psm_parser.cxx \
+psm_parser.hxx \
+range.cxx \
+range.hxx \
+res_descriptor.cxx \
+res_descriptor.hxx \
+resource_modifier.cxx \
+resource_modifier.hxx \
+result.cxx \
+result.hxx \
+screenshot.cxx \
+screenshot.hxx \
+server.cxx \
+server.hxx \
+smallmap.cxx \
+smallmap.hxx \
+smallmap_image.cxx \
+smallmap_image.hxx \
+sound.cxx \
+sound.hxx \
+sound_dummy.cxx \
+sound_dummy.hxx \
+sound_real.cxx \
+sound_real.hxx \
+specs_reader.cxx \
+specs_reader.hxx \
+spot_map.cxx \
+spot_map.hxx \
+sprite.cxx \
+sprite.hxx \
+story.cxx \
+story.hxx \
+string_converter.cxx \
+string_converter.hxx \
+surface_button.cxx \
+surface_button.hxx \
+system.cxx \
+system.hxx \
+target_provider.cxx \
+target_provider.hxx \
+theme.cxx \
+theme.hxx \
+theme_selector.cxx \
+theme_selector.hxx \
+time_display.cxx \
+time_display.hxx \
+timer.cxx \
+timer.hxx \
+trap.cxx \
+trap.hxx \
+trap_data.cxx \
+trap_data.hxx \
+true_server.cxx \
+true_server.hxx \
+usb_mouse_controller.cxx \
+usb_mouse_controller.hxx \
+view.cxx \
+view.hxx \
+wav_provider.cxx \
+wav_provider.hxx \
+weather_data.cxx \
+weather_data.hxx \
+world.cxx \
+world.hxx \
+world_impl.hxx \
+worldobj.cxx \
+worldobj.hxx \
+worldobj_data.cxx \
+worldobj_data.hxx \
+worldobj_data_factory.cxx \
+worldobj_data_factory.hxx \
+worldobj_group_data.cxx \
+worldobj_group_data.hxx \
+xml_helper.cxx \
+xml_helper.hxx \
+xml_plf.cxx \
+xml_plf.hxx
 
 ## EOF ##
