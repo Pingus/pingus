@@ -1,4 +1,4 @@
-//  $Id: SmokeParticle.cc,v 1.2 2000/02/09 21:43:44 grumbel Exp $
+//  $Id: SmokeParticle.cc,v 1.3 2000/03/08 01:37:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,7 +27,7 @@ SmokeParticle::SmokeParticle()
 
 // FIXME: Why the heck do I get an unresolved reference in
 // WoodThing.cc when I try to use SmokeParticle there?!
-SmokeParticle::SmokeParticle(int x, int y, double x_a, double y_a)
+SmokeParticle::SmokeParticle(int x, int y, float x_a, float y_a)
 {
   surface = CL_Surface::load("Particles/smoke", PingusResource::get("pingus.dat"));
   x_pos = x;
@@ -50,7 +50,7 @@ SmokeParticle::let_move(void)
 }
 
 void
-SmokeParticle::draw_offset(int ofx, int ofy, double s) const
+SmokeParticle::draw_offset(int ofx, int ofy, float s) const
 {
   if (fast_mode)
     return;

@@ -1,4 +1,4 @@
-//  $Id: Particle.cc,v 1.2 2000/02/09 21:43:44 grumbel Exp $
+//  $Id: Particle.cc,v 1.3 2000/03/08 01:37:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,12 +20,15 @@
 #include <cassert>
 #include "Particle.hh"
 
+PinguMap* Particle::map;
+ColMap*   Particle::colmap;
+
 Particle::Particle()
 {
 }
 
 // Set all parameters to theire default value
-Particle::Particle(int x, int y, double x_a, double y_a)
+Particle::Particle(int x, int y, float x_a, float y_a)
 {
   x_pos = x;
   y_pos = y;
@@ -40,7 +43,14 @@ Particle::~Particle()
 }
 
 void
-Particle::init(int x, int y, double x_a, double y_a)
+Particle::set_map(PinguMap* m)
+{
+  map = m;
+  colmap = map->get_colmap();
+}
+
+void
+Particle::init(int x, int y, float x_a, float y_a)
 {
   x_pos = x;
   y_pos = y;
@@ -61,7 +71,7 @@ Particle::let_move()
 }
 
 void
-Particle::draw_offset(int ofx, int ofy, double s) const
+Particle::draw_offset(int ofx, int ofy, float s) const
 {
   if (s == 1.0) {
     surface->put_screen(x_pos + ofx, y_pos + ofy);

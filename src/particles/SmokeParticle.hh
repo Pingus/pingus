@@ -1,4 +1,4 @@
-//  $Id: SmokeParticle.hh,v 1.2 2000/02/09 21:43:44 grumbel Exp $
+//  $Id: SmokeParticle.hh,v 1.3 2000/03/08 01:37:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,10 +30,10 @@ private:
   int time;
 public:
   SmokeParticle();
-  SmokeParticle(int, int, double, double);
+  SmokeParticle(int, int, float, float);
 
   void let_move(void);
-  void draw_offset(int ofx, int ofy, double s) const;
+  void draw_offset(int ofx, int ofy, float s) const;
 };
 
 #endif

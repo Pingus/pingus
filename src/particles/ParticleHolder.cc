@@ -1,4 +1,4 @@
-//  $Id: ParticleHolder.cc,v 1.3 2000/02/11 16:58:28 grumbel Exp $
+//  $Id: ParticleHolder.cc,v 1.4 2000/03/08 01:37:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -50,7 +50,7 @@ ParticleHolder::let_move()
 }
 
 void
-ParticleHolder::draw_offset(int x, int y, double s) // const
+ParticleHolder::draw_offset(int x, int y, float s) // const
 {
   for(std::list<Particle*>::iterator i = this->begin(); i != this->end(); i++) 
     { 
@@ -63,7 +63,7 @@ ParticleHolder::add_pingu_explo(int x, int y)
 {
   for(int i=0; i < 50; i++) 
     {
-      add_pingu_particle(x, y, frand()*10-5, frand()*10 -5);
+      add_pingu_particle(x, y, frand()*7 - 3.5, frand()* -7.0);
     }
 }
 
@@ -75,7 +75,7 @@ ParticleHolder::add_particle(Particle* p)
 }
 
 void
-ParticleHolder::add_pingu_particle(int x, int y, double vx,  double vy)
+ParticleHolder::add_pingu_particle(int x, int y, float vx,  float vy)
 {
   Particle* p;
   

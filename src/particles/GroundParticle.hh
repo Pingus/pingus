@@ -1,4 +1,4 @@
-//  $Id: GroundParticle.hh,v 1.2 2000/02/09 21:43:44 grumbel Exp $
+//  $Id: GroundParticle.hh,v 1.3 2000/03/08 01:37:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,10 +27,10 @@ class GroundParticle : public Particle
 private:
   int time;
 public:
-  GroundParticle(int x, int y, double x_a, double y_a);
+  GroundParticle(int x, int y, float x_a, float y_a);
 
   void let_move(void);
-  void draw_offset(int ofx, int ofy, double s) const;
+  void draw_offset(int ofx, int ofy, float s) const;
 };
 
 #endif
