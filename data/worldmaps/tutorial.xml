@@ -202,7 +202,7 @@
             <z-pos>0</z-pos>
           </position>
         </dot>
-        <levelname>playable/bridger-tutorial-grumbel.xml</levelname>
+        <levelname>playable/snow17-grumbel.xml</levelname>
       </leveldot>
 
 
@@ -215,7 +215,7 @@
             <z-pos>150</z-pos>
           </position>
         </dot>
-        <levelname>playable/placeholder.xml</levelname>
+        <levelname>playable/bridger-tutorial-grumbel.xml</levelname>
       </leveldot>
 
 
