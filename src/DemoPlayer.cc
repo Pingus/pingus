@@ -1,4 +1,4 @@
-//  $Id: DemoPlayer.cc,v 1.1 2000/06/08 19:57:06 grumbel Exp $
+//  $Id: DemoPlayer.cc,v 1.2 2000/06/20 17:52:48 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,8 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <fstream>
+#include "globals.hh"
+#include "algo.hh"
 #include "PingusError.hh"
 #include "DemoPlayer.hh"
 
@@ -36,11 +38,16 @@ DemoPlayer::get_levelname()
 }
 
 void
-DemoPlayer::load(const std::string& filename)
+DemoPlayer::load(const std::string& arg_filename)
 {
   const int buffer_size = 256;
   char buffer[buffer_size];
-  ifstream in(filename.c_str());
+  std::string filename;
+  ifstream in;
+  
+  filename = find_file(pingus_datadir, "levels/" + arg_filename);
+
+  in.open(filename.c_str());
 
   if (!in)
     throw PingusError("DemoPlayer: Couldn't load " + filename);

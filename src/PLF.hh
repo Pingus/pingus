@@ -1,4 +1,4 @@
-//  $Id: PLF.hh,v 1.9 2000/06/19 07:26:08 grumbel Exp $
+//  $Id: PLF.hh,v 1.10 2000/06/20 17:52:48 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -45,6 +45,10 @@ class PLF : public PLFParser
 private:
   ///
   std::string levelname;
+
+  /// The name of the file from were the current level was loaded
+  std::string filename;
+
   ///
   std::string psm_filename;
   ///
@@ -151,20 +155,30 @@ public:
   int         get_height(void);
   ///
   int         get_pingus(void);
+
   ///
   int         get_time(void);
+
   ///
   int         get_difficulty();
+
   ///
   MapType     map_type(void);
+
   ///
   int         get_number_to_save();
+
   ///
-  std::string get_description(void);
+  std::string get_description();
+
+  /** Returns the name of the current level, {\em not} the level file name. */
+  std::string get_levelname();
+
   ///
-  std::string get_levelname(void);
+  std::string get_filename();
+
   ///
-  std::string get_author(void);
+  std::string get_author();
   ///
   std::vector<hotspot_data>   get_hotspot(void);
   ///

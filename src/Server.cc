@@ -1,4 +1,4 @@
-//  $Id: Server.cc,v 1.11 2000/06/10 07:56:58 grumbel Exp $
+//  $Id: Server.cc,v 1.12 2000/06/20 17:52:48 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,9 @@
 #include <cstdio>
 #include <cstdlib>
 
+#include "System.hh"
 #include "globals.hh"
+#include "Pingu.hh"
 #include "Server.hh"
 #include "GameTime.hh"
 #include "Pingu.hh"
@@ -111,6 +113,21 @@ Server::send_event(std::string event)
   process_event(event);
 }
 
+/** PinguID search functor */
+struct PinguId : public unary_function<Pingu*, bool>
+{
+  int pingu_id;
+
+  PinguId(){}
+  PinguId(int i) {
+    pingu_id = i;
+  }
+ 
+  bool operator()(Pingu* pingu) {
+    return (pingu->get_id() == pingu_id);
+  }
+};
+
 void
 Server::process_event(std::string event)
 {
@@ -118,7 +135,7 @@ Server::process_event(std::string event)
   std::string token;
   const char delimiters[] = ":";
 
-  std::cout << "Event: " << GameTime::get_time() << ":" << event << std::endl;
+  //std::cout << "Event: " << GameTime::get_time() << ":" << event << std::endl;
 
   token = strtok(event_str, delimiters); // Get GameTime
 
@@ -143,26 +160,47 @@ Server::process_event(std::string event)
       pingus = world->get_pingu_p();
       
       // FIXME: This could need some optimization
-      for(PinguIter pingu=pingus->begin(); pingu != pingus->end(); ++pingu) 
+      PinguIter pingu = find_if(pingus->begin(), pingus->end(), PinguId(pingu_id));
+
+      if (pingu != pingus->end()) 
 	{
-	  if ((*pingu)->get_id() == pingu_id) 
+	  PinguAction* tmp_action = action_holder.get_action(action);
+	  
+	  if (tmp_action)
 	    {
-	      PinguAction* tmp_action = action_holder.get_action(action);
-	      
-	      if (tmp_action)
+	      if (!(*pingu)->set_action(tmp_action))
 		{
-		  if (!(*pingu)->set_action(tmp_action))
-		    {
-		      action_holder.push_action(action);
-		    }
+		  action_holder.push_action(action);
 		}
 	    }
+	} 
+      else 
+	{
+	  std::cout << "Server: PinguID: " << pingu_id << " not found, demo file corrupt?!" << std::endl;
 	}
+      /*
+	for(PinguIter pingu=pingus->begin(); pingu != pingus->end(); ++pingu) 
+	{
+	if ((*pingu)->get_id() == pingu_id) 
+	{
+	PinguAction* tmp_action = action_holder.get_action(action);
+	      
+	if (tmp_action)
+	{
+	if (!(*pingu)->set_action(tmp_action))
+	{
+	action_holder.push_action(action);
+	}
+	}
+	break;
+	}
+	}
+      */
     }
   else 
     {
-      std::cout << "Couldn't ident token: \""  << token << "\"" << std::endl;
-      std::cout << "Unknown Event: " << event << std::endl;
+      std::cout << "Server: Couldn't ident token: \""  << token << "\"" << std::endl;
+      std::cout << "Server: Unknown Event: " << event << std::endl;
     }
   
   free(event_str);
@@ -198,7 +236,9 @@ void
 Server::record_demo()
 {
   cout << "Recording deme..." << endl;
-  recorder.set_levelname("test3");
+  // We do only save the basename of the demofile, not the complete
+  // path, do gain at least a bit portability of the demo files.
+  recorder.set_levelname(System::basename(filename));
 }
 
 ActionHolder*

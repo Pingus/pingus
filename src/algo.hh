@@ -1,4 +1,4 @@
-//  $Id: algo.hh,v 1.10 2000/06/19 07:26:08 grumbel Exp $
+//  $Id: algo.hh,v 1.11 2000/06/20 17:52:48 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -55,7 +55,7 @@ char*  tolowerstr(char*);
     @param path A colon seperated list of directories 
     @param filename An uncomplete/relative filename, it might consist
            of directories */
-std::string find_file(std::string path, std::string filename);
+std::string find_file(const std::string& path, const std::string& filename);
 
 //std::string basename(std::string filename);
 /*template<class T> inline std::string to_string(const T& n)

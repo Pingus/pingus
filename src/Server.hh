@@ -1,4 +1,4 @@
-//  $Id: Server.hh,v 1.8 2000/06/19 07:26:08 grumbel Exp $
+//  $Id: Server.hh,v 1.9 2000/06/20 17:52:48 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -55,6 +55,10 @@ protected:
   bool demo_mode;
   ///
   std::string demo_file;
+
+  /// The name of the current level file
+  std::string filename;
+
   ///
   bool get_next_event;
   ///

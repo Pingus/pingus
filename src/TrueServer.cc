@@ -1,4 +1,4 @@
-//  $Id: TrueServer.cc,v 1.11 2000/06/08 20:05:35 grumbel Exp $
+//  $Id: TrueServer.cc,v 1.12 2000/06/20 17:52:48 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -61,6 +61,8 @@ void
 TrueServer::start(PLF* level_data)
 {
   Timer timer;
+
+  filename = level_data->get_filename();
 
   std::vector<button_data> bdata;
   PingusLevelDesc leveldesc(level_data);

@@ -1,4 +1,4 @@
-//  $Id: PLF.cc,v 1.10 2000/06/19 07:26:08 grumbel Exp $
+//  $Id: PLF.cc,v 1.11 2000/06/20 17:52:48 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,8 +34,9 @@ int    str_to_int(const string& str);
 float str_to_float(const string& str);
 
 // Create a PLF object and start parsing the given file.
-PLF::PLF(string filename)
+PLF::PLF(string arg_filename)
 {
+  filename = arg_filename;
   x_pos = y_pos = 0;
   width = 0; height = 0;
   pingus = 100;
@@ -473,7 +474,13 @@ PLF::get_description(void)
   return description;
 }
 
-string
+std::string
+PLF::get_filename()
+{
+  return filename;
+}
+
+std::string
 PLF::get_levelname()
 {
   return levelname;

@@ -1,4 +1,4 @@
-//  $Id: algo.cc,v 1.5 2000/04/25 17:54:40 grumbel Exp $
+//  $Id: algo.cc,v 1.6 2000/06/20 17:52:48 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -89,7 +89,7 @@ tolowerstr(char* s)
 // Searches the given path to find the given file, it returns the
 // complete filename of the searched file.
 std::string
-find_file(std::string paths, std::string filename)
+find_file(const std::string& paths, const std::string& filename)
 {
   char* path;
   char* token;
