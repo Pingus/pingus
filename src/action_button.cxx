@@ -1,4 +1,4 @@
-//  $Id: action_button.cxx,v 1.4 2002/07/29 22:17:53 grumbel Exp $
+//  $Id: action_button.cxx,v 1.5 2002/08/02 11:25:46 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #include <ClanLib/Display/Display/display.h>
 #include <ClanLib/Display/Font/font.h>
 #include <ClanLib/Display/Input/mouse.h>
+
 #include "globals.hxx"
 #include "pingus_resource.hxx"
 #include "action_button.hxx"
@@ -120,10 +121,10 @@ VerticalActionButton::VerticalActionButton(int x, int y, ActionName name, int ow
 VerticalActionButton::~VerticalActionButton() {}
 
 bool
-VerticalActionButton::mouse_over(const CL_Vector& pos)
+VerticalActionButton::mouse_over(int x, int y)
 {
-  if (pos.x > x_pos && pos.x < x_pos + 60
-      && pos.y > y_pos && pos.y <= y_pos + 35) 
+  if (x > x_pos && x < x_pos + 60
+      && y > y_pos && y <= y_pos + 35) 
     {
       return true;
     } 
@@ -247,10 +248,10 @@ ForwardButton::draw()
 }
 
 bool
-ForwardButton::mouse_over(const CL_Vector& pos)
+ForwardButton::mouse_over(int x, int y)
 {
-  if (pos.x > x_pos && pos.x < x_pos + int(surface.get_width())
-      && pos.y > y_pos && pos.y < y_pos + int(surface.get_height()))
+  if (x > x_pos && x < x_pos + int(surface.get_width())
+      && y > y_pos && y < y_pos + int(surface.get_height()))
     {
       return true;
     } else  {
@@ -280,10 +281,10 @@ PauseButton::draw()
 }
 
 bool
-PauseButton::mouse_over(const CL_Vector& pos)
+PauseButton::mouse_over (int x, int y)
 {
-  if (pos.x > x_pos && pos.x < x_pos + int(surface.get_width())
-      && pos.y > y_pos && pos.y < y_pos + int(surface.get_height()))
+  if (x > x_pos && x < x_pos + int(surface.get_width())
+      && y > y_pos && y < y_pos + int(surface.get_height()))
     {
       return true;
     } else  {

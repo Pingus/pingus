@@ -1,4 +1,4 @@
- //  $Id: theme.cxx,v 1.2 2002/06/13 14:25:12 torangan Exp $
+ //  $Id: theme.cxx,v 1.3 2002/08/02 11:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,6 +33,7 @@
 #include "theme.hxx"
 #include "plf_plf.hxx"
 #include "xml_plf.hxx"
+#include "screen_manager.hxx"
 
 Theme::Theme(std::string filename)
   : filename (filename)
@@ -260,9 +261,10 @@ Theme::play()
      
   try 
     {
-      PingusGameSession game(path_manager.complete("levels/" + plt.get_levels()[current_level]));
-  
-      game.start();
+      assert (!"Theme::play unimplemented");
+      
+      ScreenManager::instance()->push_screen
+	(new PingusGameSession(path_manager.complete("levels/" + plt.get_levels()[current_level])));
 
       if (current_level == accessible_levels)
 	++accessible_levels;

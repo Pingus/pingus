@@ -1,4 +1,4 @@
-//  $Id: client.hxx,v 1.6 2002/08/01 21:46:26 grumbel Exp $
+//  $Id: client.hxx,v 1.7 2002/08/02 11:25:46 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -44,7 +44,6 @@ class CL_Vector;
 class ButtonPanel;
 class Controller;
 class Cursor;
-class GuiObj;
 class HurryUp;
 class PLF;
 class PingusCounter;
@@ -57,8 +56,6 @@ class TimeDisplay;
 class Client : public GUIScreen
 {
 private:
-  
-  PLF* plf;
   Result result;
   Server* server;
 
@@ -68,18 +65,6 @@ private:
   bool do_replay;
   bool is_finished;
 
-  std::vector<GuiObj*> obj;
-  typedef std::vector<GuiObj*>::iterator GuiObjIter;
-  typedef std::vector<GuiObj*>::reverse_iterator GuiObjRIter;
-
-  GUI::RootGUIManager* gui_manager;
-
-  /** The object that got a mouse_down() */
-  GuiObj* grabbed_gui_obj;
-
-  /** The object which is currently under the cursor */
-  GuiObj* current_gui_obj;
-
   ButtonPanel*   button_panel;
   PingusCounter* pcounter;
   Playfield*     playfield;
@@ -87,54 +72,19 @@ private:
   SmallMap*      small_map;
   HurryUp*       hurry_up;
 
-  Controller* controller;
-  Input::Controller* input_controller;
-  Cursor*     cursor;
-
-  CL_Slot on_button_press_slot;
-  CL_Slot on_button_release_slot;
-
-  // Slots for controller handling
-  CL_Slot slot_left_pressed;
-  CL_Slot slot_left_released;
-  CL_Slot slot_middle_pressed;
-  CL_Slot slot_right_pressed;
-  CL_Slot slot_right_released;
-  CL_Slot slot_abort_pressed;
-  CL_Slot slot_pause_pressed;
-  CL_Slot slot_fast_forward_pressed;
-  CL_Slot slot_scroll_left_pressed;
-  CL_Slot slot_scroll_right_pressed;
-  CL_Slot slot_next_action_pressed;
-  CL_Slot slot_previous_action_pressed;
-  
+#if 0  
   void process_button_event (Input::ButtonEvent*);
   void process_pointer_event (Input::PointerEvent*);
   void process_axis_event (Input::AxisEvent*);
-
-  /** Return the GuiObj under the given coordinates */
-  GuiObj* get_gui_object (int x, int y);
+#endif 
 
   bool enabled;
 public:
-  Client(Controller* arg_controller, Server * s);
+  Client(Server * s);
   virtual ~Client();
 
   Server* get_server() { return server; }
   Playfield* get_playfield() { return playfield; }
-
-  /** Display the game and enter the main game loop */
-  void display();
-  void send_next_event();
-
-  void play_level(PLF*);
-
-  /// FIXME: Document me... or rewrite me
-  void init_display();
-  /// FIXME: Document me... or rewrite me
-  void deinit_display();
-  ///
-  void resize_display();
 
   void set_fast_forward(bool value);
   bool get_fast_forward();
@@ -148,43 +98,24 @@ public:
   void set_finished();
   Result get_result();
 
-  /** Draw all gui elements, etc. */
-  void draw ();
-
   /** Update all parts of the world */
   void update (float delta);
 
-  void process_events ();
+  //void process_events ();
 
   ButtonPanel* get_button_panel () { return button_panel; }
 
-  virtual void on_button_press(CL_InputDevice *device, const CL_Key &key);
-  virtual void on_button_release(CL_InputDevice *device, const CL_Key &key);
+  void on_button_press(int x, int y);
+  void on_button_release(int x, int y);
 
-  void on_mouse_button_press(const CL_Key &key);
+  void on_butmouse_button_press(const CL_Key &key);
   void on_mouse_button_release(const CL_Key &key);
-  
-  void on_keyboard_button_press(const CL_Key &key);
-  void on_keyboard_button_release(const CL_Key &key);
 
-  void on_left_pressed (const CL_Vector& pos);
-  void on_left_released (const CL_Vector& pos);
-  void on_middle_pressed (const CL_Vector& pos);
-  void on_right_pressed (const CL_Vector& pos);
-  void on_right_released (const CL_Vector& pos);
-  void on_abort_pressed (const CL_Vector& pos);
-  void on_pause_pressed (const CL_Vector& pos);
-  void on_fast_forward_pressed (const CL_Vector& pos);
-  void on_scroll_left_pressed (const CL_Vector& pos);
-  void on_scroll_right_pressed (const CL_Vector& pos);
-  void on_next_action_pressed (const CL_Vector& pos);
-  void on_previous_action_pressed (const CL_Vector& pos);
-
-  void register_event_handler();
-  void unregister_event_handler();
-
-  void disable_event_handler();
-  void enable_event_handler();
+  // Overloaded GUIScreen stuff
+  void draw ();
+  void update (const GameDelta& delta);
+  void on_startup ();
+  void on_shutdown ();
 };
 
 #endif

@@ -1,4 +1,4 @@
-//  $Id: button_panel.cxx,v 1.7 2002/07/29 22:17:53 grumbel Exp $
+//  $Id: button_panel.cxx,v 1.8 2002/08/02 11:25:46 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,7 +22,6 @@
 #include <ClanLib/Display/Display/display.h>
 #include "globals.hxx"
 #include "button_panel.hxx"
-#include "controller.hxx"
 #include "client.hxx"
 #include "server.hxx"
 #include "world.hxx"
@@ -32,12 +31,10 @@ using namespace Pingus::Actions;
 
 CL_Surface ButtonPanel::button_cap;
 
-ButtonPanel::ButtonPanel(PLF* plf, Controller* arg_controller,
-                  			 int arg_x_pos, int arg_y_pos)
+ButtonPanel::ButtonPanel(PLF* plf, int arg_x_pos, int arg_y_pos)
   : armageddon_pressed(false),
     left_pressed(0),
     last_press(0),
-    controller (arg_controller),
     x_pos (arg_x_pos), 
     y_pos (arg_y_pos)
 {
@@ -59,7 +56,7 @@ ButtonPanel::ButtonPanel(PLF* plf, Controller* arg_controller,
     {
       a_buttons.push_back(new VerticalActionButton (x_pos, i * 38 + y_pos,
 						    buttons_data[i].name,
-						    controller->get_owner ()));
+						    0)); //FIXMEcontroller->get_owner ()));
     }
 
   armageddon = new ArmageddonButton(CL_Display::get_width() - 40,     CL_Display::get_height() - 62);
@@ -164,7 +161,7 @@ ButtonPanel::on_button_press(int x, int y)
 {
   for(AButtonIter button = a_buttons.begin(); button != a_buttons.end(); button++)
     {
-      if ((*button)->mouse_over(controller->get_pos ()))
+      if ((*button)->mouse_over(x, y))
 	pressed_button = button;
     }
   
@@ -185,12 +182,12 @@ ButtonPanel::on_button_press(int x, int y)
       return;
     }
     
-  if (pause->mouse_over(controller->get_pos ()))
+  if (pause->mouse_over(x, y))
     {
       client->set_pause(!client->get_pause());
       return;
     }
-  else if (forward->mouse_over(controller->get_pos ()))
+  else if (forward->mouse_over(x, y))
     {
       client->set_fast_forward(!client->get_fast_forward());
       return;
@@ -202,7 +199,7 @@ ButtonPanel::is_at (int x, int y)
 {
   for(AButtonIter button = a_buttons.begin(); button != a_buttons.end(); button++)
     {
-      if ((*button)->mouse_over(CL_Vector (x, y)))
+      if ((*button)->mouse_over(x, y))
 	return true;
     }
   return false;

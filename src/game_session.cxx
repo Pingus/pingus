@@ -1,4 +1,4 @@
-//  $Id: game_session.cxx,v 1.2 2002/06/13 14:25:12 torangan Exp $
+//  $Id: game_session.cxx,v 1.3 2002/08/02 11:25:46 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,15 +23,15 @@
 #include "game_session.hxx"
 #include "game_session_result.hxx"
 #include "plf.hxx"
+#include "screen_manager.hxx"
 
 using boost::shared_ptr;
 
 PingusGameSession::PingusGameSession (std::string arg_filename)
   : filename (arg_filename),
-    controller (new MouseController ()),
     plf(PLF::create (filename)),
     server (new TrueServer (plf)),
-    client (new Client(controller, server))
+    client (new Client(server))
 {
 }
 
@@ -40,21 +40,24 @@ PingusGameSession::~PingusGameSession ()
   delete client;
   delete server;
   delete plf;
-  delete controller;
-}
-
-void 
-PingusGameSession::start ()
-{
-  std::cout << "PingusGameSession: Giving control to the client..." << std::endl;
-  client->display();
-  std::cout << "PingusGameSession: Got control back from the client." << std::endl;
 }
 
 PingusGameSessionResult
 PingusGameSession::get_result ()
 {
   return PingusGameSessionResult ();
+}
+
+void
+PingusGameSession::draw ()
+{
+  client->draw ();
+}
+
+void
+PingusGameSession::update (const GameDelta& delta)
+{
+  client->update (delta);
 }
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: button_panel.hxx,v 1.5 2002/07/29 11:57:38 grumbel Exp $
+//  $Id: button_panel.hxx,v 1.6 2002/08/02 11:25:46 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,7 +29,6 @@
 class CL_Key;
 class Client;
 class PLF;
-class Controller;
 
 class ButtonPanel : public GUI::Component
 {
@@ -53,11 +52,10 @@ private:
   unsigned int  last_press;
   static CL_Surface button_cap;
 
-  Controller* controller;
 
   int x_pos, y_pos;
 public:
-  ButtonPanel(PLF* plf, Controller*, int arg_x_pos, int arg_y_pos);
+  ButtonPanel(PLF* plf, int arg_x_pos, int arg_y_pos);
   virtual ~ButtonPanel();
 
   void on_button_press(int x, int y);

@@ -1,4 +1,4 @@
-//  $Id: client.cxx,v 1.7 2002/07/29 11:57:38 grumbel Exp $
+//  $Id: client.cxx,v 1.8 2002/08/02 11:25:46 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -40,90 +40,35 @@
 #include "cursor.hxx"
 #include "server.hxx"
 #include "button_panel.hxx"
+#include "screen_manager.hxx"
 
 // GUI
-#include "gui/root_gui_manager.hxx"
 #include "gui/surface_button.hxx"
 
-// Input Header files
-#include "input/event.hxx"
-#include "input/button_event.hxx"
-#include "input/axis_event.hxx"
-#include "input/pointer_event.hxx"
-#include "input/controller.hxx"
-
-Client::Client(Controller* arg_controller, Server * s)
+Client::Client(Server * s)
   : server       (s),
     fast_forward (false),
     pause        (false),
     skip_frame   (0),
     do_replay    (false),
     is_finished  (false),
-    grabbed_gui_obj (0),
-    current_gui_obj (0),
     button_panel (0),
     pcounter     (0),
     playfield    (0),
     time_display (0),
     small_map    (0),
-    hurry_up     (0),
-    controller   (arg_controller),
-    cursor       (new Cursor ("cursors/animcross", "core", controller))
+    hurry_up     (0)
+  //cursor       (new Cursor ("cursors/animcross", "core", controller))
 {
-  //player = 0;
- 
-  Display::add_flip_screen_hook(cursor);
-  //Display::add_flip_screen_hook(new Cursor ("cursors/cursor", "core", boost::shared_ptr<Controller>(new MouseController ())));
-
-  std::cout << "Creating controller" << std::endl;
-  input_controller = new Input::Controller ("../doc/mycontroller.xml");
-  std::cout << "Creating controller done" << std::endl;
-  std::cout << "Creating guix" << std::endl;
-  gui_manager = new GUI::RootGUIManager (input_controller);
-  gui_manager->add (new GUI::SurfaceButton (400, 200,
-					    ResDescriptor ("editor/button", "core", ResDescriptor::RD_RESOURCE),
-					    ResDescriptor ("editor/button_pressed", "core", ResDescriptor::RD_RESOURCE),
-					    ResDescriptor ("editor/actions", "core", ResDescriptor::RD_RESOURCE)));
-}
-
-Client::~Client()
-{
-  //std::cout << "Client:~Client" << std::endl;
-  Display::remove_flip_screen_hook(cursor);
-  deinit_display();
-
-  delete playfield;    
-  delete button_panel;
-  delete pcounter;
-  delete small_map;
-  delete time_display;
-  delete hurry_up;
-  delete cursor;
-}
-
-void
-Client::display()
-{
-  fast_forward = false;
-  pause = false;
-  do_replay = false;
-  is_finished = false;
-  skip_frame = 0;
-
-  play_level(server->get_plf ());
-
-  //FadeOut::random();
-
-  if (verbose) std::cout << "Displaying results..." << CL_System::get_time()  << std::flush;
-  PingusLevelResult r(server->get_world(), controller);
-  r.draw();
+  //Display::add_flip_screen_hook(cursor);
   
-  if (verbose) std::cout << "finished " << CL_System::get_time()  << std::endl;
-}
+  gui_manager->add (new GUI::SurfaceButton 
+		    (400, 200,
+		     ResDescriptor ("editor/button", "core", ResDescriptor::RD_RESOURCE),
+		     ResDescriptor ("editor/button_pressed", "core", ResDescriptor::RD_RESOURCE),
+		     ResDescriptor ("editor/actions", "core", ResDescriptor::RD_RESOURCE)));
 
-void 
-Client::init_display()
-{
+
   Timer timer;
   
   timer.start();
@@ -131,23 +76,25 @@ Client::init_display()
 
   Display::set_cursor(CL_MouseCursorProvider::load("Cursors/cursor", 
 						   PingusResource::get("game")));
-  Display::show_cursor();
   
-  button_panel = new ButtonPanel(plf, controller, 2, CL_Display::get_height()/2);
-  pcounter     = new PingusCounter();  playfield = new Playfield(this, plf, server->get_world(), controller);
-  pcounter     = new PingusCounter();
+  button_panel = new ButtonPanel(server->get_plf (), 2, CL_Display::get_height()/2);
+  playfield    = new Playfield(this, server->get_plf (), server->get_world());
+  hurry_up     = new HurryUp();
+  pcounter     = new PingusCounter();  
   small_map    = new SmallMap();
   time_display = new TimeDisplay();
-  hurry_up     = new HurryUp();
    
-  button_panel->set_server(server);
-  time_display->set_server(server);
   button_panel->set_client(this);
+  button_panel->set_server(server);
+  hurry_up->set_client(this);
   pcounter->set_client(this);
   small_map->set_client(this);
-  hurry_up->set_client(this);
+  time_display->set_server(server);
 
-  playfield->set_clip_rect(0, 0, 
+  gui_manager->add (small_map);
+  gui_manager->add (button_panel);
+
+  /*playfield->set_clip_rect(0, 0, 
 			   CL_Display::get_width(),
 			   CL_Display::get_height());
 
@@ -155,126 +102,83 @@ Client::init_display()
   playfield->set_buttons(button_panel);
   playfield->set_server(server);
   playfield->set_client(this);
-
+  */
   // Adding all GuiObj's to the screen
-  obj.push_back(playfield);
-  obj.push_back(pcounter);
-  obj.push_back(time_display);
-  obj.push_back(hurry_up);
-
-  gui_manager->add (small_map);
-  gui_manager->add (button_panel);
-
+  //obj.push_back(playfield);
+  //obj.push_back(pcounter);
+  //obj.push_back(time_display);
+  //obj.push_back(hurry_up);
 
   if (verbose) std::cout << "done " << timer.stop() << std::endl;
 }
 
-void 
-Client::deinit_display()
+Client::~Client()
 {
-  Display::hide_cursor();
+  //Display::remove_flip_screen_hook(cursor);
+
+  //delete playfield;    
+  //delete button_panel;
+  //delete pcounter;
+  //delete small_map;
+  //delete time_display;
+  //delete hurry_up;
+  //  delete cursor;
 }
 
-void
-Client::resize_display()
-{
-}
-
 void 
-Client::play_level(PLF* arg_plf)
+Client::update (float delta)
 {
-  Timer timer;
+  std::cout << "Client::update (float delta)" << std::endl;
+  //cursor->update (delta);
+  //process input events
+  //process_events ();
 
-  plf = arg_plf;
-
-  timer.start();
-  //std::cout << "Client::play_level(), Reading PLF..." << std::flush;
-
-  register_event_handler();
-
-  init_display(); 
-
-  if (verbose)
-    std::cout << "Client: Entering main_loop. Startup time: " 
-	      << CL_System::get_time() << " msec." << std::endl;
+  // Let the window move its content
+#if 0
+  for(GuiObjIter i = obj.begin (); i != obj.end (); ++i)
+    (*i)->updateX();
   
-  // Clear both buffers
-  CL_Display::clear_display();
-  Display::flip_display();
-  CL_Display::clear_display();
+  for(GuiObjIter i = obj.begin (); i != obj.end (); ++i)
+    (*i)->update(delta);
+#endif 
+  // Let the server process a game loop
+  server->update(delta);
+  //send_next_event();
 
-  PingusSound::play_music(path_manager.complete ("music/" + plf->get_music().res_name));
-
-  /** Main game loop */
-  DeltaManager delta;
-  float wannabe_delta = 0.0333f;
+  /*float wannabe_delta = 0.0333f;
   unsigned int frames = 1;
   bool auto_frame_skip = false;
-  float current_delta;
-  // FIXME: using this twice will crash with an X Error
-  //CL_MouseCursor::hide ();
-  while (!server->is_finished()) 
-    {       
-      CL_System::keep_alive ();
-      CL_System::sleep (0);
-      // Update 30 times a second
-      current_delta = delta.get ();
-      if (current_delta > wannabe_delta)
+  float current_delta;*/
+
+  if (server->is_finished())
+    {
+      std::cout << "Client: update(): Server is finished" << std::endl;
+      ScreenManager::instance ()->pop_screen ();
+    }
+
+  /*
+  CL_System::keep_alive ();
+  CL_System::sleep (0);
+
+  if (current_delta > wannabe_delta)
+    {
+      update (delta.getset ());
+      ++frames;
+      if (frames % int(frame_skip) == 0)
 	{
-	  update (delta.getset ());
-	  ++frames;
-	  if (frames % int(frame_skip) == 0)
+	  if (!auto_frame_skip)
 	    {
-	      if (!auto_frame_skip)
-		{
-		  draw ();
-      		}
+	      draw ();
 	    }
 	}
       else
 	{
 	  CL_System::sleep (int(1000 * (wannabe_delta - delta.get ())));
 	}
-    }
-  // FIXME: using this twice will crash with an X Error
-  //CL_MouseCursor::show ();
-  
-  unregister_event_handler();
+    }*/
 }
 
-void 
-Client::draw ()
-{
-  for(GuiObjIter i = obj.begin (); i != obj.end (); ++i)
-    (*i)->draw_clipped();
-
-  gui_manager->draw ();
-
-  Display::flip_display();	    
-}
-
-void 
-Client::update (float delta)
-{
-  cursor->update (delta);
-  input_controller->update (delta);
-  gui_manager->update (delta);
-
-  // process input events
-  process_events ();
-
-  // Let the window move its content
-  for(GuiObjIter i = obj.begin (); i != obj.end (); ++i)
-    (*i)->updateX();
-  
-  for(GuiObjIter i = obj.begin (); i != obj.end (); ++i)
-    (*i)->update(delta);
-
-  // Let the server process a game loop
-  server->update(delta);
-  send_next_event();
-}
-
+#if 0
 void
 Client::process_events ()
 {
@@ -390,7 +294,7 @@ void
 Client::send_next_event()
 {
 }
-
+#endif
 void
 Client::set_fast_forward(bool value)
 {
@@ -450,51 +354,11 @@ Client::set_finished()
   server->set_finished();  
 }
 
+#if 0
 void 
 Client::register_event_handler()
 {
   if (verbose > 1) std::cout << "Client: register_event_handler()" << std::endl;
-
-  slot_left_pressed   = controller->left->signal_pressed.connect (this, &Client::on_left_pressed);
-  slot_left_released  = controller->left->signal_released.connect (this, &Client::on_left_released);
-  slot_middle_pressed = controller->middle->signal_pressed.connect (this, &Client::on_middle_pressed);
-  slot_right_pressed  = controller->right->signal_pressed.connect (this, &Client::on_right_pressed);
-  slot_right_released = controller->right->signal_released.connect (this, &Client::on_right_released);
-  slot_abort_pressed  = controller->abort->signal_pressed.connect (this, &Client::on_abort_pressed);
-  slot_pause_pressed  = controller->pause->signal_pressed.connect (this, &Client::on_pause_pressed);
-  slot_fast_forward_pressed = controller->fast_forward->signal_pressed.connect (this, &Client::on_fast_forward_pressed);
-  slot_scroll_left_pressed  = controller->scroll_left->signal_pressed.connect (this, &Client::on_scroll_left_pressed);
-  slot_scroll_right_pressed = controller->scroll_right->signal_pressed.connect (this, &Client::on_scroll_right_pressed);
-
-  slot_next_action_pressed  = controller->next_action->signal_pressed.connect (this, &Client::on_next_action_pressed);
-  slot_previous_action_pressed = controller->previous_action->signal_pressed.connect (this, &Client::on_previous_action_pressed);
-
-  enabled = true;
-}
-
-void
-Client::unregister_event_handler()
-{
-  if (verbose > 1) std::cout << "Client: unregister_event_handler()" << std::endl;
-  //CL_Input::chain_button_release.remove(this);
-  //CL_Input::chain_button_press.remove(this);
-
-  // Disconnect segfaults
-  CL_Input::sig_button_press ().disconnect (on_button_press_slot); 
-  CL_Input::sig_button_release ().disconnect (on_button_release_slot); 
-
-  enabled = false;
-}
-
-void
-Client::disable_event_handler()
-{
-  enabled = false;
-}
-
-void
-Client::enable_event_handler()
-{
   enabled = true;
 }
 
@@ -518,26 +382,6 @@ Client::on_button_press(CL_InputDevice *device, const CL_Key &key)
     {
       if (verbose > 1) std::cout << "Unknown device pressed: device=" << device << "; key.id=" << key.id << std::endl;
     }
-}
-
-void
-Client::on_button_release(CL_InputDevice *device, const CL_Key &key)
-{
-  if (!enabled)
-    return;
-
-  if (device == CL_Input::keyboards[0])
-    {
-      on_keyboard_button_release(key);
-    }
-  else if (device == CL_Input::pointers[0])
-    {
-      on_mouse_button_release(key);
-    }
-  else
-    {
-      if (verbose > 1) std::cout << "Unknown device released: device=" << device << "; key.id=" << key.id << std::endl;
-    }  
 }
 
 void
@@ -782,16 +626,50 @@ Client::on_previous_action_pressed (const CL_Vector& /*pos*/)
   std::cout << "Action previous pressed" << std::endl;
   button_panel->previous_action();
 }
+#endif
 
-GuiObj*
-Client::get_gui_object (int x, int y)
+void
+Client::draw ()
 {
-  for(GuiObjRIter i = obj.rbegin (); i != obj.rend (); ++i)
-    {
-      if ((*i)->mouse_over (x, y))
-	return *i;
-    }
-  return 0;
+  GUIScreen::draw ();
+}
+
+void
+Client::update (const GameDelta& delta)
+{
+  std::cout << "Client:update ()" << std::endl;
+  update (delta.get_time ());
+  GUIScreen::update (delta);
+}
+
+void
+Client::on_startup ()
+{
+  std::cout << "Client::on_startup ()" << std::endl;
+
+  /** Hide the system cursor and show the software one */
+  Display::show_cursor();
+  // FIXME: using this twice will crash with an X Error
+  //CL_MouseCursor::hide ();
+
+  fast_forward = false;
+  pause = false;
+  do_replay = false;
+  is_finished = false;
+  skip_frame = 0;
+
+  PingusSound::play_music(path_manager.complete ("music/" + server->get_plf ()->get_music().res_name));
+
+  if (verbose)
+    std::cout << "Client: Entering main_loop. Startup time: " 
+	      << CL_System::get_time() << " msec." << std::endl;
+}
+
+void
+Client::on_shutdown ()
+{
+  std::cout << "Client::on_shutdown ()" << std::endl; 
+  Display::hide_cursor();
 }
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: playfield.cxx,v 1.7 2002/06/28 15:12:22 torangan Exp $
+//  $Id: playfield.cxx,v 1.8 2002/08/02 11:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,7 +19,6 @@
 
 #include <stdio.h>
 #include <ClanLib/Display/Display/display.h>
-#include "controller.hxx"
 #include "globals.hxx"
 #include "playfield.hxx"
 #include "plf.hxx"
@@ -31,9 +30,8 @@
 
 using boost::shared_ptr;
 
-Playfield::Playfield(Client* client, PLF* level_data, World* w,
-		     Controller* arg_controller)
-  : current_view(0), controller (arg_controller)
+Playfield::Playfield(Client* client, PLF* level_data, World* w)
+  : current_view(0)
 {
   world = w;
   mouse_scrolling = false;
@@ -164,6 +162,7 @@ void
 Playfield::process_input_interactive()
 {
   // FIXME: This should be replaced with something getting relative mouse co's
+#if 0
   if (auto_scrolling)
     {
       scroll_speed = 30;
@@ -186,6 +185,7 @@ Playfield::process_input_interactive()
 	  view[current_view]->set_y_offset(view[current_view]->get_y_offset() - scroll_speed);
 	}
     }
+#endif
 }
 
 ///
@@ -199,6 +199,7 @@ Playfield::updateX()
 void
 Playfield::update(float /*delta*/)
 {
+#if 0
   for(unsigned int i=0; i < view.size(); ++i)
     {
       if (view[i]->is_current() && !mouse_scrolling)
@@ -210,6 +211,7 @@ Playfield::update(float /*delta*/)
 	  break;
 	}
     }
+#endif 
 }
 
 bool 
@@ -256,18 +258,22 @@ Playfield::enable_scroll_mode()
   if (verbose) std::cout << "Started scrolling..." << std::flush;
   mouse_scrolling = true;
 
+#if 0
   scroll_center_x = controller->get_x();
   scroll_center_y = controller->get_y();
+#endif
 }  
 
 void
 Playfield::do_scrolling()
 {
+#if 0
   if (mouse_scrolling)
     {
       view[current_view]->shift_x_offset((scroll_center_x - controller->get_x()) / 5);
       view[current_view]->shift_y_offset((scroll_center_y - controller->get_y()) / 5);
     }
+#endif 
 }
 
 void

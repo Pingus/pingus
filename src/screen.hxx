@@ -1,4 +1,4 @@
-//  $Id: screen.hxx,v 1.4 2002/08/01 21:40:01 grumbel Exp $
+//  $Id: screen.hxx,v 1.5 2002/08/02 11:25:47 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,6 +35,13 @@ public:
 
   /** Pass a delta to the screen */
   virtual void update (const GameDelta& delta) =0;
+
+  /** Called once the screen gets activated and becomes the current
+      screen */
+  virtual void on_startup () {}
+
+  /** Called once the screen gets replaced */ 
+  virtual void on_shutdown () {}
 };
 
 #endif

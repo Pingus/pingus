@@ -1,4 +1,4 @@
-//  $Id: editor_event.cxx,v 1.24 2002/07/02 16:06:51 grumbel Exp $
+//  $Id: editor_event.cxx,v 1.25 2002/08/02 11:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -44,6 +44,7 @@
 #include "action_window.hxx"
 #include "property_window.hxx"
 #include "level_property_window.hxx"
+#include "../screen_manager.hxx"
 
 EditorEvent::EditorEvent()
   : is_enabled (1)
@@ -509,11 +510,7 @@ EditorEvent::editor_start_current_level()
 
   try {
     std::string levelfile = editor->save_tmp_level();
-    PingusGameSession game (levelfile);
-    /*
-      game.start_game(levelfile + ".plf",
-      levelfile + ".psm");*/
-    game.start ();
+    ScreenManager::instance()->push_screen(new PingusGameSession (levelfile));
   }
   
   catch(PingusError err) {

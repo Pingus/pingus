@@ -1,4 +1,4 @@
-//  $Id: screen_manager.cxx,v 1.3 2002/08/01 21:40:01 grumbel Exp $
+//  $Id: screen_manager.cxx,v 1.4 2002/08/02 11:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,6 +30,7 @@ ScreenManager* ScreenManager::instance_ = 0;
 
 ScreenManager::ScreenManager ()
 {
+  last_screen = 0;
   push_screen (PingusMenuManager::instance (), false);
 }
 
@@ -56,15 +57,29 @@ ScreenManager::display ()
 	  continue;
 	}
 
-      GameDelta delta (time_delta, input_controller.get_events ());
+      // Let ClanLib fetch events
+      CL_System::keep_alive ();
 
+      // Get new events from ClanLib
       input_controller.update (time_delta);
 
-      CL_System::keep_alive ();
-      current_screen->draw ();
+      // Fill the delta with values
+      GameDelta delta (time_delta, input_controller.get_events ());
+
+      last_screen = current_screen;
+      // Most likly the screen will get changed in this update call
       current_screen->update (delta);
 
+      if (last_screen != current_screen)
+	{
+	  last_screen = current_screen;
+	  continue;
+	}
+
+      current_screen->draw ();
+
       Display::flip_display ();
+
       // Stupid hack to make this thing take less CPU
       CL_System::sleep (0);
     } 
@@ -82,6 +97,7 @@ ScreenManager::instance ()
 void
 ScreenManager::push_screen (Screen* screen, bool delete_screen)
 {
+  screen->on_startup ();
   screens.push_back (std::pair<Screen*, bool> (screen, delete_screen));
 }
 
@@ -90,6 +106,8 @@ ScreenManager::pop_screen ()
 {
   Screen* current_screen = screens.back ().first;
   bool    delete_screen  = screens.back ().second;
+
+  current_screen->on_shutdown ();
 
   if (delete_screen)
     delete current_screen;
@@ -103,8 +121,12 @@ ScreenManager::replace_screen (Screen* screen, bool delete_screen)
   Screen* current_screen = screens.back ().first;
   bool    delete_c_screen  = screens.back ().second;
 
+  current_screen->on_shutdown ();
+
   if (delete_c_screen)
-    delete current_screen;
+    {
+      delete current_screen;
+    }
 
   screens.back () = std::pair<Screen*, bool>(screen, delete_screen);
 }

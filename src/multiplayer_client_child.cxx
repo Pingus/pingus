@@ -1,4 +1,4 @@
-//  $Id: multiplayer_client_child.cxx,v 1.5 2002/07/29 11:57:38 grumbel Exp $
+//  $Id: multiplayer_client_child.cxx,v 1.6 2002/08/02 11:25:46 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,7 +30,7 @@ MultiplayerClientChild::MultiplayerClientChild (Controller* arg_controller,
   : Controllable (arg_controller),
     server (s),
     cursor (new Cursor ("cursors/cross", "core", controller)),
-    button_panel (new ButtonPanel (s->get_plf (), controller, arg_rect.x1, arg_rect.y1)),
+    button_panel (new ButtonPanel (s->get_plf (), arg_rect.x1, arg_rect.y1)),
     capture_rect ("cursors/capgood", "core"),
     playfield (new PlayfieldView (server->get_world (), arg_rect)),
     counterbar (new PingusCounterBar (server, PingusCounterBar::VERTICAL, 

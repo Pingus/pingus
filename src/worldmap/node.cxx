@@ -1,4 +1,4 @@
-//  $Id: node.cxx,v 1.5 2002/08/01 21:40:02 grumbel Exp $
+//  $Id: node.cxx,v 1.6 2002/08/02 11:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,6 +29,7 @@
 #include "../sound.hxx"
 #include "../pingus_resource.hxx"
 #include "../globals.hxx"
+#include "../screen_manager.hxx"
 #include "node.hxx"
 
 using namespace Pingus::WorldMap;
@@ -107,11 +108,10 @@ LevelNode::on_click ()
 		  
       PingusSound::play_sound(path_manager.complete("sounds/letsgo.wav"));
       /** We could reuse the plf here */
-      PingusGameSession game (path_manager.complete(levelname));
       
-      // Launch the game and wait until it is finished
-      game.start ();
-
+      ScreenManager::instance()->push_screen
+	(new PingusGameSession (path_manager.complete(levelname)), true);
+      /*
       if (game.get_result ().finished ())
 	{
 	  finished = true;	
@@ -120,13 +120,14 @@ LevelNode::on_click ()
 	{
 	  console.puts("Please try again!");
 	}
+      */
     }
   else
     {
       std::cout << "LevelNode::on_click (): Error: level is invalid" << std::endl;
     }
 
-  PingusResource::cleanup ();
+  //PingusResource::cleanup ();
 }
 
 void 

@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.8 2002/08/01 21:40:01 grumbel Exp $
+//   $Id: pingus_main.cxx,v 1.9 2002/08/02 11:25:46 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -827,6 +827,7 @@ PingusMain::start_game(void)
 	      successfull = false;
 	    }
 	}
+#if 0
       if (successfull)
 	{
 	  if (start_editor) {
@@ -837,6 +838,7 @@ PingusMain::start_game(void)
 	    game.start ();
 	  }
 	}
+#endif
       
     }
 

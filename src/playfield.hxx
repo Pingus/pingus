@@ -1,4 +1,4 @@
-//  $Id: playfield.hxx,v 1.5 2002/06/24 22:52:56 grumbel Exp $
+//  $Id: playfield.hxx,v 1.6 2002/08/02 11:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,7 +22,7 @@
 
 #include "view.hxx"
 #include "client.hxx"
-#include "gui_obj.hxx"
+#include "gui/component.hxx"
 
 class Pingu;
 class World;
@@ -32,7 +32,7 @@ class ButtonPanel;
 class Controller;
 
 /** This class encapsulates all the different Views */
-class Playfield : public GuiObj
+class Playfield : public GUI::Component
 {
 private:  
   friend class Client;
@@ -68,11 +68,9 @@ private:
 
   std::vector<Rect> clipping_rectangles;
 
-  Controller* controller;
 public:
-  Playfield(Client*, PLF* plf, World*,
-	    Controller*);
-  ~Playfield();
+  Playfield(Client*, PLF* plf, World*);
+  virtual ~Playfield();
 
   int get_x_offset();
   int get_y_offset();

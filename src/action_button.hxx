@@ -1,4 +1,4 @@
-//  $Id: action_button.hxx,v 1.4 2002/07/29 22:17:53 grumbel Exp $
+//  $Id: action_button.hxx,v 1.5 2002/08/02 11:25:46 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -48,7 +48,7 @@ public:
   virtual ~Button();
 
   virtual void   draw() = 0;
-  virtual bool   mouse_over(const CL_Vector& pos) = 0;
+  virtual bool   mouse_over (int x, int y) = 0;
 };
 
 // ----------------- snip --------------------
@@ -89,7 +89,7 @@ public:
   virtual ~ForwardButton();
 
   void draw();
-  bool mouse_over(const CL_Vector& pos);
+  bool mouse_over (int x, int y);
 };
 
 // ----------------- snip --------------------
@@ -107,7 +107,7 @@ public:
   virtual ~PauseButton();
 
   void draw();
-  bool mouse_over(const CL_Vector& pos);
+  bool mouse_over (int x, int y);
 };
 
 // ----------------- snip --------------------
@@ -148,7 +148,7 @@ public:
   /// Returns true if the button is pressed.
   bool   is_pressed();
 
-  virtual bool   mouse_over(const CL_Vector& pos) = 0;
+  virtual bool   mouse_over(int x, int y) = 0;
 
   void set_action_holder(ActionHolder* h);
 };
@@ -166,7 +166,7 @@ public:
   virtual ~VerticalActionButton();
 
   void draw();
-  bool mouse_over(const CL_Vector& pos);
+  bool mouse_over (int x, int y);
 };
 
 // ----------------- snip --------------------

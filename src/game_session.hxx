@@ -1,4 +1,4 @@
-//  $Id: game_session.hxx,v 1.3 2002/06/24 22:52:54 grumbel Exp $
+//  $Id: game_session.hxx,v 1.4 2002/08/02 11:25:46 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,22 +21,20 @@
 #define HEADER_PINGUS_GAME_SESSION_HXX
 
 #include <string>
+#include "screen.hxx"
 
 class Client;
 class Server;
 class PLF;
-class Controller;
 class PingusGameSessionResult;
 
 /** You can use this class to start up a game session, which consist
     of a single level. */
-class PingusGameSession
+class PingusGameSession : public Screen
 {
 private:
   /// The filename of the level
   std::string filename;
-
-  Controller* controller;
 
   /// The level data
   PLF* plf;
@@ -58,13 +56,18 @@ public:
   PingusGameSession (std::string arg_filename);
 
   /** Clean up */
-  ~PingusGameSession ();
-
-  /** Start a game session, create Server/Client objects as needed */
-  void start ();
+  virtual ~PingusGameSession ();
 
   /** Get the results of the last gaming session */
   PingusGameSessionResult get_result ();
+
+  // Overloaded Screen functions 
+  /** Draw this screen */
+  void draw ();
+
+  /** Pass a delta to the screen */
+  void update (const GameDelta& delta);
+
 };
 
 #endif
