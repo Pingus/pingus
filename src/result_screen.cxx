@@ -20,7 +20,6 @@
 #include <iostream>
 #include <ClanLib/Core/System/clanstring.h>
 #include "gettext.h"
-#include "sprite.hxx"
 #include "gui/surface_button.hxx"
 #include "gui/gui_manager.hxx"
 #include "gui/screen_manager.hxx"
@@ -40,7 +39,7 @@ class ResultScreenComponent : public GUI::Component
 {
 public:
   Result result;
-  Sprite background;
+  CL_Sprite background;
   std::string time_str;
 
   std::vector<CL_Sprite> chalk_pingus;
@@ -142,8 +141,7 @@ public:
 ResultScreenComponent::ResultScreenComponent(Result arg_result)
   : result(arg_result)
 {
-  background = Sprite("menu/startscreenbg", "core");
-  background.set_align_center();
+  background = Resource::load_sprite("menu/startscreenbg", "core");
 
   chalk_pingus.push_back(Resource::load_sprite("misc/chalk_pingu1", "core"));
   chalk_pingus.push_back(Resource::load_sprite("misc/chalk_pingu2", "core"));
