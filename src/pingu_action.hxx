@@ -1,4 +1,4 @@
-//  $Id: pingu_action.hxx,v 1.9 2002/07/02 13:36:06 torangan Exp $
+//  $Id: pingu_action.hxx,v 1.10 2002/08/22 10:21:29 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -115,6 +115,12 @@ public:
 
   /// True if Pingu in specified position would bang its head if it were walking
   bool head_collision_on_walk (int x, int y);
+
+  /** Called if the action was successfully applied via request_set_action */
+  virtual void on_successfull_apply (Pingu*) {}
+
+  /** Called if the request_set_action failded to apply this action */
+  virtual void on_failed_apply (Pingu*) {}
 };
 
 #endif /* PINGU_ACTION_HH */

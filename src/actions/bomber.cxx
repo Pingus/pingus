@@ -1,4 +1,4 @@
-//  $Id: bomber.cxx,v 1.7 2002/08/22 00:36:30 grumbel Exp $
+//  $Id: bomber.cxx,v 1.8 2002/08/22 10:21:29 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,6 +39,12 @@ Bomber::Bomber()
     gfx_exploded(false),
     colmap_exploded(false)
 {
+}
+
+void
+Bomber::on_successfull_apply (Pingu* pingu)
+{
+  pingu->get_world ()->play_wav("sounds/ohno.wav", pingu->get_pos ());
 }
 
 void
