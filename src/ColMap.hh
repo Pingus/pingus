@@ -1,4 +1,4 @@
-//  $Id: ColMap.hh,v 1.4 2000/04/10 21:15:47 grumbel Exp $
+//  $Id: ColMap.hh,v 1.5 2000/05/03 16:49:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,12 +37,12 @@ private:
 public:
   enum PixelStatus { 
 	 NOTHING     = 0,
-	 WALL        = 1<<1,
-	 OUTOFSCREEN = 1<<2,
-	 BRIDGE      = 1<<3,
-	 SOLID       = 1<<4,
-	 WATER       = 1<<5,
-	 LAVA        = 1<<6
+	 WALL        = 1<<0,
+	 OUTOFSCREEN = 1<<1,
+	 BRIDGE      = 1<<2,
+	 SOLID       = 1<<3,
+	 WATER       = 1<<4,
+	 LAVA        = 1<<5
   };
 
   ColMap();
