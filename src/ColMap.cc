@@ -1,4 +1,4 @@
-//  $Id: ColMap.cc,v 1.6 2000/02/25 02:35:27 grumbel Exp $
+//  $Id: ColMap.cc,v 1.7 2000/04/09 11:35:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -217,7 +217,7 @@ ColMap::put(CL_SurfaceProvider* provider, int sur_x, int sur_y, surface_data::Ty
       for(int line = 0; line < h; ++line) 
 	{
 	  for (int i = (width * (sur_y + line)) + sur_x, j=w * line;
-	       (i < (width * height)) && ((j - w * line) < w);
+	       (i < (width * height)) && ((j - w * line) < w) && (i < (width * (sur_y + line + 1)));
 	       i++, j++)
 	    {
 	      if (j < 0 || j > (w * h))
@@ -258,7 +258,7 @@ ColMap::put(CL_SurfaceProvider* provider, int sur_x, int sur_y, surface_data::Ty
     
       for(int line = 0; line < h; ++line) {
 	for (int i = (width * (sur_y + line)) + sur_x, j=w * line;
-	     (i < (width * height)) && ((j - w * line) < w);
+	     (i < (width * height)) && ((j - w * line) < w)  && (i < (width * (sur_y + line + 1)));
 	     ++i, ++j)
 	  {
 	    if (j < 0 || j > (w * h))
