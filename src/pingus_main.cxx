@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.72 2003/04/10 19:38:51 grumbel Exp $
+//   $Id: pingus_main.cxx,v 1.73 2003/04/11 14:30:05 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -100,28 +100,28 @@ signal_handler(int signo)
     case SIGSEGV:
       puts("\n,------------------------------------------------------------------------");
       puts(_("| segfault_handler: catched a SIGSEGV."));
-      puts ("|");
+      puts  ("|");
       puts(_("| Woops, Pingus just crashed, congratulations you've found a bug."));
       puts(_("| Please write a little bug report to <grumbel@gmx.de>, include informations"));
       puts(_("| where exacly the SIGSEGV occured and how to reproduce it."));
       puts(_("| Also try include a backtrace, you can get it like this:"));
-      puts ("|");
-      puts(_("| $ gdb pingus core"));
-      puts(_("| (gdb) bt"));
-      puts(_("| ..."));
-      puts ("|");
+      puts  ("|");
+      puts  ("| $ gdb pingus core");
+      puts  ("| (gdb) bt");
+      puts  ("| ...");
+      puts  ("|");
       puts(_("| If that doesn't work, try this:"));
-      puts ("|");
-      puts(_("| $ gdb pingus"));
-      puts(_("| (gdb) r"));
+      puts  ("|");
+      puts  ("| $ gdb pingus");
+      puts  ("| (gdb) r");
       puts(_("| [play until it crashes again]"));
-      puts(_("| ..."));
-      puts ("|");
-      puts(_("'------------------------------------------------------------------------\n"));
+      puts  ("| ...");
+      puts  ("|");
+      puts  ("'------------------------------------------------------------------------\n");
       break;
 
     case SIGINT:
-      puts(_("\n,------------------------------------------------------------------------"));
+      puts("\n,------------------------------------------------------------------------");
       puts (_("| Warning: Pingus recieved a SIGINT, exiting now."));
       puts("`------------------------------------------------------------------------\n");
       break;
@@ -346,11 +346,11 @@ PingusMain::check_args(int argc, char** argv)
 #endif
 		<< std::endl;
       
-      std::cout << _("\n"
-                     "Copyright (C) 2003 Ingo Ruhnke <grumbel@gmx.de>\n"
-                     "There is NO warranty.  You may redistribute this software\n"
-                     "under the terms of the GNU General Public License.\n"
-                     "For more information about these matters, see the files named COPYING.") << std::endl;
+      std::cout << "\n"
+        "Copyright (C) 2003 Ingo Ruhnke <grumbel@gmx.de>\n"
+        "There is NO warranty.  You may redistribute this software\n"
+        "under the terms of the GNU General Public License.\n"
+        "For more information about these matters, see the files named COPYING." << std::endl;
 
       exit(EXIT_SUCCESS);
       break;
@@ -487,60 +487,62 @@ PingusMain::check_args(int argc, char** argv)
     default:
       if (verbose) std::cout << _("Unknow char: ") << c << std::endl << std::endl;
       std::cout << _("Usage: ") << argv[0] << _(" [OPTIONS]... [LEVELFILE]") << std::endl;
-      std::cout <<
-	_("\n"
-	  "Options:\n"
-          "   -g, --geometry {width}x{height}\n"
-          "                            Set the resolution for pingus (default: 800x600)\n"
-          "   -h, --help               Displays this screen\n"
-          "   --disable-intro          Disable intro\n");
+      std::cout 
+        << "\n"
+        << _("Options:")
+        << "\n   -g, --geometry {width}x{height}"
+        << "\n                            " << _("Set the resolution for pingus (default: 800x600)")
+        << "\n   -h, --help               " << _("Displays this help")
+        << "\n   --disable-intro          " << _("Disable intro");
 #ifdef HAVE_LIBCLANGL
-      std::cout << _("   -G, --use-opengl         Use OpenGL\n");
+      std::cout << "   -G, --use-opengl         " << _("Use OpenGL");
 #endif
-      std::cout <<
-	_("   -w, --window             Start in Window Mode\n"
-          "   -f, --fullscreen         Start in Fullscreen\n"
-          "   -d, --datadir PATH       Set the path to load the data files to `path'\n"
-          //"   --use-datafile           Use the pre-compiled datafile (default)\n"
-          //          "   --use-scriptfile         Use the scriptfile and read all data from files\n"
-          "   -l, --level FILE         Load a custom level from FILE\n"
-          "   -w, --worldmap FILE      Load a custom worldmap from FILE\n"
-          "   -v, --verbose            Print some more messages to stdout, can be set\n"
-          "                            multible times to increase verbosity\n"
-          "   -V, --version            Prints version number and exit\n"
-          "   -e, --editor             Launch the Level editor (experimental)\n"
-          "   --disable-auto-scrolling Disable automatic scrolling\n"
-          //          "   --disable-swcursor       Disable software cursor, use hw cursor instead\n"
-          //          "   --enable-swcursor        Enable software cursor\n"
-          //"   --disable-action-help    Disable action button help strings\n"
-          //"   --enable-action-help     Enable action button help strings(default)\n"
-          "   --no-cfg-file            Don't read ~/.pingus/config\n"
-          "   --config-file FILE       Read config from FILE (default: ~/.pingus/config)\n"
-          "                            reduce CPU usage, might speed up the game on slower machines\n"
-          "\nDebugging and experimental stuff:\n"
-          "   --maintainer-mode        Enables some features, only interesting programmers\n"
-          "   --debug OPTION           Enable the output of debugging infos, possible\n"
-          "                            OPTION's are tiles, gametime, actions, sound, resources, gui,\n"
-          "                            input\n"
-          "   --min-frame-skip N       Skip at least N frames, larger values speed the game up\n"
-          "   --max-frame-skip N       Skip at most N frames\n"
-          "   --frame-skip N           Set both min and max frameskip to N\n"
-          "   -t, --speed SPEED        Set the game speed (0=fastest, >0=slower)\n"
-          "   -b, --print-fps          Prints the fps to stdout\n"
-          "   --tile-size INT          Set the size of the map tiles (default: 32)\n"
-          "   --fast-mode              Disable some cpu intensive features\n"
-          "   --min-cpu-usage          Reduces the CPU usage by issuing sleep()\n"
-          "\n"
-          "\nDemo playing and recording:\n"
-          "   -p, --play-demo FILE     Plays a demo session from FILE\n"
-          "   -r, --enable-demo-recording\n"
-          "                            Record demos for each played level\n")
-                << std::endl;
       std::cout
-        << _("\nSound:\n"
-             "   -s, --enable-sound       Enable sound\n"
-             "   -m, --enable-music       Enable music\n")
+	<< "\n   -w, --window             " << _("Start in Window Mode")
+        << "\n   -f, --fullscreen         " << _("Start in Fullscreen")
+        << "\n   -d, --datadir PATH       Set the path to load the data files to `path'"
+        //"   --use-datafile           Use the pre-compiled datafile (default)\n"
+        //          "   --use-scriptfile         Use the scriptfile and read all data from files\n"
+        << "\n   -l, --level " << _("FILE      ") << _("Load a custom level from FILE")
+        << "\n   -w, --worldmap "<< _("FILE      ") << _("Load a custom worldmap from FILE")
+        << "\n   -v, --verbose            " << _("Print some more messages to stdout, can be set")
+        << "\n                            " << _("multible times to increase verbosity")
+        << "\n   -V, --version            " << _("Prints version number and exit")
+        << "\n   -e, --editor             " << _("Launch the Level editor (experimental)")
+        << "\n   --disable-auto-scrolling " << _("Disable automatic scrolling")
+        //          "   --disable-swcursor       Disable software cursor, use hw cursor instead\n"
+        //          "   --enable-swcursor        Enable software cursor\n"
+        //"   --disable-action-help    Disable action button help strings\n"
+        //"   --enable-action-help     Enable action button help strings(default)\n"
+        << "\n   --no-cfg-file            " << _("Don't read ~/.pingus/config")
+        << "\n   --config-file " << _("FILE       ") << _("Read config from FILE (default: ~/.pingus/config)")
+        << "\n                            " << _("reduce CPU usage, might speed up the game on slower machines")
+        << "\n\n" << _("Debugging and experimental stuff:")
+        << "\n   --maintainer-mode        " << _("Enables some features, only interesting programmers")
+        << "\n   --debug OPTION           " << _("Enable the output of debugging infos, possible")
+        << "\n                            " << _("OPTION's are tiles, gametime, actions, sound, resources, gui,")
+        << "\n                            " << _("input")
+        << "\n   --min-frame-skip N       " << _("Skip at least N frames, larger values speed the game up")
+        << "\n   --max-frame-skip N       " << _("Skip at most N frames")
+        << "\n   --frame-skip N           " << _("Set both min and max frameskip to N")
+        << "\n   -t, --speed SPEED        " << _("Set the game speed (0=fastest, >0=slower)")
+        << "\n   -b, --print-fps          " << _("Prints the fps to stdout")
+        << "\n   --tile-size INT          " << _("Set the size of the map tiles (default: 32)")
+        << "\n   --fast-mode              " << _("Disable some cpu intensive features")
+        << "\n   --min-cpu-usage          " << _("Reduces the CPU usage by issuing sleep()")
+        << "\n"
+        << "\nDemo playing and recording:"
+        << "\n   -p, --play-demo " << _("FILE     ") << _("Plays a demo session from FILE")
+        << "\n   -r, --enable-demo-recording"
+        << "\n                            " << _("Record demos for each played level")
+        << "\n"
+        << "\n"
+        << _("Sound:")
+        << "\n   -s, --enable-sound       " << _("Enable sound")
+        << "\n   -m, --enable-music       " << _("Enable music")
+        << "\n"
         << std::endl;
+
       exit(EXIT_SUCCESS);
       break;
     }

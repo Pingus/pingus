@@ -1,3 +1,60 @@
+2003-04-11 15:17  grumbel
+
+	* po/POTFILES.in: [no log message]
+
+2003-04-11 15:16  grumbel
+
+	* config.rpath, po/remove-potcdate.sin: some missing files
+
+2003-04-11 15:12  grumbel
+
+	* contrib/Makefile.am, po/Makevars, po/remove-potcdate.sed,
+	src/worldmap/Makefile.am, src/worldmap/stat.cxx,
+	src/worldmap/stat.hxx, src/worldmap/worldmap.hxx: some missing
+	files
+
+2003-04-11 14:45  grumbel
+
+	* data/levels/tutorial/snow19-grumbel.xml,
+	data/worldmaps/tutorial.xml, po/de.po, src/savegame_manager.cxx,
+	src/stat_manager.cxx, src/system.cxx, src/theme.cxx,
+	src/worldmap/stat.cxx: - moved bridger tutorial more towards the
+	end
+
+2003-04-11 03:21  grumbel
+
+	* Makefile.am, configure.ac, mkinstalldirs, po/de.po, po/nl.po,
+	src/credits.cxx, src/layer_manager.cxx, src/layer_manager.hxx,
+	src/menu_background.cxx: some small bug fixes
+
+2003-04-11 00:15  grumbel
+
+	* intl/: cat-compat.c, gettext.h, libgettext.h, linux-msg.sed,
+	po2tbl.sed, po2tbl.sed.in, xopen-msg.sed: removing obsolete stuff
+
+2003-04-10 23:35  grumbel
+
+	* ABOUT-NLS, BUGS, ChangeLog, Makefile.am, NEWS, README,
+	autogen.sh, configure.ac, mkinstalldirs, pingus.dsp, doc/pingus.6,
+	doc/texinfo.tex, po/ChangeLog, po/Makefile.in.in, po/POTFILES.in,
+	po/cs.po, po/de.po, po/it.po, po/nl.po, po/tr.po, src/Makefile.am:
+	- added new gettext stuff - removed a few obsolete files
+
+2003-04-10 23:34  grumbel
+
+	* intl/: ChangeLog, Makefile.in, VERSION, bindtextdom.c,
+	dcgettext.c, dgettext.c, explodename.c, finddomain.c, gettext.c,
+	gettextP.h, hash-string.h, intl-compat.c, l10nflist.c, loadinfo.h,
+	loadmsgcat.c, localealias.c, textdomain.c: new libintl
+
+2003-04-10 23:33  grumbel
+
+	* m4/: Makefile.am, codeset.m4, gettext.m4, glibc21.m4, iconv.m4,
+	intdiv0.m4, inttypes-pri.m4, inttypes.m4, inttypes_h.m4,
+	isc-posix.m4, lcmessage.m4, lib-ld.m4, lib-link.m4, lib-prefix.m4,
+	progtest.m4, stdint_h.m4, uintmax_t.m4, ulonglong.m4: m4 macros to
+	make gettext happy
+
 2003-04-10 21:38  grumbel
 
 	* src/: globals.cxx, globals.hxx, pingus_main.cxx, server.cxx,

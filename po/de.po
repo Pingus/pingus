@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Pingus 0.5.0\n"
-"POT-Creation-Date: 2003-04-11 03:27+0200\n"
-"PO-Revision-Date: 2003-04-11 03:15+0200\n"
+"POT-Creation-Date: 2003-04-11 16:28+0200\n"
+"PO-Revision-Date: 2003-04-11 16:24+0200\n"
 "Last-Translator: Ingo Ruhnke <grumbel@gmx.de>\n"
 "Language-Team: Ingo Ruhnke <grumbel@gmx.de>, Giray Devlet <giray@devlet.cc>\n"
 "MIME-Version: 1.0\n"
@@ -656,86 +656,6 @@ msgstr "..:: Mehrspieler Modus ::.."
 msgid "Multi"
 msgstr "Multi"
 
-#: src/option_menu.cxx:145
-msgid "on"
-msgstr "an"
-
-#: src/option_menu.cxx:147
-msgid "off"
-msgstr "aus"
-
-#: src/option_menu.cxx:164 src/option_menu.cxx:176
-msgid "Not implemented"
-msgstr "Nicht implementiert"
-
-#: src/option_menu.cxx:215
-msgid "OptionMenu::Event: Unknown key released: id="
-msgstr ""
-
-#: src/option_menu.cxx:224
-msgid "Button 0 pressed"
-msgstr ""
-
-#: src/option_menu.cxx:228
-msgid "Button 1 pressed"
-msgstr ""
-
-#: src/option_menu.cxx:231
-msgid "Button 2 pressed"
-msgstr ""
-
-#: src/option_menu.cxx:234
-msgid "OptionMenu::Event: Unknown mouse button released: id="
-msgstr ""
-
-#: src/option_menu.cxx:275
-msgid "Unlimited Actions"
-msgstr "Unbegrenzt Fähigkeiten"
-
-#: src/option_menu.cxx:276
-msgid "Print fps"
-msgstr "'Bilder pro Sekunde' ausgeben"
-
-#: src/option_menu.cxx:278
-msgid "Cursor enabled"
-msgstr "Cursor aktivieren"
-
-#: src/option_menu.cxx:279
-msgid "Fast Mode"
-msgstr "Schneller Modus"
-
-#: src/option_menu.cxx:281
-msgid "Game Speed"
-msgstr "Spiel Geschwindigkeit"
-
-#: src/option_menu.cxx:282
-msgid "Verbose"
-msgstr "Detailiert"
-
-#: src/option_menu.cxx:283
-msgid "Music"
-msgstr "Musik"
-
-#: src/option_menu.cxx:284
-msgid "Sound"
-msgstr "Sound"
-
-#: src/option_menu.cxx:285
-msgid "Draw ColMap"
-msgstr "ColMap Zeichnen"
-
-#: src/option_menu.cxx:286
-msgid "Auto Scrolling"
-msgstr "Automatisches Scrolling"
-
-#: src/option_menu.cxx:287
-msgid "Action Help Strings"
-msgstr "Fähigkeiten Hilfe"
-
-#: src/option_menu.cxx:328
-msgid "Pingus Option Menu"
-msgstr "Options Menu"
-
 #: src/pingu.cxx:122
 msgid "Setting action to a dead pingu"
 msgstr "Setzen einer Fähigkeit zu einem toten Pingu"
@@ -782,61 +702,17 @@ msgstr "| wo genau der SIGSEGV auftrat und wie man ihn reproduziert."
 msgid "| Also try include a backtrace, you can get it like this:"
 msgstr "| Versuche auch einen backtrace zu erstellen, du bekommst ihn so:"
 
-#: src/pingus_main.cxx:109
-msgid "| $ gdb pingus core"
-msgstr ""
-
-#: src/pingus_main.cxx:110
-msgid "| (gdb) bt"
-msgstr ""
-
-#: src/pingus_main.cxx:111 src/pingus_main.cxx:118
-msgid "| ..."
-msgstr ""
-
 #: src/pingus_main.cxx:113
 msgid "| If that doesn't work, try this:"
 msgstr "| Wenn das nicht geht, versuche dies:"
-
-#: src/pingus_main.cxx:115
-msgid "| $ gdb pingus"
-msgstr ""
-
-#: src/pingus_main.cxx:116
-msgid "| (gdb) r"
-msgstr ""
 
 #: src/pingus_main.cxx:117
 msgid "| [play until it crashes again]"
 msgstr "| [spiele bis es wieder crasht]"
 
-#: src/pingus_main.cxx:120
-msgid "'------------------------------------------------------------------------\n"
-msgstr ""
-
-#: src/pingus_main.cxx:124
-msgid ""
-"\n"
-",------------------------------------------------------------------------"
-msgstr ""
-
 #: src/pingus_main.cxx:125
 msgid "| Warning: Pingus recieved a SIGINT, exiting now."
 msgstr "| Warnung: Pingus erhielt einen SIGIN, beende jetzt."
-
-#: src/pingus_main.cxx:349
-msgid ""
-"\n"
-"Copyright (C) 2003 Ingo Ruhnke <grumbel@gmx.de>\n"
-"There is NO warranty.  You may redistribute this software\n"
-"under the terms of the GNU General Public License.\n"
-"For more information about these matters, see the files named COPYING."
-msgstr ""
-"\n"
-"Copyright (C) 2003 Ingo Ruhnke <grumbel@gmx.de>\n"
-"Es gibt KEINE Garantie. Kopien dieser Software dürfen\n"
-"unter der GNU General Public License erstellt werden.\n"
-"Für mehr Informationen hierüber, siehe in der Datei COPYING."
 
 #: src/pingus_main.cxx:488
 msgid "Unknow char: "
@@ -850,165 +726,247 @@ msgstr "Benutzung: "
 msgid " [OPTIONS]... [LEVELFILE]"
 msgstr "[OPTIONEN]... [LEVELDATEI]"
 
-#: src/pingus_main.cxx:491
-msgid ""
-"\n"
-"Options:\n"
-"   -g, --geometry {width}x{height}\n"
-"                            Set the resolution for pingus (default: "
-"800x600)\n"
-"   -h, --help               Displays this screen\n"
-"   --disable-intro          Disable intro\n"
+#: src/pingus_main.cxx:492
+#, fuzzy
+msgid "Options:"
+msgstr "Einstellungen"
+
+#: src/pingus_main.cxx:494
+msgid "Set the resolution for pingus (default: 800x600)"
 msgstr ""
-"\n"
-"Optionen:\n"
-"   -g, --geometry {Breite}x{Höhe}\n"
-"\t\t\t     Setze die Aufösung für Pingus (Standard: 800x600)\n"
-"   -h, --help               Zeigt diesen Text an\n"
-"   --disable-intro          Intro überspringen\n"
+
+#: src/pingus_main.cxx:495
+#, fuzzy
+msgid "Displays this help"
+msgstr "Hilfe Anzeigen"
+
+#: src/pingus_main.cxx:496
+msgid "Disable intro"
+msgstr "Intro abschalten"
 
 #: src/pingus_main.cxx:498
-msgid "   -G, --use-opengl         Use OpenGL\n"
-msgstr "   -G, --use-opengl         Verwende OpenGL\n"
+msgid "Use OpenGL"
+msgstr "OpenGL benutzen"
 
 #: src/pingus_main.cxx:501
-msgid ""
-"   -w, --window             Start in Window Mode\n"
-"   -f, --fullscreen         Start in Fullscreen\n"
-"   -d, --datadir PATH       Set the path to load the data files to `path'\n"
-"   -l, --level FILE         Load a custom level from FILE\n"
-"   -w, --worldmap FILE      Load a custom worldmap from FILE\n"
-"   -v, --verbose            Print some more messages to stdout, can be set\n"
-"                            multible times to increase verbosity\n"
-"   -V, --version            Prints version number and exit\n"
-"   -e, --editor             Launch the Level editor (experimental)\n"
-"   --disable-auto-scrolling Disable automatic scrolling\n"
-"   --no-cfg-file            Don't read ~/.pingus/config\n"
-"   --config-file FILE       Read config from FILE (default: ~/.pingus/"
-"config)\n"
-"                            reduce CPU usage, might speed up the game on "
-"slower machines\n"
-"\n"
-"Debugging and experimental stuff:\n"
-"   --maintainer-mode        Enables some features, only interesting "
-"programmers\n"
-"   --debug OPTION           Enable the output of debugging infos, possible\n"
-"                            OPTION's are tiles, gametime, actions, sound, "
-"resources, gui,\n"
-"                            input\n"
-"   --min-frame-skip N       Skip at least N frames, larger values speed the "
-"game up\n"
-"   --max-frame-skip N       Skip at most N frames\n"
-"   --frame-skip N           Set both min and max frameskip to N\n"
-"   -t, --speed SPEED        Set the game speed (0=fastest, >0=slower)\n"
-"   -b, --print-fps          Prints the fps to stdout\n"
-"   --tile-size INT          Set the size of the map tiles (default: 32)\n"
-"   --fast-mode              Disable some cpu intensive features\n"
-"   --min-cpu-usage          Reduces the CPU usage by issuing sleep()\n"
-"\n"
-"\n"
-"Demo playing and recording:\n"
-"   -p, --play-demo FILE     Plays a demo session from FILE\n"
-"   -r, --enable-demo-recording\n"
-"                            Record demos for each played level\n"
+msgid "Start in Window Mode"
+msgstr "Pingus im Fenster starten"
+
+#: src/pingus_main.cxx:502
+msgid "Start in Fullscreen"
+msgstr "Pingus im Vollbild starten"
+
+#: src/pingus_main.cxx:506 src/pingus_main.cxx:507
+msgid "FILE      "
+msgstr ""
+
+#: src/pingus_main.cxx:506
+msgid "Load a custom level from FILE"
+msgstr "Einen Level aus DATEI laden"
+
+#: src/pingus_main.cxx:507
+msgid "Load a custom worldmap from FILE"
+msgstr "Eine Weltkarte aus DATEI laden"
+
+#: src/pingus_main.cxx:508
+msgid "Print some more messages to stdout, can be set"
+msgstr ""
+
+#: src/pingus_main.cxx:509
+msgid "multible times to increase verbosity"
+msgstr ""
+
+#: src/pingus_main.cxx:510
+msgid "Prints version number and exit"
+msgstr "Versions ausgeben und beenden"
+
+#: src/pingus_main.cxx:511
+#, fuzzy
+msgid "Launch the Level editor (experimental)"
+msgstr "..:: Erstelle deinen Eigenen Level ::.."
+
+#: src/pingus_main.cxx:512
+msgid "Disable automatic scrolling"
+msgstr "automatisches Scrollen abschalten"
+
+#: src/pingus_main.cxx:517
+msgid "Don't read ~/.pingus/config"
+msgstr "~/.pingus/config nicht einlesen"
+
+#: src/pingus_main.cxx:518
+msgid "FILE       "
+msgstr ""
+
+#: src/pingus_main.cxx:518
+msgid "Read config from FILE (default: ~/.pingus/config)"
+msgstr "Konfiguration aus DATEI lesen"
+
+#: src/pingus_main.cxx:519
+msgid "reduce CPU usage, might speed up the game on slower machines"
+msgstr ""
+
+#: src/pingus_main.cxx:520
+msgid "Debugging and experimental stuff:"
+msgstr ""
+
+#: src/pingus_main.cxx:521
+msgid "Enables some features, only interesting programmers"
+msgstr ""
+
+#: src/pingus_main.cxx:522
+msgid "Enable the output of debugging infos, possible"
+msgstr ""
+
+#: src/pingus_main.cxx:523
+msgid "OPTION's are tiles, gametime, actions, sound, resources, gui,"
+msgstr ""
+
+#: src/pingus_main.cxx:524
+msgid "input"
+msgstr ""
+
+#: src/pingus_main.cxx:525
+msgid "Skip at least N frames, larger values speed the game up"
+msgstr ""
+
+#: src/pingus_main.cxx:526
+msgid "Skip at most N frames"
+msgstr ""
+
+#: src/pingus_main.cxx:527
+msgid "Set both min and max frameskip to N"
+msgstr ""
+
+#: src/pingus_main.cxx:528
+msgid "Set the game speed (0=fastest, >0=slower)"
+msgstr ""
+
+#: src/pingus_main.cxx:529
+msgid "Prints the fps to stdout"
+msgstr ""
+
+#: src/pingus_main.cxx:530
+msgid "Set the size of the map tiles (default: 32)"
+msgstr ""
+
+#: src/pingus_main.cxx:531
+msgid "Disable some cpu intensive features"
+msgstr ""
+
+#: src/pingus_main.cxx:532
+msgid "Reduces the CPU usage by issuing sleep()"
+msgstr ""
+
+#: src/pingus_main.cxx:535
+msgid "FILE     "
+msgstr ""
+
+#: src/pingus_main.cxx:535
+msgid "Plays a demo session from FILE"
+msgstr ""
+
+#: src/pingus_main.cxx:537
+msgid "Record demos for each played level"
 msgstr ""
 
 #: src/pingus_main.cxx:540
-msgid ""
-"\n"
-"Sound:\n"
-"   -s, --enable-sound       Enable sound\n"
-"   -m, --enable-music       Enable music\n"
-msgstr ""
-"\n"
-"Sound:\n"
-"   -s, --enable-sound       Aktiviere Sound\n"
-"   -m, --enable-music       Aktiviere Musik\n"
+#, fuzzy
+msgid "Sound:"
+msgstr "Sound"
 
-#: src/pingus_main.cxx:649
+#: src/pingus_main.cxx:541
+#, fuzzy
+msgid "Enable sound"
+msgstr "aktiviert"
+
+#: src/pingus_main.cxx:542
+msgid "Enable music"
+msgstr ""
+
+#: src/pingus_main.cxx:651
 msgid "clanVorbis support:           ok"
 msgstr "clanVorbis Unterstützung:    ok"
 
-#: src/pingus_main.cxx:651
+#: src/pingus_main.cxx:653
 msgid "clanVoribs support:  missing (.ogg music files will not be playable)"
 msgstr ""
 "clanVorbis Unterstützung: fehlt (.ogg Musik Datein können nicht abgespielt "
 "werden)"
 
-#: src/pingus_main.cxx:655
+#: src/pingus_main.cxx:657
 msgid "clanMikMod support:           ok"
 msgstr "clanMikMod Unterstützung:    ok"
 
-#: src/pingus_main.cxx:657
+#: src/pingus_main.cxx:659
 msgid "clanMikMod support:  missing (music files will not be playable)"
 msgstr ""
 "clanMikMod Untersützung: fehlt (Musikdateien können nicht abgespielt werden)"
 
-#: src/pingus_main.cxx:661
+#: src/pingus_main.cxx:663
 msgid "getext support:               ok"
 msgstr "gettext Unterstützung:       ok"
 
-#: src/pingus_main.cxx:662
+#: src/pingus_main.cxx:664
 msgid "gettext language:        english"
 msgstr "gettext Sprache:        deutsch"
 
-#: src/pingus_main.cxx:668
+#: src/pingus_main.cxx:670
 msgid "sound support:           enabled"
 msgstr "Sound Unterstützung:         an"
 
-#: src/pingus_main.cxx:670
+#: src/pingus_main.cxx:672
 msgid "sound support:          disabled"
 msgstr "Sound Unterstützung:        aus"
 
-#: src/pingus_main.cxx:673
+#: src/pingus_main.cxx:675
 msgid "music support:           enabled"
 msgstr "Musik Unterstützung:         an"
 
-#: src/pingus_main.cxx:675
+#: src/pingus_main.cxx:677
 msgid "music support:          disabled"
 msgstr "Musik Unterstützung:        aus"
 
-#: src/pingus_main.cxx:677
+#: src/pingus_main.cxx:679
 msgid "resolution set to:       "
 msgstr "Auflösung:               "
 
-#: src/pingus_main.cxx:678
+#: src/pingus_main.cxx:680
 msgid "fullscreen:              "
 msgstr "Vollbild:                "
 
-#: src/pingus_main.cxx:679
+#: src/pingus_main.cxx:681
 msgid " enabled"
 msgstr "aktiviert"
 
-#: src/pingus_main.cxx:679
+#: src/pingus_main.cxx:681
 msgid "disabled"
 msgstr "deaktiviert"
 
-#: src/pingus_main.cxx:689
+#: src/pingus_main.cxx:691
 msgid "PingusMain: Starting Main: "
 msgstr "PingusMain: Hauptteil wird gestartet: "
 
-#: src/pingus_main.cxx:719
+#: src/pingus_main.cxx:721
 msgid "PingusMain: Levelfile not found, ignoring: "
 msgstr "PingusMain: Leveldatei nicht gefunden, Fehler wird ignoriert: "
 
-#: src/pingus_main.cxx:810
+#: src/pingus_main.cxx:812
 msgid "Error caught from ClanLib: "
 msgstr "ClanLib Fehler abgefangen: "
 
-#: src/pingus_main.cxx:814
+#: src/pingus_main.cxx:816
 msgid "Error caught from Pingus: "
 msgstr "Pingus Fehler wurde abgefangen: "
 
-#: src/pingus_main.cxx:818
+#: src/pingus_main.cxx:820
 msgid "Pingus: Out of memory!"
 msgstr "Pingus: Speicher ist ausgegangen"
 
-#: src/pingus_main.cxx:822
+#: src/pingus_main.cxx:824
 msgid "Pingus: Standard exception caught!:\n"
 msgstr "Pingus: Standard Ausnahme abgefangen!:\n"
 
-#: src/pingus_main.cxx:826
+#: src/pingus_main.cxx:828
 msgid "Pingus: Unknown throw caught!"
 msgstr "Pingus: Unbekannte Ausnahme abgefangen!"
 
@@ -1358,215 +1316,3 @@ msgstr "Worldmap: Datei nicht gefunden: "
 #: src/worldmap/worldmap.cxx:246
 msgid "...walking..."
 msgstr "Ladevorgang läuft..."
-
-#~ msgid "_If I forgot somebody in this"
-#~ msgstr "_Wenn ich irgendwen vergessen habe,"
-
-#~ msgid "_list, just drop me a line and"
-#~ msgstr "_bitte eine kurze Mail mich."
-
-#~ msgid "_I'll fix this."
-#~ msgstr "_Ich werde es korrigieren."
-
-#~ msgid "_Last Updated: 2000/06/27"
-#~ msgstr "_Letzte Aenderung: 2000/06/27"
-
-#~ msgid "n"
-#~ msgstr "n"
-
-#~ msgid "..:: Press Start ::.."
-#~ msgstr "..:: Druecke start ::.."
-
-#~ msgid "Gimmicks"
-#~ msgstr "Gimmicks"
-
-#~ msgid "Level Previews"
-#~ msgstr "Level Vorschau"
-
-#~ msgid ""
-#~ "   -F, --disable-fullscreen Disable Fullscreen (default)\n"
-#~ "   -f, --enable-fullscreen  Enable Fullscreen\n"
-#~ "   -d, --datadir PATH       Set the path to load the data files to "
-#~ "`path'\n"
-#~ "   --use-datafile           Use the pre-compiled datafile (default)\n"
-#~ "   --use-scriptfile         Use the scriptfile and read all data from "
-#~ "files\n"
-#~ "   -l, --level FILE         Load a custom level from `file'\n"
-#~ "   -v, --verbose            Print some more messages to stdout, can be "
-#~ "set\n"
-#~ "                            multible times to increase verbosity\n"
-#~ "   -V, --version            Prints version number and exit\n"
-#~ "   --fast-mode              Disable some cpu intensive features\n"
-#~ "   -e, --editor             Launch the Level editor (experimental)\n"
-#~ "   --disable-auto-scrolling Disable automatic scrolling\n"
-#~ "   --disable-swcursor       Disable software cursor, use hw cursor "
-#~ "instead\n"
-#~ "   --enable-swcursor        Enable software cursor\n"
-#~ "   --disable-action-help    Disable action button help strings\n"
-#~ "   --enable-action-help     Enable action button help strings(default)\n"
-#~ "   --no-cfg-file            Don't read ~/.pingus/config\n"
-#~ "   --config-file FILE       Read config from FILE (default: ~/.pingus/"
-#~ "config)\n"
-#~ "   --min-cpu-usage          Reduces the CPU usage by issuing sleep()\n"
-#~ "                            reduce CPU usage, might speed up the game on "
-#~ "slower machines\n"
-#~ "   --min-frame-skip N       Skip at least N frames, larger values speed "
-#~ "the game up\n"
-#~ "   --max-frame-skip N       Skip at most N frames\n"
-#~ "   --frame-skip N           Set both min and max frameskip to N\n"
-#~ "\n"
-#~ "Debugging and experimental stuff:\n"
-#~ "   --maintainer-mode        Enables some features, only interesting "
-#~ "programmers\n"
-#~ "   --enable-bg-manipulation Enables color manipulation of level "
-#~ "backgrounds\n"
-#~ "   --debug OPTION           Enable the output of debugging infos, "
-#~ "possible\n"
-#~ "                            OPTION's are tiles, gametime, actions, sound, "
-#~ "resources, gui,\n"
-#~ "                            input\n"
-#~ "   -t, --speed SPEED        Set the game speed (0=fastest, >0=slower)\n"
-#~ "   -b, --print-fps          Prints the fps to stdout\n"
-#~ "   -i, --enable-gimmicks    Enable some buggy development stuff\n"
-#~ "   -S, --sound-specs FILE   Use files mentioned in FILE\n"
-#~ "   --tile-size INT          Set the size of the map tiles (default: 32)\n"
-#~ "\n"
-#~ "\n"
-#~ "Demo playing and recording:\n"
-#~ "   -r, --record-demo FILE   Record a demo session to FILE\n"
-#~ "   -p, --play-demo FILE     Plays a demo session from FILE\n"
-#~ msgstr ""
-#~ "   -F, --disable-fullscreen Vollen Bildschirm nicht verwenden (Standard)\n"
-#~ "   -f, --enable-fullscreen  Vollen Bilschirm verwenden\n"
-#~ "   -d, --datadir PATH       Setze den Pfad zum Laden der Datendateien auf "
-#~ "'PATH'\n"
-#~ "   --use-datafile           Benutze vorbereitete Datendatei (Standard)   "
-#~ "--use-scriptfile         Benutze die Skriptdatei und lese alle Daten aus "
-#~ "Dateien\n"
-#~ "   -l, --level FILE         Benutze eine eigene Leveldatei in 'FILE'\n"
-#~ "   -v, --verbose            Gibt zusäzliche Debugausgaben aus, kann "
-#~ "mehrfach gesetzt\n"
-#~ "                            werden, um die Genauigkeit zu erhöhen\n"
-#~ "   -V, --version            Gibt die Versionsnummer aus\n"
-#~ "   --fast-mode              Schaltet einige CPU intensive Funktionen ab\n"
-#~ "   -e, --editor             Starte den Level Editor (Experimentell)\n"
-#~ "   --disable-auto-scrolling Deaktiviere automatisches Srollen\n"
-#~ "   --disable-swcursor       Ersetze SW cursor durch HW cursor\n"
-#~ "   --enable-swcursor        Aktiviere SW cursor\n"
-#~ "   --disable-action-help    Hilfe zu Fähigkeitsknöpfen deaktivieren\n"
-#~ "   --no-cfg-file            ~/.pingus/config nicht einlesen\n"
-#~ "   --config-file FILE       Lese Konfiguration aus FILE (Standard: ~/."
-#~ "pingus/config)\n"
-#~ "   --min-cpu-usage          Reduziert die CPU Belastung durch Verwendung "
-#~ "von sleep()\n"
-#~ "                            Dies könnte die Geschwindigkeit auf langsamen "
-#~ "Rechnern steigern\n"
-#~ "   --min-frame-skip N       Überspringe mindestens N frames, größere "
-#~ "Werte beschleunigen das Spiel\n"
-#~ "   --max-frame-skip N       Überspringe maximal N frames\n"
-#~ "   --frame-skip N           Setze sowohl min- als auch max-frameskip auf "
-#~ "N\n"
-#~ "\n"
-#~ "Debugging und Experimentelles:\n"
-#~ "   --maintainer-mode        Aktiviere einige Funktionen, nur für "
-#~ "Programmierer\n"
-#~ "   --enable-bg-manipulation Aktiviere Farbmanipulation von "
-#~ "Levelhintergründen\n"
-#~ "   --debug OPTION           Aktiviere Debugausgaben, mögliche Werte "
-#~ "sind:\n"
-#~ "                            tiles, gametime, actions, sound, resources, "
-#~ "gui, input\n"
-#~ "   -t, --speed SPEED        Setze die Spielgeschwindigkeit (0=schnellste, "
-#~ ">0=langsamer)\n"
-#~ "   -b, --print-fps          Schreibt die fps auf stdout\n"
-#~ "   -i, --enable-gimmicks    Aktiviere instabile Funktionen für "
-#~ "Entwickler\n"
-#~ "   -S, --sound-specs FILE   Benutze Dateien die in FILE erwähnt sind\n"
-#~ "   --tile-size INT          Setzt die Größe von Kartenteilen (Standard: "
-#~ "32)\n"
-#~ "\n"
-#~ "\n"
-#~ "Demos abspielen und aufnehmen:\n"
-#~ "   -r, --record-demo FILE   Demo aufnehmen und in FILE speichern\n"
-#~ "   -p, --play-demo FILE     Spielt ein Demo aus FILE ab.\n"
-
-#~ msgid "Couldn't find palette: %d"
-#~ msgstr "Pallete konnte nicht gefunden worden: %d"
-
-#~ msgid "Result: Failure! :("
-#~ msgstr "Ergebnis: Versagt!"
-
-#~ msgid "..:: Lets you select a world to start ::.."
-#~ msgstr "..:: Such dir eine Welt zum starten aus ::.."
-
-#~ msgid "Unexpected keyword: '%s' at line: %d"
-#~ msgstr "Unerwartetes Schlüsselwort: '%s' bei Zeile: '%d'"
-
-#~ msgid "ColMap: File load - Feature is no longer implemented"
-#~ msgstr "ColMap: Datei laden - nicht mehr implementiert"
-
-#~ msgid "PingusBmpMap::get_colmap: Surface has wrong pixel format, need 8bpp!"
-#~ msgstr "PingusBmpMap::get_colmap: "
-
-#~ msgid "DemoPlayer: Couldn't load "
-#~ msgstr "System: Datei oder Verzeichnis konnte nicht geöffnet werden: "
-
-#~ msgid "DemoRecorder: Couldn't open: "
-#~ msgstr "System: Datei oder Verzeichnis konnte nicht geöffnet werden: "
-
-#~ msgid "Edit Properties (not implemented)"
-#~ msgstr "Objecteigenschaften (nicht implementiert)"
-
-#~ msgid "Edit Preferences (not implemented)"
-#~ msgstr "Einstellungen veraendern (nicht implentiert)"
-
-#~ msgid "Starting Pingus "
-#~ msgstr "Pingus wird gestartet"
-
-#~ msgid "Start menu"
-#~ msgstr "Start Menu"
-
-#~ msgid ": Could not open file\n"
-#~ msgstr "System: Datei oder Verzeichnis konnte nicht geöffnet werden: "
-
-#~ msgid "PingusDemo: Couldn't open out file: "
-#~ msgstr "System: Datei oder Verzeichnis konnte nicht geöffnet werden: "
-
-#~ msgid "PingusDemo: Couldn't open in file: "
-#~ msgstr "System: Datei oder Verzeichnis konnte nicht geöffnet werden: "
-
-#~ msgid "Time for war - Lets fight!"
-#~ msgstr "Der Kampf erwartet uns!"
-
-#, fuzzy
-#~ msgid "Couldn't find: "
-#~ msgstr "Pallete konnte nicht gefunden worden: %d"
-
-#, fuzzy
-#~ msgid "Options:\n"
-#~ msgstr "Einstellungen"
-
-#, fuzzy
-#~ msgid ""
-#~ "\n"
-#~ "Sound:\n"
-#~ msgstr "Gefunden: "
-
-#~ msgid " (with sound support)"
-#~ msgstr " (mit Sound Unterstützung)"
-
-#~ msgid " (without sound support)"
-#~ msgstr " (ohne Sound Unterstützung)"
-
-#, fuzzy
-#~ msgid "Pingus Datadir"
-#~ msgstr "Zu rettende Pingus: %d"
-
-#~ msgid "Starting..."
-#~ msgstr "Pingus wird gestartet..."
-
-#~ msgid "Pingus: Gimmicks enabled"
-#~ msgstr "Pingus: Spielereinen eingeschaltet"
-
-#~ msgid "Using demofile: "
-#~ msgstr "Benutze Demo Datei: "

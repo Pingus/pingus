@@ -1,4 +1,4 @@
-//  $Id: pingus_menu_manager.hxx,v 1.19 2003/04/10 18:28:30 grumbel Exp $
+//  $Id: pingus_menu_manager.hxx,v 1.20 2003/04/11 14:30:05 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,7 +23,6 @@
 #include "menu_background.hxx"
 #include "exit_menu.hxx"
 #include "pingus_menu.hxx"
-#include "option_menu.hxx"
 #include "sprite.hxx"
 
 class PingusSubMenu;
@@ -46,7 +45,6 @@ public:
   /* Menu's FIXME: These shouldn't get exported to the outsite,
      instead only handles (enum's) should be visible */
   PingusMenu mainmenu;
-  OptionMenu optionmenu;
   MenuBackground background;
   ExitMenu exitmenu;
 

@@ -1489,14 +1489,6 @@ SOURCE=.\src\my_gettext.hxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\option_menu.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\option_menu.hxx
-# End Source File
-# Begin Source File
-
 SOURCE=.\src\particles\pingu_particle_holder.cxx
 # End Source File
 # Begin Source File
@@ -2094,14 +2086,6 @@ SOURCE=.\src\worldmap\sprite_drawable.cxx
 # Begin Source File
 
 SOURCE=.\src\worldmap\sprite_drawable.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\worldmap\stat.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\worldmap\stat.hxx
 # End Source File
 # Begin Source File
 
