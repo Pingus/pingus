@@ -27,7 +27,6 @@ gui/checkbox_checked_disabled.png \
 gui/radiobutton_unchecked_disabled.png \
 gui/radiobutton_unchecked.png \
 gui/checkbox_unchecked_disabled.png \
-core/menu/old/background.jpg \
 core/menu/multi_on.png \
 core/menu/play_on.png \
 core/menu/options_on.png \
@@ -214,10 +213,6 @@ groundpieces/bridge/space/grid3.png \
 groundpieces/ground/mud/mudpiece1.png \
 groundpieces/ground/mud/mudpiece2.png \
 groundpieces/ground/mud/mudpiece3.png \
-groundpieces/ground/misc/old/bpice1.png \
-groundpieces/ground/misc/old/bpice4.png \
-groundpieces/ground/misc/old/bpice6.png \
-groundpieces/ground/misc/old/bpiece5.png \
 groundpieces/ground/misc/well.png \
 groundpieces/ground/misc/tree.png \
 groundpieces/ground/misc/stone0.png \
@@ -271,10 +266,6 @@ groundpieces/ground/misc/grey_stone4.png \
 groundpieces/ground/misc/grey_stone5.png \
 groundpieces/ground/misc/grey_stone6.png \
 groundpieces/ground/misc/dragon.png \
-groundpieces/ground/real/old/real31.png \
-groundpieces/ground/real/old/real32.png \
-groundpieces/ground/real/old/real33.png \
-groundpieces/ground/real/old/real34.png \
 groundpieces/ground/real/fish.png \
 groundpieces/ground/real/green1.png \
 groundpieces/ground/real/green2.png \
@@ -647,7 +638,6 @@ textures/clouds2.jpg \
 textures/clouds3.png \
 textures/blueflame.jpg \
 textures/industrial.jpg \
-hotspots/misc/old/bridge2.png \
 hotspots/misc/tree.png \
 hotspots/misc/bridge.png \
 hotspots/space/engine.png \
