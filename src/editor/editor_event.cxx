@@ -1,4 +1,4 @@
-//  $Id: editor_event.cxx,v 1.18 2002/07/01 16:31:40 grumbel Exp $
+//  $Id: editor_event.cxx,v 1.19 2002/07/01 16:47:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -432,7 +432,7 @@ EditorEvent::editor_convert_selection_to_group()
 	   j != object_manager->editor_objs.end();
 	   j++)
 	{
-	  for (list<EditorObj*>::const_iterator i = selection->get_objects().begin();
+	  for (vector<EditorObj*>::const_iterator i = selection->get_objects().begin();
 	       i != selection->get_objects().end();
 	       i++)
 	    { 
@@ -497,7 +497,7 @@ EditorEvent::editor_delete_selected_objects()
 {
   editor->save_tmp_level ();
       
-  for (std::list<EditorObj*>::const_iterator i = selection->get_objects().begin();
+  for (std::vector<EditorObj*>::const_iterator i = selection->get_objects().begin();
        i != selection->get_objects().end();
        i++)
     { 
@@ -621,9 +621,9 @@ EditorEvent::editor_save_level_as()
 void
 EditorEvent::editor_duplicate_current_selection()
 {
-  std::list<EditorObj*> new_objs;
+  std::vector<EditorObj*> new_objs;
   
-  for (std::list<EditorObj*>::const_iterator i = selection->get_objects().begin(); 
+  for (std::vector<EditorObj*>::const_iterator i = selection->get_objects().begin(); 
        i != selection->get_objects().end();
        i++)
     {
@@ -765,7 +765,7 @@ EditorEvent::editor_export_object_group_from_selection ()
   std::cout << "EditorEvent:editor_export_object_group_from_selection ()" << std::endl;
   
   std::list<boost::shared_ptr<EditorObj> > temp;
-  for (std::list<EditorObj*>::const_iterator it  = selection->get_objects().begin();
+  for (std::vector<EditorObj*>::const_iterator it  = selection->get_objects().begin();
        it != selection->get_objects().end(); ++it)
     temp.push_back(boost::shared_ptr<EditorObj>(*it));
   

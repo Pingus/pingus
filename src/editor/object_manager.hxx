@@ -1,4 +1,4 @@
-//  $Id: object_manager.hxx,v 1.8 2002/07/01 16:40:30 grumbel Exp $
+//  $Id: object_manager.hxx,v 1.9 2002/07/01 16:47:30 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -99,7 +99,7 @@ public:
   void add_object_group_from_file (const std::string& filename);
 
   //void rect_get_current_objs(float x1, float y1, float x2, float y2);
-  std::list<EditorObj*> rect_get_objs(int x1, int y1, int x2, int y2);
+  std::vector<EditorObj*> rect_get_objs(int x1, int y1, int x2, int y2);
 
   int get_width() { return width; }
   int get_height() { return height; }

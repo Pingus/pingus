@@ -1,4 +1,4 @@
-//  $Id: status_line.cxx,v 1.4 2002/07/01 16:10:29 torangan Exp $
+//  $Id: status_line.cxx,v 1.5 2002/07/01 16:47:31 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -69,7 +69,7 @@ StatusLine::draw(EditorView * view)
 }
 
 void
-StatusLine::set_current_objs(const std::list<EditorObj*>* c_objs)
+StatusLine::set_current_objs(const std::vector<EditorObj*>* c_objs)
 {
   current_objs = c_objs;
 }

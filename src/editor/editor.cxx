@@ -1,4 +1,4 @@
-//  $Id: editor.cxx,v 1.15 2002/07/01 16:31:40 grumbel Exp $
+//  $Id: editor.cxx,v 1.16 2002/07/01 16:47:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -160,7 +160,7 @@ Editor::edit ()
 
   register_event_handler();
 
-  std::list<EditorObj*> tmp_selection;
+  std::vector<EditorObj*> tmp_selection;
 
   while (!quit) 
     {

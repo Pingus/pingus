@@ -1,4 +1,4 @@
-//  $Id: object_manager.cxx,v 1.15 2002/07/01 16:40:30 grumbel Exp $
+//  $Id: object_manager.cxx,v 1.16 2002/07/01 16:47:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -426,10 +426,10 @@ ObjectManager::rect_get_current_objs(float x_1, float y_1, float x_2, float y_2)
 }
 */
 
-list<EditorObj*>
+vector<EditorObj*>
 ObjectManager::rect_get_objs(int x1, int y1, int x2, int y2)
 {
-  list<EditorObj*> retval;
+  vector<EditorObj*> retval;
 
   for (EditorObjIter it = editor_objs.begin(); it != editor_objs.end(); it++)
     if ((*it)->is_in_rect(CL_Rect(x1, y1, x2, y2)))
