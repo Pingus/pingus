@@ -1,4 +1,4 @@
-//  $Id: pingus.cxx,v 1.21 2002/10/15 22:14:42 grumbel Exp $
+//  $Id: pingus.cxx,v 1.22 2002/10/15 23:54:01 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -88,7 +88,7 @@ Pingus::walk_to_node (NodeId target)
 {
   if (current_node == target)
     {
-      // do nothing
+      return true;
     }
   else if (current_node != NoNode) // pingu stands still
     {
