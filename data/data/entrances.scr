@@ -22,6 +22,9 @@ section Entrances {
         industrial = ../images/entrances/industrial.png (type=surface, x=0, y=0, width=105, height=158, tcol=0);
         industrial_top = ../images/entrances/industrial_top.png (type=surface, x=0, y=0, width=43, height=53, tcol=0);
 
+        snow_front = ../images/entrances/snow_front.png (type=surface);
+        snow_back  = ../images/entrances/snow_back.png (type=surface);
+
 //        industrial = ../images/entrances/industrial.png (type=surface, x=0, y=0, width=129, height=193, tcol=0);
 //        industrial_top = ../images/entrances/industrial_top.png (type=surface, x=0, y=0, width=52, height=65, tcol=0);
 }

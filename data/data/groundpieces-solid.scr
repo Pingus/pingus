@@ -7,6 +7,14 @@ section crystal
         squaresolid = ../images/groundpieces/solid/crystal/squaresolid.png (type=surface);
 }
 
+section desert
+{
+        bigbrickpiece = ../images/groundpieces/solid/desert/bigbrickpiece.png (type=surface);
+        leftsmallbrick = ../images/groundpieces/solid/desert/leftsmallbrick.png (type=surface);
+        middlebrickpiece = ../images/groundpieces/solid/desert/middlebrickpiece.png (type=surface);
+        smallbrickpiece = ../images/groundpieces/solid/desert/smallbrickpiece.png (type=surface);
+}
+
 section industrial
 {
         greybri1 = ../images/groundpieces/solid/industrial/greybri1.png (type=surface);

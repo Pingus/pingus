@@ -126,6 +126,7 @@ section misc
         brick4 = ../images/groundpieces/ground/misc/brick4.png (type=surface);
         brick5 = ../images/groundpieces/ground/misc/brick5.png (type=surface);
         bridge1 = ../images/groundpieces/ground/misc/bridge1.png (type=surface);
+        bridge2 = ../images/groundpieces/ground/misc/bridge2.png (type=surface);
         column = ../images/groundpieces/ground/misc/column.png (type=surface);
         column_down = ../images/groundpieces/ground/misc/column_down.png (type=surface);
         column_flat = ../images/groundpieces/ground/misc/column_flat.png (type=surface);
@@ -274,6 +275,7 @@ section snow
         groundice = ../images/groundpieces/ground/snow/groundice.png (type=surface);
         ice1 = ../images/groundpieces/ground/snow/ice1.png (type=surface);
         ice2 = ../images/groundpieces/ground/snow/ice2.png (type=surface);
+        ice3 = ../images/groundpieces/ground/snow/ice3.png (type=surface);
         iceblock1 = ../images/groundpieces/ground/snow/iceblock1.png (type=surface);
         icepiece1 = ../images/groundpieces/ground/snow/icepiece1.png (type=surface);
         igloo = ../images/groundpieces/ground/snow/igloo.png (type=surface);
@@ -284,6 +286,8 @@ section snow
         piece7 = ../images/groundpieces/ground/snow/piece7.png (type=surface);
         piece8 = ../images/groundpieces/ground/snow/piece8.png (type=surface);
         piece9 = ../images/groundpieces/ground/snow/piece9.png (type=surface);
+        pillar1 = ../images/groundpieces/ground/snow/pillar1.png (type=surface);
+        pillar2 = ../images/groundpieces/ground/snow/pillar2.png (type=surface);
         slopedr = ../images/groundpieces/ground/snow/slopedr.png (type=surface);
         snowball1 = ../images/groundpieces/ground/snow/snowball1.png (type=surface);
         snowman = ../images/groundpieces/ground/snow/snowman.png (type=surface);
