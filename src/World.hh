@@ -1,4 +1,4 @@
-//  $Id: World.hh,v 1.33 2002/06/07 19:10:33 grumbel Exp $
+//  $Id: World.hh,v 1.34 2002/06/08 16:08:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -53,7 +53,7 @@ private:
 
   PinguMap* gfx_map;
   bool do_armageddon;
-  std::list<boost::shared_ptr<Pingu> >::iterator armageddon_count;
+  std::list<Pingu*>::iterator armageddon_count;
 
   unsigned int released_pingus;
   unsigned int allowed_pingus;
@@ -157,7 +157,7 @@ public:
 
   /** @return the pingu at the given word coordinates, an empty
       shared_ptr is returned if none is there */
-  boost::shared_ptr<Pingu> get_pingu (const CL_Vector& pos);
+  Pingu* get_pingu (const CL_Vector& pos);
 };
 
 #endif

@@ -1,4 +1,4 @@
-//  $Id: Trap.hh,v 1.20 2001/12/16 03:23:44 cagri Exp $
+//  $Id: Trap.hh,v 1.21 2002/06/08 16:08:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -50,7 +50,7 @@ public:
   
   // FIXME: catch_pingu() need not be public. now, it is only called
   // from update()
-  virtual void catch_pingu(boost::shared_ptr<Pingu>) =0;
+  virtual void catch_pingu(Pingu*) =0;
 };
 
 #endif

@@ -1,4 +1,4 @@
-//  $Id: smasher.cc,v 1.31 2002/06/01 18:05:37 torangan Exp $
+//  $Id: smasher.cc,v 1.32 2002/06/08 16:08:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,9 +27,9 @@
 #include "../particles/ParticleHolder.hh"
 #include "../actions/Splashed.hh"
 #include "../algo.hh"
-#include "../boost/smart_ptr.hpp"
 #include "../GroundpieceData.hh"
 #include "smasher.hh"
+#include "../boost/smart_ptr.hpp"
 
 using boost::shared_ptr;
 
@@ -113,7 +113,7 @@ Smasher::draw_offset(int x, int y, float /*s*/)
 }
 
 void 
-Smasher::catch_pingu(boost::shared_ptr<Pingu> pingu)
+Smasher::catch_pingu(Pingu* pingu)
 {
   // Activate the smasher if a Pingu is under it
   if ((pingu->direction.is_left() 

@@ -1,4 +1,4 @@
-//  $Id: Playfield.cc,v 1.31 2002/06/07 19:10:33 grumbel Exp $
+//  $Id: Playfield.cc,v 1.32 2002/06/08 16:08:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -121,12 +121,12 @@ Playfield::draw()
     }
 }
 
-boost::shared_ptr<Pingu>
+Pingu*
 Playfield::current_pingu_find(int x_pos, int y_pos)
 {
   double min_dist = 500.0;
   double dist;
-  boost::shared_ptr<Pingu> c_pingu;
+  Pingu* c_pingu = 0;
 
   for (PinguIter pingu=pingus->begin(); pingu != pingus->end(); pingu++)
     {
@@ -216,7 +216,7 @@ Playfield::update(float /*delta*/)
 bool 
 Playfield::on_button_press(const CL_Key & /*key*/)
 {
-  if (current_pingu.get())
+  if (current_pingu)
     {
       char str[256];
       sprintf(str, "Pingu: %d:%s", current_pingu->get_id(), 

@@ -1,4 +1,4 @@
-//  $Id: hammer.hh,v 1.9 2002/06/07 20:35:14 torangan Exp $
+//  $Id: hammer.hh,v 1.10 2002/06/08 16:08:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,7 +34,7 @@ public:
   virtual ~Hammer();
 
   void update(float delta);
-  void catch_pingu(boost::shared_ptr<Pingu>);
+  void catch_pingu(Pingu*);
 };
 
 #endif

@@ -1,4 +1,4 @@
-//  $Id: hammer.cc,v 1.17 2002/06/01 18:05:37 torangan Exp $
+//  $Id: hammer.cc,v 1.18 2002/06/08 16:08:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -65,7 +65,7 @@ Hammer::update(float /*delta*/)
 }
 
 void
-Hammer::catch_pingu(boost::shared_ptr<Pingu> pingu)
+Hammer::catch_pingu(Pingu* pingu)
 {
   if (counter >= (int)(surface.get_num_frames()) - 3) {
     if (pingu->get_x() > pos.x + 55 && pingu->get_x() < pos.x + 77

@@ -1,4 +1,4 @@
-//  $Id: PinguHolder.cc,v 1.17 2002/01/15 10:48:49 grumbel Exp $
+//  $Id: PinguHolder.cc,v 1.18 2002/06/08 16:08:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,8 +35,9 @@ PinguHolder::~PinguHolder()
 {
   // Deleting all Pingu objects
   std::cout << "PinguHolder: Deleting pingus" << std::endl;
-  /*  for(PinguIter pingu = pingus.begin(); pingu != pingus.end(); ++pingu) 
-      delete (*pingu);*/
+  for(std::vector<Pingu*>::iterator i = all_pingus.begin(); 
+      i != all_pingus.end(); ++i) 
+    delete *i;
 }
 
 int
@@ -46,11 +47,22 @@ PinguHolder::total_size()
 }
 
 void
-PinguHolder::add (boost::shared_ptr<Pingu> pingu)
+PinguHolder::add (Pingu* pingu)
 {
   total_size_count++;
   pingu->set_id(id_count++);
   pingus.push_back(pingu);
+}
+
+Pingu*
+PinguHolder::create_pingu (const CL_Vector& pos, int owner_id)
+{
+  Pingu* pingu = new Pingu (pos, owner_id);
+  
+  // This list will get evaluated and deleted and destruction
+  all_pingus.push_back (pingu);
+
+  return pingu;
 }
 
 void

@@ -1,4 +1,4 @@
-//  $Id: Server.cc,v 1.25 2002/06/07 20:35:14 torangan Exp $
+//  $Id: Server.cc,v 1.26 2002/06/08 16:08:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,9 +20,6 @@
 #include <cstdio>
 #include <cstdlib>
 #include <functional>
-#include <boost/smart_ptr.hpp>
-
-using namespace boost;
 
 #include "System.hh"
 #include "globals.hh"
@@ -34,6 +31,7 @@ using namespace boost;
 #include "PingusError.hh"
 #include "PLF.hh"
 #include "StringConverter.hh"
+#include "boost/smart_ptr.hpp"
 
 using namespace std;
 
@@ -120,7 +118,7 @@ Server::send_event(std::string event)
 }
 
 /** PinguID search functor */
-struct PinguId : public unary_function<shared_ptr<Pingu>, bool>
+struct PinguId : public unary_function<Pingu*, bool>
 {
   int pingu_id;
 
@@ -129,7 +127,7 @@ struct PinguId : public unary_function<shared_ptr<Pingu>, bool>
     pingu_id = i;
   }
  
-  bool operator()(shared_ptr<Pingu> pingu) {
+  bool operator()(Pingu* pingu) {
     return (pingu->get_id() == pingu_id);
   }
 };
@@ -171,7 +169,7 @@ Server::process_event(std::string event)
 
       if (pingu != pingus->end()) 
 	{
-	  shared_ptr<PinguAction> tmp_action = action_holder.get_action(action);
+	  boost::shared_ptr<PinguAction> tmp_action = action_holder.get_action(action);
 	  
 	  if (tmp_action.get())
 	    {

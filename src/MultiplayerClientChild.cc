@@ -1,4 +1,4 @@
-//  $Id: MultiplayerClientChild.cc,v 1.10 2002/06/07 14:50:34 torangan Exp $
+//  $Id: MultiplayerClientChild.cc,v 1.11 2002/06/08 16:08:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -63,8 +63,8 @@ MultiplayerClientChild::draw ()
   for (GuiObjIter i = gui_objs.begin (); i != gui_objs.end (); ++i)
     (*i)->draw_clipped ();
 
-  boost::shared_ptr<Pingu> pingu = playfield->get_pingu (controller->get_pos ());
-  if (pingu.get () && pingu->get_owner () == controller->get_owner ())
+  Pingu* pingu = playfield->get_pingu (controller->get_pos ());
+  if (pingu && pingu->get_owner () == controller->get_owner ())
     capture_rect.put_screen(controller->get_pos ());
 }
 
@@ -85,8 +85,8 @@ void MultiplayerClientChild::on_left_press (const CL_Vector& pos)
   key.y = pos.y;
   button_panel->on_button_press(key);
 
-  boost::shared_ptr<Pingu> pingu = playfield->get_pingu (controller->get_pos ());
-  if (pingu.get () && pingu->get_owner () == controller->get_owner ())
+  Pingu* pingu = playfield->get_pingu (controller->get_pos ());
+  if (pingu && pingu->get_owner () == controller->get_owner ())
     {
       char str[256];
       sprintf(str, "Pingu: %d:%s", pingu->get_id(), button_panel->get_action_name().c_str());

@@ -1,4 +1,4 @@
-//  $Id: PinguHolder.hh,v 1.14 2001/08/13 21:35:37 grumbel Exp $
+//  $Id: PinguHolder.hh,v 1.15 2002/06/08 16:08:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,29 +21,34 @@
 #define PINGUHOLDER_HH
 
 #include <list>
-#include "boost/smart_ptr.hpp"
 
 #include "Pingu.hh"
 #include "WorldObj.hh"
 
 class Pingu;
-///
-typedef std::list<boost::shared_ptr<Pingu> >::iterator PinguIter;
 
-///
+typedef std::list<Pingu*>::iterator PinguIter;
+
+/** This class holds all the penguins in the world */
 class PinguHolder : public WorldObj
 {
 private:
   /// The uniq id for the next Pingu
   int id_count;
-  ///
+
+  /// ???
   int total_size_count;
-  ///
+
+  /// ???
   int saved_pingus;
+
+  /** This vector holds all pingus which are ever allocated in the
+      world, its used to free them all on the end of this class. */
+  std::vector<Pingu*> all_pingus;
 
   /** A list holding all Pingus, the PinguHolder itself has only the
       active (not dead) ones */
-  std::list<boost::shared_ptr<Pingu> > pingus;
+  std::list<Pingu*> pingus;
   
 public:
   PinguHolder();
@@ -52,12 +57,21 @@ public:
   void draw_offset(int, int, float s = 1.0);
   int  total_size();
   int  get_saved() { return saved_pingus; }
-  void add (boost::shared_ptr<Pingu> pingu);
+  
+  /** Adds a pingu to the list of active pingus (the ones that are
+      displayed and walk around) */
+  void add (Pingu* pingu);
+
+  /** Return a reference to a newly create Pingu, the PinguHolder will
+      take care of the deletion. The caller *must* not delete the
+      Pingu */
+  Pingu* create_pingu (const CL_Vector& pos, int owner_id);
+
   float get_z_pos() const { return 50; }
 
-  std::list<boost::shared_ptr<Pingu> >::iterator begin () { return pingus.begin (); }
-  std::list<boost::shared_ptr<Pingu> >::iterator end () { return pingus.end (); }
-  std::list<boost::shared_ptr<Pingu> >::size_type size () { return pingus.size (); }
+  std::list<Pingu*>::iterator  begin () { return pingus.begin (); }
+  std::list<Pingu*>::iterator  end ()   { return pingus.end (); }
+  std::list<Pingu*>::size_type size ()  { return pingus.size (); }
 };
 
 #endif

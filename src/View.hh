@@ -1,4 +1,4 @@
-//  $Id: View.hh,v 1.9 2001/04/12 19:47:09 grumbel Exp $
+//  $Id: View.hh,v 1.10 2002/06/08 16:08:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,7 +39,7 @@ private:
   double size;              /// The zoom of the View, 1 is default
   CaptureRectangle cap;
   ///
-  boost::shared_ptr<Pingu> current_pingu;
+  Pingu* current_pingu;
   /// Static objects which are equal for all Views
   static World* world;
 
@@ -63,29 +63,18 @@ public:
   //@}
 
   View(int, int, int, int, float s = 1.0);
-  ///
   ~View();
-  ///
+
   void draw();
-  ///
   bool is_over(int x, int y);
-  ///
   bool is_current();
-  ///
   int  get_x_offset() const;
-  ///
   int  get_y_offset() const;
-  ///
   int  get_x_pos() const;
-  ///
   int  get_y_pos() const; 
-  ///
   void set_x_offset(int);
-  ///
   void set_y_offset(int);
-  ///
   void shift_x_offset(int);
-  ///
   void shift_y_offset(int);
 
   /** Returns the current center of the screen in World coordinates. */
@@ -94,13 +83,9 @@ public:
   int get_width () { return x2_pos - x1_pos; }
   int get_height () { return y2_pos - y1_pos; }
 
-  ///
   void set_zoom(double);
-  ///
   double get_zoom();
-  ///
-  void set_pingu(boost::shared_ptr<Pingu> p);
-  ///
+  void set_pingu(Pingu* p);
   static void set_world(World*);
 };
 

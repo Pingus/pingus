@@ -1,4 +1,4 @@
-//  $Id: SmallMap.cc,v 1.39 2002/06/01 18:05:35 torangan Exp $
+//  $Id: SmallMap.cc,v 1.40 2002/06/08 16:08:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -198,8 +198,7 @@ SmallMap::draw_pingus()
   int y;
   PinguHolder* pingus = client->get_server()->get_world()->get_pingu_p();
 
-  for(std::list<boost::shared_ptr<Pingu> >::iterator i = pingus->begin();
-      i != pingus->end(); i++)
+  for(PinguIter i = pingus->begin(); i != pingus->end(); i++)
     {
       //FIXME: Replace this with put pixel
       x = x_pos + ((*i)->get_x() * width / client->get_server()->get_world()->get_colmap()->get_width());

@@ -1,4 +1,4 @@
-//  $Id: CaptureRectangle.cc,v 1.16 2002/06/07 14:50:34 torangan Exp $ 
+//  $Id: CaptureRectangle.cc,v 1.17 2002/06/08 16:08:16 grumbel Exp $ 
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,7 +32,7 @@
 
 using namespace boost;
 
-shared_ptr<Pingu> CaptureRectangle::pingu; 
+Pingu* CaptureRectangle::pingu; 
 shared_ptr<PinguAction> CaptureRectangle::button_action;
 
 CaptureRectangle::CaptureRectangle()
@@ -56,7 +56,7 @@ CaptureRectangle::~CaptureRectangle()
 void
 CaptureRectangle::draw_offset(int x_offset, int y_offset, float s)
 { 
-  if (!pingu.get()) 
+  if (!pingu) 
     {
       return;
     } 
@@ -127,7 +127,7 @@ CaptureRectangle::set_action(shared_ptr<PinguAction> action)
 }
 
 void
-CaptureRectangle::set_pingu(shared_ptr<Pingu> p)
+CaptureRectangle::set_pingu(Pingu* p)
 {
   pingu = p; 
 }

@@ -1,4 +1,4 @@
-//  $Id: PinguInfo.hh,v 1.5 2000/12/30 23:54:05 grumbel Exp $
+//  $Id: PinguInfo.hh,v 1.6 2002/06/08 16:08:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,17 +27,13 @@
 class PinguInfo : public GuiObj
 {
 private:
-  ///
   CL_Font* font;
-  ///
-  boost::shared_ptr<Pingu> pingu;
+  Pingu* pingu;
 public:
-  ///
   PinguInfo();
-  ///
+
   void draw();
-  ///
-  void set_pingu(boost::shared_ptr<Pingu> p);
+  void set_pingu(Pingu* p);
 };
 
 #endif

@@ -1,4 +1,4 @@
-//  $Id: Playfield.hh,v 1.21 2002/06/07 19:10:33 grumbel Exp $
+//  $Id: Playfield.hh,v 1.22 2002/06/08 16:08:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -52,7 +52,7 @@ private:
   std::vector<boost::shared_ptr<View> > view;
   
   ///int  x_offset, y_offset;
-  boost::shared_ptr<Pingu> current_pingu;
+  Pingu* current_pingu;
   bool mouse_scrolling;
   bool needs_clear_screen;
   int current_view;
@@ -93,7 +93,7 @@ public:
   void process_input_interactive();
   void process_input_demomode();
   void set_world(World*);
-  boost::shared_ptr<Pingu> current_pingu_find(int x_pos, int y_pos);
+  Pingu* current_pingu_find(int x_pos, int y_pos);
 
   bool on_button_press(const CL_Key &key);
 

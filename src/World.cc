@@ -1,4 +1,4 @@
-//  $Id: World.cc,v 1.68 2002/06/07 19:10:33 grumbel Exp $
+//  $Id: World.cc,v 1.69 2002/06/08 16:08:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -148,7 +148,7 @@ World::update(float delta)
       
       if ((*pingu)->need_catch()) {
 	for(PinguIter i = pingus->begin(); i != pingus->end(); i++) {
-	  (*pingu)->catch_pingu(i->get());
+	  (*pingu)->catch_pingu(*i);
 	}
       }
     }
@@ -376,10 +376,10 @@ World::set_view (shared_ptr<View> v)
   view = v;
 }
 
-boost::shared_ptr<Pingu> 
+Pingu*
 World::get_pingu (const CL_Vector& pos)
 {
-  boost::shared_ptr<Pingu> current_pingu;
+  Pingu* current_pingu = 0;
   double distance = -1.0;
 
   for (PinguIter i = pingus->begin (); i != pingus->end (); ++i) {

@@ -1,4 +1,4 @@
-//  $Id: Guillotine.cc,v 1.16 2002/06/01 18:05:37 torangan Exp $
+//  $Id: Guillotine.cc,v 1.17 2002/06/08 16:08:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -79,7 +79,7 @@ Guillotine::update(float /*delta*/)
 }
 
 void
-Guillotine::catch_pingu(boost::shared_ptr<Pingu> pingu)
+Guillotine::catch_pingu(Pingu* pingu)
 {
   if (!killing) 
     {
