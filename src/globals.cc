@@ -1,4 +1,4 @@
-//  $Id: globals.cc,v 1.38 2002/01/14 23:37:59 grumbel Exp $
+//  $Id: globals.cc,v 1.39 2002/01/21 12:06:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,7 +46,7 @@ bool   preload_data  = false; // FIXME: Should be default if it would work
 bool   draw_collision_map = false;
 bool   swcursor_enabled = false; // --enable-swcursor
 std::string config_file;   // --config-file
-bool   background_manipulation_enabled = false; // --enable-bg-manipulation
+bool   background_manipulation_enabled = true; // --enable-bg-manipulation
 bool   use_datafile = false; // --use-datafile
 bool   max_cpu_usage = false;  /// --max-cpu-usage
 float  frame_skip = 1.0f;     /// --frame-skip

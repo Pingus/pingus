@@ -1,4 +1,4 @@
-//  $Id: SurfaceBackgroundData.cc,v 1.13 2002/01/19 18:12:54 grumbel Exp $
+//  $Id: SurfaceBackgroundData.cc,v 1.14 2002/01/21 12:06:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,6 +32,7 @@ public:
     : SurfaceBackgroundData (data),
       SpriteEditorObj (desc.res_name, desc.datafile, pos)
   {
+    
   }
 
   void write_xml(std::ofstream* xml) { this->SurfaceBackgroundData::write_xml (xml); }
@@ -55,6 +56,7 @@ SurfaceBackgroundData::SurfaceBackgroundData()
   stretch_x = false;
   stretch_y = false;
   pos = CL_Vector (0, 0, -10);
+  color = Color (0,0,0,0);
 }
 
 SurfaceBackgroundData::~SurfaceBackgroundData()

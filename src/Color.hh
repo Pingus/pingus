@@ -1,4 +1,4 @@
-//  $Id: Color.hh,v 1.1 2000/08/04 19:31:27 grumbel Exp $
+//  $Id: Color.hh,v 1.2 2002/01/21 12:06:09 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,6 +38,14 @@ public:
     this->green = green;
     this->blue  = blue;
     this->alpha = alpha;
+  }
+
+  bool operator!=(const Color& color) const {
+    return !operator==(color);
+  }
+
+  bool operator==(const Color& color) const {
+    return red == color.red && green == color.green && blue == color.blue && alpha == color.alpha;
   }
 };
 
