@@ -1,4 +1,4 @@
-//  $Id: WorldObjDataFactory.hh,v 1.4 2002/01/15 10:48:49 grumbel Exp $
+//  $Id: WorldObjDataFactory.hh,v 1.5 2002/01/15 11:27:34 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -77,10 +77,9 @@ public:
   WorldObjDataFactoryImpl (const std::string& id)
     : WorldObjDataAbstractFactory (id) {}
 
-  boost::shared_ptr<WorldObjData> create (xmlDocPtr doc, xmlNodePtr cur);
-/*  {
+  boost::shared_ptr<WorldObjData> create (xmlDocPtr doc, xmlNodePtr cur) {
     return T::create (doc, cur); 
-  } */
+  }
   
 };
 
