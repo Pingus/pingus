@@ -1,4 +1,4 @@
-//  $Id: mouse_button.cxx,v 1.5 2003/10/20 13:33:44 grumbel Exp $
+//  $Id: mouse_button.cxx,v 1.6 2003/12/13 16:23:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #include <ClanLib/Display/keys.h>
 #include <ClanLib/Display/mouse.h>
 #include "mouse_button.hxx"
+#include "../../string_converter.hxx"
 #include "../../pingus_error.hxx"
 
 namespace Pingus {
@@ -33,10 +34,10 @@ MouseButton::MouseButton (int button_)
     button_release_slot(CL_Mouse::sig_key_up().connect(this, &Input::Buttons::MouseButton::release_handler)),
     pressed(false)
 {
-#ifdef CLANLIB_0_6
-  if (button > CL_Mouse::get_num_buttons())
-    PingusError::raise("MouseButton: Invalid button id");
-#endif
+  if (CL_Mouse::get_device().get_button_count() != -1 
+      && button > CL_Mouse::get_device().get_button_count())
+    PingusError::raise("MouseButton: Invalid button: " + to_string(button) 
+                       + ", must be smaller than " + to_string(CL_Mouse::get_device().get_button_count()));
 }
 
 void

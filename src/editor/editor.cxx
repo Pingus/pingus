@@ -1,4 +1,4 @@
-//  $Id: editor.cxx,v 1.57 2003/10/21 11:01:52 grumbel Exp $
+//  $Id: editor.cxx,v 1.58 2003/12/13 16:23:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -89,7 +89,7 @@ Editor::Editor () : event_handler_ref_counter(0),
   object_selector = new ObjectSelector;
 
   // FIXME: Should use PingusResource, Memleak
-  CL_ResourceManager* gui_resources = new CL_ResourceManager(path_manager.complete("data/gui.scr"), false);
+  CL_ResourceManager* gui_resources = new CL_ResourceManager(path_manager.complete("GUIStyleSilver/gui.xml"), false);
 
   style_manager = new CL_StyleManager_Silver(gui_resources);
   gui           = new CL_GUIManager(style_manager);

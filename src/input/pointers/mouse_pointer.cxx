@@ -1,4 +1,4 @@
-//  $Id: mouse_pointer.cxx,v 1.5 2003/10/20 19:28:55 grumbel Exp $
+//  $Id: mouse_pointer.cxx,v 1.6 2003/12/13 16:23:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <ClanLib/Display/mouse.h>
+#include <ClanLib/Display/input_event.h>
 #include "mouse_pointer.hxx"
 
 namespace Pingus {
@@ -26,11 +27,8 @@ namespace Pointers {
 
 MousePointer::MousePointer () 
   : x_pos(0),
-    y_pos(0)
-#ifdef CLANLIB_0_6
-,
+    y_pos(0),
     move_slot(CL_Mouse::sig_move().connect(this, &Input::Pointers::MousePointer::move_signal))
-#endif
 {
 }
 
@@ -49,9 +47,8 @@ MousePointer::get_y_pos () const
 void
 MousePointer::set_pos (float new_x, float new_y)
 {
-#ifdef CLANLIB_0_6
-  CL_Mouse::set_position(new_x, new_y);
-#endif
+  CL_Mouse::set_position(static_cast<int>(new_x),
+                         static_cast<int>(new_y));
 }
 
 void
@@ -60,10 +57,10 @@ MousePointer::update (float)
 }
 
 void
-MousePointer::move_signal (int x, int y)
+MousePointer::move_signal (const CL_InputEvent& event)
 {
-  x_pos = x;
-  y_pos = y;
+  x_pos = event.mouse_pos.x;
+  y_pos = event.mouse_pos.y;
 }
 
 } // namespace Pointers

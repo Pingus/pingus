@@ -6,18 +6,18 @@
     <surface file="../images/core/cursors/cap.png" height="40" name="capgood" width="40" x="0" y="0" />
     <surface file="../images/core/cursors/capwrong.png" height="40" name="capbad" width="40" x="0" y="0" />
     <surface file="../images/core/cursors/cross.png" height="36" name="cross" width="36" x="0" y="0" />
-    <surface array="10x1" file="../images/core/cursors/animcross.png" height="36" name="animcross" width="36" x="0" y="0" />
-    <surface file="../images/core/cursors/arrow_right.png" height="9" name="arrow_right" tcol="0" width="23" x="0" y="0" />
-    <surface file="../images/core/cursors/arrow_left.png" height="9" name="arrow_left" tcol="0" width="23" x="0" y="0" />
+    <surface array="10x1" file="../images/core/cursors/animcross.png" height="36" name="animcross" />
+    <surface file="../images/core/cursors/arrow_right.png" height="9" name="arrow_right" />
+    <surface file="../images/core/cursors/arrow_left.png" height="9" name="arrow_left" />
   </section>
   <section name="editor">
-    <surface file="../images/core/editor/start_pos.png" height="59" name="start_pos" tcol="0" width="53" x="0" y="0" />
-    <surface file="../images/core/editor/weather_rain.png" height="101" name="weather_rain" width="120" x="0" y="0" />
-    <surface file="../images/core/editor/weather_snow.png" height="64" name="weather_snow" width="71" x="0" y="0" />
-    <surface file="../images/core/editor/tb_copy.png" height="24" name="copy" tcol="0" width="24" x="0" y="0" />
-    <surface file="../images/core/editor/tb_new.png" height="24" name="new" tcol="0" width="24" x="0" y="0" />
-    <surface file="../images/core/editor/tb_open.png" height="24" name="open" tcol="0" width="24" x="0" y="0" />
-    <surface file="../images/core/editor/tb_save.png" height="24" name="save" tcol="0" width="24" x="0" y="0" />
+    <surface file="../images/core/editor/start_pos.png" height="59" name="start_pos" />
+    <surface file="../images/core/editor/weather_rain.png" height="101" name="weather_rain" />
+    <surface file="../images/core/editor/weather_snow.png" height="64" name="weather_snow" />
+    <surface file="../images/core/editor/tb_copy.png" height="24" name="copy" />
+    <surface file="../images/core/editor/tb_new.png" height="24" name="new" />
+    <surface file="../images/core/editor/tb_open.png" height="24" name="open" />
+    <surface file="../images/core/editor/tb_save.png" height="24" name="save" />
     <surface file="../images/core/editor/tb_exit.png" height="24" name="exit" tcol="0" width="24" x="0" y="0" />
     <surface file="../images/core/editor/tb_clock_run.png" height="24" name="clock_run" tcol="0" width="24" x="0" y="0" />
     <surface file="../images/core/editor/tb_edit.png" height="24" name="edit" tcol="0" width="24" x="0" y="0" />

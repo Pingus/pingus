@@ -1,4 +1,4 @@
-//  $Id: pingus_resource.cxx,v 1.35 2003/12/13 15:10:44 grumbel Exp $
+//  $Id: pingus_resource.cxx,v 1.36 2003/12/13 16:23:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -109,6 +109,7 @@ CL_Sprite
 PingusResource::load_sprite(const std::string& res_name, 
                             const std::string& datafile)
 {
+  std::cout << "PingusResource::load_sprite: " << res_name << ", " << datafile << std::endl;
   CL_ResourceManager* res = get(datafile);
   return CL_Sprite(res_name, res);
 }

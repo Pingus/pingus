@@ -1,4 +1,4 @@
-//  $Id: joystick_button.cxx,v 1.5 2003/10/20 13:33:44 grumbel Exp $
+//  $Id: joystick_button.cxx,v 1.6 2003/12/13 16:23:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,7 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-//#include <ClanLib/Display/input.h>
+#include <ClanLib/Display/joystick.h>
 #include <ClanLib/Display/input_device.h>
 //#include <ClanLib/Display/input_button.h>
 #include "joystick_button.hxx"
@@ -30,13 +30,11 @@ namespace Buttons {
 
 JoystickButton::JoystickButton(int id_, int button_) : id(id_), button(button_)
 {
-#ifdef CLANLIB_0_6
-  if (static_cast<unsigned int>(id) >= CL_Input::joysticks.size())
+  if (id >= CL_Joystick::get_device_count())
     PingusError::raise("JoystickButton: Invalid joystick id: " + to_string(id));
 
-  if (button > CL_Input::joysticks[id]->get_num_buttons())
+  if (button > CL_Joystick::get_device(id).get_button_count())
     PingusError::raise("JoystickButton: Invalid joystick button id: " + to_string(button));
-#endif
 }
 
 void

@@ -1,4 +1,4 @@
-//  $Id: sprite.cxx,v 1.19 2003/10/22 12:35:47 grumbel Exp $
+//  $Id: sprite.cxx,v 1.20 2003/12/13 16:23:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,7 +37,7 @@ Sprite::Sprite (std::string arg_sprite_name,
 		float arg_frames_per_second,
 		Sprite::Direction dir,
 		LoopType arg_loop_type)
-  : sprite(PingusResource::load_sprite(arg_sprite_name, arg_datafile)),
+  : //sprite(PingusResource::load_sprite(arg_sprite_name, arg_datafile)),
     frame (0.0f),
     frames_per_second (arg_frames_per_second),
     direction (dir),
@@ -50,13 +50,9 @@ Sprite::Sprite (std::string arg_sprite_name,
 void
 Sprite::draw (int x, int y)
 {
-  //if (!sprite)// FIXME: CL0.7
-  //return;
-
 #ifdef CLANLIB_0_6
   // FIXME: HACK
   update (0.0f);
-  //std::cout << "Frame: " << round(frame) << " " << frame << " " << max_frames () << std::endl;
 
   switch (direction)
     {
@@ -123,34 +119,42 @@ Sprite::set_align (int arg_x, int arg_y)
 void
 Sprite::set_align_center ()
 {
+#ifdef CLANLIB_0_6
   x_align = -int(sprite.get_width ())/2;
   y_align = -int(sprite.get_height ())/2;
+#endif
 }
 
 void
 Sprite::set_align_center_bottom ()
 {
+#ifdef CLANLIB_0_6
   x_align = -int(sprite.get_width ())/2;
   y_align = -int(sprite.get_height ());
+#endif
 }
 
 
 void
 Sprite::next_frame ()
 {
+#ifdef CLANLIB_0_6
   ++frame;
 
   if (Math::round(frame) >= int(sprite.get_frame_count()))
     frame = 0;
+#endif
 }
 
 void
 Sprite::previous_frame ()
 {
+#ifdef CLANLIB_0_6
   --frame;
 
   if (Math::round(frame) < 0)
     frame = sprite.get_frame_count() - 1;
+#endif
 }
 
 
@@ -169,6 +173,7 @@ Sprite::get_progress ()
 int
 Sprite::max_frames ()
 {
+#ifdef CLANLIB_0_6
   switch (direction)
     {
     case NONE:
@@ -180,6 +185,9 @@ Sprite::max_frames ()
       assert (0);
       return 0;
     }
+#else
+  return 0;
+#endif
 }
 
 void
@@ -266,13 +274,19 @@ Sprite::set_frame (int n)
 int
 Sprite::get_width ()
 {
-  return sprite.get_width();
+  if (!sprite)
+    return 0;
+  else
+    return sprite.get_width();
 }
 
 int
 Sprite::get_height ()
 {
-  return sprite.get_height();
+  if (!sprite)
+    return 0;
+  else
+    return sprite.get_height();
 }
 
 } // namespace Pingus

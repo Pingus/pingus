@@ -1,4 +1,4 @@
-//  $Id: mouse_pointer.hxx,v 1.6 2003/10/20 19:28:55 grumbel Exp $
+//  $Id: mouse_pointer.hxx,v 1.7 2003/12/13 16:23:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,8 @@
 
 #include <ClanLib/Signals/slot.h>
 #include "../pointer.hxx"
+
+class CL_InputEvent;
 
 namespace Pingus {
 namespace Input {
@@ -50,7 +52,7 @@ public:
   virtual void  update (float);
 
 private:
-  void move_signal (int x, int y);
+  void move_signal (const CL_InputEvent& event);
       
   MousePointer (const MousePointer&);
   MousePointer& operator= (const MousePointer&);
