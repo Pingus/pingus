@@ -23,7 +23,7 @@
 std::string
 StringFormat::break_line (std::string text, int length, CL_Font* font)
 {
-  unsigned int pos = 0;
+	unsigned int pos = 0;
   while ((pos = text.find('\t', pos)) != std::string::npos)
     text.replace(pos, 1, 1, ' ');
 
@@ -37,15 +37,15 @@ StringFormat::break_line (std::string text, int length, CL_Font* font)
       if (pos < text.length() && text[pos + 1] == '\n')   // double enter marks paragraph
       	{
           text.replace(pos, 2, 1, '\n');  		  // replace the two \n by one
-	}
+      	}
       else if (pos < text.length() - 1 && text[pos + 1] == ' ' && text[pos + 2] == '\n')
         {
             text.replace(pos, 3, 1, '\n');		  // whitespace between the two \n doesn't matter
-	}
+       	}
       else
         {
           text.replace(pos, 1, 1, ' ');
-	  continue;					  // no \n here anymore, so continue searching
+      	  continue;					  // no \n here anymore, so continue searching
         }
 
       if (pos && text[pos - 1] == ' ')
@@ -61,7 +61,6 @@ StringFormat::break_line (std::string text, int length, CL_Font* font)
   while ((pos = text.find("  ", pos)) != std::string::npos)
     text.replace(pos, 2, 1, ' ');
 
-
   int start_pos      = 0;
   int previous_space = 0;
   pos = 0;
@@ -71,10 +70,11 @@ StringFormat::break_line (std::string text, int length, CL_Font* font)
         {
           text[previous_space] = '\n';
           start_pos = previous_space + 1;
-          previous_space = pos;
         }
       else if (font->get_text_width(text.substr(start_pos, text.length())) <= length)
         break;
+
+      previous_space = pos;
     }
 
 	if (font->get_text_width(text.substr(start_pos, text.length() - start_pos)) > length)
