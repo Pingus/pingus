@@ -1,4 +1,4 @@
-//  $Id: graphic_context.hxx,v 1.1 2003/02/19 09:51:44 grumbel Exp $
+//  $Id: graphic_context.hxx,v 1.2 2003/03/16 23:07:02 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -61,6 +61,8 @@ public:
       CL_Mouse::get_x(), into the world coordinate system. */
   virtual Vector screen_to_world (Vector pos) =0;
   virtual Vector world_to_screen (Vector pos) =0;
+
+  virtual void clear (float r, float g, float b) =0;
 
   virtual void draw (Sprite& sprite, const Vector& pos) =0;
   virtual void draw (Sprite& sprite, const Vector& pos, int frame) =0;

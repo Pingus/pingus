@@ -52,7 +52,7 @@ LIBS = -lclanGUI -lclanCore -lclanDisplay -lclanApp -lclanPNG -lclanJPEG -lHerme
 -lz \
 -ltiff \
 -ljpeg \
--lpng \
+libpng.a \
 -lXext \
 -lXt \
 -lX11 \
@@ -71,6 +71,11 @@ pingus.static.comp : pingus.static
 
 pingus.static: Makefile.static pingus
 	$(CXX) -s -O2 -Wall -static -o pingus.static $(OBJECTS) $(LDADD)  $(LIBS) 
+
+upload: /home/ingo/projects/pingus/files/betatesting/linux/$(FILENAME)
+        FILENAME=pingus-`date -I`; \
+        cp -v pingus.static.comp /home/ingo/projects/pingus/files/betatesting/linux/$FILENAME; \
+        ( cd /home/ingo/projects/pingus/files/betatesting/linux/; ln -sf $FILENAME pingus-current )
 
 clean :
 	rm -f pingus.static.comp pingus.static

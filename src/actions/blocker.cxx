@@ -1,4 +1,4 @@
-//  $Id: blocker.cxx,v 1.16 2003/02/19 09:50:36 grumbel Exp $
+//  $Id: blocker.cxx,v 1.17 2003/03/16 23:07:02 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -81,7 +81,7 @@ Blocker::standing_on_ground()
 void
 Blocker::catch_pingu(Pingu* target)
 {
-  if (target != pingu)
+  if (target != pingu) // avoid 'self' catch
     {
       if (target->get_x () > pingu->get_x () - 16 
 	  && target->get_x () < pingu->get_x () + 16

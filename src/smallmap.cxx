@@ -1,4 +1,4 @@
-//  $Id: smallmap.cxx,v 1.33 2003/03/05 22:18:51 grumbel Exp $
+//  $Id: smallmap.cxx,v 1.34 2003/03/16 23:07:02 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -135,18 +135,22 @@ SmallMap::init()
               break;
               
             case Groundtype::GP_WATER:
+            case Groundtype::GP_LAVA:
               cbuffer[i + 0] = 255;
 	      cbuffer[i + 1] = 0;
 	      cbuffer[i + 2] = 0;
 	      cbuffer[i + 3] = 200;
               break;
 
+#if 0
+              // FIXME: temporaty disabled for 0.6.0 release, since all liquids are currently lava
             case Groundtype::GP_LAVA:
               cbuffer[i + 0] = 255;
 	      cbuffer[i + 1] = 200;
 	      cbuffer[i + 2] = 0;
 	      cbuffer[i + 3] = 0;
               break;
+#endif
               
             case Groundtype::GP_SOLID:
               cbuffer[i + 0] = 255;
@@ -171,7 +175,7 @@ SmallMap::init()
   //surface_timer.stop();
 
   x_pos = 5;
-  y_pos = CL_Display::get_height() - sur.get_height();
+  y_pos = CL_Display::get_height() - sur.get_height() - 5;
 
   rwidth = CL_Display::get_width() * width / client->get_server()->get_world()->get_colmap()->get_width();
   rheight = CL_Display::get_height() * height / client->get_server()->get_world()->get_colmap()->get_height();

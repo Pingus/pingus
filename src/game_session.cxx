@@ -1,4 +1,4 @@
-//  $Id: game_session.cxx,v 1.32 2003/03/10 11:29:49 grumbel Exp $
+//  $Id: game_session.cxx,v 1.33 2003/03/16 23:07:02 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,6 +26,8 @@
 #include "timer.hxx"
 #include "pingus_resource.hxx"
 #include "plf.hxx"
+#include "pingu_holder.hxx"
+#include "world.hxx"
 #include "result_screen.hxx"
 #include "globals.hxx"
 
@@ -95,7 +97,20 @@ PingusGameSession::update (const GameDelta& delta)
   if (server->is_finished())
     {
       //ScreenManager::instance()->pop_screen();
+      PinguHolder* pingu_holder = server->get_world()->get_pingus();
       Result result;
+      
+      result.plf    = server->get_plf();
+
+      result.saved  = pingu_holder->get_number_of_exited();
+      result.killed = pingu_holder->get_number_of_killed();
+      result.total  = server->get_plf()->get_pingus();
+
+      result.needed = server->get_plf()->get_number_to_save();
+
+      result.max_time  = server->get_plf()->get_time();
+      result.used_time = server->get_time();
+
       ScreenManager::instance()->replace_screen(new ResultScreen(result));
       return;
     }

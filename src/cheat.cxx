@@ -1,4 +1,4 @@
-//  $Id: cheat.cxx,v 1.1 2002/11/08 01:38:27 grumbel Exp $
+//  $Id: cheat.cxx,v 1.2 2003/03/16 23:07:02 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,6 +35,7 @@ Cheat::activate(const std::string& cheat)
   else if (cheat == "all-actions" || cheat == "aa") 
     {
       all_actions = true;
+      unlimited_actions = true;
     }
   else if (cheat == "no-time-limit" || cheat == "nt")
     {
@@ -57,7 +58,7 @@ Cheat::print_help()
     << "Pingus Cheats\n"
     << "-------------\n"
     << "  unlimited-actions(ua) - the number of available actions is not limited\n"
-    << "  all-actions(aa)       - all actions are available in all levels\n"
+    << "  all-actions(aa)       - all actions are available in all levels and unlimited\n"
     << "  no-time-limit(nt)     - time limit is disabled everywhere\n"
     << std::endl;
   

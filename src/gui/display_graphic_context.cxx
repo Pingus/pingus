@@ -1,4 +1,4 @@
-//  $Id: display_graphic_context.cxx,v 1.1 2003/02/19 09:51:44 grumbel Exp $
+//  $Id: display_graphic_context.cxx,v 1.2 2003/03/16 23:07:02 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -150,6 +150,12 @@ float
 DisplayGraphicContext::get_y_offset ()
 {
   return offset.y;
+}
+
+void
+DisplayGraphicContext::clear (float r, float g, float b)
+{
+  CL_Display::clear_display(r, g, b);
 }
 
 void 
