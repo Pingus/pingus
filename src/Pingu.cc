@@ -1,4 +1,4 @@
-//  $Id: Pingu.cc,v 1.4 2000/02/15 13:09:50 grumbel Exp $
+//  $Id: Pingu.cc,v 1.5 2000/02/16 23:34:11 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -163,12 +163,15 @@ Pingu::set_action(PinguAction* act, int t)
 
   if (act->get_type() ^ (ActionType)ONCE) 
     {
-      std::cout << "Pingu: Found some persistant action" << std::endl;
-      std::cout << "Pingu: Action is FALL: " 
-	   << int(act->get_type() & (ActionType)FALL) << std::endl;
-      std::cout << "Pingu: Action is WALL: " 
-	   << int(act->get_type() & (ActionType)WALL) << std::endl;
-
+      if (verbose) 
+	{
+	  std::cout << "Pingu: Found some persistant action" << std::endl;
+	  std::cout << "Pingu: Action is FALL: " 
+		    << int(act->get_type() & (ActionType)FALL) << std::endl;
+	  std::cout << "Pingu: Action is WALL: " 
+		    << int(act->get_type() & (ActionType)WALL) << std::endl;
+	}
+      
       for(std::vector<PinguAction*>::iterator i = persist.begin(); i != persist.end(); i++)
 	{
 	  if ((*i)->name() == act->name()) 
@@ -464,11 +467,11 @@ Pingu::let_move(void)
 			{
 			  if (action && persist[i]->name() == action->name()) 
 			    {
-			      std::cout << "Not using action, we have allready" << std::endl;
+			      if (verbose) std::cout << "Not using action, we have allready" << std::endl;
 			    } 
 			  else 
 			    {
-			      std::cout << "We are infront of a wall, setting persistant action" << std::endl;
+			      if (verbose) std::cout << "We are infront of a wall, setting persistant action" << std::endl;
 			      set_paction(ActionHolder::get_uaction(persist[i]->name()));
 			    }
 			  return;

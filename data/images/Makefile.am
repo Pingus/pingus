@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.4 2000/02/15 13:42:50 grumbel Exp $
+#  $Id: Makefile.am,v 1.5 2000/02/16 23:34:10 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -103,8 +103,8 @@ BUTTONS = \
         buttons/quit.tga            \
         buttons/quit_p.tga          \
         buttons/up.tga              \
-        buttons/theme.tga            \
-        buttons/theme_p.tga
+        buttons/worlds.tga            \
+        buttons/worlds_p.tga
 
 TEXTURES = \
         textures/README          \

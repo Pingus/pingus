@@ -1,4 +1,4 @@
-//  $Id: Client.cc,v 1.5 2000/02/16 03:06:22 grumbel Exp $
+//  $Id: Client.cc,v 1.6 2000/02/16 23:34:11 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -87,7 +87,7 @@ Client::play_level(std::string plf_filename, std::string psm_filename)
   {
     string filename = plf_filename.substr(0, plf_filename.size() - 4);
     
-    std::cout << "PSM: " << filename + ".psm" << std::endl;
+    if (verbose) std::cout << "PSM: " << filename + ".psm" << std::endl;
     
     plf->set_psm_filename(filename + ".psm");
   }

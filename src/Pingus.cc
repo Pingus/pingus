@@ -1,4 +1,4 @@
-//   $Id: Pingus.cc,v 1.8 2000/02/16 03:06:24 grumbel Exp $
+//   $Id: Pingus.cc,v 1.9 2000/02/16 23:34:11 grumbel Exp $
 //    ___
 //   |  _\ A free Lemmings clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -59,6 +59,8 @@
 PingusMain::PingusMain()
 {
   std::string temp;
+
+  // Default resolution
   resolution = "640x480";
 
   temp = string(PACKAGE) + " " + VERSION + " - A free Lemmings clone";
@@ -84,9 +86,7 @@ void
 PingusMain::init_modules()
 {
   CL_SetupCore::init();
-  // CL_SetupCore::init_sound();  
   CL_SetupMagick::init();
-  //CL_SetupCore::init_display();
 }
 
 void PingusMain::deinit_modules()
@@ -406,18 +406,27 @@ PingusMain::get_filenames()
     {
       if (verbose) std::cout << "PingusMain: Creating directory: " << pingus_homedir << "... " << std::flush;
       
-      if (mkdir(pingus_homedir.c_str(), S_IRUSR | S_IWUSR | S_IXUSR | S_IRGRP | S_IXGRP) == 0
-	  && mkdir((pingus_homedir + "levels/").c_str(), S_IRUSR | S_IWUSR | S_IXUSR | S_IWGRP | S_IXGRP) == 0
-	  && mkdir((pingus_homedir + "stat").c_str(), S_IRUSR | S_IWUSR | S_IXUSR | S_IRGRP | S_IXGRP) == 0)
+      if (mkdir(pingus_homedir.c_str(),                 S_IRUSR | S_IWUSR | S_IXUSR | S_IRGRP | S_IXGRP) == 0
+	  && mkdir((pingus_homedir + "levels").c_str(), S_IRUSR | S_IWUSR | S_IXUSR | S_IRGRP | S_IXGRP) == 0
+	  && mkdir((pingus_homedir + "levels/dist").c_str(), S_IRUSR | S_IWUSR | S_IXUSR | S_IRGRP | S_IXGRP) == 0
+	  && mkdir((pingus_homedir + "stat").c_str(),   S_IRUSR | S_IWUSR | S_IXUSR | S_IRGRP | S_IXGRP) == 0
+	  && mkdir((pingus_homedir + "themes").c_str(), S_IRUSR | S_IWUSR | S_IXUSR | S_IRGRP | S_IXGRP) == 0)
 	{
+	  std::cout << "Created directories:\n"
+		    << pingus_homedir + "levels" << "\n"
+		    << pingus_homedir + "levels/dist" << "\n"
+		    << pingus_homedir + "stat" << "\n"
+		    << pingus_homedir + "themes" << "\n"
+		    << std::endl;
 	  if (verbose) std::cout << "finished" << std::endl;
 	}
       else 
 	{
-	  if (verbose) std::cout << "error" << std::endl;
-	  if (verbose) std::cout << "---------------------------------------------------------------" << std::endl;
+	  std::cout << "error" << std::endl
+		    << "---------------------------------------------------------------" << std::endl
+		    << "Error while creating a directory:" << std::endl;
 	  perror(pingus_homedir.c_str());
-	  if (verbose) std::cout << "---------------------------------------------------------------" << std::endl;
+	  std::cout << "---------------------------------------------------------------" << std::endl;
 	}
     }
   
@@ -619,7 +628,17 @@ PingusMain::do_lemmings_mode(void)
       PingusMessageBox(" PingusError: " + err.message);
     }
   
-  std::cout << "Pingus exit normaly" << std::endl;
+  std::cout << "\n"
+	    << ",-------------------------------------------.\n"
+	    << "| Thank you for playing Pingus!             |\n"
+	    << "|                                           |\n"
+	    << "| If you have suggestions or bug reports    |\n"
+	    << "| don't hesitate to write a email to:       |\n"
+	    << "|                                           |\n"
+	    << "|        Ingo Ruhnke <grumbel@gmx.de>       |\n"
+	    << "|           http://pingus.seul.org          |\n"
+	    << "`-------------------------------------------'\n"
+	    << std::endl;
   
   return true;
 }

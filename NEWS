@@ -1,7 +1,9 @@
-Release 0.3.1 (0?/Feb/1999)
+Release 0.3.1 (16/Feb/1999)
 ===========================
-* Fixed a huge memory hole, the game should be more stable and faster
 * Updated Pingus to use ClanLib 0.3.x
+* ~/.pingus/options is renamed to ~/.pingus/config
+* Fixed a huge memory hole
+* Misc optimizations
 * the 'dim' of the background uses now alpha values (0.0 - 1.0)
 * background can also have different colors applied (see level1.plf)
 * directory's under "./pingus" are now created correctly with the

@@ -1,4 +1,4 @@
-//  $Id: ParticleCache.cc,v 1.4 2000/02/15 13:09:51 grumbel Exp $
+//  $Id: ParticleCache.cc,v 1.5 2000/02/16 23:34:11 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,10 +23,8 @@
 
 ParticleCache::ParticleCache()
 {
-  std::cout << "ParticleCache created" << std::endl;
   allocate(10000);
   position = particles.begin();
-  std::cout << "Position: " << position << std::endl;
 }
 
 ParticleCache::~ParticleCache()

@@ -1,4 +1,4 @@
-//  $Id: PLFParser.cc,v 1.4 2000/02/15 13:09:50 grumbel Exp $
+//  $Id: PLFParser.cc,v 1.5 2000/02/16 23:34:11 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -80,7 +80,7 @@ PLFParser::get_char(void)
   int c;
 
   if (eof) {
-    if (verbose) std::cout << "PLFParser: Result of get_char() will be undefined" << std::endl;
+    if (verbose > 1) std::cout << "PLFParser: Result of get_char() will be undefined" << std::endl;
     // throw PingusError("");
   }
 

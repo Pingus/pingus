@@ -1,4 +1,4 @@
-//  $Id: ButtonPanel.cc,v 1.3 2000/02/11 16:58:25 grumbel Exp $
+//  $Id: ButtonPanel.cc,v 1.4 2000/02/16 23:34:11 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -168,7 +168,7 @@ ButtonPanel::on_button_press(const CL_Key &key)
     {
       last_press = CL_System::get_time();
       
-      std::cout << "Armageddon: " << armageddon_pressed << std::endl;
+      if (verbose) std::cout << "Armageddon: " << armageddon_pressed << std::endl;
       armageddon_pressed++;
            
       if (armageddon_pressed == 2)

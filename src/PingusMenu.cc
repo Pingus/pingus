@@ -1,4 +1,4 @@
-//  $Id: PingusMenu.cc,v 1.4 2000/02/15 13:09:50 grumbel Exp $
+//  $Id: PingusMenu.cc,v 1.5 2000/02/16 23:34:11 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,10 +36,26 @@ PingusMenu::PingusMenu()
   cursor_sur = CL_Surface::load("Cursors/cursor", PingusResource::get("game.dat"));
  
   event = new Event;
+  event->enabled = false;
+  event->menu = this;
+  
+  CL_Input::chain_button_press.push_back(event);
+  CL_Input::chain_button_release.push_back(event);
+  CL_Input::chain_mouse_move.push_back(event);
+
+  buttons.push_back(&options_button);
+  buttons.push_back(&play_button);
+  buttons.push_back(&quit_button);
+  buttons.push_back(&editor_button);
+  buttons.push_back(&theme_button);
 }
 
 PingusMenu::~PingusMenu()
 {
+  CL_Input::chain_mouse_move.remove(event);
+  CL_Input::chain_button_release.remove(event);
+  CL_Input::chain_button_press.remove(event);
+
   delete event;
 }
 
@@ -53,12 +69,14 @@ PingusMenu::draw(void)
       background->put_screen(x, y);
 
   bg->put_screen(CL_Display::get_width()/2 - bg->get_width()/2, 3);
-  options_button.draw();
-  play_button.draw();
-  quit_button.draw();
-  // load_button.draw();
-  editor_button.draw();
-  theme_button.draw();
+
+  current_button = 0;
+  for(list<SurfaceButton*>::iterator i = buttons.begin(); i != buttons.end(); i++)
+    {
+      current_button = *i;
+      (*i)->draw();
+    }
+  
   CL_Display::flip_display();
 }
 
@@ -78,12 +96,24 @@ PingusMenu::select(void)
 
   do_quit = false;
 
+  draw();
+
+  event->enabled = true;
+
   while(!do_quit) 
     {
       CL_System::keep_alive();
-
-      draw();
-
+      
+      current_button = 0;
+      for(list<SurfaceButton*>::iterator i = buttons.begin(); i != buttons.end(); i++)
+	{
+	  if ((*i)->mouse_over())
+	    {
+	      current_button = *i;
+	      break;
+	    }
+	}
+      
       if (CL_Mouse::left_pressed()) 
 	{
 	  draw();
@@ -92,28 +122,31 @@ PingusMenu::select(void)
 	    CL_System::keep_alive();
 	  }
 
+	  for(list<SurfaceButton*>::iterator i = buttons.begin(); i != buttons.end(); i++)
+	    {
+	      if ((*i)->mouse_over())
+		{
+		  event->enabled = false;
+		  if (&quit_button == *i)
+		    {
+		      do_quit = true;
+		    }
+		  (*i)->on_click();
+		  event->enabled = true;
+		  break;
+		}
+	    }
 	  draw();  
-
-	  if (play_button.mouse_over()) {
-	    play_button.on_click();
-	  } else if (options_button.mouse_over()) {
-	    options_button.on_click();
-	  } else if (quit_button.mouse_over()) {
-	    do_quit = true;
-	    /*      } else if (load_button.mouse_over()) {
-		    load_button.on_click();*/
-	  } else if (editor_button.mouse_over()) {
-	    editor_button.on_click();
-	  } else if (theme_button.mouse_over()) {
-	    theme_button.on_click();
-	  }
 	}
     }
+  event->enabled = false;
 }
 
 bool
 PingusMenu::Event::on_button_press(CL_InputDevice *device, const CL_Key &key)
 {
+  if (!enabled) return true;
+  
   if (device == CL_Input::keyboards[0])
     {
     }
@@ -125,8 +158,26 @@ PingusMenu::Event::on_button_press(CL_InputDevice *device, const CL_Key &key)
 }
 
 bool
+PingusMenu::Event::on_mouse_move(CL_InputDevice *device)
+{
+  if (!enabled) return true;
+ 
+  if (device == CL_Input::pointers[0])
+    {
+      if (menu->current_button != menu->temp_button)
+	{
+	  menu->temp_button = menu->current_button;
+	  menu->draw();
+	}
+    }
+  return true;
+}
+
+bool
 PingusMenu::Event::on_button_release(CL_InputDevice *device, const CL_Key &key)
 {
+  if (!enabled) return true;
+  
   if (device == CL_Input::keyboards[0])
     {
       switch (key.id)
@@ -137,6 +188,7 @@ PingusMenu::Event::on_button_release(CL_InputDevice *device, const CL_Key &key)
 	  break;
 	default:
 	  if (verbose) std::cout << "PingusMenu::Event: Unknown key pressed: " << key.id << std::endl;
+	  break;
 	}
     }
   else if (device == CL_Input::pointers[0])

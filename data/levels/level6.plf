@@ -6,7 +6,7 @@ global {
 	start_y_pos = 0 ;            /* Starting position of the screen */
 	number_of_pingus = 120 ;     /* Total number of pingus in level*/
 	number_to_save = 100;
-	time = 3000;
+	time = 5000;
 	levelname = "Beautiful crystals and deadly danger" ;
 	description = "
 ";

@@ -1,4 +1,4 @@
-//  $Id: ThemeSelector.cc,v 1.5 2000/02/16 03:06:28 grumbel Exp $
+//  $Id: ThemeSelector.cc,v 1.6 2000/02/16 23:34:11 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -160,6 +160,8 @@ ThemeSelector::select()
   
   if (!dir_read) 
     {
+      loading_screen.draw();
+      
       readdir(pingus_datadir);
       dir_read = true;
     }

@@ -1,4 +1,4 @@
-//  $Id: World.cc,v 1.5 2000/02/16 03:06:28 grumbel Exp $
+//  $Id: World.cc,v 1.6 2000/02/16 23:34:11 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -180,8 +180,6 @@ World::init(PLF* plf_data)
 
   exit_time = plf->get_time();
   
-  std::cout << "World: exit_time = " << exit_time << std::endl;
-
   if (verbose)
     std::cout << "World init" << std::endl;
 
@@ -343,11 +341,11 @@ World::is_finished(void)
     {
       return true;
     } 
-  else if (exit_world)
+  /*  else if (exit_world)
     {
       //      std::cout << "The world will exit in: " << exit_time << " : " << GameTime::get_time() << std::endl;
       return true;
-    } 
+      } */
   else 
     {
       return false;

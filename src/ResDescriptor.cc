@@ -1,4 +1,4 @@
-//  $Id: ResDescriptor.cc,v 1.3 2000/02/11 16:58:26 grumbel Exp $
+//  $Id: ResDescriptor.cc,v 1.4 2000/02/16 23:34:11 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -59,6 +59,8 @@ ResDescriptor::ResDescriptor(std::string str)
 ResDescriptor::ResDescriptor(std::string c_cast, std::string value) 
 {
   std::string cast;
+
+  cout << "Cast: " << c_cast << " Value: " << value << endl;
 
   if (c_cast.find_first_of(":") == string::npos) {
     cast = c_cast;

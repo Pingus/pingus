@@ -1,4 +1,4 @@
-//  $Id: PingusSpotMap.cc,v 1.4 2000/02/15 13:09:50 grumbel Exp $
+//  $Id: PingusSpotMap.cc,v 1.5 2000/02/16 23:34:11 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -300,7 +300,7 @@ PingusSpotMap::get_colmap(void)
     } 
   else 
     {
-      std::cout << "PingusSpotMap: Starting ColMap creation" << std::endl;
+      if (verbose) std::cout << "PingusSpotMap: Starting ColMap creation" << std::endl;
       unsigned char* buffer;
       
       // Allocate the space for the colmap buffer

@@ -1,4 +1,4 @@
-//  $Id: PingusMenu.hh,v 1.2 2000/02/09 21:43:40 grumbel Exp $
+//  $Id: PingusMenu.hh,v 1.3 2000/02/16 23:34:11 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,7 @@
 #ifndef PINGUSMENU_HH
 #define PINGUSMENU_HH
 
-#include <vector>
+#include <list>
 #include <ClanLib/core.h>
 
 #include "SurfaceButton.hh"
@@ -33,17 +33,27 @@ public:
   enum PingusMenuItem { pmiSTART, pmiLOAD, pmiQUIT, pmiVOID };
 
 private:
-  class Event : public CL_Event_ButtonPress, public CL_Event_ButtonRelease
+  class Event : 
+    public CL_Event_ButtonPress, 
+    public CL_Event_ButtonRelease, 	
+    public CL_Event_MouseMove
   {
   public:
+    bool enabled;
+    
     PingusMenu* menu;
     virtual bool on_button_press(CL_InputDevice *device, const CL_Key &key);
     virtual bool on_button_release(CL_InputDevice *device, const CL_Key &key);
+    virtual bool on_mouse_move(CL_InputDevice *device);
   };
 
   friend class Event;
   Event* event;
 
+  list<SurfaceButton*> buttons;
+  SurfaceButton* temp_button;
+  SurfaceButton* current_button;
+  
   bool do_quit;
   CL_Surface* bg;
   CL_Surface* background;
@@ -54,8 +64,6 @@ private:
   int quit_x, quit_y;
   int temp_mouse_x, temp_mouse_y;
   PingusMenuItem current_item;
-  typedef vector<AlphaButton*>::iterator ButtonIter;
-  vector<AlphaButton*> buttons;
   
   PlayButton     play_button;
   OptionsButton  options_button;

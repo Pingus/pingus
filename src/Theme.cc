@@ -1,4 +1,4 @@
-//  $Id: Theme.cc,v 1.5 2000/02/16 03:06:27 grumbel Exp $
+//  $Id: Theme.cc,v 1.6 2000/02/16 23:34:11 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -57,21 +57,34 @@ Theme::load(std::string filename)
   levels = plt.get_levels();
   load_levels();
 
-  try {
-    surface = CL_Surface::load(plt.get_surface().c_str(), PingusResource::get("global.dat"));
-  }
-  catch (CL_Error err) {
-    std::cout << err.message << std::endl;
-    surface = 0;
-  }
+  try 
+    {
+      if (plt.get_surface() != "-")
+	surface = CL_Surface::load(plt.get_surface().c_str(), PingusResource::get("global.dat"));
+      else
+	surface = 0;
+    }
 
-  try {
-    background = CL_Surface::load(plt.get_background().res_name.c_str(), PingusResource::get(plt.get_background().filename));
-  }
   catch (CL_Error err) 
     {
-      std::cout << "Theme:" << filename  << ":" << err.message << std::endl;
-      std::cout << "Theme: Ignoring missing resource, disable background." << std::endl;
+      if (verbose) std::cout << "Theme:filename:" << err.message << std::endl;
+      surface = 0;
+    }
+
+  try 
+    {
+      if (plt.get_background().res_name != "-")
+	background = CL_Surface::load(plt.get_background().res_name.c_str(), PingusResource::get(plt.get_background().filename));
+      else
+	background = 0;
+    }
+  catch (CL_Error err) 
+    {
+      if (verbose) 
+	{
+	  std::cout << "Theme:" << filename  << ":" << err.message << std::endl;
+	  std::cout << "Theme: Ignoring missing resource, disable background." << std::endl;
+	}
       background = 0;
     }
   load_status(filename);

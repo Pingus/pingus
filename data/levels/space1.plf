@@ -1,23 +1,23 @@
 /* This level was created with the PLE
- * $Id: space1.plf,v 1.1 2000/02/11 09:56:13 grumbel Exp $
+ * $Id: space1.plf,v 1.2 2000/02/16 23:34:10 grumbel Exp $
  */
 global {
   start_x_pos = 0;
   start_y_pos = 0;
-  levelname = "PLE Level";
-  description = "This level has no name
+  levelname = "Grid digging";
+  description = "
 
 ";
   number_of_pingus = 100;
   number_to_save = 50;
-  time = 2;
+  time = 9000;
 }
 
 ground {
   maptype = "SPOT";
   data    = (file)"space1.psm";
-  width   = 1700;
-  height  = 600;
+  width   = 1728;
+  height  = 608;
   colmap  = (auto);
 }
 

@@ -17,6 +17,9 @@ section Buttons
 	options        = ../images/buttons/options.tga         (type=surface, x=0, y=0, width=266, height=78);
 	options_p      = ../images/buttons/options_p.tga       (type=surface, x=0, y=0, width=266, height=78);
 
-	theme          = ../images/buttons/theme.tga         (type=surface, x=0, y=0, width=250, height=106);
-	theme_p        = ../images/buttons/theme_p.tga       (type=surface, x=0, y=0, width=250, height=106);
+//	theme          = ../images/buttons/theme.tga         (type=surface, x=0, y=0, width=250, height=106);
+//	theme_p        = ../images/buttons/theme_p.tga       (type=surface, x=0, y=0, width=250, height=106);
+
+	worlds          = ../images/buttons/worlds.tga         (type=surface, x=0, y=0, width=245, height=104);
+	worlds_p        = ../images/buttons/worlds_p.tga       (type=surface, x=0, y=0, width=245, height=104);
 }

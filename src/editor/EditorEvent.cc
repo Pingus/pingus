@@ -1,4 +1,4 @@
-//  $Id: EditorEvent.cc,v 1.6 2000/02/15 13:09:51 grumbel Exp $
+//  $Id: EditorEvent.cc,v 1.7 2000/02/16 23:34:11 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,6 +29,7 @@
 EditorEvent::EditorEvent()
 {
   enable();
+  //font = CL_Font::load("Fonts/courier_small", PingusResource::get("fonts.dat"));
 }
 
 EditorEvent::~EditorEvent()
@@ -494,6 +495,13 @@ EditorEvent::editor_mark_or_move_object()
     {
       object_manager->delete_selection();
     }
+}
+
+void 
+EditorEvent::editor_display_help()
+{
+  /*  CL_Display::clear_display();
+      font->print_center(CL_Display::get_width() / 2, 20, "Help Screen");*/
 }
 
 /* EOF */

@@ -1,5 +1,5 @@
 /* This level was created with the PLE
- * $Id: level8.plf,v 1.3 2000/02/15 13:27:06 grumbel Exp $
+ * $Id: level8.plf,v 1.4 2000/02/16 23:34:10 grumbel Exp $
  */
 global {
   start_x_pos = 1200;
@@ -8,7 +8,7 @@ global {
   description = "";
   number_of_pingus = 100;
   number_to_save = 0;
-  time = 0;
+  time = 9000;
 }
 
 ground {
