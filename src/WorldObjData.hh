@@ -1,4 +1,4 @@
-//  $Id: WorldObjData.hh,v 1.11 2002/01/15 10:48:49 grumbel Exp $
+//  $Id: WorldObjData.hh,v 1.12 2002/06/01 17:59:20 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,9 +24,9 @@
 
 #include "boost/smart_ptr.hpp"
 #include "XMLhelper.hh"
+#include "editor/EditorObj.hh"
 
 class WorldObj;
-class EditorObj;
 
 typedef std::list<boost::shared_ptr<EditorObj> > EditorObjLst;
 typedef std::list<boost::shared_ptr<EditorObj> >::iterator EditorObjLstIter;
