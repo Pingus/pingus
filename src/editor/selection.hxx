@@ -1,4 +1,4 @@
-//  $Id: selection.hxx,v 1.9 2002/09/11 12:45:58 grumbel Exp $
+//  $Id: selection.hxx,v 1.10 2002/09/13 18:28:26 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,7 +28,7 @@ namespace EditorNS {
 
 class EditorView;
 
-class EditorSelection 
+class Selection 
 {
 private:
   
@@ -37,8 +37,8 @@ private:
     
 public:
   
-  EditorSelection(ObjectManager* mng) : object_manager(mng) { }
-  ~EditorSelection() { }
+  Selection(ObjectManager* mng) : object_manager(mng) { }
+  ~Selection() { }
     
   void clear() { obj_list.clear(); }
     
@@ -75,8 +75,8 @@ public:
   void draw(EditorView* view);  
   
 private:
-  EditorSelection (const EditorSelection&);
-  EditorSelection operator= (const EditorSelection&);
+  Selection (const Selection&);
+  Selection operator= (const Selection&);
 };
 
 } // namespace EditorNS

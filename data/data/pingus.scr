@@ -95,7 +95,7 @@ section Other
 	explo1        = ../images/pingus/explo1.png         (type=surface, x=0, y=0, width=64, height=64);
 	explo2        = ../images/pingus/explo2.png         (type=surface, x=0, y=0, width=64, height=64);
 	explo3        = ../images/pingus/explo3.png         (type=surface, x=0, y=0, width=64, height=64);
-//	laser_kill    = ../images/pingus/laser_kill.tga    (type=surface, x=0, y=0, width=33, height=32, array=9x2);
+	laser_kill    = ../images/pingus/laser_kill.png     (type=surface, x=0, y=0, width=33, height=32, array=9x2);
 }
 
 section XMas

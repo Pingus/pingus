@@ -1,4 +1,4 @@
-//  $Id: laser_exit_obj.cxx,v 1.7 2002/09/11 12:45:58 grumbel Exp $
+//  $Id: laser_exit_obj.cxx,v 1.8 2002/09/13 18:28:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,7 +30,7 @@ LaserExitObj::LaserExitObj (WorldObjsData::LaserExitData* data_)
 {
   data->pos.z = -100;
   sprite = Sprite("Traps/laser_exit", "traps");
-  sprite.set_align_center_bottom ();
+  //sprite.set_align_center_bottom ();
   pos_ref = &data->pos;
 }
 

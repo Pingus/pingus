@@ -1,4 +1,4 @@
-//  $Id: pingus_menu_manager.cxx,v 1.11 2002/09/05 12:24:02 grumbel Exp $
+//  $Id: pingus_menu_manager.cxx,v 1.12 2002/09/13 18:28:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,13 +31,16 @@
 PingusMenuManager* PingusMenuManager::instance_ = 0;
 
 PingusMenuManager::PingusMenuManager ()
-  : event_register_counter (0),
+  : unplayable ("misc/unplayable", "core"),
     intro (this), mainmenu (this), optionmenu (this), story (this),
     exitmenu (this)
 {
+  unplayable.set_align_center ();
+
   //current_menu = 0;
   //if (intro_disabled)
   push_menu (&mainmenu);
+  
   //else
   //push_menu (&intro); 
 }
@@ -50,6 +53,9 @@ void
 PingusMenuManager::draw (GraphicContext& gc)
 {
   background.draw ();
+  
+  gc.draw (unplayable, CL_Vector(CL_Display::get_width ()/2, 30));
+
   CL_Display::fill_rect(0, CL_Display::get_height () - 22,
 			CL_Display::get_width (), CL_Display::get_height (),
 			0, 0, 0, 1.0f);

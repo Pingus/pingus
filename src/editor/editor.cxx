@@ -1,4 +1,4 @@
-//  $Id: editor.cxx,v 1.30 2002/09/11 12:45:58 grumbel Exp $
+//  $Id: editor.cxx,v 1.31 2002/09/13 18:28:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -68,7 +68,7 @@ Editor::Editor () : event_handler_ref_counter(0),
   panel      = new Panel;
   scroll_map = new ScrollMap;
   object_manager  = new ObjectManager;
-  selection       = new EditorSelection(object_manager);
+  selection       = new Selection(object_manager);
   status_line     = new StatusLine;
   object_selector = new ObjectSelector;
 

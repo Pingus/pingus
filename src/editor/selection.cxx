@@ -1,4 +1,4 @@
-//  $Id: selection.cxx,v 1.13 2002/09/11 12:45:58 grumbel Exp $
+//  $Id: selection.cxx,v 1.14 2002/09/13 18:28:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,65 +29,67 @@ using namespace std;
 namespace EditorNS {
 
 void
-EditorSelection::move(float x, float y) 
+Selection::move(float x, float y) 
 {
   for (vector<EditorObj*>::iterator it = obj_list.begin(); it != obj_list.end(); it++)
     (*it)->set_position_offset(CL_Vector(x, y));
 }
 
 void
-EditorSelection::move(const CL_Vector& pos) 
+Selection::move(const CL_Vector& pos) 
 {
   for (vector<EditorObj*>::iterator it = obj_list.begin(); it != obj_list.end(); it++)
     (*it)->set_position_offset(pos);
 }
 
 void
-EditorSelection::drag() 
+Selection::drag() 
 {
   for (vector<EditorObj*>::iterator it = obj_list.begin(); it != obj_list.end(); it++)
     (*it)->drag();
 }
 
-void EditorSelection::drop() 
+void
+Selection::drop() 
 {
   for (vector<EditorObj*>::iterator it = obj_list.begin(); it != obj_list.end(); it++)
     (*it)->drop();
 }
 
-void EditorSelection::add(EditorObj* obj)
+void
+Selection::add(EditorObj* obj)
 {
   obj_list.push_back(obj);
 }
 
 void
-EditorSelection::add(vector<EditorObj*> objs)
+Selection::add(vector<EditorObj*> objs)
 {
   obj_list.insert(obj_list.end(), objs.begin(), objs.end());
 }
 
 void
-EditorSelection::remove(EditorObj* obj)
+Selection::remove(EditorObj* obj)
 {
   obj_list.erase(std::find(obj_list.begin(), obj_list.end(), obj));
 }
 
 void
-EditorSelection::raise() 
+Selection::raise() 
 {
   for (vector<EditorObj*>::iterator it = obj_list.begin(); it != obj_list.end(); it++)
     object_manager->raise_obj(*it);
 }
 
 void
-EditorSelection::lower() 
+Selection::lower() 
 {
   for (vector<EditorObj*>::iterator it = obj_list.begin(); it != obj_list.end(); it++)
     object_manager->lower_obj(*it);
 }
 
 void
-EditorSelection::select_rect(float x1_, float y1_, float x2_, float y2_) 
+Selection::select_rect(float x1_, float y1_, float x2_, float y2_) 
 {
   int x1, x2, y1, y2;
   
@@ -107,13 +109,13 @@ EditorSelection::select_rect(float x1_, float y1_, float x2_, float y2_)
 }
 
 bool
-EditorSelection::object_selected(EditorObj* obj) 
+Selection::object_selected(EditorObj* obj) 
 {
   return std::find(obj_list.begin(), obj_list.end(), obj) != obj_list.end();
 }
 
 EditorObj*
-EditorSelection::get_current_obj() 
+Selection::get_current_obj() 
 {
   if (obj_list.size() == 1)
     return *obj_list.begin();
@@ -122,35 +124,35 @@ EditorSelection::get_current_obj()
 }
 
 void
-EditorSelection::horizontal_flip() 
+Selection::horizontal_flip() 
 {
   for (vector<EditorObj*>::iterator it = obj_list.begin(); it != obj_list.end(); it++)
     (*it)->horizontal_flip();
 }
 
 void
-EditorSelection::vertical_flip() 
+Selection::vertical_flip() 
 {
   for (vector<EditorObj*>::iterator it = obj_list.begin(); it != obj_list.end(); it++)
     (*it)->vertical_flip();
 }
 
 void
-EditorSelection::rotate_90() 
+Selection::rotate_90() 
 {
   for (vector<EditorObj*>::iterator it = obj_list.begin(); it != obj_list.end(); it++)
     (*it)->rotate_90();
 }
 
 void
-EditorSelection::rotate_270()
+Selection::rotate_270()
 {
   for (vector<EditorObj*>::iterator it = obj_list.begin(); it != obj_list.end(); it++)
     (*it)->rotate_270();
 }
 
 void
-EditorSelection::draw(EditorView * view)
+Selection::draw(EditorView * view)
 {
   
   for (vector<EditorObj*>::iterator i = obj_list.begin(); i != obj_list.end(); ++i) 

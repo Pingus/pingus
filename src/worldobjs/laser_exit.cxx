@@ -1,4 +1,4 @@
-//  $Id: laser_exit.cxx,v 1.3 2002/09/10 19:24:19 grumbel Exp $
+//  $Id: laser_exit.cxx,v 1.4 2002/09/13 18:28:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -50,7 +50,8 @@ LaserExit::get_z_pos () const
 void 
 LaserExit::draw (GraphicContext& gc)
 {
-  gc.draw (data->surface, data->pos, data->counter.value());
+  gc.draw (data->surface, data->pos,
+	   data->counter.value());
 }
 
 void

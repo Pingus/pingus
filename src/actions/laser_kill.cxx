@@ -1,4 +1,4 @@
-//  $Id: laser_kill.cxx,v 1.5 2002/09/10 19:24:19 grumbel Exp $
+//  $Id: laser_kill.cxx,v 1.6 2002/09/13 18:28:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,22 +29,29 @@ LaserKill::LaserKill()
 void
 LaserKill::init(void)
 {
-  sprite = Sprite ("Other/laser_kill0", "pingus");
+  sprite = Sprite ("Other/laser_kill", "pingus",
+		   20.0f, Sprite::NONE, Sprite::ONCE);
+  sprite.set_align_center_bottom ();
 }
 
 void 
 LaserKill::draw (GraphicContext& gc)
 {
-  gc.draw(sprite, pingu->get_pos ());
+  if (pingu->direction.is_left())
+    sprite.set_direction (Sprite::LEFT);
+  else
+    sprite.set_direction (Sprite::RIGHT);
+
+  gc.draw(sprite, pingu->get_pos () - CL_Vector (0, 2));
 }
 
 void
-LaserKill::update(float /*delta*/)
+LaserKill::update(float delta)
 {
-  //if (counter >= (int)(surface.get_num_frames()) - 1) 
-  //{
-  pingu->set_status(PS_DEAD);
-  //}
+  if (sprite.finished ())
+    pingu->set_status(PS_DEAD);
+
+  sprite.update (delta);
 }
 
 } // namespace Actions

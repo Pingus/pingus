@@ -1,4 +1,4 @@
-//  $Id: editor.hxx,v 1.16 2002/09/11 12:45:58 grumbel Exp $
+//  $Id: editor.hxx,v 1.17 2002/09/13 18:28:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,7 +39,7 @@ class EditorEvent;
 class Panel;
 class ScrollMap;
 class ObjectManager;
-class EditorSelection;
+class Selection;
 class ObjectSelector;
 class StatusLine;
 class ActionWindow;
@@ -71,7 +71,7 @@ private:
   Panel*  panel;
   ScrollMap* scroll_map;
   ObjectManager* object_manager;
-  EditorSelection* selection;
+  Selection* selection;
   EditorView* view; 
   StatusLine* status_line;
   ObjectSelector* object_selector;
