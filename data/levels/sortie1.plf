@@ -1,27 +1,26 @@
 /* This level was created with the PLE
- * $Id: sortie1.plf,v 1.1 2000/05/01 11:54:24 grumbel Exp $
+ * $Id: sortie1.plf,v 1.2 2000/07/10 12:42:27 grumbel Exp $
  */
 global {
+  author = "";
   start_x_pos = 0;
   start_y_pos = 0;
-  levelname = "PLE Level";
-  description = "This level has no name
-
-";
+  levelname = "Where do the Pingus are now? Looks weird...";
+  description = "Only the one who can coordinate the Pingus will survive.";
   number_of_pingus = 100;
   number_to_save = 50;
-  time = 9000;
+  time = 10000;
 }
 
 ground {
   maptype = "SPOT";
-  width   = 2016;
-  height  = 928;
+  width   = 2208;
+  height  = 1216;
   colmap  = (auto);
 }
 
 background {
-  image = (resource:textures.dat)"Textures/crystal";
+  image = (resource:textures.dat)"Textures/sortie";
   dim   = "0";
   red   = "0";
   green = "0";
@@ -38,84 +37,69 @@ buttons {
   basher = 20;
   blocker = 20;
   bomber = 20;
-  bridger = 20;
-  climber = 20;
+  bridger = 50;
   digger = 20;
-  floater = 20;
-  jumper = 20;
-  miner = 20;
 }
 
-exit {
-  image = (resource)"Exits/sortie";
-  x_pos = 555;
-  y_pos = 184;
+entrance {
+  type  = woodthing;
+  x_pos = 1987;
+  y_pos = 688;
   z_pos = 0;
+  release_rate = 25;
+  direction = left;
 }
 
-exit {
-  image = (resource)"Exits/sortie";
-  x_pos = 869;
-  y_pos = 331;
+entrance {
+  type  = woodthing;
+  x_pos = 396;
+  y_pos = 636;
   z_pos = 0;
+  release_rate = 25;
+  direction = left;
+}
+
+entrance {
+  type  = woodthing;
+  x_pos = 403;
+  y_pos = 301;
+  z_pos = 0;
+  release_rate = 25;
+  direction = left;
 }
 
 exit {
   image = (resource)"Exits/sortie_anim";
-  x_pos = 1141;
-  y_pos = 136;
+  x_pos = 1305;
+  y_pos = 324;
   z_pos = 0;
-}
-
-entrance {
-  type  = woodthing;
-  x_pos = 1792;
-  y_pos = 595;
-  z_pos = 0;
-  release_rate = 25;
-  direction = left;
-}
-
-entrance {
-  type  = woodthing;
-  x_pos = 262;
-  y_pos = 483;
-  z_pos = 0;
-  release_rate = 25;
-  direction = left;
-}
-
-entrance {
-  type  = woodthing;
-  x_pos = 300;
-  y_pos = 160;
-  z_pos = 0;
-  release_rate = 25;
-  direction = left;
 }
 
 hotspot {
   image = (resource)"Entrances/woodthing_nmov";
-  x_pos = 1716;
-  y_pos = 460;
+  x_pos = 1911;
+  y_pos = 553;
   z_pos = 100;
   speed = -1;
+  para = "1";
 }
 
 hotspot {
   image = (resource)"Entrances/woodthing_nmov";
-  x_pos = 186;
-  y_pos = 348;
+  x_pos = 320;
+  y_pos = 501;
   z_pos = 100;
   speed = -1;
+  para = "1";
 }
 
 hotspot {
   image = (resource)"Entrances/woodthing_nmov";
-  x_pos = 224;
-  y_pos = 25;
+  x_pos = 327;
+  y_pos = 166;
   z_pos = 100;
   speed = -1;
+  para = "1";
 }
 
 /* EOF */

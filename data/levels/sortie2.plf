@@ -1,5 +1,5 @@
 /* This level was created with the PLE
- * $Id: sortie2.plf,v 1.1 2000/05/25 15:45:52 grumbel Exp $
+ * $Id: sortie2.plf,v 1.2 2000/07/10 12:42:27 grumbel Exp $
  */
 global {
   start_x_pos = 0;
@@ -21,7 +21,7 @@ ground {
 }
 
 background {
-  image = (resource:textures.dat)"Textures/crystal";
+  image = (resource:textures.dat)"Textures/sortie";
   dim   = "0";
   red   = "0";
   green = "0";

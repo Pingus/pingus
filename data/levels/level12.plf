@@ -1,15 +1,15 @@
 /* This level was created with the PLE
- * $Id: level12.plf,v 1.1 2000/04/09 17:43:55 grumbel Exp $
+ * $Id: level12.plf,v 1.2 2000/07/10 12:42:27 grumbel Exp $
  */
 global {
-  start_x_pos = 0;
-  start_y_pos = 0;
+  author = "";
+  start_x_pos = 965;
+  start_y_pos = 454;
   levelname = "Get up";
-  description = "
-
-";
-  number_of_pingus = 100;
-  number_to_save = 50;
+  description = "This time the exit is above the Pingus, the only question left is:
+How can they reach it?";
+  number_of_pingus = 50;
+  number_to_save = 30;
   time = 9000;
 }
 
@@ -35,15 +35,11 @@ background {
 }
 
 buttons {
-  basher = 20;
   blocker = 20;
   bomber = 20;
-  bridger = 20;
-  climber = 20;
+  bridger = 50;
   digger = 20;
-  floater = 20;
-  jumper = 20;
-  miner = 20;
+  jumper = 200;
 }
 
 hotspot {
@@ -52,6 +48,7 @@ hotspot {
   y_pos = 270;
   z_pos = -100;
   speed = -1;
+  para = "1";
 }
 
 hotspot {
@@ -60,6 +57,7 @@ hotspot {
   y_pos = 269;
   z_pos = -100;
   speed = -1;
+  para = "1";
 }
 
 hotspot {
@@ -68,6 +66,7 @@ hotspot {
   y_pos = 402;
   z_pos = -100;
   speed = -1;
+  para = "1";
 }
 
 hotspot {
@@ -76,6 +75,7 @@ hotspot {
   y_pos = 404;
   z_pos = -100;
   speed = -1;
+  para = "1";
 }
 
 hotspot {
@@ -84,6 +84,7 @@ hotspot {
   y_pos = 264;
   z_pos = -100;
   speed = -1;
+  para = "1";
 }
 
 hotspot {
@@ -92,6 +93,7 @@ hotspot {
   y_pos = 411;
   z_pos = -100;
   speed = -1;
+  para = "1";
 }
 
 hotspot {
@@ -100,6 +102,7 @@ hotspot {
   y_pos = 265;
   z_pos = -100;
   speed = -1;
+  para = "1";
 }
 
 hotspot {
@@ -108,6 +111,7 @@ hotspot {
   y_pos = 397;
   z_pos = -100;
   speed = -1;
+  para = "1";
 }
 
 hotspot {
@@ -116,6 +120,7 @@ hotspot {
   y_pos = 265;
   z_pos = -100;
   speed = -1;
+  para = "1";
 }
 
 hotspot {
@@ -124,6 +129,7 @@ hotspot {
   y_pos = 407;
   z_pos = -100;
   speed = -1;
+  para = "1";
 }
 
 hotspot {
@@ -132,6 +138,7 @@ hotspot {
   y_pos = 266;
   z_pos = -100;
   speed = -1;
+  para = "1";
 }
 
 hotspot {
@@ -140,6 +147,7 @@ hotspot {
   y_pos = 400;
   z_pos = -100;
   speed = -1;
+  para = "1";
 }
 
 hotspot {
@@ -148,6 +156,7 @@ hotspot {
   y_pos = 266;
   z_pos = -100;
   speed = -1;
+  para = "1";
 }
 
 hotspot {
@@ -156,6 +165,7 @@ hotspot {
   y_pos = 539;
   z_pos = -100;
   speed = -1;
+  para = "1";
 }
 
 hotspot {
@@ -164,6 +174,7 @@ hotspot {
   y_pos = 656;
   z_pos = -100;
   speed = -1;
+  para = "1";
 }
 
 hotspot {
@@ -172,6 +183,7 @@ hotspot {
   y_pos = 543;
   z_pos = -100;
   speed = -1;
+  para = "1";
 }
 
 hotspot {
@@ -180,6 +192,7 @@ hotspot {
   y_pos = 411;
   z_pos = -100;
   speed = -1;
+  para = "1";
 }
 
 hotspot {
@@ -188,6 +201,7 @@ hotspot {
   y_pos = 535;
   z_pos = -100;
   speed = -1;
+  para = "1";
 }
 
 hotspot {
@@ -196,6 +210,7 @@ hotspot {
   y_pos = 643;
   z_pos = -100;
   speed = -1;
+  para = "1";
 }
 
 hotspot {
@@ -204,6 +219,7 @@ hotspot {
   y_pos = 539;
   z_pos = -100;
   speed = -1;
+  para = "1";
 }
 
 hotspot {
@@ -212,6 +228,7 @@ hotspot {
   y_pos = 649;
   z_pos = -100;
   speed = -1;
+  para = "1";
 }
 
 hotspot {
@@ -220,6 +237,7 @@ hotspot {
   y_pos = 659;
   z_pos = -100;
   speed = -1;
+  para = "1";
 }
 
 hotspot {
@@ -228,6 +246,7 @@ hotspot {
   y_pos = 539;
   z_pos = -100;
   speed = -1;
+  para = "1";
 }
 
 hotspot {
@@ -236,6 +255,7 @@ hotspot {
   y_pos = 266;
   z_pos = -100;
   speed = -1;
+  para = "1";
 }
 
 hotspot {
@@ -244,6 +264,7 @@ hotspot {
   y_pos = 397;
   z_pos = -100;
   speed = -1;
+  para = "1";
 }
 
 hotspot {
@@ -252,6 +273,7 @@ hotspot {
   y_pos = 267;
   z_pos = -100;
   speed = -1;
+  para = "1";
 }
 
 hotspot {
@@ -260,6 +282,7 @@ hotspot {
   y_pos = 408;
   z_pos = -100;
   speed = -1;
+  para = "1";
 }
 
 hotspot {
@@ -268,6 +291,7 @@ hotspot {
   y_pos = 633;
   z_pos = -100;
   speed = -1;
+  para = "1";
 }
 
 hotspot {
@@ -276,6 +300,7 @@ hotspot {
   y_pos = 523;
   z_pos = -100;
   speed = -1;
+  para = "1";
 }
 
 hotspot {
@@ -284,6 +309,7 @@ hotspot {
   y_pos = 652;
   z_pos = -100;
   speed = -1;
+  para = "1";
 }
 
 hotspot {
@@ -292,6 +318,7 @@ hotspot {
   y_pos = 535;
   z_pos = -100;
   speed = -1;
+  para = "1";
 }
 
 hotspot {
@@ -300,6 +327,7 @@ hotspot {
   y_pos = 636;
   z_pos = -100;
   speed = -1;
+  para = "1";
 }
 
 hotspot {
@@ -308,6 +336,7 @@ hotspot {
   y_pos = 526;
   z_pos = -100;
   speed = -1;
+  para = "1";
 }
 
 hotspot {
@@ -316,6 +345,7 @@ hotspot {
   y_pos = 648;
   z_pos = -100;
   speed = -1;
+  para = "1";
 }
 
 hotspot {
@@ -324,6 +354,7 @@ hotspot {
   y_pos = 537;
   z_pos = -100;
   speed = -1;
+  para = "1";
 }
 
 hotspot {
@@ -332,6 +363,7 @@ hotspot {
   y_pos = 654;
   z_pos = -100;
   speed = -1;
+  para = "1";
 }
 
 hotspot {
@@ -340,15 +372,16 @@ hotspot {
   y_pos = 544;
   z_pos = -100;
   speed = -1;
+  para = "1";
 }
 
-entrance {
-  type  = generic;
-  x_pos = 1042;
-  y_pos = 460;
-  z_pos = 0;
-  release_rate = 25;
-  direction = left;
+hotspot {
+  image = (resource)"Entrances/wood_bottom";
+  x_pos = 914;
+  y_pos = 428;
+  z_pos = -100;
+  speed = -1;
+  para = "1";
 }
 
 exit {
@@ -356,6 +389,24 @@ exit {
   x_pos = 1098;
   y_pos = 177;
   z_pos = 0;
+}
+
+entrance {
+  type  = generic;
+  x_pos = 965;
+  y_pos = 454;
+  z_pos = 0;
+  release_rate = 25;
+  direction = left;
+}
+
+hotspot {
+  image = (resource)"Entrances/wood_top";
+  x_pos = 915;
+  y_pos = 428;
+  z_pos = 100;
+  speed = -1;
+  para = "1";
 }
 
 /* EOF */

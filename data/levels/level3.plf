@@ -6,6 +6,7 @@ global {
   description = "This level show a simple pipe system, which can be created with just a few pipe tiles.";
   number_of_pingus = 100;
   number_to_save = 50;
+  time = 1000;
 }
 
 ground {
