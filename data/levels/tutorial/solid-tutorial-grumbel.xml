@@ -10,9 +10,9 @@
     <levelname lang="sr">Cvrsto zemljiste moze blokirati put</levelname>
 
     <description lang="en">As you have learned in earlier levels your Pingus can dig through
-                           basically every ground, but there is one thing which they can't
-                           penetrate and that are steal objects. Those regions are marked
-                           darkgrey on the levelmap and cannot be destroyed, so find a way
+                           basically any terrain, but there is one material which they can't
+                           penetrate and that is steal. These regions are marked
+                           dark grey on the levelmap and cannot be destroyed, so find a way
                            around them.
     </description>
     <description lang="de">Wie du in den früheren Levels gelernt hast, kann ein Pingu durch

@@ -10,8 +10,8 @@
     <levelname lang="sr">Nauci da koristis most</levelname>
 
     <description lang="en">If no Jumper is at hand and a large hole needs to be passed a bridge
-                           can be pretty helpful. It takes some time to build, but it allows
-                           following Pingus to also reach the other end, which the Jumper action didn't.
+			   can be pretty helpful. It takes some time to build, but unlike the
+			   jumper action it allows following Pingus to reach the other end too.
     </description>
     <description lang="de">Wenn kein Jumper da ist und ein grosses Loch passiert werden muss,
                            kann eine Brücke sehr nützlich sein. Es dauert einige Zeit sie zu

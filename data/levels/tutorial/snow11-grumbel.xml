@@ -10,15 +10,15 @@
     <levelname lang="sr">Skakutanje... i glodanje...</levelname>
 
     <description lang="en">It's panic time again. The Pingus will not come out very fast, but
-		           since they turn around on walls you soon will have some trouble
-		           coordinating them all. Since you only need to save 3 it should be doable,
+		           since they turn around on walls you will soon have some trouble
+		           coordinating them all. Since you only need to save 5 it should be doable,
 		           but if all fails use the pause-mode ('p') to get an overview again.
     </description>
     <description lang="de">Es ist wieder Zeit für Panik. Die Pingus kommen nicht sehr schnell heraus,
 		           aber da sie sich drehen wenn sie eine Wand erreichen,
-		           wirst Du bald Probleme bekommen, sie zu koordinieren. Wenn alles
-		           andere versagt, nutze den Pause Modus ('p') um dir wieder einen
-		           Überblick zu verschaffen.
+		           wirst Du bald Probleme bekommen, sie zu koordinieren. Da Du nur 5 retten
+			   musst, sollte es schaffbar sein, aber wenn alles andere versagt, nutze den
+			   Pause Modus ('p') um dir wieder einen Überblick zu verschaffen.
     </description>
     <description lang="cs">Je na case si delat starosti. Pingove sice nebudou prichazet prilis
                            rychle, ale protoze se u zdi otaceji, tak brzo vznikne situace,
@@ -34,7 +34,7 @@
     </description>
     <description lang="fr">C'est encore une fois la panique. Les Pingus ne sortirons pas très rapidement,
                            mais puisque qu'ils vont se retourner sur les murs, vous allez rapidement
-                           être en difficulté de coordination. Mais puisque vous n'avez qu'à en sauver 3,
+                           être en difficulté de coordination. Mais puisque vous n'avez qu'à en sauver 5,
                            cela devrait être réalisable, mais si vous êtes en difficulté, utilisez le
                            mode pause ('p') pour avoir une vue d'ensemble.
     </description>
