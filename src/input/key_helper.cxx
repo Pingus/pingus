@@ -1,4 +1,4 @@
-//  $Id: key_helper.cxx,v 1.1 2002/07/09 14:18:47 grumbel Exp $
+//  $Id: key_helper.cxx,v 1.2 2002/07/09 14:22:00 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,10 +18,10 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <ClanLib/Display/Input/key.h>
-#include "cl_key.hxx"
+#include "key_helper.hxx"
 
 std::string
-Input::key_to_string (int key)
+Input::KeyHelper::key_to_string (int key)
 {
   switch (key)
     {
@@ -131,7 +131,7 @@ Input::key_to_string (int key)
 }
 
 int
-Input::string_to_key (const std::string& key)
+Input::KeyHelper::string_to_key (const std::string& key)
 {
   if (key == "0") { return CL_KEY_0; }
   else if (key == "1") { return CL_KEY_1; }
