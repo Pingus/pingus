@@ -1,4 +1,4 @@
-//  $Id: PingusMode.cc,v 1.1 2000/02/04 23:45:18 mbn Exp $
+ //  $Id: PingusMode.cc,v 1.2 2000/02/05 13:53:48 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
