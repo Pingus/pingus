@@ -62,7 +62,7 @@ public:
   void on_exit_press();
 private:
   /** After all subsystems have been inited, the screen will get
-      setup, the game (the menu, the editor or a level, depending on
+      setup, the game (the menu or a level, depending on
       command line flags) will start and the user will get
       controll. */
   void start_game();

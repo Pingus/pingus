@@ -80,7 +80,6 @@ pingus_SOURCES = \
 action_button.cxx \
 action_button.hxx \
 action_data.hxx \
-action_data.cxx \
 action_holder.cxx \
 action_holder.hxx \
 alpha_button.cxx \

@@ -36,12 +36,6 @@ public:
   int number_of;
 };
 
-/** Actions that are available through the GUI in the level editor,
-    only useable action are here, hidden actions like walker or drawn
-    are not here */
-extern std::vector<ActionData> default_actions;
-void init_default_actions ();
-
 } // namespace Pingus
 
 #endif

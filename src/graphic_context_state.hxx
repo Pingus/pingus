@@ -1,7 +1,7 @@
 //  $Id$
 // 
-//  Flexlay - A Generic 2D Game Editor
-//  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
+//  Pingus - A free Lemmings clone
+//  Copyright (C) 2004 Ingo Ruhnke <grumbel@gmx.de>
 //
 //  This program is free software; you can redistribute it and/or
 //  modify it under the terms of the GNU General Public License

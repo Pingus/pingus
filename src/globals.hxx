@@ -74,7 +74,7 @@ enum { PINGUS_DEBUG_ACTIONS     = (1 << 0),
        PINGUS_DEBUG_GAMETIME    = (1 << 2),
        PINGUS_DEBUG_TILES       = (1 << 3),
        PINGUS_DEBUG_LOADING     = (1 << 4),
-       PINGUS_DEBUG_EDITOR      = (1 << 5),
+
        PINGUS_DEBUG_BLITTER     = (1 << 6),
        PINGUS_DEBUG_TRANSLATOR  = (1 << 7),
        PINGUS_DEBUG_RESOURCES   = (1 << 8),

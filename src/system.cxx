@@ -239,9 +239,6 @@ System::init_directories()
   // Savegames (FIXME: rename to savegames/?)
   create_dir(statdir + "savegames/");
 
-  // Backups of edited levels in the level editor
-  create_dir(statdir + "backup/");
-
   // User created images
   create_dir(statdir + "images/");
 
@@ -279,12 +276,6 @@ std::string
 System::get_cachedir()
 {
   return get_statdir() + "cache/";
-}
-
-std::string
-System::get_backupdir()
-{
-  return get_statdir() + "backup/";
 }
 
 std::string

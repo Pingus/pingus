@@ -33,8 +33,7 @@ ActionHolder::ActionHolder (PLF* plf)
 
   if (action_data.size() == 0 || Cheat::all_actions)
     {
-      std::cout << "Error: ActionHolder: No actions given in this level! Using defaults" << std::endl;
-      action_data = default_actions;
+      std::cout << "Error: ActionHolder: No actions given in this level!" << std::endl;
     }
 
   for (std::vector<ActionData>::iterator i = action_data.begin(); i != action_data.end(); ++i) {

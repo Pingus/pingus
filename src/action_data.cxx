@@ -21,31 +21,6 @@
 
 namespace Pingus {
 
-using namespace Actions;
-
-std::vector<ActionData> default_actions;
-
-void init_default_actions ()
-{
-  //default_actions.push_back (ActionData (Boarder, 20));
-  //default_actions.push_back (ActionData (Rocketlauncher, 20));
-  //default_actions.push_back (ActionData (Superman, 0));
-
-  default_actions.push_back (ActionData (Basher, 20));
-  default_actions.push_back (ActionData (Blocker, 20));
-  default_actions.push_back (ActionData (Bomber, 20));
-
-  default_actions.push_back (ActionData (Bridger, 20));
-  default_actions.push_back (ActionData (Climber, 20));
-
-  default_actions.push_back (ActionData (Digger, 20));
-  default_actions.push_back (ActionData (Floater, 20));
-  default_actions.push_back (ActionData (Jumper, 20));
-
-  default_actions.push_back (ActionData (Miner, 20));
-  default_actions.push_back (ActionData (Slider, 20));
-}
-
 } // namespace Pingus
 
 /* EOF */

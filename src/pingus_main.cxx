@@ -714,7 +714,7 @@ PingusMain::start_game ()
     {
       ScreenManager::instance()->push_screen(Credits::instance(), false);
     }
-  else if (!levelfile.empty ()) // start editor or a game_session
+  else if (!levelfile.empty ()) 
     {
       bool successfull = true;
       if (!System::exist(levelfile))

@@ -26,11 +26,6 @@
 namespace Pingus {
 
 class World;
-class EditorObj;
-
-namespace EditorNS {
-class EditorObjMgr;
-}
 
 /** The root data class for all objects in the Pingus world.  Each
     objects needs a data object for creating, which should be
