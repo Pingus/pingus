@@ -1,0 +1,129 @@
+#!/bin/sh
+
+set -e
+
+if [ ! $# -eq 1 ]; then
+    echo "Usage: $0 PREFIX"
+    exit 1;
+fi
+
+TARGET_DIRECTORY="$1"
+
+echo -n "Do you want to compile and install pingus to '$TARGET_DIRECTORY'? [y/N] "
+
+read answer
+if [ ! "x$answer" = "xy" ]; then
+    echo "abort"
+    exit 0
+fi
+
+CVSROOT=':pserver:anonymous@dark.x.dtu.dk:/usr/local/cvsroot'
+export CVSROOT
+
+echo "### Setting up environment variables."
+LD_LIBRARY_PATH="$TARGET_DIRECTORY/lib/"
+export LD_LIBRARY_PATH
+
+LIBRARY_PATH="$TARGET_DIRECTORY/lib/"
+export LIBRARY_PATH
+
+LD_RUN_PATH="$TARGET_DIRECTORY/lib/"
+export LD_RUN_PATH
+
+PATH="$TARGET_DIRECTORY/bin:$PATH"
+export PATH
+
+CPLUS_INCLUDE_PATH="$TARGET_DIRECTORY/include/"
+export CPLUS_INCLUDE_PATH
+
+mkdir -p "$TARGET_DIRECTORY/src/"
+cd "$TARGET_DIRECTORY/src/"
+
+
+# FIXME: insert version check here
+echo "### downloading new automake and autoconf"
+wget -c ftp://ftp.gnu.org/gnu/autoconf/autoconf-2.53.tar.gz
+tar --extract --verbose --gzip --file  autoconf-2.53.tar.gz
+cd autoconf-2.53
+./configure --prefix="$TARGET_DIRECTORY"
+make
+make install
+
+# FIXME: insert version check here
+wget -c ftp://ftp.gnu.org/gnu/automake/automake-1.6.2.tar.gz
+tar --extract --verbose  --gzip --file automake-1.6.2.tar.gz
+cd automake-1.6.2
+./configure --prefix="$TARGET_DIRECTORY"
+make
+make install
+
+
+wget -c ftp://ftp.gnu.org/gnu/libtool/libtool-1.4.2.tar.gz
+tar --extract --verbose  --gzip --file libtool-1.4.2.tar.gz
+cd libtool-1.4.2
+./configure --prefix="$TARGET_DIRECTORY"
+make
+make install
+
+echo "### We are now loging into CVS, just press return."
+cvs login
+
+#PS1="\[\033[1;32m\][=Pingus=:\w]\[\033[00m$\] "
+#export PS1
+
+cat > "$TARGET_DIRECTORY/start_pingus" <<EOF
+#!/bin/sh
+
+set -e
+
+LD_LIBRARY_PATH="$TARGET_DIRECTORY/lib/"
+export LD_LIBRARY_PATH
+
+LIBRARY_PATH="$TARGET_DIRECTORY/lib/"
+export LIBRARY_PATH
+
+LD_RUN_PATH="$TARGET_DIRECTORY/lib/"
+export LD_RUN_PATH
+
+CPLUS_INCLUDE_PATH="$TARGET_DIRECTORY/include/"
+export CPLUS_INCLUDE_PATH
+
+cd games/
+./pingus
+EOF
+
+chmod +x "$TARGET_DIRECTORY/start_pingus"
+
+cvs -z3 checkout Libs/Hermes-1.3
+echo "### We are now going to compile Hermes."
+pushd Libs/Hermes-1.3
+./autogen.sh
+./configure --prefix="$TARGET_DIRECTORY"
+make
+make install 
+popd
+
+cvs -z3 checkout Libs/ClanLib-0.6
+echo "### We are now going to compile ClanLib."
+pushd Libs/ClanLib-0.6
+./autogen.sh
+./configure --prefix="$TARGET_DIRECTORY"
+make
+make install 
+popd
+
+cvs -z3 checkout Games/Pingus
+echo "### We are now going to compile Pingus."
+pushd Games/Pingus
+./autogen.sh
+./configure --prefix="$TARGET_DIRECTORY"
+make
+make install 
+popd
+
+echo "### You should now be able to start Pingus with:"
+echo ""
+echo "   cd $TARGET_DIRECTORY; ./start_pingus"
+echo ""
+
+# EOF #
