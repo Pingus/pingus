@@ -828,7 +828,7 @@
     <y-pos>339</y-pos>
     <z-pos>0</z-pos>
   </position>
-  <speed>-1</speed>
+  <speed>5</speed>
   <parallax>1</parallax>
 </hotspot>
 

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Pingus 0.5.0\n"
-"POT-Creation-Date: 2001-07-27 21:15+0200\n"
+"POT-Creation-Date: 2001-07-28 10:30+0200\n"
 "PO-Revision-Date: 2001-07-22 20:45+02:00\n"
 "Last-Translator: Ingo Ruhnke <grumbel@gmx.de>\n"
 "Language-Team: Ingo Ruhnke <grumbel@gmx.de>\n"
@@ -17,15 +17,15 @@ msgstr ""
 msgid "Time for war - Lets fight!"
 msgstr ""
 
-#: src/System.cc:66 src/System.cc:95
+#: src/System.cc:65 src/System.cc:94
 msgid "System: Couldn't open: "
 msgstr "System: Datei oder Verzeichnis konnte nicht geoeffnet werden: "
 
-#: src/System.cc:154
+#: src/System.cc:153
 msgid "Successfully created: "
 msgstr "Verzeichnis erstellt: "
 
-#: src/System.cc:159
+#: src/System.cc:158
 msgid "Found: "
 msgstr "Gefunden: "
 
@@ -34,12 +34,12 @@ msgstr "Gefunden: "
 msgid "Environment variable $HOME not set, fix that and start again."
 msgstr "Umgebungs Variable $HOME ist nicht gesetzt."
 
-#: src/System.cc:335
+#: src/System.cc:347
 msgid "System::checksum: Couldn't open file: "
 msgstr ""
 "System::checksum: Datei oder Verzeichnis konnte nicht geoeffnet werden: "
 
-#: src/System.cc:345
+#: src/System.cc:357
 msgid "System:checksum: file read error"
 msgstr "System:checksum: Fehler beim Lesen von Datei"
 
@@ -406,43 +406,43 @@ msgstr ""
 "Einsatz-\n"
 "faehigkeit fuer einen bestimmten Zweck."
 
-#: src/PingusMain.cc:482
+#: src/PingusMain.cc:486
 msgid "Unknow char: "
 msgstr "Unbekannter Buchstabe: "
 
-#: src/PingusMain.cc:483
+#: src/PingusMain.cc:487
 msgid "Usage: "
 msgstr "Benutzung: "
 
-#: src/PingusMain.cc:483
+#: src/PingusMain.cc:487
 msgid " [OPTIONS]... [LEVELFILE]"
 msgstr "[OPTIONEN]... [LEVELDATEI]"
 
-#: src/PingusMain.cc:763
+#: src/PingusMain.cc:762
 msgid "PingusMain: Starting Main: "
 msgstr "PingusMain: Hauptteil wird gestartet: "
 
-#: src/PingusMain.cc:785
+#: src/PingusMain.cc:784
 msgid "PingusMain: Levelfile not found, ignoring: "
 msgstr "PingusMain: Leveldatei nicht gefunden, Fehler wird ignoriert: "
 
-#: src/PingusMain.cc:834
+#: src/PingusMain.cc:833
 msgid "Error caught from ClanLib: "
 msgstr "ClanLib Fehler abgefangen: "
 
-#: src/PingusMain.cc:838
+#: src/PingusMain.cc:837
 msgid "Error caught from Pingus: "
 msgstr "Pingus Fehler wurde abgefangen: "
 
-#: src/PingusMain.cc:842
+#: src/PingusMain.cc:841
 msgid "Pingus: Out of memory!"
 msgstr "Pingus: Speicher ist ausgegangen"
 
-#: src/PingusMain.cc:846
+#: src/PingusMain.cc:845
 msgid "Pingus: Standard exception caught!:\n"
 msgstr "Pingus: Standard Ausnahme abgefangen!:\n"
 
-#: src/PingusMain.cc:850
+#: src/PingusMain.cc:849
 msgid "Pingus: Unknown throw caught!"
 msgstr "Pingus: Unbekannte Ausnahme abgefangen!"
 

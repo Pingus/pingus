@@ -1,4 +1,4 @@
-//  $Id: SurfaceBackground.cc,v 1.11 2001/07/21 20:28:12 grumbel Exp $
+//  $Id: SurfaceBackground.cc,v 1.12 2001/08/04 17:39:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -61,7 +61,7 @@ SurfaceBackground::SurfaceBackground(SurfaceBackgroundData* bg_data)
       // FIXME: This is extremly buggy and it will crash, no idea why....
       CL_Surface source_surface(PingusResource::load_surface(bg_data->desc));
       
-      CL_Canvas* canvas = Blitter::create_canvas(source_surface);
+      //CL_Canvas* canvas = Blitter::create_canvas(source_surface);
       //	  canvas->fill_rect(0, 0, 
 			    //			    canvas->get_width(), canvas->get_height(),
       //			    bg_data->color.red, bg_data->color.green, bg_data->color.blue, 

@@ -1,4 +1,4 @@
-//  $Id: PinguHolder.hh,v 1.11 2000/12/30 23:54:05 grumbel Exp $
+//  $Id: PinguHolder.hh,v 1.12 2001/08/04 17:39:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,8 +31,7 @@ class Pingu;
 typedef std::list<boost::shared_ptr<Pingu> >::iterator PinguIter;
 
 ///
-class PinguHolder : public std::list<boost::shared_ptr<Pingu> >,
-		    public WorldObj
+class PinguHolder : public WorldObj
 {
 private:
   /// The uniq id for the next Pingu
@@ -42,7 +41,7 @@ private:
   ///
   int saved_pingus;
 
-  /** A std::list holding all Pingus, the PinguHolder itself has only the
+  /** A list holding all Pingus, the PinguHolder itself has only the
       active (not dead) ones */
   std::list<boost::shared_ptr<Pingu> > pingus;
   
@@ -63,6 +62,10 @@ public:
   void push_back(boost::shared_ptr<Pingu> pingu);
 
   int get_z_pos() const { return 50; }
+
+  std::list<boost::shared_ptr<Pingu> >::iterator begin () { return pingus.begin (); }
+  std::list<boost::shared_ptr<Pingu> >::iterator end () { return pingus.end (); }
+  std::list<boost::shared_ptr<Pingu> >::size_type size () { return pingus.size (); }
 };
 
 #endif

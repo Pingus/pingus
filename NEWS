@@ -1,5 +1,24 @@
-Release 0.5.0 (never released)
-==============================
+Release (28/Jul/2001)
+=====================
+* Added object grouping in the editor
+* Added multiple backgrounds (paralax scrolling)
+* Added dynamic backgrounds
+* Added basic multiplayer support
+* XML based level file format
+* All images are now eighter png or jpeg format
+* Worldmap
+* A redesign of the main menu
+* Some multilanguage support
+* New actions (superman, boarder, rocketlauncher, etc.)
+* Lots of small fixes in the editor (zooming, object insertion)
+* Thumbnail caching in the editor
+* Some new levels
+* Timing fixes 
+* New objects (switches/doors, teleporter, etc.)
+
+
+Release 0.5.0pre1 (16/Jun/2001)
+===============================
 * Added object grouping in the editor
 * Added multiple backgrounds (paralax scrolling)
 * Added dynamic backgrounds

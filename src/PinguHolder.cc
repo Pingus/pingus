@@ -1,4 +1,4 @@
-//  $Id: PinguHolder.cc,v 1.13 2001/08/04 12:46:22 grumbel Exp $
+//  $Id: PinguHolder.cc,v 1.14 2001/08/04 17:39:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -53,31 +53,26 @@ PinguHolder::push_back(boost::shared_ptr<Pingu> pingu)
 {
   total_size_count++;
   pingu->set_id(id_count++);
-#ifndef WIN32
-  std::list<shared_ptr<Pingu> >::push_back(pingu);
-#else
-  push_front(pingu);
-#endif
   pingus.push_back(pingu);
 }
 
 void
 PinguHolder::draw_offset(int x_of, int y_of, float s)
 {
-  for(PinguIter pingu = this->begin(); pingu != this->end(); pingu++)
+  for(PinguIter pingu = pingus.begin(); pingu != pingus.end(); ++pingu)
     {
       if ((*pingu)->get_status() == dead)
 	{
 	  // Removing the dead pingu and setting the iterator back to
 	  // the correct possition, no memory hole since pingus will
 	  // keep track of the allocated Pingus
-	  pingu = this->erase(pingu);
+	  pingu = pingus.erase(pingu);
 	  pingu--;
 	}
       else if ((*pingu)->get_status() == exited) 
 	{
 	  saved_pingus++;
-	  pingu = this->erase(pingu);
+	  pingu = pingus.erase(pingu);
 	  pingu--;	  
 	}
       else 
@@ -90,7 +85,7 @@ PinguHolder::draw_offset(int x_of, int y_of, float s)
     }
 
   // We draw all actions here, so we have them above all others
-  for(PinguIter pingu = this->begin(); pingu != this->end(); pingu++)
+  for(PinguIter pingu = pingus.begin(); pingu != pingus.end(); pingu++)
     {
       if ((*pingu)->get_action().get()) 
 	(*pingu)->draw_offset(x_of, y_of, s);

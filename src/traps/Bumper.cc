@@ -1,4 +1,4 @@
-//  $Id: Bumper.cc,v 1.13 2001/04/27 20:44:38 grumbel Exp $
+//  $Id: Bumper.cc,v 1.14 2001/08/04 17:39:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -56,7 +56,7 @@ Bumper::draw_colmap()
   std::cout << "Drawing colmap entry" << std::endl;
 
   CL_SurfaceProvider* prov = CL_SurfaceProvider::load("Traps/bumper_cmap", PingusResource::get("traps"));
-  world->get_colmap()->put(prov, (int) pos.x, (int) pos.y, GroundpieceData::SOLID);
+  world->get_colmap()->put(prov, (int) pos.x, (int) pos.y, GroundpieceData::GP_SOLID);
 }
 
 void 

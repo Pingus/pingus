@@ -1,4 +1,4 @@
-//  $Id: CaptureRectangle.cc,v 1.10 2001/08/02 21:51:02 grumbel Exp $ 
+//  $Id: CaptureRectangle.cc,v 1.11 2001/08/04 17:39:13 grumbel Exp $ 
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,9 +41,9 @@ CaptureRectangle::CaptureRectangle()
   : owner_id (0),
     good (PingusResource::load_surface("Cursors/capgood", "game")),
     bad (PingusResource::load_surface("Cursors/capbad",  "game")),
-    font (PingusResource::load_font("Fonts/courier_small", "fonts")),
     arrow_left (PingusResource::load_surface("Cursors/arrow_left",  "game")),
-    arrow_right (PingusResource::load_surface("Cursors/arrow_right", "game"))
+    arrow_right (PingusResource::load_surface("Cursors/arrow_right", "game")),
+    font (PingusResource::load_font("Fonts/courier_small", "fonts"))
 {
   good.set_align_center ();
   bad.set_align_center ();
