@@ -1,4 +1,4 @@
-//  $Id: smallmap.cxx,v 1.35 2003/03/21 22:08:06 grumbel Exp $
+//  $Id: smallmap.cxx,v 1.36 2003/04/02 12:04:04 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,6 +39,9 @@ SmallMap::SmallMap(Client* c)
 {
   max_width = 175;
   max_height = 100;
+
+  min_height = 70;
+  min_width = 100;
 
   // Don't really need to initialise these now as this values are calculated
   // later on.  However, initialise here, just in case.
@@ -81,12 +84,12 @@ SmallMap::init()
       // pixels than one vertical pixel
       if (x_scaling > y_scaling)
         {
-          width = max_width;
-          height = colmap->get_height() / x_scaling;
+          width  = max_width;
+          height = Math::max(min_height, colmap->get_height() / x_scaling);
         }
       else
         {
-          width = colmap->get_width() / y_scaling;
+          width  = Math::max(min_width, colmap->get_width() / y_scaling);
           height = max_height;
         }
 
