@@ -1,4 +1,4 @@
-//  $Id: PLTXML.hh,v 1.9 2002/01/21 11:13:54 grumbel Exp $
+//  $Id: PLTXML.hh,v 1.10 2002/03/23 07:37:09 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,11 +20,6 @@
 #ifndef PLTXML_HH
 #define PLTXML_HH
 
-// FIXME: This should be <libxml/parser.h>, but that doesn't work with
-// libxml1.x :-/
-#define list
-#include <libxml/parser.h>
-#undef list
 #include <vector>
 #include <string>
 #include <map>

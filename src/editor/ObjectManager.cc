@@ -1,4 +1,4 @@
-//  $Id: ObjectManager.cc,v 1.57 2002/03/02 14:03:41 sphair Exp $
+//  $Id: ObjectManager.cc,v 1.58 2002/03/23 07:37:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -364,11 +364,13 @@ ObjectManager::lower_obj(boost::shared_ptr<EditorObj> obj)
   
   prev = current;
   prev--;
-//  swap(*prev, *current);
+  swap(*prev, *current);
+
+  /*
   boost::shared_ptr<EditorObj> tmp = *prev;
   *prev = *current;
   *current = *prev;
-  
+  */
   return true;
 }
 

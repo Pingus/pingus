@@ -1,4 +1,4 @@
-//  $Id: SpriteEditorObj.hh,v 1.1 2001/08/16 17:46:51 grumbel Exp $
+//  $Id: SpriteEditorObj.hh,v 1.2 2002/03/23 07:37:09 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -54,6 +54,10 @@ public:
   virtual void draw(boost::dummy_ptr<EditorView>);
 
   virtual void set_position_offset(const CL_Vector& offset);
+
+  /** This will be overritten to provide pixel exact click
+      detection */
+  virtual bool   is_over(const CL_Vector&);
 };
 
 #endif

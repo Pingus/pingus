@@ -1,4 +1,4 @@
-//  $Id: SpriteEditorObj.cc,v 1.1 2001/08/16 17:46:51 grumbel Exp $
+//  $Id: SpriteEditorObj.cc,v 1.2 2002/03/23 07:37:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -63,6 +63,52 @@ SpriteEditorObj::get_upper_left_corner()
 { 
   CL_Vector pos(pos_ref);
   return pos + CL_Vector(sprite.get_x_align (), sprite.get_y_align ()); 
+}
+
+bool
+SpriteEditorObj::is_over(const CL_Vector& pos)
+{
+  // FIXME: We don't handle animated objects special (do we need to?)
+  if (RectEditorObj::is_over (pos))
+    {
+      //std::cout << "ClickPos: " << pos.x << ", " << pos.y
+	//<< " ObjectPos: " << pos_ref.x << ", " << pos_ref.y << std::endl;
+  
+      CL_SurfaceProvider* provider = sprite.get_surface ().get_provider ();
+      float r, g, b, a;
+      // Position relative to the surface, not world
+      CL_Vector provider_pos = pos;
+      provider_pos -= pos_ref;
+
+      if (provider->is_indexed ())
+	{
+	  unsigned int color = provider->get_pixel (int(provider_pos.x) - sprite.get_x_align (), 
+						    int(provider_pos.y) - sprite.get_y_align ());
+
+	  //std::cout << "Pos: " << int(provider_pos.x) - sprite.get_x_align () << " "
+	  //    << int(provider_pos.y) - sprite.get_y_align () << std::endl;
+
+	  //std::cout << provider->uses_src_colorkey () << " Src: "
+	  //    << provider->get_src_colorkey () 
+	  //    << " Color: " << color << std::endl;
+
+	  if (provider->uses_src_colorkey ())
+	    return color != provider->get_src_colorkey ();
+	  else // Surface is completly filled
+	    return true;
+	}
+      else
+	{
+	  provider->get_pixel (int(provider_pos.x), int(provider_pos.y),
+			       &r, &g, &b, &a);
+	  //std::cout << "Color: " << r << " " << g << " " << b << " " << a << std::endl;
+	  return (a >= 0.5);
+	}
+    }
+  else
+    {
+      return false;
+    }
 }
 
 /* EOF */
