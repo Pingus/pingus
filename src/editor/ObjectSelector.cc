@@ -1,4 +1,4 @@
-//  $Id: ObjectSelector.cc,v 1.9 2000/03/16 21:46:21 grumbel Exp $
+//  $Id: ObjectSelector.cc,v 1.10 2000/03/19 00:04:53 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -120,39 +120,30 @@ EditorObj*
 ObjectSelector::get_groundpiece()
 {
   std::string str;
+  CL_ResourceManager* res = PingusResource::get("global.dat");
+    
   surface_data data;
   data.x_pos = CL_Mouse::get_x() - x_offset;
   data.y_pos = CL_Mouse::get_y() - y_offset;
 
-  // FIXME: Hack
-  {
-    CL_ResourceManager* res = PingusResource::get("global.dat");
-    list<std::string>* liste = res->get_resources_of_type("surface");
-    vector<CL_Surface*> sur_list;
+  list<std::string>* liste = res->get_resources_of_type("surface");
+  surface_obj sur_obj;
+  vector<surface_obj> sur_list;
 
-    for(std::list<std::string>::iterator i = liste->begin(); i != liste->end(); i++)
-      {
-	cout << "Resource: " << *i << "\n";
-	sur_list.push_back(CL_Surface::load(i->c_str(), res));
-      }
-    std::cout << std::flush;
-  }
-    
-  str = read_string("Input GroundPiece gfx:", last_object);
+  for(std::list<std::string>::iterator i = liste->begin(); i != liste->end(); i++)
+    {
+      sur_obj.sur = CL_Surface::load(i->c_str(), res);
+      cout << "Loading: " << *i  << endl;
+      sur_obj.name = *i;
+      sur_list.push_back(sur_obj);
+    }
   
-  last_object = str;
+  str = select_surface(sur_list);
 
-  if (str.empty())
-    return 0;
-
-  last_object = str;  
   data.res_desc = ResDescriptor("resource:global.dat", str);
   data.res_name = "global.dat";
   data.name = str;
 
-  /*  surf = CL_Surface::load(desc.res_name.c_str(), 
-			      PingusResource::get(desc.filename));
-			      */
   return new PSMObj(data);
 }
 
@@ -287,6 +278,14 @@ ObjectSelector::select_obj_type()
     }
 }
 
+std::string
+ObjectSelector::select_surface(vector<surface_obj>& sur_list)
+{
+  SurfaceSelector sur_selector(&sur_list);
+
+  return sur_selector.select();
+}
+
 int
 ObjectSelector::read_key()
 {
@@ -320,6 +319,9 @@ ObjectSelector::read_string(std::string description, std::string def_str)
 /*
 
 $Log: ObjectSelector.cc,v $
+Revision 1.10  2000/03/19 00:04:53  grumbel
+Added a graphical selector for surfaces, no typing required :-)
+
 Revision 1.9  2000/03/16 21:46:21  grumbel
 Misc changes
 

@@ -1,4 +1,4 @@
-// $Id: ObjectSelector.hh,v 1.3 2000/02/11 16:58:28 grumbel Exp $
+// $Id: ObjectSelector.hh,v 1.4 2000/03/19 00:04:53 grumbel Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,6 +26,7 @@
 #include "EditorObj.hh"
 #include "PLFObj.hh"
 #include "PSMObj.hh"
+#include "SurfaceSelector.hh"
 
 class ObjectSelector
 {
@@ -40,6 +41,7 @@ public:
   ~ObjectSelector();
   
   EditorObj* select_obj_type();
+  string select_surface(vector<surface_obj>& sur_list);
   int    read_key();
   std::string read_string(string, string);
   

@@ -39,4 +39,6 @@ libpingus_editor_a_SOURCES = \
      PanelIcons.hh        \
      PanelIcons.cc        \
      StringReader.cc      \
-     StringReader.hh 
+     StringReader.hh      \
+     SurfaceSelector.cc   \
+     SurfaceSelector.hh
