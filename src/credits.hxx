@@ -1,4 +1,4 @@
-//  $Id: credits.hxx,v 1.5 2002/08/16 17:15:31 grumbel Exp $
+//  $Id: credits.hxx,v 1.6 2002/08/17 00:25:06 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -56,7 +56,7 @@ public:
   virtual ~Credits();
 
   void init ();
-  void update (const GameDelta& delta);
+  void update (float);
   void draw_background ();
 
   void on_startup ();

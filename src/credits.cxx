@@ -1,4 +1,4 @@
-//  $Id: credits.cxx,v 1.5 2002/08/16 18:13:04 torangan Exp $
+//  $Id: credits.cxx,v 1.6 2002/08/17 00:25:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -108,12 +108,12 @@ Credits::~Credits()
 }
 
 void 
-Credits::update (const GameDelta& delta)
+Credits::update (float delta)
 {
   if (fast_scrolling)
-    offset -= 250.0f * delta.get_time ();
+    offset -= 450.0f * delta;
   else
-    offset -= 50.0f * delta.get_time ();
+    offset -= 35.0f * delta;
 
   if (offset < -1200.0f)
     ScreenManager::instance()->pop_screen ();
