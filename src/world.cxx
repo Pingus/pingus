@@ -1,4 +1,4 @@
-//  $Id: world.cxx,v 1.3 2002/06/14 11:34:35 torangan Exp $
+//  $Id: world.cxx,v 1.4 2002/06/14 13:40:10 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -82,12 +82,12 @@ World::~World()
 {
   delete particle_holder;
   
+  // skip PingusHolder at the first position to delete it last
   for (WorldObjIter it = world_obj->begin(); it != world_obj->end(); ++it) {
     delete *it;
   }
   
   delete world_obj;
-  delete pingus;
 }
 
 // Merge the different layers on the screen together
@@ -206,6 +206,8 @@ World::init_worldobjs()
       	world_obj->push_back(obj);
     }
 
+   world_obj->push_back(pingus);
+
   // After all objects are in world_obj, sort them to there z_pos
 #ifdef WIN32
   //FIXME: ingo: This is a workaround around the std::list::sort()
@@ -217,6 +219,7 @@ World::init_worldobjs()
 #endif
   // FIXME: If the above thing causes throuble under windows we could
   // use a vector instead of a list and use stable_sort() instead.
+
 
   // Drawing all world objs to the colmap
   for(WorldObjIter obj = world_obj->begin(); obj != world_obj->end(); ++obj)
