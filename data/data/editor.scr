@@ -1,3 +1,8 @@
+section Objects
+{
+	start_pos = ../images/editor/start_pos.pcx (type=surface, x=0, y=0, width=53, height=59, tcol=0);
+}
+
 section Icons
 {
 	copy = ../images/editor/tb_copy.pcx (type=surface, x=0, y=0, width=24,  height=24, tcol=0);
@@ -17,3 +22,5 @@ section Icons
 	
 	logo = ../images/editor/logo.tga (type=surface, x=0, y=0, width=25,  height=207);
 }
+
+// EOF 
