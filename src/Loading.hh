@@ -1,4 +1,4 @@
-//  $Id: Loading.hh,v 1.2 2000/04/08 20:20:25 grumbel Exp $
+//  $Id: Loading.hh,v 1.3 2000/04/24 13:15:41 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,7 +34,7 @@ public:
   ~Loading();
   void init();
   void draw();
-  void draw_progress(string, float);
+  void draw_progress(std::string, float);
 };
 
 extern Loading loading_screen;

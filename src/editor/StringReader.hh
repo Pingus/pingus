@@ -1,4 +1,4 @@
-//  $Id: StringReader.hh,v 1.4 2000/02/11 21:26:38 grumbel Exp $
+//  $Id: StringReader.hh,v 1.5 2000/04/24 13:15:43 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,8 +27,8 @@
 class StringReader
 {
 private:
-  list<std::string>* strings;
-  list<std::string*> completions;
+  std::list<std::string>* strings;
+  std::list<std::string*> completions;
   std::string current_string;
   std::string default_string;
   bool finished;
@@ -37,7 +37,7 @@ private:
 
 public:
   StringReader();
-  StringReader(string, string);
+  StringReader(std::string, std::string);
   virtual ~StringReader();
 
   void   set_strings(std::list<std::string>*);

@@ -1,4 +1,4 @@
-//  $Id: SurfaceSelector.cc,v 1.2 2000/03/20 18:55:26 grumbel Exp $
+//  $Id: SurfaceSelector.cc,v 1.3 2000/04/24 13:15:43 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,8 @@
 #include "../Display.hh"
 #include "../PingusResource.hh"
 #include "SurfaceSelector.hh"
+
+using namespace std;
 
 SurfaceSelector::SurfaceSelector(vector<surface_obj>* s)
 {
@@ -58,7 +60,7 @@ SurfaceSelector::get_current_obj()
 	}
     }
 
-  return 0;
+  return vector<surface_obj>::iterator();
 }
 
 void
@@ -99,7 +101,7 @@ SurfaceSelector::draw()
 	}
     }
 
-  if (c_obj)
+  if (c_obj != vector<surface_obj>::iterator())
     {
       CL_Display::fill_rect(0, CL_Display::get_height() - c_obj->sur->get_height(),
 			    c_obj->sur->get_width(), CL_Display::get_height(),
@@ -126,10 +128,10 @@ SurfaceSelector::scroll()
   if (y_of < 0) y_of = 0;    
 }
 
-std::string
+string
 SurfaceSelector::select()
 {
-  std::string str;
+  string str;
   
   while (!CL_Mouse::left_pressed())
     {

@@ -1,4 +1,4 @@
-//  $Id: StatusLine.hh,v 1.3 2000/02/11 16:58:28 grumbel Exp $
+//  $Id: StatusLine.hh,v 1.4 2000/04/24 13:15:43 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,7 +28,7 @@ class StatusLine
 {
 private:
   CL_Font* font;
-  list<EditorObj*>* current_objs;
+  std::list<EditorObj*>* current_objs;
 public:
   StatusLine();
   ~StatusLine();

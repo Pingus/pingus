@@ -1,4 +1,4 @@
-//  $Id: FVec.cc,v 1.2 2000/02/09 21:43:39 grumbel Exp $
+//  $Id: FVec.cc,v 1.3 2000/04/24 13:15:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,8 +26,8 @@
 
 CL_Vector grav(0.0,1.0);
 
-vector<GravityForce>   ForcesHolder::grav_array;
-vector<ExplosionForce> ForcesHolder::explo_array;
+std::vector<GravityForce>   ForcesHolder::grav_array;
+std::vector<ExplosionForce> ForcesHolder::explo_array;
 
 // Apply the explosion force
 CL_Vector

@@ -1,4 +1,4 @@
-//  $Id: ButtonPanel.cc,v 1.5 2000/03/12 01:41:31 grumbel Exp $
+//  $Id: ButtonPanel.cc,v 1.6 2000/04/24 13:15:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,7 +28,7 @@ ButtonPanel::ButtonPanel(PLF* plf)
 {
   last_press = 0;
 
-  vector<button_data> buttons_data = plf->get_buttons();
+  std::vector<button_data> buttons_data = plf->get_buttons();
 
   for(std::vector<button_data>::size_type i = 0; i < buttons_data.size(); i++)
     {
@@ -77,7 +77,7 @@ ButtonPanel::let_move()
     } 
 }
 
-string
+std::string
 ButtonPanel::get_action_name()
 {
   return pressed_button->get_action_name();

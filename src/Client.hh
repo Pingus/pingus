@@ -1,4 +1,4 @@
-//  $Id: Client.hh,v 1.8 2000/03/16 21:28:05 grumbel Exp $
+//  $Id: Client.hh,v 1.9 2000/04/24 13:15:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -54,7 +54,7 @@ private:
   bool do_replay;
   bool is_finished;
 
-  vector<GuiObj* > obj;
+  std::vector<GuiObj* > obj;
  
   ButtonPanel*   button_panel;
   PingusCounter* pcounter;

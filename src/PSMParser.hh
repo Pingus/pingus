@@ -1,4 +1,4 @@
-//  $Id: PSMParser.hh,v 1.5 2000/04/14 18:28:26 grumbel Exp $
+//  $Id: PSMParser.hh,v 1.6 2000/04/24 13:15:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -55,9 +55,9 @@ struct PSMParseError
 class PSMParser
 {
 private:
-  vector<surface_data> surface;
+  std::vector<surface_data> surface;
   bool file_parsed;
-  ifstream in;
+  std::ifstream in;
   int lines;
 public:
   PSMParser();
@@ -72,7 +72,7 @@ public:
   void   expect(char);
   ResDescriptor get_resdesc(void);
   void   jump_spaces(void);
-  vector<surface_data> get_surfaces(void);
+  std::vector<surface_data> get_surfaces(void);
 };
 
 #endif

@@ -1,4 +1,4 @@
-//  $Id: basher.cc,v 1.6 2000/04/08 20:20:26 grumbel Exp $
+//  $Id: basher.cc,v 1.7 2000/04/24 13:15:41 grumbel Exp $
 //
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -19,6 +19,8 @@
 #include "basher.hh"
 #include "../particles/GroundParticle.hh"
 #include "../algo.hh"
+
+using namespace std;
 
 Basher::Basher()
 {

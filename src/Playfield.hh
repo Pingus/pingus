@@ -1,4 +1,4 @@
-//  $Id: Playfield.hh,v 1.4 2000/04/10 21:19:56 grumbel Exp $
+//  $Id: Playfield.hh,v 1.5 2000/04/24 13:15:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -47,7 +47,7 @@ private:
   PinguHolder* pingus;
   PinguInfo* pingu_info;
   World* world;
-  vector<View> view;
+  std::vector<View> view;
   
   //int  x_offset, y_offset;
   Pingu* current_pingu;

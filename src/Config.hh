@@ -1,4 +1,4 @@
-//  $Id: Config.hh,v 1.1 2000/03/10 19:33:29 grumbel Exp $
+//  $Id: Config.hh,v 1.2 2000/04/24 13:15:41 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,9 +42,9 @@ private:
   std::string get_value(void);      // Return the value
   void   jump_after(char);     // Jump to the next token, after char
   void   jump(void);           // Jump over spaces to the next token
-  void   syntax_error(string); // Do a clean shutdown on a syntax error
+  void   syntax_error(std::string); // Do a clean shutdown on a syntax error
   void   parse(void);          // Parse the opened file
-  void   open(string);          // Open the file
+  void   open(std::string);          // Open the file
 
   // Some virtual functions
   // Put the retrieved value in the correct struct
@@ -53,10 +53,10 @@ private:
 
 public:
   ConfigParser();         
-  ConfigParser(string);         // Open the file and parse it
+  ConfigParser(std::string);         // Open the file and parse it
   virtual ~ConfigParser();      // Close the file
     
-  void init(string);      // Init the PLFParser and start parsing
+  void init(std::string);      // Init the PLFParser and start parsing
 };
 
 class Config : public ConfigParser
@@ -64,12 +64,12 @@ class Config : public ConfigParser
 private:
   std::string filename;
 
-  bool str_to_bool(const string&);
-  int  str_to_int(const string&);
+  bool str_to_bool(const std::string&);
+  int  str_to_int(const std::string&);
   
 public:
   Config();
-  Config(string);
+  Config(std::string);
 
   void set_value(std::string valueid,
 		 std::string value);

@@ -1,4 +1,4 @@
-//  $Id: Client.cc,v 1.18 2000/04/21 11:26:06 grumbel Exp $
+//  $Id: Client.cc,v 1.19 2000/04/24 13:15:40 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -149,7 +149,7 @@ Client::play_level(std::string plf_filename, std::string psm_filename)
 
   // FIXME: dirty hack, should replace or merge the psm files
   {
-    string filename = plf_filename.substr(0, plf_filename.size() - 4);
+    std::string filename = plf_filename.substr(0, plf_filename.size() - 4);
     
     if (verbose > 1) std::cout << "PSM: " << filename + ".psm" << std::endl;
     

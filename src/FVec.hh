@@ -1,4 +1,4 @@
-//  $Id: FVec.hh,v 1.2 2000/02/09 21:43:39 grumbel Exp $
+//  $Id: FVec.hh,v 1.3 2000/04/24 13:15:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -72,12 +72,12 @@ public:
 class ForcesHolder {
 public:
   // The gravity force array
-  static vector<GravityForce> grav_array;
-  typedef vector<GravityForce>::iterator GForceIter;
+  static std::vector<GravityForce> grav_array;
+  typedef std::vector<GravityForce>::iterator GForceIter;
   
   // The explosion force array
-  static vector<ExplosionForce> explo_array;
-  typedef vector<ExplosionForce>::iterator EForceIter;
+  static std::vector<ExplosionForce> explo_array;
+  typedef std::vector<ExplosionForce>::iterator EForceIter;
 
 public:
   

@@ -1,4 +1,4 @@
-//  $Id: OptionMenu.hh,v 1.3 2000/02/11 16:58:25 grumbel Exp $
+//  $Id: OptionMenu.hh,v 1.4 2000/04/24 13:15:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,15 +30,15 @@ class OptionEntry
 private:
   std::string str;
   bool*   value_bool;
-  string* value_str;
+  std::string* value_str;
   int*    value_int;
   int x_pos, y_pos;
   CL_Font* font;
 
 public:
-  OptionEntry(string, bool*, int, int);
-  OptionEntry(string, int*, int, int);
-  OptionEntry(string, string*, int, int);
+  OptionEntry(std::string, bool*, int, int);
+  OptionEntry(std::string, int*, int, int);
+  OptionEntry(std::string, std::string*, int, int);
   bool mouse_over();
   void draw();
   void toggle();
@@ -55,8 +55,8 @@ private:
   bool quit;
   bool is_init;
   int entry_x, entry_y;
-  typedef vector<OptionEntry>::iterator EntryIter;
-  vector<OptionEntry> entry;
+  typedef std::vector<OptionEntry>::iterator EntryIter;
+  std::vector<OptionEntry> entry;
 
   class Event : public CL_Event_ButtonPress, public CL_Event_ButtonRelease
   {

@@ -1,4 +1,4 @@
-//  $Id: PingusDemo.hh,v 1.3 2000/02/11 16:58:26 grumbel Exp $
+//  $Id: PingusDemo.hh,v 1.4 2000/04/24 13:15:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,15 +34,15 @@ enum PingusDemoMode { play, record };
 class PingusDemo
 {
 private:
-  ifstream in;
-  ofstream out;
+  std::ifstream in;
+  std::ofstream out;
 public:
   PingusDemo();
   ~PingusDemo(void);
 
-  void open(string, PingusDemoMode);
+  void open(std::string, PingusDemoMode);
   PingusEvent get_next_event(void);
-  void set_next_event(string);
+  void set_next_event(std::string);
 };
 
 #endif

@@ -1,4 +1,4 @@
-//  $Id: Pingu.hh,v 1.6 2000/03/01 02:57:48 grumbel Exp $
+//  $Id: Pingu.hh,v 1.7 2000/04/24 13:15:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,7 +38,7 @@ protected:
 
   PinguAction* action;
   PinguAction* sec_action;
-  vector<PinguAction* > persist;
+  std::vector<PinguAction* > persist;
   int id;
 
   static bool init;

@@ -1,4 +1,4 @@
-//  $Id: ActionHolder.cc,v 1.9 2000/04/08 20:20:25 grumbel Exp $
+//  $Id: ActionHolder.cc,v 1.10 2000/04/24 13:15:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -156,7 +156,7 @@ ActionHolder::translate_action(const std::string& name)
   } else if (name == "splashed") {
     return new Splashed;
   } else {
-    throw PingusError(string("ActionHolder:Action `") + name + "' unkown");
+    throw PingusError(std::string("ActionHolder:Action `") + name +"' unkown");
   }  
 }
 

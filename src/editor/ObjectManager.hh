@@ -1,4 +1,4 @@
-//  $Id: ObjectManager.hh,v 1.3 2000/02/11 16:58:28 grumbel Exp $
+//  $Id: ObjectManager.hh,v 1.4 2000/04/24 13:15:42 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,7 +32,7 @@ private:
   // Other Level data
   std::string description;
   std::string levelname;
-  vector<button_data> actions;
+  std::vector<button_data> actions;
   background_data background;
   int    number_to_save;
   int    number_of_pingus;
@@ -43,8 +43,8 @@ private:
   int    start_y_pos;
   bool   quit;
 
-  list<EditorObj*> editor_objs;
-  list<EditorObj*> current_objs;
+  std::list<EditorObj*> editor_objs;
+  std::list<EditorObj*> current_objs;
 
   int x_offset;
   int y_offset;
@@ -57,9 +57,9 @@ private:
   } bg;
   
 public:
-  typedef list<EditorObj*>::iterator EditorObjIter;
-  typedef list<EditorObj*>::reverse_iterator EditorObjRIter;
-  typedef list<EditorObj*>::iterator CurrentObjIter;
+  typedef std::list<EditorObj*>::iterator EditorObjIter;
+  typedef std::list<EditorObj*>::reverse_iterator EditorObjRIter;
+  typedef std::list<EditorObj*>::iterator CurrentObjIter;
 
   ObjectManager();
   ~ObjectManager();

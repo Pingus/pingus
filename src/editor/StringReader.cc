@@ -1,4 +1,4 @@
-//  $Id: StringReader.cc,v 1.4 2000/02/11 21:26:38 grumbel Exp $
+//  $Id: StringReader.cc,v 1.5 2000/04/24 13:15:43 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -45,7 +45,7 @@ StringReader::set_strings(std::list<std::string>* s)
   strings = s;
 }
 
-string
+std::string
 StringReader::read_string()
 {
   finished = false;
@@ -106,7 +106,7 @@ void
 StringReader::complete_string()
 {
   int completions_counter = 0;
-  string* completion;
+  std::string* completion;
 
   completions.clear();
     
@@ -131,10 +131,10 @@ StringReader::complete_string()
   // std::cout << "Searching finished" << std::endl;
 }
 
-string
+std::string
 StringReader::find_uniq()
 {
-  list<std::string*>::iterator i = completions.begin();
+  std::list<std::string*>::iterator i = completions.begin();
   std::string ret_string = **(completions.begin());
 
   while (i != completions.end())
@@ -146,12 +146,12 @@ StringReader::find_uniq()
   return ret_string;
 }
 
-string
+std::string
 StringReader::while_eq(const std::string& a, const std::string& b)
 {
   std::string ret_string;
   
-  for(string::size_type i = 0;
+  for(std::string::size_type i = 0;
       i < a.size() && i < b.size() && a[i] == b[i];
       i++)
     {

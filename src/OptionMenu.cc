@@ -1,4 +1,4 @@
-//  $Id: OptionMenu.cc,v 1.9 2000/04/10 21:21:02 grumbel Exp $
+//  $Id: OptionMenu.cc,v 1.10 2000/04/24 13:15:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -40,7 +40,7 @@ OptionEntry::OptionEntry(std::string s, bool* v, int x, int y)
   y_pos = y;
 }
 
-OptionEntry::OptionEntry(std::string s, string* v, int x, int y)
+OptionEntry::OptionEntry(std::string s, std::string* v, int x, int y)
 {
   font = CL_Font::load("Fonts/smallfont_h",  PingusResource::get("fonts.dat"));
   str = s;

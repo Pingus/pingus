@@ -1,4 +1,4 @@
-//  $Id: ActionButton.hh,v 1.3 2000/02/11 16:58:24 grumbel Exp $
+//  $Id: ActionButton.hh,v 1.4 2000/04/24 13:15:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -50,7 +50,7 @@ class EventButton : public Button
 {
 private: 
 public:
-  EventButton(int x, int y, string);
+  EventButton(int x, int y, std::string);
   void   draw();
   bool   mouse_over();
 };

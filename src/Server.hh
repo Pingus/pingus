@@ -1,4 +1,4 @@
-//  $Id: Server.hh,v 1.4 2000/02/18 03:08:41 grumbel Exp $
+//  $Id: Server.hh,v 1.5 2000/04/24 13:15:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -58,10 +58,10 @@ public:
   ActionHolder* get_action_holder();
   bool is_finished();
   void set_finished();
-  void process_event(string);
-  void send_event(string);
-  void set_demo(string);
-  void set_record_file(string);
+  void process_event(std::string);
+  void send_event(std::string);
+  void set_demo(std::string);
+  void set_record_file(std::string);
 };
 
 #endif

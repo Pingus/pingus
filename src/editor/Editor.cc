@@ -1,4 +1,4 @@
-//  $Id: Editor.cc,v 1.9 2000/04/14 18:28:27 grumbel Exp $
+//  $Id: Editor.cc,v 1.10 2000/04/24 13:15:42 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -164,7 +164,7 @@ Editor::scroll()
   if (verbose) std::cout << "finished" << std::endl;
 }
 
-string
+std::string
 Editor::read_string (std::string prefix, std::string default_str)
 {
   event->disable();
@@ -249,10 +249,10 @@ Editor::read_string (std::string prefix, std::string default_str)
   return str;
 }
 
-string
+std::string
 Editor::save_tmp_level ()
 {
-  std::string filename = string(tmpnam(0)) + ".pingus";
+  std::string filename = std::string(tmpnam(0)) + ".pingus";
   
   std::cout << "Saving level to: " << filename << std::endl;
   
@@ -396,6 +396,9 @@ Editor::interactive_load()
 
 /***********************************************
 $Log: Editor.cc,v $
+Revision 1.10  2000/04/24 13:15:42  grumbel
+Added  Felix Natter's namespace clean ups
+
 Revision 1.9  2000/04/14 18:28:27  grumbel
 Fixed ColMap again, bridger should work correctly again
 

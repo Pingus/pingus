@@ -1,4 +1,4 @@
-//  $Id: Panel.cc,v 1.4 2000/02/15 13:09:51 grumbel Exp $
+//  $Id: Panel.cc,v 1.5 2000/04/24 13:15:42 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -145,7 +145,7 @@ Panel::on_release()
 	{
 	  if (CL_Mouse::get_y() > y && CL_Mouse::get_y() < y + 25)
 	    {
-	      std::cout << "Recive: " << i << std::endl;
+	      std::cout << "Recieve: " << &*i << std::endl;
 	      if (pressed_button == i)
 		{
 		  std::cout << "Doing button..." << std::endl;
@@ -156,7 +156,7 @@ Panel::on_release()
 	  y += 25;
 	}
     }
-  pressed_button = 0;
+  pressed_button = std::vector<PanelIcon*>::iterator();
   if (verbose) std::cout << "On release finished" << std::endl;
 }
 

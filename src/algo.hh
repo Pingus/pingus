@@ -1,4 +1,4 @@
-//  $Id: algo.hh,v 1.6 2000/04/09 17:28:37 grumbel Exp $
+//  $Id: algo.hh,v 1.7 2000/04/24 13:15:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,11 +46,11 @@
 bool rect_col(int ax1, int ax2, int ay1, int ay2,
               int bx1, int bx2, int by1, int by2);
 
-string add_slash(string& str);
-string get_directory(std::string s);
+std::string add_slash(std::string& str);
+std::string get_directory(std::string s);
 char*  tolowerstr(char*);
-string find_file(std::string paths, std::string filename);
-//string basename(std::string filename);
+std::string find_file(std::string paths, std::string filename);
+//std::string basename(std::string filename);
 /*template<class T> inline std::string to_string(const T& n)
 {
  std::ostringstream tmp;

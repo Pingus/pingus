@@ -1,4 +1,4 @@
-//  $Id: ButtonPanel.hh,v 1.3 2000/02/11 16:58:25 grumbel Exp $
+//  $Id: ButtonPanel.hh,v 1.4 2000/04/24 13:15:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,8 +36,8 @@ class ButtonPanel : public GuiObj
 {
 private:
   friend class ClientEvent;
-  vector<ActionButton*> a_buttons;
-  typedef vector<ActionButton*>::iterator AButtonIter;
+  std::vector<ActionButton*> a_buttons;
+  typedef std::vector<ActionButton*>::iterator AButtonIter;
   ActionButton*     pressed_button;
 
   ArmageddonButton* armageddon;

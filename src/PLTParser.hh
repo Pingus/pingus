@@ -1,4 +1,4 @@
-//  $Id: PLTParser.hh,v 1.3 2000/02/11 16:58:25 grumbel Exp $
+//  $Id: PLTParser.hh,v 1.4 2000/04/24 13:15:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,11 +31,11 @@ struct PLTEOF {};
 class PLTParser
 {
 private:
-  ifstream in;
+  std::ifstream in;
   int lineno;
   bool in_header;
 
-  vector<std::string> levels;
+  std::vector<std::string> levels;
   std::string theme_name;
   std::string theme_description;
   std::string theme_image;
@@ -44,8 +44,8 @@ public:
   PLTParser();
   ~PLTParser();
 
-  void   parse(string);
-  vector<std::string> get_levels();
+  void   parse(std::string);
+  std::vector<std::string> get_levels();
   std::string get_name();
   std::string get_description();
   std::string get_surface();
@@ -58,7 +58,7 @@ private:
   std::string get_string();
   void   check_newline();
   std::string get_line();
-  void   add_pair(string, string);
+  void   add_pair(std::string, std::string);
 };
 
 #endif

@@ -1,4 +1,4 @@
-//  $Id: PingusResource.hh,v 1.3 2000/02/11 16:58:26 grumbel Exp $
+//  $Id: PingusResource.hh,v 1.4 2000/04/24 13:15:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,13 +33,13 @@ private:
     std::string filename;
   };
 
-  static vector<Res> resource;
+  static std::vector<Res> resource;
 
-  static void open(string);
+  static void open(std::string);
 public:
   PingusResource();
 
-  static CL_ResourceManager* get(string);
+  static CL_ResourceManager* get(std::string);
 };
 
 #endif

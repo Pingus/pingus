@@ -1,4 +1,4 @@
-//  $Id: Pingus.hh,v 1.6 2000/04/08 20:20:25 grumbel Exp $
+//  $Id: Pingus.hh,v 1.7 2000/04/24 13:15:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -51,7 +51,7 @@ public:
   virtual void deinit_modules();
 
   GameMode select_game_mode(void);
-  void load_resources(string filename);
+  void load_resources(std::string filename);
   bool do_lemmings_mode(void);
   bool do_worms_mode(void);
   void check_args(int argc, char* argv[]);

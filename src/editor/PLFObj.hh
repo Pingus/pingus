@@ -1,4 +1,4 @@
-//  $Id: PLFObj.hh,v 1.3 2000/02/11 16:58:28 grumbel Exp $
+//  $Id: PLFObj.hh,v 1.4 2000/04/24 13:15:42 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,7 +32,7 @@ public:
   PLFObj();
   virtual ~PLFObj();
 
-  virtual void save(ofstream* plf, ofstream* psm) = 0;
+  virtual void save(std::ofstream* plf, std::ofstream* psm) = 0;
 };
 
 class HotspotObj : public PLFObj
@@ -44,7 +44,7 @@ public:
   HotspotObj(hotspot_data);
   ~HotspotObj();
   EditorObj* duplicate();
-  void save(ofstream* plf, ofstream* psm);
+  void save(std::ofstream* plf, std::ofstream* psm);
   std::string obj_type() { return "Hotspot"; };
 };
 
@@ -58,7 +58,7 @@ public:
   EntranceObj(entrance_data);
   ~EntranceObj();
   EditorObj* duplicate();
-  void save(ofstream* plf, ofstream* psm);  
+  void save(std::ofstream* plf, std::ofstream* psm);  
   std::string obj_type() { return "Entrance"; };
 };
 
@@ -69,7 +69,7 @@ public:
   ExitObj(exit_data);
   ~ExitObj();
   EditorObj* duplicate();
-  void save(ofstream* plf, ofstream* psm);  
+  void save(std::ofstream* plf, std::ofstream* psm);  
   std::string obj_type() { return "Exit"; };
 };
 
@@ -83,7 +83,7 @@ public:
   TrapObj(trap_data);
   ~TrapObj();
   EditorObj* duplicate();
-  void save(ofstream* plf, ofstream* psm);  
+  void save(std::ofstream* plf, std::ofstream* psm);  
   void draw_offset(int x_offset, int y_offset);
   std::string obj_type() { return "Trap"; };
 };
@@ -101,7 +101,7 @@ public:
   void draw_offset(int x_offset, int y_offset);
   void draw_mark_offset(int x_offset, int y_offset);
   bool mouse_over(int, int);
-  void save(ofstream* plf, ofstream* psm);
+  void save(std::ofstream* plf, std::ofstream* psm);
   std::string obj_type() { return "Liquid"; };
 };
 

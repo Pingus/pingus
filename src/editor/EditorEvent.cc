@@ -1,4 +1,4 @@
-//  $Id: EditorEvent.cc,v 1.10 2000/04/14 18:28:28 grumbel Exp $
+//  $Id: EditorEvent.cc,v 1.11 2000/04/24 13:15:42 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -85,7 +85,7 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key &key)
 	  // Set a checkpoint.
 	case CL_KEY_F7:
 	  editor->save_tmp_level();
-	  editor->checkpoint = string(tmpnam(0)) + ".pingus";
+	  editor->checkpoint = std::string(tmpnam(0)) + ".pingus";
 	  if (verbose) std::cout << "Setting checkpoint: " << editor->checkpoint << std::endl;
 	  object_manager->save_level(editor->checkpoint);
 	  break;
@@ -354,7 +354,7 @@ EditorEvent::editor_load_level()
 {
   std::string str;
   System::Directory dir;
-  list<std::string> strings;
+  std::list<std::string> strings;
   std::string temp_str;
 
   StringReader reader("Input filename to load the file (without .plf!)", editor->last_level);
@@ -397,7 +397,7 @@ EditorEvent::editor_save_level_as()
 
   std::string str;
   System::Directory dir;
-  list<std::string> strings;
+  std::list<std::string> strings;
 
   StringReader reader("Input filename to save the file (without .plf!)", editor->last_level);
 
@@ -427,7 +427,7 @@ EditorEvent::editor_save_level_as()
 void
 EditorEvent::editor_duplicate_current_selection()
 {
-  list<EditorObj*> new_objs;
+  std::list<EditorObj*> new_objs;
   
   for (ObjectManager::CurrentObjIter i = object_manager->current_objs.begin(); 
        i != object_manager->current_objs.end();

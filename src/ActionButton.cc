@@ -1,4 +1,4 @@
-//  $Id: ActionButton.cc,v 1.3 2000/02/11 16:58:24 grumbel Exp $
+//  $Id: ActionButton.cc,v 1.4 2000/04/24 13:15:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -108,7 +108,7 @@ ActionButton::let_move()
   ++action_c;
 }
 
-string
+std::string
 ActionButton::get_action_name()
 {
   return name;

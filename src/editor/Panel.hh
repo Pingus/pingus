@@ -1,4 +1,4 @@
-//  $Id: Panel.hh,v 1.2 2000/02/09 21:43:43 grumbel Exp $
+//  $Id: Panel.hh,v 1.3 2000/04/24 13:15:43 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -47,8 +47,8 @@ class Panel
 {
 private:
   bool is_init;
-  vector<PanelIcon*> buttons;
-  vector<PanelIcon*>::iterator pressed_button;
+  std::vector<PanelIcon*> buttons;
+  std::vector<PanelIcon*>::iterator pressed_button;
   EditorEvent* event;
   CL_Surface* background;
   CL_Surface* logo;

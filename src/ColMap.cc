@@ -1,4 +1,4 @@
-//  $Id: ColMap.cc,v 1.9 2000/04/14 18:28:26 grumbel Exp $
+//  $Id: ColMap.cc,v 1.10 2000/04/24 13:15:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -197,7 +197,7 @@ ColMap::put(int x, int y, PixelStatus p)
   else
     {
       if (verbose > 2)
-	cout << "ColMap: remove: Out of map" << std::endl;
+	std::cout << "ColMap: remove: Out of map" << std::endl;
     }
 }
 

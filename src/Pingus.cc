@@ -1,4 +1,4 @@
-//   $Id: Pingus.cc,v 1.21 2000/04/21 11:26:06 grumbel Exp $
+//   $Id: Pingus.cc,v 1.22 2000/04/24 13:15:41 grumbel Exp $
 //    ___
 //   |  _\ A free Lemmings clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -99,7 +99,7 @@ PingusMain::read_rc_file(void)
   if (!homedir) {
     rcfile = ".pingus/options";
   } else {
-    rcfile = string(homedir) + "/.pingus/config";
+    rcfile = std::string(homedir) + "/.pingus/config";
   }
 
   // FIXME: kind of weird...
@@ -182,7 +182,8 @@ PingusMain::check_args(int argc, char* argv[])
     case 't': // -t, --set-speed
       game_speed = atoi(optarg);
       if (verbose) 
-	cout << "PingusMain:check_args: Game Speed = " << game_speed << std::endl;
+	std::cout << "PingusMain:check_args: Game Speed = "
+			  << game_speed << std::endl;
       break;
     case 'e':
       start_editor = true;
@@ -209,7 +210,7 @@ PingusMain::check_args(int argc, char* argv[])
     case 'S':
       pingus_soundfile = optarg;
       if (verbose) 
-	cout << "check_args: Sound File = " << pingus_soundfile << std::endl;
+	std::cout << "check_args: Sound File = " << pingus_soundfile << std::endl;
       break;
     case 'm': // -m, --enable-music
       if (verbose) std::cout << "check_args: Music enabled" << std::endl;
@@ -219,7 +220,8 @@ PingusMain::check_args(int argc, char* argv[])
       pingus_datadir = optarg;
       pingus_datadir_set = true;
       if (verbose)
-	cout << "check_args: Pingus Data Dir = " << pingus_datadir << std::endl;
+	std::cout << "check_args: Pingus Data Dir = "
+			  << pingus_datadir << std::endl;
       break;
     case 'n':
       intro_disabled = true;
@@ -248,7 +250,7 @@ PingusMain::check_args(int argc, char* argv[])
       play_demo = true;
       demo_file = optarg;
       if (verbose)
-	cout << "Using demofile: " << demo_file << std::endl;
+	std::cout << "Using demofile: " << demo_file << std::endl;
       break;
     case 'v':
       sscanf(optarg, "%d", &verbose);
@@ -278,8 +280,8 @@ PingusMain::check_args(int argc, char* argv[])
       previews_enabled = false;
       break;
     case 134: // --maintainer_mode
-      std::cout << "---------------------------------" << endl
-	   << "--- Maintainer Mode activated ---" << endl
+      std::cout << "---------------------------------" << std::endl
+	   << "--- Maintainer Mode activated ---" << std::endl
 	   << "---------------------------------" << std::endl; 
       maintainer_mode = true;
       break;
@@ -313,7 +315,7 @@ PingusMain::check_args(int argc, char* argv[])
 
     default:
       
-      std::cout << "Unknow char: " << c << endl << std::endl;
+      std::cout << "Unknow char: " << c << std::endl << std::endl;
       std::cout << "Usage: " << argv[0] << " [OPTIONS]... [LEVELFILE]" << std::endl;
       std::cout <<
 	"\n"
@@ -403,7 +405,7 @@ PingusMain::init_pingus()
 }
 
 void
-PingusMain::load_resources(string filename)
+PingusMain::load_resources(std::string filename)
 {
   // Loading all resources
   {
@@ -503,11 +505,12 @@ PingusMain::get_filenames()
   if (System::exist(pingus_datafile)) 
     {
       if (verbose > 1)
-	cout << "Pingus Datadir exist, all looks ok" << std::endl;
+	std::cout << "Pingus Datadir exist, all looks ok" << std::endl;
     } 
   else 
     {
-      std::cout << "Pingus Datafile: " << pingus_datafile << endl << std::endl;
+      std::cout << "Pingus Datafile: " << pingus_datafile
+				<< std::endl << std::endl;
       std::cout << "Couldn't find `global.dat', please set the enviroment variable\n"
 	   << "PINGUS_DATADIR to the path of the file `pingus.dat' or use the\n"
 	   << "-p option." << std::endl;
@@ -563,7 +566,7 @@ PingusMain::init(int argc, char* argv[])
     {
       if (sscanf(resolution.c_str(), "%d%c%d", &screen_width, &c, &screen_height) != 3) 
 	{
-	  cout << "Resolution std::string is wrong, it should be like: \n" 
+	  std::cout << "Resolution std::string is wrong, it should be like: \n" 
 	       << "\"640x480\" or \"800x600\"" << std::endl;
 	  exit(EXIT_FAILURE);
 	}
@@ -585,7 +588,7 @@ PingusMain::init_clanlib()
   if (sound_enabled || music_enabled) 
     {
       if (verbose)
-	cout << "Init ClanSound" << std::endl;
+	std::cout << "Init ClanSound" << std::endl;
       //CL_System::init_sound();
     }
 
@@ -709,11 +712,11 @@ PingusMain::main(int argc, char** argv)
     std::cout << "Error caught from Pingus: " << err.message << std::endl;
   }
 
-  catch (bad_alloc a) {
+  catch (std::bad_alloc a) {
     std::cout << "Pingus: Out of memory!" << std::endl;
   }
 
-  catch (exception a) {
+  catch (std::exception a) {
     std::cout << "Pingus: Standard exception caught!:\n" << a.what() << std::endl;
   }
 

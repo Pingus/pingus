@@ -1,4 +1,4 @@
-//  $Id: SurfaceSelector.hh,v 1.2 2000/03/20 18:55:26 grumbel Exp $
+//  $Id: SurfaceSelector.hh,v 1.3 2000/04/24 13:15:43 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,16 +33,16 @@ class SurfaceSelector
 {
 private:
   CL_Font* font;
-  vector<surface_obj>* sur_list;
+  std::vector<surface_obj>* sur_list;
   int y_of;
   int width;
   int height;
 
   void   draw();
   void scroll();
-  vector<surface_obj>::iterator get_current_obj();
+  std::vector<surface_obj>::iterator get_current_obj();
 public:
-  SurfaceSelector(vector<surface_obj>*);
+  SurfaceSelector(std::vector<surface_obj>*);
   ~SurfaceSelector();
 
   std::string select();

@@ -1,4 +1,4 @@
-//  $Id: PSMObj.cc,v 1.4 2000/02/12 20:53:45 grumbel Exp $
+//  $Id: PSMObj.cc,v 1.5 2000/04/24 13:15:42 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -54,7 +54,7 @@ PSMObj::duplicate()
 }
 
 void
-PSMObj::save(ofstream* plf, ofstream* psm)
+PSMObj::save(std::ofstream* plf, std::ofstream* psm)
 {
   if (type == surface_data::SOLID) {
     (*psm) << "solid : ";

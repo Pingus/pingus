@@ -1,4 +1,4 @@
-//  $Id: ThemeSelector.hh,v 1.4 2000/02/15 12:31:46 grumbel Exp $
+//  $Id: ThemeSelector.hh,v 1.5 2000/04/24 13:15:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,7 +35,7 @@ private:
   std::string label;
   CL_Font* font;
 public:
-  ListItem(string);
+  ListItem(std::string);
   void draw_offset(int x, int y);
   bool mouse_over();
 };
@@ -43,11 +43,11 @@ public:
 class ListBox
 {
 private:
-  vector<ListItem> items;
-  typedef vector<ListItem>::iterator ListIter;
+  std::vector<ListItem> items;
+  typedef std::vector<ListItem>::iterator ListIter;
 public:
   ListBox();
-  void add_item(string);
+  void add_item(std::string);
   void draw_offset(int x, int y);
 };
 
@@ -66,9 +66,9 @@ public:
   Event* event;
   
 private:
-  vector<AlphaButton*> theme;
-  vector<Theme*> themes;
-  vector<Theme*>::iterator current_theme;
+  std::vector<AlphaButton*> theme;
+  std::vector<Theme*> themes;
+  std::vector<Theme*>::iterator current_theme;
 
   CL_Font* title_font;
   CL_Font* theme_font;

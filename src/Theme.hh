@@ -1,4 +1,4 @@
-//  $Id: Theme.hh,v 1.3 2000/02/11 16:58:26 grumbel Exp $
+//  $Id: Theme.hh,v 1.4 2000/04/24 13:15:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,18 +38,18 @@ private:
   CL_Font*    title;
   int      accessible_levels;
   int      current_level;
-  vector<std::string> levels;
-  vector<std::string> levelnames;
+  std::vector<std::string> levels;
+  std::vector<std::string> levelnames;
   std::string   status_file;
 public:
   Theme();
-  Theme(string);
+  Theme(std::string);
   ~Theme();
   
   void next_level();
   void previous_level();
-  void load(string);
-  void load_status(string);
+  void load(std::string);
+  void load_status(std::string);
   void load_levels();
   void draw_title();
   void play();

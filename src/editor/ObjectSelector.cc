@@ -1,4 +1,4 @@
-//  $Id: ObjectSelector.cc,v 1.10 2000/03/19 00:04:53 grumbel Exp $
+//  $Id: ObjectSelector.cc,v 1.11 2000/04/24 13:15:42 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,6 +27,8 @@
 
 #include "ObjectSelector.hh"
 
+using namespace std;
+
 ObjectSelector::ObjectSelector()
 {
   last_object = "GroundPieces/";
@@ -50,8 +52,8 @@ ObjectSelector::get_obj(int x_off, int y_off)
 EditorObj* 
 ObjectSelector::get_trap()
 {
-  vector<std::string> traps;
-  vector<std::string>::iterator current_trap;
+  vector<string> traps;
+  vector<string>::iterator current_trap;
   int j = 0;
   trap_data trap;
   bool have_name = false;
@@ -75,9 +77,9 @@ ObjectSelector::get_trap()
       font->print_left(20, 20, "Select a trap");
       j = -3;
       
-      for(std::vector<std::string>::iterator i = traps.begin(); i != traps.end(); i++, j += font->get_height())
+      for(vector<string>::iterator i = traps.begin(); i != traps.end(); i++, j += font->get_height())
 	{
-	  if (verbose) std::cout << "Trap Name: " << *i << std::endl;
+	  if (verbose) cout << "Trap Name: " << *i << endl;
 
 	  if (i == current_trap)
 	    CL_Display::fill_rect(10, 150 + j, 200, 170 + j,
@@ -107,7 +109,7 @@ ObjectSelector::get_trap()
 	  have_name = true;
 	  break;
 	default:
-	  std::cout << "ObjectSelector:get_trap(): Unknow key pressed" << std::endl;
+	  cout << "ObjectSelector:get_trap(): Unknow key pressed" << endl;
 	}
     }
  
@@ -119,18 +121,18 @@ ObjectSelector::get_trap()
 EditorObj*
 ObjectSelector::get_groundpiece()
 {
-  std::string str;
+  string str;
   CL_ResourceManager* res = PingusResource::get("global.dat");
     
   surface_data data;
   data.x_pos = CL_Mouse::get_x() - x_offset;
   data.y_pos = CL_Mouse::get_y() - y_offset;
 
-  list<std::string>* liste = res->get_resources_of_type("surface");
+  list<string>* liste = res->get_resources_of_type("surface");
   surface_obj sur_obj;
   vector<surface_obj> sur_list;
 
-  for(std::list<std::string>::iterator i = liste->begin(); i != liste->end(); i++)
+  for(list<string>::iterator i = liste->begin(); i != liste->end(); i++)
     {
       sur_obj.sur = CL_Surface::load(i->c_str(), res);
       cout << "Loading: " << *i  << endl;
@@ -150,7 +152,7 @@ ObjectSelector::get_groundpiece()
 EditorObj*
 ObjectSelector::get_hotspot()
 {
-  std::string str;
+  string str;
   hotspot_data data;
   data.x_pos = CL_Mouse::get_x() - x_offset;
   data.y_pos = CL_Mouse::get_y() - y_offset;
@@ -212,7 +214,7 @@ ObjectSelector::get_entrance()
 	  break;
 
 	default:
-	  if (verbose) std::cout << "unknow keypressed" << std::endl;
+	  if (verbose) cout << "unknow keypressed" << endl;
 	}
     }
   
@@ -222,7 +224,7 @@ ObjectSelector::get_entrance()
 EditorObj* 
 ObjectSelector::get_exit()
 {
-  std::string str;
+  string str;
   exit_data data;
   data.x_pos = CL_Mouse::get_x() - x_offset;
   data.y_pos = CL_Mouse::get_y() - y_offset;
@@ -278,7 +280,7 @@ ObjectSelector::select_obj_type()
     }
 }
 
-std::string
+string
 ObjectSelector::select_surface(vector<surface_obj>& sur_list)
 {
   SurfaceSelector sur_selector(&sur_list);
@@ -301,14 +303,14 @@ ObjectSelector::read_key()
       if (keys.peek_key().state != CL_Key::NoKey) 
 	{
 	  key = keys.get_key();
-	  std::cout << "key: " << key.ascii << std::endl;
+	  cout << "key: " << key.ascii << endl;
 	  return key.id;
 	}
     }
 }
 
 string
-ObjectSelector::read_string(std::string description, std::string def_str)
+ObjectSelector::read_string(string description, string def_str)
 {
   StringReader reader(description, def_str);
 
@@ -319,6 +321,9 @@ ObjectSelector::read_string(std::string description, std::string def_str)
 /*
 
 $Log: ObjectSelector.cc,v $
+Revision 1.11  2000/04/24 13:15:42  grumbel
+Added  Felix Natter's namespace clean ups
+
 Revision 1.10  2000/03/19 00:04:53  grumbel
 Added a graphical selector for surfaces, no typing required :-)
 

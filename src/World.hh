@@ -1,4 +1,4 @@
-//  $Id: World.hh,v 1.7 2000/03/16 21:38:15 grumbel Exp $
+//  $Id: World.hh,v 1.8 2000/04/24 13:15:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -58,13 +58,13 @@ private:
   bool exit_world;
   int  exit_time;  
 
-  vector<WorldObj*> world_obj_bg;
-  vector<WorldObj*> world_obj_fg;
-  vector<Entrance*> entrance;
-  vector<Exit*>     exits;
-  vector<Hotspot*>  hotspot;
-  vector<Liquid*>   liquid;
-  vector<Trap*>     traps;
+  std::vector<WorldObj*> world_obj_bg;
+  std::vector<WorldObj*> world_obj_fg;
+  std::vector<Entrance*> entrance;
+  std::vector<Exit*>     exits;
+  std::vector<Hotspot*>  hotspot;
+  std::vector<Liquid*>   liquid;
+  std::vector<Trap*>     traps;
 
   ParticleHolder particle;
   CL_InputSourceProvider* datafile;

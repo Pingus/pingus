@@ -1,4 +1,4 @@
-// $Id: PSMObj.hh,v 1.3 2000/02/11 16:58:28 grumbel Exp $
+// $Id: PSMObj.hh,v 1.4 2000/04/24 13:15:42 grumbel Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,7 +32,7 @@ public:
   PSMObj(const PSMObj&);
   virtual ~PSMObj();
 
-  virtual void save(ofstream* plf, ofstream* psm);
+  virtual void save(std::ofstream* plf, std::ofstream* psm);
   EditorObj*   duplicate();
   std::string obj_type() { return "Groundpiece"; };
 };

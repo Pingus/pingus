@@ -1,4 +1,4 @@
-//  $Id: ActionHolder.hh,v 1.4 2000/02/11 21:26:37 grumbel Exp $
+//  $Id: ActionHolder.hh,v 1.5 2000/04/24 13:15:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,18 +26,18 @@
 #include "PinguAction.hh"
 
 struct ActionCounter {
-  vector<PinguAction*> action;
+  std::vector<PinguAction*> action;
   int   number;
 };
 
 class ActionHolder
 {
 private:
-  vector<std::string>   action_name;
-  map<std::string, ActionCounter> action;
+  std::vector<std::string>   action_name;
+  std::map<std::string, ActionCounter> action;
 
-  static vector<PinguAction*> uactions;
-  static map<std::string, ActionCounter> uaction_buffer;
+  static std::vector<PinguAction*> uactions;
+  static std::map<std::string, ActionCounter> uaction_buffer;
 
   static PinguAction* translate_action(const std::string&);
 public:

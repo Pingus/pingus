@@ -1,4 +1,4 @@
-// $Id: EditorObj.cc,v 1.4 2000/02/15 13:09:51 grumbel Exp $
+// $Id: EditorObj.cc,v 1.5 2000/04/24 13:15:42 grumbel Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,8 @@
 #include "PSMObj.hh"
 #include "PLFObj.hh"
 #include "EditorObj.hh"
+
+using namespace std;
 
 EditorObj::EditorObj()
 {
@@ -164,6 +166,9 @@ EditorObj::obj_type()
   
 /*
 $Log: EditorObj.cc,v $
+Revision 1.5  2000/04/24 13:15:42  grumbel
+Added  Felix Natter's namespace clean ups
+
 Revision 1.4  2000/02/15 13:09:51  grumbel
 Misc cleanups, changes some messages to only appear when verbose > 0
 

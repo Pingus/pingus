@@ -1,4 +1,4 @@
-//  $Id: bridger.cc,v 1.10 2000/04/10 21:23:03 grumbel Exp $
+//  $Id: bridger.cc,v 1.11 2000/04/24 13:15:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,8 @@
 
 #include <cassert>
 #include "bridger.hh"
+
+using namespace std;
 
 Bridger::Bridger()
 {

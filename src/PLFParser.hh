@@ -1,4 +1,4 @@
-//  $Id: PLFParser.hh,v 1.4 2000/03/10 18:54:12 grumbel Exp $
+//  $Id: PLFParser.hh,v 1.5 2000/04/24 13:15:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -49,22 +49,22 @@ private:
   std::string get_cast(void);       // Return the cast, else ""
   void   jump_after(char);     // Jump to the next token, after char
   void   jump(void);           // Jump over spaces to the next token
-  void   syntax_error(string); // Do a clean shutdown on a syntax error
+  void   syntax_error(std::string); // Do a clean shutdown on a syntax error
   void   parse(void);          // Parse the opened file
-  void  open(string);          // Open the file
+  void  open(std::string);          // Open the file
 
   // Some virtual functions
   // Put the retrieved value in the correct struct
   virtual void set_value(std::string valueid,
 			 std::string cast,
 			 std::string value) = 0; 
-  virtual void set_group_start(string) = 0;
+  virtual void set_group_start(std::string) = 0;
   virtual void set_group_end(void) = 0;
 public:                        //
   PLFParser();
   virtual ~PLFParser();        // Close the file
 
-  void init(string);           // Init the PLFParser and start parsing
+  void init(std::string);           // Init the PLFParser and start parsing
 };
 
 #endif
