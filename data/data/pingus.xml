@@ -112,14 +112,14 @@
 
     <section name="climber">
       <sprite name="left">
-        <translation origin="bottom_center" x="0" y="2"/>
+        <translation origin="bottom_center" x="16" y="2"/>
         <image file="../images/pingus/climber.png">
           <grid pos="0,0" size="32,32" array="8,1"/>
         </image>
       </sprite>
 
       <sprite name="right">
-        <translation origin="bottom_center" x="0" y="2"/>
+        <translation origin="bottom_center" x="-14" y="2"/>
         <image file="../images/pingus/climber.png">
           <grid pos="0,32" size="32,32" array="8,1"/>
         </image>
@@ -128,12 +128,14 @@
 
     <section name="faller">
       <sprite name="left">
+        <translation origin="bottom_center" x="0" y="2"/>
         <image file="../images/pingus/faller.png">
           <grid pos="0,0" size="32,32" array="8,1"/>
         </image>
       </sprite>
 
       <sprite name="right">
+        <translation origin="bottom_center" x="0" y="2"/>
         <image file="../images/pingus/faller.png">
           <grid pos="0,0" size="32,32" array="8,1"/>
         </image>
@@ -193,6 +195,7 @@
     <section name="bridger_walk">
       <sprite name="left">
         <animation speed="66" loop="no" />
+        <translation origin="bottom_center" x="0" y="2"/>
         <image file="../images/pingus/bridger_walk.png">
           <grid pos="0,0" size="32,32" array="4,1"/>
         </image>
@@ -200,6 +203,7 @@
       
       <sprite name="right">
         <animation speed="66" loop="no" />
+        <translation origin="bottom_center" x="0" y="2"/>
         <image file="../images/pingus/bridger_walk.png">
           <grid pos="0,32" size="32,32" array="4,1"/>
         </image>
@@ -325,6 +329,7 @@
     <section name="exit">
       <sprite name="left">
         <animation speed="60" loop="no" />
+        <translation origin="bottom_center" x="0" y="2"/>
         <image file="../images/pingus/exit.png">
           <grid pos="0,0" size="32,32" array="9,1"/>
         </image>
@@ -332,6 +337,7 @@
 
       <sprite name="right">
         <animation speed="60" loop="no" />
+        <translation origin="bottom_center" x="0" y="2"/>
         <image file="../images/pingus/exit.png">
           <grid pos="0,32" size="32,32" array="9,1"/>
         </image>
@@ -340,12 +346,14 @@
 
     <section name="drownfall">
       <sprite name="left">
+        <translation origin="bottom_center" x="0" y="2"/>
         <image file="../images/pingus/drownfall.png">
           <grid pos="0,0" size="32,32" array="15,1"/>
         </image>
       </sprite>
 
       <sprite name="right">
+        <translation origin="bottom_center" x="0" y="2"/>
         <image file="../images/pingus/drownfall.png">
           <grid pos="0,32" size="32,32" array="15,1"/>
         </image>
@@ -367,12 +375,14 @@
     
     <section name="waiter">
       <sprite name="left">
+        <translation origin="bottom_center" x="0" y="2"/>
         <image file="../images/pingus/waiter.png">
           <grid pos="0,0" size="32,32" array="6,1"/>
         </image>
       </sprite>
 
       <sprite name="right">
+        <translation origin="bottom_center" x="0" y="2"/>
         <image file="../images/pingus/waiter.png">
           <grid pos="0,0" size="32,32" array="6,1"/>
         </image>
