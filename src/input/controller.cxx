@@ -1,4 +1,4 @@
-//  $Id: controller.cxx,v 1.22 2002/09/10 21:03:32 torangan Exp $
+//  $Id: controller.cxx,v 1.23 2002/09/11 13:16:45 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -54,11 +54,11 @@ namespace Input {
       
     xmlNodePtr cur = doc->ROOT;
     
-    if (!cur || XMLhelper::equal_str(cur->name, "pingus-controller") != 0)
+    if (!cur || !XMLhelper::equal_str(cur->name, "pingus-controller"))
       PingusError::raise("Controller: invalid config file <" + configfile + ">");
     cur = XMLhelper::skip_blank(cur->children);
 
-    if (!cur || XMLhelper::equal_str(cur->name, "controller-config") != 0)
+    if (!cur || !XMLhelper::equal_str(cur->name, "controller-config"))
       PingusError::raise("Controller: invalid config file <" + configfile + ">");
     cur = XMLhelper::skip_blank(cur->children);
 	       
