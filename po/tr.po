@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Pingus 0.5.0\n"
-"POT-Creation-Date: 2003-04-15 15:16+0200\n"
-"PO-Revision-Date: 2001-12-04 22:50+02:00\n"
+"POT-Creation-Date: 2003-04-15 17:27+0200\n"
+"PO-Revision-Date: 2003-04-15 17:28+0200\n"
 "Last-Translator: Çaðrý Çöltekin <cagri@metu.edu.tr>\n"
 "Language-Team: Giray Devlet <giray@devlet.cc>, Caðrý Çöltekin <cagri@metu."
 "edu.tr>\n"
@@ -59,39 +59,38 @@ msgid "-Story"
 msgstr "-Öykü"
 
 #: src/credits.cxx:94
-#, fuzzy
 msgid "-Translation"
-msgstr "-Çeviri (Almanca)"
+msgstr "-Çeviri"
 
-#: src/credits.cxx:100
+#: src/credits.cxx:103
 msgid "-Special"
 msgstr "-Özel"
 
-#: src/credits.cxx:101
+#: src/credits.cxx:104
 msgid "-Thanks to"
 msgstr "-Þükranlarýmýz"
 
-#: src/credits.cxx:135
+#: src/credits.cxx:138
 msgid "_And a very Special Thanks"
 msgstr "_Ve Özgür Yazýlýma"
 
-#: src/credits.cxx:136
+#: src/credits.cxx:139
 msgid "_to all the people who"
 msgstr "_katkýda bulunan"
 
-#: src/credits.cxx:137
+#: src/credits.cxx:140
 msgid "_contribute to"
 msgstr "_herkese..."
 
-#: src/credits.cxx:138
+#: src/credits.cxx:141
 msgid "_Free Software!"
 msgstr "_Teþekkürler!"
 
-#: src/credits.cxx:144
+#: src/credits.cxx:147
 msgid "_Thank you for"
 msgstr "_Oynadýðýnýz için"
 
-#: src/credits.cxx:145
+#: src/credits.cxx:148
 msgid "_playing!"
 msgstr "_teþekkürler!"
 

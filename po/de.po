@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Pingus 0.6.0\n"
-"POT-Creation-Date: 2003-04-15 15:16+0200\n"
-"PO-Revision-Date: 2003-04-15 17:18+0200\n"
+"POT-Creation-Date: 2003-04-15 17:27+0200\n"
+"PO-Revision-Date: 2003-04-15 17:31+0200\n"
 "Last-Translator: Ingo Ruhnke <grumbel@gmx.de>\n"
 "Language-Team: David Philippi <david@torangan.de>, Ingo Ruhnke <grumbel@gmx."
 "de>, Giray Devlet <giray@devlet.cc>\n"
@@ -59,39 +59,38 @@ msgid "-Story"
 msgstr "-Geschichte"
 
 #: src/credits.cxx:94
-#, fuzzy
 msgid "-Translation"
-msgstr "-Übersetzung (deutsch)"
+msgstr "-Übersetzung"
 
-#: src/credits.cxx:100
+#: src/credits.cxx:103
 msgid "-Special"
 msgstr "-Besonderen"
 
-#: src/credits.cxx:101
+#: src/credits.cxx:104
 msgid "-Thanks to"
 msgstr "-Dank an"
 
-#: src/credits.cxx:135
+#: src/credits.cxx:138
 msgid "_And a very Special Thanks"
 msgstr "_Und einen besonderen Dank"
 
-#: src/credits.cxx:136
+#: src/credits.cxx:139
 msgid "_to all the people who"
 msgstr "_an alle Leute die"
 
-#: src/credits.cxx:137
+#: src/credits.cxx:140
 msgid "_contribute to"
 msgstr "_an Freier Software"
 
-#: src/credits.cxx:138
+#: src/credits.cxx:141
 msgid "_Free Software!"
 msgstr "_mitarbeiten!"
 
-#: src/credits.cxx:144
+#: src/credits.cxx:147
 msgid "_Thank you for"
 msgstr "_Dankeschön fürs"
 
-#: src/credits.cxx:145
+#: src/credits.cxx:148
 msgid "_playing!"
 msgstr "_spielen!"
 
@@ -152,7 +151,6 @@ msgid "F12 - make screenshot"
 msgstr "F12 - Screenshot erstellen"
 
 #: src/editor/editor_help_screen.cxx:60
-#, fuzzy
 msgid "Home - increase object size"
 msgstr "Einfg - Objekt vergrößern"
 
@@ -579,7 +577,6 @@ msgid "Maybe you would feel more at home playing Quake."
 msgstr "Möglicherweise wäre es besser Quake zu spielen?"
 
 #: src/level_result.cxx:118
-#, fuzzy
 msgid ""
 "Maybe this level calls for a different stratagy. Like attempting to save "
 "them, for example."
@@ -822,7 +819,7 @@ msgstr ""
 
 #: src/pingus_main.cxx:519
 msgid "Uses the controller given in FILE"
-msgstr ""
+msgstr "Controller aus FILE benutzen"
 
 #: src/pingus_main.cxx:521
 msgid "Debugging and experimental stuff:"
@@ -879,7 +876,7 @@ msgstr "Reduziert die CPU Belastung durch Verwendung von sleep()"
 
 #: src/pingus_main.cxx:535
 msgid "Demo playing and recording:"
-msgstr ""
+msgstr "Demo aufzeichnung und wiedergabe:"
 
 #: src/pingus_main.cxx:536
 msgid "FILE     "
