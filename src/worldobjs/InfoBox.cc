@@ -1,4 +1,4 @@
-//  $Id: InfoBox.cc,v 1.1 2001/11/30 20:22:21 grumbel Exp $
+//  $Id: InfoBox.cc,v 1.2 2001/12/02 21:43:48 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,8 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "../PinguHolder.hh"
+#include "../World.hh"
 #include "../PingusResource.hh"
 #include "InfoBox.hh"
 
@@ -77,7 +79,7 @@ InfoBoxData::create(xmlDocPtr doc, xmlNodePtr cur)
 void 
 InfoBoxData::write_xml(ofstream* xml)
 {
-  (*xml) << "  <worldobj type=\"infobox\">";
+  (*xml) << "  <worldobj type=\"infobox\">\n";
   XMLhelper::write_position_xml (xml, pos);
   
   (*xml) << "   <info-text>" << info_text << "</info-text>\n" 
@@ -86,7 +88,8 @@ InfoBoxData::write_xml(ofstream* xml)
 
 InfoBox::InfoBox (const InfoBoxData& data)
   : InfoBoxData (data),
-    sprite ("infobox", "worldobjs")
+    sprite ("infobox", "worldobjs"), 
+    is_open (false)
 {
   sprite.set_align_center_bottom ();
   font = PingusResource::load_font("Fonts/pingus_small", "fonts");
@@ -95,18 +98,41 @@ InfoBox::InfoBox (const InfoBoxData& data)
 void
 InfoBox::draw_offset (int x, int y, float s)
 {
-  sprite.put_screen (pos + CL_Vector (x, y));
-
   int x_pos = int(pos.x) + x;
-  int y_pos = int(pos.y) + y - 60;
+  int y_pos = int(pos.y) + y - 100;
 
-  font->print_center (x_pos, y_pos, info_text.c_str ()); 
+  if (is_open)
+    {
+      int width = font->get_text_width (info_text.c_str ());
+      int border = 6;
+      CL_Display::draw_line (pos.x + x, pos.y + y,
+			     x_pos, y_pos, 0.0f, 1.0f, 0.0f, 1.0f);
+      sprite.put_screen (pos + CL_Vector (x, y));    
+      CL_Display::fill_rect (x_pos - width/2 - border, y_pos - border,
+			     x_pos + width/2 + border, y_pos + font->get_height () + border,
+			     0.0, 0.0, 0.0, 1.0);
+      font->print_center (x_pos, y_pos, info_text.c_str ()); 
+    }
+  else
+    {
+      sprite.put_screen (pos + CL_Vector (x, y));
+    }
 }
 
 void
 InfoBox::update (float delta)
 {
   sprite.update (delta);
+
+  PinguHolder* holder = world->get_pingu_p();
+  for (PinguIter pingu = holder->begin (); pingu != holder->end (); ++pingu)
+    {
+      if ((*pingu)->is_inside (int(pos.x - 16), int(pos.y - 32),
+			       int(pos.x + 16), int(pos.y)))
+	{
+	  is_open = true;
+	}
+    }
 }
 
 EditorInfoBox::EditorInfoBox(const InfoBoxData& data)

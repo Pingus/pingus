@@ -1,4 +1,4 @@
-//  $Id: InfoBox.hh,v 1.1 2001/11/30 20:22:21 grumbel Exp $
+//  $Id: InfoBox.hh,v 1.2 2001/12/02 21:43:48 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,6 +33,7 @@ public:
 
   std::string info_text;
   CL_Vector pos;
+  CL_Vector text_pos;
 
   void write_xml(ofstream* xml);  
   boost::shared_ptr<WorldObj> create_WorldObj();
@@ -46,6 +47,8 @@ class InfoBox : public InfoBoxData,
 private:
   Sprite sprite;
   CL_Font* font;
+  bool is_open;
+
 public:
   InfoBox (const InfoBoxData& data);
 

@@ -1,4 +1,4 @@
-//  $Id: Display.cc,v 1.8 2001/04/15 15:41:32 grumbel Exp $
+//  $Id: Display.cc,v 1.9 2001/12/02 21:43:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -91,6 +91,7 @@ Display::flip_display(bool sync)
     }
   
   CL_Display::flip_display(sync);
+  //CL_Display::put_display (CL_Rect (320, 0, 800, 600));
 }
 
 void

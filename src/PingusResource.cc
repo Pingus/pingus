@@ -1,4 +1,4 @@
-//  $Id: PingusResource.cc,v 1.21 2001/11/22 20:08:34 grumbel Exp $
+//  $Id: PingusResource.cc,v 1.22 2001/12/02 21:43:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #include <iostream>
 #include <ClanLib/png.h>
 
+#include "PathManager.hh"
 #include "PingusError.hh"
 #include "globals.hh"
 #include "algo.hh"
@@ -91,7 +92,7 @@ PingusResource::get(const std::string& arg_filename)
       std::string res_filename = "data/" + filename;
 
       // FIXME: Memory hole... 
-      res_manager = new CL_ResourceManager(res_filename.c_str(),
+      res_manager = new CL_ResourceManager(path_manager.complete (res_filename.c_str()),
       					   /* is_datafile = */ use_datafile);
       
       resource_map[filename] = res_manager;

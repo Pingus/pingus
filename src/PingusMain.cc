@@ -1,4 +1,4 @@
-//   $Id: PingusMain.cc,v 1.43 2001/11/30 20:22:20 grumbel Exp $
+//   $Id: PingusMain.cc,v 1.44 2001/12/02 21:43:47 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -199,6 +199,7 @@ PingusMain::check_args(int argc, char* argv[])
     {"use-scriptfile",    no_argument,       0, 151},
     {"max-cpu-usage",     no_argument,       0, 153},
     {"frame-skip",        required_argument, 0, 154},
+    {"broken-clres-handling", no_argument,    0, 155},
 #ifdef HAVE_LIBCLANGL
     {"use-opengl",        no_argument,       0, 'G'},
 #endif
@@ -477,6 +478,10 @@ For more information about these matters, see the files named COPYING.\
       sscanf(optarg, "%f", &frame_skip);
       break;
 
+    case 155:
+      broken_clanlib_resource_handling = true;
+      break;
+
     default:
       if (verbose) std::cout << _("Unknow char: ") << c << std::endl << std::endl;
       std::cout << _("Usage: ") << argv[0] << _(" [OPTIONS]... [LEVELFILE]") << std::endl;
@@ -522,7 +527,9 @@ For more information about these matters, see the files named COPYING.\
 	"   -i, --enable-gimmicks    Enable some buggy development stuff\n"
 	"   -S, --sound-specs FILE   Use files mentioned in FILE\n"
 	"   --tile-size INT          Set the size of the map tiles (default: 32)\n"
-	
+	"   --broken-clres-handling  Assume broken resource handling inside ClanLib and\n"
+	"                            workaround it (needed for ClanLib < 0.5.2)\n"
+
 	"\nDemo playing and recording:\n"
 	"   -r, --record-demo FILE   Record a demo session to FILE\n"
 	"   -p, --play-demo FILE     Plays a demo session from FILE\n"
@@ -649,7 +656,12 @@ PingusMain::get_filenames()
 #endif /* !WIN32 */
  
   // FIXME: Workaround for ClanLib-0.5.0 bug
-  //System::change_dir (path_manager.get_base_path ());
+  if (broken_clanlib_resource_handling)
+    {
+      System::change_dir (path_manager.get_base_path ());
+    }
+
+  std::cout << "BasePath: " << path_manager.get_base_path () << std::endl;
 
   // First we try to open the file which was given, if that is not
   // there then we try again with filename+".plf". If still no success
