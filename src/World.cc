@@ -1,4 +1,4 @@
-//  $Id: World.cc,v 1.18 2000/05/24 15:45:02 grumbel Exp $
+//  $Id: World.cc,v 1.19 2000/05/26 18:13:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -74,9 +74,10 @@ World::~World()
   delete map;
   delete background;
 
-  for(vector<Exit*>::size_type i = 0; i < exits.size(); ++i) 
-    delete exits[i];
+  for(vector<Exit*>::iterator i = exits.begin(); i != exits.end(); i++)
+    delete *i;
   
+  // FIXME: Replace this with iterators
   for(vector<Entrance*>::size_type i = 0; i < entrance.size(); ++i) 
     delete entrance[i];
  
