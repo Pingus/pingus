@@ -326,7 +326,7 @@ WorldMap::on_primary_button_press(int x, int y)
         << "      <z-pos>0</z-pos>\n"
         << "    </position>\n"
         << "  </dot>\n"
-        << "  <levelname>level10.plf</levelname>\n"
+        << "  <levelname>level10.pingus</levelname>\n"
         << "</leveldot>\n" << std::endl;
     }
 

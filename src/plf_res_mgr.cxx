@@ -98,7 +98,7 @@ PLFResMgr::load_plf_from_filename(const std::string& filename)
 PLFHandle
 PLFResMgr::load_plf(const std::string& res_name)
 {
-  return load_plf_raw(res_name, path_manager.complete("levels/" + res_name + ".plf"));
+  return load_plf_raw(res_name, path_manager.complete("levels/" + res_name + ".pingus"));
 }
 
 void PLFResMgr::free_plf_map()

@@ -614,10 +614,10 @@ EditorEvent::editor_save_level_as()
 
   if (!str.empty())
     {
-      if (str.substr(str.size() - 4) ==  ".plf")
+      if (str.substr(str.size() - 7) ==  ".pingus")
 	object_manager->save_level_xml(str);
       else
-	object_manager->save_level_xml(str + ".plf");
+	object_manager->save_level_xml(str + ".pingus");
 
       editor->last_level = str;
     }

@@ -101,7 +101,7 @@ public:
 
   @param filename the filename of the new map, filename must be
   @param filename relative to the worldmap directory
-  @param filename Example: "volcano.plf" */
+  @param filename Example: "volcano.pingus" */
   void change_map (const std::string& filename, NodeId node);
 
   /** Singleton access function */
