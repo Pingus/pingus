@@ -7,6 +7,8 @@ section Textures
 
 //	industrial_anim       = ../images/textures/industrial-anim.jpg (type=surface, x=0, y=0, width=400, height=600, array=15x1);
 
+	clouds2          = ../images/textures/clouds2.jpg  (type=surface);
+	clouds3          = ../images/textures/clouds3.png  (type=surface);
 	clouds          = ../images/textures/clouds.jpg  (type=surface, x=0, y=0, width=256, height=480);
 	crystal         = ../images/textures/crystal.jpg  (type=surface, x=0, y=0, width=169, height=286);
 	stone		= ../images/textures/stones.png (type=surface, x=0, y=0, width=256, height=256);

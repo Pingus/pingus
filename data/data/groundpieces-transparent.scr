@@ -58,4 +58,15 @@ section misc
         weed2 = ../images/groundpieces/transparent/misc/weed2.png (type=surface);
 }
 
+section snow
+{
+        grass1 = ../images/groundpieces/transparent/snow/grass1.png (type=surface);
+        grass2 = ../images/groundpieces/transparent/snow/grass2.png (type=surface);
+        grass3 = ../images/groundpieces/transparent/snow/grass3.png (type=surface);
+        grass4 = ../images/groundpieces/transparent/snow/grass4.png (type=surface);
+        grass5 = ../images/groundpieces/transparent/snow/grass5.png (type=surface);
+        plant1 = ../images/groundpieces/transparent/snow/plant1.png (type=surface);
+        plant2 = ../images/groundpieces/transparent/snow/plant2.png (type=surface);
+}
+
 // EOF //

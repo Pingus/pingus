@@ -263,15 +263,22 @@ section snow
 {
         block1 = ../images/groundpieces/ground/snow/block1.png (type=surface);
         block2 = ../images/groundpieces/ground/snow/block2.png (type=surface);
+        block3 = ../images/groundpieces/ground/snow/block3.png (type=surface);
+        block4 = ../images/groundpieces/ground/snow/block4.png (type=surface);
         cabin = ../images/groundpieces/ground/snow/cabin.png (type=surface);
         cabin_winter = ../images/groundpieces/ground/snow/cabin_winter.png (type=surface);
+        diablock1 = ../images/groundpieces/ground/snow/diablock1.png (type=surface);
+        diablock2 = ../images/groundpieces/ground/snow/diablock2.png (type=surface);
+        diablock3 = ../images/groundpieces/ground/snow/diablock3.png (type=surface);
         gpiece1 = ../images/groundpieces/ground/snow/gpiece1.png (type=surface);
         groundice = ../images/groundpieces/ground/snow/groundice.png (type=surface);
         ice1 = ../images/groundpieces/ground/snow/ice1.png (type=surface);
         ice2 = ../images/groundpieces/ground/snow/ice2.png (type=surface);
         iceblock1 = ../images/groundpieces/ground/snow/iceblock1.png (type=surface);
+        icepiece1 = ../images/groundpieces/ground/snow/icepiece1.png (type=surface);
         igloo = ../images/groundpieces/ground/snow/igloo.png (type=surface);
         piece1 = ../images/groundpieces/ground/snow/piece1.png (type=surface);
+        piece10 = ../images/groundpieces/ground/snow/piece10.png (type=surface);
         piece2 = ../images/groundpieces/ground/snow/piece2.png (type=surface);
         piece3 = ../images/groundpieces/ground/snow/piece3.png (type=surface);
         piece7 = ../images/groundpieces/ground/snow/piece7.png (type=surface);
