@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Pingus 0.5.0\n"
-"POT-Creation-Date: 2003-04-15 09:27+0200\n"
+"POT-Creation-Date: 2003-04-15 15:16+0200\n"
 "PO-Revision-Date: 2001-12-04 22:50+02:00\n"
 "Last-Translator: Çaðrý Çöltekin <cagri@metu.edu.tr>\n"
 "Language-Team: Giray Devlet <giray@devlet.cc>, Caðrý Çöltekin <cagri@metu."
@@ -59,7 +59,8 @@ msgid "-Story"
 msgstr "-Öykü"
 
 #: src/credits.cxx:94
-msgid "-Translation (german)"
+#, fuzzy
+msgid "-Translation"
 msgstr "-Çeviri (Almanca)"
 
 #: src/credits.cxx:100
@@ -151,7 +152,8 @@ msgid "F12 - make screenshot"
 msgstr "F12 - ekrangörüntüsü kaydet"
 
 #: src/editor/editor_help_screen.cxx:60
-msgid "Pos1 - increase object size"
+#, fuzzy
+msgid "Home - increase object size"
 msgstr "Pos1 - nesneyi büyüt"
 
 #: src/editor/editor_help_screen.cxx:61
@@ -579,8 +581,9 @@ msgid "Maybe you would feel more at home playing Quake."
 msgstr "Abisi, belki de Quake sana daha uygun bi oyun."
 
 #: src/level_result.cxx:118
+#, fuzzy
 msgid ""
-"Maybe this level calls for a different strategy. Like attempting to save "
+"Maybe this level calls for a different stratagy. Like attempting to save "
 "them, for example."
 msgstr ""
 "Tikkat tikkat! Stateji deðiþikliði! Bir daha sefere þunlarý kurtarmaya "
@@ -727,266 +730,274 @@ msgstr "| [... ve çökene kadar tekrar oyna ... ]"
 msgid "| Warning: Pingus recieved a SIGINT, exiting now."
 msgstr "| Uyarý: SIGINT sinyali aldýk, oyundan çýkýyoruz."
 
-#: src/pingus_main.cxx:305
+#: src/pingus_main.cxx:306
 msgid "Warning: Larger resolution than 800x600 will result in visual problems"
 msgstr "Dikkat: 800x600'den büyük çözünürlük görüntü sorunu yaratabilir"
 
-#: src/pingus_main.cxx:482
+#: src/pingus_main.cxx:487
 msgid "Unknow char: "
 msgstr "Bilinmeyen karakter: "
 
-#: src/pingus_main.cxx:483
+#: src/pingus_main.cxx:488
 msgid "Usage: "
 msgstr "Kullaným: "
 
-#: src/pingus_main.cxx:483
+#: src/pingus_main.cxx:488
 msgid " [OPTIONS]... [LEVELFILE]"
 msgstr "[SEÇENEKLER]... [SEVÝYE DOSYASI]"
 
-#: src/pingus_main.cxx:486
+#: src/pingus_main.cxx:491
 msgid "Options:"
 msgstr "Seçenekler:"
 
-#: src/pingus_main.cxx:488
+#: src/pingus_main.cxx:493
 msgid "Set the resolution for pingus (default: 800x600)"
 msgstr "Pingus çözünürlüðünü ayarla (öntanýlý: 640x480)"
 
-#: src/pingus_main.cxx:489
+#: src/pingus_main.cxx:494
 msgid "Displays this help"
 msgstr "Bu yardým ekranýný göster"
 
-#: src/pingus_main.cxx:490
+#: src/pingus_main.cxx:495
 msgid "Disable intro"
 msgstr "Intoroyu kapat"
 
-#: src/pingus_main.cxx:492
+#: src/pingus_main.cxx:497
 msgid "Use OpenGL"
 msgstr "OpenGL kullan"
 
 # FIXME: needs a better translation
-#: src/pingus_main.cxx:495
+#: src/pingus_main.cxx:500
 msgid "Start in Window Mode"
 msgstr "Pencerede baþlat"
 
-#: src/pingus_main.cxx:496
+#: src/pingus_main.cxx:501
 msgid "Start in Fullscreen"
 msgstr "Tümekran baþlat"
 
-#: src/pingus_main.cxx:500
+#: src/pingus_main.cxx:505
 msgid "FILE      "
 msgstr "DOSYA     "
 
-#: src/pingus_main.cxx:500
+#: src/pingus_main.cxx:505
 msgid "Load a custom level from FILE"
 msgstr "DOSYAdan özel seviye yükle"
 
-#: src/pingus_main.cxx:501
+#: src/pingus_main.cxx:506
 msgid "FILE        "
 msgstr "DOSYA       "
 
 # worldmap = ??
-#: src/pingus_main.cxx:501
+#: src/pingus_main.cxx:506
 msgid "Load a custom worldmap from FILE"
 msgstr "DOSYAdan özel worldmap yükle"
 
-#: src/pingus_main.cxx:502
+#: src/pingus_main.cxx:507
 msgid "Print some more messages to stdout, can be set"
 msgstr "Stdout'a ayrýntýlý bilgi ver, daha cok `v' ile"
 
-#: src/pingus_main.cxx:503
+#: src/pingus_main.cxx:508
 msgid "multible times to increase verbosity"
 msgstr "ayrýntý artýrýlabilinir."
 
-#: src/pingus_main.cxx:504
+#: src/pingus_main.cxx:509
 msgid "Prints version number and exit"
 msgstr "Sürümü ekrana basar ve çýkar"
 
-#: src/pingus_main.cxx:505
+#: src/pingus_main.cxx:510
 msgid "Launch the Level editor (experimental)"
 msgstr "Seviye editörü'nu baþlat (deneysel)"
 
-#: src/pingus_main.cxx:506
+#: src/pingus_main.cxx:511
 msgid "Disable automatic scrolling"
 msgstr "Automatik kaydýrmayý kapat"
 
-#: src/pingus_main.cxx:511
+#: src/pingus_main.cxx:516
 msgid "Don't read ~/.pingus/config"
 msgstr "~/.pingus/config dosyasýný okuma"
 
-#: src/pingus_main.cxx:512
+#: src/pingus_main.cxx:517
 msgid "FILE       "
 msgstr "DOSYA      "
 
-#: src/pingus_main.cxx:512
+#: src/pingus_main.cxx:517
 msgid "Read config from FILE (default: ~/.pingus/config)"
 msgstr "Ayarlarý `DOSYA'dan oku (öntanýmlý: ~/.pingus/config)"
 
-#: src/pingus_main.cxx:513
+#: src/pingus_main.cxx:518
 msgid "reduce CPU usage, might speed up the game on slower machines"
 msgstr "CPU kullanýmýný azalt. Bu yavaþ makinalarda oyunu hýzlandýrabilir"
 
-#: src/pingus_main.cxx:514
+#: src/pingus_main.cxx:519
+msgid "Uses the controller given in FILE"
+msgstr ""
+
+#: src/pingus_main.cxx:521
 msgid "Debugging and experimental stuff:"
 msgstr "Deneyseyl þeyler:"
 
-#: src/pingus_main.cxx:515
+#: src/pingus_main.cxx:522
 msgid "Enables some features, only interesting programmers"
 msgstr "Sadece programcýlariçin ilginç olan, bazý özellikleri çalýþtýrýr."
 
 # debug = ?
-#: src/pingus_main.cxx:516
+#: src/pingus_main.cxx:523
 msgid "Enable the output of debugging infos, possible"
 msgstr "Debug mesajlarýný ekrana bas"
 
-#: src/pingus_main.cxx:517
+#: src/pingus_main.cxx:524
 msgid "OPTION's are tiles, gametime, actions, sound, resources, gui,"
 msgstr "SEÇENEKLER: tiles, gametime, actions, sound, resources, gui."
 
-#: src/pingus_main.cxx:518
+#: src/pingus_main.cxx:525
 msgid "input, pathmgr"
 msgstr "input, pathmgr"
 
-#: src/pingus_main.cxx:519
+#: src/pingus_main.cxx:526
 msgid "Skip at least N frames, larger values speed the game up"
 msgstr "En az N resim karesini atla. Büyük N oyunu hýzlandýrýr"
 
-#: src/pingus_main.cxx:520
+#: src/pingus_main.cxx:527
 msgid "Skip at most N frames"
 msgstr "En fazla N resim karesi atla"
 
-#: src/pingus_main.cxx:521
+#: src/pingus_main.cxx:528
 msgid "Set both min and max frameskip to N"
 msgstr "Tam N resim karesi atla"
 
-#: src/pingus_main.cxx:522
+#: src/pingus_main.cxx:529
 msgid "Set the game speed (0=fastest, >0=slower)"
 msgstr "Oyun hýzýný ayarla (0=en hýzlý, >0=daha yavaþ)"
 
-#: src/pingus_main.cxx:523
+#: src/pingus_main.cxx:530
 msgid "Prints the fps to stdout"
 msgstr "stdout'a fps deðerini bas"
 
 # FIXME: better translation.
-#: src/pingus_main.cxx:524
+#: src/pingus_main.cxx:531
 msgid "Set the size of the map tiles (default: 32)"
 msgstr "Döþeme boyutunu ayarla (öntanýmlý: 32)"
 
-#: src/pingus_main.cxx:525
+#: src/pingus_main.cxx:532
 msgid "Disable some cpu intensive features"
 msgstr "Ýþlemci gerektiren bazý özellikleri kapat"
 
-#: src/pingus_main.cxx:526
+#: src/pingus_main.cxx:533
 msgid "Reduces the CPU usage by issuing sleep()"
 msgstr "CPU kullanýmýný sleep() kullanarak azalt"
 
-#: src/pingus_main.cxx:529
+#: src/pingus_main.cxx:535
+msgid "Demo playing and recording:"
+msgstr ""
+
+#: src/pingus_main.cxx:536
 msgid "FILE     "
 msgstr "DOSYA    "
 
-#: src/pingus_main.cxx:529
+#: src/pingus_main.cxx:536
 msgid "Plays a demo session from FILE"
 msgstr "DOSYA'dan bir demo oynat"
 
-#: src/pingus_main.cxx:531
+#: src/pingus_main.cxx:538
 msgid "Record demos for each played level"
 msgstr "Oynanan her oyun için demo kaydet"
 
-#: src/pingus_main.cxx:534
+#: src/pingus_main.cxx:540
 msgid "Sound:"
 msgstr "Ses"
 
-#: src/pingus_main.cxx:535
+#: src/pingus_main.cxx:541
 msgid "Disable sound"
 msgstr "Sesi Kapat"
 
-#: src/pingus_main.cxx:536
+#: src/pingus_main.cxx:542
 msgid "Disable music"
 msgstr "Müziði Kapat"
 
-#: src/pingus_main.cxx:711
+#: src/pingus_main.cxx:712
 msgid "clanVorbis support:           ok"
 msgstr "clanVoribs desteði:      var"
 
-#: src/pingus_main.cxx:713
+#: src/pingus_main.cxx:714
 msgid "clanVoribs support:  missing (.ogg music files will not be playable)"
 msgstr "clanVoribs desteði: yok (.ogg müzik dosyalarý çalýþmayacak)"
 
-#: src/pingus_main.cxx:717
+#: src/pingus_main.cxx:718
 msgid "clanMikMod support:           ok"
 msgstr "clanMikMod desteði:      var"
 
-#: src/pingus_main.cxx:719
+#: src/pingus_main.cxx:720
 msgid "clanMikMod support:  missing (music files will not be playable)"
 msgstr "clanMikMod desteði: yok (müzik dosyalarý çalýþmayacak) "
 
-#: src/pingus_main.cxx:723
+#: src/pingus_main.cxx:724
 msgid "getext support:               ok"
 msgstr "gettext desteði:         var"
 
-#: src/pingus_main.cxx:724
+#: src/pingus_main.cxx:725
 msgid "gettext language:        english"
 msgstr "gettext dili:            türkeçe"
 
-#: src/pingus_main.cxx:730
+#: src/pingus_main.cxx:731
 msgid "sound support:           enabled"
 msgstr "ses:                     etkin"
 
-#: src/pingus_main.cxx:732
+#: src/pingus_main.cxx:733
 msgid "sound support:          disabled"
 msgstr "ses:                    etkin deðil"
 
-#: src/pingus_main.cxx:735
+#: src/pingus_main.cxx:736
 msgid "music support:           enabled"
 msgstr "müzik desteði:           etkin"
 
-#: src/pingus_main.cxx:737
+#: src/pingus_main.cxx:738
 msgid "music support:          disabled"
 msgstr "müzik desteði:          etkin deðil"
 
-#: src/pingus_main.cxx:739
+#: src/pingus_main.cxx:740
 msgid "resolution set to:       "
 msgstr "çözünürlük:              "
 
-#: src/pingus_main.cxx:740
+#: src/pingus_main.cxx:741
 msgid "fullscreen:              "
 msgstr "tümekran:                "
 
-#: src/pingus_main.cxx:741
+#: src/pingus_main.cxx:742
 msgid " enabled"
 msgstr " etkin"
 
-#: src/pingus_main.cxx:741
+#: src/pingus_main.cxx:742
 msgid "disabled"
 msgstr "etkin deðil"
 
 # 'Main' yerine baþka biþi uydurmak lazim buraya -gd
-#: src/pingus_main.cxx:751
+#: src/pingus_main.cxx:752
 msgid "PingusMain: Starting Main: "
 msgstr "PingusMain: Main Baþlatýlýyor: "
 
-#: src/pingus_main.cxx:781
+#: src/pingus_main.cxx:782
 msgid "PingusMain: Levelfile not found, ignoring: "
 msgstr "PingusMain: Seviye Dosyasý bulunamadý, yok sayýlacak: "
 
-#: src/pingus_main.cxx:882
+#: src/pingus_main.cxx:883
 msgid "Error caught from ClanLib: "
 msgstr "ClanLib hatasý: "
 
-#: src/pingus_main.cxx:886
+#: src/pingus_main.cxx:887
 msgid "Error caught from Pingus: "
 msgstr "Pingus'ta hata saptandý: "
 
-#: src/pingus_main.cxx:890
+#: src/pingus_main.cxx:891
 msgid "Pingus: Out of memory!"
 msgstr "Pingus: Bellek yetersiz!"
 
 # bu komik oldu -cagri
 # daha mi iyi boyle :) -gd
-#: src/pingus_main.cxx:894
+#: src/pingus_main.cxx:895
 msgid "Pingus: Standard exception caught!:\n"
 msgstr "Pingus: Genel olaðan dýþý durum saptandý!:\n"
 
-#: src/pingus_main.cxx:898
+#: src/pingus_main.cxx:899
 msgid "Pingus: Unknown throw caught!"
 msgstr "Pingus: Bilinmeyen bir hata saptandý!"
 

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Pingus 0.6.0\n"
-"POT-Creation-Date: 2003-04-15 09:27+0200\n"
+"POT-Creation-Date: 2003-04-15 15:16+0200\n"
 "PO-Revision-Date: 2003-04-11 17:16+0200\n"
 "Last-Translator: Milan Babuskov <mbabuskov@yahoo.com>\n"
 "Language-Team: <mbabuskov@yahoo.com>\n"
@@ -59,7 +59,8 @@ msgid "-Story"
 msgstr "-Prica"
 
 #: src/credits.cxx:94
-msgid "-Translation (german)"
+#, fuzzy
+msgid "-Translation"
 msgstr "-Prevod (nemacki)"
 
 #: src/credits.cxx:100
@@ -151,7 +152,8 @@ msgid "F12 - make screenshot"
 msgstr "F12 - uslikaj ekran"
 
 #: src/editor/editor_help_screen.cxx:60
-msgid "Pos1 - increase object size"
+#, fuzzy
+msgid "Home - increase object size"
 msgstr "Posl - povecaj objekat"
 
 #: src/editor/editor_help_screen.cxx:61
@@ -576,8 +578,9 @@ msgid "Maybe you would feel more at home playing Quake."
 msgstr "Mozda si vrsta osobe koja vise voli Quake."
 
 #: src/level_result.cxx:118
+#, fuzzy
 msgid ""
-"Maybe this level calls for a different strategy. Like attempting to save "
+"Maybe this level calls for a different stratagy. Like attempting to save "
 "them, for example."
 msgstr ""
 "Mozda ovaj nivo zahteva drugaciji pristup. Na primer, bilo bi dobro da ih "
@@ -717,259 +720,267 @@ msgstr "| [igrajte dok se opet ne zakuca]"
 msgid "| Warning: Pingus recieved a SIGINT, exiting now."
 msgstr "| Upozorenje: Pingus je primio SIGINT, izlaz odmah."
 
-#: src/pingus_main.cxx:305
+#: src/pingus_main.cxx:306
 msgid "Warning: Larger resolution than 800x600 will result in visual problems"
 msgstr ""
 
-#: src/pingus_main.cxx:482
+#: src/pingus_main.cxx:487
 msgid "Unknow char: "
 msgstr "Nepoznat karakter: "
 
-#: src/pingus_main.cxx:483
+#: src/pingus_main.cxx:488
 msgid "Usage: "
 msgstr "Upotreba: "
 
-#: src/pingus_main.cxx:483
+#: src/pingus_main.cxx:488
 msgid " [OPTIONS]... [LEVELFILE]"
 msgstr " [OPCIJE]... [FAJL_NIVOA]"
 
-#: src/pingus_main.cxx:486
+#: src/pingus_main.cxx:491
 msgid "Options:"
 msgstr "Opcije:"
 
-#: src/pingus_main.cxx:488
+#: src/pingus_main.cxx:493
 msgid "Set the resolution for pingus (default: 800x600)"
 msgstr "Postavi rezoluciju za pingus (osnovna: 800x600)"
 
-#: src/pingus_main.cxx:489
+#: src/pingus_main.cxx:494
 msgid "Displays this help"
 msgstr "Prikazi ovu pomoc"
 
-#: src/pingus_main.cxx:490
+#: src/pingus_main.cxx:495
 msgid "Disable intro"
 msgstr "Onemoguci uvod"
 
-#: src/pingus_main.cxx:492
+#: src/pingus_main.cxx:497
 msgid "Use OpenGL"
 msgstr "Koristi OpenGL"
 
-#: src/pingus_main.cxx:495
+#: src/pingus_main.cxx:500
 msgid "Start in Window Mode"
 msgstr "Pokreni u prozoru"
 
-#: src/pingus_main.cxx:496
+#: src/pingus_main.cxx:501
 msgid "Start in Fullscreen"
 msgstr "Pokreni preko celog ekrana"
 
-#: src/pingus_main.cxx:500
+#: src/pingus_main.cxx:505
 msgid "FILE      "
 msgstr "FAJL      "
 
-#: src/pingus_main.cxx:500
+#: src/pingus_main.cxx:505
 msgid "Load a custom level from FILE"
 msgstr "Ucitaj neki nivo iz FAJLA"
 
-#: src/pingus_main.cxx:501
+#: src/pingus_main.cxx:506
 msgid "FILE        "
 msgstr "FAJL       "
 
-#: src/pingus_main.cxx:501
+#: src/pingus_main.cxx:506
 msgid "Load a custom worldmap from FILE"
 msgstr "Ucitaj neku mapu sveta iz FAJLA"
 
-#: src/pingus_main.cxx:502
+#: src/pingus_main.cxx:507
 msgid "Print some more messages to stdout, can be set"
 msgstr "Ispis jos nekih poruka na stdout, moze biti postavljeno"
 
-#: src/pingus_main.cxx:503
+#: src/pingus_main.cxx:508
 msgid "multible times to increase verbosity"
 msgstr "vise puta da se poveca informativnost"
 
-#: src/pingus_main.cxx:504
+#: src/pingus_main.cxx:509
 msgid "Prints version number and exit"
 msgstr "Ispisuje verziju i izlazi"
 
-#: src/pingus_main.cxx:505
+#: src/pingus_main.cxx:510
 msgid "Launch the Level editor (experimental)"
 msgstr "Pokrece editor nivoa (eksperimentalno)"
 
-#: src/pingus_main.cxx:506
+#: src/pingus_main.cxx:511
 msgid "Disable automatic scrolling"
 msgstr "Onemoguci automatsko skrolovanje"
 
-#: src/pingus_main.cxx:511
+#: src/pingus_main.cxx:516
 msgid "Don't read ~/.pingus/config"
 msgstr "Ne citaj ~/.pingus/config"
 
-#: src/pingus_main.cxx:512
+#: src/pingus_main.cxx:517
 msgid "FILE       "
 msgstr "FAJL       "
 
-#: src/pingus_main.cxx:512
+#: src/pingus_main.cxx:517
 msgid "Read config from FILE (default: ~/.pingus/config)"
 msgstr "Citaj podesavanja iz FAJLA (osnovni: ~/.pingus/config)"
 
-#: src/pingus_main.cxx:513
+#: src/pingus_main.cxx:518
 msgid "reduce CPU usage, might speed up the game on slower machines"
 msgstr "smanji upotrebu procesora, da se ubrza igra na sporim masinama"
 
-#: src/pingus_main.cxx:514
+#: src/pingus_main.cxx:519
+msgid "Uses the controller given in FILE"
+msgstr ""
+
+#: src/pingus_main.cxx:521
 msgid "Debugging and experimental stuff:"
 msgstr "Stvari za dibaging i eksperimente:"
 
-#: src/pingus_main.cxx:515
+#: src/pingus_main.cxx:522
 msgid "Enables some features, only interesting programmers"
 msgstr "Ukljucuje neke mogucnosti, samo za programere"
 
-#: src/pingus_main.cxx:516
+#: src/pingus_main.cxx:523
 msgid "Enable the output of debugging infos, possible"
 msgstr "Omogucuje ispis dibaging informacija, moguce"
 
-#: src/pingus_main.cxx:517
+#: src/pingus_main.cxx:524
 msgid "OPTION's are tiles, gametime, actions, sound, resources, gui,"
 msgstr "OPCIJE su polja, vreme igre, akcije, zvuk, resursi, interfejs,"
 
-#: src/pingus_main.cxx:518
+#: src/pingus_main.cxx:525
 msgid "input, pathmgr"
 msgstr ""
 
-#: src/pingus_main.cxx:519
+#: src/pingus_main.cxx:526
 msgid "Skip at least N frames, larger values speed the game up"
 msgstr "Preskoci N frejmova, vece vrednosti ubrzavaju igru"
 
-#: src/pingus_main.cxx:520
+#: src/pingus_main.cxx:527
 msgid "Skip at most N frames"
 msgstr "Preskoci najvise N frejmova"
 
-#: src/pingus_main.cxx:521
+#: src/pingus_main.cxx:528
 msgid "Set both min and max frameskip to N"
 msgstr "Postavi min i max preskakanje frejmova na N"
 
-#: src/pingus_main.cxx:522
+#: src/pingus_main.cxx:529
 msgid "Set the game speed (0=fastest, >0=slower)"
 msgstr "Podesi brzinu igre (0=najbrze, >0=sporije)"
 
-#: src/pingus_main.cxx:523
+#: src/pingus_main.cxx:530
 msgid "Prints the fps to stdout"
 msgstr "Ispisi fps na stdout"
 
-#: src/pingus_main.cxx:524
+#: src/pingus_main.cxx:531
 msgid "Set the size of the map tiles (default: 32)"
 msgstr "Podesi velicinu polja mape (osnovna: 32)"
 
-#: src/pingus_main.cxx:525
+#: src/pingus_main.cxx:532
 msgid "Disable some cpu intensive features"
 msgstr "Onemoguci neke intenzivne mogucnosti"
 
-#: src/pingus_main.cxx:526
+#: src/pingus_main.cxx:533
 msgid "Reduces the CPU usage by issuing sleep()"
 msgstr "Smanjuje upotrebu procesora koriscenjem sleep()-a"
 
-#: src/pingus_main.cxx:529
+#: src/pingus_main.cxx:535
+msgid "Demo playing and recording:"
+msgstr ""
+
+#: src/pingus_main.cxx:536
 msgid "FILE     "
 msgstr "FAJL     "
 
-#: src/pingus_main.cxx:529
+#: src/pingus_main.cxx:536
 msgid "Plays a demo session from FILE"
 msgstr "Igra demo na osnovu FAJLA"
 
-#: src/pingus_main.cxx:531
+#: src/pingus_main.cxx:538
 msgid "Record demos for each played level"
 msgstr "Snimi demo za svaki odigran nivo"
 
-#: src/pingus_main.cxx:534
+#: src/pingus_main.cxx:540
 msgid "Sound:"
 msgstr "Zvuk:"
 
-#: src/pingus_main.cxx:535
+#: src/pingus_main.cxx:541
 msgid "Disable sound"
 msgstr "Omoguci zvuk"
 
-#: src/pingus_main.cxx:536
+#: src/pingus_main.cxx:542
 msgid "Disable music"
 msgstr "Omoguci muziku"
 
-#: src/pingus_main.cxx:711
+#: src/pingus_main.cxx:712
 msgid "clanVorbis support:           ok"
 msgstr "podrska za clanVorbis:        ok"
 
-#: src/pingus_main.cxx:713
+#: src/pingus_main.cxx:714
 msgid "clanVoribs support:  missing (.ogg music files will not be playable)"
 msgstr "podrska za clanVorbis:  nedostaje (.ogg fajlovi nece biti pusteni)"
 
-#: src/pingus_main.cxx:717
+#: src/pingus_main.cxx:718
 msgid "clanMikMod support:           ok"
 msgstr "podrska za clanMikMod:        ok"
 
-#: src/pingus_main.cxx:719
+#: src/pingus_main.cxx:720
 msgid "clanMikMod support:  missing (music files will not be playable)"
 msgstr "podrska za clanMikMod:  nedostaje (nece biti muzike)"
 
-#: src/pingus_main.cxx:723
+#: src/pingus_main.cxx:724
 msgid "getext support:               ok"
 msgstr "podrska za gettext:           ok"
 
-#: src/pingus_main.cxx:724
+#: src/pingus_main.cxx:725
 msgid "gettext language:        english"
 msgstr "gettext jezik:           engleski"
 
-#: src/pingus_main.cxx:730
+#: src/pingus_main.cxx:731
 msgid "sound support:           enabled"
 msgstr "podrska za zvuk:       omogucena"
 
-#: src/pingus_main.cxx:732
+#: src/pingus_main.cxx:733
 msgid "sound support:          disabled"
 msgstr "podrska za zvuk:     onemogucena"
 
-#: src/pingus_main.cxx:735
+#: src/pingus_main.cxx:736
 msgid "music support:           enabled"
 msgstr "podrska za muziku:     omogucena"
 
-#: src/pingus_main.cxx:737
+#: src/pingus_main.cxx:738
 msgid "music support:          disabled"
 msgstr "podrska za muziku:   onemogucena"
 
-#: src/pingus_main.cxx:739
+#: src/pingus_main.cxx:740
 msgid "resolution set to:       "
 msgstr "rezolucija postavljna na:"
 
-#: src/pingus_main.cxx:740
+#: src/pingus_main.cxx:741
 msgid "fullscreen:              "
 msgstr "ceo ekran:               "
 
-#: src/pingus_main.cxx:741
+#: src/pingus_main.cxx:742
 msgid " enabled"
 msgstr " omoguceno"
 
-#: src/pingus_main.cxx:741
+#: src/pingus_main.cxx:742
 msgid "disabled"
 msgstr "onemoguceno"
 
-#: src/pingus_main.cxx:751
+#: src/pingus_main.cxx:752
 msgid "PingusMain: Starting Main: "
 msgstr "PingusMain: Pokretanje Main: "
 
-#: src/pingus_main.cxx:781
+#: src/pingus_main.cxx:782
 msgid "PingusMain: Levelfile not found, ignoring: "
 msgstr "PingusMain: Fajl nivoa nije nadjen, ignorisano: "
 
-#: src/pingus_main.cxx:882
+#: src/pingus_main.cxx:883
 msgid "Error caught from ClanLib: "
 msgstr "Uhvacena greska iz ClanLiba: "
 
-#: src/pingus_main.cxx:886
+#: src/pingus_main.cxx:887
 msgid "Error caught from Pingus: "
 msgstr "Uhvacena greska iz Pingusa: "
 
-#: src/pingus_main.cxx:890
+#: src/pingus_main.cxx:891
 msgid "Pingus: Out of memory!"
 msgstr "Pingus: Nema memorije!"
 
-#: src/pingus_main.cxx:894
+#: src/pingus_main.cxx:895
 msgid "Pingus: Standard exception caught!:\n"
 msgstr "Pingus: Uhvacen standardan izuzetak!:\n"
 
-#: src/pingus_main.cxx:898
+#: src/pingus_main.cxx:899
 msgid "Pingus: Unknown throw caught!"
 msgstr "Pingus: Uhvacen nepoznat throw!"
 
