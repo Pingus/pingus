@@ -41,8 +41,8 @@ public:
 GraphicContextState::GraphicContextState()
   : impl(new GraphicContextStateImpl())
 {
-  impl->width      = 1;
-  impl->height     = 1; 
+  impl->width      = CL_Display::get_width();
+  impl->height     = CL_Display::get_height(); 
   impl->offset     = CL_Pointf(0,0);
   impl->zoom       = 1.0f;
   impl->rotation   = 0;

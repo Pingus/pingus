@@ -64,6 +64,7 @@ WorldMap::WorldMap(const std::string& arg_filename)
       0, 0),*/
     filename(arg_filename),
     width(1161), height(600), // FIXME: ugly..
+    gc_state(800, 600),
     mouse_x(0),
     mouse_y(0)
 {
@@ -184,8 +185,11 @@ WorldMap::draw (DrawingContext& gc)
 
   DrawingContext* display_gc = new DrawingContext();
 
-  display_gc->translate(-pingu_pos.x, -pingu_pos.y);
+  gc_state.set_limit(CL_Rect(CL_Point(0, 0), CL_Size(width, height)));
+  gc_state.set_pos(CL_Pointf(pingu_pos.x, pingu_pos.y));
 
+  gc_state.push(*display_gc);
+  // FIXME: Unneeded sorting, drawing context already does it
   std::stable_sort(drawables.begin(), drawables.end(), z_pos_sorter());
 
   for (DrawableLst::iterator i = drawables.begin (); i != drawables.end (); ++i)
@@ -232,6 +236,8 @@ WorldMap::draw (DrawingContext& gc)
       dot->draw_hover(*display_gc);
     }
   gc.draw(display_gc);
+
+  gc_state.pop(*display_gc);
 }
 
 void
@@ -277,8 +283,7 @@ WorldMap::on_pointer_move(int x, int y)
 void
 WorldMap::on_primary_button_press(int x, int y)
 {
-  //FIXME: const Vector& click_pos = display_gc->screen_to_world(Vector(x, y));
-  Vector click_pos(x, y);
+  CL_Pointf click_pos = gc_state.screen2world(CL_Point(x, y));
 
   if (pingus_debug_flags & PINGUS_DEBUG_WORLDMAP)
     {
@@ -335,8 +340,7 @@ WorldMap::on_secondary_button_press(int x, int y)
 {
   if (maintainer_mode)
     {
-      //FIXME: const Vector& click_pos = display_gc->screen_to_world(Vector(x, y));
-      Vector click_pos(x, y);
+      CL_Pointf click_pos = gc_state.screen2world(CL_Point(x, y));
 
       Dot* dot = path_graph->get_dot(click_pos.x, click_pos.y);
       if (dot)

@@ -24,6 +24,7 @@
 #include <vector>
 #include "../file_reader.hxx"
 #include "../display/drawing_context.hxx"
+#include "../graphic_context_state.hxx"
 
 class CL_Key;
 class CL_Font;
@@ -62,6 +63,8 @@ private:
   int height;
 
   Pingus* pingus;
+
+  GraphicContextState gc_state;
 
   /** The graph that represents the path on the map */
   PathGraph* path_graph;
