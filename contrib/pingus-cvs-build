@@ -123,6 +123,9 @@ EOF
 
 chmod +x "$TARGET_DIRECTORY/start_pingus"
 
+CXXFLAGS="-O2"
+export CXXFLAGS
+
 
 if [ ! -e  "$TARGET_DIRECTORY/include/Hermes/Hermes.h" ]; then
     cvs -z3 checkout Libs/Hermes-1.3
@@ -145,6 +148,10 @@ pushd Libs/ClanLib-0.6
 make
 make install 
 popd
+
+
+CXXFLAGS="-Wall -g"
+export CXXFLAGS
 
 cvs -z3 checkout Games/Pingus
 echo "### We are now going to compile Pingus."
