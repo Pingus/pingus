@@ -51,7 +51,7 @@ private:
   bool page_displayed_completly;
 
   Story story;
-  CL_Surface page_surface;
+  CL_Sprite page_surface;
   StoryPage  current_page;
 public:
   StoryScreenComponent (const Story&);
@@ -115,9 +115,8 @@ StoryScreenComponent::StoryScreenComponent (const Story& arg_story)
   time_passed  = 0;
 
   current_page = story.pages.back();
-  page_surface = Resource::load_surface(current_page.image);
+  page_surface = Resource::load_sprite(current_page.image);
   background   = Resource::load_sprite("core/menu/startscreenbg");
-  background.set_alignment(origin_center);
 }
 
 void
@@ -127,10 +126,8 @@ StoryScreenComponent::draw (GraphicContext& gc)
 
   gc.print_center(Fonts::chalk_large, CL_Display::get_width()/2,
                   CL_Display::get_height()/2 - 200, story.title);
-  gc.draw(page_surface,
-          gc.get_width()/2 - page_surface.get_width()/2,
-          gc.get_height()/2 - 140);
-
+  gc.draw(page_surface, Vector(gc.get_width()/2, gc.get_height()/2 - 65));
+  
   gc.print_left(Fonts::chalk_normal,
                 CL_Display::get_width()/2  - 280,
                 CL_Display::get_height()/2 + 35, display_text);
@@ -186,7 +183,7 @@ StoryScreenComponent::next_text()
       if (!story.pages.empty())
         {
           current_page = story.pages.back();
-          page_surface = Resource::load_surface(current_page.image);
+          page_surface = Resource::load_sprite(current_page.image);
           display_text = "";
           time_passed = 0;
           page_displayed_completly = false;

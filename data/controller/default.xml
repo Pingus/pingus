@@ -54,11 +54,17 @@
     </action-buttons>
 
     <action-up>
-      <key-button key="PAGEUP"/>
+      <multiple-button>
+        <key-button key="PAGEUP"/>
+        <mouse-button button="5"/>
+      </multiple-button>
     </action-up>
 
     <action-down>
-      <key-button key="PAGEDOWN"/>
+      <multiple-button>
+        <key-button key="PAGEDOWN"/>
+        <mouse-button button="4"/>
+      </multiple-button>
     </action-down>
 
   </controller-config>

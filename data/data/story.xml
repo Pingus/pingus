@@ -1,16 +1,60 @@
 <resources>
   <section name="story">
-    <surface file="../images/story/story0.png" name="story0" />
-    <surface file="../images/story/story1.png" name="story1" />
-    <surface file="../images/story/story2.png" name="story2" />
-    <surface file="../images/story/story3.png" name="story3" />
-    <surface file="../images/story/story4.png" name="story4" />
-    <surface file="../images/story/story5.png" name="story5" />
-    <surface file="../images/story/story6.png" name="story6" />
-    <surface file="../images/story/credits1.png" name="credits1" />
-    <surface file="../images/story/credits2.png" name="credits2" />
-    <surface file="../images/story/credits3.png" name="credits3" />
-    <surface file="../images/story/credits4.png" name="credits4" />
-    <surface file="../images/core/menu/worldscreenbg.jpg" name="background" />
+    <sprite name="story0">
+      <translation origin="center"/>
+      <image file="../images/story/story0.png" />
+    </sprite>
+
+    <sprite name="story1">
+      <translation origin="center"/>
+      <image file="../images/story/story1.png" />
+    </sprite>
+
+    <sprite name="story2">
+      <translation origin="center"/>
+      <image file="../images/story/story2.png" />
+    </sprite>
+
+    <sprite name="story3">
+      <translation origin="center"/>
+      <image file="../images/story/story3.png" />
+    </sprite>
+
+    <sprite name="story4">
+      <translation origin="center"/>
+      <image file="../images/story/story4.png" />
+    </sprite>
+
+    <sprite name="story5">
+      <translation origin="center"/>
+      <image file="../images/story/story5.png" />
+    </sprite>
+
+    <sprite name="story6">
+      <translation origin="center"/>
+      <image file="../images/story/story6.png" />
+    </sprite>
+
+    <sprite name="credits1">
+      <translation origin="center"/>
+      <image file="../images/story/credits1.png" />
+    </sprite>
+    <sprite name="credits2">
+      <translation origin="center"/>
+      <image file="../images/story/credits2.png" />
+    </sprite>
+    <sprite name="credits3">
+      <translation origin="center"/>
+      <image file="../images/story/credits3.png" />
+    </sprite>
+    <sprite name="credits4">
+      <translation origin="center"/>
+      <image file="../images/story/credits4.png" />
+    </sprite>
+
+    <sprite name="background">
+      <translation origin="center"/>
+      <image file="../images/core/menu/worldscreenbg.jpg" />
+    </sprite>
   </section>
 </resources>
