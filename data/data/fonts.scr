@@ -11,6 +11,7 @@ section Fonts
 	pingus = ../images/fonts/pingus4.png (type=font, alphafont=1, spacelen=8, trans_limit=0.25, subtract_width=0,letters="!""#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~ÄÖÜäöüÇçĞğİıŞş");
 //	pingus_small = ../images/fonts/pingus_small3.png (type=font, alphafont=1, spacelen=8, trans_limit=0.25, subtract_width=0,letters="!""#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~ÄÖÜäöü");
 	pingus_small = ../images/fonts/pingus_small4.png (type=font, alphafont=1, spacelen=8, trans_limit=0.25, subtract_width=0,letters="!""#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~ÄÖÜäöüÇçĞğİıŞş");
+	pingus_small_fix_num = ../images/fonts/pingus_small4_fix_num.png (type=font, alphafont=1, spacelen=13, trans_limit=0, subtract_width=0,letters="!""#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~ÄÖÜäöüÇçĞğİıŞş");
 	xterm = ../images/fonts/xterm.png  (type=font, tcol=0, x=1, y=1, spacelen=6,letters="!""#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~");
 
 //	numbers = ../images/fonts/number_fnt.pcx (type=font, x=1, y=1, tcol=0, spacelen=0, letters=" 0123456789:");

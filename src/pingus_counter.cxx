@@ -1,4 +1,4 @@
-//  $Id: pingus_counter.cxx,v 1.11 2002/10/17 00:10:46 grumbel Exp $
+//  $Id: pingus_counter.cxx,v 1.12 2002/11/28 18:05:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,7 +33,7 @@ PingusCounter::PingusCounter(Server* s)
   : server(s),
     background (PingusResource::load_surface("Buttons/info","core"))
 {
-  font = PingusResource::load_font("Fonts/pingus_small","fonts");
+  font = PingusResource::load_font("Fonts/pingus_small_fix_num","fonts");
 }
 
 void 
@@ -46,7 +46,7 @@ PingusCounter::draw(GraphicContext& gc)
   
   World* world = server->get_world();
   
-  snprintf(str, 128, _("Released: %3d/%3d  Out: %3d  Saved: %3d/%3d"),
+  snprintf(str, 128, _("Released:%3d/%-3d   Out:%3d   Saved:%3d/%-3d"),
 	   world->get_pingus()->get_number_of_released(),
 	   world->get_pingus()->get_number_of_allowed(),
 	   world->get_pingus()->get_number_of_alive(),

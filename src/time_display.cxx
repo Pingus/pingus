@@ -1,4 +1,4 @@
-//  $Id: time_display.cxx,v 1.10 2002/10/24 15:32:48 torangan Exp $
+//  $Id: time_display.cxx,v 1.11 2002/11/28 18:05:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,7 +32,8 @@ TimeDisplay::TimeDisplay ()
   : infinity_symbol(PingusResource::load_surface("misc/infinity", "core"))
 {
   //font = PingusResource::load_font("Fonts/numbers","fonts");
-  font = PingusResource::load_font("Fonts/pingus_small","fonts");
+  //font = PingusResource::load_font("Fonts/pingus_small","fonts");
+  font = PingusResource::load_font("Fonts/pingus_small_fix_num","fonts");
 }
 
 void
@@ -54,18 +55,13 @@ TimeDisplay::draw (GraphicContext& gc)
 	  //int millisecs = (((time_value * 100)) / game_speed) % 100;
 	  int seconds   = (time_value / game_speed % 60);
 	  int minutes   = (time_value / (60 * game_speed));
-	  char* p;
 
-	  snprintf(time_string, 8, "%2d:%2d", minutes, seconds);
+	  // Stop displaying negative seconds, which can happen if armageddon is
+	  // clicked with 1 second left.
+	  if (seconds < 0)
+	    seconds = 0;
 
-	  p = time_string;
-
-	  // Replace any space with a zero
-	  while (*p++)
-	    {
-	      if (*p == ' ')
-		*p = '0';
-	    }
+	  snprintf(time_string, 8, "%2d:%02d", minutes, seconds);
 	}
       else
 	{
@@ -73,7 +69,7 @@ TimeDisplay::draw (GraphicContext& gc)
 	  snprintf(time_string, 8, "%4d", time_value);
 	}
 
-      font->print_right(CL_Display::get_width() - 5, 1, time_string);
+      font->print_right(CL_Display::get_width() - 5, 3, time_string);
     }
 
   UNUSED_ARG(gc);
