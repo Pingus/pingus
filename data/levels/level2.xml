@@ -39,8 +39,8 @@
   </resource></surface>
   <color>
     <red>0</red>
-    <green>.5</green>
-    <blue>0</blue>
+    <green>0.2</green>
+    <blue>0.5</blue>
     <alpha>0.2</alpha>
   </color>
   <scroll-x>0</scroll-x>
