@@ -1,4 +1,4 @@
-//  $Id: RainParticle.hh,v 1.5 2001/04/03 10:45:50 grumbel Exp $
+//  $Id: RainParticle.hh,v 1.6 2001/04/23 08:00:08 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,14 +26,15 @@
 class RainParticle : public Particle
 {
 private:
-  static CL_Surface rain_surf;
-  static CL_Surface rain_splash;
+  static CL_Surface rain1_surf;
+  static CL_Surface rain2_surf;
+  Sprite rain_splash;
 
   float add;
   bool alive;
   bool splash;
   int splash_counter;
-
+  int type;
 public:
   RainParticle();
   RainParticle(int, int);

@@ -1,4 +1,4 @@
-//  $Id: Exit.cc,v 1.21 2001/04/21 14:40:22 grumbel Exp $
+//  $Id: Exit.cc,v 1.22 2001/04/23 08:00:08 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -91,7 +91,8 @@ Exit::draw_offset(int x_of, int y_of, float s)
 {
   if (s == 1.0) {
     sprite.put_screen(pos.x + x_of, pos.y + y_of);
-    flag.put_screen (pos.x + 40 + x_of, pos.y + y_of);
+    if (!use_old_pos_handling)
+      flag.put_screen (pos.x + 40 + x_of, pos.y + y_of);
   } else {
     //sprite.put_screen((int)((pos.x + x_of) * s), (int)((pos.y + y_of) * s),
     //s, s);

@@ -1,4 +1,4 @@
-//  $Id: bomber.cc,v 1.21 2001/04/21 14:40:22 grumbel Exp $
+//  $Id: bomber.cc,v 1.22 2001/04/23 08:00:08 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -47,6 +47,7 @@ Bomber::init()
 
   explo_surf = PingusResource::load_surface ("Other/explo" + StringConverter::to_string (pingu->get_owner ()), "pingus");
   sprite = Sprite((PingusResource::load_surface ("Pingus/bomber" + StringConverter::to_string(pingu->get_owner ()), "pingus")));
+  sprite.set_align_center_bottom ();
 
   sound_played = false;
   environment = (PinguEnvironment)(land | sky);
@@ -62,9 +63,9 @@ Bomber::draw_offset(int x, int y, float s)
       return;
     }
 
-  sprite.put_screen(pingu->get_x () + x + x_offset(), pingu->get_y () + y + y_offset());
-  
-  explo_surf.put_screen(pingu->get_x () - 32 + x, pingu->get_y () - 48 + y);
+  sprite.put_screen(pingu->get_x () + x, pingu->get_y () + y);
+  if (sprite.finished ())
+    explo_surf.put_screen(pingu->get_x () - 32 + x, pingu->get_y () - 48 + y);
 }
 
 void

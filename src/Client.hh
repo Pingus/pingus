@@ -1,4 +1,4 @@
-//  $Id: Client.hh,v 1.31 2001/04/16 11:58:34 grumbel Exp $
+//  $Id: Client.hh,v 1.32 2001/04/23 08:00:08 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -68,7 +68,7 @@ private:
 
   ///
   std::vector<boost::shared_ptr<GuiObj> > obj;
-
+  typedef std::vector<boost::shared_ptr<GuiObj> >::iterator GuiObjIter;
   ///
   static bool gui_is_init;
   ///

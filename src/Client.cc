@@ -1,4 +1,4 @@
-//  $Id: Client.cc,v 1.54 2001/04/21 14:40:21 grumbel Exp $
+//  $Id: Client.cc,v 1.55 2001/04/23 08:00:08 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -213,8 +213,8 @@ Client::play_level(boost::shared_ptr<PLF> arg_plf)
 void 
 Client::draw ()
 {
-  for(std::vector<GuiObj*>::size_type i=0; i < obj.size(); ++i) 
-    obj[i]->draw_clipped();
+  for(GuiObjIter i = obj.begin (); i != obj.end (); ++i)
+    (*i)->draw_clipped();
 
   Display::flip_display();	    
 }
@@ -223,14 +223,14 @@ void
 Client::update (float delta)
 {
   // Let the window move its content
-  for(std::vector<GuiObj*>::size_type i=0; i < obj.size(); ++i) 
-    obj[i]->updateX();
+  for(GuiObjIter i = obj.begin (); i != obj.end (); ++i)
+    (*i)->updateX();
   
   // Update every 3/100 seconds
   // if (last_update + 30 < CL_System::get_time())
 	      
-  for(std::vector<GuiObj*>::size_type i=0; i < obj.size(); ++i) 
-    obj[i]->update(delta);
+  for(GuiObjIter i = obj.begin (); i != obj.end (); ++i)
+    (*i)->update(delta);
 
   // Let the server process a game loop
   server->update(delta);

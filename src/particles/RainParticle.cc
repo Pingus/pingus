@@ -1,4 +1,4 @@
-//  $Id: RainParticle.cc,v 1.6 2001/04/21 20:31:53 grumbel Exp $
+//  $Id: RainParticle.cc,v 1.7 2001/04/23 08:00:08 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,8 +23,8 @@
 #include "Particle.hh"
 #include "RainParticle.hh"
 
-CL_Surface RainParticle::rain_surf;
-CL_Surface RainParticle::rain_splash;
+CL_Surface RainParticle::rain1_surf;
+CL_Surface RainParticle::rain2_surf;
 
 RainParticle::RainParticle()
 {
@@ -42,12 +42,18 @@ RainParticle::RainParticle(int arg_x_pos, int arg_y_pos)
   alive = true;
   add = 1.0 + frand() * 3.0;
   
-  if (!rain_surf)
+  if (!rain1_surf)
     {
-      rain_surf = PingusResource::load_surface("Particles/rain1", "pingus");
-      rain_splash = PingusResource::load_surface("Particles/rain_splash", "pingus");
+      rain1_surf = PingusResource::load_surface("Particles/rain1", "pingus");
+      rain2_surf = PingusResource::load_surface("Particles/rain2", "pingus");
     }
-  surface = rain_surf;
+
+  rain_splash = Sprite (PingusResource::load_surface ("Particles/rain_splash", "pingus"), 10.0f, 
+			Sprite::NONE, Sprite::ONCE);
+  rain_splash.set_align_center_bottom ();
+
+  surface = rain2_surf;
+  type = rand () % 3;
 }
 
 RainParticle::~RainParticle()
@@ -57,17 +63,19 @@ RainParticle::~RainParticle()
 void
 RainParticle::draw_offset(int x_of, int y_of, float s)
 {
-  //  std::cout << "draw_offset: " << splash << std::endl;
-  
   if (!splash)
     {
-      Particle::draw_offset(x_of, y_of - rain_surf.get_height(), s);
+      if (type == 0)
+	surface = rain2_surf;
+      else
+	surface = rain1_surf;	  
+
+      Particle::draw_offset(x_of, y_of - rain1_surf.get_height(), s);
     }
   else
     {
-      /*rain_splash.put_screen((int)x_pos + x_of - rain_splash.get_width()/2, 
-			     (int)y_pos + y_of - rain_splash.get_height(),
-			     splash_counter);*/
+      rain_splash.put_screen(x_pos + x_of, 
+			     y_pos + y_of);			     
     }
 }
 
@@ -76,6 +84,10 @@ RainParticle::update(float delta)
 {
   if (splash)
     {
+      if (rain_splash.finished ())
+	alive = false;
+
+      rain_splash.update (delta);
       ++splash_counter;
       if (splash_counter > 3)
 	{

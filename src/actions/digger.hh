@@ -1,4 +1,4 @@
-//  $Id: digger.hh,v 1.9 2001/04/20 20:53:55 grumbel Exp $
+//  $Id: digger.hh,v 1.10 2001/04/23 08:00:08 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,7 +22,7 @@
 
 #include "../PinguAction.hh"
 
-///
+/** FIXME: Not delta capable! */
 class Digger : public PinguAction
 {
 private:
@@ -47,6 +47,7 @@ public:
   void   init(void);
   ///
   void   update(float delta);
+  void  draw_offset(int x, int y, float s);
 };
 
 REGISTER_PINGUACTION(DiggerFactory, Digger, "digger");
