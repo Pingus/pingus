@@ -18,8 +18,8 @@
 noinst_LIBRARIES = libpingus_input.a
 
 libpingus_input_a_SOURCES =       \
-	button.hxx  button.cxx \
-        axis.hxx    axis.cxx   \
-        pointer.hxx pointer.cxx
-
+        axis.hxx \
+	button.hxx  \
+        key_button.hxx key_button.cxx \
+        pointer.hxx 
 # EOF #
