@@ -39,3 +39,6 @@ zlib.dll
 iconv.dll
 libxml2.dll
 pingus.ncb
+Debug
+Release
+stat
