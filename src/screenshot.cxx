@@ -1,4 +1,4 @@
-//  $Id: screenshot.cxx,v 1.14 2003/04/24 15:18:19 grumbel Exp $
+//  $Id: screenshot.cxx,v 1.15 2003/08/16 16:23:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -107,11 +107,9 @@ Screenshot::save_target_to_file_fast(CL_Target* target, const std::string& filen
       {
         for (int i = 0; i < num_pixels; ++i)
           {
-            unsigned int color = *((unsigned int*)(target_buffer + i*4));
-
-            buffer[i*3 + 0] = (color & rmask) * 255 / rmask;
-            buffer[i*3 + 1] = (color & gmask) * 255 / gmask;
-            buffer[i*3 + 2] = (color & bmask) * 255 / bmask;
+            buffer[i*3 + 0] = target_buffer[i*4 + 3];
+            buffer[i*3 + 1] = target_buffer[i*4 + 2];
+            buffer[i*3 + 2] = target_buffer[i*4 + 1];
           }
         break;
       }
