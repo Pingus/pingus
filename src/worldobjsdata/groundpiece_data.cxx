@@ -1,4 +1,4 @@
-//  $Id: groundpiece_data.cxx,v 1.14 2003/02/26 17:08:29 grumbel Exp $
+//  $Id: groundpiece_data.cxx,v 1.15 2003/03/04 12:53:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,6 +25,7 @@
 #include "../xml_helper.hxx"
 #include "../file_reader.hxx"
 #include "../file_writer.hxx"
+#include "../editor/object_manager.hxx"
 #include "groundpiece_data.hxx"
 
 namespace WorldObjsData {
@@ -83,10 +84,10 @@ GroundpieceData::operator= (const GroundpieceData& old)
 GroundpieceData::~GroundpieceData ()
 {
 }
-EditorObjLst
-GroundpieceData::create_EditorObj ()
+void
+GroundpieceData::insert_EditorObjs (EditorNS::ObjectManager* obj_mgr)
 {
-  return EditorObjLst(1, new EditorObjs::GroundpieceObj(*this));
+  obj_mgr->add(new EditorObjs::GroundpieceObj(*this));
 }
 
 void

@@ -1,4 +1,4 @@
-//  $Id: editor_event.cxx,v 1.50 2003/03/04 10:26:18 grumbel Exp $
+//  $Id: editor_event.cxx,v 1.51 2003/03/04 12:53:46 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -643,13 +643,13 @@ EditorEvent::editor_insert_new_object()
 {
   editor->save_tmp_level();
 
-  EditorObjLst objs;
   try 
     {
       disable();
       std::cout << "Object selector on" <<std::endl;
-      objs = editor->object_selector->get_obj(int(editor->view->get_offset ().x + CL_Display::get_width ()/2),
-					      int(editor->view->get_offset ().y + CL_Display::get_height ()/2));
+      editor->object_selector->get_obj(object_manager,
+                                       int(editor->view->get_offset ().x + CL_Display::get_width ()/2),
+                                       int(editor->view->get_offset ().y + CL_Display::get_height ()/2));
       std::cout << "Object selector off" << std::endl;
       enable();
     }
@@ -658,16 +658,6 @@ EditorEvent::editor_insert_new_object()
     std::cout << "Editor: Error caught from ClanLib: " << err.message << std::endl;
     enable();
   }
-      
-  if (!objs.empty ()) 
-    {
-      for (ObjectManager::EditorObjIter i = objs.begin (); i != objs.end (); ++i)
-	object_manager->add(*i);
-    } 
-  else 
-    {
-      std::cout << "EditorEvent: Something went wrong while inserting" << std::endl;
-    }
 }
 
 void

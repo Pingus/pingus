@@ -1,4 +1,4 @@
-//  $Id: solid_color_background_data.cxx,v 1.5 2003/02/26 17:08:29 grumbel Exp $
+//  $Id: solid_color_background_data.cxx,v 1.6 2003/03/04 12:53:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,7 @@
 #include "../xml_file_writer.hxx"
 #include "../editorobjs/solid_color_background_obj.hxx"
 #include "../worldobjs/solid_color_background.hxx"
+#include "../editor/object_manager.hxx"
 #include "solid_color_background_data.hxx"
 
 namespace WorldObjsData {
@@ -55,10 +56,10 @@ SolidColorBackgroundData::insert_WorldObjs (World* world)
   world->add_object(new WorldObjs::SolidColorBackground(*this));
 }
 
-EditorObjLst 
-SolidColorBackgroundData::create_EditorObj()
+void
+SolidColorBackgroundData::insert_EditorObjs(EditorNS::ObjectManager* obj_mgr)
 {
-  return EditorObjLst(1, new EditorObjs::SolidColorBackgroundObj(*this));
+  obj_mgr->add(new EditorObjs::SolidColorBackgroundObj(*this));
 }
 
 } // namespace WorldObjsData

@@ -1,4 +1,4 @@
-//  $Id: bumper_data.cxx,v 1.9 2003/02/26 17:08:29 grumbel Exp $
+//  $Id: bumper_data.cxx,v 1.10 2003/03/04 12:53:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,6 +25,7 @@
 #include "../editorobjs/bumper_obj.hxx"
 #include "../worldobjs/bumper.hxx"
 #include "../pingus_resource.hxx"
+#include "../editor/object_manager.hxx"
 
 namespace WorldObjsData {
 
@@ -59,10 +60,10 @@ BumperData::insert_WorldObjs (World* world)
   world->add_object(new WorldObjs::Bumper(*this));
 }
 
-EditorObjLst
-BumperData::create_EditorObj ()
+void
+BumperData::insert_EditorObjs (EditorNS::ObjectManager* obj_mgr)
 {
-  return EditorObjLst(1, new EditorObjs::BumperObj(*this));
+  obj_mgr->add(new EditorObjs::BumperObj(*this));
 }
 
 } // WorldObjsData

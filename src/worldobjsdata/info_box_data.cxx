@@ -1,4 +1,4 @@
-//  $Id: info_box_data.cxx,v 1.10 2003/02/26 17:08:29 grumbel Exp $
+//  $Id: info_box_data.cxx,v 1.11 2003/03/04 12:53:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,7 @@
 #include "../xml_helper.hxx"
 #include "../editorobjs/info_box_obj.hxx"
 #include "../worldobjs/info_box.hxx"
+#include "../editor/object_manager.hxx"
 #include "info_box_data.hxx"
 
 namespace WorldObjsData {
@@ -41,10 +42,10 @@ InfoBoxData::insert_WorldObjs (World* world)
   world->add_object(new WorldObjs::InfoBox(*this));
 }
 
-EditorObjLst
-InfoBoxData::create_EditorObj ()
+void
+InfoBoxData::insert_EditorObjs (EditorNS::ObjectManager* obj_mgr)
 {
-  return EditorObjLst(1, new EditorObjs::InfoBoxObj(*this));
+  obj_mgr->add(new EditorObjs::InfoBoxObj(*this));
 }
 
 InfoBoxData::InfoBoxData (xmlDocPtr doc, xmlNodePtr cur)

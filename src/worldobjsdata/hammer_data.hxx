@@ -1,4 +1,4 @@
-//  $Id: hammer_data.hxx,v 1.6 2003/02/26 17:08:29 grumbel Exp $
+//  $Id: hammer_data.hxx,v 1.7 2003/03/04 12:53:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,7 +42,7 @@ public:
       
   void insert_WorldObjs (World* world);
       
-  EditorObjLst create_EditorObj ();
+  void insert_EditorObjs (EditorNS::ObjectManager*);
       
 private:
   HammerData& operator= (const HammerData&);

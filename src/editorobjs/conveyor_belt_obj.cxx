@@ -1,4 +1,4 @@
-//  $Id: conveyor_belt_obj.cxx,v 1.6 2003/03/04 10:25:31 grumbel Exp $
+//  $Id: conveyor_belt_obj.cxx,v 1.7 2003/03/04 12:53:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -82,7 +82,7 @@ ConveyorBeltObj::create (const Vector& pos)
 {
   WorldObjsData::ConveyorBeltData newdata;
   newdata.pos = pos;
-  return newdata.create_EditorObj();
+  return EditorObjLst(1, new ConveyorBeltObj(newdata));
 }
   
 std::string 

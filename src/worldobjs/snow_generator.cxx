@@ -1,4 +1,4 @@
-//  $Id: snow_generator.cxx,v 1.6 2003/02/19 17:17:01 grumbel Exp $
+//  $Id: snow_generator.cxx,v 1.7 2003/03/04 12:53:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -59,12 +59,15 @@ SnowGenerator::update()
 void
 SnowGenerator::on_startup()
 {
+  // FIXME: if snow should be available from start, this needs to get fixed to have the right amount of snow
+#if 0 
   for (int i = 0; i < 500; ++i) // FIXME: 500 is a random value, doesn't work very often
     {
       world->get_snow_particle_holder()->add_particle(rand() % world->get_width(), rand() % world->get_height());
       world->get_snow_particle_holder()->add_particle(rand() % world->get_width(), rand() % world->get_height());
       world->get_snow_particle_holder()->add_particle(rand() % world->get_width(), rand() % world->get_height(), true); 
-    }
+      }
+#endif
 }
 
 } // namespace WorldObjs

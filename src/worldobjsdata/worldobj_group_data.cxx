@@ -1,4 +1,4 @@
-//  $Id: worldobj_group_data.cxx,v 1.7 2003/02/26 17:08:30 grumbel Exp $
+//  $Id: worldobj_group_data.cxx,v 1.8 2003/03/04 12:53:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,7 @@
 #include "../xml_helper.hxx"
 #include "../worldobj_data_factory.hxx"
 #include "../worldobjs/worldobj_group.hxx"
+#include "../editor/object_manager.hxx"
 #include "worldobj_group_data.hxx"
 
 namespace WorldObjsData {
@@ -86,25 +87,17 @@ WorldObjGroupData::insert_WorldObjs (World* world)
   world->add_object(new WorldObjs::WorldObjGroup (*this));
 }
 
-EditorObjLst 
-WorldObjGroupData::create_EditorObj ()
+void
+WorldObjGroupData::insert_EditorObjs (EditorNS::ObjectManager* obj_mgr)
 {
-  EditorObjLst lst(1);
-  EditorObjGroup* group = new EditorObjGroup();
-  lst[0] = group;
+  //EditorObjGroup* group = new EditorObjGroup();
 
   for (ObjsIter i = objs.begin (); i != objs.end (); ++i)
     {
-      EditorObjLst sublst ((*i)->create_EditorObj ());
-      for (EditorObjLst::iterator j = sublst.begin (); j != sublst.end (); ++j)
-	{
-	  group->add (*j);
-	}
+      (*i)->insert_EditorObjs (obj_mgr);
     }
-
-  return lst;
 }
-
+ 
 } // namespace WorldObjsData
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: surface_background_data.cxx,v 1.9 2003/02/26 17:08:30 grumbel Exp $
+//  $Id: surface_background_data.cxx,v 1.10 2003/03/04 12:53:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,7 @@
 #include "../xml_file_reader.hxx"
 #include "../editorobjs/surface_background_obj.hxx"
 #include "../worldobjs/surface_background.hxx"
+#include "../editor/object_manager.hxx"
 #include "surface_background_data.hxx"
 
 namespace WorldObjsData {
@@ -108,10 +109,10 @@ SurfaceBackgroundData::insert_WorldObjs (World* world)
   world->add_object(new WorldObjs::SurfaceBackground(*this));
 }
 
-EditorObjLst 
-SurfaceBackgroundData::create_EditorObj ()
+void
+SurfaceBackgroundData::insert_EditorObjs (EditorNS::ObjectManager* obj_mgr)
 {
-  return EditorObjLst(1, new EditorObjs::SurfaceBackgroundObj(*this));
+  obj_mgr->add(new EditorObjs::SurfaceBackgroundObj(*this));
 }
 
 } // namespace WorldObjsData

@@ -1,4 +1,4 @@
-//  $Id: starfield_background_data.cxx,v 1.7 2003/02/26 17:08:30 grumbel Exp $
+//  $Id: starfield_background_data.cxx,v 1.8 2003/03/04 12:53:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,7 @@
 #include "../xml_file_reader.hxx"
 #include "../editorobjs/starfield_background_obj.hxx"
 #include "../worldobjs/starfield_background.hxx"
+#include "../editor/object_manager.hxx"
 #include "starfield_background_data.hxx"
 
 namespace WorldObjsData {
@@ -71,10 +72,10 @@ StarfieldBackgroundData::insert_WorldObjs (World* world)
   world->add_object(new WorldObjs::StarfieldBackground(*this));
 }
 
-EditorObjLst
-StarfieldBackgroundData::create_EditorObj ()
+void
+StarfieldBackgroundData::insert_EditorObjs (EditorNS::ObjectManager* obj_mgr)
 {
-  return EditorObjLst(1, new EditorObjs::StarfieldBackgroundObj(*this));
+  obj_mgr->add(new EditorObjs::StarfieldBackgroundObj(*this));
 }
 
 } // namespace WorldObjsData

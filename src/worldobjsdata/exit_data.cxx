@@ -1,4 +1,4 @@
-//  $Id: exit_data.cxx,v 1.6 2003/02/26 17:08:29 grumbel Exp $
+//  $Id: exit_data.cxx,v 1.7 2003/03/04 12:53:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,7 @@
 #include "../xml_file_reader.hxx"
 #include "../editorobjs/exit_obj.hxx"
 #include "../worldobjs/exit.hxx"
+#include "../editor/object_manager.hxx"
 #include "exit_data.hxx"
 
 namespace WorldObjsData {
@@ -77,10 +78,10 @@ ExitData::insert_WorldObjs (World* world)
   world->add_object(new WorldObjs::Exit(*this));
 }
 
-EditorObjLst 
-ExitData::create_EditorObj ()
+void
+ExitData::insert_EditorObjs (EditorNS::ObjectManager* obj_mgr)
 {
-  return EditorObjLst(1, new EditorObjs::ExitObj(*this));
+  obj_mgr->add(new EditorObjs::ExitObj(*this));
 }
 
 } // namespace WorldObjsData

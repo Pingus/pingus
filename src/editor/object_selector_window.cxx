@@ -1,4 +1,4 @@
-//  $Id: object_selector_window.cxx,v 1.2 2002/12/03 00:51:19 grumbel Exp $
+//  $Id: object_selector_window.cxx,v 1.3 2003/03/04 12:53:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -72,14 +72,13 @@ ObjectSelectorWindow::add_button (const std::string& name, Callback callback)
 void
 ObjectSelectorWindow::on_groundpiece_ground_press()
 {
-  Editor::instance()->get_object_manager()->add(
-  Editor::instance()->get_object_selector()->get_groundpiece(Groundtype::GP_GROUND));
+  Editor::instance()->get_object_selector()->get_groundpiece(Groundtype::GP_GROUND);
 }
 
 void
 ObjectSelectorWindow::on_groundpiece_solid_press()
 {
-  Editor::instance()->get_object_selector()->get_groundpiece(Groundtype::GP_SOLID);
+ Editor::instance()->get_object_selector()->get_groundpiece(Groundtype::GP_SOLID);
 }
 
 void

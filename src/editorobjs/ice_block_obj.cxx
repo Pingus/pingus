@@ -1,4 +1,4 @@
-//  $Id: ice_block_obj.cxx,v 1.5 2002/09/28 11:52:24 torangan Exp $
+//  $Id: ice_block_obj.cxx,v 1.6 2003/03/04 12:53:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,7 +41,7 @@ IceBlockObj::create (const Vector& pos)
 {
   WorldObjsData::IceBlockData newdata;
   newdata.pos = pos;
-  return newdata.create_EditorObj();
+  return EditorObjLst(1, new IceBlockObj(newdata));
 }
 
 std::string 

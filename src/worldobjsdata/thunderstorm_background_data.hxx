@@ -1,4 +1,4 @@
-//  $Id: thunderstorm_background_data.hxx,v 1.4 2003/02/26 17:08:30 grumbel Exp $
+//  $Id: thunderstorm_background_data.hxx,v 1.5 2003/03/04 12:53:47 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,7 +42,7 @@ public:
   virtual void write_xml (std::ostream& xml);
 
   void insert_WorldObjs (World* world);
-  EditorObjLst create_EditorObj ();
+  void insert_EditorObjs (EditorNS::ObjectManager*);
 
 private:  
   ThunderstormBackgroundData& operator= (const ThunderstormBackgroundData&);

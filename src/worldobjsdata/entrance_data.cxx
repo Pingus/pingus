@@ -1,4 +1,4 @@
-//  $Id: entrance_data.cxx,v 1.6 2003/02/26 17:08:29 grumbel Exp $
+//  $Id: entrance_data.cxx,v 1.7 2003/03/04 12:53:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,6 +26,7 @@
 #include "../string_converter.hxx"
 #include "../xml_helper.hxx"
 #include "../xml_file_reader.hxx"
+#include "../editor/object_manager.hxx"
 #include "entrance_data.hxx"
 
 namespace WorldObjsData {
@@ -117,10 +118,10 @@ EntranceData::insert_WorldObjs (World* world)
   //PingusError::raise("Entrance: Entrance type in Level file is unknown: " + type);
 }
 
-EditorObjLst 
-EntranceData::create_EditorObj ()
+void 
+EntranceData::insert_EditorObjs (EditorNS::ObjectManager* obj_mgr)
 {
-  return EditorObjLst(1, new EditorObjs::EntranceObj(*this));
+  obj_mgr->add(new EditorObjs::EntranceObj(*this));
 }
 
 } // namespace WorldObjsData

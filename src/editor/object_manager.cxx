@@ -1,4 +1,4 @@
-//  $Id: object_manager.cxx,v 1.41 2003/02/19 11:33:00 grumbel Exp $
+//  $Id: object_manager.cxx,v 1.42 2003/03/04 12:53:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -129,16 +129,16 @@ ObjectManager::load_level (const std::string& filename)
 
   std::vector<WorldObjData*> temp_worldobj = plf->get_worldobjs_data();
 
-  for (std::vector<GroundpieceData>::iterator i = temp_surfaces.begin(); i != temp_surfaces.end(); ++i) {
-    const EditorObjLst& temp = i->create_EditorObj();
-    editor_objs.insert(editor_objs.end(), temp.begin(), temp.end() );
-  }
+  for (std::vector<GroundpieceData>::iterator i = temp_surfaces.begin(); i != temp_surfaces.end(); ++i) 
+    {
+      i->insert_EditorObjs(this);
+    }
 
   for (std::vector<WorldObjData*>::iterator i = temp_worldobj.begin();
        i != temp_worldobj.end();
-       ++i) {
-    const EditorObjLst& temp = (*i)->create_EditorObj();
-    editor_objs.insert(editor_objs.end(), temp.begin(), temp.end() );
+       ++i) 
+    {
+      (*i)->insert_EditorObjs(this);
   }
 
   std::stable_sort(editor_objs.begin (), editor_objs.end (), EditorObj_z_pos_sorter);

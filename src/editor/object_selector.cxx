@@ -1,4 +1,4 @@
-//  $Id: object_selector.cxx,v 1.30 2002/12/29 23:29:01 torangan Exp $
+//  $Id: object_selector.cxx,v 1.31 2003/03/04 12:53:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,6 +33,7 @@
 #include "../string_converter.hxx"
 #include "../system.hxx"
 #include "object_selector.hxx"
+#include "object_manager.hxx"
 #include "string_reader.hxx"
 #include "thumb_cache.hxx"
 #include "weather_obj.hxx"
@@ -81,22 +82,23 @@ ObjectSelector::~ObjectSelector ()
   
 /** FIXME: Ugly interface, the arguments should not be the offset, but
     instead the absolute position */
-EditorObjLst
-ObjectSelector::get_obj (int x_off, int y_off)
+void
+ObjectSelector::get_obj (ObjectManager* arg_obj_mgr,
+                         int x_off, int y_off)
 {
-
   // FIXME: Sick coordinate handling...
   x_offset = x_off;
   y_offset = y_off;
 
+  obj_mgr = arg_obj_mgr;
   pos = Vector (CL_Mouse::get_x () - x_offset,
-		   CL_Mouse::get_y () - y_offset, 
-		   0.0f);
+                CL_Mouse::get_y () - y_offset, 
+                0.0f);
 
-  return select_obj_type();
+  select_obj_type();
 }
 
-EditorObjLst
+void
 ObjectSelector::get_trap ()
 {
   CL_Display::clear_display();
@@ -114,26 +116,34 @@ ObjectSelector::get_trap ()
       switch (read_key()) 
 	{
 	case CL_KEY_1:
-	  return GuillotineObj::create(pos);
+	  obj_mgr->add(GuillotineObj::create(pos));
+          return;
 	case CL_KEY_2:
-	  return HammerObj::create(pos);
+	  obj_mgr->add(HammerObj::create(pos));
+          return;
 	case CL_KEY_3:
-	  return SpikeObj::create(pos);
+          obj_mgr->add(SpikeObj::create(pos));
+          return;
 	case CL_KEY_4:
-	  return LaserExitObj::create(pos);
+          obj_mgr->add(LaserExitObj::create(pos));
+          return;
 	case CL_KEY_5:
-	  return FakeExitObj::create(pos);
+	  obj_mgr->add(FakeExitObj::create(pos));
+          return;
 	case CL_KEY_6:
-	  return SmasherObj::create(pos);
+	  obj_mgr->add(SmasherObj::create(pos));
+          return;
 	case CL_KEY_7:
-	  return BumperObj::create(pos);
-	case CL_KEY_ESCAPE:
-	  return EditorObjLst();
+	  obj_mgr->add(BumperObj::create(pos));
+          return;
+        case CL_KEY_ESCAPE:
+	  // do nothing
+          return;
 	}
     }
 }
 
-EditorObjLst
+void
 ObjectSelector::get_groundpiece (const Groundtype::GPType& gptype)
 {
   GroundpieceData data;
@@ -143,21 +153,16 @@ ObjectSelector::get_groundpiece (const Groundtype::GPType& gptype)
 
   std::string str = select_surface(datafile);
 
-  EditorObjLst objs;
-
   if (!str.empty())
     {
       data.desc = ResDescriptor("resource:" + datafile, str);
       data.gptype = gptype;
 
-      objs.push_back(new EditorObjs::GroundpieceObj(data));
-      return objs;
+      obj_mgr->add(new EditorObjs::GroundpieceObj(data));
     }
-  
-  return objs;
 }
 
-EditorObjLst
+void
 ObjectSelector::get_hotspot (const std::string& filename)
 {
   HotspotData data;
@@ -168,13 +173,12 @@ ObjectSelector::get_hotspot (const std::string& filename)
     {
       data.desc = ResDescriptor("resource:" + filename, str);
       data.speed = -1;
-
-      return data.create_EditorObj();
     }
-  return EditorObjLst();
+  
+  data.insert_EditorObjs(obj_mgr);
 }
 
-EditorObjLst
+void
 ObjectSelector::get_worldobj ()
 {
   CL_Display::clear_display();
@@ -192,27 +196,32 @@ ObjectSelector::get_worldobj ()
       switch (read_key()) 
 	{
 	case CL_KEY_1:
-	  return TeleporterObj::create(pos);
+	  obj_mgr->add(TeleporterObj::create(pos));
+	  return;
 	  
-	case CL_KEY_2:
-	  return SwitchDoorObj::create(pos);
-
-	case CL_KEY_3:
-	  return ConveyorBeltObj::create(pos);
-
-	case CL_KEY_4:
-	  return IceBlockObj::create(pos);
-
-	case CL_KEY_5:
-	  return InfoBoxObj::create(pos);
+        case CL_KEY_2:
+          obj_mgr->add(SwitchDoorObj::create(pos));
+	  return;
+          
+        case CL_KEY_3:
+          obj_mgr->add(ConveyorBeltObj::create(pos));
+          return;
+          
+        case CL_KEY_4:
+          obj_mgr->add(IceBlockObj::create(pos));
+          return;
+          
+        case CL_KEY_5:
+          obj_mgr->add(InfoBoxObj::create(pos));
+          return;
 	  
-	case CL_KEY_ESCAPE:
-	  return EditorObjLst();
-	}
+        case CL_KEY_ESCAPE:
+          return;
+        }
     }
 }
 
-EditorObjLst
+void
 ObjectSelector::get_weather ()
 {
   std::string type;
@@ -240,10 +249,11 @@ ObjectSelector::get_weather ()
     }
   
   std::cout << "Weather objects currently not implemented" << std::endl;
-  return EditorObjLst(1, new WeatherObj(type));
+
+  obj_mgr->add(new WeatherObj(type));
 }
 
-EditorObjLst
+void
 ObjectSelector::get_entrance ()
 {
   EntranceData entrance;
@@ -287,10 +297,10 @@ ObjectSelector::get_entrance ()
 	}
     }
   
-  return entrance.create_EditorObj ();
+  entrance.insert_EditorObjs (obj_mgr);
 }
 
-EditorObjLst
+void
 ObjectSelector::get_exit ()
 {
   std::string str;
@@ -302,14 +312,14 @@ ObjectSelector::get_exit ()
   last_object = str;
 
   if (str.empty())
-    return EditorObjLst();
+    return;
   
   data.desc = ResDescriptor("resource:exits", str);
   
-  return data.create_EditorObj ();
+  data.insert_EditorObjs (obj_mgr);
 }
 
-EditorObjLst
+void
 ObjectSelector::get_liquid ()
 {
   std::cout << "ObjectSelector::get_liquid() not implemented" << std::endl;
@@ -320,10 +330,10 @@ ObjectSelector::get_liquid ()
   data.width = 5;
   data.desc = ResDescriptor("Liquid/slime", "liquids", ResDescriptor::RD_RESOURCE);
 
-  return data.create_EditorObj ();
+  data.insert_EditorObjs (obj_mgr);
 }
 
-EditorObjLst
+void
 ObjectSelector::get_from_file ()
 {
   CL_Display::clear_display();
@@ -359,26 +369,24 @@ ObjectSelector::get_from_file ()
 	    // FIXME: Ugly hack, since ClanLib appends './'
 	    data.desc = ResDescriptor ("../../../../../../../../../../../" + file, 
 				       "", ResDescriptor::RD_FILE);
-
-	    return data.create_EditorObj();
+            data.insert_EditorObjs(obj_mgr);
+	    return;
 	  }
 	  break;
 
 	case CL_KEY_G:
 	  console << "ObjectSelector: Inserting groundpieces is not implemented" << std::endl;
-	  break;
+          return;
 
 	case CL_KEY_ESCAPE:
-	  return EditorObjLst (); 
+          return;
 	}
     }
 }
 
-EditorObjLst
+void
 ObjectSelector::select_obj_type ()
 {
-  bool exit_loop;
-
   CL_Display::clear_display();
   font->print_left(20, 20, _("Which object do you want?"));
   font->print_left(20, 70, _("g - Groundpiece (ground)"));
@@ -398,9 +406,7 @@ ObjectSelector::select_obj_type ()
   font->print_left(20,350, _("f - something from file (~/.pingus/images/)"));
   Display::flip_display();
 
-  exit_loop = false;
-    
-  while (!exit_loop) 
+  while (1) 
     {
       switch (read_key()) 
 	{
@@ -408,58 +414,70 @@ ObjectSelector::select_obj_type ()
 	  return get_trap();
 
 	case CL_KEY_B:
-	  return get_groundpiece(Groundtype::GP_BRIDGE);
+          get_groundpiece(Groundtype::GP_BRIDGE);
+          return;
 	  
 	case CL_KEY_R:
-	  return get_groundpiece(Groundtype::GP_REMOVE);
+          get_groundpiece(Groundtype::GP_REMOVE);
+          return;
 	  
 	case CL_KEY_S:
-	  return get_groundpiece(Groundtype::GP_SOLID);
+          get_groundpiece(Groundtype::GP_SOLID);
+          return;
 
 	case CL_KEY_G:
-	  return get_groundpiece(Groundtype::GP_GROUND);
+          get_groundpiece(Groundtype::GP_GROUND);
+          return;
 
 	case CL_KEY_N:
-	  return get_groundpiece(Groundtype::GP_TRANSPARENT);
+          get_groundpiece(Groundtype::GP_TRANSPARENT);
+          return;
 
 	case CL_KEY_H:
-	  return get_hotspot("hotspots");
+          get_hotspot("hotspots");
+          return;
 		  
 	case CL_KEY_E:
-	  return get_entrance();
+          get_entrance();
+          return;
 
 	case CL_KEY_X:
-	  return get_exit();
+          get_exit();
+          return;
 
 	case CL_KEY_L:
 	  std::cout << "ObjectSelector: Liquid not implemented" << std::endl;
-	  return get_liquid();
+          get_liquid();
+          return;
 
 	case CL_KEY_W:
-	  return get_weather();
-
+          get_weather();
+          return;
+          
 	case CL_KEY_P:
-	  return get_prefab();
+          get_prefab();
+          return;
 
 	case CL_KEY_O:
-	  return get_worldobj();
+          get_worldobj();
+          return;
 
 	case CL_KEY_Z:
-	  return get_background();
+          get_background();
+          return;
 		  
 	case CL_KEY_F:
-	  return get_from_file();
+          get_from_file();
+          return;
 
 	case CL_KEY_ESCAPE:
-	  exit_loop = true;
-	  break;
+	  return;
 	}
     }
-  return EditorObjLst ();
 }
 
 
-EditorObjLst
+void
 ObjectSelector::get_prefab ()
 {
   CL_DirectoryScanner dir;
@@ -499,11 +517,9 @@ ObjectSelector::get_prefab ()
 	  break;
 	}
     }
-
-  return EditorObjLst();
 }
 
-EditorObjLst
+void
 ObjectSelector::get_background ()
 {
   CL_Display::clear_display();
@@ -514,11 +530,7 @@ ObjectSelector::get_background ()
   font->print_left(20,110, _("4 - Thunderstorm Background"));
   Display::flip_display();
 
-  EditorObjLst lst;
-
-  bool exit_loop = false;
-    
-  while (!exit_loop) 
+  while (1) 
     {
       switch (read_key()) 
 	{
@@ -530,27 +542,22 @@ ObjectSelector::get_background ()
 
 	    if (!data.desc.res_name.empty())
 	      {
-		lst = data.create_EditorObj ();
+		data.insert_EditorObjs(obj_mgr);
 	      }
-	    
+	    return;
 	  }
-	  exit_loop = true;
-	  break;
+          return;
 	case CL_KEY_2:
-	  lst = SolidColorBackgroundData().create_EditorObj();
-	  exit_loop = true;
-	  break;
+          SolidColorBackgroundData().insert_EditorObjs(obj_mgr);
+          return;
 	case CL_KEY_3:
-	  lst = StarfieldBackgroundData().create_EditorObj();
-	  exit_loop = true;
-	  break;
+          StarfieldBackgroundData().insert_EditorObjs(obj_mgr);
+          return;
 	case CL_KEY_4:
-	  lst = ThunderstormBackgroundData ().create_EditorObj();
-	  exit_loop = true;
-	  break;
+	  ThunderstormBackgroundData ().insert_EditorObjs(obj_mgr);
+          return;
 	}
     }
-  return lst;
 }
 
 std::string

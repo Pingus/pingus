@@ -1,4 +1,4 @@
-//  $Id: thunderstorm_background_data.cxx,v 1.5 2003/02/26 17:08:30 grumbel Exp $
+//  $Id: thunderstorm_background_data.cxx,v 1.6 2003/03/04 12:53:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,7 @@
 #include "../xml_file_reader.hxx"
 #include "../editorobjs/thunderstorm_background_obj.hxx"
 #include "../worldobjs/thunderstorm_background.hxx"
+#include "../editor/object_manager.hxx"
 #include "thunderstorm_background_data.hxx"
 
 namespace WorldObjsData {
@@ -52,10 +53,10 @@ ThunderstormBackgroundData::insert_WorldObjs (World* world)
   world->add_object(new WorldObjs::ThunderstormBackground(*this));
 }
 
-EditorObjLst 
-ThunderstormBackgroundData::create_EditorObj ()
+void
+ThunderstormBackgroundData::insert_EditorObjs (EditorNS::ObjectManager* obj_mgr)
 {
-  return EditorObjLst(1, new EditorObjs::ThunderstormBackgroundObj(*this));
+  obj_mgr->add(new EditorObjs::ThunderstormBackgroundObj(*this));
 }
 
 } // namespace WorldObjsData

@@ -1,4 +1,4 @@
-//  $Id: teleporter_data.cxx,v 1.10 2003/02/26 17:08:30 grumbel Exp $
+//  $Id: teleporter_data.cxx,v 1.11 2003/03/04 12:53:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,7 +25,7 @@
 #include "../editorobjs/teleporter_obj.hxx"
 #include "../editorobjs/teleporter_target_obj.hxx"
 #include "../worldobjs/teleporter.hxx"
-
+#include "../editor/object_manager.hxx"
 namespace WorldObjsData {
 
 TeleporterData::TeleporterData ()
@@ -66,18 +66,13 @@ TeleporterData::insert_WorldObjs (World* world)
   world->add_object(new WorldObjs::Teleporter(*this));
 }
 
-EditorObjLst
-TeleporterData::create_EditorObj ()
+void
+TeleporterData::insert_EditorObjs (EditorNS::ObjectManager* obj_mgr)
 {
-  EditorObjLst objs(2);
-  
-  EditorObjs::TeleporterObj*       teleporter        = new EditorObjs::TeleporterObj(*this);
-  EditorObjs::TeleporterTargetObj* teleporter_target = new EditorObjs::TeleporterTargetObj(teleporter);
+  EditorObjs::TeleporterObj* teleporter = new EditorObjs::TeleporterObj(*this);
 
-  objs[0] = teleporter;
-  objs[1] = teleporter_target;
-
-  return objs;
+  obj_mgr->add(teleporter);
+  obj_mgr->add(new EditorObjs::TeleporterTargetObj(teleporter));
 }
 
 } // namespace WorldObjsData
