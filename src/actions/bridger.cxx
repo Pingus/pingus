@@ -1,4 +1,4 @@
-//  $Id: bridger.cxx,v 1.24 2002/10/13 20:25:00 torangan Exp $
+//  $Id: bridger.cxx,v 1.25 2002/10/21 23:58:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -173,12 +173,34 @@ Bridger::update_build ()
     }
 }
 
+// way_is_free() needs to stop BRIDGERS from getting stuck between a brick
+// and the ceiling.  The routine also stops cases of Bridgers building up but
+// then not being able to walk all the way down the bridge the it has built.
+// Even though the routine may be the same as brick_placement_allowed(), it is
+// best to keep them apart as they may need to be independent of each other if
+// there needs to be a patch.
 bool
 Bridger::way_is_free()
 {
-  return (rel_getpixel(4,2) ==  Groundtype::GP_NOTHING);
+  bool way_free = true;
+
+  for (int x_inc = 1; x_inc <= 4; x_inc++)
+    {
+      if (rel_getpixel(x_inc, 2) != Groundtype::GP_NOTHING
+	  || head_collision_on_walk(x_inc, 2))
+	{
+	  way_free = false;
+	  break;
+	}
+    }
+
+  return way_free;
 }
 
+// brick_placement_allowed() is mainly for stopping WALKERS from getting stuck
+// between a brick and the ceiling.  Even though the routine may be the same,
+// as way_is_free() it is best to keep them apart as they may need to be
+// independent of each other if there needs to be a patch.
 bool
 Bridger::brick_placement_allowed(void)
 {
