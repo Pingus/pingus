@@ -1,4 +1,4 @@
-//  $Id: Pingu.hh,v 1.39 2002/02/10 22:14:06 grumbel Exp $
+//  $Id: Pingu.hh,v 1.40 2002/06/07 20:35:14 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,16 +24,14 @@
 #include <ClanLib/display.h>
 #include "boost/smart_ptr.hpp"
 
-#include "StringConverter.hh"
 #include "WorldObj.hh"
 #include "Direction.hh"
 #include "PinguEnums.hh"
-#include "Sprite.hh"
 #include "PinguAction.hh"
 
 // Forward declarations
 class ActionHolder;
-class PinguAction; 
+class PinguAction;
 
 /** The class for managing one of the many penguins which are walking
     around in the World. All actions are handled by PinguAction

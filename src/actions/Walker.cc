@@ -1,4 +1,4 @@
-//  $Id: Walker.cc,v 1.12 2002/06/04 10:32:09 torangan Exp $
+//  $Id: Walker.cc,v 1.13 2002/06/07 20:35:14 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,7 @@
 #include "../ColMap.hh"
 #include "../World.hh"
 #include "../globals.hh"
+#include "../StringConverter.hh"
 #include "Walker.hh"
 
 const int Walker::max_steps=4;

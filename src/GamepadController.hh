@@ -1,4 +1,4 @@
-//  $Id: GamepadController.hh,v 1.6 2001/04/14 11:41:21 grumbel Exp $
+//  $Id: GamepadController.hh,v 1.7 2002/06/07 20:35:14 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,9 +20,11 @@
 #ifndef GAMEPADCONTROLLER_HH
 #define GAMEPADCONTROLLER_HH
 
-#include <ClanLib/display.h>
 #include "DeltaManager.hh"
 #include "Controller.hh"
+
+class CL_InputDevice;
+class CL_InputAxis;
 
 /** Controller for the Microsoft Sidewinder Gamepad, might work with
     other, but the button layout might be suboptimal. */

@@ -1,4 +1,4 @@
-//  $Id: Liquid.hh,v 1.12 2001/08/13 21:35:37 grumbel Exp $
+//  $Id: Liquid.hh,v 1.13 2002/06/07 20:35:14 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,6 @@
 #define LIQUID_HH
 
 #include <ClanLib/display.h>
-#include "ResDescriptor.hh"
 #include "AnimCounter.hh"
 #include "WorldObj.hh"
 #include "LiquidData.hh"

@@ -1,4 +1,4 @@
-//  $Id: EntranceData.hh,v 1.7 2002/01/15 10:48:48 grumbel Exp $
+//  $Id: EntranceData.hh,v 1.8 2002/06/07 20:35:14 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,11 +21,16 @@
 #define ENTRANCE_DATA_HH
 
 #include <string>
-#include <fstream>
 
 #include "WorldObjData.hh"
-#include "Position.hh"
 #include "ResDescriptor.hh"
+
+namespace std {
+  template <class T> class char_traits;
+  template <class T1, class T2> struct basic_ofstream;
+  typedef struct basic_ofstream<char, char_traits<char> > ofstream;
+}
+
 
 class EntranceData : public WorldObjData
 {

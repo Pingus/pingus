@@ -1,4 +1,4 @@
-//  $Id: MultiLineText.cc,v 1.3 2001/08/04 12:46:22 grumbel Exp $
+//  $Id: MultiLineText.cc,v 1.4 2002/06/07 20:35:14 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #include <cassert>
 #include <algorithm>
 #include "MultiLineText.hh"
+#include <ClanLib/display.h>
 
 using namespace std;
 

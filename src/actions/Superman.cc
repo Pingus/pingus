@@ -1,4 +1,4 @@
-//  $Id: Superman.cc,v 1.6 2002/06/01 18:05:36 torangan Exp $
+//  $Id: Superman.cc,v 1.7 2002/06/07 20:35:14 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #include "../Pingu.hh"
 #include "../PingusResource.hh"
 #include "../Sprite.hh"
+#include "../StringConverter.hh"
 #include "Superman.hh"
 
 Superman::Superman ()

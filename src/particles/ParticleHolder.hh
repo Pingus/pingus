@@ -1,4 +1,4 @@
-//  $Id: ParticleHolder.hh,v 1.8 2001/04/03 10:45:50 grumbel Exp $
+//  $Id: ParticleHolder.hh,v 1.9 2002/06/07 20:35:14 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,6 @@
 #define PARTICLEHOLDER_HH
 
 #include <list>
-#include "Particle.hh"
 #include "ParticleCache.hh"
 
 class Particle;

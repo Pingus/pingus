@@ -1,4 +1,4 @@
-//  $Id: EditorView.hh,v 1.6 2002/06/04 13:43:19 torangan Exp $
+//  $Id: EditorView.hh,v 1.7 2002/06/07 20:35:14 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,9 +21,9 @@
 #define EDITORVIEW_HH
 
 #include <ClanLib/core.h>
-#include <ClanLib/display.h>
 
 class Sprite;
+class CL_Surface;
 
 class EditorView
 {

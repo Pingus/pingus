@@ -1,4 +1,4 @@
-//  $Id: ScrollMap.cc,v 1.8 2002/06/01 18:05:36 torangan Exp $
+//  $Id: ScrollMap.cc,v 1.9 2002/06/07 20:35:14 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,8 +17,11 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <ClanLib/display.h>
 #include "ScrollMap.hh"
 #include "../Display.hh"
+#include "Editor.hh"
+#include "ObjectManager.hh"
 
 EditorEvent* ScrollMap::editor_event;
 

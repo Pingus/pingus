@@ -1,4 +1,4 @@
-//  $Id: miner.hh,v 1.12 2002/02/17 23:49:32 grumbel Exp $
+//  $Id: miner.hh,v 1.13 2002/06/07 20:35:14 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,6 @@
 #ifndef MINER_HH
 #define MINER_HH
 
-#include "../Counter.hh"
 #include "../PinguAction.hh"
 
 ///

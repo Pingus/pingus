@@ -1,4 +1,4 @@
-// $Id: LiquidData.hh,v 1.8 2002/01/15 10:48:49 grumbel Exp $
+// $Id: LiquidData.hh,v 1.9 2002/06/07 20:35:14 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,11 +20,14 @@
 #ifndef LIQUIDDATA_HH
 #define LIQUIDDATA_HH
 
-#include <fstream>
-
 #include "ResDescriptor.hh"
-#include "Position.hh"
 #include "WorldObjData.hh"
+
+namespace std {
+  template <class T> class char_traits;
+  template <class T1, class T2> struct basic_ofstream;
+  typedef struct basic_ofstream<char, char_traits<char> > ofstream;
+}
 
 ///
 class LiquidData : public WorldObjData

@@ -1,4 +1,4 @@
-//  $Id: Entrance.hh,v 1.18 2001/08/13 21:35:37 grumbel Exp $
+//  $Id: Entrance.hh,v 1.19 2002/06/07 20:35:14 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,13 +20,11 @@
 #ifndef ENTRANCE_HH
 #define ENTRANCE_HH
 
-#include <string>
-#include <ClanLib/core.h>
 #include <ClanLib/display.h>
-#include "Pingu.hh"
 #include "WorldObj.hh"
-#include "ActionHolder.hh"
 #include "EntranceData.hh"
+
+class Pingu;
 
 /** A abstract representation of an entrance, the implementation
     currently sucks and needs to be rewritten */

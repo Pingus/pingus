@@ -1,4 +1,4 @@
-//  $Id: HotspotData.hh,v 1.5 2002/01/15 10:48:49 grumbel Exp $
+//  $Id: HotspotData.hh,v 1.6 2002/06/07 20:35:14 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,11 +20,15 @@
 #ifndef HOTSPOT_DATA_HH
 #define HOTSPOT_DATA_HH
 
-#include <fstream>
-
-#include "Position.hh"
 #include "ResDescriptor.hh"
 #include "WorldObjData.hh"
+
+namespace std {
+  template <class T> class char_traits;
+   template <class T1, class T2> struct basic_ofstream;
+  typedef struct basic_ofstream<char, char_traits<char> > ofstream;
+}
+
 
 class HotspotData : public WorldObjData
 {

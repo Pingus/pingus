@@ -1,4 +1,4 @@
-//  $Id: Panel.hh,v 1.7 2001/06/11 08:45:22 grumbel Exp $
+//  $Id: Panel.hh,v 1.8 2002/06/07 20:35:14 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,7 +23,8 @@
 #include <vector>
 #include <ClanLib/core.h>
 
-#include "EditorEvent.hh"
+class CL_Font;
+class Editor;
 
 ///
 class EditorEvent;

@@ -1,4 +1,4 @@
-//  $Id: Boarder.cc,v 1.4 2002/06/01 18:05:36 torangan Exp $
+//  $Id: Boarder.cc,v 1.5 2002/06/07 20:35:14 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,7 @@
 
 #include "../Pingu.hh"
 #include "../PingusResource.hh"
+#include "../StringConverter.hh"
 #include "Boarder.hh"
 
 Boarder::Boarder ()

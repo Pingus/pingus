@@ -1,4 +1,4 @@
-//  $Id: EditorEvent.hh,v 1.13 2001/05/19 20:58:42 grumbel Exp $
+//  $Id: EditorEvent.hh,v 1.14 2002/06/07 20:35:14 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,15 +20,12 @@
 #ifndef EDITOREVENT_HH
 #define EDITOREVENT_HH
 
-#include <ClanLib/core.h>
-
-#include "Editor.hh"
-#include "ObjectManager.hh"
-
+class CL_Key;
+class CL_Font;
+class CL_InputDevice;
+class Editor;
 class ObjectManager;
 
-///
-class Editor;
 
 class EditorEvent //: public CL_Event_ButtonPress, public CL_Event_ButtonRelease
 {

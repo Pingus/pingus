@@ -1,4 +1,4 @@
-//  $Id: WorldObjGroupData.cc,v 1.2 2002/01/15 10:48:49 grumbel Exp $
+//  $Id: WorldObjGroupData.cc,v 1.3 2002/06/07 20:35:14 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,11 +20,8 @@
 #include "editor/EditorObj.hh"
 #include "editor/EditorObjGroup.hh"
 #include "WorldObj.hh"
-#include "generic/ListHelper.hh"
 #include "WorldObjGroupData.hh"
 
-
-using namespace ListHelper;
 
 void 
 WorldObjGroupData::add (boost::shared_ptr<WorldObjData> data)

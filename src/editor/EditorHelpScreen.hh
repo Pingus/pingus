@@ -1,4 +1,4 @@
-//  $Id: EditorHelpScreen.hh,v 1.1 2002/01/19 14:29:59 grumbel Exp $
+//  $Id: EditorHelpScreen.hh,v 1.2 2002/06/07 20:35:14 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,7 @@
 #ifndef EDITORHELPSCREEN_HH
 #define EDITORHELPSCREEN_HH
 
-#include <ClanLib/display.h>
+class CL_Font;
 
 class EditorHelpScreen
 {

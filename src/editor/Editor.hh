@@ -1,4 +1,4 @@
-//  $Id: Editor.hh,v 1.18 2002/06/04 13:43:18 torangan Exp $
+//  $Id: Editor.hh,v 1.19 2002/06/07 20:35:14 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,12 +21,9 @@
 #define EDITOR_HH
 
 #include <string>
-#include <list>
 #include <ClanLib/core.h>
 
 #include "EditorHelpScreen.hh"
-#include "../PSMParser.hh"
-#include "../PLF.hh"
 
 ///
 class EditorView;

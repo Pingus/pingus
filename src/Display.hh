@@ -1,4 +1,4 @@
-//  $Id: Display.hh,v 1.11 2002/06/06 14:05:44 grumbel Exp $
+//  $Id: Display.hh,v 1.12 2002/06/07 20:35:14 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,9 +20,10 @@
 #ifndef DISPLAY_HH
 #define DISPLAY_HH
 
-#include <ClanLib/core.h>
-#include <ClanLib/display.h>
 #include <list>
+
+class DisplayHook;
+class CL_MouseCursorProvider;
 
 /** A flip display hook can be used to attach an event to a
     flip_screen(). An example usage for this is a software mouse

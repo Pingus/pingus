@@ -1,4 +1,4 @@
-//  $Id: Editor.cc,v 1.41 2002/06/04 13:43:18 torangan Exp $
+//  $Id: Editor.cc,v 1.42 2002/06/07 20:35:14 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,6 +35,8 @@
 #include "ScrollMap.hh"
 #include "StatusLine.hh"
 #include "ObjectSelector.hh"
+#include "ObjectManager.hh"
+#include "../ActionData.hh"
 
 Editor* Editor::instance_ = 0;
 

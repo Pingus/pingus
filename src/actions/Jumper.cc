@@ -1,4 +1,4 @@
-//  $Id: Jumper.cc,v 1.18 2002/06/01 18:05:36 torangan Exp $
+//  $Id: Jumper.cc,v 1.19 2002/06/07 20:35:14 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,7 @@
 
 #include "../Pingu.hh"
 #include "../PingusResource.hh"
+#include "../StringConverter.hh"
 #include "Jumper.hh"
 
 Jumper::Jumper()

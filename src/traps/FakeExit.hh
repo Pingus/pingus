@@ -1,4 +1,4 @@
-//  $Id: FakeExit.hh,v 1.8 2001/08/10 10:56:14 grumbel Exp $
+//  $Id: FakeExit.hh,v 1.9 2002/06/07 20:35:14 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,8 @@
 #define FAKE_EXIT_HH
 
 #include "../Trap.hh"
-#include "../TrapData.hh"
+
+class TrapData;
 
 ///
 class FakeExit : public Trap

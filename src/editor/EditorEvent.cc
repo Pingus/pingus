@@ -1,4 +1,4 @@
-//  $Id: EditorEvent.cc,v 1.58 2002/01/29 20:43:18 grumbel Exp $
+//  $Id: EditorEvent.cc,v 1.59 2002/06/07 20:35:14 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,6 +38,7 @@
 #include "ScrollMap.hh"
 #include "Panel.hh"
 #include "ObjectSelector.hh"
+#include "Editor.hh"
 
 EditorEvent::EditorEvent()
   : is_enabled (0)

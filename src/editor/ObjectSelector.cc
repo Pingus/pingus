@@ -1,4 +1,4 @@
-//  $Id: ObjectSelector.cc,v 1.60 2002/06/04 13:43:19 torangan Exp $
+//  $Id: ObjectSelector.cc,v 1.61 2002/06/07 20:35:14 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,10 +27,17 @@
 #include "StringReader.hh"
 #include "WeatherObj.hh"
 #include "ObjectSelector.hh"
+#include "SurfaceSelector.hh"
 #include "ThumbCache.hh"
+#include "EditorGroundpieceObj.hh"
+#include "PLFObj.hh"
 #include "../my_gettext.hh"
 #include "../System.hh"
 #include "../EditorHotspot.hh"
+#include "../TrapData.hh"
+#include "../EntranceData.hh"
+#include "../ExitData.hh"
+#include "../LiquidData.hh"
 
 #include "../backgrounds/StarfieldBackground.hh"
 #include "../backgrounds/SurfaceBackgroundData.hh"

@@ -1,4 +1,4 @@
-//  $Id: HurryUp.hh,v 1.5 2001/04/08 14:10:34 grumbel Exp $
+//  $Id: HurryUp.hh,v 1.6 2002/06/07 20:35:14 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,9 +20,10 @@
 #ifndef HURRYUP_HH
 #define HURRYUP_HH
 
-#include <ClanLib/core.h>
 #include "GuiObj.hh"
-#include "Client.hh"
+
+class CL_Font;
+class Client;
 
 /** Hurry up if the time goes over... */
 class HurryUp : public GuiObj

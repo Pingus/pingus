@@ -1,4 +1,4 @@
-//  $Id: PanelIcons.cc,v 1.13 2001/08/13 21:35:37 grumbel Exp $
+//  $Id: PanelIcons.cc,v 1.14 2002/06/07 20:35:14 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,8 @@
 #include "../my_gettext.hh"
 #include "../PingusResource.hh"
 #include "PanelIcons.hh"
+#include "Editor.hh"
+#include "EditorEvent.hh"
 
 PanelIconLoad::PanelIconLoad()
 {

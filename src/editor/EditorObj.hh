@@ -1,4 +1,4 @@
-//  $Id: EditorObj.hh,v 1.39 2002/06/07 14:50:34 torangan Exp $
+//  $Id: EditorObj.hh,v 1.40 2002/06/07 20:35:14 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,9 +21,6 @@
 #define EDITOROBJ_HH
 
 #include <string>
-#include <fstream>
-
-#include "../boost/smart_ptr.hpp"
 
 using namespace std;
 
@@ -31,6 +28,17 @@ class CL_Rect;
 class CL_Vector;
 class EditorView;
 class Editor;
+
+// looks strange, but it's just a predeclaration of ofstream
+namespace std {
+  template <class T> class char_traits;
+  template <class T1, class T2> struct basic_ofstream;
+  typedef struct basic_ofstream<char, char_traits<char> > ofstream;
+}
+
+namespace boost {
+  template <class T> class shared_ptr;
+}
 
 /** Interface for all objects which can be shown in the editor */
 class EditorObj

@@ -1,4 +1,4 @@
-//  $Id: Slider.cc,v 1.2 2002/06/01 18:05:36 torangan Exp $
+//  $Id: Slider.cc,v 1.3 2002/06/07 20:35:14 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "../ColMap.hh"
+#include "../StringConverter.hh"
 #include "Slider.hh"
 
 Slider::Slider ()

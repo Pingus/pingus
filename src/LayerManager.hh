@@ -1,4 +1,4 @@
-//  $Id: LayerManager.hh,v 1.6 2001/04/27 20:44:37 grumbel Exp $
+//  $Id: LayerManager.hh,v 1.7 2002/06/07 20:35:14 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,6 @@
 #define LAYERMANAGER_HH
 
 #include <vector>
-#include <ClanLib/core.h>
 #include <ClanLib/display.h>
 
 class LayerManager

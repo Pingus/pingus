@@ -1,4 +1,4 @@
-//  $Id: HurryUp.cc,v 1.10 2002/06/01 18:05:34 torangan Exp $
+//  $Id: HurryUp.cc,v 1.11 2002/06/07 20:35:14 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,7 @@
 
 #include "PingusResource.hh"
 #include "HurryUp.hh"
+#include "Client.hh"
 
 HurryUp::HurryUp()
 {

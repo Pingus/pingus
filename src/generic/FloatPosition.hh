@@ -1,4 +1,4 @@
-//  $Id: FloatPosition.hh,v 1.1 2000/09/21 17:26:42 grumbel Exp $
+//  $Id: FloatPosition.hh,v 1.2 2002/06/07 20:35:14 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,8 @@
 #ifndef FLOATPOSITION_HH
 #define FLOATPOSITION_HH
 
-#include "../Position.hh"
+class FloatPosition;
+
 
 class FloatPosition
 {

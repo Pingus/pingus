@@ -1,4 +1,4 @@
-//  $Id: FadeOut.cc,v 1.9 2002/06/01 18:05:34 torangan Exp $
+//  $Id: FadeOut.cc,v 1.10 2002/06/07 20:35:14 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <ClanLib/core.h>
+#include <ClanLib/display.h>
 #include "Display.hh"
 #include "FadeOut.hh"
 #include "globals.hh"

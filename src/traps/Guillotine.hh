@@ -1,4 +1,4 @@
-//  $Id: Guillotine.hh,v 1.9 2001/08/10 10:56:14 grumbel Exp $
+//  $Id: Guillotine.hh,v 1.10 2002/06/07 20:35:14 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,11 +20,11 @@
 #ifndef GUILLOTINE_HH
 #define GUILLOTINE_HH
 
-#include <ClanLib/core.h>
 
 #include "../Direction.hh"
 #include "../Trap.hh"
-#include "../TrapData.hh"
+
+class TrapData;
 
 ///
 class Guillotine : public Trap

@@ -1,4 +1,4 @@
-//  $Id: Exit.hh,v 1.20 2002/06/01 17:55:29 torangan Exp $
+//  $Id: Exit.hh,v 1.21 2002/06/07 20:35:14 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,14 +20,8 @@
 #ifndef EXIT_HH
 #define EXIT_HH
 
-#include <sstream>
-#include <ClanLib/core.h>
-
 #include "WorldObj.hh"
 #include "ExitData.hh"
-#include "Pingu.hh"
-#include "AnimCounter.hh"
-#include "ActionHolder.hh"
 #include "Sprite.hh"
 
 class Exit : public ExitData,

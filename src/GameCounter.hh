@@ -1,4 +1,4 @@
-//  $Id: GameCounter.hh,v 1.5 2000/06/18 17:01:49 grumbel Exp $
+//  $Id: GameCounter.hh,v 1.6 2002/06/07 20:35:14 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,6 @@
 #ifndef GAMECOUNTER_HH
 #define GAMECOUNTER_HH
 
-#include "GameTime.hh"
 
 ///
 class GameCounter

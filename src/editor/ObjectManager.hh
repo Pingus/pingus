@@ -1,4 +1,4 @@
-//  $Id: ObjectManager.hh,v 1.24 2002/06/07 14:50:34 torangan Exp $
+//  $Id: ObjectManager.hh,v 1.25 2002/06/07 20:35:14 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,14 +20,15 @@
 #ifndef OBJECTMANAGER_HH
 #define OBJECTMANAGER_HH
 
-#include <iostream>
-#include <fstream>
-
-#include "../ActionData.hh"
 #include "../Color.hh"
+#include "../ActionData.hh"
+#include "../boost/smart_ptr.hpp"
+#include "EditorObj.hh"
 
+class PLF;
 class EditorView;
-class EditorObj;
+
+
 
 /// Manager for all level objects.
 class ObjectManager

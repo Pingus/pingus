@@ -1,4 +1,4 @@
-//  $Id: GlobalEvent.hh,v 1.4 2000/08/09 14:39:37 grumbel Exp $
+//  $Id: GlobalEvent.hh,v 1.5 2002/06/07 20:35:14 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,9 @@
 #ifndef GLOBALEVENT_HH
 #define GLOBALEVENT_HH
 
-#include <ClanLib/core.h>
+class CL_Key;
+class CL_InputDevice;
+
 
 ///
 class GlobalEvent  
@@ -35,8 +37,7 @@ public:
   ///
   virtual void on_button_release(CL_InputDevice *device, const CL_Key &key);
   
-}///
-;
+};
 
 ///
 extern GlobalEvent global_event;

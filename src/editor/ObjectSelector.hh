@@ -1,4 +1,4 @@
-// $Id: ObjectSelector.hh,v 1.28 2002/06/04 13:43:19 torangan Exp $
+// $Id: ObjectSelector.hh,v 1.29 2002/06/07 20:35:14 torangan Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,14 +23,10 @@
 #include <config.h>
 #include <list>
 #include <string>
-#include <iostream>
-
-#include "EditorObj.hh"
-#include "PLFObj.hh"
-#include "EditorGroundpieceObj.hh"
-#include "SurfaceSelector.hh"
+#include "../GroundpieceData.hh"
 
 class EditorObj;
+class surface_obj;
 
 ///
 class ObjectSelector
