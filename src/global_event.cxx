@@ -1,4 +1,4 @@
-//  $Id: global_event.cxx,v 1.1 2002/06/12 19:09:37 grumbel Exp $
+//  $Id: global_event.cxx,v 1.2 2002/06/13 14:25:12 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,7 +19,6 @@
 
 #include <ClanLib/Display/Input/input.h>
 #include <ClanLib/Display/Input/keyboard.h>
-#include <ClanLib/Display/Input/key.h>
 #include "screenshot.hxx"
 #include "console.hxx"
 #include "fps_counter.hxx"

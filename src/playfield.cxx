@@ -1,4 +1,4 @@
-//  $Id: playfield.cxx,v 1.1 2002/06/12 19:06:13 grumbel Exp $
+//  $Id: playfield.cxx,v 1.2 2002/06/13 14:25:12 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,19 +17,11 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <iostream>
-#include <cstdio>
-#include <cassert>
-
 #include <ClanLib/Display/Display/display.h>
 #include "controller.hxx"
-#include "algo.hxx"
 #include "globals.hxx"
 #include "playfield.hxx"
 #include "plf.hxx"
-#include "level_interrupt.hxx"
-#include "capture_rectangle.hxx"
-#include "game_time.hxx"
 #include "pingu_holder.hxx"
 #include "world.hxx"
 #include "server.hxx"

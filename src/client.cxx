@@ -1,4 +1,4 @@
-//  $Id: client.cxx,v 1.1 2002/06/12 19:09:37 grumbel Exp $
+//  $Id: client.cxx,v 1.2 2002/06/13 14:25:12 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,25 +23,17 @@
 #include <ClanLib/Display/Input/input.h>
 #include <ClanLib/Display/Input/keyboard.h>
 #include "globals.hxx"
-#include "client.hxx"
-#include "fade_out.hxx"
 #include "playfield.hxx"
-#include "level_interrupt.hxx"
-#include "system.hxx"
-#include "algo.hxx"
 #include "timer.hxx"
 #include "pingus_resource.hxx"
-#include "display.hxx"
 #include "level_result.hxx"
 #include "sound.hxx"
-#include "pingus_error.hxx"
 #include "option_menu.hxx"
 #include "time_display.hxx"
 #include "pingus_counter.hxx"
 #include "smallmap.hxx"
 #include "plf.hxx"
 #include "hurry_up.hxx"
-#include "mouse_controller.hxx"
 #include "path_manager.hxx"
 #include "gamepad_controller.hxx"
 #include "cursor.hxx"

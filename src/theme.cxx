@@ -1,4 +1,4 @@
- //  $Id: theme.cxx,v 1.1 2002/06/12 19:09:38 grumbel Exp $
+ //  $Id: theme.cxx,v 1.2 2002/06/13 14:25:12 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,7 +29,6 @@
 #include "pingus_error.hxx"
 #include "game_session.hxx"
 #include "message_box.hxx"
-#include "algo.hxx"
 #include "globals.hxx"
 #include "theme.hxx"
 #include "plf_plf.hxx"

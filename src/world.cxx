@@ -1,4 +1,4 @@
-//  $Id: world.cxx,v 1.1 2002/06/12 19:09:38 grumbel Exp $
+//  $Id: world.cxx,v 1.2 2002/06/13 14:25:12 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,28 +17,18 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <cstdio>
-#include <ctime>
-
-#include "action_holder.hxx"
-#include "exit.hxx"
 #include "force_vector.hxx"
-#include "hotspot.hxx"
-#include "liquid.hxx"
 #include "plf.hxx"
 #include "pingu_holder.hxx"
-#include "pingus_error.hxx"
 #include "sound.hxx"
 #include "spot_map.hxx"
-#include "result.hxx"
-#include "timer.hxx"
 #include "view.hxx"
 #include "world.hxx"
-#include "globals.hxx"
 #include "game_time.hxx"
 #include "particles/particle_holder.hxx"
 #include "particles/weather_generator.hxx"
 #include "pingu.hxx"
+#include "worldobj_data.hxx"
 
 using namespace std;
 using boost::shared_ptr;

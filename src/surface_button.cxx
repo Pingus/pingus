@@ -1,4 +1,4 @@
-//  $Id: surface_button.cxx,v 1.1 2002/06/12 19:09:38 grumbel Exp $
+//  $Id: surface_button.cxx,v 1.2 2002/06/13 14:25:12 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,10 +21,7 @@
 #include <ClanLib/Display/Display/display.h>
 #include <ClanLib/Display/Font/font.h>
 #include "sound.hxx"
-#include "globals.hxx"
 #include "pingus_resource.hxx"
-#include "loading.hxx"
-#include "system.hxx"
 #include "pingus_menu_manager.hxx"
 #include "credits.hxx"
 #include "editor/editor.hxx"

@@ -1,4 +1,4 @@
-//  $Id: spot_map.cxx,v 1.1 2002/06/12 19:09:38 grumbel Exp $
+//  $Id: spot_map.cxx,v 1.2 2002/06/13 14:25:12 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,14 +17,12 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <ClanLib/Display/Display/surfaceprovider.h>
 #include <ClanLib/Display/SurfaceProviders/canvas.h>
 #include <ClanLib/Display/Display/display.h>
 #include "pingus_resource.hxx"
 #include "plf.hxx"
 #include "pingus_error.hxx"
 #include "blitter.hxx"
-#include "algo.hxx"
 #include "timer.hxx"
 #include "spot_map.hxx"
 #include "my_gettext.hxx"

@@ -1,4 +1,4 @@
-//  $Id: laser_kill.cxx,v 1.1 2002/06/12 19:01:42 grumbel Exp $
+//  $Id: laser_kill.cxx,v 1.2 2002/06/13 14:25:12 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,13 +17,8 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <cstdio>
-
 #include "../pingu.hxx"
-#include "../pingus_resource.hxx"
 #include "laser_kill.hxx"
-#include "../particles/ground_particle.hxx"
-#include "../algo.hxx"
 
 LaserKill::LaserKill()
 {

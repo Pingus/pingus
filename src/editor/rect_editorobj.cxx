@@ -1,4 +1,4 @@
-// $Id: rect_editorobj.cxx,v 1.1 2002/06/12 19:11:31 grumbel Exp $
+// $Id: rect_editorobj.cxx,v 1.2 2002/06/13 14:25:13 torangan Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,8 +18,6 @@
 // Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <ClanLib/Core/Math/rect.h>
-#include "../my_gettext.hxx"
-#include "../boost/smart_ptr.hpp"
 #include "editor_view.hxx"
 #include "rect_editorobj.hxx"
 

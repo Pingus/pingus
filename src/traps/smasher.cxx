@@ -1,4 +1,4 @@
-//  $Id: smasher.cxx,v 1.1 2002/06/12 19:11:32 grumbel Exp $
+//  $Id: smasher.cxx,v 1.2 2002/06/13 14:25:13 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,13 +19,11 @@
 
 #include "../col_map.hxx"
 #include "../world.hxx"
-#include "../action_holder.hxx"
 #include "../pingu_holder.hxx"
 #include "../pingus_resource.hxx"
 #include "../sound.hxx"
 #include "../particles/smoke_particle.hxx"
 #include "../particles/particle_holder.hxx"
-#include "../actions/splashed.hxx"
 #include "../algo.hxx"
 #include "smasher.hxx"
 #include "../pingu_action_factory.hxx"

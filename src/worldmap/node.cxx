@@ -1,4 +1,4 @@
-//  $Id: node.cxx,v 1.1 2002/06/12 19:03:33 grumbel Exp $
+//  $Id: node.cxx,v 1.2 2002/06/13 14:25:13 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,7 +18,6 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "manager.hxx"
-#include "node.hxx"
 #include "../my_gettext.hxx"
 #include "../path_manager.hxx"
 #include "../system.hxx"

@@ -1,4 +1,4 @@
-//  $Id: story.cxx,v 1.1 2002/06/12 19:09:38 grumbel Exp $
+//  $Id: story.cxx,v 1.2 2002/06/13 14:25:12 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,11 +19,8 @@
 
 #include <ClanLib/Display/Display/display.h>
 #include <ClanLib/Display/Font/font.h>
-#include "display.hxx"
-#include "delta_manager.hxx"
 #include "pingus_resource.hxx"
 #include "pingus_menu_manager.hxx"
-#include "story.hxx"
 #include "worldmap/manager.hxx"
 
 Story::Story(PingusMenuManager* manager)

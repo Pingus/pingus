@@ -1,4 +1,4 @@
-//  $Id: snow_particle.cxx,v 1.1 2002/06/12 19:11:31 grumbel Exp $
+//  $Id: snow_particle.cxx,v 1.2 2002/06/13 14:25:13 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,6 @@
 #include "../col_map.hxx"
 #include "../world.hxx"
 #include "../pingus_resource.hxx"
-#include "../particles/particle_holder.hxx"
 #include "../pingu_map.hxx"
 #include "../algo.hxx"
 #include "snow_particle.hxx"

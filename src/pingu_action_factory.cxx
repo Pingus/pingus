@@ -1,4 +1,4 @@
-//  $Id: pingu_action_factory.cxx,v 1.1 2002/06/12 19:06:12 grumbel Exp $
+//  $Id: pingu_action_factory.cxx,v 1.2 2002/06/13 14:25:12 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,7 +30,6 @@
 #include "actions/bridger.hxx"
 #include "actions/climber.hxx"
 #include "actions/digger.hxx"
-#include "actions/exiter.hxx"
 #include "actions/floater.hxx"
 #include "actions/miner.hxx"
 #include "actions/jumper.hxx"
@@ -46,7 +45,6 @@
 #include "actions/walker.hxx"
 
 #include "pingu_action_factory.hxx"
-#include "boost/smart_ptr.hpp"
 
 PinguActionFactory::PinguActionFactory ()
 {

@@ -1,4 +1,4 @@
-//  $Id: system.cxx,v 1.1 2002/06/12 19:09:38 grumbel Exp $
+//  $Id: system.cxx,v 1.2 2002/06/13 14:25:12 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,7 +31,6 @@
 #  include <fstream>
 #endif
 
-#include <cstdio>
 #include <iostream>
 
 #include "globals.hxx"

@@ -1,4 +1,4 @@
-//  $Id: thunderstorm_background_data.cxx,v 1.1 2002/06/12 19:02:30 grumbel Exp $
+//  $Id: thunderstorm_background_data.cxx,v 1.2 2002/06/13 14:25:12 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,7 +18,6 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <fstream>
-#include <iostream>
 #include "../xml_helper.hxx"
 #include "thunderstorm_background.hxx"
 

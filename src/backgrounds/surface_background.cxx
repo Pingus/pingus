@@ -1,4 +1,4 @@
-//  $Id: surface_background.cxx,v 1.1 2002/06/12 19:02:30 grumbel Exp $
+//  $Id: surface_background.cxx,v 1.2 2002/06/13 14:25:12 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,17 +17,12 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <cassert>
-
 #include <ClanLib/Display/SurfaceProviders/canvas.h>
 #include <ClanLib/Display/Display/display.h>
-#include "../globals.hxx"
 #include "../timer.hxx"
 #include "../pingus_resource.hxx"
 #include "../globals.hxx"
 #include "../blitter.hxx"
-#include "../caimagemanipulation/caimagemanipulation.h"
-
 #include "surface_background.hxx"
 
 SurfaceBackground::SurfaceBackground(const SurfaceBackgroundData& bg_data)

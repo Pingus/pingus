@@ -1,4 +1,4 @@
-//  $Id: intro.cxx,v 1.1 2002/06/12 19:09:37 grumbel Exp $
+//  $Id: intro.cxx,v 1.2 2002/06/13 14:25:12 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,10 +24,6 @@
 #include <ClanLib/Display/Input/keyboard.h>
 #include "pingus_menu_manager.hxx"
 #include "pingus_resource.hxx"
-#include "display.hxx"
-#include "globals.hxx"
-#include "loading.hxx"
-#include "algo.hxx"
 
 /* Headers needed for i18n / gettext */
 #include <clocale>

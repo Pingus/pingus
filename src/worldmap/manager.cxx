@@ -1,4 +1,4 @@
-//  $Id: manager.cxx,v 1.1 2002/06/12 19:03:33 grumbel Exp $
+//  $Id: manager.cxx,v 1.2 2002/06/13 14:25:13 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,6 @@
 #include <ClanLib/Display/Input/input.h>
 #include "../path_manager.hxx"
 #include "../delta_manager.hxx"
-#include "../algo.hxx"
 #include "../display.hxx"
 #include "worldmap.hxx"
 #include "manager.hxx"

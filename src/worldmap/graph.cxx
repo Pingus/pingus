@@ -1,4 +1,4 @@
-//  $Id: graph.cxx,v 1.1 2002/06/12 19:03:33 grumbel Exp $
+//  $Id: graph.cxx,v 1.2 2002/06/13 14:25:13 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,18 +18,9 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <ClanLib/Display/Display/display.h>
-#include "../system.hxx"
 #include "../my_gettext.hxx"
 #include "../pingus_error.hxx"
-#include "../path_manager.hxx"
-#include "../xml_plf.hxx"
-#include "../console.hxx"
 #include "../xml_helper.hxx"
-#include "../string_converter.hxx"
-#include "../sound.hxx"
-#include "../game_session.hxx"
-#include "manager.hxx"
-#include "node.hxx"
 #include "graph.hxx"
 
 using namespace Pingus::WorldMap;

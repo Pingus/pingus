@@ -1,4 +1,4 @@
-//  $Id: time_display.cxx,v 1.1 2002/06/12 19:09:38 grumbel Exp $
+//  $Id: time_display.cxx,v 1.2 2002/06/13 14:25:12 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,11 +17,9 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <cstdio>
 #include <ClanLib/Display/Display/display.h>
 #include <ClanLib/Display/Font/font.h>
 #include "globals.hxx"
-#include "game_time.hxx"
 #include "pingus_resource.hxx"
 #include "time_display.hxx"
 #include "world.hxx"

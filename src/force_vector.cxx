@@ -1,4 +1,4 @@
-//  $Id: force_vector.cxx,v 1.1 2002/06/12 19:09:37 grumbel Exp $
+//  $Id: force_vector.cxx,v 1.2 2002/06/13 14:25:12 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,9 +19,6 @@
 
 // Force Vectors Implementation - Made by Peter Todd
 
-#include <cmath>
-
-#include "globals.hxx"
 #include "force_vector.hxx"
 
 CL_Vector grav(0.0,1.0);

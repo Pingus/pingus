@@ -1,4 +1,4 @@
-//  $Id: scroll_map.cxx,v 1.1 2002/06/12 19:11:31 grumbel Exp $
+//  $Id: scroll_map.cxx,v 1.2 2002/06/13 14:25:13 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,7 +19,6 @@
 
 #include <ClanLib/Display/Display/display.h>
 #include "scroll_map.hxx"
-#include "../display.hxx"
 #include "editor.hxx"
 #include "object_manager.hxx"
 

@@ -1,4 +1,4 @@
-//  $Id: algo.cxx,v 1.1 2002/06/12 19:04:10 grumbel Exp $
+//  $Id: algo.cxx,v 1.2 2002/06/13 14:25:12 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,8 +19,6 @@
 //  02111-1307, USA. 
 
 #include "system.hxx"
-#include "algo.hxx"
-#include <cctype>
 #include <iostream>
 
 #include "globals.hxx"

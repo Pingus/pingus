@@ -1,4 +1,4 @@
-//  $Id: timer.cxx,v 1.1 2002/06/12 19:09:38 grumbel Exp $
+//  $Id: timer.cxx,v 1.2 2002/06/13 14:25:12 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,6 +43,3 @@ Timer::stop()
 }
 
 /* EOF */
-
-
-

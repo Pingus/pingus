@@ -1,4 +1,4 @@
-//  $Id: pingu.cxx,v 1.1 2002/06/12 19:06:12 grumbel Exp $
+//  $Id: pingu.cxx,v 1.2 2002/06/13 14:25:12 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,26 +17,15 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <cassert>
-#include <cstdio>
-#include <cmath>
-
 #include <ClanLib/Display/Font/font.h>
-#include "actions/drown.hxx"
-#include "actions/splashed.hxx"
-#include "actions/laser_kill.hxx"
-
 #include "globals.hxx"
 #include "world.hxx"
 #include "pingu.hxx"
-#include "action_holder.hxx"
 #include "pingus_resource.hxx"
 #include "sound.hxx"
-#include "algo.hxx"
-#include "actions/smashed.hxx"
 #include "col_map.hxx"
+#include "pingu_action.hxx"
 #include "pingu_action_factory.hxx"
-#include "force_vector.hxx"
 #include "my_gettext.hxx"
 
 const float deadly_velocity = 20.0;

@@ -1,4 +1,4 @@
-//  $Id: pingus_menu_manager.cxx,v 1.1 2002/06/12 19:06:12 grumbel Exp $
+//  $Id: pingus_menu_manager.cxx,v 1.2 2002/06/13 14:25:12 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,8 +22,6 @@
 #include "globals.hxx"
 #include "display.hxx"
 #include "delta_manager.hxx"
-#include "pingus_resource.hxx"
-#include "pingus_menu.hxx"
 #include "fade_out.hxx"
 #include "pingus_menu_manager.hxx"
 

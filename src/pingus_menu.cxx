@@ -1,4 +1,4 @@
-//  $Id: pingus_menu.cxx,v 1.1 2002/06/12 19:06:12 grumbel Exp $
+//  $Id: pingus_menu.cxx,v 1.2 2002/06/13 14:25:12 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,14 +25,10 @@
 #include "surface_button.hxx"
 #include "credits.hxx"
 #include "pingus_resource.hxx"
-#include "message_box.hxx"
-#include "pingus_error.hxx"
 #include "pingus_menu.hxx"
-#include "loading.hxx"
 #include "display.hxx"
 #include "sound.hxx"
 #include "debug.hxx"
-#include "blitter.hxx"
 
 PingusMenu::PingusMenu(PingusMenuManager* m)
   : PingusSubMenu (m)

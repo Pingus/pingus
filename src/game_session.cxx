@@ -1,4 +1,4 @@
-//  $Id: game_session.cxx,v 1.1 2002/06/12 19:09:37 grumbel Exp $
+//  $Id: game_session.cxx,v 1.2 2002/06/13 14:25:12 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,6 @@
 #include "client.hxx"
 #include "true_server.hxx"
 #include "mouse_controller.hxx"
-#include "system.hxx"
 #include "game_session.hxx"
 #include "game_session_result.hxx"
 #include "plf.hxx"
