@@ -32,7 +32,6 @@ class CL_Font;
 
 namespace Pingus {
 
-class Sprite;
 typedef CL_Font FontHandle;
 
 /** Abstract interface */
@@ -66,9 +65,6 @@ public:
   Vector world_to_screen (Vector pos) { return pos; }
 
   void clear (float r, float g, float b);
-
-  void draw (Sprite& sprite, const Vector& pos);
-  void draw (Sprite& sprite, const Vector& pos, int frame);
 
   void draw(CL_Sprite, const Pingus::Vector&);
   void draw(CL_Sprite, const Pingus::Vector&, int);

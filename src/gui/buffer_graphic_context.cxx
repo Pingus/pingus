@@ -50,16 +50,6 @@ BufferGraphicContext::clear (float r, float g, float b)
   std::cout << "BufferGraphicContext: clear" << std::endl;
 }
 
-void
-BufferGraphicContext::draw (Sprite& sprite, const Vector& pos)
-{
-}
-
-void
-BufferGraphicContext::draw (Sprite& sprite, const Vector& pos, int frame)
-{
-}
-
 void 
 BufferGraphicContext::draw(CL_Sprite, const Pingus::Vector&)
 {

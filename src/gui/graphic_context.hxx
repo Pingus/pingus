@@ -31,8 +31,6 @@ class CL_Font;
 
 namespace Pingus {
 
-class Sprite;
-
 /** Abstract interface */
 class GraphicContext
 {

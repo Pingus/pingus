@@ -58,10 +58,6 @@ public:
 
   /** Insert all WorldObjs into the World */
   virtual void insert_WorldObjs (World*) =0;
-
-  /** Create an EditorObj from the given data object, caller is
-      responible for deleting the pointers in the vector */
-  virtual void insert_EditorObjs (EditorNS::EditorObjMgr*) =0;
 };
 
 } // namespace Pingus

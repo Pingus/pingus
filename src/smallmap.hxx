@@ -29,7 +29,6 @@ class CL_Key;
 namespace Pingus {
 
 class Client;
-class Sprite;
 class Vector;
 
 /** This is the map that appears in the corner of the screen */
