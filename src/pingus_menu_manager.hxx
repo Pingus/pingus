@@ -1,4 +1,4 @@
-//  $Id: pingus_menu_manager.hxx,v 1.14 2002/10/01 21:48:32 grumbel Exp $
+//  $Id: pingus_menu_manager.hxx,v 1.15 2002/11/03 23:31:35 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,7 +22,6 @@
 
 #include "menu_background.hxx"
 #include "exit_menu.hxx"
-#include "story.hxx"
 #include "pingus_menu.hxx"
 #include "intro.hxx"
 #include "option_menu.hxx"
@@ -53,7 +52,6 @@ public:
   PingusMenu mainmenu;
   OptionMenu optionmenu;
   MenuBackground background;
-  Story story;
   ExitMenu exitmenu;
 
   virtual ~PingusMenuManager ();

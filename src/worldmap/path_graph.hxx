@@ -1,4 +1,4 @@
-//  $Id: path_graph.hxx,v 1.7 2002/10/16 09:14:45 grumbel Exp $
+//  $Id: path_graph.hxx,v 1.8 2002/11/03 23:31:35 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -68,6 +68,8 @@ public:
 
   /** Get a node by it id */
   Dot* get_dot(NodeId id);
+
+  NodeId get_id(Dot*);
 
   /** Get a node by its position */
   Dot* get_dot(float x, float y);

@@ -1,4 +1,4 @@
-//  $Id: worldmap.hxx,v 1.18 2002/11/02 14:46:29 grumbel Exp $
+//  $Id: worldmap.hxx,v 1.19 2002/11/03 23:31:35 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -92,6 +92,7 @@ public:
 
   /** x,y are in WorldMap CO, not ScreenCO */
   void on_primary_button_press(int x, int y);
+  void on_secondary_button_press(int x, int y);
 private:
 #if 0
   /** @return the node at the given position. x and y are in

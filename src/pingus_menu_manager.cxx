@@ -1,4 +1,4 @@
-//  $Id: pingus_menu_manager.cxx,v 1.15 2002/10/01 21:48:32 grumbel Exp $
+//  $Id: pingus_menu_manager.cxx,v 1.16 2002/11/03 23:31:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,7 +26,7 @@ PingusMenuManager* PingusMenuManager::instance_ = 0;
 
 PingusMenuManager::PingusMenuManager ()
   : unplayable ("misc/unplayable", "core"),
-    intro (this), mainmenu (this), optionmenu (this), story (this),
+    intro (this), mainmenu (this), optionmenu (this),
     exitmenu (this)
 {
   unplayable.set_align_center ();

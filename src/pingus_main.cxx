@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.34 2002/11/03 13:29:09 grumbel Exp $
+//   $Id: pingus_main.cxx,v 1.35 2002/11/03 23:31:35 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -507,9 +507,14 @@ For more information about these matters, see the files named COPYING.\
         {
           pingus_debug_flags |= PINGUS_DEBUG_INPUT;
         }
+      else if (strcmp (optarg, "worldmap") == 0)
+        {
+          pingus_debug_flags |= PINGUS_DEBUG_WORLDMAP;
+        }
       else
 	{
 	  std::cout << "PingusMain: Unhandled debug flag: " << optarg << std::endl;
+          exit(EXIT_FAILURE);
 	}
 
       break;

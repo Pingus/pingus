@@ -1,4 +1,4 @@
-//  $Id: path_drawable.hxx,v 1.2 2002/10/13 19:28:34 grumbel Exp $
+//  $Id: path_drawable.hxx,v 1.3 2002/11/03 23:31:35 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,7 +37,7 @@ public:
   void draw(GraphicContext& gc);
   void update();
 
-  float get_z_pos() const { return 1000; }
+  float get_z_pos() const { return 10000; }
 private:
   PathDrawable (const PathDrawable&);
   PathDrawable& operator= (const PathDrawable&);

@@ -1,4 +1,4 @@
-//  $Id: worldmap.cxx,v 1.26 2002/11/02 14:46:29 grumbel Exp $
+//  $Id: worldmap.cxx,v 1.27 2002/11/03 23:31:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -220,28 +220,50 @@ WorldMap::on_primary_button_press(int x, int y)
 {
   const Vector& click_pos = display_gc.screen_to_world(Vector(x, y));
 
-  std::cout << "<position>\n"
-            << "  <x-pos>" << click_pos.x << "</x-pos>\n"
-            << "  <y-pos>" << click_pos.y << "</y-pos>\n"
-            << "  <z-pos>0</z-pos>\n"
-            << "</position>\n\n" << std::endl;
+  if (pingus_debug_flags & PINGUS_DEBUG_WORLDMAP)
+    {
+      std::cout
+        << "\n<leveldot>\n"
+        << "  <dot>\n"
+        << "    <name>leveldot_X</name>\n"
+        << "    <position>\n"
+        << "      <x-pos>" << (int)click_pos.x << "</x-pos>\n"
+        << "      <y-pos>" << (int)click_pos.y << "</y-pos>\n"
+        << "      <z-pos>0</z-pos>\n"
+        << "    </position>\n"
+        << "  </dot>\n"
+        << "  <levelname>level10.xml</levelname>\n"
+        << "</leveldot>\n" << std::endl;
+    }
 
   Dot* dot = path_graph->get_dot(click_pos.x, click_pos.y);
   if (dot)
     {
-      std::cout << "Clicked on: " << dot->get_name() << std::endl;
+      std::cout << "WorldMap: Clicked on: " << dot->get_name() << std::endl;
       if (path_graph->lookup_node(dot->get_name()) == pingus->get_node())
         {
-          std::cout << "Pingu is on node, issue on_click()" << std::endl;
+          std::cout << "WorldMap: Pingu is on node, issue on_click()" << std::endl;
           dot->on_click();
         }
       else
         {
           if (!pingus->walk_to_node(path_graph->lookup_node(dot->get_name())))
             {
-              std::cout << "NO PATH TO NODE FOUND!" << std::endl;
+              std::cout << "WorldMap: NO PATH TO NODE FOUND!" << std::endl;
             }
         }
+    }
+}
+
+void
+WorldMap::on_secondary_button_press(int x, int y)
+{
+  const Vector& click_pos = display_gc.screen_to_world(Vector(x, y));
+  Dot* dot = path_graph->get_dot(click_pos.x, click_pos.y);
+  if (dot)
+    { // FIXME: Dot NodeID missmatch...
+      NodeId id = path_graph->get_id(dot);
+      pingus->set_position(id);
     }
 }
 

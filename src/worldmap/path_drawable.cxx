@@ -1,4 +1,4 @@
-//  $Id: path_drawable.cxx,v 1.4 2002/10/14 00:38:22 grumbel Exp $
+//  $Id: path_drawable.cxx,v 1.5 2002/11/03 23:31:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,15 +33,12 @@ PathDrawable::draw (GraphicContext& gc)
 {
   Path::iterator prev = path.begin();
 
-  //std::cout << "<<<<<< Path start" << std::endl;
   for(Path::iterator next = prev + 1; next != path.end(); ++next)
     {
-      //std::cout << "Pos: " << *prev << " " << *next << std::endl;
       gc.draw_line(*prev, *next,
                    1.0, 1.0, 1.0);
       prev = next;
     }
-  //std::cout << ">>>>>> Path end" << std::endl;
 }
 
 void 

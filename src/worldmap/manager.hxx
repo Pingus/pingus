@@ -1,4 +1,4 @@
-//  $Id: manager.hxx,v 1.13 2002/10/12 23:34:43 grumbel Exp $
+//  $Id: manager.hxx,v 1.14 2002/11/03 23:31:35 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -47,6 +47,7 @@ class WorldMapManager : public GUIScreen
     WorldMapComponent () { }
       
     void on_primary_button_press (int x, int y);
+    void on_secondary_button_press (int x, int y);
  
     void draw (GraphicContext& gc);
     void update (float delta);

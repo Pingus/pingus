@@ -1,4 +1,4 @@
-//  $Id: path_graph.cxx,v 1.16 2002/10/20 18:28:49 torangan Exp $
+//  $Id: path_graph.cxx,v 1.17 2002/11/03 23:31:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,6 +27,7 @@
 #include "pathfinder.hxx"
 #include "path_graph.hxx"
 #include "path_drawable.hxx"
+#include "../globals.hxx"
 
 namespace WorldMapNS {
 
@@ -161,7 +162,8 @@ PathGraph::parse_edges(xmlDocPtr doc, xmlNodePtr cur)
           float cost = full_path.length();
 
           // FIXME: Memory leak
-          //worldmap->add_drawable(new PathDrawable(full_path));
+          if (pingus_debug_flags & PINGUS_DEBUG_WORLDMAP)
+            worldmap->add_drawable(new PathDrawable(full_path));
           
           // FIXME: No error checking, 
           EdgeId id1 = graph.add_edge(path, // FIXME: Memory leak!
@@ -252,6 +254,15 @@ PathGraph::get_dot(float x_pos, float y_pos)
         return *i;        
     }
   return 0;
+}
+
+NodeId
+PathGraph::get_id(Dot* dot)
+{
+  for(std::vector<Dot*>::iterator i = dots.begin(); i != dots.end(); ++i)
+    if (dot == *i)
+      return i - dots.begin();
+  return NoNode;
 }
 
 } // namespace WorldMapNS

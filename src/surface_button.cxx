@@ -1,4 +1,4 @@
-//  $Id: surface_button.cxx,v 1.16 2002/10/12 00:49:10 torangan Exp $
+//  $Id: surface_button.cxx,v 1.17 2002/11/03 23:31:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,6 +29,7 @@
 #include "theme_selector.hxx"
 #include "surface_button.hxx"
 #include "screen_manager.hxx"
+#include "worldmap/manager.hxx"
 
 /* Headers needed for i18n / gettext */
 #include <clocale>
@@ -366,9 +367,7 @@ void
 StoryButton::on_click ()
 {
   PingusSound::play_sound ("sounds/letsgo.wav");
-  std::cout << "Set story" << std::endl;
-  menu->get_manager ()->set_menu (&menu->get_manager ()->story);
-  std::cout << "Set done" << std::endl;
+  ScreenManager::instance()->push_screen(WorldMapNS::WorldMapManager::instance ());
 }
 
 ThemeButton::ThemeButton (PingusMenu* menu_)

@@ -1,4 +1,4 @@
-//  $Id: manager.cxx,v 1.19 2002/10/29 12:48:33 grumbel Exp $
+//  $Id: manager.cxx,v 1.20 2002/11/03 23:31:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -95,6 +95,14 @@ WorldMapManager::WorldMapComponent::on_primary_button_press (int x, int y)
   //std::cout << "Buton press" << std::endl;
   /** Fixme: insert Co. translation here */
   WorldMapManager::instance ()->worldmap->on_primary_button_press (x, y);
+}
+
+void 
+WorldMapManager::WorldMapComponent::on_secondary_button_press (int x, int y)
+{
+  //std::cout << "Buton press" << std::endl;
+  /** Fixme: insert Co. translation here */
+  WorldMapManager::instance ()->worldmap->on_secondary_button_press (x, y);
 }
 
 void 
