@@ -1,4 +1,4 @@
-//  $Id: credits.cxx,v 1.18 2003/04/09 23:35:28 grumbel Exp $
+//  $Id: credits.cxx,v 1.19 2003/04/09 23:57:03 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -115,6 +115,7 @@ Credits::Credits()
   credits.push_back("_Mattias Andersson");
   credits.push_back("_Michael Wand");
   credits.push_back("_Peter Todd");
+  credits.push_back("_Peter van Rossum");
   credits.push_back("_Richard Stallman");
   credits.push_back("_Rob Gietema");
   credits.push_back("_Robert Wittams");
@@ -231,8 +232,8 @@ Credits::draw_background (GraphicContext& gc)
 void
 Credits::on_startup ()
 {
-  offset = CL_Display::get_height() + 50;
-  PingusSound::play_music("pingus-2.it");
+  offset = CL_Display::get_height();
+  //PingusSound::play_music("pingus-5.it");
 }
 
 Credits*

@@ -1,4 +1,4 @@
-//  $Id: story_screen.cxx,v 1.13 2003/04/06 12:40:47 grumbel Exp $
+//  $Id: story_screen.cxx,v 1.14 2003/04/09 23:57:03 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,11 +34,14 @@
 #include "worldmap/manager.hxx"
 #include "stat_manager.hxx"
 #include "story.hxx"
+#include "credits.hxx"
 #include "sound/sound.hxx"
 
 class StoryScreenComponent : public GUI::Component
 {
 private:
+  bool show_credits;
+
   CL_Surface background;
   std::string display_text;
   float time_passed;
@@ -101,6 +104,11 @@ StoryScreen::~StoryScreen()
 StoryScreenComponent::StoryScreenComponent (const Story& arg_story)
   : story(arg_story)
 {
+  if (&arg_story == &Story::credits)
+    show_credits = true;
+  else
+    show_credits = false;
+
   page_displayed_completly = false;
   time_passed  = 0;
 
@@ -177,10 +185,13 @@ StoryScreenComponent::next_text()
         }
       else
         {
-          std::cout << "StoryScreenComponent: Out of story pages" << std::endl;
+          //std::cout << "StoryScreenComponent: Out of story pages" << std::endl;
           StatManager::instance()->set_bool("story-seen", true);
           //ScreenManager::instance()->replace_screen (PingusMenuManager::instance (), false);
-          ScreenManager::instance()->replace_screen(WorldMapNS::WorldMapManager::instance ());
+          if (show_credits)
+            ScreenManager::instance()->replace_screen(Credits::instance(), false);
+          else
+            ScreenManager::instance()->replace_screen(WorldMapNS::WorldMapManager::instance ());
         }
     }
 }

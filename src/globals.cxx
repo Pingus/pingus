@@ -1,4 +1,4 @@
-//  $Id: globals.cxx,v 1.7 2003/03/21 22:08:06 grumbel Exp $
+//  $Id: globals.cxx,v 1.8 2003/04/09 23:57:03 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,7 +38,11 @@ std::string demo_file;
 bool        start_editor                    = false;
 bool        auto_scrolling                  = true;
 int         tile_size                       = 32;
+#ifdef WIN32
+bool        fullscreen_enabled              = true;
+#else
 bool        fullscreen_enabled              = false;
+#endif
 int         screen_width                    = 800;
 int         screen_height                   = 600;
 bool        preload_data                    = false; // FIXME: Should be default if it would work

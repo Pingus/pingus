@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.68 2003/04/09 23:35:28 grumbel Exp $
+//   $Id: pingus_main.cxx,v 1.69 2003/04/09 23:57:03 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -526,7 +526,7 @@ PingusMain::check_args(int argc, char** argv)
                 << std::endl;
 #endif
       std::cout <<
-	_("   -w, --window             Start in Window Mode (default)\n"
+	_("   -w, --window             Start in Window Mode\n"
           "   -f, --fullscreen         Start in Fullscreen\n"
           "   -d, --datadir PATH       Set the path to load the data files to `path'\n"
           "   --use-datafile           Use the pre-compiled datafile (default)\n"
