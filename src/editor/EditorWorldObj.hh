@@ -1,4 +1,4 @@
-//  $Id: EditorWorldObj.hh,v 1.4 2000/11/17 19:09:21 grumbel Exp $
+//  $Id: EditorWorldObj.hh,v 1.5 2000/12/16 23:11:24 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,9 +31,8 @@ public:
   EditorWorldObj ();
   ///
   virtual ~EditorWorldObj () {}
-  //static list<EditorObj*> create (WorldObjData*);
   ///
-  virtual EditorObj* duplicate();
+  virtual boost::shared_ptr<EditorObj> duplicate();
   ///
   virtual void save(std::ofstream* plf, std::ofstream* psm) {}
   ///

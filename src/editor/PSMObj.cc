@@ -1,4 +1,4 @@
-//  $Id: PSMObj.cc,v 1.27 2000/12/14 21:35:55 grumbel Exp $
+//  $Id: PSMObj.cc,v 1.28 2000/12/16 23:11:24 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -53,10 +53,10 @@ PSMObj::~PSMObj()
 {
 }
 
-EditorObj*   
+boost::shared_ptr<EditorObj>   
 PSMObj::duplicate()
 {
-  return new PSMObj(*this);
+  return boost::shared_ptr<EditorObj>(new PSMObj(*this));
 }
 
 void

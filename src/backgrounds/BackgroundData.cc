@@ -1,4 +1,4 @@
-//  $Id: BackgroundData.cc,v 1.2 2000/09/29 15:43:52 grumbel Exp $
+//  $Id: BackgroundData.cc,v 1.3 2000/12/16 23:11:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,10 +31,10 @@ BackgroundData::~BackgroundData()
 {
 }
 
-BackgroundData* 
+boost::shared_ptr<BackgroundData>
 BackgroundData::create(xmlDocPtr doc, xmlNodePtr cur)
 {
-  BackgroundData* data;
+  boost::shared_ptr<BackgroundData> data;
   char* type = (char*)xmlGetProp(cur, (xmlChar*)"type");
 
   if (type != 0)

@@ -1,4 +1,4 @@
-//  $Id: WeatherGenerator.hh,v 1.1 2000/08/05 18:48:09 grumbel Exp $
+//  $Id: WeatherGenerator.hh,v 1.2 2000/12/16 23:11:24 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #ifndef WEATHERGENERATOR_HH
 #define WEATHERGENERATOR_HH
 
+#include "../WeatherData.hh"
 #include "../WorldObj.hh"
 
 class WeatherGenerator : public WorldObj
@@ -40,7 +41,7 @@ public:
 
 
   /** Generate an WeatherGenerator which fits to the given data */
-  static WeatherGenerator* create(WeatherData);
+  static shared_ptr<WeatherGenerator> create(WeatherData);
 };
 
 #endif

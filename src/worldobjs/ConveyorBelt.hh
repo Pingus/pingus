@@ -1,4 +1,4 @@
-//  $Id: ConveyorBelt.hh,v 1.5 2000/12/14 21:35:56 grumbel Exp $
+//  $Id: ConveyorBelt.hh,v 1.6 2000/12/16 23:11:24 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,7 +39,7 @@ public:
       stream */
   virtual void write_xml(ofstream* xml);
   ///
-  static WorldObjData* create(xmlDocPtr doc, xmlNodePtr cur);
+  static boost::shared_ptr<WorldObjData> create(xmlDocPtr doc, xmlNodePtr cur);
 };
 
 class ConveyorBelt : private ConveyorBeltData,
@@ -79,15 +79,15 @@ public:
   EditorConveyorBeltObj (WorldObjData* obj);
   virtual ~EditorConveyorBeltObj ();
 
-  virtual EditorObj* duplicate();
+  virtual boost::shared_ptr<EditorObj> duplicate();
   virtual void draw_offset(int, int);
   virtual void draw_scroll_map(int x_pos, int y_pos, int arg_width, int arg_height);
   
   /// The saveing will be done in EditorTeleporterObj::save_xml
-  static std::list<EditorObj*> create (WorldObjData* obj);
+  static std::list<boost::shared_ptr<EditorObj> > create (WorldObjData* obj);
 
   /** Create the object with resonable defaults */
-  static std::list<EditorObj*> create (const Position& pos);
+  static std::list<boost::shared_ptr<EditorObj> > create (const Position& pos);
 
   virtual void save_xml (std::ofstream* xml);
   virtual std::string status_line();

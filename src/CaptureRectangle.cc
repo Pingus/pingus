@@ -1,4 +1,4 @@
-//  $Id: CaptureRectangle.cc,v 1.5 2000/12/14 21:35:54 grumbel Exp $ 
+//  $Id: CaptureRectangle.cc,v 1.6 2000/12/16 23:11:19 grumbel Exp $ 
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,18 +24,21 @@
 #include "globals.hh"
 #include "Pingu.hh"
 #include "Pingu.hh"
+#include "PinguAction.hh"
 #include "PingusResource.hh"
 #include "CaptureRectangle.hh"
+#include <boost/smart_ptr.hpp>
 
-Pingu* CaptureRectangle::pingu; 
-PinguAction* CaptureRectangle::button_action;
+using namespace boost;
+
+shared_ptr<Pingu> CaptureRectangle::pingu; 
+shared_ptr<PinguAction> CaptureRectangle::button_action;
 
 CaptureRectangle::CaptureRectangle()
 {
   good = PingusResource::load_surface("Cursors/capgood", "game");
   bad  = PingusResource::load_surface("Cursors/capbad",  "game"); 
   font = PingusResource::load_font("Fonts/courier_small", "fonts");
-  button_action = 0;
 
   arrow_left  = PingusResource::load_surface("Cursors/arrow_left",  "game"); 
   arrow_right = PingusResource::load_surface("Cursors/arrow_right", "game"); 
@@ -43,15 +46,15 @@ CaptureRectangle::CaptureRectangle()
 
 CaptureRectangle::~CaptureRectangle()
 {
-  if (button_action) {
+  /*  if (button_action) {
     delete button_action;
-  }
+  }*/
 }
 
 void
 CaptureRectangle::draw_offset(int x_offset, int y_offset, float s)
 { 
-  if (!pingu) 
+  if (!pingu.get()) 
     {
       return;
     } 
@@ -59,7 +62,7 @@ CaptureRectangle::draw_offset(int x_offset, int y_offset, float s)
     {
       CL_Surface sur;
       
-      if (button_action 
+      if (button_action.get() 
 	  && (button_action->get_environment() & pingu->get_environment()))
 	{
 	  sur = good;
@@ -74,7 +77,7 @@ CaptureRectangle::draw_offset(int x_offset, int y_offset, float s)
 	  sur.put_screen(pingu->get_x() + pingu->x_offset() + x_offset - 4,
 			 pingu->get_y() + pingu->y_offset() + y_offset - 4);
 
-	  if (pingu->get_action()) 
+	  if (pingu->get_action().get()) 
 	    {
 	      font->print_center(pingu->get_x() + pingu->x_offset() + x_offset + 16,
 				 pingu->get_y() + pingu->y_offset() + y_offset - 16,
@@ -104,16 +107,16 @@ CaptureRectangle::draw_offset(int x_offset, int y_offset, float s)
 // Sets the current buttons action, it is used to change the color of
 // the cap rect, if the action can't be applied.
 void 
-CaptureRectangle::set_action(PinguAction* action)
+CaptureRectangle::set_action(shared_ptr<PinguAction> action)
 {
-  if (button_action) 
-    delete button_action;
+  /*  if (button_action) 
+    delete button_action;*/
   
   button_action = action;
 }
 
 void
-CaptureRectangle::set_pingu(Pingu* p)
+CaptureRectangle::set_pingu(shared_ptr<Pingu> p)
 {
   pingu = p; 
 }

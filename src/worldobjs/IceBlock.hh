@@ -1,4 +1,4 @@
-//  $Id: IceBlock.hh,v 1.4 2000/12/14 21:35:56 grumbel Exp $
+//  $Id: IceBlock.hh,v 1.5 2000/12/16 23:11:24 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #define ICEBLOCK_HH
 
 #include <ClanLib/core.h>
+#include "../boost/smart_ptr.hpp"
 #include "../WorldObj.hh"
 #include "../WorldObjData.hh"
 #include "../editor/EditorWorldObj.hh"
@@ -39,7 +40,7 @@ public:
       stream */
   virtual void write_xml(ofstream* xml);
   ///
-  static WorldObjData* create(xmlDocPtr doc, xmlNodePtr cur);
+  static boost::shared_ptr<WorldObjData> create(xmlDocPtr doc, xmlNodePtr cur);
 };
 
 class IceBlock : public IceBlockData, 
@@ -75,10 +76,10 @@ public:
   EditorIceBlockObj (WorldObjData* obj);
   virtual ~EditorIceBlockObj ();
 
-  static std::list<EditorObj*> create (WorldObjData* obj);
+  static std::list<boost::shared_ptr<EditorObj> > create (WorldObjData* obj);
 
   /** Create the object with resonable defaults */
-  static std::list<EditorObj*> create (const Position& pos);
+  static std::list<boost::shared_ptr<EditorObj> > create (const Position& pos);
 
   virtual void save_xml (std::ofstream* xml);
   virtual std::string status_line();

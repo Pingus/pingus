@@ -1,4 +1,4 @@
-//  $Id: Liquid.cc,v 1.11 2000/12/14 21:35:54 grumbel Exp $
+//  $Id: Liquid.cc,v 1.12 2000/12/16 23:11:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "World.hh"
 #include "PingusResource.hh"
 
 #include "Liquid.hh"

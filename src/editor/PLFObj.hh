@@ -1,4 +1,4 @@
-//  $Id: PLFObj.hh,v 1.12 2000/10/30 16:17:51 grumbel Exp $
+//  $Id: PLFObj.hh,v 1.13 2000/12/16 23:11:24 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -58,7 +58,7 @@ public:
   ///
   ~HotspotObj();
   ///
-  EditorObj* duplicate();
+  boost::shared_ptr<EditorObj> duplicate();
   ///
   void save(std::ofstream* plf, std::ofstream* psm);
   ///
@@ -83,7 +83,7 @@ public:
   ///
   ~EntranceObj();
   ///
-  EditorObj* duplicate();
+  boost::shared_ptr<EditorObj> duplicate();
   ///
   void save(std::ofstream* plf, std::ofstream* psm);  
   ///
@@ -102,7 +102,7 @@ public:
   ///
   ~ExitObj();
   ///
-  EditorObj* duplicate();
+  boost::shared_ptr<EditorObj> duplicate();
   ///
   void save_xml(std::ofstream* xml);
   ///
@@ -126,7 +126,7 @@ public:
   ///
   ~TrapObj();
   ///
-  EditorObj* duplicate();
+  boost::shared_ptr<EditorObj> duplicate();
   ///
   void save(std::ofstream* plf, std::ofstream* psm);  
   ///
@@ -153,7 +153,7 @@ public:
   ///
   ~LiquidObj();
   ///
-  EditorObj* duplicate();
+  boost::shared_ptr<EditorObj> duplicate();
   ///
   void draw_offset(int x_offset, int y_offset);
   ///

@@ -1,4 +1,4 @@
-//  $Id: EditorObjGroup.cc,v 1.5 2000/11/16 10:23:04 grumbel Exp $
+//  $Id: EditorObjGroup.cc,v 1.6 2000/12/16 23:11:24 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,12 +29,14 @@ EditorObjGroup::EditorObjGroup()
 
 EditorObjGroup::~EditorObjGroup()
 {
-  for(list<EditorObj*>::iterator i = objs.begin();
+  /*
+  for(std::list<boost::shared_ptr<EditorObj> >::iterator i = objs.begin();
       i != objs.end();
       i++)
     {
       delete *i;
     }
+  */
 }
 
 /** Move the object to the given coordinates */
@@ -44,7 +46,7 @@ EditorObjGroup::set_position(int new_x_pos, int new_y_pos)
   position->x_pos = new_x_pos;
   position->y_pos = new_y_pos;
 
-  for(list<EditorObj*>::iterator i = objs.begin();
+  for(std::list<boost::shared_ptr<EditorObj> >::iterator i = objs.begin();
       i != objs.end();
       i++)
     {
@@ -59,7 +61,7 @@ EditorObjGroup::set_position_offset(int x_pos_add, int y_pos_add, int z_pos_add)
   position->y_pos += y_pos_add;
   position->z_pos += z_pos_add;
 
-  for(list<EditorObj*>::iterator i = objs.begin();
+  for(std::list<boost::shared_ptr<EditorObj> >::iterator i = objs.begin();
       i != objs.end();
       i++)
     {
@@ -71,7 +73,7 @@ EditorObjGroup::set_position_offset(int x_pos_add, int y_pos_add, int z_pos_add)
 void
 EditorObjGroup::draw_offset(int x_offset, int y_offset)
 {
-  for(list<EditorObj*>::iterator i = objs.begin();
+  for(std::list<boost::shared_ptr<EditorObj> >::iterator i = objs.begin();
       i != objs.end();
       i++)
     {
@@ -87,7 +89,7 @@ EditorObjGroup::draw_mark_offset(int x_offset, int y_offset, EditorObj::Color* a
   Color tmp_color = mark_color;
   Color color(1.0, 0.0, 1.0);
 
-  for(list<EditorObj*>::iterator i = objs.begin();
+  for(std::list<boost::shared_ptr<EditorObj> >::iterator i = objs.begin();
       i != objs.end();
       i++)
     {
@@ -101,7 +103,7 @@ EditorObjGroup::draw_mark_offset(int x_offset, int y_offset, EditorObj::Color* a
 bool
 EditorObjGroup::mouse_over(int x_offset, int y_offset)
 {
-  for(list<EditorObj*>::iterator i = objs.begin();
+  for(std::list<boost::shared_ptr<EditorObj> >::iterator i = objs.begin();
       i != objs.end();
       i++)
     {
@@ -116,7 +118,7 @@ EditorObjGroup::mouse_over(int x_offset, int y_offset)
 bool
 EditorObjGroup::is_in_rect(int x1, int y1, int x2, int y2)
 {
-  for(list<EditorObj*>::iterator i = objs.begin();
+  for(std::list<boost::shared_ptr<EditorObj> >::iterator i = objs.begin();
       i != objs.end();
       i++)
     {
@@ -129,7 +131,7 @@ EditorObjGroup::is_in_rect(int x1, int y1, int x2, int y2)
 }
 
 void
-EditorObjGroup::push_back(EditorObj* obj)
+EditorObjGroup::push_back(boost::shared_ptr<EditorObj> obj)
 {
   // Updating the width/height and x_pos/y_pos of the object group
   if (!objs.empty ())
@@ -155,7 +157,7 @@ EditorObjGroup::push_back(EditorObj* obj)
   objs.push_back(obj);
 }
 
-list<EditorObj*>* 
+std::list<boost::shared_ptr<EditorObj> >* 
 EditorObjGroup::get_objs()
 {
   return &objs;
@@ -164,7 +166,7 @@ EditorObjGroup::get_objs()
 void
 EditorObjGroup::save(std::ofstream* plf, std::ofstream* psm)
 {
-  for(list<EditorObj*>::iterator i = objs.begin();
+  for(std::list<boost::shared_ptr<EditorObj> >::iterator i = objs.begin();
       i != objs.end();
       i++)
     {
@@ -177,7 +179,8 @@ void
 EditorObjGroup::save_xml(std::ofstream* xml)
 {
   (*xml) << "<group>\n";
-  for(list<EditorObj*>::iterator i = objs.begin();
+
+  for(std::list<boost::shared_ptr<EditorObj> >::iterator i = objs.begin();
       i != objs.end();
       i++)
     {
@@ -186,17 +189,17 @@ EditorObjGroup::save_xml(std::ofstream* xml)
   (*xml) << "</group>\n" << std::endl;
 }
 
-EditorObj* 
+boost::shared_ptr<EditorObj> 
 EditorObjGroup::duplicate()
 {
-  EditorObjGroup* editor_obj = new EditorObjGroup();
+  boost::shared_ptr<EditorObjGroup> editor_obj(new EditorObjGroup());
   
-  for(list<EditorObj*>::iterator i = objs.begin();
+  for(std::list<boost::shared_ptr<EditorObj> >::iterator i = objs.begin();
       i != objs.end();
       i++)
     {
-      EditorObj* obj = (*i)->duplicate();
-      if (obj)
+      boost::shared_ptr<EditorObj> obj = (*i)->duplicate();
+      if (obj.get())
 	editor_obj->objs.push_back(obj);
     }
   return editor_obj;

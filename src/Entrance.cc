@@ -1,4 +1,4 @@
-//  $Id: Entrance.cc,v 1.15 2000/12/14 21:35:54 grumbel Exp $
+//  $Id: Entrance.cc,v 1.16 2000/12/16 23:11:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -51,16 +51,15 @@ Entrance::pingu_ready()
   }
 }
 
-Pingu*
+boost::shared_ptr<Pingu>
 Entrance::get_pingu()
 {
   static int last_direction;
-  Pingu* p;
   Direction d;
 
   // FIXME: Evil, the allocated objects are destroyed in PinguHolder,
   // FIXME: but all allocation should be encapsulet in PinguHolder.
-  p = new Pingu(pos.x_pos, pos.y_pos);
+  shared_ptr<Pingu> p (new Pingu(pos.x_pos, pos.y_pos));
   
   switch (direction) 
     {

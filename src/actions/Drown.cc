@@ -1,4 +1,4 @@
-//  $Id: Drown.cc,v 1.2 2000/12/14 21:35:55 grumbel Exp $
+//  $Id: Drown.cc,v 1.3 2000/12/16 23:11:21 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <ClanLib/core.h>
+#include "../PingusResource.hh"
 #include "Drown.hh"
 
 bool Drown::static_surfaces_loaded;
@@ -37,7 +38,7 @@ Drown::init()
 
   if (!static_surfaces_loaded)
     {
-      static_surface = CL_Surface("Pingus/drownfall", local_res());
+      static_surface = PingusResource::load_surface ("Pingus/drownfall", "pingus");
       static_surfaces_loaded = true;
     }
 

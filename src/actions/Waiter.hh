@@ -1,4 +1,4 @@
-//  $Id: Waiter.hh,v 1.1 2000/06/23 17:08:09 grumbel Exp $
+//  $Id: Waiter.hh,v 1.2 2000/12/16 23:11:21 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,8 +31,6 @@ private:
 public:
   ///
   Waiter();
-  ///
-  PinguAction * allocate();
   /// 
   void init();
   ///

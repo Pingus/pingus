@@ -1,4 +1,4 @@
-//  $Id: ActionButton.hh,v 1.11 2000/12/14 21:35:54 grumbel Exp $
+//  $Id: ActionButton.hh,v 1.12 2000/12/16 23:11:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -53,8 +53,7 @@ public:
   virtual void   draw() = 0;
   ///
   virtual bool   mouse_over() = 0;
-}///
-;
+};
 
 // ----------------- snip --------------------
 ///

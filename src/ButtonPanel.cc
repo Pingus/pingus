@@ -1,4 +1,4 @@
-//  $Id: ButtonPanel.cc,v 1.12 2000/12/14 21:35:54 grumbel Exp $
+//  $Id: ButtonPanel.cc,v 1.13 2000/12/16 23:11:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -56,9 +56,12 @@ ButtonPanel::ButtonPanel(PLF* plf)
 	}
     }
 
-  armageddon = new ArmageddonButton(CL_Display::get_width() - 38, CL_Display::get_height() - 56);
-  forward    = new ForwardButton(CL_Display::get_width() - 38 * 2, CL_Display::get_height() - 56);
-  pause      = new PauseButton(CL_Display::get_width() - 38 * 3, CL_Display::get_height() - 56);
+  armageddon = new ArmageddonButton(CL_Display::get_width() - 38, 
+				    CL_Display::get_height() - 56);
+  forward    = new ForwardButton(CL_Display::get_width() - 38 * 2,
+				 CL_Display::get_height() - 56);
+  pause      = new PauseButton(CL_Display::get_width() - 38 * 3,
+			       CL_Display::get_height() - 56);
 
   forward->pressed = false;
   pause->pressed   = false;

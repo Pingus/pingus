@@ -47,11 +47,11 @@
 #ifndef BOOST_SMART_PTR_HPP
 #define BOOST_SMART_PTR_HPP
 
-#include <boost/config.hpp>   // for broken compiler workarounds
+#include "config.hpp"   // for broken compiler workarounds
 #include <cstddef>            // for std::size_t
 #include <memory>             // for std::auto_ptr
 #include <algorithm>          // for std::swap
-#include <boost/utility.hpp>  // for boost::noncopyable
+#include "utility.hpp"  // for boost::noncopyable
 #include <functional>         // for std::less
 
 namespace boost {
@@ -246,11 +246,16 @@ template<typename T> class shared_ptr {
 template<typename T, typename U>
   inline bool operator==(const shared_ptr<T>& a, const shared_ptr<U>& b)
     { return a.get() == b.get(); }
+  /* grumbel uncommented because: 
+ObjectManager.cc:426:   instantiated from here
+/usr/lib/gcc-lib/i386-linux/2.95.2/../../../../include/g++-3/stl_algo.h:94: ambiguous overload for `boost::shared_ptr<EditorObj> & != const boost::shared_ptr<EditorObj> &'
+/usr/lib/gcc-lib/i386-linux/2.95.2/../../../../include/g++-3/stl_relops.h:37: candidates are: bool operator !=<boost::shared_ptr<EditorObj> >(const boost::shared_ptr<EditorObj> &, const boost::shared_ptr<EditorObj> &)
+../boost/smart_ptr.hpp:252:                 bool boost::operator !=<EditorObj, EditorObj>(const boost::shared_ptr<EditorObj> &, const boost::shared_ptr<EditorObj> &)
 
 template<typename T, typename U>
   inline bool operator!=(const shared_ptr<T>& a, const shared_ptr<U>& b)
     { return a.get() != b.get(); }
-
+  */
 //  shared_array  ------------------------------------------------------------//
 
 //  shared_array extends shared_ptr to arrays.

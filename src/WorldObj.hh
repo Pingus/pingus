@@ -1,4 +1,4 @@
-//  $Id: WorldObj.hh,v 1.9 2000/12/04 23:12:12 grumbel Exp $
+//  $Id: WorldObj.hh,v 1.10 2000/12/16 23:11:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,8 +20,9 @@
 #ifndef WORLDOBJ_HH
 #define WORLDOBJ_HH
 
-//#include "WorldObjData.hh"
-//#include "Position.hh"
+#include "boost/smart_ptr.hpp"
+
+using namespace boost;
 
 class World;
 class WorldObjData;
@@ -74,13 +75,13 @@ public:
    *  @return a new suitable WorldObj for the specified data, or null if no 
    *          suitable WorldObj could be found.
    */
-  static WorldObj* create (WorldObjData* data);
+  static shared_ptr<WorldObj> create (shared_ptr<WorldObjData> data);
 
   /// Set the world pointer for all world objects 
   static void set_world(World*);
 };
 
-#include "World.hh"
+//#include "World.hh"
 
 #endif
 

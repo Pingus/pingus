@@ -1,4 +1,4 @@
-// $Id: ObjectSelector.hh,v 1.17 2000/12/09 01:18:55 grumbel Exp $
+// $Id: ObjectSelector.hh,v 1.18 2000/12/16 23:11:24 grumbel Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,7 +43,7 @@ private:
   ///
   std::string last_object;
   ///
-  map<std::string, bool> data_loaded;
+  std::map<std::string, bool> data_loaded;
   
 public:
   ///
@@ -52,7 +52,7 @@ public:
   ~ObjectSelector();
   
   ///
-  list<EditorObj*> select_obj_type();
+  std::list<boost::shared_ptr<EditorObj> > select_obj_type();
   ///
   std::string select_surface(std::vector<surface_obj>& sur_list);
   ///
@@ -63,23 +63,23 @@ public:
   std::string read_string(std::string, std::string);
   
   ///
-  std::list<EditorObj*> get_obj(int, int);
+  std::list<boost::shared_ptr<EditorObj> > get_obj(int, int);
   ///
-  std::list<EditorObj*> get_trap();
+  std::list<boost::shared_ptr<EditorObj> > get_trap();
   ///
-  EditorObj* get_groundpiece(GroundpieceData::Type type);
+  boost::shared_ptr<EditorObj> get_groundpiece(GroundpieceData::Type type);
   ///
-  EditorObj* get_hotspot();
+  boost::shared_ptr<EditorObj> get_hotspot();
   ///
-  std::list<EditorObj*> get_entrance();
+  std::list<boost::shared_ptr<EditorObj> > get_entrance();
   ///
-  EditorObj* get_exit();
+  boost::shared_ptr<EditorObj> get_exit();
   /// 
-  EditorObj* get_liquid();
+  boost::shared_ptr<EditorObj> get_liquid();
   ///
-  EditorObj* get_weather();
+  boost::shared_ptr<EditorObj> get_weather();
   ///
-  std::list<EditorObj*> get_worldobj();
+  std::list<boost::shared_ptr<EditorObj> > get_worldobj();
   ///
   std::string get_background();
 };

@@ -1,4 +1,4 @@
-//  $Id: PLFObj.cc,v 1.33 2000/12/14 21:35:55 grumbel Exp $
+//  $Id: PLFObj.cc,v 1.34 2000/12/16 23:11:24 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -62,10 +62,10 @@ HotspotObj::~HotspotObj()
 {
 }
 
-EditorObj*
+boost::shared_ptr<EditorObj>
 HotspotObj::duplicate()
 {
-  return new HotspotObj(*this);
+  return boost::shared_ptr<EditorObj>(new HotspotObj(*this));
 }
 
 void
@@ -150,10 +150,10 @@ EntranceObj::~EntranceObj()
 {
 }
 
-EditorObj*
+boost::shared_ptr<EditorObj>
 EntranceObj::duplicate()
 {
-  return new EntranceObj(*this);
+  return boost::shared_ptr<EditorObj>(new EntranceObj(*this));
 }
 
 void
@@ -251,10 +251,10 @@ ExitObj::~ExitObj()
 {
 }
 
-EditorObj*   
+boost::shared_ptr<EditorObj>   
 ExitObj::duplicate()
 {
-  return new ExitObj(*this);
+  return boost::shared_ptr<EditorObj>(new ExitObj(*this));
 }
 
 void
@@ -331,10 +331,10 @@ TrapObj::~TrapObj()
 {
 }
 
-EditorObj*   
+boost::shared_ptr<EditorObj>
 TrapObj::duplicate()
 {
-  return new TrapObj(*this);
+  return boost::shared_ptr<EditorObj>(new TrapObj(*this));
 }
 
 void
@@ -400,10 +400,10 @@ LiquidObj::~LiquidObj()
 {
 }
 
-EditorObj* 
+boost::shared_ptr<EditorObj>
 LiquidObj::duplicate()
 {
-  return new LiquidObj(*this);
+  return boost::shared_ptr<EditorObj>(new LiquidObj(*this));
 }
 
 void

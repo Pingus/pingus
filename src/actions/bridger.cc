@@ -1,4 +1,4 @@
-//  $Id: bridger.cc,v 1.29 2000/12/14 21:35:55 grumbel Exp $
+//  $Id: bridger.cc,v 1.30 2000/12/16 23:11:21 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,8 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <cassert>
+#include "../World.hh"
+#include "../PingusResource.hh"
 #include "../PingusSound.hh"
 #include "../algo.hh"
 #include "bridger.hh"
@@ -33,12 +35,6 @@ Bridger::Bridger()
 {
 }
 
-PinguAction*
-Bridger::allocate(void)
-{
-  return new Bridger();
-}
-
 void
 Bridger::init(void)
 {
@@ -47,9 +43,9 @@ Bridger::init(void)
 
   if (!static_surfaces_loaded)
     {
-      static_surface = CL_Surface ("Pingus/bridger", local_res());
-      brick_l = CL_Surface ("Other/brick_left", local_res());
-      brick_r = CL_Surface ("Other/brick_right", local_res());
+      static_surface = PingusResource::load_surface ("Pingus/bridger", "pingus");
+      brick_l = PingusResource::load_surface ("Other/brick_left", "pingus");
+      brick_r = PingusResource::load_surface ("Other/brick_right", "pingus");
       static_surfaces_loaded = true;
     }
   surface = static_surface;

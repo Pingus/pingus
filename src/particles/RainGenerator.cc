@@ -1,4 +1,4 @@
-//  $Id: RainGenerator.cc,v 1.1 2000/08/05 18:48:09 grumbel Exp $
+//  $Id: RainGenerator.cc,v 1.2 2000/12/16 23:11:24 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "../World.hh"
 #include "RainParticle.hh"
 #include "RainGenerator.hh"
 

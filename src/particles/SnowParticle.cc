@@ -1,4 +1,4 @@
-//  $Id: SnowParticle.cc,v 1.9 2000/12/14 21:35:56 grumbel Exp $
+//  $Id: SnowParticle.cc,v 1.10 2000/12/16 23:11:24 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <ClanLib/core.h>
+#include "../World.hh"
 #include "../PingusResource.hh"
 #include "../algo.hh"
 #include "SnowParticle.hh"

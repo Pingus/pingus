@@ -1,4 +1,4 @@
-//  $Id: SurfaceButton.hh,v 1.12 2000/12/14 21:35:55 grumbel Exp $
+//  $Id: SurfaceButton.hh,v 1.13 2000/12/16 23:11:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -65,8 +65,7 @@ public:
   bool mouse_over();
   ///
   virtual void on_click() = 0;
-}///
-;
+};
 
 ///
 class PlayButton : public SurfaceButton
@@ -78,8 +77,7 @@ public:
   virtual ~PlayButton();
   ///
   void on_click();
-}///
-;
+};
 
 ///
 class OptionsButton : public SurfaceButton
@@ -109,8 +107,7 @@ public:
   void set_pingus_menu(PingusMenu*);
   ///
   void on_click();
-}///
-;
+};
 
 ///
 class LoadButton : public SurfaceButton
@@ -139,8 +136,7 @@ public:
   virtual ~EditorButton();
   ///
   void on_click();
-}///
-;
+};
 
 ///
 class ThemeButton : public SurfaceButton
@@ -156,8 +152,7 @@ public:
   virtual ~ThemeButton();
   ///
   void on_click();
-}///
-;
+};
 
 
 #endif

@@ -1,4 +1,4 @@
-//  $Id: PingusError.hh,v 1.4 2000/06/18 17:01:50 grumbel Exp $
+//  $Id: PingusError.hh,v 1.5 2000/12/16 23:11:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,8 +33,7 @@ public:
   PingusError(std::string mes);
   ///
   std::string message;
-}///
-;
+};
 
 #endif
 

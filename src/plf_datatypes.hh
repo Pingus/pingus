@@ -1,4 +1,4 @@
-//  $Id: plf_datatypes.hh,v 1.3 2000/06/18 17:01:50 grumbel Exp $
+//  $Id: plf_datatypes.hh,v 1.4 2000/12/16 23:11:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,8 +32,7 @@ struct button_data
   std::string   name;
   ///
   int number_of;
-}///
-;
+};
 
 #endif
 

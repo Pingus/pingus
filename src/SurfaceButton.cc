@@ -1,4 +1,4 @@
-//  $Id: SurfaceButton.cc,v 1.18 2000/12/14 21:35:55 grumbel Exp $
+//  $Id: SurfaceButton.cc,v 1.19 2000/12/16 23:11:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,6 +33,12 @@ SurfaceButton::SurfaceButton()
 {
   font = PingusResource::load_font("Fonts/pingus_small", "fonts");
   font_large = PingusResource::load_font("Fonts/pingus", "fonts");
+
+  //std::cout << "Generating font cache: " << std::flush;
+  // We print all available letters, so that they are in the cache
+  //font->print_left (0,0, "!\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~");
+  //font_large->print_left (0,0, "!\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~");
+  //std::cout << "done" << std::endl;
 }
 
 SurfaceButton::~SurfaceButton()
@@ -317,8 +323,6 @@ ThemeButton::ThemeButton()
   //desc["de"] = "..:: Such dir eine Welt zum beginnen aus ::..";
 
   line1 = _("Start");
-  //line1["de"] = "Start";
-
   // surface   = PingusResource::load_surface("Buttons/worlds", "menu");
   // surface_p = PingusResource::load_surface("Buttons/worlds_p", "menu");     
 

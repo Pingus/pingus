@@ -1,4 +1,4 @@
-//  $Id: bomber.cc,v 1.12 2000/12/14 21:35:55 grumbel Exp $
+//  $Id: bomber.cc,v 1.13 2000/12/16 23:11:21 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,8 +17,10 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "../World.hh"
 #include "../globals.hh"
 #include "../algo.hh"
+#include "../PingusResource.hh"
 #include "../PingusSound.hh"
 #include "../FVec.hh"
 #include "bomber.hh"
@@ -32,12 +34,6 @@ Bomber::Bomber()
 {
 }
 
-PinguAction*
-Bomber::allocate(void)
-{
-  return new Bomber;
-}
-
 void
 Bomber::init()
 {
@@ -48,9 +44,9 @@ Bomber::init()
   if (!static_surface_loaded) 
     {
       static_surface_loaded = true;
-      static_surface = CL_Surface ("Pingus/bomber", local_res());
-      bomber_radius = CL_Surface ("Other/bomber_radius", local_res());
-      explo_surf = CL_Surface ("Other/explo", local_res());
+      static_surface = PingusResource::load_surface ("Pingus/bomber", "pingus");
+      bomber_radius = PingusResource::load_surface ("Other/bomber_radius", "pingus");
+      explo_surf = PingusResource::load_surface ("Other/explo", "pingus");
     }
 
   surface = static_surface;

@@ -1,4 +1,4 @@
-//  $Id: ObjectManager.hh,v 1.13 2000/10/03 20:01:24 grumbel Exp $
+//  $Id: ObjectManager.hh,v 1.14 2000/12/16 23:11:24 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,7 +41,7 @@ private:
   ///
   std::vector<ActionData> actions;
   ///
-  std::vector<BackgroundData*> backgrounds;
+  std::vector<boost::shared_ptr<BackgroundData> > backgrounds;
   ///
   int    number_to_save;
   ///
@@ -62,11 +62,11 @@ private:
   bool   quit;
 
   /** All objects which are visible in the editor */ 
-  std::list<EditorObj*> editor_objs;
+  std::list<boost::shared_ptr<EditorObj> > editor_objs;
 
   /** This list contains all objects, which are in the current
       selection */
-  std::list<EditorObj*> current_objs;
+  std::list<boost::shared_ptr<EditorObj> > current_objs;
 
   ///
   int x_offset;
@@ -80,11 +80,11 @@ private:
   
 public:
   ///
-  typedef std::list<EditorObj*>::iterator EditorObjIter;
+  typedef std::list<boost::shared_ptr<EditorObj> >::iterator EditorObjIter;
   ///
-  typedef std::list<EditorObj*>::reverse_iterator EditorObjRIter;
+  typedef std::list<boost::shared_ptr<EditorObj> >::reverse_iterator EditorObjRIter;
   ///
-  typedef std::list<EditorObj*>::iterator CurrentObjIter;
+  typedef std::list<boost::shared_ptr<EditorObj> >::iterator CurrentObjIter;
 
   ///
   ObjectManager();
@@ -106,7 +106,7 @@ public:
   void draw_scroll_map(int x_pos, int y_pos, int arg_width, int arg_height);
   
   ///
-  bool object_selected(EditorObj* c_obj);
+  bool object_selected(boost::shared_ptr<EditorObj> c_obj);
   ///
   void move_obj();
   ///
@@ -129,30 +129,30 @@ public:
 
   /** Return the currently selected object, if none is selected or
       multiple objects are selected return 0 */
-  EditorObj* get_current_obj();
+  boost::shared_ptr<EditorObj> get_current_obj();
   
   ///
   void move_current_objs(int x, int y);
   ///
-  void add_to_selection(EditorObj* obj);
+  void add_to_selection(boost::shared_ptr<EditorObj> obj);
   ///
-  void add_to_selection(std::list<EditorObj*> objs);
+  void add_to_selection(std::list<boost::shared_ptr<EditorObj> > objs);
 
   ///
-  bool raise_obj(EditorObj* obj);
+  bool raise_obj(boost::shared_ptr<EditorObj> obj);
   ///
   void raise_current_objs();
   ///
-  bool lower_obj(EditorObj* obj);
+  bool lower_obj(boost::shared_ptr<EditorObj> obj);
 
   ///
   void lower_current_objs();
 
   /** Remove an object from the current selection */
-  void unselect_object(EditorObj* c_obj);
+  void unselect_object(boost::shared_ptr<EditorObj> c_obj);
 
   /** Add the object at the given position to the selection */
-  EditorObj* select_object(int x, int y);
+  boost::shared_ptr<EditorObj> select_object(int x, int y);
 };
 
 #endif

@@ -1,4 +1,4 @@
-//  $Id: World.hh,v 1.18 2000/09/29 16:21:17 grumbel Exp $
+//  $Id: World.hh,v 1.19 2000/12/16 23:11:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,9 @@
 #include <ClanLib/core.h>
 #include <vector>
 #include <iterator>
+#include "boost/smart_ptr.hpp"
+
+using namespace boost;
 
 #include "WorldObj.hh"
 #include "PinguHolder.hh"
@@ -39,6 +42,7 @@
 #include "particles/ParticleHolder.hh"
 #include "PinguMap.hh"
 
+// Forward declarations
 class WorldObj;
 class Exit;
 class Entrance;
@@ -59,11 +63,11 @@ class World
 {
 private:
   ///
-  PinguMap* gfx_map;
+  shared_ptr<PinguMap> gfx_map;
   ///
   bool do_armageddon;
   ///
-  std::list<Pingu*>::iterator armageddon_count;
+  std::list<shared_ptr<Pingu> >::iterator armageddon_count;
 
   ///
   unsigned int released_pingus;
@@ -84,28 +88,28 @@ private:
   int exit_time;
 
   ///
-  std::vector<Background*> backgrounds;
+  std::vector<shared_ptr<Background> > backgrounds;
   ///
-  std::vector<WorldObj*> world_obj_bg;
+  std::vector<shared_ptr<WorldObj> > world_obj_bg;
   ///
-  std::vector<WorldObj*> world_obj_fg;
+  std::vector<shared_ptr<WorldObj> > world_obj_fg;
   ///
-  std::vector<Entrance*> entrance;
+  std::vector<shared_ptr<Entrance> > entrance;
   ///
-  std::vector<Exit*>     exits;
+  std::vector<shared_ptr<Exit> >     exits;
   ///
-  std::vector<Hotspot*>  hotspot;
+  std::vector<shared_ptr<Hotspot> >  hotspot;
   ///
-  std::vector<Liquid*>   liquid;
+  std::vector<shared_ptr<Liquid> >   liquid;
   ///
-  std::vector<Trap*>     traps;
+  std::vector<shared_ptr<Trap> >     traps;
 
   ///
-  ParticleHolder* particle_holder;
+  shared_ptr<ParticleHolder> particle_holder;
   ///
   ActionHolder* action_holder;
   ///
-  PinguHolder* pingus;
+  shared_ptr<PinguHolder> pingus;
   ///
   ColMap* colmap;
   ///

@@ -1,4 +1,4 @@
-//  $Id: StatusLine.cc,v 1.5 2000/07/04 22:59:13 grumbel Exp $
+//  $Id: StatusLine.cc,v 1.6 2000/12/16 23:11:24 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,7 +38,7 @@ StatusLine::draw(int x_offset, int y_offset)
   // FIXME: This is a potential buffer overrun, to lazy to fix it right now
   std::string status_line_text;
 
-  if (current_objs) 
+  if (current_objs)
     {
       if (current_objs->size() > 1) 
 	{
@@ -64,7 +64,7 @@ StatusLine::draw(int x_offset, int y_offset)
 }
 
 void
-StatusLine::set_current_objs(std::list<EditorObj*>* c_objs)
+StatusLine::set_current_objs(std::list<boost::shared_ptr<EditorObj> >* c_objs)
 {
   current_objs = c_objs;
 }

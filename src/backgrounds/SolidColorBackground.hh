@@ -1,4 +1,4 @@
-//  $Id: SolidColorBackground.hh,v 1.1 2000/09/29 15:43:52 grumbel Exp $
+//  $Id: SolidColorBackground.hh,v 1.2 2000/12/16 23:11:22 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #ifndef SOLIDCOLORBACKGROUND_HH
 #define SOLIDCOLORBACKGROUND_HH
 
+#include "../boost/smart_ptr.hpp"
 #include "../Color.hh"
 #include "Background.hh"
 #include "BackgroundData.hh"
@@ -35,7 +36,7 @@ public:
   /** Writte the content of this object formated as xml to the given
       stream */
   virtual void write_xml(ofstream* xml);
-  static SolidColorBackgroundData* create (xmlDocPtr doc, xmlNodePtr cur);
+  static boost::shared_ptr<SolidColorBackgroundData> create (xmlDocPtr doc, xmlNodePtr cur);
 };
 
 class SolidColorBackground : public Background,
@@ -45,7 +46,7 @@ public:
   SolidColorBackground () {}
   virtual ~SolidColorBackground () {}
 
-  static SolidColorBackground* create (BackgroundData* arg_data);
+  static boost::shared_ptr<SolidColorBackground> create (boost::shared_ptr<BackgroundData> arg_data);
 
   void let_move () {}
   void draw_offset (int x_of, int y_of, float s = 1.0);

@@ -1,4 +1,4 @@
-//  $Id: basher.cc,v 1.16 2000/12/14 21:35:55 grumbel Exp $
+//  $Id: basher.cc,v 1.17 2000/12/16 23:11:21 grumbel Exp $
 //
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -16,6 +16,8 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "../World.hh"
+#include "../PingusResource.hh"
 #include "../particles/GroundParticle.hh"
 #include "../algo.hh"
 #include "../globals.hh"
@@ -31,12 +33,6 @@ Basher::Basher()
 {
 }
 
-PinguAction* 
-Basher::allocate(void)
-{
-  return new Basher();
-}
-
 void
 Basher::init(void)
 {
@@ -45,8 +41,8 @@ Basher::init(void)
 
   if (!static_surf_loaded)
     {
-      static_surface = CL_Surface ("Pingus/basher", local_res());
-      bash_radius = CL_Surface ("Other/bash_radius", local_res());
+      static_surface = PingusResource::load_surface ("Pingus/basher", "pingus");
+      bash_radius = PingusResource::load_surface ("Other/bash_radius", "pingus");
       static_surf_loaded = true;
     }
   surface = static_surface; 

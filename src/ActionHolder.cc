@@ -1,4 +1,4 @@
-//  $Id: ActionHolder.cc,v 1.19 2000/08/11 01:11:04 grumbel Exp $
+//  $Id: ActionHolder.cc,v 1.20 2000/12/16 23:11:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -50,12 +50,12 @@ ActionHolder::ActionHolder()
 
 ActionHolder::~ActionHolder()
 {
-  for (std::vector<PinguAction*>::iterator i = action_stack.begin(); 
+  /*  for (std::vector<shared_ptr<PinguAction> >::iterator i = action_stack.begin(); 
        i != action_stack.end();
        i++)
     {
       delete *i;
-    }
+      }*/
 }
 
 void
@@ -76,7 +76,7 @@ ActionHolder::get_available(const std::string& name)
   return available_actions[name];
 }
 
-PinguAction*
+shared_ptr<PinguAction>
 ActionHolder::get_action(const std::string& name)
 {
   int* count;
@@ -94,47 +94,47 @@ ActionHolder::get_action(const std::string& name)
       if (unlimited_actions) {
       	return get_uaction(name);
       } else {
-	return 0;
+	return shared_ptr<PinguAction>();
       }
     }
 }
 
 // Allocates an action from the given name
-PinguAction*
+shared_ptr<PinguAction>
 ActionHolder::translate_action(const std::string& name)
 {
-    if (name == "climber") {
-    return new Climber;
+  if (name == "climber") {
+    return shared_ptr<PinguAction>(new Climber);
   } else if (name == "blocker") {
-    return new Blocker;
+    return shared_ptr<PinguAction>(new Blocker);
   } else if (name == "bomber") {
-    return new Bomber;
+    return shared_ptr<PinguAction>(new Bomber);
   } else if (name == "bridger") {
-      return new Bridger;
+    return shared_ptr<PinguAction>(new Bridger);
   } else if (name == "digger") {
-    return new Digger;
+    return shared_ptr<PinguAction>(new Digger);
   } else if (name == "miner") {
-    return new Miner;
+    return shared_ptr<PinguAction>(new Miner);
   } else if (name == "floater") {
-    return new Floater;
+    return shared_ptr<PinguAction>(new Floater);
   } else if (name == "basher") {
-    return new Basher;
+    return shared_ptr<PinguAction>(new Basher);
   } else if (name == "jumper") {
-    return new Jumper;
+    return shared_ptr<PinguAction>(new Jumper);
   } else if (name == "exiter") {
-    return new Exiter;
+    return shared_ptr<PinguAction>(new Exiter);
   } else if (name == "teleported") {
-    return new Teleported;
+    return shared_ptr<PinguAction>(new Teleported);
   } else if (name == "laserkill") {
-    return new LaserKill;
+    return shared_ptr<PinguAction>(new LaserKill);
   } else if (name == "smashed") {
-    return new Smashed;
+    return shared_ptr<PinguAction>(new Smashed);
   } else if (name == "splashed") {
-    return new Splashed;
+    return shared_ptr<PinguAction>(new Splashed);
   } else if (name == "waiter") {
-    return new Waiter;
+    return shared_ptr<PinguAction>(new Waiter);
   } else if (name == "drown") {
-    return new Drown;
+    return shared_ptr<PinguAction>(new Drown);
   } else {
     throw PingusError(std::string("ActionHolder:Action `") + name +"' unkown");
   }  
@@ -142,10 +142,10 @@ ActionHolder::translate_action(const std::string& name)
 
 // Returns an newly allocated action and adds it to the action_stack
 // to ensure a later cleanup.
-PinguAction* 
+shared_ptr<PinguAction>
 ActionHolder::get_uaction(const std::string& name)
 {
-  PinguAction* tmp_action;
+  shared_ptr<PinguAction> tmp_action;
 
   tmp_action = translate_action(name);
   

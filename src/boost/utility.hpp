@@ -22,7 +22,7 @@
 #ifndef BOOST_UTILITY_HPP
 #define BOOST_UTILITY_HPP
 
-#include <boost/config.hpp>
+#include "config.hpp"
 #include <cstddef>            // for size_t
 #include <utility>            // for std::pair
 

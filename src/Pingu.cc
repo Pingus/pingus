@@ -1,4 +1,4 @@
-//  $Id: Pingu.cc,v 1.38 2000/12/14 21:35:54 grumbel Exp $
+//  $Id: Pingu.cc,v 1.39 2000/12/16 23:11:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,8 +21,12 @@
 #include <cstdio>
 #include <cmath>
 #include <ClanLib/core.h>
+#include <boost/smart_ptr.hpp>
+
+using namespace boost;
 
 #include "globals.hh"
+#include "World.hh"
 #include "Pingu.hh"
 #include "ActionHolder.hh"
 #include "PingusResource.hh"
@@ -39,8 +43,6 @@ CL_Surface         Pingu::faller;
 CL_Surface         Pingu::tumble;
 CL_Font*            Pingu::font;
 
-CL_ResourceManager* Pingu::local_res_p;
-
 Pingu::Pingu()
 {
 }
@@ -52,14 +54,10 @@ Pingu::Pingu(int x, int y)
     {
       init = true;
 
-      local_res_p = PingusResource::get("pingus");
-      PinguAction::SetResourceManager(local_res());
-
       font   = PingusResource::load_font("Fonts/numbers", "fonts");
-      //walker = CL_Surface::load("XMas/walker", local_res());
-      walker = CL_Surface ("Pingus/walker", local_res());
-      faller = CL_Surface ("Pingus/faller", local_res());
-      tumble = CL_Surface ("Pingus/tumble", local_res());
+      walker = PingusResource::load_surface ("Pingus/walker", "pingus");
+      faller = PingusResource::load_surface ("Pingus/faller", "pingus");
+      tumble = PingusResource::load_surface ("Pingus/tumble", "pingus");
     }
 
   falling = 4;
@@ -68,7 +66,6 @@ Pingu::Pingu(int x, int y)
   x_pos = x;
   y_pos = y;
 
-  action = sec_action = 0;
   action_time = -1;
 
   // Init all animation timer
@@ -133,9 +130,9 @@ Pingu::set_pos(int x, int y)
 // Set the action of the pingu (bridger, blocker, bomber, etc.)
 // This function is used by external stuff, like the ButtonPanel, etc
 int
-Pingu::set_action(PinguAction* act)
+Pingu::set_action(shared_ptr<PinguAction> act)
 {
-  assert(act);
+  assert(act.get());
 
   if (status == dead)
     {
@@ -160,7 +157,7 @@ Pingu::set_action(PinguAction* act)
 		    << int(act->get_type() & (ActionType)WALL) << std::endl;
 	}
       
-      for(std::vector<PinguAction*>::iterator i = persist.begin(); i != persist.end(); i++)
+      for(std::vector<shared_ptr<PinguAction> >::iterator i = persist.begin(); i != persist.end(); i++)
 	{
 	  if ((*i)->name() == act->name()) 
 	    {
@@ -189,7 +186,7 @@ Pingu::set_action(PinguAction* act)
     
       if (act->activation_time() == -1)
 	{ // Immediately activate the action
-	  if (action && (action->name() == act->name()))
+	  if (action.get() && (action->name() == act->name()))
 	    {
 	      if (pingus_debug_flags & PINGUS_DEBUG_ACTIONS)
 		std::cout << "Pingu: Allready have action" << std::endl;
@@ -200,7 +197,7 @@ Pingu::set_action(PinguAction* act)
 	}
       else 
 	{ // Use the activation time, given by t
-	  if (sec_action && sec_action->name() == act->name())
+	  if (sec_action.get() && sec_action->name() == act->name())
 	    {
 	      return false;
 	    }
@@ -214,7 +211,7 @@ Pingu::set_action(PinguAction* act)
 
 // Sets an action without any checking
 int
-Pingu::set_paction(PinguAction* act) 
+Pingu::set_paction(shared_ptr<PinguAction> act) 
 {
   action = act;
   action->set_pingu(this);
@@ -261,13 +258,13 @@ Pingu::dist(int x, int y)
 void
 Pingu::do_persistent()
 {
-  if (environment == sky && action == 0 && rel_getpixel(0, -1) == ColMap::NOTHING) 
+  if (environment == sky && action.get() == 0 && rel_getpixel(0, -1) == ColMap::NOTHING) 
     {
       for (unsigned int i=0; i < persist.size(); ++i) 
 	{
 	  if (persist[i]->get_type() & (ActionType)FALL) 
 	    {
-	      if (action && persist[i]->name() == action->name()) 
+	      if (action.get() && persist[i]->name() == action->name()) 
 		{
 		  if (pingus_debug_flags & PINGUS_DEBUG_ACTIONS)
 		    std::cout << "Pingu: Not using action, we have allready" << std::endl;
@@ -297,15 +294,15 @@ Pingu::let_move(void)
   if (action_time > -1) 
     --action_time;
 
-  if (action_time == 0 && sec_action) 
+  if (action_time == 0 && sec_action.get()) 
     {
       action = sec_action;
       action->set_pingu(this);
     }
   
-  if (action && action->is_finished) 
+  if (action.get() && action->is_finished) 
     {
-      action = 0;
+      action = shared_ptr<PinguAction>();
     }
     
   if (rel_getpixel(0, -1) == ColMap::OUTOFSCREEN) 
@@ -317,7 +314,7 @@ Pingu::let_move(void)
 
   do_persistent();
   
-  if (action) 
+  if (action.get()) 
     { // if we have an action, let_move() it
       action->let_move();
     }
@@ -460,7 +457,7 @@ Pingu::do_walking()
 	    {
 	      if (persist[i]->get_type() & (ActionType)WALL) 
 		{
-		  if (action && persist[i]->name() == action->name()) 
+		  if (action.get() && persist[i]->name() == action->name()) 
 		    {
 		      if (pingus_debug_flags & PINGUS_DEBUG_ACTIONS)
 			std::cout << "Pingu: Not using action, we have allready" << std::endl;
@@ -494,7 +491,7 @@ Pingu::draw_offset(int x, int y, float s) const
   char str[64];
   y += 2;
   
-  if (action) 
+  if (action.get()) 
     {
       action->draw_offset(x, y,s);
     } 
@@ -585,7 +582,7 @@ Pingu::need_catch()
   if (status == dead)
     return false;
   
-  if (action)
+  if (action.get())
     return action->need_catch();
   else 
     return false;
@@ -607,16 +604,10 @@ Pingu::is_alive(void)
     return false;
 }
 
-PinguAction*
+shared_ptr<PinguAction>
 Pingu::get_action()
 {
   return action;
-}
-
-CL_ResourceManager*
-Pingu::local_res()
-{
-  return local_res_p;
 }
 
 int 
@@ -628,7 +619,7 @@ Pingu::set_id(int i)
 int
 Pingu::x_offset(void)
 {
-  if (action)
+  if (action.get())
     return action->x_offset();
   else
     return -16;
@@ -638,7 +629,7 @@ int
 Pingu::y_offset(void)
 
 {
-  if (action) 
+  if (action.get()) 
     return action->y_offset();
   else 
     return -32;

@@ -1,4 +1,4 @@
-//  $Id: IceBlock.cc,v 1.7 2000/12/14 21:35:56 grumbel Exp $
+//  $Id: IceBlock.cc,v 1.8 2000/12/16 23:11:24 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,8 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "../World.hh"
+#include "../PinguHolder.hh"
 #include "../PingusResource.hh"
 #include "../XMLhelper.hh"
 #include "IceBlock.hh"
@@ -36,10 +38,10 @@ IceBlockData::write_xml(ofstream* xml)
 }
 
 ///
-WorldObjData* 
+boost::shared_ptr<WorldObjData>
 IceBlockData::create(xmlDocPtr doc, xmlNodePtr cur)
 {
-  IceBlockData* data = new IceBlockData ();
+  boost::shared_ptr<IceBlockData> data(new IceBlockData ());
 
   cur = cur->children;
   
@@ -147,16 +149,16 @@ EditorIceBlockObj::~EditorIceBlockObj ()
 {
 }
 
-std::list<EditorObj*> 
+std::list<boost::shared_ptr<EditorObj> > 
 EditorIceBlockObj::create (WorldObjData* obj)
 {
-  std::list<EditorObj*> objs;
-  objs.push_back (new EditorIceBlockObj(obj));
+  std::list<shared_ptr<EditorObj> > objs;
+  objs.push_back (boost::shared_ptr<EditorObj>(new EditorIceBlockObj(obj)));
   return objs;
 }
 
 /** Create the object with resonable defaults */
-std::list<EditorObj*> 
+std::list<boost::shared_ptr<EditorObj> > 
 EditorIceBlockObj::create (const Position& pos)
 {
   IceBlockData data;

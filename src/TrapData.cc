@@ -1,4 +1,4 @@
-//  $Id: TrapData.cc,v 1.1 2000/11/01 10:51:33 grumbel Exp $
+//  $Id: TrapData.cc,v 1.2 2000/12/16 23:11:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,10 +30,10 @@ TrapData::write_xml(ofstream* xml)
 	 << std::endl;
 }
 
-WorldObjData* 
+boost::shared_ptr<WorldObjData>
 TrapData::create(xmlDocPtr doc, xmlNodePtr cur)
 {
-  TrapData* trap = new TrapData;
+  boost::shared_ptr<TrapData> trap(new TrapData);
   cur = cur->children;
   while (cur != NULL)
     {
@@ -60,6 +60,7 @@ TrapData::create(xmlDocPtr doc, xmlNodePtr cur)
 
       cur = cur->next;
     }
+  return trap;
 }
 
 /* EOF */

@@ -1,4 +1,4 @@
-// $Id: miner.cc,v 1.13 2000/12/14 21:35:55 grumbel Exp $
+// $Id: miner.cc,v 1.14 2000/12/16 23:11:21 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,8 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "../World.hh"
+#include "../PingusResource.hh"
 #include "../PingusSound.hh"
 #include "../algo.hh"
 #include "miner.hh"
@@ -25,20 +27,14 @@ Miner::Miner()
 {
 }
 
-PinguAction* 
-Miner::allocate(void)
-{
-  return new Miner();
-}
-
 void
 Miner::init(void)
 {
   environment = (PinguEnvironment)land;
   action_name = "Miner";
 
-  miner_radius = CL_Surface ("Other/bash_radius", local_res());
-  surface = CL_Surface ("Pingus/miner", local_res());
+  miner_radius = PingusResource::load_surface ("Other/bash_radius", "pingus");
+  surface = PingusResource::load_surface ("Pingus/miner", "pingus");
   counter.set_size(surface.get_num_frames()/2);
   counter.set_speed(10);
   is_multi_direct = true;

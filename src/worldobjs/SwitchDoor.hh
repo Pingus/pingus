@@ -1,4 +1,4 @@
-//  $Id: SwitchDoor.hh,v 1.5 2000/12/14 21:35:56 grumbel Exp $
+//  $Id: SwitchDoor.hh,v 1.6 2000/12/16 23:11:24 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #define SWITCHDOOR_HH
 
 #include <ClanLib/core.h>
+#include "../boost/smart_ptr.hpp"
 #include "../WorldObj.hh"
 #include "../WorldObjData.hh"
 #include "../editor/EditorWorldObj.hh"
@@ -47,7 +48,7 @@ public:
       stream */
   virtual void write_xml(ofstream* xml);
   ///
-  static WorldObjData* create(xmlDocPtr doc, xmlNodePtr cur);
+  static boost::shared_ptr<WorldObjData> create(xmlDocPtr doc, xmlNodePtr cur);
 };
 
 /** A door and a switch, if a pingu is passing the switch, the door
@@ -108,11 +109,11 @@ public:
   virtual ~EditorSwitchDoorObj ();
 
   virtual void draw_offset(int x_of, int y_of);
-  static std::list<EditorObj*> create (WorldObjData* obj);
+  static std::list<boost::shared_ptr<EditorObj> > create (WorldObjData* obj);
 
   /** Create this object (and child objects) with resonable defaults
       for the editor */
-  static std::list<EditorObj*> create (const Position& pos);
+  static std::list<boost::shared_ptr<EditorObj> > create (const Position& pos);
 
   virtual void save_xml (std::ofstream* xml);
   virtual std::string status_line();

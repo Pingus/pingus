@@ -1,4 +1,4 @@
-//  $Id: WorldObjData.cc,v 1.7 2000/12/04 23:12:12 grumbel Exp $
+//  $Id: WorldObjData.cc,v 1.8 2000/12/16 23:11:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,8 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "boost/smart_ptr.hpp"
+#include "PingusError.hh"
 #include "TrapData.hh"
 #include "worldobjs/Teleporter.hh"
 #include "worldobjs/IceBlock.hh"
@@ -24,11 +26,11 @@
 #include "worldobjs/SwitchDoor.hh"
 #include "WorldObjData.hh"
 
-WorldObjData* 
+boost::shared_ptr<WorldObjData>
 WorldObjData::create(xmlDocPtr doc, xmlNodePtr cur)
 {
   std::cout << "WroldObjDATa:create" << std::endl;
-  WorldObjData* data = 0;
+  boost::shared_ptr<WorldObjData> data;
   char* type = (char*)xmlGetProp(cur, (xmlChar*)"type");
   
   if (type == 0)
@@ -49,7 +51,7 @@ WorldObjData::create(xmlDocPtr doc, xmlNodePtr cur)
 	data = SwitchDoorData::create (doc, cur);
       else
 	{
-	  std::cout << "WorldObjData::create (): Unknown type: \"" << type << "\"" << std::endl;
+	  throw PingusError("WorldObjData::create (): Unknown type: \"" + std::string(type) + "\"");
 	}
     }
   return data;

@@ -1,4 +1,4 @@
-// $Id: BackgroundData.hh,v 1.4 2000/09/30 21:34:42 grumbel Exp $
+// $Id: BackgroundData.hh,v 1.5 2000/12/16 23:11:22 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,7 @@
 
 #include <fstream>
 
+#include "../boost/smart_ptr.hpp"
 #include "../XMLhelper.hh"
 #include "../ResDescriptor.hh"
 #include "../Color.hh"
@@ -42,7 +43,7 @@ public:
       stream */
   virtual void write_xml(ofstream* xml) =0;
   
-  static BackgroundData* create(xmlDocPtr doc, xmlNodePtr cur);
+  static boost::shared_ptr<BackgroundData> create(xmlDocPtr doc, xmlNodePtr cur);
 };
 
 #endif

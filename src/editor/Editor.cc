@@ -1,4 +1,4 @@
-//  $Id: Editor.cc,v 1.21 2000/10/30 16:17:50 grumbel Exp $
+//  $Id: Editor.cc,v 1.22 2000/12/16 23:11:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -380,13 +380,12 @@ Editor::interactive_move_object()
 void
 Editor::edit_current_objs()
 {
-  EditorObj* obj = object_manager->get_current_obj();
+  boost::shared_ptr<EditorObj> obj = object_manager->get_current_obj();
 
-  if (obj)
+  if (obj.get())
     obj->gui_edit_obj();
   else
     std::cout << "No single object selected" << std::endl;
-  //EditorEditGUI::edit_obj(obj);
 }
 
 
@@ -438,6 +437,9 @@ Editor::interactive_load()
 
 /***********************************************
 $Log: Editor.cc,v $
+Revision 1.22  2000/12/16 23:11:22  grumbel
+replaced most pointers with smart_ptr's, this might fix some memory holes and is probally a good start to clean up the dirty object generation code
+
 Revision 1.21  2000/10/30 16:17:50  grumbel
 - added support to disable gnu gettext
 - added support for the teleporter in the editor (mostly untested)

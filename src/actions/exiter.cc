@@ -1,4 +1,4 @@
-//  $Id: exiter.cc,v 1.8 2000/12/14 21:35:55 grumbel Exp $
+//  $Id: exiter.cc,v 1.9 2000/12/16 23:11:21 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,7 @@
 
 #include "../globals.hh"
 #include "../PingusSound.hh"
+#include "../PingusResource.hh"
 #include "../algo.hh"
 #include "exiter.hh"
 
@@ -30,19 +31,13 @@ Exiter::~Exiter()
 {
 }
 
-PinguAction*
-Exiter::allocate(void)
-{
-  return new Exiter();
-}
-
 void
 Exiter::init(void)
 {
   environment = (PinguEnvironment)(land | sky);
   action_name = "Exiter";
   
-  surface = CL_Surface ("Pingus/exit", local_res());
+  surface = PingusResource::load_surface ("Pingus/exit", "pingus");
   counter.set_size(surface.get_num_frames());
   counter.set_type(Counter::once);
   counter.set_count(0);

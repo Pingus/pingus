@@ -1,4 +1,4 @@
-//  $Id: PinguHolder.hh,v 1.9 2000/08/03 10:31:17 grumbel Exp $
+//  $Id: PinguHolder.hh,v 1.10 2000/12/16 23:11:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,15 +21,19 @@
 #define PINGUHOLDER_HH
 
 #include <list>
+#include "boost/smart_ptr.hpp"
+
+using namespace boost;
+
 #include "Pingu.hh"
 #include "WorldObj.hh"
 
 class Pingu;
 ///
-typedef std::list<Pingu*>::iterator PinguIter;
+typedef std::list<shared_ptr<Pingu> >::iterator PinguIter;
 
 ///
-class PinguHolder : public std::list<Pingu*>,
+class PinguHolder : public std::list<shared_ptr<Pingu> >,
 		    public WorldObj
 {
 private:
@@ -42,7 +46,7 @@ private:
 
   /** A std::list holding all Pingus, the PinguHolder itself has only the
       active (not dead) ones */
-  std::list<Pingu*> pingus;
+  std::list<shared_ptr<Pingu> > pingus;
   
 public:
   ///
@@ -52,7 +56,7 @@ public:
   ///
   void draw_offset(int, int, float s = 1.0);
   ///
-  void push_back(Pingu*);
+  void push_back(shared_ptr<Pingu>);
   ///
   int  total_size();
   ///

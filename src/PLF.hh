@@ -1,4 +1,4 @@
-//  $Id: PLF.hh,v 1.19 2000/10/18 20:16:36 grumbel Exp $
+//  $Id: PLF.hh,v 1.20 2000/12/16 23:11:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,6 +25,10 @@
 #include <string>
 #include <vector>
 #include <map>
+
+#include "boost/smart_ptr.hpp"
+
+using namespace boost;
 
 #include "backgrounds/BackgroundData.hh"
 #include "WeatherData.hh"
@@ -61,7 +65,7 @@ protected:
   ///
   ResDescriptor foreground;
   ///
-  vector<BackgroundData*> backgrounds;
+  vector<shared_ptr<BackgroundData> > backgrounds;
   ///
   ResDescriptor music;
   ///
@@ -106,7 +110,7 @@ protected:
   ///
   std::vector<WeatherData>  weathers;
   ///
-  std::vector<WorldObjData*> worldobjs_data;
+  std::vector<shared_ptr<WorldObjData> > worldobjs_data;
 public:
   ///
   PLF();
@@ -114,7 +118,7 @@ public:
   virtual ~PLF();
 
   ///
-  vector<BackgroundData*> get_backgrounds(void);
+  vector<shared_ptr<BackgroundData> > get_backgrounds(void);
   ///
   ResDescriptor get_foreground(void);
   ///
@@ -184,7 +188,7 @@ public:
   ///
   std::vector<WeatherData>   get_weather(void);
   ///
-  std::vector<WorldObjData*> get_worldobjs_data ();
+  std::vector<shared_ptr<WorldObjData> > get_worldobjs_data ();
   //
   //std::vector<EmptyData>            get_groups(void);
 };

@@ -1,4 +1,4 @@
-// $Id: PSMObj.hh,v 1.10 2000/10/30 16:17:51 grumbel Exp $
+// $Id: PSMObj.hh,v 1.11 2000/12/16 23:11:24 grumbel Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,7 +43,7 @@ public:
   ///
   virtual void save_xml(std::ofstream* xml);
   ///
-  EditorObj*   duplicate();
+  boost::shared_ptr<EditorObj> duplicate();
   ///
   std::string status_line();
   ///

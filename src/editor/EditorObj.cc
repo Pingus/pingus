@@ -1,4 +1,4 @@
-// $Id: EditorObj.cc,v 1.27 2000/12/14 21:35:55 grumbel Exp $
+// $Id: EditorObj.cc,v 1.28 2000/12/16 23:11:24 grumbel Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,9 +19,11 @@
 
 #include "../my_gettext.hh"
 
+#include "../boost/smart_ptr.hpp"
 #include "../Display.hh"
 #include "../PSMParser.hh"
 #include "../PingusResource.hh"
+#include "../PingusError.hh"
 #include "../worldobjs/Teleporter.hh"
 #include "../worldobjs/IceBlock.hh"
 #include "../worldobjs/ConveyorBelt.hh"
@@ -34,6 +36,7 @@
 #include "config.h"
 
 using namespace std;
+using namespace boost;
 
 Editor* EditorObj::editor;
 
@@ -54,73 +57,53 @@ EditorObj::~EditorObj()
 {
 }
 
-std::list<EditorObj*>
+std::list<shared_ptr<EditorObj> >
 EditorObj::create(GroundpieceData data)
 {
-  std::list<EditorObj*> objs;
-  EditorObj* obj = new PSMObj(data);
-  objs.push_back (obj);
-  return objs;
+  return make_list(new PSMObj(data));
 }
 
-std::list<EditorObj*>
+std::list<shared_ptr<EditorObj> >
 EditorObj::create(EntranceData data)
 {
-  std::list<EditorObj*> objs;
-  EditorObj* obj = new EntranceObj(data);
-  objs.push_back(obj);
-  return objs;
+  return make_list(new EntranceObj(data));
 }
 
-std::list<EditorObj*>
+std::list<shared_ptr<EditorObj> >
 EditorObj::create(ExitData data)
 {
-  std::list<EditorObj*> objs;
-  EditorObj* obj = new ExitObj(data);
-  objs.push_back (obj);
-  return objs;
+  return make_list(new ExitObj(data));
 }
 
-std::list<EditorObj*>
+std::list<shared_ptr<EditorObj> >
 EditorObj::create(TrapData data)
 {
-  std::list<EditorObj*> objs;
-  EditorObj* obj = new TrapObj(data);
-  objs.push_back (obj);
-  return objs;
+  return make_list(new TrapObj(data));
 }
 
-std::list<EditorObj*>
+std::list<shared_ptr<EditorObj> >
 EditorObj::create(HotspotData data)
 {
-  std::list<EditorObj*> objs;
-  EditorObj* obj = new HotspotObj(data);
-  objs.push_back (obj);
-  return objs;
+  return make_list(new HotspotObj(data));
 }
 
-std::list<EditorObj*>
+std::list<shared_ptr<EditorObj> >
 EditorObj::create(LiquidData data)
 {
-  std::list<EditorObj*> objs;
-  EditorObj* obj = new LiquidObj(data);
-  objs.push_back (obj);
-  return objs;
+  return make_list(new LiquidObj(data));
 }
 
-std::list<EditorObj*>
+std::list<shared_ptr<EditorObj> >
 EditorObj::create(WeatherData data)
 {
-  std::list<EditorObj*> objs;
-  EditorObj* obj = new WeatherObj(data);
-  objs.push_back (obj);
-  return objs;
+  return make_list(new WeatherObj(data));
 }
 
-list<EditorObj*>
+std::list<boost::shared_ptr<EditorObj> >
 EditorObj::create (WorldObjData* obj)
 {
-  list<EditorObj*> objs;
+  std::list<boost::shared_ptr<EditorObj> > objs;
+
   if (dynamic_cast<TeleporterData*>(obj))
     objs = EditorTeleporterObj::create (dynamic_cast<TeleporterData*>(obj));
   else if (dynamic_cast<IceBlockData*>(obj))
@@ -129,12 +112,9 @@ EditorObj::create (WorldObjData* obj)
     objs = EditorConveyorBeltObj::create (dynamic_cast<ConveyorBeltData*>(obj));
   else if (dynamic_cast<SwitchDoorData*>(obj))
     objs = EditorSwitchDoorObj::create (dynamic_cast<SwitchDoorData*>(obj));
-
   else
     {
-      std::cout << _("EditorObj: Warrning unknown WorldObjData pointer!") << std::endl;
-      // FIXME: empty dummy
-      return list<EditorObj*>();
+      throw PingusError(_("EditorObj: Warrning unknown WorldObjData pointer!"));
     }
   
   return objs;
@@ -273,6 +253,9 @@ EditorObj::gui_edit_obj()
   
 /*
 $Log: EditorObj.cc,v $
+Revision 1.28  2000/12/16 23:11:24  grumbel
+replaced most pointers with smart_ptr's, this might fix some memory holes and is probally a good start to clean up the dirty object generation code
+
 Revision 1.27  2000/12/14 21:35:55  grumbel
 Replaced all/most CL_Surface* pointers with CL_Surface objects
 removed the sharde_ptr() stuff in PingusMenu, will add it later, when the rest it up and running again correctly

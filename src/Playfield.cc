@@ -1,4 +1,4 @@
-//  $Id: Playfield.cc,v 1.14 2000/07/04 22:59:13 grumbel Exp $
+//  $Id: Playfield.cc,v 1.15 2000/12/16 23:11:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,7 +34,6 @@
 
 Playfield::Playfield()
 {
-  current_pingu = 0;
   server = 0;
   client = 0;
   mouse_scrolling = false;
@@ -43,8 +42,6 @@ Playfield::Playfield()
 Playfield::Playfield(PLF* level_data, World* w)
 {
   world = w;
-  current_pingu = 0;
-  current_view = 0;
   pingus = world->get_pingu_p();
   mouse_scrolling = false;
   View::set_world(world);
@@ -121,12 +118,12 @@ Playfield::draw()
     }
 }
 
-Pingu*
+shared_ptr<Pingu>
 Playfield::current_pingu_find(int x_pos, int y_pos)
 {
   double min_dist = 500.0;
   double dist;
-  Pingu* c_pingu = 0;
+  shared_ptr<Pingu> c_pingu;
 
   for (PinguIter pingu=pingus->begin(); pingu != pingus->end(); pingu++)
     {
@@ -216,7 +213,7 @@ Playfield::let_move()
 bool 
 Playfield::on_button_press(const CL_Key &key)
 {
-  if (current_pingu)
+  if (current_pingu.get())
     {
       char str[256];
       sprintf(str, "Pingu: %d:%s", current_pingu->get_id(), buttons->get_action_name().c_str());

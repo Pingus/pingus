@@ -1,4 +1,4 @@
-//  $Id: traps.cc,v 1.4 2000/07/30 01:47:39 grumbel Exp $
+//  $Id: traps.cc,v 1.5 2000/12/16 23:11:24 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,7 @@
 
 #include <iostream>
 
+#include "../boost/smart_ptr.hpp"
 #include "../PingusError.hh"
 #include "traps.hh"
 
@@ -31,25 +32,25 @@
 //#include "Teleport.hh"
 #include "Bumper.hh"
 
-Trap* get_trap(TrapData data)
+boost::shared_ptr<Trap> get_trap(TrapData data)
 {
   /*  if (data.name == "teleport") {
     return (new Teleport(data));
   } else*/
   if (data.type == "smasher") {
-    return (new Smasher(data));
+    return boost::shared_ptr<Trap>(new Smasher(data));
   } else if (data.type == "hammer") {
-    return (new Hammer(data));
+    return boost::shared_ptr<Trap>(new Hammer(data));
   } else if (data.type == "fake_exit") {
-    return (new FakeExit(data));
+    return boost::shared_ptr<Trap>(new FakeExit(data));
   } else if (data.type == "spike") {
-    return (new Spike(data));
+    return boost::shared_ptr<Trap>(new Spike(data));
   } else if (data.type == "guillotine") {
-    return (new Guillotine(data));
+    return boost::shared_ptr<Trap>(new Guillotine(data));
   } else if (data.type == "laser_exit") {
-    return (new LaserExit(data));
+    return boost::shared_ptr<Trap>(new LaserExit(data));
   } else if (data.type == "bumper") {
-    return (new Bumper(data));
+    return boost::shared_ptr<Trap>(new Bumper(data));
   }
   throw PingusError("Trap: `" + data.type + "' is unknown");
 }

@@ -1,4 +1,4 @@
-//  $Id: World.cc,v 1.35 2000/09/24 00:22:06 grumbel Exp $
+//  $Id: World.cc,v 1.36 2000/12/16 23:11:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -50,28 +50,23 @@ using namespace std;
 #endif /* WIN32 */
 
 // Structure for the sorting algorithm (stable_sort)
-struct WorldObj_less : public binary_function<WorldObj*, WorldObj*, bool>
+struct WorldObj_less : public binary_function<shared_ptr<WorldObj>, shared_ptr<WorldObj>, bool>
 {
-  bool operator() (WorldObj* a, WorldObj* b) const 
-    {
-      return (*a) < (*b);
-    }
+  bool operator() (shared_ptr<WorldObj> a, shared_ptr<WorldObj> b) const 
+  {
+    return (*a) < (*b);
+  }
 };
 
 World::World()
 {
-  particle_holder = 0;
   released_pingus = 0;
-  gfx_map = 0;
-  pingus = 0;
-  //background = 0;
   exit_world = false;
   WorldObj::set_world(this);
 }
 
 World::World(PLF* plf)
 { 
-  particle_holder = 0;
   WorldObj::set_world(this);
   init(plf);
 }
@@ -80,11 +75,8 @@ World::~World()
 {
   std::cout << "World:~World" << std::endl;
 
-  if (pingus) delete pingus;
-  if (particle_holder) delete particle_holder;
-  if (gfx_map) delete gfx_map;
-  
-  for (vector<Background*>::iterator i = backgrounds.begin(); i != backgrounds.end(); i++)
+  /*  for (vector<shared_ptr<Background> >::iterator i = backgrounds.begin();
+       i != backgrounds.end(); i++)
     delete *i;
 
   for(vector<WorldObj*>::iterator obj = world_obj_bg.begin();
@@ -92,7 +84,7 @@ World::~World()
       obj++)
     {
       delete *obj;
-    }
+      }*/
 }
 
 // Merge the different layers on the screen together
@@ -103,17 +95,20 @@ World::draw(int x1, int y1, int w, int h,
   x_of += x1;
   y_of += y1;
   
-  for (vector<Background*>::iterator i = backgrounds.begin(); i != backgrounds.end(); i++)
+  for (vector<shared_ptr<Background> >::iterator i = backgrounds.begin();
+       i != backgrounds.end(); i++)
     (*i)->draw_offset(x_of, y_of, s);
 
-  for(vector<WorldObj*>::iterator obj = world_obj_bg.begin(); obj != world_obj_bg.end(); obj++)
+  for(vector<shared_ptr<WorldObj> >::iterator obj = world_obj_bg.begin();
+      obj != world_obj_bg.end(); obj++)
     {
       (*obj)->draw_offset(x_of, y_of, s);
     }
 
   gfx_map->draw(x1, y1, w, h, x_of, y_of, s);
 
-  for(vector<WorldObj*>::iterator obj = world_obj_fg.begin(); obj != world_obj_fg.end(); obj++)
+  for(vector<shared_ptr<WorldObj> >::iterator obj = world_obj_fg.begin(); 
+      obj != world_obj_fg.end(); obj++)
     {
       (*obj)->draw_offset(x_of, y_of, s);
     }
@@ -141,7 +136,7 @@ World::let_move()
   // Create new pingus, if enough time is passed
   if (!do_armageddon && (unsigned int)pingus->total_size() < allowed_pingus)
     {
-      for(vector<Entrance*>::iterator i = entrance.begin(); i != entrance.end(); i++) 
+      for(vector<shared_ptr<Entrance> >::iterator i = entrance.begin(); i != entrance.end(); i++) 
 	{
 	  if ((*i)->pingu_ready())
 	    {
@@ -155,21 +150,21 @@ World::let_move()
   // Let the pingus catch each other and
   // Let the traps catch the pingus and
   // Let the exit catch the pingus
-  for(vector<WorldObj*>::iterator obj = world_obj_bg.begin(); 
+  for(vector<shared_ptr<WorldObj> >::iterator obj = world_obj_bg.begin(); 
       obj != world_obj_bg.end(); 
       obj++)
     {
       (*obj)->let_move();
     }
 
-  for(vector<WorldObj*>::iterator obj = world_obj_fg.begin(); 
+  for(vector<shared_ptr<WorldObj> >::iterator obj = world_obj_fg.begin(); 
       obj != world_obj_fg.end(); 
       obj++)
     {
       (*obj)->let_move();
     }
 
-  for(vector<WorldObj*>::iterator obj = world_obj_fg.begin(); 
+  for(vector<shared_ptr<WorldObj> >::iterator obj = world_obj_fg.begin(); 
       obj != world_obj_fg.end(); 
       obj++)
     {
@@ -182,14 +177,14 @@ World::let_move()
 
       if ((*pingu)->need_catch()) {
 	for(PinguIter i = pingus->begin(); i != pingus->end(); i++) {
-	  (*pingu)->catch_pingu(*i);
+	  (*pingu)->catch_pingu(i->get());
 	}
       }
     
-      for(vector<Trap*>::iterator obj = traps.begin(); obj != traps.end(); obj++)
+      for(vector<shared_ptr<Trap> >::iterator obj = traps.begin(); obj != traps.end(); obj++)
 	(*obj)->catch_pingu(*pingu);
       
-      for(vector<Exit*>::iterator obj = exits.begin(); obj != exits.end(); obj++) 
+      for(vector<shared_ptr<Exit> >::iterator obj = exits.begin(); obj != exits.end(); obj++) 
 	(*obj)->catch_pingu(*pingu);
     }
 
@@ -201,7 +196,7 @@ World::let_move()
   */    
   particle_holder->let_move();
 
-  for (vector<Background*>::iterator i = backgrounds.begin(); i != backgrounds.end(); i++)
+  for (vector<shared_ptr<Background> >::iterator i = backgrounds.begin(); i != backgrounds.end(); i++)
     (*i)->let_move();
 
   // Clear the explosion force list
@@ -225,8 +220,8 @@ World::init(PLF* plf_data)
   init_map();
   init_background();
 
-  particle_holder = new ParticleHolder();
-  pingus = new PinguHolder();
+  particle_holder = shared_ptr<ParticleHolder>(new ParticleHolder());
+  pingus = shared_ptr<PinguHolder>(new PinguHolder());
 
   Timer timer;
 
@@ -243,7 +238,7 @@ World::init_map()
   /*switch (plf->map_type())
     {
     case SPOT:*/
-      gfx_map = new PingusSpotMap(plf);
+  gfx_map = shared_ptr<PinguMap>(new PingusSpotMap(plf));
       /*      break;
     case BMP:
     case RANDOM:
@@ -257,9 +252,10 @@ World::init_map()
 void 
 World::init_background()
 {
-  vector<BackgroundData*> bg_data = plf->get_backgrounds();
+  vector<shared_ptr<BackgroundData> > bg_data = plf->get_backgrounds();
+
   // load the background map
-  for (vector<BackgroundData*>::iterator i = bg_data.begin();
+  for (vector<shared_ptr<BackgroundData> >::iterator i = bg_data.begin();
        i != bg_data.end();
        ++i)
     backgrounds.push_back(Background::create(*i));
@@ -274,38 +270,35 @@ World::init_worldobjs()
   vector<HotspotData>  hspot_d    = plf->get_hotspot();
   vector<LiquidData>   liquid_d   = plf->get_liquids();
   vector<WeatherData>  weather_d  = plf->get_weather();
-  vector<WorldObjData*> worldobj_d = plf->get_worldobjs_data ();
+  vector<shared_ptr<WorldObjData> > worldobj_d = plf->get_worldobjs_data ();
 
   // Creating Exit and Entrance
   for(vector<ExitData>::iterator i = exit_d.begin(); i != exit_d.end(); i++) 
-    exits.push_back(new Exit(*i));
+    exits.push_back(shared_ptr<Exit>(new Exit(*i)));
   
   for(vector<EntranceData>::size_type i = 0; i < entrance_d.size(); ++i) 
     entrance.push_back(get_entrance(entrance_d[i]));
 
-  for(vector<TrapData>::size_type i=0; i < trap_d.size(); ++i)
+  for(vector<shared_ptr<TrapData> >::size_type i=0; i < trap_d.size(); ++i)
     traps.push_back(get_trap(trap_d[i]));
 
   // Creating the foreground and background hotspots
-  for(vector<HotspotData>::size_type i = 0; i < hspot_d.size(); ++i)
-    hotspot.push_back(new Hotspot(hspot_d[i]));
+  for(vector<shared_ptr<HotspotData> >::size_type i = 0; i < hspot_d.size(); ++i)
+    hotspot.push_back(shared_ptr<Hotspot>(new Hotspot(hspot_d[i])));
   
-  for(vector<LiquidData>::size_type i=0; i < liquid_d.size(); i++) 
-    liquid.push_back(new Liquid(liquid_d[i]));
+  for(vector<shared_ptr<LiquidData> >::size_type i=0; i < liquid_d.size(); i++) 
+    liquid.push_back(shared_ptr<Liquid>(new Liquid(liquid_d[i])));
   
   for(vector<WeatherData>::iterator i = weather_d.begin();
       i != weather_d.end();
       i++)
     {
-      WeatherGenerator* weather_gen = WeatherGenerator::create(*i);
+      shared_ptr<WeatherGenerator> weather_gen = WeatherGenerator::create(*i);
 
-      if (weather_gen)
-	{
-	  if (weather_gen->get_z_pos() > 0)
-	    world_obj_fg.push_back(weather_gen);
-	  else
-	    world_obj_bg.push_back(weather_gen);
-	}
+      if (weather_gen->get_z_pos() > 0)
+	world_obj_fg.push_back(weather_gen);
+      else
+	world_obj_bg.push_back(weather_gen);
     }
 
   // Push all objects to world_obj vector
@@ -332,7 +325,7 @@ World::init_worldobjs()
       else 
 	world_obj_fg.push_back(entrance[i]);
     }
-
+  
   for(vector<LiquidData>::size_type i=0; i < liquid_d.size(); ++i)
     {
       if (liquid[i]->pos.z_pos <= 0)
@@ -349,13 +342,13 @@ World::init_worldobjs()
 	world_obj_fg.push_back(traps[i]);
     }
 
-  for (vector<WorldObjData*>::iterator i = worldobj_d.begin ();
+  for (vector<shared_ptr<WorldObjData> >::iterator i = worldobj_d.begin ();
        i != worldobj_d.end ();
        i++)
     {
       std::cout << "Adding worldobj's" << std::endl;
 
-      WorldObj* obj = WorldObj::create(*i);
+      shared_ptr<WorldObj> obj = WorldObj::create(*i);
 
       std::cout << "z_pos: " << obj->get_z_pos() << std::endl;
 
@@ -372,10 +365,11 @@ World::init_worldobjs()
   stable_sort(world_obj_fg.begin(), world_obj_fg.end(), WorldObj_less());
 
   // Drawing all world objs to the colmap
-  for(vector<WorldObj*>::iterator obj = world_obj_bg.begin(); obj != world_obj_bg.end(); obj++)
+  for(vector<shared_ptr<WorldObj> >::iterator obj = world_obj_bg.begin(); 
+      obj != world_obj_bg.end(); obj++)
     (*obj)->draw_colmap();
 
-  for(vector<WorldObj*>::iterator obj = world_obj_fg.begin(); obj != world_obj_fg.end(); obj++)
+  for(vector<shared_ptr<WorldObj> >::iterator obj = world_obj_fg.begin(); obj != world_obj_fg.end(); obj++)
     (*obj)->draw_colmap();
   
   // Setup the gravity force
@@ -387,20 +381,20 @@ World::init_worldobjs()
 PinguHolder*
 World::get_pingu_p(void)
 {
-  return pingus;
+  return pingus.get();
 }
 
 int
 World::get_width(void)
 {
-  assert(gfx_map);
+  assert(gfx_map.get());
   return gfx_map->get_width();  
 }
 
 int
 World::get_height(void)
 {
-  assert(gfx_map);
+  assert(gfx_map.get());
   return gfx_map->get_height();
 }
 
@@ -469,7 +463,7 @@ World::get_colmap()
 PinguMap* 
 World::get_gfx_map ()
 {
-  return gfx_map;
+  return gfx_map.get();
 }
 
 ActionHolder*
@@ -481,7 +475,7 @@ World::get_action_holder ()
 ParticleHolder* 
 World::get_particle_holder()
 {
-  return particle_holder;
+  return particle_holder.get();
 }
 
 PLF*    

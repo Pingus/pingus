@@ -1,4 +1,4 @@
-//  $Id: LaserExit.cc,v 1.8 2000/12/14 21:35:56 grumbel Exp $
+//  $Id: LaserExit.cc,v 1.9 2000/12/16 23:11:24 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "../World.hh"
 #include "../ActionHolder.hh"
 #include "../PingusResource.hh"
 #include "LaserExit.hh"
@@ -63,7 +64,7 @@ LaserExit::catch_pingu(Pingu* pingu)
     if (pingu->x_pos < pos.x_pos + 34 + 10 && pingu->x_pos > pos.x_pos + 34 
 	&& pingu->y_pos < pos.y_pos + 43 + 20 && pingu->y_pos > pos.y_pos + 43) 
       {
-	if (!(pingu->get_action() && pingu->get_action()->name() == "LaserKill")) {
+	if (!(pingu->get_action().get() && pingu->get_action()->name() == "LaserKill")) {
 	  killing = true;
 	  pingu->set_action(world->get_action_holder()->get_uaction("laserkill"));
 	}

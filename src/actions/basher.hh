@@ -1,4 +1,4 @@
-//  $Id: basher.hh,v 1.8 2000/12/14 21:35:55 grumbel Exp $
+//  $Id: basher.hh,v 1.9 2000/12/16 23:11:21 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,9 +42,6 @@ private:
 public:
   ///
   Basher();
-
-  ///
-  PinguAction* allocate(void);
   ///
   void   init(void);
   ///

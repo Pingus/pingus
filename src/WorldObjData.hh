@@ -1,4 +1,4 @@
-//  $Id: WorldObjData.hh,v 1.4 2000/10/30 16:17:50 grumbel Exp $
+//  $Id: WorldObjData.hh,v 1.5 2000/12/16 23:11:20 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #define WORLDOBJDATA_HH
 
 #include <fstream>
+#include "boost/smart_ptr.hpp"
 #include "XMLhelper.hh"
 
 /** The root data class for all objects in the Pingus world.  Each
@@ -41,7 +42,7 @@ public:
   virtual void write_xml(ofstream* xml) =0;
 
   /** We are reading a <worldobj> tag and decide which sub-worldobj it will be. */
-  static WorldObjData* create(xmlDocPtr doc, xmlNodePtr cur);
+  static boost::shared_ptr<WorldObjData> create(xmlDocPtr doc, xmlNodePtr cur);
 };
 
 #endif

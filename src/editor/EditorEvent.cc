@@ -1,4 +1,4 @@
-//  $Id: EditorEvent.cc,v 1.33 2000/12/05 23:17:56 grumbel Exp $
+//  $Id: EditorEvent.cc,v 1.34 2000/12/16 23:11:23 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -323,17 +323,19 @@ EditorEvent::editor_convert_group_to_selection()
 {
   if (object_manager->current_objs.size() == 1)
     {
-      EditorObj* obj = *(object_manager->current_objs.begin());
-      EditorObjGroup* group = dynamic_cast<EditorObjGroup*>(obj);
+      boost::shared_ptr<EditorObj> obj = *(object_manager->current_objs.begin());
+      EditorObjGroup* group = dynamic_cast<EditorObjGroup*>(obj.get());
 
       if (group)
 	{      
-	  list<EditorObj*>* objs = group->get_objs();
+	  std::list<boost::shared_ptr<EditorObj> >* objs = group->get_objs();
 	  
-	  object_manager->editor_objs.erase(std::find(object_manager->editor_objs.begin(), object_manager->editor_objs.end(), group));
+	  object_manager->editor_objs.erase(std::find(object_manager->editor_objs.begin(), 
+						      object_manager->editor_objs.end(),
+						      obj));
 	  object_manager->delete_selection();
 
-	  for(list<EditorObj*>::iterator i = objs->begin();
+	  for(std::list<shared_ptr<EditorObj> >::iterator i = objs->begin();
 	      i != objs->end();
 	      i++)
 	    {
@@ -342,8 +344,6 @@ EditorEvent::editor_convert_group_to_selection()
 	    }
 
 	  objs->clear();
-
-	  delete group;
 	}
       else
 	{
@@ -361,8 +361,8 @@ EditorEvent::editor_convert_selection_to_group()
 {
   if (object_manager->current_objs.size() > 1)
     {
-      EditorObjGroup* group = new EditorObjGroup();
-      std::vector<std::list<EditorObj*>::iterator> to_erase;
+      boost::shared_ptr<EditorObjGroup> group(new EditorObjGroup());
+      std::vector<std::list<boost::shared_ptr<EditorObj> >::iterator> to_erase;
 
       // We need to collect the objects out of the editor_objs list to keep the correct sorting
       for (ObjectManager::EditorObjIter j = object_manager->editor_objs.begin();
@@ -381,7 +381,7 @@ EditorEvent::editor_convert_selection_to_group()
 	    }
 	}
 
-      for(std::vector<std::list<EditorObj*>::iterator>::iterator i = to_erase.begin();
+      for(std::vector<std::list<boost::shared_ptr<EditorObj> >::iterator>::iterator i = to_erase.begin();
 	  i != to_erase.end();
 	  i++)
 	object_manager->editor_objs.erase(*i);
@@ -551,7 +551,7 @@ EditorEvent::editor_save_level_as()
 void
 EditorEvent::editor_duplicate_current_selection()
 {
-  std::list<EditorObj*> new_objs;
+  std::list<boost::shared_ptr<EditorObj> > new_objs;
   
   for (ObjectManager::CurrentObjIter i = object_manager->current_objs.begin(); 
        i != object_manager->current_objs.end();
@@ -560,8 +560,9 @@ EditorEvent::editor_duplicate_current_selection()
       ObjectManager::EditorObjIter iter = std::find(object_manager->editor_objs.begin(), 
 						    object_manager->editor_objs.end(), 
 						    *i);
-      EditorObj* obj = (*i)->duplicate();
-      if (obj)
+      
+      boost::shared_ptr<EditorObj> obj = (*i)->duplicate();
+      if (obj.get())
 	{
 	  object_manager->editor_objs.insert(iter, obj);
 	  new_objs.push_back(obj);
@@ -577,7 +578,7 @@ EditorEvent::editor_insert_new_object()
 {
   editor->save_tmp_level();
 
-  list<EditorObj*> objs;
+  std::list<boost::shared_ptr<EditorObj> > objs;
   try 
     {
       disable();
@@ -592,7 +593,7 @@ EditorEvent::editor_insert_new_object()
       
   if (!objs.empty ()) 
     {
-      for (list<EditorObj*>::iterator i = objs.begin (); i != objs.end (); i++)
+      for (std::list<boost::shared_ptr<EditorObj> >::iterator i = objs.begin (); i != objs.end (); i++)
 	object_manager->editor_objs.push_back(*i);
     } 
   else 
@@ -619,9 +620,9 @@ EditorEvent::editor_exit()
 void
 EditorEvent::editor_mark_or_move_object()
 {
-  EditorObj* obj = object_manager->select_object(CL_Mouse::get_x(), CL_Mouse::get_y());
+  boost::shared_ptr<EditorObj> obj = object_manager->select_object(CL_Mouse::get_x(), CL_Mouse::get_y());
   
-  if (obj)
+  if (obj.get())
     {
       if (object_manager->object_selected(obj))
 	{

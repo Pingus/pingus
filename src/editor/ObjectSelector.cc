@@ -1,4 +1,4 @@
-//  $Id: ObjectSelector.cc,v 1.37 2000/12/14 21:35:55 grumbel Exp $
+//  $Id: ObjectSelector.cc,v 1.38 2000/12/16 23:11:24 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -53,7 +53,7 @@ ObjectSelector::~ObjectSelector()
   
 /** FIXME: Ugly interface, the arguments should not be the offset, but
     instead the absolute position */
-std::list<EditorObj*>
+std::list<boost::shared_ptr<EditorObj> >
 ObjectSelector::get_obj(int x_off, int y_off)
 {
   x_offset = x_off;
@@ -62,7 +62,7 @@ ObjectSelector::get_obj(int x_off, int y_off)
   return select_obj_type();
 }
 
-std::list<EditorObj*>
+std::list<boost::shared_ptr<EditorObj> >
 ObjectSelector::get_trap()
 {
   vector<string> traps;
@@ -121,16 +121,16 @@ ObjectSelector::get_trap()
 	  have_name = true;
 	  break;
 	case CL_KEY_ESCAPE:
-	  return std::list<EditorObj*>();
+	  return std::list<boost::shared_ptr<EditorObj> >();
 	}
     }
  
   // FIXME: Can somebody enlight me, why gcc gives here a warrning?: 
   // ObjectSelector.cc:107: warning: control reaches end of non-void function `ObjectSelector::get_trap()'
-  return EditorObj::create (&trap);//new TrapObj(trap);
+  return EditorObj::create (&trap);
 }
 
-EditorObj*
+boost::shared_ptr<EditorObj>
 ObjectSelector::get_groundpiece(GroundpieceData::Type type)
 {
   GroundpieceData data;
@@ -146,13 +146,12 @@ ObjectSelector::get_groundpiece(GroundpieceData::Type type)
       data.desc = ResDescriptor("resource:" + datafile, str);
       data.type = type;
 
-      EditorObj* obj = new PSMObj(data);
-      return obj;
+      return boost::shared_ptr<EditorObj>(new PSMObj(data));
     }
-  return 0;
+  return boost::shared_ptr<EditorObj>();
 }
 
-EditorObj*
+boost::shared_ptr<EditorObj>
 ObjectSelector::get_hotspot()
 {
   HotspotData data;
@@ -166,12 +165,12 @@ ObjectSelector::get_hotspot()
       data.desc = ResDescriptor("resource:global", str);
       data.speed = -1;
 
-      return new HotspotObj(data);
+      return boost::shared_ptr<EditorObj>(new HotspotObj(data));
     }
-  return 0;
+  return boost::shared_ptr<EditorObj>();
 }
 
-std::list<EditorObj*>
+std::list<boost::shared_ptr<EditorObj> >
 ObjectSelector::get_worldobj()
 {
   CL_Display::clear_display();
@@ -200,15 +199,15 @@ ObjectSelector::get_worldobj()
 
 	case CL_KEY_4:
 	  return EditorIceBlockObj::create (Position(CL_Mouse::get_x() - x_offset, 
-						       CL_Mouse::get_y() - y_offset));
+						     CL_Mouse::get_y() - y_offset));
 
 	case CL_KEY_ESCAPE:
-	  return std::list<EditorObj*>();
+	  return std::list<boost::shared_ptr<EditorObj> >();
 	}
     }
 }
 
-EditorObj*
+boost::shared_ptr<EditorObj>
 ObjectSelector::get_weather()
 {
   WeatherData weather;
@@ -238,10 +237,10 @@ ObjectSelector::get_weather()
 	}
     }
   
-  return new WeatherObj(weather);
+  return boost::shared_ptr<EditorObj>(new WeatherObj(weather));
 }
 
-std::list<EditorObj*>
+std::list<boost::shared_ptr<EditorObj> >
 ObjectSelector::get_entrance()
 {
   EntranceData entrance;
@@ -285,7 +284,7 @@ ObjectSelector::get_entrance()
   return EditorObj::create(entrance);
 }
 
-EditorObj*
+boost::shared_ptr<EditorObj>
 ObjectSelector::get_exit()
 {
   string str;
@@ -299,25 +298,25 @@ ObjectSelector::get_exit()
   last_object = str;
 
   if (str.empty())
-    return 0;
+    return boost::shared_ptr<EditorObj>();
   
   data.desc = ResDescriptor("resource:exits", str);
   
-  return new ExitObj(data);
+  return boost::shared_ptr<EditorObj>(new ExitObj(data));
 }
 
-EditorObj*
+boost::shared_ptr<EditorObj>
 ObjectSelector::get_liquid()
 {
   std::cout << "ObjectSelector::get_liquid() not implemented" << std::endl;
-  return 0;
+  return boost::shared_ptr<EditorObj>();
 }
 
-std::list<EditorObj*>
+std::list<boost::shared_ptr<EditorObj> >
 ObjectSelector::select_obj_type()
 {
   bool exit_loop;
-  std::list<EditorObj*> objs;
+  std::list<boost::shared_ptr<EditorObj> > objs;
 
   CL_Display::clear_display();
   font->print_left(20, 20, "What object do you want?");
@@ -369,12 +368,15 @@ ObjectSelector::select_obj_type()
 	case CL_KEY_X:
 	  objs.push_back(get_exit());
 	  return objs;
+
 	case CL_KEY_L:
 	  objs.push_back(get_liquid());
 	  return objs;
+
 	case CL_KEY_W:
 	  objs.push_back(get_weather());
 	  return objs;
+
 	case CL_KEY_O:
 	  return get_worldobj();
 
@@ -479,6 +481,9 @@ ObjectSelector::read_string(string description, string def_str)
 /*
 
 $Log: ObjectSelector.cc,v $
+Revision 1.38  2000/12/16 23:11:24  grumbel
+replaced most pointers with smart_ptr's, this might fix some memory holes and is probally a good start to clean up the dirty object generation code
+
 Revision 1.37  2000/12/14 21:35:55  grumbel
 Replaced all/most CL_Surface* pointers with CL_Surface objects
 removed the sharde_ptr() stuff in PingusMenu, will add it later, when the rest it up and running again correctly

@@ -1,4 +1,4 @@
-// $Id: TrapData.hh,v 1.2 2000/10/30 16:17:50 grumbel Exp $
+// $Id: TrapData.hh,v 1.3 2000/12/16 23:11:20 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,7 @@
 #define TRAP_DATA_HH
 
 #include <string>
-
+#include "boost/smart_ptr.hpp"
 #include "WorldObjData.hh"
 #include "Position.hh"
 
@@ -38,7 +38,7 @@ public:
 
   void write_xml(ofstream* xml);
 
-  static WorldObjData* create(xmlDocPtr doc, xmlNodePtr cur);
+  static boost::shared_ptr<WorldObjData> create(xmlDocPtr doc, xmlNodePtr cur);
 };
 
 #endif

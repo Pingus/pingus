@@ -1,4 +1,4 @@
-//  $Id: SurfaceBackground.hh,v 1.3 2000/12/14 21:35:55 grumbel Exp $
+//  $Id: SurfaceBackground.hh,v 1.4 2000/12/16 23:11:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,7 @@
 #define SURFACEBACKGROUND_HH
 
 #include <ClanLib/core.h>
-
+#include "../boost/smart_ptr.hpp"
 #include "../AnimCounter.hh"
 #include "../GameCounter.hh"
 #include "../ResDescriptor.hh"
@@ -56,7 +56,7 @@ public:
   ///
   virtual ~SurfaceBackground();
   ///
-  static SurfaceBackground* create (BackgroundData*);
+  static boost::shared_ptr<SurfaceBackground> create (boost::shared_ptr<BackgroundData>);
   ///
   void let_move(void);
   ///

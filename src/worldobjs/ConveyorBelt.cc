@@ -1,4 +1,4 @@
-//  $Id: ConveyorBelt.cc,v 1.8 2000/12/14 21:35:56 grumbel Exp $
+//  $Id: ConveyorBelt.cc,v 1.9 2000/12/16 23:11:24 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,8 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "../World.hh"
+#include "../PinguHolder.hh"
 #include "../PingusResource.hh"
 #include "../XMLhelper.hh"
 #include "ConveyorBelt.hh"
@@ -39,10 +41,10 @@ ConveyorBeltData::write_xml(ofstream* xml)
 	 << "  </worldobj>\n" << std::endl;
 }
 
-WorldObjData* 
+boost::shared_ptr<WorldObjData>
 ConveyorBeltData::create(xmlDocPtr doc, xmlNodePtr cur)
 {
-  ConveyorBeltData* data = new ConveyorBeltData ();
+  boost::shared_ptr<ConveyorBeltData> data(new ConveyorBeltData ());
 
   cur = cur->children;
   
@@ -163,10 +165,10 @@ EditorConveyorBeltObj::~EditorConveyorBeltObj ()
 {
 }
 
-EditorObj* 
+boost::shared_ptr<EditorObj> 
 EditorConveyorBeltObj::duplicate()
 {
-  return new EditorConveyorBeltObj (this);
+  return boost::shared_ptr<EditorObj>(new EditorConveyorBeltObj (this));
 }
 
 void   
@@ -193,15 +195,15 @@ EditorConveyorBeltObj::draw_scroll_map(int x_pos, int y_pos, int arg_width, int 
   // not supported
 }
 
-std::list<EditorObj*> 
+std::list<boost::shared_ptr<EditorObj> > 
 EditorConveyorBeltObj::create (WorldObjData* obj)
 {
-  std::list<EditorObj*> objs;
-  objs.push_back (new EditorConveyorBeltObj(obj));
+  std::list<boost::shared_ptr<EditorObj> > objs;
+  objs.push_back (boost::shared_ptr<EditorObj>(new EditorConveyorBeltObj(obj)));
   return objs;
 }
 
-std::list<EditorObj*> 
+std::list<boost::shared_ptr<EditorObj> > 
 EditorConveyorBeltObj::create (const Position& pos)
 {
   ConveyorBeltData data;

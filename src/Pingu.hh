@@ -1,4 +1,4 @@
-//  $Id: Pingu.hh,v 1.16 2000/12/14 21:35:55 grumbel Exp $
+//  $Id: Pingu.hh,v 1.17 2000/12/16 23:11:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,16 +21,17 @@
 #define PINGU_HH
 
 #include <ClanLib/core.h>
+#include "boost/smart_ptr.hpp"
+
+using namespace boost;
 
 #include "WorldObj.hh"
 #include "PinguMap.hh"
 #include "Direction.hh"
-//#include "PinguAction.hh"
-//#include "ActionHolder.hh"
 #include "PinguEnums.hh"
 #include "AnimCounter.hh"
 
-///
+// Forward declarations
 class ActionHolder;
 class PinguAction; 
 
@@ -39,11 +40,11 @@ class Pingu : public WorldObj
 protected:
   friend class PinguAction;
   ///
-  PinguAction* action;
+  shared_ptr<PinguAction> action;
   ///
-  PinguAction* sec_action;
+  shared_ptr<PinguAction> sec_action;
   ///
-  std::vector<PinguAction* > persist;
+  std::vector<shared_ptr<PinguAction> > persist;
 
   /** The uniq id of the Pingu, this is used to refer to the Pingu in
       a demo file or in a network connection */
@@ -64,9 +65,6 @@ protected:
 
   ///
   static CL_Font* font;
-  ///
-  static CL_ResourceManager* local_res_p;
-
   ///
   AnimCounter walker_c;
   ///
@@ -140,11 +138,11 @@ public:
   void set_direction(Direction d);
 
   ///
-  int  set_action(PinguAction*);
+  int  set_action(shared_ptr<PinguAction>);
   ///
-  int  set_paction(PinguAction*);
+  int  set_paction(shared_ptr<PinguAction>);
   ///
-  PinguAction* get_action();
+  shared_ptr<PinguAction> get_action();
   ///
   int  rel_getpixel(int x, int y);
   ///
@@ -175,9 +173,6 @@ public:
   bool   is_over(int x, int y);
   ///
   double dist(int x, int y);
-
-  ///
-  static CL_ResourceManager* local_res();
 };
 
 #endif /* PINGU_HH */

@@ -1,4 +1,4 @@
-//  $Id: PLFPLF.hh,v 1.2 2000/09/07 09:41:47 grumbel Exp $
+//  $Id: PLFPLF.hh,v 1.3 2000/12/16 23:11:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -45,7 +45,7 @@
 class PLFPLF : public PLFParser, public PLF
 {
 private:
-  SurfaceBackgroundData* sur_background;
+  boost::shared_ptr<SurfaceBackgroundData> sur_background;
   ///
   EntranceData entrance_s;
   ///

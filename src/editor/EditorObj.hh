@@ -1,4 +1,4 @@
-//  $Id: EditorObj.hh,v 1.25 2000/12/14 21:35:55 grumbel Exp $
+//  $Id: EditorObj.hh,v 1.26 2000/12/16 23:11:24 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,7 @@
 #include <fstream>
 #include <functional>
 #include <ClanLib/core.h>
+#include "../boost/smart_ptr.hpp"
 
 #include "../ResDescriptor.hh"
 #include "../ExitData.hh"
@@ -81,27 +82,36 @@ protected:
   ///
   ResDescriptor desc;
 
+  /** Stupid thing to convert a single object into a list containing
+      that object */
+  static std::list<boost::shared_ptr<EditorObj> > make_list(EditorObj* obj) 
+  {
+    std::list<boost::shared_ptr<EditorObj> > objs;
+    objs.push_back (boost::shared_ptr<EditorObj>(obj));
+    return objs;
+  }
+
 public:
   ///
   EditorObj();
   ///
   virtual ~EditorObj();
   ///
-  static std::list<EditorObj*> create(GroundpieceData);
+  static std::list<boost::shared_ptr<EditorObj> > create(GroundpieceData);
   ///
-  static std::list<EditorObj*> create(EntranceData);
+  static std::list<boost::shared_ptr<EditorObj> > create(EntranceData);
   ///
-  static std::list<EditorObj*> create(ExitData);
+  static std::list<boost::shared_ptr<EditorObj> > create(ExitData);
   ///
-  static std::list<EditorObj*> create(TrapData);
+  static std::list<boost::shared_ptr<EditorObj> > create(TrapData);
   ///
-  static std::list<EditorObj*> create(HotspotData);
+  static std::list<boost::shared_ptr<EditorObj> > create(HotspotData);
   ///
-  static std::list<EditorObj*> create(LiquidData);
+  static std::list<boost::shared_ptr<EditorObj> > create(LiquidData);
   ///
-  static std::list<EditorObj*> create (WeatherData);
+  static std::list<boost::shared_ptr<EditorObj> > create (WeatherData);
   ///
-  static std::list<EditorObj*> create (WorldObjData*);
+  static std::list<boost::shared_ptr<EditorObj> > create (WorldObjData*);
 
   /** @name Z-Pos sort operators */
   //@{
@@ -158,16 +168,16 @@ public:
   ///
   virtual std::string status_line();
   ///
-  virtual EditorObj* duplicate() { return 0; }
+  virtual boost::shared_ptr<EditorObj> duplicate() { return boost::shared_ptr<EditorObj>(); }
   
   static void set_editor(Editor* e) { editor = e; }
 };
 
 // Structure for the sorting algorithm (stable_sort)
-class EditorObj_less : public std::binary_function<EditorObj*, EditorObj*, bool>
+class EditorObj_less : public std::binary_function<boost::shared_ptr<EditorObj>, boost::shared_ptr<EditorObj>, bool>
 {
 public:
-  bool operator() (EditorObj* a, EditorObj* b) const 
+  bool operator() (boost::shared_ptr<EditorObj> a, boost::shared_ptr<EditorObj> b) const 
     {
       return (*a) < (*b);
     }

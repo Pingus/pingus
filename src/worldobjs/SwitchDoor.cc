@@ -1,4 +1,4 @@
-//  $Id: SwitchDoor.cc,v 1.5 2000/12/14 21:35:56 grumbel Exp $
+//  $Id: SwitchDoor.cc,v 1.6 2000/12/16 23:11:24 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,8 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "../World.hh"
+#include "../PinguHolder.hh"
 #include "../PingusResource.hh"
 #include "SwitchDoor.hh"
 
@@ -39,10 +41,10 @@ SwitchDoorData::write_xml(ofstream* xml)
 	 << "  </worldobj>\n" << std::endl;
 }
 
-WorldObjData* 
+boost::shared_ptr<WorldObjData>
 SwitchDoorData::create(xmlDocPtr doc, xmlNodePtr cur)
 {
-  SwitchDoorData* data = new SwitchDoorData ();
+  boost::shared_ptr<SwitchDoorData> data(new SwitchDoorData ());
 
   cur = cur->children;
   
@@ -254,20 +256,21 @@ EditorSwitchDoorObj::~EditorSwitchDoorObj ()
 {
 }
 
-std::list<EditorObj*> 
+std::list<boost::shared_ptr<EditorObj> > 
 EditorSwitchDoorObj::create (WorldObjData* obj)
 {
-  std::list<EditorObj*> objs;
-  EditorSwitchDoorObj* switchdoor_obj = new EditorSwitchDoorObj (obj);
+  std::list<boost::shared_ptr<EditorObj> > objs;
+  boost::shared_ptr<EditorSwitchDoorObj> switchdoor_obj (new EditorSwitchDoorObj (obj));
+
   objs.push_back (switchdoor_obj);
-  objs.push_back (new EditorSwitchDoorSwitchObj (switchdoor_obj));
+  objs.push_back (boost::shared_ptr<EditorObj>(new EditorSwitchDoorSwitchObj (switchdoor_obj.get())));
 
   return objs;
 }
 
 /** Create this object (and child objects) with resonable defaults
     for the editor */
-std::list<EditorObj*>
+std::list<boost::shared_ptr<EditorObj> >
 EditorSwitchDoorObj::create (const Position& pos)
 {
   SwitchDoorData data;

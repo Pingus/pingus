@@ -1,4 +1,4 @@
-//  $Id: SurfaceBackgroundData.hh,v 1.3 2000/09/09 18:11:30 grumbel Exp $
+//  $Id: SurfaceBackgroundData.hh,v 1.4 2000/12/16 23:11:22 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -67,7 +67,7 @@ public:
   /** Parse the xml snip and return a newly allocated
       SurfaceBackgroundData*, the user is responsible to delete the
       object */
-  static SurfaceBackgroundData* create(xmlDocPtr doc, xmlNodePtr cur);
+  static boost::shared_ptr<SurfaceBackgroundData> create(xmlDocPtr doc, xmlNodePtr cur);
 };
 
 #endif

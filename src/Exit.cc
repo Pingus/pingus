@@ -1,4 +1,4 @@
-//  $Id: Exit.cc,v 1.13 2000/12/14 21:35:54 grumbel Exp $
+//  $Id: Exit.cc,v 1.14 2000/12/16 23:11:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,7 @@
 
 #include <cassert>
 
+#include "World.hh"
 #include "globals.hh"
 #include "PingusResource.hh"
 #include "Exit.hh"
@@ -43,7 +44,7 @@ Exit::~Exit()
 }
 
 bool
-Exit::catch_pingu(Pingu* pingu)
+Exit::catch_pingu(shared_ptr<Pingu> pingu)
 {
   int x = pos.x_pos + (surface.get_width() / 2);
   int y = pos.y_pos + surface.get_height();

@@ -1,4 +1,4 @@
-//  $Id: XMLPLF.cc,v 1.17 2000/10/18 20:16:36 grumbel Exp $
+//  $Id: XMLPLF.cc,v 1.18 2000/12/16 23:11:20 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -48,7 +48,7 @@ XMLPLF::XMLPLF(const string& filename)
 XMLPLF::~XMLPLF()
 {
   xmlFreeDoc(doc);
-
+  /*
   // Free all the allocated memory
   for(vector<BackgroundData*>::iterator i = backgrounds.begin ();
       i != backgrounds.end ();
@@ -59,6 +59,7 @@ XMLPLF::~XMLPLF()
       i != worldobjs_data.end ();
       i++)
     delete *i;
+  */
 }
 
 void

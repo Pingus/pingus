@@ -1,4 +1,4 @@
-//  $Id: LaserKill.cc,v 1.5 2000/12/14 21:35:55 grumbel Exp $
+//  $Id: LaserKill.cc,v 1.6 2000/12/16 23:11:21 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,7 @@
 
 #include <cstdio>
 
+#include "../PingusResource.hh"
 #include "LaserKill.hh"
 #include "../particles/GroundParticle.hh"
 #include "../algo.hh"
@@ -30,12 +31,6 @@ LaserKill::LaserKill()
 {
 }
 
-PinguAction*
-LaserKill::allocate(void)
-{
-  return new LaserKill();
-}
-
 void
 LaserKill::init(void)
 {
@@ -43,7 +38,7 @@ LaserKill::init(void)
   environment = (PinguEnvironment)always;
 
   if (!static_surfaces_loaded)
-    static_surface = CL_Surface ("Other/laser_kill", local_res());
+    static_surface = PingusResource::load_surface ("Other/laser_kill", "pingus");
   surface = static_surface;
 
   counter.set_count(0);

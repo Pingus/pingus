@@ -1,4 +1,4 @@
-//  $Id: StatusLine.hh,v 1.5 2000/06/18 17:01:50 grumbel Exp $
+//  $Id: StatusLine.hh,v 1.6 2000/12/16 23:11:24 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,8 +20,9 @@
 #ifndef STATUSLINE_HH
 #define STATUSLINE_HH
 
+#include <list>
 #include <ClanLib/core.h>
-
+#include "../boost/smart_ptr.hpp"
 #include "EditorObj.hh"
 
 ///
@@ -31,7 +32,7 @@ private:
   ///
   CL_Font* font;
   ///
-  std::list<EditorObj*>* current_objs;
+  std::list<boost::shared_ptr<EditorObj> >* current_objs;
 public:
   ///
   StatusLine();
@@ -39,7 +40,7 @@ public:
   ~StatusLine();
   
   ///
-  void set_current_objs(std::list<EditorObj*>* c_objs);
+  void set_current_objs(std::list<boost::shared_ptr<EditorObj> >* c_objs);
   ///
   void draw(int, int);
 }///

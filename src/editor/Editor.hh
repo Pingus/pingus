@@ -1,4 +1,4 @@
-//  $Id: Editor.hh,v 1.9 2000/08/28 00:34:39 grumbel Exp $
+//  $Id: Editor.hh,v 1.10 2000/12/16 23:11:23 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -94,7 +94,7 @@ public:
   std::string read_string (std::string prefix = "", std::string default_str = "");
   ///
   void edit ();
-  ///  EditorObj* get_current_obj();
+  ///
   void draw ();
   ///
   void draw_noflip();

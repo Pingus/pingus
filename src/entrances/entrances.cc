@@ -1,4 +1,4 @@
-//  $Id: entrances.cc,v 1.4 2000/07/30 01:47:38 grumbel Exp $
+//  $Id: entrances.cc,v 1.5 2000/12/16 23:11:24 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,15 +23,15 @@
 #include "WoodThing.hh"
 #include "Cloud.hh"
 
-Entrance*
+boost::shared_ptr<Entrance>
 get_entrance(EntranceData data)
 {
   if (data.type == "generic") {
-    return new Entrance(data);
+    return boost::shared_ptr<Entrance>(new Entrance(data));
   } else if (data.type == "woodthing") {
-    return new WoodThing(data);
+    return boost::shared_ptr<Entrance>(new WoodThing(data));
   } else if (data.type == "cloud") {
-    return new Cloud(data);
+    return boost::shared_ptr<Entrance>(new Cloud(data));
   } else {
     throw PingusError("Entrance: Entrane type in PLF file is unknow: " + data.type);
   }

@@ -1,4 +1,4 @@
-//  $Id: Teleporter.cc,v 1.10 2000/12/14 21:35:56 grumbel Exp $
+//  $Id: Teleporter.cc,v 1.11 2000/12/16 23:11:24 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "../World.hh"
 #include "../PingusResource.hh"
 #include "../PinguHolder.hh"
 #include "../XMLhelper.hh"
@@ -39,10 +40,10 @@ TeleporterData::write_xml(ofstream* xml)
   (*xml) << "  </worldobj>" << std::endl;
 }
 
-WorldObjData* 
+boost::shared_ptr<WorldObjData>
 TeleporterData::create(xmlDocPtr doc, xmlNodePtr cur)
 {
-  TeleporterData* data = new TeleporterData ();
+  boost::shared_ptr<TeleporterData> data(new TeleporterData ());
   
   cur = cur->children;
   
@@ -84,9 +85,9 @@ TeleporterData::create(xmlDocPtr doc, xmlNodePtr cur)
 /* Teleporter */
 /**************/
 
-Teleporter::Teleporter (WorldObjData* data)
+Teleporter::Teleporter (boost::shared_ptr<WorldObjData> data)
 {
-  TeleporterData* teleporter = dynamic_cast<TeleporterData*>(data);
+  TeleporterData* teleporter = dynamic_cast<TeleporterData*>(data.get());
   assert (teleporter);
   
   sur = PingusResource::load_surface("teleporter", "worldobjs");
@@ -139,16 +140,16 @@ EditorTeleporterObj::~EditorTeleporterObj ()
   // FIXME: delete the target obj here
 }
 
-std::list<EditorObj*> 
+std::list<shared_ptr<EditorObj> > 
 EditorTeleporterObj::create (WorldObjData* data)
 {
-  std::list<EditorObj*> objs;
+  std::list<shared_ptr<EditorObj> > objs;
 
   TeleporterData* tdata = dynamic_cast<TeleporterData*> (data);    
   std::cout << "EditorTeleporterObj: " << tdata << " - " << tdata->target_pos << std::endl;
 
-  EditorTeleporterObj* teleporter = new EditorTeleporterObj (data);
-  EditorTeleporterTargetObj* teleporter_target = new EditorTeleporterTargetObj (data, teleporter->get_target_pos_p ());
+  shared_ptr<EditorTeleporterObj> teleporter(new EditorTeleporterObj (data));
+  shared_ptr<EditorTeleporterTargetObj> teleporter_target(new EditorTeleporterTargetObj (data, teleporter->get_target_pos_p ()));
 
   objs.push_back (teleporter);
   objs.push_back (teleporter_target);
@@ -156,7 +157,7 @@ EditorTeleporterObj::create (WorldObjData* data)
   return objs;
 }
 
-std::list<EditorObj*>
+std::list<boost::shared_ptr<EditorObj> >
 EditorTeleporterObj::create (const Position& pos)
 {
   TeleporterData data;

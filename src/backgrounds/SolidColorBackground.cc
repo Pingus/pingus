@@ -1,4 +1,4 @@
-//  $Id: SolidColorBackground.cc,v 1.2 2000/11/14 22:22:56 grumbel Exp $
+//  $Id: SolidColorBackground.cc,v 1.3 2000/12/16 23:11:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <ClanLib/core.h>
 #include "../XMLhelper.hh"
 #include "SolidColorBackground.hh"
 
@@ -28,10 +29,10 @@ SolidColorBackgroundData:: write_xml(ofstream* xml)
   (*xml) << "<background type=\"solidcolor\"></background>" << std::endl;
 }
 
-SolidColorBackgroundData* 
+boost::shared_ptr<SolidColorBackgroundData> 
 SolidColorBackgroundData::create (xmlDocPtr doc, xmlNodePtr cur)
 {
-  SolidColorBackgroundData* data = new SolidColorBackgroundData ();
+  boost::shared_ptr<SolidColorBackgroundData> data (new SolidColorBackgroundData ());
 
   cur = cur->children;
 
@@ -56,12 +57,13 @@ SolidColorBackgroundData::create (xmlDocPtr doc, xmlNodePtr cur)
   return data;
 }
 
-SolidColorBackground*
-SolidColorBackground::create (BackgroundData* arg_data)
+boost::shared_ptr<SolidColorBackground>
+SolidColorBackground::create (boost::shared_ptr<BackgroundData> arg_data)
 {
-  SolidColorBackgroundData* data = dynamic_cast<SolidColorBackgroundData*>(arg_data);
+  SolidColorBackgroundData* data = dynamic_cast<SolidColorBackgroundData*>(arg_data.get());
   assert (data);
-  SolidColorBackground* background = new SolidColorBackground();
+  boost::shared_ptr<SolidColorBackground> background = 
+    boost::shared_ptr<SolidColorBackground>(new SolidColorBackground());
 
   background->color = data->color;
   return background;

@@ -1,4 +1,4 @@
-//  $Id: Server.cc,v 1.14 2000/06/25 20:22:18 grumbel Exp $
+//  $Id: Server.cc,v 1.15 2000/12/16 23:11:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,9 @@
 #include <cstdio>
 #include <cstdlib>
 #include <functional>
+#include <boost/smart_ptr.hpp>
+
+using namespace boost;
 
 #include "System.hh"
 #include "globals.hh"
@@ -117,7 +120,7 @@ Server::send_event(std::string event)
 }
 
 /** PinguID search functor */
-struct PinguId : public unary_function<Pingu*, bool>
+struct PinguId : public unary_function<shared_ptr<Pingu>, bool>
 {
   int pingu_id;
 
@@ -126,7 +129,7 @@ struct PinguId : public unary_function<Pingu*, bool>
     pingu_id = i;
   }
  
-  bool operator()(Pingu* pingu) {
+  bool operator()(shared_ptr<Pingu> pingu) {
     return (pingu->get_id() == pingu_id);
   }
 };
@@ -167,9 +170,9 @@ Server::process_event(std::string event)
 
       if (pingu != pingus->end()) 
 	{
-	  PinguAction* tmp_action = action_holder.get_action(action);
+	  shared_ptr<PinguAction> tmp_action = action_holder.get_action(action);
 	  
-	  if (tmp_action)
+	  if (tmp_action.get())
 	    {
 	      if (!(*pingu)->set_action(tmp_action))
 		{
@@ -181,24 +184,6 @@ Server::process_event(std::string event)
 	{
 	  std::cout << "Server: PinguID: " << pingu_id << " not found, demo file corrupt?!" << std::endl;
 	}
-      /*
-	for(PinguIter pingu=pingus->begin(); pingu != pingus->end(); ++pingu) 
-	{
-	if ((*pingu)->get_id() == pingu_id) 
-	{
-	PinguAction* tmp_action = action_holder.get_action(action);
-	      
-	if (tmp_action)
-	{
-	if (!(*pingu)->set_action(tmp_action))
-	{
-	action_holder.push_action(action);
-	}
-	}
-	break;
-	}
-	}
-      */
     }
   else 
     {

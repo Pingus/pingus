@@ -1,4 +1,4 @@
-//  $Id: EditorEvent.hh,v 1.8 2000/08/11 21:17:54 grumbel Exp $
+//  $Id: EditorEvent.hh,v 1.9 2000/12/16 23:11:24 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -91,8 +91,7 @@ public:
   void editor_insert_new_object();
   ///
   void editor_display_help();
-}///
-;
+};
 
 #endif
 

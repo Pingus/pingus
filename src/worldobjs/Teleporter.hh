@@ -1,4 +1,4 @@
-//  $Id: Teleporter.hh,v 1.6 2000/12/14 21:35:56 grumbel Exp $
+//  $Id: Teleporter.hh,v 1.7 2000/12/16 23:11:24 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #ifndef TELEPORTER_HH
 #define TELEPORTER_HH
 
+#include "../boost/smart_ptr.hpp"
 #include "../Position.hh"
 #include "../WorldObj.hh"
 #include "../editor/EditorWorldObj.hh"
@@ -39,7 +40,7 @@ public:
       stream */
   virtual void write_xml(ofstream* xml);
   ///
-  static WorldObjData* create(xmlDocPtr doc, xmlNodePtr cur);
+  static boost::shared_ptr<WorldObjData> create(xmlDocPtr doc, xmlNodePtr cur);
 };
 
 class Teleporter : private TeleporterData,
@@ -52,7 +53,7 @@ public:
   ///
   Teleporter () {};
   ///
-  Teleporter (WorldObjData* data);
+  Teleporter (boost::shared_ptr<WorldObjData> data);
   ///
   virtual ~Teleporter () {}
   ///
@@ -76,7 +77,7 @@ public:
 
   virtual ~EditorTeleporterTargetObj () {}
     
-  static std::list<EditorObj*> create (TeleporterData*);
+  static std::list<boost::shared_ptr<EditorObj> > create (TeleporterData*);
 
   Position get_position () { return *position; }
 
@@ -97,11 +98,11 @@ public:
 
   Position* get_target_pos_p () { return &target_pos; }
 
-  static std::list<EditorObj*> create (WorldObjData* obj);
+  static std::list<boost::shared_ptr<EditorObj> > create (WorldObjData* obj);
 
   /** Create this object (and child objects) with resonable defaults
       for the editor */
-  static std::list<EditorObj*> create (const Position& pos);
+  static std::list<boost::shared_ptr<EditorObj> > create (const Position& pos);
 
   virtual void draw_offset(int, int);
   virtual void save_xml (std::ofstream* xml);

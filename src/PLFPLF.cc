@@ -1,4 +1,4 @@
-//  $Id: PLFPLF.cc,v 1.6 2000/09/07 09:41:47 grumbel Exp $
+//  $Id: PLFPLF.cc,v 1.7 2000/12/16 23:11:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -49,8 +49,7 @@ PLFPLF::PLFPLF(string arg_filename)
   max_time = 9000;
   number_to_save = 0;
   difficulty = 5;
-  //background = 0;
-  sur_background = 0;
+
   music = ResDescriptor("file", "pingus-4.it");
 
   col = ResDescriptor("auto", "-Auto ColMap-");
@@ -101,7 +100,7 @@ PLFPLF::set_value(string valueid,
 
   case PLFPLF::BACKGROUND:
     {
-      assert(sur_background);
+      assert(sur_background.get());
       /*      SurfaceBackgroundData* sur_background;
 
       // FIXME: Memory leak, but not important, this file will be
@@ -316,7 +315,7 @@ PLFPLF::set_group_start(string groupname)
     current_group = PLFPLF::GLOBAL;
   } else if (groupname == "background") {
     current_group = PLFPLF::BACKGROUND;
-    sur_background = new SurfaceBackgroundData();
+    sur_background = boost::shared_ptr<SurfaceBackgroundData>(new SurfaceBackgroundData());
     backgrounds.push_back(sur_background);
   } else if (groupname == "ground") {
     current_group = PLFPLF::GROUND;

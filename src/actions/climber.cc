@@ -1,4 +1,4 @@
-//  $Id: climber.cc,v 1.8 2000/12/14 21:35:55 grumbel Exp $
+//  $Id: climber.cc,v 1.9 2000/12/16 23:11:21 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "../PingusResource.hh"
 #include "climber.hh"
 
 bool Climber::static_surfaces_loaded = false;
@@ -24,12 +25,6 @@ CL_Surface Climber::static_surface;
 
 Climber::Climber()
 {
-}
-
-PinguAction* 
-Climber::allocate(void)
-{
-  return new Climber;
 }
 
 void
@@ -40,7 +35,7 @@ Climber::init(void)
 
   if (!static_surfaces_loaded)
     {
-      static_surface = CL_Surface ("Pingus/climber", local_res());
+      static_surface = PingusResource::load_surface ("Pingus/climber", "pingus");
       static_surfaces_loaded = true;
     }
 

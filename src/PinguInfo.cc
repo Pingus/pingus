@@ -1,4 +1,4 @@
-//  $Id: PinguInfo.cc,v 1.3 2000/06/27 16:05:16 grumbel Exp $
+//  $Id: PinguInfo.cc,v 1.4 2000/12/16 23:11:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,13 +20,13 @@
 #include <cstdio>
 
 #include "algo.hh"
+#include "PinguAction.hh"
 #include "PingusResource.hh"
 #include "PinguInfo.hh"
 
 PinguInfo::PinguInfo()
 {
   font = PingusResource::load_font("Fonts/courier_small","fonts");
-  pingu = 0;
 }
 
 void
@@ -37,7 +37,7 @@ PinguInfo::draw()
 			CL_Display::get_width()  - 5,
 			CL_Display::get_height() - 5,
 			0.2, 0.2, 0.2, 1.0);
-  if (pingu) {
+  if (pingu.get()) {
     char str1[256];
     char str2[256];
 
@@ -46,7 +46,7 @@ PinguInfo::draw()
 		     CL_Display::get_height() - 50,
 		     tolowerstr(str1));
 
-    if (pingu->get_action()) {
+    if (pingu->get_action().get()) {
       sprintf(str2, "action %s", pingu->get_action()->name().c_str());
     } else {
       sprintf(str2, "action none");
@@ -63,7 +63,7 @@ PinguInfo::draw()
 }
 
 void
-PinguInfo::set_pingu(Pingu* p)
+PinguInfo::set_pingu(shared_ptr<Pingu> p)
 {
   pingu = p;
 }

@@ -1,4 +1,4 @@
-//  $Id: traps.hh,v 1.5 2000/08/03 10:31:18 grumbel Exp $
+//  $Id: traps.hh,v 1.6 2000/12/16 23:11:24 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,11 +22,12 @@
 
 #include "../Trap.hh"
 #include "../TrapData.hh"
+#include "../boost/smart_ptr.hpp"
 
 class Trap;
 
 ///
-Trap* get_trap(TrapData data);
+boost::shared_ptr<Trap> get_trap(TrapData data);
 
 #endif
 

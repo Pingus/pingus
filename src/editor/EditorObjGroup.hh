@@ -1,4 +1,4 @@
-//  $Id: EditorObjGroup.hh,v 1.1 2000/08/02 16:14:26 grumbel Exp $
+//  $Id: EditorObjGroup.hh,v 1.2 2000/12/16 23:11:24 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,12 +21,13 @@
 #define EDITOROBJGROUP_HH
 
 #include <list>
+#include "../boost/smart_ptr.hpp"
 #include "EditorObj.hh"
 
 class EditorObjGroup : public EditorObj
 {
 private:
-  list<EditorObj*> objs;
+  std::list<boost::shared_ptr<EditorObj> > objs;
   
 public:
   EditorObjGroup();
@@ -52,17 +53,17 @@ public:
   virtual bool   is_in_rect(int x1, int y1, int x2, int y2);
 
   /** Add an object to the group */
-  virtual void EditorObjGroup::push_back(EditorObj*);
+  virtual void EditorObjGroup::push_back(boost::shared_ptr<EditorObj>);
 
   ///
-  virtual list<EditorObj*>* EditorObjGroup::get_objs();
+  virtual std::list<boost::shared_ptr<EditorObj> >* EditorObjGroup::get_objs();
 
   ///
   virtual void   save(std::ofstream* plf, std::ofstream* psm);
   ///
   virtual void   save_xml(std::ofstream* xml);
   ///
-  virtual EditorObj* duplicate();
+  virtual boost::shared_ptr<EditorObj> duplicate();
 };
 
 #endif

@@ -1,4 +1,4 @@
-//  $Id: ObjectManager.cc,v 1.37 2000/12/09 01:18:55 grumbel Exp $
+//  $Id: ObjectManager.cc,v 1.38 2000/12/16 23:11:24 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -48,13 +48,14 @@ ObjectManager::ObjectManager()
 
 ObjectManager::~ObjectManager()
 {
-  for(std::list<EditorObj*>::iterator i = editor_objs.begin();
+  /*
+  for(std::list<boost::shared_ptr<EditorObj> >::iterator i = editor_objs.begin();
       i != editor_objs.end(); 
       i++)
     {
       delete *i;
     }
-  
+  */
   if (plf) delete plf;
 }
 
@@ -92,7 +93,7 @@ ObjectManager::new_level ()
   //background->desc.res_name = "Textures/default";
 
   delete_all_objs();
-  editor_objs.push_back(new StartPos(50, 50));
+  editor_objs.push_back(boost::shared_ptr<EditorObj>(new StartPos(50, 50)));
 
   // Set some default actions
   actions.clear();
@@ -136,8 +137,8 @@ ObjectManager::load_level (std::string filename)
   //psm.parse (filename + ".psm");
   //psm.load_surfaces();
 
-  editor_objs.push_back(new StartPos(plf->get_startx(), 
-				     plf->get_starty()));
+  editor_objs.push_back(boost::shared_ptr<EditorObj>(new StartPos(plf->get_startx(), 
+								  plf->get_starty())));
 
   vector<GroundpieceData>  temp_surfaces = plf->get_groundpieces();
   for (vector<GroundpieceData>::iterator i = temp_surfaces.begin();
@@ -153,7 +154,7 @@ ObjectManager::load_level (std::string filename)
   vector<LiquidData>   temp_liquid   = plf->get_liquids();
   vector<TrapData>     temp_traps    = plf->get_traps();
   vector<WeatherData>  temp_weather  = plf->get_weather();
-  vector<WorldObjData*> temp_worldobj = plf->get_worldobjs_data();
+  vector<boost::shared_ptr<WorldObjData> > temp_worldobj = plf->get_worldobjs_data();
 
   for(vector<GroundpieceData>::iterator i = temp_surfaces.begin(); i != temp_surfaces.end(); ++i)
     ListHelper::append (editor_objs, EditorObj::create(*i));
@@ -176,8 +177,8 @@ ObjectManager::load_level (std::string filename)
   for(vector<WeatherData>::iterator i = temp_weather.begin(); i != temp_weather.end(); ++i)
     ListHelper::append (editor_objs, EditorObj::create(*i));
 
-  for(vector<WorldObjData*>::iterator i = temp_worldobj.begin(); i != temp_worldobj.end(); ++i)
-    ListHelper::append (editor_objs, EditorObj::create (*i));
+  for(vector<boost::shared_ptr<WorldObjData> >::iterator i = temp_worldobj.begin(); i != temp_worldobj.end(); ++i)
+    ListHelper::append (editor_objs, EditorObj::create (i->get()));
 
 #ifndef WIN32 // FIXME: Compiler error in Windows
   editor_objs.sort(EditorObj_less());
@@ -265,7 +266,7 @@ ObjectManager::save_level (string filename)
   // FIXME: we need some error checking
   
   plf_out << "/* This level was created with the PLE\n"
-	  << " * $Id: ObjectManager.cc,v 1.37 2000/12/09 01:18:55 grumbel Exp $\n"
+	  << " * $Id: ObjectManager.cc,v 1.38 2000/12/16 23:11:24 grumbel Exp $\n"
 	  << " */"
 	  << endl;
   
@@ -291,7 +292,7 @@ ObjectManager::save_level (string filename)
 	  << endl;
   SurfaceBackgroundData* sur_background;
 
-  sur_background = dynamic_cast<SurfaceBackgroundData*>(*backgrounds.begin());
+  sur_background = dynamic_cast<SurfaceBackgroundData*>(backgrounds.begin()->get());
 
   if (sur_background)
     {
@@ -376,7 +377,7 @@ ObjectManager::save_level_xml (std::string filename)
       << "  </global>\n"
       << std::endl;
   
-  for (std::vector<BackgroundData*>::iterator i = backgrounds.begin();
+  for (std::vector<boost::shared_ptr<BackgroundData> >::iterator i = backgrounds.begin();
        i != backgrounds.end();
        i++)
     (*i)->write_xml(&xml);
@@ -420,9 +421,10 @@ ObjectManager::delete_selection()
 }
 
 void
-ObjectManager::unselect_object(EditorObj* c_obj)
+ObjectManager::unselect_object(boost::shared_ptr<EditorObj> c_obj)
 {
-  current_objs.erase(std::find(current_objs.begin(), current_objs.end(), c_obj));
+  current_objs.erase(std::find(current_objs.begin(), current_objs.end(),
+			       c_obj));
 }
 
 void
@@ -444,7 +446,7 @@ ObjectManager::lower_current_objs()
 }
 
 bool
-ObjectManager::lower_obj(EditorObj* obj)
+ObjectManager::lower_obj(boost::shared_ptr<EditorObj> obj)
 {
   EditorObjIter current;
   EditorObjIter prev;
@@ -465,7 +467,7 @@ ObjectManager::lower_obj(EditorObj* obj)
 }
 
 bool
-ObjectManager::raise_obj(EditorObj* obj)
+ObjectManager::raise_obj(boost::shared_ptr<EditorObj> obj)
 {
   EditorObjIter current;
   EditorObjIter next;
@@ -512,7 +514,7 @@ ObjectManager::rect_get_current_objs(int x_1, int y_1, int x_2, int y_2)
 }
 
 bool
-ObjectManager::object_selected(EditorObj* c_obj)
+ObjectManager::object_selected(boost::shared_ptr<EditorObj> c_obj)
 {
   for(CurrentObjIter i = current_objs.begin(); i != current_objs.end(); i++)
     {
@@ -522,7 +524,7 @@ ObjectManager::object_selected(EditorObj* c_obj)
   return false;
 }
 
-EditorObj*
+boost::shared_ptr<EditorObj>
 ObjectManager::select_object(int x, int y)
 {
   for(EditorObjRIter i = editor_objs.rbegin(); i != editor_objs.rend(); ++i) 
@@ -533,7 +535,7 @@ ObjectManager::select_object(int x, int y)
 	}
     }
   
-  return 0;
+  return boost::shared_ptr<EditorObj>();
 }
 
 void
@@ -546,15 +548,16 @@ ObjectManager::move_current_objs(int x, int y)
 }
 
 void
-ObjectManager::add_to_selection(EditorObj* obj)
+ObjectManager::add_to_selection(boost::shared_ptr<EditorObj> obj)
 {
   current_objs.push_back(obj);
 }
 
 void 
-ObjectManager::add_to_selection(list<EditorObj*> objs)
+ObjectManager::add_to_selection(std::list<boost::shared_ptr<EditorObj> > objs)
 {
-  for(list<EditorObj*>::iterator i = objs.begin(); i != objs.end(); i++)
+  for(std::list<boost::shared_ptr<EditorObj> >::iterator i = objs.begin(); 
+      i != objs.end(); i++)
     current_objs.push_back(*i);
 }
 
@@ -565,13 +568,13 @@ ObjectManager::set_viewpoint(int x, int y)
   y_offset = -y + CL_Display::get_height()/2;
 }
 
-EditorObj* 
+boost::shared_ptr<EditorObj> 
 ObjectManager::get_current_obj()
 {
   if (current_objs.size() == 1)
     return *current_objs.begin();
   else
-    return 0;
+    return boost::shared_ptr<EditorObj>();
 }
 
 /* EOF */

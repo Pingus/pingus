@@ -1,4 +1,4 @@
-//  $Id: StarfieldBackground.hh,v 1.2 2000/12/14 21:35:55 grumbel Exp $
+//  $Id: StarfieldBackground.hh,v 1.3 2000/12/16 23:11:22 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,9 +21,11 @@
 #define STARFIELDBACKGROUND_HH
 
 #include <ClanLib/core.h>
+#include "../boost/smart_ptr.hpp"
 #include "../WorldObj.hh"
 #include "../PingusResource.hh"
 #include "BackgroundData.hh"
+#include "Background.hh"
 
 class StarfieldBackgroundData : public BackgroundData
 {
@@ -36,7 +38,7 @@ public:
   virtual ~StarfieldBackgroundData () {}
 
   void write_xml(ofstream* xml);
-  static StarfieldBackgroundData* create(xmlDocPtr doc, xmlNodePtr cur);
+  static boost::shared_ptr<StarfieldBackgroundData> create(xmlDocPtr doc, xmlNodePtr cur);
 };
 
 class StarfieldBackgroundStars : public WorldObj
@@ -82,7 +84,7 @@ public:
   ///
   StarfieldBackground (StarfieldBackgroundData*);
   ///
-  static StarfieldBackground* create (BackgroundData* arg_data);
+  static boost::shared_ptr<StarfieldBackground> create (boost::shared_ptr<BackgroundData> arg_data);
   ///
   virtual ~StarfieldBackground ();
   ///

@@ -1,4 +1,4 @@
-//  $Id: PinguAction.cc,v 1.9 2000/12/14 21:35:55 grumbel Exp $
+//  $Id: PinguAction.cc,v 1.10 2000/12/16 23:11:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,10 +18,9 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <cassert>
+#include "World.hh"
 #include "PingusResource.hh"
 #include "PinguAction.hh"
-
-CL_ResourceManager* PinguAction::local_res_p;  
 
 PinguAction::PinguAction()
 {
@@ -39,7 +38,7 @@ void
 PinguAction::set_pingu(Pingu* pingu_data)
 {
   pingu = pingu_data;
-  assert(pingu);
+  //assert(pingu);
   init();
 }
 
@@ -102,19 +101,6 @@ PinguEnvironment
 PinguAction::get_environment()
 {
   return environment;
-}
-
-int
-PinguAction::SetResourceManager(CL_ResourceManager* res)
-{
-  local_res_p = res;
-  return true; //
-}
-
-CL_ResourceManager*
-PinguAction::local_res(void)
-{
-  return local_res_p;
 }
 
 ActionType

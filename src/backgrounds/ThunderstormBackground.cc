@@ -1,4 +1,4 @@
-//  $Id: ThunderstormBackground.cc,v 1.3 2000/12/14 21:35:55 grumbel Exp $
+//  $Id: ThunderstormBackground.cc,v 1.4 2000/12/16 23:11:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,10 +33,10 @@ ThunderstormBackground::~ThunderstormBackground()
   
 }
 
-ThunderstormBackground* 
-ThunderstormBackground::create (BackgroundData*)
+boost::shared_ptr<ThunderstormBackground>
+ThunderstormBackground::create (boost::shared_ptr<BackgroundData>)
 {
-  return new ThunderstormBackground();
+  return boost::shared_ptr<ThunderstormBackground>(new ThunderstormBackground());
 }
 
 void

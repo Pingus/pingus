@@ -1,4 +1,4 @@
-//  $Id: StartPos.cc,v 1.6 2000/12/14 21:35:55 grumbel Exp $
+//  $Id: StartPos.cc,v 1.7 2000/12/16 23:11:24 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -54,11 +54,11 @@ StartPos::save_xml(std::ofstream* xml)
   (*xml) << "  </start-position>\n" << std::endl;  
 }
 
-EditorObj* 
+boost::shared_ptr<EditorObj>
 StartPos::duplicate()
 {
   std::cout << "StartPos: The start position can't be duplicated" << std::endl;
-  return 0;
+  return boost::shared_ptr<EditorObj>();
 }
 
 /* EOF */

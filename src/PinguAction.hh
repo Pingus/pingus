@@ -1,4 +1,4 @@
-//  $Id: PinguAction.hh,v 1.10 2000/12/14 21:35:55 grumbel Exp $
+//  $Id: PinguAction.hh,v 1.11 2000/12/16 23:11:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,13 +21,16 @@
 #define PINGU_ACTION_HH
 
 #include <ClanLib/core.h>
+#include "boost/smart_ptr.hpp"
+
+using namespace boost;
 
 #include "AnimCounter.hh"
 #include "Pingu.hh"
 #include "PinguEnums.hh"
 
 ///
-class Pingu; // FIXME: IMHO Bad style, declare Pingus in an file different than pingu.hh
+class Pingu;
 class ActionHolder;
 
 enum ActionType
@@ -49,8 +52,7 @@ protected:
   /// handle the case apropried.
   bool is_multi_direct;
 
-  /** A pointer to the pingu, which hold the action,
-      Pingu::set_action() will set this to the correct value. */
+  /** A pointer to the pingu, which hold the action. */
   Pingu*      pingu;
 
   /** The basic surface used to display an action, the inherit action
@@ -72,9 +74,6 @@ protected:
 
   /// See is_active()
   bool        active;  
-
-  /// --- Static Variables ---
-  static CL_ResourceManager* local_res_p;
 
 public:
   /** Indicate if the action should be canceled at the next possible
@@ -130,12 +129,6 @@ public:
 
   /// The time the action needs to get activated (see bomber.cc)
   virtual int   activation_time() { return -1; };
-  
-  /// Keep a seperate file for the Pingu animation and manage it
-  static CL_ResourceManager* local_res();
-
-  ///
-  static int  SetResourceManager(CL_ResourceManager* res);
 };
 
 #endif /* PINGU_ACTION_HH */

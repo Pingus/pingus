@@ -1,4 +1,4 @@
-//  $Id: StarfieldBackground.cc,v 1.5 2000/12/14 21:35:55 grumbel Exp $
+//  $Id: StarfieldBackground.cc,v 1.6 2000/12/16 23:11:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "../World.hh"
 #include "../StringConverter.hh"
 #include "StarfieldBackground.hh"
 
@@ -31,10 +32,10 @@ StarfieldBackgroundData::write_xml(ofstream* xml)
 	 << std::endl;
 }
  
-StarfieldBackgroundData* 
+boost::shared_ptr<StarfieldBackgroundData>
 StarfieldBackgroundData::create(xmlDocPtr doc, xmlNodePtr cur)
 {
-  StarfieldBackgroundData* data = new StarfieldBackgroundData ();
+  boost::shared_ptr<StarfieldBackgroundData> data (new StarfieldBackgroundData ());
 
   data->small_stars_count = 100;
   data->middle_stars_count = 50;
@@ -173,13 +174,11 @@ StarfieldBackground::~StarfieldBackground ()
 }
 
 ///
-StarfieldBackground* 
-StarfieldBackground::create (BackgroundData* arg_data)
+boost::shared_ptr<StarfieldBackground>
+StarfieldBackground::create (boost::shared_ptr<BackgroundData> arg_data)
 {
-  StarfieldBackgroundData* data = dynamic_cast<StarfieldBackgroundData*>(arg_data);
-  assert (data);
-  StarfieldBackground* background = new StarfieldBackground (data);
-  return background;
+  StarfieldBackgroundData* data = dynamic_cast<StarfieldBackgroundData*>(arg_data.get());
+  return boost::shared_ptr<StarfieldBackground>(new StarfieldBackground (data));
 }
 
 ///

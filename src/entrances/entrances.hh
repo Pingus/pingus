@@ -1,4 +1,4 @@
-//  $Id: entrances.hh,v 1.4 2000/07/30 01:47:38 grumbel Exp $
+//  $Id: entrances.hh,v 1.5 2000/12/16 23:11:24 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,9 +21,10 @@
 #define ENTRANCES_HH
 
 #include "../Entrance.hh"
+#include "../boost/smart_ptr.hpp"
 
 ///
-Entrance* get_entrance(EntranceData data);
+boost::shared_ptr<Entrance> get_entrance(EntranceData data);
 
 #endif
 

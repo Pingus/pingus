@@ -1,4 +1,4 @@
-//  $Id: blocker.cc,v 1.8 2000/12/14 21:35:55 grumbel Exp $
+//  $Id: blocker.cc,v 1.9 2000/12/16 23:11:21 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,7 @@
 #include <iostream>
 
 #include "../ColMap.hh"
-
+#include "../PingusResource.hh"
 #include "blocker.hh"
 
 Blocker::Blocker()
@@ -33,7 +33,7 @@ Blocker::init(void)
   environment = (PinguEnvironment)land;
   action_name = "Blocker";
 
-  surface = CL_Surface ("Pingus/blocker", local_res());
+  surface = PingusResource::load_surface ("Pingus/blocker", "pingus");
   counter.set_size(4);
   counter.set_type(Counter::ping_pong);
   is_multi_direct = false;

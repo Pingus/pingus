@@ -1,4 +1,4 @@
-//  $Id: EditorEditGUI.cc,v 1.1 2000/09/20 15:12:39 grumbel Exp $
+//  $Id: EditorEditGUI.cc,v 1.2 2000/12/16 23:11:23 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,7 @@
 #include "EditorEditGUI.hh"
 
 void 
-EditorEditGUI::edit_obj(EditorObj* obj)
+EditorEditGUI::edit_obj(boost::shared_ptr<EditorObj> obj)
 {
   PSMObj* dynamic_cast<PSMObj*>(obj)
 }

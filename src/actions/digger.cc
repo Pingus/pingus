@@ -1,4 +1,4 @@
-//  $Id: digger.cc,v 1.14 2000/12/14 21:35:55 grumbel Exp $
+//  $Id: digger.cc,v 1.15 2000/12/16 23:11:21 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,10 +19,12 @@
 
 #include <cstdio>
 
-#include "digger.hh"
+#include "../World.hh"
+#include "../PingusResource.hh"
 #include "../PingusSound.hh"
 #include "../particles/GroundParticle.hh"
 #include "../algo.hh"
+#include "digger.hh"
 
 bool Digger::static_surfaces_loaded = false;
 CL_Surface Digger::digger_radius;
@@ -30,12 +32,6 @@ CL_Surface Digger::static_surface;
 
 Digger::Digger()
 {
-}
-
-PinguAction*
-Digger::allocate(void)
-{
-  return new Digger();
 }
 
 void
@@ -46,8 +42,8 @@ Digger::init(void)
 
   if (!static_surfaces_loaded)
     {
-      static_surface = CL_Surface ("Pingus/digger", local_res());
-      digger_radius = CL_Surface ("Other/digger_radius", local_res());  
+      static_surface = PingusResource::load_surface ("Pingus/digger", "pingus");
+      digger_radius = PingusResource::load_surface ("Other/digger_radius", "pingus");  
       surface = static_surface;
     }
 
