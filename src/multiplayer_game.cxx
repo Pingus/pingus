@@ -1,4 +1,4 @@
-//  $Id: multiplayer_game.cxx,v 1.4 2002/06/20 12:22:51 grumbel Exp $
+//  $Id: multiplayer_game.cxx,v 1.5 2002/06/20 12:36:56 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -139,6 +139,10 @@ MultiplayerGame::start ()
       }
 
     delete plf;
+    delete controller1;
+    delete controller2;
+    delete controller3;
+    delete controller4;
   } catch (...) {
     std::cout << "MultiplayerGame: Something went wrong and we have probally a memory leak." << std::endl;
   }
