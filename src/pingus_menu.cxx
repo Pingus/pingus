@@ -52,19 +52,19 @@ PingusMenu::preload ()
 
       background = Resource::load_sprite("misc/logo", "core");
 
-      SurfaceButton* editor_button = new SurfaceButton(CL_Point(CL_Display::get_width() * 150 / 800,
+      MenuButton* editor_button = new MenuButton(CL_Point(CL_Display::get_width() * 150 / 800,
                                                                 CL_Display::get_height() * 370 / 600),
                                                        Resource::load_sprite("menu/create_on", "core"),
                                                        _("Create a\nLevel"),
                                                        _("..:: Launch the level editor ::.."));
 
-      SurfaceButton* start_button = new SurfaceButton(CL_Point(CL_Display::get_width() * 400 / 800,
+      MenuButton* start_button = new MenuButton(CL_Point(CL_Display::get_width() * 400 / 800,
                                                               CL_Display::get_height() * 370 / 600),
                                                       Resource::load_sprite("menu/play_on", "core"),
                                                       _("Start"),
                                                       _("..:: Start the game ::.."));
 
-      SurfaceButton* quit_button = new SurfaceButton(CL_Point(CL_Display::get_width() * 650 / 800,
+      MenuButton* quit_button = new MenuButton(CL_Point(CL_Display::get_width() * 650 / 800,
                                                               CL_Display::get_height() * 370 / 600),
                                                      Resource::load_sprite("menu/exit_on", "core"),
                                                      _("Exit"),

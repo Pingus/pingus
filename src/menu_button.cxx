@@ -39,7 +39,7 @@ namespace Pingus {
 
 using EditorNS::Editor;
 
-SurfaceButton::SurfaceButton(const CL_Point& pos_, const CL_Sprite& sprite_, 
+MenuButton::MenuButton(const CL_Point& pos_, const CL_Sprite& sprite_, 
                              const std::string& text_, const std::string& desc_)
 {
   text = text_;
@@ -57,7 +57,7 @@ SurfaceButton::SurfaceButton(const CL_Point& pos_, const CL_Sprite& sprite_,
   pressed = false;
 }
 
-SurfaceButton::SurfaceButton ()
+MenuButton::MenuButton ()
 {
   font       = Fonts::pingus_small;
   font_large = Fonts::pingus_large;
@@ -72,18 +72,18 @@ SurfaceButton::SurfaceButton ()
   //std::cout << "done" << std::endl;
 }
 
-SurfaceButton::~SurfaceButton ()
+MenuButton::~MenuButton ()
 {
 }
 
 void
-SurfaceButton::on_click ()
+MenuButton::on_click ()
 {
   click();
 }
 
 void
-SurfaceButton::draw (GraphicContext& gc)
+MenuButton::draw (GraphicContext& gc)
 {
   if (mouse_over && !pressed)
     {
@@ -126,13 +126,13 @@ SurfaceButton::draw (GraphicContext& gc)
 }
 
 void
-SurfaceButton::update (float delta)
+MenuButton::update (float delta)
 {
   UNUSED_ARG(delta);
 }
 
 void
-SurfaceButton::on_pointer_enter ()
+MenuButton::on_pointer_enter ()
 {
   mouse_over = true;
   Sound::PingusSound::play_sound ("tick");
@@ -140,26 +140,26 @@ SurfaceButton::on_pointer_enter ()
 }
 
 void
-SurfaceButton::on_pointer_leave ()
+MenuButton::on_pointer_leave ()
 {
   //std::cout << "X: " << this << "leave" << std::endl;
   mouse_over = false;
 }
 
 void
-SurfaceButton::on_pointer_press ()
+MenuButton::on_pointer_press ()
 {
   pressed = true;
 }
 
 void
-SurfaceButton::on_pointer_release ()
+MenuButton::on_pointer_release ()
 {
   pressed = false;
 }
 
 bool
-SurfaceButton::is_at(int x, int y)
+MenuButton::is_at(int x, int y)
 {
   return (x > x_pos - int(surface_p.get_width()) / 2
 	  && x < x_pos + int(surface_p.get_width()) / 2

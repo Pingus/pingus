@@ -17,8 +17,8 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef HEADER_PINGUS_SURFACE_BUTTON_HXX
-#define HEADER_PINGUS_SURFACE_BUTTON_HXX
+#ifndef HEADER_PINGUS_MENU_BUTTON_HXX
+#define HEADER_PINGUS_MENU_BUTTON_HXX
 
 #include <string>
 #include <ClanLib/Display/sprite.h>
@@ -30,7 +30,7 @@ namespace Pingus {
 class PingusMenu;
 
 /** Framework for menu buttons */
-class SurfaceButton : public GUI::Component
+class MenuButton : public GUI::Component
 {
 protected:
   CL_Sprite surface_p;
@@ -49,10 +49,10 @@ protected:
   CL_Signal_v0 click;
 
 public:
-  SurfaceButton(const CL_Point& pos, const CL_Sprite& sprite, 
-                const std::string& text, const std::string& desc);
-  SurfaceButton();
-  virtual ~SurfaceButton();
+  MenuButton(const CL_Point& pos, const CL_Sprite& sprite, 
+             const std::string& text, const std::string& desc);
+  MenuButton();
+  virtual ~MenuButton();
 
   void draw(GraphicContext& gc);
   void update (float delta);
@@ -69,8 +69,8 @@ public:
   virtual void on_click ();
   CL_Signal_v0& sig_click() { return click; }
 private:
-  SurfaceButton (const SurfaceButton&);
-  SurfaceButton& operator= (const SurfaceButton&);
+  MenuButton (const MenuButton&);
+  MenuButton& operator= (const MenuButton&);
 };
 
 } // namespace Pingus
