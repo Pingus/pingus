@@ -1,4 +1,4 @@
-//  $Id: ObjectManager.cc,v 1.6 2000/02/25 02:35:27 grumbel Exp $
+//  $Id: ObjectManager.cc,v 1.7 2000/03/16 18:19:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -162,7 +162,7 @@ ObjectManager::save_level (std::string filename)
   // FIXME: we need some error checking
   
   plf_out << "/* This level was created with the PLE\n"
-	  << " * $Id: ObjectManager.cc,v 1.6 2000/02/25 02:35:27 grumbel Exp $\n"
+	  << " * $Id: ObjectManager.cc,v 1.7 2000/03/16 18:19:09 grumbel Exp $\n"
 	  << " */"
 	  << std::endl;
   
@@ -188,12 +188,16 @@ ObjectManager::save_level (std::string filename)
   
   plf_out << "background {\n"
 	  << "  image = (resource:" << background.desc.filename << ")\"" << background.desc.res_name << "\";\n"
-	  << "  dim   = \"" << background.dim   << "\";\n"
-	  << "  red   = \"" << background.red   << "\";\n"
-	  << "  green = \"" << background.green << "\";\n"
-	  << "  blue  = \"" <<  background.blue << "\";\n"
-	  << "  scroll_x = " << background.scroll_x << ";\n"
-	  << "  scroll_y = " << background.scroll_y << ";\n"
+	  << "  dim   = \""   << background.dim   << "\";\n"
+	  << "  red   = \""   << background.red   << "\";\n"
+	  << "  green = \""   << background.green << "\";\n"
+	  << "  blue  = \""   << background.blue << "\";\n"
+	  << "  scroll_x = "  << background.scroll_x << ";\n"
+	  << "  scroll_y = "  << background.scroll_y << ";\n"
+	  << "  para_x = "    << background.para_x << ";\n"
+	  << "  para_y = "    << background.para_y << ";\n"
+    	  << "  stretch_x = " << background.stretch_x << ";\n"
+	  << "  stretch_y = " << background.stretch_y << ";\n" 
 	  << "}\n"
 	  << std::endl;
 
