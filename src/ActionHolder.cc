@@ -1,4 +1,4 @@
-//  $Id: ActionHolder.cc,v 1.10 2000/04/24 13:15:40 grumbel Exp $
+//  $Id: ActionHolder.cc,v 1.11 2000/05/24 15:45:02 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #include "globals.hh"
 
 #include "PingusError.hh"
+#include "Timer.hh"
 #include "globals.hh"
 
 #include "actions/basher.hh"
@@ -189,6 +190,9 @@ ActionHolder::get_uaction(const std::string& name)
 void 
 ActionHolder::init_uactions()
 {
+  Timer timer;
+
+  timer.start();
   // FIXME: Test hack, should be replaced
   std::cout << "ActionHoler:init_uaction(): Generating actions..." << std::flush;
 
@@ -198,7 +202,7 @@ ActionHolder::init_uactions()
       uaction_buffer["bomber"].number = 0;
     }
 
-  std::cout << "done" << std::endl;
+  std::cout << "done " << timer.stop()  << std::endl;
 }
 
 void

@@ -1,4 +1,4 @@
-//  $Id: globals.hh,v 1.11 2000/04/21 09:47:36 grumbel Exp $
+//  $Id: globals.hh,v 1.12 2000/05/24 15:45:02 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -54,6 +54,7 @@ extern int    screen_width;
 extern int    screen_height;
 extern bool   preload_data;
 extern bool   draw_collision_map;
+extern bool   debug_tiles;
 
 #endif
 

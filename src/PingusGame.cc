@@ -1,4 +1,4 @@
-//  $Id: PingusGame.cc,v 1.9 2000/04/25 17:54:39 grumbel Exp $
+//  $Id: PingusGame.cc,v 1.10 2000/05/24 15:45:02 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,7 @@
 #include "PingusError.hh"
 #include "PingusMessageBox.hh"
 #include "algo.hh"
+#include "Timer.hh"
 #include "TrueServer.hh"
 #include "PingusGame.hh"
 
@@ -91,6 +92,8 @@ PingusGame::write_lastlevel_file(std::string levelfile)
 void
 PingusGame::start(std::string plf_filename, std::string psm_filename)
 {
+  Timer timer;
+
   if (verbose) std::cout << "PingusGame: start" << std::endl;
 
   std::cout << "Level: " << plf_filename << std::endl;
@@ -110,14 +113,16 @@ PingusGame::start(std::string plf_filename, std::string psm_filename)
       
 	if (server)
 	  delete server;
-    
-	std::cout << "PingusGame: Creating Server..." << std::endl;
-	server = new TrueServer;
-	std::cout << "PingusGame: Creating Server... done" << std::endl;
 
-	std::cout << "PingusGame: Creating Client..." << std::endl;
+	//timer.start();    
+	//std::cout << "PingusGame: Creating Server..." << std::endl;
+	server = new TrueServer;
+	//std::cout << "PingusGame: Creating Server... done " << timer.stop() << std::endl;
+
+	//timer.start();
+	//std::cout << "PingusGame: Creating Client..." << std::endl;
 	client = new Client(server);
-	std::cout << "PingusGame: Creating Client.. done" << std::endl;
+	//std::cout << "PingusGame: Creating Client.. done " << timer.stop() << std::endl;
     
 	if (psm_filename.empty()) 
 	  {

@@ -1,4 +1,4 @@
-//  $Id: PLFObj.cc,v 1.9 2000/05/22 21:11:13 grumbel Exp $
+//  $Id: PLFObj.cc,v 1.10 2000/05/24 15:45:02 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -170,7 +170,7 @@ EntranceObj::save(ofstream* plf, ofstream* psm)
 	 << "  y_pos = " << y_pos << ";\n"
 	 << "  z_pos = 0;\n"
 	 << "  release_rate = " << release_rate << ";\n"
-	 << "  direction = " << dir_str << "\n"
+	 << "  direction = " << dir_str << ";\n"
 	 << "}\n"
 	 << endl;
 }

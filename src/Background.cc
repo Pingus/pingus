@@ -1,4 +1,4 @@
-//  $Id: Background.cc,v 1.10 2000/04/10 21:33:06 grumbel Exp $
+//  $Id: Background.cc,v 1.11 2000/05/24 15:45:02 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,7 @@
 
 #include <assert.h>
 
+#include "Timer.hh"
 #include "PingusResource.hh"
 #include "globals.hh"
 #include "blitter.hh"
@@ -30,6 +31,13 @@
 
 Background::Background(background_data bg)
 {
+  Timer timer;
+
+  if (verbose) {
+    timer.start();
+    std::cout << "Creating Background..." << std::flush;
+  }
+
   CL_Canvas* canvas;
   CL_Surface* sur;
   
@@ -111,8 +119,14 @@ Background::Background(background_data bg)
   scroll_ox = 0;
   scroll_oy = 0;
 
-  std::cout << "Stretch_X: " << stretch_x << std::endl;
-  std::cout << "Stretch_Y: " << stretch_y << std::endl;
+  if (verbose > 1)
+    {
+      std::cout << "Background: Stretch_X: " << stretch_x << std::endl;
+      std::cout << "Background: Stretch_Y: " << stretch_y << std::endl;
+    }
+
+  if (verbose)
+    std::cout << "done" << timer.stop()  << std::endl;
 }
 
 Background::~Background()

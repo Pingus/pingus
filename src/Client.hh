@@ -1,4 +1,4 @@
-//  $Id: Client.hh,v 1.9 2000/04/24 13:15:41 grumbel Exp $
+//  $Id: Client.hh,v 1.10 2000/05/24 15:45:02 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -55,12 +55,13 @@ private:
   bool is_finished;
 
   std::vector<GuiObj* > obj;
- 
-  ButtonPanel*   button_panel;
-  PingusCounter* pcounter;
-  Playfield*     playfield;
-  TimeDisplay*   time_display;
-  SmallMap*      small_map;
+
+  static bool gui_is_init;
+  static ButtonPanel*   button_panel;
+  static PingusCounter* pcounter;
+  static Playfield*     playfield;
+  static TimeDisplay*   time_display;
+  static SmallMap*      small_map;
 
 public:
   Client(Server* s);

@@ -1,4 +1,4 @@
-//  $Id: Client.cc,v 1.21 2000/05/01 20:11:15 grumbel Exp $
+//  $Id: Client.cc,v 1.22 2000/05/24 15:45:02 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,9 +26,17 @@
 #include "System.hh"
 #include "Result.hh"
 #include "algo.hh"
+#include "Timer.hh"
 #include "PingusResource.hh"
 #include "PingusLevelResult.hh"
 #include "PingusSound.hh"
+
+bool Client::gui_is_init;
+ButtonPanel*   Client::button_panel;
+PingusCounter* Client::pcounter;
+Playfield*     Client::playfield;
+TimeDisplay*   Client::time_display;
+SmallMap*      Client::small_map;
 
 Client::Client(Server* s)
 {
@@ -58,12 +66,12 @@ Client::start(std::string filename, PingusGameMode m)
 
   FadeOut::random();
 
-  if (verbose) std::cout << "Displaying results..." << std::flush;
+  if (verbose) std::cout << "Displaying results..." << CL_System::get_time()  << std::flush;
   
   PingusLevelResult r(server->get_world());
   r.draw();
   
-  if (verbose) std::cout << "finished" << std::endl;
+  if (verbose) std::cout << "finished " << CL_System::get_time()  << std::endl;
 }
 
 void
@@ -77,14 +85,23 @@ Client::start(std::string plf_filename, std::string psm_filename)
 void 
 Client::init_display()
 {
+  Timer timer;
+  
+  timer.start();
+  if (verbose) std::cout << "Client: Generating UI elements..." << std::flush;
+
   CL_MouseCursor::set_cursor(CL_MouseCursorProvider::load("Cursors/cursor", PingusResource::get("game.dat")));
   CL_MouseCursor::show(true);
-
-  playfield    = new Playfield(plf, server->get_world());
-  button_panel = new ButtonPanel(plf);
-  pcounter     = new PingusCounter();
-  small_map    = new SmallMap();
-  time_display = new TimeDisplay();
+  /*
+  if (!gui_is_init)
+    {*/
+      playfield    = new Playfield(plf, server->get_world());
+      button_panel = new ButtonPanel(plf);
+      pcounter     = new PingusCounter();
+      small_map    = new SmallMap();
+      time_display = new TimeDisplay();
+      gui_is_init = true;
+      //}
 
   button_panel->set_server(server);
   time_display->set_server(server);
@@ -116,7 +133,7 @@ Client::init_display()
   obj.push_back(button_panel);
   obj.push_back(small_map);
 
-  if (verbose) std::cout << "done" << std::endl;
+  if (verbose) std::cout << "done " << timer.stop() << std::endl;
 }
 
 void 
@@ -141,11 +158,13 @@ Client::resize_display()
 void
 Client::play_level(std::string plf_filename, std::string psm_filename)
 {
-  //MODULE* module;
+  Timer timer;
+
+  timer.start();
   std::cout << "Client::play_level(), Reading PLF..." << std::flush;
   plf          = new PLF(plf_filename);
 
-  std::cout << "done" << std::endl;
+  std::cout << "done " << timer.stop() << std::endl;
 
   // FIXME: dirty hack, should replace or merge the psm files
   {
@@ -158,8 +177,6 @@ Client::play_level(std::string plf_filename, std::string psm_filename)
   
   server->start(plf);
   event->register_event_handler();
-
-  if (verbose) std::cout << "Client: Generating UI elements..." << std::flush;
 
   init_display(); 
 

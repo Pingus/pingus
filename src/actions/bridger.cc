@@ -1,4 +1,4 @@
-//  $Id: bridger.cc,v 1.13 2000/05/20 17:12:58 grumbel Exp $
+//  $Id: bridger.cc,v 1.14 2000/05/24 15:45:02 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -90,14 +90,14 @@ void
 Bridger::let_move()
 {
   // Increment the animation only every first and second loop, not at the third
-  if (step > 1) 
+  if (step > 0) 
     {
       ++do_steps;
       step = 0;
     }
   ++step;
 
-  if (do_steps > 8)
+  if (do_steps > 14)
     {
       do_steps = 0;
 

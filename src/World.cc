@@ -1,4 +1,4 @@
-//  $Id: World.cc,v 1.17 2000/05/03 18:41:14 grumbel Exp $
+//  $Id: World.cc,v 1.18 2000/05/24 15:45:02 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,6 +38,7 @@
 #include "ActionHolder.hh"
 #include "entrances/entrances.hh"
 #include "FVec.hh"
+#include "Timer.hh"
 
 using namespace std;
 
@@ -194,9 +195,12 @@ World::init(PLF* plf_data)
   init_map();
   init_background();
 
+  Timer timer;
+
+  timer.start();
   cout << "World: Initing world objects... " << flush;
   init_worldobjs();
-  cout << "done" << endl;
+  cout << "done " << timer.stop() << endl;
 }
 
 void
@@ -207,7 +211,6 @@ World::init_map()
     {
     case SPOT:
       map = new PingusSpotMap(plf);
-      if (verbose) cout << "World: Loaded pingu map" << endl;
       break;
     case BMP:
     case RANDOM:
@@ -225,9 +228,7 @@ void
 World::init_background()
 {
   // load the background map
-  if (verbose) cout << "World: Loading background..." << flush;
   background = new Background(plf->get_bg());
-  if (verbose) cout << "done" << endl;
 }
 
 void

@@ -1,4 +1,4 @@
-//  $Id: bomber.hh,v 1.3 2000/04/29 13:13:26 grumbel Exp $
+//  $Id: bomber.hh,v 1.4 2000/05/24 15:45:02 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,8 +28,8 @@ private:
   bool particle_thrown;
   bool sound_played;
   static CL_Surface* static_surface;
-  CL_Surface* bomber_radius;
-  CL_Surface* explo_surf;
+  static CL_Surface* bomber_radius;
+  static CL_Surface* explo_surf;
 public:
   Bomber();
 

@@ -1,4 +1,4 @@
-//   $Id: Pingus.cc,v 1.25 2000/05/15 06:50:06 grumbel Exp $
+//   $Id: Pingus.cc,v 1.26 2000/05/24 15:45:02 grumbel Exp $
 //    ___
 //   |  _\ A free Lemmings clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -68,7 +68,7 @@ segfault_handler(int signo)
   switch(signo)
     {
     case SIGSEGV:
-      puts("----------------------------------------------------------");
+      puts("\n----------------------------------------------------------");
       puts("segfault_handler: catched a SIGSEGV.\n");
       puts("Woops, Pingus just crashed, congratulations you've found a bug.");
       puts("Please write a little bug report to <grumbel@pingus.cx>, include informations");
@@ -82,7 +82,6 @@ segfault_handler(int signo)
       puts("(gdb) r");
       puts("[play until it crashes again]");
       puts("...\n");
-      exit(EXIT_FAILURE);
       break;
 
     default:
@@ -90,6 +89,7 @@ segfault_handler(int signo)
 		<< " ignoring" << std::endl;
       break;
     }
+  assert(0);
 }
 
 PingusMain::PingusMain()
@@ -210,6 +210,7 @@ PingusMain::check_args(int argc, char* argv[])
 
     // 
     {"no-cfg-file",    no_argument, 0, 142},
+    {"debug-tiles",     no_argument, 0, 143},
     {0, 0, 0, 0}
   };
 
@@ -283,7 +284,7 @@ PingusMain::check_args(int argc, char* argv[])
       std::cout << PACKAGE << " version " << VERSION << std::endl;
       std::cout <<
 	"\n"
-	"Copyright (C) 1998 Ingo Ruhnke <grumbel@gmx.de>\n"
+	"Copyright (C) 1998 Ingo Ruhnke <grumbel@pingus.cx>\n"
 	"There is NO warranty.  You may redistribute this software\n"
 	"under the terms of the GNU General Public License.\n"
 	"For more information about these matters, see the files named COPYING."
@@ -370,6 +371,10 @@ PingusMain::check_args(int argc, char* argv[])
       // Nothing, since that is handled in quick_check_args()
       break;
 
+    case 143:
+      debug_tiles = true;
+      break;
+
     default:
       
       std::cout << "Unknow char: " << c << std::endl << std::endl;
@@ -398,9 +403,10 @@ PingusMain::check_args(int argc, char* argv[])
 	"   --maintainer-mode        Enables some features, only interesting programmers\n"
 	"   -e, --editor             Launch the Level editor (experimental)\n"
 	"   --disable-auto_scrolling Disable automatic scrolling\n"
+	"   --debug-tiles            Draw empty tiles\n"
 	"   --no-cfg-file            Don't read ~/.pingus/config\n"
-
-	"Demo playing and recording:\n"
+	
+	"\nDemo playing and recording:\n"
 	"   -r, --record-demo FILE   Record a demo session to FILE\n"
 	"   -p, --play-demo FILE     Plays a demo session from FILE\n"
 
@@ -704,7 +710,7 @@ PingusMain::do_lemmings_mode(void)
 	    << "| If you have suggestions or bug reports    |\n"
 	    << "| don't hesitate to write a email to:       |\n"
 	    << "|                                           |\n"
-	    << "|        Ingo Ruhnke <grumbel@gmx.de>       |\n"
+	    << "|        Ingo Ruhnke <grumbel@pingus.cx>    |\n"
 	    << "|                                           |\n"
 	    << "| Comments about the music? Send a mail to: |\n"
 	    << "|                                           |\n"

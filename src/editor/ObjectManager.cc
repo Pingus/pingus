@@ -1,4 +1,4 @@
-//  $Id: ObjectManager.cc,v 1.10 2000/04/24 13:15:42 grumbel Exp $
+//  $Id: ObjectManager.cc,v 1.11 2000/05/24 15:45:02 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <algorithm>
 #include "../algo.hh"
 #include "../System.hh"
 #include "../Display.hh"
@@ -169,7 +170,7 @@ ObjectManager::save_level (string filename)
   // FIXME: we need some error checking
   
   plf_out << "/* This level was created with the PLE\n"
-	  << " * $Id: ObjectManager.cc,v 1.10 2000/04/24 13:15:42 grumbel Exp $\n"
+	  << " * $Id: ObjectManager.cc,v 1.11 2000/05/24 15:45:02 grumbel Exp $\n"
 	  << " */"
 	  << endl;
   
@@ -308,10 +309,10 @@ ObjectManager::rect_get_current_objs(int x_1, int y_1, int x_2, int y_2)
       && !CL_Keyboard::get_keycode(CL_KEY_RSHIFT))
     delete_selection();
   
-  x1 = MIN(x_1, x_2);
-  x2 = MAX(x_1, x_2);
-  y1 = MIN(y_1, y_2);
-  y2 = MAX(y_1, y_2);  
+  x1 = min(x_1, x_2);
+  x2 = max(x_1, x_2);
+  y1 = min(y_1, y_2);
+  y2 = max(y_1, y_2);  
 
   cout << "X1: " << x1 << " X2: " << x2 << endl;
   cout << "Y1: " << y1 << " Y2: " << y2 << endl;
