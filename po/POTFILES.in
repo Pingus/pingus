@@ -78,8 +78,6 @@ src/sound_real.cxx
 src/sound_real.hxx
 src/path_manager.cxx
 src/path_manager.hxx
-src/liquid.cxx
-src/liquid.hxx
 src/theme_selector.cxx
 src/theme_selector.hxx
 src/system.cxx
@@ -92,6 +90,8 @@ src/worldobjs/switch_door.cxx
 src/worldobjs/switch_door.hxx
 src/worldobjs/info_box.cxx
 src/worldobjs/info_box.hxx
+src/worldobjs/liquid.cxx
+src/worldobjs/liquid.hxx
 src/worldobjs/conveyor_belt.cxx
 src/worldobjs/conveyor_belt.hxx
 src/worldobjs/teleporter.cxx
@@ -100,6 +100,8 @@ src/credits.cxx
 src/credits.hxx
 src/worldobj_data.cxx
 src/worldobj_data.hxx
+src/worldobjsdata/hotspot_data.cxx
+src/worldobjsdata/hotspot_data.hxx
 src/pingus_map_manager.cxx
 src/pingus_map_manager.hxx
 src/delta_manager.hxx
@@ -304,8 +306,8 @@ src/col_map.hxx
 src/algo.cxx
 src/algo.hxx
 src/my_gettext.hxx
-src/liquid_data.cxx
-src/liquid_data.hxx
+src/worldobjsdata/liquid_data.cxx
+src/worldobjsdata/liquid_data.hxx
 src/wav_provider.cxx
 src/wav_provider.hxx
 src/entrances/woodthing.cxx
