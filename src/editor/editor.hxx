@@ -1,4 +1,4 @@
-//  $Id: editor.hxx,v 1.10 2002/08/04 19:57:16 grumbel Exp $
+//  $Id: editor.hxx,v 1.11 2002/08/04 20:27:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -63,7 +63,6 @@ private:
   int event_handler_ref_counter;
 
   CL_Font* font;
-  bool quit;
 
   int move_x;
   int move_y;

@@ -1,4 +1,4 @@
-//  $Id: editor_event.cxx,v 1.26 2002/08/04 19:57:16 grumbel Exp $
+//  $Id: editor_event.cxx,v 1.27 2002/08/04 20:27:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -78,6 +78,9 @@ EditorEvent::set_editor(Editor* e)
 void
 EditorEvent::enable()
 {
+  assert (is_enabled == false);
+
+  std::cout << "EditorEvent::enable()" << std::endl;
   is_enabled = true;
   editor->get_gui_manager ()->enable_input ();
 }
@@ -85,6 +88,9 @@ EditorEvent::enable()
 void
 EditorEvent::disable()
 {
+  assert (is_enabled == true);
+
+  std::cout << "EditorEvent::disable()" << std::endl;
   is_enabled = false;
   editor->get_gui_manager ()->disable_input ();
 }
@@ -92,6 +98,8 @@ EditorEvent::disable()
 void
 EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key& key)
 {
+  std::cout << "EditorEvent::on_button_press: " << is_enabled << std::endl;
+
   if (!accept_input ())
     return;
 
@@ -355,6 +363,8 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key& key)
 void
 EditorEvent::on_button_release(CL_InputDevice *device, const CL_Key &key)
 {
+  std::cout << "EditorEvent::on_button_release: " << is_enabled << std::endl;
+
   if (!accept_input ())
     return;
 
@@ -498,25 +508,21 @@ EditorEvent::editor_delete_selected_objects()
 void
 EditorEvent::editor_start_current_level()
 {
-  disable();
-
   loading_screen.draw();
 
-  try {
-    std::string levelfile = editor->save_tmp_level();
-    ScreenManager::instance()->push_screen(new PingusGameSession (levelfile), true);
-  }
-  
-  catch(PingusError err) {
-    std::cout << "Editor: Error caught from Pingus: " << err.get_message () << std::endl;
-  }
-  
-  catch (CL_Error err) {
-    std::cout << "Editor: Error caught from ClanLib: " << err.message << std::endl;
-  }
-
-  
-  enable();
+  try 
+    {
+      std::string levelfile = editor->save_tmp_level();
+      ScreenManager::instance()->push_screen(new PingusGameSession (levelfile), true);
+    }
+  catch(PingusError err) 
+    {
+      std::cout << "Editor: Error caught from Pingus: " << err.get_message () << std::endl;
+    }  
+  catch (CL_Error err) 
+    {
+      std::cout << "Editor: Error caught from ClanLib: " << err.message << std::endl;
+    }
 }
 
 void 
@@ -675,7 +681,7 @@ EditorEvent::editor_exit()
 {
   std::cout << "Exit editor" << std::endl;
   editor->save_tmp_level();
-  editor->quit = true;
+  ScreenManager::instance ()->pop_screen ();
 }
 
 void

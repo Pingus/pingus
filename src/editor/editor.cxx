@@ -1,4 +1,4 @@
-//  $Id: editor.cxx,v 1.21 2002/08/04 19:57:16 grumbel Exp $
+//  $Id: editor.cxx,v 1.22 2002/08/04 20:27:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -114,7 +114,6 @@ void
 Editor::on_startup ()
 {
   std::cout << "Editor::on_startup ()" << std::endl;
-  quit = false;
 
   Display::set_cursor(CL_MouseCursorProvider::load("cursors/cursor", PingusResource::get("core")));
   Display::show_cursor();
