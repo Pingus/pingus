@@ -1,4 +1,4 @@
-//  $Id: blitter_impl.hxx,v 1.6 2003/03/25 00:37:44 grumbel Exp $
+//  $Id: blitter_impl.hxx,v 1.7 2003/04/02 20:37:47 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -54,7 +54,7 @@ struct transform_rot90
 struct transform_rot180
 {
   static inline int get_index(int width, int height, int x, int y) {
-    return (width * height) - (y * width + x);
+    return (width * height) - (y * width + x) - 1;
   }
 
   static inline int get_x(int width, int height, int x, int y) { UNUSED_ARG(height); UNUSED_ARG(y);
@@ -187,7 +187,7 @@ CL_Surface modify(const CL_Surface& sur)
 
   if (prov->is_indexed())
     {
-      //std::cout << "Using indexed blitter" << std::endl;
+      std::cout << "Using indexed blitter" << std::endl;
 
       IndexedCanvas* canvas = new IndexedCanvas(TransF::get_width (pwidth, pheight),
                                                 TransF::get_height(pwidth, pheight));
@@ -205,6 +205,22 @@ CL_Surface modify(const CL_Surface& sur)
       for (int y = 0; y < pheight; ++y)
         for (int x = 0; x < pwidth; ++x)
           {
+// start: bounce check
+            int i = TransF::get_index(pwidth, pheight, x, y);
+            if (i < 0 || i >= pwidth * pheight)
+              {
+                std::cout << "Target: Out of bounce: " << i << " " << pwidth << "x" << pheight
+                          << " " <<  typeid(TransF()).name() << std::endl;
+              }
+            
+            if (y * pwidth + x < 0
+                || y * pwidth + x >= pwidth * pheight)
+              {
+                std::cout << "Source: Out of bounce: " << i << " " << pwidth << "x" << pheight
+                          << " " <<  typeid(TransF()).name() << std::endl;
+              }
+// end: bounce check
+
             target_buf[TransF::get_index(pwidth, pheight, x, y)] = source_buf[y * pwidth + x];
           }
 
