@@ -155,6 +155,7 @@ section misc
         tree = ../images/groundpieces/ground/misc/tree.png (type=surface);
         well = ../images/groundpieces/ground/misc/well.png (type=surface);
         wood1 = ../images/groundpieces/ground/misc/wood1.png (type=surface);
+        wood2 = ../images/groundpieces/ground/misc/wood2.png (type=surface);
 }
 
 section mud
