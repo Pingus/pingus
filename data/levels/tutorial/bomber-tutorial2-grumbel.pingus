@@ -3,6 +3,7 @@
 <pingus-level>
   <global>
     <levelname lang="en">Sacrifice a few and save the rest</levelname>
+    <levelname lang="nl">Offer een paar er redt de rest/levelname>
     <levelname lang="it">Sacrificane alcuni, ma salva gli altri</levelname>
     <levelname lang="de">Opfere einige und rette den Rest</levelname>
     <levelname lang="cs">Pár obìtuj a zachraò ostatní</levelname>
@@ -19,6 +20,11 @@
                            way through the ground. The Pingus can do this by actually self-
                            destructing. This will kill them, but it is sometimes
                            necessary to sacrifice a few to save the rest.
+    </description>
+    <description lang="nl">Soms zijn er geen andere acties voor handen en moet je je een weg
+                           door de grond zien te bombarderen. De Pinuga can dit doen door middel
+                           van zelfvernietigin. Je verliest hem, maar het is soms nodig te offeren
+                           zodat je de rest kan redden.
     </description>
     <description lang="it">Certe volte non c'è altra scelta, bisogna scavare il terreno con
                            l'esplosivo. I Pingus possono farlo solo suicidandosi... In questo

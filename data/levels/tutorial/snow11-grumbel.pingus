@@ -3,6 +3,7 @@
 <pingus-level>
   <global>
     <levelname lang="en">Jump'n Bump... and Bash...</levelname>
+    <levelname lang="nl">Spring Bots... en Sloop...</levelname>
     <levelname lang="it">Salta e sbatti... e scava...</levelname>
     <levelname lang="de">Springe... und grabe...</levelname>
     <levelname lang="cs">Skákání a hrabání...</levelname>
@@ -19,6 +20,11 @@
 		           since they turn around when they hit walls you will soon have some trouble
 		           coordinating them all. Since you only need to save 5 it should be doable,
 		           but if all else fails use the pause-mode ('p') to get an overview again.
+    </description>
+    <description lang="nl">Alweer paniek in de tent. De Pingus komen niet erg snel naar buiten, maar
+                           aangezien ze ronddraaien als ze een muur raken zal je snel problemen krijgen om
+                           ze allemaal te coordineren. Aangezien je er maar 5 hoeft te redden moet het haalbaar
+                           zijn. Maar als alles mislukt gebruik dan de pauze-mode ('p') om weer overzicht te krijgen.
     </description>
     <description lang="it">E' ancora panico. I Pingus non vengono fuori molto velocemente, ma appena
 		           toccheranno i muri avrai qualche problema a coordinarli. Dato che devi

@@ -3,6 +3,7 @@
 <pingus-level>
   <global>
     <levelname lang="en">Solid ground can block the path</levelname>
+    <levelname lang="nl">Vaste grond kan het pad blokkeren</levelname>
     <levelname lang="it">Il terreno duro può bloccare il cammino</levelname>
     <levelname lang="de">Fester Boden kann den Weg blockieren</levelname>
     <levelname lang="cs">Pevné podlo¾í mù¾e omezit cestu</levelname>
@@ -20,6 +21,12 @@
                            penetrate: steel. These regions are marked
                            dark grey on the level map and cannot be destroyed, so
 			   you must find a way around them.
+    </description>
+    <description lang="nl">Zoals je hebt geleerd in eerdere niveau's kunnen je Pingus graven door
+                           min of meer elk terein, maar er is een materiaal waar ze niet doorheen
+                           kunnen: staal.  Deze plaatsen zijn donker grijs gemarkeerd
+                           op de niveaukaart en kunnen niet worden vernietigd, dus
+                           je zult er iets moeten zien te vinden.
     </description>
     <description lang="it">Come avrai appreso nei livelli precedenti, i Pingus possono
                            scavare attraverso quasi tutti i terreni, ma c'è un materiale che

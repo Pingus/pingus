@@ -3,6 +3,7 @@
 <pingus-level>
   <global>
     <levelname lang="en">Climb, Climber, climb... and build a bridge</levelname>
+    <levelname lang="nl">Klim, Klauter, klim... en bouw een brug</levelname>
     <levelname lang="it">Sali, Arrampicatore... e fai un ponte</levelname>
     <levelname lang="de">Kletter, Climber, kletter.. und bau eine Brücke</levelname>
     <levelname lang="cs">©plhej horolezèe, ¹plhej... a postav most</levelname>
@@ -18,6 +19,10 @@
     <description lang="en">Once again you get access to a new action. The Climber action allows
 			   a Pingu to climb up straight walls, thus allowing him to reach stuff
 		           that might be too high to reach by other means.
+    </description>
+    <description lang="nl">Alweer een nieuwe actie. De klimer actie geeft de mogelijkheid aan
+                           een Pingu om tegen muren op te lopen, en zo dingen te bereiken die
+                           die op andere manieren niet haalbaar zijn.
     </description>
     <description lang="it">Anche stavolta hai una nuova abilità a disposizione. 'Arrampicatore'
                            ti permette di scalara i muri verticali, permettedo ai Pingus di
