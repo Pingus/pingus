@@ -1,4 +1,4 @@
-//  $Id: StringReader.cc,v 1.7 2000/06/13 17:50:47 grumbel Exp $
+//  $Id: StringReader.cc,v 1.8 2000/06/14 17:24:43 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -119,7 +119,7 @@ StringReader::complete_string()
       if (i->find(current_string) == 0)
 	{
 	  std::cout << *i << std::endl;
-	  console << *i;
+	  console << *i << Console::endl;
 	  completions_counter++;
 	  completion = &(*i);
 	  completions.push_back(&(*i));
