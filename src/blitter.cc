@@ -1,4 +1,4 @@
-//  $Id: blitter.cc,v 1.25 2001/04/13 17:34:56 grumbel Exp $
+//  $Id: blitter.cc,v 1.26 2001/04/13 22:17:46 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -168,6 +168,7 @@ Blitter::put_surface_32bit(CL_Canvas* canvas, CL_SurfaceProvider* provider,
 {
   assert (canvas);
   assert (provider);
+
   //std::cout << "Blitter::put_surface_32bit() --- not implemented" << std::endl;
   //return;
   float red, green, blue, alpha;
@@ -178,6 +179,10 @@ Blitter::put_surface_32bit(CL_Canvas* canvas, CL_SurfaceProvider* provider,
 
   int twidth = canvas->get_width();
   int theight = canvas->get_height();
+
+  // Surface is out of the screen
+  if (x_pos > twidth-1 || y_pos > theight-1)
+    return;
 
   canvas->lock();
   provider->lock();

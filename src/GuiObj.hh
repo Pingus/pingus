@@ -1,4 +1,4 @@
-//  $Id: GuiObj.hh,v 1.8 2001/04/08 14:10:34 grumbel Exp $
+//  $Id: GuiObj.hh,v 1.9 2001/04/13 22:17:46 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,7 +26,7 @@
     and redraw it. */
 class GuiObj 
 {
-private:
+protected:
   ///
   int x1;
   ///

@@ -1,4 +1,4 @@
-//  $Id: MouseController.cc,v 1.2 2001/04/13 09:31:37 grumbel Exp $
+//  $Id: MouseController.cc,v 1.3 2001/04/13 22:17:46 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -56,7 +56,8 @@ public:
 };
 
 MouseController::MouseController (int arg_owner_id)
-  : Controller (arg_owner_id)
+  : Controller (arg_owner_id),
+    x1 (0), y1 (0), x2 (0), y2 (0)
 {
   left = boost::shared_ptr<ControllerButton> (new LeftMouseButton (this));
   middle = boost::shared_ptr<ControllerButton> (new MiddleMouseButton (this));
@@ -72,25 +73,47 @@ MouseController::~MouseController ()
 int 
 MouseController::get_x ()
 {
-  return CL_Mouse::get_x ();
+  return int(pos.x);
 }
 
 int 
 MouseController::get_y ()
 {
-  return CL_Mouse::get_y ();
+  return int(pos.y);
 }
   
 CL_Vector
 MouseController::get_pos ()
 {
-  return CL_Vector (CL_Mouse::get_x (), CL_Mouse::get_y ());
+  return pos;
 }
 
 void 
 MouseController::set_range (int x1, int y1, int x2, int y2)
 {
-  // FIXME: Not implemented
+  this->x1 = x1;
+  this->y1 = y1;
+  this->x2 = x2;
+  this->y2 = y2;  
+}
+
+void 
+MouseController::keep_alive ()
+{
+  pos.x = CL_Mouse::get_x ();
+  pos.y = CL_Mouse::get_y ();
+
+  if (pos.x <= x1)
+    pos.x = x1;
+  if (pos.y <= y1)
+    pos.y = y1;
+
+  if (pos.x >= x2)
+    pos.x = x2;
+  if (pos.y >= y2)
+    pos.y = y2;
+
+  Controller::keep_alive ();
 }
   
 /* EOF */

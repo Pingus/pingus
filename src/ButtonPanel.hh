@@ -1,4 +1,4 @@
-//  $Id: ButtonPanel.hh,v 1.12 2001/04/13 11:26:54 grumbel Exp $
+//  $Id: ButtonPanel.hh,v 1.13 2001/04/13 22:17:46 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -72,10 +72,12 @@ private:
   World* world;
   ///
   boost::shared_ptr<Controller> controller;
+
+  int x_pos, y_pos;
 public:
   ///
   ButtonPanel(boost::shared_ptr<PLF> plf,
-	      boost::shared_ptr<Controller>);
+	      boost::shared_ptr<Controller>,int arg_x_pos, int arg_y_pos);
   ///
   ~ButtonPanel();
 

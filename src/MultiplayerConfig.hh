@@ -1,4 +1,4 @@
-//  $Id: MultiplayerConfig.hh,v 1.1 2001/04/10 10:45:14 grumbel Exp $
+//  $Id: MultiplayerConfig.hh,v 1.2 2001/04/13 22:17:46 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,6 +30,7 @@ public:
   ~MultiplayerConfig ();
 
   void display ();
+  void start ();
 };
 
 #endif

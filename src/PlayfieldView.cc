@@ -1,5 +1,5 @@
-//  $Id: MouseController.hh,v 1.4 2001/04/13 22:17:46 grumbel Exp $
-// 
+//  $Id: PlayfieldView.cc,v 1.1 2001/04/13 22:17:46 grumbel Exp $
+//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -12,38 +12,39 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef MOUSECONTROLLER_HH
-#define MOUSECONTROLLER_HH
+#include "PlayfieldView.hh"
 
-#include "Controller.hh"
-
-class MouseController : public Controller
+PlayfieldView::PlayfieldView (boost::dummy_ptr<World> w,
+			      int x1, int y1, int x2, int y2)
+  : world (w), x_offset (-320), y_offset (0)
 {
-private:
-  CL_Vector pos;
-  int x1, y1, x2, y2;
-  
-public:
-  MouseController (int arg_owner_id = 0);
-  virtual ~MouseController ();
+  this->x1 = x1;
+  this->y1 = y1;
+  this->x2 = x2;
+  this->y2 = y2;
+  set_clip_rect(x1, y1, x2, y2);
+}
 
-  int get_x ();
-  int get_y ();
-  
-  CL_Vector get_pos ();
+PlayfieldView::~PlayfieldView ()
+{
+}
 
-  /** Limit the range to the given area, might be used in multiplayer
-      modes to limit the cursor to the players view */
-  void set_range (int x1, int y1, int x2, int y2);
+void 
+PlayfieldView::update (float delta)
+{
+}
 
-  void keep_alive ();
-};
-
-#endif
+void 
+PlayfieldView::draw ()
+{
+  world->draw(x1, y1,
+	      x2 - x1, y2 - y1,
+	      x_offset, y_offset, 1.0f);
+}
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: TrueServer.cc,v 1.22 2001/04/13 13:45:09 grumbel Exp $
+//  $Id: TrueServer.cc,v 1.23 2001/04/13 22:17:46 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -55,11 +55,13 @@ TrueServer::update(float delta)
 }
 
 void
-TrueServer::start(boost::shared_ptr<PLF> level_data)
+TrueServer::start(boost::shared_ptr<PLF> arg_plf)
 {
   Timer timer;
 
-  filename = level_data->get_filename();
+  plf = arg_plf;
+  
+  filename = plf->get_filename();
 
   std::vector<ActionData> bdata;
 
@@ -67,7 +69,7 @@ TrueServer::start(boost::shared_ptr<PLF> level_data)
   
   std::cout << "TrueServer: Generating actions..." << std::flush;
 
-  bdata = level_data->get_actions();
+  bdata = plf->get_actions();
 
   for(std::vector<ActionData>::iterator b = bdata.begin(); b != bdata.end(); ++b) {
     action_holder.set_actions(b->name, b->number_of);
@@ -79,13 +81,13 @@ TrueServer::start(boost::shared_ptr<PLF> level_data)
   last_time = 0;
   local_game_speed = game_speed;
 
-  world = new World;
+  world = new World ();
 
   // FIXME: this is complete trash, delete it and place it in world
   // object or so...
   world->set_action_holder(&action_holder);
 
-  world->init(level_data);
+  world->init(plf);
 
   GameTime::reset();
 }

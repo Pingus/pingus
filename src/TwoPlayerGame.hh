@@ -1,4 +1,4 @@
-//  $Id: MouseController.hh,v 1.4 2001/04/13 22:17:46 grumbel Exp $
+//  $Id: TwoPlayerGame.hh,v 1.1 2001/04/13 22:17:46 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,31 +17,18 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef MOUSECONTROLLER_HH
-#define MOUSECONTROLLER_HH
+#ifndef TWOPLAYERGAME_HH
+#define TWOPLAYERGAME_HH
 
-#include "Controller.hh"
-
-class MouseController : public Controller
+class TwoPlayerGame
 {
 private:
-  CL_Vector pos;
-  int x1, y1, x2, y2;
-  
+
 public:
-  MouseController (int arg_owner_id = 0);
-  virtual ~MouseController ();
+  TwoPlayerGame ();
+  ~TwoPlayerGame ();
 
-  int get_x ();
-  int get_y ();
-  
-  CL_Vector get_pos ();
-
-  /** Limit the range to the given area, might be used in multiplayer
-      modes to limit the cursor to the players view */
-  void set_range (int x1, int y1, int x2, int y2);
-
-  void keep_alive ();
+  void start ();
 };
 
 #endif

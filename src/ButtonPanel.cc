@@ -1,4 +1,4 @@
-//  $Id: ButtonPanel.cc,v 1.19 2001/04/13 11:26:54 grumbel Exp $
+//  $Id: ButtonPanel.cc,v 1.20 2001/04/13 22:17:46 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,8 +27,10 @@ using boost::shared_ptr;
 CL_Surface ButtonPanel::button_cap;
 
 ButtonPanel::ButtonPanel(boost::shared_ptr<PLF> plf,
-			 boost::shared_ptr<Controller> arg_controller)
-  : controller (arg_controller)
+			 boost::shared_ptr<Controller> arg_controller,
+			 int arg_x_pos, int arg_y_pos)
+  : controller (arg_controller),
+    x_pos (arg_x_pos), y_pos (arg_y_pos)
 {
   last_press = 0;
 
@@ -48,15 +50,15 @@ ButtonPanel::ButtonPanel(boost::shared_ptr<PLF> plf,
       if (horizontal_button_panel) 
 	{
 	  a_buttons.push_back(shared_ptr<ActionButton>(new HorizontalActionButton
-						       (38 * i,
-							CL_Display::get_height() - 56,
+						       (38 * i + x_pos,
+							y_pos,
 							buttons_data[i].name)));
 	}
       else
 	{
 	  a_buttons.push_back(shared_ptr<ActionButton>(new VerticalActionButton
-						       (2,
-							i * 38 + 30,
+						       (x_pos,
+							i * 38 + y_pos,
 							buttons_data[i].name)));
 	}
     }
@@ -111,14 +113,14 @@ ButtonPanel::draw()
   // draw the buttons
   for(AButtonIter button = a_buttons.begin(); button != a_buttons.end(); ++button) 
     {
-      if (*button == *pressed_button) 
+      if (button == pressed_button) 
 	(*button)->pressed = true;
       else
 	(*button)->pressed = false;
 
       (*button)->draw();
     }
-  
+
   armageddon->draw();
   pause->draw();
   forward->draw();
