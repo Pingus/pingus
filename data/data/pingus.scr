@@ -6,7 +6,7 @@ section Pingus
 	climber     = images/pingus/climber.png    (type=surface, x=0, y=0, width=32, height=32, array=8x2);
 	faller      = images/pingus/faller.png     (type=surface, x=0, y=0, width=32, height=32, array=8x1);
 	jumper      = images/pingus/faller.png     (type=surface, x=0, y=0, width=32, height=32, array=8x1);
-	tumble      = images/pingus/tumble.png     (type=surface, x=0, y=0, width=32, height=32, tcol=77, array=8x1);
+	tumble      = images/pingus/tumble.png     (type=surface, x=0, y=0, width=32, height=32, array=8x1);
 	bridger     = images/pingus/bridger.png    (type=surface, x=0, y=0, width=32, height=32, array=15x2);
         walker      = images/pingus/walker.png     (type=surface, x=0, y=0, width=32, height=32, array=8x2);
 	blocker     = images/pingus/blocker.png    (type=surface, x=0, y=0, width=32, height=32, array=6x1);

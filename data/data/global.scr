@@ -49,8 +49,8 @@ section Hotspots
 	pillar3     = images/hotspots/pillar3.png (type=surface, x=0, y=0, width=36, height=147, tcol=0);
 
 	well        = images/hotspots/well.png    (type=surface, x=0, y=0, width=32, height=54, tcol=0);
-	plate       = images/groundpieces/solid/misc/metalplate.png   (type=surface, x=0, y=0, width=64, height=32);
-	plate2      = images/groundpieces/solid/misc/metalplate_horz.png  (type=surface, x=0, y=0, width=64, height=64);
+	plate       = images/groundpieces/solid/misc/metalplate_large.png   (type=surface, x=0, y=0, width=64, height=32);
+	plate2      = images/groundpieces/solid/misc/metalplate_horiz.png  (type=surface, x=0, y=0, width=64, height=64);
 	plate_small = images/groundpieces/solid/misc/metalplate_small.png  (type=surface, x=0, y=0, width=32, height=32);
 
 	section signposts {
@@ -244,25 +244,25 @@ section GroundPieces
 
 	section Foliage 
 	{
-		flax1     = images/groundpieces/ground/foliage/flax1.png     (type=surface, x=0, y=0, width=100,  height=91, tcol=0);
-		flax2     = images/groundpieces/ground/foliage/flax2.png     (type=surface, x=0, y=0, width=92,  height=84, tcol=0);
-		midtree1  = images/groundpieces/ground/foliage/midtree1.png  (type=surface, x=0, y=0, width=114,  height=161, tcol=0);
-		midtree2  = images/groundpieces/ground/foliage/midtree2.png  (type=surface, x=0, y=0, width=169,  height=189, tcol=0);
-		oak1      = images/groundpieces/ground/foliage/oak1.png      (type=surface, x=0, y=0, width=168,  height=215, tcol=0);
-		smallbush = images/groundpieces/ground/foliage/smallbush.png (type=surface, x=0, y=0, width=57,  height=24, tcol=0);
-		smallbush2 = images/groundpieces/ground/foliage/smallbush2.png (type=surface, x=0, y=0, width=107,  height=88, tcol=0);
-		smallbush3 = images/groundpieces/ground/foliage/smallbush3.png (type=surface, x=0, y=0, width=95,  height=37, tcol=0);
-		talltree  = images/groundpieces/ground/foliage/talltree.png  (type=surface, x=0, y=0, width=84,  height=200, tcol=0);
+		flax1     = images/groundpieces/transparent/foliage/flax1.png     (type=surface, x=0, y=0, width=100,  height=91, tcol=0);
+		flax2     = images/groundpieces/transparent/foliage/flax2.png     (type=surface, x=0, y=0, width=92,  height=84, tcol=0);
+		midtree1  = images/groundpieces/transparent/foliage/midtree1.png  (type=surface, x=0, y=0, width=114,  height=161, tcol=0);
+		midtree2  = images/groundpieces/transparent/foliage/midtree2.png  (type=surface, x=0, y=0, width=169,  height=189, tcol=0);
+		oak1      = images/groundpieces/transparent/foliage/oak1.png      (type=surface, x=0, y=0, width=168,  height=215, tcol=0);
+		smallbush = images/groundpieces/transparent/foliage/smallbush.png (type=surface, x=0, y=0, width=57,  height=24, tcol=0);
+		smallbush2 = images/groundpieces/transparent/foliage/smallbush2.png (type=surface, x=0, y=0, width=107,  height=88, tcol=0);
+		smallbush3 = images/groundpieces/transparent/foliage/smallbush3.png (type=surface, x=0, y=0, width=95,  height=37, tcol=0);
+		talltree  = images/groundpieces/transparent/foliage/talltree.png  (type=surface, x=0, y=0, width=84,  height=200, tcol=0);
 
-		turfconcave      =  images/groundpieces/ground/foliage/turfconcave.png     (type=surface, x=0, y=0, width=59,  height=16, tcol=0);
-		turfflat         =  images/groundpieces/ground/foliage/turfflat.png        (type=surface, x=0, y=0, width=90,  height=13, tcol=0);
-		turfslopeleft    =  images/groundpieces/ground/foliage/turfslopeleft.png   (type=surface, x=0, y=0, width=70,  height=17, tcol=0);
-		turfslopeleft20  =  images/groundpieces/ground/foliage/turfslopeleft20.png (type=surface, x=0, y=0, width=52,  height=20, tcol=0);
-		turfsloperight   =  images/groundpieces/ground/foliage/turfsloperight.png  (type=surface, x=0, y=0, width=40,  height=17, tcol=0);
-		turfsloperight20 = images/groundpieces/ground/foliage/turfsloperight20.png (type=surface, x=0, y=0, width=52,  height=20, tcol=0);
-		turfsmallbump    =  images/groundpieces/ground/foliage/turfsmallbump.png   (type=surface, x=0, y=0, width=20,  height=16, tcol=0);
-		turfsmallnook    =  images/groundpieces/ground/foliage/turfsmallnook.png   (type=surface, x=0, y=0, width=20,  height=17, tcol=0);
-		turftufty        = images/groundpieces/ground/foliage/turftufty.png        (type=surface, x=0, y=0, width=20,  height=17, tcol=0);
+		turfconcave      =  images/groundpieces/transparent/foliage/turfconcave.png     (type=surface, x=0, y=0, width=59,  height=16, tcol=0);
+		turfflat         =  images/groundpieces/transparent/foliage/turfflat.png        (type=surface, x=0, y=0, width=90,  height=13, tcol=0);
+		turfslopeleft    =  images/groundpieces/transparent/foliage/turfslopeleft.png   (type=surface, x=0, y=0, width=70,  height=17, tcol=0);
+		turfslopeleft20  =  images/groundpieces/transparent/foliage/turfslopeleft20.png (type=surface, x=0, y=0, width=52,  height=20, tcol=0);
+		turfsloperight   =  images/groundpieces/transparent/foliage/turfsloperight.png  (type=surface, x=0, y=0, width=40,  height=17, tcol=0);
+		turfsloperight20 = images/groundpieces/transparent/foliage/turfsloperight20.png (type=surface, x=0, y=0, width=52,  height=20, tcol=0);
+		turfsmallbump    =  images/groundpieces/transparent/foliage/turfsmallbump.png   (type=surface, x=0, y=0, width=20,  height=16, tcol=0);
+		turfsmallnook    =  images/groundpieces/transparent/foliage/turfsmallnook.png   (type=surface, x=0, y=0, width=20,  height=17, tcol=0);
+		turftufty        = images/groundpieces/transparent/foliage/turftufty.png        (type=surface, x=0, y=0, width=20,  height=17, tcol=0);
 	}
 
 	section Mushroom
@@ -508,7 +508,7 @@ section Exits {
 	ice        = images/exits/ice.png       (type=surface, x=0, y=0, width=64, height=64, tcol=0);
 	stone      = images/exits/stone.png     (type=surface, x=0, y=0, width=75, height=60, tcol=0);
 	desert     = images/exits/desertexit.png  (type=surface, x=0, y=0, width=150, height=100, tcol=0);
-	space      = images/exits/space1.png  (type=surface, x=0, y=0, width=154, height=118, array=4x1);
+	space      = images/exits/space.png  (type=surface, x=0, y=0, width=154, height=118, array=4x1);
 	sweetexit  = images/exits/sweetexit.png (type=surface, x=0, y=0, width=180,  height=121, tcol=0);
 	sortie  = images/exits/sortie.png (type=surface, x=0, y=0, width=78,  height=78, tcol=0);
 	sortie_anim  = images/exits/sortie.png (type=surface, x=0, y=0, width=78,  height=90, array=11x1);

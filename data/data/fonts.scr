@@ -1,6 +1,6 @@
 section Fonts
 {
-	numbers = images/fonts/number_fnt.png (type=font, x=1, y=1, tcol=0, spacelen=0, letters=" 0123456789:");
+	numbers = images/fonts/number_fnt.png (type=font, x=1, y=1, spacelen=0, letters=" 0123456789:");
 	courier   = images/fonts/courier.png   (type=font, x=1, y=1, tcol=0, spacelen=8, letters="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890_-\/=[]().,");
 	courier_h = images/fonts/courier_h.png (type=font, x=1, y=1, tcol=0, spacelen=8, letters="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890_-\/=[]().,");
 	smallfont = images/fonts/smallfont.png (type=font, x=1, y=1, tcol=0, spacelen=8, letters="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890_-\/=[]().,");
