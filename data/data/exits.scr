@@ -2,6 +2,7 @@
 section Exits {
         desert_tut = ../images/exits/desert_tut.png (type=surface, x=0, y=0, width=122, height=115, tcol=0);
 	ice        = ../images/exits/ice.png       (type=surface, x=0, y=0, width=64, height=64, tcol=0);
+	ice2        = ../images/exits/ice2.png       (type=surface, x=0, y=0);
 	stone      = ../images/exits/stone.png     (type=surface, x=0, y=0, width=75, height=60, tcol=0);
 	desert     = ../images/exits/desertexit.png  (type=surface, x=0, y=0, width=150, height=100, tcol=0);
 	space      = ../images/exits/space.png  (type=surface, x=0, y=0, width=154, height=118, array=4x1);

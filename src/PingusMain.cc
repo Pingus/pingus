@@ -1,4 +1,4 @@
-//   $Id: PingusMain.cc,v 1.48 2001/12/22 15:15:09 cagri Exp $
+//   $Id: PingusMain.cc,v 1.49 2002/01/13 15:24:18 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -202,7 +202,6 @@ PingusMain::check_args(int argc, char* argv[])
       {"use-scriptfile",    no_argument,       0, 151},
       {"max-cpu-usage",     no_argument,       0, 153},
       {"frame-skip",        required_argument, 0, 154},
-      {"broken-clres-handling", no_argument,    0, 155},
 #ifdef HAVE_LIBCLANGL
       {"use-opengl",        no_argument,       0, 'G'},
 #endif
@@ -481,9 +480,6 @@ For more information about these matters, see the files named COPYING.\
       sscanf(optarg, "%f", &frame_skip);
       break;
 
-    case 155:
-      broken_clanlib_resource_handling = true;
-      break;
     case 156:
       action_help = false;
       break;
@@ -543,9 +539,7 @@ For more information about these matters, see the files named COPYING.\
 	"   -i, --enable-gimmicks    Enable some buggy development stuff\n"
 	"   -S, --sound-specs FILE   Use files mentioned in FILE\n"
 	"   --tile-size INT          Set the size of the map tiles (default: 32)\n"
-	"   --broken-clres-handling  Assume broken resource handling inside ClanLib and\n"
-	"                            workaround it (needed for ClanLib < 0.5.2)\n"
-
+	"\n"
 	"\nDemo playing and recording:\n"
 	"   -r, --record-demo FILE   Record a demo session to FILE\n"
 	"   -p, --play-demo FILE     Plays a demo session from FILE\n")
@@ -651,35 +645,19 @@ PingusMain::get_filenames()
     path_manager.add_path (pingus_datadir_env);
 
   /* Some magic for detecting the path */
-  if (broken_clanlib_resource_handling)
-    {
-      path_manager.add_path ("../data/data/");     // started from 'src/'
-      path_manager.add_path ("data/data/");        // started from base directory with 'src/pingus'
-    }
-  else
-    {
-      path_manager.add_path ("../data/");     // started from 'src/'
-      path_manager.add_path ("data/");        // started from base directory with 'src/pingus'
-      path_manager.add_path ("share/games/pingus/");  // started from base directory of the binary
-      path_manager.add_path ("../share/games/pingus/");  // started from base directory of the binary
-      path_manager.add_path (PINGUS_DATADIR); // started from $PATH
-      // As a last hope we try this:
-      path_manager.add_path ("/usr/share/pingus/");
-      path_manager.add_path ("/usr/local/share/pingus/");
-    }
+  path_manager.add_path ("../data/");     // started from 'src/'
+  path_manager.add_path ("data/");        // started from base directory with 'src/pingus'
+  path_manager.add_path ("share/games/pingus/");  // started from base directory of the binary
+  path_manager.add_path ("../share/games/pingus/");  // started from base directory of the binary
+  path_manager.add_path (PINGUS_DATADIR); // started from $PATH
+  // As a last hope we try this:
+  path_manager.add_path ("/usr/share/pingus/");
+  path_manager.add_path ("/usr/local/share/pingus/");
 
   std::list<std::string> file_list;
 
-  if (broken_clanlib_resource_handling)
-    {
-      file_list.push_back ("core.scr");
-      file_list.push_back ("../images/core/misc/404.png");
-    }
-  else
-    {
-      file_list.push_back ("data/core.scr");
-      file_list.push_back ("images/core/misc/404.png");
-    }
+  file_list.push_back ("data/core.scr");
+  file_list.push_back ("images/core/misc/404.png");
 
   if (!path_manager.find_path (file_list))
     {
@@ -694,12 +672,6 @@ PingusMain::get_filenames()
   path_manager.set_path("data\\");
 #endif /* !WIN32 */
  
-  // FIXME: Workaround for ClanLib-0.5.0 bug
-  if (broken_clanlib_resource_handling)
-    {
-      System::change_dir (path_manager.get_base_path ());
-    }
-
   std::cout << "BasePath: " << path_manager.get_base_path () << std::endl;
 
   // First we try to open the file which was given, if that is not

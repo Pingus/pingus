@@ -161,6 +161,8 @@ section GroundPieces
 		piece1    = ../images/groundpieces/ground/snow/piece1.png  (type=surface, x=0, y=0, width=126,  height=73);
 		slopedr = ../images/groundpieces/ground/snow/slopedr.png (type=surface, x=0, y=0, width=126, height=73);
 
+		gpiece1    = ../images/groundpieces/ground/snow/gpiece1.png  (type=surface);
+
 		piece2    = ../images/groundpieces/ground/snow/piece2.png  (type=surface, x=0, y=0, width=80,  height=19);
 		piece3    = ../images/groundpieces/ground/snow/piece3.png  (type=surface, x=0, y=0, width=178,  height=22);
 

@@ -1,4 +1,4 @@
-//  $Id: ActionButton.cc,v 1.23 2001/12/09 13:48:42 grumbel Exp $
+//  $Id: ActionButton.cc,v 1.24 2002/01/13 15:24:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -88,8 +88,14 @@ ActionButton::init(int x, int y, std::string str, int owner_id)
       is_multi_direct = true;
     }
 
+  /*
   font = PingusResource::load_font("Fonts/courier_small", "fonts");
   font_h = PingusResource::load_font("Fonts/smallfont","fonts");
+  font_b = PingusResource::load_font("Fonts/pingus","fonts");
+  */
+
+  font = PingusResource::load_font("Fonts/pingus_small", "fonts");
+  font_h = PingusResource::load_font("Fonts/pingus_small","fonts");
   font_b = PingusResource::load_font("Fonts/pingus","fonts");
 
   if (str != "empty") 

@@ -1,4 +1,4 @@
-//  $Id: MultiplayerGame.cc,v 1.3 2001/11/29 10:47:44 grumbel Exp $
+//  $Id: MultiplayerGame.cc,v 1.4 2002/01/13 15:24:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #include "boost/smart_ptr.hpp"
 #include "boost/dummy_ptr.hpp"
 #include "Server.hh"
+#include "PathManager.hh"
 #include "TrueServer.hh"
 #include "MultiplayerClientChild.hh"
 #include "MultiplayerClient.hh"
@@ -47,22 +48,32 @@ MultiplayerGame::start ()
 {
   std::cout << "Starting Multiplayer Game" << std::endl;
   try {
-    shared_ptr<PLF>               plf (new XMLPLF ("../data/levels/multi2-grumbel.xml"));
-    shared_ptr<Server>            server (new TrueServer (plf));
-
-    shared_ptr<Controller>        controller1;
+    shared_ptr<PLF>        plf (new XMLPLF (path_manager.complete("levels/multi2-grumbel.xml")));
+    shared_ptr<Server>     server (new TrueServer (plf));
+    shared_ptr<Controller> controller1;
+    shared_ptr<Controller> controller2;
+    shared_ptr<Controller> controller3;
+    shared_ptr<Controller> controller4;
 
     if (CL_Input::joysticks.size () > 0)
       controller1 = shared_ptr<Controller>(new GamepadController (CL_Input::joysticks[0], 0));
     else 
       controller1 = shared_ptr<Controller>(new KeyboardController (0));
 
-    shared_ptr<Controller>        controller2 (new MouseController (1));
-    shared_ptr<Controller>        controller3 (new KeyboardController (2));
-    shared_ptr<Controller>        controller4 (new MouseController (3));
+    if (CL_Input::joysticks.size () > 1)
+      controller2 = shared_ptr<Controller>(new GamepadController (CL_Input::joysticks[1], 0));
+    else
+      controller2 = shared_ptr<Controller>(new MouseController (1));
+
+    if (CL_Input::joysticks.size () > 2)
+      controller3 = shared_ptr<Controller>(new GamepadController (CL_Input::joysticks[2], 0));
+    else
+      controller3 = shared_ptr<Controller>(new KeyboardController (2));
+
+    controller4 = shared_ptr<Controller>(new MouseController (3));
 
     shared_ptr<MultiplayerClient> client;
-    int player = 4;
+    int player = 2;
     if (player == 2)
       {
 	client = shared_ptr<MultiplayerClient> 

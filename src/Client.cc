@@ -1,4 +1,4 @@
-//  $Id: Client.cc,v 1.68 2001/12/22 15:15:09 cagri Exp $
+//  $Id: Client.cc,v 1.69 2002/01/13 15:24:18 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -53,7 +53,7 @@ shared_ptr<HurryUp>       Client::hurry_up;
 Client::Client(boost::shared_ptr<Controller> arg_controller, 
 	       boost::dummy_ptr<Server> s)
   : controller (arg_controller),
-    cursor (new Cursor ("cursors/cross", "core", controller))
+    cursor (new Cursor ("cursors/animcross", "core", controller))
 {
   //player = 0;
   server = s;
@@ -221,6 +221,8 @@ Client::draw ()
 void 
 Client::update (float delta)
 {
+  cursor->update (delta);
+
   // Let the window move its content
   for(GuiObjIter i = obj.begin (); i != obj.end (); ++i)
     (*i)->updateX();

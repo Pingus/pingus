@@ -1,4 +1,4 @@
-//  $Id: PingusResource.cc,v 1.23 2001/12/04 12:18:50 grumbel Exp $
+//  $Id: PingusResource.cc,v 1.24 2002/01/13 15:24:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -91,10 +91,7 @@ PingusResource::get(const std::string& arg_filename)
     {
       std::string res_filename;
 
-      if (broken_clanlib_resource_handling)
-	res_filename = filename;
-      else
-	res_filename = "data/" + filename;
+      res_filename = "data/" + filename;
 
       // FIXME: Memory hole... 
       res_manager = new CL_ResourceManager(path_manager.complete (res_filename.c_str()),

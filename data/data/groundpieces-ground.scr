@@ -128,6 +128,12 @@ section misc {
 	stone0 = ../images/groundpieces/ground/misc/stone0.png (type=surface, x=0, y=0, width=106, height=91);
 	stone1 = ../images/groundpieces/ground/misc/stone1.png (type=surface, x=0, y=0, width=73, height=21);
 	stone2 = ../images/groundpieces/ground/misc/stone2.png (type=surface, x=0, y=0, width=86, height=54);
+
+	stone3 = ../images/groundpieces/ground/misc/stone3.png (type=surface);
+	stone4 = ../images/groundpieces/ground/misc/stone4.png (type=surface);
+	stone5 = ../images/groundpieces/ground/misc/stone5.png (type=surface);
+	stone6 = ../images/groundpieces/ground/misc/stone6.png (type=surface);
+
 	stoneblock1 = ../images/groundpieces/ground/misc/stoneblock1.png (type=surface, x=0, y=0, width=64, height=64);
 	stoneblock2 = ../images/groundpieces/ground/misc/stoneblock2.png (type=surface, x=0, y=0, width=64, height=64);
 	stoneblock3 = ../images/groundpieces/ground/misc/stoneblock3.png (type=surface, x=0, y=0, width=64, height=64);
@@ -207,7 +213,7 @@ section signposts {
 section snow {
 	cabin = ../images/groundpieces/ground/snow/cabin.png (type=surface, x=0, y=0, width=129, height=94);
 	cabin_winter = ../images/groundpieces/ground/snow/cabin_winter.png (type=surface, x=0, y=0, width=129, height=94);
-	gpiece1 = ../images/groundpieces/ground/snow/gpiece1.png (type=surface, x=0, y=0, width=93, height=218);
+	gpiece1 = ../images/groundpieces/ground/snow/gpiece1.png (type=surface, x=0, y=0);
 	ice1 = ../images/groundpieces/ground/snow/ice1.png (type=surface, x=0, y=0, width=54, height=65);
 	ice2 = ../images/groundpieces/ground/snow/ice2.png (type=surface, x=0, y=0, width=74, height=41);
 	igloo = ../images/groundpieces/ground/snow/igloo.png (type=surface, x=0, y=0, width=93, height=54);

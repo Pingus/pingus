@@ -1,4 +1,4 @@
-//  $Id: MultiplayerConfig.cc,v 1.4 2001/04/15 17:01:51 grumbel Exp $
+//  $Id: MultiplayerConfig.cc,v 1.5 2002/01/13 15:24:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,21 +32,11 @@ MultiplayerConfig::~MultiplayerConfig ()
 void 
 MultiplayerConfig::display ()
 {
-  do_quit = false;
+  CL_Display::clear_display (1.0, 0.0, 0.0);
+  Display::flip_display ();
+  CL_System::keep_alive ();
 
-  while (!do_quit)
-    {
-      if (CL_Keyboard::get_keycode (CL_KEY_ESCAPE))
-	do_quit = true;
-
-      CL_Display::clear_display (1.0, 0.0, 0.0);
-      Display::flip_display ();
-      CL_System::keep_alive ();
-
-      //if (CL_Keyboard::get_keycode (CL_KEY_ENTER)) {
-	start ();
-	//}
-    }
+  start ();
 }
 
 void 

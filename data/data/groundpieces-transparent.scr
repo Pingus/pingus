@@ -47,5 +47,6 @@ section industrial {
 section misc {
 	weed1 = ../images/groundpieces/transparent/misc/weed1.png (type=surface, x=0, y=0, width=29, height=149);
 	weed2 = ../images/groundpieces/transparent/misc/weed2.png (type=surface, x=0, y=0, width=12, height=132);
+	moos1 = ../images/groundpieces/transparent/misc/moos1.png (type=surface);
 }
 

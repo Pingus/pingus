@@ -1,4 +1,4 @@
-//  $Id: Teleporter.cc,v 1.27 2002/01/04 01:19:47 grumbel Exp $
+//  $Id: Teleporter.cc,v 1.28 2002/01/13 15:24:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -99,6 +99,8 @@ TeleporterData::create_EditorObj ()
 
   objs.push_back (teleporter);
   objs.push_back (teleporter_target);
+
+  std::cout << "TeleportData::create_EditorObj (): done" << std::endl;
 
   return objs;
 }

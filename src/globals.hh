@@ -1,4 +1,4 @@
-//  $Id: globals.hh,v 1.34 2001/12/06 10:50:39 grumbel Exp $
+//  $Id: globals.hh,v 1.35 2002/01/13 15:24:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -60,7 +60,6 @@ extern bool   max_cpu_usage;  /// --max-cpu-usage
 extern bool   use_datafile;   /// --use-datafile
 extern float  frame_skip;     /// --frame-skip
 extern bool   use_opengl;     /// --use-opengl
-extern bool   broken_clanlib_resource_handling;
 extern bool   action_help;  /// --action-help
 
 /// The name of the currently logged in user

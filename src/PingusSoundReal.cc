@@ -1,4 +1,4 @@
-//  $Id: PingusSoundReal.cc,v 1.17 2001/12/04 12:42:06 grumbel Exp $
+//  $Id: PingusSoundReal.cc,v 1.18 2002/01/13 15:24:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -135,10 +135,7 @@ PingusSoundReal::real_play_music(const std::string & arg_filename, float volume)
 {
   std::string filename;
 
-  if (broken_clanlib_resource_handling)
-    filename = std::string("../") + arg_filename;
-  else
-    filename = arg_filename;
+  filename = arg_filename;
 
   if (!music_enabled)
     return;

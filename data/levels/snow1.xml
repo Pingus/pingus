@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.0"  encoding="ISO-8859-1"?>
 
 <pingus-level>
   <global>
@@ -11,6 +11,14 @@
     <width>2400</width>
     <height>928</height>
   </global>
+
+  <action-list>
+    <basher count="25"/>
+    <blocker count="10"/>
+    <bomber count="10"/>
+    <bridger count="20"/>
+    <floater count="20"/>
+  </action-list>
 
 <background type="surface">
   <surface><resource type="datafile">
@@ -29,16 +37,12 @@
   <para-y>0.5</para-y>
   <stretch-x>0</stretch-x>
   <stretch-y>0</stretch-y>
+  <position>
+    <x-pos>0</x-pos>
+    <y-pos>0</y-pos>
+    <z-pos>-100</z-pos>
+  </position>
 </background>
-
-
-  <action-list>
-    <basher>25</basher>
-    <blocker>10</blocker>
-    <bomber>10</bomber>
-    <bridger>20</bridger>
-    <floater>20</floater>
-  </action-list>
 
 <hotspot>
   <surface><resource type="datafile">
@@ -54,7 +58,8 @@
   <parallax>1</parallax>
 </hotspot>
 
-<liquid>  <surface><resource type="datafile">
+<liquid use-old-width-handling="0">
+  <surface><resource type="datafile">
     <resource-datafile>global</resource-datafile>
   <resource-ident>Liquid/water2</resource-ident>
   </resource></surface>
@@ -63,7 +68,7 @@
     <y-pos>873</y-pos>
     <z-pos>-100</z-pos>
   </position>
-  <width>2556</width>
+  <width>40</width>
   <speed>50</speed>
 </liquid>
 
@@ -1633,19 +1638,8 @@
   <type>generic</type>
   <direction>left</direction>
   <release-rate>30</release-rate>
+  <owner-id>0</owner-id>
 </entrance>
-
-<exit>
-  <position>
-    <x-pos>1906</x-pos>
-    <y-pos>804</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-  <surface><resource type="datafile">
-    <resource-datafile>exits</resource-datafile>
-  <resource-ident>Exits/stone</resource-ident>
-  </resource></surface>
-</exit>
 
 <hotspot>
   <surface><resource type="datafile">
@@ -1661,7 +1655,8 @@
   <parallax>1</parallax>
 </hotspot>
 
-<liquid>  <surface><resource type="datafile">
+<liquid use-old-width-handling="0">
+  <surface><resource type="datafile">
     <resource-datafile>global</resource-datafile>
   <resource-ident>Liquid/water2</resource-ident>
   </resource></surface>
@@ -1670,7 +1665,7 @@
     <y-pos>883</y-pos>
     <z-pos>100</z-pos>
   </position>
-  <width>2524</width>
+  <width>40</width>
   <speed>50</speed>
 </liquid>
 
@@ -1681,6 +1676,18 @@
     <z-pos>1000</z-pos>
   </position>
   </start-position>
+
+<exit use-old-pos-handling="0">
+  <position>
+    <x-pos>1917</x-pos>
+    <y-pos>867</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+  <surface><resource type="datafile">
+    <resource-datafile>exits</resource-datafile>
+  <resource-ident>exits/ice2</resource-ident>
+  </resource></surface>
+  <owner-id>0</owner-id></exit>
 
 </pingus-level>
 

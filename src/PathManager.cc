@@ -1,4 +1,4 @@
-//  $Id: PathManager.cc,v 1.4 2001/12/02 21:43:47 grumbel Exp $
+//  $Id: PathManager.cc,v 1.5 2002/01/13 15:24:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,19 +42,11 @@ PathManager::add_path (std::string path)
 std::string 
 PathManager::complete (std::string relative_path)
 {
-  if (!broken_clanlib_resource_handling)
-    {
-      std::string comp_path = base_path + "/" + relative_path;
-      if (pingus_debug_flags & PINGUS_DEBUG_LOADING)
-	std::cout << "PathManager: " << relative_path << " -> " << comp_path << std::endl;
-      
-      return comp_path;
-    }
-  else
-    {
-      // FIXME: correct handling is disabled cause we use the change_dir () hack in PingusMain.cc
-      return relative_path;
-    }
+  std::string comp_path = base_path + "/" + relative_path;
+  if (pingus_debug_flags & PINGUS_DEBUG_LOADING)
+    std::cout << "PathManager: " << relative_path << " -> " << comp_path << std::endl;
+  
+  return comp_path;
 }
 
 bool 
