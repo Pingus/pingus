@@ -1,4 +1,4 @@
-//  $Id: bridger.cc,v 1.4 2000/03/01 02:57:48 grumbel Exp $
+//  $Id: bridger.cc,v 1.5 2000/03/01 21:13:11 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,6 +37,7 @@ Bridger::init(void)
   action_name = "Bridger";
 
   surface = CL_Surface::load("Pingus/bridger", local_res());
+  waiter  = CL_Surface::load("Pingus/blocker", local_res());
   brick_r = CL_Surface::load("Other/brick_left", local_res());
   brick_l = CL_Surface::load("Other/brick_right", local_res());
   bricks = 30;
@@ -53,8 +54,16 @@ Bridger::draw_offset(int x, int y, float s)
 {
   if (s == 1.0) 
     {
-      surface->put_screen(pingu->x_pos + x + x_offset(), pingu->y_pos + y + y_offset() - 1, 
-			  ++counter + ((pingu->direction.is_left()) ? 0 : counter.get_size()));
+      if (bricks > 0)
+	{
+	  surface->put_screen(pingu->x_pos + x + x_offset(), pingu->y_pos + y + y_offset() - 1, 
+			      ++counter + ((pingu->direction.is_left()) ? 0 : counter.get_size()));
+	}
+      else
+	{
+	  waiter->put_screen(pingu->x_pos + x + x_offset(), 
+			     pingu->y_pos + y + y_offset());
+	}
     } 
   else 
     {
@@ -68,11 +77,11 @@ Bridger::let_move()
 {
   ++do_steps;
   
-  if (do_steps > 12) 
+  if (do_steps > 11) 
     {
       do_steps = 0;
 
-      if (bricks <= -5)
+      if (bricks <= -2)
 	{
 	  is_finished = true;
 	}
@@ -161,6 +170,8 @@ Bridger::walk_one_step_up()
       pingu->y_pos -= 2;
       step = 0;
     }
+
+  counter = 0;
 }
 
 /* EOF */
