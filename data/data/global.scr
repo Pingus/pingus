@@ -229,6 +229,7 @@ section GroundPieces
 		test3 = ../images/groundpieces/test/test3.pcx     (type=surface, x=0, y=0, width=104,  height=59, tcol=0);
 		test4 = ../images/groundpieces/test/test4.pcx     (type=surface, x=0, y=0, width=107,  height=45, tcol=0);
 		test5 = ../images/groundpieces/test/test5.pcx     (type=surface, x=0, y=0, width=47,  height=42, tcol=0);
+	        test6 = ../images/groundpieces/test/test6.pcx     (type=surface, x=0, y=0, width=13, height=64, tcol=0);
 	}
 
 	section Foliage 

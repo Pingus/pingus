@@ -1,4 +1,4 @@
-//  $Id: Console.cc,v 1.2 2000/06/13 22:19:17 grumbel Exp $
+//  $Id: Console.cc,v 1.3 2000/06/14 14:57:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,8 +43,9 @@ void
 Console::init()
 {
   std::cout << "Console: Init..." << std::endl;
-  font = CL_Font::load("Fonts/pingus_small", PingusResource::get("fonts.dat"));
-  this->println("Console V0.2");
+  font = CL_Font::load("Fonts/xterm", PingusResource::get("fonts.dat"));
+  //*this << "Console V0.2" << std::endl;
+  this->println("! \" #  $ %% 0 123 <=>");
   is_init = true;
 }
 
@@ -53,16 +54,32 @@ Console::draw()
 {
   assert(is_init);
 
-  CL_Display::fill_rect(0, 0, CL_Display::get_width(), font->get_height() * 11,
-			1.0, 1.0, 1.0, 0.5);
-  for(unsigned int i = max(0, current_pos - number_of_lines), j=1;
+  int start_y_pos = 
+    CL_Display::get_height() - (font->get_height() * (number_of_lines + 3));
+  bool draw_current_line = current_line.empty();
+  int start_index;
+
+  if (draw_current_line)
+    start_index =  max(0, current_pos - number_of_lines);
+  else
+    start_index =  max(0, current_pos - number_of_lines-1);
+
+  CL_Display::fill_rect(0, start_y_pos,
+			CL_Display::get_width(),
+			CL_Display::get_height(),
+			0.0, 0.0, 0.0, 0.5);
+
+  for(unsigned int i = start_index, j=1; 
       i < output_buffer.size(); 
       i++, j++)
     {
-      font->print_left(10, j * font->get_height(), output_buffer[i].c_str());
+      font->print_left(10, 
+		       start_y_pos + j * font->get_height(), 
+		       output_buffer[i].c_str());
     }
-  font->print_left(10, (number_of_lines + 1) * font->get_height(),
-		   current_line.c_str());
+  if (draw_current_line)
+    font->print_left(10, start_y_pos + (number_of_lines + 1) * font->get_height(),
+		     current_line.c_str());
 }
 
 void
