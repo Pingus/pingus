@@ -1,4 +1,4 @@
-//  $Id: bridger.cc,v 1.2 2000/02/09 21:43:42 grumbel Exp $
+//  $Id: bridger.cc,v 1.3 2000/03/01 02:50:45 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,14 +37,30 @@ Bridger::init(void)
   action_name = "Bridger";
 
   surface = CL_Surface::load("Pingus/bridger", local_res());
-  brick   = CL_Surface::load("Other/brick", local_res());
+  brick_l = CL_Surface::load("Other/brick_left", local_res());
+  brick_r = CL_Surface::load("Other/brick_right", local_res());
   bricks = 30;
 
   counter.set_size(surface->get_num_frames()/2);
-  counter.set_speed(10);
+  counter.set_speed(1);
   is_multi_direct = true;
   step = 0;
   do_steps = 0;
+}
+
+void
+Bridger::draw_offset(int x, int y, float s)
+{
+  if (s == 1.0) 
+    {
+      surface->put_screen(pingu->x_pos + x + x_offset(), pingu->y_pos + y + y_offset() - 1, 
+			  ++counter + ((pingu->direction.is_left()) ? 0 : counter.get_size()));
+    } 
+  else 
+    {
+      surface->put_screen(int((pingu->x_pos + x + x_offset()) * s), int((pingu->y_pos + y + y_offset() - 1) * s), 
+			  s, s, ++counter + ((pingu->direction.is_left()) ? 0 : counter.get_size()));
+    }
 }
 
 void
@@ -52,48 +68,98 @@ Bridger::let_move()
 {
   ++do_steps;
   
-  if (do_steps > 2) 
+  if (do_steps > 12) 
     {
       do_steps = 0;
-      if (bricks > 0) 
-	{
-	  if((rel_getpixel(2,2) == ColMap::NOTHING) || (bricks > 30))
-	    {
-	      pingu->colmap->put(brick, pingu->x_pos, pingu->y_pos, surface_data::BRIDGE);
-	      pingu->map->put(brick->get_provider(), pingu->x_pos, pingu->y_pos);
-	      --bricks;
 
-	      pingu->x_pos += 2 * pingu->direction;
-
-	      ++step;
-	      if (step >= 1) {
-		pingu->y_pos -= 1;
-		step = 0;
-	      }	  
-	    } 
-	  else 
-	    {
-	      if (rel_getpixel(1,1) == ColMap::NOTHING) 
-		{
-		  pingu->colmap->put(brick,pingu->x_pos,pingu->y_pos, surface_data::BRIDGE);
-		  pingu->map->put(brick->get_provider(), pingu->x_pos, pingu->y_pos);
-		  --bricks;
-	      
-		  pingu->x_pos += pingu->direction;
-	      
-		  ++step;
-		  if (step >= 1) {
-		    pingu->y_pos -= 1;
-		    step = 0;
-		  }
-		}
-	      is_finished = true;
-	    }
-	}
-      else 
+      if (bricks <= -5)
 	{
 	  is_finished = true;
 	}
+      else if (bricks > 0)
+	{
+	  if (way_is_free())
+	    {
+	      place_a_brick();
+	      walk_one_step_up();
+	    }
+	  else
+	    {
+	      is_finished = true;
+	    }
+	}
+      else
+	{
+	  // Waiting some seconds after we are out of bricks 
+	  bricks--;
+	}
+    }
+}
+
+bool
+Bridger::way_is_free()
+{
+  bool ret_val;
+  
+  if (rel_getpixel(2,2) == ColMap::NOTHING)
+    {
+      ret_val = true;
+    }
+  else
+    {
+      cout << "Touched a wall" << endl;
+      return false;
+    }
+
+  if (rel_getpixel(2, 26) == ColMap::NOTHING)
+    {
+      ret_val = true;
+    }
+  else
+    {
+      cout << "Ouch, my head" << endl;
+      return false;
+    }
+
+  return ret_val;
+}
+
+void
+Bridger::place_a_brick()
+{
+  bricks--; 
+  
+  if (pingu->direction.is_right())
+    {
+      pingu->colmap->put(brick_r, 
+			 pingu->x_pos + 16 - brick_r->get_width(),
+			 pingu->y_pos - 1,
+			 surface_data::BRIDGE);
+      pingu->map->put(brick_r->get_provider(), 
+		      pingu->x_pos + 16 - brick_r->get_width(),
+		      pingu->y_pos - 1);
+    }
+  else
+    {
+      pingu->colmap->put(brick_r, pingu->x_pos - 16,
+			 pingu->y_pos - 1,
+			 surface_data::BRIDGE);
+      pingu->map->put(brick_l->get_provider(), 
+		      pingu->x_pos -16,
+		      pingu->y_pos - 1);
+    }
+}
+
+void
+Bridger::walk_one_step_up()
+{
+  pingu->x_pos += 2 * pingu->direction;
+  ++step;
+  
+  if (step >= 2) 
+    {
+      pingu->y_pos -= 2;
+      step = 0;
     }
 }
 
