@@ -456,7 +456,6 @@ src/wav_provider.cxx
 src/wav_provider.hxx
 src/world.cxx
 src/world.hxx
-src/world_impl.hxx
 src/worldmap/dot.cxx
 src/worldmap/dot.hxx
 src/worldmap/dot_factory.cxx
