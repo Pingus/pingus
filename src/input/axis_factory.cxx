@@ -1,4 +1,4 @@
-//  $Id: axis_factory.cxx,v 1.1 2002/07/09 16:03:32 torangan Exp $
+//  $Id: axis_factory.cxx,v 1.2 2002/07/10 11:22:29 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,13 +20,14 @@
 #include <stdlib.h>
 #include "../xml_helper.hxx"
 #include "../pingus_error.hxx"
+#include "axis_factory.hxx"
+#include "button.hxx"
 #include "button_axis.hxx"
+#include "button_factory.hxx"
 #include "inverted_axis.hxx"
 #include "joystick_axis.hxx"
 #include "mouse_axis.hxx"
-#include "axis_factory.hxx"
-#include "button_factory.hxx"
-#include "button.hxx"
+#include "multiple_axis.hxx"
 
 namespace Input {
 
@@ -99,6 +100,30 @@ namespace Input {
     free(axis_str);
     
     return new MouseAxis(axis, angle);
+  }
+
+  Axis* AxisFactory::multiple_axis (xmlNodePtr cur)
+  {
+    char * angle_str = reinterpret_cast<char *>(xmlGetProp(cur, reinterpret_cast<const xmlChar*>("angle")));
+    float angle = atof(angle_str);
+    free(angle_str);
+    
+    std::vector<Axis*> axes;
+    cur = cur->children;
+    
+    while (cur)
+      {
+        if (xmlIsBlankNode(cur))
+	  {
+	    cur = cur->next;
+	    continue;
+	  }
+	  
+	axes.push_back(create(cur));
+	cur = cur->next;
+      }
+      
+    return new MultipleAxis(angle, axes);
   }
 
 }
