@@ -1,4 +1,4 @@
-//  $Id: console.cxx,v 1.8 2002/08/22 02:24:59 grumbel Exp $
+//  $Id: console.cxx,v 1.9 2002/09/05 14:56:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -116,7 +116,7 @@ ConsoleBuffer::get_buffer () {
   return buffer;
 }
 
-Console::Console() : ostream (&streambuf)
+Console::Console() : ostream (&streambuf) // std:: is missing here since Win32 doesn't like it
 {
   is_init = false;
   is_visible = false;
@@ -159,7 +159,7 @@ Console::draw()
     CL_Display::get_height() - (font->get_height() * (number_of_lines + 3));
 
   // The background of the console
-  CL_Display::fill_rect(0, start_y_pos,
+  CL_Display::fill_rect(0, start_y_pos - 15,
 			CL_Display::get_width(),
 			CL_Display::get_height(),
 			0.0, 0.0, 0.0, 0.5);
