@@ -1,4 +1,4 @@
-//  $Id: pingus_menu_manager.cxx,v 1.3 2002/07/29 22:17:53 grumbel Exp $
+//  $Id: pingus_menu_manager.cxx,v 1.4 2002/07/29 22:29:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -152,10 +152,14 @@ PingusMenuManager::display ()
       if (delta > 1.0)
 	delta = 0;
 
-      for (MenuStackIter i = menu_stack.begin (); i != menu_stack.end (); ++i)
+      // We copy the menu_stack so that we don't invalidate our
+      // iterators when menu's are removed/added in update()
+      std::vector<PingusSubMenu *> tmp_menu_stack = menu_stack;
+
+      for (MenuStackIter i = tmp_menu_stack.begin (); i != tmp_menu_stack.end (); ++i)
 	(*i)->draw ();
 
-      for (MenuStackIter i = menu_stack.begin (); i != menu_stack.end (); ++i)
+      for (MenuStackIter i = tmp_menu_stack.begin (); i != tmp_menu_stack.end (); ++i)
 	(*i)->update (delta);
       
       Display::flip_display ();

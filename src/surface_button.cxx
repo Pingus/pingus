@@ -1,4 +1,4 @@
-//  $Id: surface_button.cxx,v 1.3 2002/07/29 22:17:53 grumbel Exp $
+//  $Id: surface_button.cxx,v 1.4 2002/07/29 22:29:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -360,8 +360,9 @@ void
 StoryButton::on_click()
 {
   PingusSound::play_sound ("sounds/letsgo.wav");
-  
+  std::cout << "Set story" << std::endl;
   menu->get_manager ()->set_menu (&menu->get_manager ()->story);
+  std::cout << "Set done" << std::endl;
 }
 
 ThemeButton::ThemeButton (PingusMenu* menu)

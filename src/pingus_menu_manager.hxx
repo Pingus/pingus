@@ -1,4 +1,4 @@
-//  $Id: pingus_menu_manager.hxx,v 1.2 2002/06/24 22:52:55 grumbel Exp $
+//  $Id: pingus_menu_manager.hxx,v 1.3 2002/07/29 22:29:22 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,15 +33,12 @@ class PingusMenuManager
 {
 private:
   /** Menu stack. the menu on top is .end (), the bottom menu .begin () */
-  std::list<PingusSubMenu *> menu_stack;
-  typedef std::list<PingusSubMenu *>::iterator MenuStackIter;
-  typedef std::list<PingusSubMenu *>::reverse_iterator MenuStackRIter;
+  std::vector<PingusSubMenu *> menu_stack;
+  typedef std::vector<PingusSubMenu *>::iterator MenuStackIter;
+  typedef std::vector<PingusSubMenu *>::reverse_iterator MenuStackRIter;
 
   bool loop;
 
-  CL_Slot on_mouse_move_slot;
-  CL_Slot on_button_press_slot;
-  CL_Slot on_button_release_slot;
   int event_register_counter;
   
   /// Register all event-handling stuff
