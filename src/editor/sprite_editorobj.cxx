@@ -1,4 +1,4 @@
-//  $Id: sprite_editorobj.cxx,v 1.8 2002/09/28 11:52:23 torangan Exp $
+//  $Id: sprite_editorobj.cxx,v 1.9 2003/03/31 23:26:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,8 +17,10 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <iostream>
 #include <assert.h>
 #include <ClanLib/Display/Display/surfaceprovider.h>
+#include "../math.hxx"
 #include "editor_view.hxx"
 #include "sprite_editorobj.hxx"
 
@@ -104,18 +106,35 @@ SpriteEditorObj::is_over(const Vector& pos)
   // FIXME: We don't handle animated objects special (do we need to?)
   if (RectEditorObj::is_over (pos))
     {
-      //std::cout << "ClickPos: " << pos.x << ", " << pos.y
-	//<< " ObjectPos: " << pos_ref.x << ", " << pos_ref.y << std::endl;
-  
+#if 1 // EDITOR_PIXEL_PERFECT_IS_OVER
       CL_SurfaceProvider* provider = sprite.get_surface ().get_provider ();
-      float r, g, b, a;
-      // Position relative to the surface, not world
-      Vector provider_pos = pos;
-      provider_pos -= *pos_ref;
+      if (provider)
+        {
+          // Position relative to the surface, not world
+          int provider_pos_x = (int)pos.x;
+          int provider_pos_y = (int)pos.y;
 
-      provider->get_pixel (int(provider_pos.x), int(provider_pos.y), &r, &g, &b, &a);
-      //std::cout << "Color: " << r << " " << g << " " << b << " " << a << std::endl;
-      return (a >= 0.0f);
+          provider_pos_x -= int(pos_ref->x);
+          provider_pos_y -= int(pos_ref->y);
+
+          provider_pos_x -= sprite.get_x_align();
+          provider_pos_y -= sprite.get_y_align();
+
+          provider_pos_x = Math::mid(0, provider_pos_x, int(provider->get_width()-1));
+          provider_pos_y = Math::mid(0, provider_pos_y, int(provider->get_height()-1));
+
+          float r, g, b, a;
+          provider->get_pixel (int(provider_pos_x), int(provider_pos_y), &r, &g, &b, &a);
+          return (a > 0.0f);
+        }
+      else
+        {
+          std::cout << "ERROR: SpriteEditorObj: Failed to get provider for surface" << std::endl;
+          return true;
+        }
+#else
+      return true;
+#endif
     }
   else
     {
