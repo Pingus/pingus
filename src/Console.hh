@@ -1,4 +1,4 @@
-//  $Id: Console.hh,v 1.14 2001/08/04 12:46:22 grumbel Exp $
+//  $Id: Console.hh,v 1.15 2002/06/07 13:25:02 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,9 +22,10 @@
 
 #include <string>
 #include <vector>
-#include <ClanLib/core.h>
 #include <iostream>
 #include "Display.hh"
+
+//#include <ClanLib/core.h>
 
 #define CONSOLE_BUFFER_SIZE 100
 

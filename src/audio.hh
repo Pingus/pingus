@@ -1,4 +1,4 @@
-//  $Id: audio.hh,v 1.5 2002/02/24 20:40:26 grumbel Exp $
+//  $Id: audio.hh,v 1.6 2002/06/07 13:25:02 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,9 +19,6 @@
 
 #ifndef AUDIO_HH
 #define AUDIO_HH
-
-#include <config.h>
-#include "globals.hh"
 
 // Simple wrapper header around SDL.h and SDL_mixer.h.
 

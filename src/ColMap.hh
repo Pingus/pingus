@@ -1,4 +1,4 @@
-//  $Id: ColMap.hh,v 1.13 2001/08/31 07:51:51 grumbel Exp $
+//  $Id: ColMap.hh,v 1.14 2002/06/07 13:25:02 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,12 +20,12 @@
 #ifndef COLMAP_HH
 #define COLMAP_HH
 
-#include <vector>
-#include <string>
-
-#include <ClanLib/display.h>
 #include "GroundpieceData.hh"
-#include "ResDescriptor.hh"
+
+class ResDescriptor;
+class PixelStatus;
+class CL_Surface;
+class CL_SurfaceProvider;
 
 // Collsion Map
 /** The collision map is used to represent the enviroment where the

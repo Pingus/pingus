@@ -1,4 +1,4 @@
-//  $Id: DebugGui.hh,v 1.5 2001/04/08 14:10:34 grumbel Exp $
+//  $Id: DebugGui.hh,v 1.6 2002/06/07 13:25:02 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,8 @@
 #define DEBUGGUI_HH
 
 #include "GuiObj.hh"
-#include "World.hh"
+
+class World;
 
 ///
 class DebugGui : public GuiObj

@@ -1,4 +1,4 @@
-//  $Id: CaptureRectangle.hh,v 1.11 2002/02/10 22:14:06 grumbel Exp $
+//  $Id: CaptureRectangle.hh,v 1.12 2002/06/07 13:25:02 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,11 +20,15 @@
 #ifndef CAPTURERECTANGLE_HH
 #define CAPTURERECTANGLE_HH
 
-#include <ClanLib/core.h>
 #include "Sprite.hh"
-#include "boost/smart_ptr.hpp"
 
 class PinguAction;
+class CL_Font;
+
+namespace boost {
+
+  template <class T> class shared_ptr;
+}
 
 /** The rectangle that is shown when the mouse cursor is above a
     pingu. The rectangle shows the current pingu direction along with

@@ -1,4 +1,4 @@
-//  $Id: Cursor.hh,v 1.4 2002/02/10 22:14:06 grumbel Exp $
+//  $Id: Cursor.hh,v 1.5 2002/06/07 13:25:02 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #ifndef CURSOR_HH
 #define CURSOR_HH
 
+#include <string>
 #include "boost/smart_ptr.hpp"
 #include "Display.hh"
 #include "Controller.hh"
