@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Pingus 0.6.0\n"
-"POT-Creation-Date: 2003-04-16 01:50+0200\n"
+"POT-Creation-Date: 2003-04-16 03:22+0200\n"
 "PO-Revision-Date: 2003-04-15 17:31+0200\n"
 "Last-Translator: Ingo Ruhnke <grumbel@gmx.de>\n"
 "Language-Team: David Philippi <david@torangan.de>, Ingo Ruhnke <grumbel@gmx."
@@ -14,15 +14,15 @@ msgstr ""
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/config.cxx:68
+#: src/config.cxx:71
 msgid "Couldn't open: "
 msgstr "Datei oder Verzeichnis konnte nicht geöffnet werden: "
 
-#: src/config.cxx:167
+#: src/config.cxx:170
 msgid "Unexpected char: '"
 msgstr "Unerwartetes Zeichen: '"
 
-#: src/config.cxx:201
+#: src/config.cxx:204
 msgid "Unexpected char '"
 msgstr "Unerwartetes Zeichen: '"
 
@@ -579,7 +579,7 @@ msgstr "Möglicherweise wäre es besser Quake zu spielen?"
 #: src/level_result.cxx:116
 #, fuzzy
 msgid ""
-"Maybe this level calls for a different stratagy. Like attempting to save "
+"Maybe this level calls for a different strategy. Like attempting to save "
 "them, for example."
 msgstr ""
 "Es kann sein das wir etwas anderes versuchen sollten.  Vielleicht könnten "

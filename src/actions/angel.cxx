@@ -1,4 +1,4 @@
-//  $Id: angel.cxx,v 1.16 2003/02/19 09:50:36 grumbel Exp $
+//  $Id: angel.cxx,v 1.17 2003/04/16 10:09:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,7 +42,7 @@ Angel::update ()
   sprite.update ();
 
   counter += game_speed;
-  pingu->set_pos(x_pos + 20 * sin (counter * 3.0), pingu->get_y() - 50.0f * 0.025f);
+  pingu->set_pos(x_pos + 20 * sin (counter * 3.0f), pingu->get_y() - 50.0f * 0.025f);
 
   // Out of screen, let the pingu die
   if (pingu->get_y() < -32)

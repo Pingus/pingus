@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Pingus 0.6.0\n"
-"POT-Creation-Date: 2003-04-16 01:50+0200\n"
+"POT-Creation-Date: 2003-04-16 03:22+0200\n"
 "PO-Revision-Date: 2003-04-15 17:29+0200\n"
 "Last-Translator: Milan Babuskov <mbabuskov@yahoo.com>\n"
 "Language-Team: <mbabuskov@yahoo.com>\n"
@@ -14,15 +14,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/config.cxx:68
+#: src/config.cxx:71
 msgid "Couldn't open: "
 msgstr "Nije moguce otvoriti: "
 
-#: src/config.cxx:167
+#: src/config.cxx:170
 msgid "Unexpected char: '"
 msgstr "Neocekivan karakter: '"
 
-#: src/config.cxx:201
+#: src/config.cxx:204
 msgid "Unexpected char '"
 msgstr "Neocekivan karakter: '"
 
@@ -578,7 +578,7 @@ msgstr "Mozda si vrsta osobe koja vise voli Quake."
 #: src/level_result.cxx:116
 #, fuzzy
 msgid ""
-"Maybe this level calls for a different stratagy. Like attempting to save "
+"Maybe this level calls for a different strategy. Like attempting to save "
 "them, for example."
 msgstr ""
 "Mozda ovaj nivo zahteva drugaciji pristup. Na primer, bilo bi dobro da ih "

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Pingus 0.5.0\n"
-"POT-Creation-Date: 2003-04-16 01:50+0200\n"
+"POT-Creation-Date: 2003-04-16 03:22+0200\n"
 "PO-Revision-Date: 2003-04-15 17:28+0200\n"
 "Last-Translator: Çaðrý Çöltekin <cagri@metu.edu.tr>\n"
 "Language-Team: Giray Devlet <giray@devlet.cc>, Caðrý Çöltekin <cagri@metu."
@@ -14,15 +14,15 @@ msgstr ""
 "Content-Type: text/plain; charset=ISO-8859-9\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/config.cxx:68
+#: src/config.cxx:71
 msgid "Couldn't open: "
 msgstr "Dosya açýlamadý: "
 
-#: src/config.cxx:167
+#: src/config.cxx:170
 msgid "Unexpected char: '"
 msgstr "Beklenmeyen harf: '"
 
-#: src/config.cxx:201
+#: src/config.cxx:204
 msgid "Unexpected char '"
 msgstr "Beklenmeyen harf: '"
 
@@ -581,7 +581,7 @@ msgstr "Abisi, belki de Quake sana daha uygun bi oyun."
 #: src/level_result.cxx:116
 #, fuzzy
 msgid ""
-"Maybe this level calls for a different stratagy. Like attempting to save "
+"Maybe this level calls for a different strategy. Like attempting to save "
 "them, for example."
 msgstr ""
 "Tikkat tikkat! Stateji deðiþikliði! Bir daha sefere þunlarý kurtarmaya "

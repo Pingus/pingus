@@ -14,7 +14,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: cs\n"
-"POT-Creation-Date: 2003-04-16 01:50+0200\n"
+"POT-Creation-Date: 2003-04-16 03:22+0200\n"
 "PO-Revision-Date: 2003-04-15 21:05+0200\n"
 "Last-Translator: Tomáš Bláha\n"
 "Language-Team: czech\n"
@@ -23,15 +23,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.0\n"
 
-#: src/config.cxx:68
+#: src/config.cxx:71
 msgid "Couldn't open: "
 msgstr "Nemohu otevrit: "
 
-#: src/config.cxx:167
+#: src/config.cxx:170
 msgid "Unexpected char: '"
 msgstr "Neocekavany znak: '"
 
-#: src/config.cxx:201
+#: src/config.cxx:204
 msgid "Unexpected char '"
 msgstr "Neocekavany znak '"
 
@@ -585,7 +585,7 @@ msgstr "Treba by si radeji hral Quake."
 #: src/level_result.cxx:116
 #, fuzzy
 msgid ""
-"Maybe this level calls for a different stratagy. Like attempting to save "
+"Maybe this level calls for a different strategy. Like attempting to save "
 "them, for example."
 msgstr "Mozna by to chtelo jinou strategii. Treba se pokusit nekoho zachranit."
 
