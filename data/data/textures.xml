@@ -34,6 +34,9 @@
     <surface file="../images/textures/green_tendrils.png" height="256" name="green_tendrils" width="256" x="0" y="0" />
     <surface file="../images/textures/mountain.png" height="600" name="mountain" width="400" x="0" y="0" />
     <surface file="../images/textures/thunderstorm.png" height="800" name="thunderstorm" width="256" x="0" y="0" />
+    <surface file="../images/textures/creepers.png" height="256" width="256" name="creepers" x="0" y="0"/>
+    <surface file="../images/textures/creepers-mirrored.png" height="256" width="256" name="creepers-mirrored" x="0" y="0"/>
+    <surface file="../images/textures/swirljungle.png" height="256" width="256" name="swirljungle" x="0" y="0"/>
     <surface file="../images/textures/ordina.jpg" name="ordina" />
     <surface file="../images/textures/ordina.jpg" name="fond1" />
   </section>
