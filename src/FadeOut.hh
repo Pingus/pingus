@@ -1,4 +1,4 @@
-//  $Id: FadeOut.hh,v 1.3 2000/06/18 17:01:49 grumbel Exp $
+//  $Id: FadeOut.hh,v 1.4 2001/06/14 11:07:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,12 +20,35 @@
 #ifndef FADEOUT_HH
 #define FADEOUT_HH
 
+#include "Color.hh"
+
 ///
 class FadeOut
 {
 private:
+  /** The time in seconds until the fadeout is complete */
+  float complete_time;
 
+  /** The time that passed since the fadeout was started */
+  float passed_time;
+  
+protected:
+  Color color;
 public:
+  /** @return seconds number of seconds until the fadeout is
+      complete */
+  FadeOut (float seconds = 1.0f, Color color = Color ());
+  virtual ~FadeOut ();
+  
+  // Reset the fadeout to the start
+  virtual void reset ();
+
+  virtual void  draw () =0;
+  virtual void  update (float delta);
+  virtual void  set_progress (float progress);
+  virtual float get_progress ();
+  virtual bool  finished ();
+  
   ///
   static void random(void);
   ///
@@ -34,8 +57,18 @@ public:
   static void fade_to_black(int steps = 20);
   ///
   static void clear(void);
-}///
-;
+};
+
+class EnlargingRectFadeOut : public FadeOut
+{
+private:
+public:
+  EnlargingRectFadeOut (float seconds = 1.0f, Color color = Color ())
+  : FadeOut (seconds, color) {}
+  ~EnlargingRectFadeOut () {}
+  
+  void draw ();
+};
 
 #endif
 

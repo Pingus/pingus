@@ -1,4 +1,4 @@
-//  $Id: Client.cc,v 1.57 2001/06/11 20:40:16 grumbel Exp $
+//  $Id: Client.cc,v 1.58 2001/06/14 11:07:18 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -84,7 +84,7 @@ Client::start()
 
   play_level(server->get_plf ());
 
-  FadeOut::random();
+  //FadeOut::random();
 
   if (verbose) std::cout << "Displaying results..." << CL_System::get_time()  << std::flush;
   PingusLevelResult r(server->get_world(), controller);

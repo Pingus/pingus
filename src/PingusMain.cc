@@ -1,4 +1,4 @@
-//   $Id: PingusMain.cc,v 1.27 2001/06/11 08:45:21 grumbel Exp $
+//   $Id: PingusMain.cc,v 1.28 2001/06/14 11:07:18 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -63,9 +63,10 @@
 #include "Config.hh"
 #include "Console.hh"
 #include "FPSCounter.hh"
-#include "PingusMenu.hh"
 #include "PingusMessageBox.hh"
 #include "audio.hh"
+
+#include "PingusMenuManager.hh"
 //#include "Story.hh"
 
 #include "PingusSound.hh"
@@ -789,10 +790,7 @@ PingusMain::do_lemmings_mode(void)
 
   if (print_fps)
     Display::add_flip_screen_hook(&fps_counter);
-  //Display::add_flip_screen_hook(&console);
 
-  //CL_Input::chain_button_release.push_back(&global_event);
-  //CL_Input::chain_button_press.push_back(&global_event);
 
   on_button_press_slot = CL_Input::sig_button_press.connect (CL_CreateSlot(&global_event, &GlobalEvent::on_button_press));
   on_button_release_slot = CL_Input::sig_button_release.connect (CL_CreateSlot(&global_event, &GlobalEvent::on_button_release));
@@ -816,8 +814,10 @@ PingusMain::do_lemmings_mode(void)
     }
 
   try  {
-    PingusMenu menu; 
-    menu.select();
+    PingusMenuManager menu;
+    menu.display ();
+    //PingusMenu menu; 
+    //menu.select();
   }
   
   catch (CL_Error err) {
@@ -834,30 +834,6 @@ PingusMain::do_lemmings_mode(void)
   CL_Input::sig_button_press.disconnect (on_button_press_slot);
   CL_Input::sig_button_release.disconnect(on_button_release_slot);
 
-  //  Display::remove_flip_screen_hook(&console);
-  //  Display::remove_flip_screen_hook(&fps_counter);
-  /* 
-  std::cout << "\n"
-	    << ",-------------------------------------------.\n"
-	    << "| Thank you for playing Pingus!             |\n"
-	    << "|                                           |\n"
-	    << "| The newest version can always be found    |\n"
-	    << "| at:                                       |\n"
-	    << "|           http://pingus.seul.org          |\n"
-	    << "|                                           |\n"
-	    << "| If you have suggestions or bug reports    |\n"
-	    << "| don't hesitate to write a email to:       |\n"
-	    << "|                                           |\n"
-	    << "|        Ingo Ruhnke <grumbel@pingus.cx>    |\n"
-	    << "|                                           |\n"
-	    << "| Comments about the music? Send a mail to: |\n"
-	    << "|                                           |\n"
-	    << "|    Matthew Smith <matthew@synature.com>   |\n"
-	    << "|    Joseph Toscano <scarjt@buffnet.net>    |\n"
-	    << "|                                           |\n"
-	    << "`-------------------------------------------'\n"
-	    << std::endl; */
-  
   return true;
 }
 
@@ -891,7 +867,7 @@ PingusMain::main(int argc, char** argv)
       
       if (!intro_disabled && levelfile.empty()) 
 	{
-	  intro.draw();
+	  //intro.draw();
 	}
       
       while (!quit) 

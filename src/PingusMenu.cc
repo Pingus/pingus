@@ -1,4 +1,4 @@
-//  $Id: PingusMenu.cc,v 1.45 2001/06/11 20:40:16 grumbel Exp $
+//  $Id: PingusMenu.cc,v 1.46 2001/06/14 11:07:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,132 +33,59 @@
 #include "PingusSound.hh"
 #include "blitter.hh"
 
-PingusMenu::PingusMenu()
+PingusMenu::PingusMenu(PingusMenuManager* m)
+  : PingusSubMenu (m)
 {
   is_init = false;
-  // We need this button a bit earlier than the other ones, so we
-  // allocate it here.
 }
 
 void
-PingusMenu::init ()
+PingusMenu::preload ()
 {
-  boost::shared_ptr<SurfaceButton> editor_button (new EditorButton ());
+  if (!is_init)
+    {
+      std::cout << "PingusMenu::init ()" << std::endl;
+      event_enabled = true;
+      is_init = true;
+      boost::shared_ptr<SurfaceButton> editor_button (new EditorButton ());
  
-  if (start_editor)
-    editor_button->on_click ();
+      if (start_editor)
+	editor_button->on_click ();
 
-  background         = PingusResource::load_surface("misc/logo_t", "core");
+      background         = PingusResource::load_surface("misc/logo", "core");
 
-  layer_manager.add_layer (PingusResource::load_surface ("menu/layer1", "core"),  0, 0, 12, 0);
-  layer_manager.add_layer (PingusResource::load_surface ("menu/layer2", "core"),  0, 150, 25, 0);
-  layer_manager.add_layer (PingusResource::load_surface ("menu/layer3", "core"), 0, 200, 50, 0);
-  layer_manager.add_layer (PingusResource::load_surface ("menu/layer4", "core"), 0, 377, 100, 0);
-  layer_manager.add_layer (PingusResource::load_surface ("menu/layer5", "core"), 0, 500, 200, 0);
-
-  background = Blitter::scale_surface (background, CL_Display::get_width (), CL_Display::get_height ());
-  //  background = PingusResource::load_surface("Textures/stones", "textures");
- 
-  event_enabled = false;
-  
-  //  CL_Input::chain_button_press.push_back(event);
-  //  CL_Input::chain_button_release.push_back(event);
-  //  CL_Input::chain_mouse_move.push_back(event);
-
-  on_button_press_slot   = CL_Input::sig_button_press.connect (CL_CreateSlot(this, &PingusMenu::on_button_press));
-  on_button_release_slot = CL_Input::sig_button_release.connect (CL_CreateSlot(this, &PingusMenu::on_button_release));
-  //on_mouse_move_slot     = CL_Input::sig_mouse_move.connect (CL_CreateSlot(event, &PingusMenu::on_mouse_move));
-
-  //on_resize_slot = CL_Display::sig_resized().connect(CL_CreateSlot(this, &PingusMenu::on_resize));
-
-  buttons.push_back(boost::shared_ptr<SurfaceButton>(new OptionsButton ()));
-  buttons.push_back(boost::shared_ptr<SurfaceButton>(new PlayButton ()));
-  buttons.push_back(boost::shared_ptr<SurfaceButton>(new QuitButton (this)));
-  buttons.push_back(boost::shared_ptr<SurfaceButton>(new MultiplayerButton ()));
-  buttons.push_back(boost::shared_ptr<SurfaceButton>(new ThemeButton ()));
-  buttons.push_back(editor_button);
+      buttons.push_back(boost::shared_ptr<SurfaceButton>(new OptionsButton (this)));
+      buttons.push_back(boost::shared_ptr<SurfaceButton>(new PlayButton ()));
+      buttons.push_back(boost::shared_ptr<SurfaceButton>(new QuitButton (this)));
+      buttons.push_back(boost::shared_ptr<SurfaceButton>(new MultiplayerButton ()));
+      buttons.push_back(boost::shared_ptr<SurfaceButton>(new ThemeButton ()));
+      buttons.push_back(editor_button);
+    }
 }
 
 PingusMenu::~PingusMenu()
-{
-  CL_Input::sig_button_press.disconnect (on_button_press_slot);
-  CL_Input::sig_button_release.disconnect (on_button_release_slot);
-  //CL_Input::sig_mouse_move.disconnect (on_mouse_move_slot);
+{  
 }
 
 void
 PingusMenu::draw()
 {
-  /*
-  // Filling the background with a texture
-  for(int y = 0; y < CL_Display::get_height(); y += background->get_height())
-    for(int x = 0; x < CL_Display::get_width(); x += background->get_width())
-      background->put_screen(x, y);
-  */
-  //background->put_screen(0, 0, CL_Display::get_width(), CL_Display::get_height());
-  layer_manager.draw ();
-  //background->put_screen(0, 0);
-  // Putting the logo
-  //bg->put_screen(CL_Display::get_width()/2 - bg->get_width()/2, 3);
-
+  //PingusSound::play_mod("../data/music/pingus-1.it");
   for(std::list<boost::shared_ptr<SurfaceButton> >::iterator i = buttons.begin();
-      i != buttons.end(); 
-      i++)
-    {
-      //  std::cout << "PingusMenu: painting buttons: " <<  std::endl;
-      // Mouse_over drawing is handled in SurfaceButton.cc
-      (*i)->draw();
-    }
-  //std::cout << "PingusMenu: painting buttons: done" <<  std::endl;  
-  Display::flip_display();
-}
-
-void
-PingusMenu::select(void)
-{
-  if (!is_init) init();
-
-  do_quit = false;
-
-  draw();
-
-  event_enabled = true;
-
-  //Display::set_cursor(CL_MouseCursorProvider::load("Cursors/cursor",
-  //						   PingusResource::get("game")));
-  Display::show_cursor();
-
-  PingusSound::play_mod("../data/music/pingus-1.it");
-  
-  unsigned int last_time = CL_System::get_time ();
-  while(!do_quit) 
-    {
-      float delta = (CL_System::get_time () -  last_time) / 1000.0;
-
-      layer_manager.update (delta);
-      last_time = CL_System::get_time ();
-
-      draw ();
-      CL_System::sleep (20);
-      CL_System::keep_alive();
-    }
-
-  event_enabled = false;
-
-  Display::hide_cursor();
+      i != buttons.end(); ++i)
+    (*i)->draw();
 }
 
 void
 PingusMenu::on_mouse_move(CL_InputDevice *, int mouse_x, int mouse_y)
 {
-  // if (!enabled) return;
-  // draw();
 }
 
 void
 PingusMenu::on_button_press(CL_InputDevice *device, const CL_Key &key)
 {
   if (!event_enabled) return;
+  std::cout << "Buttonpress: " << event_enabled << std::endl;
 
   draw();
   
@@ -185,6 +112,7 @@ void
 PingusMenu::on_button_release(CL_InputDevice *device, const CL_Key &key)
 {
   if (!event_enabled) return;
+  std::cout << "Buttonrel: " << event_enabled << std::endl;
   
   draw();
 
@@ -215,8 +143,6 @@ PingusMenu::on_button_release(CL_InputDevice *device, const CL_Key &key)
 	      event_enabled = false;
 	      Display::hide_cursor();
 	      (*i)->on_click();
-	      //Display::set_cursor(CL_MouseCursorProvider::load("Cursors/cursor", 
-	      //PingusResource::get("game")));
 	      Display::show_cursor();
 	      event_enabled = true;
 	    }

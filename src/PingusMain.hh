@@ -1,4 +1,4 @@
-//  $Id: PingusMain.hh,v 1.4 2001/03/18 17:45:04 grumbel Exp $
+//  $Id: PingusMain.hh,v 1.5 2001/06/14 11:07:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,7 +24,6 @@
 #include <ClanLib/core.h>
 
 #include "GenericMain.hh"
-#include "Intro.hh"
 
 ///
 void segfault_handler(int);
@@ -41,10 +40,6 @@ private:
   std::string levelfile;
   ///
   std::string resolution;
-  
-  ///
-  Intro intro;
-
   ///
   CL_Slot on_button_press_slot;
   ///

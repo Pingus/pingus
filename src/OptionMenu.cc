@@ -1,4 +1,4 @@
-//  $Id: OptionMenu.cc,v 1.31 2001/06/11 08:45:21 grumbel Exp $
+//  $Id: OptionMenu.cc,v 1.32 2001/06/14 11:07:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,14 +21,14 @@
 
 #include "globals.hh"
 #include "PingusResource.hh"
-#include "Loading.hh"
 #include "Display.hh"
 #include "OptionMenu.hh"
 #include "my_gettext.hh"
 #include "StringConverter.hh"
+#include "PingusMenuManager.hh"
 
 // Define the global option menu
-OptionMenu   option_menu;
+OptionMenu   option_menu (0);
 
 // ----- OptionEntry -----
 
@@ -71,11 +71,11 @@ OptionEntry::draw()
   if (!mouse_over()) {
     CL_Display::fill_rect(x_pos - 7, y_pos - 1,
 			  x_pos + CL_Display::get_width() - 35, y_pos + 11,
-			  0.5, 0.5, 0.5, 0.5);
+			  0.0, 0.0, 0.0, 1.0);
   } else {
     CL_Display::fill_rect(x_pos - 7, y_pos - 1,
 			  x_pos + CL_Display::get_width() - 35, y_pos + 11,
-			  1.0, 1.0, 1.0, 0.5);
+			  1.0f, 0.0f, 0.0f, 0.4f);
   }
   font->print_left(x_pos, y_pos, str.c_str());
 
@@ -171,7 +171,8 @@ OptionMenu::Event::on_button_release(CL_InputDevice *device, const CL_Key &key)
 
 // ----- OptionMenu -----
 
-OptionMenu::OptionMenu()
+OptionMenu::OptionMenu(PingusMenuManager* m)
+  : PingusSubMenu (m)
 {
   quit = false;
   is_init = false;
@@ -188,8 +189,8 @@ OptionMenu::~OptionMenu()
 void
 OptionMenu::init() 
 {
-  if (!preload_data)
-    loading_screen.draw();
+  //if (!preload_data)
+    //loading_screen.draw();
 
   font       = PingusResource::load_font("Fonts/smallfont_h",  "fonts");
   title_font = PingusResource::load_font("Fonts/pingus", "fonts");
@@ -254,7 +255,7 @@ OptionMenu::draw_background()
 void
 OptionMenu::draw()
 {  
-  draw_background();
+  //draw_background();
   
   title_font->print_center(CL_Display::get_width() / 2, 10, _("Pingus Option Menu"));
 
@@ -267,7 +268,6 @@ OptionMenu::draw()
       && CL_Mouse::get_y() < (int)back.get_height())
     CL_Display::fill_rect(0, 0, back.get_width(), back.get_height(),
 			  1.0, 1.0, 1.0, 0.3);
-  Display::flip_display();
 }
 
 void
@@ -282,6 +282,38 @@ OptionMenu::check_click()
 }
 
 void
+OptionMenu::update (float delta)
+{
+  EntryIter item = EntryIter();
+  item = current_item();
+      
+  if (CL_Mouse::left_pressed()) 
+    {
+      if (CL_Mouse::get_x() < (int)back.get_width() &&
+	  CL_Mouse::get_y() < (int)back.get_height())
+	{
+	  quit = true;
+	  if (manager) manager->set_menu (&manager->mainmenu);
+	}
+
+      if (item != EntryIter()) 
+	item->toggle();
+      draw();
+      while(CL_Mouse::left_pressed())
+	CL_System::keep_alive();
+    }
+
+  if (CL_Mouse::right_pressed()) 
+    {
+      if (item != EntryIter()) 
+	item->rtoggle();
+      draw();
+      while(CL_Mouse::right_pressed())
+	CL_System::keep_alive();
+    }
+}
+
+void
 OptionMenu::display()
 {
   if (!is_init)
@@ -291,7 +323,6 @@ OptionMenu::display()
   //int index = -2;
   EntryIter item = EntryIter();
   EntryIter temp_item = EntryIter();
-  int mouse_x = -1, mouse_y = -1;
   
   while(CL_Mouse::left_pressed())
     CL_System::keep_alive();
@@ -312,42 +343,13 @@ OptionMenu::display()
 
   while(!quit)
     {
-      item = current_item();
 
-      /*      if (temp_item != item || (cursor_enabled 
-				&& mouse_x != CL_Mouse::get_x()
-				&& mouse_y != CL_Mouse::get_y()))*/
-	{
-	  mouse_x = CL_Mouse::get_x();
-	  mouse_y = CL_Mouse::get_y();
-	  draw();
-	  temp_item = item;
-	}
 
-      if (CL_Mouse::left_pressed()) 
-	{
-	  if (CL_Mouse::get_x() < (int)back.get_width() &&
-	      CL_Mouse::get_y() < (int)back.get_height())
-	    {
-	      quit = true;	      
-	    }
-
-	  if (item != EntryIter()) 
-	    item->toggle();
-	  draw();
-	  while(CL_Mouse::left_pressed())
-	    CL_System::keep_alive();
-	}
-
-      if (CL_Mouse::right_pressed()) 
-	{
-	  if (item != EntryIter()) 
-	    item->rtoggle();
-	  draw();
-	  while(CL_Mouse::right_pressed())
-	    CL_System::keep_alive();
-	}
-      CL_System::keep_alive();
+      {
+	draw();
+	temp_item = item;
+      }
+      update (0.1f);
     }
 
   Display::hide_cursor();

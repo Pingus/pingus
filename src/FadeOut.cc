@@ -1,4 +1,4 @@
-//  $Id: FadeOut.cc,v 1.5 2000/06/12 14:42:10 grumbel Exp $
+//  $Id: FadeOut.cc,v 1.6 2001/06/14 11:07:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,49 @@
 #include "Display.hh"
 #include "FadeOut.hh"
 #include "globals.hh"
+
+FadeOut::FadeOut (float seconds, Color color)
+  : complete_time (seconds), passed_time (0),
+    color (color)
+{
+}
+
+FadeOut::~FadeOut ()
+{
+}
+
+void 
+FadeOut::reset ()
+{
+  passed_time = 0;
+}
+
+void
+FadeOut::update (float delta)
+{
+  passed_time += delta;
+}
+
+void
+FadeOut::set_progress (float progress)
+{
+  
+}
+
+bool  
+FadeOut::finished ()
+{
+  if (get_progress () >= 1.0f)
+    return true;
+  else
+    return false;
+}
+
+float
+FadeOut::get_progress ()
+{
+  return std::min(passed_time/complete_time, 1.0f);
+}
 
 void
 FadeOut::random(void)
@@ -94,6 +137,15 @@ FadeOut::clear(void)
   CL_Display::clear_display();
   Display::flip_display();
   CL_Display::sync_buffers();
+}
+
+void 
+EnlargingRectFadeOut::draw ()
+{
+  //std::cout << "EnlargingRectFadeOut:: draw" << std::endl;
+  int width = int(CL_Display::get_width () * get_progress ());
+  CL_Display::fill_rect (0, 0, width, CL_Display::get_height (),
+			 color.red,  color.green, color.blue);
 }
 
 /* EOF */

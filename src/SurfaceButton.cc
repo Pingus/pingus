@@ -1,4 +1,4 @@
-//  $Id: SurfaceButton.cc,v 1.24 2001/06/11 20:40:16 grumbel Exp $
+//  $Id: SurfaceButton.cc,v 1.25 2001/06/14 11:07:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,6 +26,7 @@
 #include "PingusGame.hh"
 #include "OptionMenu.hh"
 #include "System.hh"
+#include "PingusMenuManager.hh"
 #include "Credits.hh"
 
 #include "SurfaceButton.hh"
@@ -184,7 +185,8 @@ PlayButton::on_click()
 
 ///////////////////////////////////////////////
 
-OptionsButton::OptionsButton()
+OptionsButton::OptionsButton(PingusMenu* menu)
+  : menu (menu)
 {
   // x_pos = CL_Display::get_width() * 150 / 640; //150;
   // y_pos = CL_Display::get_height() * 330 / 480; //330;
@@ -213,7 +215,8 @@ OptionsButton::~OptionsButton()
 void 
 OptionsButton::on_click()
 {
-  option_menu.display();
+  //option_menu.display();
+  menu->get_manager ()->set_menu (&menu->get_manager ()->optionmenu);
 }
 
 ///////////////////////////////////////////////
@@ -248,7 +251,7 @@ QuitButton::~QuitButton()
 void
 QuitButton::on_click()
 {
-  menu->do_quit = true;
+  menu->get_manager ()->exit ();
 }
 
 ///////////////////////////////////////////////

@@ -1,4 +1,4 @@
-//  $Id: PingusMenu.hh,v 1.17 2001/04/10 10:45:14 grumbel Exp $
+//  $Id: PingusMenu.hh,v 1.18 2001/06/14 11:07:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,64 +22,46 @@
 
 #include <list>
 #include <ClanLib/core.h>
+#include <boost/smart_ptr.hpp>
 
+#include "PingusSubMenu.hh"
 #include "SurfaceButton.hh"
 #include "OptionMenu.hh"
 #include "AlphaButton.hh"
 #include "LayerManager.hh"
-#include <boost/smart_ptr.hpp>
 
 ///
 class SurfaceButton;
 
-class PingusMenu
+class PingusMenu : public PingusSubMenu
 {
 public:
   ///
   bool is_init;
 private:
   ///
-  CL_Slot on_button_press_slot;
-  ///
-  CL_Slot on_button_release_slot;
-  ///
-  CL_Slot on_mouse_move_slot;
-  //
-  CL_Slot on_resize_slot;
-  ///
   std::list<boost::shared_ptr<SurfaceButton> > buttons;
   ///
-  SurfaceButton* temp_button;
+  boost::dummy_ptr<SurfaceButton> temp_button;
   ///
-  SurfaceButton* current_button;
-  
+  boost::dummy_ptr<SurfaceButton> current_button;
   ///
   CL_Surface background;
   ///
   LayerManager layer_manager;
   ///
   CL_Surface cursor_sur;
-
-  ///
-  int start_x, start_y;
-  ///
-  int load_x, load_y;
-  ///
-  int quit_x, quit_y;
-  ///
-  int temp_mouse_x, temp_mouse_y;
-
+  
   void on_resize(int w, int h);
 public:
   ///
-  bool do_quit;
-
-  ///
-  PingusMenu();
+  PingusMenu(PingusMenuManager* m);
   ///
   ~PingusMenu();
   /// Load all images and other stuff for the menu
-  void init ();
+  void preload ();
+  ////
+  void update (float delta) {}
   ///
   void draw(void);
   ///

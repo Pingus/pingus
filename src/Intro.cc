@@ -1,4 +1,4 @@
-//  $Id: Intro.cc,v 1.16 2001/04/15 15:41:32 grumbel Exp $
+//  $Id: Intro.cc,v 1.17 2001/06/14 11:07:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "PingusMenuManager.hh"
 #include "PingusResource.hh"
 #include "Display.hh"
 #include "globals.hh"
@@ -25,79 +26,82 @@
 #include "Story.hh"
 #include "Intro.hh"
 
-Intro::Intro()
+Intro::Intro(PingusMenuManager* m)
+  : PingusSubMenu (m)
 {
-  event = new Intro::Event;
-
-  event->intro = this;
 }
 
 Intro::~Intro()
 {
-  if (music_enabled) {
-  }
-  delete event;
 }
 
-void
+void 
 Intro::draw()
 {
-  quit = false;
-
-  if (verbose) std::cout << "Intro: adding event handler" << std::endl;
-
-  //CL_Input::chain_button_release.push_back(event);
-  //CL_Input::sig_button_release.connect(thCreateSlot(event, &Intro::Event::on_button_release));
-  /*
-  pingus_story.init();
-  pingus_story.display();
-  */
-  int x_pos = CL_Display::get_width() / 2;
-  int y_pos = 0;
-  
-  logo = PingusResource::load_surface("Game/logo_t", "game");
-
-  for(y_pos = -(int)(logo.get_height())/2; 
-      (y_pos < CL_Display::get_height() / 2 - 110) && !quit;
-      y_pos += 2)
+  switch (stage)
     {
-      CL_Display::fill_rect(0,0, CL_Display::get_width(), CL_Display::get_height(),
-			    1.0, 1.0, 1.0, 1.0);
-      logo.put_screen(x_pos - logo.get_width()/2,
-		       y_pos - logo.get_height()/2);
-      Display::flip_display(true);
-      CL_System::keep_alive();
-    }
-    
-  for(float i=1.0; (i > 0.0) && !quit; i -= 0.05)
-    {
-      CL_Display::fill_rect(0,0, CL_Display::get_width(), CL_Display::get_height(),
-			    i, i, i, 1.0);
-      logo.put_screen(x_pos - logo.get_width()/2,
-		       y_pos - logo.get_height()/2);
-      Display::flip_display(true);
-      CL_System::keep_alive();
-    }
-
-  if (quit)
-    loading_screen.draw();
-
-  if (verbose) std::cout << "Intro: Removing event handler" << std::endl;
-  //CL_Input::chain_button_release.remove(event);
-}
-
-void
-Intro::Event::on_button_release(CL_InputDevice* device, const CL_Key& key)
-{
-  switch (key.id)
-    {
-    case CL_KEY_SPACE:
-    case CL_KEY_ESCAPE:
-    case CL_KEY_ENTER:
-      if (verbose) std::cout << "Intro::Event: Recieved event, stopping intro" << std::endl;
-      intro->quit = true;
+    case SCROLL_UP:
+      CL_Display::clear_display (0.0, 0.0, 0.0);
+      break;
+    case SLOWDOWN:
+      CL_Display::clear_display (0.0, 0.0, 0.0, 0.5);
+      break;
+    case FINISHED:
+      font->print_center (CL_Display::get_width ()/2, 
+			  CL_Display::get_height ()/2 + CL_Display::get_height ()/4,
+			  "..:: Press Start ::..");
       break;
     }
+
+  logo.put_screen (pos.x - (logo.get_width ()/2),
+		   pos.y - (logo.get_height ()/2));
+}
+
+void 
+Intro::update (float delta)
+{
+  if (CL_Keyboard::get_keycode (CL_KEY_SPACE))
+    manager->set_menu (&manager->mainmenu);
+  
+  switch (stage)
+    {
+    case SCROLL_UP:
+      pos += velocity * delta;
+      if (pos.y < CL_Display::get_height ()/2 + 75) {
+	//pos.y = CL_Display::get_height ()/2;
+	stage = SLOWDOWN;
+      }
+      break;
+    case SLOWDOWN:
+      velocity *= 1 - (0.5 * delta);
+      pos += velocity * delta;
+      if (pos.y < CL_Display::get_height ()/2) {
+	pos.y = CL_Display::get_height ()/2;
+	stage = FINISHED;
+      }
+      break;      
+    case FINISHED:
+      break;
+    }
+}
+
+void 
+Intro::on_click ()
+{
+  std::cout << "Start menu" << std::endl;
+}
+
+void 
+Intro::preload ()
+{
+  font = PingusResource::load_font ("Fonts/pingus","fonts");
+  logo = PingusResource::load_surface ("misc/logo", "core");
+
+  velocity = CL_Vector (0, -75);
+  pos = CL_Vector (CL_Display::get_width ()/2,
+		   CL_Display::get_height () + logo.get_height ());
+  
+  stage = SCROLL_UP;
 }
 
 /* EOF */
