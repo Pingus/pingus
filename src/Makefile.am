@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.117 2002/10/12 00:24:26 grumbel Exp $
+#  $Id: Makefile.am,v 1.118 2002/10/16 11:29:30 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -88,6 +88,7 @@ audio.cxx \
 audio.hxx \
 blitter.cxx \
 blitter.hxx \
+blitter_impl.hxx \
 button_panel.cxx \
 button_panel.hxx \
 capture_rectangle.cxx \

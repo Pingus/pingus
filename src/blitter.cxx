@@ -1,4 +1,4 @@
-//  $Id: blitter.cxx,v 1.18 2002/10/16 10:27:30 grumbel Exp $
+//  $Id: blitter.cxx,v 1.19 2002/10/16 11:29:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,6 +28,7 @@
 #include "blitter.hxx"
 #include "debug.hxx"
 #include "indexed_canvas.hxx"
+#include "blitter_impl.hxx"
 
 /* Headers needed for i18n / gettext */
 #include <clocale>
@@ -669,13 +670,13 @@ Blitter::rotate_90 (const CL_Surface& sur)
 CL_Surface
 Blitter::rotate_180 (const CL_Surface& sur)
 {
-  return Blitter::rotate_90(Blitter::rotate_90(sur));
+  return BlitterImpl::modify(sur, BlitterImpl::transform_rot180());
 }
 
 CL_Surface
 Blitter::rotate_270 (const CL_Surface& sur)
 {
-  return Blitter::rotate_90(Blitter::rotate_90(Blitter::rotate_90(sur)));
+  return BlitterImpl::modify(sur, BlitterImpl::transform_rot270());
 }
 
 CL_Surface
@@ -687,13 +688,13 @@ Blitter::rotate_90_flip (const CL_Surface& sur)
 CL_Surface
 Blitter::rotate_180_flip (const CL_Surface& sur)
 {
-  return Blitter::flip_horizontal(Blitter::rotate_90(Blitter::rotate_90(sur)));
+  return Blitter::flip_horizontal(Blitter::rotate_180(sur));
 }
 
 CL_Surface
 Blitter::rotate_270_flip (const CL_Surface& sur)
 {
-  return Blitter::flip_horizontal(Blitter::rotate_90(Blitter::rotate_90(Blitter::rotate_90(sur))));
+  return Blitter::flip_horizontal(Blitter::rotate_270(sur));
 }
 
 /* EOF */
