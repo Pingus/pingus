@@ -1,4 +1,4 @@
-//  $Id: prefab_obj_data.cxx,v 1.1 2002/09/15 15:30:21 grumbel Exp $
+//  $Id: prefab_obj_data.cxx,v 1.2 2002/09/15 16:49:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,22 +17,27 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "../prefab.hxx"
 #include "prefab_obj_data.hxx"
 
-PrefabData::PrefabData (xmlDocPtr doc, xmlNodePtr cur)
+namespace WorldObjsData {
+
+PrefabObjData::PrefabObjData (xmlDocPtr doc, xmlNodePtr cur)
 {
 }
 
 WorldObj*
-PrefabData::create_WorldObj ()
+PrefabObjData::create_WorldObj ()
 {
-  return data->create_EditorObj ();
+  return 0; //data->create_EditorObj ();
 }
 
 EditorObjLst
-create_EditorObj ()
+PrefabObjData::create_EditorObj ()
 {
-  return data->create_EditorObj ();
+  return EditorObjLst (); //data->create_EditorObj ();
 }
+
+} // namespace WorldObjsData
 
 /* EOF */

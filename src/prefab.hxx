@@ -1,4 +1,4 @@
-//  $Id: prefab.hxx,v 1.1 2002/09/15 15:30:21 grumbel Exp $
+//  $Id: prefab.hxx,v 1.2 2002/09/15 16:49:20 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,10 +17,12 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef HEADER_PREFAB_HXX
-#define HEADER_PREFAB_HXX
+#ifndef HEADER_PINGUS_PREFAB_HXX
+#define HEADER_PINGUS_PREFAB_HXX
 
-namespace EditorNS {
+#include <string>
+
+class WorldObjData;
 
 /** The prefab class represents a prefab description file. The prefab
     file consist of a black of meta data (author, description, name,
@@ -63,8 +65,6 @@ private:
   Prefab (const Prefab&);
   Prefab operator= (const Prefab&);
 };
-
-} // namespace EditorNS
 
 #endif
 

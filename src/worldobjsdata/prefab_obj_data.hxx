@@ -1,4 +1,4 @@
-//  $Id: prefab_obj_data.hxx,v 1.1 2002/09/15 15:30:21 grumbel Exp $
+//  $Id: prefab_obj_data.hxx,v 1.2 2002/09/15 16:49:20 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,8 +20,11 @@
 #ifndef HEADER_PREFAB_DATA_HXX
 #define HEADER_PREFAB_DATA_HXX
 
-#include "libxmlfwd.hxx"
-#include "worldobj_data.hxx"
+#include <ClanLib/Core/Math/cl_vector.h>
+#include "../libxmlfwd.hxx"
+#include "../worldobj_data.hxx"
+
+class Prefab;
 
 namespace WorldObjsData {
 
@@ -48,7 +51,7 @@ public:
       of this object, since it can be consturcted from the name) */
   Prefab* data;
 
-  PrefabData (xmlDocPtr doc, xmlNodePtr cur);
+  PrefabObjData (xmlDocPtr doc, xmlNodePtr cur);
 
   /** The PrefabData is flattened to a WorldObjGroup, the World
       doesn't need to keep track of prefabs */
@@ -58,8 +61,8 @@ public:
   EditorObjLst create_EditorObj ();
 
 private:
-  PrefabData (const PrefabData&);
-  PrefabData operator= (const PrefabData&);
+  PrefabObjData (const PrefabObjData&);
+  PrefabObjData operator= (const PrefabObjData&);
 };
 
 } // namespace WorldObjsData

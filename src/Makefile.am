@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.97 2002/09/06 17:33:29 torangan Exp $
+#  $Id: Makefile.am,v 1.98 2002/09/15 16:49:20 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -267,7 +267,8 @@ plt_parser.cxx \
 plt_parser.hxx \
 plt_xml.cxx \
 plt_xml.hxx \
-prefab_data.hxx \
+prefab.cxx \
+prefab.hxx \
 psm_parser.cxx \
 psm_parser.hxx \
 range.cxx \

@@ -1,4 +1,4 @@
-//  $Id: prefab.cxx,v 1.1 2002/09/15 15:30:21 grumbel Exp $
+//  $Id: prefab.cxx,v 1.2 2002/09/15 16:49:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,9 +17,11 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <iostream>
+#include "xml_helper.hxx"
 #include "prefab.hxx"
-
-namespace EditorNS {
+#include "worldobj_group_data.hxx"
+#include "path_manager.hxx"
 
 Prefab::Prefab (const std::string& filename)
 {
@@ -30,9 +32,9 @@ Prefab::Prefab (const std::string& filename)
     {
       xmlNodePtr cur = doc->ROOT;
       WorldObjGroupData* group = new WorldObjGroupData (doc, cur);
-      const EditorObjLst& temp = group->create_EditorObj ();
-      editor_objs.insert(editor_objs.end(),temp.begin(), temp.end());
-      delete group;
+      //const EditorObjLst& temp = group->create_EditorObj ();
+      //editor_objs.insert(editor_objs.end(),temp.begin(), temp.end());
+      //delete group;
     }
   else
     {
@@ -40,26 +42,10 @@ Prefab::Prefab (const std::string& filename)
     }
 }
 
-EditorObj*
-Prefab::create (const std::string& filename)
+Prefab*
+Prefab::create (const std::string& uid)
 {
-  std::cout << "Prefab::create: " << filename << std::endl;
-  xmlDocPtr doc = xmlParseFile(filename.c_str ());
-
-  if (doc)
-    {
-      xmlNodePtr cur = doc->ROOT;
-      WorldObjGroupData* group = new WorldObjGroupData (doc, cur);
-      const EditorObjLst& temp = group->create_EditorObj ();
-      editor_objs.insert(editor_objs.end(),temp.begin(), temp.end());
-      delete group;
-    }
-  else
-    {
-      std::cout << "ObjectManager::add_prefab_from_file: read error: " << filename << std::endl;
-    }
+  return new Prefab (path_manager.complete ("prefab/") + uid);
 }
-
-} // namespace EditorNS
 
 /* EOF */

@@ -26,12 +26,13 @@ libpingus_editorobjs_a_SOURCES = \
 	ice_block_obj.cxx	       ice_block_obj.hxx \
 	info_box_obj.cxx	       info_box_obj.hxx \
 	laser_exit_obj.cxx             laser_exit_obj.hxx \
+        prefab_obj.hxx                 prefab_obj.cxx \
 	smasher_obj.cxx                smasher_obj.hxx \
 	solid_color_background_obj.cxx solid_color_background_obj.hxx \
 	spike_obj.cxx                  spike_obj.hxx \
 	switch_door_obj.cxx            switch_door_obj.hxx \
-        switch_door_switch_obj.cxx     switch_door_switch_obj.hxx \
 	teleporter_obj.cxx             teleporter_obj.hxx \
-	teleporter_target_obj.cxx      teleporter_target_obj.cxx
+	teleporter_target_obj.cxx      teleporter_target_obj.cxx \
+        switch_door_switch_obj.cxx     switch_door_switch_obj.hxx
 
 # EOF #
