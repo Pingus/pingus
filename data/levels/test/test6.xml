@@ -1,0 +1,364 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE pingus-level SYSTEM "http://www.pingus.cx/dtd/pingus-level.dtd">
+<pingus-level>
+  <global>
+    <levelname lang="en">Trap Testing</levelname>
+    <description lang="en">Some Pingus might get killed in this level.</description>
+    <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
+    <number-of-pingus>100</number-of-pingus>
+    <number-to-save>50</number-to-save>
+    <time>9000</time>
+    <width>1408</width>
+    <height>608</height>
+  </global>
+
+<background>
+  <surface><resource type="datafile">
+    <resource-datafile>textures</resource-datafile>
+  <resource-ident>Textures/crystal</resource-ident>
+  </resource></surface>
+  <color>
+    <red>0</red>
+    <green>0</green>
+    <blue>0</blue>
+    <alpha>1</alpha>
+  </color>
+  <scroll-x>0</scroll-x>
+  <scroll-y>0</scroll-y>
+  <para-x>0</para-x>
+  <para-y>0</para-y>
+  <stretch-x>0</stretch-x>
+  <stretch-y>0</stretch-y>
+</background>
+
+  <action-list>
+    <basher>20</basher>
+    <blocker>20</blocker>
+    <bomber>20</bomber>
+    <bridger>20</bridger>
+    <climber>20</climber>
+    <digger>20</digger>
+    <floater>20</floater>
+    <jumper>20</jumper>
+    <miner>20</miner>
+  </action-list>
+
+<trap>
+  <type>laser_exit</type>
+  <position>
+    <x-pos>538</x-pos>
+    <y-pos>435</y-pos>
+    <z-pos>-100</z-pos>
+  </position>
+</trap>
+
+<trap>
+  <type>bumper</type>
+  <position>
+    <x-pos>384</x-pos>
+    <y-pos>394</y-pos>
+    <z-pos>-100</z-pos>
+  </position>
+</trap>
+
+<entrance>
+  <position>
+    <x-pos>354</x-pos>
+    <y-pos>132</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+  <type>generic</type>
+  <direction>misc</direction>
+  <release-rate>50</release-rate>
+</entrance>
+
+<entrance>
+  <position>
+    <x-pos>873</x-pos>
+    <y-pos>132</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+  <type>generic</type>
+  <direction>misc</direction>
+  <release-rate>50</release-rate>
+</entrance>
+
+<entrance>
+  <position>
+    <x-pos>750</x-pos>
+    <y-pos>392</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+  <type>generic</type>
+  <direction>misc</direction>
+  <release-rate>50</release-rate>
+</entrance>
+
+<entrance>
+  <position>
+    <x-pos>1110</x-pos>
+    <y-pos>394</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+  <type>generic</type>
+  <direction>misc</direction>
+  <release-rate>50</release-rate>
+</entrance>
+
+<trap>
+  <type>guillotine</type>
+  <position>
+    <x-pos>218</x-pos>
+    <y-pos>106</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</trap>
+
+<trap>
+  <type>fake_exit</type>
+  <position>
+    <x-pos>426</x-pos>
+    <y-pos>95</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</trap>
+
+<trap>
+  <type>hammer</type>
+  <position>
+    <x-pos>116</x-pos>
+    <y-pos>326</y-pos>
+    <z-pos>50</z-pos>
+  </position>
+</trap>
+
+<trap>
+  <type>spike</type>
+  <position>
+    <x-pos>712</x-pos>
+    <y-pos>169</y-pos>
+    <z-pos>100</z-pos>
+  </position>
+</trap>
+
+<trap>
+  <type>smasher</type>
+  <position>
+    <x-pos>789</x-pos>
+    <y-pos>282</y-pos>
+    <z-pos>100</z-pos>
+  </position>
+</trap>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Test/test3</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>184</x-pos>
+    <y-pos>489</y-pos>
+    <z-pos>135788800</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Test/test3</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>857</x-pos>
+    <y-pos>195</y-pos>
+    <z-pos>135788800</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Test/test3</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>703</x-pos>
+    <y-pos>465</y-pos>
+    <z-pos>138949712</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Test/test3</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>344</x-pos>
+    <y-pos>194</y-pos>
+    <z-pos>138980232</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Test/test3</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>789</x-pos>
+    <y-pos>465</y-pos>
+    <z-pos>138980232</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Test/test3</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>97</x-pos>
+    <y-pos>489</y-pos>
+    <z-pos>140258784</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Test/test3</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>680</x-pos>
+    <y-pos>117</y-pos>
+    <z-pos>140258784</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Test/test3</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>170</x-pos>
+    <y-pos>194</y-pos>
+    <z-pos>140334584</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Test/test3</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>431</x-pos>
+    <y-pos>194</y-pos>
+    <z-pos>140569512</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Test/test3</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>271</x-pos>
+    <y-pos>489</y-pos>
+    <z-pos>140641032</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Test/test3</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>684</x-pos>
+    <y-pos>195</y-pos>
+    <z-pos>140695320</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Test/test3</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>358</x-pos>
+    <y-pos>489</y-pos>
+    <z-pos>140696440</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Test/test3</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>257</x-pos>
+    <y-pos>194</y-pos>
+    <z-pos>140786912</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Test/test3</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>771</x-pos>
+    <y-pos>195</y-pos>
+    <z-pos>141096992</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Test/test3</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>532</x-pos>
+    <y-pos>489</y-pos>
+    <z-pos>141160792</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Test/test3</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>445</x-pos>
+    <y-pos>489</y-pos>
+    <z-pos>141528760</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Test/test3</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>875</x-pos>
+    <y-pos>465</y-pos>
+    <z-pos>141779504</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Test/test3</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>961</x-pos>
+    <y-pos>465</y-pos>
+    <z-pos>142102936</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Test/test3</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1048</x-pos>
+    <y-pos>465</y-pos>
+    <z-pos>142497096</z-pos>
+  </position>
+</groundpiece>
+
+</pingus-level>
+

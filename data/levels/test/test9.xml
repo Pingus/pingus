@@ -1,0 +1,126 @@
+<?xml version="1.0"?>
+
+<pingus-level>
+  <global>
+    <levelname lang="en">EditorDefaultValue: Please give me a name...</levelname>
+    <description lang="en">EditorDefaultValue: ...and a short descriptions</description>
+    <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
+    <number-of-pingus>50</number-of-pingus>
+    <number-to-save>25</number-to-save>
+    <time>9000</time>
+    <width>1200</width>
+    <height>600</height>
+  </global>
+
+<background type="solidcolor"></background>
+  <action-list>
+    <basher count="20"/>
+    <blocker count="20"/>
+    <bomber count="20"/>
+    <bridger count="20"/>
+    <climber count="20"/>
+    <digger count="20"/>
+    <floater count="20"/>
+    <jumper count="20"/>
+    <miner count="20"/>
+  </action-list>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Rock/real8</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>209</x-pos>
+    <y-pos>473</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Rock/real7</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>403</x-pos>
+    <y-pos>462</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Rock/real7</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>316</x-pos>
+    <y-pos>463</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Misc/smallbrickpiece</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>408</x-pos>
+    <y-pos>460</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<entrance>
+  <position>
+    <x-pos>568</x-pos>
+    <y-pos>154</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+  <type>generic</type>
+  <direction>misc</direction>
+  <release-rate>50</release-rate>
+</entrance>
+
+<entrance>
+  <position>
+    <x-pos>373</x-pos>
+    <y-pos>135</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+  <type>generic</type>
+  <direction>misc</direction>
+  <release-rate>50</release-rate>
+</entrance>
+
+  <worldobj type="switchdoor">  
+    <switch>
+      <position>
+	<x-pos>340</x-pos>
+	<y-pos>200</y-pos>
+	<z-pos>0</z-pos>
+      </position>
+    </switch>
+    <door>
+      <position>
+	<x-pos>340</x-pos>
+	<y-pos>200</y-pos>
+	<z-pos>0</z-pos>
+      </position>
+      <height>20</height>
+    </door>
+  </worldobj>
+
+
+  <start-position>
+  <position>
+    <x-pos>470</x-pos>
+    <y-pos>117</y-pos>
+    <z-pos>1000</z-pos>
+  </position>
+  </start-position>
+
+</pingus-level>
+
