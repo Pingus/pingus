@@ -1,4 +1,4 @@
-//  $Id: SwitchDoor.hh,v 1.13 2001/07/24 21:39:46 grumbel Exp $
+//  $Id: SwitchDoor.hh,v 1.14 2001/08/07 11:24:40 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -108,15 +108,18 @@ public:
   EditorSwitchDoorObj (WorldObjData* obj);
   virtual ~EditorSwitchDoorObj ();
 
-  virtual void draw (boost::dummy_ptr<EditorView> view);
   static std::list<boost::shared_ptr<EditorObj> > create (WorldObjData* obj);
 
   /** Create this object (and child objects) with reasonable defaults
       for the editor */
   static std::list<boost::shared_ptr<EditorObj> > create (const CL_Vector& pos);
 
-  virtual void save_xml (std::ofstream* xml);
-  virtual std::string status_line();
+  void make_larger ();
+  void make_smaller ();
+
+  void draw (boost::dummy_ptr<EditorView> view);
+  void save_xml (std::ofstream* xml);
+  std::string status_line();
 };
 
 #endif

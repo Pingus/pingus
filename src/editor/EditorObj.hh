@@ -1,4 +1,4 @@
-//  $Id: EditorObj.hh,v 1.30 2001/07/24 21:39:46 grumbel Exp $
+//  $Id: EditorObj.hh,v 1.31 2001/08/07 11:24:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -140,6 +140,14 @@ public:
   /// Return the object height
   virtual int get_height() { return height; }
   //@}
+
+  /** Generic operations that can make an object larger, what exactly
+      happens is object dependend */
+  virtual void make_larger ();
+
+  /** Generic operations that can make an object smaller, what exactly
+      happens is object dependend */
+  virtual void make_smaller ();
 
   /** Open a gui dialog to edit the object */
   virtual void gui_edit_obj();

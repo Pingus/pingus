@@ -1,4 +1,4 @@
-//  $Id: PLFObj.hh,v 1.21 2001/07/24 21:39:46 grumbel Exp $
+//  $Id: PLFObj.hh,v 1.22 2001/08/07 11:24:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -137,22 +137,17 @@ private:
 public:
   LiquidObj(const LiquidData& data);
   LiquidObj(const LiquidObj& data);
-  ///
   ~LiquidObj();
-  ///
   boost::shared_ptr<EditorObj> duplicate();
-  ///
   void draw (boost::dummy_ptr<EditorView> view);
-  ///
   void draw_mark (boost::dummy_ptr<EditorView> view);
-  ///
   bool mouse_over(int, int);
-  ///
   void save(std::ofstream* plf, std::ofstream* psm);
-  ///
   void save_xml(std::ofstream* xml);
-  ///
   std::string  status_line();
+
+  void make_larger ();
+  void make_smaller ();
 };
 
 #endif

@@ -1,4 +1,4 @@
-//  $Id: EditorEvent.cc,v 1.50 2001/08/04 12:46:22 grumbel Exp $
+//  $Id: EditorEvent.cc,v 1.51 2001/08/07 11:24:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -172,6 +172,14 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key& key)
 	    editor_convert_group_to_selection();
 	  else
 	    editor_convert_selection_to_group();
+	  break;
+
+	case CL_KEY_HOME:
+	  object_manager->get_current_obj()->make_larger ();
+	  break;
+
+	case CL_KEY_END:
+	  object_manager->get_current_obj()->make_smaller ();
 	  break;
 
 	  // Lower all object in the current selection

@@ -1,4 +1,4 @@
-// $Id: LiquidData.hh,v 1.2 2001/04/21 10:55:15 grumbel Exp $
+// $Id: LiquidData.hh,v 1.3 2001/08/07 11:24:40 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,6 +28,10 @@ class LiquidData {
 public:
   ResDescriptor desc;
   CL_Vector pos;
+
+  /** Cause to interpret the width in pixels instead of tiles */
+  bool old_width_handling;
+  
   int width;
   int speed;
   
@@ -40,6 +44,7 @@ public:
   /** Reset the object to some reasonable defaults */
   void clean() 
   {
+    old_width_handling = true;
     pos.x = 0;
     pos.y = 0;
     pos.z = 0;

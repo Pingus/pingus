@@ -1,4 +1,4 @@
-//  $Id: WeatherObj.cc,v 1.6 2001/04/21 10:55:16 grumbel Exp $
+//  $Id: WeatherObj.cc,v 1.7 2001/08/07 11:24:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,6 +26,8 @@ WeatherObj::WeatherObj(const WeatherObj& obj)
   surf = obj.surf;
   type = obj.type;
   *position = CL_Vector(0,0,200);
+  width = surf.get_width ();
+  height = surf.get_width ();
 }
 
 WeatherObj::WeatherObj(WeatherData data)

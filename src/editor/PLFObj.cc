@@ -1,4 +1,4 @@
-//  $Id: PLFObj.cc,v 1.45 2001/07/24 21:39:46 grumbel Exp $
+//  $Id: PLFObj.cc,v 1.46 2001/08/07 11:24:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -398,9 +398,18 @@ LiquidObj::LiquidObj(const LiquidObj& data)
 LiquidObj::LiquidObj(const LiquidData& data)
   : LiquidData (data)
 {
-  *position = data.pos;
+  position = &pos; // FIXME: Remove this stupid position pointer think!!!!
   surf = PingusResource::load_surface(desc);
-  EditorObj::width = surf.get_width ();
+
+  if (old_width_handling)
+    {
+      LiquidData::width = (LiquidData::width + surf.get_width ()) / surf.get_width ();
+      old_width_handling = false;
+    }
+
+  std::cout << "LiquidData::width: " << LiquidData::width << std::endl;
+
+  EditorObj::width = surf.get_width () * LiquidData::width;
   EditorObj::height = surf.get_height ();
 }
 
@@ -417,43 +426,8 @@ LiquidObj::duplicate()
 void
 LiquidObj::draw (boost::dummy_ptr<EditorView> view)
 {
-  std::cout << "Liquid Drawing unfinished and buggy" << std::endl;
-  int x1 = int(position->x);
-  int x2 = int(position->x + LiquidData::width);
-  int y1 = int(position->y);
-  int y2 = int(position->y + surf.get_height());
-
-  if (x1 < 0) {
-    x1 = 0;
-    if (x2 < 0)
-      x2 = 0;
-  }
-
-  if (y1 < 0) {
-    y1 = 0;
-    if (y2 < 0)
-      y2 = 0;
-  }
-
-  if (x2 >= CL_Display::get_width()) {
-    x2 = CL_Display::get_width() - 1;
-    if (x1 >= CL_Display::get_width())
-      x1 = x2;
-  }
-
-  if (y2 >= CL_Display::get_height()) {
-    y2 = CL_Display::get_height();
-    if (y1 >= CL_Display::get_height())
-      y1 = y2;
-  }
-
-  CL_Display::push_clip_rect();
-  CL_Display::set_clip_rect(CL_ClipRect(x1, y1, x2, y2));
-
-  for(float x = position->x; x <= position->x + LiquidData::width; x += surf.get_width())
-    surf.put_screen(int(x), int(position->y));
-
-  CL_Display::pop_clip_rect();
+  for(int i = 0; i < LiquidData::width; i++)
+    view->draw (surf, pos + CL_Vector (i * surf.get_width (), 0));
 }
 
 void
@@ -461,7 +435,7 @@ LiquidObj::draw_mark (boost::dummy_ptr<EditorView> view)
 {
   view->draw_rect(int(position->x),
 		  int(position->y),
-		  int(position->x + LiquidData::width),
+		  int(position->x + surf.get_width () * LiquidData::width),
 		  int(position->y + surf.get_height()),
 		  mark_color.r, 
 		  mark_color.g,
@@ -477,7 +451,7 @@ LiquidObj::mouse_over(int x_offset, int y_offset)
   int mouse_y = CL_Mouse::get_y();  
 
   if (   mouse_x > position->x + x_offset 
-      && mouse_x < position->x + LiquidData::width + x_offset
+      && mouse_x < position->x + (LiquidData::width * surf.get_width ()) + x_offset
       && mouse_y > position->y + y_offset 
       && mouse_y < position->y + height + y_offset)
     {
@@ -524,5 +498,17 @@ LiquidObj::status_line()
   return std::string(str);
 }
 
-/* EOF */
+void 
+LiquidObj::make_larger ()
+{
+  LiquidData::width += 1;
+}
 
+void 
+LiquidObj::make_smaller ()
+{
+  if (LiquidData::width > 1)
+    LiquidData::width -= 1;
+}
+
+/* EOF */

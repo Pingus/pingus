@@ -1,4 +1,4 @@
-//  $Id: SwitchDoor.cc,v 1.15 2001/08/04 12:46:23 grumbel Exp $
+//  $Id: SwitchDoor.cc,v 1.16 2001/08/07 11:24:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -311,6 +311,19 @@ EditorSwitchDoorObj::draw (boost::dummy_ptr<EditorView> view)
 		  int(door_pos.y + y_of + (i * door_tile.get_height ())
 		      + door_box.get_height ()));
     }
+}
+
+void
+EditorSwitchDoorObj::make_larger ()
+{
+  door_height += 1;
+}
+
+void 
+EditorSwitchDoorObj::make_smaller ()
+{
+  if (door_height > 1)
+    door_height -= 1;
 }
 
 /* EOF */

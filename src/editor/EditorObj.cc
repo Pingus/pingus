@@ -1,4 +1,4 @@
-// $Id: EditorObj.cc,v 1.34 2001/07/24 21:39:46 grumbel Exp $
+// $Id: EditorObj.cc,v 1.35 2001/08/07 11:24:40 grumbel Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -226,6 +226,18 @@ EditorObj::is_in_rect(int x1, int y1, int x2, int y2)
     }
 }
 
+void 
+EditorObj::make_smaller ()
+{
+  std::cout << "EditorObj: Object does not support make_smaller ()" << std::endl;
+}
+
+void 
+EditorObj::make_larger ()
+{
+  std::cout << "EditorObj: Object does not support make_larger ()" << std::endl;
+}
+
 std::string
 EditorObj::status_line()
 {
@@ -240,6 +252,9 @@ EditorObj::gui_edit_obj()
   
 /*
 $Log: EditorObj.cc,v $
+Revision 1.35  2001/08/07 11:24:40  grumbel
+Added some functions to handle resizement of objects (liquid/switchdoor)
+
 Revision 1.34  2001/07/24 21:39:46  grumbel
 Fixed linedrawing in the editor
 Corrected drawing of switchdoor and teleporter
