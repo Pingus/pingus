@@ -1,4 +1,4 @@
-//  $Id: IceBlock.cc,v 1.18 2001/08/10 19:59:20 grumbel Exp $
+//  $Id: IceBlock.cc,v 1.19 2001/08/11 18:53:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -142,21 +142,11 @@ IceBlock::update(float delta)
 }
 
 EditorIceBlockObj::EditorIceBlockObj (const IceBlockData& data)
+  : SpriteEditorObj ("iceblock", "worldobjs", pos)
 {
-  surf     = PingusResource::load_surface ("iceblock", "worldobjs");
   pos      = data.pos;
-  position = &pos;
   IceBlockData::width = data.width;
 }
-
-/*
-std::list<boost::shared_ptr<EditorObj> > 
-EditorIceBlockObj::create (WorldObjData* obj)
-{
-  std::list<boost::shared_ptr<EditorObj> > objs;
-  objs.push_back (boost::shared_ptr<EditorObj>(new EditorIceBlockObj(obj)));
-  return objs;
-}*/
 
 /** Create the object with resonable defaults */
 std::list<boost::shared_ptr<EditorObj> > 
@@ -169,18 +159,19 @@ EditorIceBlockObj::create (const CL_Vector& pos)
   return data.create_EditorObj ();
 }
 
-void
-EditorIceBlockObj::save_xml (std::ofstream* xml)
-{
-  this->write_xml (xml);
-}
-
 std::string 
 EditorIceBlockObj::status_line()
 {
   char str[1024];
   sprintf (str, "IceBlock - %f %f %f", pos.x, pos.y, pos.z);
   return str;
+}
+
+boost::shared_ptr<EditorObj> 
+EditorIceBlockObj::duplicate()
+{
+  std::cout << "EditorIceBlockObj::duplicate(): Not implemented" << std::endl;
+  return boost::shared_ptr<EditorObj> ();    
 }
 
 /* EOF */

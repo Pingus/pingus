@@ -1,4 +1,4 @@
-//  $Id: StartPos.cc,v 1.9 2001/05/18 19:17:08 grumbel Exp $
+//  $Id: StartPos.cc,v 1.10 2001/08/11 18:53:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,35 +22,18 @@
 #include "StartPos.hh"
 
 StartPos::StartPos(int arg_x_pos, int arg_y_pos)
+  : SpriteEditorObj("editor/start_pos", "core", pos)
 {
-  position->x = arg_x_pos;
-  position->y = arg_y_pos;
-  position->z = 1000;
-  
-  x_of = -17;
-  y_of = -17;
-
-  surf = PingusResource::load_surface("editor/start_pos", "core");
-
-  width = surf.get_width ();
-  height = surf.get_height ();
-}
-
-StartPos::~StartPos()
-{
-}
-
-void   
-StartPos::save(std::ofstream* plf, std::ofstream* psm)
-{
-  std::cout << "StartPos: plf saving not supported since it's obsolete" << std::endl;
+  pos.x = arg_x_pos;
+  pos.y = arg_y_pos;
+  pos.z = 1000;
 }
 
 void
-StartPos::save_xml(std::ofstream* xml)
+StartPos::write_xml(std::ofstream* xml)
 {
   (*xml) << "  <start-position>\n";
-  XMLhelper::write_position_xml(xml, *position);
+  XMLhelper::write_position_xml(xml, pos);
   (*xml) << "  </start-position>\n" << std::endl;  
 }
 

@@ -1,4 +1,4 @@
-//  $Id: WeatherObj.cc,v 1.7 2001/08/07 11:24:40 grumbel Exp $
+//  $Id: WeatherObj.cc,v 1.8 2001/08/11 18:53:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,32 +21,24 @@
 #include "../PingusResource.hh"
 #include "WeatherObj.hh"
 
-WeatherObj::WeatherObj(const WeatherObj& obj)
-{
-  surf = obj.surf;
-  type = obj.type;
-  *position = CL_Vector(0,0,200);
-  width = surf.get_width ();
-  height = surf.get_width ();
-}
-
-WeatherObj::WeatherObj(WeatherData data)
+WeatherObj::WeatherObj(const WeatherData& data)
+  : SpriteEditorObj (pos)
 {
   type = data.type;
-  *position = CL_Vector(0,0,200);
+  pos = CL_Vector(0,0,200);
 
   if (type == "rain")
     {
-      surf = PingusResource::load_surface("editor/weather_rain", "core");
+      sprite = Sprite("editor/weather_rain", "core");
     }
   else if (type == "snow")
     {
-      surf = PingusResource::load_surface("editor/weather_snow", "core");
+      sprite = Sprite("editor/weather_snow", "core");
     }  
   else 
     {
       std::cout << "WeatherObj: Unknown weather type: " << type << std::endl;
-      surf = PingusResource::load_surface("editor/weather_rain", "core");
+      sprite = Sprite("editor/weather_rain", "core");
     }
 }
 
@@ -55,11 +47,11 @@ WeatherObj::~WeatherObj()
 }
   
 void   
-WeatherObj::save_xml(std::ofstream* xml)
+WeatherObj::write_xml(std::ofstream* xml)
 {
   (*xml) << "  <weather>\n"
 	 << "    <type>" << type << "</type>\n";
-  XMLhelper::write_position_xml(xml, *position);
+  XMLhelper::write_position_xml(xml, pos);
   (*xml) << "  </weather>\n"
 	 << std::endl;
 }

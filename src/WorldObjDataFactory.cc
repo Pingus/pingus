@@ -1,4 +1,4 @@
-//  $Id: WorldObjDataFactory.cc,v 1.2 2001/08/10 10:56:13 grumbel Exp $
+//  $Id: WorldObjDataFactory.cc,v 1.3 2001/08/11 18:53:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,7 +22,9 @@
 #include "worldobjs/IceBlock.hh"
 #include "worldobjs/ConveyorBelt.hh"
 #include "worldobjs/Teleporter.hh"
-
+#include "TrapData.hh"
+#include "HotspotData.hh"
+#include "EntranceData.hh"
 #include "WorldObjDataFactory.hh"
 
 WorldObjDataFactory* WorldObjDataFactory::instance_ = 0;

@@ -1,4 +1,4 @@
-//  $Id: EditorEvent.cc,v 1.52 2001/08/07 18:14:15 grumbel Exp $
+//  $Id: EditorEvent.cc,v 1.53 2001/08/11 18:53:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -97,10 +97,11 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key& key)
 
 	  // Set a checkpoint.
 	case CL_KEY_F7:
+	  /*
 	  editor->save_tmp_level();
 	  editor->checkpoint = std::string(tmpnam(0)) + ".pingus";
 	  if (verbose) std::cout << "Setting checkpoint: " << editor->checkpoint << std::endl;
-	  object_manager->save_level(editor->checkpoint);
+	  object_manager->save_level(editor->checkpoint);*/
 	  break;
 	
 	  // Restore a previously created checkpoint.
@@ -196,7 +197,7 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key& key)
 		   i != object_manager->current_objs.end(); 
 		   ++i)
 		{
-		  (*i)->set_position_offset(0, 0, -50);
+		  (*i)->set_position_offset(CL_Vector(0, 0, -50));
 		}
 	    }
 	  else if (CL_Keyboard::get_keycode(CL_KEY_RCTRL))
@@ -205,7 +206,7 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key& key)
 		   i != object_manager->current_objs.end(); 
 		   ++i)
 		{
-		  (*i)->set_position_offset(0, 0, -5);
+		  (*i)->set_position_offset(CL_Vector(0, 0, -5));
 		}
 	    }
 	  break;
@@ -219,7 +220,7 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key& key)
 		   i != object_manager->current_objs.end(); 
 		   ++i) 
 		{
-		  (*i)->set_position_offset(0, 0, 50);
+		  (*i)->set_position_offset(CL_Vector(0, 0, 50));
 		}
 	    }
 	  else if (CL_Keyboard::get_keycode(CL_KEY_RCTRL)) 
@@ -228,7 +229,7 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key& key)
 		   i != object_manager->current_objs.end(); 
 		   ++i)
 		{
-		  (*i)->set_position_offset(0, 0, 5);
+		  (*i)->set_position_offset(CL_Vector(0, 0, 5));
 		}
 	    }
 	  break;
@@ -406,7 +407,7 @@ EditorEvent::editor_convert_selection_to_group()
 	    { 
 	      if (*j == *i)
 		{
-		  group->push_back(*i);
+		  group->add (*i);
 		  to_erase.push_back(std::find(object_manager->editor_objs.begin(), object_manager->editor_objs.end(), *i));
 		}
 	    }
@@ -568,9 +569,7 @@ EditorEvent::editor_save_level_as()
 
   if (!str.empty()) 
     {
-      if (str.substr(str.size() - 4) ==  ".plf")
-	object_manager->save_level(str);
-      else if (str.substr(str.size() - 4) ==  ".xml")
+      if (str.substr(str.size() - 4) ==  ".xml")
 	object_manager->save_level_xml(str);	
       else
 	object_manager->save_level_xml(str + ".xml");
@@ -594,7 +593,7 @@ EditorEvent::editor_duplicate_current_selection()
       
       boost::shared_ptr<EditorObj> obj = (*i)->duplicate();
 
-      obj->set_position_offset (8, 8);
+      obj->set_position_offset (CL_Vector(8, 8));
 
       if (obj.get())
 	{

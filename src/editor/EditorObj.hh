@@ -1,7 +1,7 @@
-//  $Id: EditorObj.hh,v 1.34 2001/08/10 19:59:20 grumbel Exp $
-//
+//  $Id: EditorObj.hh,v 1.35 2001/08/11 18:53:39 grumbel Exp $
+// 
 //  Pingus - A free Lemmings clone
-//  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
+//  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //
 //  This program is free software; you can redistribute it and/or
 //  modify it under the terms of the GNU General Public License
@@ -12,7 +12,7 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//
+// 
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
@@ -21,161 +21,69 @@
 #define EDITOROBJ_HH
 
 #include <fstream>
-#include <functional>
-#include <ClanLib/core.h>
+#include <string>
+
 #include "../boost/smart_ptr.hpp"
 #include "../boost/dummy_ptr.hpp"
 
-#include "EditorView.hh"
-#include "../ResDescriptor.hh"
-#include "../ExitData.hh"
-#include "../EntranceData.hh"
-#include "../WeatherData.hh"
-
-#include "../PSMParser.hh"
-#include "../Trap.hh"
-#include "../PLF.hh"
-
+class CL_Rect;
+class CL_Vector;
+class EditorView;
 class Editor;
 
-///
+/** Interface for all objects which can be shown in the editor */
 class EditorObj
 {
 private:
-  /** If the child class does not provide a pos member, we you this
-      one */
-  CL_Vector private_pos;
-protected:
   static Editor* editor;
 
-  /** The position is a pointer to the position object of the child
-      class, when the child class doesn't provide a position element,
-      EditorObj creates one... FIXME: UGGGggglllllyyyyy.... */
-  CL_Vector* position;
-  ///
-  int x_of, y_of;
-  ///
-  int width;
-  ///
-  int height;
-
-  ///
-  struct Color {
-    Color(float r = 1.0, float g = 1.0, float b = 1.0, float a = 1.0) {
-      this->r = r;
-      this->g = g;
-      this->b = b;
-      this->a = a;
-    }
-    ///
-    float r;
-    ///
-    float g;
-    ///
-    float b;
-    ///
-    float a;
-  };
-  Color mark_color;
-
-  ///
-  CL_Surface surf;
-
-  /** Stupid thing to convert a single object into a list containing
-      that object */
-  static std::list<boost::shared_ptr<EditorObj> > make_list(EditorObj* obj) 
-  {
-    assert (obj);
-    std::list<boost::shared_ptr<EditorObj> > objs;
-    objs.push_back (boost::shared_ptr<EditorObj>(obj));
-    return objs;
-  }
-
 public:
-  EditorObj();
-  virtual ~EditorObj();
+  /** Set the parent editor of all objects */
+  static void set_editor(Editor* e) { editor = e; }
 
-  /** @name Z-Pos sort operators */
-  //@{
-  /** True if the z_pos of this is smaller than that of w */
-  bool operator< (const EditorObj& w);
-  /** True if the z_pos of this is greater than that of w */
-  bool operator> (const EditorObj& w);
-  //@}
+  static Editor* get_editor () { return editor; }
 
-  /** Members to manipulate the objects position */
-  //@{
-  /** Move the object to the given coordinates */
-  virtual void set_position(float new_x_pos, float new_y_pos);
-  /** Move the object to the given coordinates */
-  virtual void set_position_offset(float x_pos_add, float y_pos_add, 
-				   float z_pos_add =0);
-  /// Return the object x_pos
-  virtual int get_x_pos() { return (int) position->x; }
-  /// Return the object y_pos
-  virtual int get_y_pos() { return (int) position->y; }
-  /// Return the object z_pos
-  virtual int get_z_pos() { return (int) position->z; }
+  EditorObj ();
+  virtual ~EditorObj ();
 
-  /// Return the object width
-  virtual int get_width() { return width; }
-  /// Return the object height
-  virtual int get_height() { return height; }
-  //@}
+  /** Draw the object to the given view */
+  virtual void draw (boost::dummy_ptr<EditorView> view) =0;
+
+  /** Draw a rectangle or shape around the object to the given view */
+  virtual void draw_mark (boost::dummy_ptr<EditorView> view) =0;
+
+  /** Return true when the object is under the given coordinates */
+  virtual bool is_over(const CL_Vector&) =0;
+
+  /** Return true if the object is inside the given rectangle */
+  virtual bool is_in_rect(const CL_Rect& rect) =0;
+
+  /** Return the z-position of the object, the objects are sorted
+      after this value */
+  virtual float get_z_pos() =0;
+
+  /** Move the object to the given offset */
+  virtual void set_position_offset(const CL_Vector& offset) =0;
 
   /** Generic operations that can make an object larger, what exactly
-      happens is object dependend */
-  virtual void make_larger ();
+      happens is object dependend. Default is to do nothing */
+  virtual void make_larger () {}
 
   /** Generic operations that can make an object smaller, what exactly
-      happens is object dependend */
-  virtual void make_smaller ();
+      happens is object dependend. Default is to do nothing */
+  virtual void make_smaller () {}
 
-  /** Open a gui dialog to edit the object */
-  virtual void gui_edit_obj();
+  /** Write the given object down into a XML file */
+  virtual void write_xml(std::ofstream* xml) =0;
 
-  /** Draw the object */
-  virtual void draw (boost::dummy_ptr<EditorView> view);
-
-  virtual void draw_scroll_map(int x_pos, int y_pos, int arg_width, int arg_height);
-
-  /** Draw the caputre rectangle around the object */
-  virtual void   draw_mark (boost::dummy_ptr<EditorView> view);
-  
-  /** Return true when the object is under the given coordinates */
-  virtual bool   is_over(int, int);
-
-  /** Return true if the current object is inside the current
-      selection rectangle */
-  virtual bool   is_in_rect(int x1, int y1, int x2, int y2);
-
-  /** Save the give object in the ofstream, this member uses the old
-      plf/psm syntax which is considered obsolete, save_xml() should
-      be used */
-  virtual void   save(std::ofstream* plf, std::ofstream* psm) {};
-  /** Save the given object in the ofstream as xml */
-  virtual void   save_xml(std::ofstream* xml) = 0;
-  ///
+  /** Return a string that is shown in the status line */
   virtual std::string status_line();
-  ///
+
+  /** Duplicate the given editor object and return a the copied
+      object */
   virtual boost::shared_ptr<EditorObj> duplicate() =0;
-  
-  static void set_editor(Editor* e) { editor = e; }
 };
-
-// Structure for the sorting algorithm (stable_sort)
-class EditorObj_less : public std::binary_function<boost::shared_ptr<EditorObj>, boost::shared_ptr<EditorObj>, bool>
-{
-public:
-  bool operator() (boost::shared_ptr<EditorObj> a, boost::shared_ptr<EditorObj> b) const 
-    {
-      return (*a) < (*b);
-    }
-};
-
-#include "Editor.hh"
 
 #endif
 
 /* EOF */
-

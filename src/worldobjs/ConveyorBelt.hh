@@ -1,4 +1,4 @@
-//  $Id: ConveyorBelt.hh,v 1.16 2001/08/10 19:59:20 grumbel Exp $
+//  $Id: ConveyorBelt.hh,v 1.17 2001/08/11 18:53:39 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,7 +23,7 @@
 #include <ClanLib/core.h>
 #include "../WorldObj.hh"
 #include "../WorldObjData.hh"
-#include "../editor/EditorWorldObj.hh"
+#include "../editor/RectEditorObj.hh"
 
 class ConveyorBeltData : public WorldObjData
 {
@@ -65,7 +65,7 @@ public:
   int  get_z_pos() const { return (int) pos.z; }
 };
 
-class EditorConveyorBeltObj : public EditorWorldObj,
+class EditorConveyorBeltObj : public RectEditorObj,
 			      public ConveyorBeltData
 {
 private:
@@ -75,11 +75,18 @@ private:
   float counter;
 
 public:
-  EditorConveyorBeltObj (WorldObjData* obj);
+  EditorConveyorBeltObj (const ConveyorBeltData&);
 
   boost::shared_ptr<EditorObj> duplicate();
   void draw (boost::dummy_ptr<EditorView> view);
   void draw_scroll_map(int x_pos, int y_pos, int arg_width, int arg_height);
+
+  int get_width ();
+  int get_height ();
+
+  float get_z_pos () { return pos.z; }
+
+  void set_position_offset(const CL_Vector &);
   
   /// The saving will be done in EditorTeleporterObj::save_xml
   static std::list<boost::shared_ptr<EditorObj> > create (WorldObjData* obj);
@@ -87,7 +94,9 @@ public:
   /** Create the object with reasonable defaults */
   static std::list<boost::shared_ptr<EditorObj> > create (const CL_Vector& pos);
 
-  void save_xml (std::ofstream* xml);
+  CL_Vector get_upper_left_corner() { return pos; }
+
+  void write_xml (std::ofstream* xml) { ConveyorBeltData::write_xml (xml); }
   std::string status_line();
 };
 

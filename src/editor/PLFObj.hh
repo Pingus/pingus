@@ -1,4 +1,4 @@
-//  $Id: PLFObj.hh,v 1.23 2001/08/10 10:56:14 grumbel Exp $
+//  $Id: PLFObj.hh,v 1.24 2001/08/11 18:53:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,103 +23,84 @@
 #include "../WorldObjData.hh"
 #include "../Direction.hh"
 #include "../Liquid.hh"
-#include "EditorObj.hh"
+#include "../HotspotData.hh"
+#include "../EntranceData.hh"
+#include "../ExitData.hh"
+#include "../TrapData.hh"
+#include "SpriteEditorObj.hh"
 
-///
-class PLFObj : public EditorObj
-{
-private:
-  
-public:
-  PLFObj();
-  virtual ~PLFObj();
-
-  virtual void save(std::ofstream* plf, std::ofstream* psm) = 0;
-  virtual void save_xml(std::ofstream* xml) = 0;
-  virtual std::string  status_line();
-};
-
-///
-class HotspotObj : public    PLFObj,
+class HotspotObj : public    SpriteEditorObj,
 		   protected HotspotData
 {
 private:
-
+  CL_Vector pos;
 public:
   HotspotObj(const HotspotData&);
-  ~HotspotObj();
 
   boost::shared_ptr<EditorObj> duplicate();
-  void save(std::ofstream* plf, std::ofstream* psm);
-  void save_xml(std::ofstream* xml);
+  void write_xml(std::ofstream* xml) { HotspotData::write_xml (xml); }
   std::string  status_line();
 };
 
 ///
-class EntranceObj : public PLFObj,
+class EntranceObj : public SpriteEditorObj,
 		    public EntranceData
 {
 private:
 public:
   EntranceObj(const EntranceData&);
-  ~EntranceObj();
 
   boost::shared_ptr<EditorObj> duplicate();
-  void save(std::ofstream* plf, std::ofstream* psm);  
-  void save_xml(std::ofstream* xml);
+  void write_xml(std::ofstream* xml) { EntranceData::write_xml (xml); }
   std::string status_line();
 };
 
 ///
-class ExitObj : public PLFObj,
+class ExitObj : public SpriteEditorObj,
 		public ExitData
 {
 private:
+  CL_Vector pos;
 public:
   ExitObj(const ExitData&);
-  ~ExitObj();
 
   boost::shared_ptr<EditorObj> duplicate();
-  void save_xml(std::ofstream* xml);
-  void save(std::ofstream* plf, std::ofstream* psm);  
+  void write_xml(std::ofstream* xml) { ExitData::write_xml (xml); }
   std::string  status_line();
 };
 
 
 ///
-class TrapObj : public PLFObj,
+class TrapObj : public SpriteEditorObj,
 		protected TrapData
 {
 private:
   int frame;
 public:
   TrapObj(const TrapData&);
-  ~TrapObj();
 
   boost::shared_ptr<EditorObj> duplicate();
-  void save(std::ofstream* plf, std::ofstream* psm);  
-  void save_xml(std::ofstream* xml);
+  void write_xml(std::ofstream* xml) { TrapData::write_xml (xml); }
   void draw (boost::dummy_ptr<EditorView> view);
   std::string  status_line();
 };
 
 ///
-class LiquidObj : public PLFObj,
+class LiquidObj : public SpriteEditorObj,
 		  protected LiquidData
 {
 private:
 public:
   LiquidObj(const LiquidData& data);
-  LiquidObj(const LiquidObj& data);
-  ~LiquidObj();
 
   boost::shared_ptr<EditorObj> duplicate();
   void draw (boost::dummy_ptr<EditorView> view);
   void draw_mark (boost::dummy_ptr<EditorView> view);
-  bool mouse_over(int, int);
   void save(std::ofstream* plf, std::ofstream* psm);
-  void save_xml(std::ofstream* xml);
+  void write_xml(std::ofstream* xml) { LiquidData::write_xml (xml); }
   std::string  status_line();
+
+  int get_width () { return  sprite.get_width () * width; }
 
   void make_larger ();
   void make_smaller ();

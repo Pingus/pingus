@@ -1,4 +1,4 @@
-//  $Id: ConveyorBelt.cc,v 1.22 2001/08/10 19:59:20 grumbel Exp $
+//  $Id: ConveyorBelt.cc,v 1.23 2001/08/11 18:53:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "../editor/EditorView.hh"
 #include "../World.hh"
 #include "../PinguHolder.hh"
 #include "../PingusResource.hh"
@@ -85,7 +86,7 @@ std::list<boost::shared_ptr<EditorObj> >
 ConveyorBeltData::create_EditorObj ()
 {
   EditorObjLst lst; 
-  lst.push_back(boost::shared_ptr<EditorObj> (new EditorConveyorBeltObj (this)));
+  lst.push_back(boost::shared_ptr<EditorObj> (new EditorConveyorBeltObj (*this)));
   return lst;
 }
 
@@ -152,30 +153,24 @@ ConveyorBelt::update(float delta)
     }
 }
 
-EditorConveyorBeltObj::EditorConveyorBeltObj (WorldObjData* obj)
-{
-  ConveyorBeltData* conveyor_belt = dynamic_cast<ConveyorBeltData*>(obj);
+/*************************/
+/* EditorConveyorBeltObj */
+/*************************/
 
+EditorConveyorBeltObj::EditorConveyorBeltObj (const ConveyorBeltData& data)
+  : ConveyorBeltData (data)
+{
   left_sur   = PingusResource::load_surface ("conveyorbelt_left", "worldobjs");
   right_sur  = PingusResource::load_surface ("conveyorbelt_right", "worldobjs");
   middle_sur = PingusResource::load_surface ("conveyorbelt_middle", "worldobjs");
-
-  EditorObj::width  = left_sur.get_width() + right_sur.get_width()
-    + ConveyorBeltData::width * middle_sur.get_width ();
-  EditorObj::height = middle_sur.get_height ();
-
-  pos = conveyor_belt->pos;
-  position = &pos;
-  ConveyorBeltData::width = conveyor_belt->width;
-  speed = conveyor_belt->speed;
-  ConveyorBeltData::width = conveyor_belt->width;
+  
   counter = 0.0f;
 }
 
 boost::shared_ptr<EditorObj> 
 EditorConveyorBeltObj::duplicate()
 {
-  return boost::shared_ptr<EditorObj>(new EditorConveyorBeltObj (this));
+  return boost::shared_ptr<EditorObj>(new EditorConveyorBeltObj (*this));
 }
 
 void
@@ -203,14 +198,6 @@ EditorConveyorBeltObj::draw_scroll_map(int x_pos, int y_pos, int arg_width, int 
 }
 
 std::list<boost::shared_ptr<EditorObj> > 
-EditorConveyorBeltObj::create (WorldObjData* obj)
-{
-  std::list<boost::shared_ptr<EditorObj> > objs;
-  objs.push_back (boost::shared_ptr<EditorObj>(new EditorConveyorBeltObj(obj)));
-  return objs;
-}
-
-std::list<boost::shared_ptr<EditorObj> > 
 EditorConveyorBeltObj::create (const CL_Vector& pos)
 {
   ConveyorBeltData data;
@@ -220,18 +207,30 @@ EditorConveyorBeltObj::create (const CL_Vector& pos)
   return data.create_EditorObj ();
 }
   
-void
-EditorConveyorBeltObj::save_xml (std::ofstream* xml)
-{
-  write_xml (xml);
-}
-
 std::string 
 EditorConveyorBeltObj::status_line()
 {
   char str[1024];
   sprintf (str, "ConveyorBelt - (%f, %f, %f) Speed: %f", pos.x, pos.y, pos.z, speed);
   return str;
+}
+
+int 
+EditorConveyorBeltObj::get_width ()
+{
+  return left_sur.get_width() + right_sur.get_width() + width * middle_sur.get_width ();
+}
+
+int 
+EditorConveyorBeltObj::get_height ()
+{
+  return middle_sur.get_height ();
+}
+
+void 
+EditorConveyorBeltObj::set_position_offset(const CL_Vector& offset)
+{
+  pos += offset;
 }
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: Teleporter.cc,v 1.24 2001/08/10 19:59:20 grumbel Exp $
+//  $Id: Teleporter.cc,v 1.25 2001/08/11 18:53:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #include "../PingusResource.hh"
 #include "../PinguHolder.hh"
 #include "../XMLhelper.hh"
+#include "../editor/EditorView.hh"
 #include "Teleporter.hh"
 
 TeleporterData::TeleporterData (const TeleporterData& data)
@@ -143,15 +144,12 @@ Teleporter::update (float delta)
 /********************/
 
 EditorTeleporterObj::EditorTeleporterObj (const TeleporterData& data)
+  : SpriteEditorObj ("teleporter", "worldobjs", pos)
 {
-  surf = PingusResource::load_surface ("teleporter", "worldobjs");
-  width = surf.get_width ();
-  height = surf.get_height ();
+  sprite.set_align_center ();
 
   pos        = data.pos;
-  position   = &pos;
   target_pos = data.target_pos;
-  //std::cout << "EditorTeleporter(): " << &target_pos << " - " << target_pos << std::endl;
 }
 
 boost::shared_ptr<EditorObj> 
@@ -195,12 +193,12 @@ void
 EditorTeleporterObj::draw (boost::dummy_ptr<EditorView> view)
 {
   //std::cout << "Drawing line" << std::endl;
-  view->draw_line (int(pos.x + width/2), 
-		   int(pos.y + height/2),
+  view->draw_line (int(pos.x), 
+		   int(pos.y),
 		   int(target_pos.x), 
 		   int(target_pos.y),
 		   0.0, 1.0, 0.0, 0.5);
-  EditorObj::draw (view);
+  SpriteEditorObj::draw (view);
 }
 
 void
@@ -222,33 +220,15 @@ EditorTeleporterObj::status_line()
   return str;
 }
 
-EditorTeleporterTargetObj::EditorTeleporterTargetObj (EditorTeleporterObj* teleporter)
+/*****************************/
+/* EditorTeleporterTargetObj */
+/*****************************/
+
+EditorTeleporterTargetObj::EditorTeleporterTargetObj (EditorTeleporterObj* arg_teleporter)
+  : SpriteEditorObj ("teleporter2", "worldobjs", arg_teleporter->get_target_pos_ref ()),
+  teleporter (arg_teleporter)
 {
-  surf = PingusResource::load_surface ("teleporter2", "worldobjs");
-
-  x_of = -int(surf.get_width ())/2;
-  y_of = -int(surf.get_height ())/2;
-
-  std::cout << "OFFSETS:" << x_of << " " << y_of << std::endl;
-
-  width    = surf.get_width ();
-  height   = surf.get_height ();
-  position = teleporter->get_target_pos_p ();
-
-  //std::cout << "EditorTeleporterTargetObj: " << pos << " - " << *pos << std::endl;
-}
-
-boost::shared_ptr<EditorObj> 
-EditorTeleporterTargetObj::duplicate()
-{
-  std::cout << "EditorTeleporterTargetObj::duplicate(): not implemented" << std::endl;
-  return boost::shared_ptr<EditorObj> ();
-}
-
-void
-EditorTeleporterTargetObj::save_xml (std::ofstream* xml)
-{
-  // do nothing, all the saving is done inside the EditorTeleporterObj
+  sprite.set_align_center();
 }
 
 std::string
@@ -256,7 +236,7 @@ EditorTeleporterTargetObj::status_line()
 {
   char str[1024];
   sprintf (str, "TeleporterTarget - %f %f %f", 
-	   position->x, position->y, position->z);
+	   pos_ref.x, pos_ref.y, pos_ref.z);
   return str;
 }
 

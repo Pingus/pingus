@@ -1,4 +1,4 @@
-//  $Id: LiquidData.cc,v 1.2 2001/08/10 10:56:13 grumbel Exp $
+//  $Id: LiquidData.cc,v 1.3 2001/08/11 18:53:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #include "boost/smart_ptr.hpp"
 #include "Liquid.hh"
 #include "editor/PLFObj.hh"
+#include "StringConverter.hh"
 #include "LiquidData.hh"
 
 void 

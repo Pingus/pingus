@@ -1,4 +1,4 @@
-//  $Id: ObjectManager.hh,v 1.18 2001/08/04 12:46:22 grumbel Exp $
+//  $Id: ObjectManager.hh,v 1.19 2001/08/11 18:53:39 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,9 +20,11 @@
 #ifndef OBJECTMANAGER_HH
 #define OBJECTMANAGER_HH
 
+#include "../boost/dummy_ptr.hpp"
+#include "../ActionData.hh"
 #include "../Color.hh"
-#include "EditorObj.hh"
 
+class EditorView;
 class EditorObj;
 
 /// Manager for all level objects.
@@ -36,29 +38,18 @@ private:
   
   /// Other Level data
   std::map<std::string, std::string> description;
-  ///
   std::map<std::string, std::string> levelname;
-  ///
   std::vector<ActionData> actions;
-  ///
   std::vector<boost::shared_ptr<BackgroundData> > backgrounds;
-  ///
+
   int    number_to_save;
-  ///
   int    number_of_pingus;
-  ///
   int    level_time;
-  ///
   int    height;
-  ///
   int    width;
-  ///
   int    start_x_pos;
-  ///
   int    start_y_pos;
-  ///
   std::string author;
-  ///
   bool   quit;
 
   /** All objects which are visible in the editor */ 
@@ -68,11 +59,6 @@ private:
       selection */
   std::list<boost::shared_ptr<EditorObj> > current_objs;
 
-  ///
-  //int x_offset;
-  ///
-  //int y_offset;
-  ///
   int move_offset;
 
   Color bg;
@@ -95,8 +81,7 @@ public:
   void new_level ();
   ///
   void load_level (std::string filename);
-  /// Save the current level (obsolete)
-  void save_level (std::string filename);
+
   /// Save the current level in an xml file
   void save_level_xml (std::string filename);
 

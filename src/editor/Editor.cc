@@ -1,4 +1,4 @@
-//  $Id: Editor.cc,v 1.30 2001/08/07 18:14:15 grumbel Exp $
+//  $Id: Editor.cc,v 1.31 2001/08/11 18:53:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -453,12 +453,13 @@ Editor::interactive_move_object()
 void
 Editor::edit_current_objs()
 {
-  boost::shared_ptr<EditorObj> obj = object_manager->get_current_obj();
+  std::cout << "Editor::edit_current_objs(): Not implemented" << std::endl;
+  /*  boost::shared_ptr<EditorObj> obj = object_manager->get_current_obj();
 
   if (obj.get())
     obj->gui_edit_obj();
   else
-    std::cout << "No single object selected" << std::endl;
+  std::cout << "No single object selected" << std::endl;*/
 }
 
 void 
@@ -513,165 +514,5 @@ Editor::interactive_load()
     }
 }
 */
-
-/***********************************************
-$Log: Editor.cc,v $
-Revision 1.30  2001/08/07 18:14:15  grumbel
-Some support for launching a level directly in the editor
-
-Revision 1.29  2001/08/04 12:46:22  grumbel
-Some code cleanup and warning removal
-
-Revision 1.28  2001/06/16 15:01:54  grumbel
-Some fixup for the 0.5.0 release
-
-Revision 1.27  2001/05/20 13:00:59  grumbel
-Some small fixes to the actions
-
-Revision 1.26  2001/05/19 20:58:42  grumbel
-Some more zooming support
-
-Revision 1.25  2001/05/18 19:17:08  grumbel
-Added zooming support to the editor
-
-Revision 1.24  2001/05/13 18:45:08  grumbel
-Some more spelling error fixes by Felix
-
-Revision 1.23  2001/03/18 17:45:05  grumbel
-q&d ported pingus to the newest clanlib cvs, some things like mouse button events are not fully working yet
-
-Revision 1.22  2000/12/16 23:11:22  grumbel
-replaced most pointers with smart_ptr's, this might fix some memory holes and is probally a good start to clean up the dirty object generation code
-
-Revision 1.21  2000/10/30 16:17:50  grumbel
-- added support to disable gnu gettext
-- added support for the teleporter in the editor (mostly untested)
-- fixed some resource names to fit the new directory structure
-
-I am now starting to move to the new directory structure and to the png
-files, this will take some time, so expect some trouble when you do a
-cvs update
-
-Revision 1.20  2000/09/12 11:11:36  grumbel
-Reinserted the signal disconnect()'s
-
-Revision 1.19  2000/08/28 00:34:39  grumbel
-Added support for multiple background types and multiple background layers
-Removed some .disconnect() cause they segfault here
-
-Revision 1.18  2000/08/11 21:17:54  grumbel
-Added a level map into the ScrollMap, but its needs some optimizations
-
-Revision 1.17  2000/08/11 01:07:34  grumbel
-Some more fixes for the scrollmap, it work now basically.
-
-Revision 1.16  2000/08/09 14:39:37  grumbel
-Updated Pingus to use ClanLib 0.5 CVS, it will no longer work with ClanLib 0.4
-
-Revision 1.15  2000/07/30 01:47:37  grumbel
-XML support, currently not activated
-
-Revision 1.14  2000/07/04 22:59:13  grumbel
-Fixed scrolling to be no longer fast-forward depended, thanks to Alan Cox for finding this and some other bugs :-)
-Added support for reading datafile or scriptfile (--use-datafile, --use-scriptfile)
-
-Revision 1.13  2000/06/25 20:22:18  grumbel
-Rewrote some parts of the resource management, to make it possible to transparently read real files instead of datafiles
-
-Revision 1.12  2000/06/12 20:31:31  grumbel
-Fixed handling of transparent spots in the editor
-Added a faster screenshot function (only for 16bit)
-Added global fps display
-
-Revision 1.11  2000/06/10 07:57:00  grumbel
-Added wrapper around CL_MouseCursor and added an option to disable the software cursor, due to probable bugs in CL_MouseCursor
-
-Revision 1.10  2000/04/24 13:15:42  grumbel
-Added  Felix Natter's namespace clean ups
-
-Revision 1.9  2000/04/14 18:28:27  grumbel
-Fixed ColMap again, bridger should work correctly again
-
-Revision 1.8  2000/03/12 17:08:40  grumbel
-Misc fixes I forgot yesterday
-
-Revision 1.7  2000/02/28 03:50:43  grumbel
-Some mouse cursor changes, to keep up with ClanLib
-
-Revision 1.6  2000/02/25 02:35:27  grumbel
-Added a more or less useless small map, which should be used to scroll around in the level, misc other changes/fixes
-
-Revision 1.5  2000/02/15 13:09:51  grumbel
-Misc cleanups, changes some messages to only appear when verbose > 0
-
-Revision 1.4  2000/02/12 20:53:45  grumbel
-Changed the rectangle selection in the editor to use non filled rects
-
-Revision 1.3  2000/02/11 16:58:28  grumbel
-Added correct namespaces
-
-Revision 1.2  2000/02/09 21:43:43  grumbel
-CVS should be up to date again...
-
-Revision 1.42  2000/02/03 09:36:59  grumbel
-Misc fixes
-
-Revision 1.41  2000/01/29 15:50:52  grumbel
-Added some buttons and added some other function, the editor should work now mostly
-
-Revision 1.40  2000/01/28 20:44:38  grumbel
-Most of the input handling is now event based, added some functionality to the new panel
-
-Revision 1.39  2000/01/25 13:09:47  grumbel
-Added a button panel
-
-Revision 1.38  2000/01/16 16:39:25  grumbel
-Added some handling for key releases
-
-Revision 1.37  2000/01/15 20:19:14  grumbel
-Changed most the Keyboard Input stuff to use EventChains
-
-Revision 1.36  2000/01/14 18:48:10  grumbel
-Misc code cleanups and fixes, moved all struct ???_data to there own files.
-
-Revision 1.35  2000/01/11 17:43:01  grumbel
-Changed the inputbuffers to the new ClanLib style, still a bit buggy
-
-Revision 1.34  2000/01/10 20:38:20  grumbel
-Changed the handling of how new actions are created (use get_uaction() now), it should be now safer and faster
-
-Revision 1.33  2000/01/08 16:42:41  grumbel
-Fixed the lowering and raising of objects
-
-Revision 1.32  2000/01/08 00:49:44  grumbel
-Added a teleporter, done by David Turner
-
-Revision 1.31  2000/01/07 23:16:03  grumbel
-Fixed objected duplication, it should work now again
-
-Revision 1.30  2000/01/07 20:24:32  grumbel
-Changed all GPL statements to a standard look & feel ;-)
-
-Revision 1.29  2000/01/06 22:42:18  grumbel
-Misc fixes
-
-Revision 1.28  2000/01/05 22:23:11  grumbel
-Misc changes and fixes
-
-Revision 1.27  2000/01/04 00:00:08  grumbel
-Misc changes and fixes
-
-Revision 1.26  1999/12/21 12:02:03  grumbel
-Misc fixes
-
-Revision 1.25  1999/12/16 21:22:13  grumbel
-Commited fix for the bridger and misc other cleanups
-
-Revision 1.24  1999/12/13 22:49:49  grumbel
-Fixed a bug in the 'buttons' section
-
-Revision 1.23  1999/12/12 03:05:30  grumbel
-Added some cvs keywords, misc other fixes
-************************************************/
 
 /* EOF */

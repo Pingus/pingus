@@ -1,4 +1,4 @@
-//  $Id: EditorWorldObj.hh,v 1.5 2000/12/16 23:11:24 grumbel Exp $
+//  $Id: EditorWorldObj.hh,v 1.6 2001/08/11 18:53:39 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,15 +27,11 @@ class EditorWorldObj : public PLFObj
 {
 private:
 public:
-  ///
   EditorWorldObj ();
-  ///
   virtual ~EditorWorldObj () {}
-  ///
+
   virtual boost::shared_ptr<EditorObj> duplicate();
-  ///
   virtual void save(std::ofstream* plf, std::ofstream* psm) {}
-  ///
   virtual void save_xml(std::ofstream* xml);
 };
 

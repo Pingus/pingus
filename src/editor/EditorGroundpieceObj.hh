@@ -1,4 +1,4 @@
-// $Id: EditorGroundpieceObj.hh,v 1.2 2001/07/24 21:39:46 grumbel Exp $
+// $Id: EditorGroundpieceObj.hh,v 1.3 2001/08/11 18:53:39 grumbel Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,33 +21,19 @@
 #define PSMOBJ_HH
 
 #include <cstdio>
-#include "EditorObj.hh"
+#include "SpriteEditorObj.hh"
 #include "../GroundpieceData.hh"
 
 ///
-class EditorGroundpieceObj : public EditorObj,
-			     public GroundpieceData
+class EditorGroundpieceObj : public GroundpieceData,
+			     public SpriteEditorObj
 {
-private:
 public:
-  ///
   EditorGroundpieceObj(const GroundpieceData& data);
-  ///
-  EditorGroundpieceObj(const EditorGroundpieceObj&);
-  ///
-  virtual ~EditorGroundpieceObj();
-  ///
-  virtual void draw (boost::dummy_ptr<EditorView> view);
-  ///
-  virtual void save(std::ofstream* plf, std::ofstream* psm);
-  ///
-  virtual void save_xml(std::ofstream* xml);
-  ///
+
+  void write_xml(std::ofstream* xml) { GroundpieceData::write_xml (xml); }
   boost::shared_ptr<EditorObj> duplicate();
-  ///
   std::string status_line();
-  ///
-  void gui_edit_obj();
 };
 
 #endif

@@ -1,4 +1,4 @@
-//  $Id: ObjectManager.cc,v 1.48 2001/08/10 10:56:14 grumbel Exp $
+//  $Id: ObjectManager.cc,v 1.49 2001/08/11 18:53:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,10 +29,11 @@
 #include "../XMLhelper.hh"
 #include "../backgrounds/SurfaceBackgroundData.hh"
 #include "../WorldObjData.hh"
-#include "EditorWorldObj.hh"
 #include "StartPos.hh"
 #include "../generic/ListHelper.hh"
 #include "ObjectManager.hh"
+#include "EditorObj.hh"
+#include "EditorView.hh"
 
 #ifdef WIN32
 #  define for if(0);else for
@@ -174,7 +175,7 @@ ObjectManager::load_level (std::string filename)
 
 
 #ifndef WIN32 // FIXME: Compiler error in Windows
-  editor_objs.sort(EditorObj_less());
+  //FIXME: Repair me  editor_objs.sort(EditorObj_less());
 #endif
 
   std::cout << "Reading props" << std::endl;
@@ -200,17 +201,18 @@ ObjectManager::load_level (std::string filename)
 void
 ObjectManager::draw_scroll_map(int x_pos, int y_pos, int arg_width, int arg_height)
 {
+  /*
   for (EditorObjIter i = editor_objs.begin(); i != editor_objs.end(); ++i) 
     {
       (*i)->draw_scroll_map(x_pos, y_pos,
 			    arg_width, arg_height);
-      /*
+			    
 	Display::draw_rect(x_pos + (*i)->get_x_pos() * arg_width / width,
 	y_pos + (*i)->get_y_pos() * arg_height / height,
 	x_pos + (*i)->get_x_pos() * arg_width / width + 10,
 	y_pos + (*i)->get_y_pos() * arg_height / height + 10,
-	0.0, 1.0, 0.0, 1.0);*/
-    }  
+	0.0, 1.0, 0.0, 1.0);
+    }*/
 }
 
 void 
@@ -232,104 +234,6 @@ ObjectManager::draw(boost::dummy_ptr<EditorView> view)
   view->draw_rect(0, 0, width, height,
 		  bg.red, bg.green, bg.blue, 1.0);
 }
-
-void
-ObjectManager::save_level (string filename)
-{
-  cout << "Saving Levelfile: " << filename << endl;
-
-  ofstream plf_out;
-  ofstream psm_out;
-
-  std::string plf_filename = filename + ".plf";
-  std::string psm_filename = filename + ".psm";
-
-  plf_out.open(plf_filename.c_str());
-  psm_out.open(psm_filename.c_str());
-
-  if (!plf_out) {
-    cout << "Couldn't open plf: " << filename << endl;
-    return;
-  }
-
-  if (!psm_out) {
-    cout << "Couldn't open psm: " << filename << endl;
-    return;
-  }
-
-  // FIXME: we need some error checking 
-  plf_out << "/* This level was created with the PLE\n"
-	  << " * $Id: ObjectManager.cc,v 1.48 2001/08/10 10:56:14 grumbel Exp $\n"
-	  << " */"
-	  << endl;
-  
-  plf_out << "global {\n"
-	  << "  author = \"" << author << "\";\n"
-	  << "  start_x_pos = " << start_x_pos << ";\n"
-	  << "  start_y_pos = " << start_y_pos << ";\n"
-	  << "  levelname = \"" << levelname[default_language] << "\";\n" 
-	  << "  description = \"" << description[default_language] << "\";\n"
-	  << "  number_of_pingus = " << number_of_pingus << ";\n"
-	  << "  number_to_save = " << number_to_save << ";\n"
-	  << "  time = " << level_time << ";\n"
-	  << "}\n"
-	  << endl;
-
-  plf_out << "ground {\n"
-	  << "  maptype = \"SPOT\";\n"
-    //    	  << "  data    = (file)\"" << System::basename(filename + ".psm") << "\";\n"
-	  << "  width   = " << width << ";\n"
-	  << "  height  = " << height << ";\n"
-	  << "  colmap  = (auto);\n"
-	  << "}\n"
-	  << endl;
-
-  if (!backgrounds.empty ())
-    {
-      SurfaceBackgroundData* sur_background;
-      sur_background = dynamic_cast<SurfaceBackgroundData*>(backgrounds.begin()->get());
-
-      if (sur_background)
-	{
-	  plf_out << "background {\n"
-		  << "  image = (resource:" << sur_background->desc.datafile << ")\"" << sur_background->desc.res_name << "\";\n"
-		  << "  dim   = \""   << sur_background->color.alpha   << "\";\n"
-		  << "  red   = \""   << sur_background->color.red   << "\";\n"
-		  << "  green = \""   << sur_background->color.green << "\";\n"
-		  << "  blue  = \""   << sur_background->color.blue << "\";\n"
-		  << "  scroll_x = "  << sur_background->scroll_x << ";\n"
-		  << "  scroll_y = "  << sur_background->scroll_y << ";\n"
-		  << "  para_x = "    << sur_background->para_x << ";\n"
-		  << "  para_y = "    << sur_background->para_y << ";\n"
-		  << "  stretch_x = " << sur_background->stretch_x << ";\n"
-		  << "  stretch_y = " << sur_background->stretch_y << ";\n" 
-		  << "}\n"
-		  << endl;
-	}
-      else
-	{
-	  std::cout << "ObjectManager: Background of unknown type, not supported by .plf files" << std::endl;
-	}
-    }
-
-  // Printing actions to file
-  plf_out << "buttons {\n";
-  for (vector<ActionData>::iterator i = actions.begin(); i != actions.end(); ++i) {
-    plf_out << "  " << (*i).name << " = " << (*i).number_of << ";" << endl;
-  }
-  plf_out << "}\n" << endl;
-
-  for (EditorObjIter i = editor_objs.begin(); i != editor_objs.end(); ++i) {
-    (*i)->save(&plf_out, &psm_out);
-  }
-  
-  plf_out << "/* EOF */" << endl;
-
-  psm_out.close();
-  plf_out.close();
-  cout << "Saving finished" << endl;
-}
-
 
 /// Save the current level in an xml file
 void
@@ -403,7 +307,7 @@ ObjectManager::save_level_xml (std::string filename)
   xml << "  </action-list>\n" << std::endl;
 
   for (EditorObjIter i = editor_objs.begin(); i != editor_objs.end(); ++i) {
-    (*i)->save_xml(&xml);
+    (*i)->write_xml(&xml);
   }
   
   xml << "</pingus-level>\n" << std::endl;
@@ -502,8 +406,7 @@ ObjectManager::rect_get_current_objs(float x_1, float y_1, float x_2, float y_2)
 
   for(EditorObjIter i = editor_objs.begin(); i != editor_objs.end(); ++i) 
     {
-      if ((*i)->is_in_rect((int) x1, (int) y1, 
-			   (int) x2, (int) y2))
+      if ((*i)->is_in_rect(CL_Rect(x1, y1, x2, y2)));
 	current_objs.push_back(*i);
     }
 }
@@ -524,7 +427,7 @@ ObjectManager::select_object(CL_Vector pos)
 {
   for(EditorObjRIter i = editor_objs.rbegin(); i != editor_objs.rend(); ++i) 
     {
-      if ((*i)->is_over((int) pos.x, (int)pos.y)) 
+      if ((*i)->is_over(pos))
 	{
 	  return *i;
 	}
@@ -538,7 +441,7 @@ ObjectManager::move_current_objs(float x, float y)
 {
   for (CurrentObjIter i = current_objs.begin(); i != current_objs.end(); i++) 
     {
-      (*i)->set_position_offset(x, y);
+      (*i)->set_position_offset(CL_Vector(x, y));
     }     
 }
 

@@ -1,4 +1,4 @@
-//  $Id: SwitchDoor.cc,v 1.19 2001/08/10 19:59:20 grumbel Exp $
+//  $Id: SwitchDoor.cc,v 1.20 2001/08/11 18:53:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #include "../World.hh"
 #include "../PinguHolder.hh"
 #include "../PingusResource.hh"
+#include "../editor/EditorView.hh"
 #include "SwitchDoor.hh"
 
 SwitchDoorData::SwitchDoorData ()
@@ -111,7 +112,7 @@ SwitchDoorData::create(xmlDocPtr doc, xmlNodePtr cur)
 boost::shared_ptr<WorldObj> 
 SwitchDoorData::create_WorldObj ()
 {
-  return boost::shared_ptr<WorldObj> (new SwitchDoor (this));
+  return boost::shared_ptr<WorldObj> (new SwitchDoor (*this));
 }
 
 /** Create an EditorObj from the given data object */
@@ -119,7 +120,7 @@ std::list<boost::shared_ptr<EditorObj> >
 SwitchDoorData::create_EditorObj ()
 {
   EditorObjLst lst; 
-  EditorSwitchDoorObj* obj = new EditorSwitchDoorObj (this);
+  EditorSwitchDoorObj* obj = new EditorSwitchDoorObj (*this);
   lst.push_back(boost::shared_ptr<EditorObj> (obj));
   lst.push_back(boost::shared_ptr<EditorObj> (new EditorSwitchDoorSwitchObj (obj)));
   return lst;
@@ -129,7 +130,8 @@ SwitchDoorData::create_EditorObj ()
 // SwitchDoor //
 ////////////////
 
-SwitchDoor::SwitchDoor (WorldObjData* data)
+SwitchDoor::SwitchDoor (const SwitchDoorData& data)
+  : SwitchDoorData (data)
 {
   door_box   = PingusResource::load_surface("switchdoor_box", "worldobjs");
   door_tile  = PingusResource::load_surface("switchdoor_tile", "worldobjs");
@@ -137,12 +139,7 @@ SwitchDoor::SwitchDoor (WorldObjData* data)
   switch_sur = PingusResource::load_surface("switchdoor_switch", "worldobjs");
   is_opening = false;
 
-  SwitchDoorData* switchdoor = dynamic_cast<SwitchDoorData*>(data);
-
-  door_height = switchdoor->door_height;
   current_door_height = door_height;
-  door_pos    = switchdoor->door_pos;
-  switch_pos  = switchdoor->switch_pos;
 }
 
 void 
@@ -213,23 +210,10 @@ SwitchDoor::update(float delta)
 // EditorSwitchDoorSwitchObj //
 ///////////////////////////////
 
-EditorSwitchDoorSwitchObj::EditorSwitchDoorSwitchObj (SwitchDoorData* data)
+EditorSwitchDoorSwitchObj::EditorSwitchDoorSwitchObj (EditorSwitchDoorObj* data)
+  : SpriteEditorObj ("switchdoor_switch", "worldobjs", data->switch_pos),
+  door (data)
 {
-  SwitchDoorData* obj = dynamic_cast<SwitchDoorData*>(data);
-  assert (obj);
-
-  surf = PingusResource::load_surface ("switchdoor_switch", "worldobjs");
-
-  position = &obj->switch_pos;
-
-  width  = surf.get_width ();
-  height = surf.get_height ();
-}
-
-void
-EditorSwitchDoorSwitchObj::save_xml (std::ofstream* xml)
-{
-  // do nothing
 }
 
 std::string 
@@ -239,46 +223,20 @@ EditorSwitchDoorSwitchObj::status_line()
 }
 
 boost::shared_ptr<EditorObj> 
-EditorSwitchDoorSwitchObj::duplicate()
-{
-  std::cout << "EditorSwitchDoorSwitchObj::duplicate(): not implemented" << std::endl;
-  return boost::shared_ptr<EditorObj> ();
+EditorSwitchDoorSwitchObj::duplicate() 
+{ 
+  return door->duplicate (); 
 }
 
 /////////////////////////
 // EditorSwitchDoorObj //
 /////////////////////////
 
-EditorSwitchDoorObj::EditorSwitchDoorObj (WorldObjData* data)
+EditorSwitchDoorObj::EditorSwitchDoorObj (const SwitchDoorData& data)
+  : SwitchDoorData (data)
 {
-  SwitchDoorData* obj = dynamic_cast<SwitchDoorData*>(data);
-  assert (obj);
-
   door_box   = PingusResource::load_surface("switchdoor_box", "worldobjs");
   door_tile  = PingusResource::load_surface("switchdoor_tile", "worldobjs");
-
-  surf = door_box;
-
-  door_pos  = obj->door_pos;
-  switch_pos = obj->switch_pos;
-  door_height = obj->door_height;
-
-  width  = door_box.get_width ();
-  height = (door_tile.get_height () * door_height) + door_box.get_height ();
-  
-  position = &door_pos;
-}
-
-std::list<boost::shared_ptr<EditorObj> > 
-EditorSwitchDoorObj::create (WorldObjData* obj)
-{
-  std::list<boost::shared_ptr<EditorObj> > objs;
-  boost::shared_ptr<EditorSwitchDoorObj> switchdoor_obj (new EditorSwitchDoorObj (obj));
-
-  objs.push_back (switchdoor_obj);
-  objs.push_back (boost::shared_ptr<EditorObj>(new EditorSwitchDoorSwitchObj (switchdoor_obj.get())));
-
-  return objs;
 }
 
 boost::shared_ptr<EditorObj> 
@@ -322,13 +280,13 @@ EditorSwitchDoorObj::draw (boost::dummy_ptr<EditorView> view)
 {
   view->draw_line (door_pos, switch_pos, 1.0, 0.0, 0.0);
 
-  view->draw (door_box, int(door_pos.x + x_of), int(door_pos.y + y_of));
+  view->draw (door_box, int(door_pos.x), int(door_pos.y));
 
   for (int i = 0; i < door_height; i++)
     {
       view->draw (door_tile, 
-		  int(door_pos.x + x_of + 1), 
-		  int(door_pos.y + y_of + (i * door_tile.get_height ())
+		  int(door_pos.x + 1), 
+		  int(door_pos.y + (i * door_tile.get_height ())
 		      + door_box.get_height ()));
     }
 }
@@ -344,6 +302,12 @@ EditorSwitchDoorObj::make_smaller ()
 {
   if (door_height > 1)
     door_height -= 1;
+}
+
+void 
+EditorSwitchDoorObj::set_position_offset(const CL_Vector& offset)
+{
+  door_pos += offset;
 }
 
 /* EOF */

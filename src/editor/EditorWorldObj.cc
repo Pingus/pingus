@@ -1,4 +1,4 @@
-//  $Id: EditorWorldObj.cc,v 1.6 2000/12/16 23:11:24 grumbel Exp $
+//  $Id: EditorWorldObj.cc,v 1.7 2001/08/11 18:53:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,9 +17,6 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "../worldobjs/ConveyorBelt.hh"
-#include "../worldobjs/IceBlock.hh"
-#include "../worldobjs/Teleporter.hh"
 #include "../PingusResource.hh"
 #include "EditorWorldObj.hh"
 

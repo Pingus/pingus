@@ -1,4 +1,4 @@
-//  $Id: GroundpieceData.cc,v 1.1 2001/08/10 11:05:32 grumbel Exp $
+//  $Id: GroundpieceData.cc,v 1.2 2001/08/11 18:53:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <list>
+#include "XMLhelper.hh"
 #include "editor/EditorGroundpieceObj.hh"
 
 GroundpieceData::Type 
@@ -79,5 +80,13 @@ GroundpieceData::create_EditorObj()
   return lst;
 }
 
+void
+GroundpieceData::write_xml(std::ofstream* xml)
+{
+  (*xml) << "<groundpiece type=\"" << GroundpieceData::type_to_string(type) << "\">\n";
+  XMLhelper::write_desc_xml(xml, desc);
+  XMLhelper::write_vector_xml(xml, pos);
+  (*xml) << "</groundpiece>\n" << std::endl;
+}
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: ExitData.cc,v 1.1 2001/08/10 11:05:32 grumbel Exp $
+//  $Id: ExitData.cc,v 1.2 2001/08/11 18:53:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,8 +22,19 @@
 #include "ExitData.hh"
 
 void 
-ExitData::write_xml(ofstream *)
+ExitData::write_xml(ofstream* xml)
 {
+  (*xml) << "<exit use-old-pos-handling=\"0\">\n";
+
+  // FIXME: Repair me
+  //pos.x += surf.get_width ()/2;
+  //pos.y += surf.get_height ();
+  XMLhelper::write_position_xml(xml, pos);
+  
+  XMLhelper::write_desc_xml(xml, desc);
+  (*xml) << "  <owner-id>" << owner_id << "</owner-id>"
+	 << "</exit>\n"
+	 << std::endl;
 }
 
 boost::shared_ptr<WorldObjData> 

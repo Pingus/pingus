@@ -1,4 +1,4 @@
-//  $Id: PLFObj.cc,v 1.49 2001/08/10 19:59:20 grumbel Exp $
+//  $Id: PLFObj.cc,v 1.50 2001/08/11 18:53:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,38 +24,14 @@
 #include "../Display.hh"
 #include "../PingusError.hh"
 #include "../PingusResource.hh"
+#include "EditorView.hh"
 #include "PLFObj.hh"
 
 using namespace std;
 
-PLFObj::PLFObj()
-{
-  mark_color.r = 1.0;
-  mark_color.g = 0.0;
-  mark_color.b = 0.0;
-  mark_color.a = 1.0;
-}
-
-PLFObj::~PLFObj()
-{
-}
-
-std::string
-PLFObj::status_line()
-{
-  return std::string("--- unsupported object ---");
-}
-
 HotspotObj::HotspotObj(const HotspotData& data)
-  : HotspotData (data)
-{
-  *position = data.pos;
-  surf = PingusResource::load_surface(desc);
-  width = surf.get_width ();
-  height = surf.get_height ();
-}
-
-HotspotObj::~HotspotObj()
+  : SpriteEditorObj (data.desc.res_name, data.desc.datafile, pos),
+    HotspotData (data)
 {
 }
 
@@ -65,40 +41,22 @@ HotspotObj::duplicate()
   return boost::shared_ptr<EditorObj>(new HotspotObj(*this));
 }
 
-void
-HotspotObj::save(ofstream* plf, ofstream* psm)
-{
-  (*plf) << "hotspot {\n"
-	 << "  image = (resource:" << desc.datafile << ")\"" << desc.res_name << "\";\n"
-	 << "  x_pos = " << position->x << ";\n"
-	 << "  y_pos = " << position->y << ";\n"
-	 << "  z_pos = " << position->z << ";\n"
-    	 << "  speed = " << speed << ";\n"
-	 << "  para = \"" << para << "\";\n"
-    //	 << "  para_y = \"" << para.y << "\";\n"
-	 << "}\n"
-	 << endl;  
-}
-
 std::string
 HotspotObj::status_line()
 {
   char str[256];
 
-  sprintf(str, "Hotspot - Speed: %d - X: %.2f - Y: %.2f - Z: %.2f",  speed, position->x, position->y, position->z);
+  sprintf(str, "Hotspot - Speed: %d - X: %.2f - Y: %.2f - Z: %.2f",  
+	  speed, pos.x, pos.y, pos.z);
 
   return std::string(str);
 }
 
-void 
-HotspotObj::save_xml(std::ofstream* xml)
-{
-  write_xml (xml);
-}
-
 EntranceObj::EntranceObj(const EntranceData& data)
-  : EntranceData (data)
+  : SpriteEditorObj (data.desc.res_name, data.desc.datafile, pos),
+    EntranceData (data)
 {
+  /*
   std::cout << "EntranceObj::EntranceObj(const EntranceData& data)" << std::endl;
   *position  = data.pos;
 
@@ -134,52 +92,16 @@ EntranceObj::EntranceObj(const EntranceData& data)
 
   width = surf.get_width ();
   height = surf.get_height ();
-}
-
-EntranceObj::~EntranceObj()
-{
-}
-
-void
-EntranceObj::save_xml(std::ofstream* xml)
-{
-  write_xml (xml);
+  */
 }
 
 boost::shared_ptr<EditorObj>
 EntranceObj::duplicate()
 {
   std::cout << "EntranceObj::duplicate()" << std::endl;
-  return boost::shared_ptr<EditorObj>(new EntranceObj(*this));
-}
+  boost::shared_ptr<EditorObj> entrance (new EntranceObj(*this));
 
-void
-EntranceObj::save(ofstream* plf, ofstream* psm)
-{
-  std::string dir_str = "not set - this is a bug";
-
-  switch(direction)
-    {
-    case EntranceData::LEFT:
-      dir_str = "left";
-      break;
-    case EntranceData::RIGHT:
-      dir_str = "right";
-      break;
-    case EntranceData::MISC:
-      dir_str = "misc";
-      break;
-    }
-
-  (*plf) << "entrance {\n"
-	 << "  type  = " << type << ";\n"
-	 << "  x_pos = " << position->x << ";\n"
-	 << "  y_pos = " << position->y << ";\n"
-	 << "  z_pos = 0;\n"
-	 << "  release_rate = " << release_rate << ";\n"
-	 << "  direction = " << dir_str << ";\n"
-	 << "}\n"
-	 << endl;
+  return entrance;
 }
 
 std::string
@@ -208,9 +130,10 @@ EntranceObj::status_line()
 }
 
 ExitObj::ExitObj(const ExitData& data)
-  : ExitData (data)
+  : SpriteEditorObj (data.desc.res_name, data.desc.datafile, pos),
+    ExitData (data)
 {
-  surf      = PingusResource::load_surface(desc);
+  /*  surf      = PingusResource::load_surface(desc);
   width     = surf.get_width ();
   height    = surf.get_height ();
   *position = data.pos;
@@ -219,11 +142,7 @@ ExitObj::ExitObj(const ExitData& data)
     {
       position->x -= surf.get_width ()/2;
       position->y -= surf.get_height ();
-    }
-}
-
-ExitObj::~ExitObj()
-{
+      }*/
 }
 
 boost::shared_ptr<EditorObj>   
@@ -232,49 +151,22 @@ ExitObj::duplicate()
   return boost::shared_ptr<EditorObj>(new ExitObj(*this));
 }
 
-void
-ExitObj::save(ofstream* plf, ofstream* psm)
-{
-  (*plf) << "exit {\n"
-	 << "  image = (resource:" << desc.datafile << ")\"" << desc.res_name << "\";\n"
-	 << "  x_pos = " << position->x << ";\n"
-	 << "  y_pos = " << position->y << ";\n"
-	 << "  z_pos = " << position->z << ";\n"
-	 << "}\n"
-	 << endl;
-}
-
-void
-ExitObj::save_xml(std::ofstream* xml)
-{
-  (*xml) << "<exit use-old-pos-handling=\"0\">\n";
-
-  Position pos = *position;
-  pos.x_pos += surf.get_width ()/2;
-  pos.y_pos += surf.get_height ();
-  XMLhelper::write_position_xml(xml, pos);
-  
-  XMLhelper::write_desc_xml(xml, desc);
-  (*xml) << "  <owner-id>" << owner_id << "</owner-id>"
-	 << "</exit>\n"
-	 << std::endl;
-}
-
 std::string 
 ExitObj::status_line()
-{
-  char str[256];
-
+{/*
+  char str[256] = {};
+  
   sprintf(str, "Exit - %s - X:%4.2f Y:%4.2f Z:%4.2f OwnerId: %d",
 	  desc.res_name.c_str(),
 	  position->x, position->y, position->z, owner_id);
-
-  return std::string(str);
+ */
+  return std::string("unset");
 }
 
 TrapObj::TrapObj(const TrapData& data)
-  : TrapData (data)
-{
+  : SpriteEditorObj ("", "", pos),
+    TrapData (data)
+{/*
   *position = data.pos;
   frame = 0;
 
@@ -305,11 +197,7 @@ TrapObj::TrapObj(const TrapData& data)
     throw PingusError("'" + type + "': trap is not implemented in editor");
   }
   width = surf.get_width ();
-  height = surf.get_height ();
-}
-
-TrapObj::~TrapObj()
-{
+  height = surf.get_height ();*/
 }
 
 boost::shared_ptr<EditorObj>
@@ -321,73 +209,30 @@ TrapObj::duplicate()
 void
 TrapObj::draw (boost::dummy_ptr<EditorView> view)
 {
-  if (surf) {
+  /*  if (surf) {
     view->draw(surf, *position, frame);
   } else {
     EditorObj::draw(view);
-  }
+    }*/
 }
 
 std::string  
 TrapObj::status_line()
 {
   char str[1024];
-  sprintf (str, "TrapObj: %4.2fx%4.2fx%4.2f", position->x, position->y, position->z);
+  sprintf (str, "TrapObj: %4.2fx%4.2fx%4.2f", pos.x, pos.y, pos.z);
   return str;
 }
 
-void
-TrapObj::save(ofstream* plf, ofstream* psm)
-{
-  (*plf) << "trap {\n"
-	 << "  name = \"" << type << "\";\n"
-	 << "  x_pos = " << position->x << ";\n"
-	 << "  y_pos = " << position->y << ";\n"
-	 << "  z_pos = " << position->z << ";\n"
-	 << "}\n"
-	 << std::endl;
-}
-
-void
-TrapObj::save_xml(std::ofstream* xml)
-{
-  // FIXME: Move this to trap data!
-  (*xml) << "<trap>\n"
-	 << "  <type>" << type << "</type>\n";
-  XMLhelper::write_position_xml(xml, *position);
-  (*xml) << "</trap>\n"
-	 << std::endl;
-}
-
-LiquidObj::LiquidObj(const LiquidObj& data)
-  : LiquidData (data)
-{
-  *position = data.pos;
-  surf = data.surf;
-  EditorObj::width = surf.get_width ();
-  EditorObj::height = surf.get_height ();
-}
-
 LiquidObj::LiquidObj(const LiquidData& data)
-  : LiquidData (data)
+  : SpriteEditorObj (data.desc.res_name, data.desc.datafile, pos),
+    LiquidData (data)
 {
-  position = &pos; // FIXME: Remove this stupid position pointer think!!!!
-  surf = PingusResource::load_surface(desc);
-
   if (old_width_handling)
     {
-      LiquidData::width = (LiquidData::width + surf.get_width ()) / surf.get_width ();
+      width = (width + sprite.get_width ()) / sprite.get_width ();
       old_width_handling = false;
     }
-
-  std::cout << "LiquidData::width: " << LiquidData::width << std::endl;
-
-  EditorObj::width = surf.get_width () * LiquidData::width;
-  EditorObj::height = surf.get_height ();
-}
-
-LiquidObj::~LiquidObj()
-{
 }
 
 boost::shared_ptr<EditorObj>
@@ -399,74 +244,28 @@ LiquidObj::duplicate()
 void
 LiquidObj::draw (boost::dummy_ptr<EditorView> view)
 {
-  for(int i = 0; i < LiquidData::width; i++)
-    view->draw (surf, pos + CL_Vector (i * surf.get_width (), 0));
+  CL_Surface sur(sprite.get_surface ());
+
+  for(int i = 0; i < width; i++)
+    view->draw (sur, pos + CL_Vector (i * sprite.get_width (), 0));
 }
 
 void
 LiquidObj::draw_mark (boost::dummy_ptr<EditorView> view) 
 {
-  view->draw_rect(int(position->x),
-		  int(position->y),
-		  int(position->x + surf.get_width () * LiquidData::width),
-		  int(position->y + surf.get_height()),
-		  mark_color.r, 
-		  mark_color.g,
-		  mark_color.b,
-		  mark_color.a);
-}
-
-bool
-LiquidObj::mouse_over(int x_offset, int y_offset)
-{
-  int height = surf.get_height();
-  int mouse_x = CL_Mouse::get_x();
-  int mouse_y = CL_Mouse::get_y();  
-
-  if (   mouse_x > position->x + x_offset 
-      && mouse_x < position->x + (LiquidData::width * surf.get_width ()) + x_offset
-      && mouse_y > position->y + y_offset 
-      && mouse_y < position->y + height + y_offset)
-    {
-      return true;
-    }
-  else 
-    {
-      return false;
-    }
-}
-
-void
-LiquidObj::save(ofstream* plf, ofstream* psm)
-{
-  (*plf) << "liquid {\n"
-	 << "  image = (resource:" << desc.datafile << ")\"" << desc.res_name << "\";\n"
-	 << "  x_pos = " << position->x << ";\n"
-	 << "  y_pos = " << position->y << ";\n"
-	 << "  z_pos = " << position->z << ";\n"
-	 << "  width = " << LiquidData::width << ";\n"
-    	 << "  speed = " << speed << ";\n"
-	 << "}\n" 
-	 << endl;
-}
-
-void
-LiquidObj::save_xml(std::ofstream* xml)
-{
-  (*xml) << "<liquid use-old-width-handling=\"" << int(old_width_handling) << "\">\n";
-  XMLhelper::write_desc_xml(xml, desc);
-  XMLhelper::write_position_xml(xml, *position);
-  (*xml) << "  <width>" << LiquidData::width << "</width>\n"
-	 << "  <speed>" << speed << "</speed>\n"
-	 << "</liquid>\n" << std::endl;
+  view->draw_rect(int(pos.x),
+		  int(pos.y),
+		  int(pos.x + sprite.get_width () * width),
+		  int(pos.y + sprite.get_height()),
+		  1.0, 1.0, 1.0, 0.0);
 }
 
 std::string  
 LiquidObj::status_line()
 {
   char str[256];
-
-  sprintf(str, "%4.2f:%4.2f:%3.2f:%2d", position->x, position->y, position->z, speed);
+  
+  sprintf(str, "%4.2f:%4.2f:%3.2f:%2d", pos.x, pos.y, pos.z, speed);
 
   return std::string(str);
 }

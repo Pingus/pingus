@@ -1,4 +1,4 @@
-//  $Id: IceBlock.hh,v 1.13 2001/08/10 19:59:20 grumbel Exp $
+//  $Id: IceBlock.hh,v 1.14 2001/08/11 18:53:39 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,7 +24,7 @@
 #include "../boost/smart_ptr.hpp"
 #include "../WorldObj.hh"
 #include "../WorldObjData.hh"
-#include "../editor/EditorWorldObj.hh"
+#include "../editor/SpriteEditorObj.hh"
 
 class IceBlockData : public WorldObjData
 {
@@ -66,20 +66,19 @@ public:
 };
 
 
-class EditorIceBlockObj : public EditorWorldObj, 
-			  public IceBlockData
+class EditorIceBlockObj : public IceBlockData,
+			  public SpriteEditorObj			  
 {
 private:
   
 public:
   EditorIceBlockObj (const IceBlockData& data);
 
-  static std::list<boost::shared_ptr<EditorObj> > create (WorldObjData* obj);
-
   /** Create the object with resonable defaults */
   static std::list<boost::shared_ptr<EditorObj> > create (const CL_Vector& pos);
 
-  void save_xml (std::ofstream* xml);
+  void write_xml(ofstream* xml) { IceBlockData::write_xml (xml); }
+  boost::shared_ptr<EditorObj> duplicate();
   std::string status_line();
 };
 

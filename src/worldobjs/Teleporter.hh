@@ -1,4 +1,4 @@
-//  $Id: Teleporter.hh,v 1.18 2001/08/10 19:59:20 grumbel Exp $
+//  $Id: Teleporter.hh,v 1.19 2001/08/11 18:53:39 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,9 +21,10 @@
 #define TELEPORTER_HH
 
 #include "../boost/smart_ptr.hpp"
+#include "../Sprite.hh"
 #include "../WorldObj.hh"
-#include "../editor/EditorWorldObj.hh"
 #include "../WorldObjData.hh"
+#include "../editor/SpriteEditorObj.hh"
 
 class EditorTeleporterObj;
 
@@ -63,27 +64,9 @@ public:
   int  get_z_pos() const { return (int) pos.z; }
 };
 
-/** A pseudo object to represent the teleporter target; all the
-    data itself is handled inside the EditorTeleporterObj, but we
-    need this helper object to be able to show and move the
-    teleporter target inside the editor */
-class EditorTeleporterTargetObj : public EditorObj
-{
-public:
-  /// Basic constructor
-  EditorTeleporterTargetObj (EditorTeleporterObj* obj);
-  virtual ~EditorTeleporterTargetObj () {}
+class EditorTeleporterTargetObj;
 
-  boost::shared_ptr<EditorObj> duplicate();
-
-  CL_Vector get_position () { return *position; }
-
-  /// The saving will be done in EditorTeleporterObj::save_xml
-  void save_xml (std::ofstream* xml);
-  std::string status_line();
-};
-
-class EditorTeleporterObj : public EditorWorldObj, 
+class EditorTeleporterObj : public SpriteEditorObj, 
 			    public TeleporterData
 {
 private:
@@ -92,10 +75,12 @@ private:
 public:
   EditorTeleporterObj (const TeleporterData& data);
   
-  CL_Vector* get_target_pos_p () { return &target_pos; }
+  CL_Vector& get_target_pos_ref () { return target_pos; }
 
   boost::shared_ptr<EditorObj> duplicate();
   static std::list<boost::shared_ptr<EditorObj> > create (const TeleporterData& data);
+  
+  void write_xml(ofstream* xml) { TeleporterData::write_xml(xml); }
 
   /** Create this object (and child objects) with reasonable defaults
       for the editor */
@@ -103,6 +88,28 @@ public:
 
   void draw (boost::dummy_ptr<EditorView> view);
   void save_xml (std::ofstream* xml);
+  std::string status_line();
+};
+
+/** A pseudo object to represent the teleporter target; all the
+    data itself is handled inside the EditorTeleporterObj, but we
+    need this helper object to be able to show and move the
+    teleporter target inside the editor */
+class EditorTeleporterTargetObj : public SpriteEditorObj
+{
+private:
+  EditorTeleporterObj* teleporter;
+  Sprite sprite;
+  
+public:
+  /// Basic constructor
+  EditorTeleporterTargetObj (EditorTeleporterObj* obj);
+  virtual ~EditorTeleporterTargetObj () {}
+
+  boost::shared_ptr<EditorObj> duplicate() { return teleporter->duplicate (); }
+
+  /// The saving will be done in EditorTeleporterObj::save_xml
+  void write_xml (std::ofstream* xml) {}
   std::string status_line();
 };
 

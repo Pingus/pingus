@@ -1,4 +1,4 @@
-//  $Id: EditorObjGroup.cc,v 1.9 2001/05/20 13:00:59 grumbel Exp $
+//  $Id: EditorObjGroup.cc,v 1.10 2001/08/11 18:53:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,43 +29,17 @@ EditorObjGroup::EditorObjGroup()
 
 EditorObjGroup::~EditorObjGroup()
 {
-  /*
-  for(std::list<boost::shared_ptr<EditorObj> >::iterator i = objs.begin();
-      i != objs.end();
-      i++)
-    {
-      delete *i;
-    }
-  */
-}
-
-/** Move the object to the given coordinates */
-void 
-EditorObjGroup::set_position(int new_x_pos, int new_y_pos)
-{
-  position->x = new_x_pos;
-  position->y = new_y_pos;
-
-  for(std::list<boost::shared_ptr<EditorObj> >::iterator i = objs.begin();
-      i != objs.end();
-      i++)
-    {
-      (*i)->set_position(new_x_pos, new_y_pos);
-    }
 }
 
 void 
-EditorObjGroup::set_position_offset(int x_pos_add, int y_pos_add, int z_pos_add)
+EditorObjGroup::set_position_offset(const CL_Vector& offset)
 {
-  position->x += x_pos_add;
-  position->y += y_pos_add;
-  position->z += z_pos_add;
-
+  upper_left_corner += offset;
   for(std::list<boost::shared_ptr<EditorObj> >::iterator i = objs.begin();
       i != objs.end();
       i++)
     {
-      (*i)->set_position_offset(x_pos_add, y_pos_add, z_pos_add);
+      (*i)->set_position_offset(offset);
     }
 }
 
@@ -75,7 +49,7 @@ EditorObjGroup::draw (boost::dummy_ptr<EditorView> view)
 {
   for(std::list<boost::shared_ptr<EditorObj> >::iterator i = objs.begin();
       i != objs.end();
-      i++)
+      ++i)
     {
       (*i)->draw (view);
     }
@@ -92,44 +66,15 @@ EditorObjGroup::draw_mark (boost::dummy_ptr<EditorView> view)
       (*i)->draw_mark (view);
     }
   
-  EditorObj::draw_mark (view);
-}
-
-bool
-EditorObjGroup::is_over(int x_pos, int y_pos)
-{
-  for(std::list<boost::shared_ptr<EditorObj> >::iterator i = objs.begin();
-      i != objs.end();
-      i++)
-    {
-      if ((*i)->is_over(x_pos, y_pos))
-	{
-	  return true;
-	}
-    }
-  return false;
-}
-
-bool
-EditorObjGroup::is_in_rect(int x1, int y1, int x2, int y2)
-{
-  for(std::list<boost::shared_ptr<EditorObj> >::iterator i = objs.begin();
-      i != objs.end();
-      i++)
-    {
-      if ((*i)->is_in_rect(x1, y1, x2, y2))
-	{
-	  return true;
-	}
-    }
-  return false;
+  RectEditorObj::draw_mark (view);
 }
 
 void
-EditorObjGroup::push_back(boost::shared_ptr<EditorObj> obj)
+EditorObjGroup::add (boost::shared_ptr<EditorObj> obj)
 {
   // Updating the width/height and x_pos/y_pos of the object group
-  if (!objs.empty ())
+
+  /*if (!objs.empty ())
     {
       if (position->x > obj->get_x_pos())
 	position->x = obj->get_x_pos();
@@ -147,7 +92,7 @@ EditorObjGroup::push_back(boost::shared_ptr<EditorObj> obj)
       position->y = obj->get_y_pos ();
       width = obj->get_width ();
       height = obj->get_height ();
-    }
+    }*/
 
   objs.push_back(obj);
 }
@@ -158,20 +103,9 @@ EditorObjGroup::get_objs()
   return &objs;
 }
 
-void
-EditorObjGroup::save(std::ofstream* plf, std::ofstream* psm)
-{
-  for(std::list<boost::shared_ptr<EditorObj> >::iterator i = objs.begin();
-      i != objs.end();
-      i++)
-    {
-      (*i)->save(plf, psm);
-    }
-}
-
 ///
 void
-EditorObjGroup::save_xml(std::ofstream* xml)
+EditorObjGroup::write_xml(std::ofstream* xml)
 {
   (*xml) << "<group>\n";
 
@@ -179,7 +113,7 @@ EditorObjGroup::save_xml(std::ofstream* xml)
       i != objs.end();
       i++)
     {
-      (*i)->save_xml(xml);
+      (*i)->write_xml(xml);
     }
   (*xml) << "</group>\n" << std::endl;
 }

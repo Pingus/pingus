@@ -1,4 +1,4 @@
-//  $Id: SwitchDoor.hh,v 1.16 2001/08/10 19:59:20 grumbel Exp $
+//  $Id: SwitchDoor.hh,v 1.17 2001/08/11 18:53:39 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,7 +24,7 @@
 #include "../boost/smart_ptr.hpp"
 #include "../WorldObj.hh"
 #include "../WorldObjData.hh"
-#include "../editor/EditorWorldObj.hh"
+#include "../editor/SpriteEditorObj.hh"
 
 /** A variable height door which can block the way and which can be
     opened by a switch */
@@ -76,7 +76,7 @@ private:
   int current_door_height;
 
 public:
-  SwitchDoor (WorldObjData* data);
+  SwitchDoor (const SwitchDoorData&);
   
   void draw_colmap();
   void draw_offset(int x, int y, float s = 1.0);
@@ -85,39 +85,52 @@ public:
   int  get_z_pos() const { return 100; }
 };
 
+class EditorSwitchDoorObj;
+
 /** A dummy object to represent the switch for a switchdoor, all real
     work is done inside EditorSwitchDoorObj */
-class EditorSwitchDoorSwitchObj : public EditorObj
+class EditorSwitchDoorSwitchObj : public SpriteEditorObj
 {
+private:
+  EditorSwitchDoorObj* door;
+  
 public:
-  EditorSwitchDoorSwitchObj (SwitchDoorData* obj);
+  EditorSwitchDoorSwitchObj (EditorSwitchDoorObj* data);
   
   boost::shared_ptr<EditorObj> duplicate();
 
-  void save_xml (std::ofstream* xml);
+  void write_xml (std::ofstream* xml) {}
   std::string status_line();
 };
 
 class EditorSwitchDoorObj : public SwitchDoorData,
-			    public EditorWorldObj
+			    public RectEditorObj
 {
 private:
   CL_Surface door_box;
   CL_Surface door_tile;
 
 public:
-  EditorSwitchDoorObj (WorldObjData* obj);
+  friend class EditorSwitchDoorSwitchObj;
   
-  static std::list<boost::shared_ptr<EditorObj> > create (WorldObjData* obj);
-
+  EditorSwitchDoorObj (const SwitchDoorData&);
+  
   /** Create this object (and child objects) with reasonable defaults
       for the editor */
   static std::list<boost::shared_ptr<EditorObj> > create (const CL_Vector& pos);
 
   boost::shared_ptr<EditorObj> duplicate();
+  float get_z_pos() { return door_pos.z; }
+
+  int get_width()  { return door_box.get_width (); }
+  int get_height() { return door_box.get_height (); }
 
   void make_larger ();
   void make_smaller ();
+  void write_xml (std::ofstream* xml) { SwitchDoorData::write_xml (xml); }
+  CL_Vector get_upper_left_corner() { return door_pos; }
+
+  void set_position_offset(const CL_Vector &);
 
   void draw (boost::dummy_ptr<EditorView> view);
   void save_xml (std::ofstream* xml);

@@ -1,4 +1,4 @@
-//  $Id: StartPos.hh,v 1.2 2000/12/16 23:11:24 grumbel Exp $
+//  $Id: StartPos.hh,v 1.3 2001/08/11 18:53:39 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,22 +20,17 @@
 #ifndef STARTPOS_HH
 #define STARTPOS_HH
 
-#include "EditorObj.hh"
+#include "SpriteEditorObj.hh"
 
-class StartPos : public EditorObj
+class StartPos 
+  : public SpriteEditorObj
 {
 private:
-  
+  CL_Vector pos;
 public:
-  ///
   StartPos(int arg_x_pos, int arg_y_pos);
-  ///
-  virtual ~StartPos();
-  ///
-  virtual void   save(std::ofstream* plf, std::ofstream* psm);
-  ///
-  virtual void   save_xml(std::ofstream* xml);
-  ///
+
+  virtual void   write_xml(std::ofstream* xml);
   virtual boost::shared_ptr<EditorObj> duplicate();
 };
 

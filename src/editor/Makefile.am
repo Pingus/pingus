@@ -26,10 +26,14 @@ libpingus_editor_a_SOURCES = \
      EditorEvent.cc       \
      EditorObj.cc         \
      EditorObj.hh         \
+     RectEditorObj.cc     \
+     RectEditorObj.hh     \
+     SpriteEditorObj.cc   \
+     SpriteEditorObj.hh   \
      EditorObjGroup.cc    \
      EditorObjGroup.hh    \
-     EditorGroundpieceObj.cc            \
-     EditorGroundpieceObj.hh            \
+     EditorGroundpieceObj.cc \
+     EditorGroundpieceObj.hh \
      PLFObj.cc            \
      PLFObj.hh            \
      StatusLine.cc        \
@@ -52,8 +56,6 @@ libpingus_editor_a_SOURCES = \
      WeatherObj.hh        \
      ScrollMap.hh         \
      ScrollMap.cc         \
-     EditorWorldObj.cc    \
-     EditorWorldObj.hh    \
      ThumbCache.cc        \
      ThumbCache.hh        \
      EditorView.hh        \

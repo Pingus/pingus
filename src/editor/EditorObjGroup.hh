@@ -1,4 +1,4 @@
-//  $Id: EditorObjGroup.hh,v 1.5 2001/05/20 13:00:59 grumbel Exp $
+//  $Id: EditorObjGroup.hh,v 1.6 2001/08/11 18:53:39 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,50 +21,41 @@
 #define EDITOROBJGROUP_HH
 
 #include <list>
+#include <ClanLib/core.h>
 #include "../boost/smart_ptr.hpp"
-#include "EditorObj.hh"
+#include "RectEditorObj.hh"
 
-class EditorObjGroup : public EditorObj
+class EditorObjGroup : public RectEditorObj
 {
 private:
   std::list<boost::shared_ptr<EditorObj> > objs;
   
+  CL_Vector upper_left_corner;
+  int width, height;
+  bool init;
 public:
   EditorObjGroup();
   virtual ~EditorObjGroup();
 
-  ///
-  virtual void set_position_offset(int x_pos_add, int y_pos_add, 
-				   int z_pos_add =0);
-  ///
-  virtual void set_position(int new_x_pos, int new_y_pos);
+  /** Returns the position of the upper left corner of the object */
+  CL_Vector get_upper_left_corner () { return upper_left_corner; }
+  int get_width () { return width; }
+  int get_height () { return height; }
 
-  /** Draw the object */
-  virtual void   draw (boost::dummy_ptr<EditorView> view);
+  float get_z_pos() { return upper_left_corner.z; }
 
-  /** Draw the caputre rectangle around the object */
-  virtual void   draw_mark (boost::dummy_ptr<EditorView> view);
-
-
-  /** Return true when the mouse is over the current object */
-  virtual bool   is_over(int, int);
-
-  /** Return true if the current object is inside the current
-      selection rectangle */
-  virtual bool   is_in_rect(int x1, int y1, int x2, int y2);
-
+  void set_position_offset(const CL_Vector& offset);
+  void draw(boost::dummy_ptr<EditorView>);
+  void draw_mark (boost::dummy_ptr<EditorView> view);
+  
   /** Add an object to the group */
-  virtual void EditorObjGroup::push_back(boost::shared_ptr<EditorObj>);
-
+  void EditorObjGroup::add (boost::shared_ptr<EditorObj>);
   ///
-  virtual std::list<boost::shared_ptr<EditorObj> >* EditorObjGroup::get_objs();
-
+  std::list<boost::shared_ptr<EditorObj> >* EditorObjGroup::get_objs();
   ///
-  virtual void   save(std::ofstream* plf, std::ofstream* psm);
+  void   write_xml(std::ofstream* xml);
   ///
-  virtual void   save_xml(std::ofstream* xml);
-  ///
-  virtual boost::shared_ptr<EditorObj> duplicate();
+  boost::shared_ptr<EditorObj> duplicate();
 };
 
 #endif

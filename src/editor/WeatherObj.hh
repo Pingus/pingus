@@ -1,4 +1,4 @@
-//  $Id: WeatherObj.hh,v 1.3 2001/08/10 10:56:14 grumbel Exp $
+//  $Id: WeatherObj.hh,v 1.4 2001/08/11 18:53:39 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,19 +21,19 @@
 #define WEATHEROBJ_HH
 
 #include "../WeatherData.hh"
-#include "EditorObj.hh"
+#include "SpriteEditorObj.hh"
 
-class WeatherObj : public EditorObj, public WeatherData
+class WeatherObj 
+  : public SpriteEditorObj,
+    public WeatherData
 {
 private:
-  
+  CL_Vector pos;
 public:
-  WeatherObj(const WeatherObj&);
-  WeatherObj(WeatherData data);
+   WeatherObj(const WeatherData& data);
   virtual ~WeatherObj();
 
-  virtual void save(std::ofstream* plf, std::ofstream* psm) {}
-  virtual void   save_xml(std::ofstream* xml);
+  virtual void write_xml(std::ofstream* xml);
   virtual boost::shared_ptr<EditorObj> duplicate();
 };
 

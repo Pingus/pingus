@@ -1,4 +1,4 @@
-//  $Id: StatusLine.cc,v 1.7 2001/05/19 20:58:42 grumbel Exp $
+//  $Id: StatusLine.cc,v 1.8 2001/08/11 18:53:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,7 +19,7 @@
 
 #include <cstdio>
 #include "../PingusResource.hh"
-
+#include "EditorView.hh"
 #include "StatusLine.hh"
 
 StatusLine::StatusLine()
