@@ -1,4 +1,4 @@
-//  $Id: sound.hxx,v 1.1 2003/02/18 17:30:32 grumbel Exp $
+//  $Id: sound.hxx,v 1.2 2003/03/04 13:59:44 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,8 +32,8 @@ protected:
 protected:
   PingusSound () { }
 
-  virtual void real_play_sound(const std::string & filename, float volume, float panning) =0;
-  virtual void real_play_music(const std::string & filename, float volume) =0;
+  virtual void real_play_sound(const std::string & name, float volume, float panning) =0;
+  virtual void real_play_music(const std::string & name, float volume) =0;
   virtual void real_stop_music() =0;
 
 public:
@@ -42,12 +42,12 @@ public:
 
   /** Load a sound file and play it immediately.
 
-      @param filename The complete filename 
+      @param name     Name of the sound, aka 'ohno'
       @param volume   volume
       @param panning  panning */
-  static void play_sound(const std::string & filename, float volume = 1.0f, float panning = 0.0f);
+  static void play_sound(const std::string & name, float volume = 1.0f, float panning = 0.0f);
   
-  static void play_music(const std::string & filename, float volume = 1.0f);
+  static void play_music(const std::string & name, float volume = 1.0f);
   static void stop_music();
 
   static void play_sound(Sound::Name name, float volume = 1.0f, float panning = 0.0f);

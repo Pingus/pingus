@@ -1,4 +1,4 @@
-//  $Id: surface_button.cxx,v 1.21 2003/02/19 09:50:36 grumbel Exp $
+//  $Id: surface_button.cxx,v 1.22 2003/03/04 13:59:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -122,7 +122,7 @@ void
 SurfaceButton::on_pointer_enter ()
 {
   mouse_over = true;
-  PingusSound::play_sound ("sounds/tick.wav");
+  PingusSound::play_sound ("tick");
   //std::cout << "X: " << this << "enter" << std::endl;
 }
 
@@ -263,7 +263,7 @@ void
 QuitButton::on_click()
 {
   std::cout << "QuitButton: do exit" << std::endl;
-  PingusSound::play_sound ("sounds/goodidea.wav");
+  PingusSound::play_sound ("goodidea");
   menu->get_manager ()->show_exit_menu ();
 }
 
@@ -362,7 +362,7 @@ StoryButton::~StoryButton () {}
 void 
 StoryButton::on_click ()
 {
-  PingusSound::play_sound ("sounds/letsgo.wav");
+  PingusSound::play_sound ("letsgo");
   ScreenManager::instance()->push_screen(WorldMapNS::WorldMapManager::instance ());
 }
 
@@ -382,7 +382,7 @@ ThemeButton::ThemeButton (PingusMenu* menu_)
 void
 ThemeButton::on_click ()
 {
-  PingusSound::play_sound ("sounds/letsgo.wav");
+  PingusSound::play_sound ("letsgo");
   
   ThemeSelector theme_selector;
   theme_selector.display();

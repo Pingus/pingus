@@ -1,4 +1,4 @@
-//  $Id: pingu.cxx,v 1.38 2003/02/18 15:04:47 grumbel Exp $
+//  $Id: pingu.cxx,v 1.39 2003/03/04 13:59:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -313,7 +313,7 @@ Pingu::update ()
       die. */
   if (rel_getpixel(0, -1) == Groundtype::GP_OUTOFSCREEN) 
     {
-      PingusSound::play_sound("sounds/die.wav");
+      PingusSound::play_sound("die");
       status = PS_DEAD;
       return;
     }

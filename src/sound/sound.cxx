@@ -1,4 +1,4 @@
-//  $Id: sound.cxx,v 1.2 2003/02/19 11:33:00 grumbel Exp $
+//  $Id: sound.cxx,v 1.3 2003/03/04 13:59:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -65,10 +65,10 @@ PingusSound::deinit ()
     @param filename The complete filename */
    
 void 
-PingusSound::play_sound(const std::string & filename, float volume, float panning)
+PingusSound::play_sound(const std::string& name, float volume, float panning)
 {
   assert (sound);
-  sound->real_play_sound (path_manager.complete (filename), volume, panning);
+  sound->real_play_sound(name, volume, panning);
 }
 
 void
@@ -99,13 +99,13 @@ PingusSound::play_sound(Sound::Name name, float volume, float panning)
 
 /** Load a sound file and play it immediately.
     
-    @param filename The complete filename 
+    @param name
     @param volume   volume */
 void 
-PingusSound::play_music(const std::string & filename, float volume)
+PingusSound::play_music(const std::string & name, float volume)
 {
   assert (sound);
-  sound->real_play_music(path_manager.complete ("music/" + filename), volume);
+  sound->real_play_music(path_manager.complete ("music/" + name), volume);
 }
 
 void

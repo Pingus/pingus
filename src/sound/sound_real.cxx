@@ -1,4 +1,4 @@
-//  $Id: sound_real.cxx,v 1.3 2003/02/20 19:20:09 grumbel Exp $
+//  $Id: sound_real.cxx,v 1.4 2003/03/04 13:59:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,7 @@
 
 #include "../globals.hxx"
 #include "../debug.hxx"
+#include "sound_res_mgr.hxx"
 #include "sound_real.hxx"
 
 #ifdef HAVE_LIBCLANVORBIS
@@ -77,30 +78,20 @@ struct sound_is_finished
 };
 
 void
-PingusSoundReal::real_play_sound(const std::string & filename, float volume, float panning)
+PingusSoundReal::real_play_sound(const std::string& name, float volume, float panning)
 {
-  pout(PINGUS_DEBUG_SOUND) << "PingusSoundReal: Playing sound: " << filename << "Buffer-Size: " << sound_holder.size() << std::endl;
-
   if (!sound_enabled)
     return;
 
-
-  std::cout << "FIXME: this is broken PingusSoundReal::real_play_sound(const std::string & filename, float volume, float panning)" << std::endl;
-  // search for unused SoundBuffer_Sessions - clean them up
-  /*sound_holder.erase(std::remove_if (sound_holder.begin (), sound_holder.end (), 
-    sound_is_finished()),
-    sound_holder.end());*/
-          
 
   CL_SoundBuffer         * buffer;
   CL_SoundBuffer_Session sess;
   
   try {
-    // FIXME: Memory hole, resource system or cache might help here
-    buffer = new CL_SoundBuffer (new CL_Sample(filename.c_str(), NULL), true);
-    sess   = buffer -> prepare();
+    buffer = SoundResMgr::load(name);
+    sess   = buffer->prepare();
   } catch (const CL_Error & e) {
-    perr(PINGUS_DEBUG_SOUND) << "Can't open file " << filename << " -- skipping\n"
+    perr(PINGUS_DEBUG_SOUND) << "Can't open sound '" << name << "' -- skipping\n"
 			     << "  CL_Error: " << e.message << std::endl;    
     return;
   }

@@ -1,4 +1,4 @@
-//  $Id: sound_real.hxx,v 1.1 2003/02/18 17:30:32 grumbel Exp $
+//  $Id: sound_real.hxx,v 1.2 2003/03/04 13:59:44 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -40,9 +40,6 @@ private:
 
   /** Music Controller Session */
   CL_SoundBuffer_Session* music_session;
-
-  /** Stores all Sound Effects */
-  std::vector<CL_SoundBuffer*> sound_holder;
 
 public:
   PingusSoundReal ();

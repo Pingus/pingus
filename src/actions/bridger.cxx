@@ -1,4 +1,4 @@
-//  $Id: bridger.cxx,v 1.28 2003/02/19 09:50:36 grumbel Exp $
+//  $Id: bridger.cxx,v 1.29 2003/03/04 13:59:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -230,7 +230,7 @@ Bridger::place_a_brick()
   name = "Bridger (" + to_string(bricks) + ")";
 
   if (bricks < 4)
-    PingusSound::play_sound("sounds/ting.wav");
+    PingusSound::play_sound("ting");
  
   if (pingu->direction.is_right())
     {
