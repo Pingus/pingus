@@ -1,4 +1,4 @@
-//  $Id: PLFPLF.cc,v 1.3 2000/08/03 10:31:17 grumbel Exp $
+//  $Id: PLFPLF.cc,v 1.4 2000/08/03 19:12:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -92,7 +92,7 @@ PLFPLF::set_value(string valueid,
     } else if (valueid == "author") {
       author = value;
     } else {
-      throw PingusError("Global: Unknown ValueID: " + valueid);
+      std::cout << "Global: Unknown ValueID: " << valueid << std::endl;
     }
     break;
 
@@ -147,7 +147,7 @@ PLFPLF::set_value(string valueid,
       } 
     else 
       {
-	throw PingusError("Background: Unknown ValueID: " + valueid);
+	std::cout << "Background: Unknown ValueID: " << valueid << std::endl;
       }
     break;
 
@@ -172,7 +172,7 @@ PLFPLF::set_value(string valueid,
     } else if (valueid == "height") {    
       height = str_to_int(value);
     } else {
-      throw PingusError("Ground: Unknown ValueID: " + valueid);
+      std::cout << "Ground: Unknown ValueID: " << valueid << std::endl;
     }
     break;
 
@@ -180,7 +180,7 @@ PLFPLF::set_value(string valueid,
     if (valueid == "data")
       music = ResDescriptor(cast, value);
     else
-      throw PingusError("Music: Unknown ValueID: " + valueid);
+      std::cout << "Music: Unknown ValueID: " << valueid << std::endl;
     break;
 
   case PLFPLF::EXIT:
@@ -196,7 +196,7 @@ PLFPLF::set_value(string valueid,
       exit_s.desc = ResDescriptor(cast, value);
       if (verbose > 2) cout << "Exit.desc: " << exit_s.desc.res_name << endl;
     } else {
-      throw PingusError("Exit: Unknown ValueID: " + valueid);
+      std::cout << "Exit: Unknown ValueID: " << valueid << std::endl;
     }
     break;
 
@@ -219,12 +219,12 @@ PLFPLF::set_value(string valueid,
       } else if (value == "misc") {
 	entrance_s.direction = EntranceData::MISC;
       } else {
-	throw PingusError("Entrance: Unknown Value for direction: " + valueid);
+	std::cout << "Entrance: Unknown Value for direction: " << valueid << std::endl;
       }
     } else if (valueid == "release_rate") {
       entrance_s.release_rate = str_to_int(value);
     } else {
-      throw PingusError("Entrance: Unknown ValueID: " + valueid);
+      std::cout << "Entrance: Unknown ValueID: " << valueid << std::endl;
     }
     break;
 
@@ -242,7 +242,7 @@ PLFPLF::set_value(string valueid,
     } else if (valueid == "z_pos") {
       trap_s.pos.z_pos = str_to_int(value);
     } else {
-      throw PingusError("PLF:Trap: Unknown value id: " + valueid);      
+      std::cout << "PLF:Trap: Unknown value id: " << valueid << std::endl;      
     }
     break;
     
@@ -260,7 +260,7 @@ PLFPLF::set_value(string valueid,
     } else if (valueid == "para") {
       hotspot_s.para = str_to_float(value);
     } else {
-      throw PingusError("PLF:Hotspot: Unknown value id " + valueid);
+      std::cout << "PLF:Hotspot: Unknown value id " << valueid << std::endl;
     }
     break;
 
@@ -287,7 +287,7 @@ PLFPLF::set_value(string valueid,
     } else if (valueid == "speed") {
       liquid_s.speed = str_to_int(value);
     } else {
-      throw PingusError("PLF:Liquid: Unknown value id: " + valueid);
+      std::cout << "PLF:Liquid: Unknown value id: " << valueid << std::endl;
     }
     break;
     

@@ -1,4 +1,4 @@
-//  $Id: EntranceData.hh,v 1.1 2000/07/30 02:27:48 grumbel Exp $
+//  $Id: EntranceData.hh,v 1.2 2000/08/03 19:12:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,6 +43,7 @@ public:
   }
   
   void clean(void) {
+    type = "generic";
     direction = MISC;
     release_rate = 50;
   }

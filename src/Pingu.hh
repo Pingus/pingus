@@ -1,4 +1,4 @@
-//  $Id: Pingu.hh,v 1.13 2000/08/03 10:31:17 grumbel Exp $
+//  $Id: Pingu.hh,v 1.14 2000/08/03 19:12:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,7 +24,6 @@
 
 #include "WorldObj.hh"
 #include "PinguMap.hh"
-#include "particles/ParticleHolder.hh"
 #include "Direction.hh"
 #include "PinguAction.hh"
 #include "ActionHolder.hh"

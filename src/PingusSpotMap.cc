@@ -1,4 +1,4 @@
-//  $Id: PingusSpotMap.cc,v 1.32 2000/07/30 01:47:35 grumbel Exp $
+//  $Id: PingusSpotMap.cc,v 1.33 2000/08/03 19:12:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -479,6 +479,16 @@ PingusSpotMap::put(CL_SurfaceProvider* sprovider, int x, int y)
   int end_x = (x + sprovider->get_width()) / tile_size;
   int end_y = (y + sprovider->get_height()) / tile_size;
     
+  if (start_x < 0)
+    start_x = 0;
+  if (start_y < 0)
+    start_y = 0;
+
+  if (end_x > tile.size() - 1)
+    end_x = tile.size() - 1;
+  if (end_y > tile[0].size() - 1)
+    end_y = tile[0].size() - 1;
+
   for(int ix = start_x; ix <= end_x; ++ix) 
     {
       for(int iy = start_y; iy <= end_y; ++iy) 
@@ -486,12 +496,12 @@ PingusSpotMap::put(CL_SurfaceProvider* sprovider, int x, int y)
 	  if (tile[ix][iy].surface == 0)
 	    {
 	      CL_Canvas* canvas;
-	      std::cout << "PingusSpotMap: Drawing to an emtpy tile" << std::endl;
+	      std::cout << "PingusSpotMap: Drawing to an emtpy tile: " << ix << " " << iy << std::endl;
 	      canvas = new CL_Canvas(tile_size, tile_size);
 	      Blitter::clear_canvas(canvas);
 	      
 	      Blitter::put_surface(canvas, sprovider,
-			  x - (ix * tile_size), y - (iy * tile_size));
+				   x - (ix * tile_size), y - (iy * tile_size));
 	      
 	      tile[ix][iy].surface = CL_Surface::create(canvas, true);
 	    }
