@@ -110,6 +110,12 @@ section misc {
 	brick4 = ../images/groundpieces/ground/misc/brick4.png (type=surface, x=0, y=0, width=32, height=16);
 	brick5 = ../images/groundpieces/ground/misc/brick5.png (type=surface, x=0, y=0, width=64, height=32);
 	bridge1 = ../images/groundpieces/ground/misc/bridge1.png (type=surface, x=0, y=0, width=216, height=42);
+
+	colum_up = ../images/groundpieces/ground/misc/colum_up.png (type=surface);
+	colum_down = ../images/groundpieces/ground/misc/colum_down.png (type=surface);
+	colum_flat_left = ../images/groundpieces/ground/misc/colum_flat_left.png (type=surface);
+	colum_flat_right = ../images/groundpieces/ground/misc/colum_flat_right.png (type=surface);
+
 	colum = ../images/groundpieces/ground/misc/colum.png (type=surface, x=0, y=0, width=142, height=184);
 	colum_flat = ../images/groundpieces/ground/misc/colum_flat.png (type=surface, x=0, y=0, width=184, height=122);
 	dragon = ../images/groundpieces/ground/misc/dragon.png (type=surface, x=0, y=0, width=255, height=169);

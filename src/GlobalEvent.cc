@@ -1,4 +1,4 @@
-//  $Id: GlobalEvent.cc,v 1.15 2001/05/18 19:17:08 grumbel Exp $
+//  $Id: GlobalEvent.cc,v 1.16 2002/01/19 12:57:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,9 @@
 #include "GlobalEvent.hh"
 
 GlobalEvent global_event;
+
+// FIXME: This belongs into ClanLib
+#define PINGUS_CL_KEY_HELP 91
 
 void
 GlobalEvent::on_button_press(CL_InputDevice *device, const CL_Key &key)
@@ -54,7 +57,7 @@ GlobalEvent::on_button_press(CL_InputDevice *device, const CL_Key &key)
 	    console.scroll_down();	  
 	  break;
 
-	case CL_KEY_F1:
+	case PINGUS_CL_KEY_HELP:
 	  console.toggle_display();
 	  break; 
 

@@ -1,4 +1,4 @@
-//  $Id: Editor.hh,v 1.15 2001/08/07 18:14:15 grumbel Exp $
+//  $Id: Editor.hh,v 1.16 2002/01/19 12:57:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -106,6 +106,8 @@ public:
   void edit_current_objs();
   void zoom_mode ();
   void load_level (const std::string& str);
+
+  void show_help ();
 
   void register_event_handler();
   void unregister_event_handler();

@@ -1,4 +1,4 @@
-//  $Id: Editor.cc,v 1.35 2001/12/22 15:15:11 cagri Exp $
+//  $Id: Editor.cc,v 1.36 2002/01/19 12:57:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -462,6 +462,12 @@ Editor::edit_current_objs()
     obj->gui_edit_obj();
   else
   std::cout << "No single object selected" << std::endl;*/
+}
+
+void
+Editor::show_help ()
+{
+  // FIXME:
 }
 
 void 

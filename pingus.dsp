@@ -43,19 +43,20 @@ RSC=rc.exe
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /YX /FD /c
-# ADD CPP /nologo /MT /Ze /W3 /Gi /GX /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /YX /FD /TP /c
+# ADD CPP /nologo /MT /W3 /Gi /vd0 /GR- /GX /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /YX /FD /TP /c
 # SUBTRACT CPP /Gf /Gy /u /Fr
 # ADD BASE MTL /nologo /D "NDEBUG" /mktyplib203 /win32
 # ADD MTL /nologo /D "NDEBUG" /mktyplib203 /win32
 # ADD BASE RSC /l 0x807 /d "NDEBUG"
 # ADD RSC /l 0x40a /d "NDEBUG"
+# SUBTRACT RSC /x
 BSC32=bscmake.exe
 # ADD BASE BSC32 /nologo
 # ADD BSC32 /nologo
 LINK32=link.exe
 # ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /machine:I386
-# ADD LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib ddraw.lib dsound.lib dinput.lib winmm.lib zlib.lib wsock32.lib hermes.lib ClanApp.lib clanCore.lib clanDisplay.lib clanGL.lib clanGUI.lib clanSound.lib libxml2.lib jpeg.lib libpng.lib zlib.lib /nologo /subsystem:windows /machine:I386 /libpath:"d:\games\pingus\release"
-# SUBTRACT LINK32 /profile /pdb:none /incremental:yes /map /debug /nodefaultlib
+# ADD LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib ddraw.lib dsound.lib dinput.lib winmm.lib wsock32.lib hermes.lib ClanApp.lib clanCore.lib clanDisplay.lib clanGL.lib clanPNG.lib clanGUI.lib clanSound.lib libxml2.lib jpeg.lib libpng.lib zlib.lib clanTTF.lib clanJavaScript.lib clanVorbis.lib clanJPEG.lib /nologo /version:0.5 /subsystem:windows /machine:I386 /nodefaultlib:"msvcrt.lib" /libpath:"d:\games\pingus\release"
+# SUBTRACT LINK32 /verbose /profile /pdb:none /incremental:yes /map /debug /nodefaultlib /pdbtype:<none>
 
 !ELSEIF  "$(CFG)" == "pingus - Win32 Debug"
 
@@ -71,18 +72,18 @@ LINK32=link.exe
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /YX /FD /GZ /c
-# ADD CPP /nologo /Za /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /YX /FD /GZ /TP /c
+# ADD CPP /nologo /MTd /Ze /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /YX /FD /GZ /TP /c
 # SUBTRACT CPP /X
 # ADD BASE MTL /nologo /D "_DEBUG" /mktyplib203 /win32
 # ADD MTL /nologo /D "_DEBUG" /mktyplib203 /win32
 # ADD BASE RSC /l 0x807 /d "_DEBUG"
-# ADD RSC /l 0x807 /d "_DEBUG"
+# ADD RSC /l 0x40a /d "_DEBUG"
 BSC32=bscmake.exe
 # ADD BASE BSC32 /nologo
 # ADD BSC32 /nologo
 LINK32=link.exe
 # ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /debug /machine:I386 /pdbtype:sept
-# ADD LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib ddraw.lib dsound.lib dinput.lib winmm.lib zlib.lib wsock32.lib hermes.lib clanCored.lib clanmagick.lib /nologo /subsystem:windows /debug /machine:I386 /pdbtype:sept
+# ADD LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib ddraw.lib dsound.lib dinput.lib winmm.lib wsock32.lib hermes.lib ClanApp.lib clanCore.lib clanDisplay.lib clanGL.lib clanPNG.lib clanGUI.lib clanSound.lib libxml2.lib jpeg.lib libpng.lib zlib.lib clanTTF.lib clanJavaScript.lib clanVorbis.lib clanJPEG.lib /nologo /subsystem:windows /debug /machine:I386 /pdbtype:sept
 
 !ENDIF 
 
@@ -391,6 +392,14 @@ SOURCE=.\src\worldobjs\ConveyorBelt.cc
 # Begin Source File
 
 SOURCE=.\src\worldobjs\IceBlock.cc
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\worldobjs\InfoBox.cc
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\PlayfieldView.cc
 # End Source File
 # Begin Source File
 
@@ -985,10 +994,30 @@ SOURCE=.\src\XMLPLF.cc
 # Begin Group "Headers"
 
 # PROP Default_Filter "h;hpp;hxx;hm;inl;hh"
+# Begin Group "Boost"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=.\src\boost\auto_ptr.hpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\boost\dummy_ptr.hpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\boost\smart_ptr.hpp
+# End Source File
+# End Group
 # End Group
 # Begin Group "Resources"
 
 # PROP Default_Filter "ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe"
+# Begin Source File
+
+SOURCE=.\src\icon1.ico
+# End Source File
 # End Group
 # End Target
 # End Project
