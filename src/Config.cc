@@ -1,4 +1,4 @@
-//  $Id: Config.cc,v 1.2 2000/03/10 19:46:12 grumbel Exp $
+//  $Id: Config.cc,v 1.3 2000/03/12 02:07:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -313,9 +313,9 @@ Config::set_value(std::string valueid,
     {
       print_fps = str_to_bool(value);
     }
-  else if (valueid == "disable-intro")
+  else if (valueid == "show-intro")
     {
-      intro_disabled = str_to_bool(value);
+      intro_disabled = !str_to_bool(value);
     }
   else if (valueid == "fast_mode")
     {

@@ -1,4 +1,4 @@
-//  $Id: Credits.cc,v 1.2 2000/02/25 02:35:27 grumbel Exp $
+//  $Id: Credits.cc,v 1.3 2000/03/12 02:07:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,6 +31,11 @@ Credits::Credits()
   // the size of the font or other special stuff. "-" means large
   // font, "_" is a small font and "n" means a newline.
 
+  credits.push_back("_If I forgot somebody in this");
+  credits.push_back("_list, just drop me a line and");
+  credits.push_back("_I'll fix this.");
+  credits.push_back("n");
+
   credits.push_back("-Programming");
   credits.push_back("_Ingo Ruhnke");
   credits.push_back("_Michael K\"aser");
@@ -38,10 +43,11 @@ Credits::Credits()
   credits.push_back("n");
 
   credits.push_back("-Gfx");
+  credits.push_back("_Stefan Stiasny");
+  credits.push_back("_Alan Tennent");
   credits.push_back("_Craig Timpany");
   credits.push_back("_Joel Fauche");
   credits.push_back("_Michael Mestre");
-  credits.push_back("_Alan Tennent");
   credits.push_back("n");
 
   credits.push_back("-Music");
@@ -51,11 +57,15 @@ Credits::Credits()
 
   credits.push_back("-Special");
   credits.push_back("-Thanks to");
+  credits.push_back("_Jules Bean");
+  credits.push_back("_David Philippi");
+  credits.push_back("_Kenneth Gangstø");
   credits.push_back("_Johnny Taporg");
   credits.push_back("_Werner Steiner");
   credits.push_back("_Kenneth Gangstø");
   credits.push_back("_Tuomas (Tigert) Kuosmanen");
   credits.push_back("_Keir Fraser");  
+
   credits.push_back("n");
 
 }
