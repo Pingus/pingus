@@ -1,4 +1,4 @@
-//  $Id: worldmap.cxx,v 1.37 2003/03/30 22:09:33 grumbel Exp $
+//  $Id: worldmap.cxx,v 1.38 2003/04/01 13:21:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -79,6 +79,8 @@ WorldMap::WorldMap(const std::string& arg_filename)
   pingus->set_position(0);
 
   add_drawable(pingus);
+
+  levelname_bg = PingusResource::load_surface("worldmap/levelname_bg", "core");
 }
 
 WorldMap::~WorldMap()
@@ -191,15 +193,35 @@ WorldMap::draw (GraphicContext& gc)
       (*i)->draw (display_gc);
     }
 
+  gc.draw(levelname_bg, 
+          gc.get_width()/2 - levelname_bg.get_width()/2, 
+          gc.get_height() - levelname_bg.get_height());
+
   if (pingus->get_node() != NoNode)
     {
       LevelDot* leveldot = dynamic_cast<LevelDot*>(path_graph->get_dot(pingus->get_node()));
       
       if (leveldot)
-        gc.print_center(Fonts::pingus_small, 
-                                display_gc.get_width ()/2, 
-                                display_gc.get_height() - 40,
-                                System::translate(leveldot->get_plf()->get_levelname()));
+        {
+          gc.print_center(Fonts::chalk_small, 
+                          display_gc.get_width ()/2, 
+                          display_gc.get_height() - 20,
+                          System::translate(leveldot->get_plf()->get_levelname()));
+        }
+      else
+        {
+          gc.print_center(Fonts::chalk_small, 
+                          display_gc.get_width ()/2, 
+                          display_gc.get_height() - 20,
+                          "---");
+        }
+    }
+  else
+    {
+          gc.print_center(Fonts::chalk_small, 
+                          display_gc.get_width ()/2, 
+                          display_gc.get_height() - 20,
+                          "...walking...");
     }
   
   

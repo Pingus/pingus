@@ -1,4 +1,4 @@
-//  $Id: pingus_menu.cxx,v 1.15 2003/03/27 17:04:49 grumbel Exp $
+//  $Id: pingus_menu.cxx,v 1.16 2003/04/01 13:21:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <config.h>
 #include "menu_button.hxx"
 #include "pingus_resource.hxx"
 #include "debug.hxx"
@@ -72,8 +73,13 @@ void
 PingusMenu::draw_foreground(GraphicContext& gc)
 {
   gc.draw(background, (gc.get_width()/2) - (background.get_width()/2), 50);
+#ifdef OFFICIAL_PINGUS_BUILD
   gc.print_left(Fonts::pingus_small, 20, 500, 
-                "Pingus version 0.6.0, Copyright (C) 1998 Ingo Ruhnke <grumbel@gmx.de>\n");
+                "Pingus version "VERSION", Copyright (C) 1998 Ingo Ruhnke <grumbel@gmx.de>\n");
+#else
+  gc.print_left(Fonts::pingus_small, 20, 500, 
+                "Pingus version "VERSION" (unofficial build), Copyright (C) 1998 Ingo Ruhnke <grumbel@gmx.de>\n");
+#endif
   gc.print_left(Fonts::pingus_small, 20, 530, 
                 "Pingus comes with ABSOLUTELY NO WARRANTY. This is free software, and you are welcome\n"
                 "to redistribute it under certain conditions; see the file COPYING for details.\n");

@@ -159,6 +159,16 @@ section worldmap
 	arrow = ../images/core/worldmap/arrow.png (type=surface);
         pingus = ../images/core/worldmap/pingus.png     (type=surface, x=0, y=0, width=24, height=24, array=8x2);
         pingus_standing = ../images/core/worldmap/pingus_standing.png     (type=surface);
+
+        levelname_bg = ../images/core/worldmap/levelname_bg.png     (type=surface);
+
+        enter_button_normal = ../images/core/worldmap/enter_button_normal.png     (type=surface);
+        enter_button_hover = ../images/core/worldmap/enter_button_hover.png     (type=surface);
+        enter_button_pressed = ../images/core/worldmap/enter_button_pressed.png     (type=surface);
+
+        leave_button_normal = ../images/core/worldmap/leave_button_normal.png     (type=surface);
+        leave_button_hover = ../images/core/worldmap/leave_button_hover.png     (type=surface);
+        leave_button_pressed = ../images/core/worldmap/leave_button_pressed.png     (type=surface);
 }
 
 // EOF //

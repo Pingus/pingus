@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.60 2003/03/31 21:52:03 grumbel Exp $
+//   $Id: pingus_main.cxx,v 1.61 2003/04/01 13:21:20 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -339,6 +339,9 @@ PingusMain::check_args(int argc, char** argv)
       break;
     case 'V':
       std::cout << "Pingus Version " << VERSION 
+#ifndef OFFICIAL_PINGUS_BUILD
+                << " (unofficial build)"
+#endif
 		<< std::endl;
       
       std::cout << _("\n\
@@ -654,7 +657,11 @@ PingusMain::init_path_finder()
 void
 PingusMain::print_greeting_message()
 {
-  std::string greeting = "Welcome to Pingus "VERSION"!";
+  std::string greeting = "Welcome to Pingus "VERSION;
+#ifndef OFFICIAL_PINGUS_BUILD
+  greeting += " (unofficial build)";
+#endif
+  greeting += "!";
   std::cout <<  greeting << std::endl;
   for (unsigned int i = 0; i < greeting.length(); ++i)
     std::cout.put('=');

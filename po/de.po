@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Pingus 0.5.0\n"
-"POT-Creation-Date: 2003-03-20 10:13+0100\n"
-"PO-Revision-Date: 2003-02-18 19:09+0100\n"
+"POT-Creation-Date: 2003-04-01 11:23+0200\n"
+"PO-Revision-Date: 2003-04-01 11:36+0200\n"
 "Last-Translator: Ingo Ruhnke <grumbel@gmx.de>\n"
 "Language-Team: Ingo Ruhnke <grumbel@gmx.de>, Giray Devlet <giray@devlet.cc>\n"
 "MIME-Version: 1.0\n"
@@ -19,9 +19,8 @@ msgid "Couldn't find palette: %d"
 msgstr "Pallete konnte nicht gefunden worden: %d"
 
 #: src/config.cxx:68
-#, fuzzy
 msgid "Couldn't open: "
-msgstr "System: Datei oder Verzeichnis konnte nicht geöffnet werden: "
+msgstr "Datei oder Verzeichnis konnte nicht geöffnet werden: "
 
 #: src/config.cxx:167
 msgid "Unexpected char: '"
@@ -235,7 +234,7 @@ msgstr "Bild runter - Objekt nach unten"
 
 #: src/editor/editor_help_screen.cxx:83
 msgid "Naming Convention: <LEVELNAME><NUMBER>-<CREATOR>.xml"
-msgstr ""
+msgstr "Dateiname: <LEVELNAME><NUMMER>-<AUTOR>.xml"
 
 #: src/editor/editor_help_screen.cxx:85
 msgid ""
@@ -399,11 +398,11 @@ msgstr "3 - Wolke"
 
 #: src/editor/object_selector.cxx:408
 msgid "p - Prefab (ObjectGroup)"
-msgstr ""
+msgstr "p - Prefab (Objekt Gruppe)"
 
 #: src/editor/object_selector.cxx:409
 msgid "f - something from file (~/.pingus/images/)"
-msgstr "f - etwas von einer Datei (~/.pingus/images/)"
+msgstr "f - etwas aus einer Datei (~/.pingus/images/)"
 
 #: src/editor/object_selector.cxx:498
 #, fuzzy
@@ -413,20 +412,20 @@ msgstr "Welches Objekt willst du?"
 #: src/editor/object_selector.cxx:563
 #, fuzzy
 msgid "1 - Surface Background"
-msgstr "F10 - Hintergrund ändern"
+msgstr "1 - Bild Hintergrund"
 
 #: src/editor/object_selector.cxx:564
 msgid "2 - Solid Color Background"
-msgstr ""
+msgstr "2 - Farb Hintergrund"
 
 #: src/editor/object_selector.cxx:565
 #, fuzzy
 msgid "3 - Starfield Background"
-msgstr "F10 - Hintergrund ändern"
+msgstr "3 - Sternen Hintergrund"
 
 #: src/editor/object_selector.cxx:566
 msgid "4 - Thunderstorm Background"
-msgstr ""
+msgstr "4 - Gewitter Hintergrund"
 
 #: src/editor/panel_icons.cxx:31
 msgid "Load a level (F5)"
@@ -441,7 +440,8 @@ msgid "Save this level (F6)"
 msgstr "Level Speichern (F6)"
 
 #: src/editor/panel_icons.cxx:68
-msgid "Delete marked objects"
+#, fuzzy
+msgid "Delete marked objects (delete"
 msgstr "Markierte Objected Löschen "
 
 #: src/editor/panel_icons.cxx:80
@@ -449,16 +449,14 @@ msgid "Duplicate current object (d)"
 msgstr "Aktuelles Object kopieren"
 
 #: src/editor/panel_icons.cxx:92
-#, fuzzy
 msgid "Edit Level Properties"
-msgstr "Level Vorschau"
+msgstr "Level Parameter aendern"
 
 #: src/editor/panel_icons.cxx:104
 msgid "Edit Object Properties"
 msgstr ""
 
 #: src/editor/panel_icons.cxx:116
-#, fuzzy
 msgid "Start the level and test it (F4)"
 msgstr "Level starten (F4)"
 
@@ -467,9 +465,8 @@ msgid "Create a new level from scratch"
 msgstr "Neuen Level erstellen"
 
 #: src/editor/panel_icons.cxx:140
-#, fuzzy
 msgid "Insert an object (Insert)"
-msgstr "Objekt einfuegen"
+msgstr "Objekt einfuegen (Einfg)"
 
 #: src/editor/panel_icons.cxx:152
 msgid "Zoom into a region"
@@ -489,8 +486,8 @@ msgid "Setup Number of Actions"
 msgstr "Anzahl an Pingus: %d"
 
 #: src/editor/panel_icons.cxx:200
-msgid "Display Help Screen"
-msgstr ""
+msgid "Display Help Screen (F1)"
+msgstr "Hilfe Anzeigen (F1)"
 
 #: src/fps_counter.cxx:46
 msgid "unknown"
@@ -499,7 +496,7 @@ msgstr "unbekannt"
 #: src/intro.cxx:62 src/intro.cxx:113
 #, fuzzy
 msgid "..:: Press Start ::.."
-msgstr "..:: Auf Wiedersehen ::.."
+msgstr "..:: Druecke start ::.."
 
 #: src/level_desc.cxx:71
 msgid "Designed by "
@@ -616,12 +613,12 @@ msgid "You've got a negative save/total value, something is buggy."
 msgstr ""
 
 #.  desc["en"] = "..:: Starts the level you played at last ::..";
-#: src/menu_button.cxx:171
+#: src/menu_button.cxx:178
 msgid "..:: The people who brought this game to you ::.."
 msgstr "..:: Die Leute die fuer dieses Spiel verantwortlich sind... ::.."
 
 #. desc["de"] = "..:: Wer hat den dieses Spiel verbrochen...? ::..";
-#: src/menu_button.cxx:174
+#: src/menu_button.cxx:181
 msgid "Credits"
 msgstr "Mitwirkende"
 
@@ -629,61 +626,61 @@ msgstr "Mitwirkende"
 #. y_pos = CL_Display::get_height() * 330 / 480; //330;
 #. 150;
 #. 330;
-#: src/menu_button.cxx:207
+#: src/menu_button.cxx:214
 #, fuzzy
 msgid "..:: Takes you to the options menu ::.."
 msgstr "..:: Einstellungen, Cheats und Debugging stuff ::.."
 
 #.  desc["de"] = "..:: Einstellungen und Mogeleien ::..";
-#: src/menu_button.cxx:210
+#: src/menu_button.cxx:217
 msgid "Options"
 msgstr "Einstellungen"
 
-#: src/menu_button.cxx:244
+#: src/menu_button.cxx:251
 msgid "..:: Bye, bye ::.."
 msgstr "..:: Auf Wiedersehen ::.."
 
 #. desc["de"] = "..:: Auf Wiedersehen ::..";
-#: src/menu_button.cxx:247
+#: src/menu_button.cxx:254
 msgid "Exit"
 msgstr "Beenden"
 
-#: src/menu_button.cxx:304
+#: src/menu_button.cxx:306
 msgid "..:: Launch the level editor ::.."
 msgstr "..:: Erstelle deinen Eigenen Level ::.."
 
 #. desc["de"] = "..:: Den Level Editor starten ::..";
-#: src/menu_button.cxx:307
+#: src/menu_button.cxx:309
 msgid "Create a"
 msgstr "Bau einen"
 
-#: src/menu_button.cxx:308
+#: src/menu_button.cxx:310
 msgid "Level"
 msgstr "Level"
 
-#: src/menu_button.cxx:347
+#: src/menu_button.cxx:346
 #, fuzzy
-msgid "..:: Lets you select a world to start ::.."
-msgstr "..:: Such dir eine Welt zum starten aus ::.."
+msgid "..:: Start the game ::.."
+msgstr "..:: Contrib level Spielen ::.."
 
 #. desc["de"] = "..:: Such dir eine Welt zum beginnen aus ::..";
-#: src/menu_button.cxx:350
+#: src/menu_button.cxx:349
 msgid "Start"
 msgstr "Start"
 
-#: src/menu_button.cxx:375
+#: src/menu_button.cxx:385
 msgid "..:: Start a contrib level ::.."
 msgstr "..:: Contrib level Spielen ::.."
 
-#: src/menu_button.cxx:377
+#: src/menu_button.cxx:387
 msgid "Contrib"
 msgstr "Levels"
 
-#: src/menu_button.cxx:398
+#: src/menu_button.cxx:408
 msgid "..:: Multiplayer Modes... experimental stuff ::.."
 msgstr "..:: Mehrspieler Modus ::.."
 
-#: src/menu_button.cxx:400
+#: src/menu_button.cxx:410
 msgid "Multi"
 msgstr "Multi"
 
@@ -816,101 +813,96 @@ msgstr ""
 msgid "PingusError: "
 msgstr ""
 
-#: src/pingus_main.cxx:97 src/pingus_main.cxx:120
+#: src/pingus_main.cxx:100 src/pingus_main.cxx:123
 msgid ""
 "\n"
 ",------------------------------------------------------------------------"
 msgstr ""
 
-#: src/pingus_main.cxx:98
+#: src/pingus_main.cxx:101
 msgid "| segfault_handler: catched a SIGSEGV."
 msgstr ""
 
-#: src/pingus_main.cxx:100
+#: src/pingus_main.cxx:103
 msgid "| Woops, Pingus just crashed, congratulations you've found a bug."
 msgstr ""
 
-#: src/pingus_main.cxx:101
+#: src/pingus_main.cxx:104
 msgid ""
 "| Please write a little bug report to <grumbel@gmx.de>, include informations"
 msgstr ""
 
-#: src/pingus_main.cxx:102
+#: src/pingus_main.cxx:105
 msgid "| where exacly the SIGSEGV occured and how to reproduce it."
 msgstr ""
 
-#: src/pingus_main.cxx:103
+#: src/pingus_main.cxx:106
 msgid "| Also try include a backtrace, you can get it like this:"
 msgstr ""
 
-#: src/pingus_main.cxx:105
+#: src/pingus_main.cxx:108
 msgid "| $ gdb pingus core"
 msgstr ""
 
-#: src/pingus_main.cxx:106
+#: src/pingus_main.cxx:109
 msgid "| (gdb) bt"
 msgstr ""
 
-#: src/pingus_main.cxx:107 src/pingus_main.cxx:114
+#: src/pingus_main.cxx:110 src/pingus_main.cxx:117
 msgid "| ..."
 msgstr ""
 
-#: src/pingus_main.cxx:109
+#: src/pingus_main.cxx:112
 msgid "| If that doesn't work, try this:"
 msgstr ""
 
-#: src/pingus_main.cxx:111
+#: src/pingus_main.cxx:114
 msgid "| $ gdb pingus"
 msgstr ""
 
-#: src/pingus_main.cxx:112
+#: src/pingus_main.cxx:115
 msgid "| (gdb) r"
 msgstr ""
 
-#: src/pingus_main.cxx:113
+#: src/pingus_main.cxx:116
 msgid "| [play until it crashes again]"
 msgstr ""
 
-#: src/pingus_main.cxx:116
+#: src/pingus_main.cxx:119
 msgid "'------------------------------------------------------------------------\n"
 msgstr ""
 
-#: src/pingus_main.cxx:121
+#: src/pingus_main.cxx:124
 msgid "| Warning: Pingus recieved a SIGINT, exiting now."
 msgstr ""
 
-#: src/pingus_main.cxx:122
+#: src/pingus_main.cxx:125
 msgid "`------------------------------------------------------------------------\n"
 msgstr ""
 
-#: src/pingus_main.cxx:339
+#: src/pingus_main.cxx:344
+#, fuzzy
 msgid ""
 "\n"
-"Copyright (C) 1998 Ingo Ruhnke <grumbel@pingus.cx>\n"
+"Copyright (C) 2003 Ingo Ruhnke <grumbel@pingus.cx>\n"
 "There is NO warranty.  You may redistribute this software\n"
 "under the terms of the GN General Public License.\n"
 "For more information about these matters, see the files named COPYING."
 msgstr ""
-"\n"
-"Copyright (C) 1998 Ingo Ruhnke <grumbel@gmx.de>\n"
-"Dies ist freie Software. Bitte lesen Sie den Quellcode fuer Kopierrechte.\n"
-"Es gibt keinerlei Garantien, nicht fuer Verkaufbarkeit oder auch die "
-"Einsatz-\n"
-"fähigkeit fuer einen bestimmten Zweck."
 
-#: src/pingus_main.cxx:495
+#: src/pingus_main.cxx:500
 msgid "Unknow char: "
 msgstr "Unbekannter Buchstabe: "
 
-#: src/pingus_main.cxx:496
+#: src/pingus_main.cxx:501
 msgid "Usage: "
 msgstr "Benutzung: "
 
-#: src/pingus_main.cxx:496
+#: src/pingus_main.cxx:501
 msgid " [OPTIONS]... [LEVELFILE]"
 msgstr "[OPTIONEN]... [LEVELDATEI]"
 
-#: src/pingus_main.cxx:498
+#: src/pingus_main.cxx:503
 msgid ""
 "\n"
 "Options:\n"
@@ -921,13 +913,13 @@ msgid ""
 "   --disable-intro          Disable intro\n"
 msgstr ""
 
-#: src/pingus_main.cxx:507
+#: src/pingus_main.cxx:512
 msgid "   -G, --use-opengl         Use OpenGL\n"
 msgstr ""
 
 #. 	"   --fs-preload             Preload all Levelpreviews\n"a
 #. 	"   --disable-previews       Disables all level preview in the level selector\n"
-#: src/pingus_main.cxx:511
+#: src/pingus_main.cxx:516
 msgid ""
 "   -F, --disable-fullscreen Disable Fullscreen\n"
 "   -f, --enable-fullscreen  Enable Fullscreen (default)\n"
@@ -976,7 +968,7 @@ msgid ""
 "   -p, --play-demo FILE     Plays a demo session from FILE\n"
 msgstr ""
 
-#: src/pingus_main.cxx:554
+#: src/pingus_main.cxx:559
 msgid ""
 "\n"
 "Sound:\n"
@@ -984,59 +976,138 @@ msgid ""
 "   -m, --enable-music       Enable music\n"
 msgstr ""
 
+#: src/pingus_main.cxx:664
+msgid "clanVorbis support:           ok"
+msgstr ""
+
 #: src/pingus_main.cxx:666
-msgid "gettext language: english"
-msgstr "gettext Sprache: deutsch"
+msgid "clanVoribs support:  missing (.ogg music files will not be playable)"
+msgstr ""
+
+#: src/pingus_main.cxx:670
+msgid "clanMikMod support:           ok"
+msgstr ""
+
+#: src/pingus_main.cxx:672
+msgid "clanMikMod support:  missing (music files will not be playable)"
+msgstr ""
+
+#: src/pingus_main.cxx:676
+msgid "getext support:               ok"
+msgstr ""
+
+#: src/pingus_main.cxx:677
+#, fuzzy
+msgid "gettext language:        english"
+msgstr "gettext Sprache:         deutsch"
+
+#: src/pingus_main.cxx:683
+msgid "sound support:           enabled"
+msgstr "Sound Unterst,b|(Bzung:           an"
+
+#: src/pingus_main.cxx:685
+msgid "sound support:          disabled"
+msgstr "Sound Unterst,b|(Bzung:          aus"
+
+#: src/pingus_main.cxx:688
+msgid "music support:           enabled"
+msgstr "Musik Unterst,b|(Btzung:          an"
 
 #: src/pingus_main.cxx:690
+msgid "music support:          disabled"
+msgstr "Musik Unterst,b|(Btzung:         aus"
+
+#: src/pingus_main.cxx:692
+msgid "resolution set to:       "
+msgstr "Aufl,bv(Bsung:               "
+
+#: src/pingus_main.cxx:701
 msgid "PingusMain: Starting Main: "
 msgstr "PingusMain: Hauptteil wird gestartet: "
 
-#: src/pingus_main.cxx:716
+#: src/pingus_main.cxx:727
 msgid "PingusMain: Levelfile not found, ignoring: "
 msgstr "PingusMain: Leveldatei nicht gefunden, Fehler wird ignoriert: "
 
-#: src/pingus_main.cxx:800
+#: src/pingus_main.cxx:818
 msgid "Error caught from ClanLib: "
 msgstr "ClanLib Fehler abgefangen: "
 
-#: src/pingus_main.cxx:804
+#: src/pingus_main.cxx:822
 msgid "Error caught from Pingus: "
 msgstr "Pingus Fehler wurde abgefangen: "
 
-#: src/pingus_main.cxx:808
+#: src/pingus_main.cxx:826
 msgid "Pingus: Out of memory!"
 msgstr "Pingus: Speicher ist ausgegangen"
 
-#: src/pingus_main.cxx:812
+#: src/pingus_main.cxx:830
 msgid "Pingus: Standard exception caught!:\n"
 msgstr "Pingus: Standard Ausnahme abgefangen!:\n"
 
-#: src/pingus_main.cxx:816
+#: src/pingus_main.cxx:834
 msgid "Pingus: Unknown throw caught!"
 msgstr "Pingus: Unbekannte Ausnahme abgefangen!"
 
-#: src/screenshot.cxx:39
+#: src/result_screen.cxx:132
+msgid "Result: Success!"
+msgstr "Ergebnis: Erfolg!"
+
+#: src/result_screen.cxx:138
+msgid "Result: Failure! :("
+msgstr "Ergebnis: Versagt!"
+
+#: src/screenshot.cxx:43
 msgid "Screenshot: Saving screenshot to: "
 msgstr "Screenshot: Speichere Screenshot als: "
 
-#: src/screenshot.cxx:41
+#: src/screenshot.cxx:45
 msgid "Screnshot: Screenshot is done."
 msgstr "Screenshot: Screenshot wurde erstellt."
 
-#: src/screenshot.cxx:44
+#: src/screenshot.cxx:51
 msgid "Screenshot: Couldn't save screenshot"
 msgstr "Screenshot: Screenshot konnte nicht gespeichert werden"
 
-#: src/screenshot.cxx:64
+#: src/screenshot.cxx:134
 #, fuzzy
 msgid "Screenshot: Couldn't write file: "
 msgstr "Screenshot: Datei konnte nicht geschrieben werden: "
 
-#: src/spot_map.cxx:279
+#: src/spot_map.cxx:278
 #, c-format
 msgid "Image has wrong color depth: %d"
 msgstr "Bild hat falsche Farbintensität: %d"
+
+#: src/start_screen.cxx:128
+#, fuzzy
+msgid "Number of Pingus: "
+msgstr "Anzahl an Pingus: %d"
+
+#: src/start_screen.cxx:131
+#, fuzzy
+msgid "Number to Save: "
+msgstr "Zu rettende Pingus: %d"
+
+#: src/start_screen.cxx:134
+#, fuzzy
+msgid "Time: "
+msgstr "Benutzung: "
+
+#: src/start_screen.cxx:137
+msgid "Difficulty:"
+msgstr "Schwierigkeitsgrad:"
+
+#. for (int i = 0; plf->get_difficulty())
+#. {
+#. }
+#: src/start_screen.cxx:144
+msgid "Author: "
+msgstr "Autor: "
+
+#: src/start_screen.cxx:147
+msgid "Filename: "
+msgstr "Dateiname: "
 
 #: src/system.cxx:65 src/system.cxx:97
 msgid "System: Couldn't open: "
@@ -1051,23 +1122,28 @@ msgid "Found: "
 msgstr "Gefunden: "
 
 #: src/system.cxx:264
-#, fuzzy
 msgid "Environment variable $HOME not set, fix that and start again."
 msgstr "Umgebungs Variable $HOME ist nicht gesetzt."
 
 #: src/system.cxx:422
 msgid "System::checksum: Couldn't open file: "
-msgstr ""
-"System::checksum: Datei oder Verzeichnis konnte nicht geoeffnet werden: "
+msgstr "System::checksum: Datei oder Verzeichnis konnte nicht geoeffnet werden: "
 
 #: src/system.cxx:432
 msgid "System:checksum: file read error"
 msgstr "System:checksum: Fehler beim Lesen von Datei"
 
+#: src/worldmap/level_dot.cxx:144
+msgid "locked"
+msgstr "gesperrt"
+
 #: src/worldmap/worldmap.cxx:67
-#, fuzzy
 msgid "WorldMap: File not found: "
-msgstr "PingusMain: Leveldatei nicht gefunden, Fehler wird ignoriert: "
+msgstr "Worldmap: Datei nicht gefunden: "
+
+#, fuzzy
+#~ msgid "..:: Lets you select a world to start ::.."
+#~ msgstr "..:: Such dir eine Welt zum starten aus ::.."
 
 #~ msgid "Unexpected keyword: '%s' at line: %d"
 #~ msgstr "Unerwartetes Schlüsselwort: '%s' bei Zeile: '%d'"
@@ -1143,10 +1219,6 @@ msgstr "PingusMain: Leveldatei nicht gefunden, Fehler wird ignoriert: "
 #, fuzzy
 #~ msgid "Pingus Datadir"
 #~ msgstr "Zu rettende Pingus: %d"
-
-#, fuzzy
-#~ msgid "Name: "
-#~ msgstr "Benutzung: "
 
 #~ msgid "Starting..."
 #~ msgstr "Pingus wird gestartet..."

@@ -1,4 +1,4 @@
-//  $Id: surface_button.hxx,v 1.5 2003/03/10 11:29:50 grumbel Exp $
+//  $Id: surface_button.hxx,v 1.6 2003/04/01 13:21:20 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,7 +31,7 @@ namespace GUI
     released and mouse over */
 class SurfaceButton : public Component
 {
-private:
+protected:
   int x_pos;
   int y_pos;
   CL_Surface button_surface;
@@ -47,7 +47,7 @@ public:
                  const ResDescriptor& button_mouse_over_surface);
   virtual ~SurfaceButton ();
 
-  void draw (GraphicContext& gc);
+  virtual void draw (GraphicContext& gc);
   bool is_at (int x, int y);
 
   void on_primary_button_press (int x, int y);

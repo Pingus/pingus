@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Pingus 0.5.0\n"
-"POT-Creation-Date: 2003-03-20 10:13+0100\n"
+"POT-Creation-Date: 2003-04-01 11:23+0200\n"
 "PO-Revision-Date: 2001-12-04 22:50+02:00\n"
 "Last-Translator: Giray Devlet <giray@devlet.cc>\n"
 "Language-Team: Giray Devlet <giray@devlet.cc>, Caðrý Çöltekin <cagri@metu."
@@ -440,7 +440,8 @@ msgid "Save this level (F6)"
 msgstr "Seviyeyi kayýt et"
 
 #: src/editor/panel_icons.cxx:68
-msgid "Delete marked objects"
+#, fuzzy
+msgid "Delete marked objects (delete"
 msgstr "Seçili nesneleri sil"
 
 #: src/editor/panel_icons.cxx:80
@@ -489,7 +490,7 @@ msgid "Setup Number of Actions"
 msgstr "Pingus sayýsý: %d"
 
 #: src/editor/panel_icons.cxx:200
-msgid "Display Help Screen"
+msgid "Display Help Screen (F1)"
 msgstr ""
 
 #: src/fps_counter.cxx:46
@@ -614,12 +615,12 @@ msgid "You've got a negative save/total value, something is buggy."
 msgstr "Eksi sayýda Pingus kurtardýn, biyerde kesin hata var."
 
 #.  desc["en"] = "..:: Starts the level you played at last ::..";
-#: src/menu_button.cxx:171
+#: src/menu_button.cxx:178
 msgid "..:: The people who brought this game to you ::.."
 msgstr "..:: Bu oyunu sizin için hazýrlayanlar... ::.."
 
 #. desc["de"] = "..:: Wer hat den dieses Spiel verbrochen...? ::..";
-#: src/menu_button.cxx:174
+#: src/menu_button.cxx:181
 msgid "Credits"
 msgstr "Yardýmcý olanlar"
 
@@ -627,26 +628,26 @@ msgstr "Yardýmcý olanlar"
 #. y_pos = CL_Display::get_height() * 330 / 480; //330;
 #. 150;
 #. 330;
-#: src/menu_button.cxx:207
+#: src/menu_button.cxx:214
 #, fuzzy
 msgid "..:: Takes you to the options menu ::.."
 msgstr "..:: Seçenekler Menüsüne gider ::.."
 
 #.  desc["de"] = "..:: Einstellungen und Mogeleien ::..";
-#: src/menu_button.cxx:210
+#: src/menu_button.cxx:217
 msgid "Options"
 msgstr "Seçenekler"
 
-#: src/menu_button.cxx:244
+#: src/menu_button.cxx:251
 msgid "..:: Bye, bye ::.."
 msgstr "..:: Güle güle... ::.."
 
 #. desc["de"] = "..:: Auf Wiedersehen ::..";
-#: src/menu_button.cxx:247
+#: src/menu_button.cxx:254
 msgid "Exit"
 msgstr "Çýkýþ"
 
-#: src/menu_button.cxx:304
+#: src/menu_button.cxx:306
 msgid "..:: Launch the level editor ::.."
 msgstr "..:: Seviye Editörünü Çalýþtýr ::.."
 
@@ -655,42 +656,41 @@ msgstr "..:: Seviye Editörünü Çalýþtýr ::.."
 # Yav tabii turkce'nin yapisindan ortaya cikan bir sorun var .. 'yarat'i cumle
 # sonuna koymak gerekecek ... neyse bi compile edince nasil gozukuyor bakalim ... -gd
 #. desc["de"] = "..:: Den Level Editor starten ::..";
-#: src/menu_button.cxx:307
+#: src/menu_button.cxx:309
 msgid "Create a"
 msgstr "Yeni Seviye"
 
-#: src/menu_button.cxx:308
+#: src/menu_button.cxx:310
 msgid "Level"
 msgstr "Yarat"
 
-# bu olmadi -cagri
-# þimdi daha iyi mi? -gd
-#: src/menu_button.cxx:347
+# bu nasil olmuþ? contrib -> katýlýmcý, dýþarlýklý :))) -gd 
+#: src/menu_button.cxx:346
 #, fuzzy
-msgid "..:: Lets you select a world to start ::.."
-msgstr "..:: Oynamak için bir dünya seçmenizi saðlar ::.."
+msgid "..:: Start the game ::.."
+msgstr "..:: Harici bir seviye baþlat ::.."
 
 #. desc["de"] = "..:: Such dir eine Welt zum beginnen aus ::..";
-#: src/menu_button.cxx:350
+#: src/menu_button.cxx:349
 msgid "Start"
 msgstr "Baþla"
 
 # bu nasil olmuþ? contrib -> katýlýmcý, dýþarlýklý :))) -gd 
-#: src/menu_button.cxx:375
+#: src/menu_button.cxx:385
 msgid "..:: Start a contrib level ::.."
 msgstr "..:: Harici bir seviye baþlat ::.."
 
 # bu olmadi -cagri
 # bu daha da olmadi galiba -gd
-#: src/menu_button.cxx:377
+#: src/menu_button.cxx:387
 msgid "Contrib"
 msgstr "Harici"
 
-#: src/menu_button.cxx:398
+#: src/menu_button.cxx:408
 msgid "..:: Multiplayer Modes... experimental stuff ::.."
 msgstr "..:: Çok oyunculu kipler... Deneysel þeyler ::.."
 
-#: src/menu_button.cxx:400
+#: src/menu_button.cxx:410
 msgid "Multi"
 msgstr "Çoklu"
 
@@ -830,88 +830,89 @@ msgstr "PingusBöceðý:"
 msgid "PingusError: "
 msgstr "PingusHatasý:"
 
-#: src/pingus_main.cxx:97 src/pingus_main.cxx:120
+#: src/pingus_main.cxx:100 src/pingus_main.cxx:123
 msgid ""
 "\n"
 ",------------------------------------------------------------------------"
 msgstr ""
 
-#: src/pingus_main.cxx:98
+#: src/pingus_main.cxx:101
 msgid "| segfault_handler: catched a SIGSEGV."
 msgstr ""
 
-#: src/pingus_main.cxx:100
+#: src/pingus_main.cxx:103
 #, fuzzy
 msgid "| Woops, Pingus just crashed, congratulations you've found a bug."
 msgstr "Amanin booo ...  Pingus çöktü! Tebrikler bir böcek (hata) buldun!"
 
-#: src/pingus_main.cxx:101
+#: src/pingus_main.cxx:104
 #, fuzzy
 msgid ""
 "| Please write a little bug report to <grumbel@gmx.de>, include informations"
 msgstr "Lütfen inglizce/almanca olarak <grumbel@gmx.de> adresine kýsa bir hata"
 
-#: src/pingus_main.cxx:102
+#: src/pingus_main.cxx:105
 #, fuzzy
 msgid "| where exacly the SIGSEGV occured and how to reproduce it."
 msgstr "raporu yaz. SIGSEGV'in nerede oluþtuðunu ve nasýl tekrarlanabileceðini"
 
-#: src/pingus_main.cxx:103
+#: src/pingus_main.cxx:106
 #, fuzzy
 msgid "| Also try include a backtrace, you can get it like this:"
 msgstr "anlat.  Bir de bir 'backtrace' ekle ... Aþagýdaki gibi mesela:\n"
 
-#: src/pingus_main.cxx:105
+#: src/pingus_main.cxx:108
 #, fuzzy
 msgid "| $ gdb pingus core"
 msgstr "$ gdb pingus core"
 
-#: src/pingus_main.cxx:106
+#: src/pingus_main.cxx:109
 #, fuzzy
 msgid "| (gdb) bt"
 msgstr "(gdb) bt"
 
-#: src/pingus_main.cxx:107 src/pingus_main.cxx:114
+#: src/pingus_main.cxx:110 src/pingus_main.cxx:117
 #, fuzzy
 msgid "| ..."
 msgstr "...\n"
 
-#: src/pingus_main.cxx:109
+#: src/pingus_main.cxx:112
 #, fuzzy
 msgid "| If that doesn't work, try this:"
 msgstr "Bu çalýþmazsa, þöyle de olabilir:\n"
 
-#: src/pingus_main.cxx:111
+#: src/pingus_main.cxx:114
 #, fuzzy
 msgid "| $ gdb pingus"
 msgstr "$ gdb pingus"
 
-#: src/pingus_main.cxx:112
+#: src/pingus_main.cxx:115
 #, fuzzy
 msgid "| (gdb) r"
 msgstr "(gdb) r"
 
-#: src/pingus_main.cxx:113
+#: src/pingus_main.cxx:116
 #, fuzzy
 msgid "| [play until it crashes again]"
 msgstr " [... ve çökene kadar tekrar oyna ... ]"
 
-#: src/pingus_main.cxx:116
+#: src/pingus_main.cxx:119
 msgid "'------------------------------------------------------------------------\n"
 msgstr ""
 
-#: src/pingus_main.cxx:121
+#: src/pingus_main.cxx:124
 msgid "| Warning: Pingus recieved a SIGINT, exiting now."
 msgstr ""
 
-#: src/pingus_main.cxx:122
+#: src/pingus_main.cxx:125
 msgid "`------------------------------------------------------------------------\n"
 msgstr ""
 
-#: src/pingus_main.cxx:339
+#: src/pingus_main.cxx:344
+#, fuzzy
 msgid ""
 "\n"
-"Copyright (C) 1998 Ingo Ruhnke <grumbel@pingus.cx>\n"
+"Copyright (C) 2003 Ingo Ruhnke <grumbel@pingus.cx>\n"
 "There is NO warranty.  You may redistribute this software\n"
 "under the terms of the GN General Public License.\n"
 "For more information about these matters, see the files named COPYING."
@@ -923,19 +924,19 @@ msgstr ""
 "özgürce daðýtýlabilir. Ayrýntýlar için kaynak \n"
 "kodunda COPYING belgesini okuyun."
 
-#: src/pingus_main.cxx:495
+#: src/pingus_main.cxx:500
 msgid "Unknow char: "
 msgstr "Bilinmeyen karakter: "
 
-#: src/pingus_main.cxx:496
+#: src/pingus_main.cxx:501
 msgid "Usage: "
 msgstr "Kullaným: "
 
-#: src/pingus_main.cxx:496
+#: src/pingus_main.cxx:501
 msgid " [OPTIONS]... [LEVELFILE]"
 msgstr "[SEÇENEKLER]... [SEVÝYE DOSYASI]"
 
-#: src/pingus_main.cxx:498
+#: src/pingus_main.cxx:503
 msgid ""
 "\n"
 "Options:\n"
@@ -946,13 +947,13 @@ msgid ""
 "   --disable-intro          Disable intro\n"
 msgstr ""
 
-#: src/pingus_main.cxx:507
+#: src/pingus_main.cxx:512
 msgid "   -G, --use-opengl         Use OpenGL\n"
 msgstr "   -G, --use-opengl         OpenGL kullan\n"
 
 #. 	"   --fs-preload             Preload all Levelpreviews\n"a
 #. 	"   --disable-previews       Disables all level preview in the level selector\n"
-#: src/pingus_main.cxx:511
+#: src/pingus_main.cxx:516
 msgid ""
 "   -F, --disable-fullscreen Disable Fullscreen\n"
 "   -f, --enable-fullscreen  Enable Fullscreen (default)\n"
@@ -1001,7 +1002,7 @@ msgid ""
 "   -p, --play-demo FILE     Plays a demo session from FILE\n"
 msgstr ""
 
-#: src/pingus_main.cxx:554
+#: src/pingus_main.cxx:559
 msgid ""
 "\n"
 "Sound:\n"
@@ -1009,62 +1010,141 @@ msgid ""
 "   -m, --enable-music       Enable music\n"
 msgstr ""
 
+#: src/pingus_main.cxx:664
+msgid "clanVorbis support:           ok"
+msgstr ""
+
 #: src/pingus_main.cxx:666
-msgid "gettext language: english"
+msgid "clanVoribs support:  missing (.ogg music files will not be playable)"
+msgstr ""
+
+#: src/pingus_main.cxx:670
+msgid "clanMikMod support:           ok"
+msgstr ""
+
+#: src/pingus_main.cxx:672
+msgid "clanMikMod support:  missing (music files will not be playable)"
+msgstr ""
+
+#: src/pingus_main.cxx:676
+msgid "getext support:               ok"
+msgstr ""
+
+#: src/pingus_main.cxx:677
+msgid "gettext language:        english"
+msgstr ""
+
+#: src/pingus_main.cxx:683
+msgid "sound support:           enabled"
+msgstr ""
+
+#: src/pingus_main.cxx:685
+msgid "sound support:          disabled"
+msgstr ""
+
+#: src/pingus_main.cxx:688
+msgid "music support:           enabled"
+msgstr ""
+
+#: src/pingus_main.cxx:690
+msgid "music support:          disabled"
+msgstr ""
+
+#: src/pingus_main.cxx:692
+msgid "resolution set to:       "
 msgstr ""
 
 # 'Main' yerine baþka biþi uydurmak lazim buraya -gd
-#: src/pingus_main.cxx:690
+#: src/pingus_main.cxx:701
 msgid "PingusMain: Starting Main: "
 msgstr "PingusMain: Main Baþlatýlýyor: "
 
-#: src/pingus_main.cxx:716
+#: src/pingus_main.cxx:727
 msgid "PingusMain: Levelfile not found, ignoring: "
 msgstr "PingusMain: Seviye Dosyasý bulunamadý, yok sayýlacak: "
 
-#: src/pingus_main.cxx:800
+#: src/pingus_main.cxx:818
 msgid "Error caught from ClanLib: "
 msgstr "ClanLib hatasý: "
 
-#: src/pingus_main.cxx:804
+#: src/pingus_main.cxx:822
 msgid "Error caught from Pingus: "
 msgstr "Pingus'ta hata saptandý: "
 
-#: src/pingus_main.cxx:808
+#: src/pingus_main.cxx:826
 msgid "Pingus: Out of memory!"
 msgstr "Pingus: Bellek yetersiz!"
 
 # bu komik oldu -cagri
 # daha mi iyi boyle :) -gd
-#: src/pingus_main.cxx:812
+#: src/pingus_main.cxx:830
 msgid "Pingus: Standard exception caught!:\n"
 msgstr "Pingus: Genel olaðan dýþý durum saptandý!:\n"
 
-#: src/pingus_main.cxx:816
+#: src/pingus_main.cxx:834
 msgid "Pingus: Unknown throw caught!"
 msgstr "Pingus: Bilinmeyen bir hata saptandý!"
 
-#: src/screenshot.cxx:39
+#: src/result_screen.cxx:132
+msgid "Result: Success!"
+msgstr ""
+
+#: src/result_screen.cxx:138
+msgid "Result: Failure! :("
+msgstr ""
+
+#: src/screenshot.cxx:43
 msgid "Screenshot: Saving screenshot to: "
 msgstr "Screenshot: Ekran görüntüsü için dosya adý: "
 
-#: src/screenshot.cxx:41
+#: src/screenshot.cxx:45
 msgid "Screnshot: Screenshot is done."
 msgstr "Screenshot: Ekran görüntüsü kaydedildi."
 
-#: src/screenshot.cxx:44
+#: src/screenshot.cxx:51
 msgid "Screenshot: Couldn't save screenshot"
 msgstr "Screenshot: Ekran görüntüsü kaydedilemedi"
 
-#: src/screenshot.cxx:64
+#: src/screenshot.cxx:134
 #, fuzzy
 msgid "Screenshot: Couldn't write file: "
 msgstr "Screenshot: Dosyaya yazýlamýyor: "
 
-#: src/spot_map.cxx:279
+#: src/spot_map.cxx:278
 #, c-format
 msgid "Image has wrong color depth: %d"
 msgstr "Resmin renk derinliði yanlýþ: %d"
+
+#: src/start_screen.cxx:128
+#, fuzzy
+msgid "Number of Pingus: "
+msgstr "Pingus sayýsý: %d"
+
+#: src/start_screen.cxx:131
+#, fuzzy
+msgid "Number to Save: "
+msgstr "Kurtarýlýcak Pingus: %d"
+
+#: src/start_screen.cxx:134
+#, fuzzy
+msgid "Time: "
+msgstr "Ad: "
+
+#: src/start_screen.cxx:137
+msgid "Difficulty:"
+msgstr ""
+
+#. for (int i = 0; plf->get_difficulty())
+#. {
+#. }
+#: src/start_screen.cxx:144
+msgid "Author: "
+msgstr ""
+
+#: src/start_screen.cxx:147
+#, fuzzy
+msgid "Filename: "
+msgstr "Ad: "
 
 #: src/system.cxx:65 src/system.cxx:97
 msgid "System: Couldn't open: "
@@ -1091,10 +1171,20 @@ msgstr "Sistem::checksum: Açýlamayan dosya: "
 msgid "System:checksum: file read error"
 msgstr "Sistem:checksum: Dosya okunurken hata oluþtu"
 
+#: src/worldmap/level_dot.cxx:144
+msgid "locked"
+msgstr ""
+
 #: src/worldmap/worldmap.cxx:67
 #, fuzzy
 msgid "WorldMap: File not found: "
 msgstr "PingusWorldMapGraph: Dosya bulunamadý: "
+
+# bu olmadi -cagri
+# þimdi daha iyi mi? -gd
+#, fuzzy
+#~ msgid "..:: Lets you select a world to start ::.."
+#~ msgstr "..:: Oynamak için bir dünya seçmenizi saðlar ::.."
 
 #~ msgid "Unexpected keyword: '%s' at line: %d"
 #~ msgstr "Beklenmeyen anahtar kelime: '%s'. Bulunan satýr: %d"
@@ -1338,10 +1428,6 @@ msgstr "PingusWorldMapGraph: Dosya bulunamadý: "
 #, fuzzy
 #~ msgid "Pingus Datadir"
 #~ msgstr "Pingus veri dizini: "
-
-#, fuzzy
-#~ msgid "Name: "
-#~ msgstr "Ad: "
 
 #~ msgid "Starting..."
 #~ msgstr "Pingus baþlatýlýyor..."

@@ -1,4 +1,4 @@
-//  $Id: manager.cxx,v 1.28 2003/03/31 21:52:03 grumbel Exp $
+//  $Id: manager.cxx,v 1.29 2003/04/01 13:21:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,12 +18,14 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
+#include "../fonts.hxx"
 #include "../gui/screen_manager.hxx"
 #include "../gui/surface_button.hxx"
 #include "../path_manager.hxx"
 #include "../res_descriptor.hxx"
 #include "../sound/sound.hxx"
 #include "worldmap.hxx"
+#include "pingus.hxx"
 #include "manager.hxx"
 
 namespace WorldMapNS {
@@ -36,6 +38,7 @@ class WorldMapManagerCloseButton
 public:
   WorldMapManagerCloseButton();
   void on_click();
+  void draw (GraphicContext& gc);
 };
 
 class WorldMapManagerEnterButton
@@ -44,14 +47,22 @@ class WorldMapManagerEnterButton
 public:
   WorldMapManagerEnterButton();
   void on_click();
+  void draw (GraphicContext& gc);
 };
 
 WorldMapManagerCloseButton::WorldMapManagerCloseButton()
-  : GUI::SurfaceButton(5, 5,
-                       ResDescriptor("menu/close_normal", "core"),
-                       ResDescriptor("menu/close_pressed", "core"),
-                       ResDescriptor("menu/close_highlight", "core"))
+  : GUI::SurfaceButton(0, 600 - 37,
+                       ResDescriptor("worldmap/leave_button_normal", "core"),
+                       ResDescriptor("worldmap/leave_button_pressed", "core"),
+                       ResDescriptor("worldmap/leave_button_hover", "core"))
 {
+}
+
+void
+WorldMapManagerCloseButton::draw (GraphicContext& gc)
+{
+  SurfaceButton::draw(gc);
+  gc.print_left(Fonts::chalk_small, 10, 580, "Leave?");
 }
 
 void
@@ -61,18 +72,32 @@ WorldMapManagerCloseButton::on_click()
 }
 
 WorldMapManagerEnterButton::WorldMapManagerEnterButton()
-  : GUI::SurfaceButton(500, 10,
-                       ResDescriptor("menu/enterlevel", "core"),
-                       ResDescriptor("menu/enterlevel", "core"),
-                       ResDescriptor("menu/enterlevel", "core"))
+  : GUI::SurfaceButton(800 - 119, 600 - 37,
+                       ResDescriptor("worldmap/enter_button_normal", "core"),
+                       ResDescriptor("worldmap/enter_button_pressed", "core"),
+                       ResDescriptor("worldmap/enter_button_hover", "core"))
 {
+}
+
+void
+WorldMapManagerEnterButton::draw (GraphicContext& gc)
+{
+  if (WorldMapManager::instance()->get_worldmap()->get_pingus()->is_walking())
+    {
+      gc.draw(button_surface, x_pos, y_pos);
+    }
+  else
+    {
+      SurfaceButton::draw(gc);
+      gc.print_left(Fonts::chalk_small, 700, 580, "Enter?");
+    }
 }
 
 void
 WorldMapManagerEnterButton::on_click()
 {
   WorldMapManager::instance()->get_worldmap()->enter_level();
-   }
+}
 
 WorldMapManager::WorldMapManager ()
   : worldmap(0),

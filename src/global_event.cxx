@@ -1,4 +1,4 @@
-//  $Id: global_event.cxx,v 1.7 2002/08/23 15:49:48 torangan Exp $
+//  $Id: global_event.cxx,v 1.8 2003/04/01 13:21:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <config.h>
 #include <stdio.h>
 #include <algorithm>
 #include <ClanLib/Display/Input/input.h>
@@ -28,9 +29,6 @@
 #include "globals.hxx"
 
 GlobalEvent global_event;
-
-// FIXME: This belongs into ClanLib
-#define PINGUS_CL_KEY_HELP 91
 
 GlobalEvent::GlobalEvent ()
 {
@@ -66,7 +64,11 @@ GlobalEvent::on_button_press(CL_InputDevice *device, const CL_Key &key)
 	  //  console.scroll_down();	  
 	  break;
 
-	case PINGUS_CL_KEY_HELP:
+#ifdef CL_HAS_KEY_GRAVE
+	case CL_KEY_GRAVE:
+#else
+        case CL_KEY_NONE_OF_THE_ABOVE:
+#endif
 	  console.toggle_display();
 	  break; 
 

@@ -1,3 +1,5 @@
+# Compile with CL_HAS_KEY_GRAVE!
+
 LDADD = backgrounds/libpingus_backgrounds.a \
 colliders/libpingus_colliders.a \
 editor/libpingus_editor.a \
