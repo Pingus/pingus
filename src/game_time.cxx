@@ -1,4 +1,4 @@
-//  $Id: game_time.cxx,v 1.2 2002/06/13 14:25:12 torangan Exp $
+//  $Id: game_time.cxx,v 1.3 2002/06/28 08:32:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,14 +17,27 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "globals.hxx"
 #include "game_time.hxx"
 
 int GameTime::count;
 
+int
+GameTime::get_time ()
+{
+  return count * game_speed;
+}
+
 int 
-GameTime::get_time(void)
+GameTime::get_ticks(void)
 {
   return count;
+}
+
+int
+GameTime::get_tick_time ()
+{
+  return game_speed;
 }
 
 void

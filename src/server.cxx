@@ -1,4 +1,4 @@
-//  $Id: server.cxx,v 1.5 2002/06/26 17:43:18 grumbel Exp $
+//  $Id: server.cxx,v 1.6 2002/06/28 08:32:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -104,7 +104,7 @@ Server::update(float /*delta*/)
 void
 Server::send_event(std::string event)
 {
-  recorder.queue_event(to_string(GameTime::get_time()) + ":" + event);
+  recorder.queue_event(to_string(GameTime::get_ticks()) + ":" + event);
   process_event(event);
 }
 

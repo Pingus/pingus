@@ -1,4 +1,4 @@
-//  $Id: world.cxx,v 1.10 2002/06/26 19:13:13 grumbel Exp $
+//  $Id: world.cxx,v 1.11 2002/06/28 08:32:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -125,7 +125,7 @@ World::update(float delta)
     {
       if (verbose) std::cout << "World: world finished, going down in the next seconds..." << endl;
       exit_world = true;
-      shutdown_time = GameTime::get_time() + 75;
+      shutdown_time = GameTime::get_ticks() + 75;
     }
 
   if (do_armageddon && armageddon_count != pingus->end())
@@ -257,7 +257,7 @@ World::get_time_left()
 {
   if (exit_time != -1) // There is a time limit
     {
-      return exit_time - GameTime::get_time();
+      return exit_time - GameTime::get_ticks();
     }
   else // No timelimit given
     {
@@ -268,7 +268,7 @@ World::get_time_left()
 int
 World::get_time_passed()
 {
-  return GameTime::get_time();
+  return GameTime::get_ticks();
 }
 
 unsigned int
@@ -294,11 +294,11 @@ bool
 World::is_finished(void)
 {
   // Return true if the world is finished and some time has passed
-  if (((exit_time != -1) && (exit_time < (GameTime::get_time())))
-      || ((shutdown_time != -1) && shutdown_time < GameTime::get_time()))
+  if (((exit_time != -1) && (exit_time < (GameTime::get_ticks())))
+      || ((shutdown_time != -1) && shutdown_time < GameTime::get_ticks()))
     {
       std::cout << "ExitTime: " << exit_time << std::endl
-		<< "GameTime: " << GameTime::get_time() << std::endl
+		<< "GameTime: " << GameTime::get_ticks() << std::endl
 		<< "ShutDown: " << shutdown_time << std::endl;
       return true;
     } 

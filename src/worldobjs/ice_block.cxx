@@ -1,4 +1,4 @@
-//  $Id: ice_block.cxx,v 1.3 2002/06/25 12:20:34 grumbel Exp $
+//  $Id: ice_block.cxx,v 1.4 2002/06/28 08:32:21 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -126,11 +126,11 @@ IceBlock::update(float /*delta*/)
       if ((*pingu)->get_x() > pos.x && (*pingu)->get_x() < pos.x + block_sur.get_width()
 	  && (*pingu)->get_y() > pos.y - 4 && (*pingu)->get_y() < pos.y + block_sur.get_height())
 	{
-	  last_contact = GameTime::get_time ();
+	  last_contact = GameTime::get_ticks ();
 	}
     }
 
-  if (last_contact && last_contact + 1000 > GameTime::get_time ())
+  if (last_contact && last_contact + 1000 > GameTime::get_ticks ())
     {
       //std::cout << "IceBlock: Catched Pingu: " << thickness  << std::endl;
       thickness -= 0.01f;

@@ -1,4 +1,4 @@
-//  $Id: global_event.cxx,v 1.5 2002/06/26 16:49:33 grumbel Exp $
+//  $Id: global_event.cxx,v 1.6 2002/06/28 08:32:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,23 +43,23 @@ GlobalEvent::on_button_press(CL_InputDevice *device, const CL_Key &key)
 	{
 	  // F1 is the general console modifer key...
 	case CL_KEY_PAGEUP:
-	  if (CL_Keyboard::get_keycode(PINGUS_CL_KEY_HELP))
-	    console.increase_lines();
+	  //if (CL_Keyboard::get_keycode(PINGUS_CL_KEY_HELP))
+	  //console.increase_lines();
 	  break;
 
 	case CL_KEY_PAGEDOWN:
-	  if (CL_Keyboard::get_keycode(PINGUS_CL_KEY_HELP))
-	    console.decrease_lines();
+	  //if (CL_Keyboard::get_keycode(PINGUS_CL_KEY_HELP))
+	  //  console.decrease_lines();
 	  break;
 
 	case CL_KEY_UP:
-	  if (CL_Keyboard::get_keycode(PINGUS_CL_KEY_HELP))
-	    console.scroll_up();
+	  //if (CL_Keyboard::get_keycode(PINGUS_CL_KEY_HELP))
+	  // console.scroll_up();
 	  break;
 
 	case CL_KEY_DOWN:
-	  if (CL_Keyboard::get_keycode(PINGUS_CL_KEY_HELP))
-	    console.scroll_down();	  
+	  //if (CL_Keyboard::get_keycode(PINGUS_CL_KEY_HELP))
+	  //  console.scroll_down();	  
 	  break;
 
 	case PINGUS_CL_KEY_HELP:

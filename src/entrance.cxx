@@ -1,4 +1,4 @@
-//  $Id: entrance.cxx,v 1.2 2002/06/13 14:25:12 torangan Exp $
+//  $Id: entrance.cxx,v 1.3 2002/06/28 08:32:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,8 +38,8 @@ Entrance::Entrance(const EntranceData& data)
 bool
 Entrance::pingu_ready()
 {
-  if (last_release < (GameTime::get_time() - release_rate)) {
-    last_release = GameTime::get_time();
+  if (last_release < (GameTime::get_ticks() - release_rate)) {
+    last_release = GameTime::get_ticks();
     return true;
   } else {
     return false;

@@ -1,4 +1,4 @@
-//  $Id: game_time.hxx,v 1.2 2002/06/24 22:52:54 grumbel Exp $
+//  $Id: game_time.hxx,v 1.3 2002/06/28 08:32:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,22 +20,35 @@
 #ifndef HEADER_PINGUS_GAME_TIME_HXX
 #define HEADER_PINGUS_GAME_TIME_HXX
 
-///
+/** The GameTime represents the time which passes in the Pingus World.
+    Its behaviour is analogue to CL_System::get_time (), but with the
+    difference that it only increases if the game runs, if the game is
+    in pause mode, the time will not continue. 
+    
+    FIXME: This should not be a static singletone class */
 class GameTime
 {
 private:
-  ///
+  /** Tick counter */
   static int count;
 
 public:
-  ///
-  static int  get_time(void);
-  ///
+  /** Number of ticks since the time starts, a tick is one basically
+      update call to the world */
+  static int  get_ticks(void);
+
+  /** Return the passed time in miliseconds (1000msec = 1sec) */
+  static int get_time ();
+
+  /** Return in realtime (milisecondons ) how long a tick normally takes */
+  static int get_tick_time ();
+
+  /** Increase the tick count */
   static void increase(void);
-  ///
+  
+  /** Start from zero */
   static void reset(void);
-}///
-;
+};
 
 #endif
 
