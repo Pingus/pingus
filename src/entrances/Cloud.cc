@@ -1,4 +1,4 @@
-//  $Id: Cloud.cc,v 1.10 2001/04/10 19:42:58 grumbel Exp $
+//  $Id: Cloud.cc,v 1.11 2001/08/04 12:46:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -47,11 +47,11 @@ void
 Cloud::draw_offset(int x, int y, float s)
 {
   if (s == 1.0) {
-    surface.put_screen(x + pos.x - 115,
-		       y + pos.y - 100);
+    surface.put_screen(int(x + pos.x - 115),
+		       int(y + pos.y - 100));
   } else {
-    surface.put_screen((int)((pos.x-32 + x) * s),
-		       (int)((pos.y-16 + y) * s),
+    surface.put_screen(int((pos.x-32 + x) * s),
+		       int((pos.y-16 + y) * s),
 		       s, s);  
   }
 }

@@ -1,4 +1,4 @@
-//  $Id: PSMParser.hh,v 1.12 2000/10/18 20:16:36 grumbel Exp $
+//  $Id: PSMParser.hh,v 1.13 2001/08/04 12:46:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,31 +25,9 @@
 #include <fstream>
 
 #include <ClanLib/core.h>
-
 #include "GroundpieceData.hh"
 #include "ResDescriptor.hh"
 
-/*
-struct surface_data 
-{
-  ///
-  CL_Surface* surface;
-  ///
-  CL_Resource* resource;
-  ///
-  ResDescriptor res_desc;
-  ///
-  int x_pos;
-  ///
-  int y_pos;
-  ///
-  std::string type_str; 
-  ///
-  enum Type { SOLID, TRANSPARENT, GROUND, BRIDGE, WATER, LAVA, NOTHING } ///
- type ; 
-}///
-;
-*/
 ///
 struct PSMEOF {}///
 ;

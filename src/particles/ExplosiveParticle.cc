@@ -1,4 +1,4 @@
-//  $Id: ExplosiveParticle.cc,v 1.1 2001/07/24 17:01:25 grumbel Exp $
+//  $Id: ExplosiveParticle.cc,v 1.2 2001/08/04 12:46:23 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -84,7 +84,7 @@ ExplosiveParticle::detonate ()
 void 
 ExplosiveParticle::draw_offset(int ofx, int ofy, float s)
 {
-  sprite.put_screen (pos.x + ofx, pos.y + ofy);
+  sprite.put_screen (int(pos.x + ofx), int(pos.y + ofy));
 }
 
 bool 

@@ -1,4 +1,4 @@
-//  $Id: PingusSpotMap.cc,v 1.42 2001/04/21 10:55:15 grumbel Exp $
+//  $Id: PingusSpotMap.cc,v 1.43 2001/08/04 12:46:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -174,7 +174,7 @@ PingusSpotMap::load(boost::shared_ptr<PLF> plf)
 
   for (vector<GroundpieceData>::iterator i = surfaces.begin();
        i != surfaces.end();
-       i++)
+       i++) // WIN32BUG
     {
       i->surface = PingusResource::load_surface(i->desc);
     }
@@ -222,7 +222,7 @@ PingusSpotMap::create_map()
       // test cause png
       if (i->surface.get_provider()->get_depth() == 8)
 	{
-	  if (i->type == GroundpieceData::REMOVE)
+	  if (i->type == GroundpieceData::GP_REMOVE)
 	    {
 	      Blitter::put_alpha_surface(map_canvas, i->surface.get_provider (),
 					 i->pos.x, i->pos.y);
@@ -305,7 +305,7 @@ PingusSpotMap::draw(int x_pos, int y_pos, int w, int h,
 		      if (pingus_debug_flags & PINGUS_DEBUG_TILES)
 			CL_Display::fill_rect(x * tile_size + of_x, y * tile_size + of_y,
 					      x * tile_size + of_x + tile_size, y * tile_size + of_y + tile_size,
-					      1.0, 0.0, 0.0, 0.3);
+					      1.0f, 0.0f, 0.0f, 0.3f);
 		    }
 		}
 	    }
@@ -552,7 +552,7 @@ PingusSpotMap::get_colmap(void)
 	  i2 != surfaces.end(); 
 	  i2++) 
 	{
-	  if (i2->type == GroundpieceData::REMOVE)
+	  if (i2->type == GroundpieceData::GP_REMOVE)
 	    colmap->remove(i2->surface.get_provider (), i2->pos.x, i2->pos.y);
 	  else
 	    colmap->put(i2->surface, i2->pos.x, i2->pos.y, i2->type);

@@ -1,4 +1,4 @@
- //  $Id: Theme.cc,v 1.30 2001/08/02 21:51:02 grumbel Exp $
+ //  $Id: Theme.cc,v 1.31 2001/08/04 12:46:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -199,7 +199,7 @@ Theme::draw_title()
 				y_pos - 1,
 				x_center + font->get_text_width(i->c_str())/2 + 1, 
 				y_pos + font->get_height() + 1,
-				1.0, 1.0, 1.0, 0.9);
+				1.0f, 1.0f, 1.0f, 0.9f);
 	  font->print_center(x_center, y_pos, (*i).c_str());
 	} 
       else 

@@ -1,4 +1,4 @@
-//  $Id: IceBlock.cc,v 1.13 2001/04/27 20:44:38 grumbel Exp $
+//  $Id: IceBlock.cc,v 1.14 2001/08/04 12:46:23 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -92,7 +92,7 @@ void
 IceBlock::draw_colmap()
 {
   CL_Surface surf (PingusResource::load_surface("iceblock_cmap", "worldobjs"));
-  world->get_colmap()->put(surf, pos.x, pos.y, GroundpieceData::GROUND);
+  world->get_colmap()->put(surf, (int)pos.x, (int)pos.y, GroundpieceData::GP_GROUND);
 }
 
 ///
@@ -102,7 +102,7 @@ IceBlock::draw_offset(int x_of, int y_of, float s = 1.0)
   if (is_finished)
     return;
 
-  block_sur.put_screen (pos.x + x_of, pos.y + y_of, 
+  block_sur.put_screen (int(pos.x + x_of), int(pos.y + y_of), 
 			(int)((1.0 - thickness) * (block_sur.get_num_frames () - 1)));
 }
 
@@ -128,7 +128,7 @@ IceBlock::update(float delta)
 	      is_finished = true;
 	      thickness = 0.0;
 	      CL_Surface surf(PingusResource::load_surface("iceblock_cmap", "worldobjs"));
-	      world->get_colmap()->remove(surf, pos.x, pos.y);
+	      world->get_colmap()->remove(surf, (int)pos.x, (int)pos.y);
 	      return;
 	    }
 	  return;

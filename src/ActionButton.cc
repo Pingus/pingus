@@ -1,4 +1,4 @@
-//  $Id: ActionButton.cc,v 1.19 2001/06/11 08:45:20 grumbel Exp $
+//  $Id: ActionButton.cc,v 1.20 2001/08/04 12:46:21 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -173,10 +173,10 @@ HorizontalActionButton::draw()
     {
       if (fast_mode) {
 	CL_Display::fill_rect(x_pos + 1, y_pos, x_pos + 37, y_pos + 55 ,
-			      1.0, 1.0, 1.0, 1.0);
+			      1.0f, 1.0f, 1.0f, 1.0f);
       } else {
 	CL_Display::fill_rect(x_pos + 1, y_pos, x_pos + 37, y_pos + 55 ,
-			      1.0, 1.0, 1.0, 0.5);
+			      1.0f, 1.0f, 1.0f, 0.5f);
       }
       font_h->print_center(x_pos + 25, y_pos + 5, str.c_str ());
     }
@@ -187,7 +187,7 @@ HorizontalActionButton::draw()
 	// do nothing
       } else {
 	CL_Display::fill_rect(x_pos + 1, y_pos, x_pos + 37, y_pos + 55 ,
-			      0.4, 0.4, 0.4, 0.5);
+			      0.4f, 0.4f, 0.4f, 0.5f);
       }
       font->print_center(x_pos + 25, y_pos + 5, str.c_str ());
     }
@@ -248,7 +248,7 @@ VerticalActionButton::draw()
 	// do nothing
       } else {
 	CL_Display::fill_rect(x_pos + 1, y_pos, x_pos + 60, y_pos + 35 ,
-			      0.4, 0.4, 0.4, 0.5);
+			      0.4f, 0.4f, 0.4f, 0.5f);
       }
       font->print_center(x_pos + 50, y_pos + 16, str.c_str ());
     }

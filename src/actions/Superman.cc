@@ -1,4 +1,4 @@
-//  $Id: Superman.cc,v 1.2 2001/08/02 21:51:03 grumbel Exp $
+//  $Id: Superman.cc,v 1.3 2001/08/04 12:46:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "../PingusResource.hh"
+#include "../Sprite.hh"
 #include "Superman.hh"
 
 Superman::Superman ()

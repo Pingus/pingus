@@ -1,4 +1,4 @@
-//  $Id: FadeOut.cc,v 1.6 2001/06/14 11:07:18 grumbel Exp $
+//  $Id: FadeOut.cc,v 1.7 2001/08/04 12:46:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,8 @@
 #include "Display.hh"
 #include "FadeOut.hh"
 #include "globals.hh"
+
+using namespace std;
 
 FadeOut::FadeOut (float seconds, Color color)
   : complete_time (seconds), passed_time (0),
@@ -62,7 +64,7 @@ FadeOut::finished ()
 float
 FadeOut::get_progress ()
 {
-  return std::min(passed_time/complete_time, 1.0f);
+  return min(passed_time/complete_time, 1.0f);
 }
 
 void
@@ -73,16 +75,16 @@ FadeOut::random(void)
   } else {
     switch(rand() % 2) {
     case 0:
-      if (verbose) std::cout << "FadeOut::black_rect" << std::endl;
+      if (verbose) cout << "FadeOut::black_rect" << endl;
       black_rect();
       break;
     case 1:
-      if (verbose) std::cout << "FadeOut::fade_to_black" << std::endl;
+      if (verbose) cout << "FadeOut::fade_to_black" << endl;
       fade_to_black();
       break;
     case 2:
       CL_Display::clear_display();
-      if (verbose) std::cout << "FadeOut::clear_display()" << std::endl;    
+      if (verbose) cout << "FadeOut::clear_display()" << endl;    
       break;
     default:
       black_rect();
@@ -142,7 +144,7 @@ FadeOut::clear(void)
 void 
 EnlargingRectFadeOut::draw ()
 {
-  //std::cout << "EnlargingRectFadeOut:: draw" << std::endl;
+  //cout << "EnlargingRectFadeOut:: draw" << endl;
   int width = int(CL_Display::get_width () * get_progress ());
   CL_Display::fill_rect (0, 0, width, CL_Display::get_height (),
 			 color.red,  color.green, color.blue);

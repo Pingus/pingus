@@ -1,4 +1,4 @@
-//  $Id: PLF.cc,v 1.23 2001/06/11 20:40:16 grumbel Exp $
+//  $Id: PLF.cc,v 1.24 2001/08/04 12:46:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <assert.h>
 #include <iostream>
 #include <cstdio>
 #include <cstdlib>

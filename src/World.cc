@@ -1,4 +1,4 @@
-//  $Id: World.cc,v 1.51 2001/08/02 21:51:02 grumbel Exp $
+//  $Id: World.cc,v 1.52 2001/08/04 12:46:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -522,12 +522,12 @@ World::get_pingu (const CL_Vector& pos)
   double distance = -1.0;
 
   for (PinguIter i = pingus->begin (); i != pingus->end (); ++i) {
-    if ((*i)->is_over (pos.x, pos.y))
+    if ((*i)->is_over (int(pos.x), int(pos.y)))
       {
-	if (distance == -1.0 || distance >= (*i)->dist (pos.x, pos.y))
+	if (distance == -1.0f || distance >= (*i)->dist ((int) pos.x, (int)pos.y))
 	  {
 	    current_pingu = (*i);
-	    distance = (*i)->dist (pos.x, pos.y);
+	    distance = (*i)->dist ((int)pos.x, (int)pos.y);
 	  }
       }
   }

@@ -1,4 +1,4 @@
-//  $Id: blocker.cc,v 1.18 2001/08/02 21:51:03 grumbel Exp $
+//  $Id: blocker.cc,v 1.19 2001/08/04 12:46:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,9 @@
 #include <iostream>
 
 #include "../ColMap.hh"
+#include "../Sprite.hh"
 #include "../PingusResource.hh"
+#include "../Pingu.hh"
 #include "blocker.hh"
 
 Blocker::Blocker()

@@ -1,4 +1,4 @@
-//  $Id: ObjectManager.hh,v 1.17 2001/07/27 15:00:48 grumbel Exp $
+//  $Id: ObjectManager.hh,v 1.18 2001/08/04 12:46:22 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -114,7 +114,7 @@ public:
   ///
   void delete_all_objs();
   ///
-  void rect_get_current_objs(int x1, int y1, int x2, int y2);
+  void rect_get_current_objs(float x1, float y1, float x2, float y2);
 
   ///
   int get_width() { return width; }

@@ -1,4 +1,4 @@
-//  $Id: ObjectManager.cc,v 1.45 2001/07/27 15:00:48 grumbel Exp $
+//  $Id: ObjectManager.cc,v 1.46 2001/08/04 12:46:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -70,9 +70,9 @@ ObjectManager::new_level ()
   height = 608;
   level_time = 9000;
 
-  bg.red   = 0.3;
-  bg.green = 0.3;
-  bg.blue  = 0.3;
+  bg.red   = 0.3f;
+  bg.green = 0.3f;
+  bg.blue  = 0.3f;
 
   number_to_save   = 25;
   number_of_pingus = 50;
@@ -256,7 +256,7 @@ ObjectManager::save_level (string filename)
 
   // FIXME: we need some error checking 
   plf_out << "/* This level was created with the PLE\n"
-	  << " * $Id: ObjectManager.cc,v 1.45 2001/07/27 15:00:48 grumbel Exp $\n"
+	  << " * $Id: ObjectManager.cc,v 1.46 2001/08/04 12:46:22 grumbel Exp $\n"
 	  << " */"
 	  << endl;
   
@@ -481,9 +481,9 @@ ObjectManager::raise_obj(boost::shared_ptr<EditorObj> obj)
 
 
 void
-ObjectManager::rect_get_current_objs(int x_1, int y_1, int x_2, int y_2)
+ObjectManager::rect_get_current_objs(float x_1, float y_1, float x_2, float y_2)
 {
-  int x1, x2, y1, y2;
+  float x1, x2, y1, y2;
 
   if (!CL_Keyboard::get_keycode(CL_KEY_LSHIFT)
       && !CL_Keyboard::get_keycode(CL_KEY_RSHIFT))
@@ -499,8 +499,8 @@ ObjectManager::rect_get_current_objs(int x_1, int y_1, int x_2, int y_2)
 
   for(EditorObjIter i = editor_objs.begin(); i != editor_objs.end(); ++i) 
     {
-      if ((*i)->is_in_rect(x1, y1, 
-			   x2, y2))
+      if ((*i)->is_in_rect((int) x1, (int) y1, 
+			   (int) x2, (int) y2))
 	current_objs.push_back(*i);
     }
 }
@@ -521,7 +521,7 @@ ObjectManager::select_object(CL_Vector pos)
 {
   for(EditorObjRIter i = editor_objs.rbegin(); i != editor_objs.rend(); ++i) 
     {
-      if ((*i)->is_over(pos.x, pos.y)) 
+      if ((*i)->is_over((int) pos.x, (int)pos.y)) 
 	{
 	  return *i;
 	}

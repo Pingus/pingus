@@ -1,4 +1,4 @@
-//  $Id: bridger.cc,v 1.40 2001/08/02 21:51:03 grumbel Exp $
+//  $Id: bridger.cc,v 1.41 2001/08/04 12:46:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -63,8 +63,8 @@ Bridger::draw_offset(int x, int y, float s)
   else
     sprite.set_direction (Sprite::RIGHT);
 
-  sprite.put_screen(pingu->get_x () + x,
-		    pingu->get_y () + y);
+  sprite.put_screen(pingu->get_x () + x + (2*pingu->direction),
+		    pingu->get_y () + y + 4);
 }
 
 void
@@ -147,7 +147,7 @@ Bridger::place_a_brick()
       pingu->get_world()->get_colmap()->put(brick_r, 
 					    pingu->get_x () + 10 - brick_r.get_width(),
 					    pingu->get_y (),
-					    GroundpieceData::BRIDGE);
+					    GroundpieceData::GP_BRIDGE);
       pingu->get_world()->get_gfx_map()->put(brick_r,
 					     (int) pingu->get_x () + 10 - brick_r.get_width(),
 					     pingu->get_y ());
@@ -156,7 +156,7 @@ Bridger::place_a_brick()
     {
       pingu->get_world()->get_colmap()->put(brick_r, pingu->get_x () - 10,
 					    pingu->get_y (),
-					    GroundpieceData::BRIDGE);
+					    GroundpieceData::GP_BRIDGE);
       pingu->get_world()->get_gfx_map()->put(brick_l,
 					     pingu->get_x () - 10,
 					     pingu->get_y ());

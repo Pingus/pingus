@@ -1,4 +1,4 @@
-//  $Id: ColMap.hh,v 1.11 2001/03/18 17:45:04 grumbel Exp $
+//  $Id: ColMap.hh,v 1.12 2001/08/04 12:46:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,7 +26,6 @@
 #include <ClanLib/display.h>
 #include "GroundpieceData.hh"
 #include "ResDescriptor.hh"
-#include "PSMParser.hh"
 
 // Collsion Map
 /** The collision map is used to represent the enviroment where the
@@ -93,10 +92,10 @@ public:
   void put(int x, int y, PixelStatus p = WALL);
 
   ///
-  void put(const CL_Surface&, int x, int y, GroundpieceData::Type = GroundpieceData::GROUND);
+  void put(const CL_Surface&, int x, int y, GroundpieceData::Type);
 
   ///
-  void put(CL_SurfaceProvider*, int x, int y, GroundpieceData::Type = GroundpieceData::GROUND);
+  void put(CL_SurfaceProvider*, int x, int y, GroundpieceData::Type);
 
   /// void remove(int x, int y);
   void remove(const CL_Surface&, int x, int y);

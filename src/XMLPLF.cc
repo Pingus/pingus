@@ -1,4 +1,4 @@
-//  $Id: XMLPLF.cc,v 1.31 2001/07/27 21:53:22 grumbel Exp $
+//  $Id: XMLPLF.cc,v 1.32 2001/08/04 12:46:22 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -526,7 +526,7 @@ XMLPLF::parse_groundpiece(xmlNodePtr cur)
 {
   GroundpieceData surface;
 
-  surface.type = GroundpieceData::GROUND;
+  surface.type = GroundpieceData::GP_GROUND;
 
   char* type = (char*)xmlGetProp(cur, (xmlChar*)"type");
   if (type)

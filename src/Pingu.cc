@@ -1,4 +1,4 @@
-//  $Id: Pingu.cc,v 1.59 2001/08/02 21:51:02 grumbel Exp $
+//  $Id: Pingu.cc,v 1.60 2001/08/04 12:46:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -66,6 +66,8 @@ Pingu::Pingu(const CL_Vector& arg_pos, int owner)
   // Set the velocity to zero
   velocity.x = 0;
   velocity.y = 0;
+
+  set_action(world->get_action_holder()->get_uaction("faller"));
 }
 
 Pingu::~Pingu()
@@ -287,6 +289,7 @@ Pingu::update_persistent(float delta)
 void
 Pingu::update(float delta)
 {
+  // Update the animations
   walker.update (delta);
   tumble.update (delta);
   faller.update (delta);
@@ -331,6 +334,13 @@ Pingu::update(float delta)
 void 
 Pingu::update_normal(float delta)
 {
+  std::cout << "Pingu: No action set, setting action." << std::endl;
+  if (rel_getpixel(0,-1) == ColMap::NOTHING)
+    set_action(get_world ()->get_action_holder()->get_uaction("faller"));
+  else
+    set_action(get_world ()->get_action_holder()->get_uaction("walker"));
+   
+/*
   if (rel_getpixel(0, -1) == ColMap::NOTHING)
     {
       update_falling(delta);
@@ -338,7 +348,7 @@ Pingu::update_normal(float delta)
   else 
     {
       update_walking(delta);
-    }
+      }*/
 }
 
 // The Pingu is not on ground, so lets fall...

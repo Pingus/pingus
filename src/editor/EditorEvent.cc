@@ -1,4 +1,4 @@
-//  $Id: EditorEvent.cc,v 1.49 2001/07/27 16:47:04 grumbel Exp $
+//  $Id: EditorEvent.cc,v 1.50 2001/08/04 12:46:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -379,7 +379,8 @@ EditorEvent::editor_convert_selection_to_group()
 {
   if (object_manager->current_objs.size() > 1)
     {
-      boost::shared_ptr<EditorObjGroup> group(new EditorObjGroup());
+      EditorObjGroup* group = new EditorObjGroup();
+      boost::shared_ptr<EditorObj> group_obj(group);
       std::vector<std::list<boost::shared_ptr<EditorObj> >::iterator> to_erase;
 
       // We need to collect the objects out of the editor_objs list to keep the correct sorting
@@ -404,9 +405,9 @@ EditorEvent::editor_convert_selection_to_group()
 	  i++)
 	object_manager->editor_objs.erase(*i);
 
-      object_manager->editor_objs.push_back(group);
+      object_manager->editor_objs.push_back(group_obj);
       object_manager->delete_selection();
-      object_manager->add_to_selection(group);
+      object_manager->add_to_selection(group_obj);
     }
   else
     {
@@ -430,15 +431,15 @@ EditorEvent::editor_mark_all_objects()
 void
 EditorEvent::editor_toggle_background_color()
 {
-  object_manager->bg.red   += 0.1;
-  object_manager->bg.green += 0.1;
-  object_manager->bg.blue  += 0.1;
+  object_manager->bg.red   += 0.1f;
+  object_manager->bg.green += 0.1f;
+  object_manager->bg.blue  += 0.1f;
       
-  if (object_manager->bg.red > 1.0) 
+  if (object_manager->bg.red > 1.0f) 
     {
-      object_manager->bg.red   = 0.0;
-      object_manager->bg.green = 0.0;
-      object_manager->bg.blue  = 0.0;
+      object_manager->bg.red   = 0.0f;
+      object_manager->bg.green = 0.0f;
+      object_manager->bg.blue  = 0.0f;
     }
 }
 
@@ -604,8 +605,8 @@ EditorEvent::editor_insert_new_object()
     {
       disable();
       std::cout << "Object selector on" << std::endl;
-      objs = editor->object_selector->get_obj(editor->view->get_offset ().x + CL_Display::get_width ()/2,
-					      editor->view->get_offset ().y + CL_Display::get_height ()/2);
+      objs = editor->object_selector->get_obj(int(editor->view->get_offset ().x + CL_Display::get_width ()/2),
+					      int(editor->view->get_offset ().y + CL_Display::get_height ()/2));
       std::cout << "Object selector off" << std::endl;
       enable();
     }

@@ -1,4 +1,4 @@
-//  $Id: XMLhelper.hh,v 1.11 2001/04/21 10:55:15 grumbel Exp $
+//  $Id: XMLhelper.hh,v 1.12 2001/08/04 12:46:22 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,7 @@
 #ifndef XMLHELPER_HH
 #define XMLHELPER_HH
 
-#include "../config.h"
+#include <config.h>
 #include <string>
 #include <fstream>
 #include <ClanLib/core.h>

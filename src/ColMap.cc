@@ -1,4 +1,4 @@
-//  $Id: ColMap.cc,v 1.24 2001/05/18 19:17:07 grumbel Exp $
+//  $Id: ColMap.cc,v 1.25 2001/08/04 12:46:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <assert.h>
 #include <iostream>
 #include <fstream>
 #include <cstdio>
@@ -27,6 +28,7 @@
 #include "globals.hh"
 #include "PingusResource.hh"
 #include "PingusError.hh"
+#include "GroundpieceData.hh"
 
 #include "ColMap.hh"
 
@@ -232,18 +234,18 @@ ColMap::put(const CL_Surface& sur, int sur_x, int sur_y, GroundpieceData::Type t
 void
 ColMap::put(CL_SurfaceProvider* provider, int sur_x, int sur_y, GroundpieceData::Type type)
 {
-  if (type == GroundpieceData::TRANSPARENT)
+  if (type == GroundpieceData::GP_TRANSPARENT)
     return;
 
   PixelStatus pixel;
   switch (type) 
     {
-    case GroundpieceData::GROUND:  pixel = WALL; break;
-    case GroundpieceData::SOLID:   pixel = (PixelStatus)(SOLID | WALL); break;
-    case GroundpieceData::BRIDGE:  pixel = (PixelStatus)(BRIDGE | WALL); break;
-    case GroundpieceData::WATER:   pixel = (PixelStatus)(SOLID | WATER); break;
-    case GroundpieceData::LAVA:    pixel = (PixelStatus)(SOLID | LAVA); break;
-    case GroundpieceData::NOTHING: pixel = (PixelStatus)0; break;
+    case GroundpieceData::GP_GROUND:  pixel = WALL; break;
+    case GroundpieceData::GP_SOLID:   pixel = (PixelStatus)(SOLID | WALL); break;
+    case GroundpieceData::GP_BRIDGE:  pixel = (PixelStatus)(BRIDGE | WALL); break;
+    case GroundpieceData::GP_WATER:   pixel = (PixelStatus)(SOLID | WATER); break;
+    case GroundpieceData::GP_LAVA:    pixel = (PixelStatus)(SOLID | LAVA); break;
+    case GroundpieceData::GP_NOTHING: pixel = (PixelStatus)0; break;
     default:
       std::cout << "Colmap::put() Indefinite type" << std::endl;
       pixel = (PixelStatus)0;

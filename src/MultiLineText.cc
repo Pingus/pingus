@@ -1,4 +1,4 @@
-//  $Id: MultiLineText.cc,v 1.2 2001/04/27 20:44:37 grumbel Exp $
+//  $Id: MultiLineText.cc,v 1.3 2001/08/04 12:46:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,8 @@
 #include <algorithm>
 #include "MultiLineText.hh"
 
+using namespace std;
+
 MultiLineText::MultiLineText()
 {
   width = -1;
@@ -35,7 +37,7 @@ MultiLineText::set_font(CL_Font* f)
 }
 
 void
-MultiLineText::set_text(const std::string& str, int text_width)
+MultiLineText::set_text(const string& str, int text_width)
 {
   int last_pos;
 
@@ -68,15 +70,15 @@ MultiLineText::set_text(const std::string& str, int text_width)
       j = last_pos + 1;
     }
 
-  //std::cout << "MultiLineText: " << str << std::endl;
+  //cout << "MultiLineText: " << str << endl;
   /*
-  std::cout << "MultiLineText: " << std::endl;
-  for(std::vector<std::string>::iterator i = text.begin(); i != text.end(); i++)
-    std::cout << "  " << *i << std::endl;
+  cout << "MultiLineText: " << endl;
+  for(vector<string>::iterator i = text.begin(); i != text.end(); i++)
+    cout << "  " << *i << endl;
   */
   width = 0;
-  for(std::vector<std::string>::iterator i = text.begin(); i != text.end(); i++)
-    width = std::max(width, font->get_text_width(i->c_str()));
+  for(vector<string>::iterator i = text.begin(); i != text.end(); i++)
+    width = max(width, font->get_text_width(i->c_str()));
 
   height = text.size() * font->get_height();
 }
@@ -86,7 +88,7 @@ MultiLineText::print_left(int x_pos, int y_pos)
 {
   int y_inc = 0;
 
-  for(std::vector<std::string>::iterator i = text.begin(); 
+  for(vector<string>::iterator i = text.begin(); 
       i != text.end();
       i++)
     {
@@ -100,7 +102,7 @@ MultiLineText::print_right(int x_pos, int y_pos)
 {
   int y_inc = 0;
 
-  for(std::vector<std::string>::iterator i = text.begin(); 
+  for(vector<string>::iterator i = text.begin(); 
       i != text.end();
       i++)
     {
@@ -114,7 +116,7 @@ MultiLineText::print_center(int x_pos, int y_pos)
 {
   int y_inc = 0;
 
-  for(std::vector<std::string>::iterator i = text.begin(); 
+  for(vector<string>::iterator i = text.begin(); 
       i != text.end();
       i++)
     {

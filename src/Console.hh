@@ -1,4 +1,4 @@
-//  $Id: Console.hh,v 1.13 2001/04/06 12:49:19 grumbel Exp $
+//  $Id: Console.hh,v 1.14 2001/08/04 12:46:22 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,6 +26,8 @@
 #include <iostream>
 #include "Display.hh"
 
+#define CONSOLE_BUFFER_SIZE 100
+
 class ConsoleBuffer :
   public std::streambuf
 {
@@ -33,8 +35,7 @@ private:
   std::string current_line;
   bool continue_last;
   std::vector<std::string> buffer;
-  static const unsigned int buffer_size = 100;
-  char char_buffer[buffer_size];
+  char char_buffer[CONSOLE_BUFFER_SIZE];
   
 public:
   ConsoleBuffer ();  

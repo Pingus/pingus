@@ -1,4 +1,4 @@
-//  $Id: GroundpieceData.hh,v 1.6 2001/05/18 19:17:08 grumbel Exp $
+//  $Id: GroundpieceData.hh,v 1.7 2001/08/04 12:46:22 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,37 +28,40 @@
 class GroundpieceData 
 {
 public:
-  ///
   CL_Surface surface;
-  ///
   CL_Resource* resource;
-  ///
   ResDescriptor desc;
-  ///
   CL_Vector pos;
-  ///
-  enum Type { SOLID, TRANSPARENT, GROUND, BRIDGE, WATER, LAVA, REMOVE, NOTHING } type; 
+
+  enum Type { GP_SOLID, 
+	      GP_TRANSPARENT,
+	      GP_GROUND,
+	      GP_BRIDGE, 
+	      GP_WATER,
+	      GP_LAVA,
+	      GP_REMOVE, 
+	      GP_NOTHING } type; 
 
   static Type string_to_type(const std::string& arg_type) 
   {
     if (arg_type == "solid")
-      return GroundpieceData::SOLID;
+      return GroundpieceData::GP_SOLID;
     else if (arg_type == "transparent")    
-      return GroundpieceData::TRANSPARENT;
+      return GroundpieceData::GP_TRANSPARENT;
     else if (arg_type == "ground")
-      return GroundpieceData::GROUND;
+      return GroundpieceData::GP_GROUND;
     else if (arg_type == "bridge")
-      return GroundpieceData::BRIDGE;
+      return GroundpieceData::GP_BRIDGE;
     else if (arg_type == "water")
-      return GroundpieceData::WATER;
+      return GroundpieceData::GP_WATER;
     else if (arg_type == "lava") 
-      return GroundpieceData::LAVA;
+      return GroundpieceData::GP_LAVA;
     else if (arg_type == "remove") 
-      return GroundpieceData::REMOVE;
+      return GroundpieceData::GP_REMOVE;
     else
       {
 	std::cout << "GroundpieceData: Unhandled type: " << arg_type << std::endl;
-	return GroundpieceData::GROUND;
+	return GroundpieceData::GP_GROUND;
       }
   }
 
@@ -66,19 +69,19 @@ public:
   {
     switch (arg_type)
       { 
-      case GroundpieceData::SOLID:
+      case GroundpieceData::GP_SOLID:
 	return "solid";
-      case GroundpieceData::TRANSPARENT:
+      case GroundpieceData::GP_TRANSPARENT:
 	return "transparent";
-      case GroundpieceData::GROUND:
+      case GroundpieceData::GP_GROUND:
 	return "ground";
-      case GroundpieceData::BRIDGE:
+      case GroundpieceData::GP_BRIDGE:
 	return "bridge";
-      case GroundpieceData::WATER:
+      case GroundpieceData::GP_WATER:
 	return "water";
-      case GroundpieceData::LAVA:
+      case GroundpieceData::GP_LAVA:
 	return "lava";
-      case GroundpieceData::REMOVE:
+      case GroundpieceData::GP_REMOVE:
 	return "remove";
       default:
 	std::cout << "GroundpieceData: Unhandled type: " << arg_type << std::endl;

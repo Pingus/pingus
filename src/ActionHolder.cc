@@ -1,4 +1,4 @@
-//  $Id: ActionHolder.cc,v 1.29 2001/07/24 17:01:25 grumbel Exp $
+//  $Id: ActionHolder.cc,v 1.30 2001/08/04 12:46:21 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -45,6 +45,8 @@
 #include "actions/Splashed.hh"
 #include "actions/Waiter.hh"
 #include "actions/Drown.hh"
+#include "actions/Faller.hh"
+#include "actions/Walker.hh"
 
 #include "ActionHolder.hh"
 
@@ -56,8 +58,13 @@ ActionHolder::ActionHolder()
 {
   if (!is_registered)
     {
-      //std::cout << "ActionHolder: Registering all actions..." << std::endl;
+      //std::cout << "ActionHolder: Registering all actions..." <<
+      //std::endl; FIXME: Looks ugly, could use static init()
+      //functions or something like that.
       new RocketLauncherFactory ();
+
+      new WalkerFactory ();
+      new FallerFactory ();
       new AngelFactory ();
       new BasherFactory ();
       new BoarderFactory ();

@@ -1,4 +1,4 @@
-//  $Id: ConveyorBelt.cc,v 1.18 2001/07/24 21:39:46 grumbel Exp $
+//  $Id: ConveyorBelt.cc,v 1.19 2001/08/04 12:46:23 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -110,7 +110,7 @@ ConveyorBelt::draw_colmap ()
 {
   CL_Surface sur(PingusResource::load_surface("conveyorbelt_cmap", "worldobjs"));
   for (int i=0; i < (width+2); i++)
-    world->get_colmap()->put(sur, pos.x + (15*i), pos.y, GroundpieceData::SOLID);
+    world->get_colmap()->put(sur, pos.x + (15*i), pos.y, GroundpieceData::GP_SOLID);
 }
 
 void 

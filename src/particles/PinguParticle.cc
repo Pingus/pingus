@@ -1,4 +1,4 @@
-//  $Id: PinguParticle.cc,v 1.13 2001/05/14 08:17:32 grumbel Exp $
+//  $Id: PinguParticle.cc,v 1.14 2001/08/04 12:46:23 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,8 +22,8 @@
 #include "../PingusResource.hh"
 #include "PinguParticle.hh"
 
-static const float x_collision_decrease = 0.3;
-static const float y_collision_decrease = 0.6;
+static const float x_collision_decrease = 0.3f;
+static const float y_collision_decrease = 0.6f;
 
 CL_Surface PinguParticle::sur;
 
@@ -83,7 +83,7 @@ PinguParticle::update(float delta)
   float tmp_y_add = 0.0;
   
   // Simulated gravity
-  velocity.y += 0.2;
+  velocity.y += 0.2f;
   
   if (velocity.y > 0)
     {

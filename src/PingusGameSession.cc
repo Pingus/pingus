@@ -1,4 +1,4 @@
-//  $Id: PingusGameSession.cc,v 1.8 2001/07/27 15:00:47 grumbel Exp $
+//  $Id: PingusGameSession.cc,v 1.9 2001/08/04 12:46:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "XMLPLF.hh"
+#include "PLFPLF.hh"
 #include "Client.hh"
 #include "TrueServer.hh"
 #include "MouseController.hh"
@@ -27,6 +28,22 @@
 using boost::shared_ptr;
 using boost::dummy_ptr;
 
+static 
+boost::shared_ptr<PLF>
+create_plf (std::string filename)
+{
+  if (filename.length () > 4)
+    {
+      //std::cout << "Extension is: " << filename.substr(filename.size() - 4) << std::endl;
+
+      if (filename.substr(filename.size() - 4) == ".xml")
+	return boost::shared_ptr<PLF> (new XMLPLF (filename));
+      else
+	return boost::shared_ptr<PLF> (new PLFPLF (filename));
+    }
+  else
+    return boost::shared_ptr<PLF> (new XMLPLF (filename));
+}
 
 bool
 PingusGameSessionResults::finished ()
@@ -49,7 +66,7 @@ PingusGameSessionResults::percentage_time ()
 
 PingusGameSession::PingusGameSession (std::string arg_filename)
   : filename (arg_filename),
-    plf(new XMLPLF (filename)),
+    plf(create_plf (filename)),
     server (new TrueServer (plf)),
     client (new Client(shared_ptr<Controller>(new MouseController ()), 
 		       server.get ()))

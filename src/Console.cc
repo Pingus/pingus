@@ -1,4 +1,4 @@
-//  $Id: Console.cc,v 1.17 2001/04/06 12:49:19 grumbel Exp $
+//  $Id: Console.cc,v 1.18 2001/08/04 12:46:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,9 +30,10 @@ using namespace std;
 // Globale console
 Console console;
 
-ConsoleBuffer::ConsoleBuffer () {
+ConsoleBuffer::ConsoleBuffer () 
+{
   // Set the output buffer
-  setp (char_buffer, char_buffer + buffer_size - 1);
+  setp (char_buffer, char_buffer + CONSOLE_BUFFER_SIZE - 1);
   
     // Switch of input buffer
   setg(0, 0, 0);
@@ -68,7 +69,7 @@ ConsoleBuffer::overflow (int c)
   str += c;
   buffer.push_back (str);    
     
-  setp (char_buffer, char_buffer + buffer_size - 1);
+  setp (char_buffer, char_buffer + CONSOLE_BUFFER_SIZE - 1);
   return 0;
 }
   
@@ -92,7 +93,7 @@ ConsoleBuffer::sync ()
   if (!str.empty ())
     buffer.push_back (str);
 
-  setp (char_buffer, char_buffer + buffer_size - 1);
+  setp (char_buffer, char_buffer + CONSOLE_BUFFER_SIZE - 1);
   return 0;
 }
 

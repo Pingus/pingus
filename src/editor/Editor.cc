@@ -1,4 +1,4 @@
-//  $Id: Editor.cc,v 1.28 2001/06/16 15:01:54 grumbel Exp $
+//  $Id: Editor.cc,v 1.29 2001/08/04 12:46:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -360,8 +360,8 @@ Editor::rect_get_current_objs()
       // Draw the screen
       CL_Display::clear_display();
       object_manager->draw(view);
-      Display::draw_rect(start_pos.x, start_pos.y, end_pos.x, end_pos.y,
-			 0.0, 1.0, 0.0, 1.0);
+      Display::draw_rect((int) start_pos.x, (int)start_pos.y, (int)end_pos.x, (int)end_pos.y,
+			 0.0f, 1.0f, 0.0f, 1.0f);
       panel->draw();
       status_line->draw(view);
       Display::flip_display(true);
@@ -493,6 +493,9 @@ Editor::interactive_load()
 
 /***********************************************
 $Log: Editor.cc,v $
+Revision 1.29  2001/08/04 12:46:22  grumbel
+Some code cleanup and warning removal
+
 Revision 1.28  2001/06/16 15:01:54  grumbel
 Some fixup for the 0.5.0 release
 

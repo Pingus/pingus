@@ -1,4 +1,4 @@
-//  $Id: EditorGroundpieceObj.cc,v 1.2 2001/07/24 21:39:46 grumbel Exp $
+//  $Id: EditorGroundpieceObj.cc,v 1.3 2001/08/04 12:46:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -69,13 +69,13 @@ EditorGroundpieceObj::draw (boost::dummy_ptr<EditorView> view)
 void
 EditorGroundpieceObj::save(std::ofstream* plf, std::ofstream* psm)
 {
-  if (type == GroundpieceData::SOLID) {
+  if (type == GroundpieceData::GP_SOLID) {
     (*psm) << "solid : ";
-  } else if (type == GroundpieceData::GROUND) {
+  } else if (type == GroundpieceData::GP_GROUND) {
     (*psm) << "ground : ";
-  } else if (type == GroundpieceData::TRANSPARENT) {
+  } else if (type == GroundpieceData::GP_TRANSPARENT) {
     (*psm) << "transparent : ";
-  } else if (type == GroundpieceData::BRIDGE) {
+  } else if (type == GroundpieceData::GP_BRIDGE) {
     (*psm) << "bridge : ";
   } else {
     std::cout << "Warning: EditorGroundpieceObj: type not set!" << std::endl;

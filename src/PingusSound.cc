@@ -1,4 +1,4 @@
-//  $Id: PingusSound.cc,v 1.18 2001/04/03 10:45:49 grumbel Exp $
+//  $Id: PingusSound.cc,v 1.19 2001/08/04 12:46:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -16,6 +16,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+
+#include <assert.h>
 
 #include "globals.hh"
 #include "PingusSoundDummy.hh"

@@ -1,4 +1,4 @@
-//  $Id: ObjectSelector.cc,v 1.45 2001/05/18 19:17:08 grumbel Exp $
+//  $Id: ObjectSelector.cc,v 1.46 2001/08/04 12:46:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -342,19 +342,19 @@ ObjectSelector::select_obj_type()
 	  return get_trap();
 
 	case CL_KEY_B:
-	  return get_groundpiece(GroundpieceData::BRIDGE);
+	  return get_groundpiece(GroundpieceData::GP_BRIDGE);
 	  
 	case CL_KEY_R:
-	  return get_groundpiece(GroundpieceData::REMOVE);
+	  return get_groundpiece(GroundpieceData::GP_REMOVE);
 	  
 	case CL_KEY_S:
-	  return get_groundpiece(GroundpieceData::SOLID);
+	  return get_groundpiece(GroundpieceData::GP_SOLID);
 
 	case CL_KEY_G:
-	  return get_groundpiece(GroundpieceData::GROUND);
+	  return get_groundpiece(GroundpieceData::GP_GROUND);
 
 	case CL_KEY_N:
-	  return get_groundpiece(GroundpieceData::TRANSPARENT);
+	  return get_groundpiece(GroundpieceData::GP_TRANSPARENT);
 
 	case CL_KEY_H:
 	  return get_hotspot();
@@ -478,6 +478,9 @@ ObjectSelector::read_string(string description, string def_str)
 /*
 
 $Log: ObjectSelector.cc,v $
+Revision 1.46  2001/08/04 12:46:22  grumbel
+Some code cleanup and warning removal
+
 Revision 1.45  2001/05/18 19:17:08  grumbel
 Added zooming support to the editor
 
