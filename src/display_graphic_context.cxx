@@ -1,4 +1,4 @@
-//  $Id: display_graphic_context.cxx,v 1.1 2002/09/04 17:49:48 grumbel Exp $
+//  $Id: display_graphic_context.cxx,v 1.2 2002/09/04 21:02:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -151,10 +151,8 @@ DisplayGraphicContext::get_y_offset ()
 void 
 DisplayGraphicContext::draw (Sprite& sprite, const CL_Vector& pos)
 {
-  CL_Surface sur (sprite.get_surface ());
-  draw (sur, 
-	(int) pos.x + sprite.get_x_align (),
-	(int) pos.y + sprite.get_y_align ());
+  CL_Vector tmp_pos = pos;
+  sprite.put_screen (tmp_pos + offset + center);
 }
 
 void 
