@@ -1161,5 +1161,33 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
    <info-text>Infobox Test</info-text>
   </worldobj>
 
+  <worldobj type="infobox">  <position>
+    <x-pos>536</x-pos>
+    <y-pos>519</y-pos>
+    <z-pos>4050</z-pos>
+  </position>
+   <info-text>Infobox Test</info-text>
+  </worldobj>
+
+  <worldobj type="infobox">  <position>
+    <x-pos>200</x-pos>
+    <y-pos>615</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+   <info-text></info-text>
+  </worldobj>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-solid</resource-datafile>
+  <resource-ident>misc/metalplate_small</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>172.709</x-pos>
+    <y-pos>615.418</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
 </pingus-level>
 
