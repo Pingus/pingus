@@ -1,5 +1,5 @@
 /* This level was created with the PLE
- * $Id: phil4.plf,v 1.1 2001/07/09 10:11:04 grumbel Exp $
+ * $Id: phil4.plf,v 1.2 2001/07/27 14:56:27 grumbel Exp $
  */
 global {
   author = "Philippe Descamps <pwrdesc@free.fr>";
@@ -38,6 +38,15 @@ buttons {
   bridger = 2;
   jumper = 5;
   floater = 5;
+}
+
+liquid {
+  image = (resource:global)"Liquid/lava";
+  x_pos = 713;
+  y_pos = 608;
+  z_pos = -100;
+  width = 360;
+  speed = 50;
 }
 
 entrance {
@@ -236,6 +245,15 @@ hotspot {
   para = "1";
 }
 
+liquid {
+  image = (resource:global)"Liquid/lava";
+  x_pos = 709;
+  y_pos = 614;
+  z_pos = 100;
+  width = 360;
+  speed = 50;
+}
+
 trap {
   name = "spike";
   x_pos = 849;
@@ -272,4 +290,3 @@ trap {
 }
 
 /* EOF */
-

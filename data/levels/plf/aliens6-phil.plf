@@ -1,0 +1,381 @@
+/* This level was created with the PLE
+ * $Id: aliens6-phil.plf,v 1.1 2001/07/27 14:56:27 grumbel Exp $
+ */
+global {
+  author = "Philippe Descamps <pwrdesc@free.fr>";
+  start_x_pos = 0;
+  start_y_pos = 0;
+  levelname = "Aliens6";
+  description = "Spy's pingus have marked the location of jaws in the matrix of the death.
+  Many died to gain that information :..(
+  Perhaps this help. Perhaps...";
+  number_of_pingus = 150;
+  number_to_save = 145;
+  time = 9000;
+}
+
+ground {
+  maptype = "SPOT";
+  width   = 832;
+  height  = 608;
+  colmap  = (auto);
+}
+
+background {
+  image = (resource:textures)"Textures/stars";
+  dim   = "0";
+  red   = "0";
+  green = "0";
+  blue  = "0";
+  scroll_x = 0;
+  scroll_y = 0;
+  para_x = 0.5;
+  para_y = 0.5;
+  stretch_x = 0;
+  stretch_y = 0;
+}
+
+buttons {
+  basher = 20;
+  blocker = 20;
+  bridger = 20;
+  climber = 20;
+  digger = 20;
+  floater = 20;
+  jumper = 20;
+}
+
+entrance {
+  type  = generic;
+  x_pos = 58;
+  y_pos = 368;
+  z_pos = 0;
+  release_rate = 25;
+  direction = left;
+}
+
+hotspot {
+  image = (resource:global)"Entrances/space";
+  x_pos = 30;
+  y_pos = 310;
+  z_pos = 0;
+  speed = -1;
+  para = "1";
+}
+
+trap {
+  name = "spike";
+  x_pos = 288;
+  y_pos = 450;
+  z_pos = 100;
+}
+
+trap {
+  name = "spike";
+  x_pos = 264;
+  y_pos = 448;
+  z_pos = 100;
+}
+
+trap {
+  name = "spike";
+  x_pos = 288;
+  y_pos = 391;
+  z_pos = 100;
+}
+
+trap {
+  name = "spike";
+  x_pos = 263;
+  y_pos = 391;
+  z_pos = 100;
+}
+
+trap {
+  name = "spike";
+  x_pos = 580;
+  y_pos = 444;
+  z_pos = 100;
+}
+
+trap {
+  name = "spike";
+  x_pos = 725;
+  y_pos = 383;
+  z_pos = 100;
+}
+
+trap {
+  name = "spike";
+  x_pos = 580;
+  y_pos = 313;
+  z_pos = 100;
+}
+
+trap {
+  name = "spike";
+  x_pos = 657;
+  y_pos = 313;
+  z_pos = 100;
+}
+
+trap {
+  name = "spike";
+  x_pos = 577;
+  y_pos = 195;
+  z_pos = 100;
+}
+
+trap {
+  name = "spike";
+  x_pos = 722;
+  y_pos = 443;
+  z_pos = 100;
+}
+
+trap {
+  name = "spike";
+  x_pos = 728;
+  y_pos = 314;
+  z_pos = 100;
+}
+
+trap {
+  name = "spike";
+  x_pos = 727;
+  y_pos = 197;
+  z_pos = 100;
+}
+
+trap {
+  name = "spike";
+  x_pos = 655;
+  y_pos = 197;
+  z_pos = 100;
+}
+
+trap {
+  name = "spike";
+  x_pos = 289;
+  y_pos = 252;
+  z_pos = 100;
+}
+
+trap {
+  name = "spike";
+  x_pos = 117;
+  y_pos = 454;
+  z_pos = 100;
+}
+
+trap {
+  name = "spike";
+  x_pos = 149;
+  y_pos = 454;
+  z_pos = 100;
+}
+
+trap {
+  name = "spike";
+  x_pos = 553;
+  y_pos = 443;
+  z_pos = 100;
+}
+
+trap {
+  name = "spike";
+  x_pos = 406;
+  y_pos = 196;
+  z_pos = 100;
+}
+
+trap {
+  name = "spike";
+  x_pos = 694;
+  y_pos = 384;
+  z_pos = 100;
+}
+
+trap {
+  name = "spike";
+  x_pos = 549;
+  y_pos = 314;
+  z_pos = 100;
+}
+
+trap {
+  name = "spike";
+  x_pos = 626;
+  y_pos = 314;
+  z_pos = 100;
+}
+
+trap {
+  name = "spike";
+  x_pos = 549;
+  y_pos = 195;
+  z_pos = 100;
+}
+
+trap {
+  name = "spike";
+  x_pos = 698;
+  y_pos = 444;
+  z_pos = 100;
+}
+
+trap {
+  name = "spike";
+  x_pos = 698;
+  y_pos = 313;
+  z_pos = 100;
+}
+
+trap {
+  name = "spike";
+  x_pos = 697;
+  y_pos = 196;
+  z_pos = 100;
+}
+
+trap {
+  name = "spike";
+  x_pos = 625;
+  y_pos = 196;
+  z_pos = 100;
+}
+
+trap {
+  name = "spike";
+  x_pos = 262;
+  y_pos = 252;
+  z_pos = 100;
+}
+
+trap {
+  name = "spike";
+  x_pos = 509;
+  y_pos = 318;
+  z_pos = 100;
+}
+
+trap {
+  name = "spike";
+  x_pos = 436;
+  y_pos = 377;
+  z_pos = 100;
+}
+
+trap {
+  name = "spike";
+  x_pos = 118;
+  y_pos = 314;
+  z_pos = 100;
+}
+
+trap {
+  name = "spike";
+  x_pos = 149;
+  y_pos = 314;
+  z_pos = 100;
+}
+
+trap {
+  name = "spike";
+  x_pos = 484;
+  y_pos = 317;
+  z_pos = 100;
+}
+
+trap {
+  name = "spike";
+  x_pos = 411;
+  y_pos = 376;
+  z_pos = 100;
+}
+
+trap {
+  name = "spike";
+  x_pos = 436;
+  y_pos = 257;
+  z_pos = 100;
+}
+
+trap {
+  name = "spike";
+  x_pos = 118;
+  y_pos = 253;
+  z_pos = 100;
+}
+
+trap {
+  name = "spike";
+  x_pos = 149;
+  y_pos = 253;
+  z_pos = 100;
+}
+
+trap {
+  name = "spike";
+  x_pos = 411;
+  y_pos = 257;
+  z_pos = 100;
+}
+
+trap {
+  name = "spike";
+  x_pos = 436;
+  y_pos = 196;
+  z_pos = 100;
+}
+
+trap {
+  name = "spike";
+  x_pos = 118;
+  y_pos = 192;
+  z_pos = 100;
+}
+
+trap {
+  name = "spike";
+  x_pos = 149;
+  y_pos = 192;
+  z_pos = 100;
+}
+
+trap {
+  name = "spike";
+  x_pos = 617;
+  y_pos = 518;
+  z_pos = 100;
+}
+
+trap {
+  name = "spike";
+  x_pos = 615;
+  y_pos = 588;
+  z_pos = 100;
+}
+
+trap {
+  name = "spike";
+  x_pos = 615;
+  y_pos = 557;
+  z_pos = 100;
+}
+
+trap {
+  name = "spike";
+  x_pos = 615;
+  y_pos = 527;
+  z_pos = 100;
+}
+
+exit {
+  image = (resource:global)"GroundPieces/Sortie/plate_forme_left";
+  x_pos = 648;
+  y_pos = 480;
+  z_pos = 0;
+}
+
+/* EOF */
