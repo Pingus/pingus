@@ -1,4 +1,4 @@
-//  $Id: Counter.cc,v 1.4 2000/08/28 00:34:39 grumbel Exp $
+//  $Id: Counter.cc,v 1.5 2001/05/18 19:17:08 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -105,7 +105,7 @@ Counter::operator++()
     break;
 
   default:
-    std::cout << "Counter: Unknomn type" << std::endl;
+    std::cout << "Counter: Unknown type" << std::endl;
     assert(false); 
     break;
   }

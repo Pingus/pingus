@@ -1,4 +1,4 @@
-//  $Id: ObjectManager.cc,v 1.42 2001/05/13 18:45:09 grumbel Exp $
+//  $Id: ObjectManager.cc,v 1.43 2001/05/18 19:17:08 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -48,14 +48,6 @@ ObjectManager::ObjectManager()
 
 ObjectManager::~ObjectManager()
 {
-  /*
-    for(std::list<boost::shared_ptr<EditorObj> >::iterator i = editor_objs.begin();
-    i != editor_objs.end(); 
-    i++)
-    {
-    delete *i;
-    }
-  */
   if (plf) delete plf;
 }
 
@@ -74,8 +66,6 @@ ObjectManager::new_level ()
 
   start_x_pos = 0;
   start_y_pos = 0;
-  x_offset = 0;
-  y_offset = 0;
   width = 1216;
   height = 608;
   level_time = 9000;
@@ -184,7 +174,7 @@ ObjectManager::load_level (std::string filename)
   editor_objs.sort(EditorObj_less());
 #endif
 
-  std::cout << "Reading probs" << std::endl;
+  std::cout << "Reading props" << std::endl;
   description = plf->get_description();
   levelname   = plf->get_levelname();
   level_time  = plf->get_time();
@@ -200,8 +190,6 @@ ObjectManager::load_level (std::string filename)
 
   std::cout << "Width: " << width << std::endl;
   std::cout << "Height: " << height << std::endl;
-
-  set_viewpoint(start_x_pos, start_y_pos);
 
   //  delete plf;
 }
@@ -223,24 +211,23 @@ ObjectManager::draw_scroll_map(int x_pos, int y_pos, int arg_width, int arg_heig
 }
 
 void 
-ObjectManager::draw()
+ObjectManager::draw(boost::dummy_ptr<EditorView> view)
 {
-  CL_Display::fill_rect(x_offset, y_offset, width + x_offset, height + y_offset,
-			bg.red, bg.green, bg.blue, 1.0);
+  view->draw_fillrect(0, 0, width, height,
+		      bg.red, bg.green, bg.blue, 1.0);
   
   for (EditorObjIter i = editor_objs.begin(); i != editor_objs.end(); ++i) 
     {
-      // FIXME: Zooming not implemented
-      (*i)->draw_offset(CL_Vector(x_offset, y_offset), 1.0);
+      (*i)->draw (view);
     }
 
   for (CurrentObjIter i = current_objs.begin(); i != current_objs.end(); ++i) 
     {
-      (*i)->draw_mark_offset(x_offset, y_offset);
+      (*i)->draw_mark(view);
     }
 
-  Display::draw_rect(x_offset, y_offset, width + x_offset, height + y_offset,
-		     bg.red, bg.green, bg.blue, 1.0);
+  view->draw_rect(0, 0, width, height,
+		  bg.red, bg.green, bg.blue, 1.0);
 }
 
 void
@@ -269,7 +256,7 @@ ObjectManager::save_level (string filename)
 
   // FIXME: we need some error checking 
   plf_out << "/* This level was created with the PLE\n"
-	  << " * $Id: ObjectManager.cc,v 1.42 2001/05/13 18:45:09 grumbel Exp $\n"
+	  << " * $Id: ObjectManager.cc,v 1.43 2001/05/18 19:17:08 grumbel Exp $\n"
 	  << " */"
 	  << endl;
   
@@ -337,7 +324,7 @@ ObjectManager::save_level (string filename)
 
   psm_out.close();
   plf_out.close();
-  cout << "Saveing finished" << endl;
+  cout << "Saving finished" << endl;
 }
 
 
@@ -512,8 +499,8 @@ ObjectManager::rect_get_current_objs(int x_1, int y_1, int x_2, int y_2)
 
   for(EditorObjIter i = editor_objs.begin(); i != editor_objs.end(); ++i) 
     {
-      if ((*i)->is_in_rect(x1 - x_offset, y1 - y_offset, 
-			   x2 - x_offset, y2 - y_offset))
+      if ((*i)->is_in_rect(x1, y1, 
+			   x2, y2))
 	current_objs.push_back(*i);
     }
 }
@@ -530,11 +517,11 @@ ObjectManager::object_selected(boost::shared_ptr<EditorObj> c_obj)
 }
 
 boost::shared_ptr<EditorObj>
-ObjectManager::select_object(int x, int y)
+ObjectManager::select_object(CL_Vector pos)
 {
   for(EditorObjRIter i = editor_objs.rbegin(); i != editor_objs.rend(); ++i) 
     {
-      if ((*i)->mouse_over(x_offset, y_offset)) 
+      if ((*i)->is_over(pos.x, pos.y)) 
 	{
 	  return *i;
 	}
@@ -548,7 +535,7 @@ ObjectManager::move_current_objs(int x, int y)
 {
   for (CurrentObjIter i = current_objs.begin(); i != current_objs.end(); i++) 
     {
-      (*i)->set_position_offset(x, y, 0);
+      (*i)->set_position_offset(x, y);
     }     
 }
 
@@ -564,13 +551,6 @@ ObjectManager::add_to_selection(std::list<boost::shared_ptr<EditorObj> > objs)
   for(std::list<boost::shared_ptr<EditorObj> >::iterator i = objs.begin(); 
       i != objs.end(); i++)
     current_objs.push_back(*i);
-}
-
-void 
-ObjectManager::set_viewpoint(int x, int y)
-{
-  x_offset = -x + CL_Display::get_width()/2;
-  y_offset = -y + CL_Display::get_height()/2;
 }
 
 boost::shared_ptr<EditorObj> 

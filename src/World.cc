@@ -1,4 +1,4 @@
-//  $Id: World.cc,v 1.48 2001/04/21 10:55:15 grumbel Exp $
+//  $Id: World.cc,v 1.49 2001/05/18 19:17:08 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -223,7 +223,7 @@ World::init(boost::shared_ptr<PLF> plf_data)
   Timer timer;
 
   timer.start();
-  cout << "World: Initing world objects... " << flush;
+  cout << "World: Inititializing world objects... " << flush;
   init_worldobjs();
   cout << "done " << timer.stop() << endl;
 }

@@ -53,6 +53,8 @@ libpingus_editor_a_SOURCES = \
      EditorWorldObj.cc    \
      EditorWorldObj.hh    \
      ThumbCache.cc        \
-     ThumbCache.hh
+     ThumbCache.hh        \
+     EditorView.hh        \
+     EditorView.cc
 
 # EOF #

@@ -1,4 +1,4 @@
-//  $Id: BackgroundData.cc,v 1.3 2000/12/16 23:11:22 grumbel Exp $
+//  $Id: BackgroundData.cc,v 1.4 2001/05/18 19:17:08 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -57,7 +57,7 @@ BackgroundData::create(xmlDocPtr doc, xmlNodePtr cur)
 	}
       else
 	{
-	  std::cout << "BackgroundData: Unhandeld background type, default to surface-background, probally evil!" << std::endl;
+	  std::cout << "BackgroundData: Unhandled background type, default to surface-background, probally evil!" << std::endl;
 	  data = SurfaceBackgroundData::create(doc, cur);
 	}
     }

@@ -1,4 +1,4 @@
-//  $Id: ThemeSelector.cc,v 1.37 2001/04/27 20:44:37 grumbel Exp $
+//  $Id: ThemeSelector.cc,v 1.38 2001/05/18 19:17:08 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -317,14 +317,14 @@ ThemeSelector::readdir(std::string path)
       
       for(System::Directory::iterator entry = dir.begin(); entry != dir.end(); entry++)
 	{
-	  if (verbose) std::cout << "Entry Name: " << pathname + "/data/themes/" + entry->name << std::endl;
+	  if (verbose) std::cout << "Name of entry: " << pathname + "/data/themes/" + entry->name << std::endl;
 	  themes.push_back(new Theme(pathname + "/data/themes/" + entry->name));
 	}
     }
 
   if (themes.size() == 0)
     {
-      throw PingusError ("ThemeSelector: Couldn't find anythemes");
+      throw PingusError ("ThemeSelector: Couldn't find any themes");
     }
   else
     {

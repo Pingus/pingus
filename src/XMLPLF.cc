@@ -1,4 +1,4 @@
-//  $Id: XMLPLF.cc,v 1.27 2001/04/27 20:44:37 grumbel Exp $
+//  $Id: XMLPLF.cc,v 1.28 2001/05/18 19:17:08 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -202,7 +202,7 @@ XMLPLF::parse_weather(xmlNodePtr cur)
 	}
       else
 	{
-	  std::cout << "XMLPLF: Unhandeld: " << cur->name << std::endl;
+	  std::cout << "XMLPLF: Unhandled: " << cur->name << std::endl;
 	}
       cur = cur->next;
     }
@@ -390,7 +390,7 @@ XMLPLF::parse_entrance(xmlNodePtr cur)
 	}
       else
 	{
-	  printf("unhandeld: %s\n", (char*)cur->name);
+	  printf("Unhandled: %s\n", (char*)cur->name);
 	}	
       cur = cur->next;	
     }   
@@ -518,7 +518,7 @@ XMLPLF::parse_global(xmlNodePtr cur)
 	}
       else
 	{
-	  std::cout << "XMLPLF: global: unhandeld: " << cur->name << std::endl;
+	  std::cout << "XMLPLF: global: Unhandled: " << cur->name << std::endl;
 	}
 
       cur = cur->next;
@@ -561,7 +561,7 @@ XMLPLF::parse_groundpiece(xmlNodePtr cur)
 	}	
       else
 	{
-	  printf("unhandled: %s\n", (char*)cur->name);
+	  printf("Unhandled: %s\n", (char*)cur->name);
 	}
       cur = cur->next;	
     }
@@ -632,7 +632,7 @@ XMLPLF::parse_hotspot(xmlNodePtr cur)
 	}
       else
 	{
-	  std::cout << "XMLPLF: parse_hotspot: unhandeld: " << cur->name << std::endl;
+	  std::cout << "XMLPLF: parse_hotspot: Unhandled: " << cur->name << std::endl;
 	}
       cur = cur->next;
     }

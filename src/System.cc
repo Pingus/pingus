@@ -1,4 +1,4 @@
-//  $Id: System.cc,v 1.29 2001/05/13 18:45:08 grumbel Exp $
+//  $Id: System.cc,v 1.30 2001/05/18 19:17:08 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -92,7 +92,7 @@ System::opendir(const std::string& pathname, const std::string& pattern)
 
   if (hFind == INVALID_HANDLE_VALUE)
     {
-      std::cout << "System: Couldn't open: " << pathname << std::endl;
+      std::cout << _("System: Couldn't open: ") << pathname << std::endl;
     }
   
   do
@@ -227,14 +227,14 @@ std::string
 System::get_tmpdir()
 {
 #ifdef WIN32   
-  // FIXME: Warrning this hardcoded values are mostlikly wrong!
+  // FIXME: Warning: these hardcoded values are most probably wrong!
   return "c:\\windows\\temp\\";
 #else
   return "/tmp/";
 #endif
 }
 
-/** Returns the Username how the current user or an empty string */
+/** Returns the username of the current user or an empty string */
 std::string
 System::get_username()
 {

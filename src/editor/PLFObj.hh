@@ -1,4 +1,4 @@
-//  $Id: PLFObj.hh,v 1.19 2001/04/21 20:31:53 grumbel Exp $
+//  $Id: PLFObj.hh,v 1.20 2001/05/18 19:17:08 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -144,7 +144,7 @@ public:
   ///
   void draw_offset(CL_Vector offset, float zoom);
   ///
-  void draw_mark_offset(int x_offset, int y_offset);
+  void draw_mark (boost::dummy_ptr<EditorView> view);
   ///
   bool mouse_over(int, int);
   ///

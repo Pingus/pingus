@@ -1,4 +1,4 @@
-//  $Id: PingusMenu.cc,v 1.43 2001/04/15 15:41:32 grumbel Exp $
+//  $Id: PingusMenu.cc,v 1.44 2001/05/18 19:17:08 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,6 +43,11 @@ PingusMenu::PingusMenu()
 void
 PingusMenu::init ()
 {
+  boost::shared_ptr<SurfaceButton> editor_button (new EditorButton ());
+ 
+  if (start_editor)
+    editor_button->on_click ();
+
   background         = PingusResource::load_surface("misc/logo_t", "core");
 
   layer_manager.add_layer (PingusResource::load_surface ("menu/layer1", "core"),  0, 0, 12, 0);
@@ -71,7 +76,7 @@ PingusMenu::init ()
   buttons.push_back(boost::shared_ptr<SurfaceButton>(new QuitButton (this)));
   buttons.push_back(boost::shared_ptr<SurfaceButton>(new MultiplayerButton ()));
   buttons.push_back(boost::shared_ptr<SurfaceButton>(new ThemeButton ()));
-  buttons.push_back(boost::shared_ptr<SurfaceButton>(new EditorButton ()));
+  buttons.push_back(editor_button);
 }
 
 PingusMenu::~PingusMenu()

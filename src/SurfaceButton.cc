@@ -1,4 +1,4 @@
-//  $Id: SurfaceButton.cc,v 1.22 2001/04/10 10:45:14 grumbel Exp $
+//  $Id: SurfaceButton.cc,v 1.23 2001/05/18 19:17:08 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -192,7 +192,7 @@ OptionsButton::OptionsButton()
   x_pos = CL_Display::get_width() * 516 / 640; //150;
   y_pos = CL_Display::get_height() * 113 / 480; //330;
 
-  desc = _("..:: Brings you to the option menu ::..");
+  desc = _("..:: Takes you to the options menu ::..");
   //  desc["de"] = "..:: Einstellungen und Mogeleien ::..";
   
   line1 = _("Options");
@@ -323,7 +323,7 @@ ThemeButton::ThemeButton()
   x_pos = CL_Display::get_width() * 321 / 640; 
   y_pos = CL_Display::get_height() * 241 / 480;
 
-  desc = _("..:: Let you select a world to start ::..");
+  desc = _("..:: Lets you select a world to start ::..");
   //desc["de"] = "..:: Such dir eine Welt zum beginnen aus ::..";
 
   line1 = _("Start");

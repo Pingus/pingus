@@ -1,4 +1,4 @@
- //  $Id: Theme.cc,v 1.23 2000/12/30 23:54:05 grumbel Exp $
+ //  $Id: Theme.cc,v 1.24 2001/05/18 19:17:08 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -235,7 +235,7 @@ Theme::load_status(std::string name)
 
   if ((unsigned int)(accessible_levels) >= levels.size()) 
     {
-      if (verbose) std::cout << "Warrning: Accessible_Level is to high! " << accessible_levels << std::endl;
+      if (verbose) std::cout << "Warning: Accessible_Level is to high! " << accessible_levels << std::endl;
       accessible_levels = levels.size() - 1;
     }
   current_level = accessible_levels;

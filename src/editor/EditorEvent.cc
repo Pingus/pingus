@@ -1,4 +1,4 @@
-//  $Id: EditorEvent.cc,v 1.42 2001/05/15 17:59:46 grumbel Exp $
+//  $Id: EditorEvent.cc,v 1.43 2001/05/18 19:17:08 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,6 +29,7 @@
 #include "../Loading.hh"
 #include "../Display.hh"
 #include "../backgrounds/SurfaceBackgroundData.hh"
+#include "../my_gettext.hh"
 #include "ObjectManager.hh"
 #include "EditorObjGroup.hh"
 #include "StringReader.hh"
@@ -234,7 +235,7 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key& key)
 		if ((twidth % tile_size) != 0)
 		  {
 		    twidth += (tile_size - (twidth % tile_size));
-		    std::cout << "Warrning: Editor: Width not a multiple of " 
+		    std::cout << "Warning: Editor: Width not a multiple of " 
 			 << tile_size << ", fixing width to " << twidth
 			 << std::endl; 
 		  }
@@ -249,7 +250,7 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key& key)
 		if ((theight % tile_size) != 0)
 		  {
 		    theight += (tile_size - (theight % tile_size));
-		    std::cout << "Editor: Height not a multiple of " 
+		    std::cout << "Warning: Editor: Height not a multiple of " 
 			 << tile_size << ", fixing height to " << theight 
 			 << std::endl; 
 		  }
@@ -259,12 +260,16 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key& key)
 	  }
 	  break;
 
-	case CL_KEY_KP_PLUS:
-	  
+	case CL_KEY_Z:
+	  editor->view->set_zoom (editor->view->get_zoom () * 1.2f);
 	  break;
 
-	case CL_KEY_KP_MINUS:
-	  
+	case CL_KEY_W:
+	  editor->view->set_zoom (editor->view->get_zoom () / 1.2f);
+	  break;
+
+	case CL_KEY_ENTER:
+	  editor->view->set_zoom (1.0);	  
 	  break;
 
 	case CL_KEY_D:
@@ -273,11 +278,15 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key& key)
 	  
 	default:
 	  if (verbose)
-	    std::cout << "EdiorEvent: Unknown key pressed: id=" << key.id << " ascii=" << key.ascii << std::endl;
+	    std::cout << "EditorEvent: Unknown key pressed: id=" << key.id << " ascii=" << key.ascii << std::endl;
 	}
     }
   else if (device == CL_Input::pointers[0])
     {
+      std::cout << "Mouse: (" << CL_Mouse::get_x () << ", " << CL_Mouse::get_y () << ") "
+		<< "World: " << editor->view->screen_to_world (CL_Vector(CL_Mouse::get_x (), CL_Mouse::get_y ()))
+		<< std::endl;
+      
       switch (key.id)
 	{
 	case CL_MOUSE_LEFTBUTTON:
@@ -298,7 +307,7 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key& key)
     }
   else
     {
-      if (verbose) std::cout << "Warrning: Unkown input device" << std::endl;
+      if (verbose) std::cout << "Warning: Unknown input device" << std::endl;
     }
   
   // Redraw the screen, since something may have changed
@@ -525,7 +534,7 @@ EditorEvent::editor_save_level_as()
   System::Directory dir;
   std::list<std::string> strings;
 
-  StringReader reader("Input filename to save the file (without .plf!)", editor->last_level);
+  StringReader reader(_("Enter filename to save as (without .plf!)"), editor->last_level);
 
   dir = System::opendir(System::get_statdir() + "levels/", "*");
 
@@ -591,7 +600,7 @@ EditorEvent::editor_insert_new_object()
     {
       disable();
       std::cout << "Object selector on" << std::endl;
-      objs = editor->object_selector->get_obj(object_manager->x_offset, object_manager->y_offset);
+      objs = editor->object_selector->get_obj(editor->view->get_offset ().x, editor->view->get_offset ().y);
       std::cout << "Object selector off" << std::endl;
       enable();
     }
@@ -630,7 +639,9 @@ EditorEvent::editor_exit()
 void
 EditorEvent::editor_mark_or_move_object()
 {
-  boost::shared_ptr<EditorObj> obj = object_manager->select_object(CL_Mouse::get_x(), CL_Mouse::get_y());
+  boost::shared_ptr<EditorObj> obj 
+    = object_manager->select_object(editor->view->screen_to_world (CL_Vector(CL_Mouse::get_x(), 
+									     CL_Mouse::get_y())));
   
   if (obj.get())
     {

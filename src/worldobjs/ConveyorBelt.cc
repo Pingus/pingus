@@ -1,4 +1,4 @@
-//  $Id: ConveyorBelt.cc,v 1.16 2001/04/27 20:44:38 grumbel Exp $
+//  $Id: ConveyorBelt.cc,v 1.17 2001/05/18 19:17:10 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -68,7 +68,7 @@ ConveyorBeltData::create(xmlDocPtr doc, xmlNodePtr cur)
 	  data->speed = XMLhelper::parse_int (doc, cur);
 	}
       else
-	std::cout << "ConveyorBeltData::creata (): Unhandled " << cur->name << std::endl;
+	std::cout << "ConveyorBeltData::create (): Unhandled " << cur->name << std::endl;
       cur = cur->next;
     }
   

@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapGraph.cc,v 1.13 2001/04/27 20:44:38 grumbel Exp $
+//  $Id: PingusWorldMapGraph.cc,v 1.14 2001/05/18 19:17:10 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,7 +36,7 @@ PingusWorldMapNode::get_plf ()
       try {
 	plf = boost::shared_ptr<PLF> (new XMLPLF (levelname));
       } catch (PingusError e) {
-	std::cout << "PingusWorldMapGraph: Catched PingusError (" << e.get_message () << ")" << std::endl;
+	std::cout << "PingusWorldMapGraph: Caught PingusError (" << e.get_message () << ")" << std::endl;
 	std::cout << "PingusWorldMapGraph: Failed to load '" << levelname << "', fallback to level1.xml" << std::endl;
 	plf = boost::shared_ptr<PLF> (new XMLPLF ("levels/level1.xml"));
       }

@@ -1,4 +1,4 @@
-//  $Id: Teleporter.cc,v 1.18 2001/05/14 08:17:32 grumbel Exp $
+//  $Id: Teleporter.cc,v 1.19 2001/05/18 19:17:10 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -72,7 +72,7 @@ TeleporterData::create(xmlDocPtr doc, xmlNodePtr cur)
 	}
       else
 	{
-	  std::cout << "TeleportData::creata (): Unhandled " << cur->name << std::endl;
+	  std::cout << "TeleportData::create (): Unhandled " << cur->name << std::endl;
 	}
 
       cur = cur->next;

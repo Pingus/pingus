@@ -1,4 +1,4 @@
-//  $Id: ScrollMap.hh,v 1.2 2000/08/11 01:07:35 grumbel Exp $
+//  $Id: ScrollMap.hh,v 1.3 2001/05/18 19:17:08 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,8 @@
 #ifndef SCROLLMAP_HH
 #define SCROLLMAP_HH
 
+#include "../boost/dummy_ptr.hpp"
+#include "EditorView.hh"
 #include "EditorEvent.hh"
 
 class EditorEvent;
@@ -35,7 +37,7 @@ public:
   ScrollMap();
   virtual ~ScrollMap();
 
-  void draw();
+  void draw(boost::dummy_ptr<EditorView> view);
 
   void  on_button_press(CL_InputDevice *device, const CL_Key& key);
   void  on_button_release(CL_InputDevice *device, const CL_Key& key);

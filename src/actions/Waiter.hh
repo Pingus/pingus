@@ -1,4 +1,4 @@
-//  $Id: Waiter.hh,v 1.6 2001/04/23 08:00:08 grumbel Exp $
+//  $Id: Waiter.hh,v 1.7 2001/05/18 19:17:08 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,8 +23,8 @@
 #include "../PinguAction.hh"
 
 /** A Waiting action for the bridger, it gets activated when the
-    bridger is out of bridges. It then waits two seconds (wail doing a
-    funny animation) and then he convertes back to a normal walker. */
+    bridger is out of bridges. It then waits two seconds (meanwhile doing a
+    funny animation) and then he changes back to a normal walker. */
 class Waiter : public PinguAction
 {
 private:

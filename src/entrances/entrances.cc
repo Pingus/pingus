@@ -1,4 +1,4 @@
-//  $Id: entrances.cc,v 1.5 2000/12/16 23:11:24 grumbel Exp $
+//  $Id: entrances.cc,v 1.6 2001/05/18 19:17:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,7 +33,7 @@ get_entrance(EntranceData data)
   } else if (data.type == "cloud") {
     return boost::shared_ptr<Entrance>(new Cloud(data));
   } else {
-    throw PingusError("Entrance: Entrane type in PLF file is unknow: " + data.type);
+    throw PingusError("Entrance: Entrance type in PLF file is unknown: " + data.type);
   }
 }
 

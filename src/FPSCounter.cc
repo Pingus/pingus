@@ -1,4 +1,4 @@
-//  $Id: FPSCounter.cc,v 1.4 2000/06/27 16:05:16 grumbel Exp $
+//  $Id: FPSCounter.cc,v 1.5 2001/05/18 19:17:08 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #include <ClanLib/core.h>
 #include "PingusResource.hh"
 #include "FPSCounter.hh"
+#include "my_gettext.hh"
 
 FPSCounter fps_counter;
 
@@ -40,7 +41,7 @@ FPSCounter::init()
 {
   font = PingusResource::load_font("Fonts/pingus_small","fonts");
   start_time = CL_System::get_time();
-  strcat(fps_string, "unknown");
+  strcat(fps_string, _("unknown"));
   fps_count = 0;
 }
 

@@ -1,4 +1,4 @@
-//  $Id: PLFParser.cc,v 1.10 2000/04/26 15:48:44 grumbel Exp $
+//  $Id: PLFParser.cc,v 1.11 2001/05/18 19:17:08 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -66,7 +66,7 @@ PLFParser::open(string filename)
   }
   
   if (verbose > 1)
-    cout << "Opened plf file successfully" << endl;
+    cout << "Successfully opened plf file" << endl;
 }
 
 // Return the next char from file and check for eof.

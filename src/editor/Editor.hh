@@ -1,4 +1,4 @@
-//  $Id: Editor.hh,v 1.11 2001/03/18 17:45:05 grumbel Exp $
+//  $Id: Editor.hh,v 1.12 2001/05/18 19:17:08 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -79,6 +79,9 @@ private:
   ScrollMap* scroll_map;
   ///
   ObjectManager* object_manager;
+  ///
+  EditorView* view;
+  
   ///
   StatusLine* status_line;
   ///

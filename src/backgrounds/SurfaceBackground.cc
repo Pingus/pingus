@@ -1,4 +1,4 @@
-//  $Id: SurfaceBackground.cc,v 1.8 2001/04/01 18:00:40 grumbel Exp $
+//  $Id: SurfaceBackground.cc,v 1.9 2001/05/18 19:17:08 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,7 @@
 #include <iostream>
 #include <ClanLib/core.h>
 
-#include <assert.h>
+#include <cassert>
 
 #include "../globals.hh"
 #include "../Timer.hh"
@@ -57,7 +57,7 @@ SurfaceBackground::SurfaceBackground(SurfaceBackgroundData* bg_data)
 
   if (background_manipulation_enabled && bg_data->color.alpha != 0.0)
     {
-      std::cout << "SurfaceBackground:: Manipulatin background" << std::endl;
+      std::cout << "SurfaceBackground:: Manipulating background" << std::endl;
       // FIXME: This is extremly buggy and it will crash, no idea why....
       CL_Surface source_surface(PingusResource::load_surface(bg_data->desc));
       

@@ -1,4 +1,4 @@
-//  $Id: SurfaceData.hh,v 1.2 2000/12/14 21:35:55 grumbel Exp $
+//  $Id: SurfaceData.hh,v 1.3 2001/05/18 19:17:08 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -57,7 +57,7 @@ public:
       return SurfaceData::LAVA;
     else
       {
-	std::cout << "SurfaceData: Unhandeld type: " << arg_type << std::endl;
+	std::cout << "SurfaceData: Unhandled type: " << arg_type << std::endl;
 	return SurfaceData::GROUND;
       }
   }
@@ -79,7 +79,7 @@ public:
       case SurfaceData::LAVA:
 	return "lava";
       default:
-	std::cout << "SurfaceData: unhandeld type: " << arg_type << std::endl;
+	std::cout << "SurfaceData: Unhandled type: " << arg_type << std::endl;
 	return "ground";
       }
   }

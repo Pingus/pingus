@@ -1,4 +1,4 @@
-// $Id: EditorObj.cc,v 1.32 2001/05/13 18:45:08 grumbel Exp $
+// $Id: EditorObj.cc,v 1.33 2001/05/18 19:17:08 grumbel Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -135,19 +135,30 @@ EditorObj::operator> (const EditorObj& w)
 }
 
 void 
-EditorObj::set_position(int new_x, int new_y)
+EditorObj::set_position(float new_x, float new_y)
 {
   position->x = new_x;
   position->y = new_y;
 }
 
 void
-EditorObj::set_position_offset(int x_pos_add, int y_pos_add, 
-			       int z_pos_add)
+EditorObj::set_position_offset(float x_pos_add, float y_pos_add, 
+			       float z_pos_add)
 {
   position->x += x_pos_add;
   position->y += y_pos_add;
   position->z += z_pos_add;
+}
+
+void
+EditorObj::draw (boost::dummy_ptr<EditorView> view)
+{
+  if (surf) {
+    view->draw (surf, CL_Vector (position->x + x_of, position->y + y_of));
+  } else {
+    view->draw_fillrect (position->x, position->y, position->x + 10, position->y + 10,
+		     1.0, 0.0, 0.0, 1.0);
+  }
 }
 
 void
@@ -185,41 +196,29 @@ EditorObj::draw_scroll_map(int x_pos, int y_pos, int arg_width, int arg_height)
 }
 
 void
-EditorObj::draw_mark_offset(int x_offset, int y_offset, EditorObj::Color* arg_color) 
+EditorObj::draw_mark (boost::dummy_ptr<EditorView> view) 
 {
-  Color color;
-
-  if (arg_color)
-    color = *arg_color;
-  else
-    color = mark_color;
-  
-  Display::draw_rect(int(position->x + x_offset + x_of), int(position->y + y_offset + y_of),
-		     int(position->x + get_width() + x_offset + x_of - 1),
-		     int(position->y + get_height() + y_offset + y_of - 1),
-		     color.r, 
-		     color.g,
-		     color.b,
-		     color.a);
+  view->draw_rect(int(position->x + x_of), int(position->y + y_of),
+		  int(position->x + get_width() + x_of - 1),
+		  int(position->y + get_height() + y_of - 1),
+		  1.0, 0.0, 1.0, 1.0);
 }
 
 bool
-EditorObj::mouse_over(int x_offset, int y_offset)
+EditorObj::is_over(int x_pos, int y_pos)
 {
-  int width  = 10;
-  int height = 10;
-  int mouse_x = CL_Mouse::get_x();
-  int mouse_y = CL_Mouse::get_y();
+  int width  = 20;
+  int height = 20;
 
   if (surf) {
     width = surf.get_width();
     height = surf.get_height();
   }
 
-  if (   mouse_x > position->x + x_offset + x_of 
-      && mouse_x < position->x + width + x_offset + x_of
-      && mouse_y > position->y + y_offset + y_of
-      && mouse_y < position->y + height + y_offset + y_of)
+  if (   x_pos > position->x + x_of 
+      && x_pos < position->x + width + x_of
+      && y_pos > position->y + + y_of
+      && y_pos < position->y + height + y_of)
     {
       return true;
     }
@@ -244,7 +243,7 @@ EditorObj::is_in_rect(int x1, int y1, int x2, int y2)
 std::string
 EditorObj::status_line()
 {
-  return "Object status not know - I am a bug...";
+  return "Object status not known - I am a bug...";
 }
 
 void
@@ -255,6 +254,9 @@ EditorObj::gui_edit_obj()
   
 /*
 $Log: EditorObj.cc,v $
+Revision 1.33  2001/05/18 19:17:08  grumbel
+Added zooming support to the editor
+
 Revision 1.32  2001/05/13 18:45:08  grumbel
 Some more spelling error fixes by Felix
 

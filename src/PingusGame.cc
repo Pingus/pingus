@@ -1,4 +1,4 @@
-//  $Id: PingusGame.cc,v 1.20 2001/04/15 22:54:49 grumbel Exp $
+//  $Id: PingusGame.cc,v 1.21 2001/05/18 19:17:08 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -61,7 +61,7 @@ PingusGame::read_lastlevel_file()
   in.open(filename.c_str());
 
   if (!in) {
-    if (verbose) std::cout << "PingusGame: Warrning: Couldn't open lastlevel file \"" << filename << "\", using default level1.plf" << std::endl;
+    if (verbose) std::cout << "PingusGame: Warning: Couldn't open lastlevel file \"" << filename << "\", using default level1.plf" << std::endl;
     return "levels/level1.plf";
   } else {
     in >> levelfile;
@@ -82,7 +82,7 @@ PingusGame::write_lastlevel_file(std::string levelfile)
   out.open(filename.c_str());
   
   if (!out) {
-    if (verbose) std::cout << "Warrning: Couldn't write lastlevel file: " << filename << std::endl;
+    if (verbose) std::cout << "Warning: Couldn't write lastlevel file: " << filename << std::endl;
   } else {
     if (verbose) std::cout << "Writing lastlevel file: " << levelfile << std::endl;
     out <<  levelfile << std::endl;

@@ -1,4 +1,4 @@
-//  $Id: PLTXML.cc,v 1.7 2001/04/27 20:44:37 grumbel Exp $
+//  $Id: PLTXML.cc,v 1.8 2001/05/18 19:17:08 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -148,7 +148,7 @@ PLTXML::parse_level_list(xmlNodePtr cur)
 	}
       else
 	{
-	  std::cout << "PLTXML: Unhandeld: " << cur->name << std::endl;
+	  std::cout << "PLTXML: Unhandled: " << cur->name << std::endl;
 	}
       cur = cur->next;
     }  

@@ -1,4 +1,4 @@
-//  $Id: GroundpieceData.hh,v 1.5 2001/04/21 10:55:15 grumbel Exp $
+//  $Id: GroundpieceData.hh,v 1.6 2001/05/18 19:17:08 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -57,7 +57,7 @@ public:
       return GroundpieceData::REMOVE;
     else
       {
-	std::cout << "GroundpieceData: Unhandeld type: " << arg_type << std::endl;
+	std::cout << "GroundpieceData: Unhandled type: " << arg_type << std::endl;
 	return GroundpieceData::GROUND;
       }
   }
@@ -81,7 +81,7 @@ public:
       case GroundpieceData::REMOVE:
 	return "remove";
       default:
-	std::cout << "GroundpieceData: unhandeld type: " << arg_type << std::endl;
+	std::cout << "GroundpieceData: Unhandled type: " << arg_type << std::endl;
 	return "ground";
       }
   }

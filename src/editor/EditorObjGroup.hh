@@ -1,4 +1,4 @@
-//  $Id: EditorObjGroup.hh,v 1.3 2001/04/21 10:55:16 grumbel Exp $
+//  $Id: EditorObjGroup.hh,v 1.4 2001/05/18 19:17:08 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,10 +43,10 @@ public:
   virtual void   draw_offset(CL_Vector offset, float zoom);
 
   /** Draw the caputre rectangle around the object */
-  virtual void   draw_mark_offset(int, int, EditorObj::Color* arg_color = 0);
+  virtual void   draw_mark (boost::dummy_ptr<EditorView> view);
 
   /** Return true when the mouse is over the current object */
-  virtual bool   mouse_over(int, int);
+  virtual bool   is_over(int, int);
 
   /** Return true if the current object is inside the current
       selection rectangle */

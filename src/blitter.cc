@@ -1,4 +1,4 @@
-//  $Id: blitter.cc,v 1.27 2001/04/27 20:44:37 grumbel Exp $
+//  $Id: blitter.cc,v 1.28 2001/05/18 19:17:08 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -54,7 +54,7 @@ Blitter::put_surface(CL_Canvas* canvas, CL_SurfaceProvider* provider,
       break;
     default: 
       sprintf(str, "%d", provider->get_depth());
-      throw PingusError("Blitter:put_surface:Unknow color depth: " + std::string(str));
+      throw PingusError("Blitter:put_surface:Unknown color depth: " + std::string(str));
       break;
     }    
 }

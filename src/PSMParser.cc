@@ -1,4 +1,4 @@
-//  $Id: PSMParser.cc,v 1.18 2001/04/21 10:55:15 grumbel Exp $
+//  $Id: PSMParser.cc,v 1.19 2001/05/18 19:17:08 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -221,7 +221,7 @@ PSMParser::expect(char b)
   if (c == b) {
     return;
   } else {
-    throw PSMParseError(string("Didn't found expected char: '") + b + "', found '" + c +"' instead.");
+    throw PSMParseError(string("Didn't find expected char: '") + b + "', found '" + c +"' instead.");
     return;
   }
 }

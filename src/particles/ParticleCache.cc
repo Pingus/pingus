@@ -1,4 +1,4 @@
-//  $Id: ParticleCache.cc,v 1.6 2000/06/11 15:23:29 grumbel Exp $
+//  $Id: ParticleCache.cc,v 1.7 2001/05/18 19:17:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -47,7 +47,7 @@ ParticleCache::create()
     {
       std::vector<Particle*>::iterator particle = position;
       
-      std::cout << "OUt of particles" << std::endl;
+      std::cout << "Out of particles" << std::endl;
       particles.push_back(new PinguParticle());
       position++;
 

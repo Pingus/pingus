@@ -1,4 +1,4 @@
-//  $Id: Config.cc,v 1.12 2000/12/30 23:54:05 grumbel Exp $
+//  $Id: Config.cc,v 1.13 2001/05/18 19:17:08 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -66,7 +66,7 @@ ConfigParser::open(std::string filename)
     throw PingusError("Couldn't open: " + filename);
     
   if (verbose > 1)
-    std::cout << "Opened plf file successfully" << std::endl;
+    std::cout << "Successfully opened plf file." << std::endl;
 }
 
 // Return the next char from file and check for eof.
@@ -428,7 +428,7 @@ Config::str_to_int(const std::string& str)
 
   if (sscanf(str.c_str(), "%d", &ret_val) != 1) 
     {
-      throw PingusError("Config: Couldn't covert std::string to integer: " + str);
+      throw PingusError("Config: Couldn't convert std::string to integer: " + str);
     }
 
   return ret_val;

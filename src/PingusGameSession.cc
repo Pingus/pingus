@@ -1,4 +1,4 @@
-//  $Id: PingusGameSession.cc,v 1.6 2001/04/15 18:34:43 grumbel Exp $
+//  $Id: PingusGameSession.cc,v 1.7 2001/05/18 19:17:08 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -63,9 +63,9 @@ PingusGameSession::~PingusGameSession ()
 void 
 PingusGameSession::start ()
 {
-  std::cout << "PingusGameSession: Giving controll to the client..." << std::endl;
+  std::cout << "PingusGameSession: Giving control to the client..." << std::endl;
   client->start();
-  std::cout << "PingusGameSession: Got controll back from the client." << std::endl;
+  std::cout << "PingusGameSession: Got control back from the client." << std::endl;
 }
 
 PingusGameSessionResults 

@@ -1,4 +1,4 @@
-//  $Id: EditorObj.hh,v 1.28 2001/05/15 17:59:46 grumbel Exp $
+//  $Id: EditorObj.hh,v 1.29 2001/05/18 19:17:08 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,7 +24,9 @@
 #include <functional>
 #include <ClanLib/core.h>
 #include "../boost/smart_ptr.hpp"
+#include "../boost/dummy_ptr.hpp"
 
+#include "EditorView.hh"
 #include "../ResDescriptor.hh"
 #include "../ExitData.hh"
 #include "../EntranceData.hh"
@@ -122,10 +124,10 @@ public:
   /** Members to manipulate the objects position */
   //@{
   /** Move the object to the given coordinates */
-  virtual void set_position(int new_x_pos, int new_y_pos);
+  virtual void set_position(float new_x_pos, float new_y_pos);
   /** Move the object to the given coordinates */
-  virtual void set_position_offset(int x_pos_add, int y_pos_add, 
-				   int z_pos_add =0);
+  virtual void set_position_offset(float x_pos_add, float y_pos_add, 
+				   float z_pos_add =0);
   /// Return the object x_pos
   virtual int get_x_pos() { return (int) position->x; }
   /// Return the object y_pos
@@ -145,13 +147,15 @@ public:
   /** Draw the object */
   virtual void   draw_offset (CL_Vector offset, float zoom);
 
+  virtual void   draw (boost::dummy_ptr<EditorView> view);
+
   virtual void draw_scroll_map(int x_pos, int y_pos, int arg_width, int arg_height);
 
   /** Draw the caputre rectangle around the object */
-  virtual void   draw_mark_offset(int, int, EditorObj::Color* color = 0);
+  virtual void   draw_mark (boost::dummy_ptr<EditorView> view);
   
-  /** Return true when the mouse is over the current object */
-  virtual bool   mouse_over(int, int);
+  /** Return true when the object is under the given coordinates */
+  virtual bool   is_over(int, int);
 
   /** Return true if the current object is inside the current
       selection rectangle */

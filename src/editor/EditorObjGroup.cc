@@ -1,4 +1,4 @@
-//  $Id: EditorObjGroup.cc,v 1.7 2001/04/21 10:55:16 grumbel Exp $
+//  $Id: EditorObjGroup.cc,v 1.8 2001/05/18 19:17:08 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -83,7 +83,7 @@ EditorObjGroup::draw_offset(CL_Vector offset, float zoom)
 
 /** Draw the caputre rectangle around the object */
 void
-EditorObjGroup::draw_mark_offset(int x_offset, int y_offset, EditorObj::Color* arg_color)
+EditorObjGroup::draw_mark (boost::dummy_ptr<EditorView> view)
 {
   //std::cout << "Group..." << std::endl;
   Color tmp_color = mark_color;
@@ -93,21 +93,21 @@ EditorObjGroup::draw_mark_offset(int x_offset, int y_offset, EditorObj::Color* a
       i != objs.end();
       i++)
     {
-      (*i)->draw_mark_offset(x_offset, y_offset, &color);
+      (*i)->draw_mark (view);
     }
 
   mark_color = tmp_color;
-  EditorObj::draw_mark_offset(x_offset, y_offset);
+  EditorObj::draw_mark (view);
 }
 
 bool
-EditorObjGroup::mouse_over(int x_offset, int y_offset)
+EditorObjGroup::is_over(int x_pos, int y_pos)
 {
   for(std::list<boost::shared_ptr<EditorObj> >::iterator i = objs.begin();
       i != objs.end();
       i++)
     {
-      if ((*i)->mouse_over(x_offset, y_offset))
+      if ((*i)->is_over(x_pos, y_pos))
 	{
 	  return true;
 	}

@@ -1,4 +1,4 @@
-//  $Id: ThumbCache.cc,v 1.3 2001/05/15 17:59:46 grumbel Exp $
+//  $Id: ThumbCache.cc,v 1.4 2001/05/18 19:17:08 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -69,7 +69,7 @@ ThumbCache::cache (const CL_Surface& sur, std::string res_ident, std::string dat
 {
   if (sur.get_provider ()->get_pitch () * sur.get_provider ()->get_width () < 50 * 50 * 4)
     {
-      std::cout << "ThumbCache: image to small for cache: " << res_ident << std::endl;
+      std::cout << "ThumbCache: image too small for cache: " << res_ident << std::endl;
       return;
     }
     
@@ -83,7 +83,7 @@ ThumbCache::cache (const CL_Surface& sur, std::string res_ident, std::string dat
   filename = System::get_cachedir () + filename;
 
   CL_Canvas* canvas = Blitter::scale_surface_to_canvas (sur, 50, 50);
-  std::cout <<" Writting cache file: " << filename << std::endl;
+  std::cout <<" Writing cache file: " << filename << std::endl;
   
   out = fopen (filename.c_str (), "w");
   
@@ -100,7 +100,7 @@ ThumbCache::cache (const CL_Surface& sur, std::string res_ident, std::string dat
     }
   else
     {
-      std::cout << "ThumbCache: Couldn't open file for writting: " << filename << std::endl;
+      std::cout << "ThumbCache: Couldn't open file for writing: " << filename << std::endl;
     }
 }
 

@@ -1,4 +1,4 @@
-//  $Id: IceBlock.hh,v 1.9 2001/04/27 20:44:38 grumbel Exp $
+//  $Id: IceBlock.hh,v 1.10 2001/05/18 19:17:10 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,7 +36,7 @@ public:
 
   IceBlockData ();
 
-  /** Writte the content of this object formated as xml to the given
+  /** Write the content of this object formatted as xml to the given
       stream */
   virtual void write_xml(std::ofstream* xml);
   ///

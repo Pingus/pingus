@@ -1,4 +1,4 @@
-//  $Id: PLFPLF.cc,v 1.9 2001/04/21 10:55:15 grumbel Exp $
+//  $Id: PLFPLF.cc,v 1.10 2001/05/18 19:17:08 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -334,7 +334,7 @@ PLFPLF::set_group_start(string groupname)
   } else if (groupname == "buttons") {
     current_group = PLFPLF::BUTTONS;
   } else {
-    throw PingusError("Parse error: Unknow groupname: '" + groupname + "'");
+    throw PingusError("Parse error: Unknown groupname: '" + groupname + "'");
   }  
 }
 
@@ -382,7 +382,7 @@ PLFPLF::str_to_int(const string& str)
   int ret_val;
 
   if (sscanf(str.c_str(), "%d", &ret_val) != 1) {
-    throw PingusError("PLF: Couldn't covert string to integer: " + str);
+    throw PingusError("PLF: Couldn't convert string to integer: " + str);
   }
 
   return ret_val;
@@ -394,7 +394,7 @@ PLFPLF::str_to_float(const string& str)
   float ret_val;
 
   if (sscanf(str.c_str(), "%f", &ret_val) != 1) {
-    throw PingusError("PLF: Couldn't covert string to float: " + str);
+    throw PingusError("PLF: Couldn't convert string to float: " + str);
   }
 
   return ret_val;

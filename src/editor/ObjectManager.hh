@@ -1,4 +1,4 @@
-//  $Id: ObjectManager.hh,v 1.15 2001/04/27 20:44:38 grumbel Exp $
+//  $Id: ObjectManager.hh,v 1.16 2001/05/18 19:17:08 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -69,9 +69,9 @@ private:
   std::list<boost::shared_ptr<EditorObj> > current_objs;
 
   ///
-  int x_offset;
+  //int x_offset;
   ///
-  int y_offset;
+  //int y_offset;
   ///
   int move_offset;
 
@@ -101,7 +101,7 @@ public:
   void save_level_xml (std::string filename);
 
   ///
-  void draw();
+  void draw(boost::dummy_ptr<EditorView> view);
   ///
   void draw_scroll_map(int x_pos, int y_pos, int arg_width, int arg_height);
   
@@ -117,15 +117,9 @@ public:
   void rect_get_current_objs(int x1, int y1, int x2, int y2);
 
   ///
-  int get_x_offset() { return x_offset; }
-  ///
-  int get_y_offset() { return y_offset; }
-  ///
   int get_width() { return width; }
   ///
   int get_height() { return height; }
-  ///
-  void set_viewpoint(int x, int y);
 
   /** Return the currently selected object, if none is selected or
       multiple objects are selected return 0 */
@@ -152,7 +146,7 @@ public:
   void unselect_object(boost::shared_ptr<EditorObj> c_obj);
 
   /** Add the object at the given position to the selection */
-  boost::shared_ptr<EditorObj> select_object(int x, int y);
+  boost::shared_ptr<EditorObj> select_object(CL_Vector pos);
 };
 
 #endif

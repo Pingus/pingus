@@ -1,4 +1,4 @@
-//  $Id: WarMain.cc,v 1.7 2001/03/18 17:45:05 grumbel Exp $
+//  $Id: WarMain.cc,v 1.8 2001/05/18 19:17:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,6 +31,7 @@
 #include "WarGame.hh"
 #include "WarMain.hh"
 #include "../PingusError.hh"
+#include "../my_gettext.hh"
 
 /* Option flags and variables */
 static struct option const long_options[] =
@@ -46,7 +47,7 @@ static struct option const long_options[] =
 char* 
 WarMain::get_title()
 {
-  return "Time for war - Lets fight!";
+  return _("Time for war - Lets fight!");
 }
 
 int

@@ -1,4 +1,4 @@
-//  $Id: PingusSoundDummy.cc,v 1.3 2001/05/13 18:45:08 grumbel Exp $
+//  $Id: PingusSoundDummy.cc,v 1.4 2001/05/18 19:17:08 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #include <iostream>
 #include "globals.hh"
 #include "PingusSoundDummy.hh"
+#include <iostream>
 
 void
 PingusSoundDummy::real_play_mod (std::string filename, float volume)

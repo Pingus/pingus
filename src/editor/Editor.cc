@@ -1,4 +1,4 @@
-//  $Id: Editor.cc,v 1.24 2001/05/13 18:45:08 grumbel Exp $
+//  $Id: Editor.cc,v 1.25 2001/05/18 19:17:08 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -44,7 +44,8 @@ Editor::Editor ()
   object_manager  = new ObjectManager;
   status_line     = new StatusLine;
   object_selector = new ObjectSelector;
-  
+  view = new EditorView (0, 0, CL_Display::get_width (), CL_Display::get_height (), 0, 0);
+
   event->set_editor(this);
   
   font = PingusResource::load_font("Fonts/courier_small", "fonts");
@@ -84,7 +85,7 @@ Editor::register_event_handler()
     }
   else
     {
-      if (verbose) std::cout << "Editor: event_handler allready installed" << std::endl;
+      if (verbose) std::cout << "Editor: event_handler already installed" << std::endl;
     }
 }
 
@@ -92,7 +93,7 @@ void
 Editor::unregister_event_handler()
 {
   event_handler_ref_counter--;
-  if (verbose) std::cout << "Editor: unregestering event handler" << event << "... " << std::flush; 
+  if (verbose) std::cout << "Editor: unregistering event handler" << event << "... " << std::flush; 
 
   //CL_Input::chain_button_release.remove(event);
   //CL_Input::chain_button_press.remove(event);
@@ -132,7 +133,7 @@ void
 Editor::draw ()
 {
   CL_Display::clear_display();
-  object_manager->draw();
+  object_manager->draw(view);
   panel->draw();
 
   /*  {
@@ -153,8 +154,8 @@ Editor::draw ()
 		       1.0, 1.0, 1.0, 1.0);
 		       }*/
 
-  status_line->draw(object_manager->x_offset, object_manager->y_offset);
-  scroll_map->draw();
+  status_line->draw(view->get_offset ().x, view->get_offset ().y);
+  scroll_map->draw(view);
 
   Display::flip_display(true);
 }
@@ -176,8 +177,10 @@ Editor::scroll()
 
       if (mouse_x != CL_Mouse::get_x() || mouse_y != CL_Mouse::get_y())
 	{
-	  object_manager->x_offset += (mouse_x - CL_Mouse::get_x()) / 5;
-	  object_manager->y_offset += (mouse_y - CL_Mouse::get_y()) / 5;
+	  view->move (CL_Vector ((mouse_x - CL_Mouse::get_x()) / 5,
+				 (mouse_y - CL_Mouse::get_y()) / 5));
+      //	  object_manager->x_offset += (mouse_x - CL_Mouse::get_x()) / 5;
+      //  object_manager->y_offset += (mouse_y - CL_Mouse::get_y()) / 5;
 	  
 	  /*cout << "ObjectManager: "
 	       << "X: " << object_manager.x_offset 
@@ -216,7 +219,7 @@ Editor::read_string (std::string prefix, std::string default_str)
   CL_Display::clear_display();
   font->print_left(20, 20, prefix.c_str());
   font->print_left(20, 40, str.c_str());
-  font->print_left(20, 400, "For informations on the editor, have a look at the info pages.");
+  font->print_left(20, 400, "For information about the editor, have a look at the info pages.");
   font->print_left(20, 420, "$ info pingus");
   Display::flip_display();
   CL_Display::sync_buffers();
@@ -290,31 +293,34 @@ Editor::save_tmp_level ()
 void
 Editor::rect_get_current_objs()
 {
-  int x1 = CL_Mouse::get_x();
-  int y1 = CL_Mouse::get_y();
-  int x2 = CL_Mouse::get_x();
-  int y2 = CL_Mouse::get_y();
-
-  std::cout << "Editor: Selecting rectangle... " << std::flush;
+  CL_Vector start_pos (CL_Mouse::get_x(),
+		       CL_Mouse::get_y ());
   
+  std::cout << "Editor: Selecting rectangle... " << std::flush;
+
+  CL_Vector end_pos;
+
   while (CL_Mouse::middle_pressed())
     {
       CL_System::keep_alive();
 
-      x2 = CL_Mouse::get_x();
-      y2 = CL_Mouse::get_y();
-
+      end_pos = CL_Vector(CL_Mouse::get_x(),
+			  CL_Mouse::get_y ());
+        
       // Draw the screen
       CL_Display::clear_display();
-      object_manager->draw();
-      Display::draw_rect(x1, y1, x2, y2,
+      object_manager->draw(view);
+      Display::draw_rect(start_pos.x, start_pos.y, end_pos.x, end_pos.y,
 			 0.0, 1.0, 0.0, 1.0);
       panel->draw();
-      status_line->draw(object_manager->x_offset, object_manager->y_offset);
+      status_line->draw(view->get_offset ().x, view->get_offset ().y);
       Display::flip_display(true);
     }
   
-  object_manager->rect_get_current_objs(x1, y1, x2, y2);
+  start_pos = view->screen_to_world (start_pos);
+  end_pos = view->screen_to_world (end_pos);
+
+  object_manager->rect_get_current_objs(start_pos.x, start_pos.y, end_pos.x, end_pos.y);
 
   std::cout << "finished" << std::endl;
 }
@@ -355,24 +361,23 @@ Editor::move_objects()
   else if (CL_Keyboard::get_keycode(CL_KEY_DOWN))
     move_y = move_speed;
         
-  object_manager->move_current_objs(move_x, move_y);
+  //object_manager->move_current_objs(move_x, move_y);
 }
 
 void
 Editor::interactive_move_object()
 {
-  int mouse_x = CL_Mouse::get_x();
-  int mouse_y = CL_Mouse::get_y();
-
   CL_System::keep_alive();
   
+  CL_Vector old_pos (view->screen_to_world(CL_Vector(CL_Mouse::get_x(), CL_Mouse::get_y())));
   while (CL_Mouse::left_pressed()) 
     {
-      object_manager->move_current_objs(CL_Mouse::get_x() - mouse_x,
-				       CL_Mouse::get_y() - mouse_y);
+      CL_Vector new_pos (view->screen_to_world(CL_Vector(CL_Mouse::get_x(), CL_Mouse::get_y())));
+      object_manager->move_current_objs(new_pos.x - old_pos.x,
+					new_pos.y - old_pos.y);
+      old_pos = new_pos;
+      
       draw();
-      mouse_x = CL_Mouse::get_x();
-      mouse_y = CL_Mouse::get_y();
       CL_System::keep_alive();
     }
 }
@@ -437,6 +442,9 @@ Editor::interactive_load()
 
 /***********************************************
 $Log: Editor.cc,v $
+Revision 1.25  2001/05/18 19:17:08  grumbel
+Added zooming support to the editor
+
 Revision 1.24  2001/05/13 18:45:08  grumbel
 Some more spelling error fixes by Felix
 

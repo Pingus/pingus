@@ -1,4 +1,4 @@
-//  $Id: ThumbCache.hh,v 1.3 2001/03/18 17:45:05 grumbel Exp $
+//  $Id: ThumbCache.hh,v 1.4 2001/05/18 19:17:09 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,7 +31,7 @@ class ThumbCache
 private:
   
 public:
-  /** Load a thumnail of a surface out of the cache. The thumbnail as
+  /** Load a thumbnail of a surface out of the cache. The thumbnail has
       the size 50x50, if the thumbnail is not available, the surface
       is loaded and added to the cache. */
   static CL_Surface load (std::string res_ident, std::string datafile);

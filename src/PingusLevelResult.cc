@@ -1,4 +1,4 @@
-//  $Id: PingusLevelResult.cc,v 1.18 2001/04/13 14:50:59 grumbel Exp $
+//  $Id: PingusLevelResult.cc,v 1.19 2001/05/18 19:17:08 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -81,7 +81,7 @@ PingusLevelResult::draw(void)
   //font->print_center(CL_Display::get_width() / 2, 180, str);
 
   font->print_center(CL_Display::get_width()/2, CL_Display::get_height() - 80,
-		     "Press button to continue...");  
+		     _("Press button to continue..."));  
   Display::flip_display();
 
   while(!CL_Mouse::left_pressed())
@@ -96,33 +96,33 @@ PingusLevelResult::get_message(int saved)
 {
   if (saved == 100) {
     // (100%--) survival: Aww, and we wanted to say: 'No Pingus were harmed in the completion of this level'
-    return "As many Pingus escaped as entered the level. Thats going to be hard to beat.... unless this game gets pornographic.";
+    return _("As many Pingus escaped as entered the level. Thats going to be hard to beat.... unless this game becomes pornographic.");
   } else if (saved > 90) {
-    return "Very impressive indeed.";
+    return _("Very impressive indeed.");
   } else if (saved > 80) {
-    return "Good work. Still room for improvement though.";
+    return _("Good work. Still room for improvement though.");
   } else if (saved > 70) {
-    return "Not too shabby, not too shabby at all.";
+    return _("Not too shabby, not too shabby at all.");
   } else if (saved > 60) {
-    return "That was OK, but Pingu life insurance premiums have just gotten more expensive.";
+    return _("That was OK, but Pingu life insurance premiums have just gotten more expensive.");
   } else if (saved > 60) {
-    return "Maybe this level calls for a different stratagy.";
+    return _("Maybe this level calls for a different strategy.");
   } else if (saved > 50) {
-    return "Exactly half. Are you saving only the female ones, you kinky sod!?";
+    return _("Exactly half. Are you saving only the female ones, you kinky sod!?");
   } else if (saved > 40) {
-    return "If I were a Pingu, I never would have left that entrance.";
+    return _("If I were a Pingu, I never would have left that entrance.");
   } else if (saved > 30) {
-    return "Maybe you would feel more at home playing Quake.";
+    return _("Maybe you would feel more at home playing Quake.");
   } else if (saved > 20) {
-    return "Maybe this level calls for a different stratagy. Like attempting to save them, for example.";
+    return _("Maybe this level calls for a different stratagy. Like attempting to save them, for example.");
   } else if (saved > 10) {
-    return "Considered a career as a Pingu exterminator?";
+    return _("Ever considered a career as a Pingu exterminator?");
   } else if (saved > 0) {
-    return "You missed one! Whats your excuse!?";
+    return _("You missed one! What's your excuse!?");
   } else if (saved == 0) {
-    return "Please reassure me that you hit the Armageddon button.";
+    return _("Please reassure me that you hit the Armageddon button.");
   } else {
-    return "You've got a negative save/total value, something is buggy.";
+    return _("You've got a negative save/total value, something is buggy.");
   }
 }
 

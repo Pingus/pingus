@@ -1,4 +1,4 @@
-//  $Id: StartPos.cc,v 1.8 2001/04/21 10:55:16 grumbel Exp $
+//  $Id: StartPos.cc,v 1.9 2001/05/18 19:17:08 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,7 +43,7 @@ StartPos::~StartPos()
 void   
 StartPos::save(std::ofstream* plf, std::ofstream* psm)
 {
-  std::cout << "StartPos: plf saving not supported since its obsolete" << std::endl;
+  std::cout << "StartPos: plf saving not supported since it's obsolete" << std::endl;
 }
 
 void

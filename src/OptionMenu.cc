@@ -1,4 +1,4 @@
-//  $Id: OptionMenu.cc,v 1.29 2001/03/30 09:19:23 grumbel Exp $
+//  $Id: OptionMenu.cc,v 1.30 2001/05/18 19:17:08 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,7 @@
 #include "Loading.hh"
 #include "Display.hh"
 #include "OptionMenu.hh"
+#include "my_gettext.hh"
 
 // Define the global option menu
 OptionMenu   option_menu;
@@ -79,9 +80,9 @@ OptionEntry::draw()
 
   if (value_bool) {
     if (*value_bool) {
-      font->print_right(x_pos + CL_Display::get_width() - 35, y_pos, "on");
+      font->print_right(x_pos + CL_Display::get_width() - 35, y_pos, _("on"));
     } else {
-      font->print_right(x_pos + CL_Display::get_width() - 35, y_pos, "off");
+      font->print_right(x_pos + CL_Display::get_width() - 35, y_pos, _("off"));
     }
   } else if (value_str) {
     font->print_right(x_pos + CL_Display::get_width() - 35, y_pos, value_str->c_str());    
@@ -162,7 +163,7 @@ OptionMenu::Event::on_button_release(CL_InputDevice *device, const CL_Key &key)
 	  if (verbose) std::cout << "Button 2 pressed" << std::endl;
 	  break;
 	default:
-	  if (verbose) std::cout << "OptionMenu::Event: Unknown mouse key released: id=" << key.id << std::endl;
+	  if (verbose) std::cout << "OptionMenu::Event: Unknown mouse button released: id=" << key.id << std::endl;
 	  break;  
 	}
     }
@@ -200,23 +201,23 @@ OptionMenu::init()
   is_init = true;
 
   // Bool options
-  add_entry("Gimmicks",  &gimmicks_enabled);
-  add_entry("Unlimited Actions",  &unlimited_actions);
-  add_entry("Print fps", &print_fps);
+  add_entry(_("Gimmicks"),  &gimmicks_enabled);
+  add_entry(_("Unlimited Actions"),  &unlimited_actions);
+  add_entry(_("Print fps"), &print_fps);
   //  add_entry("Debug actions", &debug_actions);  
-  add_entry("Cursor enabled", &cursor_enabled);  
-  add_entry("Fast Mode", &fast_mode);
-  add_entry("Pingus Datadir", &pingus_datadir);
-  add_entry("Game Speed", &game_speed);
-  add_entry("Verbose", &verbose);
-  add_entry("Music", &music_enabled);
-  add_entry("Sound", &sound_enabled);
-  add_entry("Level Previews", &previews_enabled);
-  add_entry("Draw ColMap", &draw_collision_map);
-  add_entry("Horizontal Button Panel", &horizontal_button_panel);
-  //add_entry("Debug GameTime", &debug_game_time);
-  //add_entry("Debug Tiles", &debug_tiles);
-  add_entry("Auto Scrolling", &auto_scrolling);
+  add_entry(_("Cursor enabled"), &cursor_enabled);  
+  add_entry(_("Fast Mode"), &fast_mode);
+  add_entry(_("Pingus Datadir"), &pingus_datadir);
+  add_entry(_("Game Speed"), &game_speed);
+  add_entry(_("Verbose"), &verbose);
+  add_entry(_("Music"), &music_enabled);
+  add_entry(_("Sound"), &sound_enabled);
+  add_entry(_("Level Previews"), &previews_enabled);
+  add_entry(_("Draw ColMap"), &draw_collision_map);
+  add_entry(_("Horizontal Button Panel"), &horizontal_button_panel);
+  //add_entry(_("Debug GameTime"), &debug_game_time);
+  //add_entry(_("Debug Tiles"), &debug_tiles);
+  add_entry(_("Auto Scrolling"), &auto_scrolling);
 }
 
 void
@@ -255,7 +256,7 @@ OptionMenu::draw()
 {  
   draw_background();
   
-  title_font->print_center(CL_Display::get_width() / 2, 10, "Pingus Option Menu");
+  title_font->print_center(CL_Display::get_width() / 2, 10, _("Pingus Option Menu"));
 
   for(EntryIter item = entry.begin(); item != entry.end(); ++item) {
     item->draw();

@@ -1,4 +1,4 @@
-//  $Id: QuestionDialog.hh,v 1.4 2000/06/18 17:01:50 grumbel Exp $
+//  $Id: QuestionDialog.hh,v 1.5 2001/05/18 19:17:08 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,7 @@
 #include <string>
 
 #include <ClanLib/core.h>
+#include "my_gettext.hh"
 
 
 ///
@@ -37,7 +38,7 @@ private:
   std::string question, button1, button2, button3, button4;
 public:
   ///
-  QuestionDialog(std::string q, std::string b1 = "Yes", std::string b2 = "No", std::string b3 = "", std::string b4="");
+  QuestionDialog(std::string q, std::string b1 = _("Yes"), std::string b2 = _("No"), std::string b3 = "", std::string b4="");
   ///
   int start();
   ///

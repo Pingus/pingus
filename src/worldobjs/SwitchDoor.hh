@@ -1,4 +1,4 @@
-//  $Id: SwitchDoor.hh,v 1.11 2001/04/27 20:44:38 grumbel Exp $
+//  $Id: SwitchDoor.hh,v 1.12 2001/05/18 19:17:10 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -44,7 +44,7 @@ public:
 
   SwitchDoorData ();
 
-  /** Writte the content of this object formated as xml to the given
+  /** Write the content of this object formatted as xml to the given
       stream */
   virtual void write_xml(std::ofstream* xml);
   ///
@@ -65,8 +65,8 @@ private:
   /** True if the door is opening */
   bool is_opening;
 
-  /** The current height of the door, it might get less when the door
-      is opening, it gets zero when the door is fully opened */
+  /** The current height of the door, it might decrease when the door
+      is opening, it will be zero when the door is fully opened */
   int current_door_height;
 
 public:
@@ -111,7 +111,7 @@ public:
   virtual void draw_offset (CL_Vector offset, float zoom);
   static std::list<boost::shared_ptr<EditorObj> > create (WorldObjData* obj);
 
-  /** Create this object (and child objects) with resonable defaults
+  /** Create this object (and child objects) with reasonable defaults
       for the editor */
   static std::list<boost::shared_ptr<EditorObj> > create (const CL_Vector& pos);
 

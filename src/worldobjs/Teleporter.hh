@@ -1,4 +1,4 @@
-//  $Id: Teleporter.hh,v 1.12 2001/04/27 20:44:38 grumbel Exp $
+//  $Id: Teleporter.hh,v 1.13 2001/05/18 19:17:10 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,7 +35,7 @@ public:
   TeleporterData (const TeleporterData& data);
   virtual ~TeleporterData () {}
 
-  /** Writte the content of this object formated as xml to the given
+  /** Write the content of this object formatted as xml to the given
       stream */
   virtual void write_xml(std::ofstream* xml);
   ///
@@ -63,9 +63,9 @@ public:
   virtual int  get_z_pos() const { return (int) pos.z; }
 };
 
-/** An pseudo object to represent the teleporter target, all the
+/** A pseudo object to represent the teleporter target; all the
     data itself is handled inside the EditorTeleporterObj, but we
-    need this helper objects to be able to show and move the
+    need this helper object to be able to show and move the
     teleporter target inside the editor */
 class EditorTeleporterTargetObj : public EditorObj
 {
@@ -80,7 +80,7 @@ public:
 
   CL_Vector get_position () { return *position; }
 
-  /// The saveing will be done in EditorTeleporterObj::save_xml
+  /// The saving will be done in EditorTeleporterObj::save_xml
   virtual void save_xml (std::ofstream* xml);
   virtual std::string status_line();
 };
@@ -99,7 +99,7 @@ public:
 
   static std::list<boost::shared_ptr<EditorObj> > create (WorldObjData* obj);
 
-  /** Create this object (and child objects) with resonable defaults
+  /** Create this object (and child objects) with reasonable defaults
       for the editor */
   static std::list<boost::shared_ptr<EditorObj> > create (const CL_Vector& pos);
 

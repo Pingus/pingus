@@ -1,4 +1,4 @@
-//  $Id: FileSelector.cc,v 1.5 2000/10/09 19:17:30 grumbel Exp $
+//  $Id: FileSelector.cc,v 1.6 2001/05/18 19:17:08 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,6 +41,8 @@
 #include "View.hh"
 
 #include "FileSelector.hh"
+
+#include "my_gettext.hh"
 
 // Define some macros to make the code more readable
 #define FS_START  (20)
@@ -203,7 +205,7 @@ void
 FileSelector::readdir(std::string path, std::string pattern)
 {
   if (dir_read) {
-    std::cout << "FileSelector: Dir allready read, skipping" << std::endl;
+    std::cout << "FileSelector: Dir already read, skipping" << std::endl;
     return;
   }
   std::cout << "FileSelector: Reading directory" << std::endl;
@@ -235,7 +237,7 @@ FileSelector::readdir(std::string path, std::string pattern)
       dp = opendir(pathname.c_str());
     
       if (!dp) {
-	cout << "Warrning: Couldn't open directory: " << pathname << std::endl;
+	cout << "Warning: Couldn't open directory: " << pathname << std::endl;
       } else {
 	while ((de = ::readdir(dp)) != NULL) {
 	  if (fnmatch(pattern.c_str(), de->d_name, FNM_PATHNAME) == 0) {
@@ -329,7 +331,7 @@ FileSelector::draw(int highlight)
 
   // The play button
   CL_Display::fill_rect(590, 200, 630, 220, 1.0, 1.0, 1.0, 0.9);
-  font_h->print_left(600, 205,"Play");
+  font_h->print_left(600, 205, _("Play"));
 
   if ((file_index != file_npos) && (file_index < entry.size())) {
     font->print_left(300, 30, entry[file_index].plf->get_levelname().c_str());
@@ -339,7 +341,7 @@ FileSelector::draw(int highlight)
       // Draw the level preview and load it if not allready done
       if (entry[file_index].preview->get_surface() == 0) {
 	CL_Display::fill_rect(280, 230, 630, 460, 0.0, 0.0, 0.0, 0.5);
-	font->print_center(450, 320, "Loading...");
+	font->print_center(450, 320, _("Loading..."));
 	Display::flip_display();
 	CL_Display::sync_buffers();
 	entry[file_index].preview->load();

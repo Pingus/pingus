@@ -1,4 +1,4 @@
-//  $Id: Pingu.cc,v 1.54 2001/04/27 20:44:37 grumbel Exp $
+//  $Id: Pingu.cc,v 1.55 2001/05/18 19:17:08 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -181,7 +181,7 @@ Pingu::set_action(shared_ptr<PinguAction> act)
 	  if (action.get() && (action->name() == act->name()))
 	    {
 	      if (pingus_debug_flags & PINGUS_DEBUG_ACTIONS)
-		std::cout << "Pingu: Allready have action" << std::endl;
+		std::cout << "Pingu: Already have action" << std::endl;
 	      return false;
 	    }
 	  action = act;
@@ -276,7 +276,7 @@ Pingu::update_persistent(float delta)
 	      if (action.get() && persist[i]->name() == action->name()) 
 		{
 		  if (pingus_debug_flags & PINGUS_DEBUG_ACTIONS)
-		    std::cout << "Pingu: Not using action, we have allready" << std::endl;
+		    std::cout << "Pingu: Not using action, we already did." << std::endl;
 		} 
 	      else 
 		{
@@ -469,12 +469,12 @@ Pingu::update_walking(float delta)
 		  if (action.get() && persist[i]->name() == action->name()) 
 		    {
 		      if (pingus_debug_flags & PINGUS_DEBUG_ACTIONS)
-			std::cout << "Pingu: Not using action, we have allready" << std::endl;
+			std::cout << "Pingu: Not using action, we already did." << std::endl;
 		    } 
 		  else 
 		    {
 		      if (pingus_debug_flags & PINGUS_DEBUG_ACTIONS)
-			std::cout << "Pingu: We are infront of a wall, setting persistant action" << std::endl;
+			std::cout << "Pingu: We are in front of a wall, setting persistant action" << std::endl;
 		      set_paction(world->get_action_holder()->get_uaction(persist[i]->name()));
 		    }
 		  return;

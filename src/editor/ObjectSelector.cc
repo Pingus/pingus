@@ -1,4 +1,4 @@
-//  $Id: ObjectSelector.cc,v 1.44 2001/05/15 21:34:03 grumbel Exp $
+//  $Id: ObjectSelector.cc,v 1.45 2001/05/18 19:17:08 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,6 +31,7 @@
 #include "WeatherObj.hh"
 #include "ObjectSelector.hh"
 #include "ThumbCache.hh"
+#include "../my_gettext.hh"
 
 #include "../worldobjs/Teleporter.hh"
 #include "../worldobjs/IceBlock.hh"
@@ -72,13 +73,13 @@ ObjectSelector::get_trap()
 
   CL_Display::clear_display();
 
-  font->print_left(20, 20, "1 - guillotine");
-  font->print_left(20, 50, "2 - hammer");
-  font->print_left(20, 80, "3 - spike");
-  font->print_left(20,110, "4 - laser_exit");
-  font->print_left(20,140, "5 - fake_exit");
-  font->print_left(20,170, "6 - smasher");
-  font->print_left(20,200, "7 - bumper");
+  font->print_left(20, 20, _("1 - guillotine"));
+  font->print_left(20, 50, _("2 - hammer"));
+  font->print_left(20, 80, _("3 - spike"));
+  font->print_left(20,110, _("4 - laser_exit"));
+  font->print_left(20,140, _("5 - fake_exit"));
+  font->print_left(20,170, _("6 - smasher"));
+  font->print_left(20,200, _("7 - bumper"));
   Display::flip_display();
 
   trap.type = "";
@@ -168,11 +169,11 @@ std::list<boost::shared_ptr<EditorObj> >
 ObjectSelector::get_worldobj()
 {
   CL_Display::clear_display();
-  font->print_left(20,  20, "Select an WorldObj");
-  font->print_left(20,  50, "1 - teleporter");
-  font->print_left(20,  70, "2 - switch and door");
-  font->print_left(20,  90, "3 - ConveyorBelt");
-  font->print_left(20, 110, "4 - IceBlock");
+  font->print_left(20,  20, _("Select a WorldObj"));
+  font->print_left(20,  50, _("1 - teleporter"));
+  font->print_left(20,  70, _("2 - switch and door"));
+  font->print_left(20,  90, _("3 - ConveyorBelt"));
+  font->print_left(20, 110, _("4 - IceBlock"));
   Display::flip_display();
 
   while (true) 
@@ -211,9 +212,9 @@ ObjectSelector::get_weather()
 			 CL_Mouse::get_y() - y_offset);
   */
   CL_Display::clear_display();
-  font->print_left(20, 20, "Select an weather");
-  font->print_left(20, 50, "1 - snow");
-  font->print_left(20, 70, "2 - rain");
+  font->print_left(20, 20, _("Select a weather"));
+  font->print_left(20, 50, _("1 - snow"));
+  font->print_left(20, 70, _("2 - rain"));
   Display::flip_display();
 
   while (!done) 
@@ -246,10 +247,10 @@ ObjectSelector::get_entrance()
   entrance.pos.z = 0;
 
   CL_Display::clear_display();
-  font->print_left(20, 20, "Select an entrance");
-  font->print_left(20, 50, "1 - generic");
-  font->print_left(20, 70, "2 - woodthing");
-  font->print_left(20, 90, "3 - cloud");
+  font->print_left(20, 20, _("Select an entrance"));
+  font->print_left(20, 50, _("1 - generic"));
+  font->print_left(20, 70, _("2 - woodthing"));
+  font->print_left(20, 90, _("3 - cloud"));
   Display::flip_display();
 
   while (!have_name) 
@@ -273,7 +274,7 @@ ObjectSelector::get_entrance()
 	  break;
 
 	default:
-	  if (verbose) cout << "unknow keypressed" << endl;
+	  if (verbose) cout << "Unknown keypressed" << endl;
 	}
     }
   
@@ -316,19 +317,19 @@ ObjectSelector::select_obj_type()
   bool exit_loop;
 
   CL_Display::clear_display();
-  font->print_left(20, 20, "What object do you want?");
-  font->print_left(20, 50, "t - Trap");
-  font->print_left(20, 70, "g - Groundpiece (ground)");
-  font->print_left(20, 90, "s - Groundpiece (solid)");
-  font->print_left(20,110, "b - Groundpiece (bridge)");
-  font->print_left(20,130, "n - Groundpiece (transparent)");
-  font->print_left(20,150, "r - Groundpiece (remove)");
-  font->print_left(20,170, "h - Hotspot");
-  font->print_left(20,190, "e - Entrance");
-  font->print_left(20,210, "x - Exit");
-  font->print_left(20,230, "l - Liquid");
-  font->print_left(20,250, "w - Weather");
-  font->print_left(20,280, "o - WorldObject");
+  font->print_left(20, 20, _("Which object do you want?"));
+  font->print_left(20, 50, _("t - Trap"));
+  font->print_left(20, 70, _("g - Groundpiece (ground)"));
+  font->print_left(20, 90, _("s - Groundpiece (solid)"));
+  font->print_left(20,110, _("b - Groundpiece (bridge)"));
+  font->print_left(20,130, _("n - Groundpiece (transparent)"));
+  font->print_left(20,150, _("r - Groundpiece (remove)"));
+  font->print_left(20,170, _("h - Hotspot"));
+  font->print_left(20,190, _("e - Entrance"));
+  font->print_left(20,210, _("x - Exit"));
+  font->print_left(20,230, _("l - Liquid"));
+  font->print_left(20,250, _("w - Weather"));
+  font->print_left(20,280, _("o - WorldObject"));
   Display::flip_display();
 
   exit_loop = false;
@@ -477,6 +478,9 @@ ObjectSelector::read_string(string description, string def_str)
 /*
 
 $Log: ObjectSelector.cc,v $
+Revision 1.45  2001/05/18 19:17:08  grumbel
+Added zooming support to the editor
+
 Revision 1.44  2001/05/15 21:34:03  grumbel
 Added enlargement of object previews to the editor
 

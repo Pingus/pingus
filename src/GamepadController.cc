@@ -1,4 +1,4 @@
-//  $Id: GamepadController.cc,v 1.9 2001/04/15 18:34:43 grumbel Exp $
+//  $Id: GamepadController.cc,v 1.10 2001/05/18 19:17:08 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,7 +34,7 @@ GamepadController::GamepadController (CL_InputDevice* arg_device, int arg_owner_
   y_axis = device->get_axis (1);
 
   if (!x_axis || !y_axis)
-    throw PingusError ("Couldn't find enough axis on joystick");
+    throw PingusError ("Couldn't find enough axes on joystick");
   
   set_range (CL_Rect(0, 0, CL_Display::get_width () - 1, CL_Display::get_height () - 1));
 

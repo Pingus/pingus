@@ -1,4 +1,4 @@
-//  $Id: PLFObj.cc,v 1.43 2001/04/27 20:44:38 grumbel Exp $
+//  $Id: PLFObj.cc,v 1.44 2001/05/18 19:17:08 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -459,16 +459,16 @@ LiquidObj::draw_offset(CL_Vector offset, float zoom)
 }
 
 void
-LiquidObj::draw_mark_offset(int x_offset, int y_offset) 
+LiquidObj::draw_mark (boost::dummy_ptr<EditorView> view) 
 {
-  Display::draw_rect(int(position->x + x_offset),
-		     int(position->y + y_offset),
-		     int(position->x + LiquidData::width + x_offset),
-		     int(position->y + surf.get_height() + y_offset),
-		     mark_color.r, 
-		     mark_color.g,
-		     mark_color.b,
-		     mark_color.a);
+  view->draw_rect(int(position->x),
+		  int(position->y),
+		  int(position->x + LiquidData::width),
+		  int(position->y + surf.get_height()),
+		  mark_color.r, 
+		  mark_color.g,
+		  mark_color.b,
+		  mark_color.a);
 }
 
 bool
