@@ -1077,7 +1077,7 @@
     <z-pos>0</z-pos>
   </position>
   <type>generic</type>
-  <direction>misc</direction>
+  <direction>right</direction>
   <release-rate>150</release-rate>
   <owner-id>0</owner-id>
 </entrance>
