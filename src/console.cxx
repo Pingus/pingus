@@ -1,4 +1,4 @@
-//  $Id: console.cxx,v 1.5 2002/06/26 16:49:33 grumbel Exp $
+//  $Id: console.cxx,v 1.6 2002/08/17 17:21:25 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,12 +25,11 @@
 #include "math.hxx"
 
 using namespace Pingus;
-using namespace std;
 
 // Globale console
 Console console;
 
-ConsoleBuffer::ConsoleBuffer () 
+ConsoleBuffer::ConsoleBuffer () : buffer(NUM_LINES) 
 {
   // Set the output buffer
   setp (char_buffer, char_buffer + CONSOLE_BUFFER_SIZE - 1);
@@ -42,37 +41,17 @@ ConsoleBuffer::ConsoleBuffer ()
 ConsoleBuffer::~ConsoleBuffer () 
 {
   sync ();
-
-  /* disabled, due to uselessness
-  int c = 1;
-  std::cout << "----------- Debugging Output ------------" << std::endl;
-  for (std::vector<std::string>::iterator i = buffer.begin ();
-       i != buffer.end (); ++i)
-    {
-      std::cout << "pingus:" << c++ << ": " << *i << std::endl;
-    }
-  */
 }
 
 int
 ConsoleBuffer::overflow (int c) 
 {
-  std::string str;
+  std::string str = fill_buffer(true);
     
-  for (char* ptr = pbase (); ptr != pptr (); ++ptr)
-    {
-      if (*ptr != '\n') 
-	str += *ptr;
-      else
-	{
-	  std::cout << str << std::endl;
-	  buffer.push_back (str);
-	  str = "";
-	}
-    }
   str += c;
-  buffer.push_back (str);    
-    
+  buffer.push_back(str);
+  buffer.pop_front();
+
   setp (char_buffer, char_buffer + CONSOLE_BUFFER_SIZE - 1);
   return 0;
 }
@@ -80,34 +59,62 @@ ConsoleBuffer::overflow (int c)
 int 
 ConsoleBuffer::sync () 
 {
-  std::string str;
+  std::string str = fill_buffer(false);
+
+  if (!str.empty())
+    {
+      buffer.push_back(str);
+      buffer.pop_front();
+    }
     
+  setp(char_buffer, char_buffer + CONSOLE_BUFFER_SIZE - 1);
+  return 0;
+}
+
+std::string
+ConsoleBuffer::fill_buffer (bool append)
+{
+  std::string str;
+  if (append)
+    {
+      str = *(--buffer.end());
+      buffer.pop_back();
+      buffer.push_front("");
+    }
+
   for (char* c = pbase (); c != pptr (); ++c)
     {
       if (*c != '\n') 
 	str += *c;
       else
 	{
-	  std::cout << str << std::endl;
-	  buffer.push_back (str);
-	  str = "";
+	  if (str.size() > MAX_LINE_LENGTH)
+	    {
+	      std::string::size_type pos = str.rfind(' ');
+	      if (pos == std::string::npos)
+	        pos = MAX_LINE_LENGTH;
+
+	      buffer.push_back(str.substr(0, pos));
+	      buffer.pop_front();
+	      
+	      str = str.substr(pos, str.size());
+	    }
+	    
+	   buffer.push_back(str);
+	   buffer.pop_front();
+	   str = "";
 	}
     }
     
-  if (!str.empty ())
-    buffer.push_back (str);
-
-  setp (char_buffer, char_buffer + CONSOLE_BUFFER_SIZE - 1);
-  return 0;
+  return str;
 }
 
-std::vector<std::string>* 
+const std::list<std::string>&
 ConsoleBuffer::get_buffer () {
-  return &buffer;
+  return buffer;
 }
 
-Console::Console()
-  : ostream (&streambuf)
+Console::Console() : std::ostream (&streambuf)
 {
   is_init = false;
   is_visible = false;
@@ -148,18 +155,24 @@ Console::draw()
 			CL_Display::get_height(),
 			0.0, 0.0, 0.0, 0.5);
 
-  std::vector<std::string>* buffer = streambuf.get_buffer ();
+  const std::list<std::string>& buffer = streambuf.get_buffer ();
 
-  int window_start = Math::max(0, (int)(buffer->size ()) - number_of_lines);
+  unsigned int window_start = Math::max(0, static_cast<int>(buffer.size() - number_of_lines - current_pos));
 
-  for (int i = 0; 
-       i < number_of_lines
-	 && i + window_start < int(buffer->size ()); 
-       ++i)
+  std::list<std::string>::const_iterator it = buffer.begin();
+  
+  // move iterator to the first line to be displayed
+  for (unsigned int i = 0; i < window_start; ++i)
+    ++it;
+  
+  for (unsigned int i = 0; 
+       i < number_of_lines && i + window_start < buffer.size(); 
+       ++it, ++i)
     {
       font->print_left(10, 
 		       start_y_pos + (i * (font->get_height() + 2)), 
-		       (*buffer)[i + window_start].c_str());
+		       it->c_str()
+		      );
     }
 }
 
@@ -179,15 +192,15 @@ Console::decrease_lines()
 void 
 Console::scroll_up()
 {
-  if (current_pos - number_of_lines > 0)
-    --current_pos;
+  if (current_pos + number_of_lines < streambuf.get_buffer().size())
+    ++current_pos;
 }
 
 void
 Console::scroll_down()
 {
-  if (current_pos - number_of_lines < (int)streambuf.get_buffer ()->size())
-    ++current_pos;
+  if (current_pos)
+    --current_pos;
 }
 
 void

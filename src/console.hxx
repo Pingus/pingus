@@ -1,4 +1,4 @@
-//  $Id: console.hxx,v 1.5 2002/06/26 16:49:33 grumbel Exp $
+//  $Id: console.hxx,v 1.6 2002/08/17 17:21:25 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,20 +20,23 @@
 #ifndef HEADER_PINGUS_CONSOLE_HXX
 #define HEADER_PINGUS_CONSOLE_HXX
 
+#include <list>
 #include <string>
-#include <vector>
 #include <iostream>
 #include "display.hxx"
 
 class CL_Font;
 
-#define CONSOLE_BUFFER_SIZE 1024
-
 class ConsoleBuffer :
   public std::streambuf
 {
 private:
-  std::vector<std::string> buffer;
+
+  enum { CONSOLE_BUFFER_SIZE = 200 };
+  enum { NUM_LINES           = 100 };
+  enum { MAX_LINE_LENGTH     = 80  };
+
+  std::list<std::string> buffer;
   char char_buffer[CONSOLE_BUFFER_SIZE];
   
 public:
@@ -41,7 +44,11 @@ public:
   virtual ~ConsoleBuffer ();
   int overflow (int c);  
   int sync ();
-  std::vector<std::string>* get_buffer ();
+  const std::list<std::string>& get_buffer ();
+  
+private:
+  /// helper function used by overflow and sync
+  std::string fill_buffer (bool append);
 };
 
 /** A "Quake" like console, but it can just handle output, you can't
@@ -52,15 +59,14 @@ class Console :
 {
 private:
   ConsoleBuffer streambuf;
-  std::vector<std::string>* buffer;
 
 public:
   CL_Font* font;
   bool is_init;
-  int  current_pos;
+  unsigned int current_pos;
 
   /** number of lines which will get displayed on the screen */
-  int number_of_lines;
+  unsigned int number_of_lines;
   void draw();
 public:
   Console ();
@@ -103,7 +109,3 @@ extern Console console;
 #endif
 
 /* EOF */
-
-
-
-

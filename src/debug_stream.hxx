@@ -1,4 +1,4 @@
-//  $Id: debug_stream.hxx,v 1.6 2002/08/16 13:03:34 torangan Exp $
+//  $Id: debug_stream.hxx,v 1.7 2002/08/17 17:21:25 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,13 +36,11 @@ private:
   {
   private:
 
-    // unnessecary complex in this case
-    // static const int buffersize;
-    enum { buffersize = 200 };
+    enum { buffersize = 1024 };
 
     std::vector<std::ostream*> out_streams;
 
-    char char_buffer[200];
+    char char_buffer[buffersize];
     std::string prefix;
   
   public:
@@ -69,7 +67,7 @@ public:
   DebugStream (const std::string& prefix);
   virtual ~DebugStream ();
 
-  std::ostream & operator () (int component);
+  std::ostream & operator() (int component);
 
   void add (std::ostream& s);
   void set_prefix (const std::string & prefix);
@@ -94,8 +92,8 @@ class NilStream : public std::ostream
          NilBuffer () { setp(char_buffer, char_buffer + 3); setg(0,0,0); }
         ~NilBuffer () { }
         
-        int overflow () { return 0; }
-        int sync     () { return 0; }
+        int overflow (int) { return 0; }
+        int sync     ()    { return 0; }
     } buffer;
 
    NilStream ();
