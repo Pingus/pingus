@@ -1,4 +1,4 @@
-//  $Id: PlayfieldView.hh,v 1.1 2001/04/13 22:17:46 grumbel Exp $
+//  $Id: PlayfieldView.hh,v 1.2 2001/04/14 11:41:21 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,11 +32,12 @@ private:
   int y_offset;
 public:
   PlayfieldView (boost::dummy_ptr<World> w,
-		 int x1, int y1, int x2, int y2);
+		 const CL_Rect& rect);
   virtual ~PlayfieldView ();
 
   void update (float delta);
   void draw ();
+  void scroll (CL_Vector delta);
 };
 
 #endif

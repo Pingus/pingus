@@ -1,4 +1,4 @@
-//  $Id: GamepadController.cc,v 1.5 2001/04/13 13:45:09 grumbel Exp $
+//  $Id: GamepadController.cc,v 1.6 2001/04/14 11:41:21 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,7 +33,7 @@ GamepadController::GamepadController (CL_InputDevice* arg_device, int arg_owner_
   if (!x_axis || !y_axis)
     throw PingusError ("Couldn't find enough axis on joystick");
   
-  set_range (0, 0, CL_Display::get_width () - 1, CL_Display::get_height () - 1);
+  set_range (CL_Rect(0, 0, CL_Display::get_width () - 1, CL_Display::get_height () - 1));
 
   left   = boost::shared_ptr<ControllerButton>(new InputDeviceButton(this, device->get_button (4)));
   middle = boost::shared_ptr<ControllerButton>(new InputDeviceButton(this, device->get_button (2)));
@@ -65,15 +65,6 @@ GamepadController::get_pos ()
 }
 
 void 
-GamepadController::set_range (int x1, int y1, int x2, int y2)
-{
-  this->x1 = x1;
-  this->y1 = y1;
-  this->x2 = x2;
-  this->y2 = y2;
-}
-
-void 
 GamepadController::keep_alive ()
 {
   float cdelta = delta.getset ();
@@ -83,15 +74,18 @@ GamepadController::keep_alive ()
   else
     pos += CL_Vector(x_axis->get_pos (), y_axis->get_pos ()) * cdelta * 200 * 1.0;
 
-  if (pos.x <= x1)
-    pos.x = x1;
-  if (pos.y <= y1)
-    pos.y = y1;
+  std::cout << "x_pos: " << pos.x << " y_pos: " <<  pos.y << std::endl;
+  std::cout << "Rect: " << rect.x1 << " " << rect.y1 << " " << rect.x2 << " " << rect.y2 << std::endl;
 
-  if (pos.x >= x2)
-    pos.x = x2;
-  if (pos.y >= y2)
-    pos.y = y2;
+  if (pos.x <= rect.x1)
+    pos.x = rect.x1;
+  if (pos.y <= rect.y1)
+    pos.y = rect.y1;
+
+  if (pos.x >= rect.x2)
+    pos.x = rect.x2;
+  if (pos.y >= rect.y2)
+    pos.y = rect.y2;
 
   Controller::keep_alive();
 }

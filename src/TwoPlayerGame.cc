@@ -1,4 +1,4 @@
-//  $Id: TwoPlayerGame.cc,v 1.1 2001/04/13 22:17:46 grumbel Exp $
+//  $Id: TwoPlayerGame.cc,v 1.2 2001/04/14 11:41:21 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,7 +22,8 @@
 #include "boost/dummy_ptr.hpp"
 #include "Server.hh"
 #include "TrueServer.hh"
-#include "TwoPlayerClient.hh"
+#include "MultiplayerClientChild.hh"
+#include "MultiplayerClient.hh"
 #include "TwoPlayerGame.hh"
 #include "XMLPLF.hh"
 #include "Controller.hh"
@@ -45,11 +46,23 @@ TwoPlayerGame::start ()
 {
   std::cout << "Starting Multiplayer Game" << std::endl;
   try {
-  shared_ptr<PLF>             plf (new XMLPLF ("../data/levels/multi1-grumbel.xml"));
-  shared_ptr<Server>          server (new TrueServer (plf));
-  shared_ptr<Controller>      controller1 (new GamepadController (CL_Input::joysticks[0]));
-  shared_ptr<Controller>      controller2 (new MouseController ());
-  shared_ptr<TwoPlayerClient> client (new TwoPlayerClient (controller1, controller2, server.get ()));
+  shared_ptr<PLF>               plf (new XMLPLF ("../data/levels/multi1-grumbel.xml"));
+  shared_ptr<Server>            server (new TrueServer (plf));
+  shared_ptr<Controller>        controller1 (new GamepadController (CL_Input::joysticks[0]));
+  shared_ptr<Controller>        controller2 (new MouseController ());
+  shared_ptr<MultiplayerClient> 
+    client (new MultiplayerClient 
+	    (server.get (),
+	     shared_ptr<MultiplayerClientChild>(new MultiplayerClientChild (controller1,
+									    server.get (),
+									    CL_Rect (0,0, 
+										     CL_Display::get_width ()/2-2,
+										     CL_Display::get_height ()))),
+	     shared_ptr<MultiplayerClientChild>(new MultiplayerClientChild (controller2,
+									    server.get (),
+									    CL_Rect (CL_Display::get_width ()/2, 0,
+										     CL_Display::get_width (), 
+										     CL_Display::get_height ())))));
 
   DeltaManager delta_manager;
   while (!server->is_finished ())

@@ -1,5 +1,5 @@
-//  $Id: GamepadController.hh,v 1.6 2001/04/14 11:41:21 grumbel Exp $
-// 
+//  $Id: MultiplayerClient.cc,v 1.1 2001/04/14 11:41:21 grumbel Exp $
+//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -12,42 +12,42 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef GAMEPADCONTROLLER_HH
-#define GAMEPADCONTROLLER_HH
+#include "MultiplayerClient.hh"
 
-#include <ClanLib/display.h>
-#include "DeltaManager.hh"
-#include "Controller.hh"
-
-/** Controller for the Microsoft Sidewinder Gamepad, might work with
-    other, but the button layout might be suboptimal. */
-class GamepadController : public Controller
+MultiplayerClient::MultiplayerClient (boost::dummy_ptr<Server> s,
+				      boost::shared_ptr<MultiplayerClientChild> child1,
+				      boost::shared_ptr<MultiplayerClientChild> child2)
+  : server (s)
 {
-private:
-  CL_InputDevice* device;
-  CL_InputAxis* x_axis;
-  CL_InputAxis* y_axis;
-  CL_Vector pos;
-  DeltaManager delta;
-  float acceleration;
+  gui_objs.push_back (child1);
+  gui_objs.push_back (child2);
+}
 
-public:
-  GamepadController (CL_InputDevice*, int arg_owner_id = 0);
-  ~GamepadController () {}
-  
-  int get_x ();
-  int get_y ();
-  
-  CL_Vector get_pos ();
-  
-  void keep_alive ();
-};
+MultiplayerClient::~MultiplayerClient ()
+{
+}
 
-#endif
+void
+MultiplayerClient::update (float delta)
+{
+  for (GuiObjIter i = gui_objs.begin (); i != gui_objs.end (); ++i) {
+    //std::cout << "updating: " << (*i).get () << std::endl;
+    (*i)->update (delta);
+  }
+}
+
+void 
+MultiplayerClient::draw ()
+{
+  for (GuiObjIter i = gui_objs.begin (); i != gui_objs.end (); ++i) {
+    //std::cout << "Drawing: " << (*i).get () << std::endl;
+    (*i)->draw ();    
+  }
+}
 
 /* EOF */

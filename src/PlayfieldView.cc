@@ -1,4 +1,4 @@
-//  $Id: PlayfieldView.cc,v 1.1 2001/04/13 22:17:46 grumbel Exp $
+//  $Id: PlayfieldView.cc,v 1.2 2001/04/14 11:41:21 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,14 +20,10 @@
 #include "PlayfieldView.hh"
 
 PlayfieldView::PlayfieldView (boost::dummy_ptr<World> w,
-			      int x1, int y1, int x2, int y2)
-  : world (w), x_offset (-320), y_offset (0)
+			      const CL_Rect& rect)
+  : world (w), x_offset (0), y_offset (0)
 {
-  this->x1 = x1;
-  this->y1 = y1;
-  this->x2 = x2;
-  this->y2 = y2;
-  set_clip_rect(x1, y1, x2, y2);
+  set_clip_rect(rect.x1, rect.y1, rect.x2, rect.y2);
 }
 
 PlayfieldView::~PlayfieldView ()
@@ -42,9 +38,18 @@ PlayfieldView::update (float delta)
 void 
 PlayfieldView::draw ()
 {
-  world->draw(x1, y1,
-	      x2 - x1, y2 - y1,
-	      x_offset, y_offset, 1.0f);
+  std::cout << "Offset: " << x_offset << " " << y_offset << std::endl;
+  world->draw(//x1, y1,
+	      //x2 - x1, y2 - y1,
+	      0, 0, CL_Display::get_width (), CL_Display::get_height (),
+	      x_offset + x1, y_offset + y1, 1.0f);
+}
+
+void 
+PlayfieldView::scroll (CL_Vector delta)
+{
+  x_offset -= delta.x;
+  y_offset -= delta.y;
 }
 
 /* EOF */

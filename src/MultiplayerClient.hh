@@ -1,4 +1,4 @@
-//  $Id: GamepadController.hh,v 1.6 2001/04/14 11:41:21 grumbel Exp $
+//  $Id: MultiplayerClient.hh,v 1.1 2001/04/14 11:41:21 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,35 +17,28 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef GAMEPADCONTROLLER_HH
-#define GAMEPADCONTROLLER_HH
+#ifndef MULTIPLAYERCLIENT_HH
+#define MULTIPLAYERCLIENT_HH
 
-#include <ClanLib/display.h>
-#include "DeltaManager.hh"
-#include "Controller.hh"
+#include <vector>
+#include "GuiObj.hh"
+#include "boost/smart_ptr.hpp"
+#include "MultiplayerClientChild.hh"
 
-/** Controller for the Microsoft Sidewinder Gamepad, might work with
-    other, but the button layout might be suboptimal. */
-class GamepadController : public Controller
+class MultiplayerClient
 {
 private:
-  CL_InputDevice* device;
-  CL_InputAxis* x_axis;
-  CL_InputAxis* y_axis;
-  CL_Vector pos;
-  DeltaManager delta;
-  float acceleration;
-
+  std::vector<boost::shared_ptr<GuiObj> > gui_objs;
+  typedef std::vector<boost::shared_ptr<GuiObj> >::iterator GuiObjIter;
+  boost::dummy_ptr<Server> server;
 public:
-  GamepadController (CL_InputDevice*, int arg_owner_id = 0);
-  ~GamepadController () {}
-  
-  int get_x ();
-  int get_y ();
-  
-  CL_Vector get_pos ();
-  
-  void keep_alive ();
+  MultiplayerClient (boost::dummy_ptr<Server> s,
+		     boost::shared_ptr<MultiplayerClientChild> child1,
+		     boost::shared_ptr<MultiplayerClientChild> child2);
+  ~MultiplayerClient ();
+
+  void update (float delta);
+  void draw ();
 };
 
 #endif

@@ -1,4 +1,4 @@
-//  $Id: Controller.cc,v 1.2 2001/04/13 11:26:54 grumbel Exp $
+//  $Id: Controller.cc,v 1.3 2001/04/14 11:41:21 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -53,6 +53,18 @@ bool
 InputDeviceButton::is_pressed ()
 {
   return button->is_pressed ();
+}
+
+Controller::Controller (int arg_owner_id)
+  : owner_id (arg_owner_id),
+    rect (0, 0, CL_Display::get_width ()-1, CL_Display::get_height ()-1)
+{
+}
+
+void 
+Controller::set_range (const CL_Rect& arg_rect)
+{
+  rect = arg_rect;
 }
 
 void 

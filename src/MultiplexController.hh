@@ -1,4 +1,4 @@
-//  $Id: GamepadController.hh,v 1.6 2001/04/14 11:41:21 grumbel Exp $
+//  $Id: MultiplexController.hh,v 1.1 2001/04/14 11:41:21 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,35 +17,15 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef GAMEPADCONTROLLER_HH
-#define GAMEPADCONTROLLER_HH
+#ifndef MULTIPLEXCONTROLLER_HH
+#define MULTIPLEXCONTROLLER_HH
 
-#include <ClanLib/display.h>
-#include "DeltaManager.hh"
-#include "Controller.hh"
-
-/** Controller for the Microsoft Sidewinder Gamepad, might work with
-    other, but the button layout might be suboptimal. */
-class GamepadController : public Controller
+class MultiplexController
 {
 private:
-  CL_InputDevice* device;
-  CL_InputAxis* x_axis;
-  CL_InputAxis* y_axis;
-  CL_Vector pos;
-  DeltaManager delta;
-  float acceleration;
-
+  
 public:
-  GamepadController (CL_InputDevice*, int arg_owner_id = 0);
-  ~GamepadController () {}
   
-  int get_x ();
-  int get_y ();
-  
-  CL_Vector get_pos ();
-  
-  void keep_alive ();
 };
 
 #endif

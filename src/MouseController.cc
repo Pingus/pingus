@@ -1,4 +1,4 @@
-//  $Id: MouseController.cc,v 1.3 2001/04/13 22:17:46 grumbel Exp $
+//  $Id: MouseController.cc,v 1.4 2001/04/14 11:41:21 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -56,8 +56,7 @@ public:
 };
 
 MouseController::MouseController (int arg_owner_id)
-  : Controller (arg_owner_id),
-    x1 (0), y1 (0), x2 (0), y2 (0)
+  : Controller (arg_owner_id)
 {
   left = boost::shared_ptr<ControllerButton> (new LeftMouseButton (this));
   middle = boost::shared_ptr<ControllerButton> (new MiddleMouseButton (this));
@@ -89,29 +88,20 @@ MouseController::get_pos ()
 }
 
 void 
-MouseController::set_range (int x1, int y1, int x2, int y2)
-{
-  this->x1 = x1;
-  this->y1 = y1;
-  this->x2 = x2;
-  this->y2 = y2;  
-}
-
-void 
 MouseController::keep_alive ()
 {
   pos.x = CL_Mouse::get_x ();
   pos.y = CL_Mouse::get_y ();
 
-  if (pos.x <= x1)
-    pos.x = x1;
-  if (pos.y <= y1)
-    pos.y = y1;
+  if (pos.x <= rect.x1)
+    pos.x = rect.x1;
+  if (pos.y <= rect.y1)
+    pos.y = rect.y1;
 
-  if (pos.x >= x2)
-    pos.x = x2;
-  if (pos.y >= y2)
-    pos.y = y2;
+  if (pos.x >= rect.x2)
+    pos.x = rect.x2;
+  if (pos.y >= rect.y2)
+    pos.y = rect.y2;
 
   Controller::keep_alive ();
 }

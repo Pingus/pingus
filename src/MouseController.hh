@@ -1,4 +1,4 @@
-//  $Id: MouseController.hh,v 1.4 2001/04/13 22:17:46 grumbel Exp $
+//  $Id: MouseController.hh,v 1.5 2001/04/14 11:41:21 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,7 +26,6 @@ class MouseController : public Controller
 {
 private:
   CL_Vector pos;
-  int x1, y1, x2, y2;
   
 public:
   MouseController (int arg_owner_id = 0);
@@ -36,10 +35,6 @@ public:
   int get_y ();
   
   CL_Vector get_pos ();
-
-  /** Limit the range to the given area, might be used in multiplayer
-      modes to limit the cursor to the players view */
-  void set_range (int x1, int y1, int x2, int y2);
 
   void keep_alive ();
 };

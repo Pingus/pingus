@@ -1,4 +1,4 @@
-//  $Id: Controller.hh,v 1.4 2001/04/13 11:26:54 grumbel Exp $
+//  $Id: Controller.hh,v 1.5 2001/04/14 11:41:21 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -61,9 +61,10 @@ class Controller : public CL_KeepAlive
 {
 protected:
   int owner_id;
+  CL_Rect rect;
   
 public:
-  Controller (int arg_owner_id) : owner_id (arg_owner_id) {}
+  Controller (int arg_owner_id);
   virtual ~Controller () {}
 
   virtual int get_x () =0;
@@ -73,7 +74,7 @@ public:
 
   /** Limit the range to the given area, might be used in multiplayer
       modes to limit the cursor to the players view */
-  virtual void set_range (int x1, int y1, int x2, int y2) =0;
+  virtual void set_range (const CL_Rect& arg_rect);
   
   /// Called once each CL_System::keep_alive () call
   virtual void keep_alive ();
