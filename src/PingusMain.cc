@@ -1,4 +1,4 @@
-//   $Id: PingusMain.cc,v 1.12 2000/10/12 22:19:18 grumbel Exp $
+//   $Id: PingusMain.cc,v 1.13 2000/10/13 12:19:46 grumbel Exp $
 //    ___
 //   |  _\ A free Lemmings clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -41,7 +41,6 @@
 #endif /* !WIN32 */
 
 // -- Gettext -- //
-#include <locale.h>
 #include <libintl.h>
 #define _(String) gettext (String)
 
@@ -303,21 +302,20 @@ PingusMain::check_args(int argc, char* argv[])
       intro_disabled = true;
       break;
     case 'V':
-      std::cout << "Pingus version " << VERSION 
+      std::cout << "Pingus Version " << VERSION 
 #ifdef HAVE_LIBSDL_MIXER
-		<< " (with sound support)"
+		<< _(" (with sound support)")
 #else
-		<< " (without sound support)"
+		<< _(" (without sound support)")
 #endif
 		<< std::endl;
       
-      std::cout <<
-	"\n"
-	"Copyright (C) 1998 Ingo Ruhnke <grumbel@pingus.cx>\n"
-	"There is NO warranty.  You may redistribute this software\n"
-	"under the terms of the GN General Public License.\n"
-	"For more information about these matters, see the files named COPYING."
-	   << std::endl;
+      std::cout << _("\n\
+Copyright (C) 1998 Ingo Ruhnke <grumbel@pingus.cx>\n\
+There is NO warranty.  You may redistribute this software\n\
+under the terms of the GN General Public License.\n\
+For more information about these matters, see the files named COPYING.\
+") << std::endl;
 
       exit(EXIT_SUCCESS);
       break;
@@ -450,9 +448,8 @@ PingusMain::check_args(int argc, char* argv[])
       break;
 
     default:
-      
-      std::cout << "Unknow char: " << c << std::endl << std::endl;
-      std::cout << "Usage: " << argv[0] << " [OPTIONS]... [LEVELFILE]" << std::endl;
+      if (verbose) std::cout << _("Unknow char: ") << c << std::endl << std::endl;
+      std::cout << _("Usage: ") << argv[0] << _(" [OPTIONS]... [LEVELFILE]") << std::endl;
       std::cout <<
 	"\n"
 	"Options:\n"
@@ -854,12 +851,6 @@ PingusMain::main(int argc, char** argv)
 
   // Register the segfault_handler
   //signal(SIGSEGV, segfault_handler);
-
-  // Init stuff needed by gettext
-  setlocale (LC_ALL, "");
-  // FIXME: Hardcoded directory! Evil! Evil! Evil!
-  bindtextdomain (PACKAGE, "../po/");
-  textdomain (PACKAGE);
 
   try 
     {

@@ -1,4 +1,4 @@
-//  $Id: System.hh,v 1.14 2000/10/09 19:17:30 grumbel Exp $
+//  $Id: System.hh,v 1.15 2000/10/13 12:19:46 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -90,9 +90,7 @@ public:
   /** Returns the EMail of the user or an empty string */
   static std::string get_email();
 
-  /** Get the currently set language, on Unix systems this is obtained
-      from the enviroment variable LANG, on Windows this is obtained
-      from the config file */
+  /** Get the currently country code, in a two letter ISO 639 syntax */
   static std::string get_language();
 
   /** Choose the correct translation out of the map, if there is none

@@ -1,4 +1,4 @@
-//  $Id: Credits.cc,v 1.10 2000/10/10 18:14:09 grumbel Exp $
+//  $Id: Credits.cc,v 1.11 2000/10/13 12:19:46 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -16,6 +16,10 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+
+// -- Gettext -- //
+#include <libintl.h>
+#define _(String) gettext (String)
 
 #include "Display.hh"
 #include "PingusSound.hh"
@@ -46,19 +50,19 @@ Credits::init ()
       // the size of the font or other special stuff. "-" means large
       // font, "_" is a small font and "n" means a newline.
 
-      credits.push_back("_If I forgot somebody in this");
-      credits.push_back("_list, just drop me a line and");
-      credits.push_back("_I'll fix this.");
-      credits.push_back("_Last Updated: 2000/06/27");
-      credits.push_back("n");
+      credits.push_back(_("_If I forgot somebody in this"));
+      credits.push_back(_("_list, just drop me a line and"));
+      credits.push_back(_("_I'll fix this."));
+      credits.push_back(_("_Last Updated: 2000/06/27"));
+      credits.push_back(_("n"));
 
-      credits.push_back("-Programming");
+      credits.push_back(_("-Programming"));
       credits.push_back("_Ingo Ruhnke");
       credits.push_back("_Michael K\"aser");
       credits.push_back("_Peter Todd");
       credits.push_back("n");
 
-      credits.push_back("-Gfx");
+      credits.push_back(_("-Gfx"));
       credits.push_back("_Stefan Stiasny");
       credits.push_back("_Alan Tennent");
       credits.push_back("_Craig Timpany");
@@ -66,13 +70,13 @@ Credits::init ()
       credits.push_back("_Michael Mestre");
       credits.push_back("n");
 
-      credits.push_back("-Music");
+      credits.push_back(_("-Music"));
       credits.push_back("_H. Matthew Smith"); 
       credits.push_back("_Joseph Toscano");
       credits.push_back("n");
 
-      credits.push_back("-Special");
-      credits.push_back("-Thanks to");
+      credits.push_back(_("-Special"));
+      credits.push_back(_("-Thanks to"));
       credits.push_back("_Jules Bean");
       credits.push_back("_David Philippi");
       credits.push_back("_Kenneth Gangstø");

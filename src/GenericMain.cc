@@ -1,4 +1,4 @@
-//  $Id: GenericMain.cc,v 1.3 2000/09/26 12:35:35 grumbel Exp $
+//  $Id: GenericMain.cc,v 1.4 2000/10/13 12:19:46 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,7 +17,16 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <config.h>
+
 #include <iostream>
+
+#include <locale.h>
+
+// -- Gettext --
+#include <libintl.h>
+#define _(String) gettext (String)
+
 #include <ClanLib/core.h>
 #include <ClanLib/jpeg.h>
 
@@ -52,11 +61,17 @@ GenericMain::get_title()
 int 
 GenericMain::main(int argc, char* argv[])
 {
+  // Init stuff needed by gettext
+  setlocale (LC_ALL, "");
+  bindtextdomain (PACKAGE, LOCALEDIR);
+  textdomain (PACKAGE);
+
   int ret_value;
+
   CL_SetupCore::init();
   CL_SetupJPEG::init();
 
-  std::cout << "Starting..." << std::endl;
+  std::cout << _("Starting...") << std::endl;
 
   if (System::basename(argv[0]) == "warpingus")
     {

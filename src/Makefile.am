@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.42 2000/10/12 22:19:18 grumbel Exp $
+#  $Id: Makefile.am,v 1.43 2000/10/13 12:19:46 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,9 +19,11 @@
 
 bindir=$(prefix)/games
 
-# The next line is for gettext
+# The next lines are for gettext
+localedir = $(datadir)/locale
+DEFS = -DLOCALEDIR=\"$(localedir)\" @DEFS@
 LIBS = @INTLLIBS@ @LIBS@
-INCLUDES = -I../intl
+INCLUDES = -I$(srcdir) -I.. -I$(top_srcdir)/lib -I../intl -I$(top_srcdir)/intl
 
 SUBDIRS = \
 	actions             \
@@ -160,7 +162,8 @@ pingus_SOURCES = \
                  WeatherData.hh   \
                  Teleporter.cc Teleporter.hh \
                  TargetProvider.hh    TargetProvider.cc \
-                 PingusMapManager.hh  PingusMapManager.cc
+                 PingusMapManager.hh  PingusMapManager.cc \
+                 Color.hh             Position.hh
 
 #                 PinguRandomMap.cc    PinguRandomMap.hh    
 

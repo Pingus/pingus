@@ -19,6 +19,6 @@ noinst_LIBRARIES = libcaimagemanipulation.a
 
 libcaimagemanipulation_a_SOURCES = \
 	caimagemanipulation.cpp \
-	caimagemanipulation.hh
+	caimagemanipulation.h
 
 # EOF #

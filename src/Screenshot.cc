@@ -1,4 +1,4 @@
-//  $Id: Screenshot.cc,v 1.5 2000/07/08 13:21:33 grumbel Exp $
+//  $Id: Screenshot.cc,v 1.6 2000/10/13 12:19:46 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,9 +20,15 @@
 #include <config.h>
 #include <cstdio>
 #include <time.h>
+
+// -- Gettext -- //
+#include <libintl.h>
+#define _(String) gettext (String)
+
 #include "globals.hh"
 #include "System.hh"
 #include "Screenshot.hh"
+
 
 // Saves a screenshot to file, it return the filename the screenshot
 // was saved to.
@@ -32,12 +38,12 @@ Screenshot::make_screenshot()
   CL_Target* target = CL_Display::get_target();
   string filename = get_filename();
   if (target) {
-    std::cout << "Screenshot: Saving screenshot to: " << filename << std::endl;
+    std::cout << _("Screenshot: Saving screenshot to: ") << filename << std::endl;
     save_target_to_file(target, filename);
-    std::cout << "Screnshot: Screenshot is done." << std::endl;
+    std::cout << _("Screnshot: Screenshot is done.") << std::endl;
     return filename;
   } else {
-    std::cout << "Screenshot: Couldn't save screenshot" << std::endl;
+    std::cout << _("Screenshot: Couldn't save screenshot") << std::endl;
     return "";
   }
 }
@@ -57,7 +63,7 @@ Screenshot::save_16bit_target_to_file(CL_Target* target, string filename)
 
   if (!out) {
     perror(filename.c_str());
-    std::cout << "Screenshot: Coudn't write file: " << filename << std::endl;
+    std::cout << _("Screenshot: Coudn't write file: ") << filename << std::endl;
     return;
   }
 
@@ -77,8 +83,8 @@ Screenshot::save_16bit_target_to_file(CL_Target* target, string filename)
   sbuffer = (unsigned char*)target->get_data();
   sbuffer_size = target->get_height() * target->get_pitch();
 
-  std::cout << "sbuffer: " << sbuffer_size << std::endl;
-  std::cout << "buffer: " << buffer_size << std::endl;
+  //std::cout << "sbuffer: " << sbuffer_size << std::endl;
+  //std::cout << "buffer: " << buffer_size << std::endl;
 
   for (unsigned int i=0,j=0; i < sbuffer_size; i+=2, j+=3)
     {
@@ -123,12 +129,12 @@ Screenshot::save_generic_target_to_file(CL_Target* target, string filename)
   std::cout << "Target: bit: " << target->get_depth() << "\n"
 	    << "        bitperpiexel: " << target->get_bytes_per_pixel()  << std::endl;
 
-  printf("ColorMask: r:%x g:%x b:%x a:%x\n",
+  /*  printf("ColorMask: r:%x g:%x b:%x a:%x\n",
 	 target->get_red_mask(),
 	 target->get_green_mask(),
 	 target->get_blue_mask(),
 	 target->get_alpha_mask());
-
+  */
   out << "P3\n" 
       << "# CREATOR: Pingus... some version\n"
       << target->get_width() << " "
