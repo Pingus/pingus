@@ -2,7 +2,6 @@
 
 section Fonts
 {
-//	font    = ../images/fonts/clanfont.pcx (type=font, x=129, y=209, tcol=0, spacelen=6, letters=ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789);
 	font	= ../images/fonts/font.pcx (type=font, x=1, y=1, tcol=0, spacelen=8, letters=abcdefghijklmnopqrstuvwxyz1234567890-?!.);
 	numbers = ../images/fonts/number_fnt.pcx (type=font, x=1, y=1, tcol=0, spacelen=0, letters=" 0123456789:");
 

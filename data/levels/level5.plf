@@ -1,7 +1,8 @@
 /* This level was created with the PLE
- * $Id: level5.plf,v 1.4 2000/04/09 17:43:55 grumbel Exp $
+ * $Id: level5.plf,v 1.5 2000/04/10 21:20:49 grumbel Exp $
  */
 global {
+  author = "Ingo Ruhnke <grumbel@gmx.de>";
   start_x_pos = 437;
   start_y_pos = 323;
   levelname = "Alone in the desert.";

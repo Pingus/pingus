@@ -3,6 +3,8 @@
 
 section Liquid
 {
+	water_cmap  = ../images/liquids/water_cmap.pcx      (type=surface, x=0, y=0, width=1,  height=64, tcol=0);
+
 	water       = ../images/liquids/water.pcx      (type=surface, x=0, y=0, width=32,  height=32, tcol=0, array=16x1);
 	water2      = ../images/liquids/water2.pcx     (type=surface, x=0, y=0, width=64,  height=64, tcol=0, array=12x1);
 	water3      = ../images/liquids/water3.pcx     (type=surface, x=0, y=0, width=64,  height=64, tcol=0, array=8x1);
@@ -271,6 +273,8 @@ section GroundPieces
 
 	section Misc
 	{
+		black     = ../images/groundpieces/misc/black.tga    (type=surface, x=0, y=0, width=256, height=228);
+
                 bridge1     = ../images/groundpieces/misc/bridge1.pcx    (type=surface, x=0, y=0, width=216, height=42, tcol=0);
 		way         = ../images/groundpieces/misc/way.pcx        (type=surface, x=0, y=0, width=117, height=35, tcol=0);
 

@@ -39,4 +39,3 @@ ground : (resource:global.dat)GroundPieces/Misc/way_right : 612 : 448;
 ground : (resource:global.dat)GroundPieces/Misc/way_right : 1174 : 125;
 ground : (resource:global.dat)GroundPieces/Misc/way_right : 1061 : 198;
 ground : (resource:global.dat)GroundPieces/Misc/way_right : 1267 : 260;
-ground : (resource:global.dat)Traps/smasher_cmap : 581 : 254;
