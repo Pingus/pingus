@@ -1,4 +1,4 @@
-//  $Id: groundpiece_data.cxx,v 1.8 2002/12/20 18:45:41 grumbel Exp $
+//  $Id: groundpiece_data.cxx,v 1.9 2002/12/20 19:39:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -142,9 +142,9 @@ GroundpieceData::deserialize(FileReader& reader)
 
   // Factory in the Reader ensures that we are in the 'groundpiece'
   // section
-  reader.read_string("type", &gptype_str);
-  //reader.read_desc  ("desc", &desc);
-  reader.read_vector("pos",  &pos);
+  reader.read_string("type", gptype_str);
+  //reader.read_desc  ("desc", desc);
+  reader.read_vector("pos",  pos);
 
   gptype = Groundtype::string_to_type (gptype_str);
 }

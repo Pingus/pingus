@@ -1,4 +1,4 @@
-//  $Id: file_reader.hxx,v 1.1 2002/12/20 18:45:41 grumbel Exp $
+//  $Id: file_reader.hxx,v 1.2 2002/12/20 19:39:13 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,11 +28,11 @@
 class FileReader
 {
 public:
-  virtual bool read_int   (const char* name, int*) =0;
-  virtual bool read_float (const char* name, float*) =0;
-  virtual bool read_bool  (const char* name, bool*) =0;
-  virtual bool read_string(const char* name, std::string*) =0;
-  virtual bool read_vector(const char* name, Vector*) =0;
+  virtual bool read_int   (const char* name, int&) =0;
+  virtual bool read_float (const char* name, float&) =0;
+  virtual bool read_bool  (const char* name, bool&) =0;
+  virtual bool read_string(const char* name, std::string&) =0;
+  virtual bool read_vector(const char* name, Vector&) =0;
 };
 
 #endif
