@@ -1,4 +1,4 @@
-//  $Id: RainParticle.hh,v 1.2 2000/08/05 18:48:09 grumbel Exp $
+//  $Id: WeatherGenerator.hh,v 1.1 2000/08/05 18:48:09 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,31 +17,30 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef RAINPARTICLE_HH
-#define RAINPARTICLE_HH
+#ifndef WEATHERGENERATOR_HH
+#define WEATHERGENERATOR_HH
 
-#include <ClanLib/core.h>
-#include "Particle.hh"
+#include "../WorldObj.hh"
 
-class RainParticle : public Particle
+class WeatherGenerator : public WorldObj
 {
 private:
-  static CL_Surface* rain_surf;
-  static CL_Surface* rain_splash;
-
-  float add;
-  bool alive;
-  bool splash;
-  int splash_counter;
-
+  
 public:
-  RainParticle();
-  RainParticle(int, int);
-  virtual ~RainParticle();
+  ///
+  WeatherGenerator() {}
+  ///
+  virtual ~WeatherGenerator() {}
+  ///
+  virtual void let_move() =0;
+  ///
+  int get_z_pos() const { return 1000; }
+  ///
+  void draw_offset(int, int, float) {}
 
-  virtual void draw_offset(int, int, float) const;
-  virtual void let_move();
-  virtual bool is_alive();
+
+  /** Generate an WeatherGenerator which fits to the given data */
+  static WeatherGenerator* create(WeatherData);
 };
 
 #endif

@@ -1,5 +1,5 @@
-//  $Id: RainParticle.hh,v 1.2 2000/08/05 18:48:09 grumbel Exp $
-// 
+//  $Id: WeatherGenerator.cc,v 1.1 2000/08/05 18:48:09 grumbel Exp $
+//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -12,38 +12,26 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef RAINPARTICLE_HH
-#define RAINPARTICLE_HH
+#include "SnowGenerator.hh"
+#include "RainGenerator.hh"
+#include "WeatherGenerator.hh"
 
-#include <ClanLib/core.h>
-#include "Particle.hh"
-
-class RainParticle : public Particle
+WeatherGenerator* 
+WeatherGenerator::create(WeatherData data)
 {
-private:
-  static CL_Surface* rain_surf;
-  static CL_Surface* rain_splash;
-
-  float add;
-  bool alive;
-  bool splash;
-  int splash_counter;
-
-public:
-  RainParticle();
-  RainParticle(int, int);
-  virtual ~RainParticle();
-
-  virtual void draw_offset(int, int, float) const;
-  virtual void let_move();
-  virtual bool is_alive();
-};
-
-#endif
+  if (data.type == "snow")
+    return new SnowGenerator();
+  else if (data.type == "rain")
+    return new RainGenerator();
+  else
+    {
+      std::cout << "WeatherGenerator: Unknown type: " << data.type << std::endl;
+    }
+}
 
 /* EOF */

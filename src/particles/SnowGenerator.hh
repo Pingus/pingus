@@ -1,4 +1,4 @@
-//  $Id: SnowGenerator.hh,v 1.2 2000/08/03 19:03:58 grumbel Exp $
+//  $Id: SnowGenerator.hh,v 1.3 2000/08/05 18:48:09 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,25 +20,19 @@
 #ifndef SNOWGENERATOR_HH
 #define SNOWGENERATOR_HH
 
-#include "../WorldObj.hh"
-#include "ParticleHolder.hh"
+#include "WeatherGenerator.hh"
 
-class SnowGenerator : public WorldObj
+class SnowGenerator : public WeatherGenerator
 {
 private:
-  int strength;
 
 public:
   ///
   SnowGenerator();
   ///
-  SnowGenerator::SnowGenerator(int s);
-  ///
   virtual ~SnowGenerator();
   ///
   virtual void let_move();
-  int get_z_pos() const { return 0; };
-  void draw_offset(int, int, float) {};
 };
 
 #endif

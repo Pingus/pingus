@@ -1,4 +1,4 @@
-//  $Id: SnowGenerator.cc,v 1.5 2000/08/04 23:01:25 grumbel Exp $
+//  $Id: SnowGenerator.cc,v 1.6 2000/08/05 18:48:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,14 +23,8 @@
 
 SnowGenerator::SnowGenerator()
 {
-  strength = 100;
 }
 
-SnowGenerator::SnowGenerator(int s)
-{
-  strength = s;
-}
- 
 SnowGenerator::~SnowGenerator()
 {
 }
@@ -38,34 +32,8 @@ SnowGenerator::~SnowGenerator()
 void 
 SnowGenerator::let_move()
 {
-  /*
-  world->get_particle_holder()->add_particle(new RainParticle(rand() % world->get_width(), -32));
-  world->get_particle_holder()->add_particle(new RainParticle(rand() % world->get_width(), -32));
-  world->get_particle_holder()->add_particle(new RainParticle(rand() % world->get_width(), -32));
-  world->get_particle_holder()->add_particle(new RainParticle(rand() % world->get_width(), -32));
-  world->get_particle_holder()->add_particle(new RainParticle(rand() % world->get_width(), -32));
-  world->get_particle_holder()->add_particle(new RainParticle(rand() % world->get_width(), -32));
-  world->get_particle_holder()->add_particle(new RainParticle(rand() % world->get_width(), -32));
-  world->get_particle_holder()->add_particle(new RainParticle(rand() % world->get_width(), -32));
-  world->get_particle_holder()->add_particle(new RainParticle(rand() % world->get_width(), -32));
-  world->get_particle_holder()->add_particle(new RainParticle(rand() % world->get_width(), -32));
-  world->get_particle_holder()->add_particle(new RainParticle(rand() % world->get_width(), -32));
-  world->get_particle_holder()->add_particle(new RainParticle(rand() % world->get_width(), -32));
-  world->get_particle_holder()->add_particle(new RainParticle(rand() % world->get_width(), -32));
-  world->get_particle_holder()->add_particle(new RainParticle(rand() % world->get_width(), -32));
-  world->get_particle_holder()->add_particle(new RainParticle(rand() % world->get_width(), -32));
-  world->get_particle_holder()->add_particle(new RainParticle(rand() % world->get_width(), -32));
-  world->get_particle_holder()->add_particle(new RainParticle(rand() % world->get_width(), -32));
-  world->get_particle_holder()->add_particle(new RainParticle(rand() % world->get_width(), -32));
-  world->get_particle_holder()->add_particle(new RainParticle(rand() % world->get_width(), -32));
-  world->get_particle_holder()->add_particle(new RainParticle(rand() % world->get_width(), -32));
-  world->get_particle_holder()->add_particle(new RainParticle(rand() % world->get_width(), -32));
-  */
   world->get_particle_holder()->add_particle(new SnowParticle(rand() % world->get_width(), -32));
   world->get_particle_holder()->add_particle(new SnowParticle(rand() % world->get_width(), -32));
-  world->get_particle_holder()->add_particle(new CollidingSnowParticle(rand() % world->get_width(), -32));
-  world->get_particle_holder()->add_particle(new CollidingSnowParticle(rand() % world->get_width(), -32));
-  world->get_particle_holder()->add_particle(new CollidingSnowParticle(rand() % world->get_width(), -32));
   world->get_particle_holder()->add_particle(new CollidingSnowParticle(rand() % world->get_width(), -32));
   world->get_particle_holder()->add_particle(new CollidingSnowParticle(rand() % world->get_width(), -32));
   world->get_particle_holder()->add_particle(new CollidingSnowParticle(rand() % world->get_width(), -32));
