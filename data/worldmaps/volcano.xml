@@ -4,6 +4,8 @@
     <music>pingus-1.it</music>
     <author>Ingo Ruhnke</author>
     <email>grumbel@gmx.de</email>
+    <width>1161</width>
+    <height>600</height>
   </properties>
   
   <!-- The graph specifies the path on which the pingu can walk -->
@@ -18,7 +20,7 @@
             <z-pos>10</z-pos>
           </position>
         </dot>
-        <levelname>hellmouth1-grumbel.xml</levelname>
+        <levelname>playable/hellmouth1-grumbel</levelname>
       </leveldot>
 
       <leveldot>
@@ -30,7 +32,7 @@
             <z-pos>10</z-pos>
           </position>
         </dot>
-        <levelname>hellmouth2-grumbel.xml</levelname>
+        <levelname>playable/hellmouth2-grumbel</levelname>
       </leveldot>
 
       <leveldot>
@@ -42,7 +44,7 @@
             <z-pos>10</z-pos>
           </position>
         </dot>
-        <levelname>hellmouth3-grumbel.xml</levelname>
+        <levelname>playable/hellmouth3-grumbel</levelname>
       </leveldot>
 
 
@@ -55,7 +57,7 @@
             <z-pos>10</z-pos>
           </position>
         </dot>
-        <levelname>hellmouth4-grumbel.xml</levelname>
+        <levelname>playable/hellmouth4-grumbel</levelname>
       </leveldot>
 
 
@@ -68,7 +70,7 @@
             <z-pos>10</z-pos>
           </position>
         </dot>
-        <levelname>hellmouth5-grumbel.xml</levelname>
+        <levelname>playable/hellmouth5-grumbel</levelname>
       </leveldot>
 
       <leveldot>
@@ -80,7 +82,7 @@
             <z-pos>10</z-pos>
           </position>
         </dot>
-        <levelname>hellmouth6-grumbel.xml</levelname>
+        <levelname>playable/hellmouth6-grumbel</levelname>
       </leveldot>
 
 
@@ -93,7 +95,7 @@
             <z-pos>10</z-pos>
           </position>
         </dot>
-        <levelname>hellmouth7-grumbel.xml</levelname>
+        <levelname>playable/hellmouth7-grumbel</levelname>
       </leveldot>
 
 
@@ -106,7 +108,7 @@
             <z-pos>10</z-pos>
           </position>
         </dot>
-        <levelname>hellmouth8-grumbel.xml</levelname>
+        <levelname>playable/hellmouth8-grumbel</levelname>
       </leveldot>
 
 
@@ -119,7 +121,7 @@
             <z-pos>10</z-pos>
           </position>
         </dot>
-        <levelname>hellmouth9-grumbel.xml</levelname>
+        <levelname>playable/hellmouth9-grumbel</levelname>
       </leveldot>
 
       <leveldot>
@@ -131,7 +133,7 @@
             <z-pos>10</z-pos>
           </position>
         </dot>
-        <levelname>hellmouth10-grumbel.xml</levelname>
+        <levelname>playable/hellmouth10-grumbel</levelname>
       </leveldot>
 
       <leveldot>
@@ -143,7 +145,7 @@
             <z-pos>10</z-pos>
           </position>
         </dot>
-        <levelname>hellmouth11-grumbel.xml</levelname>
+        <levelname>playable/hellmouth12-grumbel</levelname>
       </leveldot>
 
       <leveldot>
@@ -155,7 +157,7 @@
             <z-pos>10</z-pos>
           </position>
         </dot>
-        <levelname>hellmouth12-grumbel.xml</levelname>
+        <levelname>playable/hellmouth12-grumbel</levelname>
       </leveldot>
 
       <leveldot>
@@ -167,7 +169,7 @@
             <z-pos>10</z-pos>
           </position>
         </dot>
-        <levelname>hellmouth13-grumbel.xml</levelname>
+        <levelname>playable/hellmouth13-grumbel</levelname>
       </leveldot>
 
       <leveldot>
@@ -179,7 +181,7 @@
             <z-pos>10</z-pos>
           </position>
         </dot>
-        <levelname>hellmouth14-grumbel.xml</levelname>
+        <levelname>playable/hellmouth14-grumbel</levelname>
       </leveldot>
 
       <leveldot>
@@ -191,7 +193,7 @@
             <z-pos>10</z-pos>
           </position>
         </dot>
-        <levelname>hellmouth15-grumbel.xml</levelname>
+        <levelname>playable/hellmouth15-grumbel</levelname>
       </leveldot>
 
       <leveldot>
@@ -203,7 +205,7 @@
             <z-pos>10</z-pos>
           </position>
         </dot>
-        <levelname>hellmouth16-grumbel.xml</levelname>
+        <levelname>playable/hellmouth17-grumbel</levelname>
       </leveldot>
 
 
@@ -216,7 +218,7 @@
             <z-pos>10</z-pos>
           </position>
         </dot>
-        <levelname>hellmouth17-grumbel.xml</levelname>
+        <levelname>playable/hellmouth17-grumbel</levelname>
       </leveldot>
 
       <leveldot>
@@ -229,7 +231,7 @@
           </position>
         </dot>
 
-        <levelname>hellmouth18-grumbel.xml</levelname>
+        <levelname>playable/hellmouth18-grumbel</levelname>
       </leveldot>
 
     </nodes>
