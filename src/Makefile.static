@@ -24,11 +24,11 @@ all : pingus.static pingus.static.comp
 
 pingus.static.comp : pingus.static
 	cp pingus.static pingus.static.comp
-	strip pingus.static.comp
-	upx-nrv -q --best pingus.static.comp
+#	strip pingus.static.comp
+#	upx-nrv -q --best pingus.static.comp
 
 pingus.static: Makefile.static pingus
-	g++ -O2 -Wall -static -o pingus.static *.o $(LDADD)  $(LIBS) 
+	g++ -s -O2 -Wall -static -o pingus.static *.o $(LDADD)  $(LIBS) 
 
 clean :
 	rm -f pingus.static.comp pingus.static

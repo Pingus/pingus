@@ -1,4 +1,4 @@
-//  $Id: ThemeSelector.cc,v 1.41 2001/07/27 16:47:04 grumbel Exp $
+//  $Id: ThemeSelector.cc,v 1.42 2001/07/27 19:35:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -241,7 +241,7 @@ ThemeSelector::display()
   current_theme = themes.end()-1;
 
 #ifdef HAVE_LIBSDL_MIXER
-  PingusSound::play_mod("../data/music/pingus-1.it");
+  PingusSound::play_mod(path_manager.complete("music/pingus-1.it"));
 #endif
 
   Display::set_cursor(CL_MouseCursorProvider::load("Cursors/cursor", 
@@ -323,7 +323,7 @@ ThemeSelector::readdir(std::string path)
       
       for(System::Directory::iterator entry = dir.begin(); entry != dir.end(); entry++)
 	{
-	  if (verbose) std::cout << "Name of entry: " << pathname + entry->name << std::endl;
+	  if (verbose) std::cout << "ThemeSelelector: Name of entry: " << pathname + entry->name << std::endl;
 	  try {
 	    themes.push_back(new Theme(pathname + entry->name));
 	  } catch (PingusError err) {

@@ -1,4 +1,4 @@
- //  $Id: Theme.cc,v 1.27 2001/07/27 15:00:48 grumbel Exp $
+ //  $Id: Theme.cc,v 1.28 2001/07/27 19:35:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,7 +34,7 @@
 Theme::Theme(std::string filename)
   : filename (filename)
 {
-  std::cout << "Constructing a theme...: " << filename << std::endl;
+  std::cout << "Theme: Constructing: " << filename << std::endl;
   title = PingusResource::load_font("Fonts/pingus","fonts");
   font  = PingusResource::load_font("Fonts/pingus_small","fonts");
   is_loaded = false;
@@ -73,7 +73,7 @@ Theme::load(std::string filename)
   
   catch (CL_Error err) 
     {
-      if (verbose) std::cout << "Theme:filename:" << err.message << std::endl;
+      if (verbose) std::cout << "Theme:CL_Error:" << filename << ":" << err.message << std::endl;
     }
 
   try 

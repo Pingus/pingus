@@ -1,4 +1,4 @@
-//   $Id: PingusMain.cc,v 1.33 2001/07/27 15:00:47 grumbel Exp $
+//   $Id: PingusMain.cc,v 1.34 2001/07/27 19:35:35 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -607,6 +607,7 @@ PingusMain::get_filenames()
 	}
 	}*/
 
+  // FIXME: Do we need this any longer?
   char* pingus_datadir_env = getenv ("PINGUS_DATADIR");
   if (pingus_datadir_env)
     path_manager.add_path (pingus_datadir_env);
@@ -694,11 +695,6 @@ PingusMain::init(int argc, char* argv[])
   PingusMain::quick_check_args(argc, argv);
   PingusMain::read_rc_file();
   PingusMain::check_args(argc, argv);
-
-  if (verbose) 
-    {
-      std::cout << PACKAGE << " version " << VERSION << std::endl;
-    }
 
   // Translate the geometry std::string to some int's
   if (!resolution.empty())

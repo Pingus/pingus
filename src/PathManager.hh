@@ -1,4 +1,4 @@
-//  $Id: PathManager.hh,v 1.1 2001/06/16 15:01:53 grumbel Exp $
+//  $Id: PathManager.hh,v 1.2 2001/07/27 19:35:35 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -48,6 +48,10 @@ public:
 
   /** Add a path to the search list */
   void add_path (std::string path);
+
+  /** Set the executable name (argv[0]), its use as a hint to find the
+      correct path */
+  void set_executable (std::string executable);
 
   std::string get_base_path () { return base_path; }
 

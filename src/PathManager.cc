@@ -1,4 +1,4 @@
-//  $Id: PathManager.cc,v 1.1 2001/06/16 15:01:53 grumbel Exp $
+//  $Id: PathManager.cc,v 1.2 2001/07/27 19:35:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "globals.hh"
 #include "System.hh"
 #include "PathManager.hh"
 
@@ -40,8 +41,14 @@ PathManager::add_path (std::string path)
 std::string 
 PathManager::complete (std::string relative_path)
 {
-  //return base_path + relative_path;
+  /*std::string comp_path = base_path + "/" + relative_path;
+  if (pingus_debug_flags & PINGUS_DEBUG_LOADING)
+    std::cout << "PathManager: " << relative_path << " -> " << comp_path << std::endl;
+  
+  return comp_path;
+
   // FIXME: correct handling is disabled cause we use the change_dir () hack in PingusMain.cc
+  */
   return relative_path;
 }
 
@@ -60,9 +67,17 @@ PathManager::find_path (std::list<std::string> file_list)
 	{
 	  path_found = true;
 	  base_path = *i;
+
+	  if (pingus_debug_flags & PINGUS_DEBUG_LOADING)
+	    std::cout << "PathManager: Using base_path: " << base_path << std::endl;
+
 	  return true;
 	}
     }
+
+  if (pingus_debug_flags & PINGUS_DEBUG_LOADING)
+    std::cout << "PathManager: No base path found" << std::endl;
+
   return false;
 }
 
@@ -76,9 +91,17 @@ PathManager::find_path (std::string file)
 	{
 	  path_found = true;
 	  base_path = *i;
+
+	  if (pingus_debug_flags & PINGUS_DEBUG_LOADING)
+	    std::cout << "PathManager: Using base_path: " << base_path << std::endl;
+
 	  return true;
 	}
     }
+
+  if (pingus_debug_flags & PINGUS_DEBUG_LOADING)
+    std::cout << "PathManager: No base path found" << std::endl;
+
   return false;
 }
 
@@ -87,16 +110,5 @@ PathManager::set_path (std::string path)
 {
   base_path = path;
 }
-
-/** The value of pingus_datadir is the main directory from where all
-    core data is loaded. The pathname of this directory *must* be
-    ending with a trailing slash. On startup the game will chdir()
-    into this directory.
-
-    Example Value: ../data/
-    
-   -d, --datadir 
-extern std::string pingus_datadir; 
-*/
 
 /* EOF */

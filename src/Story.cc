@@ -1,4 +1,4 @@
-//  $Id: Story.cc,v 1.11 2001/07/24 21:39:45 grumbel Exp $
+//  $Id: Story.cc,v 1.12 2001/07/27 19:35:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -45,6 +45,7 @@ Story::init()
   small_font = PingusResource::load_font("Fonts/pingus_small", "fonts");
   large_font = PingusResource::load_font("Fonts/pingus", "fonts");
   background = PingusResource::load_surface("Textures/stones", "textures");  
+  story = PingusResource::load_surface("Story/story1", "story");
 
   is_init = true;
 }
@@ -57,8 +58,6 @@ Story::update (float delta)
 void 
 Story::draw()
 {
-  CL_Surface story = PingusResource::load_surface("Story/story1", "story");
-
   CL_Display::fill_rect (0,0,
 			 CL_Display::get_width (),
 			 CL_Display::get_height (),

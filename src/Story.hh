@@ -1,4 +1,4 @@
-//  $Id: Story.hh,v 1.3 2001/06/14 14:45:23 grumbel Exp $
+//  $Id: Story.hh,v 1.4 2001/07/27 19:35:36 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,6 +32,7 @@ private:
   bool   is_init;
   ///
   CL_Surface background;
+  CL_Surface story;
   ///
   CL_Font*  large_font;
   ///
