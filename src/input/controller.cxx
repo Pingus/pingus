@@ -1,4 +1,4 @@
-//  $Id: controller.cxx,v 1.3 2002/07/10 16:15:59 torangan Exp $
+//  $Id: controller.cxx,v 1.4 2002/07/10 17:28:13 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,8 +19,8 @@
 
 #include "../xml_helper.hxx"
 #include "../pingus_error.hxx"
-#include "action_axis_event.hxx"
 #include "axis.hxx"
+#include "axis_event.hxx"
 #include "axis_factory.hxx"
 #include "button.hxx"
 #include "button_event.hxx"
@@ -29,8 +29,8 @@
 #include "dummy_axis.hxx"
 #include "dummy_button.hxx"
 #include "dummy_pointer.hxx"
-#include "move_event.hxx"
 #include "pointer.hxx"
+#include "pointer_event.hxx"
 #include "pointer_factory.hxx"
 
 namespace Input
@@ -39,7 +39,13 @@ namespace Input
                                                            armageddon_button(0), escape_button(0),
 							   fast_forward_button(0), pause_button(0),
                                                            primary_button(0), secondary_button(0),
-							   scroll_modifier(0), action_axis(0)
+							   scroll_modifier(0), action_axis(0),
+							   std_pointer_x(0), std_pointer_y(0),
+							   scr_pointer_x(0), scr_pointer_y(0),
+							   armageddon_pressed(false), escape_pressed(false),
+							   fast_forward_pressed(false), pause_pressed(false),
+							   primary_pressed(false), secondary_pressed(false),
+							   scroll_modifier_pressed(false)
   {
     xmlDocPtr doc = xmlParseFile(configfile.c_str());
     
@@ -108,37 +114,61 @@ namespace Input
 
     if (!standard_pointer)
       standard_pointer = new DummyPointer;
+    else
+      {
+        std_pointer_x = standard_pointer->get_x_pos();
+	std_pointer_y = standard_pointer->get_y_pos();
+      }
 
     if (!scroll_pointer)
       scroll_pointer = new DummyPointer;
+    else
+      {
+        scr_pointer_x = scroll_pointer->get_x_pos();
+	scr_pointer_y = scroll_pointer->get_y_pos();
+      }
       
     if (!armageddon_button)
       armageddon_button = new DummyButton;
+    else
+      armageddon_pressed = armageddon_button->is_pressed();
       
     if (!escape_button)
       escape_button = new DummyButton;
+    else
+      escape_pressed = escape_button->is_pressed();
       
     if (!fast_forward_button)
       fast_forward_button = new DummyButton;
+    else
+      fast_forward_pressed = fast_forward_button->is_pressed();
       
     if (!pause_button)
       pause_button = new DummyButton;
+    else
+      pause_pressed = pause_button -> is_pressed();
       
     if (!primary_button)
       primary_button = new DummyButton;
+    else
+      primary_pressed = primary_button->is_pressed();
       
     if (!secondary_button)
       secondary_button = new DummyButton;
+    else
+      secondary_pressed = secondary_button->is_pressed();
       
     if (!scroll_modifier)
       scroll_modifier = new DummyButton;
+    else
+      scroll_modifier_pressed = scroll_modifier->is_pressed();
       
     if (!action_axis)
       action_axis = new DummyAxis;
   }
 
   void
-  Controller::create_action_buttons(xmlNodePtr cur)
+  Controller::create_action_buttons (xmlNodePtr cur)
   {
     cur = cur->children;
     
@@ -158,6 +188,43 @@ namespace Input
 	  
 	cur = cur->next;
       }
+  }
+
+  void
+  Controller::update (float delta)
+  {
+    standard_pointer   ->update(delta);
+    scroll_pointer     ->update(delta);
+    armageddon_button  ->update(delta);
+    escape_button      ->update(delta);
+    fast_forward_button->update(delta);
+    pause_button       ->update(delta);
+    primary_button     ->update(delta);
+    secondary_button   ->update(delta);
+    scroll_modifier    ->update(delta);
+    
+    if (std_pointer_x != standard_pointer->get_x_pos() || std_pointer_y != standard_pointer->get_y_pos())
+      {
+        if ( ! scroll_modifier_pressed)
+          {
+	    std_pointer_x = standard_pointer->get_x_pos();
+	    std_pointer_y = standard_pointer->get_y_pos();
+	    
+            events.push_back(new PointerEvent(standard, std_pointer_x, std_pointer_y));
+	  }
+	else
+	  {
+	    scr_pointer_x = standard_pointer->get_x_pos();
+	    scr_pointer_y = standard_pointer->get_y_pos();
+	    
+	    scroll_pointer->set_pos(scr_pointer_x, scr_pointer_y);
+	    standard_pointer->set_pos(std_pointer_x, std_pointer_y);
+	    
+	    events.push_back(new PointerEvent(scroll, scr_pointer_x, scr_pointer_y));
+	  }
+      }
+      
+    
   }
 
 }

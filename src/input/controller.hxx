@@ -1,4 +1,4 @@
-//  $Id: controller.hxx,v 1.3 2002/07/10 16:15:59 torangan Exp $
+//  $Id: controller.hxx,v 1.4 2002/07/10 17:28:13 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -52,10 +52,16 @@ namespace Input
       
       std::list<Event*> events;
 
+      float std_pointer_x, std_pointer_y, scr_pointer_x, scr_pointer_y;
+      bool  armageddon_pressed, escape_pressed, fast_forward_pressed, pause_pressed,
+            primary_pressed, secondary_pressed, scroll_modifier_pressed;
+
     public:
       explicit Controller (const std::string& configfile);
       
       std::list<Event*>& get_events ();
+      
+      void update(float delta);
 
     private:
       void create_action_buttons(xmlNodePtr cur);
