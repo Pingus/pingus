@@ -18,13 +18,14 @@
 noinst_LIBRARIES = libpingus_worldobjsdata.a
 
 libpingus_worldobjsdata_a_SOURCES = \
-	bumper_data.cxx     bumper_data.hxx \
-	fake_exit_data.cxx  fake_exit_data.hxx \
-	guillotine_data.cxx guillotine_data.hxx \
-	hammer_data.cxx     hammer_data.hxx \
-	laser_exit_data.cxx laser_exit_data.hxx \
-	smasher_data.cxx    smasher_data.hxx \
-	spike_data.cxx      spike_data.hxx  \
-	teleporter_data.cxx teleporter_data.hxx
+	bumper_data.cxx      bumper_data.hxx \
+	fake_exit_data.cxx   fake_exit_data.hxx \
+	guillotine_data.cxx  guillotine_data.hxx \
+	hammer_data.cxx      hammer_data.hxx \
+	laser_exit_data.cxx  laser_exit_data.hxx \
+	smasher_data.cxx     smasher_data.hxx \
+	spike_data.cxx       spike_data.hxx  \
+	switch_door_data.cxx switch_door_data.hxx \
+	teleporter_data.cxx  teleporter_data.hxx
 
 # EOF #

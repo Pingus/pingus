@@ -1,4 +1,4 @@
-//  $Id: worldobj_data_factory.cxx,v 1.7 2002/09/10 21:03:32 torangan Exp $
+//  $Id: worldobj_data_factory.cxx,v 1.8 2002/09/11 15:27:19 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,7 +28,6 @@
 #include "backgrounds/thunderstorm_background_data.hxx"
 
 // Special Objects
-#include "worldobjs/switch_door.hxx"
 #include "worldobjs/ice_block.hxx"
 #include "worldobjs/info_box.hxx"
 #include "worldobjs/conveyor_belt.hxx"
@@ -44,6 +43,7 @@
 #include "worldobjsdata/laser_exit_data.hxx"
 #include "worldobjsdata/smasher_data.hxx"
 #include "worldobjsdata/spike_data.hxx"
+#include "worldobjsdata/switch_door_data.hxx"
 #include "worldobjsdata/teleporter_data.hxx"
 
 using namespace WorldObjsData;

@@ -1,4 +1,4 @@
-//  $Id: object_selector.cxx,v 1.13 2002/09/11 12:45:58 grumbel Exp $
+//  $Id: object_selector.cxx,v 1.14 2002/09/11 15:27:19 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,18 +46,18 @@
 #include "../backgrounds/thunderstorm_background.hxx"
 
 #include "../editorobjs/bumper_obj.hxx"
-#include "../editorobjs/guillotine_obj.hxx"
-#include "../editorobjs/laser_exit_obj.hxx"
-#include "../editorobjs/spike_obj.hxx"
 #include "../editorobjs/fake_exit_obj.hxx"
+#include "../editorobjs/guillotine_obj.hxx"
 #include "../editorobjs/hammer_obj.hxx"
+#include "../editorobjs/laser_exit_obj.hxx"
 #include "../editorobjs/smasher_obj.hxx"
+#include "../editorobjs/spike_obj.hxx"
+#include "../editorobjs/switch_door_obj.hxx"
 #include "../editorobjs/teleporter_obj.hxx"
 
 #include "../worldobjs/ice_block.hxx"
 #include "../worldobjs/info_box.hxx"
 #include "../worldobjs/conveyor_belt.hxx"
-#include "../worldobjs/switch_door.hxx"
 
 using namespace std;
 using namespace EditorObjs;
@@ -192,7 +192,7 @@ ObjectSelector::get_worldobj()
 	  return TeleporterObj::create (pos);
 	  
 	case CL_KEY_2:
-	  return EditorSwitchDoorObj::create (pos);
+	  return SwitchDoorObj::create (pos);
 
 	case CL_KEY_3:
 	  return EditorConveyorBeltObj::create (pos);
