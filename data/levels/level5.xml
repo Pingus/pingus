@@ -3,10 +3,10 @@
 <pingus-level>
   <global>
     <levelname lang="en">Alone in the desert.</levelname>
-    <description lang="en">Just a demo of the nice dessert column.</description>
+    <description lang="en">Just a demo of the nice dessert column. Also good bridger learning level. -Phlog</description>
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
     <number-of-pingus>100</number-of-pingus>
-    <number-to-save>0</number-to-save>
+    <number-to-save>90</number-to-save>
     <time>9000</time>
     <width>1824</width>
     <height>928</height>

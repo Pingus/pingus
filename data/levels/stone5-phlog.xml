@@ -187,18 +187,6 @@
 <groundpiece type="ground">
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>misc/stone4</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>162</x-pos>
-    <y-pos>742</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
   <resource-ident>misc/tree</resource-ident>
   </resource></surface>
   <position>
@@ -227,18 +215,6 @@
   </resource></surface>
   <position>
     <x-pos>363</x-pos>
-    <y-pos>842</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>misc/column_flat</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>180</x-pos>
     <y-pos>842</y-pos>
     <z-pos>0</z-pos>
   </position>
@@ -279,64 +255,6 @@
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>misc/column_flat</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>-3</x-pos>
-    <y-pos>842</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<hotspot>
-  <surface><resource type="datafile">
-    <resource-datafile>entrances</resource-datafile>
-  <resource-ident>entrances/industrial</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>251</x-pos>
-    <y-pos>57</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-  <speed>-1</speed>
-  <parallax>1</parallax>
-</hotspot>
-
-<exit use-old-pos-handling="0">
-  <position>
-    <x-pos>737</x-pos>
-    <y-pos>853</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-  <surface><resource type="datafile">
-    <resource-datafile>exits</resource-datafile>
-  <resource-ident>exits/stone</resource-ident>
-  </resource></surface>
-  <owner-id>0</owner-id></exit>
-
-<entrance>
-  <position>
-    <x-pos>302</x-pos>
-    <y-pos>172</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-  <type>generic</type>
-  <direction>misc</direction>
-  <release-rate>50</release-rate>
-  <owner-id>0</owner-id>
-</entrance>
-
-  <start-position>
-  <position>
-    <x-pos>156</x-pos>
-    <y-pos>73</y-pos>
-    <z-pos>1000</z-pos>
-  </position>
-  </start-position>
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
@@ -397,6 +315,160 @@
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>misc/grey_stone6</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>-50</x-pos>
+    <y-pos>793</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>misc/grey_stone6</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>123</x-pos>
+    <y-pos>790</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>misc/grey_stone1</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>32</x-pos>
+    <y-pos>772</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>misc/stone4</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>81</x-pos>
+    <y-pos>675</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>misc/column_flat</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>-5</x-pos>
+    <y-pos>841</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>misc/column_flat</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>179</x-pos>
+    <y-pos>842</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>misc/column_flat</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>233.347</x-pos>
+    <y-pos>914.735</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>misc/column_flat</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>-135.877</x-pos>
+    <y-pos>915.408</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>misc/column_flat</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>49.4898</x-pos>
+    <y-pos>915.061</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>entrances</resource-datafile>
+  <resource-ident>entrances/industrial</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>251</x-pos>
+    <y-pos>57</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1</parallax>
+</hotspot>
+
+<exit use-old-pos-handling="0">
+  <position>
+    <x-pos>715</x-pos>
+    <y-pos>855</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+  <surface><resource type="datafile">
+    <resource-datafile>exits</resource-datafile>
+  <resource-ident>exits/stone</resource-ident>
+  </resource></surface>
+  <owner-id>0</owner-id></exit>
+
+<entrance>
+  <position>
+    <x-pos>302</x-pos>
+    <y-pos>172</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+  <type>generic</type>
+  <direction>misc</direction>
+  <release-rate>50</release-rate>
+  <owner-id>0</owner-id>
+</entrance>
+
+  <start-position>
+  <position>
+    <x-pos>156</x-pos>
+    <y-pos>73</y-pos>
+    <z-pos>1000</z-pos>
+  </position>
+  </start-position>
 
 </pingus-level>
 

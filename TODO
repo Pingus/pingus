@@ -75,7 +75,7 @@ Current Bugs:
 'grep' at the sources for "Bug" or "FIXME" that should give you some
 more known bugs and other stuff. 
 
-$Date: 2002/04/21 18:56:37 $
+$Date: 2002/04/27 12:19:38 $
 
 =======
 
@@ -223,7 +223,7 @@ Random crash while scrolling
 'grep' at the sources for "Bug" or "FIXME" that should give you some
 more known bugs and other stuff. 
 
-$Date: 2002/04/21 18:56:37 $
+$Date: 2002/04/27 12:19:38 $
 
 =======
 
@@ -282,6 +282,8 @@ Todo and Bugs from ROADMAP:
   - missing music should just get printed to the console
 
   - missing images => 404 and console error
+
+- console is bound to the wrong keys and keys for it are not documented
 
 - menu background should be repainted/fixed
 
