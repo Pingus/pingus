@@ -215,10 +215,8 @@ section GroundPieces
 		jellybaby2 = images/groundpieces/sweets/jellybaby2.tga (type=surface, x=0, y=0, width=85, height=63);
 		jube1 = images/groundpieces/sweets/jube1.pcx (type=surface, x=0, y=0, width=49, height=42, tcol=0);
 		jube2 = images/groundpieces/sweets/jube2.tga (type=surface, x=0, y=0, width=45, height=48);
-		lollipop = images/groundpieces/sweets/lollipop.tga (type=surface, x=0, y=0, width=42, height=238);
-		lollipop = images/groundpieces/sweets/lollipop.tga (type=surface, x=0, y=0, width=42, height=238);
-		lollipop-purp = images/groundpieces/sweets/lollipop-purp.tga (type=surface, x=0, y=0, width=42, height=238);
-		lollipop-purp = images/groundpieces/sweets/lollipop-purp.tga (type=surface, x=0, y=0, width=42, height=238);
+		lollipop = images/groundpieces/sweets/lollipop.png (type=surface, x=0, y=0, width=42, height=238);
+		lollipop-purp = images/groundpieces/sweets/lollipop-purp.png (type=surface, x=0, y=0, width=42, height=238);
 		mmblue = images/groundpieces/sweets/mmblue.pcx (type=surface, x=0, y=0, width=50, height=41, tcol=0);
 		mmbrown = images/groundpieces/sweets/mmbrown.pcx (type=surface, x=0, y=0, width=50, height=41, tcol=0);
 		mmred = images/groundpieces/sweets/mmred.pcx (type=surface, x=0, y=0, width=54, height=31, tcol=0);
