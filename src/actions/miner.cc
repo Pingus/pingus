@@ -1,4 +1,4 @@
-// $Id: miner.cc,v 1.21 2001/05/20 13:00:59 grumbel Exp $
+// $Id: miner.cc,v 1.22 2001/07/24 21:39:45 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,6 +43,12 @@ void
 Miner::update(float delta)
 {
   sprite.update (delta);
+  
+  // FIXME: Direction handling is ugly
+  if (pingu->direction.is_left ())
+    sprite.set_direction (Sprite::LEFT);
+  else
+    sprite.set_direction (Sprite::RIGHT);
 
   ++slow_count;
   if (slow_count % 4  == 0) 

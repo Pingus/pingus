@@ -1,4 +1,4 @@
-//  $Id: EditorGroundpieceObj.cc,v 1.1 2001/04/21 14:41:31 grumbel Exp $
+//  $Id: EditorGroundpieceObj.cc,v 1.2 2001/07/24 21:39:46 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -58,9 +58,9 @@ EditorGroundpieceObj::duplicate()
 }
 
 void   
-EditorGroundpieceObj::draw_offset(CL_Vector offset, float zoom)
+EditorGroundpieceObj::draw (boost::dummy_ptr<EditorView> view)
 {
-  EditorObj::draw_offset (offset, zoom);
+  EditorObj::draw (view);
   /*CL_Display::fill_rect (offset.x, offset.y,
 			 offset.x + get_width (), offset.y + get_height (),
 			 0.0, 0.0, 0.0, 0.5);*/

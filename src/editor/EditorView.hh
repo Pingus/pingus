@@ -1,4 +1,4 @@
-//  $Id: EditorView.hh,v 1.2 2001/05/19 20:58:42 grumbel Exp $
+//  $Id: EditorView.hh,v 1.3 2001/07/24 21:39:46 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -63,11 +63,14 @@ public:
   CL_Vector world_to_screen (CL_Vector pos);
 
   void draw (CL_Surface& sur, const CL_Vector& pos);
+  void draw (CL_Surface& sur, const CL_Vector& pos, int frame);
   void draw (CL_Surface& sur, int x_pos, int y_pos);
   void draw (CL_Surface& sur, int x_pos, int y_pos, int frame);
   void draw (CL_Surface& sur, int x_pos, int y_pos, 
 	     float size_x, float size_y, int frame);
 
+  void draw_line (const CL_Vector& pos1, const CL_Vector& pos2,
+		  float r, float g, float b, float a = 1.0f);
   void draw_line (int x1, int y1, int x2, int y2, 
 		  float r, float g, float b, float a = 1.0f);
   void draw_fillrect (int x1, int y1, int x2, int y2, 

@@ -1,4 +1,4 @@
-//  $Id: ConveyorBelt.cc,v 1.17 2001/05/18 19:17:10 grumbel Exp $
+//  $Id: ConveyorBelt.cc,v 1.18 2001/07/24 21:39:46 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -169,15 +169,15 @@ EditorConveyorBeltObj::duplicate()
 }
 
 void
-EditorConveyorBeltObj::draw_offset(CL_Vector offset, float zoom)
+EditorConveyorBeltObj::draw (boost::dummy_ptr<EditorView> view)
 {
-  left_sur.put_screen (int(pos.x + offset.x), int(pos.y + offset.y), counter);
+  view->draw (left_sur, pos, counter);
   for (int i=0; i < ConveyorBeltData::width; i++)
-    middle_sur.put_screen (pos.x + left_sur.get_width () + i*middle_sur.get_width () + offset.x,
-			   pos.y + offset.y,
-			   counter);
-  right_sur.put_screen (pos.x + left_sur.get_width () + ConveyorBeltData::width*middle_sur.get_width () + offset.x,
-			pos.y + offset.y, counter);
+    view->draw (middle_sur, pos.x + left_sur.get_width () + i*middle_sur.get_width (),
+		pos.y,
+		counter);
+  view->draw (right_sur, pos.x + left_sur.get_width () + ConveyorBeltData::width*middle_sur.get_width (),
+			pos.y, counter);
   counter += speed;
   if (counter > 14)
     counter = 0;

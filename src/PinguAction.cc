@@ -1,4 +1,4 @@
-//  $Id: PinguAction.cc,v 1.14 2001/06/17 17:18:27 grumbel Exp $
+//  $Id: PinguAction.cc,v 1.15 2001/07/24 21:39:45 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -83,6 +83,7 @@ PinguAction::rel_getpixel(int x, int y)
 void
 PinguAction::draw_offset(int x, int y, float s)
 {
+  std::cout << action_name << ": Bug: draw_offset no longer supported" << std::endl;
   // FIXME: This can be removed
   if (pingu->get_status() == dead || pingu->get_status() == exited)
     {

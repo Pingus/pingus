@@ -1,4 +1,4 @@
-//  $Id: PLFObj.cc,v 1.44 2001/05/18 19:17:08 grumbel Exp $
+//  $Id: PLFObj.cc,v 1.45 2001/07/24 21:39:46 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -346,14 +346,12 @@ TrapObj::duplicate()
 }
 
 void
-TrapObj::draw_offset(CL_Vector offset, float zoom)
+TrapObj::draw (boost::dummy_ptr<EditorView> view)
 {
   if (surf) {
-    surf.put_screen(int(position->x + offset.x + x_of),
-		    int(position->y + offset.y + y_of),
-		    frame);
+    view->draw(surf, *position, frame);
   } else {
-    EditorObj::draw_offset(offset, zoom);
+    EditorObj::draw(view);
   }
 }
 
@@ -417,13 +415,13 @@ LiquidObj::duplicate()
 }
 
 void
-LiquidObj::draw_offset(CL_Vector offset, float zoom)
+LiquidObj::draw (boost::dummy_ptr<EditorView> view)
 {
-
-  int x1 = int(position->x + offset.x);
-  int x2 = int(position->x + LiquidData::width + offset.x);
-  int y1 = int(position->y + offset.y);
-  int y2 = int(position->y + offset.y + surf.get_height());
+  std::cout << "Liquid Drawing unfinished and buggy" << std::endl;
+  int x1 = int(position->x);
+  int x2 = int(position->x + LiquidData::width);
+  int y1 = int(position->y);
+  int y2 = int(position->y + surf.get_height());
 
   if (x1 < 0) {
     x1 = 0;
@@ -453,7 +451,7 @@ LiquidObj::draw_offset(CL_Vector offset, float zoom)
   CL_Display::set_clip_rect(CL_ClipRect(x1, y1, x2, y2));
 
   for(float x = position->x; x <= position->x + LiquidData::width; x += surf.get_width())
-    surf.put_screen(int(x + offset.x), int(position->y + offset.y));
+    surf.put_screen(int(x), int(position->y));
 
   CL_Display::pop_clip_rect();
 }

@@ -1,4 +1,4 @@
-//  $Id: floater.hh,v 1.6 2001/04/20 20:53:55 grumbel Exp $
+//  $Id: floater.hh,v 1.7 2001/07/24 21:39:45 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,6 +41,8 @@ public:
   void   init(void);
   ///
   void   update(float delta);
+
+  void draw_offset (int x, int y, float s);
 };
 
 REGISTER_PINGUACTION(FloaterFactory, Floater, "floater");

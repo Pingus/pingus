@@ -1,4 +1,4 @@
-//  $Id: EditorObj.hh,v 1.29 2001/05/18 19:17:08 grumbel Exp $
+//  $Id: EditorObj.hh,v 1.30 2001/07/24 21:39:46 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -145,9 +145,7 @@ public:
   virtual void gui_edit_obj();
 
   /** Draw the object */
-  virtual void   draw_offset (CL_Vector offset, float zoom);
-
-  virtual void   draw (boost::dummy_ptr<EditorView> view);
+  virtual void draw (boost::dummy_ptr<EditorView> view);
 
   virtual void draw_scroll_map(int x_pos, int y_pos, int arg_width, int arg_height);
 

@@ -1,4 +1,4 @@
-//  $Id: Story.cc,v 1.10 2001/07/23 21:49:14 grumbel Exp $
+//  $Id: Story.cc,v 1.11 2001/07/24 21:39:45 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -72,12 +72,12 @@ Story::draw()
 			CL_Display::get_height() - 25,
 			0.0, 0.0, 0.0, 0.5);
 
-  small_font->print_left(125, 80 + story.get_height() + 25 + (1 * small_font->get_height()), "aoeuoaeu");
-  small_font->print_left(125, 80 + story.get_height() + 25 + (2 * small_font->get_height()), "Bloeuoeua");
-  small_font->print_left(125, 80 + story.get_height() + 25 + (3 * small_font->get_height()), "Bloeuoea");
-  small_font->print_left(125, 80 + story.get_height() + 25 + (4 * small_font->get_height()), "Blaoeuoea");
-  small_font->print_left(125, 80 + story.get_height() + 25 + (5 * small_font->get_height()), "oeuBla");
-  small_font->print_left(125, 80 + story.get_height() + 25 + (6 * small_font->get_height()), "Beouoeula");
+  small_font->print_left(125, 80 + story.get_height() + 25 + (1 * small_font->get_height()), "Insert extremly interesting story here...");
+  small_font->print_left(125, 80 + story.get_height() + 25 + (2 * small_font->get_height()), "...");
+  small_font->print_left(125, 80 + story.get_height() + 25 + (3 * small_font->get_height()), "...");
+  small_font->print_left(125, 80 + story.get_height() + 25 + (4 * small_font->get_height()), "...");
+  small_font->print_left(125, 80 + story.get_height() + 25 + (5 * small_font->get_height()), "...");
+  small_font->print_left(125, 80 + story.get_height() + 25 + (6 * small_font->get_height()), "...");
 }
 
 void

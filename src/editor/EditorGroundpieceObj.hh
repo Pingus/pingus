@@ -1,4 +1,4 @@
-// $Id: EditorGroundpieceObj.hh,v 1.1 2001/04/21 14:41:31 grumbel Exp $
+// $Id: EditorGroundpieceObj.hh,v 1.2 2001/07/24 21:39:46 grumbel Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,7 +37,7 @@ public:
   ///
   virtual ~EditorGroundpieceObj();
   ///
-  virtual void   draw_offset(CL_Vector offset, float zoom);
+  virtual void draw (boost::dummy_ptr<EditorView> view);
   ///
   virtual void save(std::ofstream* plf, std::ofstream* psm);
   ///

@@ -1,4 +1,4 @@
-//  $Id: Teleporter.cc,v 1.19 2001/05/18 19:17:10 grumbel Exp $
+//  $Id: Teleporter.cc,v 1.20 2001/07/24 21:39:46 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -99,10 +99,10 @@ Teleporter::Teleporter (boost::shared_ptr<WorldObjData> data)
 }
 
 void 
-Teleporter::draw_offset (int x_of, int y_of, float s = 1.0)
+Teleporter::draw (boost::dummy_ptr<EditorView> view)
 {
   //std::cout << "Teleporter::draw_offset ()" << std::endl;
-  sur.put_screen (int(pos.x + x_of), int(pos.y + y_of));
+  view->draw (sur, pos);
 }
 
 void 
@@ -210,15 +210,15 @@ EditorTeleporterTargetObj::EditorTeleporterTargetObj (WorldObjData* obj, CL_Vect
 }
 
 void
-EditorTeleporterObj::draw_offset (CL_Vector offset, float zoom)
+EditorTeleporterObj::draw (boost::dummy_ptr<EditorView> view)
 {
-  CL_Display::draw_line (int(pos.x + x_of + width/2 + offset.x), 
-			 int(pos.y + y_of + height/2 + offset.y),
-			 int(target_pos.x + x_of + 32 + offset.x), 
-			 int(target_pos.y + y_of + 32 + offset.y),
-			 0.0, 1.0, 0.0, 0.5);
-  EditorObj::draw_offset (CL_Vector(-x_of + offset.x, 
-				    -y_of + offset.y), zoom);
+  //std::cout << "Drawing line" << std::endl;
+  view->draw_line (int(pos.x + width/2), 
+		   int(pos.y + height/2),
+		   int(target_pos.x + 32), 
+		   int(target_pos.y + 32),
+		   0.0, 1.0, 0.0, 0.5);
+  EditorObj::draw (view);
 }
 
 void

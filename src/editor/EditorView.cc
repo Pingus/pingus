@@ -1,4 +1,4 @@
-//  $Id: EditorView.cc,v 1.2 2001/05/19 20:58:42 grumbel Exp $
+//  $Id: EditorView.cc,v 1.3 2001/07/24 21:39:46 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -148,6 +148,12 @@ EditorView::draw (CL_Surface& sur, const CL_Vector& pos)
 }
 
 void 
+EditorView::draw (CL_Surface& sur, const CL_Vector& pos, int frame)
+{
+  draw (sur, int(pos.x), int(pos.y), frame);
+}
+
+void 
 EditorView::draw (CL_Surface& sur, int x_pos, int y_pos)
 {
   if (offset.z == 1.0)
@@ -191,28 +197,26 @@ EditorView::draw (CL_Surface& sur, int x_pos, int y_pos,
 }
 
 void 
-EditorView::draw_line (int x1, int y1, int x2, int y2, 
-		float r, float g, float b, float a)
+EditorView::draw_line (const CL_Vector& pos1, const CL_Vector& pos2,
+		       float r, float g, float b, float a = 1.0f)
 {
-  if (offset.z == 1.0)
-    {
-      CL_Display::draw_line (x1 + get_x_offset (), y1 + get_y_offset () + center.x,
-			     x2 + get_x_offset (), y2 + get_y_offset () + center.y,
-			     r, g, b, a);
-    }
-  else
-    {
-      CL_Display::draw_line ((x1 + get_x_offset ()) * offset.z + center.x,
-			     (y1 + get_y_offset ()) * offset.z + center.y,
-			     (x2 + get_x_offset ()) * offset.z + center.x,
-			     (y2 + get_y_offset ()) * offset.z + center.y,
-			     r, g, b, a);
-    }
+  draw_line (int(pos1.x), int(pos1.y), int(pos2.x), int(pos2.y), r, g, b, a);
+}
+
+void 
+EditorView::draw_line (int x1, int y1, int x2, int y2, 
+		       float r, float g, float b, float a)
+{
+  CL_Display::draw_line ((x1 + get_x_offset ()) * offset.z + center.x,
+			 (y1 + get_y_offset ()) * offset.z + center.y,
+			 (x2 + get_x_offset ()) * offset.z + center.x,
+			 (y2 + get_y_offset ()) * offset.z + center.y,
+			 r, g, b, a);
 }
 
 void 
 EditorView::draw_fillrect (int x1, int y1, int x2, int y2, 
-		    float r, float g, float b, float a)
+			   float r, float g, float b, float a)
 {
   CL_Display::fill_rect ((x1 + get_x_offset ()) * offset.z + center.x,
 			 (y1 + get_y_offset ()) * offset.z + center.y, 

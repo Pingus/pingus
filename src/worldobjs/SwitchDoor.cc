@@ -1,4 +1,4 @@
-//  $Id: SwitchDoor.cc,v 1.12 2001/05/14 08:17:32 grumbel Exp $
+//  $Id: SwitchDoor.cc,v 1.13 2001/07/24 21:39:46 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -298,16 +298,17 @@ EditorSwitchDoorObj::status_line()
 }
 
 void
-EditorSwitchDoorObj::draw_offset (CL_Vector offset, float zoom)
+EditorSwitchDoorObj::draw (boost::dummy_ptr<EditorView> view)
 {
-  door_box.put_screen (int(door_pos.x + x_of + offset.x), 
-		       int(door_pos.y + y_of + offset.y));
+  view->draw_line (door_pos, switch_pos, 1.0, 0.0, 0.0);
+
+  view->draw (door_box, int(door_pos.x + x_of), int(door_pos.y + y_of));
 
   for (int i = 0; i < door_height; i++)
     {
-      door_tile.put_screen (int(door_pos.x + x_of + 1 + offset.x), 
-			    int(door_pos.y + y_of + (i * door_tile.get_height ())
-			    + door_box.get_height () + offset.y));
+      view->draw (door_tile, (int(door_pos.x + x_of + 1), 
+			      int(door_pos.y + y_of + (i * door_tile.get_height ())
+				  + door_box.get_height ())));
     }
 }
 

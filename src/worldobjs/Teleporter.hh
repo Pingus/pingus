@@ -1,4 +1,4 @@
-//  $Id: Teleporter.hh,v 1.13 2001/05/18 19:17:10 grumbel Exp $
+//  $Id: Teleporter.hh,v 1.14 2001/07/24 21:39:47 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -56,7 +56,7 @@ public:
   ///
   virtual ~Teleporter () {}
   ///
-  virtual void draw_offset (int x_of, int y_of, float s = 1.0);
+  virtual void draw (boost::dummy_ptr<EditorView> view);
   ///
   virtual void update(float delta);
   ///
@@ -103,7 +103,7 @@ public:
       for the editor */
   static std::list<boost::shared_ptr<EditorObj> > create (const CL_Vector& pos);
 
-  virtual void draw_offset(CL_Vector offset, float zoom);
+  virtual void draw (boost::dummy_ptr<EditorView> view);
   virtual void save_xml (std::ofstream* xml);
   virtual std::string status_line();
 };

@@ -1,4 +1,4 @@
-// $Id: EditorObj.cc,v 1.33 2001/05/18 19:17:08 grumbel Exp $
+// $Id: EditorObj.cc,v 1.34 2001/07/24 21:39:46 grumbel Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -162,20 +162,6 @@ EditorObj::draw (boost::dummy_ptr<EditorView> view)
 }
 
 void
-EditorObj::draw_offset (CL_Vector offset, float zoom)
-{
-  assert(surf);
-  if (surf) {
-    surf.put_screen(int(position->x + offset.x + x_of),
-		    int(position->y + offset.y + y_of));
-  } else {
-    CL_Display::fill_rect(int(position->x + offset.x), int(position->y + offset.y), 
-			  int(position->x + 10 + offset.x), int(position->y + 10 + offset.y),
-			  1.0, 0.0, 0.0, 1.0);
-  }
-}
-
-void
 EditorObj::draw_scroll_map(int x_pos, int y_pos, int arg_width, int arg_height)
 {
   if (surf)
@@ -254,6 +240,10 @@ EditorObj::gui_edit_obj()
   
 /*
 $Log: EditorObj.cc,v $
+Revision 1.34  2001/07/24 21:39:46  grumbel
+Fixed linedrawing in the editor
+Corrected drawing of switchdoor and teleporter
+
 Revision 1.33  2001/05/18 19:17:08  grumbel
 Added zooming support to the editor
 
