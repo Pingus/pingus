@@ -1,4 +1,4 @@
-//  $Id: credits.cxx,v 1.19 2003/04/09 23:57:03 grumbel Exp $
+//  $Id: credits.cxx,v 1.20 2003/04/10 11:51:32 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -232,7 +232,7 @@ Credits::draw_background (GraphicContext& gc)
 void
 Credits::on_startup ()
 {
-  offset = CL_Display::get_height();
+  offset = CL_Display::get_height() - 50;
   //PingusSound::play_music("pingus-5.it");
 }
 

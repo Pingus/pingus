@@ -1,4 +1,4 @@
-//  $Id: level_dot.hxx,v 1.8 2003/04/09 21:57:24 grumbel Exp $
+//  $Id: level_dot.hxx,v 1.9 2003/04/10 11:51:32 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -45,7 +45,7 @@ public:
   void draw(GraphicContext& gc);
   void draw_hover(GraphicContext& gc);
 
-  void update();
+  void update(float delta);
   PLFHandle get_plf () const { return plf; }
   void on_click(); 
 

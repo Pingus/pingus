@@ -1,4 +1,4 @@
-//  $Id: pingus.hxx,v 1.24 2003/03/27 16:42:30 grumbel Exp $
+//  $Id: pingus.hxx,v 1.25 2003/04/10 11:51:32 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -84,7 +84,7 @@ public:
   ~Pingus ();
 
   void draw (GraphicContext& gc);
-  void update ();
+  void update (float delta);
 
   /** @return true if the node is reachable, false otherwise */
   bool walk_to_node (NodeId target);

@@ -1,4 +1,4 @@
-//  $Id: pingus.cxx,v 1.29 2003/03/27 16:42:30 grumbel Exp $
+//  $Id: pingus.cxx,v 1.30 2003/04/10 11:51:32 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -70,11 +70,9 @@ Pingus::draw (GraphicContext& gc)
 }
 
 void
-Pingus::update ()
+Pingus::update (float delta)
 {
-  float delta = 0.025f;
-  
-  sprite.update ();
+  sprite.update (delta);
   if (is_walking())
     update_walk(delta);
 }
@@ -82,7 +80,7 @@ Pingus::update ()
 void
 Pingus::update_walk (float delta)
 {
-  float velocity = 50.0f;
+  float velocity = 70.0f;
 
   //std::cout << "Updating Walk: " << edge_path_position << "/" << edge_path_length << std::endl;
   // Update the edge_path_position

@@ -1,4 +1,4 @@
-//  $Id: surface_drawable.hxx,v 1.3 2003/03/07 00:09:00 grumbel Exp $
+//  $Id: surface_drawable.hxx,v 1.4 2003/04/10 11:51:32 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,7 +39,7 @@ private:
 public:
   SurfaceDrawable(xmlDocPtr doc, xmlNodePtr cur);
 
-  void update();
+  void update(float delta);
   void draw(GraphicContext&);
 
   float get_z_pos() const { return pos.z; }

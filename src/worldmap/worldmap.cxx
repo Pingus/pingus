@@ -1,4 +1,4 @@
-//  $Id: worldmap.cxx,v 1.43 2003/04/06 20:45:13 grumbel Exp $
+//  $Id: worldmap.cxx,v 1.44 2003/04/10 11:51:32 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -256,11 +256,11 @@ WorldMap::draw (GraphicContext& gc)
 }
 
 void
-WorldMap::update ()
+WorldMap::update (float delta)
 {
   for (DrawableLst::iterator i = drawables.begin (); i != drawables.end (); ++i)
     {
-      (*i)->update ();
+      (*i)->update (delta);
     }
 }
 

@@ -1,4 +1,4 @@
-//  $Id: manager.cxx,v 1.34 2003/04/06 12:40:47 grumbel Exp $
+//  $Id: manager.cxx,v 1.35 2003/04/10 11:51:32 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -267,8 +267,10 @@ WorldMapManager::on_escape_press ()
 }
 
 void
-WorldMapManager::update (float)
+WorldMapManager::update (float delta)
 {
+  UNUSED_ARG(delta);
+
   // Exit the word
   if (exit_worldmap)
     ScreenManager::instance ()->pop_screen ();
@@ -291,7 +293,7 @@ WorldMapManager::WorldMapComponent::draw (GraphicContext& gc)
 void
 WorldMapManager::WorldMapComponent::update (float delta)
 {
-  WorldMapManager::instance()->worldmap->update();
+  WorldMapManager::instance()->worldmap->update(delta);
   UNUSED_ARG(delta);
 }
 

@@ -1,4 +1,4 @@
-//  $Id: level_dot.cxx,v 1.17 2003/04/09 21:57:24 grumbel Exp $
+//  $Id: level_dot.cxx,v 1.18 2003/04/10 11:51:32 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -93,8 +93,9 @@ LevelDot::draw(GraphicContext& gc)
 }
 
 void
-LevelDot::update()
+LevelDot::update(float delta)
 {
+  UNUSED_ARG(delta);
 }
 
 void

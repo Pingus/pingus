@@ -1,4 +1,4 @@
-//  $Id: surface_drawable.cxx,v 1.4 2003/04/01 16:00:08 grumbel Exp $
+//  $Id: surface_drawable.cxx,v 1.5 2003/04/10 11:51:32 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -45,9 +45,9 @@ SurfaceDrawable::SurfaceDrawable(xmlDocPtr doc, xmlNodePtr cur)
 }
 
 void
-SurfaceDrawable::update()
+SurfaceDrawable::update(float delta)
 {
-  
+  UNUSED_ARG(delta);
 }
 
 void
