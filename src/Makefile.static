@@ -33,7 +33,6 @@ movers/libpingus_movers.a \
 input/libpingus_input.a \
 gui/libpingus_gui.a \
 generic/libpingus_generic.a \
-entrances/libpingus_entrances.a \
 editorobjs/libpingus_editorobjs.a \
 editor/libpingus_editor.a \
 colliders/libpingus_colliders.a \
