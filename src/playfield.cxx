@@ -1,4 +1,4 @@
-//  $Id: playfield.cxx,v 1.25 2002/10/03 12:33:08 grumbel Exp $
+//  $Id: playfield.cxx,v 1.26 2002/10/04 13:46:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -148,8 +148,8 @@ Playfield::current_pingu_find (int x_pos, int y_pos)
   double dist;
   Pingu* c_pingu = 0;
 
-  for (PinguIter pingu = world->get_pingu_p()->begin(); 
-       pingu != world->get_pingu_p()->end();
+  for (PinguIter pingu = world->get_pingus()->begin(); 
+       pingu != world->get_pingus()->end();
        ++pingu)
     {
       if ((*pingu)->is_over(x_pos, y_pos))

@@ -1,4 +1,4 @@
-//  $Id: blocker.cxx,v 1.12 2002/10/01 19:53:45 grumbel Exp $
+//  $Id: blocker.cxx,v 1.13 2002/10/04 13:46:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -63,7 +63,8 @@ Blocker::update()
     }
   else
     {
-      PinguHolder* pingus = WorldObj::get_world()->get_pingu_p();
+      // FIXME: PinguHolder iterations should be handled otherwise
+      PinguHolder* pingus = WorldObj::get_world()->get_pingus();
       for(PinguIter i = pingus->begin(); i != pingus->end(); ++i)
 	{
 	  catch_pingu(*i);

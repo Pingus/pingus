@@ -1,4 +1,4 @@
-//  $Id: digger.hxx,v 1.10 2002/10/01 19:53:45 grumbel Exp $
+//  $Id: digger.hxx,v 1.11 2002/10/04 13:46:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,7 +25,6 @@
 
 namespace Actions {
 
-/** FIXME: Not delta capable! */
 class Digger : public PinguAction
 {
 private:
@@ -33,6 +32,7 @@ private:
   CL_Surface digger_radius_gfx;
   Sprite sprite;
   int digger_c;
+
 public:
   Digger();
   void init (void);

@@ -1,4 +1,4 @@
-//  $Id: smallmap.cxx,v 1.17 2002/09/16 20:31:09 grumbel Exp $
+//  $Id: smallmap.cxx,v 1.18 2002/10/04 13:46:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -198,7 +198,7 @@ SmallMap::draw_pingus ()
   int x;
   int y;
   World* const& world = client->get_server()->get_world();
-  PinguHolder* pingus = world->get_pingu_p();
+  PinguHolder* pingus = world->get_pingus();
 
   for(PinguIter i = pingus->begin(); i != pingus->end(); ++i)
     {

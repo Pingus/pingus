@@ -1,4 +1,4 @@
-//  $Id: pingu_holder.hxx,v 1.11 2002/10/03 01:02:12 grumbel Exp $
+//  $Id: pingu_holder.hxx,v 1.12 2002/10/04 13:46:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,12 +33,14 @@ typedef std::list<Pingu*>::iterator PinguIter;
 class PinguHolder : public WorldObj
 {
 private:
-  /// The uniq id for the next Pingu
+  /** The uniq id for the next Pingu, starts at 0 and is increased
+      with every Pingu. Id's are not recycled if Pingus die. */
   int id_count;
 
-  int total_size_count;
-
-  int saved_pingus;
+  /** Number of pingus that made it to the exit, we cache this, since
+      else we would have to iterate over the whole list and count them
+      each time they are requested. */
+  int number_of_exited;
 
   /** This vector holds all pingus which are ever allocated in the
       world, its used to free them all on the end of this class. */
@@ -52,11 +54,34 @@ public:
   PinguHolder();
   ~PinguHolder();
 
+  /*@{ 
+    @name overloaded stuff for WorldObj 
+  */
   void draw (GraphicContext& gc);
+
+  /** Update all Pingus (this calls Pingu::update() which then calls
+      PinguAction::update()) */
   void update();
 
-  int  total_size();
-  int  get_saved() { return saved_pingus; }
+  /** The z-pos at which the pingus gets draw. 
+      @return 50 */
+  float get_z_pos() const;
+  /*@}*/
+
+  /** @return the number of pingus that have successfully exit this
+      level */
+  int  get_number_of_exited();
+
+  /** @return the number of pingus that got killed */
+  int  get_number_of_killed();
+
+  /** @return the number of pingus that are still alive, this is shown
+      in the PingusCounter panel as 'Out' */
+  int  get_number_of_alive();
+
+  /** @return the total number of pingus released, this is alive +
+      killed + exited */
+  int get_number_of_released();
 
   /** Return a reference to a newly create Pingu, the PinguHolder will
       take care of the deletion. The caller *must* not delete the
@@ -64,11 +89,10 @@ public:
   Pingu* create_pingu(const Vector& pos, int owner_id);
 
   /** Get a pingu by id 
-   @return the pingu with the id, or 0 if not found */
+      @return the pingu with the id, or 0 if none found */
   Pingu* get_pingu(int id);
 
-  float get_z_pos() const;
-
+  // FIXME: Dirty cruft, needs cleanup
   std::list<Pingu*>::iterator  begin () { return pingus.begin (); }
   std::list<Pingu*>::iterator  end ()   { return pingus.end (); }
   std::list<Pingu*>::size_type size ()  { return pingus.size (); }

@@ -1,4 +1,4 @@
-//  $Id: ice_block.cxx,v 1.19 2002/10/01 19:53:46 grumbel Exp $
+//  $Id: ice_block.cxx,v 1.20 2002/10/04 13:46:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -72,7 +72,7 @@ IceBlock::update()
   if (is_finished)
     return;
 
-  PinguHolder* holder = world->get_pingu_p();
+  PinguHolder* holder = world->get_pingus();
 
   for (PinguIter pingu = holder->begin(); pingu != holder->end(); ++pingu)
     {

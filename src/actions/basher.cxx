@@ -1,4 +1,4 @@
-//  $Id: basher.cxx,v 1.17 2002/10/01 19:53:45 grumbel Exp $
+//  $Id: basher.cxx,v 1.18 2002/10/04 13:46:56 grumbel Exp $
 //
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -75,7 +75,7 @@ Basher::update ()
 	  if (basher_c % 2 == 0)
 	    bash();
 	}
-      else if (sprite.get_progress () > 0.6f)
+      else if (sprite.get_progress () > 0.6f) // FIXME: EVIL! 
 	{
 	  pingu->set_action(Actions::Walker);
 	}

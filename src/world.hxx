@@ -1,4 +1,4 @@
-//  $Id: world.hxx,v 1.15 2002/10/01 19:53:44 grumbel Exp $
+//  $Id: world.hxx,v 1.16 2002/10/04 13:46:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -66,9 +66,6 @@ private:
   /** FIXME: ugly hack to iterate over all pingus and make bombers out
       of them, should use pingus_id instead */
   std::list<Pingu*>::iterator armageddon_count;
-
-  /** number of already released pingus */
-  unsigned int released_pingus;
 
   /** number of total pingus available in this level */
   unsigned int allowed_pingus;
@@ -143,19 +140,11 @@ public:
   /** @return A pointer to the worlds particle holder */
   ParticleHolder* get_particle_holder();
   
-  unsigned int get_released_pingus() { return released_pingus; }
-  void         inc_released_pingus() { ++released_pingus; }
-
   /** @return true if the world is currently doing an armageddon */
   bool check_armageddon() { return do_armageddon; }
 
   /** @return the number of totally allowed pingus */
   unsigned int get_allowed_pingus() { return allowed_pingus; }
-
-  /** @return the number of pingus currently moving around in the
-      world, exited, killed and not yet released pingus are not
-      counted */
-  unsigned int get_pingus_out(); unsigned int get_saved_pingus(); 
 
   /** @return number of pingus which need to get saved in this level
       to finish it successfull */
@@ -179,7 +168,7 @@ public:
       FIXME: like that */
   void set_view (View* v);
 
-  PinguHolder* get_pingu_p(void);
+  PinguHolder* get_pingus(void);
 
   /** @return the pingu at the given word coordinates, an empty
       shared_ptr is returned if none is there */

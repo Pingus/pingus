@@ -1,4 +1,4 @@
-//  $Id: hammer.cxx,v 1.8 2002/10/01 23:40:19 grumbel Exp $
+//  $Id: hammer.cxx,v 1.9 2002/10/04 13:46:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -57,7 +57,7 @@ Hammer::update ()
 
   if (sprite.finished())
     {
-      PinguHolder* holder = world->get_pingu_p ();
+      PinguHolder* holder = world->get_pingus();
 
       for (PinguIter pingu_it = holder->begin (); pingu_it != holder->end (); ++pingu_it) 
 	{

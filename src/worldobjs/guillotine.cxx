@@ -1,4 +1,4 @@
-//  $Id: guillotine.cxx,v 1.6 2002/10/01 19:53:46 grumbel Exp $
+//  $Id: guillotine.cxx,v 1.7 2002/10/04 13:46:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -74,7 +74,7 @@ Guillotine::update ()
     killing = false;
   }
 
-  PinguHolder* holder = world->get_pingu_p ();
+  PinguHolder* holder = world->get_pingus();
   for (PinguIter pingu = holder->begin (); pingu != holder->end (); ++pingu)
     catch_pingu(*pingu);
 

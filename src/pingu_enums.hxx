@@ -1,4 +1,4 @@
-//  $Id: pingu_enums.hxx,v 1.7 2002/08/25 09:08:48 torangan Exp $
+//  $Id: pingu_enums.hxx,v 1.8 2002/10/04 13:46:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,8 +23,13 @@
 #include "pingus.hxx"
 #include <string>
 
-/** Haven't yet experimented much with pingu status, but maybe it is a
-    good idea. Maybe that should be changed to a bitmask. */
+/** The Pingus Status shows the current status of a Pingu, as
+    displayed in the PingusCounter pannel. PS_DEAD are pingus that got
+    killed, PS_ALIVE are pingus that are still active in the world and
+    PS_EXITED are pingus that successfully finished a level
+
+    FIXME: different subvalues of PS_DEAD might be usefull (drowned,
+    FIXME: splashed, smashed, etc.) */
 enum PinguStatus { PS_ALIVE, PS_EXITED, PS_DEAD };
 
 enum PingusGameMode { 

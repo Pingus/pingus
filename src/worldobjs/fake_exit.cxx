@@ -1,4 +1,4 @@
-//  $Id: fake_exit.cxx,v 1.8 2002/10/01 19:53:46 grumbel Exp $
+//  $Id: fake_exit.cxx,v 1.9 2002/10/04 13:46:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -60,7 +60,7 @@ FakeExit::draw (GraphicContext& gc)
 void
 FakeExit::update ()
 {
-  PinguHolder* holder = world->get_pingu_p ();
+  PinguHolder* holder = world->get_pingus();
   for (PinguIter pingu = holder->begin (); pingu != holder->end (); ++pingu){
     catch_pingu(*pingu);
   }

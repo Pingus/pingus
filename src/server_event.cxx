@@ -1,4 +1,4 @@
-//  $Id: server_event.cxx,v 1.2 2002/10/03 12:33:08 grumbel Exp $
+//  $Id: server_event.cxx,v 1.3 2002/10/04 13:46:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -110,7 +110,7 @@ ServerEvent::send(Server* server)
       break;
     case PINGU_ACTION_EVENT:
       {
-	Pingu* pingu = server->get_world()->get_pingu_p()->get_pingu(pingu_id);
+	Pingu* pingu = server->get_world()->get_pingus()->get_pingu(pingu_id);
 	if (pingu)
 	  {
 	    server->send_pingu_action_event(pingu,

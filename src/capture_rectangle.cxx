@@ -1,4 +1,4 @@
-//  $Id: capture_rectangle.cxx,v 1.10 2002/10/04 11:38:28 torangan Exp $ 
+//  $Id: capture_rectangle.cxx,v 1.11 2002/10/04 13:46:56 grumbel Exp $ 
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -95,25 +95,29 @@ void
 CaptureRectangle::set_pingu (Pingu* p)
 {
   pingu = p;
-  action_str = pingu->get_action()->get_name();
+
+  if (pingu)
+    {
+      action_str = pingu->get_action()->get_name();
   
-  if (pingu->get_wall_action() || pingu->get_fall_action())
-    {
-      action_str += "[";
+      if (pingu->get_wall_action() || pingu->get_fall_action())
+        {
+          action_str += "[";
 
-      if (pingu->get_wall_action())
-        action_str += pingu->get_wall_action()->get_persistent_char();
+          if (pingu->get_wall_action())
+            action_str += pingu->get_wall_action()->get_persistent_char();
 
-      if (pingu->get_fall_action())
-        action_str += pingu->get_fall_action()->get_persistent_char();
+          if (pingu->get_fall_action())
+            action_str += pingu->get_fall_action()->get_persistent_char();
 
-      action_str += "]";
-    }
+          action_str += "]";
+        }
 
-  if (maintainer_mode)
-    {
-      action_str += " Id: ";
-      action_str += to_string(pingu->get_id());
+      if (maintainer_mode)
+        {
+          action_str += " Id: ";
+          action_str += to_string(pingu->get_id());
+        }
     }
 }
 

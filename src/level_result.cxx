@@ -1,4 +1,4 @@
-//  $Id: level_result.cxx,v 1.4 2002/09/04 14:55:11 torangan Exp $
+//  $Id: level_result.cxx,v 1.5 2002/10/04 13:46:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,6 +27,7 @@
 #include "display.hxx"
 #include "sound.hxx"
 #include "world.hxx"
+#include "pingu_holder.hxx"
 
 /* Headers needed for i18n / gettext */
 #include <clocale>
@@ -66,12 +67,12 @@ PingusLevelResult::draw(void)
 		     get_message(100 * world->get_saved_pingus() / world->get_allowed_pingus()).c_str());
   */
   snprintf(str, 128, _("Pingus saved:   %3d/%3d"), 
-	  world->get_saved_pingus(),
-	  world->get_allowed_pingus());
+           world->get_pingus()->get_number_of_exited(),
+	   world->get_allowed_pingus());
   font->print_center(CL_Display::get_width() / 2, 140, str);
 
   snprintf(str, 128, _("Pingus killed:  %3d/%3d"), 
-	  world->get_allowed_pingus() - world->get_saved_pingus(),
+	  world->get_allowed_pingus() - world->get_pingus()->get_number_of_exited(),
 	  world->get_allowed_pingus());
   font->print_center(CL_Display::get_width() / 2, 160, str);
 

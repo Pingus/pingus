@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.113 2002/10/03 01:02:12 grumbel Exp $
+#  $Id: Makefile.am,v 1.114 2002/10/04 13:46:56 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -72,6 +72,8 @@ pingus_LDADD = \
 	input/scrollers/libpingus_input_scrollers.a
 
 pingus_SOURCES = \
+anim_counter.hxx \
+anim_counter.cxx \
 action_button.cxx \
 action_button.hxx \
 action_data.hxx \
@@ -82,8 +84,6 @@ algo.cxx \
 algo.hxx \
 alpha_button.cxx \
 alpha_button.hxx \
-anim_counter.cxx \
-anim_counter.hxx \
 audio.cxx \
 audio.hxx \
 blitter.cxx \

@@ -1,4 +1,4 @@
-//  $Id: pingus_counter.cxx,v 1.8 2002/10/03 12:33:08 grumbel Exp $
+//  $Id: pingus_counter.cxx,v 1.9 2002/10/04 13:46:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,14 +20,11 @@
 #include <stdio.h>
 #include <ClanLib/Display/Display/display.h>
 #include <ClanLib/Display/Font/font.h>
+#include "my_gettext.hxx"
 #include "pingus_resource.hxx"
 #include "pingus_counter.hxx"
 #include "world.hxx"
-
-/* Headers needed for i18n / gettext */
-#include <clocale>
-#include <config.h>
-#include "my_gettext.hxx"
+#include "pingu_holder.hxx"
 #include "server.hxx"
 
 
@@ -48,10 +45,10 @@ PingusCounter::draw(GraphicContext& gc)
   World* world = server->get_world();
   
   snprintf(str, 128, _("Released: %3d/%3d  Out: %3d  Saved: %3d/%3d"),
-	   world->get_released_pingus(),
+	   world->get_pingus()->get_number_of_released(),
 	   world->get_allowed_pingus(),
-	   world->get_pingus_out(),
-	   world->get_saved_pingus(),
+	   world->get_pingus()->get_number_of_alive(),
+	   world->get_pingus()->get_number_of_exited(),
 	   world->get_number_to_save());
 
   font->print_center(CL_Display::get_width ()/2,3, str);

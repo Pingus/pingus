@@ -1,4 +1,4 @@
-//  $Id: world.cxx,v 1.28 2002/10/01 19:53:44 grumbel Exp $
+//  $Id: world.cxx,v 1.29 2002/10/04 13:46:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -64,7 +64,6 @@ World::World(PLF* plf)
   do_armageddon = false;
   allowed_pingus = plf->get_pingus();
   number_to_save = plf->get_number_to_save();
-  released_pingus = 0;
 
   exit_time = plf->get_time();
   if (exit_time != -1 && !(exit_time > 100))
@@ -161,7 +160,8 @@ World::update()
 
   // if a exit condition is schedule a shutdown of the world in the
   // next 75 ticks
-  if (!exit_world && (allowed_pingus == released_pingus || do_armageddon)
+  if (!exit_world && (static_cast<int>(allowed_pingus) == pingus->get_number_of_released()
+		      || do_armageddon)
       && pingus->size() == 0) 
     {
       if (verbose)
@@ -197,20 +197,20 @@ World::update()
 }
 
 PinguHolder*
-World::get_pingu_p(void)
+World::get_pingus()
 {
   return pingus;
 }
 
 int
-World::get_width(void)
+World::get_width()
 {
   assert(gfx_map);
   return gfx_map->get_width();  
 }
 
 int
-World::get_height(void)
+World::get_height()
 {
   assert(gfx_map);
   return gfx_map->get_height();
@@ -233,18 +233,6 @@ int
 World::get_time_passed()
 {
   return game_time->get_ticks();
-}
-
-unsigned int
-World::get_pingus_out()
-{
-  return pingus->size(); 
-}
-
-unsigned int 
-World::get_saved_pingus() 
-{
-  return pingus->get_saved(); 
 }
 
 void 

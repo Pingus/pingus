@@ -1,4 +1,4 @@
-//  $Id: switch_door.cxx,v 1.21 2002/10/01 19:53:46 grumbel Exp $
+//  $Id: switch_door.cxx,v 1.22 2002/10/04 13:46:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -83,7 +83,7 @@ SwitchDoor::update ()
       if (!is_opening)
 	{
 	  // Check if a pingu is passing the switch
-	  PinguHolder* holder = world->get_pingu_p();
+	  PinguHolder* holder = world->get_pingus();
       
 	  for (PinguIter pingu = holder->begin (); pingu != holder->end (); ++pingu)
 	    {
