@@ -1,4 +1,4 @@
-//  $Id: Theme.hh,v 1.4 2000/04/24 13:15:41 grumbel Exp $
+//  $Id: Theme.hh,v 1.5 2000/05/27 23:11:21 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,7 +25,7 @@
 #include <vector>
 #include <ClanLib/core.h>
 
-
+#include "MultiLineText.hh"
 #include "PLTParser.hh"
 
 class Theme
@@ -41,6 +41,9 @@ private:
   std::vector<std::string> levels;
   std::vector<std::string> levelnames;
   std::string   status_file;
+
+  bool has_description;
+  MultiLineText description;
 public:
   Theme();
   Theme(std::string);

@@ -1,4 +1,4 @@
-//  $Id: Theme.cc,v 1.8 2000/04/25 17:54:40 grumbel Exp $
+//  $Id: Theme.cc,v 1.9 2000/05/27 23:11:21 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -56,6 +56,16 @@ Theme::load(std::string filename)
 
   levels = plt.get_levels();
   load_levels();
+
+  if (plt.get_description() != "-")
+    {
+      description.set_text(plt.get_description(), 30);
+      has_description = true;
+    }
+  else
+    {
+      has_description = false;
+    }
 
   try 
     {
@@ -125,8 +135,8 @@ Theme::draw_title()
       y_pos += surface->get_height() + 20;
     }
 
-  if (plt.get_description() != "-")
-    font->print_center(x_center, y_pos, plt.get_description().c_str());
+  if (has_description)
+    description.print_center(x_center, y_pos);
 
   y_pos += 20;
   int j = 0;
