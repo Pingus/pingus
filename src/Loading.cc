@@ -1,4 +1,4 @@
-//  $Id: Loading.cc,v 1.4 2000/05/01 20:11:15 grumbel Exp $
+//  $Id: Loading.cc,v 1.5 2000/06/10 07:56:58 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "PingusResource.hh"
+#include "Display.hh"
 #include "Loading.hh"
 
 Loading loading_screen;
@@ -42,25 +43,36 @@ Loading::init()
 void
 Loading::draw()
 {
+  bool cursor_shown = Display::cursor_shown();
+
   if (!is_init)
     init();
+  
+  if (cursor_shown)
+    Display::hide_cursor();
 
-  CL_MouseCursor::hide();
   CL_Display::clear_display();
 
   sur->put_screen((CL_Display::get_width() - sur->get_width())/2,
 		  (CL_Display::get_height() - sur->get_height())/2);
 
   CL_Display::flip_display();
+
+  if (cursor_shown)
+    Display::show_cursor();
 }
 
 void
 Loading::draw_progress(std::string str, float progress)
 {
+  bool cursor_shown = Display::cursor_shown();
+
   if (!is_init)
     init();
 
-  CL_MouseCursor::hide();
+  if (cursor_shown)
+    Display::hide_cursor();
+
   CL_Display::clear_display();
 
   sur->put_screen((CL_Display::get_width() - sur->get_width())/2,
@@ -79,6 +91,9 @@ Loading::draw_progress(std::string str, float progress)
 			1.0, 0.0, 0.0, 1.0);
 
   CL_Display::flip_display();
+
+  if (cursor_shown)
+    Display::show_cursor();
 }
 
 /* EOF */

@@ -1,4 +1,4 @@
-//   $Id: Pingus.cc,v 1.29 2000/06/08 20:05:35 grumbel Exp $
+//   $Id: Pingus.cc,v 1.30 2000/06/10 07:56:58 grumbel Exp $
 //    ___
 //   |  _\ A free Lemmings clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -49,9 +49,10 @@
 #include "PingusResource.hh"
 #include "System.hh"
 #include "PingusGame.hh"
-#include "Playfield.hh"
+//#include "Playfield.hh"
 #include "PingusError.hh"
 #include "Loading.hh"
+#include "Display.hh"
 #include "Config.hh"
 
 #include "PingusSound.hh"
@@ -189,6 +190,7 @@ PingusMain::check_args(int argc, char* argv[])
     {"quick-play",        no_argument,       0, 'q'},
     {"enable-fullscreen", no_argument,       0, 'f'},
     {"disable-fullscreen", no_argument,      0, 'F'},
+    {"disable-swcursor",  no_argument,       0, 145},
 
     // FIXME: is the number stuff correct?
     {"debug-actions",   no_argument,       0, 129},
@@ -377,6 +379,10 @@ PingusMain::check_args(int argc, char* argv[])
       sscanf(optarg, "%d", &tile_size);
       break;
 
+    case 145:
+      Display::disable_cursor();
+      break;
+
     default:
       
       std::cout << "Unknow char: " << c << std::endl << std::endl;
@@ -407,6 +413,7 @@ PingusMain::check_args(int argc, char* argv[])
 	"   --disable-auto_scrolling Disable automatic scrolling\n"
 	"   --debug-tiles            Draw empty tiles\n"
 	"   --tile-size INT          Set the size of the map tiles (default: 32)\n"
+	"   --disable-swcursor       Disable software cursor, use hw cursor instead\n"
 	"   --no-cfg-file            Don't read ~/.pingus/config\n"
 	
 	"\nDemo playing and recording:\n"

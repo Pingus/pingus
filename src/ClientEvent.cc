@@ -1,4 +1,4 @@
-//  $Id: ClientEvent.cc,v 1.9 2000/05/03 18:41:14 grumbel Exp $
+//  $Id: ClientEvent.cc,v 1.10 2000/06/10 07:56:58 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 
 #include "globals.hh"
 #include "OptionMenu.hh"
+#include "Display.hh"
 #include "ClientEvent.hh"
 
 ClientEvent::ClientEvent()
@@ -128,9 +129,9 @@ ClientEvent::on_keyboard_button_release(const CL_Key& key)
     {
     case CL_KEY_O:
       enabled = false;
-      CL_MouseCursor::hide();
+      Display::hide_cursor();
       option_menu.display();
-      CL_MouseCursor::show(true);
+      Display::show_cursor();
       enabled = true;
       break;
 

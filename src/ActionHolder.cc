@@ -1,4 +1,4 @@
-//  $Id: ActionHolder.cc,v 1.16 2000/06/06 18:51:51 grumbel Exp $
+//  $Id: ActionHolder.cc,v 1.17 2000/06/10 07:56:58 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -81,18 +81,19 @@ ActionHolder::get_action(const std::string& name)
   
   count = &(available_actions[name]);
 
-  (*count)--;
 
   if (*count > 0) 
     {
+      (*count)--;
       return get_uaction(name);
     }
   else
     {
-      if (unlimited_actions) 
-	return get_uaction(name);
-      else
-	  return 0;
+      if (unlimited_actions) {
+      	return get_uaction(name);
+      } else {
+	return 0;
+      }
     }
 }
 

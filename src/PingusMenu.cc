@@ -1,4 +1,4 @@
-//  $Id: PingusMenu.cc,v 1.20 2000/06/08 20:05:35 grumbel Exp $
+//  $Id: PingusMenu.cc,v 1.21 2000/06/10 07:56:58 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,6 +29,7 @@
 #include "PingusError.hh"
 #include "PingusMenu.hh"
 #include "Loading.hh"
+#include "Display.hh"
 #include "PingusSound.hh"
 
 PingusMenu::PingusMenu()
@@ -114,8 +115,8 @@ PingusMenu::select(void)
 
   event->enabled = true;
 
-  CL_MouseCursor::set_cursor(CL_MouseCursorProvider::load("Cursors/cursor", PingusResource::get("game.dat")));
-  CL_MouseCursor::show(true);
+  Display::set_cursor(CL_MouseCursorProvider::load("Cursors/cursor", PingusResource::get("game.dat")));
+  Display::show_cursor();
 
   PingusSound::play_mod("../data/music/pingus-1.it");
   
@@ -127,7 +128,7 @@ PingusMenu::select(void)
 
   event->enabled = false;
 
-  CL_MouseCursor::hide();
+  Display::hide_cursor();
 }
 
 bool
@@ -174,10 +175,10 @@ PingusMenu::Event::on_button_press(CL_InputDevice *device, const CL_Key &key)
 	  if ((*i)->mouse_over())
 	    {
 	      enabled = false;
-	      CL_MouseCursor::hide();
+	      Display::hide_cursor();
 	      (*i)->on_click();
-	      CL_MouseCursor::set_cursor(CL_MouseCursorProvider::load("Cursors/cursor", PingusResource::get("game.dat")));
-	      CL_MouseCursor::show(true);
+	      Display::set_cursor(CL_MouseCursorProvider::load("Cursors/cursor", PingusResource::get("game.dat")));
+	      Display::show_cursor();
 	      enabled = true;
 	    }
 	}

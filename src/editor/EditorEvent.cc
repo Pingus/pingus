@@ -1,4 +1,4 @@
-//  $Id: EditorEvent.cc,v 1.14 2000/06/08 20:05:35 grumbel Exp $
+//  $Id: EditorEvent.cc,v 1.15 2000/06/10 07:57:00 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,6 +25,7 @@
 #include "../PingusError.hh"
 #include "../System.hh"
 #include "../Loading.hh"
+#include "../Display.hh"
 #include "StringReader.hh"
 #include "EditorEvent.hh"
 
@@ -331,9 +332,7 @@ EditorEvent::editor_start_current_level()
 {
   disable();
 
-  CL_MouseCursor::hide();
   loading_screen.draw();
-  CL_MouseCursor::show();
 
   try {
     PingusGame game;

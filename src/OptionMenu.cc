@@ -1,4 +1,4 @@
-//  $Id: OptionMenu.cc,v 1.13 2000/05/28 19:54:08 grumbel Exp $
+//  $Id: OptionMenu.cc,v 1.14 2000/06/10 07:56:58 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,7 @@
 #include "globals.hh"
 #include "PingusResource.hh"
 #include "Loading.hh"
+#include "Display.hh"
 #include "OptionMenu.hh"
 
 // Define the global option menu
@@ -295,10 +296,8 @@ OptionMenu::display()
   CL_Input::chain_button_press.push_back(event);
   CL_Input::chain_button_release.push_back(event);
 
-
-
-  CL_MouseCursor::set_cursor(CL_MouseCursorProvider::load("Cursors/cursor", PingusResource::get("game.dat")));
-  CL_MouseCursor::show(true);
+  Display::set_cursor(CL_MouseCursorProvider::load("Cursors/cursor", PingusResource::get("game.dat")));
+  Display::show_cursor();
 
   draw();
 
@@ -336,7 +335,7 @@ OptionMenu::display()
       CL_System::keep_alive();
     }
 
-  CL_MouseCursor::hide();
+  Display::hide_cursor();
 
   CL_Input::chain_button_release.remove(event);
   CL_Input::chain_button_press.remove(event);

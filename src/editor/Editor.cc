@@ -1,4 +1,4 @@
-//  $Id: Editor.cc,v 1.10 2000/04/24 13:15:42 grumbel Exp $
+//  $Id: Editor.cc,v 1.11 2000/06/10 07:57:00 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -87,9 +87,9 @@ Editor::edit ()
 {
   quit = false;
 
-  CL_MouseCursor::set_cursor(CL_MouseCursorProvider::load("Cursors/cursor", PingusResource::get("game.dat")));
+  Display::set_cursor(CL_MouseCursorProvider::load("Cursors/cursor", PingusResource::get("game.dat")));
   
-  CL_MouseCursor::show();
+  Display::show_cursor();
 
   register_event_handler();
 
@@ -102,7 +102,7 @@ Editor::edit ()
 
   unregister_event_handler();
 
-  CL_MouseCursor::hide();
+  Display::hide_cursor();
 }
 
 
@@ -396,6 +396,9 @@ Editor::interactive_load()
 
 /***********************************************
 $Log: Editor.cc,v $
+Revision 1.11  2000/06/10 07:57:00  grumbel
+Added wrapper around CL_MouseCursor and added an option to disable the software cursor, due to probable bugs in CL_MouseCursor
+
 Revision 1.10  2000/04/24 13:15:42  grumbel
 Added  Felix Natter's namespace clean ups
 

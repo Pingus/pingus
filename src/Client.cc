@@ -1,4 +1,4 @@
-//  $Id: Client.cc,v 1.24 2000/06/08 20:05:35 grumbel Exp $
+//  $Id: Client.cc,v 1.25 2000/06/10 07:56:58 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,6 +28,7 @@
 #include "algo.hh"
 #include "Timer.hh"
 #include "PingusResource.hh"
+#include "Display.hh"
 #include "PingusLevelResult.hh"
 #include "PingusSound.hh"
 
@@ -109,8 +110,8 @@ Client::init_display()
   timer.start();
   if (verbose) std::cout << "Client: Generating UI elements..." << std::flush;
 
-  CL_MouseCursor::set_cursor(CL_MouseCursorProvider::load("Cursors/cursor", PingusResource::get("game.dat")));
-  CL_MouseCursor::show(true);
+  Display::set_cursor(CL_MouseCursorProvider::load("Cursors/cursor", PingusResource::get("game.dat")));
+  Display::show_cursor();
   
   playfield    = new Playfield(plf, server->get_world());
   button_panel = new ButtonPanel(plf);
@@ -152,7 +153,7 @@ Client::init_display()
 void 
 Client::deinit_display()
 {
-  CL_MouseCursor::hide();
+  Display::hide_cursor();
 
   // Delete all alocated objects
   delete pcounter;

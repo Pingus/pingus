@@ -1,4 +1,4 @@
-//  $Id: Display.cc,v 1.1 2000/02/12 20:53:42 grumbel Exp $
+//  $Id: Display.cc,v 1.2 2000/06/10 07:56:58 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,9 @@
 
 #include "Display.hh"
 
+bool Display::displaying_cursor = false;
+bool Display::cursor_disabled = false;
+
 void
 Display::draw_rect(int x1, int y1, int x2, int y2, float r, float g, float b, float a)
 {
@@ -28,6 +31,45 @@ Display::draw_rect(int x1, int y1, int x2, int y2, float r, float g, float b, fl
   CL_Display::draw_line(x1, y2, x2, y2, r, g, b, a);
   CL_Display::draw_line(x1, y1, x1, y2, r, g, b, a);
   CL_Display::draw_line(x2, y1, x2, y2, r, g, b, a);
+}
+
+void
+Display::show_cursor(bool async)
+{
+  if (!cursor_disabled)
+    CL_MouseCursor::show(async);
+}
+
+void 
+Display::hide_cursor()
+{
+  if (!cursor_disabled)
+    CL_MouseCursor::hide();
+}
+ 
+void
+Display::set_cursor(CL_MouseCursorProvider *provider, int frame)
+{
+  if (!cursor_disabled)
+    CL_MouseCursor::set_cursor(provider, frame);
+}
+
+bool
+Display::cursor_shown()
+{
+  return displaying_cursor;
+}
+
+void 
+Display::disable_cursor()
+{
+  cursor_disabled = true;
+}
+
+void
+Display::enable_cursor()
+{
+  cursor_disabled = false;
 }
 
 /* EOF */

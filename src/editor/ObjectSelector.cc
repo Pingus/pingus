@@ -1,4 +1,4 @@
-//  $Id: ObjectSelector.cc,v 1.15 2000/05/28 19:30:10 grumbel Exp $
+//  $Id: ObjectSelector.cc,v 1.16 2000/06/10 07:57:00 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,7 @@
 #include "../globals.hh"
 #include "StringReader.hh"
 #include "../PingusResource.hh"
+#include "../Display.hh"
 #include "../Loading.hh"
 
 #include "ObjectSelector.hh"
@@ -150,7 +151,7 @@ ObjectSelector::get_groundpiece(surface_data::Type type)
 	}
     }
   // Showing the mousecursor again, since loading_screen hides it
-  CL_MouseCursor::show();
+  Display::show_cursor();
 
   data_loaded = true;
   str = select_surface(sur_list);
@@ -347,6 +348,9 @@ ObjectSelector::read_string(string description, string def_str)
 /*
 
 $Log: ObjectSelector.cc,v $
+Revision 1.16  2000/06/10 07:57:00  grumbel
+Added wrapper around CL_MouseCursor and added an option to disable the software cursor, due to probable bugs in CL_MouseCursor
+
 Revision 1.15  2000/05/28 19:30:10  grumbel
 Cleaned the status line a bit and added support to include solid groundpiecs from the editor
 

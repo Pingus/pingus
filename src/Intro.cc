@@ -1,4 +1,4 @@
-//  $Id: Intro.cc,v 1.7 2000/04/21 13:25:46 grumbel Exp $
+//  $Id: Intro.cc,v 1.8 2000/06/10 07:56:58 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -80,9 +80,7 @@ Intro::draw()
     }
 
   if (quit)
-    {
-      loading_screen.draw();
-    }
+    loading_screen.draw();
 
   if (verbose) std::cout << "Intro: Removing event handler" << std::endl;
   CL_Input::chain_button_release.remove(event);
