@@ -1,4 +1,4 @@
-//  $Id: ColMap.cc,v 1.22 2001/04/13 17:34:56 grumbel Exp $
+//  $Id: ColMap.cc,v 1.23 2001/04/15 00:53:11 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -235,17 +235,18 @@ ColMap::put(CL_SurfaceProvider* provider, int sur_x, int sur_y, GroundpieceData:
   if (type == GroundpieceData::TRANSPARENT)
     return;
 
-  unsigned int pixel;
+  PixelStatus pixel;
   switch (type) 
     {
     case GroundpieceData::GROUND:  pixel = WALL; break;
-    case GroundpieceData::SOLID:   pixel = SOLID | WALL; break;
-    case GroundpieceData::BRIDGE:  pixel = BRIDGE | WALL; break;
-    case GroundpieceData::WATER:   pixel = SOLID | WATER; break;
-    case GroundpieceData::LAVA:    pixel = SOLID | LAVA; break;
-    case GroundpieceData::NOTHING: pixel = 0; break;
+    case GroundpieceData::SOLID:   pixel = (PixelStatus)(SOLID | WALL); break;
+    case GroundpieceData::BRIDGE:  pixel = (PixelStatus)(BRIDGE | WALL); break;
+    case GroundpieceData::WATER:   pixel = (PixelStatus)(SOLID | WATER); break;
+    case GroundpieceData::LAVA:    pixel = (PixelStatus)(SOLID | LAVA); break;
+    case GroundpieceData::NOTHING: pixel = (PixelStatus)0; break;
     default:
       std::cout << "Colmap::put() Undefinit type" << std::endl;
+      pixel = (PixelStatus)0;
       break;
     }
   

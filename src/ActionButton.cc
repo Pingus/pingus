@@ -1,4 +1,4 @@
-//  $Id: ActionButton.cc,v 1.16 2001/04/12 20:52:40 grumbel Exp $
+//  $Id: ActionButton.cc,v 1.17 2001/04/15 00:53:11 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -71,7 +71,7 @@ ActionButton::ActionButton() {}
 ActionButton::~ActionButton() {}
 
 void
-ActionButton::init(int x, int y, std::string str)
+ActionButton::init(int x, int y, std::string str, int owner_id)
 {
   //  make_action = func;
   x_pos = x;
@@ -91,9 +91,14 @@ ActionButton::init(int x, int y, std::string str)
   font = PingusResource::load_font("Fonts/courier_small", "fonts");
   font_h = PingusResource::load_font("Fonts/smallfont","fonts");
 
+  std::string owner;
+
+  if (owner_id == 1)
+    owner = "1";
+
   if (str != "empty") 
     {
-      surface   = PingusResource::load_surface(std::string("Pingus/" + str).c_str(),
+      surface   = PingusResource::load_surface(std::string("Pingus/" + str + owner).c_str(),
 					       "pingus");
       if (is_multi_direct)
 	{
@@ -133,9 +138,9 @@ ActionButton::set_action_holder(ActionHolder* h)
 }
 
 
-HorizontalActionButton::HorizontalActionButton(int x, int y, std::string str)
+HorizontalActionButton::HorizontalActionButton(int x, int y, std::string str, int owner_id)
 {
-  init(x, y, str);  
+  init(x, y, str, owner_id);  
 }
 
 HorizontalActionButton::~HorizontalActionButton() {}
@@ -194,9 +199,9 @@ HorizontalActionButton::draw()
   surface.put_screen(x_pos + 3, y_pos + 20, action_c);
 }
 
-VerticalActionButton::VerticalActionButton(int x, int y, std::string str)
+VerticalActionButton::VerticalActionButton(int x, int y, std::string str, int owner_id)
 {
-  init(x, y, str);
+  init(x, y, str, owner_id);
 }
 
 VerticalActionButton::~VerticalActionButton() {}

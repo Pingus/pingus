@@ -1,4 +1,4 @@
-//  $Id: ButtonPanel.cc,v 1.20 2001/04/13 22:17:46 grumbel Exp $
+//  $Id: ButtonPanel.cc,v 1.21 2001/04/15 00:53:11 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -52,14 +52,16 @@ ButtonPanel::ButtonPanel(boost::shared_ptr<PLF> plf,
 	  a_buttons.push_back(shared_ptr<ActionButton>(new HorizontalActionButton
 						       (38 * i + x_pos,
 							y_pos,
-							buttons_data[i].name)));
+							buttons_data[i].name,
+							controller->get_owner ())));
 	}
       else
 	{
 	  a_buttons.push_back(shared_ptr<ActionButton>(new VerticalActionButton
 						       (x_pos,
 							i * 38 + y_pos,
-							buttons_data[i].name)));
+							buttons_data[i].name,
+							controller->get_owner ())));
 	}
     }
 

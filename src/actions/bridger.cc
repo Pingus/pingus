@@ -1,4 +1,4 @@
-//  $Id: bridger.cc,v 1.33 2001/04/08 14:10:34 grumbel Exp $
+//  $Id: bridger.cc,v 1.34 2001/04/15 00:53:12 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -48,7 +48,8 @@ Bridger::init(void)
       brick_r = PingusResource::load_surface ("Other/brick_right", "pingus");
       static_surfaces_loaded = true;
     }
-  surface = static_surface;
+  surface = PingusResource::load_surface (std::string("Pingus/bridger") + (pingu->get_owner () ? "1" : ""),
+					  "pingus");
 
   bricks = 15;
 

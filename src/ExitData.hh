@@ -1,4 +1,4 @@
-//  $Id: ExitData.hh,v 1.1 2000/07/30 02:27:48 grumbel Exp $
+//  $Id: ExitData.hh,v 1.2 2001/04/15 00:53:11 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,11 +29,11 @@ class ExitData
 public:
   Position pos;
   ResDescriptor desc;
-
+  int owner_id;
   ///
   ExitData(){}
   /// Reset the values to default
-  void clean(void){}
+  void clean(void){ owner_id = 0; }
 };
 
 #endif

@@ -1,4 +1,4 @@
-//  $Id: MultiplayerClient.hh,v 1.2 2001/04/14 14:37:04 grumbel Exp $
+//  $Id: MultiplayerClient.hh,v 1.3 2001/04/15 00:53:11 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,6 +36,11 @@ public:
   MultiplayerClient (boost::dummy_ptr<Server> s,
 		     boost::shared_ptr<MultiplayerClientChild> child1,
 		     boost::shared_ptr<MultiplayerClientChild> child2);
+  MultiplayerClient (boost::dummy_ptr<Server> s,
+		     boost::shared_ptr<MultiplayerClientChild> child1,
+		     boost::shared_ptr<MultiplayerClientChild> child2,
+		     boost::shared_ptr<MultiplayerClientChild> child3,
+		     boost::shared_ptr<MultiplayerClientChild> child4);
   ~MultiplayerClient ();
 
   void update (float delta);

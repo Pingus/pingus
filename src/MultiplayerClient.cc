@@ -1,4 +1,4 @@
-//  $Id: MultiplayerClient.cc,v 1.1 2001/04/14 11:41:21 grumbel Exp $
+//  $Id: MultiplayerClient.cc,v 1.2 2001/04/15 00:53:11 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,19 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "MultiplayerClient.hh"
+
+MultiplayerClient::MultiplayerClient (boost::dummy_ptr<Server> s,
+				      boost::shared_ptr<MultiplayerClientChild> child1,
+				      boost::shared_ptr<MultiplayerClientChild> child2,
+				      boost::shared_ptr<MultiplayerClientChild> child3,
+				      boost::shared_ptr<MultiplayerClientChild> child4)
+  : server (s)
+{
+  gui_objs.push_back (child1);
+  gui_objs.push_back (child2);
+  gui_objs.push_back (child3);
+  gui_objs.push_back (child4);
+}
 
 MultiplayerClient::MultiplayerClient (boost::dummy_ptr<Server> s,
 				      boost::shared_ptr<MultiplayerClientChild> child1,

@@ -1,4 +1,4 @@
-//  $Id: XMLPLF.cc,v 1.21 2001/04/10 21:51:22 grumbel Exp $
+//  $Id: XMLPLF.cc,v 1.22 2001/04/15 00:53:11 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -417,6 +417,10 @@ XMLPLF::parse_exit(xmlNodePtr cur)
       else if (strcmp((char*)cur->name, "surface") == 0)
 	{
 	  exit.desc = XMLhelper::parse_surface(doc, cur);
+	}
+      else if (strcmp((char*)cur->name, "owner-id") == 0)
+	{
+	  exit.owner_id = XMLhelper::parse_int(doc, cur);
 	}
       cur = cur->next;	
     }

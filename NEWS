@@ -1,16 +1,15 @@
-Release 0.4.1 (??/???/2000)
-===========================
-
-Release 0.4.1 (never released)
+Release 0.5.0 (never released)
 ===========================
 * Added object grouping in the editor
 * Added multiple backgrounds (paralax scrolling)
+* Added dynamic backgrounds
 * Fullblown xml support
 * More flexible world object handling
 * All images are now eighter png or jpeg format
 * World map
-* A new menu
-* Added insertion of complex objects
+* A redesign of the main menu
+* Added multiplayer support
+
 
 Release 0.4.0 (16/Jul/2000)
 ===========================

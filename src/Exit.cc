@@ -1,4 +1,4 @@
-//  $Id: Exit.cc,v 1.16 2001/04/08 14:10:34 grumbel Exp $
+//  $Id: Exit.cc,v 1.17 2001/04/15 00:53:11 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,6 +33,7 @@ Exit::Exit(ExitData data)
 
   pos  = data.pos;
   desc = data.desc;
+  owner_id = data.owner_id;
 }
 
 Exit::~Exit()

@@ -1,4 +1,4 @@
-//  $Id: ActionButton.hh,v 1.15 2001/04/12 19:47:09 grumbel Exp $
+//  $Id: ActionButton.hh,v 1.16 2001/04/15 00:53:11 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -172,7 +172,7 @@ public:
   virtual ~ActionButton();
 
   ///
-  void init(int x, int y, std::string str);
+  void init(int x, int y, std::string str, int owner_id);
 
   /// Draws the button and increase the animation counter.
   virtual void   draw() = 0;
@@ -201,7 +201,7 @@ class HorizontalActionButton : public ActionButton
 private:
 public:
   ///
-  HorizontalActionButton(int x, int y, std::string str);
+  HorizontalActionButton(int x, int y, std::string str, int owner_id);
   ///
   virtual ~HorizontalActionButton();
   ///
@@ -217,7 +217,7 @@ class VerticalActionButton : public ActionButton
 private:
 public:
   ///
-  VerticalActionButton(int x, int y, std::string str);
+  VerticalActionButton(int x, int y, std::string str, int owner_id);
   ///
   virtual ~VerticalActionButton();
   ///
