@@ -1,4 +1,4 @@
-//  $Id: info_box.cxx,v 1.7 2002/09/04 20:30:29 grumbel Exp $
+//  $Id: info_box.cxx,v 1.8 2002/09/05 11:26:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -137,7 +137,7 @@ InfoBox::draw (GraphicContext& gc)
     }
   else
     {
-      sprite.put_screen (pos);
+      gc.draw (sprite, pos);
     }
 }
 

@@ -1,7 +1,7 @@
-//  $Id: fake_exit.hxx,v 1.2 2002/09/05 11:26:35 grumbel Exp $
-//
+//  $Id: fonts.hxx,v 1.1 2002/09/05 11:26:35 grumbel Exp $
+// 
 //  Pingus - A free Lemmings clone
-//  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
+//  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
 //
 //  This program is free software; you can redistribute it and/or
 //  modify it under the terms of the GNU General Public License
@@ -12,47 +12,26 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//
+// 
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef HEADER_PINGUS_TRAPS_FAKE_EXIT_HXX
-#define HEADER_PINGUS_TRAPS_FAKE_EXIT_HXX
+#ifndef HEADER_PINGUS_FONTS_HXX
+#define HEADER_PINGUS_FONTS_HXX
 
-#include "../worldobj.hxx"
+#include "graphic_context.hxx"
 
-namespace WorldObjsData {
-  class FakeExitData;
-}
+namespace Fonts
+{
+  extern FontHandle pingus_small;
+  extern FontHandle pingus_large;
+  extern FontHandle smallfont;
+  extern FontHandle xterm;
+  extern FontHandle lcd;
 
-class Pingu;
-
-namespace WorldObjs {
-
-  class FakeExit : public WorldObj
-  {
-  private:
-    bool smashing;
-    WorldObjsData::FakeExitData* const data;
-    
-  public:
-    FakeExit (WorldObjsData::FakeExitData* data_);
-   ~FakeExit ();
-
-    float get_z_pos () const;
-    
-    void draw (GraphicContext& gc);
-
-    void update (float delta);
-
-  private:
-    void catch_pingu (Pingu*);
-    
-    FakeExit (const FakeExit&);
-    FakeExit operator= (const FakeExit&);
-  };
-
+  /** Load all fonts */
+  void init_fonts ();
 }
 
 #endif

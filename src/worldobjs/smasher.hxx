@@ -1,4 +1,4 @@
-//  $Id: smasher.hxx,v 1.1 2002/09/04 14:55:13 torangan Exp $
+//  $Id: smasher.hxx,v 1.2 2002/09/05 11:26:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -45,7 +45,7 @@ namespace WorldObjs {
 
     float get_z_pos () const;
     
-    void draw_offset (int x, int y, float s);
+    void draw (GraphicContext& gc);
     void draw_colmap ();
     void update (float delta);
 

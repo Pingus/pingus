@@ -1,4 +1,4 @@
-//  $Id: spike.cxx,v 1.1 2002/09/04 14:55:13 torangan Exp $
+//  $Id: spike.cxx,v 1.2 2002/09/05 11:26:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -47,12 +47,10 @@ namespace WorldObjs {
   }
 
   void
-  Spike::draw_offset (int x, int y, float /*s*/)
+  Spike::draw (GraphicContext& gc)
   {
     if (killing) {
-      data->surface.put_screen(static_cast<int>(data->pos.x + x),
-                               static_cast<int>(data->pos.y + y),
-			       data->counter);
+      gc.draw (data->surface, data->pos, data->counter);
     } else {
       // do nothing
     }

@@ -1,4 +1,4 @@
-//  $Id: pingu.cxx,v 1.23 2002/09/04 22:10:47 grumbel Exp $
+//  $Id: pingu.cxx,v 1.24 2002/09/05 11:26:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,6 +33,7 @@
 #include "debug.hxx"
 #include "string_converter.hxx"
 #include "worldobj.hxx"
+#include "fonts.hxx"
 
 using namespace Actions;
 
@@ -46,7 +47,6 @@ Pingu::Pingu (const CL_Vector& arg_pos, int owner)
               wall_action(0),
               fall_action(0),
               id(++id_counter),
-              font(PingusResource::load_font("Fonts/numbers", "fonts")),
               action_time(-1),
               owner_id(owner),
               status(PS_ALIVE),
@@ -353,9 +353,9 @@ Pingu::draw (GraphicContext& gc)
       // FIXME: in ticks, should probally be in seconds]
       snprintf(str, 16, "%d", action_time);
       
-      font->print_center(static_cast<int>(pos_x), 
-			 static_cast<int>(pos_y - 45) + 2, 
-			 str);
+      gc.print_center(Fonts::lcd, 
+		      static_cast<int>(pos_x), static_cast<int>(pos_y - 45) + 2, 
+		      str);
     }
 }
 

@@ -1,4 +1,4 @@
-//  $Id: teleporter.cxx,v 1.6 2002/09/04 14:55:13 torangan Exp $
+//  $Id: teleporter.cxx,v 1.7 2002/09/05 11:26:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -136,12 +136,10 @@ Teleporter::Teleporter (const TeleporterData& data)
 }
 
 void 
-Teleporter::draw_offset (int x_of, int y_of, float /*s*/)
+Teleporter::draw (GraphicContext& gc)
 {
-  //std::cout << "Teleporter::draw_offset ()" << std::endl;
-  //view->draw (sur, pos);
-  sprite.put_screen (pos + CL_Vector(x_of, y_of));
-  target_sprite.put_screen (target_pos + CL_Vector(x_of, y_of));
+  gc.draw (sprite, pos);
+  gc.draw (target_sprite, target_pos);
 }
 
 void 

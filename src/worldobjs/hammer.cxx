@@ -1,4 +1,4 @@
-//  $Id: hammer.cxx,v 1.1 2002/09/04 14:55:13 torangan Exp $
+//  $Id: hammer.cxx,v 1.2 2002/09/05 11:26:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,17 +46,9 @@ namespace WorldObjs {
   }
 
   void 
-  Hammer::draw_offset (int x, int y, float s)
+  Hammer::draw (GraphicContext& gc)
   {
-    if (s == 1.0) {
-      data->surface.put_screen(static_cast<int>(data->pos.x + x), 
-                               static_cast<int>(data->pos.y + y),
-	  	               data->counter.value());
-    } else {
-      data->surface.put_screen(static_cast<int>((data->pos.x + x) * s), 
-		               static_cast<int>((data->pos.y + y) * s),
-		               s, s, data->counter.value());
-    }
+    gc.draw (data->surface, data->pos, data->counter.value());
   }
 
   void

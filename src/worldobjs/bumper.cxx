@@ -1,4 +1,4 @@
-//  $Id: bumper.cxx,v 1.1 2002/09/04 14:55:13 torangan Exp $
+//  $Id: bumper.cxx,v 1.2 2002/09/05 11:26:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -78,10 +78,9 @@ namespace WorldObjs {
   }
 
   void 
-  Bumper::draw_offset(int x, int y, float s)
+  Bumper::draw (GraphicContext& gc)
   {
-    data->surface.put_screen(static_cast<int>(data->pos.x) + x, static_cast<int>(data->pos.y) + y, count);
-    UNUSED_ARG(s);
+    gc.draw (data->surface, data->pos, count);
   }
 
   void 

@@ -1,4 +1,4 @@
-//  $Id: display_graphic_context.cxx,v 1.2 2002/09/04 21:02:40 grumbel Exp $
+//  $Id: display_graphic_context.cxx,v 1.3 2002/09/05 11:26:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <ClanLib/Display/Display/display.h>
+#include <ClanLib/Display/Font/font.h>
 #include "math.hxx"
 #include "sprite.hxx"
 #include "display_graphic_context.hxx"
@@ -300,6 +301,30 @@ DisplayGraphicContext::draw_circle (int x_pos, int y_pos, int radius,
       current = next;
       next = next.rotate (pi/8, CL_Vector (0, 0, 1.0f));
     }
+}
+
+void
+DisplayGraphicContext::print_left (FontHandle font, int x_pos, int y_pos, const std::string& str)
+{
+  font->print_left(int(x_pos + get_x_offset () + center.x),
+		   int(y_pos + get_y_offset () + center.y),
+		   str.c_str ());
+}
+
+void
+DisplayGraphicContext::print_center (FontHandle font, int x_pos, int y_pos, const std::string& str)
+{
+  font->print_center(int(x_pos + get_x_offset () + center.x),
+		     int(y_pos + get_y_offset () + center.y),
+		     str.c_str ());  
+}
+  
+void
+DisplayGraphicContext::print_right (FontHandle font, int x_pos, int y_pos, const std::string& str)
+{
+  font->print_right(int(x_pos + get_x_offset () + center.x),
+		    int(y_pos + get_y_offset () + center.y),
+		    str.c_str ());
 }
 
 /* EOF */

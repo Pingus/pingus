@@ -1,4 +1,4 @@
-//  $Id: pingu.hxx,v 1.14 2002/09/04 22:10:47 grumbel Exp $
+//  $Id: pingu.hxx,v 1.15 2002/09/05 11:26:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,7 +25,6 @@
 #include "pingu_enums.hxx"
 
 // Forward declarations
-class CL_Font;
 class CL_Vector;
 class ActionHolder;
 class PinguAction;
@@ -57,7 +56,6 @@ private:
       a demo file or in a network connection */
   int id;
 
-  CL_Font* font;
   int action_time;
   int owner_id;
 

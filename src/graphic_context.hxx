@@ -1,4 +1,4 @@
-//  $Id: graphic_context.hxx,v 1.1 2002/09/04 17:49:48 grumbel Exp $
+//  $Id: graphic_context.hxx,v 1.2 2002/09/05 11:26:35 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,11 +20,15 @@
 #ifndef HEADER_PINGUS_GRAPHIC_CONTEXT_HXX
 #define HEADER_PINGUS_GRAPHIC_CONTEXT_HXX
 
+#include <string>
 #include <ClanLib/Core/Math/cl_vector.h>
 #include <ClanLib/Core/Math/rect.h>
 
 class Sprite;
 class CL_Surface;
+class CL_Font;
+
+typedef CL_Font* FontHandle;
 
 /** Abstract interface */
 class GraphicContext
@@ -92,6 +96,16 @@ public:
   /** Draw a circle */
   virtual void draw_circle (int x_pos, int y_pos, int radius,
 			    float r, float g, float b, float a = 1.0f) =0;
+
+  // Font handling routines
+  /** Print a text left aligned */
+  virtual void print_left (FontHandle font, int x_pos, int y_pos, const std::string& str) =0;
+
+  /** Print a text centred to the given position */
+  virtual void print_center (FontHandle font, int x_pos, int y_pos, const std::string& str) =0;
+  
+  /** Print a text right aligned */
+  virtual void print_right (FontHandle font, int x_pos, int y_pos, const std::string& str) =0;
 };
 
 #endif

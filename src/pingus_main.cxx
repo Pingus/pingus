@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.12 2002/08/17 17:56:23 torangan Exp $
+//   $Id: pingus_main.cxx,v 1.13 2002/09/05 11:26:35 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -74,7 +74,7 @@
 #include "screen_manager.hxx"
 #include "sound_dummy.hxx"
 #include "action_data.hxx"
-
+#include "fonts.hxx"
 #include "sound_real.hxx"
 
 void
@@ -621,6 +621,7 @@ PingusMain::init_pingus()
 		<< std::endl;
     }
 
+  Fonts::init_fonts ();
   fps_counter.init();
   console.init();
 

@@ -1,7 +1,7 @@
-//  $Id: fake_exit.hxx,v 1.2 2002/09/05 11:26:35 grumbel Exp $
+//  $Id: fonts.cxx,v 1.1 2002/09/05 11:26:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
-//  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
+//  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
 //
 //  This program is free software; you can redistribute it and/or
 //  modify it under the terms of the GNU General Public License
@@ -17,44 +17,28 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef HEADER_PINGUS_TRAPS_FAKE_EXIT_HXX
-#define HEADER_PINGUS_TRAPS_FAKE_EXIT_HXX
+#include "pingus_resource.hxx"
+#include "fonts.hxx"
 
-#include "../worldobj.hxx"
+namespace Fonts
+{
+  FontHandle pingus_small;
+  FontHandle pingus_large;
+  FontHandle smallfont;
+  FontHandle xterm;
+  FontHandle lcd;
 
-namespace WorldObjsData {
-  class FakeExitData;
-}
-
-class Pingu;
-
-namespace WorldObjs {
-
-  class FakeExit : public WorldObj
+  void
+  init_fonts ()
   {
-  private:
-    bool smashing;
-    WorldObjsData::FakeExitData* const data;
-    
-  public:
-    FakeExit (WorldObjsData::FakeExitData* data_);
-   ~FakeExit ();
+    pingus_small = PingusResource::load_font("Fonts/pingus_small", "fonts");
+    pingus_large = PingusResource::load_font("Fonts/pingus","fonts");
 
-    float get_z_pos () const;
-    
-    void draw (GraphicContext& gc);
+    xterm        = PingusResource::load_font("Fonts/xterm","fonts");
+    smallfont    = PingusResource::load_font("Fonts/smallfont","fonts");
 
-    void update (float delta);
-
-  private:
-    void catch_pingu (Pingu*);
-    
-    FakeExit (const FakeExit&);
-    FakeExit operator= (const FakeExit&);
-  };
-
+    lcd          = PingusResource::load_font("Fonts/numbers", "fonts");
+  }
 }
-
-#endif
 
 /* EOF */
