@@ -1,11 +1,14 @@
 /* This level was created with the PLE
- * $Id: foliage1.plf,v 1.6 2000/02/16 23:34:10 grumbel Exp $
+ * $Id: foliage1.plf,v 1.7 2000/04/08 20:05:12 grumbel Exp $
  */
 global {
   start_x_pos = 0;
   start_y_pos = 0;
-  levelname = "Jungle Ground 1";
-  description = ".";
+  levelname = "Foliage 1 - Flat ground";
+  description = ".
+no exit
+
+";
   number_of_pingus = 100;
   number_to_save = 50;
   time = 9000;

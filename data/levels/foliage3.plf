@@ -1,11 +1,11 @@
 /* This level was created with the PLE
- * $Id: foliage3.plf,v 1.1 2000/03/20 18:59:09 grumbel Exp $
+ * $Id: foliage3.plf,v 1.2 2000/04/08 20:05:12 grumbel Exp $
  */
 global {
   start_x_pos = 0;
   start_y_pos = 0;
-  levelname = "PLE Level";
-  description = "This level has no name
+  levelname = "Foliage 3 - Down in the darkness";
+  description = "
 
 ";
   number_of_pingus = 100;
@@ -21,11 +21,11 @@ ground {
 }
 
 background {
-  image = (resource:textures.dat)"Textures/crystal";
-  dim   = "0";
-  red   = "0";
-  green = "0";
-  blue  = "0";
+  image = (resource:textures.dat)"Textures/rooftile";
+  dim   = "0.5";
+  red   = "1.0";
+  green = "1.0";
+  blue  = "1.0";
   scroll_x = 0;
   scroll_y = 0;
   para_x = 0.5;
@@ -47,7 +47,7 @@ buttons {
 }
 
 exit {
-  image = (resource)"Exits/stone";
+  image = (resource)"Exits/sortie_anim";
   x_pos = 921;
   y_pos = 2235;
   z_pos = 0;

@@ -1,8 +1,7 @@
 /* This level was created with the PLE
- * $Id: level7.plf,v 1.6 2000/03/08 02:02:48 grumbel Exp $
+ * $Id: level7.plf,v 1.7 2000/04/08 20:05:12 grumbel Exp $
  */
 global {
-  author = "Ingo Ruhnke <grumbel@gmx.de>";
   start_x_pos = 1200;
   start_y_pos = 240;
   levelname = "Evil in the dark";
@@ -27,6 +26,10 @@ background {
   blue  = "0";
   scroll_x = 50;
   scroll_y = 0;
+  para_x = 0.5;
+  para_y = 0.5;
+  stretch_x = 0;
+  stretch_y = 0;
 }
 
 buttons {
@@ -38,6 +41,20 @@ buttons {
   digger = 20;
   floater = 20;
   miner = 20;
+}
+
+exit {
+  image = (resource)"Exits/sortie_anim";
+  x_pos = 790;
+  y_pos = 355;
+  z_pos = 0;
+}
+
+exit {
+  image = (resource)"Exits/sortie_anim";
+  x_pos = 570;
+  y_pos = 360;
+  z_pos = 0;
 }
 
 entrance {
@@ -69,7 +86,7 @@ liquid {
 
 trap {
   name = "smasher";
-  x_pos = 578;
+  x_pos = 577;
   y_pos = 72;
   z_pos = 10000;
 }

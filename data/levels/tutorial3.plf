@@ -1,11 +1,11 @@
 /* This level was created with the PLE
- * $Id: tutorial3.plf,v 1.1 2000/03/12 02:09:31 grumbel Exp $
+ * $Id: tutorial3.plf,v 1.2 2000/04/08 20:05:12 grumbel Exp $
  */
 global {
   start_x_pos = 0;
   start_y_pos = 0;
-  levelname = "PLE Level";
-  description = "This level has no name
+  levelname = "Tutorial 5 - Build builder build";
+  description = "
 
 ";
   number_of_pingus = 10;
@@ -21,7 +21,7 @@ ground {
 }
 
 background {
-  image = (resource:textures.dat)"Textures/crystal";
+  image = (resource:textures.dat)"Textures/rocktile";
   dim   = "0";
   red   = "0";
   green = "0";
