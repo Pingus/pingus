@@ -1,4 +1,4 @@
-//  $Id: ColMap.cc,v 1.10 2000/04/24 13:15:41 grumbel Exp $
+//  $Id: ColMap.cc,v 1.11 2000/05/03 16:49:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -147,7 +147,7 @@ ColMap::remove(CL_SurfaceProvider* provider, int x, int y)
 	    {
 	      if (buffer[(i + (swidth*line)) * 4] != 0) 
 		{
-		  if (colmap[i + (width*(line+y) + x)] != SOLID)
+		  if (!(colmap[i + (width*(line+y) + x)] & SOLID))
 		    colmap[i + (width*(line+y) + x)] = NOTHING;
 		}
 	    }
@@ -173,7 +173,7 @@ ColMap::remove(CL_SurfaceProvider* provider, int x, int y)
 	    {
 	      if (buffer[i + (swidth*line)]) 
 		{
-		  if (colmap[i + (width*(line+y) + x)] != SOLID)
+		  if (!(colmap[i + (width*(line+y) + x)] & SOLID))
 		    colmap[i + (width*(line+y) + x)] = NOTHING;
 		}
 	    }
