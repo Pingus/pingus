@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.5 2002/06/29 14:01:32 grumbel Exp $
+//   $Id: pingus_main.cxx,v 1.6 2002/07/10 18:10:06 torangan Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -846,11 +846,11 @@ PingusMain::start_game(void)
     menu.display ();
   }
   
-  catch (CL_Error err) {
+  catch (const CL_Error& err) {
     PingusMessageBox box(std::string("CL_Error: " + err.message));
   }
   
-  catch (PingusError& err) {
+  catch (const PingusError& err) {
     PingusMessageBox(" PingusError: " + err.get_message ());
   }
 
@@ -885,19 +885,19 @@ PingusMain::main(int argc, char** argv)
     start_game();
   }
   
-  catch (CL_Error err) {
+  catch (const CL_Error& err) {
     std::cout << _("Error caught from ClanLib: ") << err.message << std::endl;
   }
   
-  catch (PingusError err) {
+  catch (const PingusError& err) {
     std::cout << _("Error caught from Pingus: ") << err.get_message () << std::endl;
   }
 
-  catch (std::bad_alloc a) {
+  catch (const std::bad_alloc& a) {
     std::cout << _("Pingus: Out of memory!") << std::endl;
   }
 
-  catch (std::exception a) {
+  catch (const std::exception& a) {
     std::cout << _("Pingus: Standard exception caught!:\n") << a.what() << std::endl;
   }
 

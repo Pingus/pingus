@@ -1,4 +1,4 @@
-//  $Id: pingus_error.hxx,v 1.2 2002/06/24 22:52:55 grumbel Exp $
+//  $Id: pingus_error.hxx,v 1.3 2002/07/10 18:10:06 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,7 +29,7 @@ protected:
 public:
   PingusException ();
   virtual ~PingusException ();
-  virtual std::string get_message () =0;
+  virtual std::string get_message () const =0;
 };
 
 /** PingusBug gets thrown on events which are a bug in Pingus, this
@@ -39,7 +39,7 @@ class PingusBug : public PingusException
 {
 public:
   PingusBug(std::string mes);
-  virtual std::string get_message();
+  virtual std::string get_message() const;
 };
 
 
@@ -51,7 +51,7 @@ public:
   ///
   PingusError(std::string mes);
   ///
-  virtual std::string get_message ();
+  virtual std::string get_message () const;
 };
 
 #endif
