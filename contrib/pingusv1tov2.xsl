@@ -58,7 +58,7 @@
         <xsl:with-param name="text" select="concat(translate($datafile, '-', '/'), '/', $ident)" />
       </xsl:call-template>
     </image>
-    <modifer><xsl:value-of select="modifier" /></modifer>
+    <modifier><xsl:value-of select="modifier" /></modifier>
   </xsl:template>
 
   <xsl:template name="replace-alias">

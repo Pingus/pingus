@@ -25,7 +25,7 @@
     <surface-background>
       <surface>
         <image>textures/clouds2</image>
-        <modifer>ROT0</modifer>
+        <modifier>ROT0</modifer>
       </surface>
       <color>
         <red>0</red>
@@ -50,7 +50,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/snow/piece7</image>
-        <modifer>ROT0</modifer>
+        <modifier>ROT0</modifer>
       </surface>
       <position>
         <x>870</x>
@@ -62,7 +62,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/snow/piece10</image>
-        <modifer>ROT0</modifer>
+        <modifier>ROT0</modifer>
       </surface>
       <position>
         <x>859</x>
@@ -74,7 +74,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/snow/block2</image>
-        <modifer>ROT0</modifer>
+        <modifier>ROT0</modifer>
       </surface>
       <position>
         <x>594</x>
@@ -86,7 +86,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/snow/block1</image>
-        <modifer>ROT0</modifer>
+        <modifier>ROT0</modifer>
       </surface>
       <position>
         <x>530</x>
@@ -98,7 +98,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/snow/block4</image>
-        <modifer>ROT0</modifer>
+        <modifier>ROT0</modifer>
       </surface>
       <position>
         <x>498</x>
@@ -110,7 +110,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/snow/block4</image>
-        <modifer>ROT0</modifer>
+        <modifier>ROT0</modifer>
       </surface>
       <position>
         <x>200</x>
@@ -122,7 +122,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/snow/block3</image>
-        <modifer>ROT0</modifer>
+        <modifier>ROT0</modifer>
       </surface>
       <position>
         <x>498</x>
@@ -134,7 +134,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/snow/block3</image>
-        <modifer>ROT0</modifer>
+        <modifier>ROT0</modifer>
       </surface>
       <position>
         <x>562</x>
@@ -146,7 +146,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/snow/block2</image>
-        <modifer>ROT0</modifer>
+        <modifier>ROT0</modifer>
       </surface>
       <position>
         <x>594</x>
@@ -158,7 +158,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/snow/block1</image>
-        <modifer>ROT0</modifer>
+        <modifier>ROT0</modifer>
       </surface>
       <position>
         <x>530</x>
@@ -170,7 +170,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/snow/block4</image>
-        <modifer>ROT0</modifer>
+        <modifier>ROT0</modifer>
       </surface>
       <position>
         <x>498</x>
@@ -182,7 +182,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/snow/block4</image>
-        <modifer>ROT0</modifer>
+        <modifier>ROT0</modifer>
       </surface>
       <position>
         <x>658</x>
@@ -194,7 +194,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/snow/block4</image>
-        <modifer>ROT0</modifer>
+        <modifier>ROT0</modifer>
       </surface>
       <position>
         <x>658</x>
@@ -206,7 +206,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/snow/block3</image>
-        <modifer>ROT0</modifer>
+        <modifier>ROT0</modifer>
       </surface>
       <position>
         <x>626</x>
@@ -218,7 +218,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/snow/block2</image>
-        <modifer>ROT0</modifer>
+        <modifier>ROT0</modifer>
       </surface>
       <position>
         <x>817</x>
@@ -230,7 +230,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/snow/block1</image>
-        <modifer>ROT0</modifer>
+        <modifier>ROT0</modifer>
       </surface>
       <position>
         <x>753</x>
@@ -242,7 +242,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/snow/block4</image>
-        <modifer>ROT0</modifer>
+        <modifier>ROT0</modifer>
       </surface>
       <position>
         <x>721</x>
@@ -254,7 +254,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/snow/block3</image>
-        <modifer>ROT0</modifer>
+        <modifier>ROT0</modifer>
       </surface>
       <position>
         <x>721</x>
@@ -266,7 +266,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/snow/block3</image>
-        <modifer>ROT0</modifer>
+        <modifier>ROT0</modifer>
       </surface>
       <position>
         <x>785</x>
@@ -278,7 +278,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/snow/block2</image>
-        <modifer>ROT0</modifer>
+        <modifier>ROT0</modifer>
       </surface>
       <position>
         <x>817</x>
@@ -290,7 +290,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/snow/block1</image>
-        <modifer>ROT0</modifer>
+        <modifier>ROT0</modifer>
       </surface>
       <position>
         <x>753</x>
@@ -302,7 +302,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/snow/block4</image>
-        <modifer>ROT0</modifer>
+        <modifier>ROT0</modifer>
       </surface>
       <position>
         <x>721</x>
@@ -314,7 +314,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/snow/block4</image>
-        <modifer>ROT0</modifer>
+        <modifier>ROT0</modifer>
       </surface>
       <position>
         <x>881</x>
@@ -326,7 +326,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/snow/block4</image>
-        <modifer>ROT0</modifer>
+        <modifier>ROT0</modifer>
       </surface>
       <position>
         <x>881</x>
@@ -338,7 +338,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/snow/block3</image>
-        <modifer>ROT0</modifer>
+        <modifier>ROT0</modifer>
       </surface>
       <position>
         <x>849</x>
@@ -350,7 +350,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/snow/piece10</image>
-        <modifer>ROT0</modifer>
+        <modifier>ROT0</modifer>
       </surface>
       <position>
         <x>293</x>
@@ -362,7 +362,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/snow/piece10</image>
-        <modifer>ROT0</modifer>
+        <modifier>ROT0</modifer>
       </surface>
       <position>
         <x>460</x>
@@ -374,7 +374,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/snow/piece10</image>
-        <modifer>ROT0</modifer>
+        <modifier>ROT0</modifer>
       </surface>
       <position>
         <x>721</x>
@@ -386,7 +386,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/snow/piece10</image>
-        <modifer>ROT0</modifer>
+        <modifier>ROT0</modifer>
       </surface>
       <position>
         <x>187</x>
@@ -398,7 +398,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/snow/ice2</image>
-        <modifer>ROT0</modifer>
+        <modifier>ROT0</modifer>
       </surface>
       <position>
         <x>300</x>
@@ -410,7 +410,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/snow/piece2</image>
-        <modifer>ROT0</modifer>
+        <modifier>ROT0</modifer>
       </surface>
       <position>
         <x>243</x>
@@ -422,7 +422,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/snow/ice2</image>
-        <modifer>ROT0</modifer>
+        <modifier>ROT0</modifer>
       </surface>
       <position>
         <x>416</x>
@@ -434,7 +434,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/snow/piece10</image>
-        <modifer>ROT0</modifer>
+        <modifier>ROT0</modifer>
       </surface>
       <position>
         <x>993</x>
@@ -446,7 +446,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/snow/piece2</image>
-        <modifer>ROT0</modifer>
+        <modifier>ROT0</modifer>
       </surface>
       <position>
         <x>359</x>
@@ -458,7 +458,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/snow/ice2</image>
-        <modifer>ROT0</modifer>
+        <modifier>ROT0</modifer>
       </surface>
       <position>
         <x>432</x>
@@ -470,7 +470,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/snow/ice2</image>
-        <modifer>ROT0</modifer>
+        <modifier>ROT0</modifer>
       </surface>
       <position>
         <x>202</x>
@@ -482,7 +482,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/snow/block3</image>
-        <modifer>ROT0</modifer>
+        <modifier>ROT0</modifer>
       </surface>
       <position>
         <x>181</x>
@@ -494,7 +494,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/snow/ice2</image>
-        <modifer>ROT0</modifer>
+        <modifier>ROT0</modifer>
       </surface>
       <position>
         <x>176</x>
@@ -506,7 +506,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/snow/ice2</image>
-        <modifer>ROT0</modifer>
+        <modifier>ROT0</modifer>
       </surface>
       <position>
         <x>908</x>
@@ -518,7 +518,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/snow/ice2</image>
-        <modifer>ROT0</modifer>
+        <modifier>ROT0</modifer>
       </surface>
       <position>
         <x>970</x>
@@ -530,7 +530,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/snow/ice2</image>
-        <modifer>ROT0</modifer>
+        <modifier>ROT0</modifer>
       </surface>
       <position>
         <x>1012</x>
@@ -542,7 +542,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/snow/ice2</image>
-        <modifer>ROT0</modifer>
+        <modifier>ROT0</modifer>
       </surface>
       <position>
         <x>1065</x>
@@ -554,7 +554,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/snow/ice2</image>
-        <modifer>ROT0</modifer>
+        <modifier>ROT0</modifer>
       </surface>
       <position>
         <x>1113</x>
@@ -566,7 +566,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/snow/ice2</image>
-        <modifer>ROT0</modifer>
+        <modifier>ROT0</modifer>
       </surface>
       <position>
         <x>1155</x>
@@ -582,7 +582,7 @@
       </position>
       <surface>
         <image>exits/ice2</image>
-        <modifer>ROT0</modifer>
+        <modifier>ROT0</modifer>
       </surface>
       <owner-id>0</owner-id>
     </exit>
@@ -590,7 +590,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/snow/ice2</image>
-        <modifer>ROT0</modifer>
+        <modifier>ROT0</modifer>
       </surface>
       <position>
         <x>617</x>
@@ -602,7 +602,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/snow/ice2</image>
-        <modifer>ROT0</modifer>
+        <modifier>ROT0</modifer>
       </surface>
       <position>
         <x>497</x>
@@ -614,7 +614,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/snow/ice2</image>
-        <modifer>ROT0FLIP</modifer>
+        <modifier>ROT0FLIP</modifer>
       </surface>
       <position>
         <x>730</x>
@@ -626,7 +626,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/snow/ice2</image>
-        <modifer>ROT0</modifer>
+        <modifier>ROT0</modifer>
       </surface>
       <position>
         <x>841</x>
@@ -638,7 +638,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/snow/ice2</image>
-        <modifer>ROT0</modifer>
+        <modifier>ROT0</modifer>
       </surface>
       <position>
         <x>777</x>
@@ -650,7 +650,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/snow/ice2</image>
-        <modifer>ROT0FLIP</modifer>
+        <modifier>ROT0FLIP</modifer>
       </surface>
       <position>
         <x>778</x>
@@ -662,7 +662,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/snow/ice2</image>
-        <modifer>ROT0</modifer>
+        <modifier>ROT0</modifer>
       </surface>
       <position>
         <x>560</x>
@@ -674,7 +674,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/snow/pillar1</image>
-        <modifer>ROT0</modifer>
+        <modifier>ROT0</modifer>
       </surface>
       <position>
         <x>228</x>
@@ -686,7 +686,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/snow/pillar2</image>
-        <modifer>ROT0</modifer>
+        <modifier>ROT0</modifer>
       </surface>
       <position>
         <x>272</x>
@@ -698,7 +698,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/snow/pillar1</image>
-        <modifer>ROT0</modifer>
+        <modifier>ROT0</modifer>
       </surface>
       <position>
         <x>517</x>
@@ -710,7 +710,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/snow/pillar2</image>
-        <modifer>ROT0</modifer>
+        <modifier>ROT0</modifer>
       </surface>
       <position>
         <x>544</x>
@@ -722,7 +722,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/snow/pillar1</image>
-        <modifer>ROT0</modifer>
+        <modifier>ROT0</modifer>
       </surface>
       <position>
         <x>925</x>
@@ -734,7 +734,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/snow/pillar2</image>
-        <modifer>ROT0</modifer>
+        <modifier>ROT0</modifer>
       </surface>
       <position>
         <x>897</x>
@@ -746,7 +746,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/snow/pillar1</image>
-        <modifer>ROT0</modifer>
+        <modifier>ROT0</modifer>
       </surface>
       <position>
         <x>879</x>
@@ -758,7 +758,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/snow/pillar1</image>
-        <modifer>ROT0</modifer>
+        <modifier>ROT0</modifer>
       </surface>
       <position>
         <x>1132</x>
@@ -770,7 +770,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/snow/pillar1</image>
-        <modifer>ROT0</modifer>
+        <modifier>ROT0</modifer>
       </surface>
       <position>
         <x>1075</x>
@@ -782,7 +782,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/snow/pillar2</image>
-        <modifer>ROT0</modifer>
+        <modifier>ROT0</modifer>
       </surface>
       <position>
         <x>1090</x>
@@ -793,7 +793,7 @@
     <liquid>
       <surface>
         <image>liquids/water2</image>
-        <modifer>ROT0</modifer>
+        <modifier>ROT0</modifer>
       </surface>
       <position>
         <x>-21</x>
@@ -806,7 +806,7 @@
     <liquid>
       <surface>
         <image>liquids/water2</image>
-        <modifer>ROT0</modifer>
+        <modifier>ROT0</modifer>
       </surface>
       <position>
         <x>-57</x>
@@ -819,7 +819,7 @@
     <hotspot>
       <surface>
         <image>entrances/snow_back</image>
-        <modifer>ROT0</modifer>
+        <modifier>ROT0</modifer>
       </surface>
       <position>
         <x>250.668</x>
@@ -843,7 +843,7 @@
     <hotspot>
       <surface>
         <image>entrances/snow_front</image>
-        <modifer>ROT0</modifer>
+        <modifier>ROT0</modifer>
       </surface>
       <position>
         <x>250.688</x>
