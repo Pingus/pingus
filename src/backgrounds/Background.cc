@@ -1,4 +1,4 @@
-//  $Id: Background.cc,v 1.3 2000/12/16 23:11:22 grumbel Exp $
+//  $Id: Background.cc,v 1.4 2000/12/30 23:54:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,8 +32,8 @@ Background::~Background()
 {
 }
 
-shared_ptr<Background>
-Background::create (shared_ptr<BackgroundData> data)
+boost::shared_ptr<Background>
+Background::create (boost::shared_ptr<BackgroundData> data)
 {
   if (dynamic_cast<SurfaceBackgroundData*>(data.get()) != 0)
     return SurfaceBackground::create (data);

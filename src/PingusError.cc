@@ -1,4 +1,4 @@
-//  $Id: PingusError.cc,v 1.3 2000/02/11 16:58:26 grumbel Exp $
+//  $Id: PingusError.cc,v 1.4 2000/12/30 23:54:05 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,12 +21,36 @@
 
 #include "PingusError.hh"
 
+PingusException::PingusException ()
+{
+}
+
+PingusException::~PingusException ()
+{
+}
+
+PingusBug::PingusBug(std::string mes)
+{
+  message = mes;
+  std::cout << "PingusBug: " << message << std::endl;
+}
+
+std::string
+PingusBug::get_message ()
+{
+  return "PingusBug: " + message;
+}
+
 PingusError::PingusError(std::string mes)
 {
   message = mes;
-
   std::cout << "PingusError: " << message << std::endl;
 }
 
+std::string
+PingusError::get_message ()
+{
+  return "PingusError: " + message;
+}
 
 /* EOF */

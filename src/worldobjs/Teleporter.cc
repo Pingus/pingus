@@ -1,4 +1,4 @@
-//  $Id: Teleporter.cc,v 1.11 2000/12/16 23:11:24 grumbel Exp $
+//  $Id: Teleporter.cc,v 1.12 2000/12/30 23:54:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -140,16 +140,16 @@ EditorTeleporterObj::~EditorTeleporterObj ()
   // FIXME: delete the target obj here
 }
 
-std::list<shared_ptr<EditorObj> > 
+std::list<boost::shared_ptr<EditorObj> > 
 EditorTeleporterObj::create (WorldObjData* data)
 {
-  std::list<shared_ptr<EditorObj> > objs;
+  std::list<boost::shared_ptr<EditorObj> > objs;
 
   TeleporterData* tdata = dynamic_cast<TeleporterData*> (data);    
   std::cout << "EditorTeleporterObj: " << tdata << " - " << tdata->target_pos << std::endl;
 
-  shared_ptr<EditorTeleporterObj> teleporter(new EditorTeleporterObj (data));
-  shared_ptr<EditorTeleporterTargetObj> teleporter_target(new EditorTeleporterTargetObj (data, teleporter->get_target_pos_p ()));
+  boost::shared_ptr<EditorTeleporterObj> teleporter(new EditorTeleporterObj (data));
+  boost::shared_ptr<EditorTeleporterTargetObj> teleporter_target(new EditorTeleporterTargetObj (data, teleporter->get_target_pos_p ()));
 
   objs.push_back (teleporter);
   objs.push_back (teleporter_target);

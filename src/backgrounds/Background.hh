@@ -1,4 +1,4 @@
-//  $Id: Background.hh,v 1.3 2000/12/16 23:11:22 grumbel Exp $
+//  $Id: Background.hh,v 1.4 2000/12/30 23:54:06 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,7 +43,7 @@ public:
 
   /** Create and allocate a new background out of the given background
       data */
-  static shared_ptr<Background> create (shared_ptr<BackgroundData>);
+  static boost::shared_ptr<Background> create (boost::shared_ptr<BackgroundData>);
 };
 
 #endif

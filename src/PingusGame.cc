@@ -1,4 +1,4 @@
-//  $Id: PingusGame.cc,v 1.15 2000/10/09 19:17:30 grumbel Exp $
+//  $Id: PingusGame.cc,v 1.16 2000/12/30 23:54:05 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -138,7 +138,7 @@ PingusGame::start_game(std::string plf_filename, std::string psm_filename)
 
   catch(PingusError err)
     {
-      PingusMessageBox(" PingusError: " + err.message);
+      PingusMessageBox(" PingusError: " + err.get_message ());
     }
 
   if (verbose) std::cout << "PingusGame: start_game() done" << std::endl;
@@ -167,7 +167,7 @@ PingusGame::start_demo(std::string pdm_filename)
 
   catch(PingusError err)
     {
-      PingusMessageBox(" PingusError: " + err.message);
+      PingusMessageBox(" PingusError: " + err.get_message ());
     }
 
   if (verbose) std::cout << "PingusGame: start_demo() done" << std::endl;

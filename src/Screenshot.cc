@@ -1,4 +1,4 @@
-//  $Id: Screenshot.cc,v 1.7 2000/10/30 16:17:50 grumbel Exp $
+//  $Id: Screenshot.cc,v 1.8 2000/12/30 23:54:05 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -156,7 +156,7 @@ string
 Screenshot::get_filename()
 {
   string tmp_filename;
-  char str [16];
+  char str [256];
   int i = 1;
 
   do {

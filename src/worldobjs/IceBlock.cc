@@ -1,4 +1,4 @@
-//  $Id: IceBlock.cc,v 1.8 2000/12/16 23:11:24 grumbel Exp $
+//  $Id: IceBlock.cc,v 1.9 2000/12/30 23:54:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -152,7 +152,7 @@ EditorIceBlockObj::~EditorIceBlockObj ()
 std::list<boost::shared_ptr<EditorObj> > 
 EditorIceBlockObj::create (WorldObjData* obj)
 {
-  std::list<shared_ptr<EditorObj> > objs;
+  std::list<boost::shared_ptr<EditorObj> > objs;
   objs.push_back (boost::shared_ptr<EditorObj>(new EditorIceBlockObj(obj)));
   return objs;
 }

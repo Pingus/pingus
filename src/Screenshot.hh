@@ -1,4 +1,4 @@
-//  $Id: Screenshot.hh,v 1.5 2000/06/23 18:39:56 grumbel Exp $
+//  $Id: Screenshot.hh,v 1.6 2000/12/30 23:54:05 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,27 +22,24 @@
 
 #include <ClanLib/core.h>
 
-using namespace std;
-
-///
+/** Simple class to get a screenshot and save it as pnm */
 class Screenshot
 {
 private:
   ///
-  static string get_date();
+  static std::string get_date();
   ///
-  static string get_filename();
+  static std::string get_filename();
   ///
-  static void save_16bit_target_to_file(CL_Target*, string filename);
+  static void save_16bit_target_to_file(CL_Target*, std::string filename);
   ///
-  static void save_generic_target_to_file(CL_Target*, string filename);
+  static void save_generic_target_to_file(CL_Target*, std::string filename);
 public:
   ///
-  static string make_screenshot();
+  static std::string make_screenshot();
   ///
-  static void save_target_to_file(CL_Target*, string filename);
-}///
-;
+  static void save_target_to_file(CL_Target*, std::string filename);
+};
 
 #endif
 

@@ -1,4 +1,4 @@
-//   $Id: PingusMain.cc,v 1.17 2000/12/12 09:12:59 grumbel Exp $
+//   $Id: PingusMain.cc,v 1.18 2000/12/30 23:54:05 grumbel Exp $
 //    ___
 //   |  _\ A free Lemmings clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -819,7 +819,7 @@ PingusMain::do_lemmings_mode(void)
   }
   
   catch (PingusError err) {
-    PingusMessageBox(" PingusError: " + err.message);
+    PingusMessageBox(" PingusError: " + err.get_message ());
   }
 
   //CL_Input::chain_button_press.remove(&global_event);
@@ -906,7 +906,7 @@ PingusMain::main(int argc, char** argv)
   }
 
   catch (PingusError err) {
-    std::cout << _("Error caught from Pingus: ") << err.message << std::endl;
+    std::cout << _("Error caught from Pingus: ") << err.get_message () << std::endl;
   }
 
   catch (std::bad_alloc a) {

@@ -1,4 +1,4 @@
-//  $Id: PLF.cc,v 1.21 2000/12/16 23:11:19 grumbel Exp $
+//  $Id: PLF.cc,v 1.22 2000/12/30 23:54:05 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,6 +30,7 @@
 #include "System.hh"
 
 using namespace std;
+using namespace boost;
 
 PLF::PLF()
 {

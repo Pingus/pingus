@@ -1,4 +1,4 @@
-//  $Id: CaptureRectangle.hh,v 1.5 2000/12/16 23:11:19 grumbel Exp $
+//  $Id: CaptureRectangle.hh,v 1.6 2000/12/30 23:54:05 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,16 +23,14 @@
 #include <ClanLib/core.h>
 #include "boost/smart_ptr.hpp"
 
-using namespace boost;
-
 ///
 class CaptureRectangle
 {
 private:
   ///
-  static shared_ptr<Pingu>       pingu; 
+  static boost::shared_ptr<Pingu>       pingu; 
   ///
-  static shared_ptr<PinguAction> button_action;
+  static boost::shared_ptr<PinguAction> button_action;
   
   ///
   CL_Surface good; 
@@ -53,9 +51,9 @@ public:
   ///
   static void load_data();
   ///
-  static void set_pingu(shared_ptr<Pingu> pingu);  
+  static void set_pingu(boost::shared_ptr<Pingu> pingu);  
   ///
-  static void set_action(shared_ptr<PinguAction>);
+  static void set_action(boost::shared_ptr<PinguAction>);
 
   ///
   void draw_offset(int x_offset, int y_offset, float s = 1.0); 

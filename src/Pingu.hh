@@ -1,4 +1,4 @@
-//  $Id: Pingu.hh,v 1.17 2000/12/16 23:11:20 grumbel Exp $
+//  $Id: Pingu.hh,v 1.18 2000/12/30 23:54:05 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,8 +23,6 @@
 #include <ClanLib/core.h>
 #include "boost/smart_ptr.hpp"
 
-using namespace boost;
-
 #include "WorldObj.hh"
 #include "PinguMap.hh"
 #include "Direction.hh"
@@ -40,11 +38,11 @@ class Pingu : public WorldObj
 protected:
   friend class PinguAction;
   ///
-  shared_ptr<PinguAction> action;
+  boost::shared_ptr<PinguAction> action;
   ///
-  shared_ptr<PinguAction> sec_action;
+  boost::shared_ptr<PinguAction> sec_action;
   ///
-  std::vector<shared_ptr<PinguAction> > persist;
+  std::vector<boost::shared_ptr<PinguAction> > persist;
 
   /** The uniq id of the Pingu, this is used to refer to the Pingu in
       a demo file or in a network connection */
@@ -138,11 +136,11 @@ public:
   void set_direction(Direction d);
 
   ///
-  int  set_action(shared_ptr<PinguAction>);
+  int  set_action(boost::shared_ptr<PinguAction>);
   ///
-  int  set_paction(shared_ptr<PinguAction>);
+  int  set_paction(boost::shared_ptr<PinguAction>);
   ///
-  shared_ptr<PinguAction> get_action();
+  boost::shared_ptr<PinguAction> get_action();
   ///
   int  rel_getpixel(int x, int y);
   ///

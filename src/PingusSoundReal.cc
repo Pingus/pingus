@@ -1,4 +1,4 @@
-//  $Id: PingusSoundReal.cc,v 1.5 2000/10/12 19:33:51 grumbel Exp $
+//  $Id: PingusSoundReal.cc,v 1.6 2000/12/30 23:54:05 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -137,7 +137,7 @@ PingusSoundReal::real_play_mod(std::string filename)
   try {
     music = PingusMusicProvider::load(filename);
   } catch (PingusError err) {
-    std::cout << err.message << std::endl;
+    std::cout << err.get_message () << std::endl;
   }
 
   Mix_FadeInMusic(music,-1,2000);

@@ -1,4 +1,4 @@
-//  $Id: PingusError.hh,v 1.5 2000/12/16 23:11:20 grumbel Exp $
+//  $Id: PingusError.hh,v 1.6 2000/12/30 23:54:05 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,17 +22,36 @@
 
 #include <string>
 
-///
-class PingusError
+class PingusException  
 {
-private:
-  ///
-  PingusError() {}
+protected:
+  std::string message;  
+public:
+  PingusException ();
+  virtual ~PingusException ();
+  virtual std::string get_message () =0;
+};
+
+/** PingusBug gets thrown on events which are a bug in Pingus, this
+    can be unsupported object types or things that must not happen
+    when the thing is properly working. */
+class PingusBug : public PingusException 
+{
+public:
+  PingusBug(std::string mes);
+  virtual std::string get_message();
+};
+
+
+/** A PingusError is thrown in situation where an error occured due to
+    invalid user input, file not found events or similar stuff. */
+class PingusError : public PingusException
+{
 public:
   ///
   PingusError(std::string mes);
   ///
-  std::string message;
+  virtual std::string get_message ();
 };
 
 #endif

@@ -1,4 +1,4 @@
-//  $Id: WarMain.cc,v 1.5 2000/10/09 19:17:31 grumbel Exp $
+//  $Id: WarMain.cc,v 1.6 2000/12/30 23:54:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -76,7 +76,7 @@ WarMain::main (int argc, char* argv[])
   }
 
   catch (PingusError err) {
-    std::cout << "PingusError: " << err.message << std::endl;
+    std::cout << "PingusError: " << err.get_message () << std::endl;
   }
 
   return 0;

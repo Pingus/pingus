@@ -1,4 +1,4 @@
-//  $Id: PingusMenu.hh,v 1.14 2000/12/16 23:11:20 grumbel Exp $
+//  $Id: PingusMenu.hh,v 1.15 2000/12/30 23:54:05 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,8 +28,6 @@
 #include "AlphaButton.hh"
 #include "LayerManager.hh"
 #include <boost/smart_ptr.hpp>
-
-using namespace boost;
 
 ///
 class SurfaceButton;

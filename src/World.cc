@@ -1,4 +1,4 @@
-//  $Id: World.cc,v 1.36 2000/12/16 23:11:20 grumbel Exp $
+//  $Id: World.cc,v 1.37 2000/12/30 23:54:05 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,6 +43,7 @@
 #include "WorldObjData.hh"
 
 using namespace std;
+using namespace boost;
 
 // Workaround for a VC bug
 #ifdef WIN32

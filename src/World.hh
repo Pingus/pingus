@@ -1,4 +1,4 @@
-//  $Id: World.hh,v 1.19 2000/12/16 23:11:20 grumbel Exp $
+//  $Id: World.hh,v 1.20 2000/12/30 23:54:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,8 +24,6 @@
 #include <vector>
 #include <iterator>
 #include "boost/smart_ptr.hpp"
-
-using namespace boost;
 
 #include "WorldObj.hh"
 #include "PinguHolder.hh"
@@ -63,11 +61,11 @@ class World
 {
 private:
   ///
-  shared_ptr<PinguMap> gfx_map;
+  boost::shared_ptr<PinguMap> gfx_map;
   ///
   bool do_armageddon;
   ///
-  std::list<shared_ptr<Pingu> >::iterator armageddon_count;
+  std::list<boost::shared_ptr<Pingu> >::iterator armageddon_count;
 
   ///
   unsigned int released_pingus;
@@ -88,28 +86,28 @@ private:
   int exit_time;
 
   ///
-  std::vector<shared_ptr<Background> > backgrounds;
+  std::vector<boost::shared_ptr<Background> > backgrounds;
   ///
-  std::vector<shared_ptr<WorldObj> > world_obj_bg;
+  std::vector<boost::shared_ptr<WorldObj> > world_obj_bg;
   ///
-  std::vector<shared_ptr<WorldObj> > world_obj_fg;
+  std::vector<boost::shared_ptr<WorldObj> > world_obj_fg;
   ///
-  std::vector<shared_ptr<Entrance> > entrance;
+  std::vector<boost::shared_ptr<Entrance> > entrance;
   ///
-  std::vector<shared_ptr<Exit> >     exits;
+  std::vector<boost::shared_ptr<Exit> >     exits;
   ///
-  std::vector<shared_ptr<Hotspot> >  hotspot;
+  std::vector<boost::shared_ptr<Hotspot> >  hotspot;
   ///
-  std::vector<shared_ptr<Liquid> >   liquid;
+  std::vector<boost::shared_ptr<Liquid> >   liquid;
   ///
-  std::vector<shared_ptr<Trap> >     traps;
+  std::vector<boost::shared_ptr<Trap> >     traps;
 
   ///
-  shared_ptr<ParticleHolder> particle_holder;
+  boost::shared_ptr<ParticleHolder> particle_holder;
   ///
   ActionHolder* action_holder;
   ///
-  shared_ptr<PinguHolder> pingus;
+  boost::shared_ptr<PinguHolder> pingus;
   ///
   ColMap* colmap;
   ///

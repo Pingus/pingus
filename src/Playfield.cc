@@ -1,4 +1,4 @@
-//  $Id: Playfield.cc,v 1.15 2000/12/16 23:11:20 grumbel Exp $
+//  $Id: Playfield.cc,v 1.16 2000/12/30 23:54:05 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -118,12 +118,12 @@ Playfield::draw()
     }
 }
 
-shared_ptr<Pingu>
+boost::shared_ptr<Pingu>
 Playfield::current_pingu_find(int x_pos, int y_pos)
 {
   double min_dist = 500.0;
   double dist;
-  shared_ptr<Pingu> c_pingu;
+  boost::shared_ptr<Pingu> c_pingu;
 
   for (PinguIter pingu=pingus->begin(); pingu != pingus->end(); pingu++)
     {

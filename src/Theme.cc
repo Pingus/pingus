@@ -1,4 +1,4 @@
- //  $Id: Theme.cc,v 1.22 2000/12/14 21:35:55 grumbel Exp $
+ //  $Id: Theme.cc,v 1.23 2000/12/30 23:54:05 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -265,7 +265,7 @@ Theme::play()
   catch (PingusError err) 
     {
       std::string str = "Pingus_Error: ";
-      str += err.message;
+      str += err.get_message ();
       PingusMessageBox box(str);
     }
 }
@@ -322,8 +322,8 @@ Theme::load_levels()
       catch (PingusError err) 
 	{
 	  std::string str = "PingusError: ";
-	  str += err.message;
-	  std::cout << err.message << std::endl;
+	  str += err.get_message ();
+	  std::cout << err.get_message () << std::endl;
 	}
     }
   if (verbose) std::cout << "done." << std::endl;

@@ -1,4 +1,4 @@
-//  $Id: View.hh,v 1.6 2000/12/16 23:11:20 grumbel Exp $
+//  $Id: View.hh,v 1.7 2000/12/30 23:54:05 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,7 +38,7 @@ private:
   double size;              /// The zoom of the View, 1 is default
   CaptureRectangle cap;
   ///
-  shared_ptr<Pingu> current_pingu;
+  boost::shared_ptr<Pingu> current_pingu;
   /// Static objects which are equal for all Views
   static World* world;
 
@@ -90,7 +90,7 @@ public:
   ///
   double get_zoom();
   ///
-  void set_pingu(shared_ptr<Pingu> p);
+  void set_pingu(boost::shared_ptr<Pingu> p);
   ///
   static void set_world(World*);
 }///

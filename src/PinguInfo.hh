@@ -1,4 +1,4 @@
-//  $Id: PinguInfo.hh,v 1.4 2000/12/16 23:11:20 grumbel Exp $
+//  $Id: PinguInfo.hh,v 1.5 2000/12/30 23:54:05 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,16 +30,15 @@ private:
   ///
   CL_Font* font;
   ///
-  shared_ptr<Pingu> pingu;
+  boost::shared_ptr<Pingu> pingu;
 public:
   ///
   PinguInfo();
   ///
   void draw();
   ///
-  void set_pingu(shared_ptr<Pingu> p);
-}///
-;
+  void set_pingu(boost::shared_ptr<Pingu> p);
+};
 
 #endif
 

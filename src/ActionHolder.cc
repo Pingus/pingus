@@ -1,4 +1,4 @@
-//  $Id: ActionHolder.cc,v 1.20 2000/12/16 23:11:19 grumbel Exp $
+//  $Id: ActionHolder.cc,v 1.21 2000/12/30 23:54:05 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -44,6 +44,8 @@
 
 #include "ActionHolder.hh"
 
+using namespace boost;
+
 ActionHolder::ActionHolder()
 {
 }
@@ -76,7 +78,7 @@ ActionHolder::get_available(const std::string& name)
   return available_actions[name];
 }
 
-shared_ptr<PinguAction>
+boost::shared_ptr<PinguAction>
 ActionHolder::get_action(const std::string& name)
 {
   int* count;

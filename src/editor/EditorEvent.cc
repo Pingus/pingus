@@ -1,4 +1,4 @@
-//  $Id: EditorEvent.cc,v 1.34 2000/12/16 23:11:23 grumbel Exp $
+//  $Id: EditorEvent.cc,v 1.35 2000/12/30 23:54:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -335,7 +335,7 @@ EditorEvent::editor_convert_group_to_selection()
 						      obj));
 	  object_manager->delete_selection();
 
-	  for(std::list<shared_ptr<EditorObj> >::iterator i = objs->begin();
+	  for(std::list<boost::shared_ptr<EditorObj> >::iterator i = objs->begin();
 	      i != objs->end();
 	      i++)
 	    {
@@ -456,7 +456,7 @@ EditorEvent::editor_start_current_level()
   }
   
   catch(PingusError err) {
-    std::cout << "Editor: Error caught from Pingus: " << err.message << std::endl;
+    std::cout << "Editor: Error caught from Pingus: " << err.get_message () << std::endl;
   }
   
   catch (CL_Error err) {
@@ -502,8 +502,8 @@ EditorEvent::editor_load_level()
 	editor->last_level = str;
       }
       catch(PingusError err) {
-	std::cout << " PingusError: " + err.message << std::endl;
-	PingusMessageBox(" PingusError: " + err.message);
+	std::cout << err.get_message () << std::endl;
+	PingusMessageBox(err.get_message ());
       }
     }
 }
