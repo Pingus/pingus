@@ -1,4 +1,4 @@
-//  $Id: button_factory.hxx,v 1.2 2002/07/09 17:00:10 torangan Exp $
+//  $Id: button_factory.hxx,v 1.3 2002/07/11 15:38:07 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,10 +29,12 @@ namespace Input {
   class ButtonFactory 
   {
     private:
+      static inline Button* double_button   (xmlNodePtr cur);
       static inline Button* joystick_button (xmlNodePtr cur);
       static inline Button* key_button      (xmlNodePtr cur);
       static inline Button* mouse_button    (xmlNodePtr cur);
       static inline Button* multiple_button (xmlNodePtr cur);
+      static inline Button* triple_button   (xmlNodePtr cur);
     
     public:
       static Button* create (xmlNodePtr cur);

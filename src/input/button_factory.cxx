@@ -1,4 +1,4 @@
-//  $Id: button_factory.cxx,v 1.3 2002/07/10 14:06:20 torangan Exp $
+//  $Id: button_factory.cxx,v 1.4 2002/07/11 15:38:07 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,21 +20,29 @@
 #include <stdlib.h>
 #include "../xml_helper.hxx"
 #include "../pingus_error.hxx"
+#include "button_factory.hxx"
+#include "double_button.hxx"
+#include "joystick_button.hxx"
 #include "key_button.hxx"
 #include "key_helper.hxx"
 #include "mouse_button.hxx"
-#include "joystick_button.hxx"
 #include "multiple_button.hxx"
-#include "button_factory.hxx"
+#include "triple_button.hxx"
 
 namespace Input {
 
   Button* ButtonFactory::create(xmlNodePtr cur)
   {
+    if (!cur)
+      throw PingusError("ButtonFactory called without an element");
+  
     if (xmlIsBlankNode(cur)) 
       cur = cur->next;
 
-    if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "joystick-button"))
+    if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "double-button"))
+      return double_button(cur);
+      
+    else if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "joystick-button"))
       return joystick_button(cur);
       
     else if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "key-button"))
@@ -46,10 +54,32 @@ namespace Input {
     else if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "multiple-button"))
       return multiple_button(cur);
     
+    else if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "triple-button"))
+      return triple_button(cur);
+    
     else
       throw PingusError(std::string("Unknown button type: ") + ((cur->name) ? reinterpret_cast<const char*>(cur->name) : ""));
   }
   
+  Button* ButtonFactory::double_button (xmlNodePtr cur)
+  {
+    Button *button1, *button2;
+    
+    cur = cur->children;
+
+    if (xmlIsBlankNode(cur))
+      cur = cur->next;
+    button1 = create(cur);
+    
+    cur = cur-> next;	
+
+    if (xmlIsBlankNode(cur))
+      cur = cur->next;
+    button2 = create(cur);
+            
+    return new DoubleButton(button1, button2);
+  }
+
   Button* ButtonFactory::joystick_button (xmlNodePtr cur)
   {
     char * id_str     = reinterpret_cast<char *>(xmlGetProp(cur, reinterpret_cast<const xmlChar*>("id")));
@@ -112,6 +142,31 @@ namespace Input {
       }
       
     return new MultipleButton(buttons);
+  }
+  
+  Button* ButtonFactory::triple_button (xmlNodePtr cur)
+  {
+    Button *button1, *button2, *button3;
+    
+    cur = cur->children;
+
+    if (xmlIsBlankNode(cur))
+      cur = cur->next;
+    button1 = create(cur);
+    
+    cur = cur-> next;	
+
+    if (xmlIsBlankNode(cur))
+      cur = cur->next;
+    button2 = create(cur);
+    
+    cur = cur-> next;	
+
+    if (xmlIsBlankNode(cur))
+      cur = cur->next;
+    button3 = create(cur);
+            
+    return new TripleButton(button1, button2, button3);
   }
 
 }
