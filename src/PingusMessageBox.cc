@@ -1,4 +1,4 @@
-//  $Id: PingusMessageBox.cc,v 1.5 2000/06/27 16:05:16 grumbel Exp $
+//  $Id: PingusMessageBox.cc,v 1.6 2000/06/28 19:49:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,7 +26,7 @@ PingusMessageBox::PingusMessageBox(std::string s)
 {
   str = s;
   std::cout << "Error: " << str << std::endl;
-  font = PingusResource::load_font("Fonts/smallfont","fonts");
+  font = PingusResource::load_font("Fonts/xterm","fonts");
   draw();
 }
 
@@ -36,8 +36,8 @@ PingusMessageBox::draw()
   int width  = CL_Display::get_width();
   int height = CL_Display::get_height();
 
-  CL_Display::fill_rect( 80, 200, width -  80, height - 200, 0.0, 0.0, 0.0, 1.0);
-  CL_Display::fill_rect( 90, 210, width -  90, height - 210, 1.0, 1.0, 1.0, 1.0);
+  CL_Display::fill_rect( 80, 200, width -  80, height - 200, 1.0, 1.0, 1.0, 0.5);
+  CL_Display::fill_rect( 90, 210, width -  90, height - 210, 0.0, 0.0, 0.0, 1.0);
   font->print_center(CL_Display::get_width() / 2 - 25, CL_Display::get_height() / 2 - 8,
 		     str.c_str());
 

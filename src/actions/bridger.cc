@@ -1,4 +1,4 @@
-//  $Id: bridger.cc,v 1.19 2000/06/27 16:05:16 grumbel Exp $
+//  $Id: bridger.cc,v 1.20 2000/06/28 19:49:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -106,13 +106,13 @@ Bridger::let_move()
 	}
       else
 	{
-	  std::cout << "bridger finisted" << std::endl;
+	  //std::cout << "bridger finisted" << std::endl;
 	  // Waiting some seconds after we are out of bricks 
 	  pingu->set_action(pingu->action_holder->get_uaction("waiter"));
 	}
     }
 
-  std::cout << "bricks: " << bricks << std::endl;
+  //std::cout << "bricks: " << bricks << std::endl;
 }
 
 bool
@@ -126,7 +126,7 @@ Bridger::way_is_free()
     }
   else
     {
-      cout << "Touched a wall" << endl;
+      //cout << "Touched a wall" << endl;
       return false;
     }
 
@@ -136,7 +136,7 @@ Bridger::way_is_free()
     }
   else
     {
-      cout << "Ouch, my head" << endl;
+      //cout << "Ouch, my head" << endl;
       return false;
     }
 

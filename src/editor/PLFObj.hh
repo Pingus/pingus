@@ -1,4 +1,4 @@
-//  $Id: PLFObj.hh,v 1.7 2000/06/23 17:06:25 grumbel Exp $
+//  $Id: PLFObj.hh,v 1.8 2000/06/28 19:49:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -60,12 +60,10 @@ public:
   ///
   void save(std::ofstream* plf, std::ofstream* psm);
   ///
-  std::string obj_type() { return "Hotspot"; }///
-;
+  std::string obj_type() { return "Hotspot"; }
   ///
   std::string  status_line();
-}///
-;
+};
 
 ///
 class EntranceObj : public PLFObj
@@ -87,8 +85,7 @@ public:
   ///
   void save(std::ofstream* plf, std::ofstream* psm);  
   ///
-  std::string obj_type() { return "Entrance"; }///
-;
+  std::string obj_type() { return "Entrance"; }
   ///
   std::string status_line();
 }///
@@ -108,10 +105,10 @@ public:
   ///
   void save(std::ofstream* plf, std::ofstream* psm);  
   ///
-  std::string obj_type() { return "Exit"; }///
-;
-}///
-;
+  std::string obj_type() { return "Exit"; }
+  ///
+  std::string  status_line();
+};
 
 
 ///

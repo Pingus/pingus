@@ -1,7 +1,8 @@
 /* This level was created with the PLE
- * $Id: desert1.plf,v 1.3 2000/06/26 15:37:26 grumbel Exp $
+ * $Id: desert1.plf,v 1.4 2000/06/28 19:49:17 grumbel Exp $
  */
 global {
+  author = "";
   start_x_pos = 348;
   start_y_pos = 456;
   levelname = "Entering the pyramid";
@@ -39,20 +40,29 @@ buttons {
   bridger = 10;
 }
 
-exit {
-  image = (resource)"Exits/desert";
-  x_pos = 1179;
-  y_pos = 407;
+entrance {
+  type  = generic;
+  x_pos = 355;
+  y_pos = 418;
   z_pos = 0;
+  release_rate = 25;
+  direction = right;
 }
 
 hotspot {
   image = (resource)"Entrances/wood_bottom";
   x_pos = 304;
   y_pos = 390;
-  z_pos = -100;
+  z_pos = 50;
   speed = -1;
   para = "1";
+}
+
+exit {
+  image = (resource)"Exits/desert";
+  x_pos = 1179;
+  y_pos = 407;
+  z_pos = 50;
 }
 
 hotspot {
@@ -62,15 +72,6 @@ hotspot {
   z_pos = 100;
   speed = -1;
   para = "1";
-}
-
-entrance {
-  type  = generic;
-  x_pos = 355;
-  y_pos = 418;
-  z_pos = 0;
-  release_rate = 25;
-  direction = right;
 }
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: Config.cc,v 1.10 2000/06/27 06:32:54 grumbel Exp $
+//  $Id: Config.cc,v 1.11 2000/06/28 19:49:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -358,6 +358,14 @@ Config::set_value(std::string valueid,
   else if (valueid == "preload_data")
     {
       preload_data = str_to_bool(value);
+    }
+  else if (valueid == "sound")
+    {
+      sound_enabled = str_to_bool(value);
+    }
+  else if (valueid == "music")
+    {
+      music_enabled = str_to_bool(value);
     }
   else if (valueid == "audio-format")
     {

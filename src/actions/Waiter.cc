@@ -1,4 +1,4 @@
-//  $Id: Waiter.cc,v 1.4 2000/06/27 16:05:16 grumbel Exp $
+//  $Id: Waiter.cc,v 1.5 2000/06/28 19:49:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -40,7 +40,7 @@ Waiter::let_move()
 void
 Waiter::init()
 {
-  action_name = "Bridger";
+  action_name = " Bridger ";
   surface = CL_Surface::load("Pingus/blocker", local_res());
   countdown = 30;
   environment = (PinguEnvironment)always;

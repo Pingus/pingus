@@ -1,4 +1,4 @@
-//  $Id: PLFObj.cc,v 1.19 2000/06/27 16:05:16 grumbel Exp $
+//  $Id: PLFObj.cc,v 1.20 2000/06/28 19:49:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -227,9 +227,21 @@ ExitObj::save(ofstream* plf, ofstream* psm)
 	 << "  image = (resource)\"" << desc.res_name << "\";\n"
 	 << "  x_pos = " << x_pos << ";\n"
 	 << "  y_pos = " << y_pos << ";\n"
-	 << "  z_pos = 0;\n"
+	 << "  z_pos = " << z_pos << ";\n"
 	 << "}\n"
 	 << endl;
+}
+
+std::string 
+ExitObj::status_line()
+{
+  char str[256];
+
+  sprintf(str, "Exit - %s - X:%3d Y:%3d Z:%3d",
+	  desc.res_name.c_str(),
+	  x_pos, y_pos, z_pos);
+
+  return std::string(str);
 }
 
 TrapObj::TrapObj(trap_data data)

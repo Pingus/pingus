@@ -1,4 +1,4 @@
-//  $Id: EditorObj.hh,v 1.9 2000/06/23 18:39:56 grumbel Exp $
+//  $Id: EditorObj.hh,v 1.10 2000/06/28 19:49:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,8 +21,8 @@
 #define EDITOROBJ_HH
 
 #include <fstream>
-#include <ClanLib/core.h>
 #include <functional>
+#include <ClanLib/core.h>
 
 #include "../ResDescriptor.hh"
 #include "../exit_data.hh"
