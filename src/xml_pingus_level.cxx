@@ -56,7 +56,7 @@ XMLPingusLevel::XMLPingusLevel(const std::string& filename)
     }
   else if (version != 1)
     {
-      PingusError::raise("Error: Can only handle level files of version 1");
+      PingusError::raise("Error: Can only handle level files of version 1, use pingusv0tov1.xsl to convert them");
     }
   else 
     {
@@ -68,6 +68,9 @@ XMLPingusLevel::XMLPingusLevel(const std::string& filename)
 
           if (node.get_tag_name() == "head")
             {
+              // FIXME: Move default stuff to pingus_level_impl
+              impl->ambient_light = CL_Colorf(1.0f, 1.0f, 1.0f, 1.0f);
+
               XMLFileReader reader(node);
               reader.read_string("levelname",        impl->levelname);
               reader.read_string("description",      impl->description);
@@ -77,6 +80,7 @@ XMLPingusLevel::XMLPingusLevel(const std::string& filename)
               reader.read_int   ("difficulty",       impl->difficulty);
               reader.read_int   ("number-of-pingus", impl->number_of_pingus);
               reader.read_int   ("number-to-save",   impl->number_to_save);
+              reader.read_color ("ambient-light",    impl->ambient_light);
               reader.read_string("author",           impl->author);
               
               FileReader actions_reader;

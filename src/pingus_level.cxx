@@ -101,6 +101,12 @@ PingusLevel::get_resname() const
   return impl->resname;
 }
 
+const CL_Colorf&
+PingusLevel::get_ambient_light() const
+{
+  return impl->ambient_light;
+}
+
 } // namespace Pingus
 
 /* EOF */

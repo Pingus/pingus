@@ -22,6 +22,7 @@
 
 #include <ClanLib/Core/System/sharedptr.h>
 #include <ClanLib/Core/Math/size.h>
+#include <ClanLib/Display/color.h>
 #include <string>
 #include <vector>
 #include <map>
@@ -37,6 +38,7 @@ public:
   std::string levelname;
   std::string description;
 
+  CL_Colorf   ambient_light;
   CL_Size     size;
 
   int number_of_pingus;

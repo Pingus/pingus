@@ -23,6 +23,7 @@
 #include "pingus.hxx"
 #include <vector>
 #include <string>
+#include <ClanLib/Display/color.h>
 
 namespace Pingus {
 
@@ -60,6 +61,8 @@ namespace Particles {
 class World
 {
 private:
+  CL_Color ambient_light;
+
   /** groundmap for the pingus */
   PinguMap* gfx_map;
 
