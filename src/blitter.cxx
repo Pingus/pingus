@@ -67,104 +67,6 @@ Blitter::put_surface(CL_PixelBuffer canvas, CL_PixelBuffer provider,
 }
 
 void
-Blitter::put_surface_8bit_old(CL_PixelBuffer provider, CL_PixelBuffer sprovider,
-			  int x, int y)
-{
-  assert(provider);
-  assert(sprovider);
-  
-  int start_i;
-  unsigned char* tbuffer; // Target buffer
-  int twidth, theight, tpitch;
-
-  unsigned char* sbuffer; // Source buffer
-  int swidth, sheight, spitch;
-
-  int x_offset, y_offset;
-
-  provider.lock();
-  sprovider.lock();
-
-  tbuffer = static_cast<unsigned char*>(provider.get_data());
-  sbuffer = static_cast<unsigned char*>(sprovider.get_data());
-
-  //std::cout << "Colorkey: " << sprovider.get_src_colorkey() << std::endl;
-
-  CL_Palette palette = sprovider.get_palette();
-
-  twidth  = provider.get_width();
-  theight = provider.get_height();
-  tpitch  = provider.get_pitch();
-
-  swidth  = sprovider.get_width();
-  sheight = sprovider.get_height();
-  spitch  = sprovider.get_pitch();
-
-  if (y < 0)
-    y_offset = 0-y;
-  else
-    y_offset = 0;
-
-  if (x < 0)
-    x_offset = -x;
-  else
-    x_offset = 0;
-
-  if (sprovider.get_format().has_colorkey ())
-    {
-      std::cout << "8bit blit: " << twidth << "x" << theight << " " << swidth << "x" << sheight << std::endl;
-
-      unsigned int colorkey = sprovider.get_format().get_colorkey();
-
-      for(int line=y_offset;
-	  line < sheight && (line + y) < theight;
-	  ++line)
-	{
-	  start_i = ((line + y) * tpitch) + (x*4);
-
-	  for(int i=start_i+(4*x_offset),j=line*spitch+x_offset;
-	      (i < start_i + (4*swidth))
-		&& ((i-start_i+(x*4)) < (4*twidth));
-	      i += 4, ++j)
-	    {
-	      if (sbuffer[j] != colorkey)
-		{
-		  tbuffer[i + 0] = 255;                                  // alpha
-		  tbuffer[i + 1] = palette.colors[cl_uint8(sbuffer[j] * 3)].get_blue(); // blue
-		  tbuffer[i + 2] = palette.colors[cl_uint8(sbuffer[j] * 3)].get_green(); // green
-		  tbuffer[i + 3] = palette.colors[cl_uint8(sbuffer[j] * 3)].get_red(); // red
-		}
-	    }
-	}
-    }
-  else
-    {
-      std::cout << "8bit blit: " << twidth << "x" << theight << " " << swidth << "x" << sheight << std::endl;
-
-      for(int line=y_offset;
-	  line < sheight && (line + y) < theight;
-	  ++line)
-	{
-	  start_i = ((line + y) * tpitch) + (x*4);
-
-	  for(int i=start_i+(4*x_offset),j=line*spitch+x_offset;
-	      (i < start_i + (4*swidth))
-		&& ((i-start_i+(x*4)) < (4*twidth));
-	      i += 4, ++j)
-	    {
-	      tbuffer[i + 0] = 255;                                  // alpha
-	      tbuffer[i + 1] = palette[cl_uint8(sbuffer[j] * 3 + 2)]; // blue
-	      tbuffer[i + 2] = palette[cl_uint8(sbuffer[j] * 3 + 1)]; // green
-	      tbuffer[i + 3] = palette[cl_uint8(sbuffer[j] * 3 + 0)]; // red
-	    }
-	}
-    }
-
-  sprovider.unlock();
-  provider.unlock();
-}
-
-void
 Blitter::put_surface_8bit(CL_PixelBuffer target, CL_PixelBuffer source,
                           int x_pos, int y_pos)
 {
@@ -239,11 +141,6 @@ void
 Blitter::put_surface_32bit(CL_PixelBuffer target, CL_PixelBuffer source,
 			   const int x_pos, const int y_pos)
 {
-  std::cout << "32bit: pos: " << x_pos << "x" << y_pos 
-            << " ssize: " << source.get_width() << "x" << source.get_height()
-            << " tsize: " << target.get_width() << "x" << target.get_height()
-            << std::endl;
-
   target.lock();
   source.lock();
 
@@ -286,7 +183,7 @@ Blitter::put_surface_32bit(CL_PixelBuffer target, CL_PixelBuffer source,
           memcpy(target_buf + tidx + 4*start_x, source_buf + sidx + 4*start_x, 
                  sizeof(cl_uint32)*(end_x - start_x));
         }
-      else
+      else if (0)
         { // doesn't handle masks either, but looks half correct
           cl_uint8* tptr = target_buf + tidx + 4*start_x;
           cl_uint8* sptr = source_buf + sidx + 4*start_x;
@@ -297,6 +194,24 @@ Blitter::put_surface_32bit(CL_PixelBuffer target, CL_PixelBuffer source,
               *tptr++ = sptr[0];
               *tptr++ = sptr[1];
               *tptr++ = sptr[2];
+
+              sptr += 4;
+            }
+        }
+      else
+        {
+          // doesn't handle masks either, but looks half correct
+          cl_uint8* tptr = target_buf + tidx + 4*start_x;
+          cl_uint8* sptr = source_buf + sidx + 4*start_x;
+
+          for (int x = start_x; x < end_x; ++x)
+            {
+              float a = sptr[3]/255.0f;
+              
+              *tptr++ = Math::mid(0, int((1.0f - a) * *tptr + a * sptr[3]), 255);
+              *tptr++ = Math::mid(0, int((1.0f - a) * *tptr + a * sptr[0]), 255);
+              *tptr++ = Math::mid(0, int((1.0f - a) * *tptr + a * sptr[1]), 255);
+              *tptr++ = Math::mid(0, int((1.0f - a) * *tptr + a * sptr[2]), 255);
 
               sptr += 4;
             }
@@ -370,6 +285,63 @@ Blitter::put_alpha_surface(CL_PixelBuffer provider, CL_PixelBuffer sprovider,
 
   sprovider.unlock();
   provider.unlock();
+}
+
+void
+Blitter::fill_rect(CL_PixelBuffer target, const CL_Rect& rect, const CL_Color& color)
+{
+  assert(target.get_format().get_depth() == 32);
+
+  target.lock();
+  
+  int twidth  = target.get_width();
+  int swidth  = rect.get_width();
+
+  int start_x = std::max(0, -rect.left);
+  int start_y = std::max(0, -rect.top);
+
+  int end_x = std::min(swidth,  twidth  - rect.left);
+  int end_y = std::min(rect.get_height(), target.get_height() - rect.top);
+
+  if (end_x - start_x <= 0 || end_y - start_y <= 0)
+    return;
+
+  cl_uint8* target_buf = static_cast<cl_uint8*>(target.get_data());
+
+  if (color.get_alpha() == 255)
+    {
+      for (int y = start_y; y < end_y; ++y)
+        {
+          cl_uint8* tptr = target_buf + 4*((twidth*(y + rect.top)) + rect.left + start_x);
+
+          for (int x = start_x; x < end_x; ++x)
+            { 
+              *tptr++ = 255;
+              *tptr++ = color.get_blue();
+              *tptr++ = color.get_green();
+              *tptr++ = color.get_red();
+            }
+        }
+    }
+  else
+    {
+      for (int y = start_y; y < end_y; ++y)
+        {
+          cl_uint8* tptr = target_buf + 4*((twidth*(y + rect.top)) + rect.left + start_x);
+
+          for (int x = start_x; x < end_x; ++x)
+            { 
+              float a = color.get_alpha()/255.0f;
+
+              *tptr++ = Math::mid(0, int((1.0f - a) * *tptr + a * color.get_alpha()), 255);
+              *tptr++ = Math::mid(0, int((1.0f - a) * *tptr + a * color.get_blue()) , 255);
+              *tptr++ = Math::mid(0, int((1.0f - a) * *tptr + a * color.get_green()), 255);
+              *tptr++ = Math::mid(0, int((1.0f - a) * *tptr + a * color.get_red())  , 255);
+            }
+        }
+    }
+  
+  target.unlock();
 }
 
 void

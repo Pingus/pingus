@@ -44,8 +44,6 @@ Groundpiece::~Groundpiece ()
 void
 Groundpiece::on_startup ()
 {
-  std::cout << "Groundpiece on startup" << std::endl;
-
   CL_PixelBuffer surface = PingusResource::load_surface_provider(data->desc);
 
   // FIXME: overdrawing of bridges and similar things aren't handled

@@ -91,20 +91,21 @@ SurfaceBackground::SurfaceBackground (const WorldObjsData::SurfaceBackgroundData
      FIXME: the bug might be in create_canvas() and not in fill_rect()
   */
 
-#ifdef CLANLIB_0_6
   if (data->color.alpha != 0.0 && data->color != Color(0, 0, 0, 1.0f))
     { // Workaround for a bug which caused all levels to have the
       // wrong background color
-      canvas->fill_rect(0, 0,
-                        canvas->get_width(), canvas->get_height(),
-                        data->color.red, data->color.green, data->color.blue,
-                        data->color.alpha);
+      Blitter::fill_rect(canvas, CL_Rect(0, 0, canvas.get_width(), canvas.get_height()),
+                         data->color.to_cl_color());
     }
 
   //bg_surface = CAImageManipulation::changeHSV(bg_surface, 150, 100, 0);
-  counter.set_size(bg_surface.get_frame_count());
-  counter.set_speed(1.0);
-#endif
+
+  if (0) // CLANLIB_0_6
+    {
+      //counter.set_size(bg_surface.get_frame_count());
+      //counter.set_speed(1.0);
+    }
+
   bg_surface = CL_Surface(new CL_PixelBuffer(canvas), true);
 
   timer.stop();

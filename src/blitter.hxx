@@ -73,6 +73,8 @@ public:
   /** Sets all pixels of a canvas to zero */
   static void clear_canvas(CL_PixelBuffer, CL_Color color = CL_Color(0, 0, 0, 0));
 
+  static void fill_rect(CL_PixelBuffer target, const CL_Rect& rect, const CL_Color& color);
+
   /** Creates a new surface (based on a canvas) with the given width
       and height and stretches the source surface onto it
 
