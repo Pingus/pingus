@@ -1,9 +1,9 @@
 Release 0.5.0 (never released)
-===========================
+==============================
 * Added object grouping in the editor
 * Added multiple backgrounds (paralax scrolling)
 * Added dynamic backgrounds
-* Fullblown xml support
+* xml support
 * More flexible world object handling
 * All images are now eighter png or jpeg format
 * World map

@@ -350,7 +350,6 @@ src/old/PingusSoundProvider.hh
 src/old/IceBlock.hh
 src/my_gettext.hh
 src/audio.hh
-src/Player.hh
 src/Sprite.hh
 src/Color.hh
 src/worldmap/PingusWorldMap.hh
@@ -372,7 +371,6 @@ src/Story.hh
 src/generic/Graph.hh
 src/generic/FloatPosition.hh
 src/generic/ListHelper.hh
-src/generic/Valid.hh
 src/Console.hh
 src/Display.hh
 src/Loading.hh

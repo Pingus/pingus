@@ -1,4 +1,4 @@
-//  $Id: Screenshot.cc,v 1.10 2001/06/16 15:01:53 grumbel Exp $
+//  $Id: Screenshot.cc,v 1.11 2001/06/17 17:18:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,7 +46,7 @@ Screenshot::make_screenshot()
   }
 }
 
-// FIXME: The name sucks, to lazy to change it... this function might
+// FIXME: The name sucks, too lazy to change it... this function might
 // not be endian clean. save_generic_target_to_file() should be endian clean
 void
 Screenshot::save_16bit_target_to_file(CL_Target* target, std::string filename)

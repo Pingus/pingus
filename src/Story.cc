@@ -1,4 +1,4 @@
-//  $Id: Story.cc,v 1.8 2001/06/14 14:45:23 grumbel Exp $
+//  $Id: Story.cc,v 1.9 2001/06/17 17:18:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -126,10 +126,10 @@ Story::display_string(std::string current_line)
 void 
 Story::on_button_press (CL_InputDevice* device,const CL_Key& key)
 {
-  manager->unregister_events ();
+  manager->disable_events ();
   PingusWorldMapManager worldmap_manager;
   worldmap_manager.display();
-  manager->register_events ();
+  manager->enable_events ();
   manager->set_menu (&manager->mainmenu);
 }
 

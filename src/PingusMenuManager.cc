@@ -1,4 +1,4 @@
-//  $Id: PingusMenuManager.cc,v 1.2 2001/06/14 14:45:23 grumbel Exp $
+//  $Id: PingusMenuManager.cc,v 1.3 2001/06/17 17:18:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -49,6 +49,7 @@ PingusMenuManager::~PingusMenuManager ()
 void 
 PingusMenuManager::register_events ()
 {
+  puts ("register_events ()");
   ++event_register_counter;
   on_button_press_slot = CL_Input::sig_button_press.connect (CL_CreateSlot(this, &PingusMenuManager::on_button_press));
   on_button_release_slot = CL_Input::sig_button_release.connect (CL_CreateSlot(this, &PingusMenuManager::on_button_release));
@@ -59,15 +60,28 @@ PingusMenuManager::register_events ()
 void 
 PingusMenuManager::unregister_events ()
 {
-  --event_register_counter;
   CL_Input::sig_button_press.disconnect (on_button_press_slot);
   CL_Input::sig_button_release.disconnect (on_button_release_slot);
   CL_Input::sig_mouse_move.disconnect (on_mouse_move_slot);
 }
 
 void 
+PingusMenuManager::enable_events ()
+{
+  ++event_register_counter;
+}
+
+void 
+PingusMenuManager::disable_events ()
+{
+  --event_register_counter;
+}
+
+void 
 PingusMenuManager::on_button_press (CL_InputDevice* device,const CL_Key& key)
 {
+  if (event_register_counter <= 0) return;
+
   std::cout << "PingusMenuManager::on_button_press (" 
 	    << device << ", " << key.id 
 	    << ")" << std::endl;
@@ -87,12 +101,14 @@ PingusMenuManager::on_button_press (CL_InputDevice* device,const CL_Key& key)
 void
 PingusMenuManager::on_button_release (CL_InputDevice* device,const CL_Key& key)
 {
+  if (event_register_counter <= 0) return;
   current_menu ()->on_button_release (device, key);
 }
 
 void 
 PingusMenuManager::on_mouse_move (CL_InputDevice* device, int x, int y)
 {
+  if (event_register_counter <= 0) return;
   //  std::cout << "PingusMenuManager::on_mouse_move ("
   //<< device << ", " << x << ", " << y << ")" << std::endl;
   current_menu ()->on_mouse_move (device, x, y);

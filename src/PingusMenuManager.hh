@@ -1,4 +1,4 @@
-//  $Id: PingusMenuManager.hh,v 1.2 2001/06/14 14:45:23 grumbel Exp $
+//  $Id: PingusMenuManager.hh,v 1.3 2001/06/17 17:18:27 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -45,6 +45,11 @@ private:
   CL_Slot on_button_release_slot;
   int event_register_counter;
   
+  /// Register all event-handling stuff
+  void register_events ();
+
+  /// Unregister all event-handling stuff
+  void unregister_events ();
 public:
   /* Menu's */
   Intro intro;
@@ -63,11 +68,10 @@ public:
   /// Display the menu (this is basically the game's main loop)
   void display ();
 
-  /// Register all event-handling stuff
-  void register_events ();
-
-  /// Unregister all event-handling stuff
-  void unregister_events ();
+  /// Disable events
+  void enable_events ();
+  /// Enable events
+  void disable_events ();
 
   void fadeout ();
 

@@ -17,7 +17,7 @@
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 
 PACKAGE = pingus
-VERSION = 0.5.0
+VERSION = 0.5.0pre2
 
 SHELL = /bin/sh
 
@@ -50,7 +50,7 @@ RANLIB = ranlib
 
 DEFS = -DLOCALEDIR=\"$(localedir)\" -DGNULOCALEDIR=\"$(gnulocaledir)\" \
 -DLOCALE_ALIAS_PATH=\"$(aliaspath)\" -DHAVE_CONFIG_H
-CPPFLAGS =  -I/usr/include/gnome-xml
+CPPFLAGS =  -I/usr/include/libxml -I/usr/include
 CFLAGS = -g -O2 -Wall
 LDFLAGS = 
 

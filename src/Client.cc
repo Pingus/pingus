@@ -1,4 +1,4 @@
-//  $Id: Client.cc,v 1.58 2001/06/14 11:07:18 grumbel Exp $
+//  $Id: Client.cc,v 1.59 2001/06/17 17:18:27 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,10 +33,11 @@
 #include "PingusSound.hh"
 #include "PingusError.hh"
 #include "OptionMenu.hh"
-#include "PLFPLF.hh"
-#include "XMLPLF.hh"
+//#include "PLFPLF.hh"
+// clude "XMLPLF.hh"
 #include "DeltaManager.hh"
 #include "MouseController.hh"
+#include "PathManager.hh"
 #include "GamepadController.hh"
 
 using boost::shared_ptr;
@@ -177,7 +178,7 @@ Client::play_level(boost::shared_ptr<PLF> arg_plf)
   CL_Display::clear_display();
 
 #ifdef HAVE_LIBSDL_MIXER
-  PingusSound::play_mod(find_file(pingus_datadir, "music/" + plf->get_music().res_name));
+  PingusSound::play_mod(path_manager.complete ("music/" + plf->get_music().res_name));
 #endif
 
   /** Main game loop */

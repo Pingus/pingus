@@ -18,7 +18,7 @@ LIBS =   libclanstatic.a libHermes.a \
 -lICE \
 -lXxf86vm
 
-SDLLIBS=-lSDL -lSDL_mixer
+SDLLIBS=-lSDL -lSDL_mixer -laudiofile
 
 all : pingus.static pingus.static.comp
 
@@ -28,7 +28,7 @@ pingus.static.comp : pingus.static
 	upx-nrv -q --best pingus.static.comp
 
 pingus.static: Makefile.static pingus
-	g++ -O2 -Wall -static -o pingus.static *.o $(LDADD) $(LIBS) 
+	g++ -O2 -Wall -static -o pingus.static *.o $(LDADD)  $(LIBS) 
 
 clean :
 	rm -f pingus.static.comp pingus.static

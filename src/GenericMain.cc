@@ -1,4 +1,4 @@
-//  $Id: GenericMain.cc,v 1.8 2001/06/16 15:01:53 grumbel Exp $
+//  $Id: GenericMain.cc,v 1.9 2001/06/17 17:18:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -49,10 +49,13 @@ GenericMain::main(int argc, char* argv[])
   //Uncomment for gcc-v3
   //std::ios_base::sync_with_stdio(false);
 
+#ifdef HAVE_SETLOCALE
   setlocale (LC_ALL, "");
+#endif
 
   // Init stuff needed by gettext
 #ifdef HAVE_GETTEXT
+  std::cout << "Gettext: PACKAGE=" << PACKAGE  << ", LOCALEDIR=" << LOCALEDIR << std::endl;
   bindtextdomain (PACKAGE, LOCALEDIR);
   textdomain (PACKAGE);
 #endif

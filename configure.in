@@ -1,4 +1,4 @@
-#  $Id: configure.in,v 1.40 2001/06/16 15:03:53 grumbel Exp $
+#  $Id: configure.in,v 1.41 2001/06/17 17:18:26 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,7 +28,7 @@ PACKAGE=pingus
 # The Pingus Version
 MAJOR_VERSION=0
 MINOR_VERSION=5
-PATCH_VERSION=0
+PATCH_VERSION=0pre2
 
 # The required ClanLib version
 CLANLIB_MAJOR_VERSION=0
@@ -59,7 +59,7 @@ AC_PROG_LN_S
 AC_PROG_MAKE_SET
 
 AC_ARG_WITH(gettext,
-	[  --without-gettext         disable support for multiple languages])
+	[  --without-gettext       disable support for multiple languages])
 
 if test "x$with_gettext" != "xno"; then
 	dnl -- gettext macros --
@@ -114,35 +114,38 @@ if test "x$with_sound" != "xno"; then
 	AC_CHECK_LIB(SDL_mixer,   main,,SOUND_SUPPORT=false)
 fi
 
-dnl AC_CHECK_LIB(xml, main,, [
-dnl	echo "Please install libxml correctly and try again."
-dnl	exit])
-
 dnl ---------------------------------------------------
 dnl Check the location of the XML library and -headers.
-XML_CONFIG="xml-config"
-AC_ARG_WITH(libxml,[  --with-libxml=DIR       set the path to your libxml installation])
+AC_ARG_WITH(libxml,[  --with-libxml=PREFIX    set the path to your libxml installation])
 
+dnl first check for xml2-config, then xml-config
 if test "x$with_libxml" != "x"
 then
-        AC_MSG_CHECKING(for xml-config)
-        XML_CONFIG="$with_libxml/bin/xml-config"
+        AC_MSG_CHECKING([for xml(2)-config])
+        XML_CONFIG="$with_libxml/bin/xml2-config"
         if test -x "$XML_CONFIG"
         then
-                AC_MSG_RESULT(yes)
+                AC_MSG_RESULT([$XML_CONFIG])
         else
+		XML_CONFIG="$with_libxml/bin/xml-config"
+		if test -x "$XML_CONFIG"
+	        then
+			AC_MSG_RESULT([$XML_CONFIG])
+		else
                 AC_MSG_ERROR([
-*** I was not able to find the script \"xml-config\".
-*** Have you given the correct path for --with-libxml ?])
-        fi
+*** I was not able to find the script \"xml(2)-config\".
+*** Did you specify the correct prefix for --with-libxml ?])
+		fi
+	fi
 else
-        AC_CHECK_PROG(ac_xml_config,xml-config,yes,no)
-        if test "$ac_xml_config" = "no"
+	dnl try xml2-config, then xml-config
+	AC_CHECK_PROGS(XML_CONFIG,xml2-config xml-config,no)
+        if test "x$XML_CONFIG" = "xno"
         then
-                AC_MSG_ERROR([
-*** I was not able to find the script \"xml-config\".
+		AC_MSG_ERROR([
+*** I was not able to find the script \"xml(2)-config\".
 *** Please check your installation of libxml.])
-        fi
+	fi
 fi
 
 dnl Check the version of libxml.

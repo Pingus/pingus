@@ -1,4 +1,4 @@
-//  $Id: Entrance.cc,v 1.22 2001/04/12 09:02:23 grumbel Exp $
+//  $Id: Entrance.cc,v 1.23 2001/06/17 17:18:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -60,7 +60,7 @@ Entrance::get_pingu()
   Direction d;
 
   // FIXME: Evil, the allocated objects are destroyed in PinguHolder,
-  // FIXME: but all allocation should be encapsulet in PinguHolder.
+  // FIXME: but all allocation should be encapsulated in PinguHolder.
   boost::shared_ptr<Pingu> p (new Pingu(pos, owner_id));
   
   switch (direction) 
@@ -110,7 +110,7 @@ Entrance::draw_offset(int x, int y, float s)
   if (!surface) return;
   if (s == 1.0) 
     {
-      // FIXME: Why do we have still this hardcoded offsets?!
+      // FIXME: Why do we still have these hardcoded offsets?!
       surface.put_screen(pos.x - 32 + x, pos.y - 16 + y);
     } 
   else 

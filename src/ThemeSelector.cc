@@ -1,4 +1,4 @@
-//  $Id: ThemeSelector.cc,v 1.38 2001/05/18 19:17:08 grumbel Exp $
+//  $Id: ThemeSelector.cc,v 1.39 2001/06/17 17:18:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -206,7 +206,7 @@ ThemeSelector::ThemeSelector()
 
 ThemeSelector::~ThemeSelector()
 {
-  // FIXME: Deleting the stuff, which was allocated in readdir()
+  // FIXME: Deleting the stuff which was allocated in readdir()
   // FIXME: Should be rewritten
   for(std::vector<Theme*>::iterator i = themes.begin(); i != themes.end(); i++)
     delete (*i);

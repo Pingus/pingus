@@ -1,4 +1,4 @@
-//  $Id: Sprite.hh,v 1.9 2001/04/15 18:34:43 grumbel Exp $
+//  $Id: Sprite.hh,v 1.10 2001/06/17 17:18:27 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -101,7 +101,7 @@ public:
   float get_progress ();
 
   /** Set the current direction of the surface, WARNING: Does only
-      work in a few case... FIXME: rewrite when
+      work in a few cases... FIXME: rewrite when
       CL_Surface::get_num_xframes () exists 
   @param dir Direction: LEFT, RIGHT, NONE */
   void set_direction (Sprite::Direction dir) { direction = dir; }

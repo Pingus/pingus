@@ -1,4 +1,4 @@
-//  $Id: Pingu.cc,v 1.56 2001/06/11 08:45:21 grumbel Exp $
+//  $Id: Pingu.cc,v 1.57 2001/06/17 17:18:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -288,7 +288,7 @@ Pingu::update_persistent(float delta)
 }
 
 // Let the pingu do his job (i.e. walk his way)
-// FIXME: This function is *much* to large, it needs a real cut down
+// FIXME: This function is *much* too large, it needs a real cut down
 // into smaller pieces.  
 void
 Pingu::update(float delta)

@@ -1,4 +1,4 @@
-//  $Id: StringConverter.hh,v 1.6 2001/06/16 15:01:53 grumbel Exp $
+//  $Id: StringConverter.hh,v 1.7 2001/06/17 17:18:27 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,10 @@
 
 #include <string>
 #include <stdexcept>
+
+#ifdef HAVE_CONFIG_H
+#include "config.h"
+#endif
 
 #ifdef HAVE_SSTREAM
 #include <sstream>
