@@ -1,4 +1,4 @@
-//  $Id: pingu_action.cxx,v 1.11 2002/10/28 15:41:42 torangan Exp $
+//  $Id: pingu_action.cxx,v 1.12 2002/11/02 17:13:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -161,18 +161,13 @@ PinguAction::move_with_forces (float x_to_add, float y_to_add)
 	      // If there is something to the right of the Pingu
 	      if (collision_on_walk(pingu->direction, 0))
 		{
-		  // Make it so that the Pingu won't go right any further.
-		  force_counter.x = 0;
-		  resultant_force.x = 0;
-
-		  // Stop Pingu from still going up
-		  if (force_counter.y < 0)
-		    {
-		      force_counter.y = 0;
-		      resultant_force.y = 0;
-		    }
+		  // Make the Pingu reflect/bounce off the wall
+		  force_counter.x = -(force_counter.x);
+		  resultant_force.x = -(resultant_force.x/3);
 
 		  pingu->set_velocity(resultant_force);
+
+		  pingu->direction.change();
 		}
 	      else
 		{
@@ -186,18 +181,13 @@ PinguAction::move_with_forces (float x_to_add, float y_to_add)
 	      // If there is something to the left of the Pingu
 	      if (collision_on_walk(-(pingu->direction), 0))
 		{
-		  // Make it so that the Pingu won't go left any further.
-		  force_counter.x = 0;
-		  resultant_force.x = 0;
-
-		  // Stop Pingu from still going up
-		  if (force_counter.y < 0)
-		    {
-		      force_counter.y = 0;
-		      resultant_force.y = 0;
-		    }
+		  // Make the Pingu reflect off the wall
+		  force_counter.x = -(force_counter.x);
+		  resultant_force.x = -(resultant_force.x);
 
 		  pingu->set_velocity(resultant_force);
+
+		  pingu->direction.change();
 		}
 	      else
 		{
