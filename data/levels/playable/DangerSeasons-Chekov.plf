@@ -131,8 +131,8 @@
 
 <exit use-old-pos-handling="0">
   <position>
-    <x-pos>483</x-pos>
-    <y-pos>566</y-pos>
+    <x-pos>491</x-pos>
+    <y-pos>560</y-pos>
     <z-pos>0</z-pos>
   </position>
   <surface><resource type="datafile">
