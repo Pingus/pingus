@@ -1,4 +1,4 @@
-//  $Id: Editor.hh,v 1.16 2002/01/19 12:57:54 grumbel Exp $
+//  $Id: Editor.hh,v 1.17 2002/01/19 14:29:59 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,7 @@
 #include <list>
 #include <ClanLib/core.h>
 
+#include "EditorHelpScreen.hh"
 #include "../PSMParser.hh"
 #include "../PLF.hh"
 
@@ -39,47 +40,31 @@ class StatusLine;
 class Editor
 {
 private:
-  ///
   EditorEvent* event;
-  ///
   friend class EditorEvent;
 
-  ///
   CL_Slot on_button_press_slot;
-  ///
   CL_Slot on_button_release_slot;
   
-  ///
   int event_handler_ref_counter;
 
-  ///
   CL_Font* font;
-  ///
   bool quit;
 
-  ///
   int move_x;
-  ///
   int move_y;
-  ///
   std::string checkpoint;
-  ///
   std::string last_level;
-  ///
   bool always_animate;
 
-  ///
+  bool show_help_screen;
+  EditorHelpScreen help_screen;
+
   Panel*  panel;
-  ///
   ScrollMap* scroll_map;
-  ///
   ObjectManager* object_manager;
-  ///
-  EditorView* view;
-  
-  ///
+  EditorView* view; 
   StatusLine* status_line;
-  ///
   ObjectSelector* object_selector;
   
   enum { SELECTOR_TOOL, ZOOM_TOOL } tool;
@@ -107,7 +92,7 @@ public:
   void zoom_mode ();
   void load_level (const std::string& str);
 
-  void show_help ();
+  void toggle_help_screen ();
 
   void register_event_handler();
   void unregister_event_handler();

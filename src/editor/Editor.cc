@@ -1,4 +1,4 @@
-//  $Id: Editor.cc,v 1.36 2002/01/19 12:57:54 grumbel Exp $
+//  $Id: Editor.cc,v 1.37 2002/01/19 14:29:58 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -49,6 +49,7 @@ Editor::instance ()
 
 Editor::Editor ()
 {
+  show_help_screen = true;
   move_x = 0;
   move_y = 0;
   event_handler_ref_counter = 0;
@@ -179,6 +180,8 @@ Editor::draw ()
 
   status_line->draw(view);
   scroll_map->draw();
+  if (show_help_screen)
+    help_screen.draw ();
 }
 
 
@@ -465,9 +468,9 @@ Editor::edit_current_objs()
 }
 
 void
-Editor::show_help ()
+Editor::toggle_help_screen ()
 {
-  // FIXME:
+  show_help_screen = !show_help_screen;
 }
 
 void 

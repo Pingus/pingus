@@ -1,4 +1,4 @@
-//  $Id: EditorEvent.cc,v 1.56 2002/01/19 12:57:54 grumbel Exp $
+//  $Id: EditorEvent.cc,v 1.57 2002/01/19 14:29:59 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -235,7 +235,7 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key& key)
 	  break;
 
 	case CL_KEY_F1:
-	  editor->show_help ();
+	  editor->toggle_help_screen ();
 	  break;
 
 	  // Change the width and height of the current level.
@@ -278,11 +278,11 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key& key)
 	  }
 	  break;
 
-	case CL_KEY_Z:
+	case CL_KEY_Z: // FIXME: stupid key binding
 	  editor_zoom_in ();
 	  break;
 
-	case CL_KEY_W:
+	case CL_KEY_W: // FIXME: stupid key binding
 	  editor_zoom_out ();
 	  break;
 
