@@ -1,4 +1,4 @@
-//  $Id: PLFParser.cc,v 1.9 2000/04/26 15:27:39 grumbel Exp $
+//  $Id: PLFParser.cc,v 1.10 2000/04/26 15:48:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -185,9 +185,9 @@ PLFParser::get_valueid(void)
       return "}";
     }
 
-    if (std::isalpha(atom) || atom == '_') {
+    if (isalpha(atom) || atom == '_') {
       ret_val += atom;
-    } else if (std::isspace(atom)) {
+    } else if (isspace(atom)) {
       return ret_val;
     } else if (atom == '=') {
       in.putback(atom);
@@ -223,9 +223,9 @@ PLFParser::get_value(void)
       return ret_val;
     }
    
-    if (!std::isalnum(atom) && atom != '-' && atom != '_' && atom != '.')
+    if (!isalnum(atom) && atom != '-' && atom != '_' && atom != '.')
       {
-	if (std::isspace(atom)){
+	if (isspace(atom)){
 	  return ret_val;
 	} else {
 	  syntax_error(string("Unexpected char '") + atom + "'");
@@ -271,7 +271,7 @@ PLFParser::jump_after(char c)
   jump();
 
   atom = get_atom();
-  if (std::isspace(atom) || atom == c) {
+  if (isspace(atom) || atom == c) {
     if (atom == c) {
       return;
     } else {
@@ -289,7 +289,7 @@ PLFParser::jump(void)
   char atom;
   atom = get_atom();
 
-  if (std::isspace(atom)) {
+  if (isspace(atom)) {
     return;
   } else {
     in.putback(atom);
