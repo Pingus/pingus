@@ -1,4 +1,4 @@
-//  $Id: story_screen.cxx,v 1.17 2003/04/13 22:00:55 grumbel Exp $
+//  $Id: story_screen.cxx,v 1.18 2003/04/15 23:12:29 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -142,10 +142,10 @@ StoryScreenComponent::update(float delta)
 
   if (!page_displayed_completly)
     {
-      int i = Math::min(current_page.text.length(), (unsigned int)(20.0f * time_passed));
-      display_text = current_page.text.substr(0, i);
+      unsigned int len = static_cast<unsigned int>(20.0f * time_passed);
+      display_text = current_page.text.substr(0, Math::min(current_page.text.length(), len));
 
-      if (current_page.text.length() < (unsigned int)(15.0f * time_passed))
+      if (current_page.text.length() < len)
         {
           page_displayed_completly = true;
         }

@@ -1,4 +1,4 @@
-//  $Id: playfield.hxx,v 1.14 2003/02/19 10:37:31 grumbel Exp $
+//  $Id: playfield.hxx,v 1.15 2003/04/15 23:12:29 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,7 +28,6 @@
 class Pingu;
 class World;
 class Server;
-class PinguInfo;
 class ButtonPanel;
 class Controller;
 
@@ -43,7 +42,6 @@ private:
   Client* client;
   ///Range x_offset2, y_offset2;
   ButtonPanel* buttons;
-  PinguInfo* pingu_info;
   World* world;
   std::vector<View*> view;
   
@@ -88,7 +86,6 @@ public:
   void generate_clipping_rects(int, int, int, int);
 
   /// Members used to communicate between different screen objs
-  void set_pingu_info(PinguInfo*);
   void set_buttons(ButtonPanel*);
   void set_server(Server*);
 

@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.83 2003/04/15 19:06:50 grumbel Exp $
+//   $Id: pingus_main.cxx,v 1.84 2003/04/15 23:12:29 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -505,7 +505,7 @@ PingusMain::check_args(int argc, char** argv)
         << "\n   -l, --level " << _("FILE      ") << _("Load a custom level from FILE")
         << "\n   --worldmap "<< _("FILE        ") << _("Load a custom worldmap from FILE")
         << "\n   -v, --verbose            " << _("Print some more messages to stdout, can be set")
-        << "\n                            " << _("multible times to increase verbosity")
+        << "\n                            " << _("multiple times to increase verbosity")
         << "\n   -V, --version            " << _("Prints version number and exit")
         << "\n   -e, --editor             " << _("Launch the Level editor (experimental)")
         << "\n   --disable-auto-scrolling " << _("Disable automatic scrolling")
