@@ -1,4 +1,4 @@
-//  $Id: pingu_map.cxx,v 1.1 2002/06/12 19:06:12 grumbel Exp $
+//  $Id: pingu_map.cxx,v 1.2 2002/09/04 19:40:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -66,19 +66,6 @@ void
 PinguMap::put(const CL_Surface& sur, int x, int y)
 {
   put (sur.get_provider (), x, y);
-}
-
-void 
-PinguMap::update (float /*delta*/)
-{
-  
-}
-
-void 
-PinguMap::draw_offset (int x_of, int y_of, float zoom)
-{
-  draw (0, 0, CL_Display::get_width(), CL_Display::get_height (),
-	x_of, y_of, zoom);
 }
 
 /* EOF */

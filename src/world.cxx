@@ -1,4 +1,4 @@
-//  $Id: world.cxx,v 1.20 2002/09/04 17:49:48 grumbel Exp $
+//  $Id: world.cxx,v 1.21 2002/09/04 19:40:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -91,8 +91,8 @@ World::~World()
 }
 
 // Merge the different layers on the screen together
-void 
-World::draw(int x1, int y1, int /*w*/, int /*h*/,
+/*void 
+World::draw(int x1, int y1, int w, int h,
 	    int x_of, int y_of, float s)
 {
   x_of += x1;
@@ -104,7 +104,7 @@ World::draw(int x1, int y1, int /*w*/, int /*h*/,
     }
   
   particle_holder->draw_offset(x_of, y_of, s);
-}
+}*/
 
 void
 World::draw (GraphicContext& gc)

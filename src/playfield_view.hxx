@@ -1,4 +1,4 @@
-//  $Id: playfield_view.hxx,v 1.4 2002/09/04 17:49:48 grumbel Exp $
+//  $Id: playfield_view.hxx,v 1.5 2002/09/04 19:40:19 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #ifndef HEADER_PINGUS_PLAYFIELD_VIEW_HXX
 #define HEADER_PINGUS_PLAYFIELD_VIEW_HXX
 
+#include "display_graphic_context.hxx"
 #include "gui_obj.hxx"
 
 class CL_Rect;
@@ -31,6 +32,7 @@ class Pingu;
 class PlayfieldView : public GuiObj
 {
 private:
+  DisplayGraphicContext gc;
   World * world;
   int x_offset;
   int y_offset;

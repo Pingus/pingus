@@ -1,4 +1,4 @@
-//  $Id: view.hxx,v 1.7 2002/09/04 17:49:48 grumbel Exp $
+//  $Id: view.hxx,v 1.8 2002/09/04 19:40:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,10 +38,13 @@ private:
   DisplayGraphicContext display_gc;
 
   CL_ClipRect clip_rect;
-  /// The position of the view in the world
+
+  /** The position of the view in the world */
   Range x_offset, y_offset; 
+
   bool mouse_over;
-  /// The zoom of the View, 1 is default
+
+  /** The zoom of the View, 1 is default */
   double size;              
   int mouse_x;
   int mouse_y;

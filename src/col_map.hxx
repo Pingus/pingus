@@ -1,4 +1,4 @@
-//  $Id: col_map.hxx,v 1.5 2002/08/23 15:49:48 torangan Exp $
+//  $Id: col_map.hxx,v 1.6 2002/09/04 19:40:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,7 @@
 
 #include "groundpiece_data.hxx"
 
+class GraphicContext;
 class ResDescriptor;
 class PixelStatus;
 class CL_Surface;
@@ -61,10 +62,10 @@ public:
       the colmap. */
   unsigned char* get_data();
 
-  /// Returns the height of the collision map.
+  /** Returns the height of the collision map. */
   int get_height();
 
-  /// Returns the height of the collision map.
+  /** Returns the height of the collision map. */
   int get_width();
 
   ///
@@ -85,7 +86,7 @@ public:
   void remove(const CL_Surface&, int x, int y);
   void remove(CL_SurfaceProvider*, int x, int y);
 
-  void draw(int, int, float);
+  void draw(GraphicContext& gc);
   
 private:
   ColMap (const ColMap&);

@@ -1,4 +1,4 @@
-//  $Id: spot_map.hxx,v 1.4 2002/08/23 15:49:51 torangan Exp $
+//  $Id: spot_map.hxx,v 1.5 2002/09/04 19:40:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -76,13 +76,13 @@ public:
   PingusSpotMap(PLF*);
   virtual ~PingusSpotMap();
 
+  void draw(GraphicContext& gc);
+
   void generate_colmap();
   ColMap* get_colmap();
   void load(PLF* plf);
   void gen_tiles();
-  void draw(int x, int y, int w, int h, int of_x, int of_y, float s);
-  void draw_colmap(int x_pos, int y_pos, int w, int h, 
-		   int of_x, int of_y, float s);
+
   int  get_height(void);
   int  get_width(void);
   CL_Surface get_surface(void);
@@ -97,6 +97,9 @@ public:
   float get_z_pos () const { return 0; }
   
 private:
+  /** Draw the collision map onto the screen */
+  void draw_colmap(GraphicContext& gc);
+
   PingusSpotMap (const PingusSpotMap&);
   PingusSpotMap operator= (const PingusSpotMap&);
 };

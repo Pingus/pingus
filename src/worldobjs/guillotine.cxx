@@ -1,4 +1,4 @@
-//  $Id: guillotine.cxx,v 1.1 2002/09/04 14:55:13 torangan Exp $
+//  $Id: guillotine.cxx,v 1.2 2002/09/04 19:40:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "../graphic_context.hxx"
 #include "guillotine.hxx"
 #include "../pingus_resource.hxx"
 #include "../pingu_holder.hxx"
@@ -48,18 +49,16 @@ namespace WorldObjs {
   }
 
   void
-  Guillotine::draw_offset (int x, int y, float s)
+  Guillotine::draw (GraphicContext& gc)
   {
     if (killing) {
       if (data->direction.is_left())
-        data->surface.put_screen(static_cast<int>(data->pos.x + x), static_cast<int>(data->pos.y + y), data->counter);
+        gc.draw(data->surface, data->pos, data->counter);
       else
-        data->surface.put_screen(static_cast<int>(data->pos.x + x), static_cast<int>(data->pos.y + y), data->counter + 12);
+        gc.draw (data->surface, data->pos, data->counter + 12);
     } else {
-      data->idle_surf.put_screen(static_cast<int>(data->pos.x + x), static_cast<int>(data->pos.y + y), data->idle_counter);
-    }
-    
-    UNUSED_ARG(s);
+      gc.draw (data->idle_surf, data->pos, data->idle_counter);
+    }   
   }
   
   

@@ -1,4 +1,4 @@
-//  $Id: surface_background.cxx,v 1.5 2002/08/23 15:49:54 torangan Exp $
+//  $Id: surface_background.cxx,v 1.6 2002/09/04 19:40:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,7 @@
 
 #include <ClanLib/Display/SurfaceProviders/canvas.h>
 #include <ClanLib/Display/Display/display.h>
+#include "../graphic_context.hxx"
 #include "../world.hxx"
 #include "../timer.hxx"
 #include "../pingus_resource.hxx"
@@ -210,7 +211,7 @@ SurfaceBackground::update(float /*delta*/)
 }
 
 void
-SurfaceBackground::draw_offset(int x_of, int y_of, float s)
+SurfaceBackground::draw (GraphicContext& gc)
 {
   if (fast_mode) 
     {
@@ -218,6 +219,9 @@ SurfaceBackground::draw_offset(int x_of, int y_of, float s)
     } 
   else 
     {
+      int x_of = int(gc.get_x_offset () + (gc.get_width ()/2));
+      int y_of = int(gc.get_y_offset () + (gc.get_height ()/2));
+
       int start_x;
       int start_y;
       
@@ -232,28 +236,16 @@ SurfaceBackground::draw_offset(int x_of, int y_of, float s)
       else if (start_y < 0 - int(bg_surface.get_height()))
 	start_y += bg_surface.get_height();
       
-      if (s == 1.0) 
+      for(int y = start_y; 
+	  y < CL_Display::get_height(); 
+	  y += bg_surface.get_height()) 
 	{
-	  for(int y = start_y; 
-	      y < CL_Display::get_height(); 
-	      y += bg_surface.get_height()) 
+	  for(int x = start_x;
+	      x < CL_Display::get_width(); 
+	      x += bg_surface.get_width())
 	    {
-	      for(int x = start_x;
-		  x < CL_Display::get_width(); 
-		  x += bg_surface.get_width())
-		{
-		  bg_surface.put_screen(x, y, counter);
-		}
+	      bg_surface.put_screen(x, y, counter); // FIXME: should use gc
 	    }
-	}
-      else 
-	{
-	  std::cout << "SurfaceBackground: Zooming not supported: " << s << std::endl;
-	  for(int y=(y_of/2); y < CL_Display::get_height(); y += (int)(bg_surface.get_height() * s)) {
-	    for(int x = start_x; x < CL_Display::get_width(); x += (int)(bg_surface.get_width() * s)) {
-	      bg_surface.put_screen(x, y, s, s);
-	    }
-	  }
 	}
     }
 }

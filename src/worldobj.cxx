@@ -1,4 +1,4 @@
-//  $Id: worldobj.cxx,v 1.5 2002/09/04 17:49:48 grumbel Exp $
+//  $Id: worldobj.cxx,v 1.6 2002/09/04 19:40:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -58,15 +58,19 @@ void
 WorldObj::draw_offset(int /*x*/, int /*y*/, float /*s*/)
 {
   // do nothing
-  std::cout << "WorldObj::draw_offset(int /*x*/, int /*y*/, float /*s*/): not implemented, probally a bug" << std::endl;
+  std::cout << "WorldObj::draw_offset(): not implemented, probally a bug: " 
+	    << typeid(*this).name () << std::endl;
 }
 
 void
 WorldObj::draw (GraphicContext& gc)
 {
+  // FIXME: I need some docu on the meaning of get_x_offset() and co.
   std::cout << "WorldObj:draw(GraphicContext): Using compat-wrapper: " 
 	    << typeid(*this).name () << std::endl;
-  draw_offset (int(gc.get_x_offset ()), int(gc.get_y_offset ()), gc.get_zoom ());
+  draw_offset (static_cast<int>(gc.get_x_offset () + gc.get_width ()/2), 
+	       static_cast<int>(gc.get_y_offset () + gc.get_height ()/2), 
+	       gc.get_zoom ());
 }
 
 /* EOF */

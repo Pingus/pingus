@@ -1,4 +1,4 @@
-//  $Id: playfield_view.cxx,v 1.1 2002/06/12 19:06:13 grumbel Exp $
+//  $Id: playfield_view.cxx,v 1.2 2002/09/04 19:40:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,8 +24,10 @@
 #include "world.hxx"
 
 PlayfieldView::PlayfieldView (World * w, const CL_Rect& rect)
-  : world (w), x_offset (0), y_offset (0)
+  : gc (0, 0, 300, 300, 0, 0), // FIXME: broken
+    world (w), x_offset (0), y_offset (0)
 {
+  // FIXME: Cliprects should be handled in the GraphicContext
   set_clip_rect(rect.x1, rect.y1, rect.x2, rect.y2);
 }
 
@@ -41,11 +43,7 @@ PlayfieldView::update (float /*delta*/)
 void 
 PlayfieldView::draw ()
 {
-  //std::cout << "Offset: " << x_offset << " " << y_offset << std::endl;
-  world->draw(//x1, y1,
-	      //x2 - x1, y2 - y1,
-	      0, 0, CL_Display::get_width (), CL_Display::get_height (),
-	      x_offset + x1, y_offset + y1, 1.0f);
+  world->draw(gc);
 }
 
 void 

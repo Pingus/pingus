@@ -1,4 +1,4 @@
-//  $Id: surface_background.hxx,v 1.5 2002/08/23 15:49:54 torangan Exp $
+//  $Id: surface_background.hxx,v 1.6 2002/09/04 19:40:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,7 +46,7 @@ public:
   float get_z_pos () const { return pos.z; }
 
   void update (float delta);
-  void draw_offset (int x_of, int y_of, float s = 1.0);
+  void draw (GraphicContext& gc);
   
 private:
   SurfaceBackground (const SurfaceBackground&);

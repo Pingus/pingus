@@ -1,4 +1,4 @@
-//  $Id: liquid.cxx,v 1.3 2002/08/22 00:36:30 grumbel Exp $
+//  $Id: liquid.cxx,v 1.4 2002/09/04 19:40:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <ClanLib/Display/Display/display.h>
+#include "graphic_context.hxx"
 #include "world.hxx"
 #include "pingus_resource.hxx"
 #include "col_map.hxx"
@@ -52,53 +53,11 @@ Liquid::draw_colmap()
 }
 
 void
-Liquid::draw_offset(int x_of, int y_of, float s)
+Liquid::draw (GraphicContext& gc)
 {
-  int x1 = int(pos.x + x_of);
-  int x2 = int(pos.x + width + x_of);
-  int y1 = int(pos.y + y_of);
-  int y2 = int(pos.y + y_of + sur.get_height());
-
-  if (x1 < 0) {
-    x1 = 0;
-    if (x2 < 0)
-      x2 = 0;
-  }
-
-  if (y1 < 0) {
-    y1 = 0;
-    if (y2 < 0)
-      y2 = 0;
-  }
-
-  if (x2 >= CL_Display::get_width()) {
-    x2 = CL_Display::get_width() - 1;
-    if (x1 >= CL_Display::get_width())
-      x1 = x2;
-  }
-
-  if (y2 >= CL_Display::get_height()) {
-    y2 = CL_Display::get_height();
-    if (y1 >= CL_Display::get_height())
-      y1 = y2;
-  }
-
-  if (s == 1.0) {
-    // FIXME: I don't need we need clip_rects here any longer
-    CL_Display::push_clip_rect();
-    CL_Display::set_clip_rect(CL_ClipRect(x1, y1, x2, y2));
-    
-    for(int x = (int) pos.x; x <= pos.x + width; x += sur.get_width())
-      sur.put_screen(x + x_of, (int)pos.y + y_of, int(counter));
-
-    CL_Display::pop_clip_rect();
-  } else {
-    /* Do nothing, since this is buggy
-    for(int x = x_pos; x <= x_pos + width; x += sur->get_width())
-      sur->put_screen(x + x_of, y_pos + y_of,
-                      s, s, int(counter));
-    */
-  }
+  for(int x = static_cast<int>(pos.x); x <= pos.x + width; x += sur.get_width())
+    gc.draw(sur, x, static_cast<int>(pos.y), static_cast<int>(counter));
+  
   ++counter;
 }
 

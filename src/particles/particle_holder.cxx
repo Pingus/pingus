@@ -1,4 +1,4 @@
-//  $Id: particle_holder.cxx,v 1.3 2002/09/04 17:49:48 grumbel Exp $
+//  $Id: particle_holder.cxx,v 1.4 2002/09/04 19:40:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -66,7 +66,10 @@ ParticleHolder::draw (GraphicContext& gc) // const
 {
   for(std::list<Particle*>::iterator i = this->begin(); i != this->end(); ++i) 
     { 
-      (*i)->draw_offset (int(gc.get_x_offset ()), int(gc.get_y_offset ()), gc.get_zoom ());
+      // FIXME: ugly... should use gc instead
+      (*i)->draw_offset (int(gc.get_x_offset () + (gc.get_width ()/2)), 
+			 int(gc.get_y_offset () + (gc.get_height ()/2)), 
+			 gc.get_zoom ());
     }
 }
 

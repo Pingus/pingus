@@ -1,4 +1,4 @@
-//  $Id: pingu_map.hxx,v 1.3 2002/08/23 15:49:49 torangan Exp $
+//  $Id: pingu_map.hxx,v 1.4 2002/09/04 19:40:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,26 +36,9 @@ enum MapType { BMP, SPOT, RANDOM, UNDEF };
 class PinguMap : public WorldObj
 {
 public:
-  ///
   PinguMap();
-  ///
   virtual ~PinguMap();
 
-  /** Draws the map onto the screen
-      @param x1 The x-position on the screen
-      @param y1 The y-position on the screen
-      @param w  The width of the area to draw
-      @param h The height of the area to draw
-      @param x_of The X-Offset of the viewpoint, used to scroll on the map
-      @param y_of The Y-Offset of the viewpoint, used to scroll on the map
-      @param s  The scale factor by which the map is zoomed
-   */
-  virtual void draw(int x1, int y1, int w, int h,
-		    int x_of, int y_of, float s=1.0) = 0;
-		    
-  virtual void update (float delta); 
-  
-  virtual void draw_offset (int, int, float delta); 
   virtual void mark_dirty(int,int,int,int);
   virtual ColMap *get_colmap();
   

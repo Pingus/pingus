@@ -1,4 +1,4 @@
-//  $Id: hotspot.cxx,v 1.2 2002/06/13 14:25:12 torangan Exp $
+//  $Id: hotspot.cxx,v 1.3 2002/09/04 19:40:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "graphic_context.hxx"
 #include "hotspot.hxx"
 #include "globals.hxx"
 #include "pingus_resource.hxx"
@@ -41,30 +42,9 @@ Hotspot::Hotspot(const HotspotData& spot)
 }
 
 void 
-Hotspot::draw_offset(int x, int y, float s)
+Hotspot::draw (GraphicContext& gc)
 {
-  /*
-  std::cout << "Hotspot: " 
-       << x << " : "
-       << y << " : "
-       << x_pos << " : "
-       << y_pos << " : " 
-       << para << " : " 
-       << std::endl;
-*/  
-  if (s == 1.0)
-    {
-      surface.put_screen((int)((pos.x + x) * para),
-			  (int)((pos.y + y) * para),
-			  (int)count);
-    }
-  else 
-    {
-      surface.put_screen((int)((pos.x + x) * s * para), 
-			  (int)((pos.y + y) * s * para),
-			  s, s, (int)count);      
-    }
-
+  gc.draw (surface, pos * para, static_cast<int>(count));
   ++count;
 }
 

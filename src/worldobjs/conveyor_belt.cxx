@@ -1,4 +1,4 @@
-//  $Id: conveyor_belt.cxx,v 1.8 2002/09/04 14:55:13 torangan Exp $
+//  $Id: conveyor_belt.cxx,v 1.9 2002/09/04 19:40:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <fstream>
+#include "../graphic_context.hxx"
 #include "../col_map.hxx"
 #include "../editor/editor_view.hxx"
 #include "../world.hxx"
@@ -127,15 +128,18 @@ ConveyorBelt::ConveyorBelt (WorldObjData* data)
 }
 
 void
-ConveyorBelt::draw_offset (int x_of, int y_of, float /*s*/)
+ConveyorBelt::draw (GraphicContext& gc)
 {
-  left_sur.put_screen (int(pos.x + x_of), int(pos.y + y_of), int(counter));
+  gc.draw(left_sur, pos, int(counter));
   for (int i=0; i < width; ++i)
-    middle_sur.put_screen (int(pos.x + left_sur.get_width () + i*middle_sur.get_width () + x_of), 
-			   int(pos.y + y_of), 
-			   int(counter));
-  right_sur.put_screen (int(pos.x + left_sur.get_width () + width*middle_sur.get_width () + x_of),
-			int(pos.y + y_of), int(counter));
+    gc.draw(middle_sur, 
+	    int(pos.x + left_sur.get_width () + i * middle_sur.get_width ()), 
+	    int(pos.y), 
+	    int(counter));
+  
+  gc.draw(right_sur,
+	  int(pos.x + left_sur.get_width () + width*middle_sur.get_width ()),
+	  int(pos.y), int(counter));
 }
 
 void

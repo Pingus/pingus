@@ -1,4 +1,4 @@
-//  $Id: exit.cxx,v 1.5 2002/08/25 09:08:48 torangan Exp $
+//  $Id: exit.cxx,v 1.6 2002/09/04 19:40:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "graphic_context.hxx"
 #include "col_map.hxx"
 #include "world.hxx"
 #include "globals.hxx"
@@ -63,15 +64,10 @@ Exit::draw_colmap()
 }
 
 void
-Exit::draw_offset(int x_of, int y_of, float s)
+Exit::draw (GraphicContext& gc)
 {
-  if (s == 1.0) {
-    sprite.put_screen(int(pos.x) + x_of, int(pos.y) + y_of);
-    flag.put_screen (int(pos.x) + 40 + x_of, int(pos.y) + y_of);
-  } else {
-    //sprite.put_screen((int)((pos.x + x_of) * s), (int)((pos.y + y_of) * s),
-    //s, s);
-  }
+  gc.draw(sprite, pos);
+  gc.draw(flag, pos + CL_Vector (40, 0));
 }
 
 ///

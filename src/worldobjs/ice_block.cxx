@@ -1,4 +1,4 @@
-//  $Id: ice_block.cxx,v 1.9 2002/09/04 14:55:13 torangan Exp $
+//  $Id: ice_block.cxx,v 1.10 2002/09/04 19:40:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <fstream>
+#include "../graphic_context.hxx"
 #include "../col_map.hxx"
 #include "../world.hxx"
 #include "../pingu_holder.hxx"
@@ -101,13 +102,12 @@ IceBlock::draw_colmap()
 
 ///
 void 
-IceBlock::draw_offset(int x_of, int y_of, float /*s*/)
+IceBlock::draw (GraphicContext& gc)
 {
   if (is_finished)
     return;
 
-  block_sur.put_screen (int(pos.x + x_of), int(pos.y + y_of), 
-			(int)((1.0 - thickness) * (block_sur.get_num_frames () - 1)));
+  gc.draw (block_sur, pos, (int)((1.0 - thickness) * (block_sur.get_num_frames () - 1)));
 }
 
 ///

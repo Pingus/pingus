@@ -1,4 +1,4 @@
-//  $Id: entrance.cxx,v 1.4 2002/06/28 09:51:46 grumbel Exp $
+//  $Id: entrance.cxx,v 1.5 2002/09/04 19:40:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "graphic_context.hxx"
 #include "world.hxx"
 #include "pingu_holder.hxx"
 #include "globals.hxx"
@@ -103,20 +104,16 @@ Entrance::update(float /*delta*/)
 }
 
 void
-Entrance::draw_offset(int x, int y, float s)
+Entrance::draw (GraphicContext& gc)
 {
-  if (!surface) return;
-  if (s == 1.0) 
+  if (!surface) 
     {
-      // FIXME: Why do we still have these hardcoded offsets?!
-      surface.put_screen((int)pos.x - 32 + x, (int)pos.y - 16 + y);
-    } 
-  else 
-    {
-      surface.put_screen((int)((pos.x-32 + x) * s),
-			 (int)((pos.y-16 + y) * s),
-			 s, s);
+      std::cout << "Entrance::draw (GraphicContext& gc): entrance without a surface?!" << std::endl;
+      return;
     }
+
+  // FIXME: Why do we still have these hardcoded offsets?!
+  gc.draw(surface, CL_Vector ((int)pos.x - 32, (int)pos.y - 16));
 }
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: spot_map.cxx,v 1.9 2002/09/04 14:55:11 torangan Exp $
+//  $Id: spot_map.cxx,v 1.10 2002/09/04 19:40:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #include <stdio.h>
 #include <ClanLib/Display/SurfaceProviders/canvas.h>
 #include <ClanLib/Display/Display/display.h>
+#include "graphic_context.hxx"
 #include "pingus_resource.hxx"
 #include "plf.hxx"
 #include "pingus_error.hxx"
@@ -241,72 +242,69 @@ PingusSpotMap::create_map()
 }
 
 void
-PingusSpotMap::draw_colmap(int /*x_pos*/, int /*y_pos*/, int /*w*/, int /*h*/, 
-			   int x_of, int y_of, float s)
+PingusSpotMap::draw_colmap(GraphicContext& gc)
 {
-  colmap->draw(x_of, y_of, s);
+  colmap->draw(gc);
 }
 
 // Draws the map with a offset, needed for scrolling
 void
-PingusSpotMap::draw(int x_pos, int y_pos, int w, int h, 
-		    int of_x, int of_y, float s)
+PingusSpotMap::draw(GraphicContext& gc)
 {
   //std::cout << "Draw: " << " x_pos: " << x_pos << " y_pos: " 
   //<< " w: " << w << " h: " << h << " s: " << s << std::endl;
 
+  // FIXME: delete the next four lines and replace them with gc.get_clip_rect()
+  int w = CL_Display::get_width ();
+  int h = CL_Display::get_height ();
+  int of_x = gc.get_x_offset () + (gc.get_width ()/2); 
+  int of_y = gc.get_y_offset () + (gc.get_height ()/2);
+
   if (draw_collision_map)
     {
-      draw_colmap(x_pos, y_pos, w, h, of_x, of_y, s);
+      draw_colmap(gc);
     }
   else
     {
-      if (s == 1.0)
+      // Trying to calc which parts of the tilemap needs to be drawn
+      int start_x = -of_x/tile_size;
+      int start_y = -of_y/tile_size;
+      unsigned int tilemap_width = w / tile_size;
+      unsigned int tilemap_height = h / tile_size + 1;
+
+      //	  std::cout  << " th: " << tilemap_height << " tw: " << tilemap_width << std::endl;
+
+      if (start_x < 0)
+	start_x = 0;
+      if (start_y < 0)
+	start_y = 0;
+
+      //unsigned int time = CL_System::get_time (); 
+      // drawing the stuff
+      for (TileIter x = start_x; 
+	   x <= (start_x + tilemap_width) && x < tile.size();
+	   ++x)
 	{
-	  // Trying to calc which parts of the tilemap needs to be drawn
-	  int start_x = -of_x/tile_size;
-	  int start_y = -of_y/tile_size;
-	  unsigned int tilemap_width = w / tile_size;
-	  unsigned int tilemap_height = h / tile_size + 1;
-
-	  //	  std::cout  << " th: " << tilemap_height << " tw: " << tilemap_width << std::endl;
-
-	  if (start_x < 0)
-	    start_x = 0;
-	  if (start_y < 0)
-	    start_y = 0;
-
-	  //unsigned int time = CL_System::get_time (); 
-      	  // drawing the stuff
-	  for (TileIter x = start_x; 
-	       x <= (start_x + tilemap_width) && x < tile.size();
-	       ++x)
+	  for (TileIter y = start_y;
+	       y <= start_y + tilemap_height && y < tile[x].size();
+	       ++y)
 	    {
-	      for (TileIter y = start_y;
-		   y <= start_y + tilemap_height && y < tile[x].size();
-		   ++y)
+	      if (!tile[x][y].is_empty()) 
 		{
-		  if (!tile[x][y].is_empty()) 
-		    {
-		      tile[x][y].surface.put_screen(x * tile_size + of_x, 
-						    y * tile_size + of_y);
-		    }
-		  else
-		    {
-		      if (pingus_debug_flags & PINGUS_DEBUG_TILES)
-			CL_Display::fill_rect(x * tile_size + of_x, y * tile_size + of_y,
-					      x * tile_size + of_x + tile_size, y * tile_size + of_y + tile_size,
-					      1.0f, 0.0f, 0.0f, 0.3f);
-		    }
+		  gc.draw(tile[x][y].surface,
+			  x * tile_size, 
+			  y * tile_size);
+		}
+	      else
+		{
+		  if (pingus_debug_flags & PINGUS_DEBUG_TILES)
+		    gc.draw_fillrect(x * tile_size, y * tile_size,
+				     x * tile_size + tile_size, y * tile_size + tile_size,
+				     1.0f, 0.0f, 0.0f, 0.3f);
 		}
 	    }
-	  //std::cout << "> time: " << CL_System::get_time() - time << std::endl;
-	} 
-      else 
-	{
-	  std::cout << "PingusSpotMap: Zooming is at the moment not supported" << std::endl;
-	  // map_surface->put_screen(int(of_x * s), int(of_y * s), s, s);
 	}
+      //std::cout << "> time: " << CL_System::get_time() - time << std::endl;
     }
 }
 

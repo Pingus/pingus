@@ -1,4 +1,4 @@
-//  $Id: exit.hxx,v 1.3 2002/08/23 15:49:48 torangan Exp $
+//  $Id: exit.hxx,v 1.4 2002/09/04 19:40:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,7 +36,7 @@ public:
   ~Exit();
   
   void  draw_colmap();
-  void  draw_offset(int x, int y, float s = 1.0);
+  void  draw (GraphicContext& gc);
   void  update (float delta);
   float get_z_pos() const { return (int) pos.z; }
   

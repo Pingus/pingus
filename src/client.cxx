@@ -1,4 +1,4 @@
-//  $Id: client.cxx,v 1.18 2002/09/04 14:55:11 torangan Exp $
+//  $Id: client.cxx,v 1.19 2002/09/04 19:40:19 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -91,11 +91,6 @@ Client::Client(Server * s)
   gui_manager->add (new ArmageddonButton(server, CL_Display::get_width() - 40,     CL_Display::get_height() - 62), true);
   gui_manager->add (new ForwardButton   (server, CL_Display::get_width() - 40 * 2, CL_Display::get_height() - 62), true);
   gui_manager->add (new PauseButton     (server, CL_Display::get_width() - 40 * 3, CL_Display::get_height() - 62), true);
-
-  /*playfield->set_clip_rect(0, 0, 
-			   CL_Display::get_width(),
-			   CL_Display::get_height());*/
-
   // Connect the button_panel with the playfield
   playfield->set_buttons(button_panel);
   playfield->set_server(server);

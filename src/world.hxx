@@ -1,4 +1,4 @@
-//  $Id: world.hxx,v 1.9 2002/09/04 17:49:48 grumbel Exp $
+//  $Id: world.hxx,v 1.10 2002/09/04 19:40:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -93,20 +93,6 @@ private:
 public:
   World(PLF*);
   virtual ~World();
-
-  /** Draws the world onto the screen
-      @param x1   The left corner of the drawing area.
-      @param y1   The upper corner of the drawing area.
-      @param w    The width of the drawing area.
-      @param h    The height of the drawing area.
-      @param x_of x_of
-      @param y_of y_of
-      @param s    s   
-      
-      FIXME: deprecated
-  */
-  void    draw(int x1, int y1, int w, int h,
-	       int x_of, int y_of, float s);
 
   /** Draw the world onto the given GraphicContext */
   void    draw (GraphicContext& gc);

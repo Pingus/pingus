@@ -1,4 +1,4 @@
-//  $Id: view.cxx,v 1.8 2002/09/04 17:49:48 grumbel Exp $
+//  $Id: view.cxx,v 1.9 2002/09/04 19:40:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,8 +36,8 @@ View::View(Client* client, int x1, int y1, int x2, int y2, float s)
   assert(world);
 
   size = s;
-
-  clip_rect = CL_ClipRect(x1, y1, x2 + 1, y2 + 1);
+  
+  // FIXME: clip_rect = CL_ClipRect(x1, y1, x2 + 1, y2 + 1);
 
   x1_pos = x1;
   y1_pos = y1;
@@ -60,16 +60,17 @@ View::draw()
 {
   assert(world);
   
-  CL_Display::push_clip_rect();
-  CL_Display::set_clip_rect(clip_rect);
+  // FIXME: CL_Display::push_clip_rect();
+  // FIXME: CL_Display::set_clip_rect(clip_rect);
 
   // Drawing the world
-  world->draw(x1_pos, y1_pos,
+  /*world->draw(x1_pos, y1_pos,
 	      x2_pos - x1_pos + 1, y2_pos - y1_pos + 1,
-	      x_offset, y_offset, size);
+	      x_offset, y_offset, size);*/
 
   // Update the scroll position
-  display_gc.set_offset (x_offset, y_offset);
+  display_gc.set_offset (x_offset - (x2_pos - x1_pos)/2,
+			 y_offset - (y2_pos - y1_pos)/2);
   world->draw (display_gc);
   
   cap.set_pingu(current_pingu);
@@ -77,7 +78,7 @@ View::draw()
 		  get_y_pos() + get_y_offset(),
 		  size);
   
-  CL_Display::pop_clip_rect();
+    // FIXME: CL_Display::pop_clip_rect();
 }
 
 void

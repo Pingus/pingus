@@ -1,4 +1,4 @@
-//  $Id: col_map.cxx,v 1.6 2002/08/16 15:13:59 torangan Exp $
+//  $Id: col_map.cxx,v 1.7 2002/09/04 19:40:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <ClanLib/Display/SurfaceProviders/canvas.h>
+#include "graphic_context.hxx"
 #include "globals.hxx"
 #include "pingus_resource.hxx"
 #include "pingus_error.hxx"
@@ -323,7 +324,7 @@ ColMap::put(CL_SurfaceProvider* provider, int sur_x, int sur_y, GroundpieceData:
 }
 
 void
-ColMap::draw(int x_of, int y_of, float /*s*/)
+ColMap::draw(GraphicContext& gc)
 {
   CL_Canvas* canvas = new CL_Canvas(width, height);
   CL_Surface sur;
@@ -371,7 +372,7 @@ ColMap::draw(int x_of, int y_of, float /*s*/)
 
   sur = CL_Surface(canvas, true);
 
-  sur.put_screen(x_of, y_of);
+  gc.draw(sur, 0, 0);
 }
 
 /* EOF */

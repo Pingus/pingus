@@ -1,4 +1,4 @@
-//  $Id: info_box.cxx,v 1.5 2002/08/23 15:49:57 torangan Exp $
+//  $Id: info_box.cxx,v 1.6 2002/09/04 19:40:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #include <fstream>
 #include <ClanLib/Display/Font/font.h>
 #include <ClanLib/Display/Display/display.h>
+#include "../graphic_context.hxx"
 #include "../pingu_holder.hxx"
 #include "../world.hxx"
 #include "../pingus_resource.hxx"
@@ -115,8 +116,11 @@ InfoBox::InfoBox (const InfoBoxData& data)
 }
 
 void
-InfoBox::draw_offset (int x, int y, float /*s*/)
+InfoBox::draw (GraphicContext& gc)
 {
+  int x = int(gc.get_x_offset () + (gc.get_width ()/2));
+  int y = int(gc.get_y_offset () + (gc.get_height ()/2));
+
   int x_pos = int(pos.x) + x;
   int y_pos = int(pos.y) + y - 100;
 
@@ -124,9 +128,8 @@ InfoBox::draw_offset (int x, int y, float /*s*/)
     {
       int width = font->get_text_width (info_text.c_str ());
       int border = 6;
-      CL_Display::draw_line (int(pos.x + x), int(pos.y + y),
-			     x_pos, y_pos, 0.0f, 1.0f, 0.0f, 1.0f);
-      sprite.put_screen (pos + CL_Vector (x, y));    
+      gc.draw_line (pos, pos + CL_Vector(x, y - 100), 0.0f, 1.0f, 0.0f, 1.0f);
+      gc.draw(sprite, pos);
       CL_Display::fill_rect (x_pos - width/2 - border, y_pos - border,
 			     x_pos + width/2 + border, y_pos + font->get_height () + border,
 			     0.0, 0.0, 0.0, 1.0);
@@ -134,7 +137,7 @@ InfoBox::draw_offset (int x, int y, float /*s*/)
     }
   else
     {
-      sprite.put_screen (pos + CL_Vector (x, y));
+      sprite.put_screen (pos);
     }
 }
 
