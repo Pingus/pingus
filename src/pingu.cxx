@@ -1,4 +1,4 @@
-//  $Id: pingu.cxx,v 1.6 2002/06/21 13:42:34 torangan Exp $
+//  $Id: pingu.cxx,v 1.7 2002/06/21 16:50:20 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,8 +36,7 @@ int   Pingu::id_counter = 0;
 
 // Init a pingu at the given position while falling
 Pingu::Pingu(const CL_Vector& arg_pos, int owner)
-  : action (0),
-    countdown_action (0),
+  : countdown_action (0),
     id (++id_counter),
     font (PingusResource::load_font("Fonts/numbers", "fonts")),
     status (PS_ALIVE),
@@ -103,7 +102,7 @@ Pingu::set_pos(const CL_Vector& arg_pos)
 
 // Set the action of the pingu (bridger, blocker, bomber, etc.)
 // This function is used by external stuff, like the ButtonPanel, etc
-int
+bool
 Pingu::set_action(PinguAction* act)
 {
   assert(act);
@@ -112,7 +111,7 @@ Pingu::set_action(PinguAction* act)
     {
       if (pingus_debug_flags & PINGUS_DEBUG_ACTIONS)
 	std::cout << _("Setting action to a dead pingu") << std::endl;
-      return 0;
+      return false;
     }
 
   act->set_pingu(this);
@@ -135,25 +134,25 @@ Pingu::set_action(PinguAction* act)
 	    {
 	      if (pingus_debug_flags & PINGUS_DEBUG_ACTIONS)
 		std::cout << "Not using action, we have allready" << std::endl;
-	      return 0;
+	      return false;
 	    }
 	}
 
       persist.push_back(act);
-      return 1;
+      return true;
     } 
   else 
     {
       if (act->get_environment() == (PinguEnvironment)ENV_ALWAYS)
 	{
 	  action = act;
-	  return 1;
+	  return true;
 	}
 
       // if environment is bad return
       if (!(act->get_environment() & environment))
 	{ 
-	  return 0; 
+	  return false; 
 	}
     
       if (act->activation_time() == -1)
@@ -165,7 +164,7 @@ Pingu::set_action(PinguAction* act)
 	      return false;
 	    }
 	  action = act;
-	  return 1;	    
+	  return true;	    
 	}
       else 
 	{ // Use the activation time, given by t
@@ -197,6 +196,7 @@ Pingu::set_paction(const std::string& action_name)
 void
 Pingu::set_paction(PinguAction* act) 
 {
+  assert(act);
   action = act;
   action->set_pingu(this);
 }
@@ -246,8 +246,8 @@ Pingu::dist (int x, int y)
 void
 Pingu::update_persistent(float /*delta*/)
 {
-  // 
-  if (environment == ENV_AIR && !action && rel_getpixel(0, -1) == ColMap::NOTHING) 
+  // set floater action if required
+  if (environment == ENV_AIR && action->get_type() != (ActionType)FALL && rel_getpixel(0, -1) == ColMap::NOTHING) 
     {
       for (unsigned int i=0; i < persist.size(); ++i) 
 	{
@@ -289,8 +289,7 @@ Pingu::update(float delta)
   
   if ( !action || action->is_finished) 
     {
-      // FIXME: needs a better name now
-      update_normal(delta);
+      update_action(delta);
     }
 
   update_persistent(delta);
@@ -299,7 +298,7 @@ Pingu::update(float delta)
 
 // Check if the pingu is on ground and then do something.
 void 
-Pingu::update_normal(float /*delta*/)
+Pingu::update_action(float /*delta*/)
 {
   std::cout << "Pingu: No action set, setting action." << std::endl;
   if (rel_getpixel(0,-1) == ColMap::NOTHING)
@@ -315,8 +314,7 @@ Pingu::draw_offset(int x, int y, float s)
   char str[64];
   y += 2;
 
-  if (action) 
-    action->draw_offset(x, y,s);
+  action->draw_offset(x, y,s);
   
   if (action_time != -1) 
     {
@@ -357,10 +355,7 @@ Pingu::need_catch()
   if (status == PS_DEAD)
     return false;
   
-  if (action)
-    return action->need_catch();
-  else 
-    return false;
+  return action->need_catch();
 }
 
 void
@@ -414,11 +409,7 @@ Pingu::get_owner ()
 bool 
 Pingu::catchable ()
 {
-  if (action)
-    return action->catchable ();
-  
-  std::cout << "Pingu:catchable: No action given, default to true" << std::endl;
-  return true;
+  return action->catchable ();
 }
 
 /* EOF */
