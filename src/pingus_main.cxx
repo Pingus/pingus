@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.76 2003/04/12 15:39:20 grumbel Exp $
+//   $Id: pingus_main.cxx,v 1.77 2003/04/12 16:14:31 torangan Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -208,7 +208,7 @@ PingusMain::check_args(int argc, char** argv)
       {"enable-cursor",     no_argument,       0, 'c'},
       {"disable-intro",     no_argument,       0, 'n'},
       {"play-demo",         required_argument, 0, 'p'},
-      {"enable-demo-recording", required_argument, 0, 'r'},
+      {"disable-demo-recording", required_argument, 0, 'r'},
       {"speed",             required_argument, 0, 't'},
       {"datadir",           required_argument, 0, 'd'},
       {"level",             required_argument, 0, 'l'},
@@ -353,7 +353,7 @@ PingusMain::check_args(int argc, char** argv)
       exit(EXIT_SUCCESS);
       break;
     case 'r': // -r, --enabled-demo-recording
-      enable_demo_recording = true;
+      enable_demo_recording = false;
       break;
     case 'p': // -p, --play-demo
       play_demo = true;
@@ -531,7 +531,7 @@ PingusMain::check_args(int argc, char** argv)
         << "\n"
         << "\nDemo playing and recording:"
         << "\n   -p, --play-demo " << _("FILE     ") << _("Plays a demo session from FILE")
-        << "\n   -r, --enable-demo-recording"
+        << "\n   -r, --disable-demo-recording"
         << "\n                            " << _("Record demos for each played level")
         << "\n"
         << "\n"
