@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.5 2000/02/16 23:34:10 grumbel Exp $
+#  $Id: Makefile.am,v 1.6 2000/02/26 16:24:13 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -314,7 +314,32 @@ GROUNDPIECES = \
                groundpieces/space/grid3.pcx \
                groundpieces/space/block1.pcx \
                groundpieces/space/tower1.pcx \
-               groundpieces/space/smalltower.pcx
+               groundpieces/space/smalltower.pcx \
+               \
+               groundpieces/sweets/allsort1.pcx \
+               groundpieces/sweets/allsort2.pcx \
+               groundpieces/sweets/aquachoc.pcx  \
+               groundpieces/sweets/canestalk.pcx  \
+               groundpieces/sweets/canestub.pcx  \
+               groundpieces/sweets/canetop.pcx  \
+               groundpieces/sweets/chocbar.pcx  \
+               groundpieces/sweets/chocbloc-lowleft.pcx  \
+               groundpieces/sweets/chocbloc-lowright.pcx  \
+               groundpieces/sweets/chocbloc-topleft.pcx  \
+               groundpieces/sweets/chocbloc-topright.pcx  \
+               groundpieces/sweets/chocbloc.pcx  \
+               groundpieces/sweets/icecream.pcx  \
+               groundpieces/sweets/jellybaby.tga  \
+               groundpieces/sweets/jellybaby2.tga  \
+               groundpieces/sweets/jube1.tga  \
+               groundpieces/sweets/jube2.tga  \
+               groundpieces/sweets/lollipop-purp.tga  \
+               groundpieces/sweets/lollipop.tga  \
+               groundpieces/sweets/mmblue.pcx    \
+               groundpieces/sweets/mmbrown.pcx   \
+               groundpieces/sweets/mmred.pcx     \
+               groundpieces/sweets/mmyellow.pcx  \
+               groundpieces/sweets/purplechoc.pcx
 
 LIQUIDS = \
           liquids/water.pcx  \
