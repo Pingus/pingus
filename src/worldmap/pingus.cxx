@@ -1,4 +1,4 @@
-//  $Id: pingus.cxx,v 1.14 2002/10/14 00:38:22 grumbel Exp $
+//  $Id: pingus.cxx,v 1.15 2002/10/14 10:19:31 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -63,7 +63,7 @@ Pingus::update_walk (float delta)
 {
   float velocity = 50.0f;
 
-  std::cout << "Updating Walk: " << edge_path_position << "/" << edge_path_length << std::endl;
+  //std::cout << "Updating Walk: " << edge_path_position << "/" << edge_path_length << std::endl;
   // Update the edge_path_position
   edge_path_position += velocity * delta;
 
@@ -157,11 +157,14 @@ Pingus::calc_pos ()
 
           if (comp_length + length > edge_path_position) 
             {
+              // FIXME: this is incorrect, it causses speed miss match
               float perc = (edge_path_position - comp_length) // length to walk from current node
                 / length;
 
               return interpolate (*current, *next, perc);
             }
+
+          comp_length += length;
 
           ++current;
           ++next;
@@ -213,7 +216,8 @@ Pingus:: update_edge_path()
   Path* partial_path = path->graph.resolve_edge(source_node, target_node).data;
           
   edge_path.push_back(path->graph.resolve_node(source_node).data->get_pos());
-  edge_path.insert(edge_path.end(), partial_path->begin(), partial_path->end());
+  // Why do we need to reverse this?!
+  edge_path.insert(edge_path.end(), partial_path->rbegin(), partial_path->rend());
   edge_path.push_back(path->graph.resolve_node(target_node).data->get_pos());
   
   edge_path_length = calc_edge_path_length();
