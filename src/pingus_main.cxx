@@ -884,11 +884,11 @@ PingusMain::main(int argc, char** argv)
 
   try
     {
+      init_path_finder();
+
       quick_check_args(argc, argv);
       read_rc_file();
       check_args(argc, argv);
-
-      init_path_finder();
 
       print_greeting_message();
 

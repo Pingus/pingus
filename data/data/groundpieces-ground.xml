@@ -370,6 +370,26 @@
         <image file="images/groundpieces/ground/jungle/stick5.png"/>
       </sprite>
 
+      <sprite name="stone1">
+        <image file="images/groundpieces/ground/jungle/stone1.png"/>
+      </sprite>
+
+      <sprite name="stone2">
+        <image file="images/groundpieces/ground/jungle/stone2.png"/>
+      </sprite>
+
+      <sprite name="stone3">
+        <image file="images/groundpieces/ground/jungle/stone3.png"/>
+      </sprite>
+
+      <sprite name="stone4">
+        <image file="images/groundpieces/ground/jungle/stone4.png"/>
+      </sprite>
+
+      <sprite name="stone5">
+        <image file="images/groundpieces/ground/jungle/stone5.png"/>
+      </sprite>
+
       <sprite name="twist">
         <image file="images/groundpieces/ground/jungle/twist.png"/>
       </sprite>
