@@ -1,4 +1,4 @@
-//  $Id: controller.cxx,v 1.13 2002/08/16 15:14:00 torangan Exp $
+//  $Id: controller.cxx,v 1.14 2002/08/16 17:12:13 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -68,8 +68,13 @@ namespace Input
 	  }
 
 	else if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "controller-config"))
-	  cur = XMLhelper::skip_blank(cur->children);
-	  
+	  {
+	    // FIXME: handling two levels of the xml tree in the same
+	    // FIXME: while-loop isn't really nice
+	    cur = XMLhelper::skip_blank(cur->children);
+	    continue;
+	  }
+
 	else if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "standard-pointer"))
           standard_pointer = PointerFactory::create(XMLhelper::skip_blank(cur->children));
 	  
