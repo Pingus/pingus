@@ -1,4 +1,4 @@
-//  $Id: surface_selector.cxx,v 1.1 2002/06/12 19:11:31 grumbel Exp $
+//  $Id: surface_selector.cxx,v 1.2 2002/06/23 12:47:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -98,14 +98,14 @@ SurfaceSelector::draw()
   // Draw all surfaces
   for(vector<surface_obj>::iterator i = sur_list->begin(); i != sur_list->end(); i++)
     {
-      if (i->sur.get_width() <= 50 && i->sur.get_height() <= 50)
+      if (i->thumbnail.get_width() <= 50 && i->thumbnail.get_height() <= 50)
 	{
-	  i->sur.put_screen(x + 25 - (i->sur.get_width() / 2), 
-			     y + 25 - (i->sur.get_height() / 2));
+	  i->thumbnail.put_screen(x + 25 - (i->thumbnail.get_width() / 2), 
+			     y + 25 - (i->thumbnail.get_height() / 2));
 	}
       else
 	{
-	  i->sur.put_screen(x, y);
+	  i->thumbnail.put_screen(x, y);
 	}
 
       if (i == c_obj)

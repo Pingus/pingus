@@ -1,4 +1,4 @@
-//  $Id: thumb_cache.hxx,v 1.1 2002/06/12 19:11:31 grumbel Exp $
+//  $Id: thumb_cache.hxx,v 1.2 2002/06/23 12:47:50 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,14 +29,17 @@ class ThumbCache
 private:
   
 public:
+  /** Load a surface from its source, instead of from the cache */
+  static CL_Surface uncached_load (const std::string & res_ident, const std::string & datafile);
+
   /** Load a thumbnail of a surface out of the cache. The thumbnail has
       the size 50x50, if the thumbnail is not available, the surface
       is loaded and added to the cache. */
   static CL_Surface load (const std::string & res_ident, const std::string & datafile);
 
   /** Add a surface as thumbnail to the cache, the surface will be
-      resized to a 50x50 size */
-  static void        cache (const CL_Surface&, const std::string & res_ident, const std::string & datafile);
+      resized to a 50x50 size, the return value is the resized surface */
+  static CL_Surface cache (const CL_Surface&, const std::string & res_ident, const std::string & datafile);
 };
 
 #endif

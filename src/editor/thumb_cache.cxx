@@ -1,4 +1,4 @@
-//  $Id: thumb_cache.cxx,v 1.5 2002/06/23 11:08:30 grumbel Exp $
+//  $Id: thumb_cache.cxx,v 1.6 2002/06/23 12:47:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,7 +32,7 @@
 
 using namespace Pingus;
 
-const unsigned int thumbcache_version = 2;
+const unsigned int thumbcache_version = 3;
 
 /*
   ~/.pingus/cache/
@@ -42,9 +42,20 @@ const unsigned int thumbcache_version = 2;
   uint32: width
   uint32: height
   uint32: mtime of parent image
-  data:   ...
+  data:   (RGBA8888)...
 
  */
+
+CL_Surface
+ThumbCache::uncached_load (const std::string & res_ident, const std::string & datafile)
+{
+  CL_Surface sur = PingusResource::load_surface (res_ident, datafile);
+
+  std::cout << "ThumbCache: Loading: " << res_ident << " (" << datafile << ")"  << std::endl;
+  
+  // Add object to cache
+  return ThumbCache::cache (sur, res_ident, datafile);
+}
 
 CL_Surface
 ThumbCache::load (const std::string & res_ident, const std::string & datafile)
@@ -70,7 +81,7 @@ ThumbCache::load (const std::string & res_ident, const std::string & datafile)
 	  if (version != thumbcache_version)
 	    {
 	      std::cout << "Thumbnail: version mismatch" << std::endl;
-	      return CL_Surface ();
+	      return uncached_load (res_ident, datafile);
 	    }
 
 	  unsigned int width  = in.read_uint32 ();
@@ -81,7 +92,7 @@ ThumbCache::load (const std::string & res_ident, const std::string & datafile)
 	  if (timestamp != PingusResource::get_mtime (res_ident, datafile))
 	    {
 	      std::cout << "Thumbnail: file needs update" << std::endl;
-	      return CL_Surface ();
+	      return uncached_load (res_ident, datafile);
 	    }
 
 	  CL_Canvas* canvas = new CL_Canvas (width, height);
@@ -96,7 +107,7 @@ ThumbCache::load (const std::string & res_ident, const std::string & datafile)
 	      if (pingus_debug_flags & PINGUS_DEBUG_EDITOR)
 		std::cerr << "ThumbCache: " << filename << ": read error: wanted " << buffer_size << " got " << read_size << std::endl;
 	      delete canvas;
-	      return CL_Surface ();
+	      return uncached_load (res_ident, datafile);
 	    }
 	  canvas->unlock ();
 	  return CL_Surface (canvas, true);
@@ -104,21 +115,22 @@ ThumbCache::load (const std::string & res_ident, const std::string & datafile)
       catch (CL_Error& err)
 	{
 	  std::cout << "ThumbCache: Read error: " << filename << " | " << err.message <<std::endl;
-	  return CL_Surface ();
+	  return uncached_load (res_ident, datafile);
 	}
     }
 
-  // FIXME: This should return the correct surface
-  return CL_Surface ();
+  return uncached_load (res_ident, datafile);
 }
 
-void 
+CL_Surface 
 ThumbCache::cache (const CL_Surface& sur, const std::string & res_ident, const std::string & datafile)
 {
-  if (sur.get_provider ()->get_height () * sur.get_provider ()->get_width () < 50 * 50)
+  if (sur.get_provider ()->get_height () < 50
+      && sur.get_provider ()->get_width () < 50)
     {
+      // If the image is smaller than the thumbnail, there is no need to cache it
       std::cout << "ThumbCache: image too small for cache: " << res_ident << std::endl;
-      return;
+      return sur;
     }
     
   std::string filename = res_ident + "-" + datafile;
@@ -142,6 +154,7 @@ ThumbCache::cache (const CL_Surface& sur, const std::string & res_ident, const s
       unsigned int width  = Math::min((unsigned int)50, sur.get_width ());
       unsigned int height = Math::min((unsigned int)50, sur.get_height ());
 
+      // Caller is responsible to delete the canvas
       CL_Canvas* canvas = Blitter::scale_surface_to_canvas (sur, width, height); 
       canvas->lock ();
       void* buffer = canvas->get_data();
@@ -161,11 +174,18 @@ ThumbCache::cache (const CL_Surface& sur, const std::string & res_ident, const s
       out.write (buffer, buffer_size);
 
       canvas->unlock ();
-      delete canvas;
+      // Canvas will get deleted on the end of the lifetime of this surface
+      return CL_Surface (canvas, true);
     }
   catch (CL_Error& err) 
     {
       std::cout << "ThumbCache: Couldn't open file for writing: " << filename << std::endl;
+      
+      // If writing the surface fails, we return the surface without
+      // writing it to the cache
+      unsigned int width  = Math::min((unsigned int)50, sur.get_width ());
+      unsigned int height = Math::min((unsigned int)50, sur.get_height ());
+      return Blitter::scale_surface (sur, width, height); 
     }
 }
 

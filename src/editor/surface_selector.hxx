@@ -1,4 +1,4 @@
-//  $Id: surface_selector.hxx,v 1.1 2002/06/12 19:11:31 grumbel Exp $
+//  $Id: surface_selector.hxx,v 1.2 2002/06/23 12:47:50 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,13 +26,16 @@
 ///
 struct surface_obj
 {
-  ///
-  CL_Surface sur;
-  ///
+  /** Thumbnail of the surface */
+  CL_Surface thumbnail;
+
+  /** The real surface */
   CL_Surface large_sur;
-  ///
+
+  /** Resource ID */
   std::string      name;
-  ///
+
+  /** Data File */
   std::string datafile;
 
   /** The time the small tumbnail was selected, when the mouse is

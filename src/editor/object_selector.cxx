@@ -1,4 +1,4 @@
-//  $Id: object_selector.cxx,v 1.2 2002/06/22 14:29:18 grumbel Exp $
+//  $Id: object_selector.cxx,v 1.3 2002/06/23 12:47:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -555,16 +555,8 @@ ObjectSelector::select_surface(const std::string & resource_file)
       ++j;
       sur_obj.name = *i;
       sur_obj.datafile = resource_file;
-      sur_obj.sur = ThumbCache::load (*i, resource_file);
+      sur_obj.thumbnail = ThumbCache::load (*i, resource_file);
 
-      if (sur_obj.sur == 0)
-	{
-	  sur_obj.sur = CL_Surface (sur_obj.name.c_str (), res);
-	  sur_obj.sur = Blitter::scale_surface (sur_obj.sur, 50, 50);
-	  ThumbCache::cache (sur_obj.sur, sur_obj.name, resource_file);
-
-	  std::cout << "Loading: " << sur_obj.name  << endl;
-	}
       sur_list.push_back(sur_obj);
 
       if (!datafile_loaded && (j % 25) == 0)
