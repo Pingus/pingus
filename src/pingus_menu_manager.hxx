@@ -1,4 +1,4 @@
-//  $Id: pingus_menu_manager.hxx,v 1.6 2002/08/01 21:40:01 grumbel Exp $
+//  $Id: pingus_menu_manager.hxx,v 1.7 2002/08/03 17:20:37 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -81,6 +81,8 @@ public:
   */
 
   /// Exit the menu manager (which means to exit the while() loop in display ())
+  void show_exit_menu ();
+
   void exit ();
 
   PingusSubMenu * current_menu();

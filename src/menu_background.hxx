@@ -1,4 +1,4 @@
-//  $Id: menu_background.hxx,v 1.3 2002/07/30 14:57:25 grumbel Exp $
+//  $Id: menu_background.hxx,v 1.4 2002/08/03 17:20:37 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,22 +21,17 @@
 #define HEADER_PINGUS_MENU_BACKGROUND_HXX
 
 #include "layer_manager.hxx"
-#include "pingus_sub_menu.hxx"
 
-class PingusMenuManager;
-
-class MenuBackground 
-  : public PingusSubMenu
+class MenuBackground
 {
 private:
   LayerManager layer_manager;
 public:
-  MenuBackground (PingusMenuManager* manager);
+  MenuBackground ();
   ~MenuBackground ();
 
   void draw ();
-  void update (const GameDelta& delta);
-  void preload ();
+  void update (float delta);
 };
 
 #endif

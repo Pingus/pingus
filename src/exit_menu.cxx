@@ -1,4 +1,4 @@
-//  $Id: exit_menu.cxx,v 1.3 2002/07/30 01:58:16 grumbel Exp $
+//  $Id: exit_menu.cxx,v 1.4 2002/08/03 17:20:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,9 +22,59 @@
 #include "pingus_menu_manager.hxx"
 #include "pingus_resource.hxx"
 
+class ExitMenuYesButton : public GUI::Component
+{
+private:
+  PingusMenuManager* manager;
+public:
+  ExitMenuYesButton (PingusMenuManager* m) 
+    : manager (m)
+  {
+  }
+ 
+  bool is_at (int x, int y) 
+  {
+    return x > 270 && x < 390 && y > 300 && y < 380;
+  }
+
+  void draw () {}
+
+  void on_primary_button_press (int, int)
+  {
+    std::cout << "YES" << std::endl; 
+    manager->exit ();
+  }
+};
+
+class ExitMenuNoButton : public GUI::Component
+{
+private:
+  PingusMenuManager* manager;
+public:
+  ExitMenuNoButton (PingusMenuManager* m)
+    : manager (m)
+  {
+  }
+  
+  bool is_at (int x, int y) 
+  {
+    return x > 430 && x < 540 && y > 300 && y < 380;
+  }
+
+  void draw () {}
+
+  void on_primary_button_press (int, int)
+  {
+    std::cout << "NO" << std::endl; 
+    manager->pop_menu ();
+  }
+};
+
 ExitMenu::ExitMenu (PingusMenuManager* manager)
   : PingusSubMenu (manager)
 {
+  add (new ExitMenuYesButton (manager), true);
+  add (new ExitMenuNoButton (manager), true);
 }
 
 ExitMenu::~ExitMenu ()

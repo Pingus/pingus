@@ -1,4 +1,4 @@
-//  $Id: surface_button.cxx,v 1.5 2002/08/01 21:40:01 grumbel Exp $
+//  $Id: surface_button.cxx,v 1.6 2002/08/03 17:20:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -258,7 +258,7 @@ void
 QuitButton::on_click()
 {
   std::cout << "QuitButton: do exit" << std::endl;
-  menu->get_manager ()->exit ();
+  menu->get_manager ()->show_exit_menu ();
 }
 
 ///////////////////////////////////////////////

@@ -1,4 +1,4 @@
-//  $Id: screen_manager.cxx,v 1.5 2002/08/03 09:59:23 grumbel Exp $
+//  $Id: screen_manager.cxx,v 1.6 2002/08/03 17:20:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -143,9 +143,14 @@ ScreenManager::real_pop_screen ()
 
   if (screens.back ().second) // delete_screen
     delete screens.back ().first;
-  
+
+  std::cout << "ScreenManager::real_pop_screen ()" << std::endl;
   screens.pop_back ();
-  screens.back ().first->on_startup ();
+
+  if (!screens.empty ())
+    {
+      screens.back ().first->on_startup ();
+    }
 }
 
 /* EOF */

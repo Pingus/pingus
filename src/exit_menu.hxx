@@ -1,4 +1,4 @@
-//  $Id: exit_menu.hxx,v 1.4 2002/07/30 01:58:16 grumbel Exp $
+//  $Id: exit_menu.hxx,v 1.5 2002/08/03 17:20:37 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,7 +28,8 @@ class PingusMenuManager;
 class ExitMenu : public PingusSubMenu
 {
 private:
-  CL_Surface sur; 
+  CL_Surface sur;
+
 public:
   ExitMenu (PingusMenuManager* manager);
   ~ExitMenu ();

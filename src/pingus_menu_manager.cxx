@@ -1,4 +1,4 @@
-//  $Id: pingus_menu_manager.cxx,v 1.7 2002/08/01 21:40:01 grumbel Exp $
+//  $Id: pingus_menu_manager.cxx,v 1.8 2002/08/03 17:20:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,17 +24,16 @@
 #include "delta_manager.hxx"
 #include "fade_out.hxx"
 #include "input/controller.hxx"
+#include "screen_manager.hxx"
 #include "pingus_menu_manager.hxx"
 
 PingusMenuManager* PingusMenuManager::instance_ = 0;
 
 PingusMenuManager::PingusMenuManager ()
   : event_register_counter (0),
-    intro (this), mainmenu (this), optionmenu (this), background (this), story (this),
+    intro (this), mainmenu (this), optionmenu (this), story (this),
     exitmenu (this)
 {
-  push_menu (&background);
-
   //current_menu = 0;
   if (intro_disabled)
     push_menu (&mainmenu);
@@ -182,6 +181,8 @@ PingusMenuManager::display ()
 void
 PingusMenuManager::draw ()
 {
+  background.draw ();
+
   for (MenuStackIter i = menu_stack.begin (); i != menu_stack.end (); ++i)
     (*i)->draw ();
 }
@@ -189,12 +190,14 @@ PingusMenuManager::draw ()
 void
 PingusMenuManager::update (const GameDelta& delta)
 {
+  background.update (delta.get_time ());
   // We copy the menu_stack so that we don't invalidate our
   // iterators when menu's are removed/added in update()
   std::vector<PingusSubMenu *> tmp_menu_stack = menu_stack;
 
-  for (MenuStackIter i = tmp_menu_stack.begin (); i != tmp_menu_stack.end (); ++i)
-    (*i)->update (delta);
+  /*for (MenuStackIter i = tmp_menu_stack.begin (); i != tmp_menu_stack.end (); ++i)
+    (*i)->update (delta);*/
+  menu_stack.back ()->update (delta);
 }
 
 void 
@@ -245,12 +248,12 @@ PingusMenuManager::fadeout ()
   std::cout << "PingusMenuManager::fadeout () Not implemented" << std::endl;
   DeltaManager delta_manager;
   EnlargingRectFadeOut fadeout;
+
   while (!fadeout.finished ())
     {
       float time_delta = delta_manager.getset ();
       fadeout.update (time_delta);
 
-      //current_menu ()->update ();
       current_menu ()->draw ();
       fadeout.draw ();
       Display::flip_display ();
@@ -260,38 +263,16 @@ PingusMenuManager::fadeout ()
 }
 
 void
-PingusMenuManager::exit ()
+PingusMenuManager::show_exit_menu ()
 {
   push_menu (&exitmenu);
+}
 
-  /* FIXME: !QUICKHACK! Rewrite me...
-  ExitMenu exitmenu;
-  exitmenu.preload ();
-  DeltaManager delta;
-
-  CL_Display::fill_rect (0,0, CL_Display::get_width (), CL_Display::get_height (),
-			 0.0, 0.0, 0.0, 0.5);
-			 Display::flip_display ();
-  CL_Display::sync_buffers ();
-  while (CL_Mouse::left_pressed ())
-    CL_System::keep_alive ();
-
-  while (!CL_Mouse::left_pressed ()) {
-    exitmenu.update (delta.getset ());
-    exitmenu.draw ();
-    Display::flip_display ();
-    CL_System::keep_alive ();
-    CL_System::sleep (0);
-  }
-  if (CL_Mouse::get_x () > CL_Display::get_width ()/2)
-    loop = true;
-  else
-    loop = false;
-  while (CL_Mouse::left_pressed ())
-    CL_System::keep_alive ();
-
-  if (loop == false)
-  fadeout ();*/
+void
+PingusMenuManager::exit ()
+{
+  std::cout << "poping PingusMenuManager" << std::endl;
+  ScreenManager::instance ()->pop_screen ();
 }
 
 PingusMenuManager*

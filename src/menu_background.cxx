@@ -1,4 +1,4 @@
-//  $Id: menu_background.cxx,v 1.2 2002/07/30 14:57:25 grumbel Exp $
+//  $Id: menu_background.cxx,v 1.3 2002/08/03 17:20:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,12 +17,10 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-
-#include "pingus_menu_manager.hxx"
+#include "menu_background.hxx"
 #include "pingus_resource.hxx"
 
-MenuBackground::MenuBackground (PingusMenuManager* manager)
-  : PingusSubMenu (manager)
+MenuBackground::MenuBackground ()
 {
   layer_manager.add_layer (PingusResource::load_surface ("menu/layer1", "core"),  0, 0, 12, 0);
   layer_manager.add_layer (PingusResource::load_surface ("menu/layer2", "core"),  0, 150, 25, 0);
@@ -42,14 +40,9 @@ MenuBackground::draw ()
 }
 
 void 
-MenuBackground::update (const GameDelta& delta)
+MenuBackground::update (float delta)
 {
-  layer_manager.update (delta.get_time ());
-}
-
-void 
-MenuBackground::preload ()
-{
+  layer_manager.update (delta);
 }
 
 /* EOF */
