@@ -1,0 +1,73 @@
+Pingu AI
+~~~~~~~~
+
+()()()()  A Pingu can walk at max two steps if he hits a three
+()()()()  pixel high border he reverses its direction.	      
+<><>()() 					      
+<><>()()					      
+<><><><>					      
+						      
+()()()()  One Pixel high borders should be over workable
+<><><>()  						
+<><>()()  					      	
+<><>()()					      	
+<><><><>					      	
+      
+   
+()()()<>  Pingus can walk over diagonal objects
+()()<>()  						
+()<>()()  					      	
+<>()()()					      	
+<><><><>					      	
+
+
+<>()()()  Pingus can will walk onto diagonal objects in 
+()<>()()  walk direction				
+()()<>()  					      	
+()()()<>					      	
+<><><><>					      	
+
+
+Properties: floater, climber
+Actions:    bomber, jumber, blocker, miner, digger, basher, bridger
+
+Floater:
+~~~~~~~~ 
+If the pingu is starting to falling, then he uses his propeller to
+limit his falling speed 
+
+Climber:
+~~~~~~~~
+If the pingu hits a verticall wall, he dosn't revert the direction,
+instead he starts to walk onto the wall.
+
+Bomber:
+~~~~~~~
+Starts a count down of 5 secs and than expoledes the pingu.
+
+Jumper:
+~~~~~~~
+Accelerate the pingu in an angle of pi/4 (45 degrees). 
+
+Blocker:
+~~~~~~~~
+Reverses the direction of every pingu, which came relativly close to a
+blocker. The action will be stopped if the pingu is no longer standing
+on the ground.
+
+Digger:
+~~~~~~~
+Starts to dig into the ground, if the pingu its the air (at least 8
+pixels should be air.
+
+Basher:
+~~~~~~~
+Starts to do a forward dig into the ground. It should at least to a
+circular dig. If he hits some air (don't know how much) the action is
+stopped.
+
+Bridger:
+~~~~~~~~
+Starts to build blocks in an angle of probably ~30 degrees. If his
+head hits the roof he stopps, if he is out of blocks he stopps. If he
+stopps he waits some secs before he starts to walk again.
