@@ -1,4 +1,4 @@
-//  $Id: bumper.hxx,v 1.2 2002/09/05 11:26:35 grumbel Exp $
+//  $Id: bumper.hxx,v 1.3 2002/09/09 16:55:07 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,39 +23,39 @@
 #include "../worldobj.hxx"
 
 namespace WorldObjsData {
-  class BumperData;
-}
+class BumperData;
+} // namespace WorldObjsData
 
 class Pingu;
 
 namespace WorldObjs {
 
-  class Bumper : public WorldObj
-  {
-  private:
-    bool upwards;
-    int  count;
+class Bumper : public WorldObj
+{
+private:
+  bool upwards;
+  int  count;
     
-    WorldObjsData::BumperData* const data;
+  WorldObjsData::BumperData* const data;
     
-  public:
-    Bumper (WorldObjsData::BumperData* data_);
-   ~Bumper ();
+public:
+  Bumper (WorldObjsData::BumperData* data_);
+  ~Bumper ();
 
-    float get_z_pos () const;
+  float get_z_pos () const;
     
-    void draw (GraphicContext& gc);
-    void draw_colmap ();
-    void update (float delta);
+  void draw (GraphicContext& gc);
+  void draw_colmap ();
+  void update (float delta);
 
-  private:    
-    void catch_pingu (Pingu* pingu);
+private:    
+  void catch_pingu (Pingu* pingu);
 
-    Bumper (const Bumper&);
-    Bumper operator= (const Bumper&);
-  };
+  Bumper (const Bumper&);
+  Bumper operator= (const Bumper&);
+};
 
-}
+} // namespace WorldObjs
 
 #endif
 

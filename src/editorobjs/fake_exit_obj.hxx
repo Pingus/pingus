@@ -1,4 +1,4 @@
-//  $Id: fake_exit_obj.hxx,v 1.3 2002/09/09 16:13:44 torangan Exp $
+//  $Id: fake_exit_obj.hxx,v 1.4 2002/09/09 16:55:07 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -52,7 +52,7 @@ class FakeExitObj : public SpriteEditorObj
     FakeExitObj operator= (const FakeExitObj&);
 };
 
-}
+} // namespace EditorObjs
 
 #endif
 
