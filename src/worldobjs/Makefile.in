@@ -10,7 +10,7 @@
 # even the implied warranty of MERCHANTABILITY or FITNESS FOR A
 # PARTICULAR PURPOSE.
 
-#  $Id: Makefile.in,v 1.1 2000/11/14 22:22:56 grumbel Exp $
+#  $Id: Makefile.in,v 1.2 2000/11/15 20:57:14 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -110,7 +110,7 @@ l = @l@
 
 noinst_LIBRARIES = libpingus_worldobjs.a
 
-libpingus_worldobjs_a_SOURCES =          Teleporter.cc Teleporter.hh         IceBlock.cc   IceBlock.hh
+libpingus_worldobjs_a_SOURCES =          Teleporter.cc    Teleporter.hh           IceBlock.cc      IceBlock.hh             ConveyorBelt.cc  ConveyorBelt.hh
 
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 CONFIG_HEADER = ../../config.h
@@ -123,7 +123,7 @@ CPPFLAGS = @CPPFLAGS@
 LDFLAGS = @LDFLAGS@
 LIBS = @LIBS@
 libpingus_worldobjs_a_LIBADD = 
-libpingus_worldobjs_a_OBJECTS =  Teleporter.o IceBlock.o
+libpingus_worldobjs_a_OBJECTS =  Teleporter.o IceBlock.o ConveyorBelt.o
 AR = ar
 CXXFLAGS = @CXXFLAGS@
 CXXCOMPILE = $(CXX) $(DEFS) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS)
@@ -140,7 +140,7 @@ DISTFILES = $(DIST_COMMON) $(SOURCES) $(HEADERS) $(TEXINFOS) $(EXTRA_DIST)
 
 TAR = tar
 GZIP_ENV = --best
-DEP_FILES =  .deps/IceBlock.P .deps/Teleporter.P
+DEP_FILES =  .deps/ConveyorBelt.P .deps/IceBlock.P .deps/Teleporter.P
 SOURCES = $(libpingus_worldobjs_a_SOURCES)
 OBJECTS = $(libpingus_worldobjs_a_OBJECTS)
 

@@ -1,4 +1,4 @@
-//  $Id: IceBlock.cc,v 1.2 2000/11/15 08:26:38 grumbel Exp $
+//  $Id: IceBlock.cc,v 1.3 2000/11/15 20:57:14 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,8 +31,8 @@ IceBlockData::write_xml(ofstream* xml)
 {
   (*xml) << "  <worldobj type=\"iceblock\">";
   XMLhelper::write_position_xml (xml, pos);
-  (*xml) << "    <width>" << width << "</width>"
-	 << "  </worldobj>" << std::endl;
+  (*xml) << "    <width>" << width << "</width>\n"
+	 << "  </worldobj>\n" << std::endl;
 }
 
 ///

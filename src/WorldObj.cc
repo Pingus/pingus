@@ -1,4 +1,4 @@
-//  $Id: WorldObj.cc,v 1.8 2000/11/14 22:22:55 grumbel Exp $
+//  $Id: WorldObj.cc,v 1.9 2000/11/15 20:58:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #include <iostream>
 #include "worldobjs/Teleporter.hh"
 #include "worldobjs/IceBlock.hh"
+#include "worldobjs/ConveyorBelt.hh"
 #include "WorldObj.hh"
 
 World* WorldObj::world;
@@ -63,13 +64,11 @@ WorldObj*
 WorldObj::create (WorldObjData* data)
 {
   if (dynamic_cast<TeleporterData*>(data) != 0)
-    {
-      return new Teleporter (data);
-    }
+    return new Teleporter (data);
   else if (dynamic_cast<IceBlockData*>(data) != 0)
-    {
-      return new IceBlock (data);
-    }
+    return new IceBlock (data);
+  else if (dynamic_cast<ConveyorBeltData*>(data) != 0)
+    return new ConveyorBelt (data);
   else
     {
       std::cout << "WorldObj::create (): Unknown WorldObjData" << std::endl;

@@ -1,4 +1,4 @@
-// $Id: EditorObj.cc,v 1.20 2000/11/14 22:22:56 grumbel Exp $
+// $Id: EditorObj.cc,v 1.21 2000/11/15 20:58:36 grumbel Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,7 @@
 #include "../PingusResource.hh"
 #include "../worldobjs/Teleporter.hh"
 #include "../worldobjs/IceBlock.hh"
+#include "../worldobjs/ConveyorBelt.hh"
 #include "PSMObj.hh"
 #include "PLFObj.hh"
 #include "WeatherObj.hh"
@@ -109,13 +110,11 @@ list<EditorObj*>
 EditorObj::create (WorldObjData* obj)
 {
   if (dynamic_cast<TeleporterData*>(obj))
-    {
-      return EditorTeleporterObj::create (dynamic_cast<TeleporterData*>(obj));
-    }
+    return EditorTeleporterObj::create (dynamic_cast<TeleporterData*>(obj));
   else if (dynamic_cast<IceBlockData*>(obj))
-    {
-      return EditorIceBlockObj::create (dynamic_cast<IceBlockData*>(obj));
-    }
+    return EditorIceBlockObj::create (dynamic_cast<IceBlockData*>(obj));
+  else if (dynamic_cast<ConveyorBeltData*>(obj))
+    return EditorConveyorBeltObj::create (dynamic_cast<ConveyorBeltData*>(obj));
   else
     {
       std::cout << _("EditorObj: Warrning unknown WorldObjData pointer!") << std::endl;
@@ -296,6 +295,9 @@ EditorObj::gui_edit_obj()
   
 /*
 $Log: EditorObj.cc,v $
+Revision 1.21  2000/11/15 20:58:36  grumbel
+Some conveyorbelt framework
+
 Revision 1.20  2000/11/14 22:22:56  grumbel
 Added the braking-ice-bridge thing, not working correctly, but the framework is ready
 
