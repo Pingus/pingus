@@ -1,4 +1,4 @@
-//  $Id: controller.hxx,v 1.2 2002/07/10 14:06:20 torangan Exp $
+//  $Id: controller.hxx,v 1.3 2002/07/10 16:15:59 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #ifndef HEADER_PINGUS_INPUT_CONTROLLER_HXX
 #define HEADER_PINGUS_INPUT_CONTROLLER_HXX
 
+#include <list>
 #include <string>
 #include <vector>
 #include "../libxmlfwd.hxx"
@@ -28,6 +29,7 @@ namespace Input
 {
   class Axis;
   class Button;
+  class Event;
   class Pointer;
 
   class Controller {
@@ -47,10 +49,14 @@ namespace Input
       std::vector<Button*> action_buttons;
     
       Axis* action_axis;
+      
+      std::list<Event*> events;
 
     public:
       explicit Controller (const std::string& configfile);
-    
+      
+      std::list<Event*>& get_events ();
+
     private:
       void create_action_buttons(xmlNodePtr cur);
          
