@@ -23,5 +23,3 @@ EXTRA_DIST = config.rpath autogen.sh pingus.dsp pingus.dsw ABOUT-NLS  \
 ACLOCAL_AMFLAGS = -I m4
 
 # EOF #
-xmlgz_reader.hxx \
-xmlgz_reader.cxx \
