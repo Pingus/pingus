@@ -1,4 +1,4 @@
-//  $Id: PingusResource.hh,v 1.12 2002/06/10 11:00:27 torangan Exp $
+//  $Id: PingusResource.hh,v 1.13 2002/06/11 14:12:12 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,6 +39,16 @@ private:
   static std::map<ResDescriptor, CL_Font*> font_map;
 
 public:
+  /** This array contains possible modifications of a surface */
+  typedef enum {
+    VFLIP  = (1<<0),
+    HVLIP  = (1<<1),
+    
+    ROT90  = (1<<2),
+    ROT180 = (1<<3),
+    ROT270 = (1<<4)
+  } Modifier;
+
   ///
   PingusResource();
   

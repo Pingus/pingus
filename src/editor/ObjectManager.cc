@@ -1,4 +1,4 @@
-//  $Id: ObjectManager.cc,v 1.67 2002/06/10 15:01:23 torangan Exp $
+//  $Id: ObjectManager.cc,v 1.68 2002/06/11 14:12:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -143,10 +143,8 @@ ObjectManager::load_level (const std::string & filename)
   
   //PSMParser psm;
 
-  if (filename.substr(filename.size() - 4) == ".xml")
-    plf = new XMLPLF(filename);
-  else
-    plf = new PLFPLF(filename + ".plf");
+  //FIXME: Where do we delete the plf? Most likly a memory hole
+  plf = PLF::create(filename);
   
   //psm.parse (filename + ".psm");
   //psm.load_surfaces();
@@ -209,9 +207,6 @@ ObjectManager::load_level (const std::string & filename)
   comment = plf->get_comment ();
   difficulty = plf->get_difficulty ();
   playable = plf->get_playable ();
-
-  std::cout << "Width: " << width << std::endl;
-  std::cout << "Height: " << height << std::endl;
 
   //  delete plf;
 }

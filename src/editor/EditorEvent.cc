@@ -1,4 +1,4 @@
-//  $Id: EditorEvent.cc,v 1.61 2002/06/10 11:00:28 torangan Exp $
+//  $Id: EditorEvent.cc,v 1.62 2002/06/11 14:12:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,8 @@
 #include <ClanLib/Core/System/error.h>
 #include <ClanLib/Display/Display/display.h>
 #include <ClanLib/Display/Input/mouse.h>
+
+#include "../Debug.hh"
 #include "../globals.hh"
 #include "../PingusGameSession.hh"
 #include "../PingusMessageBox.hh"
@@ -257,9 +259,9 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key& key)
 		if ((twidth % tile_size) != 0)
 		  {
 		    twidth += (tile_size - (twidth % tile_size));
-		    std::cout << "Warning: Editor: Width not a multiple of " 
-			 << tile_size << ", fixing width to " << twidth
-			 << std::endl; 
+		    pwarn << "EditorEvent: Width not a multiple of " 
+			  << tile_size << ", fixing width to " << twidth
+			  << std::endl; 
 		  }
 		object_manager->width = twidth;
 	      }
@@ -272,9 +274,9 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key& key)
 		if ((theight % tile_size) != 0)
 		  {
 		    theight += (tile_size - (theight % tile_size));
-		    std::cout << "Warning: Editor: Height not a multiple of " 
-			 << tile_size << ", fixing height to " << theight 
-			 << std::endl; 
+		    pwarn << "EditorEvent: Height not a multiple of " 
+			  << tile_size << ", fixing height to " << theight 
+			  << std::endl; 
 		  }
 	   
 		object_manager->height = theight;

@@ -18,7 +18,6 @@
 noinst_LIBRARIES = libpingus_generic.a
 
 libpingus_generic_a_SOURCES =  \
-                              FloatPosition.hh  \
                               ListHelper.hh
 
 # EOF #
