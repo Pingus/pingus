@@ -1,4 +1,4 @@
-//  $Id: PingusSpotMap.cc,v 1.15 2000/05/01 20:11:15 grumbel Exp $
+//  $Id: PingusSpotMap.cc,v 1.16 2000/05/03 16:34:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,12 +17,17 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <cstdio>
+
 #include "PingusResource.hh"
 #include "PingusError.hh"
 #include "blitter.hh"
+#include "algo.hh"
 #include "globals.hh"
 
 #include "PingusSpotMap.hh"
+
+using namespace std;
 
 MapTileSurface::MapTileSurface()
 {
@@ -288,33 +293,126 @@ PingusSpotMap::get_height(void)
 void 
 PingusSpotMap::remove(CL_SurfaceProvider* sprovider, int x, int y)
 {
-  if (debug_actions) 
-    {
-      std::cout << "Bug: Debug actions is no longer supported" << std::endl;
-      //put_surface(provider, sprovider, x, y);  
-    } 
-  else 
-    {
-      // Get the start tile and end tile
-      int start_x = x / tile_size;
-      int start_y = y / tile_size;
-      int end_x = (x + sprovider->get_width()) / tile_size;
-      int end_y = (y + sprovider->get_height()) / tile_size;
+  // Get the start tile and end tile
+  int start_x = x / tile_size;
+  int start_y = y / tile_size;
+  int end_x = (x + sprovider->get_width()) / tile_size;
+  int end_y = (y + sprovider->get_height()) / tile_size;
       
-      for(int ix = start_x; ix <= end_x; ++ix) 
+  for(int ix = start_x; ix <= end_x; ++ix) 
+    {
+      for(int iy = start_y; iy <= end_y; ++iy) 
 	{
-	  for(int iy = start_y; iy <= end_y; ++iy) 
+	  if (!tile[ix][iy].is_empty()) 
 	    {
-	      if (!tile[ix][iy].is_empty()) 
-		{
-		  put_alpha_surface(static_cast<CL_Canvas*>(tile[ix][iy].surface->get_provider()),
-				    sprovider,
-				    x - (ix * tile_size), y - (iy * tile_size));
-		  tile[ix][iy].reload();
-		}
+	      put_alpha_surface(static_cast<CL_Canvas*>(tile[ix][iy].surface->get_provider()),
+				sprovider,
+				x - (ix * tile_size), y - (iy * tile_size),
+				// FIXME, I am broken
+				MAX(x, ix * tile_size),
+				MAX(y, iy * tile_size));
+	      tile[ix][iy].reload();
 	    }
 	}
     }
+}
+
+void
+PingusSpotMap::put_alpha_surface(CL_Canvas* provider, CL_SurfaceProvider* sprovider,
+				 int x, int y, int real_x_arg, int real_y_arg)
+{
+  int start_i;
+  unsigned char* tbuffer; // Target buffer
+  int twidth, theight, tpitch;
+  
+  unsigned char* sbuffer; // Source buffer
+  int swidth, sheight, spitch;
+
+  int x_offset, y_offset;
+
+  int real_x;
+  int real_y;
+
+  //  assert(sprovider->get_depth() == 8);
+  if (sprovider->get_depth() != 8)
+    {
+      char str[1024];
+      sprintf(str, "Image has wrong color depth: %d", sprovider->get_depth());
+      throw PingusError(str);
+    }
+  //  assert(provider->get_pixel_format() == RGBA8888);
+
+  provider->lock();
+  sprovider->lock();
+
+  tbuffer = static_cast<unsigned char*>(provider->get_data());
+  sbuffer = static_cast<unsigned char*>(sprovider->get_data());
+  
+  twidth = provider->get_width();
+  theight = provider->get_height();
+  tpitch = provider->get_pitch();
+
+  swidth = sprovider->get_width();
+  sheight = sprovider->get_height();
+  spitch = sprovider->get_pitch();
+
+  if (y < 0) {
+    y_offset = 0-y;
+  } else {
+    y_offset = 0;
+  }
+
+  if (x < 0) {
+    x_offset = -x;
+  } else {
+    x_offset = 0;
+  }
+
+  real_y = real_y_arg;
+  real_x = real_x_arg;
+  
+  for(int line=y_offset; line < sheight && (line + y) < theight; ++line) 
+    {
+      start_i = ((line + y) * tpitch) + (x*4);
+      
+      real_x = real_x_arg;
+      for(int i=start_i+(4*x_offset),j=line*spitch+x_offset; 
+	  i < start_i + (4*swidth) && (i-start_i+(x*4)) < (4*twidth); i+=4,++j)
+	{
+	  if (sbuffer[j]) 
+	    {
+	      if (debug_actions)
+		{
+		  if (!(colmap->getpixel(real_x, real_y) & ColMap::SOLID)) 
+		    {
+		      tbuffer[i + 0] = 255;
+		      tbuffer[i + 1] = 255;
+		      tbuffer[i + 2] = 255;
+		      tbuffer[i + 3] = 255;
+		    } 
+		  else 
+		    {
+		      tbuffer[i + 0] = 255;
+		      tbuffer[i + 1] = 255;
+		      tbuffer[i + 2] = 0;
+		      tbuffer[i + 3] = 0;
+		    }
+		}
+	      else
+		{
+		  if (!(colmap->getpixel(real_x, real_y) & ColMap::SOLID))
+		    {
+		      tbuffer[i + 0] = 0;		      
+		    }
+		}
+	    }
+	  ++real_x;
+	}
+      ++real_y;
+    }
+
+  sprovider->unlock();
+  provider->unlock();  
 }
 
 void
