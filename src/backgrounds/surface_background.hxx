@@ -1,4 +1,4 @@
-//  $Id: surface_background.hxx,v 1.1 2002/06/12 19:02:30 grumbel Exp $
+//  $Id: surface_background.hxx,v 1.2 2002/06/22 14:29:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,13 +30,16 @@ class SurfaceBackground : public WorldObj,
 			  private SurfaceBackgroundData
 {
 private:
-  AnimCounter scroll;
   GameCounter counter;
   bool surface_need_deletion;
-  CL_Surface bg_surface_raw;
+
   CL_Surface bg_surface;
-  float scroll_ox, scroll_oy;
-  int x1, x2, y1, y2;
+  
+  /** The horizontal scrolling speed in pixels per tick */
+  float scroll_ox;
+
+  /** The vertical scrolling speed in pixels per tick */
+  float scroll_oy;
 
 public:
   SurfaceBackground(const SurfaceBackgroundData&);

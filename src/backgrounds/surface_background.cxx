@@ -1,4 +1,4 @@
-//  $Id: surface_background.cxx,v 1.2 2002/06/13 14:25:12 torangan Exp $
+//  $Id: surface_background.cxx,v 1.3 2002/06/22 14:29:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -47,13 +47,15 @@ SurfaceBackground::SurfaceBackground(const SurfaceBackgroundData& bg_data)
       && bg_data.color != Color (0, 0, 0, 1.0f)) // Workaround for a
 						 // bug which caused
 						 // all levels to have
-						 // tho wrong
+						 // the wrong
 						 // background color
     {
       std::cout << "------ SurfaceBackground:: Manipulating background ------" << std::endl;
       // FIXME: This is extremly buggy and it will crash, no idea why....
       CL_Surface source_surface = PingusResource::load_surface(bg_data.desc);
       
+      // FIXME: Scaling not implemented
+
       CL_Canvas* canvas = Blitter::create_canvas(source_surface);
       /* FIXME: fill_rect doesn't work with RGB images
 	 FIXME: seems to work fine with indexed images

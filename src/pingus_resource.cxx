@@ -1,4 +1,4 @@
-//  $Id: pingus_resource.cxx,v 1.4 2002/06/20 16:48:11 grumbel Exp $
+//  $Id: pingus_resource.cxx,v 1.5 2002/06/22 14:29:17 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,7 +17,11 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <unistd.h>
 #include <assert.h>
+
 #include <ClanLib/png.h>
 #include <ClanLib/Display/Font/font.h>
 #include "system.hxx"
@@ -243,6 +247,35 @@ PingusResource::cleanup ()
 		    << " => " << i->second.get_reference_count () << std::endl;
 	  surface_map.erase(i);
 	}
+    }
+}
+
+unsigned int
+PingusResource::get_mtime (const std::string& res_name,
+			   const std::string& datafile)
+{
+  try 
+    {
+      CL_ResourceManager* res_man = PingusResource::get(datafile);
+      CL_Resource& res = res_man->get_resource(res_name);
+  
+      std::string filename = res.get_full_location();
+
+#ifndef WIN32
+      struct stat stat_buf;
+      if (stat(filename.c_str(), &stat_buf) == 0)
+	return stat_buf.st_mtime;
+      else
+	return 0;
+#else
+      // FIXME: Win32 mtime getter not implemented
+      return 0;
+#endif
+    } 
+  catch (CL_Error& err) 
+    {
+      std::cout << "PingusResource::get_mtime: CL_Error: " << err.message << std::endl;
+      return 0;
     }
 }
 

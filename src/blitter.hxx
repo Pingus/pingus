@@ -1,4 +1,4 @@
-//  $Id: blitter.hxx,v 1.2 2002/06/13 19:53:21 torangan Exp $
+//  $Id: blitter.hxx,v 1.3 2002/06/22 14:29:17 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -77,7 +77,8 @@ public:
   static CL_Surface scale_surface (const CL_Surface& sur, int width, int height);
 
   /** Creates a new canvas with the given width and height and
-      stretches the source surface onto it
+      stretches the source surface onto it, the caller is responsible
+      to delete the returned CL_Canvas.
 
       @param sur The source surface
       @param width The new width of the surface. 
