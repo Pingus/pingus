@@ -1,4 +1,4 @@
-//  $Id: WorldObj.hh,v 1.15 2001/04/08 14:10:34 grumbel Exp $
+//  $Id: WorldObj.hh,v 1.16 2001/08/05 21:20:53 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -78,11 +78,12 @@ public:
    */
   static boost::shared_ptr<WorldObj> create (boost::shared_ptr<WorldObjData> data);
 
-  /// Set the world pointer for all world objects 
-  static void set_world(World*);
+  /** Set the world pointer for all world objects */
+  static void   set_world(World*);
+  
+  /** Return the current active world */
+  static World* get_world () { return world; }
 };
-
-//#include "World.hh"
 
 #endif
 

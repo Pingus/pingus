@@ -1,4 +1,4 @@
-//  $Id: PinguAction.hh,v 1.21 2001/08/04 12:46:22 grumbel Exp $
+//  $Id: PinguAction.hh,v 1.22 2001/08/05 21:20:53 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,7 @@
 #include <ClanLib/core.h>
 #include "boost/smart_ptr.hpp"
 
+#include "WorldObj.hh"
 #include "AnimCounter.hh"
 #include "PinguEnums.hh"
 #include "Pingu.hh"
@@ -44,7 +45,7 @@ enum ActionType
 // used to inherit classes which represent the actions. The actions
 // are stored in a seperate library, have a look in actions/ for some
 /// examples.
-class PinguAction
+class PinguAction : public WorldObj
 {
 protected:
   /** A pointer to the pingu, which hold the action. */
@@ -94,6 +95,11 @@ public:
 
   /// The time the action needs to get activated (see bomber.cc)
   virtual int   activation_time() { return -1; };
+
+  /** Return true if the pingu can be catched with the mouse and
+      another action can be applied, false otherwise (exiter,
+      splashed, etc.) */
+  virtual bool catchable () { return true; }
 };
 
 class PinguActionFactory

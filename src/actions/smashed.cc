@@ -1,4 +1,4 @@
-//  $Id: smashed.cc,v 1.11 2001/08/02 21:51:03 grumbel Exp $
+//  $Id: smashed.cc,v 1.12 2001/08/05 21:20:53 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,16 +20,11 @@
 #include "../PingusResource.hh"
 #include "smashed.hh"
 
-Smashed::Smashed(void)
-{
-}
-
 void
 Smashed::init(void)
 {
   sprite = Sprite ("Pingus/bomber0", "pingus");
-  sound_played = false;
-  pingu->set_status(not_catchable);
+  sound_played = false;  
 }
 
 void 
@@ -41,13 +36,8 @@ Smashed::draw_offset(int x, int y, float s)
 void
 Smashed::update(float delta)
 {
-  if (pingu->get_status() == dead)
-    {
-      return;
-    }
-
   //  pingu->particle->add_pingu_explo(pingu->x_pos, pingu->y_pos - 16);
-  pingu->set_status(dead);
+  pingu->set_status(PS_DEAD);
 }
 
 /* EOF */

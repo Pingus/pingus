@@ -1,4 +1,4 @@
-//  $Id: smashed.hh,v 1.7 2001/08/02 21:51:03 grumbel Exp $
+//  $Id: smashed.hh,v 1.8 2001/08/05 21:20:53 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,15 +30,12 @@ private:
   bool sound_played;
   Sprite sprite;
 public:
-  ///
-  Smashed();
-
   void   init(void);
   std::string get_name() const { return "Smashed"; }
   PinguEnvironment get_environment() const { return (PinguEnvironment)ENV_LAND; }
-  void   update(float delta);
-  void  draw_offset(int x, int y, float s);
-  bool   can_reset(void) { return false; }
+  void update(float delta);
+  void draw_offset(int x, int y, float s);
+  bool catchable () { return false; }
 };
 
 REGISTER_PINGUACTION(SmashedFactory, Smashed, "smashed");

@@ -1,4 +1,4 @@
-//  $Id: Angel.cc,v 1.2 2001/08/02 21:51:02 grumbel Exp $
+//  $Id: Angel.cc,v 1.3 2001/08/05 21:20:53 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,10 +43,9 @@ Angel::update(float delta)
   pingu->pos.x = x_pos + 20 * sin (counter * 3.0);
   pingu->pos.y -= 50.0f * delta;
 
+  // Out of screen, let the pingu die
   if (pingu->pos.y < -32)
-    {
-      pingu->set_status (dead);
-    }
+    pingu->set_status (PS_DEAD);
 }
 
 void   

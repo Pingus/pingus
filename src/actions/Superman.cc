@@ -1,4 +1,4 @@
-//  $Id: Superman.cc,v 1.3 2001/08/04 12:46:22 grumbel Exp $
+//  $Id: Superman.cc,v 1.4 2001/08/05 21:20:53 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,7 +46,7 @@ Superman::update(float delta)
 
   if (pingu->pos.y < -32)
     {
-      pingu->set_status (dead);
+      pingu->set_status (PS_DEAD);
     }
 }
 

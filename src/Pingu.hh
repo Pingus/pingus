@@ -1,4 +1,4 @@
-//  $Id: Pingu.hh,v 1.33 2001/08/04 12:44:10 grumbel Exp $
+//  $Id: Pingu.hh,v 1.34 2001/08/05 21:20:53 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,54 +42,38 @@ class PinguAction;
 class Pingu : public WorldObj
 {
 public:
-  ///
+  /** Static id_counter, which holds the id last pingu, which
+      got created. */
+  static int id_counter;
+
+  /** The primary action with is currently in use */
   boost::shared_ptr<PinguAction> action;
-  ///
+
+  /** A secondary action with will turn active after a given amount of time
+      The only example is currently the bomber. */
   boost::shared_ptr<PinguAction> sec_action;
-  ///
+
+  /** A list of action with are activated on-demand, so when the pingu
+      is in the air a floater will get activated, if he needs to climb
+      a climber gets active. */
   std::vector<boost::shared_ptr<PinguAction> > persist;
 
   /** The uniq id of the Pingu, this is used to refer to the Pingu in
       a demo file or in a network connection */
   int id;
 
-  /** Static id_counter, which holds the id last pingu, which
-      got created. */
-  static int id_counter;
-
-  ///
   CL_Font* font;
-
-  /** @name surfaces that represent the Pingu in different situations */
-  //@{
-  ///
-  Sprite walker; 
-  ///
-  Sprite faller;
-  ///
-  Sprite tumble;
-  //@}
-
-  ///
   int action_time;
-
-  ///
   PinguStatus status;
-  ///
   PinguEnvironment environment;
-  ///
-  int falling;
-
-  ///
   int owner_id;
 
   // The postion of the pingu (CL_Vector::z is always zero)
   CL_Vector pos;
-  ///
   Direction direction;
-  /// Current velocity
   CL_Vector velocity; 
 
+public:
   /** Creates a new Pingu at the given coordinates
       @param pos The start position of the pingu
       @param owner The owner id of the pingu (used for multiplayer) */
@@ -98,9 +82,6 @@ public:
   /** Destruct the pingu... */
   ~Pingu();
   
-  /** @return The world the pingu lives in */
-  static World* get_world();
-
   /** Return the logical pingus position, this is the position which
       is used for collision detection to the ground (the pingus
       feet) */
@@ -199,6 +180,11 @@ public:
   bool   is_inside (int x1, int y1, int x2, int y2);
   ///
   double dist(int x, int y);
+
+  /** Return true if the pingu can be catched with the mouse and
+      another action can be applied, false otherwise (exiter,
+      splashed, etc.) */
+  bool catchable ();
 };
 
 #endif /* PINGU_HH */

@@ -1,4 +1,4 @@
-//  $Id: Pingu.cc,v 1.60 2001/08/04 12:46:22 grumbel Exp $
+//  $Id: Pingu.cc,v 1.61 2001/08/05 21:20:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,22 +46,12 @@ int   Pingu::id_counter = 0;
 Pingu::Pingu(const CL_Vector& arg_pos, int owner)
   : id (++id_counter),
     font (PingusResource::load_font("Fonts/numbers", "fonts")),
-    walker ("Pingus/walker" + to_string(owner), "pingus"),
-    faller ("Pingus/faller" + to_string(owner), "pingus"),
-    tumble ("Pingus/tumble" + to_string(owner), "pingus"),
+    status (PS_ALIVE),
+    environment (ENV_LAND),
     owner_id (owner),
     pos (arg_pos)
 {
-  walker.set_align_center_bottom ();
-  faller.set_align_center_bottom ();
-  tumble.set_align_center_bottom ();
-
-  falling = 4;
-  status = alive;
-
   action_time = -1;
-
-  environment = (PinguEnvironment)ENV_LAND;
 
   // Set the velocity to zero
   velocity.x = 0;
@@ -72,12 +62,6 @@ Pingu::Pingu(const CL_Vector& arg_pos, int owner)
 
 Pingu::~Pingu()
 {
-}
-
-World* 
-Pingu::get_world()
-{
-  return world;
 }
 
 // Returns the x position of the pingu
@@ -128,7 +112,7 @@ Pingu::set_action(shared_ptr<PinguAction> act)
 {
   assert(act.get());
 
-  if (status == dead)
+  if (status == PS_DEAD)
     {
       if (pingus_debug_flags & PINGUS_DEBUG_ACTIONS)
 	std::cout << "Setting action to a dead pingu" << std::endl;
@@ -256,8 +240,9 @@ Pingu::is_inside (int x1, int y1, int x2, int y2)
 double
 Pingu::dist (int x, int y)
 {
-  return sqrt(((pos.x - x) * (pos.x - x)
-	       + (pos.y - 16 - y) * (pos.y - 16 - y)));
+  CL_Vector p = get_center_pos ();
+  
+  return sqrt(((p.x - x) * (p.x - x) + (p.y - y) * (p.y - y)));
 }
 
 void
@@ -289,14 +274,17 @@ Pingu::update_persistent(float delta)
 void
 Pingu::update(float delta)
 {
-  // Update the animations
-  walker.update (delta);
-  tumble.update (delta);
-  faller.update (delta);
+  if (status == PS_DEAD)
+  // FIXME: Out of screen check is ugly
+  /** The Pingu has hit the edge of the screen, a good time to let him
+      die. */
+  if (rel_getpixel(0, -1) == ColMap::OUTOFSCREEN) 
+    {
+      PingusSound::play_wav("die");
+      status = PS_DEAD;
+      return;
+    }
 
-  if (status == dead) 
-    return;
-  
   if (action_time > -1) 
     --action_time;
 
@@ -309,15 +297,6 @@ Pingu::update(float delta)
   if (action.get() && action->is_finished) 
     {
       action.reset ();
-    }
-
-  /** The Pingu has hit the edge of the screen, a good time to let him
-      die. */
-  if (rel_getpixel(0, -1) == ColMap::OUTOFSCREEN) 
-    {
-      PingusSound::play_wav("die");
-      status = dead;
-      return;
     }
 
   update_persistent(delta);
@@ -339,162 +318,6 @@ Pingu::update_normal(float delta)
     set_action(get_world ()->get_action_holder()->get_uaction("faller"));
   else
     set_action(get_world ()->get_action_holder()->get_uaction("walker"));
-   
-/*
-  if (rel_getpixel(0, -1) == ColMap::NOTHING)
-    {
-      update_falling(delta);
-    }
-  else 
-    {
-      update_walking(delta);
-      }*/
-}
-
-// The Pingu is not on ground, so lets fall...
-void
-Pingu::update_falling(float delta)
-{
-  // Apply all forces
-  velocity = ForcesHolder::apply_forces(pos, velocity);
-    
-  CL_Vector newp = velocity;
-	  
-  // Update x and y by moving the penguin to it's target *slowly*
-  // and checking if the penguin has hit the bottom at each loop
-  while(rel_getpixel(0, -1) == ColMap::NOTHING
-	&& (fabs(newp.x) >= 1 || fabs(newp.y) >= 1))
-    {
-      if (fabs(newp.x) >= 1)
-	{ 
-	  // Since the velocity might be a
-	  // fraction stop when we are within 1 unit of the target
-	  if (newp.x > 0)
-	    {
-	      pos.x++;
-	      newp.x--;
-	    }
-	  else
-	    {
-	      pos.x--;
-	      newp.x++;
-	    }
-	}
-
-      if (fabs(newp.y) >= 1)
-	{
-	  if (newp.y > 0)
-	    {
-	      pos.y++;
-	      newp.y--;
-	    }
-	  else 
-	    {
-	      pos.y--;
-	      newp.y++;
-	    }
-	}
-    }
-
-  // Now that the Pingu is moved, check if he hits the ground.
-  if (rel_getpixel(0, -1) == ColMap::NOTHING)
-    { // if pingu is not on ground
-      ++falling;
-	  
-      if (falling > 3) 
-	environment = ENV_AIR; 
-    }
-  else // Ping is on ground
-    {
-      if (rel_getpixel(0, -1) == ColMap::WATER)
-	set_paction(world->get_action_holder()->get_uaction("drown"));
-      else
-	{
-	  // Did we stop too fast?
-	  if (fabs(velocity.y) > deadly_velocity)
-	    set_action(world->get_action_holder()->get_uaction("splashed"));
-	  else if (fabs(velocity.x) > deadly_velocity)
-	    {
-	      if (pingus_debug_flags & PINGUS_DEBUG_ACTIONS)
-		std::cout << "Pingu: x Smashed on ground, jumping" << std::endl;
-	    }
-	}
-      // Reset the velocity
-      velocity.x = 0;
-      velocity.y = 0;
-      falling = 0;
-    }
-}
-
-// If the Pingu is on ground he can do his walking stuff here.
-void 
-Pingu::update_walking(float delta)
-{
-  environment = ENV_LAND;
-
-  if (rel_getpixel(0,-1) & ColMap::WATER)
-    {
-      //PingusSound::play_wav("SPLASH");
-      //status = dead;
-      set_paction(world->get_action_holder()->get_uaction("drown"));
-      if (pingus_debug_flags & PINGUS_DEBUG_ACTIONS)
-	std::cout << "Pingu: Gluck..." << std::endl;
-      return;
-    }
-
-  if (rel_getpixel(1, 0) == ColMap::NOTHING) 
-    { // if infront is free
-      pos.x += direction;    
-    }
-  else 
-    { // if infront is a pixel 
-      // Pingu is walking up the mountain 
-      if (rel_getpixel(1,1) == ColMap::NOTHING) 
-	{
-	  pos.x += direction;
-	  pos.y -= 1;
-	} 
-      else if (rel_getpixel(1,2) == ColMap::NOTHING)
-	{
-	  pos.x += direction;
-	  pos.y -= 2;
-	} 
-      else if (rel_getpixel(1,2) & ColMap::BRIDGE) 
-	{
-	  pos.x += direction;
-	  pos.y -=3;
-	}
-      else
-	{ // WALL
-	  for (unsigned int i=0; i < persist.size(); ++i) 
-	    {
-	      if (persist[i]->get_type() & (ActionType)WALL) 
-		{
-		  if (action.get() && persist[i]->get_name() == action->get_name()) 
-		    {
-		      if (pingus_debug_flags & PINGUS_DEBUG_ACTIONS)
-			std::cout << "Pingu: Not using action, we already did." << std::endl;
-		    } 
-		  else 
-		    {
-		      if (pingus_debug_flags & PINGUS_DEBUG_ACTIONS)
-			std::cout << "Pingu: We are in front of a wall, setting persistant action" << std::endl;
-		      set_paction(world->get_action_holder()->get_uaction(persist[i]->get_name()));
-		    }
-		  return;
-		}
-	    }
-	  direction.change();
-	}
-    }
-  
-  if (rel_getpixel(0, 26) != ColMap::NOTHING && !(rel_getpixel(0, 26) & ColMap::BRIDGE))
-    {
-      if (pingus_debug_flags & PINGUS_DEBUG_ACTIONS)
-	std::cout << "Pingu: Head collision" << std::endl;
-      direction.change();
-      return;
-    }
 }
 
 // Draws the pingu on the screen with the given offset
@@ -505,33 +328,8 @@ Pingu::draw_offset(int x, int y, float s)
   y += 2;
 
   if (action.get()) 
-    {
-      action->draw_offset(x, y,s);
-    } 
-  else 
-    {
-      if (falling > 3) 
-	{
-	  if (is_tumbling ()) {
-	    tumble.put_screen (int(pos.x + x), int(pos.y + y));
-	  } else {
-	    faller.put_screen (int(pos.x + x), int(pos.y + y));
-	  }
-	} 
-      else // If not falling
-	{
-	  if (s == 1.0) 
-	    {
-	      if (direction.is_left ())
-		walker.set_direction (Sprite::LEFT);
-	      else
-		walker.set_direction (Sprite::RIGHT);
-	      
-	      walker.put_screen(int(pos.x + x), int(pos.y + y));
-	    } 
-	}
-    }
-
+    action->draw_offset(x, y,s);
+  
   if (action_time != -1) 
     {
       sprintf(str, "%d", action_time);
@@ -556,7 +354,6 @@ Pingu::draw_offset(int x, int y, float s)
 int
 Pingu::rel_getpixel(int x, int y)
 {
-  //assert(colmap);
   return world->get_colmap()->getpixel(int(pos.x + (x * direction)), int((pos.y) - y));
 }
 
@@ -569,7 +366,7 @@ Pingu::catch_pingu(Pingu* pingu)
 bool
 Pingu::need_catch()
 {
-  if (status == dead)
+  if (status == PS_DEAD)
     return false;
   
   if (action.get())
@@ -587,8 +384,7 @@ Pingu::set_direction(Direction d)
 bool
 Pingu::is_alive(void)
 {
-  if (status != dead && status != exited
-      && status != not_catchable) 
+  if (status != PS_DEAD && status != PS_EXITED)
     return true;
   else 
     return false;
@@ -598,12 +394,6 @@ shared_ptr<PinguAction>
 Pingu::get_action()
 {
   return action;
-}
-
-int 
-Pingu::set_id(int i)
-{
-  return (id = i);
 }
 
 void
@@ -620,25 +410,26 @@ Pingu::get_center_pos ()
   return pos + CL_Vector (0, -16); 
 }
 
-bool
-Pingu::is_tumbling () const
+int 
+Pingu::set_id(int i)
 {
-  // If we are going fast enough to get smashed, start tumbling
-  if (fabs(velocity.x) > deadly_velocity
-      || fabs(velocity.y) > deadly_velocity)
-    {
-      return true;
-    }
-  else
-    {
-      return false;
-    }
+  return (id = i);
 }
 
 int 
 Pingu::get_owner ()
 {
   return owner_id;
+}
+
+bool 
+Pingu::catchable ()
+{
+  if (action.get())
+    return action->catchable ();
+  
+  std::cout << "Pingu:catchable: No action given, default to true" << std::endl;
+  return true;
 }
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: Drown.hh,v 1.7 2001/08/02 21:51:02 grumbel Exp $
+//  $Id: Drown.hh,v 1.8 2001/08/05 21:20:53 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,7 +33,8 @@ public:
   std::string get_name() const { return "Drown"; }
   PinguEnvironment get_environment() const { return ENV_ALWAYS; }
   void update(float delta);
-  void  draw_offset(int x, int y, float s);
+  void draw_offset(int x, int y, float s);
+  bool catchable () { return false; }
 };
 
 REGISTER_PINGUACTION(DrownFactory, Drown, "drown");

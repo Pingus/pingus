@@ -1,4 +1,4 @@
-//  $Id: Faller.cc,v 1.1 2001/08/04 12:44:10 grumbel Exp $
+//  $Id: Faller.cc,v 1.2 2001/08/05 21:20:53 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -88,7 +88,7 @@ Faller::update (float delta)
   else // Ping is on ground
     {
       if (rel_getpixel(0, -1) == ColMap::WATER)
-	pingu->set_paction(pingu->get_world ()->get_action_holder()->get_uaction("drown"));
+	pingu->set_paction(get_world ()->get_action_holder()->get_uaction("drown"));
       else
 	{
 	  // Did we stop too fast?
@@ -103,7 +103,7 @@ Faller::update (float delta)
       // Reset the velocity
       pingu->velocity.x = 0;
       pingu->velocity.y = 0;
-      pingu->falling = 0;
+      // FIXME: UGLY!
       pingu->set_action (pingu->get_world ()->get_action_holder()->get_uaction("walker"));
     }
 }
@@ -111,7 +111,26 @@ Faller::update (float delta)
 void 
 Faller::draw_offset(int x, int y, float s)
 {
-  faller.put_screen (pingu->pos + CL_Vector(x, y));
+  if (is_tumbling ()) {
+    tumbler.put_screen (int(pingu->pos.x + x), int(pingu->pos.y + y));
+  } else {
+    faller.put_screen (int(pingu->pos.x + x), int(pingu->pos.y + y));
+  }
+}
+
+bool
+Faller::is_tumbling () const
+{
+  // If we are going fast enough to get smashed, start tumbling
+  if (fabs(pingu->velocity.x) > deadly_velocity
+      || fabs(pingu->velocity.y) > deadly_velocity)
+    {
+      return true;
+    }
+  else
+    {
+      return false;
+    }
 }
 
 /* EOF */

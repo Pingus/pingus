@@ -1,4 +1,4 @@
-//  $Id: smasher.cc,v 1.23 2001/08/04 12:46:23 grumbel Exp $
+//  $Id: smasher.cc,v 1.24 2001/08/05 21:20:53 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -69,9 +69,7 @@ Smasher::update(float delta)
 		  if ((*pingu)->is_inside (int(pos.x + 30), int(pos.y + 90),
 					   int(pos.x + 250), int(pos.y + 190)))
 		    {
-		      if ((*pingu)->get_status () != not_catchable)
-			(*pingu)->set_action (shared_ptr<PinguAction>(new Splashed ()));
-		      //(*pingu)->set_status (dead);
+		      (*pingu)->set_action (shared_ptr<PinguAction>(new Splashed ()));
 		    }
 		}
 	    }
@@ -110,9 +108,6 @@ Smasher::draw_offset(int x, int y, float s)
 void 
 Smasher::catch_pingu(boost::shared_ptr<Pingu> pingu)
 {
-  if (pingu->get_status () == not_catchable)
-    return;
-
   // Activate the smasher if a Pingu is under it
   if ((pingu->direction.is_left() 
        && pingu->get_x() > pos.x + 65 && pingu->get_x() < pos.x + 85)

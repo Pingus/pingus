@@ -1,4 +1,4 @@
-//  $Id: bomber.cc,v 1.24 2001/08/02 21:51:03 grumbel Exp $
+//  $Id: bomber.cc,v 1.25 2001/08/05 21:20:53 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -51,32 +51,23 @@ Bomber::init()
   sprite.set_align_center_bottom ();
 
   sound_played = false;
-  pingu->set_status(not_catchable);
 }
 
 void
 Bomber::draw_offset(int x, int y, float s)
 {
-  if (sprite.get_frame () >= 13 && !exploded) {
-    explo_surf.put_screen(pingu->get_x () - 32 + x, pingu->get_y () - 48 + y);
-    exploded = true;
-  }
-
-  if (pingu->get_status() == dead 
-      || pingu->get_status() == exited)
+  if (sprite.get_frame () >= 13 && !exploded) 
     {
-      return;
+      explo_surf.put_screen(pingu->get_x () - 32 + x, pingu->get_y () - 48 + y);
+      exploded = true;
     }
-  
+
   sprite.put_screen(pingu->get_x () + x, pingu->get_y () + y);
 }
 
 void
 Bomber::update(float delta)
 {
-  if (pingu->get_status() == dead)
-    return;
-
   sprite.update (delta);
 
   if (sprite.get_frame () > 9 && !sound_played) {
@@ -94,7 +85,7 @@ Bomber::update(float delta)
   // The pingu explode
   if (sprite.finished ())
     {
-      pingu->set_status(dead);
+      pingu->set_status(PS_DEAD);
       pingu->get_world()->get_colmap()->remove(bomber_radius,
 					       pingu->get_x () - (bomber_radius.get_width()/2),
 					       pingu->get_y () - 16 - (bomber_radius.get_width()/2));

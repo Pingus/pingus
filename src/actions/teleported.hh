@@ -34,7 +34,8 @@ public:
   PinguEnvironment get_environment() const { return (PinguEnvironment)ENV_LAND; }
   void init(void);
   void update(float delta);
-  void  draw_offset(int x, int y, float s);
+  void draw_offset(int x, int y, float s);
+  bool catchable () { return false; }
 
   int x_target, y_target; // <- FIXME: Ugly!
 };

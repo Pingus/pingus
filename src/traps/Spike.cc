@@ -1,4 +1,4 @@
-//  $Id: Spike.cc,v 1.11 2001/04/27 20:44:38 grumbel Exp $
+//  $Id: Spike.cc,v 1.12 2001/08/05 21:20:53 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -76,7 +76,7 @@ Spike::catch_pingu(boost::shared_ptr<Pingu> pingu)
     if (counter == 3 && pingu->get_x () > pos.x +16 - 12 && pingu->get_x () < pos.x + 16 + 12
 	&& pingu->get_y () > pos.y && pingu->get_y () < pos.y + 32) 
       {
-	pingu->set_status((PinguStatus)dead);
+	pingu->set_status(PS_DEAD);
       }
   }  
 }

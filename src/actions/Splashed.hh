@@ -1,4 +1,4 @@
-//  $Id: Splashed.hh,v 1.10 2001/08/02 21:51:03 grumbel Exp $
+//  $Id: Splashed.hh,v 1.11 2001/08/05 21:20:53 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,7 +38,7 @@ public:
   PinguEnvironment get_environment() const { return ENV_LAND; }
   void update(float delta);
   void draw_offset(int x, int y, float s);
-  bool   can_reset(void) { return false; };
+  bool catchable () { return false; }
 };
 
 REGISTER_PINGUACTION(SplashedFactory, Splashed, "splashed");

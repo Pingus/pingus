@@ -1,4 +1,4 @@
-//  $Id: Walker.cc,v 1.1 2001/08/04 12:44:10 grumbel Exp $
+//  $Id: Walker.cc,v 1.2 2001/08/05 21:20:53 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -91,15 +91,15 @@ Walker::update(float delta)
 
   if (rel_getpixel(0,-1) & ColMap::WATER)
     {
-      //PingusSound::play_wav("SPLASH");
-      //status = dead;
       pingu->set_paction(pingu->get_world ()->get_action_holder()->get_uaction("drown"));
       if (pingus_debug_flags & PINGUS_DEBUG_ACTIONS)
 	std::cout << "Pingu: Gluck..." << std::endl;
       return;
     }
-  else if (rel_getpixel(0,-1) == ColMap::NOTHING)
+  else if (rel_getpixel(0,-1) == ColMap::NOTHING
+	   && rel_getpixel(0,-2) == ColMap::NOTHING)
     {
+      // FIXME: We need better translation between walker and faller
       pingu->set_action(pingu->get_world ()->get_action_holder()->get_uaction("faller"));
     }
 }

@@ -1,4 +1,4 @@
-//  $Id: PinguHolder.cc,v 1.14 2001/08/04 17:39:13 grumbel Exp $
+//  $Id: PinguHolder.cc,v 1.15 2001/08/05 21:20:53 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -61,7 +61,7 @@ PinguHolder::draw_offset(int x_of, int y_of, float s)
 {
   for(PinguIter pingu = pingus.begin(); pingu != pingus.end(); ++pingu)
     {
-      if ((*pingu)->get_status() == dead)
+      if ((*pingu)->get_status() == PS_DEAD)
 	{
 	  // Removing the dead pingu and setting the iterator back to
 	  // the correct possition, no memory hole since pingus will
@@ -69,7 +69,7 @@ PinguHolder::draw_offset(int x_of, int y_of, float s)
 	  pingu = pingus.erase(pingu);
 	  pingu--;
 	}
-      else if ((*pingu)->get_status() == exited) 
+      else if ((*pingu)->get_status() == PS_EXITED) 
 	{
 	  saved_pingus++;
 	  pingu = pingus.erase(pingu);

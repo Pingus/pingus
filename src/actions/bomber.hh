@@ -1,4 +1,4 @@
-//  $Id: bomber.hh,v 1.14 2001/08/02 21:51:03 grumbel Exp $
+//  $Id: bomber.hh,v 1.15 2001/08/05 21:20:53 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -48,7 +48,6 @@ public:
   PinguEnvironment get_environment() const { return PinguEnvironment(ENV_LAND|ENV_AIR); }
   void   draw_offset(int x, int y, float s);
   void   update(float delta);
-  bool   can_reset() { return false; }
   int    activation_time() { return 50; }
 };
 

@@ -1,4 +1,4 @@
-//  $Id: PinguEnums.hh,v 1.7 2001/08/02 21:51:02 grumbel Exp $
+//  $Id: PinguEnums.hh,v 1.8 2001/08/05 21:20:53 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,7 +22,7 @@
 
 /** Haven't yet experimented much with pingu status, but maybe it is a
     good idea. Maybe that should be changed to a bitmask. */
-enum PinguStatus { alive, exited, dead, sleeping, ko, not_catchable };
+enum PinguStatus { PS_ALIVE, PS_EXITED, PS_DEAD };
 
 /// The environment in which a PinguAction get be activated.
 enum PinguEnvironment {

@@ -1,4 +1,4 @@
-//  $Id: LaserKill.hh,v 1.10 2001/08/02 21:51:02 grumbel Exp $
+//  $Id: LaserKill.hh,v 1.11 2001/08/05 21:20:53 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,9 +32,10 @@ public:
   LaserKill();
   std::string get_name() const { return "LaserKill"; }
   PinguEnvironment get_environment() const { return (PinguEnvironment)ENV_LAND; }
-  void   init(void);
-  void   update(float delta);
-  void  draw_offset(int x, int y, float s);
+  void init(void);
+  void update(float delta);
+  void draw_offset(int x, int y, float s);
+  bool catchable () { return false; }
 };
 
 REGISTER_PINGUACTION(LaserKillFactory, LaserKill, "laserkill");
