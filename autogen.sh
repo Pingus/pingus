@@ -5,10 +5,10 @@ set -e
 AUTOMAKE=""
 ACLOCAL=""
 
-if `which automake-1.7`; then
+if [ `which automake-1.7` ]; then
     AUTOMAKE="automake-1.7"
     ACLOCAL="aclocal-1.7"
-elif `which automake-1.6`; then
+elif [ `which automake-1.6` ]; then
     AUTOMAKE="automake-1.6"
     ACLOCAL="aclocal-1.6"
 else
