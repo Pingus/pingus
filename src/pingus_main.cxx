@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.67 2003/04/09 21:57:24 grumbel Exp $
+//   $Id: pingus_main.cxx,v 1.68 2003/04/09 23:35:28 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -136,6 +136,7 @@ signal_handler(int signo)
 
 PingusMain::PingusMain()
 {
+  show_credits = false;
 }
 
 PingusMain::~PingusMain()
@@ -212,7 +213,8 @@ PingusMain::check_args(int argc, char** argv)
       {"speed",             required_argument, 0, 't'},
       {"datadir",           required_argument, 0, 'd'},
       {"level",             required_argument, 0, 'l'},
-      {"worldmap",          required_argument, 0, 'w'},
+      {"worldmap",          required_argument, 0, 158},
+      {"credits",           no_argument,       0, 159},
       {"help",              no_argument,       0, 'h'},
       {"version",           no_argument,       0, 'V'},
       {"verbose",           required_argument, 0, 'v'},
@@ -221,8 +223,8 @@ PingusMain::check_args(int argc, char** argv)
       {"geometry",          required_argument, 0, 'g'},
       {"editor",            no_argument,       0, 'e'},
       {"quick-play",        no_argument,       0, 'q'},
-      {"enable-fullscreen", no_argument,       0, 'f'},
-      {"disable-fullscreen",no_argument,       0, 'F'},
+      {"fullscreen",        no_argument,       0, 'f'},
+      {"window",            no_argument,       0, 'w'},
       {"disable-swcursor",  no_argument,       0, 145},
       {"enable-swcursor",   no_argument,       0, 146},
       {"disable-action-help",no_argument,      0, 156},
@@ -267,8 +269,12 @@ PingusMain::check_args(int argc, char** argv)
       print_fps = true;
       if (verbose) std::cout << "PingusMain:check_args: Printing fps enabled" << std::endl;
       break;
-    case 'w': // -w, --worldmap
+    case 158: // --worldmap
       worldmapfile = optarg;
+      break;
+
+    case 159: // --worldmap
+      show_credits = true;
       break;
 
     case 'l': // -l, --level
@@ -376,11 +382,11 @@ PingusMain::check_args(int argc, char** argv)
       std::cout << "Pingus: Verbose level is " << verbose << std::endl;
       break;
 
-    case 'f': // --enable-fullscreen
+    case 'f': // --fullscreen
       fullscreen_enabled = true;
       break;
       
-    case 'F': // --disable-fullscreen
+    case 'w': // --window
       fullscreen_enabled = false;
       break;
 
@@ -520,8 +526,8 @@ PingusMain::check_args(int argc, char** argv)
                 << std::endl;
 #endif
       std::cout <<
-	_("   -F, --disable-fullscreen Disable Fullscreen (default)\n"
-          "   -f, --enable-fullscreen  Enable Fullscreen\n"
+	_("   -w, --window             Start in Window Mode (default)\n"
+          "   -f, --fullscreen         Start in Fullscreen\n"
           "   -d, --datadir PATH       Set the path to load the data files to `path'\n"
           "   --use-datafile           Use the pre-compiled datafile (default)\n"
           "   --use-scriptfile         Use the scriptfile and read all data from files\n"
@@ -529,9 +535,7 @@ PingusMain::check_args(int argc, char** argv)
           "   -v, --verbose            Print some more messages to stdout, can be set\n"
           "                            multible times to increase verbosity\n"
           "   -V, --version            Prints version number and exit\n"
-          //	"   --fs-preload             Preload all Levelpreviews\n"a
           "   --fast-mode              Disable some cpu intensive features\n"
-          //	"   --disable-previews       Disables all level preview in the level selector\n"
           "   -e, --editor             Launch the Level editor (experimental)\n"
           "   --disable-auto-scrolling Disable automatic scrolling\n"
           "   --disable-swcursor       Disable software cursor, use hw cursor instead\n"
@@ -726,6 +730,10 @@ PingusMain::start_game ()
   if (show_input_debug_screen) // show a debug screen
     {
       ScreenManager::instance()->push_screen(new InputDebugScreen (), true);
+    }
+  else if (show_credits)
+    {
+      ScreenManager::instance()->push_screen(Credits::instance(), false);
     }
   else if (!levelfile.empty ()) // start editor or a game_session
     {

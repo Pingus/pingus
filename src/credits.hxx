@@ -1,4 +1,4 @@
-//  $Id: credits.hxx,v 1.11 2003/02/19 09:50:35 grumbel Exp $
+//  $Id: credits.hxx,v 1.12 2003/04/09 23:35:28 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,12 +34,15 @@ private:
   static Credits* instance_;
 
   bool fast_scrolling;
-  CL_Surface surface;
+  CL_Surface background;
+  CL_Surface pingu;
+
   CL_Font*    font;
   CL_Font*    font_small;
 
   bool is_init;
 
+  float end_offset;
   float offset;
 
   /** The string's which are shown in the scrolling text, the first

@@ -1,4 +1,4 @@
-//  $Id: pingus_main.hxx,v 1.10 2003/04/03 17:03:24 grumbel Exp $
+//  $Id: pingus_main.hxx,v 1.11 2003/04/09 23:35:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,6 +31,7 @@ class PingusMain : public CL_ClanApplication
 {
 private:
   bool    no_config_file;
+  bool    show_credits;
   /// the name of the exe: argv[0]
   std::string executable_name;
   std::string levelfile;

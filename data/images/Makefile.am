@@ -95,6 +95,7 @@ core/misc/chalk_pingu1.png \
 core/misc/chalk_pingu2.png \
 core/misc/chalk_pingu3.png \
 core/misc/chalk_pingu4.png \
+core/misc/creditpingu.png \
 core/misc/flag0.png \
 core/misc/flag1.png \
 core/misc/flag2.png \
