@@ -1,4 +1,4 @@
-//  $Id: Client.cc,v 1.79 2002/06/07 14:50:34 torangan Exp $
+//  $Id: Client.cc,v 1.80 2002/06/07 19:10:33 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,7 +34,6 @@
 #include "PingusError.hh"
 #include "OptionMenu.hh"
 #include "PLF.hh"
-// clude "XMLPLF.hh"
 #include "DeltaManager.hh"
 #include "MouseController.hh"
 #include "PathManager.hh"
@@ -154,7 +153,7 @@ Client::resize_display()
 }
 
 void 
-Client::play_level(boost::shared_ptr<PLF> arg_plf)
+Client::play_level(PLF* arg_plf)
 {
   Timer timer;
 

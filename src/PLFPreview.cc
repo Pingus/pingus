@@ -1,4 +1,4 @@
-//  $Id: PLFPreview.cc,v 1.9 2002/06/01 18:05:34 torangan Exp $
+//  $Id: PLFPreview.cc,v 1.10 2002/06/07 19:10:33 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,7 +25,7 @@
 
 #include "PLFPreview.hh"
 
-PLFPreview::PLFPreview(boost::shared_ptr<PLF> p)
+PLFPreview::PLFPreview (PLF* p)
 {
   plf = p;
 }
@@ -37,7 +37,7 @@ PLFPreview::get_surface()
 }
 
 void
-PLFPreview::load(boost::shared_ptr<PLF> /*p*/)
+PLFPreview::load(PLF* /*p*/)
 {
   if (surface)
     return;
@@ -45,8 +45,7 @@ PLFPreview::load(boost::shared_ptr<PLF> /*p*/)
   switch (plf->map_type()) {
   case SPOT: 
     {*/
-      PingusSpotMap p_map;
-      p_map.load(plf);
+      PingusSpotMap p_map (plf);
       surface = p_map.get_surface();
       /*    }
     break;

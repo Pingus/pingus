@@ -1,4 +1,4 @@
-//  $Id: TrueServer.hh,v 1.10 2001/04/13 13:45:09 grumbel Exp $
+//  $Id: TrueServer.hh,v 1.11 2002/06/07 19:10:33 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,47 +22,33 @@
 
 #include "Server.hh"
 
-///
+/** FIXME: This whole Server/Client concept is screwed */
 class TrueServer : public Server
 {
 private:
-  ///
   bool fast_forward;
-  ///
   bool pause;
-  ///
   unsigned int  last_time;
-  ///
   int  local_game_speed;
-  ///
   bool client_needs_redraw;
-  ///
   float delta;
-  ///
-  boost::shared_ptr<PLF> plf;
+
+  /** Reference to the PLF for this level, this must not be deleted */
+  PLF* plf;
 public:
-  ///
-  TrueServer(boost::shared_ptr<PLF> plf);
-  ///
+  TrueServer(PLF* plf);
   virtual ~TrueServer();
-  ///
-  void start(boost::shared_ptr<PLF> level_data);
-  ///
+
+  void start(PLF* level_data);
   bool enough_time_passed(void);
-  ///
   void update(float delta);
-  ///
   bool needs_redraw();
-  ///
-  boost::shared_ptr<PLF> get_plf ();
-  ///
+  /** Return a reference to the plf used for this level */
+  PLF* get_plf ();
   void set_fast_forward(bool value);
-  ///
   bool get_fast_forward();
   
-  ///
   void set_pause(bool);
-  ///
   bool get_pause();
 };
 

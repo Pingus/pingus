@@ -1,4 +1,4 @@
-//  $Id: Client.hh,v 1.36 2002/06/07 14:50:34 torangan Exp $
+//  $Id: Client.hh,v 1.37 2002/06/07 19:10:33 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,52 +43,38 @@ class ButtonPanel;
 class PingusCounter;
 class HurryUp;
 
-/** Bla bla.... rewrite this class... */
+/** FIXME: This whole Server/Client concept is screwed */
 class Client
 {
 private:
-  ///
-  boost::shared_ptr<PLF> plf;
-  ///
+  
+  PLF* plf;
   Result result;
-  ///
-  Server * server;
-  ///
-  PingusGameMode       mode;
-  ///
+  Server* server;
+  PingusGameMode mode;
+
   bool fast_forward;
-  ///
   bool pause;
-  ///
   int  skip_frame;
-  ///
   bool do_replay;
-  ///
   bool is_finished;
 
-  ///
   std::vector<GuiObj*> obj;
   typedef std::vector<GuiObj*>::iterator GuiObjIter;
-  ///
+
   static bool gui_is_init;
-  ///
+
   static boost::shared_ptr<ButtonPanel>   button_panel;
-  ///
   static boost::shared_ptr<PingusCounter> pcounter;
-  ///
   static boost::shared_ptr<Playfield>     playfield;
-  ///
   static boost::shared_ptr<TimeDisplay>   time_display;
-  ///
   static boost::shared_ptr<SmallMap>      small_map;
-  /// 
   static boost::shared_ptr<HurryUp>       hurry_up;
 
   boost::shared_ptr<Controller> controller;
   boost::shared_ptr<Cursor>     cursor;
-  ///
+
   CL_Slot on_button_press_slot;
-  ///
   CL_Slot on_button_release_slot;
 
   // Slots for controller handling
@@ -105,26 +91,19 @@ private:
   CL_Slot slot_next_action_pressed;
   CL_Slot slot_previous_action_pressed;
   
-  ///
   bool enabled;
 public:
-  ///
   Client(boost::shared_ptr<Controller> arg_controller, Server * s);
-  ///
   virtual ~Client();
 
-  ///
-  Server * get_server() { return server; }
-  ///
+  Server* get_server() { return server; }
   boost::shared_ptr<Playfield> get_playfield() { return playfield; }
 
   /** Display the game and enter the main game loop */
   void display();
-  ///
   void send_next_event();
 
-  ///
-  void play_level(boost::shared_ptr<PLF>);
+  void play_level(PLF*);
 
   /// FIXME: Document me... or rewrite me
   void init_display();
@@ -133,25 +112,16 @@ public:
   ///
   void resize_display();
 
-  ///
   void set_fast_forward(bool value);
-  ///
   bool get_fast_forward();
 
-  ///
   bool get_pause();
-  ///
   void set_pause(bool value);
 
-  ///
   bool replay();
-  ///
   void do_restart();
-  ///
   bool finished();
-  ///
   void set_finished();
-  ///
   Result get_result();
 
   /** Draw all gui elements, etc. */
@@ -160,22 +130,15 @@ public:
   /** Update all parts of the world */
   void update (float delta);
 
-  ///
   virtual void on_button_press(CL_InputDevice *device, const CL_Key &key);
-  ///
   virtual void on_button_release(CL_InputDevice *device, const CL_Key &key);
 
-  ///
   void on_mouse_button_press(const CL_Key &key);
-  ///
   void on_mouse_button_release(const CL_Key &key);
   
-  ///
   void on_keyboard_button_press(const CL_Key &key);
-  ///
   void on_keyboard_button_release(const CL_Key &key);
 
-  /// 
   void on_left_pressed (const CL_Vector& pos);
   void on_left_released (const CL_Vector& pos);
   void on_middle_pressed (const CL_Vector& pos);
@@ -188,14 +151,11 @@ public:
   void on_scroll_right_pressed (const CL_Vector& pos);
   void on_next_action_pressed (const CL_Vector& pos);
   void on_previous_action_pressed (const CL_Vector& pos);
-  ///
+
   void register_event_handler();
-  ///
   void unregister_event_handler();
 
-  ///
   void disable_event_handler();
-  ///
   void enable_event_handler();
 };
 

@@ -1,4 +1,4 @@
-//  $Id: PingusSpotMap.cc,v 1.51 2002/06/01 18:05:35 torangan Exp $
+//  $Id: PingusSpotMap.cc,v 1.52 2002/06/07 19:10:33 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 //#include <cstdio>
 
 #include "PingusResource.hh"
+#include "PLF.hh"
 #include "PingusError.hh"
 #include "blitter.hh"
 #include "algo.hh"
@@ -82,11 +83,7 @@ MapTileSurface::check_empty()
   surface.get_provider()->unlock();
 }
 
-PingusSpotMap::PingusSpotMap()
-{
-}
-
-PingusSpotMap::PingusSpotMap(boost::shared_ptr<PLF> plf)
+PingusSpotMap::PingusSpotMap(PLF* plf)
 {
   colmap = 0;
 
@@ -139,7 +136,7 @@ PingusSpotMap::gen_tiles(void)
 }
 
 void
-PingusSpotMap::load(boost::shared_ptr<PLF> plf)
+PingusSpotMap::load(PLF* plf)
 {
   ResDescriptor name = plf->get_foreground();
 

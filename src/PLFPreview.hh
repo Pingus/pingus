@@ -1,4 +1,4 @@
-//  $Id: PLFPreview.hh,v 1.5 2001/04/10 21:51:22 grumbel Exp $
+//  $Id: PLFPreview.hh,v 1.6 2002/06/07 19:10:33 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,25 +22,18 @@
 
 #include <ClanLib/core.h>
 
-
-#include "PLF.hh"
+class PLF;
 
 /// A class to load and manage a small level preview surface
 class PLFPreview
 {
 private:
-  ///
   CL_Surface surface;
-  ///
   CL_Canvas* provider;
-  ///
-  boost::shared_ptr<PLF> plf;
+  PLF* plf;
 public:
-  ///
-  PLFPreview(boost::shared_ptr<PLF>);
-  ///
-  void load(boost::shared_ptr<PLF>);
-  ///
+  PLFPreview(PLF*);
+  void load(PLF*);
   CL_Surface get_surface();
 };
 

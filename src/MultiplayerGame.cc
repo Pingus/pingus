@@ -1,4 +1,4 @@
-//  $Id: MultiplayerGame.cc,v 1.6 2002/06/07 14:50:34 torangan Exp $
+//  $Id: MultiplayerGame.cc,v 1.7 2002/06/07 19:10:33 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,7 +46,7 @@ MultiplayerGame::start ()
 {
   std::cout << "Starting Multiplayer Game" << std::endl;
   try {
-    shared_ptr<PLF>        plf (new XMLPLF (path_manager.complete("levels/multi2-grumbel.xml")));
+    PLF* plf = new XMLPLF (path_manager.complete("levels/multi2-grumbel.xml"));
     shared_ptr<Server>     server (new TrueServer (plf));
     shared_ptr<Controller> controller1;
     shared_ptr<Controller> controller2;
@@ -76,65 +76,67 @@ MultiplayerGame::start ()
       {
 	client = shared_ptr<MultiplayerClient> 
 	  (new MultiplayerClient 
-		  (server.get (),
-		   shared_ptr<GuiObj>(new MultiplayerClientChild (controller1,
-										  server.get (),
-										  CL_Rect (0,0, 
-											   CL_Display::get_width ()/2-2,
-											   CL_Display::get_height ()))),
-		   shared_ptr<GuiObj>(new MultiplayerClientChild (controller2,
-										  server.get (),
-										  CL_Rect (CL_Display::get_width ()/2, 0,
-											   CL_Display::get_width (), 
-											   CL_Display::get_height ())))));
+	   (server.get (),
+	    shared_ptr<GuiObj>(new MultiplayerClientChild (controller1,
+							   server.get (),
+							   CL_Rect (0,0, 
+								    CL_Display::get_width ()/2-2,
+								    CL_Display::get_height ()))),
+	    shared_ptr<GuiObj>(new MultiplayerClientChild (controller2,
+							   server.get (),
+							   CL_Rect (CL_Display::get_width ()/2, 0,
+								    CL_Display::get_width (), 
+								    CL_Display::get_height ())))));
       }
     else
       {
 	client = shared_ptr<MultiplayerClient> 
 	  (new MultiplayerClient 
-		(server.get (),
-		 shared_ptr<GuiObj>(new MultiplayerClientChild (controller1,
-										server.get (),
-										CL_Rect (0,
-											 0, 
-											 CL_Display::get_width ()/2 - 4,
-											 CL_Display::get_height ()/2 - 4))),
-		 shared_ptr<GuiObj>(new MultiplayerClientChild (controller2,
-										server.get (),
-										CL_Rect (CL_Display::get_width ()/2 + 4,
-											 0,
-											 CL_Display::get_width (), 
-											 CL_Display::get_height ()/2 - 4))),
-		 shared_ptr<GuiObj>(new MultiplayerClientChild (controller3,
-										server.get (),
-										CL_Rect (0,
-											 CL_Display::get_height ()/2 + 4,
-											 CL_Display::get_width ()/2 - 4, 
-											 CL_Display::get_height ()))),
-		 shared_ptr<GuiObj>(new MultiplayerClientChild (controller4,
-										server.get (),
-										CL_Rect (CL_Display::get_width ()/2 + 4,
-											 CL_Display::get_height ()/2 + 4,
-											 CL_Display::get_width (), 
-											 CL_Display::get_height ())))
-		 ));
-  }
+	   (server.get (),
+	    shared_ptr<GuiObj>(new MultiplayerClientChild (controller1,
+							   server.get (),
+							   CL_Rect (0,
+								    0, 
+								    CL_Display::get_width ()/2 - 4,
+								    CL_Display::get_height ()/2 - 4))),
+	    shared_ptr<GuiObj>(new MultiplayerClientChild (controller2,
+							   server.get (),
+							   CL_Rect (CL_Display::get_width ()/2 + 4,
+								    0,
+								    CL_Display::get_width (), 
+								    CL_Display::get_height ()/2 - 4))),
+	    shared_ptr<GuiObj>(new MultiplayerClientChild (controller3,
+							   server.get (),
+							   CL_Rect (0,
+								    CL_Display::get_height ()/2 + 4,
+								    CL_Display::get_width ()/2 - 4, 
+								    CL_Display::get_height ()))),
+	    shared_ptr<GuiObj>(new MultiplayerClientChild (controller4,
+							   server.get (),
+							   CL_Rect (CL_Display::get_width ()/2 + 4,
+								    CL_Display::get_height ()/2 + 4,
+								    CL_Display::get_width (), 
+								    CL_Display::get_height ())))
+	    ));
+      }
 
-  DeltaManager delta_manager;
-  while (!server->is_finished ())
-    {
-      float delta = delta_manager.getset ();
-      server->update (delta);
-      client->update (delta);
-      client->draw ();
-      Display::flip_display ();
-      // FIXME: Remove me to gain some fps
-      CL_Display::clear_display (1.0, 1.0, 1.0);
-      CL_System::keep_alive ();
-      CL_System::sleep (0);
-    }
+    DeltaManager delta_manager;
+    while (!server->is_finished ())
+      {
+	float delta = delta_manager.getset ();
+	server->update (delta);
+	client->update (delta);
+	client->draw ();
+	Display::flip_display ();
+	// FIXME: Remove me to gain some fps
+	CL_Display::clear_display (1.0, 1.0, 1.0);
+	CL_System::keep_alive ();
+	CL_System::sleep (0);
+      }
+
+    delete plf;
   } catch (...) {
-    std::cout << "MultiplayerGame: Something went wrong" << std::endl;
+    std::cout << "MultiplayerGame: Something went wrong and we have probally a memory leak." << std::endl;
   }
 }
 

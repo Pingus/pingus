@@ -1,4 +1,4 @@
-//  $Id: World.hh,v 1.32 2002/06/01 17:58:31 torangan Exp $
+//  $Id: World.hh,v 1.33 2002/06/07 19:10:33 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -72,9 +72,9 @@ private:
 
   boost::shared_ptr<ParticleHolder> particle_holder;
   ActionHolder* action_holder;
-  PinguHolder* pingus;
-  ColMap* colmap;
-  boost::shared_ptr<PLF>  plf;
+  PinguHolder*  pingus;
+  ColMap*       colmap;
+  PLF*          plf;
   boost::shared_ptr<View> view;
 
   void    init_worldobjs (void);
@@ -82,10 +82,10 @@ private:
 
 public:
   World();
-  World(boost::shared_ptr<PLF>);
+  World(PLF*);
   virtual ~World();
 
-  void    init (boost::shared_ptr<PLF>);
+  void    init (PLF*);
 
   /** Draws the world onto the screen
       @param x1 The left corner of the drawing area.
@@ -129,7 +129,7 @@ public:
   /** @return Pointer to the ActionHolder of the world */
   ActionHolder* get_action_holder();
 
-  boost::shared_ptr<PLF> get_plf();
+  PLF* get_plf();
 
   unsigned int get_released_pingus() { return released_pingus; }
   void         inc_released_pingus() { ++released_pingus; }

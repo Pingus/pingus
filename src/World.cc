@@ -1,4 +1,4 @@
-//  $Id: World.cc,v 1.67 2002/06/01 18:05:35 torangan Exp $
+//  $Id: World.cc,v 1.68 2002/06/07 19:10:33 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -64,7 +64,7 @@ World::World()
   WorldObj::set_world(this);
 }
 
-World::World(boost::shared_ptr<PLF> plf)
+World::World(PLF* plf)
 { 
   WorldObj::set_world(this);
   init (plf);
@@ -160,7 +160,7 @@ World::update(float delta)
 }
 
 void 
-World::init(boost::shared_ptr<PLF> plf_data)
+World::init(PLF* plf_data)
 {
   plf = plf_data;
   do_armageddon = false;
@@ -178,11 +178,7 @@ World::init(boost::shared_ptr<PLF> plf_data)
   particle_holder = shared_ptr<ParticleHolder>(new ParticleHolder());
   pingus = new PinguHolder();
 
-  //Timer timer;
-  //timer.start();
-  //cout << "World: Inititializing world objects... " << flush;
   init_worldobjs();
-  //cout << "done " << timer.stop() << endl;
 }
 
 void
@@ -339,7 +335,7 @@ World::get_particle_holder()
   return particle_holder.get();
 }
 
-boost::shared_ptr<PLF>
+PLF*
 World::get_plf()
 {
   return plf;

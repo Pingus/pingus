@@ -1,4 +1,4 @@
-//  $Id: GenericMain.cc,v 1.17 2002/01/20 13:34:01 grumbel Exp $
+//  $Id: GenericMain.cc,v 1.18 2002/06/07 19:10:33 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,7 +25,7 @@
 #include <ClanLib/png.h>
 
 #include "System.hh"
-#include "war/WarMain.hh"
+//#include "war/WarMain.hh"
 #include "PingusMain.hh"
 #include "GenericMain.hh"
 
@@ -74,7 +74,8 @@ GenericMain::main(int argc, char** argv)
 
   if (System::basename(argv[0]) == "warpingus")
     {
-      main_obj = new WarMain();
+      //main_obj = new WarMain();
+      std::cout << "War no longer supported" << std::endl;
     }
   else if (System::basename(argv[0]) == "pingus")
     {

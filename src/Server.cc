@@ -1,4 +1,4 @@
-//  $Id: Server.cc,v 1.23 2002/06/01 18:05:35 torangan Exp $
+//  $Id: Server.cc,v 1.24 2002/06/07 19:10:33 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -66,7 +66,7 @@ Server::~Server()
 }
 
 void 
-Server::start(boost::shared_ptr<PLF> /*level_data*/)
+Server::start(PLF* /*level_data*/)
 {
 }
 

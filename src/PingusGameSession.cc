@@ -1,4 +1,4 @@
-//  $Id: PingusGameSession.cc,v 1.12 2002/06/07 14:50:34 torangan Exp $
+//  $Id: PingusGameSession.cc,v 1.13 2002/06/07 19:10:33 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,12 +32,15 @@ PingusGameSession::PingusGameSession (std::string arg_filename)
     plf(create_plf (filename)),
     server (new TrueServer (plf)),
     client (new Client(shared_ptr<Controller>(new MouseController ()), 
-		       server.get ()))
+		       server))
 {
 }
 
 PingusGameSession::~PingusGameSession ()
 {
+  delete client;
+  delete server;
+  delete plf;
 }
 
 void 
@@ -54,17 +57,17 @@ PingusGameSession::get_result ()
   return PingusGameSessionResult ();
 }
 
-boost::shared_ptr<PLF>
+PLF* 
 PingusGameSession::create_plf (std::string pathname)
 {
   std::string extension = System::extension (pathname);
 
   if (extension == "xml")
-    return boost::shared_ptr<PLF> (new XMLPLF (filename));
+    return new XMLPLF (filename);
   else if (extension == "plf")
-    return boost::shared_ptr<PLF> (new PLFPLF (filename));
+    return new PLFPLF (filename);
   else // filename does not have an extension, default to xml
-    return boost::shared_ptr<PLF> (new XMLPLF (filename));
+    return new XMLPLF (filename);
 }
 
 /* EOF */

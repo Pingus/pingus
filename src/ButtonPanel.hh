@@ -1,4 +1,4 @@
-//  $Id: ButtonPanel.hh,v 1.14 2001/08/10 10:56:13 grumbel Exp $
+//  $Id: ButtonPanel.hh,v 1.15 2002/06/07 19:10:33 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,65 +34,42 @@ class Controller;
 class ButtonPanel : public GuiObj
 {
 private:
-  ///
   friend class ClientEvent;
-  ///
+
   std::vector<boost::shared_ptr<ActionButton> > a_buttons;
-  ///
   typedef std::vector<boost::shared_ptr<ActionButton> >::iterator AButtonIter;
-  ///
   AButtonIter  pressed_button;
-  ///
   boost::shared_ptr<ArmageddonButton> armageddon;
-  ///
   boost::shared_ptr<ForwardButton>    forward;
-  ///
   boost::shared_ptr<PauseButton>      pause;
 
-  ///
   Server* server;
-  ///
   Client* client;
-  ///
+
   int  armageddon_pressed;
-  ///
   AnimCounter arma_counter;
 
-  ///
   bool left_pressed;
-  ///
   unsigned int  last_press;
-  ///  static CL_ResourceManager* resource;
   static CL_Surface button_cap;
-  ///
   World* world;
-  ///
+
   boost::shared_ptr<Controller> controller;
 
   int x_pos, y_pos;
 public:
-  ///
-  ButtonPanel(boost::shared_ptr<PLF> plf,
+  ButtonPanel(PLF* plf,
 	      boost::shared_ptr<Controller>,int arg_x_pos, int arg_y_pos);
-  ///
   ~ButtonPanel();
 
-  ///
   void on_button_press(const CL_Key& key);
-  ///
   void on_button_release(const CL_Key& key);
 
-  ///
   std::string get_action_name();
-  ///
   void   update(float delta);
-  ///
   void   draw();
-  ///
   void   set_server(Server*);
-  ///
   void   set_client(Client*);
-  ///
   void   set_button(int);
 
   /// Select the next action

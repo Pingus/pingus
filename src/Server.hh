@@ -1,4 +1,4 @@
-//  $Id: Server.hh,v 1.15 2002/01/15 10:48:49 grumbel Exp $
+//  $Id: Server.hh,v 1.16 2002/06/07 19:10:33 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,12 +30,13 @@
 /** An Event in the Pingus World
 
     Possible events are the applying of an action, an armageddon,
-    scrolling, etc. */
+    scrolling, etc.
+
+    FIXME: The concept is ok, but implementation sucks 
+*/
 class PingusEvent {
 public:
-  ///
   PingusEvent();
-  ///
   PingusEvent(std::string);
 
   /// The GameTime at which the event happend
@@ -48,69 +49,43 @@ public:
 class Server
 {
 protected:
-  ///
   World* world;
-  ///
   ActionHolder action_holder;
-  ///
   bool demo_mode;
-  ///
   std::string demo_file;
 
   /// The name of the current level file
   std::string filename;
 
-  ///
   bool get_next_event;
-  ///
   DemoRecorder recorder;
-  ///
   bool finished;
 
 public:
-  ///
   Server();
-  ///
   virtual ~Server();
 
-  ///
   virtual bool enough_time_passed() = 0;
-  ///
   virtual void update(float delta);
-  ///
-  virtual void start(boost::shared_ptr<PLF> level_data);
+  virtual void start(PLF* level_data);
 
-  ///
   virtual void set_fast_forward(bool) = 0;
-  ///
   virtual bool get_fast_forward() = 0;
 
-  ///
   virtual bool get_pause() = 0;
-  ///
   virtual void set_pause(bool) = 0;
 
-  ///
   virtual bool needs_redraw() = 0;
 
-  ///
-  virtual boost::shared_ptr<PLF> get_plf () =0;
+  virtual PLF* get_plf () =0;
 
-  ///
   World* get_world();
-  ///
   ActionHolder* get_action_holder();
-  ///
   bool is_finished();
-  ///
   void set_finished();
-  ///
   void process_event(std::string);
-  ///
   void send_event(std::string);
-  ///
   void set_demo(std::string);
-  ///
   void record_demo();
 };
 

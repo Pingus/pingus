@@ -1,4 +1,4 @@
-//  $Id: SmallMapImage.cc,v 1.8 2002/06/07 14:50:34 torangan Exp $
+//  $Id: SmallMapImage.cc,v 1.9 2002/06/07 19:10:33 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -64,7 +64,6 @@ SmallMapImage::create_surface (Server * server, int width, int height)
 
   ColMap* colmap = world->get_colmap(); 
   buffer = colmap->get_data();
-  shared_ptr<PLF> plf = world->get_plf();
 
   canvas = new CL_Canvas(width, height);
  
@@ -120,6 +119,8 @@ SmallMapImage::create_surface (Server * server, int width, int height)
     }
 
 #if 0
+  PLF* plf = world->get_plf();
+
   std::vector<ExitData>     exit_d     = plf->get_exit();
   for(std::vector<ExitData>::iterator i = exit_d.begin(); i != exit_d.end(); i++)
     {

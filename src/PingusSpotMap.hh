@@ -1,4 +1,4 @@
-//  $Id: PingusSpotMap.hh,v 1.18 2002/02/14 22:23:52 grumbel Exp $
+//  $Id: PingusSpotMap.hh,v 1.19 2002/06/07 19:10:33 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,12 +31,9 @@
 #include "globals.hh"
 #include "PinguMap.hh"
 #include "ColMap.hh"
-#include "PSMParser.hh"
-#include "PLF.hh"
 
+class PLF;
 
-
-///
 class MapTileSurface
 {
 private:
@@ -61,66 +58,41 @@ public:
 class PingusSpotMap : public PinguMap
 {
 private:
-  ///
   ColMap* colmap;
-  ///
+
   typedef std::vector<MapTileSurface>::size_type TileIter;
-  ///
+
   std::vector<GroundpieceData> surfaces;
-  ///
-  PSMParser psm_parser;
-  ///
+
   CL_Canvas* provider;
-  ///
-  CL_Surface         map_surface;
-  ///
-  CL_Canvas*          map_canvas;
-  ///
+  CL_Surface map_surface;
+  CL_Canvas* map_canvas;
+
   std::vector<std::vector<MapTileSurface> > tile;
-  ///
+
   int width;
-  ///
   int height;
 
 public:
-  ///
-  PingusSpotMap();
-  ///
-  PingusSpotMap(boost::shared_ptr<PLF>);
-  ///
+  PingusSpotMap(PLF*);
   virtual ~PingusSpotMap();
 
-  ///
   void generate_colmap();
-  ///
   ColMap* PingusSpotMap::get_colmap();
-  ///
-  void load(boost::shared_ptr<PLF> plf);
-  ///
+  void load(PLF* plf);
   void gen_tiles();
-  ///
   void draw(int x, int y, int w, int h, int of_x, int of_y, float s);
-  ///
   void draw_colmap(int x_pos, int y_pos, int w, int h, 
 		   int of_x, int of_y, float s);
-  ///
   int  get_height(void);
-  ///
   int  get_width(void);
-  ///
   CL_Surface get_surface(void);
-  ///
   void remove(CL_SurfaceProvider*, int, int);
-  ///
   void put_alpha_surface(CL_Canvas* provider, CL_SurfaceProvider* sprovider,
 			 int x, int y, int real_x, int real_y);
-  ///
   void put(CL_SurfaceProvider*, int, int);
-  ///
   void create_maptiles();
-  ///
   void create_map();
-  ///
   void mark_tiles_not_empty(int, int, int, int);
 
   float get_z_pos () const { return 0; }

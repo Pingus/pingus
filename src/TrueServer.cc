@@ -1,4 +1,4 @@
-//  $Id: TrueServer.cc,v 1.28 2002/01/15 10:48:49 grumbel Exp $
+//  $Id: TrueServer.cc,v 1.29 2002/06/07 19:10:33 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,7 +26,7 @@
 
 using namespace std;
 
-TrueServer::TrueServer(boost::shared_ptr<PLF> arg_plf)
+TrueServer::TrueServer(PLF* arg_plf)
   : plf (arg_plf)
 {
   filename = plf->get_filename();
@@ -74,7 +74,7 @@ TrueServer::update(float delta)
 }
 
 void
-TrueServer::start(boost::shared_ptr<PLF> arg_plf)
+TrueServer::start(PLF* arg_plf)
 {
   Timer timer;
 
@@ -172,7 +172,7 @@ TrueServer::needs_redraw()
   return false;
 }
 
-boost::shared_ptr<PLF> 
+PLF*
 TrueServer::get_plf ()
 {
   return plf;

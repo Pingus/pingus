@@ -1,4 +1,4 @@
-//  $Id: PingusGameSession.hh,v 1.7 2002/06/02 21:09:11 grumbel Exp $
+//  $Id: PingusGameSession.hh,v 1.8 2002/06/07 19:10:33 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,8 +23,9 @@
 #include <string>
 
 #include "PingusGameSessionResult.hh"
-#include "Server.hh"
-#include "Client.hh"
+class Client;
+class Server;
+class PLF;
 
 /** You can use this class to start up a game session, which consist
     of a single level. */
@@ -35,16 +36,17 @@ private:
   std::string filename;
 
   /// The level data
-  boost::shared_ptr<PLF> plf;
+  PLF* plf;
 
   /// The server
-  boost::shared_ptr<Server> server;
+  Server* server;
 
   /// The client
-  boost::shared_ptr<Client> client;
+  Client* client;
 
-  /** */
-  boost::shared_ptr<PLF> create_plf (std::string filename);
+  /** Create a XMLPLf or a PLFPLF, depending on the file extension,
+      the called must delete the returned PLF object */
+  PLF* create_plf (std::string filename);
 
 public:
   /** Create a new game session which is launched on start ()

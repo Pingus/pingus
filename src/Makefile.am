@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.74 2002/06/05 17:51:08 grumbel Exp $
+#  $Id: Makefile.am,v 1.75 2002/06/07 19:10:33 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,7 +33,6 @@ SUBDIRS = \
 	generic             \
 	particles           \
 	traps               \
-	war                 \
         worldobjs           \
 	worldmap
 
@@ -62,7 +61,6 @@ pingus_LDADD = \
         particles/libpingus_particle.a  \
         editor/libpingus_editor.a       \
         backgrounds/libpingus_backgrounds.a       \
-        war/libpingus_war.a \
         worldmap/libpingus_worldmap.a \
         generic/libpingus_generic.a
 

@@ -1,4 +1,4 @@
-//  $Id: SmallMap.hh,v 1.12 2001/04/10 21:51:22 grumbel Exp $
+//  $Id: SmallMap.hh,v 1.13 2002/06/07 19:10:33 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,56 +29,34 @@ class Client;
 class SmallMap : public GuiObj
 {
 private:
-  ///
-  boost::shared_ptr<PLF> plf;
-  ///
+  PLF*    plf;
   ColMap* colmap;
-  ///
-  World* world;
-  ///
+  World*  world;
+  Client* client;
+
   CL_Surface exit_sur;
-  ///
   CL_Surface entrance_sur;
-  ///
   CL_Surface sur;
-  ///
-  Client*     client;
-  ///
+
   int x_pos;
-  ///
   int y_pos;
-  ///
   int width;
-  ///
   int height;
-  ///
   bool scroll_mode;
-  ///
   int rwidth;
-  ///
   int rheight;
 public:
-  ///
   SmallMap();
-  ///
   ~SmallMap();
   
-  ///
   bool on_button_press(const CL_Key& key);
-  ///
   bool on_button_release(const CL_Key& key);
-  ///
-  void set_client(Client* c);
 
-  ///
+  void set_client(Client* c);
   bool mouse_over();
-  ///
   void init();
-  ///
   void draw();
-  ///
   void draw_pingus();
-  ///
   void update(float delta);
 };
 

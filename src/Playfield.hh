@@ -1,4 +1,4 @@
-//  $Id: Playfield.hh,v 1.20 2002/06/04 08:35:30 grumbel Exp $
+//  $Id: Playfield.hh,v 1.21 2002/06/07 19:10:33 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -75,7 +75,7 @@ private:
 
   boost::shared_ptr<Controller> controller;
 public:
-  Playfield(boost::shared_ptr<PLF>, World*,
+  Playfield(PLF* plf, World*,
 	    boost::shared_ptr<Controller>);
   ~Playfield();
 
