@@ -1,0 +1,488 @@
+<?xml version="1.0"  encoding="ISO-8859-1"?>
+
+<pingus-level>
+  <global>
+    <levelname lang="en">Tutorial 5 - Danger in Space</levelname>
+    <description lang="en">If there is no action left to dig through a barrier, there is only a last hope... the bomber</description>
+    <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
+    <number-of-pingus>30</number-of-pingus>
+    <number-to-save>10</number-to-save>
+    <time>-1</time>
+    <width>1200</width>
+    <height>600</height>
+    <difficulty>5</difficulty>
+    <playable>1</playable>
+    <comment></comment>
+  </global>
+
+  <action-list>
+    <bomber count="15"/>
+  </action-list>
+
+<background type="surface">
+  <surface><resource type="datafile">
+    <resource-datafile>textures</resource-datafile>
+  <resource-ident>Textures/stars</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <color>
+    <red>0</red>
+    <green>0</green>
+    <blue>0</blue>
+    <alpha>1</alpha>
+  </color>
+  <scroll-x>0</scroll-x>
+  <scroll-y>0</scroll-y>
+  <para-x>0.5</para-x>
+  <para-y>0.5</para-y>
+  <stretch-x>0</stretch-x>
+  <stretch-y>0</stretch-y>
+  <position>
+    <x-pos>0</x-pos>
+    <y-pos>0</y-pos>
+    <z-pos>-100</z-pos>
+  </position>
+</background>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Space/way</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>759.356</x-pos>
+    <y-pos>358.125</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Space/way</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>674.356</x-pos>
+    <y-pos>358.125</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Space/way</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>574.356</x-pos>
+    <y-pos>358.125</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Space/way</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>474.356</x-pos>
+    <y-pos>358.125</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Space/way</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>756.093</x-pos>
+    <y-pos>299.469</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Space/way</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>671.093</x-pos>
+    <y-pos>299.469</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Space/way</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>571.093</x-pos>
+    <y-pos>299.469</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Space/way</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>471.093</x-pos>
+    <y-pos>299.469</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Space/way</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>747.729</x-pos>
+    <y-pos>242.636</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Space/way</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>662.729</x-pos>
+    <y-pos>242.636</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Space/way</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>562.729</x-pos>
+    <y-pos>242.636</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Space/way</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>462.729</x-pos>
+    <y-pos>242.636</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Space/block1</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>824</x-pos>
+    <y-pos>242</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Space/block1</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>283</x-pos>
+    <y-pos>242</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Space/block1</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>824</x-pos>
+    <y-pos>303</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Space/block1</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>283</x-pos>
+    <y-pos>303</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Space/block1</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>856</x-pos>
+    <y-pos>364</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Space/block1</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>856</x-pos>
+    <y-pos>547</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Space/block1</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>253</x-pos>
+    <y-pos>547</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Space/block1</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>655</x-pos>
+    <y-pos>485</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Space/block1</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>454</x-pos>
+    <y-pos>485</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Space/block1</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>856</x-pos>
+    <y-pos>486</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Space/block1</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>253</x-pos>
+    <y-pos>486</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Space/block1</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>856</x-pos>
+    <y-pos>425</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Space/block1</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>253</x-pos>
+    <y-pos>425</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Space/block1</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>253</x-pos>
+    <y-pos>364</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Space/tower1</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>933</x-pos>
+    <y-pos>77</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Space/tower1</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>309</x-pos>
+    <y-pos>76</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<entrance>
+  <position>
+    <x-pos>426</x-pos>
+    <y-pos>143</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+  <type>generic</type>
+  <direction>left</direction>
+  <release-rate>25</release-rate>
+  <owner-id>0</owner-id>
+</entrance>
+
+<exit use-old-pos-handling="0">
+  <position>
+    <x-pos>777</x-pos>
+    <y-pos>486</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+  <surface><resource type="datafile">
+    <resource-datafile>exits</resource-datafile>
+  <resource-ident>Exits/space</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <owner-id>0</owner-id></exit>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>entrances</resource-datafile>
+  <resource-ident>Entrances/space</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>397</x-pos>
+    <y-pos>98</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1</parallax>
+</hotspot>
+
+  <start-position>
+  <position>
+    <x-pos>427</x-pos>
+    <y-pos>152</y-pos>
+    <z-pos>1000</z-pos>
+  </position>
+  </start-position>
+
+</pingus-level>
+
