@@ -1,4 +1,4 @@
-//  $Id: ObjectSelector.cc,v 1.32 2000/10/18 20:16:36 grumbel Exp $
+//  $Id: ObjectSelector.cc,v 1.33 2000/12/05 23:17:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,6 +33,8 @@
 #include "ObjectSelector.hh"
 #include "ThumbCache.hh"
 
+#include "../worldobjs/Teleporter.hh"
+
 using namespace std;
 
 ObjectSelector::ObjectSelector()
@@ -46,7 +48,9 @@ ObjectSelector::~ObjectSelector()
 {
 }
   
-EditorObj* 
+/** FIXME: Ugly interface, the arguments should not be the offset, but
+    instead the absolute position */
+list<EditorObj*>
 ObjectSelector::get_obj(int x_off, int y_off)
 {
   x_offset = x_off;
@@ -162,6 +166,40 @@ ObjectSelector::get_hotspot()
   return 0;
 }
 
+list<EditorObj*>
+ObjectSelector::get_worldobj()
+{
+  CL_Display::clear_display();
+  font->print_left(20,  20, "Select an WorldObj");
+  font->print_left(20,  50, "1 - teleporter");
+  font->print_left(20,  70, "2 - switch and door");
+  font->print_left(20,  90, "3 - ConveyorBelt");
+  font->print_left(20, 110, "4 - IceBlock");
+  Display::flip_display();
+
+  while (true) 
+    {
+      switch (read_key()) 
+	{
+	case CL_KEY_1:
+	  return EditorTeleporterObj::create (Position(CL_Mouse::get_x() - x_offset, 
+						       CL_Mouse::get_y() - y_offset));
+	  
+	case CL_KEY_2:
+	  break;
+
+	case CL_KEY_3:
+	  break;
+
+	case CL_KEY_4:
+	  break;
+
+	case CL_KEY_ESCAPE:
+	  return list<EditorObj*>();
+	}
+    }
+}
+
 EditorObj*
 ObjectSelector::get_weather()
 {
@@ -267,10 +305,11 @@ ObjectSelector::get_liquid()
   return 0;
 }
 
-EditorObj*
+std::list<EditorObj*>
 ObjectSelector::select_obj_type()
 {
   bool exit_loop;
+  std::list<EditorObj*> objs;
 
   CL_Display::clear_display();
   font->print_left(20, 20, "What object do you want?");
@@ -284,6 +323,7 @@ ObjectSelector::select_obj_type()
   font->print_left(20,190, "x - Exit");
   font->print_left(20,210, "l - Liquid");
   font->print_left(20,230, "w - Weather");
+  font->print_left(20,250, "o - WorldObject");
   Display::flip_display();
 
   exit_loop = false;
@@ -293,41 +333,50 @@ ObjectSelector::select_obj_type()
       switch (read_key()) 
 	{
 	case CL_KEY_T:
-	  return get_trap();
-	  break;
+	  objs.push_back(get_trap());
+	  return objs;
+
 	case CL_KEY_B:
-	  return get_groundpiece(GroundpieceData::BRIDGE);
-	  break;
+	  objs.push_back(get_groundpiece(GroundpieceData::BRIDGE));
+	  return objs;
+	  
 	case CL_KEY_S:
-	  return get_groundpiece(GroundpieceData::SOLID);
-	  break;
+	  objs.push_back(get_groundpiece(GroundpieceData::SOLID));
+	  return objs;
+
 	case CL_KEY_G:
-	  return get_groundpiece(GroundpieceData::GROUND);
-	  break;
+	  objs.push_back(get_groundpiece(GroundpieceData::GROUND));
+	  return objs;
+
 	case CL_KEY_N:
-	  return get_groundpiece(GroundpieceData::TRANSPARENT);
-	  break;
+	  objs.push_back(get_groundpiece(GroundpieceData::TRANSPARENT));
+	  return objs;
+
 	case CL_KEY_H:
-	  return get_hotspot();
-	  break;
+	  objs.push_back(get_hotspot());
+	  return objs;
+		  
 	case CL_KEY_E:
-	  return get_entrance();
-	  break;
+	  objs.push_back(get_entrance());
+	  return objs;
 	case CL_KEY_X:
-	  return get_exit();
-	  break;
+	  objs.push_back(get_exit());
+	  return objs;
 	case CL_KEY_L:
-	  return get_liquid();
-	  break;
+	  objs.push_back(get_liquid());
+	  return objs;
 	case CL_KEY_W:
-	  return get_weather();
-	  break;
+	  objs.push_back(get_weather());
+	  return objs;
+	case CL_KEY_O:
+	  return get_worldobj();
+
 	case CL_KEY_ESCAPE:
 	  exit_loop = true;
 	  break;
 	}
     }
-  return 0;
+  return objs;
 }
 
 std::string 
@@ -356,13 +405,13 @@ ObjectSelector::select_surface(std::string resource_file)
   
   data.pos.x_pos = CL_Mouse::get_x() - x_offset;
   data.pos.y_pos = CL_Mouse::get_y() - y_offset;
-
-  list<string>* liste = res->get_resources_of_type("surface");
+  
+  std::list<string>* liste = res->get_resources_of_type("surface");
   surface_obj sur_obj;
-  vector<surface_obj> sur_list;
+  std::vector<surface_obj> sur_list;
   int j = 0;
 
-  for(list<string>::iterator i = liste->begin(); i != liste->end(); i++)
+  for(std::list<string>::iterator i = liste->begin(); i != liste->end(); i++)
     {
       ++j;
       sur_obj.name = *i;
@@ -423,6 +472,9 @@ ObjectSelector::read_string(string description, string def_str)
 /*
 
 $Log: ObjectSelector.cc,v $
+Revision 1.33  2000/12/05 23:17:56  grumbel
+Added support for inserting teleporters in the editor (other worldobjs will follow tomorrow
+
 Revision 1.32  2000/10/18 20:16:36  grumbel
 Added a scrolling background to the menu
 

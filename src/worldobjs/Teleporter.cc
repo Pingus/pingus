@@ -1,4 +1,4 @@
-//  $Id: Teleporter.cc,v 1.4 2000/11/17 19:09:22 grumbel Exp $
+//  $Id: Teleporter.cc,v 1.5 2000/12/05 23:17:57 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -146,6 +146,20 @@ EditorTeleporterObj::create (WorldObjData* obj)
   return objs;
 }
 
+std::list<EditorObj*>
+EditorTeleporterObj::create (const Position& pos)
+{
+  TeleporterData data;
+
+  std::cout << "EditorTeleporterObj: creating..." << std::endl;
+
+  data.pos = pos;
+  data.target_pos.x_pos = pos.x_pos + 50;
+  data.target_pos.y_pos = pos.y_pos + 50;
+
+  return EditorObj::create (&data);
+}
+
 void
 EditorTeleporterObj::save_xml (std::ofstream* xml)
 {
@@ -178,12 +192,6 @@ EditorTeleporterTargetObj::EditorTeleporterTargetObj (WorldObjData* obj, Positio
 
   *pos = data->target_pos;
   position = pos;
-}
-
-std::list<EditorObj*> 
-EditorTeleporterTargetObj::create (TeleporterData*)
-{
-  return std::list<EditorObj*>();
 }
 
 void

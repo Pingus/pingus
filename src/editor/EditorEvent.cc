@@ -1,4 +1,4 @@
-//  $Id: EditorEvent.cc,v 1.32 2000/10/03 20:01:24 grumbel Exp $
+//  $Id: EditorEvent.cc,v 1.33 2000/12/05 23:17:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -577,24 +577,28 @@ EditorEvent::editor_insert_new_object()
 {
   editor->save_tmp_level();
 
-  EditorObj* obj;
-  try {
-    disable();
-    obj = editor->object_selector->get_obj(object_manager->x_offset, object_manager->y_offset);
-    enable();
-  }
+  list<EditorObj*> objs;
+  try 
+    {
+      disable();
+      objs = editor->object_selector->get_obj(object_manager->x_offset, object_manager->y_offset);
+      enable();
+    }
   
   catch (CL_Error err) {
     std::cout << "Editor: Error caught from ClanLib: " << err.message << std::endl;
     enable();
-    obj = 0;
   }
       
-  if (obj) {
-    object_manager->editor_objs.push_back(obj);
-  } else {
-    std::cout << "Something went wrong while inserting" << std::endl;
-  }
+  if (!objs.empty ()) 
+    {
+      for (list<EditorObj*>::iterator i = objs.begin (); i != objs.end (); i++)
+	object_manager->editor_objs.push_back(*i);
+    } 
+  else 
+    {
+      std::cout << "EditorEvent: Something went wrong while inserting" << std::endl;
+    }
 }
 
 void

@@ -1,4 +1,4 @@
-// $Id: ObjectSelector.hh,v 1.15 2000/10/18 20:16:36 grumbel Exp $
+// $Id: ObjectSelector.hh,v 1.16 2000/12/05 23:17:56 grumbel Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -52,7 +52,7 @@ public:
   ~ObjectSelector();
   
   ///
-  EditorObj* select_obj_type();
+  list<EditorObj*> select_obj_type();
   ///
   std::string select_surface(std::vector<surface_obj>& sur_list);
   ///
@@ -63,7 +63,7 @@ public:
   std::string read_string(std::string, std::string);
   
   ///
-  EditorObj* get_obj(int, int);
+  list<EditorObj*> get_obj(int, int);
   ///
   EditorObj* get_trap();
   ///
@@ -78,6 +78,8 @@ public:
   EditorObj* get_liquid();
   ///
   EditorObj* get_weather();
+  ///
+  list<EditorObj*> get_worldobj();
   ///
   std::string get_background();
 };
