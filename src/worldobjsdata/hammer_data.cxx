@@ -1,4 +1,4 @@
-//  $Id: hammer_data.cxx,v 1.7 2002/09/27 18:36:41 torangan Exp $
+//  $Id: hammer_data.cxx,v 1.8 2002/10/01 23:40:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,7 +30,7 @@ HammerData::HammerData ()
 {
 }
 
-HammerData::HammerData (xmlDocPtr doc, xmlNodePtr cur) : surface(PingusResource::load_surface("Traps/hammer", "traps"))
+HammerData::HammerData (xmlDocPtr doc, xmlNodePtr cur)
 {
   cur = cur->children;
   while (cur)
@@ -46,9 +46,9 @@ HammerData::HammerData (xmlDocPtr doc, xmlNodePtr cur) : surface(PingusResource:
     }
 }
 
-HammerData::HammerData (const HammerData& old) : WorldObjData(old),
-						 surface(old.surface),
-						 pos(old.pos)
+HammerData::HammerData (const HammerData& old) 
+  : WorldObjData(old),
+    pos(old.pos)
 {
 }
 

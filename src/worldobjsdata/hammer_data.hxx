@@ -1,4 +1,4 @@
-//  $Id: hammer_data.hxx,v 1.4 2002/09/28 11:52:26 torangan Exp $
+//  $Id: hammer_data.hxx,v 1.5 2002/10/01 23:40:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,9 +30,7 @@ namespace WorldObjsData {
 
 class HammerData : public WorldObjData {
 public:
-  CL_Surface  surface;
   Vector   pos;
-  GameCounter counter;
       
 public:
   HammerData ();

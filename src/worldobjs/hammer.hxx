@@ -1,4 +1,4 @@
-//  $Id: hammer.hxx,v 1.7 2002/10/01 19:53:46 grumbel Exp $
+//  $Id: hammer.hxx,v 1.8 2002/10/01 23:40:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #ifndef HEADER_PINGUS_WORLDOBJS_HAMMER_HXX
 #define HEADER_PINGUS_WORLDOBJS_HAMMER_HXX
 
+#include "../sprite.hxx"
 #include "../worldobj.hxx"
 
 namespace WorldObjsData {
@@ -34,7 +35,7 @@ class Hammer : public WorldObj
 {
 private:
   WorldObjsData::HammerData* const data;
-  bool particle_thrown;
+  Sprite sprite;
     
 public:
   Hammer (const WorldObjsData::HammerData& data_);
@@ -44,9 +45,6 @@ public:
 
   void draw (GraphicContext& gc);
   void update ();
-
-protected:
-  void catch_pingu (Pingu*);
 
 private:
   Hammer (const Hammer&);

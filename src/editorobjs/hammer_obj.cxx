@@ -1,4 +1,4 @@
-//  $Id: hammer_obj.cxx,v 1.9 2002/09/28 11:52:24 torangan Exp $
+//  $Id: hammer_obj.cxx,v 1.10 2002/10/01 23:40:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,7 +30,6 @@ HammerObj::HammerObj (const WorldObjsData::HammerData& data_)
 {
   data->pos.z = -100;
   sprite = Sprite("Traps/hammer", "traps");
-  sprite.set_align_center_bottom ();
   pos_ref = &data->pos;
 }
 

@@ -1,4 +1,4 @@
-//  $Id: hammer.cxx,v 1.7 2002/10/01 23:10:41 grumbel Exp $
+//  $Id: hammer.cxx,v 1.8 2002/10/01 23:40:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,12 +27,10 @@
 
 namespace WorldObjs {
 
-Hammer::Hammer (const WorldObjsData::HammerData& data_) : data(new WorldObjsData::HammerData(data_)),
-                                                          particle_thrown(false)
+Hammer::Hammer (const WorldObjsData::HammerData& data_) 
+  : data(new WorldObjsData::HammerData(data_))
 {
-  data->counter.set_size(data->surface.get_num_frames());
-  data->counter.set_type(GameCounter::ping_pong);
-  data->counter.set_speed(1);
+  sprite = Sprite("Traps/hammer", "traps");
 }
 
 Hammer::~Hammer ()
@@ -49,43 +47,29 @@ Hammer::get_z_pos () const
 void 
 Hammer::draw (GraphicContext& gc)
 {
-  gc.draw (data->surface, data->pos, data->counter.value());
+  gc.draw (sprite, data->pos);
 }
 
 void
 Hammer::update ()
 {
-  if ( !data->counter) 
-    particle_thrown = false;
+  sprite.update();
 
-  PinguHolder* holder = world->get_pingu_p ();
-  for (PinguIter pingu = holder->begin (); pingu != holder->end (); ++pingu){
-    catch_pingu(*pingu);
-  }
-
-  if ( !particle_thrown && data->counter == static_cast<int>(data->surface.get_num_frames() - 3)) {
-    particle_thrown = true;
-    /*
-      for(int i=0; i < 5; ++i)
-      particle->add_particle(new GroundParticle(x_pos + 67 + rand() % 40 - 20 ,
-      y_pos + 177,
-      frand() * 2 - 1,
-      frand() * - 1.5));
-    */
-  }
-  ++data->counter;
-}
-
-void
-Hammer::catch_pingu (Pingu* pingu)
-{
-  if (pingu->get_action()->get_type() != Actions::Smashed)
+  if (sprite.finished())
     {
-      if (data->counter >= static_cast<int>(data->surface.get_num_frames() - 3)) {
-	if (pingu->get_x() > data->pos.x + 55  && pingu->get_x() < data->pos.x + 77
-	    && pingu->get_y() > data->pos.y + 146 && pingu->get_y() < data->pos.y + 185)
-	  pingu->set_action(Actions::Smashed);
-      }
+      PinguHolder* holder = world->get_pingu_p ();
+
+      for (PinguIter pingu_it = holder->begin (); pingu_it != holder->end (); ++pingu_it) 
+	{
+	  Pingu* pingu = *pingu_it;
+	  if (pingu->get_action()->get_type() != Actions::Splashed)
+	    {
+	      if (pingu->get_x() > data->pos.x + 55  && pingu->get_x() < data->pos.x + 77
+		    && pingu->get_y() > data->pos.y + 146 && pingu->get_y() < data->pos.y + 185)
+		  pingu->set_action(Actions::Splashed);
+	    }
+	}
+      sprite.reset();
     }
 }
 
