@@ -1,4 +1,4 @@
-//  $Id: playfield.cxx,v 1.27 2002/10/12 00:49:10 torangan Exp $
+//  $Id: playfield.cxx,v 1.28 2002/10/28 20:13:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -312,8 +312,8 @@ Playfield::generate_clipping_rects(int x1, int y1, int x2, int y2)
 void 
 Playfield::scroll (int x, int y)
 {
-  UNUSED_ARG(x);
-  UNUSED_ARG(y);
+  view[current_view]->shift_x_offset(x);
+  view[current_view]->shift_y_offset(y);
 }
 
 /* EOF */

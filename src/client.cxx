@@ -1,4 +1,4 @@
-//  $Id: client.cxx,v 1.30 2002/10/12 00:49:09 torangan Exp $
+//  $Id: client.cxx,v 1.31 2002/10/28 20:13:40 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,6 +38,12 @@
 #include "button_panel.hxx"
 #include "screen_manager.hxx"
 #include "gui/gui_manager.hxx"
+// Input
+#include "input/controller.hxx"
+#include "input/event.hxx"
+#include "input/axis_event.hxx"
+#include "input/scroll_event.hxx"
+
 
 Client::Client (TrueServer * s)
   : server       (s),
@@ -101,112 +107,54 @@ void
 Client::update (const GameDelta& delta)
 {
   GUIScreen::update (delta);
+  process_events(delta);
 }
 
-#if 0
 void
-Client::process_events ()
+Client::process_events (const GameDelta& delta)
 {
-  std::list<Input::Event*>& events = input_controller->get_events ();
+  const std::list<Input::Event*>& events = delta.get_events ();
 
-  for (std::list<Input::Event*>::iterator i = events.begin (); i != events.end (); ++i)
+  for (std::list<Input::Event*>::const_iterator i = events.begin (); 
+       i != events.end (); 
+       ++i)
     {
       //std::cout << "Events: " << (*i)->get_type () << std::endl;
     
       switch ((*i)->get_type ())
 	{
 	case Input::ButtonEventType:
-	  process_button_event (static_cast<class Input::ButtonEvent*>(*i));
+          // Ignore, is handled in GUIScreen
+	  //process_button_event (dynamic_cast<class Input::ButtonEvent* const>(*i));
 	  break;
 
 	case Input::PointerEventType:
-	  process_pointer_event (static_cast<class Input::PointerEvent*>(*i));
+          // Ignore, is handled in GUIScreen
+	  //process_pointer_event (dynamic_cast<class Input::PointerEvent* const>(*i));
 	  break;
 
 	case Input::AxisEventType:
-	  process_axis_event (static_cast<class Input::AxisEvent*>(*i));
+          // ???
+	  process_axis_event (dynamic_cast<Input::AxisEvent* const>(*i));
 	  break;
 	  
+        case Input::ScrollEventType:
+          process_scroll_event(dynamic_cast<Input::ScrollEvent* const>(*i));
+          break;
+
 	default:
 	  // unhandled event
-	  //std::cout << "Client::process_events (): unhandled event: " << (*i)->get_type() << std::endl;
+	  std::cout << "Client::process_events (): unhandled event: " << (*i)->get_type() << std::endl;
 	  break;
 	}
     }
 }
 
 void
-Client::process_button_event (Input::ButtonEvent* event)
+Client::process_scroll_event (Input::ScrollEvent* ev)
 {
-  std::cout << "Client::process_button_event (): " << event->name << " " << event->state << std::endl;
-
-  switch (event->name)
-    {
-    case Input::primary:
-      {
-	if (event->state == Input::pressed)
-	  {
-	    //GuiObj* obj = get_gui_object (int(event->x), int(event->y));
-	    //obj->on_mouse_press ();
-	  }
-	else
-	  {
-	    //GuiObj* obj = get_gui_object (int(event->x), int(event->y));
-	    //obj->on_mouse_leave ();
-	  }
-      }
-      break;
-    case Input::secondary:
-      break;
-    default:
-      break;
-    }
-}
-
-void
-Client::process_pointer_event (Input::PointerEvent* event)
-{
-  if (event->type == 1)
-    std::cout << "Client::process_pointer_event (): " 
-	      << event->x << " " << event->y << " " 
-	      << event->type << std::endl;  
-  
-  switch (event->type)
-    {
-      /*
-
-      case Input::scroll: // FIXME: incorrect enum name
-      {
-      GuiObj* obj = get_gui_object (int(event->x), int(event->y));
-      if (obj)
-      {
-      if (obj != current_gui_obj)
-      {
-      current_gui_obj = obj;
-      obj->on_mouse_enter();
-      }
-      else
-      {
-      if (current_gui_obj) current_gui_obj->on_mouse_leave();
-      current_gui_obj = 0;
-      }
-      }
-      else
-      {
-      if (current_gui_obj) current_gui_obj->on_mouse_leave();
-      current_gui_obj = 0;
-      }
-      }
-      break;
-      */
-      
-      //se Input::scroll:
-      //reak;	    
-      
-      //default:
-      //std::cout << "Client::process_pointer_event: unhandled event" << std::endl;
-      //break;
-    }
+  std::cout << "Client::process_scroll_event ()" << std::endl;    
+  playfield->scroll(ev->x_delta, ev->y_delta);
 }
 
 void
@@ -214,13 +162,6 @@ Client::process_axis_event (Input::AxisEvent* event)
 {
   std::cout << "Client::process_axis_event ()" << std::endl;    
 }
-
-void
-Client::send_next_event()
-{
-}
-#endif
-
 
 bool
 Client::replay()

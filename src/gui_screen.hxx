@@ -1,4 +1,4 @@
-//  $Id: gui_screen.hxx,v 1.12 2002/10/03 12:33:08 grumbel Exp $
+//  $Id: gui_screen.hxx,v 1.13 2002/10/28 20:13:40 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -65,7 +65,7 @@ public:
   virtual void on_action_axis_move (float) {}
 
 private:
-  void process_button_event (Input::ButtonEvent* event);
+  void process_button_event (const Input::ButtonEvent* event);
   
   GUIScreen (const GUIScreen&);
   GUIScreen& operator= (const GUIScreen&);

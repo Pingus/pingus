@@ -1,4 +1,4 @@
-//  $Id: input_debug_screen.cxx,v 1.4 2002/10/01 21:48:32 grumbel Exp $
+//  $Id: input_debug_screen.cxx,v 1.5 2002/10/28 20:13:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,9 +17,13 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <ClanLib/Core/System/system.h>
 #include <iostream>
 #include "input/event.hxx"
+#include "input/scroll_event.hxx"
 #include "input_debug_screen.hxx"
+
+using namespace Input;
 
 InputDebugScreen::InputDebugScreen ()
 {
@@ -34,6 +38,7 @@ bool
 InputDebugScreen::draw (GraphicContext& gc)
 {
   std::cout << "InputDebugScreen::draw ()" << std::endl;
+  CL_System::sleep(100);
   UNUSED_ARG(gc);
   return true;
 }
@@ -47,7 +52,33 @@ InputDebugScreen::update (const GameDelta& delta)
        i != delta.get_events ().end ();
        ++i)
     {
-      std::cout << "Event: " << (*i)->get_type() << std::endl;
+      switch((*i)->get_type())
+        {
+        case ButtonEventType:
+          std::cout << "InputDebugScreen: Button event : " << (*i)->get_type() << std::endl;
+          break;
+
+        case PointerEventType:
+          std::cout << "InputDebugScreen: Pointer event : " << (*i)->get_type() << std::endl;
+          break;
+
+        case AxisEventType:
+          std::cout << "InputDebugScreen: Axis event : " << (*i)->get_type() << std::endl;
+
+          break;
+        case ScrollEventType:
+          { 
+            ScrollEvent* ev = dynamic_cast<ScrollEvent*>(*i);
+            assert(ev);
+            std::cout << "InputDebugScreen: Scroll event : " 
+                      << ev->x_delta << " " << ev->y_delta << std::endl;
+          }
+          break;
+
+        default:
+          std::cout << "InputDebugScreen: Unknown event : " << (*i)->get_type() << std::endl;
+          break;
+        }
     }
 }
 

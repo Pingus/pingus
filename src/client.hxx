@@ -1,4 +1,4 @@
-//  $Id: client.hxx,v 1.23 2002/10/04 16:54:03 grumbel Exp $
+//  $Id: client.hxx,v 1.24 2002/10/28 20:13:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,6 +31,7 @@ namespace Input {
 class Controller;
 class ButtonEvent;
 class PointerEvent;
+class ScrollEvent;
 class AxisEvent;
 } // namespace Input
 
@@ -109,6 +110,10 @@ public:
   void on_action_axis_move (float);
 
 private:
+  void process_events (const GameDelta& events);
+  void process_scroll_event (Input::ScrollEvent*);
+  void process_axis_event (Input::AxisEvent*);
+
   Client (const Client&);
   Client& operator= (const Client&);
 };

@@ -1,4 +1,4 @@
-//  $Id: gui_screen.cxx,v 1.12 2002/10/03 12:33:08 grumbel Exp $
+//  $Id: gui_screen.cxx,v 1.13 2002/10/28 20:13:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -95,7 +95,7 @@ GUIScreen::update (const GameDelta& delta)
 }
 
 void
-GUIScreen::process_button_event (Input::ButtonEvent* event)
+GUIScreen::process_button_event (const Input::ButtonEvent* event)
 {
   //std::cout << "GUIScreen::process_button_event (Input::ButtonEvent* event)" << std::endl;
 

@@ -1,4 +1,4 @@
-//  $Id: axis_scroller.cxx,v 1.2 2002/08/26 13:53:04 torangan Exp $
+//  $Id: axis_scroller.cxx,v 1.3 2002/10/28 20:13:40 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -71,8 +71,8 @@ namespace Input {
         {
           (*it)->update(delta);
       
-          x_delta += cos((*it)->get_angle()) * speed * delta;
-          y_delta += sin((*it)->get_angle()) * speed * delta;
+          x_delta += cos((*it)->get_angle()) * speed * delta * (*it)->get_pos();
+          y_delta += sin((*it)->get_angle()) * speed * delta * (*it)->get_pos();
         } 
   
     }
