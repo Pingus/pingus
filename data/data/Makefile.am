@@ -36,8 +36,7 @@ groundpieces-ground.xml      \
 groundpieces-transparent.xml \
 groundpieces-solid.xml       \
 groundpieces-bridge.xml      \
-groundpieces-remove.xml      \
-gui.xml
+groundpieces-remove.xml
 
 pkgdata_DATA = $(EXTRA_DIST)
 

@@ -83,6 +83,7 @@ Credits::Credits()
   credits.push_back(_("-Music"));
   credits.push_back("_H. Matthew Smith");
   credits.push_back("_Joseph Toscano");
+  credits.push_back("_Robbie Ferguson");
   credits.push_back("_Yuri Sucupira");
   credits.push_back("n");
 
@@ -122,7 +123,7 @@ Credits::Credits()
   credits.push_back("_Debian");
   credits.push_back("_Etienne Marcotte");
   credits.push_back("_Felix Natter");
-  credits.push_back("_Francisco "Pacho" Ramos");
+  credits.push_back("_Francisco 'Pacho' Ramos");
   credits.push_back("_Giray Devlet ");
   credits.push_back("_Giuseppe D'Aqui");
   credits.push_back("_Henri Manson");
