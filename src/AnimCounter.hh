@@ -1,4 +1,4 @@
-//  $Id: AnimCounter.hh,v 1.2 2000/02/09 21:43:39 grumbel Exp $
+//  $Id: AnimCounter.hh,v 1.3 2000/06/12 14:42:10 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,7 +33,7 @@ class AnimCounter : public Counter
 private:
   bool enough_time_passed(void) const;
   int last_time;
-  int speed;
+  unsigned int speed;
 public:
   AnimCounter(int s);
   AnimCounter();

@@ -1,4 +1,4 @@
-//  $Id: PingusMessageBox.cc,v 1.3 2000/02/11 16:58:26 grumbel Exp $
+//  $Id: PingusMessageBox.cc,v 1.4 2000/06/12 14:42:11 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,7 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <ClanLib/core.h>
-
+#include "Display.hh"
 #include "PingusResource.hh"
 #include "PingusMessageBox.hh"
 
@@ -41,7 +41,7 @@ PingusMessageBox::draw()
   font->print_center(CL_Display::get_width() / 2 - 25, CL_Display::get_height() / 2 - 8,
 		     str.c_str());
 
-  CL_Display::flip_display();
+  Display::flip_display();
   while(!CL_Mouse::left_pressed())
     CL_System::keep_alive();
   while(CL_Mouse::left_pressed())

@@ -1,4 +1,4 @@
-//   $Id: Pingus.cc,v 1.31 2000/06/11 15:23:29 grumbel Exp $
+//   $Id: Pingus.cc,v 1.32 2000/06/12 14:42:11 grumbel Exp $
 //    ___
 //   |  _\ A free Lemmings clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -53,6 +53,7 @@
 #include "PingusError.hh"
 #include "Loading.hh"
 #include "Display.hh"
+#include "GlobalEvent.hh"
 #include "Config.hh"
 
 #include "PingusSound.hh"
@@ -692,10 +693,14 @@ PingusMain::init_clanlib()
 bool
 PingusMain::do_lemmings_mode(void)
 {
-  if (verbose) 
-    {
-      std::cout << "PingusMain: Starting Main: " << CL_System::get_time() << std::endl;
-    }
+  GlobalEvent* global_event = new GlobalEvent();
+
+  if (verbose) {
+    std::cout << "PingusMain: Starting Main: " << CL_System::get_time() << std::endl;
+  }
+
+  CL_Input::chain_button_release.push_back(global_event);
+  CL_Input::chain_button_press.push_back(global_event);
 
   if (!levelfile.empty()) 
     {
@@ -703,30 +708,29 @@ PingusMain::do_lemmings_mode(void)
       game.start_game(levelfile);
     }
 
-  if (!demo_file.empty())
-    {
-      PingusGame game;
-      game.start_demo(demo_file);
-    }
+  if (!demo_file.empty()) {
+    PingusGame game;
+    game.start_demo(demo_file);
+  }
 
-  try 
-    {
-      PingusMenu menu; 
-      menu.select();
-    }
+  try  {
+    PingusMenu menu; 
+    menu.select();
+  }
   
-  catch (CL_Error err) 
-    {
-      std::string str;
-      str = "CL_Error: ";
-      str += err.message;
-      PingusMessageBox box(str);
-    }
+  catch (CL_Error err) {
+    std::string str;
+    str = "CL_Error: ";
+    str += err.message;
+    PingusMessageBox box(str);
+  }
   
-  catch (PingusError err) 
-    {
-      PingusMessageBox(" PingusError: " + err.message);
-    }
+  catch (PingusError err) {
+    PingusMessageBox(" PingusError: " + err.message);
+  }
+
+  CL_Input::chain_button_press.remove(global_event);
+  CL_Input::chain_button_release.remove(global_event);
   
   std::cout << "\n"
 	    << ",-------------------------------------------.\n"

@@ -1,4 +1,4 @@
-//  $Id: FileSelector.cc,v 1.2 2000/02/11 16:58:25 grumbel Exp $
+//  $Id: FileSelector.cc,v 1.3 2000/06/12 14:42:10 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -340,7 +340,7 @@ FileSelector::draw(int highlight)
       if (entry[file_index].preview->get_surface() == 0) {
 	CL_Display::fill_rect(280, 230, 630, 460, 0.0, 0.0, 0.0, 0.5);
 	font->print_center(450, 320, "Loading...");
-	CL_Display::flip_display();
+	Display::flip_display();
 	CL_Display::sync_buffers();
 	entry[file_index].preview->load();
 	// draw(highlight);
@@ -351,7 +351,7 @@ FileSelector::draw(int highlight)
 
     if (cursor_enabled)
       cursor_sur->put_screen(CL_Mouse::get_x(), CL_Mouse::get_y());      
-    CL_Display::flip_display();
+    Display::flip_display();
   }
 }
 

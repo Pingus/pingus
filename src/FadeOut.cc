@@ -1,4 +1,4 @@
-//  $Id: FadeOut.cc,v 1.4 2000/02/15 13:09:50 grumbel Exp $
+//  $Id: FadeOut.cc,v 1.5 2000/06/12 14:42:10 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,7 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <ClanLib/core.h>
-
+#include "Display.hh"
 #include "FadeOut.hh"
 #include "globals.hh"
 
@@ -66,7 +66,7 @@ FadeOut::black_rect(int steps)
       
       CL_Display::fill_rect(x1, y1, x2, y2, 0.0, 0.0, 0.0, 1.0);
       CL_System::sleep(10);
-      CL_Display::flip_display(true);
+      Display::flip_display(true);
     }  
   clear();
 }
@@ -84,7 +84,7 @@ FadeOut::fade_to_black(int steps)
 			    0.0, 0.0, 0.0,
 			    ((double)i)/steps);
 
-      CL_Display::flip_display(true);
+      Display::flip_display(true);
     }
 }
 
@@ -92,7 +92,7 @@ void
 FadeOut::clear(void)
 {
   CL_Display::clear_display();
-  CL_Display::flip_display();
+  Display::flip_display();
   CL_Display::sync_buffers();
 }
 

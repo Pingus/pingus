@@ -1,4 +1,4 @@
-//  $Id: PingusMenu.cc,v 1.21 2000/06/10 07:56:58 grumbel Exp $
+//  $Id: PingusMenu.cc,v 1.22 2000/06/12 14:42:11 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -92,7 +92,7 @@ PingusMenu::draw()
       (*i)->draw();
     }
   
-  CL_Display::flip_display();
+  Display::flip_display();
 }
 
 void

@@ -1,4 +1,4 @@
-//  $Id: Display.hh,v 1.4 2000/06/12 14:42:10 grumbel Exp $
+//  $Id: Screenshot.hh,v 1.1 2000/06/12 14:42:11 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,35 +17,19 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef DISPLAY_HH
-#define DISPLAY_HH
+#ifndef SCREENSHOT_HH
+#define SCREENSHOT_HH
 
-#include <list>
 #include <ClanLib/core.h>
 
-class DisplayHook
-{
-public:
-  DisplayHook() {}
-  virtual ~DisplayHook() {}
-  virtual void on_event() = 0;
-};
-
-class Display
+class Screenshot
 {
 private:
-  static bool displaying_cursor;
-  static list<DisplayHook*> display_hooks;
+  static string get_date();
+  static string get_filename();
 public:
-  static void draw_rect(int x1, int y1, int x2, int y2, float r, float g, float b, float a);
-
-  static void show_cursor(bool show_async=true);
-  static void hide_cursor();
-  static void set_cursor(CL_MouseCursorProvider *provider, int frame=0);
-  static bool cursor_shown();
-  static void flip_display(bool sync=false);
-  static void add_flip_screen_hook(DisplayHook*);
-  static void remove_flip_screen_hook(DisplayHook*);
+  static void make_screenshot();
+  static void save_target_to_file(CL_Target*, string filename);
 };
 
 #endif

@@ -1,4 +1,4 @@
-//  $Id: ThemeSelector.cc,v 1.15 2000/06/10 07:56:58 grumbel Exp $
+//  $Id: ThemeSelector.cc,v 1.16 2000/06/12 14:42:11 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -240,7 +240,7 @@ ThemeSelector::draw()
   theme_font->print_center(CL_Display::get_width()/2, CL_Display::get_height() - 50,
 			   "..:: Use the cursor keys to select a level ::..");
 
-  CL_Display::flip_display();
+  Display::flip_display();
 }
 
 void

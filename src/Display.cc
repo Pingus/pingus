@@ -1,4 +1,4 @@
-//  $Id: Display.cc,v 1.3 2000/06/11 15:23:29 grumbel Exp $
+//  $Id: Display.cc,v 1.4 2000/06/12 14:42:10 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,7 @@
 #include "globals.hh"
 #include "Display.hh"
 
+list<DisplayHook*> Display::display_hooks;
 bool Display::displaying_cursor = false;
 
 void
@@ -58,6 +59,31 @@ bool
 Display::cursor_shown()
 {
   return displaying_cursor;
+}
+
+void
+Display::flip_display(bool sync=false)
+{
+  for(list<DisplayHook*>::iterator i = display_hooks.begin();
+      i != display_hooks.end();
+      i++)
+    {
+      (*i)->on_event();
+    }
+  
+  CL_Display::flip_display(sync);
+}
+
+void
+Display:: add_flip_screen_hook(DisplayHook* hook)
+{
+  display_hooks.push_back(hook);
+}
+
+void
+Display::remove_flip_screen_hook(DisplayHook* hook)
+{
+  display_hooks.remove(hook);
 }
 
 /* EOF */

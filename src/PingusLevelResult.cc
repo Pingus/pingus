@@ -1,4 +1,4 @@
-//  $Id: PingusLevelResult.cc,v 1.13 2000/06/10 07:56:58 grumbel Exp $
+//  $Id: PingusLevelResult.cc,v 1.14 2000/06/12 14:42:11 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -79,7 +79,7 @@ PingusLevelResult::draw(void)
 
   font->print_center(CL_Display::get_width()/2, CL_Display::get_height() - 80,
 		     "Press mouse button to continue...");  
-  CL_Display::flip_display();
+  Display::flip_display();
 
   while(!CL_Mouse::left_pressed())
     CL_System::keep_alive();

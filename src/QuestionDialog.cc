@@ -1,4 +1,4 @@
-//  $Id: QuestionDialog.cc,v 1.3 2000/02/11 16:58:26 grumbel Exp $
+//  $Id: QuestionDialog.cc,v 1.4 2000/06/12 14:42:11 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,7 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "PingusResource.hh"
-
+#include "Display.hh"
 #include "QuestionDialog.hh"
 
 QuestionDialog::QuestionDialog(std::string q, 
@@ -102,7 +102,7 @@ QuestionDialog::draw()
   CL_Display::fill_rect(405, 225, 475, 255, 0.0, 0.0, 0.0, 0.5);
   font->print_center(440, 230, button4.c_str());
 
-  CL_Display::flip_display();
+  Display::flip_display();
 }
 
 void

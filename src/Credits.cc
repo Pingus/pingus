@@ -1,4 +1,4 @@
-//  $Id: Credits.cc,v 1.5 2000/04/25 17:54:39 grumbel Exp $
+//  $Id: Credits.cc,v 1.6 2000/06/12 14:42:10 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "Display.hh"
 #include "PingusResource.hh"
 #include "Credits.hh"
 
@@ -124,7 +125,7 @@ Credits::display()
       if (y + yof < -50)
 	quit = true;  
 
-      CL_Display::flip_display();  
+      Display::flip_display();  
      
       CL_System::keep_alive();
 

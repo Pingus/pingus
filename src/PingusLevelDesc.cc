@@ -1,4 +1,4 @@
-//  $Id: PingusLevelDesc.cc,v 1.8 2000/05/28 16:47:24 grumbel Exp $
+//  $Id: PingusLevelDesc.cc,v 1.9 2000/06/12 14:42:11 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #include <cstdio>
 #include <string>
 
+#include "Display.hh"
 #include "PingusResource.hh"
 #include "PingusLevelDesc.hh"
 
@@ -81,7 +82,7 @@ PingusLevelDesc::draw(PingusLevelDesc::LoadingStatus status)
     font->print_center(CL_Display::get_width() / 2, CL_Display::get_height() - 80, "Loading finished, the level will start in the next seconds.");
   }
 
-  CL_Display::flip_display();
+  Display::flip_display();
 }
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: Intro.cc,v 1.8 2000/06/10 07:56:58 grumbel Exp $
+//  $Id: Intro.cc,v 1.9 2000/06/12 14:42:10 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,7 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "PingusResource.hh"
-
+#include "Display.hh"
 #include "globals.hh"
 #include "Loading.hh"
 #include "algo.hh"
@@ -60,7 +60,7 @@ Intro::draw()
 			    1.0, 1.0, 1.0, 1.0);
       logo->put_screen(x_pos - logo->get_width()/2,
 		       y_pos - logo->get_height()/2);
-      CL_Display::flip_display(true);
+      Display::flip_display(true);
       CL_System::keep_alive();
     }
   
@@ -75,7 +75,7 @@ Intro::draw()
 			    i, i, i, 1.0);
       logo->put_screen(x_pos - logo->get_width()/2,
 		       y_pos - logo->get_height()/2);
-      CL_Display::flip_display(true);
+      Display::flip_display(true);
       CL_System::keep_alive();
     }
 

@@ -1,4 +1,4 @@
-//  $Id: Client.cc,v 1.26 2000/06/11 15:23:29 grumbel Exp $
+//  $Id: Client.cc,v 1.27 2000/06/12 14:42:10 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -216,7 +216,7 @@ Client::play_level(std::string plf_filename, std::string psm_filename)
   
   // Clear both buffers
   CL_Display::clear_display();
-  CL_Display::flip_display();
+  Display::flip_display();
   CL_Display::clear_display();
 
 #ifdef HAVE_LIBSDL_MIXER
@@ -244,7 +244,7 @@ Client::play_level(std::string plf_filename, std::string psm_filename)
 	  for(std::vector<GuiObj*>::size_type i=0; i < obj.size(); ++i) 
 	    obj[i]->draw_clipped();
       
-	  CL_Display::flip_display();
+	  Display::flip_display();
       
 	  count_fps();
 	}
