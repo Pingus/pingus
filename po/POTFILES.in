@@ -179,7 +179,6 @@ src/Trap.cc
 src/TrapData.cc
 src/traps/Bumper.cc
 src/traps/FakeExit.cc
-src/traps/fire_hole.cc
 src/traps/Guillotine.cc
 src/traps/hammer.cc
 src/traps/LaserExit.cc
@@ -192,7 +191,6 @@ src/war/WarGlobals.cc
 src/war/WarMain.cc
 src/WeatherData.cc
 src/World.cc
-src/WorldImpl.cc
 src/worldmap/PingusWorldMap.cc
 src/worldmap/PingusWorldMapGraph.cc
 src/worldmap/PingusWorldMapManager.cc
