@@ -1,4 +1,4 @@
-//  $Id: bridger.cxx,v 1.18 2002/09/28 11:52:23 torangan Exp $
+//  $Id: bridger.cxx,v 1.19 2002/09/29 20:45:31 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -188,6 +188,7 @@ Bridger::way_is_free()
 bool
 Bridger::brick_placement_allowed(void)
 {
+#ifdef BRIDGER_HEAD_COLLISION_CHECK
   bool brick_allowed = true;
 
   // Don't allow a brick to be placed if a Pingu would have a head collision
@@ -203,6 +204,9 @@ Bridger::brick_placement_allowed(void)
     }
 
   return brick_allowed;
+#else
+  return !head_collision_on_walk(0, 2);
+#endif
 }
 
 void

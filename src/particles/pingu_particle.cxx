@@ -1,4 +1,4 @@
-//  $Id: pingu_particle.cxx,v 1.3 2002/09/04 14:55:12 torangan Exp $
+//  $Id: pingu_particle.cxx,v 1.4 2002/09/29 20:45:31 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -66,8 +66,9 @@ PinguParticle::init(int x, int y, float x_a, float y_a)
   livetime = 50 + (rand() % 25);
 }
 
+#if 0
 void
-PinguParticle::draw_offset(int ofx, int ofy, float /*s*/)
+PinguParticle::draw (GraphicContext& gc)
 {
   surface.put_screen(int(pos.x + ofx), int(pos.y + ofy));
   /* Particle resizeing is disabled, because it is to slow
@@ -81,7 +82,7 @@ PinguParticle::draw_offset(int ofx, int ofy, float /*s*/)
   }
   */
 }
-
+#endif
 void
 PinguParticle::update(float /*delta*/)
 {

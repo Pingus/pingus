@@ -1,5 +1,5 @@
 
-//  $Id: particle.hxx,v 1.6 2002/09/28 11:52:25 torangan Exp $
+//  $Id: particle.hxx,v 1.7 2002/09/29 20:45:31 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,8 @@
 
 #include "../vector.hxx"
 #include <ClanLib/Display/Display/surface.h>
+
+class GraphicContext;
 
 class Particle
 {
@@ -56,7 +58,7 @@ public:
   virtual void update (float delta);
 
   /// Draw the particle with the correct zoom resize
-  virtual void draw_offset (int, int, float);
+  virtual void draw (GraphicContext& gc);
   
 private:
   Particle (const Particle&);

@@ -1,4 +1,4 @@
-//  $Id: pingu_particle.hxx,v 1.5 2002/09/27 11:26:49 torangan Exp $
+//  $Id: pingu_particle.hxx,v 1.6 2002/09/29 20:45:31 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,7 +35,7 @@ public:
   PinguParticle(int x, int y, float x_a, float y_a);
   
   void init(int x, int y, float x_a, float y_a);
-  void draw_offset(int ofx, int ofy, float s);
+  //void draw (GraphicContext& gc);
   void update(float delta);
   
 private:

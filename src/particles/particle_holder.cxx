@@ -1,4 +1,4 @@
-//  $Id: particle_holder.cxx,v 1.5 2002/09/28 11:52:26 torangan Exp $
+//  $Id: particle_holder.cxx,v 1.6 2002/09/29 20:45:31 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -53,24 +53,12 @@ ParticleHolder::update (float delta)
 }
 
 void
-ParticleHolder::draw_offset (int x, int y, float s) // const
-{
-  // FIXME: obsolete
-  for(std::list<Particle*>::iterator i = this->begin(); i != this->end(); ++i) 
-    { 
-      (*i)->draw_offset(x, y, s);
-    }
-}
-
-void
 ParticleHolder::draw (GraphicContext& gc) // const
 {
   for(std::list<Particle*>::iterator i = this->begin(); i != this->end(); ++i) 
     { 
       // FIXME: ugly... should use gc instead
-      (*i)->draw_offset (int(gc.get_x_offset () + (gc.get_width ()/2)), 
-			 int(gc.get_y_offset () + (gc.get_height ()/2)), 
-			 gc.get_zoom ());
+      (*i)->draw(gc);
     }
 }
 

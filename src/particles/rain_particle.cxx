@@ -1,4 +1,4 @@
-//  $Id: rain_particle.cxx,v 1.4 2002/09/16 20:31:09 grumbel Exp $
+//  $Id: rain_particle.cxx,v 1.5 2002/09/29 20:45:31 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,7 @@
 #include "../col_map.hxx"
 #include "../worldobj.hxx"
 #include "rain_particle.hxx"
+#include "../graphic_context.hxx"
 
 CL_Surface RainParticle::rain1_surf;
 CL_Surface RainParticle::rain2_surf;
@@ -62,7 +63,7 @@ RainParticle::~RainParticle()
 }
 
 void
-RainParticle::draw_offset(int x_of, int y_of, float s)
+RainParticle::draw(GraphicContext& gc)
 {
   if (!splash)
     {
@@ -71,12 +72,11 @@ RainParticle::draw_offset(int x_of, int y_of, float s)
       else
 	surface = rain1_surf;	  
 
-      Particle::draw_offset(x_of, y_of - rain1_surf.get_height(), s);
+      gc.draw(surface, int(pos.x), int(pos.y - rain1_surf.get_height()));
     }
   else
     {
-      rain_splash.put_screen(int(pos.x + x_of),
-			     int(pos.y + y_of)); 
+      gc.draw(rain_splash, pos);
     }
 }
 

@@ -1,4 +1,4 @@
-//  $Id: particle.cxx,v 1.3 2002/09/04 14:55:12 torangan Exp $
+//  $Id: particle.cxx,v 1.4 2002/09/29 20:45:31 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "../graphic_context.hxx"
 #include "particle.hxx"
 
 Particle::Particle()
@@ -59,16 +60,9 @@ Particle::update(float /*delta*/)
 }
 
 void
-Particle::draw_offset(int ofx, int ofy, float s)
+Particle::draw (GraphicContext& gc)
 {
-  if (s == 1.0) {
-    surface.put_screen((int)pos.x + ofx, (int)pos.y + ofy);
-  } else {
-    int width  = (int)(surface.get_width() * s);
-    int height = (int)(surface.get_height() * s);
-    surface.put_screen((int)((pos.x + ofx) * s) - width/2, (int)((pos.y + ofy) * s) - height/2,
-		       width, height);
-  }
+  gc.draw (surface, pos);
 }
 
 bool

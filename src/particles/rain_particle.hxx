@@ -1,4 +1,4 @@
-//  $Id: rain_particle.hxx,v 1.4 2002/09/27 11:26:49 torangan Exp $
+//  $Id: rain_particle.hxx,v 1.5 2002/09/29 20:45:31 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -40,9 +40,9 @@ public:
   RainParticle(int, int);
   virtual ~RainParticle();
 
-  virtual void draw_offset(int, int, float);
-  virtual void update(float delta);
-  virtual bool is_alive();
+  void draw(GraphicContext& gc);
+  void update(float delta);
+  bool is_alive();
   
 private:
   RainParticle (const RainParticle&);
