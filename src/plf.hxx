@@ -91,7 +91,6 @@ protected:
   bool playable;
 
   std::vector<ActionData>       actions;
-  std::vector<WorldObjsData::GroundpieceData>  groundpieces;
 
   /** FIXME: PLF should probally become and interface only, it currently is a
       bit overfull */
@@ -153,7 +152,6 @@ public:
   std::string get_author();
 
   std::vector<ActionData>      get_actions(void);
-  std::vector<WorldObjsData::GroundpieceData> get_groundpieces(void);
 
   /** Return a access to the worldobj_data, the caller must not delete
       anything in this vector */

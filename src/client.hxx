@@ -46,7 +46,6 @@ class ButtonPanel;
 class Controller;
 class Cursor;
 class HurryUp;
-class PLF;
 class PingusCounter;
 class Playfield;
 class TrueServer;

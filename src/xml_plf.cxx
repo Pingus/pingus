@@ -117,16 +117,12 @@ XMLPLF::parse_file()
 	    }
 	  else if (XMLhelper::equal_str(cur->name, "groundpiece"))
 	    {
-#ifndef OLD_GROUNDPIECES
 	      // FIXME: This is *not* backward compatible and wreck the levels
 	      // worldobjs_data.push_back(WorldObjDataFactory::instance()->create (doc, cur));
 
 	      // This probally is backward compatible
 	      //groundpieces.push_back(WorldObjsData::GroundpieceData (doc, cur));
 	      worldobjs_data.push_back(new WorldObjsData::GroundpieceData (doc, cur));
-#else
-	      parse_groundpiece(cur);
-#endif
 	    }
 	  else if (XMLhelper::equal_str(cur->name, "exit"))
 	    {
@@ -373,7 +369,7 @@ XMLPLF::parse_global (xmlNodePtr cur)
 void
 XMLPLF::parse_groundpiece (xmlNodePtr cur)
 {
-  groundpieces.push_back(WorldObjsData::GroundpieceData (doc, cur));
+  worldobjs_data.push_back(new WorldObjsData::GroundpieceData (doc, cur));
 }
 
 void

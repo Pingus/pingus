@@ -209,6 +209,8 @@ playfield.cxx \
 playfield.hxx \
 plf.cxx \
 plf.hxx \
+pingus_level.hxx \
+pingus_level.cxx \
 plf_handle.hxx \
 plf_res_mgr.hxx \
 plf_res_mgr.cxx \

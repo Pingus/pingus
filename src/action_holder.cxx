@@ -27,7 +27,7 @@ namespace Pingus {
 
 using namespace Actions;
 
-ActionHolder::ActionHolder (PLF* plf)
+ActionHolder::ActionHolder(PLF* plf)
 {
   std::vector<ActionData> action_data = plf->get_actions();
 

@@ -29,7 +29,6 @@ class CL_InputEvent;
 namespace Pingus {
 
 class Client;
-class PLF;
 
 class ButtonPanel : public GUI::Component
 {

@@ -157,12 +157,6 @@ PLF::get_author()
   return author;
 }
 
-std::vector<WorldObjsData::GroundpieceData>
-PLF::get_groundpieces(void)
-{
-  return groundpieces;
-}
-
 std::vector<WorldObjData*>
 PLF::get_worldobjs_data ()
 {
