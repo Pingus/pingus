@@ -1,4 +1,4 @@
-//  $Id: demo_recorder.cxx,v 1.13 2003/02/18 18:41:58 grumbel Exp $
+//  $Id: demo_recorder.cxx,v 1.14 2003/03/25 00:37:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -80,7 +80,7 @@ DemoRecorder::record_event (const ServerEvent& event)
   if (record_demo)
     {
       event.write_xml(out);  
-      event.write_xml(std::cout);
+      //event.write_xml(std::cout);
     }
 }
 

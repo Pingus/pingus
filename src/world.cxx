@@ -1,4 +1,4 @@
-//  $Id: world.cxx,v 1.42 2003/03/21 22:08:06 grumbel Exp $
+//  $Id: world.cxx,v 1.43 2003/03/25 00:37:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,35 +41,24 @@ bool WorldObj_less (WorldObj* a, WorldObj* b)
   return a->get_z_pos () < b->get_z_pos ();
 }
 
-#ifdef WIN32
-//FIXME: ingo: This is a workaround around the std::list::sort()
-//FIXME: problem under MSVC6. This is copy&paste from an usenet
-//FIXME: article, so it might work or not, never tested it.
-// typedef WorldObj* CWorldObjPtr;
-// template<>
-// bool std::greater<CWorldObjPtr>::operator()(WorldObj* a, WorldObj* b) const
-// {
-//  return WorldObj_less (a, b);
-// } 
-#endif
-
 World::World(PLF* plf)
   : gfx_map(new PingusSpotMap(plf)),
     game_time(new GameTime (game_speed)),
     do_armageddon(false),
-    pingu_particle_holder(new Particles::PinguParticleHolder()),
-    rain_particle_holder(new Particles::RainParticleHolder()),
-    smoke_particle_holder(new Particles::SmokeParticleHolder()),
-    snow_particle_holder(new Particles::SnowParticleHolder()),
     pingus(new PinguHolder(plf)),
     colmap(gfx_map->get_colmap()),
     view(0)
 { 
+  WorldObj::set_world(this);
+
   start_x_pos = plf->get_startx();
   start_y_pos = plf->get_starty();
 
-  // Not perfect, but works
-  WorldObj::set_world(this);
+  // These get deleted via the world_obj vector in the destructor
+  pingu_particle_holder = new Particles::PinguParticleHolder();
+  rain_particle_holder  = new Particles::RainParticleHolder();
+  smoke_particle_holder = new Particles::SmokeParticleHolder();
+  snow_particle_holder  = new Particles::SnowParticleHolder();
 
   world_obj.push_back(gfx_map);
 
@@ -79,9 +68,6 @@ World::World(PLF* plf)
   world_obj.push_back(snow_particle_holder);
 
   init_worldobjs(plf);
-
-  // FIXME: Ugly
-  rain_particle_holder->set_world_width(get_width());
 }
 
 void
@@ -140,6 +126,8 @@ World::draw(int x1, int y1, int w, int h,
 void
 World::draw (GraphicContext& gc)
 {
+  WorldObj::set_world(this);
+
   for(WorldObjIter obj = world_obj.begin(); obj != world_obj.end(); ++obj)
     {
       (*obj)->draw (gc);
@@ -149,6 +137,8 @@ World::draw (GraphicContext& gc)
 void
 World::draw_smallmap(SmallMap* smallmap)
 {
+  WorldObj::set_world(this);
+
   for(WorldObjIter obj = world_obj.begin(); obj != world_obj.end(); ++obj)
     {
       (*obj)->draw_smallmap (smallmap);
@@ -158,6 +148,8 @@ World::draw_smallmap(SmallMap* smallmap)
 void 
 World::update()
 {
+  WorldObj::set_world(this);
+
   game_time->update ();
 
   if (do_armageddon)

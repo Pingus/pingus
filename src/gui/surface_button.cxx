@@ -1,4 +1,4 @@
-//  $Id: surface_button.cxx,v 1.6 2003/03/10 11:29:50 grumbel Exp $
+//  $Id: surface_button.cxx,v 1.7 2003/03/25 00:37:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -63,7 +63,6 @@ SurfaceButton::is_at (int x, int y)
 void
 SurfaceButton::on_primary_button_press (int x, int y)
 {
-  std::cout << "XXXXXXXXX press" << std::endl;
   pressed = true;
   
   UNUSED_ARG(x);
@@ -73,7 +72,6 @@ SurfaceButton::on_primary_button_press (int x, int y)
 void
 SurfaceButton::on_primary_button_release (int x, int y)
 {
-  std::cout << "XXXXXXXXX release" << std::endl;
   pressed = false;
   
   UNUSED_ARG(x);
@@ -83,22 +81,18 @@ SurfaceButton::on_primary_button_release (int x, int y)
 void
 SurfaceButton::on_pointer_enter ()
 {
-  std::cout << "XXXXXXXXX enter" << std::endl;
   mouse_over = true;
 }
 
 void
 SurfaceButton::on_pointer_leave ()
 {
-  std::cout << "XXXXXXXXX leave" << std::endl;
   mouse_over = false;
 }
 
 void
 SurfaceButton::on_primary_button_click (int x, int y)
 {
-  std::cout << "Surfacebutton got click" << std::endl;
-
   on_click();
   UNUSED_ARG(x);
   UNUSED_ARG(y);

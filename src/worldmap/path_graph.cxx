@@ -1,4 +1,4 @@
-//  $Id: path_graph.cxx,v 1.18 2003/02/18 11:28:41 grumbel Exp $
+//  $Id: path_graph.cxx,v 1.19 2003/03/25 00:37:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,7 +34,7 @@ namespace WorldMapNS {
 PathGraph::PathGraph(WorldMap* arg_worldmap, xmlDocPtr doc, xmlNodePtr cur)
   : worldmap(arg_worldmap)
 {
-  std::cout << "PathGraph::PathGraph(WorldMap* arg_worldmap, xmlDocPtr doc, xmlNodePtr cur)" << std::endl;
+  //std::cout << "PathGraph::PathGraph(WorldMap* arg_worldmap, xmlDocPtr doc, xmlNodePtr cur)" << std::endl;
 
   // cur is at <graph>...
   cur = cur->children;
@@ -72,7 +72,7 @@ PathGraph::parse_nodes(xmlDocPtr doc, xmlNodePtr cur)
   cur = cur->children;
   cur = XMLhelper::skip_blank(cur);
 
-  std::cout << "PathGraph::parse_nodes(xmlDocPtr doc, xmlNodePtr cur)" << std::endl;
+  //std::cout << "PathGraph::parse_nodes(xmlDocPtr doc, xmlNodePtr cur)" << std::endl;
   
   while (cur)
     {
@@ -109,7 +109,7 @@ PathGraph::parse_edges(xmlDocPtr doc, xmlNodePtr cur)
   cur = cur->children;
   cur = XMLhelper::skip_blank(cur);
 
-  std::cout << "PathGraph::parse_edges(xmlDocPtr doc, xmlNodePtr cur)" << std::endl;
+  //std::cout << "PathGraph::parse_edges(xmlDocPtr doc, xmlNodePtr cur)" << std::endl;
 
   while (cur)
     {

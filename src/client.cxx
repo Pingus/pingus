@@ -1,4 +1,4 @@
-//  $Id: client.cxx,v 1.42 2003/02/19 11:33:00 grumbel Exp $
+//  $Id: client.cxx,v 1.43 2003/03/25 00:37:44 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -349,8 +349,6 @@ Client::draw (GraphicContext& gc)
 void
 Client::on_startup ()
 {
-  std::cout << "Client::on_startup ()" << std::endl;
-
   /** Hide the system cursor and show the software one */
   Display::show_cursor();
   // FIXME: using this twice will crash with an X Error
@@ -360,7 +358,9 @@ Client::on_startup ()
   is_finished = false;
   skip_frame = 0;
 
-  std::cout << "Starting Music: " << server->get_plf()->get_music() << std::endl;
+  if (maintainer_mode)
+    std::cout << "Starting Music: " << server->get_plf()->get_music() << std::endl;
+
   if (server->get_plf()->get_music() == "none")
     {
       PingusSound::stop_music();
@@ -378,7 +378,6 @@ Client::on_startup ()
 void
 Client::on_shutdown ()
 {
-  std::cout << "Client::on_shutdown ()" << std::endl; 
   Display::hide_cursor();
 }
 

@@ -1,4 +1,4 @@
-//  $Id: menu_button.cxx,v 1.2 2003/03/24 11:18:53 grumbel Exp $
+//  $Id: menu_button.cxx,v 1.3 2003/03/25 00:37:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -267,8 +267,8 @@ QuitButton::~QuitButton()
 void
 QuitButton::on_click()
 {
-  std::cout << "QuitButton: do exit" << std::endl;
-  PingusSound::play_sound ("goodidea");
+  //std::cout << "QuitButton: do exit" << std::endl;
+  //PingusSound::play_sound ("goodidea");
   menu->get_manager ()->show_exit_menu ();
 }
 

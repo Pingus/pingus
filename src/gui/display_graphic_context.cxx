@@ -1,4 +1,4 @@
-//  $Id: display_graphic_context.cxx,v 1.2 2003/03/16 23:07:02 grumbel Exp $
+//  $Id: display_graphic_context.cxx,v 1.3 2003/03/25 00:37:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,8 +31,7 @@ DisplayGraphicContext::DisplayGraphicContext (int x1_, int y1_, int x2_, int y2_
 { 
   center = Vector ((x2 - x1)/2.0f + x1,
 		      (y2 - y1)/2.0f + y1);
-  std::cout << "View: " << x1 << ", " << y1 << ", " << x2 << ", " << y2 
-  << std::endl;
+  //std::cout << "View: " << x1 << ", " << y1 << ", " << x2 << ", " << y2 << std::endl;
 }
 
 DisplayGraphicContext::~DisplayGraphicContext ()

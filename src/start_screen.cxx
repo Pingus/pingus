@@ -1,4 +1,4 @@
-//  $Id: start_screen.cxx,v 1.1 2003/03/21 22:40:12 grumbel Exp $
+//  $Id: start_screen.cxx,v 1.2 2003/03/25 00:37:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -58,7 +58,6 @@ public:
 
   void on_click() 
   {
-    std::cout << "Got CLICK!!!" << std::endl;
     PingusGameSession* game_session = new PingusGameSession(plf, true);
     ScreenManager::instance()->replace_screen(game_session, true);
   }

@@ -1,4 +1,4 @@
-//  $Id: game_session.cxx,v 1.34 2003/03/21 22:08:06 grumbel Exp $
+//  $Id: game_session.cxx,v 1.35 2003/03/25 00:37:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -55,11 +55,12 @@ PingusGameSession::PingusGameSession (PLFHandle arg_plf, bool arg_show_result_sc
 
 PingusGameSession::~PingusGameSession ()
 {
-  std::cout << "XXXXXXXX"
-	    << " Redraws: " << number_of_redraws
-	    << " Updates: " << number_of_updates 
-	    << " FrameSkip: " << number_of_updates - number_of_redraws
-	    << std::endl;
+  if (maintainer_mode)
+    std::cout << "XXXXXXXX"
+              << " Redraws: " << number_of_redraws
+              << " Updates: " << number_of_updates 
+              << " FrameSkip: " << number_of_updates - number_of_redraws
+              << std::endl;
 
   delete client;
   delete server;

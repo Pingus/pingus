@@ -1,4 +1,4 @@
-//  $Id: worldobj_group_data.cxx,v 1.9 2003/03/05 19:13:59 grumbel Exp $
+//  $Id: worldobj_group_data.cxx,v 1.10 2003/03/25 00:37:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,19 +36,19 @@ WorldObjGroupData::WorldObjGroupData (xmlDocPtr doc, xmlNodePtr cur)
 {
   cur = cur->children;
 
-  std::cout << "WorldObjGroupData::WorldObjGroupData (xmlDocPtr doc, xmlNodePtr cur)" << std::endl;
+  //std::cout << "WorldObjGroupData::WorldObjGroupData (xmlDocPtr doc, xmlNodePtr cur)" << std::endl;
   
   cur = XMLhelper::skip_blank (cur->next);
  
   while (cur)
     {
-      std::cout << "WorldObjGroupData: " << cur->name << std::endl;
+      //std::cout << "WorldObjGroupData: " << cur->name << std::endl;
       objs.push_back (WorldObjDataFactory::instance ()->create (doc, cur));
       cur = cur->next;
       cur = XMLhelper::skip_blank (cur->next);
     }
   
-  std::cout << "WorldObjGroupData: size = " << objs.size () << std::endl;
+  //std::cout << "WorldObjGroupData: size = " << objs.size () << std::endl;
 }
 
 WorldObjGroupData::WorldObjGroupData (const WorldObjGroupData& data)

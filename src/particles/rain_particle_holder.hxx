@@ -1,4 +1,4 @@
-//  $Id: rain_particle_holder.hxx,v 1.3 2003/01/25 11:03:58 torangan Exp $
+//  $Id: rain_particle_holder.hxx,v 1.4 2003/03/25 00:37:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -48,7 +48,6 @@ private:
   CL_Surface rain1_surf;
   CL_Surface rain2_surf;
   CL_Surface rain_splash;
-  float      world_width; // float since it's compared to a float value
 
   std::vector<RainParticle> particles;
   
@@ -64,12 +63,6 @@ public:
 
   /// Draw the particle with the correct zoom resize
   void draw (GraphicContext& gc);
-
-  /** sets the width of the current world so that no particles
-    * are drawn outside the visible area (optimization).
-    * If this method is not called a default value of 1000 will
-    * be used to ensure that particles are drawn. */
-  void set_world_width(int width);
 
 private:
   RainParticleHolder (const RainParticleHolder&);

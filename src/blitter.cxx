@@ -1,4 +1,4 @@
-//  $Id: blitter.cxx,v 1.23 2003/02/18 18:41:58 grumbel Exp $
+//  $Id: blitter.cxx,v 1.24 2003/03/25 00:37:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -583,7 +583,7 @@ Blitter::rotate_90 (const CL_Surface& sur)
 
   if (prov->is_indexed())
     {
-      std::cout << "Using indexed blitter" << std::endl;
+      //std::cout << "Using indexed blitter" << std::endl;
       int pwidth  = prov->get_width();
       int pheight = prov->get_height();
 

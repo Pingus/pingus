@@ -1,4 +1,4 @@
-//  $Id: worldmap.cxx,v 1.33 2003/03/21 22:08:06 grumbel Exp $
+//  $Id: worldmap.cxx,v 1.34 2003/03/25 00:37:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -73,7 +73,7 @@ WorldMap::WorldMap(const std::string& arg_filename)
   parse_file(doc, cur);
 
   pingus = new Pingus(path_graph);
-  std::cout << "PingusPtr: " << pingus << std::endl;
+  //std::cout << "PingusPtr: " << pingus << std::endl;
   // FIXME: This should not be hardcoded, but instead be noted in the
   // savegame or worldmap
   pingus->set_position(0);
@@ -174,13 +174,13 @@ WorldMap::draw (GraphicContext& gc)
 {
   Vector pingu_pos = pingus->get_pos();
 
-  pingu_pos.x = Math::mid(float(display_gc.get_width()/2), 
+  pingu_pos.x = Math::mid(float(gc.get_width()/2), 
                           pingu_pos.x, 
-                          float(width - display_gc.get_width()/2));
+                          float(width - gc.get_width()/2));
 
-  pingu_pos.y = Math::mid(float(display_gc.get_height()/2), 
+  pingu_pos.y = Math::mid(float(gc.get_height()/2), 
                           pingu_pos.y, 
-                          float(height - display_gc.get_height()/2));
+                          float(height - gc.get_height()/2));
   
   display_gc.set_offset(-pingu_pos.x, -pingu_pos.y);
 
@@ -196,8 +196,10 @@ WorldMap::draw (GraphicContext& gc)
       LevelDot* leveldot = dynamic_cast<LevelDot*>(path_graph->get_dot(pingus->get_node()));
       
       if (leveldot)
-        gc.print_center(Fonts::pingus_small, gc.get_width ()/2, gc.get_height() - 40,
-                        System::translate(leveldot->get_plf()->get_levelname()));
+        gc.print_center(Fonts::pingus_small, 
+                                display_gc.get_width ()/2, 
+                                display_gc.get_height() - 40,
+                                System::translate(leveldot->get_plf()->get_levelname()));
     }
   
   
@@ -209,12 +211,14 @@ WorldMap::draw (GraphicContext& gc)
 
       if (leveldot)
         {
-          gc.print_center(Fonts::pingus_small, mouse_x, mouse_y - 30,
+          gc.print_center(Fonts::pingus_small,
+                          mouse_x, mouse_y - 30,
                           System::translate(leveldot->get_plf()->get_levelname()));
 
           if (maintainer_mode)
             {
-              gc.print_center(Fonts::pingus_small, mouse_x, mouse_y - 56,
+              gc.print_center(Fonts::pingus_small,
+                              mouse_x, mouse_y - 56,
                               leveldot->get_plf()->get_filename());
             }
         }
@@ -279,17 +283,20 @@ WorldMap::on_primary_button_press(int x, int y)
   Dot* dot = path_graph->get_dot(click_pos.x, click_pos.y);
   if (dot)
     {
-      std::cout << "WorldMap: Clicked on: " << dot->get_name() << std::endl;
+      if (maintainer_mode)
+        std::cout << "WorldMap: Clicked on: " << dot->get_name() << std::endl;
       if (path_graph->lookup_node(dot->get_name()) == pingus->get_node())
         {
-          std::cout << "WorldMap: Pingu is on node, issue on_click()" << std::endl;
+          if (maintainer_mode)
+            std::cout << "WorldMap: Pingu is on node, issue on_click()" << std::endl;
           dot->on_click();
         }
       else
         {
           if (!pingus->walk_to_node(path_graph->lookup_node(dot->get_name())))
             {
-              std::cout << "WorldMap: NO PATH TO NODE FOUND!" << std::endl;
+              if (maintainer_mode)
+                std::cout << "WorldMap: NO PATH TO NODE FOUND!" << std::endl;
             }
         }
     }
@@ -312,9 +319,14 @@ WorldMap::enter_level()
 {
   Dot* dot = path_graph->get_dot(get_pingus()->get_node());
   if (dot)
-    dot->on_click();
+    {
+      dot->on_click();
+    }
   else
-    std::cout << "WorldMap: Pingus not on level" << std::endl;
+    {
+      if (maintainer_mode)
+        std::cout << "WorldMap: Pingus not on level" << std::endl;
+    }
 }
 
 } // namespace WorldMapNS

@@ -1,4 +1,4 @@
-//  $Id: pingus_menu_manager.cxx,v 1.21 2003/03/24 11:18:53 grumbel Exp $
+//  $Id: pingus_menu_manager.cxx,v 1.22 2003/03/25 00:37:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -142,7 +142,7 @@ PingusMenuManager::show_exit_menu ()
 void
 PingusMenuManager::exit ()
 {
-  std::cout << "poping PingusMenuManager" << std::endl;
+  //std::cout << "poping PingusMenuManager" << std::endl;
   ScreenManager::instance ()->pop_screen ();
 }
 

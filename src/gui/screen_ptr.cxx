@@ -1,4 +1,4 @@
-//  $Id: screen_ptr.cxx,v 1.1 2003/02/19 09:51:44 grumbel Exp $
+//  $Id: screen_ptr.cxx,v 1.2 2003/03/25 00:37:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,8 +34,8 @@ ScreenPtr::decrease_refcount()
 	
       if (*ref_count == 0)
 	{
-	  std::cout << "XXXXXXXXXXXXXX ScreenPtr: deleting: " 
-		    << screen << " = " << typeid(*screen).name() << std::endl;
+	  //std::cout << "XXXXXXXXXXXXXX ScreenPtr: deleting: " 
+          //<< screen << " = " << typeid(*screen).name() << std::endl;
 	  delete screen;
 	  delete ref_count;
 	}

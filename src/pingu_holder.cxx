@@ -1,4 +1,4 @@
-//  $Id: pingu_holder.cxx,v 1.18 2002/10/13 20:25:00 torangan Exp $
+//  $Id: pingu_holder.cxx,v 1.19 2003/03/25 00:37:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,7 +31,6 @@ PinguHolder::PinguHolder(PLF* plf)
 PinguHolder::~PinguHolder()
 {
   // Deleting all Pingu objects
-  std::cout << "PinguHolder: Deleting pingus" << std::endl;
   for(std::vector<Pingu*>::iterator i = all_pingus.begin();
       i != all_pingus.end(); ++i)
     delete *i;

@@ -1,4 +1,4 @@
-//  $Id: manager.cxx,v 1.25 2003/03/21 22:08:06 grumbel Exp $
+//  $Id: manager.cxx,v 1.26 2003/03/25 00:37:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -109,7 +109,7 @@ WorldMapManager::~WorldMapManager ()
 void
 WorldMapManager::on_escape_press ()
 {
-  std::cout << "WorldMapManager::on_escape_press ()..." << std::endl;
+  //std::cout << "WorldMapManager::on_escape_press ()..." << std::endl;
   exit_worldmap = true;
 }
 

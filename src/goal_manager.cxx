@@ -1,4 +1,4 @@
-//  $Id: goal_manager.cxx,v 1.5 2003/01/15 21:16:41 torangan Exp $
+//  $Id: goal_manager.cxx,v 1.6 2003/03/25 00:37:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #include "server.hxx"
 #include "world.hxx"
 #include "plf.hxx"
+#include "globals.hxx"
 #include "pingu_holder.hxx"
 #include "goal_manager.hxx"
 
@@ -40,7 +41,8 @@ GoalManager::is_finished()
     {
       // we are finished, now wait a few second so that everybody can
       // see the particles, etc.
-      std::cout << "XXXX goal reached: " << goal << std::endl;
+      if (maintainer_mode) 
+        std::cout << "XXXX goal reached: " << goal << std::endl;
       exit_time = server->get_time() + 125;
       return false;
     }

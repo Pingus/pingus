@@ -1,4 +1,4 @@
-//  $Id: pingus.cxx,v 1.27 2003/03/21 22:08:06 grumbel Exp $
+//  $Id: pingus.cxx,v 1.28 2003/03/25 00:37:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -128,7 +128,6 @@ Pingus::walk_to_node (NodeId target)
         }
       else
         {
-          std::cout << "XXXXXXX Path cost: " << res.cost << std::endl;
           node_path = res.path;
 
           // Simulate that we just reached current_node, then update the edge_path

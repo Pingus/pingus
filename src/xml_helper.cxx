@@ -1,4 +1,4 @@
-//  $Id: xml_helper.cxx,v 1.26 2002/12/29 23:29:00 torangan Exp $
+//  $Id: xml_helper.cxx,v 1.27 2003/03/25 00:37:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
+#include "globals.hxx"
 #include "vector.hxx"
 #include "color.hxx"
 #include "res_descriptor.hxx"
@@ -28,6 +29,26 @@
 #error "int xmlIsBlankNode(xmlNodePtr node) missing from libxml"
 int xmlIsBlankNode(xmlNodePtr node) { return 0; }
 #endif
+
+std::ostream& operator<<(std::ostream& s, xmlNode& node)
+{
+#ifdef LIBXML_2
+  xmlChar* path = xmlGetNodePath(&node);
+  s << path;
+  xmlFree(path);
+  return s;
+#else
+  xmlNodePtr cur = &node;
+  
+  while (cur != NULL)
+    {
+      s << cur->name << "/";
+      cur = cur->parent;
+    }
+  
+  return s;
+#endif
+}
 
 xmlNodePtr
 XMLhelper::skip_blank (xmlNodePtr cur)
@@ -197,7 +218,7 @@ XMLhelper::parse_int (xmlDocPtr doc, xmlNodePtr cur)
   
   int number = 999;
   if (!node_list_get_string(doc, cur, 1, number)) {
-    std::cout << "Error: XMLhelper: parse_int: Field empty" << std::endl;
+    std::cout << "Error: XMLhelper: parse_int: Field empty: " << *cur << std::endl;
   }
   return number;
 }
@@ -209,7 +230,7 @@ XMLhelper::parse_float (xmlDocPtr doc, xmlNodePtr cur)
   
   float number = 3.1415927f;
   if (!node_list_get_string(doc, cur, 1, number)) {
-    std::cout << "XMLhelper: parse_int: Field empty" << std::endl;
+    std::cout << "XMLhelper: parse_int: Field empty: " << *cur << std::endl;
   }
   return number;
 }
@@ -364,9 +385,9 @@ XMLhelper::parse_string (xmlDocPtr doc, xmlNodePtr cur)
 {
   std::string ret_str;
 
-  if (!node_list_get_string(doc,cur->children, 1, ret_str))
+  if (!node_list_get_string(doc,cur->children, 1, ret_str) && maintainer_mode)
     {  
-      std::cout << "XMLhelper::parse_string: Field empty" << std::endl;
+      std::cout << "XMLhelper::parse_string: Field empty: " << *cur << std::endl;
     }
 
   return ret_str;

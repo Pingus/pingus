@@ -1,4 +1,4 @@
-//  $Id: exit_menu.cxx,v 1.12 2002/10/12 00:49:09 torangan Exp $
+//  $Id: exit_menu.cxx,v 1.13 2003/03/25 00:37:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,7 +42,6 @@ public:
 
   void on_primary_button_press (int, int)
   {
-    std::cout << "YES" << std::endl; 
     manager->exit ();
   }
 };
@@ -66,7 +65,6 @@ public:
 
   void on_primary_button_press (int, int)
   {
-    std::cout << "NO" << std::endl; 
     manager->pop_menu ();
   }
 };

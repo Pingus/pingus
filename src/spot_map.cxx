@@ -1,4 +1,4 @@
-//  $Id: spot_map.cxx,v 1.24 2003/02/19 09:50:36 grumbel Exp $
+//  $Id: spot_map.cxx,v 1.25 2003/03/25 00:37:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -108,7 +108,6 @@ PingusSpotMap::PingusSpotMap(PLF* plf)
   // Checking that the map has the correct size, only multiples of
   // tile_size are allowed, anything else wouldn't fit very well on
   // the colmap
-
   if ((width % tile_size) != 0) 
     {
       width += (tile_size - (width % tile_size));

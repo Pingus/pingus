@@ -1,4 +1,4 @@
-//  $Id: bumper.cxx,v 1.11 2003/02/19 09:50:36 grumbel Exp $
+//  $Id: bumper.cxx,v 1.12 2003/03/25 00:37:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,10 +30,10 @@
 
 namespace WorldObjs {
 
-Bumper::Bumper (const WorldObjsData::BumperData& data_) : data(new WorldObjsData::BumperData(data_)),
-                                                          upwards(false),
-						          count(0)
-						          
+Bumper::Bumper (const WorldObjsData::BumperData& data_) 
+  : data(new WorldObjsData::BumperData(data_)),
+    upwards(false),
+    count(0)
 {
 }
 

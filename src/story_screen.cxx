@@ -1,4 +1,4 @@
-//  $Id: story_screen.cxx,v 1.3 2003/03/23 01:01:16 grumbel Exp $
+//  $Id: story_screen.cxx,v 1.4 2003/03/25 00:37:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -72,19 +72,21 @@ public:
 class StoryScreenContinueButton : public GUI::SurfaceButton
 {
 private:
+  StoryScreenComponent* story_comp;
 public:
-  StoryScreenContinueButton()
+  StoryScreenContinueButton(StoryScreenComponent* arg_story_comp)
     : GUI::SurfaceButton(600, 550, 
                          ResDescriptor("result/ok", "core", ResDescriptor::RD_RESOURCE),
                          ResDescriptor("result/ok", "core", ResDescriptor::RD_RESOURCE),
-                         ResDescriptor("result/ok", "core", ResDescriptor::RD_RESOURCE))
+                         ResDescriptor("result/ok", "core", ResDescriptor::RD_RESOURCE)),
+      story_comp(arg_story_comp)
   {
   }
 
   void on_click() 
   {
-    std::cout << "Continue: Got CLICK!!!" << std::endl;
-    ScreenManager::instance()->replace_screen (PingusMenuManager::instance (), false);
+    story_comp->next_text();
+    //ScreenManager::instance()->replace_screen (PingusMenuManager::instance (), false);
   }
 };
 
@@ -93,7 +95,7 @@ StoryScreen::StoryScreen()
 {
   story_comp = new StoryScreenComponent();
   gui_manager->add (story_comp);
-  gui_manager->add (new StoryScreenContinueButton());
+  gui_manager->add (new StoryScreenContinueButton(story_comp));
 }
 
 StoryScreen::~StoryScreen()

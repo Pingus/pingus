@@ -1,4 +1,4 @@
-//  $Id: blitter_impl.hxx,v 1.5 2002/12/28 16:57:38 torangan Exp $
+//  $Id: blitter_impl.hxx,v 1.6 2003/03/25 00:37:44 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -187,7 +187,7 @@ CL_Surface modify(const CL_Surface& sur)
 
   if (prov->is_indexed())
     {
-      std::cout << "Using indexed blitter" << std::endl;
+      //std::cout << "Using indexed blitter" << std::endl;
 
       IndexedCanvas* canvas = new IndexedCanvas(TransF::get_width (pwidth, pheight),
                                                 TransF::get_height(pwidth, pheight));

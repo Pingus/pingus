@@ -1,4 +1,4 @@
-//  $Id: timer.cxx,v 1.3 2002/10/07 23:11:09 grumbel Exp $
+//  $Id: timer.cxx,v 1.4 2003/03/25 00:37:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,7 +18,8 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <ClanLib/Core/System/system.h>
-#include <iostream>
+#include "debug.hxx"
+#include "globals.hxx"
 #include "timer.hxx"
 
 Timer::Timer(const char* desc)
@@ -31,8 +32,9 @@ void
 Timer::stop()
 {
   unsigned int time = CL_System::get_time() - start_time;
-  std::cout << "Timer: '" << description << "' took " 
-            << time << "msec" << std::endl;
+  pout(PINGUS_DEBUG_LOADING)
+    << "Timer: '" << description << "' took " 
+    << time << "msec" << std::endl;
 }
 
 /* EOF */
