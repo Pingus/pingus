@@ -10,10 +10,12 @@
     <time>9000</time>
     <width>1216</width>
     <height>928</height>
+    <difficulty>60</difficulty>
+    <playable>1</playable>
   </global>
 
   <action-list>
-    <bridger count="5"/>
+    <basher count="2"/>
     <blocker count="5"/>
     <bomber count="5"/>
     <jumper count="5"/>

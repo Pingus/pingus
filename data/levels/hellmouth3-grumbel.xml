@@ -10,6 +10,8 @@
     <time>-1</time>
     <width>1216</width>
     <height>928</height>
+    <difficulty>60</difficulty>
+    <playable>1</playable>
   </global>
 
   <action-list>
