@@ -238,6 +238,9 @@ section GroundPieces
 	        real32 = ../images/groundpieces/rock/real32.pcx (type=surface, x=0, y=0, width=150, height=171, tcol=0);
 	        real33 = ../images/groundpieces/rock/real33.pcx (type=surface, x=0, y=0, width=170, height=175, tcol=0);
 	        real34 = ../images/groundpieces/rock/real34.pcx (type=surface, x=0, y=0, width=156, height=150, tcol=0);
+	        real35 = ../images/groundpieces/rock/real35.pcx (type=surface, x=0, y=0, width=179, height=48, tcol=0);
+        	real36 = ../images/groundpieces/rock/real36.pcx (type=surface, x=0, y=0, width=181, height=60, tcol=0);
+	       	real37 = ../images/groundpieces/rock/real37.pcx (type=surface, x=0, y=0, width=184, height=64, tcol=0);
 
 	        fish = ../images/groundpieces/rock/fish.pcx (type=surface, x=0, y=0, width=166, height=50, tcol=0);
 	        green1 = ../images/groundpieces/rock/green1.pcx (type=surface, x=0, y=0, width=122, height=374, tcol=0);
