@@ -1,4 +1,4 @@
-//  $Id: scroller_factory.hxx,v 1.2 2002/07/12 12:36:14 torangan Exp $
+//  $Id: inverted_scroller.cxx,v 1.1 2002/07/12 12:36:14 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -12,35 +12,51 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef HEADER_PINGUS_INPUT_SCROLLER_FACTORY_HXX
-#define HEADER_PINGUS_INPUT_SCROLLER_FACTORY_HXX
-
-#include "../libxmlfwd.hxx"
+#include "inverted_scroller.hxx"
 
 namespace Input {
 
-  class Scroller;
-
-  class ScrollerFactory 
+  InvertedScroller::InvertedScroller (Scroller* scroller_, bool invert_x_, bool invert_y_) : scroller(scroller_), invert_x(invert_x_), invert_y(invert_y_)
   {
-    private:
-      static inline Scroller* axis_scroller     (xmlNodePtr cur);
-      static inline Scroller* inverted_scroller (xmlNodePtr cur);
-      static inline Scroller* joystick_scroller (xmlNodePtr cur);
-      static inline Scroller* mouse_scroller    (xmlNodePtr cur);
-      static inline Scroller* multiple_scroller (xmlNodePtr cur);
-      static inline Scroller* pointer_scroller  (xmlNodePtr cur);
+  }
+  
+  InvertedScroller::~InvertedScroller ()
+  {
+    delete scroller;
+  }
+  
+  float
+  InvertedScroller::get_x_delta ()
+  {
+    return x_pos;
+  }
+  
+  float
+  InvertedScroller::get_y_delta ()
+  {
+    return y_pos;
+  }
+  
+  void
+  InvertedScroller::get_delta (float& x, float& y)
+  {
+    x = x_pos;
+    y = y_pos;
+  }
+  
+  void
+  InvertedScroller::update (float delta)
+  {
+    scroller->update(delta);
     
-    public:
-      static Scroller* create (xmlNodePtr cur);
-  };
+    (invert_x) ? x_pos = -(scroller->get_x_delta()) : x_pos = scroller->get_x_delta();
+    (invert_y) ? y_pos = -(scroller->get_y_delta()) : x_pos = scroller->get_y_delta();
+  }
 }
-
-#endif
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: scroller_factory.cxx,v 1.1 2002/07/11 16:09:08 torangan Exp $
+//  $Id: scroller_factory.cxx,v 1.2 2002/07/12 12:36:14 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,8 +25,10 @@
 #include "axis_scroller.hxx"
 #include "button.hxx"
 #include "button_factory.hxx"
+#include "inverted_scroller.hxx"
 #include "joystick_scroller.hxx"
 #include "mouse_scroller.hxx"
+#include "multiple_scroller.hxx"
 #include "pointer.hxx"
 #include "pointer_factory.hxx"
 #include "pointer_scroller.hxx"
@@ -46,11 +48,17 @@ namespace Input {
     if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "axis-scroller"))
       return axis_scroller(cur);
       
+    else if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "inverted-scroller"))
+      return inverted_scroller(cur);
+      
     else if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "joystick-scroller"))
       return joystick_scroller(cur);
       
     else if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "mouse-scroller"))
       return mouse_scroller(cur);
+      
+    else if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "multiple-scroller"))
+      return multiple_scroller(cur);
       
     else if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "pointer-scroller"))
       return pointer_scroller(cur);
@@ -86,6 +94,34 @@ namespace Input {
     
     return new AxisScroller(axis1, axis2, speed);
   }
+  
+  Scroller*
+  ScrollerFactory::inverted_scroller (xmlNodePtr cur)
+  {
+    char * invert_x_str = reinterpret_cast<char *>(xmlGetProp(cur, reinterpret_cast<const xmlChar*>("invert-x")));
+    if (!invert_x_str)
+      throw PingusError("InvertedScroller without invert X parameter");
+    
+    char * invert_y_str = reinterpret_cast<char *>(xmlGetProp(cur, reinterpret_cast<const xmlChar*>("invert-y")));
+    if (!invert_y_str)
+      throw PingusError("InvertedScroller without invert Y parameter");
+      
+    bool invert_x = strtol(invert_x_str, reinterpret_cast<char**>(NULL), 10);
+    bool invert_y = strtol(invert_x_str, reinterpret_cast<char**>(NULL), 10);
+    
+    free(invert_x_str);
+    free(invert_y_str);
+    
+    Scroller* scroller;
+    cur = cur->children;
+    
+    if (xmlIsBlankNode(cur))
+      cur = cur->next;
+    
+    scroller = create(cur);
+    
+    return new InvertedScroller(scroller, invert_x, invert_y);
+  }
 
   Scroller*
   ScrollerFactory::joystick_scroller (xmlNodePtr cur)
@@ -111,6 +147,25 @@ namespace Input {
   ScrollerFactory::mouse_scroller (xmlNodePtr)
   {
     return new MouseScroller;
+  }
+
+  Scroller*
+  ScrollerFactory::multiple_scroller (xmlNodePtr cur)
+  {
+    std::vector<Scroller*> scrollers;
+    
+    cur = cur->children;
+
+    while (cur)
+      {    
+        if (xmlIsBlankNode(cur))
+          cur = cur->next;
+      
+        scrollers.push_back(create(cur));
+        cur = cur->next;
+      }
+	    
+    return new MultipleScroller(scrollers);
   }
 
   Scroller*

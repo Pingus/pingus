@@ -1,4 +1,4 @@
-//  $Id: scroller_factory.hxx,v 1.2 2002/07/12 12:36:14 torangan Exp $
+//  $Id: multiple_scroller.hxx,v 1.1 2002/07/12 12:36:14 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,27 +17,30 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef HEADER_PINGUS_INPUT_SCROLLER_FACTORY_HXX
-#define HEADER_PINGUS_INPUT_SCROLLER_FACTORY_HXX
+#ifndef HEADER_PINGUS_INPUT_MULTIPLE_SCROLLER_HXX
+#define HEADER_PINGUS_INPUT_MULTIPLE_SCROLLER_HXX
 
-#include "../libxmlfwd.hxx"
+#include <vector>
+#include "scroller.hxx"
 
 namespace Input {
 
-  class Scroller;
-
-  class ScrollerFactory 
-  {
+  class MultipleScroller : public Scroller {
     private:
-      static inline Scroller* axis_scroller     (xmlNodePtr cur);
-      static inline Scroller* inverted_scroller (xmlNodePtr cur);
-      static inline Scroller* joystick_scroller (xmlNodePtr cur);
-      static inline Scroller* mouse_scroller    (xmlNodePtr cur);
-      static inline Scroller* multiple_scroller (xmlNodePtr cur);
-      static inline Scroller* pointer_scroller  (xmlNodePtr cur);
-    
+      std::vector<Scroller*> scrollers;
+      float x_pos;
+      float y_pos;
+      
     public:
-      static Scroller* create (xmlNodePtr cur);
+      MultipleScroller (const std::vector<Scroller*>& scrollers_);
+     ~MultipleScroller ();
+      
+      float get_x_delta ();
+      float get_y_delta ();
+      
+      void  get_delta (float& x, float& y);
+
+      void  update (float delta);
   };
 }
 

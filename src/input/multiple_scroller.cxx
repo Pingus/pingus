@@ -1,5 +1,3 @@
-//  $Id: joystick_scroller.cxx,v 1.2 2002/07/12 12:36:14 torangan Exp $
-// 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -17,47 +15,55 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "joystick_axis.hxx"
-#include "joystick_scroller.hxx"
+#include "multiple_scroller.hxx"
 
 namespace Input {
 
-  JoystickScroller::JoystickScroller (int id_, float speed_) : id(id_), speed(speed_)
+  MultipleScroller::MultipleScroller (const std::vector<Scroller*>& scrollers_) : scrollers(scrollers_)
   {
-    axis1 = new JoystickAxis(id, 0, 0);
-    axis2 = new JoystickAxis(id, 1, 90);
   }
   
-  JoystickScroller::~JoystickScroller ()
+  MultipleScroller::~MultipleScroller ()
   {
-    delete axis1;
-    delete axis2;
-  }
-  
-  float
-  JoystickScroller::get_x_delta ()
-  {
-    return axis1->get_pos() * speed;
+    for (std::vector<Scroller*>::const_iterator it = scrollers.begin(); it != scrollers.end(); it++)
+      delete *it;
   }
   
   float
-  JoystickScroller::get_y_delta ()
+  MultipleScroller::get_x_delta ()
   {
-    return axis2->get_pos() * speed;
+    return x_pos;
+  }
+  
+  float
+  MultipleScroller::get_y_delta ()
+  {
+    return y_pos;
   }
   
   void
-  JoystickScroller::get_delta (float& x, float& y)
+  MultipleScroller::get_delta (float& x, float& y)
   {
-    x = axis1->get_pos() * speed;
-    y = axis2->get_pos() * speed;
+    x = x_pos;
+    y = y_pos;
   }
   
   void
-  JoystickScroller::update (float delta)
+  MultipleScroller::update (float delta)
   {
-    axis1->update(delta);
-    axis2->update(delta);
+    bool found_delta = false;
+  
+    for (std::vector<Scroller*>::const_iterator it = scrollers.begin(); it != scrollers.end(); it++)
+      {
+        (*it)->update(delta);
+	
+	if (!found_delta && ((*it)->get_x_delta() || (*it)->get_y_delta()))
+	  {
+	    x_pos = (*it)->get_x_delta();
+	    y_pos = (*it)->get_y_delta();
+	    found_delta = true;
+	  }
+      }
   }
 }
 
