@@ -1,4 +1,4 @@
-//  $Id: node_data.cxx,v 1.8 2002/09/28 19:31:06 torangan Exp $
+//  $Id: node_data.cxx,v 1.9 2003/02/18 10:31:32 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -161,7 +161,7 @@ NodeData::create(xmlDocPtr doc, xmlNodePtr cur)
   if (accessible)
     node->accessible = StringConverter::to_int (accessible);
   */
-
+  assert(0);
   cur = cur->children;
 
   while (cur)
@@ -172,6 +172,7 @@ NodeData::create(xmlDocPtr doc, xmlNodePtr cur)
 	  continue;
 	}
 
+      
       if (XMLhelper::equal_str(cur->name, "position"))
 	{
 	  node->pos = XMLhelper::parse_vector (doc, cur);

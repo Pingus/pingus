@@ -1,4 +1,4 @@
-//  $Id: dot.cxx,v 1.3 2002/10/13 19:28:34 grumbel Exp $
+//  $Id: dot.cxx,v 1.4 2003/02/18 10:31:32 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
+#include "../xml_file_reader.hxx"
 #include "dot.hxx"
 
 namespace WorldMapNS {
@@ -30,33 +31,11 @@ Dot::Dot(xmlDocPtr doc, xmlNodePtr cur)
   std::cout << "Dot::Dot: " << cur->name << std::endl;
 
   // cur = <dot>...</dot>
-  cur = cur->children;
-  cur = XMLhelper::skip_blank(cur);
-	  
-  while (cur)
-    {
-      std::cout << "cur->name: " << cur->name << std::endl;
 
-      if (XMLhelper::equal_str(cur->name, "position"))
-        {
-          pos = XMLhelper::parse_vector(doc, cur);
-        }
-      else if (XMLhelper::equal_str(cur->name, "name"))
-        {
-          if (!XMLhelper::node_list_get_string(doc, cur->children, 1, name))
-            {
-              std::cout << "couldn't parse name" << std::endl;
-            }
-        }
-      else
-        {
-          std::cout << "1234" << std::endl;
-        }
+  XMLFileReader reader(doc, cur);
+  reader.read_vector("position", pos);
+  reader.read_string("name", name);
 
-      cur = cur->next;
-      cur = XMLhelper::skip_blank(cur);
-    }
-  
   assert(!name.empty());
 }
 
