@@ -1,8 +1,7 @@
 /* This level was created with the PLE
- * $Id: foliage3.plf,v 1.3 2000/04/10 21:20:49 grumbel Exp $
+ * $Id: foliage3.plf,v 1.4 2000/04/14 18:42:09 grumbel Exp $
  */
 global {
-  author = "Ingo Ruhnke <grumbel@gmx.de>";
   start_x_pos = 0;
   start_y_pos = 0;
   levelname = "Foliage 3 - Down in the darkness";
@@ -24,9 +23,9 @@ ground {
 background {
   image = (resource:textures.dat)"Textures/rooftile";
   dim   = "0.5";
-  red   = "1.0";
-  green = "1.0";
-  blue  = "1.0";
+  red   = "1";
+  green = "1";
+  blue  = "1";
   scroll_x = 0;
   scroll_y = 0;
   para_x = 0.5;
@@ -47,13 +46,6 @@ buttons {
   miner = 20;
 }
 
-exit {
-  image = (resource)"Exits/sortie_anim";
-  x_pos = 921;
-  y_pos = 2235;
-  z_pos = 0;
-}
-
 entrance {
   type  = woodthing;
   x_pos = 988;
@@ -61,6 +53,13 @@ entrance {
   z_pos = 0;
   release_rate = 25;
   direction = left;
+}
+
+exit {
+  image = (resource)"Exits/sortie_anim";
+  x_pos = 911;
+  y_pos = 2204;
+  z_pos = 0;
 }
 
 hotspot {

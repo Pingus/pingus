@@ -7,12 +7,16 @@ Release 0.3.2 (15/Mar/1999)
 * Added a credits screen
 * Added a small quick scroll map
 * Added some nice particle/ground collision
-* Added mouse support to the worlds selector (incomplete)
+* Added mouse support in the worlds selector (incomplete)
 * Added support for drawing the colmap instead of the spot map
+* Added support for animated backgrounds (crystal2.plf)
+* Added ColMap support for all objects
+* Added some new gfx (pingu splash animation, a new exit), thanks to
+  Craig Timpany and Joel Fauche  
 * Fixed the jumper
 * Fixed the bridger
 * Fixed a clipping bug in the colmap
-* Fixed image color -> colmap color translation (see level10.plf)
+* Fixed image color -> colmap color translation (level10.plf)
 
 
 Release 0.3.1 (17/Feb/1999)

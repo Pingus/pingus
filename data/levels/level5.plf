@@ -1,5 +1,5 @@
 /* This level was created with the PLE
- * $Id: level5.plf,v 1.5 2000/04/10 21:20:49 grumbel Exp $
+ * $Id: level5.plf,v 1.6 2000/04/14 18:42:09 grumbel Exp $
  */
 global {
   author = "Ingo Ruhnke <grumbel@gmx.de>";
@@ -48,7 +48,7 @@ entrance {
   type  = generic;
   x_pos = 437;
   y_pos = 323;
-  z_pos = 0;
+  z_pos = 100;
   release_rate = 30;
   direction = left;
 }
