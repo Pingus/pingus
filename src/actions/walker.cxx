@@ -1,4 +1,4 @@
-//  $Id: walker.cxx,v 1.11 2002/06/28 15:12:23 torangan Exp $
+//  $Id: walker.cxx,v 1.12 2002/06/28 17:04:21 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -95,6 +95,7 @@ Walker::update(float delta)
     }
 
   
+  // FIXME: here we could/should scan more pixels
   if (rel_getpixel(1, 0) == GroundpieceData::GP_BRIDGE
       && !head_collision_on_walk(1, 1))  // bridge
     {
@@ -119,15 +120,18 @@ Walker::update(float delta)
       int y_inc = 0;
       int possible_y_step = 0;
       bool found_next_step = false;
-       for(y_inc=-max_steps; y_inc <= max_steps; y_inc++) // up/down-hill scan
-	if (rel_getpixel(1, y_inc) ==  GroundpieceData::GP_NOTHING
-	    && rel_getpixel(1, y_inc - 1) !=  GroundpieceData::GP_NOTHING)
-	  { // FIXME:
-	    found_next_step = true;
-	    possible_y_step = y_inc;
-	    // No break here, since we always want to use the highest possible position
-	    //break;
-	  }
+      for(y_inc=-max_steps; y_inc <= max_steps; y_inc++)
+	{// up/down-hill scan
+	  if ((rel_getpixel(1, y_inc) ==  GroundpieceData::GP_NOTHING
+	       || rel_getpixel(1, y_inc) ==  GroundpieceData::GP_BRIDGE) // FIXME: This causes a rather huge step
+	      && rel_getpixel(1, y_inc - 1) !=  GroundpieceData::GP_NOTHING)
+	    { // FIXME:
+	      found_next_step = true;
+	      possible_y_step = y_inc;
+	      // No break here, since we always want to use the highest possible position
+	      //break;
+	    }
+	}
       
       if (found_next_step)
 	{
