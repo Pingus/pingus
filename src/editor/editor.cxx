@@ -1,4 +1,4 @@
-//  $Id: editor.cxx,v 1.5 2002/06/20 15:57:38 grumbel Exp $
+//  $Id: editor.cxx,v 1.6 2002/06/25 14:54:01 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -486,6 +486,7 @@ Editor::load_level (const std::string& str)
   // and we might save it.
 
   object_manager->load_level(str);
+  last_level = str;
 }
 
 /*

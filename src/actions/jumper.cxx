@@ -1,4 +1,4 @@
-//  $Id: jumper.cxx,v 1.1 2002/06/12 19:01:42 grumbel Exp $
+//  $Id: jumper.cxx,v 1.2 2002/06/25 14:54:01 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -50,9 +50,10 @@ Jumper::update(float /*delta*/)
     pingu->velocity += CL_Vector(-10.0, -10.0);
   }
 
+  // Move the pingu in the air, so that it can start 'falling'
   pingu->pos.y -= 1;
 
-  is_finished = true;
+  pingu->set_paction ("faller");
 }
 
 /* EOF */
