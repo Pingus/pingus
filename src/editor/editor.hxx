@@ -1,4 +1,4 @@
-//  $Id: editor.hxx,v 1.21 2002/11/05 03:02:48 grumbel Exp $
+//  $Id: editor.hxx,v 1.22 2002/11/28 20:09:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -127,6 +127,8 @@ public:
 
   void on_startup ();
   void on_shutdown ();
+
+  EditorNS::PropertyWindow* get_property_window () { return property_window; }
   
 private:
   Editor (const Editor&);

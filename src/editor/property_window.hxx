@@ -1,4 +1,4 @@
-//  $Id: property_window.hxx,v 1.8 2002/09/27 11:26:45 torangan Exp $
+//  $Id: property_window.hxx,v 1.9 2002/11/28 20:09:54 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,13 +34,20 @@ class Editor;
 class PropertyWindow : public CL_Window
 {
 private:
+  /** Pointer to the editor (FIXME: its actually a singleton, not really needed) */
   Editor* editor;
+  
+  /** Pointer to the frame of the current object */
   CL_Component* current_frame;
+
+  /** The empty frame that is shown when no object is selected */
   CL_Label label;
       
 public:
   PropertyWindow (Editor* parent);
 
+  /** Called once from the editor when the selection changed or if a
+      update() is called. */
   void update_frame (EditorObj*);
       
 private:

@@ -1,4 +1,4 @@
-//  $Id: exit_obj.hxx,v 1.1 2002/09/27 16:01:55 torangan Exp $
+//  $Id: exit_obj.hxx,v 1.2 2002/11/28 20:09:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,7 +42,7 @@ public:
   void write_xml (std::ostream& xml);
   
   std::string status_line ();
-  
+  EditorNS::PropertyFrame* get_gui_dialog(EditorNS::Editor*) { return 0; }  
 private:
   ExitObj (const ExitObj&);
   ExitObj& operator= (const ExitObj&);

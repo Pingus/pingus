@@ -1,4 +1,4 @@
-//  $Id: switch_door_obj.hxx,v 1.6 2002/09/28 11:52:25 torangan Exp $
+//  $Id: switch_door_obj.hxx,v 1.7 2002/11/28 20:09:54 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -64,7 +64,8 @@ public:
   void draw (EditorNS::EditorView* view);
   void save_xml (std::ostream& xml);
   std::string status_line ();
-  
+
+  EditorNS::PropertyFrame* get_gui_dialog(EditorNS::Editor*) { return 0; }
 private:
   SwitchDoorObj (const SwitchDoorObj&);
   SwitchDoorObj& operator= (const SwitchDoorObj&);

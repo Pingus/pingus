@@ -1,4 +1,4 @@
-//  $Id: weather_obj.hxx,v 1.10 2002/09/28 11:52:24 torangan Exp $
+//  $Id: weather_obj.hxx,v 1.11 2002/11/28 20:09:54 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,13 +34,14 @@ public:
   WeatherObj (const std::string& type_);
   virtual ~WeatherObj();
 
-  virtual void drag ();
-  virtual void drop ();
-
-  virtual void draw (EditorNS::EditorView * view);
-  virtual void write_xml(std::ostream& xml);
-  virtual EditorObj* duplicate();
+  void drag ();
+  void drop ();
   
+  void draw (EditorNS::EditorView * view);
+  void write_xml(std::ostream& xml);
+  EditorObj* duplicate();
+
+  EditorNS::PropertyFrame* get_gui_dialog(EditorNS::Editor*) { return 0; }  
 private:
   WeatherObj (const WeatherObj&);
   WeatherObj& operator= (const WeatherObj&);

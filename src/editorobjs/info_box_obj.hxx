@@ -1,4 +1,4 @@
-//  $Id: info_box_obj.hxx,v 1.5 2002/09/28 11:52:25 torangan Exp $
+//  $Id: info_box_obj.hxx,v 1.6 2002/11/28 20:09:54 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,7 +42,7 @@ public:
   void write_xml (std::ostream& xml);
   EditorObj* duplicate ();
   std::string status_line ();
-  
+  EditorNS::PropertyFrame* get_gui_dialog(EditorNS::Editor*) { return 0; }  
 private:
   InfoBoxObj (const InfoBoxObj&);
   InfoBoxObj& operator= (const InfoBoxObj&);

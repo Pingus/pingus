@@ -1,4 +1,4 @@
-//  $Id: property_frame.hxx,v 1.6 2002/09/27 11:26:45 torangan Exp $
+//  $Id: property_frame.hxx,v 1.7 2002/11/28 20:09:54 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,6 +27,7 @@ class CL_Component;
 
 namespace EditorNS {
 
+/** FIXME: Document Me */
 class PropertyFrame : public CL_Frame
 {
 public:

@@ -1,4 +1,4 @@
-//  $Id: entrance_obj.cxx,v 1.2 2002/09/28 11:52:24 torangan Exp $
+//  $Id: entrance_obj.cxx,v 1.3 2002/11/28 20:09:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,8 @@
 #include <iostream>
 #include "../pingus_error.hxx"
 #include "../editor/entrance_window.hxx"
+#include "../editor/editor.hxx"
+#include "../editor/property_window.hxx"
 #include "entrance_obj.hxx"
 
 namespace EditorObjs {
@@ -105,9 +107,9 @@ EntranceObj::status_line ()
 }
 
 EditorNS::PropertyFrame*
-EntranceObj::get_gui_dialog (CL_Component* parent)
+EntranceObj::get_gui_dialog (EditorNS::Editor* parent)
 {
-  return new EditorNS::EntranceWindow(parent, this);
+  return new EditorNS::EntranceWindow(parent->get_property_window()->get_client_area(), this);
 }
 
 } // namespace EditorObjs

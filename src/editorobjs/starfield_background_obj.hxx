@@ -1,4 +1,4 @@
-//  $Id: starfield_background_obj.hxx,v 1.4 2002/09/28 11:52:25 torangan Exp $
+//  $Id: starfield_background_obj.hxx,v 1.5 2002/11/28 20:09:54 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -45,7 +45,7 @@ public:
   EditorObj* duplicate ();
 
   std::string status_line ();
-  
+  EditorNS::PropertyFrame* get_gui_dialog(EditorNS::Editor*) { return 0; }  
 private:
   StarfieldBackgroundObj (const StarfieldBackgroundObj&);
   StarfieldBackgroundObj& operator= (const StarfieldBackgroundObj&);

@@ -1,4 +1,4 @@
-//  $Id: hotspot_obj.hxx,v 1.3 2002/09/27 18:36:40 torangan Exp $
+//  $Id: hotspot_obj.hxx,v 1.4 2002/11/28 20:09:54 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #ifndef HEADER_PINGUS_EDITOR_HOTSPOT_HXX
 #define HEADER_PINGUS_EDITOR_HOTSPOT_HXX
 
+#include "../editor/editor.hxx"
 #include "../editor/sprite_editorobj.hxx" 
 
 namespace WorldObjsData {
@@ -41,7 +42,7 @@ public:
   EditorObj* duplicate ();
 
   std::string status_line ();
-
+  EditorNS::PropertyFrame* get_gui_dialog (EditorNS::Editor* parent) { return 0; }
 private:
   HotspotObj (const HotspotObj&);
   HotspotObj& operator= (const HotspotObj&);

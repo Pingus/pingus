@@ -1,4 +1,4 @@
-//  $Id: fake_exit_obj.hxx,v 1.9 2002/09/28 11:52:24 torangan Exp $
+//  $Id: fake_exit_obj.hxx,v 1.10 2002/11/28 20:09:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,7 +46,7 @@ public:
   void draw (EditorNS::EditorView* view);
     
   std::string status_line ();
-  
+  EditorNS::PropertyFrame* get_gui_dialog(EditorNS::Editor*) { return 0; }  
 private:
   FakeExitObj (const FakeExitObj&);
   FakeExitObj& operator= (const FakeExitObj&);

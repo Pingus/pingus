@@ -1,4 +1,4 @@
-//  $Id: panel_icons.cxx,v 1.5 2002/09/11 12:45:58 grumbel Exp $
+//  $Id: panel_icons.cxx,v 1.6 2002/11/28 20:09:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -89,7 +89,7 @@ PanelIconCopy::on_click()
 
 PanelIconLevelProperties::PanelIconLevelProperties()
 {
-  tooltip = _("Edit Object Properties");
+  tooltip = _("Edit Level Properties");
   sur = PingusResource::load_surface("editor/edit", "core");  
 }
 
@@ -101,7 +101,7 @@ PanelIconLevelProperties::on_click()
 
 PanelIconObjectProperties::PanelIconObjectProperties()
 {
-  tooltip = _("Edit Level Properties");
+  tooltip = _("Edit Object Properties");
   sur = PingusResource::load_surface("editor/preferences", "core");
 }
 

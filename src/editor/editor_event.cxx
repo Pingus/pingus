@@ -1,4 +1,4 @@
-//  $Id: editor_event.cxx,v 1.40 2002/10/16 00:25:27 torangan Exp $
+//  $Id: editor_event.cxx,v 1.41 2002/11/28 20:09:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -101,7 +101,7 @@ EditorEvent::disable()
 void
 EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key& key)
 {
-  std::cout << "EditorEvent::on_button_press: " << is_enabled << std::endl;
+  //std::cout << "EditorEvent::on_button_press: " << is_enabled << std::endl;
 
   if (!accept_input ())
     return;
@@ -356,7 +356,7 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key& key)
 void
 EditorEvent::on_button_release(CL_InputDevice *device, const CL_Key &key)
 {
-  std::cout << "EditorEvent::on_button_release: " << is_enabled << std::endl;
+  //std::cout << "EditorEvent::on_button_release: " << is_enabled << std::endl;
 
   if (!accept_input ())
     return;

@@ -1,4 +1,4 @@
-//  $Id: entrance_obj.hxx,v 1.1 2002/09/27 11:26:46 torangan Exp $
+//  $Id: entrance_obj.hxx,v 1.2 2002/11/28 20:09:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,7 +43,7 @@ public:
   
   std::string status_line ();
   
-  EditorNS::PropertyFrame* get_gui_dialog (CL_Component* parent);
+  EditorNS::PropertyFrame* get_gui_dialog (EditorNS::Editor* parent);
   
 private:
   EntranceObj (const EntranceObj&);

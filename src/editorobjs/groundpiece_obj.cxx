@@ -1,4 +1,4 @@
-//  $Id: groundpiece_obj.cxx,v 1.5 2002/11/27 20:05:42 grumbel Exp $
+//  $Id: groundpiece_obj.cxx,v 1.6 2002/11/28 20:09:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,8 @@
 #include "../editor/groundpiece_window.hxx"
 #include "../worldobjsdata/groundpiece_data.hxx"
 #include "../pingus_resource.hxx"
+#include "../editor/property_window.hxx"
+#include "../editor/editor.hxx"
 #include "groundpiece_obj.hxx"
 
 namespace EditorObjs {
@@ -117,9 +119,9 @@ GroundpieceObj::rotate_270 ()
 }
 
 EditorNS::PropertyFrame*
-GroundpieceObj::get_gui_dialog (CL_Component* parent)
+GroundpieceObj::get_gui_dialog (EditorNS::Editor* parent)
 {
-  return new EditorNS::GroundpieceWindow(parent, this);
+  return new EditorNS::GroundpieceWindow(parent->get_property_window()->get_client_area(), this);
 }
 
 } // namespace EditorObjs

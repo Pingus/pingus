@@ -1,4 +1,4 @@
-//  $Id: property_window.cxx,v 1.10 2002/09/11 12:45:58 grumbel Exp $
+//  $Id: property_window.cxx,v 1.11 2002/11/28 20:09:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -40,7 +40,8 @@ void
 PropertyWindow::update_frame (EditorObj* obj)
 {
   if (current_frame)
-    {
+    { // Clean up the old frame
+      std::cout << "PropertyWindow::update_frame: cleanup" << std::endl;
       get_client_area ()->remove_child (current_frame);
       delete current_frame;
       current_frame = 0;

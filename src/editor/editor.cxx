@@ -1,4 +1,4 @@
-//  $Id: editor.cxx,v 1.39 2002/11/05 03:02:48 grumbel Exp $
+//  $Id: editor.cxx,v 1.40 2002/11/28 20:09:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -144,13 +144,15 @@ Editor::on_shutdown ()
 void
 Editor::update (const GameDelta&)
 {
+  // Check if the current selection is different then the last one and
+  // update the property window if necesarry
   // FIXME: This should be moved to the object manager
   if (tmp_selection != selection->get_objects())
     {
       std::cout << "Exit: Selection changed" << std::endl;
       tmp_selection = selection->get_objects();
 
-      // FIXME: dirty hack
+      // FIXME: dirty hack, should only be called if the selection changed
       if (selection->size() == 1)
 	{
 	  EditorObj* obj = selection->get_current_obj();
