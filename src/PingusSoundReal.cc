@@ -1,4 +1,4 @@
-//  $Id: PingusSoundReal.cc,v 1.7 2001/04/01 18:00:37 grumbel Exp $
+//  $Id: PingusSoundReal.cc,v 1.8 2001/04/03 10:45:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,6 +26,7 @@
 #include <config.h>
 
 #include "algo.hh"
+#include "audio.hh"
 #include "globals.hh"
 #include "PingusError.hh"
 #include "PingusMusicProvider.hh"
@@ -108,10 +109,11 @@ PingusSoundReal::real_clean_up()
 }
 
 void
-PingusSoundReal::real_play_wav(std::string arg_str, float volume)
+PingusSoundReal::real_play_wav(std::string arg_str, float volume, float panning)
 {
   std::string str = "sound/" +  arg_str + ".wav";
   
+  // FIXME: Ugly hack!
   if (!is_init)
     {
       init(pingus_audio_rate, pingus_audio_format,
@@ -120,12 +122,17 @@ PingusSoundReal::real_play_wav(std::string arg_str, float volume)
   
   //cout << "PlayingWAV: " << str << endl;
   Mix_Chunk* chunk = PingusWavProvider::load(str);
-  chunk->volume = int(128.0f * volume);
+
+  chunk->volume = int(127.0f * volume);
+
+  if (volume > 1.0 || volume < 0)
+    std::cout << "Volume to large: " << volume << " " << chunk->volume << std::endl;
+
   Mix_PlayChannel(-1, chunk, 0);
 }
 
 void
-PingusSoundReal::real_play_mod(std::string filename)
+PingusSoundReal::real_play_mod(std::string filename, float volume)
 {
   if (pingus_debug_flags & PINGUS_DEBUG_SOUND)
     std::cout << "PingusSoundReal: Playing mod file: " << filename << std::endl;
@@ -142,6 +149,16 @@ PingusSoundReal::real_play_mod(std::string filename)
     std::cout << err.get_message () << std::endl;
   }
 
+  /* FIXME: gives:
+PingusSoundReal.cc:152: invalid use of undefined type `struct _Mix_Music'
+/usr/include/SDL/SDL_mixer.h:70: forward declaration of `struct _Mix_Music'
+PingusSoundReal.cc:154: invalid use of undefined type `struct _Mix_Music'
+/usr/include/SDL/SDL_mixer.h:70: forward declaration of `struct _Mix_Music'
+
+    music->volume = int(127.0f * volume);
+  if (volume > 1.0 || volume < 0)
+    std::cout << "play_mod:Volume to large: " << volume << " " << music->volume << std::endl;
+  */
   Mix_FadeInMusic(music,-1,2000);
 }
 

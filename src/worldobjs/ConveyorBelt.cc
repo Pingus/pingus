@@ -1,4 +1,4 @@
-//  $Id: ConveyorBelt.cc,v 1.11 2001/04/01 18:00:43 grumbel Exp $
+//  $Id: ConveyorBelt.cc,v 1.12 2001/04/03 10:45:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -122,6 +122,8 @@ ConveyorBelt::update(float delta)
     counter = 0.0f;
   else if (counter < 0.0f)
     counter = middle_sur.get_num_frames () - 1;
+
+  std::cout << "Speed: " << speed * delta << std::endl;
 
   PinguHolder* holder = world->get_pingu_p();
   for (PinguIter pingu = holder->begin (); pingu != holder->end (); ++pingu)

@@ -1,4 +1,4 @@
-//  $Id: SnowParticle.cc,v 1.11 2001/03/31 11:21:51 grumbel Exp $
+//  $Id: SnowParticle.cc,v 1.12 2001/04/03 10:45:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -71,7 +71,7 @@ SnowParticle::~SnowParticle()
 }
 
 void
-SnowParticle::update()
+SnowParticle::update(float delta)
 {
   y_pos += y_add;
   x_pos += x_add;
@@ -107,10 +107,10 @@ CollidingSnowParticle::~CollidingSnowParticle()
 }
 
 void 
-CollidingSnowParticle::update()
+CollidingSnowParticle::update(float delta)
 {
   assert(ground_snow);
-  SnowParticle::update();
+  SnowParticle::update(delta);
 
   int pixel = world->get_colmap()->getpixel(x_pos, y_pos);
 

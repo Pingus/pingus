@@ -1,4 +1,4 @@
-//  $Id: ConveyorBelt.hh,v 1.8 2001/04/01 18:00:43 grumbel Exp $
+//  $Id: ConveyorBelt.hh,v 1.9 2001/04/03 10:45:51 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,7 +30,7 @@ class ConveyorBeltData : public WorldObjData
 public:
   Position pos;
   int width;
-  int speed;
+  double speed;
 
   ConveyorBeltData ();
   virtual ~ConveyorBeltData () {}

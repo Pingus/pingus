@@ -1,4 +1,4 @@
-//  $Id: View.cc,v 1.10 2000/12/30 23:54:05 grumbel Exp $
+//  $Id: View.cc,v 1.11 2001/04/03 10:45:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -179,6 +179,12 @@ void
 View::set_pingu(boost::shared_ptr<Pingu> p)
 {
   current_pingu = p;
+}
+
+CL_Vector 
+View::get_center ()
+{
+  return CL_Vector (-x_offset + get_width ()/2, -y_offset + get_height ()/2);
 }
 
 /* EOF */

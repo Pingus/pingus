@@ -1,4 +1,4 @@
-//  $Id: WeatherGenerator.hh,v 1.4 2001/03/31 11:21:51 grumbel Exp $
+//  $Id: WeatherGenerator.hh,v 1.5 2001/04/03 10:45:51 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,7 +33,7 @@ public:
   ///
   virtual ~WeatherGenerator() {}
   ///
-  virtual void update() =0;
+  virtual void update(float delta) =0;
   ///
   int get_z_pos() const { return 1000; }
   ///

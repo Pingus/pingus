@@ -1,4 +1,4 @@
-//  $Id: View.hh,v 1.7 2000/12/30 23:54:05 grumbel Exp $
+//  $Id: View.hh,v 1.8 2001/04/03 10:45:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -85,6 +85,13 @@ public:
   void shift_x_offset(int);
   ///
   void shift_y_offset(int);
+
+  /** Returns the current center of the screen in World coordinates. */
+  CL_Vector get_center ();
+
+  int get_width () { return x2_pos - x1_pos; }
+  int get_height () { return y2_pos - y1_pos; }
+
   ///
   void set_zoom(double);
   ///
@@ -93,8 +100,7 @@ public:
   void set_pingu(boost::shared_ptr<Pingu> p);
   ///
   static void set_world(World*);
-}///
-;
+};
 
 #endif
 

@@ -44,9 +44,9 @@ section Hotspots
 	cabin_winter= images/groundpieces/ground/snow/cabin_winter.png (type=surface, x=0, y=0, width=129, height=94, tcol=0);
 	dragon      = images/groundpieces/ground/misc/dragon.png  (type=surface, x=0, y=0, width=255, height=169, tcol=0);
 
-	pillar1     = images/hotspots/pillar1.png (type=surface, x=0, y=0, width=36, height=161, tcol=0);
-	pillar2     = images/hotspots/pillar2.png (type=surface, x=0, y=0, width=37, height=130, tcol=0);
-	pillar3     = images/hotspots/pillar3.png (type=surface, x=0, y=0, width=36, height=147, tcol=0);
+	pillar1     = images/groundpieces/ground/desert/pillar1.png (type=surface, x=0, y=0, width=36, height=161, tcol=0);
+	pillar2     = images/groundpieces/ground/desert/pillar2.png (type=surface, x=0, y=0, width=37, height=130, tcol=0);
+	pillar3     = images/groundpieces/ground/desert/pillar3.png (type=surface, x=0, y=0, width=36, height=147, tcol=0);
 
 	well        = images/hotspots/well.png    (type=surface, x=0, y=0, width=32, height=54, tcol=0);
 	plate       = images/groundpieces/solid/misc/metalplate_horiz.png   (type=surface, x=0, y=0, width=64, height=32);

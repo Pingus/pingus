@@ -1,4 +1,4 @@
-//  $Id: PinguParticle.cc,v 1.10 2001/03/31 11:21:51 grumbel Exp $
+//  $Id: PinguParticle.cc,v 1.11 2001/04/03 10:45:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -80,7 +80,7 @@ PinguParticle::draw_offset(int ofx, int ofy, float s)
 }
 
 void
-PinguParticle::update()
+PinguParticle::update(float delta)
 {
   float tmp_x_add = 0.0;
   float tmp_y_add = 0.0;

@@ -1,4 +1,4 @@
-//  $Id: RainGenerator.hh,v 1.2 2001/03/31 11:21:51 grumbel Exp $
+//  $Id: RainGenerator.hh,v 1.3 2001/04/03 10:45:50 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,7 +27,7 @@ class RainGenerator : public WeatherGenerator
 private:
 
 public:
-  virtual void update();
+  virtual void update(float delta);
 };
 
 #endif

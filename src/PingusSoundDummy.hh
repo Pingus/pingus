@@ -1,4 +1,4 @@
-//  $Id: PingusSoundDummy.hh,v 1.1 2001/04/01 18:30:24 grumbel Exp $
+//  $Id: PingusSoundDummy.hh,v 1.2 2001/04/03 10:45:49 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,8 +25,8 @@
 class PingusSoundDummy : public PingusSound
 {
 public:
-  virtual void real_play_mod (std::string filename);
-  virtual void real_play_wav(std::string filename, float volume);
+  virtual void real_play_mod (std::string filename, float volume);
+  virtual void real_play_wav(std::string filename, float volume, float panning);
   virtual void real_clean_up();
 };
 

@@ -1,4 +1,4 @@
-//  $Id: RainParticle.cc,v 1.4 2001/03/31 11:21:51 grumbel Exp $
+//  $Id: RainParticle.cc,v 1.5 2001/04/03 10:45:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -72,7 +72,7 @@ RainParticle::draw_offset(int x_of, int y_of, float s)
 }
 
 void
-RainParticle::update()
+RainParticle::update(float delta)
 {
   if (splash)
     {

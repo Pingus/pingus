@@ -5,3 +5,6 @@ templates
 pingus.info
 pingus.dvi
 notes
+doc++
+doxy
+upload-docs.sh

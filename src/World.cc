@@ -1,4 +1,4 @@
-//  $Id: World.cc,v 1.39 2001/04/01 18:00:37 grumbel Exp $
+//  $Id: World.cc,v 1.40 2001/04/03 10:45:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,6 +27,8 @@
 #include "PingusSpotMap.hh"
 //#include "PinguRandomMap.hh"
 
+#include "PingusSound.hh"
+#include "View.hh"
 #include "PingusError.hh"
 #include "algo.hh"
 #include "globals.hh"
@@ -60,6 +62,7 @@ struct WorldObj_less : public binary_function<shared_ptr<WorldObj>, shared_ptr<W
 };
 
 World::World()
+  : view (0)
 {
   released_pingus = 0;
   exit_world = false;
@@ -196,7 +199,7 @@ World::update(float delta)
   for(vector<EntranceData>::size_type i2=0; i2 < entrance.size(); ++i2) 
     entrance[i2]->update();
   */    
-  particle_holder->update();
+  particle_holder->update(delta);
 
   for (vector<shared_ptr<Background> >::iterator i = backgrounds.begin(); i != backgrounds.end(); i++)
     (*i)->update(delta);
@@ -490,6 +493,30 @@ void
 World::set_action_holder(ActionHolder* a)
 {
   action_holder = a;
+}
+
+void 
+World::play_wav (std::string name, const CL_Vector& pos, float volume = 0.5f)
+{
+  assert (view);
+  CL_Vector center = view->get_center ();
+  float panning = pos.x - center.x;
+  panning /= view->get_width ()/2;
+
+  if (panning > 1.0f)
+    panning = 1.0f;
+
+  if (panning < -1.0f)
+    panning = -1.0f;
+
+  std::cout << "Panning: " << panning << std::endl;
+  PingusSound::play_wav (name, volume, panning);
+}
+
+void
+World::set_view (View* v)
+{
+  view = v;
 }
 
 /* EOF */

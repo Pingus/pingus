@@ -1,4 +1,4 @@
-//  $Id: bomber.cc,v 1.15 2001/03/31 11:21:51 grumbel Exp $
+//  $Id: bomber.cc,v 1.16 2001/04/03 10:45:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,6 @@
 #include "../globals.hh"
 #include "../algo.hh"
 #include "../PingusResource.hh"
-#include "../PingusSound.hh"
 #include "../FVec.hh"
 #include "bomber.hh"
 
@@ -109,7 +108,7 @@ Bomber::update()
     return;
 
   if (counter > 9 && !sound_played) {
-    PingusSound::play_wav("explode");
+    pingu->get_world ()->play_wav("explode", pingu->get_pos ());
     sound_played = true;
   }
 

@@ -1,4 +1,4 @@
-//  $Id: World.hh,v 1.22 2001/04/01 18:00:37 grumbel Exp $
+//  $Id: World.hh,v 1.23 2001/04/03 10:45:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -51,6 +51,7 @@ class Trap;
 class ParticleHolder;
 class ActionHolder;
 class Background;
+class View;
 
 /** The World holds all objects of the pingu enviroment. 
     
@@ -112,7 +113,8 @@ private:
   ColMap* colmap;
   ///
   PLF*    plf;
-
+  ///
+  View* view;
 public:
   ///
   World();
@@ -185,6 +187,19 @@ public:
   unsigned int get_saved_pingus();
   ///
   unsigned int get_number_to_save() { return number_to_save; }
+
+  /** Play a sound as if it would have been generated at the given
+      position, adjust panning and volume by the position relative to
+      the center of the screen 
+      @param name Filename of the wav file to play
+      @param pos Position from which the sound seems to come (z-pos is going to be ignored) void play_wav (std::string name, const
+      @param volume The volume of the sound
+  */
+  void play_wav (std::string name, const CL_Vector& pos, float volume = 0.5f);
+
+  /** Sets the main view, it is needed to play stereo wave and for
+      other screen orientated effects */
+  void set_view (View* v);
 
   ///
   PinguHolder* get_pingu_p(void);

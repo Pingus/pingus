@@ -1,4 +1,4 @@
-//  $Id: ParticleHolder.hh,v 1.7 2001/03/31 11:21:51 grumbel Exp $
+//  $Id: ParticleHolder.hh,v 1.8 2001/04/03 10:45:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,7 +42,7 @@ public:
   virtual ~ParticleHolder();
 
   ///
-  void update(void);
+  void update(float delta);
   ///
   void draw_offset(int, int, float); /// const;
   void add_pingu_explo(int x, int y);

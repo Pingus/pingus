@@ -1,4 +1,4 @@
-//  $Id: PingusWavProvider.cc,v 1.4 2001/04/01 18:00:37 grumbel Exp $
+//  $Id: PingusWavProvider.cc,v 1.5 2001/04/03 10:45:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,6 +31,8 @@ PingusWavProvider::load(std::string str)
   Mix_Chunk* wav_data;
 
   wav_data = wave[str];
+
+  std::cout << "Loading: " << str << " data: " << wav_data << std::endl;
 
   if (wav_data)
     {

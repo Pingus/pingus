@@ -1,5 +1,5 @@
 
-//  $Id: Particle.hh,v 1.9 2001/03/31 11:21:51 grumbel Exp $
+//  $Id: Particle.hh,v 1.10 2001/04/03 10:45:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -61,7 +61,7 @@ public:
   virtual bool is_alive(void);
 
   /// Let the particle move
-  virtual void update(void);
+  virtual void update(float delta);
 
   /// Draw the particle with the correct zoom resize
   virtual void draw_offset(int, int, float);
