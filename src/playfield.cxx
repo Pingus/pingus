@@ -25,6 +25,7 @@
 #include "plf.hxx"
 #include "pingu_holder.hxx"
 #include "display/drawing_context.hxx"
+#include "display/scene_context.hxx"
 #include "world.hxx"
 #include "server.hxx"
 #include "true_server.hxx"
@@ -39,6 +40,7 @@ Playfield::Playfield (Client* client_, const CL_Rect& rect_)
     client(client_),
     current_pingu(0),
     buttons(client->get_button_panel()),
+    scene_context(new SceneContext()),
     state(rect.get_width(), rect.get_height()),
     cap(client->get_button_panel())
 {
@@ -89,15 +91,14 @@ Playfield::~Playfield()
 void
 Playfield::draw (DrawingContext& gc)
 {
-  // Freed in the DrawingContext class
-  DrawingContext* dc = new DrawingContext();
+  scene_context->clear();
+  scene_context->light().fill_screen(CL_Color(50, 50, 50));
+  state.push(*scene_context);
   
-  state.push(*dc);
-  
-  world->draw(*dc);
+  world->draw(*scene_context);
   
   cap.set_pingu(current_pingu);
-  cap.draw(*dc);
+  cap.draw(gc);
 
   if (needs_clear_screen)
     {
@@ -135,8 +136,8 @@ Playfield::draw (DrawingContext& gc)
                    CL_Color(255, 255, 0));
     }
 
-  state.pop(*dc);
-  gc.draw(dc, -10000);
+  state.pop(*scene_context);
+  gc.draw(new SceneContextDrawingRequest(scene_context, -10000));
 }
 
 Pingu*

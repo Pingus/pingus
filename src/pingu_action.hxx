@@ -25,7 +25,7 @@
 namespace Pingus {
 
 class ActionHolder;
-class DrawingContext;
+class SceneContext;
 class Pingu;
 
 enum ActionType
@@ -69,7 +69,7 @@ public:
   virtual void update () = 0;
 
   /** Draws the action */
-  virtual void draw (DrawingContext& gc) =0;
+  virtual void draw (SceneContext& gc) =0;
 
   /// Returns the activation mode
   virtual ActionType get_activation_mode (void) const;

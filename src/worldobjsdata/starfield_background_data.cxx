@@ -55,26 +55,9 @@ StarfieldBackgroundData::StarfieldBackgroundData (xmlDocPtr doc, xmlNodePtr cur)
 }
 
 void
-StarfieldBackgroundData::write_xml(std::ostream& xml)
-{
-  xml << "<background type=\"starfield\">\n"
-      << "  <small-stars>" <<  small_stars_count << "</small-stars>\n"
-      << "  <middle-stars>" << middle_stars_count << "</middle-stars>\n"
-      << "  <large-stars>" <<  large_stars_count << "</large-stars>\n"
-      << "</background>\n"
-      << std::endl;
-}
-
-void
 StarfieldBackgroundData::insert_WorldObjs (World* world)
 {
   world->add_object(new WorldObjs::StarfieldBackground(*this));
-}
-
-void
-StarfieldBackgroundData::insert_EditorObjs (EditorNS::EditorObjMgr* obj_mgr)
-{
-  //  obj_mgr->add(new EditorObjs::StarfieldBackgroundObj(*this));
 }
 
 } // namespace WorldObjsData

@@ -17,7 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "../display/drawing_context.hxx"
+#include "../display/scene_context.hxx"
 #include "../world.hxx"
 #include "../resource.hxx"
 #include "starfield_background_stars.hxx"
@@ -61,9 +61,9 @@ StarfieldBackgroundStars::update ()
 }
 
 void
-StarfieldBackgroundStars::draw (DrawingContext& gc)
+StarfieldBackgroundStars::draw (SceneContext& gc)
 {
-  gc.draw(sur, Vector (x_pos, y_pos));
+  gc.color().draw(sur, Vector (x_pos, y_pos));
 }
 
 } // namespace WorldObjs

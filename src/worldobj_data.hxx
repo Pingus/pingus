@@ -52,10 +52,6 @@ public:
   /// Empty placeholder
   virtual ~WorldObjData() {}
 
-  /** Writte the content of this object formated as xml to the given
-      stream */
-  virtual void write_xml (std::ostream& xml) =0;
-
   /** Insert all WorldObjs into the World */
   virtual void insert_WorldObjs (World*) =0;
 };

@@ -54,7 +54,7 @@ public:
   float get_z_pos () const;
 
   void update ();
-  void draw (DrawingContext& gc);
+  void draw (SceneContext& gc);
 
 private:
   SurfaceBackground (const SurfaceBackground&);

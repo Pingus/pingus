@@ -94,6 +94,25 @@ GraphicContextState::push(Pingus::DrawingContext& gc)
 }
 
 void
+GraphicContextState::push(Pingus::SceneContext& gc)
+{
+  gc.push_modelview();
+
+  gc.translate(impl->width/2, impl->height/2);
+  gc.rotate(impl->rotation);
+  gc.translate(-impl->width/2, -impl->height/2);
+
+  gc.scale(get_zoom(), get_zoom());
+  gc.translate(impl->offset.x, impl->offset.y);
+}
+
+void
+GraphicContextState::pop (Pingus::SceneContext& gc)
+{
+  gc.pop_modelview();
+}
+
+void
 GraphicContextState::pop (Pingus::DrawingContext& gc)
 {
   gc.pop_modelview();

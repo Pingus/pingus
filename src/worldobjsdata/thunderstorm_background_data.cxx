@@ -27,13 +27,6 @@
 namespace Pingus {
 namespace WorldObjsData {
 
-void
-ThunderstormBackgroundData::write_xml (std::ostream& xml)
-{
-  xml << "<background type=\"thunderstorm\">\n"
-      << "</background>" << std::endl;
-}
-
 ThunderstormBackgroundData::ThunderstormBackgroundData (const ThunderstormBackgroundData& old)
   : WorldObjData(old),
     pos(old.pos)
@@ -50,12 +43,6 @@ void
 ThunderstormBackgroundData::insert_WorldObjs (World* world)
 {
   world->add_object(new WorldObjs::ThunderstormBackground(*this));
-}
-
-void
-ThunderstormBackgroundData::insert_EditorObjs (EditorNS::EditorObjMgr* obj_mgr)
-{
-  //obj_mgr->add(new EditorObjs::ThunderstormBackgroundObj(*this));
 }
 
 } // namespace WorldObjsData

@@ -39,15 +39,10 @@ public:
   BumperData (xmlDocPtr doc, xmlNodePtr node);
   BumperData (const BumperData& old);
 
-  void write_xml (std::ostream& xml);
-
   void insert_WorldObjs (World*);
-
-  void insert_EditorObjs (EditorNS::EditorObjMgr*);
 
 private:
   BumperData& operator= (const BumperData&);
-
 };
 
 } // namespace WorldObjsData

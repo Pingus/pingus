@@ -42,12 +42,7 @@ public:
 
   virtual ~SolidColorBackgroundData() {}
 
-  /** Writte the content of this object formated as xml to the given
-      stream */
-  virtual void write_xml (std::ostream& xml);
-
   void insert_WorldObjs (World* world);
-  void insert_EditorObjs (EditorNS::EditorObjMgr*);
 
 private:
   SolidColorBackgroundData& operator= (const SolidColorBackgroundData&);

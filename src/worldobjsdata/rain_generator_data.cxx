@@ -26,21 +26,9 @@ namespace Pingus {
 namespace WorldObjsData {
 
 void
-RainGeneratorData::write_xml(std::ostream& xml)
-{
-  xml << "<worldobj type=\"rain-generator\"/>" << std::endl;
-}
-
-void
 RainGeneratorData::insert_WorldObjs (World* world)
 {
   world->add_object(new WorldObjs::RainGenerator());
-}
-
-void
-RainGeneratorData::insert_EditorObjs (EditorNS::EditorObjMgr* obj_mgr)
-{
-  //obj_mgr->add(new EditorNS::WeatherObj("rain-generator"));
 }
 
 } // namespace WorldObjsData

@@ -41,24 +41,9 @@ SolidColorBackgroundData::SolidColorBackgroundData (const SolidColorBackgroundDa
 }
 
 void
-SolidColorBackgroundData::write_xml (std::ostream& xml)
-{
-  XMLFileWriter writer(xml);
-  writer.begin_section("worldobj", "type=\"solidcolor-background\"");
-  writer.write_color("color", color);
-  writer.end_section();
-}
-
-void
 SolidColorBackgroundData::insert_WorldObjs (World* world)
 {
   world->add_object(new WorldObjs::SolidColorBackground(*this));
-}
-
-void
-SolidColorBackgroundData::insert_EditorObjs(EditorNS::EditorObjMgr* obj_mgr)
-{
-  //  obj_mgr->add(new EditorObjs::SolidColorBackgroundObj(*this));
 }
 
 } // namespace WorldObjsData

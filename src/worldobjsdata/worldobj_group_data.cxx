@@ -70,35 +70,12 @@ WorldObjGroupData::add (WorldObjData* data)
 }
 
 void
-WorldObjGroupData::write_xml (std::ostream& xml)
-{
-  xml << "<group>\n";
-  for (ObjsIter i = objs.begin (); i != objs.end (); ++i)
-    (*i)->write_xml (xml);
-  xml << "</group>\n\n";
-}
-
-void
 WorldObjGroupData::insert_WorldObjs (World* world)
 {
   // Flatten all objects of the group and insert them normal into the
   // world
   for (ObjsIter i = objs.begin (); i != objs.end (); ++i)
     (*i)->insert_WorldObjs(world);
-}
-
-void
-WorldObjGroupData::insert_EditorObjs (EditorNS::EditorObjMgr* obj_mgr)
-{
-  /*EditorNS::EditorObjGroup* group = new EditorNS::EditorObjGroup();
-
-  for (ObjsIter i = objs.begin (); i != objs.end (); ++i)
-    {
-      (*i)->insert_EditorObjs(group);
-    }
-
-  obj_mgr->add(group);
-  */
 }
 
 } // namespace WorldObjsData

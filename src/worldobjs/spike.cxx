@@ -17,7 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "../display/drawing_context.hxx"
+#include "../display/scene_context.hxx"
 #include "../pingu.hxx"
 #include "../pingu_holder.hxx"
 #include "../world.hxx"
@@ -49,10 +49,10 @@ Spike::get_z_pos () const
 }
 
 void
-Spike::draw (DrawingContext& gc)
+Spike::draw (SceneContext& gc)
 {
   if (killing) {
-    gc.draw (data->surface, data->pos, data->counter);
+    gc.color().draw (data->surface, data->pos, data->counter);
   } else {
     // do nothing
   }

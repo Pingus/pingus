@@ -42,10 +42,7 @@ public:
 
   HotspotData (const HotspotData& old);
 
-  void write_xml (std::ostream&);
-
-  void  insert_WorldObjs (World*);
-  void insert_EditorObjs (EditorNS::EditorObjMgr*);
+  void insert_WorldObjs (World*);
 
 private:
   HotspotData& operator= (const HotspotData&);

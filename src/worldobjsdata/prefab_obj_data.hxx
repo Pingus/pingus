@@ -60,10 +60,6 @@ public:
       doesn't need to keep track of prefabs */
   void insert_WorldObjs (World*);
 
-  /** Create a EditorObjs::PrefabObj from the prefab data */
-  void insert_EditorObjs (EditorNS::EditorObjMgr*);
-
-  void write_xml (std::ostream& xml);
 private:
   PrefabObjData (const PrefabObjData&);
   PrefabObjData& operator= (const PrefabObjData&);

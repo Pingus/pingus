@@ -22,6 +22,10 @@
 
 #include "drawing_context.hxx"
 
+class CL_GraphicContext;
+
+namespace Pingus {
+
 class SceneContextImpl;
 
 /** The SceneContext maintains all the different drawing layers to
@@ -69,13 +73,28 @@ public:
 
   /** Takes all the buffers and combines them to form the final image
       that will be shown on the screen */
-  void render();
+  void render(CL_GraphicContext* gc);
+
+  void clear();
 private:
   SceneContextImpl* impl;
 
   SceneContext (const SceneContext&);
   SceneContext& operator= (const SceneContext&);
 };
+
+class SceneContextDrawingRequest : public DrawingRequest
+{
+private:
+  CL_Color color;
+  SceneContext* sc;
+public:
+  SceneContextDrawingRequest(SceneContext* sc, float z = 0);
+  virtual ~SceneContextDrawingRequest();
+  void draw(CL_GraphicContext* gc);
+};
+
+} // namespace Pingus
 
 #endif
 

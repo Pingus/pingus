@@ -53,34 +53,11 @@ SwitchDoorData::SwitchDoorData (const SwitchDoorData& old)
 {
 }
 
-void
-SwitchDoorData::write_xml (std::ostream& xml)
-{
-  xml << "  <worldobj type=\"switchdoor\">\n";
-  xml << "    <switch>\n";
-  XMLhelper::write_vector_xml(xml, switch_pos);
-  xml << "    </switch>\n"
-      << "    <door>\n"
-      << "    <height>\n" << door_height << "</height>\n";
-  XMLhelper::write_vector_xml(xml, door_pos);
-  xml << "    </door>\n"
-      << "  </worldobj>\n" << std::endl;
-}
-
 /** Create an WorldObj from the given data object */
 void
 SwitchDoorData::insert_WorldObjs (World* world)
 {
   world->add_object(new WorldObjs::SwitchDoor(*this));
-}
-
-/** Create an EditorObj from the given data object */
-void
-SwitchDoorData::insert_EditorObjs (EditorNS::EditorObjMgr* obj_mgr)
-{
-  //  EditorObjs::SwitchDoorObj* obj = new EditorObjs::SwitchDoorObj(*this);
-  // obj_mgr->add(obj);
-  // obj_mgr->add(new EditorObjs::SwitchDoorSwitchObj(obj));
 }
 
 } // namespace WorldObjsData

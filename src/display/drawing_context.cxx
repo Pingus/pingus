@@ -87,6 +87,32 @@ public:
   }
 };
 
+class LineDrawingRequest : public DrawingRequest
+{
+private:
+  CL_Pointf pos1;
+  CL_Pointf pos2;
+  CL_Color  color;
+
+public:
+  LineDrawingRequest(const CL_Pointf& pos1_, 
+                     const CL_Pointf& pos2_, 
+                     const CL_Color&  color_,
+                     float z)
+    : DrawingRequest(CL_Vector(0, 0, z)),
+      pos1(pos1_),
+      pos2(pos2_),
+      color(color_)      
+  {
+  }
+
+  void draw(CL_GraphicContext* gc) 
+  {
+    gc->draw_line(pos1.x, pos1.y, pos2.x, pos2.y,
+                  color);
+  }
+};
+
 class RectDrawingRequest : public DrawingRequest
 {
 private:
@@ -240,8 +266,9 @@ DrawingContext::draw(const std::string& text, float x, float y, float z)
 
 void
 DrawingContext::draw_line (float x1, float y1, float x2, float y2, 
-                           const CL_Color& color)
+                           const CL_Color& color, float z)
 {
+  draw(new LineDrawingRequest(CL_Pointf(x1, y1), CL_Pointf(x2, y2), color, z));
 }
 
 void

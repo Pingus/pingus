@@ -20,7 +20,7 @@
 #include <iostream>
 #include "../math.hxx"
 #include "../col_map.hxx"
-#include "../display/drawing_context.hxx"
+#include "../display/scene_context.hxx"
 #include "../particles/smoke_particle_holder.hxx"
 #include "../pingu.hxx"
 #include "../pingu_holder.hxx"
@@ -121,9 +121,9 @@ Smasher::on_startup ()
 }
 
 void
-Smasher::draw (DrawingContext& gc)
+Smasher::draw (SceneContext& gc)
 {
-  gc.draw (data->surface, data->pos, count);
+  gc.color().draw (data->surface, data->pos, count);
 }
 
 void

@@ -35,24 +35,9 @@ SnowGeneratorData::SnowGeneratorData(xmlDocPtr doc, xmlNodePtr cur)
 }
 
 void
-SnowGeneratorData::write_xml(std::ostream& xml)
-{
-  xml << "<worldobj type=\"snow-generator\">"
-      << "  <intensity>" << intensity << "</intensity>\n"
-      << "</worldobj>\n"
-      << std::endl;
-}
-
-void
 SnowGeneratorData::insert_WorldObjs (World* world)
 {
   world->add_object(new WorldObjs::SnowGenerator(*this));
-}
-
-void
-SnowGeneratorData::insert_EditorObjs (EditorNS::EditorObjMgr* obj_mgr)
-{
-  //obj_mgr->add(new EditorNS::WeatherObj("snow-generator"));
 }
 
 } // namespace WorldObjsData

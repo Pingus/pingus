@@ -45,7 +45,7 @@ public:
 
   float get_z_pos () const { return 0; }
 
-  void draw (DrawingContext&) {}
+  void draw (SceneContext&) {}
   void on_startup ();
   bool purge_after_startup () { return true; }
 private:

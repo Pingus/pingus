@@ -45,7 +45,7 @@ public:
   float get_z_pos () const;
 
   void update ();
-  void draw (DrawingContext& gc);
+  void draw (SceneContext& gc);
 protected:
   void catch_pingu (Pingu*);
 

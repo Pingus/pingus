@@ -41,7 +41,7 @@ public:
   Hotspot (const WorldObjsData::HotspotData& data_);
  ~Hotspot ();
 
-  void  draw(DrawingContext& gc);
+  void  draw(SceneContext& gc);
   void  update();
   float get_z_pos () const;
 

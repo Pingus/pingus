@@ -287,7 +287,9 @@ xml_plf.hxx \
 xml_pdf.hxx \
 xml_pdf.cxx \
 display/drawing_context.cxx \
-display/drawing_context.hxx
+display/drawing_context.hxx \
+display/scene_context.cxx \
+display/scene_context.hxx
 
 STATICBIN_LIBS = -lclanGUI -lclanCore -lclanDisplay -lclanApp -lclanPNG -lclanJPEG -lHermes \
 -lclanDisplay -lclanMikMod -lclanVorbis -logg -lvorbis -logg -lmikmod -lclanSound -lclanCore  \

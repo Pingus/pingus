@@ -47,23 +47,9 @@ SpikeData::SpikeData (const SpikeData& old) : WorldObjData(old),
 }
 
 void
-SpikeData::write_xml (std::ostream& xml)
-{
-  xml << "<worldobj type=\"spike\">\n\t";
-  XMLhelper::write_vector_xml(xml, pos);
-  xml << "</worldobj>\n\n";
-}
-
-void
 SpikeData::insert_WorldObjs (World* world)
 {
   world->add_object(new WorldObjs::Spike(*this));
-}
-
-void
-SpikeData::insert_EditorObjs (EditorNS::EditorObjMgr* obj_mgr)
-{
-  //  obj_mgr->add(new EditorObjs::SpikeObj(*this));
 }
 
 } // namespace WorldObjsData

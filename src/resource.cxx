@@ -62,7 +62,6 @@ void
 Resource::init()
 {
   resmgr.add_resources(CL_ResourceManager(path_manager.complete("data/core.xml")));
-  resmgr.add_resources(CL_ResourceManager(path_manager.complete("data/editor.xml")));
   resmgr.add_resources(CL_ResourceManager(path_manager.complete("data/entrances.xml")));
   resmgr.add_resources(CL_ResourceManager(path_manager.complete("data/exits.xml")));
   resmgr.add_resources(CL_ResourceManager(path_manager.complete("data/fonts.xml")));

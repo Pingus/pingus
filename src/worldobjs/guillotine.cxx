@@ -17,7 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "../display/drawing_context.hxx"
+#include "../display/scene_context.hxx"
 #include "../pingu.hxx"
 #include "../pingu_holder.hxx"
 #include "../world.hxx"
@@ -48,15 +48,15 @@ Guillotine::~Guillotine ()
 }
 
 void
-Guillotine::draw (DrawingContext& gc)
+Guillotine::draw (SceneContext& gc)
 {
   if (killing) {
     if (data->direction.is_left())
-      gc.draw(data->surface, data->pos, data->counter);
+      gc.color().draw(data->surface, data->pos, data->counter);
     else
-      gc.draw (data->surface, data->pos, data->counter + 12);
+      gc.color().draw (data->surface, data->pos, data->counter + 12);
   } else {
-    gc.draw (data->idle_surf, data->pos, data->idle_counter);
+    gc.color().draw (data->idle_surf, data->pos, data->idle_counter);
   }
 }
 

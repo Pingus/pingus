@@ -58,6 +58,7 @@ private:
 
   CL_Point scroll_center;
 
+  SceneContext* scene_context;
   GraphicContextState state;
   CaptureRectangle cap;
 

@@ -129,12 +129,6 @@ public:
    or md5. */
   static std::string checksum (std::string filename);
 
-  /** @return true if \a filename is a symbolic link, false otherwise */
-  static bool is_symlink(const std::string& filename);
-
-  /** Return the value to which the symbolic link \a filename is
-      pointing to, on error \a filename is returned */
-  static std::string readlink(const std::string& filename);
 private:
   System (const System&);
   System& operator= (const System&);

@@ -46,23 +46,9 @@ FakeExitData::FakeExitData (const FakeExitData& old) : WorldObjData(old),
 }
 
 void
-FakeExitData::write_xml (std::ostream& xml)
-{
-  xml << "<worldobj type=\"fake_exit\">\n\t";
-  XMLhelper::write_vector_xml(xml, pos);
-  xml << "</worldobj>\n\n";
-}
-
-void
 FakeExitData::insert_WorldObjs (World* world)
 {
   world->add_object(new WorldObjs::FakeExit(*this));
-}
-
-void
-FakeExitData::insert_EditorObjs (EditorNS::EditorObjMgr* obj_mgr)
-{
-  //  obj_mgr->add(new EditorObjs::FakeExitObj(*this));
 }
 
 } // namespace WorldObjsData

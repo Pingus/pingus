@@ -34,7 +34,6 @@ public:
   RainGeneratorData(xmlDocPtr doc, xmlNodePtr cur) { UNUSED_ARG(doc); UNUSED_ARG(cur); }
 
   void insert_WorldObjs (World* world);
-  void insert_EditorObjs (EditorNS::EditorObjMgr*);
 
   void write_xml(std::ostream& xml);
 private:

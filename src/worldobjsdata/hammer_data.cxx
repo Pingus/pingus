@@ -44,23 +44,9 @@ HammerData::HammerData (const HammerData& old)
 }
 
 void
-HammerData::write_xml (std::ostream& xml)
-{
-  xml << "<worldobj type=\"hammer\">\n\t";
-  XMLhelper::write_vector_xml(xml, pos);
-  xml << "</worldobj>\n\n";
-}
-
-void
 HammerData::insert_WorldObjs (World* world)
 {
   world->add_object(new WorldObjs::Hammer(*this));
-}
-
-void
-HammerData::insert_EditorObjs (EditorNS::EditorObjMgr* obj_mgr)
-{
-  //  obj_mgr->add(new EditorObjs::HammerObj(*this));
 }
 
 } // namespace WorldObjsData

@@ -76,7 +76,7 @@ public:
   void draw(const CL_Sprite&,   const Vector& pos, int frame = -1);
 
   void draw_line (float x1, float y1, float x2, float y2, 
-		  const CL_Color& color);
+		  const CL_Color& color, float z = 0);
   void draw_fillrect (float x1, float y1, float x2, float y2, 
 		      const CL_Color& color, float z = 0);
   void draw_rect (float x1, float y1, float x2, float y2, 

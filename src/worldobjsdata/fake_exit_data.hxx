@@ -40,15 +40,10 @@ public:
   FakeExitData (xmlDocPtr doc, xmlNodePtr node);
   FakeExitData (const FakeExitData& old);
 
-  void write_xml (std::ostream& xml);
-
   void insert_WorldObjs (World*);
-
-  void insert_EditorObjs (EditorNS::EditorObjMgr*);
 
 private:
   FakeExitData& operator= (const FakeExitData&);
-
 };
 
 } // namespace WorldObjsData

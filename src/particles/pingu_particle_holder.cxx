@@ -17,7 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "../display/drawing_context.hxx"
+#include "../display/scene_context.hxx"
 #include "../math.hxx"
 #include "../col_map.hxx"
 #include "../resource.hxx"
@@ -153,7 +153,7 @@ PinguParticleHolder::update ()
 
 
 void
-PinguParticleHolder::draw (DrawingContext& gc)
+PinguParticleHolder::draw (SceneContext& gc)
 {
   for (std::vector<PinguParticle>::iterator it=particles.begin(); it != particles.end(); ++it)
     {
@@ -161,7 +161,7 @@ PinguParticleHolder::draw (DrawingContext& gc)
       if (!it->livetime)
         continue;
 
-      gc.draw(surface, it->pos, it->use_frame2);
+      gc.color().draw(surface, it->pos, it->use_frame2);
     }
 }
 

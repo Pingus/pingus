@@ -39,7 +39,7 @@ public:
   ActionName get_type () const { return Actions::Climber; }
   ActionType get_activation_mode () const { return WALL_TRIGGERED; }
 
-  void draw (DrawingContext& gc);
+  void draw (SceneContext& gc);
 
   void update ();
 

@@ -55,30 +55,6 @@ SurfaceBackgroundData::SurfaceBackgroundData (const SurfaceBackgroundData& old)
 {
 }
 
-void
-SurfaceBackgroundData::write_xml (std::ostream& xml)
-{
-  xml << "<background type=\"surface\">\n";
-  XMLhelper::write_desc_xml(xml, desc);
-
-  xml << "  <color>\n"
-      << "    <red>"   << color.red   << "</red>\n"
-      << "    <green>" << color.green << "</green>\n"
-      << "    <blue>"  << color.blue << "</blue>\n"
-      << "    <alpha>" << color.alpha   << "</alpha>\n"
-      << "  </color>\n"
-      << "  <scroll-x>"  << scroll_x << "</scroll-x>\n"
-      << "  <scroll-y>"  << scroll_y << "</scroll-y>\n"
-      << "  <para-x>"    << para_x << "</para-x>\n"
-      << "  <para-y>"    << para_y << "</para-y>\n"
-      << "  <stretch-x>" << stretch_x << "</stretch-x>\n"
-      << "  <stretch-y>" << stretch_y << "</stretch-y>\n"
-      << "  <keep-aspect>" << keep_aspect << "</keep-aspect>\n";
-  XMLhelper::write_vector_xml(xml, pos);
-  xml << "</background>\n"
-      << std::endl;
-}
-
 SurfaceBackgroundData::SurfaceBackgroundData (xmlDocPtr doc, xmlNodePtr cur)
 {
   pos.z = -150;
@@ -106,12 +82,6 @@ void
 SurfaceBackgroundData::insert_WorldObjs (World* world)
 {
   world->add_object(new WorldObjs::SurfaceBackground(*this));
-}
-
-void
-SurfaceBackgroundData::insert_EditorObjs (EditorNS::EditorObjMgr* obj_mgr)
-{
-  //  obj_mgr->add(new EditorObjs::SurfaceBackgroundObj(*this));
 }
 
 } // namespace WorldObjsData

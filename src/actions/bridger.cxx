@@ -20,7 +20,7 @@
 #include <cassert>
 #include <ClanLib/Core/System/clanstring.h>
 #include "../col_map.hxx"
-#include "../display/drawing_context.hxx"
+#include "../display/scene_context.hxx"
 #include "../pingu.hxx"
 #include "../pingu_map.hxx"
 #include "../resource.hxx"
@@ -50,7 +50,7 @@ Bridger::Bridger (Pingu* p)
 }
 
 void
-Bridger::draw (DrawingContext& gc)
+Bridger::draw (SceneContext& gc)
 {
   int x_offset(6), y_offset(4);
 
@@ -69,12 +69,12 @@ Bridger::draw (DrawingContext& gc)
   switch (mode)
     {
     case B_BUILDING:
-      gc.draw(build_sprite[pingu->direction], Vector(pingu->get_x () - (x_offset * pingu->direction),
+      gc.color().draw(build_sprite[pingu->direction], Vector(pingu->get_x () - (x_offset * pingu->direction),
                                                      pingu->get_y () + y_offset));
       break;
 
     case B_WALKING:
-      gc.draw(walk_sprite[pingu->direction], Vector(pingu->get_x () - (x_offset * pingu->direction),
+      gc.color().draw(walk_sprite[pingu->direction], Vector(pingu->get_x () - (x_offset * pingu->direction),
                                                     pingu->get_y () + y_offset));
       break;
     }

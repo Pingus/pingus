@@ -51,29 +51,10 @@ ConveyorBeltData::ConveyorBeltData (const ConveyorBeltData& old)
 {
 }
 
-/** Writte the content of this object formated as xml to the given
-    stream */
-void
-ConveyorBeltData::write_xml (std::ostream& xml)
-{
-  XMLFileWriter writer(xml);
-  writer.begin_section("worldobj", "type=\"conveyorbelt\"");
-  writer.write_vector("position", pos);
-  writer.write_int("width", width);
-  writer.write_float("speed", speed);
-  writer.end_section();
-}
-
 void
 ConveyorBeltData::insert_WorldObjs (World* world)
 {
   world->add_object(new WorldObjs::ConveyorBelt(*this));
-}
-
-void
-ConveyorBeltData::insert_EditorObjs (EditorNS::EditorObjMgr* obj_mgr)
-{
-  //obj_mgr->add(new EditorObjs::ConveyorBeltObj(*this));
 }
 
 } // namespace WorldObjsData

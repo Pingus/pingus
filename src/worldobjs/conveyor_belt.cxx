@@ -18,7 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "../col_map.hxx"
-#include "../display/drawing_context.hxx"
+#include "../display/scene_context.hxx"
 #include "../pingu.hxx"
 #include "../pingu_holder.hxx"
 #include "../resource.hxx"
@@ -38,16 +38,16 @@ ConveyorBelt::ConveyorBelt (const WorldObjsData::ConveyorBeltData& data_)
 }
 
 void
-ConveyorBelt::draw (DrawingContext& gc)
+ConveyorBelt::draw (SceneContext& gc)
 {
-  gc.draw(left_sur, data->pos, static_cast<int>(data->counter));
+  gc.color().draw(left_sur, data->pos, static_cast<int>(data->counter));
   for (int i=0; i < data->width; ++i)
-    gc.draw(middle_sur,
+    gc.color().draw(middle_sur,
 	    Vector(static_cast<int>(data->pos.x + left_sur.get_width() + i * middle_sur.get_width()),
                   static_cast<int>(data->pos.y)),
 	    static_cast<int>(data->counter));
 
-  gc.draw(right_sur,
+  gc.color().draw(right_sur,
 	  Vector(static_cast<int>(data->pos.x + left_sur.get_width() + data->width * middle_sur.get_width()),
                  static_cast<int>(data->pos.y)),
 	  static_cast<int>(data->counter));

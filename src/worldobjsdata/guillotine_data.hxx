@@ -44,15 +44,9 @@ public:
   GuillotineData (xmlDocPtr doc, xmlNodePtr node);
   GuillotineData (const GuillotineData& old);
 
-  void write_xml (std::ostream& xml);
-
   void insert_WorldObjs (World*);
-
-  void insert_EditorObjs (EditorNS::EditorObjMgr*);
-
 private:
   GuillotineData& operator= (const GuillotineData&);
-
 };
 
 } // namespace WorldObjsData

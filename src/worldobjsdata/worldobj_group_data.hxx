@@ -42,13 +42,8 @@ public:
 
   void add (WorldObjData*);
 
-  void write_xml (std::ostream& xml);
-
   /** Create an WorldObj from the given data object */
   void insert_WorldObjs (World*);
-
-  /** Create an EditorObj from the given data object */
-  void insert_EditorObjs (EditorNS::EditorObjMgr*);
 
 private:
   WorldObjGroupData& operator= (const WorldObjGroupData&);

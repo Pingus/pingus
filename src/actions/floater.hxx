@@ -39,7 +39,7 @@ public:
 
   void init(void);
 
-  void draw (DrawingContext& gc);
+  void draw (SceneContext& gc);
   void update();
 
   char get_persistent_char () { return 'f'; }

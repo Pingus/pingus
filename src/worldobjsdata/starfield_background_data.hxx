@@ -37,11 +37,7 @@ public:
   StarfieldBackgroundData (const StarfieldBackgroundData& old);
   StarfieldBackgroundData (xmlDocPtr doc, xmlNodePtr cur);
 
-  void write_xml (std::ostream& xml);
-
   void insert_WorldObjs (World*);
-  void insert_EditorObjs (EditorNS::EditorObjMgr*);
-
 private:
   StarfieldBackgroundData& operator= (const StarfieldBackgroundData&);
 };

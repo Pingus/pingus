@@ -38,15 +38,10 @@ public:
   SmasherData (xmlDocPtr doc, xmlNodePtr node);
   SmasherData (const SmasherData& old);
 
-  void write_xml (std::ostream& xml);
-
   void insert_WorldObjs (World*);
-
-  void insert_EditorObjs (EditorNS::EditorObjMgr*);
 
 private:
   SmasherData& operator= (const SmasherData&);
-
 };
 
 } // namespace WorldObjsData

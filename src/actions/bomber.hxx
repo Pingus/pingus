@@ -49,7 +49,7 @@ public:
   ActionName get_type() const { return Actions::Bomber; }
   ActionType get_activation_mode() const { return COUNTDOWN_TRIGGERED; }
 
-  void draw (DrawingContext& gc);
+  void draw (SceneContext& gc);
   void update();
 
   int  activation_time() { return 150; }

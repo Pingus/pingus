@@ -39,7 +39,7 @@ public:
   ActionName get_type () const { return Actions::Laserkill; }
   void init (void);
 
-  void draw (DrawingContext& gc);
+  void draw (SceneContext& gc);
   void update ();
 
   bool catchable () { return false; }

@@ -19,7 +19,7 @@
 
 #include <ClanLib/Display/display.h>
 #include "../gui/display.hxx"
-#include "../display/drawing_context.hxx"
+#include "../display/scene_context.hxx"
 #include "../worldobjsdata/solid_color_background_data.hxx"
 #include "solid_color_background.hxx"
 
@@ -37,13 +37,13 @@ SolidColorBackground::~SolidColorBackground ()
 }
 
 void
-SolidColorBackground::draw (DrawingContext& gc)
+SolidColorBackground::draw (SceneContext& gc)
 {
-  // FIXME: should use DrawingContext, not CL_Display
-  gc.fill_screen(CL_Color(CL_Colorf(data->color.red,
-                                    data->color.green, 
-                                    data->color.blue, 
-                                    data->color.alpha)));
+  // FIXME: should use SceneContext, not CL_Display
+  gc.color().fill_screen(CL_Color(CL_Colorf(data->color.red,
+                                            data->color.green, 
+                                            data->color.blue, 
+                                            data->color.alpha)));
 }
 
 } // namespace WorldObjs

@@ -46,23 +46,9 @@ BumperData::BumperData (const BumperData& old) : WorldObjData(old),
 }
 
 void
-BumperData::write_xml (std::ostream& xml)
-{
-  xml << "<worldobj type=\"bumper\">\n\t";
-  XMLhelper::write_vector_xml(xml, pos);
-  xml << "</worldobj>\n\n";
-}
-
-void
 BumperData::insert_WorldObjs (World* world)
 {
   world->add_object(new WorldObjs::Bumper(*this));
-}
-
-void
-BumperData::insert_EditorObjs (EditorNS::EditorObjMgr* obj_mgr)
-{
-  //obj_mgr->add(new EditorObjs::BumperObj(*this));
 }
 
 } // namespace WorldObjsData

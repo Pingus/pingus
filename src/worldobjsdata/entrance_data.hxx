@@ -48,9 +48,6 @@ public:
   EntranceData (xmlDocPtr doc, xmlNodePtr cur);
   EntranceData (const EntranceData& old);
 
-  void write_xml (std::ostream&);
-
-  void insert_EditorObjs (EditorNS::EditorObjMgr*);
   void insert_WorldObjs (World*);
 
 private:

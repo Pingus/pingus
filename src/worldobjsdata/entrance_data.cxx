@@ -75,35 +75,6 @@ EntranceData::EntranceData (const EntranceData& old)
 }
 
 void
-EntranceData::write_xml (std::ostream& xml)
-{
-  std::string dir_str;
-
-  switch(direction)
-    {
-    case EntranceData::LEFT:
-      dir_str = "left";
-      break;
-    case EntranceData::RIGHT:
-      dir_str = "right";
-      break;
-    case EntranceData::MISC:
-    default:
-      dir_str = "misc";
-      break;
-    }
-
-  xml << "<entrance>\n";
-  XMLhelper::write_vector_xml(xml, pos);
-  xml << "  <type>" << type << "</type>\n"
-      << "  <direction>" << dir_str << "</direction>\n"
-      << "  <release-rate>" << release_rate << "</release-rate>\n"
-      << "  <owner-id>" << owner_id << "</owner-id>\n"
-      << "</entrance>\n"
-      << std::endl;
-}
-
-void
 EntranceData::insert_WorldObjs (World* world)
 {
   if (type == "generic") {
@@ -114,12 +85,6 @@ EntranceData::insert_WorldObjs (World* world)
     world->add_object(new WorldObjs::Entrances::Cloud(*this));
   }
   //PingusError::raise("Entrance: Entrance type in Level file is unknown: " + type);
-}
-
-void
-EntranceData::insert_EditorObjs (EditorNS::EditorObjMgr* obj_mgr)
-{
-  //  obj_mgr->add(new EditorObjs::EntranceObj(*this));
 }
 
 } // namespace WorldObjsData

@@ -17,7 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "../display/drawing_context.hxx"
+#include "../display/scene_context.hxx"
 #include "../math.hxx"
 #include "../col_map.hxx"
 #include "../globals.hxx"
@@ -106,7 +106,7 @@ RainParticleHolder::update ()
 
 
 void
-RainParticleHolder::draw (DrawingContext& gc)
+RainParticleHolder::draw (SceneContext& gc)
 {
 #ifdef CLANLIB_0_6
   for (std::vector<RainParticle>::iterator it=particles.begin(); it != particles.end(); ++it)
@@ -116,12 +116,12 @@ RainParticleHolder::draw (DrawingContext& gc)
         continue;
 
       if (it->splash)
-        gc.draw(rain_splash, it->pos, static_cast<int>(it->splash_frame));
+        gc.color().draw(rain_splash, it->pos, static_cast<int>(it->splash_frame));
       else
         if (it->use_rain2_surf)
-          gc.draw(rain2_surf, static_cast<int>(it->pos.x), static_cast<int>(it->pos.y - rain1_surf.get_height()));
+          gc.color().draw(rain2_surf, static_cast<int>(it->pos.x), static_cast<int>(it->pos.y - rain1_surf.get_height()));
         else
-          gc.draw(rain1_surf, static_cast<int>(it->pos.x), static_cast<int>(it->pos.y - rain1_surf.get_height()));
+          gc.color().draw(rain1_surf, static_cast<int>(it->pos.x), static_cast<int>(it->pos.y - rain1_surf.get_height()));
     }
 #endif
 }

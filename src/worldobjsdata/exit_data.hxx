@@ -48,10 +48,7 @@ public:
 
   ExitData (const ExitData& old);
 
-  void write_xml (std::ostream&);
-
   void insert_WorldObjs (World*);
-  void insert_EditorObjs (EditorNS::EditorObjMgr*);
 
 private:
   ExitData& operator= (const ExitData& old);

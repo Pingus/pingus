@@ -48,7 +48,7 @@ public:
 
   void init ();
   void update ();
-  void draw (DrawingContext& gc);
+  void draw (SceneContext& gc);
 
 private:
   StarfieldBackgroundStars (const StarfieldBackgroundStars&);

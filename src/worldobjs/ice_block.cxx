@@ -19,7 +19,7 @@
 
 #include "../col_map.hxx"
 #include "../game_time.hxx"
-#include "../display/drawing_context.hxx"
+#include "../display/scene_context.hxx"
 #include "../pingu.hxx"
 #include "../pingu_holder.hxx"
 #include "../pingu_map.hxx"
@@ -57,12 +57,12 @@ IceBlock::on_startup ()
 }
 
 void
-IceBlock::draw (DrawingContext& gc)
+IceBlock::draw (SceneContext& gc)
 {
   if (is_finished)
     return;
 
-  gc.draw(block_sur,
+  gc.color().draw(block_sur,
           data->pos,
 	  static_cast<int>((1.0 - thickness) * (block_sur.get_frame_count() - 1)));
 }

@@ -18,7 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "../vector.hxx"
-#include "../display/drawing_context.hxx"
+#include "../display/scene_context.hxx"
 #include "../resource.hxx"
 #include "../pingu.hxx"
 #include "../sound/sound.hxx"
@@ -56,9 +56,9 @@ Exiter::update ()
 }
 
 void
-Exiter::draw (DrawingContext& gc)
+Exiter::draw (SceneContext& gc)
 {
-  gc.draw(sprite[pingu->direction], pingu->get_pos());
+  gc.color().draw(sprite[pingu->direction], pingu->get_pos());
 }
 
 } // namespace Actions

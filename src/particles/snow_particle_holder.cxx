@@ -20,7 +20,7 @@
 #include <assert.h>
 #include "../math.hxx"
 #include "../col_map.hxx"
-#include "../display/drawing_context.hxx"
+#include "../display/scene_context.hxx"
 #include "../pingu_map.hxx"
 #include "../resource.hxx"
 #include "../world.hxx"
@@ -121,7 +121,7 @@ SnowParticleHolder::update ()
 
 
 void
-SnowParticleHolder::draw (DrawingContext& gc)
+SnowParticleHolder::draw (SceneContext& gc)
 {
   for (std::vector<SnowParticle>::iterator it=particles.begin(); it != particles.end(); ++it)
     {
@@ -131,19 +131,19 @@ SnowParticleHolder::draw (DrawingContext& gc)
       switch (it->type)
         {
 	  case Snow1:
-	    gc.draw(snow1, it->pos);
+	    gc.color().draw(snow1, it->pos);
 	    break;
 	  case Snow2:
-	    gc.draw(snow2, it->pos);
+	    gc.color().draw(snow2, it->pos);
 	    break;
 	  case Snow3:
-	    gc.draw(snow3, it->pos);
+	    gc.color().draw(snow3, it->pos);
 	    break;
 	  case Snow4:
-	    gc.draw(snow4, it->pos);
+	    gc.color().draw(snow4, it->pos);
 	    break;
 	  case Snow5:
-	    gc.draw(snow5, it->pos);
+	    gc.color().draw(snow5, it->pos);
 	    break;
 	  default:
 	    assert(!"Invalid Snow-Type");

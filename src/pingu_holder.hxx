@@ -60,7 +60,7 @@ public:
   /*@{
     @name overloaded stuff for WorldObj
   */
-  void draw (DrawingContext& gc);
+  void draw (SceneContext& gc);
 
   /** Update all Pingus (this calls Pingu::update() which then calls
       PinguAction::update()) */

@@ -72,12 +72,7 @@ public:
 
   SurfaceBackgroundData (const SurfaceBackgroundData& old);
 
-  /** Write the content of this object formated as xml to the given
-      stream */
-  void write_xml (std::ostream& xml);
-
   void insert_WorldObjs (World* world);
-  void insert_EditorObjs (EditorNS::EditorObjMgr*);
 
 private:
   SurfaceBackgroundData& operator= (const SurfaceBackgroundData&);

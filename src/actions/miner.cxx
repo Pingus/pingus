@@ -19,7 +19,7 @@
 
 #include "../pingu_map.hxx"
 #include "../col_map.hxx"
-#include "../display/drawing_context.hxx"
+#include "../display/scene_context.hxx"
 #include "../world.hxx"
 #include "../resource.hxx"
 #include "../sound/sound.hxx"
@@ -93,9 +93,9 @@ Miner::update ()
 }
 
 void
-Miner::draw (DrawingContext& gc)
+Miner::draw (SceneContext& gc)
 {
-  gc.draw(sprite[pingu->direction], pingu->get_pos());
+  gc.color().draw(sprite[pingu->direction], pingu->get_pos());
 }
 
 } // namespace Actions

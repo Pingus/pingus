@@ -22,7 +22,6 @@
 
 #include <ClanLib/Display/sprite.h>
 #include "../worldobj.hxx"
-#include "../editor/sprite_editorobj.hxx"
 
 namespace Pingus {
 
@@ -43,7 +42,7 @@ public:
   InfoBox (const WorldObjsData::InfoBoxData& data_);
  ~InfoBox ();
 
-  void draw (DrawingContext& gc);
+  void draw (SceneContext& gc);
   void update ();
   float get_z_pos () const;
 

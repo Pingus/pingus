@@ -36,7 +36,7 @@ public:
 
   ActionName get_type() const { return Actions::Slider; }
 
-  void draw (DrawingContext& gc);
+  void draw (SceneContext& gc);
   void update();
 
 private:

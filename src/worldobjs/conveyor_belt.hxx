@@ -23,7 +23,6 @@
 #include <ClanLib/Display/sprite.h>
 #include "../worldobj.hxx"
 #include "../worldobj_data.hxx"
-#include "../editor/rect_editorobj.hxx"
 
 namespace Pingus {
 
@@ -45,7 +44,7 @@ private:
 public:
   ConveyorBelt (const WorldObjsData::ConveyorBeltData& data_);
 
-  void draw (DrawingContext& gc);
+  void draw (SceneContext& gc);
   void on_startup ();
   void update ();
   float get_z_pos () const;

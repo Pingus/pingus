@@ -51,23 +51,9 @@ GuillotineData::GuillotineData (const GuillotineData& old) : WorldObjData(old),
 }
 
 void
-GuillotineData::write_xml (std::ostream& xml)
-{
-  xml << "<worldobj type=\"guillotine\">\n\t";
-  XMLhelper::write_vector_xml(xml, pos);
-  xml << "</worldobj>\n\n";
-}
-
-void
 GuillotineData::insert_WorldObjs (World* world)
 {
   world->add_object(new WorldObjs::Guillotine(*this));
-}
-
-void
-GuillotineData::insert_EditorObjs (EditorNS::EditorObjMgr* obj_mgr)
-{
-  //  obj_mgr->add(new EditorObjs::GuillotineObj(*this));
 }
 
 } // namespace WorldObjsData

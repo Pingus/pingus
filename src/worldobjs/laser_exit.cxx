@@ -17,7 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "../display/drawing_context.hxx"
+#include "../display/scene_context.hxx"
 #include "../pingu.hxx"
 #include "../pingu_holder.hxx"
 #include "../world.hxx"
@@ -49,9 +49,9 @@ LaserExit::get_z_pos () const
 }
 
 void
-LaserExit::draw (DrawingContext& gc)
+LaserExit::draw (SceneContext& gc)
 {
-  gc.draw (data->surface, data->pos,
+  gc.color().draw (data->surface, data->pos,
 	   data->counter.value());
 }
 

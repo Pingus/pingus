@@ -20,7 +20,7 @@
 #include <ClanLib/Core/Math/origin.h>
 
 #include "../col_map.hxx"
-#include "../display/drawing_context.hxx"
+#include "../display/scene_context.hxx"
 #include "../pingu.hxx"
 #include "../pingu_holder.hxx"
 #include "../world.hxx"
@@ -68,9 +68,9 @@ Blocker::update()
 }
 
 void
-Blocker::draw (DrawingContext& gc)
+Blocker::draw (SceneContext& gc)
 {
-  gc.draw(sprite[pingu->direction], pingu->get_pos());
+  gc.color().draw(sprite[pingu->direction], pingu->get_pos());
 }
 
 bool

@@ -39,15 +39,10 @@ public:
   HammerData (xmlDocPtr doc, xmlNodePtr node);
   HammerData (const HammerData& old);
 
-  void write_xml (std::ostream& xml);
-
   void insert_WorldObjs (World* world);
-
-  void insert_EditorObjs (EditorNS::EditorObjMgr*);
 
 private:
   HammerData& operator= (const HammerData&);
-
 };
 
 } // namespace WorldObjsData

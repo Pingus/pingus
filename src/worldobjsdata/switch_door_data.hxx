@@ -45,15 +45,8 @@ public:
   SwitchDoorData (xmlDocPtr doc, xmlNodePtr cur);
   SwitchDoorData (const SwitchDoorData& old);
 
-  /** Write the content of this object formatted as xml to the given
-      stream */
-  void write_xml (std::ostream& xml);
-
   /** Create an WorldObj from the given data object */
   void insert_WorldObjs (World* world);
-
-  /** Create an EditorObj from the given data object */
-  void insert_EditorObjs (EditorNS::EditorObjMgr*);
 
 private:
   SwitchDoorData& operator= (const SwitchDoorData&);

@@ -59,7 +59,7 @@ public:
   void   update_build ();
   void   update_walk ();
 
-  void   draw (DrawingContext& gc);
+  void   draw (SceneContext& gc);
 
   bool   way_is_free ();
   bool   brick_placement_allowed (void);

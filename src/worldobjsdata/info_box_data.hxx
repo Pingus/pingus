@@ -45,10 +45,7 @@ public:
 
   ~InfoBoxData ();
 
-  void write_xml (std::ostream& xml);
-
   void insert_WorldObjs (World* world);
-  void insert_EditorObjs (EditorNS::EditorObjMgr*);
 
 private:
   InfoBoxData& operator= (const InfoBoxData&);

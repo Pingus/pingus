@@ -22,10 +22,7 @@
 #include "../world.hxx"
 #include "../xml_helper.hxx"
 #include "../xml_file_reader.hxx"
-#include "../editorobjs/teleporter_obj.hxx"
-#include "../editorobjs/teleporter_target_obj.hxx"
 #include "../worldobjs/teleporter.hxx"
-#include "../editor/editorobj_mgr.hxx"
 
 namespace Pingus {
 namespace WorldObjsData {
@@ -39,17 +36,6 @@ TeleporterData::TeleporterData (const TeleporterData& data)
     pos(data.pos),
     target_pos(data.target_pos)
 {
-}
-
-void
-TeleporterData::write_xml (std::ostream& xml)
-{
-  xml << "  <worldobj type=\"teleporter\">";
-  XMLhelper::write_vector_xml (xml, pos);
-  xml << "    <target>" << std::endl;
-  XMLhelper::write_vector_xml (xml, target_pos);
-  xml << "    </target>" << std::endl;
-  xml << "  </worldobj>" << std::endl;
 }
 
 TeleporterData::TeleporterData (xmlDocPtr doc, xmlNodePtr cur)
@@ -66,15 +52,6 @@ void
 TeleporterData::insert_WorldObjs (World* world)
 {
   world->add_object(new WorldObjs::Teleporter(*this));
-}
-
-void
-TeleporterData::insert_EditorObjs (EditorNS::EditorObjMgr* obj_mgr)
-{
-  //EditorObjs::TeleporterObj* teleporter = new EditorObjs::TeleporterObj(*this);
-
-  //obj_mgr->add(teleporter);
-  //obj_mgr->add(new EditorObjs::TeleporterTargetObj(teleporter));
 }
 
 } // namespace WorldObjsData

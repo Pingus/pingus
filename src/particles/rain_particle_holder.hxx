@@ -64,7 +64,7 @@ public:
   void update ();
 
   /// Draw the particle with the correct zoom resize
-  void draw (DrawingContext& gc);
+  void draw (SceneContext& gc);
 
 private:
   RainParticleHolder (const RainParticleHolder&);

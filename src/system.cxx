@@ -470,44 +470,6 @@ System::get_mtime(const std::string& filename)
 #endif
 }
 
-bool
-System::is_symlink(const std::string& filename)
-{
-#ifdef WIN32
-  return false;
-#else
-  struct stat buf;
-  if (lstat(filename.c_str(), &buf) == 0)
-    {
-      return S_ISLNK(buf.st_mode);
-    }
-  else
-    {
-      return false;
-    }
-#endif
-}
-
-std::string
-System::readlink(const std::string& filename)
-{
-#ifdef WIN32
-  return filename;
-#else
-  char path_buf[PATH_MAX + 1];
-  int ret = ::readlink(filename.c_str(), path_buf, PATH_MAX);
-  if (ret == -1)
-    {
-      return filename;
-    }
-  else
-    {
-      path_buf[ret] = '\0';
-      return path_buf;
-    }
-#endif
-}
-
 } // namespace Pingus
 
 /* EOF */

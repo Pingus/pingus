@@ -48,13 +48,8 @@ public:
   LiquidData (xmlDocPtr doc, xmlNodePtr cur);
   LiquidData (const LiquidData& old);
 
-  void write_xml(std::ostream&);
-
   /** Create an WorldObj from the given data object */
   void insert_WorldObjs (World* world);
-
-  /** Create an EditorObj from the given data object */
-  void insert_EditorObjs (EditorNS::EditorObjMgr*);
 
 private:
   LiquidData& operator= (const LiquidData&);

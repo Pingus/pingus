@@ -18,7 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "../globals.hxx"
-#include "../display/drawing_context.hxx"
+#include "../display/scene_context.hxx"
 #include "../resource.hxx"
 #include "smoke_particle_holder.hxx"
 
@@ -74,7 +74,7 @@ SmokeParticleHolder::update ()
 
 
 void
-SmokeParticleHolder::draw (DrawingContext& gc)
+SmokeParticleHolder::draw (SceneContext& gc)
 {
   for (std::vector<SmokeParticle>::iterator it=particles.begin(); it != particles.end(); ++it)
     {
@@ -82,9 +82,9 @@ SmokeParticleHolder::draw (DrawingContext& gc)
         continue;
 
       if (!it->use_surf2)
-        gc.draw(surf1, it->pos);
+        gc.color().draw(surf1, it->pos);
 	  else
-	    gc.draw(surf2, it->pos);
+	    gc.color().draw(surf2, it->pos);
     }
 }
 

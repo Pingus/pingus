@@ -19,7 +19,7 @@
 
 #include <iostream>
 #include <ClanLib/Core/System/clanstring.h>
-#include "../display/drawing_context.hxx"
+#include "../display/scene_context.hxx"
 #include "../col_map.hxx"
 #include "../world.hxx"
 #include "../globals.hxx"
@@ -64,10 +64,10 @@ Exit::on_startup ()
 }
 
 void
-Exit::draw (DrawingContext& gc)
+Exit::draw (SceneContext& gc)
 {
-  gc.draw(sprite, data->pos);
-  gc.draw(flag, data->pos + Vector(40, 0));
+  gc.color().draw(sprite, data->pos);
+  gc.color().draw(flag, data->pos + Vector(40, 0));
 }
 
 void

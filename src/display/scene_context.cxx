@@ -21,6 +21,10 @@
 #include <ClanLib/gl.h>
 #include "scene_context.hxx"
 
+#define SCALE_FACTOR 8.0f
+
+namespace Pingus {
+
 class SceneContextImpl
 {
 public:
@@ -32,12 +36,13 @@ public:
   CL_Canvas        canvas;
 
   SceneContextImpl() 
-    : lightmap(CL_PixelBuffer(200, 
-                              150,
-                              200*4, CL_PixelFormat::rgba8888)),
+    : lightmap(CL_PixelBuffer(static_cast<int>(800/SCALE_FACTOR), 
+                              static_cast<int>(600/SCALE_FACTOR),
+                              static_cast<int>(800/SCALE_FACTOR*4),
+                              CL_PixelFormat::rgba8888)),
       canvas(lightmap)
   {
-    canvas.get_gc()->set_scale(0.25, 0.25);
+    canvas.get_gc()->set_scale(1/SCALE_FACTOR, 1/SCALE_FACTOR);
   }
 };
 
@@ -122,11 +127,11 @@ SceneContext::reset_modelview()
 }
 
 void
-SceneContext::render()
+SceneContext::render(CL_GraphicContext* gc)
 {
   // Render all buffers
   // FIXME: Render all to pbuffer for later combining of them
-  impl->color.render(0);
+  impl->color.render(gc);
   
   impl->light.render(impl->canvas.get_gc());
   impl->canvas.sync_surface();
@@ -134,16 +139,38 @@ SceneContext::render()
   //impl->lightmap.set_blend_func(blend_src_alpha, blend_one);
   impl->lightmap.set_blend_func(blend_dest_color, blend_zero);
   //GL_DST_COLOR, GL_ZERO
-  impl->lightmap.set_scale(4.0f, 4.0f);
+  impl->lightmap.set_scale(SCALE_FACTOR, SCALE_FACTOR);
   impl->lightmap.draw();
   impl->canvas.get_gc()->clear();
 
-  impl->highlight.render(0);
+  impl->highlight.render(gc);
+}
 
-  // Clear all DrawingContexts
+void
+SceneContext::clear()
+{
   impl->color.clear();
   impl->light.clear();
   impl->highlight.clear();
 }
+
+SceneContextDrawingRequest::SceneContextDrawingRequest(SceneContext* sc_, float z) 
+  : DrawingRequest(CL_Vector(0, 0, z)),
+    sc(sc_)
+{
+}
+
+SceneContextDrawingRequest::~SceneContextDrawingRequest() 
+{
+  //delete sc;
+}
+
+void
+SceneContextDrawingRequest::draw(CL_GraphicContext* gc) 
+{
+  sc->render(gc);
+}
+
+} // namespace Pingus
 
 /* EOF */

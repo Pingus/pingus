@@ -19,7 +19,7 @@
 
 #include "../resource.hxx"
 #include "../pingu.hxx"
-#include "../display/drawing_context.hxx"
+#include "../display/scene_context.hxx"
 #include "../groundtype.hxx"
 #include "floater.hxx"
 
@@ -57,9 +57,9 @@ Floater::update()
 }
 
 void
-Floater::draw (DrawingContext& gc)
+Floater::draw (SceneContext& gc)
 {
-  gc.draw(sprite, pingu->get_pos());
+  gc.color().draw(sprite, pingu->get_pos());
 }
 
 bool

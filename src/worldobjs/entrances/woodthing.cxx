@@ -18,7 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "../../math.hxx"
-#include "../../display/drawing_context.hxx"
+#include "../../display/scene_context.hxx"
 #include "../../particles/smoke_particle_holder.hxx"
 #include "../../resource.hxx"
 #include "../../world.hxx"
@@ -58,9 +58,9 @@ WoodThing::update ()
 }
 
 void
-WoodThing::draw (DrawingContext& gc)
+WoodThing::draw (SceneContext& gc)
 {
-  gc.draw(surface,
+  gc.color().draw(surface,
 	  Vector(static_cast<int>(data->pos.x - surface.get_width () /  2),
                  static_cast<int>(data->pos.y - surface.get_height() + 32)),
 	  (int)counter);

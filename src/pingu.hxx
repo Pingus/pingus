@@ -20,6 +20,7 @@
 #ifndef HEADER_PINGUS_PINGU_HXX
 #define HEADER_PINGUS_PINGU_HXX
 
+#include <ClanLib/Display/sprite.h>
 #include "direction.hxx"
 #include "pingu_enums.hxx"
 
@@ -29,7 +30,7 @@ namespace Pingus {
 class Vector;
 class ActionHolder;
 class PinguAction;
-class DrawingContext;
+class SceneContext;
 
 /** The class for managing one of the many penguins which are walking
     around in the World. All actions are handled by PinguAction
@@ -37,6 +38,8 @@ class DrawingContext;
 class Pingu
 {
 private:
+  CL_Sprite light;
+
   /** The primary action with is currently in use */
   PinguAction* action;
 
@@ -176,7 +179,7 @@ public:
   /** Returns true if the pingu needs to catch another pingu */
   bool need_catch ();
 
-  void draw (DrawingContext& gc);
+  void draw (SceneContext& gc);
   void apply_force (Vector);
 
   void update();

@@ -74,7 +74,7 @@ public:
   PingusSpotMap(PLF*);
   virtual ~PingusSpotMap();
 
-  void draw(DrawingContext& gc);
+  void draw(SceneContext& gc);
 
   ColMap* get_colmap();
 
@@ -97,7 +97,7 @@ private:
 			 int x, int y, int real_x, int real_y);
 
   /** Draw the collision map onto the screen */
-  void draw_colmap(DrawingContext& gc);
+  void draw_colmap(SceneContext& gc);
 
   PingusSpotMap (const PingusSpotMap&);
   PingusSpotMap& operator= (const PingusSpotMap&);

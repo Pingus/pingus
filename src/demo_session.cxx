@@ -26,7 +26,7 @@
 #include "demo_player.hxx"
 #include "pingus_counter.hxx"
 #include "gui/gui_manager.hxx"
-#include "display/drawing_context.hxx"
+#include "display/scene_context.hxx"
 #include "demo_session.hxx"
 
 namespace Pingus {
@@ -56,38 +56,40 @@ void
 DemoSession::draw_background(DrawingContext& gc)
 {
   World* world = server->get_world();
+  
+  SceneContext* sc = new SceneContext();
 
   if (CL_Keyboard::get_keycode(CL_KEY_LEFT))
-    gc.translate(10.0, 0.0);
+    sc->translate(10.0, 0.0);
 
   if(CL_Keyboard::get_keycode(CL_KEY_RIGHT))
-    gc.translate(-10.0, 0.0);
+    sc->translate(-10.0, 0.0);
 
   if(CL_Keyboard::get_keycode(CL_KEY_UP))
-    gc.translate(0.0, 10.0);
+    sc->translate(0.0, 10.0);
 
   if(CL_Keyboard::get_keycode(CL_KEY_DOWN))
-    gc.translate(0.0, -10.0);
+    sc->translate(0.0, -10.0);
 
 #if 0 // FIXME
-  float x_of = -gc.get_x_offset();
-  float y_of = -gc.get_y_offset();
+  float x_of = -sc->get_x_offset();
+  float y_of = -sc->get_y_offset();
 
-  x_of = Math::mid(gc.get_width()/2.0f,
+  x_of = Math::mid(sc->get_width()/2.0f,
                    x_of,
-                   world->get_width() - 1 - gc.get_width()/2.0f);
+                   world->get_width() - 1 - sc->get_width()/2.0f);
 
-  y_of = Math::mid(gc.get_height()/2.0f,
+  y_of = Math::mid(sc->get_height()/2.0f,
                    y_of,
-                   world->get_height() - 1 - gc.get_height()/2.0f);
+                   world->get_height() - 1 - sc->get_height()/2.0f);
 
-  gc.set_offset(-x_of, -y_of);
+  sc->set_offset(-x_of, -y_of);
 #endif
 
-  world->draw(gc);
+  world->draw(*sc);
   while (CL_Keyboard::get_keycode(CL_KEY_D))
     {
-      server->get_world()->draw(gc);
+      world->draw(*sc);
       CL_System::keep_alive();
     }
 }

@@ -41,15 +41,10 @@ public:
   SpikeData (xmlDocPtr doc, xmlNodePtr node);
   SpikeData (const SpikeData& old);
 
-  void write_xml (std::ostream& xml);
-
   void insert_WorldObjs (World*);
-
-  void insert_EditorObjs (EditorNS::EditorObjMgr*);
 
 private:
   SpikeData& operator= (const SpikeData&);
-
 };
 
 } // namespace WorldObjsData

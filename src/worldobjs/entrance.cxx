@@ -18,7 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
-#include "../display/drawing_context.hxx"
+#include "../display/scene_context.hxx"
 #include "../world.hxx"
 #include "../pingu_holder.hxx"
 #include "../globals.hxx"
@@ -124,17 +124,17 @@ Entrance::update ()
 }
 
 void
-Entrance::draw (DrawingContext& gc)
+Entrance::draw (SceneContext& gc)
 {
   if (!surface)
     {
       // Entrances have only a surface for historical reasons
-      //std::cout << "Entrance::draw (DrawingContext& gc): entrance without a surface?!" << std::endl;
+      //std::cout << "Entrance::draw (SceneContext& gc): entrance without a surface?!" << std::endl;
       return;
     }
 
   // FIXME: Why do we still have these hardcoded offsets?!
-  gc.draw(surface, Vector(data->pos.x - 32, data->pos.y - 16));
+  gc.color().draw(surface, Vector(data->pos.x - 32, data->pos.y - 16));
 }
 
 void

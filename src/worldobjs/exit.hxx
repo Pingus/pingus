@@ -45,7 +45,7 @@ public:
 
   void  on_startup ();
 
-  void  draw (DrawingContext& gc);
+  void  draw (SceneContext& gc);
   void  draw_smallmap(SmallMap* smallmap);
 
   void  update ();

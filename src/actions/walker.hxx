@@ -37,7 +37,7 @@ private:
 public:
   Walker (Pingu*);
 
-  void draw (DrawingContext& gc);
+  void draw (SceneContext& gc);
   void update ();
 
   ActionName get_type () const { return Actions::Walker; }

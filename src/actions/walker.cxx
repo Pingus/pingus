@@ -19,7 +19,7 @@
 
 #include "../col_map.hxx"
 #include "../globals.hxx"
-#include "../display/drawing_context.hxx"
+#include "../display/scene_context.hxx"
 #include "../pingu.hxx"
 #include "../debug.hxx"
 #include "walker.hxx"
@@ -203,13 +203,13 @@ Walker::update ()
 }
 
 void
-Walker::draw (DrawingContext& gc)
+Walker::draw (SceneContext& gc)
 {
-  gc.draw(walker[pingu->direction], pingu->get_pos());
+  gc.color().draw(walker[pingu->direction], pingu->get_pos());
 
   if (pingu->get_fall_action() && pingu->get_fall_action()->get_type() == Actions::Floater)
     {
-      gc.draw(floaterlayer[pingu->direction], pingu->get_pos());
+      gc.color().draw(floaterlayer[pingu->direction], pingu->get_pos());
     }
 }
 

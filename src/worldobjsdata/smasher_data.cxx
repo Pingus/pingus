@@ -46,23 +46,9 @@ SmasherData::SmasherData (const SmasherData& old) : WorldObjData(old),
 }
 
 void
-SmasherData::write_xml (std::ostream& xml)
-{
-  xml << "<worldobj type=\"smasher\">\n\t";
-  XMLhelper::write_vector_xml(xml, pos);
-  xml << "</worldobj>\n\n";
-}
-
-void
 SmasherData::insert_WorldObjs (World* world)
 {
   world->add_object(new WorldObjs::Smasher(*this));
-}
-
-void
-SmasherData::insert_EditorObjs (EditorNS::EditorObjMgr* obj_mgr)
-{
-  //  obj_mgr->add(new EditorObjs::SmasherObj(*this));
 }
 
 } // namespace WorldObjsData

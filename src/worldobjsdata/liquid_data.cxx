@@ -62,28 +62,10 @@ LiquidData::LiquidData (const LiquidData& old)
 {
 }
 
-
-void
-LiquidData::write_xml (std::ostream& xml)
-{
-  xml << "<liquid use-old-width-handling=\"" << old_width_handling << "\">\n";
-  XMLhelper::write_desc_xml(xml, desc);
-  XMLhelper::write_vector_xml(xml, pos);
-  xml << "  <width>" << width << "</width>\n"
-      << "  <speed>" << speed << "</speed>\n"
-      << "</liquid>\n" << std::endl;
-}
-
 void
 LiquidData::insert_WorldObjs (World* world)
 {
   world->add_object(new WorldObjs::Liquid(*this));
-}
-
-void
-LiquidData::insert_EditorObjs (EditorNS::EditorObjMgr* obj_mgr)
-{
-  //  obj_mgr->add(new EditorObjs::LiquidObj(*this));
 }
 
 } // namespace WorldObjsData

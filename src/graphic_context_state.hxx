@@ -24,6 +24,7 @@
 #include <ClanLib/Core/Math/rect.h>
 #include <ClanLib/Core/System/sharedptr.h>
 #include "display/drawing_context.hxx"
+#include "display/scene_context.hxx"
 
 class CL_GraphicContext;
 
@@ -51,6 +52,9 @@ public:
 
   void push(Pingus::DrawingContext& gc);
   void pop (Pingus::DrawingContext& gc);
+
+  void push(Pingus::SceneContext& gc);
+  void pop (Pingus::SceneContext& gc);
 
   /** Return a rectangle in world coordinates that represents the area
       visible on the screen */

@@ -36,7 +36,7 @@ public:
 
   ActionName get_type () const { return Actions::Splashed; }
 
-  void draw (DrawingContext& gc);
+  void draw (SceneContext& gc);
   void update ();
 
   bool catchable () { return false; }

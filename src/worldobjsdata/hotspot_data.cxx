@@ -31,17 +31,6 @@ HotspotData::HotspotData () : speed(-1), para(1.0)
 {
 }
 
-void
-HotspotData::write_xml(std::ostream& xml)
-{
-  xml << "<hotspot>\n";
-  XMLhelper::write_desc_xml(xml, desc);
-  XMLhelper::write_vector_xml(xml, pos);
-  xml << "  <speed>"    << speed << "</speed>\n"
-      << "  <parallax>" << para  << "</parallax>\n"
-      << "</hotspot>\n" << std::endl;
-}
-
 HotspotData::HotspotData (xmlDocPtr doc, xmlNodePtr cur)
 {
   XMLFileReader reader(doc, cur);
@@ -63,12 +52,6 @@ void
 HotspotData::insert_WorldObjs (World* world)
 {
   world->add_object(new WorldObjs::Hotspot(*this));
-}
-
-void
-HotspotData::insert_EditorObjs (EditorNS::EditorObjMgr* obj_mgr)
-{
-  //  obj_mgr->add(new EditorObjs::HotspotObj(*this));
 }
 
 } // namespace WorldObjsData

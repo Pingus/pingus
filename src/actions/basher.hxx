@@ -63,7 +63,7 @@ public:
 
   ActionName get_type () const { return Actions::Basher; }
 
-  void draw (DrawingContext& gc);
+  void draw (SceneContext& gc);
   void update ();
 
   bool have_something_to_dig ();

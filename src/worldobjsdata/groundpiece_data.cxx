@@ -81,26 +81,11 @@ GroundpieceData::operator= (const GroundpieceData& old)
 GroundpieceData::~GroundpieceData ()
 {
 }
-void
-GroundpieceData::insert_EditorObjs (EditorNS::EditorObjMgr* obj_mgr)
-{
-  //  obj_mgr->add(new EditorObjs::GroundpieceObj(*this));
-}
 
 void
 GroundpieceData::insert_WorldObjs (World* world)
 {
   world->add_object(new WorldObjs::Groundpiece(*this));
-}
-
-void
-GroundpieceData::write_xml(std::ostream& xml)
-{
-  xml << "<worldobj type=\"groundpiece\">\n";
-  xml << "  <type>" << Groundtype::type_to_string(gptype) << "</type>\n";
-  XMLhelper::write_desc_xml(xml, desc);
-  XMLhelper::write_vector_xml(xml, pos);
-  xml << "</worldobj>\n" << std::endl;
 }
 
 void

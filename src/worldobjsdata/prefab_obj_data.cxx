@@ -43,27 +43,10 @@ PrefabObjData::PrefabObjData (xmlDocPtr doc, xmlNodePtr cur)
 }
 
 void
-PrefabObjData::write_xml (std::ostream& xml)
-{
-  xml << "<prefab>\n"
-      << "  <type>" << type << "</type>\n";
-  XMLhelper::write_vector_xml(xml, pos);
-  xml << "</prefab>\n" << std::endl;
-}
-
-void
 PrefabObjData::insert_WorldObjs (World* world)
 {
   std::cout << "PrefabObjData::insert_WorldObjs (World* world)" << std::endl;
   data->get_data()->insert_WorldObjs(world);
-}
-
-void
-PrefabObjData::insert_EditorObjs (EditorNS::EditorObjMgr* obj_mgr)
-{
-  //std::cout << "PrefabObjData::insert_EditorObjs (EditorNS::EditorObjMgr* obj_mgr)" << std::endl;
-  // FIXME: Wrong
-  //data->get_data()->insert_EditorObjs(obj_mgr);
 }
 
 } // namespace WorldObjsData

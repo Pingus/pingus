@@ -20,7 +20,7 @@
 #include <iostream>
 #include <ClanLib/Display/pixel_buffer.h>
 #include "../col_map.hxx"
-#include "../display/drawing_context.hxx"
+#include "../display/scene_context.hxx"
 #include "../pingu.hxx"
 #include "../pingu_holder.hxx"
 #include "../resource.hxx"
@@ -78,9 +78,9 @@ Bumper::on_startup ()
 }
 
 void
-Bumper::draw (DrawingContext& gc)
+Bumper::draw (SceneContext& gc)
 {
-  gc.draw(data->surface, data->pos, count);
+  gc.color().draw(data->surface, data->pos, count);
 }
 
 void

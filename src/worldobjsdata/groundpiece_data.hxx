@@ -51,9 +51,6 @@ public:
   ~GroundpieceData ();
 
   void insert_WorldObjs (World*);
-  void insert_EditorObjs (EditorNS::EditorObjMgr*);
-
-  void write_xml (std::ostream& xml);
 
   void serialize(FileWriter& writer);
   void deserialize(FileReader& reader);

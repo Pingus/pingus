@@ -19,7 +19,7 @@
 
 #include <cstdio>
 #include "../col_map.hxx"
-#include "../display/drawing_context.hxx"
+#include "../display/scene_context.hxx"
 #include "../pingu_map.hxx"
 #include "../world.hxx"
 #include "../resource.hxx"
@@ -102,9 +102,9 @@ Digger::dig ()
 }
 
 void
-Digger::draw (DrawingContext& gc)
+Digger::draw (SceneContext& gc)
 {
-  gc.draw(sprite, pingu->get_pos ());
+  gc.color().draw(sprite, pingu->get_pos ());
 }
 
 } // namespace Actions

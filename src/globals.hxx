@@ -42,7 +42,6 @@ extern bool        cursor_enabled;                  ///< --enable-cursor
 extern bool        debug_actions;                   ///< --debug-actions
 extern bool        fast_mode;                       ///< --fast
 extern bool        maintainer_mode;                 ///< --maintainer-mode
-extern bool        start_editor;                    ///<
 extern std::string demo_file;                       ///<
 extern bool        auto_scrolling;                  ///< --enable-auto-scrolling
 extern bool        drag_drop_scrolling; 

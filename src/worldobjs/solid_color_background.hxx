@@ -43,7 +43,7 @@ public:
   float get_z_pos () const { return -10; }
   void update () {}
 
-  void draw (DrawingContext& gc);
+  void draw (SceneContext& gc);
 
 private:
   SolidColorBackground (const SolidColorBackground&);

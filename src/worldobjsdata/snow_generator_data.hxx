@@ -35,9 +35,7 @@ public:
   SnowGeneratorData(xmlDocPtr doc, xmlNodePtr cur);
 
   void insert_WorldObjs (World* world);
-  void insert_EditorObjs (EditorNS::EditorObjMgr*);
 
-  void write_xml(std::ostream& xml);
 private:
   SnowGeneratorData (const SnowGeneratorData&);
   SnowGeneratorData& operator= (const SnowGeneratorData&);

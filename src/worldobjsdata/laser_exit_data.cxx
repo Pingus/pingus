@@ -46,23 +46,9 @@ LaserExitData::LaserExitData (const LaserExitData& old) : WorldObjData(old),
 }
 
 void
-LaserExitData::write_xml (std::ostream& xml)
-{
-  xml << "<worldobj type=\"laser_exit\">\n\t";
-  XMLhelper::write_vector_xml(xml, pos);
-  xml << "</worldobj>\n\n";
-}
-
-void
 LaserExitData::insert_WorldObjs (World* world)
 {
   world->add_object(new WorldObjs::LaserExit(*this));
-}
-
-void
-LaserExitData::insert_EditorObjs (EditorNS::EditorObjMgr* obj_mgr)
-{
-  //  obj_mgr->add(new EditorObjs::LaserExitObj(*this));
 }
 
 } // namespace WorldObjsData

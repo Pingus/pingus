@@ -47,7 +47,7 @@ public:
 
   float get_z_pos () const { return 100; }
   void on_startup ();
-  void draw (DrawingContext& gc);
+  void draw (SceneContext& gc);
   void update ();
 
 private:

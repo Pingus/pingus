@@ -20,7 +20,7 @@
 #include <iostream>
 #include "../worldobjsdata/hotspot_data.hxx"
 #include "../globals.hxx"
-#include "../display/drawing_context.hxx"
+#include "../display/scene_context.hxx"
 #include "../resource.hxx"
 #include "hotspot.hxx"
 
@@ -47,10 +47,10 @@ Hotspot::update()
 }
 
 void
-Hotspot::draw (DrawingContext& gc)
+Hotspot::draw (SceneContext& gc)
 {
   // FIXME: para support doesnn't work correctly
-  gc.draw (sprite, data->pos);
+  gc.color().draw (sprite, data->pos);
 }
 
 float

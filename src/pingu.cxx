@@ -28,7 +28,9 @@
 #include "pingu_action_factory.hxx"
 #include "gettext.h"
 #include "debug.hxx"
+#include "display/scene_context.hxx"
 #include "worldobj.hxx"
+#include "resource.hxx"
 #include "fonts.hxx"
 
 namespace Pingus {
@@ -37,7 +39,8 @@ using namespace Actions;
 
 // Init a pingu at the given position while falling
 Pingu::Pingu (int arg_id, const Vector& arg_pos, int owner)
-  : action(0),
+  : light(Resource::load_sprite("pingus/light")),
+    action(0),
     countdown_action (0),
     wall_action(0),
     fall_action(0),
@@ -50,6 +53,7 @@ Pingu::Pingu (int arg_id, const Vector& arg_pos, int owner)
     pos_y(arg_pos.y),
     velocity(new Vector(0, 0, 0))
 {
+  light.set_blend_func(blend_src_alpha, blend_one);
   direction.left ();
 
   // Initialisize the action, after this step the action ptr will
@@ -338,11 +342,11 @@ Pingu::update ()
 
 // Draws the pingu on the screen with the given offset
 void
-Pingu::draw (DrawingContext& gc)
+Pingu::draw(SceneContext& gc)
 {
   char str[16];
 
-  action->draw (gc);
+  action->draw(gc);
 
   if (action_time != -1)
     {
@@ -351,10 +355,12 @@ Pingu::draw (DrawingContext& gc)
       // FIXME: in ticks, should probally be in seconds]
       snprintf(str, 16, "%d", action_time/3);
 
-      gc.print_center(Fonts::lcd,
-		      static_cast<int>(pos_x), static_cast<int>(pos_y - 45) + 2,
-		      str);
+      gc.color().print_center(Fonts::lcd,
+                              static_cast<int>(pos_x), static_cast<int>(pos_y - 45) + 2,
+                              str);
     }
+
+  gc.light().draw(light, get_center_pos());
 }
 
 int

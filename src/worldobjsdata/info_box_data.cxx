@@ -41,12 +41,6 @@ InfoBoxData::insert_WorldObjs (World* world)
   world->add_object(new WorldObjs::InfoBox(*this));
 }
 
-void
-InfoBoxData::insert_EditorObjs (EditorNS::EditorObjMgr* obj_mgr)
-{
-  //  obj_mgr->add(new EditorObjs::InfoBoxObj(*this));
-}
-
 InfoBoxData::InfoBoxData (xmlDocPtr doc, xmlNodePtr cur)
 {
   XMLFileReader reader(doc, cur);
@@ -60,15 +54,6 @@ InfoBoxData::InfoBoxData (const InfoBoxData& old)
     pos(old.pos),
     text_pos(old.text_pos)
 {
-}
-
-void
-InfoBoxData::write_xml (std::ostream& xml)
-{
-  xml << "  <worldobj type=\"infobox\">\n";
-  XMLhelper::write_vector_xml (xml, pos);
-  xml << "   <info-text>" << info_text << "</info-text>\n"
-      << "  </worldobj>\n" << std::endl;
 }
 
 } // namespace WorldObjsData

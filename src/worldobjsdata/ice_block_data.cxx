@@ -47,24 +47,9 @@ IceBlockData::IceBlockData (xmlDocPtr doc, xmlNodePtr cur)
 }
 
 void
-IceBlockData::write_xml (std::ostream& xml)
-{
-  xml << "  <worldobj type=\"iceblock\">";
-  XMLhelper::write_vector_xml (xml, pos);
-  xml << "    <width>" << width << "</width>\n"
-      << "  </worldobj>\n" << std::endl;
-}
-
-void
 IceBlockData::insert_WorldObjs (World* world)
 {
   world->add_object(new WorldObjs::IceBlock(*this));
-}
-
-void
-IceBlockData::insert_EditorObjs (EditorNS::EditorObjMgr* obj_mgr)
-{
-  //  obj_mgr->add(new EditorObjs::IceBlockObj(*this));
 }
 
 } // namespace WorldObjsData

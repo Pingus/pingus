@@ -32,7 +32,6 @@ bool        cursor_enabled                  = false;
 bool        fast_mode                       = false;
 bool        maintainer_mode                 = false;
 std::string demo_file;
-bool        start_editor                    = false;
 bool        auto_scrolling                  = true;
 bool        drag_drop_scrolling             = false;
 int         tile_size                       = 32;
