@@ -15,10 +15,10 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-SUBDIRS = m4 intl src data doc po
+SUBDIRS = m4 intl src data doc po contrib
 
-EXTRA_DIST = config.rpath autogen.sh pingus.dsp pingus.dsw \
- README.languages BUGS ABOUT-NLS INSTALL.Win32 
+EXTRA_DIST = config.rpath autogen.sh pingus.dsp pingus.dsw ABOUT-NLS  \
+ README.languages INSTALL.Win32 
 
 ACLOCAL_AMFLAGS = -I m4
 

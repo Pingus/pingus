@@ -1,4 +1,4 @@
-//  $Id: layer_manager.cxx,v 1.4 2003/03/24 11:18:53 grumbel Exp $
+//  $Id: layer_manager.cxx,v 1.5 2003/04/11 01:21:21 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,14 +31,7 @@ LayerManager::~LayerManager()
 void
 LayerManager::add_layer (const CL_Surface& sur, float x_o, float y_o, float x_u, float y_u)
 {
-  Layer layer;
-  layer.sur = sur;
-  layer.x_offset = x_o;
-  layer.y_offset = y_o;
-  layer.x_update = x_u;
-  layer.y_update = y_u;
-
-  layers.push_back (layer);
+  layers.push_back (Layer(sur, x_o, y_o, x_u, y_u));
 }
 
 void

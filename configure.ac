@@ -1,4 +1,4 @@
-#  $Id: configure.ac,v 1.9 2003/04/10 21:35:58 grumbel Exp $
+#  $Id: configure.ac,v 1.10 2003/04/11 01:21:21 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -285,6 +285,7 @@ AC_DEFINE_UNQUOTED(LOCALEDIR, "$localedir", [Location of gettext files])
 # po/Makefile will not be generated.
 
 AC_OUTPUT( Makefile  m4/Makefile  intl/Makefile 
+           contrib/Makefile 
            src/Makefile 
            src/actions/Makefile
 	   src/caimagemanipulation/Makefile

@@ -1,4 +1,4 @@
-//  $Id: layer_manager.hxx,v 1.7 2003/03/24 11:18:53 grumbel Exp $
+//  $Id: layer_manager.hxx,v 1.8 2003/04/11 01:21:21 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,52 +30,44 @@ class LayerManager
 private:
   class Layer
   {
-  public:
-    Layer () : x_pos(0.0f), y_pos(0.0f) {
-    }
+  private:
+    CL_Surface sur;
+
+    float x_offset;
+    float y_offset;
     
-    void draw (GraphicContext& gc) {
+    float x_update;
+    float y_update;
+
+    float x_pos;
+    float y_pos;
+
+  public:
+    Layer () 
+      : x_pos(0), y_pos(0),
+        x_update(0), y_update(0),
+        x_offset(0), y_offset(0)
+    {}
+
+    Layer (const CL_Surface& arg_sur, float x_o, float y_o, float x_u, float y_u)
+      : sur(arg_sur),
+        x_pos(0), y_pos(0),
+        x_offset(x_o), y_offset(y_o),
+        x_update(x_u), y_update(y_u)
+    {}
+    
+    void draw (GraphicContext& gc) 
+    {
       gc.draw(sur, int(x_pos + x_offset),
               int(y_pos + y_offset));
       gc.draw(sur, int(x_pos + x_offset - 800),
               int(y_pos + y_offset));
     }
 
-    void update (float delta) {
+    void update (float delta) 
+    {
       x_pos = fmod((x_pos + x_update * delta),800);
       y_pos = fmod((y_pos + y_update * delta),600);
-    }
-    
-    CL_Surface sur;
-    
-    float x_update;
-    float y_update;
-
-    float x_offset;
-    float y_offset;
-
-    float x_pos;
-    float y_pos;
-    
-    Layer (const Layer& old) : sur(old.sur), 
-                               x_update(old.x_update), y_update(old.y_update),
-                               x_offset(old.x_offset), y_offset(old.y_offset),
-			       x_pos(old.x_pos), y_pos(old.y_pos)
-    { }
-
-    Layer& operator= (const Layer& old) {
-      if (this == &old)
-        return *this;
-	
-      sur      = old.sur;
-      x_update = old.x_update;
-      y_update = old.y_update;
-      x_offset = old.x_offset;
-      y_offset = old.y_offset;
-      x_pos    = old.x_pos;
-      y_pos    = old.y_pos;
-      
-      return *this;
     }
   };
 

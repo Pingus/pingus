@@ -1,3 +1,4 @@
+# -*- mode: po; coding: iso-latin-1; -*-
 # Pingus - Ein Freier Lemmings Klone
 # Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 # Ingo Ruhnke <grumbel@gmx.de>, 2000
@@ -6,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Pingus 0.5.0\n"
 "POT-Creation-Date: 2003-04-10 22:58+0200\n"
-"PO-Revision-Date: 2003-04-09 23:12+0200\n"
+"PO-Revision-Date: 2003-04-11 03:15+0200\n"
 "Last-Translator: Ingo Ruhnke <grumbel@gmx.de>\n"
 "Language-Team: Ingo Ruhnke <grumbel@gmx.de>, Giray Devlet <giray@devlet.cc>\n"
 "MIME-Version: 1.0\n"
@@ -27,7 +28,7 @@ msgstr "Unerwartetes Zeichen: '"
 
 #: src/credits.cxx:46
 msgid "-Idea"
-msgstr ""
+msgstr "-Idee"
 
 #: src/credits.cxx:50
 msgid "-Maintaining"
@@ -39,7 +40,7 @@ msgstr "-Programmierung"
 
 #: src/credits.cxx:60
 msgid "-Porting (Win32)"
-msgstr ""
+msgstr "-Portierung (Win32)"
 
 #: src/credits.cxx:68
 msgid "-Gfx"
@@ -51,15 +52,15 @@ msgstr "-Musik"
 
 #: src/credits.cxx:85
 msgid "-Level Design"
-msgstr ""
+msgstr "-Level Design"
 
 #: src/credits.cxx:90
 msgid "-Story"
-msgstr ""
+msgstr "-Geschichte"
 
 #: src/credits.cxx:94
 msgid "-Translation (german)"
-msgstr ""
+msgstr "-Übersetzung (deutsch)"
 
 #: src/credits.cxx:99
 msgid "-Special"
@@ -71,27 +72,27 @@ msgstr "-Dank an"
 
 #: src/credits.cxx:134
 msgid "_And a very Special Thanks"
-msgstr ""
+msgstr "_Und einen besonderen Dank"
 
 #: src/credits.cxx:135
 msgid "_to all the people who"
-msgstr ""
+msgstr "_an alle Leute die"
 
 #: src/credits.cxx:136
 msgid "_contribute to"
-msgstr ""
+msgstr "_an Freier Software"
 
 #: src/credits.cxx:137
 msgid "_Free Software!"
-msgstr ""
+msgstr "_mitarbeiten!"
 
 #: src/credits.cxx:143
 msgid "_Thank you for"
-msgstr ""
+msgstr "_Dankeschön fürs"
 
 #: src/credits.cxx:144
 msgid "_playing!"
-msgstr ""
+msgstr "_spielen!"
 
 #: src/editor/editor_event.cxx:580
 msgid "Enter filename to save as:"
@@ -756,7 +757,7 @@ msgstr "Keine Fähigkeit"
 #: src/pingus_counter.cxx:49
 #, c-format
 msgid "Released:%3d/%-3d   Out:%3d   Saved:%3d/%-3d"
-msgstr "Eingelassen: %3d/%3d  Raus: %3d Gerettet: %3d/%3d"
+msgstr "Rein: %3d/-%3d  Raus: %3d Gerettet: %3d/-%3d"
 
 #: src/pingus_main.cxx:102
 msgid "| segfault_handler: catched a SIGSEGV."
@@ -795,7 +796,7 @@ msgstr ""
 
 #: src/pingus_main.cxx:113
 msgid "| If that doesn't work, try this:"
-msgstr "| Wenn das nicht geht, versuchte dies:"
+msgstr "| Wenn das nicht geht, versuche dies:"
 
 #: src/pingus_main.cxx:115
 msgid "| $ gdb pingus"
@@ -1114,7 +1115,7 @@ msgstr "Bild hat falsche Farbtiefe: %d"
 
 #: src/start_screen.cxx:71
 msgid "Ok"
-msgstr ""
+msgstr "Ok"
 
 #: src/start_screen.cxx:154
 msgid "Number of Pingus: "
