@@ -1,4 +1,4 @@
-//  $Id: woodthing.cxx,v 1.2 2002/06/13 14:25:13 torangan Exp $
+//  $Id: woodthing.cxx,v 1.3 2002/09/18 12:07:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #include "../world.hxx"
 #include "../pingus_resource.hxx"
 #include "../particles/smoke_particle.hxx"
+#include "../graphic_context.hxx"
 #include "../algo.hxx"
 
 #include "woodthing.hxx"
@@ -59,20 +60,12 @@ WoodThing::update(float delta)
 }
 
 void
-WoodThing::draw_offset(int x, int y, float s)
+WoodThing::draw(GraphicContext& gc)
 {
-  if (s == 1.0) 
-    {
-      surface.put_screen(int(pos.x - (surface.get_width()/2) + x),
-			 int(pos.y - surface.get_height() + 32 + y),
-			 counter);
-    }
-  else 
-    {
-      surface.put_screen((int)((pos.x-32 + x) * s),
-			 (int)((pos.y-16 + y) * s),
-			 s, s);  
-    }
+  gc.draw(surface, 
+	  int(pos.x - (surface.get_width()/2)),
+	  int(pos.y - surface.get_height() + 32),
+	  counter);
 }
 
 

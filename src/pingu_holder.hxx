@@ -1,4 +1,4 @@
-//  $Id: pingu_holder.hxx,v 1.5 2002/09/18 10:50:57 grumbel Exp $
+//  $Id: pingu_holder.hxx,v 1.6 2002/09/18 12:07:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -67,7 +67,7 @@ public:
       Pingu */
   Pingu* create_pingu (const CL_Vector& pos, int owner_id);
 
-  float get_z_pos() const { return 50; }
+  float get_z_pos() const;
 
   std::list<Pingu*>::iterator  begin () { return pingus.begin (); }
   std::list<Pingu*>::iterator  end ()   { return pingus.end (); }

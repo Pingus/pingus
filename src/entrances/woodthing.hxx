@@ -1,4 +1,4 @@
-//  $Id: woodthing.hxx,v 1.3 2002/08/23 15:49:55 torangan Exp $
+//  $Id: woodthing.hxx,v 1.4 2002/09/18 12:07:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,7 +33,7 @@ public:
   WoodThing(EntranceData);
 
   void update(float delta);
-  void draw_offset(int x, int y, float s = 1.0);
+  void draw(GraphicContext& gc);
   
 private:
   WoodThing (const WoodThing&);
