@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Pingus 0.5.0\n"
-"POT-Creation-Date: 2001-12-05 01:26+0100\n"
+"POT-Creation-Date: 2001-12-17 21:07+0100\n"
 "PO-Revision-Date: 2001-12-04 22:50+02:00\n"
 "Last-Translator: Giray Devlet <giray@devlet.cc>\n"
 "Language-Team: Giray Devlet <giray@devlet.cc>, Caðrý Çöltekin <cagri@metu."
@@ -118,7 +118,7 @@ msgstr "-Özel"
 msgid "-Thanks to"
 msgstr "-Þükranlarýmýz"
 
-#: src/DemoPlayer.cc:61
+#: src/DemoPlayer.cc:55
 #, fuzzy
 msgid "DemoPlayer: Couldn't load "
 msgstr "Sistem: Açýlamayan dosya: "
@@ -483,8 +483,12 @@ msgstr "Yatay buton paneli"
 msgid "Auto Scrolling"
 msgstr "Otomatik Kaydýrma"
 
+#: src/OptionMenu.cc:229
+msgid "Action Help Strings"
+msgstr ""
+
 #. draw_background();
-#: src/OptionMenu.cc:267
+#: src/OptionMenu.cc:268
 #, fuzzy
 msgid "Pingus Option Menu"
 msgstr "Pingus Seçenekler Menüsü"
@@ -704,7 +708,7 @@ msgstr "(gdb) r"
 msgid "[play until it crashes again]"
 msgstr " [... ve çökene kadar tekrar oyna ... ]"
 
-#: src/PingusMain.cc:282
+#: src/PingusMain.cc:284
 msgid ""
 "\n"
 "=================================================================\n"
@@ -715,7 +719,7 @@ msgid ""
 "=================================================================\n"
 msgstr ""
 
-#: src/PingusMain.cc:325
+#: src/PingusMain.cc:327
 msgid ""
 "\n"
 "Copyright (C) 1998 Ingo Ruhnke <grumbel@pingus.cx>\n"
@@ -730,19 +734,19 @@ msgstr ""
 "özgürce daðýtýlabilir. Ayrýntýlar için kaynak \n"
 "kodunda COPYING belgesini okuyun."
 
-#: src/PingusMain.cc:487
+#: src/PingusMain.cc:496
 msgid "Unknow char: "
 msgstr "Bilinmeyen karakter: "
 
-#: src/PingusMain.cc:488
+#: src/PingusMain.cc:497
 msgid "Usage: "
 msgstr "Kullaným: "
 
-#: src/PingusMain.cc:488
+#: src/PingusMain.cc:497
 msgid " [OPTIONS]... [LEVELFILE]"
 msgstr "[SEÇENEKLER]... [SEVÝYE DOSYASI]"
 
-#: src/PingusMain.cc:490
+#: src/PingusMain.cc:499
 msgid ""
 "\n"
 "Options:\n"
@@ -753,13 +757,13 @@ msgid ""
 "   --disable-intro          Disable intro\n"
 msgstr ""
 
-#: src/PingusMain.cc:499
+#: src/PingusMain.cc:508
 msgid "   -G, --use-opengl         Use OpenGL\n"
 msgstr "   -G, --use-opengl         OpenGL kullan\n"
 
 #. 	"   --fs-preload             Preload all Levelpreviews\n"a
 #. 	"   --disable-previews       Disables all level preview in the level selector\n"
-#: src/PingusMain.cc:503
+#: src/PingusMain.cc:512
 msgid ""
 "   -F, --disable-fullscreen Disable Fullscreen\n"
 "   -f, --enable-fullscreen  Enable Fullscreen (default)\n"
@@ -775,6 +779,8 @@ msgid ""
 "   --disable-auto-scrolling Disable automatic scrolling\n"
 "   --disable-swcursor       Disable software cursor, use hw cursor instead\n"
 "   --enable-swcursor        Enable software cursor\n"
+"   --disable-action-help    Disable action button help strings\n"
+"   --enable-action-help     Enable action button help strings(default)\n"
 "   --no-cfg-file            Don't read ~/.pingus/config\n"
 "   --config-file FILE       Read config from FILE (default: ~/.pingus/"
 "config)\n"
@@ -805,7 +811,7 @@ msgid ""
 "   -p, --play-demo FILE     Plays a demo session from FILE\n"
 msgstr ""
 
-#: src/PingusMain.cc:544
+#: src/PingusMain.cc:555
 msgid ""
 "\n"
 "Sound:\n"
@@ -817,15 +823,15 @@ msgid ""
 "   --audio-buffers INT      Audio buffer (default: 4096)\n"
 msgstr ""
 
-#: src/PingusMain.cc:587
+#: src/PingusMain.cc:598
 msgid "-----------------------------------------------------------------\n"
 msgstr ""
 
-#: src/PingusMain.cc:590
+#: src/PingusMain.cc:601
 msgid " Verbosity set to: "
 msgstr ""
 
-#: src/PingusMain.cc:593
+#: src/PingusMain.cc:604
 msgid ""
 " If you don't like to get lots of debug messages, than set the\n"
 " verbosity down to 0, like this:\n"
@@ -835,33 +841,33 @@ msgid ""
 msgstr ""
 
 # 'Main' yerine baþka biþi uydurmak lazim buraya -gd
-#: src/PingusMain.cc:815
+#: src/PingusMain.cc:826
 msgid "PingusMain: Starting Main: "
 msgstr "PingusMain: Main Baþlatýlýyor: "
 
-#: src/PingusMain.cc:837
+#: src/PingusMain.cc:848
 msgid "PingusMain: Levelfile not found, ignoring: "
 msgstr "PingusMain: Seviye Dosyasý bulunamadý, yok sayýlacak: "
 
-#: src/PingusMain.cc:891
+#: src/PingusMain.cc:902
 msgid "Error caught from ClanLib: "
 msgstr "ClanLib hatasý: "
 
-#: src/PingusMain.cc:895
+#: src/PingusMain.cc:906
 msgid "Error caught from Pingus: "
 msgstr "Pingus'ta hata saptandý: "
 
-#: src/PingusMain.cc:899
+#: src/PingusMain.cc:910
 msgid "Pingus: Out of memory!"
 msgstr "Pingus: Bellek yetersiz!"
 
 # bu komik oldu -cagri
 # daha mi iyi boyle :) -gd
-#: src/PingusMain.cc:903
+#: src/PingusMain.cc:914
 msgid "Pingus: Standard exception caught!:\n"
 msgstr "Pingus: Genel olaðan dýþý durum saptandý!:\n"
 
-#: src/PingusMain.cc:907
+#: src/PingusMain.cc:918
 msgid "Pingus: Unknown throw caught!"
 msgstr "Pingus: Bilinmeyen bir hata saptandý!"
 
