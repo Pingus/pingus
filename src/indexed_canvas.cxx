@@ -1,4 +1,4 @@
-//  $Id: indexed_canvas.cxx,v 1.1 2002/10/12 00:24:26 grumbel Exp $
+//  $Id: indexed_canvas.cxx,v 1.2 2002/10/16 10:27:31 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,21 +19,24 @@
 
 #include "indexed_canvas.hxx"
 
-IndexedCanvas::IndexedCanvas(int width, int height)
+IndexedCanvas::IndexedCanvas(int w, int h)
+  : width(w),
+    height(h),
+    transcol(-1)
 {
   data = new unsigned char [width * height];
-  new IndexedCanvas(10, 10);
 }
 
 IndexedCanvas::~IndexedCanvas()
 {
-  delete data;
+  delete[] data;
 }
 
 void
 IndexedCanvas::set_palette(CL_Palette* p)
 {
-  palette = *p;
+  assert(p);
+  memcpy(palette.palette, p->palette, p->num_colors*3);
 }
 
 CL_Palette*

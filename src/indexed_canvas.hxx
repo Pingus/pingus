@@ -1,4 +1,4 @@
-//  $Id: indexed_canvas.hxx,v 1.1 2002/10/12 00:24:26 grumbel Exp $
+//  $Id: indexed_canvas.hxx,v 1.2 2002/10/16 10:27:31 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,11 +25,12 @@
 
 /** This class is analog to CL_Canvas, but instead of being true
     color, it is indexed */
-class IndexedCanvas : public CL_SurfaceProvider_Generic
+class IndexedCanvas : public CL_SurfaceProvider
 {
 private:
   unsigned int width;
   unsigned int height;
+  int transcol;
   unsigned char* data;
   CL_Palette palette;
 public:
@@ -41,21 +42,26 @@ public:
   unsigned int get_pitch()  const { return width; }
   unsigned int get_height() const { return height; }
 
-  unsigned int   get_num_frames() const { return 1; }
+  unsigned int get_num_frames() const { return 1; }
   void* get_data() const { return data; }
   void  set_palette(CL_Palette*);
   CL_Palette* get_palette() const;
 
-  void perform_lock() {}
-  void perform_unlock() {}
+  void lock() {}
+  void unlock() {}
 
-  bool         uses_src_colorkey() const { return false; }
-  unsigned int get_src_colorkey() const { return 0; }
+  unsigned int get_bytes_per_pixel () const { return 1; }
+  unsigned int get_depth() const { return 8; }
+
+  bool         uses_src_colorkey() const { return transcol != -1; }
+  unsigned int get_src_colorkey() const { return transcol; }
+  void         set_src_colorkey(int t) { transcol = t; }
 
   unsigned int get_red_mask() const { return 0; }
   unsigned int get_green_mask() const { return 0; }
   unsigned int get_blue_mask() const { return 0; }
   unsigned int get_alpha_mask() const { return 0; }
+
 private:
   IndexedCanvas (const IndexedCanvas&);
   IndexedCanvas& operator= (const IndexedCanvas&);

@@ -1,4 +1,4 @@
-//  $Id: blitter.cxx,v 1.17 2002/10/16 09:14:45 grumbel Exp $
+//  $Id: blitter.cxx,v 1.18 2002/10/16 10:27:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,6 +27,7 @@
 #include "math.hxx"
 #include "blitter.hxx"
 #include "debug.hxx"
+#include "indexed_canvas.hxx"
 
 /* Headers needed for i18n / gettext */
 #include <clocale>
@@ -614,22 +615,54 @@ CL_Surface
 Blitter::rotate_90 (const CL_Surface& sur)
 {
   CL_SurfaceProvider* prov = sur.get_provider ();
-  CL_Canvas* canvas = new CL_Canvas (sur.get_height (), sur.get_width ());
 
-  prov->lock ();
-  canvas->lock ();
+  if (prov->is_indexed())
+    {
+      std::cout << "Using indexed blitter" << std::endl;
+      int pwidth  = prov->get_width();
+      int pheight = prov->get_height();
 
-  float r, b, g, a;
-  for (unsigned int y = 0; y < sur.get_height (); ++y)
-    for (unsigned int x = 0; x < sur.get_width (); ++x)
-      {
-	prov->get_pixel (x, y, &r, &g, &b, &a);
-	canvas->draw_pixel (sur.get_height () - 1 - y, x , r, g, b, a);
-      }
+      IndexedCanvas* canvas = new IndexedCanvas(pheight, pwidth);
+      if (prov->uses_src_colorkey())
+        canvas->set_src_colorkey(prov->get_src_colorkey());
+      
+      prov->lock ();
+      canvas->lock ();
 
-  canvas->unlock ();
-  prov->unlock ();
-  return CL_Surface(canvas, true);
+      canvas->set_palette(prov->get_palette());
+
+      unsigned char* source_buf = static_cast<unsigned char*>(prov->get_data());
+      unsigned char* target_buf = static_cast<unsigned char*>(canvas->get_data());
+
+      for (int y = 0; y < pheight; ++y)
+        for (int x = 0; x < pwidth; ++x)
+          {
+            target_buf[x * pheight + (pheight - y - 1)] = source_buf[y * pwidth + x];
+          }
+
+      canvas->unlock ();
+      prov->unlock ();
+      return CL_Surface(canvas, true);     
+    }
+  else
+    {
+      CL_Canvas* canvas = new CL_Canvas (sur.get_height (), sur.get_width ());
+
+      prov->lock ();
+      canvas->lock ();
+
+      float r, b, g, a;
+      for (unsigned int y = 0; y < sur.get_height (); ++y)
+        for (unsigned int x = 0; x < sur.get_width (); ++x)
+          {
+            prov->get_pixel (x, y, &r, &g, &b, &a);
+            canvas->draw_pixel (sur.get_height () - 1 - y, x , r, g, b, a);
+          }
+
+      canvas->unlock ();
+      prov->unlock ();
+      return CL_Surface(canvas, true);
+    }
 }
 
 
