@@ -195,6 +195,10 @@ SOURCE=.\src\actions\RocketLauncher.cc
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\actions\Slider.cc
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\actions\smashed.cc
 # End Source File
 # Begin Source File
