@@ -17,8 +17,8 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <ClanLib/Core/System/clanstring.h>
 #include "../worldobjsdata/hotspot_data.hxx"
-#include "../string_converter.hxx"
 #include "hotspot_obj.hxx"
 
 namespace Pingus {
@@ -47,9 +47,9 @@ std::string
 HotspotObj::status_line ()
 {
   return "Hotspot: "
-         + to_string(data->pos.x) + ", "
-	 + to_string(data->pos.y) + ", "
-	 + to_string(data->pos.z);
+         + CL_String::to(data->pos.x) + ", "
+	 + CL_String::to(data->pos.y) + ", "
+	 + CL_String::to(data->pos.z);
 }
 
 } // namespace EditorObjs

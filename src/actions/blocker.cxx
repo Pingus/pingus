@@ -22,7 +22,6 @@
 #include "../col_map.hxx"
 #include "../gui/graphic_context.hxx"
 #include "../pingu.hxx"
-#include "../string_converter.hxx"
 #include "../pingu_holder.hxx"
 #include "../world.hxx"
 #include "blocker.hxx"

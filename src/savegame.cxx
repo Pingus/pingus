@@ -18,15 +18,15 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
+#include <ClanLib/Core/System/clanstring.h>
 #include "xml_file_reader.hxx"
 #include "xml_file_writer.hxx"
-#include "string_converter.hxx"
 #include "savegame.hxx"
 
 namespace Pingus {
 
 std::string
-Savegame::status_to_string (S_Status status)
+Savegame::status_to_string(S_Status status)
 {
   switch (status)
     {
@@ -45,7 +45,7 @@ Savegame::status_to_string (S_Status status)
 Savegame::S_Status
 Savegame::string_to_status (std::string str)
 {
-  str = string_downcase(str);
+  str = CL_String::to_lower(str);
   if (str == "accessible")
     return ACCESSIBLE;
   else if (str == "finished")

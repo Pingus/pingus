@@ -21,7 +21,6 @@
 #include "../gui/graphic_context.hxx"
 #include "../pingu.hxx"
 #include "../resource.hxx"
-#include "../string_converter.hxx"
 #include "boarder.hxx"
 
 namespace Pingus {

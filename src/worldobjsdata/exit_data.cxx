@@ -19,7 +19,6 @@
 
 #include <iostream>
 #include "../world.hxx"
-#include "../string_converter.hxx"
 #include "../xml_helper.hxx"
 #include "../xml_file_reader.hxx"
 #include "../editorobjs/exit_obj.hxx"

@@ -24,7 +24,6 @@
 #include "../world.hxx"
 #include "../resource.hxx"
 #include "../sound/sound.hxx"
-#include "../string_converter.hxx"
 #include "../pingu.hxx"
 #include "digger.hxx"
 

@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
+#include <ClanLib/Core/System/clanstring.h>
 #include "gettext.h"
 #include "sprite.hxx"
 #include "gui/surface_button.hxx"
@@ -27,7 +28,6 @@
 #include "resource.hxx"
 #include "fonts.hxx"
 #include "plf.hxx"
-#include "string_converter.hxx"
 #include "game_session.hxx"
 #include "system.hxx"
 #include "sound/sound.hxx"
@@ -230,11 +230,11 @@ ResultScreenComponent::draw(GraphicContext& gc)
   int y = CL_Display::get_height()/2 + 10;
 
   gc.print_left(Fonts::chalk_normal,  left_x,  y, _("Saved: "));
-  gc.print_right(Fonts::chalk_normal, right_x, y, to_string(result.saved)
-                 + "/" + to_string(result.needed));;
+  gc.print_right(Fonts::chalk_normal, right_x, y, CL_String::to(result.saved)
+                 + "/" + CL_String::to(result.needed));;
 
   gc.print_left(Fonts::chalk_normal,  left_x,  y+=30, _("Died: "));
-  gc.print_right(Fonts::chalk_normal, right_x, y, to_string(result.killed));
+  gc.print_right(Fonts::chalk_normal, right_x, y, CL_String::to(result.killed));
 
 
   gc.print_left(Fonts::chalk_normal,   left_x, y+=30, _("Time left: "));

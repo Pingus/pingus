@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
+#include <ClanLib/Core/System/clanstring.h>
 #include "sprite.hxx"
 #include "gui/gui_manager.hxx"
 #include "gui/surface_button.hxx"
@@ -26,7 +27,6 @@
 #include "gettext.h"
 #include "game_session.hxx"
 #include "globals.hxx"
-#include "string_converter.hxx"
 #include "system.hxx"
 #include "fonts.hxx"
 #include "plf.hxx"
@@ -156,16 +156,16 @@ StartScreenComponent::draw(GraphicContext& gc)
                 format_description(800 - 230));
 
   gc.print_left (Fonts::chalk_normal, left_x,  y, _("Number of Pingus: "));
-  gc.print_right(Fonts::chalk_normal, right_x, y, to_string(plf->get_pingus()));
+  gc.print_right(Fonts::chalk_normal, right_x, y, CL_String::to(plf->get_pingus()));
 
   gc.print_left (Fonts::chalk_normal, left_x,  y += 30, _("Number to Save: "));
-  gc.print_right(Fonts::chalk_normal, right_x, y, to_string(plf->get_number_to_save()));
+  gc.print_right(Fonts::chalk_normal, right_x, y, CL_String::to(plf->get_number_to_save()));
 
   gc.print_left (Fonts::chalk_normal, left_x,  y += 30, _("Time: "));
   gc.print_right(Fonts::chalk_normal, right_x, y, time_str);
 
   gc.print_left (Fonts::chalk_normal, left_x,  y += 30, _("Difficulty:"));
-  gc.print_right(Fonts::chalk_normal, right_x, y, to_string(plf->get_difficulty()) + "/100");
+  gc.print_right(Fonts::chalk_normal, right_x, y, CL_String::to(plf->get_difficulty()) + "/100");
 
   /*for (int i = 0; plf->get_difficulty())
     {

@@ -51,8 +51,8 @@ bool
 ResDescriptor::operator<(const ResDescriptor& res_desc) const
 {
   // FIXME: This is ugly and slow
-  //return (datafile + res_name + to_string (type) + to_string (modifier))
-  //  < (res_desc.datafile + res_desc.res_name + to_string (res_desc.type) + to_string (res_desc.modifier));
+  //return (datafile + res_name + CL_String::to (type) + to_string (modifier))
+  //  < (res_desc.datafile + res_desc.res_name + CL_String::to (res_desc.type) + to_string (res_desc.modifier));
 
   if (datafile < res_desc.datafile)
     return true;

@@ -127,7 +127,7 @@ ResourceModifier rotate_270 (ResourceModifier modifier)
     }
 }
 
-std::string rs_to_string (ResourceModifier modifier)
+std::string rs_to_string(ResourceModifier modifier)
 {
   switch (modifier)
     {

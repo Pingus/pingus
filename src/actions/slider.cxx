@@ -20,7 +20,6 @@
 #include "../resource.hxx"
 #include "../col_map.hxx"
 #include "../gui/graphic_context.hxx"
-#include "../string_converter.hxx"
 #include "../pingu.hxx"
 #include "slider.hxx"
 

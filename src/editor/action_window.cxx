@@ -19,10 +19,10 @@
 
 #include <iostream>
 #include <algorithm>
+#include <ClanLib/Core/System/clanstring.h>
 #include <ClanLib/GUI/window.h>
 #include <ClanLib/GUI/checkbox.h>
 #include <ClanLib/GUI/inputbox.h>
-#include "../string_converter.hxx"
 #include "action_window.hxx"
 
 /***************************
@@ -60,7 +60,7 @@ ActionWindow::ActionWindow (CL_Component* arg_parent, std::vector<ActionData>* a
   for (std::vector<ActionData>::iterator i = default_actions.begin (); i != default_actions.end (); ++i)
     {
       checkboxes.push_back(new CL_CheckBox(CL_Point (10, y), action_to_screenname(i->name), window));
-      inputs.push_back(new CL_InputBox (CL_Rect(100, y, 190, 0), to_string(i->number_of), window));
+      inputs.push_back(new CL_InputBox (CL_Rect(100, y, 190, 0), CL_String::to(i->number_of), window));
       y += 20;
     }
 
@@ -133,12 +133,12 @@ ActionWindow::read_data ()
       if (act == actions->end ())
 	{
 	  checkboxes[i]->set_checked (false);
-	  //inputs[i]->set_text (to_string(0));
+	  //inputs[i]->set_text (CL_String::to(0));
 	}
       else
 	{
 	  checkboxes[i]->set_checked (true);
-	  inputs[i]->set_text (to_string(act->number_of));
+	  inputs[i]->set_text (CL_String::to(act->number_of));
 	}
     }
 }
@@ -157,14 +157,14 @@ ActionWindow::write_data ()
 	  if (act == actions->end ())
 	    {
 	      ActionData data;
-	      from_string(inputs[i]->get_text (), data.number_of);
+	      CL_String::from(inputs[i]->get_text (), data.number_of);
 	      data.name = default_actions[i].name;
 
 	      actions->push_back (data);
 	    }
 	  else
 	    {
-	      from_string(inputs[i]->get_text (), act->number_of);
+	      CL_String::from(inputs[i]->get_text (), act->number_of);
 	    }
 	}
       else

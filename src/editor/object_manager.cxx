@@ -258,7 +258,7 @@ ObjectManager::save_level_xml (const std::string & filename)
   // Printing actions to file
   xml << "  <action-list>\n";
   for (std::vector<ActionData>::iterator i = actions.begin(); i != actions.end(); ++i) {
-    xml << "    <" << action_to_string((*i).name) << " count=\"" << (*i).number_of << "\"/>" << std::endl;
+    xml << "    <" << action_CL_String::to((*i).name) << " count=\"" << (*i).number_of << "\"/>" << std::endl;
   }
   xml << "  </action-list>\n" << std::endl;
 

@@ -21,6 +21,7 @@
 #include <stdio.h>
 #include <ClanLib/Display/display.h>
 #include <ClanLib/Display/font.h>
+#include <ClanLib/Core/System/clanstring.h>
 #include "globals.hxx"
 #include "resource.hxx"
 #include "time_display.hxx"
@@ -30,7 +31,6 @@
 #include "plf.hxx"
 #include "game_time.hxx"
 #include "fonts.hxx"
-#include "string_converter.hxx"
 
 namespace Pingus {
 
@@ -62,7 +62,7 @@ TimeDisplay::draw (GraphicContext& gc)
       else
 	{
 	  time_value = server->get_world()->get_time_passed();
-	  time_string = to_string(time_value);
+	  time_string = CL_String::to(time_value);
 	}
       {
         CL_Font myfont = font;

@@ -18,7 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <ClanLib/Display/font.h>
-
+#include <ClanLib/Core/System/clanstring.h>
 #include "vector.hxx"
 #include "pingu.hxx"
 #include "resource.hxx"
@@ -26,7 +26,6 @@
 #include "pingu_action.hxx"
 #include "button_panel.hxx"
 #include "globals.hxx"
-#include "string_converter.hxx"
 #include "fonts.hxx"
 
 namespace Pingus {
@@ -120,7 +119,7 @@ CaptureRectangle::set_pingu (Pingu* p)
       if (maintainer_mode)
         {
           action_str += " Id: ";
-          action_str += to_string(pingu->get_id());
+          action_str += CL_String::to(pingu->get_id());
         }
     }
 }

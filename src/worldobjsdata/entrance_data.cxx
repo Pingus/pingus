@@ -23,7 +23,6 @@
 #include "../worldobjs/entrances/woodthing.hxx"
 #include "../worldobjs/entrances/cloud.hxx"
 #include "../pingus_error.hxx"
-#include "../string_converter.hxx"
 #include "../xml_helper.hxx"
 #include "../xml_file_reader.hxx"
 #include "../editor/editorobj_mgr.hxx"

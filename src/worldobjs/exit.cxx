@@ -18,12 +18,12 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
+#include <ClanLib/Core/System/clanstring.h>
 #include "../gui/graphic_context.hxx"
 #include "../col_map.hxx"
 #include "../world.hxx"
 #include "../globals.hxx"
 #include "../pingu_holder.hxx"
-#include "../string_converter.hxx"
 #include "../pingu.hxx"
 #include "../worldobjsdata/exit_data.hxx"
 #include "../smallmap.hxx"
@@ -36,7 +36,7 @@ Exit::Exit (const WorldObjsData::ExitData& data_)
   : data(new WorldObjsData::ExitData(data_)),
     sprite(data->desc.res_name, data->desc.datafile,
            10.0f),
-    flag("misc/flag" + to_string(data->owner_id), "core"),
+    flag("misc/flag" + CL_String::to(data->owner_id), "core"),
     smallmap_symbol("misc/smallmap_exit", "core")
 {
   flag.set_align_center_bottom();

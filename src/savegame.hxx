@@ -35,7 +35,7 @@ public:
                 ACCESSIBLE, // level is accessible and can be played
                 NONE };      // level is not finished and cannot be accessed
 
-  static std::string status_to_string (S_Status s);
+  static std::string status_to_string(S_Status s);
   static S_Status string_to_status (std::string s);
 
   std::string levelname;

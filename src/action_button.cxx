@@ -18,7 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <ClanLib/display.h>
-
+#include <ClanLib/Core/System/clanstring.h>
 #include "globals.hxx"
 #include "cheat.hxx"
 #include "resource.hxx"
@@ -26,7 +26,6 @@
 #include "true_server.hxx"
 #include "world.hxx"
 #include "gui/graphic_context.hxx"
-#include "string_converter.hxx"
 #include "gui/display.hxx"
 #include "fonts.hxx"
 
@@ -162,7 +161,7 @@ VerticalActionButton::draw (GraphicContext& gc)
     }
   else
     {
-      std::string str = to_string(action_holder->get_available(name));
+      std::string str = CL_String::to(action_holder->get_available(name));
       myfont.set_alignment(origin_top_center);
       myfont.draw(x_pos + 46, y_pos + 5, str.c_str ());
     }

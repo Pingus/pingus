@@ -18,13 +18,13 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <cassert>
+#include <ClanLib/Core/System/clanstring.h>
 #include "../col_map.hxx"
 #include "../gui/graphic_context.hxx"
 #include "../pingu.hxx"
 #include "../pingu_map.hxx"
 #include "../resource.hxx"
 #include "../sound/sound.hxx"
-#include "../string_converter.hxx"
 #include "../world.hxx"
 #include "../gettext.h"
 #include "bridger.hxx"
@@ -37,7 +37,7 @@ Bridger::Bridger (Pingu* p)
     mode(B_BUILDING),
     bricks(MAX_BRICKS),
     block_build(false),
-    name(_("Bridger") + std::string(" (") + to_string(bricks) + ")")
+    name(_("Bridger") + std::string(" (") + CL_String::to(bricks) + ")")
 {
   walk_sprite.load (Direction::LEFT,  Resource::load_sprite("pingus/bridger_walk/left"));
   walk_sprite.load (Direction::RIGHT, Resource::load_sprite("pingus/bridger_walk/right"));
@@ -210,7 +210,7 @@ void
 Bridger::place_a_brick()
 {
   bricks--;
-  name = _("Bridger") + std::string(" (") + to_string(bricks) + ")";
+  name = _("Bridger") + std::string(" (") + CL_String::to(bricks) + ")";
 
   if (bricks < 4)
     Sound::PingusSound::play_sound("ting");

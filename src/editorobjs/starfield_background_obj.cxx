@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <ClanLib/Core/System/clanstring.h>
 #include "starfield_background_obj.hxx"
 #include "../worldobjsdata/starfield_background_data.hxx"
 #include "../editor/editor.hxx"
@@ -58,9 +59,9 @@ std::string
 StarfieldBackgroundObj::status_line ()
 {
   return "StarfieldBackground: "
-	 + to_string (pos.x) + ", "
-	 + to_string (pos.y) + ", "
-	 + to_string (pos.z);
+	 + CL_String::to(pos.x) + ", "
+	 + CL_String::to(pos.y) + ", "
+	 + CL_String::to(pos.z);
 }
 
 

@@ -18,10 +18,10 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
+#include <ClanLib/Core/System/clanstring.h>
 #include "pingus_error.hxx"
 #include "worldobj_data_factory.hxx"
 #include "xml_helper.hxx"
-#include "string_converter.hxx"
 
 #include "worldobjsdata/bumper_data.hxx"
 #include "worldobjsdata/conveyor_belt_data.hxx"
@@ -181,7 +181,7 @@ WorldObjDataFactory::create (const std::string& id,
 
   if (it == factories.end())
     PingusError::raise("WorldObjDataFactory: Invalid id: '" + id + "' at line "
-		       + to_string(XMLhelper::get_line(cur)));
+		       + CL_String::to(XMLhelper::get_line(cur)));
   else
     return it->second->create (doc, cur);
 

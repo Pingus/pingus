@@ -18,13 +18,13 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <assert.h>
+#include <ClanLib/Core/System/clanstring.h>
 #include <ClanLib/GUI/label.h>
 #include <ClanLib/GUI/inputbox.h>
 #include <ClanLib/GUI/radiogroup.h>
 #include <ClanLib/GUI/radiobutton.h>
 #include <ClanLib/GUI/listbox.h>
 #include <ClanLib/GUI/checkbox.h>
-#include "../string_converter.hxx"
 #include "generic_property_frame.hxx"
 
 namespace Pingus {
@@ -41,7 +41,7 @@ public:
     : value(_value)
   {
     label     = new CL_Label(CL_Rect(10, y_pos, 90, y_pos + 20), name, parent);
-    input_box = new CL_InputBox(CL_Rect(110, y_pos, 190, y_pos + 20), to_string(*value), parent);
+    input_box = new CL_InputBox(CL_Rect(110, y_pos, 190, y_pos + 20), CL_String::to(*value), parent);
   }
 
   virtual ~IntegerDataBox()
@@ -52,12 +52,12 @@ public:
 
   void read_data()
   {
-    input_box->set_text(to_string(*value));
+    input_box->set_text(CL_String::to(*value));
   }
 
   void write_data()
   {
-    from_string(input_box->get_text(), *value);
+    CL_String::from(input_box->get_text(), *value);
   }
 };
 
@@ -72,7 +72,7 @@ public:
     : value(_value)
   {
     label     = new CL_Label(CL_Rect(10, y_pos, 90, y_pos + 20), name, parent);
-    input_box = new CL_InputBox(CL_Rect(110, y_pos, 190, y_pos + 20), to_string(*value), parent);
+    input_box = new CL_InputBox(CL_Rect(110, y_pos, 190, y_pos + 20), CL_String::to(*value), parent);
   }
 
   virtual ~FloatDataBox()
@@ -83,12 +83,12 @@ public:
 
   void read_data()
   {
-    input_box->set_text(to_string(*value));
+    input_box->set_text(CL_String::to(*value));
   }
 
   void write_data()
   {
-    from_string(input_box->get_text(), *value);
+    CL_String::from(input_box->get_text(), *value);
   }
 };
 

@@ -20,7 +20,6 @@
 #include "../col_map.hxx"
 #include "../globals.hxx"
 #include "../gui/graphic_context.hxx"
-#include "../string_converter.hxx"
 #include "../pingu.hxx"
 #include "../debug.hxx"
 #include "walker.hxx"

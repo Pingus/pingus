@@ -59,7 +59,7 @@ std::string action_to_screenname (ActionName action)
     }
 }
 
-std::string action_to_string (ActionName action)
+std::string action_to_string(ActionName action)
 {
   switch (action)
     {

@@ -21,7 +21,6 @@
 //#include "../particles/particle_holder.hxx"
 //#include "../particles/explosive_particle.hxx"
 #include "../world.hxx"
-#include "../string_converter.hxx"
 #include "../resource.hxx"
 #include "../pingu.hxx"
 #include "../worldobj.hxx"

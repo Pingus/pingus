@@ -266,8 +266,6 @@ story.hxx \
 story.cxx \
 story_screen.hxx \
 story_screen.cxx \
-string_converter.cxx \
-string_converter.hxx \
 string_format.cxx \
 string_format.hxx \
 string_tokenizer.cxx \

@@ -19,7 +19,7 @@
 
 #include <assert.h>
 #include <iostream>
-#include "string_converter.hxx"
+#include <ClanLib/Core/System/clanstring.h>
 #include "pingus_error.hxx"
 #include "server.hxx"
 #include "world.hxx"
@@ -41,7 +41,7 @@ ServerEvent::ServerEvent(xmlDocPtr doc, xmlNodePtr cur)
       std::string time_stamp_str;
 
       assert(XMLhelper::get_prop(cur, "time", time_stamp_str));
-      from_string(time_stamp_str, time_stamp);
+      CL_String::from(time_stamp_str, time_stamp);
     }
   else if (XMLhelper::equal_str(cur->name, "pingu-action"))
     {
@@ -54,8 +54,8 @@ ServerEvent::ServerEvent(xmlDocPtr doc, xmlNodePtr cur)
       assert(XMLhelper::get_prop(cur, "id",     pingu_id_str));
       assert(XMLhelper::get_prop(cur, "action", pingu_action_str));
 
-      from_string(time_stamp_str, time_stamp);
-      from_string(pingu_id_str,   pingu_id);
+      CL_String::from(time_stamp_str, time_stamp);
+      CL_String::from(pingu_id_str,   pingu_id);
       pingu_action = Actions::action_from_string(pingu_action_str);
     }
   else
@@ -71,10 +71,10 @@ ServerEvent::write_xml(std::ostream& xml) const
   switch(type)
     {
     case ARMAGEDDON_EVENT:
-      xml << "  <armageddon time=\"" << to_string(time_stamp) << "\"/>" << std::endl;
+      xml << "  <armageddon time=\"" << CL_String::to(time_stamp) << "\"/>" << std::endl;
       break;
     case PINGU_ACTION_EVENT:
-      xml << "  <pingu-action time=\"" << to_string(time_stamp) << "\" id=\"" << pingu_id
+      xml << "  <pingu-action time=\"" << CL_String::to(time_stamp) << "\" id=\"" << pingu_id
 	  << "\" action=\"" << Actions::action_to_string(pingu_action) << "\"/>" << std::endl;
       break;
     default:

@@ -25,7 +25,6 @@
 #include "../pingu.hxx"
 #include "../pingu_enums.hxx"
 #include "../pingu_map.hxx"
-#include "../string_converter.hxx"
 #include "../world.hxx"
 #include "../resource.hxx"
 #include "../particles/pingu_particle_holder.hxx"

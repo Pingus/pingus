@@ -17,11 +17,11 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <ClanLib/Core/System/clanstring.h>
 #include <ClanLib/Display/input_event.h>
 #include <ClanLib/Display/keys.h>
 #include <ClanLib/Display/mouse.h>
 #include "mouse_button.hxx"
-#include "../../string_converter.hxx"
 #include "../../pingus_error.hxx"
 
 namespace Pingus {
@@ -36,8 +36,8 @@ MouseButton::MouseButton (int button_)
 {
   if (CL_Mouse::get_device().get_button_count() != -1 
       && button > CL_Mouse::get_device().get_button_count())
-    PingusError::raise("MouseButton: Invalid button: " + to_string(button) 
-                       + ", must be smaller than " + to_string(CL_Mouse::get_device().get_button_count()));
+    PingusError::raise("MouseButton: Invalid button: " + CL_String::to(button) 
+                       + ", must be smaller than " + CL_String::to(CL_Mouse::get_device().get_button_count()));
 }
 
 void

@@ -18,8 +18,8 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
+#include <ClanLib/Core/System/clanstring.h>
 #include "object_manager.hxx"
-#include "../string_converter.hxx"
 #include "level_property_window.hxx"
 
 /******************
@@ -60,25 +60,25 @@ LevelPropertyWindow::LevelPropertyWindow (CL_Component* parent, ObjectManager* m
     author_input (CL_Rect(110, 50, 390, 70), manager->get_author (), get_client_area ()),
 
     number_of_pingus_label (CL_Rect (10, 70, 110, 90), "Number of Pingus", get_client_area ()),
-    number_of_pingus_input (CL_Rect(110, 70, 390, 90), to_string (manager->get_number_of_pingus ()),
+    number_of_pingus_input (CL_Rect(110, 70, 390, 90), CL_String::to (manager->get_number_of_pingus ()),
 			    get_client_area ()),
 
     pingus_to_save_label (CL_Rect (10, 90, 90, 110), "Pingus To Save", get_client_area ()),
-    pingus_to_save_input (CL_Rect(110, 90, 390, 110), to_string (manager->get_number_to_save ()),
+    pingus_to_save_input (CL_Rect(110, 90, 390, 110), CL_String::to (manager->get_number_to_save ()),
 			  get_client_area ()),
 
     time_label (CL_Rect (10, 110, 90, 130), "Time", get_client_area ()),
-    time_input (CL_Rect(110, 110, 390, 130), to_string (manager->get_leveltime ()),
+    time_input (CL_Rect(110, 110, 390, 130), CL_String::to (manager->get_leveltime ()),
 		get_client_area ()),
 
     width_label (CL_Rect (10, 130, 90, 150), "Width", get_client_area ()),
-    width_input (CL_Rect(110, 130, 390, 150), to_string(manager->get_width ()), get_client_area ()),
+    width_input (CL_Rect(110, 130, 390, 150), CL_String::to(manager->get_width ()), get_client_area ()),
 
     height_label (CL_Rect (10, 150, 90, 170), "Height", get_client_area ()),
-    height_input (CL_Rect(110, 150, 390, 170), to_string(manager->get_height ()), get_client_area ()),
+    height_input (CL_Rect(110, 150, 390, 170), CL_String::to(manager->get_height ()), get_client_area ()),
 
     difficulty_label (CL_Rect (10, 170, 90, 190), "Difficulty", get_client_area ()),
-    difficulty_input (CL_Rect(110, 170, 390, 190), to_string (manager->get_difficulty ()),
+    difficulty_input (CL_Rect(110, 170, 390, 190), CL_String::to (manager->get_difficulty ()),
 		      get_client_area ()),
 
     comment_label (CL_Rect(10, 190, 90, 210), "Comment", get_client_area ()),
@@ -132,27 +132,27 @@ LevelPropertyWindow::write_data()
   manager->set_author (author_input.get_text());
 
   int number_of_pingus;
-  if (from_string(number_of_pingus_input.get_text(), number_of_pingus))
+  if (CL_String::from(number_of_pingus_input.get_text(), number_of_pingus))
     manager->set_number_of_pingus (number_of_pingus);
 
   int pingus_to_save;
-  if (from_string(pingus_to_save_input.get_text(), pingus_to_save))
+  if (CL_String::from(pingus_to_save_input.get_text(), pingus_to_save))
     manager->set_number_to_save (pingus_to_save);
 
   int time;
-  if (from_string (time_input.get_text(), time))
+  if (CL_String::from (time_input.get_text(), time))
     manager->set_leveltime (time);
 
   int width;
-  if (from_string(width_input.get_text(), width))
+  if (CL_String::from(width_input.get_text(), width))
     manager->set_width(width);
 
   int height;
-  if (from_string(height_input.get_text(), height))
+  if (CL_String::from(height_input.get_text(), height))
     manager->set_height(height);
 
   int difficulty = 40;
-  if (from_string(difficulty_input.get_text(), difficulty))
+  if (CL_String::from(difficulty_input.get_text(), difficulty))
     manager->set_difficulty(difficulty);
 
   manager->set_playable (playable_checkbox.is_checked());
@@ -164,12 +164,12 @@ LevelPropertyWindow::read_data()
   levelname_input.set_text(manager->get_levelname ());
   description_input.set_text(manager->get_description ());
   author_input.set_text(manager->get_author ());
-  number_of_pingus_input.set_text(to_string (manager->get_number_of_pingus ()));
-  pingus_to_save_input.set_text(to_string (manager->get_number_to_save ()));
-  time_input.set_text(to_string (manager->get_leveltime ()));
-  width_input.set_text(to_string(manager->get_width ()));
-  height_input.set_text(to_string(manager->get_height ()));
-  difficulty_input.set_text(to_string (manager->get_difficulty ()));
+  number_of_pingus_input.set_text(CL_String::to (manager->get_number_of_pingus ()));
+  pingus_to_save_input.set_text(CL_String::to (manager->get_number_to_save ()));
+  time_input.set_text(CL_String::to (manager->get_leveltime ()));
+  width_input.set_text(CL_String::to(manager->get_width ()));
+  height_input.set_text(CL_String::to(manager->get_height ()));
+  difficulty_input.set_text(CL_String::to (manager->get_difficulty ()));
   playable_checkbox.set_checked(manager->get_playable ());
 }
 

@@ -26,7 +26,6 @@
 #include "../movers/linear_mover.hxx"
 #include "../pingu.hxx"
 #include "../resource.hxx"
-#include "../string_converter.hxx"
 #include "../world.hxx"
 #include "../worldobj.hxx"
 #include "faller.hxx"

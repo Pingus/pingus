@@ -19,7 +19,7 @@
 
 #include <iostream>
 #include <fstream>
-#include "string_converter.hxx"
+#include <ClanLib/Core/System/clanstring.h>
 #include "xml_helper.hxx"
 #include "system.hxx"
 #include "stat_manager.hxx"
@@ -126,7 +126,7 @@ StatManager::get_int(const std::string& name, int& value)
 {
   std::string str;
   if (get_string(name, str))
-    return from_string(str, value);
+    return CL_String::from(str, value);
   else
     return false;
 }
@@ -136,7 +136,7 @@ StatManager::get_bool(const std::string& name, bool& value)
 {
   std::string str;
   if (get_string(name, str))
-    return from_string(str, value);
+    return CL_String::from(str, value);
   else
     return false;
 }
@@ -166,14 +166,14 @@ StatManager::set_string(const std::string& name, const std::string& value)
 void
 StatManager::set_int(const std::string& name, int value)
 {
-  stats[name] = to_string(value);
+  stats[name] = CL_String::to(value);
   flush();
 }
 
 void
 StatManager::set_bool(const std::string& name, bool value)
 {
-  stats[name] = to_string(value);
+  stats[name] = CL_String::to(value);
   flush();
 }
 

@@ -35,10 +35,10 @@
 #endif
 
 #include <iostream>
+#include <ClanLib/Core/System/clanstring.h>
 
 #include "pingus_error.hxx"
 #include "globals.hxx"
-#include "string_converter.hxx"
 #include "system.hxx"
 #include "gettext.h"
 
@@ -450,7 +450,7 @@ System::checksum (std::string filename)
 
   fclose (in);
 
-  return to_string (checksum);
+  return CL_String::to (checksum);
 }
 
 

@@ -21,7 +21,6 @@
 #define HEADER_PINGUS_EDITOROBJS_STARFIELD_BACKGROUND_OBJ_HXX
 
 #include "../vector.hxx"
-#include "../string_converter.hxx"
 #include "../editor/sprite_editorobj.hxx"
 
 namespace Pingus {

@@ -26,7 +26,6 @@
 #include "../gettext.h"
 #include "../path_manager.hxx"
 #include "../resource.hxx"
-#include "../string_converter.hxx"
 #include "../system.hxx"
 #include "object_manager.hxx"
 #include "string_reader.hxx"
@@ -148,7 +147,7 @@ void
 ObjectSelector::get_groundpiece (const Groundtype::GPType& gptype)
 {
   GroundpieceData data;
-  std::string datafile = std::string("groundpieces-") + Groundtype::type_to_string (gptype);
+  std::string datafile = std::string("groundpieces-") + Groundtype::type_to_string(gptype);
 
   data.pos = pos;
 
@@ -500,7 +499,7 @@ ObjectSelector::get_prefab ()
 
   for (std::vector<std::string>::size_type i = 0; i < dir_lst.size (); ++i)
     {
-      font.draw(20, 60 + i * 30, to_string(i + 1) + " - " + dir_lst[i]);
+      font.draw(20, 60 + i * 30, CL_String::to(i + 1) + " - " + dir_lst[i]);
     }
 
   Display::flip_display();
