@@ -1,4 +1,4 @@
-//  $Id: property_window.cxx,v 1.11 2002/11/28 20:09:54 grumbel Exp $
+//  $Id: property_window.cxx,v 1.12 2002/11/29 22:54:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -64,6 +64,7 @@ PropertyWindow::update_frame (EditorObj* obj)
       else
 	{
 	  label.show (true);
+	  set_title("Property Dialog");
 	  std::cout << "No GUI" << std::endl;
 	  current_frame = 0;
 	  set_client_size (200, 20);

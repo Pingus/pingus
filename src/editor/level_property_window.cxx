@@ -1,4 +1,4 @@
-//  $Id: level_property_window.cxx,v 1.10 2002/09/11 12:45:58 grumbel Exp $
+//  $Id: level_property_window.cxx,v 1.11 2002/11/29 22:54:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -80,7 +80,10 @@ LevelPropertyWindow::LevelPropertyWindow (CL_Component* parent, ObjectManager* m
 		      get_client_area ()),
 
     comment_label (CL_Rect(10, 190, 90, 210), "Comment", get_client_area ()),
-    playable_checkbox (CL_Point(10, 210), "Playable", get_client_area ())
+    playable_checkbox (CL_Point(10, 210), "Playable", get_client_area ()),
+    
+    ok_button(CL_Rect(10, 200, 90, 220), "Ok", get_client_area()),
+    cancel_button(CL_Rect(110, 200, 190, 220), "Cancel", get_client_area())
 {
   if (manager->get_playable ())
     playable_checkbox.set_checked (true);

@@ -1,4 +1,4 @@
-//  $Id: editor.cxx,v 1.40 2002/11/28 20:09:54 grumbel Exp $
+//  $Id: editor.cxx,v 1.41 2002/11/29 22:54:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -142,7 +142,7 @@ Editor::on_shutdown ()
 }
 
 void
-Editor::update (const GameDelta&)
+Editor::update (const GameDelta& delta)
 {
   // Check if the current selection is different then the last one and
   // update the property window if necesarry
@@ -165,6 +165,8 @@ Editor::update (const GameDelta&)
 	  std::cout << "EditorEvent::editor_show_object_properties (): error: multiple objects selected" << std::endl;
 	}
     }  
+
+  object_manager->update(delta.get_time());
 
   move_objects();
 }

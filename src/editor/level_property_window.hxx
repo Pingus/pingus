@@ -1,4 +1,4 @@
-//  $Id: level_property_window.hxx,v 1.8 2002/09/27 11:26:45 torangan Exp $
+//  $Id: level_property_window.hxx,v 1.9 2002/11/29 22:54:22 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -64,6 +64,9 @@ private:
 
   CL_Label    comment_label;
   CL_CheckBox playable_checkbox;
+
+  CL_Button ok_button;
+  CL_Button cancel_button;
 
 public:
   LevelPropertyWindow (CL_Component* parent, ObjectManager*);

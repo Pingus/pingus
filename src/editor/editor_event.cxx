@@ -1,4 +1,4 @@
-//  $Id: editor_event.cxx,v 1.41 2002/11/28 20:09:54 grumbel Exp $
+//  $Id: editor_event.cxx,v 1.42 2002/11/29 22:54:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -45,6 +45,7 @@
 #include "action_window.hxx"
 #include "property_window.hxx"
 #include "level_property_window.hxx"
+#include "level_resizer.hxx"
 #include "../screen_manager.hxx"
 
 namespace EditorNS {
@@ -466,7 +467,8 @@ EditorEvent::editor_mark_all_objects()
       i != object_manager->editor_objs.end(); 
       ++i) 
     {
-      selection->add(*i);
+      if (dynamic_cast<LevelResizer*>(*i) == 0)
+        selection->add(*i);
     }
 }
 

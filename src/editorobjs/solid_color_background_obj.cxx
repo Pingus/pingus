@@ -1,4 +1,4 @@
-//  $Id: solid_color_background_obj.cxx,v 1.4 2002/09/28 11:52:25 torangan Exp $
+//  $Id: solid_color_background_obj.cxx,v 1.5 2002/11/29 22:54:23 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,14 @@
 #include "../string_converter.hxx"
 #include "../editor/editor_view.hxx"
 #include "../worldobjsdata/solid_color_background_data.hxx"
+#include "../editor/editor.hxx"
+#include "../editor/generic_property_frame.hxx"
+#include "../editor/property_window.hxx"
+#include "surface_background_obj.hxx"
+
 #include "solid_color_background_obj.hxx"
+
+using namespace EditorNS;
 
 namespace EditorObjs {
 
@@ -84,6 +91,20 @@ SolidColorBackgroundObj::status_line ()
 	 + to_string(data->pos.x) + ", "
 	 + to_string(data->pos.y) + ", "
 	 + to_string(data->pos.z);
+}
+
+PropertyFrame* 
+SolidColorBackgroundObj::get_gui_dialog(Editor* editor)
+{
+  GenericPropertyFrame* propframe 
+    = new GenericPropertyFrame("SolidColorBackground", editor->get_property_window()->get_client_area());
+
+  propframe->add_float_box("Red", &data->color.red);
+  propframe->add_float_box("Green", &data->color.green);
+  propframe->add_float_box("Blue", &data->color.blue);
+  propframe->add_float_box("Alpha", &data->color.alpha);
+
+  return propframe;
 }
 
 } // namespace EditorObjs

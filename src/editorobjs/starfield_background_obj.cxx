@@ -1,4 +1,4 @@
-//  $Id: starfield_background_obj.cxx,v 1.3 2002/09/28 11:52:25 torangan Exp $
+//  $Id: starfield_background_obj.cxx,v 1.4 2002/11/29 22:54:23 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,12 @@
 
 #include "starfield_background_obj.hxx"
 #include "../worldobjsdata/starfield_background_data.hxx"
+#include "../editor/editor.hxx"
+#include "../editor/generic_property_frame.hxx"
+#include "../editor/property_window.hxx"
+#include "surface_background_obj.hxx"
+
+using namespace EditorNS;
 
 namespace EditorObjs {
 
@@ -56,6 +62,19 @@ StarfieldBackgroundObj::status_line ()
 	 + to_string (pos.z);
 }
 
+
+PropertyFrame* 
+StarfieldBackgroundObj::get_gui_dialog(Editor* editor)
+{
+  GenericPropertyFrame* propframe 
+    = new GenericPropertyFrame("StarfieldBackground", editor->get_property_window()->get_client_area());
+
+  propframe->add_integer_box("Small Stars", &data->small_stars_count);
+  propframe->add_integer_box("Middle Stars", &data->middle_stars_count);
+  propframe->add_integer_box("Large Stars", &data->large_stars_count);
+
+  return propframe;
+}
 
 } // namespace EditorObjs
 

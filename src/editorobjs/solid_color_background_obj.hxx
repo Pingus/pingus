@@ -1,4 +1,4 @@
-//  $Id: solid_color_background_obj.hxx,v 1.5 2002/11/28 20:09:54 grumbel Exp $
+//  $Id: solid_color_background_obj.hxx,v 1.6 2002/11/29 22:54:23 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,12 @@
 #define HEADER_PINGUS_EDITOROBJS_SOLID_COLOR_BACKGROUND_OBJ_HXX
 
 #include "../editor/rect_editorobj.hxx"
+#include "../editor/editor.hxx"
+#include "../editor/generic_property_frame.hxx"
+#include "../editor/property_window.hxx"
+#include "surface_background_obj.hxx"
+
+using namespace EditorNS;
 
 namespace WorldObjsData {
 class SolidColorBackgroundData;
@@ -56,7 +62,7 @@ public:
   void set_position_offset (const Vector& offset);  
 
   std::string status_line ();
-  EditorNS::PropertyFrame* get_gui_dialog(EditorNS::Editor*) { return 0; }  	 
+  EditorNS::PropertyFrame* get_gui_dialog(EditorNS::Editor*);
 private:
   SolidColorBackgroundObj (const SolidColorBackgroundObj&);
   SolidColorBackgroundObj& operator= (const SolidColorBackgroundObj&);

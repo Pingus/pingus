@@ -1,4 +1,4 @@
-//  $Id: object_manager.hxx,v 1.22 2002/10/07 13:12:47 grumbel Exp $
+//  $Id: object_manager.hxx,v 1.23 2002/11/29 22:54:22 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -79,6 +79,7 @@ public:
   /// Save the current level in an xml file
   void save_level_xml (const std::string & filename);
 
+  void update(float delta);
   void draw(EditorView * view);
 
   void delete_all_objs();

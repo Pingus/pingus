@@ -30,6 +30,7 @@ libpingus_editor_a_SOURCES = \
 	groundpiece_window.cxx groundpiece_window.hxx \
         generic_property_frame.cxx generic_property_frame.hxx \
 	level_property_window.cxx level_property_window.hxx \
+        level_resizer.hxx level_resizer.cxx \
 	object_manager.cxx object_manager.hxx \
 	object_selector.cxx object_selector.hxx \
 	panel.cxx panel.hxx \

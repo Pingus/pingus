@@ -1,4 +1,4 @@
-//  $Id: object_manager.cxx,v 1.37 2002/11/27 20:05:42 grumbel Exp $
+//  $Id: object_manager.cxx,v 1.38 2002/11/29 22:54:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,6 +30,7 @@
 #include "../worldobjsdata/worldobj_group_data.hxx"
 #include "../prefab.hxx"
 #include "start_pos.hxx"
+#include "level_resizer.hxx"
 #include "object_manager.hxx"
 #include "editor_view.hxx"
 
@@ -84,6 +85,7 @@ ObjectManager::new_level ()
   
   delete_all_objs();
   editor_objs.push_back(new StartPos(50, 50));
+  editor_objs.push_back(new LevelResizer(this));
 
   // Set some default actions
   actions = default_actions;
@@ -154,11 +156,22 @@ ObjectManager::load_level (const std::string& filename)
   start_y_pos = plf->get_starty();
   actions     = plf->get_actions();
 
+  editor_objs.push_back(new LevelResizer(this));
+
   comment = plf->get_comment ();
   difficulty = plf->get_difficulty ();
   playable = plf->get_playable ();
   
   delete plf;
+}
+
+void
+ObjectManager::update(float delta)
+{
+  for (EditorObjIter i = editor_objs.begin(); i != editor_objs.end(); ++i) 
+    {
+      (*i)->update (delta);
+    }
 }
 
 void 
