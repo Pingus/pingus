@@ -10,6 +10,7 @@
     <time>9000</time>
     <width>1600</width>
     <height>608</height>
+    <comment>I think 4 blockers are needed -Phlog</comment>
   </global>
 
 <background type="surface">

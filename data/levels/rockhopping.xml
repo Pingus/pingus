@@ -12,6 +12,7 @@
     <time>9000</time>
     <width>1216</width>
     <height>800</height>
+    <comment>Pingu that fall to the bottom don't die</comment>
   </global>
 
 <background type="surface">

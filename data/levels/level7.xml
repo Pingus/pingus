@@ -67,7 +67,7 @@
 <exit>
   <position>
     <x-pos>790</x-pos>
-    <y-pos>355</y-pos>
+    <y-pos>360</y-pos>
     <z-pos>0</z-pos>
   </position>
   <surface><resource type="datafile">

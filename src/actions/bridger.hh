@@ -1,4 +1,4 @@
-//  $Id: bridger.hh,v 1.16 2002/02/10 22:14:06 grumbel Exp $
+//  $Id: bridger.hh,v 1.17 2002/04/06 18:43:29 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,7 +23,8 @@
 #include "../GameCounter.hh"
 #include "../PinguAction.hh"
 
-///
+/** 
+ */
 class Bridger : public PinguAction
 {
 private:

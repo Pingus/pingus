@@ -10,6 +10,8 @@
     <time>9000</time>
     <width>1504</width>
     <height>480</height>
+    <comment>no exit, water stops before the final rock,
+    making square water</comment>
   </global>
 
 <background type="surface">

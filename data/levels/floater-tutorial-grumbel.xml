@@ -7,9 +7,11 @@
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
     <number-of-pingus>20</number-of-pingus>
     <number-to-save>10</number-to-save>
-    <time>9000</time>
+    <time>-1</time>
     <width>1230</width>
     <height>900</height>
+    <difficulty>10</difficulty>
+    <playable>1</playable>
   </global>
 
   <action-list>
@@ -505,7 +507,7 @@
     <z-pos>0</z-pos>
   </position>
   <type>generic</type>
-  <direction>misc</direction>
+  <direction>right</direction>
   <release-rate>50</release-rate>
   <owner-id>0</owner-id>
 </entrance>

@@ -1,4 +1,4 @@
-#  $Id: configure.in,v 1.56 2002/02/17 23:49:28 grumbel Exp $
+#  $Id: configure.in,v 1.57 2002/04/06 18:43:29 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -57,6 +57,7 @@ AC_PROG_CXX
 AC_PROG_INSTALL
 AC_PROG_LN_S
 AC_PROG_MAKE_SET
+AC_LANG(C++)
 
 AC_ARG_WITH(gettext,
 	[  --without-gettext       disable support for multiple languages])

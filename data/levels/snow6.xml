@@ -11,6 +11,10 @@
     <time>9000</time>
     <width>1216</width>
     <height>800</height>
+    <comment>drop off on the far right is too high..
+    building up a bridge from the left would be a
+    major hassle.. or just make this a very difficult
+    level.</comment>
   </global>
 
 <background type="surface">

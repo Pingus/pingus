@@ -6,17 +6,20 @@
     <description lang="en">Not to The DANGER!
 
 </description>
-    <author>Carmen M�ller, carmen@othello.ch</author>
-    <number-of-pingus>100</number-of-pingus>
-    <number-to-save>100</number-to-save>
-    <time>9000</time>
+    <author>Carmen MÃÂÃÂ¼ller, carmen@othello.ch</author>
+    <number-of-pingus>30</number-of-pingus>
+    <number-to-save>28</number-to-save>
+    <time>-1</time>
     <width>1216</width>
     <height>608</height>
+    <difficulty>40</difficulty>
+    <playable>1</playable>
+    <comment></comment>
   </global>
 
   <action-list>
-    <basher count="2"/>
-    <jumper count="100"/>
+    <basher count="10"/>
+    <jumper count="50"/>
   </action-list>
 
 <background type="surface">
@@ -38,7 +41,7 @@
   <stretch-y>0</stretch-y>
   <position>
     <x-pos>78</x-pos>
-    <y-pos>42</y-pos>
+    <y-pos>83</y-pos>
     <z-pos>-150</z-pos>
   </position>
 </background>
@@ -47,7 +50,7 @@
   <type>laser_exit</type>
   <position>
     <x-pos>578</x-pos>
-    <y-pos>463</y-pos>
+    <y-pos>504</y-pos>
     <z-pos>-100</z-pos>
   </position>
 </trap>
@@ -59,7 +62,7 @@
   </resource></surface>
   <position>
     <x-pos>185</x-pos>
-    <y-pos>168</y-pos>
+    <y-pos>209</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
@@ -70,8 +73,8 @@
   <resource-ident>GroundPieces/Snow/gpiece1</resource-ident>
   </resource></surface>
   <position>
-    <x-pos>49</x-pos>
-    <y-pos>172</y-pos>
+    <x-pos>35</x-pos>
+    <y-pos>190</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
@@ -83,7 +86,7 @@
   </resource></surface>
   <position>
     <x-pos>426</x-pos>
-    <y-pos>166</y-pos>
+    <y-pos>207</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
@@ -95,7 +98,7 @@
   </resource></surface>
   <position>
     <x-pos>200</x-pos>
-    <y-pos>167</y-pos>
+    <y-pos>208</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
@@ -107,7 +110,151 @@
   </resource></surface>
   <position>
     <x-pos>195</x-pos>
-    <y-pos>162</y-pos>
+    <y-pos>203</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>snow/piece2</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>383</x-pos>
+    <y-pos>195</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>snow/piece2</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>376</x-pos>
+    <y-pos>183</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>snow/piece2</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>39</x-pos>
+    <y-pos>203</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>snow/piece2</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>825</x-pos>
+    <y-pos>182</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>snow/piece2</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>829</x-pos>
+    <y-pos>192</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>snow/piece2</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>834</x-pos>
+    <y-pos>204</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>snow/piece2</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>782</x-pos>
+    <y-pos>180</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>snow/piece2</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>780</x-pos>
+    <y-pos>185</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>snow/piece2</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>779</x-pos>
+    <y-pos>191</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>snow/piece2</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>786</x-pos>
+    <y-pos>206</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>snow/piece2</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>776</x-pos>
+    <y-pos>199</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>snow/piece2</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>364</x-pos>
+    <y-pos>192</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
@@ -119,7 +266,7 @@
   </resource></surface>
   <position>
     <x-pos>470</x-pos>
-    <y-pos>168</y-pos>
+    <y-pos>209</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
@@ -131,7 +278,7 @@
   </resource></surface>
   <position>
     <x-pos>254</x-pos>
-    <y-pos>165</y-pos>
+    <y-pos>206</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
@@ -143,7 +290,7 @@
   </resource></surface>
   <position>
     <x-pos>357</x-pos>
-    <y-pos>168</y-pos>
+    <y-pos>209</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
@@ -155,7 +302,7 @@
   </resource></surface>
   <position>
     <x-pos>725</x-pos>
-    <y-pos>172</y-pos>
+    <y-pos>213</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
@@ -167,7 +314,7 @@
   </resource></surface>
   <position>
     <x-pos>825</x-pos>
-    <y-pos>180</y-pos>
+    <y-pos>221</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
@@ -179,7 +326,7 @@
   </resource></surface>
   <position>
     <x-pos>931</x-pos>
-    <y-pos>179</y-pos>
+    <y-pos>220</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
@@ -191,7 +338,7 @@
   </resource></surface>
   <position>
     <x-pos>975</x-pos>
-    <y-pos>181</y-pos>
+    <y-pos>222</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
@@ -203,7 +350,7 @@
   </resource></surface>
   <position>
     <x-pos>1027</x-pos>
-    <y-pos>178</y-pos>
+    <y-pos>219</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
@@ -215,7 +362,7 @@
   </resource></surface>
   <position>
     <x-pos>875</x-pos>
-    <y-pos>176</y-pos>
+    <y-pos>217</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
@@ -227,7 +374,7 @@
   </resource></surface>
   <position>
     <x-pos>626</x-pos>
-    <y-pos>167</y-pos>
+    <y-pos>208</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
@@ -239,7 +386,7 @@
   </resource></surface>
   <position>
     <x-pos>590</x-pos>
-    <y-pos>166</y-pos>
+    <y-pos>207</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
@@ -251,7 +398,7 @@
   </resource></surface>
   <position>
     <x-pos>501</x-pos>
-    <y-pos>505</y-pos>
+    <y-pos>546</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
@@ -263,7 +410,7 @@
   </resource></surface>
   <position>
     <x-pos>312</x-pos>
-    <y-pos>162</y-pos>
+    <y-pos>203</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
@@ -275,7 +422,7 @@
   </resource></surface>
   <position>
     <x-pos>113</x-pos>
-    <y-pos>165</y-pos>
+    <y-pos>206</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
@@ -287,7 +434,7 @@
   </resource></surface>
   <position>
     <x-pos>594</x-pos>
-    <y-pos>179</y-pos>
+    <y-pos>220</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
@@ -299,7 +446,7 @@
   </resource></surface>
   <position>
     <x-pos>117</x-pos>
-    <y-pos>220</y-pos>
+    <y-pos>261</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
@@ -311,7 +458,7 @@
   </resource></surface>
   <position>
     <x-pos>247</x-pos>
-    <y-pos>165</y-pos>
+    <y-pos>206</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
@@ -323,7 +470,7 @@
   </resource></surface>
   <position>
     <x-pos>75</x-pos>
-    <y-pos>310</y-pos>
+    <y-pos>351</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
@@ -335,7 +482,7 @@
   </resource></surface>
   <position>
     <x-pos>71</x-pos>
-    <y-pos>162</y-pos>
+    <y-pos>203</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
@@ -347,7 +494,7 @@
   </resource></surface>
   <position>
     <x-pos>380</x-pos>
-    <y-pos>503</y-pos>
+    <y-pos>544</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
@@ -359,7 +506,7 @@
   </resource></surface>
   <position>
     <x-pos>475</x-pos>
-    <y-pos>529</y-pos>
+    <y-pos>570</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
@@ -371,7 +518,7 @@
   </resource></surface>
   <position>
     <x-pos>75</x-pos>
-    <y-pos>161</y-pos>
+    <y-pos>202</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
@@ -383,7 +530,7 @@
   </resource></surface>
   <position>
     <x-pos>222</x-pos>
-    <y-pos>162</y-pos>
+    <y-pos>203</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
@@ -395,7 +542,7 @@
   </resource></surface>
   <position>
     <x-pos>380</x-pos>
-    <y-pos>165</y-pos>
+    <y-pos>206</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
@@ -407,7 +554,7 @@
   </resource></surface>
   <position>
     <x-pos>623</x-pos>
-    <y-pos>170</y-pos>
+    <y-pos>211</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
@@ -419,7 +566,7 @@
   </resource></surface>
   <position>
     <x-pos>763</x-pos>
-    <y-pos>175</y-pos>
+    <y-pos>216</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
@@ -431,7 +578,7 @@
   </resource></surface>
   <position>
     <x-pos>532</x-pos>
-    <y-pos>552</y-pos>
+    <y-pos>593</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
@@ -443,7 +590,7 @@
   </resource></surface>
   <position>
     <x-pos>926</x-pos>
-    <y-pos>177</y-pos>
+    <y-pos>218</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
@@ -455,7 +602,7 @@
   </resource></surface>
   <position>
     <x-pos>267</x-pos>
-    <y-pos>309</y-pos>
+    <y-pos>350</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
@@ -467,7 +614,7 @@
   </resource></surface>
   <position>
     <x-pos>613</x-pos>
-    <y-pos>309</y-pos>
+    <y-pos>350</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
@@ -479,7 +626,7 @@
   </resource></surface>
   <position>
     <x-pos>654</x-pos>
-    <y-pos>252</y-pos>
+    <y-pos>293</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
@@ -490,8 +637,8 @@
   <resource-ident>GroundPieces/Snow/xmas-tree</resource-ident>
   </resource></surface>
   <position>
-    <x-pos>366</x-pos>
-    <y-pos>70</y-pos>
+    <x-pos>379</x-pos>
+    <y-pos>109</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
@@ -502,8 +649,20 @@
   <resource-ident>GroundPieces/Snow/snowman</resource-ident>
   </resource></surface>
   <position>
-    <x-pos>766</x-pos>
-    <y-pos>70</y-pos>
+    <x-pos>48</x-pos>
+    <y-pos>100</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Snow/snowman</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>806</x-pos>
+    <y-pos>77</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
@@ -515,7 +674,7 @@
   </resource></surface>
   <position>
     <x-pos>157</x-pos>
-    <y-pos>238</y-pos>
+    <y-pos>279</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
@@ -527,7 +686,7 @@
   </resource></surface>
   <position>
     <x-pos>614</x-pos>
-    <y-pos>249</y-pos>
+    <y-pos>290</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
@@ -539,7 +698,7 @@
   </resource></surface>
   <position>
     <x-pos>841</x-pos>
-    <y-pos>252</y-pos>
+    <y-pos>293</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
@@ -551,7 +710,7 @@
   </resource></surface>
   <position>
     <x-pos>399</x-pos>
-    <y-pos>242</y-pos>
+    <y-pos>283</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
@@ -563,7 +722,7 @@
   </resource></surface>
   <position>
     <x-pos>605</x-pos>
-    <y-pos>168</y-pos>
+    <y-pos>209</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
@@ -575,7 +734,7 @@
   </resource></surface>
   <position>
     <x-pos>419</x-pos>
-    <y-pos>489</y-pos>
+    <y-pos>530</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
@@ -587,7 +746,7 @@
   </resource></surface>
   <position>
     <x-pos>449</x-pos>
-    <y-pos>466</y-pos>
+    <y-pos>507</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
@@ -599,7 +758,7 @@
   </resource></surface>
   <position>
     <x-pos>588</x-pos>
-    <y-pos>463</y-pos>
+    <y-pos>504</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
@@ -611,7 +770,7 @@
   </resource></surface>
   <position>
     <x-pos>477</x-pos>
-    <y-pos>459</y-pos>
+    <y-pos>500</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
@@ -623,7 +782,7 @@
   </resource></surface>
   <position>
     <x-pos>523</x-pos>
-    <y-pos>461</y-pos>
+    <y-pos>502</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
@@ -635,7 +794,7 @@
   </resource></surface>
   <position>
     <x-pos>407</x-pos>
-    <y-pos>461</y-pos>
+    <y-pos>502</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
@@ -647,20 +806,32 @@
   </resource></surface>
   <position>
     <x-pos>628</x-pos>
-    <y-pos>463</y-pos>
+    <y-pos>504</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>snow/piece8</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>762</x-pos>
+    <y-pos>353</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
 
 <entrance>
   <position>
-    <x-pos>208</x-pos>
-    <y-pos>106</y-pos>
+    <x-pos>223</x-pos>
+    <y-pos>133</y-pos>
     <z-pos>0</z-pos>
   </position>
   <type>generic</type>
-  <direction>left</direction>
-  <release-rate>25</release-rate>
+  <direction>right</direction>
+  <release-rate>50</release-rate>
   <owner-id>0</owner-id>
 </entrance>
 
@@ -670,26 +841,18 @@
   <resource-ident>Entrances/cloud</resource-ident>
   </resource></surface>
   <position>
-    <x-pos>93</x-pos>
-    <y-pos>20</y-pos>
+    <x-pos>110</x-pos>
+    <y-pos>47</y-pos>
     <z-pos>0</z-pos>
   </position>
   <speed>-1</speed>
   <parallax>1</parallax>
 </hotspot>
 
-  <start-position>
-  <position>
-    <x-pos>340</x-pos>
-    <y-pos>84</y-pos>
-    <z-pos>1000</z-pos>
-  </position>
-  </start-position>
-
 <exit use-old-pos-handling="0">
   <position>
     <x-pos>1010</x-pos>
-    <y-pos>180</y-pos>
+    <y-pos>221</y-pos>
     <z-pos>0</z-pos>
   </position>
   <surface><resource type="datafile">
@@ -698,17 +861,13 @@
   </resource></surface>
   <owner-id>0</owner-id></exit>
 
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>snow/piece8</resource-ident>
-  </resource></surface>
+  <start-position>
   <position>
-    <x-pos>762</x-pos>
-    <y-pos>312</y-pos>
-    <z-pos>0</z-pos>
+    <x-pos>312</x-pos>
+    <y-pos>163</y-pos>
+    <z-pos>1000</z-pos>
   </position>
-</groundpiece>
+  </start-position>
 
 </pingus-level>
 

@@ -10,6 +10,8 @@
     <time>9000</time>
     <width>1824</width>
     <height>1216</height>
+    <comment>this should be a space level as themed,
+    for a space world</comment>
   </global>
 
 <background type="surface">

@@ -3,13 +3,11 @@
 <pingus-level>
   <global>
     <levelname lang="en">It's climbers time!</levelname>
-    <description lang="en">Discover The Pyramide
-
-</description>
+    <description lang="en">Discover The Pyramide</description>
     <author></author>
-    <number-of-pingus>50</number-of-pingus>
-    <number-to-save>50</number-to-save>
-    <time>9000</time>
+    <number-of-pingus>30</number-of-pingus>
+    <number-to-save>30</number-to-save>
+    <time>-1</time>
     <width>1216</width>
     <height>608</height>
     <difficulty>10</difficulty>
@@ -487,6 +485,18 @@
   <resource-ident>desert/middleprickpiece</resource-ident>
   </resource></surface>
   <position>
+    <x-pos>-6</x-pos>
+    <y-pos>71</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>desert/middleprickpiece</resource-ident>
+  </resource></surface>
+  <position>
     <x-pos>-48</x-pos>
     <y-pos>145</y-pos>
     <z-pos>0</z-pos>
@@ -685,41 +695,6 @@
   </position>
 </groundpiece>
 
-<exit use-old-pos-handling="0">
-  <position>
-    <x-pos>1003</x-pos>
-    <y-pos>213</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>Exits/desert</resource-ident>
-  </resource></surface>
-  <owner-id>0</owner-id></exit>
-
-
-<hotspot>
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>Entrances/woodthing_nmov</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>256</x-pos>
-    <y-pos>186</y-pos>
-    <z-pos>100</z-pos>
-  </position>
-  <speed>-4</speed>
-  <parallax>1</parallax>
-</hotspot>
-
-  <start-position>
-  <position>
-    <x-pos>303</x-pos>
-    <y-pos>1</y-pos>
-    <z-pos>1000</z-pos>
-  </position>
-  </start-position>
-
 <groundpiece type="ground">
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
@@ -767,6 +742,40 @@
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
+
+<exit use-old-pos-handling="0">
+  <position>
+    <x-pos>1003</x-pos>
+    <y-pos>213</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Exits/desert</resource-ident>
+  </resource></surface>
+  <owner-id>0</owner-id></exit>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Entrances/woodthing_nmov</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>256</x-pos>
+    <y-pos>186</y-pos>
+    <z-pos>100</z-pos>
+  </position>
+  <speed>-4</speed>
+  <parallax>1</parallax>
+</hotspot>
+
+  <start-position>
+  <position>
+    <x-pos>303</x-pos>
+    <y-pos>1</y-pos>
+    <z-pos>1000</z-pos>
+  </position>
+  </start-position>
 
 </pingus-level>
 
