@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.133 2003/02/19 09:50:34 grumbel Exp $
+#  $Id: Makefile.am,v 1.134 2003/02/19 12:08:03 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,7 +39,7 @@ SUBDIRS = \
 	worldobjsdata       \
 	worldmap
 
-EXTRA_DIST = README \
+EXTRA_DIST = \
              win32/Getopt.c  \
              win32/Getopt.h  \
              win32/Getopt1.c \
