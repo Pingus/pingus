@@ -1,4 +1,4 @@
-//  $Id: Pingu.hh,v 1.32 2001/08/02 21:51:02 grumbel Exp $
+//  $Id: Pingu.hh,v 1.33 2001/08/04 12:44:10 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,8 +41,7 @@ class PinguAction;
     objects. */
 class Pingu : public WorldObj
 {
-protected:
-  friend class PinguAction;
+public:
   ///
   boost::shared_ptr<PinguAction> action;
   ///
@@ -84,7 +83,6 @@ protected:
   ///
   int owner_id;
 
-public:
   // The postion of the pingu (CL_Vector::z is always zero)
   CL_Vector pos;
   ///
