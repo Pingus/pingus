@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.6 2000/02/26 16:24:13 grumbel Exp $
+#  $Id: Makefile.am,v 1.7 2000/03/09 00:20:03 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,12 +21,13 @@ EXITS = \
         exits/stone.pcx \
         exits/ice.pcx   \
         exits/desertexit.pcx \
-        exits/space1.tga
+        exits/space1.tga     \
+        exits/sweetexit.pcx
 
 EDITOR = \
         editor/logo.tga           \
         editor/button.pcx          \
-        editor/button_pressed.pcx   \
+        editor/button_pressed.pcx  \
         editor/tb_clock_run.pcx    \
         editor/tb_copy.pcx         \
         editor/tb_edit.pcx         \
@@ -124,7 +125,8 @@ TEXTURES = \
         textures/latejungle.jpg      \
         textures/darkjungle.jpg      \
         textures/enchantedjungle.jpg \
-        textures/clouds.jpg
+        textures/clouds.jpg          \
+        textures/happyclouds.jpg
 
 #        textures/greenjungle.pcx
 #        textures/solartile.jpg   
@@ -170,7 +172,8 @@ CURSORS = \
         cursors/cap.tga      \
         cursors/capwrong.tga \
         cursors/arrow_left.pcx \
-        cursors/arrow_right.pcx
+        cursors/arrow_right.pcx \
+        cursors/cross.tga
 
 ENTRANCES = \
              entrances/woodthing_mov.pcx  \
@@ -360,7 +363,10 @@ MISC = \
        misc/capwrong.pcx \
        misc/brick.pcx    \
        misc/logo.tga     \
-       misc/loading.pcx
+       misc/loading.pcx  \
+       misc/pingubw.pcx  \
+       misc/brick_right.pcx \
+       misc/brick_left.pcx 
 
 THEMES = \
          themes/crystal.pcx \

@@ -1,4 +1,6 @@
-Sometimes when I make one pingus explode, many others explode.
+'map' might be an reserved keyword
+
+www.ggi-project.Sometimes when I make one pingus explode, many others explode.
 Forces bug
 
 Digger  - fixing
@@ -26,11 +28,10 @@ Important Things:
 ~~~~~~~~~~~~~~~~~
 
 -= FEATURES =-
-* animated backgrounds (using derived objects)
+* animated/parallax scrolling backgrounds
 
 -= GRAPHIC WORK =-
-* Painting more hotspot and traps.
-* More Backgrounds (fullscreen backgrounds)
+* horizontal tiled backgrounds (elevator)
 * Some exits and entrances
 
 -= SOUND WORK =-
@@ -50,6 +51,31 @@ Less Important Things:
 -= BIG STUFF =-
 * "Worms" mode. 
 
-$Date: 2000/03/02 02:29:00 $
+
+Music:
+~~~~~~
+having:
+~~~~~~~~~
+Main Theme - pingus-1.it
+Game Over  - pingus-2.it
+Snow       - pingus-4.it
+Desert     - pingus-9.it
+
+misc:
+~~~~~
+gd-cancn.it
+pingus-3.it
+pingus-5.it
+pingus-6.it
+pingus-7.it
+pingus-8.it
+
+needed:
+~~~~~~~~
+Level complete song
+
+
+
+$Date: 2000/03/09 00:20:03 $
 
 -= EOF =-

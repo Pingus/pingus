@@ -18,7 +18,7 @@ ground {
 }
 
 background {
-	image = (resource:textures.dat)"Textures/stone";
+	image = (resource:textures.dat)"Textures/stones";
 	dim = "0.7";
 	scroll_x = 0;
 	scroll_y = 0;
