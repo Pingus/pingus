@@ -24,6 +24,7 @@
 #include "../vector.hxx"
 #include <ClanLib/Core/Math/rect.h>
 
+class Color;
 class Sprite;
 class CL_Surface;
 class CL_Font;
@@ -110,6 +111,9 @@ public:
 
   /** Print a text right aligned */
   virtual void print_right (FontHandle font, int x_pos, int y_pos, const std::string& str) =0;
+
+  /** Clear the graphic context */
+  virtual void clear(const Color& color) =0;
 };
 
 #endif

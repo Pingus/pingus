@@ -86,6 +86,8 @@ public:
   void print_center (FontHandle /*font*/, int /*x_pos*/, int /*y_pos*/, const std::string& /*str*/) {}
   void print_right (FontHandle /*font*/, int /*x_pos*/, int /*y_pos*/, const std::string& /*str*/) {}
 
+  void clear(const Color& color);
+
   /** Write the current content of the buffer down to a pnm file */
   void write(const std::string& filename);
 };

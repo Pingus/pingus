@@ -529,6 +529,7 @@ PingusMain::check_args(int argc, char** argv)
         << "\n   --controller FILE        " << _("Uses the controller given in FILE")
 
         << "\n\n" << _("Debugging and experimental stuff:")
+        << "\n   --render-preview " << _("FILE    ") << _("Renders the levelfile into FILE in .pnm format")
         << "\n   --maintainer-mode        " << _("Enables some features, only interesting programmers")
         << "\n   --debug OPTION           " << _("Enable the output of debugging infos, possible")
         << "\n                            " << _("OPTION's are tiles, gametime, actions, sound, resources, gui,")

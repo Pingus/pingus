@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <ClanLib/Display/Display/display.h>
+#include "../gui/graphic_context.hxx"
 #include "../worldobjsdata/solid_color_background_data.hxx"
 #include "solid_color_background.hxx"
 
@@ -36,9 +37,7 @@ SolidColorBackground::~SolidColorBackground ()
 void
 SolidColorBackground::draw (GraphicContext& gc)
 {
-  // FIXME: should use GraphicContext, not CL_Display
-  CL_Display::clear_display (data->color.red, data->color.green, data->color.blue, data->color.alpha);
-  UNUSED_ARG(gc);
+  gc.clear(data->color);
 }
 
 } // namespace WorldObjs

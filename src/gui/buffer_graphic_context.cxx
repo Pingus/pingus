@@ -20,6 +20,7 @@
 #include <iostream>
 #include "../pingus_error.hxx"
 #include "../blitter.hxx"
+#include "../color.hxx"
 #include "../screenshot.hxx"
 #include "buffer_graphic_context.hxx"
 
@@ -86,6 +87,21 @@ BufferGraphicContext::write(const std::string& filename)
   canvas->lock();
   Screenshot::save_target_to_file(canvas, filename);
   canvas->unlock();
+}
+
+void
+BufferGraphicContext::clear(const Color& color)
+{
+  canvas->lock();
+  unsigned char* buf = static_cast<unsigned char*>(canvas->get_data());
+  for(unsigned int i = 0; i < canvas->get_height() * canvas->get_width(); ++i)
+    {
+      buf[4*i + 0] = static_cast<unsigned char>(color.alpha*255); // alpha
+      buf[4*i + 1] = static_cast<unsigned char>(color.blue*255); // blue
+      buf[4*i + 2] = static_cast<unsigned char>(color.green*255); // green
+      buf[4*i + 3] = static_cast<unsigned char>(color.red*255); // red
+    }
+  canvas->unlock();  
 }
 
 /* EOF */

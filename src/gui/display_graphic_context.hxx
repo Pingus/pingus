@@ -126,6 +126,7 @@ public:
 
   void print_right (FontHandle font, int x_pos, int y_pos, const std::string& str);
 
+  void clear(const Color& color);
 private:
   DisplayGraphicContext (const DisplayGraphicContext&);
   DisplayGraphicContext& operator= (const DisplayGraphicContext&);

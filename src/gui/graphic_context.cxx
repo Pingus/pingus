@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "../color.hxx"
 #include "../sprite.hxx"
 #include "graphic_context.hxx"
 
@@ -38,7 +39,6 @@ GraphicContext::draw (CL_Surface& sur, const Vector& pos, int frame)
 {
   draw(sur, int(pos.x), int(pos.y), frame);
 }
-
 
 void
 GraphicContext::draw (CL_Surface& sur, const Vector& pos)

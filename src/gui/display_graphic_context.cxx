@@ -22,6 +22,7 @@
 #include <ClanLib/Display/Font/font.h>
 #include <config.h>
 #include "display_graphic_context.hxx"
+#include "../color.hxx"
 #include "../math.hxx"
 #include "../sprite.hxx"
 
@@ -274,6 +275,12 @@ void
 DisplayGraphicContext::print_right (FontHandle font, int x_pos, int y_pos, const std::string& str)
 {
   font->print_right(w2s_x(x_pos), w2s_y(y_pos), str.c_str ());
+}
+
+void
+DisplayGraphicContext::clear(const Color& color)
+{
+  CL_Display::clear_display (color.red, color.green, color.blue, color.alpha);
 }
 
 /* EOF */
