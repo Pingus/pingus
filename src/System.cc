@@ -1,4 +1,4 @@
-//  $Id: System.cc,v 1.5 2000/02/16 03:06:27 grumbel Exp $
+//  $Id: System.cc,v 1.6 2000/03/12 01:38:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,13 +19,19 @@
 
 #ifndef WIN32
 #  include <dirent.h>
+#  include <fcntl.h>
 #  include <fnmatch.h>
+#  include <sys/stat.h>
 #  include <sys/types.h>
+#  include <unistd.h>
+#  include <errno.h>
 #else /* !WIN32 */
 #  include <iostream>
 #  include <windows.h>
 #endif
- 
+
+#include "globals.hh"
+#include "PingusError.hh" 
 #include "System.hh"
 
 System::DirectoryEntry::DirectoryEntry(const std::string& n)
@@ -101,7 +107,6 @@ System::basename(std::string filename)
   
   const char* str = filename.c_str();
   int i;
-  //cout << "Getting basename of: " << str << std::endl;
 
   for(i = filename.size() - 1; i >= 0; --i) 
     {
@@ -110,8 +115,75 @@ System::basename(std::string filename)
       }
     }
   
-  //cout << "Basename: " << (str+i + 1) << std::endl;
   return (str+i + 1);
+}
+
+bool
+System::exist(std::string filename)
+{
+  return !access(filename.c_str(), F_OK);
+}
+
+void
+System::create_dir(std::string directory)
+{
+  if (!exist(directory))
+    {
+      if (mkdir(directory.c_str(), S_IRUSR | S_IWUSR | S_IXUSR | S_IRGRP | S_IXGRP) != 0)
+	{
+	  throw PingusError(directory + ": " + strerror(errno));
+	}
+      else
+	{
+	  if (verbose) 
+	    {
+	      std::cout << "Successfully created: directory" << std::endl;
+	    }
+	}
+    }
+}
+
+void
+System::init_directories()
+{
+  std::string statdir  = get_statdir();
+  std::string vardir   = get_vardir();
+  
+  create_dir(statdir);
+  create_dir(statdir + "levels/");
+  create_dir(statdir + "levels/dist");
+  create_dir(statdir + "stat/");
+  create_dir(statdir + "themes/");
+
+  create_dir(vardir);
+}
+ 
+std::string
+System::get_statdir()
+{
+#ifdef WIN32
+  return "stat\\";
+#else /* !WIN32 */
+  char* homedir = getenv("HOME");
+
+  if (homedir) 
+    {
+      throw PingusError("Enviroment variable $HOME not set, fix that and start again.");
+    }
+  else
+    {
+      return string(homedir) + "/.pingus/";
+    }
+#endif
+}
+
+std::string
+System::get_vardir()
+{
+#ifdef WIN32   
+  return "var\\";
+#endif
+  return "/var/games/pingus/";
 }
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: System.hh,v 1.4 2000/02/11 21:26:37 grumbel Exp $
+//  $Id: System.hh,v 1.5 2000/03/12 01:38:49 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,7 +41,25 @@ public:
   
   static Directory opendir(const std::string& pathname, const std::string& pattern = "*");
 
+  static bool exist(std::string filename);
+
+  // Creates directory if it does not already exist.
+  static void create_dir(std::string dir);
+  
+  // Check if all needed directories are available, if not then create 
+  // them. 
+  static void init_directories();
+
+  // Strips directory from filenames
   static std::string basename(string);
+
+  // Returns the directory were Pingus can store its user specific
+  // state and config data (savegames, config files, demos, etc.)
+  static std::string get_statdir();
+
+  // Returns the directory were Pingus can store its system wide
+  // variable game data (highscores, cache images, ...) 
+  static std::string get_vardir();
 };
 
 #endif
