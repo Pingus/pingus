@@ -1,4 +1,4 @@
-//  $Id: button.hxx,v 1.1 2002/07/03 16:53:57 grumbel Exp $
+//  $Id: button.hxx,v 1.2 2002/07/04 10:51:59 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,23 +20,14 @@
 #ifndef HEADER_PINGUS_INPUT_BUTTON_HXX
 #define HEADER_PINGUS_INPUT_BUTTON_HXX
 
-#include <queue>
-
 namespace Input
 {
   class Button
   {
   public:
-    enum Event { BUTTON_PRESSED, BUTTON_RELEASED, BUTTON_CLICKED, BUTTON_DOUBLECLICKED };
-  protected:
-    std::queue<enum Event> events;
-  
-  public:
-    Event peek_event () { return events.front (); }
-    Event pop_event () { Event e = peek_event (); events.pop (); return e; }
-  
-    void update (float delta);
-    bool is_pressed ();
+
+    virtual bool is_pressed ()  =0;
+    virtual void update (float) =0;
   };
 }
 
