@@ -1,4 +1,4 @@
-//  $Id: Controller.cc,v 1.9 2001/12/05 09:15:50 grumbel Exp $
+//  $Id: Controller.cc,v 1.10 2002/06/06 15:55:02 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,8 @@
 
 #include "PingusError.hh"
 #include "Controller.hh"
+#include <ClanLib/display.h>
+#include <ClanLib/signals.h>
 
 /* Headers needed for i18n / gettext */
 #include <clocale>
