@@ -1,5 +1,5 @@
 /* This level was created with the PLE
- * $Id: test3.plf,v 1.1 2000/03/12 02:26:50 grumbel Exp $
+ * $Id: test3.plf,v 1.2 2000/05/24 18:48:32 grumbel Exp $
  */
 global {
   start_x_pos = 0;
@@ -15,8 +15,8 @@ global {
 
 ground {
   maptype = "SPOT";
-  width   = 1200;
-  height  = 600;
+  width   = 1216;
+  height  = 608;
   colmap  = (auto);
 }
 
@@ -28,6 +28,10 @@ background {
   blue  = "0";
   scroll_x = 0;
   scroll_y = 0;
+  para_x = 0.5;
+  para_y = 0.5;
+  stretch_x = 0;
+  stretch_y = 0;
 }
 
 buttons {

@@ -1,4 +1,4 @@
-//  $Id: basher.cc,v 1.7 2000/04/24 13:15:41 grumbel Exp $
+//  $Id: basher.cc,v 1.8 2000/05/24 18:48:35 grumbel Exp $
 //
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -22,6 +22,9 @@
 
 using namespace std;
 
+CL_Surface* Basher::static_surface = 0;
+CL_Surface* Basher::bash_radius = 0;
+
 Basher::Basher()
 {
 }
@@ -38,8 +41,12 @@ Basher::init(void)
   action_name = "Basher";
   environment = (PinguEnvironment)land;
 
-  surface = CL_Surface::load("Pingus/basher", local_res());
-  bash_radius = CL_Surface::load("Other/bash_radius", local_res());
+  if (!static_surface)
+    static_surface = CL_Surface::load("Pingus/basher", local_res());
+  surface = static_surface;
+
+  if (!bash_radius)
+    bash_radius = CL_Surface::load("Other/bash_radius", local_res());
   
   counter.set_size(surface->get_num_frames() / 2);
   counter.set_type(GameCounter::loop);

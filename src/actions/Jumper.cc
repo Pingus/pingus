@@ -1,4 +1,4 @@
-//  $Id: Jumper.cc,v 1.5 2000/04/09 17:28:20 grumbel Exp $
+//  $Id: Jumper.cc,v 1.6 2000/05/24 18:48:34 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,8 @@
 
 #include "Jumper.hh"
 
+CL_Surface* Jumper::static_surface = 0;
+
 Jumper::Jumper()
 {
   // do nothing
@@ -35,7 +37,10 @@ Jumper::init(void)
 {
   action_name = "Jumper";
 
-  surface = CL_Surface::load("Pingus/jumper", local_res());
+  if (!static_surface)
+    static_surface = CL_Surface::load("Pingus/jumper", local_res());
+  surface = static_surface;
+
   environment = (PinguEnvironment)(land);
   counter.set_size(4);
   counter.set_type(Counter::loop);

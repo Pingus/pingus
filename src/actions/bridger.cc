@@ -1,4 +1,4 @@
-//  $Id: bridger.cc,v 1.14 2000/05/24 15:45:02 grumbel Exp $
+//  $Id: bridger.cc,v 1.15 2000/05/24 18:48:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,11 @@
 
 using namespace std;
 
+CL_Surface* Bridger::waiter = 0;
+CL_Surface* Bridger::brick_l = 0;
+CL_Surface* Bridger::brick_r = 0;
+CL_Surface* Bridger::static_surface = 0;
+
 Bridger::Bridger()
 {
 }
@@ -40,10 +45,17 @@ Bridger::init(void)
   environment = (PinguEnvironment)land;
   action_name = "Bridger";
 
-  surface = CL_Surface::load("Pingus/bridger", local_res());
-  waiter  = CL_Surface::load("Pingus/blocker", local_res());
-  brick_l = CL_Surface::load("Other/brick_left", local_res());
-  brick_r = CL_Surface::load("Other/brick_right", local_res());
+  if (!static_surface)
+    static_surface = CL_Surface::load("Pingus/bridger", local_res());
+  surface = static_surface;
+
+  if (!waiter)
+    waiter  = CL_Surface::load("Pingus/blocker", local_res());
+  if (!brick_l)
+    brick_l = CL_Surface::load("Other/brick_left", local_res());
+  if (!brick_r)
+    brick_r = CL_Surface::load("Other/brick_right", local_res());
+
   bricks = 15;
 
   counter.set_size(surface->get_num_frames()/2);

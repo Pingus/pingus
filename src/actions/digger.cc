@@ -1,4 +1,4 @@
-//  $Id: digger.cc,v 1.7 2000/04/29 13:13:26 grumbel Exp $
+//  $Id: digger.cc,v 1.8 2000/05/24 18:48:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,9 @@
 #include "../particles/GroundParticle.hh"
 #include "../algo.hh"
 
+CL_Surface* Digger::digger_radius;
+CL_Surface* Digger::static_surface;
+
 Digger::Digger()
 {
 }
@@ -40,8 +43,12 @@ Digger::init(void)
   action_name = "Digger";
   environment = (PinguEnvironment)land;
 
-  surface = CL_Surface::load("Pingus/digger", local_res());
-  digger_radius = CL_Surface::load("Other/digger_radius", local_res());
+  if (!static_surface)
+    static_surface = CL_Surface::load("Pingus/digger", local_res());
+  surface = static_surface;
+
+  if (!digger_radius)
+    digger_radius = CL_Surface::load("Other/digger_radius", local_res());
 
   counter.set_size(surface->get_num_frames());
   counter.set_type(Counter::loop);

@@ -21,3 +21,5 @@ ground : (resource:global.dat)GroundPieces/Test/test3 : 556 : 456;
 ground : (resource:global.dat)GroundPieces/Test/test3 : 557 : 304;
 ground : (resource:global.dat)GroundPieces/Test/test3 : 730 : 456;
 ground : (resource:global.dat)GroundPieces/Test/test3 : 731 : 304;
+transparent : (resource:global.dat)Hotspots/stone1 : 668 : 446;
+transparent : (resource:global.dat)Hotspots/stone2 : 523 : 412;

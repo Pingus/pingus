@@ -1,4 +1,4 @@
-//  $Id: bridger.hh,v 1.5 2000/05/20 17:12:58 grumbel Exp $
+//  $Id: bridger.hh,v 1.6 2000/05/24 18:48:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,9 +27,12 @@ class Bridger : public PinguAction
 {
 private:
   GameCounter counter;
-  CL_Surface* waiter;
-  CL_Surface* brick_l;
-  CL_Surface* brick_r;
+
+  static CL_Surface* static_surface;
+  static CL_Surface* waiter;
+  static CL_Surface* brick_l;
+  static CL_Surface* brick_r;
+
   int bricks;
   int step;
   int do_steps;

@@ -1,4 +1,4 @@
-//  $Id: Splashed.hh,v 1.1 2000/03/22 14:32:42 grumbel Exp $
+//  $Id: Splashed.hh,v 1.2 2000/05/24 18:48:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,6 +27,7 @@ class Splashed : public PinguAction
 private:
   bool particle_thrown;
   bool sound_played;
+  static CL_Surface* static_surface;
 public:
   Splashed();
 

@@ -1,4 +1,4 @@
-//  $Id: LaserKill.hh,v 1.2 2000/02/09 21:43:42 grumbel Exp $
+//  $Id: LaserKill.hh,v 1.3 2000/05/24 18:48:34 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,10 +22,10 @@
 
 #include "../PinguAction.hh"
 
-
 class LaserKill : public PinguAction
 {
 private:
+  static CL_Surface* static_surface;
 public:
   LaserKill();
 

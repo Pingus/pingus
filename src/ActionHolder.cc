@@ -1,4 +1,4 @@
-//  $Id: ActionHolder.cc,v 1.11 2000/05/24 15:45:02 grumbel Exp $
+//  $Id: ActionHolder.cc,v 1.12 2000/05/24 18:48:33 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,25 +24,9 @@
 #include "Timer.hh"
 #include "globals.hh"
 
-#include "actions/basher.hh"
-#include "actions/blocker.hh"
-#include "actions/bomber.hh"
-#include "actions/bridger.hh"
-#include "actions/climber.hh"
-#include "actions/digger.hh"
-#include "actions/exiter.hh"
-#include "actions/floater.hh"
-#include "actions/miner.hh"
-#include "actions/Jumper.hh"
-#include "actions/teleported.hh"
-#include "actions/exiter.hh"
-#include "actions/smashed.hh"
-#include "actions/LaserKill.hh"
-#include "actions/Splashed.hh"
-
 #include "ActionHolder.hh"
 
-#define MAX_ACTION_BUFFER_SIZE 200
+#define MAX_ACTION_BUFFER_SIZE 0
 
 std::vector<PinguAction*> ActionHolder::uactions;
 std::map<std::string, ActionCounter> ActionHolder::uaction_buffer;

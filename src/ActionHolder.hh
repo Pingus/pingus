@@ -1,4 +1,4 @@
-//  $Id: ActionHolder.hh,v 1.5 2000/04/24 13:15:40 grumbel Exp $
+//  $Id: ActionHolder.hh,v 1.6 2000/05/24 18:48:33 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,22 @@
 #include <string>
 #include <map>
 
+#include "actions/basher.hh"
+#include "actions/blocker.hh"
+#include "actions/bomber.hh"
+#include "actions/bridger.hh"
+#include "actions/climber.hh"
+#include "actions/digger.hh"
+#include "actions/exiter.hh"
+#include "actions/floater.hh"
+#include "actions/miner.hh"
+#include "actions/Jumper.hh"
+#include "actions/teleported.hh"
+#include "actions/exiter.hh"
+#include "actions/smashed.hh"
+#include "actions/LaserKill.hh"
+#include "actions/Splashed.hh"
+
 #include "PinguAction.hh"
 
 struct ActionCounter {
@@ -35,6 +51,12 @@ class ActionHolder
 private:
   std::vector<std::string>   action_name;
   std::map<std::string, ActionCounter> action;
+
+  std::vector<Basher>   bashers;
+  std::vector<Blocker>  blockers;
+  std::vector<Bomber>   bombers;
+  std::vector<Bridger> bridgers;
+  std::vector<Climber>  climbers;
 
   static std::vector<PinguAction*> uactions;
   static std::map<std::string, ActionCounter> uaction_buffer;
