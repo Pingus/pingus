@@ -1,4 +1,4 @@
-//  $Id: xml_plf.cxx,v 1.12 2002/09/04 14:55:11 torangan Exp $
+//  $Id: xml_plf.cxx,v 1.13 2002/09/08 18:13:04 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -120,7 +120,7 @@ XMLPLF::parse_file()
 	    }
 	  else if (!strcmp(reinterpret_cast<const char*>(cur->name), "trap"))
 	    {
-	      parse_traps(doc, cur);
+	      parse_traps(cur);
 	    }
 	  else if (!strcmp(reinterpret_cast<const char*>(cur->name), "hotspot"))
 	    {
@@ -242,7 +242,7 @@ XMLPLF::parse_group (xmlNodePtr cur)
 	}
       else if (!strcmp(reinterpret_cast<const char*>(cur->name), "trap"))
 	{
-	  parse_traps(doc, cur);
+	  parse_traps (cur);
 	}
       else if (!strcmp(reinterpret_cast<const char*>(cur->name), "hotspot"))
 	{
@@ -437,7 +437,7 @@ XMLPLF::parse_groundpiece (xmlNodePtr cur)
 }
 
 void
-XMLPLF::parse_traps (xmlDocPtr doc, xmlNodePtr cur)
+XMLPLF::parse_traps (xmlNodePtr cur)
 {
   xmlNodePtr cur_ = XMLhelper::skip_blank(cur->children);
   

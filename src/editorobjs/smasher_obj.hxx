@@ -1,4 +1,4 @@
-//  $Id: smasher_obj.hxx,v 1.1 2002/09/04 14:55:12 torangan Exp $
+//  $Id: smasher_obj.hxx,v 1.2 2002/09/08 18:13:04 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #define HEADER_PINGUS_EDITOROBJS_SMASHER_OBJ_HXX
 
 #include "../editor/sprite_editorobj.hxx"
+#include "../worldobj_data.hxx"
 
 namespace WorldObjsData {
   class SmasherData;
@@ -37,6 +38,8 @@ namespace EditorObjs {
     public:
       SmasherObj (WorldObjsData::SmasherData* data_);
      ~SmasherObj ();
+
+    static EditorObjLst create (const CL_Vector& pos);
      
       EditorObj* duplicate ();
       

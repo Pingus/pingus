@@ -1,4 +1,4 @@
-//  $Id: guillotine_obj.hxx,v 1.1 2002/09/04 14:55:12 torangan Exp $
+//  $Id: guillotine_obj.hxx,v 1.2 2002/09/08 18:13:04 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #define HEADER_PINGUS_EDITOROBJS_GUILLOTINE_OBJ_HXX
 
 #include "../editor/sprite_editorobj.hxx"
+#include "../worldobj_data.hxx"
 
 namespace WorldObjsData {
   class GuillotineData;
@@ -38,6 +39,8 @@ namespace EditorObjs {
       GuillotineObj (WorldObjsData::GuillotineData* data_);
      ~GuillotineObj ();
      
+    static EditorObjLst create (const CL_Vector& pos);
+
       EditorObj* duplicate ();
       
       void write_xml (std::ostream& xml);

@@ -1,4 +1,4 @@
-// $Id: object_selector.hxx,v 1.8 2002/09/06 17:33:29 torangan Exp $
+// $Id: object_selector.hxx,v 1.9 2002/09/08 18:13:04 grumbel Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -53,7 +53,7 @@ public:
   std::string read_string(const std::string &, const std::string &);
   
   EditorObjLst get_obj(int, int);
-  //EditorObjLst get_trap();
+  EditorObjLst get_trap();
   EditorObjLst get_groundpiece(const GroundpieceData::GPType & gptype);
   EditorObjLst get_hotspot(const std::string&);
   EditorObjLst get_entrance();

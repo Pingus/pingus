@@ -1,4 +1,4 @@
-//  $Id: xml_plf.hxx,v 1.5 2002/09/04 14:55:11 torangan Exp $
+//  $Id: xml_plf.hxx,v 1.6 2002/09/08 18:13:04 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,7 +37,10 @@ private:
   void parse_group       (xmlNodePtr cur);
   void parse_start_pos   (xmlNodePtr cur);
   void parse_weather     (xmlNodePtr cur);
-  void parse_traps       (xmlDocPtr  doc, xmlNodePtr node);
+
+  /** trap parsing is only here for backward compatibility, traps are
+      worldobjs now */
+  void parse_traps       (xmlNodePtr node);
 
 public:
   XMLPLF (const std::string& filename);

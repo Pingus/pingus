@@ -46,6 +46,13 @@
     </sprite>
       ...
   </objects>
+
+  <properties>
+    <name>My Funny Worldmap</name>
+    <music>pingus-1.it</music>
+    <author>Ingo Ruhnke ...</author>
+    <email>...</email>
+  </properties>
   
 </pingus-worldmap>
 

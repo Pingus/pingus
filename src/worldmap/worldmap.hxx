@@ -1,4 +1,4 @@
-//  $Id: worldmap.hxx,v 1.9 2002/09/07 23:33:47 grumbel Exp $
+//  $Id: worldmap.hxx,v 1.10 2002/09/08 18:13:04 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,6 +39,35 @@ class Pingus;
     events (successfull level completions). */
 class WorldMap
 {
+#if TODO
+  WorldMap () {
+    load_graph ();
+    load_objects ();
+  }
+  
+  void draw (GraphicContext& gc) 
+  {
+    for (iterator drawables.begin (); i != drawables.end (); ++i)
+      {
+	i->draw (gc);
+      }
+  }
+
+  void update (float delta)
+  {
+    for (iterator drawables.begin (); i != drawables.end (); ++i)
+      {
+	i->update (delta);
+      }
+  }
+  
+  /** @return the shortest path between node1 and node2  */
+  std::vector<Edge*> find_path (Node* node1, Node* node2);
+  
+  /** @return the node as the given position. x and y are in
+      world-COs, not screen. */
+  Node* get_node (int x, int y);
+#endif
 private:
   CL_Surface background;
 

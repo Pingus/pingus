@@ -1,4 +1,4 @@
-//  $Id: graph.hxx,v 1.7 2002/09/07 23:33:47 grumbel Exp $
+//  $Id: graph.hxx,v 1.8 2002/09/08 18:13:04 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -79,35 +79,8 @@ public:
       @param offset FIXME: should be handled by GraphicContext instead */
   void draw (const CL_Vector& offset);
 
-  /** Some functions to parse the data out of an xml file
-
-  File Syntax (FIXME: the current implementation is different):
-      
-  <pingus-worldmap>
-        <graph>
-	  <nodes>
-  	    <node id="node_1">
-              <position>...</>
-              <data><tube>...</></>
-	    </node>
-  	    <node id="node_2">
-              <position>...</>
-              <data><level>...</></>
-	    </node>
-            ...
-	  <nodes>
-          <edges>
-            <edge id="egde_1" source="1" destination="2"> 
-              <!-- The path which connect two nodes -->
-              <data>
-                <position>...</>
-                <position>...</>
-              </data>
-            </edge>
-          </edges>
-        <graph>
-      </pingus-worldmap>      
-      
+  /** Some functions to parse the data out of an xml file.
+      For syntax description see doc/worldmap.xml
       @{ */
   void parse_file (std::string filename);
 private:

@@ -1,7 +1,5 @@
 src/spot_map.cxx
 src/spot_map.hxx
-src/trap.cxx
-src/trap.hxx
 src/pingus_counter.cxx
 src/pingus_counter.hxx
 src/backgrounds/surface_background_data.cxx
@@ -383,8 +381,6 @@ src/result.cxx
 src/result.hxx
 src/plf.cxx
 src/plf.hxx
-src/trap_data.cxx
-src/trap_data.hxx
 src/action_holder.cxx
 src/action_holder.hxx
 src/game_session.cxx

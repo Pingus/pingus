@@ -1,4 +1,4 @@
-//  $Id: object_selector.cxx,v 1.10 2002/09/06 17:33:29 torangan Exp $
+//  $Id: object_selector.cxx,v 1.11 2002/09/08 18:13:04 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -45,6 +45,14 @@
 #include "../backgrounds/solidcolor_background.hxx"
 #include "../backgrounds/thunderstorm_background.hxx"
 
+#include "../editorobjs/bumper_obj.hxx"
+#include "../editorobjs/guillotine_obj.hxx"
+#include "../editorobjs/laser_exit_obj.hxx"
+#include "../editorobjs/spike_obj.hxx"
+#include "../editorobjs/fake_exit_obj.hxx"
+#include "../editorobjs/hammer_obj.hxx"
+#include "../editorobjs/smasher_obj.hxx"
+
 #include "../worldobjs/teleporter.hxx"
 #include "../worldobjs/ice_block.hxx"
 #include "../worldobjs/info_box.hxx"
@@ -52,6 +60,8 @@
 #include "../worldobjs/switch_door.hxx"
 
 using namespace std;
+
+using namespace EditorObjs;
 
 ObjectSelector::ObjectSelector()
 {
@@ -80,16 +90,11 @@ ObjectSelector::get_obj(int x_off, int y_off)
 
   return select_obj_type();
 }
-/*
+
 EditorObjLst
 ObjectSelector::get_trap()
 {
-  TrapData trap;
-  
-  trap.pos = pos;
-
   CL_Display::clear_display();
-
   font->print_left(20, 20, _("1 - guillotine"));
   font->print_left(20, 50, _("2 - hammer"));
   font->print_left(20, 80, _("3 - spike"));
@@ -99,44 +104,29 @@ ObjectSelector::get_trap()
   font->print_left(20,200, _("7 - bumper"));
   Display::flip_display();
 
-  trap.type = "";
-  while (trap.type.empty()) 
+  while (true) 
     {
       switch (read_key()) 
 	{
 	case CL_KEY_1:
-	  trap.type = "guillotine";	  
-	  break;
+	  return GuillotineObj::create (pos);
 	case CL_KEY_2:
-	  trap.type = "hammer";
-	  break;
+	  return HammerObj::create (pos);
 	case CL_KEY_3:
-	  trap.type = "spike";
-	  break;
+	  return SpikeObj::create (pos);
 	case CL_KEY_4:
-	  trap.type = "laser_exit";
-	  break;
+	  return LaserExitObj::create (pos);
 	case CL_KEY_5:
-	  trap.type = "fake_exit";
-	  break;
+	  return FakeExitObj::create (pos);
 	case CL_KEY_6:
-	  trap.type = "smasher";
-	  break;
+	  return SmasherObj::create (pos);
 	case CL_KEY_7:
-	  trap.type = "bumper";
-	  break;
+	  return BumperObj::create (pos);
 	case CL_KEY_ESCAPE:
 	  return EditorObjLst();
 	}
-      CL_System::keep_alive ();
-      CL_System::sleep (20);
     }
- 
-  // FIXME: Can somebody enlight me, why gcc gives here a warrning?: 
-  // object_selector.cxx:107: warning: control reaches end of non-void function `ObjectSelector::get_trap()'
-  return trap.create_EditorObj ();
 }
-*/
 
 EditorObjLst
 ObjectSelector::get_groundpiece(const GroundpieceData::GPType & gptype)
@@ -397,10 +387,11 @@ ObjectSelector::select_obj_type()
   font->print_left(20,210, _("x - Exit"));
   font->print_left(20,230, _("l - Liquid"));
   font->print_left(20,250, _("w - Weather"));
-  font->print_left(20,270, _("o - WorldObject"));
-  font->print_left(20,290, _("z - Background"));
-  font->print_left(20,310, _("p - Prefab (ObjectGroup)"));
-  font->print_left(20,330, _("f - something from file (~/.pingus/images/)"));
+  font->print_left(20,270, _("t - Traps"));
+  font->print_left(20,290, _("o - WorldObject"));
+  font->print_left(20,310, _("z - Background"));
+  font->print_left(20,330, _("p - Prefab (ObjectGroup)"));
+  font->print_left(20,350, _("f - something from file (~/.pingus/images/)"));
   Display::flip_display();
 
   exit_loop = false;
@@ -409,8 +400,8 @@ ObjectSelector::select_obj_type()
     {
       switch (read_key()) 
 	{
-	//case CL_KEY_T:
-	  //return get_trap();
+	case CL_KEY_T:
+	  return get_trap();
 
 	case CL_KEY_B:
 	  return get_groundpiece(GroundpieceData::GP_BRIDGE);
