@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.19 2002/09/28 22:24:24 grumbel Exp $
+//   $Id: pingus_main.cxx,v 1.20 2002/10/01 23:10:41 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -74,6 +74,7 @@
 #include "action_data.hxx"
 #include "fonts.hxx"
 #include "sound_real.hxx"
+#include "xml_helper.hxx"
 
 using EditorNS::Editor;
 
@@ -624,6 +625,7 @@ PingusMain::init_pingus()
   Fonts::init_fonts ();
   fps_counter.init();
   console.init();
+  XMLhelper::init();
 
   pout.add (std::cerr);
   pout.add (console);

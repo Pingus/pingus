@@ -1,4 +1,4 @@
-//  $Id: xml_plf.cxx,v 1.28 2002/09/30 14:20:49 torangan Exp $
+//  $Id: xml_plf.cxx,v 1.29 2002/10/01 23:10:41 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -396,14 +396,14 @@ XMLPLF::parse_groundpiece (xmlNodePtr cur)
 void
 XMLPLF::parse_traps (xmlNodePtr cur)
 {
-  xmlNodePtr cur_ = XMLhelper::skip_blank(cur->children);
+  xmlNodePtr child_cur = XMLhelper::skip_blank(cur->children);
   
-  if (XMLhelper::equal_str(cur_->name, "type"))
+  if (XMLhelper::equal_str(child_cur->name, "type"))
     {
       std::string name;
-      if (XMLhelper::node_list_get_string(doc, cur->children, 1, name))
+      if (XMLhelper::node_list_get_string(doc, child_cur->children, 1, name))
 	{
-	  worldobjs_data.push_back(WorldObjDataFactory::instance()->create(name, doc, XMLhelper::skip_blank(cur)));
+	  worldobjs_data.push_back(WorldObjDataFactory::instance()->create(name, doc, cur));
 	  return;
 	}
     }

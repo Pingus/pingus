@@ -1,4 +1,4 @@
-//  $Id: worldobj_data_factory.cxx,v 1.27 2002/09/28 19:31:06 torangan Exp $
+//  $Id: worldobj_data_factory.cxx,v 1.28 2002/10/01 23:10:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,8 @@
 #include "pingus_error.hxx"
 #include "worldobj_data_factory.hxx"
 #include "xml_helper.hxx"
+#include "string_converter.hxx"
+
 #include "worldobjsdata/bumper_data.hxx"
 #include "worldobjsdata/conveyor_belt_data.hxx"
 #include "worldobjsdata/entrance_data.hxx"
@@ -108,7 +110,7 @@ WorldObjDataFactory::instance ()
 WorldObjData*
 WorldObjDataFactory::create (xmlDocPtr doc, xmlNodePtr cur)
 {
-  std::cout << "WorldObjDataFactory::create (xmlDocPtr doc, xmlNodePtr cur)" << std::endl;
+  //std::cout << "WorldObjDataFactory::create (xmlDocPtr doc, xmlNodePtr cur)" << std::endl;
 
   // Compatibility stuff
   if (XMLhelper::equal_str(cur->name, "hotspot"))
@@ -153,7 +155,8 @@ WorldObjDataFactory::create (const std::string& id,
   std::map<std::string, WorldObjDataAbstractFactory*>::iterator it = factories.find(id);
   
   if (it == factories.end())
-    PingusError::raise("WorldObjDataFactory: Invalid id: " + id);
+    PingusError::raise("WorldObjDataFactory: Invalid id: '" + id + "' at line "
+		       + to_string(XML_GET_LINE(cur)));
   else 
     return it->second->create (doc, cur);
     

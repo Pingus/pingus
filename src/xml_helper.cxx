@@ -1,4 +1,4 @@
-//  $Id: xml_helper.cxx,v 1.20 2002/09/30 14:20:49 torangan Exp $
+//  $Id: xml_helper.cxx,v 1.21 2002/10/01 23:10:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -406,6 +406,12 @@ XMLhelper::write_vector_xml(std::ostream& xml, const Vector& pos)
       << "    <y-pos>" << pos.y << "</y-pos>\n"
       << "    <z-pos>" << pos.z << "</z-pos>\n"
       << "  </position>\n";
+}
+
+void
+XMLhelper::init()
+{
+  xmlLineNumbersDefault(1);
 }
 
 /* EOF */

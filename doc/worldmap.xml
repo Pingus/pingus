@@ -32,19 +32,22 @@
   <!-- Objects are other things on the worldmap, most likly background
   surfaces or other animated stuff -->
   <objects>
-    <sprite>
-      <resource-desc>...</resource-desc>
-      <position>
-	...
-      </position>
-    </sprite>
+    <!-- container for a worldobj -->
+    <object id="tree_1">
+      <sprite>
+	<resource-desc>...</resource-desc>
+	<position>
+	  ...
+	</position>
+      </sprite>
 
-    <birds>
-      <position>
-	...
-      </position>
-    </sprite>
-      ...
+      <birds>
+	<position>
+	  ...
+	</position>
+      </birds>
+    </object>
+    ...
   </objects>
 
   <properties>

@@ -1,4 +1,4 @@
-#  $Id: configure.in,v 1.72 2002/09/27 11:30:33 torangan Exp $
+#  $Id: configure.in,v 1.73 2002/10/01 23:10:40 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -58,6 +58,7 @@ AC_PROG_INSTALL
 AC_PROG_LN_S
 AC_PROG_MAKE_SET
 AC_LANG(C++)
+PINGUS_EXTRA_PATHS
 
 AC_ARG_WITH(gettext,
 	[  --without-gettext       disable support for multiple languages])
@@ -84,9 +85,6 @@ dnl -- Dynamic Libraies --
 dnl AM_PROG_LIBTOOL
 
 AC_LANG_CPLUSPLUS
-
-dnl What are we doing here?
-PINGUS_EXTRA_PATHS
 
 dnl BUG This guesses that the X libs are in that directory
 dnl LIBS="-L/usr/X11R6/lib -lMagick $LIBS"

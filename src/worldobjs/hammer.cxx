@@ -1,4 +1,4 @@
-//  $Id: hammer.cxx,v 1.6 2002/10/01 19:53:46 grumbel Exp $
+//  $Id: hammer.cxx,v 1.7 2002/10/01 23:10:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #include "../pingu.hxx"
 #include "../pingu_holder.hxx"
 #include "../world.hxx"
+#include "../pingu_action.hxx"
 #include "../worldobjsdata/hammer_data.hxx"
 #include "hammer.hxx"
 
@@ -78,11 +79,14 @@ Hammer::update ()
 void
 Hammer::catch_pingu (Pingu* pingu)
 {
-  if (data->counter >= static_cast<int>(data->surface.get_num_frames() - 3)) {
-    if (  pingu->get_x() > data->pos.x + 55  && pingu->get_x() < data->pos.x + 77
-	  && pingu->get_y() > data->pos.y + 146 && pingu->get_y() < data->pos.y + 185)
-      pingu->set_action(Actions::Smashed);
-  }
+  if (pingu->get_action()->get_type() != Actions::Smashed)
+    {
+      if (data->counter >= static_cast<int>(data->surface.get_num_frames() - 3)) {
+	if (pingu->get_x() > data->pos.x + 55  && pingu->get_x() < data->pos.x + 77
+	    && pingu->get_y() > data->pos.y + 146 && pingu->get_y() < data->pos.y + 185)
+	  pingu->set_action(Actions::Smashed);
+      }
+    }
 }
 
 } // namespace WorldObjs

@@ -137,6 +137,10 @@ Alberto Curro <acurrop@wanadoo.es>
 Mattias Andersson <mattiasa@neod.com>
 	* some fixes for Win32 Port
 
+"Fischer, Björn Christoph" <B.Fischer@dmt.de>
+"Neil Mitchell" <neil__mitchell@hotmail.com>
+	* Misc win32 fixes/cleanups/etc.
+
 Misc little compile patches:
   Giuseppe D'Aqui' <kumber@tiscalinet.it>
 

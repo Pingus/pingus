@@ -321,9 +321,8 @@ section GroundPieces
 		greenjellybaby = ../images/groundpieces/ground/sweets/greenjellybaby.png (type=surface, x=0, y=0, width=64, height=84);
 		icecream          = ../images/groundpieces/ground/sweets/icecream.png (type=surface, x=0, y=0, width=114,  height=273);
 		icecream = ../images/groundpieces/ground/sweets/icecream.png (type=surface, x=0, y=0, width=114, height=273);
-//		jellybaby = ../images/groundpieces/ground/sweets/jellybaby.png (type=surface, x=0, y=0, width=64, height=83);
-//		jellybaby2 = ../images/groundpieces/ground/sweets/jellybaby2.png (type=surface, x=0, y=0, width=85, height=63);
-//		jellybaby2 = ../images/groundpieces/ground/sweets/jellybaby2.png (type=surface, x=0, y=0, width=85, height=63);
+		jellybaby = ../images/groundpieces/ground/sweets/greenjellybaby.png (type=surface);
+		jellybaby2 = ../images/groundpieces/ground/sweets/redjellybaby.png (type=surface);
 		jube1 = ../images/groundpieces/ground/sweets/jube1.png (type=surface, x=0, y=0, width=49, height=42);
 		jube2 = ../images/groundpieces/ground/sweets/jube2.png (type=surface, x=0, y=0, width=45, height=48);
 		lollipop = ../images/groundpieces/ground/sweets/lollipop.png (type=surface, x=0, y=0, width=42, height=238);
