@@ -1,4 +1,4 @@
-//  $Id: PLFObj.hh,v 1.18 2001/04/21 14:40:23 grumbel Exp $
+//  $Id: PLFObj.hh,v 1.19 2001/04/21 20:31:53 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -49,10 +49,7 @@ class HotspotObj : public    PLFObj,
 		   protected HotspotData
 {
 private:
-  ///
-  int   speed;
-  ///
-  float para;
+
 public:
   ///
   HotspotObj(const HotspotData&);
@@ -93,11 +90,9 @@ class ExitObj : public PLFObj,
 		public ExitData
 {
 private:
-  int owner_id;
-  bool use_old_pos_handling;
 public:
   ///
-  ExitObj(ExitData);
+  ExitObj(const ExitData&);
   ///
   ~ExitObj();
   ///
@@ -130,6 +125,8 @@ public:
   void save_xml(std::ofstream* xml);
   ///
   void draw_offset(CL_Vector offset, float zoom);
+  ///
+  std::string  status_line();
 };
 
 ///

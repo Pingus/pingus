@@ -1,4 +1,4 @@
-//  $Id: SwitchDoor.cc,v 1.9 2001/04/21 10:55:17 grumbel Exp $
+//  $Id: SwitchDoor.cc,v 1.10 2001/04/21 20:31:53 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -298,7 +298,7 @@ EditorSwitchDoorObj::status_line()
 }
 
 void
-EditorSwitchDoorObj::draw_offset(int x_of, int y_of)
+EditorSwitchDoorObj::draw_offset (CL_Vector offset, float zoom)
 {
   door_box.put_screen (door_pos.x + x_of, 
 		       door_pos.y + y_of);

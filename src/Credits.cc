@@ -1,4 +1,4 @@
-//  $Id: Credits.cc,v 1.13 2000/12/14 21:35:54 grumbel Exp $
+//  $Id: Credits.cc,v 1.14 2001/04/21 20:31:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,7 @@
 
 #include "my_gettext.hh"
 
+#include "DeltaManager.hh"
 #include "Display.hh"
 #include "PingusSound.hh"
 #include "PingusResource.hh"
@@ -99,62 +100,78 @@ void
 Credits::display()
 {
   init ();
+  offset = 0;
 
-  int x;
-  int y;
-  int yof;
   bool quit = false;
 
   PingusSound::play_mod ("music/pingus-2.it");
 
-  y = CL_Display::get_height() + 50;
-  x = CL_Display::get_width() * 3 / 4;
+  offset = CL_Display::get_height() + 50;
 
+  DeltaManager delta;
   while(!quit)
     {
-      y -= 1;
-      CL_Display::clear_display(1.0, 1.0, 1.0);
-      
-      surface.put_screen((CL_Display::get_width() / 4) - (surface.get_width() / 2),
-			 (CL_Display::get_height() / 2) - (surface.get_height() / 2));
-
-      CL_Display::fill_rect(CL_Display::get_width() / 2, 0,
-			    CL_Display::get_width(), CL_Display::get_height(),
-			    0.0, 0.0, 0.0, 1.0);
-
-      yof = 0;
-      for (std::vector<std::string>::iterator i = credits.begin(); i != credits.end(); i++)
-	{
-	  switch ((*i)[0])
-	    {
-	    case '-':
-	      font->print_center(x, y + yof, i->substr(1).c_str());
-	      yof += font->get_height() + 5;
-	      break;
-	    case '_':
-	      font_small->print_center(x, y + yof, i->substr(1).c_str());
-	      yof += font_small->get_height() + 5;
-	      break;
-	    case 'n':
-	      yof += 50;
-	      break;
-	    default:
-	      std::cout << "Credits: Syntax error: Unknown format: '" << (*i)[0] << "'" << std::endl;
-	      break;
-	    }
-	}
-      if (y + yof < -50)
-	quit = true;  
-
-      Display::flip_display();  
-     
-      CL_System::keep_alive();
-
-      if (CL_Keyboard::get_keycode(CL_KEY_SPACE))
-	y -= 10;
-	
       if (CL_Keyboard::get_keycode(CL_KEY_ESCAPE))
 	quit = true;
+
+      if (CL_Keyboard::get_keycode(CL_KEY_SPACE))
+	update (delta.getset ());
+      else
+	update (delta.getset () * 10.0f);	
+	
+      draw ();
+      Display::flip_display ();
+
+      CL_System::keep_alive();
+    }
+}
+
+void 
+Credits::update (float delta)
+{
+  offset -= 1.0f * delta;
+	
+}
+
+void 
+Credits::draw ()
+{
+  int x;
+  int y;
+  int yof;
+
+  x = CL_Display::get_width() * 3 / 4;
+  y = int(offset);
+
+  CL_Display::clear_display(1.0, 1.0, 1.0);
+      
+  surface.put_screen((CL_Display::get_width() / 4) - (surface.get_width() / 2),
+		     (CL_Display::get_height() / 2) - (surface.get_height() / 2));
+
+  CL_Display::fill_rect(CL_Display::get_width() / 2, 0,
+			CL_Display::get_width(), CL_Display::get_height(),
+			0.0, 0.0, 0.0, 1.0);
+
+  yof = 0;
+  for (std::vector<std::string>::iterator i = credits.begin(); i != credits.end(); i++)
+    {
+      switch ((*i)[0])
+	{
+	case '-':
+	  font->print_center(x, y + yof, i->substr(1).c_str());
+	  yof += font->get_height() + 5;
+	  break;
+	case '_':
+	  font_small->print_center(x, y + yof, i->substr(1).c_str());
+	  yof += font_small->get_height() + 5;
+	  break;
+	case 'n':
+	  yof += 50;
+	  break;
+	default:
+	  std::cout << "Credits: Syntax error: Unknown format: '" << (*i)[0] << "'" << std::endl;
+	  break;
+	}
     }
 }
 

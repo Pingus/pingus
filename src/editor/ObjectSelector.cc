@@ -1,4 +1,4 @@
-//  $Id: ObjectSelector.cc,v 1.41 2001/04/21 14:40:23 grumbel Exp $
+//  $Id: ObjectSelector.cc,v 1.42 2001/04/21 20:31:53 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -147,11 +147,11 @@ ObjectSelector::get_hotspot()
   data.pos.x = CL_Mouse::get_x() - x_offset;
   data.pos.y = CL_Mouse::get_y() - y_offset;
   data.pos.z = 0;
-  std::string str = select_surface("global");
+  std::string str = select_surface("hotspots");
 
   if (!str.empty())
     {
-      data.desc = ResDescriptor("resource:global", str);
+      data.desc = ResDescriptor("resource:hotspots", str);
       data.speed = -1;
 
       return boost::shared_ptr<EditorObj>(new HotspotObj(data));
@@ -364,7 +364,8 @@ ObjectSelector::select_obj_type()
 	  return objs;
 
 	case CL_KEY_L:
-	  objs.push_back(get_liquid());
+	  std::cout << "ObjectSelector: Liquid not implemented" << std::endl;
+	  //objs.push_back(get_liquid());
 	  return objs;
 
 	case CL_KEY_W:
@@ -391,6 +392,7 @@ ObjectSelector::get_background()
 std::string
 ObjectSelector::select_surface(vector<surface_obj>& sur_list)
 {
+  std::cout << "ObjectSelector: Selecting surface out of: " << sur_list.size () << std::endl;
   SurfaceSelector sur_selector(&sur_list);
 
   return sur_selector.select();
@@ -475,6 +477,9 @@ ObjectSelector::read_string(string description, string def_str)
 /*
 
 $Log: ObjectSelector.cc,v $
+Revision 1.42  2001/04/21 20:31:53  grumbel
+Added a thunder effect to the rain
+
 Revision 1.41  2001/04/21 14:40:23  grumbel
 Fixed the insertion of traps
 

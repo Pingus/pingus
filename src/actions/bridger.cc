@@ -1,4 +1,4 @@
-//  $Id: bridger.cc,v 1.37 2001/04/20 20:53:55 grumbel Exp $
+//  $Id: bridger.cc,v 1.38 2001/04/21 20:31:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -50,6 +50,7 @@ Bridger::init(void)
     }
   sprite = Sprite (PingusResource::load_surface ("Pingus/bridger" + StringConverter::to_string(pingu->get_owner ()),
 						 "pingus"));
+  sprite.set_align_center_bottom ();
 
   bricks = 15;
 
@@ -60,6 +61,11 @@ Bridger::init(void)
 void
 Bridger::draw_offset(int x, int y, float s)
 {
+  if (pingu->direction.is_left ())
+    sprite.set_direction (Sprite::LEFT);
+  else
+    sprite.set_direction (Sprite::RIGHT);
+
   sprite.put_screen(pingu->get_x () + x,
 		    pingu->get_y () + y);
 }
@@ -67,6 +73,8 @@ Bridger::draw_offset(int x, int y, float s)
 void
 Bridger::update(float delta)
 {
+  sprite.update (delta);
+  
   // Increment the animation only every first and second loop, not at the third
   if (step > 0) {
     ++do_steps;

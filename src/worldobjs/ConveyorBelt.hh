@@ -1,4 +1,4 @@
-//  $Id: ConveyorBelt.hh,v 1.10 2001/04/21 10:55:17 grumbel Exp $
+//  $Id: ConveyorBelt.hh,v 1.11 2001/04/21 20:31:53 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -80,7 +80,7 @@ public:
   virtual ~EditorConveyorBeltObj ();
 
   virtual boost::shared_ptr<EditorObj> duplicate();
-  virtual void draw_offset(int, int);
+  virtual void draw_offset (CL_Vector offset, float zoom);
   virtual void draw_scroll_map(int x_pos, int y_pos, int arg_width, int arg_height);
   
   /// The saveing will be done in EditorTeleporterObj::save_xml

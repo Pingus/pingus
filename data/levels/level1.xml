@@ -18,15 +18,15 @@ Doch mit gezieltem graben sollten sie noch eine Chance haben.</description>
 <background type="surface">
   <surface><resource type="datafile">
     <resource-datafile>textures</resource-datafile>
-  <resource-ident>Textures/clouds</resource-ident>
+  <resource-ident>Textures/cyanspace</resource-ident>
   </resource></surface>
   <color>
     <red>0</red>
     <green>0</green>
     <blue>0</blue>
-    <alpha>1</alpha>
+    <alpha>0.1</alpha>
   </color>
-  <scroll-x>3</scroll-x>
+  <scroll-x>0</scroll-x>
   <scroll-y>0</scroll-y>
   <para-x>0.1</para-x>
   <para-y>0.1</para-y>
@@ -37,7 +37,7 @@ Doch mit gezieltem graben sollten sie noch eine Chance haben.</description>
 <background type="surface">
   <surface><resource type="datafile">
     <resource-datafile>textures</resource-datafile>
-  <resource-ident>Textures/mountain</resource-ident>
+  <resource-ident>Textures/thunderstorm</resource-ident>
   </resource></surface>
   <color>
     <red>0</red>
@@ -45,7 +45,7 @@ Doch mit gezieltem graben sollten sie noch eine Chance haben.</description>
     <blue>0</blue>
     <alpha>0</alpha>
   </color>
-  <scroll-x>0</scroll-x>
+  <scroll-x>1</scroll-x>
   <scroll-y>0</scroll-y>
   <para-x>0.2</para-x>
   <para-y>0.2</para-y>
@@ -53,6 +53,7 @@ Doch mit gezieltem graben sollten sie noch eine Chance haben.</description>
   <stretch-y>0</stretch-y>
 </background>
 
+<!--
 <background type="surface">
   <surface><resource type="datafile">
     <resource-datafile>textures</resource-datafile>
@@ -77,7 +78,7 @@ Doch mit gezieltem graben sollten sie noch eine Chance haben.</description>
   <middle-stars count="50"/>
   <large-stars count="25"/>
 </background>
-
+-->
   <action-list>
     <basher count="20"/>
     <basher count="20"/>
@@ -1094,7 +1095,7 @@ Doch mit gezieltem graben sollten sie noch eine Chance haben.</description>
 </trap>
 
   <weather>
-    <type>snow</type>
+    <type>rain</type>
   <position>
     <x-pos>0</x-pos>
     <y-pos>0</y-pos>

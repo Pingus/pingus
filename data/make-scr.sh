@@ -1,5 +1,7 @@
 #!/bin/sh
 
+echo -n "."
+./gen-scrfile.pl images/hotspots > data/hotspots.scr
 echo -n ".""."
 ./gen-scrfile.pl images/groundpieces/ground > data/groundpieces-ground.scr
 echo -n ".""."

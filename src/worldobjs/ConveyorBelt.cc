@@ -1,4 +1,4 @@
-//  $Id: ConveyorBelt.cc,v 1.14 2001/04/21 10:55:16 grumbel Exp $
+//  $Id: ConveyorBelt.cc,v 1.15 2001/04/21 20:31:53 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -123,15 +123,13 @@ ConveyorBelt::update(float delta)
   else if (counter < 0.0f)
     counter = middle_sur.get_num_frames () - 1;
 
-  std::cout << "Speed: " << speed * delta << std::endl;
-
   PinguHolder* holder = world->get_pingu_p();
   for (PinguIter pingu = holder->begin (); pingu != holder->end (); ++pingu)
     {
-      if (   (*pingu)->get_x() > pos.x
-	     && (*pingu)->get_x() < pos.x + 15*(width+2)
-	     && (*pingu)->get_y() > pos.y - 2
-	     && (*pingu)->get_y() < pos.y + 10)
+      if ((*pingu)->get_x() > pos.x
+	  && (*pingu)->get_x() < pos.x + 15*(width+2)
+	  && (*pingu)->get_y() > pos.y - 2
+	  && (*pingu)->get_y() < pos.y + 10)
 	{
 	  CL_Vector pos = (*pingu)->get_pos ();
 	  pos.x -= speed * delta;
@@ -170,16 +168,16 @@ EditorConveyorBeltObj::duplicate()
   return boost::shared_ptr<EditorObj>(new EditorConveyorBeltObj (this));
 }
 
-void   
-EditorConveyorBeltObj::draw_offset(int x_of, int y_of)
+void
+EditorConveyorBeltObj::draw_offset(CL_Vector offset, float zoom)
 {
-  left_sur.put_screen (pos.x + x_of, pos.y + y_of, counter);
+  left_sur.put_screen (pos.x + offset.x, pos.y + offset.y, counter);
   for (int i=0; i < ConveyorBeltData::width; i++)
-    middle_sur.put_screen (pos.x + left_sur.get_width () + i*middle_sur.get_width () + x_of, 
-			   pos.y + y_of, 
+    middle_sur.put_screen (pos.x + left_sur.get_width () + i*middle_sur.get_width () + offset.x,
+			   pos.y + offset.y,
 			   counter);
-  right_sur.put_screen (pos.x + left_sur.get_width () + ConveyorBeltData::width*middle_sur.get_width () + x_of,
-			pos.y + y_of, counter);
+  right_sur.put_screen (pos.x + left_sur.get_width () + ConveyorBeltData::width*middle_sur.get_width () + offset.x,
+			pos.y + offset.y, counter);
   counter += speed;
   if (counter > 14)
     counter = 0;

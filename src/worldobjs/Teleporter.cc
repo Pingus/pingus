@@ -1,4 +1,4 @@
-//  $Id: Teleporter.cc,v 1.15 2001/04/21 10:55:17 grumbel Exp $
+//  $Id: Teleporter.cc,v 1.16 2001/04/21 20:31:53 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -210,7 +210,7 @@ EditorTeleporterTargetObj::EditorTeleporterTargetObj (WorldObjData* obj, CL_Vect
 }
 
 void
-EditorTeleporterObj::draw_offset(int x_of, int y_of)
+EditorTeleporterObj::draw_offset (CL_Vector offset, float zoom)
 {
   CL_Display::draw_line (pos.x + x_of + width/2, pos.y + y_of + height/2,
 			 target_pos.x + x_of + 32, target_pos.y + y_of + 32,

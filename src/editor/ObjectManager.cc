@@ -1,4 +1,4 @@
-//  $Id: ObjectManager.cc,v 1.40 2001/04/21 10:55:16 grumbel Exp $
+//  $Id: ObjectManager.cc,v 1.41 2001/04/21 20:31:53 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -76,8 +76,8 @@ ObjectManager::new_level ()
   start_y_pos = 0;
   x_offset = 0;
   y_offset = 0;
-  width = 1200;
-  height = 600;
+  width = 1216;
+  height = 608;
   level_time = 9000;
 
   bg.red   = 0.3;
@@ -269,7 +269,7 @@ ObjectManager::save_level (string filename)
 
   // FIXME: we need some error checking 
   plf_out << "/* This level was created with the PLE\n"
-	  << " * $Id: ObjectManager.cc,v 1.40 2001/04/21 10:55:16 grumbel Exp $\n"
+	  << " * $Id: ObjectManager.cc,v 1.41 2001/04/21 20:31:53 grumbel Exp $\n"
 	  << " */"
 	  << endl;
   

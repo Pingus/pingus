@@ -1,4 +1,4 @@
-//  $Id: PLFObj.cc,v 1.41 2001/04/21 14:40:23 grumbel Exp $
+//  $Id: PLFObj.cc,v 1.42 2001/04/21 20:31:53 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -47,12 +47,9 @@ PLFObj::status_line()
 }
 
 HotspotObj::HotspotObj(const HotspotData& data)
+  : HotspotData (data)
 {
   *position = data.pos;
-  desc  = data.desc;
-  speed = data.speed;
-  para  = data.para;
-  cout << "Lodaing Hotspot: " << desc.res_name << endl;
   surf = PingusResource::load_surface(desc);
   width = surf.get_width ();
   height = surf.get_height ();
@@ -237,15 +234,12 @@ EntranceObj::status_line()
   return std::string(str);
 }
 
-ExitObj::ExitObj(ExitData data)
+ExitObj::ExitObj(const ExitData& data)
+  : ExitData (data)
 {
-  desc = data.desc;
   surf = PingusResource::load_surface(desc);
   width = surf.get_width ();
   height = surf.get_height ();
-  owner_id = data.owner_id;
-  use_old_pos_handling = data.use_old_pos_handling;
-
   *position  = data.pos;
 
   if (!use_old_pos_handling)
@@ -363,6 +357,14 @@ TrapObj::draw_offset(CL_Vector offset, float zoom)
   }
 }
 
+std::string  
+TrapObj::status_line()
+{
+  char str[1024];
+  sprintf (str, "TrapObj: %4.2fx%4.2fx%4.2f", position->x, position->y, position->z);
+  return str;
+}
+
 void
 TrapObj::save(ofstream* plf, ofstream* psm)
 {
@@ -398,6 +400,7 @@ LiquidObj::LiquidObj(const LiquidObj& data)
 LiquidObj::LiquidObj(const LiquidData& data)
   : LiquidData (data)
 {
+  *position = data.pos;
   surf = PingusResource::load_surface(desc);
   EditorObj::width = surf.get_width ();
   EditorObj::height = surf.get_height ();

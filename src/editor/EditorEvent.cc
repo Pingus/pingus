@@ -1,4 +1,4 @@
-//  $Id: EditorEvent.cc,v 1.39 2001/04/21 14:40:22 grumbel Exp $
+//  $Id: EditorEvent.cc,v 1.40 2001/04/21 20:31:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -489,7 +489,7 @@ EditorEvent::editor_load_level()
 
   for (System::Directory::iterator i = dir.begin(); i != dir.end(); i++)
     {
-      std::cout << "dirs: " << System::get_statdir() + "levels/" +  i->name << std::endl;
+      //std::cout << "dirs: " << System::get_statdir() + "levels/" +  i->name << std::endl;
       
       temp_str = System::get_statdir() + "levels/" + i->name;
 
@@ -530,7 +530,7 @@ EditorEvent::editor_save_level_as()
 
   for (System::Directory::iterator i = dir.begin(); i != dir.end(); i++)
     {
-      std::cout << "dirs: " << System::get_statdir() + "levels/" +  i->name << std::endl;
+      //std::cout << "dirs: " << System::get_statdir() + "levels/" +  i->name << std::endl;
       str = System::get_statdir() + "levels/" + i->name;
 
       strings.push_back(str);

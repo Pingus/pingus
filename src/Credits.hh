@@ -1,4 +1,4 @@
-//  $Id: Credits.hh,v 1.5 2000/12/14 21:35:54 grumbel Exp $
+//  $Id: Credits.hh,v 1.6 2001/04/21 20:31:52 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,6 +33,8 @@ private:
   ///
   bool is_init;
 
+  float offset;
+
   /** The string's which are shown in the scrolling text, the first
       character of the string can be used to apply a special format.
       
@@ -48,6 +50,8 @@ public:
   ~Credits();
   ///
   void init ();
+  void update (float delta);
+  void draw ();
   ///
   void display();
 };
