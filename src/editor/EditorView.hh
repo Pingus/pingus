@@ -1,4 +1,4 @@
-//  $Id: EditorView.hh,v 1.3 2001/07/24 21:39:46 grumbel Exp $
+//  $Id: EditorView.hh,v 1.4 2001/08/12 23:05:22 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,8 @@
 
 #include <ClanLib/core.h>
 #include <ClanLib/display.h>
+
+class Sprite;
 
 class EditorView
 {
@@ -62,6 +64,7 @@ public:
   CL_Vector screen_to_world (CL_Vector pos);
   CL_Vector world_to_screen (CL_Vector pos);
 
+  void draw (Sprite& sprite, const CL_Vector& pos);
   void draw (CL_Surface& sur, const CL_Vector& pos);
   void draw (CL_Surface& sur, const CL_Vector& pos, int frame);
   void draw (CL_Surface& sur, int x_pos, int y_pos);

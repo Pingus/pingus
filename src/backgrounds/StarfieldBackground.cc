@@ -1,4 +1,4 @@
-//  $Id: StarfieldBackground.cc,v 1.10 2001/08/12 18:36:41 grumbel Exp $
+//  $Id: StarfieldBackground.cc,v 1.11 2001/08/12 23:05:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,9 +17,31 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "../editor/SpriteEditorObj.hh"
 #include "../World.hh"
 #include "../StringConverter.hh"
 #include "StarfieldBackground.hh"
+
+class EditorStarfieldBackground : public StarfieldBackgroundData,
+				  public SpriteEditorObj
+{
+private:
+  CL_Vector pos;
+public:
+  EditorStarfieldBackground (const StarfieldBackgroundData& data)
+    : StarfieldBackgroundData (data),
+      SpriteEditorObj ("Stars/starfield_icon", "game", pos),
+      pos (-64.0f, 0.0f)
+  {}
+
+  void write_xml(ofstream* xml) { this->StarfieldBackgroundData::write_xml (xml); }
+
+  boost::shared_ptr<EditorObj> duplicate() {
+    return boost::shared_ptr<EditorObj>(new EditorStarfieldBackground (*this));
+  }
+
+  std::string status_line () { return "StarfieldBackground"; }
+};
 
 void 
 StarfieldBackgroundData::write_xml(std::ofstream* xml)
@@ -88,6 +110,24 @@ StarfieldBackgroundData::create(xmlDocPtr doc, xmlNodePtr cur)
     return data;
 }
 
+boost::shared_ptr<WorldObj> 
+StarfieldBackgroundData::create_WorldObj()
+{
+  return boost::shared_ptr<WorldObj> (new StarfieldBackground (*this));
+}
+
+EditorObjLst
+StarfieldBackgroundData::create_EditorObj()
+{
+  EditorObjLst lst;
+  lst.push_back (boost::shared_ptr<EditorObj> (new EditorStarfieldBackground (*this)));
+  return lst;
+}
+
+/****************************/
+/* StarfieldBackgroundStars */
+/****************************/
+
 CL_Surface StarfieldBackgroundStars::small_star;
 CL_Surface StarfieldBackgroundStars::middle_star;
 CL_Surface StarfieldBackgroundStars::large_star;
@@ -148,15 +188,11 @@ StarfieldBackgroundStars::draw_offset(int x_of, int y_of, float s = 1.0)
   sur.put_screen (int(x_pos + x_of), int(y_pos + y_of));
 }
 
-StarfieldBackground::StarfieldBackground ()
+StarfieldBackground::StarfieldBackground (const StarfieldBackgroundData& data)
 {
-}
-
-StarfieldBackground::StarfieldBackground (StarfieldBackgroundData* data)
-{
-  small_stars_count = data->small_stars_count;
-  middle_stars_count = data->middle_stars_count;
-  large_stars_count = data->large_stars_count;
+  small_stars_count  = data.small_stars_count;
+  middle_stars_count = data.middle_stars_count;
+  large_stars_count  = data.large_stars_count;
 
   for (int i=0; i < small_stars_count; i++)
     stars.push_back (StarfieldBackgroundStars (StarfieldBackgroundStars::SMALL_STAR));

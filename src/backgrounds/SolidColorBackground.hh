@@ -1,4 +1,4 @@
-//  $Id: SolidColorBackground.hh,v 1.6 2001/08/12 18:36:41 grumbel Exp $
+//  $Id: SolidColorBackground.hh,v 1.7 2001/08/12 23:05:22 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,7 +36,7 @@ public:
   /** Writte the content of this object formated as xml to the given
       stream */
   virtual void write_xml(std::ofstream* xml);
-  static boost::shared_ptr<SolidColorBackgroundData> create (xmlDocPtr doc, xmlNodePtr cur);
+  static boost::shared_ptr<WorldObjData> create (xmlDocPtr doc, xmlNodePtr cur);
 
   boost::shared_ptr<WorldObj> create_WorldObj();
   EditorObjLst create_EditorObj();
@@ -46,11 +46,9 @@ class SolidColorBackground : public WorldObj,
 			     private SolidColorBackgroundData
 {
 public:
-  SolidColorBackground () {}
+  SolidColorBackground (const SolidColorBackgroundData&);
   virtual ~SolidColorBackground () {}
   
-  //static boost::shared_ptr<SolidColorBackground> create (boost::shared_ptr<BackgroundData> arg_data);
-
   void update (float delta) {}
   void draw_offset (int x_of, int y_of, float s = 1.0);
 };

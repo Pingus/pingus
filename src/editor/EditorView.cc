@@ -1,4 +1,4 @@
-//  $Id: EditorView.cc,v 1.5 2001/08/04 21:55:56 grumbel Exp $
+//  $Id: EditorView.cc,v 1.6 2001/08/12 23:05:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "../Sprite.hh"
 #include "EditorView.hh"
 
 EditorView::EditorView (int x1, int y1, int x2, int y2, 
@@ -127,6 +128,15 @@ float
 EditorView::get_y_offset ()
 {
   return offset.y;
+}
+
+void 
+EditorView::draw (Sprite& sprite, const CL_Vector& pos)
+{
+  CL_Surface sur (sprite.get_surface ());
+  draw (sur, 
+	pos.x + sprite.get_x_align (),
+	pos.y + sprite.get_y_align ());
 }
 
 void 

@@ -1,4 +1,4 @@
-//  $Id: WorldObjDataFactory.hh,v 1.2 2001/08/10 10:56:13 grumbel Exp $
+//  $Id: WorldObjDataFactory.hh,v 1.3 2001/08/12 23:05:21 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,10 +39,22 @@ private:
 
   WorldObjDataFactory ();
 public:
+  /** Return the singleton instance */
   static WorldObjDataFactory* instance ();
-  boost::shared_ptr<WorldObjData> create (xmlDocPtr doc, xmlNodePtr cur);
+
+  /** Register a factory for object creation */
   void register_factory (const std::string& id,
 			 WorldObjDataAbstractFactory* factory);
+
+  /** Create a WorldObjData type from a given piece of xml, use the
+      'type' property for determinating the object type. */
+  boost::shared_ptr<WorldObjData> create (xmlDocPtr doc, xmlNodePtr cur);
+
+  /** Create a WorldObjData type from a given piece of xml, use the
+      given id value for determinating the object type instead of the
+      'type' property. This is for backward compatibility only! */
+  boost::shared_ptr<WorldObjData> create (const std::string& id,
+					  xmlDocPtr doc, xmlNodePtr cur);
 };
 
 /** WorldObjDataAbstractFactory, interface for creating factories */

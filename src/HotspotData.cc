@@ -1,4 +1,4 @@
-//  $Id: HotspotData.cc,v 1.1 2001/08/10 11:05:32 grumbel Exp $
+//  $Id: HotspotData.cc,v 1.2 2001/08/12 23:05:21 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,7 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "Hotspot.hh"
-#include "editor/PLFObj.hh"
+#include "EditorHotspot.hh"
 #include "HotspotData.hh"
 
 void 
@@ -82,7 +82,7 @@ EditorObjLst
 HotspotData::create_EditorObj()
 {
   EditorObjLst lst;
-  lst.push_back (boost::shared_ptr<EditorObj> (new HotspotObj (*this)));
+  lst.push_back (boost::shared_ptr<EditorObj> (new EditorHotspot (*this)));
   return lst;
 }
 

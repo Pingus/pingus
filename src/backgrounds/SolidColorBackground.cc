@@ -1,4 +1,4 @@
-//  $Id: SolidColorBackground.cc,v 1.6 2001/08/12 18:36:41 grumbel Exp $
+//  $Id: SolidColorBackground.cc,v 1.7 2001/08/12 23:05:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,24 +19,23 @@
 
 #include <ClanLib/core.h>
 #include <ClanLib/display.h>
+#include "../editor/SpriteEditorObj.hh"
+#include "../editor/EditorObj.hh"
 #include "../XMLhelper.hh"
 #include "SolidColorBackground.hh"
 
-  /** Writte the content of this object formated as xml to the given
-      stream */
 void
 SolidColorBackgroundData:: write_xml(std::ofstream* xml)
 {
-  (*xml) << "<background type=\"solidcolor\"></background>" << std::endl;
+  (*xml) << "<worldobj type=\"solidcolor-background\"></worldobj>" << std::endl;
 }
 
-boost::shared_ptr<SolidColorBackgroundData> 
+boost::shared_ptr<WorldObjData> 
 SolidColorBackgroundData::create (xmlDocPtr doc, xmlNodePtr cur)
 {
-  boost::shared_ptr<SolidColorBackgroundData> data (new SolidColorBackgroundData ());
+  SolidColorBackgroundData* data (new SolidColorBackgroundData ());
 
   cur = cur->children;
-
   while (cur != NULL)
     {
       if (xmlIsBlankNode(cur)) 
@@ -55,21 +54,47 @@ SolidColorBackgroundData::create (xmlDocPtr doc, xmlNodePtr cur)
 	}
       cur = cur->next;
     }
-  return data;
+  return boost::shared_ptr<WorldObjData>(data);
 }
 
-/*
-boost::shared_ptr<SolidColorBackground>
-SolidColorBackground::create (boost::shared_ptr<BackgroundData> arg_data)
+boost::shared_ptr<WorldObj> 
+SolidColorBackgroundData::create_WorldObj()
 {
-  SolidColorBackgroundData* data = dynamic_cast<SolidColorBackgroundData*>(arg_data.get());
-  assert (data);
-  boost::shared_ptr<SolidColorBackground> background = 
-    boost::shared_ptr<SolidColorBackground>(new SolidColorBackground());
+  return boost::shared_ptr<WorldObj> (new SolidColorBackground (*this));
+}
 
-  background->color = data->color;
-  return background;
-}*/
+class EditorSolidColorBackground : public SolidColorBackgroundData,
+				   public SpriteEditorObj
+{
+private:
+  CL_Vector pos;
+public:
+  EditorSolidColorBackground (const SolidColorBackgroundData& data)
+    : SolidColorBackgroundData (data),
+      SpriteEditorObj ("Stars/starfield_icon", "game", pos),
+      pos (-64.0f, 0.0f)
+  {}
+  void write_xml(ofstream* xml) { this->SolidColorBackgroundData::write_xml (xml); }
+
+  boost::shared_ptr<EditorObj> duplicate() {
+    return boost::shared_ptr<EditorObj>(new EditorSolidColorBackground (*this));
+  }
+
+  std::string status_line () { return "SolidColorBackground"; }
+};
+
+EditorObjLst 
+SolidColorBackgroundData::create_EditorObj()
+{
+  EditorObjLst lst;
+  lst.push_back (boost::shared_ptr<EditorObj>(new EditorSolidColorBackground (*this)));
+  return lst;
+}
+
+SolidColorBackground::SolidColorBackground (const SolidColorBackgroundData& data)
+  : SolidColorBackgroundData (data)
+{
+}
 
 void
 SolidColorBackground::draw_offset (int x_of, int y_of, float s = 1.0)

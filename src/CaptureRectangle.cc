@@ -1,4 +1,4 @@
-//  $Id: CaptureRectangle.cc,v 1.12 2001/08/12 18:36:40 grumbel Exp $ 
+//  $Id: CaptureRectangle.cc,v 1.13 2001/08/12 23:05:21 grumbel Exp $ 
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -61,7 +61,7 @@ CaptureRectangle::draw_offset(int x_offset, int y_offset, float s)
     {
       return;
     } 
-  else 
+  else if (pingu->catchable ())
     {
       boost::dummy_ptr<Sprite> sur;
       

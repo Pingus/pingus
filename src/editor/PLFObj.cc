@@ -1,4 +1,4 @@
-//  $Id: PLFObj.cc,v 1.51 2001/08/12 18:36:41 grumbel Exp $
+//  $Id: PLFObj.cc,v 1.52 2001/08/12 23:05:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,70 +29,35 @@
 
 using namespace std;
 
-HotspotObj::HotspotObj(const HotspotData& data)
-  : SpriteEditorObj (data.desc.res_name, data.desc.datafile, pos),
-    HotspotData (data)
-{
-}
-
-boost::shared_ptr<EditorObj>
-HotspotObj::duplicate()
-{
-  return boost::shared_ptr<EditorObj>(new HotspotObj(*this));
-}
-
-std::string
-HotspotObj::status_line()
-{
-  char str[256];
-
-  sprintf(str, "Hotspot - Speed: %d - X: %.2f - Y: %.2f - Z: %.2f",  
-	  speed, pos.x, pos.y, pos.z);
-
-  return std::string(str);
-}
-
 EntranceObj::EntranceObj(const EntranceData& data)
-  : SpriteEditorObj (data.desc.res_name, data.desc.datafile, pos),
+  : SpriteEditorObj (pos),
     EntranceData (data)
 {
-  /*
-  std::cout << "EntranceObj::EntranceObj(const EntranceData& data)" << std::endl;
-  *position  = data.pos;
+  std::cout << "EntranceObj::EntranceObj(const EntranceData& data): " 
+	    << type << std::endl;
 
   if (type == "generic")
     {
-      surf = PingusResource::load_surface("Entrances/generic", "entrances");
-      x_of = -(surf.get_width()/2);
-      y_of = -surf.get_height();
+      sprite = Sprite("Entrances/generic", "entrances");
+      sprite.set_align(-(sprite.get_width()/2), -sprite.get_height());
     } 
   else if (type == "woodthing") 
     {
-      surf = PingusResource::load_surface("Entrances/woodthing_mov", "entrances");
-      cout << "Loading woodthing..." << endl;
-      if (!surf) {
-	throw PingusError("EntranceObj: Fatal error!");
-      }
-      // FIXME: This are hardcoded, because the values are incorrectf!?
-      x_of = - (int)(surf.get_width())/2;
-      y_of = 32 - (int)(surf.get_height());
-      cout << "Loading woodthing..." << x_of << " " << y_of << endl;
-    } 
+      std::cout << "WOODTHING" << std::endl;
+      sprite = Sprite("Entrances/woodthing_mov", "entrances");
+      sprite.set_align(0  - sprite.get_width()/2,
+		       32 - sprite.get_height());
+    }
   else if (type == "cloud")
     {
-      surf = PingusResource::load_surface("Entrances/cloud", "entrances");
-      x_of = -115;
-      y_of = -75;
+      sprite = Sprite("Entrances/cloud", "entrances");
+      sprite.set_align(-115, -75);
     } 
   else 
     {
       cout << "Entrance obj error!" << endl;
       throw PingusError("EntranceObj: Unknown entrance type: " + type);
     }
-
-  width = surf.get_width ();
-  height = surf.get_height ();
-  */
 }
 
 boost::shared_ptr<EditorObj>
@@ -239,10 +204,8 @@ LiquidObj::duplicate()
 void
 LiquidObj::draw (boost::dummy_ptr<EditorView> view)
 {
-  CL_Surface sur(sprite.get_surface ());
-
   for(int i = 0; i < width; i++)
-    view->draw (sur, pos + CL_Vector (i * sprite.get_width (), 0));
+    view->draw (sprite, pos + CL_Vector (i * sprite.get_width (), 0));
 }
 
 void

@@ -46,4 +46,5 @@ section Stars
         large_star = images/backgrounds/large_star.png (type=surface, x=0, y=0, width=23, height=24, tcol=0);
         middle_star = images/backgrounds/middle_star.png (type=surface, x=0, y=0, width=9, height=9, tcol=0);
         small_star = images/backgrounds/small_star.png (type=surface, x=0, y=0, width=6, height=6, tcol=0);
+	starfield_icon = images/backgrounds/starfield_icon.png (type=surface, x=0, y=0, width=64, height=64);
 }

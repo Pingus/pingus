@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.66 2001/08/10 10:56:13 grumbel Exp $
+#  $Id: Makefile.am,v 1.67 2001/08/12 23:05:21 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -193,7 +193,8 @@ pingus_SOURCES = \
                  PathManager.cc      PathManager.hh \
                  GroundpieceData.hh  GroundpieceData.cc \
                  my_gettext.hh \
-                 WorldObjDataFactory.cc  WorldObjDataFactory.hh
+                 WorldObjDataFactory.cc  WorldObjDataFactory.hh \
+                 EditorHotspot.hh
 
 #                PinguRandomMap.cc    PinguRandomMap.hh    
 #                PingusGame.cc        PingusGame.hh        \

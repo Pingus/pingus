@@ -1,4 +1,4 @@
-//  $Id: ThunderstormBackgroundData.cc,v 1.4 2001/08/12 18:36:41 grumbel Exp $
+//  $Id: ThunderstormBackgroundData.cc,v 1.5 2001/08/12 23:05:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,8 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "../editor/EditorObj.hh"
+#include "ThunderstormBackground.hh"
 #include "ThunderstormBackgroundData.hh"
 
 void
@@ -30,6 +32,21 @@ boost::shared_ptr<WorldObjData>
 ThunderstormBackgroundData::create(xmlDocPtr doc, xmlNodePtr cur)
 {
   return boost::shared_ptr<ThunderstormBackgroundData>(new ThunderstormBackgroundData());
+}
+
+boost::shared_ptr<WorldObj> 
+ThunderstormBackgroundData::create_WorldObj()
+{
+  return boost::shared_ptr<WorldObj> (new ThunderstormBackground ());
+}
+
+EditorObjLst 
+ThunderstormBackgroundData::create_EditorObj()
+{
+  EditorObjLst lst;
+  std::cout << "ThunderstormBackgroundData::create_EditorObj(): Not Implemented"
+	    << std::endl;
+  return lst;
 }
 
 /* EOF */

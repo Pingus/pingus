@@ -1,4 +1,4 @@
-//  $Id: PLFObj.hh,v 1.24 2001/08/11 18:53:39 grumbel Exp $
+//  $Id: PLFObj.hh,v 1.25 2001/08/12 23:05:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,19 +28,6 @@
 #include "../ExitData.hh"
 #include "../TrapData.hh"
 #include "SpriteEditorObj.hh"
-
-class HotspotObj : public    SpriteEditorObj,
-		   protected HotspotData
-{
-private:
-  CL_Vector pos;
-public:
-  HotspotObj(const HotspotData&);
-
-  boost::shared_ptr<EditorObj> duplicate();
-  void write_xml(std::ofstream* xml) { HotspotData::write_xml (xml); }
-  std::string  status_line();
-};
 
 ///
 class EntranceObj : public SpriteEditorObj,

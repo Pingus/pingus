@@ -1,4 +1,4 @@
-//  $Id: ObjectSelector.cc,v 1.49 2001/08/10 10:56:14 grumbel Exp $
+//  $Id: ObjectSelector.cc,v 1.50 2001/08/12 23:05:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,6 +32,8 @@
 #include "ObjectSelector.hh"
 #include "ThumbCache.hh"
 #include "../my_gettext.hh"
+
+#include "../EditorHotspot.hh"
 
 #include "../worldobjs/Teleporter.hh"
 #include "../worldobjs/IceBlock.hh"
@@ -160,7 +162,7 @@ ObjectSelector::get_hotspot()
       data.speed = -1;
 
       std::list<boost::shared_ptr<EditorObj> > objs;
-      objs.push_back(boost::shared_ptr<EditorObj>(new HotspotObj(data)));
+      objs.push_back(boost::shared_ptr<EditorObj>(new EditorHotspot(data)));
       return objs;
     }
   return std::list<boost::shared_ptr<EditorObj> >();
@@ -479,6 +481,9 @@ ObjectSelector::read_string(string description, string def_str)
 /*
 
 $Log: ObjectSelector.cc,v $
+Revision 1.50  2001/08/12 23:05:22  grumbel
+Some fixes to the code reorg, the editor is still not really useable at the moment
+
 Revision 1.49  2001/08/10 10:56:14  grumbel
 Some more reconstruction and code cleanup
 

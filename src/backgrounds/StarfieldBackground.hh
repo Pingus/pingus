@@ -1,4 +1,4 @@
-//  $Id: StarfieldBackground.hh,v 1.7 2001/08/12 18:36:41 grumbel Exp $
+//  $Id: StarfieldBackground.hh,v 1.8 2001/08/12 23:05:22 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -62,15 +62,11 @@ private:
 public:
   enum Type { SMALL_STAR, MIDDLE_STAR, LARGE_STAR };
 
-  ///
   StarfieldBackgroundStars () {}
-  ///
   StarfieldBackgroundStars (Type type);
-  ///
+
   void init ();
-  ///
   void update(float delta);
-  ///
   void draw_offset(int x_of, int y_of, float s = 1.0);  
 };
 
@@ -81,17 +77,13 @@ private:
   std::vector<StarfieldBackgroundStars> stars;
 
 public:
-  ///
-  StarfieldBackground ();
-  ///
-  StarfieldBackground (StarfieldBackgroundData*);
+  StarfieldBackground (const StarfieldBackgroundData&);
   ///
   ///static boost::shared_ptr<StarfieldBackground> create (boost::shared_ptr<BackgroundData> arg_data);
-  ///
+
   virtual ~StarfieldBackground ();
-  ///
+
   void update(float delta);
-  ///
   void draw_offset(int x_of, int y_of, float s = 1.0);
 };
 

@@ -1,4 +1,4 @@
-//  $Id: WorldObjDataFactory.cc,v 1.3 2001/08/11 18:53:39 grumbel Exp $
+//  $Id: WorldObjDataFactory.cc,v 1.4 2001/08/12 23:05:21 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,10 +18,19 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "Liquid.hh"
+
+// Backgrounds
+#include "backgrounds/SurfaceBackgroundData.hh"
+#include "backgrounds/StarfieldBackground.hh"
+#include "backgrounds/SolidColorBackground.hh"
+#include "backgrounds/ThunderstormBackgroundData.hh"
+
+// Special Objects
 #include "worldobjs/SwitchDoor.hh"
 #include "worldobjs/IceBlock.hh"
 #include "worldobjs/ConveyorBelt.hh"
 #include "worldobjs/Teleporter.hh"
+
 #include "TrapData.hh"
 #include "HotspotData.hh"
 #include "EntranceData.hh"
@@ -44,12 +53,20 @@ WorldObjDataFactory::instance ()
       // Registring Factories
       new WorldObjDataFactoryImpl<TrapData>("trap");
       new WorldObjDataFactoryImpl<LiquidData>("liquid");
+      new WorldObjDataFactoryImpl<HotspotData>("hotspot");
+      new WorldObjDataFactoryImpl<EntranceData>("entrance");
+
+      // Special Objects 
       new WorldObjDataFactoryImpl<SwitchDoorData>("switchdoor");
       new WorldObjDataFactoryImpl<IceBlockData>("iceblock");
       new WorldObjDataFactoryImpl<ConveyorBeltData>("conveyorbelt");
       new WorldObjDataFactoryImpl<TeleporterData>("teleporter");
-      new WorldObjDataFactoryImpl<HotspotData>("hotspot");
-      new WorldObjDataFactoryImpl<EntranceData>("hotspot");
+
+      // Backgrounds
+      new WorldObjDataFactoryImpl<SurfaceBackgroundData>("surface-background");
+      new WorldObjDataFactoryImpl<StarfieldBackgroundData>("starfield-background");
+      new WorldObjDataFactoryImpl<SolidColorBackgroundData>("solidcolor-background");
+      new WorldObjDataFactoryImpl<ThunderstormBackgroundData>("thunderstorm-background");
     }
 
   return instance_;
@@ -62,20 +79,26 @@ WorldObjDataFactory::create (xmlDocPtr doc, xmlNodePtr cur)
   char* type = (char*)xmlGetProp(cur, (xmlChar*)"type");
   if (type)
     {
-      std::string id (type);
-      free (type);
-      
-      std::map<std::string, WorldObjDataAbstractFactory*>::iterator it = factories.find(id);
-      
-      if (it == factories.end())
-	throw PingusError("WorldObjDataFactory: Invalid id: " + id);
-      else 
-	return boost::shared_ptr<WorldObjData> (it->second->create (doc, cur));
+      return create (type, doc, cur);
     }
   else
     {
       throw PingusError ("WorldObjDataFactory::create: Error, no type given.");
     }
+}
+
+boost::shared_ptr<WorldObjData> 
+WorldObjDataFactory::create (const std::string& id,
+			     xmlDocPtr doc, xmlNodePtr cur)
+{
+  std::cout << "WorldObjDataFactory::create (id, xmlDocPtr doc, xmlNodePtr cur)" << std::endl;
+
+  std::map<std::string, WorldObjDataAbstractFactory*>::iterator it = factories.find(id);
+  
+  if (it == factories.end())
+    throw PingusError("WorldObjDataFactory: Invalid id: " + id);
+  else 
+    return boost::shared_ptr<WorldObjData> (it->second->create (doc, cur));
 }
 
 void
