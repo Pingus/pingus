@@ -1,4 +1,4 @@
-//   $Id: PingusMain.cc,v 1.22 2001/04/11 11:28:24 grumbel Exp $
+//   $Id: PingusMain.cc,v 1.23 2001/04/11 20:31:40 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -208,6 +208,7 @@ PingusMain::check_args(int argc, char* argv[])
     {"use-datafile",      no_argument,       0, 150},
     {"use-scriptfile",    no_argument,       0, 151},
     {"max-cpu-usage",     no_argument,       0, 153},
+    {"frame-skip",        required_argument, 0, 154},
 
     // FIXME: is the number stuff correct?
     {"fs-preload",      no_argument,       0, 130},
@@ -460,7 +461,12 @@ For more information about these matters, see the files named COPYING.\
       break;
 
     case 153:
-      
+      max_cpu_usage = true;
+      break;
+
+    case 154:
+      sscanf(optarg, "%f", &frame_skip);
+      break;
 
     default:
       if (verbose) std::cout << _("Unknow char: ") << c << std::endl << std::endl;
@@ -492,6 +498,7 @@ For more information about these matters, see the files named COPYING.\
 	"   --config-file FILE       Read config from FILE (default: ~/.pingus/config)\n"
 	"   --max-cpu-usage          Use all of the cpu power available, instead of trying to\n"
 	"                            reduce CPU usage, might speed up the game on slower machines\n"
+	"   --frame-skip N           Show only every N's frame, larger values speed the game up\n"
 
 	"\nDebugging and experimental stuff:\n"
 	"   --maintainer-mode        Enables some features, only interesting programmers\n"

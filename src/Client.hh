@@ -1,4 +1,4 @@
-//  $Id: Client.hh,v 1.20 2001/04/10 21:51:22 grumbel Exp $
+//  $Id: Client.hh,v 1.21 2001/04/11 20:31:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -140,6 +140,12 @@ public:
   void set_finished();
   ///
   Result get_result();
+
+  /** Draw all gui elements, etc. */
+  void draw ();
+
+  /** Update all parts of the world */
+  void update (float delta);
 
   ///
   virtual void on_button_press(CL_InputDevice *device, const CL_Key &key);

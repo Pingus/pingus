@@ -1,4 +1,4 @@
-//  $Id: Client.cc,v 1.41 2001/04/11 11:28:24 grumbel Exp $
+//  $Id: Client.cc,v 1.42 2001/04/11 20:31:40 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -135,7 +135,7 @@ Client::init_display()
   hurry_up->set_client(this);
   
   /*  if (play_demo)
-    server->set_demo(demo_file);
+      server->set_demo(demo_file);
   */
   playfield->set_clip_rect(0, 0, 
 			   CL_Display::get_width(),
@@ -217,81 +217,61 @@ Client::play_level(std::string plf_filename, std::string psm_filename)
   PingusSound::play_mod(find_file(pingus_datadir, "music/" + plf->get_music().res_name));
 #endif
 
-  unsigned int last_update = CL_System::get_time();
-
-  DeltaManager delta_manager;
-  float delta;
-  // Main Game Loop
+  /** Main game loop */
+  DeltaManager delta;
+  float wannabe_delta = 0.0333;
+  unsigned int frames = 1;
+  bool auto_frame_skip = false;
+  float current_delta;
   while (!server->is_finished()) 
-    {     
-      if (!max_cpu_usage)
+    {       
+      CL_System::keep_alive ();
+      // Update 30 times a second
+      current_delta = delta.get ();
+      if (current_delta > wannabe_delta)
 	{
-	  int sleepcount = 0;
-	  while (delta_manager.get () < 0.035){
-	    CL_System::sleep (10);
-	    ++sleepcount;
-	  }
-	  std::cout << "Sleepcount: " << sleepcount << std::endl;
-	}
-
-      delta = delta_manager.getset ();
-
-      CL_System::keep_alive(); 
-    
-      // Let the server process a game loop
-      server->update(delta);
-
-      send_next_event();
-      
-      // Update every 3/100 seconds
-      if (last_update + 30 < CL_System::get_time())
-	{
-	  last_update = CL_System::get_time();
-
-	  for(std::vector<GuiObj*>::size_type i=0; i < obj.size(); ++i) 
-	    obj[i]->updateX();
-	}
-
-      // Let the window move its content
-      for(std::vector<GuiObj*>::size_type i=0; i < obj.size(); ++i) 
-	obj[i]->updateX();
-
-      // Update every 3/100 seconds
-      if (last_update + 30 < CL_System::get_time())
-	{
-	  last_update = CL_System::get_time();
-
-	  for(std::vector<GuiObj*>::size_type i=0; i < obj.size(); ++i) 
-	    obj[i]->update(delta);
-	}
-  
-      if (!fast_forward || skip_frame >= 10) 
-	{
-	  skip_frame = 0;
-
-	  for(std::vector<GuiObj*>::size_type i=0; i < obj.size(); ++i) 
+	  update (delta.getset ());
+	  ++frames;
+	  if (frames % int(frame_skip) == 0)
 	    {
-	      // Update every 3/100 seconds
-	      if (last_update + 30 < CL_System::get_time())
-		{
-		  last_update = CL_System::get_time();
-
-		  for(std::vector<GuiObj*>::size_type i=0; i < obj.size(); ++i) 
-		    obj[i]->update(delta);
-		}
-	      
-		obj[i]->draw_clipped();
+	      if (!auto_frame_skip)
+		draw ();
 	    }
-      
-	  //std::cout << "Flipping display" << std::endl;
-	  Display::flip_display();
 	}
-      else 
+      else
 	{
-	  ++skip_frame;
+	  CL_System::sleep (1000 * (wannabe_delta - delta.get ()));
 	}
     }
+
   unregister_event_handler();
+}
+
+void 
+Client::draw ()
+{
+  for(std::vector<GuiObj*>::size_type i=0; i < obj.size(); ++i) 
+    obj[i]->draw_clipped();
+
+  Display::flip_display();	    
+}
+
+void 
+Client::update (float delta)
+{
+  // Let the window move its content
+  for(std::vector<GuiObj*>::size_type i=0; i < obj.size(); ++i) 
+    obj[i]->updateX();
+  
+  // Update every 3/100 seconds
+  // if (last_update + 30 < CL_System::get_time())
+	      
+  for(std::vector<GuiObj*>::size_type i=0; i < obj.size(); ++i) 
+    obj[i]->update(delta);
+
+  // Let the server process a game loop
+  server->update(delta);
+  send_next_event();
 }
 
 void
@@ -301,22 +281,22 @@ Client::send_next_event()
     {
       return;
     }
- else
-   {
-     while(!player->empty())
-       {
-	 const PingusEvent& event = player->peek_event();
+  else
+    {
+      while(!player->empty())
+	{
+	  const PingusEvent& event = player->peek_event();
 	 
-	 if (event.game_time > GameTime::get_time()) {
-	   break;
-	 } else if (event.game_time == GameTime::get_time()) {
-	   server->send_event(event.str);
-	   player->dequeue_event();
-	 } else {
-	   std::cout << "Client: Demo code currupt..." << std::endl;
-	 }
-       }
-   }
+	  if (event.game_time > GameTime::get_time()) {
+	    break;
+	  } else if (event.game_time == GameTime::get_time()) {
+	    server->send_event(event.str);
+	    player->dequeue_event();
+	  } else {
+	    std::cout << "Client: Demo code currupt..." << std::endl;
+	  }
+	}
+    }
 }
 
 void
