@@ -1,4 +1,4 @@
-//  $Id: rain_generator_data.cxx,v 1.2 2002/09/16 16:04:58 grumbel Exp $
+//  $Id: rain_generator_data.cxx,v 1.3 2002/09/16 17:17:17 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <fstream>
+#include "../editor/weather_obj.hxx"
 #include "../worldobjs/rain_generator.hxx"
 #include "rain_generator_data.hxx"
 
@@ -38,7 +39,7 @@ RainGeneratorData::create_WorldObj ()
 EditorObjLst
 RainGeneratorData::create_EditorObj ()
 {
-  return EditorObjLst();
+  return EditorObjLst(1, new WeatherObj("rain-generator"));
 }
 
 } // namespace WorldObjsData

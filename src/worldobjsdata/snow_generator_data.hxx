@@ -1,4 +1,4 @@
-//  $Id: snow_generator_data.hxx,v 1.1 2002/09/16 15:47:36 grumbel Exp $
+//  $Id: snow_generator_data.hxx,v 1.2 2002/09/16 17:17:17 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #ifndef HEADER_PINGUS_SNOW_GENERATOR_DATA_HXX
 #define HEADER_PINGUS_SNOW_GENERATOR_DATA_HXX
 
+#include "../editor/weather_obj.hxx"
 #include "../libxmlfwd.hxx"
 #include "../worldobj_data.hxx"
 

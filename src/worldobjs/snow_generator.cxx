@@ -1,4 +1,4 @@
-//  $Id: snow_generator.cxx,v 1.2 2002/09/16 16:04:58 grumbel Exp $
+//  $Id: snow_generator.cxx,v 1.3 2002/09/16 17:17:17 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,6 +38,20 @@ SnowGenerator::update(float /*delta*/)
   world->get_particle_holder()->add_particle(new SnowParticle(rand() % world->get_width(), -32));
   world->get_particle_holder()->add_particle(new SnowParticle(rand() % world->get_width(), -32));
   world->get_particle_holder()->add_particle(new CollidingSnowParticle(rand() % world->get_width(), -32));
+}
+
+void
+SnowGenerator::on_startup()
+{
+  for (int i = 0; i < 500; ++i) // FIXME: 500 is a random value, doesn't work very often
+    {
+      world->get_particle_holder()->add_particle(new SnowParticle(rand() % world->get_width(), 
+								  rand() % world->get_height()));
+      world->get_particle_holder()->add_particle(new SnowParticle(rand() % world->get_width(), 
+								  rand() % world->get_height()));
+      world->get_particle_holder()->add_particle(new CollidingSnowParticle(rand() % world->get_width(), 
+									   rand() % world->get_height())); 
+    }
 }
 
 } // namespace WorldObjs

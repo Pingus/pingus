@@ -1,4 +1,4 @@
-//  $Id: weather_obj.cxx,v 1.9 2002/09/16 15:47:35 grumbel Exp $
+//  $Id: weather_obj.cxx,v 1.10 2002/09/16 17:17:17 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -76,7 +76,7 @@ WeatherObj::draw (EditorNS::EditorView * view)
 void   
 WeatherObj::write_xml(std::ostream& xml)
 {
-  xml << "  <worldobj type=\"" << type << "\"/>\n";
+  xml << "  <worldobj type=\"" << type << "\">\n";
   XMLhelper::write_vector_xml(xml, pos);
   xml << "  </worldobj>\n"
       << std::endl;

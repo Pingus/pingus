@@ -1,4 +1,4 @@
-//  $Id: snow_generator.hxx,v 1.2 2002/09/16 16:04:58 grumbel Exp $
+//  $Id: snow_generator.hxx,v 1.3 2002/09/16 17:17:17 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,10 +30,13 @@ private:
 
 public:
   SnowGenerator ();
-  virtual ~SnowGenerator ();
+  ~SnowGenerator ();
 
-  virtual void update (float delta);
-  float get_z_pos () const { return 1000; }
+  /** fill the screen with snow flocks */
+  void on_startup();
+  void draw(GraphicContext&) {}
+  void update(float delta);
+  float get_z_pos() const { return 1000; }
 private:
   SnowGenerator (const SnowGenerator&);
   SnowGenerator operator= (const SnowGenerator&);
