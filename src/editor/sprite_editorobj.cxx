@@ -1,4 +1,4 @@
-//  $Id: sprite_editorobj.cxx,v 1.1 2002/06/12 19:11:31 grumbel Exp $
+//  $Id: sprite_editorobj.cxx,v 1.2 2002/06/27 17:16:40 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -81,30 +81,9 @@ SpriteEditorObj::is_over(const CL_Vector& pos)
       CL_Vector provider_pos = pos;
       provider_pos -= pos_ref;
 
-      if (provider->is_indexed ())
-	{
-	  unsigned int color = provider->get_pixel (int(provider_pos.x) - sprite.get_x_align (), 
-						    int(provider_pos.y) - sprite.get_y_align ());
-
-	  //std::cout << "Pos: " << int(provider_pos.x) - sprite.get_x_align () << " "
-	  //    << int(provider_pos.y) - sprite.get_y_align () << std::endl;
-
-	  //std::cout << provider->uses_src_colorkey () << " Src: "
-	  //    << provider->get_src_colorkey () 
-	  //    << " Color: " << color << std::endl;
-
-	  if (provider->uses_src_colorkey ())
-	    return color != provider->get_src_colorkey ();
-	  else // Surface is completly filled
-	    return true;
-	}
-      else
-	{
-	  provider->get_pixel (int(provider_pos.x), int(provider_pos.y),
-			       &r, &g, &b, &a);
-	  //std::cout << "Color: " << r << " " << g << " " << b << " " << a << std::endl;
-	  return (a >= 0.5);
-	}
+      provider->get_pixel (int(provider_pos.x), int(provider_pos.y), &r, &g, &b, &a);
+      //std::cout << "Color: " << r << " " << g << " " << b << " " << a << std::endl;
+      return (a >= 0.5);
     }
   else
     {
