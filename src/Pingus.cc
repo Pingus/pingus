@@ -1,4 +1,4 @@
-//   $Id: Pingus.cc,v 1.36 2000/06/15 19:32:44 grumbel Exp $
+//   $Id: Pingus.cc,v 1.37 2000/06/17 11:46:22 grumbel Exp $
 //    ___
 //   |  _\ A free Lemmings clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -60,7 +60,6 @@
 #include "PingusSound.hh"
 #include "PingusMenu.hh"
 #include "PingusMessageBox.hh"
-#include "particles/GroundParticle.hh"
 
 void
 segfault_handler(int signo)
@@ -126,15 +125,13 @@ PingusMain::read_rc_file(void)
 {
   if (!no_config_file)
     {
-      char*    homedir = getenv("HOME");
       Config* config;
       std::string   rcfile;
 
-      if (!homedir) {
-	rcfile = ".pingus/options";
-      } else {
-	rcfile = std::string(homedir) + "/.pingus/config";
-      }
+      if (config_file.empty())
+	rcfile = System::get_statdir() + "config";
+      else
+	rcfile = config_file;
 
       // FIXME: kind of weird...
       config = new Config(rcfile);
@@ -214,6 +211,7 @@ PingusMain::check_args(int argc, char* argv[])
     {"no-cfg-file",    no_argument, 0, 142},
     {"debug-tiles",     no_argument, 0, 143},
     {"tile-size",     required_argument, 0, 144},
+    {"config-file",    required_argument, 0, 147},
     {0, 0, 0, 0}
   };
 
@@ -381,13 +379,17 @@ PingusMain::check_args(int argc, char* argv[])
     case 144:
       sscanf(optarg, "%d", &tile_size);
       break;
-
+   
     case 145:
       swcursor_enabled = true;
       break;
 
     case 146:
       swcursor_enabled = false;
+      break;
+
+    case 147:
+      config_file = optarg;
       break;
 
     default:
@@ -423,6 +425,7 @@ PingusMain::check_args(int argc, char* argv[])
 	"   --disable-swcursor       Disable software cursor, use hw cursor instead\n"
 	"   --enable-swcursor        Enable software cursor\n"
 	"   --no-cfg-file            Don't read ~/.pingus/config\n"
+	"   --config-file FILE       Read config from FILE (default: ~/.pingus/config)\n"
 	
 	"\nDemo playing and recording:\n"
 	"   -r, --record-demo FILE   Record a demo session to FILE\n"
@@ -854,5 +857,3 @@ PingusMain::main(int argc, char** argv)
 }
 
 /* EOF */
-
-

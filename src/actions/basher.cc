@@ -1,4 +1,4 @@
-//  $Id: basher.cc,v 1.10 2000/06/15 19:32:44 grumbel Exp $
+//  $Id: basher.cc,v 1.11 2000/06/17 11:46:23 grumbel Exp $
 //
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -79,10 +79,11 @@ void
 Basher::let_move()
 {
   ++counter;
-  walk_forward();
 
   if (basher_c++ > 2)
     {
+      walk_forward();
+
       basher_c = 0;
       if (have_something_to_dig())
 	{
@@ -107,7 +108,13 @@ Basher::bash()
 void
 Basher::walk_forward()
 {
-  pingu->x_pos += pingu->direction;
+  if (rel_getpixel(0, -1) == ColMap::NOTHING) {
+    // We ar e in the air... lets fall...
+    is_finished = true;
+  } else {
+    // On ground, walk forward...
+    pingu->x_pos += pingu->direction;
+  }
 }
 
 bool

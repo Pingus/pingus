@@ -1,4 +1,4 @@
-// $Id: miner.cc,v 1.5 2000/06/15 19:32:44 grumbel Exp $
+// $Id: miner.cc,v 1.6 2000/06/17 11:46:23 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,7 +42,7 @@ Miner::init(void)
   counter.set_size(surface->get_num_frames()/2);
   counter.set_speed(10);
   is_multi_direct = true;
-  slow_count.set_size(3);
+  //  slow_count.set_size(3);
   slow_count = 0;
 }
 
