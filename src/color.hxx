@@ -21,6 +21,7 @@
 #define HEADER_PINGUS_COLOR_HXX
 
 #include "pingus.hxx"
+#include <ClanLib/Display/color.h>
 #include <iostream>
 
 namespace Pingus {
@@ -65,7 +66,13 @@ public:
   bool operator== (const Color& color) const {
     return red == color.red && green == color.green && blue == color.blue && alpha == color.alpha;
   }
-
+  
+  CL_Color to_cl_color() {
+    return CL_Color(static_cast<int>(red * 255), 
+                    static_cast<int>(green * 255), 
+                    static_cast<int>(blue * 255), 
+                    static_cast<int>(alpha * 255));
+  }
 };
 
 } // namespace Pingus

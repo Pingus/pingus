@@ -209,21 +209,6 @@ CL_Surface modify(const CL_Surface& sur, const TransF&)
       for (int y = 0; y < pheight; ++y)
         for (int x = 0; x < pwidth; ++x)
           {
-#ifdef PINGUS_DO_ROTBLITTER_BOUNDCHECK
-            int i = TransF::get_index(pwidth, pheight, x, y);
-            if (i < 0 || i >= pwidth * pheight)
-              {
-                std::cout << "Target: Out of bounce: " << i << " " << pwidth << "x" << pheight
-                          << " " <<  typeid(TransF()).name() << std::endl;
-              }
-
-            if (y * pwidth + x < 0
-                || y * pwidth + x >= pwidth * pheight)
-              {
-                std::cout << "Source: Out of bounce: " << i << " " << pwidth << "x" << pheight
-                          << " " <<  typeid(TransF()).name() << std::endl;
-              }
-#endif
             target_buf[TransF::get_index(pwidth, pheight, x, y)] = source_buf[y * pwidth + x];
           }
 
@@ -240,21 +225,17 @@ CL_Surface modify(const CL_Surface& sur, const TransF&)
       prov.lock();
       canvas.lock();
 
-#if CLANLIB_0_6
-      float r, b, g, a;
       int pwidth  = prov.get_width();
       int pheight = prov.get_height();
       
       for (int y = 0; y < sur.get_height (); ++y)
         for (int x = 0; x < sur.get_width (); ++x)
           {
-
-            prov.get_pixel (x, y, &r, &g, &b, &a);
-            canvas->draw_pixel (TransF::get_x(pwidth, pheight, x, y),
-                                TransF::get_y(pwidth, pheight, x, y),
-                                r, g, b, a);
+            CL_Color color = prov.get_pixel(x, y);
+            canvas.draw_pixel(TransF::get_x(pwidth, pheight, x, y),
+                              TransF::get_y(pwidth, pheight, x, y),
+                              color);
           }
-#endif
 
       canvas.unlock ();
       prov.unlock ();

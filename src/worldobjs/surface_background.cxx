@@ -44,8 +44,8 @@ SurfaceBackground::SurfaceBackground (const WorldObjsData::SurfaceBackgroundData
     std::cout << "Background: Warning dim larger than 1.0 are no longer supported" << std::endl;
 
   CL_Surface source_surface = PingusResource::load_surface(data->desc);
-#ifdef CLANLIB_0_6
 
+#ifdef CLANLIB_0_6
   CL_PixelBuffer canvas;
 
   // Scaling Code
@@ -195,6 +195,8 @@ SurfaceBackground::draw (GraphicContext& gc)
                 {
 #ifdef CLANLIB_0_6
                   bg_surface.put_screen(x, y, counter); // FIXME: should use gc
+#else
+                  bg_surface.draw(x, y); // FIXME: should use gc
 #endif
                 }
             }

@@ -48,8 +48,7 @@ SwitchDoor::~SwitchDoor ()
 void
 SwitchDoor::on_startup ()
 {
-#ifdef CLANLIB_0_6
-  world->get_colmap()->put(door_box,
+  world->get_colmap()->put(door_box.get_frame_surface(0).get_pixeldata(),
                            static_cast<int>(data->door_pos.x),
 			   static_cast<int>(data->door_pos.y),
 			   Groundtype::GP_SOLID);
@@ -61,7 +60,6 @@ SwitchDoor::on_startup ()
 			     + i * door_tile.get_height()
 			     + door_box.get_height(),
 			     Groundtype::GP_SOLID);
-#endif
 }
 
 void

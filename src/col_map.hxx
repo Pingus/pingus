@@ -79,7 +79,7 @@ public:
   bool blit_allowed (int x, int y,  Groundtype::GPType);
 
   void put(int x, int y, Groundtype::GPType p = Groundtype::GP_GROUND);
-  void put(CL_PixelBuffer&, int x, int y, Groundtype::GPType);
+  void put(CL_PixelBuffer, int x, int y, Groundtype::GPType);
 
   /// void remove(int x, int y);
   void remove(CL_PixelBuffer&, int x, int y);

@@ -104,28 +104,6 @@ PingusMenuManager::current_menu ()
 }
 
 void
-PingusMenuManager::fadeout ()
-{
-  std::cout << "PingusMenuManager::fadeout () Not implemented" << std::endl;
-#if 0
-  DeltaManager delta_manager;
-  EnlargingRectFadeOut fadeout;
-
-  while (!fadeout.finished ())
-    {
-      float time_delta = delta_manager.getset ();
-      fadeout.update (time_delta);
-
-      current_menu ()->draw ();
-      fadeout.draw ();
-      Display::flip_display ();
-
-      CL_System::keep_alive ();
-    }
-#endif
-}
-
-void
 PingusMenuManager::show_exit_menu ()
 {
   push_menu (&exitmenu);

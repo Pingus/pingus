@@ -212,10 +212,9 @@ Blitter::put_surface_32bit(CL_PixelBuffer& canvas, const CL_PixelBuffer& provide
 }
 
 void
-Blitter::put_alpha_surface(CL_PixelBuffer& provider, const CL_PixelBuffer& sprovider,
+Blitter::put_alpha_surface(CL_PixelBuffer& provider, CL_PixelBuffer& sprovider,
 			   int x, int y)
 {
-#ifdef CLANLIB_0_6
   int start_i;
   unsigned char* tbuffer; // Target buffer
   int twidth, theight, tpitch;
@@ -223,7 +222,7 @@ Blitter::put_alpha_surface(CL_PixelBuffer& provider, const CL_PixelBuffer& sprov
   unsigned char* sbuffer; // Source buffer
   int swidth, sheight, spitch;
 
-  CL_Palette* palette;
+  CL_Palette palette;
   int x_offset, y_offset;
 
   provider.lock();
@@ -232,13 +231,8 @@ Blitter::put_alpha_surface(CL_PixelBuffer& provider, const CL_PixelBuffer& sprov
   //  assert(sprovider.get_format().get_depth() == 8);
   if (sprovider.get_format().get_depth() != 8)
     {
-      // FIXME: memory hole
-#if COMPILE_WITH_MEMORY_HOLE
-#warning "FIXME: Blitter::put_alpha_surface(CL_PixelBuffer& provider, CL_PixelBuffer& sprovider, int x, int y) contains memory hole"
-#else
       sprovider.unlock ();
       provider.unlock ();
-#endif
       PingusError::raise("Image has wrong color depth: " + to_string(sprovider.get_format().get_depth()));
     }
   //  assert(provider.get_pixel_format() == RGBA8888);
@@ -247,15 +241,14 @@ Blitter::put_alpha_surface(CL_PixelBuffer& provider, const CL_PixelBuffer& sprov
   sbuffer = static_cast<unsigned char*>(sprovider.get_data());
 
   palette = sprovider.get_palette();
-  assert(palette);
-
-  twidth = provider.get_width();
+  
+  twidth  = provider.get_width();
   theight = provider.get_height();
-  tpitch = provider.get_pitch();
+  tpitch  = provider.get_pitch();
 
-  swidth = sprovider.get_width();
+  swidth  = sprovider.get_width();
   sheight = sprovider.get_height();
-  spitch = sprovider.get_pitch();
+  spitch  = sprovider.get_pitch();
 
   if (y < 0)
     y_offset = 0-y;
@@ -278,14 +271,8 @@ Blitter::put_alpha_surface(CL_PixelBuffer& provider, const CL_PixelBuffer& sprov
     }
   }
 
-#if COMPILE_WITH_MEMORY_HOLE
-#warning "FIXME: Blitter::put_alpha_surface(CL_PixelBuffer& provider, CL_PixelBuffer& sprovider, int x, int y) contains memory hole"
-#else
   sprovider.unlock();
   provider.unlock();
-#endif
-
-#endif
 }
 
 CL_PixelBuffer
@@ -308,16 +295,14 @@ Blitter::create_canvas(const CL_Surface& sur)
 }
 
 CL_PixelBuffer
-Blitter::create_canvas(const CL_PixelBuffer& prov)
+Blitter::create_canvas(CL_PixelBuffer prov)
 {
-#ifdef CLANLIB_0_6
-  assert (prov);
-  CL_PixelBuffer& canvas = new CL_PixelBuffer(prov.get_width(), prov.get_height());
+  CL_PixelBuffer canvas(prov.get_width(), prov.get_height(), prov.get_width()*4, CL_PixelFormat::rgba8888);
 
-  switch (prov.get_bytes_per_pixel())
+  switch (prov.get_format().get_depth())
     {
       // RGB888
-    case 3:
+    case 24:
       {
 	canvas.lock();
 	prov.lock();
@@ -341,7 +326,7 @@ Blitter::create_canvas(const CL_PixelBuffer& prov)
       break;
 
       // RGBA8888
-    case 4:
+    case 32:
       canvas.lock();
       prov.lock();
       memcpy(canvas.get_data(), prov.get_data(),
@@ -355,24 +340,18 @@ Blitter::create_canvas(const CL_PixelBuffer& prov)
       break;
     }
   return canvas;
-#endif
-  return 0;
 }
 
 CL_Surface
 Blitter::scale_surface (const CL_Surface& sur, int width, int height)
 {
-#ifdef CLANLIB_0_6
-  assert (sur);
-  return CL_Surface(Blitter::scale_surface_to_canvas(sur, width, height), true);
-#endif
-  return CL_Surface();
+  CL_PixelBuffer buf = Blitter::scale_surface_to_canvas(sur, width, height);
+  return CL_Surface(&buf, false);
 }
 
 CL_PixelBuffer
 Blitter::scale_surface_to_canvas(const CL_Surface& sur, int width, int height)
 {
-  Color color;
   CL_PixelBuffer provider = sur.get_pixeldata();
   CL_PixelBuffer canvas(width, height, width*4, CL_PixelFormat::rgba8888);
 
@@ -386,6 +365,8 @@ Blitter::scale_surface_to_canvas(const CL_Surface& sur, int width, int height)
 
   if (provider.get_format().get_type() ==  pixelformat_index)
     {
+      Color color;
+  
       // Slow but generic, using get_data () would be better, but would
       // require quite a bit of work
       for (int y = 0; y < height; ++y)
@@ -406,9 +387,7 @@ Blitter::scale_surface_to_canvas(const CL_Surface& sur, int width, int height)
 		color.alpha = 1.0f;
               
 	      // FIXME: ignoring the source alpha due to get_pixel brokeness... no time to test the patch
-#ifdef CLANLIB_0_6
-	      canvas.draw_pixel (x, y, color.red, color.green, color.blue, color.alpha);
-#endif
+	      canvas.draw_pixel (x, y, color.to_cl_color());
 	    }
 	}
     }
@@ -458,16 +437,13 @@ Blitter::scale_surface_to_canvas(const CL_Surface& sur, int width, int height)
 	  for (int y = 0; y < height; ++y)
 	    for (int x = 0; x < width; ++x)
 	      {
-#ifdef CLANLIB_0_6
 		// std::cout << "X: " << x << " Y: " << y << std::endl;
-		provider.get_pixel (x * provider.get_width () / width,
-                                    y * provider.get_height () / height,
-                                    &color.red, &color.green, &color.blue, &color.alpha);
+		CL_Color color = provider.get_pixel(x * provider.get_width () / width,
+                                                    y * provider.get_height () / height);
 		// FIXME: ignoring the source alpha due to get_pixel
 		// brokeness... no time to test the patch
-		canvas.draw_pixel (x, y, color.red, color.green, color.blue, color.alpha);
-#endif
-	      }
+		canvas.draw_pixel(x, y, color);
+              }
 	  break;
 	}
     }
@@ -569,23 +545,23 @@ Blitter::rotate_90 (const CL_Surface& sur)
 #ifdef CLANLIB_0_6
   CL_PixelBuffer prov = sur.get_pixeldata();
 
-  if (prov.get_type() ==  pixelformat_index)
+  if (prov.get_format().get_type() ==  pixelformat_index)
     {
       //std::cout << "Using indexed blitter" << std::endl;
-      int pwidth  = prov->get_width();
-      int pheight = prov->get_height();
+      int pwidth  = prov.get_width();
+      int pheight = prov.get_height();
 
       IndexedCanvas* canvas = new IndexedCanvas(pheight, pwidth);
       if (prov->uses_src_colorkey())
         canvas->set_src_colorkey(prov->get_src_colorkey());
 
-      prov->lock ();
-      canvas->lock ();
+      prov.lock();
+      canvas.lock();
 
-      canvas->set_palette(prov->get_palette());
+      canvas.set_palette(prov.get_palette());
 
-      unsigned char* source_buf = static_cast<unsigned char*>(prov->get_data());
-      unsigned char* target_buf = static_cast<unsigned char*>(canvas->get_data());
+      unsigned char* source_buf = static_cast<unsigned char*>(prov.get_data());
+      unsigned char* target_buf = static_cast<unsigned char*>(canvas.get_data());
 
       for (int y = 0; y < pheight; ++y)
         for (int x = 0; x < pwidth; ++x)
@@ -593,27 +569,27 @@ Blitter::rotate_90 (const CL_Surface& sur)
             target_buf[x * pheight + (pheight - y - 1)] = source_buf[y * pwidth + x];
           }
 
-      canvas->unlock ();
-      prov->unlock ();
+      canvas.unlock();
+      prov.unlock();
       return CL_Surface(canvas, true);
     }
   else
     {
       CL_PixelBuffer* canvas = new CL_PixelBuffer (sur.get_height (), sur.get_width ());
 
-      prov->lock ();
-      canvas->lock ();
+      prov.lock ();
+      canvas.lock ();
 
-      float r, b, g, a;
+      CL_Color color;
       for (int y = 0; y < sur.get_height (); ++y)
         for (int x = 0; x < sur.get_width (); ++x)
           {
-            prov->get_pixel (x, y, &r, &g, &b, &a);
-            canvas->draw_pixel (sur.get_height () - 1 - y, x , r, g, b, a);
+            color = prov->get_pixel (x, y);
+            canvas.draw_pixel (sur.get_height () - 1 - y, x , color);
           }
 
-      canvas->unlock ();
-      prov->unlock ();
+      canvas.unlock ();
+      prov.unlock ();
       return CL_Surface(canvas, true);
     }
 #endif

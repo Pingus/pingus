@@ -52,8 +52,6 @@ public:
 
   virtual ~PingusMenuManager ();
 
-  void fadeout ();
-
   bool draw (GraphicContext& gc);
   void update (const GameDelta&);
 

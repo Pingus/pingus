@@ -56,9 +56,10 @@ PingusCounter::draw(GraphicContext& gc)
 	   world->get_pingus()->get_number_of_exited(),
 	   server->get_plf()->get_number_to_save());
 
-#ifdef CLANLIB_0_6
-  font.print_center(CL_Display::get_width ()/2,3, str);
-#endif
+  CL_Font myfont = font;
+  myfont.set_alignment(origin_top_center);
+  myfont.draw(CL_Display::get_width ()/2,3, str);
+
   UNUSED_ARG(gc);
 }
 

@@ -174,7 +174,7 @@ ColMap::blit_allowed (int x, int y,  Groundtype::GPType gtype)
 
 // Puts a surface on the colmap
 void
-ColMap::put(CL_PixelBuffer& provider, int sur_x, int sur_y, Groundtype::GPType pixel)
+ColMap::put(CL_PixelBuffer provider, int sur_x, int sur_y, Groundtype::GPType pixel)
 {
   // transparent groundpieces are only drawn on the gfx map, not on the colmap
   if (pixel == Groundtype::GP_TRANSPARENT)
@@ -194,20 +194,17 @@ ColMap::put(CL_PixelBuffer& provider, int sur_x, int sur_y, Groundtype::GPType p
 
   if (provider.get_format().get_depth() == 32)
     {
-#if CLANLIB_0_6
-      float r, g, b, a;
       // Rewritting blitter for 32bit depth (using get_pixel())
       for (int y=0; y < provider.get_height(); ++y)
 	for (int x=0; x < provider.get_width(); ++x)
 	  {
-	    provider.get_pixel(x, y, &r, &g, &b, &a);
-	    if (a > 0.1) // Alpha threshold
+	    CL_Color color = provider.get_pixel(x, y);
+	    if (color.get_alpha() > 0.1) // Alpha threshold
 	      {
 		if (blit_allowed (x + sur_x, y + sur_y, pixel))
 		  put(x + sur_x, y + sur_y, pixel);
 	      }
 	  }
-#endif
     }
   else if (provider.get_format().get_depth() == 8)
     {

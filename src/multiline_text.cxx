@@ -120,13 +120,14 @@ MultiLineText::print_center(int x_pos, int y_pos)
 {
   int y_inc = 0;
 
+  CL_Font myfont = font;
+  myfont.set_alignment(origin_top_center);
+
   for(std::vector<std::string>::iterator i = text.begin();
       i != text.end();
       ++i)
     {
-#ifdef CLANLIB_0_6
-      font.print_center(x_pos, y_pos + y_inc, i->c_str());
-#endif
+      myfont.draw(x_pos, y_pos + y_inc, i->c_str());
       y_inc += font.get_height();
     }
 }
