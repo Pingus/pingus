@@ -124,7 +124,7 @@
             <z-pos>0</z-pos>
           </position>
         </dot>
-        <levelname>playable/snow11-grumbel</levelname>
+        <levelname>playable/snow19-grumbel</levelname>
       </leveldot>
 
 
@@ -137,7 +137,7 @@
             <z-pos>0</z-pos>
           </position>
         </dot>
-        <levelname>playable/snow12-grumbel</levelname>
+        <levelname>playable/bomber-tutorial2-grumbel</levelname>
       </leveldot>
 
 
@@ -150,7 +150,7 @@
             <z-pos>0</z-pos>
           </position>
         </dot>
-        <levelname>playable/bomber-tutorial2-grumbel</levelname>
+        <levelname>playable/snow12-grumbel</levelname>
       </leveldot>
 
 
@@ -176,7 +176,7 @@
             <z-pos>0</z-pos>
           </position>
         </dot>
-        <levelname>playable/snow15-grumbel</levelname>
+        <levelname>playable/snow21-grumbel</levelname>
       </leveldot>
 
 
@@ -189,7 +189,7 @@
             <z-pos>0</z-pos>
           </position>
         </dot>
-        <levelname>playable/snow16-grumbel</levelname>
+        <levelname>playable/snow15-grumbel</levelname>
       </leveldot>
 
 
@@ -202,7 +202,7 @@
             <z-pos>0</z-pos>
           </position>
         </dot>
-        <levelname>playable/snow17-grumbel</levelname>
+        <levelname>playable/snow16-grumbel</levelname>
       </leveldot>
 
 
@@ -215,7 +215,7 @@
             <z-pos>150</z-pos>
           </position>
         </dot>
-        <levelname>playable/bridger-tutorial-grumbel</levelname>
+        <levelname>playable/snow17-grumbel</levelname>
       </leveldot>
 
 
@@ -228,7 +228,7 @@
             <z-pos>150</z-pos>
           </position>
         </dot>
-        <levelname>playable/placeholder</levelname>
+        <levelname>playable/snow11-grumbel</levelname>
       </leveldot>
 
 

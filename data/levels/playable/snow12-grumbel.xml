@@ -18,6 +18,7 @@
 
   <action-list>
     <digger count="4"/>
+        <bomber count="4"/>
     <miner count="4"/>
     <jumper count="20"/>
   </action-list>
