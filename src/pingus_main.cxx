@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.30 2002/11/02 20:46:10 grumbel Exp $
+//   $Id: pingus_main.cxx,v 1.31 2002/11/02 20:53:58 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -764,12 +764,9 @@ PingusMain::main(int argc, char** argv)
   //signal(SIGSEGV, signal_handler);
   //signal(SIGINT,  signal_handler);
 
-#ifdef WIN32
   // Redirect stdout to somewhere where it is readable
   CL_ConsoleWindow cl_console(PACKAGE VERSION);
   cl_console.redirect_stdio();
-#endif
-
 
   try 
     {
