@@ -1,4 +1,4 @@
-//  $Id: gui_screen.hxx,v 1.14 2002/12/20 01:22:32 grumbel Exp $
+//  $Id: gui_screen.hxx,v 1.15 2002/12/22 20:16:28 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,7 +29,7 @@ namespace GUI
 
 namespace Input
 {
-  class ButtonEvent;
+  struct ButtonEvent;
 }
 
 class GUIScreen : public Screen
