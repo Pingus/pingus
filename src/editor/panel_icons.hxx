@@ -1,4 +1,4 @@
-//  $Id: panel_icons.hxx,v 1.7 2002/09/27 11:26:45 torangan Exp $
+//  $Id: panel_icons.hxx,v 1.8 2003/02/18 10:30:31 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -187,6 +187,18 @@ public:
 private:
   PanelIconSetupActions (const PanelIconSetupActions&);
   PanelIconSetupActions& operator= (const PanelIconSetupActions&);
+};
+
+
+class PanelIconHelp : public PanelIcon
+{
+public:
+  PanelIconHelp ();
+  virtual void on_click();
+  
+private:
+  PanelIconHelp (const PanelIconHelp&);
+  PanelIconHelp& operator= (const PanelIconHelp&);
 };
 
 } // namespace EditorNS

@@ -1,4 +1,4 @@
-//  $Id: panel_icons.cxx,v 1.6 2002/11/28 20:09:54 grumbel Exp $
+//  $Id: panel_icons.cxx,v 1.7 2003/02/18 10:30:31 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -193,6 +193,18 @@ void
 PanelIconSetupActions::on_click()
 {
   editor->get_event()->editor_show_actions_window ();
+}
+
+PanelIconHelp::PanelIconHelp ()
+{
+  tooltip = _("Display Help Screen");
+  sur = PingusResource::load_surface("editor/help", "core");
+}
+
+void
+PanelIconHelp::on_click()
+{
+  editor->toggle_help_screen ();
 }
 
 } // namespace EditorNS
