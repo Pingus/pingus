@@ -1,116 +1,472 @@
 <resources>
   <section name="Pingus">
-    <surface array="8x2" file="../images/pingus/floaterlayer.png" height="32" name="floaterlayer" width="32" x="0" y="0" />
-    <surface array="7x2" file="../images/pingus/rocketlauncher.png" height="32" name="rocketlauncher0" width="32" x="0" y="0" />
-    <surface array="1x2" file="../images/pingus/boarder.png" height="30" name="boarder0" width="30" x="0" y="0" />
-    <surface array="4x1" file="../images/pingus/angel.png" height="30" name="angel0" width="46" x="0" y="0" />
-    <surface array="8x1" file="../images/pingus/superman.png" height="30" name="superman0" width="30" x="0" y="0" />
-    <surface array="16x1" file="../images/pingus/bomber.png" height="32" name="bomber0" width="32" x="0" y="0" />
-    <surface array="12x2" file="../images/pingus/basher.png" height="32" name="basher0" width="32" x="0" y="0" />
-    <surface array="8x2" file="../images/pingus/climber.png" height="32" name="climber0" width="32" x="0" y="0" />
-    <surface array="8x1" file="../images/pingus/faller.png" height="32" name="faller0" width="32" x="0" y="0" />
-    <surface array="8x1" file="../images/pingus/faller.png" height="32" name="jumper0" width="32" x="0" y="0" />
-    <surface array="8x1" file="../images/pingus/tumble.png" height="32" name="tumble0" width="32" x="0" y="0" />
-    <surface array="15x2" file="../images/pingus/bridger.png" height="32" name="bridger0" width="32" x="0" y="0" />
-    <surface array="4x2" file="../images/pingus/bridger_walk.png" height="32" name="bridger_walk0" width="32" x="0" y="0" />
-    <surface array="11x2" file="../images/pingus/bridger_build.png" height="32" name="bridger_build0" width="32" x="0" y="0" />
-    <surface array="8x2" file="../images/pingus/walker.png" height="32" name="walker0" width="32" x="0" y="0" />
-    <surface array="6x1" file="../images/pingus/blocker.png" height="32" name="blocker0" width="32" x="0" y="0" />
-    <surface array="8x1" file="../images/pingus/floater.png" height="32" name="floater0" width="32" x="0" y="0" />
-    <surface array="14x1" file="../images/pingus/digger.png" height="32" name="digger0" width="32" x="0" y="0" />
-    <surface array="12x2" file="../images/pingus/miner.png" height="32" name="miner0" width="32" x="0" y="0" />
-    <surface array="12x1" file="../images/pingus/splash.png" height="32" name="splash0" width="32" x="0" y="0" />
-    <surface array="6x2" file="../images/pingus/splash_debris.png" height="32" name="splash_debris0" width="32" x="0" y="0" />
-    <surface array="16x1" file="../images/pingus/splat.png" height="32" name="splat0" width="32" x="0" y="0" />
-    <surface array="9x2" file="../images/pingus/exit.png" height="32" name="exit0" width="32" x="0" y="0" />
-    <surface array="15x2" file="../images/pingus/drownfall.png" height="32" name="drownfall0" width="32" x="0" y="0" />
-    <surface array="15x2" file="../images/pingus/drownwalk.png" height="32" name="drownwalk0" width="32" x="0" y="0" />
-    <surface array="6x1" file="../images/pingus/waiter.png" height="32" name="waiter" width="32" x="0" y="0" />
-    <surface array="1x2" file="../images/pingus/slider.png" height="15" name="slider0" width="32" x="0" y="0" />
-    <surface array="16x1" file="../images/pingus/bomber1.png" height="32" name="bomber1" width="32" x="0" y="0" />
-    <surface array="12x2" file="../images/pingus/basher1.png" height="32" name="basher1" width="32" x="0" y="0" />
-    <surface array="8x2" file="../images/pingus/climber1.png" height="32" name="climber1" width="32" x="0" y="0" />
-    <surface array="8x1" file="../images/pingus/faller1.png" height="32" name="faller1" width="32" x="0" y="0" />
-    <surface array="8x1" file="../images/pingus/faller1.png" height="32" name="jumper1" width="32" x="0" y="0" />
-    <surface array="8x1" file="../images/pingus/tumble1.png" height="32" name="tumble1" width="32" x="0" y="0" />
-    <surface array="15x2" file="../images/pingus/bridger1.png" height="32" name="bridger1" width="32" x="0" y="0" />
-    <surface array="8x2" file="../images/pingus/walker1.png" height="32" name="walker1" width="32" x="0" y="0" />
-    <surface array="6x1" file="../images/pingus/blocker1.png" height="32" name="blocker1" width="32" x="0" y="0" />
-    <surface array="8x1" file="../images/pingus/floater1.png" height="32" name="floater1" width="32" x="0" y="0" />
-    <surface array="14x1" file="../images/pingus/digger1.png" height="32" name="digger1" width="32" x="0" y="0" />
-    <surface array="12x2" file="../images/pingus/miner1.png" height="32" name="miner1" width="32" x="0" y="0" />
-    <surface array="9x2" file="../images/pingus/exit1.png" height="32" name="exit1" width="32" x="0" y="0" />
-    <surface array="15x2" file="../images/pingus/drownfall1.png" height="32" name="drownfall1" width="32" x="0" y="0" />
-    <surface array="16x1" file="../images/pingus/bomber2.png" height="32" name="bomber2" width="32" x="0" y="0" />
-    <surface array="12x2" file="../images/pingus/basher2.png" height="32" name="basher2" width="32" x="0" y="0" />
-    <surface array="8x2" file="../images/pingus/climber2.png" height="32" name="climber2" width="32" x="0" y="0" />
-    <surface array="8x1" file="../images/pingus/faller2.png" height="32" name="faller2" width="32" x="0" y="0" />
-    <surface array="8x1" file="../images/pingus/faller2.png" height="32" name="jumper2" width="32" x="0" y="0" />
-    <surface array="8x1" file="../images/pingus/tumble2.png" height="32" name="tumble2" width="32" x="0" y="0" />
-    <surface array="15x2" file="../images/pingus/bridger2.png" height="32" name="bridger2" width="32" x="0" y="0" />
-    <surface array="8x2" file="../images/pingus/walker2.png" height="32" name="walker2" width="32" x="0" y="0" />
-    <surface array="6x1" file="../images/pingus/blocker2.png" height="32" name="blocker2" width="32" x="0" y="0" />
-    <surface array="8x2" file="../images/pingus/floater2.png" height="32" name="floater2" width="32" x="0" y="0" />
-    <surface array="14x1" file="../images/pingus/digger2.png" height="32" name="digger2" width="32" x="0" y="0" />
-    <surface array="12x2" file="../images/pingus/miner2.png" height="32" name="miner2" width="32" x="0" y="0" />
-    <surface array="9x2" file="../images/pingus/exit2.png" height="32" name="exit2" width="32" x="0" y="0" />
-    <surface array="15x2" file="../images/pingus/drownfall2.png" height="32" name="drownfall2" width="32" x="0" y="0" />
-    <surface array="16x1" file="../images/pingus/bomber3.png" height="32" name="bomber3" width="32" x="0" y="0" />
-    <surface array="12x2" file="../images/pingus/basher3.png" height="32" name="basher3" width="32" x="0" y="0" />
-    <surface array="8x2" file="../images/pingus/climber3.png" height="32" name="climber3" width="32" x="0" y="0" />
-    <surface array="8x1" file="../images/pingus/faller3.png" height="32" name="faller3" width="32" x="0" y="0" />
-    <surface array="8x1" file="../images/pingus/faller3.png" height="32" name="jumper3" width="32" x="0" y="0" />
-    <surface array="8x1" file="../images/pingus/tumble3.png" height="32" name="tumble3" width="32" x="0" y="0" />
-    <surface array="15x2" file="../images/pingus/bridger3.png" height="32" name="bridger3" width="32" x="0" y="0" />
-    <surface array="8x2" file="../images/pingus/walker3.png" height="32" name="walker3" width="32" x="0" y="0" />
-    <surface array="6x1" file="../images/pingus/blocker3.png" height="32" name="blocker3" width="32" x="0" y="0" />
-    <surface array="8x2" file="../images/pingus/floater3.png" height="32" name="floater3" width="32" x="0" y="0" />
-    <surface array="14x1" file="../images/pingus/digger3.png" height="32" name="digger3" width="32" x="0" y="0" />
-    <surface array="12x2" file="../images/pingus/miner3.png" height="32" name="miner3" width="32" x="0" y="0" />
-    <surface array="9x2" file="../images/pingus/exit3.png" height="32" name="exit3" width="32" x="0" y="0" />
-    <surface array="15x2" file="../images/pingus/drownfall3.png" height="32" name="drownfall3" width="32" x="0" y="0" />
+    <sprite name="floaterlayer">
+      <image file="../images/pingus/floaterlayer.png">
+        <grid pos="0,0" size="32,32" array="8,2"/>
+      </image>
+    </sprite>
+    <sprite name="rocketlauncher0">
+      <image file="../images/pingus/rocketlauncher.png">
+        <grid pos="0,0" size="32,32" array="7,2"/>
+      </image>
+    </sprite>
+    <sprite name="boarder0">
+      <image file="../images/pingus/boarder.png">
+        <grid pos="0,0" size="30,30" array="1,2"/>
+      </image>
+    </sprite>
+    <sprite name="angel0">
+      <image file="../images/pingus/angel.png">
+        <grid pos="0,0" size="46,30" array="4,1"/>
+      </image>
+    </sprite>
+    <sprite name="superman0">
+      <image file="../images/pingus/superman.png">
+        <grid pos="0,0" size="30,30" array="8,1"/>
+      </image>
+    </sprite>
+    <sprite name="bomber0">
+      <image file="../images/pingus/bomber.png">
+        <grid pos="0,0" size="32,32" array="16,1"/>
+      </image>
+    </sprite>
+    <sprite name="basher0">
+      <image file="../images/pingus/basher.png">
+        <grid pos="0,0" size="32,32" array="12,2"/>
+      </image>
+    </sprite>
+    <sprite name="climber0">
+      <image file="../images/pingus/climber.png">
+        <grid pos="0,0" size="32,32" array="8,2"/>
+      </image>
+    </sprite>
+    <sprite name="faller0">
+      <image file="../images/pingus/faller.png">
+        <grid pos="0,0" size="32,32" array="8,1"/>
+      </image>
+    </sprite>
+    <sprite name="jumper0">
+      <image file="../images/pingus/faller.png">
+        <grid pos="0,0" size="32,32" array="8,1"/>
+      </image>
+    </sprite>
+    <sprite name="tumble0">
+      <image file="../images/pingus/tumble.png">
+        <grid pos="0,0" size="32,32" array="8,1"/>
+      </image>
+    </sprite>
+    <sprite name="bridger0">
+      <image file="../images/pingus/bridger.png">
+        <grid pos="0,0" size="32,32" array="15,2"/>
+      </image>
+    </sprite>
+    <sprite name="bridger_walk0">
+      <image file="../images/pingus/bridger_walk.png">
+        <grid pos="0,0" size="32,32" array="4,2"/>
+      </image>
+    </sprite>
+    <sprite name="bridger_build0">
+      <image file="../images/pingus/bridger_build.png">
+        <grid pos="0,0" size="32,32" array="11,2"/>
+      </image>
+    </sprite>
+    <sprite name="walker0">
+      <image file="../images/pingus/walker.png">
+        <grid pos="0,0" size="32,32" array="8,2"/>
+      </image>
+    </sprite>
+    <sprite name="blocker0">
+      <image file="../images/pingus/blocker.png">
+        <grid pos="0,0" size="32,32" array="6,1"/>
+      </image>
+    </sprite>
+    <sprite name="floater0">
+      <image file="../images/pingus/floater.png">
+        <grid pos="0,0" size="32,32" array="8,1"/>
+      </image>
+    </sprite>
+    <sprite name="digger0">
+      <image file="../images/pingus/digger.png">
+        <grid pos="0,0" size="32,32" array="14,1"/>
+      </image>
+    </sprite>
+    <sprite name="miner0">
+      <image file="../images/pingus/miner.png">
+        <grid pos="0,0" size="32,32" array="12,2"/>
+      </image>
+    </sprite>
+    <sprite name="splash0">
+      <image file="../images/pingus/splash.png">
+        <grid pos="0,0" size="32,32" array="12,1"/>
+      </image>
+    </sprite>
+    <sprite name="splash_debris0">
+      <image file="../images/pingus/splash_debris.png">
+        <grid pos="0,0" size="32,32" array="6,2"/>
+      </image>
+    </sprite>
+    <sprite name="splat0">
+      <image file="../images/pingus/splat.png">
+        <grid pos="0,0" size="32,32" array="16,1"/>
+      </image>
+    </sprite>
+    <sprite name="exit0">
+      <image file="../images/pingus/exit.png">
+        <grid pos="0,0" size="32,32" array="9,2"/>
+      </image>
+    </sprite>
+    <sprite name="drownfall0">
+      <image file="../images/pingus/drownfall.png">
+        <grid pos="0,0" size="32,32" array="15,2"/>
+      </image>
+    </sprite>
+    <sprite name="drownwalk0">
+      <image file="../images/pingus/drownwalk.png">
+        <grid pos="0,0" size="32,32" array="15,2"/>
+      </image>
+    </sprite>
+    <sprite name="waiter">
+      <image file="../images/pingus/waiter.png">
+        <grid pos="0,0" size="32,32" array="6,1"/>
+      </image>
+    </sprite>
+    <sprite name="slider0">
+      <image file="../images/pingus/slider.png">
+        <grid pos="0,0" size="32,15" array="1,2"/>
+      </image>
+    </sprite>
+    <sprite name="bomber1">
+      <image file="../images/pingus/bomber1.png">
+        <grid pos="0,0" size="32,32" array="16,1"/>
+      </image>
+    </sprite>
+    <sprite name="basher1">
+      <image file="../images/pingus/basher1.png">
+        <grid pos="0,0" size="32,32" array="12,2"/>
+      </image>
+    </sprite>
+    <sprite name="climber1">
+      <image file="../images/pingus/climber1.png">
+        <grid pos="0,0" size="32,32" array="8,2"/>
+      </image>
+    </sprite>
+    <sprite name="faller1">
+      <image file="../images/pingus/faller1.png">
+        <grid pos="0,0" size="32,32" array="8,1"/>
+      </image>
+    </sprite>
+    <sprite name="jumper1">
+      <image file="../images/pingus/faller1.png">
+        <grid pos="0,0" size="32,32" array="8,1"/>
+      </image>
+    </sprite>
+    <sprite name="tumble1">
+      <image file="../images/pingus/tumble1.png">
+        <grid pos="0,0" size="32,32" array="8,1"/>
+      </image>
+    </sprite>
+    <sprite name="bridger1">
+      <image file="../images/pingus/bridger1.png">
+        <grid pos="0,0" size="32,32" array="15,2"/>
+      </image>
+    </sprite>
+    <sprite name="walker1">
+      <image file="../images/pingus/walker1.png">
+        <grid pos="0,0" size="32,32" array="8,2"/>
+      </image>
+    </sprite>
+    <sprite name="blocker1">
+      <image file="../images/pingus/blocker1.png">
+        <grid pos="0,0" size="32,32" array="6,1"/>
+      </image>
+    </sprite>
+    <sprite name="floater1">
+      <image file="../images/pingus/floater1.png">
+        <grid pos="0,0" size="32,32" array="8,1"/>
+      </image>
+    </sprite>
+    <sprite name="digger1">
+      <image file="../images/pingus/digger1.png">
+        <grid pos="0,0" size="32,32" array="14,1"/>
+      </image>
+    </sprite>
+    <sprite name="miner1">
+      <image file="../images/pingus/miner1.png">
+        <grid pos="0,0" size="32,32" array="12,2"/>
+      </image>
+    </sprite>
+    <sprite name="exit1">
+      <image file="../images/pingus/exit1.png">
+        <grid pos="0,0" size="32,32" array="9,2"/>
+      </image>
+    </sprite>
+    <sprite name="drownfall1">
+      <image file="../images/pingus/drownfall1.png">
+        <grid pos="0,0" size="32,32" array="15,2"/>
+      </image>
+    </sprite>
+    <sprite name="bomber2">
+      <image file="../images/pingus/bomber2.png">
+        <grid pos="0,0" size="32,32" array="16,1"/>
+      </image>
+    </sprite>
+    <sprite name="basher2">
+      <image file="../images/pingus/basher2.png">
+        <grid pos="0,0" size="32,32" array="12,2"/>
+      </image>
+    </sprite>
+    <sprite name="climber2">
+      <image file="../images/pingus/climber2.png">
+        <grid pos="0,0" size="32,32" array="8,2"/>
+      </image>
+    </sprite>
+    <sprite name="faller2">
+      <image file="../images/pingus/faller2.png">
+        <grid pos="0,0" size="32,32" array="8,1"/>
+      </image>
+    </sprite>
+    <sprite name="jumper2">
+      <image file="../images/pingus/faller2.png">
+        <grid pos="0,0" size="32,32" array="8,1"/>
+      </image>
+    </sprite>
+    <sprite name="tumble2">
+      <image file="../images/pingus/tumble2.png">
+        <grid pos="0,0" size="32,32" array="8,1"/>
+      </image>
+    </sprite>
+    <sprite name="bridger2">
+      <image file="../images/pingus/bridger2.png">
+        <grid pos="0,0" size="32,32" array="15,2"/>
+      </image>
+    </sprite>
+    <sprite name="walker2">
+      <image file="../images/pingus/walker2.png">
+        <grid pos="0,0" size="32,32" array="8,2"/>
+      </image>
+    </sprite>
+    <sprite name="blocker2">
+      <image file="../images/pingus/blocker2.png">
+        <grid pos="0,0" size="32,32" array="6,1"/>
+      </image>
+    </sprite>
+    <sprite name="floater2">
+      <image file="../images/pingus/floater2.png">
+        <grid pos="0,0" size="32,32" array="8,2"/>
+      </image>
+    </sprite>
+    <sprite name="digger2">
+      <image file="../images/pingus/digger2.png">
+        <grid pos="0,0" size="32,32" array="14,1"/>
+      </image>
+    </sprite>
+    <sprite name="miner2">
+      <image file="../images/pingus/miner2.png">
+        <grid pos="0,0" size="32,32" array="12,2"/>
+      </image>
+    </sprite>
+    <sprite name="exit2">
+      <image file="../images/pingus/exit2.png">
+        <grid pos="0,0" size="32,32" array="9,2"/>
+      </image>
+    </sprite>
+    <sprite name="drownfall2">
+      <image file="../images/pingus/drownfall2.png">
+        <grid pos="0,0" size="32,32" array="15,2"/>
+      </image>
+    </sprite>
+    <sprite name="bomber3">
+      <image file="../images/pingus/bomber3.png">
+        <grid pos="0,0" size="32,32" array="16,1"/>
+      </image>
+    </sprite>
+    <sprite name="basher3">
+      <image file="../images/pingus/basher3.png">
+        <grid pos="0,0" size="32,32" array="12,2"/>
+      </image>
+    </sprite>
+    <sprite name="climber3">
+      <image file="../images/pingus/climber3.png">
+        <grid pos="0,0" size="32,32" array="8,2"/>
+      </image>
+    </sprite>
+    <sprite name="faller3">
+      <image file="../images/pingus/faller3.png">
+        <grid pos="0,0" size="32,32" array="8,1"/>
+      </image>
+    </sprite>
+    <sprite name="jumper3">
+      <image file="../images/pingus/faller3.png">
+        <grid pos="0,0" size="32,32" array="8,1"/>
+      </image>
+    </sprite>
+    <sprite name="tumble3">
+      <image file="../images/pingus/tumble3.png">
+        <grid pos="0,0" size="32,32" array="8,1"/>
+      </image>
+    </sprite>
+    <sprite name="bridger3">
+      <image file="../images/pingus/bridger3.png">
+        <grid pos="0,0" size="32,32" array="15,2"/>
+      </image>
+    </sprite>
+    <sprite name="walker3">
+      <image file="../images/pingus/walker3.png">
+        <grid pos="0,0" size="32,32" array="8,2"/>
+      </image>
+    </sprite>
+    <sprite name="blocker3">
+      <image file="../images/pingus/blocker3.png">
+        <grid pos="0,0" size="32,32" array="6,1"/>
+      </image>
+    </sprite>
+    <sprite name="floater3">
+      <image file="../images/pingus/floater3.png">
+        <grid pos="0,0" size="32,32" array="8,2"/>
+      </image>
+    </sprite>
+    <sprite name="digger3">
+      <image file="../images/pingus/digger3.png">
+        <grid pos="0,0" size="32,32" array="14,1"/>
+      </image>
+    </sprite>
+    <sprite name="miner3">
+      <image file="../images/pingus/miner3.png">
+        <grid pos="0,0" size="32,32" array="12,2"/>
+      </image>
+    </sprite>
+    <sprite name="exit3">
+      <image file="../images/pingus/exit3.png">
+        <grid pos="0,0" size="32,32" array="9,2"/>
+      </image>
+    </sprite>
+    <sprite name="drownfall3">
+      <image file="../images/pingus/drownfall3.png">
+        <grid pos="0,0" size="32,32" array="15,2"/>
+      </image>
+    </sprite>
   </section>
   <section name="Other">
-    <surface file="../images/pingus/brick_right.png" height="2" name="brick_right" width="16" x="0" y="0" />
-    <surface file="../images/pingus/brick_left.png" height="2" name="brick_left" width="16" x="0" y="0" />
-    <surface file="../images/pingus/bash_radius.png" height="34" name="bash_radius" width="34" x="0" y="0" />
-    <surface file="../images/pingus/bash_radius_gfx.png" height="34" name="bash_radius_gfx" width="34" x="0" y="0" />
-    <surface file="../images/pingus/digger_radius.png" name="digger_radius" />
-    <surface file="../images/pingus/digger_radius_gfx.png" name="digger_radius_gfx" />
-    <surface file="../images/pingus/bomber_radius.png" name="bomber_radius" />
-    <surface file="../images/pingus/bomber_radius_gfx.png" name="bomber_radius_gfx" />
-    <surface file="../images/pingus/explo0.png" height="64" name="explo0" width="64" x="0" y="0" />
-    <surface file="../images/pingus/explo1.png" height="64" name="explo1" width="64" x="0" y="0" />
-    <surface file="../images/pingus/explo2.png" height="64" name="explo2" width="64" x="0" y="0" />
-    <surface file="../images/pingus/explo3.png" height="64" name="explo3" width="64" x="0" y="0" />
-    <surface array="9x2" file="../images/pingus/laser_kill.png" height="32" name="laser_kill" width="33" x="0" y="0" />
+    <sprite name="brick_right">
+      <image file="../images/pingus/brick_right.png" />
+    </sprite>
+    <sprite name="brick_left">
+      <image file="../images/pingus/brick_left.png">
+      </image>
+    </sprite>
+    <sprite name="bash_radius">
+      <image file="../images/pingus/bash_radius.png">
+      </image>
+    </sprite>
+    <sprite name="bash_radius_gfx">
+      <image file="../images/pingus/bash_radius_gfx.png">
+      </image>
+    </sprite>
+    <sprite name="digger_radius">
+      <image file="../images/pingus/digger_radius.png">
+      </image>
+    </sprite>
+    <sprite name="digger_radius_gfx">
+      <image file="../images/pingus/digger_radius_gfx.png">
+      </image>
+    </sprite>
+    <sprite name="bomber_radius">
+      <image file="../images/pingus/bomber_radius.png">
+      </image>
+    </sprite>
+    <sprite name="bomber_radius_gfx">
+      <image file="../images/pingus/bomber_radius_gfx.png">
+      </image>
+    </sprite>
+    <sprite name="explo0">
+      <image file="../images/pingus/explo0.png">
+      </image>
+    </sprite>
+    <sprite name="explo1">
+      <image file="../images/pingus/explo1.png">
+      </image>
+    </sprite>
+    <sprite name="explo2">
+      <image file="../images/pingus/explo2.png">
+      </image>
+    </sprite>
+    <sprite name="explo3">
+      <image file="../images/pingus/explo3.png">
+      </image>
+    </sprite>
+    <sprite name="laser_kill">
+      <image file="../images/pingus/laser_kill.png">
+        <grid pos="0,0" size="33,32" array="9,2"/>
+      </image>
+    </sprite>
   </section>
   <section name="XMas">
-    <surface array="8x2" file="../images/pingus/xmas-walker.png" height="44" name="walker" width="32" x="0" y="0" />
+    <sprite name="walker">
+      <image file="../images/pingus/xmas-walker.png">
+        <grid pos="0,0" size="32,44" array="8,2"/>
+      </image>
+    </sprite>
   </section>
   <section name="Particles">
-    <surface file="../images/particles/explosive.png" height="4" name="explosive" width="8" x="0" y="0" />
-    <surface array="2x1" file="../images/particles/pingu_explo.png" height="3" name="pingu_explo" width="3" x="0" y="0" />
-    <surface array="4x1" file="../images/particles/ground.png" height="32" name="ground" width="32" x="0" y="0" />
-    <surface array="8x1" file="../images/particles/smoke.png" height="32" name="smoke" width="32" x="0" y="0" />
-    <surface array="8x1" file="../images/particles/smoke2.png" height="32" name="smoke2" width="32" x="0" y="0" />
-    <surface file="../images/particles/snow1.png" height="8" name="snow1" width="8" x="0" y="0" />
-    <surface file="../images/particles/snow2.png" height="12" name="snow2" width="12" x="0" y="0" />
-    <surface file="../images/particles/snow3.png" height="5" name="snow3" width="5" x="0" y="0" />
-    <surface file="../images/particles/snow4.png" height="3" name="snow4" width="3" x="0" y="0" />
-    <surface file="../images/particles/snow5.png" height="2" name="snow5" width="2" x="0" y="0" />
-    <surface file="../images/particles/ground_snow.png" height="2" name="ground_snow" width="3" x="0" y="0" />
+    <sprite name="explosive">
+      <image file="../images/particles/explosive.png">
+      </image>
+    </sprite>
+    <sprite name="pingu_explo">
+      <image file="../images/particles/pingu_explo.png">
+        <grid pos="0,0" size="3,3" array="2,1"/>
+      </image>
+    </sprite>
+    <sprite name="ground">
+      <image file="../images/particles/ground.png">
+        <grid pos="0,0" size="32,32" array="4,1"/>
+      </image>
+    </sprite>
+    <sprite name="smoke">
+      <image file="../images/particles/smoke.png">
+        <grid pos="0,0" size="32,32" array="8,1"/>
+      </image>
+    </sprite>
+    <sprite name="smoke2">
+      <image file="../images/particles/smoke2.png">
+        <grid pos="0,0" size="32,32" array="8,1"/>
+      </image>
+    </sprite>
+    <sprite name="snow1">
+      <image file="../images/particles/snow1.png">
+      </image>
+    </sprite>
+    <sprite name="snow2">
+      <image file="../images/particles/snow2.png">
+      </image>
+    </sprite>
+    <sprite name="snow3">
+      <image file="../images/particles/snow3.png">
+      </image>
+    </sprite>
+    <sprite name="snow4">
+      <image file="../images/particles/snow4.png">
+      </image>
+    </sprite>
+    <sprite name="snow5">
+      <image file="../images/particles/snow5.png">
+      </image>
+    </sprite>
+    <sprite name="ground_snow">
+      <image file="../images/particles/ground_snow.png">
+      </image>
+    </sprite>
 
     <sprite name="rain_splash">
-      <image file="../images/particles/rain_splash.png" />
+      <image file="../images/particles/rain_splash.png"/>
     </sprite>
     
     <sprite name="rain1">
-      <image file="../images/particles/rain1.png" />
+      <image file="../images/particles/rain1.png"/>
     </sprite>
 
     <sprite name="rain2">
-      <image file="../images/particles/rain2.png" />
+      <image file="../images/particles/rain2.png"/>
     </sprite>
   </section>
 </resources>
