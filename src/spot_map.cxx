@@ -1,4 +1,4 @@
-//  $Id: spot_map.cxx,v 1.15 2002/09/16 20:31:09 grumbel Exp $
+//  $Id: spot_map.cxx,v 1.16 2002/09/17 01:03:59 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -47,7 +47,8 @@ MapTileSurface::MapTileSurface (const MapTileSurface& old) : empty(old.empty),
 {
 }
 
-MapTileSurface MapTileSurface::operator= (const MapTileSurface& old)
+MapTileSurface 
+MapTileSurface::operator= (const MapTileSurface& old)
 {
   if (this == &old)
     return *this;
@@ -105,7 +106,9 @@ PingusSpotMap::PingusSpotMap(PLF* plf)
 {
   colmap = 0;
   load(plf);
+#ifndef NEW_GROUNDPIECES
   gen_tiles();
+#endif
 }
 
 PingusSpotMap::~PingusSpotMap(void)
@@ -169,6 +172,7 @@ PingusSpotMap::load(PLF* plf)
   
   surfaces = plf->get_groundpieces();
 
+#ifndef NEW_GROUNDPIECES
   for (vector<GroundpieceData>::iterator i = surfaces.begin();
        i != surfaces.end();
        ++i) // WIN32BUG
@@ -176,6 +180,8 @@ PingusSpotMap::load(PLF* plf)
       i->surface = PingusResource::load_surface(i->desc);
     }
   create_map();
+#endif
+
 }
 
 void
@@ -238,6 +244,27 @@ PingusSpotMap::draw(GraphicContext& gc)
 {
   //std::cout << "Draw: " << " x_pos: " << x_pos << " y_pos: " 
   //<< " w: " << w << " h: " << h << " s: " << s << std::endl;
+  
+#if 0
+  { // calculate number of tiles
+    int tiles_total = 0;
+    int tiles_empty = 0;
+    int tiles_used  = 0;
+    for(TileIter x=0; x < tile.size(); ++x) 
+      {
+	for(TileIter y=0; y < tile[x].size(); ++y) 
+	  {
+	    if (tile[x][y].is_empty())
+	      ++tiles_empty;
+	    else
+	      ++tiles_used;
+	    ++tiles_total;
+	  }
+      }
+    std::cout << "Tiles: " << tiles_total << " " << tiles_empty << "/" << tiles_used << std::endl;
+    std::cout << "   " << float(tiles_used)/float(tiles_total) * 100.0f << "% of the map are used" << std::endl;
+  }
+#endif
 
   // FIXME: delete the next four lines and replace them with gc.get_clip_rect()
   int w = CL_Display::get_width ();
@@ -458,7 +485,7 @@ PingusSpotMap::put(CL_SurfaceProvider* sprovider, int x, int y)
 	  if (tile[ix][iy].surface == 0)
 	    {
 	      CL_Canvas* canvas;
-	      std::cout << "PingusSpotMap: Drawing to an emtpy tile: " << ix << " " << iy << std::endl;
+	      //std::cout << "PingusSpotMap: Drawing to an emtpy tile: " << ix << " " << iy << std::endl;
 	      canvas = new CL_Canvas(tile_size, tile_size);
 	      Blitter::clear_canvas(canvas);
 
@@ -523,6 +550,7 @@ PingusSpotMap::get_colmap(void)
 	std::cout << "PingusSpotMap: Generating Colision Map..." << std::flush;
       }
 
+#ifndef NEW_GROUNDPIECES
       for(std::vector<GroundpieceData>::iterator i2 = surfaces.begin();
 	  i2 != surfaces.end(); 
 	  i2++) 
@@ -532,7 +560,7 @@ PingusSpotMap::get_colmap(void)
 	  else
 	    colmap->put(i2->surface, (int) i2->pos.x, (int) i2->pos.y, i2->gptype);
 	}
-      
+#endif      
       if (verbose)
 	std::cout << "done " << timer.stop() << std::endl;
       

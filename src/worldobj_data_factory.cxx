@@ -1,4 +1,4 @@
-//  $Id: worldobj_data_factory.cxx,v 1.19 2002/09/16 20:52:22 torangan Exp $
+//  $Id: worldobj_data_factory.cxx,v 1.20 2002/09/17 01:03:59 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -113,29 +113,36 @@ WorldObjData*
 WorldObjDataFactory::create (xmlDocPtr doc, xmlNodePtr cur)
 {
   std::cout << "WorldObjDataFactory::create (xmlDocPtr doc, xmlNodePtr cur)" << std::endl;
-  char* type = XMLhelper::get_prop(cur, "type");
-  if (type)
+
+  // Compatibility stuff
+  if (XMLhelper::equal_str(cur->name, "hotspot"))
     {
-      return create (type, doc, cur);
+      return create ("hotspot", doc, cur);
+    }
+  else if (XMLhelper::equal_str(cur->name, "exit"))
+    {
+      return create ("exit", doc, cur);
+    }
+  else if (XMLhelper::equal_str(cur->name, "entrance"))
+    {
+      return create ("entrance", doc, cur);
+    }
+  else if (XMLhelper::equal_str(cur->name, "groundpiece"))
+    {
+      return create ("groundpiece", doc, cur);
     }
   else
     {
-      // Compatibility stuff
-      if (XMLhelper::equal_str(cur->name, "hotspot"))
+      char* type = XMLhelper::get_prop(cur, "type");
+      if (type)
 	{
-	  return create ("hotspot", doc, cur);
-	}
-      else if (XMLhelper::equal_str(cur->name, "exit"))
-	{
-	  return create ("exit", doc, cur);
-	}
-      else if (XMLhelper::equal_str(cur->name, "entrance"))
-	{
-	  return create ("entrance", doc, cur);
+	  return create (type, doc, cur);
 	}
       else
-	PingusError::raise ("WorldObjDataFactory::create: Error, no type given. - " 
-			    + std::string((char*) cur->name));
+	{
+	  PingusError::raise ("WorldObjDataFactory::create: Error, no type given. - " 
+			      + std::string((char*) cur->name));
+	}
     }
     
   return 0; //never reached
