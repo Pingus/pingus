@@ -1,7 +1,7 @@
 Name:        All Standard
 Image:       -
 Description: -
-Background:  (resource:textures.dat)Textures/crystal
+Background:  (resource:textures.dat)Textures/flame
 
 level1.plf
 level2.plf
