@@ -25,7 +25,7 @@
 #include "../globals.hxx"
 #include "../system.hxx"
 #include "../xml_helper.hxx"
-#include "../pingus_resource.hxx"
+#include "../resource.hxx"
 #include "../pingus_error.hxx"
 #include "../worldobjsdata/worldobj_group_data.hxx"
 #include "../worldobjsdata/solid_color_background_data.hxx"
@@ -141,7 +141,7 @@ ObjectManager::load_level (const std::string& filename)
        i++)
     {
 #ifdef CLANLIB_0_6
-      i->surface = PingusResource::load_sprite(i->desc);
+      i->surface = Resource::load_sprite(i->desc);
 #endif
     }
 

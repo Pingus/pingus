@@ -19,7 +19,7 @@
 
 #include "../globals.hxx"
 #include "../gui/graphic_context.hxx"
-#include "../pingus_resource.hxx"
+#include "../resource.hxx"
 #include "smoke_particle_holder.hxx"
 
 namespace Pingus {
@@ -34,8 +34,8 @@ SmokeParticleHolder::SmokeParticle::SmokeParticle (int x, int y, float vel_x, fl
 
 
 SmokeParticleHolder::SmokeParticleHolder ()
-  : surf1(PingusResource::load_sprite("particles/smoke", "pingus")),
-    surf2(PingusResource::load_sprite("particles/smoke2", "pingus"))
+  : surf1(Resource::load_sprite("particles/smoke", "pingus")),
+    surf2(Resource::load_sprite("particles/smoke2", "pingus"))
 {
 }
 

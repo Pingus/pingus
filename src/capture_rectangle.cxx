@@ -21,7 +21,7 @@
 
 #include "vector.hxx"
 #include "pingu.hxx"
-#include "pingus_resource.hxx"
+#include "resource.hxx"
 #include "capture_rectangle.hxx"
 #include "pingu_action.hxx"
 #include "button_panel.hxx"

@@ -24,7 +24,7 @@
 #include "../xml_file_reader.hxx"
 #include "../editorobjs/bumper_obj.hxx"
 #include "../worldobjs/bumper.hxx"
-#include "../pingus_resource.hxx"
+#include "../resource.hxx"
 #include "../editor/editorobj_mgr.hxx"
 
 namespace Pingus {
@@ -35,7 +35,7 @@ BumperData::BumperData ()
 }
 
 BumperData::BumperData (xmlDocPtr doc, xmlNodePtr cur)
-  : surface(PingusResource::load_sprite("Traps/bumper", "traps"))
+  : surface(Resource::load_sprite("Traps/bumper", "traps"))
 {
   XMLFileReader reader(doc, cur);
   reader.read_vector("position", pos);

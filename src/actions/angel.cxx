@@ -20,7 +20,7 @@
 #include <math.h>
 #include "../gui/graphic_context.hxx"
 #include "../pingu.hxx"
-#include "../pingus_resource.hxx"
+#include "../resource.hxx"
 #include "../string_converter.hxx"
 #include "../globals.hxx"
 #include "angel.hxx"
@@ -32,9 +32,8 @@ Angel::Angel (Pingu* p)
   : PinguAction(p),
     counter(0.0),
     x_pos(pingu->get_x()),
-    sprite("pingus/angel")
+    sprite(Resource::load_sprite("pingus/angel"))
 {
-  sprite.set_align_center_bottom();
 }
 
 void

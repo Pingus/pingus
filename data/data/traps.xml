@@ -1,5 +1,5 @@
 <resources>
-  <section name="Traps">
+  <section name="traps">
     <sprite name="tut">
       <image file="../images/traps/tut.png" />
     </sprite>

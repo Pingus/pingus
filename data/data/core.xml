@@ -1,395 +1,408 @@
 <resources>
-  <section name="cursors">
-    <sprite name="editor">
-      <image file="../images/core/cursors/editor.png"/>
-    </sprite>
-    <sprite name="cursor">
-      <image file="../images/core/cursors/cursor.png"/>
-    </sprite>
-    <sprite name="scroll_cur">
-      <image file="../images/core/cursors/scroll.png"/>
-    </sprite>
-    <sprite name="capgood">
-      <image file="../images/core/cursors/cap.png"/>
-    </sprite>
-    <sprite name="capbad">
-      <image file="../images/core/cursors/capwrong.png"/>
-    </sprite>
-    <sprite name="cross">
-      <image file="../images/core/cursors/cross.png"/>
-    </sprite>
-    <sprite name="arrow_right">
-      <image file="../images/core/cursors/arrow_right.png"/>
-    </sprite>
-    <sprite name="arrow_left">
-      <image file="../images/core/cursors/arrow_left.png"/>
-    </sprite>
-    <sprite name="animcross">
-      <image file="../images/core/cursors/animcross.png">
-        <grid  array="10x1"/>
-      </image>
-    </sprite>
-  </section>
-  <section name="editor">
-    <sprite name="start_pos">
-      <image file="../images/core/editor/start_pos.png"/>
-    </sprite>
-    <sprite name="weather_rain">
-      <image file="../images/core/editor/weather_rain.png"/>
-    </sprite>
-    <sprite name="weather_snow">
-      <image file="../images/core/editor/weather_snow.png"/>
-    </sprite>
-    <sprite name="copy">
-      <image file="../images/core/editor/tb_copy.png"/>
-    </sprite>
-    <sprite name="new">
-      <image file="../images/core/editor/tb_new.png"/>
-    </sprite>
-    <sprite name="open">
-      <image file="../images/core/editor/tb_open.png"/>
-    </sprite>
-    <sprite name="save">
-      <image file="../images/core/editor/tb_save.png"/>
-    </sprite>
-    <sprite name="exit">
-      <image file="../images/core/editor/tb_exit.png"/>
-    </sprite>
-    <sprite name="clock_run">
-      <image file="../images/core/editor/tb_clock_run.png"/>
-    </sprite>
-    <sprite name="edit">
-      <image file="../images/core/editor/tb_edit.png"/>
-    </sprite>
-    <sprite name="preferences">
-      <image file="../images/core/editor/tb_preferences.png"/>
-    </sprite>
-    <sprite name="help">
-      <image file="../images/core/editor/tb_help.png"/>
-    </sprite>
-    <sprite name="delete">
-      <image file="../images/core/editor/tb_trash.png"/>
-    </sprite>
-    <sprite name="index">
-      <image file="../images/core/editor/tb_index.png"/>
-    </sprite>
-    <sprite name="region-zoom">
-      <image file="../images/core/editor/region-zoom.png"/>
-    </sprite>
-    <sprite name="zoom-in">
-      <image file="../images/core/editor/zoom-in.png"/>
-    </sprite>
-    <sprite name="zoom-out">
-      <image file="../images/core/editor/zoom-out.png"/>
-    </sprite>
-    <sprite name="button">
-      <image file="../images/core/editor/button.png"/>
-    </sprite>
-    <sprite name="button_pressed">
-      <image file="../images/core/editor/button_pressed.png"/>
-    </sprite>
-    <sprite name="actions">
-      <image file="../images/core/editor/actions.png"/>
-    </sprite>
-    <sprite name="logo">
-      <image file="../images/core/editor/logo.png"/>
-    </sprite>
-  </section>
-  <section name="buttons">
-    <sprite name="info">
-      <translation origin="top_center"/>
-      <image file="../images/core/buttons/info.png"/>
-    </sprite>
+  <section name="core">
+    <section name="cursors">
+      <sprite name="editor">
+        <image file="../images/core/cursors/editor.png"/>
+      </sprite>
+      <sprite name="cursor">
+        <image file="../images/core/cursors/cursor.png"/>
+      </sprite>
+      <sprite name="scroll_cur">
+        <image file="../images/core/cursors/scroll.png"/>
+      </sprite>
+      <sprite name="capgood">
+        <image file="../images/core/cursors/cap.png"/>
+      </sprite>
+      <sprite name="capbad">
+        <image file="../images/core/cursors/capwrong.png"/>
+      </sprite>
+      <sprite name="cross">
+        <image file="../images/core/cursors/cross.png"/>
+      </sprite>
+      <sprite name="arrow_right">
+        <image file="../images/core/cursors/arrow_right.png"/>
+      </sprite>
+      <sprite name="arrow_left">
+        <image file="../images/core/cursors/arrow_left.png"/>
+      </sprite>
+      <sprite name="animcross">
+        <image file="../images/core/cursors/animcross.png">
+          <grid  array="10x1"/>
+        </image>
+      </sprite>
+    </section>
+    <section name="editor">
+      <sprite name="start_pos">
+        <image file="../images/core/editor/start_pos.png"/>
+      </sprite>
+      <sprite name="weather_rain">
+        <image file="../images/core/editor/weather_rain.png"/>
+      </sprite>
+      <sprite name="weather_snow">
+        <image file="../images/core/editor/weather_snow.png"/>
+      </sprite>
+      <sprite name="copy">
+        <image file="../images/core/editor/tb_copy.png"/>
+      </sprite>
+      <sprite name="new">
+        <image file="../images/core/editor/tb_new.png"/>
+      </sprite>
+      <sprite name="open">
+        <image file="../images/core/editor/tb_open.png"/>
+      </sprite>
+      <sprite name="save">
+        <image file="../images/core/editor/tb_save.png"/>
+      </sprite>
+      <sprite name="exit">
+        <image file="../images/core/editor/tb_exit.png"/>
+      </sprite>
+      <sprite name="clock_run">
+        <image file="../images/core/editor/tb_clock_run.png"/>
+      </sprite>
+      <sprite name="edit">
+        <image file="../images/core/editor/tb_edit.png"/>
+      </sprite>
+      <sprite name="preferences">
+        <image file="../images/core/editor/tb_preferences.png"/>
+      </sprite>
+      <sprite name="help">
+        <image file="../images/core/editor/tb_help.png"/>
+      </sprite>
+      <sprite name="delete">
+        <image file="../images/core/editor/tb_trash.png"/>
+      </sprite>
+      <sprite name="index">
+        <image file="../images/core/editor/tb_index.png"/>
+      </sprite>
+      <sprite name="region-zoom">
+        <image file="../images/core/editor/region-zoom.png"/>
+      </sprite>
+      <sprite name="zoom-in">
+        <image file="../images/core/editor/zoom-in.png"/>
+      </sprite>
+      <sprite name="zoom-out">
+        <image file="../images/core/editor/zoom-out.png"/>
+      </sprite>
+      <sprite name="button">
+        <image file="../images/core/editor/button.png"/>
+      </sprite>
+      <sprite name="button_pressed">
+        <image file="../images/core/editor/button_pressed.png"/>
+      </sprite>
+      <sprite name="actions">
+        <image file="../images/core/editor/actions.png"/>
+      </sprite>
+      <sprite name="logo">
+        <image file="../images/core/editor/logo.png"/>
+      </sprite>
+    </section>
+    <section name="buttons">
+      <sprite name="info">
+        <translation origin="top_center"/>
+        <image file="../images/core/buttons/info.png"/>
+      </sprite>
 
-    <sprite name="hbuttonbg">
-      <image file="../images/core/buttons/hbuttonbg.png"/>
-    </sprite>
-    <sprite name="hbuttonbgb">
-      <image file="../images/core/buttons/hbuttonbgb.png"/>
-    </sprite>
-    <sprite name="buttonbackground">
-      <image file="../images/core/buttons/buttonbackground.png"/>
-    </sprite>
-    <sprite name="buttonbackgroundhl">
-      <image file="../images/core/buttons/buttonbackgroundhl.png"/>
-    </sprite>
-    <sprite name="back">
-      <image file="../images/core/buttons/back.png"/>
-    </sprite>
-    <sprite name="pause">
-      <image file="../images/core/buttons/pause.png"/>
-    </sprite>
-    <sprite name="fast_forward">
-      <image file="../images/core/buttons/fast_forward.png"/>
-    </sprite>
+      <sprite name="hbuttonbg">
+        <image file="../images/core/buttons/hbuttonbg.png"/>
+      </sprite>
+      <sprite name="hbuttonbgb">
+        <image file="../images/core/buttons/hbuttonbgb.png"/>
+      </sprite>
+      <sprite name="buttonbackground">
+        <image file="../images/core/buttons/buttonbackground.png"/>
+      </sprite>
+      <sprite name="buttonbackgroundhl">
+        <image file="../images/core/buttons/buttonbackgroundhl.png"/>
+      </sprite>
+      <sprite name="back">
+        <image file="../images/core/buttons/back.png"/>
+      </sprite>
+      <sprite name="pause">
+        <image file="../images/core/buttons/pause.png"/>
+      </sprite>
+      <sprite name="fast_forward">
+        <image file="../images/core/buttons/fast_forward.png"/>
+      </sprite>
 
-    <sprite name="armageddon_anim">
-      <image file="../images/core/buttons/armageddon_anim.png"/>
-      <grid array="14,1" size="36,57" pos="0,0"/>
-    </sprite>
-  </section>
-  <section name="menu">
-    <sprite name="background">
-      <image file="../images/core/menu/background.jpg"/>
-    </sprite>
-    <sprite name="startscreenbg">
-      <image file="../images/core/menu/startscreenbg.jpg"/>
-    </sprite>
-    <sprite name="create_on">
-      <image file="../images/core/menu/create_on.png"/>
-    </sprite>
-    <sprite name="credits_on">
-      <image file="../images/core/menu/credits_on.png"/>
-    </sprite>
-    <sprite name="exit_on">
-      <image file="../images/core/menu/exit_on.png"/>
-    </sprite>
-    <sprite name="ice_off">
-      <image file="../images/core/menu/ice_off.png"/>
-    </sprite>
-    <sprite name="options_on">
-      <image file="../images/core/menu/options_on.png"/>
-    </sprite>
-    <sprite name="play_on">
-      <image file="../images/core/menu/play_on.png"/>
-    </sprite>
-    <sprite name="multi_on">
-      <image file="../images/core/menu/multi_on.png"/>
-    </sprite>
-    <sprite name="layer1">
-      <image file="../images/core/menu/layer1.jpg"/>
-    </sprite>
-    <sprite name="layer2">
-      <image file="../images/core/menu/layer2.png"/>
-    </sprite>
-    <sprite name="layer3">
-      <image file="../images/core/menu/layer3.png"/>
-    </sprite>
-    <sprite name="layer4">
-      <image file="../images/core/menu/layer4.png"/>
-    </sprite>
-    <sprite name="layer5">
-      <image file="../images/core/menu/layer5.png"/>
-    </sprite>
-    <sprite name="enterlevel">
-      <image file="../images/core/menu/enterlevel.png"/>
-    </sprite>
-    <sprite name="enterlevel">
-      <image file="../images/core/menu/enterlevel.png"/>
-    </sprite>
-    <sprite name="enterlevel">
-      <image file="../images/core/menu/enterlevel.png"/>
-    </sprite>
-    <sprite name="close_highlight">
-      <image file="../images/core/menu/close_highlight.png"/>
-    </sprite>
-    <sprite name="close_normal">
-      <image file="../images/core/menu/close_normal.png"/>
-    </sprite>
-    <sprite name="close_pressed">
-      <image file="../images/core/menu/close_pressed.png"/>
-    </sprite>
-    <sprite name="exit_button_normal">
-      <image file="../images/core/menu/exit_button_normal.png"/>
-    </sprite>
-    <sprite name="exit_button_hover">
-      <image file="../images/core/menu/exit_button_hover.png"/>
-    </sprite>
-    <sprite name="exit_button_pressed">
-      <image file="../images/core/menu/exit_button_pressed.png"/>
-    </sprite>
-    <sprite name="exit_menu">
-      <image file="../images/core/menu/exit_menu.png"/>
-    </sprite>
-  </section>
-  <section name="result">
-    <sprite name="retry">
-      <image file="../images/core/menu/result_retry.png"/>
-    </sprite>
-    <sprite name="ok">
-      <image file="../images/core/menu/result_ok.png"/>
-    </sprite>
-  </section>
+      <sprite name="armageddon_anim">
+        <image file="../images/core/buttons/armageddon_anim.png"/>
+        <grid array="14,1" size="36,57" pos="0,0"/>
+      </sprite>
+    </section>
+    <section name="menu">
+      <sprite name="background">
+        <image file="../images/core/menu/background.jpg"/>
+      </sprite>
+      <sprite name="startscreenbg">
+        <image file="../images/core/menu/startscreenbg.jpg"/>
+      </sprite>
+      <sprite name="create_on">
+        <image file="../images/core/menu/create_on.png"/>
+      </sprite>
+      <sprite name="credits_on">
+        <image file="../images/core/menu/credits_on.png"/>
+      </sprite>
+      <sprite name="exit_on">
+        <image file="../images/core/menu/exit_on.png"/>
+      </sprite>
+      <sprite name="ice_off">
+        <image file="../images/core/menu/ice_off.png"/>
+      </sprite>
+      <sprite name="options_on">
+        <image file="../images/core/menu/options_on.png"/>
+      </sprite>
+      <sprite name="play_on">
+        <image file="../images/core/menu/play_on.png"/>
+      </sprite>
+      <sprite name="multi_on">
+        <image file="../images/core/menu/multi_on.png"/>
+      </sprite>
+      <sprite name="layer1">
+        <image file="../images/core/menu/layer1.jpg"/>
+      </sprite>
+      <sprite name="layer2">
+        <image file="../images/core/menu/layer2.png"/>
+      </sprite>
+      <sprite name="layer3">
+        <image file="../images/core/menu/layer3.png"/>
+      </sprite>
+      <sprite name="layer4">
+        <image file="../images/core/menu/layer4.png"/>
+      </sprite>
+      <sprite name="layer5">
+        <image file="../images/core/menu/layer5.png"/>
+      </sprite>
+      <sprite name="enterlevel">
+        <image file="../images/core/menu/enterlevel.png"/>
+      </sprite>
+      <sprite name="enterlevel">
+        <image file="../images/core/menu/enterlevel.png"/>
+      </sprite>
+      <sprite name="enterlevel">
+        <image file="../images/core/menu/enterlevel.png"/>
+      </sprite>
+      <sprite name="close_highlight">
+        <image file="../images/core/menu/close_highlight.png"/>
+      </sprite>
+      <sprite name="close_normal">
+        <image file="../images/core/menu/close_normal.png"/>
+      </sprite>
+      <sprite name="close_pressed">
+        <image file="../images/core/menu/close_pressed.png"/>
+      </sprite>
+      <sprite name="exit_button_normal">
+        <image file="../images/core/menu/exit_button_normal.png"/>
+      </sprite>
+      <sprite name="exit_button_hover">
+        <image file="../images/core/menu/exit_button_hover.png"/>
+      </sprite>
+      <sprite name="exit_button_pressed">
+        <image file="../images/core/menu/exit_button_pressed.png"/>
+      </sprite>
+      <sprite name="exit_menu">
+        <image file="../images/core/menu/exit_menu.png"/>
+      </sprite>
+    </section>
+    <section name="result">
+      <sprite name="retry">
+        <image file="../images/core/menu/result_retry.png"/>
+      </sprite>
+      <sprite name="ok">
+        <image file="../images/core/menu/result_ok.png"/>
+      </sprite>
+    </section>
 
-  <section name="start">
-    <sprite name="ok">
-      <image file="../images/core/misc/start_ok.png"/>
-    </sprite>
-    <sprite name="ok_hover">
-      <image file="../images/core/misc/start_ok_hover.png"/>
-    </sprite>
-    <sprite name="ok_clicked">
-      <image file="../images/core/misc/start_ok_clicked.png"/>
-    </sprite>
-    <sprite name="back">
-      <image file="../images/core/misc/start_back.png"/>
-    </sprite>
-    <sprite name="back_hover">
-      <image file="../images/core/misc/start_back_hover.png"/>
-    </sprite>
-    <sprite name="back_clicked">
-      <image file="../images/core/misc/start_back_clicked.png"/>
-    </sprite>
-  </section>
+    <section name="start">
+      <sprite name="ok">
+        <image file="../images/core/misc/start_ok.png"/>
+      </sprite>
+      <sprite name="ok_hover">
+        <image file="../images/core/misc/start_ok_hover.png"/>
+      </sprite>
+      <sprite name="ok_clicked">
+        <image file="../images/core/misc/start_ok_clicked.png"/>
+      </sprite>
+      <sprite name="back">
+        <image file="../images/core/misc/start_back.png"/>
+      </sprite>
+      <sprite name="back_hover">
+        <image file="../images/core/misc/start_back_hover.png"/>
+      </sprite>
+      <sprite name="back_clicked">
+        <image file="../images/core/misc/start_back_clicked.png"/>
+      </sprite>
+    </section>
 
-  <section name="misc">
-    <sprite name="next">
-      <image file="../images/core/misc/next.png"/>
-    </sprite>
-    <sprite name="next_hover">
-      <image file="../images/core/misc/next_hover.png"/>
-    </sprite>
-    <sprite name="chalk_pingu1">
-      <image file="../images/core/misc/chalk_pingu1.png"/>
-    </sprite>
-    <sprite name="chalk_pingu2">
-      <image file="../images/core/misc/chalk_pingu2.png"/>
-    </sprite>
-    <sprite name="chalk_pingu3">
-      <image file="../images/core/misc/chalk_pingu3.png"/>
-    </sprite>
-    <sprite name="chalk_pingu4">
-      <image file="../images/core/misc/chalk_pingu4.png"/>
-    </sprite>
-    <sprite name="flag0">
-      <image file="../images/core/misc/flag0.png"/>
-    </sprite>
-    <surface name="404" file="../images/core/misc/404.png"/>
+    <section name="misc">
+      <sprite name="next">
+        <image file="../images/core/misc/next.png"/>
+      </sprite>
+      <sprite name="next_hover">
+        <image file="../images/core/misc/next_hover.png"/>
+      </sprite>
+      <sprite name="chalk_pingu1">
+        <image file="../images/core/misc/chalk_pingu1.png"/>
+      </sprite>
+      <sprite name="chalk_pingu2">
+        <image file="../images/core/misc/chalk_pingu2.png"/>
+      </sprite>
+      <sprite name="chalk_pingu3">
+        <image file="../images/core/misc/chalk_pingu3.png"/>
+      </sprite>
+      <sprite name="chalk_pingu4">
+        <image file="../images/core/misc/chalk_pingu4.png"/>
+      </sprite>
+      <sprite name="flag0">
+        <image file="../images/core/misc/flag0.png"/>
+      </sprite>
+      <surface name="404" file="../images/core/misc/404.png"/>
 
-    <sprite name="404sprite">
-      <image file="../images/core/misc/404.png"/>
-    </sprite>
+      <sprite name="404sprite">
+        <image file="../images/core/misc/404.png"/>
+      </sprite>
 
-    <sprite name="exitmenu">
-      <image file="../images/core/menu/exitmenu.png"/>
-    </sprite>
-    <sprite name="logo">
-      <image file="../images/core/misc/logo.png"/>
-    </sprite>
-    <sprite name="loading">
-      <image file="../images/core/misc/loading.png"/>
-    </sprite>
-    <sprite name="pingubw">
-      <image file="../images/core/misc/pingubw.png"/>
-    </sprite>
-    <sprite name="creditpingu">
-      <image file="../images/core/misc/creditpingu.png"/>
-    </sprite>
-    <sprite name="smallmap_entrance">
-      <image file="../images/core/misc/smallmap_entrance.png"/>
-    </sprite>
-    <sprite name="smallmap_exit">
-      <image file="../images/core/misc/smallmap_exit.png"/>
-    </sprite>
-    <sprite name="flag0">
-      <image file="../images/core/misc/flag0.png"/>
-    </sprite>
-    <sprite name="flag1">
-      <image file="../images/core/misc/flag1.png"/>
-    </sprite>
-    <sprite name="flag2">
-      <image file="../images/core/misc/flag2.png"/>
-    </sprite>
-    <sprite name="flag3">
-      <image file="../images/core/misc/flag3.png"/>
-    </sprite>
-    <sprite name="unplayable">
-      <image file="../images/core/misc/unplayable.png"/>
-    </sprite>
-    <sprite name="unplayable2">
-      <image file="../images/core/misc/unplayable2.png"/>
-    </sprite>
-    <sprite name="infinity">
-      <image file="../images/core/misc/infinity.png"/>
-    </sprite>
-  </section>
+      <sprite name="exitmenu">
+        <image file="../images/core/menu/exitmenu.png"/>
+      </sprite>
+      <sprite name="logo">
+        <image file="../images/core/misc/logo.png"/>
+      </sprite>
+      <sprite name="loading">
+        <image file="../images/core/misc/loading.png"/>
+      </sprite>
+      <sprite name="pingubw">
+        <image file="../images/core/misc/pingubw.png"/>
+      </sprite>
+      <sprite name="creditpingu">
+        <image file="../images/core/misc/creditpingu.png"/>
+      </sprite>
+      <sprite name="smallmap_entrance">
+        <image file="../images/core/misc/smallmap_entrance.png"/>
+      </sprite>
+      <sprite name="smallmap_exit">
+        <image file="../images/core/misc/smallmap_exit.png"/>
+      </sprite>
+      <sprite name="flag0">
+        <image file="../images/core/misc/flag0.png"/>
+      </sprite>
+      <sprite name="flag1">
+        <image file="../images/core/misc/flag1.png"/>
+      </sprite>
+      <sprite name="flag2">
+        <image file="../images/core/misc/flag2.png"/>
+      </sprite>
+      <sprite name="flag3">
+        <image file="../images/core/misc/flag3.png"/>
+      </sprite>
+      <sprite name="unplayable">
+        <image file="../images/core/misc/unplayable.png"/>
+      </sprite>
+      <sprite name="unplayable2">
+        <image file="../images/core/misc/unplayable2.png"/>
+      </sprite>
+      <sprite name="infinity">
+        <image file="../images/core/misc/infinity.png"/>
+      </sprite>
+    </section>
 
-  <section name="worldmap">
-    <sprite name="pingus">
-      <translation origin="bottom_center" x="0" y="2"/>
-      <image file="../images/core/worldmap/pingus.png">
-        <grid pos="0,0" size="24,24" array="8,2"/>
-      </image>
-    </sprite>
+    <section name="worldmap">
+      <section name="pingus">
+        <sprite name="left">
+          <animation speed="60" loop="no" />
+          <translation origin="bottom_center" x="0" y="2"/>
+          <image file="../images/core/worldmap/pingus.png">
+            <grid pos="0,0" size="24,24" array="8,1"/>
+          </image>
+        </sprite>
 
-    <sprite name="tube">
-      <image file="../images/core/worldmap/tube.png"/>
-    </sprite>
-    <sprite name="dot_invalid">
-      <translation origin="center"/>
-      <image file="../images/core/worldmap/dot_invalid.png"/>
-    </sprite>
-    <sprite name="dot_green">
-      <translation origin="center"/>
-      <image file="../images/core/worldmap/dot_green.png"/>
-    </sprite>
-    <sprite name="dot_red">
-      <translation origin="center"/>
-      <image file="../images/core/worldmap/dot_red.png"/>
-    </sprite>
-    <sprite name="dot_green_hl">
-      <translation origin="center"/>
-      <image file="../images/core/worldmap/dot_green_hl.png"/>
-    </sprite>
-    <sprite name="dot_red_hl">
-      <translation origin="center"/>
-      <image file="../images/core/worldmap/dot_red_hl.png"/>
-    </sprite>
-    <sprite name="dot_border">
-      <translation origin="center"/>
-      <image file="../images/core/worldmap/dot_border.png"/>
-    </sprite>
-    <sprite name="flaggreen">
-      <translation origin="center"/>
-      <image file="../images/core/worldmap/flaggreen.png"/>
-    </sprite>
-    <sprite name="arrow">
-      <translation origin="bottom_center"/>
-      <image file="../images/core/worldmap/arrow.png"/>
-    </sprite>
-    <sprite name="pingus_standing">
-      <translation origin="bottom_center"/>
-      <image file="../images/core/worldmap/pingus_standing.png">
-      </image>
-    </sprite>
-    <sprite name="levelname_bg">
-      <image file="../images/core/worldmap/levelname_bg.png"/>
-    </sprite>
-    <sprite name="enter_button_normal">
-      <image file="../images/core/worldmap/enter_button_normal.png"/>
-    </sprite>
-    <sprite name="enter_button_hover">
-      <image file="../images/core/worldmap/enter_button_hover.png"/>
-    </sprite>
-    <sprite name="enter_button_pressed">
-      <image file="../images/core/worldmap/enter_button_pressed.png"/>
-    </sprite>
-    <sprite name="leave_button_normal">
-      <image file="../images/core/worldmap/leave_button_normal.png"/>
-    </sprite>
-    <sprite name="leave_button_hover">
-      <image file="../images/core/worldmap/leave_button_hover.png"/>
-    </sprite>
-    <sprite name="leave_button_pressed">
-      <image file="../images/core/worldmap/leave_button_pressed.png"/>
-    </sprite>
-    <sprite name="story_button_normal">
-      <image file="../images/core/worldmap/story_button_normal.png"/>
-    </sprite>
-    <sprite name="story_button_hover">
-      <image file="../images/core/worldmap/story_button_hover.png"/>
-    </sprite>
-    <sprite name="story_button_pressed">
-      <image file="../images/core/worldmap/story_button_pressed.png"/>
-    </sprite>
-    <sprite name="credits_button_normal">
-      <image file="../images/core/worldmap/credits_button_normal.png"/>
-    </sprite>
-    <sprite name="credits_button_hover">
-      <image file="../images/core/worldmap/credits_button_hover.png"/>
-    </sprite>
-    <sprite name="credits_button_pressed">
-      <image file="../images/core/worldmap/credits_button_pressed.png"/>
-    </sprite>
+        <sprite name="right">
+          <animation speed="60" loop="no" />
+          <translation origin="bottom_center" x="0" y="2"/>
+          <image file="../images/core/worldmap/pingus.png">
+            <grid pos="0,24" size="24,24" array="8,1"/>
+          </image>
+        </sprite>
+      </section>
+
+      <sprite name="tube">
+        <image file="../images/core/worldmap/tube.png"/>
+      </sprite>
+      <sprite name="dot_invalid">
+        <translation origin="center"/>
+        <image file="../images/core/worldmap/dot_invalid.png"/>
+      </sprite>
+      <sprite name="dot_green">
+        <translation origin="center"/>
+        <image file="../images/core/worldmap/dot_green.png"/>
+      </sprite>
+      <sprite name="dot_red">
+        <translation origin="center"/>
+        <image file="../images/core/worldmap/dot_red.png"/>
+      </sprite>
+      <sprite name="dot_green_hl">
+        <translation origin="center"/>
+        <image file="../images/core/worldmap/dot_green_hl.png"/>
+      </sprite>
+      <sprite name="dot_red_hl">
+        <translation origin="center"/>
+        <image file="../images/core/worldmap/dot_red_hl.png"/>
+      </sprite>
+      <sprite name="dot_border">
+        <translation origin="center"/>
+        <image file="../images/core/worldmap/dot_border.png"/>
+      </sprite>
+      <sprite name="flaggreen">
+        <translation origin="center"/>
+        <image file="../images/core/worldmap/flaggreen.png"/>
+      </sprite>
+      <sprite name="arrow">
+        <translation origin="bottom_center"/>
+        <image file="../images/core/worldmap/arrow.png"/>
+      </sprite>
+      <sprite name="pingus_standing">
+        <translation origin="bottom_center"/>
+        <image file="../images/core/worldmap/pingus_standing.png">
+        </image>
+      </sprite>
+      <sprite name="levelname_bg">
+        <image file="../images/core/worldmap/levelname_bg.png"/>
+      </sprite>
+      <sprite name="enter_button_normal">
+        <image file="../images/core/worldmap/enter_button_normal.png"/>
+      </sprite>
+      <sprite name="enter_button_hover">
+        <image file="../images/core/worldmap/enter_button_hover.png"/>
+      </sprite>
+      <sprite name="enter_button_pressed">
+        <image file="../images/core/worldmap/enter_button_pressed.png"/>
+      </sprite>
+      <sprite name="leave_button_normal">
+        <image file="../images/core/worldmap/leave_button_normal.png"/>
+      </sprite>
+      <sprite name="leave_button_hover">
+        <image file="../images/core/worldmap/leave_button_hover.png"/>
+      </sprite>
+      <sprite name="leave_button_pressed">
+        <image file="../images/core/worldmap/leave_button_pressed.png"/>
+      </sprite>
+      <sprite name="story_button_normal">
+        <image file="../images/core/worldmap/story_button_normal.png"/>
+      </sprite>
+      <sprite name="story_button_hover">
+        <image file="../images/core/worldmap/story_button_hover.png"/>
+      </sprite>
+      <sprite name="story_button_pressed">
+        <image file="../images/core/worldmap/story_button_pressed.png"/>
+      </sprite>
+      <sprite name="credits_button_normal">
+        <image file="../images/core/worldmap/credits_button_normal.png"/>
+      </sprite>
+      <sprite name="credits_button_hover">
+        <image file="../images/core/worldmap/credits_button_hover.png"/>
+      </sprite>
+      <sprite name="credits_button_pressed">
+        <image file="../images/core/worldmap/credits_button_pressed.png"/>
+      </sprite>
+    </section>
   </section>
 </resources>

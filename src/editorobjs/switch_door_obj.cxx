@@ -21,7 +21,7 @@
 #include "../debug.hxx"
 #include "switch_door_obj.hxx"
 #include "../editor/editor_view.hxx"
-#include "../pingus_resource.hxx"
+#include "../resource.hxx"
 #include "../worldobjsdata/switch_door_data.hxx"
 
 namespace Pingus {
@@ -29,10 +29,10 @@ namespace EditorObjs {
 
 SwitchDoorObj::SwitchDoorObj (const WorldObjsData::SwitchDoorData& data_)
   : data(new WorldObjsData::SwitchDoorData(data_)),
-    door_box      (PingusResource::load_sprite("switchdoor_box"      , "worldobjs")),
-    door_tile     (PingusResource::load_sprite("switchdoor_tile"     , "worldobjs")),
-    door_tile_cmap(PingusResource::load_pixelbuffer("switchdoor_tile_cmap", "worldobjs")),
-    switch_sur    (PingusResource::load_sprite("switchdoor_switch"   , "worldobjs"))
+    door_box      (Resource::load_sprite("switchdoor_box"      , "worldobjs")),
+    door_tile     (Resource::load_sprite("switchdoor_tile"     , "worldobjs")),
+    door_tile_cmap(Resource::load_pixelbuffer("switchdoor_tile_cmap", "worldobjs")),
+    switch_sur    (Resource::load_sprite("switchdoor_switch"   , "worldobjs"))
 {
 }
 

@@ -22,7 +22,8 @@
 #include "../gui/graphic_context.hxx"
 #include "dot.hxx"
 #include "../math.hxx"
-#include "../pingus_resource.hxx"
+#include "../direction.hxx"
+#include "../resource.hxx"
 #include "pingus.hxx"
 
 namespace Pingus {
@@ -31,10 +32,12 @@ namespace WorldMapNS {
 Pingus::Pingus (PathGraph* arg_path)
   : Drawable("pingus"),
     path(arg_path),
-    sprite (PingusResource::load_sprite("worldmap/pingus", "core")),
-    sprite_standing (PingusResource::load_sprite("worldmap/pingus_standing", "core")),
-    arrow (PingusResource::load_sprite("worldmap/arrow", "core"))
+    sprite_standing (Resource::load_sprite("worldmap/pingus_standing", "core")),
+    arrow (Resource::load_sprite("worldmap/arrow", "core"))
 {
+  sprite.load(Direction::LEFT,  Resource::load_sprite("worldmap/pingus/left",  "core"));
+  sprite.load(Direction::RIGHT, Resource::load_sprite("worldmap/pingus/right", "core"));
+
   final_target_node = NoNode;
   current_node = NoNode;
 
@@ -55,26 +58,31 @@ Pingus::draw (GraphicContext& gc)
       gc.draw(arrow, path->get_dot(final_target_node)->get_pos());
     }
 
-#ifdef CLANLIB_0_6
-  // FIXME: Replace the sprite and add up/down here
-  float direction = get_direction();
-
-  if (direction >= 0 && direction < 180)
-    sprite.set_direction(Sprite::RIGHT);
-  else
-    sprite.set_direction(Sprite::LEFT);
-#endif
-
   if (!is_walking())
-    gc.draw(sprite_standing, pos);
+    {
+      gc.draw(sprite_standing, pos);
+    }
   else
-    gc.draw(sprite, pos);
+    {
+      // FIXME: Replace the sprite and add up/down here
+      float direction = get_direction();
+      
+      if (direction >= 0 && direction < 180)
+        gc.draw(sprite(Direction::RIGHT), pos);
+      else
+        gc.draw(sprite(Direction::LEFT), pos);
+    }
 }
 
 void
 Pingus::update (float delta)
 {
-  sprite.update (delta);
+  float direction = get_direction();
+  if (direction >= 0 && direction < 180)
+    sprite(Direction::RIGHT).update(delta);
+  else
+    sprite(Direction::LEFT).update(delta);
+  
   if (is_walking())
     update_walk(delta);
 }

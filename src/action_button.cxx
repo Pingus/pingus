@@ -21,7 +21,7 @@
 
 #include "globals.hxx"
 #include "cheat.hxx"
-#include "pingus_resource.hxx"
+#include "resource.hxx"
 #include "action_button.hxx"
 #include "true_server.hxx"
 #include "world.hxx"
@@ -86,8 +86,8 @@ ActionButton::get_action_name()
 VerticalActionButton::VerticalActionButton(ActionHolder* h,
                                            int x, int y, ActionName name_, int owner_id)
   : ActionButton(h),
-    background (PingusResource::load_sprite("buttons/buttonbackground", "core")),
-    backgroundhl (PingusResource::load_sprite("buttons/buttonbackgroundhl", "core"))
+    background (Resource::load_sprite("buttons/buttonbackground", "core")),
+    backgroundhl (Resource::load_sprite("buttons/buttonbackgroundhl", "core"))
 {
   init(x, y, name_, owner_id);
 }
@@ -172,8 +172,8 @@ ArmageddonButton::ArmageddonButton (TrueServer* s, int x, int y)
   : server (s),
     x_pos (x),
     y_pos (y),
-    background  (PingusResource::load_sprite("buttons/hbuttonbgb", "core")),
-    backgroundhl(PingusResource::load_sprite("buttons/hbuttonbg", "core"))
+    background  (Resource::load_sprite("buttons/hbuttonbgb", "core")),
+    backgroundhl(Resource::load_sprite("buttons/hbuttonbg", "core"))
 {
   pressed      = false;
   sprite       = Sprite("buttons/armageddon_anim", "core");
@@ -251,10 +251,10 @@ ArmageddonButton::on_primary_button_click (int x, int y)
 ForwardButton::ForwardButton (TrueServer* s, int x, int y)
   : server (s),
     x_pos (x), y_pos (y),
-    background  (PingusResource::load_sprite("buttons/hbuttonbgb", "core")),
-    backgroundhl(PingusResource::load_sprite("buttons/hbuttonbg", "core"))
+    background  (Resource::load_sprite("buttons/hbuttonbgb", "core")),
+    backgroundhl(Resource::load_sprite("buttons/hbuttonbg", "core"))
 {
-  surface = PingusResource::load_sprite("buttons/fast_forward", "core");
+  surface = Resource::load_sprite("buttons/fast_forward", "core");
 }
 
 ForwardButton::~ForwardButton () {}
@@ -300,10 +300,10 @@ ForwardButton::on_primary_button_click (int x, int y)
 PauseButton::PauseButton (TrueServer* s, int x, int y)
   : server (s),
     x_pos(x), y_pos(y),
-    background  (PingusResource::load_sprite("buttons/hbuttonbgb", "core")),
-    backgroundhl(PingusResource::load_sprite("buttons/hbuttonbg", "core"))
+    background  (Resource::load_sprite("buttons/hbuttonbgb", "core")),
+    backgroundhl(Resource::load_sprite("buttons/hbuttonbg", "core"))
 {
-  surface = PingusResource::load_sprite("buttons/pause", "core");
+  surface = Resource::load_sprite("buttons/pause", "core");
 }
 
 PauseButton::~PauseButton () {}

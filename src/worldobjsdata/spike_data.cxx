@@ -24,7 +24,7 @@
 #include "../xml_file_reader.hxx"
 #include "../editorobjs/spike_obj.hxx"
 #include "../worldobjs/spike.hxx"
-#include "../pingus_resource.hxx"
+#include "../resource.hxx"
 #include "../editor/editorobj_mgr.hxx"
 
 namespace Pingus {
@@ -36,7 +36,7 @@ SpikeData::SpikeData ()
 }
 
 SpikeData::SpikeData (xmlDocPtr doc, xmlNodePtr cur)
-  : surface(PingusResource::load_sprite("Traps/spike", "traps"))
+  : surface(Resource::load_sprite("Traps/spike", "traps"))
 {
   XMLFileReader reader(doc, cur);
   reader.read_vector("position", pos);

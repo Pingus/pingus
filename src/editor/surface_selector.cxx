@@ -23,7 +23,7 @@
 #include <ClanLib/Display/mouse.h>
 #include "../gui/display.hxx"
 #include "../fonts.hxx"
-#include "../pingus_resource.hxx"
+#include "../resource.hxx"
 #include "surface_selector.hxx"
 
 namespace Pingus {
@@ -134,7 +134,7 @@ SurfaceSelector::draw ()
       if (!c_obj->large_sur)
 	{
 	  std::cout << "Loading: " << c_obj->name << " " << c_obj->datafile << std::endl;
-	  c_obj->large_sur = PingusResource::load_surface (c_obj->name, c_obj->datafile);
+	  c_obj->large_sur = Resource::load_surface (c_obj->name, c_obj->datafile);
 	}
 
       CL_Display::fill_rect(0, CL_Display::get_height() - c_obj->large_sur.get_height(),

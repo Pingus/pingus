@@ -18,13 +18,13 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #if 0
 #include "../globals.hxx"
-#include "../pingus_resource.hxx"
+#include "../resource.hxx"
 #include "ground_particle.hxx"
 
 GroundParticle::GroundParticle (int x, int y, float x_a, float y_a)
   : Particle (x,y, x_a, y_a)
 {
-  surface = PingusResource::load_sprite("particles/ground");
+  surface = Resource::load_sprite("particles/ground");
   livetime = 25 + (rand() % 10);
   time = livetime;
 }

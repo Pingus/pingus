@@ -25,7 +25,7 @@
 #include "../pingu.hxx"
 #include "../pingu_enums.hxx"
 #include "../pingu_map.hxx"
-#include "../pingus_resource.hxx"
+#include "../resource.hxx"
 #include "../string_converter.hxx"
 #include "../world.hxx"
 #include "../particles/pingu_particle_holder.hxx"
@@ -47,14 +47,14 @@ Bomber::Bomber (Pingu* p)
     gfx_exploded(false),
     colmap_exploded(false),
     sprite("pingus/bomber", "pingus", 17.0f, Sprite::NONE, Sprite::ONCE),
-    explo_surf(PingusResource::load_sprite("other/explo"))
+    explo_surf(Resource::load_sprite("other/explo"))
 {
   // Only load the surface again if no static_surface is available
   if (!static_surface_loaded)
     {
       static_surface_loaded = true;
-      bomber_radius     = PingusResource::load_pixelbuffer("other/bomber_radius");
-      bomber_radius_gfx = PingusResource::load_pixelbuffer("other/bomber_radius_gfx");
+      bomber_radius     = Resource::load_pixelbuffer("other/bomber_radius");
+      bomber_radius_gfx = Resource::load_pixelbuffer("other/bomber_radius_gfx");
     }
   sprite.set_align_center_bottom();
 }

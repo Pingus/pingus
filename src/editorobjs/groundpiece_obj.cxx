@@ -19,7 +19,7 @@
 
 #include <stdio.h>
 #include "../worldobjsdata/groundpiece_data.hxx"
-#include "../pingus_resource.hxx"
+#include "../resource.hxx"
 #include "../editor/property_window.hxx"
 #include "../editor/generic_property_frame.hxx"
 #include "../editor/editor.hxx"
@@ -73,7 +73,7 @@ GroundpieceObj::vertical_flip ()
 {
 #ifdef CLANLIB_0_6
   data->desc.modifier  = ResourceModifierNS::vertical_flip(data->desc.modifier);
-  sprite.get_surface() = PingusResource::load_surface(data->desc);
+  sprite.get_surface() = Resource::load_surface(data->desc);
 #endif
 }
 
@@ -82,7 +82,7 @@ GroundpieceObj::horizontal_flip ()
 {
 #ifdef CLANLIB_0_6
   data->desc.modifier = ResourceModifierNS::horizontal_flip(data->desc.modifier);
-  sprite.get_surface() = PingusResource::load_surface(data->desc);
+  sprite.get_surface() = Resource::load_surface(data->desc);
 #endif
 }
 
@@ -94,7 +94,7 @@ GroundpieceObj::rotate_90 ()
   data->pos.y += sprite.get_height()/2;
 
   data->desc.modifier = ResourceModifierNS::rotate_90(data->desc.modifier);
-  sprite.get_surface() = PingusResource::load_surface(data->desc);
+  sprite.get_surface() = Resource::load_surface(data->desc);
 
   data->pos.x -= sprite.get_width ()/2;
   data->pos.y -= sprite.get_height()/2;
@@ -109,7 +109,7 @@ GroundpieceObj::rotate_270 ()
   data->pos.y += sprite.get_height()/2;
 
   data->desc.modifier = ResourceModifierNS::rotate_270(data->desc.modifier);
-  sprite.get_surface() = PingusResource::load_surface(data->desc);
+  sprite.get_surface() = Resource::load_surface(data->desc);
 
   data->pos.x -= sprite.get_width ()/2;
   data->pos.y -= sprite.get_height()/2;

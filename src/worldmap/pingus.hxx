@@ -21,7 +21,7 @@
 #define HEADER_PINGUS_WORLDMAP_PINGUS_HXX
 
 #include <math.h>
-#include "../sprite.hxx"
+#include "../state_sprite.hxx"
 #include "drawable.hxx"
 #include "path_graph.hxx"
 
@@ -34,7 +34,7 @@ class Pingus : public Drawable
 {
 private:
   PathGraph* path;
-  CL_Sprite sprite;
+  StateSprite sprite;
   CL_Sprite sprite_standing;
   CL_Sprite arrow;
 

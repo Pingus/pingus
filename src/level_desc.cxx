@@ -21,7 +21,7 @@
 #include <ClanLib/Display/display.h>
 #include <ClanLib/Display/font.h>
 #include "gui/display.hxx"
-#include "pingus_resource.hxx"
+#include "resource.hxx"
 #include "level_desc.hxx"
 #include "fonts.hxx"
 #include "system.hxx"
@@ -34,7 +34,7 @@ PingusLevelDesc::PingusLevelDesc(PLF* arg_plf)
 {
   plf = arg_plf;
 
-  background = PingusResource::load_surface("Textures/stone", "textures");
+  background = Resource::load_surface("Textures/stone", "textures");
   font       = Fonts::pingus_small;
   title      = Fonts::pingus_large;
 

@@ -23,7 +23,7 @@
 #include "../gui/graphic_context.hxx"
 #include "../world.hxx"
 #include "../timer.hxx"
-#include "../pingus_resource.hxx"
+#include "../resource.hxx"
 #include "../globals.hxx"
 #include "../blitter.hxx"
 #include "../worldobjsdata/surface_background_data.hxx"
@@ -43,7 +43,7 @@ SurfaceBackground::SurfaceBackground (const WorldObjsData::SurfaceBackgroundData
   if (data->color.alpha > 1.0)
     std::cout << "Background: Warning dim larger than 1.0 are no longer supported" << std::endl;
 
-  CL_PixelBuffer canvas = PingusResource::load_pixelbuffer(data->desc);
+  CL_PixelBuffer canvas = Resource::load_pixelbuffer(data->desc);
 
   // Scaling Code
   if (data->stretch_x && data->stretch_y)

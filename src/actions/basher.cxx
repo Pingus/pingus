@@ -22,7 +22,7 @@
 #include "../globals.hxx"
 #include "../gui/graphic_context.hxx"
 #include "../pingu_map.hxx"
-#include "../pingus_resource.hxx"
+#include "../resource.hxx"
 #include "../pingu.hxx"
 #include "../world.hxx"
 #include "basher.hxx"
@@ -32,13 +32,13 @@ namespace Actions {
 
 Basher::Basher (Pingu* p)
   : PinguAction(p),
-    bash_radius(PingusResource::load_pixelbuffer("other/bash_radius")),
-    bash_radius_gfx(PingusResource::load_pixelbuffer("other/bash_radius_gfx")),
+    bash_radius(Resource::load_pixelbuffer("other/bash_radius")),
+    bash_radius_gfx(Resource::load_pixelbuffer("other/bash_radius_gfx")),
     basher_c(0),
     first_bash(true)
 {
-  sprite.load(Direction::LEFT,  PingusResource::load_sprite("pingus/basher"));
-  sprite.load(Direction::RIGHT, PingusResource::load_sprite("pingus/basher"));
+  sprite.load(Direction::LEFT,  Resource::load_sprite("pingus/basher"));
+  sprite.load(Direction::RIGHT, Resource::load_sprite("pingus/basher"));
 
   bash_radius_width     = bash_radius.get_width();
   bash_radius_gfx_width = bash_radius_gfx.get_width();

@@ -25,7 +25,7 @@
 
 #include "../globals.hxx"
 #include "../gui/display.hxx"
-#include "../pingus_resource.hxx"
+#include "../resource.hxx"
 #include "../system.hxx"
 #include "../sound/sound.hxx"
 #include "editor_event.hxx"
@@ -88,7 +88,7 @@ Editor::Editor () : event_handler_ref_counter(0),
   status_line     = new StatusLine;
   object_selector = new ObjectSelector;
 
-  // FIXME: Should use PingusResource, Memleak
+  // FIXME: Should use Resource, Memleak
   CL_ResourceManager* gui_resources = new CL_ResourceManager(path_manager.complete("GUIStyleSilver/gui.xml"), false);
 
   style_manager = new CL_StyleManager_Silver(gui_resources);
@@ -356,7 +356,7 @@ Editor::zoom_mode ()
 
   tool = ZOOM_TOOL;
 
-  CL_Sprite mouse_cursor = PingusResource::load_sprite("editor/region-zoom", "core");
+  CL_Sprite mouse_cursor = Resource::load_sprite("editor/region-zoom", "core");
 
   while (true)
     {

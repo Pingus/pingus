@@ -1,5 +1,5 @@
 <resources>
-  <section name="Game">
+  <section name="game">
     <sprite name="loading">
       <image file="../images/core/misc/loading.png"/>
     </sprite>

@@ -21,7 +21,7 @@
 
 #include "../xml_file_reader.hxx"
 #include "../xml_helper.hxx"
-#include "../pingus_resource.hxx"
+#include "../resource.hxx"
 #include "../gui/graphic_context.hxx"
 #include "manager.hxx"
 #include "worldmap.hxx"
@@ -42,7 +42,7 @@ SurfaceDrawable::SurfaceDrawable(xmlDocPtr doc, xmlNodePtr cur)
   reader.read_vector ("position", pos);
   reader.read_bool ("auto-uncover", auto_uncover);
 
-  surface = PingusResource::load_sprite(desc);
+  surface = Resource::load_sprite(desc);
 }
 
 void

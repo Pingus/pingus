@@ -22,7 +22,7 @@
 #include "../gui/graphic_context.hxx"
 #include "../pingu_map.hxx"
 #include "../world.hxx"
-#include "../pingus_resource.hxx"
+#include "../resource.hxx"
 #include "../sound/sound.hxx"
 #include "../string_converter.hxx"
 #include "../pingu.hxx"
@@ -33,8 +33,8 @@ namespace Actions {
 
 Digger::Digger (Pingu* p)
   : PinguAction(p),
-    digger_radius(PingusResource::load_pixelbuffer("other/digger_radius")),
-    digger_radius_gfx(PingusResource::load_pixelbuffer("other/digger_radius")),
+    digger_radius(Resource::load_pixelbuffer("other/digger_radius")),
+    digger_radius_gfx(Resource::load_pixelbuffer("other/digger_radius")),
     sprite("pingus/digger"),
     digger_c(0)
 {

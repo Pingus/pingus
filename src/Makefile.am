@@ -211,8 +211,8 @@ pingus_menu.cxx \
 pingus_menu.hxx \
 pingus_menu_manager.cxx \
 pingus_menu_manager.hxx \
-pingus_resource.cxx \
-pingus_resource.hxx \
+resource.cxx \
+resource.hxx \
 pingus_sub_menu.cxx \
 pingus_sub_menu.hxx \
 playfield.cxx \

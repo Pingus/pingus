@@ -23,7 +23,7 @@
 #include "../gui/graphic_context.hxx"
 #include "../pingu.hxx"
 #include "../pingu_holder.hxx"
-#include "../pingus_resource.hxx"
+#include "../resource.hxx"
 #include "../world.hxx"
 #include "../worldobjsdata/bumper_data.hxx"
 #include "bumper.hxx"
@@ -73,7 +73,7 @@ Bumper::on_startup ()
 {
   std::cout << "Drawing colmap entry" << std::endl;
 
-  CL_PixelBuffer prov = PingusResource::load_pixelbuffer("Traps/bumper_cmap", "traps");
+  CL_PixelBuffer prov = Resource::load_pixelbuffer("Traps/bumper_cmap", "traps");
   world->get_colmap()->put(prov, static_cast<int>(data->pos.x), static_cast<int>(data->pos.y), Groundtype::GP_SOLID);
 }
 

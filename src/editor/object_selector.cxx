@@ -25,7 +25,7 @@
 #include "../loading.hxx"
 #include "../gettext.h"
 #include "../path_manager.hxx"
-#include "../pingus_resource.hxx"
+#include "../resource.hxx"
 #include "../string_converter.hxx"
 #include "../system.hxx"
 #include "object_manager.hxx"
@@ -156,7 +156,7 @@ ObjectSelector::get_groundpiece (const Groundtype::GPType& gptype)
 
   if (!str.empty())
     {
-      data.desc = ResDescriptor(str, datafile, ResDescriptor::RD_RESOURCE);
+      data.desc = ResDescriptor(str, datafile);
       data.gptype = gptype;
 
       obj_mgr->add(new EditorObjs::GroundpieceObj(data));
@@ -172,7 +172,7 @@ ObjectSelector::get_hotspot (const std::string& filename)
 
   if (!str.empty())
     {
-      data.desc = ResDescriptor(str, filename, ResDescriptor::RD_RESOURCE);
+      data.desc = ResDescriptor(str, filename);
       data.speed = -1;
     }
 
@@ -317,7 +317,7 @@ ObjectSelector::get_exit ()
   if (str.empty())
     return;
 
-  data.desc = ResDescriptor(str, "exits", ResDescriptor::RD_RESOURCE);
+  data.desc = ResDescriptor(str, "exits");
 
   data.insert_EditorObjs (obj_mgr);
 }
@@ -331,7 +331,7 @@ ObjectSelector::get_liquid ()
   data.pos = pos;
   data.old_width_handling = false;
   data.width = 5;
-  data.desc = ResDescriptor("Liquid/slime", "liquids", ResDescriptor::RD_RESOURCE);
+  data.desc = ResDescriptor("liquids/slime");
 
   data.insert_EditorObjs (obj_mgr);
 }
@@ -339,6 +339,7 @@ ObjectSelector::get_liquid ()
 void
 ObjectSelector::get_from_file ()
 {
+  assert(!"get_from_file(): Not supported at the moment");
   CL_Display::clear();
   font.draw(20, 20, _("What object type do you want?"));
   font.draw(20, 50, _("h - Hotspot"));
@@ -371,7 +372,7 @@ ObjectSelector::get_from_file ()
 	    data.pos = pos;
 	    // FIXME: Ugly hack, since ClanLib appends './'
 	    data.desc = ResDescriptor ("../../../../../../../../../../../" + file,
-				       "", ResDescriptor::RD_FILE);
+				       "");
             data.insert_EditorObjs(obj_mgr);
 	    return;
 	  }
@@ -610,7 +611,7 @@ ObjectSelector::select_surface (const std::string & resource_file)
 {
   std::string str;
   bool datafile_loaded;
-  CL_ResourceManager res = PingusResource::get(resource_file);
+  CL_ResourceManager res = Resource::get(resource_file);
   GroundpieceData data;
 
   datafile_loaded = data_loaded[resource_file];
@@ -667,7 +668,7 @@ std::string
 ObjectSelector::read_string (const std::string & description, const std::string & def_str)
 {
   StringReader reader(description, def_str);
-  reader.set_strings(PingusResource::get("global").get_resources_of_type("surface"));
+  reader.set_strings(Resource::get("global").get_resources_of_type("surface"));
   return reader.read_string();
 }
 

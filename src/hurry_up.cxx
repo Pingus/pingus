@@ -20,7 +20,7 @@
 #include <ClanLib/Core/System/system.h>
 #include <ClanLib/Display/display.h>
 #include <ClanLib/Display/font.h>
-#include "pingus_resource.hxx"
+#include "resource.hxx"
 #include "hurry_up.hxx"
 #include "fonts.hxx"
 

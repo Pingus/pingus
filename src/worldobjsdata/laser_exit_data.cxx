@@ -25,7 +25,7 @@
 #include "../editorobjs/laser_exit_obj.hxx"
 #include "../worldobjs/laser_exit.hxx"
 #include "../editor/editorobj_mgr.hxx"
-#include "../pingus_resource.hxx"
+#include "../resource.hxx"
 
 namespace Pingus {
 namespace WorldObjsData {
@@ -35,7 +35,7 @@ LaserExitData::LaserExitData ()
 }
 
 LaserExitData::LaserExitData (xmlDocPtr doc, xmlNodePtr cur) 
-  : surface(PingusResource::load_sprite("Traps/laser_exit", "traps"))
+  : surface(Resource::load_sprite("Traps/laser_exit", "traps"))
 {
   XMLFileReader reader(doc, cur);
   reader.read_vector("position", pos);

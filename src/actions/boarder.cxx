@@ -20,7 +20,7 @@
 #include "../vector.hxx"
 #include "../gui/graphic_context.hxx"
 #include "../pingu.hxx"
-#include "../pingus_resource.hxx"
+#include "../resource.hxx"
 #include "../string_converter.hxx"
 #include "boarder.hxx"
 
@@ -30,20 +30,16 @@ namespace Actions {
 Boarder::Boarder (Pingu* p)
   : PinguAction(p),
     x_pos(pingu->get_x()),
-    speed(0.0),
-    sprite("pingus/boarder")
+    speed(0.0)
 {
-  sprite.set_align_center_bottom();
+  sprite.load(Direction::LEFT,  Resource::load_sprite("pingus/boarder/left"));
+  sprite.load(Direction::RIGHT, Resource::load_sprite("pingus/boarder/right"));
 }
 
 void
 Boarder::update ()
 {
-  if (pingu->direction.is_left())
-    sprite.set_direction(Sprite::LEFT);
-  else
-    sprite.set_direction(Sprite::RIGHT);
-  sprite.update();
+  sprite(pingu->direction).update();
 
   if (on_ground())
     {
@@ -83,7 +79,7 @@ Boarder::update ()
 void
 Boarder::draw (GraphicContext& gc)
 {
-  gc.draw(sprite, pingu->get_pos ());
+  gc.draw(sprite(pingu->direction), pingu->get_pos ());
 }
 
 bool

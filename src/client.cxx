@@ -22,7 +22,7 @@
 #include "globals.hxx"
 #include "playfield.hxx"
 #include "timer.hxx"
-#include "pingus_resource.hxx"
+#include "resource.hxx"
 #include "sound/sound.hxx"
 #include "time_display.hxx"
 #include "pingus_counter.hxx"

@@ -23,7 +23,7 @@
 #include <ClanLib/Display/display.h>
 #include <ClanLib/Display/font.h>
 #include "../globals.hxx"
-#include "../pingus_resource.hxx"
+#include "../resource.hxx"
 #include "../fonts.hxx"
 #include "panel_icons.hxx"
 
@@ -34,8 +34,8 @@ Editor* PanelIcon::editor;
 
 PanelIcon::PanelIcon()
 {
-  button = PingusResource::load_sprite("editor/button","core");
-  button_pressed = PingusResource::load_sprite("editor/button_pressed", "core");
+  button = Resource::load_sprite("editor/button","core");
+  button_pressed = Resource::load_sprite("editor/button_pressed", "core");
   font = Fonts::courier_small;
 }
 
@@ -88,7 +88,7 @@ PanelIcon:: on_click()
 Panel::Panel()
 {
   is_init = false;
-  logo = PingusResource::load_sprite("editor/logo", "core");
+  logo = Resource::load_sprite("editor/logo", "core");
 }
 
 Panel::~Panel()

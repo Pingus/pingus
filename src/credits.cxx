@@ -22,7 +22,7 @@
 #include <ClanLib/Display/font.h>
 #include "gui/screen_manager.hxx"
 #include "sound/sound.hxx"
-#include "pingus_resource.hxx"
+#include "resource.hxx"
 #include "credits.hxx"
 #include "fonts.hxx"
 #include "gettext.h"
@@ -34,8 +34,8 @@ Credits* Credits::instance_ = 0;
 Credits::Credits()
 {
   fast_scrolling = false;
-  background = PingusResource::load_surface("menu/startscreenbg", "core");
-  pingu = PingusResource::load_surface("misc/creditpingu", "core");
+  background = Resource::load_surface("menu/startscreenbg", "core");
+  pingu = Resource::load_surface("misc/creditpingu", "core");
 
   font       = Fonts::chalk_normal;
   font_small = Fonts::chalk_large;

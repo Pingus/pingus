@@ -22,7 +22,7 @@
 #include "globals.hxx"
 #include "debug.hxx"
 #include "sound/sound.hxx"
-#include "pingus_resource.hxx"
+#include "resource.hxx"
 #include "pingus_menu_manager.hxx"
 #include "credits.hxx"
 #include "editor/editor.hxx"
@@ -184,11 +184,11 @@ CreditButton::CreditButton (PingusMenu* menu_)
   line1 = _("Credits");
   //line1["de"] = "Credits";
 
-  surface_p = PingusResource::load_sprite("menu/credits_on", "core");
-  //  surface   = PingusResource::load_sprite("NewButtons/credits_off", "menu");
+  surface_p = Resource::load_sprite("menu/credits_on", "core");
+  //  surface   = Resource::load_sprite("NewButtons/credits_off", "menu");
 
-  //surface   = PingusResource::load_sprite("Buttons/play", "menu");
-  //surface_p = PingusResource::load_sprite("Buttons/play_p", "menu");
+  //surface   = Resource::load_sprite("Buttons/play", "menu");
+  //surface_p = Resource::load_sprite("Buttons/play_p", "menu");
 }
 
 CreditButton::~CreditButton ()
@@ -219,11 +219,11 @@ OptionsButton::OptionsButton (PingusMenu* menu_)
   line1 = _("Options");
   //line1["de"] = "Einstellungen";
 
-  //  surface   = PingusResource::load_sprite("NewButtons/options_off", "menu");
-  surface_p = PingusResource::load_sprite("menu/options_on", "core");
+  //  surface   = Resource::load_sprite("NewButtons/options_off", "menu");
+  surface_p = Resource::load_sprite("menu/options_on", "core");
 
-  // surface   = PingusResource::load_sprite("Buttons/options", "menu");
-  // surface_p = PingusResource::load_sprite("Buttons/options_p", "menu");
+  // surface   = Resource::load_sprite("Buttons/options", "menu");
+  // surface_p = Resource::load_sprite("Buttons/options_p", "menu");
 }
 
 OptionsButton::~OptionsButton ()
@@ -255,11 +255,11 @@ QuitButton::QuitButton(PingusMenu* m)
   line1 = _("Exit");
   //line1["de"] = "Ausgang";
 
-  // surface   = PingusResource::load_sprite("Buttons/quit", "menu");
-  // surface_p = PingusResource::load_sprite("Buttons/quit_p", "menu");
+  // surface   = Resource::load_sprite("Buttons/quit", "menu");
+  // surface_p = Resource::load_sprite("Buttons/quit_p", "menu");
 
-  //  surface   = PingusResource::load_sprite("NewButtons/exit_off", "menu");
-  surface_p = PingusResource::load_sprite("menu/exit_on", "core");
+  //  surface   = Resource::load_sprite("NewButtons/exit_off", "menu");
+  surface_p = Resource::load_sprite("menu/exit_on", "core");
 }
 
 QuitButton::~QuitButton()
@@ -279,8 +279,8 @@ LoadButton::LoadButton()
   x_pos = CL_Display::get_width() * 400 / 800;
   y_pos = CL_Display::get_height() * 500 / 600;
 
-  //surface   = PingusResource::load_sprite("menu/load", "core");
-  surface_p = PingusResource::load_sprite("menu/load_p", "core");
+  //surface   = Resource::load_sprite("menu/load", "core");
+  surface_p = Resource::load_sprite("menu/load_p", "core");
 }
 
 LoadButton::~LoadButton()
@@ -312,10 +312,10 @@ EditorButton::EditorButton (PingusMenu* menu_)
   //line1["de"] = "Level";
   //line2["de"] = "Editor";
 
-  // surface   = PingusResource::load_sprite("Buttons/editor", "menu");
-  // surface_p = PingusResource::load_sprite("Buttons/editor_p", "menu");
+  // surface   = Resource::load_sprite("Buttons/editor", "menu");
+  // surface_p = Resource::load_sprite("Buttons/editor_p", "menu");
 
-  surface_p = PingusResource::load_sprite("menu/create_on", "core");
+  surface_p = Resource::load_sprite("menu/create_on", "core");
 }
 
 EditorButton::~EditorButton ()
@@ -343,7 +343,7 @@ StoryButton::StoryButton (PingusMenu* menu_)
 
   desc = _("..:: Start the game ::..");
   line1 = _("Start");
-  surface_p = PingusResource::load_sprite("menu/play_on", "core");
+  surface_p = Resource::load_sprite("menu/play_on", "core");
 }
 
 StoryButton::~StoryButton () {}
@@ -375,7 +375,7 @@ ThemeButton::ThemeButton (PingusMenu* menu_)
   desc = _("..:: Start a contrib level ::..");
 
   line1 = _("Contrib");
-  surface_p = PingusResource::load_sprite("menu/play_on", "core");
+  surface_p = Resource::load_sprite("menu/play_on", "core");
 }
 
 void
@@ -400,7 +400,7 @@ MultiplayerButton::MultiplayerButton (PingusMenu* menu_)
 
   line1 = _("Multi");
 
-  surface_p = PingusResource::load_sprite("menu/multi_on", "core");
+  surface_p = Resource::load_sprite("menu/multi_on", "core");
 }
 
 MultiplayerButton::~MultiplayerButton ()

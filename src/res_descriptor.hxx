@@ -28,11 +28,6 @@ namespace Pingus {
 class ResDescriptor
 {
 public:
-  enum ResourceType { RD_RESOURCE, RD_FILE, RD_AUTO };
-
-  /// Where to get the data from?
-  ResourceType type;
-
   /// The name of the resource (.dat) file
   std::string datafile;
 
@@ -42,16 +37,11 @@ public:
   ResourceModifierNS::ResourceModifier modifier;
 
   ResDescriptor ();
-  ResDescriptor (const ResDescriptor& old);
-  ResDescriptor& operator= (const ResDescriptor&);
-
-  ResDescriptor (const std::string& res_name, const std::string& datafile,
-		 ResourceType type = RD_RESOURCE,
-		 ResourceModifierNS::ResourceModifier modifier
-		 = ResourceModifierNS::ROT0);
+  ResDescriptor (const std::string& res_name, 
+                 const std::string& datafile = "",
+		 ResourceModifierNS::ResourceModifier modifier = ResourceModifierNS::ROT0);
 
   bool operator< (const ResDescriptor&) const;
-
 };
 
 } // namespace Pingus

@@ -19,7 +19,7 @@
 
 #include <ClanLib/Display/display.h>
 #include <ClanLib/Display/font.h>
-#include "pingus_resource.hxx"
+#include "resource.hxx"
 #include "gui/display.hxx"
 #include "fonts.hxx"
 #include "loading.hxx"
@@ -40,7 +40,7 @@ Loading::~Loading()
 void
 Loading::init()
 {
-  sur  = PingusResource::load_surface("Game/loading", "game");
+  sur  = Resource::load_surface("Game/loading", "game");
   font = Fonts::courier_small;
   is_init = true;
 }

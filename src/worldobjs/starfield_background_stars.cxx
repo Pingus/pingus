@@ -19,7 +19,7 @@
 
 #include "../gui/graphic_context.hxx"
 #include "../world.hxx"
-#include "../pingus_resource.hxx"
+#include "../resource.hxx"
 #include "starfield_background_stars.hxx"
 
 namespace Pingus {
@@ -30,13 +30,13 @@ StarfieldBackgroundStars::StarfieldBackgroundStars (Type type)
   switch (type)
     {
     case SMALL_STAR:
-      sur = PingusResource::load_sprite("Stars/small_star" , "game");
+      sur = Resource::load_sprite("Stars/small_star" , "game");
       break;
     case MIDDLE_STAR:
-      sur = PingusResource::load_sprite("Stars/middle_star", "game");
+      sur = Resource::load_sprite("Stars/middle_star", "game");
       break;
     case LARGE_STAR:
-      sur = PingusResource::load_sprite("Stars/large_star" , "game");
+      sur = Resource::load_sprite("Stars/large_star" , "game");
       break;
     }
 

@@ -17,7 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "../../pingus_resource.hxx"
+#include "../../resource.hxx"
 #include "../../worldobjsdata/entrance_data.hxx"
 #include "cloud.hxx"
 
@@ -30,7 +30,7 @@ Cloud::Cloud (const WorldObjsData::EntranceData& data_)
 {
   data->pos.z = 100;
 
-  surface = PingusResource::load_sprite("Entrances/cloud","entrances");
+  surface = Resource::load_sprite("Entrances/cloud","entrances");
 }
 
 void

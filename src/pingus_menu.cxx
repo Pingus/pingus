@@ -20,7 +20,7 @@
 #include <ClanLib/Display/display.h>
 #include <config.h>
 #include "menu_button.hxx"
-#include "pingus_resource.hxx"
+#include "resource.hxx"
 #include "debug.hxx"
 #include "pingus_menu_manager.hxx"
 #include "gui/gui_manager.hxx"
@@ -42,7 +42,7 @@ PingusMenu::preload ()
       //event_enabled = true;
       is_init = true;
 
-      background = PingusResource::load_sprite("misc/logo", "core");
+      background = Resource::load_sprite("misc/logo", "core");
 
       //gui_manager->add(new OptionsButton(this));
       /*if (game_finished)

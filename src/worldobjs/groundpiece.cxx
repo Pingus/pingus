@@ -21,7 +21,7 @@
 #include "../world.hxx"
 #include "../pingu_map.hxx"
 #include "../col_map.hxx"
-#include "../pingus_resource.hxx"
+#include "../resource.hxx"
 #include "../worldobjsdata/groundpiece_data.hxx"
 #include "groundpiece.hxx"
 
@@ -30,7 +30,7 @@ namespace WorldObjs {
 
 Groundpiece::Groundpiece (const WorldObjsData::GroundpieceData& data_)
   : data(new WorldObjsData::GroundpieceData(data_)),
-    surface (PingusResource::load_sprite(data->desc))
+    surface (Resource::load_sprite(data->desc))
 {
   // FIXME: we don't need to load surfaces here, providers would be
   // FIXME: enough and should be faster
@@ -44,7 +44,7 @@ Groundpiece::~Groundpiece ()
 void
 Groundpiece::on_startup ()
 {
-  CL_PixelBuffer surface = PingusResource::load_pixelbuffer(data->desc);
+  CL_PixelBuffer surface = Resource::load_pixelbuffer(data->desc);
 
   // FIXME: overdrawing of bridges and similar things aren't handled
   // FIXME: here

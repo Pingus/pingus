@@ -27,7 +27,7 @@ namespace Actions {
 Teleported::Teleported(Pingu* p)
   : PinguAction(p),
     sound_played(false),
-    sprite("pingus/bomber0", "pingus")
+    sprite("pingus/bomber")
 {
 }
 

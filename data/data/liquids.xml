@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <resources>
-  <section name="Liquid">
+  <section name="liquids">
     <sprite name="water_cmap">
       <image file="../images/liquids/water_cmap.png"/>
     </sprite>

@@ -22,7 +22,7 @@
 //#include "../particles/explosive_particle.hxx"
 #include "../world.hxx"
 #include "../string_converter.hxx"
-#include "../pingus_resource.hxx"
+#include "../resource.hxx"
 #include "../pingu.hxx"
 #include "../worldobj.hxx"
 #include "rocket_launcher.hxx"

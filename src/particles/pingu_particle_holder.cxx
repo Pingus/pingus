@@ -20,7 +20,7 @@
 #include "../gui/graphic_context.hxx"
 #include "../math.hxx"
 #include "../col_map.hxx"
-#include "../pingus_resource.hxx"
+#include "../resource.hxx"
 #include "../world.hxx"
 #include "pingu_particle_holder.hxx"
 
@@ -40,7 +40,7 @@ PinguParticleHolder::PinguParticle::PinguParticle (int x, int y)
 
 
 PinguParticleHolder::PinguParticleHolder ()
-  : surface(PingusResource::load_sprite("particles/pingu_explo"))
+  : surface(Resource::load_sprite("particles/pingu_explo"))
 {
 }
 

@@ -21,7 +21,7 @@
 #include <vector>
 #include <ClanLib/Display/surface.h>
 #include "gettext.h"
-#include "pingus_resource.hxx"
+#include "resource.hxx"
 #include "gui/gui_manager.hxx"
 #include "gui/surface_button.hxx"
 #include "gui/screen_manager.hxx"
@@ -71,9 +71,9 @@ private:
 public:
   StoryScreenContinueButton(StoryScreenComponent* arg_story_comp)
     : GUI::SurfaceButton(CL_Display::get_width()/2 + 220, CL_Display::get_height()/2 + 160,
-                         ResDescriptor("misc/next", "core", ResDescriptor::RD_RESOURCE),
-                         ResDescriptor("misc/next", "core", ResDescriptor::RD_RESOURCE),
-                         ResDescriptor("misc/next_hover", "core", ResDescriptor::RD_RESOURCE)),
+                         ResDescriptor("misc/next", "core"),
+                         ResDescriptor("misc/next", "core"),
+                         ResDescriptor("misc/next_hover", "core")),
       story_comp(arg_story_comp)
   {
   }
@@ -115,8 +115,8 @@ StoryScreenComponent::StoryScreenComponent (const Story& arg_story)
   time_passed  = 0;
 
   current_page = story.pages.back();
-  page_surface = PingusResource::load_surface(current_page.image);
-  background   = PingusResource::load_surface("menu/startscreenbg", "core");
+  page_surface = Resource::load_surface(current_page.image);
+  background   = Resource::load_surface("menu/startscreenbg", "core");
 }
 
 void
@@ -187,7 +187,7 @@ StoryScreenComponent::next_text()
       if (!story.pages.empty())
         {
           current_page = story.pages.back();
-          page_surface = PingusResource::load_surface(current_page.image);
+          page_surface = Resource::load_surface(current_page.image);
           display_text = "";
           time_passed = 0;
           page_displayed_completly = false;

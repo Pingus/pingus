@@ -20,7 +20,7 @@
 #include "../vector.hxx"
 #include "../gui/graphic_context.hxx"
 #include "../pingu.hxx"
-#include "../pingus_resource.hxx"
+#include "../resource.hxx"
 #include "waiter.hxx"
 
 namespace Pingus {

@@ -64,7 +64,7 @@
 #include "fonts.hxx"
 #include "xml_helper.hxx"
 #include "pingus_menu_manager.hxx"
-#include "pingus_resource.hxx"
+#include "resource.hxx"
 #include "pingu_action_factory.hxx"
 #include "credits.hxx"
 #include "sound/sound.hxx"
@@ -1012,12 +1012,12 @@ PingusMain::init_pingus()
   SavegameManager::instance();
   StatManager::init();
 
+  Resource::init();
   Fonts::init();
   Story::init();
   ScreenManager::init();
   PingusMenuManager::init();
   Sound::PingusSound::init();
-  PingusResource::init();
   XMLhelper::init();
   PinguActionFactory::init();
   Editor::init();
@@ -1037,14 +1037,14 @@ PingusMain::deinit_pingus()
   Editor::deinit();
   PinguActionFactory::deinit();
   XMLhelper::deinit();
-  Fonts::deinit();
-  PingusResource::deinit();
   Sound::PingusSound::deinit();
   PingusMenuManager::deinit();
   PLFResMgr::free_plf_map();
   WorldObjDataFactory::deinit();
   WorldMapNS::WorldMapManager::deinit();
   ScreenManager::deinit();
+  Fonts::deinit();
+  Resource::deinit();
   StatManager::deinit();
   SavegameManager::deinit();
   xmlCleanupParser();

@@ -121,8 +121,8 @@ SmallMapImage::create_surface (Server * server, int width, int height)
      class reordering this is no longer working, a generic
      WorldObj::draw_smallmap (SmallMap* / CL_Canvas*) should help
      here. */
-  CL_Surface entrance_sur = PingusResource::load_surface("misc/smallmap_entrance", "core");
-  CL_Surface exit_sur     = PingusResource::load_surface("misc/smallmap_exit", "core");
+  CL_Surface entrance_sur = Resource::load_surface("misc/smallmap_entrance", "core");
+  CL_Surface exit_sur     = Resource::load_surface("misc/smallmap_exit", "core");
 
   PLF* plf = world->get_plf();
 

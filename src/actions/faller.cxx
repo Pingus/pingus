@@ -25,7 +25,7 @@
 #include "../gui/graphic_context.hxx"
 #include "../movers/linear_mover.hxx"
 #include "../pingu.hxx"
-#include "../pingus_resource.hxx"
+#include "../resource.hxx"
 #include "../string_converter.hxx"
 #include "../world.hxx"
 #include "../worldobj.hxx"
@@ -37,11 +37,11 @@ namespace Actions {
 Faller::Faller (Pingu* p)
   : PinguAction(p)
 {
-  faller.load(Direction::LEFT,  PingusResource::load_sprite("pingus/faller/left"));
-  faller.load(Direction::RIGHT, PingusResource::load_sprite("pingus/faller/right"));
+  faller.load(Direction::LEFT,  Resource::load_sprite("pingus/faller/left"));
+  faller.load(Direction::RIGHT, Resource::load_sprite("pingus/faller/right"));
 
-  tumbler.load(Direction::LEFT,  PingusResource::load_sprite("pingus/tumbler/left"));
-  tumbler.load(Direction::RIGHT, PingusResource::load_sprite("pingus/tumbler/right"));
+  tumbler.load(Direction::LEFT,  Resource::load_sprite("pingus/tumbler/left"));
+  tumbler.load(Direction::RIGHT, Resource::load_sprite("pingus/tumbler/right"));
 }
 
 Faller::~Faller () { }

@@ -19,7 +19,7 @@
 
 #include "../gui/graphic_context.hxx"
 #include "../pingu.hxx"
-#include "../pingus_resource.hxx"
+#include "../resource.hxx"
 #include "../string_converter.hxx"
 #include "superman.hxx"
 
@@ -30,7 +30,7 @@ Superman::Superman (Pingu* p)
   : PinguAction(p),
     counter(0.0f),
     x_pos(pingu->get_x()),
-    sprite("pingus/superman", "pingus")
+    sprite("pingus/superman")
 {
   sprite.set_align_center_bottom();
 }

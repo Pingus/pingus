@@ -22,7 +22,7 @@
 #include "../editor/editor_view.hxx"
 #include "../editor/generic_property_frame.hxx"
 #include "../editor/property_window.hxx"
-#include "../pingus_resource.hxx"
+#include "../resource.hxx"
 #include "../worldobjsdata/conveyor_belt_data.hxx"
 #include "conveyor_belt_obj.hxx"
 
@@ -31,9 +31,9 @@ namespace EditorObjs {
 
 ConveyorBeltObj::ConveyorBeltObj (const WorldObjsData::ConveyorBeltData& data_)
   : data(new WorldObjsData::ConveyorBeltData(data_)),
-    left_sur  (PingusResource::load_sprite("conveyorbelt_left",   "worldobjs")),
-    right_sur (PingusResource::load_sprite("conveyorbelt_right",  "worldobjs")),
-    middle_sur(PingusResource::load_sprite("conveyorbelt_middle", "worldobjs"))
+    left_sur  (Resource::load_sprite("conveyorbelt_left",   "worldobjs")),
+    right_sur (Resource::load_sprite("conveyorbelt_right",  "worldobjs")),
+    middle_sur(Resource::load_sprite("conveyorbelt_middle", "worldobjs"))
 {
 }
 

@@ -22,7 +22,7 @@
 #include "../col_map.hxx"
 #include "../gui/graphic_context.hxx"
 #include "../pingu_map.hxx"
-#include "../pingus_resource.hxx"
+#include "../resource.hxx"
 #include "../world.hxx"
 #include "snow_particle_holder.hxx"
 
@@ -58,12 +58,12 @@ SnowParticleHolder::SnowParticle::SnowParticle (int x, int y, bool colliding_)
 
 
 SnowParticleHolder::SnowParticleHolder ()
-  : snow1 (PingusResource::load_sprite("particles/snow1")),
-    snow2 (PingusResource::load_sprite("particles/snow2")),
-    snow3 (PingusResource::load_sprite("particles/snow3")),
-    snow4 (PingusResource::load_sprite("particles/snow4")),
-    snow5 (PingusResource::load_sprite("particles/snow5")),
-    ground(PingusResource::load_sprite("particles/ground_snow"))
+  : snow1 (Resource::load_sprite("particles/snow1")),
+    snow2 (Resource::load_sprite("particles/snow2")),
+    snow3 (Resource::load_sprite("particles/snow3")),
+    snow4 (Resource::load_sprite("particles/snow4")),
+    snow5 (Resource::load_sprite("particles/snow5")),
+    ground(Resource::load_sprite("particles/ground_snow"))
 {
 }
 

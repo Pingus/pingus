@@ -22,7 +22,7 @@
 #include "../col_map.hxx"
 #include "../gui/graphic_context.hxx"
 #include "../pingu.hxx"
-#include "../pingus_resource.hxx"
+#include "../resource.hxx"
 #include "../string_converter.hxx"
 #include "../pingu_holder.hxx"
 #include "../world.hxx"
@@ -33,7 +33,7 @@ namespace Actions {
 
 Blocker::Blocker(Pingu* p)
   : PinguAction(p),
-    sprite(PingusResource::load_sprite("pingus/blocker")) // 6.0f)
+    sprite(Resource::load_sprite("pingus/blocker")) // 6.0f)
 {
   sprite.set_alignment(origin_bottom_center);
 

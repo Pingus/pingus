@@ -21,7 +21,7 @@
 #define HEADER_PINGUS_ACTIONS_BOARDER_HXX
 
 #include "../pingu_action.hxx"
-#include "../sprite.hxx"
+#include "../state_sprite.hxx"
 
 namespace Pingus {
 namespace Actions {
@@ -34,7 +34,7 @@ private:
   //double counter;
   double x_pos;
   double speed;
-  Sprite sprite;
+  StateSprite sprite;
 public:
   Boarder (Pingu* p);
 

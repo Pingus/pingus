@@ -24,7 +24,7 @@
 #include "../xml_file_reader.hxx"
 #include "../editorobjs/guillotine_obj.hxx"
 #include "../worldobjs/guillotine.hxx"
-#include "../pingus_resource.hxx"
+#include "../resource.hxx"
 #include "../editor/editorobj_mgr.hxx"
 
 namespace Pingus {
@@ -35,8 +35,8 @@ GuillotineData::GuillotineData ()
 }
 
 GuillotineData::GuillotineData (xmlDocPtr doc, xmlNodePtr cur)
-  : surface  (PingusResource::load_sprite("Traps/guillotinekill", "traps")),
-    idle_surf(PingusResource::load_sprite("Traps/guillotineidle", "traps"))
+  : surface  (Resource::load_sprite("Traps/guillotinekill", "traps")),
+    idle_surf(Resource::load_sprite("Traps/guillotineidle", "traps"))
 {
   if (cur->name)
     std::cout << reinterpret_cast<const char*>(cur->name) << std::endl;

@@ -74,12 +74,14 @@
 
     <section name="bomber">
       <sprite name="left">
+        <translation origin="bottom_center" x="0" y="2"/>
         <image file="../images/pingus/bomber.png">
           <grid pos="0,0" size="32,32" array="16,1"/>
         </image>
       </sprite>
 
       <sprite name="right">
+        <translation origin="bottom_center" x="0" y="2"/>
         <image file="../images/pingus/bomber.png">
           <grid pos="0,0" size="32,32" array="16,1"/>
         </image>
@@ -104,12 +106,14 @@
 
     <section name="climber">
       <sprite name="left">
+        <translation origin="bottom_center" x="0" y="2"/>
         <image file="../images/pingus/climber.png">
           <grid pos="0,0" size="32,32" array="8,1"/>
         </image>
       </sprite>
 
       <sprite name="right">
+        <translation origin="bottom_center" x="0" y="2"/>
         <image file="../images/pingus/climber.png">
           <grid pos="0,32" size="32,32" array="8,1"/>
         </image>
@@ -132,26 +136,30 @@
 
     <section name="jumper">
       <sprite name="left">
+        <translation origin="bottom_center" x="0" y="2"/>
         <image file="../images/pingus/faller.png">
           <grid pos="0,0" size="32,32" array="8,1"/>
         </image>
       </sprite>
 
       <sprite name="right">
+        <translation origin="bottom_center" x="0" y="2"/>
         <image file="../images/pingus/faller.png">
           <grid pos="0,0" size="32,32" array="8,1"/>
         </image>
       </sprite>
     </section>
 
-    <section name="tumble">
+    <section name="tumbler">
       <sprite name="left">
+        <translation origin="bottom_center" x="0" y="2"/>
         <image file="../images/pingus/tumble.png">
           <grid pos="0,0" size="32,32" array="8,1"/>
         </image>
       </sprite>
 
       <sprite name="right">
+        <translation origin="bottom_center" x="0" y="2"/>
         <image file="../images/pingus/tumble.png">
           <grid pos="0,0" size="32,32" array="8,1"/>
         </image>
@@ -160,12 +168,14 @@
 
     <section name="bridger">
       <sprite name="left">
+        <translation origin="bottom_center" x="0" y="2"/>
         <image file="../images/pingus/bridger.png">
           <grid pos="0,0" size="32,32" array="15,1"/>
         </image>
       </sprite>
 
-      <sprite name="left">
+      <sprite name="right">
+        <translation origin="bottom_center" x="0" y="2"/>
         <image file="../images/pingus/bridger.png">
           <grid pos="0,32" size="32,32" array="15,1"/>
         </image>
@@ -220,12 +230,14 @@
 
     <section name="blocker">
       <sprite name="left">
+        <translation origin="bottom_center" x="0" y="2"/>
         <image file="../images/pingus/blocker.png">
           <grid pos="0,0" size="32,32" array="6,1"/>
         </image>
       </sprite>
 
       <sprite name="right">
+        <translation origin="bottom_center" x="0" y="2"/>
         <image file="../images/pingus/blocker.png">
           <grid pos="0,0" size="32,32" array="6,1"/>
         </image>
@@ -234,12 +246,14 @@
     
     <section name="floater">
       <sprite name="left">
+        <translation origin="bottom_center" x="0" y="2"/>
         <image file="../images/pingus/floater.png">
           <grid pos="0,0" size="32,32" array="8,1"/>
         </image>
       </sprite>
       
       <sprite name="right">
+        <translation origin="bottom_center" x="0" y="2"/>
         <image file="../images/pingus/floater.png">
           <grid pos="0,0" size="32,32" array="8,1"/>
         </image>
@@ -248,12 +262,14 @@
 
     <section name="digger">
       <sprite name="left">
+        <translation origin="bottom_center" x="0" y="2"/>
         <image file="../images/pingus/digger.png">
           <grid pos="0,0" size="32,32" array="14,1"/>
         </image>
       </sprite>
 
       <sprite name="right">
+        <translation origin="bottom_center" x="0" y="2"/>
         <image file="../images/pingus/digger.png">
           <grid pos="0,0" size="32,32" array="14,1"/>
         </image>
@@ -262,12 +278,14 @@
 
     <section name="miner">
       <sprite name="left">
+        <translation origin="bottom_center" x="0" y="2"/>
         <image file="../images/pingus/miner.png">
           <grid pos="0,0" size="32,32" array="12,1"/>
         </image>
       </sprite>
 
       <sprite name="right">
+        <translation origin="bottom_center" x="0" y="2"/>
         <image file="../images/pingus/miner.png">
           <grid pos="0,32" size="32,32" array="12,1"/>
         </image>
@@ -349,12 +367,14 @@
     
     <section name="slider">
       <sprite name="left">
+        <translation origin="bottom_center" x="0" y="2"/>
         <image file="../images/pingus/slider.png">
           <grid pos="0,0" size="32,15" array="1,1"/>
         </image>
       </sprite>
 
       <sprite name="right">
+        <translation origin="bottom_center" x="0" y="2"/>
         <image file="../images/pingus/slider.png">
           <grid pos="0,15" size="32,15" array="1,1"/>
         </image>

@@ -24,7 +24,7 @@
 #include "../particles/smoke_particle_holder.hxx"
 #include "../pingu.hxx"
 #include "../pingu_holder.hxx"
-#include "../pingus_resource.hxx"
+#include "../resource.hxx"
 #include "../sound/sound.hxx"
 #include "../world.hxx"
 #include "../worldobjsdata/smasher_data.hxx"
@@ -113,7 +113,7 @@ void
 Smasher::on_startup ()
 {
   std::cout << "Drawing colmap entry" << std::endl;
-  CL_PixelBuffer buf = PingusResource::load_pixelbuffer("Traps/smasher_cmap", "traps");
+  CL_PixelBuffer buf = Resource::load_pixelbuffer("Traps/smasher_cmap", "traps");
   world->get_colmap()->put(buf, 
 			   static_cast<int>(data->pos.x),
 			   static_cast<int>(data->pos.y),

@@ -22,7 +22,7 @@
 #include "gui/display.hxx"
 #include "playfield.hxx"
 #include "world.hxx"
-#include "pingus_resource.hxx"
+#include "resource.hxx"
 #include "smallmap.hxx"
 #include "col_map.hxx"
 #include "true_server.hxx"
@@ -66,8 +66,8 @@ SmallMap::init()
   unsigned char  current_pixel;
   int tx, ty;
 
-  entrance_sur = PingusResource::load_sprite("misc/smallmap_entrance", "core");
-  exit_sur     = PingusResource::load_sprite("misc/smallmap_exit", "core");
+  entrance_sur = Resource::load_sprite("misc/smallmap_entrance", "core");
+  exit_sur     = Resource::load_sprite("misc/smallmap_exit", "core");
 
   ColMap* colmap = client->get_server()->get_world()->get_colmap();
   buffer = colmap->get_data();

@@ -29,7 +29,7 @@
 #include "../gui/graphic_context.hxx"
 #include "../gui/screen_manager.hxx"
 #include "../xml_helper.hxx"
-#include "../pingus_resource.hxx"
+#include "../resource.hxx"
 #include "../plf.hxx"
 #include "../path_manager.hxx"
 #include "../start_screen.hxx"
@@ -42,11 +42,11 @@ namespace WorldMapNS {
 
 LevelDot::LevelDot(xmlDocPtr doc, xmlNodePtr cur)
   : Dot(doc, XMLhelper::skip_blank(cur->children)),
-    green_dot_sur(PingusResource::load_sprite("worldmap/dot_green", "core")),
-    red_dot_sur(PingusResource::load_sprite("worldmap/dot_red", "core")),
-    unaccessible_dot_sur(PingusResource::load_sprite("worldmap/dot_invalid", "core")),
-    highlight_green_dot_sur(PingusResource::load_sprite("worldmap/dot_green_hl", "core")),
-    highlight_red_dot_sur(PingusResource::load_sprite("worldmap/dot_red_hl", "core")),
+    green_dot_sur(Resource::load_sprite("worldmap/dot_green", "core")),
+    red_dot_sur(Resource::load_sprite("worldmap/dot_red", "core")),
+    unaccessible_dot_sur(Resource::load_sprite("worldmap/dot_invalid", "core")),
+    highlight_green_dot_sur(Resource::load_sprite("worldmap/dot_green_hl", "core")),
+    highlight_red_dot_sur(Resource::load_sprite("worldmap/dot_red_hl", "core")),
     plf(0)
 {
   cur = cur->children;

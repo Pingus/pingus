@@ -21,7 +21,7 @@
 #include "../col_map.hxx"
 #include "../gui/graphic_context.hxx"
 #include "../world.hxx"
-#include "../pingus_resource.hxx"
+#include "../resource.hxx"
 #include "../sound/sound.hxx"
 #include "../pingu.hxx"
 #include "miner.hxx"
@@ -31,12 +31,12 @@ namespace Actions {
 
 Miner::Miner (Pingu* p)
   : PinguAction(p),
-    miner_radius(PingusResource::load_pixelbuffer("other/bash_radius")),
-    miner_radius_gfx(PingusResource::load_pixelbuffer("other/bash_radius_gfx")),
+    miner_radius(Resource::load_pixelbuffer("other/bash_radius")),
+    miner_radius_gfx(Resource::load_pixelbuffer("other/bash_radius_gfx")),
     slow_count(0)
 {
-  sprite.load(Direction::LEFT,  PingusResource::load_sprite("pingus/miner/left"));
-  sprite.load(Direction::RIGHT, PingusResource::load_sprite("pingus/miner/right"));
+  sprite.load(Direction::LEFT,  Resource::load_sprite("pingus/miner/left"));
+  sprite.load(Direction::RIGHT, Resource::load_sprite("pingus/miner/right"));
 
   miner_radius_width = miner_radius.get_width();
   miner_radius_gfx_width = miner_radius_gfx.get_width();

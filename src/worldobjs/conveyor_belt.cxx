@@ -21,7 +21,7 @@
 #include "../gui/graphic_context.hxx"
 #include "../pingu.hxx"
 #include "../pingu_holder.hxx"
-#include "../pingus_resource.hxx"
+#include "../resource.hxx"
 #include "../world.hxx"
 #include "../worldobjsdata/conveyor_belt_data.hxx"
 #include "conveyor_belt.hxx"
@@ -31,9 +31,9 @@ namespace WorldObjs {
 
 ConveyorBelt::ConveyorBelt (const WorldObjsData::ConveyorBeltData& data_)
   : data(new WorldObjsData::ConveyorBeltData(data_)),
-    left_sur  (PingusResource::load_sprite ("conveyorbelt_left",   "worldobjs")),
-    right_sur (PingusResource::load_sprite ("conveyorbelt_right",  "worldobjs")),
-    middle_sur(PingusResource::load_sprite ("conveyorbelt_middle", "worldobjs"))
+    left_sur  (Resource::load_sprite ("conveyorbelt_left",   "worldobjs")),
+    right_sur (Resource::load_sprite ("conveyorbelt_right",  "worldobjs")),
+    middle_sur(Resource::load_sprite ("conveyorbelt_middle", "worldobjs"))
 {
 }
 
@@ -56,7 +56,7 @@ ConveyorBelt::draw (GraphicContext& gc)
 void
 ConveyorBelt::on_startup ()
 {
-  CL_PixelBuffer sur(PingusResource::load_pixelbuffer("conveyorbelt_cmap", "worldobjs"));
+  CL_PixelBuffer sur(Resource::load_pixelbuffer("conveyorbelt_cmap", "worldobjs"));
 
   for (int i=0; i < (data->width + 2); ++i)
     world->get_colmap()->put(sur,

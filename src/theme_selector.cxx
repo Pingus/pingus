@@ -30,7 +30,7 @@
 #include "globals.hxx"
 #include "theme_selector.hxx"
 #include "pingus_error.hxx"
-#include "pingus_resource.hxx"
+#include "resource.hxx"
 #include "loading.hxx"
 #include "sound/sound.hxx"
 #include "path_manager.hxx"
@@ -211,9 +211,9 @@ ThemeSelector::ThemeSelector()
   title_font = Fonts::pingus_large;
   theme_font = Fonts::pingus_small;
 
-  left_arrow  = PingusResource::load_surface("Hotspots/left_arrow", "global");
-  right_arrow = PingusResource::load_surface("Hotspots/right_arrow", "global");
-  back        = PingusResource::load_surface("buttons/back", "core");
+  left_arrow  = Resource::load_surface("Hotspots/left_arrow", "global");
+  right_arrow = Resource::load_surface("Hotspots/right_arrow", "global");
+  back        = Resource::load_surface("buttons/back", "core");
 
   event = new ThemeSelector::Event;
   event->enabled = false;

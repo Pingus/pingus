@@ -17,7 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "pingus_resource.hxx"
+#include "resource.hxx"
 #include "fonts.hxx"
 
 namespace Pingus {
@@ -41,21 +41,20 @@ CL_Font lcd;
 void
 init ()
 {
-  chalk_large  = PingusResource::load_font("Fonts/chalk_large","fonts"); 
-  chalk_normal = PingusResource::load_font("Fonts/chalk_normal","fonts");
-  chalk_small  = PingusResource::load_font("Fonts/chalk_small","fonts");
+  chalk_large  = Resource::load_font("fonts/chalk_large"); 
+  chalk_normal = Resource::load_font("fonts/chalk_normal");
+  chalk_small  = Resource::load_font("fonts/chalk_small");
 
-  pingus_small = PingusResource::load_font("Fonts/pingus_small", "fonts");
-  pingus_small_fix_num = PingusResource::load_font("Fonts/pingus_small_fix_num", "fonts");
-  pingus_large = PingusResource::load_font("Fonts/pingus", "fonts");
+  pingus_small = Resource::load_font("fonts/pingus_small");
+  pingus_small_fix_num = Resource::load_font("fonts/pingus_small_fix_num");
+  pingus_large = Resource::load_font("fonts/pingus");
 
-  courier_small = PingusResource::load_font("Fonts/courier_small", "fonts");
-  xterm        = PingusResource::load_font("Fonts/courier_small", "fonts");
-  //PingusResource::load_font("Fonts/xterm","fonts");
-  smallfont    = PingusResource::load_font("Fonts/courier_small", "fonts"); //PingusResource::load_font("Fonts/smallfont","fonts");
-  smallfont_h  = PingusResource::load_font("Fonts/courier_small", "fonts"); // PingusResource::load_font("Fonts/smallfont_h","fonts");
+  courier_small = Resource::load_font("fonts/courier_small");
+  xterm        = Resource::load_font("fonts/courier_small");
+  smallfont    = Resource::load_font("fonts/courier_small"); //PingusResource::load_font("Fonts/smallfont","fonts");
+  smallfont_h  = Resource::load_font("fonts/courier_small"); // PingusResource::load_font("Fonts/smallfont_h","fonts");
 
-  lcd          = PingusResource::load_font("Fonts/courier_small", "fonts"); // PingusResource::load_font("Fonts/numbers", "fonts");
+  lcd          = Resource::load_font("fonts/courier_small"); // PingusResource::load_font("Fonts/numbers", "fonts");
 }
 
 void deinit () {}

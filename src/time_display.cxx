@@ -22,7 +22,7 @@
 #include <ClanLib/Display/display.h>
 #include <ClanLib/Display/font.h>
 #include "globals.hxx"
-#include "pingus_resource.hxx"
+#include "resource.hxx"
 #include "time_display.hxx"
 #include "world.hxx"
 #include "true_server.hxx"
@@ -36,7 +36,7 @@ namespace Pingus {
 
 TimeDisplay::TimeDisplay (Client* c)
   : server(c->get_server()),
-    infinity_symbol(PingusResource::load_sprite("misc/infinity", "core"))
+    infinity_symbol(Resource::load_sprite("misc/infinity", "core"))
 {
   font = Fonts::pingus_small_fix_num;
 }

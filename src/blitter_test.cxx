@@ -19,7 +19,7 @@
 
 #include <ClanLib/Core/System/system.h>
 #include <ClanLib/Display/surface.h>
-#include "pingus_resource.hxx"
+#include "resource.hxx"
 #include "timer.hxx"
 #include "blitter.hxx"
 #include "blitter_test.hxx"
@@ -32,8 +32,8 @@ public:
   BlitterTestImpl() {}
   void run() 
   {
-    //CL_Surface surf = PingusResource::load_surface("textures/stone", "textures");
-    CL_Surface surf = PingusResource::load_surface("textures/greentex", "textures");
+    //CL_Surface surf = Resource::load_surface("textures/stone", "textures");
+    CL_Surface surf = Resource::load_surface("textures/greentex", "textures");
 
     CL_PixelBuffer buf(256, 256, 256*4, CL_PixelFormat::rgba8888);
     CL_PixelBuffer data = surf.get_pixeldata();

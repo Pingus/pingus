@@ -20,7 +20,7 @@
 #include <ClanLib/Display/display.h>
 #include "gettext.h"
 #include "pingus_menu_manager.hxx"
-#include "pingus_resource.hxx"
+#include "resource.hxx"
 #include "gui/surface_button.hxx"
 #include "gui/gui_manager.hxx"
 #include "sound/sound.hxx"
@@ -119,7 +119,7 @@ ExitMenu::draw (GraphicContext& gc)
 void
 ExitMenu::preload ()
 {
-  sur = PingusResource::load_sprite("menu/exit_menu", "core");
+  sur = Resource::load_sprite("menu/exit_menu", "core");
 }
 
 } // namespace Pingus

@@ -26,7 +26,7 @@
 #include "../blitter.hxx"
 #include "../system.hxx"
 #include "../debug.hxx"
-#include "../pingus_resource.hxx"
+#include "../resource.hxx"
 #include "../math.hxx"
 #include "thumb_cache.hxx"
 
@@ -50,7 +50,7 @@ const unsigned int thumbcache_version = 3;
 CL_Surface
 ThumbCache::uncached_load (const std::string & res_ident, const std::string & datafile)
 {
-  CL_Surface sur = PingusResource::load_surface(res_ident, datafile);
+  CL_Surface sur = Resource::load_surface(res_ident, datafile);
 
   if (maintainer_mode)
     pout << "ThumbCache: Loading: " << res_ident << " (" << datafile << ")"  << std::endl;
@@ -91,7 +91,7 @@ ThumbCache::load (const std::string & res_ident, const std::string & datafile)
 
 	  unsigned int timestamp = in.read_uint32 ();
 	  // The thumbnail needs an update
-	  if (timestamp != PingusResource::get_mtime (res_ident, datafile))
+	  if (timestamp != Resource::get_mtime (res_ident, datafile))
 	    {
 	      std::cout << "Thumbnail: file needs update" << std::endl;
 	      return uncached_load (res_ident, datafile);
@@ -147,7 +147,7 @@ ThumbCache::cache (const CL_Surface& sur,
 
   filename = System::get_cachedir () + filename;
 
-  unsigned int timestamp = PingusResource::get_mtime (res_ident, datafile);
+  unsigned int timestamp = Resource::get_mtime (res_ident, datafile);
 
   if (maintainer_mode)
     pout << "ThumbCache: Writing cache file: " << filename

@@ -33,42 +33,17 @@ namespace Pingus {
 
 ResDescriptor::ResDescriptor()
 {
-  type = RD_RESOURCE;
   res_name = "";
   datafile = "global";
   modifier = ResourceModifierNS::ROT0;
 }
 
-ResDescriptor::ResDescriptor (const ResDescriptor& res_desc)
-                            : type(res_desc.type),
-			      datafile(res_desc.datafile),
-			      res_name(res_desc.res_name),
-			      modifier(res_desc.modifier)
-{
-}
-
-ResDescriptor&
-ResDescriptor::operator= (const ResDescriptor& old)
-{
-  if (this == &old)
-    return *this;
-
-  type     = old.type;
-  datafile = old.datafile;
-  res_name = old.res_name;
-  modifier = old.modifier;
-
-  return *this;
-}
-
 ResDescriptor::ResDescriptor(const std::string& arg_res_name,
 			     const std::string& arg_datafile,
-			     ResourceType arg_type,
 			     ResourceModifierNS::ResourceModifier arg_modifier)
 {
   res_name = arg_res_name;
   datafile = arg_datafile;
-  type     = arg_type;
   modifier = arg_modifier;
 }
 
@@ -96,14 +71,7 @@ ResDescriptor::operator<(const ResDescriptor& res_desc) const
 	  else if (modifier > res_desc.modifier)
 	    return false;
 	  else
-	    {
-	      if (type < res_desc.type)
-		return true;
-	      else if (type > res_desc.type)
-		return false;
-	      else
-		return false;
-	    }
+            return false;
 	}
     }
 }
@@ -114,23 +82,8 @@ std::ostream& operator<<(std::ostream& s, const Pingus::ResDescriptor& desc)
 {
   using namespace Pingus;
 
-  switch (desc.type)
-    {
-    case ResDescriptor::RD_RESOURCE:
-      return s << "[" << desc.res_name << ", " << desc.datafile
-               << ", " << ResourceModifierNS::rs_to_string(desc.modifier) << "]";
-      break;
-    case ResDescriptor::RD_FILE:
-      return s << "(plainfile:" << desc.res_name << ")";
-      break;
-    case ResDescriptor::RD_AUTO:
-      return s << "(auto)";
-      break;
-    default:
-      std::cout << "ResDescriptor: Unknown type: " << desc.type << std::endl;
-      assert (!"Unknown type");
-      return s;
-    }
+  return s << "[" << desc.res_name << ", " << desc.datafile
+           << ", " << ResourceModifierNS::rs_to_string(desc.modifier) << "]";
 }
 
 /* EOF */

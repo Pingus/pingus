@@ -22,7 +22,7 @@
 #include "../gui/graphic_context.hxx"
 #include "../pingu.hxx"
 #include "../pingu_map.hxx"
-#include "../pingus_resource.hxx"
+#include "../resource.hxx"
 #include "../sound/sound.hxx"
 #include "../string_converter.hxx"
 #include "../world.hxx"
@@ -49,9 +49,9 @@ Bridger::Bridger (Pingu* p)
 {
   if (!static_surfaces_loaded)
     {
-      static_surface = PingusResource::load_surface ("pingus/bridger");
-      brick_l = PingusResource::load_pixelbuffer("other/brick_left");
-      brick_r = PingusResource::load_pixelbuffer("other/brick_right");
+      static_surface = Resource::load_surface ("pingus/bridger");
+      brick_l = Resource::load_pixelbuffer("other/brick_left");
+      brick_r = Resource::load_pixelbuffer("other/brick_right");
       static_surfaces_loaded = true;
     }
 

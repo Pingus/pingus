@@ -24,7 +24,7 @@
 #include "../editorobjs/hammer_obj.hxx"
 #include "../worldobjs/hammer.hxx"
 #include "../editor/editorobj_mgr.hxx"
-#include "../pingus_resource.hxx"
+#include "../resource.hxx"
 
 namespace Pingus {
 namespace WorldObjsData {

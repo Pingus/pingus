@@ -20,7 +20,6 @@
 #ifndef HEADER_PINGUS_ACTIONS_ANGEL_HXX
 #define HEADER_PINGUS_ACTIONS_ANGEL_HXX
 
-#include "../sprite.hxx"
 #include "../pingu_action.hxx"
 
 namespace Pingus {
@@ -31,7 +30,7 @@ class Angel : public PinguAction
 private:
   double counter;
   double x_pos;
-  Sprite sprite;
+  CL_Sprite sprite;
 
 public:
   Angel (Pingu* p);

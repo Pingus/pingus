@@ -25,7 +25,7 @@
 #include <ClanLib/Display/keyboard.h>
 #include "path_manager.hxx"
 #include "system.hxx"
-#include "pingus_resource.hxx"
+#include "resource.hxx"
 #include "pingus_error.hxx"
 #include "plf_res_mgr.hxx"
 #include "game_session.hxx"
@@ -75,7 +75,7 @@ Theme::load (const std::string& filename)
   try
     {
       if (!plt.get_surface().empty ())
-	surface = PingusResource::load_surface(plt.get_surface(), "global");
+	surface = Resource::load_surface(plt.get_surface(), "global");
     }
 
   catch (CL_Error& err)
@@ -86,7 +86,7 @@ Theme::load (const std::string& filename)
   try
     {
       if (plt.get_background().desc.res_name != "-")
-	background = PingusResource::load_surface(plt.get_background().desc);
+	background = Resource::load_surface(plt.get_background().desc);
     }
   catch (CL_Error& err)
     {

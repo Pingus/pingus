@@ -30,7 +30,7 @@
 #include "system.hxx"
 #include "fonts.hxx"
 #include "plf.hxx"
-#include "pingus_resource.hxx"
+#include "resource.hxx"
 #include "start_screen.hxx"
 #include "game_time.hxx"
 #include "sound/sound.hxx"
@@ -63,9 +63,9 @@ public:
   StartScreenOkButton(StartScreen* p)
     : GUI::SurfaceButton(CL_Display::get_width()/2 + 225,
                          CL_Display::get_height()/2 + 125,
-                         ResDescriptor("start/ok", "core", ResDescriptor::RD_RESOURCE),
-                         ResDescriptor("start/ok_clicked", "core", ResDescriptor::RD_RESOURCE),
-                         ResDescriptor("start/ok_hover", "core", ResDescriptor::RD_RESOURCE)),
+                         ResDescriptor("start/ok", "core"),
+                         ResDescriptor("start/ok_clicked", "core"),
+                         ResDescriptor("start/ok_hover", "core")),
       parent(p)
   {
   }
@@ -99,9 +99,9 @@ public:
   StartScreenAbortButton(StartScreen* p)
     : GUI::SurfaceButton(CL_Display::get_width()/2 - 278,
                          CL_Display::get_height()/2 + 144,
-                         ResDescriptor("start/back", "core", ResDescriptor::RD_RESOURCE),
-                         ResDescriptor("start/back_clicked", "core", ResDescriptor::RD_RESOURCE),
-                         ResDescriptor("start/back_hover", "core", ResDescriptor::RD_RESOURCE)),
+                         ResDescriptor("start/back", "core"),
+                         ResDescriptor("start/back_clicked", "core"),
+                         ResDescriptor("start/back_hover", "core")),
       parent(p)
   {
   }

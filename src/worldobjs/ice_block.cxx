@@ -23,7 +23,7 @@
 #include "../pingu.hxx"
 #include "../pingu_holder.hxx"
 #include "../pingu_map.hxx"
-#include "../pingus_resource.hxx"
+#include "../resource.hxx"
 #include "../world.hxx"
 #include "../worldobjsdata/ice_block_data.hxx"
 #include "ice_block.hxx"
@@ -36,7 +36,7 @@ IceBlock::IceBlock (const WorldObjsData::IceBlockData& data_)
     thickness(1.0),
     is_finished(false),
     last_contact(0),
-    block_sur(PingusResource::load_sprite ("iceblock", "worldobjs"))
+    block_sur(Resource::load_sprite ("iceblock", "worldobjs"))
 {
 }
 
@@ -48,7 +48,7 @@ IceBlock::~IceBlock ()
 void
 IceBlock::on_startup ()
 {
-  CL_PixelBuffer surf(PingusResource::load_pixelbuffer("iceblock_cmap", "worldobjs"));
+  CL_PixelBuffer surf(Resource::load_pixelbuffer("iceblock_cmap", "worldobjs"));
 
   world->get_colmap()->put(surf,
                            static_cast<int>(data->pos.x),
@@ -94,7 +94,7 @@ IceBlock::update()
 	  is_finished = true;
 	  thickness = 0;
 
-	  CL_PixelBuffer surf(PingusResource::load_pixelbuffer("iceblock_cmap", "worldobjs"));
+	  CL_PixelBuffer surf(Resource::load_pixelbuffer("iceblock_cmap", "worldobjs"));
 	  world->get_colmap ()->remove(surf, static_cast<int>(data->pos.x), static_cast<int>(data->pos.y));
 	  world->get_gfx_map()->remove(surf, static_cast<int>(data->pos.x), static_cast<int>(data->pos.y));
 	  return;

@@ -25,7 +25,7 @@
 #include "../editorobjs/smasher_obj.hxx"
 #include "../worldobjs/smasher.hxx"
 #include "../editor/editorobj_mgr.hxx"
-#include "../pingus_resource.hxx"
+#include "../resource.hxx"
 
 namespace Pingus {
 namespace WorldObjsData {
@@ -35,7 +35,7 @@ SmasherData::SmasherData ()
 }
 
 SmasherData::SmasherData (xmlDocPtr doc, xmlNodePtr cur) 
-  : surface(PingusResource::load_sprite("Traps/smasher", "traps"))
+  : surface(Resource::load_sprite("Traps/smasher", "traps"))
 {
   XMLFileReader reader(doc, cur);
   reader.read_vector("position", pos);

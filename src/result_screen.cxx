@@ -24,7 +24,7 @@
 #include "gui/gui_manager.hxx"
 #include "gui/screen_manager.hxx"
 #include "res_descriptor.hxx"
-#include "pingus_resource.hxx"
+#include "resource.hxx"
 #include "fonts.hxx"
 #include "plf.hxx"
 #include "string_converter.hxx"
@@ -59,9 +59,9 @@ public:
   ResultScreenOkButton(ResultScreen* p)
     : GUI::SurfaceButton(CL_Display::get_width()/2 + 225,
                          CL_Display::get_height()/2 + 125,
-                         ResDescriptor("start/ok", "core", ResDescriptor::RD_RESOURCE),
-                         ResDescriptor("start/ok_clicked", "core", ResDescriptor::RD_RESOURCE),
-                         ResDescriptor("start/ok_hover", "core", ResDescriptor::RD_RESOURCE)),
+                         ResDescriptor("start/ok", "core"),
+                         ResDescriptor("start/ok_clicked", "core"),
+                         ResDescriptor("start/ok_hover", "core")),
       parent(p)
   {
   }
@@ -87,9 +87,9 @@ public:
   ResultScreenAbortButton(ResultScreen* p)
     : GUI::SurfaceButton(CL_Display::get_width()/2 - 278,
                          CL_Display::get_height()/2 + 144,
-                         ResDescriptor("start/back", "core", ResDescriptor::RD_RESOURCE),
-                         ResDescriptor("start/back_clicked", "core", ResDescriptor::RD_RESOURCE),
-                         ResDescriptor("start/back_hover", "core", ResDescriptor::RD_RESOURCE)),
+                         ResDescriptor("start/back", "core"),
+                         ResDescriptor("start/back_clicked", "core"),
+                         ResDescriptor("start/back_hover", "core")),
       parent(p)
   {
   }
@@ -120,9 +120,9 @@ public:
   ResultScreenRetryButton(ResultScreen* p)
     : GUI::SurfaceButton(CL_Display::get_width()/2 + 225,
                          CL_Display::get_height()/2 + 125,
-                         ResDescriptor("start/ok", "core", ResDescriptor::RD_RESOURCE),
-                         ResDescriptor("start/ok_clicked", "core", ResDescriptor::RD_RESOURCE),
-                         ResDescriptor("start/ok_hover", "core", ResDescriptor::RD_RESOURCE)),
+                         ResDescriptor("start/ok", "core"),
+                         ResDescriptor("start/ok_clicked", "core"),
+                         ResDescriptor("start/ok_hover", "core")),
       parent(p)
   {
   }
@@ -145,10 +145,10 @@ ResultScreenComponent::ResultScreenComponent(Result arg_result)
   background = Sprite("menu/startscreenbg", "core");
   background.set_align_center();
 
-  chalk_pingus.push_back(PingusResource::load_sprite("misc/chalk_pingu1", "core"));
-  chalk_pingus.push_back(PingusResource::load_sprite("misc/chalk_pingu2", "core"));
-  chalk_pingus.push_back(PingusResource::load_sprite("misc/chalk_pingu3", "core"));
-  chalk_pingus.push_back(PingusResource::load_sprite("misc/chalk_pingu4", "core"));
+  chalk_pingus.push_back(Resource::load_sprite("misc/chalk_pingu1", "core"));
+  chalk_pingus.push_back(Resource::load_sprite("misc/chalk_pingu2", "core"));
+  chalk_pingus.push_back(Resource::load_sprite("misc/chalk_pingu3", "core"));
+  chalk_pingus.push_back(Resource::load_sprite("misc/chalk_pingu4", "core"));
 
   if (result.max_time == -1)
     time_str = "-";
@@ -244,8 +244,8 @@ ResultScreenComponent::draw(GraphicContext& gc)
 ResultScreen::ResultScreen(Result arg_result)
   : result(arg_result)
 {
-  ResDescriptor ok_desc("result/ok", "core", ResDescriptor::RD_RESOURCE);
-  ResDescriptor cancel_desc("result/retry", "core", ResDescriptor::RD_RESOURCE);
+  ResDescriptor ok_desc("result/ok", "core");
+  ResDescriptor cancel_desc("result/retry", "core");
 
   ResultScreenComponent* comp = new ResultScreenComponent(result);
   gui_manager->add(comp);

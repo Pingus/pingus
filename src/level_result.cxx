@@ -24,7 +24,7 @@
 #include <ClanLib/Display/mouse.h>
 
 #include "gui/display.hxx"
-#include "pingus_resource.hxx"
+#include "resource.hxx"
 #include "level_result.hxx"
 #include "sound/sound.hxx"
 #include "world.hxx"
@@ -39,7 +39,7 @@ PingusLevelResult::PingusLevelResult(World* w, Controller* c)
 {
   font  = Fonts::pingus_small;
   title = Fonts::pingus_large;
-  background = PingusResource::load_surface("Textures/stone", "textures");
+  background = Resource::load_surface("Textures/stone", "textures");
   //result = r;
   world = w;
   controller = c;

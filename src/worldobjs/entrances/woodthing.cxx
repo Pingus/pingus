@@ -20,7 +20,7 @@
 #include "../../math.hxx"
 #include "../../gui/graphic_context.hxx"
 #include "../../particles/smoke_particle_holder.hxx"
-#include "../../pingus_resource.hxx"
+#include "../../resource.hxx"
 #include "../../world.hxx"
 #include "../../worldobjsdata/entrance_data.hxx"
 #include "woodthing.hxx"
@@ -32,8 +32,8 @@ namespace Entrances {
 WoodThing::WoodThing (const WorldObjsData::EntranceData& data_)
   : Entrance(data_)
 {
-  surface  = PingusResource::load_sprite("Entrances/woodthing_mov" , "entrances");
-  surface2 = PingusResource::load_sprite("Entrances/woodthing_nmov", "entrances");
+  surface  = Resource::load_sprite("Entrances/woodthing_mov" , "entrances");
+  surface2 = Resource::load_sprite("Entrances/woodthing_nmov", "entrances");
 
   counter.set_size(surface.get_frame_count());
   counter.set_type(GameCounter::once);

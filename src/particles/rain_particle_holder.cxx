@@ -21,7 +21,7 @@
 #include "../math.hxx"
 #include "../col_map.hxx"
 #include "../globals.hxx"
-#include "../pingus_resource.hxx"
+#include "../resource.hxx"
 #include "../world.hxx"
 #include "rain_particle_holder.hxx"
 
@@ -37,9 +37,9 @@ RainParticleHolder::RainParticle::RainParticle(int x, int y)
 
 
 RainParticleHolder::RainParticleHolder ()
-  : rain1_surf (PingusResource::load_sprite("particles/rain1")),
-    rain2_surf (PingusResource::load_sprite("particles/rain2")),
-    rain_splash(PingusResource::load_sprite("particles/rain_splash"))
+  : rain1_surf (Resource::load_sprite("particles/rain1")),
+    rain2_surf (Resource::load_sprite("particles/rain2")),
+    rain_splash(Resource::load_sprite("particles/rain_splash"))
 {
 }
 

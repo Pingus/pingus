@@ -21,7 +21,7 @@
 #include <ClanLib/Display/display.h>
 #include <ClanLib/Display/font.h>
 #include "gettext.h"
-#include "pingus_resource.hxx"
+#include "resource.hxx"
 #include "pingus_counter.hxx"
 #include "world.hxx"
 #include "pingu_holder.hxx"
@@ -34,7 +34,7 @@ namespace Pingus {
 
 PingusCounter::PingusCounter(Server* s)
   : server(s),
-    background(PingusResource::load_sprite("buttons/info","core"))
+    background(Resource::load_sprite("buttons/info","core"))
 {
   font = Fonts::pingus_small_fix_num;
 }

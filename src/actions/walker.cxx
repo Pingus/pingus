@@ -22,7 +22,7 @@
 #include "../gui/graphic_context.hxx"
 #include "../string_converter.hxx"
 #include "../pingu.hxx"
-#include "../pingus_resource.hxx"
+#include "../resource.hxx"
 #include "../debug.hxx"
 #include "walker.hxx"
 
@@ -32,11 +32,11 @@ namespace Actions {
 Walker::Walker (Pingu* p)
   : PinguAction(p)
 {
-  walker.load(Direction::LEFT,  PingusResource::load_sprite("pingus/walker/left", "pingus"));
-  walker.load(Direction::RIGHT, PingusResource::load_sprite("pingus/walker/right" , "pingus"));
+  walker.load(Direction::LEFT,  Resource::load_sprite("pingus/walker/left", "pingus"));
+  walker.load(Direction::RIGHT, Resource::load_sprite("pingus/walker/right" , "pingus"));
 
-  floaterlayer.load(Direction::LEFT,  PingusResource::load_sprite("pingus/floaterlayer/left",  "pingus"));
-  floaterlayer.load(Direction::RIGHT, PingusResource::load_sprite("pingus/floaterlayer/right", "pingus"));
+  floaterlayer.load(Direction::LEFT,  Resource::load_sprite("pingus/floaterlayer/left"));
+  floaterlayer.load(Direction::RIGHT, Resource::load_sprite("pingus/floaterlayer/right"));
 
   // Reset the velocity
   pingu->set_velocity(Vector());

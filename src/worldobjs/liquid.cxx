@@ -20,7 +20,7 @@
 #include <iostream>
 #include "../col_map.hxx"
 #include "../gui/graphic_context.hxx"
-#include "../pingus_resource.hxx"
+#include "../resource.hxx"
 #include "../world.hxx"
 #include "../worldobjsdata/liquid_data.hxx"
 #include "liquid.hxx"
@@ -30,7 +30,7 @@ namespace WorldObjs {
 
 Liquid::Liquid (const WorldObjsData::LiquidData& data_) :
   data(new WorldObjsData::LiquidData(data_)),
-  sur(PingusResource::load_sprite(data->desc))
+  sur(Resource::load_sprite(data->desc))
   //(data->speed == 0) ? 30 : 1000.0f/data->speed)
 {
   if (!data->old_width_handling)
@@ -51,7 +51,7 @@ Liquid::get_z_pos () const
 void
 Liquid::on_startup ()
 {
-  CL_PixelBuffer colmap_sur = PingusResource::load_pixelbuffer("Liquid/water_cmap", "global");
+  CL_PixelBuffer colmap_sur = Resource::load_pixelbuffer("Liquid/water_cmap", "global");
 
   for(int i=0; i < data->width; ++i)
     world->get_colmap()->put(colmap_sur,

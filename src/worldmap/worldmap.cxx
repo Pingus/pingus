@@ -26,7 +26,7 @@
 #include "../path_manager.hxx"
 #include "../stat_manager.hxx"
 #include "../system.hxx"
-#include "../pingus_resource.hxx"
+#include "../resource.hxx"
 #include "../globals.hxx"
 #include "../sound/sound.hxx"
 #include "../xml_helper.hxx"
@@ -106,7 +106,7 @@ WorldMap::WorldMap(const std::string& arg_filename)
 
   add_drawable(pingus);
 
-  levelname_bg = PingusResource::load_sprite("worldmap/levelname_bg", "core");
+  levelname_bg = Resource::load_sprite("worldmap/levelname_bg", "core");
   xmlFreeDoc(doc);
 }
 

@@ -20,7 +20,7 @@
 #include <assert.h>
 #include <iostream>
 #include "vector.hxx"
-#include "pingus_resource.hxx"
+#include "resource.hxx"
 #include "sprite.hxx"
 #include "math.hxx"
 #include "gui/graphic_context.hxx"
@@ -37,7 +37,7 @@ Sprite::Sprite (std::string arg_sprite_name,
 		float arg_frames_per_second,
 		Sprite::Direction dir,
 		LoopType arg_loop_type)
-  : sprite(PingusResource::load_sprite(arg_sprite_name, arg_datafile)),
+  : sprite(Resource::load_sprite(arg_sprite_name, arg_datafile)),
     frame (0.0f),
     frames_per_second (arg_frames_per_second),
     direction (dir),

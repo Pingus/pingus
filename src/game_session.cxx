@@ -24,7 +24,7 @@
 #include "game_session.hxx"
 #include "game_session_result.hxx"
 #include "timer.hxx"
-#include "pingus_resource.hxx"
+#include "resource.hxx"
 #include "plf.hxx"
 #include "pingu_holder.hxx"
 #include "world.hxx"

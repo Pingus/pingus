@@ -21,7 +21,7 @@
 #include "../pingu_map.hxx"
 #include "../world.hxx"
 #include "../particles/particle_holder.hxx"
-#include "../pingus_resource.hxx"
+#include "../resource.hxx"
 #include "explosive_particle.hxx"
 
 ExplosiveParticle::ExplosiveParticle (int x, int y, float x_a, float y_a)
@@ -71,7 +71,7 @@ void
 ExplosiveParticle::detonate ()
 {
   alive = false;
-  CL_PixelBuffer bomber_radius = PingusResource::load_surface_provider("Other/bomber_radius", "pingus");
+  CL_PixelBuffer bomber_radius = Resource::load_surface_provider("Other/bomber_radius", "pingus");
   WorldObj::get_world()->get_particle_holder ()->add_pingu_explo((int)pos.x, (int)pos.y);
 
   // FIXME: Ugly do handle the colmap and the gfx map seperatly

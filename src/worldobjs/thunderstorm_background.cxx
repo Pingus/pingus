@@ -17,7 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "../pingus_resource.hxx"
+#include "../resource.hxx"
 #include "../worldobjsdata/thunderstorm_background_data.hxx"
 #include "../gui/graphic_context.hxx"
 #include "thunderstorm_background.hxx"
@@ -27,7 +27,7 @@ namespace WorldObjs {
 
 ThunderstormBackground::ThunderstormBackground (const WorldObjsData::ThunderstormBackgroundData& data_)
   : data(new WorldObjsData::ThunderstormBackgroundData(data_)),
-    clouds_sur(PingusResource::load_sprite("Textures/thunderstorm", "textures")),
+    clouds_sur(Resource::load_sprite("Textures/thunderstorm", "textures")),
     x_pos(0)
 {
 }

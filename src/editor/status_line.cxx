@@ -22,7 +22,7 @@
 #include <ClanLib/Display/font.h>
 #include <ClanLib/Display/mouse.h>
 #include <ClanLib/Display/display.h>
-#include "../pingus_resource.hxx"
+#include "../resource.hxx"
 #include "../fonts.hxx"
 #include "editor_view.hxx"
 #include "status_line.hxx"

@@ -290,94 +290,43 @@ XMLhelper::parse_surface(xmlDocPtr doc, xmlNodePtr cur)
 	}
 
       std::string type;
-      if (get_prop(cur, "type", type))
-	{
-	  if (type == "file")
-	    {
-	      desc.type = ResDescriptor::RD_FILE;
-	      xmlNodePtr ccur = cur->children;
-	      desc.type = ResDescriptor::RD_RESOURCE;
-	      while (ccur)
-		{
-		  if (xmlIsBlankNode(cur))
-		    {
-		      cur = cur->next;
-		      continue;
-		    }
+      xmlNodePtr ccur = cur->children;
+      while (ccur)
+        {
+          if (xmlIsBlankNode(ccur))
+            {
+              ccur = ccur->next;
+              continue;
+            }
 
-		  if (XMLhelper::equal_str(ccur->name, "resource-file"))
-		    {
-		      if (node_list_get_string(doc, ccur->children, 1, desc.res_name))
-			{
-			  desc.type = ResDescriptor::RD_FILE;
-			}
-		    }
-		  else if (XMLhelper::equal_str(ccur->name, "modifier"))
-		    {
-		      std::string ident;
-		      if (node_list_get_string(doc, ccur->children, 1, ident))
-			{
-			  //std::cout << "Seen: modifier: " << ident << std::endl;
+          if (XMLhelper::equal_str(ccur->name, "resource-datafile"))
+            {
+              if (!node_list_get_string(doc, ccur->children, 1, desc.datafile))
+                std::cout << "XMLhelper: parse_surface() Empty" << std::endl;
+            }
+          else if (XMLhelper::equal_str(ccur->name, "resource-ident"))
+            {
+              node_list_get_string(doc, ccur->children, 1, desc.res_name);
+            }
+          else if (XMLhelper::equal_str(ccur->name, "modifier"))
+            {
+              //std::cout << "Modifier!!!!!" << std::endl;
+              std::string ident;
+              if (node_list_get_string(doc, ccur->children, 1, ident))
+                {
+                  //std::cout << "Seen: modifier: " << ident << std::endl;
 
-			  desc.modifier = ResourceModifierNS::rs_from_string(ident);
-			}
-		    }
-		  else
-		    {
-		      std::cout << "XMLhelper::parse_surface: "
-				<< ": unhandled: " << ccur->name << std::endl;
-		    }
-		  ccur = ccur->next;
-		}
-	    }
-	  else if (type == "datafile")
-	    {
-	      xmlNodePtr ccur = cur->children;
-	      desc.type = ResDescriptor::RD_RESOURCE;
-	      while (ccur)
-		{
-		  if (xmlIsBlankNode(ccur))
-		    {
-		      ccur = ccur->next;
-		      continue;
-		    }
-
-		  if (XMLhelper::equal_str(ccur->name, "resource-datafile"))
-		    {
-		      if (!node_list_get_string(doc, ccur->children, 1, desc.datafile))
- 		        std::cout << "XMLhelper: parse_surface() Empty" << std::endl;
-		    }
-		  else if (XMLhelper::equal_str(ccur->name, "resource-ident"))
-		    {
-		      node_list_get_string(doc, ccur->children, 1, desc.res_name);
-		    }
-		  else if (XMLhelper::equal_str(ccur->name, "modifier"))
-		    {
-		      //std::cout << "Modifier!!!!!" << std::endl;
-		      std::string ident;
-		      if (node_list_get_string(doc, ccur->children, 1, ident))
-			{
-			  //std::cout << "Seen: modifier: " << ident << std::endl;
-
-			  desc.modifier = ResourceModifierNS::rs_from_string(ident);
-			}
-		    }
-		  else
-		    {
-		      std::cout << "XMLHelper:parse_surface2: unhandled " << ccur->name << std::endl;
-		    }
-		  ccur = ccur->next;
-		}
-	    }
-	  else
-	    {
-	      std::cout << "XMLhelper: Unhandled resource type: " << type << std::endl;
-	    }
-	}
+                  desc.modifier = ResourceModifierNS::rs_from_string(ident);
+                }
+            }
+          else
+            {
+              std::cout << "XMLHelper:parse_surface2: unhandled " << ccur->name << std::endl;
+            }
+          ccur = ccur->next;
+        }
       cur = cur->next;
     }
-
-  //std::cout << "XML: parse_surface(): " << desc.res_name << " " << desc.datafile  << std::endl;
 
   return desc;
 }
@@ -399,31 +348,10 @@ XMLhelper::parse_string (xmlDocPtr doc, xmlNodePtr cur)
 void
 XMLhelper::write_desc_xml (std::ostream& xml, ResDescriptor desc)
 {
-  xml << "  <surface><resource type=\"";
-  switch (desc.type)
-    {
-    case ResDescriptor::RD_FILE:
-      xml << "file\">\n"
-	     << "    <resource-file>"
-	     << desc.res_name
-	     << "</resource-file>\n";
-      break;
-    case ResDescriptor::RD_RESOURCE:
-      xml << "datafile\">\n"
-	     << "    <resource-datafile>"
-	     << desc.datafile
-	     << "</resource-datafile>\n"
-	     << "  <resource-ident>"
-	     << desc.res_name
-	     << "</resource-ident>\n";
-      break;
-    default:
-      std::cout << "EditorObj::save_desc_xml(): Unhandled resource type" << std::endl;
-      break;
-    }
-
-  xml << "    <modifier>" << ResourceModifierNS::rs_to_string(desc.modifier) << "</modifier>" << std::endl;
-  xml << "  </resource></surface>" << std::endl;
+  xml << "  <surface>"
+      << "    <name>" << desc.res_name << "</name>\n"
+      << "    <modifier>" << ResourceModifierNS::rs_to_string(desc.modifier) << "</modifier>\n"
+      << "  </surface>" << std::endl;
 }
 
 void

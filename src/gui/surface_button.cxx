@@ -17,7 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "../pingus_resource.hxx"
+#include "../resource.hxx"
 #include "graphic_context.hxx"
 #include "surface_button.hxx"
 
@@ -31,9 +31,9 @@ SurfaceButton::SurfaceButton (int arg_x_pos, int arg_y_pos,
 			      const ResDescriptor& arg_button_mouse_over_surface)
   : x_pos (arg_x_pos), y_pos (arg_y_pos), pressed (false), mouse_over (false)
 {
-  button_surface            = PingusResource::load_sprite(arg_button_surface);
-  button_pressed_surface    = PingusResource::load_sprite(arg_button_pressed_surface);
-  button_mouse_over_surface = PingusResource::load_sprite(arg_button_mouse_over_surface);
+  button_surface            = Resource::load_sprite(arg_button_surface);
+  button_pressed_surface    = Resource::load_sprite(arg_button_pressed_surface);
+  button_mouse_over_surface = Resource::load_sprite(arg_button_mouse_over_surface);
 }
 
 SurfaceButton::~SurfaceButton ()
