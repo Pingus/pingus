@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.65 2003/04/05 20:24:16 grumbel Exp $
+//   $Id: pingus_main.cxx,v 1.66 2003/04/08 19:56:40 torangan Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -349,12 +349,11 @@ PingusMain::check_args(int argc, char** argv)
 #endif
 		<< std::endl;
       
-      std::cout << _("\n\
-Copyright (C) 2003 Ingo Ruhnke <grumbel@pingus.cx>\n\
-There is NO warranty.  You may redistribute this software\n\
-under the terms of the GN General Public License.\n\
-For more information about these matters, see the files named COPYING.\
-") << std::endl;
+      std::cout << _("\n"
+                     "Copyright (C) 2003 Ingo Ruhnke <grumbel@gmx.de>\n"
+                     "There is NO warranty.  You may redistribute this software\n"
+                     "under the terms of the GNU General Public License.\n"
+                     "For more information about these matters, see the files named COPYING.") << std::endl;
 
       exit(EXIT_SUCCESS);
       break;
@@ -511,7 +510,7 @@ For more information about these matters, see the files named COPYING.\
 	_("\n"
 	  "Options:\n"
           "   -g, --geometry {width}x{height}\n"
-          "                            Set the resolution for pingus (default: 640x480)\n"
+          "                            Set the resolution for pingus (default: 800x600)\n"
           "   -h, --help               Displays this screen\n"
           "   --disable-intro          Disable intro\n")
 		<< std::endl;
@@ -521,8 +520,8 @@ For more information about these matters, see the files named COPYING.\
                 << std::endl;
 #endif
       std::cout <<
-	_("   -F, --disable-fullscreen Disable Fullscreen\n"
-          "   -f, --enable-fullscreen  Enable Fullscreen (default)\n"
+	_("   -F, --disable-fullscreen Disable Fullscreen (default)\n"
+          "   -f, --enable-fullscreen  Enable Fullscreen\n"
           "   -d, --datadir PATH       Set the path to load the data files to `path'\n"
           "   --use-datafile           Use the pre-compiled datafile (default)\n"
           "   --use-scriptfile         Use the scriptfile and read all data from files\n"
@@ -702,7 +701,7 @@ PingusMain::print_greeting_message()
     std::cout << _("music support:          disabled") << std::endl;
 
   std::cout << _("resolution set to:       ") << screen_width << "x" << screen_height << std::endl;
-  std::cout << _("fullcscreen:            ")
+  std::cout << _("fullscreen:              ")
             << (fullscreen_enabled ? _(" enabled") : _("disabled"))
             << std::endl;
 

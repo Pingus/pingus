@@ -6,20 +6,13 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Pingus 0.5.0\n"
-"POT-Creation-Date: 2003-04-06 14:45+0200\n"
-"PO-Revision-Date: 2001-12-19 13:50+0100\n"
+"POT-Creation-Date: 2003-04-08 19:51+0200\n"
 "Last-Translator: Martijn Santen <martijn@jomarsoft.nl>\n"
 "Language-Team: Giray Devlet <giray@devlet.cc>, Martijn Santen "
 "<martijn@jomarsoft.nl>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plin; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-
-# src/blitter.cc:93
-#: src/blitter.cxx:97
-#, c-format
-msgid "Couldn't find palette: %d"
-msgstr "Pallet niet gevonden"
 
 # src/System.cc:65 src/System.cc:97
 #: src/config.cxx:68
@@ -33,30 +26,6 @@ msgstr ""
 
 #: src/config.cxx:201
 msgid "Unexpected char '"
-msgstr ""
-
-#: src/config.cxx:231
-msgid "jump_after(): Expected '"
-msgstr ""
-
-#: src/config.cxx:256
-msgid "PLF: Syntax Error at line "
-msgstr ""
-
-#: src/config.cxx:383
-msgid "Config: Unknown valueid: "
-msgstr ""
-
-#: src/config.cxx:400
-msgid "Config: value: "
-msgstr ""
-
-#: src/config.cxx:400
-msgid " is not of type bool."
-msgstr ""
-
-#: src/config.cxx:413
-msgid "Config: Couldn't convert std::string to integer: "
 msgstr ""
 
 # src/Credits.cc:52
@@ -255,7 +224,7 @@ msgstr ""
 
 #: src/editor/editor_help_screen.cxx:85
 msgid ""
-"When you have create a level and want to have it in the next Pingus "
+"When you have created a level and want to have it in the next Pingus "
 "release,\n"
 "please mail it to pingus-devel@nongnu.org."
 msgstr ""
@@ -631,8 +600,9 @@ msgstr "Druk een knop om door te gaan..."
 
 # src/PingusLevelResult.cc:98
 #: src/level_result.cxx:100
+#, fuzzy
 msgid ""
-"As many Pingus escaped as entered the level. Thats going to be hard to "
+"As many Pingus escaped as entered the level. That's going to be hard to "
 "beat.... unless this game becomes pornographic."
 msgstr ""
 "Net zoveel Pingus konden onsnappen als die het niveau zijn binnen getreden. "
@@ -669,7 +639,8 @@ msgstr "Misschien vraag dit niveau om een andere strategie."
 
 # src/PingusLevelResult.cc:110
 #: src/level_result.cxx:112
-msgid "Exactly half. Are you saving only the female ones, you kinky sod!?"
+#, fuzzy
+msgid "Exactly half. Are you saving only the female ones?"
 msgstr ""
 "Precies de helft. Probeer je alleen de vrouwtjes te redden, kinky hoor!?"
 
@@ -1214,79 +1185,79 @@ msgstr "Pingus: Standard uitzondering!:\n"
 msgid "Pingus: Unknown throw caught!"
 msgstr "Pingus: Onbekende worp aangetroffen!"
 
-#: src/result_screen.cxx:92 src/start_screen.cxx:99
+#: src/result_screen.cxx:94 src/start_screen.cxx:100
 msgid "Abort"
 msgstr ""
 
-#: src/result_screen.cxx:151
+#: src/result_screen.cxx:158
 msgid "Retry"
 msgstr ""
 
-#: src/result_screen.cxx:158
+#: src/result_screen.cxx:165
 msgid "Success!"
 msgstr ""
 
-#: src/result_screen.cxx:164
+#: src/result_screen.cxx:171
 msgid "Failure!"
 msgstr ""
 
-#: src/result_screen.cxx:173
+#: src/result_screen.cxx:180
 msgid "Perfect! You saved everybody possibly, great!"
 msgstr ""
 
-#: src/result_screen.cxx:175
+#: src/result_screen.cxx:182
 msgid "None got killed, pretty good work"
 msgstr ""
 
-#: src/result_screen.cxx:177
+#: src/result_screen.cxx:184
 msgid ""
 "You saved just what you needed, you made it, but\n"
 "maybe you can do better?"
 msgstr ""
 
-#: src/result_screen.cxx:180
+#: src/result_screen.cxx:187
 msgid "Not everybody could get saved, but still good work!"
 msgstr ""
 
-#: src/result_screen.cxx:182
+#: src/result_screen.cxx:189
 msgid "What can I say, you made it, congratulations!"
 msgstr ""
 
-#: src/result_screen.cxx:187
+#: src/result_screen.cxx:194
 msgid "You killed everybody, not good."
 msgstr ""
 
-#: src/result_screen.cxx:189
+#: src/result_screen.cxx:196
 msgid "None got saved, I know you can do better."
 msgstr ""
 
-#: src/result_screen.cxx:191
+#: src/result_screen.cxx:198
 msgid ""
 "You didn't saved enough, but still saved a few, next\n"
 "time you might be better."
 msgstr ""
 
-#: src/result_screen.cxx:194
+#: src/result_screen.cxx:201
 msgid "Only one more and you would have made it, try again!"
 msgstr ""
 
-#: src/result_screen.cxx:196
+#: src/result_screen.cxx:203
 msgid "Only a handfull more and you would have made it, try again!"
 msgstr ""
 
-#: src/result_screen.cxx:198
+#: src/result_screen.cxx:205
 msgid "Better luck next time!"
 msgstr ""
 
-#: src/result_screen.cxx:209
+#: src/result_screen.cxx:216
 msgid "Saved: "
 msgstr ""
 
-#: src/result_screen.cxx:213
+#: src/result_screen.cxx:220
 msgid "Killed: "
 msgstr ""
 
-#: src/result_screen.cxx:217
+#: src/result_screen.cxx:224
 msgid "Time left: "
 msgstr ""
 
@@ -1317,38 +1288,38 @@ msgstr "Schermafdruk: kon bestand niet opslaan"
 msgid "Image has wrong color depth: %d"
 msgstr "Plaatje heeft de verkeerde kleurdiepte: %d"
 
-#: src/start_screen.cxx:64
+#: src/start_screen.cxx:65
 msgid "Ok"
 msgstr ""
 
 # src/PingusLevelDesc.cc:81
-#: src/start_screen.cxx:151
+#: src/start_screen.cxx:135
 #, fuzzy
 msgid "Number of Pingus: "
 msgstr "Aantal Pingus"
 
 # src/PingusLevelDesc.cc:79
-#: src/start_screen.cxx:154
+#: src/start_screen.cxx:138
 #, fuzzy
 msgid "Number to Save: "
 msgstr "Pingus op te slaan:"
 
-#: src/start_screen.cxx:157
+#: src/start_screen.cxx:141
 msgid "Time: "
 msgstr ""
 
-#: src/start_screen.cxx:160
+#: src/start_screen.cxx:144
 msgid "Difficulty:"
 msgstr ""
 
 #. for (int i = 0; plf->get_difficulty())
 #. {
 #. }
-#: src/start_screen.cxx:167
+#: src/start_screen.cxx:151
 msgid "Author: "
 msgstr ""
 
-#: src/start_screen.cxx:170
+#: src/start_screen.cxx:154
 msgid "Filename: "
 msgstr ""
 
@@ -1524,6 +1495,10 @@ msgstr "PingusWereldKaart: Bestand niet gevonden: "
 #, fuzzy
 msgid "...walking..."
 msgstr "Laden...."
+
+# src/blitter.cc:93
+#~ msgid "Couldn't find palette: %d"
+#~ msgstr "Pallet niet gevonden"
 
 # src/SurfaceButton.cc:341
 #~ msgid "..:: Lets you select a world to start ::.."

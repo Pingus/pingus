@@ -1,4 +1,4 @@
-//  $Id: story.cxx,v 1.20 2003/04/07 12:14:03 grumbel Exp $
+//  $Id: story.cxx,v 1.21 2003/04/08 19:56:40 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -50,8 +50,8 @@ Story::init_credits()
      (ResDescriptor("Story/credits2", "story"), 
       _("But as the eldest have said, the Tutorial Island provides not\n"
         "only a way to practive, but it is also the starting point into\n"
-        "the world, cause the wood if the large tree at the end of the\n"
-        "island is brings good wood to construct a float.\n")));
+        "the world, cause the wood of the large tree at the end of the\n"
+        "island brings good wood to construct a float.\n")));
      
   credits.pages.push_back
     (StoryPage

@@ -1,4 +1,4 @@
-//  $Id: level_result.cxx,v 1.10 2003/02/19 11:33:00 grumbel Exp $
+//  $Id: level_result.cxx,v 1.11 2003/04/08 19:56:40 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -97,7 +97,7 @@ std::string
 PingusLevelResult::get_message (int saved)
 {
   if (saved == 100) {
-    return _("As many Pingus escaped as entered the level. Thats going to be hard to beat.... unless this game becomes pornographic.");
+    return _("As many Pingus escaped as entered the level. That's going to be hard to beat.... unless this game becomes pornographic.");
   } else if (saved > 90) {
     return _("Very impressive indeed.");
   } else if (saved > 80) {
@@ -109,7 +109,7 @@ PingusLevelResult::get_message (int saved)
   } else if (saved > 55) {
     return _("Maybe this level calls for a different strategy.");
   } else if (saved > 50) {
-    return _("Exactly half. Are you saving only the female ones, you kinky sod!?");
+    return _("Exactly half. Are you saving only the female ones?");
   } else if (saved > 40) {
     return _("If I were a Pingu, I never would have left that entrance.");
   } else if (saved > 30) {

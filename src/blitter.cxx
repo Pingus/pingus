@@ -1,4 +1,4 @@
-//  $Id: blitter.cxx,v 1.24 2003/03/25 00:37:44 grumbel Exp $
+//  $Id: blitter.cxx,v 1.25 2003/04/08 19:56:40 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -94,7 +94,7 @@ Blitter::put_surface_8bit(CL_Canvas* provider, CL_SurfaceProvider* sprovider,
   if (!cl_palette)
     {
       char str[128];
-      snprintf(str, 128, _("Couldn't find palette: %d"), sprovider->get_depth());
+      snprintf(str, 128, "Couldn't find palette: %d", sprovider->get_depth());
       PingusError::raise(str);
     }
 

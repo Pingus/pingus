@@ -1,4 +1,4 @@
-//  $Id: config.cxx,v 1.11 2003/02/18 18:41:58 grumbel Exp $
+//  $Id: config.cxx,v 1.12 2003/04/08 19:56:40 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -228,7 +228,7 @@ ConfigParser::jump_after(char c)
 	  return;
       }
     } 
-  syntax_error(std::string(_("jump_after(): Expected '")) + c + "', got '" + atom + "'" );
+  syntax_error(std::string("jump_after(): Expected '") + c + "', got '" + atom + "'" );
 }
 
 void
@@ -253,7 +253,7 @@ ConfigParser::syntax_error(std::string error = "")
 
   snprintf(tmp, 16, "%d\n", lineno);
   
-  error_str = std::string(_("PLF: Syntax Error at line ")) + tmp;
+  error_str = std::string("PLF: Syntax Error at line ") + tmp;
 
   if (error != "")
     error_str += "PLF:" + error + "\n";
@@ -380,7 +380,7 @@ Config::set_value(const std::string& valueid, const std::string& value)
     }
   else
     {
-      PingusError::raise(_("Config: Unknown valueid: ") + valueid);
+      PingusError::raise("Config: Unknown valueid: " + valueid);
     }
 }
 
@@ -397,7 +397,7 @@ Config::str_to_bool(const std::string& str)
     }
   else
     {
-      PingusError::raise(_("Config: value: ") + str + _(" is not of type bool."));
+      PingusError::raise("Config: value: " + str + " is not of type bool.");
     }
     
   return false; // never reached
@@ -410,7 +410,7 @@ Config::str_to_int(const std::string& str)
 
   if (sscanf(str.c_str(), "%d", &ret_val) != 1) 
     {
-      PingusError::raise(_("Config: Couldn't convert std::string to integer: ") + str);
+      PingusError::raise("Config: Couldn't convert std::string to integer: " + str);
     }
 
   return ret_val;

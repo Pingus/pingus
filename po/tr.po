@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Pingus 0.5.0\n"
-"POT-Creation-Date: 2003-04-06 14:45+0200\n"
+"POT-Creation-Date: 2003-04-08 19:51+0200\n"
 "PO-Revision-Date: 2001-12-04 22:50+02:00\n"
 "Last-Translator: Giray Devlet <giray@devlet.cc>\n"
 "Language-Team: Giray Devlet <giray@devlet.cc>, Caðrý Çöltekin <cagri@metu."
@@ -13,11 +13,6 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-9\n"
 "Content-Transfer-Encoding: 8bit\n"
-
-#: src/blitter.cxx:97
-#, c-format
-msgid "Couldn't find palette: %d"
-msgstr "Bulunamayan palet: %d"
 
 #: src/config.cxx:68
 #, fuzzy
@@ -31,30 +26,6 @@ msgstr "Beklenmeyen harf: '"
 #: src/config.cxx:201
 msgid "Unexpected char '"
 msgstr "Beklenmeyen harf: '"
-
-#: src/config.cxx:231
-msgid "jump_after(): Expected '"
-msgstr "ump_after(): Beklenen '"
-
-#: src/config.cxx:256
-msgid "PLF: Syntax Error at line "
-msgstr "PLF: Sözdizimi hattasi. Satýr: "
-
-#: src/config.cxx:383
-msgid "Config: Unknown valueid: "
-msgstr "Config: Bilinmeyen valueid: "
-
-#: src/config.cxx:400
-msgid "Config: value: "
-msgstr "Config: deðer: "
-
-#: src/config.cxx:400
-msgid " is not of type bool."
-msgstr " bool tipinde deðil."
-
-#: src/config.cxx:413
-msgid "Config: Couldn't convert std::string to integer: "
-msgstr "Config: std::string'i integer'e dönüþtürelemedi"
 
 #. The credits vector holds the strings to display. The first
 #. character of each string is a special character, which indicates
@@ -236,7 +207,7 @@ msgstr ""
 
 #: src/editor/editor_help_screen.cxx:85
 msgid ""
-"When you have create a level and want to have it in the next Pingus "
+"When you have created a level and want to have it in the next Pingus "
 "release,\n"
 "please mail it to pingus-devel@nongnu.org."
 msgstr ""
@@ -560,8 +531,9 @@ msgid "Press button to continue..."
 msgstr "Devam etmek için tuþa bas..."
 
 #: src/level_result.cxx:100
+#, fuzzy
 msgid ""
-"As many Pingus escaped as entered the level. Thats going to be hard to "
+"As many Pingus escaped as entered the level. That's going to be hard to "
 "beat.... unless this game becomes pornographic."
 msgstr ""
 "Hocam, Hepsi kurtuldu!  Bu skoru aþabilmek için bu oyuna pornografik biþiler "
@@ -592,7 +564,8 @@ msgid "Maybe this level calls for a different strategy."
 msgstr "Farklý bir stateji uygulamakta yarar olabilir."
 
 #: src/level_result.cxx:112
-msgid "Exactly half. Are you saving only the female ones, you kinky sod!?"
+#, fuzzy
+msgid "Exactly half. Are you saving only the female ones?"
 msgstr "Tam yarýsý. Ne o? Sadece diþileri falan mý kurtarýyoruz?!?"
 
 #: src/level_result.cxx:114
@@ -1111,79 +1084,79 @@ msgstr "Pingus: Genel olaðan dýþý durum saptandý!:\n"
 msgid "Pingus: Unknown throw caught!"
 msgstr "Pingus: Bilinmeyen bir hata saptandý!"
 
-#: src/result_screen.cxx:92 src/start_screen.cxx:99
+#: src/result_screen.cxx:94 src/start_screen.cxx:100
 msgid "Abort"
 msgstr ""
 
-#: src/result_screen.cxx:151
+#: src/result_screen.cxx:158
 msgid "Retry"
 msgstr ""
 
-#: src/result_screen.cxx:158
+#: src/result_screen.cxx:165
 msgid "Success!"
 msgstr ""
 
-#: src/result_screen.cxx:164
+#: src/result_screen.cxx:171
 msgid "Failure!"
 msgstr ""
 
-#: src/result_screen.cxx:173
+#: src/result_screen.cxx:180
 msgid "Perfect! You saved everybody possibly, great!"
 msgstr ""
 
-#: src/result_screen.cxx:175
+#: src/result_screen.cxx:182
 msgid "None got killed, pretty good work"
 msgstr ""
 
-#: src/result_screen.cxx:177
+#: src/result_screen.cxx:184
 msgid ""
 "You saved just what you needed, you made it, but\n"
 "maybe you can do better?"
 msgstr ""
 
-#: src/result_screen.cxx:180
+#: src/result_screen.cxx:187
 msgid "Not everybody could get saved, but still good work!"
 msgstr ""
 
-#: src/result_screen.cxx:182
+#: src/result_screen.cxx:189
 msgid "What can I say, you made it, congratulations!"
 msgstr ""
 
-#: src/result_screen.cxx:187
+#: src/result_screen.cxx:194
 msgid "You killed everybody, not good."
 msgstr ""
 
-#: src/result_screen.cxx:189
+#: src/result_screen.cxx:196
 msgid "None got saved, I know you can do better."
 msgstr ""
 
-#: src/result_screen.cxx:191
+#: src/result_screen.cxx:198
 msgid ""
 "You didn't saved enough, but still saved a few, next\n"
 "time you might be better."
 msgstr ""
 
-#: src/result_screen.cxx:194
+#: src/result_screen.cxx:201
 msgid "Only one more and you would have made it, try again!"
 msgstr ""
 
-#: src/result_screen.cxx:196
+#: src/result_screen.cxx:203
 msgid "Only a handfull more and you would have made it, try again!"
 msgstr ""
 
-#: src/result_screen.cxx:198
+#: src/result_screen.cxx:205
 msgid "Better luck next time!"
 msgstr ""
 
-#: src/result_screen.cxx:209
+#: src/result_screen.cxx:216
 msgid "Saved: "
 msgstr ""
 
-#: src/result_screen.cxx:213
+#: src/result_screen.cxx:220
 msgid "Killed: "
 msgstr ""
 
-#: src/result_screen.cxx:217
+#: src/result_screen.cxx:224
 #, fuzzy
 msgid "Time left: "
 msgstr "Ad: "
@@ -1210,37 +1183,37 @@ msgstr "Screenshot: Dosyaya yazýlamýyor: "
 msgid "Image has wrong color depth: %d"
 msgstr "Resmin renk derinliði yanlýþ: %d"
 
-#: src/start_screen.cxx:64
+#: src/start_screen.cxx:65
 msgid "Ok"
 msgstr ""
 
-#: src/start_screen.cxx:151
+#: src/start_screen.cxx:135
 #, fuzzy
 msgid "Number of Pingus: "
 msgstr "Pingus sayýsý: %d"
 
-#: src/start_screen.cxx:154
+#: src/start_screen.cxx:138
 #, fuzzy
 msgid "Number to Save: "
 msgstr "Kurtarýlýcak Pingus: %d"
 
-#: src/start_screen.cxx:157
+#: src/start_screen.cxx:141
 #, fuzzy
 msgid "Time: "
 msgstr "Ad: "
 
-#: src/start_screen.cxx:160
+#: src/start_screen.cxx:144
 msgid "Difficulty:"
 msgstr ""
 
 #. for (int i = 0; plf->get_difficulty())
 #. {
 #. }
-#: src/start_screen.cxx:167
+#: src/start_screen.cxx:151
 msgid "Author: "
 msgstr ""
 
-#: src/start_screen.cxx:170
+#: src/start_screen.cxx:154
 #, fuzzy
 msgid "Filename: "
 msgstr "Ad: "
@@ -1409,6 +1382,27 @@ msgstr "PingusWorldMapGraph: Dosya bulunamadý: "
 #, fuzzy
 msgid "...walking..."
 msgstr "Yükleniyor..."
+
+#~ msgid "Couldn't find palette: %d"
+#~ msgstr "Bulunamayan palet: %d"
+
+#~ msgid "jump_after(): Expected '"
+#~ msgstr "ump_after(): Beklenen '"
+
+#~ msgid "PLF: Syntax Error at line "
+#~ msgstr "PLF: Sözdizimi hattasi. Satýr: "
+
+#~ msgid "Config: Unknown valueid: "
+#~ msgstr "Config: Bilinmeyen valueid: "
+
+#~ msgid "Config: value: "
+#~ msgstr "Config: deðer: "
+
+#~ msgid " is not of type bool."
+#~ msgstr " bool tipinde deðil."
+
+#~ msgid "Config: Couldn't convert std::string to integer: "
+#~ msgstr "Config: std::string'i integer'e dönüþtürelemedi"
 
 # bu olmadi -cagri
 # þimdi daha iyi mi? -gd

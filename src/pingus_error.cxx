@@ -1,4 +1,4 @@
-//  $Id: pingus_error.cxx,v 1.7 2003/02/18 18:41:59 grumbel Exp $
+//  $Id: pingus_error.cxx,v 1.8 2003/04/08 19:56:40 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,7 +42,7 @@ PingusException::operator= (const PingusException& old)
 }
 
 
-PingusBug::PingusBug (const std::string& mes) : PingusException(_("PingusBug: ") + mes)
+PingusBug::PingusBug (const std::string& mes) : PingusException("PingusBug: " + mes)
 {
 }
 
@@ -73,7 +73,7 @@ PingusBug::get_message () const
   return message;
 }
 
-PingusError::PingusError (const std::string& mes) : PingusException(_("PingusError: ") + mes)
+PingusError::PingusError (const std::string& mes) : PingusException("PingusError: " + mes)
 {
 }
 
