@@ -1,4 +1,4 @@
-//  $Id: object_manager.cxx,v 1.3 2002/06/18 16:18:14 grumbel Exp $
+//  $Id: object_manager.cxx,v 1.4 2002/06/20 15:57:38 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #include <ClanLib/Display/Input/keyboard.h>
 #include <ClanLib/Display/Input/key.h>
 #include "../globals.hxx"
+#include "../math.hxx"
 #include "../system.hxx"
 #include "../plf_plf.hxx"
 #include "../xml_helper.hxx"
@@ -34,7 +35,7 @@
 #  define for if(0);else for
 #endif
 
-using namespace std;
+using namespace Pingus;
 
 /** */
 static bool EditorObj_z_pos_sorter (const boost::shared_ptr<EditorObj>& a, 
@@ -417,10 +418,10 @@ ObjectManager::rect_get_current_objs(float x_1, float y_1, float x_2, float y_2)
       && !CL_Keyboard::get_keycode(CL_KEY_RSHIFT))
     delete_selection();
   
-  x1 = min(x_1, x_2);
-  x2 = max(x_1, x_2);
-  y1 = min(y_1, y_2);
-  y2 = max(y_1, y_2);  
+  x1 = Math::min(x_1, x_2);
+  x2 = Math::max(x_1, x_2);
+  y1 = Math::min(y_1, y_2);
+  y2 = Math::max(y_1, y_2);  
 
   for(EditorObjIter i = editor_objs.begin(); i != editor_objs.end(); ++i) 
     {

@@ -1,4 +1,4 @@
-//  $Id: editor.cxx,v 1.4 2002/06/19 15:19:26 torangan Exp $
+//  $Id: editor.cxx,v 1.5 2002/06/20 15:57:38 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -55,8 +55,8 @@ Editor::instance ()
   return instance_; 
 }
 
-Editor::Editor () : event_handler_ref_counter(0), show_help_screen(true),
-                    move_x(0), move_y(0), tool(SELECTOR_TOOL)
+Editor::Editor () : event_handler_ref_counter(0),
+                    move_x(0), move_y(0), show_help_screen(true), tool(SELECTOR_TOOL)
 {
   EditorObj::set_editor(this);
 
