@@ -1,4 +1,4 @@
-//  $Id: client.cxx,v 1.32 2002/10/28 22:40:23 torangan Exp $
+//  $Id: client.cxx,v 1.33 2002/10/29 12:47:55 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,7 +43,7 @@
 #include "input/event.hxx"
 #include "input/axis_event.hxx"
 #include "input/scroll_event.hxx"
-
+#include "input/button_event.hxx"
 
 Client::Client (TrueServer * s)
   : server       (s),
@@ -124,8 +124,13 @@ Client::process_events (const GameDelta& delta)
       switch ((*i)->get_type ())
 	{
 	case Input::ButtonEventType:
-          // Ignore, is handled in GUIScreen
-	  //process_button_event (dynamic_cast<class Input::ButtonEvent* const>(*i));
+          {
+            Input::ButtonEvent* ev = dynamic_cast<Input::ButtonEvent* const>(*i);
+            if (ev->name >= Input::action_1 && ev->name <= Input::action_10)
+              {
+                button_panel->set_button(ev->name - Input::action_1);
+              }
+          }
 	  break;
 
 	case Input::PointerEventType:
@@ -154,7 +159,8 @@ void
 Client::process_scroll_event (Input::ScrollEvent* ev)
 {
   std::cout << "Client::process_scroll_event ()" << std::endl;    
-  playfield->scroll(static_cast<int>(ev->x_delta), static_cast<int>(ev->y_delta));
+  playfield->scroll(static_cast<int>(ev->x_delta),
+                    static_cast<int>(ev->y_delta));
 }
 
 void

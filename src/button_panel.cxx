@@ -1,4 +1,4 @@
-//  $Id: button_panel.cxx,v 1.17 2002/10/14 11:15:15 torangan Exp $
+//  $Id: button_panel.cxx,v 1.18 2002/10/29 12:47:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -56,7 +56,7 @@ ButtonPanel::ButtonPanel(PLF* plf, int arg_x_pos, int arg_y_pos)
 						    0)); //FIXMEcontroller->get_owner ()));
     }
   
-  pressed_button = a_buttons.begin();
+  pressed_button = 0;
 }
 
 ButtonPanel::~ButtonPanel()
@@ -70,7 +70,7 @@ ButtonPanel::~ButtonPanel()
 void
 ButtonPanel::update(float delta)
 {
-  (*pressed_button)->update(delta);
+  a_buttons[pressed_button]->update(delta);
 
   if (last_press + 350 < CL_System::get_time()) 
     {
@@ -81,7 +81,7 @@ ButtonPanel::update(float delta)
 ActionName
 ButtonPanel::get_action_name()
 {
-  return (*pressed_button)->get_action_name();
+  return a_buttons[pressed_button]->get_action_name();
 }
 
 void 
@@ -94,15 +94,14 @@ ButtonPanel::draw(GraphicContext& gc)
   else 
     alpha = 0.5;
   
-  // draw the buttons
-  for(AButtonIter button = a_buttons.begin(); button != a_buttons.end(); ++button) 
+  for(int i = 0; i < static_cast<int>(a_buttons.size()); ++i)
     {
-      if (button == pressed_button) 
-	(*button)->pressed = true;
+      if (i == pressed_button) 
+	a_buttons[i]->pressed = true;
       else
-	(*button)->pressed = false;
+        a_buttons[i]->pressed = false;
 
-      (*button)->draw(gc);
+      a_buttons[i]->draw(gc);
     }
 }
 
@@ -124,11 +123,15 @@ ButtonPanel::set_client(Client* c)
 }
 
 void
-ButtonPanel::set_button(int i)
+ButtonPanel::set_button(int n)
 {
-  if ((unsigned int)(i) < a_buttons.size())
+  if (n < 0 || n >= static_cast<int>(a_buttons.size()))
     {
-      pressed_button = a_buttons.begin() + i;
+      // FIXME: Play 'boing' sound here
+    }
+  else
+    {
+      pressed_button = n;
     }
 }
 
@@ -138,38 +141,8 @@ ButtonPanel::on_primary_button_press(int x, int y)
   for(AButtonIter button = a_buttons.begin(); button != a_buttons.end(); button++)
     {
       if ((*button)->is_at(x, y))
-	pressed_button = button;
+	pressed_button = button - a_buttons.begin();
     }
-  
-
-  /*  if (armageddon->is_at(x, y))
-    {
-      last_press = CL_System::get_time();
-      
-      if (verbose) std::cout << "Armageddon: " << armageddon_pressed << std::endl;
-      armageddon_pressed++;
-           
-      if (armageddon_pressed == 2)
-	{
-	  arma_counter = 0;
-	  armageddon_pressed = 4;
-	  armageddon->pressed = true;
-	  server->get_world()->armageddon();
-	}
-      return;
-    }
-    
-  if (pause->is_mouse_over(x, y))
-    {
-      client->set_pause(!client->get_pause());
-      return;
-    }
-  else if (forward->mouse_over(x, y))
-    {
-      client->set_fast_forward(!client->get_fast_forward());
-      return;
-    }
-  */
 }
 
 bool
@@ -194,19 +167,14 @@ ButtonPanel::on_primary_button_release(int x, int y)
 void 
 ButtonPanel::next_action ()
 {
-  ++pressed_button;
-  if (pressed_button == a_buttons.end ())
-    pressed_button = a_buttons.begin ();
+  pressed_button = (pressed_button + 1) % a_buttons.size();
 }
 
 /// Select the previous action
 void 
 ButtonPanel::previous_action ()
 {
-  if (pressed_button == a_buttons.begin ())
-    pressed_button = a_buttons.end ();
-
-  --pressed_button;
+  pressed_button = (pressed_button - 1 + a_buttons.size()) % a_buttons.size();
 }
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: button_panel.hxx,v 1.13 2002/10/04 16:54:03 grumbel Exp $
+//  $Id: button_panel.hxx,v 1.14 2002/10/29 12:47:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,7 +35,7 @@ private:
 
   std::vector<ActionButton*> a_buttons;
   typedef std::vector<ActionButton*>::iterator AButtonIter;
-  AButtonIter  pressed_button;
+  int pressed_button;
 
   TrueServer* server;
   Client* client;
@@ -62,6 +62,8 @@ public:
   void   draw(GraphicContext& gc);
   void   set_server(TrueServer*);
   void   set_client(Client*);
+
+  /// Set n'th action
   void   set_button(int);
 
   /// Select the next action
@@ -69,7 +71,7 @@ public:
 
   /// Select the previous action
   void previous_action ();
-  
+
 private:
   ButtonPanel (const ButtonPanel&);
   ButtonPanel& operator= (const ButtonPanel&); 
