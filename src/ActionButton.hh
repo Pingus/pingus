@@ -1,4 +1,4 @@
-//  $Id: ActionButton.hh,v 1.23 2002/06/10 11:00:25 torangan Exp $
+//  $Id: ActionButton.hh,v 1.24 2002/06/11 09:55:12 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -45,6 +45,8 @@ protected:
 public:
   ///
   Button();
+  
+  Button (int x, int y);
   ///
   virtual ~Button();
 

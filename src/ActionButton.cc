@@ -1,4 +1,4 @@
-//  $Id: ActionButton.cc,v 1.34 2002/06/10 15:01:23 torangan Exp $
+//  $Id: ActionButton.cc,v 1.35 2002/06/11 09:55:12 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,15 +33,17 @@ Button::Button()
 {
 }
 
+Button::Button (int x, int y) : x_pos(x), y_pos(y)
+{
+}
+
 Button::~Button()
 {
 }
 
-EventButton::EventButton(int x, int y, std::string str)
-{
+EventButton::EventButton(int x, int y, std::string str) : Button(x, y) 
+{ 
   surface = PingusResource::load_surface(str, "global");
-  x_pos = x;
-  y_pos = y;
 }
 
 EventButton::~EventButton() {}
@@ -73,6 +75,7 @@ EventButton::mouse_over(const CL_Vector& pos)
 }
 
 ActionButton::ActionButton() {}
+
 ActionButton::~ActionButton() {}
 
 void
@@ -144,8 +147,8 @@ ActionButton::set_action_holder(ActionHolder* h)
   action_holder = h;
 }
 
-VerticalActionButton::VerticalActionButton(int x, int y, std::string str, int owner_id)
-  : background (PingusResource::load_surface("buttons/buttonbackground", "core")),
+VerticalActionButton::VerticalActionButton(int x, int y, std::string str, int owner_id) :
+    background (PingusResource::load_surface("buttons/buttonbackground", "core")),
     backgroundhl (PingusResource::load_surface("buttons/buttonbackgroundhl", "core"))
 {
   init(x, y, str, owner_id);
@@ -219,18 +222,15 @@ VerticalActionButton::draw()
 		     action_c);
 }
 
-ArmageddonButton::ArmageddonButton(int x, int y) 
+ArmageddonButton::ArmageddonButton(int x, int y) : 
+        Button      (x, y),
+        background  (PingusResource::load_surface("buttons/hbuttonbgb", "core")),
+        backgroundhl(PingusResource::load_surface("buttons/hbuttonbg", "core"))
 {
-  surface = PingusResource::load_surface("buttons/armageddon_anim", "core");
-
-  background = PingusResource::load_surface("buttons/hbuttonbgb", "core");
-  backgroundhl = PingusResource::load_surface("buttons/hbuttonbg", "core");
-
+  pressed      = false;
+  surface      = PingusResource::load_surface("buttons/armageddon_anim", "core");
   counter.set_size(surface.get_num_frames());
   counter = 0;
-  x_pos = x;
-  y_pos = y;
-  pressed = false;
 }
 
 ArmageddonButton::~ArmageddonButton() { }
@@ -262,14 +262,12 @@ ArmageddonButton::mouse_over(const CL_Vector& pos)
     } 
 }
 
-ForwardButton::ForwardButton(int x, int y)
-{
+ForwardButton::ForwardButton(int x, int y) :
+        Button      (x, y),
+        background  (PingusResource::load_surface("buttons/hbuttonbgb", "core")),
+        backgroundhl(PingusResource::load_surface("buttons/hbuttonbg", "core"))
+{ 
   surface = PingusResource::load_surface("buttons/fast_forward", "core");
-  background = PingusResource::load_surface("buttons/hbuttonbgb", "core");
-  backgroundhl = PingusResource::load_surface("buttons/hbuttonbg", "core");
-
-  x_pos = x;
-  y_pos = y;
 }
 
 ForwardButton::~ForwardButton() {}
@@ -297,15 +295,12 @@ ForwardButton::mouse_over(const CL_Vector& pos)
     } 
 }
 
-PauseButton::PauseButton(int x, int y)
-{
+PauseButton::PauseButton(int x, int y) :
+        Button      (x, y),
+        background  (PingusResource::load_surface("buttons/hbuttonbgb", "core")),
+        backgroundhl(PingusResource::load_surface("buttons/hbuttonbg", "core"))
+{ 
   surface = PingusResource::load_surface("buttons/pause", "core");
-
-  background = PingusResource::load_surface("buttons/hbuttonbgb", "core");
-  backgroundhl = PingusResource::load_surface("buttons/hbuttonbg", "core");
-
-  x_pos = x;
-  y_pos = y;
 }
 
 PauseButton::~PauseButton() {}

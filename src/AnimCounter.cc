@@ -1,4 +1,4 @@
-//  $Id: AnimCounter.cc,v 1.4 2002/06/10 11:00:25 torangan Exp $
+//  $Id: AnimCounter.cc,v 1.5 2002/06/11 09:55:12 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,16 +20,12 @@
 #include "AnimCounter.hh"
 #include <ClanLib/Core/System/system.h>
 
-AnimCounter::AnimCounter()
+AnimCounter::AnimCounter() : last_time(0), speed(100)
 {
-  speed = 100;
-  last_time = 0;
 }
 
-AnimCounter::AnimCounter(int s)
+AnimCounter::AnimCounter(int s) : last_time(0), speed(s)
 {
-  last_time = 0;
-  speed = s;
 }
 
 bool 

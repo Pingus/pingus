@@ -1,4 +1,4 @@
-//  $Id: Client.cc,v 1.86 2002/06/10 15:01:23 torangan Exp $
+//  $Id: Client.cc,v 1.87 2002/06/11 09:55:12 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -51,23 +51,26 @@
 using boost::shared_ptr;
 
 Client::Client(Controller* arg_controller, Server * s)
-  : controller (arg_controller),
-    cursor (new Cursor ("cursors/animcross", "core", controller))
+  : // plf ?
+    // result ?
+    server       (s),
+    fast_forward (false),
+    pause        (false),
+    skip_frame   (0),
+    do_replay    (false),
+    is_finished  (false),
+    // obj ?
+    button_panel (0),
+    pcounter     (0),
+    playfield    (0),
+    time_display (0),
+    small_map    (0),
+    hurry_up     (0),
+    controller   (arg_controller),
+    cursor       (new Cursor ("cursors/animcross", "core", controller))
+    // slot_x ?
 {
   //player = 0;
-  server = s;
-  fast_forward = false;
-  pause = false;
-  skip_frame = 0;
-  do_replay = false;
-  is_finished = false;
-
-  playfield = 0;    
-  button_panel = 0;
-  pcounter = 0;
-  small_map = 0;
-  time_display = 0;
-  hurry_up = 0;
  
   Display::add_flip_screen_hook(cursor);
   //Display::add_flip_screen_hook(new Cursor ("cursors/cursor", "core", boost::shared_ptr<Controller>(new MouseController ())));

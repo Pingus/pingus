@@ -1,4 +1,4 @@
-//  $Id: Bumper.cc,v 1.22 2002/06/10 15:01:23 torangan Exp $
+//  $Id: Bumper.cc,v 1.23 2002/06/11 09:55:12 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,11 +28,10 @@
 #include "Bumper.hh"
 #include "../Pingu.hh"
 
-Bumper::Bumper(const TrapData& data)
+Bumper::Bumper(const TrapData& data) : count(0)
 {
   pos = data.pos;
   surface = PingusResource::load_surface("Traps/bumper", "traps");
-  count = 0;
 }
 
 Bumper::~Bumper()

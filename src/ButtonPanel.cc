@@ -1,4 +1,4 @@
-//  $Id: ButtonPanel.cc,v 1.33 2002/06/10 15:01:23 torangan Exp $
+//  $Id: ButtonPanel.cc,v 1.34 2002/06/11 09:55:12 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,13 +33,13 @@
 using boost::shared_ptr;
 CL_Surface ButtonPanel::button_cap;
 
-ButtonPanel::ButtonPanel(PLF* plf,
-			 Controller* arg_controller,
-			 int arg_x_pos, int arg_y_pos)
-  : controller (arg_controller),
-    x_pos (arg_x_pos), y_pos (arg_y_pos)
+ButtonPanel::ButtonPanel(PLF* plf, Controller* arg_controller,
+                  			 int arg_x_pos, int arg_y_pos)
+  : last_press(0),
+    controller (arg_controller),
+    x_pos (arg_x_pos), 
+    y_pos (arg_y_pos)
 {
-  last_press = 0;
 
   std::vector<ActionData> buttons_data = plf->get_actions();
 

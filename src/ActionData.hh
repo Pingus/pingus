@@ -1,4 +1,4 @@
-//  $Id: ActionData.hh,v 1.3 2002/06/10 13:03:34 torangan Exp $
+//  $Id: ActionData.hh,v 1.4 2002/06/11 09:55:12 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,10 +30,8 @@ public:
   ActionData() {}
 
   ///
-  ActionData(const std::string& str, int i) 
+  ActionData(const std::string& str, int i) : name(str), number_of(i)
   {
-    name = str;
-    number_of = i;
   }
 
   ///
