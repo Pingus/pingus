@@ -1,4 +1,4 @@
-//  $Id: editor_help_screen.cxx,v 1.11 2003/04/22 16:40:41 grumbel Exp $
+//  $Id: editor_help_screen.cxx,v 1.12 2003/04/24 15:18:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,7 +19,7 @@
 
 #include <ClanLib/Display/Display/display.h>
 #include <ClanLib/Display/Font/font.h>
-#include "../my_gettext.hxx"
+#include "../gettext.h"
 #include "../pingus_resource.hxx"
 #include "../fonts.hxx"
 #include "editor_help_screen.hxx"

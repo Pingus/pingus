@@ -1,4 +1,4 @@
-//  $Id: spot_map.cxx,v 1.26 2003/04/19 10:23:17 torangan Exp $
+//  $Id: spot_map.cxx,v 1.27 2003/04/24 15:18:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,7 +24,7 @@
 #include "pingus_error.hxx"
 #include "blitter.hxx"
 #include "spot_map.hxx"
-#include "my_gettext.hxx"
+#include "gettext.h"
 #include "col_map.hxx"
 #include "math.hxx"
 

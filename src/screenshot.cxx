@@ -1,4 +1,4 @@
-//  $Id: screenshot.cxx,v 1.13 2003/04/23 16:16:37 torangan Exp $
+//  $Id: screenshot.cxx,v 1.14 2003/04/24 15:18:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,7 +27,7 @@
 #include <ClanLib/Display/Display/target.h>
 #include "system.hxx"
 #include "screenshot.hxx"
-#include "my_gettext.hxx"
+#include "gettext.h"
 
 // Saves a screenshot to file, it return the filename the screenshot
 // was saved to.

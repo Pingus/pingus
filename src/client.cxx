@@ -1,4 +1,4 @@
-//  $Id: client.cxx,v 1.45 2003/04/19 10:23:17 torangan Exp $
+//  $Id: client.cxx,v 1.46 2003/04/24 15:18:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -152,7 +152,7 @@ Client::process_events (const GameDelta& delta)
 void
 Client::process_scroll_event (const Input::ScrollEvent& ev)
 {
-  std::cout << "Client::process_scroll_event ()" << std::endl;
+  //std::cout << "Client::process_scroll_event ()" << std::endl;
   playfield->scroll(static_cast<int>(ev.x_delta),
                     static_cast<int>(ev.y_delta));
 }

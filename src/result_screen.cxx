@@ -1,4 +1,4 @@
-//  $Id: result_screen.cxx,v 1.16 2003/04/23 16:16:37 torangan Exp $
+//  $Id: result_screen.cxx,v 1.17 2003/04/24 15:18:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,7 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
-#include "my_gettext.hxx"
+#include "gettext.h"
 #include "sprite.hxx"
 #include "gui/surface_button.hxx"
 #include "gui/gui_manager.hxx"

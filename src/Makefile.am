@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.151 2003/04/16 18:02:27 torangan Exp $
+#  $Id: Makefile.am,v 1.152 2003/04/24 15:18:19 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -179,7 +179,6 @@ mover.cxx \
 mover.hxx \
 multiline_text.cxx \
 multiline_text.hxx \
-my_gettext.hxx \
 path_manager.cxx \
 path_manager.hxx \
 pingu.cxx \

@@ -1,4 +1,4 @@
-//  $Id: pingu_enums.cxx,v 1.7 2003/04/19 10:23:17 torangan Exp $
+//  $Id: pingu_enums.cxx,v 1.8 2003/04/24 15:18:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,7 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "my_gettext.hxx"
+#include "gettext.h"
 #include "pingu_enums.hxx"
 
 // Pingu "globals".  Make [deadly_velocity = 20 * sqrt("normal gravity")] so

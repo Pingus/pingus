@@ -1,4 +1,4 @@
-//  $Id: demo_recorder.cxx,v 1.18 2003/04/19 10:23:17 torangan Exp $
+//  $Id: demo_recorder.cxx,v 1.19 2003/04/24 15:18:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,7 +24,7 @@
 #include "demo_recorder.hxx"
 #include "server.hxx"
 #include "plf.hxx"
-#include "my_gettext.hxx"
+#include "gettext.h"
 
 DemoRecorder::DemoRecorder (Server* server)
   : record_demo (true)

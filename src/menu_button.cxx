@@ -1,4 +1,4 @@
-//  $Id: menu_button.cxx,v 1.10 2003/04/22 16:40:41 grumbel Exp $
+//  $Id: menu_button.cxx,v 1.11 2003/04/24 15:18:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,7 +31,7 @@
 #include "gui/screen_manager.hxx"
 #include "worldmap/manager.hxx"
 #include "story_screen.hxx"
-#include "my_gettext.hxx"
+#include "gettext.h"
 #include "stat_manager.hxx"
 #include "story.hxx"
 

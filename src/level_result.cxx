@@ -1,4 +1,4 @@
-//  $Id: level_result.cxx,v 1.15 2003/04/22 16:40:41 grumbel Exp $
+//  $Id: level_result.cxx,v 1.16 2003/04/24 15:18:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,7 +30,7 @@
 #include "world.hxx"
 #include "pingu_holder.hxx"
 #include "fonts.hxx"
-#include "my_gettext.hxx"
+#include "gettext.h"
 
 PingusLevelResult::PingusLevelResult(World* w, Controller* c)
   : controller (c)

@@ -1,4 +1,4 @@
-//  $Id: credits.cxx,v 1.34 2003/04/23 16:16:37 torangan Exp $
+//  $Id: credits.cxx,v 1.35 2003/04/24 15:18:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,7 +25,7 @@
 #include "pingus_resource.hxx"
 #include "credits.hxx"
 #include "fonts.hxx"
-#include "my_gettext.hxx"
+#include "gettext.h"
 
 Credits* Credits::instance_ = 0;
 

@@ -1,4 +1,4 @@
-//  $Id: editor_event.cxx,v 1.57 2003/04/19 10:23:18 torangan Exp $
+//  $Id: editor_event.cxx,v 1.58 2003/04/24 15:18:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,7 +33,7 @@
 #include "../gui/screen_manager.hxx"
 #include "../html_browser.hxx"
 #include "../loading.hxx"
-#include "../my_gettext.hxx"
+#include "../gettext.h"
 #include "../pingus_error.hxx"
 #include "../pingus_resource.hxx"
 #include "../plf_res_mgr.hxx"

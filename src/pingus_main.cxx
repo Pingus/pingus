@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.89 2003/04/24 13:18:18 grumbel Exp $
+//   $Id: pingus_main.cxx,v 1.90 2003/04/24 15:18:19 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___
@@ -45,7 +45,7 @@
 # include <ClanLib/gl.h>
 #endif
 
-#include "my_gettext.hxx"
+#include "gettext.h"
 
 #include "gui/screen_manager.hxx"
 #include "gui/input_debug_screen.hxx"
@@ -680,7 +680,12 @@ PingusMain::init_path_finder()
         std::cout << "setlocale returned '" << ret << "'" << std::endl;
     }
 
-  bindtextdomain(PACKAGE, (path_manager.get_base_path () + "/../../locale/").c_str());
+#ifdef WIN32
+  bindtextdomain(PACKAGE, path_manager.complete("/../../locale/").c_str());
+#else
+  bindtextdomain(PACKAGE, path_manager.complete("locale/").c_str());
+#endif
+
   // We use another LOCALEDIR to make static binaries possible
   // bindtextdomain (PACKAGE, LOCALEDIR);
   textdomain(PACKAGE);
@@ -688,8 +693,8 @@ PingusMain::init_path_finder()
   // Forcing codeset to ISO-8859-1, since usage of
   // setlocate(LC_CTYPE,"") causes all sorts of throuble
   bind_textdomain_codeset(PACKAGE, "ISO-8859-1");
-
 #endif
+
   if (maintainer_mode)
     std::cout << "BasePath: " << path_manager.get_base_path () << std::endl;
 }

@@ -1,4 +1,4 @@
-//  $Id: start_screen.cxx,v 1.19 2003/04/19 10:23:17 torangan Exp $
+//  $Id: start_screen.cxx,v 1.20 2003/04/24 15:18:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,7 +23,7 @@
 #include "gui/surface_button.hxx"
 #include "gui/component.hxx"
 #include "gui/screen_manager.hxx"
-#include "my_gettext.hxx"
+#include "gettext.h"
 #include "game_session.hxx"
 #include "globals.hxx"
 #include "string_converter.hxx"
@@ -141,7 +141,7 @@ StartScreenComponent::draw(GraphicContext& gc)
 
   int left_x  = CL_Display::get_width()/2 - 120;
   int right_x = CL_Display::get_width()/2 + 120;
-  int y = CL_Display::get_height()/2 + 10;
+  int y = CL_Display::get_height()/2 + 40;
 
   gc.print_center(Fonts::chalk_large,
                   gc.get_width()/2,

@@ -1,4 +1,4 @@
-//  $Id: object_selector.cxx,v 1.41 2003/04/22 16:40:41 grumbel Exp $
+//  $Id: object_selector.cxx,v 1.42 2003/04/24 15:18:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,7 +27,7 @@
 #include "../console.hxx"
 #include "../globals.hxx"
 #include "../loading.hxx"
-#include "../my_gettext.hxx"
+#include "../gettext.h"
 #include "../path_manager.hxx"
 #include "../pingus_resource.hxx"
 #include "../string_converter.hxx"

@@ -1,4 +1,4 @@
-//  $Id: system.cxx,v 1.19 2003/04/19 10:23:17 torangan Exp $
+//  $Id: system.cxx,v 1.20 2003/04/24 15:18:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,7 +39,7 @@
 #include "globals.hxx"
 #include "string_converter.hxx"
 #include "system.hxx"
-#include "my_gettext.hxx"
+#include "gettext.h"
 
 int System::verbose;
 std::string System::default_email;
