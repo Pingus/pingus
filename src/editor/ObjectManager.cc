@@ -1,4 +1,4 @@
-//  $Id: ObjectManager.cc,v 1.30 2000/08/28 00:34:39 grumbel Exp $
+//  $Id: ObjectManager.cc,v 1.31 2000/09/07 09:45:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -141,7 +141,7 @@ ObjectManager::load_level (string filename)
       i->surface = PingusResource::load_surface(i->desc);
     }
 
-  try {
+
   vector<EntranceData> temp_entraces = plf->get_entrance();
   vector<HotspotData>  temp_hotspots = plf->get_hotspot();
   vector<ExitData>     temp_exits    = plf->get_exit();
@@ -169,17 +169,6 @@ ObjectManager::load_level (string filename)
 
   for(vector<WeatherData>::iterator i = temp_weather.begin(); i != temp_weather.end(); ++i)
     editor_objs.push_back(EditorObj::create(*i));
-  }
-  catch (PingusError err) {
-    std::cout << err.message << std::endl;
-  }
-  catch (CL_Error err) {
-    std::cout << err.message << std::endl;
-  }
-  catch (...) {
-    std::cout << "Catched something" << std::endl;
-  }
-  std::cout << "sorting" << std::endl;
 
 #ifndef WIN32 // FIXME: Compiler error in Windows
   editor_objs.sort(EditorObj_less());
@@ -267,7 +256,7 @@ ObjectManager::save_level (string filename)
   // FIXME: we need some error checking
   
   plf_out << "/* This level was created with the PLE\n"
-	  << " * $Id: ObjectManager.cc,v 1.30 2000/08/28 00:34:39 grumbel Exp $\n"
+	  << " * $Id: ObjectManager.cc,v 1.31 2000/09/07 09:45:39 grumbel Exp $\n"
 	  << " */"
 	  << endl;
   

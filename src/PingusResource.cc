@@ -1,4 +1,4 @@
-//  $Id: PingusResource.cc,v 1.9 2000/07/10 18:42:25 grumbel Exp $
+//  $Id: PingusResource.cc,v 1.10 2000/09/07 09:45:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -144,8 +144,18 @@ PingusResource::load_surface(const ResDescriptor& res_desc)
       switch(res_desc.type)
 	{
 	case ResDescriptor::RESOURCE:
-	  surf = CL_Surface::load(res_desc.res_name.c_str(),
-				  get(suffix_fixer(res_desc.datafile)));
+	  try {
+	    surf = CL_Surface::load(res_desc.res_name.c_str(),
+				    get(suffix_fixer(res_desc.datafile)));
+	  } catch (CL_Error err) {
+	    std::cout << "PingusResource: CL_Error: " << err.message << std::endl;
+	    try {
+	      surf = CL_Surface::load("Game/404", get(suffix_fixer("game")));
+	    } catch (CL_Error err2) {
+	      std::cout << "PingusResource: Fatal error, important gfx files couldn't be loaded!" << std::endl;
+	      throw err;
+	    }
+	  }
 	  surface_map[res_desc] = surf;
 	  return surf;
 	  

@@ -1,4 +1,4 @@
-//  $Id: SurfaceBackgroundData.hh,v 1.1 2000/08/28 00:23:50 grumbel Exp $
+//  $Id: SurfaceBackgroundData.hh,v 1.2 2000/09/07 09:45:39 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,7 @@
 #define SURFACEBACKGROUNDDATA_HH
 
 #include <gnome-xml/parser.h>
-#include "../BackgroundData.hh"
+#include "BackgroundData.hh"
 
 class SurfaceBackground;
 

@@ -1,4 +1,4 @@
-//  $Id: World.cc,v 1.33 2000/08/28 00:34:39 grumbel Exp $
+//  $Id: World.cc,v 1.34 2000/09/07 09:45:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,8 +39,7 @@
 #include "entrances/entrances.hh"
 #include "FVec.hh"
 #include "Timer.hh"
-#include "particles/SnowGenerator.hh"
-#include "Background.hh"
+#include "particles/WeatherGenerator.hh"
 
 using namespace std;
 
@@ -63,6 +62,7 @@ World::World()
   particle_holder = 0;
   released_pingus = 0;
   gfx_map = 0;
+  pingus = 0;
   //background = 0;
   exit_world = false;
   WorldObj::set_world(this);
@@ -79,9 +79,9 @@ World::~World()
 {
   std::cout << "World:~World" << std::endl;
 
-  delete pingus;
-  delete particle_holder;
-  delete gfx_map;
+  if (pingus) delete pingus;
+  if (particle_holder) delete particle_holder;
+  if (gfx_map) delete gfx_map;
   
   for (vector<Background*>::iterator i = backgrounds.begin(); i != backgrounds.end(); i++)
     delete *i;

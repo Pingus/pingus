@@ -1,4 +1,4 @@
-//  $Id: PLF.hh,v 1.16 2000/08/28 00:34:39 grumbel Exp $
+//  $Id: PLF.hh,v 1.17 2000/09/07 09:45:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,7 +26,7 @@
 #include <vector>
 #include <map>
 
-#include "BackgroundData.hh"
+#include "backgrounds/BackgroundData.hh"
 #include "WeatherData.hh"
 #include "ActionData.hh"
 #include "EntranceData.hh"

@@ -1,4 +1,4 @@
-//  $Id: SurfaceBackground.hh,v 1.1 2000/08/28 00:23:50 grumbel Exp $
+//  $Id: SurfaceBackground.hh,v 1.2 2000/09/07 09:45:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,7 +25,7 @@
 #include "../AnimCounter.hh"
 #include "../GameCounter.hh"
 #include "../ResDescriptor.hh"
-#include "../Background.hh"
+#include "Background.hh"
 #include "SurfaceBackgroundData.hh"
 
 ///

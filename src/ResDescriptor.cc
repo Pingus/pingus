@@ -1,4 +1,4 @@
-//  $Id: ResDescriptor.cc,v 1.8 2000/07/04 22:59:13 grumbel Exp $
+//  $Id: ResDescriptor.cc,v 1.9 2000/09/07 09:45:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -94,7 +94,7 @@ ResDescriptor::ResDescriptor(const std::string& c_cast, const std::string& value
 bool
 ResDescriptor::operator<(const ResDescriptor& res_desc) const
 {
-  return (res_name < res_desc.res_name);
+  return (datafile + res_name) < (res_desc.datafile + res_desc.res_name);
 }
 
 /* EOF */

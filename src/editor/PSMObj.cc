@@ -1,4 +1,4 @@
-//  $Id: PSMObj.cc,v 1.20 2000/08/28 00:34:39 grumbel Exp $
+//  $Id: PSMObj.cc,v 1.21 2000/09/07 09:45:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,6 +28,7 @@
 
 PSMObj::PSMObj(SurfaceData data)
 {
+  pos.z_pos = 0;
   pos = data.pos;
   type = data.type;
   desc = data.desc;
@@ -40,6 +41,7 @@ PSMObj::PSMObj(const PSMObj& t)
 {
   pos.x_pos = t.pos.x_pos + 5;
   pos.y_pos = t.pos.y_pos + 5;
+  pos.z_pos = 0;
   surf  = t.surf;
   desc  = t.desc;
   type  = t.type;

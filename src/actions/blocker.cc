@@ -1,4 +1,4 @@
-//  $Id: blocker.cc,v 1.5 2000/03/10 18:55:14 grumbel Exp $
+//  $Id: blocker.cc,v 1.6 2000/09/07 09:45:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -79,18 +79,18 @@ Blocker::need_catch()
 
 
 void
-Blocker::catch_pingu(Pingu* pingu_data)
+Blocker::catch_pingu(Pingu* target)
 {
-  if (pingu_data->x_pos > pingu->x_pos - 16 
-      && pingu_data->x_pos < pingu->x_pos + 16
-      && pingu_data->y_pos > pingu->y_pos - 32
-      && pingu_data->y_pos < pingu->y_pos + 2
+  if (target->x_pos > pingu->x_pos - 16 
+      && target->x_pos < pingu->x_pos + 16
+      && target->y_pos > pingu->y_pos - 32
+      && target->y_pos < pingu->y_pos + 5
       ) 
     {
-      if (pingu_data->x_pos > pingu->x_pos) {
-	pingu_data->direction.right();
+      if (target->x_pos > pingu->x_pos) {
+	target->direction.right();
       } else {
-	pingu_data->direction.left();
+	target->direction.left();
       }
     }
 }

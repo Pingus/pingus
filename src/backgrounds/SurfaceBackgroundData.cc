@@ -1,4 +1,4 @@
-//  $Id: SurfaceBackgroundData.cc,v 1.1 2000/08/28 00:23:50 grumbel Exp $
+//  $Id: SurfaceBackgroundData.cc,v 1.2 2000/09/07 09:45:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,7 +37,7 @@ SurfaceBackgroundData::~SurfaceBackgroundData()
 void
 SurfaceBackgroundData::write_xml(ofstream* xml)
 {
-  (*xml) << "<background>\n";
+  (*xml) << "<background type=\"surface\">\n";
   XMLhelper::write_desc_xml(xml, desc);
   
   (*xml)  << "  <color>\n"
