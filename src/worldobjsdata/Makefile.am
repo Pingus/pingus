@@ -42,7 +42,6 @@ libpingus_worldobjsdata_a_SOURCES = \
 	surface_background_data.cxx	 surface_background_data.hxx \
 	switch_door_data.cxx             switch_door_data.hxx \
 	teleporter_data.cxx              teleporter_data.hxx \
-	thunderstorm_background_data.cxx thunderstorm_background_data.hxx \
-        worldobj_group_data.hxx          worldobj_group_data.cxx
+	thunderstorm_background_data.cxx thunderstorm_background_data.hxx
 
 # EOF #

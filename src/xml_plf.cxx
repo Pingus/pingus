@@ -100,65 +100,11 @@ XMLPLF::parse_file()
 	    {
 	      parse_actions(cur);
 	    }
-	  else if (XMLhelper::equal_str(cur->name, "background"))
-	    {
-	      parse_background(cur);
-	    }
-	  else if (XMLhelper::equal_str(cur->name, "groundpiece"))
-	    {
-	      // FIXME: This is *not* backward compatible and wreck the levels
-	      // worldobjs_data.push_back(WorldObjDataFactory::instance()->create (doc, cur));
-
-	      // This probally is backward compatible
-	      //groundpieces.push_back(WorldObjsData::GroundpieceData (doc, cur));
-	      worldobjs_data.push_back(new WorldObjsData::GroundpieceData (doc, cur));
-	    }
-	  else if (XMLhelper::equal_str(cur->name, "exit"))
-	    {
-	      worldobjs_data.push_back (new WorldObjsData::ExitData(doc, cur));
-	    }
-	  else if (XMLhelper::equal_str(cur->name, "entrance"))
-	    {
-	      worldobjs_data.push_back (new WorldObjsData::EntranceData(doc, cur));
-	    }
-	  else if (XMLhelper::equal_str(cur->name, "trap"))
-	    {
-	      parse_traps(cur);
-	    }
-	  else if (XMLhelper::equal_str(cur->name, "hotspot"))
-	    {
-	      worldobjs_data.push_back(new WorldObjsData::HotspotData(doc, cur));
-	    }
-	  else if (XMLhelper::equal_str(cur->name, "liquid"))
-	    {
-	      worldobjs_data.push_back(new WorldObjsData::LiquidData(doc, cur));
-	    }
-	  else if (XMLhelper::equal_str(cur->name, "worldobj"))
-	    {
-	      worldobjs_data.push_back(WorldObjDataFactory::instance()->create(doc, cur));
-	    }
-	  else if (XMLhelper::equal_str(cur->name, "prefab"))
-	    {
-              worldobjs_data.push_back(WorldObjDataFactory::instance()->create(doc, cur));
+          else
+            {
+              parse_worldobjs(cur);
             }
-	  else if (XMLhelper::equal_str(cur->name, "group"))
-	    {
-              worldobjs_data.push_back(WorldObjDataFactory::instance()->create(doc, cur));
-	      //worldobjs_data.push_back (new WorldObjsData::WorldObjGroupData (doc, cur));
-	      //parse_group (cur);
-	    }
-	  else if (XMLhelper::equal_str(cur->name, "start-position"))
-	    {
-	      parse_start_pos(cur);
-	    }
-	  else if (XMLhelper::equal_str(cur->name, "weather"))
-	    {
-	      worldobjs_data.push_back(WorldObjDataFactory::instance()->create (doc, cur));
-	    }
-	  else
-	    {
-	      printf("XMLPLF: Unhandled: %s\n", reinterpret_cast<const char*>(cur->name));
-	    }
+         
 	  cur = cur->next;
 	}
       //puts("global done");
@@ -168,62 +114,78 @@ XMLPLF::parse_file()
 }
 
 void
-XMLPLF::parse_group (xmlNodePtr cur)
+XMLPLF::parse_worldobjs(xmlNodePtr cur)
 {
-  cur = cur->children;
-
-  while (cur)
+  if (XMLhelper::equal_str(cur->name, "background"))
     {
-      if (XMLhelper::equal_str(cur->name, "background"))
+      parse_background(cur);
+    }
+  else if (XMLhelper::equal_str(cur->name, "groundpiece"))
+    {
+      // FIXME: This is *not* backward compatible and wreck the levels
+      // worldobjs_data.push_back(WorldObjDataFactory::instance()->create (doc, cur));
+
+      // This probally is backward compatible
+      //groundpieces.push_back(WorldObjsData::GroundpieceData (doc, cur));
+      worldobjs_data.push_back(new WorldObjsData::GroundpieceData (doc, cur));
+    }
+  else if (XMLhelper::equal_str(cur->name, "exit"))
+    {
+      worldobjs_data.push_back (new WorldObjsData::ExitData(doc, cur));
+    }
+  else if (XMLhelper::equal_str(cur->name, "entrance"))
+    {
+      worldobjs_data.push_back (new WorldObjsData::EntranceData(doc, cur));
+    }
+  else if (XMLhelper::equal_str(cur->name, "trap"))
+    {
+      parse_traps(cur);
+    }
+  else if (XMLhelper::equal_str(cur->name, "hotspot"))
+    {
+      worldobjs_data.push_back(new WorldObjsData::HotspotData(doc, cur));
+    }
+  else if (XMLhelper::equal_str(cur->name, "liquid"))
+    {
+      worldobjs_data.push_back(new WorldObjsData::LiquidData(doc, cur));
+    }
+  else if (XMLhelper::equal_str(cur->name, "worldobj"))
+    {
+      worldobjs_data.push_back(WorldObjDataFactory::instance()->create(doc, cur));
+    }
+  else if (XMLhelper::equal_str(cur->name, "prefab"))
+    {
+      worldobjs_data.push_back(WorldObjDataFactory::instance()->create(doc, cur));
+    }
+  else if (XMLhelper::equal_str(cur->name, "group"))
+    {
+      //worldobjs_data.push_back(WorldObjDataFactory::instance()->create(doc, cur));
+      xmlNodePtr mycur = cur->children;
+      while (mycur)
 	{
-	  parse_background(cur);
-	}
-      else if (XMLhelper::equal_str(cur->name, "groundpiece"))
-	{
-	  parse_groundpiece(cur);
-	}
-      else if (XMLhelper::equal_str(cur->name, "exit"))
-	{
-	  worldobjs_data.push_back(new WorldObjsData::ExitData(doc, cur));
-	}
-      else if (XMLhelper::equal_str(cur->name, "entrance"))
-	{
-	  worldobjs_data.push_back(new WorldObjsData::EntranceData(doc, cur));
-	}
-      else if (XMLhelper::equal_str(cur->name, "trap"))
-	{
-	  parse_traps(cur);
-	}
-      else if (XMLhelper::equal_str(cur->name, "hotspot"))
-	{
-	  worldobjs_data.push_back(new WorldObjsData::HotspotData (doc, cur));
-	}
-      else if (XMLhelper::equal_str(cur->name, "liquid"))
-	{
-	  worldobjs_data.push_back(new WorldObjsData::LiquidData (doc, cur));
-	}
-      else if (XMLhelper::equal_str(cur->name, "worldobj"))
-	{
-	  worldobjs_data.push_back(WorldObjDataFactory::instance()->create (doc, cur));
-	}
-      else if (XMLhelper::equal_str(cur->name, "group"))
-	{
-	  //worldobjs_data.push_back (new WorldObjsData::WorldObjGroupData (doc, cur));
-	  parse_group (cur);
-	}
-      else if (XMLhelper::equal_str(cur->name, "start-position"))
-	{
-	  parse_start_pos(cur);
-	}
-      else if (XMLhelper::equal_str(cur->name, "weather"))
-	{
-	  worldobjs_data.push_back(WorldObjDataFactory::instance()->create (doc, cur));
-	}
-      else
-	{
-	  printf("XMLPLF: Unhandled parse_group: %s\n", reinterpret_cast<const char*>(cur->name));
-	}
-      cur = cur->next;
+	  if (xmlIsBlankNode(mycur))
+	    {
+	      mycur = mycur->next;
+	      continue;
+	    }
+
+          parse_worldobjs(mycur);
+
+          mycur = mycur->next;
+          mycur = XMLhelper::skip_blank(mycur->next);
+        }
+    }
+  else if (XMLhelper::equal_str(cur->name, "start-position"))
+    {
+      parse_start_pos(cur);
+    }
+  else if (XMLhelper::equal_str(cur->name, "weather"))
+    {
+      worldobjs_data.push_back(WorldObjDataFactory::instance()->create (doc, cur));
+    }
+  else
+    {
+      printf("XMLPLF: Unhandled: %s\n", reinterpret_cast<const char*>(cur->name));
     }
 }
 

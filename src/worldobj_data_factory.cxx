@@ -46,7 +46,6 @@
 #include "worldobjsdata/switch_door_data.hxx"
 #include "worldobjsdata/teleporter_data.hxx"
 #include "worldobjsdata/thunderstorm_background_data.hxx"
-#include "worldobjsdata/worldobj_group_data.hxx"
 #include "worldobjsdata/prefab_obj_data.hxx"
 
 namespace Pingus {
@@ -73,7 +72,6 @@ WorldObjDataFactory::instance ()
       new WorldObjDataFactoryImpl<EntranceData>("entrance");
       new WorldObjDataFactoryImpl<ExitData>("exit");
       new WorldObjDataFactoryImpl<PrefabObjData>("prefab");
-      new WorldObjDataFactoryImpl<WorldObjGroupData>("group");
 
       // traps
       new WorldObjDataFactoryImpl<BumperData>("bumper");
@@ -141,10 +139,6 @@ WorldObjDataFactory::create (xmlDocPtr doc, xmlNodePtr cur)
   else if (XMLhelper::equal_str(cur->name, "groundpiece"))
     {
       return create ("groundpiece", doc, cur);
-    }
-  else if (XMLhelper::equal_str(cur->name, "group"))
-    {
-      return create ("group", doc, cur);
     }
   else if (XMLhelper::equal_str(cur->name, "prefab"))
     {

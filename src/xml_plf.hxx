@@ -32,7 +32,7 @@ private:
 
   void parse_file ();
 
-  void parse_group       (xmlNodePtr cur);
+  void parse_worldobjs   (xmlNodePtr cur);
   void parse_background  (xmlNodePtr cur);
   void parse_actions     (xmlNodePtr cur);
   void parse_global      (xmlNodePtr cur);

@@ -20,8 +20,8 @@
 #include <iostream>
 #include "xml_helper.hxx"
 #include "prefab.hxx"
-#include "worldobjsdata/worldobj_group_data.hxx"
 #include "worldobj_data_factory.hxx"
+#include "worldobj_data.hxx"
 #include "path_manager.hxx"
 #include "pingus_error.hxx"
 
