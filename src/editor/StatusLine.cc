@@ -1,4 +1,4 @@
-//  $Id: StatusLine.cc,v 1.6 2000/12/16 23:11:24 grumbel Exp $
+//  $Id: StatusLine.cc,v 1.7 2001/05/19 20:58:42 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,7 +32,7 @@ StatusLine::~StatusLine()
 }
   
 void
-StatusLine::draw(int x_offset, int y_offset)
+StatusLine::draw(boost::dummy_ptr<EditorView> view)
 {
   char mouse_co[256];
   // FIXME: This is a potential buffer overrun, to lazy to fix it right now
@@ -56,9 +56,8 @@ StatusLine::draw(int x_offset, int y_offset)
   
   font->print_left(50, 5, status_line_text.c_str());
 
-  sprintf(mouse_co, "X:%-3d Y:%-3d",
-	  CL_Mouse::get_x() - x_offset,
-	  CL_Mouse::get_y() - y_offset);
+  CL_Vector pos = view->screen_to_world(CL_Vector (CL_Mouse::get_x(), CL_Mouse::get_y ()));
+  sprintf(mouse_co, "X:%-3d Y:%-3d", int(pos.x), int(pos.y));
 
   font->print_left(CL_Display::get_width() - 100, 5, mouse_co);
 }

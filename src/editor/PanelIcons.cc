@@ -1,4 +1,4 @@
-//  $Id: PanelIcons.cc,v 1.8 2001/05/19 09:48:24 grumbel Exp $
+//  $Id: PanelIcons.cc,v 1.9 2001/05/19 20:58:42 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -140,6 +140,7 @@ PanelIconRegionZoom::PanelIconRegionZoom ()
 void 
 PanelIconRegionZoom::on_click()
 {
+  editor->get_event ()->zoom_mode ();
 }
 
 PanelIconZoomIn::PanelIconZoomIn()

@@ -1,4 +1,4 @@
-//  $Id: EditorView.hh,v 1.1 2001/05/19 14:22:02 grumbel Exp $
+//  $Id: EditorView.hh,v 1.2 2001/05/19 20:58:42 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -52,7 +52,7 @@ public:
 
   /** Set the current zoom and offset, so that the given rectangle is
       completly visible on the screen and maximally zoomed. */
-  void zoom_to (int zx1, int zy1, int zx2, int zy2);
+  void zoom_to (CL_Rect rect);
 
   /// Scroll the view by the given delta
   void move (CL_Vector delta);

@@ -1,4 +1,4 @@
-//  $Id: StatusLine.hh,v 1.6 2000/12/16 23:11:24 grumbel Exp $
+//  $Id: StatusLine.hh,v 1.7 2001/05/19 20:58:42 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,9 +42,8 @@ public:
   ///
   void set_current_objs(std::list<boost::shared_ptr<EditorObj> >* c_objs);
   ///
-  void draw(int, int);
-}///
-;
+  void draw(boost::dummy_ptr<EditorView> view);
+};
 
 #endif
 

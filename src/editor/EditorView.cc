@@ -1,4 +1,4 @@
-//  $Id: EditorView.cc,v 1.1 2001/05/19 14:22:02 grumbel Exp $
+//  $Id: EditorView.cc,v 1.2 2001/05/19 20:58:42 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -48,27 +48,43 @@ EditorView::get_zoom ()
 void
 EditorView::set_zoom (float new_zoom)
 {
-  float factor = new_zoom / offset.z;
-  int width  = x2 - x1;
-  int height = y2 - y1;
- 
-  /*
-  offset.x += (((width  * offset.z) - (width  * new_zoom)) / 2.0f);
-  offset.y += (((height * offset.z) - (height * new_zoom)) / 2.0f);
-
-  std::cout << "Zoom offset: " 
-	    << ((width * offset.z) - (width * new_zoom)) / 2.0f
-	    << std::endl;
-  */
   offset.z = new_zoom;
-  std::cout << "Factor:   " << factor << std::endl;
-  //d::cout << "New Zoom: " << new_zoom << std::endl;
+  //std::cout << "Zoom: " << offset.z << std::endl;
 }
 
 void 
-EditorView::zoom_to (int zx1, int zy1, int zx2, int zy2)
+EditorView::zoom_to (CL_Rect arg_rect)
 {
-  std::cout << "EditorView::zoom_to (): not implemented" << std::endl;
+  CL_Rect rect;
+
+  rect.x1 = std::min (arg_rect.x1, arg_rect.x2);
+  rect.x2 = std::max (arg_rect.x1, arg_rect.x2);
+  rect.y1 = std::min (arg_rect.y1, arg_rect.y2);
+  rect.y2 = std::max (arg_rect.y1, arg_rect.y2);
+  
+  CL_Vector pos1 = screen_to_world (CL_Vector(rect.x1, rect.y1));
+  CL_Vector pos2 = screen_to_world (CL_Vector(rect.x2, rect.y2));
+
+  CL_Vector center = (pos2 + pos1) * 0.5f;
+  offset = -center;
+
+  float width  = pos2.x - pos1.x;
+  float height = pos2.y - pos1.y;
+
+  if (width < 10 && height < 10)
+    return ;
+
+  float screen_relation = get_width () / get_height ();
+  float rect_reation = width / height;
+  
+  if (rect_reation > screen_relation)
+    {
+      set_zoom (get_width () / (pos2.x - pos1.x));
+    }
+  else
+    {
+      set_zoom (get_height () / (pos2.y - pos1.y));
+    }
 }
 
 int 
@@ -92,13 +108,13 @@ EditorView::move (CL_Vector delta)
 CL_Vector
 EditorView::screen_to_world (CL_Vector pos)
 {
-  return (pos * (1.0f/offset.z)) - offset;
+  return ((pos - center) * (1.0f/offset.z)) - offset;
 }
 
 CL_Vector
 EditorView::world_to_screen (CL_Vector pos)
 {
-  return pos * offset.z + offset;
+  return ((pos + offset) * offset.z) + center;
 }
 
 float 

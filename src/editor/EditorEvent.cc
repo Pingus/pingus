@@ -1,4 +1,4 @@
-//  $Id: EditorEvent.cc,v 1.44 2001/05/19 09:48:24 grumbel Exp $
+//  $Id: EditorEvent.cc,v 1.45 2001/05/19 20:58:42 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -691,6 +691,12 @@ void
 EditorEvent::editor_zoom_out ()
 {
   editor->view->set_zoom (editor->view->get_zoom () / 1.4f);
+}
+
+void 
+EditorEvent::zoom_mode ()
+{
+  editor->zoom_mode ();
 }
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: Editor.cc,v 1.25 2001/05/18 19:17:08 grumbel Exp $
+//  $Id: Editor.cc,v 1.26 2001/05/19 20:58:42 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -121,6 +121,7 @@ Editor::edit ()
       CL_System::keep_alive();
       move_objects();
       draw();
+      Display::flip_display(true);
     }
 
   unregister_event_handler();
@@ -154,10 +155,8 @@ Editor::draw ()
 		       1.0, 1.0, 1.0, 1.0);
 		       }*/
 
-  status_line->draw(view->get_offset ().x, view->get_offset ().y);
+  status_line->draw(view);
   scroll_map->draw(view);
-
-  Display::flip_display(true);
 }
 
 
@@ -187,6 +186,7 @@ Editor::scroll()
 	       << " Y: " << object_manager.y_offset << std::endl;
 	  */
 	  draw();
+	  Display::flip_display(true);
 	}
     }
   
@@ -290,6 +290,48 @@ Editor::save_tmp_level ()
   return filename;
 }
 
+void 
+Editor::zoom_mode ()
+{
+  CL_Rect rect;
+  bool mouse_down = false;
+
+  CL_Surface mouse_cursor = PingusResource::load_surface("editor/region-zoom", "core");
+  
+  while (true)
+    {
+      CL_System::keep_alive();      
+      
+      if (CL_Mouse::left_pressed () && !mouse_down)
+	{
+	  mouse_down = true;
+	  rect.x1 = CL_Mouse::get_x ();
+	  rect.y1 = CL_Mouse::get_y ();
+	}
+      else if (!CL_Mouse::left_pressed () && mouse_down)
+	{
+	  break;
+	}
+
+      draw ();
+
+      if (mouse_down)
+	{
+	  rect.x2 = CL_Mouse::get_x ();
+	  rect.y2 = CL_Mouse::get_y ();
+	  
+	  CL_Display::draw_rect (rect.x1, rect.y1, rect.x2, rect.y2, 
+				 1.0, 1.0, 0.0, 1.0);
+	}
+
+      mouse_cursor.put_screen (CL_Mouse::get_x (), CL_Mouse::get_y ());
+
+      Display::flip_display(true);
+    }
+  
+  view->zoom_to (rect);
+}
+
 void
 Editor::rect_get_current_objs()
 {
@@ -313,7 +355,7 @@ Editor::rect_get_current_objs()
       Display::draw_rect(start_pos.x, start_pos.y, end_pos.x, end_pos.y,
 			 0.0, 1.0, 0.0, 1.0);
       panel->draw();
-      status_line->draw(view->get_offset ().x, view->get_offset ().y);
+      status_line->draw(view);
       Display::flip_display(true);
     }
   
@@ -378,6 +420,7 @@ Editor::interactive_move_object()
       old_pos = new_pos;
       
       draw();
+      Display::flip_display (true);
       CL_System::keep_alive();
     }
 }
@@ -442,6 +485,9 @@ Editor::interactive_load()
 
 /***********************************************
 $Log: Editor.cc,v $
+Revision 1.26  2001/05/19 20:58:42  grumbel
+Some more zooming support
+
 Revision 1.25  2001/05/18 19:17:08  grumbel
 Added zooming support to the editor
 
