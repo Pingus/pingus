@@ -1,4 +1,4 @@
-//   $Id: Pingus.cc,v 1.26 2000/05/24 15:45:02 grumbel Exp $
+//   $Id: Pingus.cc,v 1.27 2000/05/26 18:00:18 grumbel Exp $
 //    ___
 //   |  _\ A free Lemmings clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -211,6 +211,7 @@ PingusMain::check_args(int argc, char* argv[])
     // 
     {"no-cfg-file",    no_argument, 0, 142},
     {"debug-tiles",     no_argument, 0, 143},
+    {"tile-size",     required_argument, 0, 144},
     {0, 0, 0, 0}
   };
 
@@ -375,6 +376,10 @@ PingusMain::check_args(int argc, char* argv[])
       debug_tiles = true;
       break;
 
+    case 144:
+      sscanf(optarg, "%d", &tile_size);
+      break;
+
     default:
       
       std::cout << "Unknow char: " << c << std::endl << std::endl;
@@ -404,6 +409,7 @@ PingusMain::check_args(int argc, char* argv[])
 	"   -e, --editor             Launch the Level editor (experimental)\n"
 	"   --disable-auto_scrolling Disable automatic scrolling\n"
 	"   --debug-tiles            Draw empty tiles\n"
+	"   --tile-size INT          Set the size of the map tiles (default: 32)\n"
 	"   --no-cfg-file            Don't read ~/.pingus/config\n"
 	
 	"\nDemo playing and recording:\n"
