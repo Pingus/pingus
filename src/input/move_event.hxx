@@ -1,4 +1,4 @@
-//  $Id: move_event.hxx,v 1.1 2002/07/10 16:15:28 torangan Exp $
+//  $Id: move_event.hxx,v 1.2 2002/07/10 16:40:48 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,10 +30,10 @@ namespace Input {
   
     public:
       Type  type;
-      float pos;
+      float x, y;
            
     public:
-      MoveEvent (Type type_, float pos_) : type(type_), pos(pos_) { }
+      MoveEvent (Type type_, float x_, float y_) : type(type_), x(x_), y(y_) { }
       
       EventType get_type () { return Input::MoveEvent; }
   };
