@@ -92,13 +92,14 @@ Playfield::draw (DrawingContext& gc)
 {
   scene_context->clear();
   scene_context->light().fill_screen(CL_Color(50, 50, 50));
+ 
   state.push(*scene_context);
+
+  cap.set_pingu(current_pingu);
+  cap.draw(*scene_context);
   
   world->draw(*scene_context);
-  
-  cap.set_pingu(current_pingu);
-  cap.draw(gc);
-
+ 
   if (needs_clear_screen)
     {
       for(std::vector<CL_Rect>::iterator i = clipping_rectangles.begin();

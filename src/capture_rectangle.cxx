@@ -26,6 +26,7 @@
 #include "pingu_action.hxx"
 #include "button_panel.hxx"
 #include "globals.hxx"
+#include "display/scene_context.hxx"
 #include "fonts.hxx"
 
 namespace Pingus {
@@ -47,34 +48,35 @@ CaptureRectangle::~CaptureRectangle ()
 }
 
 void
-CaptureRectangle::draw(DrawingContext& gc)
+CaptureRectangle::draw(SceneContext& sc)
 {
   if (pingu && pingu->catchable())
     {
       // Draw the capture rectangle
       if (pingu->change_allowed(button_panel->get_action_name()))
         {
-          gc.draw(good, pingu->get_center_pos());
+          sc.color().draw(good, pingu->get_center_pos() + Vector(0, 0, 1000));
         }
       else
         {
-          gc.draw(bad, pingu->get_center_pos());
+          sc.color().draw(bad, pingu->get_center_pos() + Vector(0, 0, 1000));
         }
       
       // Paint the direction arrow
       if (pingu->direction.is_left())
         {
-          gc.draw(arrow_left, pingu->get_center_pos());
+          sc.color().draw(arrow_left, pingu->get_center_pos() + Vector(0, 0, 1000));
         }
       else
         {
-          gc.draw(arrow_right, pingu->get_center_pos());
+          sc.color().draw(arrow_right, pingu->get_center_pos() + Vector(0, 0, 1000));
         }
 
-      gc.print_center(font, 
-                      static_cast<int>(pingu->get_center_pos().x),
-                      static_cast<int>(pingu->get_center_pos().y) - 32,
-                      action_str);
+      sc.color().print_center(font, 
+                              pingu->get_center_pos().x,
+                              pingu->get_center_pos().y - 32,
+                              action_str,
+                              1000);
     }
 }
 

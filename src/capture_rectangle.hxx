@@ -59,7 +59,7 @@ public:
 
   void set_pingu(Pingu* pingu);
 
-  void draw(DrawingContext& gc);
+  void draw(SceneContext& gc);
 
 private:
   CaptureRectangle (const CaptureRectangle&);
