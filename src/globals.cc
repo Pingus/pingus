@@ -1,4 +1,4 @@
-//  $Id: globals.cc,v 1.6 2000/03/08 01:57:02 grumbel Exp $
+//  $Id: globals.cc,v 1.7 2000/03/10 19:33:29 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -44,5 +44,7 @@ string pingus_homedir;
 bool   auto_scrolling     = true;
 int    tile_size          = 32;
 bool   fullscreen_enabled = false;
+int    screen_width  = 800;
+int    screen_height = 600;
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: PingusMenu.cc,v 1.10 2000/03/01 02:57:48 grumbel Exp $
+//  $Id: PingusMenu.cc,v 1.11 2000/03/10 19:33:29 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -62,7 +62,6 @@ PingusMenu::~PingusMenu()
 void
 PingusMenu::draw()
 {
-  cout << "Drawing..." << endl;
   // Filling the background with a texture
   for(int y = 0; y < CL_Display::get_height(); y += background->get_height())
     for(int x = 0; x < CL_Display::get_width(); x += background->get_width())

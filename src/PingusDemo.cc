@@ -1,4 +1,4 @@
-//  $Id: PingusDemo.cc,v 1.4 2000/02/18 03:08:41 grumbel Exp $
+//  $Id: PingusDemo.cc,v 1.5 2000/03/10 19:33:29 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -86,7 +86,7 @@ void
 PingusDemo::set_next_event(std::string event)
 {
   out << event << std::endl;
-  std::cout<< "PingusDemo: " << event << std::endl;
+  //std::cout<< "PingusDemo: " << event << std::endl;
 }
 
 /* EOF */
