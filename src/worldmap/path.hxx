@@ -1,4 +1,4 @@
-//  $Id: path.hxx,v 1.2 2002/10/15 21:48:43 grumbel Exp $
+//  $Id: path.hxx,v 1.3 2002/10/19 17:43:07 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #ifndef HEADER_PINGUS_WORLDMAP_PATH_HXX
 #define HEADER_PINGUS_WORLDMAP_PATH_HXX
 
+#include <algorithm>
 #include <vector>
 #include "../vector.hxx"
 
@@ -69,12 +70,16 @@ public:
 
   void insert(Path& p) {
     path_length_valid = false; 
-    vec.insert(vec.end(), p.vec.begin(), p.vec.end()); 
+    //vec.insert(vec.end(), p.vec.begin(), p.vec.end()); 
+    vec.reserve(vec.size() + p.vec.size ());
+    std::copy(p.vec.begin(), p.vec.end(), std::back_inserter(vec));
   }
 
   void reverse_insert(Path& p) { 
     path_length_valid = false; 
-    vec.insert(vec.end(), p.vec.rbegin(), p.vec.rend()); 
+    //vec.insert(vec.end(), p.vec.rbegin(), p.vec.rend()); 
+    vec.reserve(vec.size() + p.vec.size ());
+    std::copy(p.vec.rbegin(), p.vec.rend(), std::back_inserter(vec));
   }
 
   void reverse();
