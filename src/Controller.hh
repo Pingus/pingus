@@ -1,4 +1,4 @@
-//  $Id: Controller.hh,v 1.8 2001/04/15 12:28:15 grumbel Exp $
+//  $Id: Controller.hh,v 1.9 2001/04/21 14:40:22 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -101,7 +101,7 @@ protected:
   CL_Rect rect;
   
 public:
-  Controller (int arg_owner_id);
+  Controller (int arg_owner_id = 0);
   virtual ~Controller () {}
 
   virtual int get_x () =0;

@@ -1,4 +1,4 @@
-//  $Id: KeyboardController.hh,v 1.1 2001/04/15 12:28:15 grumbel Exp $
+//  $Id: KeyboardController.hh,v 1.2 2001/04/21 14:40:22 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,7 +28,7 @@ private:
   CL_Vector pos;
   
 public:
-  KeyboardController (int owner_id);
+  KeyboardController (int owner_id = 0);
   virtual ~KeyboardController ();
 
   int get_x () { return (int)pos.x; }

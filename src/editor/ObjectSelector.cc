@@ -1,4 +1,4 @@
-//  $Id: ObjectSelector.cc,v 1.40 2001/04/21 10:55:16 grumbel Exp $
+//  $Id: ObjectSelector.cc,v 1.41 2001/04/21 14:40:23 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -64,11 +64,7 @@ ObjectSelector::get_obj(int x_off, int y_off)
 std::list<boost::shared_ptr<EditorObj> >
 ObjectSelector::get_trap()
 {
-  vector<string> traps;
-  vector<string>::iterator current_trap;
-  //  int j = 0;
   TrapData trap;
-  bool have_name = false;
   
   trap.pos.x = CL_Mouse::get_x() - x_offset;
   trap.pos.y = CL_Mouse::get_y() - y_offset;
@@ -85,48 +81,42 @@ ObjectSelector::get_trap()
   font->print_left(20,200, "7 - bumper");
   Display::flip_display();
 
-  current_trap = traps.begin();
-
-  while (!have_name) 
+  trap.type = "";
+  while (trap.type.empty()) 
     {
       switch (read_key()) 
 	{
 	case CL_KEY_1:
 	  trap.type = "guillotine";	  
-	  have_name = true;
 	  break;
 	case CL_KEY_2:
 	  trap.type = "hammer";
-	  have_name = true;
 	  break;
 	case CL_KEY_3:
 	  trap.type = "spike";
-	  have_name = true;
 	  break;
 	case CL_KEY_4:
 	  trap.type = "laser_exit";
-	  have_name = true;
 	  break;
 	case CL_KEY_5:
 	  trap.type = "fake_exit";
-	  have_name = true;
 	  break;
 	case CL_KEY_6:
 	  trap.type = "smasher";
-	  have_name = true;
 	  break;
 	case CL_KEY_7:
 	  trap.type = "bumper";
-	  have_name = true;
 	  break;
 	case CL_KEY_ESCAPE:
 	  return std::list<boost::shared_ptr<EditorObj> >();
 	}
+      CL_System::keep_alive ();
+      CL_System::sleep (20);
     }
  
   // FIXME: Can somebody enlight me, why gcc gives here a warrning?: 
   // ObjectSelector.cc:107: warning: control reaches end of non-void function `ObjectSelector::get_trap()'
-  return EditorObj::create (&trap);
+  return EditorObj::create(trap);
 }
 
 boost::shared_ptr<EditorObj>
@@ -485,6 +475,9 @@ ObjectSelector::read_string(string description, string def_str)
 /*
 
 $Log: ObjectSelector.cc,v $
+Revision 1.41  2001/04/21 14:40:23  grumbel
+Fixed the insertion of traps
+
 Revision 1.40  2001/04/21 10:55:16  grumbel
 Some cleanups in the editor's object hierachie (I guess I broke half of it...)
 

@@ -1,4 +1,4 @@
-//  $Id: ActionHolder.cc,v 1.23 2001/04/20 20:53:54 grumbel Exp $
+//  $Id: ActionHolder.cc,v 1.24 2001/04/21 14:40:21 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,27 +46,33 @@
 
 using namespace boost;
 
+bool ActionHolder::is_registered = false;
+
 ActionHolder::ActionHolder()
 {
-  std::cout << "Registering all actions..." << std::endl;
-  new BasherFactory ();
-  new BlockerFactory ();
-  new BomberFactory ();
-  new BridgerFactory ();
-  new ClimberFactory ();
-  new DiggerFactory ();
-  new ExiterFactory ();
-  new FloaterFactory ();
-  new MinerFactory ();
-  new JumperFactory ();
-  new TeleportedFactory ();
-  new ExiterFactory ();
-  new SmashedFactory ();
-  new LaserKillFactory ();
-  new SplashedFactory ();
-  new WaiterFactory ();
-  new DrownFactory ();
-  std::cout << "Registering all actions...done" << std::endl;
+  if (!is_registered)
+    {
+      std::cout << "Registering all actions..." << std::endl;
+      new BasherFactory ();
+      new BlockerFactory ();
+      new BomberFactory ();
+      new BridgerFactory ();
+      new ClimberFactory ();
+      new DiggerFactory ();
+      new ExiterFactory ();
+      new FloaterFactory ();
+      new MinerFactory ();
+      new JumperFactory ();
+      new TeleportedFactory ();
+      new ExiterFactory ();
+      new SmashedFactory ();
+      new LaserKillFactory ();
+      new SplashedFactory ();
+      new WaiterFactory ();
+      new DrownFactory ();
+      std::cout << "Registering all actions...done" << std::endl;
+      is_registered = true;
+    }
 }
 
 ActionHolder::~ActionHolder()

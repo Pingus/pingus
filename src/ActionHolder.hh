@@ -1,4 +1,4 @@
-//  $Id: ActionHolder.hh,v 1.12 2001/01/17 22:02:14 grumbel Exp $
+//  $Id: ActionHolder.hh,v 1.13 2001/04/21 14:40:21 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,6 +39,8 @@ class PinguAction;
 class ActionHolder
 {
 private:
+  static bool is_registered;
+
   /** A map holding the number of available actions. 
    *  For each action <i>name</i> there is a map (<i>name</i>, <i>n</i>)
    *  where the integer <i>n</i> indicates how much more actions 

@@ -1,4 +1,4 @@
-//  $Id: PLFObj.cc,v 1.40 2001/04/21 10:55:16 grumbel Exp $
+//  $Id: PLFObj.cc,v 1.41 2001/04/21 14:40:23 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -100,7 +100,7 @@ HotspotObj::status_line()
 {
   char str[256];
 
-  sprintf(str, "Hotspot - Speed: %d - X: %f - Y: %f - Z: %f",  speed, position->x, position->y, position->z);
+  sprintf(str, "Hotspot - Speed: %d - X: %.2f - Y: %.2f - Z: %.2f",  speed, position->x, position->y, position->z);
 
   return std::string(str);
 }
@@ -298,17 +298,17 @@ ExitObj::status_line()
 {
   char str[256];
 
-  sprintf(str, "Exit - %s - X:%3f Y:%3f Z:%3f OwnerId: %d",
+  sprintf(str, "Exit - %s - X:%4.2f Y:%4.2f Z:%4.2f OwnerId: %d",
 	  desc.res_name.c_str(),
 	  position->x, position->y, position->z, owner_id);
 
   return std::string(str);
 }
 
-TrapObj::TrapObj(TrapData data)
+TrapObj::TrapObj(const TrapData& data)
+  : TrapData (data)
 {
   *position = data.pos;
-  type  = data.type;
   frame = 0;
 
   if (type == "guillotine") {
@@ -335,7 +335,7 @@ TrapObj::TrapObj(TrapData data)
     surf = PingusResource::load_surface("Traps/teleporter", "traps");
     position->z = 100;
   } else {
-    throw PingusError(type + ": trap is not implemented in editor");
+    throw PingusError("'" + type + "': trap is not implemented in editor");
   }
   width = surf.get_width ();
   height = surf.get_height ();
@@ -518,7 +518,7 @@ LiquidObj::status_line()
 {
   char str[256];
 
-  sprintf(str, "%4f:%4f:%3f:%2d", position->x, position->y, position->z, speed);
+  sprintf(str, "%4.2f:%4.2f:%3.2f:%2d", position->x, position->y, position->z, speed);
 
   return std::string(str);
 }

@@ -1,4 +1,4 @@
-//  $Id: PLFObj.hh,v 1.17 2001/04/21 10:55:16 grumbel Exp $
+//  $Id: PLFObj.hh,v 1.18 2001/04/21 14:40:23 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -70,7 +70,7 @@ public:
 
 ///
 class EntranceObj : public PLFObj,
-		    protected EntranceData
+		    public EntranceData
 {
 private:
 public:
@@ -90,7 +90,7 @@ public:
 
 ///
 class ExitObj : public PLFObj,
-		protected ExitData
+		public ExitData
 {
 private:
   int owner_id;
@@ -116,13 +116,10 @@ class TrapObj : public PLFObj,
 		protected TrapData
 {
 private:
-  ///
-  std::string type;
-  ///
-  int    frame;
+  int frame;
 public:
   ///
-  TrapObj(TrapData);
+  TrapObj(const TrapData&);
   ///
   ~TrapObj();
   ///

@@ -36,8 +36,10 @@
     <blocker count="20"/>
     <bomber count="20"/>
     <bridger count="20"/>
+    <climber count="20"/>
     <digger count="20"/>
     <floater count="20"/>
+    <jumper count="20"/>
     <miner count="20"/>
   </action-list>
 
@@ -299,8 +301,8 @@
   <resource-ident>desert/platform</resource-ident>
   </resource></surface>
   <position>
-    <x-pos>76</x-pos>
-    <y-pos>242</y-pos>
+    <x-pos>68</x-pos>
+    <y-pos>247</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
@@ -2687,8 +2689,8 @@
   <resource-ident>desert/platform_left</resource-ident>
   </resource></surface>
   <position>
-    <x-pos>882</x-pos>
-    <y-pos>262</y-pos>
+    <x-pos>894</x-pos>
+    <y-pos>269</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
@@ -2735,8 +2737,8 @@
   <resource-ident>desert/platform</resource-ident>
   </resource></surface>
   <position>
-    <x-pos>963</x-pos>
-    <y-pos>259</y-pos>
+    <x-pos>975</x-pos>
+    <y-pos>266</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
@@ -3107,28 +3109,196 @@
   <resource-ident>desert/platform_right</resource-ident>
   </resource></surface>
   <position>
-    <x-pos>193</x-pos>
-    <y-pos>246</y-pos>
+    <x-pos>185</x-pos>
+    <y-pos>251</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="transparent">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-transparent</resource-datafile>
+  <resource-ident>misc/weed2</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>469</x-pos>
+    <y-pos>330</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="transparent">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-transparent</resource-datafile>
+  <resource-ident>misc/weed2</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>126</x-pos>
+    <y-pos>402</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="transparent">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-transparent</resource-datafile>
+  <resource-ident>misc/weed2</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>204</x-pos>
+    <y-pos>404</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="transparent">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-transparent</resource-datafile>
+  <resource-ident>misc/weed2</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>535</x-pos>
+    <y-pos>324</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="transparent">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-transparent</resource-datafile>
+  <resource-ident>misc/weed2</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>572</x-pos>
+    <y-pos>332</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="transparent">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-transparent</resource-datafile>
+  <resource-ident>misc/weed2</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>730</x-pos>
+    <y-pos>327</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="transparent">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-transparent</resource-datafile>
+  <resource-ident>misc/weed2</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>679</x-pos>
+    <y-pos>329</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="transparent">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-transparent</resource-datafile>
+  <resource-ident>misc/weed2</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>441</x-pos>
+    <y-pos>331</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="transparent">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-transparent</resource-datafile>
+  <resource-ident>misc/weed1</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>616</x-pos>
+    <y-pos>333</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="transparent">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-transparent</resource-datafile>
+  <resource-ident>misc/weed1</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>147</x-pos>
+    <y-pos>398</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="transparent">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-transparent</resource-datafile>
+  <resource-ident>misc/weed1</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>388</x-pos>
+    <y-pos>325</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="transparent">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-transparent</resource-datafile>
+  <resource-ident>misc/weed1</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>259</x-pos>
+    <y-pos>407</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="transparent">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-transparent</resource-datafile>
+  <resource-ident>misc/weed1</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>448</x-pos>
+    <y-pos>326</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="transparent">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-transparent</resource-datafile>
+  <resource-ident>misc/weed1</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>535</x-pos>
+    <y-pos>320</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="transparent">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-transparent</resource-datafile>
+  <resource-ident>misc/weed1</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>719</x-pos>
+    <y-pos>327</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
 
 <entrance>
   <position>
-    <x-pos>190</x-pos>
-    <y-pos>174</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-  <type>generic</type>
-  <direction>misc</direction>
-  <release-rate>50</release-rate>
-  <owner-id>0</owner-id>
-</entrance>
-
-<entrance>
-  <position>
-    <x-pos>955</x-pos>
-    <y-pos>185</y-pos>
+    <x-pos>173</x-pos>
+    <y-pos>187</y-pos>
     <z-pos>0</z-pos>
   </position>
   <type>generic</type>
@@ -3139,14 +3309,26 @@
 
 <entrance>
   <position>
-    <x-pos>193</x-pos>
-    <y-pos>513</y-pos>
+    <x-pos>197</x-pos>
+    <y-pos>506</y-pos>
     <z-pos>0</z-pos>
   </position>
   <type>generic</type>
   <direction>misc</direction>
   <release-rate>50</release-rate>
   <owner-id>2</owner-id>
+</entrance>
+
+<entrance>
+  <position>
+    <x-pos>966</x-pos>
+    <y-pos>203</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+  <type>generic</type>
+  <direction>misc</direction>
+  <release-rate>50</release-rate>
+  <owner-id>3</owner-id>
 </entrance>
 
 <entrance>
@@ -3158,12 +3340,12 @@
   <type>generic</type>
   <direction>misc</direction>
   <release-rate>50</release-rate>
-  <owner-id>3</owner-id>
+  <owner-id>0</owner-id>
 </entrance>
 
 <exit use-old-pos-handling="0">
-    <position>
-    <x-pos>437</x-pos>
+  <position>
+    <x-pos>473</x-pos>
     <y-pos>560</y-pos>
     <z-pos>0</z-pos>
   </position>
@@ -3171,47 +3353,43 @@
     <resource-datafile>exits</resource-datafile>
   <resource-ident>Exits/stone</resource-ident>
   </resource></surface>
-    <owner-id>0</owner-id>
-</exit>
+  <owner-id>3</owner-id></exit>
 
 <exit use-old-pos-handling="0">
   <position>
     <x-pos>665</x-pos>
-    <y-pos>560</y-pos>
+    <y-pos>562</y-pos>
     <z-pos>0</z-pos>
   </position>
   <surface><resource type="datafile">
     <resource-datafile>exits</resource-datafile>
   <resource-ident>Exits/stone</resource-ident>
   </resource></surface>
-    <owner-id>1</owner-id>
-</exit>
+  <owner-id>0</owner-id></exit>
 
 <exit use-old-pos-handling="0">
   <position>
-    <x-pos>642</x-pos>
-    <y-pos>331</y-pos>
+    <x-pos>645</x-pos>
+    <y-pos>327</y-pos>
     <z-pos>0</z-pos>
   </position>
   <surface><resource type="datafile">
     <resource-datafile>exits</resource-datafile>
   <resource-ident>Exits/stone</resource-ident>
   </resource></surface>
-    <owner-id>2</owner-id>
-</exit>
+  <owner-id>1</owner-id></exit>
 
 <exit use-old-pos-handling="0">
   <position>
-    <x-pos>470</x-pos>
-    <y-pos>328</y-pos>
+    <x-pos>480</x-pos>
+    <y-pos>326</y-pos>
     <z-pos>0</z-pos>
   </position>
   <surface><resource type="datafile">
     <resource-datafile>exits</resource-datafile>
   <resource-ident>Exits/stone</resource-ident>
   </resource></surface>
-    <owner-id>0</owner-id>
-</exit>
+  <owner-id>2</owner-id></exit>
 
   <start-position>
   <position>
@@ -3220,6 +3398,42 @@
     <z-pos>1000</z-pos>
   </position>
   </start-position>
+
+<groundpiece type="remove">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-remove</resource-datafile>
+  <resource-ident>column1.png</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>546</x-pos>
+    <y-pos>536</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="remove">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-remove</resource-datafile>
+  <resource-ident>column1.png</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>547</x-pos>
+    <y-pos>647</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="remove">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-remove</resource-datafile>
+  <resource-ident>column1.png</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>546</x-pos>
+    <y-pos>747</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
 
 </pingus-level>
 

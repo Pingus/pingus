@@ -1,4 +1,4 @@
-// $Id: TrapData.hh,v 1.4 2001/04/21 10:55:15 grumbel Exp $
+// $Id: TrapData.hh,v 1.5 2001/04/21 14:40:22 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,6 +32,9 @@ public:
   CL_Vector pos;
   
   TrapData(){}
+  TrapData(const TrapData& data) 
+    : type (data.type),
+      pos (data.pos) {}
   virtual ~TrapData(){}
   void clean(){}
 

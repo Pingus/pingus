@@ -8,6 +8,8 @@ echo -n ".""."
 ./gen-scrfile.pl images/groundpieces/solid > data/groundpieces-solid.scr
 echo -n "."
 ./gen-scrfile.pl images/groundpieces/transparent > data/groundpieces-transparent.scr
+echo -n "."
+./gen-scrfile.pl images/groundpieces/remove > data/groundpieces-remove.scr
 echo " "
 
 #EOF#

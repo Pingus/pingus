@@ -1,4 +1,4 @@
-//  $Id: Client.cc,v 1.53 2001/04/15 22:54:49 grumbel Exp $
+//  $Id: Client.cc,v 1.54 2001/04/21 14:40:21 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -580,14 +580,14 @@ Client:: on_middle_pressed (const CL_Vector& pos)
 void
 Client:: on_right_pressed (const CL_Vector& pos)
 {
-  std::cout << "Right Pressed" << std::endl;
- playfield->enable_scroll_mode();
+  //std::cout << "Right Pressed" << std::endl;
+  playfield->enable_scroll_mode();
 }
 
 void 
 Client::on_right_released (const CL_Vector& pos)
 {
-  std::cout << "Right released" << std::endl;
+  //std::cout << "Right released" << std::endl;
   playfield->disable_scroll_mode();
 }
 

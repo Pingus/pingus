@@ -1,4 +1,4 @@
-// $Id: EditorObj.cc,v 1.29 2001/04/21 10:55:16 grumbel Exp $
+// $Id: EditorObj.cc,v 1.30 2001/04/21 14:40:23 grumbel Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -112,6 +112,8 @@ EditorObj::create (WorldObjData* obj)
     objs = EditorConveyorBeltObj::create (dynamic_cast<ConveyorBeltData*>(obj));
   else if (dynamic_cast<SwitchDoorData*>(obj))
     objs = EditorSwitchDoorObj::create (dynamic_cast<SwitchDoorData*>(obj));
+  else if (dynamic_cast<TrapData*>(obj))
+    objs = make_list(new TrapObj (*dynamic_cast<TrapData*>(obj)));
   else
     {
       throw PingusError(_("EditorObj: Warrning unknown WorldObjData pointer!"));
@@ -253,6 +255,9 @@ EditorObj::gui_edit_obj()
   
 /*
 $Log: EditorObj.cc,v $
+Revision 1.30  2001/04/21 14:40:23  grumbel
+Fixed the insertion of traps
+
 Revision 1.29  2001/04/21 10:55:16  grumbel
 Some cleanups in the editor's object hierachie (I guess I broke half of it...)
 

@@ -1,4 +1,4 @@
-//  $Id: bomber.cc,v 1.20 2001/04/20 20:53:55 grumbel Exp $
+//  $Id: bomber.cc,v 1.21 2001/04/21 14:40:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -73,20 +73,22 @@ Bomber::update(float delta)
   if (pingu->get_status() == dead)
     return;
 
-  /*if (counter > 9 && !sound_played) {
+  sprite.update (delta);
+
+  if (sprite.get_frame () > 9 && !sound_played) {
     pingu->get_world ()->play_wav("explode", pingu->get_pos ());
     sound_played = true;
-    }
+  }
 
   // Throwing particles
-  if (counter > 12 && !particle_thrown) 
+  if (sprite.get_frame () > 12 && !particle_thrown) 
     {
       particle_thrown = true;
       pingu->get_world()->get_particle_holder()->add_pingu_explo(pingu->get_x (), pingu->get_y () - 5);
-      }*/
+    }
 
   // The pingu explode
-  /*if (counter >= (int)(surface.get_num_frames()) - 1) 
+  if (sprite.finished ())
     {
       pingu->set_status(dead);
       pingu->get_world()->get_colmap()->remove(bomber_radius,
@@ -99,7 +101,7 @@ Bomber::update(float delta)
       // Add an explosion to the forces list
       ForcesHolder::add_force(ExplosionForce(5,30,CL_Vector(pingu->get_x (),
 							     pingu->get_y () - 20)));
-							     }*/
+    }
 }
 
 /* EOF */

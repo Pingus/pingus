@@ -1,4 +1,4 @@
-//  $Id: Exit.cc,v 1.20 2001/04/21 10:55:15 grumbel Exp $
+//  $Id: Exit.cc,v 1.21 2001/04/21 14:40:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -51,8 +51,8 @@ Exit::~Exit()
 bool
 Exit::catch_pingu(boost::shared_ptr<Pingu> pingu)
 {
-  int x;
-  int y;
+  float x;
+  float y;
   
   if (use_old_pos_handling)
     {
