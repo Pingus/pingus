@@ -28,10 +28,12 @@ section desert
         bigprickpiece = ../images/groundpieces/ground/desert/bigprickpiece.png (type=surface);
         bigsand = ../images/groundpieces/ground/desert/bigsand.png (type=surface);
         blobdune = ../images/groundpieces/ground/desert/blobdune.png (type=surface);
+        column = ../images/groundpieces/ground/desert/column.png (type=surface);
         column_piece1 = ../images/groundpieces/ground/desert/column_piece1.png (type=surface);
         column_piece2 = ../images/groundpieces/ground/desert/column_piece2.png (type=surface);
         column_piece3 = ../images/groundpieces/ground/desert/column_piece3.png (type=surface);
         domedune = ../images/groundpieces/ground/desert/domedune.png (type=surface);
+        flat = ../images/groundpieces/ground/desert/flat.png (type=surface);
         flatdune = ../images/groundpieces/ground/desert/flatdune.png (type=surface);
         leftsmallbrick = ../images/groundpieces/ground/desert/leftsmallbrick.png (type=surface);
         leftsmallsand = ../images/groundpieces/ground/desert/leftsmallsand.png (type=surface);
@@ -151,6 +153,7 @@ section misc
         stoneblock6 = ../images/groundpieces/ground/misc/stoneblock6.png (type=surface);
         tree = ../images/groundpieces/ground/misc/tree.png (type=surface);
         well = ../images/groundpieces/ground/misc/well.png (type=surface);
+        wood1 = ../images/groundpieces/ground/misc/wood1.png (type=surface);
 }
 
 section mud
@@ -262,6 +265,7 @@ section snow
         piece8 = ../images/groundpieces/ground/snow/piece8.png (type=surface);
         piece9 = ../images/groundpieces/ground/snow/piece9.png (type=surface);
         slopedr = ../images/groundpieces/ground/snow/slopedr.png (type=surface);
+        snowball1 = ../images/groundpieces/ground/snow/snowball1.png (type=surface);
         snowman = ../images/groundpieces/ground/snow/snowman.png (type=surface);
         xmas-tree = ../images/groundpieces/ground/snow/xmas-tree.png (type=surface);
 }
