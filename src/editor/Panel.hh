@@ -1,4 +1,4 @@
-//  $Id: Panel.hh,v 1.5 2000/08/28 00:34:39 grumbel Exp $
+//  $Id: Panel.hh,v 1.6 2000/12/14 21:35:55 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,11 +32,11 @@ class PanelIcon
 {
 protected:
   ///
-  CL_Surface* sur;
+  CL_Surface sur;
   ///
-  CL_Surface* button;
+  CL_Surface button;
   ///
-  CL_Surface* button_pressed;
+  CL_Surface button_pressed;
 public:
   ///
   static Editor* editor;
@@ -67,9 +67,7 @@ private:
   ///
   Editor* editor;
   ///
-  CL_Surface* background;
-  ///
-  CL_Surface* logo;
+  CL_Surface logo;
 
 public:
   ///

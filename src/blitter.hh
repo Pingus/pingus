@@ -1,4 +1,4 @@
-//  $Id: blitter.hh,v 1.9 2000/10/14 16:09:45 grumbel Exp $
+//  $Id: blitter.hh,v 1.10 2000/12/14 21:35:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,14 +35,14 @@ private:
   static void put_surface_32bit(CL_Canvas*, CL_SurfaceProvider*,
 			       int x, int y);
 public:
-  /*void put_surface(CL_LockableSurface* provider, CL_Surface* surface,
+  /*void put_surface(CL_LockableSurface* provider, CL_Surface surface,
     int x, int y);
     void put_surface(CL_LockableSurface* provider, CL_SurfaceProvider* surface,
     int x, int y);
   */
 
   /// Puts a given surface to a given canvas at position x, y.
-  static void put_surface(CL_Canvas*, CL_Surface*,
+  static void put_surface(CL_Canvas*, const CL_Surface&,
 			  int x, int y);
 
   /// Puts a given surface provider to a given canvas at position x, y.
@@ -56,7 +56,7 @@ public:
 
   /** Returns a newly allocated canvas. The canvas contains the same
       image as the given surface. */
-  static CL_Canvas* create_canvas(CL_Surface*);
+  static CL_Canvas* create_canvas(const CL_Surface&);
 
   /** Returns a newly allocated canvas. The canvas contains the same
       image as the given surface provider */
@@ -72,7 +72,7 @@ public:
       @param width The new width of the surface. 
       @param height The new height of the surface. 
       @return A newly created surface, the caller is responsible to delete it. */
-  static CL_Surface* scale_surface (CL_Surface* sur, int width, int height);
+  static CL_Surface scale_surface (const CL_Surface& sur, int width, int height);
 
   /** Creates a new canvas with the given width and height and
       stretches the source surface onto it
@@ -81,10 +81,7 @@ public:
       @param width The new width of the surface. 
       @param height The new height of the surface. 
       @return A newly created surface, the caller is responsible to delete it. */
-  static CL_Canvas* Blitter::scale_surface_to_canvas (CL_Surface* sur, int width, int height);
-
-  //static CL_Surface* convert_to_emptyprovider(CL_Surface*);
-  //static CL_Canvas* convert_to_emptyprovider(CL_SurfaceProvider*);
+  static CL_Canvas* Blitter::scale_surface_to_canvas (const CL_Surface& sur, int width, int height);
 };
 
 #endif 

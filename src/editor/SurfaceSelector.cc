@@ -1,4 +1,4 @@
-//  $Id: SurfaceSelector.cc,v 1.9 2000/10/14 16:09:46 grumbel Exp $
+//  $Id: SurfaceSelector.cc,v 1.10 2000/12/14 21:35:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -81,14 +81,14 @@ SurfaceSelector::draw()
   // Draw all surfaces
   for(vector<surface_obj>::iterator i = sur_list->begin(); i != sur_list->end(); i++)
     {
-      if (i->sur->get_width() <= 50 && i->sur->get_height() <= 50)
+      if (i->sur.get_width() <= 50 && i->sur.get_height() <= 50)
 	{
-	  i->sur->put_screen(x + 25 - (i->sur->get_width() / 2), 
-			     y + 25 - (i->sur->get_height() / 2));
+	  i->sur.put_screen(x + 25 - (i->sur.get_width() / 2), 
+			     y + 25 - (i->sur.get_height() / 2));
 	}
       else
 	{
-	  i->sur->put_screen(x, y);
+	  i->sur.put_screen(x, y);
 	}
 
       if (i == c_obj)
@@ -112,10 +112,10 @@ SurfaceSelector::draw()
   // Draw the current object in the bottom/left corner
   if (c_obj != vector<surface_obj>::iterator())
     {
-      CL_Display::fill_rect(0, CL_Display::get_height() - c_obj->sur->get_height(),
-			    c_obj->sur->get_width(), CL_Display::get_height(),
+      CL_Display::fill_rect(0, CL_Display::get_height() - c_obj->sur.get_height(),
+			    c_obj->sur.get_width(), CL_Display::get_height(),
 			    0.5, 0.5, 0.5, 0.8);
-      c_obj->sur->put_screen(0, CL_Display::get_height() - c_obj->sur->get_height());
+      c_obj->sur.put_screen(0, CL_Display::get_height() - c_obj->sur.get_height());
     }
   Display::flip_display();
 }

@@ -1,4 +1,4 @@
-//  $Id: ThemeSelector.hh,v 1.12 2000/08/09 14:39:37 grumbel Exp $
+//  $Id: ThemeSelector.hh,v 1.13 2000/12/14 21:35:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -111,11 +111,11 @@ private:
   CL_Font* theme_font;
 
   /// The red arrow to the right
-  CL_Surface* right_arrow;
+  CL_Surface right_arrow;
   /// The red arrow to the left
-  CL_Surface* left_arrow;
+  CL_Surface left_arrow;
   /// The back button
-  CL_Surface* back;
+  CL_Surface back;
 
   ///
   bool dir_read;

@@ -1,4 +1,4 @@
-//  $Id: WoodThing.cc,v 1.7 2000/08/28 00:34:39 grumbel Exp $
+//  $Id: WoodThing.cc,v 1.8 2000/12/14 21:35:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,10 +35,10 @@ WoodThing::WoodThing(EntranceData data)
   surface  = PingusResource::load_surface("Entrances/woodthing_mov", "entrances");
   surface2 = PingusResource::load_surface("Entrances/woodthing_nmov", "entrances");
 
-  counter.set_size(surface->get_num_frames());
+  counter.set_size(surface.get_num_frames());
   counter.set_type(GameCounter::once);
   counter.set_speed(2);
-  counter =  surface->get_num_frames() - 1;
+  counter =  surface.get_num_frames() - 1;
 }
 
 void
@@ -50,8 +50,8 @@ WoodThing::let_move(void)
     {
       // This does not work and I have no idea why?!
       world->get_particle_holder()
-	->add_particle(new SmokeParticle(pos.x_pos - (surface->get_width()/2) - 24,
-					 pos.y_pos - surface->get_height() + 32 - 147,
+	->add_particle(new SmokeParticle(pos.x_pos - (surface.get_width()/2) - 24,
+					 pos.y_pos - surface.get_height() + 32 - 147,
 					 -0.6 * (frand() + 1), -0.6 * (frand() + 1)));
       // particle->add_particle(new SmokeParticle());
     }
@@ -62,14 +62,14 @@ WoodThing::draw_offset(int x, int y, float s)
 {
   if (s == 1.0) {
 
-    surface->put_screen(pos.x_pos - (surface->get_width()/2) + x,
-			pos.y_pos - surface->get_height() + 32 + y,
+    surface.put_screen(pos.x_pos - (surface.get_width()/2) + x,
+			pos.y_pos - surface.get_height() + 32 + y,
 			counter);
-    //    surface2->put_screen(x_pos - (surface->get_width()/2) + x - 24,
-     		 //			y_pos - surface->get_height() + 32 - 147 + y);
+    //    surface2->put_screen(x_pos - (surface.get_width()/2) + x - 24,
+     		 //			y_pos - surface.get_height() + 32 - 147 + y);
 
   } else {
-    surface->put_screen((int)((pos.x_pos-32 + x) * s),
+    surface.put_screen((int)((pos.x_pos-32 + x) * s),
 			(int)((pos.y_pos-16 + y) * s),
 			s, s);  
   }

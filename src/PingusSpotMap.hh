@@ -1,4 +1,4 @@
-//  $Id: PingusSpotMap.hh,v 1.12 2000/10/18 20:16:36 grumbel Exp $
+//  $Id: PingusSpotMap.hh,v 1.13 2000/12/14 21:35:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,7 +41,7 @@ private:
   bool needs_reload;
 public:
   ///
-  CL_Surface* surface;
+  CL_Surface surface;
 
   ///
   MapTileSurface();
@@ -78,7 +78,7 @@ private:
   ///
   CL_Canvas* provider;
   ///
-  CL_Surface*         map_surface;
+  CL_Surface         map_surface;
   ///
   CL_Canvas*          map_canvas;
   ///
@@ -114,7 +114,7 @@ public:
   ///
   int  get_width(void);
   ///
-  CL_Surface* get_surface(void);
+  CL_Surface get_surface(void);
   ///
   void remove(CL_SurfaceProvider*, int, int);
   ///

@@ -1,4 +1,4 @@
-//  $Id: ObjectSelector.cc,v 1.36 2000/12/12 09:12:59 grumbel Exp $
+//  $Id: ObjectSelector.cc,v 1.37 2000/12/14 21:35:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -426,7 +426,7 @@ ObjectSelector::select_surface(std::string resource_file)
 
       if (sur_obj.sur == 0)
 	{
-	  sur_obj.sur = CL_Surface::load(sur_obj.name.c_str (), res);
+	  sur_obj.sur = CL_Surface (sur_obj.name.c_str (), res);
 	  sur_obj.sur = Blitter::scale_surface (sur_obj.sur, 50, 50);
 	  ThumbCache::cache (sur_obj.sur, sur_obj.name, resource_file);
 
@@ -479,6 +479,10 @@ ObjectSelector::read_string(string description, string def_str)
 /*
 
 $Log: ObjectSelector.cc,v $
+Revision 1.37  2000/12/14 21:35:55  grumbel
+Replaced all/most CL_Surface* pointers with CL_Surface objects
+removed the sharde_ptr() stuff in PingusMenu, will add it later, when the rest it up and running again correctly
+
 Revision 1.36  2000/12/12 09:12:59  grumbel
 Some more experiments with shared and scoped pointers
 

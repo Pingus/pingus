@@ -1,4 +1,4 @@
-//  $Id: ThemeSelector.cc,v 1.33 2000/10/09 19:17:30 grumbel Exp $
+//  $Id: ThemeSelector.cc,v 1.34 2000/12/14 21:35:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -132,25 +132,25 @@ ThemeSelector::Event::on_button_press(CL_InputDevice *device, const CL_Key &key)
 	  else
 	    {
 	      // Check if we clicked on one of the red buttons
-	      if (key.x > 0 && key.x < theme_selector->left_arrow->get_width()
-		  && key.y > (CL_Display::get_height() - theme_selector->left_arrow->get_height()) / 2
-		  && key.y < (CL_Display::get_height() + theme_selector->left_arrow->get_height()) / 2)
+	      if (key.x > 0 && key.x < theme_selector->left_arrow.get_width()
+		  && key.y > (CL_Display::get_height() - theme_selector->left_arrow.get_height()) / 2
+		  && key.y < (CL_Display::get_height() + theme_selector->left_arrow.get_height()) / 2)
 		{
 		  theme_selector->current_theme++;
 		  if (theme_selector->current_theme == theme_selector->themes.end()) 
 		    theme_selector->current_theme = theme_selector->themes.begin();
 		}
-	      else if (key.x > CL_Display::get_width() - theme_selector->right_arrow->get_width()
+	      else if (key.x > CL_Display::get_width() - theme_selector->right_arrow.get_width()
 		       && key.x < CL_Display::get_width()
-		       && key.y > (CL_Display::get_height() - theme_selector->right_arrow->get_height()) / 2
-		       && key.y < (CL_Display::get_height() + theme_selector->right_arrow->get_height()) / 2)
+		       && key.y > (CL_Display::get_height() - theme_selector->right_arrow.get_height()) / 2
+		       && key.y < (CL_Display::get_height() + theme_selector->right_arrow.get_height()) / 2)
 		{
 		  if (theme_selector->current_theme == theme_selector->themes.begin()) 
 		    theme_selector->current_theme = theme_selector->themes.end();
 		  theme_selector->current_theme--;
 		}
-	      else if (key.x < theme_selector->back->get_width()
-		       && key.y < theme_selector->back->get_height())
+	      else if (key.x < theme_selector->back.get_width()
+		       && key.y < theme_selector->back.get_height())
 		{
 		  theme_selector->finished = true;
 		}
@@ -274,13 +274,13 @@ ThemeSelector::draw()
 		       0.0, 1.0, 0.0, 1.0);
   }
   
-  left_arrow->put_screen(0, (CL_Display::get_height() - left_arrow->get_height()) / 2);
-  right_arrow->put_screen(CL_Display::get_width() - right_arrow->get_width(),
-			  (CL_Display::get_height() - right_arrow->get_height()) / 2);
-  back->put_screen(0, 0);
-  if (CL_Mouse::get_x() < (int)back->get_width()
-      && CL_Mouse::get_y() < (int)back->get_height())
-    CL_Display::fill_rect(0, 0, back->get_width(), back->get_height(),
+  left_arrow.put_screen(0, (CL_Display::get_height() - left_arrow.get_height()) / 2);
+  right_arrow.put_screen(CL_Display::get_width() - right_arrow.get_width(),
+			  (CL_Display::get_height() - right_arrow.get_height()) / 2);
+  back.put_screen(0, 0);
+  if (CL_Mouse::get_x() < (int)back.get_width()
+      && CL_Mouse::get_y() < (int)back.get_height())
+    CL_Display::fill_rect(0, 0, back.get_width(), back.get_height(),
 			  1.0, 1.0, 1.0, 0.3);
 
   theme_font->print_center(CL_Display::get_width()/2, CL_Display::get_height() - 50,

@@ -1,4 +1,4 @@
-//  $Id: Playfield.hh,v 1.9 2000/07/04 22:59:13 grumbel Exp $
+//  $Id: Playfield.hh,v 1.10 2000/12/14 21:35:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,7 +42,7 @@ private:
   friend class ClientEvent;
 
   ///
-  CL_Surface* buffer;
+  CL_Surface buffer;
   ///
   Server* server;
   ///

@@ -1,4 +1,4 @@
-//  $Id: SmallMap.cc,v 1.21 2000/10/30 16:17:50 grumbel Exp $
+//  $Id: SmallMap.cc,v 1.22 2000/12/14 21:35:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,7 +37,6 @@
 
 SmallMap::SmallMap()
 {
-  sur = 0;
   width = 175;
   height = 75;
   scroll_mode = false;
@@ -45,7 +44,6 @@ SmallMap::SmallMap()
 
 SmallMap::~SmallMap()
 {
-  delete sur;
 }
   
 void
@@ -124,7 +122,7 @@ SmallMap::init()
     {
       // FIXME: Replace this with put_target() when it is bug free
       Blitter::put_surface(canvas, exit_sur, 
-			   i->pos.x_pos * width / colmap->get_width() - (exit_sur->get_width()/2), 
+			   i->pos.x_pos * width / colmap->get_width() - (exit_sur.get_width()/2), 
 			   i->pos.y_pos * height / colmap->get_height());
     }
 
@@ -132,8 +130,8 @@ SmallMap::init()
   for(std::vector<EntranceData>::iterator i = entrance_d.begin(); i != entrance_d.end(); i++)
     {
       Blitter::put_surface(canvas, entrance_sur,
-			   i->pos.x_pos * width / colmap->get_width() - (entrance_sur->get_width()/2),
-			   i->pos.y_pos * height / colmap->get_height() - (entrance_sur->get_height()));
+			   i->pos.x_pos * width / colmap->get_width() - (entrance_sur.get_width()/2),
+			   i->pos.y_pos * height / colmap->get_height() - (entrance_sur.get_height()));
       
       /*entrance_sur->put_target(i->x_pos * width / colmap->get_width(),
 	i->y_pos * height / colmap->get_height(),
@@ -142,10 +140,10 @@ SmallMap::init()
 
   canvas->unlock();
   
-  sur = CL_Surface::create(canvas, true);
-
+  sur = CL_Surface(canvas, true);
+  
   x_pos = 0;
-  y_pos = CL_Display::get_height() - sur->get_height();
+  y_pos = CL_Display::get_height() - sur.get_height();
 
   rwidth = CL_Display::get_width() * width / client->get_server()->get_world()->get_colmap()->get_width();
   rheight = CL_Display::get_height() * height / client->get_server()->get_world()->get_colmap()->get_height();
@@ -166,15 +164,15 @@ SmallMap::draw()
   int x_of = playfield->get_x_offset();
   int y_of = playfield->get_y_offset();
 
-  sur->put_screen(0, CL_Display::get_height() - sur->get_height()); 
+  sur.put_screen(0, CL_Display::get_height() - sur.get_height()); 
   
   x_of = -x_of * width / client->get_server()->get_world()->get_colmap()->get_width();
   y_of = -y_of * height / client->get_server()->get_world()->get_colmap()->get_height();
 
   Display::draw_rect(x_of, 
-		     y_of + CL_Display::get_height() - sur->get_height(),
-		     x_of + min(rwidth, sur->get_width()),
-		     y_of + min(rheight, sur->get_height()) + CL_Display::get_height() - sur->get_height(),
+		     y_of + CL_Display::get_height() - sur.get_height(),
+		     x_of + min(rwidth, sur.get_width()),
+		     y_of + min(rheight, sur.get_height()) + CL_Display::get_height() - sur.get_height(),
 		     0.0, 1.0, 0.0, 1.0);
   
   // FIXME: This should use put_target(), but put_target(), does not

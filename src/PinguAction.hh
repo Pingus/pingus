@@ -1,4 +1,4 @@
-//  $Id: PinguAction.hh,v 1.9 2000/12/04 23:12:12 grumbel Exp $
+//  $Id: PinguAction.hh,v 1.10 2000/12/14 21:35:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -55,7 +55,7 @@ protected:
 
   /** The basic surface used to display an action, the inherit action
       needs to load it in PinguAction::init(). */
-  CL_Surface* surface;
+  CL_Surface surface;
   
   /// The font used for counting (used by the bomber)
   CL_Font*    font; 

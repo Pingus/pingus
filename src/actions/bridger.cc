@@ -1,4 +1,4 @@
-//  $Id: bridger.cc,v 1.28 2000/10/18 20:16:36 grumbel Exp $
+//  $Id: bridger.cc,v 1.29 2000/12/14 21:35:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,9 +24,10 @@
 
 using namespace std;
 
-CL_Surface* Bridger::brick_l = 0;
-CL_Surface* Bridger::brick_r = 0;
-CL_Surface* Bridger::static_surface = 0;
+bool Bridger::static_surfaces_loaded = false;
+CL_Surface Bridger::brick_l;
+CL_Surface Bridger::brick_r;
+CL_Surface Bridger::static_surface;
 
 Bridger::Bridger()
 {
@@ -44,18 +45,18 @@ Bridger::init(void)
   environment = (PinguEnvironment)land;
   action_name = "Bridger";
 
-  if (!static_surface)
-    static_surface = CL_Surface::load("Pingus/bridger", local_res());
+  if (!static_surfaces_loaded)
+    {
+      static_surface = CL_Surface ("Pingus/bridger", local_res());
+      brick_l = CL_Surface ("Other/brick_left", local_res());
+      brick_r = CL_Surface ("Other/brick_right", local_res());
+      static_surfaces_loaded = true;
+    }
   surface = static_surface;
-
-  if (!brick_l)
-    brick_l = CL_Surface::load("Other/brick_left", local_res());
-  if (!brick_r)
-    brick_r = CL_Surface::load("Other/brick_right", local_res());
 
   bricks = 15;
 
-  counter.set_size(surface->get_num_frames()/2);
+  counter.set_size(surface.get_num_frames()/2);
   counter.set_speed(1);
   is_multi_direct = true;
   step = 0;
@@ -67,12 +68,12 @@ Bridger::draw_offset(int x, int y, float s)
 {
   if (s == 1.0) 
     {
-      surface->put_screen(pingu->x_pos + x + x_offset(), pingu->y_pos + y + y_offset(),
+      surface.put_screen(pingu->x_pos + x + x_offset(), pingu->y_pos + y + y_offset(),
 			  do_steps + ((pingu->direction.is_left()) ? 0 : counter.get_size()));
     }
   else 
     {
-      surface->put_screen(int((pingu->x_pos + x + x_offset()) * s), int((pingu->y_pos + y + y_offset() - 1) * s), 
+      surface.put_screen(int((pingu->x_pos + x + x_offset()) * s), int((pingu->y_pos + y + y_offset() - 1) * s), 
 			  s, s, do_steps + ((pingu->direction.is_left()) ? 0 : counter.get_size()));
     }
 }
@@ -153,11 +154,11 @@ Bridger::place_a_brick()
   if (pingu->direction.is_right())
     {
       pingu->get_world()->get_colmap()->put(brick_r, 
-					    pingu->x_pos + 10 - brick_r->get_width(),
+					    pingu->x_pos + 10 - brick_r.get_width(),
 					    pingu->y_pos,
 					    GroundpieceData::BRIDGE);
-      pingu->get_world()->get_gfx_map()->put(brick_r->get_provider(), 
-					     pingu->x_pos + 10 - brick_r->get_width(),
+      pingu->get_world()->get_gfx_map()->put(brick_r,
+					     (int) pingu->x_pos + 10 - brick_r.get_width(),
 					     pingu->y_pos);
     }
   else
@@ -165,7 +166,7 @@ Bridger::place_a_brick()
       pingu->get_world()->get_colmap()->put(brick_r, pingu->x_pos - 10,
 					    pingu->y_pos,
 					    GroundpieceData::BRIDGE);
-      pingu->get_world()->get_gfx_map()->put(brick_l->get_provider(), 
+      pingu->get_world()->get_gfx_map()->put(brick_l,
 					     pingu->x_pos - 10,
 					     pingu->y_pos);
     }

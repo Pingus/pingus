@@ -1,4 +1,4 @@
-//  $Id: Intro.cc,v 1.14 2000/08/28 00:34:39 grumbel Exp $
+//  $Id: Intro.cc,v 1.15 2000/12/14 21:35:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -57,14 +57,14 @@ Intro::draw()
   
   logo = PingusResource::load_surface("Game/logo_t", "game");
 
-  for(y_pos = -(int)(logo->get_height())/2; 
+  for(y_pos = -(int)(logo.get_height())/2; 
       (y_pos < CL_Display::get_height() / 2 - 110) && !quit;
       y_pos += 2)
     {
       CL_Display::fill_rect(0,0, CL_Display::get_width(), CL_Display::get_height(),
 			    1.0, 1.0, 1.0, 1.0);
-      logo->put_screen(x_pos - logo->get_width()/2,
-		       y_pos - logo->get_height()/2);
+      logo.put_screen(x_pos - logo.get_width()/2,
+		       y_pos - logo.get_height()/2);
       Display::flip_display(true);
       CL_System::keep_alive();
     }
@@ -78,8 +78,8 @@ Intro::draw()
     {
       CL_Display::fill_rect(0,0, CL_Display::get_width(), CL_Display::get_height(),
 			    i, i, i, 1.0);
-      logo->put_screen(x_pos - logo->get_width()/2,
-		       y_pos - logo->get_height()/2);
+      logo.put_screen(x_pos - logo.get_width()/2,
+		       y_pos - logo.get_height()/2);
       Display::flip_display(true);
       CL_System::keep_alive();
     }

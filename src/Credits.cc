@@ -1,4 +1,4 @@
-//  $Id: Credits.cc,v 1.12 2000/10/30 16:17:49 grumbel Exp $
+//  $Id: Credits.cc,v 1.13 2000/12/14 21:35:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -115,8 +115,8 @@ Credits::display()
       y -= 1;
       CL_Display::clear_display(1.0, 1.0, 1.0);
       
-      surface->put_screen((CL_Display::get_width() / 4) - (surface->get_width() / 2),
-			  (CL_Display::get_height() / 2) - (surface->get_height() / 2));
+      surface.put_screen((CL_Display::get_width() / 4) - (surface.get_width() / 2),
+			 (CL_Display::get_height() / 2) - (surface.get_height() / 2));
 
       CL_Display::fill_rect(CL_Display::get_width() / 2, 0,
 			    CL_Display::get_width(), CL_Display::get_height(),

@@ -1,4 +1,4 @@
-//  $Id: teleported.cc,v 1.4 2000/06/27 16:05:16 grumbel Exp $
+//  $Id: teleported.cc,v 1.5 2000/12/14 21:35:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,8 +35,8 @@ Teleported::init(void)
   environment = (PinguEnvironment)always;
   action_name = "Teleported";
 
-  surface = CL_Surface::load("Pingus/bomber", local_res());
-  counter.set_size(surface->get_num_frames());
+  surface = CL_Surface ("Pingus/bomber", local_res());
+  counter.set_size(surface.get_num_frames());
   counter.set_type(Counter::once);
   counter.set_count(0);
   counter.set_speed(10);

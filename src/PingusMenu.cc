@@ -1,4 +1,4 @@
-//  $Id: PingusMenu.cc,v 1.37 2000/12/12 09:12:59 grumbel Exp $
+//  $Id: PingusMenu.cc,v 1.38 2000/12/14 21:35:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,8 +38,7 @@ PingusMenu::PingusMenu()
   is_init = false;
   // We need this button a bit earlier than the other ones, so we
   // allocate it here.
-  shared_ptr<EditorButton> editor_button = 
-    shared_ptr<EditorButton>(new EditorButton);
+  editor_button = new EditorButton;
 }
 
 void
@@ -56,25 +55,23 @@ PingusMenu::init ()
   background = Blitter::scale_surface (background, CL_Display::get_width (), CL_Display::get_height ());
   //  background = PingusResource::load_surface("Textures/stones", "textures");
  
-  event = new Event;
-  event->enabled = false;
-  event->menu = this;
-
+  event_enabled = false;
+  
   //  CL_Input::chain_button_press.push_back(event);
   //  CL_Input::chain_button_release.push_back(event);
   //  CL_Input::chain_mouse_move.push_back(event);
 
-  on_button_press_slot   = CL_Input::sig_button_press.connect (thCreateSlot(event, &PingusMenu::Event::on_button_press));
-  on_button_release_slot = CL_Input::sig_button_release.connect (thCreateSlot(event, &PingusMenu::Event::on_button_release));
-  //on_mouse_move_slot     = CL_Input::sig_mouse_move.connect (thCreateSlot(event, &PingusMenu::Event::on_mouse_move));
+  on_button_press_slot   = CL_Input::sig_button_press.connect (thCreateSlot(this, &PingusMenu::on_button_press));
+  on_button_release_slot = CL_Input::sig_button_release.connect (thCreateSlot(this, &PingusMenu::on_button_release));
+  //on_mouse_move_slot     = CL_Input::sig_mouse_move.connect (thCreateSlot(event, &PingusMenu::on_mouse_move));
 
   on_resize_slot = CL_Display::get_sig_resize().connect(thCreateSlot(this, &PingusMenu::on_resize));
   //CL_Display::get_sig_resize().disconnect(on_resize_slot);
 
-  options_button = shared_ptr<OptionsButton>(new OptionsButton);
-  play_button    = shared_ptr<PlayButton>(new PlayButton);
-  quit_button    = shared_ptr<QuitButton>(new QuitButton);
-  theme_button   = shared_ptr<ThemeButton>(new ThemeButton);
+  options_button = new OptionsButton;
+  play_button    = new PlayButton;
+  quit_button    = new QuitButton;
+  theme_button   = new ThemeButton;
 
   quit_button->set_pingus_menu(this);
 
@@ -87,13 +84,9 @@ PingusMenu::init ()
 
 PingusMenu::~PingusMenu()
 {
-  delete background;
-
   CL_Input::sig_button_press.disconnect (on_button_press_slot);
   CL_Input::sig_button_release.disconnect (on_button_release_slot);
   //CL_Input::sig_mouse_move.disconnect (on_mouse_move_slot);
-
-  delete event;
 }
 
 void
@@ -111,14 +104,15 @@ PingusMenu::draw()
   // Putting the logo
   //bg->put_screen(CL_Display::get_width()/2 - bg->get_width()/2, 3);
 
-  for(std::list<shared_ptr<SurfaceButton> >::iterator i = buttons.begin();
+  for(std::list<SurfaceButton*>::iterator i = buttons.begin();
       i != buttons.end(); 
       i++)
     {
+      //  std::cout << "PingusMenu: painting buttons: " <<  std::endl;
       // Mouse_over drawing is handled in SurfaceButton.cc
       (*i)->draw();
     }
-  
+  //std::cout << "PingusMenu: painting buttons: done" <<  std::endl;  
   Display::flip_display();
 }
 
@@ -142,7 +136,7 @@ PingusMenu::select(void)
 
   draw();
 
-  event->enabled = true;
+  event_enabled = true;
 
   //Display::set_cursor(CL_MouseCursorProvider::load("Cursors/cursor",
   //						   PingusResource::get("game")));
@@ -157,24 +151,24 @@ PingusMenu::select(void)
       CL_System::keep_alive();
     }
 
-  event->enabled = false;
+  event_enabled = false;
 
   Display::hide_cursor();
 }
 
 void
-PingusMenu::Event::on_mouse_move(CL_InputDevice *, int mouse_x, int mouse_y)
+PingusMenu::on_mouse_move(CL_InputDevice *, int mouse_x, int mouse_y)
 {
   // if (!enabled) return;
-  // menu->draw();
+  // draw();
 }
 
 void
-PingusMenu::Event::on_button_press(CL_InputDevice *device, const CL_Key &key)
+PingusMenu::on_button_press(CL_InputDevice *device, const CL_Key &key)
 {
-  if (!enabled) return;
+  if (!event_enabled) return;
 
-  menu->draw();
+  draw();
   
   if (device == CL_Input::keyboards[0])
     {
@@ -182,11 +176,11 @@ PingusMenu::Event::on_button_press(CL_InputDevice *device, const CL_Key &key)
 	{
 	case CL_KEY_C:
 	  {
-	    enabled = false;
+	    event_enabled = false;
 	    Credits credits;
 	    credits.display();
-	    menu->draw();
-	    enabled = true;
+	    draw();
+	    event_enabled = true;
 	  }
 	  break;
 	default:
@@ -196,11 +190,11 @@ PingusMenu::Event::on_button_press(CL_InputDevice *device, const CL_Key &key)
 }
 
 void
-PingusMenu::Event::on_button_release(CL_InputDevice *device, const CL_Key &key)
+PingusMenu::on_button_release(CL_InputDevice *device, const CL_Key &key)
 {
-  if (!enabled) return;
+  if (!event_enabled) return;
   
-  menu->draw();
+  draw();
 
   if (device == CL_Input::keyboards[0])
     {
@@ -219,20 +213,20 @@ PingusMenu::Event::on_button_release(CL_InputDevice *device, const CL_Key &key)
     {
       if (verbose) std::cout << "PingusMenu::Event: on_button_press" << std::endl;
 
-      for(std::list<shared_ptr<SurfaceButton> >::iterator i = menu->buttons.begin(); 
-	  i != menu->buttons.end(); 
+      for(std::list<SurfaceButton*>::iterator i = buttons.begin(); 
+	  i != buttons.end(); 
 	  i++)
 	{
 	  // Mouse_over drawing is handled in SurfaceButton.cc
 	  if ((*i)->mouse_over())
 	    {
-	      enabled = false;
+	      event_enabled = false;
 	      Display::hide_cursor();
 	      (*i)->on_click();
 	      //Display::set_cursor(CL_MouseCursorProvider::load("Cursors/cursor", 
 	      //PingusResource::get("game")));
 	      Display::show_cursor();
-	      enabled = true;
+	      event_enabled = true;
 	    }
 	}
     }

@@ -1,4 +1,4 @@
-//  $Id: SnowParticle.hh,v 1.4 2000/08/03 19:03:58 grumbel Exp $
+//  $Id: SnowParticle.hh,v 1.5 2000/12/14 21:35:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -45,7 +45,7 @@ class CollidingSnowParticle : public SnowParticle
 {
 private:
   bool alive;
-  static CL_Surface* ground_snow;
+  static CL_Surface ground_snow;
 public:
   CollidingSnowParticle();
   CollidingSnowParticle(int x, int y);

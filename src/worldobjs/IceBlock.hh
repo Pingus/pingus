@@ -1,4 +1,4 @@
-//  $Id: IceBlock.hh,v 1.3 2000/12/06 08:54:41 grumbel Exp $
+//  $Id: IceBlock.hh,v 1.4 2000/12/14 21:35:56 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,7 +46,7 @@ class IceBlock : public IceBlockData,
 		 public WorldObj
 {
 private:
-  CL_Surface* block_sur;
+  CL_Surface block_sur;
   float thickness;
   bool is_finished;
 public:

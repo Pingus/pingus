@@ -1,5 +1,5 @@
 
-//  $Id: Particle.hh,v 1.6 2000/08/03 19:03:58 grumbel Exp $
+//  $Id: Particle.hh,v 1.7 2000/12/14 21:35:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,7 +31,7 @@ class Particle : public WorldObj
 {
 protected:
   ///
-  CL_Surface* surface;
+  CL_Surface surface;
   ///
   float x_pos;
   ///
@@ -63,9 +63,8 @@ public:
   virtual void let_move(void);
 
   /// Draw the particle with the correct zoom resize
-  virtual void draw_offset(int, int, float) const;
-}///
-;
+  virtual void draw_offset(int, int, float);
+};
 
 #endif
 

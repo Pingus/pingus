@@ -1,4 +1,4 @@
-//  $Id: basher.cc,v 1.15 2000/10/12 19:33:51 grumbel Exp $
+//  $Id: basher.cc,v 1.16 2000/12/14 21:35:55 grumbel Exp $
 //
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -23,8 +23,9 @@
 
 using namespace std;
 
-CL_Surface* Basher::static_surface = 0;
-CL_Surface* Basher::bash_radius = 0;
+CL_Surface Basher::static_surface;
+CL_Surface Basher::bash_radius;
+bool Basher::static_surf_loaded = false;
 
 Basher::Basher()
 {
@@ -42,14 +43,15 @@ Basher::init(void)
   action_name = "Basher";
   environment = (PinguEnvironment)land;
 
-  if (!static_surface)
-    static_surface = CL_Surface::load("Pingus/basher", local_res());
-  surface = static_surface;
-
-  if (!bash_radius)
-    bash_radius = CL_Surface::load("Other/bash_radius", local_res());
+  if (!static_surf_loaded)
+    {
+      static_surface = CL_Surface ("Pingus/basher", local_res());
+      bash_radius = CL_Surface ("Other/bash_radius", local_res());
+      static_surf_loaded = true;
+    }
+  surface = static_surface; 
   
-  counter.set_size(surface->get_num_frames() / 2);
+  counter.set_size(surface.get_num_frames() / 2);
   counter.set_type(GameCounter::loop);
   counter.set_speed(1);
 
@@ -62,13 +64,13 @@ Basher::draw_offset(int x, int y, float s)
 {
   if (s == 1.0) 
     {
-      surface->put_screen(pingu->x_pos + x + x_offset(), pingu->y_pos + y + y_offset(), 
+      surface.put_screen(pingu->x_pos + x + x_offset(), pingu->y_pos + y + y_offset(), 
 			  counter + ((pingu->direction.is_left()) ? 0 : counter.get_size()));
     } 
   else 
     {
-      surface->put_screen(int((pingu->x_pos + x + x_offset()) * s), int((pingu->y_pos + y + y_offset()) * s), 
-			  s, s, counter + ((pingu->direction.is_left()) ? 0 : counter.get_size()));
+      surface.put_screen(int((pingu->x_pos + x + x_offset()) * s), int((pingu->y_pos + y + y_offset()) * s), 
+			 s, s, counter + ((pingu->direction.is_left()) ? 0 : counter.get_size()));
     }
 }
 
@@ -98,10 +100,10 @@ Basher::let_move()
 void
 Basher::bash()
 {
-  pingu->get_world()->get_colmap()->remove(bash_radius->get_provider(), 
-			pingu->x_pos - (bash_radius->get_width()/2), pingu->y_pos - 31);
-  pingu->get_world()->get_gfx_map()->remove(bash_radius->get_provider(), 
-		     pingu->x_pos - (bash_radius->get_width()/2), pingu->y_pos - 31);
+  pingu->get_world()->get_colmap()->remove(bash_radius,
+					   pingu->x_pos - (bash_radius.get_width()/2), pingu->y_pos - 31);
+  pingu->get_world()->get_gfx_map()->remove(bash_radius,
+					    pingu->x_pos - (bash_radius.get_width()/2), pingu->y_pos - 31);
 }
 
 void

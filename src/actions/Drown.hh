@@ -1,4 +1,4 @@
-//  $Id: Drown.hh,v 1.1 2000/08/11 01:00:56 grumbel Exp $
+//  $Id: Drown.hh,v 1.2 2000/12/14 21:35:55 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,7 +26,9 @@ class Drown : public PinguAction
 {
 private:
   ///
-  static CL_Surface* static_surface;
+  static bool static_surfaces_loaded;
+  ///
+  static CL_Surface static_surface;
 public:
   ///
   Drown();

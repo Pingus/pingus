@@ -1,4 +1,4 @@
-//  $Id: ActionButton.cc,v 1.11 2000/10/30 16:17:49 grumbel Exp $
+//  $Id: ActionButton.cc,v 1.12 2000/12/14 21:35:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,17 +46,17 @@ EventButton::draw()
 {
   if (mouse_over()) {
     CL_Display::fill_rect(x_pos, y_pos, 
-			  x_pos + surface->get_width(), y_pos + surface->get_height(),
+			  x_pos + surface.get_width(), y_pos + surface.get_height(),
 			  1.0, 1.0, 1.0, 1.0);
   }
-  surface->put_screen(x_pos, y_pos);
+  surface.put_screen(x_pos, y_pos);
 }
 
 bool
 EventButton::mouse_over()
 {
-  if (CL_Mouse::get_x() > x_pos && CL_Mouse::get_x() < x_pos + int(surface->get_width())
-      && CL_Mouse::get_y() > y_pos && CL_Mouse::get_y() < y_pos + int(surface->get_height()))
+  if (CL_Mouse::get_x() > x_pos && CL_Mouse::get_x() < x_pos + int(surface.get_width())
+      && CL_Mouse::get_y() > y_pos && CL_Mouse::get_y() < y_pos + int(surface.get_height()))
     {
       return true;
     }
@@ -96,18 +96,14 @@ ActionButton::init(int x, int y, std::string str)
 					       "pingus");
       if (is_multi_direct)
 	{
-	  action_c.set_size(surface->get_num_frames()/2);
+	  action_c.set_size(surface.get_num_frames()/2);
 	}
       else
 	{
-	  action_c.set_size(surface->get_num_frames());
+	  action_c.set_size(surface.get_num_frames());
 	}
 
       action_c.set_speed(50);
-    }
-  else
-    {
-      surface = 0;
     }
 }
 
@@ -194,7 +190,7 @@ HorizontalActionButton::draw()
       }
       font->print_center(x_pos + 25, y_pos + 5, str);
     }
-  surface->put_screen(x_pos + 3, y_pos + 20, action_c);
+  surface.put_screen(x_pos + 3, y_pos + 20, action_c);
 }
 
 VerticalActionButton::VerticalActionButton(int x, int y, std::string str)
@@ -255,13 +251,13 @@ VerticalActionButton::draw()
       }
       font->print_center(x_pos + 50, y_pos + 16, str);
     }
-  surface->put_screen(x_pos + 3, y_pos + 1, action_c);
+  surface.put_screen(x_pos + 3, y_pos + 1, action_c);
 }
 
 ArmageddonButton::ArmageddonButton(int x, int y)
 {
   surface = PingusResource::load_surface("buttons/armageddon_anim", "core");
-  counter.set_size(surface->get_num_frames());
+  counter.set_size(surface.get_num_frames());
   counter = 0;
   x_pos = x;
   y_pos = y;
@@ -276,21 +272,21 @@ ArmageddonButton::draw()
   if (pressed)
     {
       CL_Display::fill_rect(x_pos, y_pos, 
-			    x_pos + surface->get_width(), y_pos + surface->get_height(),
+			    x_pos + surface.get_width(), y_pos + surface.get_height(),
 			    1.0, 1.0, 1.0, 1.0);
-      surface->put_screen(x_pos, y_pos, ++counter);
+      surface.put_screen(x_pos, y_pos, ++counter);
     } 
   else 
     {
-      surface->put_screen(x_pos, y_pos, 7);
+      surface.put_screen(x_pos, y_pos, 7);
     }
 }
 
 bool
 ArmageddonButton::mouse_over()
 {
-  if (CL_Mouse::get_x() > x_pos && CL_Mouse::get_x() < x_pos + int(surface->get_width())
-      && CL_Mouse::get_y() > y_pos && CL_Mouse::get_y() < y_pos + int(surface->get_height()))
+  if (CL_Mouse::get_x() > x_pos && CL_Mouse::get_x() < x_pos + int(surface.get_width())
+      && CL_Mouse::get_y() > y_pos && CL_Mouse::get_y() < y_pos + int(surface.get_height()))
     {
       return true;
     } else  {
@@ -313,18 +309,18 @@ ForwardButton::draw()
   if (server->get_fast_forward())
     {
       CL_Display::fill_rect(x_pos, y_pos, 
-			    x_pos + surface->get_width(), y_pos + surface->get_height(),
+			    x_pos + surface.get_width(), y_pos + surface.get_height(),
 			    1.0, 1.0, 1.0, 1.0);
     }
 
-  surface->put_screen(x_pos, y_pos);
+  surface.put_screen(x_pos, y_pos);
 }
 
 bool
 ForwardButton::mouse_over()
 {
-  if (CL_Mouse::get_x() > x_pos && CL_Mouse::get_x() < x_pos + int(surface->get_width())
-      && CL_Mouse::get_y() > y_pos && CL_Mouse::get_y() < y_pos + int(surface->get_height()))
+  if (CL_Mouse::get_x() > x_pos && CL_Mouse::get_x() < x_pos + int(surface.get_width())
+      && CL_Mouse::get_y() > y_pos && CL_Mouse::get_y() < y_pos + int(surface.get_height()))
     {
       return true;
     } else  {
@@ -347,17 +343,17 @@ PauseButton::draw()
   if (server->get_pause()) 
     {
       CL_Display::fill_rect(x_pos, y_pos, 
-			    x_pos + surface->get_width(), y_pos + surface->get_height(),
+			    x_pos + surface.get_width(), y_pos + surface.get_height(),
 			    1.0, 1.0, 1.0, 1.0);
     }
-  surface->put_screen(x_pos, y_pos);
+  surface.put_screen(x_pos, y_pos);
 }
 
 bool
 PauseButton::mouse_over()
 {
-  if (CL_Mouse::get_x() > x_pos && CL_Mouse::get_x() < x_pos + int(surface->get_width())
-      && CL_Mouse::get_y() > y_pos && CL_Mouse::get_y() < y_pos + int(surface->get_height()))
+  if (CL_Mouse::get_x() > x_pos && CL_Mouse::get_x() < x_pos + int(surface.get_width())
+      && CL_Mouse::get_y() > y_pos && CL_Mouse::get_y() < y_pos + int(surface.get_height()))
     {
       return true;
     } else  {

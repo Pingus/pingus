@@ -1,4 +1,4 @@
-//  $Id: ColMap.hh,v 1.9 2000/10/18 20:16:36 grumbel Exp $
+//  $Id: ColMap.hh,v 1.10 2000/12/14 21:35:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -92,13 +92,13 @@ public:
   void put(int x, int y, PixelStatus p = WALL);
 
   ///
-  void put(CL_Surface*, int x, int y, GroundpieceData::Type = GroundpieceData::GROUND);
+  void put(const CL_Surface&, int x, int y, GroundpieceData::Type = GroundpieceData::GROUND);
 
   ///
   void put(CL_SurfaceProvider*, int x, int y, GroundpieceData::Type = GroundpieceData::GROUND);
 
   /// void remove(int x, int y);
-  void remove(CL_Surface*, int x, int y);
+  void remove(const CL_Surface&, int x, int y);
 
   ///
   void remove(CL_SurfaceProvider*, int x, int y);

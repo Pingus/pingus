@@ -1,4 +1,4 @@
-//  $Id: Guillotine.hh,v 1.5 2000/09/18 12:22:16 grumbel Exp $
+//  $Id: Guillotine.hh,v 1.6 2000/12/14 21:35:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,7 +33,7 @@ private:
   ///
   bool killing;
   ///
-  CL_Surface* idle_surf;
+  CL_Surface idle_surf;
   ///
   Direction  direction;
   ///

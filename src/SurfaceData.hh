@@ -1,4 +1,4 @@
-//  $Id: SurfaceData.hh,v 1.1 2000/07/30 02:27:48 grumbel Exp $
+//  $Id: SurfaceData.hh,v 1.2 2000/12/14 21:35:55 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,7 +29,7 @@ class SurfaceData
 {
 public:
   ///
-  CL_Surface* surface;
+  CL_Surface surface;
   ///
   CL_Resource* resource;
   ///

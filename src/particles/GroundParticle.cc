@@ -1,4 +1,4 @@
-//  $Id: GroundParticle.cc,v 1.4 2000/06/25 20:22:18 grumbel Exp $
+//  $Id: GroundParticle.cc,v 1.5 2000/12/14 21:35:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -44,19 +44,19 @@ GroundParticle::let_move(void)
 }
 
 void
-GroundParticle::draw_offset(int ofx, int ofy, float s) const
+GroundParticle::draw_offset(int ofx, int ofy, float s)
 {
   if (fast_mode)
     return;
 
   if (s == 1.0) {
     // FIXME: This segfaults from time to time, don't know why
-    surface->put_screen(x_pos + ofx - 16, y_pos + ofy - 16, 3 - (livetime * 4 / time));
+    surface.put_screen(x_pos + ofx - 16, y_pos + ofy - 16, 3 - (livetime * 4 / time));
   } else {
-    int width  = (int)(surface->get_width() * s);
-    int height = (int)(surface->get_height() * s);
-    surface->put_screen((int)((x_pos + ofx) * s) - width/2, (int)((y_pos + ofy) * s) - height/2,
-			width, height, 3 - (livetime * 4 / time));
+    int width  = (int)(surface.get_width() * s);
+    int height = (int)(surface.get_height() * s);
+    surface.put_screen((int)((x_pos + ofx) * s) - width/2, (int)((y_pos + ofy) * s) - height/2,
+		       width, height, 3 - (livetime * 4 / time));
   }
 }
 

@@ -1,4 +1,4 @@
-//  $Id: ButtonPanel.hh,v 1.6 2000/08/09 14:39:37 grumbel Exp $
+//  $Id: ButtonPanel.hh,v 1.7 2000/12/14 21:35:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -66,10 +66,8 @@ private:
   ///
   unsigned int  last_press;
   ///  static CL_ResourceManager* resource;
-  static CL_Surface* button_cap;
+  static CL_Surface button_cap;
   ///
-  static CL_Surface* button_cap_pers;
-  ///  static CL_Font*    font;
   World* world;
   
 public:

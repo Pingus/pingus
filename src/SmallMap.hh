@@ -1,4 +1,4 @@
-//  $Id: SmallMap.hh,v 1.7 2000/06/18 17:01:50 grumbel Exp $
+//  $Id: SmallMap.hh,v 1.8 2000/12/14 21:35:55 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,13 +36,13 @@ private:
   ///
   World* world;
   ///
-  CL_Surface* sur;
+  CL_Surface exit_sur;
+  ///
+  CL_Surface entrance_sur;
+  ///
+  CL_Surface sur;
   ///
   Client*     client;
-  ///
-  CL_Surface* exit_sur;
-  ///
-  CL_Surface* entrance_sur;
   ///
   int x_pos;
   ///

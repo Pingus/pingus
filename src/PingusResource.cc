@@ -1,4 +1,4 @@
-//  $Id: PingusResource.cc,v 1.14 2000/11/03 22:21:53 grumbel Exp $
+//  $Id: PingusResource.cc,v 1.15 2000/12/14 21:35:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,7 +25,7 @@
 #include "PingusResource.hh"
 
 std::map<std::string, CL_ResourceManager*> PingusResource::resource_map;
-std::map<ResDescriptor, CL_Surface*>       PingusResource::surface_map;
+std::map<ResDescriptor, CL_Surface>       PingusResource::surface_map;
 std::map<ResDescriptor, CL_Font*>          PingusResource::font_map;
 
 
@@ -96,7 +96,7 @@ PingusResource::get(const std::string& arg_filename)
     }
 }
 
-CL_Surface*
+CL_Surface
 PingusResource::load_surface(const std::string& res_name, 
 			     const std::string& datafile)
 {
@@ -104,13 +104,13 @@ PingusResource::load_surface(const std::string& res_name,
 				    ResDescriptor::RESOURCE));
 }
 
-CL_Surface*
+CL_Surface
 PingusResource::load_surface(const ResDescriptor& res_desc)
 {
   if (pingus_debug_flags & PINGUS_DEBUG_LOADING)
     std::cout << "PingusResource: Loading surface: " << res_desc << std::endl;
 
-  CL_Surface* surf = surface_map[res_desc];
+  CL_Surface surf(surface_map[res_desc]);
   
   if (surf) 
     {
@@ -125,12 +125,13 @@ PingusResource::load_surface(const ResDescriptor& res_desc)
 	{
 	case ResDescriptor::RESOURCE:
 	  try {
-	    surf = CL_Surface::load(res_desc.res_name.c_str(),
-				    get(suffix_fixer(res_desc.datafile)));
+	    surf = CL_Surface (res_desc.res_name.c_str(), get(suffix_fixer(res_desc.datafile)));
+	    //	    CL_Surface::load(res_desc.res_name.c_str(),
+	    //  get(suffix_fixer(res_desc.datafile)));
 	  } catch (CL_Error err) {
 	    std::cout << "PingusResource: -404- CL_Error: " << err.message << std::endl;
 	    try {
-	      surf = CL_Surface::load("misc/404", get(suffix_fixer("core")));
+	      surf = CL_Surface ("misc/404", get(suffix_fixer("core")));
 	    } catch (CL_Error err2) {
 	      std::cout << "PingusResource: Fatal error, important gfx files (404.pcx) couldn't be loaded!" << std::endl;
 	      throw err;
@@ -141,17 +142,18 @@ PingusResource::load_surface(const ResDescriptor& res_desc)
 	  
 	case ResDescriptor::FILE:
 	  std::cout << "PingusResource: ResDescriptor::FILE not implemented" << std::endl;
-	  surf = CL_PCXProvider::create(find_file("", res_desc.res_name), 0);
+	  assert (!"FIXME---234234");
+	  //surf = CL_PCXProvider::create(find_file("", res_desc.res_name), 0);
 	  surface_map[res_desc] = surf;	  
 	  return surf;
 	  
 	case ResDescriptor::AUTO:
-	  std::cout << "PingusResource: ResDescriptor::AUTO not implemented" << std::endl;
-	  return 0;
+	  std::cerr << "PingusResource: ResDescriptor::AUTO not implemented" << std::endl;
+	  assert (false);
 
 	default:
-	  std::cout << "PingusResource: Unknown ResDescriptor::type: " << res_desc.type  << std::endl;
-	  return 0;
+	  std::cerr << "PingusResource: Unknown ResDescriptor::type: " << res_desc.type  << std::endl;
+	  assert (false);
 	}
     }
 }

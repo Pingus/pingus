@@ -1,4 +1,4 @@
-//  $Id: PingusLevelResult.cc,v 1.16 2000/06/27 16:05:16 grumbel Exp $
+//  $Id: PingusLevelResult.cc,v 1.17 2000/12/14 21:35:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -48,9 +48,9 @@ PingusLevelResult::draw(void)
 
   Display::hide_cursor();
 
-  for(int y = 0; y < CL_Display::get_height(); y += background->get_height())
-    for(int x = 0; x < CL_Display::get_width(); x += background->get_width())
-      background->put_screen(x, y);
+  for(int y = 0; y < CL_Display::get_height(); y += background.get_height())
+    for(int x = 0; x < CL_Display::get_width(); x += background.get_width())
+      background.put_screen(x, y);
 
   CL_Display::fill_rect(0, 0, CL_Display::get_width(), CL_Display::get_height(), 0.0, 0.0, 0.0, 0.5);
   

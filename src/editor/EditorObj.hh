@@ -1,4 +1,4 @@
-//  $Id: EditorObj.hh,v 1.24 2000/12/12 09:12:59 grumbel Exp $
+//  $Id: EditorObj.hh,v 1.25 2000/12/14 21:35:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -77,7 +77,7 @@ protected:
   Color mark_color;
 
   ///
-  CL_Surface* surf;
+  CL_Surface surf;
   ///
   ResDescriptor desc;
 

@@ -1,4 +1,4 @@
-//  $Id: Exit.cc,v 1.12 2000/08/03 10:31:17 grumbel Exp $
+//  $Id: Exit.cc,v 1.13 2000/12/14 21:35:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,7 +34,7 @@ Exit::Exit(ExitData data)
 
   surface = PingusResource::load_surface(data.desc);
 
-  counter.set_size(surface->get_num_frames());
+  counter.set_size(surface.get_num_frames());
   counter.set_speed(10);
 }
 
@@ -45,8 +45,8 @@ Exit::~Exit()
 bool
 Exit::catch_pingu(Pingu* pingu)
 {
-  int x = pos.x_pos + (surface->get_width() / 2);
-  int y = pos.y_pos + surface->get_height();
+  int x = pos.x_pos + (surface.get_width() / 2);
+  int y = pos.y_pos + surface.get_height();
 
   if (pingu->get_x() > x - 1 && pingu->get_x() < x + 1
       && pingu->get_y() > y - 5 && pingu->get_y() < y + 1)
@@ -71,9 +71,9 @@ void
 Exit::draw_offset(int x_of, int y_of, float s)
 {
   if (s == 1.0) {
-    surface->put_screen(pos.x_pos + x_of, pos.y_pos + y_of, ++counter);
+    surface.put_screen(pos.x_pos + x_of, pos.y_pos + y_of, ++counter);
   } else {
-    surface->put_screen((int)((pos.x_pos + x_of) * s), (int)((pos.y_pos + y_of) * s),
+    surface.put_screen((int)((pos.x_pos + x_of) * s), (int)((pos.y_pos + y_of) * s),
 			s, s);
   }
 }

@@ -1,4 +1,4 @@
-//  $Id: PingusMapManager.hh,v 1.1 2000/10/01 15:12:36 grumbel Exp $
+//  $Id: PingusMapManager.hh,v 1.2 2000/12/14 21:35:55 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,8 +29,8 @@ private:
   static std::string directory;
   
 public:
-  static CL_Surface* get_surface (std::string level_filename);
-  static void set_surface (std::string level_filename, CL_Surface*);
+  static CL_Surface get_surface (std::string level_filename);
+  static void set_surface (std::string level_filename, const CL_Surface&);
 };
 
 #endif

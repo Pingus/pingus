@@ -1,4 +1,4 @@
- //  $Id: PingusLevelDesc.cc,v 1.16 2000/10/30 16:17:49 grumbel Exp $
+ //  $Id: PingusLevelDesc.cc,v 1.17 2000/12/14 21:35:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -47,9 +47,9 @@ PingusLevelDesc::draw(PingusLevelDesc::LoadingStatus status)
   int x_pos = CL_Display::get_width() / 2 ;
   int y_pos = 120;
     
-  for(int y = 0; y < CL_Display::get_height(); y += background->get_height())
-    for(int x = 0; x < CL_Display::get_width(); x += background->get_width())
-      background->put_screen(x, y);
+  for(int y = 0; y < CL_Display::get_height(); y += background.get_height())
+    for(int x = 0; x < CL_Display::get_width(); x += background.get_width())
+      background.put_screen(x, y);
 
   CL_Display::fill_rect(0, 0, CL_Display::get_width(), CL_Display::get_height(), 0.0, 0.0, 0.0, 0.5);
 

@@ -1,4 +1,4 @@
-//  $Id: PinguParticle.hh,v 1.5 2000/11/14 22:22:56 grumbel Exp $
+//  $Id: PinguParticle.hh,v 1.6 2000/12/14 21:35:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,7 +31,7 @@ private:
   ///
   float size_add;
   ///
-  static CL_Surface* sur;
+  static CL_Surface sur;
 public:
   ///
   PinguParticle();
@@ -41,7 +41,7 @@ public:
   ///
   void init(int x, int y, float x_a, float y_a);
   ///
-  void draw_offset(int ofx, int ofy, float s) const;
+  void draw_offset(int ofx, int ofy, float s);
   ///
   void let_move(void);
 }///

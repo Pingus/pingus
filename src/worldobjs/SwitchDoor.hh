@@ -1,4 +1,4 @@
-//  $Id: SwitchDoor.hh,v 1.4 2000/12/09 01:18:55 grumbel Exp $
+//  $Id: SwitchDoor.hh,v 1.5 2000/12/14 21:35:56 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -56,10 +56,10 @@ class SwitchDoor : public SwitchDoorData,
 		   public WorldObj
 {
 private:
-  CL_Surface* door_box;
-  CL_Surface* door_tile;
-  CL_Surface* door_tile_cmap;
-  CL_Surface* switch_sur;
+  CL_Surface door_box;
+  CL_Surface door_tile;
+  CL_Surface door_tile_cmap;
+  CL_Surface switch_sur;
   
   /** True if the door is opening */
   bool is_opening;
@@ -99,8 +99,8 @@ class EditorSwitchDoorObj : public SwitchDoorData,
 			    public EditorWorldObj
 {
 private:
-  CL_Surface* door_box;
-  CL_Surface* door_tile;
+  CL_Surface door_box;
+  CL_Surface door_tile;
 
 public:
   EditorSwitchDoorObj ();

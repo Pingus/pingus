@@ -1,4 +1,4 @@
-//  $Id: RainParticle.cc,v 1.1 2000/08/03 19:03:58 grumbel Exp $
+//  $Id: RainParticle.cc,v 1.2 2000/12/14 21:35:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,8 +22,8 @@
 #include "Particle.hh"
 #include "RainParticle.hh"
 
-CL_Surface* RainParticle::rain_surf;
-CL_Surface* RainParticle::rain_splash;
+CL_Surface RainParticle::rain_surf;
+CL_Surface RainParticle::rain_splash;
 
 RainParticle::RainParticle()
 {
@@ -54,19 +54,19 @@ RainParticle::~RainParticle()
 }
 
 void
-RainParticle::draw_offset(int x_of, int y_of, float s) const
+RainParticle::draw_offset(int x_of, int y_of, float s)
 {
   //  std::cout << "draw_offset: " << splash << std::endl;
   
   if (!splash)
     {
-      Particle::draw_offset(x_of, y_of - rain_surf->get_height(), s);
+      Particle::draw_offset(x_of, y_of - rain_surf.get_height(), s);
     }
   else
     {
-      rain_splash->put_screen((int)x_pos + x_of - rain_splash->get_width()/2, 
-			      (int)y_pos + y_of - rain_splash->get_height(),
-			      splash_counter);
+      rain_splash.put_screen((int)x_pos + x_of - rain_splash.get_width()/2, 
+			     (int)y_pos + y_of - rain_splash.get_height(),
+			     splash_counter);
     }
 }
 

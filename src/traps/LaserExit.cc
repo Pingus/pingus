@@ -1,4 +1,4 @@
-//  $Id: LaserExit.cc,v 1.7 2000/09/18 12:22:16 grumbel Exp $
+//  $Id: LaserExit.cc,v 1.8 2000/12/14 21:35:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,7 +28,7 @@ LaserExit::LaserExit(TrapData data)
 
   surface = PingusResource::load_surface("Traps/laser_exit", "traps");
 
-  counter.set_size(surface->get_num_frames());
+  counter.set_size(surface.get_num_frames());
   counter.set_type(GameCounter::once);
   counter.set_speed(5);
   counter = 0;

@@ -1,4 +1,4 @@
-//  $Id: Hotspot.cc,v 1.6 2000/07/30 01:47:35 grumbel Exp $
+//  $Id: Hotspot.cc,v 1.7 2000/12/14 21:35:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,7 +38,7 @@ Hotspot::Hotspot(HotspotData spot)
   
   if (speed != -1)
     {
-      count.set_size(surface->get_num_frames());
+      count.set_size(surface.get_num_frames());
       count.set_speed(speed);
       count = 0;
     }
@@ -58,13 +58,13 @@ Hotspot::draw_offset(int x, int y, float s)
 */  
   if (s == 1.0)
     {
-      surface->put_screen((int)((pos.x_pos + x) * para),
+      surface.put_screen((int)((pos.x_pos + x) * para),
 			  (int)((pos.y_pos + y) * para),
 			  (int)count);
     }
   else 
     {
-      surface->put_screen((int)((pos.x_pos + x) * s * para), 
+      surface.put_screen((int)((pos.x_pos + x) * s * para), 
 			  (int)((pos.y_pos + y) * s * para),
 			  s, s, (int)count);      
     }

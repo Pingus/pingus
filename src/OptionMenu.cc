@@ -1,4 +1,4 @@
-//  $Id: OptionMenu.cc,v 1.26 2000/10/12 19:33:51 grumbel Exp $
+//  $Id: OptionMenu.cc,v 1.27 2000/12/14 21:35:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -243,9 +243,9 @@ OptionMenu::add_entry(std::string e, std::string* v)
 void
 OptionMenu::draw_background()
 {
-  for(int y=0; y < CL_Display::get_height(); y += background->get_height()) {
-    for(int x=0; x < CL_Display::get_width(); x += background->get_width()) {
-      background->put_screen(x, y);
+  for(int y=0; y < CL_Display::get_height(); y += background.get_height()) {
+    for(int x=0; x < CL_Display::get_width(); x += background.get_width()) {
+      background.put_screen(x, y);
     }
   }
 }
@@ -261,10 +261,10 @@ OptionMenu::draw()
     item->draw();
   }
 
-  back->put_screen(0, 0);
-  if (CL_Mouse::get_x() < (int)back->get_width()
-      && CL_Mouse::get_y() < (int)back->get_height())
-    CL_Display::fill_rect(0, 0, back->get_width(), back->get_height(),
+  back.put_screen(0, 0);
+  if (CL_Mouse::get_x() < (int)back.get_width()
+      && CL_Mouse::get_y() < (int)back.get_height())
+    CL_Display::fill_rect(0, 0, back.get_width(), back.get_height(),
 			  1.0, 1.0, 1.0, 0.3);
   Display::flip_display();
 }
@@ -325,8 +325,8 @@ OptionMenu::display()
 
       if (CL_Mouse::left_pressed()) 
 	{
-	  if (CL_Mouse::get_x() < (int)back->get_width() &&
-	      CL_Mouse::get_y() < (int)back->get_height())
+	  if (CL_Mouse::get_x() < (int)back.get_width() &&
+	      CL_Mouse::get_y() < (int)back.get_height())
 	    {
 	      quit = true;	      
 	    }

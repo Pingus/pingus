@@ -1,4 +1,4 @@
-//  $Id: Pingu.hh,v 1.15 2000/12/04 23:12:12 grumbel Exp $
+//  $Id: Pingu.hh,v 1.16 2000/12/14 21:35:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -55,11 +55,11 @@ protected:
   /** @name surfaces that represent the Pingu in different situations */
   //@{
   ///
-  static CL_Surface* walker; 
+  static CL_Surface walker; 
   ///
-  static CL_Surface* faller;
+  static CL_Surface faller;
   ///
-  static CL_Surface* tumble;
+  static CL_Surface tumble;
   //@}
 
   ///

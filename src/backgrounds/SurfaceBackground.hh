@@ -1,4 +1,4 @@
-//  $Id: SurfaceBackground.hh,v 1.2 2000/09/07 09:45:39 grumbel Exp $
+//  $Id: SurfaceBackground.hh,v 1.3 2000/12/14 21:35:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -40,9 +40,9 @@ private:
   ///
   bool surface_need_deletion;
   ///
-  CL_Surface* bg_surface_raw;
+  CL_Surface bg_surface_raw;
   ///
-  CL_Surface* bg_surface;
+  CL_Surface bg_surface;
   ///
   float scroll_ox, scroll_oy;
   ///

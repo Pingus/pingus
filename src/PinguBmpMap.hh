@@ -1,4 +1,4 @@
-//  $Id: PinguBmpMap.hh,v 1.4 2000/08/03 10:31:17 grumbel Exp $
+//  $Id: PinguBmpMap.hh,v 1.5 2000/12/14 21:35:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,7 +30,7 @@ class PinguBmpMap : public PinguMap
 {
 private:
   ///
-  CL_Surface* surface;
+  CL_Surface surface;
   ///
   ColMap*     colmap;
 public:
@@ -50,7 +50,7 @@ public:
   ///
   ColMap* get_colmap(void);
   ///
-  CL_Surface* get_surface(void);
+  CL_Surface get_surface(void);
 };
 
 #endif

@@ -1,4 +1,4 @@
-//  $Id: CaptureRectangle.cc,v 1.4 2000/06/25 20:22:18 grumbel Exp $ 
+//  $Id: CaptureRectangle.cc,v 1.5 2000/12/14 21:35:54 grumbel Exp $ 
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -57,7 +57,7 @@ CaptureRectangle::draw_offset(int x_offset, int y_offset, float s)
     } 
   else 
     {
-      CL_Surface* sur;
+      CL_Surface sur;
       
       if (button_action 
 	  && (button_action->get_environment() & pingu->get_environment()))
@@ -71,8 +71,8 @@ CaptureRectangle::draw_offset(int x_offset, int y_offset, float s)
     
       if (s == 1.0) 
 	{
-	  sur->put_screen(pingu->get_x() + pingu->x_offset() + x_offset - 4,
-			  pingu->get_y() + pingu->y_offset() + y_offset - 4);
+	  sur.put_screen(pingu->get_x() + pingu->x_offset() + x_offset - 4,
+			 pingu->get_y() + pingu->y_offset() + y_offset - 4);
 
 	  if (pingu->get_action()) 
 	    {
@@ -83,18 +83,18 @@ CaptureRectangle::draw_offset(int x_offset, int y_offset, float s)
 
 	  if (pingu->direction.is_left()) 
 	    {
-	      arrow_left->put_screen(pingu->get_x() + x_offset - 10,
+	      arrow_left.put_screen(pingu->get_x() + x_offset - 10,
 				     pingu->get_y() + y_offset + 4);
 	    }
 	  else
 	    {
-	      arrow_right->put_screen(pingu->get_x() + x_offset - 10,
-				      pingu->get_y() + y_offset + 4);
+	      arrow_right.put_screen(pingu->get_x() + x_offset - 10,
+				     pingu->get_y() + y_offset + 4);
 	    }
 	} 
       else 
 	{
-	  sur->put_screen(int(pingu->get_x() + pingu->y_offset() + x_offset * s) - 4,
+	  sur.put_screen(int(pingu->get_x() + pingu->y_offset() + x_offset * s) - 4,
 			  int(pingu->get_y() + pingu->y_offset() + y_offset * s) - 4,
 			  s, s);
 	}

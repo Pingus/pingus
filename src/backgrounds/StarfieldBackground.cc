@@ -1,4 +1,4 @@
-//  $Id: StarfieldBackground.cc,v 1.4 2000/10/03 20:01:24 grumbel Exp $
+//  $Id: StarfieldBackground.cc,v 1.5 2000/12/14 21:35:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -87,9 +87,9 @@ StarfieldBackgroundData::create(xmlDocPtr doc, xmlNodePtr cur)
     return data;
 }
 
-CL_Surface* StarfieldBackgroundStars::small_star;
-CL_Surface* StarfieldBackgroundStars::middle_star;
-CL_Surface* StarfieldBackgroundStars::large_star;
+CL_Surface StarfieldBackgroundStars::small_star;
+CL_Surface StarfieldBackgroundStars::middle_star;
+CL_Surface StarfieldBackgroundStars::large_star;
 bool StarfieldBackgroundStars::is_init = false;
 
 StarfieldBackgroundStars::StarfieldBackgroundStars (Type type)
@@ -144,7 +144,7 @@ StarfieldBackgroundStars::let_move(void)
 void
 StarfieldBackgroundStars::draw_offset(int x_of, int y_of, float s = 1.0)
 {
-  sur->put_screen (x_pos + x_of, y_pos + y_of);
+  sur.put_screen (x_pos + x_of, y_pos + y_of);
 }
 
 StarfieldBackground::StarfieldBackground ()

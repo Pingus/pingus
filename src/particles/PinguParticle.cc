@@ -1,4 +1,4 @@
-//  $Id: PinguParticle.cc,v 1.7 2000/11/14 22:22:56 grumbel Exp $
+//  $Id: PinguParticle.cc,v 1.8 2000/12/14 21:35:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,7 +24,7 @@
 static const float x_collision_decrease = 0.3;
 static const float y_collision_decrease = 0.6;
 
-CL_Surface* PinguParticle::sur = 0;
+CL_Surface PinguParticle::sur;
 
 PinguParticle::PinguParticle()
 {
@@ -63,9 +63,9 @@ PinguParticle::init(int x, int y, float x_a, float y_a)
 }
 
 void
-PinguParticle::draw_offset(int ofx, int ofy, float s) const
+PinguParticle::draw_offset(int ofx, int ofy, float s)
 {
-  surface->put_screen(x_pos + ofx, y_pos + ofy);
+  surface.put_screen(x_pos + ofx, y_pos + ofy);
   /* Particle resizeing is disabled, because it is to slow
   if (s * size == 1.0) {
     surface->put_screen(x_pos + ofx, y_pos + ofy);

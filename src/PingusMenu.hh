@@ -1,4 +1,4 @@
-//  $Id: PingusMenu.hh,v 1.12 2000/12/12 09:12:59 grumbel Exp $
+//  $Id: PingusMenu.hh,v 1.13 2000/12/14 21:35:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -56,42 +56,18 @@ private:
   //
   thSlot on_resize_slot;
   ///
-  class Event /*: 
-    public CL_Event_ButtonPress, 
-    public CL_Event_ButtonRelease, 	
-    public CL_Event_MouseMove*/
-  {
-  public:
-    ///
-    bool enabled;
-    ///
-    PingusMenu* menu;
-    ///
-    virtual void on_button_press(CL_InputDevice *device, const CL_Key &key);
-    ///
-    virtual void on_button_release(CL_InputDevice *device, const CL_Key &key);
-    ///
-    virtual void on_mouse_move(CL_InputDevice *,int mouse_x, int mouse_y);
-  };
-
-  ///
-  friend class Event;
-  ///
-  Event* event;
-
-  ///
-  std::list<shared_ptr<SurfaceButton> > buttons;
+  std::list<SurfaceButton*> buttons;
   ///
   SurfaceButton* temp_button;
   ///
   SurfaceButton* current_button;
   
   ///
-  CL_Surface* background;
+  CL_Surface background;
   ///
   LayerManager layer_manager;
   ///
-  CL_Surface* cursor_sur;
+  CL_Surface cursor_sur;
 
   ///
   int start_x, start_y;
@@ -105,15 +81,15 @@ private:
   PingusMenuItem current_item;
   
   ///
-  shared_ptr<PlayButton> play_button;
+  PlayButton* play_button;
   ///
-  shared_ptr<OptionsButton> options_button;
+  OptionsButton* options_button;
   ///
-  shared_ptr<QuitButton>  quit_button;
+  QuitButton*  quit_button;
   ///
-  shared_ptr<EditorButton> editor_button;
+  EditorButton* editor_button;
   ///
-  shared_ptr<ThemeButton> theme_button;
+  ThemeButton* theme_button;
   
 
   void on_resize(int w, int h);
@@ -131,8 +107,15 @@ public:
   void draw(void);
   ///
   void select(void);
-}///
-;
+  ///
+  bool event_enabled;
+  ///
+  void on_button_press(CL_InputDevice *device, const CL_Key &key);
+  ///
+  void on_button_release(CL_InputDevice *device, const CL_Key &key);
+  ///
+  void on_mouse_move(CL_InputDevice *,int mouse_x, int mouse_y);
+};
 
 #endif
 

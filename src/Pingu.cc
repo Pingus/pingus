@@ -1,4 +1,4 @@
-//  $Id: Pingu.cc,v 1.37 2000/12/04 23:12:12 grumbel Exp $
+//  $Id: Pingu.cc,v 1.38 2000/12/14 21:35:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,9 +34,9 @@
 const float deadly_velocity = 20.0;
 
 bool                Pingu::init;
-CL_Surface*         Pingu::walker;
-CL_Surface*         Pingu::faller;
-CL_Surface*         Pingu::tumble;
+CL_Surface         Pingu::walker;
+CL_Surface         Pingu::faller;
+CL_Surface         Pingu::tumble;
 CL_Font*            Pingu::font;
 
 CL_ResourceManager* Pingu::local_res_p;
@@ -57,9 +57,9 @@ Pingu::Pingu(int x, int y)
 
       font   = PingusResource::load_font("Fonts/numbers", "fonts");
       //walker = CL_Surface::load("XMas/walker", local_res());
-      walker = CL_Surface::load("Pingus/walker", local_res());
-      faller = CL_Surface::load("Pingus/faller", local_res());
-      tumble = CL_Surface::load("Pingus/tumble", local_res());
+      walker = CL_Surface ("Pingus/walker", local_res());
+      faller = CL_Surface ("Pingus/faller", local_res());
+      tumble = CL_Surface ("Pingus/tumble", local_res());
     }
 
   falling = 4;
@@ -72,11 +72,11 @@ Pingu::Pingu(int x, int y)
   action_time = -1;
 
   // Init all animation timer
-  walker_c.set_size(walker->get_num_frames() / 2);
+  walker_c.set_size(walker.get_num_frames() / 2);
   walker_c.set_speed(50);
   
-  faller_c.set_size(faller->get_num_frames());
-  tumble_c.set_size(tumble->get_num_frames());
+  faller_c.set_size(faller.get_num_frames());
+  tumble_c.set_size(tumble.get_num_frames());
 
   environment = (PinguEnvironment)land;
 
@@ -502,7 +502,7 @@ Pingu::draw_offset(int x, int y, float s) const
     {
       if (falling > 3) 
 	{
-	  CL_Surface* surf;
+	  CL_Surface surf;
 	  
 	  if (is_tumbling ()) {
 	    surf = tumble;
@@ -512,12 +512,12 @@ Pingu::draw_offset(int x, int y, float s) const
 	  
 	  if (s == 1.0) 
 	    {
-	      surf->put_screen(x_pos + x - 16, y_pos + y - 32,
-			       tumble_c);
+	      surf.put_screen(x_pos + x - 16, y_pos + y - 32,
+			      tumble_c);
 	    } 
 	  else 
 	    {
-	      surf->put_screen((x_pos + x - 16) * s , (y_pos + y - 32) * s,
+	      surf.put_screen((x_pos + x - 16) * s , (y_pos + y - 32) * s,
 			       s, s, tumble_c);
 	    }
 	} 
@@ -525,14 +525,14 @@ Pingu::draw_offset(int x, int y, float s) const
 	{
 	  if (s == 1.0) 
 	    {
-	      walker->put_screen(x_pos + x - 16, y_pos + y - walker->get_height(), 
+	      walker.put_screen(x_pos + x - 16, y_pos + y - walker.get_height(), 
 				 walker_c
 				 + ((direction.is_left() ? 0 :
 				     walker_c.size())));
 	    } 
 	  else 
 	    {
-	      walker->put_screen((x_pos + x - 16) * s, (y_pos + y - walker->get_height()) * s, 
+	      walker.put_screen((x_pos + x - 16) * s, (y_pos + y - walker.get_height()) * s, 
 				 s, s,
 				 walker_c
 				 + ((direction.is_left() ? 0 :

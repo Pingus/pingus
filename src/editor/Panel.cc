@@ -1,4 +1,4 @@
-//  $Id: Panel.cc,v 1.10 2000/10/30 16:17:51 grumbel Exp $
+//  $Id: Panel.cc,v 1.11 2000/12/14 21:35:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,7 +26,6 @@ Editor* PanelIcon::editor;
 
 PanelIcon::PanelIcon()
 {
-  sur = 0;
   button = PingusResource::load_surface("editor/button","core");
   button_pressed = PingusResource::load_surface("editor/button_pressed", "core");
 }
@@ -47,14 +46,14 @@ PanelIcon::put_screen(int x, int y)
     {
       if (CL_Mouse::left_pressed())
 	{
-	  button_pressed->put_screen(0, y);
+	  button_pressed.put_screen(0, y);
 	}
       else
 	{
-	  button->put_screen(0, y);
+	  button.put_screen(0, y);
 	}
     }
-  sur->put_screen(0, y);
+  sur.put_screen(0, y);
 }
 
 void
@@ -82,7 +81,7 @@ Panel::draw()
   CL_Display::fill_rect(0, 0, 25, CL_Display::get_height(),
 			0.75, 0.75, 0.75, 1.0);
  
-  logo->put_screen(0, CL_Display::get_height() - logo->get_height());
+  logo.put_screen(0, CL_Display::get_height() - logo.get_height());
 
   for (std::vector<PanelIcon*>::iterator i = buttons.begin(); i != buttons.end(); i++)
     {

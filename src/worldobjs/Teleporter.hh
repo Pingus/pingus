@@ -1,4 +1,4 @@
-//  $Id: Teleporter.hh,v 1.5 2000/12/09 01:18:55 grumbel Exp $
+//  $Id: Teleporter.hh,v 1.6 2000/12/14 21:35:56 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,7 +46,7 @@ class Teleporter : private TeleporterData,
 		   public WorldObj
 {
 private:
-  CL_Surface* sur;
+  CL_Surface sur;
   
 public:
   ///

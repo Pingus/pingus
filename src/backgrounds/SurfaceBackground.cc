@@ -1,4 +1,4 @@
-//  $Id: SurfaceBackground.cc,v 1.4 2000/10/30 16:17:50 grumbel Exp $
+//  $Id: SurfaceBackground.cc,v 1.5 2000/12/14 21:35:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -55,40 +55,28 @@ SurfaceBackground::SurfaceBackground(SurfaceBackgroundData* bg_data)
   std::cout << "Res: " << bg_data->desc.res_name << std::endl
 	    << "file: " << bg_data->desc.datafile << std::endl;
 
-  if (bg_data->desc.res_name == "none")
+  if (background_manipulation_enabled && bg_data->color.alpha != 0.0)
     {
-      std::cout << "Background: No surface set..." << std::endl;
-      bg_surface = 0;
+      std::cout << "SurfaceBackground:: Manipulatin background" << std::endl;
+      // FIXME: This is extremly buggy and it will crash, no idea why....
+      CL_Surface source_surface(PingusResource::load_surface(bg_data->desc));
+      
+      CL_Canvas* canvas = Blitter::create_canvas(source_surface);
+      //	  canvas->fill_rect(0, 0, 
+			    //			    canvas->get_width(), canvas->get_height(),
+      //			    bg_data->color.red, bg_data->color.green, bg_data->color.blue, 
+      //			    bg_data->color.alpha);
+      
+      bg_surface = CL_Surface (canvas, true);
     }
   else
     {
-      if (background_manipulation_enabled && bg_data->color.alpha != 0.0)
-	{
-	  std::cout << "SurfaceBackground:: Manipulatin background" << std::endl;
-	  // FIXME: This is extremly buggy and it will crash, no idea why....
-	  CL_Surface* source_surface = PingusResource::load_surface(bg_data->desc);
-
-	  CL_Canvas* canvas = Blitter::create_canvas(source_surface);
-	  //	  canvas->fill_rect(0, 0, 
-			    //			    canvas->get_width(), canvas->get_height(),
-			    //			    bg_data->color.red, bg_data->color.green, bg_data->color.blue, 
-			    //			    bg_data->color.alpha);
-
-	  bg_surface = CL_Surface::create(canvas, true);
-	}
-      else
-	{
-	  bg_surface = PingusResource::load_surface(bg_data->desc);
-	}
+      bg_surface = PingusResource::load_surface(bg_data->desc);
     }
 
-  if (bg_surface) 
-    {
-      //bg_surface = CAImageManipulation::changeHSV(bg_surface, 150, 100, 0);
-
-      counter.set_size(bg_surface->get_num_frames());
-      counter.set_speed(1.0);
-    }
+  //bg_surface = CAImageManipulation::changeHSV(bg_surface, 150, 100, 0);
+  counter.set_size(bg_surface.get_num_frames());
+  counter.set_speed(1.0);
 
   stretch_x = bg_data->stretch_x;
   stretch_y = bg_data->stretch_y;
@@ -206,37 +194,34 @@ SurfaceBackground::load (SurfaceBackgroundData bg_data)
 void
 SurfaceBackground::let_move()
 {
-  if (bg_surface)
-    {
-      counter++;
+  counter++;
 
-      scroll_ox += scroll_x;
-      scroll_oy += scroll_y;
+  scroll_ox += scroll_x;
+  scroll_oy += scroll_y;
   
-      if (scroll_ox > bg_surface->get_width()) 
-	{
-	  scroll_ox -= bg_surface->get_width();
-	} 
-      else if (-scroll_ox > bg_surface->get_width()) 
-	{
-	  scroll_ox += bg_surface->get_width();
-	}
+  if (scroll_ox > bg_surface.get_width()) 
+    {
+      scroll_ox -= bg_surface.get_width();
+    } 
+  else if (-scroll_ox > bg_surface.get_width()) 
+    {
+      scroll_ox += bg_surface.get_width();
+    }
   
-      if (scroll_oy > bg_surface->get_height()) 
-	{
-	  scroll_oy -= bg_surface->get_height();
-	} 
-      else if (-scroll_oy > bg_surface->get_height()) 
-	{
-	  scroll_oy += bg_surface->get_height();
-	}
+  if (scroll_oy > bg_surface.get_height()) 
+    {
+      scroll_oy -= bg_surface.get_height();
+    } 
+  else if (-scroll_oy > bg_surface.get_height()) 
+    {
+      scroll_oy += bg_surface.get_height();
     }
 }
 
 void
 SurfaceBackground::draw_offset(int x_of, int y_of, float s)
 {
-  if (!bg_surface || fast_mode) 
+  if (fast_mode) 
     {
       CL_Display::clear_display();
     } 
@@ -249,33 +234,33 @@ SurfaceBackground::draw_offset(int x_of, int y_of, float s)
       start_y = int((y_of * para_y) + scroll_oy);
       
       if (start_x >= 0)
-	start_x = start_x - bg_surface->get_width();
+	start_x = start_x - bg_surface.get_width();
       
       if (start_y >= 0) 
-	start_y -= bg_surface->get_height();
-      else if (start_y < 0 - int(bg_surface->get_height()))
-	start_y += bg_surface->get_height();
+	start_y -= bg_surface.get_height();
+      else if (start_y < 0 - int(bg_surface.get_height()))
+	start_y += bg_surface.get_height();
       
       if (s == 1.0) 
 	{
 	  for(int y = start_y; 
 	      y < CL_Display::get_height(); 
-	      y += bg_surface->get_height()) 
+	      y += bg_surface.get_height()) 
 	    {
 	      for(int x = start_x;
 		  x < CL_Display::get_width(); 
-		  x += bg_surface->get_width())
+		  x += bg_surface.get_width())
 		{
-		  bg_surface->put_screen(x, y, counter);
+		  bg_surface.put_screen(x, y, counter);
 		}
 	    }
 	}
       else 
 	{
 	  std::cout << "SurfaceBackground: Zooming not supported: " << s << std::endl;
-	  for(int y=(y_of/2); y < CL_Display::get_height(); y += (int)(bg_surface->get_height() * s)) {
-	    for(int x = start_x; x < CL_Display::get_width(); x += (int)(bg_surface->get_width() * s)) {
-	      bg_surface->put_screen(x, y, s, s);
+	  for(int y=(y_of/2); y < CL_Display::get_height(); y += (int)(bg_surface.get_height() * s)) {
+	    for(int x = start_x; x < CL_Display::get_width(); x += (int)(bg_surface.get_width() * s)) {
+	      bg_surface.put_screen(x, y, s, s);
 	    }
 	  }
 	}

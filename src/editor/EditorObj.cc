@@ -1,4 +1,4 @@
-// $Id: EditorObj.cc,v 1.26 2000/12/12 09:12:59 grumbel Exp $
+// $Id: EditorObj.cc,v 1.27 2000/12/14 21:35:55 grumbel Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -40,7 +40,6 @@ Editor* EditorObj::editor;
 EditorObj::EditorObj()
 {
   position = &private_pos;
-  surf = 0;
   x_of = 0;
   y_of = 0;
   width = -1;
@@ -174,7 +173,7 @@ EditorObj::draw_offset(int x_offset, int y_offset)
 {
   assert(surf);
   if (surf) {
-    surf->put_screen(position->x_pos + x_offset + x_of,
+    surf.put_screen(position->x_pos + x_offset + x_of,
 		     position->y_pos + y_offset + y_of);
   } else {
     CL_Display::fill_rect(position->x_pos + x_offset, position->y_pos + y_offset, 
@@ -188,7 +187,7 @@ EditorObj::draw_scroll_map(int x_pos, int y_pos, int arg_width, int arg_height)
 {
   if (surf)
     {
-      surf->put_screen(x_pos + position->x_pos * arg_width / editor->get_object_manager()->get_width(),
+      surf.put_screen(x_pos + position->x_pos * arg_width / editor->get_object_manager()->get_width(),
 		       y_pos + position->y_pos * arg_height / editor->get_object_manager()->get_height(),
 		       width * arg_width / editor->get_object_manager()->get_width(),
 		       height * arg_height / editor->get_object_manager()->get_height());
@@ -231,8 +230,8 @@ EditorObj::mouse_over(int x_offset, int y_offset)
   int mouse_y = CL_Mouse::get_y();
 
   if (surf) {
-    width = surf->get_width();
-    height = surf->get_height();
+    width = surf.get_width();
+    height = surf.get_height();
   }
 
   if (   mouse_x > position->x_pos + x_offset + x_of 
@@ -274,6 +273,10 @@ EditorObj::gui_edit_obj()
   
 /*
 $Log: EditorObj.cc,v $
+Revision 1.27  2000/12/14 21:35:55  grumbel
+Replaced all/most CL_Surface* pointers with CL_Surface objects
+removed the sharde_ptr() stuff in PingusMenu, will add it later, when the rest it up and running again correctly
+
 Revision 1.26  2000/12/12 09:12:59  grumbel
 Some more experiments with shared and scoped pointers
 

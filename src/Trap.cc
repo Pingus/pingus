@@ -1,4 +1,4 @@
-//  $Id: Trap.cc,v 1.7 2000/09/18 12:22:15 grumbel Exp $
+//  $Id: Trap.cc,v 1.8 2000/12/14 21:35:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,12 +37,12 @@ Trap::draw_offset(int x, int y, float s)
   assert(surface);
   //cout << "Count: " << counter.value() << std::endl;
   if (s == 1.0) {
-    surface->put_screen(pos.x_pos + x, pos.y_pos + y,
-			counter.value());
+    surface.put_screen(pos.x_pos + x, pos.y_pos + y,
+		       counter.value());
   } else {
-    surface->put_screen((int)((pos.x_pos + x) * s), 
-			(int)((pos.y_pos + y) * s),
-			s, s, counter.value());
+    surface.put_screen((int)((pos.x_pos + x) * s), 
+		       (int)((pos.y_pos + y) * s),
+		       s, s, counter.value());
   }
 }
 

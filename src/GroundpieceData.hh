@@ -1,4 +1,4 @@
-//  $Id: GroundpieceData.hh,v 1.1 2000/10/18 20:19:41 grumbel Exp $
+//  $Id: GroundpieceData.hh,v 1.2 2000/12/14 21:35:54 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,7 +29,7 @@ class GroundpieceData
 {
 public:
   ///
-  CL_Surface* surface;
+  CL_Surface surface;
   ///
   CL_Resource* resource;
   ///

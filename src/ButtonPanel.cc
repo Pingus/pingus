@@ -1,4 +1,4 @@
-//  $Id: ButtonPanel.cc,v 1.11 2000/08/09 14:39:37 grumbel Exp $
+//  $Id: ButtonPanel.cc,v 1.12 2000/12/14 21:35:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,7 +23,7 @@
 #include "ButtonPanel.hh"
 #include "ActionData.hh"
 
-CL_Surface* ButtonPanel::button_cap;
+CL_Surface ButtonPanel::button_cap;
 
 ButtonPanel::ButtonPanel(PLF* plf)
 {

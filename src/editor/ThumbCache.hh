@@ -1,4 +1,4 @@
-//  $Id: ThumbCache.hh,v 1.1 2000/10/14 16:09:46 grumbel Exp $
+//  $Id: ThumbCache.hh,v 1.2 2000/12/14 21:35:55 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,11 +33,11 @@ public:
   /** Load a thumnail of a surface out of the cache. The thumbnail as
       the size 50x50, if the thumbnail is not available, the surface
       is loaded and added to the cache. */
-  static CL_Surface* load (std::string res_ident, std::string datafile);
+  static CL_Surface load (std::string res_ident, std::string datafile);
 
   /** Add a surface as thumbnail to the cache, the surface will be
       resized to a 50x50 size */
-  static void        cache (CL_Surface*, std::string res_ident, std::string datafile);
+  static void        cache (const CL_Surface&, std::string res_ident, std::string datafile);
 };
 
 #endif

@@ -1,4 +1,4 @@
-//  $Id: Theme.hh,v 1.9 2000/08/05 00:00:42 grumbel Exp $
+//  $Id: Theme.hh,v 1.10 2000/12/14 21:35:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,9 +35,9 @@ private:
   ///
   PLTXML plt;
   ///
-  CL_Surface* surface;
+  CL_Surface surface;
   ///
-  CL_Surface* background;
+  CL_Surface background;
   ///
   CL_Font*    font;
   ///

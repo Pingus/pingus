@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMap.cc,v 1.12 2000/10/12 19:33:51 grumbel Exp $
+//  $Id: PingusWorldMap.cc,v 1.13 2000/12/14 21:35:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -48,7 +48,6 @@ PingusWorldMap::~PingusWorldMap ()
 {
   delete graph;
   delete pingus;
-  delete background;
 }
 
 void
@@ -136,7 +135,7 @@ PingusWorldMap::draw ()
   float y_scale = CL_Display::get_height () / 600.0;
 
   //background->put_screen (0,0, CL_Display::get_width (), CL_Display::get_height ());
-  background->put_screen (0,0);
+  background.put_screen (0,0);
 
   graph_data.draw();
 
@@ -148,13 +147,13 @@ PingusWorldMap::draw ()
 	{
 	  if (i->accessible) 
 	    {
-	      green_dot->put_screen ((i->pos.x_pos - (red_dot->get_width()/2)) * x_scale,
-				     (i->pos.y_pos - (red_dot->get_height()/2)) * y_scale);
+	      green_dot.put_screen ((i->pos.x_pos - (red_dot.get_width()/2)) * x_scale,
+				    (i->pos.y_pos - (red_dot.get_height()/2)) * y_scale);
 	    }
 	  else
 	    {
-	      red_dot->put_screen ((i->pos.x_pos - (red_dot->get_width()/2)) * x_scale,
-				   (i->pos.y_pos - (red_dot->get_height()/2)) * y_scale);
+	      red_dot.put_screen ((i->pos.x_pos - (red_dot.get_width()/2)) * x_scale,
+				  (i->pos.y_pos - (red_dot.get_height()/2)) * y_scale);
 	    }
 	}
     }
@@ -163,8 +162,8 @@ PingusWorldMap::draw ()
 
   if (node)
     {
-      dot_border->put_screen ((node->pos.x_pos - (dot_border->get_width()/2)) * x_scale,
-			      (node->pos.y_pos - (dot_border->get_height()/2)) * y_scale);
+      dot_border.put_screen ((node->pos.x_pos - (dot_border.get_width()/2)) * x_scale,
+			     (node->pos.y_pos - (dot_border.get_height()/2)) * y_scale);
     }
 
   pingus->draw ();
@@ -185,10 +184,10 @@ PingusWorldMap::get_node (int x, int y)
   for (list<PingusWorldMapNode>::iterator i = graph_data.nodes.begin ();
        i != graph_data.nodes.end ();
        i++)
-    if (i->pos.x_pos - (int)(red_dot->get_width()/2) - 3 < x * x_scale
-	&& i->pos.x_pos + (int)(red_dot->get_width()/2) + 3 > x * x_scale
-	&& i->pos.y_pos - (int)(red_dot->get_width()/2) - 3 < y * y_scale
-	&& i->pos.y_pos + (int)(red_dot->get_width()/2) + 3 > y * y_scale)
+    if (i->pos.x_pos - (int)(red_dot.get_width()/2) - 3 < x * x_scale
+	&& i->pos.x_pos + (int)(red_dot.get_width()/2) + 3 > x * x_scale
+	&& i->pos.y_pos - (int)(red_dot.get_width()/2) - 3 < y * y_scale
+	&& i->pos.y_pos + (int)(red_dot.get_width()/2) + 3 > y * y_scale)
       {
 	if (!i->levelname.empty ())
 	  return &(*i);

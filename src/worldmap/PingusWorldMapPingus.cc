@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapPingus.cc,v 1.6 2000/11/14 22:22:56 grumbel Exp $
+//  $Id: PingusWorldMapPingus.cc,v 1.7 2000/12/14 21:35:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,9 +26,9 @@ PingusWorldMapPingus::PingusWorldMapPingus ()
 {
   sur = PingusResource::load_surface ("Pingus/walker", "pingus");
 
-  std::cout << "PingusWorldMap: walker: num_frames = " << sur->get_num_frames () << std::endl;
+  std::cout << "PingusWorldMap: walker: num_frames = " << sur.get_num_frames () << std::endl;
 
-  counter.set_size(sur->get_num_frames()/2);
+  counter.set_size(sur.get_num_frames()/2);
   is_left = false;
 }
 
@@ -56,10 +56,10 @@ PingusWorldMapPingus::draw ()
   float x_scale = CL_Display::get_width () / 800.0;
   float y_scale = CL_Display::get_height () / 600.0;
 
-  sur->put_screen ((pos.x_pos - (sur->get_width()/2)) * x_scale,
-		   (pos.y_pos + 4 - sur->get_height()) * y_scale,
-		   ++counter + ((is_left ? 0 :
-				 counter.size())));
+  sur.put_screen ((pos.x_pos - (sur.get_width()/2)) * x_scale,
+		  (pos.y_pos + 4 - sur.get_height()) * y_scale,
+		  ++counter + ((is_left ? 0 :
+				counter.size())));
 }
 
 bool

@@ -1,4 +1,4 @@
-//  $Id: blitter.cc,v 1.23 2000/11/14 22:22:56 grumbel Exp $
+//  $Id: blitter.cc,v 1.24 2000/12/14 21:35:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,14 +25,16 @@
 #include "Color.hh"
 
 void
-Blitter::put_surface(CL_Canvas* canvas, CL_Surface* sur,
+Blitter::put_surface(CL_Canvas* canvas, const CL_Surface& sur,
 		     int x, int y)
 {
   //Blitter::put_surface(canvas, sur->get_provider(), x, y);
   /*  if (sur->get_provider()->get_depth() != 8)
       sur->put_target(x, y, 0, canvas);
   else*/
-  Blitter::put_surface(canvas, sur->get_provider(), x, y);
+  assert (sur);
+  assert (canvas);
+  Blitter::put_surface(canvas, sur.get_provider(), x, y);
 }
 
 void 
@@ -40,7 +42,8 @@ Blitter::put_surface(CL_Canvas* canvas, CL_SurfaceProvider* provider,
 		     int x, int y)
 {
   char str[32];
-  
+  assert (provider);
+  assert (canvas);
   switch(provider->get_depth())
     {
     case  8:
@@ -60,6 +63,8 @@ void
 Blitter::put_surface_8bit(CL_Canvas* provider, CL_SurfaceProvider* sprovider,
 			  int x, int y)
 {
+  assert (provider);
+  assert (sprovider);
   int start_i;
   unsigned char* tbuffer; // Target buffer
   int twidth, theight, tpitch;
@@ -131,6 +136,8 @@ void
 Blitter::put_surface_32bit(CL_Canvas* canvas, CL_SurfaceProvider* provider,
 			   int x_pos, int y_pos)
 {
+  assert (canvas);
+  assert (provider);
   //std::cout << "Blitter::put_surface_32bit() --- not implemented" << std::endl;
   //return;
   float red, green, blue, alpha;
@@ -192,6 +199,8 @@ void
 Blitter::put_alpha_surface(CL_Canvas* provider, CL_SurfaceProvider* sprovider,
 	    int x, int y)
 {
+  assert (provider);
+  assert (sprovider);
   int start_i;
   unsigned char* tbuffer; // Target buffer
   int twidth, theight, tpitch;
@@ -258,6 +267,7 @@ Blitter::put_alpha_surface(CL_Canvas* provider, CL_SurfaceProvider* sprovider,
 CL_Canvas*
 Blitter::clear_canvas(CL_Canvas* canvas)
 {
+  assert (canvas);
   unsigned char* buffer;
   
   canvas->lock();
@@ -269,14 +279,16 @@ Blitter::clear_canvas(CL_Canvas* canvas)
 }
 
 CL_Canvas*
-Blitter::create_canvas(CL_Surface* sur)
+Blitter::create_canvas(const CL_Surface& sur)
 {
-  return create_canvas(sur->get_provider());
+  assert (sur);
+  return create_canvas(sur.get_provider());
 }
 
 CL_Canvas*
 Blitter::create_canvas(CL_SurfaceProvider* prov)
 {
+  assert (prov);
   CL_Canvas* canvas = new CL_Canvas(prov->get_width(), prov->get_height());
 
   switch (prov->get_bytes_per_pixel())
@@ -318,17 +330,20 @@ Blitter::create_canvas(CL_SurfaceProvider* prov)
   return canvas;
 }
 
-CL_Surface* 
-Blitter::scale_surface (CL_Surface* sur, int width, int height)
+CL_Surface 
+Blitter::scale_surface (const CL_Surface& sur, int width, int height)
 {
-  return CL_Surface::create (Blitter::scale_surface_to_canvas(sur, width, height), true);
+  assert (sur);
+  return CL_Surface(Blitter::scale_surface_to_canvas(sur, width, height), true);
 }
 
 CL_Canvas* 
-Blitter::scale_surface_to_canvas (CL_Surface* sur, int width, int height)
+Blitter::scale_surface_to_canvas (const CL_Surface& sur, int width, int height)
 {
+  assert (sur);
+
   Color color;
-  CL_SurfaceProvider* provider = sur->get_provider ();
+  CL_SurfaceProvider* provider = sur.get_provider ();
   CL_Canvas* canvas = new CL_Canvas (width, height);
 
   provider->lock ();
@@ -402,8 +417,8 @@ Blitter::scale_surface_to_canvas (CL_Surface* sur, int width, int height)
 /*
 // Converts a SurfaceProvider based surface, to a Canvas
 // based one. The old one will not be deleted.
-CL_Surface*
-Blitter::convert_to_emptyprovider(CL_Surface* ssurf)
+CL_Surface
+Blitter::convert_to_emptyprovider(CL_Surface ssurf)
 {
   CL_Canvas* tprov = convert_to_emptyprovider(ssurf->get_provider());
   return CL_Surface::create(tprov, true);

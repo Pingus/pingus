@@ -1,4 +1,4 @@
-//  $Id: SnowParticle.cc,v 1.8 2000/08/05 00:00:43 grumbel Exp $
+//  $Id: SnowParticle.cc,v 1.9 2000/12/14 21:35:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,7 +34,7 @@ SnowParticle::SnowParticle(int x, int y)
 void
 SnowParticle::init(int x, int y)
 {
-  CL_Surface* snow;
+  CL_Surface snow;
 
   x_pos = x;
   y_pos = y;
@@ -86,7 +86,7 @@ SnowParticle::is_alive()
     return false;
 }
 
-CL_Surface* CollidingSnowParticle::ground_snow;
+CL_Surface CollidingSnowParticle::ground_snow;
 
 CollidingSnowParticle::CollidingSnowParticle()
 {
@@ -117,7 +117,7 @@ CollidingSnowParticle::let_move()
       && pixel != ColMap::WATER && pixel != ColMap::OUTOFSCREEN)
     {
       //std::cout << "Snow: touch down: " << x_pos << " " << y_pos << std::endl;
-      world->get_gfx_map()->put(ground_snow->get_provider(), 
+      world->get_gfx_map()->put(ground_snow,
 				(int)x_pos - 1,
 				(int)y_pos - 1);
       alive = false;

@@ -1,4 +1,4 @@
-//  $Id: ConveyorBelt.hh,v 1.4 2000/12/06 08:54:41 grumbel Exp $
+//  $Id: ConveyorBelt.hh,v 1.5 2000/12/14 21:35:56 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,9 +46,9 @@ class ConveyorBelt : private ConveyorBeltData,
 		     public  WorldObj
 {
 private:
-  CL_Surface* left_sur;
-  CL_Surface* right_sur;
-  CL_Surface* middle_sur;
+  CL_Surface left_sur;
+  CL_Surface right_sur;
+  CL_Surface middle_sur;
   int counter;
   int catch_counter;
 public:
@@ -70,9 +70,9 @@ class EditorConveyorBeltObj : public EditorWorldObj,
 			      public ConveyorBeltData
 {
 private:
-  CL_Surface* left_sur;
-  CL_Surface* right_sur;
-  CL_Surface* middle_sur;
+  CL_Surface left_sur;
+  CL_Surface right_sur;
+  CL_Surface middle_sur;
   int counter;
 
 public:

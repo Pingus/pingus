@@ -1,4 +1,4 @@
-//  $Id: StarfieldBackground.hh,v 1.1 2000/09/29 15:43:52 grumbel Exp $
+//  $Id: StarfieldBackground.hh,v 1.2 2000/12/14 21:35:55 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,12 +42,12 @@ public:
 class StarfieldBackgroundStars : public WorldObj
 {
 private:
-  static CL_Surface* small_star;
-  static CL_Surface* middle_star;
-  static CL_Surface* large_star;
+  static CL_Surface small_star;
+  static CL_Surface middle_star;
+  static CL_Surface large_star;
   static bool is_init;
 
-  CL_Surface* sur;
+  CL_Surface sur;
 
   float x_pos;
   float y_pos;

@@ -1,4 +1,4 @@
-//  $Id: OptionMenu.hh,v 1.8 2000/08/09 14:39:37 grumbel Exp $
+//  $Id: OptionMenu.hh,v 1.9 2000/12/14 21:35:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -69,9 +69,9 @@ private:
   ///
   CL_Font* title_font;
   ///
-  CL_Surface* background;
+  CL_Surface background;
   ///
-  CL_Surface* back;
+  CL_Surface back;
   ///
   bool quit;
   ///

@@ -1,4 +1,4 @@
-//  $Id: Entrance.cc,v 1.14 2000/10/30 16:17:49 grumbel Exp $
+//  $Id: Entrance.cc,v 1.15 2000/12/14 21:35:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,8 +38,6 @@ Entrance::Entrance(EntranceData data)
   release_rate = data.release_rate;
   last_release = -release_rate;
   direction = data.direction;
-
-  surface = 0;
 }
 
 bool
@@ -112,13 +110,13 @@ Entrance::draw_offset(int x, int y, float s)
   if (s == 1.0) 
     {
       // FIXME: Why do we have still this hardcoded offsets?!
-      surface->put_screen(pos.x_pos - 32 + x, pos.y_pos - 16 + y);
+      surface.put_screen(pos.x_pos - 32 + x, pos.y_pos - 16 + y);
     } 
   else 
     {
-      surface->put_screen((int)((pos.x_pos-32 + x) * s),
-			  (int)((pos.y_pos-16 + y) * s),
-			  s, s);
+      surface.put_screen((int)((pos.x_pos-32 + x) * s),
+			 (int)((pos.y_pos-16 + y) * s),
+			 s, s);
     }
 }
 

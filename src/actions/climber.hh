@@ -1,4 +1,4 @@
-//  $Id: climber.hh,v 1.4 2000/06/18 17:01:50 grumbel Exp $
+//  $Id: climber.hh,v 1.5 2000/12/14 21:35:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,7 +27,9 @@ class Climber : public PinguAction
 {
 private:
   ///
-  static CL_Surface* static_surface;
+  static bool Climber::static_surfaces_loaded;
+  ///
+  static CL_Surface static_surface;
 public:
   ///
   Climber();

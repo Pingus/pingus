@@ -1,4 +1,4 @@
-//  $Id: Loading.cc,v 1.7 2000/06/27 16:05:16 grumbel Exp $
+//  $Id: Loading.cc,v 1.8 2000/12/14 21:35:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -53,8 +53,8 @@ Loading::draw()
 
   CL_Display::clear_display();
 
-  sur->put_screen((CL_Display::get_width() - sur->get_width())/2,
-		  (CL_Display::get_height() - sur->get_height())/2);
+  sur.put_screen((CL_Display::get_width() - sur.get_width())/2,
+		 (CL_Display::get_height() - sur.get_height())/2);
 
   Display::flip_display();
 
@@ -75,8 +75,8 @@ Loading::draw_progress(std::string str, float progress)
 
   CL_Display::clear_display();
 
-  sur->put_screen((CL_Display::get_width() - sur->get_width())/2,
-		  (CL_Display::get_height() - sur->get_height())/2);
+  sur.put_screen((CL_Display::get_width() - sur.get_width())/2,
+		 (CL_Display::get_height() - sur.get_height())/2);
 
   font->print_center(CL_Display::get_width() / 2, 
 		     CL_Display::get_height() - 130,

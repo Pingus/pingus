@@ -1,4 +1,4 @@
-//  $Id: PinguMap.hh,v 1.7 2000/10/09 19:17:30 grumbel Exp $
+//  $Id: PinguMap.hh,v 1.8 2000/12/14 21:35:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -63,11 +63,12 @@ public:
   ///
   virtual void remove(CL_SurfaceProvider*, int, int);
   ///
-  virtual void remove(CL_Surface*, int, int);
+  virtual void remove(const CL_Surface&, int, int);
+  ///
+  virtual void put(const CL_Surface&, int, int);
   ///
   virtual void put(CL_SurfaceProvider*, int, int);
-}///
-;
+};
 
 #endif
 

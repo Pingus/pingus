@@ -1,4 +1,4 @@
-//  $Id: PinguBmpMap.cc,v 1.4 2000/06/25 20:22:18 grumbel Exp $
+//  $Id: PinguBmpMap.cc,v 1.5 2000/12/14 21:35:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,7 +24,6 @@
 
 PinguBmpMap::PinguBmpMap()
 {
-  surface = 0;
   colmap  = 0;
 }
 
@@ -52,22 +51,22 @@ PinguBmpMap::~PinguBmpMap()
 int
 PinguBmpMap::get_width()
 {
-  return surface->get_width();
+  return surface.get_width();
 }
 
 int
 PinguBmpMap::get_height()
 {
-  return surface->get_height();  
+  return surface.get_height();  
 }
 
 void
 PinguBmpMap::draw_offset(int x, int y, float s)
 {
   if (s == 1.0)
-    surface->put_screen(x,y);	  
+    surface.put_screen(x,y);	  
   else
-    surface->put_screen((int)(x * s), (int)(y * s),s , s);
+    surface.put_screen((int)(x * s), (int)(y * s),s , s);
 }
 
 ColMap*
@@ -84,7 +83,7 @@ PinguBmpMap::get_colmap()
   if (colmap) {
     return colmap;
   } else {
-    provider = surface->get_provider();
+    provider = surface.get_provider();
     assert(provider);
     provider->lock();
 
@@ -106,10 +105,10 @@ PinguBmpMap::get_colmap()
   //  return 0;
 }
 
-CL_Surface*
-PinguBmpMap::get_surface(void)
+CL_Surface
+PinguBmpMap::get_surface()
 {
-  return surface;
+  return CL_Surface ();
 }
 
 /* EOF */

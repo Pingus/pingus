@@ -1,4 +1,4 @@
-//  $Id: Theme.cc,v 1.21 2000/10/09 19:17:30 grumbel Exp $
+ //  $Id: Theme.cc,v 1.22 2000/12/14 21:35:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,8 +33,6 @@
 Theme::Theme()
 {
   current_level = 0;
-  surface = 0;
-  background = 0;
 }
 
 Theme::Theme(std::string filename)
@@ -75,22 +73,17 @@ Theme::load(std::string filename)
     {
       if (!plt.get_surface().empty ())
 	surface = PingusResource::load_surface(plt.get_surface(), "global");
-      else
-	surface = 0;
     }
-
+  
   catch (CL_Error err) 
     {
       if (verbose) std::cout << "Theme:filename:" << err.message << std::endl;
-      surface = 0;
     }
 
   try 
     {
       if (plt.get_background().desc.res_name != "-")
 	background = PingusResource::load_surface(plt.get_background().desc);
-      else
-	background = 0;
     }
   catch (CL_Error err) 
     {
@@ -99,7 +92,6 @@ Theme::load(std::string filename)
 	  std::cout << "Theme:" << filename  << ":" << err.message << std::endl;
 	  std::cout << "Theme: Ignoring missing resource, disable background." << std::endl;
 	}
-      background = 0;
     }
   load_status(filename);
 }
@@ -148,10 +140,10 @@ Theme::draw_title()
   else 
     {
       // Fill the screen with the background surface
-      for(int y=0; y < CL_Display::get_height(); y += background->get_height()) 
+      for(int y=0; y < CL_Display::get_height(); y += background.get_height()) 
 	{
-	  for(int x=0; x < CL_Display::get_width(); x += background->get_width()) 
-	    background->put_screen(x, y);
+	  for(int x=0; x < CL_Display::get_width(); x += background.get_width()) 
+	    background.put_screen(x, y);
 	}
     }
   
@@ -163,10 +155,10 @@ Theme::draw_title()
 
   if (surface) 
     {
-      x_pos -= surface->get_width() / 2;
-      surface->put_screen(x_pos, y_pos);
+      x_pos -= surface.get_width() / 2;
+      surface.put_screen(x_pos, y_pos);
       
-      y_pos += surface->get_height() + 20;
+      y_pos += surface.get_height() + 20;
     }
 
   y_pos += 15;

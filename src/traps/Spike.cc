@@ -1,4 +1,4 @@
-//  $Id: Spike.cc,v 1.5 2000/09/18 12:22:16 grumbel Exp $
+//  $Id: Spike.cc,v 1.6 2000/12/14 21:35:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,7 +29,7 @@ Spike::Spike(TrapData data)
 
   surface = PingusResource::load_surface("Traps/spike", "traps");
 
-  counter.set_size(surface->get_num_frames());
+  counter.set_size(surface.get_num_frames());
   counter.set_type(GameCounter::once);
   counter.set_speed(1);
   counter = 0;
@@ -44,7 +44,7 @@ void
 Spike::draw_offset(int x, int y, float s)
 {
   if (killing) {
-    surface->put_screen(pos.x_pos + x, pos.y_pos + y, counter);
+    surface.put_screen(pos.x_pos + x, pos.y_pos + y, counter);
   } else {
     // do nothing
   }
@@ -56,7 +56,7 @@ Spike::let_move(void)
   if (killing)
     ++counter;
   
-  if (counter == (int)(surface->get_num_frames()) - 1) {
+  if (counter == (int)(surface.get_num_frames()) - 1) {
     killing = false;
     counter = 0;
   }

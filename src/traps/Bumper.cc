@@ -1,4 +1,4 @@
-//  $Id: Bumper.cc,v 1.7 2000/10/18 20:16:36 grumbel Exp $
+//  $Id: Bumper.cc,v 1.8 2000/12/14 21:35:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,7 +41,7 @@ Bumper::let_move()
   if (upwards) 
     {
       ++count;
-      if (count >= (int)surface->get_num_frames())
+      if (count >= (int)surface.get_num_frames())
 	{
 	  count = 0;
 	  upwards = false;
@@ -61,8 +61,7 @@ Bumper::draw_colmap()
 void 
 Bumper::draw_offset(int x, int y, float s)
 {
-  assert(surface);
-  surface->put_screen(pos.x_pos + x, pos.y_pos + y, count);
+  surface.put_screen(pos.x_pos + x, pos.y_pos + y, count);
 }
 
 void 

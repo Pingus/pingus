@@ -1,4 +1,4 @@
-//  $Id: Splashed.cc,v 1.8 2000/10/10 18:14:10 grumbel Exp $
+//  $Id: Splashed.cc,v 1.9 2000/12/14 21:35:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,8 @@
 #include "../algo.hh"
 #include "Splashed.hh"
 
-CL_Surface* Splashed::static_surface = 0;
+bool Splashed::static_surfaces_loaded = false;
+CL_Surface Splashed::static_surface;
 
 Splashed::Splashed(void)
 {
@@ -39,11 +40,14 @@ Splashed::init(void)
   environment = (PinguEnvironment)always;
   action_name = "splashed";
 
-  if (!static_surface)
-    static_surface = CL_Surface::load("Pingus/splat", local_res());
+  if (!static_surfaces_loaded)
+    {
+      static_surface = CL_Surface("Pingus/splat", local_res());
+      static_surfaces_loaded = true;
+    }
   surface = static_surface;
 
-  counter.set_size(surface->get_num_frames());
+  counter.set_size(surface.get_num_frames());
   counter.set_type(Counter::once);
   counter.set_count(0);
   counter.set_speed(10);

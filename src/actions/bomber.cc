@@ -1,4 +1,4 @@
-//  $Id: bomber.cc,v 1.11 2000/10/10 18:14:10 grumbel Exp $
+//  $Id: bomber.cc,v 1.12 2000/12/14 21:35:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,9 +23,10 @@
 #include "../FVec.hh"
 #include "bomber.hh"
 
-CL_Surface* Bomber::static_surface;
-CL_Surface* Bomber::bomber_radius;
-CL_Surface* Bomber::explo_surf;
+bool Bomber::static_surface_loaded = false;
+CL_Surface Bomber::static_surface;
+CL_Surface Bomber::bomber_radius;
+CL_Surface Bomber::explo_surf;
 
 Bomber::Bomber()
 {
@@ -44,19 +45,18 @@ Bomber::init()
   action_name = "Bomber";
   
   // Only load the surface again if no static_surface is available
-  if (!static_surface) 
-    static_surface = CL_Surface::load("Pingus/bomber", local_res());
-
-  if (!bomber_radius)
-    bomber_radius = CL_Surface::load("Other/bomber_radius", local_res());
-
-  if (!explo_surf)
-    explo_surf = CL_Surface::load("Other/explo", local_res());
+  if (!static_surface_loaded) 
+    {
+      static_surface_loaded = true;
+      static_surface = CL_Surface ("Pingus/bomber", local_res());
+      bomber_radius = CL_Surface ("Other/bomber_radius", local_res());
+      explo_surf = CL_Surface ("Other/explo", local_res());
+    }
 
   surface = static_surface;
   sound_played = false;
   environment = (PinguEnvironment)(land | sky);
-  counter.set_size(surface->get_num_frames());
+  counter.set_size(surface.get_num_frames());
   counter.set_type(Counter::once);
   counter.set_count(0);
   counter.set_speed(10);
@@ -73,18 +73,16 @@ Bomber::draw_offset(int x, int y, float s)
       return;
     }
 
-  assert(surface);
-
   if (s == 1.0) 
     {
       if (is_multi_direct) 
 	{
-	  surface->put_screen(pingu->x_pos + x + x_offset(), pingu->y_pos + y + y_offset(), 
+	  surface.put_screen(pingu->x_pos + x + x_offset(), pingu->y_pos + y + y_offset(), 
 			      ++counter + ((pingu->direction.is_left()) ? 0 : counter.size()));
 	}
       else 
 	{
-	  surface->put_screen(pingu->x_pos + x + x_offset(), pingu->y_pos + y + y_offset(),
+	  surface.put_screen(pingu->x_pos + x + x_offset(), pingu->y_pos + y + y_offset(),
 			      ++counter);
 	}
     } 
@@ -92,19 +90,19 @@ Bomber::draw_offset(int x, int y, float s)
     {
       if (is_multi_direct) 
 	{
-	  surface->put_screen(int((pingu->x_pos + x + x_offset()) * s), int((pingu->y_pos + y + y_offset()) * s), 
+	  surface.put_screen(int((pingu->x_pos + x + x_offset()) * s), int((pingu->y_pos + y + y_offset()) * s), 
 			      s, s, ++counter + ((pingu->direction.is_left()) ? 0 : counter.size()));
 	} 
       else 
 	{
-	  surface->put_screen(int((pingu->x_pos + x + x_offset()) * s), int((pingu->y_pos + y + y_offset()) * s),
+	  surface.put_screen(int((pingu->x_pos + x + x_offset()) * s), int((pingu->y_pos + y + y_offset()) * s),
 			      s, s, ++counter);
 	}
     }
   
-  if (counter >= (int)(surface->get_num_frames()) - 1) 
+  if (counter >= (int)(surface.get_num_frames()) - 1) 
     {
-      explo_surf->put_screen(pingu->x_pos - 32 + x, pingu->y_pos - 48 + y);
+      explo_surf.put_screen(pingu->x_pos - 32 + x, pingu->y_pos - 48 + y);
     } 
 }
 
@@ -127,15 +125,15 @@ Bomber::let_move()
     }
 
   // The pingu explode
-  if (counter >= (int)(surface->get_num_frames()) - 1) 
+  if (counter >= (int)(surface.get_num_frames()) - 1) 
     {
       pingu->set_status(dead);
       pingu->get_world()->get_colmap()->remove(bomber_radius,
-					       pingu->x_pos - (bomber_radius->get_width()/2),
-					       pingu->y_pos - 16 - (bomber_radius->get_width()/2));
+					       pingu->x_pos - (bomber_radius.get_width()/2),
+					       pingu->y_pos - 16 - (bomber_radius.get_width()/2));
       pingu->get_world()->get_gfx_map()->remove(bomber_radius, 
-						pingu->x_pos - (bomber_radius->get_width()/2),
-						pingu->y_pos - 16 - (bomber_radius->get_width()/2));
+						pingu->x_pos - (bomber_radius.get_width()/2),
+						pingu->y_pos - 16 - (bomber_radius.get_width()/2));
       
       // Add an explosion to the forces list
       ForcesHolder::add_force(ExplosionForce(5,30,CL_Vector(pingu->x_pos,

@@ -1,4 +1,4 @@
-//  $Id: PLFObj.cc,v 1.32 2000/12/12 09:12:59 grumbel Exp $
+//  $Id: PLFObj.cc,v 1.33 2000/12/14 21:35:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -54,8 +54,8 @@ HotspotObj::HotspotObj(HotspotData data)
   para  = data.para;
   cout << "Lodaing Hotspot: " << desc.res_name << endl;
   surf = PingusResource::load_surface(desc);
-  width = surf->get_width ();
-  height = surf->get_height ();
+  width = surf.get_width ();
+  height = surf.get_height ();
 }
 
 HotspotObj::~HotspotObj()
@@ -115,8 +115,8 @@ EntranceObj::EntranceObj(EntranceData data)
   if (type == "generic")
     {
       surf = PingusResource::load_surface("Entrances/generic", "entrances");
-      x_of = -(surf->get_width()/2);
-      y_of = -surf->get_height();
+      x_of = -(surf.get_width()/2);
+      y_of = -surf.get_height();
     } 
   else if (type == "woodthing") 
     {
@@ -126,8 +126,8 @@ EntranceObj::EntranceObj(EntranceData data)
 	throw PingusError("EntranceObj: Fatal error!");
       }
       // FIXME: This are hardcoded, because the values are incorrectf!?
-      x_of = - (int)(surf->get_width())/2;
-      y_of = 32 - (int)(surf->get_height());
+      x_of = - (int)(surf.get_width())/2;
+      y_of = 32 - (int)(surf.get_height());
       cout << "Loading woodthing..." << x_of << " " << y_of << endl;
     } 
   else if (type == "cloud")
@@ -142,8 +142,8 @@ EntranceObj::EntranceObj(EntranceData data)
       throw PingusError("EntranceObj: Unknown entrance type: " + type);
     }
 
-  width = surf->get_width ();
-  height = surf->get_height ();
+  width = surf.get_width ();
+  height = surf.get_height ();
 }
 
 EntranceObj::~EntranceObj()
@@ -243,8 +243,8 @@ ExitObj::ExitObj(ExitData data)
   *position  = data.pos;
   desc = data.desc;
   surf = PingusResource::load_surface(desc);
-  width = surf->get_width ();
-  height = surf->get_height ();
+  width = surf.get_width ();
+  height = surf.get_height ();
 }
 
 ExitObj::~ExitObj()
@@ -323,8 +323,8 @@ TrapObj::TrapObj(TrapData data)
   } else {
     throw PingusError(type + ": trap is not implemented in editor");
   }
-  width = surf->get_width ();
-  height = surf->get_height ();
+  width = surf.get_width ();
+  height = surf.get_height ();
 }
 
 TrapObj::~TrapObj()
@@ -341,7 +341,7 @@ void
 TrapObj::draw_offset(int x_offset, int y_offset)
 {
   if (surf) {
-    surf->put_screen(position->x_pos + x_offset + x_of,
+    surf.put_screen(position->x_pos + x_offset + x_of,
 		     position->y_pos + y_offset + y_of,
 		     frame);
   } else {
@@ -380,7 +380,7 @@ LiquidObj::LiquidObj(const LiquidObj& data)
   speed = data.speed;
   surf  = data.surf;
   counter = data.counter;
-  height = surf->get_height();
+  height = surf.get_height();
 }
 
 LiquidObj::LiquidObj(LiquidData data)
@@ -390,9 +390,9 @@ LiquidObj::LiquidObj(LiquidData data)
   desc  = data.desc;
   speed = data.speed;
   surf = PingusResource::load_surface(desc);
-  width = surf->get_width ();
-  height = surf->get_height ();
-  counter.set_size(surf->get_num_frames());
+  width = surf.get_width ();
+  height = surf.get_height ();
+  counter.set_size(surf.get_num_frames());
   counter.set_speed(50);
 }
 
@@ -412,7 +412,7 @@ LiquidObj::draw_offset(int x_offset, int y_offset)
   int x1 = position->x_pos + x_offset;
   int x2 = position->x_pos + width + x_offset;
   int y1 = position->y_pos + y_offset;
-  int y2 = position->y_pos + y_offset + surf->get_height();
+  int y2 = position->y_pos + y_offset + surf.get_height();
 
   if (x1 < 0) {
     x1 = 0;
@@ -441,8 +441,8 @@ LiquidObj::draw_offset(int x_offset, int y_offset)
   CL_Display::push_clip_rect();
   CL_Display::set_clip_rect(CL_ClipRect(x1, y1, x2, y2));
 
-  for(int x = position->x_pos; x <= position->x_pos + width; x += surf->get_width())
-    surf->put_screen(x + x_offset, position->y_pos + y_offset, int(++counter));
+  for(int x = position->x_pos; x <= position->x_pos + width; x += surf.get_width())
+    surf.put_screen(x + x_offset, position->y_pos + y_offset, int(++counter));
 
   CL_Display::pop_clip_rect();
 }
@@ -453,7 +453,7 @@ LiquidObj::draw_mark_offset(int x_offset, int y_offset)
   Display::draw_rect(position->x_pos + x_offset,
 		     position->y_pos + y_offset,
 		     position->x_pos + width + x_offset,
-		     position->y_pos + surf->get_height() + y_offset,
+		     position->y_pos + surf.get_height() + y_offset,
 		     mark_color.r, 
 		     mark_color.g,
 		     mark_color.b,
@@ -463,7 +463,7 @@ LiquidObj::draw_mark_offset(int x_offset, int y_offset)
 bool
 LiquidObj::mouse_over(int x_offset, int y_offset)
 {
-  int height = surf->get_height();
+  int height = surf.get_height();
   int mouse_x = CL_Mouse::get_x();
   int mouse_y = CL_Mouse::get_y();  
 

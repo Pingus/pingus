@@ -1,4 +1,4 @@
-//  $Id: ColMap.cc,v 1.20 2000/12/09 01:18:54 grumbel Exp $
+//  $Id: ColMap.cc,v 1.21 2000/12/14 21:35:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -59,11 +59,11 @@ ColMap::load(ResDescriptor desc)
     break;
   case ResDescriptor::RESOURCE:
     {
-      CL_Surface* sur;
+      CL_Surface sur;
       CL_SurfaceProvider* provider;
       
       sur = PingusResource::load_surface(desc);
-      provider = sur->get_provider();
+      provider = sur.get_provider();
       if (provider->get_depth() != 8)
 	throw PingusError("PingusBmpMap::get_colmap: Surface has wrong pixel format, need 8bpp!"); 
 
@@ -119,9 +119,9 @@ ColMap::get_width()
 }
 
 void 
-ColMap::remove(CL_Surface* sur, int x, int y)
+ColMap::remove(const CL_Surface& sur, int x, int y)
 {
-  remove(sur->get_provider(), x, y);
+  remove(sur.get_provider(), x, y);
 }
 
 void 
@@ -220,9 +220,9 @@ ColMap::load(unsigned char* b, int w, int h)
 }
 
 void
-ColMap::put(CL_Surface* sur, int sur_x, int sur_y, GroundpieceData::Type type)
+ColMap::put(const CL_Surface& sur, int sur_x, int sur_y, GroundpieceData::Type type)
 {
-  put(sur->get_provider(), sur_x, sur_y, type);
+  put(sur.get_provider(), sur_x, sur_y, type);
 }
 
 // Puts a surface on the colmap
@@ -395,7 +395,7 @@ void
 ColMap::draw(int x_of, int y_of, float s)
 {
   CL_Canvas* canvas = new CL_Canvas(width, height);
-  CL_Surface* sur;
+  CL_Surface sur;
   unsigned char* buffer;
 
   canvas->lock();
@@ -428,12 +428,9 @@ ColMap::draw(int x_of, int y_of, float s)
 
   canvas->unlock();
 
-  sur = CL_Surface::create(canvas, false);
+  sur = CL_Surface(canvas, true);
 
-  sur->put_screen(x_of, y_of);
-
-  delete sur;
-  delete canvas;
+  sur.put_screen(x_of, y_of);
 }
 
 /* EOF */

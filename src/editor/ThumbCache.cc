@@ -1,4 +1,4 @@
-//  $Id: ThumbCache.cc,v 1.1 2000/10/14 16:09:46 grumbel Exp $
+//  $Id: ThumbCache.cc,v 1.2 2000/12/14 21:35:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,7 @@
 #include "../System.hh"
 #include "ThumbCache.hh"
 
-CL_Surface* 
+CL_Surface
 ThumbCache::load (std::string res_ident, std::string datafile)
 {
   std::string filename = res_ident + "-" + datafile;
@@ -43,11 +43,15 @@ ThumbCache::load (std::string res_ident, std::string datafile)
 	  CL_Canvas* canvas = new CL_Canvas (50, 50);
 	  canvas->lock ();
 	  unsigned char* buffer = static_cast<unsigned char*>(canvas->get_data ());
-	  int buffer_size = 50 * 50 * 4;
-	  int read_size = fread (buffer, sizeof (unsigned char*), buffer_size, in);
+	  size_t buffer_size = 50 * 50 * 4;
+	  size_t read_size = fread (buffer, sizeof (unsigned char*), buffer_size, in);
+	  if (read_size != buffer_size)
+	    {
+	      std::cerr << "ThumbCache: " << filename << ": read error: wanted " << buffer_size << " got " << read_size << std::endl;
+	    }
 	  fclose (in);
 	  canvas->unlock ();
-	  return CL_Surface::create (canvas, true);
+	  return CL_Surface (canvas, true);
 	}
       else
 	{
@@ -55,13 +59,13 @@ ThumbCache::load (std::string res_ident, std::string datafile)
 	}
     }
 
-  return 0;
+  return CL_Surface ();
 }
 
 void 
-ThumbCache::cache (CL_Surface* sur, std::string res_ident, std::string datafile)
+ThumbCache::cache (const CL_Surface& sur, std::string res_ident, std::string datafile)
 {
-  if (sur->get_provider ()->get_pitch () * sur->get_provider ()->get_width () < 50 * 50 * 4)
+  if (sur.get_provider ()->get_pitch () * sur.get_provider ()->get_width () < 50 * 50 * 4)
     {
       std::cout << "ThumbCache: image to small for cache: " << res_ident << std::endl;
       return;

@@ -1,4 +1,4 @@
-//  $Id: Hotspot.hh,v 1.5 2000/08/03 10:31:17 grumbel Exp $
+//  $Id: Hotspot.hh,v 1.6 2000/12/14 21:35:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,7 +34,7 @@ class Hotspot : public HotspotData,
 {
 private:
   ///
-  CL_Surface* surface;
+  CL_Surface surface;
   ///
   int speed;
   ///

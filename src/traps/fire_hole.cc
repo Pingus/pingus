@@ -1,4 +1,4 @@
-//  $Id: fire_hole.cc,v 1.1 2000/02/04 23:45:19 mbn Exp $
+//  $Id: fire_hole.cc,v 1.2 2000/12/14 21:35:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,7 +24,7 @@ FireHole::FireHole(trap_data data)
   x_pos = data.x_pos;
   y_pos = data.y_pos;
   surface = CL_Res_Surface::load("Traps/fire_hole", *resource());
-  counter.set_size(surface->get_no_sprs());
+  counter.set_size(surface.get_no_sprs());
 }
 
 FireHole::~FireHole()

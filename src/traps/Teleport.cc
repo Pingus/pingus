@@ -1,4 +1,4 @@
-//  $Id: Teleport.cc,v 1.6 2000/09/18 12:22:16 grumbel Exp $
+//  $Id: Teleport.cc,v 1.7 2000/12/14 21:35:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,10 +33,10 @@ Teleport::Teleport(trap_data data)
   x_target = data.x_target;
   y_target = data.y_target;
 
-  counter.set_size(surface->get_num_frames());
+  counter.set_size(surface.get_num_frames());
   counter.set_type(GameCounter::once);
   counter.set_speed(1);
-  counter = surface->get_num_frames() - 1;
+  counter = surface.get_num_frames() - 1;
   teleporting = false;
 }
 

@@ -1,4 +1,4 @@
-//  $Id: SurfaceButton.hh,v 1.11 2000/10/13 12:19:46 grumbel Exp $
+//  $Id: SurfaceButton.hh,v 1.12 2000/12/14 21:35:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,9 +38,9 @@ class SurfaceButton
 {
 protected:
   ///
-  CL_Surface* surface;
+  CL_Surface surface;
   ///
-  CL_Surface* surface_p;
+  CL_Surface surface_p;
   ///
   CL_Font*    font;
   ///

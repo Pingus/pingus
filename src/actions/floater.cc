@@ -1,4 +1,4 @@
-//  $Id: floater.cc,v 1.4 2000/04/14 18:28:26 grumbel Exp $
+//  $Id: floater.cc,v 1.5 2000/12/14 21:35:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,8 +37,8 @@ Floater::init(void)
   step = 0;
   environment = PinguEnvironment(sky | land);
   action_name = "floater";
-  surface = CL_Surface::load("Pingus/floater", local_res());
-  counter.set_size(surface->get_num_frames());
+  surface = CL_Surface("Pingus/floater", local_res());
+  counter.set_size(surface.get_num_frames());
   counter.set_speed(20);
 }
 

@@ -1,4 +1,4 @@
-//  $Id: climber.cc,v 1.7 2000/10/12 19:33:51 grumbel Exp $
+//  $Id: climber.cc,v 1.8 2000/12/14 21:35:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,7 +19,8 @@
 
 #include "climber.hh"
 
-CL_Surface* Climber::static_surface;
+bool Climber::static_surfaces_loaded = false;
+CL_Surface Climber::static_surface;
 
 Climber::Climber()
 {
@@ -37,11 +38,14 @@ Climber::init(void)
   action_name = "climber";
   environment = PinguEnvironment(sky | land);
 
-  if (!static_surface)
-    static_surface = CL_Surface::load("Pingus/climber", local_res());
+  if (!static_surfaces_loaded)
+    {
+      static_surface = CL_Surface ("Pingus/climber", local_res());
+      static_surfaces_loaded = true;
+    }
 
   surface = static_surface;
-  counter.set_size(surface->get_num_frames()/2);
+  counter.set_size(surface.get_num_frames()/2);
   counter.set_type(Counter::loop);
   counter.set_count(0);
   counter.set_speed(10);

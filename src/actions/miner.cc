@@ -1,4 +1,4 @@
-// $Id: miner.cc,v 1.12 2000/10/10 18:14:10 grumbel Exp $
+// $Id: miner.cc,v 1.13 2000/12/14 21:35:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,9 +37,9 @@ Miner::init(void)
   environment = (PinguEnvironment)land;
   action_name = "Miner";
 
-  miner_radius = CL_Surface::load("Other/bash_radius", local_res());
-  surface = CL_Surface::load("Pingus/miner", local_res());
-  counter.set_size(surface->get_num_frames()/2);
+  miner_radius = CL_Surface ("Other/bash_radius", local_res());
+  surface = CL_Surface ("Pingus/miner", local_res());
+  counter.set_size(surface.get_num_frames()/2);
   counter.set_speed(10);
   is_multi_direct = true;
   //  slow_count.set_size(3);
@@ -54,9 +54,9 @@ Miner::let_move()
     {
       if (slow_count % 3 == 0) 
 	{
-	  pingu->get_world()->get_colmap()->remove(miner_radius->get_provider(), pingu->x_pos - 16 + pingu->direction, 
+	  pingu->get_world()->get_colmap()->remove(miner_radius.get_provider(), pingu->x_pos - 16 + pingu->direction, 
 						   pingu->y_pos - 31);
-	  pingu->get_world()->get_gfx_map()->remove(miner_radius->get_provider(), pingu->x_pos - 16 + pingu->direction, 
+	  pingu->get_world()->get_gfx_map()->remove(miner_radius.get_provider(), pingu->x_pos - 16 + pingu->direction, 
 						    pingu->y_pos - 31);
 	}
 
@@ -66,16 +66,16 @@ Miner::let_move()
   
   if (rel_getpixel(0, -1) == ColMap::NOTHING)
     {
-      pingu->get_world()->get_colmap()->remove(miner_radius->get_provider(), pingu->x_pos - 16 + pingu->direction, pingu->y_pos - 29);
-      pingu->get_world()->get_gfx_map()->remove(miner_radius->get_provider(), pingu->x_pos - 16 + pingu->direction, pingu->y_pos - 29);
+      pingu->get_world()->get_colmap()->remove(miner_radius, pingu->x_pos - 16 + pingu->direction, pingu->y_pos - 29);
+      pingu->get_world()->get_gfx_map()->remove(miner_radius, pingu->x_pos - 16 + pingu->direction, pingu->y_pos - 29);
       is_finished = true;
     }
   else if (rel_getpixel(0, -1) & ColMap::SOLID)
     {
       PingusSound::play_wav("chink");
-      pingu->get_world()->get_colmap()->remove(miner_radius->get_provider(), pingu->x_pos - 16 + pingu->direction, 
+      pingu->get_world()->get_colmap()->remove(miner_radius, pingu->x_pos - 16 + pingu->direction, 
 					       pingu->y_pos - 31);
-      pingu->get_world()->get_gfx_map()->remove(miner_radius->get_provider(), pingu->x_pos - 16 + pingu->direction, 
+      pingu->get_world()->get_gfx_map()->remove(miner_radius, pingu->x_pos - 16 + pingu->direction, 
 						pingu->y_pos - 31);
       is_finished = true;
     }

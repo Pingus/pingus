@@ -1,4 +1,4 @@
-//  $Id: Drown.cc,v 1.1 2000/08/11 01:00:56 grumbel Exp $
+//  $Id: Drown.cc,v 1.2 2000/12/14 21:35:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,8 @@
 #include <ClanLib/core.h>
 #include "Drown.hh"
 
-CL_Surface* Drown::static_surface;
+bool Drown::static_surfaces_loaded;
+CL_Surface Drown::static_surface;
 
 ///
 Drown::Drown()
@@ -34,13 +35,16 @@ Drown::init()
   action_name = "Drown";
   environment = (PinguEnvironment)always;
 
-  if (!static_surface)
-    static_surface = CL_Surface::load("Pingus/drownfall", local_res());
+  if (!static_surfaces_loaded)
+    {
+      static_surface = CL_Surface("Pingus/drownfall", local_res());
+      static_surfaces_loaded = true;
+    }
 
   surface = static_surface;
 
   counter.set_count(0);
-  counter.set_size(surface->get_num_frames()/2);
+  counter.set_size(surface.get_num_frames()/2);
   counter.set_speed(0);
   counter.set_type(Counter::once);
 
@@ -52,7 +56,7 @@ Drown::init()
 void 
 Drown::let_move()
 {
-  if (counter >= (int)(surface->get_num_frames()/2) - 1)
+  if (counter >= (int)(surface.get_num_frames()/2) - 1)
     {
       pingu->set_status(dead);
     }

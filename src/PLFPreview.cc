@@ -1,4 +1,4 @@
-//  $Id: PLFPreview.cc,v 1.6 2000/08/03 10:31:17 grumbel Exp $
+//  $Id: PLFPreview.cc,v 1.7 2000/12/14 21:35:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,10 +28,9 @@
 PLFPreview::PLFPreview(PLF* p)
 {
   plf = p;
-  surface = 0;
 }
 
-CL_Surface*
+CL_Surface
 PLFPreview::get_surface()
 {
   return surface;

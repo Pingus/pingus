@@ -1,4 +1,4 @@
-//  $Id: IceBlock.cc,v 1.6 2000/12/06 08:54:41 grumbel Exp $
+//  $Id: IceBlock.cc,v 1.7 2000/12/14 21:35:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -89,9 +89,8 @@ IceBlock::~IceBlock ()
 void
 IceBlock::draw_colmap()
 {
-  CL_SurfaceProvider* prov
-    = PingusResource::load_surface("iceblock_cmap", "worldobjs")->get_provider();
-  world->get_colmap()->put(prov, pos.x_pos, pos.y_pos, GroundpieceData::GROUND);
+  CL_Surface surf (PingusResource::load_surface("iceblock_cmap", "worldobjs"));
+  world->get_colmap()->put(surf, pos.x_pos, pos.y_pos, GroundpieceData::GROUND);
 }
 
 ///
@@ -101,8 +100,8 @@ IceBlock::draw_offset(int x_of, int y_of, float s = 1.0)
   if (is_finished)
     return;
 
-  block_sur->put_screen (pos.x_pos + x_of, pos.y_pos + y_of, 
-			 (int)((1.0 - thickness) * (block_sur->get_num_frames () - 1)));
+  block_sur.put_screen (pos.x_pos + x_of, pos.y_pos + y_of, 
+			(int)((1.0 - thickness) * (block_sur.get_num_frames () - 1)));
 }
 
 ///
@@ -126,9 +125,8 @@ IceBlock::let_move()
 	    {
 	      is_finished = true;
 	      thickness = 0.0;
-	      CL_SurfaceProvider* prov
-		= PingusResource::load_surface("iceblock_cmap", "worldobjs")->get_provider();
-	      world->get_colmap()->remove(prov, pos.x_pos, pos.y_pos);
+	      CL_Surface surf(PingusResource::load_surface("iceblock_cmap", "worldobjs"));
+	      world->get_colmap()->remove(surf, pos.x_pos, pos.y_pos);
 	      return;
 	    }
 	  return;

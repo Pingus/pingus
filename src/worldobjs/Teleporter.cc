@@ -1,4 +1,4 @@
-//  $Id: Teleporter.cc,v 1.9 2000/12/12 09:12:59 grumbel Exp $
+//  $Id: Teleporter.cc,v 1.10 2000/12/14 21:35:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -101,7 +101,7 @@ void
 Teleporter::draw_offset (int x_of, int y_of, float s = 1.0)
 {
   //std::cout << "Teleporter::draw_offset ()" << std::endl;
-  sur->put_screen (pos.x_pos + x_of, pos.y_pos + y_of);
+  sur.put_screen (pos.x_pos + x_of, pos.y_pos + y_of);
 }
 
 void 
@@ -122,8 +122,8 @@ Teleporter::let_move ()
 EditorTeleporterObj::EditorTeleporterObj (WorldObjData* obj)
 {
   surf = PingusResource::load_surface ("teleporter", "worldobjs");
-  width = surf->get_width ();
-  height = surf->get_height ();
+  width = surf.get_width ();
+  height = surf.get_height ();
 
   TeleporterData* data = dynamic_cast<TeleporterData*> (obj);  
   assert (data);
@@ -196,8 +196,8 @@ EditorTeleporterTargetObj::EditorTeleporterTargetObj ()
 EditorTeleporterTargetObj::EditorTeleporterTargetObj (WorldObjData* obj, Position* pos)
 {
   surf = PingusResource::load_surface ("teleporter2", "worldobjs");
-  width = surf->get_width ();
-  height = surf->get_height ();
+  width = surf.get_width ();
+  height = surf.get_height ();
 
   TeleporterData* data = dynamic_cast<TeleporterData*> (obj);
   assert (data);

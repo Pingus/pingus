@@ -1,4 +1,4 @@
-//  $Id: ConveyorBelt.cc,v 1.7 2000/12/09 01:18:55 grumbel Exp $
+//  $Id: ConveyorBelt.cc,v 1.8 2000/12/14 21:35:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -95,19 +95,19 @@ ConveyorBelt::ConveyorBelt (WorldObjData* data)
 void
 ConveyorBelt::draw_offset (int x_of, int y_of, float s = 1.0)
 {
-  left_sur->put_screen (pos.x_pos + x_of, pos.y_pos + y_of, counter);
+  left_sur.put_screen (pos.x_pos + x_of, pos.y_pos + y_of, counter);
   for (int i=0; i < width; i++)
-    middle_sur->put_screen (pos.x_pos + left_sur->get_width () + i*middle_sur->get_width () + x_of, 
-			    pos.y_pos + y_of, 
-			    counter);
-  right_sur->put_screen (pos.x_pos + left_sur->get_width () + width*middle_sur->get_width () + x_of,
+    middle_sur.put_screen (pos.x_pos + left_sur.get_width () + i*middle_sur.get_width () + x_of, 
+			   pos.y_pos + y_of, 
+			   counter);
+  right_sur.put_screen (pos.x_pos + left_sur.get_width () + width*middle_sur.get_width () + x_of,
 			 pos.y_pos + y_of, counter);
 }
 
 void
 ConveyorBelt::draw_colmap ()
 {
-  CL_Surface* sur = PingusResource::load_surface("conveyorbelt_cmap", "worldobjs");
+  CL_Surface sur(PingusResource::load_surface("conveyorbelt_cmap", "worldobjs"));
   for (int i=0; i < (width+2); i++)
     world->get_colmap()->put(sur, pos.x_pos + (15*i), pos.y_pos, GroundpieceData::SOLID);
 }
@@ -120,7 +120,7 @@ ConveyorBelt::let_move(void)
   if (counter > 14)
     counter = 0;
   else if (counter < 0)
-    counter = middle_sur->get_num_frames () - 1;
+    counter = middle_sur.get_num_frames () - 1;
 
   // Move the Pingus only every second step
   if (catch_counter++ % 2 == 0)
@@ -147,9 +147,9 @@ EditorConveyorBeltObj::EditorConveyorBeltObj (WorldObjData* obj)
   right_sur  = PingusResource::load_surface ("conveyorbelt_right", "worldobjs");
   middle_sur = PingusResource::load_surface ("conveyorbelt_middle", "worldobjs");
 
-  EditorObj::width  = left_sur->get_width() + right_sur->get_width()
-    + ConveyorBeltData::width * middle_sur->get_width ();
-  EditorObj::height = middle_sur->get_height ();
+  EditorObj::width  = left_sur.get_width() + right_sur.get_width()
+    + ConveyorBeltData::width * middle_sur.get_width ();
+  EditorObj::height = middle_sur.get_height ();
 
   pos = conveyor_belt->pos;
   position = &pos;
@@ -172,18 +172,18 @@ EditorConveyorBeltObj::duplicate()
 void   
 EditorConveyorBeltObj::draw_offset(int x_of, int y_of)
 {
-  left_sur->put_screen (pos.x_pos + x_of, pos.y_pos + y_of, counter);
+  left_sur.put_screen (pos.x_pos + x_of, pos.y_pos + y_of, counter);
   for (int i=0; i < ConveyorBeltData::width; i++)
-    middle_sur->put_screen (pos.x_pos + left_sur->get_width () + i*middle_sur->get_width () + x_of, 
+    middle_sur.put_screen (pos.x_pos + left_sur.get_width () + i*middle_sur.get_width () + x_of, 
 			    pos.y_pos + y_of, 
 			    counter);
-  right_sur->put_screen (pos.x_pos + left_sur->get_width () + ConveyorBeltData::width*middle_sur->get_width () + x_of,
+  right_sur.put_screen (pos.x_pos + left_sur.get_width () + ConveyorBeltData::width*middle_sur.get_width () + x_of,
 			 pos.y_pos + y_of, counter);
   counter += speed;
   if (counter > 14)
     counter = 0;
   else if (counter < 0)
-    counter = middle_sur->get_num_frames () - 1;
+    counter = middle_sur.get_num_frames () - 1;
 
 }
 

@@ -1,4 +1,4 @@
-//  $Id: Liquid.hh,v 1.6 2000/08/03 10:31:17 grumbel Exp $
+//  $Id: Liquid.hh,v 1.7 2000/12/14 21:35:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,12 +31,12 @@ class Liquid : public LiquidData,
 {
 private:
   ///
-  CL_Surface* sur;
+  CL_Surface sur;
   ///
   AnimCounter counter;
 public:
   ///
-  CL_Surface* colmap_sur;
+  CL_Surface colmap_sur;
 
   ///
   Liquid(LiquidData);

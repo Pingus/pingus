@@ -1,4 +1,4 @@
-//  $Id: Credits.hh,v 1.4 2000/09/18 12:22:15 grumbel Exp $
+//  $Id: Credits.hh,v 1.5 2000/12/14 21:35:54 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,7 +25,7 @@ class Credits
 {
 private:
   ///
-  CL_Surface* surface;
+  CL_Surface surface;
   ///
   CL_Font*    font;
   ///

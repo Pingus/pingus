@@ -1,4 +1,4 @@
-//  $Id: RainParticle.hh,v 1.2 2000/08/05 18:48:09 grumbel Exp $
+//  $Id: RainParticle.hh,v 1.3 2000/12/14 21:35:56 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,8 +26,8 @@
 class RainParticle : public Particle
 {
 private:
-  static CL_Surface* rain_surf;
-  static CL_Surface* rain_splash;
+  static CL_Surface rain_surf;
+  static CL_Surface rain_splash;
 
   float add;
   bool alive;
@@ -39,7 +39,7 @@ public:
   RainParticle(int, int);
   virtual ~RainParticle();
 
-  virtual void draw_offset(int, int, float) const;
+  virtual void draw_offset(int, int, float);
   virtual void let_move();
   virtual bool is_alive();
 };

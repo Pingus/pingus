@@ -1,4 +1,4 @@
-//  $Id: Guillotine.cc,v 1.6 2000/09/18 12:22:16 grumbel Exp $
+//  $Id: Guillotine.cc,v 1.7 2000/12/14 21:35:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,12 +28,12 @@ Guillotine::Guillotine(TrapData data)
   surface = PingusResource::load_surface("Traps/guillotinekill", "traps");
   idle_surf = PingusResource::load_surface("Traps/guillotineidle", "traps");
 
-  counter.set_size(surface->get_num_frames()/2);
+  counter.set_size(surface.get_num_frames()/2);
   counter.set_type(GameCounter::once);
   counter.set_speed(0.7);
   counter = 0;
 
-  idle_counter.set_size(idle_surf->get_num_frames());
+  idle_counter.set_size(idle_surf.get_num_frames());
   idle_counter.set_type(GameCounter::loop);
   idle_counter.set_speed(0.3);
   idle_counter = 0;
@@ -48,11 +48,11 @@ Guillotine::draw_offset(int x, int y, float s)
 {
   if (killing) {
     if (direction.is_left())
-      surface->put_screen(pos.x_pos + x, pos.y_pos + y, counter);
+      surface.put_screen(pos.x_pos + x, pos.y_pos + y, counter);
     else
-      surface->put_screen(pos.x_pos + x, pos.y_pos + y, counter + 12);
+      surface.put_screen(pos.x_pos + x, pos.y_pos + y, counter + 12);
   } else {
-    idle_surf->put_screen(pos.x_pos + x, pos.y_pos + y, idle_counter);
+    idle_surf.put_screen(pos.x_pos + x, pos.y_pos + y, idle_counter);
   }
 }
 

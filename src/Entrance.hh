@@ -1,4 +1,4 @@
-//  $Id: Entrance.hh,v 1.7 2000/08/03 10:31:17 grumbel Exp $
+//  $Id: Entrance.hh,v 1.8 2000/12/14 21:35:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,7 +35,7 @@ class Entrance : public EntranceData,
 {
 protected:
   ///
-  CL_Surface* surface;
+  CL_Surface surface;
   ///
   int last_release;
 

@@ -1,4 +1,4 @@
-//  $Id: PingusResource.hh,v 1.7 2000/06/26 06:45:59 grumbel Exp $
+//  $Id: PingusResource.hh,v 1.8 2000/12/14 21:35:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,13 +27,14 @@
 #include <ClanLib/core.h>
 #include "ResDescriptor.hh"
 
-/** General Resource Managing class, wrappers around
-    CL_Surface::load() and friends */
+/** General Resource Managing class, it provides wrappers around
+    CL_Surface::load(), CL_Font::load() and friends.  This class is
+    needed to do a better handling of the resources. */
 class PingusResource
 {
 private:
   static std::map<std::string, CL_ResourceManager*> resource_map;
-  static std::map<ResDescriptor, CL_Surface*> surface_map;
+  static std::map<ResDescriptor, CL_Surface> surface_map;
   static std::map<ResDescriptor, CL_Font*> font_map;
 
 public:
@@ -41,11 +42,11 @@ public:
   PingusResource();
   
   /** Load a surface with res_name from datafile */
-  static CL_Surface* load_surface(const std::string& res_name,
-				  const std::string& datafile);
-
+  static CL_Surface load_surface(const std::string& res_name,
+				 const std::string& datafile);
+  
   /** Load a surface from the ResDescriptor */
-  static CL_Surface* load_surface(const ResDescriptor&);
+  static CL_Surface load_surface(const ResDescriptor&);
 
   /** Load a font with res_name from datafile */
   static CL_Font* load_font(const std::string& res_name,

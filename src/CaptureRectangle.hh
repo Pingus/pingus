@@ -1,4 +1,4 @@
-//  $Id: CaptureRectangle.hh,v 1.3 2000/06/18 17:01:49 grumbel Exp $
+//  $Id: CaptureRectangle.hh,v 1.4 2000/12/14 21:35:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,13 +32,13 @@ private:
   static PinguAction* button_action;
   
   ///
-  CL_Surface* good; 
+  CL_Surface good; 
   ///
-  CL_Surface* bad;
+  CL_Surface bad;
   ///
-  CL_Surface* arrow_left;
+  CL_Surface arrow_left;
   ///
-  CL_Surface* arrow_right;
+  CL_Surface arrow_right;
   ///
   CL_Font* font;
 public:

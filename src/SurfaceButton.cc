@@ -1,4 +1,4 @@
-//  $Id: SurfaceButton.cc,v 1.17 2000/10/30 16:17:50 grumbel Exp $
+//  $Id: SurfaceButton.cc,v 1.18 2000/12/14 21:35:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -51,8 +51,8 @@ SurfaceButton::draw()
 
       //      surface->put_screen(x_pos - surface->get_width()/2,
       //			  y_pos - surface->get_height()/2);
-      surface_p->put_screen(x_pos - surface_p->get_width()/2,
-			    y_pos - surface_p->get_height()/2);
+      surface_p.put_screen(x_pos - surface_p.get_width()/2,
+			   y_pos - surface_p.get_height()/2);
 
       if (line2.empty())
 	{
@@ -80,9 +80,9 @@ SurfaceButton::draw()
       //      surface->put_screen(x_pos - surface->get_width()/2,
       //		  y_pos - surface->get_height()/2);
 
-      surface_p->put_screen(x_pos - surface_p->get_width()/2 * shrink,
-			    y_pos - surface_p->get_height()/2 * shrink,
-			    shrink, shrink);
+      surface_p.put_screen(x_pos - surface_p.get_width()/2 * shrink,
+			   y_pos - surface_p.get_height()/2 * shrink,
+			   shrink, shrink);
       if (line2.empty())
 	{
 	  font_large->print_center(x_pos + 32, 
@@ -99,8 +99,8 @@ SurfaceButton::draw()
     } 
   else 
     {
-      surface_p->put_screen(x_pos - surface_p->get_width()/2,
-			    y_pos - surface_p->get_height()/2);
+      surface_p.put_screen(x_pos - surface_p.get_width()/2,
+			   y_pos - surface_p.get_height()/2);
 
       //      surface->put_screen(x_pos - surface->get_width()/2,
       //			  y_pos - surface->get_height()/2);
@@ -110,10 +110,12 @@ SurfaceButton::draw()
 bool
 SurfaceButton::mouse_over()
 {
-  if (CL_Mouse::get_x() > x_pos - int(surface->get_width()) / 2
-      && CL_Mouse::get_x() < x_pos + int(surface->get_width()) / 2
-      && CL_Mouse::get_y() > y_pos - int(surface->get_height()) / 2
-      && CL_Mouse::get_y() < y_pos + int(surface->get_height()) / 2)
+  assert (surface);
+
+  if (CL_Mouse::get_x() > x_pos - int(surface.get_width()) / 2
+      && CL_Mouse::get_x() < x_pos + int(surface.get_width()) / 2
+      && CL_Mouse::get_y() > y_pos - int(surface.get_height()) / 2
+      && CL_Mouse::get_y() < y_pos + int(surface.get_height()) / 2)
     {
       return true;
     }
@@ -140,9 +142,9 @@ PlayButton::PlayButton()
   line1 = _("Credits");
   //line1["de"] = "Credits";
 
-  surface   = PingusResource::load_surface("menu/ice_off", "core");
-  //  surface   = PingusResource::load_surface("NewButtons/credits_off", "menu");
+  surface = PingusResource::load_surface("menu/ice_off", "core");
   surface_p = PingusResource::load_surface("menu/credits_on", "core");
+  //  surface   = PingusResource::load_surface("NewButtons/credits_off", "menu");
 
   //surface   = PingusResource::load_surface("Buttons/play", "menu");
   //surface_p = PingusResource::load_surface("Buttons/play_p", "menu");
