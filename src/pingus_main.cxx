@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.98 2003/08/19 19:56:55 torangan Exp $
+//   $Id: pingus_main.cxx,v 1.98.2.1 2004/04/01 15:15:40 torangan Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___
@@ -557,6 +557,10 @@ PingusMain::check_args(int argc, char** argv)
       break;
     }
   }
+
+	// make sure that we're not recording a demo while already playing one
+	if (play_demo)
+		enable_demo_recording = false;
 
   // Treating non option arguments
   for(int i = optind; i < argc; ++i)
