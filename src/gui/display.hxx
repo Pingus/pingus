@@ -1,4 +1,4 @@
-//  $Id: display.hxx,v 1.1 2003/02/19 09:51:44 grumbel Exp $
+//  $Id: display.hxx,v 1.2 2003/04/15 19:06:50 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,7 +24,6 @@
 #include <list>
 
 class DisplayHook;
-class CL_MouseCursorProvider;
 
 /** A flip display hook can be used to attach an event to a
     flip_screen(). An example usage for this is a software mouse
@@ -50,15 +49,9 @@ private:
 class Display
 {
 private:
-  static bool displaying_cursor;
   static std::list<DisplayHook*> display_hooks;
 public:
   static void draw_rect(int x1, int y1, int x2, int y2, float r, float g, float b, float a);
-
-  static void show_cursor(bool show_async=true);
-  static void hide_cursor();
-  static void set_cursor(CL_MouseCursorProvider *provider, int frame=0);
-  static bool cursor_shown();
 
   static void flip_display(bool sync=false);
 

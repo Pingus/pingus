@@ -1,4 +1,4 @@
-//  $Id: screen_manager.cxx,v 1.7 2003/04/15 10:33:15 grumbel Exp $
+//  $Id: screen_manager.cxx,v 1.8 2003/04/15 19:06:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,8 +19,10 @@
 
 #include <iostream>
 #include <ClanLib/Display/Display/display.h>
+#include <ClanLib/Display/Display/mousecursor.h>
 
 #include "../globals.hxx"
+#include "cursor.hxx"
 #include "display.hxx"
 #include "screen_manager.hxx"
 #include "../fade_out.hxx"
@@ -48,6 +50,16 @@ ScreenManager::display ()
     input_controller = new Input::Controller(path_manager.complete("controller/default.xml"));
   else
     input_controller = new Input::Controller(controller_file);
+
+  Input::Controller::set_current(input_controller);
+
+  Cursor* cursor = 0;
+  if (swcursor_enabled)
+    {
+      cursor = new Cursor("cursors/animcross", "core");
+      Display::add_flip_screen_hook(cursor);
+      CL_MouseCursor::hide();
+    }  
 
   DeltaManager delta_manager;
 
@@ -78,6 +90,9 @@ ScreenManager::display ()
 
       // Most likly the screen will get changed in this update call
       get_current_screen()->update (delta);    
+
+      if (cursor)
+        cursor->update(time_delta);
 
       // Last screen has poped, so we are going to end here
       if (screens.empty ())
@@ -122,6 +137,8 @@ ScreenManager::display ()
       CL_System::sleep (0);
     } 
 
+  Display::remove_flip_screen_hook(cursor);
+  delete cursor;
   delete input_controller;
 }
 

@@ -1,4 +1,4 @@
-//  $Id: controller.hxx,v 1.17 2002/12/20 01:22:32 grumbel Exp $
+//  $Id: controller.hxx,v 1.18 2003/04/15 19:06:50 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -62,7 +62,12 @@ public:
       
   void update (float delta);
 
+  static void set_current(Controller* controller) { current_controller = controller; }
+  static Controller* get_current() { return current_controller; }
+
 private:
+  static Controller* current_controller;
+
   void create_action_buttons (xmlNodePtr cur);
       
   Controller (const Controller&);

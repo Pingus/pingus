@@ -1,4 +1,4 @@
-//  $Id: level_dot.cxx,v 1.19 2003/04/10 14:36:35 grumbel Exp $
+//  $Id: level_dot.cxx,v 1.20 2003/04/15 19:06:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,8 +17,9 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <ClanLib/Display/Input/mouse.h>
 #include <iostream>
+#include "../input/controller.hxx"
+#include "../input/pointer.hxx"
 #include "../my_gettext.hxx"
 #include "../globals.hxx"
 #include "../system.hxx"
@@ -77,7 +78,8 @@ LevelDot::LevelDot(xmlDocPtr doc, xmlNodePtr cur)
 void
 LevelDot::draw(GraphicContext& gc)
 {
-  Vector mpos = gc.screen_to_world(Vector(CL_Mouse::get_x(), CL_Mouse::get_y()));
+  Vector mpos = gc.screen_to_world(Vector(Input::Controller::get_current()->get_pointer()->get_x_pos(),
+                                          Input::Controller::get_current()->get_pointer()->get_y_pos()));
 
   float x = mpos.x - pos.x;
   float y = mpos.y - pos.y;

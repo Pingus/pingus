@@ -1,4 +1,4 @@
-//  $Id: editor.cxx,v 1.49 2003/04/11 22:01:54 grumbel Exp $
+//  $Id: editor.cxx,v 1.50 2003/04/15 19:06:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -136,15 +136,12 @@ void
 Editor::on_startup ()
 {
   PingusSound::stop_music();
-  Display::set_cursor(CL_MouseCursorProvider::load("cursors/cursor", PingusResource::get("core")));
-  Display::show_cursor();
   event->enable ();
 }
 
 void
 Editor::on_shutdown ()
 {
-  Display::hide_cursor(); 
   event->disable ();
 }
 

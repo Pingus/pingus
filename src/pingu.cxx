@@ -1,4 +1,4 @@
-//  $Id: pingu.cxx,v 1.40 2003/03/21 22:08:06 grumbel Exp $
+//  $Id: pingu.cxx,v 1.41 2003/04/15 19:06:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -119,7 +119,7 @@ Pingu::request_set_action (PinguAction* act)
 
   if (status == PS_DEAD)
     {
-      pout(PINGUS_DEBUG_ACTIONS) << _("Setting action to a dead pingu") << std::endl;
+      pout(PINGUS_DEBUG_ACTIONS) << "Setting action to a dead pingu" << std::endl;
       ret_val =  false;
     }
   else

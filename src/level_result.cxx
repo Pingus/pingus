@@ -1,4 +1,4 @@
-//  $Id: level_result.cxx,v 1.11 2003/04/08 19:56:40 torangan Exp $
+//  $Id: level_result.cxx,v 1.12 2003/04/15 19:06:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -47,8 +47,6 @@ PingusLevelResult::draw(void)
   char  str[128];
 
   PingusSound::play_music("pingus-2.it");
-
-  Display::hide_cursor();
 
   for(int y = 0; y < CL_Display::get_height(); y += background.get_height())
     for(int x = 0; x < CL_Display::get_width(); x += background.get_width())

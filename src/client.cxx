@@ -1,4 +1,4 @@
-//  $Id: client.cxx,v 1.43 2003/03/25 00:37:44 grumbel Exp $
+//  $Id: client.cxx,v 1.44 2003/04/15 19:06:50 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -55,9 +55,6 @@ Client::Client (TrueServer * s)
   unplayable.set_align_center();
   
   Timer timer("Client UI generation");
-
-  Display::set_cursor(CL_MouseCursorProvider::load("Cursors/cursor", 
-						   PingusResource::get("game")));
 
   // These object will get deleted by the gui_manager
   button_panel = new ButtonPanel(this, 2, CL_Display::get_height()/2);
@@ -349,11 +346,6 @@ Client::draw (GraphicContext& gc)
 void
 Client::on_startup ()
 {
-  /** Hide the system cursor and show the software one */
-  Display::show_cursor();
-  // FIXME: using this twice will crash with an X Error
-  //CL_MouseCursor::hide ();
-
   do_replay = false;
   is_finished = false;
   skip_frame = 0;
@@ -378,7 +370,6 @@ Client::on_startup ()
 void
 Client::on_shutdown ()
 {
-  Display::hide_cursor();
 }
 
 /* EOF */

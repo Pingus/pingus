@@ -1,4 +1,4 @@
-//  $Id: cursor.cxx,v 1.1 2003/02/19 09:51:44 grumbel Exp $
+//  $Id: cursor.cxx,v 1.2 2003/04/15 19:06:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,8 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "../input/controller.hxx"
+#include "../input/pointer.hxx"
 #include "cursor.hxx"
 
 Cursor::Cursor (std::string ident, std::string datafile)
@@ -38,7 +40,9 @@ Cursor::update (float delta)
 void 
 Cursor::on_event()
 {
-  //sprite.put_screen (controller->get_pos ());
+  const Input::Pointer* pointer = Input::Controller::get_current()->get_pointer();
+  sprite.put_screen (static_cast<int>(pointer->get_x_pos ()),
+                     static_cast<int>(pointer->get_y_pos ()));
 }
 
 /* EOF */

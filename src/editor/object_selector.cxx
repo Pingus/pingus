@@ -1,4 +1,4 @@
-//  $Id: object_selector.cxx,v 1.37 2003/03/30 13:12:35 grumbel Exp $
+//  $Id: object_selector.cxx,v 1.38 2003/04/15 19:06:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -637,8 +637,6 @@ ObjectSelector::select_surface (const std::string & resource_file)
 	  loading_screen.draw_progress(i->c_str(), (float)j / liste->size());
 	}
     }
-  // Showing the mousecursor again, since loading_screen hides it
-  Display::show_cursor();
   data_loaded[resource_file] = true;
   //data_loaded = false;
   return select_surface(sur_list);

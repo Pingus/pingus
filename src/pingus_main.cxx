@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.82 2003/04/15 10:33:15 grumbel Exp $
+//   $Id: pingus_main.cxx,v 1.83 2003/04/15 19:06:50 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -390,11 +390,11 @@ PingusMain::check_args(int argc, char** argv)
       break;
    
     case 145:
-      swcursor_enabled = true;
+      swcursor_enabled = false;
       break;
 
     case 146:
-      swcursor_enabled = false;
+      swcursor_enabled = true;
       break;
 
     case 147:
@@ -510,7 +510,7 @@ PingusMain::check_args(int argc, char** argv)
         << "\n   -e, --editor             " << _("Launch the Level editor (experimental)")
         << "\n   --disable-auto-scrolling " << _("Disable automatic scrolling")
         //          "   --disable-swcursor       Disable software cursor, use hw cursor instead\n"
-        //          "   --enable-swcursor        Enable software cursor\n"
+        << "\n   --enable-swcursor        " << _("Enable software cursor")
         //"   --disable-action-help    Disable action button help strings\n"
         //"   --enable-action-help     Enable action button help strings(default)\n"
         << "\n   --no-cfg-file            " << _("Don't read ~/.pingus/config")

@@ -1,4 +1,4 @@
-//  $Id: controller.cxx,v 1.26 2002/12/20 01:22:32 grumbel Exp $
+//  $Id: controller.cxx,v 1.27 2003/04/15 19:06:50 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,6 +42,8 @@ using namespace Axes;
 using namespace Buttons;
 using namespace Pointers;
 using namespace Scrollers;
+
+Controller* Controller::current_controller = 0;
 
 Controller::Controller (const std::string& configfile) 
   : standard_pointer(0), 

@@ -1,4 +1,4 @@
-//  $Id: display.cxx,v 1.1 2003/02/19 09:51:44 grumbel Exp $
+//  $Id: display.cxx,v 1.2 2003/04/15 19:06:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,7 +26,6 @@
 #include "display.hxx"
 
 std::list<DisplayHook*> Display::display_hooks;
-bool Display::displaying_cursor = false;
 
 DisplayHook::DisplayHook() : is_visible(false)
 {
@@ -50,33 +49,6 @@ Display::draw_rect(int x1, int y1, int x2, int y2, float r, float g, float b, fl
   CL_Display::draw_line(x1, y2, x2, y2, r, g, b, a);
   CL_Display::draw_line(x1, y1, x1, y2, r, g, b, a);
   CL_Display::draw_line(x2, y1, x2, y2, r, g, b, a);
-}
-
-void
-Display::show_cursor(bool async)
-{
-  if (swcursor_enabled)
-    CL_MouseCursor::show(async);
-}
-
-void 
-Display::hide_cursor()
-{
-  if (swcursor_enabled)
-    CL_MouseCursor::hide();
-}
- 
-void
-Display::set_cursor(CL_MouseCursorProvider *provider, int frame)
-{
-  if (swcursor_enabled)
-    CL_MouseCursor::set_cursor(provider, frame);
-}
-
-bool
-Display::cursor_shown()
-{
-  return displaying_cursor;
 }
 
 void

@@ -1,4 +1,4 @@
-//  $Id: loading.cxx,v 1.3 2003/02/19 09:50:36 grumbel Exp $
+//  $Id: loading.cxx,v 1.4 2003/04/15 19:06:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -45,13 +45,8 @@ Loading::init()
 void
 Loading::draw()
 {
-  bool cursor_shown = Display::cursor_shown();
-
   if (!is_init)
     init();
-  
-  if (cursor_shown)
-    Display::hide_cursor();
 
   CL_Display::clear_display();
 
@@ -59,21 +54,13 @@ Loading::draw()
 		 (CL_Display::get_height() - sur.get_height())/2);
 
   Display::flip_display();
-
-  if (cursor_shown)
-    Display::show_cursor();
 }
 
 void
 Loading::draw_progress(const std::string& str, float progress)
 {
-  bool cursor_shown = Display::cursor_shown();
-
   if (!is_init)
     init();
-
-  if (cursor_shown)
-    Display::hide_cursor();
 
   CL_Display::clear_display();
 
@@ -93,9 +80,6 @@ Loading::draw_progress(const std::string& str, float progress)
 			1.0, 0.0, 0.0, 1.0);
 
   Display::flip_display();
-
-  if (cursor_shown)
-    Display::show_cursor();
 }
 
 /* EOF */
