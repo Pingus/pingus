@@ -4,7 +4,7 @@
   <version>1</version>
   <global>
     <levelname lang="en">Digging from outside</levelname>
-    <description lang="en">At last the you have found the exit of those caves. But getting out of the caves could need the help from somebody of the jungle.</description>
+    <description lang="en">At last the you have found the exit, but getting out of the caves might require the help from somebody in the jungle.</description>
     <author>Etienne Marcotte &lt;marcotte_moi@yahoo.com&gt;</author>
     <number-of-pingus>75</number-of-pingus>
     <number-to-save>25</number-to-save>
