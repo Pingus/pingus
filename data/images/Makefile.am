@@ -264,6 +264,11 @@ groundpieces/ground/jungle/stick2.png \
 groundpieces/ground/jungle/stick3.png \
 groundpieces/ground/jungle/stick4.png \
 groundpieces/ground/jungle/stick5.png \
+groundpieces/ground/jungle/stone1.png \
+groundpieces/ground/jungle/stone2.png \
+groundpieces/ground/jungle/stone3.png \
+groundpieces/ground/jungle/stone4.png \
+groundpieces/ground/jungle/stone5.png \
 groundpieces/ground/jungle/twist.png \
 groundpieces/ground/jungle/twistsmooth.png \
 groundpieces/ground/misc/bpiece1.png \

@@ -9,7 +9,7 @@
     <number-of-pingus>3</number-of-pingus>
     <number-to-save>3</number-to-save>
     <time>4500</time>
-    <width>1450</width>
+    <width>1490</width>
     <height>760</height>
     <difficulty>95</difficulty>
     <playable>1</playable>
@@ -25,6 +25,48 @@
     <jumper count="1"/>
     <miner count="1"/>
   </action-list>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>jungle/stone2</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>843</x-pos>
+    <y-pos>200</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>jungle/stone1</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>843</x-pos>
+    <y-pos>136</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>jungle/stone4</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>843</x-pos>
+    <y-pos>73</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
 
 <background type="surface">
   <surface><resource type="datafile">
@@ -56,48 +98,6 @@
   <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>misc/stoneblock6</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>850</x-pos>
-    <y-pos>97</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<worldobj type="groundpiece">
-  <type>ground</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>misc/stoneblock5</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>850</x-pos>
-    <y-pos>161</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<worldobj type="groundpiece">
-  <type>ground</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>misc/stoneblock3</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>850</x-pos>
-    <y-pos>225</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<worldobj type="groundpiece">
-  <type>ground</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
   <resource-ident>foliage/flax2</resource-ident>
     <modifier>ROT0</modifier>
   </resource></surface>
@@ -116,7 +116,7 @@
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>936</x-pos>
+    <x-pos>929</x-pos>
     <y-pos>90</y-pos>
     <z-pos>0</z-pos>
   </position>
@@ -132,6 +132,20 @@
   <position>
     <x-pos>913</x-pos>
     <y-pos>100</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>jungle/stone4</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>843</x-pos>
+    <y-pos>264</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -226,8 +240,8 @@
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>877</x-pos>
-    <y-pos>81</y-pos>
+    <x-pos>862</x-pos>
+    <y-pos>75</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>

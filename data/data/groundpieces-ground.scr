@@ -111,6 +111,11 @@ section jungle
         stick3 = ../images/groundpieces/ground/jungle/stick3.png (type=surface);
         stick4 = ../images/groundpieces/ground/jungle/stick4.png (type=surface);
         stick5 = ../images/groundpieces/ground/jungle/stick5.png (type=surface);
+        stone1 = ../images/groundpieces/ground/jungle/stone1.png (type=surface);
+        stone2 = ../images/groundpieces/ground/jungle/stone2.png (type=surface);
+        stone3 = ../images/groundpieces/ground/jungle/stone3.png (type=surface);
+        stone4 = ../images/groundpieces/ground/jungle/stone4.png (type=surface);
+        stone5 = ../images/groundpieces/ground/jungle/stone5.png (type=surface);
         twist = ../images/groundpieces/ground/jungle/twist.png (type=surface);
         twistsmooth = ../images/groundpieces/ground/jungle/twistsmooth.png (type=surface);
 }

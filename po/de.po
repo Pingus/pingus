@@ -126,11 +126,11 @@ msgstr "F4 - Level starten/testen"
 
 #: src/editor/editor_help_screen.cxx:50
 msgid "F5 - load a level"
-msgstr "Level Laden (F5)"
+msgstr "F5 - Level Laden"
 
 #: src/editor/editor_help_screen.cxx:51
 msgid "F6 - save this level"
-msgstr "Level Speichern (F6)"
+msgstr "F6 - Level Speichern"
 
 #: src/editor/editor_help_screen.cxx:52
 msgid "F7 - [unset]"
@@ -842,7 +842,7 @@ msgstr "Pingus im Vollbild starten"
 
 #: src/pingus_main.cxx:515
 msgid "FILE      "
-msgstr "Datei     "
+msgstr "DATEI     "
 
 #: src/pingus_main.cxx:515
 msgid "Load a custom level from FILE"
@@ -850,11 +850,11 @@ msgstr "Einen Level aus DATEI laden"
 
 #: src/pingus_main.cxx:516
 msgid "FILE        "
-msgstr "Datei      "
+msgstr "DATEI      "
 
 #: src/pingus_main.cxx:516
 msgid "Load a custom worldmap from FILE"
-msgstr "Eine Weltkarte aus DATEI laden"
+msgstr " Eine Weltkarte aus DATEI laden"
 
 #: src/pingus_main.cxx:517
 msgid "Print some more messages to stdout, can be set"
