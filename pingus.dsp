@@ -105,10 +105,6 @@ SOURCE=.\src\action_button.hxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\action_data.cxx
-# End Source File
-# Begin Source File
-
 SOURCE=.\src\action_data.hxx
 # End Source File
 # Begin Source File
@@ -405,27 +401,11 @@ SOURCE=.\src\config.hxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\config_xml.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\config_xml.hxx
-# End Source File
-# Begin Source File
-
 SOURCE=.\src\console.cxx
 # End Source File
 # Begin Source File
 
 SOURCE=.\src\console.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\counter.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\counter.hxx
 # End Source File
 # Begin Source File
 
@@ -489,415 +469,19 @@ SOURCE=.\src\direction.hxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\editor\action_window.cxx
+SOURCE=.\src\display\drawing_context.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\editor\action_window.hxx
+SOURCE=.\src\display\drawing_context.hxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\editor\editor.cxx
+SOURCE=.\src\display\scene_context.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\editor\editor.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editor\editor_event.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editor\editor_event.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editor\editor_help_screen.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editor\editor_help_screen.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editor\editor_view.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editor\editor_view.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editor\editorobj.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editor\editorobj.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editor\editorobj_group.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editor\editorobj_group.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editor\editorobj_mgr.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editor\generic_property_frame.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editor\generic_property_frame.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editor\level_property_window.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editor\level_property_window.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editor\level_resizer.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editor\level_resizer.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editor\object_manager.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editor\object_manager.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editor\object_selector.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editor\object_selector.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editor\object_selector_window.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editor\object_selector_window.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editor\panel.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editor\panel.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editor\panel_icons.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editor\panel_icons.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editor\property_frame.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editor\property_frame.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editor\property_window.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editor\property_window.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editor\rect_editorobj.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editor\rect_editorobj.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editor\scroll_map.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editor\scroll_map.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editor\selection.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editor\selection.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editor\sprite_editorobj.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editor\sprite_editorobj.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editor\start_pos.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editor\start_pos.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editor\status_line.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editor\status_line.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editor\string_reader.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editor\string_reader.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editor\surface_selector.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editor\surface_selector.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editor\thumb_cache.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editor\thumb_cache.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editor\weather_obj.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editor\weather_obj.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editorobjs\bumper_obj.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editorobjs\bumper_obj.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editorobjs\conveyor_belt_obj.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editorobjs\conveyor_belt_obj.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editorobjs\entrance_obj.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editorobjs\entrance_obj.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editorobjs\exit_obj.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editorobjs\exit_obj.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editorobjs\fake_exit_obj.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editorobjs\fake_exit_obj.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editorobjs\groundpiece_obj.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editorobjs\groundpiece_obj.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editorobjs\guillotine_obj.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editorobjs\guillotine_obj.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editorobjs\hammer_obj.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editorobjs\hammer_obj.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editorobjs\hotspot_obj.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editorobjs\hotspot_obj.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editorobjs\ice_block_obj.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editorobjs\ice_block_obj.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editorobjs\info_box_obj.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editorobjs\info_box_obj.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editorobjs\laser_exit_obj.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editorobjs\laser_exit_obj.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editorobjs\liquid_obj.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editorobjs\liquid_obj.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editorobjs\prefab_obj.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editorobjs\prefab_obj.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editorobjs\smasher_obj.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editorobjs\smasher_obj.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editorobjs\solid_color_background_obj.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editorobjs\solid_color_background_obj.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editorobjs\spike_obj.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editorobjs\spike_obj.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editorobjs\starfield_background_obj.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editorobjs\starfield_background_obj.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editorobjs\surface_background_obj.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editorobjs\surface_background_obj.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editorobjs\switch_door_obj.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editorobjs\switch_door_obj.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editorobjs\switch_door_switch_obj.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editorobjs\switch_door_switch_obj.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editorobjs\teleporter_obj.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editorobjs\teleporter_obj.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editorobjs\teleporter_target_obj.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editorobjs\teleporter_target_obj.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editorobjs\thunderstorm_background_obj.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editorobjs\thunderstorm_background_obj.hxx
+SOURCE=.\src\display\scene_context.hxx
 # End Source File
 # Begin Source File
 
@@ -909,15 +493,19 @@ SOURCE=.\src\exit_menu.hxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\fade_out.cxx
+SOURCE=.\src\file_reader.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\fade_out.hxx
+SOURCE=.\src\file_reader.cxx
 # End Source File
 # Begin Source File
 
 SOURCE=.\src\file_reader.hxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\file_reader_impl.hxx
 # End Source File
 # Begin Source File
 
@@ -1001,19 +589,19 @@ SOURCE=.\src\goal_manager.hxx
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\graphic_context_state.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\graphic_context_state.hxx
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\groundtype.cxx
 # End Source File
 # Begin Source File
 
 SOURCE=.\src\groundtype.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\gui\buffer_graphic_context.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\gui\buffer_graphic_context.hxx
 # End Source File
 # Begin Source File
 
@@ -1037,19 +625,7 @@ SOURCE=.\src\gui\display.hxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\gui\display_graphic_context.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\gui\display_graphic_context.hxx
-# End Source File
-# Begin Source File
-
 SOURCE=.\src\gui\game_delta.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\gui\graphic_context.cxx
 # End Source File
 # Begin Source File
 
@@ -1389,10 +965,6 @@ SOURCE=.\src\layer_manager.hxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\libxmlfwd.hxx
-# End Source File
-# Begin Source File
-
 SOURCE=.\src\loading.cxx
 # End Source File
 # Begin Source File
@@ -1565,7 +1137,27 @@ SOURCE=.\src\pingus_error.cxx
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\pingus_error.cxx
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\pingus_error.hxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\pingus_level.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\pingus_level.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\pingus_level.hxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\pingus_level_test.cxx
 # End Source File
 # Begin Source File
 
@@ -1617,26 +1209,6 @@ SOURCE=.\src\playfield.hxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\playfield_view.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\playfield_view.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\plf.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\plf.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\plf_handle.hxx
-# End Source File
-# Begin Source File
-
 SOURCE=.\src\plf_res_mgr.cxx
 # End Source File
 # Begin Source File
@@ -1650,14 +1222,6 @@ SOURCE=.\src\plt_xml.cxx
 # Begin Source File
 
 SOURCE=.\src\plt_xml.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\prefab.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\prefab.hxx
 # End Source File
 # Begin Source File
 
@@ -1690,6 +1254,10 @@ SOURCE=.\src\resource.cxx
 # Begin Source File
 
 SOURCE=.\src\resource.hxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\resource_modifier.cxx
 # End Source File
 # Begin Source File
 
@@ -1809,14 +1377,6 @@ SOURCE=.\src\spot_map.hxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\sprite.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\sprite.hxx
-# End Source File
-# Begin Source File
-
 SOURCE=.\src\start_screen.cxx
 # End Source File
 # Begin Source File
@@ -1865,14 +1425,6 @@ SOURCE=.\src\string_format.hxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\string_tokenizer.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\string_tokenizer.hxx
-# End Source File
-# Begin Source File
-
 SOURCE=.\src\system.cxx
 # End Source File
 # Begin Source File
@@ -1918,22 +1470,6 @@ SOURCE=.\src\vector.cxx
 # Begin Source File
 
 SOURCE=.\src\vector.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\view.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\view.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\wav_provider.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\wav_provider.hxx
 # End Source File
 # Begin Source File
 
@@ -2069,23 +1605,11 @@ SOURCE=.\src\worldobj.hxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\worldobj_data.hxx
+SOURCE=.\src\worldobj_factory.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\worldobj_data_factory.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\worldobj_data_factory.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\worldobjs\bumper.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\worldobjs\bumper.hxx
+SOURCE=.\src\worldobj_factory.hxx
 # End Source File
 # Begin Source File
 
@@ -2102,22 +1626,6 @@ SOURCE=.\src\worldobjs\entrance.cxx
 # Begin Source File
 
 SOURCE=.\src\worldobjs\entrance.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\worldobjs\entrances\cloud.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\worldobjs\entrances\cloud.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\worldobjs\entrances\woodthing.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\worldobjs\entrances\woodthing.hxx
 # End Source File
 # Begin Source File
 
@@ -2289,203 +1797,11 @@ SOURCE=.\src\worldobjs\thunderstorm_background.hxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\worldobjsdata\bumper_data.cxx
+SOURCE=.\src\worldobjs\woodthing.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\worldobjsdata\bumper_data.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\worldobjsdata\conveyor_belt_data.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\worldobjsdata\conveyor_belt_data.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\worldobjsdata\entrance_data.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\worldobjsdata\entrance_data.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\worldobjsdata\exit_data.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\worldobjsdata\exit_data.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\worldobjsdata\fake_exit_data.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\worldobjsdata\fake_exit_data.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\worldobjsdata\groundpiece_data.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\worldobjsdata\groundpiece_data.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\worldobjsdata\guillotine_data.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\worldobjsdata\guillotine_data.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\worldobjsdata\hammer_data.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\worldobjsdata\hammer_data.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\worldobjsdata\hotspot_data.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\worldobjsdata\hotspot_data.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\worldobjsdata\ice_block_data.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\worldobjsdata\ice_block_data.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\worldobjsdata\info_box_data.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\worldobjsdata\info_box_data.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\worldobjsdata\laser_exit_data.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\worldobjsdata\laser_exit_data.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\worldobjsdata\liquid_data.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\worldobjsdata\liquid_data.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\worldobjsdata\prefab_obj_data.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\worldobjsdata\prefab_obj_data.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\worldobjsdata\rain_generator_data.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\worldobjsdata\rain_generator_data.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\worldobjsdata\smasher_data.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\worldobjsdata\smasher_data.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\worldobjsdata\snow_generator_data.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\worldobjsdata\snow_generator_data.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\worldobjsdata\solid_color_background_data.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\worldobjsdata\solid_color_background_data.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\worldobjsdata\spike_data.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\worldobjsdata\spike_data.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\worldobjsdata\starfield_background_data.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\worldobjsdata\starfield_background_data.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\worldobjsdata\surface_background_data.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\worldobjsdata\surface_background_data.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\worldobjsdata\switch_door_data.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\worldobjsdata\switch_door_data.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\worldobjsdata\teleporter_data.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\worldobjsdata\teleporter_data.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\worldobjsdata\thunderstorm_background_data.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\worldobjsdata\thunderstorm_background_data.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\worldobjsdata\worldobj_group_data.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\worldobjsdata\worldobj_group_data.hxx
+SOURCE=.\src\worldobjs\woodthing.hxx
 # End Source File
 # Begin Source File
 
@@ -2494,6 +1810,10 @@ SOURCE=.\src\xml_eval.cxx
 # Begin Source File
 
 SOURCE=.\src\xml_eval.hxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\xml_file_reader.cxx
 # End Source File
 # Begin Source File
 
@@ -2513,14 +1833,6 @@ SOURCE=.\src\xml_file_writer.hxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\xml_helper.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\xml_helper.hxx
-# End Source File
-# Begin Source File
-
 SOURCE=.\src\xml_pdf.cxx
 # End Source File
 # Begin Source File
@@ -2529,19 +1841,15 @@ SOURCE=.\src\xml_pdf.hxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\xml_plf.cxx
+SOURCE=.\src\xml_pingus_level.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\xml_plf.hxx
+SOURCE=.\src\xml_pingus_level.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\xmlgz_reader.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\xmlgz_reader.hxx
+SOURCE=.\src\xml_pingus_level.hxx
 # End Source File
 # Begin Source File
 
