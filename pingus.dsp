@@ -568,6 +568,10 @@ SOURCE=.\src\game_session.cxx
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\game_session_result.cxx
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\game_time.cxx
 # End Source File
 # Begin Source File
@@ -605,6 +609,10 @@ SOURCE=.\src\hotspot.cxx
 # Begin Source File
 
 SOURCE=.\src\hotspot_data.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\html_browser.cxx
 # End Source File
 # Begin Source File
 
@@ -1013,10 +1021,6 @@ SOURCE=.\src\debug_stream.hxx
 # Begin Source File
 
 SOURCE=.\src\math.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\xml_helper.hxx
 # End Source File
 # End Group
 # Begin Group "Resources"

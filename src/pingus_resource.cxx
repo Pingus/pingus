@@ -1,4 +1,4 @@
-//  $Id: pingus_resource.cxx,v 1.6 2002/06/22 17:40:55 grumbel Exp $
+//  $Id: pingus_resource.cxx,v 1.7 2002/06/23 11:54:10 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,9 +17,11 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <unistd.h>
+#ifndef WIN32
+	#include <unistd.h>
+	#include <sys/types.h>
+	#include <sys/stat.h>
+#endif
 #include <assert.h>
 
 #include <ClanLib/png.h>
