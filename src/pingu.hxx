@@ -1,4 +1,4 @@
-//  $Id: pingu.hxx,v 1.19 2002/10/01 19:53:44 grumbel Exp $
+//  $Id: pingu.hxx,v 1.20 2002/10/02 19:20:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,10 +35,6 @@ class GraphicContext;
 class Pingu
 {
 private:
-  /** Static id_counter, which holds the id last pingu, which
-      got created. */
-  static int id_counter;
-
   /** The primary action with is currently in use */
   PinguAction* action;
 
@@ -77,9 +73,10 @@ public:
   void  set_action (PinguAction*);
 
   /** Creates a new Pingu at the given coordinates
+      @param arg_id The uniq id of the pingu
       @param pos The start position of the pingu
       @param owner The owner id of the pingu (used for multiplayer) */
-  Pingu (const Vector& pos, int owner);
+  Pingu (int arg_id, const Vector& pos, int owner);
   
   /** Destruct the pingu... */
   ~Pingu ();
@@ -117,10 +114,7 @@ public:
 
   /// Returns the unique id of the pingu
   int  get_id (void); 
-  
-  /// Set's the unique id of the pingu
-  int  set_id (int);
-  
+    
   /// Set the pingu to the given coordinates
   void set_pos (float x, float y);
 

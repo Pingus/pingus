@@ -1,4 +1,4 @@
-//  $Id: entrance.cxx,v 1.3 2002/10/01 19:53:46 grumbel Exp $
+//  $Id: entrance.cxx,v 1.4 2002/10/02 19:20:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -59,8 +59,8 @@ Entrance::pingu_ready ()
   }
 }
 
-Pingu*
-Entrance::get_pingu ()
+void
+Entrance::create_pingu ()
 {
   static int last_direction;
   Direction d;
@@ -99,7 +99,7 @@ Entrance::get_pingu ()
       pingu->set_direction(d);
       break;
     }
-  return pingu;
+
 }
 
 void
@@ -109,7 +109,9 @@ Entrance::update ()
       && (world->get_released_pingus() < world->get_allowed_pingus())
       && (! world->check_armageddon()))
     {
-      world->get_pingu_p()->add(get_pingu());
+      create_pingu();
+      
+      // FIXME: Evil, world should care about that itself
       world->inc_released_pingus();
     }
 }

@@ -1,4 +1,4 @@
-//  $Id: server.hxx,v 1.8 2002/10/01 19:53:44 grumbel Exp $
+//  $Id: server.hxx,v 1.9 2002/10/02 19:20:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,7 @@
 
 #include "action_holder.hxx"
 
+class Pingu;
 class PLF;
 class World;
 
@@ -80,8 +81,10 @@ public:
   ActionHolder* get_action_holder();
   bool is_finished();
   void set_finished();
-  void process_event(std::string);
-  void send_event(std::string);
+
+  /* Event handling stuff */
+  void send_armageddon_event();
+  void send_pingu_action_event(Pingu* pingu, Actions::ActionName action);
   
 private:
   Server (const Server&);

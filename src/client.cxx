@@ -1,4 +1,4 @@
-//  $Id: client.cxx,v 1.25 2002/10/01 21:48:32 grumbel Exp $
+//  $Id: client.cxx,v 1.26 2002/10/02 19:20:18 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -329,7 +329,7 @@ Client::on_keyboard_button_release(const CL_Key& key)
       break;
 
     case CL_KEY_A:
-      server->send_event("armageddon");
+      server->send_armageddon_event();
       break;
 	  
     case CL_KEY_R:
@@ -395,7 +395,7 @@ Client::on_fast_forward_press ()
 void 
 Client::on_armageddon_press ()
 {
-  server->send_event("armageddon");
+  server->send_armageddon_event();
 }
 
 void

@@ -1,4 +1,4 @@
-//  $Id: pingu.cxx,v 1.29 2002/10/01 19:53:44 grumbel Exp $
+//  $Id: pingu.cxx,v 1.30 2002/10/02 19:20:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,16 +33,16 @@
 
 using namespace Actions;
 
+// FIXME: We should read all this 'constants' from a configuration file at startup
 const float deadly_velocity = 20.0;
-int   Pingu::id_counter = 0;
 
 // Init a pingu at the given position while falling
-Pingu::Pingu (const Vector& arg_pos, int owner)
+Pingu::Pingu (int arg_id, const Vector& arg_pos, int owner)
             : action(0),
               countdown_action (0),
               wall_action(0),
               fall_action(0),
-              id(++id_counter),
+              id(arg_id),
               action_time(-1),
               owner_id(owner),
               status(PS_ALIVE),
@@ -412,12 +412,6 @@ Vector
 Pingu::get_center_pos () const
 {
   return Vector(pos_x, pos_y) + Vector (0, -16); 
-}
-
-int 
-Pingu::set_id (int i)
-{
-  return (id = i);
 }
 
 int 

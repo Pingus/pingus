@@ -1,4 +1,4 @@
-//  $Id: server.cxx,v 1.18 2002/10/01 19:53:44 grumbel Exp $
+//  $Id: server.cxx,v 1.19 2002/10/02 19:20:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,6 +31,21 @@
 
 using namespace std;
 using Actions::action_from_string;
+
+/** PinguID search functor */
+struct PinguId : public unary_function<Pingu*, bool>
+{
+  int pingu_id;
+
+  PinguId(){}
+  PinguId(int i) {
+    pingu_id = i;
+  }
+ 
+  bool operator()(Pingu* pingu) {
+    return (pingu->get_id() == pingu_id);
+  }
+};
 
 PingusEvent::PingusEvent ()
 {
@@ -120,87 +135,24 @@ Server::update()
   */
 }
 
-// Some simple event management
 void
-Server::send_event(std::string event)
+Server::send_armageddon_event()
 {
-  process_event(event);
+  world->armageddon();
 }
 
-/** PinguID search functor */
-struct PinguId : public unary_function<Pingu*, bool>
-{
-  int pingu_id;
-
-  PinguId(){}
-  PinguId(int i) {
-    pingu_id = i;
-  }
- 
-  bool operator()(Pingu* pingu) {
-    return (pingu->get_id() == pingu_id);
-  }
-};
-
 void
-Server::process_event(std::string event)
+Server::send_pingu_action_event(Pingu* pingu, Actions::ActionName action)
 {
-  char* event_str = strdup(event.c_str());
-  std::string token;
-  const char delimiters[] = ":";
-
-  //std::cout << "Event: " << GameTime::get_time() << ":" << event << std::endl;
-
-  token = strtok(event_str, delimiters); // Get GameTime
-
-  if (token == "armageddon")
-    {
-      world->armageddon();
-      std::cout << std::endl;
-    }
-  else if (token == "Pingu")
-    {
-      int pingu_id;
-      PinguHolder* pingus;
-      
-      std::string action;
-      
-      token = strtok(NULL, delimiters); // Get Pingu id
-      pingu_id = atoi(token.c_str());
-
-
-      token = strtok(NULL, delimiters); // Get action name
-      action = token;
-    
-      pingus = world->get_pingu_p();
-      
-      // FIXME: This could need some optimization
-      PinguIter pingu = find_if(pingus->begin(), pingus->end(), PinguId(pingu_id));
-
-      if (pingu != pingus->end()) 
-	{
-	  PinguAction* tmp_action = action_holder.get_action(action_from_string(action));
+  PinguAction* tmp_action = action_holder.get_action(action);
 	  
-	  if (tmp_action)
-	    {
-	      if (!(*pingu)->request_set_action(tmp_action))
-		{
-		  action_holder.push_action(action_from_string(action));
-		}
-	    }
-	} 
-      else 
+  if (tmp_action)
+    {
+      if (!(pingu->request_set_action(tmp_action)))
 	{
-	  std::cout << "Server: PinguID: " << pingu_id << " not found, demo file corrupt?!" << std::endl;
+	  action_holder.push_action(action);
 	}
     }
-  else 
-    {
-      std::cout << "Server: Couldn't ident token: \""  << token << "\"" << std::endl;
-      std::cout << "Server: Unknown Event: " << event << std::endl;
-    }
-  
-  free(event_str); // from a strdup
 }
 
 bool

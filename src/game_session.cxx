@@ -1,4 +1,4 @@
-//  $Id: game_session.cxx,v 1.14 2002/10/02 12:54:18 grumbel Exp $
+//  $Id: game_session.cxx,v 1.15 2002/10/02 19:20:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -88,32 +88,28 @@ PingusGameSession::update (const GameDelta& delta)
 
   int time_passed = (CL_System::get_time() - last_update) + left_over_time;
   int update_time = game_speed;
+  int min_frame_skip = 0;
 
   left_over_time = 0;
 
-  if (time_passed > update_time)
+  int i;
+  for (i = 0; i * update_time < time_passed || i < min_frame_skip; i += 1)
     {
-      int i;
-      for (i = 0; i < time_passed; i += update_time)
-	{
-	  // This updates the world and all objects
-	  server->update ();
-	  ++number_of_updates;
-	}
-
-      left_over_time = time_passed % update_time;
-
-      // This updates something else... what?! Well, userinterface and
-      // things like that...
-      last_update = CL_System::get_time();
+      // This updates the world and all objects
+      server->update ();
+      ++number_of_updates;
     }
-  else
+
+  // Time that got not used for updates
+  left_over_time = time_passed - (i * update_time);
+
+  last_update = CL_System::get_time();
+      
+  if (!max_cpu_usage && left_over_time < 0)
     {
-      if (!max_cpu_usage)
-	{
-	  CL_System::sleep(update_time - time_passed);
-	}
+      CL_System::sleep(-left_over_time);
     }
+      
   
   // Client is independend of the update limit, well, not completly...
   client->update (delta);

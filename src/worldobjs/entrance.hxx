@@ -1,4 +1,4 @@
-//  $Id: entrance.hxx,v 1.2 2002/10/01 19:53:46 grumbel Exp $
+//  $Id: entrance.hxx,v 1.3 2002/10/02 19:20:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -48,7 +48,7 @@ public:
   float get_z_pos () const;
   
   virtual bool   pingu_ready ();
-  virtual Pingu* get_pingu ();
+  virtual void   create_pingu ();
   
   virtual void   update ();
   

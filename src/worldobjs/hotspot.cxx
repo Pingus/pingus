@@ -1,4 +1,4 @@
-//  $Id: hotspot.cxx,v 1.4 2002/09/28 11:52:26 torangan Exp $
+//  $Id: hotspot.cxx,v 1.5 2002/10/02 19:20:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,6 +36,12 @@ Hotspot::Hotspot (const WorldObjsData::HotspotData& data_)
 Hotspot::~Hotspot ()
 {
   delete data;
+}
+
+void
+Hotspot::update()
+{
+  sprite.update();
 }
 
 void 

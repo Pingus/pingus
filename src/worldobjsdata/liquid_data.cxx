@@ -1,4 +1,4 @@
-//  $Id: liquid_data.cxx,v 1.4 2002/09/28 19:31:06 torangan Exp $
+//  $Id: liquid_data.cxx,v 1.5 2002/10/02 19:20:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,13 +26,17 @@
 
 namespace WorldObjsData {
 
-LiquidData::LiquidData () : old_width_handling(true),
-                            width(0),
-			    speed(0)
+LiquidData::LiquidData () 
+  : old_width_handling(true),
+    width(0),
+    speed(0)
 {
 }
 
 LiquidData::LiquidData (xmlDocPtr doc, xmlNodePtr cur)
+  : old_width_handling(true),
+    width(0),
+    speed(0)
 {
   std::cout << "LiquidData::create(xmlDocPtr doc, xmlNodePtr cur)" << std::endl;
   

@@ -1,4 +1,4 @@
-//  $Id: pingu_holder.cxx,v 1.11 2002/10/01 19:53:44 grumbel Exp $
+//  $Id: pingu_holder.cxx,v 1.12 2002/10/02 19:20:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -44,20 +44,27 @@ PinguHolder::total_size()
   return total_size_count;
 }
 
+/*
 void
 PinguHolder::add (Pingu* pingu)
 {
   total_size_count++;
   pingu->set_id(id_count++);
   pingus.push_back(pingu);
-}
+  }*/
 
 Pingu*
 PinguHolder::create_pingu (const Vector& pos, int owner_id)
 {
-  Pingu* pingu = new Pingu (pos, owner_id);
-  // This list will get evaluated and deleted and destruction
+  Pingu* pingu = new Pingu (id_count++, pos, owner_id);
+
+  ++total_size_count;
+
+  // This list will deleted
   all_pingus.push_back (pingu);
+
+  // This list holds the active pingus
+  pingus.push_back(pingu);
 
   return pingu;
 }

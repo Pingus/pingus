@@ -1,4 +1,4 @@
-//  $Id: capture_rectangle.cxx,v 1.8 2002/09/28 11:52:21 torangan Exp $ 
+//  $Id: capture_rectangle.cxx,v 1.9 2002/10/02 19:20:18 grumbel Exp $ 
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,8 @@
 #include "capture_rectangle.hxx"
 #include "pingu_action.hxx"
 #include "button_panel.hxx"
+#include "globals.hxx"
+#include "string_converter.hxx"
 
 CaptureRectangle::CaptureRectangle(ButtonPanel* arg_button_panel)
   : pingu (0),
@@ -59,7 +61,8 @@ CaptureRectangle::draw_offset(int x_offset, int y_offset, float s)
 	sur = &bad;
       
       if (s == 1.0) 
-	{
+	{ // FIXME: this should use GC and should probally be cached
+	  // FIXME: as long as the pingu is the same
 	  std::string action_str = pingu->get_action()->get_name();
 
           PinguAction * wall_action = pingu->get_wall_action();
@@ -77,6 +80,11 @@ CaptureRectangle::draw_offset(int x_offset, int y_offset, float s)
               
             action_str += "]";
           }
+	  
+	  if (maintainer_mode)
+	    {
+	      action_str += " Id: " + to_string(pingu->get_id());
+	    }
 
 	  // Draw the caputure rectangle
 	  sur->put_screen(pingu->get_center_pos() + Vector(x_offset,y_offset));

@@ -1,4 +1,4 @@
-//  $Id: pingu_holder.hxx,v 1.9 2002/10/01 19:53:44 grumbel Exp $
+//  $Id: pingu_holder.hxx,v 1.10 2002/10/02 19:20:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -57,15 +57,11 @@ public:
 
   int  total_size();
   int  get_saved() { return saved_pingus; }
-  
-  /** Adds a pingu to the list of active pingus (the ones that are
-      displayed and walk around) */
-  void add (Pingu* pingu);
 
   /** Return a reference to a newly create Pingu, the PinguHolder will
       take care of the deletion. The caller *must* not delete the
       Pingu */
-  Pingu* create_pingu (const Vector& pos, int owner_id);
+  Pingu* create_pingu(const Vector& pos, int owner_id);
 
   float get_z_pos() const;
 
