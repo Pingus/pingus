@@ -1,3 +1,8 @@
+miner and basher needs to be slower
+Position of cap rect doesn't fit for climber
+
+Splashed can be captured.
+
 Demo Mode/automatisches abspielen von demos 
 
 Extrem kleine Maps klappen nicht (overdrawing)
@@ -155,6 +160,6 @@ DOOR.WAV      MOUSEPRE.WAV  OING.WAV	     THUD.WAV
 
 
 
-$Date: 2000/05/19 14:27:36 $
+$Date: 2000/05/20 17:22:40 $
 
 -= EOF =-
