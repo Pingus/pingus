@@ -1,4 +1,4 @@
-//  $Id: blitter.cc,v 1.7 2000/06/11 17:38:55 grumbel Exp $
+//  $Id: blitter.cc,v 1.8 2000/06/12 09:18:43 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,9 +22,30 @@
 #include "blitter.hh"
 
 
+void 
+Blitter::put_surface(CL_Canvas* canvas, CL_SurfaceProvider* provider,
+		     int x, int y)
+{
+  char str[32];
+  
+  switch(provider->get_depth())
+    {
+    case  8:
+      put_surface_8bit(canvas, provider, x, y);
+      break;
+    case 32:
+      put_surface_32bit(canvas, provider, x, y);
+      break;
+    default: 
+      sprintf(str, "%d", provider->get_depth());
+      throw PingusError("Blitter:put_surface:Unknow color depth: " + string(str));
+      break;
+    }    
+}
+
 void
-Blitter::put_surface(CL_Canvas* provider, CL_SurfaceProvider* sprovider,
-	    int x, int y)
+Blitter::put_surface_8bit(CL_Canvas* provider, CL_SurfaceProvider* sprovider,
+			  int x, int y)
 {
   int start_i;
   unsigned char* tbuffer; // Target buffer
@@ -35,14 +56,6 @@ Blitter::put_surface(CL_Canvas* provider, CL_SurfaceProvider* sprovider,
 
   CL_Palette* palette;
   int x_offset, y_offset;
-
-  if (sprovider->get_depth() != 8)
-    {
-      char str[1024];
-      sprintf(str, "Image has wrong color depth: %d", sprovider->get_depth());
-      throw PingusError(str);
-    }
-  //  assert(provider->get_pixel_format() == RGBA8888);
 
   provider->lock();
   sprovider->lock();
@@ -99,6 +112,79 @@ Blitter::put_surface(CL_Canvas* provider, CL_SurfaceProvider* sprovider,
   provider->unlock();  
 }
 
+void
+Blitter::put_surface_32bit(CL_Canvas* canvas, CL_SurfaceProvider* provider,
+			   int x, int y)
+{
+  std::cout << "Blitter::put_surface_32bit() --- not implemented" << std::endl;
+  return;
+  int sx1, sx2, sy1, sy2;
+  int tx1, tx2, ty1, ty2;
+
+  int swidth = provider->get_width();
+  int sheight = provider->get_height();
+
+  int twidth = provider->get_width();
+  int theight = canvas->get_height();
+
+  unsigned char* tbuffer = static_cast<unsigned char*>(canvas->get_data());
+  unsigned char* sbuffer = static_cast<unsigned char*>(provider->get_data());
+  
+  if (x < 0) {
+    sx1 = -x;
+    tx1 = 0;
+  } else {
+    tx1 = x;
+    sx1 = 0;
+  }
+
+  if (y < 0) {
+    sy1 = -y;
+    ty1 = 0;
+  } else {
+    ty1 = y;
+    sy1 = 0;
+  }
+
+  if ((x + swidth) > twidth) {
+    sx2 = twidth - x;
+    tx2 = twidth;
+  } else {
+    sx2 = swidth;
+    tx2 = x + swidth;
+  }
+
+  if ((x + sheight) > theight) {
+    sy2 = theight - y;
+    ty2 = theight;
+  } else {
+    sy2 = sheight;
+    ty2 = y + sheight;
+  }
+
+  std::cout << "SRegion to draw: W = " << sx2 - sx1 << std::endl;
+  std::cout << "                H = " << sy2 - sy1 << std::endl;
+  std::cout << "TRegion to draw: W = " << tx2 - tx1 << std::endl;
+  std::cout << "                H = " << ty2 - ty1 << std::endl;
+
+  int width = tx2 - tx1;
+  int height = ty2 - ty1;
+
+  canvas->lock();
+  provider->lock();
+  for (int iy = 0; iy < height; iy++) 
+    {
+      int sstart_pos = ((sy1 + iy) * swidth) + sx1;
+      int tstart_pos = ((ty1 + iy) * twidth) + tx1;
+      
+      for (int i = 0; i < width; i++)
+	{
+	  tbuffer[tstart_pos + i] = sbuffer[sstart_pos + i];
+	}
+    }
+  provider->unlock();
+  canvas->unlock();
+}
 
 void
 Blitter::put_alpha_surface(CL_Canvas* provider, CL_SurfaceProvider* sprovider,
@@ -173,8 +259,31 @@ Blitter::clear_canvas(CL_Canvas* canvas)
   canvas->lock();
   buffer = canvas->get_data();
   
-  memset(buffer, 150, sizeof(unsigned char*) * canvas->get_pitch() * canvas->get_height() - 50);
+  memset(buffer, 0, sizeof(unsigned char) * canvas->get_pitch() * canvas->get_height());
 
+  canvas->unlock();
+
+  return canvas;
+}
+
+CL_Canvas*
+Blitter::create_canvas(CL_Surface* sur)
+{
+  return create_canvas(sur->get_provider());
+}
+
+CL_Canvas*
+Blitter::create_canvas(CL_SurfaceProvider* prov)
+{
+  CL_Canvas* canvas = new CL_Canvas(prov->get_width(), prov->get_height());
+
+  canvas->lock();
+  prov->lock();
+  
+  memcpy(canvas->get_data(), prov->get_data(),
+	 sizeof(unsigned char) * prov->get_height() * prov->get_pitch());
+
+  prov->unlock();
   canvas->unlock();
 
   return canvas;

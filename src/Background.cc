@@ -1,4 +1,4 @@
-//  $Id: Background.cc,v 1.14 2000/06/11 20:59:36 grumbel Exp $
+//  $Id: Background.cc,v 1.15 2000/06/12 09:18:43 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -50,8 +50,11 @@ Background::~Background()
   std::cout << "Background:~Background" << std::endl;
 
   if (surface_need_deletion) {
-    std::cout << "Background: Deleting background surface" << std::endl;
-    delete bg_surface;
+    //std::cout << "Background: Deleting background surface" << std::endl;
+    // FIXME: We are /not/ deleting the surface here cause that gives
+    // a segfault if the next level is loaded, I have absolutly no
+    // idea why. So we have a memory hole here
+    //delete bg_surface;
   }
 }
 
@@ -73,18 +76,20 @@ Background::load (background_data bg_data)
       try
 	{
 	  // Testing animatied backgrounds...
-	  bg_surface = CL_Surface::load(bg_data.desc.res_name.c_str(), PingusResource::get(bg_data.desc.filename));
-	  
+	  std::cout << "Res: " << bg_data.desc.res_name << std::endl
+		    << "file: " << bg_data.desc.filename << std::endl;
+
+	  bg_surface = CL_Surface::load(bg_data.desc.res_name.c_str(),
+					PingusResource::get(bg_data.desc.filename));
+	  /*
 	  if (bg_surface->get_num_frames() == 1)
 	    {
 	      // We have a static surface
      
-	      // Create a canvas as large as the surface
-	      CL_Canvas* canvas = new CL_Canvas(bg_surface->get_width(),
-						bg_surface->get_height());
+	      // Create a canvas from the surface
+	      CL_Canvas* canvas = Blitter::create_canvas(bg_surface);
 	      
-	      bg_surface->put_target(0, 0, 0, canvas);
-	      
+	      // FIXME: fill_rect doesn't act very good at empty canvas;
 	      canvas->fill_rect(0, 0,
 				bg_surface->get_width(), bg_surface->get_height(),
 				bg_data.red, bg_data.green, bg_data.blue,
@@ -93,6 +98,7 @@ Background::load (background_data bg_data)
 	      bg_surface = CL_Surface::create(canvas, true);
 	      surface_need_deletion = true;
 	    }
+	  */
 	}
 
       catch (CL_Error err)

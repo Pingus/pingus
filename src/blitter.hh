@@ -1,4 +1,4 @@
-//  $Id: blitter.hh,v 1.3 2000/06/11 17:38:55 grumbel Exp $
+//  $Id: blitter.hh,v 1.4 2000/06/12 09:18:43 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,11 @@
 
 class Blitter
 {
+private:
+  static void put_surface_8bit(CL_Canvas*, CL_SurfaceProvider*,
+			       int x, int y);
+  static void put_surface_32bit(CL_Canvas*, CL_SurfaceProvider*,
+			       int x, int y);
 public:
   /*void put_surface(CL_LockableSurface* provider, CL_Surface* surface,
     int x, int y);
@@ -31,10 +36,13 @@ public:
     int x, int y);
   */
   static void put_surface(CL_Canvas*, CL_SurfaceProvider*,
-		   int x, int y);
+			  int x, int y);
+
   static void put_alpha_surface(CL_Canvas*, CL_SurfaceProvider*,
-			 int x, int y);
-  
+				int x, int y);
+
+  static CL_Canvas* create_canvas(CL_Surface*);
+  static CL_Canvas* create_canvas(CL_SurfaceProvider*);
   static CL_Canvas* clear_canvas(CL_Canvas*);
   
   //static CL_Surface* convert_to_emptyprovider(CL_Surface*);
