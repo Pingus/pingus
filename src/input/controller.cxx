@@ -1,4 +1,4 @@
-//  $Id: controller.cxx,v 1.1 2002/07/09 16:58:02 torangan Exp $
+//  $Id: controller.cxx,v 1.2 2002/07/10 14:06:20 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,13 +23,20 @@
 #include "axis_factory.hxx"
 #include "button.hxx"
 #include "button_factory.hxx"
+#include "controller.hxx"
+#include "dummy_axis.hxx"
+#include "dummy_button.hxx"
+#include "dummy_pointer.hxx"
 #include "pointer.hxx"
 #include "pointer_factory.hxx"
-#include "controller.hxx"
 
 namespace Input
 {
-  Controller::Controller (const std::string& configfile)
+  Controller::Controller (const std::string& configfile) : standard_pointer(0), scroll_pointer(0),
+                                                           armageddon_button(0), escape_button(0),
+							   fast_forward_button(0), pause_button(0),
+                                                           primary_button(0), secondary_button(0),
+							   scroll_modifier(0), action_axis(0)
   {
     xmlDocPtr doc = xmlParseFile(configfile.c_str());
     
@@ -49,50 +56,82 @@ namespace Input
     while (cur) 
       {
         if (xmlIsBlankNode(cur))
-          cur = cur->next;
-	  
+	  {
+            cur = cur->next;
+	    continue;
+	  }
+
 	else if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "controller-config"))
 	  cur = cur->children;
 	  
 	else if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "standard-pointer"))
-          standard_pointer = PointerFactory::create(cur);
+          standard_pointer = PointerFactory::create(cur->children);
 	  
 	else if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "scroll-pointer"))
-	  scroll_pointer = PointerFactory::create(cur);
+	  scroll_pointer = PointerFactory::create(cur->children);
 	  
 	else if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "primary-button"))
-	  primary_button = ButtonFactory::create(cur);
+	  primary_button = ButtonFactory::create(cur->children);
 	  
 	else if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "secondary-button"))
-	  secondary_button = ButtonFactory::create(cur);
+	  secondary_button = ButtonFactory::create(cur->children);
 	  
 	else if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "scroll-modifier"))
-	  scroll_modifier = ButtonFactory::create(cur);
+	  scroll_modifier = ButtonFactory::create(cur->children);
 	  
 	else if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "pause-button"))
-	  pause_button = ButtonFactory::create(cur);
-	
+	  pause_button = ButtonFactory::create(cur->children);
+
 	else if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "fast-forward-button"))
-	  fast_forward_button = ButtonFactory::create(cur);
+	  fast_forward_button = ButtonFactory::create(cur->children);
 	
 	else if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "armageddon-button"))
-	  armageddon_button = ButtonFactory::create(cur);
+	  armageddon_button = ButtonFactory::create(cur->children);
 	
 	else if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "escape-button"))
-	  escape_button = ButtonFactory::create(cur);
+	  escape_button = ButtonFactory::create(cur->children);
 	
 	else if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "action-buttons"))
-	  create_action_buttons(cur);
+	  create_action_buttons(cur->children);
 	
 	else if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "action-axis"))
-	  action_axis = AxisFactory::create(cur);
+	  action_axis = AxisFactory::create(cur->children);
 	  
 	else
-	  throw PingusError("Unkown Element in Controller Config: " + std::string(reinterpret_cast<const char*>(cur->name)));
+	  throw PingusError(std::string("Unkown Element in Controller Config: ") + ((cur->name) ? reinterpret_cast<const char*>(cur->name) : ""));
 	  
 	cur = cur->next;
       }
+
+    if (!standard_pointer)
+      standard_pointer = new DummyPointer;
+
+    if (!scroll_pointer)
+      scroll_pointer = new DummyPointer;
       
+    if (!armageddon_button)
+      armageddon_button = new DummyButton;
+      
+    if (!escape_button)
+      escape_button = new DummyButton;
+      
+    if (!fast_forward_button)
+      fast_forward_button = new DummyButton;
+      
+    if (!pause_button)
+      pause_button = new DummyButton;
+      
+    if (!primary_button)
+      primary_button = new DummyButton;
+      
+    if (!secondary_button)
+      secondary_button = new DummyButton;
+      
+    if (!scroll_modifier)
+      scroll_modifier = new DummyButton;
+      
+    if (!action_axis)
+      action_axis = new DummyAxis;
   }
 
   void
@@ -112,10 +151,12 @@ namespace Input
 	  action_buttons.push_back(ButtonFactory::create(cur));
 	  
 	else
-	  throw PingusError("Wrong Element in Controller Config (action-buttons): " + std::string(reinterpret_cast<const char*>(cur->name)));
+	  throw PingusError(std::string("Wrong Element in Controller Config (action-buttons): ") + ((cur->name) ? reinterpret_cast<const char*>(cur->name) : ""));
 	  
 	cur = cur->next;
       }
   }
 
 }
+
+/* EOF */

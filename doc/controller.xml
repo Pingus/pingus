@@ -1,7 +1,7 @@
 <pingus-controller>
   <controller-config>
     <standard-pointer>
-      <axis-pointer>
+      <axis-pointer speed="4">
 	<joystick-axis angle="0"  id="0" axis="0"/>
 	<joystick-axis angle="90" id="0" axis="1"/>
       </axis-pointer>
@@ -46,7 +46,7 @@
     </scroll-modifier>
 
     <pause-button>
-      <key-button button="3"/>
+      <key-button key="P"/>
     </pause-button>
 
     <fast-forward-button>
@@ -58,7 +58,7 @@
     </armageddon-button>
 
     <action-axis>
-      <button-axis>
+      <button-axis angle="0">
 	<joystick-button id="0" button="2"/>
 	<joystick-button id="0" button="3"/>
       </button-axis>

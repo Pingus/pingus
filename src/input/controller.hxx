@@ -1,4 +1,4 @@
-//  $Id: controller.hxx,v 1.1 2002/07/09 16:58:02 torangan Exp $
+//  $Id: controller.hxx,v 1.2 2002/07/10 14:06:20 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,12 +24,12 @@
 #include <vector>
 #include "../libxmlfwd.hxx"
 
-class Axis;
-class Button;
-class Pointer;
-
 namespace Input
 {
+  class Axis;
+  class Button;
+  class Pointer;
+
   class Controller {
 
     private:

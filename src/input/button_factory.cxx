@@ -1,4 +1,4 @@
-//  $Id: button_factory.cxx,v 1.2 2002/07/09 17:00:10 torangan Exp $
+//  $Id: button_factory.cxx,v 1.3 2002/07/10 14:06:20 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -47,16 +47,21 @@ namespace Input {
       return multiple_button(cur);
     
     else
-      throw PingusError("Unknown button type: " + std::string(reinterpret_cast<const char*>(cur->name)));
+      throw PingusError(std::string("Unknown button type: ") + ((cur->name) ? reinterpret_cast<const char*>(cur->name) : ""));
   }
   
   Button* ButtonFactory::joystick_button (xmlNodePtr cur)
   {
     char * id_str     = reinterpret_cast<char *>(xmlGetProp(cur, reinterpret_cast<const xmlChar*>("id")));
+    if (!id_str)
+      throw PingusError("JoystickButton without id parameter");
+
     char * button_str = reinterpret_cast<char *>(xmlGetProp(cur, reinterpret_cast<const xmlChar*>("button")));
+    if (!button_str)
+      throw PingusError("JoystickButton without button parameter");
     
-    int id     = atoi(id_str);
-    int button = atoi(button_str);
+    int id     = strtol(id_str,     reinterpret_cast<char**>(NULL), 10);
+    int button = strtol(button_str, reinterpret_cast<char**>(NULL), 10);
     
     free(id_str);
     free(button_str);
@@ -67,6 +72,8 @@ namespace Input {
   Button* ButtonFactory::key_button (xmlNodePtr cur)
   {
     char * key_str = reinterpret_cast<char *>(xmlGetProp(cur, reinterpret_cast<const xmlChar*>("key")));
+    if (!key_str)
+      throw PingusError("KeyButton without key parameter");
     
     int key = KeyHelper::string_to_key(key_str);
     
@@ -78,9 +85,10 @@ namespace Input {
   Button* ButtonFactory::mouse_button (xmlNodePtr cur)
   {
     char * button_str = reinterpret_cast<char *>(xmlGetProp(cur, reinterpret_cast<const xmlChar*>("button")));
+    if (!button_str)
+      throw PingusError("MouseButton without button parameter");
     
-    int button = atoi(button_str);
-    
+    int button = strtol(button_str, reinterpret_cast<char**>(NULL), 10);
     free(button_str);
     
     return new MouseButton(button);
