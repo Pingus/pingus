@@ -17,6 +17,12 @@
 
 libdir=$(prefix)/share/games/@PACKAGE@/libs
 
+EXTRA_DIST = README
+
+# -- Dynamic Libs --
+#lib_LTLIBRARIES = libpingus_movers.la
+
+
 # -- Static Libs --
 noinst_LIBRARIES = libpingus_movers.a
 

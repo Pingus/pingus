@@ -1,4 +1,4 @@
-//  $Id: pingu_collider.cxx,v 1.1 2003/02/12 22:43:38 torangan Exp $
+//  $Id: pingu_collider.cxx,v 1.2 2003/03/09 20:41:30 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,8 +24,8 @@
 
 namespace Colliders {
 
-PinguCollider::PinguCollider(const bool falling_arg, const int height_arg)
-  : falling(falling_arg),
+PinguCollider::PinguCollider(const Vector& direction, const int height_arg)
+  : falling(direction.y > 0.0f),
     height(height_arg)
 {
 }

@@ -1,4 +1,4 @@
-//  $Id: linear_mover.hxx,v 1.1 2003/02/12 22:43:38 torangan Exp $
+//  $Id: linear_mover.hxx,v 1.2 2003/03/09 20:41:30 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>

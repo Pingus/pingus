@@ -1,4 +1,4 @@
-//  $Id: digger.cxx,v 1.22 2003/03/04 13:59:44 grumbel Exp $
+//  $Id: digger.cxx,v 1.23 2003/03/09 20:41:30 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -55,7 +55,14 @@ void
 Digger::update ()
 {
   sprite.update ();
-  
+
+  if (rel_getpixel(0, -1) ==  Groundtype::GP_WATER
+      || rel_getpixel(0, -1) ==  Groundtype::GP_LAVA)
+    {
+      pingu->set_action(Actions::Drown);
+      return;
+    }
+
   if (++digger_c >= 5)
     {
       digger_c = 0;

@@ -1,4 +1,4 @@
-//  $Id: mover.cxx,v 1.1 2003/02/12 22:43:38 torangan Exp $
+//  $Id: mover.cxx,v 1.2 2003/03/09 20:41:30 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>

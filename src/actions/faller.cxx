@@ -1,4 +1,4 @@
-//  $Id: faller.cxx,v 1.36 2003/02/19 09:50:36 grumbel Exp $
+//  $Id: faller.cxx,v 1.37 2003/03/09 20:41:30 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,11 +19,14 @@
 
 #include <math.h>
 #include "../col_map.hxx"
+#include "../colliders/pingu_collider.hxx"
 #include "../debug.hxx"
 #include "../globals.hxx"
 #include "../gui/graphic_context.hxx"
+#include "../movers/linear_mover.hxx"
 #include "../pingu.hxx"
 #include "../string_converter.hxx"
+#include "../worldobj.hxx"
 #include "faller.hxx"
 
 namespace Actions {
@@ -60,34 +63,82 @@ Faller::update ()
   if (pingu->get_velocity().y > 5.0 && pingu->request_fall_action())
     return;
 
-  // Move the Faller according to the forces that currently exist, which
-  // includes gravity.
-  move_with_forces ();
+  // Apply gravity
+  pingu->set_velocity(pingu->get_velocity() + Vector(0.0f, 1.0f));
 
-  // Now that the Pingu is moved, check if he hits the ground.
-  // FIXME: shouldn't this be done by move_with_forces
-  if (rel_getpixel(0, -1) != Groundtype::GP_NOTHING)
-    { // Ping is on ground/water/something
-      if (   rel_getpixel(0, -1) == Groundtype::GP_WATER
-	  || rel_getpixel(0, -1) == Groundtype::GP_LAVA)
+  bool collided;
+
+  Vector velocity = pingu->get_velocity();
+  Vector move = velocity;
+
+  Movers::LinearMover mover(WorldObj::get_world(), pingu->get_pos());
+
+  do
+    {
+      // Move the Pingu as far is it can go
+      mover.update(move, Colliders::PinguCollider(velocity, pingu_height));
+
+      pingu->set_pos(mover.get_pos());
+
+      collided = mover.collided();
+
+      // If the Pingu collided with something...
+      if (collided)
 	{
-	  pingu->set_action(Actions::Drown);
-	  return;
-	}
-      else
-	{
-	  // Did we stop too fast?
-	  if (fabs(pingu->get_velocity().y) > deadly_velocity) 
+	  move = mover.remaining();
+
+	  // If the Pingu collided into something while moving down...
+	  if (velocity.y > 0.0f
+	      && rel_getpixel(0, -1) != Groundtype::GP_NOTHING)
 	    {
-	      pingu->set_action(Actions::Splashed);
-	      return;
+	      // Ping is on ground/water/something
+	      if (   rel_getpixel(0, -1) == Groundtype::GP_WATER
+		  || rel_getpixel(0, -1) == Groundtype::GP_LAVA)
+		{
+		  pingu->set_action(Actions::Drown);
+		}
+	      // Did we stop too fast?
+	      else if (fabs(pingu->get_velocity().y) > deadly_velocity) 
+		{
+		  pingu->set_action(Actions::Splashed);
+		}
+	      else if (fabs(pingu->get_velocity().x) > deadly_velocity)
+		{
+		  pout(PINGUS_DEBUG_ACTIONS) << "Pingu: x Smashed on ground, jumping" << std::endl;
+		}
+
+	      break;
 	    }
-	  else if (fabs(pingu->get_velocity().x) > deadly_velocity)
+	  // If the Pingu collided into something while moving up...
+	  // NB: +1 because Mover backs out of something it has collided with.
+	  else if (velocity.y < 0.0f
+		    && rel_getpixel(0, pingu_height + 1) != Groundtype::GP_NOTHING)
 	    {
-	      pout(PINGUS_DEBUG_ACTIONS) << "Pingu: x Smashed on ground, jumping" << std::endl;
+	      // Don't make the Pingu go up any further.
+	      move.y = 0.0f;
+	      velocity.y = 0.0f;
+	    }
+	  else
+	    {
+	      // Make Pingu bounce off wall
+	      move.x = -(move.x / 3.0f);
+	      velocity.x = -(velocity.x / 3.0f);
+
+	      // Make the Pingu face the correct direction.  NB: Pingu may
+	      // previously have been facing in the opposite direction of its
+	      // velocity because of an explosion.
+	      if (velocity.x > 0.0f)
+		pingu->direction.right();
+	      else
+		pingu->direction.left();
 	    }
 	}
+
+      // Update the Pingu's velocity
+      pingu->set_velocity(velocity);
     }
+  // Loop if the Pingu still needs to be moved
+  while (collided);
 }
 
 void 

@@ -1,4 +1,4 @@
-//  $Id: bomber.cxx,v 1.30 2003/03/03 20:32:18 grumbel Exp $
+//  $Id: bomber.cxx,v 1.31 2003/03/09 20:41:30 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,7 @@
 #include "../col_map.hxx"
 #include "../gui/graphic_context.hxx"
 #include "../pingu.hxx"
+#include "../pingu_enums.hxx"
 #include "../pingu_map.hxx"
 #include "../pingus_resource.hxx"
 #include "../string_converter.hxx"
@@ -85,13 +86,8 @@ Bomber::update ()
 
   Vector velocity = pingu->get_velocity();
 
-  // Move the Pingu with different colliders depending on whether the Pingu is
-  // moving down (i.e. can't go through Bridges) or moving up (i.e. can go
-  // through Bridges)
-  if (velocity.y > 0.0f)
-    mover.update(velocity, Colliders::PinguCollider(true, pingu_height));
-  else
-    mover.update(velocity, Colliders::PinguCollider(false, pingu_height));
+  // Move the Pingu
+  mover.update(velocity, Colliders::PinguCollider(velocity, pingu_height));
 
   pingu->set_pos(mover.get_pos());
 
@@ -105,7 +101,7 @@ Bomber::update ()
 
   // If the Bomber hasn't 'exploded' yet and it has hit the ground too quickly
   if (sprite.get_frame () <= 9 && rel_getpixel(0, -1) != Groundtype::GP_NOTHING
-      && velocity.y > 20.0f)
+      && velocity.y > deadly_velocity)
     {
       pingu->set_action(Actions::Splashed);
       return;

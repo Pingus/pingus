@@ -1,4 +1,4 @@
-//  $Id: collider.cxx,v 1.1 2003/02/12 22:43:38 torangan Exp $
+//  $Id: collider.cxx,v 1.2 2003/03/09 20:41:30 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,10 +30,17 @@ Collider::~Collider()
 {
 }
 
+bool Collider::operator() (World* const world, Vector pos) const
+{
+  UNUSED_ARG(world);
+  UNUSED_ARG(pos);
+  return false;
+}
+
 int Collider::getpixel(World* const world, const Vector& pos) const
 {
   return world->get_colmap()->getpixel(static_cast<int>(pos.x),
-				       static_cast<int>(pos.y));
+					static_cast<int>(pos.y));
 }
 
 /* EOF */
