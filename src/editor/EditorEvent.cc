@@ -1,4 +1,4 @@
-//  $Id: EditorEvent.cc,v 1.21 2000/07/10 18:42:26 grumbel Exp $
+//  $Id: EditorEvent.cc,v 1.22 2000/07/11 15:53:57 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -128,8 +128,7 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key &key)
     
 	  // Select another background.
 	case CL_KEY_F10:
-	  object_manager->background.desc.res_name = editor->read_string("Input Background: ",
-									 object_manager->background.desc.res_name);
+	  object_manager->background.desc.res_name = editor->object_selector.get_background();
 	  break;
 
 	  /*	case CL_KEY_F11:

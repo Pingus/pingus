@@ -1,5 +1,6 @@
 Release Critical:
 ~~~~~~~~~~~~~~~~~
+ o default directory when saving a level
  o Multiple entrances doesn't work correctly
  o Solid can be bashed away if a bridge is placed in it
  o Basher bash thru solid object
@@ -166,6 +167,6 @@ DOOR.WAV      MOUSEPRE.WAV  OING.WAV	     THUD.WAV
 
 
 
-$Date: 2000/07/10 18:42:25 $
+$Date: 2000/07/11 15:53:57 $
 
 -= EOF =-

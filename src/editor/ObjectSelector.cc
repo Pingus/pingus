@@ -1,4 +1,4 @@
-//  $Id: ObjectSelector.cc,v 1.24 2000/07/04 22:59:13 grumbel Exp $
+//  $Id: ObjectSelector.cc,v 1.25 2000/07/11 15:53:57 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -164,42 +164,16 @@ ObjectSelector::get_trap()
 EditorObj*
 ObjectSelector::get_groundpiece(surface_data::Type type)
 {
-  string str;
-  CL_ResourceManager* res = PingusResource::get("global");
-    
   surface_data data;
+
   data.x_pos = CL_Mouse::get_x() - x_offset;
   data.y_pos = CL_Mouse::get_y() - y_offset;
 
-  list<string>* liste = res->get_resources_of_type("surface");
-  surface_obj sur_obj;
-  vector<surface_obj> sur_list;
-  int j = 0;
-
-  for(list<string>::iterator i = liste->begin(); i != liste->end(); i++)
-    {
-      ++j;
-      sur_obj.sur = CL_Surface::load(i->c_str(), res);
-      cout << "Loading: " << *i  << endl;
-      sur_obj.name = *i;
-      sur_list.push_back(sur_obj);
-
-      if (!data_loaded && (j % 5) == 0)
-	{
-	  loading_screen.draw_progress(i->c_str(), (float)j / liste->size());
-	}
-    }
-  // Showing the mousecursor again, since loading_screen hides it
-  Display::show_cursor();
-
-  data_loaded = true;
-  str = select_surface(sur_list);
+  std::string str = select_surface("global");
 
   if (!str.empty())
     {
       data.res_desc = ResDescriptor("resource:global", str);
-      data.res_name = "global";
-      data.name = str;
       data.type = type;
 
       return new PSMObj(data);
@@ -210,41 +184,15 @@ ObjectSelector::get_groundpiece(surface_data::Type type)
 EditorObj*
 ObjectSelector::get_hotspot()
 {
-  string str;
-  CL_ResourceManager* res = PingusResource::get("global");
-    
   hotspot_data data;
   data.x_pos = CL_Mouse::get_x() - x_offset;
   data.y_pos = CL_Mouse::get_y() - y_offset;
-
-  list<string>* liste = res->get_resources_of_type("surface");
-  surface_obj sur_obj;
-  vector<surface_obj> sur_list;
-  int j = 0;
-
-  for(list<string>::iterator i = liste->begin(); i != liste->end(); i++)
-    {
-      ++j;
-      sur_obj.sur = CL_Surface::load(i->c_str(), res);
-      cout << "Loading: " << *i  << endl;
-      sur_obj.name = *i;
-      sur_list.push_back(sur_obj);
-
-      if (!data_loaded && (j % 5) == 0)
-	{
-	  loading_screen.draw_progress(i->c_str(), (float)j / liste->size());
-	}
-    }
-  // Showing the mousecursor again, since loading_screen hides it
-  Display::show_cursor();
-
-  data_loaded = true;
-  str = select_surface(sur_list);
+  data.z_pos = 0;
+  std::string str = select_surface("global");
 
   if (!str.empty())
     {
       data.desc = ResDescriptor("resource:global", str);
-      //data.name = str;
       data.speed = -1;
 
       return new HotspotObj(data);
@@ -305,7 +253,7 @@ ObjectSelector::get_exit()
   data.y_pos = CL_Mouse::get_y() - y_offset;
   data.z_pos = 0;
   
-  str = read_string("Input Exit gfx:", last_object);
+  str = select_surface("global");
   
   last_object = str;
 
@@ -383,12 +331,53 @@ ObjectSelector::select_obj_type()
   return 0;
 }
 
-string
+std::string 
+ObjectSelector::get_background()
+{
+  return select_surface("textures");
+}
+
+std::string
 ObjectSelector::select_surface(vector<surface_obj>& sur_list)
 {
   SurfaceSelector sur_selector(&sur_list);
 
   return sur_selector.select();
+}
+
+std::string
+ObjectSelector::select_surface(std::string resource_file)
+{
+  std::string str;
+  CL_ResourceManager* res = PingusResource::get(resource_file);
+    
+  surface_data data;
+  data.x_pos = CL_Mouse::get_x() - x_offset;
+  data.y_pos = CL_Mouse::get_y() - y_offset;
+
+  list<string>* liste = res->get_resources_of_type("surface");
+  surface_obj sur_obj;
+  vector<surface_obj> sur_list;
+  int j = 0;
+
+  for(list<string>::iterator i = liste->begin(); i != liste->end(); i++)
+    {
+      ++j;
+      sur_obj.sur = CL_Surface::load(i->c_str(), res);
+      cout << "Loading: " << *i  << endl;
+      sur_obj.name = *i;
+      sur_list.push_back(sur_obj);
+
+      if (!data_loaded && (j % 5) == 0)
+	{
+	  loading_screen.draw_progress(i->c_str(), (float)j / liste->size());
+	}
+    }
+  // Showing the mousecursor again, since loading_screen hides it
+  Display::show_cursor();
+
+  data_loaded = false;
+  return select_surface(sur_list);
 }
 
 int
@@ -424,6 +413,10 @@ ObjectSelector::read_string(string description, string def_str)
 /*
 
 $Log: ObjectSelector.cc,v $
+Revision 1.25  2000/07/11 15:53:57  grumbel
+Added surface selectors to all insert functions in the editor, no more typing of resource names required
+Fixed misc bugs in the resource handling, time to rewrite that to use XML...
+
 Revision 1.24  2000/07/04 22:59:13  grumbel
 Fixed scrolling to be no longer fast-forward depended, thanks to Alan Cox for finding this and some other bugs :-)
 Added support for reading datafile or scriptfile (--use-datafile, --use-scriptfile)

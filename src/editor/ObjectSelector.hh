@@ -1,4 +1,4 @@
-// $Id: ObjectSelector.hh,v 1.9 2000/06/23 17:06:25 grumbel Exp $
+// $Id: ObjectSelector.hh,v 1.10 2000/07/11 15:53:57 grumbel Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -54,6 +54,8 @@ public:
   ///
   std::string select_surface(std::vector<surface_obj>& sur_list);
   ///
+  std::string select_surface(std::string resource_file);
+  ///
   int    read_key();
   ///
   std::string read_string(std::string, std::string);
@@ -72,6 +74,8 @@ public:
   EditorObj* get_exit();
   /// 
   EditorObj* get_liquid();
+  ///
+  std::string get_background();
 };
 
 #endif

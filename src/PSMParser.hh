@@ -1,4 +1,4 @@
-//  $Id: PSMParser.hh,v 1.9 2000/06/18 17:01:50 grumbel Exp $
+//  $Id: PSMParser.hh,v 1.10 2000/07/11 15:53:57 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,10 +41,6 @@ struct surface_data
   int x_pos;
   ///
   int y_pos;
-  ///
-  std::string res_name;
-  ///
-  std::string name;
   ///
   std::string type_str; 
   ///

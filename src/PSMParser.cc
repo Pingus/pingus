@@ -1,4 +1,4 @@
-//  $Id: PSMParser.cc,v 1.13 2000/07/04 22:59:13 grumbel Exp $
+//  $Id: PSMParser.cc,v 1.14 2000/07/11 15:53:57 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -51,8 +51,6 @@ PSMParser::parse(string filename)
     
     surface_data temp;
     
-    temp.res_name = "global";
-    
     while(!in.eof()) {
       jump_spaces();
       temp.type_str = get_string();
@@ -72,7 +70,7 @@ PSMParser::parse(string filename)
 
       jump_spaces();
       temp.res_desc = get_resdesc();
-      temp.name = get_string();
+      temp.res_desc.res_name = get_string();
       expect(':');
 
       jump_spaces();
@@ -102,11 +100,10 @@ PSMParser::load_surfaces(void)
 
   for (vector<surface_data>::size_type i=0; i < surface.size(); ++i) {
     if (verbose > 1) {
-      cout << "Surface: " << "(" << surface[i].res_desc.res_name << ":" << surface[i].res_desc.datafile << ") " 
-	   << surface[i].name << endl;
+      cout << "Surface: " << "(" << "?? - section broken - ??" << ":" << surface[i].res_desc.datafile << ") " 
+	   << surface[i].res_desc.res_name << endl;
     }
-    surface[i].surface = PingusResource::load_surface(surface[i].name,
-						      surface[i].res_desc.datafile);
+    surface[i].surface = PingusResource::load_surface(surface[i].res_desc);
   }
 }
 
