@@ -1,4 +1,4 @@
-//  $Id: pingus_counter.hxx,v 1.1 2002/06/12 19:06:12 grumbel Exp $
+//  $Id: pingus_counter.hxx,v 1.2 2002/06/17 15:45:26 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,8 +32,6 @@ private:
   ///
   CL_Font* font;
   CL_Surface background;
-  ///
-  World* world;
   ///
   Client* client;
 public:

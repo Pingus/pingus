@@ -1,4 +1,4 @@
-//  $Id: button_panel.cxx,v 1.2 2002/06/13 14:25:12 torangan Exp $
+//  $Id: button_panel.cxx,v 1.3 2002/06/17 15:45:26 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -130,7 +130,6 @@ void
 ButtonPanel::set_server(Server* s)
 {
   server = s;
-  world = server->get_world();
 
   for(AButtonIter button = a_buttons.begin(); button != a_buttons.end(); ++button) 
     {
@@ -180,7 +179,7 @@ ButtonPanel::on_button_press(const CL_Key &key)
 	      arma_counter = 0;
 	      armageddon_pressed = 4;
 	      armageddon->pressed = true;
-	      world->armageddon();
+	      server->get_world()->armageddon();
 	    }
 	  return;
 	}

@@ -1,4 +1,4 @@
-//  $Id: button_panel.hxx,v 1.1 2002/06/12 19:04:45 grumbel Exp $
+//  $Id: button_panel.hxx,v 1.2 2002/06/17 15:45:26 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,7 +28,6 @@
 class CL_Key;
 class Client;
 class PLF;
-class World;
 class Controller;
 
 class ButtonPanel : public GuiObj
@@ -52,7 +51,6 @@ private:
   bool left_pressed;
   unsigned int  last_press;
   static CL_Surface button_cap;
-  World* world;
 
   Controller* controller;
 

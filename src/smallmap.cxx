@@ -1,4 +1,4 @@
-//  $Id: smallmap.cxx,v 1.2 2002/06/13 14:25:12 torangan Exp $
+//  $Id: smallmap.cxx,v 1.3 2002/06/17 15:45:26 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -56,11 +56,9 @@ SmallMap::init()
   entrance_sur = PingusResource::load_surface("misc/smallmap_entrance", "core");
   exit_sur     = PingusResource::load_surface("misc/smallmap_exit", "core");
 
-  world = client->get_server()->get_world();
-
-  colmap = world->get_colmap(); 
+  ColMap* colmap = client->get_server()->get_world()->get_colmap(); 
   buffer = colmap->get_data();
-  plf = world->get_plf();
+  //Plf* plf = world->get_plf();
 
   canvas = new CL_Canvas(width, height);
  

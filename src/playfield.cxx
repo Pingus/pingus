@@ -1,4 +1,4 @@
-//  $Id: playfield.cxx,v 1.2 2002/06/13 14:25:12 torangan Exp $
+//  $Id: playfield.cxx,v 1.3 2002/06/17 15:45:26 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,7 +35,6 @@ Playfield::Playfield(PLF* level_data, World* w,
   : controller (arg_controller)
 {
   world = w;
-  pingus = world->get_pingu_p();
   mouse_scrolling = false;
   View::set_world(world);
 
@@ -127,7 +126,7 @@ Playfield::current_pingu_find(int x_pos, int y_pos)
   double dist;
   Pingu* c_pingu = 0;
 
-  for (PinguIter pingu=pingus->begin(); pingu != pingus->end(); pingu++)
+  for (PinguIter pingu = world->get_pingu_p()->begin(); pingu != world->get_pingu_p()->end(); pingu++)
     {
       if ((*pingu)->is_over(x_pos, y_pos))
 	{

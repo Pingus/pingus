@@ -1,4 +1,4 @@
-//  $Id: world.cxx,v 1.4 2002/06/14 13:40:10 torangan Exp $
+//  $Id: world.cxx,v 1.5 2002/06/17 15:45:26 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -82,7 +82,6 @@ World::~World()
 {
   delete particle_holder;
   
-  // skip PingusHolder at the first position to delete it last
   for (WorldObjIter it = world_obj->begin(); it != world_obj->end(); ++it) {
     delete *it;
   }

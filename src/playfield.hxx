@@ -1,4 +1,4 @@
-//  $Id: playfield.hxx,v 1.1 2002/06/12 19:06:13 grumbel Exp $
+//  $Id: playfield.hxx,v 1.2 2002/06/17 15:45:26 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,7 +28,6 @@ class Pingu;
 class World;
 class Server;
 class PinguInfo;
-class PinguHolder;
 class ButtonPanel;
 class Controller;
 
@@ -43,7 +42,6 @@ private:
   Client* client;
   ///Range x_offset2, y_offset2;
   ButtonPanel* buttons;
-  PinguHolder* pingus;
   PinguInfo* pingu_info;
   World* world;
   std::vector<View*> view;
