@@ -1,4 +1,4 @@
-//   $Id: Pingus.cc,v 1.14 2000/03/12 01:56:56 grumbel Exp $
+//   $Id: Pingus.cc,v 1.15 2000/03/16 21:46:21 grumbel Exp $
 //    ___
 //   |  _\ A free Lemmings clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -458,8 +458,8 @@ PingusMain::init(int argc, char* argv[])
 {
   char c;
 
-  PingusMain::check_args(argc, argv);
   PingusMain::read_rc_file();
+  PingusMain::check_args(argc, argv);
 
   if (verbose) 
     {

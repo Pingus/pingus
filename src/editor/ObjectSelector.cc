@@ -1,4 +1,4 @@
-//  $Id: ObjectSelector.cc,v 1.8 2000/02/16 03:15:05 grumbel Exp $
+//  $Id: ObjectSelector.cc,v 1.9 2000/03/16 21:46:21 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -128,10 +128,12 @@ ObjectSelector::get_groundpiece()
   {
     CL_ResourceManager* res = PingusResource::get("global.dat");
     list<std::string>* liste = res->get_resources_of_type("surface");
+    vector<CL_Surface*> sur_list;
 
     for(std::list<std::string>::iterator i = liste->begin(); i != liste->end(); i++)
       {
 	cout << "Resource: " << *i << "\n";
+	sur_list.push_back(CL_Surface::load(i->c_str(), res));
       }
     std::cout << std::flush;
   }
@@ -318,6 +320,9 @@ ObjectSelector::read_string(std::string description, std::string def_str)
 /*
 
 $Log: ObjectSelector.cc,v $
+Revision 1.9  2000/03/16 21:46:21  grumbel
+Misc changes
+
 Revision 1.8  2000/02/16 03:15:05  grumbel
 Fixed scrolling save bug
 

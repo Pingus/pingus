@@ -1,4 +1,4 @@
-//  $Id: PLFPreview.cc,v 1.3 2000/02/11 16:58:25 grumbel Exp $
+//  $Id: PLFPreview.cc,v 1.4 2000/03/16 21:46:21 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -53,8 +53,8 @@ PLFPreview::load(PLF* p)
     break;
   case BMP: 
     {
-      PinguBmpMap map(plf->get_fg());
-      surface = map.get_surface();
+      /*PinguBmpMap map(plf->get_fg());
+	surface = map.get_surface();*/
     }
     break;
   default:
