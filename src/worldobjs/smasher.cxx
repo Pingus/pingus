@@ -1,4 +1,4 @@
-//  $Id: smasher.cxx,v 1.15 2002/12/28 16:10:18 torangan Exp $
+//  $Id: smasher.cxx,v 1.16 2003/01/27 22:14:52 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -74,7 +74,7 @@ Smasher::update ()
 		            {
 		              world->get_smoke_particle_holder()->add_particle(static_cast<int>(data->pos.x + 20 + rand() % 260),
 						                                                       static_cast<int>(data->pos.y + 180),
-						                                                       frand()-0.5, frand()-0.5);
+						                                                       frand()-0.5f, frand()-0.5f);
 		            }
 
 	            for (PinguIter pingu = holder->begin (); pingu != holder->end (); ++pingu)

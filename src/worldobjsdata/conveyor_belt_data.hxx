@@ -1,4 +1,4 @@
-//  $Id: conveyor_belt_data.hxx,v 1.4 2002/09/28 11:52:26 torangan Exp $
+//  $Id: conveyor_belt_data.hxx,v 1.5 2003/01/27 22:14:52 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,7 +31,7 @@ class ConveyorBeltData : public WorldObjData
 public:
   Vector pos;
   int    width;
-  double speed;
+  float  speed;
   float  counter;
 
   ConveyorBeltData ();

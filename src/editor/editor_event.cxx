@@ -1,4 +1,4 @@
-//  $Id: editor_event.cxx,v 1.45 2003/01/25 18:34:36 torangan Exp $
+//  $Id: editor_event.cxx,v 1.46 2003/01/27 22:14:51 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <algorithm>
 #include <stdio.h>
 #include <fstream>
 #include <ClanLib/GUI/gui_manager.h>
