@@ -1,4 +1,4 @@
-//  $Id: event.hxx,v 1.1 2002/07/10 16:15:28 torangan Exp $
+//  $Id: event.hxx,v 1.2 2002/07/10 17:22:11 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,7 +22,7 @@
 
 namespace Input {
 
-  enum EventType { ButtonEvent, MoveEvent, ActionAxisEvent };
+  enum EventType { ButtonEventType, PointerEventType, AxisEventType };
 
   class Event {
     public:
