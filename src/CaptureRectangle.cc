@@ -1,4 +1,4 @@
-//  $Id: CaptureRectangle.cc,v 1.6 2000/12/16 23:11:19 grumbel Exp $ 
+//  $Id: CaptureRectangle.cc,v 1.7 2001/04/10 23:00:43 grumbel Exp $ 
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,14 +20,15 @@
 #include <iostream>
 #include <cstdio>
 #include <cassert>
+#include <boost/smart_ptr.hpp>
 
 #include "globals.hh"
 #include "Pingu.hh"
 #include "Pingu.hh"
+#include "StringConverter.hh"
 #include "PinguAction.hh"
 #include "PingusResource.hh"
 #include "CaptureRectangle.hh"
-#include <boost/smart_ptr.hpp>
 
 using namespace boost;
 
@@ -35,6 +36,7 @@ shared_ptr<Pingu> CaptureRectangle::pingu;
 shared_ptr<PinguAction> CaptureRectangle::button_action;
 
 CaptureRectangle::CaptureRectangle()
+  : owner_id (0)
 {
   good = PingusResource::load_surface("Cursors/capgood", "game");
   bad  = PingusResource::load_surface("Cursors/capbad",  "game"); 
@@ -46,9 +48,6 @@ CaptureRectangle::CaptureRectangle()
 
 CaptureRectangle::~CaptureRectangle()
 {
-  /*  if (button_action) {
-    delete button_action;
-  }*/
 }
 
 void
@@ -65,7 +64,7 @@ CaptureRectangle::draw_offset(int x_offset, int y_offset, float s)
       if (button_action.get() 
 	  && (button_action->get_environment() & pingu->get_environment()))
 	{
-	  sur = good;
+	  sur = bad;
 	} 
       else 
 	{
@@ -74,9 +73,11 @@ CaptureRectangle::draw_offset(int x_offset, int y_offset, float s)
     
       if (s == 1.0) 
 	{
+	  // Draw the caputure rectangle
 	  sur.put_screen(pingu->get_x() + pingu->x_offset() + x_offset - 4,
 			 pingu->get_y() + pingu->y_offset() + y_offset - 4);
 
+	  // If pingu has an action, print its name
 	  if (pingu->get_action().get()) 
 	    {
 	      font->print_center(pingu->get_x() + pingu->x_offset() + x_offset + 16,
@@ -84,6 +85,12 @@ CaptureRectangle::draw_offset(int x_offset, int y_offset, float s)
 				 pingu->get_action()->name().c_str());
 	    }
 
+	  font->print_center(pingu->get_x() + pingu->x_offset() + x_offset + 16,
+			     pingu->get_y() + pingu->y_offset() + y_offset - 16 + 62,
+			     StringConverter::to_string(pingu->get_owner()).c_str());
+	  
+
+	  // Paint the direction arrow
 	  if (pingu->direction.is_left()) 
 	    {
 	      arrow_left.put_screen(pingu->get_x() + x_offset - 10,

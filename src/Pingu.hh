@@ -1,4 +1,4 @@
-//  $Id: Pingu.hh,v 1.26 2001/04/10 21:51:22 grumbel Exp $
+//  $Id: Pingu.hh,v 1.27 2001/04/10 23:00:43 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -78,6 +78,9 @@ protected:
   PinguEnvironment environment;
   ///
   int falling;
+
+  ///
+  int owner_id;
 
 public:
   // The postion of the pingu (CL_Vector::z is always zero)

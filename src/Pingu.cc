@@ -1,4 +1,4 @@
-//  $Id: Pingu.cc,v 1.48 2001/04/10 21:51:22 grumbel Exp $
+//  $Id: Pingu.cc,v 1.49 2001/04/10 23:00:43 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -49,6 +49,7 @@ Pingu::Pingu(const CL_Vector& arg_pos, int owner)
     walker ("Pingus/walker", "pingus"),
     faller ("Pingus/faller", "pingus"),
     tumble ("Pingus/tumble", "pingus"),
+    owner_id (owner),
     pos (arg_pos)
 {
   walker.set_align_center_bottom ();
@@ -641,5 +642,10 @@ Pingu::is_tumbling () const
     }
 }
 
+int 
+Pingu::get_owner ()
+{
+  return owner_id;
+}
 
 /* EOF */
