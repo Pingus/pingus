@@ -1,4 +1,4 @@
-//  $Id: XMLPLF.cc,v 1.39 2001/08/31 07:51:51 grumbel Exp $
+//  $Id: XMLPLF.cc,v 1.40 2002/01/04 01:19:46 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -212,8 +212,7 @@ XMLPLF::parse_group(xmlNodePtr cur)
 {
   cur = cur->children;
 
-  WorldObjGroupData* group (new WorldObjGroupData ());
-  boost::shared_ptr<WorldObjData> data (group);
+  WorldObjGroupData* group = new WorldObjGroupData ();
 
   while (cur != NULL)
     {
@@ -262,7 +261,7 @@ XMLPLF::parse_group(xmlNodePtr cur)
       cur = cur->next;
     }
 
-  worldobjs_data.push_back (data);
+  worldobjs_data.push_back (boost::shared_ptr<WorldObjData> (group));
 }
 
 void 

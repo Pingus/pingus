@@ -1,4 +1,4 @@
-//  $Id: ConveyorBelt.cc,v 1.26 2001/12/01 17:08:27 torangan Exp $
+//  $Id: ConveyorBelt.cc,v 1.27 2002/01/04 01:19:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -47,7 +47,7 @@ ConveyorBeltData::write_xml(std::ofstream* xml)
 boost::shared_ptr<WorldObjData>
 ConveyorBeltData::create(xmlDocPtr doc, xmlNodePtr cur)
 {
-  boost::shared_ptr<ConveyorBeltData> data(new ConveyorBeltData ());
+  ConveyorBeltData* data = new ConveyorBeltData ();
 
   cur = cur->children;
   
@@ -75,7 +75,7 @@ ConveyorBeltData::create(xmlDocPtr doc, xmlNodePtr cur)
       cur = cur->next;
     }
   
-  return data;  
+  return boost::shared_ptr<WorldObjData>(data); 
 }
 
 boost::shared_ptr<WorldObj> 

@@ -1,4 +1,4 @@
-//  $Id: MultiplayerClientChild.cc,v 1.6 2001/06/11 20:40:16 grumbel Exp $
+//  $Id: MultiplayerClientChild.cc,v 1.7 2002/01/04 01:19:46 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,9 +42,9 @@ MultiplayerClientChild::MultiplayerClientChild (shared_ptr<Controller> arg_contr
   button_panel->set_server (server.get ());
   
   //std::cout << "MultiplayerClientChild: Creating: " << server.get() << std::endl;
-  gui_objs.push_back (playfield);
-  gui_objs.push_back (button_panel);
-  gui_objs.push_back (counterbar);
+  gui_objs.push_back (playfield.get());
+  gui_objs.push_back (button_panel.get());
+  gui_objs.push_back (counterbar.get());
 
   controller->set_range (rect);
 

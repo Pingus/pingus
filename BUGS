@@ -24,8 +24,14 @@ Duplication doesn't work for entrances
 * Extremly short mouse clicks are not registered (its a bug in
   ClanLibs event system)
 
+* with-extra-libs broken
+
+* sstream buggy, doesn't work with gcc-3.0
+
+* plf entrances are buggy
+
 'grep' at the sources for "Bug" or "FIXME" that should give you some
 more known bugs and other stuff. 
 
-$Date: 2001/08/09 12:50:48 $
+$Date: 2002/01/04 01:19:45 $
 

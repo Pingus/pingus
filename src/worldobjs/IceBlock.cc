@@ -1,4 +1,4 @@
-//  $Id: IceBlock.cc,v 1.20 2001/08/12 18:36:42 grumbel Exp $
+//  $Id: IceBlock.cc,v 1.21 2002/01/04 01:19:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,7 +43,7 @@ IceBlockData::write_xml(std::ofstream* xml)
 boost::shared_ptr<WorldObjData>
 IceBlockData::create(xmlDocPtr doc, xmlNodePtr cur)
 {
-  boost::shared_ptr<IceBlockData> data(new IceBlockData ());
+  IceBlockData* data = new IceBlockData ();
 
   cur = cur->children;
   
@@ -67,9 +67,8 @@ IceBlockData::create(xmlDocPtr doc, xmlNodePtr cur)
       cur = cur->next;
     }
   
-  return data;
+  return boost::shared_ptr<WorldObjData>(data);
 }
-
 
 boost::shared_ptr<WorldObj> 
 IceBlockData::create_WorldObj ()

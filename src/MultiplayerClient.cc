@@ -1,4 +1,4 @@
-//  $Id: MultiplayerClient.cc,v 1.3 2001/04/16 11:58:34 grumbel Exp $
+//  $Id: MultiplayerClient.cc,v 1.4 2002/01/04 01:19:46 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,10 +23,10 @@
 using boost::shared_ptr;
 
 MultiplayerClient::MultiplayerClient (boost::dummy_ptr<Server> s,
-				      boost::shared_ptr<MultiplayerClientChild> child1,
-				      boost::shared_ptr<MultiplayerClientChild> child2,
-				      boost::shared_ptr<MultiplayerClientChild> child3,
-				      boost::shared_ptr<MultiplayerClientChild> child4)
+				      boost::shared_ptr<GuiObj> child1,
+				      boost::shared_ptr<GuiObj> child2,
+				      boost::shared_ptr<GuiObj> child3,
+				      boost::shared_ptr<GuiObj> child4)
   : server (s)
 {
   gui_objs.push_back (child1);
@@ -39,8 +39,8 @@ MultiplayerClient::MultiplayerClient (boost::dummy_ptr<Server> s,
 }
 
 MultiplayerClient::MultiplayerClient (boost::dummy_ptr<Server> s,
-				      boost::shared_ptr<MultiplayerClientChild> child1,
-				      boost::shared_ptr<MultiplayerClientChild> child2)
+				      boost::shared_ptr<GuiObj> child1,
+				      boost::shared_ptr<GuiObj> child2)
   : server (s)
 {
   gui_objs.push_back (child1);

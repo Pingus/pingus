@@ -1,4 +1,4 @@
-//  $Id: MultiplayerClientChild.hh,v 1.5 2001/11/18 00:03:28 grumbel Exp $
+//  $Id: MultiplayerClientChild.hh,v 1.6 2002/01/04 01:19:46 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,8 +42,8 @@ private:
   boost::shared_ptr<ButtonPanel> button_panel;
   Sprite capture_rect;
   
-  std::vector<boost::shared_ptr<GuiObj> > gui_objs;
-  typedef std::vector<boost::shared_ptr<GuiObj> >::iterator GuiObjIter;
+  std::vector<GuiObj*> gui_objs;
+  typedef std::vector<GuiObj*>::iterator GuiObjIter;
 
   boost::shared_ptr<PlayfieldView> playfield;
   boost::shared_ptr<PingusCounterBar> counterbar;

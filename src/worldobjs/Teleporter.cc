@@ -1,4 +1,4 @@
-//  $Id: Teleporter.cc,v 1.26 2001/12/01 17:08:27 torangan Exp $
+//  $Id: Teleporter.cc,v 1.27 2002/01/04 01:19:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -44,7 +44,7 @@ TeleporterData::write_xml(std::ofstream* xml)
 boost::shared_ptr<WorldObjData>
 TeleporterData::create(xmlDocPtr doc, xmlNodePtr cur)
 {
-  boost::shared_ptr<TeleporterData> data(new TeleporterData ());
+  TeleporterData* data = new TeleporterData ();
   
   cur = cur->children;
   
@@ -78,7 +78,7 @@ TeleporterData::create(xmlDocPtr doc, xmlNodePtr cur)
 
       cur = cur->next;
     }
-  return data;
+  return boost::shared_ptr<WorldObjData> (data);
 }
 
 boost::shared_ptr<WorldObj> 
@@ -166,11 +166,11 @@ EditorTeleporterObj::create (const TeleporterData& data)
 
   //std::cout << "EditorTeleporterObj: " << tdata << " - " << tdata->target_pos << std::endl;
 
-  boost::shared_ptr<EditorTeleporterObj> teleporter(new EditorTeleporterObj (data));
-  boost::shared_ptr<EditorTeleporterTargetObj> teleporter_target(new EditorTeleporterTargetObj (teleporter.get ()));
+  EditorTeleporterObj* teleporter(new EditorTeleporterObj (data));
+  EditorTeleporterTargetObj* teleporter_target(new EditorTeleporterTargetObj (teleporter));
 
-  objs.push_back (teleporter);
-  objs.push_back (teleporter_target);
+  objs.push_back (boost::shared_ptr<EditorObj>(teleporter));
+  objs.push_back (boost::shared_ptr<EditorObj>(teleporter_target));
 
   return objs;
 }

@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapGraph.cc,v 1.23 2001/12/04 12:42:06 grumbel Exp $
+//  $Id: PingusWorldMapGraph.cc,v 1.24 2002/01/04 01:19:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -227,7 +227,7 @@ PingusWorldMapGraph::parse_node_list (xmlNodePtr cur)
 void 
 PingusWorldMapGraph::parse_tube (xmlNodePtr cur)
 {
-  boost::shared_ptr<PingusWorldMapTubeNode> node (new PingusWorldMapTubeNode ());
+  PingusWorldMapTubeNode* node = new PingusWorldMapTubeNode ();
 
   char* id = (char*)xmlGetProp(cur, (xmlChar*)"id");
   if (id)
@@ -271,20 +271,20 @@ PingusWorldMapGraph::parse_tube (xmlNodePtr cur)
       cur = cur->next;
     }
   
-  nodes.push_back (node);
+  nodes.push_back (boost::shared_ptr<class PingusWorldMapNode>(node));
 }
 
 void
 PingusWorldMapGraph::parse_node (xmlNodePtr cur)
 {
-  boost::shared_ptr<PingusWorldMapLevelNode> node (new PingusWorldMapLevelNode ());
+  PingusWorldMapLevelNode* node = new PingusWorldMapLevelNode ();
 
   char* id = (char*)xmlGetProp(cur, (xmlChar*)"id");
   if (id)
     node->id = StringConverter::to_int (id);
   else
     std::cout << "PingusWorldMapGraph::parse_node: no node id given" << std::endl;
-
+  
   char* accessible = (char*)xmlGetProp(cur, (xmlChar*)"accessible");
   if (accessible)
     node->accessible = StringConverter::to_int (accessible);
@@ -327,7 +327,7 @@ PingusWorldMapGraph::parse_node (xmlNodePtr cur)
       cur = cur->next;
     }  
 
-  nodes.push_back (node);
+  nodes.push_back (boost::shared_ptr<class PingusWorldMapNode>(node));
   // FIXME: Add the node to the graph
 }
 
