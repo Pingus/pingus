@@ -19,7 +19,6 @@
 
 #include <iostream>
 #include <ClanLib/Core/System/clanstring.h>
-#include "sprite.hxx"
 #include "gui/gui_manager.hxx"
 #include "gui/surface_button.hxx"
 #include "gui/component.hxx"

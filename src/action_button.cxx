@@ -72,8 +72,7 @@ ActionButton::is_pressed()
 void
 ActionButton::update(float delta)
 {
-  sprite.update(0.010f); // FIXME: Dirty hack
-  UNUSED_ARG(delta);
+  sprite.update(delta);
 }
 
 ActionName

@@ -33,17 +33,13 @@ namespace Pingus {
 CaptureRectangle::CaptureRectangle (ButtonPanel* arg_button_panel)
   : pingu(0),
     owner_id(0),
-    good("game/cursors/capgood"),
-    bad("game/cursors/capbad"),
-    arrow_left("game/cursors/arrow_left"),
-    arrow_right("game/cursors/arrow_right"),
+    good(Resource::load_sprite("game/cursors/capgood")),
+    bad(Resource::load_sprite("game/cursors/capbad")),
+    arrow_left(Resource::load_sprite("game/cursors/arrow_left")),
+    arrow_right(Resource::load_sprite("game/cursors/arrow_right")),
     button_panel(arg_button_panel),
     font(Fonts::courier_small)
 {
-  good.set_align_center();
-  bad.set_align_center();
-  arrow_left.set_align_center();
-  arrow_right.set_align_center();
 }
 
 CaptureRectangle::~CaptureRectangle ()
@@ -55,42 +51,38 @@ CaptureRectangle::draw_offset (int x_offset, int y_offset, float s)
 {
   if (pingu && pingu->catchable())
     {
-      Sprite* sur;
-
-      // FIXME: A check for surface good/bad should  be placed here
+      // Draw the capture rectangle
       if (pingu->change_allowed(button_panel->get_action_name()))
-	sur = &good;
+        {
+          good.draw(pingu->get_center_pos().x + x_offset,
+                    pingu->get_center_pos().y + y_offset);
+        }
       else
-	sur = &bad;
-
-      if (s == 1.0)
-	{ // FIXME: this should use GC
-
-	  // Draw the caputure rectangle
-	  sur->draw(pingu->get_center_pos() + Vector(x_offset,y_offset));
-
-          {
-            CL_Font myfont = font;
-            myfont.set_alignment(origin_top_center);
-            myfont.draw(static_cast<int>(pingu->get_center_pos().x) + x_offset,
-                        static_cast<int>(pingu->get_center_pos().y) + y_offset - 32,
-                        action_str);
-          }
-
-	  // Paint the direction arrow
-	  if (pingu->direction.is_left())
-	    {
-	      arrow_left.draw(pingu->get_center_pos() + Vector(x_offset, y_offset + 28));
-	    }
-	  else
-	    {
-	      arrow_right.draw(pingu->get_center_pos() + Vector(x_offset, y_offset + 28));
-	    }
-	}
+        {
+          bad.draw(pingu->get_center_pos().x + x_offset,
+                   pingu->get_center_pos().y + y_offset);        
+        }
+      
+      // Paint the direction arrow
+      if (pingu->direction.is_left())
+        {
+          arrow_left.draw(pingu->get_center_pos().x + x_offset,
+                          pingu->get_center_pos().y + y_offset);
+        }
       else
-	{
-	  sur->draw(pingu->get_center_pos() + Vector(x_offset, y_offset));
-	}
+        {
+          arrow_right.draw(pingu->get_center_pos().x + x_offset,
+                           pingu->get_center_pos().y + y_offset);
+        }
+
+
+      {
+        CL_Font myfont = font;
+        myfont.set_alignment(origin_top_center);
+        myfont.draw(static_cast<int>(pingu->get_center_pos().x) + x_offset,
+                    static_cast<int>(pingu->get_center_pos().y) + y_offset - 32,
+                    action_str);
+      }
     }
 }
 

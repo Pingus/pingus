@@ -44,10 +44,10 @@ private:
   /// The id of the owner of this capture rectangle
   int owner_id;
 
-  Sprite good;
-  Sprite bad;
-  Sprite arrow_left;
-  Sprite arrow_right;
+  CL_Sprite good;
+  CL_Sprite bad;
+  CL_Sprite arrow_left;
+  CL_Sprite arrow_right;
 
   ButtonPanel* button_panel;
   CL_Font font;

@@ -20,7 +20,6 @@
 #ifndef HEADER_PINGUS_WORLDOBJS_LIQUID_HXX
 #define HEADER_PINGUS_WORLDOBJS_LIQUID_HXX
 
-#include "../sprite.hxx"
 #include "../worldobj.hxx"
 
 namespace Pingus {

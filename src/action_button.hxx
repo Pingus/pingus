@@ -46,7 +46,7 @@ private:
   int   y_pos;
   bool  pressed;
   float press_time;
-  Sprite     sprite;
+  Sprite sprite;
   CL_Sprite background;
   CL_Sprite backgroundhl;
 
