@@ -30,6 +30,10 @@ section Hotspots
 	colum       = ../images/groundpieces/ground/misc/colum.png      (type=surface, x=0, y=0, width=142, height=184);
 	colum_flat  = ../images/groundpieces/ground/misc/colum_flat.png (type=surface, x=0, y=0, width=184, height=122);
 
+	colum_piece1 = ../images/groundpieces/ground/desert/column_piece1.png      (type=surface, x=0, y=0, width=103, height=66);
+	colum_piece2 = ../images/groundpieces/ground/desert/column_piece2.png      (type=surface, x=0, y=0, width=128, height=66);
+	colum_piece3 = ../images/groundpieces/ground/desert/column_piece3.png      (type=surface, x=0, y=0, width=128, height=111);
+
 	colum_pice1 = ../images/groundpieces/ground/desert/column_piece1.png      (type=surface, x=0, y=0, width=103, height=66);
 	colum_pice2 = ../images/groundpieces/ground/desert/column_piece2.png      (type=surface, x=0, y=0, width=128, height=66);
 	colum_pice3 = ../images/groundpieces/ground/desert/column_piece3.png      (type=surface, x=0, y=0, width=128, height=111);
@@ -82,12 +86,26 @@ section Hotspots
 
 section GroundPieces
 {
+	bpiece1  = ../images/groundpieces/ground/misc/bpiece1.png (type=surface, x=0, y=0, width=217, height=154);
+	bpiece2  = ../images/groundpieces/ground/misc/bpiece2.png (type=surface, x=0, y=0, width=166, height=192);
+	bpiece3  = ../images/groundpieces/ground/misc/bpiece3.png (type=surface, x=0, y=0, width=220, height=146);
+	bpiece4  = ../images/groundpieces/ground/misc/bpiece4.png (type=surface, x=0, y=0, width=156, height=215);
+	bpiece5  = ../images/groundpieces/ground/misc/bpiece5.png (type=surface, x=0, y=0, width=226, height=100);
+	bpiece6  = ../images/groundpieces/ground/misc/bpiece6.png (type=surface, x=0, y=0, width=161, height=168);
+
 	bpice1  = ../images/groundpieces/ground/misc/bpiece1.png (type=surface, x=0, y=0, width=217, height=154);
 	bpice2  = ../images/groundpieces/ground/misc/bpiece2.png (type=surface, x=0, y=0, width=166, height=192);
 	bpice3  = ../images/groundpieces/ground/misc/bpiece3.png (type=surface, x=0, y=0, width=220, height=146);
 	bpice4  = ../images/groundpieces/ground/misc/bpiece4.png (type=surface, x=0, y=0, width=156, height=215);
 	bpice5  = ../images/groundpieces/ground/misc/bpiece5.png (type=surface, x=0, y=0, width=226, height=100);
 	bpice6  = ../images/groundpieces/ground/misc/bpiece6.png (type=surface, x=0, y=0, width=161, height=168);
+
+	piece1  = ../images/groundpieces/ground/misc/grey_stone1.png (type=surface, x=0, y=0, width=190, height=109);
+	piece2  = ../images/groundpieces/ground/misc/grey_stone2.png (type=surface, x=0, y=0, width=125, height=222);
+	piece3  = ../images/groundpieces/ground/misc/grey_stone3.png (type=surface, x=0, y=0, width=140, height=145);
+	piece4  = ../images/groundpieces/ground/misc/grey_stone4.png (type=surface, x=0, y=0, width=216, height=68);
+	piece5  = ../images/groundpieces/ground/misc/grey_stone5.png (type=surface, x=0, y=0, width=218, height=91);
+
 
 	pice1  = ../images/groundpieces/ground/misc/grey_stone1.png (type=surface, x=0, y=0, width=190, height=109);
 	pice2  = ../images/groundpieces/ground/misc/grey_stone2.png (type=surface, x=0, y=0, width=125, height=222);

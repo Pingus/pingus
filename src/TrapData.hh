@@ -1,4 +1,4 @@
-// $Id: TrapData.hh,v 1.9 2002/01/15 10:48:49 grumbel Exp $
+// $Id: TrapData.hh,v 1.10 2002/01/15 20:37:56 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,10 +19,6 @@
 
 #ifndef TRAP_DATA_HH
 #define TRAP_DATA_HH
-
-#ifndef LIBXML_2
-    #define LIBXML_2
-#endif
 
 #include <string>
 #include <iostream>
