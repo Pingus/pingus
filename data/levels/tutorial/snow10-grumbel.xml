@@ -3,6 +3,7 @@
 <pingus-level>
   <global>
     <levelname lang="en">Panic Island (float/bash)</levelname>
+    <levelname lang="it">Isola del Panico</levelname>
     <levelname lang="de">Insel der Panik (schwebe/grabe)</levelname>
     <levelname lang="cs">Panika na ostrove</levelname>
     <levelname lang="tr">Panik adasý</levelname>
@@ -13,6 +14,11 @@
                            you, this one gets a bit trickier. The Pingus are coming
                            out of two entrances in parallel and it is your job to coordinate
                            the two groups wisely.
+    </description>
+    <description lang="it">Mentre i livelli precedenti non richiedevano un'azione veloce,
+                           stavolta le cose cambiano. I Pingus vengono fuori da due entrate
+                           parallele, ed il tuo lavoro consiste nel coordinare saggiamente 
+                           i due gruppi.
     </description>
     <description lang="de">Während die vorangegangen Level nicht viel schnelle Reaktionen von
                            Dir gefordert haben, wird dieser etwas schwieriger. Die Pingus

@@ -3,6 +3,7 @@
 <pingus-level>
   <global>
     <levelname lang="en">Jump'n Bump... and Bash...</levelname>
+    <levelname lang="it">Salta e sbatti... e scava...</levelname>
     <levelname lang="de">Springe... und grabe...</levelname>
     <levelname lang="cs">Skakani a hrabani...</levelname>
     <levelname lang="tr">Zýpla, düþ... ve Kaz...</levelname>
@@ -13,6 +14,11 @@
 		           since they turn around when they hit walls you will soon have some trouble
 		           coordinating them all. Since you only need to save 5 it should be doable,
 		           but if all else fails use the pause-mode ('p') to get an overview again.
+    </description>
+    <description lang="it">E' ancora panico. I Pingus non vengono fuori molto velocemente, ma appena
+		           toccheranno i muri avrai qualche problema a coordinarli. Dato che devi
+		           salvarne solo 5 la cosa è fattibile, ma se ti trovi in difficoltà puoi
+		           fermarti e fare una pausa usando il tasto 'p'.
     </description>
     <description lang="de">Es ist wieder Zeit für Panik. Die Pingus kommen nicht sehr schnell heraus,
 		           aber da sie sich drehen wenn sie eine Wand erreichen,

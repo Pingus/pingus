@@ -5,6 +5,7 @@
     <levelname lang="en">Learning to dig</levelname>
     <levelname lang="de">Lernen zu graben</levelname>
     <levelname lang="cs">Vyuka kopani</levelname>
+    <levelname lang="it">Impara a scavare</levelname>
     <levelname lang="tr">Kazmayý öðreniyoruz</levelname>
     <levelname lang="fr">Apprendre à creuser</levelname>
     <levelname lang="sr">Ucimo kopanje</levelname>
@@ -13,6 +14,11 @@
                            have to do is to give a Pingu the command to dig a hole into the
                            ground so that they can reach the exit. This can be acomplished by
                            simply clicking on a Pingu.
+    </description>
+    <description lang="it">Questa è la tua prima missione. Come sempre, è abbastanza facile.
+                           Tutto ciò che devi fare è ordinare ad un Pingus di scavare un buco
+                           nel terreno, in modo che possano arrivare all'uscita. Puoi farlo 
+                           semplicemente cliccando su un Pingus.
     </description>
     <description lang="de">Dies ist Deine erste Mission. Wie immer, ist sie ziemlich 
                            einfach. Alles was Du tun musst, ist einem Pingu den Befehl zum Graben

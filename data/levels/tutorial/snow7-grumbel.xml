@@ -3,6 +3,7 @@
 <pingus-level>
   <global>
     <levelname lang="en">One must prepare, the rest must follow</levelname>
+    <levelname lang="it">Uno prepara, gli altri seguono</levelname>
     <levelname lang="de">Einer muss vorbereiten, der Rest folgen</levelname>
     <levelname lang="cs">Jeden pripravi, ostatni nasleduji</levelname>
     <levelname lang="tr">Birisi yolu hazýrlamalý, diðerleri izlemeli</levelname>
@@ -13,6 +14,10 @@
                            hand to coordinate your Pingus. You'll have to find other ways to
                            keep them under control while a single one prepares
                            the path for the rest.
+    </description>
+    <description lang="it">In questo caso non hai un 'Ostacolo' per coordinare i Pingus. 
+                           Dovrai trovare un altro modo per tenerli sotto controllo, mentre 
+                           uno di loro prepara la strada per gli altri.
     </description>
     <description lang="de">Manchmal kommt es vor das Du keinen Blocker zur Hand hast um
                            deine Pingus zu koordinieren. Darum musst du andere Wege finden

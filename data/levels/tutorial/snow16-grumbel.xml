@@ -3,6 +3,7 @@
 <pingus-level>
   <global>
     <levelname lang="en">Bridging gets more complicated...</levelname>
+    <levelname lang="it">La costruzione di ponti si complica...</levelname>
     <levelname lang="de">Brückenbauen wird schwieriger...</levelname>
     <levelname lang="cs">Mosty se zacinaji zeslozitovat...</levelname>
     <levelname lang="tr">Köprü yapýmý karmaþýklaþýyor...</levelname>
@@ -12,6 +13,10 @@
     <description lang="en">Once again you have to combine actions carefully and wisely. If you
                            don't you could end up in the hole just before the exit, so
                            think about how to avoid that.
+    </description>
+    <description lang="it">Ancora una volta devi combinare accuratamente abilità differenti.
+                           Se non lo fai potresti finire nel buco vicino all'uscita, perciò
+                           pensa a come evitarlo.
     </description>
     <description lang="de">Und wieder musst die Fähigkeiten weise und vorsichtig kombienieren,
                            ohne das Du in dem Loch kurz vor dem Ausgang endest. Also denke

@@ -3,6 +3,7 @@
 <pingus-level>
   <global>
     <levelname lang="en">Climb, Climber, climb... and build a bridge</levelname>
+    <levelname lang="it">Sali, Arrampicatore... e fai un ponte</levelname>
     <levelname lang="de">Kletter, Climber, kletter.. und bau eine Brücke</levelname>
     <levelname lang="cs">Splhej horolezce, splhej... a postav most</levelname>
     <levelname lang="tr">Týrman, Climber, týrman ve bir köprü yap</levelname>
@@ -12,6 +13,10 @@
     <description lang="en">Once again you get access to a new action. The Climber action allows
 			   a Pingu to climb up straight walls, thus allowing him to reach stuff
 		           that might be too high to reach by other means.
+    </description>
+    <description lang="it">Anche stavolta hai una nuova abilità a disposizione. 'Arrampicatore'
+                           ti permette di scalara i muri verticali, permettedo ai Pingus di
+                           reggiungere cose che altrimenti sarebbero troppo in alto.
     </description>
     <description lang="de">Wieder erhälst du Zugriff auf eine neue Fähigkeit. Die Climber
 			   Fähigkeit ermöglicht es einem Pingu senkrechte Wände zu erklettern und

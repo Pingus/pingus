@@ -3,6 +3,7 @@
 <pingus-level>
   <global>
     <levelname lang="en">If too high, your Pingu will die...</levelname>
+    <levelname lang="it">Troppo in alto, il Pingus morirà...</levelname>
     <levelname lang="de">Zu hoch und dein Pingu wird sterben...</levelname>
     <levelname lang="cs">Pingove nepreziji pad z velke vysky...</levelname>
     <levelname lang="tr">Yüksekten düþen Pingu ölür...</levelname>
@@ -12,6 +13,10 @@
     <description lang="en">Teamwork is the way to the exit this time. You don't have enough
                            Floaters to reach the exit, so just send a few and let them
                            prepare the path for the rest.
+    </description>
+    <description lang="it">Serve il lavoro di squadra per uscire, stavolta. Non hai abbastanza
+                           'Paracadutisti' per raggiungere l'uscita, perciò mandane alcuni
+                           a reparare la strada per gli altri.
     </description>
     <description lang="de">Teamwork ist der Weg zum Ausgang dieses Mal. Du hast nicht genug
                            Floater, um den Ausgang zu erreichen, also schicke ein paar

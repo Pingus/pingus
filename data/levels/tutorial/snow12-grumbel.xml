@@ -3,6 +3,7 @@
 <pingus-level>
   <global>
     <levelname lang="en">Two groups in parallel, coordinate wisely</levelname>
+    <levelname lang="it">Due gruppi in parallelo, necessaria coordinazione</levelname>
     <levelname lang="de">Zwei Gruppen gleichzeitig, koordiniere weise</levelname>
     <levelname lang="cs">Dve skupiny najednou - rozumne je ved</levelname>
     <levelname lang="tr">Ýki grup ayný anda, dikkatli yönlendir</levelname>
@@ -12,6 +13,10 @@
     <description lang="en">You have two groups to coordinate this time. No need to panic, since
                            this level gives you enough time to think your actions through. No
                            more tips this time, but good luck!
+    </description>
+    <description lang="it">Questa volta hai due gruppi da coordinare. Niente panico, in questo
+                           livello hai abbastanza tempo per ragionare con calma. Ma ora basta
+                           con gli aiuti: buona fortuna!
     </description>
     <description lang="de">Diesmal hast Du zwei Gruppen zu koordinieren, aber keine Panik, denn
                            dieses Level gibt Dir genug Zeit zum Überlegen. Keine weiteren Tipps

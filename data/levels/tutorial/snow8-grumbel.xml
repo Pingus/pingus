@@ -3,6 +3,7 @@
 <pingus-level>
   <global>
     <levelname lang="en">Dig and float, but just don't fall and smash</levelname>
+    <levelname lang="it">Scava e fluttua, ma attento a non cadere</levelname>
     <levelname lang="de">Graben und schweben, nicht fallen und sterben</levelname>
     <levelname lang="cs">Kopej a letej, ale hlavne nespadni</levelname>
     <levelname lang="tr">Kaz ve uç, ama sakýn düþüp ölme</levelname>
@@ -13,6 +14,11 @@
                            this level. Your job is again simple: select an action at the panel
                            on the left and apply it to the Pingus so that they will be able
                            to reach the exit. Make sure that not too many of them die.
+    </description>
+    <description lang="it">Diversamente dai primi due livelli, avrai due abilità a disposizione.
+                           Il tuo lavoro è facile: scegli un'abilità dal pannello a sinistra e
+                           applicala ai Pingus in modo che possano raggiungere l'uscita.
+                           Attento non farne morire troppi.
     </description>
     <description lang="de">Im Gegensatz zu den beiden ersten Levels, hast du hier zwei
                            Fähigkeiten zur verfügung. Deine Aufgabe ist wieder einfach, wähle

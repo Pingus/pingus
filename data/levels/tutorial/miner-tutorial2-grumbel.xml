@@ -3,6 +3,7 @@
 <pingus-level>
   <global>
     <levelname lang="en">Miner's heaven</levelname>
+    <levelname lang="it">Il paradiso del minatore</levelname>
     <levelname lang="de">Miner's Himmel</levelname>
     <levelname lang="cs">Raj horniku</levelname>
     <levelname lang="tr">Madenci cenneti</levelname>
@@ -12,6 +13,10 @@
     <description lang="en">And another action hits the street, another digging action, this
                            time a diagonal one, and it allows a Pingu to dig diagonally through
                            ground, thus creating a path for following Pingus. The action is called Miner.
+    </description>
+    <description lang="it">Ed ecco un'altra nuova abilità che permette di scavare: questa volta in
+                           diagonale, e permette ad un Pingus di scavare diagonalmente nel terreno
+                           creando un percorso per i Pingus successivi. L'abilità si chiama 'Minatore'.
     </description>
     <description lang="de">Und eine weitere Fähigkeit taucht auf, es ist wieder eine grabende
                            Fähigkeit, dieses mal eine diagonale. Sie erlaubt es einem Pingu

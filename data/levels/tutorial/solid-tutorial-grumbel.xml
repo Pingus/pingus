@@ -3,6 +3,7 @@
 <pingus-level>
   <global>
     <levelname lang="en">Solid ground can block the path</levelname>
+    <levelname lang="it">Il terreno duro può bloccare il cammino</levelname>
     <levelname lang="de">Fester Boden kann den Weg blockieren</levelname>
     <levelname lang="cs">Pevne podlozi muze omezit cestu</levelname>
     <levelname lang="tr">Katý bloklar yolu týkayabilir</levelname>
@@ -14,6 +15,12 @@
                            penetrate and that is steal. These regions are marked
                            dark grey on the levelmap and cannot be destroyed, so
 			   you must find a way around them.
+    </description>
+    <description lang="it">Come avrai appreso nei livelli precedenti, i Pingus possono
+                           scavare attraverso quasi tutti i terreni, ma c'è un materiale che
+                           non si può attraversare: l'acciaio. Queste zone sono rappresentate 
+                           in grigio scuro sulla mappa e non possono essere distrutte, perciò
+			   dovrai trovare un modo per evitarle.
     </description>
     <description lang="de">Wie du in den früheren Levels gelernt hast, kann ein Pingu durch
                            fast alles graben, aber es gibt etwas, dass sie nicht durchdringen

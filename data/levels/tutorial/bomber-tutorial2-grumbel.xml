@@ -3,6 +3,7 @@
 <pingus-level>
   <global>
     <levelname lang="en">Sacrifice a few and save the rest</levelname>
+    <levelname lang="en">Sacrificane alcuni, ma salva gli altri</levelname>
     <levelname lang="de">Opfere einige und rette den Rest</levelname>
     <levelname lang="cs">Par obetuj a zachran ostatni</levelname>
     <levelname lang="tr">Çoðunluk için birkaçýný feda etmek gerek</levelname>
@@ -13,6 +14,11 @@
                            way through the ground. The Pingus can do this by actually self
                            destructing. This will kill them, but it is sometimes
                            necessary to sacrifice a few to save the rest.
+    </description>
+    <description lang="it">Certe volte non c'è altra scelta, bisogna scavare il terreno con
+                           l'esplosivo. I Pingus possono farlo solo suicidandosi... In questo
+                           modo ovviamente muoiono, ma certe volte è necessario sacrificarne
+                           alcuni per salvare gli altri.
     </description>
     <description lang="de">Manchmal, wenn kein anderer Weg existiert, musst Du dir deinen Weg
                            durch den Boden sprengen. Ein Pingu kann dies tun in dem er

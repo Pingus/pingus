@@ -3,6 +3,7 @@
 <pingus-level>
   <global>
     <levelname lang="en">Climb, Climber,... Boom!</levelname>
+    <levelname lang="it">Arrampicati,... Boom!</levelname>
     <levelname lang="de">Kletter, Climber... Boom!</levelname> 
     <levelname lang="cs">Splhej horolezce,... Bum!</levelname>
     <levelname lang="tr">Týrman, týrman,... Bum!</levelname>
@@ -13,6 +14,11 @@
                            often have to combine different actions to get the job done. Due
                            to the lack of a Digger action in this level the Bomber needs to
                            jump in, but how can it reach the place to bomb?
+    </description>
+    <description lang="it">Come avrai intuito nei livelli precedenti, spesso dovrai combinare
+                           abilità differenti per svolgere il tuo lavoro. Il questo livello 
+			   manca l'abilità 'Scavatore': basterebbe mettere una bomba, ma
+                           come si fa a raggiungere il posto giusto?
     </description>
     <description lang="de">Wie Du wohl bereits in den vorherigen Levels bemerkt hast,
                            musst du oftmals mehere Fähigkeiten kombinieren, um das Ziel zu

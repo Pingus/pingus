@@ -6,6 +6,7 @@
     <levelname lang="de">Ist der Weg blockiert, dann grab ihn frei</levelname>
     <levelname lang="cs">Kdyz nevede cesta dal, tak ji vyhrabej</levelname>
     <levelname lang="tr">Eðer yol kapalýysa, temizlemek gerek</levelname>
+    <levelname lang="it">Se la strada è bloccata, sfonda i muri</levelname>
     <levelname lang="fr">Si la route est bloquée, défonce le mur!</levelname>
     <levelname lang="sr">Ako je put blokiran, prokopaj tunel</levelname>
 
@@ -13,6 +14,11 @@
                            levels, there is also an action that allows the Pingus to dig
                            horizontally, as opposed to the vertical dig ability the Digger action
                            provides. This new action is called Basher.
+    </description>
+    <description lang="it">Un po' come lo 'Scavatore' che hai visto nei livelli precedenti, esiste
+                           un'abilità che permette ai Pingus di scavare orizzontalmente, invece che
+                           verticalmente come nello 'Scavatore'. Questa nuova abilità è detta
+                           'Sfondamuri'
     </description>
     <description lang="de">Vergleichbar zum Digger der bereits aus den vorhergehenden Levels
                            bekannt ist, gibt es auch eine Fähigkeit die es einem Pingu erlaubt
