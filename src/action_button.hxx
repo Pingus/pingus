@@ -1,4 +1,4 @@
-//  $Id: action_button.hxx,v 1.6 2002/08/02 22:55:19 grumbel Exp $
+//  $Id: action_button.hxx,v 1.7 2002/08/03 12:00:58 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,6 +42,7 @@ private:
   int x_pos;
   int y_pos;
   bool pressed;
+  float press_time;
   CL_Surface surface;
   CL_Surface background;
   CL_Surface backgroundhl;
@@ -53,6 +54,7 @@ public:
   virtual ~ArmageddonButton();
 
   void draw();
+  void update(float);
   bool is_at(int x, int y);
   void on_primary_button_click (int x, int y);
 };

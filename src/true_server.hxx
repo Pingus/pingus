@@ -1,4 +1,4 @@
-//  $Id: true_server.hxx,v 1.2 2002/06/24 22:52:57 grumbel Exp $
+//  $Id: true_server.hxx,v 1.3 2002/08/03 12:00:58 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,6 +32,7 @@ private:
   int  local_game_speed;
   bool client_needs_redraw;
   float delta;
+  bool armageddon;
 
   /** Reference to the PLF for this level, this must not be deleted */
   PLF* plf;
@@ -49,6 +50,9 @@ public:
   
   void set_pause(bool);
   bool get_pause();
+
+  void set_armageddon ();
+  bool get_armageddon ();
 };
 
 #endif

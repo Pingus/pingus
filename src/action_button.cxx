@@ -1,4 +1,4 @@
-//  $Id: action_button.cxx,v 1.7 2002/08/03 11:37:45 grumbel Exp $
+//  $Id: action_button.cxx,v 1.8 2002/08/03 12:00:58 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -192,7 +192,7 @@ ArmageddonButton::~ArmageddonButton() { }
 void
 ArmageddonButton::draw()
 {
-  if (pressed)
+  if (server->get_armageddon ())
     {
       backgroundhl.put_screen (x_pos, y_pos);
       surface.put_screen(x_pos, y_pos, ++counter);
@@ -201,6 +201,25 @@ ArmageddonButton::draw()
     {
       background.put_screen (x_pos, y_pos);
       surface.put_screen(x_pos, y_pos, 7);
+    }
+}
+
+void
+ArmageddonButton::update(float delta)
+{
+  if (pressed)
+    {
+      press_time += delta;
+      if (press_time > 1.0f)
+	{
+	  press_time = 0;
+	  pressed = false;
+	}
+    }
+  else
+    {
+      pressed = false;
+      press_time = 0;
     }
 }
 
@@ -219,8 +238,14 @@ ArmageddonButton::is_at(int x, int y)
 void
 ArmageddonButton::on_primary_button_click (int x, int y)
 {
-  pressed = true; // FIXME: should check the server state instead
-  server->get_world()->armageddon();
+  if  (pressed)
+    {
+      server->set_armageddon();
+    }
+  else
+    {
+      pressed = true;
+    }
 }
 
 ForwardButton::ForwardButton(Server* s, int x, int y) 

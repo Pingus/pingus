@@ -1,4 +1,4 @@
-//  $Id: server.hxx,v 1.2 2002/06/24 22:52:56 grumbel Exp $
+//  $Id: server.hxx,v 1.3 2002/08/03 12:00:58 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -74,6 +74,9 @@ public:
   virtual void set_pause(bool) = 0;
 
   virtual bool needs_redraw() = 0;
+
+  virtual void set_armageddon () =0;
+  virtual bool get_armageddon () =0;
 
   virtual PLF* get_plf () =0;
 
