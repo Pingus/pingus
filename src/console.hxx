@@ -1,4 +1,4 @@
-//  $Id: console.hxx,v 1.9 2002/09/04 17:49:48 grumbel Exp $
+//  $Id: console.hxx,v 1.10 2002/09/05 17:28:33 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,7 +33,7 @@ private:
 
   enum { CONSOLE_BUFFER_SIZE = 200 };
   enum { NUM_LINES           = 100 };
-  enum { MAX_LINE_LENGTH     = 80  };
+  enum { MAX_LINE_LENGTH     = 130  }; // FIXME: this should be dynamic arcording to the current screen size
 
   std::list<std::string> buffer;
   char char_buffer[CONSOLE_BUFFER_SIZE];
