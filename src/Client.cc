@@ -1,4 +1,4 @@
-//  $Id: Client.cc,v 1.45 2001/04/13 09:31:37 grumbel Exp $
+//  $Id: Client.cc,v 1.46 2001/04/13 09:38:19 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -283,26 +283,6 @@ Client::update (float delta)
   // Let the server process a game loop
   server->update(delta);
   send_next_event();
-
-  if (controller->scroll_left->is_pressed ())
-    {
-      playfield->enable_scroll_mode ();
-      playfield->scroll_speed = 50;
-      playfield->view[playfield->current_view]->set_x_offset(playfield->view[playfield->current_view]->get_x_offset() + playfield->scroll_speed);
-      std::cout << "Scrolling left" << playfield->view[playfield->current_view]->get_x_offset() << std::endl;
-    }
-  else
-    playfield->disable_scroll_mode ();
-
-  if (controller->scroll_right->is_pressed ()) 
-    {
-      playfield->scroll_speed = 50;
-      playfield->enable_scroll_mode ();
-      playfield->view[playfield->current_view]->set_x_offset(playfield->view[playfield->current_view]->get_x_offset() + playfield->scroll_speed);
-      std::cout << "Scrolling right: " << playfield->view[playfield->current_view]->get_x_offset() << std::endl;
-    }
-  else
-    playfield->disable_scroll_mode ();
 }
 
 void
@@ -402,6 +382,7 @@ Client::register_event_handler()
   slot_left_pressed   = controller->left->signal_pressed.connect (CL_CreateSlot (this, &Client::on_left_pressed));
   slot_middle_pressed = controller->middle->signal_pressed.connect (CL_CreateSlot (this, &Client::on_middle_pressed));
   slot_right_pressed  = controller->right->signal_pressed.connect (CL_CreateSlot (this, &Client::on_right_pressed));
+  slot_right_released  = controller->right->signal_released.connect (CL_CreateSlot (this, &Client::on_right_released));
   slot_abort_pressed  = controller->abort->signal_pressed.connect (CL_CreateSlot (this, &Client::on_abort_pressed));
   slot_pause_pressed  = controller->pause->signal_pressed.connect (CL_CreateSlot (this, &Client::on_pause_pressed));
   slot_scroll_left_pressed  = controller->scroll_left->signal_pressed.connect (CL_CreateSlot (this, &Client::on_scroll_left_pressed));
@@ -641,6 +622,14 @@ void
 Client:: on_right_pressed (const CL_Vector& pos)
 {
   std::cout << "Right Pressed" << std::endl;
+ playfield->enable_scroll_mode();
+}
+
+void 
+Client::on_right_released (const CL_Vector& pos)
+{
+  std::cout << "Right released" << std::endl;
+  playfield->disable_scroll_mode();
 }
 
 void

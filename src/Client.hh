@@ -1,4 +1,4 @@
-//  $Id: Client.hh,v 1.23 2001/04/13 09:31:37 grumbel Exp $
+//  $Id: Client.hh,v 1.24 2001/04/13 09:38:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -91,6 +91,7 @@ private:
   CL_Slot slot_left_pressed;
   CL_Slot slot_middle_pressed;
   CL_Slot slot_right_pressed;
+  CL_Slot slot_right_released;
   CL_Slot slot_abort_pressed;
   CL_Slot slot_pause_pressed;
   CL_Slot slot_scroll_left_pressed;
@@ -176,6 +177,7 @@ public:
   void on_left_pressed (const CL_Vector& pos);
   void on_middle_pressed (const CL_Vector& pos);
   void on_right_pressed (const CL_Vector& pos);
+  void on_right_released (const CL_Vector& pos);
   void on_abort_pressed (const CL_Vector& pos);
   void on_pause_pressed (const CL_Vector& pos);
   void on_scroll_left_pressed (const CL_Vector& pos);
