@@ -1,4 +1,4 @@
-//  $Id: Config.cc,v 1.1 2000/03/10 19:33:29 grumbel Exp $
+//  $Id: Config.cc,v 1.2 2000/03/10 19:46:12 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -140,7 +140,7 @@ ConfigParser::get_valueid(void)
     {
       atom = get_atom();
       
-      if (isgraph(atom) && atom != '='m)
+      if (isgraph(atom) && atom != '=')
 	{
 	  ret_val += atom;
 	} 
