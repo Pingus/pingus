@@ -137,4 +137,7 @@ Alberto Curro <acurrop@wanadoo.es>
 Mattias Andersson <mattiasa@neod.com>
 	* some fixes for Win32 Port
 
+Misc little compile patches:
+  Giuseppe D'Aqui' <kumber@tiscalinet.it>
+
 -- EOF --

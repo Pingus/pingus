@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.12 2001/07/27 19:44:49 grumbel Exp $
+#  $Id: Makefile.am,v 1.13 2002/09/25 18:25:18 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -16,8 +16,6 @@
 #  You should have received a copy of the GNU General Public License
 #  along with this program; if not, write to the Free Software
 #  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
-
-SUBDIRS = plf
 
 ## Override automake so that "make install" puts these in proper place:
 pkgdatadir = $(datadir)/games/@PACKAGE@/levels
