@@ -1,4 +1,4 @@
-//  $Id: thumb_cache.cxx,v 1.4 2002/06/22 14:29:18 grumbel Exp $
+//  $Id: thumb_cache.cxx,v 1.5 2002/06/23 11:08:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,7 +27,24 @@
 #include "../blitter.hxx"
 #include "../system.hxx"
 #include "../pingus_resource.hxx"
+#include "../math.hxx"
 #include "thumb_cache.hxx"
+
+using namespace Pingus;
+
+const unsigned int thumbcache_version = 2;
+
+/*
+  ~/.pingus/cache/
+
+  Format:
+  uint32: Version
+  uint32: width
+  uint32: height
+  uint32: mtime of parent image
+  data:   ...
+
+ */
 
 CL_Surface
 ThumbCache::load (const std::string & res_ident, const std::string & datafile)
@@ -49,29 +66,28 @@ ThumbCache::load (const std::string & res_ident, const std::string & datafile)
 	{
 	  CL_InputSource_File in(filename);
 	  
-	  CL_Canvas* canvas = new CL_Canvas (50, 50);
-	  canvas->lock ();
-	  void* buffer = canvas->get_data ();
-	  size_t buffer_size = 50 * 50 * 4;
-
 	  unsigned int version   = in.read_uint32 ();
-
-	  if (version != 1)
+	  if (version != thumbcache_version)
 	    {
 	      std::cout << "Thumbnail: version mismatch" << std::endl;
-	      delete canvas;
 	      return CL_Surface ();
 	    }
 
+	  unsigned int width  = in.read_uint32 ();
+	  unsigned int height = in.read_uint32 ();
+
 	  unsigned int timestamp = in.read_uint32 ();
-	  
 	  // The thumbnail needs an update
 	  if (timestamp != PingusResource::get_mtime (res_ident, datafile))
 	    {
 	      std::cout << "Thumbnail: file needs update" << std::endl;
-	      delete canvas;
 	      return CL_Surface ();
 	    }
+
+	  CL_Canvas* canvas = new CL_Canvas (width, height);
+	  canvas->lock ();
+	  void* buffer = canvas->get_data ();
+	  size_t buffer_size = width * height * 4;
 
 	  size_t read_size = in.read (buffer, buffer_size);
 	  
@@ -99,7 +115,7 @@ ThumbCache::load (const std::string & res_ident, const std::string & datafile)
 void 
 ThumbCache::cache (const CL_Surface& sur, const std::string & res_ident, const std::string & datafile)
 {
-  if (sur.get_provider ()->get_pitch () * sur.get_provider ()->get_width () < 50 * 50 * 4)
+  if (sur.get_provider ()->get_height () * sur.get_provider ()->get_width () < 50 * 50)
     {
       std::cout << "ThumbCache: image too small for cache: " << res_ident << std::endl;
       return;
@@ -123,13 +139,19 @@ ThumbCache::cache (const CL_Surface& sur, const std::string & res_ident, const s
     {
       CL_OutputSource_File out(filename);
 
-      CL_Canvas* canvas = Blitter::scale_surface_to_canvas (sur, 50, 50); 
+      unsigned int width  = Math::min((unsigned int)50, sur.get_width ());
+      unsigned int height = Math::min((unsigned int)50, sur.get_height ());
+
+      CL_Canvas* canvas = Blitter::scale_surface_to_canvas (sur, width, height); 
       canvas->lock ();
       void* buffer = canvas->get_data();
       int buffer_size = canvas->get_height () * canvas->get_pitch ();
       
       // Versionnumber of the thumbnail format
-      out.write_uint32 (1);
+      out.write_uint32 (thumbcache_version);
+
+      out.write_uint32 (width);
+      out.write_uint32 (height);
 
       // Modification time  of the parent file
       out.write_uint32 (timestamp);

@@ -1,4 +1,4 @@
-//  $Id: exit_data.hxx,v 1.1 2002/06/12 19:09:37 grumbel Exp $
+//  $Id: exit_data.hxx,v 1.2 2002/06/23 11:08:29 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,8 +24,7 @@
 #include "res_descriptor.hxx"
 #include "worldobj_data.hxx"
 
-class _xmlDoc;  typedef _xmlDoc*  xmlDocPtr;
-class _xmlNode; typedef _xmlNode* xmlNodePtr;
+#include "libxmlfwd.hxx"
 
 ///
 class ExitData : public WorldObjData

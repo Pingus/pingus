@@ -1,7 +1,7 @@
-//  $Id: hotspot_data.hxx,v 1.2 2002/06/23 11:08:29 grumbel Exp $
-//
+//  $Id: libxmlfwd.hxx,v 1.1 2002/06/23 11:08:29 grumbel Exp $
+// 
 //  Pingus - A free Lemmings clone
-//  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
+//  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //
 //  This program is free software; you can redistribute it and/or
 //  modify it under the terms of the GNU General Public License
@@ -12,52 +12,22 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//
+// 
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef HOTSPOT_DATA_HH
-#define HOTSPOT_DATA_HH
+#ifndef PINGUS_XMLFWD_HXX
+#define PINGUS_XMLFWD_HXX
 
-#include <ClanLib/Core/Math/cl_vector.h>
-#include "res_descriptor.hxx"
-#include "worldobj_data.hxx"
-
-#include "libxmlfwd.hxx"
-
-class HotspotData : public WorldObjData
-{
-public:
-  CL_Vector pos;
-  int   speed;
-  float para;
-  ResDescriptor desc;
-
-  HotspotData() {
-    clean();
-  }
-  HotspotData (xmlDocPtr doc, xmlNodePtr cur);
-
-
-  void clean() {
-    pos.x = 0;
-    pos.y = 0;
-    pos.z = 0;
-    speed = -1;
-    para = 1.0;
-  }
-
-  void write_xml(std::ofstream *);
-
-  WorldObj* create_WorldObj();
-  EditorObjLst create_EditorObj();
-};
+#ifndef WIN32
+// FIXME: This might not work with each and every version of libxml
+class _xmlDoc;  typedef _xmlDoc*  xmlDocPtr;
+class _xmlNode; typedef _xmlNode* xmlNodePtr;
+#else
+#include "xml_helper.hxx"
+#endif
 
 #endif
 
 /* EOF */
-
-
-
-

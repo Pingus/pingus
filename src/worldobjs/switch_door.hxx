@@ -1,4 +1,4 @@
-//  $Id: switch_door.hxx,v 1.1 2002/06/12 19:03:10 grumbel Exp $
+//  $Id: switch_door.hxx,v 1.2 2002/06/23 11:08:30 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,8 +24,7 @@
 #include "../worldobj_data.hxx"
 #include "../editor/sprite_editorobj.hxx"
 
-class _xmlDoc;  typedef _xmlDoc*  xmlDocPtr;
-class _xmlNode; typedef _xmlNode* xmlNodePtr;
+#include "../libxmlfwd.hxx"
 
 /** A variable height door which can block the way and which can be
     opened by a switch */

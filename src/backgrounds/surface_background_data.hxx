@@ -1,4 +1,4 @@
-//  $Id: surface_background_data.hxx,v 1.1 2002/06/12 19:02:30 grumbel Exp $
+//  $Id: surface_background_data.hxx,v 1.2 2002/06/23 11:08:30 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,8 +28,7 @@
 #include "../boost/smart_ptr.hpp"
 
 class SurfaceBackground;
-class _xmlDoc;  typedef _xmlDoc*  xmlDocPtr;
-class _xmlNode; typedef _xmlNode* xmlNodePtr;
+#include "../libxmlfwd.hxx"
 
 class SurfaceBackgroundData : public WorldObjData
 {
