@@ -39,7 +39,6 @@ libpingus_gui_a_SOURCES = \
 	screen_ptr.cxx \
 	screen_ptr.hxx \
         component.hxx \
-        graphic_context.hxx \
         surface_button.cxx \
         surface_button.hxx
 
