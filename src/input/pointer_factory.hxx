@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_INPUT_POINTER_FACTORY_HXX
 #define HEADER_PINGUS_INPUT_POINTER_FACTORY_HXX
 
-#include "../libxmlfwd.hxx"
+#include "../file_reader.hxx"
 
 namespace Pingus {
 namespace Input {
@@ -30,12 +30,12 @@ class Pointer;
 class PointerFactory
 {
 private:
-  static Pointer* axis_pointer     (xmlNodePtr cur);
+  static Pointer* axis_pointer     (FileReader reader);
   static Pointer* mouse_pointer    ();
-  static Pointer* multiple_pointer (xmlNodePtr cur);
+  static Pointer* multiple_pointer (FileReader reader);
 
 public:
-  static Pointer* create (xmlNodePtr cur);
+  static Pointer* create (FileReader reader);
 
 private:
   PointerFactory ();

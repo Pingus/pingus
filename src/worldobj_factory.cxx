@@ -21,7 +21,6 @@
 #include <ClanLib/Core/System/clanstring.h>
 #include "pingus_error.hxx"
 #include "worldobj_factory.hxx"
-#include "xml_helper.hxx"
 
 #include "worldobjs/conveyor_belt.hxx"
 #include "worldobjs/entrance.hxx"

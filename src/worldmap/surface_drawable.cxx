@@ -19,8 +19,6 @@
 
 #include <iostream>
 
-#include "../xml_file_reader_old.hxx"
-#include "../xml_helper.hxx"
 #include "../resource.hxx"
 #include "../display/drawing_context.hxx"
 #include "manager.hxx"

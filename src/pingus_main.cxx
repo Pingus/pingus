@@ -60,7 +60,6 @@
 #include "debug.hxx"
 #include "action_data.hxx"
 #include "fonts.hxx"
-#include "xml_helper.hxx"
 #include "pingus_menu_manager.hxx"
 #include "resource.hxx"
 #include "pingu_action_factory.hxx"
@@ -920,7 +919,6 @@ PingusMain::init_pingus()
   ScreenManager::init();
   PingusMenuManager::init();
   Sound::PingusSound::init();
-  XMLhelper::init();
   PinguActionFactory::init();
   Credits::init();
 
@@ -933,7 +931,6 @@ PingusMain::deinit_pingus()
 {
   Credits::deinit();
   PinguActionFactory::deinit();
-  XMLhelper::deinit();
   Sound::PingusSound::deinit();
   PingusMenuManager::deinit();
   WorldObjFactory::deinit();
@@ -943,7 +940,6 @@ PingusMain::deinit_pingus()
   Resource::deinit();
   StatManager::deinit();
   SavegameManager::deinit();
-  xmlCleanupParser();
 }
 
 } // namespace Pingus

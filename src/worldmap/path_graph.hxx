@@ -23,7 +23,6 @@
 #include <map>
 #include <vector>
 #include "../vector.hxx"
-#include "../libxmlfwd.hxx"
 #include "path.hxx"
 #include "pathfinder.hxx"
 #include "graph.hxx"

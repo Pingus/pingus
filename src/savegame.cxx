@@ -19,7 +19,6 @@
 
 #include <iostream>
 #include <ClanLib/Core/System/clanstring.h>
-#include "xml_file_reader_old.hxx"
 #include "xml_file_writer.hxx"
 #include "savegame.hxx"
 

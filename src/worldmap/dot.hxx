@@ -21,7 +21,6 @@
 #define HEADER_PINGUS_DOT_HXX
 
 #include <string>
-#include "../libxmlfwd.hxx"
 #include "../vector.hxx"
 #include "drawable.hxx"
 

@@ -17,7 +17,6 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "../xml_helper.hxx"
 #include "../pingus_error.hxx"
 #include "axis_factory.hxx"
 #include "button.hxx"
@@ -33,81 +32,73 @@ namespace Input {
 
 using namespace Axes;
 
-Axis* AxisFactory::create(xmlNodePtr cur)
+Axis* AxisFactory::create(FileReader reader)
 {
-  if (!cur)
-    PingusError::raise("AxisFactory called without an element");
+  if (reader.get_name() == "button-axis")
+    return button_axis(reader);
 
-  if (XMLhelper::equal_str(cur->name, "button-axis"))
-    return button_axis(cur);
+  else if (reader.get_name() == "inverted-axis")
+    return inverted_axis(reader);
 
-  else if (XMLhelper::equal_str(cur->name, "inverted-axis"))
-    return inverted_axis(cur);
+  else if (reader.get_name() == "joystick-axis")
+    return joystick_axis(reader);
 
-  else if (XMLhelper::equal_str(cur->name, "joystick-axis"))
-    return joystick_axis(cur);
-
-  else if (XMLhelper::equal_str(cur->name, "multiple-axis"))
-    return multiple_axis(cur->children);
+  else if (reader.get_name() == "multiple-axis")
+    return multiple_axis(reader);
 
   else
-    PingusError::raise(std::string("Unknown axis type: ") + ((cur->name) ? reinterpret_cast<const char*>(cur->name) : ""));
+    PingusError::raise(std::string("Unknown axis type: ") + reader.get_name());
 
   return 0; // never reached
 }
 
-Axis* AxisFactory::button_axis (xmlNodePtr cur)
+Axis* AxisFactory::button_axis (FileReader reader)
 {
   float angle;
-  if (!XMLhelper::get_prop(cur, "angle", angle))
+  if (!reader.read_float("angle", angle))
     PingusError::raise("ButtonAxis without angle parameter");
 
-  cur = XMLhelper::skip_blank(cur->children);
-  Button* button1 = ButtonFactory::create(cur);
+  const std::vector<FileReader>& sections = reader.get_sections();
+  
+  if (sections.size() != 3)
+    PingusError::raise("ButtonAxis isn't <angle><button><button>");
 
-  cur = XMLhelper::skip_blank(cur->next);
-  Button* button2 = ButtonFactory::create(cur);
+  Button* button1 = ButtonFactory::create(sections[1]);
+  Button* button2 = ButtonFactory::create(sections[2]);
 
   return new ButtonAxis(angle, button1, button2);
 }
 
-Axis* AxisFactory::inverted_axis (xmlNodePtr cur)
+Axis* AxisFactory::inverted_axis (FileReader reader)
 {
-  return new InvertedAxis(create(cur->children));
+  return new InvertedAxis(create(reader));
 }
 
-Axis* AxisFactory::joystick_axis (xmlNodePtr cur)
+Axis* AxisFactory::joystick_axis (FileReader reader)
 {
   float angle;
-  if (!XMLhelper::get_prop(cur, "angle", angle))
+  if (!reader.read_float("angle", angle))
     PingusError::raise("JoystickAxis without angle parameter");
 
   int id;
-  if (!XMLhelper::get_prop(cur, "id", id))
+  if (!reader.read_int("id", id))
     PingusError::raise("JoystickAxis without id parameter");
 
   int axis;
-  if (!XMLhelper::get_prop(cur, "axis", axis))
+  if (!reader.read_int("axis", axis))
     PingusError::raise("JoystickAxis without axis parameter");
 
   return new JoystickAxis(id, axis, angle);
 }
 
-Axis* AxisFactory::multiple_axis (xmlNodePtr cur)
+Axis* AxisFactory::multiple_axis (FileReader reader)
 {
   std::vector<Axis*> axes;
 
-  while (cur)
-    {
-      if (xmlIsBlankNode(cur))
-	{
-	  cur = cur->next;
-	  continue;
-	}
-
-      axes.push_back(create(cur));
-      cur = cur->next;
-    }
+  const std::vector<FileReader>& sections = reader.get_sections();
+  for(std::vector<FileReader>::const_iterator i = sections.begin();
+      i != sections.end(); ++i)
+    axes.push_back(create(*i));
 
   if (!axes.size())
     PingusError::raise("MultipleAxis without any axis");

@@ -20,7 +20,6 @@
 #include <iostream>
 #include <fstream>
 #include <ClanLib/core.h>
-#include "xml_helper.hxx"
 #include "system.hxx"
 #include "pingus_error.hxx"
 #include "xml_file_reader.hxx"

@@ -20,7 +20,6 @@
 #ifndef HEADER_DRAWABLE_FACTORY_HXX
 #define HEADER_DRAWABLE_FACTORY_HXX
 
-#include "../libxmlfwd.hxx"
 #include "drawable.hxx"
 
 namespace Pingus {

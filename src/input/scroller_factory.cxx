@@ -18,7 +18,6 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <stdlib.h>
-#include "../xml_helper.hxx"
 #include "../pingus_error.hxx"
 #include "axis.hxx"
 #include "axis_factory.hxx"
@@ -40,128 +39,115 @@ namespace Input {
 using namespace Scrollers;
 
 Scroller*
-ScrollerFactory::create(xmlNodePtr cur)
+ScrollerFactory::create(FileReader reader)
 {
-  if (!cur)
-    PingusError::raise("ScrollerFactory called without an element");
+  if (reader.get_name() == "axis-scroller")
+    return axis_scroller(reader);
 
-  if (XMLhelper::equal_str(cur->name, "axis-scroller"))
-    return axis_scroller(cur);
+  else if (reader.get_name() == "inverted-scroller")
+    return inverted_scroller(reader);
 
-  else if (XMLhelper::equal_str(cur->name, "inverted-scroller"))
-    return inverted_scroller(cur);
+  else if (reader.get_name() == "joystick-scroller")
+    return joystick_scroller(reader);
 
-  else if (XMLhelper::equal_str(cur->name, "joystick-scroller"))
-    return joystick_scroller(cur);
+  else if (reader.get_name() == "mouse-scroller")
+    return mouse_scroller(reader);
 
-  else if (XMLhelper::equal_str(cur->name, "mouse-scroller"))
-    return mouse_scroller(cur);
+  else if (reader.get_name() == "multiple-scroller")
+    return multiple_scroller(reader);
 
-  else if (XMLhelper::equal_str(cur->name, "multiple-scroller"))
-    return multiple_scroller(cur->children);
-
-  else if (XMLhelper::equal_str(cur->name, "pointer-scroller"))
-    return pointer_scroller(XMLhelper::skip_blank(cur->children));
+  else if (reader.get_name() == "pointer-scroller")
+    return pointer_scroller(reader);
 
   else
-    PingusError::raise(std::string("Unknown scroller type: ") + ((cur->name) ? reinterpret_cast<const char*>(cur->name) : ""));
+    PingusError::raise(std::string("Unknown scroller type: ") + reader.get_name());
 
   return 0; // never reached
 }
 
 Scroller*
-ScrollerFactory::axis_scroller (xmlNodePtr cur)
+ScrollerFactory::axis_scroller (FileReader reader)
 {
   float speed;
-  if (!XMLhelper::get_prop(cur, "speed", speed))
+  if (!reader.read_float("speed", speed))
     PingusError::raise("AxisScroller without speed parameter");
 
   std::vector<Axis*> axes;
-  cur = cur->children;
-
-  while (cur)
-    {
-      if (xmlIsBlankNode(cur))
-	{
-  	  cur = cur->next;
-	  continue;
-	}
-
-      axes.push_back(AxisFactory::create(cur));
-      cur = cur->next;
-    }
-
+  const std::vector<FileReader>& sections = reader.get_sections();
+  for(std::vector<FileReader>::const_iterator i = sections.begin() + 1;
+      i != sections.end(); ++i)
+    axes.push_back(AxisFactory::create(*i));
+    
   return new AxisScroller(axes, speed);
 }
 
 Scroller*
-ScrollerFactory::inverted_scroller (xmlNodePtr cur)
+ScrollerFactory::inverted_scroller (FileReader reader)
 {
   bool invert_x;
-  if (!XMLhelper::get_prop(cur, "invert-x", invert_x))
+  if (!reader.read_bool("invert-x", invert_x))
     PingusError::raise("InvertedScroller without invert X parameter");
 
   bool invert_y;
-  if (!XMLhelper::get_prop(cur, "invert-y", invert_y))
+  if (!reader.read_bool("invert-y", invert_y))
     PingusError::raise("InvertedScroller without invert Y parameter");
 
   Scroller* scroller;
-  cur = XMLhelper::skip_blank(cur->children);
-  scroller = create(cur);
+  scroller = create(reader);
 
   return new InvertedScroller(scroller, invert_x, invert_y);
 }
 
 Scroller*
-ScrollerFactory::joystick_scroller (xmlNodePtr cur)
+ScrollerFactory::joystick_scroller (FileReader reader)
 {
   int id;
-  if (!XMLhelper::get_prop(cur, "id", id))
+  if (!reader.read_int("id", id))
     PingusError::raise("JoystickScroller without id parameter");
 
   float speed;
-  if (!XMLhelper::get_prop(cur, "speed", speed))
+  if (!reader.read_float("speed", speed))
     PingusError::raise("JoystickScroller without speed parameter");
 
   return new JoystickScroller(id, speed);
 }
 
 Scroller*
-ScrollerFactory::mouse_scroller (xmlNodePtr cur)
+ScrollerFactory::mouse_scroller (FileReader reader)
 {
   int id = 0;
-  XMLhelper::get_prop(cur, "id", id);
-
+  reader.read_int("id", id);
   return new MouseScroller(id);
 }
 
 Scroller*
-ScrollerFactory::multiple_scroller (xmlNodePtr cur)
+ScrollerFactory::multiple_scroller (FileReader reader)
 {
   std::vector<Scroller*> scrollers;
 
-  while (cur)
+  const std::vector<FileReader>& sections = reader.get_sections();
+  for(std::vector<FileReader>::const_iterator i = sections.begin();
+      i != sections.end(); ++i)
     {
-      if (xmlIsBlankNode(cur))
-        cur = cur->next;
-
-      scrollers.push_back(create(cur));
-      cur = cur->next;
+      scrollers.push_back(create(*i));
     }
 
   return new MultipleScroller(scrollers);
 }
 
 Scroller*
-ScrollerFactory::pointer_scroller (xmlNodePtr cur)
+ScrollerFactory::pointer_scroller (FileReader reader)
 {
   Pointer* pointer;
   Button*  button;
+  
+  const std::vector<FileReader>& sections = reader.get_sections();
+  
+  if (sections.size() != 2)
+    PingusError::raise("ScrollerFactory isn't <pointer><button>");
 
-  pointer = PointerFactory::create(cur);
-
-  cur = XMLhelper::skip_blank(cur->next);
-  button = ButtonFactory::create(cur);
+  pointer = PointerFactory::create(sections[0]);
+  button  = ButtonFactory::create(sections[1]);
 
   return new PointerScroller(pointer, button);
 }

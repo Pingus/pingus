@@ -22,7 +22,6 @@
 #include <assert.h>
 #include <ClanLib/core.h>
 #include "system.hxx"
-#include "xml_helper.hxx"
 #include "pingus_error.hxx"
 #include "xml_file_reader.hxx"
 #include "savegame_manager.hxx"

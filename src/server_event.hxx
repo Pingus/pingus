@@ -21,7 +21,6 @@
 #define HEADER_PINGUS_SERVER_EVENT_HXX
 
 #include <iosfwd>
-#include "xml_helper.hxx"
 #include "file_reader.hxx"
 #include "pingu_enums.hxx"
 

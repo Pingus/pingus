@@ -25,7 +25,7 @@
 #include <string>
 #include <vector>
 #include <ClanLib/signals.h>
-#include "../libxmlfwd.hxx"
+#include "../file_reader.hxx"
 
 #include "event.hxx"
 
@@ -75,7 +75,7 @@ private:
 
   void on_button_down(ButtonName name);
   void on_button_up(ButtonName name);
-  void create_action_buttons (xmlNodePtr cur);
+  void create_action_buttons (FileReader reader);
 
   Controller (const Controller&);
   Controller& operator= (const Controller&);

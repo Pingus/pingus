@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_INPUT_BUTTON_FACTORY_HXX
 #define HEADER_PINGUS_INPUT_BUTTON_FACTORY_HXX
 
-#include "../libxmlfwd.hxx"
+#include "../file_reader.hxx"
 
 namespace Pingus {
 namespace Input {
@@ -30,15 +30,15 @@ class Button;
 class ButtonFactory
 {
 private:
-  static Button* double_button   (xmlNodePtr cur);
-  static Button* joystick_button (xmlNodePtr cur);
-  static Button* key_button      (xmlNodePtr cur);
-  static Button* mouse_button    (xmlNodePtr cur);
-  static Button* multiple_button (xmlNodePtr cur);
-  static Button* triple_button   (xmlNodePtr cur);
+  static Button* double_button   (FileReader reader);
+  static Button* joystick_button (FileReader reader);
+  static Button* key_button      (FileReader reader);
+  static Button* mouse_button    (FileReader reader);
+  static Button* multiple_button (FileReader reader);
+  static Button* triple_button   (FileReader reader);
 
 public:
-  static Button* create (xmlNodePtr cur);
+  static Button* create (FileReader reader);
 
 private:
   ButtonFactory ();

@@ -20,7 +20,7 @@
 #include <iostream>
 #include <ClanLib/Display/keyboard.h>
 #include <ClanLib/Display/input_device.h>
-#include "../xml_helper.hxx"
+#include "../file_reader.hxx"
 #include "../pingus_error.hxx"
 #include "button_factory.hxx"
 #include "buttons/double_button.hxx"
@@ -35,107 +35,103 @@ namespace Input {
 
 using namespace Buttons;
 
-Button* ButtonFactory::create (xmlNodePtr cur)
+Button* ButtonFactory::create (FileReader reader)
 {
-  if (!cur)
-    PingusError::raise("ButtonFactory called without an element");
+  if (reader.get_name() == "double-button")
+    return double_button(reader);
 
-  if (XMLhelper::equal_str(cur->name, "double-button"))
-    return double_button(XMLhelper::skip_blank(cur->children));
+  else if (reader.get_name() == "joystick-button")
+    return joystick_button(reader);
 
-  else if (XMLhelper::equal_str(cur->name, "joystick-button"))
-    return joystick_button(cur);
+  else if (reader.get_name() == "key-button")
+    return key_button(reader);
 
-  else if (XMLhelper::equal_str(cur->name, "key-button"))
-    return key_button(cur);
+  else if (reader.get_name() == "mouse-button")
+    return mouse_button(reader);
 
-  else if (XMLhelper::equal_str(cur->name, "mouse-button"))
-    return mouse_button(cur);
+  else if (reader.get_name() == "multiple-button")
+    return multiple_button(reader);
 
-  else if (XMLhelper::equal_str(cur->name, "multiple-button"))
-    return multiple_button(cur->children);
-
-  else if (XMLhelper::equal_str(cur->name, "triple-button"))
-    return triple_button(XMLhelper::skip_blank(cur->children));
+  else if (reader.get_name() == "triple-button")
+    return triple_button(reader);
 
   else
-    PingusError::raise(std::string("Unknown button type: ") + ((cur->name) ? reinterpret_cast<const char*>(cur->name) : ""));
+    PingusError::raise(std::string("Unknown button type: ") + reader.get_name());
 
   return 0; // never reached
 }
 
-Button* ButtonFactory::double_button (xmlNodePtr cur)
+Button* ButtonFactory::double_button (FileReader reader)
 {
+  const std::vector<FileReader>& sections = reader.get_sections();
+  
+  if (sections.size() != 2)
+    PingusError::raise("DoubleButton isn't <angle><button><button>");
+
   Button *button1, *button2;
 
-  button1 = create(cur);
-
-  cur = XMLhelper::skip_blank(cur->next);
-  button2 = create(cur);
+  button1 = create(sections[0]);
+  button2 = create(sections[1]);
 
   return new DoubleButton(button1, button2);
 }
 
-Button* ButtonFactory::joystick_button (xmlNodePtr cur)
+Button* ButtonFactory::joystick_button (FileReader reader)
 {
   int id;
-  if (!XMLhelper::get_prop(cur, "id", id))
+  if (!reader.read_int("id", id))
     PingusError::raise("JoystickButton without id parameter");
 
   int button;
-  if (!XMLhelper::get_prop(cur, "button", button))
+  if (!reader.read_int("button", button))
     PingusError::raise("JoystickButton without button parameter");
 
   return new JoystickButton(id, button);
 }
 
-Button* ButtonFactory::key_button (xmlNodePtr cur)
+Button* ButtonFactory::key_button (FileReader reader)
 {
   std::string key;
-  if (!XMLhelper::get_prop(cur, "key", key))
+  if (!reader.read_string("key", key))
     PingusError::raise("KeyButton without key parameter");
 
   return new KeyButton(CL_Keyboard::get_device().string_to_keyid(key));
 }
 
-Button* ButtonFactory::mouse_button (xmlNodePtr cur)
+Button* ButtonFactory::mouse_button (FileReader reader)
 {
   int button;
-  if (!XMLhelper::get_prop(cur, "button", button))
+  if (!reader.read_int("button", button))
     PingusError::raise("MouseButton without button parameter");
 
   return new MouseButton(button);
 }
 
-Button* ButtonFactory::multiple_button (xmlNodePtr cur)
+Button* ButtonFactory::multiple_button (FileReader reader)
 {
   std::vector<Button*> buttons;
 
-  while (cur)
-    {
-      if (xmlIsBlankNode(cur)) {
-	cur = cur->next;
-	continue;
-      }
-
-      buttons.push_back(create(cur));
-      cur = cur->next;
-    }
+  const std::vector<FileReader>& sections = reader.get_sections();
+  
+  for(std::vector<FileReader>::const_iterator i = sections.begin();
+      i != sections.end(); ++i)
+    buttons.push_back(create(*i));
 
   return new MultipleButton(buttons);
 }
 
-Button* ButtonFactory::triple_button (xmlNodePtr cur)
+Button* ButtonFactory::triple_button (FileReader reader)
 {
+  const std::vector<FileReader>& sections = reader.get_sections();
+  
+  if (sections.size() != 3)
+    PingusError::raise("DoubleButton isn't <angle><button><button>");
+
   Button *button1, *button2, *button3;
 
-  button1 = create(cur);
-
-  cur = XMLhelper::skip_blank(cur->next);
-  button2 = create(cur);
-
-  cur = XMLhelper::skip_blank(cur->next);
-  button3 = create(cur);
+  button1 = create(sections[0]);
+  button2 = create(sections[1]);
+  button3 = create(sections[2]);
 
   return new TripleButton(button1, button2, button3);
 }

@@ -20,7 +20,6 @@
 #include <iostream>
 #include "vector.hxx"
 #include "xml_file_writer.hxx"
-#include "xml_helper.hxx"
 
 namespace Pingus {
 
@@ -91,7 +90,8 @@ XMLFileWriter::write_bool   (const char* name, bool value)
 void
 XMLFileWriter::write_string (const char* name, const std::string& value)
 {
-  (*out) << "<" << name << ">" << XMLhelper::encode_entities(value) << "</" << name << ">\n";
+  // FIXME: we don't encode entities EVIL!!!!
+  (*out) << "<" << name << ">" << /*XMLhelper::encode_entities(*/value/*)*/ << "</" << name << ">\n";
 }
 
 void

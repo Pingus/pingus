@@ -163,7 +163,6 @@ hurry_up.hxx \
 input_event.hxx \
 layer_manager.cxx \
 layer_manager.hxx \
-libxmlfwd.hxx \
 loading.cxx \
 loading.hxx \
 main_menu.cxx \
@@ -278,12 +277,6 @@ worldobj.cxx \
 worldobj.hxx \
 worldobj_factory.cxx \
 worldobj_factory.hxx \
-xml_helper.cxx \
-xml_helper.hxx \
-xmlgz_reader.hxx \
-xmlgz_reader.cxx \
-xml_file_reader_old.hxx \
-xml_file_reader_old.cxx \
 xml_file_reader.hxx \
 xml_file_reader.cxx \
 xml_file_writer.hxx \

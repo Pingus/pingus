@@ -1,71 +1,103 @@
 <pingus-controller>
-  <controller-config>
-    <standard-pointer><mouse-pointer /></standard-pointer>
+  <standard-pointer><mouse-pointer /></standard-pointer>
 
-    <primary-button><mouse-button button="0"/></primary-button>
+  <primary-button>
+    <mouse-button> 
+      <button>0</button>
+    </mouse-button>
+  </primary-button>
 
-    <secondary-button>
-      <mouse-button button="2"/>
-    </secondary-button>
+  <secondary-button>
+    <mouse-button> 
+      <button>2</button>
+    </mouse-button>
+  </secondary-button>
 
-    <pause-button>
-      <key-button key="P"/>
-    </pause-button>
+  <pause-button>
+    <key-button>
+      <key>P</key>
+    </key-button>
+  </pause-button>
 
-    <fast-forward-button>
-      <multiple-button>
-        <key-button key="F"/>
-        <key-button key="SPACE"/>
-      </multiple-button>
-    </fast-forward-button>
+  <fast-forward-button>
+    <multiple-button>
+      <key-button>
+        <key>F</key>
+      </key-button>
+      <key-button>
+        <key>SPACE</key>
+      </key-button>
+    </multiple-button>
+  </fast-forward-button>
 
-    <armageddon-button>
-      <key-button key="A"/>
-    </armageddon-button>
+  <armageddon-button>
+    <key-button>
+      <key>A</key>
+    </key-button>
+  </armageddon-button>
 
-    <escape-button>
-      <key-button key="ESCAPE"/>
-    </escape-button>
+  <escape-button>
+    <key-button>
+      <key>ESCAPE</key>
+    </key-button>
+  </escape-button>
 
-    <scroller>
-      <axis-scroller speed="1000">
-        <button-axis angle="-90">
-          <key-button key="DOWN"/>
-          <key-button key="UP"/>
-        </button-axis>      
-        <button-axis angle="0">
-          <key-button key="RIGHT"/>
-          <key-button key="LEFT"/>
-        </button-axis>
-      </axis-scroller>
-    </scroller>
+  <scroller>
+    <axis-scroller>
+      <speed>1000</speed>
+      <button-axis>
+        <angle>-90</angle>
+        <key-button>
+          <key>DOWN</key>
+        </key-button>
+        <key-button>
+          <key>UP</key>
+        </key-button>
+      </button-axis>      
+      <button-axis>
+        <angle>0</angle>
+        <key-button>
+          <key>RIGHT</key>
+        </key-button>
+        <key-button>
+          <key>LEFT</key>
+        </key-button>
+      </button-axis>
+    </axis-scroller>
+  </scroller>
 
-    <action-buttons>
-      <action-button><key-button key="1"/></action-button>
-      <action-button><key-button key="2"/></action-button>
-      <action-button><key-button key="3"/></action-button>
-      <action-button><key-button key="4"/></action-button>
-      <action-button><key-button key="5"/></action-button>
-      <action-button><key-button key="6"/></action-button>
-      <action-button><key-button key="7"/></action-button>
-      <action-button><key-button key="8"/></action-button>
-      <action-button><key-button key="9"/></action-button>
-      <action-button><key-button key="0"/></action-button>
-    </action-buttons>
+  <action-buttons>
+    <action-button><key-button><key>1</key></key-button></action-button>
+    <action-button><key-button><key>2</key></key-button></action-button>
+    <action-button><key-button><key>3</key></key-button></action-button>
+    <action-button><key-button><key>4</key></key-button></action-button>
+    <action-button><key-button><key>5</key></key-button></action-button>
+    <action-button><key-button><key>6</key></key-button></action-button>
+    <action-button><key-button><key>7</key></key-button></action-button>
+    <action-button><key-button><key>8</key></key-button></action-button>
+    <action-button><key-button><key>9</key></key-button></action-button>
+    <action-button><key-button><key>0</key></key-button></action-button>
+  </action-buttons>
 
-    <action-up>
-      <multiple-button>
-        <key-button key="PAGEUP"/>
-        <mouse-button button="5"/>
-      </multiple-button>
-    </action-up>
+  <action-up>
+    <multiple-button>
+      <key-button>
+        <key>PAGEUP</key>
+      </key-button>
+      <mouse-button>
+        <button>5</button>
+      </mouse-button>
+    </multiple-button>
+  </action-up>
 
-    <action-down>
-      <multiple-button>
-        <key-button key="PAGEDOWN"/>
-        <mouse-button button="4"/>
-      </multiple-button>
-    </action-down>
-
-  </controller-config>
+  <action-down>
+    <multiple-button>
+      <key-button>
+        <key>PAGEDOWN</key>
+      </key-button>
+      <mouse-button>
+        <button>4</button>
+      </mouse-button>
+    </multiple-button>
+  </action-down>
 </pingus-controller>

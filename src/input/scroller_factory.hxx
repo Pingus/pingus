@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_INPUT_SCROLLER_FACTORY_HXX
 #define HEADER_PINGUS_INPUT_SCROLLER_FACTORY_HXX
 
-#include "../libxmlfwd.hxx"
+#include "../file_reader.hxx"
 
 namespace Pingus {
 namespace Input {
@@ -30,15 +30,15 @@ class Scroller;
 class ScrollerFactory
 {
 private:
-  static Scroller* axis_scroller     (xmlNodePtr cur);
-  static Scroller* inverted_scroller (xmlNodePtr cur);
-  static Scroller* joystick_scroller (xmlNodePtr cur);
-  static Scroller* mouse_scroller    (xmlNodePtr cur);
-  static Scroller* multiple_scroller (xmlNodePtr cur);
-  static Scroller* pointer_scroller  (xmlNodePtr cur);
+  static Scroller* axis_scroller     (FileReader reader);
+  static Scroller* inverted_scroller (FileReader reader);
+  static Scroller* joystick_scroller (FileReader reader);
+  static Scroller* mouse_scroller    (FileReader reader);
+  static Scroller* multiple_scroller (FileReader reader);
+  static Scroller* pointer_scroller  (FileReader reader);
 
 public:
-  static Scroller* create (xmlNodePtr cur);
+  static Scroller* create (FileReader reader);
 
 private:
   ScrollerFactory ();

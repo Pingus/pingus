@@ -29,7 +29,6 @@
 #include "../resource.hxx"
 #include "../globals.hxx"
 #include "../sound/sound.hxx"
-#include "../xml_helper.hxx"
 #include "../pingus_error.hxx"
 #include "../gettext.h"
 #include "pingus.hxx"

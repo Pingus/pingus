@@ -18,23 +18,18 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "../debug.hxx"
-#include "../xml_helper.hxx"
 #include "../pingus_error.hxx"
 
-/*#include "axis_event.hxx"
-  #include "axis_factory.hxx"
-  #include "button_factory.hxx"
-  #include "pointer_event.hxx"
-*/
+#include <ClanLib/core.h>
 #include "controller.hxx"
 #include "axes/dummy_axis.hxx"
 #include "buttons/dummy_button.hxx"
 #include "pointers/dummy_pointer.hxx"
 #include "scrollers/dummy_scroller.hxx"
 #include "pointer_factory.hxx"
+#include "../xml_file_reader.hxx"
 #include "scroller_factory.hxx"
 #include "button_factory.hxx"
-//#include "scroll_event.hxx"
 
 namespace Pingus {
 namespace Input {
@@ -52,66 +47,58 @@ Controller::Controller (const std::string& configfile)
     std_pointer_x(0),
     std_pointer_y(0)
 {
-  xmlDocPtr doc = xmlParseFile(configfile.c_str());
+  CL_InputSourceProvider_File provider(".");
+  CL_DomDocument doc(provider.open_source(configfile), true);
 
-  if (!doc)
-    PingusError::raise("Controller: config file <" + configfile + "> not found");
+  XMLFileReader reader(doc.get_document_element());
 
-  xmlNodePtr cur = doc->ROOT;
-
-  if (!cur || !XMLhelper::equal_str(cur->name, "pingus-controller"))
-    PingusError::raise("Controller: invalid config file <" + configfile + ">");
-  cur = XMLhelper::skip_blank(cur->children);
-
-  if (!cur || !XMLhelper::equal_str(cur->name, "controller-config"))
-    PingusError::raise("Controller: invalid config file <" + configfile + ">");
-  cur = XMLhelper::skip_blank(cur->children);
-
-  while (cur)
+  if (reader.get_name() != "pingus-controller")
     {
-      if (xmlIsBlankNode(cur)) // explicit check cause we need the continue to check for cur again
+      PingusError::raise("Controller: invalid config file <" + configfile + ">");
+    }
+  else
+    {
+      const std::vector<FileReader>& sections = reader.get_sections();
+      for(std::vector<FileReader>::const_iterator i = sections.begin();
+          i != sections.end(); ++i)
         {
-          cur = cur->next;
-          continue;
+          if (i->get_name() ==  "standard-pointer")
+            standard_pointer = PointerFactory::create(i->get_sections()[0]);
+          
+          else if (i->get_name() == "scroller")
+            scroller = ScrollerFactory::create(i->get_sections()[0]);
+
+          else if (i->get_name() == "primary-button")
+            buttons[primary] = ButtonFactory::create(i->get_sections()[0]);
+
+          else if (i->get_name() == "secondary-button")
+            buttons[secondary] = ButtonFactory::create(i->get_sections()[0]);
+
+          else if (i->get_name() == "pause-button")
+            buttons[pause] = ButtonFactory::create(i->get_sections()[0]);
+
+          else if (i->get_name() == "fast-forward-button")
+            buttons[fast_forward] = ButtonFactory::create(i->get_sections()[0]);
+
+          else if (i->get_name() == "armageddon-button")
+            buttons[armageddon] = ButtonFactory::create(i->get_sections()[0]);
+
+          else if (i->get_name() == "escape-button")
+            buttons[escape] = ButtonFactory::create(i->get_sections()[0]);
+
+          else if (i->get_name() == "action-buttons")
+            create_action_buttons(*i);
+
+          else if (i->get_name() == "action-up")
+            buttons[action_up] = ButtonFactory::create(i->get_sections()[0]);
+
+          else if (i->get_name() == "action-down")
+            buttons[action_down] = ButtonFactory::create(i->get_sections()[0]);
+
+          else
+            PingusError::raise(std::string("Unkown Element in Controller Config: ") 
+                               + i->get_name());
         }
-
-      else if (XMLhelper::equal_str(cur->name, "standard-pointer"))
-        standard_pointer = PointerFactory::create(XMLhelper::skip_blank(cur->children));
-
-      else if (XMLhelper::equal_str(cur->name, "scroller"))
-        scroller = ScrollerFactory::create(XMLhelper::skip_blank(cur->children));
-
-      else if (XMLhelper::equal_str(cur->name, "primary-button"))
-        buttons[primary] = ButtonFactory::create(XMLhelper::skip_blank(cur->children));
-
-      else if (XMLhelper::equal_str(cur->name, "secondary-button"))
-        buttons[secondary] = ButtonFactory::create(XMLhelper::skip_blank(cur->children));
-
-      else if (XMLhelper::equal_str(cur->name, "pause-button"))
-        buttons[pause] = ButtonFactory::create(XMLhelper::skip_blank(cur->children));
-
-      else if (XMLhelper::equal_str(cur->name, "fast-forward-button"))
-        buttons[fast_forward] = ButtonFactory::create(XMLhelper::skip_blank(cur->children));
-
-      else if (XMLhelper::equal_str(cur->name, "armageddon-button"))
-        buttons[armageddon] = ButtonFactory::create(XMLhelper::skip_blank(cur->children));
-
-      else if (XMLhelper::equal_str(cur->name, "escape-button"))
-        buttons[escape] = ButtonFactory::create(XMLhelper::skip_blank(cur->children));
-
-      else if (XMLhelper::equal_str(cur->name, "action-buttons"))
-        create_action_buttons(XMLhelper::skip_blank(cur->children));
-
-      else if (XMLhelper::equal_str(cur->name, "action-up"))
-        buttons[action_up] = ButtonFactory::create(XMLhelper::skip_blank(cur->children));
-
-      else if (XMLhelper::equal_str(cur->name, "action-down"))
-        buttons[action_down] = ButtonFactory::create(XMLhelper::skip_blank(cur->children));
-
-      else
-        PingusError::raise(std::string("Unkown Element in Controller Config: ") + ((cur->name) ? reinterpret_cast<const char*>(cur->name) : ""));
-
-      cur = cur->next;
     }
 
   if (!standard_pointer)
@@ -196,25 +183,21 @@ Controller::~Controller ()
 }
 
 void
-Controller::create_action_buttons (xmlNodePtr cur)
+Controller::create_action_buttons (FileReader reader)
 {
   int count = 0;
-
-  while (cur)
+  
+  const std::vector<FileReader>& sections = reader.get_sections();
+  for(std::vector<FileReader>::const_iterator i = sections.begin();
+      i != sections.end(); ++i)
     {
-      if (xmlIsBlankNode(cur))
-        {
-          cur = cur->next;
-          continue;
-        }
-
-      if (XMLhelper::equal_str(cur->name, "action-button"))
-        buttons[static_cast<ButtonName>(action_1 + count)] = ButtonFactory::create(XMLhelper::skip_blank(cur->children));
+      if (i->get_name() == "action-button")
+        buttons[static_cast<ButtonName>(action_1 + count)] 
+          = ButtonFactory::create(i->get_sections()[0]);
       else
-        PingusError::raise(std::string("Wrong Element in Controller Config (action-buttons): ") + reinterpret_cast<const char*>(cur->name));
-
-      cur = cur->next;
-      count++;
+        PingusError::raise(std::string("Wrong Element in Controller Config (action-buttons): ") 
+                           + i->get_name());
+      count += 1;
     }
 }
 

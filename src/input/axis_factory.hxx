@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_INPUT_AXIS_FACTORY_HXX
 #define HEADER_PINGUS_INPUT_AXIS_FACTORY_HXX
 
-#include "../libxmlfwd.hxx"
+#include "../file_reader.hxx"
 
 namespace Pingus {
 namespace Input {
@@ -30,13 +30,13 @@ class Axis;
 class AxisFactory
 {
 private:
-  static Axis* button_axis   (xmlNodePtr cur);
-  static Axis* inverted_axis (xmlNodePtr cur);
-  static Axis* joystick_axis (xmlNodePtr cur);
-  static Axis* multiple_axis (xmlNodePtr cur);
+  static Axis* button_axis   (FileReader reader);
+  static Axis* inverted_axis (FileReader reader);
+  static Axis* joystick_axis (FileReader reader);
+  static Axis* multiple_axis (FileReader reader);
 
 public:
-  static Axis* create (xmlNodePtr cur);
+  static Axis* create (FileReader reader);
 
 private:
   AxisFactory ();

@@ -22,9 +22,7 @@
 
 #include <map>
 #include <string>
-
-#include "xml_file_reader_old.hxx"
-#include "libxmlfwd.hxx"
+#include "file_reader.hxx"
 
 namespace Pingus {
 

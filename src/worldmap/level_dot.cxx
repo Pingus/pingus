@@ -28,7 +28,6 @@
 #include "../fonts.hxx"
 #include "../display/drawing_context.hxx"
 #include "../gui/screen_manager.hxx"
-#include "../xml_helper.hxx"
 #include "../resource.hxx"
 #include "../path_manager.hxx"
 #include "../start_screen.hxx"
