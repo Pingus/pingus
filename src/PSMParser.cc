@@ -1,4 +1,4 @@
-//  $Id: PSMParser.cc,v 1.11 2000/06/26 06:45:59 grumbel Exp $
+//  $Id: PSMParser.cc,v 1.12 2000/06/27 16:05:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -213,7 +213,7 @@ PSMParser::get_resdesc(void)
     
     if (c == ')') {
       jump_spaces();
-      return ResDescriptor(temp.res_name, "global.dat");      
+      return ResDescriptor(temp.res_name, "global");
     } else { // c == ':'
       while ((c = get_atom()) != ')') {
 	temp.datafile += c;

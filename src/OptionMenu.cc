@@ -1,4 +1,4 @@
-//  $Id: OptionMenu.cc,v 1.19 2000/06/26 15:32:26 grumbel Exp $
+//  $Id: OptionMenu.cc,v 1.20 2000/06/27 16:05:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,7 +32,7 @@ OptionMenu   option_menu;
 
 OptionEntry::OptionEntry(std::string s, bool* v, int x, int y)
 {
-  font = CL_Font::load("Fonts/smallfont_h",  PingusResource::get("fonts.dat"));
+  font = PingusResource::load_font("Fonts/smallfont_h", "fonts");
   str = s;
   value_bool = v;
   value_int = 0;
@@ -43,7 +43,7 @@ OptionEntry::OptionEntry(std::string s, bool* v, int x, int y)
 
 OptionEntry::OptionEntry(std::string s, std::string* v, int x, int y)
 {
-  font = CL_Font::load("Fonts/smallfont_h",  PingusResource::get("fonts.dat"));
+  font = PingusResource::load_font("Fonts/smallfont_h", "fonts");
   str = s;
   value_str = v;
   value_int = 0;
@@ -54,7 +54,7 @@ OptionEntry::OptionEntry(std::string s, std::string* v, int x, int y)
 
 OptionEntry::OptionEntry(std::string s, int* v, int x, int y)
 {
-  font = CL_Font::load("Fonts/smallfont_h",  PingusResource::get("fonts.dat"));
+  font = PingusResource::load_font("Fonts/smallfont_h", "fonts");
   str = s;
   value_str = 0;
   value_int = v;
@@ -300,7 +300,8 @@ OptionMenu::display()
   CL_Input::chain_button_press.push_back(event);
   CL_Input::chain_button_release.push_back(event);
 
-  Display::set_cursor(CL_MouseCursorProvider::load("Cursors/cursor", PingusResource::get("game.dat")));
+  Display::set_cursor(CL_MouseCursorProvider::load("Cursors/cursor",
+						   PingusResource::get("game.dat")));
   Display::show_cursor();
 
   draw();

@@ -1,4 +1,4 @@
-//  $Id: Hotspot.cc,v 1.4 2000/06/25 20:22:18 grumbel Exp $
+//  $Id: Hotspot.cc,v 1.5 2000/06/27 16:05:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,8 +36,7 @@ Hotspot::Hotspot(hotspot_data spot)
   para  = spot.para;
   speed = spot.speed;
 
-  surface = CL_Surface::load(spot.desc.res_name.c_str(), 
-			     PingusResource::get(spot.desc.datafile));
+  surface = PingusResource::load_surface(spot.desc);
   
   if (speed != -1)
     {

@@ -1,4 +1,4 @@
-//  $Id: bridger.cc,v 1.18 2000/06/25 20:22:18 grumbel Exp $
+//  $Id: bridger.cc,v 1.19 2000/06/27 16:05:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -92,21 +92,27 @@ Bridger::let_move()
   
   if (do_steps == 8)
     {
+      if (bricks > 0)
+	{
 	  if (way_is_free())
 	    {
 	      place_a_brick();
 	      walk_one_step_up();
-	      if (!(bricks > 0))
-		{
-		  // Waiting some seconds after we are out of bricks 
-		  pingu->set_action(pingu->action_holder->get_uaction("waiter"));
-		}
 	    }
 	  else // We reached a wall...
 	    {
 	      is_finished = true;
 	    }
+	}
+      else
+	{
+	  std::cout << "bridger finisted" << std::endl;
+	  // Waiting some seconds after we are out of bricks 
+	  pingu->set_action(pingu->action_holder->get_uaction("waiter"));
+	}
     }
+
+  std::cout << "bricks: " << bricks << std::endl;
 }
 
 bool

@@ -1,4 +1,4 @@
-//  $Id: PLFObj.cc,v 1.18 2000/06/25 20:22:18 grumbel Exp $
+//  $Id: PLFObj.cc,v 1.19 2000/06/27 16:05:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -241,13 +241,13 @@ TrapObj::TrapObj(trap_data data)
   frame = 0;
 
   if (name == "guillotine") {
-    surf = CL_Surface::load("Traps/guillotineidle", PingusResource::get("traps.dat"));
+    surf = PingusResource::load_surface("Traps/guillotineidle", "traps");
   } else if (name == "fake_exit") {
-    surf = CL_Surface::load("Traps/fake_exit", PingusResource::get("traps.dat"));
+    surf = PingusResource::load_surface("Traps/fake_exit", "traps.dat");
   } else if (name == "laser_exit") {
     frame = 5;
     z_pos = -100;
-    surf = CL_Surface::load("Traps/laser_exit", PingusResource::get("traps.dat"));
+    surf = PingusResource::load_surface("Traps/laser_exit", "traps.dat");
   } else if (name == "spike") {
     frame = 5;
     surf = PingusResource::load_surface("Traps/spike", "traps");

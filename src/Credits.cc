@@ -1,4 +1,4 @@
-//  $Id: Credits.cc,v 1.6 2000/06/12 14:42:10 grumbel Exp $
+//  $Id: Credits.cc,v 1.7 2000/06/27 16:05:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,9 +23,9 @@
 
 Credits::Credits()
 {  
-  surface = CL_Surface::load("Game/pingubw", PingusResource::get("game.dat"));
-  font = CL_Font::load("Fonts/pingus", PingusResource::get("fonts.dat"));
-  font_small = CL_Font::load("Fonts/pingus_small", PingusResource::get("fonts.dat"));
+  surface = PingusResource::load_surface("Game/pingubw", "game");
+  font = PingusResource::load_font("Fonts/pingus","fonts");
+  font_small = PingusResource::load_font("Fonts/pingus_small","fonts");
 
   // The credits vector holds the strings to display. The first
   // character of each string is a special character, which indicates

@@ -1,4 +1,4 @@
-//  $Id: FileSelector.cc,v 1.3 2000/06/12 14:42:10 grumbel Exp $
+//  $Id: FileSelector.cc,v 1.4 2000/06/27 16:05:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -85,12 +85,12 @@ FileSelector::FileSelector()
 #endif
   std::cout << "File npos: " << file_npos << std::endl;
   if (verbose > 1) std::cout << "Construction FileSelector" << std::endl;
-  font_h = CL_Res_Font::load("Fonts/smallfont", *PingusResource::get("fonts.dat"));
-  font   = CL_Res_Font::load("Fonts/smallfont_h",*PingusResource::get("fonts.dat"));  
-  up     = CL_Res_Surface::load("Buttons/up", *PingusResource::get("global.dat"));
-  down   = CL_Res_Surface::load("Buttons/down", *PingusResource::get("global.dat"));
-  cursor_sur = CL_Res_Surface::load("Cursors/cursor", *PingusResource::get("game.dat"));
-  bg = CL_Res_Surface::load("Textures/stone", *PingusResource::get("global.dat"));
+  font_h = CL_Res_Font::load("Fonts/smallfont", *fonts");
+  font   = CL_Res_Font::load("Fonts/smallfont_h",*fonts");  
+  up     = CL_Res_Surface::load("Buttons/up", *global");
+  down   = CL_Res_Surface::load("Buttons/down", *global");
+  cursor_sur = CL_Res_Surface::load("Cursors/cursor", *game");
+  bg = CL_Res_Surface::load("Textures/stone", *global");
 
   file_index = 0;
   file_offset = 0;

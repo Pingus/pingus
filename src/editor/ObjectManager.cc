@@ -1,4 +1,4 @@
-//  $Id: ObjectManager.cc,v 1.19 2000/06/27 06:32:54 grumbel Exp $
+//  $Id: ObjectManager.cc,v 1.20 2000/06/27 16:05:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,7 +24,7 @@
 #include "ObjectManager.hh"
 
 #ifdef WIN32
-#define for if(0);else for
+#  define for if(0);else for
 #endif
 
 using namespace std;
@@ -54,7 +54,7 @@ ObjectManager::new_level ()
 
   if (!System::get_email().empty())
     {
-      author += "<" + System::get_email() + ">";
+      author += " <" + System::get_email() + ">";
     }
 
   start_x_pos = 0;
@@ -195,12 +195,12 @@ ObjectManager::save_level (string filename)
   // FIXME: we need some error checking
   
   plf_out << "/* This level was created with the PLE\n"
-	  << " * $Id: ObjectManager.cc,v 1.19 2000/06/27 06:32:54 grumbel Exp $\n"
+	  << " * $Id: ObjectManager.cc,v 1.20 2000/06/27 16:05:16 grumbel Exp $\n"
 	  << " */"
 	  << endl;
   
   plf_out << "global {\n"
-	  << "  author = " << author << ";\n"
+	  << "  author = \"" << author << "\";\n"
 	  << "  start_x_pos = " << start_x_pos << ";\n"
 	  << "  start_y_pos = " << start_y_pos << ";\n"
 	  << "  levelname = \"" << levelname << "\";\n" 

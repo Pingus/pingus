@@ -1,4 +1,4 @@
-//  $Id: Pingu.cc,v 1.25 2000/06/26 15:32:26 grumbel Exp $
+//  $Id: Pingu.cc,v 1.26 2000/06/27 16:05:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -188,6 +188,12 @@ Pingu::set_action(PinguAction* act)
     } 
   else 
     {
+      if (act->get_environment() == (PinguEnvironment)always)
+	{
+	  action = act;
+	  return 1;
+	}
+
       // if environment is bad return
       if (!(act->get_environment() & environment))
 	{ 

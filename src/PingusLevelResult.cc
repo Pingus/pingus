@@ -1,4 +1,4 @@
-//  $Id: PingusLevelResult.cc,v 1.15 2000/06/26 15:32:26 grumbel Exp $
+//  $Id: PingusLevelResult.cc,v 1.16 2000/06/27 16:05:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,9 +30,9 @@
 
 PingusLevelResult::PingusLevelResult(World* w)
 {
-  font = CL_Font::load("Fonts/pingus_small", PingusResource::get("fonts.dat"));
-  title = CL_Font::load("Fonts/pingus", PingusResource::get("fonts.dat"));
-  background = CL_Surface::load("Textures/stone", PingusResource::get("textures.dat"));
+  font = PingusResource::load_font("Fonts/pingus_small","fonts");
+  title = PingusResource::load_font("Fonts/pingus","fonts");
+  background = PingusResource::load_surface("Textures/stone", "textures");
   //result = r;
   world = w;
 }

@@ -1,4 +1,4 @@
-//  $Id: TimeDisplay.cc,v 1.3 2000/06/26 15:32:26 grumbel Exp $
+//  $Id: TimeDisplay.cc,v 1.4 2000/06/27 16:05:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,7 +26,7 @@
 
 TimeDisplay::TimeDisplay()
 {
-  font = CL_Font::load("Fonts/numbers", PingusResource::get("fonts.dat"));
+  font = PingusResource::load_font("Fonts/numbers","fonts");
 }
 
 void

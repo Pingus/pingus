@@ -1,4 +1,4 @@
-//   $Id: Pingus.cc,v 1.42 2000/06/26 15:32:26 grumbel Exp $
+//   $Id: Pingus.cc,v 1.43 2000/06/27 16:05:16 grumbel Exp $
 //    ___
 //   |  _\ A free Lemmings clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -498,26 +498,28 @@ PingusMain::init_pingus()
 
   fps_counter.init();
   console.init();
-
+  /*
   if (preload_data)
     {
-      load_resources("global.dat");
-      load_resources("game.dat");
-      load_resources("textures.dat");
-      load_resources("editor.dat");
-      load_resources("fonts.dat");
-      load_resources("menu.dat");
-      load_resources("pingus.dat");
-      load_resources("traps.dat");
+      load_resources("global";
+      load_resources("game";
+      load_resources("textures";
+      load_resources("editor";
+      load_resources("fonts";
+      load_resources("menu";
+      load_resources("pingus";
+      load_resources("traps";
     }
+  */
 }
 
 void
 PingusMain::load_resources(std::string filename)
 {
   // Loading all resources
+  /*
   {
-    CL_ResourceManager* res = PingusResource::get("global.dat");
+    CL_ResourceManager* res = global";
 
     loading_screen.draw_progress("..:: " + filename + " ::..",
 				 0.0);
@@ -525,7 +527,7 @@ PingusMain::load_resources(std::string filename)
     loading_screen.draw_progress("..:: " + filename + " ::..",
 				 1.0);
 
-    /*list<std::string>* liste = res->get_resources_of_type("surface");
+    list<std::string>* liste = res->get_resources_of_type("surface");
     list<std::string>::size_type count = 0;
     list<std::string>::size_type list_size = liste->size();
     
@@ -543,10 +545,10 @@ PingusMain::load_resources(std::string filename)
 	CL_System::keep_alive();
       }
     loading_screen.draw_progress("..:: " + filename + " ::..", 1.0);
-    */
   }
+    */
 }
-
+      
 // Get all filenames and directories
 void
 PingusMain::get_filenames()
@@ -584,19 +586,19 @@ PingusMain::get_filenames()
 
       // Correct the path name, if no slash is pressent
       // add_slash(pingus_datadir);
-  
-      if (System::exist("../data/data/global.dat")) 
+      
+      if (System::exist("../data/data/global.dat"))
 	{
 	  if (verbose > 1)
 	    std::cout << "Assuming that you haven't installed pingus, overriding current value." << std::endl;
-	
+	  
 	  pingus_datadir += ":../data/";
 	}
       else if (System::exist("./data/data/global.dat"))
 	{
 	  if (verbose > 1)
 	    std::cout << "Assuming that you are running the binary version" << std::endl;
-	
+	  
 	  pingus_datadir += ":./data/"; 
 	}
 

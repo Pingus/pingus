@@ -1,4 +1,4 @@
-//  $Id: PingusMessageBox.cc,v 1.4 2000/06/12 14:42:11 grumbel Exp $
+//  $Id: PingusMessageBox.cc,v 1.5 2000/06/27 16:05:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,7 +26,7 @@ PingusMessageBox::PingusMessageBox(std::string s)
 {
   str = s;
   std::cout << "Error: " << str << std::endl;
-  font = CL_Font::load("Fonts/smallfont", PingusResource::get("fonts.dat"));
+  font = PingusResource::load_font("Fonts/smallfont","fonts");
   draw();
 }
 

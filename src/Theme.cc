@@ -1,4 +1,4 @@
-//  $Id: Theme.cc,v 1.15 2000/06/26 15:32:26 grumbel Exp $
+//  $Id: Theme.cc,v 1.16 2000/06/27 16:05:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,8 +37,8 @@ Theme::Theme()
 
 Theme::Theme(std::string filename)
 {
-  title = CL_Font::load("Fonts/pingus", PingusResource::get("fonts.dat"));
-  font  = CL_Font::load("Fonts/pingus_small", PingusResource::get("fonts.dat"));
+  title = PingusResource::load_font("Fonts/pingus","fonts");
+  font  = PingusResource::load_font("Fonts/pingus_small","fonts");
   
   load(filename);
 }

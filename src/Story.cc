@@ -1,4 +1,4 @@
-//  $Id: Story.cc,v 1.3 2000/06/26 15:32:26 grumbel Exp $
+//  $Id: Story.cc,v 1.4 2000/06/27 16:05:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -50,7 +50,7 @@ Story::display()
 {
   CL_Surface* story;
 
-  story = CL_Surface::load("Story/story1", PingusResource::get("story.dat"));  
+  story = PingusResource::load_surface("Story/story1", "story");
 
   for(int y = 0; y < CL_Display::get_height(); y += background->get_height())
     for(int x = 0; x < CL_Display::get_width(); x += background->get_width())

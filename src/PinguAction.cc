@@ -1,4 +1,4 @@
-//  $Id: PinguAction.cc,v 1.5 2000/03/01 02:57:48 grumbel Exp $
+//  $Id: PinguAction.cc,v 1.6 2000/06/27 16:05:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,7 +26,7 @@ CL_ResourceManager* PinguAction::local_res_p;
 PinguAction::PinguAction()
 {
   is_finished = false;
-  font = CL_Font::load("Fonts/numbers", PingusResource::get("fonts.dat"));
+  font = PingusResource::load_font("Fonts/numbers","fonts");
   surface = 0;
   active = false;
   environment = (PinguEnvironment)land;

@@ -1,4 +1,4 @@
-//  $Id: ThemeSelector.cc,v 1.25 2000/06/26 15:32:26 grumbel Exp $
+//  $Id: ThemeSelector.cc,v 1.26 2000/06/27 16:05:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -55,7 +55,7 @@ ListBox::add_item(std::string l)
 ListItem::ListItem(std::string l)
 {
   label = l;
-  font = CL_Font::load("Fonts/smallfont_h", PingusResource::get("fonts.dat"));
+  font = PingusResource::load_font("Fonts/smallfont_h","fonts");
 }
 
 void
@@ -236,7 +236,8 @@ ThemeSelector::select()
   PingusSound::play_mod("../data/music/pingus-1.it");
 #endif
 
-  Display::set_cursor(CL_MouseCursorProvider::load("Cursors/cursor", PingusResource::get("game.dat")));
+  Display::set_cursor(CL_MouseCursorProvider::load("Cursors/cursor", 
+						   PingusResource::get("game.dat")));
   Display::show_cursor(true);
 
   finished = false;

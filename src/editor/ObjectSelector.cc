@@ -1,4 +1,4 @@
-//  $Id: ObjectSelector.cc,v 1.22 2000/06/27 06:32:54 grumbel Exp $
+//  $Id: ObjectSelector.cc,v 1.23 2000/06/27 16:05:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,7 @@
 
 #include "../globals.hh"
 #include "StringReader.hh"
+#include "../Display.hh"
 #include "../PingusResource.hh"
 #include "../Display.hh"
 #include "../Loading.hh"
@@ -56,13 +57,15 @@ ObjectSelector::get_trap()
 {
   vector<string> traps;
   vector<string>::iterator current_trap;
-  int j = 0;
+  //  int j = 0;
   trap_data trap;
   bool have_name = false;
   
   trap.x_pos = CL_Mouse::get_x() - x_offset;
   trap.y_pos = CL_Mouse::get_y() - y_offset;
   trap.z_pos = 0;
+
+  CL_Display::clear_display();
 
   font->print_left(20, 20, "1 - guillotine");
   font->print_left(20, 50, "2 - hammer");
@@ -71,7 +74,7 @@ ObjectSelector::get_trap()
   font->print_left(20,140, "5 - fake_exit");
   font->print_left(20,170, "6 - smasher");
   font->print_left(20,200, "7 - bumper");
-  CL_Display::flip_display();
+  Display::flip_display();
 
   current_trap = traps.begin();
 
@@ -332,9 +335,6 @@ ObjectSelector::get_exit()
   
   data.desc = ResDescriptor("resource:global.dat", str);
   
-  /*  surf = CL_Surface::load(desc.res_name.c_str(), 
-			      PingusResource::get(desc.filename));
-			      */
   return new ExitObj(data);
 }
 
@@ -445,6 +445,10 @@ ObjectSelector::read_string(string description, string def_str)
 /*
 
 $Log: ObjectSelector.cc,v $
+Revision 1.23  2000/06/27 16:05:16  grumbel
+Replaced all CL_*::load with PingusResource::load_*
+Tried to fix the bridger with not much success...
+
 Revision 1.22  2000/06/27 06:32:54  grumbel
 Added options for setting the username and email, removed some unused stuff
 

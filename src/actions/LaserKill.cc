@@ -1,4 +1,4 @@
-//  $Id: LaserKill.cc,v 1.3 2000/05/24 18:48:34 grumbel Exp $
+//  $Id: LaserKill.cc,v 1.4 2000/06/27 16:05:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,7 +39,7 @@ void
 LaserKill::init(void)
 {
   action_name = "LaserKill";
-  environment = (PinguEnvironment)land;
+  environment = (PinguEnvironment)always;
 
   if (!static_surface)
     static_surface = CL_Surface::load("Other/laser_kill", local_res());

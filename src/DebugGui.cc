@@ -1,4 +1,4 @@
-//  $Id: DebugGui.cc,v 1.4 2000/06/23 18:39:56 grumbel Exp $
+//  $Id: DebugGui.cc,v 1.5 2000/06/27 16:05:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,7 +24,7 @@
 
 DebugGui::DebugGui(void)
 {
-  font = CL_Font::load("Fonts/smallfont", PingusResource::get("fonts.dat"));
+  font = PingusResource::load_font("Fonts/smallfont","fonts");
   debug_active = false;
 }
 

@@ -1,4 +1,4 @@
-//  $Id: Entrance.cc,v 1.10 2000/06/19 20:10:38 grumbel Exp $
+//  $Id: Entrance.cc,v 1.11 2000/06/27 16:05:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -50,7 +50,7 @@ Entrance::Entrance(entrance_data data)
   z_pos = -10;
   direction = data.direction;
 
-  surface = 0;//CL_Surface::load("Entrances/entrance", PingusResource::get("global.dat"));
+  surface = 0;//CL_Surface::load("Entrances/entrance", global");
 }
 
 bool

@@ -1,4 +1,4 @@
-//  $Id: PinguInfo.cc,v 1.2 2000/02/09 21:43:40 grumbel Exp $
+//  $Id: PinguInfo.cc,v 1.3 2000/06/27 16:05:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,7 +25,7 @@
 
 PinguInfo::PinguInfo()
 {
-  font = CL_Font::load("Fonts/courier_small", PingusResource::get("fonts.dat"));
+  font = PingusResource::load_font("Fonts/courier_small","fonts");
   pingu = 0;
 }
 

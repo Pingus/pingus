@@ -1,4 +1,4 @@
-//  $Id: Splashed.cc,v 1.4 2000/05/24 18:48:35 grumbel Exp $
+//  $Id: Splashed.cc,v 1.5 2000/06/27 16:05:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,7 +36,7 @@ Splashed::allocate(void)
 void
 Splashed::init(void)
 {
-  environment = (PinguEnvironment)(land | sky);
+  environment = (PinguEnvironment)always;
   action_name = "splashed";
 
   if (!static_surface)

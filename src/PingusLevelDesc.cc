@@ -1,4 +1,4 @@
-//  $Id: PingusLevelDesc.cc,v 1.9 2000/06/12 14:42:11 grumbel Exp $
+//  $Id: PingusLevelDesc.cc,v 1.10 2000/06/27 16:05:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,9 +29,9 @@ PingusLevelDesc::PingusLevelDesc(PLF* arg_plf)
 {
   plf = arg_plf;
 
-  background = CL_Surface::load("Textures/stone", PingusResource::get("textures.dat"));
-  font       = CL_Font::load("Fonts/pingus_small", PingusResource::get("fonts.dat"));
-  title      = CL_Font::load("Fonts/pingus", PingusResource::get("fonts.dat"));
+  background = PingusResource::load_surface("Textures/stone", "textures");
+  font       = PingusResource::load_font("Fonts/pingus_small","fonts");
+  title      = PingusResource::load_font("Fonts/pingus","fonts");
 
   description.set_font(font);
   description.set_text(plf->get_description(), 350);
