@@ -1,4 +1,4 @@
-//  $Id: splashed.cxx,v 1.2 2002/06/13 14:25:12 torangan Exp $
+//  $Id: splashed.cxx,v 1.3 2002/08/22 02:20:12 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "../world.hxx"
 #include "../pingu.hxx"
 #include "../sound.hxx"
 #include "splashed.hxx"
@@ -44,7 +45,7 @@ Splashed::update(float delta)
   if (!particle_thrown)
     {
       particle_thrown = true;
-      PingusSound::play_sound("sounds/splat.wav");
+      pingu->get_world ()->play_wav("sounds/splash.wav", pingu->get_pos ());
     }
 
   if (sprite.finished ())
