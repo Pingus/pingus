@@ -1,4 +1,4 @@
-//  $Id: pingus.cxx,v 1.15 2002/10/14 10:19:31 grumbel Exp $
+//  $Id: pingus.cxx,v 1.16 2002/10/15 13:58:31 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -63,10 +63,10 @@ Pingus::update_walk (float delta)
 {
   float velocity = 50.0f;
 
-  //std::cout << "Updating Walk: " << edge_path_position << "/" << edge_path_length << std::endl;
+  std::cout << "Updating Walk: " << edge_path_position << "/" << edge_path_length << std::endl;
   // Update the edge_path_position
   edge_path_position += velocity * delta;
-
+  
   if (edge_path_position > edge_path_length) // target reached
     {
       if (node_path.empty ()) // final target reached
@@ -155,9 +155,9 @@ Pingus::calc_pos ()
         {
           float length = distance(*current, *next);
 
+          // The pingu is between current and next
           if (comp_length + length > edge_path_position) 
             {
-              // FIXME: this is incorrect, it causses speed miss match
               float perc = (edge_path_position - comp_length) // length to walk from current node
                 / length;
 
@@ -177,7 +177,10 @@ Pingus::calc_pos ()
 float
 Pingus::distance(const Vector& a, const Vector& b)
 {
-  return fabsf(sqrt((a.x * b.x) + (a.y * b.y)));
+  float x = b.x - a.x;
+  float y = b.y - a.y;
+  
+  return fabsf(sqrt((x * x) + (y * y)));
 }
 
 Vector
