@@ -1,4 +1,4 @@
-//  $Id: climber.cc,v 1.18 2001/12/15 00:56:48 cagri Exp $
+//  $Id: climber.cc,v 1.19 2002/04/03 09:05:32 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -69,9 +69,22 @@ Climber::update(float delta)
 	}
       else if (rel_getpixel(1, 1) == ColMap::NOTHING) 
 	{
-	  //  std::cout << "Climber failed, falling down" << std::endl;
-	  --pingu->pos.y;
-	  pingu->pos.x += pingu->direction;
+	  //  std::cout << "Climber failed, no more wall" << std::endl;
+
+          // If Pingu able to get to new position without head collision
+          if (!head_collision_on_walk(pingu->direction, 1))
+            {
+            // Get ready to walk
+  	  --pingu->pos.y;
+	    pingu->pos.x += pingu->direction;
+            }
+          else
+            {
+            // Get ready to fall
+            pingu->direction.change();
+            }
+
+          // Finish climbing.
 	  is_finished = true;
 	}
     }

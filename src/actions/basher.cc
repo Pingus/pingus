@@ -1,4 +1,4 @@
-//  $Id: basher.cc,v 1.26 2001/08/16 22:00:50 grumbel Exp $
+//  $Id: basher.cc,v 1.27 2002/04/03 09:05:32 grumbel Exp $
 //
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -26,6 +26,9 @@
 #include "basher.hh"
 
 using namespace std;
+
+// Initialise class static.
+const int Basher::bash_height = 4;
 
 Basher::Basher()
 {
@@ -107,11 +110,17 @@ Basher::have_something_to_dig()
 
   for(int i = 0; is_finished == false && i < 16; i++)
     {
-      if (rel_getpixel(i,0) & ColMap::WALL)
-	{
-	  if (pingus_debug_flags & PINGUS_DEBUG_ACTIONS)
-	    std::cout << "Basher: Found something to dig..." << std::endl;
-	  return true;
+      // Check that there is a high enough wall (i.e. not 1 pixel) to bash.
+      // Probably best to check from where Pingu can't automatically walk up
+      // up to head collision height.
+      for (int j = bash_height + 1; j <= 26; j++)
+        {
+          if (rel_getpixel(i,j) & ColMap::WALL)
+	    {
+	      if (pingus_debug_flags & PINGUS_DEBUG_ACTIONS)
+	        std::cout << "Basher: Found something to dig..." << std::endl;
+	      return true;
+	    }
 	}
     }
 

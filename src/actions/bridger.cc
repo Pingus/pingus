@@ -1,4 +1,4 @@
-//  $Id: bridger.cc,v 1.49 2002/02/10 22:14:06 grumbel Exp $
+//  $Id: bridger.cc,v 1.50 2002/04/03 09:05:32 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -108,10 +108,18 @@ Bridger::update_walk (float delta)
 {
   if (walk_sprite.finished ())
     {
-      mode = B_BUILDING;
-      block_build = false;
-      walk_sprite.reset ();
-      walk_one_step_up();
+      if (way_is_free())
+	 {
+           mode = B_BUILDING;
+           block_build = false;
+           walk_sprite.reset ();
+           walk_one_step_up();
+	 }
+      else // We reached a wall...
+	 {
+           // Let Walker sort out change of direction
+	   is_finished = true;
+	 }
     }
   else
     {
@@ -123,23 +131,15 @@ void
 Bridger::update_build (float delta)
 {
   build_sprite.update (delta);
-  
+
   if (build_sprite.get_frame () >= 7 && !block_build)
     {
       block_build = true;
 
       if (bricks > 0)
 	{
-	  if (way_is_free())
-	    {
-	      place_a_brick();
-	    }
-	  else // We reached a wall...
-	    {
-	      pingu->direction.change();
-	      is_finished = true;
-	    }
-      	}
+          place_a_brick();
+        }
       else // Out of bricks
 	{
 	  pingu->set_action("waiter");
@@ -158,7 +158,7 @@ Bridger::way_is_free()
 {
   bool ret_val;
   
-  if (rel_getpixel(2,2) == ColMap::NOTHING)
+  if (rel_getpixel(4,2) == ColMap::NOTHING)
     {
       ret_val = true;
     }
@@ -168,7 +168,7 @@ Bridger::way_is_free()
       return false;
     }
 
-  if (rel_getpixel(2, 26) == ColMap::NOTHING)
+  if (!head_collision_on_walk(4, 2))
     {
       ret_val = true;
     }
