@@ -1,4 +1,4 @@
-//  $Id: faller.cxx,v 1.40 2003/04/19 10:23:18 torangan Exp $
+//  $Id: faller.cxx,v 1.40.2.1 2004/03/27 14:18:40 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -164,7 +164,7 @@ Faller::is_tumbling () const
 bool
 Faller::change_allowed (ActionName new_action)
 {
-  return (new_action == Actions::Floater);
+  return new_action == Actions::Floater || new_action == Actions::Climber;
 }
 
 } // namespace Actions
