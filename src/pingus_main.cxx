@@ -1,11 +1,11 @@
 //   $Id: pingus_main.cxx,v 1.104 2004/04/01 15:18:05 torangan Exp $
 //    ___
-//   | _ \                         |            
-//   |   /_  _ _  ___  _   _  ___  |
-//   |  || || \ || _ || |_| ||_ -' |
-//   |__||_||_\_||_  ||_____||___| |
-//                _| |             |
-//               |___|             |
+//   | _ \                         |      ,--.   
+//   |   /_  _ _  ___  _   _  ___  |   ,-/ o  \
+//   |  || || \ || _ || |_| ||_ -' |   `-.    /
+//   |__||_||_\_||_  ||_____||___| |     /\   \
+//                _| |             |    |  |_| |
+//               |___|             |    o\/____\
 //
 //   Copyright (C) 1998 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -28,7 +28,6 @@
 #include <stdio.h>
 #include <signal.h>
 #include <locale.h>
-#include <getopt.h>
 
 #include <ClanLib/display.h>
 #include <ClanLib/sound.h>
@@ -180,10 +179,83 @@ PingusMain::check_args(int argc, char** argv)
 #ifdef WIN32
   cursor_enabled = true;
 #endif
-  int c = 0;
-  int option_index = 0;
-  optind = 0;
 
+  CL_CommandLine argp;
+  argp.add_usage("pingus [OPTIONS]... [FILES]...");
+  argp.add_doc("Pingus is a puzzle game where you need to guide a bunch of little penguins around the world.");
+    
+  argp.add_group(_("Options:"));
+  argp.add_option('g', "geometry", "{width}x{height}",  
+                  _("Set the resolution for pingus (default: 800x600)"));
+  argp.add_option('h', "help", "", 
+                  _("Displays this help"));
+  argp.add_option('n', "disable-intro", "", 
+                  _("Disable intro"));
+  argp.add_option('G', "use-opengl", "",
+                  _("Use OpenGL"));
+  argp.add_option('w', "window", "",
+                  _("Start in Window Mode"));
+  argp.add_option('f', "fullscreen", "",
+                  _("Start in Fullscreen"));
+  argp.add_option('d', "datadir", _("PATH"),
+                  _("Set the path to load the data files to 'path'"));
+  argp.add_option('l', "level",  _("FILE"), 
+                  _("Load a custom level from FILE"));
+  argp.add_option(358, "worldmap", _("FILE"),
+                  _("Load a custom worldmap from FILE"));
+  argp.add_option('v', "verbose", "", 
+                  _("Print some more messages to stdout, can be set multiple times to increase verbosity"));
+  argp.add_option('V', "version", "", 
+                  _("Prints version number and exit"));
+  argp.add_option(337, "disable-auto-scrolling", "",
+                  _("Disable automatic scrolling"));
+  argp.add_option(346, "enable-swcursor", "",
+                  _("Enable software cursor"));
+  argp.add_option(342, "no-cfg-file", "",
+                  _("Don't read ~/.pingus/config"));
+  argp.add_option(347, "config-file", "", _("FILE"), 
+                  _("Read config from FILE (default: ~/.pingus/config) reduce CPU usage, "
+                    "might speed up the game on slower machines"));
+  argp.add_option(360, "controller", "FILE",
+                  _("Uses the controller given in FILE"));
+
+  argp.add_group(_("Debugging and experimental stuff:"));
+  argp.add_option(334, "maintainer-mode",  "",  
+                  _("Enables some features, only interesting programmers"));
+  argp.add_option(352, "debug",  "OPTION", 
+                  _("Enable the output of debugging infos, possible"
+                    "OPTION's are tiles, gametime, actions, sound, resources, gui,"
+                    "input, pathmgr"));
+  argp.add_option(354, "min-frame-skip", "N",
+                  _("Skip at least N frames, larger values speed the game up"));
+  argp.add_option(355, "max-frame-skip", "N",
+                  _("Skip at most N frames"));
+  argp.add_option(357, "frame-skip",  "N",
+                  _("Set both min and max frameskip to N"));
+  argp.add_option('t', "speed", "SPEED",
+                  _("Set the game speed (0=fastest, >0=slower)"));
+  argp.add_option('b', "print-fps", "",
+                  _("Prints the fps to stdout"));
+  argp.add_option(344, "tile-size", "INT",
+                  _("Set the size of the map tiles (default: 32)"));
+  argp.add_option(332, "fast-mode", "",
+                  _("Disable some cpu intensive features"));
+  argp.add_option(353, "min-cpu-usage", "",
+                  _("Reduces the CPU usage by issuing sleep()"));
+
+  argp.add_group(_("Demo playing and recording:"));
+  argp.add_option('p', "play-demo", _("FILE"), 
+                  _("Plays a demo session from FILE"));
+  argp.add_option('r', "disable-demo-recording", "",
+                  _("Record demos for each played level"));
+
+  argp.add_group(_("Sound:"));
+  argp.add_option('s', "disable-sound", "", 
+                  _("Disable sound"));
+  argp.add_option('m', "disable-music", "", 
+                  _("Disable music"));
+
+#if 0 
   // FIXME: We need some clean up here
   struct option long_options[] =
     {
@@ -196,8 +268,8 @@ PingusMain::check_args(int argc, char** argv)
       {"speed",             required_argument, 0, 't'},
       {"datadir",           required_argument, 0, 'd'},
       {"level",             required_argument, 0, 'l'},
-      {"worldmap",          required_argument, 0, 158},
-      {"credits",           no_argument,       0, 159},
+      {"worldmap",          required_argument, 0, 358},
+      {"credits",           no_argument,       0, 359},
       {"help",              no_argument,       0, 'h'}, // add -? support
       {"version",           no_argument,       0, 'V'},
       {"verbose",           required_argument, 0, 'v'},
@@ -207,362 +279,304 @@ PingusMain::check_args(int argc, char** argv)
       {"quick-play",        no_argument,       0, 'q'},
       {"fullscreen",        no_argument,       0, 'f'},
       {"window",            no_argument,       0, 'w'},
-      {"disable-swcursor",  no_argument,       0, 145},
-      {"enable-swcursor",   no_argument,       0, 146},
-      {"disable-action-help",no_argument,      0, 156},
-      {"enable-action-help", no_argument,      0, 157},
-      {"enable-bg-manipulation", no_argument,  0, 148},
-      {"min-cpu-usage",     no_argument,       0, 153},
-      {"min-frame-skip",    required_argument, 0, 154},
-      {"max-frame-skip",    required_argument, 0, 155},
-      {"frame-skip",        required_argument, 0, 157},
-      {"cheat",             required_argument, 0, 156},
-      {"controller",        required_argument, 0, 160},
-      {"render-preview",    required_argument, 0, 161},
-      {"blitter-test",      no_argument,       0, 162},
+      {"disable-swcursor",  no_argument,       0, 345},
+      {"enable-swcursor",   no_argument,       0, 346},
+      {"disable-action-help",no_argument,      0, 356},
+      {"enable-action-help", no_argument,      0, 357},
+      {"enable-bg-manipulation", no_argument,  0, 348},
+      {"min-cpu-usage",     no_argument,       0, 353},
+      {"min-frame-skip",    required_argument, 0, 354},
+      {"max-frame-skip",    required_argument, 0, 355},
+      {"frame-skip",        required_argument, 0, 357},
+      {"cheat",             required_argument, 0, 356},
+      {"controller",        required_argument, 0, 360},
+      {"render-preview",    required_argument, 0, 361},
+      {"blitter-test",      no_argument,       0, 362},
       {"use-opengl",        no_argument,       0, 'G'},
 
       // FIXME: is the number stuff correct?
-      {"fast",            no_argument,       0, 132},
-      {"fast-mode",       no_argument,       0, 132},
-      {"disable-previews",no_argument,       0, 133},
-      {"maintainer-mode", no_argument,       0, 134},
-      {"disable-auto-scrolling",   no_argument,       0, 137},
+      {"fast",            no_argument,       0, 332},
+      {"fast-mode",       no_argument,       0, 332},
+      {"disable-previews",no_argument,       0, 333},
+      {"maintainer-mode", no_argument,       0, 334},
+      {"disable-auto-scrolling",   no_argument,       0, 337},
 
       //
-      {"no-cfg-file",    no_argument,       0, 142},
-      {"tile-size",      required_argument, 0, 144},
-      {"config-file",    required_argument, 0, 147},
-      {"debug",          required_argument, 0, 152},
+      {"no-cfg-file",    no_argument,       0, 342},
+      {"tile-size",      required_argument, 0, 344},
+      {"config-file",    required_argument, 0, 347},
+      {"debug",          required_argument, 0, 352},
       {0, 0, 0, 0}
     };
-
-  while(true) {
-    c = getopt_long(argc, argv, "r:p:smv:d:l:hVp:bxS:g:it:cqefFG", long_options, &option_index);
-
-    if (c == -1 || c == 1)
-      break;
-
-    switch(c) {
-
-    case 'c': // -c, --enable-cursor
-      cursor_enabled = true;
-      if (verbose) std::cout << "PingusMain:check_args: Cursor enabled" << std::endl;
-      break;
-
-    case 'b': // -b, --print-fps
-      print_fps = true;
-      if (verbose) std::cout << "PingusMain:check_args: Printing fps enabled" << std::endl;
-      break;
-
-    case 158: // --worldmap
-      worldmapfile = optarg;
-      break;
-
-    case 159: // --worldmap
-      show_credits = true;
-      break;
-
-    case 'l': // -l, --level
-      levelfile = optarg;
-      break;
-
-    case 't': // -t, --set-speed
-      game_speed = atoi(optarg);
-      break;
-
-    case 'G':
-      use_opengl = true;
-      break;
-
-    case 's': // -s, --disable-sound
-      sound_enabled = false;
-      break;
-    case 'g':
-      {
-        char c;
-        if (sscanf(optarg, "%d%c%d", &screen_width, &c, &screen_height) != 3 && c != 'x')
-          {
-            std::cout << "Resolution std::string is wrong, it should be like: \n"
-                      << "\"640x480\" or \"800x600\"" << std::endl;
-            exit(EXIT_FAILURE);
-          }
-        if (screen_width > 800 || screen_height > 600)
-          {
-            std::cout << _("Warning: Larger resolution than 800x600 will result in visual problems") << std::endl;
-          }
-      }
-      break;
-    case 'S':
-      std::cout << "not impl. XALA" << std::endl;
-      //pingus_soundfile = optarg;
-      //if (verbose)
-      //std::cout << "check_args: Sound File = " << pingus_soundfile << std::endl;
-      break;
-    case 'm': // -m, --disable-music
-      music_enabled = false;
-      break;
-    case 'd': // -d, --datadir
-      if (optarg)
-	{
-	  path_manager.add_path(optarg);
-
-	  if (verbose)
-	    std::cout << "check_args: Pingus Data Dir = "
-		      << optarg << std::endl;
-	}
-      else
-	{
-	  std::cout << "PingusMain: -d: optarg is (null)" << std::endl;
-	}
-      break;
-    case 'V':
-      std::cout << "Pingus Version " << VERSION
-#ifndef OFFICIAL_PINGUS_BUILD
-                << " (unofficial build)"
 #endif
-		<< std::endl;
-
-      std::cout << "\n"
-        "Copyright (C) 2003 Ingo Ruhnke <grumbel@gmx.de>\n"
-        "There is NO warranty.  You may redistribute this software\n"
-        "under the terms of the GNU General Public License.\n"
-        "For more information about these matters, see the files named COPYING." << std::endl;
-
-      exit(EXIT_SUCCESS);
-      break;
-    case 'r': // -r, --enabled-demo-recording
-      enable_demo_recording = false;
-      break;
-    case 'p': // -p, --play-demo
-      play_demo = true;
-      demo_file = optarg;
-      if (verbose)
-	std::cout << "Using demofile: " << demo_file << std::endl;
-      break;
-    case 'v':
-      sscanf(optarg, "%d", &verbose);
-      std::cout << "Pingus: Verbose level is " << verbose << std::endl;
-      break;
-
-    case 'f': // --fullscreen
-      fullscreen_enabled = true;
-      break;
-
-    case 'w': // --window
-      fullscreen_enabled = false;
-      break;
-
-      // Starting weird number options... no idea if this is correct.
-    case 132:
-      fast_mode = true;
-      break;
-    case 134: // --maintainer_mode
-      std::cout << "---------------------------------" << std::endl
-		<< "--- Maintainer Mode activated ---" << std::endl
-		<< "---------------------------------" << std::endl;
-      maintainer_mode = true;
-      break;
-
-    case 137:
-      auto_scrolling = false;
-      break;
-    case 142: // --no-cfg-file
-      // Nothing, since that is handled in quick_check_args()
-      break;
-
-    case 144:
-      sscanf(optarg, "%d", &tile_size);
-      break;
-
-    case 145:
-      swcursor_enabled = false;
-      break;
-
-    case 146:
-      swcursor_enabled = true;
-      break;
-
-    case 147:
-      config_file = optarg;
-      break;
-
-    case 152:
-      if (strcmp (optarg, "all") == 0)
-	{
-	  pingus_debug_flags |= PINGUS_DEBUG_ALL;
-	}
-      else if (strcmp (optarg, "actions") == 0)
-	{
-	  pingus_debug_flags |= PINGUS_DEBUG_ACTIONS;
-	}
-      else if (strcmp (optarg, "sound") == 0)
-	{
-	  pingus_debug_flags |= PINGUS_DEBUG_SOUND;
-	}
-      else if (strcmp (optarg, "gametime") == 0)
-	{
-	  pingus_debug_flags |= PINGUS_DEBUG_GAMETIME;
-	}
-      else if (strcmp (optarg, "tiles") == 0)
-	{
-	  pingus_debug_flags |= PINGUS_DEBUG_TILES;
-	}
-      else if (strcmp (optarg, "loading") == 0)
-	{
-	  pingus_debug_flags |= PINGUS_DEBUG_LOADING;
-	}
-      else if (strcmp (optarg, "translator") == 0)
-	{
-	  pingus_debug_flags |= PINGUS_DEBUG_TRANSLATOR;
-	}
-      else if (strcmp (optarg, "resources") == 0)
+  argp.parse_args(argc, argv);
+  argp.set_help_indent(20);
+  
+  while (argp.next())
+    {
+      switch (argp.get_key()) 
         {
-          pingus_debug_flags |= PINGUS_DEBUG_RESOURCES;
+        case 'c': // -c, --enable-cursor
+          cursor_enabled = true;
+          if (verbose) std::cout << "PingusMain:check_args: Cursor enabled" << std::endl;
+          break;
+            
+        case 'b': // -b, --print-fps
+          print_fps = true;
+          if (verbose) std::cout << "PingusMain:check_args: Printing fps enabled" << std::endl;
+          break;
+
+        case 358: // --worldmap
+          worldmapfile = argp.get_argument();
+          break;
+
+        case 359: // --worldmap
+          show_credits = true;
+          break;
+            
+        case 'l': // -l, --level
+          levelfile = argp.get_argument();
+          break;
+
+        case 't': // -t, --set-speed
+          game_speed = atoi(argp.get_argument().c_str());
+          break;
+
+        case 'G':
+          use_opengl = true;
+          break;
+
+        case 's': // -s, --disable-sound
+          sound_enabled = false;
+          break;
+            
+        case 'g':
+          {
+            char c;
+            if (sscanf(argp.get_argument().c_str(), "%d%c%d", &screen_width, &c, &screen_height) != 3 && c != 'x')
+              {
+                std::cout << "Resolution std::string is wrong, it should be like: \n"
+                          << "\"640x480\" or \"800x600\"" << std::endl;
+                exit(EXIT_FAILURE);
+              }
+            if (screen_width > 800 || screen_height > 600)
+              {
+                std::cout << _("Warning: Larger resolution than 800x600 will result in visual problems") << std::endl;
+              }
+          }
+          break;
+        case 'S':
+          std::cout << "not impl. XALA" << std::endl;
+          //pingus_soundfile = argp.get_argument();
+          //if (verbose)
+          //std::cout << "check_args: Sound File = " << pingus_soundfile << std::endl;
+          break;
+        case 'm': // -m, --disable-music
+          music_enabled = false;
+          break;
+        case 'd': // -d, --datadir
+          path_manager.add_path(argp.get_argument());
+            
+          if (verbose)
+            std::cout << "check_args: Pingus Data Dir = "
+                      << argp.get_argument() << std::endl;
+          break;
+        case 'V':
+          std::cout << "Pingus Version " << VERSION
+#ifndef OFFICIAL_PINGUS_BUILD
+                    << " (unofficial build)"
+#endif
+                    << std::endl;
+            
+          std::cout << "\n"
+            "Copyright (C) 2003 Ingo Ruhnke <grumbel@gmx.de>\n"
+            "There is NO warranty.  You may redistribute this software\n"
+            "under the terms of the GNU General Public License.\n"
+            "For more information about these matters, see the files named COPYING." << std::endl;
+            
+          exit(EXIT_SUCCESS);
+          break;
+        case 'r': // -r, --enabled-demo-recording
+          enable_demo_recording = false;
+          break;
+        case 'p': // -p, --play-demo
+          play_demo = true;
+          demo_file = argp.get_argument();
+          if (verbose)
+            std::cout << "Using demofile: " << demo_file << std::endl;
+          break;
+        case 'v':
+          sscanf(argp.get_argument().c_str(), "%d", &verbose);
+          std::cout << "Pingus: Verbose level is " << verbose << std::endl;
+          break;
+
+        case 'f': // --fullscreen
+          fullscreen_enabled = true;
+          break;
+
+        case 'w': // --window
+          fullscreen_enabled = false;
+          break;
+
+          // Starting weird number options... no idea if this is correct.
+        case 332:
+          fast_mode = true;
+          break;
+        case 334: // --maintainer_mode
+          std::cout << "---------------------------------" << std::endl
+                    << "--- Maintainer Mode activated ---" << std::endl
+                    << "---------------------------------" << std::endl;
+          maintainer_mode = true;
+          break;
+
+        case 337:
+          auto_scrolling = false;
+          break;
+        case 342: // --no-cfg-file
+          // Nothing, since that is handled in quick_check_args()
+          break;
+
+        case 344:
+          sscanf(argp.get_argument().c_str(), "%d", &tile_size);
+          break;
+
+        case 345:
+          swcursor_enabled = false;
+          break;
+
+        case 346:
+          swcursor_enabled = true;
+          break;
+
+        case 347:
+          config_file = argp.get_argument();
+          break;
+
+        case 352:
+          if (argp.get_argument() == "all")
+            {
+              pingus_debug_flags |= PINGUS_DEBUG_ALL;
+            }
+          else if (argp.get_argument() == "actions")
+            {
+              pingus_debug_flags |= PINGUS_DEBUG_ACTIONS;
+            }
+          else if (argp.get_argument() == "sound")
+            {
+              pingus_debug_flags |= PINGUS_DEBUG_SOUND;
+            }
+          else if (argp.get_argument() == "gametime")
+            {
+              pingus_debug_flags |= PINGUS_DEBUG_GAMETIME;
+            }
+          else if (argp.get_argument() == "tiles")
+            {
+              pingus_debug_flags |= PINGUS_DEBUG_TILES;
+            }
+          else if (argp.get_argument() == "loading")
+            {
+              pingus_debug_flags |= PINGUS_DEBUG_LOADING;
+            }
+          else if (argp.get_argument() == "translator")
+            {
+              pingus_debug_flags |= PINGUS_DEBUG_TRANSLATOR;
+            }
+          else if (argp.get_argument() == "resources")
+            {
+              pingus_debug_flags |= PINGUS_DEBUG_RESOURCES;
+            }
+          else if (argp.get_argument() == "gui")
+            {
+              pingus_debug_flags |= PINGUS_DEBUG_GUI;
+            }
+          else if (argp.get_argument() == "input")
+            {
+              pingus_debug_flags |= PINGUS_DEBUG_INPUT;
+            }
+          else if (argp.get_argument() == "worldmap")
+            {
+              pingus_debug_flags |= PINGUS_DEBUG_WORLDMAP;
+            }
+          else if (argp.get_argument() == "pathmgr")
+            {
+              pingus_debug_flags |= PINGUS_DEBUG_PATHMGR;
+            }
+          else
+            {
+              std::cout << "PingusMain: Unhandled debug flag: " << argp.get_argument() << std::endl;
+              exit(EXIT_FAILURE);
+            }
+
+          break;
+
+        case 353:
+          max_cpu_usage = false;
+          break;
+
+        case 354:
+          sscanf(argp.get_argument().c_str(), "%d", &min_frame_skip);
+          break;
+
+        case 355: // max_frame_skip
+          sscanf(argp.get_argument().c_str(), "%d", &max_frame_skip);
+          break;
+
+        case 357: // frame_skip
+          sscanf(argp.get_argument().c_str(), "%d", &max_frame_skip);
+          min_frame_skip = max_frame_skip;
+          break;
+
+        case 356: // Cheats
+          Cheat::activate(argp.get_argument());
+          break;
+
+        case 360:
+          controller_file = argp.get_argument();
+          break;
+
+        case 361:
+          std::cout << "Rendering a Level Preview..." << std::endl;
+          render_preview = true;
+          preview_file   = argp.get_argument();
+          break;
+
+        case 362: // Blitter test
+          blitter_test = true;
+          break;
+
+        case 'h':
+          argp.print_help();
+          exit(EXIT_SUCCESS);
+          break;
+
+        case CL_CommandLine::REST_ARG:
+          if (levelfile.empty()) 
+            {
+              levelfile = argp.get_argument();
+            
+              if (!System::exist(levelfile))
+                {
+                  std::cout << "PingusMain: " << levelfile << " not found" << std::endl;
+                  exit (EXIT_FAILURE);
+                }
+            } 
+          else 
+            {
+              std::cout << "Wrong argument: '" << argp.get_argument() << "'" << std::endl;
+              std::cout << "A levelfile is already given," << std::endl;
+              exit(EXIT_FAILURE);
+            }
+          break;
+
+        default:
+          std::cout << "Error: Got " << argp.get_key() << " " << argp.get_argument() << std::endl;
+          break;
         }
-      else if (strcmp (optarg, "gui") == 0)
-        {
-          pingus_debug_flags |= PINGUS_DEBUG_GUI;
-        }
-      else if (strcmp (optarg, "input") == 0)
-        {
-          pingus_debug_flags |= PINGUS_DEBUG_INPUT;
-        }
-      else if (strcmp (optarg, "worldmap") == 0)
-        {
-          pingus_debug_flags |= PINGUS_DEBUG_WORLDMAP;
-        }
-      else if (strcmp (optarg, "pathmgr") == 0)
-        {
-          pingus_debug_flags |= PINGUS_DEBUG_PATHMGR;
-        }
-      else
-	{
-	  std::cout << "PingusMain: Unhandled debug flag: " << optarg << std::endl;
-          exit(EXIT_FAILURE);
-	}
-
-      break;
-
-    case 153:
-      max_cpu_usage = false;
-      break;
-
-    case 154:
-      sscanf(optarg, "%d", &min_frame_skip);
-      break;
-
-    case 155: // max_frame_skip
-      sscanf(optarg, "%d", &max_frame_skip);
-      break;
-
-    case 157: // frame_skip
-      sscanf(optarg, "%d", &max_frame_skip);
-      min_frame_skip = max_frame_skip;
-      break;
-
-    case 156: // Cheats
-      Cheat::activate(optarg);
-      break;
-
-    case 160:
-      controller_file = optarg;
-      break;
-
-    case 161:
-      std::cout << "Rendering a Level Preview..." << std::endl;
-      render_preview = true;
-      preview_file   = optarg;
-      break;
-
-    case 162: // Blitter test
-      blitter_test = true;
-      break;
-
-    default:
-      if (verbose) std::cout << _("Unknow char: ") << c << std::endl << std::endl;
-      std::cout << _("Usage: ") << argv[0] << _(" [OPTIONS]... [LEVELFILE]") << std::endl;
-      std::cout
-        << "\n"
-        << _("Options:")
-        << "\n   -g, --geometry {width}x{height}"
-        << "\n                            " << _("Set the resolution for pingus (default: 800x600)")
-        << "\n   -h, --help               " << _("Displays this help")
-        << "\n   --disable-intro          " << _("Disable intro");
-      std::cout << "   -G, --use-opengl         " << _("Use OpenGL");
-      std::cout
-	<< "\n   -w, --window             " << _("Start in Window Mode")
-        << "\n   -f, --fullscreen         " << _("Start in Fullscreen")
-        << "\n   -d, --datadir PATH       Set the path to load the data files to `path'"
-        //"   --use-datafile           Use the pre-compiled datafile (default)\n"
-        //          "   --use-scriptfile         Use the scriptfile and read all data from files\n"
-        << "\n   -l, --level    " << _("FILE      ") << _("Load a custom level from FILE")
-        << "\n   --worldmap   "<< _("FILE        ") << _("Load a custom worldmap from FILE")
-        << "\n   -v, --verbose            " << _("Print some more messages to stdout, can be set")
-        << "\n                            " << _("multiple times to increase verbosity")
-        << "\n   -V, --version            " << _("Prints version number and exit")
-        << "\n   --disable-auto-scrolling " << _("Disable automatic scrolling")
-        //          "   --disable-swcursor       Disable software cursor, use hw cursor instead\n"
-        << "\n   --enable-swcursor        " << _("Enable software cursor")
-        //"   --disable-action-help    Disable action button help strings\n"
-        //"   --enable-action-help     Enable action button help strings(default)\n"
-        << "\n   --no-cfg-file            " << _("Don't read ~/.pingus/config")
-        << "\n   --config-file " << _("FILE       ") << _("Read config from FILE (default: ~/.pingus/config)")
-        << "\n                            " << _("reduce CPU usage, might speed up the game on slower machines")
-        << "\n   --controller FILE        " << _("Uses the controller given in FILE")
-
-        << "\n\n" << _("Debugging and experimental stuff:")
-        << "\n   --maintainer-mode        " << _("Enables some features, only interesting programmers")
-        << "\n   --debug OPTION           " << _("Enable the output of debugging infos, possible")
-        << "\n                            " << _("OPTION's are tiles, gametime, actions, sound, resources, gui,")
-        << "\n                            " << "input, pathmgr"
-        << "\n   --min-frame-skip N       " << _("Skip at least N frames, larger values speed the game up")
-        << "\n   --max-frame-skip N       " << _("Skip at most N frames")
-        << "\n   --frame-skip N           " << _("Set both min and max frameskip to N")
-        << "\n   -t, --speed SPEED        " << _("Set the game speed (0=fastest, >0=slower)")
-        << "\n   -b, --print-fps          " << _("Prints the fps to stdout")
-        << "\n   --tile-size INT          " << _("Set the size of the map tiles (default: 32)")
-        << "\n   --fast-mode              " << _("Disable some cpu intensive features")
-        << "\n   --min-cpu-usage          " << _("Reduces the CPU usage by issuing sleep()")
-
-        << "\n\n" << _("Demo playing and recording:")
-        << "\n   -p, --play-demo " << _("FILE     ") << _("Plays a demo session from FILE")
-        << "\n   -r, --disable-demo-recording"
-        << "\n                            " << _("Record demos for each played level")
-
-        << "\n\n" << _("Sound:")
-        << "\n   -s, --disable-sound       " << _("Disable sound")
-        << "\n   -m, --disable-music       " << _("Disable music")
-        << "\n"
-        << std::endl;
-
-      exit(EXIT_SUCCESS);
-      break;
     }
-  }
 
   // make sure that we're not recording a demo while already playing one
   if (play_demo)
     enable_demo_recording = false;
-
-
-  // Treating non option arguments
-  for(int i = optind; i < argc; ++i)
-    {
-      if (levelfile.empty()) {
-	levelfile = argv[i];
-
-	if (!System::exist(levelfile))
-	  {
-	    std::cout << "PingusMain: " << levelfile << " not found" << std::endl;
-	    exit (EXIT_FAILURE);
-	  }
-      } else {
-	std::cout << "Wrong argument: '" << argv[i] << "'" << std::endl;
-	std::cout << "A levelfile is already given," << std::endl;
-	exit(EXIT_FAILURE);
-      }
-    }
 }
 
 // Get all filenames and directories
@@ -585,14 +599,14 @@ PingusMain::init_path_finder()
   if (!path_manager.find_path (file_list))
     {
       std::cout << "Error: Couldn't find 'data/core.scr', please set the enviroment variable\n"
-		<< "PINGUS_DATADIR to the path of the file `data/core.scr' or use the\n"
-		<< "-d option." << std::endl;
+                << "PINGUS_DATADIR to the path of the file `data/core.scr' or use the\n"
+                << "-d option." << std::endl;
       exit(EXIT_FAILURE);
     }
 
   dictionary_manager.add_directory(path_manager.complete("po/"));
   // Language is automatically picked from env variable
-  dictionary_manager.set_language("de"); 
+  // dictionary_manager.set_language("de"); 
   dictionary_manager.set_charset("ISO-8859-1");
 
   if (maintainer_mode)
@@ -850,7 +864,7 @@ PingusMain::init_clanlib()
       }
 
       window = new CL_DisplayWindow(PACKAGE_STRING,
-                           screen_width, screen_height, fullscreen_enabled, false);
+                                    screen_width, screen_height, fullscreen_enabled, false);
       sound  = new CL_SoundOutput(44100);
 
       CL_Display::clear();
