@@ -1,4 +1,4 @@
-//  $Id: screen_manager.cxx,v 1.11 2002/08/17 00:30:53 grumbel Exp $
+//  $Id: screen_manager.cxx,v 1.12 2002/08/17 11:50:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -61,6 +61,7 @@ ScreenManager::display ()
     {
       Screen* current_screen = screens.back ().first;
       float time_delta = delta_manager.getset ();
+      int num_screens = screens.size ();
       
       if (time_delta > 1.0)
 	{
@@ -80,21 +81,26 @@ ScreenManager::display ()
 
       last_screen = current_screen;
       // Most likly the screen will get changed in this update call
-      current_screen->update (delta);
-      current_screen->draw ();
-
-      Display::flip_display ();
+      current_screen->update (delta);    
 
       if (cached_action == pop)
 	{
 	  real_pop_screen ();
 	  cached_action = none;
+	  continue; // skip the draw once the screen has changed
 	}
       else if (cached_action == replace)
 	{
 	  real_replace_screen (replace_screen_arg.first, replace_screen_arg.second);
 	  cached_action = none;
+	  continue; // skip the draw once the screen has changed
 	}
+
+      if (num_screens != screens.size ())
+	continue;
+
+      current_screen->draw ();
+      Display::flip_display ();
 
       // Stupid hack to make this thing take less CPU
       CL_System::sleep (0);
