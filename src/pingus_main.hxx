@@ -1,4 +1,4 @@
-//  $Id: pingus_main.hxx,v 1.5 2002/09/27 11:26:44 torangan Exp $
+//  $Id: pingus_main.hxx,v 1.6 2002/11/02 19:03:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,12 +22,12 @@
 
 #include <string>
 #include <ClanLib/Signals/slot.h>
-
-#include "generic_main.hxx"
+#include <ClanLib/application.h>
+#include "pingus.hxx"
 
 void segfault_handler(int);
 
-class PingusMain : public AbstractMain
+class PingusMain : public CL_ClanApplication
 {
 private:
   bool    no_config_file;
@@ -46,23 +46,28 @@ public:
   virtual int main(int argc, char** argv);
   virtual char* get_title();
 
-  void start_game(void);
+private:
+  /** After all subsystems have been inited, the screen will get
+      setup, the game (the menu, the editor or a level, depending on
+      command line flags) will start and the user will get
+      controll. */
+  void start_game();
 
   void check_args(int argc, char** argv);
   void quick_check_args(int argc, char** argv);
   void read_rc_file(void);
 
-  void get_filenames(void);
-  void init(int argc, char** argv);
-  void init_clanlib(void);
-  /// void intro(void);
-  void init_pingus(void);
+  void init_clanlib();
+  void deinit_clanlib();
+
+  void init_pingus();
+  void init_path_finder();
+  void deinit_pingus();
   
-private:
   PingusMain (const PingusMain&);
   PingusMain& operator= (const PingusMain&);
-};
 
+} app; // golbal class instance
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: action_data.hxx,v 1.5 2002/08/25 09:08:48 torangan Exp $
+//  $Id: action_data.hxx,v 1.6 2002/11/02 19:03:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,6 +34,9 @@ public:
   int number_of;
 };
 
+/** Actions that are available through the GUI in the level editor,
+    only useable action are here, hidden actions like walker or drawn
+    are not here */
 extern std::vector<ActionData> default_actions; 
 void init_default_actions ();
 

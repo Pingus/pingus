@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.28 2002/11/02 14:46:29 grumbel Exp $
+//   $Id: pingus_main.cxx,v 1.29 2002/11/02 19:03:40 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -41,7 +41,12 @@
 #include <ClanLib/Display/setupdisplay.h>
 #include <ClanLib/Display/Display/display.h>
 #include <ClanLib/Display/Input/input.h>
+
+#include <ClanLib/Core/System/setupcore.h>
 #include <ClanLib/jpeg.h>
+#include <ClanLib/png.h>
+#include <ClanLib/GUI/setupgui.h>
+
 
 #ifdef HAVE_LIBCLANGL
 # include <ClanLib/gl.h>
@@ -79,6 +84,7 @@
 #include "xml_helper.hxx"
 #include "input_debug_screen.hxx"
 #include "pingus_menu_manager.hxx"
+#include "pingus_resource.hxx"
 
 using EditorNS::Editor;
 
@@ -306,7 +312,15 @@ PingusMain::check_args(int argc, char** argv)
       sound_enabled = true;
       break;
     case 'g':
-      resolution = optarg;
+      {
+        char c;
+        if (sscanf(optarg, "%d%c%d", &screen_width, &c, &screen_height) != 3 && c != 'x')
+          {
+            std::cout << "Resolution std::string is wrong, it should be like: \n" 
+                      << "\"640x480\" or \"800x600\"" << std::endl;
+            exit(EXIT_FAILURE);
+          }
+      }
       break;
     case 'S':
       std::cout << "not impl. XALA" << std::endl;
@@ -614,41 +628,9 @@ For more information about these matters, see the files named COPYING.\
     }
 }
 
-void
-PingusMain::init_pingus()
-{
-  if (verbose) 
-    {
-      std::cout << 
-        _("-----------------------------------------------------------------\n")
-		<< std::endl;
-      std::cout << 
-        _(" Verbosity set to: ") << verbose  << "\n"
-		<< std::endl;
-      std::cout << 
-        _(" If you don't like to get lots of debug messages, than set the\n"
-          " verbosity down to 0, like this:\n\n"
-          "   $ ./pingus --verbose 0\n"
-          "-----------------------------------------------------------------\n")
-		<< std::endl;
-    }
-
-  Fonts::init_fonts ();
-  fps_counter.init();
-  console.init();
-  XMLhelper::init();
-
-  pout.add (std::cerr);
-  pout.add (console);
-  pwarn.add (std::cerr);
-  pout.add (console);
-  perr.add (std::cerr);
-  perr.add (console);
-}
-
 // Get all filenames and directories
 void
-PingusMain::get_filenames()
+PingusMain::init_path_finder()
 {
   System::init_directories();
 
@@ -698,131 +680,10 @@ PingusMain::get_filenames()
   textdomain (PACKAGE);
 #endif 
   std::cout << "BasePath: " << path_manager.get_base_path () << std::endl;
-
-  // First we try to open the file which was given, if that is not
-  // there then we try again with filename+".plf". If still no success
-  // we try to search for that file in the pingus_path, if its not
-  // there, then we try to search for the filename+".plf" in the
-  // pingus_path.
-  /* This code really shouldn't be here
-     std::string custom_levelfile = levelfile;
-     bool levelfile_not_found = false;
-     if (!custom_levelfile.empty() && !System::exist(custom_levelfile))
-     {
-     if (System::exist(custom_levelfile + ".plf"))
-     {
-     custom_levelfile += ".plf";
-     }
-     else
-     {
-     if (verbose)
-     std::cout << "Levelfile not found, trying fallbacks" << std::endl;
-	  
-     // Search for the level in the datadir
-     custom_levelfile = find_file(pingus_datadir, "/levels/" + levelfile);
-     levelfile_not_found = !System::exist(custom_levelfile.c_str());
-
-     if (levelfile_not_found) 
-     {
-     custom_levelfile = find_file(pingus_datadir, "/levels/" + levelfile + ".plf");
-     levelfile_not_found = !System::exist(custom_levelfile.c_str());
-     }
-
-     if (levelfile_not_found)
-     {
-     std::cout << "Couldn't find level file: \"" << levelfile << "\"" << std::endl;
-     exit(EXIT_FAILURE);
-     }
-     }
-     }
-
-     levelfile = custom_levelfile;
-  
-     if (verbose)
-     std::cout << "Pingus Level File: " << levelfile << std::endl;
-  */
-}
-  
-void
-PingusMain::init (int argc, char** argv)
-{
-  char c;
-
-  PingusMain::quick_check_args(argc, argv);
-  PingusMain::read_rc_file();
-  PingusMain::check_args(argc, argv);
-
-  init_default_actions ();
-
-  // Translate the geometry std::string to some int's
-  if (!resolution.empty())
-    {
-      if (sscanf(resolution.c_str(), "%d%c%d", &screen_width, &c, &screen_height) != 3) 
-	{
-	  std::cout << "Resolution std::string is wrong, it should be like: \n" 
-		    << "\"640x480\" or \"800x600\"" << std::endl;
-	  exit(EXIT_FAILURE);
-	}
-    }
-  // Loading data and initialisising 
-  get_filenames();
-  //  register_actions(); 
 }
 
 void
-PingusMain::init_clanlib ()
-{
-  // Init ClanLib
-  if (verbose) 
-    std::cout << "Init ClanLib" << std::endl;
-
-#ifdef HAVE_LIBCLANGL
-  if (use_opengl) {
-    CL_SetupGL::init();
-    std::cout << "Using OpenGL" << std::endl;
-  }
-#endif
-  CL_SetupDisplay::init();
-
-  if (sound_enabled || music_enabled) 
-    {
-      if (verbose)
-	std::cout << "Init Sound" << std::endl;
-
-      PingusSound::init (new PingusSoundReal ());       
-    }
-  else
-    {
-      if (verbose)
-	std::cout << "Sound disabled" << std::endl;
-      PingusSound::init (new PingusSoundDummy ());
-    }
-
-  if (verbose) 
-    {
-      std::cout << "Using resolution: " 
-		<< screen_width << "x" << screen_height << std::endl;
-    }
-
-  // Initing the display
-  CL_Display::set_videomode(screen_width, screen_height, 16, 
-			    fullscreen_enabled, 
-			    false); // allow resize
-
-#ifdef HAVE_LIBCLANGL
-  if (use_opengl)
-    {
-      CL_OpenGL::begin_2d ();
-      glEnable (GL_BLEND);
-    }
-#endif
-
-  CL_Display::clear_display ();
-  CL_Display::flip_display ();
-}
-
-void
-PingusMain::start_game(void)
+PingusMain::start_game ()
 {
   if (verbose) {
     pout << _("PingusMain: Starting Main: ") << CL_System::get_time() << std::endl;
@@ -896,29 +757,35 @@ PingusMain::start_game(void)
 int
 PingusMain::main(int argc, char** argv)
 {
+  executable_name = argv[0];
+  
   // Register the segfault_handler
   //signal(SIGSEGV, signal_handler);
   //signal(SIGINT,  signal_handler);
 
-#if 0 // used to be WIN32
+#ifdef WIN32
+  // Redirect stdout to somewhere where it is readable
   CL_ConsoleWindow cl_console(PACKAGE VERSION);
   cl_console.redirect_stdio();
 #endif
 
-  executable_name = argv[0];
 
-  try {
-    init(argc, argv);
-    init_clanlib();
-    init_pingus();	
+  try 
+    {
+      quick_check_args(argc, argv);
+      read_rc_file();
+      check_args(argc, argv);
+
+      init_path_finder();
+
+      init_clanlib();
+      init_pingus();	
       
-    if (!intro_disabled && levelfile.empty()) 
-      {
-        //intro.draw();
-      }
-      
-    start_game();
-  }
+      start_game();
+    
+      deinit_pingus();
+      deinit_clanlib();
+    }
   
   catch (const CL_Error& err) {
     std::cout << _("Error caught from ClanLib: ") << err.message << std::endl;
@@ -942,5 +809,115 @@ PingusMain::main(int argc, char** argv)
 
   return 0;
 }
+
+
+void
+PingusMain::init_clanlib()
+{
+  CL_SetupCore::init ();
+  CL_SetupPNG::init ();
+  CL_SetupJPEG::init ();
+  CL_SetupGUI::init ();
+
+#ifdef HAVE_LIBCLANGL
+  if (use_opengl) {
+    CL_SetupGL::init();
+    std::cout << "Using OpenGL" << std::endl;
+  }
+#endif
+
+  CL_SetupDisplay::init();
+
+  if (verbose) 
+    {
+      std::cout << "Using resolution: " 
+		<< screen_width << "x" << screen_height << std::endl;
+    }
+
+  // Initing the display
+  CL_Display::set_videomode(screen_width, screen_height, 16, 
+			    fullscreen_enabled, 
+			    false); // allow resize
+
+#ifdef HAVE_LIBCLANGL
+  if (use_opengl)
+    {
+      CL_OpenGL::begin_2d ();
+      glEnable (GL_BLEND);
+    }
+#endif
+
+  CL_Display::clear_display ();
+  CL_Display::flip_display ();
+
+}
+
+void
+PingusMain::deinit_clanlib()
+{
+  CL_SetupDisplay::deinit();
+#ifdef HAVE_LIBCLANGL
+  if (use_opengl)
+    CL_SetupGL::deinit(); 
+#endif
+  CL_SetupGUI::deinit ();
+  CL_SetupPNG::deinit();
+  CL_SetupJPEG::deinit();
+  CL_SetupCore::deinit();
+}
+
+void
+PingusMain::init_pingus()
+{
+  if (verbose) 
+    {
+      std::cout << 
+        _("-----------------------------------------------------------------\n")
+		<< std::endl;
+      std::cout << 
+        _(" Verbosity set to: ") << verbose  << "\n"
+		<< std::endl;
+      std::cout << 
+        _(" If you don't like to get lots of debug messages, than set the\n"
+          " verbosity down to 0, like this:\n\n"
+          "   $ ./pingus --verbose 0\n"
+          "-----------------------------------------------------------------\n")
+		<< std::endl;
+    }
+
+  Fonts::init_fonts ();
+  PingusResource::init();
+  fps_counter.init();
+  console.init();
+  XMLhelper::init();
+
+  pout.add (std::cerr);
+  pout.add (console);
+  pwarn.add (std::cerr);
+  pout.add (console);
+  perr.add (std::cerr);
+  perr.add (console);
+
+  if (sound_enabled || music_enabled) 
+    {
+      if (verbose)
+	std::cout << "Init Sound" << std::endl;
+
+      PingusSound::init (new PingusSoundReal ());       
+    }
+  else
+    {
+      if (verbose)
+	std::cout << "Sound disabled" << std::endl;
+      PingusSound::init (new PingusSoundDummy ());
+    }
+
+}
+
+void
+PingusMain::deinit_pingus()
+{
+  
+}  
 
 /* EOF */

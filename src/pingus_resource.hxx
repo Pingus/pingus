@@ -1,4 +1,4 @@
-//  $Id: pingus_resource.hxx,v 1.10 2002/09/27 11:26:44 torangan Exp $
+//  $Id: pingus_resource.hxx,v 1.11 2002/11/02 19:03:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,8 +43,8 @@ private:
   static CL_Surface apply_modifier (const CL_Surface&, const ResDescriptor& res_desc);
 
 public:
-  /** */
-  PingusResource();
+  static void init();
+  static void deinit();
   
   /** */
   static unsigned int get_mtime (const std::string& res_name,

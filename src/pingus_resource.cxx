@@ -1,4 +1,4 @@
-//  $Id: pingus_resource.cxx,v 1.20 2002/10/19 23:23:44 grumbel Exp $
+//  $Id: pingus_resource.cxx,v 1.21 2002/11/02 19:03:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -73,9 +73,25 @@ suffix_fixer(const std::string& filename)
   return filename;
 }
 
-PingusResource::PingusResource()
+
+void 
+PingusResource::init()
 {
-  //std::cout << "PingusResource Constructor called" << std::endl;
+  // do nothing
+}
+
+void
+PingusResource::deinit()
+{
+  for (std::map<std::string, CL_ResourceManager*>::iterator i = resource_map.begin(); 
+       i != resource_map.end ();
+       ++i)
+    delete i->second;
+  
+  for (std::map<ResDescriptor, CL_Font*>::iterator i = font_map.begin();
+       i != font_map.end (); 
+       ++i)
+    delete i->second;
 }
 
 CL_ResourceManager*

@@ -1,4 +1,4 @@
-//  $Id: action_window.cxx,v 1.10 2002/09/14 19:06:34 torangan Exp $
+//  $Id: action_window.cxx,v 1.11 2002/11/02 19:03:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -51,6 +51,7 @@ ActionWindow::ActionWindow (CL_Component* arg_parent, std::vector<ActionData>* a
 
   // Create all the default gui stuff
   int y = 30;
+
   for (std::vector<ActionData>::iterator i = default_actions.begin (); i != default_actions.end (); ++i)
     {
       checkboxes.push_back(new CL_CheckBox(CL_Point (10, y), action_to_string(i->name), window));

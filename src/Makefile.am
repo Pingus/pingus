@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.118 2002/10/16 11:29:30 grumbel Exp $
+#  $Id: Makefile.am,v 1.119 2002/11/02 19:03:40 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -147,8 +147,6 @@ game_session_result.cxx \
 game_session_result.hxx \
 game_time.cxx \
 game_time.hxx \
-generic_main.cxx \
-generic_main.hxx \
 global_event.cxx \
 global_event.hxx \
 globals.cxx \
