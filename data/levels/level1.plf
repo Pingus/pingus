@@ -86,7 +86,7 @@ hotspot {
   y_pos = 329;
   z_pos = 100;
 }
-
+/*
 hotspot {
   image = (resource)"Hotspots/plate";
   x_pos = 685;
@@ -170,7 +170,7 @@ hotspot {
   y_pos = 510;
   z_pos = 0;
 }
-
+*/
 hotspot {
   image = (resource)"Entrances/woodthing_nmov";
   x_pos = 658;
