@@ -1,4 +1,4 @@
-//  $Id: SurfaceBackgroundData.hh,v 1.11 2002/01/19 18:12:54 grumbel Exp $
+//  $Id: SurfaceBackgroundData.hh,v 1.12 2002/01/26 10:53:36 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,8 @@
 #ifndef SURFACEBACKGROUNDDATA_HH
 #define SURFACEBACKGROUNDDATA_HH
 
+#include "../StringConverter.hh"
+#include "../editor/SpriteEditorObj.hh"
 #include "../boost/smart_ptr.hpp"
 #include "../WorldObjData.hh"
 
@@ -71,6 +73,31 @@ public:
 
   boost::shared_ptr<WorldObj> create_WorldObj();
   EditorObjLst create_EditorObj();
+};
+
+
+class EditorSurfaceBackground : public SurfaceBackgroundData,
+				public SpriteEditorObj
+{
+private:
+public:
+  EditorSurfaceBackground (const SurfaceBackgroundData& data)
+    : SurfaceBackgroundData (data),
+      SpriteEditorObj (desc.res_name, desc.datafile, pos)
+  {
+    
+  }
+
+  void write_xml(std::ofstream* xml) { this->SurfaceBackgroundData::write_xml (xml); }
+
+  boost::shared_ptr<EditorObj> duplicate() {
+    return boost::shared_ptr<EditorObj>
+      (new EditorSurfaceBackground (static_cast<SurfaceBackgroundData>(*this)));
+  }
+
+  std::string status_line () { 
+    return "SurfaceBackground: " + to_string (pos);
+  }
 };
 
 #endif

@@ -1,4 +1,4 @@
-//  $Id: ObjectSelector.cc,v 1.57 2002/01/17 23:34:33 grumbel Exp $
+//  $Id: ObjectSelector.cc,v 1.58 2002/01/26 10:53:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,6 +31,12 @@
 #include "../my_gettext.hh"
 #include "../System.hh"
 #include "../EditorHotspot.hh"
+
+#include "../backgrounds/StarfieldBackground.hh"
+#include "../backgrounds/SurfaceBackgroundData.hh"
+#include "../backgrounds/SolidColorBackground.hh"
+#include "../backgrounds/ThunderstormBackground.hh"
+#include "../backgrounds/ThunderstormBackgroundData.hh"
 
 #include "../worldobjs/Teleporter.hh"
 #include "../worldobjs/IceBlock.hh"
@@ -391,7 +397,8 @@ ObjectSelector::select_obj_type()
   font->print_left(20,210, _("x - Exit"));
   font->print_left(20,230, _("l - Liquid"));
   font->print_left(20,250, _("w - Weather"));
-  font->print_left(20,280, _("o - WorldObject"));
+  font->print_left(20,270, _("o - WorldObject"));
+  font->print_left(20,290, _("z - Background"));
   font->print_left(20,310, _("f - something from file (~/.pingus/images/)"));
   Display::flip_display();
 
@@ -438,6 +445,9 @@ ObjectSelector::select_obj_type()
 	case CL_KEY_O:
 	  return get_worldobj();
 
+	case CL_KEY_Z:
+	  return get_background();
+		  
 	case CL_KEY_F:
 	  return get_from_file();
 
@@ -449,10 +459,54 @@ ObjectSelector::select_obj_type()
   return std::list<boost::shared_ptr<EditorObj> > ();
 }
 
-std::string 
+std::list<boost::shared_ptr<EditorObj> >
 ObjectSelector::get_background()
 {
-  return select_surface("textures");
+
+  CL_Display::clear_display();
+  font->print_left(20, 20, _("Which object do you want?"));
+  font->print_left(20, 50, _("1 - Surface Background"));
+  font->print_left(20, 70, _("2 - Solid Color Background"));
+  font->print_left(20, 90, _("3 - Starfield Background"));
+  font->print_left(20,110, _("4 - Thunderstorm Background"));
+  Display::flip_display();
+
+  std::list<boost::shared_ptr<EditorObj> > lst;
+
+  bool exit_loop = false;
+    
+  while (!exit_loop) 
+    {
+      switch (read_key()) 
+	{
+	case CL_KEY_1:
+	  lst.push_back(boost::shared_ptr<EditorObj>
+			(new EditorSurfaceBackground 
+			 (SurfaceBackgroundData ())));
+	  exit_loop = true;
+	  break;
+	case CL_KEY_2:
+	  lst.push_back(boost::shared_ptr<EditorObj>
+			(new EditorSolidColorBackground 
+			 (SolidColorBackgroundData ())));
+	  exit_loop = true;
+	  break;
+	case CL_KEY_3:
+	  lst.push_back(boost::shared_ptr<EditorObj>
+			(new EditorStarfieldBackground 
+			 (StarfieldBackgroundData ())));
+	  exit_loop = true;
+	  break;
+	case CL_KEY_4:
+	  lst.push_back(boost::shared_ptr<EditorObj>
+			(new EditorThunderstormBackground 
+			 (ThunderstormBackgroundData ())));
+	  exit_loop = true;
+	  break;
+	}
+    }
+  //select_surface("textures");
+  return lst;
 }
 
 std::string

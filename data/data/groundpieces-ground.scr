@@ -217,6 +217,7 @@ section signposts {
 }
 
 section snow {
+	groundice = ../images/groundpieces/ground/snow/groundice.png (type=surface);
 	cabin = ../images/groundpieces/ground/snow/cabin.png (type=surface, x=0, y=0, width=129, height=94);
 	cabin_winter = ../images/groundpieces/ground/snow/cabin_winter.png (type=surface, x=0, y=0, width=129, height=94);
 	gpiece1 = ../images/groundpieces/ground/snow/gpiece1.png (type=surface, x=0, y=0);

@@ -1,4 +1,4 @@
-//  $Id: SurfaceBackgroundData.cc,v 1.14 2002/01/21 12:06:09 grumbel Exp $
+//  $Id: SurfaceBackgroundData.cc,v 1.15 2002/01/26 10:53:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,35 +17,10 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "../editor/SpriteEditorObj.hh"
 #include "../XMLhelper.hh"
 #include "../StringConverter.hh"
 #include "SurfaceBackground.hh"
 #include "SurfaceBackgroundData.hh"
-
-class EditorSurfaceBackground : public SurfaceBackgroundData,
-				public SpriteEditorObj
-{
-private:
-public:
-  EditorSurfaceBackground (const SurfaceBackgroundData& data)
-    : SurfaceBackgroundData (data),
-      SpriteEditorObj (desc.res_name, desc.datafile, pos)
-  {
-    
-  }
-
-  void write_xml(std::ofstream* xml) { this->SurfaceBackgroundData::write_xml (xml); }
-
-  boost::shared_ptr<EditorObj> duplicate() {
-    return boost::shared_ptr<EditorObj>
-      (new EditorSurfaceBackground (static_cast<SurfaceBackgroundData>(*this)));
-  }
-
-  std::string status_line () { 
-    return "SurfaceBackground: " + to_string (pos);
-  }
-};
 
 SurfaceBackgroundData::SurfaceBackgroundData()
 {

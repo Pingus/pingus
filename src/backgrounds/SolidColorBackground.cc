@@ -1,4 +1,4 @@
-//  $Id: SolidColorBackground.cc,v 1.10 2002/01/15 10:48:50 grumbel Exp $
+//  $Id: SolidColorBackground.cc,v 1.11 2002/01/26 10:53:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,8 +19,6 @@
 
 #include <ClanLib/core.h>
 #include <ClanLib/display.h>
-#include "../editor/SpriteEditorObj.hh"
-#include "../editor/EditorObj.hh"
 #include "SolidColorBackground.hh"
 #include "../XMLhelper.hh"
 
@@ -62,27 +60,6 @@ SolidColorBackgroundData::create_WorldObj()
 {
   return boost::shared_ptr<WorldObj> (new SolidColorBackground (*this));
 }
-
-class EditorSolidColorBackground : public SolidColorBackgroundData,
-				   public SpriteEditorObj
-{
-private:
-  CL_Vector pos;
-public:
-  EditorSolidColorBackground (const SolidColorBackgroundData& data)
-    : SolidColorBackgroundData (data),
-      SpriteEditorObj ("Stars/starfield_icon", "game", pos),
-      pos (-64.0f, 0.0f)
-  {}
-  void write_xml(std::ofstream* xml) { this->SolidColorBackgroundData::write_xml (xml); }
-
-  boost::shared_ptr<EditorObj> duplicate() {
-    return boost::shared_ptr<EditorObj>
-      (new EditorSolidColorBackground (static_cast<SolidColorBackgroundData>(*this)));
-  }
-
-  std::string status_line () { return "SolidColorBackground"; }
-};
 
 EditorObjLst 
 SolidColorBackgroundData::create_EditorObj()

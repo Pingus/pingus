@@ -1,3 +1,11 @@
+- all working actions in default level
+
+- walker fly in the air (see test1)
+
+- bridger<->walker bug still there
+
+- pingus can walk over slime (hellmouth2)
+
 - diggers can dead-lock
 
 - show floater and climber in the 'cursor'

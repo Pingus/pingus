@@ -1,4 +1,4 @@
-//  $Id: StarfieldBackground.cc,v 1.14 2002/01/15 10:48:50 grumbel Exp $
+//  $Id: StarfieldBackground.cc,v 1.15 2002/01/26 10:53:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,27 +23,12 @@
 #include "../StringConverter.hh"
 #include "StarfieldBackground.hh"
 
-class EditorStarfieldBackground : public StarfieldBackgroundData,
-				  public SpriteEditorObj
+StarfieldBackgroundData::StarfieldBackgroundData ()
+  : small_stars_count (400),
+    middle_stars_count (200),
+    large_stars_count (100)
 {
-private:
-  CL_Vector pos;
-public:
-  EditorStarfieldBackground (const StarfieldBackgroundData& data)
-    : StarfieldBackgroundData (data),
-      SpriteEditorObj ("Stars/starfield_icon", "game", pos),
-      pos (-64.0f, 0.0f)
-  {}
-
-  void write_xml(std::ofstream* xml) { this->StarfieldBackgroundData::write_xml (xml); }
-
-  boost::shared_ptr<EditorObj> duplicate() {
-    return boost::shared_ptr<EditorObj>
-      (new EditorStarfieldBackground (static_cast<StarfieldBackgroundData>(*this)));
-  }
-
-  std::string status_line () { return "StarfieldBackground"; }
-};
+}
 
 void 
 StarfieldBackgroundData::write_xml(std::ofstream* xml)

@@ -1,4 +1,4 @@
-//  $Id: ThunderstormBackgroundData.hh,v 1.6 2001/08/13 21:35:37 grumbel Exp $
+//  $Id: ThunderstormBackgroundData.hh,v 1.7 2002/01/26 10:53:37 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,6 +38,28 @@ public:
 
   boost::shared_ptr<WorldObj> create_WorldObj();
   EditorObjLst create_EditorObj();
+};
+
+class EditorThunderstormBackground : public ThunderstormBackgroundData,
+				     public SpriteEditorObj
+{
+private:
+public:
+  EditorThunderstormBackground (const ThunderstormBackgroundData& data)
+    : ThunderstormBackgroundData (data),
+      SpriteEditorObj ("Stars/starfield_icon", "game", pos)
+  {
+    pos = CL_Vector(-128.0f, 0.0f);
+  }
+
+  void write_xml(std::ofstream* xml) { this->ThunderstormBackgroundData::write_xml (xml); }
+  
+  boost::shared_ptr<EditorObj> duplicate() {
+    return boost::shared_ptr<EditorObj>
+      (new EditorThunderstormBackground (static_cast<ThunderstormBackgroundData>(*this)));
+  }
+  
+  std::string status_line () { return "ThunderstormBackground"; }
 };
 
 #endif

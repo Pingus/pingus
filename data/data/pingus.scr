@@ -26,6 +26,7 @@ section Pingus
 	drownfall0  = ../images/pingus/drownfall.png (type=surface, x=0, y=0, width=32, height=32, array=15x2);
 	drownwalk0  = ../images/pingus/drownwalk.png (type=surface, x=0, y=0, width=32, height=32, array=15x2);
 
+	slider0      = ../images/pingus/slider.png     (type=surface, x=0, y=0, width=32, height=15, array=1x2);
 
 	bomber1      = ../images/pingus/bomber1.png     (type=surface, x=0, y=0, width=32, height=32, array=16x1);
 	basher1      = ../images/pingus/basher1.png     (type=surface, x=0, y=0, width=32, height=32, array=12x2);
