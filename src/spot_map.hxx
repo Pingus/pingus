@@ -22,6 +22,7 @@
 #define HEADER_PINGUS_SPOT_MAP_HXX
 
 #include <vector>
+#include <ClanLib/Display/pixel_buffer.h>
 #include "globals.hxx"
 #include "pingu_map.hxx"
 #include "worldobjsdata/groundpiece_data.hxx"
@@ -37,8 +38,10 @@ class MapTileSurface
 {
 private:
   bool empty;
+
 public:
-  CL_Surface surface;
+  CL_Surface     surface;
+  CL_PixelBuffer buffer;
 
   MapTileSurface ();
   virtual ~MapTileSurface ();
@@ -46,7 +49,9 @@ public:
   MapTileSurface (const MapTileSurface& old);
   MapTileSurface& operator= (const MapTileSurface& old);
 
-  void reload (void);
+  CL_Surface get_surface() const { return surface; }
+  void reload ();
+
   inline bool is_empty (void) { return empty; }
   void mark_dirty (void);
   void check_empty (void);
@@ -84,18 +89,18 @@ public:
   int  get_width();
 
   /** Put the gives surface provider onto the given coordinates */
-  void put(const CL_PixelBuffer&, int x, int y);
+  void put(CL_PixelBuffer, int x, int y);
 
   /** Remove the gives surface provider onto the given coordinates
       (everything non-transparent is removed from the map) */
-  void remove(const CL_PixelBuffer&, int x, int y);
+  void remove(CL_PixelBuffer, int x, int y);
 
   float get_z_pos () const { return 0; }
 
 private:
   /** Low level version of the remove() call, acts on a single canvas
       instead on the complete map-tiles */
-  void put_alpha_surface(CL_PixelBuffer& provider, CL_PixelBuffer& sprovider,
+  void put_alpha_surface(CL_PixelBuffer provider, CL_PixelBuffer sprovider,
 			 int x, int y, int real_x, int real_y);
 
   /** Draw the collision map onto the screen */

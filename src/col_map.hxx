@@ -82,7 +82,7 @@ public:
   void put(CL_PixelBuffer, int x, int y, Groundtype::GPType);
 
   /// void remove(int x, int y);
-  void remove(CL_PixelBuffer&, int x, int y);
+  void remove(CL_PixelBuffer, int x, int y);
 
   void draw(GraphicContext& gc);
 

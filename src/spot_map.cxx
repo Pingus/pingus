@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <stdio.h>
+#include <iostream>
 #include <ClanLib/Display/pixel_buffer.h>
 #include <ClanLib/Display/pixel_format.h>
 #include "gui/graphic_context.hxx"
@@ -65,10 +66,10 @@ MapTileSurface::set_empty(bool e)
 }
 
 void
-MapTileSurface::reload(void)
+MapTileSurface::reload()
 {
-  CL_PixelBuffer buf = surface.get_pixeldata();
-  surface = CL_Surface(new CL_PixelBuffer(buf), true);
+  std::cout << "Reload" << std::endl;
+  surface = CL_Surface(new CL_PixelBuffer(buffer), true);
 }
 
 void
@@ -229,7 +230,7 @@ PingusSpotMap::get_height(void)
 }
 
 void
-PingusSpotMap::remove(const CL_PixelBuffer& sprovider, int x, int y)
+PingusSpotMap::remove(CL_PixelBuffer sprovider, int x, int y)
 {
   // Get the start tile and end tile
   int start_x = Math::max(x / tile_size, 0);
@@ -245,7 +246,7 @@ PingusSpotMap::remove(const CL_PixelBuffer& sprovider, int x, int y)
 	{
 	  if (!tile[ix][iy].is_empty())
 	    {
-              CL_PixelBuffer target    = tile[ix][iy].surface.get_pixeldata();
+              CL_PixelBuffer target    = tile[ix][iy].buffer;
               CL_PixelBuffer sprovider = sprovider;
 	      put_alpha_surface(target,
 				sprovider,
@@ -260,7 +261,7 @@ PingusSpotMap::remove(const CL_PixelBuffer& sprovider, int x, int y)
 }
 
 void
-PingusSpotMap::put_alpha_surface(CL_PixelBuffer& provider, CL_PixelBuffer& sprovider,
+PingusSpotMap::put_alpha_surface(CL_PixelBuffer provider, CL_PixelBuffer sprovider,
 				 int x, int y, int real_x_arg, int real_y_arg)
 {
   int start_i;
@@ -358,7 +359,7 @@ PingusSpotMap::put_alpha_surface(CL_PixelBuffer& provider, CL_PixelBuffer& sprov
 }
 
 void
-PingusSpotMap::put(const CL_PixelBuffer& sprovider, int x, int y)
+PingusSpotMap::put(CL_PixelBuffer sprovider, int x, int y)
 {
   // Get the start tile and end tile
   int start_x = x / tile_size;
@@ -383,26 +384,24 @@ PingusSpotMap::put(const CL_PixelBuffer& sprovider, int x, int y)
 	  if (tile[ix][iy].surface == 0)
 	    {
 	      CL_PixelBuffer canvas(tile_size, tile_size, tile_size * 4, CL_PixelFormat::rgba8888);
-
+              
 	      Blitter::clear_canvas(canvas);
 
 	      Blitter::put_surface(canvas, sprovider,
 				   x - (ix * tile_size), y - (iy * tile_size));
 
-	      tile[ix][iy].surface = CL_Surface (new CL_PixelBuffer(canvas), true);
+	      tile[ix][iy].buffer = canvas;
+	      tile[ix][iy].reload();
 	    }
 	  else
 	    {
-              CL_PixelBuffer target = tile[ix][iy].surface.get_pixeldata();
+              CL_PixelBuffer target = tile[ix][iy].buffer;
 	      Blitter::put_surface(target,
 				   sprovider,
 				   x - (ix * tile_size), y - (iy * tile_size));
+              tile[ix][iy].reload();
 	    }
-	  /*
-	    CL_Surface s = CL_Surface::create(sprovider);
-	  s->put_target(x - (ix * tile_size), y - (iy * tile_size), 0,
-			tile[ix][iy].surface->get_provider());*/
-	  tile[ix][iy].reload();
+
 	  tile[ix][iy].set_empty(false);
 	}
     }

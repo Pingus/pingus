@@ -99,14 +99,12 @@ Digger::have_something_to_dig ()
 void
 Digger::dig ()
 {
-#ifdef CLANLIB_0_6
-  WorldObj::get_world()->get_colmap()->remove(digger_radius,
+  WorldObj::get_world()->get_colmap()->remove(digger_radius.get_pixeldata(),
 					      static_cast<int>(pingu->get_x() - (digger_radius_width / 2)),
 					      static_cast<int>(pingu->get_y() - digger_radius_height + 2));
-  WorldObj::get_world()->get_gfx_map()->remove(digger_radius_gfx,
+  WorldObj::get_world()->get_gfx_map()->remove(digger_radius_gfx.get_pixeldata(),
 					       static_cast<int>(pingu->get_x () - (digger_radius_gfx_width / 2)),
 					       static_cast<int>(pingu->get_y() - digger_radius_gfx_height + 2));
-#endif
   pingu->set_y(pingu->get_y() + 1);
 }
 

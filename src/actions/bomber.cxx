@@ -125,14 +125,12 @@ Bomber::update ()
   if (sprite.get_frame () >= 13 && !colmap_exploded)
     {
       colmap_exploded = true;
-#ifdef CLANLIB_0_6
-      WorldObj::get_world()->get_colmap()->remove(bomber_radius,
+      WorldObj::get_world()->get_colmap()->remove(bomber_radius.get_pixeldata(),
                                                   static_cast<int>(pingu->get_x () - (bomber_radius.get_width()/2)),
                                                   static_cast<int>(pingu->get_y () - 16 - (bomber_radius.get_width()/2)));
-      WorldObj::get_world()->get_gfx_map()->remove(bomber_radius_gfx,
+      WorldObj::get_world()->get_gfx_map()->remove(bomber_radius_gfx.get_pixeldata(),
                                                    static_cast<int>(pingu->get_x () - (bomber_radius.get_width()/2)),
                                                    static_cast<int>(pingu->get_y () - 16 - (bomber_radius.get_width()/2)));
-#endif
     }
 
 

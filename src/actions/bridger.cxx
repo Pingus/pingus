@@ -234,29 +234,26 @@ Bridger::place_a_brick()
   if (bricks < 4)
     Sound::PingusSound::play_sound("ting");
 
-#ifdef CLANLIB_0_6
-
   if (pingu->direction.is_right())
     {
-      WorldObj::get_world()->get_colmap()->put(brick_r,
+      WorldObj::get_world()->get_colmap()->put(brick_r.get_pixeldata(),
 					       static_cast<int>(pingu->get_x() + 10 - brick_r.get_width()),
 					       static_cast<int>(pingu->get_y()),
 					       Groundtype::GP_BRIDGE);
-      WorldObj::get_world()->get_gfx_map()->put(brick_r,
+      WorldObj::get_world()->get_gfx_map()->put(brick_r.get_pixeldata(),
 						static_cast<int>(pingu->get_x() + 10 - brick_r.get_width()),
 						static_cast<int>(pingu->get_y()));
     }
   else
     {
-      WorldObj::get_world()->get_colmap()->put(brick_r,
+      WorldObj::get_world()->get_colmap()->put(brick_r.get_pixeldata(),
 					       static_cast<int>(pingu->get_x() - 10),
 					       static_cast<int>(pingu->get_y()),
 					       Groundtype::GP_BRIDGE);
-      WorldObj::get_world()->get_gfx_map()->put(brick_l,
+      WorldObj::get_world()->get_gfx_map()->put(brick_l.get_pixeldata(),
 						static_cast<int>(pingu->get_x() - 10),
 						static_cast<int>(pingu->get_y()));
     }
-#endif
 }
 
 void

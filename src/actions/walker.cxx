@@ -216,7 +216,7 @@ Walker::draw (GraphicContext& gc)
       floaterlayer.set_direction(Sprite::RIGHT);
     }
 
-  gc.draw (walker, pingu->get_pos() + Vector (0, +2));
+  gc.draw(walker, pingu->get_pos() + Vector (0, +2));
 
   if (pingu->get_fall_action() && pingu->get_fall_action()->get_type() == Actions::Floater)
     {

@@ -77,7 +77,7 @@ ColMap::get_width()
 }
 
 void
-ColMap::remove(CL_PixelBuffer& provider, int x, int y)
+ColMap::remove(CL_PixelBuffer provider, int x, int y)
 {
   ++serial;
 
