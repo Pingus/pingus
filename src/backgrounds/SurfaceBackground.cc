@@ -1,4 +1,4 @@
-//  $Id: SurfaceBackground.cc,v 1.10 2001/06/11 20:40:17 grumbel Exp $
+//  $Id: SurfaceBackground.cc,v 1.11 2001/07/21 20:28:12 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -67,7 +67,9 @@ SurfaceBackground::SurfaceBackground(SurfaceBackgroundData* bg_data)
       //			    bg_data->color.red, bg_data->color.green, bg_data->color.blue, 
       //			    bg_data->color.alpha);
       
-      bg_surface = CL_Surface (canvas, true);
+      // FIXME: Sat Jul 21 21:57:15 2001
+      std::cout << "BUG: Stuff removed because of linker error" << std::endl;
+      //bg_surface = CL_Surface (canvas, true);
     }
   else
     {

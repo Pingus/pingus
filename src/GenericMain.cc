@@ -1,4 +1,4 @@
-//  $Id: GenericMain.cc,v 1.9 2001/06/17 17:18:27 grumbel Exp $
+//  $Id: GenericMain.cc,v 1.10 2001/07/21 20:28:12 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -45,7 +45,7 @@ GenericMain::get_title()
 int 
 GenericMain::main(int argc, char* argv[])
 {
-  std::ios::sync_with_stdio(false);
+  //std::ios::sync_with_stdio(false);
   //Uncomment for gcc-v3
   //std::ios_base::sync_with_stdio(false);
 

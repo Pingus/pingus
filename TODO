@@ -1,3 +1,50 @@
+Cool =:-) So the question is now, where do we start?
+
+When you have access to Visual C++ you could try to port the current
+Pingus CVS back to windows. The current VC++ project files are out of
+date and don't work any longer, so you would have to start more or
+less from scratch with them.
+
+The port should mainly involve to fix some C++ stuff that VC++ does
+not support or handles differently than g++ (variable scopes in
+for-loops[1], namespace stuff, etc.). There shouldn't be much
+problems, but as Pingus hasn't been compiled under windows for over a
+year now I don't really know whats the state of it.
+
+There are also some issues with the keyboard-input handling in the
+level editor, which makes the editor unusable under windows.
+
+
+Then there are also quite a lot of gameplay and interface problems.
+All the pingus actions could need some testing and fixing. For example
+pingus get stuck in a wall quite a lot while building bridges or
+jumping around.
+
+The multiplayer mode completly lacks a configuration dialog and the
+option menu needs a complete redesign and cleanup.
+
+There is also the story mode (worldmap), which currently isn't really
+written and need quite a lot of enhancement, like pathfinding and
+translation-screens between worldmaps.
+
+The level editor sooner or later needs a gui for editing the object
+properties (currently you have to edit the .xml files directly).
+
+We need also some better looking loading and result screens for the
+game, which appear after a level was completed.
+
+
+There is also a TODO file in the pingus CVS tree which list some
+issues, but its not really sorted or something, its more my personal
+notepad, so I don't know how helpfull it was.
+
+
+[1] For a workaround just add this line to the files that cause throuble:
+
+ #define for if(0); else for
+
+
+
 * offset fuer den editor
 * alterration of the lemmings rate
 
@@ -315,6 +362,6 @@ DOOR.WAV      MOUSEPRE.WAV  OING.WAV	     THUD.WAV
 
 
 
-$Date: 2001/07/09 11:08:59 $
+$Date: 2001/07/21 20:28:11 $
 
 -= EOF =-
