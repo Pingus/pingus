@@ -1,4 +1,4 @@
-//  $Id: plf2xml.cc,v 1.1 2000/07/13 20:05:27 grumbel Exp $
+//  $Id: plf2xml.cc,v 1.2 2000/07/13 20:28:48 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -105,6 +105,42 @@ write_position(int x_pos, int y_pos)
 	    << "      <x-pos>" << x_pos << "</x-pos>\n"
 	    << "      <y-pos>" << y_pos << "</y-pos>\n"
 	    << "    </position>\n";
+}
+
+void
+write_direction(entrance_data::Direction dir)
+{
+  switch (dir)
+    {
+    case entrance_data::LEFT:
+      std::cout << "    <direction>left</direction>\n" << std::endl;
+      break;
+    case entrance_data::RIGHT:
+      std::cout << "    <direction>right</direction>\n" << std::endl;
+      break;
+    case entrance_data::MISC:
+      std::cout << "    <direction>misc</direction>\n" << std::endl;
+      break;
+    }
+}
+
+void 
+write_entrances(PLF* plf)
+{
+  vector<entrance_data> objects = plf->get_entrance();
+  
+  for (vector<entrance_data>::iterator i = objects.begin(); 
+       i != objects.end(); 
+       i++)
+    {
+      std::cout << "<entrance>\n"
+		<< "  <type>" << i->type << "</type>\n"
+		<< "  <release-rate>" << i->release_rate << "</release-rate>\n";
+      write_direction(i->direction);
+      write_position(i->x_pos, i->y_pos, i->z_pos);
+      
+      std::cout << "</entrance>\n\n";
+    }
 }
 
 void
@@ -236,6 +272,7 @@ main(int argc, char* argv[])
 	write_background(plf);
 	write_actions(plf);
 
+	write_entrances(plf);
 	write_exits(plf);
 	write_hotspots(plf);
 	write_liquid(plf);
