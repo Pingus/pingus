@@ -1,4 +1,4 @@
-//  $Id: WorldObj.cc,v 1.2 2000/02/09 21:43:41 grumbel Exp $
+//  $Id: WorldObj.cc,v 1.3 2000/04/10 21:14:14 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,6 +29,12 @@ WorldObj::WorldObj()
 WorldObj::~WorldObj()
 {
   
+}
+
+void
+WorldObj::draw_colmap(ColMap*)
+{
+  // do nothing
 }
   
 void 
