@@ -1,4 +1,4 @@
-//  $Id: axis_factory.cxx,v 1.14 2003/04/19 10:23:18 torangan Exp $
+//  $Id: axis_factory.cxx,v 1.15 2003/06/16 20:58:11 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,7 +25,6 @@
 #include "axes/button_axis.hxx"
 #include "axes/inverted_axis.hxx"
 #include "axes/joystick_axis.hxx"
-#include "axes/mouse_axis.hxx"
 #include "axes/multiple_axis.hxx"
 #include "../debug.hxx"
 
@@ -46,9 +45,6 @@ Axis* AxisFactory::create(xmlNodePtr cur)
 
   else if (XMLhelper::equal_str(cur->name, "joystick-axis"))
     return joystick_axis(cur);
-
-  else if (XMLhelper::equal_str(cur->name, "mouse-axis"))
-    return mouse_axis(cur);
 
   else if (XMLhelper::equal_str(cur->name, "multiple-axis"))
     return multiple_axis(cur->children);
@@ -94,19 +90,6 @@ Axis* AxisFactory::joystick_axis (xmlNodePtr cur)
     PingusError::raise("JoystickAxis without axis parameter");
 
   return new JoystickAxis(id, axis, angle);
-}
-
-Axis* AxisFactory::mouse_axis (xmlNodePtr cur)
-{
-  float angle;
-  if (!XMLhelper::get_prop(cur, "angle", angle))
-    PingusError::raise("MouseAxis without angle parameter");
-
-  int axis;
-  if (!XMLhelper::get_prop(cur, "axis", axis))
-    PingusError::raise("MouseAxis without axis parameter");
-
-  return new MouseAxis(axis, angle);
 }
 
 Axis* AxisFactory::multiple_axis (xmlNodePtr cur)

@@ -22,7 +22,6 @@ libpingus_input_axes_a_SOURCES =       \
 	dummy_axis.hxx \
 	inverted_axis.hxx inverted_axis.cxx \
 	joystick_axis.hxx joystick_axis.cxx \
-	mouse_axis.hxx mouse_axis.cxx \
 	multiple_axis.hxx multiple_axis.cxx
 
 # EOF #

@@ -1,4 +1,4 @@
-//  $Id: pointer_factory.hxx,v 1.6 2003/04/19 10:23:18 torangan Exp $
+//  $Id: pointer_factory.hxx,v 1.7 2003/06/16 20:58:11 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,9 +29,9 @@ namespace Input {
   class PointerFactory
   {
     private:
-      static inline Pointer* axis_pointer     (xmlNodePtr cur);
-      static inline Pointer* mouse_pointer    ();
-      static inline Pointer* multiple_pointer (xmlNodePtr cur);
+      static Pointer* axis_pointer     (xmlNodePtr cur);
+      static Pointer* mouse_pointer    ();
+      static Pointer* multiple_pointer (xmlNodePtr cur);
 
     public:
       static Pointer* create (xmlNodePtr cur);
