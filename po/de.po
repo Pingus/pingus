@@ -100,7 +100,7 @@ msgstr "Datei speichern als:  "
 
 #: src/editor/editor_help_screen.cxx:38
 msgid "Editor Helpscreen (hide with F1)"
-msgstr ""
+msgstr "Editor Hilfe (ausblenden mit F1)"
 
 #: src/editor/editor_help_screen.cxx:45
 msgid "F1 - show/hide this help screen"
