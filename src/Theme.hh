@@ -1,4 +1,4 @@
-//  $Id: Theme.hh,v 1.6 2000/06/18 17:01:50 grumbel Exp $
+//  $Id: Theme.hh,v 1.7 2000/06/20 20:32:12 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -53,6 +53,10 @@ private:
   ///
   std::string   status_file;
 
+  /** This is the position at which the levelnames are printed, it is
+      used to calculate mark_level_at_point() */
+  int level_start_y_pos;
+
   ///
   bool has_description;
   ///
@@ -64,7 +68,12 @@ public:
   Theme(std::string);
   ///
   ~Theme();
-  
+
+  /** Marks the level, which is under the given coordinates 
+      @param x X-Position (normaly CL_Mouse::get_x())
+      @param y Y-Position (normaly CL_Mouse::get_y()) */
+  void mark_level_at_point(int x, int y);
+
   ///
   void next_level();
   ///
@@ -79,8 +88,7 @@ public:
   void draw_title();
   ///
   void play();
-}///
-;
+};
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: ThemeSelector.hh,v 1.7 2000/06/18 17:01:50 grumbel Exp $
+//  $Id: ThemeSelector.hh,v 1.8 2000/06/20 20:32:12 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -70,7 +70,9 @@ class ThemeSelector
 {
 public:
   ///
-  class Event : public CL_Event_ButtonPress, public CL_Event_ButtonRelease
+  class Event : public CL_Event_ButtonPress, 
+		public CL_Event_ButtonRelease,
+		public CL_Event_MouseMove
   {
   public:
     ///
@@ -81,6 +83,8 @@ public:
     virtual bool on_button_press(CL_InputDevice *device, const CL_Key &key);
     ///
     virtual bool on_button_release(CL_InputDevice *device, const CL_Key &key);
+    ///
+    virtual bool on_mouse_move(CL_InputDevice *device);
   }///
 ;
   ///
@@ -96,13 +100,15 @@ private:
   ///
   std::vector<Theme*>::iterator current_theme;
 
-  ///
+  /** A large font, used for the Title Name */
   CL_Font* title_font;
-  ///
+
+  /** This font is used for the levelnames */
   CL_Font* theme_font;
-  ///
+
+  /// The red arrow to the right
   CL_Surface* right_arrow;
-  ///
+  /// The red arrow to the left
   CL_Surface* left_arrow;
 
   ///
@@ -111,6 +117,7 @@ private:
   bool finished;
   ///
   ListBox list_box;
+
 public:
   ///
   ThemeSelector();
@@ -125,8 +132,12 @@ public:
   void   draw();
   ///
   bool key_pressed(int key);
-}///
-;
+
+  /** Marks the level, which is under the given coordinates 
+      @param x X-Position (normaly CL_Mouse::get_x())
+      @param y Y-Position (normaly CL_Mouse::get_y()) */
+  void mark_level_at_point(int x, int y);
+};
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: ThemeSelector.cc,v 1.18 2000/06/16 17:41:55 grumbel Exp $
+//  $Id: ThemeSelector.cc,v 1.19 2000/06/20 20:32:12 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -121,14 +121,10 @@ ThemeSelector::Event::on_button_press(CL_InputDevice *device, const CL_Key &key)
       switch (key.id)
 	{
 	case 0:
-	  // std::cout << "X: " << key.x << std::endl;
-	  // std::cout << "Y: " << key.y << std::endl;
-
 	  if (key.x > 0 && key.x < theme_selector->left_arrow->get_width()
 	      && key.y > (CL_Display::get_height() - theme_selector->left_arrow->get_height()) / 2
 	      && key.y < (CL_Display::get_height() + theme_selector->left_arrow->get_height()) / 2)
 	    {
-	      // std::cout << "Left pressed" << std::endl;
 	      theme_selector->current_theme++;
 	      if (theme_selector->current_theme == theme_selector->themes.end()) 
 		theme_selector->current_theme = theme_selector->themes.begin();
@@ -138,7 +134,6 @@ ThemeSelector::Event::on_button_press(CL_InputDevice *device, const CL_Key &key)
 		   && key.y > (CL_Display::get_height() - theme_selector->right_arrow->get_height()) / 2
 		   && key.y < (CL_Display::get_height() + theme_selector->right_arrow->get_height()) / 2)
 	    {
-	      // std::cout << "Right pressed" << std::endl;
 	      if (theme_selector->current_theme == theme_selector->themes.begin()) 
 		theme_selector->current_theme = theme_selector->themes.end();
 	      theme_selector->current_theme--;
@@ -154,6 +149,16 @@ ThemeSelector::Event::on_button_press(CL_InputDevice *device, const CL_Key &key)
 
   return true;
 }
+
+bool
+ThemeSelector::Event::on_mouse_move(CL_InputDevice *device)
+{
+  //std::cout << "Event: on_mouse_move called.." << std::endl;
+  if (!enabled) return true;  
+  //std::cout << "Event: on_mouse_move active.." << std::endl;  
+  theme_selector->mark_level_at_point(CL_Mouse::get_x(), CL_Mouse::get_y());
+  return false;
+} 
 
 ThemeSelector::ThemeSelector()
 {
@@ -171,6 +176,7 @@ ThemeSelector::ThemeSelector()
   
   CL_Input::chain_button_press.push_back(event);
   CL_Input::chain_button_release.push_back(event);
+  CL_Input::chain_mouse_move.push_back(event);
 }
 
 ThemeSelector::~ThemeSelector()
@@ -180,6 +186,7 @@ ThemeSelector::~ThemeSelector()
   for(std::vector<Theme*>::iterator i = themes.begin(); i != themes.end(); i++)
     delete (*i);
 
+  CL_Input::chain_mouse_move.remove(event);
   CL_Input::chain_button_press.remove(event);
   CL_Input::chain_button_release.remove(event);
   
@@ -278,6 +285,12 @@ ThemeSelector::readdir(std::string path)
 	  themes.push_back(new Theme(pathname + "/themes/" + entry->name));
 	}
     }
+}
+
+void
+ThemeSelector::mark_level_at_point(int x, int y)
+{
+  (*current_theme)->mark_level_at_point(x, y);
 }
 
 /* EOF */

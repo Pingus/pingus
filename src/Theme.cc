@@ -1,4 +1,4 @@
-//  $Id: Theme.cc,v 1.11 2000/06/08 20:05:35 grumbel Exp $
+//  $Id: Theme.cc,v 1.12 2000/06/20 20:32:12 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -102,6 +102,31 @@ Theme::load(std::string filename)
 }
 
 void
+Theme::mark_level_at_point(int x, int y)
+{
+  int j = 0;
+  int y_pos = level_start_y_pos;
+
+  for(std::vector<std::string>::iterator i = levelnames.begin();
+      i < levelnames.end(); 
+      i++, j++)
+    {
+      int width = font->get_text_width(i->c_str());
+      
+      if ((CL_Display::get_width()/2 - width/2) < x
+	  && (CL_Display::get_width()/2 + width/2) > x
+	  && y_pos < y
+	  && (y_pos + font->get_height()) > y)
+	{
+	  current_level = j;
+	  std::cout << "Current_level: " << current_level << std::endl;
+	  return;
+	}      
+      y_pos += font->get_height() + 4;
+    }
+}
+
+void
 Theme::draw_title()
 {
   int x_center =  CL_Display::get_width() / 2;
@@ -150,6 +175,8 @@ Theme::draw_title()
 
   y_pos += description.get_height() + 15 + 20;
   int j = 0;
+  
+  level_start_y_pos = y_pos;
 
   for(std::vector<std::string>::iterator i = levelnames.begin(); i < levelnames.end(); i++) 
     {
