@@ -927,9 +927,6 @@ PingusMain::init_pingus()
 
   fps_counter.init();
   console.init();
-
-  // FIXME: See action_data.hxx, a bit ugly
-  init_default_actions();
 }
 
 void
