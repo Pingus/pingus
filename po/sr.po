@@ -100,7 +100,7 @@ msgstr "Unesi naziv fajla za snimanje:"
 
 #: src/editor/editor_help_screen.cxx:38
 msgid "Editor Helpscreen (hide with F1)"
-msgstr ""
+msgstr "Pomoc za editor (sakrij sa F1)"
 
 #: src/editor/editor_help_screen.cxx:45
 msgid "F1 - show/hide this help screen"
@@ -720,7 +720,7 @@ msgstr "| Upozorenje: Pingus je primio SIGINT, izlaz odmah."
 
 #: src/pingus_main.cxx:306
 msgid "Warning: Larger resolution than 800x600 will result in visual problems"
-msgstr ""
+msgstr "Upozorenje: Rezolucije vece od 800x600 mogu da izazovu vizuelne probleme"
 
 #: src/pingus_main.cxx:487
 msgid "Unknow char: "
@@ -836,7 +836,7 @@ msgstr "OPCIJE su polja, vreme igre, akcije, zvuk, resursi, interfejs,"
 
 #: src/pingus_main.cxx:525
 msgid "input, pathmgr"
-msgstr ""
+msgstr "kontrole, putanje"
 
 #: src/pingus_main.cxx:526
 msgid "Skip at least N frames, larger values speed the game up"
@@ -892,11 +892,11 @@ msgstr "Zvuk:"
 
 #: src/pingus_main.cxx:541
 msgid "Disable sound"
-msgstr "Omoguci zvuk"
+msgstr "Onemoguci zvuk"
 
 #: src/pingus_main.cxx:542
 msgid "Disable music"
-msgstr "Omoguci muziku"
+msgstr "Onemoguci muziku"
 
 #: src/pingus_main.cxx:712
 msgid "clanVorbis support:           ok"
