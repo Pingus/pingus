@@ -1,4 +1,4 @@
- //  $Id: theme.cxx,v 1.22 2003/10/21 21:37:06 grumbel Exp $
+ //  $Id: theme.cxx,v 1.23 2003/10/22 11:11:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -102,6 +102,7 @@ Theme::load (const std::string& filename)
 int
 Theme::mark_level_at_point(int x, int y)
 {
+#ifdef CLANLIB_0_6
   preload ();
 
   int j = 0;
@@ -128,12 +129,14 @@ Theme::mark_level_at_point(int x, int y)
 	}
       y_pos += font.get_height() + 4;
     }
+#endif
   return -1;
 }
 
 void
 Theme::draw_title()
 {
+#ifdef CLANLIB_0_6
   preload ();
 
   int x_center =  CL_Display::get_width() / 2;
@@ -219,6 +222,7 @@ Theme::draw_title()
       ++j;
       y_pos += font.get_height() + 4;
     }
+#endif
 }
 
 void

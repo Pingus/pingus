@@ -1,4 +1,4 @@
-//  $Id: groundpiece_obj.cxx,v 1.17 2003/10/19 12:25:47 grumbel Exp $
+//  $Id: groundpiece_obj.cxx,v 1.18 2003/10/22 11:11:23 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -71,20 +71,25 @@ GroundpieceObj::status_line ()
 void
 GroundpieceObj::vertical_flip ()
 {
-  data->desc.modifier = ResourceModifierNS::vertical_flip(data->desc.modifier);
+#ifdef CLANLIB_0_6
+  data->desc.modifier  = ResourceModifierNS::vertical_flip(data->desc.modifier);
   sprite.get_surface() = PingusResource::load_surface(data->desc);
+#endif
 }
 
 void
 GroundpieceObj::horizontal_flip ()
 {
+#ifdef CLANLIB_0_6
   data->desc.modifier = ResourceModifierNS::horizontal_flip(data->desc.modifier);
   sprite.get_surface() = PingusResource::load_surface(data->desc);
+#endif
 }
 
 void
 GroundpieceObj::rotate_90 ()
 {
+#ifdef CLANLIB_0_6
   data->pos.x += sprite.get_width ()/2;
   data->pos.y += sprite.get_height()/2;
 
@@ -93,11 +98,13 @@ GroundpieceObj::rotate_90 ()
 
   data->pos.x -= sprite.get_width ()/2;
   data->pos.y -= sprite.get_height()/2;
+#endif
 }
 
 void
 GroundpieceObj::rotate_270 ()
 {
+#ifdef CLANLIB_0_6
   data->pos.x += sprite.get_width ()/2;
   data->pos.y += sprite.get_height()/2;
 
@@ -106,6 +113,7 @@ GroundpieceObj::rotate_270 ()
 
   data->pos.x -= sprite.get_width ()/2;
   data->pos.y -= sprite.get_height()/2;
+#endif
 }
 
 struct GroundpieceObjRotate {

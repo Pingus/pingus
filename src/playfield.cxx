@@ -1,4 +1,4 @@
-//  $Id: playfield.cxx,v 1.39 2003/10/21 21:37:06 grumbel Exp $
+//  $Id: playfield.cxx,v 1.40 2003/10/22 11:11:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -121,18 +121,19 @@ Playfield::draw (GraphicContext& gc)
 
        CL_Display::draw_line (mouse_x, mouse_y,
 			      scroll_center_x, scroll_center_y,
-			      1.0f, 0.0f, 0.0f, 1.0f);
+			      Display::to_color(1.0f, 0.0f, 0.0f, 1.0f));
 
        CL_Display::draw_line (mouse_x, mouse_y,
 			      scroll_center_x, scroll_center_y+15,
-			      0.0f, 0.0f, 1.0f, 1.0f);
+			      Display::to_color(0.0f, 0.0f, 1.0f, 1.0f));
 
        CL_Display::draw_line (mouse_x, mouse_y,
 			      scroll_center_x + 15, scroll_center_y,
-			      0.0f, 1.0f, 1.0f, 1.0f);
+			      Display::to_color(0.0f, 1.0f, 1.0f, 1.0f));
+
        CL_Display::draw_line (mouse_x, mouse_y,
 			      scroll_center_x - 15, scroll_center_y,
-			      1.0f, 1.0f, 0.0f, 1.0f);
+			      Display::to_color(1.0f, 1.0f, 0.0f, 1.0f));
     }
   UNUSED_ARG(gc);
 }

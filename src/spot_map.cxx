@@ -1,4 +1,4 @@
-//  $Id: spot_map.cxx,v 1.30 2003/10/21 21:37:06 grumbel Exp $
+//  $Id: spot_map.cxx,v 1.31 2003/10/22 11:11:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,6 +25,7 @@
 #include "blitter.hxx"
 #include "spot_map.hxx"
 #include "gettext.h"
+#include "canvas.hxx"
 #include "col_map.hxx"
 #include "math.hxx"
 
@@ -179,8 +180,8 @@ PingusSpotMap::draw(GraphicContext& gc)
   else
     {
       // Trying to calc which parts of the tilemap needs to be drawn
-      int start_x = Math::max(0, display.x1/tile_size);
-      int start_y = Math::max(0, display.y1/tile_size);
+      int start_x = Math::max(0, display.left/tile_size);
+      int start_y = Math::max(0, display.top/tile_size);
       unsigned int tilemap_width  = display.get_width()  / tile_size + 1;
       unsigned int tilemap_height = display.get_height() / tile_size + 1;
 
@@ -233,15 +234,14 @@ PingusSpotMap::get_height(void)
 void
 PingusSpotMap::remove(CL_PixelBuffer* sprovider, int x, int y)
 {
+#ifdef CLANLIB_0_6
   // Get the start tile and end tile
   int start_x = Math::max(x / tile_size, 0);
   int start_y = Math::max(y / tile_size, 0);
   int end_x   = Math::min((x + sprovider->get_width()) / tile_size,
-                          static_cast<unsigned int>((width - 1) / tile_size));
+                          (width - 1) / tile_size);
   int end_y   = Math::min((y + sprovider->get_height()) / tile_size,
-                          static_cast<unsigned int>((height - 1) / tile_size));
-
-
+                          (height - 1) / tile_size);
 
   for(int ix = start_x; ix <= end_x; ++ix)
     {
@@ -249,7 +249,7 @@ PingusSpotMap::remove(CL_PixelBuffer* sprovider, int x, int y)
 	{
 	  if (!tile[ix][iy].is_empty())
 	    {
-	      put_alpha_surface(static_cast<CL_Canvas*>(tile[ix][iy].surface.get_provider()),
+	      put_alpha_surface(static_cast<CL_PixelBuffer*>(tile[ix][iy].surface.get_provider()),
 				sprovider,
 				x - (ix * tile_size), y - (iy * tile_size),
 				// FIXME, I am broken
@@ -259,12 +259,14 @@ PingusSpotMap::remove(CL_PixelBuffer* sprovider, int x, int y)
 	    }
 	}
     }
+#endif
 }
 
 void
-PingusSpotMap::put_alpha_surface(CL_Canvas* provider, CL_PixelBuffer* sprovider,
+PingusSpotMap::put_alpha_surface(CL_PixelBuffer* provider, CL_PixelBuffer* sprovider,
 				 int x, int y, int real_x_arg, int real_y_arg)
 {
+#ifdef CLANLIB_0_6
   int start_i;
   unsigned char* tbuffer; // Target buffer
   int twidth, theight, tpitch;
@@ -357,6 +359,7 @@ PingusSpotMap::put_alpha_surface(CL_Canvas* provider, CL_PixelBuffer* sprovider,
 
   sprovider->unlock();
   provider->unlock();
+#endif
 }
 
 void
@@ -384,9 +387,8 @@ PingusSpotMap::put(CL_PixelBuffer* sprovider, int x, int y)
 	{
 	  if (tile[ix][iy].surface == 0)
 	    {
-	      CL_Canvas* canvas;
-	      //std::cout << "PingusSpotMap: Drawing to an emtpy tile: " << ix << " " << iy << std::endl;
-	      canvas = new CL_Canvas(tile_size, tile_size);
+	      CL_PixelBuffer* canvas = Canvas::create_rgba8888(tile_size, tile_size);
+
 	      Blitter::clear_canvas(canvas);
 
 	      Blitter::put_surface(canvas, sprovider,
@@ -396,9 +398,11 @@ PingusSpotMap::put(CL_PixelBuffer* sprovider, int x, int y)
 	    }
 	  else
 	    {
-	      Blitter::put_surface(static_cast<CL_Canvas*>(tile[ix][iy].surface.get_provider()),
+#ifdef CLANLIB_0_6
+	      Blitter::put_surface(static_cast<CL_PixelBuffer*>(tile[ix][iy].surface.get_provider()),
 				   sprovider,
 				   x - (ix * tile_size), y - (iy * tile_size));
+#endif
 	    }
 	  /*
 	    CL_Surface s = CL_Surface::create(sprovider);

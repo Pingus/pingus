@@ -1,4 +1,4 @@
-//  $Id: boarder.cxx,v 1.16 2003/10/18 23:17:27 grumbel Exp $
+//  $Id: boarder.cxx,v 1.17 2003/10/22 11:11:23 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,7 +31,7 @@ Boarder::Boarder (Pingu* p)
   : PinguAction(p),
     x_pos(pingu->get_x()),
     speed(0.0),
-    sprite(PingusResource::load_surface("Pingus/boarder" + to_string(pingu->get_owner ()), "pingus"))
+    sprite("Pingus/boarder" + to_string(pingu->get_owner()), "pingus")
 {
   sprite.set_align_center_bottom();
 }

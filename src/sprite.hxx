@@ -1,4 +1,4 @@
-//  $Id: sprite.hxx,v 1.13 2003/10/18 23:17:27 grumbel Exp $
+//  $Id: sprite.hxx,v 1.14 2003/10/22 11:11:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,6 +36,7 @@ public:
   typedef enum { ENDLESS, ONCE } LoopType;
 
 private:
+  CL_Sprite sprite;
   float frame;
   float frames_per_second;
   Direction direction;
@@ -63,7 +64,7 @@ public:
 	  Direction dir = NONE,
 	  LoopType arg_loop_type = ENDLESS);
 
-  Sprite (const CL_Surface& sur,
+  Sprite (const CL_Sprite& sur,
 	  float frames_per_second = 10.0f,
 	  Direction dir = NONE,
 	  LoopType arg_loop_type = ENDLESS);
@@ -119,7 +120,7 @@ public:
 
   /** Set the current direction of the surface, WARNING: Does only
       work in a few cases... FIXME: rewrite when
-      CL_Surface::get_num_xframes () exists
+      CL_Sprite::get_num_frames () exists
   @param dir Direction: LEFT, RIGHT, NONE */
   void set_direction (Sprite::Direction dir) { direction = dir; }
 
@@ -150,7 +151,7 @@ public:
   void set_frame (int n);
 
   /// @return the surface which is used internally
-  CL_Surface& get_surface ();
+  CL_Sprite& get_sprite();
 };
 
 } // namespace Pingus

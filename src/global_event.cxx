@@ -1,4 +1,4 @@
-//  $Id: global_event.cxx,v 1.14 2003/10/21 21:37:06 grumbel Exp $
+//  $Id: global_event.cxx,v 1.15 2003/10/22 11:11:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -40,10 +40,11 @@ GlobalEvent::GlobalEvent ()
 void
 GlobalEvent::on_button_press(const CL_InputEvent& event)
 {
-  if (event.device.get_type() == CL_InputEvent::keyboard)
+  if (event.device.get_type() == CL_InputDevice::keyboard)
     {
-      switch (key.id)
+      switch (event.id)
 	{
+#ifdef CLANLIB_0_6
 	  // F1 is the general console modifer key...
 	case CL_KEY_PAGEUP:
 	  //if (CL_Keyboard::get_keycode(PINGUS_CL_KEY_HELP))
@@ -110,6 +111,7 @@ GlobalEvent::on_button_press(const CL_InputEvent& event)
 	      exit (0);
 	    }
 
+#endif
 	default:
 	  // console << "GlobalEvent: Unknown key pressed: " << key.id;
 	  break;

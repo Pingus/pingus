@@ -1,4 +1,4 @@
-//  $Id: pingus_resource.cxx,v 1.32 2003/10/21 21:37:06 grumbel Exp $
+//  $Id: pingus_resource.cxx,v 1.33 2003/10/22 11:11:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -56,10 +56,6 @@ PingusResource::deinit()
        ++i)
     delete i->second;
 
-  for (std::map<ResDescriptor, CL_Font*>::iterator i = font_map.begin();
-       i != font_map.end ();
-       ++i)
-    delete i->second;
   resource_map.clear();
   surface_map.clear();
   font_map.clear();
@@ -107,7 +103,7 @@ CL_Sprite
 PingusResource::load_sprite(const std::string& res_name, 
                             const std::string& datafile)
 {
-  CL_ResourceManager* res = get(res_name, datafile);
+  CL_ResourceManager* res = get(datafile);
   return CL_Sprite(res_name, res);
 }
 
@@ -262,7 +258,7 @@ PingusResource::load_from_source (const ResDescriptor& res_desc)
     }
 }
 
-CL_Font*
+CL_Font
 PingusResource::load_font(const std::string& res_name,
 			  const std::string& datafile)
 {
@@ -287,8 +283,8 @@ PingusResource::load_font(const ResDescriptor& res_desc)
 	{
 	case ResDescriptor::RD_RESOURCE:
 	  try {
-	    font = CL_Font::load(res_desc.res_name.c_str(),
-				 get(res_desc.datafile));
+	    font = CL_Font(res_desc.res_name.c_str(),
+                           get(res_desc.datafile));
 	  } catch (CL_Error err) {
 	    pout << "PingusResource: " << err.message << std::endl
 	         << "PingusResource: Couldn't load font: " << res_desc << std::endl;
@@ -299,15 +295,15 @@ PingusResource::load_font(const ResDescriptor& res_desc)
 
 	case ResDescriptor::RD_FILE:
 	  pout << "PingusResource: ResDescriptor::FILE not implemented" << std::endl;
-	  return 0;
+	  return CL_Font();
 
 	case ResDescriptor::RD_AUTO:
 	  pout << "PingusResource: ResDescriptor::AUTO not implemented" << std::endl;
-	  return 0;
+	  return CL_Font();
 
 	default:
 	  pout << "PingusResource: Unknown ResDescriptor::type: " << res_desc.type  << std::endl;
-	  return 0;
+	  return CL_Font();
 	}
     }
 }
@@ -346,6 +342,7 @@ unsigned int
 PingusResource::get_mtime (const std::string& res_name,
 			   const std::string& datafile)
 {
+#ifdef CLANLIB_0_6
   try
     {
       CL_ResourceManager* res_man = PingusResource::get(datafile);
@@ -370,6 +367,8 @@ PingusResource::get_mtime (const std::string& res_name,
       std::cout << "PingusResource::get_mtime: CL_Error: " << err.message << std::endl;
       return 0;
     }
+#endif
+  return 0;
 }
 
 } // namespace Pingus

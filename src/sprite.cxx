@@ -1,4 +1,4 @@
-//  $Id: sprite.cxx,v 1.17 2003/10/21 21:37:06 grumbel Exp $
+//  $Id: sprite.cxx,v 1.18 2003/10/22 11:11:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,9 +33,9 @@ Sprite::Sprite ()
 }
 
 Sprite::Sprite (const Sprite& sprite) 
-  : frame (sprite.frame),
+  : sprite(sprite.sprite),
+    frame (sprite.frame),
     frames_per_second (sprite.frames_per_second),
-    sur(sprite.sur),
     direction (sprite.direction),
     looptype (sprite.looptype),
     is_finished (sprite.is_finished),
@@ -45,31 +45,31 @@ Sprite::Sprite (const Sprite& sprite)
 }
 
 Sprite&
-Sprite::operator= (const Sprite& sprite)
+Sprite::operator= (const Sprite& arg_sprite)
 {
-  if (this == &sprite)
+  if (this == &arg_sprite)
     return *this;
 
-  frame             = sprite.frame;
-  frames_per_second = sprite.frames_per_second;
-  sur               = sprite.sur;
-  direction         = sprite.direction;
-  looptype          = sprite.looptype;
-  is_finished       = sprite.is_finished;
-  x_align           = sprite.x_align;
-  y_align           = sprite.y_align;
+  sprite            = arg_sprite.sprite;
+  frame             = arg_sprite.frame;
+  frames_per_second = arg_sprite.frames_per_second;
+  direction         = arg_sprite.direction;
+  looptype          = arg_sprite.looptype;
+  is_finished       = arg_sprite.is_finished;
+  x_align           = arg_sprite.x_align;
+  y_align           = arg_sprite.y_align;
 
   return *this;
 }
 
-Sprite::Sprite (std::string arg_sur_name,
+Sprite::Sprite (std::string arg_sprite_name,
 		std::string arg_datafile,
 		float arg_frames_per_second,
 		Sprite::Direction dir,
 		LoopType arg_loop_type)
-  : frame (0.0f),
+  : sprite(PingusResource::load_sprite(arg_sprite_name, arg_datafile)),
+    frame (0.0f),
     frames_per_second (arg_frames_per_second),
-    sur(PingusResource::load_surface (arg_sur_name, arg_datafile)),
     direction (dir),
     looptype (arg_loop_type),
     is_finished (false),
@@ -77,7 +77,7 @@ Sprite::Sprite (std::string arg_sur_name,
 {
 }
 
-Sprite::Sprite (const CL_Surface& arg_sur,
+Sprite::Sprite (const CL_Sprite& arg_sprite,
 		float arg_frames_per_second,
 		Sprite::Direction dir,
 		LoopType arg_loop_type)
@@ -88,7 +88,7 @@ Sprite::Sprite (const CL_Surface& arg_sur,
     is_finished (false),
     x_align (0), y_align (0)
 {
-  sur = arg_sur;
+  sprite = arg_sprite;
 }
 
 Sprite::Sprite (const ResDescriptor& desc,
@@ -102,15 +102,16 @@ Sprite::Sprite (const ResDescriptor& desc,
     is_finished (false),
     x_align (0), y_align (0)
 {
-  sur = PingusResource::load_surface (desc);
+  sprite = PingusResource::load_sprite(desc);
 }
 
 void
 Sprite::draw (int x, int y)
 {
-  //if (!sur)// FIXME: CL0.7
+  //if (!sprite)// FIXME: CL0.7
   //return;
 
+#ifdef CLANLIB_0_6
   // FIXME: HACK
   update (0.0f);
   //std::cout << "Frame: " << round(frame) << " " << frame << " " << max_frames () << std::endl;
@@ -118,18 +119,19 @@ Sprite::draw (int x, int y)
   switch (direction)
     {
     case Sprite::NONE:
-      sur.draw(x + x_align, y + y_align, Math::round(frame));
+      sprite.draw(x + x_align, y + y_align, Math::round(frame));
       break;
     case Sprite::LEFT:
-      sur.draw(x + x_align, y + y_align, Math::round(frame));
+      sprite.draw(x + x_align, y + y_align, Math::round(frame));
       break;
     case Sprite::RIGHT:
-      sur.draw (x + x_align, y + y_align, Math::round(frame) + max_frames ());
+      sprite.draw (x + x_align, y + y_align, Math::round(frame) + max_frames ());
       break;
     default:
       std::cout << "Direction: " << direction << std::endl;
       assert(0);
     }
+#endif
 }
 
 void
@@ -141,7 +143,8 @@ Sprite::draw (const Vector& pos)
 void
 Sprite::draw(GraphicContext& gc, const Vector& pos)
 {
-  if (!sur)
+#ifdef CLANLIB_0_6
+  if (!sprite)
     return;
 
   // FIXME: HACK
@@ -154,17 +157,18 @@ Sprite::draw(GraphicContext& gc, const Vector& pos)
     {
     case Sprite::NONE:
     case Sprite::LEFT:
-      gc.draw(sur, x + x_align, y + y_align, Math::round(frame));
+      gc.draw(sprite, x + x_align, y + y_align, Math::round(frame));
       break;
 
     case Sprite::RIGHT:
-      gc.draw(sur, x + x_align, y + y_align, Math::round(frame) + max_frames ());
+      gc.draw(sprite, x + x_align, y + y_align, Math::round(frame) + max_frames ());
       break;
 
     default:
       std::cout << "Direction: " << direction << std::endl;
       assert(0);
     }
+#endif
 }
 
 void
@@ -177,15 +181,15 @@ Sprite::set_align (int arg_x, int arg_y)
 void
 Sprite::set_align_center ()
 {
-  x_align = -int(sur.get_width ())/2;
-  y_align = -int(sur.get_height ())/2;
+  x_align = -int(sprite.get_width ())/2;
+  y_align = -int(sprite.get_height ())/2;
 }
 
 void
 Sprite::set_align_center_bottom ()
 {
-  x_align = -int(sur.get_width ())/2;
-  y_align = -int(sur.get_height ());
+  x_align = -int(sprite.get_width ())/2;
+  y_align = -int(sprite.get_height ());
 }
 
 
@@ -194,7 +198,7 @@ Sprite::next_frame ()
 {
   ++frame;
 
-  if (Math::round(frame) >= int(sur.get_num_frames ()))
+  if (Math::round(frame) >= int(sprite.get_frame_count()))
     frame = 0;
 }
 
@@ -204,7 +208,7 @@ Sprite::previous_frame ()
   --frame;
 
   if (Math::round(frame) < 0)
-    frame = sur.get_num_frames () - 1;
+    frame = sprite.get_frame_count() - 1;
 }
 
 
@@ -226,10 +230,10 @@ Sprite::max_frames ()
   switch (direction)
     {
     case NONE:
-      return sur.get_num_frames ();
+      return sprite.get_frame_count();
     case LEFT:
     case RIGHT:
-      return sur.get_num_frames ()/2;
+      return sprite.get_frame_count()/2;
     default:
       assert (0);
       return 0;
@@ -246,7 +250,7 @@ Sprite::update ()
 void
 Sprite::update (float delta)
 {
-  if (!sur)
+  if (!sprite)
     return;
 
   // The sprite contains no frames, so we have nothing to update
@@ -305,10 +309,10 @@ Sprite::reset ()
   is_finished = false;
 }
 
-CL_Surface&
-Sprite::get_surface ()
+CL_Sprite&
+Sprite::get_sprite ()
 {
-  return sur;
+  return sprite;
 }
 
 void

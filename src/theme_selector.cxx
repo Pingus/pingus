@@ -1,4 +1,4 @@
-//  $Id: theme_selector.cxx,v 1.16 2003/10/21 21:37:06 grumbel Exp $
+//  $Id: theme_selector.cxx,v 1.17 2003/10/22 11:11:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -69,7 +69,9 @@ ListItem::ListItem(std::string l)
   font = Fonts::smallfont_h;
 }
 
-ListItem::ListItem (const ListItem& old) : label(old.label), font(new CL_Font(*(old.font)))
+ListItem::ListItem (const ListItem& old) 
+  : label(old.label),
+    font(old.font)
 {
 }
 

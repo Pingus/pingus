@@ -1,4 +1,4 @@
-//  $Id: angel.cxx,v 1.19 2003/10/18 23:17:27 grumbel Exp $
+//  $Id: angel.cxx,v 1.20 2003/10/22 11:11:23 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,7 +32,7 @@ Angel::Angel (Pingu* p)
   : PinguAction(p),
     counter(0.0),
     x_pos(pingu->get_x()),
-    sprite(PingusResource::load_surface("Pingus/angel" + to_string(pingu->get_owner()), "pingus"))
+    sprite("Pingus/angel" + to_string(pingu->get_owner()), "pingus")
 {
   sprite.set_align_center_bottom();
 }

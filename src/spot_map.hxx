@@ -1,4 +1,4 @@
-//  $Id: spot_map.hxx,v 1.10 2003/10/18 23:17:27 grumbel Exp $
+//  $Id: spot_map.hxx,v 1.11 2003/10/22 11:11:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,7 +26,7 @@
 #include "pingu_map.hxx"
 #include "worldobjsdata/groundpiece_data.hxx"
 
-class CL_Canvas;
+class CL_PixelBuffer;
 
 namespace Pingus {
 
@@ -95,7 +95,7 @@ public:
 private:
   /** Low level version of the remove() call, acts on a single canvas
       instead on the complete map-tiles */
-  void put_alpha_surface(CL_Canvas* provider, CL_PixelBuffer* sprovider,
+  void put_alpha_surface(CL_PixelBuffer* provider, CL_PixelBuffer* sprovider,
 			 int x, int y, int real_x, int real_y);
 
   /** Draw the collision map onto the screen */

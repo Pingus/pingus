@@ -1,4 +1,4 @@
-//  $Id: editor_view.cxx,v 1.12 2003/10/19 12:25:47 grumbel Exp $
+//  $Id: editor_view.cxx,v 1.13 2003/10/22 11:11:23 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -166,20 +166,24 @@ EditorView::get_y_offset ()
 void
 EditorView::draw (Sprite& sprite, const Vector& pos)
 {
+#ifdef CLANLIB_0_6
   CL_Surface sur (sprite.get_surface ());
   draw (sur,
 	(int) pos.x + sprite.get_x_align (),
 	(int) pos.y + sprite.get_y_align ());
+#endif
 }
 
 void
 EditorView::draw (Sprite& sprite, const Vector& pos, int frame)
 {
+#ifdef CLANLIB_0_6
   CL_Surface sur (sprite.get_surface ());
   draw (sur,
 	(int) pos.x + sprite.get_x_align (),
 	(int) pos.y + sprite.get_y_align (),
 	frame);
+#endif
 }
 
 void
