@@ -156,8 +156,7 @@ SmallMapImage::update_surface()
     }
   canvas.unlock();
 
-  // sur.set_pixeldata(CL_Point(0, 0), canvas);
-  sur = CL_Surface(canvas);
+  sur.set_pixeldata(CL_Point(0, 0), canvas);
 }
 
 } // namespace Pingus
