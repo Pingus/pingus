@@ -1,4 +1,4 @@
-//  $Id: PingusSound.hh,v 1.6 2000/04/20 17:17:15 grumbel Exp $
+//  $Id: PingusSound.hh,v 1.7 2000/04/21 09:47:36 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,8 +20,7 @@
 #ifndef PINGUSSOUND_HH
 #define PINGUSSOUND_HH
 
-#include <SDL/SDL.h>
-#include <SDL/SDL_mixer.h>
+#include "audio.hh"
 
 class PingusSound
 {

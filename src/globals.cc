@@ -1,4 +1,4 @@
-//  $Id: globals.cc,v 1.13 2000/04/20 17:12:11 grumbel Exp $
+//  $Id: globals.cc,v 1.14 2000/04/21 09:47:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -47,11 +47,5 @@ int    screen_width  = 800;
 int    screen_height = 600;
 bool   preload_data  = true;
 bool   draw_collision_map = false;
-
-// Sound data
-Uint16 pingus_audio_format   = AUDIO_S16;
-int    pingus_audio_rate     = 44000;
-int    pingus_audio_channels = 2;
-int    pingus_audio_buffers  = 4096;
 
 /* EOF */

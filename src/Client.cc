@@ -1,4 +1,4 @@
-//  $Id: Client.cc,v 1.16 2000/04/14 18:18:23 grumbel Exp $
+//  $Id: Client.cc,v 1.17 2000/04/21 09:47:35 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <config.h>
 #include "globals.hh"
 #include "Client.hh"
 #include "FadeOut.hh"
@@ -70,7 +71,6 @@ Client::start(std::string plf_filename, std::string psm_filename)
 {
   play_level(plf_filename, psm_filename);
   do_replay = false;
-  Mix_FadeOutMusic(1000);
   FadeOut::random();
 }
 
@@ -171,9 +171,11 @@ Client::play_level(std::string plf_filename, std::string psm_filename)
   CL_Display::clear_display();
   CL_Display::flip_display();
   CL_Display::clear_display();
-    
+
+#ifdef HAVE_LIBSDL_MIXER
   PingusSound::play(find_file(pingus_datadir, "music/" + plf->get_music().res_name));
-  
+#endif
+
   // Main Game Loop
   while (!server->is_finished()) 
     {

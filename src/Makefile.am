@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.14 2000/04/20 17:17:14 grumbel Exp $
+#  $Id: Makefile.am,v 1.15 2000/04/21 09:47:36 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -121,6 +121,7 @@ pingus_SOURCES = \
                  SmallMap.cc          SmallMap.hh          \
                  Config.cc            Config.hh            \
                  PingusSound.cc       PingusSound.hh       \
-                 PingusMusicProvider.cc PingusMusicProvider.hh
+                 PingusMusicProvider.cc PingusMusicProvider.hh \
+                 audio.cc             audio.hh
 
 

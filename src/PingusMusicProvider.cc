@@ -1,4 +1,4 @@
-//  $Id: PingusMusicProvider.cc,v 1.1 2000/04/20 17:17:15 grumbel Exp $
+//  $Id: PingusMusicProvider.cc,v 1.2 2000/04/21 09:47:36 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <config.h>
 #include "PingusError.hh"
 #include "PingusMusicProvider.hh"
 
@@ -25,6 +26,7 @@ list<PingusMusicProvider::music_pair> PingusMusicProvider::music;
 Mix_Music*
 PingusMusicProvider::load(string str)
 {
+#ifdef HAVE_LIBSDL_MIXER
   Mix_Music* music_data;
 
   music_data = get(str);
@@ -49,6 +51,7 @@ PingusMusicProvider::load(string str)
 	  return song.data;
 	}
     }
+#endif /* HAVE_LIBSDL_MIXER */
 }
 
 Mix_Music*

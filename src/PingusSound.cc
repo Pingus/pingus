@@ -1,4 +1,4 @@
-//  $Id: PingusSound.cc,v 1.6 2000/04/20 17:17:15 grumbel Exp $
+//  $Id: PingusSound.cc,v 1.7 2000/04/21 09:47:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,7 +18,8 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <string>
-
+#include <cstdio>
+#include <config.h>
 #include "globals.hh"
 #include "PingusMusicProvider.hh"
 #include "PingusSound.hh"
@@ -31,6 +32,7 @@ void
 PingusSound::init(int audio_rate, Uint16 audio_format,
 		  int audio_channels, int audio_buffers)
 {
+#ifdef HAVE_LIBSDL_MIXER
   music = 0;
   is_init = true;
 
@@ -64,11 +66,13 @@ PingusSound::init(int audio_rate, Uint16 audio_format,
   Mix_SetMusicCMD(getenv("MUSIC_CMD"));
 
   printf("SDL init... done\n");
+#endif /* HAVE_LIBSDL_MIXER */
 }
 
 void
 PingusSound::clean_up()
 {
+#ifdef HAVE_LIBSDL_MIXER
   if (is_init)
     {
       if( Mix_PlayingMusic() ) 
@@ -90,11 +94,13 @@ PingusSound::clean_up()
 	}
       SDL_Quit();
     }
+#endif /* HAVE_LIBSDL_MIXER */
 }
 
 void
 PingusSound::play(string filename)
 {
+#ifdef HAVE_LIBSDL_MIXER
   if (!is_init)
     {
       init(pingus_audio_rate, pingus_audio_format,
@@ -112,6 +118,7 @@ PingusSound::play(string filename)
 
   Mix_FadeInMusic(music,-1,2000);
   printf("Playing...now\n");
+#endif /* HAVE_LIBSDL_MIXER */
 }
 
 void

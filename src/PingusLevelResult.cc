@@ -1,4 +1,4 @@
-//  $Id: PingusLevelResult.cc,v 1.8 2000/04/14 18:18:23 grumbel Exp $
+//  $Id: PingusLevelResult.cc,v 1.9 2000/04/21 09:47:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,8 @@
 #include <cstdio>
 #include <ClanLib/core.h>
 
+#include <config.h>
+
 #include "globals.hh"
 #include "PingusResource.hh"
 #include "PingusLevelResult.hh"
@@ -39,7 +41,9 @@ PingusLevelResult::draw(void)
 {
   char  str[1024];
 
+#ifdef HAVE_LIBSDL_MIXER
   PingusSound::play("../data/music/pingus-2.it");
+#endif
 
   for(int y = 0; y < CL_Display::get_height(); y += background->get_height())
     for(int x = 0; x < CL_Display::get_width(); x += background->get_width())

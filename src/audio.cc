@@ -1,5 +1,5 @@
-//  $Id: PingusMusicProvider.hh,v 1.2 2000/04/21 09:47:36 grumbel Exp $
-// 
+//  $Id: audio.cc,v 1.1 2000/04/21 09:44:42 grumbel Exp $
+//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -12,31 +12,18 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef PINGUSMUSICPROVIDER_HH
-#define PINGUSMUSICPROVIDER_HH
-
-#include <list>
-#include <string>
 #include "audio.hh"
 
-class PingusMusicProvider
-{
-private:
-  struct music_pair {
-    Mix_Music* data;
-    string     filename;
-  };
-  static list<music_pair> music;
-public:
-  static Mix_Music* load(string);
-  static Mix_Music* get(string);
-};
+// Sound data
+Uint16 pingus_audio_format   = AUDIO_S16;
+int    pingus_audio_rate     = 44000;
+int    pingus_audio_channels = 2;
+int    pingus_audio_buffers  = 4096;
 
-#endif
 
 /* EOF */
