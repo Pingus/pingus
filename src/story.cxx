@@ -1,4 +1,4 @@
-//  $Id: story.cxx,v 1.30 2003/08/17 16:06:39 torangan Exp $
+//  $Id: story.cxx,v 1.31 2003/08/18 06:51:26 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,7 +43,7 @@ Story::init_credits()
       StringFormat::break_line(
       _("Now after you and the Pingus have learned the basics and\n"
         "practiced a bit it is time to move on and begin the journey into\n"
-        "the world. Since the floe with which the Pingus traveled to the\n"
+        "the world. Since the ice floe with which the Pingus traveled to the\n"
         "Tutorial Island isn't going to hold on the whole way into the warmer\n"
         "climates the Pingus have to find something else to guide\n"
         "them on their journey.\n"), 570, Fonts::chalk_normal)
