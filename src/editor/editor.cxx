@@ -1,4 +1,4 @@
-//  $Id: editor.cxx,v 1.8 2002/06/29 09:44:56 grumbel Exp $
+//  $Id: editor.cxx,v 1.9 2002/06/29 11:54:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -547,5 +547,11 @@ Editor::interactive_load()
     }
 }
 */
+
+CL_GUIManager*
+Editor::get_gui_manager ()
+{
+  return gui;
+}
 
 /* EOF */

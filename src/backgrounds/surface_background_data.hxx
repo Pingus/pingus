@@ -1,4 +1,4 @@
-//  $Id: surface_background_data.hxx,v 1.4 2002/06/25 12:20:33 grumbel Exp $
+//  $Id: surface_background_data.hxx,v 1.5 2002/06/29 11:54:22 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -79,6 +79,7 @@ public:
 };
 
 
+// FIXME: this should get into its own file
 class EditorSurfaceBackground : public SurfaceBackgroundData,
 				public SpriteEditorObj
 {

@@ -1,4 +1,4 @@
-//  $Id: action_window.hxx,v 1.2 2002/06/29 09:44:56 grumbel Exp $
+//  $Id: action_window.hxx,v 1.3 2002/06/29 11:54:22 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,6 +36,8 @@ private:
   CL_Button* ok_button;
   CL_Button* cancel_button;
 
+  CL_Slot ok_button_slot;
+  CL_Slot cancel_button_slot;
 public:
   ActionWindow (CL_Component* parent, std::vector<ActionData>*); 
 
@@ -45,7 +47,8 @@ public:
   void show ();
   void hide ();
 private:
-  void sync_with_data ();
+  void read_data ();
+  void write_data ();
 };
 
 #endif

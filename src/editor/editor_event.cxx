@@ -1,4 +1,4 @@
-//  $Id: editor_event.cxx,v 1.12 2002/06/29 09:44:56 grumbel Exp $
+//  $Id: editor_event.cxx,v 1.13 2002/06/29 11:54:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -827,6 +827,28 @@ void
 EditorEvent::editor_show_actions_window ()
 {
   editor->action_window->show ();
+}
+
+void
+EditorEvent::editor_show_object_properties ()
+{
+  if (object_manager->current_objs.size() == 1)
+    {
+      boost::shared_ptr<EditorObj>  obj = *object_manager->current_objs.begin ();
+      CL_Component* comp = obj->get_gui_dialog (editor->get_gui_manager ());
+      if (comp)
+	{
+	  std::cout << "Got gui" << std::endl;
+	}
+      else
+	{
+	  std::cout << "GUI for object not available: " << comp << std::endl;
+	}
+    }
+  else
+    {
+      std::cout << "EditorEvent::editor_show_object_properties (): error: multiple objects selected" << std::endl;
+    }
 }
 
 /* EOF */

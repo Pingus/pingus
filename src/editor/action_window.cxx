@@ -1,4 +1,4 @@
-//  $Id: action_window.cxx,v 1.2 2002/06/29 09:44:56 grumbel Exp $
+//  $Id: action_window.cxx,v 1.3 2002/06/29 11:54:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,23 +20,26 @@
 #include "../string_converter.hxx"
 #include "action_window.hxx"
 
-/**********************
+/***************************
   Actions
- ----------------------
-  Basher      20 [+][-]
-  Bridger     20 [+][-]
-  Digger      20 [+][-]
+ ---------------------------
+  [x] Basher      20 [+][-]
+  [ ] Bridger     20 [+][-]
+  [x] Digger      20 [+][-]
   [...]
- ----------------------
- [ok]          [cancel]
- **********************/
+ ---------------------------
+ [    ok     ]  [  cancel  ]
+****************************/
 
 ActionWindow::ActionWindow (CL_Component* arg_parent, std::vector<ActionData>* arg_actions)
   : parent (arg_parent), actions (arg_actions)
 {
   window = new CL_Window (CL_Rect(0, 0,
-				  200, (actions->size() * 20) + 80), "Pingus Actions", parent);
-
+  				  200, (actions->size() * 20) + 80), "Pingus Actions", parent);
+  
+  //window = new CL_Frame (CL_Rect (0, 0, 200, (actions->size() * 20) + 80), parent);
+  //window->enable_fill (true);
+  
   int y = 30;
   for (std::vector<ActionData>::iterator i = actions->begin (); i != actions->end (); ++i)
     {
@@ -49,29 +52,34 @@ ActionWindow::ActionWindow (CL_Component* arg_parent, std::vector<ActionData>* a
   ok_button = new CL_Button(CL_Rect (10, y, 90, y + 20), "Ok", window);
   cancel_button = new CL_Button(CL_Rect (110, y, 190, y + 20), "Cancel", window);
 
-  ok_button->sig_clicked ().connect (this, &ActionWindow::ok_clicked);
-  cancel_button->sig_clicked ().connect (this, &ActionWindow::cancel_clicked);
-
+  ok_button_slot     = ok_button->sig_clicked ().connect (this, &ActionWindow::ok_clicked);
+  cancel_button_slot = cancel_button->sig_clicked ().connect (this, &ActionWindow::cancel_clicked);
+  
   hide ();
+  //window->run ();
+  window->set_position(100, 100);
 }
 
 void
 ActionWindow::show ()
 {
-  parent->add_child (window);
+  std::cout << "show" << std::endl;
+  read_data ();
+  window->show (true);
 }
 
 void
 ActionWindow::hide ()
 {
-  parent->remove_child (window);
+  std::cout << "hide" << std::endl;
+  window->show (false);
 }
 
 void 
 ActionWindow::ok_clicked ()
 {
   std::cout << "OK Clicked" << std::endl;
-  sync_with_data ();
+  write_data ();
   hide ();
 }
 
@@ -83,10 +91,15 @@ ActionWindow::cancel_clicked ()
 }
 
 void
-ActionWindow::sync_with_data ()
+ActionWindow::read_data ()
 {
-  // Sync the level data with the data from the window
-  std::cout << "Syncing data" << std::endl;
+  std::cout << "Reading data" << std::endl;
+}
+
+void
+ActionWindow::write_data ()
+{
+  std::cout << "Writing data" << std::endl;
 }
 
 /* EOF */

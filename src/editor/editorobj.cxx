@@ -1,4 +1,4 @@
-//  $Id: editorobj.cxx,v 1.1 2002/06/12 19:11:31 grumbel Exp $
+//  $Id: editorobj.cxx,v 1.2 2002/06/29 11:54:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,6 +33,12 @@ std::string
 EditorObj::status_line()
 {
   return "EditorObj::status_line(): Not implemented";
+}
+
+CL_Component*
+EditorObj::get_gui_dialog (CL_Component*)
+{
+  return 0;
 }
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: editorobj.hxx,v 1.4 2002/06/25 21:31:40 grumbel Exp $
+//  $Id: editorobj.hxx,v 1.5 2002/06/29 11:54:22 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,6 +28,7 @@ using namespace std;
 class CL_Rect;
 class CL_Vector;
 class EditorView;
+class CL_Component;
 class Editor;
 
 namespace boost {
@@ -107,6 +108,9 @@ public:
   /** Duplicate the given editor object and return a the copied
       object */
   virtual boost::shared_ptr<EditorObj> duplicate() =0;
+
+  /** */
+  virtual CL_Component* get_gui_dialog (CL_Component* parent);
 };
 
 #endif

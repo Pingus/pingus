@@ -1,4 +1,4 @@
-//  $Id: editor_groundpiece_obj.cxx,v 1.5 2002/06/26 12:04:24 grumbel Exp $
+//  $Id: editor_groundpiece_obj.cxx,v 1.6 2002/06/29 11:54:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #include <stdio.h>
 #include "../boost/smart_ptr.hpp"
 #include "../pingus_resource.hxx"
+#include "groundpiece_window.hxx"
 #include "editor_groundpiece_obj.hxx"
 
 using namespace Pingus;
@@ -94,6 +95,12 @@ EditorGroundpieceObj::rotate_270 ()
 
   pos.x -= sprite.get_width ()/2;
   pos.y -= sprite.get_height ()/2;
+}
+
+CL_Component*
+EditorGroundpieceObj::get_gui_dialog(CL_Component* parent)
+{
+  return new Pingus::Editor::GroundpieceWindow (parent, this);
 }
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: editor.hxx,v 1.3 2002/06/29 09:44:56 grumbel Exp $
+//  $Id: editor.hxx,v 1.4 2002/06/29 11:54:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -106,6 +106,8 @@ public:
   ObjectManager* get_object_manager() { return object_manager; }
   std::string save_tmp_level ();
   EditorEvent* get_event() { return event; }
+
+  CL_GUIManager* get_gui_manager ();
 };
 
 #endif

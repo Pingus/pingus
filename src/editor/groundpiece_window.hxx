@@ -1,4 +1,4 @@
-//  $Id: groundpiece_window.hxx,v 1.1 2002/06/28 22:21:59 grumbel Exp $
+//  $Id: groundpiece_window.hxx,v 1.2 2002/06/29 11:54:22 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,15 +20,30 @@
 #ifndef HEADER_PINGUS_EDITOR_GROUNDPIECE_WINDOW_HXX
 #define HEADER_PINGUS_EDITOR_GROUNDPIECE_WINDOW_HXX
 
+#include <ClanLib/gui.h>
+#include "editor_groundpiece_obj.hxx"
+
 namespace Pingus
 {
   namespace Editor
   {
-    class GroundpieceWindow
+    class GroundpieceWindow : public CL_Window
     {
     private:
+      GroundpieceData* data;
+
+      CL_Button convert_to_hotspot_button;
+
+      CL_Label  groundtype_label;
+      CL_ListBox groundtype_listbox;
+
+      CL_Button ok_button;
+      CL_Button cancel_button;
       
+      CL_Slot ok_button_slot;
+      CL_Slot cancel_button_slot;
     public:
+      GroundpieceWindow (CL_Component* parent,  EditorGroundpieceObj* data);
     };
   }
 }

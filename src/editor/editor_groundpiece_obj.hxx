@@ -1,4 +1,4 @@
-// $Id: editor_groundpiece_obj.hxx,v 1.4 2002/06/25 21:31:40 grumbel Exp $
+// $Id: editor_groundpiece_obj.hxx,v 1.5 2002/06/29 11:54:22 grumbel Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -45,6 +45,8 @@ public:
   void write_xml(std::ostream& xml) { GroundpieceData::write_xml (xml); }
   boost::shared_ptr<EditorObj> duplicate();
   std::string status_line();
+
+  CL_Component* get_gui_dialog(CL_Component* parent);
 };
 
 #endif

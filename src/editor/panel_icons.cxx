@@ -1,4 +1,4 @@
-//  $Id: panel_icons.cxx,v 1.2 2002/06/29 09:44:56 grumbel Exp $
+//  $Id: panel_icons.cxx,v 1.3 2002/06/29 11:54:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -100,14 +100,13 @@ PanelIconPreferences::PanelIconPreferences()
 void
 PanelIconPreferences::on_click()
 {
-  std::cout << "Preferences not implemented" << std::endl;
 }
 
 void 
 PanelIconEdit::on_click()
 {
-  // std::cout << "Edit not implemented" << std::endl;
-  editor->edit_current_objs();
+  std::cout << "Preferences not implemented" << std::endl;
+  editor->get_event ()->editor_show_object_properties ();
 }
 
 PanelIconRun::PanelIconRun()

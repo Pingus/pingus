@@ -1,4 +1,4 @@
-//  $Id: groundpiece_window.cxx,v 1.1 2002/06/28 22:21:59 grumbel Exp $
+//  $Id: groundpiece_window.cxx,v 1.2 2002/06/29 11:54:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,5 +28,23 @@
  ------------------------
  [ok] [cancel]
 *************************/
+
+using namespace Pingus::Editor;
+
+GroundpieceWindow::GroundpieceWindow (CL_Component* parent,  EditorGroundpieceObj* data)
+  : CL_Window (CL_Rect (0, 0, 200, 300), "Groundpiece Properties", parent),
+    convert_to_hotspot_button (CL_Rect (10, 30, 190, 30 + 20), "Convert to HotSpot", this),
+
+    groundtype_label (CL_Rect (10, 60, 90, 60 + 20), "Groundtype", this),
+    groundtype_listbox (CL_Rect (110, 60, 190, 60 + 60), this),
+
+    ok_button (CL_Rect (10, 150, 90, 150 + 20), "Ok", this),
+    cancel_button (CL_Rect (110, 150, 190, 150 + 20), "Cancel", this)
+{
+  groundtype_listbox.insert_item ("ground");
+  groundtype_listbox.insert_item ("transparent");
+  groundtype_listbox.insert_item ("bridge");
+  groundtype_listbox.insert_item ("solid");
+}
 
 /* EOF */
