@@ -1,4 +1,4 @@
-//  $Id: editor.cxx,v 1.37 2002/10/04 11:38:29 torangan Exp $
+//  $Id: editor.cxx,v 1.38 2002/10/09 14:35:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -451,6 +451,10 @@ Editor::interactive_move_object()
   while (CL_Mouse::left_pressed()) 
     {
       Vector new_pos (view->screen_to_world(Vector(CL_Mouse::get_x(), CL_Mouse::get_y())));
+
+      new_pos.x = int(new_pos.x);
+      new_pos.y = int(new_pos.y);
+
       selection->move(new_pos.x - old_pos.x, new_pos.y - old_pos.y);
       old_pos = new_pos;
       
