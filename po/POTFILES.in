@@ -367,8 +367,6 @@ src/pingu_enums.cxx
 src/pingu_enums.hxx
 src/pingu_holder.cxx
 src/pingu_holder.hxx
-src/pingu_info.cxx
-src/pingu_info.hxx
 src/pingu_map.cxx
 src/pingu_map.hxx
 src/pingus.hxx

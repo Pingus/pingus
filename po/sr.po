@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Pingus 0.6.0\n"
-"POT-Creation-Date: 2003-04-15 23:56+0200\n"
+"POT-Creation-Date: 2003-04-16 01:21+0200\n"
 "PO-Revision-Date: 2003-04-15 17:29+0200\n"
 "Last-Translator: Milan Babuskov <mbabuskov@yahoo.com>\n"
 "Language-Team: <mbabuskov@yahoo.com>\n"
@@ -576,8 +576,9 @@ msgid "Maybe you would feel more at home playing Quake."
 msgstr "Mozda si vrsta osobe koja vise voli Quake."
 
 #: src/level_result.cxx:116
+#, fuzzy
 msgid ""
-"Maybe this level calls for a different strategy. Like attempting to save "
+"Maybe this level calls for a different stratagy. Like attempting to save "
 "them, for example."
 msgstr ""
 "Mozda ovaj nivo zahteva drugaciji pristup. Na primer, bilo bi dobro da ih "
@@ -658,20 +659,6 @@ msgstr "..:: Modovi za vise igraca... eksperimentalno ::.."
 #: src/menu_button.cxx:395
 msgid "Multi"
 msgstr "Vise"
-
-#: src/pingu_info.cxx:49
-#, c-format
-msgid "pingu_id %d"
-msgstr "pingus_id %d"
-
-#: src/pingu_info.cxx:55
-#, c-format
-msgid "action %s"
-msgstr "akcija %s"
-
-#: src/pingu_info.cxx:57
-msgid "action none"
-msgstr "bez akcije"
 
 #: src/pingus_counter.cxx:49
 #, c-format
@@ -779,7 +766,8 @@ msgid "Print some more messages to stdout, can be set"
 msgstr "Ispis jos nekih poruka na stdout, moze biti postavljeno"
 
 #: src/pingus_main.cxx:508
-msgid "multible times to increase verbosity"
+#, fuzzy
+msgid "multiple times to increase verbosity"
 msgstr "vise puta da se poveca informativnost"
 
 #: src/pingus_main.cxx:509
@@ -898,87 +886,87 @@ msgstr "Onemoguci zvuk"
 msgid "Disable music"
 msgstr "Onemoguci muziku"
 
-#: src/pingus_main.cxx:713
+#: src/pingus_main.cxx:712
 msgid "clanVorbis support:           ok"
 msgstr "podrska za clanVorbis:        ok"
 
-#: src/pingus_main.cxx:715
+#: src/pingus_main.cxx:714
 msgid "clanVoribs support:  missing (.ogg music files will not be playable)"
 msgstr "podrska za clanVorbis:  nedostaje (.ogg fajlovi nece biti pusteni)"
 
-#: src/pingus_main.cxx:719
+#: src/pingus_main.cxx:718
 msgid "clanMikMod support:           ok"
 msgstr "podrska za clanMikMod:        ok"
 
-#: src/pingus_main.cxx:721
+#: src/pingus_main.cxx:720
 msgid "clanMikMod support:  missing (music files will not be playable)"
 msgstr "podrska za clanMikMod:  nedostaje (nece biti muzike)"
 
-#: src/pingus_main.cxx:725
+#: src/pingus_main.cxx:724
 msgid "getext support:               ok"
 msgstr "podrska za gettext:           ok"
 
-#: src/pingus_main.cxx:726
+#: src/pingus_main.cxx:725
 msgid "gettext language:        english"
 msgstr "gettext jezik:           engleski"
 
-#: src/pingus_main.cxx:732
+#: src/pingus_main.cxx:731
 msgid "sound support:           enabled"
 msgstr "podrska za zvuk:       omogucena"
 
-#: src/pingus_main.cxx:734
+#: src/pingus_main.cxx:733
 msgid "sound support:          disabled"
 msgstr "podrska za zvuk:     onemogucena"
 
-#: src/pingus_main.cxx:737
+#: src/pingus_main.cxx:736
 msgid "music support:           enabled"
 msgstr "podrska za muziku:     omogucena"
 
-#: src/pingus_main.cxx:739
+#: src/pingus_main.cxx:738
 msgid "music support:          disabled"
 msgstr "podrska za muziku:   onemogucena"
 
-#: src/pingus_main.cxx:741
+#: src/pingus_main.cxx:740
 msgid "resolution set to:       "
 msgstr "rezolucija postavljna na:"
 
-#: src/pingus_main.cxx:742
+#: src/pingus_main.cxx:741
 msgid "fullscreen:              "
 msgstr "ceo ekran:               "
 
-#: src/pingus_main.cxx:743
+#: src/pingus_main.cxx:742
 msgid " enabled"
 msgstr " omoguceno"
 
-#: src/pingus_main.cxx:743
+#: src/pingus_main.cxx:742
 msgid "disabled"
 msgstr "onemoguceno"
 
-#: src/pingus_main.cxx:753
+#: src/pingus_main.cxx:752
 msgid "PingusMain: Starting Main: "
 msgstr "PingusMain: Pokretanje Main: "
 
-#: src/pingus_main.cxx:783
+#: src/pingus_main.cxx:782
 msgid "PingusMain: Levelfile not found, ignoring: "
 msgstr "PingusMain: Fajl nivoa nije nadjen, ignorisano: "
 
-#: src/pingus_main.cxx:884
+#: src/pingus_main.cxx:883
 msgid "Error caught from ClanLib: "
 msgstr "Uhvacena greska iz ClanLiba: "
 
-#: src/pingus_main.cxx:888
+#: src/pingus_main.cxx:887
 msgid "Error caught from Pingus: "
 msgstr "Uhvacena greska iz Pingusa: "
 
-#: src/pingus_main.cxx:892
+#: src/pingus_main.cxx:891
 msgid "Pingus: Out of memory!"
 msgstr "Pingus: Nema memorije!"
 
-#: src/pingus_main.cxx:896
+#: src/pingus_main.cxx:895
 msgid "Pingus: Standard exception caught!:\n"
 msgstr "Pingus: Uhvacen standardan izuzetak!:\n"
 
-#: src/pingus_main.cxx:900
+#: src/pingus_main.cxx:899
 msgid "Pingus: Unknown throw caught!"
 msgstr "Pingus: Uhvacen nepoznat throw!"
 
@@ -1304,6 +1292,15 @@ msgstr "WorldMap: Fajl nije nadjen: "
 #: src/worldmap/worldmap.cxx:249
 msgid "...walking..."
 msgstr "...hodanje..."
+
+#~ msgid "pingu_id %d"
+#~ msgstr "pingus_id %d"
+
+#~ msgid "action %s"
+#~ msgstr "akcija %s"
+
+#~ msgid "action none"
+#~ msgstr "bez akcije"
 
 #~ msgid "Setting action to a dead pingu"
 #~ msgstr "Postavljanje akcije za mrtvog pingusa"
