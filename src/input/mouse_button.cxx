@@ -1,4 +1,4 @@
-//  $Id: mouse_button.cxx,v 1.1 2002/07/04 11:54:57 torangan Exp $
+//  $Id: mouse_button.cxx,v 1.2 2002/07/11 15:24:35 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,10 +21,15 @@
 #include <ClanLib/Display/Input/inputdevice.h>
 #include <ClanLib/Display/Input/inputbutton.h>
 #include "mouse_button.hxx"
+#include "../pingus_error.hxx"
 
 namespace Input {
 
-  MouseButton::MouseButton(int button_) : button(button_) { }
+  MouseButton::MouseButton(int button_) : button(button_)
+  {
+    if (button > CL_Input::pointers[0]->get_num_buttons())
+      throw PingusError("MouseButton: Invalid button id");
+  }
 
   void
   MouseButton::update(float)
