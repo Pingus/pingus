@@ -2,13 +2,12 @@ Last updated: Sat Jul 31 15:11:43 1999
 
 For 0.3.x
 ~~~~~~~~~
-* limiting the number of Pingus
 left/right buttons in Themes
-* fixed PgUp/PgDown for zooming
-* fixed Info pannel for dead, etc pingus
+check if file exist before overwriteing it
+fixed PgUp/PgDown for zooming
 tump nail for level
 colmap manipulation for liquid
-right/left/random/left'n'right
+
 
 Important Things:
 ~~~~~~~~~~~~~~~~~

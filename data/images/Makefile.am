@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.3 2000/02/12 12:00:31 grumbel Exp $
+#  $Id: Makefile.am,v 1.4 2000/02/15 13:42:50 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -313,7 +313,8 @@ GROUNDPIECES = \
                groundpieces/space/grid2.pcx \
                groundpieces/space/grid3.pcx \
                groundpieces/space/block1.pcx \
-               groundpieces/space/tower1.pcx
+               groundpieces/space/tower1.pcx \
+               groundpieces/space/smalltower.pcx
 
 LIQUIDS = \
           liquids/water.pcx  \
@@ -332,10 +333,9 @@ PARTICLES = \
 MISC = \
        misc/cap.pcx      \
        misc/capwrong.pcx \
-       misc/logo.pcx     \
        misc/brick.pcx    \
        misc/logo.tga     \
-       misc/logo_bg.pcx
+       misc/loading.pcx
 
 THEMES = \
          themes/crystal.pcx \

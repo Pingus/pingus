@@ -16,7 +16,7 @@
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 # BUG: Why is the man page not automaticly packed into the dist?
-EXTRA_DIST = pingus.6 levelformat.txt options editor
+EXTRA_DIST = pingus.6 levelformat.txt config editor
 
 info_TEXINFOS = pingus.texi
 

@@ -1,9 +1,5 @@
 // Pingus - A free Lemmings Clone
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Uncomment the line which you need, the first is needed if you do a
-// make install, the second is needed if you want to run it from
-// another directory.
 
 section Liquid
 {
@@ -277,6 +273,7 @@ section GroundPieces
 
 		block1 = ../images/groundpieces/space/block1.pcx  (type=surface, x=0, y=0, width=201,  height=61); 
 		tower1 = ../images/groundpieces/space/tower1.pcx  (type=surface, x=0, y=0, width=64,  height=166, tcol=0); 
+		smalltower = ../images/groundpieces/space/smalltower.pcx  (type=surface, x=0, y=0, width=6,  height=200); 
 	}
 }
 
