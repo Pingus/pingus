@@ -1,4 +1,4 @@
-//  $Id: plf.cxx,v 1.13 2002/12/29 23:29:00 torangan Exp $
+//  $Id: plf.cxx,v 1.14 2003/02/19 11:33:00 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,7 +33,7 @@ PLF::PLF()
   number_of_pingus = 100;
   difficulty = 5;  
   playable = false;
-  music = ResDescriptor("file", "pingus-4.it");
+  music = "none";
 }
 
 // Destroy all data
@@ -84,7 +84,7 @@ PLF::get_actions()
   return actions;
 }
 
-ResDescriptor
+std::string
 PLF::get_music()
 {
   return music;

@@ -1,4 +1,4 @@
-//  $Id: game_session.cxx,v 1.26 2003/02/19 09:50:36 grumbel Exp $
+//  $Id: game_session.cxx,v 1.27 2003/02/19 11:33:00 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -59,6 +59,18 @@ PingusGameSession::~PingusGameSession ()
   delete client;
   delete server;
   delete plf;
+}
+
+void
+PingusGameSession::on_startup()
+{
+  client->on_startup();
+}
+
+void
+PingusGameSession::on_shutdown()
+{
+  client->on_shutdown();
 }
 
 PingusGameSessionResult

@@ -1,4 +1,4 @@
-//  $Id: sound.cxx,v 1.1 2003/02/18 17:30:32 grumbel Exp $
+//  $Id: sound.cxx,v 1.2 2003/02/19 11:33:00 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -105,7 +105,7 @@ void
 PingusSound::play_music(const std::string & filename, float volume)
 {
   assert (sound);
-  sound->real_play_music(path_manager.complete (filename), volume);
+  sound->real_play_music(path_manager.complete ("music/" + filename), volume);
 }
 
 void

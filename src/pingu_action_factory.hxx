@@ -1,4 +1,4 @@
-//  $Id: pingu_action_factory.hxx,v 1.10 2002/12/28 16:57:38 torangan Exp $
+//  $Id: pingu_action_factory.hxx,v 1.11 2003/02/19 11:33:00 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -50,7 +50,7 @@ public:
 
   /** Delete all actions which this class has allocated. This needs to
       be called seperatly from the constructor, due to the used
-      singleton pattern. [FIXME] */
+      singleton pattern. [FIXME: if not called memory leak will result] */
   void delete_actions ();
 
   /** Allocate the given action */

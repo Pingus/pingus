@@ -1,4 +1,4 @@
-//  $Id: pingus_menu_manager.cxx,v 1.19 2003/02/19 09:50:36 grumbel Exp $
+//  $Id: pingus_menu_manager.cxx,v 1.20 2003/02/19 11:33:00 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -149,7 +149,7 @@ PingusMenuManager::exit ()
 void
 PingusMenuManager::on_startup()
 {
-  PingusSound::play_music("../data/music/pingus-1.it");
+  PingusSound::play_music("pingus-1.it");
 }
 
 PingusMenuManager*

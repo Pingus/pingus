@@ -1,4 +1,4 @@
-//  $Id: object_manager.hxx,v 1.25 2002/12/03 00:51:19 grumbel Exp $
+//  $Id: object_manager.hxx,v 1.26 2003/02/19 11:33:00 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -55,6 +55,7 @@ private:
   bool   quit;
   bool   playable;
   int    difficulty;
+  std::string music;
   std::string comment;
 
   /** All objects which are visible in the editor */ 

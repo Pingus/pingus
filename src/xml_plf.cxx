@@ -1,4 +1,4 @@
-//  $Id: xml_plf.cxx,v 1.32 2002/12/29 23:29:00 torangan Exp $
+//  $Id: xml_plf.cxx,v 1.33 2003/02/19 11:33:00 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,7 @@
 
 #include <iostream>
 #include "xml_helper.hxx"
+#include "xml_file_reader.hxx"
 #include "xml_plf.hxx"
 #include "globals.hxx"
 #include "system.hxx"
@@ -310,6 +311,19 @@ XMLPLF::parse_actions (xmlNodePtr cur)
 void
 XMLPLF::parse_global (xmlNodePtr cur)
 {
+  XMLFileReader reader(doc, cur);
+  
+  reader.read_string("author", author);
+  reader.read_int("number-of-pingus", number_of_pingus);
+  reader.read_int("number-to-save", number_to_save);
+  reader.read_int("time", max_time);
+  reader.read_int("difficulty", difficulty);
+  reader.read_bool("playable", playable);
+  reader.read_string("comment", comment);
+  reader.read_string("music", music);
+  reader.read_int("width", width);
+  reader.read_int("height", height);
+
   cur = cur->children;
   while (cur)
     {
@@ -343,48 +357,6 @@ XMLPLF::parse_global (xmlNodePtr cur)
 	      description[default_language] = desc;
 	  }
 	}
-      else if (XMLhelper::equal_str(cur->name, "author"))
-	{
-	  XMLhelper::node_list_get_string(doc, cur->children, 1, author);
-	  //std::cout << "Author: " << author << " -----------------------" << std::endl;
-	}
-      else if (XMLhelper::equal_str(cur->name, "number-of-pingus"))
-	{
-	  number_of_pingus = XMLhelper::parse_int(doc, cur);
-	}
-      else if (XMLhelper::equal_str(cur->name, "difficulty"))
-	{
-	  difficulty = XMLhelper::parse_int(doc, cur);
-	}
-      else if (XMLhelper::equal_str(cur->name, "playable"))
-	{
-	  playable = XMLhelper::parse_bool(doc, cur);
-	}
-      else if (XMLhelper::equal_str(cur->name, "comment"))
-	{
-	  comment = XMLhelper::parse_string(doc, cur);
-	}
-      else if (XMLhelper::equal_str(cur->name, "number-to-save"))
-	{
-	  number_to_save = XMLhelper::parse_int(doc, cur);
-	}
-      else if (XMLhelper::equal_str(cur->name, "time"))
-	{
-	  max_time = XMLhelper::parse_int(doc, cur);
-	}
-      else if (XMLhelper::equal_str(cur->name, "height"))
-	{
-	  height = XMLhelper::parse_int(doc, cur);
-	}
-      else if (XMLhelper::equal_str(cur->name, "width"))
-	{
-	  width = XMLhelper::parse_int(doc, cur);
-	}
-      else
-	{
-	  std::cout << "XMLPLF: global: Unhandled: " << cur->name << std::endl;
-	}
-
       cur = cur->next;
     }
 }

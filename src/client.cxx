@@ -1,4 +1,4 @@
-//  $Id: client.cxx,v 1.41 2003/02/19 10:37:31 grumbel Exp $
+//  $Id: client.cxx,v 1.42 2003/02/19 11:33:00 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -360,7 +360,15 @@ Client::on_startup ()
   is_finished = false;
   skip_frame = 0;
 
-  PingusSound::play_music(path_manager.complete ("music/" + server->get_plf ()->get_music().res_name));
+  std::cout << "Starting Music: " << server->get_plf()->get_music() << std::endl;
+  if (server->get_plf()->get_music() == "none")
+    {
+      PingusSound::stop_music();
+    }
+  else
+    {
+      PingusSound::play_music(server->get_plf ()->get_music());
+    }
 
   if (verbose)
     std::cout << "Client: Entering main_loop. Startup time: " 

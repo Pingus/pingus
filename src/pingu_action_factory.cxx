@@ -1,4 +1,4 @@
-//  $Id: pingu_action_factory.cxx,v 1.12 2003/02/18 21:38:08 grumbel Exp $
+//  $Id: pingu_action_factory.cxx,v 1.13 2003/02/19 11:33:00 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -48,6 +48,8 @@
 
 using namespace Actions;
 
+PinguActionFactory* PinguActionFactory::instance_ = 0;
+
 PinguActionFactory::PinguActionFactory ()
 {
 }
@@ -63,9 +65,8 @@ PinguActionFactory::~PinguActionFactory ()
     {
       delete i->second;
     }
+  factories.clear();
 }
-
-PinguActionFactory* PinguActionFactory::instance_ = 0;
 
 PinguActionFactory* 
 PinguActionFactory::instance ()
@@ -121,6 +122,7 @@ PinguActionFactory::register_core_actions ()
 PinguAction* 
 PinguActionFactory::create (Pingu* pingu, ActionName id)
 {
+  //std::cout << "PinguActionFactory: number of actions: " << all_actions.size() << std::endl;
   std::map<ActionName, PinguActionAbstractFactory*>::iterator it = factories.find(id);
   
   if (it == factories.end())

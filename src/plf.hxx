@@ -1,4 +1,4 @@
-//  $Id: plf.hxx,v 1.8 2002/09/27 11:26:44 torangan Exp $
+//  $Id: plf.hxx,v 1.9 2003/02/19 11:33:00 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -44,7 +44,7 @@ protected:
   /** Author of this level */
   std::string author;
 
-  ResDescriptor music;
+  std::string music;
 
   /** Start x-position of the camera */
   int  start_x_pos;
@@ -98,7 +98,7 @@ public:
 
   /** Returns the ResDescriptor where the music for this level can be
       found. The ResDescriptor points normaly to a file. */
-  ResDescriptor get_music(void);
+  std::string get_music(void);
 
   /** Returns the start position for the camera */
   int         get_startx(void);

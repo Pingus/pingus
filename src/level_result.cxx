@@ -1,4 +1,4 @@
-//  $Id: level_result.cxx,v 1.9 2003/02/19 09:50:36 grumbel Exp $
+//  $Id: level_result.cxx,v 1.10 2003/02/19 11:33:00 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,7 +46,7 @@ PingusLevelResult::draw(void)
 {
   char  str[128];
 
-  PingusSound::play_music("../data/music/pingus-2.it");
+  PingusSound::play_music("pingus-2.it");
 
   Display::hide_cursor();
 

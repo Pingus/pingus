@@ -1,4 +1,4 @@
-//  $Id: object_manager.cxx,v 1.40 2002/12/29 23:29:01 torangan Exp $
+//  $Id: object_manager.cxx,v 1.41 2003/02/19 11:33:00 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -69,6 +69,7 @@ ObjectManager::new_level ()
 
   start_x_pos = 0;
   start_y_pos = 0;
+  music = "none";
   width = 1200;
   height = 600;
   level_time = -1;
@@ -153,6 +154,7 @@ ObjectManager::load_level (const std::string& filename)
   author      = plf->get_author();
   start_x_pos = plf->get_startx();
   start_y_pos = plf->get_starty();
+  music       = plf->get_music();
   actions     = plf->get_actions();
 
   editor_objs.push_back(new LevelResizer(this));
@@ -230,6 +232,7 @@ ObjectManager::save_level_xml (const std::string & filename)
       << "    <difficulty>" << difficulty << "</difficulty>\n"
       << "    <playable>" << playable << "</playable>\n"
       << "    <comment>" << comment << "</comment>\n"
+      << "    <music>" << music << "</music>\n"
       << "  </global>\n"
       << std::endl;
   

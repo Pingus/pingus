@@ -1,4 +1,4 @@
-//  $Id: credits.cxx,v 1.16 2003/02/19 09:50:35 grumbel Exp $
+//  $Id: credits.cxx,v 1.17 2003/02/19 11:33:00 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -145,7 +145,7 @@ void
 Credits::on_startup ()
 {
   offset = CL_Display::get_height() + 50;
-  PingusSound::play_music("music/pingus-2.it");
+  PingusSound::play_music("pingus-2.it");
 }
 
 Credits*
