@@ -1,4 +1,4 @@
-//  $Id: smasher.hh,v 1.4 2000/06/18 17:01:50 grumbel Exp $
+//  $Id: smasher.hh,v 1.5 2000/07/30 01:47:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,7 @@
 #define SMASHER_HH
 
 #include "../Trap.hh"
-#include "../trap_data.hh"
+#include "../TrapData.hh"
 
 ///
 class Smasher : public Trap
@@ -35,7 +35,7 @@ private:
   int  count;
 public:
   ///
-  Smasher(trap_data data);
+  Smasher(TrapData data);
   ///
   virtual ~Smasher();
   ///

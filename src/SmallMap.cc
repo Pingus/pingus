@@ -1,4 +1,4 @@
-//  $Id: SmallMap.cc,v 1.17 2000/06/26 15:32:26 grumbel Exp $
+//  $Id: SmallMap.cc,v 1.18 2000/07/30 01:47:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,8 +20,8 @@
 #include <vector>
 #include <algorithm>
 
-#include "exit_data.hh"
-#include "entrance_data.hh"
+#include "ExitData.hh"
+#include "EntranceData.hh"
 
 #include "blitter.hh"
 #include "PinguHolder.hh"
@@ -119,21 +119,21 @@ SmallMap::init()
 	}
     }
 
-  std::vector<exit_data>     exit_d     = plf->get_exit();
-  for(std::vector<exit_data>::iterator i = exit_d.begin(); i != exit_d.end(); i++)
+  std::vector<ExitData>     exit_d     = plf->get_exit();
+  for(std::vector<ExitData>::iterator i = exit_d.begin(); i != exit_d.end(); i++)
     {
       // FIXME: Replace this with put_target() when it is bug free
       Blitter::put_surface(canvas, exit_sur, 
-			   i->x_pos * width / colmap->get_width() - (exit_sur->get_width()/2), 
-			   i->y_pos * height / colmap->get_height());
+			   i->pos.x_pos * width / colmap->get_width() - (exit_sur->get_width()/2), 
+			   i->pos.y_pos * height / colmap->get_height());
     }
 
-  std::vector<entrance_data>     entrance_d     = plf->get_entrance();
-  for(std::vector<entrance_data>::iterator i = entrance_d.begin(); i != entrance_d.end(); i++)
+  std::vector<EntranceData>     entrance_d     = plf->get_entrance();
+  for(std::vector<EntranceData>::iterator i = entrance_d.begin(); i != entrance_d.end(); i++)
     {
       Blitter::put_surface(canvas, entrance_sur,
-			   i->x_pos * width / colmap->get_width() - (entrance_sur->get_width()/2),
-			   i->y_pos * height / colmap->get_height() - (entrance_sur->get_height()));
+			   i->pos.x_pos * width / colmap->get_width() - (entrance_sur->get_width()/2),
+			   i->pos.y_pos * height / colmap->get_height() - (entrance_sur->get_height()));
       
       /*entrance_sur->put_target(i->x_pos * width / colmap->get_width(),
 	i->y_pos * height / colmap->get_height(),

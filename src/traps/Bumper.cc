@@ -1,4 +1,4 @@
-//  $Id: Bumper.cc,v 1.3 2000/07/04 22:59:14 grumbel Exp $
+//  $Id: Bumper.cc,v 1.4 2000/07/30 01:47:38 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,11 +24,9 @@
 
 #include "Bumper.hh"
 
-Bumper::Bumper(trap_data data)
+Bumper::Bumper(TrapData data)
 {
-  x_pos = data.x_pos;
-  y_pos = data.y_pos;
-  z_pos = data.z_pos;
+  pos = data.pos;
   surface = PingusResource::load_surface("Traps/bumper", "traps");
   count = 0;
 }
@@ -57,14 +55,14 @@ Bumper::draw_colmap(ColMap* colmap)
   std::cout << "Drawing colmap entry" << std::endl;
 
   CL_SurfaceProvider* prov = CL_SurfaceProvider::load("Traps/bumper_cmap", PingusResource::get("traps"));
-  colmap->put(prov, x_pos, y_pos, surface_data::SOLID);
+  colmap->put(prov, pos.x_pos, pos.y_pos, SurfaceData::SOLID);
 }
 
 void 
 Bumper::draw_offset(int x, int y, float s)
 {
   assert(surface);
-  surface->put_screen(x_pos + x, y_pos + y, count);
+  surface->put_screen(pos.x_pos + x, pos.y_pos + y, count);
 }
 
 bool 
@@ -73,15 +71,15 @@ Bumper::catch_pingu(Pingu* pingu)
   if (!pingu->is_alive())
     return false;
 
-  if (pingu->get_y() > y_pos + 60 && pingu->get_y() < y_pos + 100)
+  if (pingu->get_y() > pos.y_pos + 60 && pingu->get_y() < pos.y_pos + 100)
     {
-      if (pingu->get_x() > x_pos + 28 && pingu->get_x() < x_pos + 32)
+      if (pingu->get_x() > pos.x_pos + 28 && pingu->get_x() < pos.x_pos + 32)
 	{
 	  if (!upwards)
 	    upwards = true;
 	}
 
-      if (upwards && pingu->get_x() > x_pos + 0 && pingu->get_x() < x_pos + 60)
+      if (upwards && pingu->get_x() > pos.x_pos + 0 && pingu->get_x() < pos.x_pos + 60)
 	{
 	  pingu->apply_force(CL_Vector((pingu->get_x() - 30)/6, -5));
 	}

@@ -1,4 +1,4 @@
-//  $Id: Background.cc,v 1.20 2000/06/26 15:32:26 grumbel Exp $
+//  $Id: Background.cc,v 1.21 2000/07/30 01:47:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,7 +30,7 @@
 
 #include "Background.hh"
 
-Background::Background(background_data bg)
+Background::Background(BackgroundData bg)
 {
   Timer timer;
 
@@ -62,7 +62,7 @@ Background::~Background()
 }
 
 void
-Background::load (background_data bg_data)
+Background::load (BackgroundData bg_data)
 {
   surface_need_deletion = false;
 

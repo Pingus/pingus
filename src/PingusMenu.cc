@@ -1,4 +1,4 @@
-//  $Id: PingusMenu.cc,v 1.27 2000/07/04 22:59:13 grumbel Exp $
+//  $Id: PingusMenu.cc,v 1.28 2000/07/30 01:47:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,7 +35,8 @@
 PingusMenu::PingusMenu()
 {
   bg         = PingusResource::load_surface("Game/logo_t", "game");
-  background = PingusResource::load_surface("Textures/stones", "textures");
+  background = PingusResource::load_surface("NewButtons/background", "menu");
+  //  background = PingusResource::load_surface("Textures/stones", "textures");
  
   event = new Event;
   event->enabled = false;
@@ -78,13 +79,16 @@ PingusMenu::~PingusMenu()
 void
 PingusMenu::draw()
 {
+  /*
   // Filling the background with a texture
   for(int y = 0; y < CL_Display::get_height(); y += background->get_height())
     for(int x = 0; x < CL_Display::get_width(); x += background->get_width())
       background->put_screen(x, y);
+  */
+  background->put_screen(0, 0, CL_Display::get_width(), CL_Display::get_height());
 
   // Putting the logo
-  bg->put_screen(CL_Display::get_width()/2 - bg->get_width()/2, 3);
+  //bg->put_screen(CL_Display::get_width()/2 - bg->get_width()/2, 3);
 
   for(std::list<SurfaceButton*>::iterator i = buttons.begin(); i != buttons.end(); i++)
     {

@@ -1,4 +1,4 @@
-//  $Id: World.cc,v 1.25 2000/07/08 13:21:33 grumbel Exp $
+//  $Id: World.cc,v 1.26 2000/07/30 01:47:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -161,10 +161,10 @@ World::let_move()
 	(*obj)->catch_pingu(*pingu);
     }
 
-  for(vector<trap_data>::size_type i=0; i < traps.size(); ++i)
+  for(vector<TrapData>::size_type i=0; i < traps.size(); ++i)
     traps[i]->let_move();
   
-  for(vector<entrance_data>::size_type i2=0; i2 < entrance.size(); ++i2) 
+  for(vector<EntranceData>::size_type i2=0; i2 < entrance.size(); ++i2) 
     entrance[i2]->let_move();
   
   particle.let_move();
@@ -222,33 +222,33 @@ void
 World::init_background()
 {
   // load the background map
-  background = new Background(plf->get_bg());
+  background = new Background(plf->get_background());
 }
 
 void
 World::init_worldobjs()
 {
-  vector<exit_data>     exit_d     = plf->get_exit();
-  vector<entrance_data> entrance_d = plf->get_entrance();
-  vector<trap_data>     trap_d     = plf->get_traps();
-  vector<hotspot_data>  hspot_d    = plf->get_hotspot();
-  vector<liquid_data>   liquid_d   = plf->get_liquids();
+  vector<ExitData>     exit_d     = plf->get_exit();
+  vector<EntranceData> entrance_d = plf->get_entrance();
+  vector<TrapData>     trap_d     = plf->get_traps();
+  vector<HotspotData>  hspot_d    = plf->get_hotspot();
+  vector<LiquidData>   liquid_d   = plf->get_liquids();
 
   // Creating Exit and Entrance
-  for(vector<exit_data>::iterator i = exit_d.begin(); i != exit_d.end(); i++) 
+  for(vector<ExitData>::iterator i = exit_d.begin(); i != exit_d.end(); i++) 
     exits.push_back(new Exit(*i));
   
-  for(vector<entrance_data>::size_type i = 0; i < entrance_d.size(); ++i) 
+  for(vector<EntranceData>::size_type i = 0; i < entrance_d.size(); ++i) 
     entrance.push_back(get_entrance(entrance_d[i]));
 
-  for(vector<trap_data>::size_type i=0; i < trap_d.size(); ++i)
+  for(vector<TrapData>::size_type i=0; i < trap_d.size(); ++i)
     traps.push_back(get_trap(trap_d[i]));
 
   // Creating the foreground and background hotspots
-  for(vector<hotspot_data>::size_type i = 0; i < hspot_d.size(); ++i)
+  for(vector<HotspotData>::size_type i = 0; i < hspot_d.size(); ++i)
     hotspot.push_back(new Hotspot(hspot_d[i]));
   
-  for(vector<liquid_data>::size_type i=0; i < liquid_d.size(); i++) 
+  for(vector<LiquidData>::size_type i=0; i < liquid_d.size(); i++) 
     liquid.push_back(new Liquid(liquid_d[i]));
   
   Pingu::set_colmap(colmap);
@@ -260,41 +260,41 @@ World::init_worldobjs()
   //world_obj.push_back(map);
 
   // Push all objects to world_obj vector
-  for(vector<hotspot_data>::size_type i = 0; i < hotspot.size(); i++)
+  for(vector<HotspotData>::size_type i = 0; i < hotspot.size(); i++)
     {
-      if (hotspot[i]-> z_pos <= 0)
+      if (hotspot[i]->pos.z_pos <= 0)
 	world_obj_bg.push_back(hotspot[i]);
       else 
 	world_obj_fg.push_back(hotspot[i]);
     }
 
-  for(vector<exit_data>::size_type i=0; i < exits.size(); i++)
+  for(vector<ExitData>::size_type i=0; i < exits.size(); i++)
     { 
-      if (exits[i]->z_pos <= 0)
+      if (exits[i]->pos.z_pos <= 0)
 	world_obj_bg.push_back(exits[i]);
       else 
 	world_obj_fg.push_back(exits[i]);
     }  
   
-  for(vector<entrance_data>::size_type i=0; i < entrance.size(); ++i)
+  for(vector<EntranceData>::size_type i=0; i < entrance.size(); ++i)
     {
-      if (entrance[i]->z_pos <= 0)
+      if (entrance[i]->pos.z_pos <= 0)
 	world_obj_bg.push_back(entrance[i]);
       else 
 	world_obj_fg.push_back(entrance[i]);
     }
 
-  for(vector<liquid_data>::size_type i=0; i < liquid_d.size(); ++i)
+  for(vector<LiquidData>::size_type i=0; i < liquid_d.size(); ++i)
     {
-      if (liquid[i]->z_pos <= 0)
+      if (liquid[i]->pos.z_pos <= 0)
 	world_obj_bg.push_back(liquid[i]);
       else 
 	world_obj_fg.push_back(liquid[i]);
     }
   
-  for(vector<trap_data>::size_type i=0; i < traps.size(); ++i) 
+  for(vector<TrapData>::size_type i=0; i < traps.size(); ++i) 
     {
-      if (traps[i]->z_pos <= 0)
+      if (traps[i]->pos.z_pos <= 0)
 	world_obj_bg.push_back(traps[i]);
       else 
 	world_obj_fg.push_back(traps[i]);

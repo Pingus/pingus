@@ -1,4 +1,4 @@
-//  $Id: Entrance.cc,v 1.11 2000/06/27 16:05:16 grumbel Exp $
+//  $Id: Entrance.cc,v 1.12 2000/07/30 01:47:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,15 +39,13 @@ Entrance::Entrance()
 {
 }
 
-Entrance::Entrance(entrance_data data)
+Entrance::Entrance(EntranceData data)
 {
   if (verbose > 2)
     std::cout << "Creating Entrance" << std::endl;
-  x_pos = data.x_pos;
-  y_pos = data.y_pos;
+  pos = data.pos;
   release_rate = data.release_rate;
   last_release = -release_rate;
-  z_pos = -10;
   direction = data.direction;
 
   surface = 0;//CL_Surface::load("Entrances/entrance", global");
@@ -73,40 +71,40 @@ Entrance::get_pingu()
 
   // FIXME: Evil, the allocated objects are destroyed in PinguHolder,
   // FIXME: but all allocation should be encapsulet in PinguHolder.
-  p = new Pingu(x_pos, y_pos);
+  p = new Pingu(pos.x_pos, pos.y_pos);
   
-  switch (direction) {
+  switch (direction) 
+    {
+    case EntranceData::LEFT:
+      d.left();
+      p->set_direction(d);
+      break;
 
-  case entrance_data::LEFT:
-    d.left();
-    p->set_direction(d);
-    break;
-
-  case entrance_data::MISC:
-    if (last_direction) 
-      {
-	d.left();
-	last_direction = 0;
-      } 
-    else
-      {
-	d.right();
-	last_direction = 1;
-      }
-    p->set_direction(d);
-    break;
+    case EntranceData::MISC:
+      if (last_direction) 
+	{
+	  d.left();
+	  last_direction = 0;
+	} 
+      else
+	{
+	  d.right();
+	  last_direction = 1;
+	}
+      p->set_direction(d);
+      break;
 	
-  case entrance_data::RIGHT:  
-    d.right();
-    p->set_direction(d);
-    break;
+    case EntranceData::RIGHT:  
+      d.right();
+      p->set_direction(d);
+      break;
     
-  default:
-    std::cout << "Entrance:: Warning direction is wrong: " << direction << std::endl;
-    d.right();
-    p->set_direction(d);
-    break;
-  }
+    default:
+      std::cout << "Entrance:: Warning direction is wrong: " << direction << std::endl;
+      d.right();
+      p->set_direction(d);
+      break;
+    }
 
   return p;
 }
@@ -123,11 +121,12 @@ Entrance::draw_offset(int x, int y, float s)
   if (s == 1.0) 
     {
       // FIXME: Why do we have still this hardcoded offsets?!
-      surface->put_screen(x_pos - 32 + x, y_pos - 16 + y);
+      surface->put_screen(pos.x_pos - 32 + x, pos.y_pos - 16 + y);
     } 
   else 
     {
-      surface->put_screen((int)((x_pos-32 + x) * s), (int)((y_pos-16 + y) * s),
+      surface->put_screen((int)((pos.x_pos-32 + x) * s),
+			  (int)((pos.y_pos-16 + y) * s),
 			  s, s);
     }
 }

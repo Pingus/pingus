@@ -1,4 +1,4 @@
-//  $Id: Exit.cc,v 1.10 2000/06/27 16:05:16 grumbel Exp $
+//  $Id: Exit.cc,v 1.11 2000/07/30 01:47:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,20 +26,13 @@
 
 ActionHolder* Exit::action_holder;
 
-Exit::Exit(int x, int y)
-{
-  x_pos = x;
-  y_pos = y;
-  z_pos = -10;
-}
-
-Exit::Exit(exit_data data)
+Exit::Exit(ExitData data)
 {
   if (verbose > 2)
     std::cout << "Creating Exit" << std::endl;
-  x_pos = data.x_pos;
-  y_pos = data.y_pos;
-  z_pos = data.z_pos;
+
+  pos  = data.pos;
+  desc = data.desc;
 
   surface = PingusResource::load_surface(data.desc);
 
@@ -50,8 +43,8 @@ Exit::Exit(exit_data data)
 bool
 Exit::catch_pingu(Pingu* pingu)
 {
-  int x = x_pos + (surface->get_width() / 2);
-  int y = y_pos + surface->get_height();
+  int x = pos.x_pos + (surface->get_width() / 2);
+  int y = pos.y_pos + surface->get_height();
 
   if (pingu->get_x() > x - 1 && pingu->get_x() < x + 1
       && pingu->get_y() > y - 5 && pingu->get_y() < y + 1)
@@ -69,16 +62,16 @@ Exit::catch_pingu(Pingu* pingu)
 void
 Exit::draw_colmap(ColMap* colmap)
 {
-  colmap->remove(surface, x_pos, y_pos);
+  colmap->remove(surface, pos.x_pos, pos.y_pos);
 }
 
 void
 Exit::draw_offset(int x_of, int y_of, float s)
 {
   if (s == 1.0) {
-    surface->put_screen(x_pos + x_of, y_pos + y_of, ++counter);
+    surface->put_screen(pos.x_pos + x_of, pos.y_pos + y_of, ++counter);
   } else {
-    surface->put_screen((int)((x_pos + x_of) * s), (int)((y_pos + y_of) * s),
+    surface->put_screen((int)((pos.x_pos + x_of) * s), (int)((pos.y_pos + y_of) * s),
 			s, s);
   }
 }

@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.27 2000/07/02 07:39:50 grumbel Exp $
+#  $Id: Makefile.am,v 1.28 2000/07/30 01:47:35 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -65,6 +65,8 @@ pingus_SOURCES = \
                  MainMenu.cc          MainMenu.hh          \
                  OptionMenu.cc        OptionMenu.hh        \
                  PLF.cc               PLF.hh               \
+                 XMLPLF.cc            XMLPLF.hh               \
+                 PLFPLF.cc            PLFPLF.hh               \
                  PLFParser.cc         PLFParser.hh         \
                  PLFPreview.cc        PLFPreview.hh        \
                  PLTParser.cc         PLTParser.hh         \
@@ -106,15 +108,15 @@ pingus_SOURCES = \
                  World.cc             World.hh             \
                  WorldObj.cc          WorldObj.hh          \
                  algo.cc              algo.hh              \
-                 background_data.cc   background_data.hh   \
+                 BackgroundData.hh    \
                  blitter.cc           blitter.hh	   \
-                 button_data.cc       button_data.hh       \
-                 entrance_data.cc     entrance_data.hh     \
-                 exit_data.cc         exit_data.hh         \
+                 ActionData.hh        \
+	         EntranceData.hh     \
+                 ExitData.hh         \
                  globals.cc           globals.hh           \
-                 hotspot_data.cc      hotspot_data.hh      \
-                 liquid_data.cc       liquid_data.hh       \
-                 trap_data.cc         trap_data.hh         \
+                 HotspotData.hh       \
+                 LiquidData.hh        \
+                 TrapData.hh          \
                  Display.cc           Display.hh           \
                  Loading.cc           Loading.hh           \
                  Credits.cc           Credits.hh           \
@@ -131,7 +133,10 @@ pingus_SOURCES = \
                  FPSCounter.cc        FPSCounter.hh  \
                  Console.cc           Console.hh \
                  Story.cc             Story.hh  \
-                 HurryUp.cc           HurryUp.hh
+                 HurryUp.cc           HurryUp.hh \
+                 StringConverter.cc   StringConverter.hh \
+                 SurfaceData.hh \
+                 XMLhelper.cc         XMLhelper.hh
 
 
 ## EOF ##

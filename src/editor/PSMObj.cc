@@ -1,4 +1,4 @@
-//  $Id: PSMObj.cc,v 1.16 2000/07/14 12:18:50 grumbel Exp $
+//  $Id: PSMObj.cc,v 1.17 2000/07/30 01:47:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,21 +24,19 @@
 
 #include "PSMObj.hh"
 
-PSMObj::PSMObj(surface_data data)
+PSMObj::PSMObj(SurfaceData data)
 {
-  x_pos = data.x_pos;
-  y_pos = data.y_pos;
-  z_pos = 0;
-  type  = data.type;
-  desc  = data.res_desc;
+  pos = data.pos;
+  type = data.type;
+  desc = data.desc;
 
-  surf = PingusResource::load_surface(data.res_desc);
+  surf = PingusResource::load_surface(data.desc);
 }
 
 PSMObj::PSMObj(const PSMObj& t)
 {
-  x_pos = t.x_pos + 5;
-  y_pos = t.y_pos + 5;
+  pos.x_pos = t.pos.x_pos + 5;
+  pos.y_pos = t.pos.y_pos + 5;
   surf  = t.surf;
   desc  = t.desc;
   type  = t.type;
@@ -57,13 +55,13 @@ PSMObj::duplicate()
 void
 PSMObj::save(std::ofstream* plf, std::ofstream* psm)
 {
-  if (type == surface_data::SOLID) {
+  if (type == SurfaceData::SOLID) {
     (*psm) << "solid : ";
-  } else if (type == surface_data::GROUND) {
+  } else if (type == SurfaceData::GROUND) {
     (*psm) << "ground : ";
-  } else if (type == surface_data::TRANSPARENT) {
+  } else if (type == SurfaceData::TRANSPARENT) {
     (*psm) << "transparent : ";
-  } else if (type == surface_data::BRIDGE) {
+  } else if (type == SurfaceData::BRIDGE) {
     (*psm) << "bridge : ";
   } else {
     std::cout << "Warning: PSMObj: type not set!" << std::endl;
@@ -71,7 +69,32 @@ PSMObj::save(std::ofstream* plf, std::ofstream* psm)
   }
   
   (*psm) << "(resource:" << desc.datafile << ")" << desc.res_name << " : " 
-	 << x_pos << " : " << y_pos << ";" << std::endl;
+	 << pos.x_pos << " : " << pos.y_pos << ";" << std::endl;
+}
+
+void PSMObj::save_xml(std::ofstream* xml)
+{
+  std::string type_str;
+
+  if (type == SurfaceData::SOLID) {
+    type_str = "solid";
+  } else if (type == SurfaceData::GROUND) {
+    type_str = "ground";
+  } else if (type == SurfaceData::TRANSPARENT) {
+    type_str = "transparent";
+  } else if (type == SurfaceData::BRIDGE) {
+    type_str = "bridge";
+  } else {
+    std::cout << "Warning: PSMObj: type not set!" << std::endl;
+    type_str = "ground";
+  }
+  
+  (*xml) << "<groundpiece type=\"" << type_str << "\">\n";
+  save_desc_xml(xml, desc);
+  save_position_xml(xml, pos);
+
+  //  (*xml) << "  <type>" << SurfaceData::type_to_string(type) << "</type>\n";
+  (*xml) << "</groundpiece>\n" << std::endl;
 }
 
 std::string 
@@ -83,16 +106,16 @@ PSMObj::status_line()
 
   switch(type)
     {
-    case surface_data::SOLID:
+    case SurfaceData::SOLID:
       type_name = "solid";
       break;
-    case surface_data::GROUND:
+    case SurfaceData::GROUND:
       type_name = "ground";	
       break;
-    case surface_data::BRIDGE:
+    case SurfaceData::BRIDGE:
       type_name = "bridge";	
       break;
-    case surface_data::TRANSPARENT:
+    case SurfaceData::TRANSPARENT:
       type_name = "transparent";
       break;
     default:

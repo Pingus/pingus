@@ -1,4 +1,4 @@
-//  $Id: Guillotine.cc,v 1.3 2000/06/25 20:22:18 grumbel Exp $
+//  $Id: Guillotine.cc,v 1.4 2000/07/30 01:47:38 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,13 +20,11 @@
 #include "../PingusResource.hh"
 #include "Guillotine.hh"
 
-Guillotine::Guillotine(trap_data data)
+Guillotine::Guillotine(TrapData data)
 {
   killing = false;
-  x_pos = data.x_pos;
-  y_pos = data.y_pos;
-  z_pos = data.z_pos;
-
+  pos = data.pos;
+  
   surface = PingusResource::load_surface("Traps/guillotinekill", "traps");
   idle_surf = PingusResource::load_surface("Traps/guillotineidle", "traps");
 
@@ -50,11 +48,11 @@ Guillotine::draw_offset(int x, int y, float s)
 {
   if (killing) {
     if (direction.is_left())
-      surface->put_screen(x_pos + x, y_pos + y, counter);
+      surface->put_screen(pos.x_pos + x, pos.y_pos + y, counter);
     else
-      surface->put_screen(x_pos + x, y_pos + y, counter + 12);
+      surface->put_screen(pos.x_pos + x, pos.y_pos + y, counter + 12);
   } else {
-    idle_surf->put_screen(x_pos + x, y_pos + y, idle_counter);
+    idle_surf->put_screen(pos.x_pos + x, pos.y_pos + y, idle_counter);
   }
 }
 
@@ -77,8 +75,8 @@ bool
 Guillotine::catch_pingu(Pingu* pingu)
 {
   if (!killing) {
-    if (pingu->x_pos < x_pos + 42 && pingu->x_pos > x_pos + 38 
-	&& pingu->y_pos < y_pos + 98 && pingu->y_pos > y_pos + 94) {
+    if (pingu->x_pos < pos.x_pos + 42 && pingu->x_pos > pos.x_pos + 38 
+	&& pingu->y_pos < pos.y_pos + 98 && pingu->y_pos > pos.y_pos + 94) {
       killing = true;
       pingu->set_status(dead);
       direction = pingu->direction;

@@ -19,7 +19,7 @@
 #define TELEPORT_HH
 
 #include "../Trap.hh"
-#include "../trap_data.hh"
+#include "../TrapData.hh"
 
 ///
 class Teleport : public Trap
@@ -32,7 +32,7 @@ public:
   int x_target, y_target;
 
   ///
-  Teleport(trap_data data);
+  Teleport(TrapData data);
   ///
   virtual ~Teleport();
   

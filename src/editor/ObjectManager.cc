@@ -1,4 +1,4 @@
-//  $Id: ObjectManager.cc,v 1.22 2000/07/10 18:42:26 grumbel Exp $
+//  $Id: ObjectManager.cc,v 1.23 2000/07/30 01:47:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,9 +18,15 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <algorithm>
+#include "../globals.hh"
 #include "../algo.hh"
 #include "../System.hh"
 #include "../Display.hh"
+#include "../PLFPLF.hh"
+#include "../XMLPLF.hh"
+#include "../PingusResource.hh"
+#include "../PingusError.hh"
+#include "../XMLhelper.hh"
 #include "ObjectManager.hh"
 
 #ifdef WIN32
@@ -47,8 +53,8 @@ ObjectManager::~ObjectManager()
 void
 ObjectManager::new_level ()
 {
-  levelname = "PLE Level";
-  description = "This level has no name\n\n";
+  levelname[default_language] = "PLE Level";
+  description[default_language] = "This level has no name\n\n";
 
   author = System::get_username();
 
@@ -79,15 +85,15 @@ ObjectManager::new_level ()
 
   // Set some default actions
   actions.clear();
-  actions.push_back(button_data("basher",  20));
-  actions.push_back(button_data("blocker", 20));
-  actions.push_back(button_data("bomber",  20));
-  actions.push_back(button_data("bridger", 20));
-  actions.push_back(button_data("climber", 20));
-  actions.push_back(button_data("digger",  20));
-  actions.push_back(button_data("floater", 20));
-  actions.push_back(button_data("jumper",  20));
-  actions.push_back(button_data("miner",   20));
+  actions.push_back(ActionData("basher",  20));
+  actions.push_back(ActionData("blocker", 20));
+  actions.push_back(ActionData("bomber",  20));
+  actions.push_back(ActionData("bridger", 20));
+  actions.push_back(ActionData("climber", 20));
+  actions.push_back(ActionData("digger",  20));
+  actions.push_back(ActionData("floater", 20));
+  actions.push_back(ActionData("jumper",  20));
+  actions.push_back(ActionData("miner",   20));
 }
 
 void
@@ -102,53 +108,67 @@ ObjectManager::load_level (string filename)
   cout << "Editor: Clearing current level..." << endl;
   cout << "Loading new level: " << filename << endl;
   
-  PSMParser psm;
-  PLF       plf(filename + ".plf");
-  
-  psm.parse (filename + ".psm");
-  psm.load_surfaces();
-  
-  vector<surface_data>  temp_surfaces = psm.get_surfaces();
-  vector<entrance_data> temp_entraces = plf.get_entrance();
-  vector<hotspot_data>  temp_hotspots = plf.get_hotspot();
-  vector<exit_data>     temp_exits    = plf.get_exit();
-  vector<liquid_data>   temp_liquid   = plf.get_liquids();
-  vector<trap_data>     temp_traps    = plf.get_traps();
+  PLF* plf;
+  //PSMParser psm;
 
-  for(vector<surface_data>::iterator i = temp_surfaces.begin(); i != temp_surfaces.end(); ++i)
+  if (filename.substr(filename.size()-4) == ".plf")
+    plf = new XMLPLF(filename);
+  else
+    plf = new PLFPLF(filename + ".plf");
+  
+  //psm.parse (filename + ".psm");
+  //psm.load_surfaces();
+
+  vector<SurfaceData>  temp_surfaces = plf->get_groundpieces();
+  for (vector<SurfaceData>::iterator i = temp_surfaces.begin();
+       i != temp_surfaces.end();
+       i++)
+    {
+      i->surface = PingusResource::load_surface(i->desc);
+    }
+  
+  vector<EntranceData> temp_entraces = plf->get_entrance();
+  vector<HotspotData>  temp_hotspots = plf->get_hotspot();
+  vector<ExitData>     temp_exits    = plf->get_exit();
+  vector<LiquidData>   temp_liquid   = plf->get_liquids();
+  vector<TrapData>     temp_traps    = plf->get_traps();
+
+  for(vector<SurfaceData>::iterator i = temp_surfaces.begin(); i != temp_surfaces.end(); ++i)
     editor_objs.push_back(EditorObj::create(*i));
       
-  for(vector<entrance_data>::iterator i = temp_entraces.begin(); i != temp_entraces.end(); ++i)
+  for(vector<EntranceData>::iterator i = temp_entraces.begin(); i != temp_entraces.end(); ++i)
     editor_objs.push_back(EditorObj::create(*i));
       
-  for(vector<exit_data>::iterator i = temp_exits.begin(); i != temp_exits.end(); ++i)
+  for(vector<ExitData>::iterator i = temp_exits.begin(); i != temp_exits.end(); ++i)
     editor_objs.push_back(EditorObj::create(*i));
       
-  for(vector<hotspot_data>::iterator i = temp_hotspots.begin(); i != temp_hotspots.end(); ++i)
+  for(vector<HotspotData>::iterator i = temp_hotspots.begin(); i != temp_hotspots.end(); ++i)
     editor_objs.push_back(EditorObj::create(*i));
       
-  for(vector<liquid_data>::iterator i = temp_liquid.begin(); i != temp_liquid.end(); ++i)
+  for(vector<LiquidData>::iterator i = temp_liquid.begin(); i != temp_liquid.end(); ++i)
     editor_objs.push_back(EditorObj::create(*i));
       
-  for(vector<trap_data>::iterator i = temp_traps.begin(); i != temp_traps.end(); ++i)
+  for(vector<TrapData>::iterator i = temp_traps.begin(); i != temp_traps.end(); ++i)
     editor_objs.push_back(EditorObj::create(*i));
 
 #ifndef WIN32 // FIXME: Compiler error in Windows
   editor_objs.sort(EditorObj_less());
 #endif
 
-  description = plf.get_description();
-  levelname   = plf.get_levelname();
-  level_time  = plf.get_time();
-  number_to_save = plf.get_number_to_save();
-  number_of_pingus = plf.get_pingus();
-  height      = plf.get_height();
-  width       = plf.get_width();
-  background  = plf.get_bg();
-  author      = plf.get_author();
-  start_x_pos = plf.get_startx();
-  start_y_pos = plf.get_starty();
-  actions     = plf.get_buttons();
+  description = plf->get_description();
+  levelname   = plf->get_levelname();
+  level_time  = plf->get_time();
+  number_to_save = plf->get_number_to_save();
+  number_of_pingus = plf->get_pingus();
+  height      = plf->get_height();
+  width       = plf->get_width();
+  background  = plf->get_background();
+  author      = plf->get_author();
+  start_x_pos = plf->get_startx();
+  start_y_pos = plf->get_starty();
+  actions     = plf->get_actions();
+
+  delete plf;
 }
 
 void 
@@ -195,7 +215,7 @@ ObjectManager::save_level (string filename)
   // FIXME: we need some error checking
   
   plf_out << "/* This level was created with the PLE\n"
-	  << " * $Id: ObjectManager.cc,v 1.22 2000/07/10 18:42:26 grumbel Exp $\n"
+	  << " * $Id: ObjectManager.cc,v 1.23 2000/07/30 01:47:37 grumbel Exp $\n"
 	  << " */"
 	  << endl;
   
@@ -203,8 +223,8 @@ ObjectManager::save_level (string filename)
 	  << "  author = \"" << author << "\";\n"
 	  << "  start_x_pos = " << start_x_pos << ";\n"
 	  << "  start_y_pos = " << start_y_pos << ";\n"
-	  << "  levelname = \"" << levelname << "\";\n" 
-	  << "  description = \"" << description << "\";\n"
+	  << "  levelname = \"" << levelname[default_language] << "\";\n" 
+	  << "  description = \"" << description[default_language] << "\";\n"
 	  << "  number_of_pingus = " << number_of_pingus << ";\n"
 	  << "  number_to_save = " << number_to_save << ";\n"
 	  << "  time = " << level_time << ";\n"
@@ -237,7 +257,7 @@ ObjectManager::save_level (string filename)
 
   // Printing actions to file
   plf_out << "buttons {\n";
-  for (vector<button_data>::iterator i = actions.begin(); i != actions.end(); ++i) {
+  for (vector<ActionData>::iterator i = actions.begin(); i != actions.end(); ++i) {
     plf_out << "  " << (*i).name << " = " << (*i).number_of << ";" << endl;
   }
   plf_out << "}\n" << endl;
@@ -251,6 +271,71 @@ ObjectManager::save_level (string filename)
   psm_out.close();
   plf_out.close();
   cout << "Saveing finished" << endl;
+}
+
+/// Save the current level in an xml file
+void
+ObjectManager::save_level_xml (std::string filename)
+{
+  std::ofstream xml;
+
+  xml.open(filename.c_str());
+
+  if (!xml)
+    throw PingusError("ObjectManager:save_level_xml: Couldn't save level: " + filename);
+
+  xml << "<?xml version=\"1.0\"?>\n"
+	 << "<pingus-level>\n";
+ 
+  xml << "  <global>\n";
+    
+  for(map<std::string, std::string>::const_iterator i = levelname.begin();
+      i != levelname.end();
+      i++)
+    {
+      xml << "    <levelname lang=\"" << i->first
+	  << "\">" << i->second << "</levelname>" << std::endl;
+    }
+
+  for(map<std::string, std::string>::const_iterator i = levelname.begin();
+      i != levelname.end();
+      i++)
+    {
+      xml << "    <description lang=\"" << i->first
+	  << "\">" << i->second << "</description>" << std::endl;
+    }
+
+  xml << "    <author>" << XMLhelper::encode_entities(author) 
+      << "</author>\n"
+      << "    <number-of-pingus>" << number_of_pingus << "</number-of-pingus>\n"
+      << "    <number-to-save>" << number_to_save << "</number-to-save>\n"
+      << "    <time>" << level_time << "</time>\n"
+      << "    <width>" << width << "</width>\n"
+      << "    <height>" << height << "</height>\n"
+      << "  </global>\n"
+      << std::endl;
+
+  xml << "<background>\n";
+  EditorObj::save_desc_xml(&xml, background.desc);
+  
+  xml  << "  <alpha>"   << background.alpha   << "</alpha>\n"
+       << "  <red>"   << background.red   << "</red>\n"
+       << "  <green>"   << background.green << "</green>\n"
+       << "  <blue>"   << background.blue << "</blue>\n"
+       << "  <scroll-x>"  << background.scroll_x << "</scroll-x>\n"
+       << "  <scroll-y>"  << background.scroll_y << "</scroll-y>\n"
+       << "  <para-x>"    << background.para_x << "</para-x>\n"
+       << "  <para-y>"    << background.para_y << "</para-y>\n"
+       << "  <stretch-x>" << background.stretch_x << "</stretch-x>\n"
+       << "  <stretch-y>" << background.stretch_y << "</stretch-y>\n" 
+       << "</background>\n"
+       << endl;
+  
+  for (EditorObjIter i = editor_objs.begin(); i != editor_objs.end(); ++i) {
+    (*i)->save_xml(&xml);
+  }
+  
+  xml << "</pingus-level>\n" << std::endl;
 }
 
 void
@@ -381,8 +466,8 @@ ObjectManager::move_current_objs(int x, int y)
 {
   for (CurrentObjIter i = current_objs.begin(); i != current_objs.end(); i++) 
     {
-      (*i)->x_pos += x;
-      (*i)->y_pos += y;
+      (*i)->pos.x_pos += x;
+      (*i)->pos.y_pos += y;
     }     
 }
 

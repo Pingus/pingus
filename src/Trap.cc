@@ -1,4 +1,4 @@
-//  $Id: Trap.cc,v 1.4 2000/06/06 18:51:51 grumbel Exp $
+//  $Id: Trap.cc,v 1.5 2000/07/30 01:47:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,7 +26,7 @@ ActionHolder*   Trap::action_holder;
 
 Trap::Trap()
 {
-  z_pos = 200;
+  //z_pos = 200;
 }
 
 Trap::~Trap()
@@ -40,10 +40,11 @@ Trap::draw_offset(int x, int y, float s)
   assert(surface);
   //cout << "Count: " << counter.value() << std::endl;
   if (s == 1.0) {
-    surface->put_screen(x_pos + x, y_pos + y,
+    surface->put_screen(pos.x_pos + x, pos.y_pos + y,
 			counter.value());
   } else {
-    surface->put_screen((int)((x_pos + x) * s), (int)((y_pos + y) * s),
+    surface->put_screen((int)((pos.x_pos + x) * s), 
+			(int)((pos.y_pos + y) * s),
 			s, s, counter.value());
   }
 }

@@ -1,7 +1,7 @@
-//  $Id: WorldObj.hh,v 1.5 2000/07/30 01:47:36 grumbel Exp $
-//
+//  $Id: XMLPLF.hh,v 1.1 2000/07/30 01:47:36 grumbel Exp $
+// 
 //  Pingus - A free Lemmings clone
-//  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
+//  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //
 //  This program is free software; you can redistribute it and/or
 //  modify it under the terms of the GNU General Public License
@@ -12,36 +12,41 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//
+// 
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef WORLDOBJ_HH
-#define WORLDOBJ_HH
+#ifndef XMLPLF_HH
+#define XMLPLF_HH
 
+#include <gnome-xml/parser.h>
 #include "Position.hh"
-#include "ColMap.hh"
+#include "PLF.hh"
 
-///
-class WorldObj
+class XMLPLF : public PLF
 {
-protected:
+private:
+  xmlDocPtr doc;  
+
+  void parse_file();
+
+  void parse_background(xmlNodePtr cur);
+  void parse_actions(xmlNodePtr cur);
+  void parse_entrance(xmlNodePtr cur);
+  void parse_exit(xmlNodePtr cur);
+  void parse_global(xmlNodePtr cur);
+  void parse_groundpiece(xmlNodePtr cur);
+  void parse_traps(xmlNodePtr cur);
+  void parse_hotspot(xmlNodePtr cur);
+  void parse_liquid(xmlNodePtr cur);
+  ResDescriptor parse_surface(xmlNodePtr cur);
+  Position parse_position(xmlNodePtr cur);
+  int parse_int(xmlNodePtr cur);
 public:
-  ///
-  WorldObj();
-  ///
-  virtual ~WorldObj();
-  ///
-  bool operator< (const WorldObj& w);
-  ///
-  virtual int  get_z_pos() const =0;
-  ///
-  virtual void draw_offset(int, int, float s = 1.0) = 0;
-  ///
-  virtual void draw_colmap(ColMap*);
-  ///
-  virtual void let_move(void);
+  XMLPLF();
+  XMLPLF(const string& filename);
+  virtual ~XMLPLF();
 };
 
 #endif

@@ -1,4 +1,4 @@
-//  $Id: EditorObj.hh,v 1.12 2000/07/14 17:45:36 grumbel Exp $
+//  $Id: EditorObj.hh,v 1.13 2000/07/30 01:47:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,14 +25,15 @@
 #include <ClanLib/core.h>
 
 #include "../ResDescriptor.hh"
-#include "../exit_data.hh"
-#include "../entrance_data.hh"
+#include "../ExitData.hh"
+#include "../EntranceData.hh"
 
 // FIXME: The definitions for trap_data and hotspot_data should go to
 // a seperate file.
 #include "../PSMParser.hh"
 #include "../Trap.hh"
 #include "../PLF.hh"
+#include "../Position.hh"
 
 ///
 class EditorObj
@@ -40,8 +41,7 @@ class EditorObj
 protected:
   
 public:
-  /// FIXME: Should be friend
-  int x_pos, y_pos, z_pos;
+  Position pos;
   ///
   int x_of, y_of;
 
@@ -69,17 +69,17 @@ public:
   virtual ~EditorObj();
 
   ///
-  static EditorObj* create(surface_data);
+  static EditorObj* create(SurfaceData);
   ///
-  static EditorObj* create(entrance_data);
+  static EditorObj* create(EntranceData);
   ///
-  static EditorObj* create(exit_data);
+  static EditorObj* create(ExitData);
   ///
-  static EditorObj* create(trap_data);
+  static EditorObj* create(TrapData);
   ///
-  static EditorObj* create(hotspot_data);
+  static EditorObj* create(HotspotData);
   ///
-  static EditorObj* create(liquid_data);
+  static EditorObj* create(LiquidData);
 
   /** @name Z-Pos sort operators */
   //@{
@@ -97,8 +97,17 @@ public:
   virtual bool   mouse_over(int, int);
   ///
   virtual bool   is_in_rect(int x1, int y1, int x2, int y2);
-  ///
+
+  /** Save the give object in the ofstream, this member uses the old
+      plf/psm syntax which is considered obsolete, save_xml() should
+      be used */
   virtual void   save(std::ofstream* plf, std::ofstream* psm) = 0;
+  /** Save the given object in the ofstream as xml */
+  virtual void   save_xml(std::ofstream* xml) = 0;
+  /** Writes the given res_desc to the ofstream */
+  static void save_desc_xml(std::ofstream* xml, ResDescriptor desc);
+  /** Write a position to the xml ofstream */
+  static void save_position_xml(std::ofstream* xml, Position pos);
   ///
   virtual std::string obj_type();
   ///
@@ -127,6 +136,8 @@ public:
   virtual ~EditorGroup();
   ///
   virtual void   save(std::ofstream* plf, std::ofstream* psm);
+  ///
+  virtual void   save_xml(std::ofstream* xml);
   ///
   virtual EditorObj* duplicate();
 };

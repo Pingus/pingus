@@ -1,4 +1,4 @@
-//  $Id: ObjectManager.hh,v 1.7 2000/06/27 06:32:54 grumbel Exp $
+//  $Id: ObjectManager.hh,v 1.8 2000/07/30 01:47:37 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,13 +32,13 @@ private:
   friend class Editor;
   
   /// Other Level data
-  std::string description;
+  map<std::string, std::string> description;
   ///
-  std::string levelname;
+  map<std::string, std::string> levelname;
   ///
-  std::vector<button_data> actions;
+  std::vector<ActionData> actions;
   ///
-  background_data background;
+  BackgroundData background;
   ///
   int    number_to_save;
   ///
@@ -100,9 +100,10 @@ public:
   void new_level ();
   ///
   void load_level (std::string filename);
-  /// Save the current level
+  /// Save the current level (obsolete)
   void save_level (std::string filename);
-
+  /// Save the current level in an xml file
+  void save_level_xml (std::string filename);
   ///
   void draw();
   

@@ -1,4 +1,4 @@
-//  $Id: bridger.cc,v 1.21 2000/07/14 12:18:50 grumbel Exp $
+//  $Id: bridger.cc,v 1.22 2000/07/30 01:47:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -101,6 +101,7 @@ Bridger::let_move()
 	    }
 	  else // We reached a wall...
 	    {
+	      direction.change();
 	      is_finished = true;
 	    }
 	}
@@ -156,19 +157,19 @@ Bridger::place_a_brick()
       pingu->colmap->put(brick_r, 
 			 pingu->x_pos + 10 - brick_r->get_width(),
 			 pingu->y_pos,
-			 surface_data::BRIDGE);
+			 SurfaceData::BRIDGE);
       pingu->map->put(brick_r->get_provider(), 
-		      pingu->x_pos + 15 - brick_r->get_width(),
-		      pingu->y_pos - 1);
+		      pingu->x_pos + 10 - brick_r->get_width(),
+		      pingu->y_pos);
     }
   else
     {
       pingu->colmap->put(brick_r, pingu->x_pos - 10,
 			 pingu->y_pos,
-			 surface_data::BRIDGE);
+			 SurfaceData::BRIDGE);
       pingu->map->put(brick_l->get_provider(), 
-		      pingu->x_pos - 15,
-		      pingu->y_pos - 1);
+		      pingu->x_pos - 10,
+		      pingu->y_pos);
     }
 }
 

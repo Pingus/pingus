@@ -1,4 +1,4 @@
-//  $Id: ObjectSelector.cc,v 1.26 2000/07/14 12:18:50 grumbel Exp $
+//  $Id: ObjectSelector.cc,v 1.27 2000/07/30 01:47:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -58,12 +58,12 @@ ObjectSelector::get_trap()
   vector<string> traps;
   vector<string>::iterator current_trap;
   //  int j = 0;
-  trap_data trap;
+  TrapData trap;
   bool have_name = false;
   
-  trap.x_pos = CL_Mouse::get_x() - x_offset;
-  trap.y_pos = CL_Mouse::get_y() - y_offset;
-  trap.z_pos = 0;
+  trap.pos.x_pos = CL_Mouse::get_x() - x_offset;
+  trap.pos.y_pos = CL_Mouse::get_y() - y_offset;
+  trap.pos.z_pos = 0;
 
   CL_Display::clear_display();
 
@@ -83,31 +83,31 @@ ObjectSelector::get_trap()
       switch (read_key()) 
 	{
 	case CL_KEY_1:
-	  trap.name = "guillotine";	  
+	  trap.type = "guillotine";	  
 	  have_name = true;
 	  break;
 	case CL_KEY_2:
-	  trap.name = "hammer";
+	  trap.type = "hammer";
 	  have_name = true;
 	  break;
 	case CL_KEY_3:
-	  trap.name = "spike";
+	  trap.type = "spike";
 	  have_name = true;
 	  break;
 	case CL_KEY_4:
-	  trap.name = "laser_exit";
+	  trap.type = "laser_exit";
 	  have_name = true;
 	  break;
 	case CL_KEY_5:
-	  trap.name = "fake_exit";
+	  trap.type = "fake_exit";
 	  have_name = true;
 	  break;
 	case CL_KEY_6:
-	  trap.name = "smasher";
+	  trap.type = "smasher";
 	  have_name = true;
 	  break;
 	case CL_KEY_7:
-	  trap.name = "bumper";
+	  trap.type = "bumper";
 	  have_name = true;
 	  break;
 	case CL_KEY_ESCAPE:
@@ -150,7 +150,7 @@ ObjectSelector::get_trap()
 	  break;
 	  
 	case CL_KEY_ENTER:
-	  trap.name = *current_trap;
+	  trap.type = *current_trap;
 	  have_name = true;
 	  break;
 	default:
@@ -164,18 +164,18 @@ ObjectSelector::get_trap()
 }
 
 EditorObj*
-ObjectSelector::get_groundpiece(surface_data::Type type)
+ObjectSelector::get_groundpiece(SurfaceData::Type type)
 {
-  surface_data data;
+  SurfaceData data;
 
-  data.x_pos = CL_Mouse::get_x() - x_offset;
-  data.y_pos = CL_Mouse::get_y() - y_offset;
+  data.pos.x_pos = CL_Mouse::get_x() - x_offset;
+  data.pos.y_pos = CL_Mouse::get_y() - y_offset;
 
   std::string str = select_surface("global");
 
   if (!str.empty())
     {
-      data.res_desc = ResDescriptor("resource:global", str);
+      data.desc = ResDescriptor("resource:global", str);
       data.type = type;
 
       return new PSMObj(data);
@@ -186,10 +186,10 @@ ObjectSelector::get_groundpiece(surface_data::Type type)
 EditorObj*
 ObjectSelector::get_hotspot()
 {
-  hotspot_data data;
-  data.x_pos = CL_Mouse::get_x() - x_offset;
-  data.y_pos = CL_Mouse::get_y() - y_offset;
-  data.z_pos = 0;
+  HotspotData data;
+  data.pos.x_pos = CL_Mouse::get_x() - x_offset;
+  data.pos.y_pos = CL_Mouse::get_y() - y_offset;
+  data.pos.z_pos = 0;
   std::string str = select_surface("global");
 
   if (!str.empty())
@@ -205,11 +205,11 @@ ObjectSelector::get_hotspot()
 EditorObj*
 ObjectSelector::get_entrance()
 {
-  entrance_data entrance;
+  EntranceData entrance;
   bool have_name = false;
-  entrance.x_pos = CL_Mouse::get_x() - x_offset;
-  entrance.y_pos = CL_Mouse::get_y() - y_offset;
-  entrance.z_pos = 0;
+  entrance.pos.x_pos = CL_Mouse::get_x() - x_offset;
+  entrance.pos.y_pos = CL_Mouse::get_y() - y_offset;
+  entrance.pos.z_pos = 0;
 
   CL_Display::clear_display();
   font->print_left(20, 20, "Select an entrance");
@@ -250,10 +250,10 @@ EditorObj*
 ObjectSelector::get_exit()
 {
   string str;
-  exit_data data;
-  data.x_pos = CL_Mouse::get_x() - x_offset;
-  data.y_pos = CL_Mouse::get_y() - y_offset;
-  data.z_pos = 0;
+  ExitData data;
+  data.pos.x_pos = CL_Mouse::get_x() - x_offset;
+  data.pos.y_pos = CL_Mouse::get_y() - y_offset;
+  data.pos.z_pos = 0;
   
   str = select_surface("global");
   
@@ -302,16 +302,16 @@ ObjectSelector::select_obj_type()
 	  return get_trap();
 	  break;
 	case CL_KEY_B:
-	  return get_groundpiece(surface_data::BRIDGE);
+	  return get_groundpiece(SurfaceData::BRIDGE);
 	  break;
 	case CL_KEY_S:
-	  return get_groundpiece(surface_data::SOLID);
+	  return get_groundpiece(SurfaceData::SOLID);
 	  break;
 	case CL_KEY_G:
-	  return get_groundpiece(surface_data::GROUND);
+	  return get_groundpiece(SurfaceData::GROUND);
 	  break;
 	case CL_KEY_N:
-	  return get_groundpiece(surface_data::TRANSPARENT);
+	  return get_groundpiece(SurfaceData::TRANSPARENT);
 	  break;
 	case CL_KEY_H:
 	  return get_hotspot();
@@ -353,9 +353,9 @@ ObjectSelector::select_surface(std::string resource_file)
   std::string str;
   CL_ResourceManager* res = PingusResource::get(resource_file);
     
-  surface_data data;
-  data.x_pos = CL_Mouse::get_x() - x_offset;
-  data.y_pos = CL_Mouse::get_y() - y_offset;
+  SurfaceData data;
+  data.pos.x_pos = CL_Mouse::get_x() - x_offset;
+  data.pos.y_pos = CL_Mouse::get_y() - y_offset;
 
   list<string>* liste = res->get_resources_of_type("surface");
   surface_obj sur_obj;
@@ -415,6 +415,9 @@ ObjectSelector::read_string(string description, string def_str)
 /*
 
 $Log: ObjectSelector.cc,v $
+Revision 1.27  2000/07/30 01:47:37  grumbel
+XML support, currently not activated
+
 Revision 1.26  2000/07/14 12:18:50  grumbel
 Fixed misc glitches for the 0.4.0 release
 

@@ -1,4 +1,4 @@
-//  $Id: PSMParser.hh,v 1.10 2000/07/11 15:53:57 grumbel Exp $
+//  $Id: PSMParser.hh,v 1.11 2000/07/30 01:47:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,9 +26,10 @@
 
 #include <ClanLib/core.h>
 
+#include "SurfaceData.hh"
 #include "ResDescriptor.hh"
 
-///
+/*
 struct surface_data 
 {
   ///
@@ -48,7 +49,7 @@ struct surface_data
  type ; 
 }///
 ;
-
+*/
 ///
 struct PSMEOF {}///
 ;
@@ -71,7 +72,7 @@ class PSMParser
 {
 private:
   ///
-  std::vector<surface_data> surface;
+  std::vector<SurfaceData> surface;
   ///
   bool file_parsed;
   ///
@@ -105,7 +106,7 @@ public:
   ///
   void   parse(std::string filename);
   ///
-  std::vector<surface_data> get_surfaces(void);
+  std::vector<SurfaceData> get_surfaces(void);
 }///
 ;
 

@@ -1,4 +1,4 @@
-//  $Id: PSMParser.cc,v 1.15 2000/07/14 12:18:49 grumbel Exp $
+//  $Id: PSMParser.cc,v 1.16 2000/07/30 01:47:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -49,36 +49,36 @@ PSMParser::parse(string filename)
     if (!in) 
       throw PingusError("Cannot open: " + filename);
     
-    surface_data temp;
+    SurfaceData temp;
     
     while(!in.eof()) {
       jump_spaces();
       temp.type_str = get_string();
       
       if (temp.type_str == "solid") { 
-	temp.type = surface_data::SOLID;
+	temp.type = SurfaceData::SOLID;
       } else if (temp.type_str == "ground") {
-	temp.type = surface_data::GROUND;
+	temp.type = SurfaceData::GROUND;
       } else if (temp.type_str == "transparent") {
-	temp.type = surface_data::TRANSPARENT;
+	temp.type = SurfaceData::TRANSPARENT;
       } else if (temp.type_str == "bridge") {
-	temp.type = surface_data::BRIDGE;
+	temp.type = SurfaceData::BRIDGE;
       } else {
 	throw PSMParseError("Object type is not valid: " + temp.type_str);	
       }
       expect(':');
 
       jump_spaces();
-      temp.res_desc = get_resdesc();
-      temp.res_desc.res_name = get_string();
+      temp.desc = get_resdesc();
+      temp.desc.res_name = get_string();
       expect(':');
 
       jump_spaces();
-      temp.x_pos = get_int();
+      temp.pos.x_pos = get_int();
       expect(':');
 
       jump_spaces();
-      temp.y_pos = get_int();
+      temp.pos.y_pos = get_int();
       expect(';');
 
       surface.push_back(temp);
@@ -92,13 +92,13 @@ PSMParser::parse(string filename)
   file_parsed = true;
   in.close();
 }
-
+/*
 void
 PSMParser::load_surfaces(void)
 {
   assert(file_parsed);
 
-  for (vector<surface_data>::size_type i=0; i < surface.size(); ++i) {
+  for (vector<SurfaceData>::size_type i=0; i < surface.size(); ++i) {
     if (verbose > 1) {
       cout << "Surface: " << "(" << "?? - section broken - ??" << ":" << surface[i].res_desc.datafile << ") " 
 	   << surface[i].res_desc.res_name << endl;
@@ -106,8 +106,8 @@ PSMParser::load_surfaces(void)
     surface[i].surface = PingusResource::load_surface(surface[i].res_desc);
   }
 }
-
-vector<surface_data>
+*/
+vector<SurfaceData>
 PSMParser::get_surfaces(void)
 {
   return surface;

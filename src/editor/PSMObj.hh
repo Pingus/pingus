@@ -1,4 +1,4 @@
-// $Id: PSMObj.hh,v 1.6 2000/06/18 17:01:50 grumbel Exp $
+// $Id: PSMObj.hh,v 1.7 2000/07/30 01:47:37 grumbel Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,16 +22,17 @@
 
 #include <cstdio>
 #include "EditorObj.hh"
+#include "../SurfaceData.hh"
 
 ///
 class PSMObj : public EditorObj
 {
 private:
   ///
-  surface_data::Type type;
+  SurfaceData::Type type;
 public:
   ///
-  PSMObj(surface_data data);
+  PSMObj(SurfaceData data);
   ///
   PSMObj(const PSMObj&);
   ///
@@ -39,6 +40,8 @@ public:
 
   ///
   virtual void save(std::ofstream* plf, std::ofstream* psm);
+  ///
+  virtual void save_xml(std::ofstream* xml);
   ///
   EditorObj*   duplicate();
   ///

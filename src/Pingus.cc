@@ -1,4 +1,4 @@
-//   $Id: Pingus.cc,v 1.45 2000/07/14 12:18:49 grumbel Exp $
+//   $Id: Pingus.cc,v 1.46 2000/07/30 01:47:35 grumbel Exp $
 //    ___
 //   |  _\ A free Lemmings clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -433,8 +433,8 @@ PingusMain::check_args(int argc, char* argv[])
 	"                            Set the resolution for pingus (default: 640x480)\n"
 	"   -h, --help               Displays this screen\n"
 	"   --disable-intro          Disable intro\n"
-	"   -F, --disable-fullscreen Disable Fullscreen (default)\n"
-	"   -f, --enable-fullscreen  Enable Fullscreen\n"
+	"   -F, --disable-fullscreen Disable Fullscreen\n"
+	"   -f, --enable-fullscreen  Enable Fullscreen (default)\n"
        	"   -d, --datadir PATH       Set the path to load the data files to `path'\n"
 	"   --use-datafile           Use the pre-compiled datafile (default)\n"
 	"   --use-scriptfile         Use the scriptfile and read all data from files\n"

@@ -1,4 +1,4 @@
- //  $Id: PingusLevelDesc.cc,v 1.11 2000/07/14 12:18:49 grumbel Exp $
+ //  $Id: PingusLevelDesc.cc,v 1.12 2000/07/30 01:47:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,7 @@
 #include "Display.hh"
 #include "PingusResource.hh"
 #include "PingusLevelDesc.hh"
+#include "System.hh"
 
 PingusLevelDesc::PingusLevelDesc(PLF* arg_plf)
 {
@@ -34,8 +35,8 @@ PingusLevelDesc::PingusLevelDesc(PLF* arg_plf)
   title      = PingusResource::load_font("Fonts/pingus","fonts");
 
   description.set_font(font);
-  description.set_text(plf->get_description(), 350);
-  levelname = plf->get_levelname(); 
+  description.set_text(plf->get_description()[System::get_language()], 350);
+  levelname = plf->get_levelname()[System::get_language()]; 
 }
 
 void

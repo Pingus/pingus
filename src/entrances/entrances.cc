@@ -1,4 +1,4 @@
-//  $Id: entrances.cc,v 1.3 2000/02/11 21:22:11 grumbel Exp $
+//  $Id: entrances.cc,v 1.4 2000/07/30 01:47:38 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,7 +24,7 @@
 #include "Cloud.hh"
 
 Entrance*
-get_entrance(entrance_data data)
+get_entrance(EntranceData data)
 {
   if (data.type == "generic") {
     return new Entrance(data);

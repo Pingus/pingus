@@ -1,4 +1,4 @@
-//  $Id: hammer.cc,v 1.5 2000/06/25 20:22:18 grumbel Exp $
+//  $Id: hammer.cc,v 1.6 2000/07/30 01:47:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,11 +23,10 @@
 #include "../algo.hh"
 #include "../ActionHolder.hh"
 
-Hammer::Hammer(trap_data data)
+Hammer::Hammer(TrapData data)
 {
-  x_pos = data.x_pos;
-  y_pos = data.y_pos;
-  z_pos = data.z_pos;
+  pos = data.pos;
+
   surface = PingusResource::load_surface("Traps/hammer", "traps");
   counter.set_size(surface->get_num_frames());
   counter.set_type(GameCounter::ping_pong);
@@ -61,8 +60,8 @@ bool
 Hammer::catch_pingu(Pingu* pingu)
 {
   if (counter >= (int)(surface->get_num_frames()) - 3) {
-    if (pingu->get_x() > x_pos + 55 && pingu->get_x() < x_pos + 77
-	&& pingu->get_y() > y_pos + 146 && pingu->get_y() < y_pos + 185)
+    if (pingu->get_x() > pos.x_pos + 55 && pingu->get_x() < pos.x_pos + 77
+	&& pingu->get_y() > pos.y_pos + 146 && pingu->get_y() < pos.y_pos + 185)
       pingu->set_action(action_holder->get_uaction("smashed"));
     return true;
   } else {

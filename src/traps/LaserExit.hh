@@ -1,4 +1,4 @@
-//  $Id: LaserExit.hh,v 1.3 2000/06/18 17:01:50 grumbel Exp $
+//  $Id: LaserExit.hh,v 1.4 2000/07/30 01:47:38 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,7 @@
 #define LASEREXIT_HH
 
 #include "../Trap.hh"
-#include "../trap_data.hh"
+#include "../TrapData.hh"
 
 ///
 class LaserExit : public Trap
@@ -31,7 +31,7 @@ private:
   bool killing;
 public:
   ///
-  LaserExit(trap_data);
+  LaserExit(TrapData);
   ///
   virtual ~LaserExit();
   ///

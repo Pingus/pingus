@@ -1,4 +1,4 @@
-//  $Id: entrances.hh,v 1.3 2000/06/18 17:01:50 grumbel Exp $
+//  $Id: entrances.hh,v 1.4 2000/07/30 01:47:38 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,7 +23,7 @@
 #include "../Entrance.hh"
 
 ///
-Entrance* get_entrance(entrance_data data);
+Entrance* get_entrance(EntranceData data);
 
 #endif
 

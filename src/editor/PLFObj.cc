@@ -1,4 +1,4 @@
-//  $Id: PLFObj.cc,v 1.23 2000/07/14 12:18:50 grumbel Exp $
+//  $Id: PLFObj.cc,v 1.24 2000/07/30 01:47:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -49,11 +49,9 @@ PLFObj::status_line()
   return std::string(str);
 }
 
-HotspotObj::HotspotObj(hotspot_data data)
+HotspotObj::HotspotObj(HotspotData data)
 {
-  x_pos = data.x_pos;
-  y_pos = data.y_pos;
-  z_pos = data.z_pos;
+  pos   = data.pos;
   desc  = data.desc;
   speed = data.speed;
   para  = data.para;
@@ -76,9 +74,9 @@ HotspotObj::save(ofstream* plf, ofstream* psm)
 {
   (*plf) << "hotspot {\n"
 	 << "  image = (resource:" << desc.datafile << ")\"" << desc.res_name << "\";\n"
-	 << "  x_pos = " << x_pos << ";\n"
-	 << "  y_pos = " << y_pos << ";\n"
-	 << "  z_pos = " << z_pos << ";\n"
+	 << "  x_pos = " << pos.x_pos << ";\n"
+	 << "  y_pos = " << pos.y_pos << ";\n"
+	 << "  z_pos = " << pos.z_pos << ";\n"
     	 << "  speed = " << speed << ";\n"
 	 << "  para = \"" << para << "\";\n"
     //	 << "  para_y = \"" << para.y << "\";\n"
@@ -86,22 +84,32 @@ HotspotObj::save(ofstream* plf, ofstream* psm)
 	 << endl;  
 }
 
+void
+HotspotObj::save_xml(ofstream* xml)
+{
+  (*xml) << "<hotspot>\n";
+  save_desc_xml(xml, desc);
+  save_position_xml(xml, pos);
+  (*xml) << "  <speed>" << speed << "</speed>\n"
+	 << "  <para>" << para << "</para>\n"
+	 << "</hotspot>\n"
+	 << std::endl;  
+}
+
 std::string
 HotspotObj::status_line()
 {
   char str[256];
 
-  sprintf(str, "Hotspot - Speed: %d - X: %d - Y: %d - Z: %d",  speed, x_pos, y_pos, z_pos);
+  sprintf(str, "Hotspot - Speed: %d - X: %d - Y: %d - Z: %d",  speed, pos.x_pos, pos.y_pos, pos.z_pos);
 
   return std::string(str);
 }
 
-EntranceObj::EntranceObj(entrance_data data)
+EntranceObj::EntranceObj(EntranceData data)
 {
-  x_pos = data.x_pos;
-  y_pos = data.y_pos;
-  z_pos = data.z_pos;
-  type  = data.type;
+  pos  = data.pos;
+  type = data.type;
   direction = data.direction;
   release_rate = data.release_rate;
   
@@ -154,26 +162,54 @@ EntranceObj::save(ofstream* plf, ofstream* psm)
 
   switch(direction)
     {
-    case entrance_data::LEFT:
+    case EntranceData::LEFT:
       dir_str = "left";
       break;
-    case entrance_data::RIGHT:
+    case EntranceData::RIGHT:
       dir_str = "right";
       break;
-    case entrance_data::MISC:
+    case EntranceData::MISC:
       dir_str = "misc";
       break;
     }
 
   (*plf) << "entrance {\n"
 	 << "  type  = " << type << ";\n"
-	 << "  x_pos = " << x_pos << ";\n"
-	 << "  y_pos = " << y_pos << ";\n"
+	 << "  x_pos = " << pos.x_pos << ";\n"
+	 << "  y_pos = " << pos.y_pos << ";\n"
 	 << "  z_pos = 0;\n"
 	 << "  release_rate = " << release_rate << ";\n"
 	 << "  direction = " << dir_str << ";\n"
 	 << "}\n"
 	 << endl;
+}
+
+void
+EntranceObj::save_xml(ofstream* xml)
+{
+  std::string dir_str = "not set - this is a bug";
+
+  switch(direction)
+    {
+    case EntranceData::LEFT:
+      dir_str = "left";
+      break;
+    case EntranceData::RIGHT:
+      dir_str = "right";
+      break;
+    case EntranceData::MISC:
+    default:
+      dir_str = "misc";
+      break;
+    }
+
+  (*xml) << "<entrance>\n";
+  save_position_xml(xml, pos);
+  (*xml) << "  <type>" << type << "</type>\n"
+	 << "  <direction>" << dir_str << "</direction>\n"
+	 << "  <release-rate>" << release_rate << "</release-rate>\n"
+	 << "</entrance>\n"
+	 << std::endl;  
 }
 
 std::string
@@ -184,13 +220,13 @@ EntranceObj::status_line()
 
   switch(direction)
     {
-    case entrance_data::LEFT:
+    case EntranceData::LEFT:
       dir_str = "left";
       break;
-    case entrance_data::RIGHT:
+    case EntranceData::RIGHT:
       dir_str = "right";
       break;
-    case entrance_data::MISC:
+    case EntranceData::MISC:
       dir_str = "misc";
       break;
     }
@@ -201,11 +237,9 @@ EntranceObj::status_line()
   return std::string(str);
 }
 
-ExitObj::ExitObj(exit_data data)
+ExitObj::ExitObj(ExitData data)
 {
-  x_pos = data.x_pos;
-  y_pos = data.y_pos;
-  z_pos = data.z_pos;
+  pos  = data.pos;
   desc = data.desc;
   surf = PingusResource::load_surface(desc);
 }
@@ -225,11 +259,21 @@ ExitObj::save(ofstream* plf, ofstream* psm)
 {
   (*plf) << "exit {\n"
 	 << "  image = (resource:" << desc.datafile << ")\"" << desc.res_name << "\";\n"
-	 << "  x_pos = " << x_pos << ";\n"
-	 << "  y_pos = " << y_pos << ";\n"
-	 << "  z_pos = " << z_pos << ";\n"
+	 << "  x_pos = " << pos.x_pos << ";\n"
+	 << "  y_pos = " << pos.y_pos << ";\n"
+	 << "  z_pos = " << pos.z_pos << ";\n"
 	 << "}\n"
 	 << endl;
+}
+
+void
+ExitObj::save_xml(std::ofstream* xml)
+{
+  (*xml) << "<exit>\n";
+  save_position_xml(xml, pos);
+  save_desc_xml(xml, desc);
+  (*xml) << "</exit>\n"
+	 << std::endl;
 }
 
 std::string 
@@ -239,44 +283,42 @@ ExitObj::status_line()
 
   sprintf(str, "Exit - %s - X:%3d Y:%3d Z:%3d",
 	  desc.res_name.c_str(),
-	  x_pos, y_pos, z_pos);
+	  pos.x_pos, pos.y_pos, pos.z_pos);
 
   return std::string(str);
 }
 
-TrapObj::TrapObj(trap_data data)
+TrapObj::TrapObj(TrapData data)
 {
-  x_pos = data.x_pos;
-  y_pos = data.y_pos;
-  z_pos = data.z_pos;
-  name  = data.name;
+  pos   = data.pos;
+  type  = data.type;
   frame = 0;
 
-  if (name == "guillotine") {
+  if (type == "guillotine") {
     surf = PingusResource::load_surface("Traps/guillotineidle", "traps");
-  } else if (name == "fake_exit") {
+  } else if (type == "fake_exit") {
     surf = PingusResource::load_surface("Traps/fake_exit", "traps");
-  } else if (name == "laser_exit") {
+  } else if (type == "laser_exit") {
     frame = 5;
-    z_pos = -100;
+    pos.z_pos = -100;
     surf = PingusResource::load_surface("Traps/laser_exit", "traps");
-  } else if (name == "spike") {
+  } else if (type == "spike") {
     frame = 5;
     surf = PingusResource::load_surface("Traps/spike", "traps");
-    z_pos = 100;
-  } else if (name == "hammer") {
+    pos.z_pos = 100;
+  } else if (type == "hammer") {
     surf = PingusResource::load_surface("Traps/hammer", "traps");    
-  } else if (name == "smasher") {
+  } else if (type == "smasher") {
     surf = PingusResource::load_surface("Traps/smasher", "traps");
-    z_pos = 100;
-  } else if (name == "bumper") {
+    pos.z_pos = 100;
+  } else if (type == "bumper") {
     surf = PingusResource::load_surface("Traps/bumper", "traps");
-    z_pos = -100;
-  } else if (name == "teleport") {
+    pos.z_pos = -100;
+  } else if (type == "teleport") {
     surf = PingusResource::load_surface("Traps/teleporter", "traps");
-    z_pos = 100;
+    pos.z_pos = 100;
   } else {
-    throw PingusError(name + ": trap is not implemented in editor");
+    throw PingusError(type + ": trap is not implemented in editor");
   }
 }
 
@@ -294,8 +336,8 @@ void
 TrapObj::draw_offset(int x_offset, int y_offset)
 {
   if (surf) {
-    surf->put_screen(x_pos + x_offset + x_of,
-		     y_pos + y_offset + y_of,
+    surf->put_screen(pos.x_pos + x_offset + x_of,
+		     pos.y_pos + y_offset + y_of,
 		     frame);
   } else {
     EditorObj::draw_offset(x_offset, y_offset);
@@ -306,19 +348,27 @@ void
 TrapObj::save(ofstream* plf, ofstream* psm)
 {
   (*plf) << "trap {\n"
-	 << "  name = \"" << name << "\";\n"
-	 << "  x_pos = " << x_pos << ";\n"
-	 << "  y_pos = " << y_pos << ";\n"
-	 << "  z_pos = " << z_pos << ";\n"
+	 << "  name = \"" << type << "\";\n"
+	 << "  x_pos = " << pos.x_pos << ";\n"
+	 << "  y_pos = " << pos.y_pos << ";\n"
+	 << "  z_pos = " << pos.z_pos << ";\n"
 	 << "}\n"
-	 << endl;
+	 << std::endl;
+}
+
+void
+TrapObj::save_xml(std::ofstream* xml)
+{
+  (*xml) << "<trap>\n"
+	 << "  <type>" << type << "</type>\n";
+  save_position_xml(xml, pos);
+  (*xml) << "</trap>\n"
+	 << std::endl;
 }
 
 LiquidObj::LiquidObj(const LiquidObj& data)
 {
-  x_pos = data.x_pos;
-  y_pos = data.y_pos;
-  z_pos = data.z_pos;
+  pos = data.pos;
   width = data.width;
   desc  = data.desc;
   speed = data.speed;
@@ -326,11 +376,9 @@ LiquidObj::LiquidObj(const LiquidObj& data)
   counter = data.counter;
 }
 
-LiquidObj::LiquidObj(liquid_data data)
+LiquidObj::LiquidObj(LiquidData data)
 {
-  x_pos = data.x_pos;
-  y_pos = data.y_pos;
-  z_pos = data.z_pos;
+  pos = data.pos;
   width = data.width;
   desc  = data.desc;
   speed = data.speed;
@@ -352,10 +400,10 @@ LiquidObj::duplicate()
 void
 LiquidObj::draw_offset(int x_offset, int y_offset)
 {
-  int x1 = x_pos + x_offset;
-  int x2 = x_pos + width + x_offset;
-  int y1 = y_pos + y_offset;
-  int y2 = y_pos + y_offset + surf->get_height();
+  int x1 = pos.x_pos + x_offset;
+  int x2 = pos.x_pos + width + x_offset;
+  int y1 = pos.y_pos + y_offset;
+  int y2 = pos.y_pos + y_offset + surf->get_height();
 
   if (x1 < 0) {
     x1 = 0;
@@ -384,8 +432,8 @@ LiquidObj::draw_offset(int x_offset, int y_offset)
   CL_Display::push_clip_rect();
   CL_Display::set_clip_rect(CL_ClipRect(x1, y1, x2, y2));
 
-  for(int x = x_pos; x <= x_pos + width; x += surf->get_width())
-    surf->put_screen(x + x_offset, y_pos + y_offset, int(++counter));
+  for(int x = pos.x_pos; x <= pos.x_pos + width; x += surf->get_width())
+    surf->put_screen(x + x_offset, pos.y_pos + y_offset, int(++counter));
 
   CL_Display::pop_clip_rect();
 }
@@ -393,10 +441,10 @@ LiquidObj::draw_offset(int x_offset, int y_offset)
 void
 LiquidObj::draw_mark_offset(int x_offset, int y_offset) 
 {
-  Display::draw_rect(x_pos + x_offset,
-		     y_pos + y_offset,
-		     x_pos + width + x_offset,
-		     y_pos + surf->get_height() + y_offset,
+  Display::draw_rect(pos.x_pos + x_offset,
+		     pos.y_pos + y_offset,
+		     pos.x_pos + width + x_offset,
+		     pos.y_pos + surf->get_height() + y_offset,
 		     mark_color.r, 
 		     mark_color.g,
 		     mark_color.b,
@@ -410,10 +458,10 @@ LiquidObj::mouse_over(int x_offset, int y_offset)
   int mouse_x = CL_Mouse::get_x();
   int mouse_y = CL_Mouse::get_y();  
 
-  if (   mouse_x > x_pos + x_offset 
-      && mouse_x < x_pos + width + x_offset
-      && mouse_y > y_pos + y_offset 
-      && mouse_y < y_pos + height + y_offset)
+  if (   mouse_x > pos.x_pos + x_offset 
+      && mouse_x < pos.x_pos + width + x_offset
+      && mouse_y > pos.y_pos + y_offset 
+      && mouse_y < pos.y_pos + height + y_offset)
     {
       return true;
     }
@@ -428,13 +476,24 @@ LiquidObj::save(ofstream* plf, ofstream* psm)
 {
   (*plf) << "liquid {\n"
 	 << "  image = (resource:" << desc.datafile << ")\"" << desc.res_name << "\";\n"
-	 << "  x_pos = " << x_pos << ";\n"
-	 << "  y_pos = " << y_pos << ";\n"
-	 << "  z_pos = " << z_pos << ";\n"
+	 << "  x_pos = " << pos.x_pos << ";\n"
+	 << "  y_pos = " << pos.y_pos << ";\n"
+	 << "  z_pos = " << pos.z_pos << ";\n"
 	 << "  width = " << width << ";\n"
     	 << "  speed = " << speed << ";\n"
 	 << "}\n" 
 	 << endl;
+}
+
+void
+LiquidObj::save_xml(std::ofstream* xml)
+{
+  (*xml) << "<liquid>";
+  save_desc_xml(xml, desc);
+  save_position_xml(xml, pos);
+  (*xml) << "  <width>" << width << "</width>\n"
+	 << "  <speed>" << speed << "</speed>\n"
+	 << "</liquid>\n" << std::endl;
 }
 
 std::string  
@@ -442,7 +501,7 @@ LiquidObj::status_line()
 {
   char str[256];
 
-  sprintf(str, "%4d:%4d:%3d:%2d", x_pos, y_pos, z_pos, speed);
+  sprintf(str, "%4d:%4d:%3d:%2d", pos.x_pos, pos.y_pos, pos.z_pos, speed);
 
   return std::string(str);
 }

@@ -1,4 +1,4 @@
-//  $Id: System.cc,v 1.13 2000/06/27 06:32:54 grumbel Exp $
+//  $Id: System.cc,v 1.14 2000/07/30 01:47:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -245,6 +245,17 @@ System::get_email()
     {
       return global_email;
     }
+}
+
+std::string
+System::get_language()
+{
+  char* lang = getenv("LANG");
+
+  if (lang)
+    return lang; 
+  else
+    return default_language;
 }
 
 /* EOF */

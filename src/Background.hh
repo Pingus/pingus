@@ -1,4 +1,4 @@
-//  $Id: Background.hh,v 1.5 2000/06/18 17:01:49 grumbel Exp $
+//  $Id: Background.hh,v 1.6 2000/07/30 01:47:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,10 +25,10 @@
 #include "AnimCounter.hh"
 #include "GameCounter.hh"
 #include "ResDescriptor.hh"
-#include "background_data.hh"
+#include "BackgroundData.hh"
 
 ///
-class Background : public background_data
+class Background : public BackgroundData
 {
 private:
   ///
@@ -37,25 +37,22 @@ private:
   CL_Surface* bg_surface_raw;
   ///
   CL_Surface* bg_surface;
-
   ///
   AnimCounter scroll;
   ///
   GameCounter counter;
-
   ///
   int x1, x2, y1, y2;
   ///
   float scroll_ox, scroll_oy;
-
 public:
   ///
-  Background(background_data);
+  Background(BackgroundData);
   ///
   ~Background();
 
   ///
-  void load (background_data);
+  void load (BackgroundData);
   
   ///
   void let_move(void);

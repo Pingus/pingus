@@ -1,4 +1,4 @@
-//  $Id: globals.hh,v 1.20 2000/07/08 13:21:33 grumbel Exp $
+//  $Id: globals.hh,v 1.21 2000/07/30 01:47:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -65,6 +65,10 @@ extern std::string global_username;
 
 /// The email address of the currently logged in user
 extern std::string global_email; 
+
+/** The default language, which is used when the env var LANG is not
+    set */
+extern std::string default_language;
 
 #endif
 

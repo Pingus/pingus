@@ -1,4 +1,4 @@
-//  $Id: EditorEvent.cc,v 1.22 2000/07/11 15:53:57 grumbel Exp $
+//  $Id: EditorEvent.cc,v 1.23 2000/07/30 01:47:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -159,7 +159,7 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key &key)
 		   i != object_manager->current_objs.end(); 
 		   ++i)
 		{
-		  (*i)->z_pos -= 50;
+		  (*i)->pos.z_pos -= 50;
 		}
 	    }
 	  else if (CL_Keyboard::get_keycode(CL_KEY_RCTRL))
@@ -168,7 +168,7 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key &key)
 		   i != object_manager->current_objs.end(); 
 		   ++i)
 		{
-		  (*i)->z_pos -= 5;
+		  (*i)->pos.z_pos -= 5;
 		}
 	    }
 	  break;
@@ -182,7 +182,7 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key &key)
 		   i != object_manager->current_objs.end(); 
 		   ++i) 
 		{
-		  (*i)->z_pos += 50;
+		  (*i)->pos.z_pos += 50;
 		}
 	    }
 	  else if (CL_Keyboard::get_keycode(CL_KEY_RCTRL)) 
@@ -191,7 +191,7 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key &key)
 		   i != object_manager->current_objs.end(); 
 		   ++i)
 		{
-		  (*i)->z_pos += 5;
+		  (*i)->pos.z_pos += 5;
 		}
 	    }
 	  break;
@@ -440,7 +440,13 @@ EditorEvent::editor_save_level_as()
 
   if (!str.empty()) 
     {
-      object_manager->save_level(str);
+      if (str.substr(str.size() - 4) ==  ".plf")
+	object_manager->save_level(str);
+      else if (str.substr(str.size() - 4) ==  ".xml")
+	object_manager->save_level_xml(str);	
+      else
+	object_manager->save_level_xml(str + ".xml");
+
       editor->last_level = str;
     }
 }

@@ -1,4 +1,4 @@
-//  $Id: PLFObj.hh,v 1.8 2000/06/28 19:49:19 grumbel Exp $
+//  $Id: PLFObj.hh,v 1.9 2000/07/30 01:47:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,9 +38,10 @@ public:
   ///
   virtual void save(std::ofstream* plf, std::ofstream* psm) = 0;
   ///
+  virtual void save_xml(std::ofstream* xml) = 0;
+  ///
   virtual std::string  status_line();
-}///
-;
+};
 
 ///
 class HotspotObj : public PLFObj
@@ -52,13 +53,15 @@ private:
   float para;
 public:
   ///
-  HotspotObj(hotspot_data);
+  HotspotObj(HotspotData);
   ///
   ~HotspotObj();
   ///
   EditorObj* duplicate();
   ///
   void save(std::ofstream* plf, std::ofstream* psm);
+  ///
+  void save_xml(std::ofstream* xml);
   ///
   std::string obj_type() { return "Hotspot"; }
   ///
@@ -74,16 +77,18 @@ private:
   ///
   int release_rate;
   ///
-  entrance_data::Direction direction;
+  EntranceData::EntranceDirection direction;
 public:
   ///
-  EntranceObj(entrance_data);
+  EntranceObj(EntranceData);
   ///
   ~EntranceObj();
   ///
   EditorObj* duplicate();
   ///
   void save(std::ofstream* plf, std::ofstream* psm);  
+  ///
+  void save_xml(std::ofstream* xml);
   ///
   std::string obj_type() { return "Entrance"; }
   ///
@@ -97,11 +102,13 @@ class ExitObj : public PLFObj
 private:
 public:
   ///
-  ExitObj(exit_data);
+  ExitObj(ExitData);
   ///
   ~ExitObj();
   ///
   EditorObj* duplicate();
+  ///
+  void save_xml(std::ofstream* xml);
   ///
   void save(std::ofstream* plf, std::ofstream* psm);  
   ///
@@ -116,18 +123,20 @@ class TrapObj : public PLFObj
 {
 private:
   ///
-  std::string name;
+  std::string type;
   ///
   int    frame;
 public:
   ///
-  TrapObj(trap_data);
+  TrapObj(TrapData);
   ///
   ~TrapObj();
   ///
   EditorObj* duplicate();
   ///
   void save(std::ofstream* plf, std::ofstream* psm);  
+  ///
+  void save_xml(std::ofstream* xml);
   ///
   void draw_offset(int x_offset, int y_offset);
   ///
@@ -148,7 +157,7 @@ private:
   AnimCounter counter;
 public:
   ///
-  LiquidObj(liquid_data);
+  LiquidObj(LiquidData);
   ///
   LiquidObj(const LiquidObj& data);
   ///
@@ -163,6 +172,8 @@ public:
   bool mouse_over(int, int);
   ///
   void save(std::ofstream* plf, std::ofstream* psm);
+  ///
+  void save_xml(std::ofstream* xml);
   ///
   std::string obj_type() { return "Liquid"; }///
 ;

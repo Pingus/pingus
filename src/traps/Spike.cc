@@ -1,4 +1,4 @@
-//  $Id: Spike.cc,v 1.3 2000/06/25 20:22:18 grumbel Exp $
+//  $Id: Spike.cc,v 1.4 2000/07/30 01:47:38 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,12 +22,10 @@
 
 #include "Spike.hh"
 
-Spike::Spike(trap_data data)
+Spike::Spike(TrapData data)
 {
   killing = false;
-  x_pos = data.x_pos;
-  y_pos = data.y_pos;
-  z_pos = data.z_pos;
+  pos = data.pos;
 
   surface = PingusResource::load_surface("Traps/spike", "traps");
 
@@ -46,7 +44,7 @@ void
 Spike::draw_offset(int x, int y, float s)
 {
   if (killing) {
-    surface->put_screen(x_pos + x, y_pos + y, counter);
+    surface->put_screen(pos.x_pos + x, pos.y_pos + y, counter);
   } else {
     // do nothing
   }
@@ -68,16 +66,16 @@ bool
 Spike::catch_pingu(Pingu* pingu)
 {
   if (!killing) {
-    if (pingu->x_pos > x_pos +16 - 5 && pingu->x_pos < x_pos + 16 + 5
-	&& pingu->y_pos > y_pos && pingu->y_pos < y_pos + 32) 
+    if (pingu->x_pos > pos.x_pos +16 - 5 && pingu->x_pos < pos.x_pos + 16 + 5
+	&& pingu->y_pos > pos.y_pos && pingu->y_pos < pos.y_pos + 32) 
       {
 	counter = 0;
 	killing = true;
 	return true;
       }
   } else {
-    if (counter == 3 && pingu->x_pos > x_pos +16 - 12 && pingu->x_pos < x_pos + 16 + 12
-	&& pingu->y_pos > y_pos && pingu->y_pos < y_pos + 32) 
+    if (counter == 3 && pingu->x_pos > pos.x_pos +16 - 12 && pingu->x_pos < pos.x_pos + 16 + 12
+	&& pingu->y_pos > pos.y_pos && pingu->y_pos < pos.y_pos + 32) 
       {
 	pingu->set_status((PinguStatus)dead);
 	return true;

@@ -1,4 +1,4 @@
-//  $Id: smasher.cc,v 1.8 2000/06/25 20:22:18 grumbel Exp $
+//  $Id: smasher.cc,v 1.9 2000/07/30 01:47:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,12 +25,10 @@
 
 #include "smasher.hh"
 
-Smasher::Smasher(trap_data data)
+Smasher::Smasher(TrapData data)
 {
   smashing = false;
-  x_pos = data.x_pos;
-  y_pos = data.y_pos;
-  z_pos = data.z_pos;
+  pos = data.pos;
   surface = PingusResource::load_surface("Traps/smasher", "traps");
   count = 0;
 }
@@ -50,8 +48,8 @@ Smasher::let_move()
 
 	for(int i=0; i < 20; i++)
 	  {
-	    particle->add_particle(new SmokeParticle(x_pos + 20 + rand() % 260,
-						     y_pos + 180,
+	    particle->add_particle(new SmokeParticle(pos.x_pos + 20 + rand() % 260,
+						     pos.y_pos + 180,
 						     frand()-0.5, frand()-0.5));
 	  }
       } else {
@@ -75,14 +73,14 @@ Smasher::draw_colmap(ColMap* colmap)
 
   CL_SurfaceProvider* prov
     = PingusResource::load_surface("Traps/smasher_cmap", "traps")->get_provider();
-  colmap->put(prov, x_pos, y_pos, surface_data::SOLID);
+  colmap->put(prov, pos.x_pos, pos.y_pos, SurfaceData::SOLID);
 }
 
 void 
 Smasher::draw_offset(int x, int y, float s)
 {
   assert(surface);
-  surface->put_screen(x_pos + x, y_pos + y, count);
+  surface->put_screen(pos.x_pos + x, pos.y_pos + y, count);
 }
 
 bool 
@@ -92,15 +90,15 @@ Smasher::catch_pingu(Pingu* pingu)
     return false;
 
   // FIXME: The kill catch much be different from the ausloesungs catch
-  if (pingu->get_y() > y_pos + 90 && pingu->get_y() < y_pos + 190) {
-    if (pingu->get_x() > x_pos + 30 && pingu->get_x() < x_pos + 250)
+  if (pingu->get_y() > pos.y_pos + 90 && pingu->get_y() < pos.y_pos + 190) {
+    if (pingu->get_x() > pos.x_pos + 30 && pingu->get_x() < pos.x_pos + 250)
       {
 	// Activate the smasher if a Pingu is under it
 	if ((pingu->direction.is_left() 
-	     && pingu->get_x() > x_pos + 65 && pingu->get_x() < x_pos + 85)
+	     && pingu->get_x() > pos.x_pos + 65 && pingu->get_x() < pos.x_pos + 85)
 	    || 
 	    (pingu->direction.is_right() 
-	     && pingu->get_x() > x_pos + 190 && pingu->get_x() < x_pos + 210))
+	     && pingu->get_x() > pos.x_pos + 190 && pingu->get_x() < pos.x_pos + 210))
 	  {
 	    if (!smashing) {
 	      PingusSound::play_wav(find_file(pingus_datadir, "sound/OING.WAV"));

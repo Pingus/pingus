@@ -1,4 +1,4 @@
-//  $Id: PingusSpotMap.hh,v 1.10 2000/06/18 17:01:50 grumbel Exp $
+//  $Id: PingusSpotMap.hh,v 1.11 2000/07/30 01:47:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -72,7 +72,7 @@ private:
   ///
   typedef std::vector<MapTileSurface>::size_type TileIter;
   ///
-  std::vector<surface_data> surfaces;
+  std::vector<SurfaceData> surfaces;
   ///
   PSMParser psm_parser;
   ///
@@ -101,8 +101,6 @@ public:
   ///
   ColMap* PingusSpotMap::get_colmap();
   ///
-  void load(std::string);
-  ///
   void load(PLF* plf);
   ///
   void gen_tiles();
@@ -126,6 +124,8 @@ public:
   void put(CL_SurfaceProvider*, int, int);
   ///
   void create_maptiles();
+  ///
+  void create_map();
   ///
   void mark_tiles_not_empty(int, int, int, int);
 }///

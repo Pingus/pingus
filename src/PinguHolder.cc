@@ -1,4 +1,4 @@
-//  $Id: PinguHolder.cc,v 1.8 2000/06/28 19:49:18 grumbel Exp $
+//  $Id: PinguHolder.cc,v 1.9 2000/07/30 01:47:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,7 +22,6 @@
 PinguHolder::PinguHolder()
 {
   id_count = 0;
-  z_pos = 50;
   total_size_count = 0;
   saved_pingus = 0;
 }

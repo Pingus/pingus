@@ -1,4 +1,4 @@
-//  $Id: Client.cc,v 1.33 2000/07/05 07:25:03 grumbel Exp $
+//  $Id: Client.cc,v 1.34 2000/07/30 01:47:35 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,6 +32,8 @@
 #include "PingusLevelResult.hh"
 #include "PingusSound.hh"
 #include "PingusError.hh"
+#include "PLFPLF.hh"
+#include "XMLPLF.hh"
 
 bool Client::gui_is_init;
 ButtonPanel*   Client::button_panel;
@@ -195,19 +197,26 @@ Client::play_level(std::string plf_filename, std::string psm_filename)
 
   timer.start();
   std::cout << "Client::play_level(), Reading PLF..." << std::flush;
-  plf          = new PLF(plf_filename);
 
-  std::cout << "done " << timer.stop() << std::endl;
+  if (plf_filename.substr(plf_filename.size() - 4) == ".xml")
+    {
+      plf = new XMLPLF(plf_filename);
+    }
+  else // Assuming we are reading a .plf file
+    {
+      plf = new PLFPLF(plf_filename);
 
-  // FIXME: dirty hack, should replace or merge the psm files
-  {
-    std::string filename = plf_filename.substr(0, plf_filename.size() - 4);
+      std::cout << "done " << timer.stop() << std::endl;
+
+      // FIXME: dirty hack, should replace or merge the psm files
+      {
+	std::string filename = plf_filename.substr(0, plf_filename.size() - 4);
     
-    if (verbose > 1) std::cout << "PSM: " << filename + ".psm" << std::endl;
+	if (verbose > 1) std::cout << "PSM: " << filename + ".psm" << std::endl;
     
-    plf->set_psm_filename(filename + ".psm");
-  }
-
+	plf->set_psm_filename(filename + ".psm");
+      }
+    }
   server->start(plf);
 
   if (!player)

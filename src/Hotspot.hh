@@ -1,4 +1,4 @@
-//  $Id: Hotspot.hh,v 1.3 2000/06/18 17:01:49 grumbel Exp $
+//  $Id: Hotspot.hh,v 1.4 2000/07/30 01:47:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,19 +29,13 @@
 #include "WorldObj.hh"
 #include "AnimCounter.hh"
 #include "PLF.hh"
+#include "HotspotData.hh"
 
-///
-struct hotspot_data;
-
-class Hotspot : public WorldObj
+class Hotspot : public WorldObj, public HotspotData
 {
 private:
   ///
   CL_Surface* surface;
-  ///
-  int x_pos;
-  ///
-  int y_pos;
   ///
   int speed;
   ///
@@ -50,11 +44,11 @@ private:
   AnimCounter count;
 public:
   ///
-  Hotspot(hotspot_data spot);
+  Hotspot(HotspotData spot);
   ///
   void draw_offset(int x, int y, float s = 1.0);
-}///
-;
+  virtual int  get_z_pos() const { return pos.z_pos; }
+};
 
 #endif
 

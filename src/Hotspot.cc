@@ -1,4 +1,4 @@
-//  $Id: Hotspot.cc,v 1.5 2000/06/27 16:05:16 grumbel Exp $
+//  $Id: Hotspot.cc,v 1.6 2000/07/30 01:47:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,14 +25,12 @@
 #include "PLF.hh"
 #include "PingusResource.hh"
 
-Hotspot::Hotspot(hotspot_data spot)
+Hotspot::Hotspot(HotspotData spot)
 {
   if (verbose > 2)
     std::cout << "Creating Hotspot" << std::endl;
 
-  x_pos = spot.x_pos;
-  y_pos = spot.y_pos;
-  z_pos = spot.z_pos;
+  pos   = spot.pos;
   para  = spot.para;
   speed = spot.speed;
 
@@ -60,12 +58,14 @@ Hotspot::draw_offset(int x, int y, float s)
 */  
   if (s == 1.0)
     {
-      surface->put_screen((int)((x_pos + x) * para), (int)((y_pos + y) * para),
+      surface->put_screen((int)((pos.x_pos + x) * para),
+			  (int)((pos.y_pos + y) * para),
 			  (int)count);
     }
   else 
     {
-      surface->put_screen((int)((x_pos + x) * s * para), (int)((y_pos + y) * s * para),
+      surface->put_screen((int)((pos.x_pos + x) * s * para), 
+			  (int)((pos.y_pos + y) * s * para),
 			  s, s, (int)count);      
     }
 

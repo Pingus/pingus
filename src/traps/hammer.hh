@@ -1,4 +1,4 @@
-//  $Id: hammer.hh,v 1.3 2000/06/18 17:01:50 grumbel Exp $
+//  $Id: hammer.hh,v 1.4 2000/07/30 01:47:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,7 @@
 #define HAMMER_HH
 
 #include "../Trap.hh"
-#include "../trap_data.hh"
+#include "../TrapData.hh"
 
 ///
 class Hammer : public Trap
@@ -31,7 +31,7 @@ private:
   bool particle_thrown;
 public:
   ///
-  Hammer(trap_data data);
+  Hammer(TrapData data);
   ///
   virtual ~Hammer();
   ///

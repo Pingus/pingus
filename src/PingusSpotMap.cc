@@ -1,4 +1,4 @@
-//  $Id: PingusSpotMap.cc,v 1.31 2000/07/14 12:18:49 grumbel Exp $
+//  $Id: PingusSpotMap.cc,v 1.32 2000/07/30 01:47:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -101,7 +101,7 @@ PingusSpotMap::PingusSpotMap(PLF* plf)
 {
   colmap = 0;
 
-  switch(plf->get_fg().type) 
+  switch(plf->get_foreground().type) 
     {
     case ResDescriptor::RESOURCE:
       throw PingusError("PingusSpotMap: ResType RESOURCE is not implemented, sorry");
@@ -161,7 +161,7 @@ PingusSpotMap::gen_tiles(void)
 void
 PingusSpotMap::load(PLF* plf)
 {
-  ResDescriptor name = plf->get_fg();
+  ResDescriptor name = plf->get_foreground();
 
   width  = plf->get_width();
   height = plf->get_height();
@@ -188,14 +188,20 @@ PingusSpotMap::load(PLF* plf)
   for(TileIter i=0; i < tile.size(); ++i) 
     tile[i].resize(height/tile_size);
   
-  //std::cout << "tile: " << tile.size() << " tile[]: " << tile[0].size() << std::endl;
+  surfaces = plf->get_groundpieces();
 
-  load(plf->get_fg().res_name);
+  for (vector<SurfaceData>::iterator i = surfaces.begin();
+       i != surfaces.end();
+       i++)
+    {
+      i->surface = PingusResource::load_surface(i->desc);
+    }
+  create_map();
 }
-
+/*
 // Load the map from a *.psm (Pingu Spot Map) file and load the surfaces
 void
-PingusSpotMap::load(std::string filename)
+PingusSpotMap::load_psm(std::string filename)
 {
   Timer timer;
 
@@ -212,45 +218,49 @@ PingusSpotMap::load(std::string filename)
   timer.start();
   std::cout << "PingusSpotMap: Generating Map..." << std::flush;
   surfaces = psm_parser.get_surfaces();
-
+}
+*/
+void
+PingusSpotMap::create_map()
+{
   // Allocating the map provider
-   map_canvas = new CL_Canvas(width, height);
-
-   // Is clearing the canvas really needed, or am I just work around
-   // another bug...?
-   Blitter::clear_canvas(map_canvas);
-
+  map_canvas = new CL_Canvas(width, height);
+  
+  // Is clearing the canvas really needed, or am I just work around
+  // another bug...?
+  Blitter::clear_canvas(map_canvas);
+  
   // Drawing all surfaces to the provider
-  for(std::vector<surface_data>::iterator i = surfaces.begin(); 
+  for(std::vector<SurfaceData>::iterator i = surfaces.begin(); 
       i != surfaces.end(); 
       i++)
     {
-      mark_tiles_not_empty(i->x_pos, i->y_pos,
+      mark_tiles_not_empty(i->pos.x_pos, i->pos.y_pos,
 			   i->surface->get_width(), i->surface->get_height());
       // test cause png
       if (i->surface->get_provider()->get_depth() == 8)
 	{
-	  mark_tiles_not_empty(i->x_pos, i->y_pos,
+	  mark_tiles_not_empty(i->pos.x_pos, i->pos.y_pos,
 			      i->surface->get_width(), i->surface->get_height());
 
 	  // i->surface->put_target(i->x_pos, i->y_pos, 0, map_canvas);
 	  // FIXME: Replace this with a ClanLib built in
 	  Blitter::put_surface(map_canvas, i->surface->get_provider(),
-			       i->x_pos, i->y_pos);
+			       i->pos.x_pos, i->pos.y_pos);
 	}
       else
 	{
 	  // std::cout << "PingusSpotMap: Using put_tartget(), might be unstable" << std::endl;
 	  //std::cout << "Color depth: " << i->surface->get_provider()->get_depth() << std::endl;
 	  Blitter::put_surface(map_canvas, i->surface->get_provider(),
-			       i->x_pos, i->y_pos);
+			       i->pos.x_pos, i->pos.y_pos);
 	  //i->surface->put_target(i->x_pos, i->y_pos, 0, map_canvas);
 	}
     }
 
   // Generate the map surface
   map_surface = CL_Surface::create(map_canvas);
-  std::cout << " done " << timer.stop() << std::endl;
+  //  std::cout << " done " << timer.stop() << std::endl;
 }
 
 void
@@ -541,11 +551,11 @@ PingusSpotMap::get_colmap(void)
 	std::cout << "PingusSpotMap: Generating Colision Map..." << std::flush;
       }
 
-      for(std::vector<surface_data>::iterator i2 = surfaces.begin();
+      for(std::vector<SurfaceData>::iterator i2 = surfaces.begin();
 	  i2 != surfaces.end(); 
 	  i2++) 
 	{
-	  colmap->put(i2->surface, i2->x_pos, i2->y_pos, i2->type);
+	  colmap->put(i2->surface, i2->pos.x_pos, i2->pos.y_pos, i2->type);
 	}
       
       if (verbose)

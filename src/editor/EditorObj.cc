@@ -1,4 +1,4 @@
-// $Id: EditorObj.cc,v 1.10 2000/07/14 17:45:36 grumbel Exp $
+// $Id: EditorObj.cc,v 1.11 2000/07/30 01:47:37 grumbel Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -44,40 +44,37 @@ EditorObj::~EditorObj()
 }
 
 EditorObj*
-EditorObj::create(surface_data data)
+EditorObj::create(SurfaceData data)
 {
-  EditorObj* temp = new PSMObj(data);
-  
-
-  return temp;
+  return new PSMObj(data);
 }
 
 EditorObj*
-EditorObj::create(entrance_data data)
+EditorObj::create(EntranceData data)
 {
   return new EntranceObj(data);
 }
 
 EditorObj*
-EditorObj::create(exit_data data)
+EditorObj::create(ExitData data)
 {
   return new ExitObj(data);
 }
 
 EditorObj*
-EditorObj::create(trap_data data)
+EditorObj::create(TrapData data)
 {
   return new TrapObj(data);
 }
 
 EditorObj* 
-EditorObj::create(hotspot_data data)
+EditorObj::create(HotspotData data)
 {
   return new HotspotObj(data);
 }
 
 EditorObj*
-EditorObj::create(liquid_data data)
+EditorObj::create(LiquidData data)
 {
   return new LiquidObj(data);
 }
@@ -85,13 +82,13 @@ EditorObj::create(liquid_data data)
 bool
 EditorObj::operator< (const EditorObj& w)
 {
-  return (z_pos < w.z_pos);
+  return (pos.z_pos < w.pos.z_pos);
 }
 
 bool
 EditorObj::operator> (const EditorObj& w)
 {
-  return (z_pos > w.z_pos);
+  return (pos.z_pos > w.pos.z_pos);
 }
 
 void
@@ -99,11 +96,11 @@ EditorObj::draw_offset(int x_offset, int y_offset)
 {
   assert(surf);
   if (surf) {
-    surf->put_screen(x_pos + x_offset + x_of,
-		     y_pos + y_offset + y_of);
+    surf->put_screen(pos.x_pos + x_offset + x_of,
+		     pos.y_pos + y_offset + y_of);
   } else {
-    CL_Display::fill_rect(x_pos + x_offset, y_pos + y_offset, 
-			  x_pos + 10 + x_offset, y_pos + 10 + y_offset,
+    CL_Display::fill_rect(pos.x_pos + x_offset, pos.y_pos + y_offset, 
+			  pos.x_pos + 10 + x_offset, pos.y_pos + 10 + y_offset,
 			  1.0, 0.0, 0.0, 1.0);
   }
 }
@@ -113,9 +110,9 @@ EditorObj::draw_mark_offset(int x_offset, int y_offset)
 {
   if (surf) 
     {
-      Display::draw_rect(x_pos + x_offset + x_of, y_pos + y_offset + y_of,
-			 x_pos + surf->get_width() + x_offset + x_of - 1,
-			 y_pos + surf->get_height() + y_offset + y_of - 1,
+      Display::draw_rect(pos.x_pos + x_offset + x_of, pos.y_pos + y_offset + y_of,
+			 pos.x_pos + surf->get_width() + x_offset + x_of - 1,
+			 pos.y_pos + surf->get_height() + y_offset + y_of - 1,
 			 mark_color.r, 
 			 mark_color.g,
 			 mark_color.b,
@@ -123,9 +120,9 @@ EditorObj::draw_mark_offset(int x_offset, int y_offset)
     } 
   else 
     {
-      Display::draw_rect(x_pos + x_offset + x_of,y_pos + y_offset + y_of,
-			 x_pos + 10 + x_offset + x_of,
-			 y_pos + 10 + y_offset + y_of,
+      Display::draw_rect(pos.x_pos + x_offset + x_of, pos.y_pos + y_offset + y_of,
+			 pos.x_pos + 10 + x_offset + x_of,
+			 pos.y_pos + 10 + y_offset + y_of,
 			 mark_color.r, 
 			 mark_color.g,
 			 mark_color.b,
@@ -146,10 +143,10 @@ EditorObj::mouse_over(int x_offset, int y_offset)
     height = surf->get_height();
   }
 
-  if (   mouse_x > x_pos + x_offset + x_of 
-      && mouse_x < x_pos + width + x_offset + x_of
-      && mouse_y > y_pos + y_offset + y_of
-      && mouse_y < y_pos + height + y_offset + y_of)
+  if (   mouse_x > pos.x_pos + x_offset + x_of 
+      && mouse_x < pos.x_pos + width + x_offset + x_of
+      && mouse_y > pos.y_pos + y_offset + y_of
+      && mouse_y < pos.y_pos + height + y_offset + y_of)
     {
       return true;
     }
@@ -160,8 +157,8 @@ bool
 EditorObj::is_in_rect(int x1, int y1, int x2, int y2)
 {
   // FIXME: Simple, stupid, wrong,...
-  if (x_pos + x_of > x1 && x_pos + x_of < x2
-      && y_pos + y_of > y1 && y_pos + y_of < y2)
+  if (pos.x_pos + x_of > x1 && pos.x_pos + x_of < x2
+      && pos.y_pos + y_of > y1 && pos.y_pos + y_of < y2)
     {
       return true;
     }
@@ -181,6 +178,42 @@ std::string
 EditorObj::status_line()
 {
   return "Object status not know - I am a bug...";
+}
+
+void
+EditorObj::save_desc_xml(std::ofstream* xml, ResDescriptor desc)
+{
+  (*xml) << "  <surface><resource type=\"";
+  switch (desc.type)
+    {
+    case ResDescriptor::FILE:
+      (*xml) << "file\">\n"
+	     << "    <resource-file>"
+	     << desc.res_name
+	     << "</resource-file>\n";
+      break;
+    case ResDescriptor::RESOURCE:
+      (*xml) << "datafile\">\n"
+	     << "    <resource-datafile>"
+	     << desc.datafile
+	     << "</resource-datafile>\n"
+	     << "  <resource-ident>"
+	     << desc.res_name
+	     << "</resource-ident>\n";
+      break;
+    }
+  
+  (*xml) << "  </resource></surface>" << std::endl;
+}
+
+void
+EditorObj::save_position_xml(std::ofstream* xml, Position pos)
+{
+  (*xml) << "  <position>\n"
+	 << "    <x-pos>" << pos.x_pos << "</x-pos>\n"
+	 << "    <y-pos>" << pos.y_pos << "</y-pos>\n"
+	 << "    <z-pos>" << pos.z_pos << "</z-pos>\n"
+	 << "  </position>\n";
 }
 
 /***************/
@@ -212,6 +245,18 @@ EditorGroup::save(std::ofstream* plf, std::ofstream* psm)
     }
 }
 
+///
+void
+EditorGroup::save_xml(std::ofstream* xml)
+{
+  for(list<EditorObj*>::iterator i = objs.begin();
+      i != objs.end();
+      i++)
+    {
+      (*i)->save_xml(xml);
+    }
+}
+
 EditorObj* 
 EditorGroup::duplicate()
 {
@@ -228,6 +273,9 @@ EditorGroup::duplicate()
   
 /*
 $Log: EditorObj.cc,v $
+Revision 1.11  2000/07/30 01:47:37  grumbel
+XML support, currently not activated
+
 Revision 1.10  2000/07/14 17:45:36  grumbel
 little typo fixe
 

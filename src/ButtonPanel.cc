@@ -1,4 +1,4 @@
-//  $Id: ButtonPanel.cc,v 1.8 2000/05/26 17:59:35 grumbel Exp $
+//  $Id: ButtonPanel.cc,v 1.9 2000/07/30 01:47:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #include "globals.hh"
 #include "Pingu.hh"
 #include "ButtonPanel.hh"
+#include "ActionData.hh"
 
 CL_Surface* ButtonPanel::button_cap;
 
@@ -28,9 +29,9 @@ ButtonPanel::ButtonPanel(PLF* plf)
 {
   last_press = 0;
 
-  std::vector<button_data> buttons_data = plf->get_buttons();
+  std::vector<ActionData> buttons_data = plf->get_actions();
 
-  for(std::vector<button_data>::size_type i = 0; i < buttons_data.size(); i++)
+  for(std::vector<ActionData>::size_type i = 0; i < buttons_data.size(); i++)
     {
       if (horizontal_button_panel) 
 	{

@@ -1,4 +1,4 @@
-//  $Id: Bumper.hh,v 1.2 2000/06/18 17:01:50 grumbel Exp $
+//  $Id: Bumper.hh,v 1.3 2000/07/30 01:47:38 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,7 @@
 #define BUMPER_HH
 
 #include "../Trap.hh"
-#include "../trap_data.hh"
+#include "../TrapData.hh"
 
 ///
 class Bumper : public Trap
@@ -34,7 +34,7 @@ private:
 
 public:
   ///
-  Bumper(trap_data data);
+  Bumper(TrapData data);
   ///
   virtual ~Bumper();
   ///

@@ -1,4 +1,4 @@
-//  $Id: ColMap.cc,v 1.15 2000/07/02 07:39:50 grumbel Exp $
+//  $Id: ColMap.cc,v 1.16 2000/07/30 01:47:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -220,14 +220,14 @@ ColMap::load(unsigned char* b, int w, int h)
 }
 
 void
-ColMap::put(CL_Surface* sur, int sur_x, int sur_y, surface_data::Type type)
+ColMap::put(CL_Surface* sur, int sur_x, int sur_y, SurfaceData::Type type)
 {
   put(sur->get_provider(), sur_x, sur_y, type);
 }
 
 // Puts a surface on the colmap
 void
-ColMap::put(CL_SurfaceProvider* provider, int sur_x, int sur_y, surface_data::Type type)
+ColMap::put(CL_SurfaceProvider* provider, int sur_x, int sur_y, SurfaceData::Type type)
 {
   if ((sur_x > width) || (sur_y > height)) {
     if (verbose > 3) {
@@ -251,25 +251,25 @@ ColMap::put(CL_SurfaceProvider* provider, int sur_x, int sur_y, surface_data::Ty
 	    {
 	      switch (type)
 		{
-		case surface_data::GROUND:
+		case SurfaceData::GROUND:
 		  put(x + sur_x, y + sur_y,  (PixelStatus)WALL);
 		  break;
-		case surface_data::TRANSPARENT:
+		case SurfaceData::TRANSPARENT:
 		  // doing nothing
 		  break;
-		case surface_data::SOLID:
+		case SurfaceData::SOLID:
 		  put(x + sur_x, y + sur_y, (PixelStatus)(SOLID | WALL));
 		  break;
-		case surface_data::BRIDGE:
+		case SurfaceData::BRIDGE:
 		  put(x + sur_x, y + sur_y,  (PixelStatus)BRIDGE);
 		  break;
-		case surface_data::WATER:
+		case SurfaceData::WATER:
 		  put(x + sur_x, y + sur_y,  (PixelStatus)(SOLID | WATER));
 		  break;
-		case surface_data::LAVA:
+		case SurfaceData::LAVA:
 		  put(x + sur_x, y + sur_y,  (PixelStatus)(SOLID | LAVA));
 		  break;
-		case surface_data::NOTHING:
+		case SurfaceData::NOTHING:
 		  put(x + sur_x, y + sur_y,  (PixelStatus)0);
 		  break;
 		}
@@ -299,22 +299,22 @@ ColMap::put(CL_SurfaceProvider* provider, int sur_x, int sur_y, surface_data::Ty
 	      {
 		switch (type) 
 		  {
-		  case surface_data::GROUND:
+		  case SurfaceData::GROUND:
 		    colmap[i] = WALL;
 		    break;
-		  case surface_data::TRANSPARENT:
+		  case SurfaceData::TRANSPARENT:
 		    // doing nothing
 		    break;
-		  case surface_data::SOLID:
+		  case SurfaceData::SOLID:
 		    colmap[i] = SOLID | WALL;
 		    break;
-		  case surface_data::BRIDGE:
+		  case SurfaceData::BRIDGE:
 		    colmap[i] = BRIDGE | WALL;
 		    break;
-		  case surface_data::WATER:
+		  case SurfaceData::WATER:
 		    colmap[i] = SOLID | WATER;
 		    break;
-		  case surface_data::LAVA:
+		  case SurfaceData::LAVA:
 		    colmap[i] = SOLID | LAVA;
 		    break;
 		  default:

@@ -1,4 +1,4 @@
-//  $Id: ThemeSelector.hh,v 1.10 2000/06/21 20:29:21 grumbel Exp $
+//  $Id: ThemeSelector.hh,v 1.11 2000/07/30 01:47:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -83,8 +83,7 @@ public:
     virtual bool on_button_release(CL_InputDevice *device, const CL_Key &key);
     ///
     virtual bool on_mouse_move(CL_InputDevice *device);
-  }///
-;
+  };
   ///
   friend class Event;
   ///

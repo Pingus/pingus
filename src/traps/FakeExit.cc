@@ -1,4 +1,4 @@
-//  $Id: FakeExit.cc,v 1.5 2000/06/25 20:22:18 grumbel Exp $
+//  $Id: FakeExit.cc,v 1.6 2000/07/30 01:47:38 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,12 +21,10 @@
 #include "../PingusResource.hh"
 #include "../ActionHolder.hh"
 
-FakeExit::FakeExit(trap_data data)
+FakeExit::FakeExit(TrapData data)
 {
   surface = PingusResource::load_surface("Traps/fake_exit", "traps");
-  x_pos = data.x_pos;
-  y_pos = data.y_pos;
-  z_pos = data.z_pos;
+  pos = data.pos;
   
   counter.set_size(surface->get_num_frames());
   counter.set_type(GameCounter::once);
@@ -57,8 +55,8 @@ FakeExit::catch_pingu(Pingu* pingu)
     smashing = false;
   }
   
-  if (pingu->get_x() > x_pos + 31 && pingu->get_x() < x_pos + 31 + 15
-      && pingu->get_y() > y_pos + 56 && pingu->get_y() < y_pos + 56+56) 
+  if (pingu->get_x() > pos.x_pos + 31 && pingu->get_x() < pos.x_pos + 31 + 15
+      && pingu->get_y() > pos.y_pos + 56 && pingu->get_y() < pos.y_pos + 56+56) 
     {
       if (!smashing) {
 	counter = 0;

@@ -1,4 +1,4 @@
-//  $Id: LaserExit.cc,v 1.4 2000/06/25 20:22:18 grumbel Exp $
+//  $Id: LaserExit.cc,v 1.5 2000/07/30 01:47:38 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,12 +21,10 @@
 #include "../PingusResource.hh"
 #include "LaserExit.hh"
 
-LaserExit::LaserExit(trap_data data)
+LaserExit::LaserExit(TrapData data)
 {
   killing = false;
-  x_pos = data.x_pos;
-  y_pos = data.y_pos;
-  z_pos = data.z_pos;
+  pos = data.pos;
 
   surface = PingusResource::load_surface("Traps/laser_exit", "traps");
 
@@ -62,8 +60,8 @@ LaserExit::catch_pingu(Pingu* pingu)
     return false;
 
   if (!killing) {
-    if (pingu->x_pos < x_pos + 34 + 10 && pingu->x_pos > x_pos + 34 
-	&& pingu->y_pos < y_pos + 43 + 20 && pingu->y_pos > y_pos + 43) 
+    if (pingu->x_pos < pos.x_pos + 34 + 10 && pingu->x_pos > pos.x_pos + 34 
+	&& pingu->y_pos < pos.y_pos + 43 + 20 && pingu->y_pos > pos.y_pos + 43) 
       {
 	if (!(pingu->get_action() && pingu->get_action()->name() == "LaserKill")) {
 	  killing = true;

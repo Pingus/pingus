@@ -1,4 +1,4 @@
-//  $Id: PLF.hh,v 1.11 2000/07/10 18:42:25 grumbel Exp $
+//  $Id: PLF.hh,v 1.12 2000/07/30 01:47:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,27 +24,27 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <map>
 
-#include "PLFParser.hh"
 #include "PinguMap.hh"
-#include "background_data.hh"
-#include "button_data.hh"
-#include "entrance_data.hh"
-#include "exit_data.hh"
-#include "hotspot_data.hh"
-#include "liquid_data.hh"
-#include "trap_data.hh"
+#include "BackgroundData.hh"
+#include "ActionData.hh"
+#include "EntranceData.hh"
+#include "ExitData.hh"
+#include "HotspotData.hh"
+#include "LiquidData.hh"
+#include "TrapData.hh"
 
 /** The Pingus Level File
     
     The PLF class holds all object information, which are needed to
     build a level, like the levelname, description, number of pingus,
     etc. */
-class PLF : public PLFParser
+class PLF 
 {
-private:
+protected:
   ///
-  std::string levelname;
+  std::map<std::string, std::string> levelname;
 
   /// The name of the file from were the current level was loaded
   std::string filename;
@@ -52,15 +52,13 @@ private:
   ///
   std::string psm_filename;
   ///
-  std::string description;
+  std::map<std::string, std::string> description;
   ///
   std::string author;
   ///
-  ResDescriptor fg;
-
+  ResDescriptor foreground;
   ///
-  background_data bg;
-
+  BackgroundData background;
   ///
   ResDescriptor music;
   ///
@@ -70,127 +68,113 @@ private:
   ///
   int  bg_speed;
   ///
-  int  x_pos;
+  int  start_x_pos;
   ///
-  int  y_pos;
+  int  start_y_pos;
   ///
   int  width;
   ///
   int  height;
   ///
-  int  pingus;
-  ///
   int  max_time;
+  ///
+  int release_rate;
+  ///
+  int  number_of_pingus;
   ///
   int  number_to_save;
   ///
   int  difficulty;
   
   ///
-  entrance_data entrance_s;
+  std::vector<ActionData>   actions;
   ///
-  exit_data     exit_s;
+  std::vector<EntranceData> entrances;
   ///
-  hotspot_data  hotspot_s;
+  std::vector<ExitData>     exits;
   ///
-  liquid_data   liquid_s;
+  std::vector<HotspotData>  hotspots;
   ///
-  trap_data     trap_s;
+  std::vector<LiquidData>   liquids;
+  ///
+  std::vector<TrapData>     traps;
+  /// 
+  std::vector<SurfaceData>  groundpieces;
 
-  ///
-  std::vector<button_data>   buttons;
-  ///
-  std::vector<entrance_data> entrances;
-  ///
-  std::vector<exit_data>     exits;
-  ///
-  std::vector<hotspot_data>  hotspot;
-  ///
-  std::vector<liquid_data>   liquid;
-  ///
-  std::vector<trap_data>     traps;
-
-  ///
-  enum plf_groups { GLOBAL, BACKGROUND, GROUND, MUSIC, EXIT, LIQUID,
-		    ENTRANCE, TRAP, HOTSPOT, BUTTONS, NONE } ///
- current_group;
-
-  /// Private functions
-  void set_group_start(std::string);
-  ///
-  void set_group_end(void);
-  ///
-  void set_value(std::string valueid,
-		 std::string cast,
-		 std::string value);
-  ///
-  int   str_to_int(const std::string& str);
-  ///
-  float str_to_float(const std::string& str);
-  ///
-  bool  str_to_bool(const std::string& str);
 public:
   ///
-  PLF(std::string);
+  PLF();
   ///
-  ~PLF();
+  virtual ~PLF();
 
   ///
-  background_data get_bg(void);
+  BackgroundData get_background(void);
   ///
-  ResDescriptor get_fg(void);
+  ResDescriptor get_foreground(void);
   ///
   ResDescriptor get_mapfile(void);
   ///
   void set_psm_filename(std::string name);
-  ///
+  
+  /** Returns the ResDescriptor where the music for this level can be
+      found. The ResDescriptor points normaly to a file. */
   ResDescriptor get_music(void);
-  ///
-  int         get_startx(void);
-  ///
-  int         get_starty(void);
-  ///
-  int         get_width(void);
-  ///
-  int         get_height(void);
-  ///
-  int         get_pingus(void);
 
-  ///
+  /// Returns the start position for the camera
+  int         get_startx(void);
+
+  /// Returns the start position for the camera
+  int         get_starty(void);
+
+  /// Returns the width of the level
+  int         get_width(void);
+
+  /// Returns the height of the level
+  int         get_height(void);
+
+  /** Returns the number of Pingus, which are going to be released in
+      this level. */
+  int         get_pingus(void);
+  
+  /// Returns the time you have to complete a level
   int         get_time(void);
 
-  ///
+  /// Returns the difficulty of the current level
   int         get_difficulty();
 
   ///
   MapType     map_type(void);
 
-  ///
+  /// Returns the number of pingus you need to save in this level.
   int         get_number_to_save();
 
-  ///
-  std::string get_description();
+  /** Returns the description of the level, which fit to the current
+      language */
+  map<std::string, std::string> get_description();
 
   /** Returns the name of the current level, {\em not} the level file name. */
-  std::string get_levelname();
+  map<std::string, std::string> get_levelname();
 
-  ///
+  /// Returns the name of the plf file.
   std::string get_filename();
 
-  ///
+  /// Returns the name of the author, who creates this level
   std::string get_author();
+
+  /// 
+  std::vector<HotspotData>   get_hotspot(void);
   ///
-  std::vector<hotspot_data>   get_hotspot(void);
+  std::vector<EntranceData>  get_entrance(void);
   ///
-  std::vector<entrance_data>  get_entrance(void);
+  std::vector<ExitData>      get_exit(void);
   ///
-  std::vector<exit_data>      get_exit(void);
+  std::vector<TrapData>      get_traps(void);
   ///
-  std::vector<trap_data>      get_traps(void);
+  std::vector<ActionData>    get_actions(void);
   ///
-  std::vector<button_data>    get_buttons(void);
+  std::vector<LiquidData>    get_liquids(void);
   ///
-  std::vector<liquid_data>    get_liquids(void);
+  std::vector<SurfaceData> get_groundpieces(void);
 };
 
 #endif

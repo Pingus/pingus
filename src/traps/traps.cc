@@ -1,4 +1,4 @@
-//  $Id: traps.cc,v 1.3 2000/05/12 13:34:47 grumbel Exp $
+//  $Id: traps.cc,v 1.4 2000/07/30 01:47:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,31 +28,30 @@
 #include "Guillotine.hh"
 #include "LaserExit.hh"
 #include "Spike.hh"
-#include "Teleport.hh"
+//#include "Teleport.hh"
 #include "Bumper.hh"
 
-Trap* get_trap(trap_data data)
+Trap* get_trap(TrapData data)
 {
-  if (data.name == "teleport") {
+  /*  if (data.name == "teleport") {
     return (new Teleport(data));
-  } else if (data.name == "smasher") {
+  } else*/
+  if (data.type == "smasher") {
     return (new Smasher(data));
-  } else if (data.name == "hammer") {
+  } else if (data.type == "hammer") {
     return (new Hammer(data));
-  } else if (data.name == "fake_exit") {
+  } else if (data.type == "fake_exit") {
     return (new FakeExit(data));
-  } else if (data.name == "spike") {
+  } else if (data.type == "spike") {
     return (new Spike(data));
-  } else if (data.name == "guillotine") {
+  } else if (data.type == "guillotine") {
     return (new Guillotine(data));
-  } else if (data.name == "laser_exit") {
+  } else if (data.type == "laser_exit") {
     return (new LaserExit(data));
-  } else if (data.name == "bumper") {
+  } else if (data.type == "bumper") {
     return (new Bumper(data));
   }
-
-
-  throw PingusError("Trap: `" + data.name + "' is unknown");
+  throw PingusError("Trap: `" + data.type + "' is unknown");
 }
 
 /* EOF */

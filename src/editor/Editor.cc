@@ -1,4 +1,4 @@
-//  $Id: Editor.cc,v 1.14 2000/07/04 22:59:13 grumbel Exp $
+//  $Id: Editor.cc,v 1.15 2000/07/30 01:47:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -252,11 +252,11 @@ Editor::read_string (std::string prefix, std::string default_str)
 std::string
 Editor::save_tmp_level ()
 {
-  std::string filename = std::string(tmpnam(0)) + ".pingus";
+  std::string filename = std::string(tmpnam(0)) + ".pingus.xml";
   
   std::cout << "Saving level to: " << filename << std::endl;
   
-  object_manager.save_level(filename.c_str());
+  object_manager.save_level_xml(filename.c_str());
 
   return filename;
 }
@@ -396,6 +396,9 @@ Editor::interactive_load()
 
 /***********************************************
 $Log: Editor.cc,v $
+Revision 1.15  2000/07/30 01:47:37  grumbel
+XML support, currently not activated
+
 Revision 1.14  2000/07/04 22:59:13  grumbel
 Fixed scrolling to be no longer fast-forward depended, thanks to Alan Cox for finding this and some other bugs :-)
 Added support for reading datafile or scriptfile (--use-datafile, --use-scriptfile)

@@ -1,4 +1,4 @@
-//  $Id: WoodThing.cc,v 1.4 2000/06/25 20:22:18 grumbel Exp $
+//  $Id: WoodThing.cc,v 1.5 2000/07/30 01:47:38 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,13 +25,11 @@
 
 #include "WoodThing.hh"
 
-WoodThing::WoodThing(entrance_data data)
+WoodThing::WoodThing(EntranceData data)
 {
-  x_pos = data.x_pos;
-  y_pos = data.y_pos;
+  pos = data.pos;
   release_rate = data.release_rate;
   last_release = -release_rate;
-  z_pos = -10;
   direction = data.direction;
 
   surface  = PingusResource::load_surface("Entrances/woodthing_mov", "global");
@@ -51,8 +49,8 @@ WoodThing::let_move(void)
   if (rand() % 5 == 0) 
     {
       // This does not work and I have no idea why?!
-      particle->add_particle(new SmokeParticle(x_pos - (surface->get_width()/2) - 24,
-					       y_pos - surface->get_height() + 32 - 147,
+      particle->add_particle(new SmokeParticle(pos.x_pos - (surface->get_width()/2) - 24,
+					       pos.y_pos - surface->get_height() + 32 - 147,
 					       -0.6 * (frand() + 1), -0.6 * (frand() + 1)));
       // particle->add_particle(new SmokeParticle());
     }
@@ -62,14 +60,16 @@ void
 WoodThing::draw_offset(int x, int y, float s)
 {
   if (s == 1.0) {
-    surface->put_screen(x_pos - (surface->get_width()/2) + x,
-			y_pos - surface->get_height() + 32 + y,
+
+    surface->put_screen(pos.x_pos - (surface->get_width()/2) + x,
+			pos.y_pos - surface->get_height() + 32 + y,
 			counter);
     //    surface2->put_screen(x_pos - (surface->get_width()/2) + x - 24,
      		 //			y_pos - surface->get_height() + 32 - 147 + y);
 
   } else {
-    surface->put_screen((int)((x_pos-32 + x) * s), (int)((y_pos-16 + y) * s),
+    surface->put_screen((int)((pos.x_pos-32 + x) * s),
+			(int)((pos.y_pos-16 + y) * s),
 			s, s);  
   }
 }
