@@ -1,0 +1,110 @@
+// This is an example of pingus new C style level file format
+
+/* Some global things needed for startup */
+global {
+  author = "Ingo Ruhnke <grumbel@gmx.de>";
+	start_x_pos = 0 ;
+	start_y_pos = 0 ;            /* Starting position of the screen */
+	number_of_pingus = 120 ;     /* Total number of pingus in level*/
+	number_to_save = 100;
+	time = 5000;
+	levelname = "Crystal World";
+	description = "Beautiful crystals and deadly danger
+";
+
+}
+
+/* Set the background */
+background {
+/* If there is need for an gfx in the level, it can be included in
+ * different ways, it could come from the basic resource file
+ * (global.dat), from an extra resource file or from a single image 
+ * file. The 'cast' in front of the string specifies the way to get the 
+ * gfx. (resource:extra.dat)"foo" would refer to the resource "foo" in 
+ * the resource file "extra.dat", if no resource file is given, the
+ * file "global.dat" is used. (file)"bla.pcx" would refer to the file
+ * "bla.pcx", somewhere in the search path of pingus.
+ */
+	image = (resource:textures.dat) "Textures/crystal";
+	scroll_x = "0.0";
+	scroll_y = "0.0";
+	dim = "0.1";
+}
+
+/* Set the ground, with all infos needed by the maptype */
+ground {
+	maptype = SPOT;
+	data = (file)"crystal1.psm";
+	width = 1024;
+	height = 800;
+}
+
+music {	data = (file)"pingus-3.it"; }
+
+// Define another entrance
+entrance {
+	image = (resource)"Entrances/entrance";
+	x_pos = "500";
+	y_pos = "180"; 
+	direction = "left";
+	release_rate = "60";	
+}
+
+liquid {
+	image = (resource)"Liquid/water2";
+	x_pos = -32;
+	y_pos = 736;
+	z_pos = -100;
+	width = 1056;
+}
+
+liquid {
+	image = (resource)"Liquid/water2";
+	x_pos = 0;
+	y_pos = 746;
+	z_pos = 100;
+	width = 1024;
+}
+
+trap {
+	name = guillotine;
+	x_pos = 275;
+	y_pos = 172;
+	z_pos = -100;
+}
+
+trap {
+	name = spike;
+	x_pos = 265;
+	y_pos = 688;
+	z_pos = 100;
+}
+
+
+exit {
+	image = (resource)"Exits/stone";
+	x_pos = 105;
+	y_pos = 660;
+	z_pos = -100;
+}
+
+trap {
+	name = laser_exit;
+	x_pos = 455;
+	y_pos = 660;
+	z_pos = -100;
+}
+
+
+
+// Define which actions and how much of them are available in a level
+buttons {
+	basher  = "20";
+	blocker = "20";
+	bomber  = "20";
+	bridger = "20";
+	climber = "20";
+	digger  = "20";
+	floater = "20";
+	miner   = "20";
+}
