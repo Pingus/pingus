@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.78 2003/04/13 22:00:55 grumbel Exp $
+//   $Id: pingus_main.cxx,v 1.79 2003/04/13 22:22:12 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -27,9 +27,7 @@
 #include <stdio.h>
 #include <signal.h>
 
-#ifdef HAVE_GETTEXT
-#  include <locale.h>
-#endif
+#include <locale.h>
 
 #ifndef WIN32
 #  include <config.h>
