@@ -1,4 +1,4 @@
-//  $Id: PSMObj.cc,v 1.22 2000/09/26 12:35:35 grumbel Exp $
+//  $Id: PSMObj.cc,v 1.23 2000/10/18 20:16:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,7 +26,7 @@
 
 #include "PSMObj.hh"
 
-PSMObj::PSMObj(SurfaceData data)
+PSMObj::PSMObj(GroundpieceData data)
 {
   pos.z_pos = 0;
   pos = data.pos;
@@ -62,13 +62,13 @@ PSMObj::duplicate()
 void
 PSMObj::save(std::ofstream* plf, std::ofstream* psm)
 {
-  if (type == SurfaceData::SOLID) {
+  if (type == GroundpieceData::SOLID) {
     (*psm) << "solid : ";
-  } else if (type == SurfaceData::GROUND) {
+  } else if (type == GroundpieceData::GROUND) {
     (*psm) << "ground : ";
-  } else if (type == SurfaceData::TRANSPARENT) {
+  } else if (type == GroundpieceData::TRANSPARENT) {
     (*psm) << "transparent : ";
-  } else if (type == SurfaceData::BRIDGE) {
+  } else if (type == GroundpieceData::BRIDGE) {
     (*psm) << "bridge : ";
   } else {
     std::cout << "Warning: PSMObj: type not set!" << std::endl;
@@ -83,13 +83,13 @@ void PSMObj::save_xml(std::ofstream* xml)
 {
   std::string type_str;
 
-  if (type == SurfaceData::SOLID) {
+  if (type == GroundpieceData::SOLID) {
     type_str = "solid";
-  } else if (type == SurfaceData::GROUND) {
+  } else if (type == GroundpieceData::GROUND) {
     type_str = "ground";
-  } else if (type == SurfaceData::TRANSPARENT) {
+  } else if (type == GroundpieceData::TRANSPARENT) {
     type_str = "transparent";
-  } else if (type == SurfaceData::BRIDGE) {
+  } else if (type == GroundpieceData::BRIDGE) {
     type_str = "bridge";
   } else {
     std::cout << "Warning: PSMObj: type not set!" << std::endl;
@@ -100,7 +100,7 @@ void PSMObj::save_xml(std::ofstream* xml)
   save_desc_xml(xml, desc);
   save_position_xml(xml, pos);
 
-  //  (*xml) << "  <type>" << SurfaceData::type_to_string(type) << "</type>\n";
+  //  (*xml) << "  <type>" << GroundpieceData::type_to_string(type) << "</type>\n";
   (*xml) << "</groundpiece>\n" << std::endl;
 }
 
@@ -113,16 +113,16 @@ PSMObj::status_line()
 
   switch(type)
     {
-    case SurfaceData::SOLID:
+    case GroundpieceData::SOLID:
       type_name = "solid";
       break;
-    case SurfaceData::GROUND:
+    case GroundpieceData::GROUND:
       type_name = "ground";	
       break;
-    case SurfaceData::BRIDGE:
+    case GroundpieceData::BRIDGE:
       type_name = "bridge";	
       break;
-    case SurfaceData::TRANSPARENT:
+    case GroundpieceData::TRANSPARENT:
       type_name = "transparent";
       break;
     default:

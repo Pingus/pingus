@@ -1,4 +1,4 @@
-//  $Id: PSMParser.cc,v 1.16 2000/07/30 01:47:35 grumbel Exp $
+//  $Id: PSMParser.cc,v 1.17 2000/10/18 20:16:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -49,20 +49,20 @@ PSMParser::parse(string filename)
     if (!in) 
       throw PingusError("Cannot open: " + filename);
     
-    SurfaceData temp;
+    GroundpieceData temp;
     
     while(!in.eof()) {
       jump_spaces();
       temp.type_str = get_string();
       
       if (temp.type_str == "solid") { 
-	temp.type = SurfaceData::SOLID;
+	temp.type = GroundpieceData::SOLID;
       } else if (temp.type_str == "ground") {
-	temp.type = SurfaceData::GROUND;
+	temp.type = GroundpieceData::GROUND;
       } else if (temp.type_str == "transparent") {
-	temp.type = SurfaceData::TRANSPARENT;
+	temp.type = GroundpieceData::TRANSPARENT;
       } else if (temp.type_str == "bridge") {
-	temp.type = SurfaceData::BRIDGE;
+	temp.type = GroundpieceData::BRIDGE;
       } else {
 	throw PSMParseError("Object type is not valid: " + temp.type_str);	
       }
@@ -98,7 +98,7 @@ PSMParser::load_surfaces(void)
 {
   assert(file_parsed);
 
-  for (vector<SurfaceData>::size_type i=0; i < surface.size(); ++i) {
+  for (vector<GroundpieceData>::size_type i=0; i < surface.size(); ++i) {
     if (verbose > 1) {
       cout << "Surface: " << "(" << "?? - section broken - ??" << ":" << surface[i].res_desc.datafile << ") " 
 	   << surface[i].res_desc.res_name << endl;
@@ -107,7 +107,7 @@ PSMParser::load_surfaces(void)
   }
 }
 */
-vector<SurfaceData>
+vector<GroundpieceData>
 PSMParser::get_surfaces(void)
 {
   return surface;

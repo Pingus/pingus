@@ -1,4 +1,4 @@
-// $Id: ObjectSelector.hh,v 1.14 2000/08/28 00:34:39 grumbel Exp $
+// $Id: ObjectSelector.hh,v 1.15 2000/10/18 20:16:36 grumbel Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -67,7 +67,7 @@ public:
   ///
   EditorObj* get_trap();
   ///
-  EditorObj* get_groundpiece(SurfaceData::Type type);
+  EditorObj* get_groundpiece(GroundpieceData::Type type);
   ///
   EditorObj* get_hotspot();
   ///

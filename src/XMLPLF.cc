@@ -1,4 +1,4 @@
-//  $Id: XMLPLF.cc,v 1.16 2000/10/13 18:08:33 grumbel Exp $
+//  $Id: XMLPLF.cc,v 1.17 2000/10/18 20:16:36 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -502,9 +502,9 @@ XMLPLF::parse_global(xmlNodePtr cur)
 void 
 XMLPLF::parse_groundpiece(xmlNodePtr cur)
 {
-  SurfaceData surface;
+  GroundpieceData surface;
 
-  surface.type = SurfaceData::GROUND;
+  surface.type = GroundpieceData::GROUND;
 
   char* type = (char*)xmlGetProp(cur, (xmlChar*)"type");
   if (type)
@@ -512,13 +512,13 @@ XMLPLF::parse_groundpiece(xmlNodePtr cur)
       // std::cout << "groundpiece type: " << type << std::endl;
 
       if (strcmp(type, "solid") == 0) 
-	surface.type = SurfaceData::SOLID;
+	surface.type = GroundpieceData::SOLID;
       else if (strcmp(type, "transparent") == 0) 
-	surface.type = SurfaceData::TRANSPARENT;
+	surface.type = GroundpieceData::TRANSPARENT;
       else if (strcmp(type, "ground") == 0) 
-	surface.type = SurfaceData::GROUND;
+	surface.type = GroundpieceData::GROUND;
       else if (strcmp(type, "bridge") == 0) 
-	surface.type = SurfaceData::BRIDGE;
+	surface.type = GroundpieceData::BRIDGE;
       else
 	std::cout << "XMLPLF: Unhandeld groundpiece type: " << type << std::endl;
       free(type);

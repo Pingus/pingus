@@ -1,4 +1,4 @@
-//  $Id: PingusMenu.hh,v 1.8 2000/09/12 11:11:36 grumbel Exp $
+//  $Id: PingusMenu.hh,v 1.9 2000/10/18 20:16:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,6 +26,7 @@
 #include "SurfaceButton.hh"
 #include "OptionMenu.hh"
 #include "AlphaButton.hh"
+#include "LayerManager.hh"
 
 ///
 class SurfaceButton;
@@ -86,6 +87,8 @@ private:
   CL_Surface* bg;
   ///
   CL_Surface* background;
+  ///
+  LayerManager layer_manager;
   ///
   CL_Surface* cursor_sur;
 

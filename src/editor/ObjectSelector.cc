@@ -1,4 +1,4 @@
-//  $Id: ObjectSelector.cc,v 1.31 2000/10/14 16:09:46 grumbel Exp $
+//  $Id: ObjectSelector.cc,v 1.32 2000/10/18 20:16:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -124,9 +124,9 @@ ObjectSelector::get_trap()
 }
 
 EditorObj*
-ObjectSelector::get_groundpiece(SurfaceData::Type type)
+ObjectSelector::get_groundpiece(GroundpieceData::Type type)
 {
-  SurfaceData data;
+  GroundpieceData data;
 
   data.pos.x_pos = CL_Mouse::get_x() - x_offset;
   data.pos.y_pos = CL_Mouse::get_y() - y_offset;
@@ -296,16 +296,16 @@ ObjectSelector::select_obj_type()
 	  return get_trap();
 	  break;
 	case CL_KEY_B:
-	  return get_groundpiece(SurfaceData::BRIDGE);
+	  return get_groundpiece(GroundpieceData::BRIDGE);
 	  break;
 	case CL_KEY_S:
-	  return get_groundpiece(SurfaceData::SOLID);
+	  return get_groundpiece(GroundpieceData::SOLID);
 	  break;
 	case CL_KEY_G:
-	  return get_groundpiece(SurfaceData::GROUND);
+	  return get_groundpiece(GroundpieceData::GROUND);
 	  break;
 	case CL_KEY_N:
-	  return get_groundpiece(SurfaceData::TRANSPARENT);
+	  return get_groundpiece(GroundpieceData::TRANSPARENT);
 	  break;
 	case CL_KEY_H:
 	  return get_hotspot();
@@ -350,7 +350,7 @@ ObjectSelector::select_surface(std::string resource_file)
   std::string str;
   bool datafile_loaded;
   CL_ResourceManager* res = PingusResource::get(resource_file);
-  SurfaceData data;
+  GroundpieceData data;
 
   datafile_loaded = data_loaded[resource_file];
   
@@ -423,6 +423,9 @@ ObjectSelector::read_string(string description, string def_str)
 /*
 
 $Log: ObjectSelector.cc,v $
+Revision 1.32  2000/10/18 20:16:36  grumbel
+Added a scrolling background to the menu
+
 Revision 1.31  2000/10/14 16:09:46  grumbel
 Added a thumbnail cacher to the editor, but it still needs enhanchements, since it is to slow
 

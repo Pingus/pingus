@@ -1,4 +1,4 @@
-//  $Id: ColMap.hh,v 1.8 2000/10/09 19:17:30 grumbel Exp $
+//  $Id: ColMap.hh,v 1.9 2000/10/18 20:16:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,7 +23,7 @@
 #include <vector>
 #include <string>
 
-#include "SurfaceData.hh"
+#include "GroundpieceData.hh"
 #include "ResDescriptor.hh"
 #include "PSMParser.hh"
 
@@ -92,10 +92,10 @@ public:
   void put(int x, int y, PixelStatus p = WALL);
 
   ///
-  void put(CL_Surface*, int x, int y, SurfaceData::Type = SurfaceData::GROUND);
+  void put(CL_Surface*, int x, int y, GroundpieceData::Type = GroundpieceData::GROUND);
 
   ///
-  void put(CL_SurfaceProvider*, int x, int y, SurfaceData::Type = SurfaceData::GROUND);
+  void put(CL_SurfaceProvider*, int x, int y, GroundpieceData::Type = GroundpieceData::GROUND);
 
   /// void remove(int x, int y);
   void remove(CL_Surface*, int x, int y);

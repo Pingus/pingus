@@ -1,4 +1,4 @@
-//  $Id: ObjectManager.cc,v 1.33 2000/10/03 20:01:24 grumbel Exp $
+//  $Id: ObjectManager.cc,v 1.34 2000/10/18 20:16:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -138,8 +138,8 @@ ObjectManager::load_level (std::string filename)
   editor_objs.push_back(new StartPos(plf->get_startx(), 
 				     plf->get_starty()));
 
-  vector<SurfaceData>  temp_surfaces = plf->get_groundpieces();
-  for (vector<SurfaceData>::iterator i = temp_surfaces.begin();
+  vector<GroundpieceData>  temp_surfaces = plf->get_groundpieces();
+  for (vector<GroundpieceData>::iterator i = temp_surfaces.begin();
        i != temp_surfaces.end();
        i++)
     {
@@ -155,7 +155,7 @@ ObjectManager::load_level (std::string filename)
   vector<WeatherData>  temp_weather  = plf->get_weather();
   vector<WorldObjData*> temp_worldobj = plf->get_worldobjs_data();
 
-  for(vector<SurfaceData>::iterator i = temp_surfaces.begin(); i != temp_surfaces.end(); ++i)
+  for(vector<GroundpieceData>::iterator i = temp_surfaces.begin(); i != temp_surfaces.end(); ++i)
     editor_objs.push_back(EditorObj::create(*i));
 
   for(vector<EntranceData>::iterator i = temp_entraces.begin(); i != temp_entraces.end(); ++i)
@@ -265,7 +265,7 @@ ObjectManager::save_level (string filename)
   // FIXME: we need some error checking
   
   plf_out << "/* This level was created with the PLE\n"
-	  << " * $Id: ObjectManager.cc,v 1.33 2000/10/03 20:01:24 grumbel Exp $\n"
+	  << " * $Id: ObjectManager.cc,v 1.34 2000/10/18 20:16:36 grumbel Exp $\n"
 	  << " */"
 	  << endl;
   

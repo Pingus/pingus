@@ -1,4 +1,4 @@
-//  $Id: PingusMenu.cc,v 1.32 2000/10/03 20:01:23 grumbel Exp $
+//  $Id: PingusMenu.cc,v 1.33 2000/10/18 20:16:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,6 +37,12 @@ PingusMenu::PingusMenu()
 {
   bg         = PingusResource::load_surface("Game/logo_t", "game");
   background = PingusResource::load_surface("NewButtons/background", "menu");
+
+  layer_manager.add_layer (PingusResource::load_surface ("Layer/layer1", "menu"),  0, 0, 2, 0);
+  layer_manager.add_layer (PingusResource::load_surface ("Layer/layer2", "menu"),  0, 150, 5, 0);
+  layer_manager.add_layer (PingusResource::load_surface ("Layer/layer3", "menu"), 0, 200, 10, 0);
+  layer_manager.add_layer (PingusResource::load_surface ("Layer/layer4", "menu"), 0, 377, 25, 0);
+  layer_manager.add_layer (PingusResource::load_surface ("Layer/layer5", "menu"), 0, 500, 35, 0);
 
   background = Blitter::scale_surface (background, CL_Display::get_width (), CL_Display::get_height ());
   //  background = PingusResource::load_surface("Textures/stones", "textures");
@@ -102,7 +108,8 @@ PingusMenu::draw()
       background->put_screen(x, y);
   */
   //background->put_screen(0, 0, CL_Display::get_width(), CL_Display::get_height());
-  background->put_screen(0, 0);
+  layer_manager.draw ();
+  //background->put_screen(0, 0);
   // Putting the logo
   //bg->put_screen(CL_Display::get_width()/2 - bg->get_width()/2, 3);
 
@@ -143,8 +150,9 @@ PingusMenu::select(void)
   
   while(!do_quit) 
     {
+      layer_manager.update ();
+      draw ();
       CL_System::keep_alive();
-      CL_System::sleep(20);
     }
 
   event->enabled = false;

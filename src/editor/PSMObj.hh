@@ -1,4 +1,4 @@
-// $Id: PSMObj.hh,v 1.8 2000/08/28 00:34:39 grumbel Exp $
+// $Id: PSMObj.hh,v 1.9 2000/10/18 20:16:36 grumbel Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,17 +22,17 @@
 
 #include <cstdio>
 #include "EditorObj.hh"
-#include "../SurfaceData.hh"
+#include "../GroundpieceData.hh"
 
 ///
 class PSMObj : public EditorObj
 {
 private:
   ///
-  SurfaceData::Type type;
+  GroundpieceData::Type type;
 public:
   ///
-  PSMObj(SurfaceData data);
+  PSMObj(GroundpieceData data);
   ///
   PSMObj(const PSMObj&);
   ///

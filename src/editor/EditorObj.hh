@@ -1,4 +1,4 @@
-//  $Id: EditorObj.hh,v 1.19 2000/08/28 00:34:39 grumbel Exp $
+//  $Id: EditorObj.hh,v 1.20 2000/10/18 20:16:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -84,7 +84,7 @@ public:
       starts then to calculate width and height of the object */
   virtual void init();
   ///
-  static EditorObj* create(SurfaceData);
+  static EditorObj* create(GroundpieceData);
   ///
   static EditorObj* create(EntranceData);
   ///

@@ -1,4 +1,4 @@
-//  $Id: PLF.cc,v 1.19 2000/10/09 19:17:30 grumbel Exp $
+//  $Id: PLF.cc,v 1.20 2000/10/18 20:16:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -220,7 +220,7 @@ PLF::set_psm_filename(string name)
   psm_filename = name;
 }
 
-std::vector<SurfaceData> 
+std::vector<GroundpieceData> 
 PLF::get_groundpieces(void)
 {
   return groundpieces;

@@ -1,4 +1,4 @@
-//  $Id: PingusSpotMap.hh,v 1.11 2000/07/30 01:47:35 grumbel Exp $
+//  $Id: PingusSpotMap.hh,v 1.12 2000/10/18 20:16:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -72,7 +72,7 @@ private:
   ///
   typedef std::vector<MapTileSurface>::size_type TileIter;
   ///
-  std::vector<SurfaceData> surfaces;
+  std::vector<GroundpieceData> surfaces;
   ///
   PSMParser psm_parser;
   ///

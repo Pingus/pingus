@@ -1,4 +1,4 @@
-//  $Id: Story.cc,v 1.4 2000/06/27 16:05:16 grumbel Exp $
+//  $Id: Story.cc,v 1.5 2000/10/18 20:16:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #include <vector>
 #include <string>
 
+#include "LayerManager.hh"
 #include "PingusResource.hh"
 #include "Story.hh"
 
@@ -48,6 +49,27 @@ Story::init()
 void 
 Story::display()
 {
+  LayerManager layer_manager;
+  CL_Surface* sur = PingusResource::load_surface ("NewButtons/create_on", "menu");
+
+  layer_manager.add_layer (PingusResource::load_surface ("Layer/layer1", "story"),  0, 0, 2, 0);
+  layer_manager.add_layer (PingusResource::load_surface ("Layer/layer2", "story"),  0, 150, 5, 0);
+  layer_manager.add_layer (PingusResource::load_surface ("Layer/layer3", "story"), 0, 200, 10, 0);
+  layer_manager.add_layer (PingusResource::load_surface ("Layer/layer4", "story"), 0, 377, 25, 0);
+  layer_manager.add_layer (PingusResource::load_surface ("Layer/layer5", "story"), 0, 500, 35, 0);
+
+  while (true)
+    {
+      layer_manager.update ();
+      layer_manager.draw ();
+      
+      sur->put_screen (400, 300);
+
+      CL_System::keep_alive ();
+      CL_Display::flip_display ();
+    }
+
+  /*
   CL_Surface* story;
 
   story = PingusResource::load_surface("Story/story1", "story");
@@ -75,6 +97,7 @@ Story::display()
   CL_Display::flip_display();
 
   while(true);
+*/
 }
 
 void

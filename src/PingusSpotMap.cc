@@ -1,4 +1,4 @@
-//  $Id: PingusSpotMap.cc,v 1.36 2000/10/12 19:33:51 grumbel Exp $
+//  $Id: PingusSpotMap.cc,v 1.37 2000/10/18 20:16:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -190,7 +190,7 @@ PingusSpotMap::load(PLF* plf)
   
   surfaces = plf->get_groundpieces();
 
-  for (vector<SurfaceData>::iterator i = surfaces.begin();
+  for (vector<GroundpieceData>::iterator i = surfaces.begin();
        i != surfaces.end();
        i++)
     {
@@ -231,7 +231,7 @@ PingusSpotMap::create_map()
   Blitter::clear_canvas(map_canvas);
   
   // Drawing all surfaces to the provider
-  for(std::vector<SurfaceData>::iterator i = surfaces.begin(); 
+  for(std::vector<GroundpieceData>::iterator i = surfaces.begin(); 
       i != surfaces.end(); 
       i++)
     {
@@ -558,7 +558,7 @@ PingusSpotMap::get_colmap(void)
 	std::cout << "PingusSpotMap: Generating Colision Map..." << std::flush;
       }
 
-      for(std::vector<SurfaceData>::iterator i2 = surfaces.begin();
+      for(std::vector<GroundpieceData>::iterator i2 = surfaces.begin();
 	  i2 != surfaces.end(); 
 	  i2++) 
 	{

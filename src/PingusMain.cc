@@ -1,4 +1,4 @@
-//   $Id: PingusMain.cc,v 1.14 2000/10/13 18:08:33 grumbel Exp $
+//   $Id: PingusMain.cc,v 1.15 2000/10/18 20:16:36 grumbel Exp $
 //    ___
 //   |  _\ A free Lemmings clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -66,6 +66,7 @@
 #include "PingusMenu.hh"
 #include "PingusMessageBox.hh"
 #include "audio.hh"
+//#include "Story.hh"
 
 #include "PingusSound.hh"
 
@@ -250,8 +251,14 @@ PingusMain::check_args(int argc, char* argv[])
       if (verbose) std::cout << "PingusMain:check_args: Printing fps enabled" << std::endl;
       break;
     case 'l': // -l, --level
-      levelfile = optarg;
-      if (verbose) std::cout << "PingusMain:check_args: Levelfile = " << levelfile << std::endl;
+      {
+	// FIXME: Quick hack to get an absolute path
+	char cwd[1024];
+	levelfile = optarg;
+	if (getcwd (cwd, 1024))
+	  levelfile = std::string(cwd) + "/" + levelfile;
+	if (verbose) std::cout << "PingusMain:check_args: Levelfile = " << levelfile << std::endl;
+      }
       break;
     case 't': // -t, --set-speed
       game_speed = atoi(optarg);
@@ -510,6 +517,9 @@ For more information about these matters, see the files named COPYING.\
     {
       if (levelfile.empty()) {
 	levelfile = argv[i];
+	char cwd[1024];
+	if (getcwd (cwd, 1024))
+	  levelfile = string(cwd) + "/" + levelfile;
       } else {
 	std::cout << "Wrong argument: '" << argv[i] << "'" << std::endl;
 	std::cout << "A levelfile is already given," << std::endl;
@@ -770,11 +780,22 @@ PingusMain::do_lemmings_mode(void)
   on_button_press_slot = CL_Input::sig_button_press.connect (thCreateSlot(&global_event, &GlobalEvent::on_button_press));
   on_button_release_slot = CL_Input::sig_button_release.connect (thCreateSlot(&global_event, &GlobalEvent::on_button_release));
 
-  if (!levelfile.empty()) 
-    {
-      PingusGame game;
+  //pingus_story.display ();
+
+  {
+    PingusGame game;
+    
+    if (System::exist(levelfile))
       game.start_game(levelfile);
-    }
+    else if (System::exist(levelfile + ".xml"))
+      game.start_game(levelfile + ".xml");
+    else if (System::exist("levels/" + levelfile + ".xml"))
+      game.start_game("levels/" + levelfile);
+    else
+      {
+	std::cout << _("PingusMain: Levelfile not found, ignoring: ") << levelfile << std::endl;
+      }
+  }
 
   if (!demo_file.empty()) {
     PingusGame game;

@@ -1,4 +1,4 @@
-//  $Id: PLF.hh,v 1.18 2000/09/23 18:19:00 grumbel Exp $
+//  $Id: PLF.hh,v 1.19 2000/10/18 20:16:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -102,7 +102,7 @@ protected:
   ///
   std::vector<TrapData>     traps;
   /// 
-  std::vector<SurfaceData>  groundpieces;
+  std::vector<GroundpieceData>  groundpieces;
   ///
   std::vector<WeatherData>  weathers;
   ///
@@ -180,7 +180,7 @@ public:
   ///
   std::vector<LiquidData>    get_liquids(void);
   ///
-  std::vector<SurfaceData>   get_groundpieces(void);
+  std::vector<GroundpieceData>   get_groundpieces(void);
   ///
   std::vector<WeatherData>   get_weather(void);
   ///
