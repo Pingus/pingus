@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.10 2002/08/04 15:42:23 grumbel Exp $
+//   $Id: pingus_main.cxx,v 1.11 2002/08/17 00:27:21 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -478,6 +478,14 @@ For more information about these matters, see the files named COPYING.\
         {
           pingus_debug_flags |= PINGUS_DEBUG_RESOURCES;
         }
+      else if (strcmp (optarg, "gui") == 0)
+        {
+          pingus_debug_flags |= PINGUS_DEBUG_GUI;
+        }
+      else if (strcmp (optarg, "input") == 0)
+        {
+          pingus_debug_flags |= PINGUS_DEBUG_INPUT;
+        }
       else
 	{
 	  std::cout << "PingusMain: Unhandled debug flag: " << optarg << std::endl;
@@ -546,7 +554,8 @@ For more information about these matters, see the files named COPYING.\
 	"   --maintainer-mode        Enables some features, only interesting programmers\n"
 	"   --enable-bg-manipulation Enables color manipulation of level backgrounds\n"
 	"   --debug OPTION           Enable the output of debugging infos, possible\n"
-        "                            OPTION's are tiles, gametime, actions, sound, resources\n"
+        "                            OPTION's are tiles, gametime, actions, sound, resources, gui,\n"
+        "                            input\n"
 	"   -t, --speed SPEED        Set the game speed (0=fastest, >0=slower)\n"
 	"   -b, --print-fps          Prints the fps to stdout\n"
 	"   -i, --enable-gimmicks    Enable some buggy development stuff\n"
@@ -781,7 +790,7 @@ PingusMain::init_clanlib()
   // Initing the display
   CL_Display::set_videomode(screen_width, screen_height, 16, 
 			    fullscreen_enabled, 
-			    true); // allow resize
+			    false); // allow resize
 
 #ifdef HAVE_LIBCLANGL
   if (use_opengl)
