@@ -1,4 +1,4 @@
-//  $Id: Jumper.cc,v 1.4 2000/03/12 01:58:06 grumbel Exp $
+//  $Id: Jumper.cc,v 1.5 2000/04/09 17:28:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,10 +36,14 @@ Jumper::init(void)
   action_name = "Jumper";
 
   surface = CL_Surface::load("Pingus/jumper", local_res());
-  environment = (PinguEnvironment)(land | sky);
+  environment = (PinguEnvironment)(land);
   counter.set_size(4);
   counter.set_type(Counter::loop);
+}
 
+void
+Jumper::let_move()
+{
   if (pingu->direction.is_right()) {
     pingu->velocity += CL_Vector(10.0, -10.0);
   } else {
@@ -47,17 +51,8 @@ Jumper::init(void)
   }
 
   pingu->y_pos -= 1;
-}
 
-void
-Jumper::let_move()
-{
-  c++;
-
-  if (c > 10)
-    {
-      is_finished = true;
-    }
+  is_finished = true;
 }
 
 /* EOF */
