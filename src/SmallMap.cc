@@ -1,4 +1,4 @@
-//  $Id: SmallMap.cc,v 1.25 2001/03/30 09:19:23 grumbel Exp $
+//  $Id: SmallMap.cc,v 1.26 2001/03/30 10:02:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -70,9 +70,9 @@ SmallMap::init()
   
   cbuffer = static_cast<unsigned char*>(canvas->get_data());
 
-  for(unsigned int y = 0; y < height; y++)
+  for(int y = 0; y < height; y++)
     {
-      for (unsigned int x = 0; x < width; x++)
+      for (int x = 0; x < width; x++)
 	{
 	  tx = x * colmap->get_width() / width;
 	  ty = y * colmap->get_height() / height;
@@ -171,8 +171,8 @@ SmallMap::draw()
 
   Display::draw_rect(x_of, 
 		     y_of + CL_Display::get_height() - sur.get_height(),
-		     x_of + min(rwidth, sur.get_width()),
-		     y_of + min(rheight, sur.get_height()) + CL_Display::get_height() - sur.get_height(),
+		     x_of + min(rwidth, int(sur.get_width())),
+		     y_of + min(rheight, int(sur.get_height())) + CL_Display::get_height() - sur.get_height(),
 		     0.0, 1.0, 0.0, 1.0);
   
   // FIXME: This should use put_target(), but put_target(), does not
@@ -220,8 +220,10 @@ SmallMap::let_move()
   
   if (scroll_mode)
     {
-      cx = (CL_Mouse::get_x() - x_pos) * colmap->get_width() / width;
-      cy = (CL_Mouse::get_y() - y_pos) * colmap->get_height() / height ;
+      cx = (int(CL_Mouse::get_x()) - x_pos) * int(colmap->get_width()) / width;
+      cy = (int(CL_Mouse::get_y()) - y_pos) * int(colmap->get_height()) / height ;
+
+      std::cout << "Viewpoint: " << cx << " " << cy << std::endl;
 
       client->get_playfield()->set_viewpoint(cx, cy);
     }

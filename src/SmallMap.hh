@@ -1,4 +1,4 @@
-//  $Id: SmallMap.hh,v 1.8 2000/12/14 21:35:55 grumbel Exp $
+//  $Id: SmallMap.hh,v 1.9 2001/03/30 10:02:30 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -48,15 +48,15 @@ private:
   ///
   int y_pos;
   ///
-  unsigned int width;
+  int width;
   ///
-  unsigned int height;
+  int height;
   ///
   bool scroll_mode;
   ///
-  unsigned int rwidth;
+  int rwidth;
   ///
-  unsigned int rheight;
+  int rheight;
 public:
   ///
   SmallMap();
