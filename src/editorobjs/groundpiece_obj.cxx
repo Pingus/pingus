@@ -1,4 +1,4 @@
-//  $Id: groundpiece_obj.cxx,v 1.10 2002/12/14 11:34:58 grumbel Exp $
+//  $Id: groundpiece_obj.cxx,v 1.11 2003/02/18 22:03:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -166,6 +166,7 @@ GroundpieceObj::get_gui_dialog (EditorNS::Editor* editor)
   propframe->add_enum_value("Transparent", Groundtype::GP_TRANSPARENT);
   propframe->add_enum_value("Solid",       Groundtype::GP_SOLID);
   propframe->add_enum_value("Bridge",      Groundtype::GP_BRIDGE);
+  propframe->add_enum_value("Remove",      Groundtype::GP_REMOVE);
   propframe->end_add_enum_box();
   
   propframe->add_button_box("Rotate 90 (r)",       GroundpieceObjRotate(this));

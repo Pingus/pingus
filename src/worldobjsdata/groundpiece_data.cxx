@@ -1,4 +1,4 @@
-//  $Id: groundpiece_data.cxx,v 1.12 2003/02/18 17:04:13 grumbel Exp $
+//  $Id: groundpiece_data.cxx,v 1.13 2003/02/18 22:03:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,16 +42,15 @@ GroundpieceData::GroundpieceData (xmlDocPtr doc, xmlNodePtr cur)
   reader.read_desc("surface", desc);
 
   std::string gptype_string;
-  if (XMLhelper::get_prop(cur, "type", gptype_string))
+  if (XMLhelper::get_prop(cur, "type", gptype_string) && gptype_string != "groundpiece")
     {
-      if (gptype_string != "groundpiece")
-        gptype = Groundtype::string_to_type (gptype_string);
+      gptype = Groundtype::string_to_type (gptype_string);
     }
   else
     {
       std::string type;
-      reader.read_string("type", type);
-      gptype = Groundtype::string_to_type (type);
+      if (reader.read_string("type", type))
+        gptype = Groundtype::string_to_type (type);
     }
 }
 
