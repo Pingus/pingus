@@ -3,9 +3,8 @@
 <pingus-level>
   <global>
     <levelname lang="en">Armour-plated chocolate bar</levelname>
-    <description lang="en">
+    <description lang="en"></description>
     <playable>1</playable>
-</description>
     <author>Craig Timpany &lt;timpany@pingus.cx&gt;</author>
     <number-of-pingus>40</number-of-pingus>
     <number-to-save>30</number-to-save>
