@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapPingus.cc,v 1.1 2000/09/21 15:23:57 grumbel Exp $
+//  $Id: PingusWorldMapPingus.cc,v 1.2 2000/09/21 17:26:42 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -16,6 +16,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+
+#include <cmath>
 
 #include "../PingusResource.hh"
 #include "PingusWorldMapPingus.hh"
@@ -47,7 +49,7 @@ void
 PingusWorldMapPingus::draw ()
 {
   sur->put_screen (pos.x_pos - (sur->get_width()/2),
-		   pos.y_pos - sur->get_height(),
+		   pos.y_pos + 4 - sur->get_height(),
 		   ++counter);
 }
 
@@ -56,6 +58,16 @@ PingusWorldMapPingus::let_move ()
 {
   if (!targets.empty())
     {
+      float x_off = targets.top ().x_pos - pos.x_pos;
+      float y_off = targets.top ().y_pos - pos.y_pos;
+
+      float x_delta = x_off * 4.0 / sqrt(x_off * x_off  + y_off * y_off);
+      float y_delta = y_off * 4.0 / sqrt(x_off * x_off  + y_off * y_off);
+      
+      pos.x_pos += x_delta;
+      pos.y_pos += y_delta;
+      
+      /*
       if (pos.x_pos < targets.top ().x_pos)
 	pos.x_pos += 5;
       else if (pos.x_pos > targets.top ().x_pos)
@@ -65,6 +77,7 @@ PingusWorldMapPingus::let_move ()
 	pos.y_pos += 3;
       else if (pos.y_pos > targets.top ().y_pos)
 	pos.y_pos -= 3;  
+      */
     }  
 }
 

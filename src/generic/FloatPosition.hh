@@ -1,7 +1,7 @@
-//  $Id: PingusWorldMapPingus.hh,v 1.2 2000/09/21 17:26:42 grumbel Exp $
-// 
+//  $Id: FloatPosition.hh,v 1.1 2000/09/21 17:26:42 grumbel Exp $
+//
 //  Pingus - A free Lemmings clone
-//  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
+//  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
 //
 //  This program is free software; you can redistribute it and/or
 //  modify it under the terms of the GNU General Public License
@@ -12,37 +12,38 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef PINGUSWORLDMAPPINGUS_HH
-#define PINGUSWORLDMAPPINGUS_HH
+#ifndef FLOATPOSITION_HH
+#define FLOATPOSITION_HH
 
-#include <stack>
-#include "../generic/FloatPosition.hh"
-#include "../AnimCounter.hh"
-#include "PingusWorldMapGraph.hh"
+#include "../Position.hh"
 
-/** This is the representation of the horde of Pingus which will walk
-    on the worldmap */
-class PingusWorldMapPingus
+class FloatPosition
 {
-private:
-  CL_Surface* sur;
-  FloatPosition pos;
-  AnimCounter counter;
-  stack<Position> targets;
-
 public:
-  PingusWorldMapPingus ();
-  ~PingusWorldMapPingus ();
+  FloatPosition(float arg_x_pos = 0.0, float arg_y_pos = 0.0, float arg_z_pos = 0.0)
+  {
+    x_pos = arg_x_pos;
+    y_pos = arg_y_pos;
+    z_pos = arg_z_pos;
+  }
 
-  void draw ();
-  void let_move ();
-  void walk_to (PingusWorldMapNode node);
-  void set_position (PingusWorldMapNode node);
+  FloatPosition&
+  operator=(const Position& pos)
+  {
+    x_pos = pos.x_pos;
+    y_pos = pos.y_pos;
+    z_pos = pos.z_pos;
+    return *this;
+  }
+
+  float x_pos;
+  float y_pos; 
+  float z_pos;
 };
 
 #endif
