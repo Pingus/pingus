@@ -1,4 +1,4 @@
-//  $Id: worldobj.cxx,v 1.4 2002/09/04 14:55:11 torangan Exp $
+//  $Id: worldobj.cxx,v 1.5 2002/09/04 17:49:48 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,8 +18,11 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
 //  02111-1307, USA. 
 
+#include <typeinfo>
+#include <iostream>
 #include "world.hxx"
 #include "worldobj.hxx"
+#include "graphic_context.hxx"
 
 World* WorldObj::world;
 
@@ -55,6 +58,15 @@ void
 WorldObj::draw_offset(int /*x*/, int /*y*/, float /*s*/)
 {
   // do nothing
+  std::cout << "WorldObj::draw_offset(int /*x*/, int /*y*/, float /*s*/): not implemented, probally a bug" << std::endl;
+}
+
+void
+WorldObj::draw (GraphicContext& gc)
+{
+  std::cout << "WorldObj:draw(GraphicContext): Using compat-wrapper: " 
+	    << typeid(*this).name () << std::endl;
+  draw_offset (int(gc.get_x_offset ()), int(gc.get_y_offset ()), gc.get_zoom ());
 }
 
 /* EOF */

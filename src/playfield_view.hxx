@@ -1,4 +1,4 @@
-//  $Id: playfield_view.hxx,v 1.3 2002/08/23 15:49:50 torangan Exp $
+//  $Id: playfield_view.hxx,v 1.4 2002/09/04 17:49:48 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,6 +27,7 @@ class CL_Vector;
 class World;
 class Pingu;
 
+/** FIXME: Document me */
 class PlayfieldView : public GuiObj
 {
 private:

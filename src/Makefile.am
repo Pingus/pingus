@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.92 2002/09/04 14:55:11 torangan Exp $
+#  $Id: Makefile.am,v 1.93 2002/09/04 17:49:48 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -127,6 +127,8 @@ direction.cxx \
 direction.hxx \
 display.cxx \
 display.hxx \
+display_graphic_context.hxx \
+display_graphic_context.cxx \
 editor_hotspot.hxx \
 entrance.cxx \
 entrance.hxx \
@@ -162,6 +164,7 @@ globals.cxx \
 globals.hxx \
 groundpiece_data.cxx \
 groundpiece_data.hxx \
+graphic_context.hxx \
 gui_obj.hxx \
 gui_obj.cxx \
 gui_screen.cxx \

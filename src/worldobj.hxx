@@ -1,4 +1,4 @@
-//  $Id: worldobj.hxx,v 1.5 2002/09/04 14:55:11 torangan Exp $
+//  $Id: worldobj.hxx,v 1.6 2002/09/04 17:49:48 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,7 @@
 
 #include "pingus.hxx"
 
+class GraphicContext;
 class World;
 class WorldObjData;
 
@@ -64,6 +65,9 @@ public:
    *  @param s the scalar by with the object is zoomed (1.0 is default)
    */
   virtual void draw_offset (int x, int y, float s = 1.0);
+
+  /** Draw the WorldObj to the given GraphicContext */
+  virtual void draw (GraphicContext& gc);
 
   /** Draws the objects collision map to the main collision map, this
    *  can be used for traps which need a solid ground. */

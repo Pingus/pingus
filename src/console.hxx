@@ -1,4 +1,4 @@
-//  $Id: console.hxx,v 1.8 2002/09/04 14:55:11 torangan Exp $
+//  $Id: console.hxx,v 1.9 2002/09/04 17:49:48 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -99,9 +99,7 @@ public:
   /** Scroll down or up n lines, depending on the sign */
   void scroll (int n);
 
-  ///
   void puts(const std::string&);
-  ///
   void newline();
   
 private:

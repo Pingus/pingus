@@ -1,4 +1,4 @@
-//  $Id: pingus.cxx,v 1.6 2002/08/04 15:42:23 grumbel Exp $
+//  $Id: pingus.cxx,v 1.7 2002/09/04 17:49:48 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -55,7 +55,7 @@ PingusWorldMapPingus::draw (const CL_Vector& offset)
     sprite.put_screen (pos + offset);
   else
     {
-      sprite.reset ();
+      //sprite.reset ();
       sprite.put_screen (pos + offset);
     }
 }
@@ -69,8 +69,8 @@ PingusWorldMapPingus::is_walking ()
 void
 PingusWorldMapPingus::update (float delta)
 {
-  if (!targets.empty ())
-    sprite.update (delta);
+  //if (!targets.empty ())
+  sprite.update (delta);
 
   if (!targets.empty ())
     {

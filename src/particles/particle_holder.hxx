@@ -1,4 +1,4 @@
-//  $Id: particle_holder.hxx,v 1.3 2002/08/23 15:49:56 torangan Exp $
+//  $Id: particle_holder.hxx,v 1.4 2002/09/04 17:49:48 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,8 +23,10 @@
 #include <list>
 #include "particle_cache.hxx"
 
+class GraphicContext;
 class Particle;
 
+/** FIXME: Inherit from std::list<> is evil... */
 class ParticleHolder : public std::list<Particle*>
 {
 private:
@@ -36,7 +38,10 @@ public:
   virtual ~ParticleHolder ();
 
   void update (float delta);
+
   void draw_offset (int, int, float); /// const;
+  void draw (GraphicContext& gc); /// const;
+
   void add_pingu_explo (int x, int y);
   void add_particle (Particle* p);
   

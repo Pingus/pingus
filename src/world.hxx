@@ -1,4 +1,4 @@
-//  $Id: world.hxx,v 1.8 2002/08/23 15:49:52 torangan Exp $
+//  $Id: world.hxx,v 1.9 2002/09/04 17:49:48 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,7 +43,7 @@ class ColMap;
 class WorldImpl;
 class WorldObj;
 class GameTime;
-
+class GraphicContext;
 
 using std::list;
 using std::string;
@@ -101,10 +101,17 @@ public:
       @param h    The height of the drawing area.
       @param x_of x_of
       @param y_of y_of
-      @param s    s   */
+      @param s    s   
+      
+      FIXME: deprecated
+  */
   void    draw(int x1, int y1, int w, int h,
 	       int x_of, int y_of, float s);
-  ///
+
+  /** Draw the world onto the given GraphicContext */
+  void    draw (GraphicContext& gc);
+
+  /** Update the World */
   void    update (float delta);
 
   /// Issue an armageddon, all Pingus will explode in some seconds.

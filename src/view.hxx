@@ -1,4 +1,4 @@
-//  $Id: view.hxx,v 1.6 2002/08/23 15:49:51 torangan Exp $
+//  $Id: view.hxx,v 1.7 2002/09/04 17:49:48 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,7 @@
 #include <ClanLib/Display/Display/cliprect.h>
 #include "range.hxx"
 #include "capture_rectangle.hxx"
+#include "display_graphic_context.hxx"
 
 class Pingu;
 class World;
@@ -34,6 +35,8 @@ class Client;
 class View
 {
 private:
+  DisplayGraphicContext display_gc;
+
   CL_ClipRect clip_rect;
   /// The position of the view in the world
   Range x_offset, y_offset; 

@@ -1,4 +1,4 @@
-//  $Id: view.cxx,v 1.7 2002/08/05 09:19:08 grumbel Exp $
+//  $Id: view.cxx,v 1.8 2002/09/04 17:49:48 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,7 +28,8 @@
 World* View::world;
 
 View::View(Client* client, int x1, int y1, int x2, int y2, float s)
-  : cap (client->get_button_panel ()),
+  : display_gc (x1, y1, x2, y2, 0, 0),
+    cap (client->get_button_panel ()),
     current_pingu (0)
 {
   mouse_over = false;
@@ -66,6 +67,10 @@ View::draw()
   world->draw(x1_pos, y1_pos,
 	      x2_pos - x1_pos + 1, y2_pos - y1_pos + 1,
 	      x_offset, y_offset, size);
+
+  // Update the scroll position
+  display_gc.set_offset (x_offset, y_offset);
+  world->draw (display_gc);
   
   cap.set_pingu(current_pingu);
   cap.draw_offset(get_x_pos() + get_x_offset(), 
