@@ -16,7 +16,7 @@
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 pkgdatadir = $(datadir)/games/@PACKAGE@/controller
-EXTRA_DIST = default.xml
+EXTRA_DIST = default.xml gamepad.xml
 pkgdata_DATA = $(EXTRA_DIST)
 
 # EOF #

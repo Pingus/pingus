@@ -1,0 +1,94 @@
+<pingus-controller>
+  <controller-config>
+    <standard-pointer>
+      <axis-pointer speed="200">
+        <joystick-axis id="1" axis="0" angle="0" />
+        <joystick-axis id="1" axis="1" angle="90" />
+      </axis-pointer>
+    </standard-pointer>
+
+    <primary-button>
+      <multiple-button>
+        <mouse-button button="0"/>
+        <joystick-button id="1" button="4"/>
+      </multiple-button>
+    </primary-button>
+
+    <secondary-button>
+      <multiple-button>
+        <mouse-button button="2"/>
+        <joystick-button id="1" button="1"/>
+      </multiple-button>
+    </secondary-button>
+
+    <pause-button>
+      <multiple-button>
+        <key-button key="P"/>
+        <joystick-button id="1" button="9"/>
+      </multiple-button>
+    </pause-button>
+
+    <fast-forward-button>
+      <multiple-button>
+        <key-button key="F"/>
+        <key-button key="SPACE"/>
+        <joystick-button id="1" button="2"/>
+      </multiple-button>
+    </fast-forward-button>
+
+    <armageddon-button>
+      <multiple-button>
+        <key-button key="A"/>
+        <joystick-button id="1" button="0"/>
+      </multiple-button>
+    </armageddon-button>
+
+    <escape-button>
+      <multiple-button>
+        <key-button key="ESCAPE"/>
+        <joystick-button id="1" button="8"/>
+      </multiple-button>
+    </escape-button>
+
+    <scroller>
+      <axis-scroller speed="1000">
+        <button-axis angle="90">
+          <key-button key="DOWN"/>
+          <key-button key="UP"/>
+        </button-axis>      
+        <button-axis angle="0">
+          <key-button key="RIGHT"/>
+          <key-button key="LEFT"/>
+        </button-axis>
+      </axis-scroller>
+    </scroller>
+
+    <action-buttons>
+      <action-button><key-button key="1"/></action-button>
+      <action-button><key-button key="2"/></action-button>
+      <action-button><key-button key="3"/></action-button>
+      <action-button><key-button key="4"/></action-button>
+      <action-button><key-button key="5"/></action-button>
+      <action-button><key-button key="6"/></action-button>
+      <action-button><key-button key="7"/></action-button>
+      <action-button><key-button key="8"/></action-button>
+      <action-button><key-button key="9"/></action-button>
+      <action-button><key-button key="0"/></action-button>
+    </action-buttons>
+
+    <action-up>
+      <multiple-button>
+        <key-button key="PAGEUP"/>
+        <joystick-button id="1" button="7"/>
+      </multiple-button>
+    </action-up>
+
+    <action-down>
+      <multiple-button>
+        <key-button key="PAGEDOWN"/>
+        <joystick-button id="1" button="6"/>
+      </multiple-button>
+    </action-down>
+
+  </controller-config>
+</pingus-controller>
