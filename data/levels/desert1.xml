@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.0"  encoding="ISO-8859-1"?>
 
 <pingus-level>
   <global>
@@ -10,16 +10,37 @@
     <time>9000</time>
     <width>1600</width>
     <height>600</height>
-
     <difficulty>50</difficulty>
     <playable>1</playable>
     <comment>- stuck under bridge bug</comment>
   </global>
 
-<background>
+  <action-list>
+    <basher count="1"/>
+    <blocker count="10"/>
+    <bomber count="10"/>
+    <bridger count="10"/>
+  </action-list>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>desert/bigsand</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>250</x-pos>
+    <y-pos>453</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<background type="surface">
   <surface><resource type="datafile">
     <resource-datafile>textures.dat</resource-datafile>
   <resource-ident>Textures/desert</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <color>
     <red>0</red>
@@ -33,816 +54,1195 @@
   <para-y>0.5</para-y>
   <stretch-x>0</stretch-x>
   <stretch-y>0</stretch-y>
+  <position>
+    <x-pos>4</x-pos>
+    <y-pos>-142</y-pos>
+    <z-pos>-150</z-pos>
+  </position>
 </background>
-
-  <action-list>
-    <basher>1</basher>
-    <blocker>10</blocker>
-    <bomber>10</bomber>
-    <bridger>10</bridger>
-  </action-list>
 
 <entrance>
   <position>
-    <x-pos>355</x-pos>
-    <y-pos>418</y-pos>
+    <x-pos>359</x-pos>
+    <y-pos>276</y-pos>
     <z-pos>0</z-pos>
   </position>
   <type>generic</type>
   <direction>right</direction>
-  <release-rate>25</release-rate>
+  <release-rate>100</release-rate>
+  <owner-id>0</owner-id>
 </entrance>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/pillar2</resource-ident>
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Desert/pillar2</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>727</x-pos>
-    <y-pos>461</y-pos>
+    <x-pos>731</x-pos>
+    <y-pos>319</y-pos>
     <z-pos>42</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/pillar2</resource-ident>
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Desert/pillar2</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>624</x-pos>
-    <y-pos>462</y-pos>
+    <x-pos>628</x-pos>
+    <y-pos>320</y-pos>
     <z-pos>42</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/middleprickpiece</resource-ident>
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Misc/bigprickpiece</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>953</x-pos>
-    <y-pos>507</y-pos>
+    <x-pos>-119</x-pos>
+    <y-pos>350</y-pos>
     <z-pos>42</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/middleprickpiece</resource-ident>
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Misc/middleprickpiece</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>1102</x-pos>
-    <y-pos>507</y-pos>
+    <x-pos>957</x-pos>
+    <y-pos>365</y-pos>
     <z-pos>42</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/bigprickpiece</resource-ident>
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Misc/middleprickpiece</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>1537</x-pos>
-    <y-pos>137</y-pos>
+    <x-pos>1106</x-pos>
+    <y-pos>365</y-pos>
     <z-pos>42</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/bigprickpiece</resource-ident>
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Misc/bigprickpiece</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>1409</x-pos>
-    <y-pos>287</y-pos>
+    <x-pos>1541</x-pos>
+    <y-pos>-5</y-pos>
     <z-pos>42</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/bigprickpiece</resource-ident>
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Misc/bigprickpiece</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>1552</x-pos>
+    <x-pos>1413</x-pos>
+    <y-pos>145</y-pos>
+    <z-pos>42</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Misc/bigprickpiece</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>1556</x-pos>
+    <y-pos>295</y-pos>
+    <z-pos>42</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Misc/bigprickpiece</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>1256</x-pos>
+    <y-pos>295</y-pos>
+    <z-pos>42</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>desert/bigsand</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>-48</x-pos>
+    <y-pos>482</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>1031</x-pos>
+    <y-pos>429</y-pos>
+    <z-pos>42</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>509</x-pos>
+    <y-pos>367</y-pos>
+    <z-pos>42</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>1338</x-pos>
+    <y-pos>411</y-pos>
+    <z-pos>42</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Misc/middleprickpiece</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>1256</x-pos>
+    <y-pos>365</y-pos>
+    <z-pos>42</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>1086</x-pos>
+    <y-pos>416</y-pos>
+    <z-pos>42</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>257</x-pos>
+    <y-pos>447</y-pos>
+    <z-pos>42</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>223</x-pos>
+    <y-pos>463</y-pos>
+    <z-pos>42</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>353</x-pos>
     <y-pos>437</y-pos>
     <z-pos>42</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/bigprickpiece</resource-ident>
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>1252</x-pos>
-    <y-pos>437</y-pos>
+    <x-pos>348</x-pos>
+    <y-pos>420</y-pos>
     <z-pos>42</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>1027</x-pos>
-    <y-pos>571</y-pos>
+    <x-pos>328</x-pos>
+    <y-pos>398</y-pos>
     <z-pos>42</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Misc/smallbrickpiece</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>505</x-pos>
-    <y-pos>509</y-pos>
+    <x-pos>698</x-pos>
+    <y-pos>282</y-pos>
     <z-pos>42</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Misc/smallbrickpiece</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>1334</x-pos>
-    <y-pos>553</y-pos>
+    <x-pos>623</x-pos>
+    <y-pos>282</y-pos>
     <z-pos>42</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/middleprickpiece</resource-ident>
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Misc/smallbrickpiece</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>1252</x-pos>
-    <y-pos>507</y-pos>
+    <x-pos>817</x-pos>
+    <y-pos>298</y-pos>
     <z-pos>42</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>desert/bigsand</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>1082</x-pos>
-    <y-pos>558</y-pos>
+    <x-pos>508</x-pos>
+    <y-pos>375</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Misc/smallbrickpiece</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>501</x-pos>
+    <y-pos>295</y-pos>
     <z-pos>42</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>253</x-pos>
-    <y-pos>589</y-pos>
+    <x-pos>567</x-pos>
+    <y-pos>357</y-pos>
     <z-pos>42</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>219</x-pos>
-    <y-pos>605</y-pos>
-    <z-pos>42</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>349</x-pos>
-    <y-pos>579</y-pos>
-    <z-pos>42</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>344</x-pos>
-    <y-pos>562</y-pos>
-    <z-pos>42</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>324</x-pos>
-    <y-pos>540</y-pos>
-    <z-pos>42</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/smallbrickpiece</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>694</x-pos>
-    <y-pos>424</y-pos>
-    <z-pos>42</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/smallbrickpiece</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>619</x-pos>
-    <y-pos>424</y-pos>
-    <z-pos>42</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/smallbrickpiece</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>813</x-pos>
-    <y-pos>440</y-pos>
-    <z-pos>42</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/smallbrickpiece</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>497</x-pos>
-    <y-pos>437</y-pos>
-    <z-pos>42</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>563</x-pos>
-    <y-pos>499</y-pos>
-    <z-pos>42</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1384</x-pos>
-    <y-pos>563</y-pos>
-    <z-pos>42</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1132</x-pos>
-    <y-pos>568</y-pos>
-    <z-pos>42</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>626</x-pos>
-    <y-pos>524</y-pos>
-    <z-pos>42</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1448</x-pos>
-    <y-pos>546</y-pos>
-    <z-pos>42</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1196</x-pos>
-    <y-pos>551</y-pos>
-    <z-pos>42</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>504</x-pos>
-    <y-pos>588</y-pos>
-    <z-pos>42</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>404</x-pos>
-    <y-pos>599</y-pos>
-    <z-pos>42</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>471</x-pos>
-    <y-pos>570</y-pos>
-    <z-pos>42</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>451</x-pos>
-    <y-pos>547</y-pos>
-    <z-pos>42</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>684</x-pos>
-    <y-pos>510</y-pos>
-    <z-pos>42</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1551</x-pos>
-    <y-pos>560</y-pos>
-    <z-pos>42</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1299</x-pos>
-    <y-pos>565</y-pos>
-    <z-pos>42</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>799</x-pos>
-    <y-pos>527</y-pos>
-    <z-pos>42</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>586</x-pos>
-    <y-pos>561</y-pos>
-    <z-pos>42</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>866</x-pos>
-    <y-pos>594</y-pos>
-    <z-pos>42</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>783</x-pos>
-    <y-pos>593</y-pos>
-    <z-pos>42</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>771</x-pos>
-    <y-pos>576</y-pos>
-    <z-pos>42</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>850</x-pos>
-    <y-pos>577</y-pos>
-    <z-pos>42</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>922</x-pos>
-    <y-pos>588</y-pos>
-    <z-pos>42</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>709</x-pos>
-    <y-pos>587</y-pos>
-    <z-pos>42</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>638</x-pos>
-    <y-pos>584</y-pos>
-    <z-pos>42</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>691</x-pos>
-    <y-pos>568</y-pos>
-    <z-pos>42</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>259</x-pos>
-    <y-pos>562</y-pos>
-    <z-pos>42</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>201</x-pos>
-    <y-pos>582</y-pos>
-    <z-pos>42</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>111</x-pos>
-    <y-pos>615</y-pos>
-    <z-pos>42</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>135</x-pos>
-    <y-pos>604</y-pos>
-    <z-pos>42</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>159</x-pos>
-    <y-pos>595</y-pos>
-    <z-pos>42</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>291</x-pos>
-    <y-pos>551</y-pos>
-    <z-pos>42</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1386</x-pos>
-    <y-pos>585</y-pos>
-    <z-pos>42</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1134</x-pos>
-    <y-pos>590</y-pos>
-    <z-pos>42</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>627</x-pos>
-    <y-pos>548</y-pos>
-    <z-pos>42</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1022</x-pos>
-    <y-pos>597</y-pos>
-    <z-pos>42</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>506</x-pos>
-    <y-pos>534</y-pos>
-    <z-pos>42</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1509</x-pos>
-    <y-pos>576</y-pos>
-    <z-pos>42</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/pillar1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>259</x-pos>
+    <x-pos>1388</x-pos>
     <y-pos>421</y-pos>
     <z-pos>42</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>desert/bigsand</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>1257</x-pos>
-    <y-pos>581</y-pos>
-    <z-pos>42</z-pos>
+    <x-pos>835</x-pos>
+    <y-pos>469</y-pos>
+    <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>desert/bigsand</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>751</x-pos>
-    <y-pos>537</y-pos>
-    <z-pos>42</z-pos>
+    <x-pos>543</x-pos>
+    <y-pos>468</y-pos>
+    <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>946</x-pos>
-    <y-pos>580</y-pos>
+    <x-pos>1136</x-pos>
+    <y-pos>426</y-pos>
     <z-pos>42</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>424</x-pos>
-    <y-pos>518</y-pos>
+    <x-pos>630</x-pos>
+    <y-pos>382</y-pos>
     <z-pos>42</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>933</x-pos>
-    <y-pos>559</y-pos>
+    <x-pos>1452</x-pos>
+    <y-pos>404</y-pos>
     <z-pos>42</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>868</x-pos>
-    <y-pos>557</y-pos>
+    <x-pos>1200</x-pos>
+    <y-pos>409</y-pos>
     <z-pos>42</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>378</x-pos>
-    <y-pos>529</y-pos>
+    <x-pos>484</x-pos>
+    <y-pos>460</y-pos>
     <z-pos>42</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>1535</x-pos>
-    <y-pos>591</y-pos>
+    <x-pos>455</x-pos>
+    <y-pos>409</y-pos>
     <z-pos>42</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>1283</x-pos>
-    <y-pos>596</y-pos>
+    <x-pos>688</x-pos>
+    <y-pos>368</y-pos>
     <z-pos>42</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>761</x-pos>
-    <y-pos>557</y-pos>
+    <x-pos>1555</x-pos>
+    <y-pos>418</y-pos>
     <z-pos>42</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>227</x-pos>
-    <y-pos>571</y-pos>
+    <x-pos>1303</x-pos>
+    <y-pos>423</y-pos>
     <z-pos>42</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/pillar1</resource-ident>
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>679</x-pos>
-    <y-pos>263</y-pos>
+    <x-pos>803</x-pos>
+    <y-pos>385</y-pos>
     <z-pos>42</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<exit>
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>desert/bigdune1</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
   <position>
-    <x-pos>1179</x-pos>
-    <y-pos>407</y-pos>
+    <x-pos>553</x-pos>
+    <y-pos>491</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>590</x-pos>
+    <y-pos>419</y-pos>
+    <z-pos>42</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>870</x-pos>
+    <y-pos>452</y-pos>
+    <z-pos>42</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>787</x-pos>
+    <y-pos>451</y-pos>
+    <z-pos>42</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>775</x-pos>
+    <y-pos>434</y-pos>
+    <z-pos>42</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>854</x-pos>
+    <y-pos>435</y-pos>
+    <z-pos>42</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>926</x-pos>
+    <y-pos>446</y-pos>
+    <z-pos>42</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>713</x-pos>
+    <y-pos>445</y-pos>
+    <z-pos>42</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>793</x-pos>
+    <y-pos>499</y-pos>
+    <z-pos>42</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>642</x-pos>
+    <y-pos>442</y-pos>
+    <z-pos>42</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>695</x-pos>
+    <y-pos>426</y-pos>
+    <z-pos>42</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>263</x-pos>
+    <y-pos>420</y-pos>
+    <z-pos>42</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>205</x-pos>
+    <y-pos>440</y-pos>
+    <z-pos>42</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>-5</x-pos>
+    <y-pos>473</y-pos>
+    <z-pos>42</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>139</x-pos>
+    <y-pos>462</y-pos>
+    <z-pos>42</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>163</x-pos>
+    <y-pos>453</y-pos>
+    <z-pos>42</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>295</x-pos>
+    <y-pos>409</y-pos>
+    <z-pos>42</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>1390</x-pos>
+    <y-pos>443</y-pos>
+    <z-pos>42</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>1138</x-pos>
+    <y-pos>448</y-pos>
+    <z-pos>42</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>1026</x-pos>
+    <y-pos>455</y-pos>
+    <z-pos>42</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>490</x-pos>
+    <y-pos>513</y-pos>
+    <z-pos>42</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>268</x-pos>
+    <y-pos>513</y-pos>
+    <z-pos>42</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>1513</x-pos>
+    <y-pos>434</y-pos>
+    <z-pos>42</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Desert/pillar1</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>263</x-pos>
+    <y-pos>279</y-pos>
+    <z-pos>42</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>1261</x-pos>
+    <y-pos>434</y-pos>
+    <z-pos>42</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>755</x-pos>
+    <y-pos>395</y-pos>
+    <z-pos>42</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>950</x-pos>
+    <y-pos>438</y-pos>
+    <z-pos>42</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>428</x-pos>
+    <y-pos>376</y-pos>
+    <z-pos>42</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>937</x-pos>
+    <y-pos>417</y-pos>
+    <z-pos>42</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>desert/bigsand</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>1128</x-pos>
+    <y-pos>471</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>desert/bigdune1</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>285</x-pos>
+    <y-pos>549</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>desert/bigdune1</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>781</x-pos>
+    <y-pos>539</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>872</x-pos>
+    <y-pos>415</y-pos>
+    <z-pos>42</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>382</x-pos>
+    <y-pos>387</y-pos>
+    <z-pos>42</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>1539</x-pos>
+    <y-pos>449</y-pos>
+    <z-pos>42</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>1282</x-pos>
+    <y-pos>449</y-pos>
+    <z-pos>42</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>662</x-pos>
+    <y-pos>570</y-pos>
+    <z-pos>42</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>desert/bigdune1</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>1055</x-pos>
+    <y-pos>485</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>desert/bigsand</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>1420</x-pos>
+    <y-pos>465</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>desert/bigdune1</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>13</x-pos>
+    <y-pos>523</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>765</x-pos>
+    <y-pos>415</y-pos>
+    <z-pos>42</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>231</x-pos>
+    <y-pos>429</y-pos>
+    <z-pos>42</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Desert/pillar1</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>683</x-pos>
+    <y-pos>121</y-pos>
+    <z-pos>42</z-pos>
+  </position>
+</worldobj>
+
+<exit use-old-pos-handling="0">
+  <position>
+    <x-pos>1258</x-pos>
+    <y-pos>365</y-pos>
     <z-pos>50</z-pos>
   </position>
   <surface><resource type="datafile">
     <resource-datafile>exits</resource-datafile>
   <resource-ident>Exits/desert</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
-</exit>
+  <owner-id>0</owner-id></exit>
 
 <hotspot>
   <surface><resource type="datafile">
     <resource-datafile>entrances</resource-datafile>
   <resource-ident>Entrances/wood_bottom</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>304</x-pos>
-    <y-pos>390</y-pos>
+    <x-pos>308</x-pos>
+    <y-pos>248</y-pos>
     <z-pos>50</z-pos>
   </position>
   <speed>-1</speed>
@@ -853,10 +1253,11 @@
   <surface><resource type="datafile">
     <resource-datafile>entrances</resource-datafile>
   <resource-ident>Entrances/wood_top</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>304</x-pos>
-    <y-pos>390</y-pos>
+    <x-pos>308</x-pos>
+    <y-pos>248</y-pos>
     <z-pos>100</z-pos>
   </position>
   <speed>-1</speed>
@@ -865,11 +1266,207 @@
 
   <start-position>
   <position>
-    <x-pos>348</x-pos>
-    <y-pos>456</y-pos>
+    <x-pos>352</x-pos>
+    <y-pos>314</y-pos>
     <z-pos>1000</z-pos>
   </position>
   </start-position>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Misc/bigprickpiece</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>-271</x-pos>
+    <y-pos>200</y-pos>
+    <z-pos>42</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>194</x-pos>
+    <y-pos>575</y-pos>
+    <z-pos>42</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>397</x-pos>
+    <y-pos>560</y-pos>
+    <z-pos>42</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>933</x-pos>
+    <y-pos>536</y-pos>
+    <z-pos>42</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>-110</x-pos>
+    <y-pos>547</y-pos>
+    <z-pos>42</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>767</x-pos>
+    <y-pos>508</y-pos>
+    <z-pos>42</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>1135</x-pos>
+    <y-pos>585</y-pos>
+    <z-pos>42</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>1417</x-pos>
+    <y-pos>555</y-pos>
+    <z-pos>42</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>1310</x-pos>
+    <y-pos>581</y-pos>
+    <z-pos>42</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>1177</x-pos>
+    <y-pos>519</y-pos>
+    <z-pos>42</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>1214</x-pos>
+    <y-pos>543</y-pos>
+    <z-pos>42</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>1455</x-pos>
+    <y-pos>544</y-pos>
+    <z-pos>42</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>873</x-pos>
+    <y-pos>502</y-pos>
+    <z-pos>42</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>desert/bigdune1</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>1479</x-pos>
+    <y-pos>464</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
 
 </pingus-level>
 
