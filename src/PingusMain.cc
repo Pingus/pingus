@@ -1,4 +1,4 @@
-//   $Id: PingusMain.cc,v 1.56 2002/02/24 20:40:25 grumbel Exp $
+//   $Id: PingusMain.cc,v 1.57 2002/03/01 23:30:23 japj Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -645,7 +645,7 @@ PingusMain::get_filenames()
 
 #else /* !WIN32 */
   //If the User uses Windows, the Datadir is always the Subdirectory "data"
-  path_manager.set_path("data\\");
+  path_manager.set_path("data");
 #endif /* !WIN32 */
  
 #ifdef HAVE_GETTEXT
@@ -839,6 +839,10 @@ PingusMain::main(int argc, char** argv)
 {
   // Register the segfault_handler
   // signal(SIGSEGV, segfault_handler);
+#ifdef WIN32
+	CL_ConsoleWindow console(PACKAGE VERSION);
+	console.redirect_stdio();
+#endif
 
   executable_name = argv[0];
 
