@@ -1,4 +1,4 @@
-//  $Id: exit_data.cc,v 1.2 2000/02/09 21:43:41 grumbel Exp $
+//  $Id: exit_data.cc,v 1.3 2000/05/04 20:19:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,7 +30,7 @@ exit_data::clean()
   x_pos = 0;
   y_pos = 0;
   z_pos = 0;
-  desc.filename = "--global.dat";
+  desc.filename = "global.dat";
   desc = ResDescriptor();
 }
 

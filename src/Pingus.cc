@@ -1,4 +1,4 @@
-//   $Id: Pingus.cc,v 1.23 2000/04/29 13:13:26 grumbel Exp $
+//   $Id: Pingus.cc,v 1.24 2000/05/04 20:19:27 grumbel Exp $
 //    ___
 //   |  _\ A free Lemmings clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -505,7 +505,7 @@ PingusMain::get_filenames()
     {
       std::cout << "Pingus Datafile: " << pingus_datafile
 				<< std::endl << std::endl;
-      std::cout << "Couldn't find `global.dat', please set the enviroment variable\n"
+      std::cout << "Couldn't find `global.scr', please set the enviroment variable\n"
 	   << "PINGUS_DATADIR to the path of the file `pingus.dat' or use the\n"
 	   << "-p option." << std::endl;
       exit(EXIT_SUCCESS);
