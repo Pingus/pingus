@@ -1,4 +1,4 @@
-//  $Id: globals.cxx,v 1.12 2003/04/12 16:14:31 torangan Exp $
+//  $Id: globals.cxx,v 1.13 2003/04/15 10:33:15 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -50,6 +50,8 @@ bool        show_input_debug_screen         = false;
 
 int         min_frame_skip                  = 1;
 int         max_frame_skip                  = 5;
+
+std::string controller_file;
 
 std::string global_username;
 std::string global_email; 

@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.81 2003/04/14 17:56:36 grumbel Exp $
+//   $Id: pingus_main.cxx,v 1.82 2003/04/15 10:33:15 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -225,6 +225,7 @@ PingusMain::check_args(int argc, char** argv)
       {"max-frame-skip",    required_argument, 0, 155},
       {"frame-skip",        required_argument, 0, 157},
       {"cheat",             required_argument, 0, 156},
+      {"controller",        required_argument, 0, 160},
 #ifdef HAVE_LIBCLANGL
       {"use-opengl",        no_argument,       0, 'G'},
 #endif
@@ -478,6 +479,10 @@ PingusMain::check_args(int argc, char** argv)
       Cheat::activate(optarg);
       break;
 
+    case 160:
+      controller_file = optarg;
+      break;
+
     default:
       if (verbose) std::cout << _("Unknow char: ") << c << std::endl << std::endl;
       std::cout << _("Usage: ") << argv[0] << _(" [OPTIONS]... [LEVELFILE]") << std::endl;
@@ -511,6 +516,8 @@ PingusMain::check_args(int argc, char** argv)
         << "\n   --no-cfg-file            " << _("Don't read ~/.pingus/config")
         << "\n   --config-file " << _("FILE       ") << _("Read config from FILE (default: ~/.pingus/config)")
         << "\n                            " << _("reduce CPU usage, might speed up the game on slower machines")
+        << "\n   --controller FILE        " << _("Uses the controller given in FILE")
+
         << "\n\n" << _("Debugging and experimental stuff:")
         << "\n   --maintainer-mode        " << _("Enables some features, only interesting programmers")
         << "\n   --debug OPTION           " << _("Enable the output of debugging infos, possible")
@@ -524,14 +531,13 @@ PingusMain::check_args(int argc, char** argv)
         << "\n   --tile-size INT          " << _("Set the size of the map tiles (default: 32)")
         << "\n   --fast-mode              " << _("Disable some cpu intensive features")
         << "\n   --min-cpu-usage          " << _("Reduces the CPU usage by issuing sleep()")
-        << "\n"
-        << "\nDemo playing and recording:"
+
+        << "\n\n" << _("Demo playing and recording:")
         << "\n   -p, --play-demo " << _("FILE     ") << _("Plays a demo session from FILE")
         << "\n   -r, --disable-demo-recording"
         << "\n                            " << _("Record demos for each played level")
-        << "\n"
-        << "\n"
-        << _("Sound:")
+
+        << "\n\n" << _("Sound:")
         << "\n   -s, --disable-sound       " << _("Disable sound")
         << "\n   -m, --disable-music       " << _("Disable music")
         << "\n"
@@ -675,20 +681,15 @@ PingusMain::init_path_finder()
         std::cout << "setlocale returned '" << ret << "'" << std::endl;
     }
 
-  if ((ret = setlocale (LC_CTYPE, "")) == NULL)
-    {
-      std::cout << "ERROR: setlocale LC_CTYPE failed!" <<  std::endl;
-    }
-  else
-    {
-      if (maintainer_mode)
-        std::cout << "setlocale returned '" << ret << "'" << std::endl;
-    }
-
-  bindtextdomain (PACKAGE, (path_manager.get_base_path () + "/../../locale/").c_str());
+  bindtextdomain(PACKAGE, (path_manager.get_base_path () + "/../../locale/").c_str());
   // We use another LOCALEDIR to make static binaries possible
   // bindtextdomain (PACKAGE, LOCALEDIR);
-  textdomain (PACKAGE);
+  textdomain(PACKAGE);
+
+  // Forcing codeset to ISO-8859-1, since usage of
+  // setlocate(LC_CTYPE,"") causes all sorts of throuble
+  bind_textdomain_codeset(PACKAGE, "ISO-8859-1");
+
 #endif 
   if (maintainer_mode)
     std::cout << "BasePath: " << path_manager.get_base_path () << std::endl;

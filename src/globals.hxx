@@ -1,4 +1,4 @@
-//  $Id: globals.hxx,v 1.15 2003/04/13 23:33:19 grumbel Exp $
+//  $Id: globals.hxx,v 1.16 2003/04/15 10:33:15 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -49,7 +49,10 @@ extern int         screen_width;                    ///<
 extern int         screen_height;                   ///<
 extern bool        draw_collision_map;              ///<
 extern bool        swcursor_enabled;                ///< --enable-swcursor
+
 extern std::string config_file;                     ///< --config-file
+extern std::string controller_file;                 ///< --controller
+
 extern bool        max_cpu_usage;                   ///< --max-cpu-usage
 extern bool        use_opengl;                      ///< --use-opengl
 extern bool        action_help;                     ///< --action-help

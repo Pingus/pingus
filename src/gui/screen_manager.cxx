@@ -1,4 +1,4 @@
-//  $Id: screen_manager.cxx,v 1.6 2003/04/06 12:40:47 grumbel Exp $
+//  $Id: screen_manager.cxx,v 1.7 2003/04/15 10:33:15 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,7 +42,13 @@ ScreenManager::~ScreenManager ()
 void
 ScreenManager::display ()
 {
-  Input::Controller input_controller(path_manager.complete ("controller/default.xml"));
+  Input::Controller* input_controller;
+
+  if (controller_file.empty())
+    input_controller = new Input::Controller(path_manager.complete("controller/default.xml"));
+  else
+    input_controller = new Input::Controller(controller_file);
+
   DeltaManager delta_manager;
 
   // Main loop for the menu
@@ -62,11 +68,11 @@ ScreenManager::display ()
       CL_System::keep_alive ();
 
       // Get new events from ClanLib
-      input_controller.update (time_delta);
+      input_controller->update (time_delta);
 
       // Fill the delta with values
       GameDelta delta (time_delta, delta_manager.get_absolute(), 
-                       input_controller.get_events ());
+                       input_controller->get_events ());
 
       last_screen = get_current_screen();
 
@@ -115,6 +121,8 @@ ScreenManager::display ()
       // Stupid hack to make this thing take less CPU
       CL_System::sleep (0);
     } 
+
+  delete input_controller;
 }
 
 ScreenPtr&

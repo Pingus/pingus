@@ -1,4 +1,4 @@
-//  $Id: editor_help_screen.cxx,v 1.8 2003/04/14 22:47:55 cagri Exp $
+//  $Id: editor_help_screen.cxx,v 1.9 2003/04/15 10:33:15 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -57,7 +57,7 @@ EditorHelpScreen::draw ()
 
   x_pos = CL_Display::get_width()/2 - 32;
   y_pos = 100;
-  font->print_left (x_pos, y_pos +   0, _("Pos1 - increase object size"));
+  font->print_left (x_pos, y_pos +   0, _("Home - increase object size"));
   font->print_left (x_pos, y_pos +  20, _("End  - decrease object size"));
   font->print_left (x_pos, y_pos +  40, _("Cursor Keys - Move object"));
   font->print_left (x_pos, y_pos +  60, _("Shift 'Cursor Keys' - Move objects fast "));
