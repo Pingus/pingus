@@ -1,4 +1,4 @@
-//  $Id: bomber.cxx,v 1.16 2002/10/06 17:02:19 torangan Exp $
+//  $Id: bomber.cxx,v 1.17 2002/10/06 23:14:33 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,10 +34,11 @@ bool Bomber::static_surface_loaded = false;
 CL_Surface Bomber::bomber_radius;
 CL_Surface Bomber::bomber_radius_gfx;
 
-Bomber::Bomber () : particle_thrown(false),
-                    sound_played(false), 
-                    gfx_exploded(false),
-                    colmap_exploded(false)
+Bomber::Bomber () 
+  : particle_thrown(false),
+    sound_played(false), 
+    gfx_exploded(false),
+    colmap_exploded(false)
 {
 }
 
@@ -71,8 +72,7 @@ Bomber::draw (GraphicContext& gc)
 {
   if (sprite.get_frame () >= 13 && !gfx_exploded) 
     {
-      gc.draw (explo_surf, Vector(static_cast<int>(pingu->get_x () - 32), 
-				     static_cast<int>(pingu->get_y () - 48)));
+      gc.draw (explo_surf, Vector(pingu->get_x () - 32, pingu->get_y () - 48));
       gfx_exploded = true;
     }
 
