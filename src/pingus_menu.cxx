@@ -1,4 +1,4 @@
-//  $Id: pingus_menu.cxx,v 1.4 2002/07/29 22:17:53 grumbel Exp $
+//  $Id: pingus_menu.cxx,v 1.5 2002/07/30 14:57:25 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,16 +30,13 @@
 #include "display.hxx"
 #include "sound.hxx"
 #include "debug.hxx"
+#include "game_delta.hxx"
 #include "gui/root_gui_manager.hxx"
 
 PingusMenu::PingusMenu(PingusMenuManager* m)
   : PingusSubMenu (m)
 {
   is_init = false;
-
-  // FIXME: Memory leak
-  controller = new Input::Controller ("../doc/mycontroller.xml");
-  gui_manager = new GUI::RootGUIManager (controller);
 }
 
 void
@@ -61,13 +58,13 @@ PingusMenu::preload ()
       background = PingusResource::load_surface("misc/logo", "core");
 
       // FIXME: Lilla... memory leak
-      gui_manager->add(new OptionsButton (this));
-      gui_manager->add(new CreditButton (this));
-      gui_manager->add(new QuitButton (this));
-      gui_manager->add(new MultiplayerButton (this));
-      gui_manager->add(new ThemeButton (this));
-      gui_manager->add(new StoryButton (this));
-      gui_manager->add(editor_button);
+      add(new OptionsButton (this));
+      add(new CreditButton (this));
+      add(new QuitButton (this));
+      add(new MultiplayerButton (this));
+      add(new ThemeButton (this));
+      add(new StoryButton (this));
+      add(editor_button);
     }
 
   // FIXME: Preload is probally the wrong place for this, there should
@@ -77,19 +74,7 @@ PingusMenu::preload ()
 
 PingusMenu::~PingusMenu()
 {
-}
-
-void
-PingusMenu::draw()
-{
-  gui_manager->draw ();
-}
-
-void
-PingusMenu::update (float delta)
-{
-  controller->update (delta);
-  gui_manager->update (delta);
+  delete gui_manager;
 }
 
 void

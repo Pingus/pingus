@@ -1,4 +1,4 @@
-//  $Id: pingus_menu_manager.hxx,v 1.4 2002/07/30 01:58:16 grumbel Exp $
+//  $Id: pingus_menu_manager.hxx,v 1.5 2002/07/30 14:57:25 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -47,7 +47,8 @@ private:
   /// Unregister all event-handling stuff
   void unregister_events ();
 public:
-  /* Menu's */
+  /* Menu's FIXME: These shouldn't get exported to the outsite,
+     instead only handles (enum's) should be visible */
   Intro intro;
   PingusMenu mainmenu;
   OptionMenu optionmenu;
@@ -57,9 +58,6 @@ public:
 
   PingusMenuManager ();
   ~PingusMenuManager ();
-
-  void draw ();
-  void update (float delta);
 
   /// Display the menu (this is basically the game's main loop)
   void display ();

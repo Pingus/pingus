@@ -1,4 +1,4 @@
-//  $Id: pingus_menu_manager.cxx,v 1.5 2002/07/30 01:58:16 grumbel Exp $
+//  $Id: pingus_menu_manager.cxx,v 1.6 2002/07/30 14:57:25 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,7 @@
 #include "display.hxx"
 #include "delta_manager.hxx"
 #include "fade_out.hxx"
+#include "input/controller.hxx"
 #include "pingus_menu_manager.hxx"
 
 PingusMenuManager::PingusMenuManager ()
@@ -135,24 +136,32 @@ PingusMenuManager::display ()
 {
   //std::cout << "Pingusmenumanager: display ()" << std::endl;
   DeltaManager delta_manager;
-  float delta;
-  
+
   current_menu ()->preload ();
   register_events ();
   loop = true;
 
+  Input::Controller input_controller("../doc/mycontroller.xml");
   // Main loop for the menu
   while (loop)
     {
       //std::cout << "Displaying menu..." << std::endl;
-      delta = delta_manager.getset ();
+      float time_delta = delta_manager.getset ();
+
+      input_controller.update (time_delta);
 
       // We ignore delta's larger then one second, to avoid jumps in
       // the scrolling (for example when starting a level and then
       // after some minutes going back to the menu would cause delta's
       // from >100, not nice)
-      if (delta > 1.0)
-	delta = 0;
+      if (time_delta > 1.0)
+	{
+	  std::cout << "PingusMenuManager: detected large delta (" << time_delta
+		    << "), ignoring and doing frameskip" << std::endl;
+	  continue;
+	}
+
+      GameDelta delta (time_delta, input_controller.get_events ());
 
       // We copy the menu_stack so that we don't invalidate our
       // iterators when menu's are removed/added in update()
@@ -218,13 +227,15 @@ PingusMenuManager::current_menu ()
 void 
 PingusMenuManager::fadeout ()
 {
+  std::cout << "PingusMenuManager::fadeout () Not implemented" << std::endl;
   DeltaManager delta_manager;
   EnlargingRectFadeOut fadeout;
   while (!fadeout.finished ())
     {
-      float delta = delta_manager.getset ();
-      fadeout.update (delta);
-      current_menu ()->update (delta);
+      float time_delta = delta_manager.getset ();
+      fadeout.update (time_delta);
+
+      //current_menu ()->update ();
       current_menu ()->draw ();
       fadeout.draw ();
       Display::flip_display ();

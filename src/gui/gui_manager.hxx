@@ -1,4 +1,4 @@
-//  $Id: gui_manager.hxx,v 1.3 2002/07/30 01:58:16 grumbel Exp $
+//  $Id: gui_manager.hxx,v 1.4 2002/07/30 14:57:26 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,11 @@
 #ifndef HEADER_PINGUS_GUI_GUI_MANAGER_HXX
 #define HEADER_PINGUS_GUI_GUI_MANAGER_HXX
 
+#include <vector>
+#include <list>
 #include "component.hxx"
+
+class GameDelta;
 
 namespace Input
 {
@@ -46,12 +50,15 @@ namespace GUI
     // FIXME: Hack: should be handled inside the controller
     int x_pos;
     int y_pos;
+
+    void process_input (const std::list<Input::Event*>& events);
   public:
     GUIManager ();
     virtual ~GUIManager () {}
     
-    void draw ();
-    void update (float delta);
+    virtual void draw ();
+    virtual void update (const GameDelta& delta);
+    virtual void update (float delta) {}
 
     /** Add a component to the manager, if delete_component is true
 	the component will get deleted on destruction of the manager,
@@ -61,8 +68,6 @@ namespace GUI
 
     /** */
     void remove (Component*);
-
-    void process_input (std::list<Input::Event*>& events);
 
     Component* component_at (int x, int y);  
     bool is_at (int x, int y);

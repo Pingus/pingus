@@ -1,4 +1,4 @@
-//  $Id: menu_background.hxx,v 1.2 2002/06/24 22:52:55 grumbel Exp $
+//  $Id: menu_background.hxx,v 1.3 2002/07/30 14:57:25 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,7 +35,7 @@ public:
   ~MenuBackground ();
 
   void draw ();
-  void update (float delta);
+  void update (const GameDelta& delta);
   void preload ();
 };
 

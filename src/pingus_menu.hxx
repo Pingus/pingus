@@ -1,4 +1,4 @@
-//  $Id: pingus_menu.hxx,v 1.3 2002/07/29 22:17:53 grumbel Exp $
+//  $Id: pingus_menu.hxx,v 1.4 2002/07/30 14:57:25 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,12 +21,14 @@
 #define HEADER_PINGUS_PINGUS_MENU_HXX
 
 #include <list>
+#include "game_delta.hxx"
 #include "pingus_sub_menu.hxx"
 #include "layer_manager.hxx"
 
 class CL_Key;
 class CL_InputDevice;
 class SurfaceButton;
+class GameDelta;
 
 namespace GUI
 {
@@ -59,9 +61,6 @@ public:
 
   /// Load all images and other stuff for the menu
   void preload ();
-
-  void update (float /*delta*/);
-  void draw(void);
 };
 
 #endif

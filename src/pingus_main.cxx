@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.6 2002/07/10 18:10:06 torangan Exp $
+//   $Id: pingus_main.cxx,v 1.7 2002/07/30 14:57:25 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -843,6 +843,7 @@ PingusMain::start_game(void)
   // show the main menu, the rest of the game is spawn from there
   try {
     PingusMenuManager menu;
+    // This is the main loop
     menu.display ();
   }
   

@@ -1,4 +1,4 @@
-//  $Id: root_gui_manager.cxx,v 1.3 2002/07/30 01:58:16 grumbel Exp $
+//  $Id: root_gui_manager.cxx,v 1.4 2002/07/30 14:57:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,9 +36,10 @@ RootGUIManager::~RootGUIManager ()
 void
 RootGUIManager::update (float delta)
 {
+  assert (!"ERROR RootGUIManager absolete");
   assert (controller);
-  GUIManager::update (delta);
-  process_input (controller->get_events ());
+  //GUIManager::update (delta);
+  //process_input (controller->get_events ());
 }
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: menu_background.cxx,v 1.1 2002/06/12 19:09:37 grumbel Exp $
+//  $Id: menu_background.cxx,v 1.2 2002/07/30 14:57:25 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,9 +42,9 @@ MenuBackground::draw ()
 }
 
 void 
-MenuBackground::update (float delta)
+MenuBackground::update (const GameDelta& delta)
 {
-  layer_manager.update (delta);
+  layer_manager.update (delta.get_time ());
 }
 
 void 

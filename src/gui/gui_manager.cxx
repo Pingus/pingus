@@ -1,4 +1,4 @@
-//  $Id: gui_manager.cxx,v 1.3 2002/07/30 01:58:16 grumbel Exp $
+//  $Id: gui_manager.cxx,v 1.4 2002/07/30 14:57:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,7 @@
 #include "../input/event.hxx"
 #include "../input/button_event.hxx"
 #include "../input/pointer_event.hxx"
+#include "../game_delta.hxx"
 
 #include "gui_manager.hxx"
 
@@ -46,19 +47,21 @@ GUIManager::draw ()
 }
 
 void
-GUIManager::update (float delta)
+GUIManager::update (const GameDelta& delta)
 {
+  process_input (delta.get_events ());
+
   for (std::vector<Component*>::iterator i = components.begin (); 
        i != components.end (); ++i)
     {
-      (*i)->update (delta);
+      (*i)->update (delta.get_time ());
     }
 }
 
 void
-GUIManager::process_input (std::list<Event*>& events)
+GUIManager::process_input (const std::list<Input::Event*>& events)
 {
-  for (std::list<Event*>::iterator i = events.begin (); i != events.end (); ++i)
+  for (std::list<Event*>::const_iterator i = events.begin (); i != events.end (); ++i)
     {
       switch ((*i)->get_type())
 	{

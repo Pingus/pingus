@@ -1,4 +1,4 @@
-//  $Id: game_delta.hxx,v 1.5 2002/07/29 10:44:12 grumbel Exp $
+//  $Id: game_delta.hxx,v 1.6 2002/07/30 14:57:25 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,33 +20,35 @@
 #ifndef HEADER_PINGUS_GAME_DELTA_HXX
 #define HEADER_PINGUS_GAME_DELTA_HXX
 
-#error "Don't used this the moment, its underdevelopment and not compilable"
+#include <list>
 
-class InputEvent;
-
-namespace Pingus 
+namespace Input
 {
-  /** Input for the game engine */
-  class GameDelta
-  {
-  private:
-    std::list<Event*> events;
-    float time;
-
-  public:
-    void set_time (float t) { time = t; }
-
-    /** add an event (FIXME: Memory handling?!)*/
-    void add_event (Event* e) { events.push_back(); }
-
-
-    /** Return the time that has passed in seconds */
-    float get_time () { return time; }
-
-    /** Return the events */
-    std::list<Event*>& get_events () { return events; }
-  };
+  class Event;
 }
+
+/** Input for the game engine */
+class GameDelta
+{
+private:
+  /** time delta since the last update */
+  float time_delta;
+    
+  /** Reference to the event list from the controller, we must not
+      delete the Event* */
+  const std::list<Input::Event*>& events; 
+    
+public:
+  /** Construct a GameDelta with both time and events */
+  GameDelta (float d,std::list<Input::Event*>& e)
+    : time_delta (d), events (e) {}
+
+  /** Return the time that has passed in seconds since the last update() */
+  float get_time () const { return time_delta; }
+
+  /** Return the events */
+  const std::list<Input::Event*>& get_events () const { return events; }
+};
 
 #endif
 

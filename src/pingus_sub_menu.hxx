@@ -1,4 +1,4 @@
-//  $Id: pingus_sub_menu.hxx,v 1.3 2002/07/30 01:58:16 grumbel Exp $
+//  $Id: pingus_sub_menu.hxx,v 1.4 2002/07/30 14:57:25 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,13 +20,13 @@
 #ifndef HEADER_PINGUS_PINGUS_SUB_MENU_HXX
 #define HEADER_PINGUS_PINGUS_SUB_MENU_HXX
 
-#include "gui/component.hxx"
+#include "gui/gui_manager.hxx"
 
 class CL_Key;
 class CL_InputDevice;
 class PingusMenuManager;
 
-class PingusSubMenu : public GUI::Component
+class PingusSubMenu : public GUI::GUIManager
 {
 protected:
   PingusMenuManager* manager;
