@@ -1,4 +1,4 @@
-//  $Id: Pingu.cc,v 1.36 2000/10/12 19:33:51 grumbel Exp $
+//  $Id: Pingu.cc,v 1.37 2000/12/04 23:12:12 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -62,7 +62,6 @@ Pingu::Pingu(int x, int y)
       tumble = CL_Surface::load("Pingus/tumble", local_res());
     }
 
-  tumbling = false;
   falling = 4;
   status = alive;
 
@@ -393,14 +392,7 @@ Pingu::do_falling()
       ++falling;
 	  
       if (falling > 3) 
-	environment = sky;
-	  
-      // If we are going fast enough to get smashed, start tumbling
-      if (fabs(velocity.x) > deadly_velocity
-	  || fabs(velocity.y) > deadly_velocity)
-	{
-	  tumbling = true;
-	}
+	environment = sky; 
     }
   else // Ping is on ground
     {
@@ -512,7 +504,7 @@ Pingu::draw_offset(int x, int y, float s) const
 	{
 	  CL_Surface* surf;
 	  
-	  if (tumbling) {
+	  if (is_tumbling ()) {
 	    surf = tumble;
 	  } else {
 	    surf = faller;
@@ -658,6 +650,21 @@ Pingu::apply_force(CL_Vector arg_v)
   velocity += arg_v;
   // Moving the pingu on pixel up, so that the force can take effect
   y_pos -= 1; 
+}
+
+bool
+Pingu::is_tumbling () const
+{
+  // If we are going fast enough to get smashed, start tumbling
+  if (fabs(velocity.x) > deadly_velocity
+      || fabs(velocity.y) > deadly_velocity)
+    {
+      return true;
+    }
+  else
+    {
+      return false;
+    }
 }
 
 /* EOF */

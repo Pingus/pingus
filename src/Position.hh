@@ -1,4 +1,4 @@
-//  $Id: Position.hh,v 1.2 2000/08/05 18:52:22 grumbel Exp $
+//  $Id: Position.hh,v 1.3 2000/12/04 23:12:12 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,8 @@
 #ifndef POSITION_HH
 #define POSITION_HH
 
+#include <iostream>
+
 class Position
 {
 public:
@@ -32,6 +34,8 @@ public:
   int y_pos; 
   int z_pos;
 };
+
+ostream& operator<<(ostream& s, const Position& pos);
 
 #endif
 

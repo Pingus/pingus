@@ -1,4 +1,4 @@
-//  $Id: blocker.hh,v 1.5 2000/06/18 17:01:50 grumbel Exp $
+//  $Id: blocker.hh,v 1.6 2000/12/04 23:12:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,14 +30,10 @@ private:
 public:
   ///
   Blocker();
-
-  ///
-  PinguAction* allocate(void);
-
   ///
   int   y_offset();
   ///
-  void  init(void);
+  void  init();
   ///
   void  let_move();
   ///

@@ -1,4 +1,4 @@
-//  $Id: SwitchDoor.hh,v 1.1 2000/11/17 21:50:57 grumbel Exp $
+//  $Id: SwitchDoor.hh,v 1.2 2000/12/04 23:12:13 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -87,11 +87,16 @@ public:
 class EditorSwitchDoorObj : public SwitchDoorData,
 			    public EditorWorldObj
 {
+private:
+  CL_Surface* door_box;
+  CL_Surface* door_tile;
+
 public:
   EditorSwitchDoorObj ();
   EditorSwitchDoorObj (WorldObjData* obj);
   virtual ~EditorSwitchDoorObj ();
 
+  virtual void draw_offset(int x_of, int y_of);
   static std::list<EditorObj*> create (WorldObjData* obj);
   virtual void save_xml (std::ofstream* xml);
   virtual std::string status_line();

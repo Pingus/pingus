@@ -1,4 +1,4 @@
-//  $Id: bomber.hh,v 1.5 2000/06/18 17:01:50 grumbel Exp $
+//  $Id: bomber.hh,v 1.6 2000/12/04 23:12:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,7 +22,8 @@
 
 #include "../PinguAction.hh"
 
-///
+/** An action with lets the Pingu explode. After the explosion the the
+    Pingu leaves a hole inside the ground. */
 class Bomber : public PinguAction
 {
 private:
@@ -39,7 +40,6 @@ private:
 public:
   ///
   Bomber();
-
   ///
   void   init(void);
   ///
@@ -47,11 +47,9 @@ public:
   ///
   void   let_move();
   ///
-  bool   can_reset() { return false; }///
-;
+  bool   can_reset() { return false; }
   ///
-  int    activation_time() { return 50; }///
-;
+  int    activation_time() { return 50; }
   ///
   PinguAction* allocate(void);
 }///

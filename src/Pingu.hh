@@ -1,4 +1,4 @@
-//  $Id: Pingu.hh,v 1.14 2000/08/03 19:12:26 grumbel Exp $
+//  $Id: Pingu.hh,v 1.15 2000/12/04 23:12:12 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,9 +25,10 @@
 #include "WorldObj.hh"
 #include "PinguMap.hh"
 #include "Direction.hh"
-#include "PinguAction.hh"
-#include "ActionHolder.hh"
+//#include "PinguAction.hh"
+//#include "ActionHolder.hh"
 #include "PinguEnums.hh"
+#include "AnimCounter.hh"
 
 ///
 class ActionHolder;
@@ -43,17 +44,24 @@ protected:
   PinguAction* sec_action;
   ///
   std::vector<PinguAction* > persist;
-  ///
-  int id;
 
+  /** The uniq id of the Pingu, this is used to refer to the Pingu in
+      a demo file or in a network connection */
+  int id;
+  
   ///
   static bool init;
+
+  /** @name surfaces that represent the Pingu in different situations */
+  //@{
   ///
   static CL_Surface* walker; 
   ///
   static CL_Surface* faller;
   ///
   static CL_Surface* tumble;
+  //@}
+
   ///
   static CL_Font* font;
   ///
@@ -80,9 +88,6 @@ public:
   int y_pos;
   ///
   int falling;
-  ///
-  bool tumbling;
-
   ///
   Pingu();
   ///
@@ -162,6 +167,9 @@ public:
   void do_falling();
   ///
   void do_walking();
+
+  /** Indicate if the pingu's speed is above the deadly velocity */
+  bool is_tumbling () const;
 
   ///
   bool   is_over(int x, int y);

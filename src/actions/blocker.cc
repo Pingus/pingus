@@ -1,4 +1,4 @@
-//  $Id: blocker.cc,v 1.6 2000/09/07 09:45:39 grumbel Exp $
+//  $Id: blocker.cc,v 1.7 2000/12/04 23:12:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,12 +25,6 @@
 
 Blocker::Blocker()
 {
-}
-
-PinguAction* 
-Blocker::allocate(void)
-{
-  return new Blocker();
 }
 
 void

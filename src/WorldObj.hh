@@ -1,4 +1,4 @@
-//  $Id: WorldObj.hh,v 1.8 2000/12/03 19:11:07 grumbel Exp $
+//  $Id: WorldObj.hh,v 1.9 2000/12/04 23:12:12 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,10 +20,11 @@
 #ifndef WORLDOBJ_HH
 #define WORLDOBJ_HH
 
-#include "WorldObjData.hh"
-#include "Position.hh"
+//#include "WorldObjData.hh"
+//#include "Position.hh"
 
 class World;
+class WorldObjData;
 
 /** All objects that act in the world should be derived from this
  *  class, it provides access to all the important data from the world.
@@ -84,9 +85,3 @@ public:
 #endif
 
 /* EOF */
-
-
-
-
-
-

@@ -1,4 +1,4 @@
-// $Id: EditorObj.cc,v 1.23 2000/11/17 19:09:21 grumbel Exp $
+// $Id: EditorObj.cc,v 1.24 2000/12/04 23:12:13 grumbel Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,6 +25,7 @@
 #include "../worldobjs/Teleporter.hh"
 #include "../worldobjs/IceBlock.hh"
 #include "../worldobjs/ConveyorBelt.hh"
+#include "../worldobjs/SwitchDoor.hh"
 #include "PSMObj.hh"
 #include "PLFObj.hh"
 #include "WeatherObj.hh"
@@ -65,7 +66,7 @@ EditorObj::init()
 
   is_init = true;
 
-  if (surf && width != -1 && height != -1)
+  if (surf && width == -1 && height == -1)
     {
       width = surf->get_width();
       height = surf->get_height();
@@ -138,6 +139,9 @@ EditorObj::create (WorldObjData* obj)
     objs = EditorIceBlockObj::create (dynamic_cast<IceBlockData*>(obj));
   else if (dynamic_cast<ConveyorBeltData*>(obj))
     objs = EditorConveyorBeltObj::create (dynamic_cast<ConveyorBeltData*>(obj));
+  else if (dynamic_cast<SwitchDoorData*>(obj))
+    objs = EditorSwitchDoorObj::create (dynamic_cast<SwitchDoorData*>(obj));
+
   else
     {
       std::cout << _("EditorObj: Warrning unknown WorldObjData pointer!") << std::endl;
@@ -290,6 +294,9 @@ EditorObj::gui_edit_obj()
   
 /*
 $Log: EditorObj.cc,v $
+Revision 1.24  2000/12/04 23:12:13  grumbel
+misc cleanup
+
 Revision 1.23  2000/11/17 19:09:21  grumbel
 fixed conveyor belt support in the editor
 

@@ -1,4 +1,4 @@
-//  $Id: PinguAction.cc,v 1.7 2000/08/03 10:31:17 grumbel Exp $
+//  $Id: PinguAction.cc,v 1.8 2000/12/04 23:12:12 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -146,12 +146,6 @@ int
 PinguAction::y_offset(void)
 {
   return -32;
-}
-
-PinguAction* 
-PinguAction::create(void)
-{
-  return allocate();
 }
 
 /* EOF */

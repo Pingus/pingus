@@ -1,4 +1,4 @@
-//  $Id: PingusMenu.cc,v 1.35 2000/11/14 22:22:55 grumbel Exp $
+//  $Id: PingusMenu.cc,v 1.36 2000/12/04 23:12:12 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,7 +43,7 @@ PingusMenu::PingusMenu()
 void
 PingusMenu::init ()
 {
-  bg         = PingusResource::load_surface("misc/logo_t", "core");
+  background         = PingusResource::load_surface("misc/logo_t", "core");
   //background = PingusResource::load_surface("menu/background", "core");
 
   layer_manager.add_layer (PingusResource::load_surface ("menu/layer1", "core"),  0, 0, 2, 0);
@@ -240,7 +240,6 @@ PingusMenu::Event::on_button_release(CL_InputDevice *device, const CL_Key &key)
 	      enabled = true;
 	    }
 	}
-  
     }
 }
 

@@ -1,4 +1,4 @@
-//  $Id: WorldObjData.cc,v 1.6 2000/11/15 20:58:36 grumbel Exp $
+//  $Id: WorldObjData.cc,v 1.7 2000/12/04 23:12:12 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #include "worldobjs/Teleporter.hh"
 #include "worldobjs/IceBlock.hh"
 #include "worldobjs/ConveyorBelt.hh"
+#include "worldobjs/SwitchDoor.hh"
 #include "WorldObjData.hh"
 
 WorldObjData* 
@@ -44,6 +45,8 @@ WorldObjData::create(xmlDocPtr doc, xmlNodePtr cur)
 	data = TrapData::create (doc, cur);
       else if (strcmp(type, "conveyorbelt") == 0)
 	data = ConveyorBeltData::create (doc, cur);
+      else if (strcmp(type, "switchdoor") == 0)
+	data = SwitchDoorData::create (doc, cur);
       else
 	{
 	  std::cout << "WorldObjData::create (): Unknown type: \"" << type << "\"" << std::endl;

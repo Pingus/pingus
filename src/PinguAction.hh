@@ -1,4 +1,4 @@
-//  $Id: PinguAction.hh,v 1.8 2000/08/03 10:31:17 grumbel Exp $
+//  $Id: PinguAction.hh,v 1.9 2000/12/04 23:12:12 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -76,9 +76,6 @@ protected:
   /// --- Static Variables ---
   static CL_ResourceManager* local_res_p;
 
-  /// Allocate a new action and return a pointer to it. 
-  virtual PinguAction* allocate(void) = 0;
-
 public:
   /** Indicate if the action should be canceled at the next possible
       point. Bug: Only keeped public for lazyness. */
@@ -88,9 +85,6 @@ public:
   PinguAction();
   ///
   virtual ~PinguAction();
-
-  /// Create a new action of the same type
-  virtual PinguAction* create(void);
 
   /// Gives the PinguAction class access to the data of the Pingu.
   void set_pingu(Pingu*);

@@ -1,4 +1,4 @@
-//  $Id: SwitchDoor.cc,v 1.1 2000/11/17 21:50:57 grumbel Exp $
+//  $Id: SwitchDoor.cc,v 1.2 2000/12/04 23:12:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -85,11 +85,11 @@ SwitchDoorData::create(xmlDocPtr doc, xmlNodePtr cur)
 		continue;
 	      }
 	      
-	      if (strcmp((char*)cur->name, "position") == 0)
+	      if (strcmp((char*)subcur->name, "position") == 0)
 		{
 		  data->door_pos = XMLhelper::parse_position (doc, subcur);
 		}
-	      else if (strcmp((char*)cur->name, "height") == 0)
+	      else if (strcmp((char*)subcur->name, "height") == 0)
 		{
 		  data->door_height = XMLhelper::parse_int (doc, subcur);
 		}
@@ -111,16 +111,16 @@ SwitchDoorData::create(xmlDocPtr doc, xmlNodePtr cur)
 
 SwitchDoor::SwitchDoor (WorldObjData* data)
 {
-  door_box = PingusResource::load_surface("switchdoor_box", "worldobjs");
-  door_tile = PingusResource::load_surface("switchdoor_tile", "worldobjs");
+  door_box   = PingusResource::load_surface("switchdoor_box", "worldobjs");
+  door_tile  = PingusResource::load_surface("switchdoor_tile", "worldobjs");
   switch_sur = PingusResource::load_surface("switchdoor_switch", "worldobjs");
   is_open = false;
 
   SwitchDoorData* switchdoor = dynamic_cast<SwitchDoorData*>(data);
 
   door_height = switchdoor->door_height;
-  door_pos = switchdoor->door_pos;
-  switch_pos = switchdoor->switch_pos;
+  door_pos    = switchdoor->door_pos;
+  switch_pos  = switchdoor->switch_pos;
 }
 
 SwitchDoor::~SwitchDoor ()
@@ -134,13 +134,13 @@ SwitchDoor::draw_colmap()
 }
 
 void
-SwitchDoor::draw_offset(int x, int y, float s = 1.0)
+SwitchDoor::draw_offset(int x_of, int y_of, float s = 1.0)
 {
-  door_box->put_screen (door_pos.x_pos, door_pos.y_pos);
+  door_box->put_screen (door_pos.x_pos + x_of, door_pos.y_pos + y_of);
   for (int i=0; i < door_height; i++)
-    door_tile->put_screen (door_pos.x_pos, door_pos.y_pos 
+    door_tile->put_screen (door_pos.x_pos + x_of, door_pos.y_pos + y_of 
 			   + i * door_tile->get_height ());
-  switch_sur->put_screen (switch_pos.x_pos, switch_pos.y_pos);
+  switch_sur->put_screen (switch_pos.x_pos + x_of, switch_pos.y_pos + y_of);
 }
 
 void
@@ -157,7 +157,12 @@ EditorSwitchDoorSwitchObj::EditorSwitchDoorSwitchObj (SwitchDoorData* data)
   SwitchDoorData* obj = dynamic_cast<SwitchDoorData*>(data);
   assert (obj);
 
+  surf = PingusResource::load_surface ("switchdoor_switch", "worldobjs");
+
   position = &obj->switch_pos;
+
+  width  = 100;
+  height = 100;
 }
 
 EditorSwitchDoorSwitchObj::~EditorSwitchDoorSwitchObj ()
@@ -185,11 +190,19 @@ EditorSwitchDoorObj::EditorSwitchDoorObj (WorldObjData* data)
   SwitchDoorData* obj = dynamic_cast<SwitchDoorData*>(data);
   assert (obj);
 
+  door_box   = PingusResource::load_surface("switchdoor_box", "worldobjs");
+  door_tile  = PingusResource::load_surface("switchdoor_tile", "worldobjs");
+
+  surf = door_box;
+
   door_pos  = obj->door_pos;
   switch_pos = obj->switch_pos;
   door_height = obj->door_height;
 
- position = &door_pos;
+  width  = 100;
+  height = 100;
+  
+  position = &door_pos;
 }
 
 EditorSwitchDoorObj::~EditorSwitchDoorObj ()
@@ -222,6 +235,15 @@ EditorSwitchDoorObj::status_line()
   return str;
 }
 
+void
+EditorSwitchDoorObj::draw_offset(int x_of, int y_of)
+{
+  door_box->put_screen (door_pos.x_pos + x_of, 
+			door_pos.y_pos + y_of);
 
+  for (int i = 0; i < door_height; i++)
+    door_tile->put_screen (door_pos.x_pos + x_of, 
+			   door_pos.y_pos + y_of + i * door_tile->get_height ());
+}
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: PingusMenu.hh,v 1.10 2000/10/30 16:17:50 grumbel Exp $
+//  $Id: PingusMenu.hh,v 1.11 2000/12/04 23:12:12 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -83,8 +83,6 @@ private:
   ///
   SurfaceButton* current_button;
   
-  ///
-  CL_Surface* bg;
   ///
   CL_Surface* background;
   ///
