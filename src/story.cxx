@@ -1,4 +1,4 @@
-//  $Id: story.cxx,v 1.19 2003/04/07 12:04:08 grumbel Exp $
+//  $Id: story.cxx,v 1.20 2003/04/07 12:14:03 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,7 +43,7 @@ Story::init_credits()
         "the world. Since the floe with which the Pingus traveled to the\n"
         "Tutorial Island isn't going to hold the whole way into the warmer\n"
         "climated regions the Pingus have to find something else to guide\n"
-        "there on there journey.\n")));
+        "there on their journey.\n")));
 
   credits.pages.push_back
     (StoryPage
@@ -58,14 +58,14 @@ Story::init_credits()
      (ResDescriptor("Story/credits3", "story"), 
       _("So the Pingus set out and constructed a some large floats, enough\n"
         "to carry them all. After also packaging up a bunch of provisions\n"
-        "they where prepared to finally start of there journey and leave\n"
+        "they where prepared to finally start of their journey and leave\n"
         "their familiar ground and entering the unknown parts of the\n"
         "world.\n")));
      
   credits.pages.push_back
     (StoryPage
      (ResDescriptor("Story/credits4", "story"), 
-      _("So the Pingus sat on there float, worrying whats to come and\n"
+      _("So the Pingus sat on their float, worrying whats to come and\n"
         "where to go, while floating into the sunset.\n"
         "\n"
         "To be continued...")));
@@ -113,8 +113,8 @@ Story::init_intro()
   intro.pages.push_back
     (StoryPage
      (ResDescriptor("Story/story4", "story"), 
-      _("And they picked you to lead them on there journey around the\n"
-        "world. Since the journey will be dangerous and difficult. Your\n"
+      _("And they picked you to lead them on their journey around the\n"
+        "world. Since the journey will be dangerous and difficult, your\n"
         "first goal is the Island of Mogorok, also know has Tutorial\n"
         "Island. According to the eldest, this island has always been the\n"
         "first stop of Pingus which where send out into the world.")));
@@ -124,8 +124,8 @@ Story::init_intro()
      (ResDescriptor("Story/story5", "story"), 
       _("The island consists of many regions which are ideally to train the\n"
         "abilities of the Pingus. The Pingus can train there their ability\n"
-        "to build bridges, climb, bash and all the rest of there talents\n"
-        "which they will surly need on there long and dangerous journey.")));
+        "to build bridges, climb, bash and all the rest of their talents\n"
+        "which they will surly need on their long and dangerous journey.")));
 
   intro.pages.push_back
     (StoryPage
@@ -139,8 +139,8 @@ Story::init_intro()
   intro.pages.push_back
     (StoryPage
      (ResDescriptor("Story/story6", "story"), 
-      _("Now that you and the Pingus have arrive at tutorial island it\n"
-        "is time to take over the command and begin your mission\n"
+      _("Now that you and the Pingus have arrived at tutorial island it\n"
+        "is time to take over the command and begin your mission.\n"
         "\n"
         "                                                  Good Luck!")));
 
