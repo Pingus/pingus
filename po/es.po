@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-04-05 15:53+0200\n"
+"POT-Creation-Date: 2004-04-09 01:07+0000\n"
 "PO-Revision-Date: 2003-04-21 14:09+0200\n"
 "Last-Translator: Giuseppe D'Aqui' <kumber@tiscalinet.it>\n"
 "Language-Team: Italiano\n"
@@ -95,7 +95,7 @@ msgstr "_Gracias por"
 msgid "_playing!"
 msgstr "_jugar!"
 
-#: src/editor/editor_event.cxx:595
+#: src/editor/editor_event.cxx:588
 msgid "Enter filename to save as:"
 msgstr "Escribe el nombre de archivo a grabar como:"
 
@@ -493,7 +493,6 @@ msgid "unknown"
 msgstr "desconocido"
 
 #: src/game_time.cxx:70
-#, c-format
 msgid "unlimited"
 msgstr "ilimitado"
 
@@ -519,25 +518,25 @@ msgstr "Cargando..."
 msgid "Loading finished. Press a mouse button to start the level"
 msgstr "Carga finalizada. Pulsa un botón del ratón para empezar."
 
-#: src/level_result.cxx:58
+#: src/level_result.cxx:61
 msgid "Results:"
 msgstr "Resultados:"
 
-#: src/level_result.cxx:64
+#: src/level_result.cxx:67
 #, c-format
 msgid "Pingus saved:   %3d/%3d"
 msgstr "Pingüinos salvados: %3d/%3d"
 
-#: src/level_result.cxx:69
+#: src/level_result.cxx:72
 #, fuzzy, c-format
 msgid "Pingus died:  %3d/%3d"
 msgstr "Pingüinos muertos: %3d/%3d"
 
-#: src/level_result.cxx:85
+#: src/level_result.cxx:88
 msgid "Press button to continue..."
 msgstr "Pulsa un botón del ratón para continuar..."
 
-#: src/level_result.cxx:99
+#: src/level_result.cxx:102
 msgid ""
 "As many Pingus escaped as entered the level. That's going to be hard to "
 "beat.... unless this game becomes pornographic."
@@ -545,19 +544,19 @@ msgstr ""
 "Han escapado tantos pingüinos como han entrado en éste nivel. Va a ser duro "
 "superarlo... a menos que éste juego se convierta en un festín"
 
-#: src/level_result.cxx:101
+#: src/level_result.cxx:104
 msgid "Very impressive indeed."
 msgstr "En dos palabras : im-presionante."
 
-#: src/level_result.cxx:103
+#: src/level_result.cxx:106
 msgid "Good work. Still room for improvement though."
 msgstr "Buen trabajo... Pero puede hacerse mejor me parece."
 
-#: src/level_result.cxx:105
+#: src/level_result.cxx:108
 msgid "Not too shabby, not too shabby at all."
 msgstr "No está mal del todo, no está mal."
 
-#: src/level_result.cxx:107
+#: src/level_result.cxx:110
 msgid ""
 "That was OK, but Pingu life insurance premiums have just gotten more "
 "expensive."
@@ -565,23 +564,23 @@ msgstr ""
 "Bien, pero las aseguranzas de vida de los pingüinos se han revalorizado al "
 "alza."
 
-#: src/level_result.cxx:109
+#: src/level_result.cxx:112
 msgid "Maybe this level calls for a different strategy."
 msgstr "Quizá éste nivel requiere una estrategia diferente."
 
-#: src/level_result.cxx:111
+#: src/level_result.cxx:114
 msgid "Exactly half. Are you saving only the female ones?"
 msgstr "Exactamente la mitad. ¿Estás salvando solamente a las chicas?"
 
-#: src/level_result.cxx:113
+#: src/level_result.cxx:116
 msgid "If I were a Pingu, I never would have left that entrance."
 msgstr "Si yo fuese un pingüino, jamás habría abandonado esa entrada."
 
-#: src/level_result.cxx:115
+#: src/level_result.cxx:118
 msgid "Maybe you would feel more at home playing Quake."
 msgstr "Quizá te sentirias mejor jugando al Quake..."
 
-#: src/level_result.cxx:117
+#: src/level_result.cxx:120
 msgid ""
 "Maybe this level calls for a different strategy. Like attempting to save "
 "them, for example."
@@ -589,19 +588,19 @@ msgstr ""
 "Quizá éste nivel requiere una estrategia distinta. Cómo intentar salvarlos a "
 "todos, por ejemplo."
 
-#: src/level_result.cxx:119
+#: src/level_result.cxx:122
 msgid "Ever considered a career as a Pingu exterminator?"
 msgstr "¿Nunca te has planteado hacer carrera como exterminador de pingüinos?"
 
-#: src/level_result.cxx:121
+#: src/level_result.cxx:124
 msgid "You missed one! What's your excuse!?"
 msgstr "¡Te has dejado uno! ¿!¿Cómo lo explicas?!?"
 
-#: src/level_result.cxx:123
+#: src/level_result.cxx:126
 msgid "Please reassure me that you hit the Armageddon button."
 msgstr "Porfa asegúrame que le has dado al botón de Armageddon"
 
-#: src/level_result.cxx:125
+#: src/level_result.cxx:128
 msgid "You've got a negative save/total value, something is buggy."
 msgstr ""
 "I Pingus da salvare sono più che nel totale, qualcosa non va.Tu relación de "

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Pingus 0.6.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-04-05 15:53+0200\n"
+"POT-Creation-Date: 2004-04-09 01:07+0000\n"
 "PO-Revision-Date: 2003-04-23 22:26+0200\n"
 "Last-Translator: Jan Morén <jan.moren@lucs.lu.se>\n"
 "Language-Team: sv <jan.moren@lucs.lu.se>\n"
@@ -95,7 +95,7 @@ msgstr "_Tack för att"
 msgid "_playing!"
 msgstr "_du spelar!"
 
-#: src/editor/editor_event.cxx:595
+#: src/editor/editor_event.cxx:588
 msgid "Enter filename to save as:"
 msgstr "Ange filnamn att spara som:"
 
@@ -491,7 +491,6 @@ msgid "unknown"
 msgstr "okänd"
 
 #: src/game_time.cxx:70
-#, c-format
 msgid "unlimited"
 msgstr "obegränsad"
 
@@ -517,25 +516,25 @@ msgstr "Läser..."
 msgid "Loading finished. Press a mouse button to start the level"
 msgstr "Inläsning klar. Tryck på en musknapp för att starta nivån"
 
-#: src/level_result.cxx:58
+#: src/level_result.cxx:61
 msgid "Results:"
 msgstr "Resultat:"
 
-#: src/level_result.cxx:64
+#: src/level_result.cxx:67
 #, c-format
 msgid "Pingus saved:   %3d/%3d"
 msgstr "Räddade Pingus: %3d/%3d"
 
-#: src/level_result.cxx:69
+#: src/level_result.cxx:72
 #, fuzzy, c-format
 msgid "Pingus died:  %3d/%3d"
 msgstr "Dödade Pingus: %3d/%3d"
 
-#: src/level_result.cxx:85
+#: src/level_result.cxx:88
 msgid "Press button to continue..."
 msgstr "Tryck på en knapp..."
 
-#: src/level_result.cxx:99
+#: src/level_result.cxx:102
 msgid ""
 "As many Pingus escaped as entered the level. That's going to be hard to "
 "beat.... unless this game becomes pornographic."
@@ -543,41 +542,41 @@ msgstr ""
 "Lika många Pingus räddades som kom in på nivån. Det kommer att bli svårt att "
 "slå.... om inte spelet blir pornografiskt."
 
-#: src/level_result.cxx:101
+#: src/level_result.cxx:104
 msgid "Very impressive indeed."
 msgstr "Verkligen imponerande"
 
-#: src/level_result.cxx:103
+#: src/level_result.cxx:106
 msgid "Good work. Still room for improvement though."
 msgstr "Bra gjort. Det finns dock fortfarande utrymme för förbättringar."
 
-#: src/level_result.cxx:105
+#: src/level_result.cxx:108
 msgid "Not too shabby, not too shabby at all."
 msgstr "Inte dåligt, inte dåligt alls."
 
-#: src/level_result.cxx:107
+#: src/level_result.cxx:110
 msgid ""
 "That was OK, but Pingu life insurance premiums have just gotten more "
 "expensive."
 msgstr "Det var okej, men Pingus försäkringspremier gick just upp."
 
-#: src/level_result.cxx:109
+#: src/level_result.cxx:112
 msgid "Maybe this level calls for a different strategy."
 msgstr "Den här nivån kräver kanske en annan strategi."
 
-#: src/level_result.cxx:111
+#: src/level_result.cxx:114
 msgid "Exactly half. Are you saving only the female ones?"
 msgstr "Precis hälften. Räddar du bara honorna?"
 
-#: src/level_result.cxx:113
+#: src/level_result.cxx:116
 msgid "If I were a Pingu, I never would have left that entrance."
 msgstr "Hade jag varit en Pingu hade jag aldrig lämnat ingången."
 
-#: src/level_result.cxx:115
+#: src/level_result.cxx:118
 msgid "Maybe you would feel more at home playing Quake."
 msgstr "Kanske är du mera hemma med Quake."
 
-#: src/level_result.cxx:117
+#: src/level_result.cxx:120
 msgid ""
 "Maybe this level calls for a different strategy. Like attempting to save "
 "them, for example."
@@ -585,19 +584,19 @@ msgstr ""
 "Den här nivån kräver anske en annan strategi. Som att försöka rädda dom, "
 "till exempel."
 
-#: src/level_result.cxx:119
+#: src/level_result.cxx:122
 msgid "Ever considered a career as a Pingu exterminator?"
 msgstr "Du har inte funderat på en karriär som Pingu-utrotare?"
 
-#: src/level_result.cxx:121
+#: src/level_result.cxx:124
 msgid "You missed one! What's your excuse!?"
 msgstr "Du missade en! Vad har du för ursäkt!?"
 
-#: src/level_result.cxx:123
+#: src/level_result.cxx:126
 msgid "Please reassure me that you hit the Armageddon button."
 msgstr "Snälla säg att du använde Armageddon-knappen."
 
-#: src/level_result.cxx:125
+#: src/level_result.cxx:128
 msgid "You've got a negative save/total value, something is buggy."
 msgstr "Du har negativ räddad/totalt-värde, någonting är trasigt."
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-04-05 15:53+0200\n"
+"POT-Creation-Date: 2004-04-09 01:07+0000\n"
 "PO-Revision-Date: 2003-08-21 18:29+0300\n"
 "Last-Translator: Jarno Elonen <elonen@iki.fi>\n"
 "Language-Team: Finnish <elonen@iki.fi>\n"
@@ -97,7 +97,7 @@ msgstr "_Kiitos sinulle"
 msgid "_playing!"
 msgstr "_pelaamisesta!"
 
-#: src/editor/editor_event.cxx:595
+#: src/editor/editor_event.cxx:588
 msgid "Enter filename to save as:"
 msgstr "Tallennettavan tiedoston nimi:"
 
@@ -491,7 +491,6 @@ msgid "unknown"
 msgstr "tuntematon"
 
 #: src/game_time.cxx:70
-#, c-format
 msgid "unlimited"
 msgstr "rajaton"
 
@@ -517,25 +516,25 @@ msgstr "Ladataan..."
 msgid "Loading finished. Press a mouse button to start the level"
 msgstr "Lataus valmis. Aloita kenttä painamalla hiiren nappia."
 
-#: src/level_result.cxx:58
+#: src/level_result.cxx:61
 msgid "Results:"
 msgstr "Tulokset:"
 
-#: src/level_result.cxx:64
+#: src/level_result.cxx:67
 #, c-format
 msgid "Pingus saved:   %3d/%3d"
 msgstr "Pelastettuja:   %3d/%3d"
 
-#: src/level_result.cxx:69
+#: src/level_result.cxx:72
 #, c-format
 msgid "Pingus died:  %3d/%3d"
 msgstr "Kuolleita:  %3d/%3d"
 
-#: src/level_result.cxx:85
+#: src/level_result.cxx:88
 msgid "Press button to continue..."
 msgstr "Paina nappia jatkaaksesi..."
 
-#: src/level_result.cxx:99
+#: src/level_result.cxx:102
 msgid ""
 "As many Pingus escaped as entered the level. That's going to be hard to "
 "beat.... unless this game becomes pornographic."
@@ -543,19 +542,19 @@ msgstr ""
 "Yhtä monta pingua selvisi kuin meni sisään. Siitä on vaikea panna "
 "paremmaksi.... ellei peli sitten muutu pornografiseksi."
 
-#: src/level_result.cxx:101
+#: src/level_result.cxx:104
 msgid "Very impressive indeed."
 msgstr "Hyvin vaikuttavaa, etten sanoisi."
 
-#: src/level_result.cxx:103
+#: src/level_result.cxx:106
 msgid "Good work. Still room for improvement though."
 msgstr "Hyvää työtä, tosin parantamisen varaakin vielä on."
 
-#: src/level_result.cxx:105
+#: src/level_result.cxx:108
 msgid "Not too shabby, not too shabby at all."
 msgstr "Eipä yhtään hullummin."
 
-#: src/level_result.cxx:107
+#: src/level_result.cxx:110
 msgid ""
 "That was OK, but Pingu life insurance premiums have just gotten more "
 "expensive."
@@ -563,23 +562,23 @@ msgstr ""
 "Ihan kohtuullinen suoritus, mutta pingujen henkivakuutukset kallistuivat "
 "juuri yllättävästi..."
 
-#: src/level_result.cxx:109
+#: src/level_result.cxx:112
 msgid "Maybe this level calls for a different strategy."
 msgstr "Ehkä kenttä ratkeaisi paremmin jollain toisella strategialla."
 
-#: src/level_result.cxx:111
+#: src/level_result.cxx:114
 msgid "Exactly half. Are you saving only the female ones?"
 msgstr "Tasan puolet. Pelastatko vain naaraat vai mistä on kyse?"
 
-#: src/level_result.cxx:113
+#: src/level_result.cxx:116
 msgid "If I were a Pingu, I never would have left that entrance."
 msgstr "Jos olisin pingu, en olisi ikinä päässyt uloskäynnille saakka."
 
-#: src/level_result.cxx:115
+#: src/level_result.cxx:118
 msgid "Maybe you would feel more at home playing Quake."
 msgstr "Ehkä Quake sopisi sinulle paremmin."
 
-#: src/level_result.cxx:117
+#: src/level_result.cxx:120
 msgid ""
 "Maybe this level calls for a different strategy. Like attempting to save "
 "them, for example."
@@ -587,19 +586,19 @@ msgstr ""
 "Kenttä ratkeaisi ehkä paremmin jollain toisella strategialla - vaikkapa edes "
 "yrittämällä pelastaa ne?"
 
-#: src/level_result.cxx:119
+#: src/level_result.cxx:122
 msgid "Ever considered a career as a Pingu exterminator?"
 msgstr "Oletko harkinnut uraa pinguntorjujana?"
 
-#: src/level_result.cxx:121
+#: src/level_result.cxx:124
 msgid "You missed one! What's your excuse!?"
 msgstr "Yksi jäi listimättä! Mikä on tekosyysi!?"
 
-#: src/level_result.cxx:123
+#: src/level_result.cxx:126
 msgid "Please reassure me that you hit the Armageddon button."
 msgstr "Painoit varmaan joukkotuhonappia, eikö? Sovitaan niin, jooko?"
 
-#: src/level_result.cxx:125
+#: src/level_result.cxx:128
 msgid "You've got a negative save/total value, something is buggy."
 msgstr ""
 "Onnistuit saamaan negatiivisen tuloksen, pelissä on luultavasti jotain vikaa."

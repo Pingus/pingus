@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cs\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-04-05 15:53+0200\n"
+"POT-Creation-Date: 2004-04-09 01:07+0000\n"
 "PO-Revision-Date: 2003-04-15 21:05+0200\n"
 "Last-Translator: Tomáš Bláha\n"
 "Language-Team: czech\n"
@@ -104,7 +104,7 @@ msgstr "_Dekujme Vam,"
 msgid "_playing!"
 msgstr "_ze jste si zahrali!"
 
-#: src/editor/editor_event.cxx:595
+#: src/editor/editor_event.cxx:588
 msgid "Enter filename to save as:"
 msgstr "Zadejte jmeno pro ulozeni:"
 
@@ -500,7 +500,6 @@ msgid "unknown"
 msgstr "neznamy"
 
 #: src/game_time.cxx:70
-#, c-format
 msgid "unlimited"
 msgstr "neomezeny"
 
@@ -526,25 +525,25 @@ msgstr "Nahravam..."
 msgid "Loading finished. Press a mouse button to start the level"
 msgstr "Nahrano. Spustis zmacknutim mysiho tlacitka."
 
-#: src/level_result.cxx:58
+#: src/level_result.cxx:61
 msgid "Results:"
 msgstr "Vysledky:"
 
-#: src/level_result.cxx:64
+#: src/level_result.cxx:67
 #, c-format
 msgid "Pingus saved:   %3d/%3d"
 msgstr "Pingu zachraneno:   %3d/%3d"
 
-#: src/level_result.cxx:69
+#: src/level_result.cxx:72
 #, fuzzy, c-format
 msgid "Pingus died:  %3d/%3d"
 msgstr "Pingu zabito:  %3d/%3d"
 
-#: src/level_result.cxx:85
+#: src/level_result.cxx:88
 msgid "Press button to continue..."
 msgstr "Pro pokracovani zmacknete tlacitko..."
 
-#: src/level_result.cxx:99
+#: src/level_result.cxx:102
 msgid ""
 "As many Pingus escaped as entered the level. That's going to be hard to "
 "beat.... unless this game becomes pornographic."
@@ -552,59 +551,59 @@ msgstr ""
 "Zachranil jsi vsechny pingy. To bude tezke prekonat... pokud se hra nestane "
 "pornografickou."
 
-#: src/level_result.cxx:101
+#: src/level_result.cxx:104
 msgid "Very impressive indeed."
 msgstr "Velmi dobre."
 
-#: src/level_result.cxx:103
+#: src/level_result.cxx:106
 msgid "Good work. Still room for improvement though."
 msgstr "Dobra prace. Stale jeste ale lze zlepsovat."
 
-#: src/level_result.cxx:105
+#: src/level_result.cxx:108
 msgid "Not too shabby, not too shabby at all."
 msgstr "Priste by si se mel vice snazit."
 
-#: src/level_result.cxx:107
+#: src/level_result.cxx:110
 msgid ""
 "That was OK, but Pingu life insurance premiums have just gotten more "
 "expensive."
 msgstr "No celkem to uslo. Jen, ze asi prave pingum podrazily zivotni pojisty."
 
-#: src/level_result.cxx:109
+#: src/level_result.cxx:112
 msgid "Maybe this level calls for a different strategy."
 msgstr "Mozna by to chtelo jinou strategii."
 
-#: src/level_result.cxx:111
+#: src/level_result.cxx:114
 msgid "Exactly half. Are you saving only the female ones?"
 msgstr "Presne polovina. Zachranoval jsi jen samicky?"
 
-#: src/level_result.cxx:113
+#: src/level_result.cxx:116
 msgid "If I were a Pingu, I never would have left that entrance."
 msgstr "Kdybych byl pingem, nevysel bych ze vchodu."
 
-#: src/level_result.cxx:115
+#: src/level_result.cxx:118
 msgid "Maybe you would feel more at home playing Quake."
 msgstr "Treba by si radeji hral Quake."
 
-#: src/level_result.cxx:117
+#: src/level_result.cxx:120
 msgid ""
 "Maybe this level calls for a different strategy. Like attempting to save "
 "them, for example."
 msgstr "Mozna by to chtelo jinou strategii. Treba se pokusit nekoho zachranit."
 
-#: src/level_result.cxx:119
+#: src/level_result.cxx:122
 msgid "Ever considered a career as a Pingu exterminator?"
 msgstr "Uz jsi zvazoval karieru hubice pingu?"
 
-#: src/level_result.cxx:121
+#: src/level_result.cxx:124
 msgid "You missed one! What's your excuse!?"
 msgstr "Skoro, az na jednoho. Jakou mas pro to omluvu?"
 
-#: src/level_result.cxx:123
+#: src/level_result.cxx:126
 msgid "Please reassure me that you hit the Armageddon button."
 msgstr "To urcite byl vysledek pouziti tlacitka armagedon, nebo snad ne?!"
 
-#: src/level_result.cxx:125
+#: src/level_result.cxx:128
 msgid "You've got a negative save/total value, something is buggy."
 msgstr "Ziskal jsi zaporny pocet zachranenych/celkem, nekde je chyba."
 

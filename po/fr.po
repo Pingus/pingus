@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Pingus 0.6.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-04-05 15:53+0200\n"
-"PO-Revision-Date: 2003-04-16 01:50+0200\n"
+"POT-Creation-Date: 2004-04-09 01:07+0000\n"
+"PO-Revision-Date: 2004-04-08 01:50+0200\n"
 "Last-Translator: Philippe Saint-Pierre <stpere@linuxmail.org>\n"
 "Language-Team: David Philippi <david@torangan.de>, Ingo Ruhnke <grumbel@gmx."
 "de>, Giray Devlet <giray@devlet.cc>\n"
@@ -25,7 +25,7 @@ msgstr "Caractère inattendu: '"
 
 #: src/config.cxx:206
 msgid "Unexpected char '"
-msgstr "Caractère inattendu: '"
+msgstr "Caractère inattendu '"
 
 #: src/credits.cxx:48
 msgid "-Idea"
@@ -77,7 +77,7 @@ msgstr "_Et un merci spécial"
 
 #: src/credits.cxx:155
 msgid "_to all the people who"
-msgstr "_a tout ceux qui"
+msgstr "_à tout ceux qui"
 
 #: src/credits.cxx:156
 msgid "_contribute to"
@@ -89,19 +89,19 @@ msgstr "_aux logiciels libres!"
 
 #: src/credits.cxx:163
 msgid "_Thank you for"
-msgstr "_Merci de"
+msgstr "_Merci"
 
 #: src/credits.cxx:164
 msgid "_playing!"
-msgstr "_jouer!"
+msgstr "_d'avoir joué!"
 
-#: src/editor/editor_event.cxx:595
+#: src/editor/editor_event.cxx:588
 msgid "Enter filename to save as:"
-msgstr "Donnez le nom de fichier de sauvegarde: "
+msgstr "Le nom du fichier de sauvegarde: "
 
 #: src/editor/editor_help_screen.cxx:43
 msgid "Editor Helpscreen (hide with F1)"
-msgstr "Écran d'aide de l'éditeur (cacher avec F1)"
+msgstr "Écran d'aide de l'éditeur (cachez avec F1)"
 
 #: src/editor/editor_help_screen.cxx:51
 msgid "F1 - show/hide this help screen"
@@ -109,11 +109,11 @@ msgstr "F1 - montre/cache cet écran d'aide"
 
 #: src/editor/editor_help_screen.cxx:52
 msgid "F2 - launch level building tutorial"
-msgstr "F2 - lance le didatictiel de l'éditeur de niveau"
+msgstr "F2 - lance le tutoriel de création de niveau"
 
 #: src/editor/editor_help_screen.cxx:53
 msgid "F3 - toggle background color"
-msgstr "F3 - active/désactive la couleur d'arrière-plan"
+msgstr "F3 - active/désactive la couleur de fond"
 
 #: src/editor/editor_help_screen.cxx:54
 msgid "F4 - play/test the level"
@@ -121,7 +121,7 @@ msgstr "F4 - jouer/tester le niveau"
 
 #: src/editor/editor_help_screen.cxx:55
 msgid "F5 - load a level"
-msgstr "F5 - lancer un niveau"
+msgstr "F5 - charger un niveau"
 
 #: src/editor/editor_help_screen.cxx:56
 msgid "F6 - save this level"
@@ -137,7 +137,7 @@ msgstr "F8 - sauvegarde rapide/copie de secours?!"
 
 #: src/editor/editor_help_screen.cxx:59
 msgid "F9 - change level width and height"
-msgstr "F9 - changement de la hauteur et largeur du niveau"
+msgstr "F9 - change la hauteur et la largeur du niveau"
 
 #: src/editor/editor_help_screen.cxx:60
 msgid "F10 - [unset]"
@@ -157,7 +157,7 @@ msgstr "Début - aggrandir un objet"
 
 #: src/editor/editor_help_screen.cxx:67
 msgid "End  - decrease object size"
-msgstr "Fin - rapetisser un objet"
+msgstr "Fin - réduire un objet"
 
 #: src/editor/editor_help_screen.cxx:68
 msgid "Cursor Keys - Move object"
@@ -189,11 +189,11 @@ msgstr "Entrée - Définir le zoom par défaut (1:1)"
 
 #: src/editor/editor_help_screen.cxx:75
 msgid "d - duplicate object"
-msgstr "d - dédoubler un objet"
+msgstr "d - reproduire un objet"
 
 #: src/editor/editor_help_screen.cxx:76
 msgid "a - mark all objects"
-msgstr "a - marque tout les objets"
+msgstr "a - marquer tous les objets"
 
 #: src/editor/editor_help_screen.cxx:77
 msgid "shift leftmouseclick - add object to selection"
@@ -224,9 +224,8 @@ msgid "Ctrl PageDown - decrease objects z-pos by 1"
 msgstr "Ctrl + PageSuiv - réduire la profondeur de 1 unité"
 
 #: src/editor/editor_help_screen.cxx:89
-#, fuzzy
 msgid "Naming Convention: <LEVELNAME><NUMBER>-<CREATOR>.plf"
-msgstr "Convention de l'appellation: <NOM NIVEAU><NOMBRE>-<AUTEUR>.xml"
+msgstr "Convention de l'appellation: <NOM NIVEAU><NOMBRE>-<AUTEUR>.plf"
 
 #: src/editor/editor_help_screen.cxx:91
 msgid ""
@@ -428,9 +427,8 @@ msgid "Save this level (F6)"
 msgstr "Sauvegarde de ce niveau (F6)"
 
 #: src/editor/panel_icons.cxx:70
-#, fuzzy
 msgid "Delete marked objects (delete)"
-msgstr "Supprimer les éléments marqués (Suppr)"
+msgstr "Efface les éléments marqués (Suppr)"
 
 #: src/editor/panel_icons.cxx:82
 msgid "Duplicate current object (d)"
@@ -493,7 +491,6 @@ msgid "unknown"
 msgstr "inconnu"
 
 #: src/game_time.cxx:70
-#, c-format
 msgid "unlimited"
 msgstr "illimité"
 
@@ -520,89 +517,89 @@ msgid "Loading finished. Press a mouse button to start the level"
 msgstr ""
 "Chargement terminé. Appuyez sur un bouton de la souris pour débuter le niveau"
 
-#: src/level_result.cxx:58
+#: src/level_result.cxx:61
 msgid "Results:"
 msgstr "Résultats:"
 
-#: src/level_result.cxx:64
+#: src/level_result.cxx:67
 #, c-format
 msgid "Pingus saved:   %3d/%3d"
 msgstr "Pingus sauvés: %3d/%3d"
 
-#: src/level_result.cxx:69
-#, fuzzy, c-format
+#: src/level_result.cxx:72
+#, c-format
 msgid "Pingus died:  %3d/%3d"
 msgstr "Pingus tués: %3d/%3d"
 
-#: src/level_result.cxx:85
+#: src/level_result.cxx:88
 msgid "Press button to continue..."
 msgstr "Appuyer sur le bouton pour continuer..."
 
-#: src/level_result.cxx:99
+#: src/level_result.cxx:102
 msgid ""
 "As many Pingus escaped as entered the level. That's going to be hard to "
 "beat.... unless this game becomes pornographic."
 msgstr ""
 "Autant de Pingus en sont sortis qu'il n'y en a d'entrés. Cela ve être "
-"vraiment dur à battre... a moins que le jeu ne devienne pornographique."
+"vraiment dur à battre... à moins que le jeu ne devienne pornographique."
 
-#: src/level_result.cxx:101
+#: src/level_result.cxx:104
 msgid "Very impressive indeed."
 msgstr "Très impressionant en fait."
 
-#: src/level_result.cxx:103
+#: src/level_result.cxx:106
 msgid "Good work. Still room for improvement though."
-msgstr "Bon travail.  Il y a tout de même place a amélioration!"
+msgstr "Bon travail.  Il y a tout de même place à amélioration!"
 
-#: src/level_result.cxx:105
+#: src/level_result.cxx:108
 msgid "Not too shabby, not too shabby at all."
 msgstr "Pas mal, pas mal du tout!"
 
-#: src/level_result.cxx:107
+#: src/level_result.cxx:110
 msgid ""
 "That was OK, but Pingu life insurance premiums have just gotten more "
 "expensive."
 msgstr ""
 "C'est acceptable, par contre les primes d'assurance vie Pingu sont maintant "
-"plusdispendieuses."
+"plus dispendieuses."
 
-#: src/level_result.cxx:109
+#: src/level_result.cxx:112
 msgid "Maybe this level calls for a different strategy."
 msgstr "Peut-être que ce niveau demande une approche différente."
 
-#: src/level_result.cxx:111
+#: src/level_result.cxx:114
 msgid "Exactly half. Are you saving only the female ones?"
 msgstr "Exactement la moitié! Avez-vous sauvé uniquement les filles?"
 
-#: src/level_result.cxx:113
+#: src/level_result.cxx:116
 msgid "If I were a Pingu, I never would have left that entrance."
 msgstr "Si j'étais un Pingu, je n'aurais jamais franchi cette porte."
 
-#: src/level_result.cxx:115
+#: src/level_result.cxx:118
 msgid "Maybe you would feel more at home playing Quake."
 msgstr "Peut-être êtes-vous plus comfortable dans une partie de Quake?"
 
-#: src/level_result.cxx:117
+#: src/level_result.cxx:120
 msgid ""
 "Maybe this level calls for a different strategy. Like attempting to save "
 "them, for example."
 msgstr ""
 "Peut-être ce niveau demande une approche différente.  Comme tenter de les "
-"sauver , par exemple."
+"sauver, par exemple."
 
-#: src/level_result.cxx:119
+#: src/level_result.cxx:122
 msgid "Ever considered a career as a Pingu exterminator?"
 msgstr "Vous avez pensé devenir un exterminateur de Pingu?"
 
-#: src/level_result.cxx:121
+#: src/level_result.cxx:124
 msgid "You missed one! What's your excuse!?"
 msgstr "Vous en avez manqué un! Quelle est votre excuse!?"
 
-#: src/level_result.cxx:123
+#: src/level_result.cxx:126
 msgid "Please reassure me that you hit the Armageddon button."
 msgstr "Rassurez-moi, vous avez appuyé sur le bouton Armageddon?"
 
-#: src/level_result.cxx:125
+#: src/level_result.cxx:128
 msgid "You've got a negative save/total value, something is buggy."
 msgstr "Vous avez obtenu un score négatif, quelque chose ne vas pas."
 
@@ -668,16 +665,15 @@ msgstr "Multi"
 
 #: src/pingu_enums.cxx:35
 msgid "Angel"
-msgstr ""
+msgstr "Ange"
 
 #: src/pingu_enums.cxx:36
 msgid "Basher"
-msgstr ""
+msgstr "Défonsseur"
 
 #: src/pingu_enums.cxx:37
-#, fuzzy
 msgid "Blocker"
-msgstr "vérouillé"
+msgstr "Bloqueur"
 
 #: src/pingu_enums.cxx:38
 msgid "Boarder"
@@ -685,87 +681,84 @@ msgstr ""
 
 #: src/pingu_enums.cxx:39
 msgid "Bomber"
-msgstr ""
+msgstr "Démolisseur"
 
 #: src/pingu_enums.cxx:40
 msgid "Bridger"
-msgstr ""
+msgstr "Charpentier"
 
 #: src/pingu_enums.cxx:41
 msgid "Climber"
-msgstr ""
+msgstr "Grimpeur"
 
 #: src/pingu_enums.cxx:42
 msgid "Digger"
-msgstr ""
+msgstr "Creuseur"
 
 #: src/pingu_enums.cxx:43
 msgid "Drown"
-msgstr ""
+msgstr "Noyé"
 
 #: src/pingu_enums.cxx:44
-#, fuzzy
 msgid "Exiter"
-msgstr "Quitter"
+msgstr "Sorteur"
 
 #: src/pingu_enums.cxx:45
 msgid "Faller"
-msgstr ""
+msgstr "Tombeur"
 
 #: src/pingu_enums.cxx:46
 msgid "Floater"
-msgstr ""
+msgstr "Flotteur"
 
 #: src/pingu_enums.cxx:47
-#, fuzzy
 msgid "Jumper"
-msgstr "7 - Trampoline"
+msgstr "Sauteur"
 
 #: src/pingu_enums.cxx:48
 msgid "Laserkill"
-msgstr ""
+msgstr "Brûlé au laser"
 
 #: src/pingu_enums.cxx:49
 msgid "Miner"
-msgstr ""
+msgstr "Mineur"
 
 #: src/pingu_enums.cxx:50
 msgid "Rocketlauncher"
-msgstr ""
+msgstr "Lanceur de roquette"
 
 #: src/pingu_enums.cxx:51
 msgid "Slider"
-msgstr ""
+msgstr "Glisseur"
 
 #: src/pingu_enums.cxx:52
 msgid "Smashed"
-msgstr ""
+msgstr "Écrasé"
 
 #: src/pingu_enums.cxx:53
 msgid "Splashed"
-msgstr ""
+msgstr "Éclaboussé"
 
 #: src/pingu_enums.cxx:54
 msgid "Superman"
-msgstr ""
+msgstr "Superman"
 
 #: src/pingu_enums.cxx:55
-#, fuzzy
 msgid "Teleported"
-msgstr "1 - Téléporteur"
+msgstr "Téléporté"
 
 #: src/pingu_enums.cxx:56
 msgid "Waiter"
-msgstr ""
+msgstr "Patienteur"
 
 #: src/pingu_enums.cxx:57
 msgid "Walker"
-msgstr ""
+msgstr "Marcheur"
 
 #: src/pingus_counter.cxx:52
 #, c-format
 msgid "Released:%3d/%-3d   Out:%3d   Saved:%3d/%-3d"
-msgstr "Relachés: %3d/%-3d  Sortis: %3d Sauvés: %3d/%-3d"
+msgstr "Relachés:%3d/%-3d  Sortis:%3d Sauvés:%3d/%-3d"
 
 #: src/pingus_main.cxx:90
 msgid "| segfault_handler: catched a SIGSEGV."
@@ -1110,8 +1103,8 @@ msgid ""
 "You saved exactly what you needed - you made it, but\n"
 "maybe you can do better?"
 msgstr ""
-"Vous avez sauvé juste ce qui était requis, vous avez réussi, maispouvez-vous "
-"faire mieux?"
+"Vous avez sauvé juste ce qui était requis, vous avez réussi, mais pouvez-"
+"vous faire mieux?"
 
 #: src/result_screen.cxx:198
 msgid "Not everybody was saved, but still good work!"
@@ -1155,9 +1148,8 @@ msgid "Saved: "
 msgstr "Sauvés: "
 
 #: src/result_screen.cxx:236
-#, fuzzy
 msgid "Died: "
-msgstr "Tués: "
+msgstr "Perdus: "
 
 #: src/result_screen.cxx:240
 msgid "Time left: "
@@ -1217,7 +1209,6 @@ msgid "The Journey Continues"
 msgstr "L'Aventure Continue"
 
 #: src/story.cxx:46
-#, fuzzy
 msgid ""
 "Now after you and the Pingus have learned the basics and\n"
 "practiced a bit it is time to move on and begin the journey into\n"
@@ -1226,12 +1217,12 @@ msgid ""
 "climates the Pingus have to find something else to guide\n"
 "them on their journey.\n"
 msgstr ""
-"Maintenant que vous et les Pingus avez appris les bases et pratiqué\n"
-"un peu, le moment est venu de tourner la page et de débuter votre\n"
-"aventure dans le monde. Puisque le glacier qui vous avait conduis\n"
-"jusqu'à l'Ile des Apprentissages ne vas pas tenir le coup dans les\n"
-"régions chaudes, les Pingus doivent trouver un autre moyen de pour\n"
-"les guider dans leur aventure.\n"
+"Maintenant que vous et les Pingus avez appris les bases et\n"
+"pratiqué un peu, le moment est venu de débuter votre aventure dans\n"
+"le monde. Puisque le glacier sur lequel vous aviez voyagé jusqu'à\n"
+"l'Ile des Apprentissages ne vas pas tenir le coup dans les régions\n"
+"chaudes, les Pingus doivent trouver quelque chose d'autre pour les\n"
+"guider dans leur périple.\n"
 
 #: src/story.cxx:58
 msgid ""
@@ -1256,7 +1247,7 @@ msgid ""
 msgstr ""
 "Alors les Pingus se sont mis a la tache et ils ont contruits quelques\n"
 "grands radeaux, suffisamment pour les transporter tous. Après avoir\n"
-"fais le plein de provisions, ils étaient finallement prêts à débuter\n"
+"fais le plein de provisions, ils étaient finalement prêts à débuter\n"
 "leur aventure et de quitter leur terres familières pour entrer dans\n"
 "les zones inconnues du monde.\n"
 
@@ -1268,7 +1259,7 @@ msgid ""
 "To be continued..."
 msgstr ""
 "Alors, les Pingus prirent place sur leur radeau, inquiets de ce qu'il\n"
-"les attendaient, alors que le soleil se couchait.\n"
+"les attendaient, flottant vers le soleil couchant.\n"
 "\n"
 "A suivre..."
 
@@ -1336,8 +1327,8 @@ msgid ""
 msgstr ""
 "De plus, ils vous ont choisi afin de les mener dans cette aventure\n"
 "autour du monde. Puisque cette aventure va être périlleuse et très\n"
-"difficile, votre première balise se situe sur l'ile de Mogorok, mieux\n"
-"connue sous le nom de l'Ile des Apprentissages."
+"difficile, votre première balise se situe sur l'ile de Mogorok,\n"
+"mieux connue sous le nom de l'Ile des Apprentissages."
 
 #: src/story.cxx:148
 msgid ""
@@ -1410,34 +1401,30 @@ msgstr "Worldmap: Fichier absent: "
 msgid "...walking..."
 msgstr "...marche..."
 
-#, fuzzy
 #~ msgid "Perfect! You saved all the Pingus. Great!"
-#~ msgstr "Parfait! Vous avez sauvé tout le monde, super!"
+#~ msgstr "Parfait! Vous avez sauvé tout les Pingus. Bravo!"
 
-#, fuzzy
 #~ msgid ""
 #~ "You saved just the ones you needed, you made it, but\n"
 #~ "maybe you can do it better next time?"
 #~ msgstr ""
-#~ "Vous avez sauvé juste ce qui était requis, vous avez réussi, maispouvez-"
-#~ "vous faire mieux?"
+#~ "Vous avez sauvé juste ceux qui étaient requis, vous avez réussi, maispeut-"
+#~ "être pouvez-vous faire mieux la prochaine fois?"
 
-#, fuzzy
 #~ msgid "Not everybody got saved, but still good work!"
-#~ msgstr "Tous n'ont pu être sauvés, mais c'est quand même du bon travail!"
+#~ msgstr ""
+#~ "Pas tous n'ont pu être sauvés, mais c'est quand même du bon travail!"
 
-#, fuzzy
 #~ msgid ""
 #~ "You didn't save enough, but you still saved a few, next\n"
 #~ "time you might be better."
 #~ msgstr ""
 #~ "Vous n'en avez pas sauvé suffisament, mais vous en avez tout de même "
 #~ "sauvé quelques uns.\n"
-#~ "La prochaine fois vous pourriez peut-être mieux réussir."
+#~ "La prochaine fois vous pourriez peut-être faire mieux."
 
-#, fuzzy
 #~ msgid "Only a handful more and you would have made it, try again!"
-#~ msgstr "Seulement une poignée de plus et vous auriez réussi, réessayez!"
+#~ msgstr "Seulement quelques-uns de plus et vous auriez réussi, réessayez!"
 
 #~ msgid "input"
 #~ msgstr "input"
