@@ -1,4 +1,4 @@
-//  $Id: PingusSpotMap.hh,v 1.4 2000/03/16 21:36:33 grumbel Exp $
+//  $Id: PingusSpotMap.hh,v 1.5 2000/04/10 21:18:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -71,11 +71,14 @@ public:
   PingusSpotMap(PLF*);
   virtual ~PingusSpotMap();
 
-  ColMap* PingusSpotMap::get_colmap(void);
+  void generate_colmap();
+  ColMap* PingusSpotMap::get_colmap();
   void load(string);
   void load(PLF* plf);
-  void gen_tiles(void);
+  void gen_tiles();
   void draw(int x, int y, int w, int h, int of_x, int of_y, float s);
+  void draw_colmap(int x_pos, int y_pos, int w, int h, 
+		   int of_x, int of_y, float s);
   int  get_height(void);
   int  get_width(void);
   CL_Surface* get_surface(void);

@@ -1,4 +1,4 @@
-//  $Id: PingusSpotMap.cc,v 1.12 2000/04/08 20:20:25 grumbel Exp $
+//  $Id: PingusSpotMap.cc,v 1.13 2000/04/10 21:18:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -167,16 +167,16 @@ PingusSpotMap::load(std::string filename)
 
   if ((width % tile_size) != 0) 
     {
-      cerr << "Warrning: Width is not a multible of " << tile_size << std::endl;
+      std::cout << "Warrning: Width is not a multible of " << tile_size << std::endl;
       width += (tile_size - (width % tile_size));
-      cerr << "Warning: Fixing height to: " << width << std::endl;
+      std::cout << "Warning: Fixing height to: " << width << std::endl;
     }
   
   if ((height % tile_size) != 0) 
     {
-      cerr << "Warning: Width is not a multible of " << tile_size << std::endl;
+      std::cout << "Warning: Width is not a multible of " << tile_size << std::endl;
       height += (tile_size - (height % tile_size));
-      cerr << "Warning: Fixing height to: " << height << std::endl;
+      std::cout << "Warning: Fixing height to: " << height << std::endl;
     }
   
   // Allocating the map provider
@@ -208,42 +208,64 @@ PingusSpotMap::load(std::string filename)
   std::cout << "done" << std::endl;
 }
 
+void
+PingusSpotMap::draw_colmap(int x_pos, int y_pos, int w, int h, 
+			   int x_of, int y_of, float s)
+{
+  colmap->draw(x_of, y_of, s);
+}
+
 // Draws the map with a offset, needed for scrolling
 void
 PingusSpotMap::draw(int x_pos, int y_pos, int w, int h, 
 		    int of_x, int of_y, float s)
 {
-  // Ignoring x and y for the moment
-
-  if (s == 1.0)
+  if (draw_collision_map)
     {
-      // Trying to calc which parts of the tilemap needs to be drawn
-      int start_x = -of_x/tile_size;
-      int start_y = -of_y/tile_size; 
-      unsigned int tilemap_width = w / tile_size + 1;
-      unsigned int tilemap_height = h / tile_size + 1;
-
-      // drawing the stuff
-      for (TileIter x = start_x; 
-	   x < (start_x + tilemap_width) && x < tile.size();
-	   x++)
+      draw_colmap(x_pos, y_pos, w, h, of_x, of_y, s);
+    }
+  else
+    {
+      if (s == 1.0)
 	{
-	  for (TileIter y = start_y;
-	       y < start_y + tilemap_height && y < tile[x].size();
-	       y++)
+	  // Trying to calc which parts of the tilemap needs to be drawn
+	  int start_x = -of_x/tile_size;
+	  int start_y = -of_y/tile_size; 
+	  unsigned int tilemap_width = w / tile_size + 1;
+	  unsigned int tilemap_height = h / tile_size + 1;
+
+	  if (start_x < 0)
+	    start_x = 0;
+	  if (start_y < 0)
+	    start_y = 0;
+
+	  /*	  std::cout << "StartX: " << start_x << std::endl;
+	  std::cout << "StartY: " << start_y << std::endl;
+	  std::cout << "width: " << tilemap_width << std::endl;
+	  std::cout << "height: " << tilemap_height << std::endl;
+	  */
+	  // drawing the stuff
+	  for (TileIter x = start_x; 
+	       x < (start_x + tilemap_width) && x < tile.size();
+	       x++)
 	    {
-	      if (!tile[x][y].is_empty()) 
+	      for (TileIter y = start_y;
+		   y < start_y + tilemap_height && y < tile[x].size();
+		   y++)
 		{
-		  tile[x][y].surface->put_screen(x * tile_size + of_x, 
-						 y * tile_size + of_y);
+		  if (!tile[x][y].is_empty()) 
+		    {
+		      tile[x][y].surface->put_screen(x * tile_size + of_x, 
+						     y * tile_size + of_y);
+		    }
 		}
 	    }
+	} 
+      else 
+	{
+	  std::cout << "Zooming is at the moment not supported" << std::endl;
+	  // map_surface->put_screen(int(of_x * s), int(of_y * s), s, s);
 	}
-    } 
-  else 
-    {
-      std::cout << "Zooming is at the moment not supported" << std::endl;
-      // map_surface->put_screen(int(of_x * s), int(of_y * s), s, s);
     }
 }
 
