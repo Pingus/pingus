@@ -1,4 +1,4 @@
-//  $Id: Client.cc,v 1.17 2000/04/21 09:47:35 grumbel Exp $
+//  $Id: Client.cc,v 1.18 2000/04/21 11:26:06 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -180,7 +180,6 @@ Client::play_level(std::string plf_filename, std::string psm_filename)
   while (!server->is_finished()) 
     {
       CL_System::keep_alive(); 
-      //MikMod::keep_alive();
     
       server->let_move();
     
@@ -204,7 +203,6 @@ Client::play_level(std::string plf_filename, std::string psm_filename)
 	  ++skip_frame;
 	}
     }
-  //  MikMod::free(module);
   event->unregister_event_handler();
 }
 

@@ -1,4 +1,4 @@
-//   $Id: Pingus.cc,v 1.20 2000/04/20 17:12:11 grumbel Exp $
+//   $Id: Pingus.cc,v 1.21 2000/04/21 11:26:06 grumbel Exp $
 //    ___
 //   |  _\ A free Lemmings clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -634,9 +634,6 @@ PingusMain::do_lemmings_mode(void)
       PingusMessageBox(" PingusError: " + err.message);
     }
   
-  if (music_enabled)
-    MikMod::deinit();
-
   std::cout << "\n"
 	    << ",-------------------------------------------.\n"
 	    << "| Thank you for playing Pingus!             |\n"

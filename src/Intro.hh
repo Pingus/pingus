@@ -1,4 +1,4 @@
-//  $Id: Intro.hh,v 1.3 2000/04/08 20:20:25 grumbel Exp $
+//  $Id: Intro.hh,v 1.4 2000/04/21 11:26:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,6 @@
 #define INTRO_HH
 
 #include <ClanLib/core.h>
-#include "MikMod.hh"
 
 class Intro
 {

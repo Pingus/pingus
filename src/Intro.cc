@@ -1,4 +1,4 @@
-//  $Id: Intro.cc,v 1.5 2000/04/08 20:20:25 grumbel Exp $
+//  $Id: Intro.cc,v 1.6 2000/04/21 11:26:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,8 +34,6 @@ Intro::Intro()
 Intro::~Intro()
 {
   if (music_enabled) {
-    // MikMod::free(module);
-    // delete ses_music;
   }
   delete event;
 }
@@ -52,14 +50,6 @@ Intro::draw()
   int x_pos = CL_Display::get_width() / 2;
   int y_pos = 0;
   
-  if (music_enabled) 
-    {
-      //module = MikMod::load(find_file(pingus_datadir, "music/pingus-1.it"));
-      //MikMod::play(module);
-      //ses_music = new CL_SoundBuffer_Session( music->prepare());
-      //ses_music->play();
-    }
-
   logo = CL_Surface::load("Game/logo_t", PingusResource::get("game.dat"));
 
   for(y_pos = -(int)(logo->get_height())/2; 
