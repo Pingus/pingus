@@ -341,17 +341,19 @@ Blitter::fill_rect(CL_PixelBuffer target, const CL_Rect& rect, const CL_Color& c
         }
       else
         {
+          float a = color.get_alpha()/255.0f;
+
           for (int y = start_y; y < end_y; ++y)
             {
               cl_uint8* tptr = target_buf + 3*((twidth*(y + rect.top)) + rect.left + start_x);
 
               for (int x = start_x; x < end_x; ++x)
                 { 
-                  float a = color.get_alpha()/255.0f;
+                  cl_uint8* mytptr = tptr; // FIXME: No idea why I have to use mytptr[0..2] and can't use *tptr
 
-                  *tptr++ = Math::mid(0, int((1.0f - a) * *tptr + a * color.get_red()) , 255);
-                  *tptr++ = Math::mid(0, int((1.0f - a) * *tptr + a * color.get_green()), 255);
-                  *tptr++ = Math::mid(0, int((1.0f - a) * *tptr + a * color.get_blue())  , 255);
+                  *tptr++ = Math::mid(0, int(((1.0f - a) * (mytptr[0])) + a * color.get_blue()) , 255); //blue
+                  *tptr++ = Math::mid(0, int(((1.0f - a) * (mytptr[1])) + a * color.get_green()), 255); //green
+                  *tptr++ = Math::mid(0, int(((1.0f - a) * (mytptr[2])) + a * color.get_red()), 255); //red
                 }
             }
         }
