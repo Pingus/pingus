@@ -1,4 +1,4 @@
-//  $Id: SwitchDoor.cc,v 1.8 2001/04/01 18:00:43 grumbel Exp $
+//  $Id: SwitchDoor.cc,v 1.9 2001/04/21 10:55:17 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -68,7 +68,7 @@ SwitchDoorData::create(xmlDocPtr doc, xmlNodePtr cur)
 	      
 	      if (strcmp((char*)subcur->name, "position") == 0)
 		{
-		  data->switch_pos = XMLhelper::parse_position (doc, subcur);
+		  data->switch_pos = XMLhelper::parse_vector (doc, subcur);
 		}
 	      else
 		std::cout << "SwitchDoorData: switch: Unhandled " << subcur->name << std::endl;
@@ -89,7 +89,7 @@ SwitchDoorData::create(xmlDocPtr doc, xmlNodePtr cur)
 	      
 	      if (strcmp((char*)subcur->name, "position") == 0)
 		{
-		  data->door_pos = XMLhelper::parse_position (doc, subcur);
+		  data->door_pos = XMLhelper::parse_vector (doc, subcur);
 		}
 	      else if (strcmp((char*)subcur->name, "height") == 0)
 		{
@@ -134,24 +134,24 @@ SwitchDoor::~SwitchDoor ()
 void 
 SwitchDoor::draw_colmap()
 {
-  world->get_colmap ()->put (door_box, door_pos.x_pos, door_pos.y_pos, GroundpieceData::SOLID);
+  world->get_colmap ()->put (door_box, door_pos.x, door_pos.y, GroundpieceData::SOLID);
   for (int i=0; i < door_height; i++)
     world->get_colmap ()->put (door_tile_cmap,
-			       door_pos.x_pos + 1, 
-			       door_pos.y_pos + i * door_tile.get_height () + door_box.get_height (),
+			       door_pos.x + 1, 
+			       door_pos.y + i * door_tile.get_height () + door_box.get_height (),
 			       GroundpieceData::SOLID);
 }
 
 void
 SwitchDoor::draw_offset(int x_of, int y_of, float s = 1.0)
 {
-  door_box.put_screen (door_pos.x_pos + x_of, door_pos.y_pos + y_of);
+  door_box.put_screen (door_pos.x+ x_of, door_pos.y+ y_of);
   for (int i=0; i < current_door_height; i++)
-    door_tile.put_screen (door_pos.x_pos + x_of + 1, 
-			  door_pos.y_pos + y_of 
+    door_tile.put_screen (door_pos.x+ x_of + 1, 
+			  door_pos.y+ y_of 
 			  + i * door_tile.get_height ()
 			  + door_box.get_height ());
-  switch_sur.put_screen (switch_pos.x_pos + x_of, switch_pos.y_pos + y_of);
+  switch_sur.put_screen (switch_pos.x+ x_of, switch_pos.y+ y_of);
 }
 
 void
@@ -166,10 +166,10 @@ SwitchDoor::update(float delta)
       
 	  for (PinguIter pingu = holder->begin (); pingu != holder->end (); pingu++)
 	    {
-	      if ((*pingu)->get_x()    > switch_pos.x_pos 
-		  && (*pingu)->get_x() < switch_pos.x_pos + (int) switch_sur.get_width ()
-		  && (*pingu)->get_y() > switch_pos.y_pos
-		  && (*pingu)->get_y() < switch_pos.y_pos + (int) switch_sur.get_height ())
+	      if ((*pingu)->get_x()    > switch_pos.x
+		  && (*pingu)->get_x() < switch_pos.x + (int) switch_sur.get_width ()
+		  && (*pingu)->get_y() > switch_pos.y
+		  && (*pingu)->get_y() < switch_pos.y + (int) switch_sur.get_height ())
 		{
 		  is_opening = true;
 		}
@@ -184,11 +184,11 @@ SwitchDoor::update(float delta)
 	  // it, we remove the door from the colmap
 	  if (current_door_height + 10 < door_height)
 	    {
-	      world->get_colmap ()->put (door_box, door_pos.x_pos, door_pos.y_pos, GroundpieceData::NOTHING);
+	      world->get_colmap ()->put (door_box, door_pos.x, door_pos.y, GroundpieceData::NOTHING);
 	      for (int i=0; i < door_height; i++)
 		world->get_colmap ()->put (door_tile_cmap,
-					   door_pos.x_pos + 1, 
-					   door_pos.y_pos + i * door_tile.get_height () + door_box.get_height (),
+					   door_pos.x+ 1, 
+					   door_pos.y+ i * door_tile.get_height () + door_box.get_height (),
 					   GroundpieceData::NOTHING);
 	    }
 	}
@@ -271,7 +271,7 @@ EditorSwitchDoorObj::create (WorldObjData* obj)
 /** Create this object (and child objects) with resonable defaults
     for the editor */
 std::list<boost::shared_ptr<EditorObj> >
-EditorSwitchDoorObj::create (const Position& pos)
+EditorSwitchDoorObj::create (const CL_Vector& pos)
 {
   SwitchDoorData data;
 
@@ -292,20 +292,20 @@ std::string
 EditorSwitchDoorObj::status_line()
 {
   char str[1024];
-  sprintf (str, "SwitchDoor - (%d %d %d", 
-	   door_pos.x_pos, door_pos.y_pos, door_pos.z_pos);
+  sprintf (str, "SwitchDoor - (%f %f %f)", 
+	   door_pos.x, door_pos.y, door_pos.z);
   return str;
 }
 
 void
 EditorSwitchDoorObj::draw_offset(int x_of, int y_of)
 {
-  door_box.put_screen (door_pos.x_pos + x_of, 
-		       door_pos.y_pos + y_of);
+  door_box.put_screen (door_pos.x + x_of, 
+		       door_pos.y + y_of);
 
   for (int i = 0; i < door_height; i++)
-    door_tile.put_screen (door_pos.x_pos + x_of + 1, 
-			  door_pos.y_pos + y_of + (i * door_tile.get_height ())
+    door_tile.put_screen (door_pos.x + x_of + 1, 
+			  door_pos.y + y_of + (i * door_tile.get_height ())
 			  + door_box.get_height ());
 }
 

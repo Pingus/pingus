@@ -1,4 +1,4 @@
-//  $Id: IceBlock.hh,v 1.7 2001/04/01 18:00:43 grumbel Exp $
+//  $Id: IceBlock.hh,v 1.8 2001/04/21 10:55:17 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,7 +30,7 @@ class IceBlockData : public WorldObjData
 {
 public:
   /// The upper/left position  of the iceblock's
-  Position pos;
+  CL_Vector pos;
   /** The number of iceblocks, only complete blocks are supported */
   int width;
 
@@ -79,7 +79,7 @@ public:
   static std::list<boost::shared_ptr<EditorObj> > create (WorldObjData* obj);
 
   /** Create the object with resonable defaults */
-  static std::list<boost::shared_ptr<EditorObj> > create (const Position& pos);
+  static std::list<boost::shared_ptr<EditorObj> > create (const CL_Vector& pos);
 
   virtual void save_xml (std::ofstream* xml);
   virtual std::string status_line();

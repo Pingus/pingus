@@ -1,4 +1,4 @@
-//  $Id: ObjectManager.cc,v 1.39 2001/04/01 18:00:41 grumbel Exp $
+//  $Id: ObjectManager.cc,v 1.40 2001/04/21 10:55:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -230,7 +230,8 @@ ObjectManager::draw()
   
   for (EditorObjIter i = editor_objs.begin(); i != editor_objs.end(); ++i) 
     {
-      (*i)->draw_offset(x_offset, y_offset);
+      // FIXME: Zooming not implemented
+      (*i)->draw_offset(CL_Vector(x_offset, y_offset), 1.0);
     }
 
   for (CurrentObjIter i = current_objs.begin(); i != current_objs.end(); ++i) 
@@ -268,7 +269,7 @@ ObjectManager::save_level (string filename)
 
   // FIXME: we need some error checking 
   plf_out << "/* This level was created with the PLE\n"
-	  << " * $Id: ObjectManager.cc,v 1.39 2001/04/01 18:00:41 grumbel Exp $\n"
+	  << " * $Id: ObjectManager.cc,v 1.40 2001/04/21 10:55:16 grumbel Exp $\n"
 	  << " */"
 	  << endl;
   

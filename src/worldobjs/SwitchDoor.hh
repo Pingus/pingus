@@ -1,4 +1,4 @@
-//  $Id: SwitchDoor.hh,v 1.8 2001/04/01 18:00:43 grumbel Exp $
+//  $Id: SwitchDoor.hh,v 1.9 2001/04/21 10:55:17 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,10 +34,10 @@ private:
   
 public:
   /// The upper/middle pos of the door 
-  Position door_pos;
+  CL_Vector door_pos;
   
   /// The bottom/middle pos of the switch
-  Position switch_pos;
+  CL_Vector switch_pos;
 
   // The height of the door in graphic tiles
   int door_height;
@@ -113,7 +113,7 @@ public:
 
   /** Create this object (and child objects) with resonable defaults
       for the editor */
-  static std::list<boost::shared_ptr<EditorObj> > create (const Position& pos);
+  static std::list<boost::shared_ptr<EditorObj> > create (const CL_Vector& pos);
 
   virtual void save_xml (std::ofstream* xml);
   virtual std::string status_line();

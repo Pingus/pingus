@@ -1,4 +1,4 @@
-//  $Id: PLFPLF.cc,v 1.8 2001/04/10 19:42:57 grumbel Exp $
+//  $Id: PLFPLF.cc,v 1.9 2001/04/21 10:55:15 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -197,13 +197,13 @@ PLFPLF::set_value(string valueid,
 
   case PLFPLF::EXIT:
     if (valueid == "x_pos") {
-      exit_s.pos.x_pos = str_to_int(value);
-      if (verbose > 2) cout << "Exit.x_pos: " << exit_s.pos.x_pos << ":'" << value << "'" << endl;
+      exit_s.pos.x = str_to_int(value);
+      if (verbose > 2) cout << "Exit.x: " << exit_s.pos.x << ":'" << value << "'" << endl;
     } else if (valueid == "y_pos") {
-      exit_s.pos.y_pos = str_to_int(value);
+      exit_s.pos.y = str_to_int(value);
     } else if (valueid == "z_pos") {
-      exit_s.pos.z_pos = str_to_int(value);
-      if (verbose > 2) cout << "Exit.y_pos: " << exit_s.pos.y_pos << endl;
+      exit_s.pos.z = str_to_int(value);
+      if (verbose > 2) cout << "Exit.y: " << exit_s.pos.y << endl;
     } else if (valueid == "image") {
       exit_s.desc = ResDescriptor(cast, value);
       if (verbose > 2) cout << "Exit.desc: " << exit_s.desc.res_name << endl;
@@ -248,11 +248,11 @@ PLFPLF::set_value(string valueid,
 	    } else if (valueid == "y_target") {
 	    trap_s.y_target = str_to_int(value);*/
     } else if (valueid == "x_pos") {
-      trap_s.pos.x_pos = str_to_int(value);
+      trap_s.pos.x = str_to_int(value);
     } else if (valueid == "y_pos") {
-      trap_s.pos.y_pos = str_to_int(value);
+      trap_s.pos.y = str_to_int(value);
     } else if (valueid == "z_pos") {
-      trap_s.pos.z_pos = str_to_int(value);
+      trap_s.pos.z = str_to_int(value);
     } else {
       std::cout << "PLF:Trap: Unknown value id: " << valueid << std::endl;      
     }
@@ -260,11 +260,11 @@ PLFPLF::set_value(string valueid,
     
   case PLFPLF::HOTSPOT:
     if (valueid == "x_pos") {
-      hotspot_s.pos.x_pos = str_to_int(value);
+      hotspot_s.pos.x = str_to_int(value);
     } else if (valueid == "y_pos") {
-      hotspot_s.pos.y_pos = str_to_int(value);
+      hotspot_s.pos.y = str_to_int(value);
     } else if (valueid == "z_pos") {
-      hotspot_s.pos.z_pos = str_to_int(value);
+      hotspot_s.pos.z = str_to_int(value);
     } else if (valueid == "speed") {
       hotspot_s.speed = str_to_int(value);
     } else if (valueid == "image") {
@@ -287,11 +287,11 @@ PLFPLF::set_value(string valueid,
 
   case PLFPLF::LIQUID:
     if (valueid == "x_pos") {
-      liquid_s.pos.x_pos = str_to_int(value);
+      liquid_s.pos.x = str_to_int(value);
     } else if (valueid == "y_pos") {
-      liquid_s.pos.y_pos = str_to_int(value);
+      liquid_s.pos.y = str_to_int(value);
     } else if (valueid == "z_pos") {
-      liquid_s.pos.z_pos = str_to_int(value);
+      liquid_s.pos.z = str_to_int(value);
     } else if (valueid == "width") {
       liquid_s.width = str_to_int(value);
     } else if (valueid == "image") {

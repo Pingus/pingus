@@ -1,4 +1,4 @@
-//  $Id: EditorEditGUI.hh,v 1.1 2000/09/20 15:12:39 grumbel Exp $
+//  $Id: EditorEditGUI.hh,v 1.2 2001/04/21 10:55:16 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,7 +30,7 @@ private:
 public:
   static void edit_obj(EditorObj*);
 
-  static void edit_psm_obj(PSMObj*);
+  static void edit_psm_obj(EditorGroundpieceObj*);
   static void edit_hotspot_obj(HotspotObj*);
   static void edit_entrance_obj(EntranceObj*);
   static void edit_exit_obj(ExitObj*);

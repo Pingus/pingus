@@ -1,4 +1,4 @@
-//  $Id: ObjectSelector.cc,v 1.39 2001/04/10 19:42:58 grumbel Exp $
+//  $Id: ObjectSelector.cc,v 1.40 2001/04/21 10:55:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,7 +24,6 @@
 #include "../globals.hh"
 #include "../Display.hh"
 #include "../PingusResource.hh"
-#include "../Position.hh"
 #include "../Display.hh"
 #include "../Loading.hh"
 #include "../blitter.hh"
@@ -71,9 +70,9 @@ ObjectSelector::get_trap()
   TrapData trap;
   bool have_name = false;
   
-  trap.pos.x_pos = CL_Mouse::get_x() - x_offset;
-  trap.pos.y_pos = CL_Mouse::get_y() - y_offset;
-  trap.pos.z_pos = 0;
+  trap.pos.x = CL_Mouse::get_x() - x_offset;
+  trap.pos.y = CL_Mouse::get_y() - y_offset;
+  trap.pos.z = 0;
 
   CL_Display::clear_display();
 
@@ -136,8 +135,8 @@ ObjectSelector::get_groundpiece(GroundpieceData::Type type)
   GroundpieceData data;
   std::string datafile = std::string("groundpieces-") + GroundpieceData::type_to_string (type);
 
-  data.pos.x_pos = CL_Mouse::get_x() - x_offset;
-  data.pos.y_pos = CL_Mouse::get_y() - y_offset;
+  data.pos.x = CL_Mouse::get_x() - x_offset;
+  data.pos.y = CL_Mouse::get_y() - y_offset;
 
   std::string str = select_surface(datafile);
 
@@ -146,7 +145,7 @@ ObjectSelector::get_groundpiece(GroundpieceData::Type type)
       data.desc = ResDescriptor("resource:" + datafile, str);
       data.type = type;
 
-      return boost::shared_ptr<EditorObj>(new PSMObj(data));
+      return boost::shared_ptr<EditorObj>(new EditorGroundpieceObj(data));
     }
   return boost::shared_ptr<EditorObj>();
 }
@@ -155,9 +154,9 @@ boost::shared_ptr<EditorObj>
 ObjectSelector::get_hotspot()
 {
   HotspotData data;
-  data.pos.x_pos = CL_Mouse::get_x() - x_offset;
-  data.pos.y_pos = CL_Mouse::get_y() - y_offset;
-  data.pos.z_pos = 0;
+  data.pos.x = CL_Mouse::get_x() - x_offset;
+  data.pos.y = CL_Mouse::get_y() - y_offset;
+  data.pos.z = 0;
   std::string str = select_surface("global");
 
   if (!str.empty())
@@ -186,19 +185,19 @@ ObjectSelector::get_worldobj()
       switch (read_key()) 
 	{
 	case CL_KEY_1:
-	  return EditorTeleporterObj::create (Position(CL_Mouse::get_x() - x_offset, 
+	  return EditorTeleporterObj::create (CL_Vector(CL_Mouse::get_x() - x_offset, 
 						       CL_Mouse::get_y() - y_offset));
 	  
 	case CL_KEY_2:
-	  return EditorSwitchDoorObj::create (Position(CL_Mouse::get_x() - x_offset, 
+	  return EditorSwitchDoorObj::create (CL_Vector(CL_Mouse::get_x() - x_offset, 
 						       CL_Mouse::get_y() - y_offset));
 
 	case CL_KEY_3:
-	  return EditorConveyorBeltObj::create (Position(CL_Mouse::get_x() - x_offset, 
+	  return EditorConveyorBeltObj::create (CL_Vector(CL_Mouse::get_x() - x_offset, 
 						       CL_Mouse::get_y() - y_offset));
 
 	case CL_KEY_4:
-	  return EditorIceBlockObj::create (Position(CL_Mouse::get_x() - x_offset, 
+	  return EditorIceBlockObj::create (CL_Vector(CL_Mouse::get_x() - x_offset, 
 						     CL_Mouse::get_y() - y_offset));
 
 	case CL_KEY_ESCAPE:
@@ -289,9 +288,9 @@ ObjectSelector::get_exit()
 {
   string str;
   ExitData data;
-  data.pos.x_pos = CL_Mouse::get_x() - x_offset;
-  data.pos.y_pos = CL_Mouse::get_y() - y_offset;
-  data.pos.z_pos = 0;
+  data.pos.x = CL_Mouse::get_x() - x_offset;
+  data.pos.y = CL_Mouse::get_y() - y_offset;
+  data.pos.z = 0;
   
   str = select_surface("exits");
   
@@ -325,12 +324,13 @@ ObjectSelector::select_obj_type()
   font->print_left(20, 90, "s - Groundpiece (solid)");
   font->print_left(20,110, "b - Groundpiece (bridge)");
   font->print_left(20,130, "n - Groundpiece (transparent)");
-  font->print_left(20,150, "h - Hotspot");
-  font->print_left(20,170, "e - Entrance");
-  font->print_left(20,190, "x - Exit");
-  font->print_left(20,210, "l - Liquid");
-  font->print_left(20,230, "w - Weather");
-  font->print_left(20,250, "o - WorldObject");
+  font->print_left(20,150, "r - Groundpiece (remove)");
+  font->print_left(20,170, "h - Hotspot");
+  font->print_left(20,190, "e - Entrance");
+  font->print_left(20,210, "x - Exit");
+  font->print_left(20,230, "l - Liquid");
+  font->print_left(20,250, "w - Weather");
+  font->print_left(20,280, "o - WorldObject");
   Display::flip_display();
 
   exit_loop = false;
@@ -344,6 +344,10 @@ ObjectSelector::select_obj_type()
 
 	case CL_KEY_B:
 	  objs.push_back(get_groundpiece(GroundpieceData::BRIDGE));
+	  return objs;
+
+	case CL_KEY_R:
+	  objs.push_back(get_groundpiece(GroundpieceData::REMOVE));
 	  return objs;
 	  
 	case CL_KEY_S:
@@ -412,8 +416,8 @@ ObjectSelector::select_surface(std::string resource_file)
 
   datafile_loaded = data_loaded[resource_file];
   
-  data.pos.x_pos = CL_Mouse::get_x() - x_offset;
-  data.pos.y_pos = CL_Mouse::get_y() - y_offset;
+  data.pos.x = CL_Mouse::get_x() - x_offset;
+  data.pos.y = CL_Mouse::get_y() - y_offset;
   
   std::list<string>* liste = res->get_resources_of_type("surface");
   surface_obj sur_obj;
@@ -481,6 +485,9 @@ ObjectSelector::read_string(string description, string def_str)
 /*
 
 $Log: ObjectSelector.cc,v $
+Revision 1.40  2001/04/21 10:55:16  grumbel
+Some cleanups in the editor's object hierachie (I guess I broke half of it...)
+
 Revision 1.39  2001/04/10 19:42:58  grumbel
 Rewrote some parts of Pingu to use CL_Vector and Sprite, instead of Position and CL_Surface
 

@@ -1,4 +1,4 @@
-//  $Id: PLFObj.hh,v 1.16 2001/04/16 11:58:34 grumbel Exp $
+//  $Id: PLFObj.hh,v 1.17 2001/04/21 10:55:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -45,7 +45,8 @@ public:
 };
 
 ///
-class HotspotObj : public PLFObj
+class HotspotObj : public    PLFObj,
+		   protected HotspotData
 {
 private:
   ///
@@ -54,7 +55,7 @@ private:
   float para;
 public:
   ///
-  HotspotObj(HotspotData);
+  HotspotObj(const HotspotData&);
   ///
   ~HotspotObj();
   ///
@@ -68,20 +69,13 @@ public:
 };
 
 ///
-class EntranceObj : public PLFObj
+class EntranceObj : public PLFObj,
+		    protected EntranceData
 {
 private:
-  ///
-  std::string type;
-  ///
-  int release_rate;
-  ///
-  int owner_id;
-  ///
-  EntranceData::EntranceDirection direction;
 public:
   ///
-  EntranceObj(EntranceData);
+  EntranceObj(const EntranceData&);
   ///
   ~EntranceObj();
   ///
@@ -95,7 +89,8 @@ public:
 };
 
 ///
-class ExitObj : public PLFObj
+class ExitObj : public PLFObj,
+		protected ExitData
 {
 private:
   int owner_id;
@@ -117,7 +112,8 @@ public:
 
 
 ///
-class TrapObj : public PLFObj
+class TrapObj : public PLFObj,
+		protected TrapData
 {
 private:
   ///
@@ -136,30 +132,23 @@ public:
   ///
   void save_xml(std::ofstream* xml);
   ///
-  void draw_offset(int x_offset, int y_offset);
+  void draw_offset(CL_Vector offset, float zoom);
 };
 
 ///
-class LiquidObj : public PLFObj
+class LiquidObj : public PLFObj,
+		  protected LiquidData
 {
 private:
-  ///
-  int width;
-  ///
-  int speed;
-  ///
-  AnimCounter counter;
 public:
-  ///
-  LiquidObj(LiquidData);
-  ///
+  LiquidObj(const LiquidData& data);
   LiquidObj(const LiquidObj& data);
   ///
   ~LiquidObj();
   ///
   boost::shared_ptr<EditorObj> duplicate();
   ///
-  void draw_offset(int x_offset, int y_offset);
+  void draw_offset(CL_Vector offset, float zoom);
   ///
   void draw_mark_offset(int x_offset, int y_offset);
   ///

@@ -1,4 +1,4 @@
-//  $Id: XMLhelper.hh,v 1.10 2001/04/04 10:21:16 grumbel Exp $
+//  $Id: XMLhelper.hh,v 1.11 2001/04/21 10:55:15 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -70,6 +70,8 @@ public:
   static void write_desc_xml(std::ofstream* xml, ResDescriptor desc);
   /** Write a position to the xml ofstream */
   static void write_position_xml(std::ofstream* xml, Position pos);
+  /** Write a CL_Vector to an xml stream */
+  static void write_vector_xml(std::ofstream* xml, const CL_Vector& pos);
   //@}
 };
 

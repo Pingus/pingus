@@ -1,4 +1,4 @@
-//  $Id: IceBlock.cc,v 1.11 2001/04/01 18:00:43 grumbel Exp $
+//  $Id: IceBlock.cc,v 1.12 2001/04/21 10:55:17 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -54,7 +54,7 @@ IceBlockData::create(xmlDocPtr doc, xmlNodePtr cur)
 	}
       else if (strcmp((char*)cur->name, "position") == 0)
 	{
-	  data->pos = XMLhelper::parse_position (doc, cur);
+	  data->pos = XMLhelper::parse_vector (doc, cur);
 	}
       else if (strcmp((char*)cur->name, "width") == 0)
 	{
@@ -92,7 +92,7 @@ void
 IceBlock::draw_colmap()
 {
   CL_Surface surf (PingusResource::load_surface("iceblock_cmap", "worldobjs"));
-  world->get_colmap()->put(surf, pos.x_pos, pos.y_pos, GroundpieceData::GROUND);
+  world->get_colmap()->put(surf, pos.x, pos.y, GroundpieceData::GROUND);
 }
 
 ///
@@ -102,7 +102,7 @@ IceBlock::draw_offset(int x_of, int y_of, float s = 1.0)
   if (is_finished)
     return;
 
-  block_sur.put_screen (pos.x_pos + x_of, pos.y_pos + y_of, 
+  block_sur.put_screen (pos.x + x_of, pos.y + y_of, 
 			(int)((1.0 - thickness) * (block_sur.get_num_frames () - 1)));
 }
 
@@ -117,8 +117,8 @@ IceBlock::update(float delta)
 
   for (PinguIter pingu = holder->begin (); pingu != holder->end (); pingu++)
     {
-      if ((*pingu)->get_x() > pos.x_pos && (*pingu)->get_x() < pos.x_pos + 25
-	  && (*pingu)->get_y() > pos.y_pos - 2 && (*pingu)->get_y() < pos.y_pos + 10)
+      if ((*pingu)->get_x() > pos.x && (*pingu)->get_x() < pos.x + 25
+	  && (*pingu)->get_y() > pos.y - 2 && (*pingu)->get_y() < pos.y + 10)
 	{
 	  //std::cout << "IceBlock: Catched Pingu: " << thickness  << std::endl;
 	  thickness -= 0.02;
@@ -128,7 +128,7 @@ IceBlock::update(float delta)
 	      is_finished = true;
 	      thickness = 0.0;
 	      CL_Surface surf(PingusResource::load_surface("iceblock_cmap", "worldobjs"));
-	      world->get_colmap()->remove(surf, pos.x_pos, pos.y_pos);
+	      world->get_colmap()->remove(surf, pos.x, pos.y);
 	      return;
 	    }
 	  return;
@@ -159,7 +159,7 @@ EditorIceBlockObj::create (WorldObjData* obj)
 
 /** Create the object with resonable defaults */
 std::list<boost::shared_ptr<EditorObj> > 
-EditorIceBlockObj::create (const Position& pos)
+EditorIceBlockObj::create (const CL_Vector& pos)
 {
   IceBlockData data;
   
@@ -178,7 +178,7 @@ std::string
 EditorIceBlockObj::status_line()
 {
   char str[1024];
-  sprintf (str, "IceBlock - %d %d %d", pos.x_pos, pos.y_pos, pos.z_pos);
+  sprintf (str, "IceBlock - %f %f %f", pos.x, pos.y, pos.z);
   return str;
 }
 

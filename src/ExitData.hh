@@ -1,4 +1,4 @@
-//  $Id: ExitData.hh,v 1.4 2001/04/16 11:58:34 grumbel Exp $
+//  $Id: ExitData.hh,v 1.5 2001/04/21 10:55:15 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,14 +20,14 @@
 #ifndef EXIT_DATA_HH
 #define EXIT_DATA_HH
 
-#include "Position.hh"
+#include <ClanLib/core.h>
 #include "ResDescriptor.hh"
 
 ///
 class ExitData
 {
 public:
-  Position pos;
+  CL_Vector pos;
   ResDescriptor desc;
   int owner_id;
   

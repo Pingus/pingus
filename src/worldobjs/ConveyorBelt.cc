@@ -1,4 +1,4 @@
-//  $Id: ConveyorBelt.cc,v 1.13 2001/04/04 10:21:17 grumbel Exp $
+//  $Id: ConveyorBelt.cc,v 1.14 2001/04/21 10:55:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -57,7 +57,7 @@ ConveyorBeltData::create(xmlDocPtr doc, xmlNodePtr cur)
 	}
       else if (strcmp((char*)cur->name, "position") == 0)
 	{
-	  data->pos = XMLhelper::parse_position (doc, cur);
+	  data->pos = XMLhelper::parse_vector (doc, cur);
 	}
       else if (strcmp((char*)cur->name, "width") == 0)
 	{
@@ -96,13 +96,13 @@ ConveyorBelt::ConveyorBelt (WorldObjData* data)
 void
 ConveyorBelt::draw_offset (int x_of, int y_of, float s = 1.0)
 {
-  left_sur.put_screen (pos.x_pos + x_of, pos.y_pos + y_of, counter);
+  left_sur.put_screen (pos.x + x_of, pos.y + y_of, counter);
   for (int i=0; i < width; i++)
-    middle_sur.put_screen (pos.x_pos + left_sur.get_width () + i*middle_sur.get_width () + x_of, 
-			   pos.y_pos + y_of, 
+    middle_sur.put_screen (pos.x + left_sur.get_width () + i*middle_sur.get_width () + x_of, 
+			   pos.y + y_of, 
 			   counter);
-  right_sur.put_screen (pos.x_pos + left_sur.get_width () + width*middle_sur.get_width () + x_of,
-			pos.y_pos + y_of, counter);
+  right_sur.put_screen (pos.x + left_sur.get_width () + width*middle_sur.get_width () + x_of,
+			pos.y + y_of, counter);
 }
 
 void
@@ -110,7 +110,7 @@ ConveyorBelt::draw_colmap ()
 {
   CL_Surface sur(PingusResource::load_surface("conveyorbelt_cmap", "worldobjs"));
   for (int i=0; i < (width+2); i++)
-    world->get_colmap()->put(sur, pos.x_pos + (15*i), pos.y_pos, GroundpieceData::SOLID);
+    world->get_colmap()->put(sur, pos.x + (15*i), pos.y, GroundpieceData::SOLID);
 }
 
 void 
@@ -128,10 +128,10 @@ ConveyorBelt::update(float delta)
   PinguHolder* holder = world->get_pingu_p();
   for (PinguIter pingu = holder->begin (); pingu != holder->end (); ++pingu)
     {
-      if (   (*pingu)->get_x() > pos.x_pos
-	     && (*pingu)->get_x() < pos.x_pos + 15*(width+2)
-	     && (*pingu)->get_y() > pos.y_pos - 2
-	     && (*pingu)->get_y() < pos.y_pos + 10)
+      if (   (*pingu)->get_x() > pos.x
+	     && (*pingu)->get_x() < pos.x + 15*(width+2)
+	     && (*pingu)->get_y() > pos.y - 2
+	     && (*pingu)->get_y() < pos.y + 10)
 	{
 	  CL_Vector pos = (*pingu)->get_pos ();
 	  pos.x -= speed * delta;
@@ -173,13 +173,13 @@ EditorConveyorBeltObj::duplicate()
 void   
 EditorConveyorBeltObj::draw_offset(int x_of, int y_of)
 {
-  left_sur.put_screen (pos.x_pos + x_of, pos.y_pos + y_of, counter);
+  left_sur.put_screen (pos.x + x_of, pos.y + y_of, counter);
   for (int i=0; i < ConveyorBeltData::width; i++)
-    middle_sur.put_screen (pos.x_pos + left_sur.get_width () + i*middle_sur.get_width () + x_of, 
-			   pos.y_pos + y_of, 
+    middle_sur.put_screen (pos.x + left_sur.get_width () + i*middle_sur.get_width () + x_of, 
+			   pos.y + y_of, 
 			   counter);
-  right_sur.put_screen (pos.x_pos + left_sur.get_width () + ConveyorBeltData::width*middle_sur.get_width () + x_of,
-			pos.y_pos + y_of, counter);
+  right_sur.put_screen (pos.x + left_sur.get_width () + ConveyorBeltData::width*middle_sur.get_width () + x_of,
+			pos.y + y_of, counter);
   counter += speed;
   if (counter > 14)
     counter = 0;
@@ -203,7 +203,7 @@ EditorConveyorBeltObj::create (WorldObjData* obj)
 }
 
 std::list<boost::shared_ptr<EditorObj> > 
-EditorConveyorBeltObj::create (const Position& pos)
+EditorConveyorBeltObj::create (const CL_Vector& pos)
 {
   ConveyorBeltData data;
 
@@ -222,7 +222,7 @@ std::string
 EditorConveyorBeltObj::status_line()
 {
   char str[1024];
-  sprintf (str, "ConveyorBelt - (%d, %d, %d) Speed: %f", pos.x_pos, pos.y_pos, pos.z_pos, speed);
+  sprintf (str, "ConveyorBelt - (%f, %f, %f) Speed: %f", pos.x, pos.y, pos.z, speed);
   return str;
 }
 

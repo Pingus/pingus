@@ -1,4 +1,4 @@
-//  $Id: Hotspot.hh,v 1.6 2000/12/14 21:35:54 grumbel Exp $
+//  $Id: Hotspot.hh,v 1.7 2001/04/21 10:55:15 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -48,7 +48,7 @@ public:
   virtual ~Hotspot() {}
   ///
   void draw_offset(int x, int y, float s = 1.0);
-  virtual int  get_z_pos() const { return pos.z_pos; }
+  virtual int  get_z_pos() const { return (int) pos.z; }
 };
 
 #endif

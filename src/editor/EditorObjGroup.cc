@@ -1,4 +1,4 @@
-//  $Id: EditorObjGroup.cc,v 1.6 2000/12/16 23:11:24 grumbel Exp $
+//  $Id: EditorObjGroup.cc,v 1.7 2001/04/21 10:55:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,8 +43,8 @@ EditorObjGroup::~EditorObjGroup()
 void 
 EditorObjGroup::set_position(int new_x_pos, int new_y_pos)
 {
-  position->x_pos = new_x_pos;
-  position->y_pos = new_y_pos;
+  position->x = new_x_pos;
+  position->y = new_y_pos;
 
   for(std::list<boost::shared_ptr<EditorObj> >::iterator i = objs.begin();
       i != objs.end();
@@ -57,9 +57,9 @@ EditorObjGroup::set_position(int new_x_pos, int new_y_pos)
 void 
 EditorObjGroup::set_position_offset(int x_pos_add, int y_pos_add, int z_pos_add)
 {
-  position->x_pos += x_pos_add;
-  position->y_pos += y_pos_add;
-  position->z_pos += z_pos_add;
+  position->x += x_pos_add;
+  position->y += y_pos_add;
+  position->z += z_pos_add;
 
   for(std::list<boost::shared_ptr<EditorObj> >::iterator i = objs.begin();
       i != objs.end();
@@ -71,13 +71,13 @@ EditorObjGroup::set_position_offset(int x_pos_add, int y_pos_add, int z_pos_add)
 
 /** Draw the object */
 void
-EditorObjGroup::draw_offset(int x_offset, int y_offset)
+EditorObjGroup::draw_offset(CL_Vector offset, float zoom)
 {
   for(std::list<boost::shared_ptr<EditorObj> >::iterator i = objs.begin();
       i != objs.end();
       i++)
     {
-      (*i)->draw_offset(x_offset, y_offset);
+      (*i)->draw_offset(offset, zoom);
     }
 }
 
@@ -136,20 +136,20 @@ EditorObjGroup::push_back(boost::shared_ptr<EditorObj> obj)
   // Updating the width/height and x_pos/y_pos of the object group
   if (!objs.empty ())
     {
-      if (position->x_pos > obj->get_x_pos())
-	position->x_pos = obj->get_x_pos();
-      if (position->y_pos > obj->get_y_pos())
-	position->y_pos = obj->get_y_pos();
+      if (position->x > obj->get_x_pos())
+	position->x = obj->get_x_pos();
+      if (position->y > obj->get_y_pos())
+	position->y = obj->get_y_pos();
 
-      if ((position->x_pos + width) < (obj->get_x_pos() + obj->get_width()))
-	width = (obj->get_x_pos() + obj->get_width()) - position->x_pos;
-      if ((position->y_pos + height) < (obj->get_y_pos() + obj->get_height()))
-	height = (obj->get_y_pos() + obj->get_height()) - position->y_pos;
+      if ((position->x + width) < (obj->get_x_pos() + obj->get_width()))
+	width = int((obj->get_x_pos() + obj->get_width()) - position->x);
+      if ((position->y + height) < (obj->get_y_pos() + obj->get_height()))
+	height = int((obj->get_y_pos() + obj->get_height()) - position->y);
     }
   else
     {
-      position->x_pos = obj->get_x_pos ();
-      position->y_pos = obj->get_y_pos ();
+      position->x = obj->get_x_pos ();
+      position->y = obj->get_y_pos ();
       width = obj->get_width ();
       height = obj->get_height ();
     }

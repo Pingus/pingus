@@ -1,4 +1,4 @@
-//  $Id: Exit.hh,v 1.14 2001/04/15 11:00:41 grumbel Exp $
+//  $Id: Exit.hh,v 1.15 2001/04/21 10:55:15 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -51,7 +51,7 @@ public:
   ///
   bool catch_pingu(boost::shared_ptr<Pingu> pingu);
   ///
-  virtual int  get_z_pos() const { return pos.z_pos; }
+  virtual int  get_z_pos() const { return (int) pos.z; }
 };
 
 #endif

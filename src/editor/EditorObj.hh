@@ -1,4 +1,4 @@
-//  $Id: EditorObj.hh,v 1.26 2000/12/16 23:11:24 grumbel Exp $
+//  $Id: EditorObj.hh,v 1.27 2001/04/21 10:55:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,7 +33,6 @@
 #include "../PSMParser.hh"
 #include "../Trap.hh"
 #include "../PLF.hh"
-#include "../Position.hh"
 
 class Editor;
 
@@ -43,14 +42,14 @@ class EditorObj
 private:
   /** If the child class does not provide a pos member, we you this
       one */
-  Position private_pos;
+  CL_Vector private_pos;
 protected:
   static Editor* editor;
 
   /** The position is a pointer to the position object of the child
       class, when the child class doesn't provide a position element,
-      EditorObj creates one */
-  Position* position;
+      EditorObj creates one... FIXME: UGGGggglllllyyyyy.... */
+  CL_Vector* position;
   ///
   int x_of, y_of;
   ///
@@ -79,8 +78,6 @@ protected:
 
   ///
   CL_Surface surf;
-  ///
-  ResDescriptor desc;
 
   /** Stupid thing to convert a single object into a list containing
       that object */
@@ -129,11 +126,11 @@ public:
   virtual void set_position_offset(int x_pos_add, int y_pos_add, 
 				   int z_pos_add =0);
   /// Return the object x_pos
-  virtual int get_x_pos() { return position->x_pos; }
+  virtual int get_x_pos() { return (int) position->x; }
   /// Return the object y_pos
-  virtual int get_y_pos() { return position->y_pos; }
+  virtual int get_y_pos() { return (int) position->y; }
   /// Return the object z_pos
-  virtual int get_z_pos() { return position->z_pos; }
+  virtual int get_z_pos() { return (int) position->z; }
 
   /// Return the object width
   virtual int get_width() { return width; }
@@ -145,7 +142,7 @@ public:
   virtual void gui_edit_obj();
 
   /** Draw the object */
-  virtual void   draw_offset(int, int);
+  virtual void   draw_offset (CL_Vector offset, float zoom);
 
   virtual void draw_scroll_map(int x_pos, int y_pos, int arg_width, int arg_height);
 

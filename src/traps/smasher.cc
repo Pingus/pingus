@@ -1,4 +1,4 @@
-//  $Id: smasher.cc,v 1.19 2001/04/06 12:49:20 grumbel Exp $
+//  $Id: smasher.cc,v 1.20 2001/04/21 10:55:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -58,16 +58,16 @@ Smasher::update(float delta)
 	      for(int i=0; i < 20; i++)
 		{
 		  world->get_particle_holder()
-		    ->add_particle(new SmokeParticle(pos.x_pos + 20 + rand() % 260,
-						     pos.y_pos + 180,
+		    ->add_particle(new SmokeParticle(pos.x + 20 + rand() % 260,
+						     pos.y + 180,
 						     frand()-0.5, frand()-0.5));
 		}
 
 	      PinguHolder* holder = world->get_pingu_p();
 	      for (PinguIter pingu = holder->begin (); pingu != holder->end (); ++pingu)
 		{
-		  if ((*pingu)->is_inside (pos.x_pos + 30, pos.y_pos + 90,
-					   pos.x_pos + 250, pos.y_pos + 190))
+		  if ((*pingu)->is_inside (pos.x + 30, pos.y + 90,
+					   pos.x + 250, pos.y + 190))
 		    {
 		      if ((*pingu)->get_status () != not_catchable)
 			(*pingu)->set_action (shared_ptr<PinguAction>(new Splashed ()));
@@ -98,13 +98,13 @@ Smasher::draw_colmap()
   std::cout << "Drawing colmap entry" << std::endl;
 
   CL_Surface prov(PingusResource::load_surface("Traps/smasher_cmap", "traps"));
-  world->get_colmap()->put(prov, pos.x_pos, pos.y_pos, GroundpieceData::SOLID);
+  world->get_colmap()->put(prov, pos.x, pos.y, GroundpieceData::SOLID);
 }
 
 void 
 Smasher::draw_offset(int x, int y, float s)
 {
-  surface.put_screen(pos.x_pos + x, pos.y_pos + y, count);
+  surface.put_screen(pos.x + x, pos.y + y, count);
 }
 
 void 
@@ -115,10 +115,10 @@ Smasher::catch_pingu(boost::shared_ptr<Pingu> pingu)
 
   // Activate the smasher if a Pingu is under it
   if ((pingu->direction.is_left() 
-       && pingu->get_x() > pos.x_pos + 65 && pingu->get_x() < pos.x_pos + 85)
+       && pingu->get_x() > pos.x + 65 && pingu->get_x() < pos.x + 85)
       || 
       (pingu->direction.is_right() 
-       && pingu->get_x() > pos.x_pos + 190 && pingu->get_x() < pos.x_pos + 210))
+       && pingu->get_x() > pos.x + 190 && pingu->get_x() < pos.x + 210))
     {
       if (!smashing) 
 	{

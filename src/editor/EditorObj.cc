@@ -1,4 +1,4 @@
-// $Id: EditorObj.cc,v 1.28 2000/12/16 23:11:24 grumbel Exp $
+// $Id: EditorObj.cc,v 1.29 2001/04/21 10:55:16 grumbel Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,7 +28,7 @@
 #include "../worldobjs/IceBlock.hh"
 #include "../worldobjs/ConveyorBelt.hh"
 #include "../worldobjs/SwitchDoor.hh"
-#include "PSMObj.hh"
+#include "EditorGroundpieceObj.hh"
 #include "PLFObj.hh"
 #include "WeatherObj.hh"
 #include "EditorObj.hh"
@@ -60,7 +60,7 @@ EditorObj::~EditorObj()
 std::list<shared_ptr<EditorObj> >
 EditorObj::create(GroundpieceData data)
 {
-  return make_list(new PSMObj(data));
+  return make_list(new EditorGroundpieceObj(data));
 }
 
 std::list<shared_ptr<EditorObj> >
@@ -123,41 +123,41 @@ EditorObj::create (WorldObjData* obj)
 bool
 EditorObj::operator< (const EditorObj& w)
 {
-  return (position->z_pos < w.position->z_pos);
+  return (position->z < w.position->z);
 }
 
 bool
 EditorObj::operator> (const EditorObj& w)
 {
-  return (position->z_pos > w.position->z_pos);
+  return (position->z > w.position->z);
 }
 
 void 
-EditorObj::set_position(int new_x_pos, int new_y_pos)
+EditorObj::set_position(int new_x, int new_y)
 {
-  position->x_pos = new_x_pos;
-  position->y_pos = new_y_pos;
+  position->x = new_x;
+  position->y = new_y;
 }
 
 void
 EditorObj::set_position_offset(int x_pos_add, int y_pos_add, 
 			       int z_pos_add)
 {
-  position->x_pos += x_pos_add;
-  position->y_pos += y_pos_add;
-  position->z_pos += z_pos_add;
+  position->x += x_pos_add;
+  position->y += y_pos_add;
+  position->z += z_pos_add;
 }
 
 void
-EditorObj::draw_offset(int x_offset, int y_offset)
+EditorObj::draw_offset (CL_Vector offset, float zoom)
 {
   assert(surf);
   if (surf) {
-    surf.put_screen(position->x_pos + x_offset + x_of,
-		     position->y_pos + y_offset + y_of);
+    surf.put_screen(position->x + offset.x + x_of,
+		    position->y + offset.y + y_of);
   } else {
-    CL_Display::fill_rect(position->x_pos + x_offset, position->y_pos + y_offset, 
-			  position->x_pos + 10 + x_offset, position->y_pos + 10 + y_offset,
+    CL_Display::fill_rect(position->x + offset.x, position->y + offset.y, 
+			  position->x + 10 + offset.x, position->y + 10 + offset.y,
 			  1.0, 0.0, 0.0, 1.0);
   }
 }
@@ -167,17 +167,17 @@ EditorObj::draw_scroll_map(int x_pos, int y_pos, int arg_width, int arg_height)
 {
   if (surf)
     {
-      surf.put_screen(x_pos + position->x_pos * arg_width / editor->get_object_manager()->get_width(),
-		       y_pos + position->y_pos * arg_height / editor->get_object_manager()->get_height(),
+      surf.put_screen(x_pos + position->x * arg_width / editor->get_object_manager()->get_width(),
+		       y_pos + position->y * arg_height / editor->get_object_manager()->get_height(),
 		       width * arg_width / editor->get_object_manager()->get_width(),
 		       height * arg_height / editor->get_object_manager()->get_height());
     }
   else
     {
-      Display::draw_rect(x_pos + position->x_pos * arg_width / editor->get_object_manager()->get_width(),
-			 y_pos + position->y_pos * arg_height / editor->get_object_manager()->get_height(),
-			 x_pos + (position->x_pos + width) * arg_width / editor->get_object_manager()->get_width(),
-			 y_pos + (position->y_pos + height) * arg_height / editor->get_object_manager()->get_height(),
+      Display::draw_rect(x_pos + position->x * arg_width / editor->get_object_manager()->get_width(),
+			 y_pos + position->y * arg_height / editor->get_object_manager()->get_height(),
+			 x_pos + (position->x + width) * arg_width / editor->get_object_manager()->get_width(),
+			 y_pos + (position->y + height) * arg_height / editor->get_object_manager()->get_height(),
 			 1.0, 1.0, 0.0, 1.0);       
     }
 }
@@ -192,9 +192,9 @@ EditorObj::draw_mark_offset(int x_offset, int y_offset, EditorObj::Color* arg_co
   else
     color = mark_color;
   
-  Display::draw_rect(position->x_pos + x_offset + x_of, position->y_pos + y_offset + y_of,
-		     position->x_pos + get_width() + x_offset + x_of - 1,
-		     position->y_pos + get_height() + y_offset + y_of - 1,
+  Display::draw_rect(position->x + x_offset + x_of, position->y + y_offset + y_of,
+		     position->x + get_width() + x_offset + x_of - 1,
+		     position->y + get_height() + y_offset + y_of - 1,
 		     color.r, 
 		     color.g,
 		     color.b,
@@ -214,10 +214,10 @@ EditorObj::mouse_over(int x_offset, int y_offset)
     height = surf.get_height();
   }
 
-  if (   mouse_x > position->x_pos + x_offset + x_of 
-      && mouse_x < position->x_pos + width + x_offset + x_of
-      && mouse_y > position->y_pos + y_offset + y_of
-      && mouse_y < position->y_pos + height + y_offset + y_of)
+  if (   mouse_x > position->x + x_offset + x_of 
+      && mouse_x < position->x + width + x_offset + x_of
+      && mouse_y > position->y + y_offset + y_of
+      && mouse_y < position->y + height + y_offset + y_of)
     {
       return true;
     }
@@ -228,8 +228,8 @@ bool
 EditorObj::is_in_rect(int x1, int y1, int x2, int y2)
 {
   // FIXME: Simple, stupid, wrong,...
-  if (position->x_pos + x_of > x1 && position->x_pos + x_of < x2
-      && position->y_pos + y_of > y1 && position->y_pos + y_of < y2)
+  if (position->x + x_of > x1 && position->x + x_of < x2
+      && position->y + y_of > y1 && position->y + y_of < y2)
     {
       return true;
     }
@@ -253,6 +253,9 @@ EditorObj::gui_edit_obj()
   
 /*
 $Log: EditorObj.cc,v $
+Revision 1.29  2001/04/21 10:55:16  grumbel
+Some cleanups in the editor's object hierachie (I guess I broke half of it...)
+
 Revision 1.28  2000/12/16 23:11:24  grumbel
 replaced most pointers with smart_ptr's, this might fix some memory holes and is probally a good start to clean up the dirty object generation code
 

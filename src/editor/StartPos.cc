@@ -1,4 +1,4 @@
-//  $Id: StartPos.cc,v 1.7 2000/12/16 23:11:24 grumbel Exp $
+//  $Id: StartPos.cc,v 1.8 2001/04/21 10:55:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,9 +23,9 @@
 
 StartPos::StartPos(int arg_x_pos, int arg_y_pos)
 {
-  position->x_pos = arg_x_pos;
-  position->y_pos = arg_y_pos;
-  position->z_pos = 1000;
+  position->x = arg_x_pos;
+  position->y = arg_y_pos;
+  position->z = 1000;
   
   x_of = -17;
   y_of = -17;

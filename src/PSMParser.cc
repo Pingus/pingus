@@ -1,4 +1,4 @@
-//  $Id: PSMParser.cc,v 1.17 2000/10/18 20:16:36 grumbel Exp $
+//  $Id: PSMParser.cc,v 1.18 2001/04/21 10:55:15 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -53,19 +53,10 @@ PSMParser::parse(string filename)
     
     while(!in.eof()) {
       jump_spaces();
-      temp.type_str = get_string();
+      std::string str = get_string();
       
-      if (temp.type_str == "solid") { 
-	temp.type = GroundpieceData::SOLID;
-      } else if (temp.type_str == "ground") {
-	temp.type = GroundpieceData::GROUND;
-      } else if (temp.type_str == "transparent") {
-	temp.type = GroundpieceData::TRANSPARENT;
-      } else if (temp.type_str == "bridge") {
-	temp.type = GroundpieceData::BRIDGE;
-      } else {
-	throw PSMParseError("Object type is not valid: " + temp.type_str);	
-      }
+      temp.type = GroundpieceData::string_to_type(str);
+
       expect(':');
 
       jump_spaces();
@@ -74,11 +65,11 @@ PSMParser::parse(string filename)
       expect(':');
 
       jump_spaces();
-      temp.pos.x_pos = get_int();
+      temp.pos.x = get_int();
       expect(':');
 
       jump_spaces();
-      temp.pos.y_pos = get_int();
+      temp.pos.y = get_int();
       expect(';');
 
       surface.push_back(temp);

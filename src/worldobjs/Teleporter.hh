@@ -1,4 +1,4 @@
-//  $Id: Teleporter.hh,v 1.9 2001/04/01 18:00:43 grumbel Exp $
+//  $Id: Teleporter.hh,v 1.10 2001/04/21 10:55:18 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,6 @@
 #define TELEPORTER_HH
 
 #include "../boost/smart_ptr.hpp"
-#include "../Position.hh"
 #include "../WorldObj.hh"
 #include "../editor/EditorWorldObj.hh"
 #include "../WorldObjData.hh"
@@ -29,8 +28,8 @@
 class TeleporterData : public WorldObjData
 {
 public:
-  Position pos;
-  Position target_pos;
+  CL_Vector pos;
+  CL_Vector target_pos;
   
   TeleporterData () {}
   TeleporterData (const TeleporterData& data);
@@ -61,7 +60,7 @@ public:
   ///
   virtual void update(float delta);
   ///
-  virtual int  get_z_pos() const { return pos.z_pos; }
+  virtual int  get_z_pos() const { return (int) pos.z; }
 };
 
 /** An pseudo object to represent the teleporter target, all the
@@ -73,13 +72,13 @@ class EditorTeleporterTargetObj : public EditorObj
 public:
   /// Basic constructor
   EditorTeleporterTargetObj ();
-  EditorTeleporterTargetObj (WorldObjData* obj, Position*);
+  EditorTeleporterTargetObj (WorldObjData* obj, CL_Vector*);
 
   virtual ~EditorTeleporterTargetObj () {}
     
   static std::list<boost::shared_ptr<EditorObj> > create (TeleporterData*);
 
-  Position get_position () { return *position; }
+  CL_Vector get_position () { return *position; }
 
   /// The saveing will be done in EditorTeleporterObj::save_xml
   virtual void save_xml (std::ofstream* xml);
@@ -96,13 +95,13 @@ public:
   EditorTeleporterObj (WorldObjData* obj);
   virtual ~EditorTeleporterObj ();
 
-  Position* get_target_pos_p () { return &target_pos; }
+  CL_Vector* get_target_pos_p () { return &target_pos; }
 
   static std::list<boost::shared_ptr<EditorObj> > create (WorldObjData* obj);
 
   /** Create this object (and child objects) with resonable defaults
       for the editor */
-  static std::list<boost::shared_ptr<EditorObj> > create (const Position& pos);
+  static std::list<boost::shared_ptr<EditorObj> > create (const CL_Vector& pos);
 
   virtual void draw_offset(int, int);
   virtual void save_xml (std::ofstream* xml);

@@ -1,4 +1,4 @@
-//  $Id: Liquid.hh,v 1.8 2001/03/18 17:45:04 grumbel Exp $
+//  $Id: Liquid.hh,v 1.9 2001/04/21 10:55:15 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -44,7 +44,7 @@ public:
   ///
   virtual ~Liquid();
   ///
-  virtual int  get_z_pos() const { return pos.z_pos; }
+  virtual int  get_z_pos() const { return (int) pos.z; }
   ///
   void draw_colmap();
   ///

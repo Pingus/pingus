@@ -1,4 +1,4 @@
-//  $Id: XMLhelper.cc,v 1.8 2001/04/04 10:21:16 grumbel Exp $
+//  $Id: XMLhelper.cc,v 1.9 2001/04/21 10:55:15 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -324,6 +324,16 @@ XMLhelper::write_position_xml(std::ofstream* xml, Position pos)
 	 << "    <x-pos>" << pos.x_pos << "</x-pos>\n"
 	 << "    <y-pos>" << pos.y_pos << "</y-pos>\n"
 	 << "    <z-pos>" << pos.z_pos << "</z-pos>\n"
+	 << "  </position>\n";
+}
+
+void 
+XMLhelper::write_vector_xml(std::ofstream* xml, const CL_Vector& pos)
+{
+  (*xml) << "  <position>\n"
+	 << "    <x-pos>" << pos.x << "</x-pos>\n"
+	 << "    <y-pos>" << pos.y << "</y-pos>\n"
+	 << "    <z-pos>" << pos.z << "</z-pos>\n"
 	 << "  </position>\n";
 }
 

@@ -1,4 +1,4 @@
-//  $Id: Exit.cc,v 1.19 2001/04/16 11:58:34 grumbel Exp $
+//  $Id: Exit.cc,v 1.20 2001/04/21 10:55:15 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -56,13 +56,13 @@ Exit::catch_pingu(boost::shared_ptr<Pingu> pingu)
   
   if (use_old_pos_handling)
     {
-      x = pos.x_pos + (sprite.get_width() / 2);
-      y = pos.y_pos + sprite.get_height();
+      x = pos.x + (sprite.get_width() / 2);
+      y = pos.y + sprite.get_height();
     }
   else
     {
-      x = pos.x_pos;
-      y = pos.y_pos;
+      x = pos.x;
+      y = pos.y;
     }
 
   if (pingu->get_x() > x - 1 && pingu->get_x() < x + 1
@@ -82,18 +82,18 @@ void
 Exit::draw_colmap()
 {
   world->get_colmap()->remove(sprite.get_surface (), 
-			      pos.x_pos - sprite.get_width ()/2,
-			      pos.y_pos - sprite.get_height ());
+			      pos.x - sprite.get_width ()/2,
+			      pos.y - sprite.get_height ());
 }
 
 void
 Exit::draw_offset(int x_of, int y_of, float s)
 {
   if (s == 1.0) {
-    sprite.put_screen(pos.x_pos + x_of, pos.y_pos + y_of);
-    flag.put_screen (pos.x_pos + 40 + x_of, pos.y_pos + y_of);
+    sprite.put_screen(pos.x + x_of, pos.y + y_of);
+    flag.put_screen (pos.x + 40 + x_of, pos.y + y_of);
   } else {
-    //sprite.put_screen((int)((pos.x_pos + x_of) * s), (int)((pos.y_pos + y_of) * s),
+    //sprite.put_screen((int)((pos.x + x_of) * s), (int)((pos.y + y_of) * s),
     //s, s);
   }
 }

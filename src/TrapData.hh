@@ -1,4 +1,4 @@
-// $Id: TrapData.hh,v 1.3 2000/12/16 23:11:20 grumbel Exp $
+// $Id: TrapData.hh,v 1.4 2001/04/21 10:55:15 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,14 +23,13 @@
 #include <string>
 #include "boost/smart_ptr.hpp"
 #include "WorldObjData.hh"
-#include "Position.hh"
 
 /// Structure holding all the data needed for a trap.
 class TrapData : public WorldObjData
 {
 public:
   std::string type;
-  Position pos;
+  CL_Vector pos;
   
   TrapData(){}
   virtual ~TrapData(){}

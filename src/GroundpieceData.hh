@@ -1,4 +1,4 @@
-//  $Id: GroundpieceData.hh,v 1.4 2001/04/20 20:53:54 grumbel Exp $
+//  $Id: GroundpieceData.hh,v 1.5 2001/04/21 10:55:15 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,7 +23,6 @@
 #include <ClanLib/core.h>
 #include <ClanLib/display.h>
 #include "ResDescriptor.hh"
-#include "Position.hh"
 
 ///
 class GroundpieceData 
@@ -36,9 +35,7 @@ public:
   ///
   ResDescriptor desc;
   ///
-  Position pos;
-  ///
-  std::string type_str; 
+  CL_Vector pos;
   ///
   enum Type { SOLID, TRANSPARENT, GROUND, BRIDGE, WATER, LAVA, REMOVE, NOTHING } type; 
 

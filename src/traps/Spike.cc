@@ -1,4 +1,4 @@
-//  $Id: Spike.cc,v 1.9 2001/04/01 18:00:43 grumbel Exp $
+//  $Id: Spike.cc,v 1.10 2001/04/21 10:55:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -44,7 +44,7 @@ void
 Spike::draw_offset(int x, int y, float s)
 {
   if (killing) {
-    surface.put_screen(pos.x_pos + x, pos.y_pos + y, counter);
+    surface.put_screen(pos.x + x, pos.y + y, counter);
   } else {
     // do nothing
   }
@@ -66,15 +66,15 @@ void
 Spike::catch_pingu(boost::shared_ptr<Pingu> pingu)
 {
   if (!killing) {
-    if (pingu->get_x () > pos.x_pos + 16 - 5 && pingu->get_x () < pos.x_pos + 16 + 5
-	&& pingu->get_y () > pos.y_pos && pingu->get_y () < pos.y_pos + 32) 
+    if (pingu->get_x () > pos.x + 16 - 5 && pingu->get_x () < pos.x + 16 + 5
+	&& pingu->get_y () > pos.y && pingu->get_y () < pos.y + 32) 
       {
 	counter = 0;
 	killing = true;
       }
   } else {
-    if (counter == 3 && pingu->get_x () > pos.x_pos +16 - 12 && pingu->get_x () < pos.x_pos + 16 + 12
-	&& pingu->get_y () > pos.y_pos && pingu->get_y () < pos.y_pos + 32) 
+    if (counter == 3 && pingu->get_x () > pos.x +16 - 12 && pingu->get_x () < pos.x + 16 + 12
+	&& pingu->get_y () > pos.y && pingu->get_y () < pos.y + 32) 
       {
 	pingu->set_status((PinguStatus)dead);
       }

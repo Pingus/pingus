@@ -1,4 +1,4 @@
-//  $Id: Liquid.cc,v 1.12 2000/12/16 23:11:19 grumbel Exp $
+//  $Id: Liquid.cc,v 1.13 2001/04/21 10:55:15 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -44,16 +44,16 @@ Liquid::draw_colmap()
   CL_Surface sur = PingusResource::load_surface("Liquid/water_cmap", "global");
 
   for(int i=0; i < width; i++)
-    world->get_colmap()->put(sur, pos.x_pos + i, pos.y_pos, GroundpieceData::WATER);
+    world->get_colmap()->put(sur, pos.x + i, pos.y, GroundpieceData::WATER);
 }
 
 void
 Liquid::draw_offset(int x_of, int y_of, float s)
 {
-  int x1 = pos.x_pos + x_of;
-  int x2 = pos.x_pos + width + x_of;
-  int y1 = pos.y_pos + y_of;
-  int y2 = pos.y_pos + y_of + sur.get_height();
+  int x1 = int(pos.x + x_of);
+  int x2 = int(pos.x + width + x_of);
+  int y1 = int(pos.y + y_of);
+  int y2 = int(pos.y + y_of + sur.get_height());
 
   if (x1 < 0) {
     x1 = 0;
@@ -83,8 +83,8 @@ Liquid::draw_offset(int x_of, int y_of, float s)
     CL_Display::push_clip_rect();
     CL_Display::set_clip_rect(CL_ClipRect(x1, y1, x2, y2));
     
-    for(int x = pos.x_pos; x <= pos.x_pos + width; x += sur.get_width())
-      sur.put_screen(x + x_of, pos.y_pos + y_of, int(counter));
+    for(int x = (int) pos.x; x <= pos.x + width; x += sur.get_width())
+      sur.put_screen(x + x_of, pos.y + y_of, int(counter));
 
     CL_Display::pop_clip_rect();
   } else {

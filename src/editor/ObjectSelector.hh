@@ -1,4 +1,4 @@
-// $Id: ObjectSelector.hh,v 1.18 2000/12/16 23:11:24 grumbel Exp $
+// $Id: ObjectSelector.hh,v 1.19 2001/04/21 10:55:16 grumbel Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,7 +25,7 @@
 
 #include "EditorObj.hh"
 #include "PLFObj.hh"
-#include "PSMObj.hh"
+#include "EditorGroundpieceObj.hh"
 #include "SurfaceSelector.hh"
 
 class EditorObj;

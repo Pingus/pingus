@@ -1,4 +1,4 @@
-//  $Id: XMLPLF.cc,v 1.25 2001/04/20 20:53:54 grumbel Exp $
+//  $Id: XMLPLF.cc,v 1.26 2001/04/21 10:55:15 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -278,7 +278,7 @@ XMLPLF::parse_liquid(xmlNodePtr cur)
 	}
 
       if (strcmp((char*)cur->name, "position") == 0)
-	liquid.pos = XMLhelper::parse_position(doc, cur);
+	liquid.pos = XMLhelper::parse_vector(doc, cur);
       else if (strcmp((char*)cur->name, "surface") == 0)
 	liquid.desc = XMLhelper::parse_surface(doc, cur);
       else if (strcmp((char*)cur->name, "speed") == 0)
@@ -425,7 +425,7 @@ XMLPLF::parse_exit(xmlNodePtr cur)
       
       if (strcmp((char*)cur->name, "position") == 0)
 	{
-	  exit.pos = XMLhelper::parse_position(doc, cur);
+	  exit.pos = XMLhelper::parse_vector(doc, cur);
 	}
       else if (strcmp((char*)cur->name, "surface") == 0)
 	{
@@ -553,7 +553,7 @@ XMLPLF::parse_groundpiece(xmlNodePtr cur)
       
       if (strcmp((char*)cur->name, "position") == 0)
 	{
-	  surface.pos = XMLhelper::parse_position(doc, cur);
+	  surface.pos = XMLhelper::parse_vector(doc, cur);
 	}
       else if (strcmp((char*)cur->name, "surface") == 0)
 	{
@@ -593,7 +593,7 @@ XMLPLF::parse_traps(xmlNodePtr cur)
 	} 
       else if (strcmp((char*)cur->name, "position") == 0) 
 	{
-	  trap.pos = XMLhelper::parse_position(doc, cur);
+	  trap.pos = XMLhelper::parse_vector(doc, cur);
 	}
 
       cur = cur->next;
@@ -620,7 +620,7 @@ XMLPLF::parse_hotspot(xmlNodePtr cur)
 	} 
       else if (strcmp((char*)cur->name, "position") == 0) 
 	{
-	  hotspot.pos = XMLhelper::parse_position(doc, cur);
+	  hotspot.pos = XMLhelper::parse_vector(doc, cur);
 	}
       else if (strcmp((char*)cur->name, "speed") == 0) 
 	{

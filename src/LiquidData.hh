@@ -1,4 +1,4 @@
-// $Id: LiquidData.hh,v 1.1 2000/07/30 02:27:48 grumbel Exp $
+// $Id: LiquidData.hh,v 1.2 2001/04/21 10:55:15 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,26 +26,23 @@
 ///
 class LiquidData {
 public:
-  ///
   ResDescriptor desc;
-  ///
-  Position pos;
-  ///
+  CL_Vector pos;
   int width;
-  ///
   int speed;
+  
   ///
   LiquidData() 
   {
     clean();
   }
 
-  ///
+  /** Reset the object to some reasonable defaults */
   void clean() 
   {
-    pos.x_pos = 0;
-    pos.y_pos = 0;
-    pos.z_pos = 0;
+    pos.x = 0;
+    pos.y = 0;
+    pos.z = 0;
     width = 0;
     speed = 50;
   }

@@ -1,4 +1,4 @@
-//  $Id: Teleporter.cc,v 1.14 2001/04/01 18:00:43 grumbel Exp $
+//  $Id: Teleporter.cc,v 1.15 2001/04/21 10:55:17 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -57,7 +57,7 @@ TeleporterData::create(xmlDocPtr doc, xmlNodePtr cur)
 
       if (strcmp((char*)cur->name, "position") == 0)
 	{
-	  data->pos = XMLhelper::parse_position (doc, cur);
+	  data->pos = XMLhelper::parse_vector (doc, cur);
 	}
       else if (strcmp((char*)cur->name, "target") == 0)
 	{
@@ -66,7 +66,7 @@ TeleporterData::create(xmlDocPtr doc, xmlNodePtr cur)
 	  if (xmlIsBlankNode(ncur)) ncur = ncur->next;
 	    
 	  if (ncur != NULL)
-	    data->target_pos = XMLhelper::parse_position (doc, ncur);
+	    data->target_pos = XMLhelper::parse_vector (doc, ncur);
 	  else
 	    std::cout << "TeleporterData::create (): <target> is empty" << std::endl;
 	}
@@ -95,14 +95,14 @@ Teleporter::Teleporter (boost::shared_ptr<WorldObjData> data)
   pos = teleporter->pos;
   target_pos = teleporter->target_pos;
 
-  std::cout << "pos: " << pos.x_pos << " "  << pos.y_pos << " " << pos.z_pos << std::endl;
+  std::cout << "pos: " << pos.x << " "  << pos.y << " " << pos.z << std::endl;
 }
 
 void 
 Teleporter::draw_offset (int x_of, int y_of, float s = 1.0)
 {
   //std::cout << "Teleporter::draw_offset ()" << std::endl;
-  sur.put_screen (pos.x_pos + x_of, pos.y_pos + y_of);
+  sur.put_screen (pos.x + x_of, pos.y + y_of);
 }
 
 void 
@@ -112,10 +112,10 @@ Teleporter::update (float delta)
 
   for (PinguIter pingu = holder->begin (); pingu != holder->end (); pingu++)
     {
-      if ((*pingu)->get_x() > pos.x_pos  && (*pingu)->get_x() < pos.x_pos + 35
-	  && (*pingu)->get_y() > pos.y_pos && (*pingu)->get_y() < pos.y_pos + 52)
+      if ((*pingu)->get_x() > pos.x  && (*pingu)->get_x() < pos.x + 35
+	  && (*pingu)->get_y() > pos.y && (*pingu)->get_y() < pos.y + 52)
 	{
-	  (*pingu)->set_pos (target_pos.x_pos, target_pos.y_pos);
+	  (*pingu)->set_pos (target_pos.x, target_pos.y);
 	}
     }
 }
@@ -158,15 +158,15 @@ EditorTeleporterObj::create (WorldObjData* data)
 }
 
 std::list<boost::shared_ptr<EditorObj> >
-EditorTeleporterObj::create (const Position& pos)
+EditorTeleporterObj::create (const CL_Vector& pos)
 {
   TeleporterData data;
 
   std::cout << "EditorTeleporterObj: creating..." << std::endl;
 
   data.pos = pos;
-  data.target_pos.x_pos = pos.x_pos + 50;
-  data.target_pos.y_pos = pos.y_pos + 50;
+  data.target_pos.x = pos.x + 50;
+  data.target_pos.y = pos.y + 50;
 
   return EditorObj::create (&data);
 }
@@ -185,8 +185,8 @@ EditorTeleporterObj::status_line()
 {
   // FIXME: replace with string streams
   char str[1024];
-  sprintf (str, "Teleporter - %d %d %d", 
-	   pos.x_pos, pos.y_pos, pos.z_pos);
+  sprintf (str, "Teleporter - %f %f %f", 
+	   pos.x, pos.y, pos.z);
   return str;
 }
 
@@ -194,7 +194,7 @@ EditorTeleporterTargetObj::EditorTeleporterTargetObj ()
 {
 }
 
-EditorTeleporterTargetObj::EditorTeleporterTargetObj (WorldObjData* obj, Position* pos)
+EditorTeleporterTargetObj::EditorTeleporterTargetObj (WorldObjData* obj, CL_Vector* pos)
 {
   surf = PingusResource::load_surface ("teleporter2", "worldobjs");
   width = surf.get_width ();
@@ -212,8 +212,8 @@ EditorTeleporterTargetObj::EditorTeleporterTargetObj (WorldObjData* obj, Positio
 void
 EditorTeleporterObj::draw_offset(int x_of, int y_of)
 {
-  CL_Display::draw_line (pos.x_pos + x_of + width/2, pos.y_pos + y_of + height/2,
-			 target_pos.x_pos + x_of + 32, target_pos.y_pos + y_of + 32,
+  CL_Display::draw_line (pos.x + x_of + width/2, pos.y + y_of + height/2,
+			 target_pos.x + x_of + 32, target_pos.y + y_of + 32,
 			 0.0, 1.0, 0.0, 0.5);
   EditorObj::draw_offset (x_of, y_of);
 }
@@ -228,8 +228,8 @@ std::string
 EditorTeleporterTargetObj::status_line()
 {
   char str[1024];
-  sprintf (str, "TeleporterTarget - %d %d %d", 
-	   position->x_pos, position->y_pos, position->z_pos);
+  sprintf (str, "TeleporterTarget - %f %f %f", 
+	   position->x, position->y, position->z);
   return str;
 }
 

@@ -1,4 +1,4 @@
-//  $Id: PingusSpotMap.cc,v 1.41 2001/04/20 20:53:54 grumbel Exp $
+//  $Id: PingusSpotMap.cc,v 1.42 2001/04/21 10:55:15 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -217,7 +217,7 @@ PingusSpotMap::create_map()
       i != surfaces.end(); 
       i++)
     {
-      mark_tiles_not_empty(i->pos.x_pos, i->pos.y_pos,
+      mark_tiles_not_empty(i->pos.x, i->pos.y,
 			   i->surface.get_width(), i->surface.get_height());
       // test cause png
       if (i->surface.get_provider()->get_depth() == 8)
@@ -225,22 +225,22 @@ PingusSpotMap::create_map()
 	  if (i->type == GroundpieceData::REMOVE)
 	    {
 	      Blitter::put_alpha_surface(map_canvas, i->surface.get_provider (),
-					 i->pos.x_pos, i->pos.y_pos);
+					 i->pos.x, i->pos.y);
 	    }
 	  else
 	    {
-	      mark_tiles_not_empty(i->pos.x_pos, i->pos.y_pos,
+	      mark_tiles_not_empty(i->pos.x, i->pos.y,
 				   i->surface.get_width(), i->surface.get_height());
 	      // FIXME: Replace this with a ClanLib built in
 	      //i->surface->put_target(i->pos.x_pos, i->pos.y_pos, 0, map_canvas);
 	      Blitter::put_surface(map_canvas, i->surface,
-				   i->pos.x_pos, i->pos.y_pos);
+				   i->pos.x, i->pos.y);
 	      }
 	}
       else
 	{
 	  Blitter::put_surface(map_canvas, i->surface,
-	    i->pos.x_pos, i->pos.y_pos);
+			       i->pos.x, i->pos.y);
 	  //i->surface->put_target(i->pos.x_pos, i->pos.y_pos, 0, map_canvas);
 	}
     }
@@ -553,9 +553,9 @@ PingusSpotMap::get_colmap(void)
 	  i2++) 
 	{
 	  if (i2->type == GroundpieceData::REMOVE)
-	    colmap->remove(i2->surface.get_provider (), i2->pos.x_pos, i2->pos.y_pos);
+	    colmap->remove(i2->surface.get_provider (), i2->pos.x, i2->pos.y);
 	  else
-	    colmap->put(i2->surface, i2->pos.x_pos, i2->pos.y_pos, i2->type);
+	    colmap->put(i2->surface, i2->pos.x, i2->pos.y, i2->type);
 	}
       
       if (verbose)

@@ -1,4 +1,4 @@
-//  $Id: SmallMapImage.cc,v 1.1 2001/04/17 05:00:04 grumbel Exp $
+//  $Id: SmallMapImage.cc,v 1.2 2001/04/21 10:55:15 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -123,8 +123,8 @@ SmallMapImage::create_surface (dummy_ptr<Server> server, int width, int height)
     {
       // FIXME: Replace this with put_target() when it is bug free
       Blitter::put_surface(canvas, exit_sur, 
-			   i->pos.x_pos * width / colmap->get_width() - (exit_sur.get_width()/2), 
-			   i->pos.y_pos * height / colmap->get_height() - (exit_sur.get_height()));
+			   i->pos.x * width / colmap->get_width() - (exit_sur.get_width()/2), 
+			   i->pos.y * height / colmap->get_height() - (exit_sur.get_height()));
     }
 
   std::vector<EntranceData>     entrance_d     = plf->get_entrance();

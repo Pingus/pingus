@@ -1,4 +1,4 @@
-//  $Id: TrapData.cc,v 1.2 2000/12/16 23:11:20 grumbel Exp $
+//  $Id: TrapData.cc,v 1.3 2001/04/21 10:55:15 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -55,7 +55,7 @@ TrapData::create(xmlDocPtr doc, xmlNodePtr cur)
 	} 
       else if (strcmp((char*)cur->name, "position") == 0) 
 	{
-	  trap->pos = XMLhelper::parse_position(doc, cur);
+	  trap->pos = XMLhelper::parse_vector(doc, cur);
 	}
 
       cur = cur->next;

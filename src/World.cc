@@ -1,4 +1,4 @@
-//  $Id: World.cc,v 1.47 2001/04/15 20:55:03 grumbel Exp $
+//  $Id: World.cc,v 1.48 2001/04/21 10:55:15 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -301,7 +301,7 @@ World::init_worldobjs()
   // Push all objects to world_obj vector
   for(vector<HotspotData>::size_type i = 0; i < hotspot.size(); i++)
     {
-      if (hotspot[i]->pos.z_pos <= 0)
+      if (hotspot[i]->pos.z <= 0)
 	world_obj_bg.push_back(hotspot[i]);
       else 
 	world_obj_fg.push_back(hotspot[i]);
@@ -309,7 +309,7 @@ World::init_worldobjs()
 
   for(vector<ExitData>::size_type i=0; i < exits.size(); i++)
     { 
-      if (exits[i]->pos.z_pos <= 0)
+      if (exits[i]->pos.z <= 0)
 	world_obj_bg.push_back(exits[i]);
       else 
 	world_obj_fg.push_back(exits[i]);
@@ -325,7 +325,7 @@ World::init_worldobjs()
   
   for(vector<LiquidData>::size_type i=0; i < liquid_d.size(); ++i)
     {
-      if (liquid[i]->pos.z_pos <= 0)
+      if (liquid[i]->pos.z <= 0)
 	world_obj_bg.push_back(liquid[i]);
       else 
 	world_obj_fg.push_back(liquid[i]);
@@ -333,7 +333,7 @@ World::init_worldobjs()
   
   for(vector<TrapData>::size_type i=0; i < traps.size(); ++i) 
     {
-      if (traps[i]->pos.z_pos <= 0)
+      if (traps[i]->pos.z <= 0)
 	world_obj_bg.push_back(traps[i]);
       else 
 	world_obj_fg.push_back(traps[i]);

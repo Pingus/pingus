@@ -1,4 +1,4 @@
-//  $Id: ConveyorBelt.hh,v 1.9 2001/04/03 10:45:51 grumbel Exp $
+//  $Id: ConveyorBelt.hh,v 1.10 2001/04/21 10:55:17 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,7 +28,7 @@
 class ConveyorBeltData : public WorldObjData
 {
 public:
-  Position pos;
+  CL_Vector pos;
   int width;
   double speed;
 
@@ -63,7 +63,7 @@ public:
   ///
   virtual void update(float delta);
   ///
-  virtual int  get_z_pos() const { return pos.z_pos; }
+  virtual int  get_z_pos() const { return (int) pos.z; }
 };
 
 class EditorConveyorBeltObj : public EditorWorldObj,
@@ -87,7 +87,7 @@ public:
   static std::list<boost::shared_ptr<EditorObj> > create (WorldObjData* obj);
 
   /** Create the object with resonable defaults */
-  static std::list<boost::shared_ptr<EditorObj> > create (const Position& pos);
+  static std::list<boost::shared_ptr<EditorObj> > create (const CL_Vector& pos);
 
   virtual void save_xml (std::ofstream* xml);
   virtual std::string status_line();

@@ -26,8 +26,8 @@ libpingus_editor_a_SOURCES = \
      EditorObj.hh         \
      EditorObjGroup.cc    \
      EditorObjGroup.hh    \
-     PSMObj.cc            \
-     PSMObj.hh            \
+     EditorGroundpieceObj.cc            \
+     EditorGroundpieceObj.hh            \
      PLFObj.cc            \
      PLFObj.hh            \
      StatusLine.cc        \
