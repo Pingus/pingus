@@ -38,4 +38,13 @@ section NewButtons
 	play_on = images/menu/play_on.tga (type=surface, x=0, y=0, width=201, height=127);
 }
 
+section Layer
+{
+	layer1 = images/menu/layer1.pcx (type=surface, x=0, y=0, width=800, height=268);
+	layer2 = images/menu/layer2.pcx (type=surface, x=0, y=0, width=800, height=362, tcol=0);
+	layer3 = images/menu/layer3.pcx (type=surface, x=0, y=0, width=800, height=201, tcol=0);
+	layer4 = images/menu/layer4.pcx (type=surface, x=0, y=0, width=800, height=223, tcol=0);
+	layer5 = images/menu/layer5.pcx (type=surface, x=0, y=0, width=302, height=104, tcol=0);
+}
+
 // EOF

@@ -43,5 +43,8 @@ section Textures
 
 	cyanspace = images/textures/cyanspace.jpg (type=surface, x=0, y=0, width=400, height=600);
 	bwsortiebg = images/textures/bwsortiebg.jpg (type=surface, x=0, y=0, width=400, height=600);
+
+	green_tendrils = images/textures/green_tendrils.pcx (type=surface, x=0, y=0, width=256, height=256, tcol=0);
+	mountain = images/textures/mountain.pcx (type=surface, x=0, y=0, width=400, height=600, tcol=0);
 }
 

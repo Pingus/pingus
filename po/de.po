@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Pingus 0.5.0\n"
-"POT-Creation-Date: 2000-10-13 17:44+0200\n"
-"PO-Revision-Date: 2000-10-13 17:47+02:00\n"
+"POT-Creation-Date: 2000-10-14 14:04+0200\n"
+"PO-Revision-Date: 2000-10-14 14:07+02:00\n"
 "Last-Translator: Ingo Ruhnke <grumbel@gmx.de>\n"
 "Language-Team: Ingo Ruhnke <grumbel@gmx.de>\n"
 "MIME-Version: 1.0\n"
@@ -76,9 +76,25 @@ msgstr "Pingus: Unbekannte Ausnahme abgefangen!"
 msgid "System: Couldn't open: "
 msgstr "System: Datei oder Verzeichnis konnte nicht geoeffnet werden: "
 
+#: src/System.cc:150
+msgid "Successfully created: "
+msgstr "Verzeichnis erstellt: "
+
 #: src/System.cc:154
 msgid "Found: "
 msgstr "Gefunden: "
+
+#: src/System.cc:199
+msgid "Enviroment variable $HOME not set, fix that and start again."
+msgstr "Umgebungs Variable $HOME ist nicht gesetzt."
+
+#: src/System.cc:309
+msgid "System::checksum: Couldn't open file: "
+msgstr "System::checksum: Datei oder Verzeichnis konnte nicht geoeffnet werden: "
+
+#: src/System.cc:319
+msgid "System:checksum: file read error"
+msgstr "System:checksum: Fehler beim Lesen von Datei"
 
 #: src/GenericMain.cc:74
 msgid "Starting..."
@@ -151,7 +167,6 @@ msgstr "..:: Such dir eine Welt zum starten aus ::.."
 
 #. desc["de"] = "..:: Such dir eine Welt zum beginnen aus ::..";
 #: src/SurfaceButton.cc:319
-#, fuzzy
 msgid "Start"
 msgstr "Start"
 
@@ -214,13 +229,13 @@ msgid "Number of Pingus: %d"
 msgstr "Anzahl an Pingus: %d"
 
 #: src/PingusLevelDesc.cc:86
-#, fuzzy
 msgid "Loading..."
 msgstr "Ladevorgang laeuft..."
 
 #: src/PingusLevelDesc.cc:89
 msgid "Loading finished. Press a mouse button to start the level"
-msgstr "Ladevorgang abgeschloss. Drücke eine Maus Taste um den Level zu starten"
+msgstr ""
+"Ladevorgang abgeschloss. Drücke eine Maus Taste um den Level zu starten"
 
 #~ msgid "Pingus: Gimmicks enabled"
 #~ msgstr "Pingus: Spielereinen eingeschaltet"
