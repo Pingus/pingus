@@ -1,4 +1,4 @@
-//  $Id: ColMap.cc,v 1.26 2001/08/15 22:01:45 grumbel Exp $
+//  $Id: ColMap.cc,v 1.27 2001/08/31 07:51:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -225,20 +225,20 @@ ColMap::load(unsigned char* b, int w, int h)
 }
 
 void
-ColMap::put(const CL_Surface& sur, int sur_x, int sur_y, GroundpieceData::Type type)
+ColMap::put(const CL_Surface& sur, int sur_x, int sur_y, GroundpieceData::GPType gptype)
 {
-  put(sur.get_provider(), sur_x, sur_y, type);
+  put(sur.get_provider(), sur_x, sur_y, gptype);
 }
 
 // Puts a surface on the colmap
 void
-ColMap::put(CL_SurfaceProvider* provider, int sur_x, int sur_y, GroundpieceData::Type type)
+ColMap::put(CL_SurfaceProvider* provider, int sur_x, int sur_y, GroundpieceData::GPType gptype)
 {
-  if (type == GroundpieceData::GP_TRANSPARENT)
+  if (gptype == GroundpieceData::GP_TRANSPARENT)
     return;
 
   PixelStatus pixel;
-  switch (type) 
+  switch (gptype) 
     {
     case GroundpieceData::GP_GROUND:  pixel = WALL; break;
     case GroundpieceData::GP_SOLID:   pixel = (PixelStatus)(SOLID | WALL); break;

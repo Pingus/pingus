@@ -1,4 +1,4 @@
-//  $Id: PSMParser.cc,v 1.19 2001/05/18 19:17:08 grumbel Exp $
+//  $Id: PSMParser.cc,v 1.20 2001/08/31 07:51:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -55,7 +55,7 @@ PSMParser::parse(string filename)
       jump_spaces();
       std::string str = get_string();
       
-      temp.type = GroundpieceData::string_to_type(str);
+      temp.gptype = GroundpieceData::string_to_type(str);
 
       expect(':');
 

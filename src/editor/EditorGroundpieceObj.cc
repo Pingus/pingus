@@ -1,4 +1,4 @@
-//  $Id: EditorGroundpieceObj.cc,v 1.5 2001/08/15 07:35:29 grumbel Exp $
+//  $Id: EditorGroundpieceObj.cc,v 1.6 2001/08/31 07:51:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -44,7 +44,7 @@ EditorGroundpieceObj::status_line()
 {
   // FIXME: This is a potential buffer overrun, to lazy to fix it right now
   char str[1024];  
-  std::string type_name = GroundpieceData::type_to_string(type);
+  std::string type_name = GroundpieceData::type_to_string(gptype);
   
   sprintf (str, "Groundpiece: %s Type: %s",
 	   desc.res_name.c_str(), type_name.c_str());

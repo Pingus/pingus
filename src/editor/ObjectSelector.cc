@@ -1,4 +1,4 @@
-//  $Id: ObjectSelector.cc,v 1.51 2001/08/15 22:01:45 grumbel Exp $
+//  $Id: ObjectSelector.cc,v 1.52 2001/08/31 07:51:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -127,10 +127,10 @@ ObjectSelector::get_trap()
 }
 
 std::list<boost::shared_ptr<EditorObj> >
-ObjectSelector::get_groundpiece(GroundpieceData::Type type)
+ObjectSelector::get_groundpiece(GroundpieceData::GPType gptype)
 {
   GroundpieceData data;
-  std::string datafile = std::string("groundpieces-") + GroundpieceData::type_to_string (type);
+  std::string datafile = std::string("groundpieces-") + GroundpieceData::type_to_string (gptype);
 
   data.pos = pos;
 
@@ -139,7 +139,7 @@ ObjectSelector::get_groundpiece(GroundpieceData::Type type)
   if (!str.empty())
     {
       data.desc = ResDescriptor("resource:" + datafile, str);
-      data.type = type;
+      data.gptype = gptype;
 
       std::list<boost::shared_ptr<EditorObj> > objs;
       objs.push_back(boost::shared_ptr<EditorObj>(new EditorGroundpieceObj(data)));

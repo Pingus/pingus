@@ -1,4 +1,4 @@
-//  $Id: GroundpieceData.hh,v 1.9 2001/08/11 18:53:39 grumbel Exp $
+//  $Id: GroundpieceData.hh,v 1.10 2001/08/31 07:51:51 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,14 +36,14 @@ public:
   ResDescriptor desc;
   CL_Vector pos;
 
-  enum Type { GP_SOLID, 
+  enum GPType { GP_SOLID, 
 	      GP_TRANSPARENT,
 	      GP_GROUND,
 	      GP_BRIDGE, 
 	      GP_WATER,
 	      GP_LAVA,
 	      GP_REMOVE, 
-	      GP_NOTHING } type; 
+	      GP_NOTHING } gptype; 
 
   /********************/
   /* Static Functions */
@@ -52,8 +52,8 @@ public:
   std::list<boost::shared_ptr<EditorObj> > create_EditorObj();
   void write_xml(std::ofstream* xml);
 
-  static Type string_to_type(const std::string& arg_type);
-  static std::string type_to_string(Type arg_type);
+  static GPType string_to_type(const std::string& arg_type);
+  static std::string type_to_string(GPType arg_type);
 };
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: PingusSpotMap.cc,v 1.45 2001/08/15 22:01:45 grumbel Exp $
+//  $Id: PingusSpotMap.cc,v 1.46 2001/08/31 07:51:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -200,7 +200,7 @@ PingusSpotMap::create_map()
       // test cause png
       if (i->surface.get_provider()->get_depth() == 8)
 	{
-	  if (i->type == GroundpieceData::GP_REMOVE)
+	  if (i->gptype == GroundpieceData::GP_REMOVE)
 	    {
 	      Blitter::put_alpha_surface(map_canvas, i->surface.get_provider (),
 					 i->pos.x, i->pos.y);
@@ -530,10 +530,10 @@ PingusSpotMap::get_colmap(void)
 	  i2 != surfaces.end(); 
 	  i2++) 
 	{
-	  if (i2->type == GroundpieceData::GP_REMOVE)
+	  if (i2->gptype == GroundpieceData::GP_REMOVE)
 	    colmap->remove(i2->surface.get_provider (), i2->pos.x, i2->pos.y);
 	  else
-	    colmap->put(i2->surface, i2->pos.x, i2->pos.y, i2->type);
+	    colmap->put(i2->surface, i2->pos.x, i2->pos.y, i2->gptype);
 	}
       
       if (verbose)

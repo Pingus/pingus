@@ -1,4 +1,4 @@
-//  $Id: XMLPLF.cc,v 1.38 2001/08/16 17:46:51 grumbel Exp $
+//  $Id: XMLPLF.cc,v 1.39 2001/08/31 07:51:51 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -414,13 +414,13 @@ XMLPLF::parse_groundpiece(xmlNodePtr cur)
 {
   GroundpieceData surface;
 
-  surface.type = GroundpieceData::GP_GROUND;
+  surface.gptype = GroundpieceData::GP_GROUND;
 
-  char* type = (char*)xmlGetProp(cur, (xmlChar*)"type");
-  if (type)
+  char* gptype = (char*)xmlGetProp(cur, (xmlChar*)"type");
+  if (gptype)
     {
-      surface.type = GroundpieceData::string_to_type (type);
-      free(type);
+      surface.gptype = GroundpieceData::string_to_type (gptype);
+      free(gptype);
     }
   else
     std::cout << "XMLPLF: groundtype empty" << std::endl;

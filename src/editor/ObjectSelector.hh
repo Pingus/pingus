@@ -1,4 +1,4 @@
-// $Id: ObjectSelector.hh,v 1.23 2001/08/15 22:01:45 grumbel Exp $
+// $Id: ObjectSelector.hh,v 1.24 2001/08/31 07:51:51 grumbel Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -56,7 +56,7 @@ public:
   
   std::list<boost::shared_ptr<EditorObj> > get_obj(int, int);
   std::list<boost::shared_ptr<EditorObj> > get_trap();
-  std::list<boost::shared_ptr<EditorObj> > get_groundpiece(GroundpieceData::Type type);
+  std::list<boost::shared_ptr<EditorObj> > get_groundpiece(GroundpieceData::GPType gptype);
   std::list<boost::shared_ptr<EditorObj> > get_hotspot();
   std::list<boost::shared_ptr<EditorObj> > get_entrance();
   std::list<boost::shared_ptr<EditorObj> > get_exit();

@@ -1,4 +1,4 @@
-//  $Id: GroundpieceData.cc,v 1.2 2001/08/11 18:53:39 grumbel Exp $
+//  $Id: GroundpieceData.cc,v 1.3 2001/08/31 07:51:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,7 @@
 #include "XMLhelper.hh"
 #include "editor/EditorGroundpieceObj.hh"
 
-GroundpieceData::Type 
+GroundpieceData::GPType 
 GroundpieceData::string_to_type(const std::string& arg_type) 
 {
   if (arg_type == "solid")
@@ -47,7 +47,7 @@ GroundpieceData::string_to_type(const std::string& arg_type)
 
 
 std::string 
-GroundpieceData::type_to_string(Type arg_type) 
+GroundpieceData::type_to_string(GPType arg_type) 
   {
     switch (arg_type)
       { 
@@ -83,7 +83,7 @@ GroundpieceData::create_EditorObj()
 void
 GroundpieceData::write_xml(std::ofstream* xml)
 {
-  (*xml) << "<groundpiece type=\"" << GroundpieceData::type_to_string(type) << "\">\n";
+  (*xml) << "<groundpiece type=\"" << GroundpieceData::type_to_string(gptype) << "\">\n";
   XMLhelper::write_desc_xml(xml, desc);
   XMLhelper::write_vector_xml(xml, pos);
   (*xml) << "</groundpiece>\n" << std::endl;
