@@ -111,7 +111,13 @@ PingusResource::load_sprite(const std::string& res_name,
 {
   std::cout << "PingusResource::load_sprite: " << res_name << ", " << datafile << std::endl;
   CL_ResourceManager* res = get(datafile);
-  return CL_Sprite(res_name, res);
+  try {
+    CL_Sprite sprite(res_name, res);
+    return sprite;
+  } catch (CL_Error& err) {
+    std::cout << "PingusResource::load_sprite: CL_Error: " << res_name << ", " << datafile << std::endl;
+    return CL_Sprite("misc/404sprite", get("core"));
+  }
 }
 
 CL_PixelBuffer

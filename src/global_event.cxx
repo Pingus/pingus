@@ -44,33 +44,7 @@ GlobalEvent::on_button_press(const CL_InputEvent& event)
     {
       switch (event.id)
 	{
-#ifdef CLANLIB_0_6
-	  // F1 is the general console modifer key...
-	case CL_KEY_PAGEUP:
-	  //if (CL_Keyboard::get_keycode(PINGUS_CL_KEY_HELP))
-	  //console.increase_lines();
-	  break;
-
-	case CL_KEY_PAGEDOWN:
-	  //if (CL_Keyboard::get_keycode(PINGUS_CL_KEY_HELP))
-	  //  console.decrease_lines();
-	  break;
-
-	case CL_KEY_UP:
-	  //if (CL_Keyboard::get_keycode(PINGUS_CL_KEY_HELP))
-	  // console.scroll_up();
-	  break;
-
-	case CL_KEY_DOWN:
-	  //if (CL_Keyboard::get_keycode(PINGUS_CL_KEY_HELP))
-	  //  console.scroll_down();
-	  break;
-
-#ifdef CL_HAS_KEY_GRAVE
-	case CL_KEY_GRAVE:
-#else
-        case CL_KEY_NONE_OF_THE_ABOVE:
-#endif
+	case CL_KEY_F1:
 	  console.toggle_display();
 	  break;
 
@@ -96,7 +70,7 @@ GlobalEvent::on_button_press(const CL_InputEvent& event)
 	  break;
 
         case CL_KEY_M:
-          if (CL_Keyboard::get_keycode(CL_KEY_LCTRL) || CL_Keyboard::get_keycode(CL_KEY_RCTRL) )
+          if (CL_Keyboard::get_keycode(CL_KEY_LCONTROL) || CL_Keyboard::get_keycode(CL_KEY_RCONTROL) )
             {
               std::cout << "Maintainer Mode: " << maintainer_mode << std::endl;
               maintainer_mode = !maintainer_mode;
@@ -104,14 +78,12 @@ GlobalEvent::on_button_press(const CL_InputEvent& event)
           break;
 
 	case CL_KEY_END:
-	  if (CL_Keyboard::get_keycode(CL_KEY_LCTRL)
-	      && CL_Keyboard::get_keycode(CL_KEY_ALT))
+	  if (CL_Keyboard::get_keycode(CL_KEY_LCONTROL))
 	    {
 	      puts ("---:: Emergency exit ::---");
 	      exit (0);
 	    }
 
-#endif
 	default:
 	  // console << "GlobalEvent: Unknown key pressed: " << key.id;
 	  break;

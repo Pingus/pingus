@@ -55,7 +55,6 @@ DemoSession::~DemoSession()
 void
 DemoSession::draw_background(GraphicContext& gc)
 {
-#ifdef CLANLIB_0_6
   World* world = server->get_world();
 
   if (CL_Keyboard::get_keycode(CL_KEY_LEFT))
@@ -90,7 +89,6 @@ DemoSession::draw_background(GraphicContext& gc)
       server->get_world()->draw(gc);
       CL_System::keep_alive();
     }
-#endif
 }
 
 /** Pass a delta to the screen */

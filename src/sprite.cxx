@@ -50,26 +50,27 @@ Sprite::Sprite (std::string arg_sprite_name,
 void
 Sprite::draw (int x, int y)
 {
-#ifdef CLANLIB_0_6
   // FIXME: HACK
   update (0.0f);
 
   switch (direction)
     {
     case Sprite::NONE:
-      sprite.draw(x + x_align, y + y_align, Math::round(frame));
+      sprite.set_frame(Math::round(frame));
+      sprite.draw(x + x_align, y + y_align);
       break;
     case Sprite::LEFT:
-      sprite.draw(x + x_align, y + y_align, Math::round(frame));
+      sprite.set_frame(Math::round(frame));
+      sprite.draw(x + x_align, y + y_align);
       break;
     case Sprite::RIGHT:
-      sprite.draw (x + x_align, y + y_align, Math::round(frame) + max_frames ());
+      sprite.set_frame(Math::round(frame) + max_frames ());
+      sprite.draw (x + x_align, y + y_align);
       break;
     default:
       std::cout << "Direction: " << direction << std::endl;
       assert(0);
     }
-#endif
 }
 
 void
@@ -81,11 +82,10 @@ Sprite::draw (const Vector& pos)
 void
 Sprite::draw(GraphicContext& gc, const Vector& pos)
 {
-#ifdef CLANLIB_0_6
   if (!sprite)
     return;
 
-  // FIXME: HACK
+  // FIXME: HACK <- hack for what?
   update (0.0f);
 
   int x = int(pos.x);
@@ -95,18 +95,17 @@ Sprite::draw(GraphicContext& gc, const Vector& pos)
     {
     case Sprite::NONE:
     case Sprite::LEFT:
-      gc.draw(sprite, x + x_align, y + y_align, Math::round(frame));
+      gc.draw(sprite, Vector(x + x_align, y + y_align), Math::round(frame));
       break;
 
     case Sprite::RIGHT:
-      gc.draw(sprite, x + x_align, y + y_align, Math::round(frame) + max_frames ());
+      gc.draw(sprite, Vector(x + x_align, y + y_align), Math::round(frame) + max_frames ());
       break;
 
     default:
       std::cout << "Direction: " << direction << std::endl;
       assert(0);
     }
-#endif
 }
 
 void
@@ -119,42 +118,34 @@ Sprite::set_align (int arg_x, int arg_y)
 void
 Sprite::set_align_center ()
 {
-#ifdef CLANLIB_0_6
   x_align = -int(sprite.get_width ())/2;
   y_align = -int(sprite.get_height ())/2;
-#endif
 }
 
 void
 Sprite::set_align_center_bottom ()
 {
-#ifdef CLANLIB_0_6
   x_align = -int(sprite.get_width ())/2;
   y_align = -int(sprite.get_height ());
-#endif
 }
 
 
 void
 Sprite::next_frame ()
 {
-#ifdef CLANLIB_0_6
   ++frame;
 
   if (Math::round(frame) >= int(sprite.get_frame_count()))
     frame = 0;
-#endif
 }
 
 void
 Sprite::previous_frame ()
 {
-#ifdef CLANLIB_0_6
   --frame;
 
   if (Math::round(frame) < 0)
     frame = sprite.get_frame_count() - 1;
-#endif
 }
 
 
@@ -173,7 +164,6 @@ Sprite::get_progress ()
 int
 Sprite::max_frames ()
 {
-#ifdef CLANLIB_0_6
   switch (direction)
     {
     case NONE:
@@ -185,9 +175,6 @@ Sprite::max_frames ()
       assert (0);
       return 0;
     }
-#else
-  return 0;
-#endif
 }
 
 void

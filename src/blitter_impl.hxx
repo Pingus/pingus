@@ -183,27 +183,28 @@ template<class TransF>
 inline
 CL_Surface modify(const CL_Surface& sur, const TransF&)
 {
-#ifdef CLANLIB_0_6
-  CL_PixelBuffer* prov = sur.get_provider ();
-  int pwidth  = prov->get_width();
-  int pheight = prov->get_height();
+  CL_PixelBuffer prov = sur.get_pixeldata();
 
-  if (prov.get_type() ==  pixelformat_index)
+  if (prov.get_format().get_type() ==  pixelformat_index)
     {
-#ifdef CLANLIB_0_6
-      IndexedCanvas* canvas = new IndexedCanvas(TransF::get_width (pwidth, pheight),
-                                                TransF::get_height(pwidth, pheight));
-      if (prov->uses_src_colorkey())
-        canvas->set_src_colorkey(prov->get_src_colorkey());
+#if CLANLIB_0_6
+      // FIXME: Needs indexed pixelbuffer
+      CL_PixelBuffer canvas(TransF::get_width (pwidth, pheight),
+                            TransF::get_height(pwidth, pheight));
 
-      prov->lock ();
-      canvas->lock ();
+      if (prov.get_format().has_colorkey())
+        canvas.get_format().set_colorkey(prov.get_format().get_colorkey());
 
-      canvas->set_palette(prov->get_palette());
+      prov.lock ();
+      canvas.lock ();
 
-      unsigned char* source_buf = static_cast<unsigned char*>(prov->get_data());
-      unsigned char* target_buf = static_cast<unsigned char*>(canvas->get_data());
-#endif
+      canvas.set_palette(prov.get_palette());
+
+      unsigned char* source_buf = static_cast<unsigned char*>(prov.get_data());
+      unsigned char* target_buf = static_cast<unsigned char*>(canvas.get_data());
+
+      int pwidth  = prov.get_width();
+      int pheight = prov.get_height();
 
       for (int y = 0; y < pheight; ++y)
         for (int x = 0; x < pwidth; ++x)
@@ -226,33 +227,39 @@ CL_Surface modify(const CL_Surface& sur, const TransF&)
             target_buf[TransF::get_index(pwidth, pheight, x, y)] = source_buf[y * pwidth + x];
           }
 
-      canvas->unlock ();
-      prov->unlock ();
-      return CL_Surface(canvas, true);
+      canvas.unlock ();
+      prov.unlock ();
+      return CL_Surface(&canvas, false);
+#endif
+      return CL_Surface();
     }
   else
     {
-      CL_PixelBuffer* canvas = Canvas::create(sur.get_height(), sur.get_width());
+      CL_PixelBuffer canvas(sur.get_height(), sur.get_width(), sur.get_width()*4, CL_PixelFormat::rgba8888);
 
-      prov->lock ();
-      canvas->lock ();
+      prov.lock();
+      canvas.lock();
 
+#if CLANLIB_0_6
       float r, b, g, a;
+      int pwidth  = prov.get_width();
+      int pheight = prov.get_height();
+      
       for (int y = 0; y < sur.get_height (); ++y)
         for (int x = 0; x < sur.get_width (); ++x)
           {
-            prov->get_pixel (x, y, &r, &g, &b, &a);
+
+            prov.get_pixel (x, y, &r, &g, &b, &a);
             canvas->draw_pixel (TransF::get_x(pwidth, pheight, x, y),
                                 TransF::get_y(pwidth, pheight, x, y),
                                 r, g, b, a);
           }
-
-      canvas->unlock ();
-      prov->unlock ();
-      return CL_Surface(canvas, true);
-    }
 #endif
-  return CL_Surface();
+
+      canvas.unlock ();
+      prov.unlock ();
+      return CL_Surface(&canvas, false);
+    }
 }
 
 } // namespace BlitterImpl

@@ -394,11 +394,10 @@ PingusSpotMap::put(const CL_PixelBuffer& sprovider, int x, int y)
 	    }
 	  else
 	    {
-#ifdef CLANLIB_0_6
-	      Blitter::put_surface(static_cast<CL_PixelBuffer*>(tile[ix][iy].surface.get_provider()),
+              CL_PixelBuffer target = tile[ix][iy].surface.get_pixeldata();
+	      Blitter::put_surface(target,
 				   sprovider,
 				   x - (ix * tile_size), y - (iy * tile_size));
-#endif
 	    }
 	  /*
 	    CL_Surface s = CL_Surface::create(sprovider);

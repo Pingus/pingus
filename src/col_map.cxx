@@ -20,6 +20,7 @@
 #include <iostream>
 #include <assert.h>
 #include <ClanLib/Display/pixel_buffer.h>
+#include <ClanLib/Display/pixel_format.h>
 #include <ClanLib/Display/surface.h>
 #include "gui/graphic_context.hxx"
 #include "globals.hxx"
@@ -79,15 +80,12 @@ ColMap::get_width()
 void
 ColMap::remove(CL_PixelBuffer& provider, int x, int y)
 {
-#ifdef CLANLIB_0_6
   ++serial;
 
-  assert(provider);
-
-  if (provider.get_depth() == 32)
+  if (provider.get_format().get_depth() == 32)
     {
       unsigned char* buffer;
-      int swidth = provider.get_width();
+      int swidth  = provider.get_width();
       int sheight = provider.get_height();
       int y_offset = -y;
       int x_offset = -x;
@@ -108,11 +106,9 @@ ColMap::remove(CL_PixelBuffer& provider, int x, int y)
 		}
 	    }
 	}
-#if COLMAP_WITH_MEMORY_HOLE
       provider.unlock();
-#endif
     }
-  else if (provider.get_depth() == 8)
+  else if (provider.get_format().get_depth() == 8)
     {
       unsigned char* buffer;
       int swidth = provider.get_width();
@@ -136,15 +132,12 @@ ColMap::remove(CL_PixelBuffer& provider, int x, int y)
 		}
 	    }
 	}
-#if COLMAP_WITH_MEMORY_HOLE
       provider.unlock();
-#endif
     }
   else
     {
       assert(!"ColMap::remove: Color depth not supported");
     }
-#endif
 }
 
 void
@@ -199,13 +192,13 @@ ColMap::put(CL_PixelBuffer& provider, int sur_x, int sur_y, Groundtype::GPType p
 
   provider.lock();
 
-#ifdef CLANLIB_0_6
-  if (provider.get_depth() == 32)
+  if (provider.get_format().get_depth() == 32)
     {
+#if CLANLIB_0_6
       float r, g, b, a;
       // Rewritting blitter for 32bit depth (using get_pixel())
-      for (unsigned int y=0; y < provider.get_height(); ++y)
-	for (unsigned int x=0; x < provider.get_width(); ++x)
+      for (int y=0; y < provider.get_height(); ++y)
+	for (int x=0; x < provider.get_width(); ++x)
 	  {
 	    provider.get_pixel(x, y, &r, &g, &b, &a);
 	    if (a > 0.1) // Alpha threshold
@@ -214,8 +207,9 @@ ColMap::put(CL_PixelBuffer& provider, int sur_x, int sur_y, Groundtype::GPType p
 		  put(x + sur_x, y + sur_y, pixel);
 	      }
 	  }
+#endif
     }
-  else if (provider.get_depth() == 8)
+  else if (provider.get_format().get_depth() == 8)
     {
       unsigned char* buffer;
       int swidth = provider.get_width();
@@ -228,9 +222,9 @@ ColMap::put(CL_PixelBuffer& provider, int sur_x, int sur_y, Groundtype::GPType p
       //provider.lock();
       buffer = static_cast<unsigned char*>(provider.get_data());
 
-      if (provider.uses_src_colorkey())
+      if (provider.get_format().has_colorkey())
 	{
-	  unsigned int colorkey = provider.get_src_colorkey();
+	  unsigned int colorkey = provider.get_format().get_colorkey();
 	  for(int line = y_offset; line < sheight && (line + sur_y) < height; ++line)
 	    for (int i = x_offset; i < swidth && (i+sur_x) < width; ++i)
 	      {
@@ -255,7 +249,6 @@ ColMap::put(CL_PixelBuffer& provider, int sur_x, int sur_y, Groundtype::GPType p
     {
       std::cout << "ColMap: Unsupported color depth, ignoring" << std::endl;
     }
-#endif
 
   // FIXME: Memory hole
   // provider.unlock();

@@ -213,7 +213,6 @@ Credits::update (float delta)
 void
 Credits::draw_background (GraphicContext& gc)
 {
-#ifdef CLANLIB_0_6
   int x;
   int y;
   int yof;
@@ -228,22 +227,25 @@ Credits::draw_background (GraphicContext& gc)
   gc.draw(pingu, (gc.get_width() / 2) - (pingu.get_width() / 2),
           (gc.get_height() / 2) - (pingu.get_height() / 2) - 20);
 
-  /*CL_Display::fill_rect(CL_Display::get_width() / 2, 0,
-			CL_Display::get_width(), CL_Display::get_height(),
-			0.0, 0.0, 0.0, 1.0);*/
-
-  CL_Display::push_clip_rect(CL_Rect(0, gc.get_height()/2-225, 600, gc.get_height()/2+200));
+  CL_Display::push_cliprect(CL_Rect(0, gc.get_height()/2-225, 600, gc.get_height()/2+200));
   yof = 0;
+
+  CL_Font myfont = font;
+  CL_Font myfont_small = font_small;
+
+  myfont.set_alignment(origin_top_center);
+  myfont_small.set_alignment(origin_top_center);
+
   for (std::vector<std::string>::iterator i = credits.begin(); i != credits.end(); ++i)
     {
       switch ((*i)[0])
 	{
 	case '-':
-	  font.print_center(x, y + yof, i->substr(1).c_str());
+	  font.draw(x, y + yof, i->substr(1).c_str());
 	  yof += font.get_height() + 5;
 	  break;
 	case '_':
-	  font_small.print_center(x, y + yof, i->substr(1).c_str());
+	  font_small.draw(x, y + yof, i->substr(1).c_str());
 	  yof += font_small.get_height() + 5;
 	  break;
 	case 'n':
@@ -254,8 +256,7 @@ Credits::draw_background (GraphicContext& gc)
 	  break;
 	}
     }
-  CL_Display::pop_clip_rect();
-#endif
+  CL_Display::pop_cliprect();
 }
 
 void

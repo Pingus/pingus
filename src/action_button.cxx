@@ -140,7 +140,9 @@ VerticalActionButton::draw (GraphicContext& gc)
     sprite.set_direction(Sprite::RIGHT);
   gc.draw(sprite, Vector(x_pos + 20, y_pos + 32));
 
-#ifdef CLANLIB_0_6
+  CL_Font myfont  = font;
+  CL_Font myfontb = font_b;
+
   // print the action name next to the button, when mouse pointer is on
   // the button.
   // FIXME: this should use the GUI events, not CL_Mouse
@@ -148,20 +150,23 @@ VerticalActionButton::draw (GraphicContext& gc)
       && CL_Mouse::get_x() > x_pos      && CL_Mouse::get_x() < x_pos + 60
       && CL_Mouse::get_y() < y_pos + 35 && CL_Mouse::get_y() > y_pos)
     {
-      font_b->print_left(x_pos + 65, y_pos, action_to_screenname(name));
+      myfontb.set_alignment(origin_top_left);
+      myfontb.draw(x_pos + 65, y_pos, action_to_screenname(name));
     }
+
 
   if (Cheat::unlimited_actions)
     {
       // FIXME: insert unlimited surface here
-      font->print_center(x_pos + 46, y_pos + 5, "oo");
+      myfont.set_alignment(origin_top_center);
+      myfont.draw(x_pos + 46, y_pos + 5, "oo");
     }
   else
     {
       std::string str = to_string(action_holder->get_available(name));
-      font->print_center(x_pos + 46, y_pos + 5, str.c_str ());
+      myfont.set_alignment(origin_top_center);
+      myfont.draw(x_pos + 46, y_pos + 5, str.c_str ());
     }
-#endif
 }
 
 ArmageddonButton::ArmageddonButton (TrueServer* s, int x, int y)
