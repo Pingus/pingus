@@ -1,4 +1,4 @@
-//  $Id: config.cxx,v 1.13 2003/04/10 18:28:30 grumbel Exp $
+//  $Id: config.cxx,v 1.14 2003/04/16 01:15:45 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,7 +23,7 @@
 #include "globals.hxx"
 #include "pingus_error.hxx"
 #include "config.hxx"
-
+#include "system.hxx"
 #include "cheat.hxx"
 #include "my_gettext.hxx"
 
@@ -48,8 +48,11 @@ ConfigParser::init(std::string filename)
 
   try {
     // Start parsing
-    open(filename);
-    parse();
+    if (System::exist(filename))
+      {
+        open(filename);
+        parse();
+      }
   }
 
   catch (PingusError& err) {
