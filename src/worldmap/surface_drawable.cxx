@@ -1,4 +1,4 @@
-//  $Id: surface_drawable.cxx,v 1.2 2003/02/19 09:50:36 grumbel Exp $
+//  $Id: surface_drawable.cxx,v 1.3 2003/03/07 00:09:00 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,9 +19,13 @@
 
 #include <iostream>
 
+#include "../xml_file_reader.hxx"
 #include "../xml_helper.hxx"
 #include "../pingus_resource.hxx"
 #include "../gui/graphic_context.hxx"
+#include "manager.hxx"
+#include "worldmap.hxx"
+#include "pingus.hxx"
 #include "surface_drawable.hxx"
 
 namespace WorldMapNS {
@@ -29,26 +33,15 @@ namespace WorldMapNS {
 SurfaceDrawable::SurfaceDrawable(xmlDocPtr doc, xmlNodePtr cur)
   : Drawable(doc, cur)
 {
-  cur = cur->children;
-  while(cur)
-    {
-      if (XMLhelper::equal_str(cur->name, "surface"))
-        {
-          ResDescriptor desc = XMLhelper::parse_surface(doc, cur);
-          surface = PingusResource::load_surface(desc);
-        }
-      else if (XMLhelper::equal_str(cur->name, "position"))
-        {
-          pos = XMLhelper::parse_vector(doc, cur);
-        }
-      else
-        {
-          std::cout << "Uknown: " << cur->name << std::endl;
-        }
+  auto_uncover = false;
+  ResDescriptor desc;
 
-      cur = cur->next;
-      cur = XMLhelper::skip_blank(cur);
-    }
+  XMLFileReader reader(doc, cur);
+  reader.read_desc ("surface", desc);
+  reader.read_vector ("position", pos);
+  reader.read_bool ("auto-uncover", auto_uncover);
+
+  surface = PingusResource::load_surface(desc);
 }
 
 void
@@ -62,7 +55,20 @@ SurfaceDrawable::draw(GraphicContext& gc)
 {
   if (surface)
     {
-      gc.draw(surface, pos);
+      if (auto_uncover)
+        {
+          Vector pingus_pos = WorldMapManager::instance()->get_worldmap()->get_pingus()->get_pos();
+          if (!(pingus_pos.x > pos.x && pingus_pos.x < pos.x + surface.get_width()
+                && 
+                pingus_pos.y > pos.y && pingus_pos.y < pos.y + surface.get_height()))
+            {
+              gc.draw(surface, pos);
+            }
+        }
+      else
+        {
+          gc.draw(surface, pos);
+        }
     }
 }
 

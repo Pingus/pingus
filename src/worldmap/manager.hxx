@@ -1,4 +1,4 @@
-//  $Id: manager.hxx,v 1.18 2003/02/19 23:03:51 grumbel Exp $
+//  $Id: manager.hxx,v 1.19 2003/03/07 00:08:58 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -70,6 +70,7 @@ private:
 
   bool is_init;
   bool exit_worldmap;
+  
   WorldMap* worldmap;
   WorldMap* new_worldmap;
 
@@ -91,6 +92,8 @@ public:
   /** Exit the WorldMapManager and return to the previous screen */
   void on_escape_press ();
   /** @}*/
+
+  WorldMap* get_worldmap() { return worldmap; }
 
   /** Change the current map to the given map 
 

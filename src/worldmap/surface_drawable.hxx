@@ -1,4 +1,4 @@
-//  $Id: surface_drawable.hxx,v 1.2 2002/10/13 14:19:25 grumbel Exp $
+//  $Id: surface_drawable.hxx,v 1.3 2003/03/07 00:09:00 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,6 +32,10 @@ class SurfaceDrawable : public Drawable
 private:
   CL_Surface surface;
   Vector     pos;
+  /** If set to true the surface will disappear if the pingu gets
+      covered by it, so that the Pingu can travel into caves and other
+      things, while the roof will disapear */
+  bool       auto_uncover;
 public:
   SurfaceDrawable(xmlDocPtr doc, xmlNodePtr cur);
 
