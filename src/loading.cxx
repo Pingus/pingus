@@ -78,12 +78,12 @@ Loading::draw_progress(const std::string& str, float progress)
 
   CL_Display::fill_rect(CL_Rect(50, CL_Display::get_height() - 100,
                                 CL_Display::get_width() - 50, CL_Display::get_height() - 50),
-			Display::to_color(0.5, 0.5, 0.5, 1.0));
+			CL_Color(128, 128, 128));
 
   CL_Display::fill_rect(CL_Rect(50, CL_Display::get_height() - 100,
                                 50 + (int)((CL_Display::get_width()-100) * progress), 
                                 CL_Display::get_height() - 50),
-			Display::to_color(1.0, 0.0, 0.0, 1.0));
+			CL_Color(255, 0, 0));
 
   Display::flip_display();
 }

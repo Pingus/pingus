@@ -19,6 +19,7 @@
 
 #include <ClanLib/Display/display.h>
 #include "../gui/display.hxx"
+#include "../display/drawing_context.hxx"
 #include "../worldobjsdata/solid_color_background_data.hxx"
 #include "solid_color_background.hxx"
 
@@ -39,8 +40,10 @@ void
 SolidColorBackground::draw (DrawingContext& gc)
 {
   // FIXME: should use DrawingContext, not CL_Display
-  CL_Display::clear(Display::to_color(data->color.red, data->color.green, data->color.blue, data->color.alpha));
-  UNUSED_ARG(gc);
+  gc.fill_screen(CL_Color(CL_Colorf(data->color.red,
+                                    data->color.green, 
+                                    data->color.blue, 
+                                    data->color.alpha)));
 }
 
 } // namespace WorldObjs

@@ -54,7 +54,6 @@ class Display
 private:
   static std::list<DisplayHook*> display_hooks;
 public:
-  static CL_Color to_color(float r, float g, float b, float a);
   static void draw_rect(int x1, int y1, int x2, int y2, float r, float g, float b, float a);
 
   static void flip_display(bool sync=false);

@@ -45,7 +45,7 @@ PingusCounter::draw(DrawingContext& gc)
   char str[128];
 
   if (!fast_mode)
-    background.draw(CL_Display::get_width()/2, 0);
+    gc.draw(background, Vector(gc.get_width()/2, 0));
 
   World* world = server->get_world();
 
@@ -56,11 +56,7 @@ PingusCounter::draw(DrawingContext& gc)
 	   world->get_pingus()->get_number_of_exited(),
 	   server->get_plf()->get_number_to_save());
 
-  CL_Font myfont = font;
-  myfont.set_alignment(origin_top_center);
-  myfont.draw(CL_Display::get_width ()/2,3, str);
-
-  UNUSED_ARG(gc);
+  gc.print_center(font, gc.get_width()/2, 3, str);
 }
 
 } // namespace Pingus

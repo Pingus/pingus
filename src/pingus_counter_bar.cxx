@@ -52,20 +52,20 @@ PingusCounterBar::draw ()
   int current_saved = server->get_world ()->get_pingus()->get_number_of_exited();
 
   //std::cout << "Drawing Counterbar: " << rect << std::endl;
-  CL_Display::fill_rect (CL_Rect(rect.left, rect.top, rect.right, rect.bottom),
-			 Display::to_color(0.0, 0.0, 1.0, 0.5));
+  CL_Display::fill_rect(CL_Rect(rect.left, rect.top, rect.right, rect.bottom),
+                        CL_Color(0, 0, 255, 128));
 
   int y_pos = rect.bottom;
   int tmp_y_pos = y_pos;
 
   y_pos -= (current_saved * length) / complete;
-  CL_Display::fill_rect (CL_Rect(rect.left, tmp_y_pos, rect.right, y_pos),
-			 Display::to_color(0.0f, 1.0f, 0.0f, 0.8f));
+  CL_Display::fill_rect(CL_Rect(rect.left, tmp_y_pos, rect.right, y_pos),
+                        CL_Color(0, 255, 0, 200));
   tmp_y_pos = y_pos;
 
   y_pos -= ((current_out - current_saved) * length) / complete;
-  CL_Display::fill_rect (CL_Rect(rect.left, tmp_y_pos, rect.right, y_pos),
-			 Display::to_color(1.0f, 0.0f, 0.0f, 0.8f));
+  CL_Display::fill_rect(CL_Rect(rect.left, tmp_y_pos, rect.right, y_pos),
+                        CL_Color(255, 0, 0, 200));
   tmp_y_pos = y_pos;
 }
 

@@ -98,18 +98,19 @@ VerticalActionButton::is_at (int x, int y)
 void
 VerticalActionButton::draw (DrawingContext& gc)
 {
-  UNUSED_ARG(gc);
-
   if (pressed)
     {
-      if (fast_mode) {
-        CL_Display::fill_rect(CL_Rect(x_pos, y_pos, x_pos + 60, y_pos + 35),
-                              Display::to_color(1.0, 1.0, 1.0, 1.0));
-      } else {
-        //CL_Display::fill_rect(x_pos, y_pos, x_pos + 60, y_pos + 35 ,
-        //1.0, 1.0, 1.0, 0.5);
-        backgroundhl.draw(x_pos, y_pos);
-      }
+      if (fast_mode) 
+        {
+          gc.draw_fillrect(x_pos, y_pos, x_pos + 60, y_pos + 35,
+                           CL_Color(255, 255, 255));
+        } 
+      else 
+        {
+          //CL_Display::fill_rect(x_pos, y_pos, x_pos + 60, y_pos + 35 ,
+          //1.0, 1.0, 1.0, 0.5);
+          gc.draw(backgroundhl, x_pos, y_pos);
+        }
     }
   else
     {
@@ -118,7 +119,7 @@ VerticalActionButton::draw (DrawingContext& gc)
       if (fast_mode) {
         // do nothing
       } else {
-        background.draw (x_pos, y_pos);
+        gc.draw(background, x_pos, y_pos);
       }
     }
 
@@ -134,22 +135,19 @@ VerticalActionButton::draw (DrawingContext& gc)
       && CL_Mouse::get_x() > x_pos      && CL_Mouse::get_x() < x_pos + 60
       && CL_Mouse::get_y() < y_pos + 35 && CL_Mouse::get_y() > y_pos)
     {
-      myfontb.set_alignment(origin_top_left);
-      myfontb.draw(x_pos + 65, y_pos, action_to_screenname(name));
+      gc.print_left(myfontb, x_pos + 65, y_pos, action_to_screenname(name));
     }
 
 
   if (Cheat::unlimited_actions)
     {
       // FIXME: insert unlimited surface here
-      myfont.set_alignment(origin_top_center);
-      myfont.draw(x_pos + 46, y_pos + 5, "oo");
+      gc.print_center(myfont, x_pos + 46, y_pos + 5, "oo");
     }
   else
     {
       std::string str = CL_String::to(action_holder->get_available(name));
-      myfont.set_alignment(origin_top_center);
-      myfont.draw(x_pos + 46, y_pos + 5, str.c_str ());
+      gc.print_center(myfont, x_pos + 46, y_pos + 5, str);
     }
 }
 
@@ -171,13 +169,13 @@ ArmageddonButton::draw (DrawingContext& gc)
 {
   if (server->get_world()->check_armageddon ())
     {
-      backgroundhl.draw(x_pos, y_pos);
+      gc.draw(backgroundhl, Vector(x_pos, y_pos));
       gc.draw(sprite, Vector(x_pos, y_pos));
     }
   else
     {
       if (!fast_mode)
-        background.draw(x_pos, y_pos);
+        gc.draw(background, Vector(x_pos, y_pos));
 
       sprite.set_frame(7);
       gc.draw(sprite, Vector(x_pos, y_pos));
@@ -249,16 +247,15 @@ ForwardButton::draw (DrawingContext& gc)
 {
   if (server->get_fast_forward())
     {
-      backgroundhl.draw(x_pos, y_pos);
+      gc.draw(backgroundhl, Vector(x_pos, y_pos));
     }
   else
     {
       if (!fast_mode)
-        background.draw(x_pos, y_pos);
+        gc.draw(background, Vector(x_pos, y_pos));
     }
 
-  surface.draw(x_pos, y_pos);
-  UNUSED_ARG(gc);
+  gc.draw(surface, Vector(x_pos, y_pos));
 }
 
 bool
@@ -297,15 +294,16 @@ void
 PauseButton::draw (DrawingContext& gc)
 {
   if (server->get_pause())
-    backgroundhl.draw(x_pos, y_pos);
+    {
+      gc.draw(backgroundhl, Vector(x_pos, y_pos));
+    }
   else
     {
     if (!fast_mode)
-      background.draw(x_pos, y_pos);
+      gc.draw(background, Vector(x_pos, y_pos));
     }
 
-  surface.draw(x_pos, y_pos);
-  UNUSED_ARG(gc);
+  gc.draw(surface, Vector(x_pos, y_pos));
 }
 
 bool

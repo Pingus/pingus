@@ -107,32 +107,32 @@ Playfield::draw (DrawingContext& gc)
 	{
 	  CL_Display::fill_rect(CL_Rect(i->left, i->top,
                                         i->right + 1, i->bottom + 1),
-				Display::to_color(0.0, 0.0, 0.0, 1.0));
+				CL_Color(0, 0, 0));
 	}
     }
 
   // Draw the scrolling band
   if (mouse_scrolling && !drag_drop_scrolling)
     {
-      CL_Display::draw_line (mouse_pos.x, mouse_pos.y,
-                             scroll_center.x, scroll_center.y-15,
-                             Display::to_color(0.0f, 1.0f, 0.0f, 1.0f));
+      gc.draw_line(mouse_pos.x, mouse_pos.y,
+                   scroll_center.x, scroll_center.y-15,
+                   CL_Color(0, 255, 0));
 
-      CL_Display::draw_line (mouse_pos.x, mouse_pos.y,
-                             scroll_center.x, scroll_center.y,
-                             Display::to_color(1.0f, 0.0f, 0.0f, 1.0f));
+      gc.draw_line(mouse_pos.x, mouse_pos.y,
+                   scroll_center.x, scroll_center.y,
+                   CL_Color(255, 0, 0));
 
-      CL_Display::draw_line (mouse_pos.x, mouse_pos.y,
-                             scroll_center.x, scroll_center.y+15,
-                             Display::to_color(0.0f, 0.0f, 1.0f, 1.0f));
+      gc.draw_line(mouse_pos.x, mouse_pos.y,
+                   scroll_center.x, scroll_center.y+15,
+                   CL_Color(0, 0, 255));
 
-      CL_Display::draw_line (mouse_pos.x, mouse_pos.y,
-                             scroll_center.x + 15, scroll_center.y,
-                             Display::to_color(0.0f, 1.0f, 1.0f, 1.0f));
+      gc.draw_line(mouse_pos.x, mouse_pos.y,
+                   scroll_center.x + 15, scroll_center.y,
+                   CL_Color(0, 255, 255));
 
-      CL_Display::draw_line (mouse_pos.x, mouse_pos.y,
-                             scroll_center.x - 15, scroll_center.y,
-                             Display::to_color(1.0f, 1.0f, 0.0f, 1.0f));
+      gc.draw_line(mouse_pos.x, mouse_pos.y,
+                   scroll_center.x - 15, scroll_center.y,
+                   CL_Color(255, 255, 0));
     }
 
   state.pop(*dc);
@@ -167,6 +167,7 @@ Playfield::current_pingu_find (const CL_Pointf& pos)
 void
 Playfield::update(float delta)
 {
+  // FIXME: This should be delta dependant
   if (!mouse_scrolling)
     {
       current_pingu = current_pingu_find(state.screen2world(mouse_pos));
@@ -179,36 +180,34 @@ Playfield::update(float delta)
           state.set_pos(old_state_pos + (scroll_center - mouse_pos));
         }
       else
-        {
-          // FIXME: This should be delta dependant
-          state.set_pos(state.get_pos() - (scroll_center - mouse_pos));
+        { 
+          state.set_pos(CL_Pointf(state.get_pos().x - (scroll_center.x - mouse_pos.x) * 0.2,
+                                  state.get_pos().y - (scroll_center.y - mouse_pos.y) * 0.2));
         }
     }
 
   if (auto_scrolling)
     {
-#if 0
       // FIXME: This should be delta dependant
-      scroll_speed = 30;
+      scroll_speed = 15;
 
       if (mouse_pos.x < 2)
 	{
-	  view->set_x_offset(view->get_x_offset() + scroll_speed);
+	  state.set_pos(state.get_pos() - CL_Point(scroll_speed, 0));
 	}
       else if (mouse_pos.x > CL_Display::get_width() - 3)
 	{
-	  view->set_x_offset(view->get_x_offset() - scroll_speed);
+	  state.set_pos(state.get_pos() + CL_Point(scroll_speed, 0));
 	}
 
       if (mouse_pos.y < 2)
 	{
-	  view->set_y_offset(view->get_y_offset() + scroll_speed);
+	  state.set_pos(state.get_pos() - CL_Point(0, scroll_speed));
 	}
       else if (mouse_pos.y > CL_Display::get_height() - 3)
 	{
-	  view->set_y_offset(view->get_y_offset() - scroll_speed);
+	  state.set_pos(state.get_pos() + CL_Point(0, scroll_speed));	 
 	}
-#endif
     }
 }
 

@@ -163,7 +163,7 @@ Console::draw()
   CL_Display::fill_rect(CL_Rect(0, start_y_pos - 15,
                                 CL_Display::get_width(),
                                 CL_Display::get_height()),
-			Display::to_color(0.0, 0.0, 0.0, 0.5));
+			CL_Color(0, 0, 0, 128));
 
   const std::list<std::string>& buffer = streambuf.get_buffer ();
 

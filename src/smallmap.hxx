@@ -120,7 +120,6 @@ public:
 
 private:
   void init();
-  void draw_pingus();
 
   SmallMap (const SmallMap&);
   SmallMap& operator= (const SmallMap&);

@@ -194,13 +194,13 @@ SmallMap::draw (DrawingContext& gc)
 
   Playfield* playfield = client->get_playfield();
 
-  sur.draw(x_pos, y_pos);
+  gc.draw(sur, Vector(x_pos, y_pos));
 
 #if 0
   if (has_focus)
-    Display::draw_rect(x_pos, y_pos,
-		       x_pos + sur.get_width (), y_pos + sur.get_height () - 1,
-		       1.0f, 1.0f, 1.0f, 1.0f);
+    gc.draw_rect(x_pos, y_pos,
+                 x_pos + sur.get_width (), y_pos + sur.get_height () - 1,
+                 CL_Color(255, 255, 255));
 #endif
 
   CL_Point of = playfield->get_pos();
@@ -233,29 +233,21 @@ SmallMap::draw (DrawingContext& gc)
   */
   client->get_server()->get_world()->draw_smallmap(this);
 
-  draw_pingus();
-
-  gc_ptr = 0;
-}
-
-void
-SmallMap::draw_pingus ()
-{
-  int x;
-  int y;
   World* const& world = client->get_server()->get_world();
   PinguHolder* pingus = world->get_pingus();
 
   for(PinguIter i = pingus->begin(); i != pingus->end(); ++i)
     {
-      x = static_cast<int>(x_pos + ((*i)->get_x() * width  / world->get_colmap()->get_width()));
-      y = static_cast<int>(y_pos + ((*i)->get_y() * height / world->get_colmap()->get_height()));
+      int x = static_cast<int>(x_pos + ((*i)->get_x() * width  / world->get_colmap()->get_width()));
+      int y = static_cast<int>(y_pos + ((*i)->get_y() * height / world->get_colmap()->get_height()));
 
       //FIXME: Replace this with draw_pixel (only availabe in 0.7)
-      CL_Display::draw_line(x,   y, x,   y, Display::to_color(1.0, 1.0, 0.0, 1.0));
-      CL_Display::draw_line(x, y-1, x, y-1, Display::to_color(1.0, 1.0, 0.0, 1.0));
-      CL_Display::draw_line(x, y-2, x, y-2, Display::to_color(1.0, 1.0, 0.0, 1.0));
+      gc.draw_line(x,   y, x,   y, CL_Color(255, 255, 0));
+      gc.draw_line(x, y-1, x, y-1, CL_Color(255, 255, 0));
+      gc.draw_line(x, y-2, x, y-2, CL_Color(255, 255, 0));
     }
+
+  gc_ptr = 0;
 }
 
 void
