@@ -1,5 +1,16 @@
 #!/bin/sh
 
+## Usage: pingus-cvs-build PREFIX
+##
+## Wannabe usage:
+##
+##   pingus-cvs-build --prefix="" --rebuild-hermes --skip-clanlib
+##
+## Todo: Build a GUI around this...
+
+## Diskspace Usage:
+##    Around: >900MB
+##    
 set -e
 
 if [ ! $# -eq 1 ]; then
@@ -41,29 +52,47 @@ cd "$TARGET_DIRECTORY/src/"
 
 
 # FIXME: insert version check here
-echo "### downloading new automake and autoconf"
-wget -c ftp://ftp.gnu.org/gnu/autoconf/autoconf-2.53.tar.gz
-tar --extract --verbose --gzip --file  autoconf-2.53.tar.gz
-cd autoconf-2.53
-./configure --prefix="$TARGET_DIRECTORY"
-make
-make install
+if [ ! -x "$TARGET_DIRECTORY/bin/autoconf" ]; then
+    echo "### downloading new automake and autoconf"
+    wget -c ftp://ftp.gnu.org/gnu/autoconf/autoconf-2.53.tar.gz
+    tar --extract --verbose --gzip --file  autoconf-2.53.tar.gz
+    pushd autoconf-2.53
+    ./configure --prefix="$TARGET_DIRECTORY"
+    make
+    make install
+    popd
+fi
 
 # FIXME: insert version check here
-wget -c ftp://ftp.gnu.org/gnu/automake/automake-1.6.2.tar.gz
-tar --extract --verbose  --gzip --file automake-1.6.2.tar.gz
-cd automake-1.6.2
-./configure --prefix="$TARGET_DIRECTORY"
-make
-make install
+if [ ! -x "$TARGET_DIRECTORY/bin/automake" ]; then
+    wget -c ftp://ftp.gnu.org/gnu/automake/automake-1.6.2.tar.gz
+    tar --extract --verbose  --gzip --file automake-1.6.2.tar.gz
+    pushd automake-1.6.2
+    ./configure --prefix="$TARGET_DIRECTORY"
+    make
+    make install
+    popd
+fi
 
+if [ ! -x "$TARGET_DIRECTORY/bin/libtool" ]; then
+    wget -c ftp://ftp.gnu.org/gnu/libtool/libtool-1.4.2.tar.gz
+    tar --extract --verbose  --gzip --file libtool-1.4.2.tar.gz
+    pushd libtool-1.4.2
+    ./configure --prefix="$TARGET_DIRECTORY"
+    make
+    make install
+    popd
+fi
 
-wget -c ftp://ftp.gnu.org/gnu/libtool/libtool-1.4.2.tar.gz
-tar --extract --verbose  --gzip --file libtool-1.4.2.tar.gz
-cd libtool-1.4.2
-./configure --prefix="$TARGET_DIRECTORY"
-make
-make install
+if [ ! -x "$TARGET_DIRECTORY/bin/gettext" ]; then
+    wget -c ftp://ftp.gnu.org/gnu/gettext/gettext-0.11.2.tar.gz
+    tar --extract --verbose  --gzip --file gettext-0.11.2.tar.gz
+    pushd gettext-0.11.2
+    ./configure --prefix="$TARGET_DIRECTORY"
+    make
+    make install
+    popd
+fi
 
 echo "### We are now loging into CVS, just press return."
 cvs login
@@ -94,14 +123,19 @@ EOF
 
 chmod +x "$TARGET_DIRECTORY/start_pingus"
 
-cvs -z3 checkout Libs/Hermes-1.3
-echo "### We are now going to compile Hermes."
-pushd Libs/Hermes-1.3
-./autogen.sh
-./configure --prefix="$TARGET_DIRECTORY"
-make
-make install 
-popd
+
+if [ ! -e  "$TARGET_DIRECTORY/include/Hermes/Hermes.h" ]; then
+    cvs -z3 checkout Libs/Hermes-1.3
+    echo "### We are now going to compile Hermes."
+    pushd Libs/Hermes-1.3
+    ./autogen.sh
+    ./configure --prefix="$TARGET_DIRECTORY"
+    make
+    make install 
+    popd
+else
+    echo "### Skipping Hermes, since already installed"
+fi
 
 cvs -z3 checkout Libs/ClanLib-0.6
 echo "### We are now going to compile ClanLib."
