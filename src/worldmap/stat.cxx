@@ -1,4 +1,4 @@
-//  $Id: stat.cxx,v 1.7 2002/09/07 23:33:47 grumbel Exp $
+//  $Id: stat.cxx,v 1.8 2002/09/10 21:03:33 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -79,15 +79,15 @@ PingusWorldMapStat::parse_file (std::string filename)
 {
   doc = xmlParseFile(filename.c_str());
 
-  if (doc == NULL)
+  if (! doc)
     PingusError::raise("Couldn't open \"" + filename + "\" or syntax error.");
 
   xmlNodePtr cur = doc->ROOT;
 
-  if (cur && strcmp((const char*)cur->name, "pingus-worldmap-stat") == 0) 
+  if (cur && XMLhelper::equal_str(cur->name, "pingus-worldmap-stat")) 
     {
       cur = cur->children;
-      while (cur != NULL)
+      while (cur)
 	{
 	  if (xmlIsBlankNode(cur)) 
 	    {
@@ -95,7 +95,7 @@ PingusWorldMapStat::parse_file (std::string filename)
 	      continue;
 	    }
 
-	  if (strcmp((char*)cur->name, "node") == 0)
+	  if (XMLhelper::equal_str(cur->name, "node"))
 	    {
 	      parse_node (cur);
 	    }
@@ -119,10 +119,10 @@ void
 PingusWorldMapStat::parse_node (xmlNodePtr cur)
 {
   PingusWorldMapNodeStat node;
-  char* id         = (char*)xmlGetProp(cur, (xmlChar*)"id");
-  char* accessible = (char*)xmlGetProp(cur, (xmlChar*)"accessible");
-  char* finished   = (char*)xmlGetProp(cur, (xmlChar*)"finished");
-  char* checksum   = (char*)xmlGetProp(cur, (xmlChar*)"checksum");
+  char* id         = XMLhelper::get_prop(cur, "id");
+  char* accessible = XMLhelper::get_prop(cur, "accessible");
+  char* finished   = XMLhelper::get_prop(cur, "finished");
+  char* checksum   = XMLhelper::get_prop(cur, "checksum");
 
   //std::cout << "Parsing node: " << cur->name << std::endl;
 

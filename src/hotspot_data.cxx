@@ -1,4 +1,4 @@
-//  $Id: hotspot_data.cxx,v 1.4 2002/08/23 15:49:49 torangan Exp $
+//  $Id: hotspot_data.cxx,v 1.5 2002/09/10 21:03:32 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,7 +37,7 @@ HotspotData::write_xml(std::ostream& xml)
 HotspotData::HotspotData (xmlDocPtr doc, xmlNodePtr cur)
 {
   cur = cur->children;
-  while (cur != NULL)
+  while (cur)
     {
       if (xmlIsBlankNode(cur)) 
 	{
@@ -45,19 +45,19 @@ HotspotData::HotspotData (xmlDocPtr doc, xmlNodePtr cur)
 	  continue;
 	}
       
-      if (strcmp((char*)cur->name, "surface") == 0)
+      if (XMLhelper::equal_str(cur->name, "surface"))
 	{
 	  desc = XMLhelper::parse_surface(doc, cur);
 	} 
-      else if (strcmp((char*)cur->name, "position") == 0) 
+      else if (XMLhelper::equal_str(cur->name, "position")) 
 	{
 	  pos = XMLhelper::parse_vector(doc, cur);
 	}
-      else if (strcmp((char*)cur->name, "speed") == 0) 
+      else if (XMLhelper::equal_str(cur->name, "speed")) 
 	{
 	  speed = XMLhelper::parse_int(doc, cur);
 	}
-      else if (strcmp((char*)cur->name, "parallax") == 0) 
+      else if (XMLhelper::equal_str(cur->name, "parallax"))
 	{
 	  para = XMLhelper::parse_int(doc, cur);
 	}

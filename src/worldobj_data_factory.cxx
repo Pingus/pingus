@@ -1,4 +1,4 @@
-//  $Id: worldobj_data_factory.cxx,v 1.6 2002/09/09 16:13:44 torangan Exp $
+//  $Id: worldobj_data_factory.cxx,v 1.7 2002/09/10 21:03:32 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -97,7 +97,7 @@ WorldObjData*
 WorldObjDataFactory::create (xmlDocPtr doc, xmlNodePtr cur)
 {
   std::cout << "WorldObjDataFactory::create (xmlDocPtr doc, xmlNodePtr cur)" << std::endl;
-  char* type = (char*)xmlGetProp(cur, (xmlChar*)"type");
+  char* type = XMLhelper::get_prop(cur, "type");
   if (type)
     {
       return create (type, doc, cur);

@@ -1,4 +1,4 @@
-//  $Id: xml_helper.hxx,v 1.8 2002/09/06 17:33:29 torangan Exp $
+//  $Id: xml_helper.hxx,v 1.9 2002/09/10 21:03:32 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -64,6 +64,10 @@ public:
   static std::string encode_entities (const std::string& arg_str);
 
   static xmlNodePtr skip_blank (xmlNodePtr cur);
+  
+  static bool equal_str (const xmlChar* comp, const char* orig);
+  
+  static char* get_prop (xmlNodePtr cur, const char* name);
 
   /// A set of function to parse an xml file
   //@{

@@ -1,4 +1,4 @@
-//  $Id: groundpiece_data.cxx,v 1.8 2002/08/24 11:37:48 grumbel Exp $
+//  $Id: groundpiece_data.cxx,v 1.9 2002/09/10 21:03:32 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,7 +31,7 @@ GroundpieceData::GroundpieceData (xmlDocPtr doc, xmlNodePtr cur)
 {
   gptype = GroundpieceData::GP_GROUND;
 
-  char* gptype_c_str = (char*)xmlGetProp(cur, (xmlChar*)"type");
+  char* gptype_c_str = XMLhelper::get_prop(cur, "type");
   if (gptype_c_str)
     {
       gptype = GroundpieceData::string_to_type (gptype_c_str);
@@ -42,7 +42,7 @@ GroundpieceData::GroundpieceData (xmlDocPtr doc, xmlNodePtr cur)
 
   cur = cur->children;
 
-  while (cur != NULL)
+  while (cur)
     {
       if (xmlIsBlankNode(cur)) 
 	{
@@ -50,11 +50,11 @@ GroundpieceData::GroundpieceData (xmlDocPtr doc, xmlNodePtr cur)
 	  continue;
 	}
       
-      if (strcmp((char*)cur->name, "position") == 0)
+      if (XMLhelper::equal_str(cur->name, "position"))
 	{
 	  pos = XMLhelper::parse_vector(doc, cur);
 	}
-      else if (strcmp((char*)cur->name, "surface") == 0)
+      else if (XMLhelper::equal_str(cur->name, "surface"))
 	{
 	  desc = XMLhelper::parse_surface(doc, cur);
 	}

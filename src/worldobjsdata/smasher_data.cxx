@@ -1,4 +1,4 @@
-//  $Id: smasher_data.cxx,v 1.3 2002/09/10 15:36:44 grumbel Exp $
+//  $Id: smasher_data.cxx,v 1.4 2002/09/10 21:03:33 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,7 +37,7 @@ SmasherData::SmasherData (xmlDocPtr doc, xmlNodePtr cur) : surface(PingusResourc
     {
       XMLhelper::skip_blank(cur);
 
-      if (strcmp(reinterpret_cast<const char*>(cur->name), "position") == 0) 
+      if (XMLhelper::equal_str(cur->name, "position")) 
 	{
 	  pos = XMLhelper::parse_vector(doc, cur);
 	}

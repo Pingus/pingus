@@ -1,4 +1,4 @@
-//  $Id: liquid_data.cxx,v 1.6 2002/08/23 15:49:49 torangan Exp $
+//  $Id: liquid_data.cxx,v 1.7 2002/09/10 21:03:32 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,7 +39,7 @@ LiquidData::LiquidData (xmlDocPtr doc, xmlNodePtr cur)
 {
   std::cout << "LiquidData::create(xmlDocPtr doc, xmlNodePtr cur)" << std::endl;
   
-  char* width_handling = (char*)xmlGetProp(cur, (xmlChar*)"use-old-width-handling");
+  char* width_handling = XMLhelper::get_prop(cur, "use-old-width-handling");
   if (width_handling)
     {
       std::cout << "XMLPLF: Use Old Width Handling: " << width_handling << std::endl;
@@ -53,7 +53,7 @@ LiquidData::LiquidData (xmlDocPtr doc, xmlNodePtr cur)
     }
 
   cur = cur->children;
-  while (cur != NULL)
+  while (cur)
     {
       if (xmlIsBlankNode(cur)) 
 	{
@@ -61,13 +61,13 @@ LiquidData::LiquidData (xmlDocPtr doc, xmlNodePtr cur)
 	  continue;
 	}
 
-      if (strcmp((char*)cur->name, "position") == 0)
+      if (XMLhelper::equal_str(cur->name, "position"))
 	pos = XMLhelper::parse_vector(doc, cur);
-      else if (strcmp((char*)cur->name, "surface") == 0)
+      else if (XMLhelper::equal_str(cur->name, "surface"))
 	desc = XMLhelper::parse_surface(doc, cur);
-      else if (strcmp((char*)cur->name, "speed") == 0)
+      else if (XMLhelper::equal_str(cur->name, "speed"))
 	speed = XMLhelper::parse_int(doc, cur);
-      else if (strcmp((char*)cur->name, "width") == 0)
+      else if (XMLhelper::equal_str(cur->name, "width"))
 	width = XMLhelper::parse_int(doc, cur);
       else
 	{

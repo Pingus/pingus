@@ -1,4 +1,4 @@
-//  $Id: ice_block.cxx,v 1.11 2002/09/10 14:33:07 grumbel Exp $
+//  $Id: ice_block.cxx,v 1.12 2002/09/10 21:03:33 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -47,18 +47,18 @@ IceBlockData::IceBlockData (xmlDocPtr doc, xmlNodePtr cur)
 {
   cur = cur->children;
   
-  while (cur != NULL)
+  while (cur)
     {
       if (xmlIsBlankNode(cur)) 
 	{
 	  cur = cur->next;
 	  continue;
 	}
-      else if (strcmp((char*)cur->name, "position") == 0)
+      else if (XMLhelper::equal_str(cur->name, "position"))
 	{
 	  pos = XMLhelper::parse_vector (doc, cur);
 	}
-      else if (strcmp((char*)cur->name, "width") == 0)
+      else if (XMLhelper::equal_str(cur->name, "width"))
 	{
 	  width = XMLhelper::parse_int (doc, cur);
 	}

@@ -1,4 +1,4 @@
-//  $Id: starfield_background.cxx,v 1.8 2002/08/23 15:49:54 torangan Exp $
+//  $Id: starfield_background.cxx,v 1.9 2002/09/10 21:03:32 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -73,7 +73,7 @@ StarfieldBackgroundData::StarfieldBackgroundData (xmlDocPtr doc, xmlNodePtr cur)
 
   cur = cur->children;
 
-  while (cur != NULL)
+  while (cur)
     {
       if (xmlIsBlankNode(cur)) 
 	{
@@ -81,27 +81,27 @@ StarfieldBackgroundData::StarfieldBackgroundData (xmlDocPtr doc, xmlNodePtr cur)
 	  continue;
 	}
       
-      if (strcmp((char*)cur->name, "small-stars") == 0)
+      if (XMLhelper::equal_str(cur->name, "small-stars"))
 	{
-	  char* count = (char*)xmlGetProp(cur, (xmlChar*)"count");
+	  char* count = XMLhelper::get_prop(cur, "count");
 	  if (count)
 	    {
 	      small_stars_count = StringConverter::to_int(count);
 	      xmlFree(count);
 	    }
 	}
-      else if (strcmp((char*)cur->name, "middle-stars") == 0)
+      else if (XMLhelper::equal_str(cur->name, "middle-stars"))
 	{
-	  char* count = (char*)xmlGetProp(cur, (xmlChar*)"count");
+	  char* count = XMLhelper::get_prop(cur, "count");
 	  if (count)
 	    {
 	      middle_stars_count = StringConverter::to_int(count);
 	      xmlFree(count);
 	    }	  
 	}
-      else if (strcmp((char*)cur->name, "large-stars") == 0)
+      else if (XMLhelper::equal_str(cur->name, "large-stars"))
 	{
-	  char* count = (char*)xmlGetProp(cur, (xmlChar*)"count");
+	  char* count = XMLhelper::get_prop(cur, "count");
 	  if (count)
 	    {
 	      large_stars_count = StringConverter::to_int(count);

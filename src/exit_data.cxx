@@ -1,4 +1,4 @@
-//  $Id: exit_data.cxx,v 1.5 2002/08/23 15:49:48 torangan Exp $
+//  $Id: exit_data.cxx,v 1.6 2002/09/10 21:03:32 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,7 +27,7 @@ ExitData::ExitData (xmlDocPtr doc, xmlNodePtr cur)
 {
   clean ();
 
-  char* pos_handling = (char*)xmlGetProp(cur, (xmlChar*)"use-old-pos-handling");
+  char* pos_handling = XMLhelper::get_prop(cur, "use-old-pos-handling");
   if (pos_handling)
     {
       std::cout << "XMLPLF: Use Old Pos Handling: " << pos_handling << std::endl;
@@ -40,7 +40,7 @@ ExitData::ExitData (xmlDocPtr doc, xmlNodePtr cur)
     }
 
   cur = cur->children;
-  while (cur != NULL)
+  while (cur)
     {
       if (xmlIsBlankNode(cur)) 
 	{
@@ -48,15 +48,15 @@ ExitData::ExitData (xmlDocPtr doc, xmlNodePtr cur)
 	  continue;
 	}
       
-      if (strcmp((char*)cur->name, "position") == 0)
+      if (XMLhelper::equal_str(cur->name, "position"))
 	{
 	  pos = XMLhelper::parse_vector(doc, cur);
 	}
-      else if (strcmp((char*)cur->name, "surface") == 0)
+      else if (XMLhelper::equal_str(cur->name, "surface"))
 	{
 	  desc = XMLhelper::parse_surface(doc, cur);
 	}
-      else if (strcmp((char*)cur->name, "owner-id") == 0)
+      else if (XMLhelper::equal_str(cur->name, "owner-id"))
 	{
 	  owner_id = XMLhelper::parse_int(doc, cur);
 	}

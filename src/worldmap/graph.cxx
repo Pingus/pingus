@@ -1,4 +1,4 @@
-//  $Id: graph.cxx,v 1.5 2002/09/07 23:33:47 grumbel Exp $
+//  $Id: graph.cxx,v 1.6 2002/09/10 21:03:33 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -48,11 +48,11 @@ Graph::parse_file (std::string filename)
 
   xmlNodePtr cur = doc->ROOT;
 
-  if (cur != NULL && strcmp((const char*)cur->name, "pingus-worldmap") == 0)
+  if (cur && XMLhelper::equal_str(cur->name, "pingus-worldmap"))
     {
       cur = cur->children;
       
-      while (cur != NULL)
+      while (cur)
 	{
 	  if (xmlIsBlankNode(cur)) 
 	    {
@@ -60,21 +60,21 @@ Graph::parse_file (std::string filename)
 	      continue;
 	    }
 
-	  if (strcmp ((char*)cur->name, "node-list") == 0)
+	  if (XMLhelper::equal_str(cur->name, "node-list"))
 	    {
 	      parse_node_list (cur);
 	    }
-	  else if (strcmp ((char*)cur->name, "surface") == 0)
+	  else if (XMLhelper::equal_str(cur->name, "surface"))
 	    {
 	      parse_background (cur);
 	    }
-	  else if (strcmp ((char*)cur->name, "music") == 0)
+	  else if (XMLhelper::equal_str(cur->name, "music"))
 	    {
 	      parse_music (cur);
 	    }
 	  else
 	    {
-	      printf("Graph: Unhandled: %s\n", (char*)cur->name);
+	      printf("Graph: Unhandled: %s\n", (const char*)cur->name);
 	    }
 	  cur = cur->next;
 	}      
@@ -87,7 +87,7 @@ void
 Graph::parse_node_list (xmlNodePtr cur)
 {
   cur = cur->children;
-  while (cur != NULL)
+  while (cur)
     {
       if (xmlIsBlankNode(cur)) 
 	{
@@ -95,21 +95,21 @@ Graph::parse_node_list (xmlNodePtr cur)
 	  continue;
 	}
 
-      if (strcmp((char*)cur->name, "empty") == 0)
+      if (XMLhelper::equal_str(cur->name, "empty"))
 	{
 	  NodeData* data = EmptyNodeData::create (doc, cur);
 	  nodes.push_back (boost::shared_ptr<class Node>
 			   (data->create ()));
 	  delete data;
 	}
-      else if (strcmp((char*)cur->name, "level") == 0)
+      else if (XMLhelper::equal_str(cur->name, "level"))
 	{
 	  NodeData* data = LevelNodeData::create (doc, cur);
 	  nodes.push_back (boost::shared_ptr<class Node>
 			   (data->create ()));
 	  delete data;
 	}
-      else if (strcmp((char*)cur->name, "tube") == 0)
+      else if (XMLhelper::equal_str(cur->name, "tube"))
 	{
 	  NodeData* data = TubeNodeData::create (doc, cur);
 	  nodes.push_back (boost::shared_ptr<class Node>
@@ -133,7 +133,7 @@ Graph::parse_background (xmlNodePtr cur)
 void
 Graph::parse_music (xmlNodePtr cur)
 {
-  char* file = (char*)xmlGetProp(cur, (xmlChar*)"file");
+  char* file = XMLhelper::get_prop(cur, "file");
 
   if (file)
     music = file;

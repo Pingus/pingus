@@ -1,4 +1,4 @@
-//  $Id: controller.cxx,v 1.21 2002/08/24 11:37:29 torangan Exp $
+//  $Id: controller.cxx,v 1.22 2002/09/10 21:03:32 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -54,11 +54,11 @@ namespace Input {
       
     xmlNodePtr cur = doc->ROOT;
     
-    if (!cur || strcmp(reinterpret_cast<const char*>(cur->name), "pingus-controller") != 0)
+    if (!cur || XMLhelper::equal_str(cur->name, "pingus-controller") != 0)
       PingusError::raise("Controller: invalid config file <" + configfile + ">");
     cur = XMLhelper::skip_blank(cur->children);
 
-    if (!cur || strcmp(reinterpret_cast<const char*>(cur->name), "controller-config") != 0)
+    if (!cur || XMLhelper::equal_str(cur->name, "controller-config") != 0)
       PingusError::raise("Controller: invalid config file <" + configfile + ">");
     cur = XMLhelper::skip_blank(cur->children);
 	       
@@ -70,34 +70,34 @@ namespace Input {
 	    continue;
 	  }
 
-	else if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "standard-pointer"))
+	else if (XMLhelper::equal_str(cur->name, "standard-pointer"))
           standard_pointer = PointerFactory::create(XMLhelper::skip_blank(cur->children));
 	  
-	else if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "scroller"))
+	else if (XMLhelper::equal_str(cur->name, "scroller"))
 	  scroller = ScrollerFactory::create(XMLhelper::skip_blank(cur->children));
 	  
-	else if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "primary-button"))
+	else if (XMLhelper::equal_str(cur->name, "primary-button"))
 	  buttons[primary].first = ButtonFactory::create(XMLhelper::skip_blank(cur->children));
 	  
-	else if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "secondary-button"))
+	else if (XMLhelper::equal_str(cur->name, "secondary-button"))
 	  buttons[secondary].first = ButtonFactory::create(XMLhelper::skip_blank(cur->children));
 	  
-	else if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "pause-button"))
+	else if (XMLhelper::equal_str(cur->name, "pause-button"))
 	  buttons[pause].first = ButtonFactory::create(XMLhelper::skip_blank(cur->children));
 
-	else if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "fast-forward-button"))
+	else if (XMLhelper::equal_str(cur->name, "fast-forward-button"))
 	  buttons[fast_forward].first = ButtonFactory::create(XMLhelper::skip_blank(cur->children));
 	
-	else if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "armageddon-button"))
+	else if (XMLhelper::equal_str(cur->name, "armageddon-button"))
 	  buttons[armageddon].first = ButtonFactory::create(XMLhelper::skip_blank(cur->children));
 	
-	else if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "escape-button"))
+	else if (XMLhelper::equal_str(cur->name, "escape-button"))
 	  buttons[escape].first = ButtonFactory::create(XMLhelper::skip_blank(cur->children));
 	
-	else if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "action-buttons"))
+	else if (XMLhelper::equal_str(cur->name, "action-buttons"))
 	  create_action_buttons(XMLhelper::skip_blank(cur->children));
 	
-	else if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "action-axis"))
+	else if (XMLhelper::equal_str(cur->name, "action-axis"))
 	  action_axis = AxisFactory::create(XMLhelper::skip_blank(cur->children));
 	  
 	else
@@ -182,7 +182,7 @@ namespace Input {
 	    continue;
 	  }
 	  
-	if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "action-button"))
+	if (XMLhelper::equal_str(cur->name, "action-button"))
 	  buttons[static_cast<ButtonName>(action_1 + count)].first = ButtonFactory::create(XMLhelper::skip_blank(cur->children));
 	else
 	  PingusError::raise(std::string("Wrong Element in Controller Config (action-buttons): ") + reinterpret_cast<const char*>(cur->name));

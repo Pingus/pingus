@@ -1,4 +1,4 @@
-//  $Id: plt_xml.cxx,v 1.6 2002/08/23 15:49:50 torangan Exp $
+//  $Id: plt_xml.cxx,v 1.7 2002/09/10 21:03:32 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,18 +22,17 @@
 #include "xml_helper.hxx"
 #include "plt_xml.hxx"
 
-PLTXML::PLTXML()
+PLTXML::PLTXML ()
 {
 }
 
-PLTXML::~PLTXML()
+PLTXML::~PLTXML ()
 {
 }
 
 
-///
 void
-PLTXML::parse(std::string filename)
+PLTXML::parse (std::string filename)
 {
   doc = xmlParseFile(filename.c_str());
   if (doc)
@@ -48,41 +47,41 @@ PLTXML::parse(std::string filename)
 }
 
 void 
-PLTXML::parse_background(xmlNodePtr cur)
+PLTXML::parse_background (xmlNodePtr cur)
 {
   cur = cur->children;
 
-  while (cur != NULL)
+  while (cur)
     {
-      if (strcmp((char*)cur->name, "surface") == 0)
+      if (XMLhelper::equal_str(cur->name, "surface"))
 	{
 	  background.desc = XMLhelper::parse_surface(doc, cur);
 	}
-      else if (strcmp((char*)cur->name, "color") == 0)
+      else if (XMLhelper::equal_str(cur->name, "color"))
 	{
 	  background.color = XMLhelper::parse_color(doc, cur);
 	}
-      else if (strcmp((char*)cur->name, "para-x") == 0)
+      else if (XMLhelper::equal_str(cur->name, "para-x"))
 	{
 	  background.para_x = XMLhelper::parse_float(doc, cur);
 	}
-      else if (strcmp((char*)cur->name, "para-y") == 0)
+      else if (XMLhelper::equal_str(cur->name, "para-y"))
 	{
 	  background.para_y = XMLhelper::parse_float(doc, cur);
 	}
-      else if (strcmp((char*)cur->name, "scroll-x") == 0)
+      else if (XMLhelper::equal_str(cur->name, "scroll-x"))
 	{
 	  background.scroll_x = XMLhelper::parse_float(doc, cur);
 	}
-      else if (strcmp((char*)cur->name, "scroll-y") == 0)
+      else if (XMLhelper::equal_str(cur->name, "scroll-y"))
 	{
 	  background.scroll_y = XMLhelper::parse_float(doc, cur);
 	}
-      else if (strcmp((char*)cur->name, "stretch-x") == 0)
+      else if (XMLhelper::equal_str(cur->name, "stretch-x"))
 	{
 	  background.stretch_x = XMLhelper::parse_float(doc, cur);
 	}
-      else if (strcmp((char*)cur->name, "stretch-y") == 0)
+      else if (XMLhelper::equal_str(cur->name, "stretch-y"))
 	{
 	  background.stretch_y = XMLhelper::parse_float(doc, cur);
 	}
@@ -98,7 +97,7 @@ void
 PLTXML::parse_description(xmlNodePtr cur)
 {
   char* desc = (char*)xmlNodeListGetString(doc, cur->children, 1);
-  char* lang = (char*)xmlGetProp(cur, (xmlChar*)"lang");
+  char* lang = XMLhelper::get_prop(cur, "lang");
 
   if (desc) {
     if (lang)		    
@@ -112,10 +111,10 @@ PLTXML::parse_description(xmlNodePtr cur)
 }
 
 void 
-PLTXML::parse_world_name(xmlNodePtr cur)
+PLTXML::parse_world_name (xmlNodePtr cur)
 {
   char* name = (char*)xmlNodeListGetString(doc, cur->children, 1);
-  char* lang = (char*)xmlGetProp(cur, (xmlChar*)"lang");
+  char* lang = XMLhelper::get_prop(cur, "lang");
 
   if (name) 
     {
@@ -130,13 +129,13 @@ PLTXML::parse_world_name(xmlNodePtr cur)
 }
 
 void
-PLTXML::parse_level_list(xmlNodePtr cur)
+PLTXML::parse_level_list (xmlNodePtr cur)
 {
   cur = cur->children;
 
-  while (cur != NULL)
+  while (cur)
     {
-      if (strcmp((char*)cur->name, "level") == 0)
+      if (XMLhelper::equal_str(cur->name, "level"))
 	{
 	  char* name = (char*)xmlNodeListGetString(doc, cur->children, 1);
 	  if (name)
@@ -158,25 +157,25 @@ PLTXML::parse_file()
 {
   xmlNodePtr cur = doc->ROOT;
 
-  if (cur != NULL && strcmp((const char*)cur->name, "pingus-world") == 0)
+  if (cur && XMLhelper::equal_str(cur->name, "pingus-world"))
     {
       cur = cur->children;
 
-      while (cur != NULL)
+      while (cur)
 	{
-	  if (strcmp((char*)cur->name, "description") == 0)
+	  if (XMLhelper::equal_str(cur->name, "description"))
 	    {
 	      parse_description(cur);
 	    }
-	  else if (strcmp((char*)cur->name, "background") == 0)
+	  else if (XMLhelper::equal_str(cur->name, "background"))
 	    {
 	      parse_background(cur);
 	    }
-	  else if (strcmp((char*)cur->name, "world-name") == 0)
+	  else if (XMLhelper::equal_str(cur->name, "world-name"))
 	    {
 	      parse_world_name(cur);
 	    }
-	  else if (strcmp((char*)cur->name, "level-list") == 0)
+	  else if (XMLhelper::equal_str(cur->name, "level-list"))
 	    {
 	      parse_level_list(cur);
 	    }
@@ -190,26 +189,26 @@ PLTXML::parse_file()
 }
 
 std::vector<std::string> 
-PLTXML::get_levels()
+PLTXML::get_levels ()
 {
   return level_list;
 }
 
 std::map<std::string,std::string> 
-PLTXML::get_name()
+PLTXML::get_name ()
 {
   return world_name;
 }
 
 std::map<std::string,std::string> 
-PLTXML::get_description()
+PLTXML::get_description ()
 {
 
   return description;
 }
 
 SurfaceBackgroundData
-PLTXML::get_background()
+PLTXML::get_background ()
 {
   return background;
 }

@@ -1,4 +1,4 @@
-//  $Id: surface_background_data.cxx,v 1.4 2002/08/23 15:49:54 torangan Exp $
+//  $Id: surface_background_data.cxx,v 1.5 2002/09/10 21:03:32 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -101,7 +101,7 @@ SurfaceBackgroundData::SurfaceBackgroundData(xmlDocPtr doc, xmlNodePtr cur)
   pos.z = -150;
 
   cur = cur->children;  
-  while (cur != NULL)
+  while (cur)
     {
       if (xmlIsBlankNode(cur)) 
 	{
@@ -109,39 +109,39 @@ SurfaceBackgroundData::SurfaceBackgroundData(xmlDocPtr doc, xmlNodePtr cur)
 	  continue;
 	}
 
-      if (strcmp((char*)cur->name, "surface") == 0)
+      if (XMLhelper::equal_str(cur->name, "surface"))
 	{
 	  desc = XMLhelper::parse_surface(doc, cur);
 	}
-      else if (strcmp((char*)cur->name, "color") == 0)
+      else if (XMLhelper::equal_str(cur->name, "color"))
 	{
 	  color = XMLhelper::parse_color(doc, cur);
 	}
-      else if (strcmp((char*)cur->name, "para-x") == 0)
+      else if (XMLhelper::equal_str(cur->name, "para-x"))
 	{
 	  para_x = XMLhelper::parse_float(doc, cur);
 	}
-      else if (strcmp((char*)cur->name, "para-y") == 0)
+      else if (XMLhelper::equal_str(cur->name, "para-y"))
 	{
 	  para_y = XMLhelper::parse_float(doc, cur);
 	}
-      else if (strcmp((char*)cur->name, "scroll-x") == 0)
+      else if (XMLhelper::equal_str(cur->name, "scroll-x"))
 	{
 	  scroll_x = XMLhelper::parse_float(doc, cur);
 	}
-      else if (strcmp((char*)cur->name, "scroll-y") == 0)
+      else if (XMLhelper::equal_str(cur->name, "scroll-y"))
 	{
 	  scroll_y = XMLhelper::parse_float(doc, cur);
 	}
-      else if (strcmp((char*)cur->name, "stretch-x") == 0)
+      else if (XMLhelper::equal_str(cur->name, "stretch-x"))
 	{
 	  stretch_x = XMLhelper::parse_float(doc, cur);
 	}
-      else if (strcmp((char*)cur->name, "stretch-y") == 0)
+      else if (XMLhelper::equal_str(cur->name, "stretch-y"))
 	{
 	  stretch_y = XMLhelper::parse_float(doc, cur);
 	}
-      else if (strcmp((char*)cur->name, "position") == 0)
+      else if (XMLhelper::equal_str(cur->name, "position"))
 	{
 	  pos = XMLhelper::parse_vector(doc, cur);  
 	}

@@ -1,4 +1,4 @@
-//  $Id: switch_door.cxx,v 1.11 2002/09/10 19:24:19 grumbel Exp $
+//  $Id: switch_door.cxx,v 1.12 2002/09/10 21:03:33 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,25 +37,25 @@ SwitchDoorData::SwitchDoorData (xmlDocPtr doc, xmlNodePtr cur)
 {
   cur = cur->children;
   
-  while (cur != NULL)
+  while (cur)
     {
       if (xmlIsBlankNode(cur)) {
 	cur = cur->next;
 	continue;
       }
       
-      if (strcmp((char*)cur->name, "switch") == 0)
+      if (XMLhelper::equal_str(cur->name, "switch"))
 	{
 	  xmlNodePtr subcur = cur->children;
   
-	  while (subcur != NULL)
+	  while (subcur)
 	    {
 	      if (xmlIsBlankNode(subcur)) {
 		subcur = subcur->next;
 		continue;
 	      }
 	      
-	      if (strcmp((char*)subcur->name, "position") == 0)
+	      if (XMLhelper::equal_str(subcur->name, "position"))
 		{
 		  switch_pos = XMLhelper::parse_vector (doc, subcur);
 		}
@@ -65,22 +65,22 @@ SwitchDoorData::SwitchDoorData (xmlDocPtr doc, xmlNodePtr cur)
 	      subcur = subcur->next;
 	    }
 	}
-      else if (strcmp((char*)cur->name, "door") == 0)
+      else if (XMLhelper::equal_str(cur->name, "door"))
 	{
 	  xmlNodePtr subcur = cur->children;
 
-	  while (subcur != NULL)
+	  while (subcur)
 	    {
 	      if (xmlIsBlankNode(subcur)) {
 		subcur = subcur->next;
 		continue;
 	      }
 	      
-	      if (strcmp((char*)subcur->name, "position") == 0)
+	      if (XMLhelper::equal_str(subcur->name, "position"))
 		{
 		  door_pos = XMLhelper::parse_vector (doc, subcur);
 		}
-	      else if (strcmp((char*)subcur->name, "height") == 0)
+	      else if (XMLhelper::equal_str(subcur->name, "height"))
 		{
 		  door_height = XMLhelper::parse_int (doc, subcur);
 		}

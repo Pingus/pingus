@@ -1,4 +1,4 @@
-//  $Id: xml_plf.cxx,v 1.13 2002/09/08 18:13:04 grumbel Exp $
+//  $Id: xml_plf.cxx,v 1.14 2002/09/10 21:03:32 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -73,7 +73,7 @@ XMLPLF::parse_file()
 
   cur = XMLhelper::skip_blank(cur);
 
-  if (cur && !strcmp(reinterpret_cast<const char*>(cur->name), "pingus-level"))
+  if (cur && XMLhelper::equal_str(cur->name, "pingus-level"))
     {
       //std::cout << "parse_file...." << std::endl;
 
@@ -94,55 +94,55 @@ XMLPLF::parse_file()
 	    }
 
 	  //puts("global loop");
-	  if (!strcmp(reinterpret_cast<const char*>(cur->name), "global"))
+	  if (XMLhelper::equal_str(cur->name, "global"))
 	    {
 	      parse_global(cur);
 	    }
-	  else if (!strcmp(reinterpret_cast<const char*>(cur->name), "action-list"))
+	  else if (XMLhelper::equal_str(cur->name, "action-list"))
 	    {
 	      parse_actions(cur);
 	    }
-	  else if (!strcmp(reinterpret_cast<const char*>(cur->name), "background"))
+	  else if (XMLhelper::equal_str(cur->name, "background"))
 	    {
 	      parse_background(cur);
 	    }
-	  else if (!strcmp(reinterpret_cast<const char*>(cur->name), "groundpiece"))
+	  else if (XMLhelper::equal_str(cur->name, "groundpiece"))
 	    {
 	      parse_groundpiece(cur);
 	    }
-	  else if (!strcmp(reinterpret_cast<const char*>(cur->name), "exit"))
+	  else if (XMLhelper::equal_str(cur->name, "exit"))
 	    {
 	      worldobjs_data.push_back (new ExitData (doc, cur));
 	    }
-	  else if (!strcmp(reinterpret_cast<const char*>(cur->name), "entrance"))
+	  else if (XMLhelper::equal_str(cur->name, "entrance"))
 	    {
 	      worldobjs_data.push_back (new EntranceData (doc, cur));
 	    }
-	  else if (!strcmp(reinterpret_cast<const char*>(cur->name), "trap"))
+	  else if (XMLhelper::equal_str(cur->name, "trap"))
 	    {
 	      parse_traps(cur);
 	    }
-	  else if (!strcmp(reinterpret_cast<const char*>(cur->name), "hotspot"))
+	  else if (XMLhelper::equal_str(cur->name, "hotspot"))
 	    {
 	      worldobjs_data.push_back(new HotspotData (doc, cur));
 	    }
-	  else if (!strcmp(reinterpret_cast<const char*>(cur->name), "liquid"))
+	  else if (XMLhelper::equal_str(cur->name, "liquid"))
 	    {
 	      worldobjs_data.push_back(new LiquidData (doc, cur));
 	    }
-	  else if (!strcmp (reinterpret_cast<const char*>(cur->name), "worldobj"))
+	  else if (XMLhelper::equal_str(cur->name, "worldobj"))
 	    {
 	      worldobjs_data.push_back(WorldObjDataFactory::instance()->create (doc, cur));
 	    }
-	  else if (!strcmp(reinterpret_cast<const char*>(cur->name), "group"))
+	  else if (XMLhelper::equal_str(cur->name, "group"))
 	    {
 	      parse_group(cur);
 	    }
-	  else if (!strcmp (reinterpret_cast<const char*>(cur->name), "start-position"))
+	  else if (XMLhelper::equal_str(cur->name, "start-position"))
 	    {
 	      parse_start_pos(cur);
 	    }
-	  else if (!strcmp (reinterpret_cast<const char*>(cur->name), "weather"))
+	  else if (XMLhelper::equal_str(cur->name, "weather"))
 	    {
 	      parse_weather(cur);
 	    }	  
@@ -171,7 +171,7 @@ XMLPLF::parse_start_pos (xmlNodePtr cur)
 	  continue;
 	}
       
-      if (!strcmp(reinterpret_cast<const char*>(cur->name), "position"))
+      if (XMLhelper::equal_str(cur->name, "position"))
 	{
 	  CL_Vector pos = XMLhelper::parse_vector(doc, cur);
 	  start_x_pos = static_cast<int>(pos.x);
@@ -199,7 +199,7 @@ XMLPLF::parse_weather (xmlNodePtr cur)
 	  continue;
 	}
       
-      if (!strcmp(reinterpret_cast<const char*>(cur->name), "type"))
+      if (XMLhelper::equal_str(cur->name, "type"))
 	{
 	  weather.type = XMLhelper::parse_string(doc, cur);
 	}
@@ -228,35 +228,35 @@ XMLPLF::parse_group (xmlNodePtr cur)
 	  continue;
 	}
       
-      if (!strcmp(reinterpret_cast<const char*>(cur->name), "groundpiece"))
+      if (XMLhelper::equal_str(cur->name, "groundpiece"))
 	{
 	  parse_groundpiece(cur);
 	}
-      else if (!strcmp(reinterpret_cast<const char*>(cur->name), "exit"))
+      else if (XMLhelper::equal_str(cur->name, "exit"))
 	{
 	  group->add (new ExitData (doc, cur));
 	}
-      else if (!strcmp(reinterpret_cast<const char*>(cur->name), "entrance"))
+      else if (XMLhelper::equal_str(cur->name, "entrance"))
 	{
 	  group->add (new EntranceData (doc, cur));
 	}
-      else if (!strcmp(reinterpret_cast<const char*>(cur->name), "trap"))
+      else if (XMLhelper::equal_str(cur->name, "trap"))
 	{
 	  parse_traps (cur);
 	}
-      else if (!strcmp(reinterpret_cast<const char*>(cur->name), "hotspot"))
+      else if (XMLhelper::equal_str(cur->name, "hotspot"))
 	{
 	  group->add(new HotspotData (doc, cur));
 	}
-      else if (!strcmp(reinterpret_cast<const char*>(cur->name), "liquid"))
+      else if (XMLhelper::equal_str(cur->name, "liquid"))
 	{
 	  group->add(new LiquidData (doc, cur));
 	}
-      else if (!strcmp(reinterpret_cast<const char*>(cur->name), "group"))
+      else if (XMLhelper::equal_str(cur->name, "group"))
 	{
 	  parse_group(cur);
 	}
-      else if (!strcmp(reinterpret_cast<const char*>(cur->name), "worldobj"))
+      else if (XMLhelper::equal_str(cur->name, "worldobj"))
 	{
 	  group->add(WorldObjDataFactory::instance ()->create(doc, cur));
 	}
@@ -275,7 +275,7 @@ XMLPLF::parse_background (xmlNodePtr cur)
 {
   // The allocated objects are delete'd in the destructor
   //FIXME: Repair me backgrounds.push_back(BackgroundData::create (doc, cur));
-  char* type_cstr = reinterpret_cast<char*>(xmlGetProp(cur, reinterpret_cast<const xmlChar*>("type")));
+  char* type_cstr = XMLhelper::get_prop(cur, "type");
 
   if (type_cstr)
     {
@@ -309,7 +309,7 @@ XMLPLF::parse_actions (xmlNodePtr cur)
       ActionData button;
       button.name = action_from_string(reinterpret_cast<const char*>(cur->name));
 
-      char* count = reinterpret_cast<char*>(xmlGetProp(cur, reinterpret_cast<const xmlChar*>("count")));
+      char* count = XMLhelper::get_prop(cur, "count");
       if (count)
 	{
 	  from_string(count, button.number_of);
@@ -346,10 +346,10 @@ XMLPLF::parse_global (xmlNodePtr cur)
 	  continue;
 	}
 
-      if (!strcmp(reinterpret_cast<const char*>(cur->name), "levelname"))
+      if (XMLhelper::equal_str(cur->name, "levelname"))
 	{
 	  char* name = reinterpret_cast<char*>(xmlNodeListGetString(doc, cur->children, 1));
-	  char* lang = reinterpret_cast<char*>(xmlGetProp(cur, reinterpret_cast<const xmlChar*>("lang")));
+	  char* lang = XMLhelper::get_prop(cur, "lang");
 
 	  if (name) {
 	    if (lang)
@@ -363,10 +363,10 @@ XMLPLF::parse_global (xmlNodePtr cur)
 	  if (lang)
 	    xmlFree(lang);
 	}
-      else if (!strcmp(reinterpret_cast<const char*>(cur->name), "description"))
+      else if (XMLhelper::equal_str(cur->name, "description"))
 	{
 	  char* desc = reinterpret_cast<char*>(xmlNodeListGetString(doc, cur->children, 1));
-	  char* lang = reinterpret_cast<char*>(xmlGetProp(cur, reinterpret_cast<const xmlChar*>("lang")));
+	  char* lang = XMLhelper::get_prop(cur, "lang");
 
 	  if (desc) {
 	    if (lang)		    
@@ -380,7 +380,7 @@ XMLPLF::parse_global (xmlNodePtr cur)
 	  if (lang)
 	    xmlFree(lang);
 	}
-      else if (!strcmp(reinterpret_cast<const char*>(cur->name), "author"))
+      else if (XMLhelper::equal_str(cur->name, "author"))
 	{
 	  char* tmp_author = reinterpret_cast<char*>(xmlNodeListGetString(doc, cur->children, 1));
 	  if (tmp_author) {
@@ -389,35 +389,35 @@ XMLPLF::parse_global (xmlNodePtr cur)
 	  }
 	  //std::cout << "Author: " << author << " -----------------------" << std::endl;
 	}
-      else if (!strcmp(reinterpret_cast<const char*>(cur->name), "number-of-pingus"))
+      else if (XMLhelper::equal_str(cur->name, "number-of-pingus"))
 	{
 	  number_of_pingus = XMLhelper::parse_int(doc, cur);
 	}
-      else if (!strcmp(reinterpret_cast<const char*>(cur->name), "difficulty"))
+      else if (XMLhelper::equal_str(cur->name, "difficulty"))
 	{
 	  difficulty = XMLhelper::parse_int(doc, cur);
 	}
-      else if (!strcmp(reinterpret_cast<const char*>(cur->name), "playable"))
+      else if (XMLhelper::equal_str(cur->name, "playable"))
 	{
 	  playable = XMLhelper::parse_int(doc, cur);
 	}
-      else if (!strcmp(reinterpret_cast<const char*>(cur->name), "comment"))
+      else if (XMLhelper::equal_str(cur->name, "comment"))
 	{
 	  comment = XMLhelper::parse_string(doc, cur);
 	}
-      else if (!strcmp(reinterpret_cast<const char*>(cur->name), "number-to-save"))
+      else if (XMLhelper::equal_str(cur->name, "number-to-save"))
 	{
 	  number_to_save = XMLhelper::parse_int(doc, cur);
 	}
-      else if (!strcmp(reinterpret_cast<const char*>(cur->name), "time"))
+      else if (XMLhelper::equal_str(cur->name, "time"))
 	{
 	  max_time = XMLhelper::parse_int(doc, cur);
 	}
-      else if (!strcmp(reinterpret_cast<const char*>(cur->name), "height"))
+      else if (XMLhelper::equal_str(cur->name, "height"))
 	{
 	  height = XMLhelper::parse_int(doc, cur);
 	}
-      else if (!strcmp(reinterpret_cast<const char*>(cur->name), "width"))
+      else if (XMLhelper::equal_str(cur->name, "width"))
 	{
 	  width = XMLhelper::parse_int(doc, cur);
 	}
@@ -441,7 +441,7 @@ XMLPLF::parse_traps (xmlNodePtr cur)
 {
   xmlNodePtr cur_ = XMLhelper::skip_blank(cur->children);
   
-  if (!strcmp(reinterpret_cast<const char*>(cur_->name), "type"))
+  if (XMLhelper::equal_str(cur_->name, "type"))
     {
       char* name = reinterpret_cast<char*>(xmlNodeListGetString(doc, cur_->children, 1));
       if (name)

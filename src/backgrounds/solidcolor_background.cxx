@@ -1,4 +1,4 @@
-//  $Id: solidcolor_background.cxx,v 1.4 2002/08/23 15:49:54 torangan Exp $
+//  $Id: solidcolor_background.cxx,v 1.5 2002/09/10 21:03:32 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,7 +31,7 @@ SolidColorBackgroundData:: write_xml(std::ostream& xml)
 SolidColorBackgroundData::SolidColorBackgroundData(xmlDocPtr doc, xmlNodePtr cur)
 {
   cur = cur->children;
-  while (cur != NULL)
+  while (cur)
     {
       if (xmlIsBlankNode(cur)) 
 	{
@@ -39,7 +39,7 @@ SolidColorBackgroundData::SolidColorBackgroundData(xmlDocPtr doc, xmlNodePtr cur
 	  continue;
 	}
 
-      if (strcmp ((char*) cur->name, "color") == 0)
+      if (XMLhelper::equal_str(cur->name, "color"))
 	{
 	  color = XMLhelper::parse_color (doc, cur);
 	}

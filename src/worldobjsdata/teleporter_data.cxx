@@ -1,4 +1,4 @@
-//  $Id: teleporter_data.cxx,v 1.2 2002/09/10 19:24:20 grumbel Exp $
+//  $Id: teleporter_data.cxx,v 1.3 2002/09/10 21:03:33 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -55,7 +55,7 @@ TeleporterData::TeleporterData (xmlDocPtr doc, xmlNodePtr cur)
 {
   cur = cur->children;
   
-  while (cur != NULL)
+  while (cur)
     {
       if (xmlIsBlankNode(cur)) 
 	{
@@ -63,17 +63,17 @@ TeleporterData::TeleporterData (xmlDocPtr doc, xmlNodePtr cur)
 	  continue;
 	}
 
-      if (strcmp((char*)cur->name, "position") == 0)
+      if (XMLhelper::equal_str(cur->name, "position"))
 	{
 	  pos = XMLhelper::parse_vector (doc, cur);
 	}
-      else if (strcmp((char*)cur->name, "target") == 0)
+      else if (XMLhelper::equal_str(cur->name, "target"))
 	{
 	  xmlNodePtr ncur = cur->children;
 
 	  if (xmlIsBlankNode(ncur)) ncur = ncur->next;
 	    
-	  if (ncur != NULL)
+	  if (ncur)
 	    target_pos = XMLhelper::parse_vector (doc, ncur);
 	  else
 	    std::cout << "TeleporterData::create (): <target> is empty" << std::endl;

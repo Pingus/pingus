@@ -1,4 +1,4 @@
-//  $Id: pointer_factory.cxx,v 1.7 2002/08/26 13:53:04 torangan Exp $
+//  $Id: pointer_factory.cxx,v 1.8 2002/09/10 21:03:32 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,78 +28,78 @@
 
 namespace Input {
 
-  using namespace Pointers;
+using namespace Pointers;
+
+Pointer* PointerFactory::create (xmlNodePtr cur)
+{
+  if (!cur)
+    PingusError::raise("PointerFactory called without an element");
+
+  if (XMLhelper::equal_str(cur->name, "axis-pointer"))
+    return axis_pointer(cur);
   
-  Pointer* PointerFactory::create (xmlNodePtr cur)
-  {
-    if (!cur)
-      PingusError::raise("PointerFactory called without an element");
-
-    if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "axis-pointer"))
-      return axis_pointer(cur);
-    
-    else if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "mouse-pointer"))
-      return mouse_pointer();
-    
-    else if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "multiple-pointer"))
-      return multiple_pointer(cur->children);
-    
-    else
-      PingusError::raise(std::string("Unknown pointer type: ") + ((cur->name) ? reinterpret_cast<const char*>(cur->name) : ""));
-    
-    return 0; // never reached
-  }
-
-  Pointer* PointerFactory::axis_pointer (xmlNodePtr cur)
-  {
-    char* speed_str = reinterpret_cast<char*>(xmlGetProp(cur, reinterpret_cast<const xmlChar*>("speed")));
-    if (!speed_str)
-      PingusError::raise("AxisPointer without speed parameter");
-
-    float speed = strtod(speed_str, reinterpret_cast<char**>(NULL));
-    xmlFree(speed_str);
-
-    std::vector<Axis*> axes;
-    cur = cur->children;
+  else if (XMLhelper::equal_str(cur->name, "mouse-pointer"))
+    return mouse_pointer();
   
-    while (cur)
-      {
-        if (xmlIsBlankNode(cur))
-	  {
-  	    cur = cur->next;
-	    continue;
-	  }
-	
-	axes.push_back(AxisFactory::create(cur));
-	cur = cur->next;
-      }
-    
-    return new AxisPointer(speed, axes);
-  }
-
-  Pointer* PointerFactory::mouse_pointer ()
-  {
-    return new MousePointer;
-  }
-
-  Pointer* PointerFactory::multiple_pointer (xmlNodePtr cur)
-  {
-    std::vector<Pointer*> pointers;
-
-    while (cur)    
-      {
-        if (xmlIsBlankNode(cur))
-	  {
-  	    cur = cur->next;
-	    continue;
-	  }
-
-	pointers.push_back(create(cur));
-	cur = cur->next;
-      }
+  else if (XMLhelper::equal_str(cur->name, "multiple-pointer"))
+    return multiple_pointer(cur->children);
   
-    return new MultiplePointer(pointers);
-  }
+  else
+    PingusError::raise(std::string("Unknown pointer type: ") + ((cur->name) ? reinterpret_cast<const char*>(cur->name) : ""));
+  
+  return 0; // never reached
+}
+
+Pointer* PointerFactory::axis_pointer (xmlNodePtr cur)
+{
+  char* speed_str = XMLhelper::get_prop(cur, "speed");
+  if (!speed_str)
+    PingusError::raise("AxisPointer without speed parameter");
+
+  float speed = strtod(speed_str, reinterpret_cast<char**>(NULL));
+  xmlFree(speed_str);
+
+  std::vector<Axis*> axes;
+  cur = cur->children;
+
+  while (cur)
+    {
+      if (xmlIsBlankNode(cur))
+	{
+  	  cur = cur->next;
+	  continue;
+	}
+      
+      axes.push_back(AxisFactory::create(cur));
+      cur = cur->next;
+    }
+  
+  return new AxisPointer(speed, axes);
+}
+
+Pointer* PointerFactory::mouse_pointer ()
+{
+  return new MousePointer;
+}
+
+Pointer* PointerFactory::multiple_pointer (xmlNodePtr cur)
+{
+  std::vector<Pointer*> pointers;
+
+  while (cur)    
+    {
+      if (xmlIsBlankNode(cur))
+	{
+  	  cur = cur->next;
+	  continue;
+	}
+
+      pointers.push_back(create(cur));
+      cur = cur->next;
+    }
+
+  return new MultiplePointer(pointers);
+}
 
 }
 

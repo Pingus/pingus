@@ -1,4 +1,4 @@
-//  $Id: thunderstorm_background_data.cxx,v 1.5 2002/08/23 15:49:54 torangan Exp $
+//  $Id: thunderstorm_background_data.cxx,v 1.6 2002/09/10 21:03:32 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,14 +37,14 @@ ThunderstormBackgroundData::ThunderstormBackgroundData (const ThunderstormBackgr
 ThunderstormBackgroundData::ThunderstormBackgroundData (xmlDocPtr doc, xmlNodePtr cur)
 {
   cur = cur->children; 
-  while (cur != NULL)
+  while (cur)
     {
       if (xmlIsBlankNode(cur)) {
 	cur = cur->next;
 	continue;
       }
 
-      if (strcmp ((char*) cur->name, "position") == 0) {
+      if (XMLhelper::equal_str(cur->name, "position")) {
 	pos = XMLhelper::parse_vector (doc, cur);
       } else {
 	std::cout << "ThunderstormBackgroundData::create(xmlDocPtr doc, xmlNodePtr cur) error" << std::endl;

@@ -1,4 +1,4 @@
-//  $Id: worldobj_group_data.cxx,v 1.7 2002/09/06 17:33:29 torangan Exp $
+//  $Id: worldobj_group_data.cxx,v 1.8 2002/09/10 21:03:32 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,7 +42,7 @@ WorldObjGroupData::WorldObjGroupData (xmlDocPtr doc, xmlNodePtr cur)
 
   std::cout << "WorldObjGroupData::WorldObjGroupData (xmlDocPtr doc, xmlNodePtr cur)" << std::endl;
 
-  while (cur != NULL)
+  while (cur)
     {
       if (xmlIsBlankNode(cur)) 
 	{
@@ -52,31 +52,31 @@ WorldObjGroupData::WorldObjGroupData (xmlDocPtr doc, xmlNodePtr cur)
       
       std::cout << "Obj: " << cur->name << std::endl;
 
-      if (strcmp((char*)cur->name, "exit") == 0)
+      if (XMLhelper::equal_str(cur->name, "exit"))
 	{
 	  add (new ExitData (doc, cur));
 	}
-      else if (strcmp((char*)cur->name, "entrance") == 0)
+      else if (XMLhelper::equal_str(cur->name, "entrance"))
 	{
 	  add (new EntranceData (doc, cur));
 	}
-      //else if (strcmp((char*)cur->name, "trap") == 0)
+      //else if (XMLhelper::equal_str(cur->name, "trap") == 0)
 	//{
 	  //add (new TrapData (doc, cur));
 	//}
-      else if (strcmp((char*)cur->name, "hotspot") == 0)
+      else if (XMLhelper::equal_str(cur->name, "hotspot"))
 	{
 	  add(new HotspotData (doc, cur));
 	}
-      else if (strcmp((char*)cur->name, "liquid") == 0)
+      else if (XMLhelper::equal_str(cur->name, "liquid"))
 	{
 	  add(new LiquidData (doc, cur));
 	}
-      else if (strcmp((char*)cur->name, "group") == 0)
+      else if (XMLhelper::equal_str(cur->name, "group"))
 	{
 	  add(new WorldObjGroupData (doc, cur));
 	}
-      else if (strcmp ((char*)cur->name, "worldobj") == 0)
+      else if (strcmp ((char*)cur->name, "worldobj"))
 	{
 	  add(WorldObjDataFactory::instance ()->create (doc, cur));
 	}

@@ -1,4 +1,4 @@
-//  $Id: entrance_data.cxx,v 1.6 2002/08/23 15:49:48 torangan Exp $
+//  $Id: entrance_data.cxx,v 1.7 2002/09/10 21:03:32 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,7 +30,7 @@ EntranceData::EntranceData (xmlDocPtr doc, xmlNodePtr cur)
   clean ();
 
   cur = cur->children;  
-  while (cur != NULL)
+  while (cur)
     {
       if (xmlIsBlankNode(cur)) 
 	{
@@ -38,27 +38,27 @@ EntranceData::EntranceData (xmlDocPtr doc, xmlNodePtr cur)
 	  continue;
 	}
 
-      if (strcmp((char*)cur->name, "type") == 0)
+      if (XMLhelper::equal_str(cur->name, "type"))
 	{
 	  char* name = (char*)xmlNodeListGetString(doc, cur->children, 1); 
 	  type = name;
 	  xmlFree(name);
 	}
-      else if (strcmp((char*)cur->name, "owner-id") == 0)
+      else if (XMLhelper::equal_str(cur->name, "owner-id"))
 	{
 	  owner_id = XMLhelper::parse_int(doc, cur);
 	}
-      else if (strcmp((char*)cur->name, "position") == 0)
+      else if (XMLhelper::equal_str(cur->name, "position"))
 	{
 	  pos = XMLhelper::parse_vector(doc, cur);
 	}
-      else if (strcmp((char*)cur->name, "release-rate") == 0)
+      else if (XMLhelper::equal_str(cur->name, "release-rate"))
 	{
 	  char* release_rate_str = (char*)xmlNodeListGetString(doc, cur->children, 1);
 	  release_rate = StringConverter::to_int(release_rate_str);
 	  xmlFree(release_rate_str);
 	}
-      else if (strcmp((char*)cur->name, "direction") == 0)
+      else if (XMLhelper::equal_str(cur->name, "direction"))
 	{
 	  char* direction_str = (char*)xmlNodeListGetString(doc, cur->children, 1);
 

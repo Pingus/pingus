@@ -1,4 +1,4 @@
-//  $Id: node_data.cxx,v 1.3 2002/09/07 23:33:47 grumbel Exp $
+//  $Id: node_data.cxx,v 1.4 2002/09/10 21:03:33 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -83,7 +83,7 @@ LevelNodeData::create(xmlDocPtr doc, xmlNodePtr cur)
 
   cur = cur->children;
   
-  while (cur != NULL)
+  while (cur)
     {
       if (xmlIsBlankNode(cur)) 
 	{
@@ -91,15 +91,15 @@ LevelNodeData::create(xmlDocPtr doc, xmlNodePtr cur)
 	  continue;
 	}
 
-      if (strcmp((char*)cur->name, "node") == 0)
+      if (XMLhelper::equal_str(cur->name, "node"))
 	{
 	  NodeData* node_data = NodeData::create (doc, cur);
 	  node->assign(*node_data);
 	  delete node_data;
 	}
-      else if (strcmp((char*)cur->name, "level") == 0)
+      else if (XMLhelper::equal_str(cur->name, "level"))
 	{
-	  char* level = (char*)xmlGetProp(cur, (xmlChar*)"name");
+	  char* level = XMLhelper::get_prop(cur, "name");
 	  if (level)
 	    node->levelname = std::string("levels/") + level;
 	  else
@@ -153,21 +153,21 @@ NodeData::create(xmlDocPtr doc, xmlNodePtr cur)
 {
   NodeData* node = new NodeData ();
   
-  char* id = (char*)xmlGetProp(cur, (xmlChar*)"id");
+  char* id = XMLhelper::get_prop(cur, "id");
   if (id)
     node->id = StringConverter::to_int (id);
   else
     std::cout << "PingusWorldMapGraph::parse_node: no node id given" << std::endl;
 
   /* Accesibility should probally be placed on the links?!
-  char* accessible = (char*)xmlGetProp(cur, (xmlChar*)"accessible");
+  char* accessible = XMLhelper::get_prop(cur, "accessible");
   if (accessible)
     node->accessible = StringConverter::to_int (accessible);
   */
 
   cur = cur->children;
 
-  while (cur != NULL)
+  while (cur)
     {
       if (xmlIsBlankNode(cur)) 
 	{
@@ -175,13 +175,13 @@ NodeData::create(xmlDocPtr doc, xmlNodePtr cur)
 	  continue;
 	}
 
-      if (strcmp((char*)cur->name, "position") == 0)
+      if (XMLhelper::equal_str(cur->name, "position"))
 	{
 	  node->pos = XMLhelper::parse_vector (doc, cur);
 	}
-      else if (strcmp((char*)cur->name, "link") == 0)
+      else if (XMLhelper::equal_str(cur->name, "link"))
 	{
-	  char* id = (char*)xmlGetProp(cur, (xmlChar*)"id");
+	  char* id = XMLhelper::get_prop(cur, "id");
 	  if (id)
 	    node->links.push_back(StringConverter::to_int (id));
 	  else
@@ -205,7 +205,7 @@ TubeNodeData::create(xmlDocPtr doc, xmlNodePtr cur)
 
   cur = cur->children;
   
-  while (cur != NULL)
+  while (cur)
     {
       if (xmlIsBlankNode(cur)) 
 	{
@@ -213,15 +213,15 @@ TubeNodeData::create(xmlDocPtr doc, xmlNodePtr cur)
 	  continue;
 	}
 
-      if (strcmp((char*)cur->name, "node") == 0)
+      if (XMLhelper::equal_str(cur->name, "node"))
 	{
 	  NodeData* node_data = NodeData::create (doc, cur);
 	  node->assign(*node_data);
 	  delete node_data;
 	}
-      else if (strcmp((char*)cur->name, "worldmap") == 0)
+      else if (XMLhelper::equal_str(cur->name, "worldmap"))
 	{
-	  char* link_node = (char*)xmlGetProp(cur, (xmlChar*)"linknode");
+	  char* link_node = XMLhelper::get_prop(cur, "linknode");
 	  if (link_node)
 	    from_string (link_node, node->link_node);
 	  else
@@ -229,9 +229,9 @@ TubeNodeData::create(xmlDocPtr doc, xmlNodePtr cur)
 
 	  node->worldmap = XMLhelper::parse_string (doc, cur);
 	}
-      else if (strcmp((char*)cur->name, "link") == 0)
+      else if (XMLhelper::equal_str(cur->name, "link"))
 	{
-	  char* id = (char*)xmlGetProp(cur, (xmlChar*)"id");
+	  char* id = XMLhelper::get_prop(cur, "id");
 	  if (id)
 	    node->links.push_back(StringConverter::to_int (id));
 	  else
