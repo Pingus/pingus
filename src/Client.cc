@@ -1,4 +1,4 @@
-//  $Id: Client.cc,v 1.85 2002/06/10 13:03:34 torangan Exp $
+//  $Id: Client.cc,v 1.86 2002/06/10 15:01:23 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,7 +28,6 @@
 #include "Playfield.hh"
 #include "LevelInterrupt.hh"
 #include "System.hh"
-#include "Result.hh"
 #include "algo.hh"
 #include "Timer.hh"
 #include "PingusResource.hh"

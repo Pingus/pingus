@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapManager.cc,v 1.24 2002/06/10 11:00:28 torangan Exp $
+//  $Id: PingusWorldMapManager.cc,v 1.25 2002/06/10 15:01:23 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,6 @@
 #include <ClanLib/Display/Input/input.h>
 #include "../PathManager.hh"
 #include "../DeltaManager.hh"
-#include "../globals.hh"
 #include "../algo.hh"
 #include "../Display.hh"
 #include "PingusWorldMap.hh"

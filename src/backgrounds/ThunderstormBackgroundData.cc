@@ -1,4 +1,4 @@
-//  $Id: ThunderstormBackgroundData.cc,v 1.13 2002/06/09 14:04:10 torangan Exp $
+//  $Id: ThunderstormBackgroundData.cc,v 1.14 2002/06/10 15:01:23 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,6 @@
 #include <iostream>
 #include "../XMLhelper.hh"
 #include "ThunderstormBackground.hh"
-#include "ThunderstormBackgroundData.hh"
 
 void
 ThunderstormBackgroundData::write_xml(std::ofstream* xml)

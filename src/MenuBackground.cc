@@ -1,4 +1,4 @@
-//  $Id: MenuBackground.cc,v 1.2 2002/06/08 23:11:07 torangan Exp $
+//  $Id: MenuBackground.cc,v 1.3 2002/06/10 15:01:23 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,6 @@
 
 #include "PingusMenuManager.hh"
 #include "PingusResource.hh"
-#include "LayerManager.hh"
 
 MenuBackground::MenuBackground (PingusMenuManager* manager)
   : PingusSubMenu (manager)

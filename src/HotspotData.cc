@@ -1,4 +1,4 @@
-//  $Id: HotspotData.cc,v 1.9 2002/06/10 11:00:25 torangan Exp $
+//  $Id: HotspotData.cc,v 1.10 2002/06/10 15:01:23 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,7 +19,6 @@
 
 #include <fstream>
 #include "EditorHotspot.hh"
-#include "HotspotData.hh"
 #include "XMLhelper.hh"
 #include "Hotspot.hh"
 

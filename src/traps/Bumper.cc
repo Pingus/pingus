@@ -1,4 +1,4 @@
-//  $Id: Bumper.cc,v 1.21 2002/06/10 13:03:35 torangan Exp $
+//  $Id: Bumper.cc,v 1.22 2002/06/10 15:01:23 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,7 +23,6 @@
 #include "../PingusResource.hh"
 #include "../PingusSound.hh"
 #include "../algo.hh"
-#include "../GroundpieceData.hh"
 #include "../ColMap.hh"
 #include "../PinguHolder.hh"
 #include "Bumper.hh"

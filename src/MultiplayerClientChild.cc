@@ -1,4 +1,4 @@
-//  $Id: MultiplayerClientChild.cc,v 1.15 2002/06/10 13:03:34 torangan Exp $
+//  $Id: MultiplayerClientChild.cc,v 1.16 2002/06/10 15:01:23 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,7 +17,6 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <ClanLib/Core/Math/cl_vector.h>
 #include <ClanLib/Display/Input/key.h>
 #include "MultiplayerClientChild.hh"
 #include "Pingu.hh"

@@ -1,4 +1,4 @@
-//  $Id: Server.cc,v 1.30 2002/06/09 00:56:26 grumbel Exp $
+//  $Id: Server.cc,v 1.31 2002/06/10 15:01:23 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,7 +19,6 @@
 
 #include <cstdio>
 #include <cstdlib>
-#include <functional>
 
 #include "System.hh"
 #include "globals.hh"

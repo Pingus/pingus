@@ -1,4 +1,4 @@
-//   $Id: PingusMain.cc,v 1.63 2002/06/10 11:00:27 torangan Exp $
+//   $Id: PingusMain.cc,v 1.64 2002/06/10 15:01:23 torangan Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -60,7 +60,6 @@
 #include "System.hh"
 #include "PingusError.hh"
 #include "Loading.hh"
-#include "Display.hh"
 #include "GlobalEvent.hh"
 #include "Config.hh"
 #include "Console.hh"
@@ -72,7 +71,6 @@
 #include "editor/Editor.hh"
 
 #include "PingusMenuManager.hh"
-#include "PingusSound.hh"
 #include "PingusSoundDummy.hh"
 
 #include "PingusSoundReal.hh"

@@ -1,4 +1,4 @@
-//  $Id: ObjectManager.cc,v 1.66 2002/06/10 11:00:28 torangan Exp $
+//  $Id: ObjectManager.cc,v 1.67 2002/06/10 15:01:23 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,9 +27,9 @@
 #include "../System.hh"
 #include "../PLFPLF.hh"
 #include "../XMLPLF.hh"
+#include "../XMLhelper.hh"
 #include "../PingusResource.hh"
 #include "../PingusError.hh"
-#include "../XMLhelper.hh"
 #include "StartPos.hh"
 #include "ObjectManager.hh"
 #include "EditorView.hh"

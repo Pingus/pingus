@@ -1,4 +1,4 @@
-//  $Id: SurfaceButton.cc,v 1.39 2002/06/10 11:00:27 torangan Exp $
+//  $Id: SurfaceButton.cc,v 1.40 2002/06/10 15:01:23 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,13 +24,11 @@
 #include "globals.hh"
 #include "PingusResource.hh"
 #include "Loading.hh"
-#include "OptionMenu.hh"
 #include "System.hh"
 #include "PingusMenuManager.hh"
 #include "Credits.hh"
 #include "editor/Editor.hh"
 #include "ThemeSelector.hh"
-#include "SurfaceButton.hh"
 
 /* Headers needed for i18n / gettext */
 #include <clocale>

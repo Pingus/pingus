@@ -1,4 +1,4 @@
-//  $Id: ActionButton.cc,v 1.33 2002/06/10 11:00:25 torangan Exp $
+//  $Id: ActionButton.cc,v 1.34 2002/06/10 15:01:23 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,7 +18,6 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <cstdio>
-
 #include <ClanLib/Core/Math/cl_vector.h>
 #include <ClanLib/Display/Display/display.h>
 #include <ClanLib/Display/Font/font.h>
@@ -220,7 +219,7 @@ VerticalActionButton::draw()
 		     action_c);
 }
 
-ArmageddonButton::ArmageddonButton(int x, int y)
+ArmageddonButton::ArmageddonButton(int x, int y) 
 {
   surface = PingusResource::load_surface("buttons/armageddon_anim", "core");
 
@@ -234,7 +233,7 @@ ArmageddonButton::ArmageddonButton(int x, int y)
   pressed = false;
 }
 
-ArmageddonButton::~ArmageddonButton() {}
+ArmageddonButton::~ArmageddonButton() { }
 
 void
 ArmageddonButton::draw()

@@ -1,4 +1,4 @@
-//  $Id: ButtonPanel.cc,v 1.32 2002/06/10 13:03:34 torangan Exp $
+//  $Id: ButtonPanel.cc,v 1.33 2002/06/10 15:01:23 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,7 +24,6 @@
 #include "globals.hh"
 #include "Pingu.hh"
 #include "ButtonPanel.hh"
-#include "ActionData.hh"
 #include "Controller.hh"
 #include "Client.hh"
 #include "Server.hh"

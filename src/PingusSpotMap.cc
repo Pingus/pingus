@@ -1,4 +1,4 @@
-//  $Id: PingusSpotMap.cc,v 1.54 2002/06/10 11:00:27 torangan Exp $
+//  $Id: PingusSpotMap.cc,v 1.55 2002/06/10 15:01:23 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,7 +25,6 @@
 #include "PingusError.hh"
 #include "blitter.hh"
 #include "algo.hh"
-#include "globals.hh"
 #include "Timer.hh"
 #include "PingusSpotMap.hh"
 #include "my_gettext.hh"

@@ -1,4 +1,4 @@
-//  $Id: World.cc,v 1.74 2002/06/10 13:03:35 torangan Exp $
+//  $Id: World.cc,v 1.75 2002/06/10 15:01:23 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,7 +19,6 @@
 
 #include <cstdio>
 #include <ctime>
-#include <functional>
 
 #include "ActionHolder.hh"
 #include "Exit.hh"

@@ -1,4 +1,4 @@
-//  $Id: ColMap.cc,v 1.32 2002/06/10 11:00:25 torangan Exp $
+//  $Id: ColMap.cc,v 1.33 2002/06/10 15:01:23 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,8 +29,6 @@
 #include "globals.hh"
 #include "PingusResource.hh"
 #include "PingusError.hh"
-#include "GroundpieceData.hh"
-
 #include "ColMap.hh"
 
 /* Headers needed for i18n / gettext */

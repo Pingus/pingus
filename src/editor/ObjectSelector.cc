@@ -1,4 +1,4 @@
-//  $Id: ObjectSelector.cc,v 1.63 2002/06/10 11:00:28 torangan Exp $
+//  $Id: ObjectSelector.cc,v 1.64 2002/06/10 15:01:23 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,7 +43,6 @@
 #include "../backgrounds/SurfaceBackgroundData.hh"
 #include "../backgrounds/SolidColorBackground.hh"
 #include "../backgrounds/ThunderstormBackground.hh"
-#include "../backgrounds/ThunderstormBackgroundData.hh"
 
 #include "../worldobjs/Teleporter.hh"
 #include "../worldobjs/IceBlock.hh"

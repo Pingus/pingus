@@ -1,4 +1,4 @@
-//  $Id: ButtonPanel.hh,v 1.17 2002/06/10 11:00:25 torangan Exp $
+//  $Id: ButtonPanel.hh,v 1.18 2002/06/10 15:01:23 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,6 @@
 #define BUTTON_PANEL_HH
 
 #include <vector>
-#include <ClanLib/Display/Display/surface.h>
 #include "boost/smart_ptr.hpp"
 
 #include "GuiObj.hh"

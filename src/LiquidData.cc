@@ -1,4 +1,4 @@
-//  $Id: LiquidData.cc,v 1.10 2002/06/10 11:00:26 torangan Exp $
+//  $Id: LiquidData.cc,v 1.11 2002/06/10 15:01:23 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,7 +18,6 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <fstream>
-#include "boost/smart_ptr.hpp"
 #include "Liquid.hh"
 #include "editor/PLFObj.hh"
 #include "StringConverter.hh"

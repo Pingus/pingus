@@ -1,4 +1,4 @@
-//  $Id: StarfieldBackground.cc,v 1.22 2002/06/10 11:00:28 torangan Exp $
+//  $Id: StarfieldBackground.cc,v 1.23 2002/06/10 15:01:23 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,6 @@
 #include "../globals.hh"
 #include "../editor/SpriteEditorObj.hh"
 #include "../World.hh"
-#include "../StringConverter.hh"
 #include "../PingusResource.hh"
 #include "../XMLhelper.hh"
 #include "StarfieldBackground.hh"

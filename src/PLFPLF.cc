@@ -1,4 +1,4 @@
-//  $Id: PLFPLF.cc,v 1.15 2002/06/09 13:03:11 grumbel Exp $
+//  $Id: PLFPLF.cc,v 1.16 2002/06/10 15:01:23 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,13 +20,11 @@
 #include <cstdio>
 #include <cstdlib>
 
-#include "PLF.hh"
 #include "algo.hh"
 #include "globals.hh"
 #include "PingusError.hh"
 #include "PSMParser.hh"
 #include "PLFPLF.hh"
-#include "backgrounds/SurfaceBackgroundData.hh"
 
 using namespace std;
 
