@@ -1,5 +1,8 @@
 
-teleporter = images/worldobjs/teleporter.tga    (type=surface, x=0, y=0, width=35, height=52, tcol = 0, array=6x1);
-teleporter2 = images/worldobjs/teleporter2.tga (type=surface, x=0, y=0, width=64, height=64);
+teleporter = images/worldobjs/teleporter.png    (type=surface, x=0, y=0, width=35, height=52, tcol = 0, array=6x1);
+teleporter2 = images/worldobjs/teleporter2.png (type=surface, x=0, y=0, width=64, height=64);
+
+iceblock = images/worldobjs/iceblock.png (type=surface, x=0, y=0, width=25, height=10, array=5x1);
+iceblock_cmap = images/worldobjs/iceblock_cmap.png (type=surface, x=0, y=0, width=25, height=10);
 
 // EOF //
