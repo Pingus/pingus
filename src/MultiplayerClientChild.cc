@@ -1,4 +1,4 @@
-//  $Id: MultiplayerClientChild.cc,v 1.1 2001/04/14 11:41:21 grumbel Exp $
+//  $Id: MultiplayerClientChild.cc,v 1.2 2001/04/14 11:45:01 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -80,6 +80,7 @@ void MultiplayerClientChild::on_left_press (const CL_Vector& pos)
 
 void MultiplayerClientChild::on_right_press (const CL_Vector& pos)
 {
+  playfield->scroll (CL_Vector (-1.0 ,0.0));
 }
 
 void MultiplayerClientChild::on_right_release (const CL_Vector& pos)
