@@ -974,6 +974,10 @@ SOURCE=.\src\capture_rectangle.cxx
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\cheat.cxx
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\client.cxx
 # End Source File
 # Begin Source File
@@ -1047,10 +1051,6 @@ SOURCE=.\src\fade_out.cxx
 # Begin Source File
 
 SOURCE=.\src\fonts.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\force_vector.cxx
 # End Source File
 # Begin Source File
 
@@ -1323,10 +1323,6 @@ SOURCE=.\src\spot_map.cxx
 # Begin Source File
 
 SOURCE=.\src\sprite.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\story.cxx
 # End Source File
 # Begin Source File
 

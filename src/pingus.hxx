@@ -1,4 +1,4 @@
-//  $Id: pingus.hxx,v 1.5 2002/10/20 18:28:49 torangan Exp $
+//  $Id: pingus.hxx,v 1.6 2002/11/28 17:42:14 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,6 +39,8 @@
 #  pragma warning(disable:4355) //this used in constructor base
 
 #  pragma warning(disable:4800) //'int' : forcing value to bool 'true' or 'false' (performance warning)
+
+#  include <assert.h>
 #endif
 
 #define UNUSED_ARG(a) do {/* null */} while (&a == 0)
