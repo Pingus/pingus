@@ -1,4 +1,4 @@
-//  $Id: Pingu.cc,v 1.15 2000/04/08 20:20:25 grumbel Exp $
+//  $Id: Pingu.cc,v 1.16 2000/04/10 21:17:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -159,6 +159,7 @@ Pingu::set_action(PinguAction* act)
 
   // Use the activation time of the action
 
+  // FIXME: ^ XOR?!
   if (act->get_type() ^ (ActionType)ONCE) 
     {
       if (verbose) 
@@ -431,6 +432,13 @@ void
 Pingu::do_walking()
 {
   environment = land;
+
+ if (rel_getpixel(0,-1) & ColMap::WATER)
+   {
+     std::cout << "Blub, blub, blub, blub...." << std::endl;
+     status = dead;
+     return;
+   }
 
   if (rel_getpixel(1, 0) == ColMap::NOTHING) 
     { // if infront is free

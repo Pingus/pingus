@@ -1,4 +1,4 @@
-//  $Id: PSMParser.hh,v 1.3 2000/02/11 16:58:25 grumbel Exp $
+//  $Id: PSMParser.hh,v 1.4 2000/04/10 21:17:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,7 +37,7 @@ struct surface_data {
   std::string res_name;
   std::string name;
   std::string type_str; 
-  enum Type { SOLID, GROUND,BRIDGE } type ;
+  enum Type { SOLID, GROUND, BRIDGE, WATER, LAVA } type ;
   
 };
 
