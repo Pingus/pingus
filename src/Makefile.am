@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.76 2002/06/08 21:43:36 grumbel Exp $
+#  $Id: Makefile.am,v 1.77 2002/06/12 19:11:29 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -65,140 +65,141 @@ pingus_LDADD = \
         generic/libpingus_generic.a
 
 pingus_SOURCES = \
-                 GenericMain.cc       GenericMain.hh       \
-                 PingusMain.cc        PingusMain.hh        \
-		 CaptureRectangle.cc  CaptureRectangle.hh  \
-		 FVec.cc	      FVec.hh              \
-                 ActionButton.cc      ActionButton.hh      \
-                 ActionHolder.cc      ActionHolder.hh      \
-                 AlphaButton.cc       AlphaButton.hh       \
-                 AnimCounter.cc       AnimCounter.hh       \
-                 ButtonPanel.cc       ButtonPanel.hh       \
-                 Client.cc            Client.hh            \
-                 ColMap.cc            ColMap.hh            \
-                 Counter.cc           Counter.hh           \
-                 DebugGui.cc          DebugGui.hh          \
-                 Direction.cc         Direction.hh         \
-                 Entrance.cc          Entrance.hh          \
-                 Exit.cc              Exit.hh              \
-                 FadeOut.cc           FadeOut.hh           \
-                 GameCounter.cc       GameCounter.hh       \
-                 GameTime.cc          GameTime.hh          \
-                 GuiObj.cc            GuiObj.hh            \
-                 Hotspot.cc           Hotspot.hh           \
-                 Intro.cc             Intro.hh             \
-                 LevelInterrupt.cc    LevelInterrupt.hh    \
-                 Liquid.cc            Liquid.hh            \
-                 MainMenu.cc          MainMenu.hh          \
-                 OptionMenu.cc        OptionMenu.hh        \
-                 PLF.cc               PLF.hh               \
-                 XMLPLF.cc            XMLPLF.hh               \
-                 PLFPLF.cc            PLFPLF.hh               \
-                 PLFParser.cc         PLFParser.hh         \
-                 PLFPreview.cc        PLFPreview.hh        \
-                 PLTParser.cc         PLTParser.hh         \
-                 PSMParser.cc         PSMParser.hh         \
-                 Pingu.cc             Pingu.hh             \
-                 PinguAction.cc       PinguAction.hh       \
-                 PinguBmpMap.cc       PinguBmpMap.hh       \
-                 PinguEnums.hh                             \
-                 PinguHolder.cc       PinguHolder.hh       \
-                 PinguInfo.cc         PinguInfo.hh         \
-                 PinguMap.cc          PinguMap.hh          \
-                 PingusCounter.cc     PingusCounter.hh     \
-                 DemoRecorder.cc      DemoRecorder.hh      \
-                 DemoPlayer.cc        DemoPlayer.hh        \
-                 PingusError.cc       PingusError.hh       \
-	         PingusLevelDesc.cc   PingusLevelDesc.hh   \
-                 PingusLevelResult.cc PingusLevelResult.hh \
-                 PingusMenu.cc        PingusMenu.hh        \
-                 PingusMessageBox.cc  PingusMessageBox.hh  \
-                 PingusResource.cc    PingusResource.hh    \
-                 PingusSpotMap.cc     PingusSpotMap.hh     \
-                 Playfield.cc         Playfield.hh         \
-                 Range.cc             Range.hh             \
-                 ResDescriptor.cc     ResDescriptor.hh     \
-                 Result.cc            Result.hh            \
-                 Server.cc            Server.hh            \
-                 SpecsReader.cc       SpecsReader.hh       \
-                 SurfaceButton.cc     SurfaceButton.hh     \
-                 System.cc            System.hh            \
-                 Theme.cc             Theme.hh             \
-                 ThemeSelector.cc     ThemeSelector.hh     \
-                 TimeDisplay.cc       TimeDisplay.hh       \
-                 Trap.cc              Trap.hh              \
-                 TrueServer.cc        TrueServer.hh        \
-                 View.cc              View.hh              \
-                 World.cc             World.hh             \
-                 WorldObj.cc          WorldObj.hh          \
-                 WorldObjData.cc      WorldObjData.hh      \
-                 WorldObjGroupData.cc WorldObjGroupData.hh \
-                 algo.cc              algo.hh              \
-                 blitter.cc           blitter.hh	   \
-                 ActionData.hh        \
-	         EntranceData.hh      EntranceData.cc      \
-                 ExitData.hh          ExitData.cc          \
-                 globals.cc           globals.hh           \
-                 HotspotData.hh       HotspotData.cc       \
-                 LiquidData.hh        LiquidData.cc        \
-                 TrapData.hh          TrapData.cc \
-                 Display.cc           Display.hh           \
-                 Loading.cc           Loading.hh           \
-                 Credits.cc           Credits.hh           \
-                 SmallMap.cc          SmallMap.hh          \
-                 Config.cc            Config.hh            \
-                 PingusSound.cc       PingusSound.hh       \
-	         PingusSoundDummy.cc  PingusSoundDummy.hh       \
-                 PingusSoundReal.cc       PingusSoundReal.hh       \
-                 PingusMusicProvider.cc PingusMusicProvider.hh \
-                 PingusWavProvider.cc PingusWavProvider.hh \
-                 audio.cc             audio.hh \
-                 Timer.cc             Timer.hh \
-                 MultiLineText.cc     MultiLineText.hh \
-                 GlobalEvent.cc       GlobalEvent.hh \
-                 Screenshot.cc        Screenshot.hh  \
-                 FPSCounter.cc        FPSCounter.hh  \
-                 Console.cc           Console.hh \
-                 Story.cc             Story.hh  \
-                 HurryUp.cc           HurryUp.hh \
-                 StringConverter.cc   StringConverter.hh \
-                 SurfaceData.hh \
-                 XMLhelper.cc         XMLhelper.hh \
-                 PLTXML.cc            PLTXML.hh   \
-                 WeatherData.hh       WeatherData.cc \
-                 TargetProvider.hh    TargetProvider.cc \
-                 PingusMapManager.hh  PingusMapManager.cc \
-                 Color.hh              \
-                 LayerManager.cc      LayerManager.hh \
-                 Sprite.cc            Sprite.hh \
-                 DeltaManager.hh \
-                 PingusGameSession.cc PingusGameSession.hh \
-                 PingusGameSessionResult.cc PingusGameSessionResult.hh \
-                 MultiplayerConfig.cc MultiplayerConfig.hh \
-                 Controller.hh        Controller.cc \
-                 MouseController.cc   MouseController.hh \
-                 GamepadController.cc GamepadController.hh \
-                 Cursor.cc            Cursor.hh \
-                 MultiplayerClientChild.cc   MultiplayerClientChild.hh \
-                 MultiplayerClient.cc MultiplayerClient.hh \
-                 MultiplayerGame.cc   MultiplayerGame.hh   \
-                 PlayfieldView.cc     PlayfieldView.hh   \
-                 Controllable.cc      Controllable.hh    \
-                 KeyboardController.cc KeyboardController.hh \
-                 PingusCounterBar.cc PingusCounterBar.hh \
-                 SmallMapImage.cc    SmallMapImage.hh \
-                 PingusMenuManager.cc PingusMenuManager.hh \
-                 PingusSubMenu.cc    PingusSubMenu.hh \
-                 ExitMenu.hh         ExitMenu.cc \
-                 MenuBackground.hh   MenuBackground.cc \
-                 PathManager.cc      PathManager.hh \
-                 GroundpieceData.hh  GroundpieceData.cc \
-                 my_gettext.hh \
-                 WorldObjDataFactory.cc  WorldObjDataFactory.hh \
-                 EditorHotspot.hh \
-                 PinguActionFactory.cc PinguActionFactory.hh \
-                 USBMouseController.hh USBMouseController.cc \
-                 PingusStream.hh     PingusStream.cc \
-                 Debug.cc            Debug.hh
+action_button.hxx	      multiplayer_game.hxx \
+action_data.hxx		      multiplex_controller.hxx \
+action_holder.hxx	      music_provider.hxx \
+algo.hxx		      my_gettext.hxx \
+alpha_button.hxx	      option_menu.hxx \
+anim_counter.hxx	      path_manager.hxx \
+audio.hxx		      pingu.hxx \
+blitter.hxx		      pingu_action.hxx \
+bmp_map.hxx		      pingu_action_factory.hxx \
+button_panel.hxx	      pingu_enums.hxx \
+capture_rectangle.hxx	      pingu_holder.hxx \
+client.hxx		      pingu_info.hxx \
+col_map.hxx		      pingu_map.hxx \
+color.hxx		      pingus_counter.hxx \
+config.hxx		      pingus_counter_bar.hxx \
+console.hxx		      pingus_error.hxx \
+controllable.hxx	      pingus_main.hxx \
+controller.hxx		      pingus_map_manager.hxx \
+counter.hxx		      pingus_menu.hxx \
+credits.hxx		      pingus_menu_manager.hxx \
+cursor.hxx		      pingus_resource.hxx \
+debug.hxx		      pingus_sub_menu.hxx \
+debug_gui.hxx		      playfield.hxx \
+debug_stream.hxx	      playfield_view.hxx \
+delta_manager.hxx	      plf.hxx \
+demo_player.hxx		      plf_parser.hxx \
+demo_recorder.hxx	      plf_plf.hxx \
+direction.hxx		      plf_preview.hxx \
+display.hxx		      plt_parser.hxx \
+editor_hotspot.hxx	      plt_xml.hxx \
+entrance.hxx		      psm_parser.hxx \
+entrance_data.hxx	      range.hxx \
+exit.hxx		      res_descriptor.hxx \
+exit_data.hxx		      result.hxx \
+exit_menu.hxx		      \
+fade_out.hxx		      \
+force_vector.hxx	      \
+fps_counter.hxx		      screenshot.hxx \
+game_counter.hxx	      server.hxx \
+		      smallmap.hxx \
+game_event.hxx		      smallmap_image.hxx \
+game_session.hxx	      sound.hxx \
+game_session_result.hxx       sound_dummy.hxx \
+game_time.hxx		      sound_real.hxx \
+gamepad_controller.hxx	      specs_reader.hxx \
+generic_main.hxx	      spot_map.hxx \
+global_event.hxx	      sprite.hxx \
+globals.hxx		      story.hxx \
+groundpiece_data.hxx	      string_converter.hxx \
+gui_obj.hxx		      surface_button.hxx \
+hotspot.hxx		      system.hxx \
+hotspot_data.hxx	      target_provider.hxx \
+hurry_up.hxx		      theme.hxx \
+input_event.hxx		      theme_selector.hxx \
+intro.hxx		      time_display.hxx \
+keyboard_controller.hxx       timer.hxx \
+layer_manager.hxx	      trap.hxx \
+level_desc.hxx		      trap_data.hxx \
+level_interrupt.hxx	      true_server.hxx \
+level_result.hxx	      usb_mouse_controller.hxx \
+liquid.hxx		      view.hxx \
+liquid_data.hxx		      wav_provider.hxx \
+loading.hxx		      weather_data.hxx \
+main_menu.hxx		      world.hxx \
+menu_background.hxx	      worldobj.hxx \
+message_box.hxx		      worldobj_data.hxx \
+mouse_controller.hxx	      worldobj_data_factory.hxx \
+multiline_text.hxx	      worldobj_group_data.hxx \
+multiplayer_client.hxx	      xml_helper.hxx \
+multiplayer_client_child.hxx  xml_plf.hxx \
+multiplayer_config.hxx \
+action_button.cxx	      music_provider.cxx \
+action_holder.cxx	      option_menu.cxx \
+algo.cxx		      path_manager.cxx \
+alpha_button.cxx	      pingu.cxx \
+anim_counter.cxx	      pingu_action.cxx \
+audio.cxx		      pingu_action_factory.cxx \
+blitter.cxx		      pingu_holder.cxx \
+bmp_map.cxx		      pingu_info.cxx \
+button_panel.cxx	      pingu_map.cxx \
+capture_rectangle.cxx	      pingus_counter.cxx \
+client.cxx		      pingus_counter_bar.cxx \
+col_map.cxx		      pingus_error.cxx \
+config.cxx		      pingus_main.cxx \
+console.cxx		      pingus_map_manager.cxx \
+controllable.cxx	      pingus_menu.cxx \
+controller.cxx		      pingus_menu_manager.cxx \
+counter.cxx		      pingus_resource.cxx \
+credits.cxx		      pingus_sub_menu.cxx \
+cursor.cxx		      playfield.cxx \
+debug.cxx		      playfield_view.cxx \
+debug_gui.cxx		      plf.cxx \
+debug_stream.cxx	      plf_parser.cxx \
+demo_player.cxx		      plf_plf.cxx \
+demo_recorder.cxx	      plf_preview.cxx \
+direction.cxx		      plt_parser.cxx \
+display.cxx		      plt_xml.cxx \
+entrance.cxx		      psm_parser.cxx \
+entrance_data.cxx	      range.cxx \
+exit.cxx		      res_descriptor.cxx \
+exit_data.cxx		      result.cxx \
+exit_menu.cxx		      \
+fade_out.cxx		      \
+force_vector.cxx	      screenshot.cxx \
+fps_counter.cxx		      server.cxx \
+game_counter.cxx	      smallmap.cxx \
+game_session.cxx	      smallmap_image.cxx \
+game_session_result.cxx       sound.cxx \
+game_time.cxx		      sound_dummy.cxx \
+gamepad_controller.cxx	      sound_real.cxx \
+generic_main.cxx	      specs_reader.cxx \
+global_event.cxx	      spot_map.cxx \
+globals.cxx		      sprite.cxx \
+groundpiece_data.cxx	      story.cxx \
+gui_obj.cxx		      string_converter.cxx \
+hotspot.cxx		      surface_button.cxx \
+hotspot_data.cxx	      system.cxx \
+hurry_up.cxx		      target_provider.cxx \
+intro.cxx		      theme.cxx \
+keyboard_controller.cxx       theme_selector.cxx \
+layer_manager.cxx	      time_display.cxx \
+level_desc.cxx		      timer.cxx \
+level_interrupt.cxx	      trap.cxx \
+level_result.cxx	      trap_data.cxx \
+liquid.cxx		      true_server.cxx \
+liquid_data.cxx		      usb_mouse_controller.cxx \
+loading.cxx		      view.cxx \
+main_menu.cxx		      wav_provider.cxx \
+menu_background.cxx	      weather_data.cxx \
+message_box.cxx		      world.cxx \
+mouse_controller.cxx	      worldobj.cxx \
+multiline_text.cxx	      worldobj_data.cxx \
+multiplayer_client.cxx	      worldobj_data_factory.cxx \
+multiplayer_client_child.cxx  worldobj_group_data.cxx \
+multiplayer_config.cxx	      xml_helper.cxx \
+multiplayer_game.cxx	      xml_plf.cxx
 
 ## EOF ##

@@ -50,28 +50,28 @@ EXTRA_DIST = README
 noinst_LIBRARIES = libpingu_actions.a
 
 libpingu_actions_a_SOURCES =       \
-         basher.cc   basher.hh     \
-         blocker.cc  blocker.hh    \
-         bomber.cc   bomber.hh     \
-         bridger.cc  bridger.hh    \
-         climber.cc  climber.hh    \
-         digger.cc   digger.hh     \
-         exiter.cc   exiter.hh     \
-         floater.cc  floater.hh    \
-         Jumper.cc   Jumper.hh     \
-         miner.cc    miner.hh      \
-         smashed.cc  smashed.hh    \
-         LaserKill.cc LaserKill.hh \
-         teleported.cc teleported.hh \
-         Splashed.cc Splashed.hh \
-	 Waiter.cc   Waiter.hh \
-         Drown.cc    Drown.hh \
-         Angel.cc    Angel.hh \
-         Superman.cc Superman.hh \
-         Boarder.cc  Boarder.hh \
-         Faller.cc   Faller.hh \
-         Walker.cc   Walker.hh \
-         RocketLauncher.cc  RocketLauncher.hh \
-         Slider.cc   Slider.hh
+         basher.cxx   basher.hxx     \
+         blocker.cxx  blocker.hxx    \
+         bomber.cxx   bomber.hxx     \
+         bridger.cxx  bridger.hxx    \
+         climber.cxx  climber.hxx    \
+         digger.cxx   digger.hxx     \
+         exiter.cxx   exiter.hxx     \
+         floater.cxx  floater.hxx    \
+         jumper.cxx   jumper.hxx     \
+         miner.cxx    miner.hxx      \
+         smashed.cxx  smashed.hxx    \
+         laser_kill.cxx laser_kill.hxx \
+         teleported.cxx teleported.hxx \
+         splashed.cxx splashed.hxx \
+	 waiter.cxx   waiter.hxx \
+         drown.cxx    drown.hxx \
+         angel.cxx    angel.hxx \
+         superman.cxx superman.hxx \
+         boarder.cxx  boarder.hxx \
+         faller.cxx   faller.hxx \
+         walker.cxx   walker.hxx \
+         rocket_launcher.cxx  rocket_launcher.hxx \
+         slider.cxx   slider.hxx
 
 # EOF #

@@ -20,47 +20,21 @@ noinst_LIBRARIES = libpingus_editor.a
 EXTRA_DIST = EditorObjGroupData.hh EditorObjGroupData.cc
 
 libpingus_editor_a_SOURCES = \
-     Editor.cc            \
-     Editor.hh            \
-     EditorEvent.hh       \
-     EditorEvent.cc       \
-     EditorObj.cc         \
-     EditorObj.hh         \
-     RectEditorObj.cc     \
-     RectEditorObj.hh     \
-     SpriteEditorObj.cc   \
-     SpriteEditorObj.hh   \
-     EditorObjGroup.cc    \
-     EditorObjGroup.hh    \
-     EditorGroundpieceObj.cc \
-     EditorGroundpieceObj.hh \
-     PLFObj.cc            \
-     PLFObj.hh            \
-     StatusLine.cc        \
-     StatusLine.hh        \
-     ObjectSelector.cc    \
-     ObjectSelector.hh    \
-     Panel.cc             \
-     Panel.hh             \
-     ObjectManager.cc     \
-     ObjectManager.hh     \
-     PanelIcons.hh        \
-     PanelIcons.cc        \
-     StringReader.cc      \
-     StringReader.hh      \
-     SurfaceSelector.cc   \
-     SurfaceSelector.hh   \
-     StartPos.cc          \
-     StartPos.hh          \
-     WeatherObj.cc        \
-     WeatherObj.hh        \
-     ScrollMap.hh         \
-     ScrollMap.cc         \
-     ThumbCache.cc        \
-     ThumbCache.hh        \
-     EditorView.hh        \
-     EditorView.cc        \
-     EditorHelpScreen.hh  \
-     EditorHelpScreen.cc
+editor.hxx		    object_manager.hxx	  start_pos.hxx \
+editor_event.hxx	    object_selector.hxx   status_line.hxx \
+editor_groundpiece_obj.hxx  panel.hxx		  string_reader.hxx \
+editor_help_screen.hxx	    panel_icons.hxx	  surface_selector.hxx \
+editor_view.hxx		    plfobj.hxx		  thumb_cache.hxx \
+editorobj.hxx		    rect_editorobj.hxx	  weather_obj.hxx \
+	    scroll_map.hxx \
+   sprite_editorobj.hxx \
+editor.cxx		    object_manager.cxx	  start_pos.cxx \
+editor_event.cxx	    object_selector.cxx   status_line.cxx \
+editor_groundpiece_obj.cxx  panel.cxx		  string_reader.cxx \
+editor_help_screen.cxx	    panel_icons.cxx	  surface_selector.cxx \
+editor_view.cxx		    plfobj.cxx		  thumb_cache.cxx \
+editorobj.cxx		    rect_editorobj.cxx	  weather_obj.cxx \
+    scroll_map.cxx \
+  sprite_editorobj.cxx editorobj_group.hxx editorobj_group.cxx
 
 # EOF #

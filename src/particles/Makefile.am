@@ -17,17 +17,14 @@
 
 noinst_LIBRARIES = libpingus_particle.a
 
-libpingus_particle_a_SOURCES = Particle.cc         Particle.hh       \
-                               ParticleHolder.cc   ParticleHolder.hh \
-                               ParticleCache.cc    ParticleCache.hh  \
-                               SmokeParticle.cc    SmokeParticle.hh  \
-                               GroundParticle.cc   GroundParticle.hh \
-                               PinguParticle.cc    PinguParticle.hh  \
-                               SnowParticle.cc     SnowParticle.hh   \
-                               SnowGenerator.cc    SnowGenerator.hh  \
-                               RainParticle.cc     RainParticle.hh   \
-                               WeatherGenerator.cc WeatherGenerator.hh \
-                               RainGenerator.cc    RainGenerator.hh \
-                               ExplosiveParticle.cc ExplosiveParticle.hh
+libpingus_particle_a_SOURCES = \
+explosive_particle.hxx	particle_holder.hxx  smoke_particle.hxx \
+ground_particle.hxx	pingu_particle.hxx   snow_generator.hxx \
+particle.hxx		rain_generator.hxx   snow_particle.hxx \
+particle_cache.hxx	rain_particle.hxx    weather_generator.hxx \
+explosive_particle.cxx	particle_holder.cxx  smoke_particle.cxx \
+ground_particle.cxx	pingu_particle.cxx   snow_generator.cxx \
+particle.cxx		rain_generator.cxx   snow_particle.cxx \
+particle_cache.cxx	rain_particle.cxx    weather_generator.cxx
 
 ## EOF ##

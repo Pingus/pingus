@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.6 2002/06/01 18:01:45 torangan Exp $
+#  $Id: Makefile.am,v 1.7 2002/06/12 19:11:32 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,15 +21,10 @@ noinst_LIBRARIES = libpingu_traps.a
 
 EXTRA_DIST = README
 
-libpingu_traps_a_SOURCES =           \
-         smasher.cc    smasher.hh    \
-         hammer.cc     hammer.hh     \
-         FakeExit.cc   FakeExit.hh   \
-         Spike.cc      Spike.hh      \
-         Guillotine.cc Guillotine.hh \
-         LaserExit.cc  LaserExit.hh  \
-         Bumper.cc     Bumper.hh
-
-#         Teleport.cc   Teleport.hh   
+libpingu_traps_a_SOURCES = \
+bumper.hxx     guillotine.hxx  laser_exit.hxx  spike.hxx \
+fake_exit.hxx  hammer.hxx      smasher.hxx \
+bumper.cxx     guillotine.cxx  laser_exit.cxx  spike.cxx \
+fake_exit.cxx  hammer.cxx      smasher.cxx
 
 ## EOF ##
