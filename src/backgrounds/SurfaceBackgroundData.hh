@@ -1,4 +1,4 @@
-//  $Id: SurfaceBackgroundData.hh,v 1.14 2002/06/08 21:43:36 grumbel Exp $
+//  $Id: SurfaceBackgroundData.hh,v 1.15 2002/06/08 21:48:49 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -103,9 +103,10 @@ public:
       (new EditorSurfaceBackground (static_cast<SurfaceBackgroundData>(*this)));
   }
 
-  std::string status_line () { 
-    return "SurfaceBackground: " + to_string (pos); 
-  }
+  std::string status_line () { return "SurfaceBackground: " 
+				 + to_string (pos.x) + ", "
+				 + to_string (pos.y) + ", "
+				 + to_string (pos.z); }
 };
 
 #endif
