@@ -40,3 +40,10 @@ section SmallMap
 	entrance = images/misc/smallmap_entrance.pcx (type=surface, x=0, y=0, width=6, height=6, tcol=0);
 	exit     = images/misc/smallmap_exit.pcx     (type=surface, x=0, y=0, width=6, height=6, tcol=0);
 }
+
+section Stars
+{
+        large_star = images/misc/large_star.pcx (type=surface, x=0, y=0, width=23, height=24, tcol=0);
+        middle_star = images/misc/middle_star.pcx (type=surface, x=0, y=0, width=9, height=9, tcol=0);
+        small_star = images/misc/small_star.pcx (type=surface, x=0, y=0, width=6, height=6, tcol=0);
+}

@@ -336,6 +336,9 @@ section GroundPieces
 
 	section Misc
 	{
+	        bridge_left = images/groundpieces/misc/bridge_left.pcx (type=surface, x=0, y=0, width=72, height=30, tcol=0);
+	        bridge_right = images/groundpieces/misc/bridge_right.pcx (type=surface, x=0, y=0, width=72, height=30, tcol=0);
+
 		// Begin: Only here for backward compatibility
 		bigprickpiece    = images/groundpieces/desert/bigprickpiece.pcx (type=surface, x=0, y=0, width=300,  height=150); 
 		middleprickpiece = images/groundpieces/desert/middleprickpiece.pcx (type=surface, x=0, y=0, width=150,  height=75); 
