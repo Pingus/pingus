@@ -1,5 +1,5 @@
-//  $Id: WarMain.hh,v 1.2 2000/08/09 14:35:46 grumbel Exp $
-// 
+//  $Id: WarGame.cc,v 1.1 2000/08/09 14:35:46 grumbel Exp $
+//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -12,30 +12,33 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef WARMAIN_HH
-#define WARMAIN_HH
+#include <ClanLib/core.h>
 
-#include "../GenericMain.hh"
+#include "../PingusSpotMap.hh"
+#include "../XMLPLF.hh"
+#include "WarGame.hh"
 
-class WarMain : public AbstractMain
+void 
+WarGame::display()
 {
-private:
+  plf = new XMLPLF("/home/ingo/projects/pingus/cvs/data/levels/level1.xml");
+  gfx_map = new PingusSpotMap(plf);
 
-public:
-  char* get_title();
-  int   main (int argc, char* argv[]);
-  void  init_modules();
-  void  deinit_modules();
+  CL_System::keep_alive();
 
-  void  usage(int status);
-  int   decode_switches (int argc, char **argv); 
-};
-
-#endif
+  while (!CL_Mouse::left_pressed())
+    {
+      gfx_map->draw(0, 0, 
+		    CL_Display::get_width(), CL_Display::get_height(), 
+		    0,0, 1.0);
+      CL_Display::flip_display();
+      CL_System::keep_alive();
+    }
+}
 
 /* EOF */

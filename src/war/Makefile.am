@@ -17,6 +17,8 @@
 
 noinst_LIBRARIES = libpingus_war.a
 
-libpingus_war_a_SOURCES = WarMain.cc WarMain.hh
+libpingus_war_a_SOURCES = WarMain.cc    WarMain.hh \
+                          WarGlobals.cc WarGlobals.hh \
+                          WarGame.cc    WarGame.hh
 
 # EOF #

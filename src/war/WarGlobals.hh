@@ -1,4 +1,4 @@
-//  $Id: WarMain.hh,v 1.2 2000/08/09 14:35:46 grumbel Exp $
+//  $Id: WarGlobals.hh,v 1.1 2000/08/09 14:35:46 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,23 +17,23 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef WARMAIN_HH
-#define WARMAIN_HH
+#ifndef WARGLOBALS_HH
+#define WARGLOBALS_HH
 
-#include "../GenericMain.hh"
-
-class WarMain : public AbstractMain
+class WarGlobals
 {
-private:
-
 public:
-  char* get_title();
-  int   main (int argc, char* argv[]);
-  void  init_modules();
-  void  deinit_modules();
+  static int verbose;
 
-  void  usage(int status);
-  int   decode_switches (int argc, char **argv); 
+  /// @name Display related things
+  //@{
+  ///
+  static bool fullscreen_enabled;
+  ///
+  static int screen_width;
+  ///
+  static int screen_height;
+  //@}
 };
 
 #endif
