@@ -35,7 +35,7 @@ animated backgrounds might follow later.
 </background>
 
   <action-list>
-    <blocker>20</blocker>
+    <blocker count="20"/>
   </action-list>
 
 <entrance>

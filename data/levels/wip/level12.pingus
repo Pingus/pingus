@@ -33,11 +33,11 @@ How can they reach it?</description>
 </background>
 
   <action-list>
-    <blocker>20</blocker>
-    <bomber>20</bomber>
-    <bridger>50</bridger>
-    <digger>20</digger>
-    <jumper>200</jumper>
+    <blocker count="20"/>
+    <bomber count="20"/>
+    <bridger count="50"/>
+    <digger count="20"/>
+    <jumper count="200"/>
   </action-list>
 
 <hotspot>

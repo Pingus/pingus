@@ -31,11 +31,11 @@
   <stretch-y>0</stretch-y>
 </background>
   <action-list>
-    <digger>10</digger>
-    <basher>10</basher>
-    <blocker>3</blocker>
-    <bridger>1</bridger>
-    <floater>1</floater>
+    <digger count="10"/>
+    <basher count="10"/>
+    <blocker count="3"/>
+    <bridger count="1"/>
+    <floater count="1"/>
   </action-list>
 
 <groundpiece type="solid">

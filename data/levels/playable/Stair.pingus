@@ -34,12 +34,12 @@
 
 
   <action-list>
-    <basher>10</basher>
-    <blocker>10</blocker>
-    <bomber>5</bomber>
-    <bridger>20</bridger>
-    <climber>10</climber>
-    <digger>10</digger>
+    <basher count="10"/>
+    <blocker count="10"/>
+    <bomber count="5"/>
+    <bridger count="20"/>
+    <climber count="10"/>
+    <digger count="10"/>
   </action-list>
 
 <groundpiece type="ground">

@@ -32,11 +32,11 @@
 </background>
 
   <action-list>
-    <blocker>20</blocker>
-    <bomber>20</bomber>
-    <bridger>20</bridger>
-    <climber>20</climber>
-    <floater>20</floater>
+    <blocker count="20"/>
+    <bomber count="20"/>
+    <bridger count="20"/>
+    <climber count="20"/>
+    <floater count="20"/>
   </action-list>
 
 <liquid>  <surface><resource type="datafile">

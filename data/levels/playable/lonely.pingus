@@ -37,10 +37,10 @@
 
 
   <action-list>
-    <climber>1</climber>
-    <bridger>5</bridger>
-    <basher>5</basher>
-    <miner>5</miner>
+    <climber count="1"/>
+    <bridger count="5"/>
+    <basher count="5"/>
+    <miner count="5"/>
   </action-list>
 
 <groundpiece type="ground">

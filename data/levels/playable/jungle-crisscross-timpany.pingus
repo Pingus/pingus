@@ -34,9 +34,9 @@
 </background>
 
   <action-list>
-    <digger>5</digger>
-    <climber>5</climber>
-    <miner>5</miner>
+    <digger count="5"/>
+    <climber count="5"/>
+    <miner count="5"/>
   </action-list>
 
 <groundpiece type="ground">

@@ -36,13 +36,13 @@
 
 
   <action-list>
-    <basher>6</basher>
-    <blocker>4</blocker>
-    <bomber>4</bomber>
-    <bridger>3</bridger>
-    <digger>1</digger>
-    <floater>30</floater>
-    <miner>1</miner>
+    <basher count="6"/>
+    <blocker count="4"/>
+    <bomber count="4"/>
+    <bridger count="3"/>
+    <digger count="1"/>
+    <floater count="30"/>
+    <miner count="1"/>
   </action-list>
 
 <hotspot>

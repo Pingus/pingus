@@ -44,12 +44,12 @@
 
 
   <action-list>
-    <basher>5</basher>
-    <bridger>5</bridger>
-    <floater>5</floater>
-    <climber>5</climber>
-    <miner>1</miner>
-    <digger>5</digger>
+    <basher count="5"/>
+    <bridger count="5"/>
+    <floater count="5"/>
+    <climber count="5"/>
+    <miner count="1"/>
+    <digger count="5"/>
   </action-list>
 
 <groundpiece type="ground">

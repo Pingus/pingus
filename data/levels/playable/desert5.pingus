@@ -39,11 +39,11 @@
 </background>
 
   <action-list>
-    <blocker>5</blocker>
-    <bomber>20</bomber>
-    <bridger>5</bridger>
-    <climber>5</climber>
-    <floater>3</floater>
+    <blocker count="5"/>
+    <bomber count="20"/>
+    <bridger count="5"/>
+    <climber count="5"/>
+    <floater count="3"/>
   </action-list>
 
 <hotspot>

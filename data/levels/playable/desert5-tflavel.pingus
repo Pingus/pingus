@@ -35,15 +35,15 @@ underground room, but unfortunatley a large tree root blocks their path...</desc
 </background>
 
   <action-list>
-    <basher>1</basher>
-    <blocker>1</blocker>
-    <bomber>1</bomber>
-    <bridger>1</bridger>
-    <climber>1</climber>
-    <digger>1</digger>
-    <floater>1</floater>
-    <jumper>1</jumper>
-    <miner>1</miner>
+    <basher count="1"/>
+    <blocker count="1"/>
+    <bomber count="1"/>
+    <bridger count="1"/>
+    <climber count="1"/>
+    <digger count="1"/>
+    <floater count="1"/>
+    <jumper count="1"/>
+    <miner count="1"/>
   </action-list>
 
 <groundpiece type="ground">

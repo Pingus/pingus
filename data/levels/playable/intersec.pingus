@@ -35,11 +35,11 @@
 
 
   <action-list>
-    <basher>5</basher>
-    <bomber>5</bomber>
-    <digger>5</digger>
-    <bridger>10</bridger>
-    <jumper>30</jumper>
+    <basher count="5"/>
+    <bomber count="5"/>
+    <digger count="5"/>
+    <bridger count="10"/>
+    <jumper count="30"/>
   </action-list>
 
 <groundpiece type="ground">

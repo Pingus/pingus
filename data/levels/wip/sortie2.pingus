@@ -34,10 +34,10 @@
 
 
   <action-list>
-    <basher>25</basher>
-    <blocker>10</blocker>
-    <bomber>10</bomber>
-    <bridger>25</bridger>
+    <basher count="25"/>
+    <blocker count="10"/>
+    <bomber count="10"/>
+    <bridger count="25"/>
   </action-list>
 
 <groundpiece type="ground">
