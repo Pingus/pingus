@@ -1,4 +1,4 @@
-//  $Id: PingusMenu.hh,v 1.15 2000/12/30 23:54:05 grumbel Exp $
+//  $Id: PingusMenu.hh,v 1.16 2001/03/18 17:45:04 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -44,13 +44,13 @@ public:
   bool is_init;
 private:
   ///
-  thSlot on_button_press_slot;
+  CL_Slot on_button_press_slot;
   ///
-  thSlot on_button_release_slot;
+  CL_Slot on_button_release_slot;
   ///
-  thSlot on_mouse_move_slot;
+  CL_Slot on_mouse_move_slot;
   //
-  thSlot on_resize_slot;
+  CL_Slot on_resize_slot;
   ///
   std::list<SurfaceButton*> buttons;
   ///

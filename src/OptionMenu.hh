@@ -1,4 +1,4 @@
-//  $Id: OptionMenu.hh,v 1.9 2000/12/14 21:35:54 grumbel Exp $
+//  $Id: OptionMenu.hh,v 1.10 2001/03/18 17:45:04 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,7 +23,7 @@
 #include <vector>
 
 #include <ClanLib/core.h>
-
+#include <ClanLib/display.h>
 
 ///
 class OptionEntry

@@ -1,4 +1,4 @@
-//  $Id: PingusMapManager.hh,v 1.2 2000/12/14 21:35:55 grumbel Exp $
+//  $Id: PingusMapManager.hh,v 1.3 2001/03/18 17:45:04 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,7 @@
 
 #include <string>
 #include <ClanLib/core.h>
+#include <ClanLib/display.h>
 
 class PingusMapManager
 {

@@ -1,4 +1,4 @@
-#  $Id: configure.in,v 1.34 2000/10/30 15:55:27 grumbel Exp $
+#  $Id: configure.in,v 1.35 2001/03/18 17:45:04 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -163,13 +163,16 @@ dnl ---------------------------------------------------
 
 
 AC_CHECK_LIB(Hermes,   main,,)
-	
+
+AC_CHECK_LIB( clanDisplay,   main)
+AC_CHECK_LIB( clanSound,   main)
 AC_CHECK_LIB( clanCore,   main,, [
 	echo "ClanLib installed, but -lclanCore not found, run 'ldconfig' and try again,"
 	echo "if that doesn't help have a look at the file config.log and look into"
 	echo "the FAQ."
 	exit
 	])
+AC_CHECK_LIB( clanApp,   main)
 
 dnl AC_CHECK_LIB( clanGUI,   main,, [
 dnl 	echo "ClanLib is installed, but clanGUI was not found. You probably"
@@ -205,33 +208,39 @@ dnl  dnl if test $clanlib_config_minor_version -eq
 dnl $CLANLIB_MINOR_VERSION; then dnl if test $clanlib_config_patch_version
 dnl -eq $CLANLIB_PATCH_VERSION; then dnl fi dnl fi dnl fi
 
-dnl Checking if ClanLib is new enough
-echo -n "checking for working ClanLib >= $CLANLIB_MAJOR_VERSION.$CLANLIB_MINOR_VERSION.$CLANLIB_PATCH_VERSION... "
-AC_TRY_RUN([
-#include <ClanLib/core.h>
- main(){
- if (CL_CURRENT_VERSION >= CL_VERSION($CLANLIB_MAJOR_VERSION,$CLANLIB_MINOR_VERSION,$CLANLIB_PATCH_VERSION))
- 	return 0;
- else
- 	return 1;
- }
- ],
- 	[echo "yes"],
- 	[echo ; echo;
- 	 echo "Your ClanLib is to old or some other thing went wrong while compiling"
- 	 echo "the test application, you need at least version $CLANLIB_MAJOR_VERSION.$CLANLIB_MINOR_VERSION.$CLANLIB_PATCH_VERSION"
- 	 echo "or greater. If you have that version installed have a look at the file"
-	 echo "config.log to see what went wrong."
- 	 echo "The ClanLib webpage is at:"; echo;
- 	 echo "                    http://www.clanlib.org";
-          echo
- 	 echo "The ClanLib source tarball can be found at:"
- 	 echo
- 	 echo "      http://clanlib.org/download/index.html"
- 	 echo
- 	 exit],
- 	[echo "cross compiling detected, assuming that this is correct and continue"]
- )
+#  dnl Checking if ClanLib is new enough
+#  echo -n "checking for working ClanLib >= $CLANLIB_MAJOR_VERSION.$CLANLIB_MINOR_VERSION.$CLANLIB_PATCH_VERSION... "
+#  AC_TRY_RUN([
+#  #include <ClanLib/core.h>
+#   int main(){
+#  	printf ("CL_VERSION: %d\n", CL_CURRENT_VERSION);
+#  	printf ("wanted CL_VERSION: %d\n", CL_VERSION($CLANLIB_MAJOR_VERSION,$CLANLIB_MINOR_VERSION,$CLANLIB_PATCH_VERSION));
+#   if (CL_CURRENT_VERSION >= CL_VERSION($CLANLIB_MAJOR_VERSION,$CLANLIB_MINOR_VERSION,$CLANLIB_PATCH_VERSION))
+#   {
+#   	return 0;
+#   }
+#   else
+#   {
+#   	return 1;
+#   }
+#   }
+#   ],
+#   	[echo "yes"],
+#   	[echo ; echo;
+#   	 echo "Your ClanLib is to old or some other thing went wrong while compiling"
+#   	 echo "the test application, you need at least version $CLANLIB_MAJOR_VERSION.$CLANLIB_MINOR_VERSION.$CLANLIB_PATCH_VERSION"
+#   	 echo "or greater. If you have that version installed have a look at the file"
+#  	 echo "config.log to see what went wrong."
+#   	 echo "The ClanLib webpage is at:"; echo;
+#   	 echo "                    http://www.clanlib.org";
+#            echo
+#   	 echo "The ClanLib source tarball can be found at:"
+#   	 echo
+#   	 echo "      http://clanlib.org/download/index.html"
+#   	 echo
+#   	 exit],
+#   	[echo "cross compiling detected, assuming that this is correct and continue"]
+#   )
 
 AC_CHECK_LIB( clanJPEG,   main,, [
 	echo "ClanLib is installed, but clanJPEG was not found. You probably"
@@ -316,3 +325,6 @@ echo ""
 echo "Pingus is now configured, now you can start \`make'."
 echo ""
 
+dnl Local Variables:
+dnl compile-command: "./autogen.sh && ./configure"
+dnl End:

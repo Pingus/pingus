@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapManager.hh,v 1.4 2000/10/10 13:22:40 grumbel Exp $
+//  $Id: PingusWorldMapManager.hh,v 1.5 2001/03/18 17:45:05 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,10 +31,10 @@ private:
 
   /// Some slots to manage the event handling
   //@{
-  thSlot on_button_press_slot;
-  thSlot on_button_release_slot;
-  thSlot on_mouse_move_slot;
-  thSlot on_resize_slot;
+  CL_Slot on_button_press_slot;
+  CL_Slot on_button_release_slot;
+  CL_Slot on_mouse_move_slot;
+  CL_Slot on_resize_slot;
   //@}
 
 public:

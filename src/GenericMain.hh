@@ -1,4 +1,4 @@
-//  $Id: GenericMain.hh,v 1.2 2000/10/30 16:17:49 grumbel Exp $
+//  $Id: GenericMain.hh,v 1.3 2001/03/18 17:45:04 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #define GENERICMAIN_HH
 
 #include <ClanLib/core.h>
+#include <ClanLib/application.h>
 
 class AbstractMain
 {

@@ -1,4 +1,4 @@
-//  $Id: ClientEvent.cc,v 1.13 2000/09/12 11:11:36 grumbel Exp $
+//  $Id: ClientEvent.cc,v 1.14 2001/03/18 17:45:04 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,8 +41,8 @@ ClientEvent::register_event_handler()
   //CL_Input::chain_button_press.push_back(this);
   //CL_Input::chain_button_release.push_back(this);
 
-  on_button_press_slot = CL_Input::sig_button_press.connect (thCreateSlot(this, &ClientEvent::on_button_press));
-  on_button_release_slot = CL_Input::sig_button_release.connect (thCreateSlot(this, &ClientEvent::on_button_release));
+  on_button_press_slot = CL_Input::sig_button_press.connect (CL_CreateSlot(this, &ClientEvent::on_button_press));
+  on_button_release_slot = CL_Input::sig_button_release.connect (CL_CreateSlot(this, &ClientEvent::on_button_release));
 
   enabled = true;
 }

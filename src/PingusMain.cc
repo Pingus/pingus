@@ -1,4 +1,4 @@
-//   $Id: PingusMain.cc,v 1.18 2000/12/30 23:54:05 grumbel Exp $
+//   $Id: PingusMain.cc,v 1.19 2001/03/18 17:45:04 grumbel Exp $
 //    ___
 //   |  _\ A free Lemmings clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -733,7 +733,7 @@ PingusMain::init_clanlib()
   if (verbose) 
     std::cout << "Init ClanLib" << std::endl;
 
-  CL_SetupCore::init_display();
+  CL_SetupDisplay::init();
 
   if (sound_enabled || music_enabled) 
     {
@@ -780,8 +780,8 @@ PingusMain::do_lemmings_mode(void)
   //CL_Input::chain_button_release.push_back(&global_event);
   //CL_Input::chain_button_press.push_back(&global_event);
 
-  on_button_press_slot = CL_Input::sig_button_press.connect (thCreateSlot(&global_event, &GlobalEvent::on_button_press));
-  on_button_release_slot = CL_Input::sig_button_release.connect (thCreateSlot(&global_event, &GlobalEvent::on_button_release));
+  on_button_press_slot = CL_Input::sig_button_press.connect (CL_CreateSlot(&global_event, &GlobalEvent::on_button_press));
+  on_button_release_slot = CL_Input::sig_button_release.connect (CL_CreateSlot(&global_event, &GlobalEvent::on_button_release));
 
   //pingus_story.display ();
 

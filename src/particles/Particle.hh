@@ -1,5 +1,5 @@
 
-//  $Id: Particle.hh,v 1.7 2000/12/14 21:35:56 grumbel Exp $
+//  $Id: Particle.hh,v 1.8 2001/03/18 17:45:05 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,7 @@
 #define PARTICLE_HH
 
 #include <ClanLib/core.h>
+#include <ClanLib/display.h>
 
 #include "../WorldObj.hh"
 

@@ -1,4 +1,4 @@
-//  $Id: Editor.cc,v 1.22 2000/12/16 23:11:22 grumbel Exp $
+//  $Id: Editor.cc,v 1.23 2001/03/18 17:45:05 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -77,8 +77,8 @@ Editor::register_event_handler()
       //CL_Input::chain_button_press.push_back(event);
       //CL_Input::chain_button_release.push_back(event);
 
-      on_button_press_slot = CL_Input::sig_button_press.connect(thCreateSlot(event, &EditorEvent::on_button_press));
-      on_button_release_slot = CL_Input::sig_button_release.connect(thCreateSlot(event, &EditorEvent::on_button_release));
+      on_button_press_slot = CL_Input::sig_button_press.connect(CL_CreateSlot(event, &EditorEvent::on_button_press));
+      on_button_release_slot = CL_Input::sig_button_release.connect(CL_CreateSlot(event, &EditorEvent::on_button_release));
 
       if (verbose) std::cout << "done: " << event_handler_ref_counter << std::endl;
     }
@@ -437,6 +437,9 @@ Editor::interactive_load()
 
 /***********************************************
 $Log: Editor.cc,v $
+Revision 1.23  2001/03/18 17:45:05  grumbel
+q&d ported pingus to the newest clanlib cvs, some things like mouse button events are not fully working yet
+
 Revision 1.22  2000/12/16 23:11:22  grumbel
 replaced most pointers with smart_ptr's, this might fix some memory holes and is probally a good start to clean up the dirty object generation code
 

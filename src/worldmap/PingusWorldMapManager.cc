@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapManager.cc,v 1.7 2000/10/10 13:22:40 grumbel Exp $
+//  $Id: PingusWorldMapManager.cc,v 1.8 2001/03/18 17:45:05 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -44,9 +44,9 @@ PingusWorldMapManager::init ()
 void
 PingusWorldMapManager::display ()
 {
-  on_button_press_slot   = CL_Input::sig_button_press.connect (thCreateSlot(this, &PingusWorldMapManager::on_button_press));
-  on_button_release_slot = CL_Input::sig_button_release.connect (thCreateSlot(this, &PingusWorldMapManager::on_button_release));
-  on_mouse_move_slot     = CL_Input::sig_mouse_move.connect (thCreateSlot(this, &PingusWorldMapManager::on_mouse_move));
+  on_button_press_slot   = CL_Input::sig_button_press.connect (CL_CreateSlot(this, &PingusWorldMapManager::on_button_press));
+  on_button_release_slot = CL_Input::sig_button_release.connect (CL_CreateSlot(this, &PingusWorldMapManager::on_button_release));
+  on_mouse_move_slot     = CL_Input::sig_mouse_move.connect (CL_CreateSlot(this, &PingusWorldMapManager::on_mouse_move));
 
   init ();
 

@@ -1,4 +1,4 @@
-//  $Id: AlphaButton.hh,v 1.4 2000/06/18 17:01:49 grumbel Exp $
+//  $Id: AlphaButton.hh,v 1.5 2001/03/18 17:45:04 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,7 @@
 #include <string>
 
 #include <ClanLib/core.h>
+#include <ClanLib/display.h>
 
 
 ///

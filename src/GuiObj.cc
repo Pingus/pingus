@@ -1,4 +1,4 @@
-//  $Id: GuiObj.cc,v 1.3 2000/07/04 22:59:13 grumbel Exp $
+//  $Id: GuiObj.cc,v 1.4 2001/03/18 17:45:04 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <ClanLib/core.h>
+#include <ClanLib/display.h>
 #include "GuiObj.hh"
 
 GuiObj::GuiObj()

@@ -1,4 +1,4 @@
-//  $Id: MultiLineText.hh,v 1.2 2000/06/18 17:01:49 grumbel Exp $
+//  $Id: MultiLineText.hh,v 1.3 2001/03/18 17:45:04 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,7 @@
 #include <string>
 #include <vector>
 #include <ClanLib/core.h>
+#include <ClanLib/display.h>
 
 ///
 class MultiLineText

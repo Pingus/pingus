@@ -1,4 +1,4 @@
-//  $Id: ButtonPanel.cc,v 1.13 2000/12/16 23:11:19 grumbel Exp $
+//  $Id: ButtonPanel.cc,v 1.14 2001/03/18 17:45:04 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -159,7 +159,7 @@ ButtonPanel::set_button(int i)
 void
 ButtonPanel::on_button_press(const CL_Key &key)
 {
-  if (key.id == 0)
+  if (key.id == CL_MOUSE_LEFTBUTTON)
     {
       for(AButtonIter button = a_buttons.begin(); button != a_buttons.end(); button++)
 	{

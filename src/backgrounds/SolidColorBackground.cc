@@ -1,4 +1,4 @@
-//  $Id: SolidColorBackground.cc,v 1.3 2000/12/16 23:11:22 grumbel Exp $
+//  $Id: SolidColorBackground.cc,v 1.4 2001/03/18 17:45:04 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <ClanLib/core.h>
+#include <ClanLib/display.h>
 #include "../XMLhelper.hh"
 #include "SolidColorBackground.hh"
 

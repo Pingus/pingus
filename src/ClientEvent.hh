@@ -1,4 +1,4 @@
-//  $Id: ClientEvent.hh,v 1.6 2000/12/12 09:12:58 grumbel Exp $
+//  $Id: ClientEvent.hh,v 1.7 2001/03/18 17:45:04 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,9 +39,9 @@ private:
   Playfield* playfield;
 
   ///
-  thSlot on_button_press_slot;
+  CL_Slot on_button_press_slot;
   ///
-  thSlot on_button_release_slot;
+  CL_Slot on_button_release_slot;
 
   ///
   bool enabled;

@@ -1,4 +1,4 @@
-//  $Id: blitter.hh,v 1.10 2000/12/14 21:35:55 grumbel Exp $
+//  $Id: blitter.hh,v 1.11 2001/03/18 17:45:04 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #define BLITTER_HH
 
 #include <ClanLib/core.h>
+#include <ClanLib/display.h>
 
 /** A bunch of blitting and creation functions to operate on
     CL_Canvas.  Some of them a similar to the ones in ClanLib, but

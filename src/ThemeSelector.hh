@@ -1,4 +1,4 @@
-//  $Id: ThemeSelector.hh,v 1.13 2000/12/14 21:35:55 grumbel Exp $
+//  $Id: ThemeSelector.hh,v 1.14 2001/03/18 17:45:04 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -68,11 +68,11 @@ class ThemeSelector
 {
 public:
   ///
-  thSlot on_button_press_slot;
+  CL_Slot on_button_press_slot;
   ///
-  thSlot on_button_release_slot;
+  CL_Slot on_button_release_slot;
   ///
-  thSlot on_mouse_move_slot;
+  CL_Slot on_mouse_move_slot;
 
   ///
   class Event /*: public CL_Event_ButtonPress, 

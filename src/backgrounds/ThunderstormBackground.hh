@@ -1,4 +1,4 @@
-//  $Id: ThunderstormBackground.hh,v 1.4 2000/12/16 23:11:22 grumbel Exp $
+//  $Id: ThunderstormBackground.hh,v 1.5 2001/03/18 17:45:05 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #define THUNDERSTORMBACKGROUND_HH
 
 #include <ClanLib/core.h>
+#include <ClanLib/display.h>
 #include <vector>
 #include "../boost/smart_ptr.hpp"
 #include "Background.hh"

@@ -1,4 +1,4 @@
-//  $Id: WarMain.cc,v 1.6 2000/12/30 23:54:06 grumbel Exp $
+//  $Id: WarMain.cc,v 1.7 2001/03/18 17:45:05 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -58,7 +58,7 @@ WarMain::main (int argc, char* argv[])
     {
       decode_switches(argc, argv);
 
-      CL_SetupCore::init_display();
+      CL_SetupDisplay::init();
 
       // Initing the display
       CL_Display::set_videomode(WarGlobals::screen_width, 

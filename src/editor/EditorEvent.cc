@@ -1,4 +1,4 @@
-//  $Id: EditorEvent.cc,v 1.35 2000/12/30 23:54:06 grumbel Exp $
+//  $Id: EditorEvent.cc,v 1.36 2001/03/18 17:45:05 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -308,7 +308,7 @@ EditorEvent::on_button_release(CL_InputDevice *device, const CL_Key &key)
     }
   else if (device == CL_Input::pointers[0])
     {
-      if (key.id == 0)
+      if (key.id == CL_MOUSE_LEFTBUTTON)
 	editor->panel->on_release();
     }
   else

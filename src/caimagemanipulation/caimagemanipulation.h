@@ -20,6 +20,7 @@
 #define CAIMAGEMANIPULATION_H
 
 #include <ClanLib/core.h>
+#include <ClanLib/display.h>
 
 #define ARAD 57.29577951308232
 

@@ -1,4 +1,4 @@
-//  $Id: PinguMap.hh,v 1.8 2000/12/14 21:35:55 grumbel Exp $
+//  $Id: PinguMap.hh,v 1.9 2001/03/18 17:45:04 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,7 @@
 #define PINGUMAP_HH
 
 #include <ClanLib/core.h>
-
+#include <ClanLib/display.h>
 #include "ColMap.hh"
 
 /** The type of the map, currently we have a random, a bitmap and a
