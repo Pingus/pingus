@@ -1,4 +1,4 @@
-//  $Id: StarfieldBackground.cc,v 1.16 2002/02/05 10:01:00 grumbel Exp $
+//  $Id: StarfieldBackground.cc,v 1.17 2002/03/01 22:10:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -44,7 +44,7 @@ StarfieldBackgroundData::write_xml(std::ofstream* xml)
 boost::shared_ptr<WorldObjData>
 StarfieldBackgroundData::create(xmlDocPtr doc, xmlNodePtr cur)
 {
-  boost::shared_ptr<StarfieldBackgroundData> data (new StarfieldBackgroundData ());
+  StarfieldBackgroundData* data = new StarfieldBackgroundData ();
 
   data->small_stars_count = 100;
   data->middle_stars_count = 50;
@@ -94,7 +94,7 @@ StarfieldBackgroundData::create(xmlDocPtr doc, xmlNodePtr cur)
       cur = cur->next;
     }
 
-    return data;
+    return boost::shared_ptr<WorldObjData>(data);
 }
 
 boost::shared_ptr<WorldObj> 
