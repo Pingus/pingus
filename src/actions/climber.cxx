@@ -19,6 +19,7 @@
 
 #include "../col_map.hxx"
 #include "../gui/graphic_context.hxx"
+#include "../resource.hxx"
 #include "../pingu.hxx"
 #include "climber.hxx"
 
@@ -26,25 +27,16 @@ namespace Pingus {
 namespace Actions {
 
 Climber::Climber (Pingu* p)
-  : PinguAction(p),
-    sprite(Sprite ("pingus/climber0")),
-    sprite_width(sprite.get_width()),
-    sprite_height(sprite.get_height())
+  : PinguAction(p)
 {
+  sprite.load(Direction::LEFT,  Resource::load_sprite("pingus/climber/left"));
+  sprite.load(Direction::RIGHT, Resource::load_sprite("pingus/climber/right"));
 }
 
 void
 Climber::update ()
 {
-  /*
-    std::cout << "Climer update()" << std::endl;
-    std::cout << "Direction: " << pingu->direction << std::endl;
-    printf("%3d %3d %3d\n", rel_getpixel(1,1), rel_getpixel(0,1), rel_getpixel(-1,1));
-    printf("%3d %3d %3d\n", rel_getpixel(1,0), rel_getpixel(0,0), rel_getpixel(-1,0));
-    printf("%3d %3d %3d\n", rel_getpixel(1,-1), rel_getpixel(0,-1),rel_getpixel(-1, -1));
-  */
-
-  sprite.update();
+  sprite[pingu->direction].update();
 
   // If above is free
   if (   rel_getpixel(0, 1) == Groundtype::GP_NOTHING
@@ -89,19 +81,7 @@ Climber::update ()
 void
 Climber::draw (GraphicContext& gc)
 {
-  // This is necessary to prevent climber walking inside a wall.
-  if (pingu->direction.is_left())
-    {
-      sprite.set_align(0, -sprite_height/2);
-      sprite.set_direction(Sprite::LEFT);
-    }
-  else
-    {
-      sprite.set_align(-sprite_width, -sprite_height/2);
-      sprite.set_direction(Sprite::RIGHT);
-    }
-
-  gc.draw (sprite, pingu->get_pos());
+  gc.draw(sprite[pingu->direction], pingu->get_pos());
 }
 
 bool

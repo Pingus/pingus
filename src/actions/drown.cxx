@@ -20,35 +20,30 @@
 #include "../vector.hxx"
 #include "../gui/graphic_context.hxx"
 #include "../pingu.hxx"
+#include "../resource.hxx"
 #include "drown.hxx"
 
 namespace Pingus {
 namespace Actions {
 
 Drown::Drown (Pingu* p)
-  : PinguAction(p),
-    sprite(Sprite("pingus/drownfall0", "", 60.0f, Sprite::NONE, Sprite::ONCE))
+  : PinguAction(p)
 {
-  sprite.set_align_center_bottom();
+  sprite.load(Direction::LEFT,  Resource::load_sprite("pingus/drownfall/left"));
+  sprite.load(Direction::RIGHT, Resource::load_sprite("pingus/drownfall/right"));
 }
 
 void
 Drown::draw (GraphicContext& gc)
 {
-  // FIXME: Direction handling is ugly
-  if (pingu->direction.is_left())
-    sprite.set_direction(Sprite::LEFT);
-  else
-    sprite.set_direction(Sprite::RIGHT);
-
-  gc.draw(sprite, pingu->get_pos ());
+  gc.draw(sprite[pingu->direction], pingu->get_pos ());
 }
 
 void
 Drown::update ()
 {
-  sprite.update();
-  if (sprite.finished())
+  sprite[pingu->direction].update();
+  if (sprite[pingu->direction].is_finished())
     {
       pingu->set_status(PS_DEAD);
     }

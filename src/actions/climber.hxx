@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_ACTIONS_CLIMBER_HXX
 #define HEADER_PINGUS_ACTIONS_CLIMBER_HXX
 
-#include "../sprite.hxx"
+#include "../state_sprite.hxx"
 #include "../pingu_action.hxx"
 
 namespace Pingus {
@@ -29,7 +29,7 @@ namespace Actions {
 class Climber : public PinguAction
 {
 private:
-  Sprite sprite;
+  StateSprite sprite;
   int sprite_width;
   int sprite_height;
 

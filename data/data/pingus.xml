@@ -317,13 +317,15 @@
     </sprite>
 
     <section name="exit">
-      <sprite name="right">
+      <sprite name="left">
+        <animation speed="60" loop="no" />
         <image file="../images/pingus/exit.png">
           <grid pos="0,0" size="32,32" array="9,1"/>
         </image>
       </sprite>
 
       <sprite name="right">
+        <animation speed="60" loop="no" />
         <image file="../images/pingus/exit.png">
           <grid pos="0,32" size="32,32" array="9,1"/>
         </image>
@@ -337,7 +339,7 @@
         </image>
       </sprite>
 
-      <sprite name="left">
+      <sprite name="right">
         <image file="../images/pingus/drownfall.png">
           <grid pos="0,32" size="32,32" array="15,1"/>
         </image>
@@ -350,7 +352,7 @@
           <grid pos="0,0" size="32,32" array="15,1"/>
         </image>
       </sprite>
-      <sprite name="left">
+      <sprite name="right">
         <image file="../images/pingus/drownwalk.png">
           <grid pos="0,32" size="32,32" array="15,1"/>
         </image>

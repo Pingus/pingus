@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_ACTIONS_JUMPER_HXX
 #define HEADER_PINGUS_ACTIONS_JUMPER_HXX
 
-#include "../sprite.hxx"
+#include "../state_sprite.hxx"
 #include "../pingu_action.hxx"
 
 namespace Pingus {
@@ -29,7 +29,7 @@ namespace Actions {
 class Jumper : public PinguAction
 {
 private:
-  Sprite sprite;
+  StateSprite sprite;
 public:
   Jumper(Pingu*);
 

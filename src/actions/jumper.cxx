@@ -20,6 +20,7 @@
 #include "../vector.hxx"
 #include "../gui/graphic_context.hxx"
 #include "../pingu.hxx"
+#include "../resource.hxx"
 #include "../string_converter.hxx"
 #include "jumper.hxx"
 
@@ -27,16 +28,16 @@ namespace Pingus {
 namespace Actions {
 
 Jumper::Jumper (Pingu* p)
-  : PinguAction(p),
-    sprite("pingus/jumper")
+  : PinguAction(p)
 {
-  sprite.set_align_center_bottom();
+  sprite.load(Direction::LEFT,  Resource::load_sprite("pingus/jumper/left"));
+  sprite.load(Direction::RIGHT, Resource::load_sprite("pingus/jumper/right"));
 }
 
 void
 Jumper::draw (GraphicContext& gc)
 {
-  gc.draw(sprite, pingu->get_pos());
+  gc.draw(sprite[pingu->direction], pingu->get_pos());
 }
 
 void

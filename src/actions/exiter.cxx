@@ -19,6 +19,7 @@
 
 #include "../vector.hxx"
 #include "../gui/graphic_context.hxx"
+#include "../resource.hxx"
 #include "../pingu.hxx"
 #include "../sound/sound.hxx"
 #include "exiter.hxx"
@@ -28,16 +29,16 @@ namespace Actions {
 
 Exiter::Exiter (Pingu* p)
   : PinguAction(p),
-    sprite(Sprite("pingus/exit0", "", 15.0f, Sprite::NONE, Sprite::ONCE)),
     sound_played(false)
 {
-  sprite.set_align_center_bottom();
+  sprite.load(Direction::LEFT,  Resource::load_sprite("pingus/exit"));
+  sprite.load(Direction::RIGHT, Resource::load_sprite("pingus/exit"));
 }
 
 void
 Exiter::update ()
 {
-  sprite.update();
+  sprite[pingu->direction].update();
 
   if (!sound_played)
     {
@@ -45,7 +46,7 @@ Exiter::update ()
       Sound::PingusSound::play_sound("yipee");
     }
 
-  if (sprite.finished())
+  if (sprite[pingu->direction].is_finished())
     {
       if (pingu->get_status() != PS_EXITED)
 	{
@@ -57,12 +58,7 @@ Exiter::update ()
 void
 Exiter::draw (GraphicContext& gc)
 {
-  if (pingu->direction.is_left())
-    sprite.set_direction(Sprite::LEFT);
-  else
-    sprite.set_direction(Sprite::RIGHT);
-
-  gc.draw(sprite, pingu->get_pos ());
+  gc.draw(sprite[pingu->direction], pingu->get_pos());
 }
 
 } // namespace Actions
