@@ -1,4 +1,4 @@
-//  $Id: pingu.hxx,v 1.1 2002/06/12 19:06:12 grumbel Exp $
+//  $Id: pingu.hxx,v 1.2 2002/06/21 16:51:22 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -123,7 +123,7 @@ public:
   // Set the pingu in the gives direction
   void set_direction(Direction d);
 
-  int  set_action (PinguAction*);
+  bool set_action (PinguAction*);
   void set_action (const std::string& action_name);
 
   /// FIXME: Stupid function name, need a better one.
@@ -160,14 +160,14 @@ public:
   ///
   void update_persistent(float delta);
   ///
-  void update_normal(float delta);
+  void update_action(float delta);
   ///
-  void update_falling(float delta);
+  //void update_falling(float delta);
   ///
-  void update_walking(float delta);
+  //void update_walking(float delta);
 
   /** Indicate if the pingu's speed is above the deadly velocity */
-  bool is_tumbling () const;
+  //bool is_tumbling () const;
   
   float get_z_pos() const { return 0; }
 
