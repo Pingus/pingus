@@ -1,4 +1,4 @@
-//  $Id: XMLPLF.cc,v 1.32 2001/08/04 12:46:22 grumbel Exp $
+//  $Id: XMLPLF.cc,v 1.33 2001/08/07 19:55:22 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -263,8 +263,19 @@ XMLPLF::parse_liquid(xmlNodePtr cur)
 {
   LiquidData liquid;
 
-  cur = cur->children;
+  char* width_handling = (char*)xmlGetProp(cur, (xmlChar*)"use-old-width-handling");
+  if (width_handling)
+    {
+      std::cout << "XMLPLF: Use Old Width Handling: " << width_handling << std::endl;
+      liquid.old_width_handling = StringConverter::to_int (width_handling);
+      free (width_handling);
+    }
+  else
+    {
+      liquid.old_width_handling = true;
+    }
 
+  cur = cur->children;
   while (cur != NULL)
     {
       if (xmlIsBlankNode(cur)) 

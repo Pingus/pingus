@@ -1,4 +1,4 @@
-// $Id: ObjectSelector.hh,v 1.20 2001/05/15 17:59:46 grumbel Exp $
+// $Id: ObjectSelector.hh,v 1.21 2001/08/07 19:55:22 grumbel Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,15 +34,14 @@ class EditorObj;
 class ObjectSelector
 {
 private:
-  ///
   CL_Font* font;
-  ///
+  
   int x_offset;
-  ///
   int y_offset;
-  ///
+
+  CL_Vector pos;
+
   std::string last_object;
-  ///
   std::map<std::string, bool> data_loaded;
   
 public:

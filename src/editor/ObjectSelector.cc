@@ -1,4 +1,4 @@
-//  $Id: ObjectSelector.cc,v 1.46 2001/08/04 12:46:22 grumbel Exp $
+//  $Id: ObjectSelector.cc,v 1.47 2001/08/07 19:55:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -56,8 +56,14 @@ ObjectSelector::~ObjectSelector()
 std::list<boost::shared_ptr<EditorObj> >
 ObjectSelector::get_obj(int x_off, int y_off)
 {
+
+  // FIXME: Sick coordinate handling...
   x_offset = x_off;
   y_offset = y_off;
+
+  pos = CL_Vector (CL_Mouse::get_x () - x_offset,
+		   CL_Mouse::get_y () - y_offset, 
+		   0.0f);
 
   return select_obj_type();
 }
@@ -67,9 +73,7 @@ ObjectSelector::get_trap()
 {
   TrapData trap;
   
-  trap.pos.x = CL_Mouse::get_x() - x_offset;
-  trap.pos.y = CL_Mouse::get_y() - y_offset;
-  trap.pos.z = 0;
+  trap.pos = pos;
 
   CL_Display::clear_display();
 
@@ -126,8 +130,7 @@ ObjectSelector::get_groundpiece(GroundpieceData::Type type)
   GroundpieceData data;
   std::string datafile = std::string("groundpieces-") + GroundpieceData::type_to_string (type);
 
-  data.pos.x = CL_Mouse::get_x() - x_offset;
-  data.pos.y = CL_Mouse::get_y() - y_offset;
+  data.pos = pos;
 
   std::string str = select_surface(datafile);
 
@@ -148,9 +151,7 @@ std::list<boost::shared_ptr<EditorObj> >
 ObjectSelector::get_hotspot()
 {
   HotspotData data;
-  data.pos.x = CL_Mouse::get_x() - x_offset;
-  data.pos.y = CL_Mouse::get_y() - y_offset;
-  data.pos.z = 0;
+  data.pos = pos;
   std::string str = select_surface("hotspots");
 
   if (!str.empty())
@@ -181,20 +182,16 @@ ObjectSelector::get_worldobj()
       switch (read_key()) 
 	{
 	case CL_KEY_1:
-	  return EditorTeleporterObj::create (CL_Vector(CL_Mouse::get_x() - x_offset, 
-						       CL_Mouse::get_y() - y_offset));
+	  return EditorTeleporterObj::create (pos);
 	  
 	case CL_KEY_2:
-	  return EditorSwitchDoorObj::create (CL_Vector(CL_Mouse::get_x() - x_offset, 
-						       CL_Mouse::get_y() - y_offset));
+	  return EditorSwitchDoorObj::create (pos);
 
 	case CL_KEY_3:
-	  return EditorConveyorBeltObj::create (CL_Vector(CL_Mouse::get_x() - x_offset, 
-						       CL_Mouse::get_y() - y_offset));
+	  return EditorConveyorBeltObj::create (pos);
 
 	case CL_KEY_4:
-	  return EditorIceBlockObj::create (CL_Vector(CL_Mouse::get_x() - x_offset, 
-						     CL_Mouse::get_y() - y_offset));
+	    return EditorIceBlockObj::create (pos);
 
 	case CL_KEY_ESCAPE:
 	  return std::list<boost::shared_ptr<EditorObj> >();
@@ -208,9 +205,6 @@ ObjectSelector::get_weather()
   WeatherData weather;
   bool done = false;
 
-  /*  weather.pos = Position(CL_Mouse::get_x() - x_offset,
-			 CL_Mouse::get_y() - y_offset);
-  */
   CL_Display::clear_display();
   font->print_left(20, 20, _("Select a weather"));
   font->print_left(20, 50, _("1 - snow"));
@@ -242,9 +236,7 @@ ObjectSelector::get_entrance()
 {
   EntranceData entrance;
   bool have_name = false;
-  entrance.pos.x = CL_Mouse::get_x() - x_offset;
-  entrance.pos.y = CL_Mouse::get_y() - y_offset;
-  entrance.pos.z = 0;
+  entrance.pos = pos;
 
   CL_Display::clear_display();
   font->print_left(20, 20, _("Select an entrance"));
@@ -286,9 +278,7 @@ ObjectSelector::get_exit()
 {
   string str;
   ExitData data;
-  data.pos.x = CL_Mouse::get_x() - x_offset;
-  data.pos.y = CL_Mouse::get_y() - y_offset;
-  data.pos.z = 0;
+  data.pos = pos;
   
   str = select_surface("exits");
   
@@ -308,7 +298,16 @@ std::list<boost::shared_ptr<EditorObj> >
 ObjectSelector::get_liquid()
 {
   std::cout << "ObjectSelector::get_liquid() not implemented" << std::endl;
-  return std::list<boost::shared_ptr<EditorObj> >();
+  LiquidData data;
+
+  data.pos = pos;
+  data.old_width_handling = false;
+  data.width = 5;
+  data.desc = ResDescriptor("Liquid/slime", "liquids", ResDescriptor::RESOURCE);
+
+  std::list<boost::shared_ptr<EditorObj> > objs;
+  objs.push_back(boost::shared_ptr<EditorObj>(new LiquidObj(data)));
+  return objs;
 }
 
 std::list<boost::shared_ptr<EditorObj> >
@@ -408,8 +407,7 @@ ObjectSelector::select_surface(std::string resource_file)
 
   datafile_loaded = data_loaded[resource_file];
   
-  data.pos.x = CL_Mouse::get_x() - x_offset;
-  data.pos.y = CL_Mouse::get_y() - y_offset;
+  data.pos = pos;
   
   std::list<string>* liste = res->get_resources_of_type("surface");
   surface_obj sur_obj;
@@ -478,6 +476,9 @@ ObjectSelector::read_string(string description, string def_str)
 /*
 
 $Log: ObjectSelector.cc,v $
+Revision 1.47  2001/08/07 19:55:22  grumbel
+Some fixes to the liquid handling, inserting inside the editor does also work
+
 Revision 1.46  2001/08/04 12:46:22  grumbel
 Some code cleanup and warning removal
 

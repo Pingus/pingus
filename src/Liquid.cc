@@ -1,4 +1,4 @@
-//  $Id: Liquid.cc,v 1.14 2001/08/04 12:46:22 grumbel Exp $
+//  $Id: Liquid.cc,v 1.15 2001/08/07 19:55:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,15 +22,18 @@
 
 #include "Liquid.hh"
 
-Liquid::Liquid(LiquidData data)
+Liquid::Liquid(const LiquidData& data)
 {
   pos = data.pos;  
-  width = data.width;
   speed = data.speed;
   sur = PingusResource::load_surface(data.desc.res_name.c_str(), "global");
 
-  counter.set_size(sur.get_num_frames());
+  if (data.old_width_handling)
+    width = data.width;
+  else
+    width = data.width * sur.get_width ();
 
+  counter.set_size(sur.get_num_frames());
   counter.set_speed(speed);
 }
 
