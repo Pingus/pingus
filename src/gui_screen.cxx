@@ -1,4 +1,4 @@
-//  $Id: gui_screen.cxx,v 1.4 2002/08/16 17:15:31 grumbel Exp $
+//  $Id: gui_screen.cxx,v 1.5 2002/08/17 00:26:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,8 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
+#include "globals.hxx"
+#include "debug.hxx"
 #include "gui/gui_manager.hxx"
 #include "input/button_event.hxx"
 #include "gui_screen.hxx"
@@ -89,7 +91,9 @@ GUIScreen::update (const GameDelta& delta)
 void
 GUIScreen::process_button_event (Input::ButtonEvent* event)
 {
-  if (event->state == Input::pressed) // FIXME: We ignore releases for the moment
+  std::cout << "GUIScreen::process_button_event (Input::ButtonEvent* event)" << std::endl;
+
+  if (event->state == Input::pressed) 
     {
       switch (event->name)
 	{
@@ -112,9 +116,41 @@ GUIScreen::process_button_event (Input::ButtonEvent* event)
 	  on_escape_press ();
 	  break;
 	default:
-	  std::cout << "ButtonEvent: unhandled event: " << event->name << std::endl;
+	  perr(PINGUS_DEBUG_GUI) << "GUIScreen: ButtonEvent: unhandled event: " << event->name << std::endl;
 	  break;
 	}
+    }
+  else if (event->state == Input::released) 
+    {
+      switch (event->name)
+	{
+	case Input::primary:
+	  // ignoring, handled in the gui_manager
+	  break; 
+	case Input::secondary:
+	  // ignoring, handled in the gui_manager
+	  break;
+	case Input::pause:
+	  on_pause_release ();
+	  break;
+	case Input::fast_forward:
+	  on_fast_forward_release ();
+	  break;
+	case Input::armageddon:
+	  on_armageddon_release ();
+	  break;
+	case Input::escape:
+	  on_escape_release ();
+	  break;
+	default:
+	  perr(PINGUS_DEBUG_GUI) << "GUIScreen: ButtonEvent: unhandled event: " << event->name << std::endl;
+	  break;
+	}
+    }
+  else
+    {
+      perr(PINGUS_DEBUG_GUI) << "GUIScreen::process_button_event: got unknown event->state: " 
+			     << event->state << std::endl;;
     }
 }
 

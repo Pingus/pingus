@@ -1,4 +1,4 @@
-//  $Id: pingus_menu.cxx,v 1.6 2002/08/16 17:15:31 grumbel Exp $
+//  $Id: pingus_menu.cxx,v 1.7 2002/08/17 00:28:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,8 +30,8 @@
 #include "display.hxx"
 #include "sound.hxx"
 #include "debug.hxx"
+#include "pingus_menu_manager.hxx"
 #include "game_delta.hxx"
-#include "gui/root_gui_manager.hxx"
 
 PingusMenu::PingusMenu(PingusMenuManager* m)
   : PingusSubMenu (m)
@@ -52,13 +52,13 @@ PingusMenu::preload ()
       background = PingusResource::load_surface("misc/logo", "core");
 
       // FIXME: Lilla... memory leak
-      add(new OptionsButton (this));
-      add(new CreditButton (this));
-      add(new QuitButton (this));
-      add(new MultiplayerButton (this));
-      add(new ThemeButton (this));
-      add(new StoryButton (this));
-      add(editor_button);
+      gui_manager->add(new OptionsButton (this));
+      gui_manager->add(new CreditButton (this));
+      gui_manager->add(new QuitButton (this));
+      gui_manager->add(new MultiplayerButton (this));
+      gui_manager->add(new ThemeButton (this));
+      gui_manager->add(new StoryButton (this));
+      gui_manager->add(editor_button);
     }
 
   // FIXME: Preload is probally the wrong place for this, there should
@@ -68,13 +68,18 @@ PingusMenu::preload ()
 
 PingusMenu::~PingusMenu()
 {
-  delete gui_manager;
 }
 
 void
 PingusMenu::on_resize(int w, int h)
 {
   pout << "Width: " << w << " Height: " << h << std::endl;
+}
+
+void
+PingusMenu::on_escape_press ()
+{
+  get_manager ()->show_exit_menu ();
 }
 
 /* EOF */

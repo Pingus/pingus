@@ -1,4 +1,4 @@
-//  $Id: pingus_menu.hxx,v 1.4 2002/07/30 14:57:25 grumbel Exp $
+//  $Id: pingus_menu.hxx,v 1.5 2002/08/17 00:28:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -45,7 +45,6 @@ class PingusMenu : public PingusSubMenu
 public:
   bool is_init;
 private:
-  GUI::GUIManager* gui_manager;
   Input::Controller* controller;
 
   SurfaceButton * temp_button;
@@ -61,6 +60,8 @@ public:
 
   /// Load all images and other stuff for the menu
   void preload ();
+
+  void on_escape_press ();
 };
 
 #endif

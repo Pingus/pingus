@@ -1,4 +1,4 @@
-//  $Id: exit_menu.cxx,v 1.4 2002/08/03 17:20:37 grumbel Exp $
+//  $Id: exit_menu.cxx,v 1.5 2002/08/17 00:26:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -73,8 +73,8 @@ public:
 ExitMenu::ExitMenu (PingusMenuManager* manager)
   : PingusSubMenu (manager)
 {
-  add (new ExitMenuYesButton (manager), true);
-  add (new ExitMenuNoButton (manager), true);
+  gui_manager->add (new ExitMenuYesButton (manager), true);
+  gui_manager->add (new ExitMenuNoButton (manager), true);
 }
 
 ExitMenu::~ExitMenu ()
