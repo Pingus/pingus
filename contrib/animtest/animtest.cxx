@@ -1,4 +1,4 @@
-//  $Id: animtest.cxx,v 1.1 2003/02/18 14:21:20 grumbel Exp $
+//  $Id: animtest.cxx,v 1.2 2003/03/04 11:26:17 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -52,9 +52,9 @@ Animtest::main(int argc, char** argv)
   CL_SurfaceProvider* prov = new CL_PNGProvider(argv[1]);
   CL_Surface* sur = CL_SpriteSubarrayProvider::create(prov,
                                                       0, 0,
-                                                      32, 32, 8, 2);
+                                                      32, 64, 8, 1);
   int frame = 0;
-  bool multi_direct = true;
+  bool multi_direct = false;
   float x_of = 100;
   while (1)
     {

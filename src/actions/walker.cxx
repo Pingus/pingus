@@ -1,4 +1,4 @@
-//  $Id: walker.cxx,v 1.31 2003/02/19 09:50:36 grumbel Exp $
+//  $Id: walker.cxx,v 1.32 2003/03/04 11:26:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,9 +29,11 @@ namespace Actions {
 
 Walker::Walker (Pingu* p)
   : PinguAction(p),
-    walker("Pingus/walker" + to_string(pingu->get_owner()), "pingus", 15.0f)
+    walker("Pingus/walker" + to_string(pingu->get_owner()), "pingus", 15.0f),
+    floaterlayer("Pingus/floaterlayer", "pingus", 15.0f)
 {
   walker.set_align_center_bottom();
+  floaterlayer.set_align_center_bottom();
 
   // Reset the velocity
   pingu->set_velocity(Vector());
@@ -42,6 +44,7 @@ Walker::update ()
 {
   // update the sprite
   walker.update();
+  floaterlayer.update();
 
   Vector last_pos = pingu->get_pos();
 
@@ -124,7 +127,7 @@ Walker::update ()
       for (y_inc = -max_steps; y_inc <= max_steps; ++y_inc)
 	{// up/down-hill scan
 	  if ((  rel_getpixel(1, y_inc)     == Groundtype::GP_NOTHING
-              || rel_getpixel(1, y_inc)     == Groundtype::GP_BRIDGE) // FIXME: This causes a rather huge step
+                 || rel_getpixel(1, y_inc)     == Groundtype::GP_BRIDGE) // FIXME: This causes a rather huge step
 	      && rel_getpixel(1, y_inc - 1) != Groundtype::GP_NOTHING)
 	    { // FIXME:
 	      found_next_step = true;
@@ -202,11 +205,22 @@ void
 Walker::draw (GraphicContext& gc)
 {
   if (pingu->direction.is_left())
-    walker.set_direction(Sprite::LEFT);
+    {
+      walker.set_direction(Sprite::LEFT);
+      floaterlayer.set_direction(Sprite::LEFT);
+    }
   else
-    walker.set_direction(Sprite::RIGHT);
+    {
+      walker.set_direction(Sprite::RIGHT);
+      floaterlayer.set_direction(Sprite::RIGHT);
+    }
 
   gc.draw (walker, pingu->get_pos() + Vector (0, +2));
+
+  if (pingu->get_fall_action() && pingu->get_fall_action()->get_type() == Actions::Floater)
+    {
+      gc.draw(floaterlayer, pingu->get_pos() + Vector(0, +2));
+    }
 }
 
 } // namespace Actions

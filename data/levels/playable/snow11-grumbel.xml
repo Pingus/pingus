@@ -13,6 +13,7 @@
     <difficulty>40</difficulty>
     <playable>0</playable>
     <comment></comment>
+    <music>none</music>
   </global>
 
   <action-list>
@@ -38,6 +39,7 @@
   <para-y>0.5</para-y>
   <stretch-x>0</stretch-x>
   <stretch-y>0</stretch-y>
+  <keep-aspect>0</keep-aspect>
   <position>
     <x-pos>0</x-pos>
     <y-pos>0</y-pos>
@@ -770,6 +772,15 @@
   </position>
 </worldobj>
 
+<worldobj type="conveyorbelt">
+<position>
+  <x-pos>364</x-pos>
+  <y-pos>313</y-pos>
+  <z-pos>0</z-pos>
+</position>
+<width>5</width>
+<speed>-30</speed>
+</worldobj>
   <start-position>
   <position>
     <x-pos>281</x-pos>

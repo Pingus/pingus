@@ -1,4 +1,4 @@
-//  $Id: walker.hxx,v 1.11 2002/10/13 16:40:01 grumbel Exp $
+//  $Id: walker.hxx,v 1.12 2003/03/04 11:26:18 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,6 +29,7 @@ class Walker : public PinguAction
 {
 private:
   Sprite walker; 
+  Sprite floaterlayer; 
 
   enum { max_steps = 5 }; // max nr. of pixels that pingu can walk up/down
 

@@ -1,6 +1,8 @@
 // The surfaces for the different pingu actions
 section Pingus
 {
+	floaterlayer = ../images/pingus/floaterlayer.png (type=surface, x=0, y=0, width=32, height=32, array=8x2);
+
 	rocketlauncher0 = ../images/pingus/rocketlauncher.png     (type=surface, x=0, y=0, width=32, height=32, array=7x2);
 	boarder0    = ../images/pingus/boarder.png     (type=surface, x=0, y=0, width=30, height=30, array=1x2);
 	angel0      = ../images/pingus/angel.png     (type=surface, x=0, y=0, width=46, height=30, array=4x1);
