@@ -1,11 +1,10 @@
 0.6.1 (??/Sep/2003)
 ===================
+* scrool wheel support in the editor
+* file ending for level files changed from .xml to .plf
+* level preview render code
 * lots of spelling fixes
-* new font
-* new Finnish, Italian and  translation
-
-* maybe Dutch, Polish, Hungarian, Swedish, Norwegian, Esperanto
-* maybe PPC
+* umlaut problems fixed
 
 
 0.6.0 (16/Apr/2003)

@@ -13,7 +13,6 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"de>, Giray Devlet <giray@devlet.cc>\n"
 "X-Generator: KBabel 1.0\n"
 
 #: src/config.cxx:71
@@ -500,7 +499,7 @@ msgstr "illimitato"
 
 #: src/level_desc.cxx:72
 msgid "Designed by "
-msgstr "Progettato da "
+msgstr "Creato da "
 
 #: src/level_desc.cxx:77
 #, c-format
@@ -688,7 +687,7 @@ msgstr "Bombarolo"
 
 #: src/pingu_enums.cxx:39
 msgid "Bridger"
-msgstr "Costruttore di ponti"
+msgstr "Pontiere"
 
 #: src/pingu_enums.cxx:40
 msgid "Climber"
@@ -761,7 +760,7 @@ msgstr "Pedone"
 #: src/pingus_counter.cxx:50
 #, c-format
 msgid "Released:%3d/%-3d   Out:%3d   Saved:%3d/%-3d"
-msgstr "Rilasciato: %3d/%-3d  Totali: %3d Salvati: %3d/%-3d"
+msgstr "Rilasciati:%3d/%-3d  Totali:%3d Salvati: %3d/%-3d"
 
 #: src/pingus_main.cxx:96
 msgid "| segfault_handler: catched a SIGSEGV."
@@ -875,7 +874,7 @@ msgstr "Stampa il numero di versione ed esce"
 
 #: src/pingus_main.cxx:520
 msgid "Launch the Level editor (experimental)"
-msgstr "Lancia l'edito di livelli (sperimentale)"
+msgstr "Lancia l'editor di livelli (sperimentale)"
 
 #: src/pingus_main.cxx:521
 msgid "Disable automatic scrolling"
@@ -951,7 +950,7 @@ msgstr "Disattiva alcune caratteristiche che consumano cicli CPU"
 
 #: src/pingus_main.cxx:543
 msgid "Reduces the CPU usage by issuing sleep()"
-msgstr "Diminuisce l'uso delle CPU usando sleep()"
+msgstr "Diminuisce l'uso della CPU usando sleep()"
 
 #: src/pingus_main.cxx:545
 msgid "Demo playing and recording:"
@@ -963,7 +962,7 @@ msgstr "FILE     "
 
 #: src/pingus_main.cxx:546
 msgid "Plays a demo session from FILE"
-msgstr "Mostra una demo da FILE"
+msgstr "Mostra una Demo da FILE"
 
 #: src/pingus_main.cxx:548
 msgid "Record demos for each played level"
@@ -992,7 +991,7 @@ msgstr ""
 
 #: src/pingus_main.cxx:732
 msgid "clanMikMod support:           ok"
-msgstr "Supporto clanMikMod:         ok"
+msgstr "Supporto clanMikMod:          ok"
 
 #: src/pingus_main.cxx:734
 msgid "clanMikMod support:  missing (music files will not be playable)"
@@ -1000,11 +999,11 @@ msgstr "Supporto clanMikMod: assente (i file musicali non saranno suonati)"
 
 #: src/pingus_main.cxx:738
 msgid "getext support:               ok"
-msgstr "Supporto gettext:            ok"
+msgstr "Supporto gettext:             ok"
 
 #: src/pingus_main.cxx:739
 msgid "gettext language:        english"
-msgstr "lingua gettext:        italiano"
+msgstr "lingua gettext:          italiano"
 
 #: src/pingus_main.cxx:745
 msgid "sound support:           enabled"
@@ -1012,7 +1011,7 @@ msgstr "Supporto suono:          attivato"
 
 #: src/pingus_main.cxx:747
 msgid "sound support:          disabled"
-msgstr "Supporto suono:       disattivato"
+msgstr "Supporto suono:         disattivato"
 
 #: src/pingus_main.cxx:750
 msgid "music support:           enabled"
@@ -1020,7 +1019,7 @@ msgstr "Supporto musica:         attivato"
 
 #: src/pingus_main.cxx:752
 msgid "music support:          disabled"
-msgstr "Supporto musica:      disattivato"
+msgstr "Supporto musica:        disattivato"
 
 #: src/pingus_main.cxx:754
 msgid "resolution set to:       "
@@ -1032,7 +1031,7 @@ msgstr "schermo intero:        "
 
 #: src/pingus_main.cxx:756
 msgid " enabled"
-msgstr "   attivato"
+msgstr " attivato"
 
 #: src/pingus_main.cxx:756
 msgid "disabled"
@@ -1080,7 +1079,7 @@ msgstr "Successo!"
 
 #: src/result_screen.cxx:180
 msgid "Failure!"
-msgstr "Fiasco!"
+msgstr "Fallimento!"
 
 #: src/result_screen.cxx:189
 msgid "Perfect! You saved everyone possible - great!"
@@ -1108,7 +1107,7 @@ msgstr "Cosa dovrei dire... ce l'hai fatta, congratulazioni!"
 
 #: src/result_screen.cxx:203
 msgid "You killed everybody, not good."
-msgstr "Hai ucciso tutti, non è bene"
+msgstr "Hai ucciso tutti, non va bene"
 
 #: src/result_screen.cxx:205
 msgid "No-one got saved - I know you can do better."
@@ -1370,11 +1369,11 @@ msgstr "bloccato"
 
 #: src/worldmap/manager.cxx:102
 msgid "Show Ending?"
-msgstr "Mostra la conclusione?"
+msgstr "Mostra conclusione?"
 
 #: src/worldmap/manager.cxx:132
 msgid "Show Story?"
-msgstr "Mostra la storia?"
+msgstr "Mostra storia?"
 
 #: src/worldmap/manager.cxx:160
 msgid "Leave?"
@@ -1390,7 +1389,7 @@ msgstr "Worldmap: File assente: "
 
 #: src/worldmap/worldmap.cxx:260
 msgid "...walking..."
-msgstr "...camminando..."
+msgstr "...sto andando..."
 
 #, fuzzy
 #~ msgid "Perfect! You saved all the Pingus. Great!"

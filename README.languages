@@ -1,13 +1,15 @@
 
 Pingus currently has Locale support for the following Languages
 
-        cs -> Czech /
-        de -> German / Deutsch
-        en -> English - default
-        tr -> Turkish / Türkçe
+        cs_CZ -> Czech /             (ISO-8859-2)
+        de_DE -> German / Deutsch    (ISO-8859-1)
+        en_US -> English - default   (ISO-8859-1)
+        tr_TR -> Turkish / Türkçe    (ISO-8859-9/ISO-8859-1)
+	it_IT -> Italian / Italyano  (ISO-8859-1)
+        sv_SE ->                     (ISO-8859-1)
+        sr_SR ->                     (ISO-8859-2)
 
 Unfinished:
-	it -> Italian / Italyano 
 	nl -> Dutch / Nederlands
 
 If your environment is already set so that you are able to

@@ -37,7 +37,8 @@ Binary release are different, they are basically build by a
 
 and by adding a start script, using the Loki Installer might also be a
 good idea, even so I tend to prefer tarballs, it automatically creates
-KDE and Gnome links and such.
+KDE and Gnome links and such. Official releases (those that end up on
+pingus.seul.org) must be build with -DOFFICIAL_PINGUS_BUILD.
 
 FIXME: a make-target should automatise this.
 FIXME: Binary Release should include source code (source is small, so
@@ -51,6 +52,15 @@ What to Release?
 Source Release as .zip and .tar.bz2, .tar.gz shouldn't be needed.
 Binary Release as tar.bz2 for GNU/Linux and .zip for Windows, some
 people might prefer a clickable .exe.
+
+
+Fonts and Internationalization
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Pingus should support Latin1 (ISO-8859-1) and Latin2 (ISO-8859-2).
+Cyrillic (ISO-8859-5) might also be needed at some point. See:
+
+ * http://czyborra.com/charsets/iso8859.html
 
 
 # EOF #

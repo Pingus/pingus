@@ -1,4 +1,4 @@
-//  $Id: pingus_counter.hxx,v 1.9 2002/10/03 12:33:08 grumbel Exp $
+//  $Id: pingus_counter.hxx,v 1.10 2003/10/18 10:49:42 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,6 +46,3 @@ private:
 #endif
 
 /* EOF */
-
-
-

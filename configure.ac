@@ -1,4 +1,4 @@
-#  $Id: configure.ac,v 1.18 2003/08/30 13:35:07 torangan Exp $
+#  $Id: configure.ac,v 1.19 2003/10/18 10:49:42 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,10 +25,10 @@ CLANLIB_MINOR_VERSION=6
 CLANLIB_PATCH_VERSION=5
 
 dnl Process this file with autoconf to produce a configure script.
-AC_INIT(Pingus, 0.6.0)
+AC_INIT(Pingus, 0.6.1)
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_SRCDIR(src/pingus_main.cxx)
-AM_INIT_AUTOMAKE(dist-bzip2)
+AM_INIT_AUTOMAKE(dist-bzip2 dist-zip)
 
 
 dnl Checks for programs.
@@ -42,11 +42,16 @@ AC_LANG(C++)
 AC_C_BIGENDIAN
 PINGUS_EXTRA_PATHS
 
+AC_MSG_CHECKING([whether debugging should be enabled])
+AC_ARG_ENABLE(debug, AC_HELP_STRING([--enable-debug], [enable debug support]),,
+              [enable_debug="no"])
+AC_MSG_RESULT($enable_debug)
+if test "x$enable_debug" != "xno"; then
+   CXXFLAGS="-g -ggdb -O0 -Wall -Werror"
+fi
+
 AC_ARG_WITH(gettext,
 	[  --without-gettext       disable support for multiple languages])
-
-AC_ARG_WITH(clanGL,
-        [  --with-clanGL        enable OpenGL support])
 
 if test "x$with_gettext" != "xno"; then
 	dnl -- gettext macros --
@@ -137,11 +142,14 @@ AC_CHECK_LIB( clanSound,   main)
 AC_CHECK_LIB( clanMikMod,   main)
 AC_CHECK_LIB( clanVorbis,   main)
 
-#echo "ClanGL: $with_clanGL"
+AC_MSG_CHECKING([for clanGL support])
+AC_ARG_WITH(clanGL,
+        AC_HELP_STRING([--with-clanGL], [enable OpenGL support (default: no)]),,
+        [with_clangl="no"])
+AC_MSG_RESULT([$with_clangl])
+
 if test "x$with_clanGL" = "xyes"; then
     AC_CHECK_LIB( clanGL,   main)
-else
-    echo "clanGL support disabled";
 fi
 
 dnl AC_CHECK_LIB( clanGUI,   main,, [
