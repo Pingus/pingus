@@ -1,5 +1,5 @@
 /* This level was created with the PLE
- * $Id: Wland.plf,v 1.3 2000/05/24 18:48:32 grumbel Exp $
+ * $Id: Wland.plf,v 1.4 2000/05/26 18:11:25 grumbel Exp $
  * (Heavily altered foliage1.plf)
  */
 global {
@@ -94,6 +94,7 @@ hotspot {
   speed = -1;
 }
 
+/*
 hotspot {
   image = (resource)"GroundPieces/Foliage/turfconcave";
   x_pos = 193;
@@ -245,5 +246,5 @@ hotspot {
   z_pos = 0;
   speed = -1;
 }
-
+*/
 /* EOF */
