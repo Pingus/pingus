@@ -1,4 +1,4 @@
-//  $Id: gui_manager.cxx,v 1.1 2002/07/12 15:39:21 grumbel Exp $
+//  $Id: gui_manager.cxx,v 1.2 2002/07/29 10:44:12 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,8 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "gui_manager.hxx"
+
+using namespace GUI;
 
 void
 GUIManager::update (float delta)

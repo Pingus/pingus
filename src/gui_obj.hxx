@@ -1,4 +1,4 @@
-//  $Id: gui_obj.hxx,v 1.2 2002/06/24 22:52:54 grumbel Exp $
+//  $Id: gui_obj.hxx,v 1.3 2002/07/29 10:44:12 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,25 +27,23 @@
 class GuiObj 
 {
 protected:
-  ///
+  // FIXME: Do we need that here?! (its used for clipping)
   int x1;
-  ///
   int y1;
-  ///
   int x2;
-  ///
   int y2;
+
 public:
-  ///
   GuiObj();
-  ///
   virtual ~GuiObj();
 
-  ///
   void    set_clip_rect(int, int, int, int);
   
   /// Draw the gui element and do the clipping.
   virtual void draw_clipped();
+
+  /** Return true if the mouse is over this GUI component */
+  virtual bool mouse_over (int x, int y) { return false; }
 
   /// Draw the gui element
   virtual void draw() = 0;
@@ -56,6 +54,15 @@ public:
   /** Update all elements, which are indepented of the world speed
       (for example scrolling). */
   virtual void updateX();
+
+  // Events
+  
+  // Called when 
+  virtual void on_mouse_enter () {}
+  virtual void on_mouse_leave () {}
+  virtual void on_mouse_click () {}
+  virtual void on_mouse_press () {}
+  virtual void on_mouse_release () {}
 };
 
 #endif

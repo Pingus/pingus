@@ -1,4 +1,4 @@
-//  $Id: smallmap.cxx,v 1.5 2002/06/25 18:15:18 grumbel Exp $
+//  $Id: smallmap.cxx,v 1.6 2002/07/29 10:44:12 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -159,6 +159,12 @@ SmallMap::draw()
   int y_of = playfield->get_y_offset();
 
   sur.put_screen(0, CL_Display::get_height() - sur.get_height()); 
+
+  if (has_focus)
+    Display::draw_rect(0, CL_Display::get_height() - sur.get_height(),
+		       sur.get_width (), CL_Display::get_height() - sur.get_height() + sur.get_height () - 1, 
+		       1.0f, 1.0f, 1.0f, 1.0f);
+		       
   
   x_of = -x_of * width / client->get_server()->get_world()->get_colmap()->get_width();
   y_of = -y_of * height / client->get_server()->get_world()->get_colmap()->get_height();
@@ -228,6 +234,14 @@ SmallMap::mouse_over()
 }
 
 bool
+SmallMap::mouse_over(int x, int y)
+{
+  std::cout << "............." << x << " " << y << std::endl;
+  return (x > x_pos && x < x_pos + (int)width
+	  && y > y_pos && y < y_pos + (int)height);
+}
+
+bool
 SmallMap::on_button_press(const CL_Key& key)
 {
   switch(key.id)
@@ -253,6 +267,18 @@ SmallMap::on_button_release(const CL_Key& key)
       break;
     }
   return false;
+}
+
+void
+SmallMap::on_mouse_enter ()
+{
+  has_focus = true;  
+}
+
+void
+SmallMap::on_mouse_leave ()
+{
+  has_focus = false;  
 }
 
 /* EOF */

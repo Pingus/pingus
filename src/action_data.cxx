@@ -1,4 +1,4 @@
-//  $Id: action_data.cxx,v 1.3 2002/06/29 17:39:21 grumbel Exp $
+//  $Id: action_data.cxx,v 1.4 2002/07/29 10:44:12 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,19 +26,23 @@ std::vector<ActionData> default_actions;
 
 void init_default_actions ()
 {
+  //default_actions.push_back (ActionData (Boarder, 20));
+  //default_actions.push_back (ActionData (Rocketlauncher, 20));
+  //default_actions.push_back (ActionData (Superman, 0));
+
   default_actions.push_back (ActionData (Basher, 20));
   default_actions.push_back (ActionData (Blocker, 20));
-  //default_actions.push_back (ActionData (Boarder, 20));
   default_actions.push_back (ActionData (Bomber, 20));
+
   default_actions.push_back (ActionData (Bridger, 20));
   default_actions.push_back (ActionData (Climber, 20));
+
   default_actions.push_back (ActionData (Digger, 20));
   default_actions.push_back (ActionData (Floater, 20));
   default_actions.push_back (ActionData (Jumper, 20));
+
   default_actions.push_back (ActionData (Miner, 20));
-  //default_actions.push_back (ActionData (Rocketlauncher, 20));
   default_actions.push_back (ActionData (Slider, 20));
-  //default_actions.push_back (ActionData (Superman, 0));
 }
 
 /* EOF */

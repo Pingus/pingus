@@ -1,4 +1,4 @@
-//  $Id: component.hxx,v 1.1 2002/07/12 15:39:21 grumbel Exp $
+//  $Id: component.hxx,v 1.2 2002/07/29 10:44:12 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,11 +22,41 @@
 
 namespace GUI
 {
+  /** A component represents an area which recivies events in the GUI,
+      some people might call it a widget */
   class Component
   {
   private:
 
   public:
+    virtual void draw () =0;
+    virtual void update (float delta) {}
+    
+    virtual bool is_at (int x, int y) { return false; }
+
+    // Events
+    /** Gets issued once the primary button is pressed */
+    virtual void on_button_press (int x, int y) {}
+    
+    /** Gets issued once the primary button is released */
+    virtual void on_button_release (int x, int y) {}
+
+    /** Gets emmited when a button is pressed and released over the
+	same component */
+    virtual void on_button_click (int x, int y) {}
+
+    /** Emmitted when pointer enters the region of the component */
+    virtual void on_pointer_enter () {}
+
+    /** Emmitted when pointer leaves the region of the component */
+    virtual void on_pointer_leave () {}
+
+    // status functions for use in the update() function
+    /** return true if currently pressed */
+    bool is_pressed ();
+
+    /** true if mouse is currently over */
+    bool pointer_over ();
   };
 }
 

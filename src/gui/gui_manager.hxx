@@ -1,4 +1,4 @@
-//  $Id: gui_manager.hxx,v 1.1 2002/07/12 15:39:21 grumbel Exp $
+//  $Id: gui_manager.hxx,v 1.2 2002/07/29 10:44:12 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,22 +20,24 @@
 #ifndef HEADER_PINGUS_GUI_GUI_MANAGER_HXX
 #define HEADER_PINGUS_GUI_GUI_MANAGER_HXX
 
+#include "component.hxx"
+
 namespace GUI
 {
-  /** Manager class which holds all GUI components and displays them */
-  class GUIManager
+  /** interface class which holds all GUI components and displays
+      them */
+  class GUIManager : public Component
   {
   private:
-    std::vector<Component*> components;
-
   public:
-    GUIManager ();
-    ~GUIManager ();
+    GUIManager () {}
+    virtual ~GUIManager () {}
     
-    void update (float delta);
+    virtual void draw () =0;
+    virtual void update (float delta) =0;
 
-    void add (Component*);
-    void remove (Component*);
+    virtual void add (Component*)    =0;
+    virtual void remove (Component*) =0;
   };
 }
 

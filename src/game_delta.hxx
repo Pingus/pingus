@@ -1,4 +1,4 @@
-//  $Id: game_delta.hxx,v 1.4 2002/07/02 16:06:51 grumbel Exp $
+//  $Id: game_delta.hxx,v 1.5 2002/07/29 10:44:12 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,19 +26,25 @@ class InputEvent;
 
 namespace Pingus 
 {
+  /** Input for the game engine */
   class GameDelta
   {
   private:
-    
-  public:
-    /**  */
-    InputEvent peek_event ();
+    std::list<Event*> events;
+    float time;
 
-    /**  */
-    InputEvent pop_event ();
-    
+  public:
+    void set_time (float t) { time = t; }
+
+    /** add an event (FIXME: Memory handling?!)*/
+    void add_event (Event* e) { events.push_back(); }
+
+
     /** Return the time that has passed in seconds */
-    float get_time ();
+    float get_time () { return time; }
+
+    /** Return the events */
+    std::list<Event*>& get_events () { return events; }
   };
 }
 

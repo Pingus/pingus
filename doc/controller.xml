@@ -29,10 +29,6 @@
       </axis-pointer>
     </standard-pointer>
 
-    <scroll-pointer>
-      <mouse-pointer/>
-    </scroll-pointer>
-
     <primary-button>
       <joystick-button id="0" button="1"/>
     </primary-button>

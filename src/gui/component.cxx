@@ -1,5 +1,5 @@
-//  $Id: smallmap_image.hxx,v 1.3 2002/07/29 10:44:12 grumbel Exp $
-// 
+//  $Id: component.cxx,v 1.1 2002/07/29 10:44:12 grumbel Exp $
+//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -12,42 +12,23 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef HEADER_PINGUS_SMALLMAP_IMAGE_HXX
-#define HEADER_PINGUS_SMALLMAP_IMAGE_HXX
+#include "component.hxx"
 
-#include <ClanLib/Display/Display/surface.h>
-#include <ClanLib/Core/Math/cl_vector.h>
-#include "gui_obj.hxx"
-
-class Server;
-
-/** The base image of the small map, it doesn't handle any userinput,
-    it only generates the surface */
-class SmallMapImage : public GuiObj
+bool
+Component::is_pressed ()
 {
-private:
-  CL_Surface sur;
-  CL_Vector pos;
-public:
-  SmallMapImage (Server * s, CL_Vector pos, int width, int height);
-  virtual ~SmallMapImage ();
+}
 
-  void draw ();
-  void update (float delta);
+/** true if mouse is currently over */
+bool
+Component::pointer_over ()
+{
+}
 
-  bool mouse_over (int x, int y);
-
-  static CL_Surface create_surface (Server * server, int width, int height);
-};
-
-#endif
 
 /* EOF */
-
-
-

@@ -1,4 +1,4 @@
-//  $Id: client.hxx,v 1.3 2002/06/24 22:52:54 grumbel Exp $
+//  $Id: client.hxx,v 1.4 2002/07/29 10:44:12 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,7 +24,20 @@
 #include <ClanLib/Display/Input/inputdevice.h>
 #include <vector>
 
+namespace Input 
+{
+  class Controller;
+  class ButtonEvent;
+  class PointerEvent;
+  class AxisEvent;
+}
+
 #include "result.hxx"
+
+namespace GUI
+{
+  class RootGUIManager;
+}
 
 class CL_Key;
 class CL_Vector;
@@ -57,6 +70,15 @@ private:
 
   std::vector<GuiObj*> obj;
   typedef std::vector<GuiObj*>::iterator GuiObjIter;
+  typedef std::vector<GuiObj*>::reverse_iterator GuiObjRIter;
+
+  GUI::RootGUIManager* gui_manager;
+
+  /** The object that got a mouse_down() */
+  GuiObj* grabbed_gui_obj;
+
+  /** The object which is currently under the cursor */
+  GuiObj* current_gui_obj;
 
   ButtonPanel*   button_panel;
   PingusCounter* pcounter;
@@ -66,6 +88,7 @@ private:
   HurryUp*       hurry_up;
 
   Controller* controller;
+  Input::Controller* input_controller;
   Cursor*     cursor;
 
   CL_Slot on_button_press_slot;
@@ -85,6 +108,13 @@ private:
   CL_Slot slot_next_action_pressed;
   CL_Slot slot_previous_action_pressed;
   
+  void process_button_event (Input::ButtonEvent*);
+  void process_pointer_event (Input::PointerEvent*);
+  void process_axis_event (Input::AxisEvent*);
+
+  /** Return the GuiObj under the given coordinates */
+  GuiObj* get_gui_object (int x, int y);
+
   bool enabled;
 public:
   Client(Controller* arg_controller, Server * s);
@@ -123,6 +153,8 @@ public:
 
   /** Update all parts of the world */
   void update (float delta);
+
+  void process_events ();
 
   ButtonPanel* get_button_panel () { return button_panel; }
 

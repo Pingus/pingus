@@ -1,4 +1,4 @@
-//  $Id: smallmap.hxx,v 1.4 2002/07/02 15:46:58 torangan Exp $
+//  $Id: smallmap.hxx,v 1.5 2002/07/29 10:44:12 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,6 +43,7 @@ private:
   bool scroll_mode;
   int rwidth;
   int rheight;
+  bool has_focus;
 public:
   SmallMap();
   ~SmallMap();
@@ -56,6 +57,12 @@ public:
   void draw();
   void draw_pingus();
   void update(float delta);
+
+  bool mouse_over(int x, int y);
+
+  // Events
+  void on_mouse_enter ();
+  void on_mouse_leave ();
 };
 
 #endif

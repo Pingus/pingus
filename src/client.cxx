@@ -1,4 +1,4 @@
-//  $Id: client.cxx,v 1.5 2002/07/08 17:05:09 grumbel Exp $
+//  $Id: client.cxx,v 1.6 2002/07/29 10:44:12 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,6 +41,17 @@
 #include "server.hxx"
 #include "button_panel.hxx"
 
+// GUI
+#include "gui/root_gui_manager.hxx"
+#include "gui/surface_button.hxx"
+
+// Input Header files
+#include "input/event.hxx"
+#include "input/button_event.hxx"
+#include "input/axis_event.hxx"
+#include "input/pointer_event.hxx"
+#include "input/controller.hxx"
+
 Client::Client(Controller* arg_controller, Server * s)
   : server       (s),
     fast_forward (false),
@@ -48,6 +59,8 @@ Client::Client(Controller* arg_controller, Server * s)
     skip_frame   (0),
     do_replay    (false),
     is_finished  (false),
+    grabbed_gui_obj (0),
+    current_gui_obj (0),
     button_panel (0),
     pcounter     (0),
     playfield    (0),
@@ -61,6 +74,16 @@ Client::Client(Controller* arg_controller, Server * s)
  
   Display::add_flip_screen_hook(cursor);
   //Display::add_flip_screen_hook(new Cursor ("cursors/cursor", "core", boost::shared_ptr<Controller>(new MouseController ())));
+
+  std::cout << "Creating controller" << std::endl;
+  input_controller = new Input::Controller ("../doc/mycontroller.xml");
+  std::cout << "Creating controller done" << std::endl;
+  std::cout << "Creating guix" << std::endl;
+  gui_manager = new GUI::RootGUIManager (input_controller);
+  gui_manager->add (new GUI::SurfaceButton (400, 200,
+					    ResDescriptor ("editor/button", "core", ResDescriptor::RD_RESOURCE),
+					    ResDescriptor ("editor/button_pressed", "core", ResDescriptor::RD_RESOURCE),
+					    ResDescriptor ("editor/actions", "core", ResDescriptor::RD_RESOURCE)));
 }
 
 Client::~Client()
@@ -223,6 +246,8 @@ Client::draw ()
   for(GuiObjIter i = obj.begin (); i != obj.end (); ++i)
     (*i)->draw_clipped();
 
+  gui_manager->draw ();
+
   Display::flip_display();	    
 }
 
@@ -230,20 +255,133 @@ void
 Client::update (float delta)
 {
   cursor->update (delta);
+  input_controller->update (delta);
+  gui_manager->update (delta);
+
+  // process input events
+  process_events ();
 
   // Let the window move its content
   for(GuiObjIter i = obj.begin (); i != obj.end (); ++i)
     (*i)->updateX();
   
-  // Update every 3/100 seconds
-  // if (last_update + 30 < CL_System::get_time())
-	      
   for(GuiObjIter i = obj.begin (); i != obj.end (); ++i)
     (*i)->update(delta);
 
   // Let the server process a game loop
   server->update(delta);
   send_next_event();
+}
+
+void
+Client::process_events ()
+{
+  std::list<Input::Event*>& events = input_controller->get_events ();
+
+  for (std::list<Input::Event*>::iterator i = events.begin (); i != events.end (); ++i)
+    {
+      //std::cout << "Events: " << (*i)->get_type () << std::endl;
+    
+      switch ((*i)->get_type ())
+	{
+	case Input::ButtonEventType:
+	  process_button_event (static_cast<class Input::ButtonEvent*>(*i));
+	  break;
+
+	case Input::PointerEventType:
+	  process_pointer_event (static_cast<class Input::PointerEvent*>(*i));
+	  break;
+
+	case Input::AxisEventType:
+	  process_axis_event (static_cast<class Input::AxisEvent*>(*i));
+	  break;
+	  
+	default:
+	  // unhandled event
+	  //std::cout << "Client::process_events (): unhandled event: " << (*i)->get_type() << std::endl;
+	  break;
+	}
+    }
+}
+
+void
+Client::process_button_event (Input::ButtonEvent* event)
+{
+  std::cout << "Client::process_button_event (): " << event->name << " " << event->state << std::endl;
+
+  switch (event->name)
+    {
+    case Input::primary:
+      {
+	if (event->state == Input::pressed)
+	  {
+	    //GuiObj* obj = get_gui_object (int(event->x), int(event->y));
+	    //obj->on_mouse_press ();
+	  }
+	else
+	  {
+	    //GuiObj* obj = get_gui_object (int(event->x), int(event->y));
+	    //obj->on_mouse_leave ();
+	  }
+      }
+      break;
+    case Input::secondary:
+      break;
+    default:
+      break;
+    }
+}
+
+void
+Client::process_pointer_event (Input::PointerEvent* event)
+{
+  if (event->type == 1)
+    std::cout << "Client::process_pointer_event (): " 
+	      << event->x << " " << event->y << " " 
+	      << event->type << std::endl;  
+  
+  switch (event->type)
+    {
+	/*
+
+    case Input::scroll: // FIXME: incorrect enum name
+      {
+	GuiObj* obj = get_gui_object (int(event->x), int(event->y));
+	if (obj)
+	  {
+	    if (obj != current_gui_obj)
+	      {
+		current_gui_obj = obj;
+		obj->on_mouse_enter();
+	      }
+	    else
+	      {
+		if (current_gui_obj) current_gui_obj->on_mouse_leave();
+		current_gui_obj = 0;
+	      }
+	  }
+	else
+	  {
+	    if (current_gui_obj) current_gui_obj->on_mouse_leave();
+	    current_gui_obj = 0;
+	  }
+      }
+      break;
+	*/
+      
+      //se Input::scroll:
+      //reak;	    
+      
+      //default:
+      //std::cout << "Client::process_pointer_event: unhandled event" << std::endl;
+      //break;
+    }
+}
+
+void
+Client::process_axis_event (Input::AxisEvent* event)
+{
+  std::cout << "Client::process_axis_event ()" << std::endl;    
 }
 
 void
@@ -641,6 +779,17 @@ Client::on_previous_action_pressed (const CL_Vector& /*pos*/)
 {
   std::cout << "Action previous pressed" << std::endl;
   button_panel->previous_action();
+}
+
+GuiObj*
+Client::get_gui_object (int x, int y)
+{
+  for(GuiObjRIter i = obj.rbegin (); i != obj.rend (); ++i)
+    {
+      if ((*i)->mouse_over (x, y))
+	return *i;
+    }
+  return 0;
 }
 
 /* EOF */

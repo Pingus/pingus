@@ -1,4 +1,4 @@
-//  $Id: smallmap_image.cxx,v 1.3 2002/06/25 18:15:18 grumbel Exp $
+//  $Id: smallmap_image.cxx,v 1.4 2002/07/29 10:44:12 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -151,6 +151,14 @@ SmallMapImage::create_surface (Server * server, int width, int height)
   //rheight = CL_Display::get_height() * height / client->get_server()->get_world()->get_colmap()->get_height();
 
   return CL_Surface(canvas, true);
+}
+
+bool 
+SmallMapImage::mouse_over (int x, int y)
+{
+  return (pos.x < x && pos.x + sur.get_width () > x
+	  && 
+	  pos.y < y && pos.y + sur.get_height () > y);
 }
 
 /* EOF */
