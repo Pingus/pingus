@@ -1,4 +1,4 @@
-//  $Id: surface_background_obj.cxx,v 1.6 2002/11/30 15:06:32 grumbel Exp $
+//  $Id: surface_background_obj.cxx,v 1.7 2002/11/30 15:19:04 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,7 @@
 #include "../worldobjsdata/surface_background_data.hxx"
 #include "../editor/editor.hxx"
 #include "../editor/generic_property_frame.hxx"
+#include "../editor/property_frame.hxx"
 #include "../editor/property_window.hxx"
 #include "surface_background_obj.hxx"
 
@@ -62,8 +63,8 @@ SurfaceBackgroundObj::status_line ()
          + to_string(data->pos.z);
 }
 
-PropertyFrame*
-SurfaceBackgroundObj::get_gui_dialog(Editor* editor)
+EditorNS::PropertyFrame*
+SurfaceBackgroundObj::get_gui_dialog(EditorNS::Editor* editor)
 {
   GenericPropertyFrame* propframe 
     = new GenericPropertyFrame("SurfaceBackground", editor->get_property_window()->get_client_area());
