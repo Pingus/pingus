@@ -28,6 +28,7 @@ libpingus_worldobjsdata_a_SOURCES = \
 	ice_block_data.cxx               ice_block_data.hxx \
 	info_box_data.cxx                info_box_data.hxx \
 	laser_exit_data.cxx              laser_exit_data.hxx \
+	liquid_data.cxx			 liquid_data.hxx \
         prefab_obj_data.cxx              prefab_obj_data.hxx \
         rain_generator_data.hxx          rain_generator_data.cxx \
 	smasher_data.cxx                 smasher_data.hxx \

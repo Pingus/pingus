@@ -1,4 +1,4 @@
-//  $Id: object_selector.cxx,v 1.24 2002/09/21 16:52:40 torangan Exp $
+//  $Id: object_selector.cxx,v 1.25 2002/09/25 17:21:38 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,29 +17,30 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <ClanLib/Core/System/system.h>
 #include <ClanLib/Core/IOData/directory_scanner.h>
-#include <ClanLib/Display/Input/mouse.h>
+#include <ClanLib/Core/Resources/resource_manager.h>
+#include <ClanLib/Core/System/system.h>
 #include <ClanLib/Display/Display/display.h>
 #include <ClanLib/Display/Font/font.h>
-#include <ClanLib/Core/Resources/resource_manager.h>
 #include <ClanLib/Display/Input/inputbuffer.h>
+#include <ClanLib/Display/Input/mouse.h>
 #include "../console.hxx"
 #include "../globals.hxx"
-#include "../pingus_resource.hxx"
 #include "../loading.hxx"
-#include "string_reader.hxx"
-#include "weather_obj.hxx"
-#include "object_selector.hxx"
-#include "thumb_cache.hxx"
-#include "editor_groundpiece_obj.hxx"
-#include "plfobj.hxx"
 #include "../my_gettext.hxx"
-#include "../system.hxx"
 #include "../path_manager.hxx"
+#include "../pingus_resource.hxx"
 #include "../string_converter.hxx"
+#include "../system.hxx"
+#include "editor_groundpiece_obj.hxx"
+#include "object_selector.hxx"
+#include "plfobj.hxx"
+#include "string_reader.hxx"
+#include "thumb_cache.hxx"
+#include "weather_obj.hxx"
 
 #include "../worldobjsdata/hotspot_data.hxx"
+#include "../worldobjsdata/liquid_data.hxx"
 #include "../worldobjsdata/solid_color_background_data.hxx"
 #include "../worldobjsdata/starfield_background_data.hxx"
 #include "../worldobjsdata/surface_background_data.hxx"

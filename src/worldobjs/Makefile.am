@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.14 2002/09/21 16:52:40 torangan Exp $
+#  $Id: Makefile.am,v 1.15 2002/09/25 17:21:39 torangan Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,6 +30,7 @@ libpingus_worldobjs_a_SOURCES = \
         ice_block.cxx                  ice_block.hxx                  \
         info_box.cxx                   info_box.hxx                   \
 	laser_exit.cxx                 laser_exit.hxx                 \
+	liquid.cxx		       liquid.hxx		      \
         rain_generator.hxx             rain_generator.cxx             \
 	smasher.cxx                    smasher.hxx                    \
         snow_generator.hxx             snow_generator.cxx             \

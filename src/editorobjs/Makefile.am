@@ -27,6 +27,7 @@ libpingus_editorobjs_a_SOURCES = \
 	ice_block_obj.cxx	        ice_block_obj.hxx \
 	info_box_obj.cxx	        info_box_obj.hxx \
 	laser_exit_obj.cxx              laser_exit_obj.hxx \
+	liquid_obj.cxx			liquid_obj.hxx \
         prefab_obj.hxx                  prefab_obj.cxx \
 	smasher_obj.cxx                 smasher_obj.hxx \
 	solid_color_background_obj.cxx  solid_color_background_obj.hxx \

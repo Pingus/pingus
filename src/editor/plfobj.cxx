@@ -1,4 +1,4 @@
-//  $Id: plfobj.cxx,v 1.12 2002/09/11 12:45:58 grumbel Exp $
+//  $Id: plfobj.cxx,v 1.13 2002/09/25 17:21:38 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -126,66 +126,6 @@ ExitObj::status_line()
   snprintf(str, 256, "Exit - %s - X:%4.2f Y:%4.2f Z:%4.2f OwnerId: %d", desc.res_name.c_str(), pos.x, pos.y, pos.z, owner_id);
 
   return str;
-}
-
-
-LiquidObj::LiquidObj(const LiquidData& data)
-  : SpriteEditorObj (data.desc.res_name, data.desc.datafile),
-    LiquidData (data)
-{
-  if (old_width_handling)
-    {
-      width = (width + sprite.get_width ()) / sprite.get_width ();
-      old_width_handling = false;
-    }
-
-  pos_ref = &pos;
-}
-
-EditorObj*
-LiquidObj::duplicate()
-{
-  return new LiquidObj(static_cast<LiquidData>(*this));
-}
-
-void
-LiquidObj::draw (EditorNS::EditorView * view)
-{
-  for(int i = 0; i < width; ++i)
-    view->draw (sprite, pos + CL_Vector (i * sprite.get_width (), 0));
-}
-
-void
-LiquidObj::draw_mark (EditorNS::EditorView * view) 
-{
-  view->draw_rect(int(pos.x),
-		  int(pos.y),
-		  int(pos.x + sprite.get_width () * width),
-		  int(pos.y + sprite.get_height()),
-		  1.0, 1.0, 1.0, 0.0);
-}
-
-std::string  
-LiquidObj::status_line()
-{
-  char str[32];
-  
-  snprintf(str, 32, "%4.2f:%4.2f:%3.2f:%2d", pos.x, pos.y, pos.z, speed);
-
-  return std::string(str);
-}
-
-void 
-LiquidObj::make_larger ()
-{
-  LiquidData::width += 1;
-}
-
-void 
-LiquidObj::make_smaller ()
-{
-  if (LiquidData::width > 1)
-    LiquidData::width -= 1;
 }
 
 /* EOF */

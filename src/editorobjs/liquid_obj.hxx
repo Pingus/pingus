@@ -1,4 +1,4 @@
-//  $Id: plfobj.hxx,v 1.11 2002/09/25 17:21:38 torangan Exp $
+//  $Id: liquid_obj.hxx,v 1.1 2002/09/25 17:21:38 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,46 +17,48 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef HEADER_PINGUS_EDITOR_PLFOBJ_HXX
-#define HEADER_PINGUS_EDITOR_PLFOBJ_HXX
+#ifndef HEADER_PINGUS_EDITOROBJS_LIQUID_OBJ_HXX
+#define HEADER_PINGUS_EDITOROBJS_LIQUID_OBJ_HXX
 
-#include "../entrance_data.hxx"
-#include "../exit_data.hxx"
-#include "sprite_editorobj.hxx"
+#include "../editor/sprite_editorobj.hxx"
+#include "../worldobjsdata/liquid_data.hxx"
 
-class EntranceObj : public SpriteEditorObj,
-		    public EntranceData
+namespace WorldObjsData {
+class LiquidData;
+}
+
+namespace EditorObjs {
+
+class LiquidObj : public SpriteEditorObj
 {
+private:
+  WorldObjsData::LiquidData* const data;
+  
 public:
-  EntranceObj (const EntranceData&);
+  LiquidObj (WorldObjsData::LiquidData* data_);
+ ~LiquidObj ();
 
   EditorObj* duplicate ();
-  void write_xml (std::ostream& xml) { EntranceData::write_xml (xml); }
+  
+  void draw      (EditorNS::EditorView * view);
+  void draw_mark (EditorNS::EditorView * view);
+  
+  void write_xml (std::ostream& xml);
+  
   std::string status_line ();
-  EditorNS::PropertyFrame* get_gui_dialog (CL_Component* parent);
+
+  int get_width ();
+
+  void make_larger  ();
+  void make_smaller ();
   
 private:
-  EntranceObj (const EntranceObj&);
-  EntranceObj operator= (const EntranceObj&);
+  LiquidObj (const LiquidObj&);
+  LiquidObj operator= (const LiquidObj&);
 };
 
-class ExitObj : public SpriteEditorObj,
-		public ExitData
-{
-public:
-  ExitObj (const ExitData&);
-
-  EditorObj* duplicate();
-  void write_xml(std::ostream& xml) { ExitData::write_xml (xml); }
-  std::string  status_line();
-  
-private:
-  ExitObj (const ExitObj&);
-  ExitObj operator= (const ExitObj&);
-};
+} // namespace EditorObjs
 
 #endif
 
 /* EOF */
-
-

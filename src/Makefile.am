@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.107 2002/09/24 17:02:48 grumbel Exp $
+#  $Id: Makefile.am,v 1.108 2002/09/25 17:21:38 torangan Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -181,10 +181,6 @@ level_interrupt.hxx \
 level_result.cxx \
 level_result.hxx \
 libxmlfwd.hxx \
-liquid.cxx \
-liquid.hxx \
-liquid_data.cxx \
-liquid_data.hxx \
 loading.cxx \
 loading.hxx \
 main_menu.cxx \
