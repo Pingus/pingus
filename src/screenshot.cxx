@@ -174,7 +174,7 @@ Screenshot::get_filename()
   int i = 1;
 
   do {
-    snprintf(str, 16, "%d.ppm", i);
+    snprintf(str, 16, "%d.png", i);
     tmp_filename = System::get_statdir() + "screenshots/"
       + "pingus-" + get_date() + "-" + std::string(str);
     ++i;

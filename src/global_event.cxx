@@ -21,6 +21,7 @@
 #include <stdio.h>
 #include <algorithm>
 #include <ClanLib/Display/keyboard.h>
+#include <ClanLib/Display/display.h>
 #include <ClanLib/Display/input_event.h>
 #include <ClanLib/Display/keys.h>
 #include "screenshot.hxx"
@@ -48,10 +49,19 @@ GlobalEvent::on_button_press(const CL_InputEvent& event)
 	  console.toggle_display();
 	  break;
 
-	case CL_KEY_F11:
+	case CL_KEY_F10:
 	  fps_counter.toggle_display();
 	  console << "Toggling fps counter display" << std::endl;
-	  break;
+          break;
+
+	case CL_KEY_F11:
+          if (CL_Display::is_fullscreen())
+            CL_Display::set_windowed();
+          else
+            CL_Display::set_fullscreen(CL_Display::get_width(),
+                                       CL_Display::get_height(),
+                                       32);
+          break;
 
 	case CL_KEY_F12:
 	  {
