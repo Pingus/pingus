@@ -1,4 +1,4 @@
-//   $Id: PingusMain.cc,v 1.58 2002/06/02 21:09:11 grumbel Exp $
+//   $Id: PingusMain.cc,v 1.59 2002/06/04 08:35:30 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -82,33 +82,45 @@
 #  include "PingusSoundReal.hh"
 
 void
-segfault_handler(int signo)
+signal_handler(int signo)
 {
   switch(signo)
     {
     case SIGSEGV:
-      puts(_("\n----------------------------------------------------------"));
-      puts(_("segfault_handler: catched a SIGSEGV.\n"));
-      puts(_("Woops, Pingus just crashed, congratulations you've found a bug."));
-      puts(_("Please write a little bug report to <grumbel@pingus.cx>, include informations"));
-      puts(_("where exacly the SIGSEGV occured and how to reproduce it."));
-      puts(_("Also try include a backtrace, you can get it like this:\n"));
-      puts(_("$ gdb pingus core"));
-      puts(_("(gdb) bt"));
-      puts(_("...\n"));
-      puts(_("If that doesn't work, try this:\n"));
-      puts(_("$ gdb pingus"));
-      puts(_("(gdb) r"));
-      puts(_("[play until it crashes again]"));
-      puts(_("...\n"));
+      puts(_("\n,------------------------------------------------------------------------"));
+      puts(_("| segfault_handler: catched a SIGSEGV."));
+      puts ("|");
+      puts(_("| Woops, Pingus just crashed, congratulations you've found a bug."));
+      puts(_("| Please write a little bug report to <grumbel@gmx.de>, include informations"));
+      puts(_("| where exacly the SIGSEGV occured and how to reproduce it."));
+      puts(_("| Also try include a backtrace, you can get it like this:"));
+      puts ("|");
+      puts(_("| $ gdb pingus core"));
+      puts(_("| (gdb) bt"));
+      puts(_("| ..."));
+      puts ("|");
+      puts(_("| If that doesn't work, try this:"));
+      puts ("|");
+      puts(_("| $ gdb pingus"));
+      puts(_("| (gdb) r"));
+      puts(_("| [play until it crashes again]"));
+      puts(_("| ..."));
+      puts ("|");
+      puts(_("'------------------------------------------------------------------------\n"));
+      break;
+
+    case SIGINT:
+      puts(_("\n,------------------------------------------------------------------------"));
+      puts (_("| Warning: Pingus recieved a SIGINT, exiting now."));
+      puts(_("`------------------------------------------------------------------------\n"));
       break;
 
     default:
-      std::cout << "segfault_handler: Got unknown signal: " << signo
-		<< " ignoring" << std::endl;
+      std::cout << "signal_handler (): Got unknown signal: " << signo << std::endl;
       break;
     }
-  assert(0);
+  puts ("exit(EXIT_FAILURE);");
+  exit (EXIT_FAILURE);
 }
 
 PingusMain::PingusMain()
@@ -841,7 +853,9 @@ int
 PingusMain::main(int argc, char** argv)
 {
   // Register the segfault_handler
-  // signal(SIGSEGV, segfault_handler);
+  signal(SIGSEGV, signal_handler);
+  signal(SIGINT,  signal_handler);
+
 #ifdef WIN32
   CL_ConsoleWindow console(PACKAGE VERSION);
   console.redirect_stdio();

@@ -1,4 +1,4 @@
-//  $Id: Console.cc,v 1.18 2001/08/04 12:46:22 grumbel Exp $
+//  $Id: Console.cc,v 1.19 2002/06/04 08:35:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,8 +39,11 @@ ConsoleBuffer::ConsoleBuffer ()
   setg(0, 0, 0);
 }
   
-ConsoleBuffer::~ConsoleBuffer () {
+ConsoleBuffer::~ConsoleBuffer () 
+{
   sync ();
+
+  /* disabled, due to uselessness
   int c = 1;
   std::cout << "----------- Debugging Output ------------" << std::endl;
   for (std::vector<std::string>::iterator i = buffer.begin ();
@@ -48,6 +51,7 @@ ConsoleBuffer::~ConsoleBuffer () {
     {
       std::cout << "pingus:" << c++ << ": " << *i << std::endl;
     }
+  */
 }
 
 int

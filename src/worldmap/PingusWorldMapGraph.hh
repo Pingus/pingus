@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapGraph.hh,v 1.17 2002/06/02 21:32:38 grumbel Exp $
+//  $Id: PingusWorldMapGraph.hh,v 1.18 2002/06/04 08:35:31 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,6 +29,26 @@
 #include "../XMLhelper.hh"
 
 //#include "../generic/Graph.hh"
+
+/* Wannabe syntax of worldmaps:
+   ----------------------------
+
+    <level id="1" accessible="1">
+      <node>
+	<position>
+	  <x-pos>50</x-pos>
+	  <y-pos>377</y-pos>
+	</position>
+	<link id="2"/>
+      </node>
+      
+      <level name="level1.xml"/>
+    </level>
+
+    <tube id="...">
+       <node>
+         ...
+ */
 
 /** An object on the worldmap */
 class PingusWorldMapNode
@@ -118,8 +138,9 @@ public:
   void parse_file (std::string filename);
 private:
   void parse_node_list (xmlNodePtr);
-  void parse_node (xmlNodePtr);
+  void parse_level (xmlNodePtr);
   void parse_tube (xmlNodePtr);
+  void parse_empty (xmlNodePtr);
   void parse_music (xmlNodePtr);
   void parse_background (xmlNodePtr);
   //@}

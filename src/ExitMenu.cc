@@ -1,4 +1,4 @@
-//  $Id: ExitMenu.cc,v 1.3 2002/06/01 18:05:34 torangan Exp $
+//  $Id: ExitMenu.cc,v 1.4 2002/06/04 08:35:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -62,6 +62,7 @@ ExitMenu::on_button_release (CL_InputDevice* device, const CL_Key& key)
       else
 	{
 	  std::cout << "ExitMenu: yes pressed, doing exit" << std::endl;
+	  std::cout << "Pingus is now shutdown via: exit (EXIT_SUCCESS);" << std::endl;
 	  exit (EXIT_SUCCESS);
 	}
     }

@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapGraph.cc,v 1.28 2002/06/02 21:32:38 grumbel Exp $
+//  $Id: PingusWorldMapGraph.cc,v 1.29 2002/06/04 08:35:31 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -187,7 +187,7 @@ PingusWorldMapGraph::~PingusWorldMapGraph ()
 {
   //llif (graph) delete graph;
 }
-  
+ 
 void
 PingusWorldMapGraph::parse_file (std::string filename)
 {
@@ -246,9 +246,13 @@ PingusWorldMapGraph::parse_node_list (xmlNodePtr cur)
 	  continue;
 	}
 
-      if (strcmp((char*)cur->name, "node") == 0)
+      if (strcmp((char*)cur->name, "empty") == 0)
 	{
-	  parse_node (cur);
+	  parse_empty (cur);
+	}
+      else if (strcmp((char*)cur->name, "level") == 0)
+	{
+	  parse_level (cur);
 	}
       else if (strcmp((char*)cur->name, "tube") == 0)
 	{
@@ -317,7 +321,13 @@ PingusWorldMapGraph::parse_tube (xmlNodePtr cur)
 }
 
 void
-PingusWorldMapGraph::parse_node (xmlNodePtr cur)
+PingusWorldMapGraph::parse_empty (xmlNodePtr cur)
+{
+  std::cout << "PingusWorldMapGraph::parse_empty: not implemented" << std::endl;
+}
+
+void
+PingusWorldMapGraph::parse_level (xmlNodePtr cur)
 {
   PingusWorldMapLevelNode* node = new PingusWorldMapLevelNode ();
 
