@@ -33,6 +33,7 @@ buttons {
 }
 
 entrance {
+  type = "generic";
   x_pos = 202;
   y_pos = 174;
   z_pos = 0;
