@@ -91,8 +91,6 @@ src/level_result.cxx
 src/level_result.hxx
 src/worldobj_group_data.cxx
 src/worldobj_group_data.hxx
-src/gamepad_controller.cxx
-src/gamepad_controller.hxx
 src/action_button.cxx
 src/action_button.hxx
 src/timer.cxx
@@ -167,8 +165,6 @@ src/smallmap_image.cxx
 src/smallmap_image.hxx
 src/cursor.cxx
 src/cursor.hxx
-src/mouse_controller.cxx
-src/mouse_controller.hxx
 src/res_descriptor.cxx
 src/res_descriptor.hxx
 src/config.cxx
@@ -186,8 +182,6 @@ src/console.cxx
 src/console.hxx
 src/true_server.cxx
 src/true_server.hxx
-src/controllable.cxx
-src/controllable.hxx
 src/editor/status_line.cxx
 src/editor/status_line.hxx
 src/editor/editorobj_group.cxx
@@ -243,13 +237,10 @@ src/pingu_action_factory.cxx
 src/pingu_action_factory.hxx
 src/surface_button.cxx
 src/surface_button.hxx
-src/debug_gui.cxx
-src/debug_gui.hxx
 src/sound.cxx
 src/sound.hxx
 src/playfield.cxx
 src/playfield.hxx
-src/multiplex_controller.hxx
 src/theme.cxx
 src/theme.hxx
 src/server.cxx
@@ -387,8 +378,6 @@ src/story.cxx
 src/story.hxx
 src/pingu_map.cxx
 src/pingu_map.hxx
-src/controller.cxx
-src/controller.hxx
 src/anim_counter.cxx
 src/anim_counter.hxx
 src/exit_data.cxx
@@ -410,8 +399,6 @@ src/bmp_map.hxx
 src/game_event.hxx
 src/result.cxx
 src/result.hxx
-src/keyboard_controller.cxx
-src/keyboard_controller.hxx
 src/plf.cxx
 src/plf.hxx
 src/trap_data.cxx

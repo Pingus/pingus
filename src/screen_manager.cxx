@@ -1,4 +1,4 @@
-//  $Id: screen_manager.cxx,v 1.8 2002/08/04 19:57:15 grumbel Exp $
+//  $Id: screen_manager.cxx,v 1.9 2002/08/13 18:44:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,6 +25,7 @@
 #include "display.hxx"
 #include "pingus_menu_manager.hxx"
 #include "screen_manager.hxx"
+#include "path_manager.hxx"
 
 ScreenManager* ScreenManager::instance_ = 0;
 
@@ -46,7 +47,7 @@ ScreenManager::~ScreenManager ()
 void
 ScreenManager::display ()
 {
-  Input::Controller input_controller("../doc/mycontroller.xml");
+  Input::Controller input_controller(path_manager.complete ("controller/default.xml"));
   DeltaManager delta_manager;
 
   // Main loop for the menu

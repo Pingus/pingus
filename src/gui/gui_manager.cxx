@@ -1,4 +1,4 @@
-//  $Id: gui_manager.cxx,v 1.8 2002/08/04 15:42:23 grumbel Exp $
+//  $Id: gui_manager.cxx,v 1.9 2002/08/13 18:44:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -158,7 +158,7 @@ GUIManager::process_input (const std::list<Input::Event*>& events)
 		    secondary_pressed_component = comp;
 		    comp->on_secondary_button_press (x_pos, y_pos);
 		  }
-		else if (event->name == secondary && event->state == Input::released) 
+		else if (event->name == secondary && event->state == Input::released)
 		  {
 		    /** Send the release event to the same component
 			which got the press event */
@@ -184,7 +184,7 @@ GUIManager::process_input (const std::list<Input::Event*>& events)
 			   FIXME: on_secondary_button_press() method to another
 			   FIXME: manager, not sure if there is or
 			   FIXME: should be a workaround */
-			//std::cout << "GUIManager: Got a release without a press, possibly a bug" << std::endl;
+			std::cout << "GUIManager: Got a release without a press, possibly a bug" << std::endl;
 		      }
 		  }
 
@@ -202,6 +202,7 @@ GUIManager::process_input (const std::list<Input::Event*>& events)
 	      }
 	    break;
 	  }
+	  
 	default:
 	  std::cout << "GUIManager: unhandled event type " << (*i)->get_type() << std::endl;
 	  break;

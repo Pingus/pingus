@@ -30,5 +30,13 @@
     <escape-button>
       <key-button key="ESCAPE"/>
     </escape-button>
+
+    <action-axis>
+      <button-axis angle="0">
+	<key-button key="1" />
+	<key-button key="2" />
+      </button-axis>
+    </action-axis>
+
   </controller-config>
 </pingus-controller>
