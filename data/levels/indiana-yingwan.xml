@@ -1,0 +1,746 @@
+<?xml version="1.0"  encoding="ISO-8859-1"?>
+
+<pingus-level>
+  <global>
+    <levelname lang="en">Pingus Jones and (not really ;) the Last Exit</levelname>
+    <description lang="en">Dr. Jones' notebook: (1) the breath of God: only the penitent pingus will pass; (2) the word of God... in reverse; (3) the path of God: leap from the head of something like a cat.</description>
+    <author>Ying-Wan Lam &lt;yingwan.lam@yale.edu&gt;</author>
+    <number-of-pingus>50</number-of-pingus>
+    <number-to-save>40</number-to-save>
+    <time>9000</time>
+    <width>1200</width>
+    <height>600</height>
+  </global>
+
+<background type="surface">
+  <surface><resource type="datafile">
+    <resource-datafile>textures</resource-datafile>
+  <resource-ident>Textures/desert_room</resource-ident>
+  </resource></surface>
+  <color>
+    <red>0</red>
+    <green>0</green>
+    <blue>0</blue>
+    <alpha>0</alpha>
+  </color>
+  <scroll-x>0</scroll-x>
+  <scroll-y>0</scroll-y>
+  <para-x>0.5</para-x>
+  <para-y>0.5</para-y>
+  <stretch-x>0</stretch-x>
+  <stretch-y>0</stretch-y>
+</background>
+
+  <action-list>
+    <basher count="5"/>
+    <blocker count="10"/>
+    <bomber count="10"/>
+    <bridger count="15"/>
+    <digger count="5"/>
+    <jumper count="50"/>
+    <miner count="5"/>
+  </action-list>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Ywlam/bigdimwall</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>906</x-pos>
+    <y-pos>155</y-pos>
+    <z-pos>-10</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1</parallax>
+</hotspot>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Ywlam/bigdimwall</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>907</x-pos>
+    <y-pos>304</y-pos>
+    <z-pos>-10</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1</parallax>
+</hotspot>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Ywlam/bigdimwall</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>906</x-pos>
+    <y-pos>453</y-pos>
+    <z-pos>-10</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1</parallax>
+</hotspot>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Ywlam/smallsphinx</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>836</x-pos>
+    <y-pos>26</y-pos>
+    <z-pos>-5</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1</parallax>
+</hotspot>
+
+<liquid>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Liquid/lava</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>-10</x-pos>
+    <y-pos>535</y-pos>
+    <z-pos>-5</z-pos>
+  </position>
+  <width>900</width>
+  <speed>50</speed>
+</liquid>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Ywlam/smalldimwall</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1074</x-pos>
+    <y-pos>435</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Ywlam/smalldimwall</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1150</x-pos>
+    <y-pos>435</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Ywlam/smalldimwall</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1132</x-pos>
+    <y-pos>304</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Ywlam/mediumsand</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>507</x-pos>
+    <y-pos>373</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Ywlam/mediumsand</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>358</x-pos>
+    <y-pos>373</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Ywlam/mediumsand</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>-49</x-pos>
+    <y-pos>298</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Ywlam/mediumsand</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>-85</x-pos>
+    <y-pos>373</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Ywlam/mediumsand</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>62</x-pos>
+    <y-pos>373</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Ywlam/mediumsand</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>210</x-pos>
+    <y-pos>373</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Ywlam/smallsand</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1125</x-pos>
+    <y-pos>565</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Ywlam/smallsand</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>101</x-pos>
+    <y-pos>336</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Hotspots/plate2</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>848</x-pos>
+    <y-pos>283</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Hotspots/plate2</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>848</x-pos>
+    <y-pos>347</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Hotspots/plate2</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>848</x-pos>
+    <y-pos>475</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Hotspots/plate2</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>848</x-pos>
+    <y-pos>411</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Hotspots/plate2</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>848</x-pos>
+    <y-pos>219</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Hotspots/plate2</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>848</x-pos>
+    <y-pos>155</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Hotspots/plate2</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1194</x-pos>
+    <y-pos>539</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Hotspots/plate2</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1194</x-pos>
+    <y-pos>475</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Hotspots/plate2</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1194</x-pos>
+    <y-pos>411</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Hotspots/plate2</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1194</x-pos>
+    <y-pos>347</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Hotspots/plate2</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1194</x-pos>
+    <y-pos>283</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Hotspots/plate2</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1194</x-pos>
+    <y-pos>219</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Hotspots/plate2</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1194</x-pos>
+    <y-pos>155</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Ywlam/smallsand</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>903</x-pos>
+    <y-pos>566</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Hotspots/plate2</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>848</x-pos>
+    <y-pos>539</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Ywlam/smallsand</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1051</x-pos>
+    <y-pos>566</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Ywlam/smallsand</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>977</x-pos>
+    <y-pos>566</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Ywlam/leftsmallsand</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>101</x-pos>
+    <y-pos>299</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Ywlam/leftsmallsand</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>176</x-pos>
+    <y-pos>336</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Misc/smallbrickpiece</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>240</x-pos>
+    <y-pos>231</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Misc/smallbrickpiece</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>316</x-pos>
+    <y-pos>193</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Misc/smallbrickpiece</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>835</x-pos>
+    <y-pos>71</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Misc/smallbrickpiece</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>772</x-pos>
+    <y-pos>155</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Misc/smallbrickpiece</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>620</x-pos>
+    <y-pos>155</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Misc/smallbrickpiece</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>469</x-pos>
+    <y-pos>155</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Misc/smallbrickpiece</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>393</x-pos>
+    <y-pos>155</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Ywlam/rightsmallbrick</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>164</x-pos>
+    <y-pos>231</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Ywlam/rightsmallbrick</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>240</x-pos>
+    <y-pos>193</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Ywlam/rightsmallbrick</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>317</x-pos>
+    <y-pos>155</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Ywlam/smallsand</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>-8</x-pos>
+    <y-pos>261</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<entrance>
+  <position>
+    <x-pos>595</x-pos>
+    <y-pos>306</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+  <type>generic</type>
+  <direction>right</direction>
+  <release-rate>50</release-rate>
+  <owner-id>0</owner-id>
+</entrance>
+
+<exit use-old-pos-handling="0">
+  <position>
+    <x-pos>987</x-pos>
+    <y-pos>566</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Exits/desert</resource-ident>
+  </resource></surface>
+  <owner-id>0</owner-id></exit>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Misc/smallbrickpiece</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>544</x-pos>
+    <y-pos>155</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1</parallax>
+</hotspot>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Misc/smallbrickpiece</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>696</x-pos>
+    <y-pos>155</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1</parallax>
+</hotspot>
+
+<trap>
+  <type>hammer</type>
+  <position>
+    <x-pos>392</x-pos>
+    <y-pos>195</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</trap>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Ywlam/smallD</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>567</x-pos>
+    <y-pos>156</y-pos>
+    <z-pos>5</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1</parallax>
+</hotspot>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Ywlam/smallE</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>718</x-pos>
+    <y-pos>157</y-pos>
+    <z-pos>5</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1</parallax>
+</hotspot>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Ywlam/smallD</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>416</x-pos>
+    <y-pos>155</y-pos>
+    <z-pos>5</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1</parallax>
+</hotspot>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Ywlam/smallO</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>490</x-pos>
+    <y-pos>157</y-pos>
+    <z-pos>5</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1</parallax>
+</hotspot>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Ywlam/smallG</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>638</x-pos>
+    <y-pos>157</y-pos>
+    <z-pos>5</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1</parallax>
+</hotspot>
+
+  <start-position>
+  <position>
+    <x-pos>595</x-pos>
+    <y-pos>320</y-pos>
+    <z-pos>1000</z-pos>
+  </position>
+  </start-position>
+
+</pingus-level>
+
