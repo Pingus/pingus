@@ -28,5 +28,6 @@ libpingus_input_a_SOURCES =       \
         key_button.hxx key_button.cxx \
 	mouse_button.hxx mouse_button.cxx \
         mouse_pointer.hxx mouse_pointer.cxx \
+	multiple_pointer.hxx multiple_pointer.cxx \
         pointer.hxx 
 # EOF #
