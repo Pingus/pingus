@@ -13,6 +13,7 @@
     <difficulty>0</difficulty>
     <playable>1</playable>
     <comment>first level for the story mode, tutorial island</comment>
+    <music>none</music>
   </global>
 
   <action-list>
@@ -22,24 +23,25 @@
 <background type="surface">
   <surface><resource type="datafile">
     <resource-datafile>textures</resource-datafile>
-  <resource-ident>textures/clouds</resource-ident>
+  <resource-ident>textures/clouds2</resource-ident>
     <modifier>ROT0</modifier>
   </resource></surface>
   <color>
-    <red>0</red>
+    <red>0.1</red>
     <green>0</green>
     <blue>0</blue>
-    <alpha>0</alpha>
+    <alpha>0.3</alpha>
   </color>
-  <scroll-x>3</scroll-x>
+  <scroll-x>-1</scroll-x>
   <scroll-y>0</scroll-y>
   <para-x>0.5</para-x>
   <para-y>0.5</para-y>
   <stretch-x>0</stretch-x>
-  <stretch-y>1</stretch-y>
+  <stretch-y>0</stretch-y>
+  <keep-aspect>0</keep-aspect>
   <position>
-    <x-pos>-103</x-pos>
-    <y-pos>-143.12</y-pos>
+    <x-pos>0</x-pos>
+    <y-pos>0</y-pos>
     <z-pos>-150</z-pos>
   </position>
 </background>
@@ -47,7 +49,7 @@
 <liquid use-old-width-handling="0">
   <surface><resource type="datafile">
     <resource-datafile>liquids</resource-datafile>
-  <resource-ident>Liquid/slime</resource-ident>
+  <resource-ident>Liquid/water2</resource-ident>
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
@@ -56,7 +58,7 @@
     <z-pos>-100</z-pos>
   </position>
   <width>23</width>
-  <speed>0</speed>
+  <speed>50</speed>
 </liquid>
 
 <hotspot>
@@ -89,6 +91,21 @@
   <parallax>1</parallax>
 </hotspot>
 
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>entrances</resource-datafile>
+  <resource-ident>entrances/snow_back</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>469.411</x-pos>
+    <y-pos>170.769</y-pos>
+    <z-pos>-50</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1</parallax>
+</hotspot>
+
 <worldobj type="groundpiece">
   <type>ground</type>
   <surface><resource type="datafile">
@@ -97,8 +114,8 @@
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>305.84</x-pos>
-    <y-pos>351.48</y-pos>
+    <x-pos>305</x-pos>
+    <y-pos>351</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -111,8 +128,8 @@
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>267.84</x-pos>
-    <y-pos>379.48</y-pos>
+    <x-pos>267</x-pos>
+    <y-pos>379</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -125,8 +142,8 @@
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>653.84</x-pos>
-    <y-pos>344.48</y-pos>
+    <x-pos>653</x-pos>
+    <y-pos>344</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -139,8 +156,8 @@
     <modifier>ROT90</modifier>
   </resource></surface>
   <position>
-    <x-pos>373.84</x-pos>
-    <y-pos>362.48</y-pos>
+    <x-pos>373</x-pos>
+    <y-pos>362</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -153,8 +170,8 @@
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>332.48</x-pos>
-    <y-pos>260.52</y-pos>
+    <x-pos>332</x-pos>
+    <y-pos>260</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -167,8 +184,8 @@
     <modifier>ROT90FLIP</modifier>
   </resource></surface>
   <position>
-    <x-pos>288.84</x-pos>
-    <y-pos>317.48</y-pos>
+    <x-pos>288</x-pos>
+    <y-pos>317</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -181,8 +198,8 @@
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>298.48</x-pos>
-    <y-pos>297.52</y-pos>
+    <x-pos>298</x-pos>
+    <y-pos>297</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -195,8 +212,8 @@
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>366.48</x-pos>
-    <y-pos>305.52</y-pos>
+    <x-pos>366</x-pos>
+    <y-pos>305</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -209,8 +226,8 @@
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>880.48</x-pos>
-    <y-pos>260.52</y-pos>
+    <x-pos>880</x-pos>
+    <y-pos>260</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -223,8 +240,8 @@
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>318.84</x-pos>
-    <y-pos>535.48</y-pos>
+    <x-pos>318</x-pos>
+    <y-pos>535</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -237,8 +254,8 @@
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>500.84</x-pos>
-    <y-pos>534.48</y-pos>
+    <x-pos>500</x-pos>
+    <y-pos>534</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -251,8 +268,8 @@
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>217.84</x-pos>
-    <y-pos>483.48</y-pos>
+    <x-pos>217</x-pos>
+    <y-pos>483</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -265,8 +282,8 @@
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>657.84</x-pos>
-    <y-pos>535.48</y-pos>
+    <x-pos>657</x-pos>
+    <y-pos>535</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -279,8 +296,8 @@
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>844.84</x-pos>
-    <y-pos>484.48</y-pos>
+    <x-pos>844</x-pos>
+    <y-pos>484</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -293,8 +310,8 @@
     <modifier>ROT180</modifier>
   </resource></surface>
   <position>
-    <x-pos>498.84</x-pos>
-    <y-pos>344.48</y-pos>
+    <x-pos>498</x-pos>
+    <y-pos>344</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -307,8 +324,8 @@
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>914.48</x-pos>
-    <y-pos>305.52</y-pos>
+    <x-pos>914</x-pos>
+    <y-pos>305</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -321,8 +338,8 @@
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>846.48</x-pos>
-    <y-pos>297.52</y-pos>
+    <x-pos>846</x-pos>
+    <y-pos>297</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -335,8 +352,8 @@
     <modifier>ROT0FLIP</modifier>
   </resource></surface>
   <position>
-    <x-pos>286.84</x-pos>
-    <y-pos>482.48</y-pos>
+    <x-pos>286</x-pos>
+    <y-pos>482</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -349,8 +366,8 @@
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>779.84</x-pos>
-    <y-pos>343.48</y-pos>
+    <x-pos>779</x-pos>
+    <y-pos>343</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -363,8 +380,8 @@
     <modifier>ROT0FLIP</modifier>
   </resource></surface>
   <position>
-    <x-pos>883.84</x-pos>
-    <y-pos>362.48</y-pos>
+    <x-pos>883</x-pos>
+    <y-pos>362</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -377,8 +394,8 @@
     <modifier>ROT90FLIP</modifier>
   </resource></surface>
   <position>
-    <x-pos>872.84</x-pos>
-    <y-pos>342.48</y-pos>
+    <x-pos>872</x-pos>
+    <y-pos>342</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -391,8 +408,8 @@
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>337.84</x-pos>
-    <y-pos>340.48</y-pos>
+    <x-pos>337</x-pos>
+    <y-pos>340</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -405,8 +422,8 @@
     <modifier>ROT0FLIP</modifier>
   </resource></surface>
   <position>
-    <x-pos>896.84</x-pos>
-    <y-pos>437.48</y-pos>
+    <x-pos>896</x-pos>
+    <y-pos>437</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -419,8 +436,8 @@
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>441.84</x-pos>
-    <y-pos>533.48</y-pos>
+    <x-pos>441</x-pos>
+    <y-pos>533</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -433,8 +450,8 @@
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>548.84</x-pos>
-    <y-pos>533.48</y-pos>
+    <x-pos>548</x-pos>
+    <y-pos>533</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -447,8 +464,8 @@
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>713.84</x-pos>
-    <y-pos>533.48</y-pos>
+    <x-pos>713</x-pos>
+    <y-pos>533</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -461,8 +478,8 @@
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>305.84</x-pos>
-    <y-pos>339.48</y-pos>
+    <x-pos>305</x-pos>
+    <y-pos>339</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -475,8 +492,8 @@
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>405.84</x-pos>
-    <y-pos>344.48</y-pos>
+    <x-pos>405</x-pos>
+    <y-pos>344</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -489,8 +506,8 @@
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>570.84</x-pos>
-    <y-pos>344.48</y-pos>
+    <x-pos>570</x-pos>
+    <y-pos>344</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -503,8 +520,8 @@
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>730.84</x-pos>
-    <y-pos>342.48</y-pos>
+    <x-pos>730</x-pos>
+    <y-pos>342</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -517,8 +534,8 @@
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>893.48</x-pos>
-    <y-pos>347.52</y-pos>
+    <x-pos>893</x-pos>
+    <y-pos>347</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -531,8 +548,8 @@
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>952.48</x-pos>
-    <y-pos>357.52</y-pos>
+    <x-pos>952</x-pos>
+    <y-pos>357</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -545,8 +562,8 @@
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>311.48</x-pos>
-    <y-pos>348.52</y-pos>
+    <x-pos>311</x-pos>
+    <y-pos>348</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -559,8 +576,8 @@
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>842.48</x-pos>
-    <y-pos>347.52</y-pos>
+    <x-pos>842</x-pos>
+    <y-pos>347</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -573,8 +590,8 @@
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>447.48</x-pos>
-    <y-pos>348.52</y-pos>
+    <x-pos>447</x-pos>
+    <y-pos>348</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -587,8 +604,8 @@
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>244.84</x-pos>
-    <y-pos>429.48</y-pos>
+    <x-pos>244</x-pos>
+    <y-pos>429</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -601,8 +618,8 @@
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>178.84</x-pos>
-    <y-pos>537.48</y-pos>
+    <x-pos>178</x-pos>
+    <y-pos>537</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -615,8 +632,8 @@
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>446.48</x-pos>
-    <y-pos>540.52</y-pos>
+    <x-pos>446</x-pos>
+    <y-pos>540</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -629,8 +646,8 @@
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>593.48</x-pos>
-    <y-pos>539.52</y-pos>
+    <x-pos>593</x-pos>
+    <y-pos>539</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -643,8 +660,8 @@
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>796.48</x-pos>
-    <y-pos>538.52</y-pos>
+    <x-pos>796</x-pos>
+    <y-pos>538</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -657,8 +674,8 @@
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>578.48</x-pos>
-    <y-pos>350.52</y-pos>
+    <x-pos>578</x-pos>
+    <y-pos>350</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -671,8 +688,8 @@
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>737.48</x-pos>
-    <y-pos>348.52</y-pos>
+    <x-pos>737</x-pos>
+    <y-pos>348</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -698,8 +715,8 @@
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>392.84</x-pos>
-    <y-pos>579.48</y-pos>
+    <x-pos>392</x-pos>
+    <y-pos>579</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -712,8 +729,8 @@
     <modifier>ROT0FLIP</modifier>
   </resource></surface>
   <position>
-    <x-pos>350.84</x-pos>
-    <y-pos>578.48</y-pos>
+    <x-pos>350</x-pos>
+    <y-pos>578</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -726,8 +743,8 @@
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>733.84</x-pos>
-    <y-pos>571.48</y-pos>
+    <x-pos>733</x-pos>
+    <y-pos>571</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -740,16 +757,16 @@
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>492.84</x-pos>
-    <y-pos>560.48</y-pos>
+    <x-pos>492</x-pos>
+    <y-pos>560</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
 
 <entrance>
   <position>
-    <x-pos>495.28</x-pos>
-    <y-pos>261.92</y-pos>
+    <x-pos>516.494</x-pos>
+    <y-pos>210.525</y-pos>
     <z-pos>0</z-pos>
   </position>
   <type>generic</type>
@@ -766,8 +783,8 @@
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>110.84</x-pos>
-    <y-pos>599.48</y-pos>
+    <x-pos>110</x-pos>
+    <y-pos>599</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -780,8 +797,8 @@
     <modifier>ROT0FLIP</modifier>
   </resource></surface>
   <position>
-    <x-pos>1056.84</x-pos>
-    <y-pos>590.48</y-pos>
+    <x-pos>1056</x-pos>
+    <y-pos>590</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -794,8 +811,8 @@
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>493.84</x-pos>
-    <y-pos>614.48</y-pos>
+    <x-pos>493</x-pos>
+    <y-pos>614</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -808,8 +825,8 @@
     <modifier>ROT0FLIP</modifier>
   </resource></surface>
   <position>
-    <x-pos>851.84</x-pos>
-    <y-pos>623.48</y-pos>
+    <x-pos>851</x-pos>
+    <y-pos>623</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -822,8 +839,8 @@
     <modifier>ROT0FLIP</modifier>
   </resource></surface>
   <position>
-    <x-pos>866.84</x-pos>
-    <y-pos>563.48</y-pos>
+    <x-pos>866</x-pos>
+    <y-pos>563</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -836,8 +853,8 @@
     <modifier>ROT0FLIP</modifier>
   </resource></surface>
   <position>
-    <x-pos>923.84</x-pos>
-    <y-pos>492.48</y-pos>
+    <x-pos>923</x-pos>
+    <y-pos>492</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -850,8 +867,8 @@
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>251.84</x-pos>
-    <y-pos>584.48</y-pos>
+    <x-pos>251</x-pos>
+    <y-pos>584</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -859,7 +876,7 @@
 <liquid use-old-width-handling="0">
   <surface><resource type="datafile">
     <resource-datafile>liquids</resource-datafile>
-  <resource-ident>Liquid/slime</resource-ident>
+  <resource-ident>Liquid/water2</resource-ident>
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
@@ -868,8 +885,23 @@
     <z-pos>50</z-pos>
   </position>
   <width>23</width>
-  <speed>0</speed>
+  <speed>50</speed>
 </liquid>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>entrances</resource-datafile>
+  <resource-ident>entrances/snow_front</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>469.6</x-pos>
+    <y-pos>170.896</y-pos>
+    <z-pos>100</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1</parallax>
+</hotspot>
 
   <start-position>
   <position>

@@ -12,26 +12,13 @@
     <difficulty>40</difficulty>
     <playable>0</playable>
     <comment></comment>
+    <music>none</music>
   </global>
 
   <action-list>
     <digger count="20"/>
     <floater count="20"/>
   </action-list>
-
-<worldobj type="groundpiece">
-  <type>ground</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>snow/snowman</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>94</x-pos>
-    <y-pos>728</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
 
 <background type="surface">
   <surface><resource type="datafile">
@@ -51,6 +38,7 @@
   <para-y>0.5</para-y>
   <stretch-x>0</stretch-x>
   <stretch-y>0</stretch-y>
+  <keep-aspect>0</keep-aspect>
   <position>
     <x-pos>0</x-pos>
     <y-pos>0</y-pos>
@@ -65,8 +53,8 @@
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>339</x-pos>
-    <y-pos>270</y-pos>
+    <x-pos>480</x-pos>
+    <y-pos>271</y-pos>
     <z-pos>-50</z-pos>
   </position>
   <speed>-1</speed>
@@ -87,6 +75,35 @@
   <speed>-1</speed>
   <parallax>1</parallax>
 </hotspot>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>entrances</resource-datafile>
+  <resource-ident>entrances/snow_back</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>263.84</x-pos>
+    <y-pos>159.683</y-pos>
+    <z-pos>-50</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1</parallax>
+</hotspot>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>snow/snowman</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>94</x-pos>
+    <y-pos>728</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
 
 <worldobj type="groundpiece">
   <type>ground</type>
@@ -222,8 +239,8 @@
     <modifier>ROT90FLIP</modifier>
   </resource></surface>
   <position>
-    <x-pos>1112.2</x-pos>
-    <y-pos>569.44</y-pos>
+    <x-pos>1112</x-pos>
+    <y-pos>569</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -851,8 +868,8 @@
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>286.045</x-pos>
-    <y-pos>792.77</y-pos>
+    <x-pos>286</x-pos>
+    <y-pos>792</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -1055,13 +1072,13 @@
 
 <entrance>
   <position>
-    <x-pos>441</x-pos>
-    <y-pos>195</y-pos>
+    <x-pos>309.683</x-pos>
+    <y-pos>200.265</y-pos>
     <z-pos>0</z-pos>
   </position>
   <type>generic</type>
   <direction>misc</direction>
-  <release-rate>50</release-rate>
+  <release-rate>150</release-rate>
   <owner-id>0</owner-id>
 </entrance>
 
@@ -1381,8 +1398,8 @@
     <modifier>ROT90FLIP</modifier>
   </resource></surface>
   <position>
-    <x-pos>1136.2</x-pos>
-    <y-pos>257.44</y-pos>
+    <x-pos>1136</x-pos>
+    <y-pos>257</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -1395,8 +1412,8 @@
     <modifier>ROT270</modifier>
   </resource></surface>
   <position>
-    <x-pos>1138.2</x-pos>
-    <y-pos>16.44</y-pos>
+    <x-pos>1138</x-pos>
+    <y-pos>16</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -1409,8 +1426,8 @@
     <modifier>ROT90FLIP</modifier>
   </resource></surface>
   <position>
-    <x-pos>1156.2</x-pos>
-    <y-pos>560.44</y-pos>
+    <x-pos>1156</x-pos>
+    <y-pos>560</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -1498,6 +1515,21 @@
     <z-pos>0</z-pos>
   </position>
 </worldobj>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>entrances</resource-datafile>
+  <resource-ident>entrances/snow_front</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>263.539</x-pos>
+    <y-pos>159.613</y-pos>
+    <z-pos>100</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1</parallax>
+</hotspot>
 
   <start-position>
   <position>
