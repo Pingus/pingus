@@ -1,4 +1,4 @@
-//  $Id: screen.hxx,v 1.2 2002/06/24 22:52:56 grumbel Exp $
+//  $Id: screen.hxx,v 1.3 2002/07/02 16:06:51 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,8 @@
 
 #ifndef HEADER_PINGUS_SCREEN_HXX
 #define HEADER_PINGUS_SCREEN_HXX
+
+#error "Don't used this the moment, its underdevelopment and not compilable"
 
 #include "game_delta.hxx"
 

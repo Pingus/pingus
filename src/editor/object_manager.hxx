@@ -1,4 +1,4 @@
-//  $Id: object_manager.hxx,v 1.13 2002/07/02 13:36:07 torangan Exp $
+//  $Id: object_manager.hxx,v 1.14 2002/07/02 16:06:51 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -82,8 +82,45 @@ public:
 
   std::vector<EditorObj*> rect_get_objs(int x1, int y1, int x2, int y2);
 
+  /** FIXME: translation must be handled otherwise */
+  std::string get_levelname () { return levelname["en"]; }
+  std::string get_description () { return description["en"]; }
+
+  // Get and Setter functions
   int get_width() { return width; }
   int get_height() { return height; }
+
+  void set_width(int arg_width);
+  void set_height(int arg_height);
+
+  int get_number_to_save () { return number_to_save; }
+  void set_number_to_save (int num) { number_to_save = num; }
+
+  int get_number_of_pingus () { return number_of_pingus; }
+  void set_number_of_pingus (int num) { number_of_pingus = num; }
+    
+  void set_leveltime (int num) { level_time = num; }
+  int get_leveltime () { return level_time; }
+
+  int get_difficulty () { return difficulty; }
+  void set_difficulty (int num) { difficulty = num; }
+
+  void set_playable (bool a) { playable = a; }
+  bool get_playable () { return playable; }
+
+  std::string get_author () { return author; }
+  void set_author (std::string a) { author = a; }
+
+  /** Return the currently selected object, if none is selected or
+      multiple objects are selected return 0 */
+  //boost::shared_ptr<EditorObj> get_current_obj();
+  
+  //void move_current_objs(float x, float y);
+  //void drag_current_objs ();
+  //void drop_current_objs ();
+
+  //void add_to_selection(boost::shared_ptr<EditorObj> obj);
+  //void add_to_selection(std::vector<boost::shared_ptr<EditorObj> > objs);
 
   bool raise_obj(EditorObj* obj);
   bool lower_obj(EditorObj* obj);

@@ -1,4 +1,4 @@
-//  $Id: input_event.hxx,v 1.3 2002/07/02 15:46:58 torangan Exp $
+//  $Id: input_event.hxx,v 1.4 2002/07/02 16:06:51 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,8 @@
 
 #ifndef HEADER_PINGUS_INPUT_EVENT_HXX
 #define HEADER_PINGUS_INPUT_EVENT_HXX
+
+#error "Don't used this the moment, its underdevelopment and not compilable"
 
 #include <ClanLib/Core/Math/cl_vector.h>
 

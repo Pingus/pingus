@@ -1,4 +1,4 @@
-//  $Id: object_manager.cxx,v 1.21 2002/07/02 13:36:06 torangan Exp $
+//  $Id: object_manager.cxx,v 1.22 2002/07/02 16:06:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -357,6 +357,18 @@ std::vector<ActionData>*
 ObjectManager::get_actions ()
 {
   return &actions;
+}
+
+void
+ObjectManager::set_width(int arg_width)
+{
+  width = arg_width;
+}
+
+void
+ObjectManager::set_height(int arg_height)
+{
+  height = arg_height;
 }
 
 /* EOF */

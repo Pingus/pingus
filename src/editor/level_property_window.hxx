@@ -1,4 +1,4 @@
-//  $Id: level_property_window.hxx,v 1.3 2002/07/01 16:31:40 grumbel Exp $
+//  $Id: level_property_window.hxx,v 1.4 2002/07/02 16:06:51 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,11 +31,13 @@ namespace Pingus
     class LevelPropertyWindow : public CL_Window
     {
     private:
+      ObjectManager* manager;
+
       CL_Label    levelname_label;
       CL_InputBox levelname_input;
 
       CL_Label    descritpion_label;
-      //CL_InputBox description_input;
+      CL_InputBox description_input;
 
       CL_Label    author_label;
       CL_InputBox author_input;

@@ -1,4 +1,4 @@
-//  $Id: editor_event.cxx,v 1.23 2002/07/02 13:36:06 torangan Exp $
+//  $Id: editor_event.cxx,v 1.24 2002/07/02 16:06:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -389,8 +389,8 @@ EditorEvent::editor_convert_group_to_selection()
       if (group)
 	{      
 	  std::vector<EditorObj*>* objs = group->get_objs();
-	  object_manager->erase (*objs);
 	  selection->clear();
+
 	  for(std::vector<EditorObj*>::iterator i = objs->begin();
 	      i != objs->end();
 	      i++)
