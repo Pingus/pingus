@@ -1,4 +1,4 @@
-//  $Id: xml_helper.cxx,v 1.18 2002/09/28 11:52:22 torangan Exp $
+//  $Id: xml_helper.cxx,v 1.19 2002/09/28 19:31:06 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -45,10 +45,55 @@ XMLhelper::equal_str (const xmlChar* comp, const char* orig)
   return ! strcmp(reinterpret_cast<const char*>(comp), orig);
 }
 
-char*
-XMLhelper::get_prop (xmlNodePtr cur, const char* name)
+bool
+XMLhelper::get_prop (xmlNodePtr cur, const char* name, std::string& value)
 {
-  return reinterpret_cast<char*>(xmlGetProp(cur, reinterpret_cast<const xmlChar*>(name)));
+  char* retval = reinterpret_cast<char*>(xmlGetProp(cur, reinterpret_cast<const xmlChar*>(name)));
+  
+  if (!retval)
+    return false;
+    
+  value = retval;
+  xmlFree(retval);
+  return true;
+}
+
+bool
+XMLhelper::get_prop (xmlNodePtr cur, const char* name, float& value)
+{
+  char* retval = reinterpret_cast<char*>(xmlGetProp(cur, reinterpret_cast<const xmlChar*>(name)));
+  
+  if (!retval)
+    return false;
+    
+  value = strtod(retval, reinterpret_cast<char**>(NULL));
+  xmlFree(retval);
+  return true;
+}
+
+bool
+XMLhelper::get_prop (xmlNodePtr cur, const char* name, int& value)
+{
+  char* retval = reinterpret_cast<char*>(xmlGetProp(cur, reinterpret_cast<const xmlChar*>(name)));
+  if (!retval)
+    return false;
+    
+  value = strtol(retval, reinterpret_cast<char**>(NULL), 10);
+  xmlFree(retval);
+  return true;
+}
+
+bool
+XMLhelper::get_prop (xmlNodePtr cur, const char* name, bool& value)
+{
+  char* retval = reinterpret_cast<char*>(xmlGetProp(cur, reinterpret_cast<const xmlChar*>(name)));
+  
+  if (!retval)
+    return false;
+    
+  value = strtol(retval, reinterpret_cast<char**>(NULL), 10);
+  xmlFree(retval);
+  return true;
 }
 
 std::string
@@ -190,16 +235,15 @@ XMLhelper::parse_surface(xmlDocPtr doc, xmlNodePtr cur)
 	  continue;
 	}
       
-      char* type = get_prop(cur, "type");
-      
-      if (type)
+      std::string type;
+      if (get_prop(cur, "type", type))
 	{
-	  if (strcmp(type, "file") == 0)
+	  if (type == "file")
 	    {
 	      desc.type = ResDescriptor::RD_FILE;	 
 	      xmlNodePtr ccur = cur->children;
 	      desc.type = ResDescriptor::RD_RESOURCE;
-	      while (ccur != NULL)
+	      while (ccur)
 		{
 		  if (xmlIsBlankNode(cur)) 
 		    {
@@ -236,11 +280,11 @@ XMLhelper::parse_surface(xmlDocPtr doc, xmlNodePtr cur)
 		  ccur = ccur->next;
 		}
 	    }
-	  else if (strcmp(type, "datafile") == 0)
+	  else if (type == "datafile")
 	    {
 	      xmlNodePtr ccur = cur->children;
 	      desc.type = ResDescriptor::RD_RESOURCE;
-	      while (ccur != NULL)
+	      while (ccur)
 		{
 		  if (xmlIsBlankNode(ccur)) 
 		    {
@@ -293,7 +337,6 @@ XMLhelper::parse_surface(xmlDocPtr doc, xmlNodePtr cur)
 	    {
 	      std::cout << "XMLhelper: Unhandled resource type: " << type << std::endl;	  
 	    }
-	  xmlFree(type);
 	}
       cur = cur->next;
     }

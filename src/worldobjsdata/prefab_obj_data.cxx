@@ -1,4 +1,4 @@
-//  $Id: prefab_obj_data.cxx,v 1.4 2002/09/28 11:52:27 torangan Exp $
+//  $Id: prefab_obj_data.cxx,v 1.5 2002/09/28 19:31:06 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,16 +26,12 @@ namespace WorldObjsData {
 
 PrefabObjData::PrefabObjData (xmlDocPtr doc, xmlNodePtr cur)
 {
-  char* uid_cstr = XMLhelper::get_prop(cur, "type");
-  if (uid_cstr)
-    uid = uid_cstr;
-  else
+  if (!XMLhelper::get_prop(cur, "type", uid))
     {
       std::cout << "PrefabObjData: missing type! Default to test" << std::endl;
       uid = "test";
     }
-  xmlFree (uid_cstr);
-
+    
   cur = cur->children;
 
   while (cur)

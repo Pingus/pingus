@@ -1,4 +1,4 @@
-//  $Id: scroller_factory.cxx,v 1.9 2002/09/10 21:03:32 torangan Exp $
+//  $Id: scroller_factory.cxx,v 1.10 2002/09/28 19:31:06 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -72,12 +72,9 @@ ScrollerFactory::create(xmlNodePtr cur)
 Scroller*
 ScrollerFactory::axis_scroller (xmlNodePtr cur)
 {
-  char * speed_str = XMLhelper::get_prop(cur, "speed");
-  if (!speed_str)
+  float speed;
+  if (!XMLhelper::get_prop(cur, "speed", speed))
     PingusError::raise("AxisScroller without speed parameter");
-  
-  float speed = strtod(speed_str, reinterpret_cast<char**>(NULL));
-  xmlFree(speed_str);
 
   std::vector<Axis*> axes;
   cur = cur->children;
@@ -100,20 +97,14 @@ ScrollerFactory::axis_scroller (xmlNodePtr cur)
 Scroller*
 ScrollerFactory::inverted_scroller (xmlNodePtr cur)
 {
-  char * invert_x_str = XMLhelper::get_prop(cur, "invert-x");
-  if (!invert_x_str)
+  bool invert_x;
+  if (!XMLhelper::get_prop(cur, "invert-x", invert_x))
     PingusError::raise("InvertedScroller without invert X parameter");
-  
-  char * invert_y_str = XMLhelper::get_prop(cur, "invert-y");
-  if (!invert_y_str)
+
+  bool invert_y;
+  if (!XMLhelper::get_prop(cur, "invert-y", invert_y))
     PingusError::raise("InvertedScroller without invert Y parameter");
-    
-  bool invert_x = strtol(invert_x_str, reinterpret_cast<char**>(NULL), 10);
-  bool invert_y = strtol(invert_x_str, reinterpret_cast<char**>(NULL), 10);
-  
-  xmlFree(invert_x_str);
-  xmlFree(invert_y_str);
-  
+
   Scroller* scroller;
   cur = XMLhelper::skip_blank(cur->children);
   scroller = create(cur);
@@ -124,19 +115,13 @@ ScrollerFactory::inverted_scroller (xmlNodePtr cur)
 Scroller*
 ScrollerFactory::joystick_scroller (xmlNodePtr cur)
 {
-  char * id_str = XMLhelper::get_prop(cur, "id");
-  if (!id_str)
+  int id;
+  if (!XMLhelper::get_prop(cur, "id", id))
     PingusError::raise("JoystickScroller without id parameter");
-  
-  char * speed_str = XMLhelper::get_prop(cur, "speed");
-  if (!speed_str)
+    
+  float speed;
+  if (!XMLhelper::get_prop(cur, "speed", speed))
     PingusError::raise("JoystickScroller without speed parameter");
-
-  int   id    = strtol(id_str,    reinterpret_cast<char**>(NULL), 10);
-  float speed = strtod(speed_str, reinterpret_cast<char**>(NULL));
-  
-  xmlFree(id_str);
-  xmlFree(speed_str);
   
   return new JoystickScroller(id, speed);
 }
@@ -178,7 +163,6 @@ ScrollerFactory::pointer_scroller (xmlNodePtr cur)
   return new PointerScroller(pointer, button);
 }
 
-}
+} // namespace Input
 
 /* EOF */
-

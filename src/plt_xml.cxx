@@ -1,4 +1,4 @@
-//  $Id: plt_xml.cxx,v 1.8 2002/09/28 11:52:22 torangan Exp $
+//  $Id: plt_xml.cxx,v 1.9 2002/09/28 19:31:06 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -98,35 +98,33 @@ void
 PLTXML::parse_description(xmlNodePtr cur)
 {
   char* desc = (char*)xmlNodeListGetString(doc, cur->children, 1);
-  char* lang = XMLhelper::get_prop(cur, "lang");
-
+  std::string lang;
+  
   if (desc) {
-    if (lang)		    
+    if (XMLhelper::get_prop(cur, "lang", lang))
       description[lang] = desc;
     else
       description[default_language] = desc;
   }
 
   if (desc) xmlFree(desc);	  
-  if (lang) xmlFree(lang);
 }
 
 void 
 PLTXML::parse_world_name (xmlNodePtr cur)
 {
   char* name = (char*)xmlNodeListGetString(doc, cur->children, 1);
-  char* lang = XMLhelper::get_prop(cur, "lang");
+  std::string lang;
 
   if (name) 
     {
-      if (lang)
+      if (XMLhelper::get_prop(cur, "lang", lang))
 	world_name[lang] = name;
       else
 	world_name[default_language] = name;
     }
 
   if (name) xmlFree(name);
-  if (lang) xmlFree(lang);
 }
 
 void

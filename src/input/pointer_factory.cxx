@@ -1,4 +1,4 @@
-//  $Id: pointer_factory.cxx,v 1.8 2002/09/10 21:03:32 torangan Exp $
+//  $Id: pointer_factory.cxx,v 1.9 2002/09/28 19:31:06 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,7 +17,6 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <stdlib.h>
 #include "../xml_helper.hxx"
 #include "../pingus_error.hxx"
 #include "axis_factory.hxx"
@@ -52,12 +51,9 @@ Pointer* PointerFactory::create (xmlNodePtr cur)
 
 Pointer* PointerFactory::axis_pointer (xmlNodePtr cur)
 {
-  char* speed_str = XMLhelper::get_prop(cur, "speed");
-  if (!speed_str)
+  float speed;
+  if (!XMLhelper::get_prop(cur, "speed", speed))
     PingusError::raise("AxisPointer without speed parameter");
-
-  float speed = strtod(speed_str, reinterpret_cast<char**>(NULL));
-  xmlFree(speed_str);
 
   std::vector<Axis*> axes;
   cur = cur->children;

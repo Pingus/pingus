@@ -1,4 +1,4 @@
-//  $Id: node_data.cxx,v 1.7 2002/09/28 11:52:26 torangan Exp $
+//  $Id: node_data.cxx,v 1.8 2002/09/28 19:31:06 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -99,9 +99,9 @@ LevelNodeData::create(xmlDocPtr doc, xmlNodePtr cur)
 	}
       else if (XMLhelper::equal_str(cur->name, "level"))
 	{
-	  char* level = XMLhelper::get_prop(cur, "name");
-	  if (level)
-	    node->levelname = std::string("levels/") + level;
+	  std::string level;
+	  if (XMLhelper::get_prop(cur, "name", level))
+	    node->levelname = "levels/" + level;
 	  else
 	    std::cout << "PingusWorldMapGraph::parse_node: no levelname given" << std::endl;
 	}
@@ -151,12 +151,9 @@ EmptyNodeData::create ()
 NodeData*
 NodeData::create(xmlDocPtr doc, xmlNodePtr cur)
 {
-  NodeData* node = new NodeData ();
+  NodeData* node = new NodeData();
   
-  char* id = XMLhelper::get_prop(cur, "id");
-  if (id)
-    node->id = StringConverter::to_int (id);
-  else
+  if (!XMLhelper::get_prop(cur, "id", node->id))
     std::cout << "PingusWorldMapGraph::parse_node: no node id given" << std::endl;
 
   /* Accesibility should probally be placed on the links?!
@@ -181,9 +178,9 @@ NodeData::create(xmlDocPtr doc, xmlNodePtr cur)
 	}
       else if (XMLhelper::equal_str(cur->name, "link"))
 	{
-	  char* id = XMLhelper::get_prop(cur, "id");
-	  if (id)
-	    node->links.push_back(StringConverter::to_int (id));
+	  int id;
+	  if (XMLhelper::get_prop(cur, "id", id))
+	    node->links.push_back(id);
 	  else
 	    std::cout << "PingusWorldMapGraph::parse_node: no id given" << std::endl;	    
 	}
@@ -221,19 +218,16 @@ TubeNodeData::create(xmlDocPtr doc, xmlNodePtr cur)
 	}
       else if (XMLhelper::equal_str(cur->name, "worldmap"))
 	{
-	  char* link_node = XMLhelper::get_prop(cur, "linknode");
-	  if (link_node)
-	    from_string (link_node, node->link_node);
-	  else
+	  if (!XMLhelper::get_prop(cur, "linknode", node->link_node))
 	    std::cout << "PingusWorldMapGraph::parse_tube: no node 'linknode' given" << std::endl;
 
 	  node->worldmap = XMLhelper::parse_string (doc, cur);
 	}
       else if (XMLhelper::equal_str(cur->name, "link"))
 	{
-	  char* id = XMLhelper::get_prop(cur, "id");
-	  if (id)
-	    node->links.push_back(StringConverter::to_int (id));
+	  int id;
+	  if (XMLhelper::get_prop(cur, "id", id))
+	    node->links.push_back(id);
 	  else
 	    std::cout << "PingusWorldMapGraph::parse_node: no id given" << std::endl;	    
 	}

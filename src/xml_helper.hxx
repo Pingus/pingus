@@ -1,4 +1,4 @@
-//  $Id: xml_helper.hxx,v 1.12 2002/09/28 11:52:22 torangan Exp $
+//  $Id: xml_helper.hxx,v 1.13 2002/09/28 19:31:06 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -71,9 +71,30 @@ public:
       @return true if both strings are equal */
   static bool equal_str (const xmlChar* comp, const char* orig);
   
-  /** @return the value of the attribute with the name \a name, caller
-      must free the returned  value via xmlFree() */
-  static char* get_prop (xmlNodePtr cur, const char* name);
+  /** get the propertie of the given name
+      @param name  the name of the property
+      @param value gets the value if the property exists or remains unchanged
+      @return indicates whether the property existed  */
+  static bool get_prop (xmlNodePtr cur, const char* name, std::string& value);
+
+  /** get the propertie of the given name
+      @param name  the name of the property
+      @param value gets the value if the property exists or remains unchanged
+      @return indicates whether the property existed  */
+  static bool get_prop (xmlNodePtr cur, const char* name, float& value);
+
+  /** get the propertie of the given name
+      @param name  the name of the property
+      @param value gets the value if the property exists or remains unchanged
+      @return indicates whether the property existed  */
+  static bool get_prop (xmlNodePtr cur, const char* name, int& value);
+
+  /** get the propertie of the given name
+      @param name  the name of the property
+      @param value gets the value if the property exists or remains unchanged
+      @return indicates whether the property existed  */
+  static bool get_prop (xmlNodePtr cur, const char* name, bool& value);
+
 
   /// A set of function to parse an xml file
   //@{

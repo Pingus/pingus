@@ -1,4 +1,4 @@
-//  $Id: axis_factory.cxx,v 1.11 2002/09/10 21:03:32 torangan Exp $
+//  $Id: axis_factory.cxx,v 1.12 2002/09/28 19:31:06 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,7 +17,6 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <stdlib.h>
 #include "../xml_helper.hxx"
 #include "../pingus_error.hxx"
 #include "axis_factory.hxx"
@@ -61,12 +60,9 @@ Axis* AxisFactory::create(xmlNodePtr cur)
 
 Axis* AxisFactory::button_axis (xmlNodePtr cur)
 {
-  char * angle_str = XMLhelper::get_prop(cur, "angle");
-  if (!angle_str)
+  float angle;
+  if (!XMLhelper::get_prop(cur, "angle", angle))
     PingusError::raise("ButtonAxis without angle parameter");
-
-  float angle = strtod(angle_str, reinterpret_cast<char**>(NULL));
-  xmlFree(angle_str);
 
   cur = XMLhelper::skip_blank(cur->children);
   Button* button1 = ButtonFactory::create(cur);   
@@ -84,45 +80,31 @@ Axis* AxisFactory::inverted_axis (xmlNodePtr cur)
 
 Axis* AxisFactory::joystick_axis (xmlNodePtr cur)
 {
-  char * angle_str = XMLhelper::get_prop(cur, "angle");
-  if (!angle_str)
+  float angle;
+  if (!XMLhelper::get_prop(cur, "angle", angle))
     PingusError::raise("JoystickAxis without angle parameter");
-
-  char * id_str    = XMLhelper::get_prop(cur, "id");
-  if (!id_str)
+    
+  int id;
+  if (!XMLhelper::get_prop(cur, "id", id))
     PingusError::raise("JoystickAxis without id parameter");
-
-  char * axis_str  = XMLhelper::get_prop(cur, "axis");
-  if (!axis_str)
+    
+  int axis;
+  if (!XMLhelper::get_prop(cur, "axis", axis))
     PingusError::raise("JoystickAxis without axis parameter");
-
-  float angle = strtod(angle_str, reinterpret_cast<char**>(NULL));
-  int   id    = strtol(id_str,    reinterpret_cast<char**>(NULL), 10);
-  int   axis  = strtol(axis_str,  reinterpret_cast<char**>(NULL), 10);
-
-  xmlFree(angle_str);
-  xmlFree(id_str);
-  xmlFree(axis_str);
 
   return new JoystickAxis(id, axis, angle);
 }
 
 Axis* AxisFactory::mouse_axis (xmlNodePtr cur)
 {
-  char * angle_str = XMLhelper::get_prop(cur, "angle");
-  if (!angle_str)
+  float angle;
+  if (!XMLhelper::get_prop(cur, "angle", angle))
     PingusError::raise("MouseAxis without angle parameter");
-
-  char * axis_str  = XMLhelper::get_prop(cur, "axis");
-  if (!axis_str)
+    
+  int axis;
+  if (!XMLhelper::get_prop(cur, "axis", axis))
     PingusError::raise("MouseAxis without axis parameter");
-
-  float angle = strtod(angle_str, reinterpret_cast<char**>(NULL));
-  int   axis  = strtol(axis_str,  reinterpret_cast<char**>(NULL), 10);
-
-  xmlFree(angle_str);
-  xmlFree(axis_str);
-
+  
   return new MouseAxis(axis, angle);
 }
 

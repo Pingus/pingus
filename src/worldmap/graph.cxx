@@ -1,4 +1,4 @@
-//  $Id: graph.cxx,v 1.8 2002/09/28 11:52:26 torangan Exp $
+//  $Id: graph.cxx,v 1.9 2002/09/28 19:31:06 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -133,14 +133,8 @@ Graph::parse_background (xmlNodePtr cur)
 void
 Graph::parse_music (xmlNodePtr cur)
 {
-  char* file = XMLhelper::get_prop(cur, "file");
-
-  if (file)
-    music = file;
-  else
-    {
-      std::cout << "Graph: No music file given" << std::endl;
-    }
+  if (!XMLhelper::get_prop(cur, "file", music))
+    std::cout << "Graph: No music file given" << std::endl;
 }
 
 ResDescriptor 

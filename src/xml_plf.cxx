@@ -1,4 +1,4 @@
-//  $Id: xml_plf.cxx,v 1.26 2002/09/28 11:52:22 torangan Exp $
+//  $Id: xml_plf.cxx,v 1.27 2002/09/28 19:31:06 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -262,22 +262,18 @@ XMLPLF::parse_background (xmlNodePtr cur)
 {
   // The allocated objects are delete'd in the destructor
   //FIXME: Repair me backgrounds.push_back(BackgroundData::create (doc, cur));
-  char* type_cstr = XMLhelper::get_prop(cur, "type");
 
-  if (type_cstr)
+  std::string type;
+  if (XMLhelper::get_prop(cur, "type", type))
     {
-      std::string type (type_cstr);
-
-      worldobjs_data.push_back(WorldObjDataFactory::instance ()
+      worldobjs_data.push_back(WorldObjDataFactory::instance()
 			       ->create (type + "-background", doc, cur));
     }
   else
     {
-      worldobjs_data.push_back(WorldObjDataFactory::instance ()
+      worldobjs_data.push_back(WorldObjDataFactory::instance()
 			       ->create ("surface-background", doc, cur));
     }
-
-  xmlFree(type_cstr);
 }
 
 void 
@@ -296,13 +292,7 @@ XMLPLF::parse_actions (xmlNodePtr cur)
       ActionData button;
       button.name = action_from_string(reinterpret_cast<const char*>(cur->name));
 
-      char* count = XMLhelper::get_prop(cur, "count");
-      if (count)
-	{
-	  from_string(count, button.number_of);
-	  xmlFree(count);
-	}
-      else
+      if (!XMLhelper::get_prop(cur, "count", button.number_of))
 	{
 	  //std::cout << "XMLPLF::parse_actions (): No 'count' given, fallback to the old format" << std::endl;
 	  char* number = reinterpret_cast<char*>(xmlNodeListGetString(doc, cur->children, 1));
@@ -336,10 +326,10 @@ XMLPLF::parse_global (xmlNodePtr cur)
       if (XMLhelper::equal_str(cur->name, "levelname"))
 	{
 	  char* name = reinterpret_cast<char*>(xmlNodeListGetString(doc, cur->children, 1));
-	  char* lang = XMLhelper::get_prop(cur, "lang");
+	  std::string lang;
 
 	  if (name) {
-	    if (lang)
+	    if (XMLhelper::get_prop(cur, "lang", lang))
 	      levelname[lang] = name;
 	    else
 	      levelname[default_language] = name;
@@ -347,16 +337,14 @@ XMLPLF::parse_global (xmlNodePtr cur)
 
 	  if (name)
 	    xmlFree(name);
-	  if (lang)
-	    xmlFree(lang);
 	}
       else if (XMLhelper::equal_str(cur->name, "description"))
 	{
 	  char* desc = reinterpret_cast<char*>(xmlNodeListGetString(doc, cur->children, 1));
-	  char* lang = XMLhelper::get_prop(cur, "lang");
+	  std::string lang;
 
 	  if (desc) {
-	    if (lang)		    
+	    if (XMLhelper::get_prop(cur, "lang", lang))		    
 	      description[lang] = desc;
 	    else
 	      description[default_language] = desc;
@@ -364,8 +352,6 @@ XMLPLF::parse_global (xmlNodePtr cur)
 
 	  if (desc)
 	    xmlFree(desc);	  
-	  if (lang)
-	    xmlFree(lang);
 	}
       else if (XMLhelper::equal_str(cur->name, "author"))
 	{

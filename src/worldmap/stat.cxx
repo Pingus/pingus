@@ -1,4 +1,4 @@
-//  $Id: stat.cxx,v 1.10 2002/09/27 11:26:49 torangan Exp $
+//  $Id: stat.cxx,v 1.11 2002/09/28 19:31:06 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -118,35 +118,15 @@ void
 PingusWorldMapStat::parse_node (xmlNodePtr cur)
 {
   PingusWorldMapNodeStat node;
-  char* id         = XMLhelper::get_prop(cur, "id");
-  char* accessible = XMLhelper::get_prop(cur, "accessible");
-  char* finished   = XMLhelper::get_prop(cur, "finished");
-  char* checksum   = XMLhelper::get_prop(cur, "checksum");
+  if (!XMLhelper::get_prop(cur, "id", node.id))
+    std::cout << "PingusWorldMapStat: id missing" << std::endl;
 
   //std::cout << "Parsing node: " << cur->name << std::endl;
-
-  if (id) {
-    from_string (id, node.id);
-    xmlFree(id);
-  } else {
-    std::cout << "PingusWorldMapStat: id missing" << std::endl;
-  }
-  
-  if (accessible) {
-    node.accessible = StringConverter::to_int (accessible);
-    xmlFree(accessible);    
-  }
-  
-  if (finished) {
-    node.finished = StringConverter::to_int (finished);
-    xmlFree(finished);  
-  }
-  
-  if (checksum) {
-    //node.checksum = StringConverter::to_int (checksum);
-    xmlFree(checksum);
-  }
-
+    
+  XMLhelper::get_prop(cur, "accessible", node.accessible);
+  XMLhelper::get_prop(cur, "finished", node.finished);
+  //XMLhelper::get_prop(cur, "checksum", node.checksum);
+    
   stats[node.id] = node;
 }
 

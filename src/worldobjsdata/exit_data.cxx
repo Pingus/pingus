@@ -1,4 +1,4 @@
-//  $Id: exit_data.cxx,v 1.1 2002/09/27 16:01:55 torangan Exp $
+//  $Id: exit_data.cxx,v 1.2 2002/09/28 19:31:06 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,12 +34,9 @@ ExitData::ExitData () : owner_id(0),
 ExitData::ExitData (xmlDocPtr doc, xmlNodePtr cur) : owner_id(0),
                                                      use_old_pos_handling(true)
 {
-  char* pos_handling = XMLhelper::get_prop(cur, "use-old-pos-handling");
-  if (pos_handling)
+  if (XMLhelper::get_prop(cur, "use-old-pos-handling", use_old_pos_handling));
     {
-      std::cout << "XMLPLF: Use Old Pos Handling: " << pos_handling << std::endl;
-      use_old_pos_handling = StringConverter::to_int(pos_handling);
-      xmlFree (pos_handling);
+      std::cout << "XMLPLF: Use Old Pos Handling: " << use_old_pos_handling << std::endl;
     }
 
   cur = cur->children;

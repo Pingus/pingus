@@ -1,4 +1,4 @@
-//  $Id: button_factory.cxx,v 1.10 2002/09/10 21:03:32 torangan Exp $
+//  $Id: button_factory.cxx,v 1.11 2002/09/28 19:31:06 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,7 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <stdlib.h>
+#include <iostream>
 #include "../xml_helper.hxx"
 #include "../pingus_error.hxx"
 #include "button_factory.hxx"
@@ -76,44 +76,31 @@ Button* ButtonFactory::double_button (xmlNodePtr cur)
 
 Button* ButtonFactory::joystick_button (xmlNodePtr cur)
 {
-  char * id_str = XMLhelper::get_prop(cur, "id");
-  if (!id_str)
+  int id;
+  if (!XMLhelper::get_prop(cur, "id", id))
     PingusError::raise("JoystickButton without id parameter");
-
-  char * button_str = XMLhelper::get_prop(cur, "button");
-  if (!button_str)
+    
+  int button;
+  if (!XMLhelper::get_prop(cur, "button", button))
     PingusError::raise("JoystickButton without button parameter");
-
-  int id     = strtol(id_str,     reinterpret_cast<char**>(NULL), 10);
-  int button = strtol(button_str, reinterpret_cast<char**>(NULL), 10);
-
-  xmlFree(id_str);
-  xmlFree(button_str);
 
   return new JoystickButton(id, button);
 }
 
 Button* ButtonFactory::key_button (xmlNodePtr cur)
 {
-  char * key_str = XMLhelper::get_prop(cur, "key");
-  if (!key_str)
+  std::string key;
+  if (!XMLhelper::get_prop(cur, "key", key))
     PingusError::raise("KeyButton without key parameter");
-
-  int key = KeyHelper::string_to_key(key_str);
-
-  xmlFree(key_str);
-
-  return new KeyButton(key);
+    
+  return new KeyButton(KeyHelper::string_to_key(key));
 }
 
 Button* ButtonFactory::mouse_button (xmlNodePtr cur)
 {
-  char * button_str = XMLhelper::get_prop(cur, "button");
-  if (!button_str)
+  int button;
+  if (!XMLhelper::get_prop(cur, "button", button))
     PingusError::raise("MouseButton without button parameter");
-
-  int button = strtol(button_str, reinterpret_cast<char**>(NULL), 10);
-  xmlFree(button_str);
 
   return new MouseButton(button);
 }

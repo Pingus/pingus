@@ -1,4 +1,4 @@
-//  $Id: starfield_background_data.cxx,v 1.4 2002/09/28 11:52:27 torangan Exp $
+//  $Id: starfield_background_data.cxx,v 1.5 2002/09/28 19:31:07 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -58,30 +58,15 @@ StarfieldBackgroundData::StarfieldBackgroundData (xmlDocPtr doc, xmlNodePtr cur)
       
       if (XMLhelper::equal_str(cur->name, "small-stars"))
 	{
-	  char* count = XMLhelper::get_prop(cur, "count");
-	  if (count)
-	    {
-	      small_stars_count = StringConverter::to_int(count);
-	      xmlFree(count);
-	    }
+	  XMLhelper::get_prop(cur, "count", small_stars_count);
 	}
       else if (XMLhelper::equal_str(cur->name, "middle-stars"))
 	{
-	  char* count = XMLhelper::get_prop(cur, "count");
-	  if (count)
-	    {
-	      middle_stars_count = StringConverter::to_int(count);
-	      xmlFree(count);
-	    }	  
+	  XMLhelper::get_prop(cur, "count", middle_stars_count);
 	}
       else if (XMLhelper::equal_str(cur->name, "large-stars"))
 	{
-	  char* count = XMLhelper::get_prop(cur, "count");
-	  if (count)
-	    {
-	      large_stars_count = StringConverter::to_int(count);
-	      xmlFree(count);
-	    }	  
+	  XMLhelper::get_prop(cur, "count", large_stars_count);
 	}
       else
 	{
