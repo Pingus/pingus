@@ -10,6 +10,7 @@
     <levelname lang="fr">Apprendre à creuser</levelname>
     <levelname lang="sr">Ucimo kopanje</levelname>
     <levelname lang="fi">Opettele kaivamaan</levelname>
+    <levelname lang="no">Lær å grave</levelname>
 
     <description lang="en">This is your first mission. As always, it's pretty easy. All you
                            have to do is to give a Pingu the command to dig a hole into the
@@ -18,10 +19,10 @@
     </description>
     <description lang="it">Questa è la tua prima missione. Come sempre, è abbastanza facile.
                            Tutto ciò che devi fare è ordinare ad un Pingus di scavare un buco
-                           nel terreno, in modo che possano arrivare all'uscita. Puoi farlo 
+                           nel terreno, in modo che possano arrivare all'uscita. Puoi farlo
                            semplicemente cliccando su un Pingus.
     </description>
-    <description lang="de">Dies ist Deine erste Mission. Wie immer, ist sie ziemlich 
+    <description lang="de">Dies ist Deine erste Mission. Wie immer, ist sie ziemlich
                            einfach. Alles was Du tun musst, ist einem Pingu den Befehl zum Graben
                            eines Lochs in den Boden zu erteilen, damit alle den Ausgang erreichen
                            können. Dies kann einfach dadurch erreicht werden, auf einen Pingu zu klicken.
@@ -41,8 +42,8 @@
                            accompli en cliquant simplement sur un Pingu.
     </description>
     <description lang="tr">Bu ilk görevin. Her zaman olduðu gibi oldukça kolay. Bütün yapman
-                           gereken, bütün Pingularýn çýkýþa gidebilmeleri için birini yeri 
-                           kazmakla görevlendirmen. Herhangi bir Pingu üzerine týklaman bu iþ 
+                           gereken, bütün Pingularýn çýkýþa gidebilmeleri için birini yeri
+                           kazmakla görevlendirmen. Herhangi bir Pingu üzerine týklaman bu iþ
                            için yeterli.
     </description>
     <description lang="sr">Ovo je tvoj prvi zadatak. Kao takav, prilicno je lak. Sve sto
@@ -55,7 +56,10 @@
                            kolon maahan niin, että kaikki pääsevät uloskäynnille. Kaivaminen
                            hoituu yksinkertaisesti klikkaamalla pingua.
     </description>
-
+    <description lang="no">Dette er ditt første oppdrag. Som alltid er det ganske enkelt. Alt du trenger
+    			   å gjøre er å gi en Pingu ordre om å grave et hull i bakken så du kan nå utgangen.
+			   Dette kan gjøres bare ved å klikke på en Pingu.
+    </description>
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
     <number-of-pingus>10</number-of-pingus>
     <number-to-save>5</number-to-save>

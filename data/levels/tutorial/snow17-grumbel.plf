@@ -10,6 +10,7 @@
     <levelname lang="fr">De trop haut, les Pingus en morceaux...</levelname>
     <levelname lang="sr">Ko visoko leti, nisko pada...</levelname>
     <levelname lang="fi">Liian korkea pudotus vaarantaa terveytesi...</levelname>
+    <levelname lang="no">For høyt, og Pingusene dine vil dø...</levelname>
 
     <description lang="en">Teamwork is the way to the exit this time. You don't have enough
                            Floaters to reach the exit, so just send a few and let them
@@ -42,6 +43,9 @@
     <description lang="fi">Tästä kentästä selviää yhteistyöllä. Koska leijujia ei ole riittävästi,
                            kannattaa lähettää muutama pingu edeltä raivaamaan tietä ennen kuin päästää
                            muut liikkeelle.
+    </description>
+    <description lang="no">Samarbeid er veien til utgangen denne gangen. Du har ikke nok Floatere
+                           til å nå utgangen, så du må sende noen få og la dem klargjøre veien for resten.
     </description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>

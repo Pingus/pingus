@@ -10,6 +10,7 @@
     <levelname lang="fr">Creuse et flotte, mais ne tombe pas et éclate</levelname>
     <levelname lang="sr">Kopaj i lebdi, samo nemoj pasti i razbiti se</levelname>
     <levelname lang="fi">Kaiva ja leiju, älä putoa ja liiskaannu</levelname>
+    <levelname lang="no">Grav og flyt, bare ikke dett og knus</levelname>
 
     <description lang="en">Unlike the first two levels, you have two actions available in
                            this level. Your job is again simple: select an action at the panel
@@ -53,6 +54,11 @@
                            vasemman reunan valikosta haluamiasi toimintoja ja käytä niitä
                            pinguihin, että ne pääsevät uloskäynnille. Pidä huolta, ettei
                            liian moni kuole matkalla.
+    </description>
+    <description lang="no">I motsetning til de to første brettene har du to handlinger å bruke
+                           i dette brettet. Igjen er det en enkel jobb: velg en handling til venstre
+                           og bruk den på Pingusene så de kan komme seg til utgangen. Sørg bare for
+                           at ikke så mange av dem dør.
     </description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>

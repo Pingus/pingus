@@ -10,6 +10,7 @@
     <levelname lang="fr">Sacrifie quelques-uns pour sauver les autres</levelname>
     <levelname lang="sr">Zrtvuj nekoliko da spases ostale</levelname>
     <levelname lang="fi">Uhraa muutama ja pelasta loput</levelname>
+    <levelname lang="no">Ofre noen få og redd resten</levelname>
 
     <description lang="en">Sometimes no other actions are available, so you have to bomb your
                            way through the ground. The Pingus can do this by actually self-
@@ -49,6 +50,11 @@
                            räjäytellä tie selväksi. Räjäyttämisen yhteydessä pingu
                            tietysti kuolee, mutta toisinaan on tarpeen uhrata muutama loppujen
                            hyväksi.
+    </description>
+    <description lang="no">Noen ganger er ikke noen andre handlinger tilgjengelige, så du må bombe
+                           deg vei gjennom bakken. Pingusene kan gjøre dette ved å selvdestruere.
+                           Dette vil ta livet av dem, men noen ganger er det nødvendig å ofre noen
+                           for å redde resten.
     </description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>

@@ -10,6 +10,7 @@
     <levelname lang="fr">Paradis des mineurs</levelname>
     <levelname lang="sr">Rudarski raj</levelname>
     <levelname lang="fi">Louhijan toiveuni</levelname>
+    <levelname lang="no">Gruvearbeiderens himmel</levelname>
 
     <description lang="en">Another action hits the street - another digging action, this
                            time a diagonal one. It allows a Pingu to dig diagonally through
@@ -41,7 +42,7 @@
                            Elle permet à un Pingu de creuser diagonallement le sol créant ainsi
                            une voie que pourront emprunter les autres Pingus. Cette action ce nomme 'Miner'.
     </description>
-    <description lang="sr">Ucimo jos jednu akciju koja obuhvata kopanje. Ovog puta se radi o 
+    <description lang="sr">Ucimo jos jednu akciju koja obuhvata kopanje. Ovog puta se radi o
                            kopanju ukoso, cime omogucavamo Pingusu da dijagonalno kopa kroz
                            zemljiste i stvara put za ostale. Ova akcija se zove Rudar.
     </description>
@@ -49,6 +50,10 @@
                            tuottaa suoran sijaan viiston tunnelin. Sen avulla perästä tulevat
                            pingut pääsevät samaan aikaan sekä sivulle että alaspäin. Toiminnon
                            nimi on Louhija.
+    </description>
+    <description lang="no">En ny handling ser dagens lys - en ny grave handling, denne gangen en
+                           diagonal en. Den lar en Pingu grave diagonalt gjennom bakken, slik at
+                           den lager en vei for Pingusene som kommer etter. Handlingen kalles Miner.
     </description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>

@@ -10,6 +10,7 @@
     <levelname lang="fr">Saute, rebondis ... et défonce...</levelname>
     <levelname lang="sr">Skakutanje... i glodanje...</levelname>
     <levelname lang="fi">Hypi, pompi... murskaa...</levelname>
+    <levelname lang="no">Hopp, sprett... og slå...</levelname>
 
     <description lang="en">It's panic time again. The Pingus will not come out very fast, but
 		           since they turn around when they hit walls you will soon have some trouble
@@ -55,6 +56,11 @@
                            Koska uloskäynnille täytyy kuitenkin saada vain 5 pingua, kentän ratkaiseminen
                            ei pitäisi olla lainkaan mahdotonta. Jos mikään muu ei tunnu onnistuvan,
                            kokeile pysäyttää peli 'p'-näppäimellä tai alareunan painikkeella.
+    </description>
+    <description lang="no">Det er panikktid igjen. Pingusene kommer ikke ut særlig fort, men siden de snur
+                           når de treffer vegger vil du snart få problemer med å koordinere alle. Siden du
+                           kun trenger å redde 5 burde det la seg gjøre, men hvis alt annet feiler bruk
+                           pause-modusen ('p') for å få oversikten igjen.
     </description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>

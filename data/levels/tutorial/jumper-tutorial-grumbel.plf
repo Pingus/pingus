@@ -11,6 +11,7 @@
     <levelname lang="fr">Saute de joie</levelname>
     <levelname lang="sr">Skok za uzivanje</levelname>
     <levelname lang="fi">Hypi riemusta</levelname>
+    <levelname lang="no">Hopp av glede</levelname>
 
     <description lang="cs">Nekdy se pingove potrebuji dostat na plosinu, ktera je sice jen kousek
                            od nich, ale nelze na ni dojit. Pak prijde vhod skakani, ktere
@@ -47,6 +48,10 @@
     <description lang="fi">Toisinaan pingun pitäisi päästä tasanteelle, joka on kaukana edessäpäin,
                            mutta jolle ei pääse kävellen. Hyppääjä auttaa. Sen avulla pingun
                            saa hyppäytettyä lyhyitä matkoja ylävistoon.
+    </description>
+    <description lang="no">Noen ganger trenger en Pingu å nå en plattform som er langt borte, men
+                           ikke kan nås ved å gå. Det er da en Jumper er hendig - den tillater
+                           Pingusen å gjøre et lite hopp som gjør at den kan nå plattformen.
     </description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>

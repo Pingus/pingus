@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Pingus 0.6.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-08-21 22:45+0200\n"
+"POT-Creation-Date: 2003-08-29 19:12+0200\n"
 "PO-Revision-Date: 2003-04-15 17:29+0200\n"
 "Last-Translator: Milan Babuskov <mbabuskov@yahoo.com>\n"
 "Language-Team: <mbabuskov@yahoo.com>\n"
@@ -63,39 +63,39 @@ msgstr "-Prica"
 msgid "-Translation"
 msgstr "-Prevod"
 
-#: src/credits.cxx:106
+#: src/credits.cxx:107
 msgid "-Special"
 msgstr "-Posebno"
 
-#: src/credits.cxx:107
+#: src/credits.cxx:108
 msgid "-Thanks to"
 msgstr "-se zahvaljujemo"
 
-#: src/credits.cxx:147
+#: src/credits.cxx:149
 msgid "_And a very Special Thanks"
 msgstr "_A narocito se zahvaljujemo"
 
-#: src/credits.cxx:148
+#: src/credits.cxx:150
 msgid "_to all the people who"
 msgstr "_svim ljudima"
 
-#: src/credits.cxx:149
+#: src/credits.cxx:151
 msgid "_contribute to"
 msgstr "_koji doprinose"
 
-#: src/credits.cxx:150
+#: src/credits.cxx:152
 msgid "_Free Software!"
 msgstr "_Free Softveru!"
 
-#: src/credits.cxx:156
+#: src/credits.cxx:158
 msgid "_Thank you for"
 msgstr "_Hvala sto"
 
-#: src/credits.cxx:157
+#: src/credits.cxx:159
 msgid "_playing!"
 msgstr "_ste igrali!"
 
-#: src/editor/editor_event.cxx:580
+#: src/editor/editor_event.cxx:595
 msgid "Enter filename to save as:"
 msgstr "Unesi naziv fajla za snimanje:"
 
@@ -413,64 +413,64 @@ msgstr "3 - Zvezdana Pozadina"
 msgid "4 - Thunderstorm Background"
 msgstr "4 - Olujna Pozadina"
 
-#: src/editor/panel_icons.cxx:31
+#: src/editor/panel_icons.cxx:32
 msgid "Load a level (F5)"
 msgstr "Ucitaj nivo (F5)"
 
-#: src/editor/panel_icons.cxx:44
+#: src/editor/panel_icons.cxx:45
 msgid "Exit the editor (Escape)"
 msgstr "Izlaz iz editora (Escape)"
 
-#: src/editor/panel_icons.cxx:56
+#: src/editor/panel_icons.cxx:57
 msgid "Save this level (F6)"
 msgstr "Snimi ovaj nivo (F6)"
 
-#: src/editor/panel_icons.cxx:68
+#: src/editor/panel_icons.cxx:69
 #, fuzzy
 msgid "Delete marked objects (delete)"
 msgstr "Brisanje oznacenih objekata (delete"
 
-#: src/editor/panel_icons.cxx:80
+#: src/editor/panel_icons.cxx:81
 msgid "Duplicate current object (d)"
 msgstr "Dupliraj trenutni objekat (d)"
 
-#: src/editor/panel_icons.cxx:92
+#: src/editor/panel_icons.cxx:93
 msgid "Edit Level Properties"
 msgstr "Podesi Karakteristike Nivoa"
 
-#: src/editor/panel_icons.cxx:104
+#: src/editor/panel_icons.cxx:105
 msgid "Edit Object Properties"
 msgstr "Podesi Karakteristike Objekta"
 
-#: src/editor/panel_icons.cxx:116
+#: src/editor/panel_icons.cxx:117
 msgid "Start the level and test it (F4)"
 msgstr "Pokreni i testiraj nivo(F4)"
 
-#: src/editor/panel_icons.cxx:128
+#: src/editor/panel_icons.cxx:129
 msgid "Create a new level from scratch"
 msgstr "Kreiraj novi nivo iz pocetka"
 
-#: src/editor/panel_icons.cxx:140
+#: src/editor/panel_icons.cxx:141
 msgid "Insert an object (Insert)"
 msgstr "Ubaci objekat (Insert)"
 
-#: src/editor/panel_icons.cxx:152
+#: src/editor/panel_icons.cxx:153
 msgid "Zoom into a region"
 msgstr "Priblizi oblast"
 
-#: src/editor/panel_icons.cxx:164
+#: src/editor/panel_icons.cxx:165
 msgid "Zoom in"
 msgstr "Priblizi"
 
-#: src/editor/panel_icons.cxx:176
+#: src/editor/panel_icons.cxx:178
 msgid "Zoom out"
 msgstr "Udalji"
 
-#: src/editor/panel_icons.cxx:188
+#: src/editor/panel_icons.cxx:191
 msgid "Setup Number of Actions"
 msgstr "Podesi broj akcija"
 
-#: src/editor/panel_icons.cxx:200
+#: src/editor/panel_icons.cxx:203
 msgid "Display Help Screen (F1)"
 msgstr "Prikazi pomocni ekran (F1)"
 
@@ -1356,7 +1356,7 @@ msgstr ""
 msgid "Environment variable $HOME not set, fix that and start again."
 msgstr "Varijabla okruzenja $HOME nije postavljena, ispravi pa ponovi."
 
-#: src/worldmap/level_dot.cxx:162
+#: src/worldmap/level_dot.cxx:172 src/worldmap/level_dot.cxx:182
 msgid "locked"
 msgstr "zakljucano"
 

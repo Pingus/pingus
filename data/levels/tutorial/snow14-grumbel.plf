@@ -10,6 +10,7 @@
     <levelname lang="fr">Bloque la route</levelname>
     <levelname lang="sr">Blok i stena</levelname>
     <levelname lang="fi">Stop'n Roll</levelname>
+    <levelname lang="no">Blokk og spreng</levelname>
 
     <description lang="en">Once again it's time to combine the stuff you have learned in your
                            previous levels. Blast your way free and make sure you also keep the
@@ -42,6 +43,10 @@
     <description lang="fi">Jälleen on aika yhdistellä edellisissä kentissä opittua.
                            Räjäytä tie auki mutta varmista samalla, että loput pingut
                            pysyvät hallinnassa. Pysäyttäjistä on apua.
+    </description>
+    <description lang="no">Atter en gang er det tid for å kombinere tingene du har lært i de forrige
+                           brettene. Spreng deg vei og sørg for at du også holder resten av Pingusene
+                           under kontroll. Blocker handlingen vil være hjelpsom·
     </description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>

@@ -10,6 +10,7 @@
     <levelname lang="fr">Flotte ou Meurt</levelname>
     <levelname lang="sr">Lebdi ili umri</levelname>
     <levelname lang="fi">Leiju tai kuole</levelname>
+    <levelname lang="no">Flyt eller dø</levelname>
 
     <description lang="en">Well done in mission one! Now let's start the next one. This
                            time you will need to equip your Pingus with a little propeller,
@@ -51,13 +52,17 @@
                            maahan. Pingut nimittäin liiskautuvat pudotessaan liian korkealta.
                            Pidä siis silmät auki ja hermot kurissa!
     </description>
+    <description lang="no">Godt gjort i oppdrag en! La oss nå starte på det neste. Denne gangen trenger
+                           du å utstyre Pingusene dine med en liten propell, så de kan flyte fint til bakken.
+                           Hvis Pinguser faller for langt vil de ikke overleve fallet, så hold øynene åpne!
+    </description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
     <number-of-pingus>20</number-of-pingus>
     <number-to-save>10</number-to-save> <time>-1</time>
     <width>1230</width> <height>900</height>
     <difficulty>10</difficulty> <playable>1</playable>
-    <comment></comment> 
+    <comment></comment>
     <music>pingus-8.it</music>
   </global>
 

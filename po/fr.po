@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Pingus 0.6.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-08-21 22:45+0200\n"
+"POT-Creation-Date: 2003-08-29 19:12+0200\n"
 "PO-Revision-Date: 2003-04-16 01:50+0200\n"
 "Last-Translator: Philippe Saint-Pierre <stpere@linuxmail.org>\n"
 "Language-Team: David Philippi <david@torangan.de>, Ingo Ruhnke <grumbel@gmx."
@@ -63,39 +63,39 @@ msgstr "-Scénario"
 msgid "-Translation"
 msgstr "-Traduction"
 
-#: src/credits.cxx:106
+#: src/credits.cxx:107
 msgid "-Special"
 msgstr "-Spécial"
 
-#: src/credits.cxx:107
+#: src/credits.cxx:108
 msgid "-Thanks to"
 msgstr "-Remerciements à"
 
-#: src/credits.cxx:147
+#: src/credits.cxx:149
 msgid "_And a very Special Thanks"
 msgstr "_Et un merci spécial"
 
-#: src/credits.cxx:148
+#: src/credits.cxx:150
 msgid "_to all the people who"
 msgstr "_a tout ceux qui"
 
-#: src/credits.cxx:149
+#: src/credits.cxx:151
 msgid "_contribute to"
 msgstr "_contribuent"
 
-#: src/credits.cxx:150
+#: src/credits.cxx:152
 msgid "_Free Software!"
 msgstr "_aux logiciels libres!"
 
-#: src/credits.cxx:156
+#: src/credits.cxx:158
 msgid "_Thank you for"
 msgstr "_Merci de"
 
-#: src/credits.cxx:157
+#: src/credits.cxx:159
 msgid "_playing!"
 msgstr "_jouer!"
 
-#: src/editor/editor_event.cxx:580
+#: src/editor/editor_event.cxx:595
 msgid "Enter filename to save as:"
 msgstr "Donnez le nom de fichier de sauvegarde: "
 
@@ -415,64 +415,64 @@ msgstr "3 - Arrière-plan étoilé"
 msgid "4 - Thunderstorm Background"
 msgstr "4 - Arrière-plan orageux"
 
-#: src/editor/panel_icons.cxx:31
+#: src/editor/panel_icons.cxx:32
 msgid "Load a level (F5)"
 msgstr "Charge un niveau (F5)"
 
-#: src/editor/panel_icons.cxx:44
+#: src/editor/panel_icons.cxx:45
 msgid "Exit the editor (Escape)"
 msgstr "Quitter l'éditeur (Échap)"
 
-#: src/editor/panel_icons.cxx:56
+#: src/editor/panel_icons.cxx:57
 msgid "Save this level (F6)"
 msgstr "Sauvegarde de ce niveau (F6)"
 
-#: src/editor/panel_icons.cxx:68
+#: src/editor/panel_icons.cxx:69
 #, fuzzy
 msgid "Delete marked objects (delete)"
 msgstr "Supprimer les éléments marqués (Suppr)"
 
-#: src/editor/panel_icons.cxx:80
+#: src/editor/panel_icons.cxx:81
 msgid "Duplicate current object (d)"
 msgstr "Dédoubler l'élément sélectionné (d)"
 
-#: src/editor/panel_icons.cxx:92
+#: src/editor/panel_icons.cxx:93
 msgid "Edit Level Properties"
 msgstr "Modifier les propriétés du niveau"
 
-#: src/editor/panel_icons.cxx:104
+#: src/editor/panel_icons.cxx:105
 msgid "Edit Object Properties"
 msgstr "Modifier les propriétés de l'objet"
 
-#: src/editor/panel_icons.cxx:116
+#: src/editor/panel_icons.cxx:117
 msgid "Start the level and test it (F4)"
 msgstr "Démarrer le niveau et le tester (F4)"
 
-#: src/editor/panel_icons.cxx:128
+#: src/editor/panel_icons.cxx:129
 msgid "Create a new level from scratch"
 msgstr "Débuter un nouveau niveau à partir de rien"
 
-#: src/editor/panel_icons.cxx:140
+#: src/editor/panel_icons.cxx:141
 msgid "Insert an object (Insert)"
 msgstr "Insérer un objet (Inser)"
 
-#: src/editor/panel_icons.cxx:152
+#: src/editor/panel_icons.cxx:153
 msgid "Zoom into a region"
 msgstr "Zoom sur une région particulière"
 
-#: src/editor/panel_icons.cxx:164
+#: src/editor/panel_icons.cxx:165
 msgid "Zoom in"
 msgstr "Zoom avant"
 
-#: src/editor/panel_icons.cxx:176
+#: src/editor/panel_icons.cxx:178
 msgid "Zoom out"
 msgstr "Zoom arrière"
 
-#: src/editor/panel_icons.cxx:188
+#: src/editor/panel_icons.cxx:191
 msgid "Setup Number of Actions"
 msgstr "Stelle die Anzahl der Fähigkeiten ein"
 
-#: src/editor/panel_icons.cxx:200
+#: src/editor/panel_icons.cxx:203
 msgid "Display Help Screen (F1)"
 msgstr "Afficher l'écran d'aide (F1)"
 
@@ -1381,7 +1381,7 @@ msgstr ""
 "La variable d'environnement $HOME n'est pas définie, corrigez cela et "
 "réessayez."
 
-#: src/worldmap/level_dot.cxx:162
+#: src/worldmap/level_dot.cxx:172 src/worldmap/level_dot.cxx:182
 msgid "locked"
 msgstr "vérouillé"
 

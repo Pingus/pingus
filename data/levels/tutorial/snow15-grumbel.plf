@@ -10,6 +10,7 @@
     <levelname lang="fr">Plus haut, Plus haut, ... Boum!</levelname>
     <levelname lang="sr">Penjanje, pentranje,... Bum!</levelname>
     <levelname lang="fi">Kiipeä, Kiipeäjä... Pum!</levelname>
+    <levelname lang="no">Klatre, klatrer,... Boom!</levelname>
 
     <description lang="en">As you might have already figured out from previous levels, you
                            often have to combine different actions to get the job done. Due
@@ -50,6 +51,11 @@
                            täytyy usein yhdistellä luovasti. Koska tästä kentästä puuttuu
                            Kaivajia, niiden tilalla täytyy käyttää Pommittajia, mutta
                            miten Pommittajat saa räjähtämään oikeaan aikaan?
+    </description>
+    <description lang="no">Som du kan ha skjønt fra tidligere brett, trenger du ofte å kombinere
+                           forskjellige handlinger for å få jobben gjort. Siden det mangler en
+                           Digger handling i dette brettet må en Bomber trå til, men hvordan kan
+                           den nå plassen som skal bombes?
     </description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>

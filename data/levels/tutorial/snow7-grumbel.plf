@@ -10,6 +10,7 @@
     <levelname lang="fr">Un fais le travail, les autres suivent</levelname>
     <levelname lang="sr">Jedan priprema, ostali ga prate</levelname>
     <levelname lang="fi">Yksi selvittää reitin, muut seuraavat perässä</levelname>
+    <levelname lang="no">En må gjøre det klart, resten må følge etter</levelname>
 
     <description lang="en">Sometimes there are situations where you don't have a Blocker at
                            hand to coordinate your Pingus. You'll have to find other ways to
@@ -17,7 +18,7 @@
                            the path for the rest.
     </description>
     <description lang="it">In questo caso non hai un 'Ostacolo' per coordinare i Pingus.
-                           Dovrai trovare un altro modo per tenerli sotto controllo, mentre 
+                           Dovrai trovare un altro modo per tenerli sotto controllo, mentre
                            uno di loro prepara la strada per gli altri.
     </description>
     <description lang="de">Manchmal kommt es vor das Du keinen Blocker zur Hand hast um
@@ -45,6 +46,10 @@
                            muita tapoja pingujen kaitsemiseen sillä välin kun yksinäinen sankari
                            on raivaamassa tietä muille.
     </description>
+    <description lang="no">Noen ganger er det situasjoner der du ikke har en Blocker tilgjengelig
+                           til å koordinere Pingusene dine. Du må finne andre måter å kontrollere
+                           dem mens en enkelt klargjør veien for de andre.
+    </description> 
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
     <number-of-pingus>20</number-of-pingus>

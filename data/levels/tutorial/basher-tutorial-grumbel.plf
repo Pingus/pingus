@@ -10,6 +10,7 @@
     <levelname lang="fr">Si la route est bloquée, défonce le mur!</levelname>
     <levelname lang="sr">Ako je put blokiran, prokopaj tunel</levelname>
     <levelname lang="fi">Kun tie on tukossa, murskaaja auttaa</levelname>
+    <levelname lang="no">Hvis veien er blokkert, slå i vei</levelname>
 
     <description lang="en">Similar to the Digger action that you already know from previous
                            levels, there is also an action that allows the Pingus to dig
@@ -47,6 +48,11 @@
     <description lang="fi">Kuten jo aiemmista kentistä tuttu Kaivaja, myös tällä kertaa
                            esiteltävä Murskaaja kaivaa tunneleita. Toisin kuin Kaivaja, se
                            kuitenkin etenee vaakasuoraan eikä alaspäin.
+    </description>
+    <description lang="no">I likhet med Digger handlingen du allerede kjenner fra tidligere brett,
+                           finnes det også en handling som lar Pingusene grave horisontalt, i
+                           motsetning til den vertikale gravingen en Digger gir deg. Denne nye
+                           handlingen kalles Basher.
     </description>
 
 

@@ -10,6 +10,7 @@
     <levelname lang="fr">Ile de la Panique (float/bash)</levelname>
     <levelname lang="sr">Ostrvo panike (lebdi/glodaj)</levelname>
     <levelname lang="fi">Paniikkisaari (leiju/murksaa)</levelname>
+    <levelname lang="no">Panikkøya (flyt/slå)</levelname>
 
     <description lang="en">While the previous levels have not required much quick action from
                            you, this one gets a bit trickier. The Pingus are coming
@@ -18,7 +19,7 @@
     </description>
     <description lang="it">Mentre i livelli precedenti non richiedevano un'azione veloce,
                            stavolta le cose cambiano. I Pingus vengono fuori da due entrate
-                           parallele, ed il tuo lavoro consiste nel coordinare saggiamente 
+                           parallele, ed il tuo lavoro consiste nel coordinare saggiamente
                            i due gruppi.
     </description>
     <description lang="de">Während die vorangegangen Level nicht viel schnelle Reaktionen von
@@ -40,13 +41,18 @@
                            votre tâche de coordonner les deux groupes intelligemment.
     </description>
     <description lang="sr">Dok prethodni nivoi nisu zahtevali puno brze akcije od tebe, ovaj
-                           je malo komplikovaniji. Pingusi dolaze iz dva paralelna ulaza i 
+                           je malo komplikovaniji. Pingusi dolaze iz dva paralelna ulaza i
 			   ti treba da istovremeno mudro koordiniras obe grupe.
     </description>
     <description lang="fi">Siinä missä edelliset kentät eivät ole vaatineet paljon työtä, tämä
                            alkaakin olla jo vähän hankalampi. Pinguja tulee samaan aikaan
                            kahdesta eri sisäänkäynnistä ja tehtäväsi on koordinoida ryhmiä
                            järkevästi.
+    </description>
+    <description lang="no">De tidligere brettene har ikke krevd mye rask handling av deg, men
+                           dette blir litt vanskeligere. Pingusene kommer ut av to innganger
+                           i parallel og det er din jobb å koordinere de to gruppene på en
+                           fornuftig måte.
     </description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
