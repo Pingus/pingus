@@ -1,4 +1,4 @@
-//  $Id: credits.cxx,v 1.21 2003/04/10 16:59:57 grumbel Exp $
+//  $Id: credits.cxx,v 1.22 2003/04/10 17:11:58 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -143,7 +143,7 @@ Credits::Credits()
   credits.push_back(_("_Thank you for"));
   credits.push_back(_("_playing!"));
 
-  end_offset = -350; // screen height + grace time 
+  end_offset = -CL_Display::get_height()/2 - 50; // screen height + grace time 
   for (std::vector<std::string>::iterator i = credits.begin(); i != credits.end(); ++i)
     {
       switch ((*i)[0])

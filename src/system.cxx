@@ -1,4 +1,4 @@
-//  $Id: system.cxx,v 1.11 2003/04/09 21:57:24 grumbel Exp $
+//  $Id: system.cxx,v 1.12 2003/04/10 17:11:58 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -251,7 +251,7 @@ std::string
 System::get_statdir()
 {
 #ifdef WIN32
-  return "stat\\";
+  return "stat/";
 #else /* !WIN32 */
   char* homedir = getenv("HOME");
 

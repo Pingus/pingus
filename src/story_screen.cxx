@@ -1,4 +1,4 @@
-//  $Id: story_screen.cxx,v 1.15 2003/04/10 15:40:18 grumbel Exp $
+//  $Id: story_screen.cxx,v 1.16 2003/04/10 17:11:58 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -68,7 +68,7 @@ private:
   StoryScreenComponent* story_comp;
 public:
   StoryScreenContinueButton(StoryScreenComponent* arg_story_comp)
-    : GUI::SurfaceButton(620, 460, 
+    : GUI::SurfaceButton(CL_Display::get_width()/2 + 220, CL_Display::get_height()/2 + 160, 
                          ResDescriptor("misc/next", "core", ResDescriptor::RD_RESOURCE),
                          ResDescriptor("misc/next", "core", ResDescriptor::RD_RESOURCE),
                          ResDescriptor("misc/next_hover", "core", ResDescriptor::RD_RESOURCE)),
@@ -120,11 +120,19 @@ StoryScreenComponent::StoryScreenComponent (const Story& arg_story)
 void
 StoryScreenComponent::draw (GraphicContext& gc)
 {
-  gc.draw(background, 0, 0);
-  gc.print_center(Fonts::chalk_large, CL_Display::get_width()/2, 100, story.title);
-  gc.draw(page_surface,  gc.get_width()/2 - page_surface.get_width()/2,
-          160);
-  gc.print_left(Fonts::chalk_normal, 120, 335, display_text);
+  gc.draw(background,
+          gc.get_width()/2 - background.get_width()/2,
+          gc.get_height()/2 - background.get_height()/2);
+  
+  gc.print_center(Fonts::chalk_large, CL_Display::get_width()/2, 
+                  CL_Display::get_height()/2 - 200, story.title);
+  gc.draw(page_surface,  
+          gc.get_width()/2 - page_surface.get_width()/2,
+          gc.get_height()/2 - 140);
+  
+  gc.print_left(Fonts::chalk_normal, 
+                CL_Display::get_width()/2  - 280,
+                CL_Display::get_height()/2 + 35, display_text);
 }
 
 void
