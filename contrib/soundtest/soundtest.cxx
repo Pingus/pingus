@@ -1,4 +1,4 @@
-//  $Id: soundtest.cxx,v 1.4 2003/03/01 22:31:55 grumbel Exp $
+//  $Id: soundtest.cxx,v 1.5 2003/03/04 19:22:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -76,7 +76,7 @@ Soundtest::main(int argc, char** argv)
           left_down = true;
           float panning = (CL_Mouse::get_x()-200)/200.0f;
           std::cout << "Panning: " << panning << std::endl;
-          PingusSound::play_sound("sounds/ohno.wav", CL_Mouse::get_y()/400.0f,
+          PingusSound::play_sound("ohno", CL_Mouse::get_y()/400.0f,
                                   panning);
         }
       else if (!CL_Mouse::left_pressed())
@@ -89,7 +89,7 @@ Soundtest::main(int argc, char** argv)
         {
           float panning = (CL_Mouse::get_x()-200)/200.0f;
           std::cout << "Panning: " << panning << std::endl;
-          PingusSound::play_sound("sounds/chink.wav", CL_Mouse::get_y()/400.0f,
+          PingusSound::play_sound("chink", CL_Mouse::get_y()/400.0f,
                                   panning);
         }
 

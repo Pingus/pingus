@@ -7,7 +7,7 @@ PINGUS_LIBS=$(PINGUS_DIR)/sound/libpingus_sound.a \
   $(PINGUS_DIR)/debug_stream.o \
   $(PINGUS_DIR)/system.o
 
-soundtest : soundtest.cxx soundtest.hxx
+soundtest : soundtest.cxx soundtest.hxx $(PINGUS_LIBS)
 	$(CXX) -I$(PINGUS_DIR) $< $(PINGUS_LIBS) -o $@ $(LIBS)
 
 # EOF #
