@@ -1,4 +1,4 @@
-//  $Id: XMLPLF.cc,v 1.10 2000/09/18 12:22:15 grumbel Exp $
+//  $Id: XMLPLF.cc,v 1.11 2000/09/20 14:28:35 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -50,14 +50,26 @@ XMLPLF::~XMLPLF()
 void
 XMLPLF::parse_file()
 {
+  std::cout << "parsing file" << std::endl;
   xmlNodePtr cur = doc->children; // ex root
+
+  if (xmlIsBlankNode(cur)) cur = cur->next;
 
   if (cur != NULL && strcmp((const char*)cur->name, "pingus-level") == 0)
     {
+      std::cout << "parse_file...." << std::endl;
+
+      if (xmlIsBlankNode(cur)) cur = cur->next;
+
+      if (cur->children == NULL)
+	std::cout << "node: " << cur->name << std::endl;
+
       cur = cur->children;
+      if (xmlIsBlankNode(cur)) cur = cur->next;
+      
       while (cur != NULL)
 	{
-	  //puts("global loop");
+	  puts("global loop");
 	  if (strcmp((char*)cur->name, "global") == 0)
 	    {
 	      parse_global(cur);
@@ -108,10 +120,11 @@ XMLPLF::parse_file()
 	    }	  
 	  else
 	    {
-	      printf("Unhandled: %s\n", (char*)cur->name);
+	      printf("XMLPLF: Unhandled: %s\n", (char*)cur->name);
 	    }
 	  cur = cur->next;
 	}
+      puts("global done");
     } else {
       throw PingusError("XMLPLF: This is no valid Pingus level");
     }
@@ -242,10 +255,16 @@ XMLPLF::parse_actions(xmlNodePtr cur)
   cur = cur->children;
   while (cur != NULL)
     {
+      ActionData button;
+      button.name = (char*)cur->name;
+
       char* number = (char*)xmlNodeListGetString(doc, cur->children, 1);
-
-      ActionData button((char*)cur->name, StringConverter::to_int(number));
-
+      if (number) {
+	std::cout << "xmlNoder..Result: " << number << std::endl;
+	button.number_of = StringConverter::to_int(number);
+      } else {
+	std::cout << "XMLPLF:parse_actions: no action number given" << std::endl;
+      }
       actions.push_back(button);
 
       free(number);
