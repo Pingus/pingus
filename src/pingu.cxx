@@ -1,4 +1,4 @@
-//  $Id: pingu.cxx,v 1.5 2002/06/21 07:45:35 grumbel Exp $
+//  $Id: pingu.cxx,v 1.6 2002/06/21 13:42:34 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -117,10 +117,8 @@ Pingu::set_action(PinguAction* act)
 
   act->set_pingu(this);
 
-  // Use the activation time of the action
-
-  // FIXME: ^ XOR?!
-  if (act->get_type() ^ (ActionType)ONCE) 
+  // check for persistent actions
+  if (act->get_type() != (ActionType)ONCE) 
     {
       if (pingus_debug_flags & PINGUS_DEBUG_ACTIONS)
 	{
@@ -249,21 +247,13 @@ void
 Pingu::update_persistent(float /*delta*/)
 {
   // 
-  if (environment == ENV_AIR && action == 0 && rel_getpixel(0, -1) == ColMap::NOTHING) 
+  if (environment == ENV_AIR && !action && rel_getpixel(0, -1) == ColMap::NOTHING) 
     {
       for (unsigned int i=0; i < persist.size(); ++i) 
 	{
-	  if (persist[i]->get_type() & (ActionType)FALL) 
+	  if (persist[i]->get_type() == (ActionType)FALL) 
 	    {
-	      if (action && persist[i]->get_name() == action->get_name()) 
-		{
-		  if (pingus_debug_flags & PINGUS_DEBUG_ACTIONS)
-		    std::cout << "Pingu: Not using action, we already did." << std::endl;
-		} 
-	      else 
-		{
-		  set_paction(persist[i]->get_name());
-		}
+              set_paction(persist[i]->get_name());
 	    }
 	}
     }
@@ -291,25 +281,20 @@ Pingu::update(float delta)
   if (action_time > -1) 
     --action_time;
 
-  if (action_time == 0 && countdown_action) 
+  if ( !action_time && countdown_action) 
     {
       action = countdown_action;
       action->set_pingu(this);
     }
   
-  if (action && action->is_finished) 
+  if ( !action || action->is_finished) 
     {
-      action = 0;
+      // FIXME: needs a better name now
+      update_normal(delta);
     }
 
   update_persistent(delta);
-
-  /** When we have an action evaluate it, else evaluate the normal
-      walking */
-  if (action) 
-    action->update(delta);
-  else 
-    update_normal(delta);
+  action->update(delta);
 }
 
 // Check if the pingu is on ground and then do something.
