@@ -1,4 +1,4 @@
-//  $Id: floater.hxx,v 1.9 2002/09/04 20:30:29 grumbel Exp $
+//  $Id: floater.hxx,v 1.10 2002/09/10 19:24:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,33 +25,33 @@
 
 namespace Actions {
 
-  class Floater : public PinguAction
-  {
-  private:
-    int falling_depth;
-    int step;
-    Sprite sprite;
-  public:
-    Floater();
+class Floater : public PinguAction
+{
+private:
+  int falling_depth;
+  int step;
+  Sprite sprite;
+public:
+  Floater();
 
-    std::string get_name() const { return "Floater"; }
-    ActionName get_type() const { return Actions::Floater; }
-    ActionType get_activation_mode() const { return FALL_TRIGGERED; }
+  std::string get_name() const { return "Floater"; }
+  ActionName get_type() const { return Actions::Floater; }
+  ActionType get_activation_mode() const { return FALL_TRIGGERED; }
     
-    void init(void);
+  void init(void);
 
-    void draw (GraphicContext& gc);
-    void update(float delta);
+  void draw (GraphicContext& gc);
+  void update(float delta);
 
-    char get_persistent_char () { return 'f'; }
-    bool change_allowed (ActionName new_action);
+  char get_persistent_char () { return 'f'; }
+  bool change_allowed (ActionName new_action);
   
-  private:
-    Floater (const Floater&);
-    Floater operator= (const Floater&);
-  };
+private:
+  Floater (const Floater&);
+  Floater operator= (const Floater&);
+};
 
-}
+} // namespace Actions
 
 #endif
 

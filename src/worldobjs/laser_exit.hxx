@@ -1,4 +1,4 @@
-//  $Id: laser_exit.hxx,v 1.2 2002/09/05 11:26:35 grumbel Exp $
+//  $Id: laser_exit.hxx,v 1.3 2002/09/10 19:24:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,39 +23,37 @@
 #include "../worldobj.hxx"
 
 namespace WorldObjsData {
-  class LaserExitData;
-}
+class LaserExitData;
+} // namespace WorldObjsData
 
 class Pingu;
 
-
 namespace WorldObjs {
 
-  class LaserExit : public WorldObj
-  {
-  private:
-    bool killing;
-    WorldObjsData::LaserExitData* const data;
+class LaserExit : public WorldObj
+{
+private:
+  bool killing;
+  WorldObjsData::LaserExitData* const data;
     
-  public:
-    LaserExit (WorldObjsData::LaserExitData* data_);
-   ~LaserExit ();
+public:
+  LaserExit (WorldObjsData::LaserExitData* data_);
+  ~LaserExit ();
 
-    float get_z_pos () const;
+  float get_z_pos () const;
 
-    void draw (GraphicContext& gc);
-    void update (float delta);
+  void draw (GraphicContext& gc);
+  void update (float delta);
 
-  protected:
-    void catch_pingu (Pingu*);
+protected:
+  void catch_pingu (Pingu*);
 
-  private:
-    LaserExit (const LaserExit&);
-    LaserExit operator= (const LaserExit&);
-  }; 
+private:
+  LaserExit (const LaserExit&);
+  LaserExit operator= (const LaserExit&);
+}; 
 
-}
-
+} // namespace WorldObjs
 
 #endif
 

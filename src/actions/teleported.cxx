@@ -1,4 +1,4 @@
-//  $Id: teleported.cxx,v 1.6 2002/09/04 20:30:29 grumbel Exp $
+//  $Id: teleported.cxx,v 1.7 2002/09/10 19:24:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,32 +22,32 @@
 
 namespace Actions {
 
-  Teleported::Teleported(void) : sound_played(false)
-  {
-  }
-
-  void
-  Teleported::init(void)
-  {
-    sprite = Sprite ("Pingus/bomber0", "pingus");
-  }
-
-
-  void 
-  Teleported::draw (GraphicContext& gc)
-  {
-    gc.draw(sprite, pingu->get_pos ());
-  }
-
-
-  void
-  Teleported::update(float /*delta*/)
-  {
-    pingu->set_pos (x_target, y_target);
-    pingu->set_status(PS_ALIVE);
-    pingu->set_action(Actions::Walker);
-  }
-
+Teleported::Teleported(void) : sound_played(false)
+{
 }
+
+void
+Teleported::init(void)
+{
+  sprite = Sprite ("Pingus/bomber0", "pingus");
+}
+
+
+void 
+Teleported::draw (GraphicContext& gc)
+{
+  gc.draw(sprite, pingu->get_pos ());
+}
+
+
+void
+Teleported::update(float /*delta*/)
+{
+  pingu->set_pos (x_target, y_target);
+  pingu->set_status(PS_ALIVE);
+  pingu->set_action(Actions::Walker);
+}
+
+} // namespace Actions
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: boarder.cxx,v 1.7 2002/09/04 20:30:29 grumbel Exp $
+//  $Id: boarder.cxx,v 1.8 2002/09/10 19:24:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,77 +25,77 @@
 
 namespace Actions {
 
-  Boarder::Boarder () : x_pos(0), speed(0.0)
-  {
-  }
-
-  void
-  Boarder::init()
-  {
-    x_pos = pingu->get_x();
-    speed = 0.0;
-    sprite = Sprite (PingusResource::load_surface 
-		     ("Pingus/boarder" + to_string(pingu->get_owner ()),
-		      "pingus"));
-    sprite.set_align_center_bottom (); 
-  }
-
-  void  
-  Boarder::update(float delta)
-  {
-    if (pingu->direction.is_left ())
-      sprite.set_direction(Sprite::LEFT); 
-    else
-      sprite.set_direction(Sprite::RIGHT); 
-    sprite.update (delta);
-
-    if (on_ground ())
-      {
-        if (speed < 15.0)
-	  speed += 15.0 * delta;
-        else {
-	  speed = 15.0;
-        }
-      
-        // Incremental update so that we don't skip pixels
-        double new_x_pos = pingu->get_pos().x + pingu->direction * speed;
-        while (new_x_pos != pingu->get_x())
-	  {
-	    double old_pos = pingu->get_pos().x;
-	    pingu->set_x(old_pos + (pingu->get_x() < new_x_pos) ? 1 : -1);
-	  
-	    if (pingu->rel_getpixel (1, 0))
-	      {
-	        // Hit a wall
-	        pingu->set_x(old_pos); // + (pingu->direction * 10);
-	        ////pingu->pos.y = 10;
-
-      	        pingu->apply_force (CL_Vector(speed * pingu->direction * 0.5,
-					      -speed * abs(pingu->direction) * 0.5));
-                pingu->set_action(Actions::Walker);
-                return;
-	      }
-	  }
-      }
-    else
-      {
-        pingu->apply_force (CL_Vector(speed * pingu->direction, 0));
-        pingu->set_action(Actions::Walker);
-      }
-  }
-
-  void   
-  Boarder::draw (GraphicContext& gc)
-  {
-    gc.draw(sprite, pingu->get_pos ());
-  }
-
-  bool
-  Boarder::on_ground ()
-  {
-    return pingu->rel_getpixel (0, -1) || pingu->rel_getpixel (0, -2);
-  }
-
+Boarder::Boarder () : x_pos(0), speed(0.0)
+{
 }
+
+void
+Boarder::init()
+{
+  x_pos = pingu->get_x();
+  speed = 0.0;
+  sprite = Sprite (PingusResource::load_surface 
+		   ("Pingus/boarder" + to_string(pingu->get_owner ()),
+		    "pingus"));
+  sprite.set_align_center_bottom (); 
+}
+
+void  
+Boarder::update(float delta)
+{
+  if (pingu->direction.is_left ())
+    sprite.set_direction(Sprite::LEFT); 
+  else
+    sprite.set_direction(Sprite::RIGHT); 
+  sprite.update (delta);
+
+  if (on_ground ())
+    {
+      if (speed < 15.0)
+	speed += 15.0 * delta;
+      else {
+	speed = 15.0;
+      }
+      
+      // Incremental update so that we don't skip pixels
+      double new_x_pos = pingu->get_pos().x + pingu->direction * speed;
+      while (new_x_pos != pingu->get_x())
+	{
+	  double old_pos = pingu->get_pos().x;
+	  pingu->set_x(old_pos + (pingu->get_x() < new_x_pos) ? 1 : -1);
+	  
+	  if (pingu->rel_getpixel (1, 0))
+	    {
+	      // Hit a wall
+	      pingu->set_x(old_pos); // + (pingu->direction * 10);
+	      ////pingu->pos.y = 10;
+
+	      pingu->apply_force (CL_Vector(speed * pingu->direction * 0.5,
+					    -speed * abs(pingu->direction) * 0.5));
+	      pingu->set_action(Actions::Walker);
+	      return;
+	    }
+	}
+    }
+  else
+    {
+      pingu->apply_force (CL_Vector(speed * pingu->direction, 0));
+      pingu->set_action(Actions::Walker);
+    }
+}
+
+void   
+Boarder::draw (GraphicContext& gc)
+{
+  gc.draw(sprite, pingu->get_pos ());
+}
+
+bool
+Boarder::on_ground ()
+{
+  return pingu->rel_getpixel (0, -1) || pingu->rel_getpixel (0, -2);
+}
+
+} // namespace Actions
 
 /* EOF */

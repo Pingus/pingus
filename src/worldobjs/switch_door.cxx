@@ -1,4 +1,4 @@
-//  $Id: switch_door.cxx,v 1.10 2002/09/10 14:33:08 grumbel Exp $
+//  $Id: switch_door.cxx,v 1.11 2002/09/10 19:24:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,6 +26,8 @@
 #include "../xml_helper.hxx"
 #include "switch_door.hxx"
 #include "../pingu.hxx"
+
+namespace WorldObjsData {
 
 SwitchDoorData::SwitchDoorData () : door_height(10)
 {
@@ -132,7 +134,7 @@ SwitchDoorData::write_xml(std::ostream& xml)
 WorldObj* 
 SwitchDoorData::create_WorldObj ()
 {
-  return new SwitchDoor (*this);
+  return new WorldObjs::SwitchDoor (*this);
 }
 
 /** Create an EditorObj from the given data object */
@@ -140,15 +142,18 @@ EditorObjLst
 SwitchDoorData::create_EditorObj ()
 {
   EditorObjLst lst; 
-  EditorSwitchDoorObj* obj = new EditorSwitchDoorObj (*this);
+  EditorObjs::EditorSwitchDoorObj* obj = new EditorObjs::EditorSwitchDoorObj (*this);
   lst.push_back(obj);
-  lst.push_back(new EditorSwitchDoorSwitchObj (obj));
+  lst.push_back(new EditorObjs::EditorSwitchDoorSwitchObj (obj));
   return lst;
 }
+
+} // namespace WorldObjsData
 
 ////////////////
 // SwitchDoor //
 ////////////////
+namespace WorldObjs {
 
 SwitchDoor::SwitchDoor (const SwitchDoorData& data)
   : SwitchDoorData (data)
@@ -225,9 +230,13 @@ SwitchDoor::update(float /*delta*/)
     }
 }
 
+} // namespace WorldObjs
+
 ///////////////////////////////
 // EditorSwitchDoorSwitchObj //
 ///////////////////////////////
+
+namespace EditorObjs { 
 
 EditorSwitchDoorSwitchObj::EditorSwitchDoorSwitchObj (EditorSwitchDoorObj* data)
   : SpriteEditorObj ("switchdoor_switch", "worldobjs"),
@@ -329,5 +338,7 @@ EditorSwitchDoorObj::set_position_offset(const CL_Vector& offset)
 {
   door_pos += offset;
 }
+
+} // namespace EditorObjs
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: rocket_launcher.cxx,v 1.7 2002/09/04 20:30:29 grumbel Exp $
+//  $Id: rocket_launcher.cxx,v 1.8 2002/09/10 19:24:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,44 +28,44 @@
 
 namespace Actions {
 
-  void
-  RocketLauncher::init ()
-  {
-    sprite = Sprite (PingusResource::load_surface 
-		     ("Pingus/rocketlauncher" + to_string(pingu->get_owner ()),
-		      "pingus"), 10.0f, Sprite::NONE, Sprite::ONCE);
-    sprite.set_align_center_bottom();
-    launched = false;
+void
+RocketLauncher::init ()
+{
+  sprite = Sprite (PingusResource::load_surface 
+		   ("Pingus/rocketlauncher" + to_string(pingu->get_owner ()),
+		    "pingus"), 10.0f, Sprite::NONE, Sprite::ONCE);
+  sprite.set_align_center_bottom();
+  launched = false;
 
-    WorldObj::get_world()->get_particle_holder()->add_particle 
-      (new ExplosiveParticle (static_cast<int>(pingu->get_x()),
-                              static_cast<int>(pingu->get_y()) - 12, 
-			      pingu->direction.is_left() ? -400.0f : 400.0f,
-			      0.0f));
-  }
-
-  void
-  RocketLauncher::update (float delta)
-  {
-    if (sprite.finished())
-      {
-        pingu->set_action(Actions::Walker);
-      }
-
-    sprite.update(delta);
-  }
-
-  void
-  RocketLauncher::draw (GraphicContext& gc)
-  {
-    if (pingu->direction.is_left())
-      sprite.set_direction(Sprite::LEFT);
-    else
-      sprite.set_direction(Sprite::RIGHT);
-      
-    gc.draw (sprite, pingu->get_pos());
-  }
-
+  WorldObj::get_world()->get_particle_holder()->add_particle 
+    (new ExplosiveParticle (static_cast<int>(pingu->get_x()),
+			    static_cast<int>(pingu->get_y()) - 12, 
+			    pingu->direction.is_left() ? -400.0f : 400.0f,
+			    0.0f));
 }
+
+void
+RocketLauncher::update (float delta)
+{
+  if (sprite.finished())
+    {
+      pingu->set_action(Actions::Walker);
+    }
+
+  sprite.update(delta);
+}
+
+void
+RocketLauncher::draw (GraphicContext& gc)
+{
+  if (pingu->direction.is_left())
+    sprite.set_direction(Sprite::LEFT);
+  else
+    sprite.set_direction(Sprite::RIGHT);
+      
+  gc.draw (sprite, pingu->get_pos());
+}
+
+} // namespace Actions
 
 /* EOF */

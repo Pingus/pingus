@@ -1,4 +1,4 @@
-//  $Id: teleporter_data.cxx,v 1.1 2002/09/10 12:11:29 torangan Exp $
+//  $Id: teleporter_data.cxx,v 1.2 2002/09/10 19:24:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,89 +26,90 @@
 
 namespace WorldObjsData {
 
-  TeleporterData::TeleporterData () : sprite("teleporter", "worldobjs", 20.0f, Sprite::NONE, Sprite::ONCE),
-                                      target_sprite("teleportertarget", "worldobjs", 20.0f, Sprite::NONE, Sprite::ONCE)
-  {
-  }
-
-  TeleporterData::TeleporterData (const TeleporterData& data) : WorldObjData(data),
-                                                                pos(data.pos),
-							        target_pos(data.target_pos),
-								sprite(data.sprite),
-								target_sprite(data.target_sprite)
-  {
-  }
-
-  void 
-  TeleporterData::write_xml (std::ostream& xml)
-  {
-    xml << "  <worldobj type=\"teleporter\">";
-    XMLhelper::write_vector_xml (xml, pos);
-    xml << "    <target>" << std::endl;
-    XMLhelper::write_vector_xml (xml, target_pos);
-    xml << "    </target>" << std::endl;
-    xml << "  </worldobj>" << std::endl;
-  }
-
-  TeleporterData::TeleporterData (xmlDocPtr doc, xmlNodePtr cur)
-  {
-    cur = cur->children;
-  
-    while (cur != NULL)
-      {
-        if (xmlIsBlankNode(cur)) 
-	  {
-	    cur = cur->next;
-	    continue;
-	  }
-
-        if (strcmp((char*)cur->name, "position") == 0)
-	  {
-	    pos = XMLhelper::parse_vector (doc, cur);
-	  }
-        else if (strcmp((char*)cur->name, "target") == 0)
-	  {
-	    xmlNodePtr ncur = cur->children;
-
-	    if (xmlIsBlankNode(ncur)) ncur = ncur->next;
-	    
-	    if (ncur != NULL)
-	      target_pos = XMLhelper::parse_vector (doc, ncur);
-	    else
-	      std::cout << "TeleporterData::create (): <target> is empty" << std::endl;
-	  }
-        else
-	  {
-	    std::cout << "TeleportData::create (): Unhandled " << cur->name << std::endl;
-	  }
-
-        cur = cur->next;
-      }
-  }
-
-  WorldObj* 
-  TeleporterData::create_WorldObj ()
-  {
-    return new WorldObjs::Teleporter(this);
-  }
-
-  EditorObjLst
-  TeleporterData::create_EditorObj ()
-  {
-    std::cout << "TeleportData::create_EditorObj () " << std::endl;
-    EditorObjLst objs(2);
-  
-    EditorObjs::TeleporterObj*       teleporter        = new EditorObjs::TeleporterObj(this);
-    EditorObjs::TeleporterTargetObj* teleporter_target = new EditorObjs::TeleporterTargetObj(teleporter);
-
-    objs[0] = teleporter;
-    objs[1] = teleporter_target;
-
-    std::cout << "TeleportData::create_EditorObj (): done" << std::endl;
-
-    return objs;
-  }
-
+TeleporterData::TeleporterData () 
+  : sprite("teleporter", "worldobjs", 20.0f, Sprite::NONE, Sprite::ONCE),
+    target_sprite("teleportertarget", "worldobjs", 20.0f, Sprite::NONE, Sprite::ONCE)
+{
 }
+
+TeleporterData::TeleporterData (const TeleporterData& data) : WorldObjData(data),
+							      pos(data.pos),
+							      target_pos(data.target_pos),
+							      sprite(data.sprite),
+							      target_sprite(data.target_sprite)
+{
+}
+
+void 
+TeleporterData::write_xml (std::ostream& xml)
+{
+  xml << "  <worldobj type=\"teleporter\">";
+  XMLhelper::write_vector_xml (xml, pos);
+  xml << "    <target>" << std::endl;
+  XMLhelper::write_vector_xml (xml, target_pos);
+  xml << "    </target>" << std::endl;
+  xml << "  </worldobj>" << std::endl;
+}
+
+TeleporterData::TeleporterData (xmlDocPtr doc, xmlNodePtr cur)
+{
+  cur = cur->children;
+  
+  while (cur != NULL)
+    {
+      if (xmlIsBlankNode(cur)) 
+	{
+	  cur = cur->next;
+	  continue;
+	}
+
+      if (strcmp((char*)cur->name, "position") == 0)
+	{
+	  pos = XMLhelper::parse_vector (doc, cur);
+	}
+      else if (strcmp((char*)cur->name, "target") == 0)
+	{
+	  xmlNodePtr ncur = cur->children;
+
+	  if (xmlIsBlankNode(ncur)) ncur = ncur->next;
+	    
+	  if (ncur != NULL)
+	    target_pos = XMLhelper::parse_vector (doc, ncur);
+	  else
+	    std::cout << "TeleporterData::create (): <target> is empty" << std::endl;
+	}
+      else
+	{
+	  std::cout << "TeleportData::create (): Unhandled " << cur->name << std::endl;
+	}
+
+      cur = cur->next;
+    }
+}
+
+WorldObj* 
+TeleporterData::create_WorldObj ()
+{
+  return new WorldObjs::Teleporter(this);
+}
+
+EditorObjLst
+TeleporterData::create_EditorObj ()
+{
+  std::cout << "TeleportData::create_EditorObj () " << std::endl;
+  EditorObjLst objs(2);
+  
+  EditorObjs::TeleporterObj*       teleporter        = new EditorObjs::TeleporterObj(this);
+  EditorObjs::TeleporterTargetObj* teleporter_target = new EditorObjs::TeleporterTargetObj(teleporter);
+
+  objs[0] = teleporter;
+  objs[1] = teleporter_target;
+
+  std::cout << "TeleportData::create_EditorObj (): done" << std::endl;
+
+  return objs;
+}
+
+} // namespace WorldObjsData
 
 /* EOF */

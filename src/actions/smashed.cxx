@@ -1,4 +1,4 @@
-//  $Id: smashed.cxx,v 1.5 2002/09/04 20:30:29 grumbel Exp $
+//  $Id: smashed.cxx,v 1.6 2002/09/10 19:24:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,25 +22,26 @@
 
 namespace Actions {
 
-  void
-  Smashed::init (void)
-  {
-    sprite = Sprite ("Pingus/bomber0", "pingus");
-    sound_played = false;  
-  }
-
-  void 
-  Smashed::draw (GraphicContext& gc)
-  {
-    gc.draw (sprite, pingu->get_pos ());
-  }
-
-  void
-  Smashed::update(float /*delta*/)
-  {
-    //  pingu->particle->add_pingu_explo(pingu->x_pos, pingu->y_pos - 16);
-    pingu->set_status(PS_DEAD);
-  }
-
+void
+Smashed::init (void)
+{
+  sprite = Sprite ("Pingus/bomber0", "pingus");
+  sound_played = false;  
 }
+
+void 
+Smashed::draw (GraphicContext& gc)
+{
+  gc.draw (sprite, pingu->get_pos ());
+}
+
+void
+Smashed::update(float /*delta*/)
+{
+  //  pingu->particle->add_pingu_explo(pingu->x_pos, pingu->y_pos - 16);
+  pingu->set_status(PS_DEAD);
+}
+
+} // namespace Actions
+
 /* EOF */

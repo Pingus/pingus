@@ -1,4 +1,4 @@
-//  $Id: smasher_obj.hxx,v 1.4 2002/09/10 14:33:07 grumbel Exp $
+//  $Id: smasher_obj.hxx,v 1.5 2002/09/10 19:24:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,36 +23,36 @@
 #include "../editor/sprite_editorobj.hxx"
 
 namespace WorldObjsData {
-  class SmasherData;
+class SmasherData;
 }
 
 namespace EditorObjs {
 
 class SmasherObj : public SpriteEditorObj
 {
-  private:
-    int frame;
-    WorldObjsData::SmasherData* const data;
+private:
+  int frame;
+  WorldObjsData::SmasherData* const data;
   
-  public:
-    SmasherObj (const WorldObjsData::SmasherData& data_);
-   ~SmasherObj ();
+public:
+  SmasherObj (const WorldObjsData::SmasherData& data_);
+  ~SmasherObj ();
 
-    static EditorObjLst create (const CL_Vector& pos);
+  static EditorObjLst create (const CL_Vector& pos);
    
-    EditorObj* duplicate ();
+  EditorObj* duplicate ();
     
-    void write_xml (std::ostream& xml);
-    void draw (EditorView* view);
+  void write_xml (std::ostream& xml);
+  void draw (EditorView* view);
     
-    std::string status_line ();
+  std::string status_line ();
   
-  private:
-    SmasherObj (const SmasherObj&);
-    SmasherObj operator= (const SmasherObj&);
+private:
+  SmasherObj (const SmasherObj&);
+  SmasherObj operator= (const SmasherObj&);
 };
 
-}
+} // namespace EditorObjs
 
 #endif
 

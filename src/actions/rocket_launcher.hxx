@@ -1,4 +1,4 @@
-//  $Id: rocket_launcher.hxx,v 1.7 2002/09/04 20:30:29 grumbel Exp $
+//  $Id: rocket_launcher.hxx,v 1.8 2002/09/10 19:24:19 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,29 +25,29 @@
 
 namespace Actions {
 
-  class RocketLauncher : public PinguAction
-  {
-  private:
-    Sprite sprite;
-    bool launched;
-  public:
-    RocketLauncher () {}
-    ~RocketLauncher () {}
+class RocketLauncher : public PinguAction
+{
+private:
+  Sprite sprite;
+  bool launched;
+public:
+  RocketLauncher () {}
+  ~RocketLauncher () {}
 
-    void  init ();
+  void  init ();
   
-    std::string get_name () const { return "RocketLauncher"; }
-    ActionName get_type () const { return Actions::Rocketlauncher; }
+  std::string get_name () const { return "RocketLauncher"; }
+  ActionName get_type () const { return Actions::Rocketlauncher; }
   
-    void draw (GraphicContext& gc);
-    void update (float delta);
+  void draw (GraphicContext& gc);
+  void update (float delta);
   
-  private:
-    RocketLauncher (const RocketLauncher&);
-    RocketLauncher operator= (const RocketLauncher&);
-  };
+private:
+  RocketLauncher (const RocketLauncher&);
+  RocketLauncher operator= (const RocketLauncher&);
+};
 
-}
+} // namespace Actions
 
 #endif
 

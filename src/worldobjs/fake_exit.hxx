@@ -1,4 +1,4 @@
-//  $Id: fake_exit.hxx,v 1.2 2002/09/05 11:26:35 grumbel Exp $
+//  $Id: fake_exit.hxx,v 1.3 2002/09/10 19:24:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,38 +22,41 @@
 
 #include "../worldobj.hxx"
 
-namespace WorldObjsData {
-  class FakeExitData;
-}
-
 class Pingu;
+
+namespace WorldObjsData {
+class FakeExitData;
+} // namespace WorldObjsData
 
 namespace WorldObjs {
 
-  class FakeExit : public WorldObj
-  {
-  private:
-    bool smashing;
-    WorldObjsData::FakeExitData* const data;
+/** The FakeExit is an object that looks similar to the traditional
+    IceExit, but is really a trap that smashed all pingus that try to
+    enter it. */
+class FakeExit : public WorldObj
+{
+private:
+  bool smashing;
+  WorldObjsData::FakeExitData* const data;
     
-  public:
-    FakeExit (WorldObjsData::FakeExitData* data_);
-   ~FakeExit ();
+public:
+  FakeExit (WorldObjsData::FakeExitData* data_);
+  ~FakeExit ();
 
-    float get_z_pos () const;
+  float get_z_pos () const;
     
-    void draw (GraphicContext& gc);
+  void draw (GraphicContext& gc);
 
-    void update (float delta);
+  void update (float delta);
 
-  private:
-    void catch_pingu (Pingu*);
+private:
+  void catch_pingu (Pingu*);
     
-    FakeExit (const FakeExit&);
-    FakeExit operator= (const FakeExit&);
-  };
+  FakeExit (const FakeExit&);
+  FakeExit operator= (const FakeExit&);
+};
 
-}
+} // namespace WorldObjs
 
 #endif
 

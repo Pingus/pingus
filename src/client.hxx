@@ -1,4 +1,4 @@
-//  $Id: client.hxx,v 1.14 2002/09/05 12:24:01 grumbel Exp $
+//  $Id: client.hxx,v 1.15 2002/09/10 19:24:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,18 +26,16 @@
 #include "result.hxx"
 #include "gui_screen.hxx"
 
-namespace Input 
-{
-  class Controller;
-  class ButtonEvent;
-  class PointerEvent;
-  class AxisEvent;
-}
+namespace Input {
+class Controller;
+class ButtonEvent;
+class PointerEvent;
+class AxisEvent;
+} // namespace Input
 
-namespace GUI
-{
-  class RootGUIManager;
-}
+namespace GUI {
+class RootGUIManager;
+} // namespace GUI
 
 class CL_Key;
 class CL_Vector;

@@ -1,4 +1,4 @@
-//  $Id: bumper_data.cxx,v 1.2 2002/09/10 15:36:44 grumbel Exp $
+//  $Id: bumper_data.cxx,v 1.3 2002/09/10 19:24:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,52 +26,52 @@
 
 namespace WorldObjsData {
 
-  BumperData::BumperData ()
-  {
-  }
-
-  BumperData::BumperData (xmlDocPtr doc, xmlNodePtr cur) : surface(PingusResource::load_surface("Traps/bumper", "traps"))
-  {
-    cur = cur->children;
-    while (cur)
-      {
-        XMLhelper::skip_blank(cur);
-
-        if (strcmp(reinterpret_cast<const char*>(cur->name), "position") == 0) 
-	  {
-	    pos = XMLhelper::parse_vector(doc, cur);
-	  }
-	  
-	cur = cur->next;
-      }
-  }
-
-  BumperData::BumperData (const BumperData& old) : WorldObjData(old),
-                                                   surface(old.surface),
-						   pos(old.pos)
-  {
-  }
-
-  void
-  BumperData::write_xml (std::ostream& xml)
-  {
-    xml << "<worldobj type=\"bumper\">\n\t";
-    XMLhelper::write_vector_xml(xml, pos);
-    xml << "</worldobj>\n\n";
-  }
-
-  WorldObj*
-  BumperData::create_WorldObj ()
-  {
-    return new WorldObjs::Bumper(this);
-  }
-
-  EditorObjLst
-  BumperData::create_EditorObj ()
-  {
-    return EditorObjLst(1, new EditorObjs::BumperObj(this));
-  }
-
+BumperData::BumperData ()
+{
 }
+
+BumperData::BumperData (xmlDocPtr doc, xmlNodePtr cur) : surface(PingusResource::load_surface("Traps/bumper", "traps"))
+{
+  cur = cur->children;
+  while (cur)
+    {
+      XMLhelper::skip_blank(cur);
+
+      if (strcmp(reinterpret_cast<const char*>(cur->name), "position") == 0) 
+	{
+	  pos = XMLhelper::parse_vector(doc, cur);
+	}
+	  
+      cur = cur->next;
+    }
+}
+
+BumperData::BumperData (const BumperData& old) : WorldObjData(old),
+						 surface(old.surface),
+						 pos(old.pos)
+{
+}
+
+void
+BumperData::write_xml (std::ostream& xml)
+{
+  xml << "<worldobj type=\"bumper\">\n\t";
+  XMLhelper::write_vector_xml(xml, pos);
+  xml << "</worldobj>\n\n";
+}
+
+WorldObj*
+BumperData::create_WorldObj ()
+{
+  return new WorldObjs::Bumper(this);
+}
+
+EditorObjLst
+BumperData::create_EditorObj ()
+{
+  return EditorObjLst(1, new EditorObjs::BumperObj(this));
+}
+
+} // WorldObjsData
 
 /* EOF */

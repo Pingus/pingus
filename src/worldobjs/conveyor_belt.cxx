@@ -1,4 +1,4 @@
-//  $Id: conveyor_belt.cxx,v 1.9 2002/09/04 19:40:20 grumbel Exp $
+//  $Id: conveyor_belt.cxx,v 1.10 2002/09/10 19:24:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,6 +27,8 @@
 #include "../xml_helper.hxx"
 #include "conveyor_belt.hxx"
 #include "../pingu.hxx"
+
+namespace WorldObjsData {
 
 ConveyorBeltData::ConveyorBeltData () : width(5), speed(2)
 {
@@ -98,20 +100,24 @@ ConveyorBeltData::write_xml(std::ostream& xml)
 WorldObj* 
 ConveyorBeltData::create_WorldObj ()
 {
-  return new ConveyorBelt (this);
+  return new WorldObjs::ConveyorBelt (this);
 }
 
 EditorObjLst
 ConveyorBeltData::create_EditorObj ()
 {
   EditorObjLst lst; 
-  lst.push_back(new EditorConveyorBeltObj (*this));
+  lst.push_back(new EditorObjs::EditorConveyorBeltObj (*this));
   return lst;
 }
+
+} // namespace WorldObjsData
 
 /***********************/
 /*     ConveyorBelt    */
 /***********************/
+
+namespace WorldObjs {
 
 ConveyorBelt::ConveyorBelt (WorldObjData* data)
 {
@@ -175,9 +181,13 @@ ConveyorBelt::update(float delta)
     }
 }
 
+} // namespace WorldObjs
+
 /*************************/
 /* EditorConveyorBeltObj */
 /*************************/
+
+namespace EditorObjs {
 
 EditorConveyorBeltObj::EditorConveyorBeltObj (const ConveyorBeltData& data)
   : ConveyorBeltData (data)
@@ -267,5 +277,7 @@ EditorConveyorBeltObj::make_smaller ()
   if (ConveyorBeltData::width < 0)
     ConveyorBeltData::width = 0;
 }
+
+} // namespace EditorObjs
 
 /* EOF */

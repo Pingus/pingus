@@ -1,4 +1,4 @@
-//  $Id: conveyor_belt.hxx,v 1.7 2002/09/04 19:40:20 grumbel Exp $
+//  $Id: conveyor_belt.hxx,v 1.8 2002/09/10 19:24:19 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,8 @@
 #include "../worldobj.hxx"
 #include "../worldobj_data.hxx"
 #include "../editor/rect_editorobj.hxx"
+
+namespace WorldObjsData {
 
 class ConveyorBeltData : public WorldObjData
 {
@@ -49,7 +51,13 @@ public:
   EditorObjLst create_EditorObj ();
 };
 
-class ConveyorBelt : private ConveyorBeltData,
+} // namespace WorldObjsData
+
+
+namespace WorldObjs {
+
+// FIXME: Make ConveyorBeltData
+class ConveyorBelt : private WorldObjsData::ConveyorBeltData,
 		     public  WorldObj
 {
 private:
@@ -71,8 +79,12 @@ private:
   ConveyorBelt operator= (const ConveyorBelt&);
 };
 
+} // namespace WorldObjs
+
+namespace EditorObjs {
+
 class EditorConveyorBeltObj : public RectEditorObj,
-			      public ConveyorBeltData
+			      public WorldObjsData::ConveyorBeltData
 {
 private:
   CL_Surface left_sur;
@@ -112,6 +124,8 @@ private:
   EditorConveyorBeltObj (const EditorConveyorBeltObj&);
   EditorConveyorBeltObj operator= (const EditorConveyorBeltObj&);
 };
+
+} // namespace EditorObjs
 
 #endif
 

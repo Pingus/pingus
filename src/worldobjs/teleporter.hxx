@@ -1,4 +1,4 @@
-//  $Id: teleporter.hxx,v 1.11 2002/09/09 16:13:44 torangan Exp $
+//  $Id: teleporter.hxx,v 1.12 2002/09/10 19:24:19 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,30 +23,30 @@
 #include "../worldobj.hxx"
 
 namespace WorldObjsData {
-  class TeleporterData;
+class TeleporterData;
 }
 
 namespace WorldObjs {
 
-  class Teleporter : public WorldObj
-  {
-  private:
-    WorldObjsData::TeleporterData* const data;
-  public:
-    Teleporter (WorldObjsData::TeleporterData* data_);
+class Teleporter : public WorldObj
+{
+private:
+  WorldObjsData::TeleporterData* const data;
+public:
+  Teleporter (WorldObjsData::TeleporterData* data_);
 
-    int   get_z_pos () { return 0; }
+  int   get_z_pos () { return 0; }
     
-    void  draw (GraphicContext& gc);
-    void  update (float delta);
-    float get_z_pos () const;
+  void  draw (GraphicContext& gc);
+  void  update (float delta);
+  float get_z_pos () const;
   
-  private:
-    Teleporter (const Teleporter&);
-    Teleporter operator= (const Teleporter&);
-  };
+private:
+  Teleporter (const Teleporter&);
+  Teleporter operator= (const Teleporter&);
+};
 
-}
+} // namespace WorldObjs
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: spike.cxx,v 1.2 2002/09/05 11:26:35 grumbel Exp $
+//  $Id: spike.cxx,v 1.3 2002/09/10 19:24:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,73 +26,73 @@
 
 namespace WorldObjs {
 
-  Spike::Spike (WorldObjsData::SpikeData* data_) : killing(false),
-                                                   data (new WorldObjsData::SpikeData(*data_))
-  {
-    data->counter.set_size(data->surface.get_num_frames());
-    data->counter.set_type(GameCounter::once);
-    data->counter.set_speed(1);
+Spike::Spike (WorldObjsData::SpikeData* data_) : killing(false),
+						 data (new WorldObjsData::SpikeData(*data_))
+{
+  data->counter.set_size(data->surface.get_num_frames());
+  data->counter.set_type(GameCounter::once);
+  data->counter.set_speed(1);
+  data->counter = 0;
+}
+
+Spike::~Spike ()
+{
+  delete data;
+}
+
+float
+Spike::get_z_pos () const
+{
+  return data->pos.z;
+}
+
+void
+Spike::draw (GraphicContext& gc)
+{
+  if (killing) {
+    gc.draw (data->surface, data->pos, data->counter);
+  } else {
+    // do nothing
+  }
+}
+
+void
+Spike::update (float /*delta*/)
+{
+  if (killing)
+    ++data->counter;
+
+  PinguHolder* holder = world->get_pingu_p ();
+  for (PinguIter pingu = holder->begin (); pingu != holder->end (); ++pingu){
+    catch_pingu(*pingu);
+  }
+
+  if (data->counter == static_cast<int>(data->surface.get_num_frames()) - 1) {
+    killing = false;
     data->counter = 0;
   }
-
-  Spike::~Spike ()
-  {
-    delete data;
-  }
-
-  float
-  Spike::get_z_pos () const
-  {
-    return data->pos.z;
-  }
-
-  void
-  Spike::draw (GraphicContext& gc)
-  {
-    if (killing) {
-      gc.draw (data->surface, data->pos, data->counter);
-    } else {
-      // do nothing
-    }
-  }
-
-  void
-  Spike::update (float /*delta*/)
-  {
-    if (killing)
-      ++data->counter;
-
-    PinguHolder* holder = world->get_pingu_p ();
-    for (PinguIter pingu = holder->begin (); pingu != holder->end (); ++pingu){
-         catch_pingu(*pingu);
-    }
-
-    if (data->counter == static_cast<int>(data->surface.get_num_frames()) - 1) {
-      killing = false;
-      data->counter = 0;
-    }
-  }
-
-  void
-  Spike::catch_pingu (Pingu* pingu)
-  {
-    if (!killing) {
-      if (   pingu->get_x () > data->pos.x + 16 - 5 && pingu->get_x () < data->pos.x + 16 + 5
-	  && pingu->get_y () > data->pos.y          && pingu->get_y () < data->pos.y + 32) 
-        {
-	  data->counter = 0;
-	  killing = true;
-        }
-    } else {
-      if (   data->counter == 3 
-          && pingu->get_x () > data->pos.x +16 - 12  && pingu->get_x () < data->pos.x + 16 + 12
-	  && pingu->get_y () > data->pos.y           && pingu->get_y () < data->pos.y + 32) 
-        {
-	  pingu->set_status(PS_DEAD);
-        }
-    }  
-  }
-
 }
+
+void
+Spike::catch_pingu (Pingu* pingu)
+{
+  if (!killing) {
+    if (   pingu->get_x () > data->pos.x + 16 - 5 && pingu->get_x () < data->pos.x + 16 + 5
+	   && pingu->get_y () > data->pos.y          && pingu->get_y () < data->pos.y + 32) 
+      {
+	data->counter = 0;
+	killing = true;
+      }
+  } else {
+    if (   data->counter == 3 
+	   && pingu->get_x () > data->pos.x +16 - 12  && pingu->get_x () < data->pos.x + 16 + 12
+	   && pingu->get_y () > data->pos.y           && pingu->get_y () < data->pos.y + 32) 
+      {
+	pingu->set_status(PS_DEAD);
+      }
+  }  
+}
+
+} // namespace WorldObjs
 
 /* EOF */

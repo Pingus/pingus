@@ -1,4 +1,4 @@
-//  $Id: digger.cxx,v 1.11 2002/09/04 20:30:29 grumbel Exp $
+//  $Id: digger.cxx,v 1.12 2002/09/10 19:24:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,81 +30,81 @@
 
 namespace Actions {
 
-  Digger::Digger () : digger_c(0)
-  {
-  }
-
-  void
-  Digger::init (void)
-  {
-    digger_radius = PingusResource::load_surface ("Other/digger_radius", "pingus");
-    digger_radius_gfx = PingusResource::load_surface ("Other/digger_radius_gfx", "pingus");
-    sprite = Sprite (std::string("Pingus/digger") + to_string(pingu->get_owner ()),
-		     "pingus");
-#if 0
-    // FIXME: Just an idea...
-    sprite = Sprite (std::string("Pingus/digger") + to_string(pingu->get_owner ()),
-		     "pingus", PropertyMgr::instance()->get_int ("actions/digger/sprite-fps", 20));
-#endif
-    sprite.set_align_center_bottom ();
-  }
-
-  void
-  Digger::update (float delta)
-  {
-    sprite.update (delta);
-  
-    if (++digger_c >= 3)
-      {
-        digger_c = 0;
-        dig();
-      }
-
-    if (!have_something_to_dig())
-      { 
-        dig ();
-        pingu->set_action(Actions::Walker);
-      }
-  }
-
-  bool   
-  Digger::have_something_to_dig ()
-  {
-    if (rel_getpixel(0, -1) !=  GroundpieceData::GP_NOTHING)
-      {
-        if (rel_getpixel(0, -1) ==  GroundpieceData::GP_SOLID)
-	  {
-	    PingusSound::play_sound("sounds/chink.wav");
-	    return false;  
-	  }
-        else
-	  return true;
-      }
-    else
-      {
-        return false;
-      }
-  }
-
-  void
-  Digger::dig ()
-  {
-    WorldObj::get_world()->get_colmap()->remove(digger_radius, 
-                                                static_cast<int>(pingu->get_x () - 16),
-						static_cast<int>(pingu->get_y() - 14));
-    WorldObj::get_world()->get_gfx_map()->remove(digger_radius_gfx,
-                                                 static_cast<int>(pingu->get_x () - 16),
-						 static_cast<int>(pingu->get_y() - 14));
-      
-    pingu->set_y(pingu->get_y() + 1);
-  }
-
-  void  
-  Digger::draw (GraphicContext& gc)
-  {
-    gc.draw(sprite, pingu->get_pos ());
-  }
-
+Digger::Digger () : digger_c(0)
+{
 }
+
+void
+Digger::init (void)
+{
+  digger_radius = PingusResource::load_surface ("Other/digger_radius", "pingus");
+  digger_radius_gfx = PingusResource::load_surface ("Other/digger_radius_gfx", "pingus");
+  sprite = Sprite (std::string("Pingus/digger") + to_string(pingu->get_owner ()),
+		   "pingus");
+#if 0
+  // FIXME: Just an idea...
+  sprite = Sprite (std::string("Pingus/digger") + to_string(pingu->get_owner ()),
+		   "pingus", PropertyMgr::instance()->get_int ("actions/digger/sprite-fps", 20));
+#endif
+  sprite.set_align_center_bottom ();
+}
+
+void
+Digger::update (float delta)
+{
+  sprite.update (delta);
+  
+  if (++digger_c >= 3)
+    {
+      digger_c = 0;
+      dig();
+    }
+
+  if (!have_something_to_dig())
+    { 
+      dig ();
+      pingu->set_action(Actions::Walker);
+    }
+}
+
+bool   
+Digger::have_something_to_dig ()
+{
+  if (rel_getpixel(0, -1) !=  GroundpieceData::GP_NOTHING)
+    {
+      if (rel_getpixel(0, -1) ==  GroundpieceData::GP_SOLID)
+	{
+	  PingusSound::play_sound("sounds/chink.wav");
+	  return false;  
+	}
+      else
+	return true;
+    }
+  else
+    {
+      return false;
+    }
+}
+
+void
+Digger::dig ()
+{
+  WorldObj::get_world()->get_colmap()->remove(digger_radius, 
+					      static_cast<int>(pingu->get_x () - 16),
+					      static_cast<int>(pingu->get_y() - 14));
+  WorldObj::get_world()->get_gfx_map()->remove(digger_radius_gfx,
+					       static_cast<int>(pingu->get_x () - 16),
+					       static_cast<int>(pingu->get_y() - 14));
+      
+  pingu->set_y(pingu->get_y() + 1);
+}
+
+void  
+Digger::draw (GraphicContext& gc)
+{
+  gc.draw(sprite, pingu->get_pos ());
+}
+
+} // namespace Actions
 
 /* EOF */

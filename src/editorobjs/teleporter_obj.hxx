@@ -1,4 +1,4 @@
-//  $Id: teleporter_obj.hxx,v 1.2 2002/09/10 12:46:55 grumbel Exp $
+//  $Id: teleporter_obj.hxx,v 1.3 2002/09/10 19:24:19 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,7 +25,7 @@
 class EditorView;
 
 namespace WorldObjsData {
-  class TeleporterData;
+class TeleporterData;
 }
 
 namespace EditorObjs {

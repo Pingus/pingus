@@ -1,4 +1,4 @@
-//  $Id: boarder.hxx,v 1.8 2002/09/04 20:30:29 grumbel Exp $
+//  $Id: boarder.hxx,v 1.9 2002/09/10 19:24:19 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,33 +25,33 @@
 
 namespace Actions {
 
-  /** The Boarder action causes a pingu to use a skateboard to move
-      forward. */
-  class Boarder : public PinguAction
-  {
-  private:
-    //double counter;
-    double x_pos;
-    double speed;
-    Sprite sprite;
-  public:
-    Boarder ();
-    void  init();
+/** The Boarder action causes a pingu to use a skateboard to move
+    forward. */
+class Boarder : public PinguAction
+{
+private:
+  //double counter;
+  double x_pos;
+  double speed;
+  Sprite sprite;
+public:
+  Boarder ();
+  void  init();
   
-    std::string get_name () const { return "Boarder"; }
-    ActionName get_type () const { return Actions::Boarder; }
+  std::string get_name () const { return "Boarder"; }
+  ActionName get_type () const { return Actions::Boarder; }
   
-    void  draw (GraphicContext& gc);
-    void  update (float delta);
+  void  draw (GraphicContext& gc);
+  void  update (float delta);
   
-  private:
-    bool on_ground ();
+private:
+  bool on_ground ();
   
-    Boarder (const Boarder&); 
-    Boarder operator= (const Boarder&); 
-  };
+  Boarder (const Boarder&); 
+  Boarder operator= (const Boarder&); 
+};
 
-}
+} // namespace Actions
 
 #endif
 

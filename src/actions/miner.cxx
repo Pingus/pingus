@@ -1,4 +1,4 @@
-// $Id: miner.cxx,v 1.9 2002/09/04 20:30:29 grumbel Exp $
+// $Id: miner.cxx,v 1.10 2002/09/10 19:24:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -97,6 +97,6 @@ namespace Actions {
     gc.draw (sprite, pingu->get_pos());
   }
 
-}
+} // namespace Actions
 
 /* EOF */

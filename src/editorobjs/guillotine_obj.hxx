@@ -1,4 +1,4 @@
-//  $Id: guillotine_obj.hxx,v 1.3 2002/09/09 16:13:44 torangan Exp $
+//  $Id: guillotine_obj.hxx,v 1.4 2002/09/10 19:24:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,36 +23,36 @@
 #include "../editor/sprite_editorobj.hxx"
 
 namespace WorldObjsData {
-  class GuillotineData;
+class GuillotineData;
 }
 
 namespace EditorObjs {
 
 class GuillotineObj : public SpriteEditorObj
 {
-  private:
-    int frame;
-    WorldObjsData::GuillotineData* const data;
+private:
+  int frame;
+  WorldObjsData::GuillotineData* const data;
   
-  public:
-    GuillotineObj (WorldObjsData::GuillotineData* data_);
-   ~GuillotineObj ();
+public:
+  GuillotineObj (WorldObjsData::GuillotineData* data_);
+  ~GuillotineObj ();
    
-    static EditorObjLst create (const CL_Vector& pos);
+  static EditorObjLst create (const CL_Vector& pos);
 
-    EditorObj* duplicate ();
+  EditorObj* duplicate ();
     
-    void write_xml (std::ostream& xml);
-    void draw (EditorView* view);
+  void write_xml (std::ostream& xml);
+  void draw (EditorView* view);
     
-    std::string status_line ();
+  std::string status_line ();
   
-  private:
-    GuillotineObj (const GuillotineObj&);
-    GuillotineObj operator= (const GuillotineObj&);
+private:
+  GuillotineObj (const GuillotineObj&);
+  GuillotineObj operator= (const GuillotineObj&);
 };
 
-}
+} // namespace EditorObjs
 
 #endif
 

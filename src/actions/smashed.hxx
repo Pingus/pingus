@@ -1,4 +1,4 @@
-//  $Id: smashed.hxx,v 1.7 2002/09/04 20:30:29 grumbel Exp $
+//  $Id: smashed.hxx,v 1.8 2002/09/10 19:24:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,30 +25,30 @@
 
 namespace Actions {
 
-  class Smashed : public PinguAction
-  {
-  private:
-    bool particle_thrown;
-    bool sound_played;
-    Sprite sprite;
+class Smashed : public PinguAction
+{
+private:
+  bool particle_thrown;
+  bool sound_played;
+  Sprite sprite;
   
-  public:
-    Smashed () { }
-    void init (void);
-    std::string get_name () const { return "Smashed"; }
-    ActionName get_type () const { return Actions::Smashed; }
+public:
+  Smashed () { }
+  void init (void);
+  std::string get_name () const { return "Smashed"; }
+  ActionName get_type () const { return Actions::Smashed; }
 
-    void draw (GraphicContext& gc);
-    void update (float delta);
+  void draw (GraphicContext& gc);
+  void update (float delta);
 
-    bool catchable () { return false; }
+  bool catchable () { return false; }
   
-  private:
-    Smashed (const Smashed&);
-    Smashed operator= (const Smashed&);
-  };
+private:
+  Smashed (const Smashed&);
+  Smashed operator= (const Smashed&);
+};
 
-}
+} // namespace Actions
 
 #endif
 

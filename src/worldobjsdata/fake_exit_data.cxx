@@ -1,4 +1,4 @@
-//  $Id: fake_exit_data.cxx,v 1.2 2002/09/10 15:36:44 grumbel Exp $
+//  $Id: fake_exit_data.cxx,v 1.3 2002/09/10 19:24:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,52 +26,52 @@
 
 namespace WorldObjsData {
 
-  FakeExitData::FakeExitData ()
-  {
-  }
-
-  FakeExitData::FakeExitData (xmlDocPtr doc, xmlNodePtr cur) : surface(PingusResource::load_surface("Traps/fake_exit", "traps"))
-  {
-    cur = cur->children;
-    while (cur)
-      {
-        XMLhelper::skip_blank(cur);
-
-        if (! strcmp(reinterpret_cast<const char*>(cur->name), "position")) 
-	  {
-	    pos = XMLhelper::parse_vector(doc, cur);
-	  }
-	  
-	cur = cur->next;
-      }
-  }
-
-  FakeExitData::FakeExitData (const FakeExitData& old) : WorldObjData(old),
-                                                         surface(old.surface),
-	                                                 pos(old.pos)
-  {
-  }
-
-  void
-  FakeExitData::write_xml (std::ostream& xml)
-  {
-    xml << "<worldobj type=\"fake_exit\">\n\t";
-    XMLhelper::write_vector_xml(xml, pos);
-    xml << "</worldobj>\n\n";
-  }
-
-  WorldObj*
-  FakeExitData::create_WorldObj ()
-  {
-    return new WorldObjs::FakeExit(this);
-  }
-
-  EditorObjLst
-  FakeExitData::create_EditorObj ()
-  {
-    return EditorObjLst(1, new EditorObjs::FakeExitObj(this));
-  }
-
+FakeExitData::FakeExitData ()
+{
 }
+
+FakeExitData::FakeExitData (xmlDocPtr doc, xmlNodePtr cur) : surface(PingusResource::load_surface("Traps/fake_exit", "traps"))
+{
+  cur = cur->children;
+  while (cur)
+    {
+      XMLhelper::skip_blank(cur);
+
+      if (! strcmp(reinterpret_cast<const char*>(cur->name), "position")) 
+	{
+	  pos = XMLhelper::parse_vector(doc, cur);
+	}
+	  
+      cur = cur->next;
+    }
+}
+
+FakeExitData::FakeExitData (const FakeExitData& old) : WorldObjData(old),
+						       surface(old.surface),
+						       pos(old.pos)
+{
+}
+
+void
+FakeExitData::write_xml (std::ostream& xml)
+{
+  xml << "<worldobj type=\"fake_exit\">\n\t";
+  XMLhelper::write_vector_xml(xml, pos);
+  xml << "</worldobj>\n\n";
+}
+
+WorldObj*
+FakeExitData::create_WorldObj ()
+{
+  return new WorldObjs::FakeExit(this);
+}
+
+EditorObjLst
+FakeExitData::create_EditorObj ()
+{
+  return EditorObjLst(1, new EditorObjs::FakeExitObj(this));
+}
+
+} // namespace WorldObjsData
 
 /* EOF */

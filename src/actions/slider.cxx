@@ -1,4 +1,4 @@
-//  $Id: slider.cxx,v 1.7 2002/09/04 20:30:29 grumbel Exp $
+//  $Id: slider.cxx,v 1.8 2002/09/10 19:24:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,60 +24,60 @@
 
 namespace Actions {
 
-  Slider::Slider ()
-  {
-  }
-
-  void
-  Slider::init (void)
-  {
-    sprite = Sprite("Pingus/slider" + to_string(pingu->get_owner ()),
-		    "pingus");
-    sprite.set_align_center_bottom();
-    speed = 10;
-  }
-
-  void
-  Slider::update (float delta)
-  {
-    if (pingu->direction.is_left())
-      sprite.set_direction(Sprite::LEFT);
-    else
-      sprite.set_direction(Sprite::RIGHT);
-
-    sprite.update (delta);
-
-    for (int i = 0; i < speed; ++i)
-      {
-        pingu->set_x(pingu->get_x() + pingu->direction);
-      
-        if (rel_getpixel(0, -1) ==  GroundpieceData::GP_NOTHING)
-	  {
-	    speed = (speed > 5) ? 5 : speed;
-
-            //FIXME CL_Vector
-	    CL_Vector temp(pingu->get_velocity());
-	    if (pingu->direction.is_right()) {
-	      pingu->set_velocity(temp + CL_Vector(speed, 0.0));
-	    } else {
-	      pingu->set_velocity(temp + CL_Vector(-speed, 0.0));
-	    }
-
-	    pingu->set_action(Actions::Walker);
-	  }
-      }
-
-    speed -= 7 * delta;
-    if (speed < 1)
-      pingu->set_action(Actions::Walker);
-  }
-
-  void
-  Slider::draw (GraphicContext& gc)
-  {
-    gc.draw (sprite, pingu->get_pos() + CL_Vector(0, -2));
-  }
-
+Slider::Slider ()
+{
 }
+
+void
+Slider::init (void)
+{
+  sprite = Sprite("Pingus/slider" + to_string(pingu->get_owner ()),
+		  "pingus");
+  sprite.set_align_center_bottom();
+  speed = 10;
+}
+
+void
+Slider::update (float delta)
+{
+  if (pingu->direction.is_left())
+    sprite.set_direction(Sprite::LEFT);
+  else
+    sprite.set_direction(Sprite::RIGHT);
+
+  sprite.update (delta);
+
+  for (int i = 0; i < speed; ++i)
+    {
+      pingu->set_x(pingu->get_x() + pingu->direction);
+      
+      if (rel_getpixel(0, -1) ==  GroundpieceData::GP_NOTHING)
+	{
+	  speed = (speed > 5) ? 5 : speed;
+
+	  //FIXME CL_Vector
+	  CL_Vector temp(pingu->get_velocity());
+	  if (pingu->direction.is_right()) {
+	    pingu->set_velocity(temp + CL_Vector(speed, 0.0));
+	  } else {
+	    pingu->set_velocity(temp + CL_Vector(-speed, 0.0));
+	  }
+
+	  pingu->set_action(Actions::Walker);
+	}
+    }
+
+  speed -= 7 * delta;
+  if (speed < 1)
+    pingu->set_action(Actions::Walker);
+}
+
+void
+Slider::draw (GraphicContext& gc)
+{
+  gc.draw (sprite, pingu->get_pos() + CL_Vector(0, -2));
+}
+
+} // namespace Actions
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: angel.hxx,v 1.9 2002/09/04 20:30:29 grumbel Exp $
+//  $Id: angel.hxx,v 1.10 2002/09/10 19:24:19 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,28 +26,28 @@
 
 namespace Actions {
 
-  class Angel : public PinguAction
-  {
-  private:
-    double counter;
-    double x_pos;
-    Sprite sprite;
+class Angel : public PinguAction
+{
+private:
+  double counter;
+  double x_pos;
+  Sprite sprite;
     
-  public:
-    Angel ();
-    void  init ();
-    std::string get_name () const { return "Angel"; }
-    ActionName get_type () const { return Actions::Angel; }
+public:
+  Angel ();
+  void  init ();
+  std::string get_name () const { return "Angel"; }
+  ActionName get_type () const { return Actions::Angel; }
     
-    void  update (float delta);
-    void  draw (GraphicContext& gc);
+  void  update (float delta);
+  void  draw (GraphicContext& gc);
 
-  private:
-    Angel (const Angel&);
-    Angel operator= (const Angel&);
-  };
+private:
+  Angel (const Angel&);
+  Angel operator= (const Angel&);
+};
 
-}
+} // namespace Actions
 
 #endif
 

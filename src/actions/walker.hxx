@@ -1,4 +1,4 @@
-//  $Id: walker.hxx,v 1.7 2002/09/04 20:30:29 grumbel Exp $
+//  $Id: walker.hxx,v 1.8 2002/09/10 19:24:19 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,29 +25,29 @@
 
 namespace Actions {
 
-  class Walker : public PinguAction
-  {
-  private:
-    Sprite walker; 
+class Walker : public PinguAction
+{
+private:
+  Sprite walker; 
 
-    enum { max_steps = 5 }; // max nr. of pixels that pingu can walk up/down
+  enum { max_steps = 5 }; // max nr. of pixels that pingu can walk up/down
 
-  public:
-    Walker () { }
-    void init (void);
+public:
+  Walker () { }
+  void init (void);
 
-    void draw (GraphicContext& gc);
-    void update (float delta);
+  void draw (GraphicContext& gc);
+  void update (float delta);
 
-    std::string get_name () const { return "Walker"; }
-    ActionName get_type () const { return Actions::Walker; }
+  std::string get_name () const { return "Walker"; }
+  ActionName get_type () const { return Actions::Walker; }
   
-  private:
-    Walker (const Walker&);
-    Walker operator= (const Walker&);
-  };
+private:
+  Walker (const Walker&);
+  Walker operator= (const Walker&);
+};
 
-}
+} // namespace Actions
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: jumper.cxx,v 1.9 2002/09/04 20:30:29 grumbel Exp $
+//  $Id: jumper.cxx,v 1.10 2002/09/10 19:24:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,43 +24,43 @@
 
 namespace Actions {
 
-  Jumper::Jumper ()
-  {
-    // do nothing
-  }
-
-  void
-  Jumper::init ()
-  {
-    sprite = Sprite("Pingus/jumper" + to_string(pingu->get_owner ()),
-		    "pingus");
-  }
-
-  void 
-  Jumper::draw (GraphicContext& gc)
-  {
-    gc.draw(sprite, pingu->get_pos ());
-  }
-
-  void
-  Jumper::update (float delta)
-  {
-    //FIXME CL_Vector
-    CL_Vector temp(pingu->get_velocity());
-    
-    if (pingu->direction.is_right()) {
-      pingu->set_velocity(temp + CL_Vector(10.0, -10.0));
-    } else {
-      pingu->set_velocity(temp + CL_Vector(-10.0, -10.0));
-    }
-
-    // Move the pingu in the air, so that it can start 'falling'
-    pingu->set_y(pingu->get_y() - 1);
-
-    pingu->set_action (Actions::Faller);
-    UNUSED_ARG(delta);
-  }
-
+Jumper::Jumper ()
+{
+  // do nothing
 }
+
+void
+Jumper::init ()
+{
+  sprite = Sprite("Pingus/jumper" + to_string(pingu->get_owner ()),
+		  "pingus");
+}
+
+void 
+Jumper::draw (GraphicContext& gc)
+{
+  gc.draw(sprite, pingu->get_pos ());
+}
+
+void
+Jumper::update (float delta)
+{
+  //FIXME CL_Vector
+  CL_Vector temp(pingu->get_velocity());
+    
+  if (pingu->direction.is_right()) {
+    pingu->set_velocity(temp + CL_Vector(10.0, -10.0));
+  } else {
+    pingu->set_velocity(temp + CL_Vector(-10.0, -10.0));
+  }
+
+  // Move the pingu in the air, so that it can start 'falling'
+  pingu->set_y(pingu->get_y() - 1);
+
+  pingu->set_action (Actions::Faller);
+  UNUSED_ARG(delta);
+}
+
+} // namespace Actions
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: guillotine_data.hxx,v 1.1 2002/09/04 14:55:13 torangan Exp $
+//  $Id: guillotine_data.hxx,v 1.2 2002/09/10 19:24:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,32 +29,32 @@
 
 namespace WorldObjsData {
 
-  class GuillotineData : public WorldObjData {
-    public:
-      CL_Surface  surface;
-      CL_Surface  idle_surf;
-      CL_Vector   pos;
-      Direction   direction;
-      GameCounter counter;
-      GameCounter idle_counter;
+class GuillotineData : public WorldObjData {
+public:
+  CL_Surface  surface;
+  CL_Surface  idle_surf;
+  CL_Vector   pos;
+  Direction   direction;
+  GameCounter counter;
+  GameCounter idle_counter;
       
-    public:
-      GuillotineData ();
-      GuillotineData (xmlDocPtr doc, xmlNodePtr node);
-      GuillotineData (const GuillotineData& old);
+public:
+  GuillotineData ();
+  GuillotineData (xmlDocPtr doc, xmlNodePtr node);
+  GuillotineData (const GuillotineData& old);
       
-      void write_xml (std::ostream& xml);
+  void write_xml (std::ostream& xml);
       
-      WorldObj* create_WorldObj ();
+  WorldObj* create_WorldObj ();
       
-      EditorObjLst create_EditorObj ();
+  EditorObjLst create_EditorObj ();
       
-    private:
-      GuillotineData operator= (const GuillotineData&);
+private:
+  GuillotineData operator= (const GuillotineData&);
       
-  };
+};
   
-}
+} // namespace WorldObjsData
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: guillotine_data.cxx,v 1.2 2002/09/10 15:36:44 grumbel Exp $
+//  $Id: guillotine_data.cxx,v 1.3 2002/09/10 19:24:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,60 +28,60 @@
 
 namespace WorldObjsData {
 
-  GuillotineData::GuillotineData ()
-  {
-  }
-
-  GuillotineData::GuillotineData (xmlDocPtr doc, xmlNodePtr cur) 
-                                : surface  (PingusResource::load_surface("Traps/guillotinekill", "traps")),
-			          idle_surf(PingusResource::load_surface("Traps/guillotineidle", "traps"))
-  {
-    if (cur->name)
-      std::cout << (const char*)cur->name << std::endl;
-      
-    cur = cur->children;
-    while (cur)
-      {
-        XMLhelper::skip_blank(cur);
-
-        if (! strcmp(reinterpret_cast<const char*>(cur->name), "position")) 
-	  {
-	    pos = XMLhelper::parse_vector(doc, cur);
-	  }
-	else
-	  std::cout << (const char*)cur->name << std::endl;
-	  
-	cur = cur->next;
-      }
-  }
-
-  GuillotineData::GuillotineData (const GuillotineData& old) : WorldObjData(old),
-                                                               surface(old.surface),
-							       idle_surf(old.idle_surf),	                                                 
-							       pos(old.pos)
-  {
-  }
-
-  void
-  GuillotineData::write_xml (std::ostream& xml)
-  {
-    xml << "<worldobj type=\"guillotine\">\n\t";
-    XMLhelper::write_vector_xml(xml, pos);
-    xml << "</worldobj>\n\n";
-  }
-
-  WorldObj*
-  GuillotineData::create_WorldObj ()
-  {
-    return new WorldObjs::Guillotine(this);
-  }
-
-  EditorObjLst
-  GuillotineData::create_EditorObj ()
-  {
-    return EditorObjLst(1, new EditorObjs::GuillotineObj(this));
-  }
-
+GuillotineData::GuillotineData ()
+{
 }
+
+GuillotineData::GuillotineData (xmlDocPtr doc, xmlNodePtr cur) 
+  : surface  (PingusResource::load_surface("Traps/guillotinekill", "traps")),
+    idle_surf(PingusResource::load_surface("Traps/guillotineidle", "traps"))
+{
+  if (cur->name)
+    std::cout << (const char*)cur->name << std::endl;
+      
+  cur = cur->children;
+  while (cur)
+    {
+      XMLhelper::skip_blank(cur);
+
+      if (! strcmp(reinterpret_cast<const char*>(cur->name), "position")) 
+	{
+	  pos = XMLhelper::parse_vector(doc, cur);
+	}
+      else
+	std::cout << (const char*)cur->name << std::endl;
+	  
+      cur = cur->next;
+    }
+}
+
+GuillotineData::GuillotineData (const GuillotineData& old) : WorldObjData(old),
+							     surface(old.surface),
+							     idle_surf(old.idle_surf),	                                                 
+							     pos(old.pos)
+{
+}
+
+void
+GuillotineData::write_xml (std::ostream& xml)
+{
+  xml << "<worldobj type=\"guillotine\">\n\t";
+  XMLhelper::write_vector_xml(xml, pos);
+  xml << "</worldobj>\n\n";
+}
+
+WorldObj*
+GuillotineData::create_WorldObj ()
+{
+  return new WorldObjs::Guillotine(this);
+}
+
+EditorObjLst
+GuillotineData::create_EditorObj ()
+{
+  return EditorObjLst(1, new EditorObjs::GuillotineObj(this));
+}
+
+} // namespace WorldObjsData
 
 /* EOF */

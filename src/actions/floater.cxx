@@ -1,4 +1,4 @@
-//  $Id: floater.cxx,v 1.13 2002/09/04 20:30:29 grumbel Exp $
+//  $Id: floater.cxx,v 1.14 2002/09/10 19:24:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,48 +23,48 @@
 
 namespace Actions {
 
-  Floater::Floater() : falling_depth(0), step(0)
-  {
-  }
-
-  void
-  Floater::init(void)
-  {
-    falling_depth = 0;
-    step = 0;
-    sprite = Sprite ("Pingus/floater0", "pingus");
-    sprite.set_align_center_bottom ();
-  }
-
-  void
-  Floater::update(float delta)
-  {
-    sprite.update (delta);
-
-    pingu->set_velocity(CL_Vector(0.0, 0.0));
-    if (rel_getpixel(0, -1) == GroundpieceData::GP_NOTHING) {
-      ++step;
-      if (step > 0) {
-        pingu->set_y(pingu->get_y() + 1);
-        step = 0;
-      }
-    } else {
-      pingu->set_action (Actions::Walker);
-    }
-  }
-
-  void 
-  Floater::draw (GraphicContext& gc)
-  {
-    gc.draw (sprite, pingu->get_pos());
-  }
-
-  bool
-  Floater::change_allowed (ActionName)
-  {
-    return false;
-  }
-
+Floater::Floater() : falling_depth(0), step(0)
+{
 }
+
+void
+Floater::init(void)
+{
+  falling_depth = 0;
+  step = 0;
+  sprite = Sprite ("Pingus/floater0", "pingus");
+  sprite.set_align_center_bottom ();
+}
+
+void
+Floater::update(float delta)
+{
+  sprite.update (delta);
+
+  pingu->set_velocity(CL_Vector(0.0, 0.0));
+  if (rel_getpixel(0, -1) == GroundpieceData::GP_NOTHING) {
+    ++step;
+    if (step > 0) {
+      pingu->set_y(pingu->get_y() + 1);
+      step = 0;
+    }
+  } else {
+    pingu->set_action (Actions::Walker);
+  }
+}
+
+void 
+Floater::draw (GraphicContext& gc)
+{
+  gc.draw (sprite, pingu->get_pos());
+}
+
+bool
+Floater::change_allowed (ActionName)
+{
+  return false;
+}
+
+} // namespace Actions
 
 /* EOF */

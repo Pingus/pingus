@@ -1,4 +1,4 @@
-//  $Id: blocker.hxx,v 1.8 2002/09/04 20:30:29 grumbel Exp $
+//  $Id: blocker.hxx,v 1.9 2002/09/10 19:24:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,33 +25,33 @@
 
 namespace Actions {
 
-  class Blocker : public PinguAction
-  {
-  private:
-    Sprite sprite;
+class Blocker : public PinguAction
+{
+private:
+  Sprite sprite;
   
-  public:
-    Blocker ();
-    void  init ();
+public:
+  Blocker ();
+  void  init ();
 
-    int   y_offset ();
+  int   y_offset ();
   
-    std::string get_name () const { return "Blocker"; }
-    ActionName get_type() const { return Actions::Blocker; }
+  std::string get_name () const { return "Blocker"; }
+  ActionName get_type() const { return Actions::Blocker; }
  
-    void  draw (GraphicContext& gc);
-    void  update(float delta);
-    bool  standing_on_ground();
+  void  draw (GraphicContext& gc);
+  void  update(float delta);
+  bool  standing_on_ground();
 
-    bool  need_catch();
-    void  catch_pingu(Pingu* pingu);
+  bool  need_catch();
+  void  catch_pingu(Pingu* pingu);
   
-  private:
-    Blocker (const Blocker&);
-    Blocker operator= (const Blocker&);
-  };
+private:
+  Blocker (const Blocker&);
+  Blocker operator= (const Blocker&);
+};
 
-}
+} // namespace Actions
 
 #endif
 

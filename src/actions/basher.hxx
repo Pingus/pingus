@@ -1,4 +1,4 @@
-//  $Id: basher.hxx,v 1.9 2002/09/04 20:30:29 grumbel Exp $
+//  $Id: basher.hxx,v 1.10 2002/09/10 19:24:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,38 +25,38 @@
 
 namespace Actions {
 
-  class Basher : public PinguAction
-  {
-  private:
-    Sprite sprite;
-    CL_Surface bash_radius;
-    CL_Surface bash_radius_gfx;
-    int basher_c;
-    bool first_bash;
+class Basher : public PinguAction
+{
+private:
+  Sprite sprite;
+  CL_Surface bash_radius;
+  CL_Surface bash_radius_gfx;
+  int basher_c;
+  bool first_bash;
     
-    /// Defines "wall" height needed so as to determine whether it should be bashed.
-    enum { bash_height = 4 };
+  /// Defines "wall" height needed so as to determine whether it should be bashed.
+  enum { bash_height = 4 };
     
-  public:
-    Basher ();
-    void   init (void);
+public:
+  Basher ();
+  void   init (void);
     
-    std::string get_name () const { return "Basher"; }
-    ActionName get_type () const { return Actions::Basher; }
+  std::string get_name () const { return "Basher"; }
+  ActionName get_type () const { return Actions::Basher; }
     
-    void draw (GraphicContext& gc);
-    void update (float delta);
+  void draw (GraphicContext& gc);
+  void update (float delta);
     
-    bool have_something_to_dig ();
-    void walk_forward ();
-    void bash ();
+  bool have_something_to_dig ();
+  void walk_forward ();
+  void bash ();
   
-  private:
-    Basher (const Basher&);
-    Basher operator= (const Basher&);
-  };
+private:
+  Basher (const Basher&);
+  Basher operator= (const Basher&);
+};
 
-}
+} // namespace Actions
 
 #endif
 

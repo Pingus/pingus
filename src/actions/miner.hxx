@@ -1,4 +1,4 @@
-//  $Id: miner.hxx,v 1.7 2002/09/04 20:30:29 grumbel Exp $
+//  $Id: miner.hxx,v 1.8 2002/09/10 19:24:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,30 +25,30 @@
 
 namespace Actions {
 
-  class Miner : public PinguAction
-  {
-  private:  
-    CL_Surface miner_radius;
-    CL_Surface miner_radius_gfx;
-    Sprite sprite;
-    int slow_count;
-  public:
-    Miner ();
-    virtual ~Miner () {}
+class Miner : public PinguAction
+{
+private:  
+  CL_Surface miner_radius;
+  CL_Surface miner_radius_gfx;
+  Sprite sprite;
+  int slow_count;
+public:
+  Miner ();
+  virtual ~Miner () {}
 
-    void init (void);
-    std::string get_name () const { return "Miner"; }
-    ActionName get_type () const { return Actions::Miner; }
+  void init (void);
+  std::string get_name () const { return "Miner"; }
+  ActionName get_type () const { return Actions::Miner; }
 
-    void draw (GraphicContext& gc);
-    void update (float delta);
+  void draw (GraphicContext& gc);
+  void update (float delta);
   
-  private:
-    Miner (const Miner&);
-    Miner operator= (const Miner&); 
-  };
+private:
+  Miner (const Miner&);
+  Miner operator= (const Miner&); 
+};
 
-}
+} // namespace Actions
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: slider.hxx,v 1.7 2002/09/04 20:30:29 grumbel Exp $
+//  $Id: slider.hxx,v 1.8 2002/09/10 19:24:19 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,27 +25,27 @@
 
 namespace Actions {
 
-  class Slider : public PinguAction
-  {
-  private:
-    Sprite sprite;
-    float  speed;
-  public:
-    Slider ();
+class Slider : public PinguAction
+{
+private:
+  Sprite sprite;
+  float  speed;
+public:
+  Slider ();
 
-    void  init(void);
-    std::string get_name() const { return "Slider"; }
-    ActionName get_type() const { return Actions::Slider; }
+  void  init(void);
+  std::string get_name() const { return "Slider"; }
+  ActionName get_type() const { return Actions::Slider; }
 
-    void draw (GraphicContext& gc);
-    void update(float delta);
+  void draw (GraphicContext& gc);
+  void update(float delta);
   
-  private:
-    Slider (const Slider&);
-    Slider operator= (const Slider&);
-  };
+private:
+  Slider (const Slider&);
+  Slider operator= (const Slider&);
+};
 
-}
+} // namespace Actions
 
 #endif
 

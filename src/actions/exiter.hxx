@@ -1,4 +1,4 @@
-//  $Id: exiter.hxx,v 1.7 2002/09/04 20:30:29 grumbel Exp $
+//  $Id: exiter.hxx,v 1.8 2002/09/10 19:24:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,26 +25,26 @@
 
 namespace Actions {
 
-  class Exiter : public PinguAction
-  {
-  private:
-    Sprite sprite;
+class Exiter : public PinguAction
+{
+private:
+  Sprite sprite;
   
-  public:
-    Exiter () { }
-    void init(void);
-    std::string get_name () const { return "Exiter"; }
-    ActionName get_type() const { return Actions::Exiter; }
+public:
+  Exiter () { }
+  void init(void);
+  std::string get_name () const { return "Exiter"; }
+  ActionName get_type() const { return Actions::Exiter; }
 
-    void draw (GraphicContext& gc);
-    void update(float delta);
+  void draw (GraphicContext& gc);
+  void update(float delta);
   
-  private:
-    Exiter (const Exiter&);
-    Exiter operator= (const Exiter&);
-  };
+private:
+  Exiter (const Exiter&);
+  Exiter operator= (const Exiter&);
+};
 
-}
+} // namespace Actions
 
 #endif
 

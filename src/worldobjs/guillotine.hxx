@@ -1,4 +1,4 @@
-//  $Id: guillotine.hxx,v 1.2 2002/09/04 19:40:20 grumbel Exp $
+//  $Id: guillotine.hxx,v 1.3 2002/09/10 19:24:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,7 +23,7 @@
 #include "../worldobj.hxx"
 
 namespace WorldObjsData {
-  class GuillotineData;
+class GuillotineData;
 }
 
 class Pingu;
@@ -31,29 +31,29 @@ class Pingu;
 
 namespace WorldObjs {
 
-  class Guillotine : public WorldObj
-  {
-  private:
-    bool killing;
-    WorldObjsData::GuillotineData* const data;
+class Guillotine : public WorldObj
+{
+private:
+  bool killing;
+  WorldObjsData::GuillotineData* const data;
 
-  public:
-    Guillotine (WorldObjsData::GuillotineData* data_);
-   ~Guillotine ();
+public:
+  Guillotine (WorldObjsData::GuillotineData* data_);
+  ~Guillotine ();
 
-    float get_z_pos () const;
+  float get_z_pos () const;
 
-    void update (float delta);
-    void draw (GraphicContext& gc);
-  protected:
-    void catch_pingu (Pingu*);
+  void update (float delta);
+  void draw (GraphicContext& gc);
+protected:
+  void catch_pingu (Pingu*);
 
-  private:
-    Guillotine (const Guillotine&);
-    Guillotine operator= (const Guillotine&);
-  };
+private:
+  Guillotine (const Guillotine&);
+  Guillotine operator= (const Guillotine&);
+};
 
-}
+} // namespace WorldObjs
 
 #endif
 

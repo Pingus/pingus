@@ -1,4 +1,4 @@
-//  $Id: switch_door.hxx,v 1.8 2002/09/05 11:26:35 grumbel Exp $
+//  $Id: switch_door.hxx,v 1.9 2002/09/10 19:24:19 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,6 +25,8 @@
 #include "../editor/sprite_editorobj.hxx"
 
 #include "../libxmlfwd.hxx"
+
+namespace WorldObjsData {
 
 /** A variable height door which can block the way and which can be
     opened by a switch */
@@ -57,9 +59,13 @@ public:
   EditorObjLst create_EditorObj ();
 };
 
+} // namespace WorldObjsData
+
+namespace WorldObjs {
+
 /** A door and a switch, if a pingu is passing the switch, the door
     will open. */
-class SwitchDoor : public SwitchDoorData,
+class SwitchDoor : public WorldObjsData::SwitchDoorData,
 		   public WorldObj
 {
 private:
@@ -89,6 +95,11 @@ private:
   SwitchDoor operator= (const SwitchDoor&);
 };
 
+} // namespace WorldObjs
+
+
+namespace EditorObjs {
+
 class EditorSwitchDoorObj;
 
 /** A dummy object to represent the switch for a switchdoor, all real
@@ -111,7 +122,7 @@ private:
   EditorSwitchDoorSwitchObj operator= (const EditorSwitchDoorSwitchObj&);
 };
 
-class EditorSwitchDoorObj : public SwitchDoorData,
+class EditorSwitchDoorObj : public WorldObjsData::SwitchDoorData,
 			    public RectEditorObj
 {
 private:
@@ -148,6 +159,8 @@ private:
   EditorSwitchDoorObj (const EditorSwitchDoorObj&);
   EditorSwitchDoorObj operator= (const EditorSwitchDoorObj&);
 };
+
+} // namespace EditorObjs
 
 #endif
 

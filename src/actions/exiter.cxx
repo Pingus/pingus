@@ -1,4 +1,4 @@
-//  $Id: exiter.cxx,v 1.6 2002/09/04 20:30:29 grumbel Exp $
+//  $Id: exiter.cxx,v 1.7 2002/09/10 19:24:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,39 +24,39 @@
 
 namespace Actions {
 
-  void
-  Exiter::init (void)
-  {
-    sprite = Sprite("Pingus/exit0", "pingus", 10.0f, Sprite::NONE, Sprite::ONCE);
-    sprite.set_align_center_bottom();
-  }
-
-  void
-  Exiter::update (float delta)
-  {
-    sprite.update(delta);
-
-    if (sprite.finished())
-      {
-        if (pingu->get_status() != PS_EXITED)
-	  {
-	    PingusSound::play_sound("sounds/yipee.wav");
-	    pingu->set_status(PS_EXITED); 
-	  }
-      }
-  }
-
-  void 
-  Exiter::draw (GraphicContext& gc)
-  {
-    if (pingu->direction.is_left())
-      sprite.set_direction(Sprite::LEFT);
-    else
-      sprite.set_direction(Sprite::RIGHT);
-    
-    gc.draw(sprite, pingu->get_pos ());
-  }
-
+void
+Exiter::init (void)
+{
+  sprite = Sprite("Pingus/exit0", "pingus", 10.0f, Sprite::NONE, Sprite::ONCE);
+  sprite.set_align_center_bottom();
 }
+
+void
+Exiter::update (float delta)
+{
+  sprite.update(delta);
+
+  if (sprite.finished())
+    {
+      if (pingu->get_status() != PS_EXITED)
+	{
+	  PingusSound::play_sound("sounds/yipee.wav");
+	  pingu->set_status(PS_EXITED); 
+	}
+    }
+}
+
+void 
+Exiter::draw (GraphicContext& gc)
+{
+  if (pingu->direction.is_left())
+    sprite.set_direction(Sprite::LEFT);
+  else
+    sprite.set_direction(Sprite::RIGHT);
+    
+  gc.draw(sprite, pingu->get_pos ());
+}
+
+} // namespace Actions
 
 /* EOF */

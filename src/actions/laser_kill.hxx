@@ -1,4 +1,4 @@
-//  $Id: laser_kill.hxx,v 1.7 2002/09/04 20:30:29 grumbel Exp $
+//  $Id: laser_kill.hxx,v 1.8 2002/09/10 19:24:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,28 +25,28 @@
 
 namespace Actions {
 
-  class LaserKill : public PinguAction
-  {
-  private:
-    Sprite sprite;
+class LaserKill : public PinguAction
+{
+private:
+  Sprite sprite;
   
-  public:
-    LaserKill ();
-    std::string get_name () const { return "LaserKill"; }
-    ActionName get_type () const { return Actions::Laserkill; }
-    void init (void);
+public:
+  LaserKill ();
+  std::string get_name () const { return "LaserKill"; }
+  ActionName get_type () const { return Actions::Laserkill; }
+  void init (void);
 
-    void draw (GraphicContext& gc);
-    void update (float delta);
+  void draw (GraphicContext& gc);
+  void update (float delta);
 
-    bool catchable () { return false; }
+  bool catchable () { return false; }
   
-  private:
-    LaserKill (const LaserKill&);
-    LaserKill operator= (const LaserKill&);
-  };
+private:
+  LaserKill (const LaserKill&);
+  LaserKill operator= (const LaserKill&);
+};
 
-}
+} // namespace Actions
 
 #endif
 

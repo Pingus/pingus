@@ -1,4 +1,4 @@
-//  $Id: laser_exit.cxx,v 1.2 2002/09/05 11:26:35 grumbel Exp $
+//  $Id: laser_exit.cxx,v 1.3 2002/09/10 19:24:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,70 +27,70 @@
 
 namespace WorldObjs {
 
-  LaserExit::LaserExit (WorldObjsData::LaserExitData* data_) : killing(false),
-                                                               data (new WorldObjsData::LaserExitData(*data_))
-  {
-    data->counter.set_size(data->surface.get_num_frames());
-    data->counter.set_type(GameCounter::once);
-    data->counter.set_speed(5);
-    data->counter = 0;
-  }
-
-  LaserExit::~LaserExit ()
-  {
-    delete data;
-  }
-
-  float
-  LaserExit::get_z_pos () const
-  {
-    return data->pos.z;
-  }
-
-  void 
-  LaserExit::draw (GraphicContext& gc)
-  {
-    gc.draw (data->surface, data->pos, data->counter.value());
-  }
-
-  void
-  LaserExit::update (float delta)
-  {
-
-    PinguHolder* holder = world->get_pingu_p ();
-    for (PinguIter pingu = holder->begin (); pingu != holder->end (); ++pingu){
-      catch_pingu(*pingu);
-    }
-
-    if (killing) {
-      if (data->counter.finished()) {
-        data->counter = 0;
-        killing = false;
-      } else {
-        ++data->counter;
-      }
-    }
-    
-    UNUSED_ARG(delta);
-  }
-
-  void
-  LaserExit::catch_pingu (Pingu* pingu)
-  {
-    if (!killing) 
-      {
-        if (   pingu->get_x () < data->pos.x + 34 + 10 && pingu->get_x () > data->pos.x + 34 
-	    && pingu->get_y () < data->pos.y + 43 + 20 && pingu->get_y () > data->pos.y + 43) 
-	  {
-	    if (pingu->get_action()->get_type() != Actions::Laserkill) 
-	      {
-	        killing = true;
-	        pingu->set_action(Actions::Laserkill);
-	      }
-	  }
-      }
-  }
-
+LaserExit::LaserExit (WorldObjsData::LaserExitData* data_) : killing(false),
+							     data (new WorldObjsData::LaserExitData(*data_))
+{
+  data->counter.set_size(data->surface.get_num_frames());
+  data->counter.set_type(GameCounter::once);
+  data->counter.set_speed(5);
+  data->counter = 0;
 }
+
+LaserExit::~LaserExit ()
+{
+  delete data;
+}
+
+float
+LaserExit::get_z_pos () const
+{
+  return data->pos.z;
+}
+
+void 
+LaserExit::draw (GraphicContext& gc)
+{
+  gc.draw (data->surface, data->pos, data->counter.value());
+}
+
+void
+LaserExit::update (float delta)
+{
+
+  PinguHolder* holder = world->get_pingu_p ();
+  for (PinguIter pingu = holder->begin (); pingu != holder->end (); ++pingu){
+    catch_pingu(*pingu);
+  }
+
+  if (killing) {
+    if (data->counter.finished()) {
+      data->counter = 0;
+      killing = false;
+    } else {
+      ++data->counter;
+    }
+  }
+    
+  UNUSED_ARG(delta);
+}
+
+void
+LaserExit::catch_pingu (Pingu* pingu)
+{
+  if (!killing) 
+    {
+      if (   pingu->get_x () < data->pos.x + 34 + 10 && pingu->get_x () > data->pos.x + 34 
+	     && pingu->get_y () < data->pos.y + 43 + 20 && pingu->get_y () > data->pos.y + 43) 
+	{
+	  if (pingu->get_action()->get_type() != Actions::Laserkill) 
+	    {
+	      killing = true;
+	      pingu->set_action(Actions::Laserkill);
+	    }
+	}
+    }
+}
+
+} // namespace WorldObjs
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: angel.cxx,v 1.9 2002/09/04 20:30:29 grumbel Exp $
+//  $Id: angel.cxx,v 1.10 2002/09/10 19:24:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,38 +25,39 @@
 
 namespace Actions {
 
-  Angel::Angel () : counter(0.0), x_pos(0)
-  {
-  }
-
-  void
-  Angel::init ()
-  {
-    x_pos = pingu->get_x();
-    counter = 0.0;
-    sprite = Sprite (PingusResource::load_surface 
-		     ("Pingus/angel" + to_string(pingu->get_owner ()),
-		      "pingus"));
-    sprite.set_align_center_bottom (); 
-  }
-
-  void  
-  Angel::update (float delta)
-  {
-    sprite.update (delta);
-    counter += delta;
-    pingu->set_pos(x_pos + 20 * sin (counter * 3.0), pingu->get_y() - 50.0f * delta);
-
-    // Out of screen, let the pingu die
-    if (pingu->get_y() < -32)
-      pingu->set_status (PS_DEAD);
-  }
-
-  void   
-  Angel::draw (GraphicContext& gc)
-  {
-    gc.draw (sprite, pingu->get_pos ());
-  }
-
+Angel::Angel () : counter(0.0), x_pos(0)
+{
 }
+
+void
+Angel::init ()
+{
+  x_pos = pingu->get_x();
+  counter = 0.0;
+  sprite = Sprite (PingusResource::load_surface 
+		   ("Pingus/angel" + to_string(pingu->get_owner ()),
+		    "pingus"));
+  sprite.set_align_center_bottom (); 
+}
+
+void  
+Angel::update (float delta)
+{
+  sprite.update (delta);
+  counter += delta;
+  pingu->set_pos(x_pos + 20 * sin (counter * 3.0), pingu->get_y() - 50.0f * delta);
+
+  // Out of screen, let the pingu die
+  if (pingu->get_y() < -32)
+    pingu->set_status (PS_DEAD);
+}
+
+void   
+Angel::draw (GraphicContext& gc)
+{
+  gc.draw (sprite, pingu->get_pos ());
+}
+
+} // namespace Actions
+
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: pingus_menu.hxx,v 1.7 2002/09/04 14:55:11 torangan Exp $
+//  $Id: pingus_menu.hxx,v 1.8 2002/09/10 19:24:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,15 +28,13 @@ class CL_InputDevice;
 class SurfaceButton;
 class GameDelta;
 
-namespace GUI
-{
-  class GUIManager;
-}
+namespace GUI {
+class GUIManager;
+} // namespace GUI
 
-namespace Input
-{
-  class Controller;
-}
+namespace Input {
+class Controller;
+} // namespace Input
 
 class PingusMenu : public PingusSubMenu
 {

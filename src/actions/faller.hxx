@@ -1,4 +1,4 @@
-//  $Id: faller.hxx,v 1.12 2002/09/04 20:30:29 grumbel Exp $
+//  $Id: faller.hxx,v 1.13 2002/09/10 19:24:19 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,37 +25,37 @@
 
 namespace Actions {
 
-  class Faller : public PinguAction
-  {
-  private:
-    Sprite faller;
-    Sprite tumbler;
+class Faller : public PinguAction
+{
+private:
+  Sprite faller;
+  Sprite tumbler;
 
-    int falling;
+  int falling;
 
-    static const float deadly_velocity;
+  static const float deadly_velocity;
 
-  public:
-    Faller();
-    virtual ~Faller();
+public:
+  Faller();
+  virtual ~Faller();
   
-    void  init(void);
+  void  init(void);
   
-    void  draw (GraphicContext& gc);
-    void  update(float delta);
+  void  draw (GraphicContext& gc);
+  void  update(float delta);
 
-    bool change_allowed (Actions::ActionName new_action);
+  bool change_allowed (Actions::ActionName new_action);
   
-    std::string get_name() const { return "Faller"; }
-    ActionName get_type() const { return Actions::Faller; }
-    bool is_tumbling () const;
+  std::string get_name() const { return "Faller"; }
+  ActionName get_type() const { return Actions::Faller; }
+  bool is_tumbling () const;
   
-  private:
-    Faller (const Faller&);
-    Faller operator= (const Faller&);
-  };
+private:
+  Faller (const Faller&);
+  Faller operator= (const Faller&);
+};
 
-}
+} // namespace Actions
 
 #endif
 

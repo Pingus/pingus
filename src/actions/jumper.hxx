@@ -1,4 +1,4 @@
-//  $Id: jumper.hxx,v 1.7 2002/09/04 20:30:29 grumbel Exp $
+//  $Id: jumper.hxx,v 1.8 2002/09/10 19:24:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,26 +25,26 @@
 
 namespace Actions {
 
-  class Jumper : public PinguAction
-  {
-  private:
-    Sprite sprite;
-  public:
-    Jumper();
+class Jumper : public PinguAction
+{
+private:
+  Sprite sprite;
+public:
+  Jumper();
 
-    void  init(void);
-    std::string get_name() const { return "Jumper"; }
-    ActionName get_type() const { return Actions::Jumper; }
+  void  init(void);
+  std::string get_name() const { return "Jumper"; }
+  ActionName get_type() const { return Actions::Jumper; }
 
-    void  draw (GraphicContext& gc);
-    void  update(float delta);
+  void  draw (GraphicContext& gc);
+  void  update(float delta);
   
-  private:
-    Jumper (const Jumper&);
-    Jumper operator= (const Jumper&);
-  };
+private:
+  Jumper (const Jumper&);
+  Jumper operator= (const Jumper&);
+};
 
-}
+} // namespace Actions
 
 #endif
 

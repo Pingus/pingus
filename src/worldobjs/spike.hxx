@@ -1,4 +1,4 @@
-//  $Id: spike.hxx,v 1.2 2002/09/05 11:26:35 grumbel Exp $
+//  $Id: spike.hxx,v 1.3 2002/09/10 19:24:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,38 +23,38 @@
 #include "../worldobj.hxx"
 
 namespace WorldObjsData {
-  class SpikeData;
-}
+class SpikeData;
+} // namespace WorldObjsData
 
 class Pingu;
 
 
 namespace WorldObjs {
 
-  class Spike : public WorldObj
-  {
-  private:
-    bool killing;
-    WorldObjsData::SpikeData* data;
+class Spike : public WorldObj
+{
+private:
+  bool killing;
+  WorldObjsData::SpikeData* data;
 
-  public:
-    Spike (WorldObjsData::SpikeData* data_);
-   ~Spike ();
+public:
+  Spike (WorldObjsData::SpikeData* data_);
+  ~Spike ();
 
-    float get_z_pos () const;
+  float get_z_pos () const;
 
-    void draw (GraphicContext& gc);
-    void update (float delta);
+  void draw (GraphicContext& gc);
+  void update (float delta);
 
-  protected:
-    void catch_pingu (Pingu*);
+protected:
+  void catch_pingu (Pingu*);
 
-  private:
-    Spike (const Spike&);
-    Spike operator= (const Spike&);
-  };
+private:
+  Spike (const Spike&);
+  Spike operator= (const Spike&);
+};
 
-}
+} // namespace WorldObjs
 
 #endif
 

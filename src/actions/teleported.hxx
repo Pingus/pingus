@@ -23,30 +23,30 @@
 
 namespace Actions {
 
-  class Teleported : public PinguAction
-  {
-  private:
-    //bool particle_thrown;
-    bool sound_played;
-    Sprite sprite;
-  public:
-    Teleported();
+class Teleported : public PinguAction
+{
+private:
+  //bool particle_thrown;
+  bool sound_played;
+  Sprite sprite;
+public:
+  Teleported();
 
-    std::string get_name() const { return "Teleported"; }
-    ActionName get_type() const { return Actions::Teleported; }
-    void init(void);
+  std::string get_name() const { return "Teleported"; }
+  ActionName get_type() const { return Actions::Teleported; }
+  void init(void);
 
-    void draw (GraphicContext& gc);
-    void update(float delta);
+  void draw (GraphicContext& gc);
+  void update(float delta);
 
-    bool catchable () { return false; }
+  bool catchable () { return false; }
 
-    int x_target, y_target; // <- FIXME: Ugly!
+  int x_target, y_target; // <- FIXME: Ugly!
   
-  private:
-    Teleported (const Teleported&);
-    Teleported operator= (const Teleported&);
-  };
+private:
+  Teleported (const Teleported&);
+  Teleported operator= (const Teleported&);
+};
 
 }
 

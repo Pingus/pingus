@@ -1,4 +1,4 @@
-//  $Id: info_box.hxx,v 1.8 2002/09/04 19:40:20 grumbel Exp $
+//  $Id: info_box.hxx,v 1.9 2002/09/10 19:24:19 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,6 +29,8 @@ class CL_Vector;
 
 #include "../libxmlfwd.hxx"
 
+namespace WorldObjsData {
+
 class InfoBoxData : public WorldObjData
 {
 public:
@@ -50,8 +52,13 @@ public:
   EditorObjLst create_EditorObj();
 };
 
-class InfoBox : public InfoBoxData,
-		public WorldObj		
+} // namespace WorldObjsData
+
+namespace WorldObjs {
+
+// FIXME: Split data into member var
+class InfoBox : public WorldObjsData::InfoBoxData,
+		public WorldObj
 {
 private:
   Sprite sprite;
@@ -70,8 +77,12 @@ private:
   InfoBox operator= (const InfoBox&);
 };
 
-class EditorInfoBox : public InfoBoxData,
-			public SpriteEditorObj
+} // namespace WorldObjs
+
+namespace EditorObjs {
+
+class EditorInfoBox : public WorldObjsData::InfoBoxData,
+		      public SpriteEditorObj
 {
 public:
   EditorInfoBox (const InfoBoxData& data);
@@ -86,6 +97,8 @@ private:
   EditorInfoBox (const EditorInfoBox& old);
   EditorInfoBox operator= (const EditorInfoBox& old);
 };
+
+} // namespace EditorObjs
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: guillotine.cxx,v 1.2 2002/09/04 19:40:20 grumbel Exp $
+//  $Id: guillotine.cxx,v 1.3 2002/09/10 19:24:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,82 +28,83 @@
 
 namespace WorldObjs {
 
-  Guillotine::Guillotine (WorldObjsData::GuillotineData* data_) 
-                        : killing(false),
-			  data (new WorldObjsData::GuillotineData(*data_))
-  {
-    data->counter.set_size(data->surface.get_num_frames()/2);
-    data->counter.set_type(GameCounter::once);
-    data->counter.set_speed(0.7);
-    data->counter = 0;
+Guillotine::Guillotine (WorldObjsData::GuillotineData* data_) 
+  : killing(false),
+    data (new WorldObjsData::GuillotineData(*data_))
+{
+  data->counter.set_size(data->surface.get_num_frames()/2);
+  data->counter.set_type(GameCounter::once);
+  data->counter.set_speed(0.7);
+  data->counter = 0;
 
-    data->idle_counter.set_size(data->idle_surf.get_num_frames());
-    data->idle_counter.set_type(GameCounter::loop);
-    data->idle_counter.set_speed(0.3);
-    data->idle_counter = 0;
-  }
-
-  Guillotine::~Guillotine ()
-  {
-    delete data;
-  }
-
-  void
-  Guillotine::draw (GraphicContext& gc)
-  {
-    if (killing) {
-      if (data->direction.is_left())
-        gc.draw(data->surface, data->pos, data->counter);
-      else
-        gc.draw (data->surface, data->pos, data->counter + 12);
-    } else {
-      gc.draw (data->idle_surf, data->pos, data->idle_counter);
-    }   
-  }
-  
-  
-  float
-  Guillotine::get_z_pos () const
-  {
-    return data->pos.z;
-  }
-
-  void
-  Guillotine::update (float delta)
-  {
-    if (data->counter.finished()) {
-      data->counter = 0;
-      killing = false;
-    }
-
-    PinguHolder* holder = world->get_pingu_p ();
-    for (PinguIter pingu = holder->begin (); pingu != holder->end (); ++pingu)
-      catch_pingu(*pingu);
-
-    if (killing) {
-      ++data->counter;
-    } else {
-      ++data->idle_counter;
-    }
-    
-    UNUSED_ARG(delta);
-  }
-
-  void
-  Guillotine::catch_pingu (Pingu* pingu)
-  {
-    if (!killing) 
-      {
-        if (pingu->is_inside (static_cast<int>(data->pos.x + 38), static_cast<int>(data->pos.y + 90),
-			      static_cast<int>(data->pos.x + 42), static_cast<int>(data->pos.y + 98)))
-	  {
-	    killing = true;
-	    pingu->set_status(PS_DEAD);
-	    data->direction = pingu->direction;
-	  }
-      }
-  }
-
+  data->idle_counter.set_size(data->idle_surf.get_num_frames());
+  data->idle_counter.set_type(GameCounter::loop);
+  data->idle_counter.set_speed(0.3);
+  data->idle_counter = 0;
 }
+
+Guillotine::~Guillotine ()
+{
+  delete data;
+}
+
+void
+Guillotine::draw (GraphicContext& gc)
+{
+  if (killing) {
+    if (data->direction.is_left())
+      gc.draw(data->surface, data->pos, data->counter);
+    else
+      gc.draw (data->surface, data->pos, data->counter + 12);
+  } else {
+    gc.draw (data->idle_surf, data->pos, data->idle_counter);
+  }   
+}
+  
+  
+float
+Guillotine::get_z_pos () const
+{
+  return data->pos.z;
+}
+
+void
+Guillotine::update (float delta)
+{
+  if (data->counter.finished()) {
+    data->counter = 0;
+    killing = false;
+  }
+
+  PinguHolder* holder = world->get_pingu_p ();
+  for (PinguIter pingu = holder->begin (); pingu != holder->end (); ++pingu)
+    catch_pingu(*pingu);
+
+  if (killing) {
+    ++data->counter;
+  } else {
+    ++data->idle_counter;
+  }
+    
+  UNUSED_ARG(delta);
+}
+
+void
+Guillotine::catch_pingu (Pingu* pingu)
+{
+  if (!killing) 
+    {
+      if (pingu->is_inside (static_cast<int>(data->pos.x + 38), static_cast<int>(data->pos.y + 90),
+			    static_cast<int>(data->pos.x + 42), static_cast<int>(data->pos.y + 98)))
+	{
+	  killing = true;
+	  pingu->set_status(PS_DEAD);
+	  data->direction = pingu->direction;
+	}
+    }
+}
+
+} // namespace WorldObjs
+
 
 /* EOF */

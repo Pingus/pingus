@@ -1,4 +1,4 @@
-//  $Id: splashed.cxx,v 1.6 2002/09/04 20:30:29 grumbel Exp $
+//  $Id: splashed.cxx,v 1.7 2002/09/10 19:24:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,44 +26,44 @@
 
 namespace Actions {
 
-  Splashed::Splashed (void)
-  {
-  }
+Splashed::Splashed (void)
+{
+}
 
-  void
-  Splashed::init (void)
-  {
-    sprite = Sprite("Pingus/splat0", "pingus", 30.0f,
-		    Sprite::NONE, Sprite::ONCE);
-    sprite.set_align_center_bottom();
+void
+Splashed::init (void)
+{
+  sprite = Sprite("Pingus/splat0", "pingus", 30.0f,
+		  Sprite::NONE, Sprite::ONCE);
+  sprite.set_align_center_bottom();
   
-    sound_played    = false;
-    particle_thrown = false;
-  }
+  sound_played    = false;
+  particle_thrown = false;
+}
 
-  void
-  Splashed::update (float delta)
-  {
-    sprite.update (delta);
+void
+Splashed::update (float delta)
+{
+  sprite.update (delta);
 
-    if (!particle_thrown)
-      {
-        particle_thrown = true;
-        WorldObj::get_world()->play_wav("sounds/splash.wav", pingu->get_pos());
-      }
+  if (!particle_thrown)
+    {
+      particle_thrown = true;
+      WorldObj::get_world()->play_wav("sounds/splash.wav", pingu->get_pos());
+    }
 
-    if (sprite.finished())
+  if (sprite.finished())
     {
       pingu->set_status(PS_DEAD);
     }
-  }
-
-  void 
-  Splashed::draw (GraphicContext& gc)
-  {
-    gc.draw (sprite, pingu->get_pos ());
-  }
-
 }
+
+void 
+Splashed::draw (GraphicContext& gc)
+{
+  gc.draw (sprite, pingu->get_pos ());
+}
+
+} // namespace Actions
 
 /* EOF */

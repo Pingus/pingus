@@ -1,4 +1,4 @@
-//  $Id: laser_exit_obj.hxx,v 1.3 2002/09/09 16:13:44 torangan Exp $
+//  $Id: laser_exit_obj.hxx,v 1.4 2002/09/10 19:24:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,37 +23,37 @@
 #include "../editor/sprite_editorobj.hxx"
 
 namespace WorldObjsData {
-  class LaserExitData;
+class LaserExitData;
 }
 
 namespace EditorObjs {
 
 class LaserExitObj : public SpriteEditorObj
 {
-  private:
-    int frame;
-    WorldObjsData::LaserExitData* const data;
+private:
+  int frame;
+  WorldObjsData::LaserExitData* const data;
   
-  public:
-    LaserExitObj (WorldObjsData::LaserExitData* data_);
-   ~LaserExitObj ();
+public:
+  LaserExitObj (WorldObjsData::LaserExitData* data_);
+  ~LaserExitObj ();
 
-    static EditorObjLst create (const CL_Vector& pos);
+  static EditorObjLst create (const CL_Vector& pos);
 
    
-    EditorObj* duplicate ();
+  EditorObj* duplicate ();
     
-    void write_xml (std::ostream& xml);
-    void draw (EditorView* view);
+  void write_xml (std::ostream& xml);
+  void draw (EditorView* view);
     
-    std::string status_line ();
+  std::string status_line ();
   
-  private:
-    LaserExitObj (const LaserExitObj&);
-    LaserExitObj operator= (const LaserExitObj&);
+private:
+  LaserExitObj (const LaserExitObj&);
+  LaserExitObj operator= (const LaserExitObj&);
 };
 
-}
+} // namespace EditorObjs
 
 #endif
 

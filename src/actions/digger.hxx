@@ -1,4 +1,4 @@
-//  $Id: digger.hxx,v 1.7 2002/09/04 20:30:29 grumbel Exp $
+//  $Id: digger.hxx,v 1.8 2002/09/10 19:24:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,33 +25,33 @@
 
 namespace Actions {
 
-  /** FIXME: Not delta capable! */
-  class Digger : public PinguAction
-  {
-  private:
-    CL_Surface digger_radius;
-    CL_Surface digger_radius_gfx;
-    Sprite sprite;
-    int digger_c;
-  public:
-    Digger();
-    void init (void);
+/** FIXME: Not delta capable! */
+class Digger : public PinguAction
+{
+private:
+  CL_Surface digger_radius;
+  CL_Surface digger_radius_gfx;
+  Sprite sprite;
+  int digger_c;
+public:
+  Digger();
+  void init (void);
     
-    std::string get_name () const { return "Digger"; }
-    ActionName get_type () const { return Actions::Digger; }
+  std::string get_name () const { return "Digger"; }
+  ActionName get_type () const { return Actions::Digger; }
     
-    bool have_something_to_dig ();
-    void dig ();
+  bool have_something_to_dig ();
+  void dig ();
     
-    void draw (GraphicContext& gc);
-    void update (float delta);
+  void draw (GraphicContext& gc);
+  void update (float delta);
 
-  private:
-    Digger (const Digger&);
-    Digger operator= (const Digger&);
-  };
+private:
+  Digger (const Digger&);
+  Digger operator= (const Digger&);
+};
 
-}
+} // namespace Actions
 
 #endif
 

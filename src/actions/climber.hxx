@@ -1,4 +1,4 @@
-//  $Id: climber.hxx,v 1.7 2002/09/04 20:30:29 grumbel Exp $
+//  $Id: climber.hxx,v 1.8 2002/09/10 19:24:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,31 +25,31 @@
 
 namespace Actions {
 
-  class Climber : public PinguAction
-  {
-  private:
-    Sprite sprite;
-    int sprite_width, sprite_height;
-  public:
-    Climber ();
-    void   init ();
+class Climber : public PinguAction
+{
+private:
+  Sprite sprite;
+  int sprite_width, sprite_height;
+public:
+  Climber ();
+  void   init ();
     
-    std::string get_name () const { return "Climber"; }
-    ActionName get_type () const { return Actions::Climber; }
-    ActionType get_activation_mode () const { return WALL_TRIGGERED; }
+  std::string get_name () const { return "Climber"; }
+  ActionName get_type () const { return Actions::Climber; }
+  ActionType get_activation_mode () const { return WALL_TRIGGERED; }
     
-    void draw (GraphicContext& gc);
+  void draw (GraphicContext& gc);
     
-    void update (float delta);
+  void update (float delta);
     
-    char get_persistent_char () { return 'c'; }
+  char get_persistent_char () { return 'c'; }
   
-  private:
-    Climber (const Climber&);
-    Climber operator= (const Climber&);
-  };
+private:
+  Climber (const Climber&);
+  Climber operator= (const Climber&);
+};
 
-}
+} // namespace Actions
 
 #endif
 

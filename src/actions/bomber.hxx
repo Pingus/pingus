@@ -1,4 +1,4 @@
-//  $Id: bomber.hxx,v 1.10 2002/09/04 20:30:29 grumbel Exp $
+//  $Id: bomber.hxx,v 1.11 2002/09/10 19:24:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,44 +25,44 @@
 
 namespace Actions {
 
-  /** An action with lets the Pingu explode. After the explosion the the
-      Pingu leaves a hole inside the ground. */
-  class Bomber : public PinguAction
-  {
-  private:
-    bool particle_thrown;
-    bool sound_played;
-    bool gfx_exploded; 
-    bool colmap_exploded; 
+/** An action with lets the Pingu explode. After the explosion the the
+    Pingu leaves a hole inside the ground. */
+class Bomber : public PinguAction
+{
+private:
+  bool particle_thrown;
+  bool sound_played;
+  bool gfx_exploded; 
+  bool colmap_exploded; 
 
-    static bool static_surface_loaded;
-    Sprite sprite;
-    static CL_Surface bomber_radius;
-    static CL_Surface bomber_radius_gfx;
+  static bool static_surface_loaded;
+  Sprite sprite;
+  static CL_Surface bomber_radius;
+  static CL_Surface bomber_radius_gfx;
 
-    CL_Surface explo_surf;
+  CL_Surface explo_surf;
 
-  public:
-    Bomber ();
+public:
+  Bomber ();
   
-    void   init (void);
-    std::string get_name () const { return "Bomber"; }
-    ActionName get_type() const { return Actions::Bomber; }
-    ActionType get_activation_mode() const { return COUNTDOWN_TRIGGERED; }
+  void   init (void);
+  std::string get_name () const { return "Bomber"; }
+  ActionName get_type() const { return Actions::Bomber; }
+  ActionType get_activation_mode() const { return COUNTDOWN_TRIGGERED; }
 
-    void draw (GraphicContext& gc);
-    void update(float delta);
+  void draw (GraphicContext& gc);
+  void update(float delta);
 
-    void update_position(float delta);
-    int  activation_time() { return 50; }
-    void on_successfull_apply (Pingu*);
+  void update_position(float delta);
+  int  activation_time() { return 50; }
+  void on_successfull_apply (Pingu*);
   
-  private:
-    Bomber (const Bomber&);
-    Bomber operator= (const Bomber&);
-  };
+private:
+  Bomber (const Bomber&);
+  Bomber operator= (const Bomber&);
+};
 
-}
+} // namespace Actions
 
 #endif
 

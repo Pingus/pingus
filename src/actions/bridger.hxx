@@ -1,4 +1,4 @@
-//  $Id: bridger.hxx,v 1.10 2002/09/04 20:30:29 grumbel Exp $
+//  $Id: bridger.hxx,v 1.11 2002/09/10 19:24:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,54 +27,54 @@
 
 namespace Actions {
 
-  class Bridger : public PinguAction
-  {
-  private:
-    enum Mode { B_WALKING, B_BUILDING } mode;
-    enum { MAX_BRICKS = 15 };
+class Bridger : public PinguAction
+{
+private:
+  enum Mode { B_WALKING, B_BUILDING } mode;
+  enum { MAX_BRICKS = 15 };
 
-  private:
-    Sprite walk_sprite;
-    Sprite build_sprite;
+private:
+  Sprite walk_sprite;
+  Sprite build_sprite;
 
-    GameCounter counter;
+  GameCounter counter;
 
-    static bool static_surfaces_loaded;
-    static CL_Surface static_surface;
-    static CL_Surface brick_l;
-    static CL_Surface brick_r;
+  static bool static_surfaces_loaded;
+  static CL_Surface static_surface;
+  static CL_Surface brick_l;
+  static CL_Surface brick_r;
 
-    int bricks;
-    //int step;
-    //int do_steps;
-    bool block_build;
+  int bricks;
+  //int step;
+  //int do_steps;
+  bool block_build;
 
-    CL_Vector last_pos;
+  CL_Vector last_pos;
 
-    std::string name;
-  public:
-    Bridger();
+  std::string name;
+public:
+  Bridger();
 
-    void   init ();
-    std::string get_name () const;
-    ActionName get_type () const { return Actions::Bridger; }
+  void   init ();
+  std::string get_name () const;
+  ActionName get_type () const { return Actions::Bridger; }
     
-    void   update (float delta);
-    void   update_build (float delta);
-    void   update_walk (float delta);
+  void   update (float delta);
+  void   update_build (float delta);
+  void   update_walk (float delta);
     
-    void   draw (GraphicContext& gc);
+  void   draw (GraphicContext& gc);
     
-    bool   way_is_free ();
-    void   place_a_brick ();
-    void   walk_one_step_up ();
+  bool   way_is_free ();
+  void   place_a_brick ();
+  void   walk_one_step_up ();
   
-  private:
-    Bridger (const Bridger&);
-    Bridger operator= (const Bridger&); 
-  };
+private:
+  Bridger (const Bridger&);
+  Bridger operator= (const Bridger&); 
+};
 
-}
+} // namespace Actions
 
 #endif
 

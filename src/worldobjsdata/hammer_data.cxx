@@ -1,4 +1,4 @@
-//  $Id: hammer_data.cxx,v 1.2 2002/09/10 15:36:44 grumbel Exp $
+//  $Id: hammer_data.cxx,v 1.3 2002/09/10 19:24:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,53 +26,53 @@
 
 namespace WorldObjsData {
 
-  HammerData::HammerData ()
-  {
-  }
-
-  HammerData::HammerData (xmlDocPtr doc, xmlNodePtr cur) : surface(PingusResource::load_surface("Traps/hammer", "traps"))
-  {
-    cur = cur->children;
-    while (cur)
-      {
-        XMLhelper::skip_blank(cur);
-
-        if (strcmp(reinterpret_cast<const char*>(cur->name), "position") == 0) 
-	  {
-	    pos = XMLhelper::parse_vector(doc, cur);
-	  }
-	  
-	cur = cur->next;
-      }
-  }
-
-  HammerData::HammerData (const HammerData& old) : WorldObjData(old),
-                                                   surface(old.surface),
-						   pos(old.pos)
-  {
-  }
-
-  void
-  HammerData::write_xml (std::ostream& xml)
-  {
-    xml << "<worldobj type=\"hammer\">\n\t";
-    XMLhelper::write_vector_xml(xml, pos);
-    xml << "</worldobj>\n\n";
-  }
-
-  WorldObj*
-  HammerData::create_WorldObj ()
-  {
-    return new WorldObjs::Hammer(this);
-  }
-
-  EditorObjLst
-  HammerData::create_EditorObj ()
-  {
-    return EditorObjLst(1, new EditorObjs::HammerObj(this));
-  }
-
+HammerData::HammerData ()
+{
 }
+
+HammerData::HammerData (xmlDocPtr doc, xmlNodePtr cur) : surface(PingusResource::load_surface("Traps/hammer", "traps"))
+{
+  cur = cur->children;
+  while (cur)
+    {
+      XMLhelper::skip_blank(cur);
+
+      if (strcmp(reinterpret_cast<const char*>(cur->name), "position") == 0) 
+	{
+	  pos = XMLhelper::parse_vector(doc, cur);
+	}
+	  
+      cur = cur->next;
+    }
+}
+
+HammerData::HammerData (const HammerData& old) : WorldObjData(old),
+						 surface(old.surface),
+						 pos(old.pos)
+{
+}
+
+void
+HammerData::write_xml (std::ostream& xml)
+{
+  xml << "<worldobj type=\"hammer\">\n\t";
+  XMLhelper::write_vector_xml(xml, pos);
+  xml << "</worldobj>\n\n";
+}
+
+WorldObj*
+HammerData::create_WorldObj ()
+{
+  return new WorldObjs::Hammer(this);
+}
+
+EditorObjLst
+HammerData::create_EditorObj ()
+{
+  return EditorObjLst(1, new EditorObjs::HammerObj(this));
+}
+
+} // namespace WorldObjsData
 
 /* EOF */
 

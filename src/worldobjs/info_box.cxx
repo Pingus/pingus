@@ -1,4 +1,4 @@
-//  $Id: info_box.cxx,v 1.9 2002/09/10 14:33:08 grumbel Exp $
+//  $Id: info_box.cxx,v 1.10 2002/09/10 19:24:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,6 +28,8 @@
 #include "info_box.hxx"
 #include "../pingu.hxx"
 
+namespace WorldObjsData {
+
 InfoBoxData::InfoBoxData ()
 {
 }
@@ -39,14 +41,14 @@ InfoBoxData::~InfoBoxData ()
 WorldObj* 
 InfoBoxData::create_WorldObj()
 {
-  return new InfoBox (*this);
+  return new WorldObjs::InfoBox (*this);
 }
 
 EditorObjLst
 InfoBoxData::create_EditorObj()
 {
   EditorObjLst lst;
-  lst.push_back (new EditorInfoBox (*this));
+  lst.push_back (new EditorObjs::EditorInfoBox (*this));
   return lst;
 }
 
@@ -106,7 +108,11 @@ InfoBoxData::write_xml(std::ostream& xml)
       << "  </worldobj>\n" << std::endl;
 }
 
-InfoBox::InfoBox (const InfoBoxData& data)
+} // namespace WorldObjsData
+
+namespace WorldObjs {
+
+InfoBox::InfoBox (const WorldObjsData::InfoBoxData& data)
   : InfoBoxData (data),
     sprite ("infobox", "worldobjs"), 
     is_open (false)
@@ -157,6 +163,10 @@ InfoBox::update (float delta)
     }
 }
 
+} // namespace WorldObjs
+
+namespace EditorObjs {
+
 EditorInfoBox::EditorInfoBox(const InfoBoxData& data)
   : InfoBoxData (data),
     SpriteEditorObj ("infobox", "worldobjs", &pos)
@@ -202,5 +212,7 @@ EditorInfoBox::status_line ()
 {
   return "InfoBox";
 }
+
+} // namespace EditorObjs
 
 /* EOF */

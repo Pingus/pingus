@@ -1,4 +1,4 @@
-//  $Id: spike_obj.hxx,v 1.3 2002/09/09 16:13:44 torangan Exp $
+//  $Id: spike_obj.hxx,v 1.4 2002/09/10 19:24:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,36 +23,36 @@
 #include "../editor/sprite_editorobj.hxx"
 
 namespace WorldObjsData {
-  class SpikeData;
-}
+class SpikeData;
+} // namespace WorldObjsData
 
 namespace EditorObjs {
 
 class SpikeObj : public SpriteEditorObj
 {
-  private:
-    int frame;
-    WorldObjsData::SpikeData* const data;
+private:
+  int frame;
+  WorldObjsData::SpikeData* const data;
   
-  public:
-    SpikeObj (WorldObjsData::SpikeData* data_);
-   ~SpikeObj ();
+public:
+  SpikeObj (WorldObjsData::SpikeData* data_);
+  ~SpikeObj ();
    
-    static EditorObjLst create (const CL_Vector& pos);
+  static EditorObjLst create (const CL_Vector& pos);
 
-    EditorObj* duplicate ();
+  EditorObj* duplicate ();
     
-    void write_xml (std::ostream& xml);
-    void draw (EditorView* view);
+  void write_xml (std::ostream& xml);
+  void draw (EditorView* view);
     
-    std::string status_line ();
+  std::string status_line ();
   
-  private:
-    SpikeObj (const SpikeObj&);
-    SpikeObj operator= (const SpikeObj&);
+private:
+  SpikeObj (const SpikeObj&);
+  SpikeObj operator= (const SpikeObj&);
 };
 
-}
+} // namespace EditorObjs
 
 #endif
 

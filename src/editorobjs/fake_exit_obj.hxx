@@ -1,4 +1,4 @@
-//  $Id: fake_exit_obj.hxx,v 1.4 2002/09/09 16:55:07 grumbel Exp $
+//  $Id: fake_exit_obj.hxx,v 1.5 2002/09/10 19:24:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,33 +23,33 @@
 #include "../editor/sprite_editorobj.hxx"
 
 namespace WorldObjsData {
-  class FakeExitData;
+class FakeExitData;
 }
 
 namespace EditorObjs {
 
 class FakeExitObj : public SpriteEditorObj
 {
-  private:
-    int frame;
-    WorldObjsData::FakeExitData* const data;
+private:
+  int frame;
+  WorldObjsData::FakeExitData* const data;
   
-  public:
-    FakeExitObj (WorldObjsData::FakeExitData* data_);
-   ~FakeExitObj ();
+public:
+  FakeExitObj (WorldObjsData::FakeExitData* data_);
+  ~FakeExitObj ();
    
-    static EditorObjLst create (const CL_Vector& pos);
+  static EditorObjLst create (const CL_Vector& pos);
 
-    EditorObj* duplicate ();
+  EditorObj* duplicate ();
     
-    void write_xml (std::ostream& xml);
-    void draw (EditorView* view);
+  void write_xml (std::ostream& xml);
+  void draw (EditorView* view);
     
-    std::string status_line ();
+  std::string status_line ();
   
-  private:
-    FakeExitObj (const FakeExitObj&);
-    FakeExitObj operator= (const FakeExitObj&);
+private:
+  FakeExitObj (const FakeExitObj&);
+  FakeExitObj operator= (const FakeExitObj&);
 };
 
 } // namespace EditorObjs

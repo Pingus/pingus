@@ -1,4 +1,4 @@
-//  $Id: bumper_obj.hxx,v 1.3 2002/09/09 16:13:44 torangan Exp $
+//  $Id: bumper_obj.hxx,v 1.4 2002/09/10 19:24:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -52,7 +52,7 @@ class BumperObj : public SpriteEditorObj
     BumperObj operator= (const BumperObj&);
 };
 
-}
+} // namespace EditorObjs
 
 #endif
 

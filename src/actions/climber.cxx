@@ -1,4 +1,4 @@
-//  $Id: climber.cxx,v 1.9 2002/09/04 20:30:29 grumbel Exp $
+//  $Id: climber.cxx,v 1.10 2002/09/10 19:24:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,85 +23,85 @@
 
 namespace Actions {
 
-  Climber::Climber()
-  {
+Climber::Climber()
+{
+}
+
+void
+Climber::init(void)
+{
+  sprite = Sprite ("Pingus/climber0", "pingus");
+
+  // these alignments are necessary to prevent climber walking 
+  // inside the wall.
+  sprite_height = sprite.get_height();
+  sprite_width = sprite.get_width();
+  if (pingu->direction.is_left ()) {
+    sprite.set_align (0, -sprite_height/2);
+    sprite.set_direction (Sprite::LEFT); 
+  } else {
+    sprite.set_align (-sprite_width, -sprite_height/2);
+    sprite.set_direction (Sprite::RIGHT);
   }
+}
 
-  void
-  Climber::init(void)
-  {
-    sprite = Sprite ("Pingus/climber0", "pingus");
+void
+Climber::update(float delta)
+{
+  /*
+    std::cout << "Climer update()" << std::endl;
+    std::cout << "Direction: " << pingu->direction << std::endl;
+    printf("%3d %3d %3d\n", rel_getpixel(1,1), rel_getpixel(0,1), rel_getpixel(-1,1));
+    printf("%3d %3d %3d\n", rel_getpixel(1,0), rel_getpixel(0,0), rel_getpixel(-1,0));
+    printf("%3d %3d %3d\n", rel_getpixel(1,-1), rel_getpixel(0,-1),rel_getpixel(-1, -1));
+  */  
 
-    // these alignments are necessary to prevent climber walking 
-    // inside the wall.
-    sprite_height = sprite.get_height();
-    sprite_width = sprite.get_width();
-    if (pingu->direction.is_left ()) {
-        sprite.set_align (0, -sprite_height/2);
-        sprite.set_direction (Sprite::LEFT); 
-    } else {
-        sprite.set_align (-sprite_width, -sprite_height/2);
-        sprite.set_direction (Sprite::RIGHT);
-    }
-  }
+  sprite.update(delta);
 
-  void
-  Climber::update(float delta)
-  {
-    /*
-      std::cout << "Climer update()" << std::endl;
-      std::cout << "Direction: " << pingu->direction << std::endl;
-      printf("%3d %3d %3d\n", rel_getpixel(1,1), rel_getpixel(0,1), rel_getpixel(-1,1));
-      printf("%3d %3d %3d\n", rel_getpixel(1,0), rel_getpixel(0,0), rel_getpixel(-1,0));
-      printf("%3d %3d %3d\n", rel_getpixel(1,-1), rel_getpixel(0,-1),rel_getpixel(-1, -1));
-    */  
+  // If above is free
+  if (rel_getpixel(0, 1) ==  GroundpieceData::GP_NOTHING
+      || rel_getpixel (0, 1) ==  GroundpieceData::GP_BRIDGE)
+    {
+      // and there is still ground to walk on
+      if (rel_getpixel(1, 1) !=  GroundpieceData::GP_NOTHING) 
+	{
+	  pingu->set_pos(pingu->get_y() - 1);
+	  return;
+	}
+      else if (rel_getpixel(1, 1) ==  GroundpieceData::GP_NOTHING) 
+	{
+	  //  std::cout << "Climber failed, no more wall" << std::endl;
 
-    sprite.update(delta);
-
-    // If above is free
-    if (rel_getpixel(0, 1) ==  GroundpieceData::GP_NOTHING
-        || rel_getpixel (0, 1) ==  GroundpieceData::GP_BRIDGE)
-      {
-        // and there is still ground to walk on
-        if (rel_getpixel(1, 1) !=  GroundpieceData::GP_NOTHING) 
-	  {
-	    pingu->set_pos(pingu->get_y() - 1);
-	    return;
-	  }
-        else if (rel_getpixel(1, 1) ==  GroundpieceData::GP_NOTHING) 
-	  {
-	    //  std::cout << "Climber failed, no more wall" << std::endl;
-
-            // If Pingu able to get to new position without head collision
-            if (!head_collision_on_walk(pingu->direction, 1))
-              {
+	  // If Pingu able to get to new position without head collision
+	  if (!head_collision_on_walk(pingu->direction, 1))
+	    {
               // Get ready to walk
 	      pingu->set_pos(pingu->get_x() + pingu->direction, pingu->get_y() - 1);
-              }
-            else
-              {
+	    }
+	  else
+	    {
               // Get ready to fall
               pingu->direction.change();
-              }
+	    }
 
-            // Finish climbing.
-	    pingu->set_action(Actions::Walker);
-	  }
-      }
-    else 
-      {
-        //    std::cout << "Climber failed, falling down" << std::endl;
-        pingu->direction.change();
-        pingu->set_action(Actions::Walker);
-      }
-  }
-
-  void
-  Climber::draw (GraphicContext& gc)
-  {
-    gc.draw (sprite, pingu->get_pos());
-  }
-
+	  // Finish climbing.
+	  pingu->set_action(Actions::Walker);
+	}
+    }
+  else 
+    {
+      //    std::cout << "Climber failed, falling down" << std::endl;
+      pingu->direction.change();
+      pingu->set_action(Actions::Walker);
+    }
 }
+
+void
+Climber::draw (GraphicContext& gc)
+{
+  gc.draw (sprite, pingu->get_pos());
+}
+
+} // namespace Actions
 
 /* EOF */

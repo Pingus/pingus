@@ -1,4 +1,4 @@
-//  $Id: bumper_data.hxx,v 1.1 2002/09/04 14:55:13 torangan Exp $
+//  $Id: bumper_data.hxx,v 1.2 2002/09/10 19:24:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,28 +27,28 @@
 
 namespace WorldObjsData {
 
-  class BumperData : public WorldObjData {
-    public:
-      CL_Surface surface;
-      CL_Vector  pos;
+class BumperData : public WorldObjData {
+public:
+  CL_Surface surface;
+  CL_Vector  pos;
       
-    public:
-      BumperData ();
-      BumperData (xmlDocPtr doc, xmlNodePtr node);
-      BumperData (const BumperData& old);
+public:
+  BumperData ();
+  BumperData (xmlDocPtr doc, xmlNodePtr node);
+  BumperData (const BumperData& old);
       
-      void write_xml (std::ostream& xml);
+  void write_xml (std::ostream& xml);
       
-      WorldObj* create_WorldObj ();
+  WorldObj* create_WorldObj ();
       
-      EditorObjLst create_EditorObj ();
+  EditorObjLst create_EditorObj ();
       
-    private:
-      BumperData operator= (const BumperData&);
+private:
+  BumperData operator= (const BumperData&);
       
-  };
+};
   
-}
+} // namespace WorldObjsData
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: hammer.cxx,v 1.2 2002/09/05 11:26:35 grumbel Exp $
+//  $Id: hammer.cxx,v 1.3 2002/09/10 19:24:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,66 +26,66 @@
 
 namespace WorldObjs {
 
-  Hammer::Hammer (WorldObjsData::HammerData* data_) : particle_thrown(false),
-                                                      data (new WorldObjsData::HammerData(*data_))
-  {
-    data->counter.set_size(data->surface.get_num_frames());
-    data->counter.set_type(GameCounter::ping_pong);
-    data->counter.set_speed(1);
-  }
-
-  Hammer::~Hammer ()
-  {
-    delete data;
-  }
-
-  float
-  Hammer::get_z_pos () const
-  {
-    return data->pos.z;
-  }
-
-  void 
-  Hammer::draw (GraphicContext& gc)
-  {
-    gc.draw (data->surface, data->pos, data->counter.value());
-  }
-
-  void
-  Hammer::update (float delta)
-  {
-    if ( !data->counter) 
-      particle_thrown = false;
-
-    PinguHolder* holder = world->get_pingu_p ();
-    for (PinguIter pingu = holder->begin (); pingu != holder->end (); ++pingu){
-         catch_pingu(*pingu);
-    }
-
-    if ( !particle_thrown && data->counter == static_cast<int>(data->surface.get_num_frames() - 3)) {
-      particle_thrown = true;
-      /*
-      for(int i=0; i < 5; ++i)
-        particle->add_particle(new GroundParticle(x_pos + 67 + rand() % 40 - 20 ,
-						  y_pos + 177,
-						  frand() * 2 - 1,
-						  frand() * - 1.5));
-      */
-    }
-    ++data->counter;
-    UNUSED_ARG(delta);
-  }
-
-  void
-  Hammer::catch_pingu (Pingu* pingu)
-  {
-    if (data->counter >= static_cast<int>(data->surface.get_num_frames() - 3)) {
-      if (  pingu->get_x() > data->pos.x + 55  && pingu->get_x() < data->pos.x + 77
-         && pingu->get_y() > data->pos.y + 146 && pingu->get_y() < data->pos.y + 185)
-        pingu->set_action(Actions::Smashed);
-    }
-  }
-
+Hammer::Hammer (WorldObjsData::HammerData* data_) : particle_thrown(false),
+						    data (new WorldObjsData::HammerData(*data_))
+{
+  data->counter.set_size(data->surface.get_num_frames());
+  data->counter.set_type(GameCounter::ping_pong);
+  data->counter.set_speed(1);
 }
+
+Hammer::~Hammer ()
+{
+  delete data;
+}
+
+float
+Hammer::get_z_pos () const
+{
+  return data->pos.z;
+}
+
+void 
+Hammer::draw (GraphicContext& gc)
+{
+  gc.draw (data->surface, data->pos, data->counter.value());
+}
+
+void
+Hammer::update (float delta)
+{
+  if ( !data->counter) 
+    particle_thrown = false;
+
+  PinguHolder* holder = world->get_pingu_p ();
+  for (PinguIter pingu = holder->begin (); pingu != holder->end (); ++pingu){
+    catch_pingu(*pingu);
+  }
+
+  if ( !particle_thrown && data->counter == static_cast<int>(data->surface.get_num_frames() - 3)) {
+    particle_thrown = true;
+    /*
+      for(int i=0; i < 5; ++i)
+      particle->add_particle(new GroundParticle(x_pos + 67 + rand() % 40 - 20 ,
+      y_pos + 177,
+      frand() * 2 - 1,
+      frand() * - 1.5));
+    */
+  }
+  ++data->counter;
+  UNUSED_ARG(delta);
+}
+
+void
+Hammer::catch_pingu (Pingu* pingu)
+{
+  if (data->counter >= static_cast<int>(data->surface.get_num_frames() - 3)) {
+    if (  pingu->get_x() > data->pos.x + 55  && pingu->get_x() < data->pos.x + 77
+	  && pingu->get_y() > data->pos.y + 146 && pingu->get_y() < data->pos.y + 185)
+      pingu->set_action(Actions::Smashed);
+  }
+}
+
+} // namespace WorldObjs
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: superman.cxx,v 1.5 2002/09/04 20:30:29 grumbel Exp $
+//  $Id: superman.cxx,v 1.6 2002/09/10 19:24:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,38 +24,38 @@
 
 namespace Actions {
 
-  Superman::Superman ()
-  {
-  }
-
-  void
-  Superman::init ()
-  {
-    x_pos = pingu->get_x();
-    counter = 0.0;
-    sprite = Sprite (PingusResource::load_surface 
-		     ("Pingus/superman" + to_string(pingu->get_owner ()),
-		      "pingus"));
-    sprite.set_align_center_bottom(); 
-  }
-
-  void  
-  Superman::update (float delta)
-  {
-    sprite.update(delta);
-    counter += delta;
-    pingu->set_pos(pingu->get_x() + 40.0f * delta, pingu->get_y() - 200.0f * delta);
-
-    if (pingu->get_y() < -32)
-      pingu->set_status(PS_DEAD);
-  }
-
-  void   
-  Superman::draw (GraphicContext& gc)
-  {
-    gc.draw(sprite, pingu->get_pos ());
-  }
-
+Superman::Superman ()
+{
 }
+
+void
+Superman::init ()
+{
+  x_pos = pingu->get_x();
+  counter = 0.0;
+  sprite = Sprite (PingusResource::load_surface 
+		   ("Pingus/superman" + to_string(pingu->get_owner ()),
+		    "pingus"));
+  sprite.set_align_center_bottom(); 
+}
+
+void  
+Superman::update (float delta)
+{
+  sprite.update(delta);
+  counter += delta;
+  pingu->set_pos(pingu->get_x() + 40.0f * delta, pingu->get_y() - 200.0f * delta);
+
+  if (pingu->get_y() < -32)
+    pingu->set_status(PS_DEAD);
+}
+
+void   
+Superman::draw (GraphicContext& gc)
+{
+  gc.draw(sprite, pingu->get_pos ());
+}
+
+} // namespace Actions
 
 /* EOF */

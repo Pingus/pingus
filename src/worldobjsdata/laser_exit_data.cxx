@@ -1,4 +1,4 @@
-//  $Id: laser_exit_data.cxx,v 1.2 2002/09/10 15:36:44 grumbel Exp $
+//  $Id: laser_exit_data.cxx,v 1.3 2002/09/10 19:24:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,52 +26,52 @@
 
 namespace WorldObjsData {
 
-  LaserExitData::LaserExitData ()
-  {
-  }
-
-  LaserExitData::LaserExitData (xmlDocPtr doc, xmlNodePtr cur) : surface(PingusResource::load_surface("Traps/laser_exit", "traps"))
-  {
-    cur = cur->children;
-    while (cur)
-      {
-        XMLhelper::skip_blank(cur);
-
-        if (strcmp(reinterpret_cast<const char*>(cur->name), "position") == 0) 
-	  {
-	    pos = XMLhelper::parse_vector(doc, cur);
-	  }
-	  
-	cur = cur->next;
-      }
-  }
-
-  LaserExitData::LaserExitData (const LaserExitData& old) : WorldObjData(old),
-                                                            surface(old.surface),
-	   					            pos(old.pos)
-  {
-  }
-
-  void
-  LaserExitData::write_xml (std::ostream& xml)
-  {
-    xml << "<worldobj type=\"laser_exit\">\n\t";
-    XMLhelper::write_vector_xml(xml, pos);
-    xml << "</worldobj>\n\n";
-  }
-
-  WorldObj*
-  LaserExitData::create_WorldObj ()
-  {
-    return new WorldObjs::LaserExit(this);
-  }
-
-  EditorObjLst
-  LaserExitData::create_EditorObj ()
-  {
-    return EditorObjLst(1, new EditorObjs::LaserExitObj(this));
-  }
-
+LaserExitData::LaserExitData ()
+{
 }
+
+LaserExitData::LaserExitData (xmlDocPtr doc, xmlNodePtr cur) : surface(PingusResource::load_surface("Traps/laser_exit", "traps"))
+{
+  cur = cur->children;
+  while (cur)
+    {
+      XMLhelper::skip_blank(cur);
+
+      if (strcmp(reinterpret_cast<const char*>(cur->name), "position") == 0) 
+	{
+	  pos = XMLhelper::parse_vector(doc, cur);
+	}
+	  
+      cur = cur->next;
+    }
+}
+
+LaserExitData::LaserExitData (const LaserExitData& old) : WorldObjData(old),
+							  surface(old.surface),
+							  pos(old.pos)
+{
+}
+
+void
+LaserExitData::write_xml (std::ostream& xml)
+{
+  xml << "<worldobj type=\"laser_exit\">\n\t";
+  XMLhelper::write_vector_xml(xml, pos);
+  xml << "</worldobj>\n\n";
+}
+
+WorldObj*
+LaserExitData::create_WorldObj ()
+{
+  return new WorldObjs::LaserExit(this);
+}
+
+EditorObjLst
+LaserExitData::create_EditorObj ()
+{
+  return EditorObjLst(1, new EditorObjs::LaserExitObj(this));
+}
+
+} // namespace WorldObjsData
 
 /* EOF */

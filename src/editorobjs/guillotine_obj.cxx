@@ -1,4 +1,4 @@
-//  $Id: guillotine_obj.cxx,v 1.5 2002/09/10 14:33:07 grumbel Exp $
+//  $Id: guillotine_obj.cxx,v 1.6 2002/09/10 19:24:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -72,6 +72,6 @@ GuillotineObj::status_line ()
   return str;
 }
   
-}
+} // namespace EditorObjs
 
 /* EOF */

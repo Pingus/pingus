@@ -1,4 +1,4 @@
-//  $Id: smasher.cxx,v 1.2 2002/09/05 11:26:35 grumbel Exp $
+//  $Id: smasher.cxx,v 1.3 2002/09/10 19:24:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,119 +31,119 @@
 
 namespace WorldObjs {
 
-  Smasher::Smasher (WorldObjsData::SmasherData* data_) : smashing(false),
-                                                         downwards(false),
-							 count(0),
-							 data (new WorldObjsData::SmasherData(*data_))
-  {
-  }
-
-  Smasher::~Smasher ()
-  {
-    delete data;
-  }
-
-  float
-  Smasher::get_z_pos () const
-  {
-    return data->pos.z;
-  }
-
-  void
-  Smasher::update (float delta)
-  {
-
-    PinguHolder* holder = world->get_pingu_p();
-    for (PinguIter pingu = holder->begin (); pingu != holder->end (); ++pingu)
-      catch_pingu(*pingu);
-      
-    if (smashing) 
-      {
-        if (downwards) 
-	  {
-	    if (count >= 5) 
-	      {
-	        // SMASH!!! The thing hitten earth and kills the pingus
-	        downwards = false;
-	        --count; 
-	        PingusSound::play_sound("sounds/tenton.wav", 0.7f);
-	    
-	        for(int i=0; i < 20; ++i)
-		  {
-		    world->get_particle_holder()
-		         ->add_particle(
-			   new SmokeParticle(static_cast<int>(data->pos.x + 20 + rand() % 260),
-					     static_cast<int>(data->pos.y + 180),
-					     frand()-0.5, frand()-0.5));
-		  }
-
-	        for (PinguIter pingu = holder->begin (); pingu != holder->end (); ++pingu)
-		  {
-		    if ((*pingu)->is_inside(static_cast<int>(data->pos.x + 30),
-		                            static_cast<int>(data->pos.y + 90),
-					    static_cast<int>(data->pos.x + 250),
-					    static_cast<int>(data->pos.y + 190)))
-		      {
-		        (*pingu)->set_action(Actions::Splashed);
-		      }
-		  }
-	      }
-	    else 
-	      {
-	        ++count;
-	      }
-	  } 
-        else 
-	  {
-	    if (count <= 0) {
-	      count = 0;
-	      smashing = false;
-	    } else {
-	      --count;
-	    }
-	  }
-      }
-      
-    UNUSED_ARG(delta);
-  }
-
-  void
-  Smasher::draw_colmap ()
-  {
-    std::cout << "Drawing colmap entry" << std::endl;
-    world->get_colmap()->put(PingusResource::load_surface("Traps/smasher_cmap", "traps"),
-                             static_cast<int>(data->pos.x),
-                             static_cast<int>(data->pos.y),
-			     GroundpieceData::GP_SOLID);
-  }
-
-  void 
-  Smasher::draw (GraphicContext& gc)
-  {
-    gc.draw (data->surface, data->pos, count);
-  }
-
-  void 
-  Smasher::catch_pingu (Pingu* pingu)
-  {
-    // Activate the smasher if a Pingu is under it
-    if ((   pingu->direction.is_left() 
-         && pingu->get_x() > data->pos.x + 65
-	 && pingu->get_x() < data->pos.x + 85)
-       || 
-        (   pingu->direction.is_right()
-         && pingu->get_x() > data->pos.x + 190
-	 && pingu->get_x() < data->pos.x + 210))
-      {
-        if (!smashing) 
-	  {
-	    count = 0;
-	    downwards = true;
-	    smashing = true; 
-	  }
-      }
-  }
-
+Smasher::Smasher (WorldObjsData::SmasherData* data_) : smashing(false),
+						       downwards(false),
+						       count(0),
+						       data (new WorldObjsData::SmasherData(*data_))
+{
 }
+
+Smasher::~Smasher ()
+{
+  delete data;
+}
+
+float
+Smasher::get_z_pos () const
+{
+  return data->pos.z;
+}
+
+void
+Smasher::update (float delta)
+{
+
+  PinguHolder* holder = world->get_pingu_p();
+  for (PinguIter pingu = holder->begin (); pingu != holder->end (); ++pingu)
+    catch_pingu(*pingu);
+      
+  if (smashing) 
+    {
+      if (downwards) 
+	{
+	  if (count >= 5) 
+	    {
+	      // SMASH!!! The thing hitten earth and kills the pingus
+	      downwards = false;
+	      --count; 
+	      PingusSound::play_sound("sounds/tenton.wav", 0.7f);
+	    
+	      for(int i=0; i < 20; ++i)
+		{
+		  world->get_particle_holder()
+		    ->add_particle(
+				   new SmokeParticle(static_cast<int>(data->pos.x + 20 + rand() % 260),
+						     static_cast<int>(data->pos.y + 180),
+						     frand()-0.5, frand()-0.5));
+		}
+
+	      for (PinguIter pingu = holder->begin (); pingu != holder->end (); ++pingu)
+		{
+		  if ((*pingu)->is_inside(static_cast<int>(data->pos.x + 30),
+					  static_cast<int>(data->pos.y + 90),
+					  static_cast<int>(data->pos.x + 250),
+					  static_cast<int>(data->pos.y + 190)))
+		    {
+		      (*pingu)->set_action(Actions::Splashed);
+		    }
+		}
+	    }
+	  else 
+	    {
+	      ++count;
+	    }
+	} 
+      else 
+	{
+	  if (count <= 0) {
+	    count = 0;
+	    smashing = false;
+	  } else {
+	    --count;
+	  }
+	}
+    }
+      
+  UNUSED_ARG(delta);
+}
+
+void
+Smasher::draw_colmap ()
+{
+  std::cout << "Drawing colmap entry" << std::endl;
+  world->get_colmap()->put(PingusResource::load_surface("Traps/smasher_cmap", "traps"),
+			   static_cast<int>(data->pos.x),
+			   static_cast<int>(data->pos.y),
+			   GroundpieceData::GP_SOLID);
+}
+
+void 
+Smasher::draw (GraphicContext& gc)
+{
+  gc.draw (data->surface, data->pos, count);
+}
+
+void 
+Smasher::catch_pingu (Pingu* pingu)
+{
+  // Activate the smasher if a Pingu is under it
+  if ((   pingu->direction.is_left() 
+	  && pingu->get_x() > data->pos.x + 65
+	  && pingu->get_x() < data->pos.x + 85)
+      || 
+      (   pingu->direction.is_right()
+	  && pingu->get_x() > data->pos.x + 190
+	  && pingu->get_x() < data->pos.x + 210))
+    {
+      if (!smashing) 
+	{
+	  count = 0;
+	  downwards = true;
+	  smashing = true; 
+	}
+    }
+}
+
+} // namespace WorldObjs
 
 /* EOF */
