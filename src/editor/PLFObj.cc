@@ -1,4 +1,4 @@
-//  $Id: PLFObj.cc,v 1.24 2000/07/30 01:47:37 grumbel Exp $
+//  $Id: PLFObj.cc,v 1.25 2000/07/31 23:45:02 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -91,7 +91,7 @@ HotspotObj::save_xml(ofstream* xml)
   save_desc_xml(xml, desc);
   save_position_xml(xml, pos);
   (*xml) << "  <speed>" << speed << "</speed>\n"
-	 << "  <para>" << para << "</para>\n"
+	 << "  <parallax>" << para << "</parallax>\n"
 	 << "</hotspot>\n"
 	 << std::endl;  
 }

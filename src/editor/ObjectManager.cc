@@ -1,4 +1,4 @@
-//  $Id: ObjectManager.cc,v 1.23 2000/07/30 01:47:37 grumbel Exp $
+//  $Id: ObjectManager.cc,v 1.24 2000/07/31 23:45:02 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -111,7 +111,7 @@ ObjectManager::load_level (string filename)
   PLF* plf;
   //PSMParser psm;
 
-  if (filename.substr(filename.size()-4) == ".plf")
+  if (filename.substr(filename.size() - 4) == ".xml")
     plf = new XMLPLF(filename);
   else
     plf = new PLFPLF(filename + ".plf");
@@ -215,7 +215,7 @@ ObjectManager::save_level (string filename)
   // FIXME: we need some error checking
   
   plf_out << "/* This level was created with the PLE\n"
-	  << " * $Id: ObjectManager.cc,v 1.23 2000/07/30 01:47:37 grumbel Exp $\n"
+	  << " * $Id: ObjectManager.cc,v 1.24 2000/07/31 23:45:02 grumbel Exp $\n"
 	  << " */"
 	  << endl;
   
@@ -284,8 +284,9 @@ ObjectManager::save_level_xml (std::string filename)
   if (!xml)
     throw PingusError("ObjectManager:save_level_xml: Couldn't save level: " + filename);
 
-  xml << "<?xml version=\"1.0\"?>\n"
-	 << "<pingus-level>\n";
+  xml << "<?xml version=\"1.0\"?>\n\n"
+      << "<!DOCTYPE pingus-level SYSTEM \"http://www.pingus.cx/dtd/pingus-level.dtd\">\n"
+      << "<pingus-level>\n";
  
   xml << "  <global>\n";
     
@@ -297,8 +298,8 @@ ObjectManager::save_level_xml (std::string filename)
 	  << "\">" << i->second << "</levelname>" << std::endl;
     }
 
-  for(map<std::string, std::string>::const_iterator i = levelname.begin();
-      i != levelname.end();
+  for(map<std::string, std::string>::const_iterator i = description.begin();
+      i != description.end();
       i++)
     {
       xml << "    <description lang=\"" << i->first
@@ -330,7 +331,14 @@ ObjectManager::save_level_xml (std::string filename)
        << "  <stretch-y>" << background.stretch_y << "</stretch-y>\n" 
        << "</background>\n"
        << endl;
-  
+
+  // Printing actions to file
+  xml << "  <action-list>\n";
+  for (vector<ActionData>::iterator i = actions.begin(); i != actions.end(); ++i) {
+    xml << "    <" << (*i).name << ">" << (*i).number_of << "</" << (*i).name << ">" << endl;
+  }
+  xml << "  </action-list>\n" << std::endl;
+
   for (EditorObjIter i = editor_objs.begin(); i != editor_objs.end(); ++i) {
     (*i)->save_xml(&xml);
   }
@@ -466,8 +474,7 @@ ObjectManager::move_current_objs(int x, int y)
 {
   for (CurrentObjIter i = current_objs.begin(); i != current_objs.end(); i++) 
     {
-      (*i)->pos.x_pos += x;
-      (*i)->pos.y_pos += y;
+      (*i)->set_position_offset(x, y, 0);
     }     
 }
 

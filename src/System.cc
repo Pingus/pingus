@@ -1,4 +1,4 @@
-//  $Id: System.cc,v 1.14 2000/07/30 01:47:35 grumbel Exp $
+//  $Id: System.cc,v 1.15 2000/07/31 23:45:02 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -256,6 +256,21 @@ System::get_language()
     return lang; 
   else
     return default_language;
+}
+
+std::string
+System::translate(std::map<std::string, std::string> strs)
+{
+  std::string str = strs[System::get_language()];
+  
+  if (str.empty())
+    {
+      return strs[default_language];
+    }
+  else 
+    {
+      return str;
+    }
 }
 
 /* EOF */

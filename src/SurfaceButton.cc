@@ -1,4 +1,4 @@
-//  $Id: SurfaceButton.cc,v 1.10 2000/07/30 01:47:35 grumbel Exp $
+//  $Id: SurfaceButton.cc,v 1.11 2000/07/31 23:45:02 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,6 +28,7 @@
 SurfaceButton::SurfaceButton()
 {
   font = PingusResource::load_font("Fonts/pingus_small", "fonts");
+  font_large = PingusResource::load_font("Fonts/pingus", "fonts");
 }
 
 SurfaceButton::~SurfaceButton()
@@ -43,8 +44,17 @@ SurfaceButton::draw()
       font->print_center(CL_Display::get_width() / 2, 
 			 CL_Display::get_height() - 20, desc.c_str());
 
+      surface->put_screen(x_pos - surface->get_width()/2,
+			  y_pos - surface->get_height()/2);
       surface_p->put_screen(x_pos - surface_p->get_width()/2,
 			    y_pos - surface_p->get_height()/2);
+
+      font_large->print_center(x_pos + 50 - surface->get_width()/2,
+			       y_pos - surface->get_height()/2,
+			       line1.c_str());
+      font_large->print_center(x_pos + 50 - surface->get_width()/2,
+			       y_pos + font_large->get_height() - surface->get_height()/2,
+			       line2.c_str());
     }
   else if (mouse_over() && CL_Mouse::left_pressed()) 
     {
@@ -60,6 +70,9 @@ SurfaceButton::draw()
     } 
   else 
     {
+      surface_p->put_screen(x_pos - surface_p->get_width()/2,
+			    y_pos - surface_p->get_height()/2);
+
       surface->put_screen(x_pos - surface->get_width()/2,
 			  y_pos - surface->get_height()/2);
     }
@@ -93,7 +106,8 @@ PlayButton::PlayButton()
 
   desc = "..:: Starts the level you played at last ::..";
 
-  surface   = PingusResource::load_surface("NewButtons/credits_off", "menu");
+  surface   = PingusResource::load_surface("NewButtons/ice_off", "menu");
+  //  surface   = PingusResource::load_surface("NewButtons/credits_off", "menu");
   surface_p = PingusResource::load_surface("NewButtons/credits_on", "menu");
 
   //surface   = PingusResource::load_surface("Buttons/play", "menu");
@@ -125,7 +139,8 @@ OptionsButton::OptionsButton()
 
   desc = "..:: Brings you to the option menu ::..";
 
-  surface   = PingusResource::load_surface("NewButtons/options_off", "menu");
+  surface   = PingusResource::load_surface("NewButtons/ice_off", "menu");
+  //  surface   = PingusResource::load_surface("NewButtons/options_off", "menu");
   surface_p = PingusResource::load_surface("NewButtons/options_on", "menu");
 
   // surface   = PingusResource::load_surface("Buttons/options", "menu");
@@ -157,7 +172,8 @@ QuitButton::QuitButton()
   // surface   = PingusResource::load_surface("Buttons/quit", "menu");
   // surface_p = PingusResource::load_surface("Buttons/quit_p", "menu");  
 
-  surface   = PingusResource::load_surface("NewButtons/exit_off", "menu");
+  //  surface   = PingusResource::load_surface("NewButtons/exit_off", "menu");
+  surface   = PingusResource::load_surface("NewButtons/ice_off", "menu");
   surface_p = PingusResource::load_surface("NewButtons/exit_on", "menu");  
 }
 
@@ -211,11 +227,16 @@ EditorButton::EditorButton()
   y_pos = CL_Display::get_height() * 113 / 480;
 
   desc = "..:: Launch the level editor ::..";
+  line1 = "Create a";
+  line2 = "Level";
 
   // surface   = PingusResource::load_surface("Buttons/editor", "menu");
   // surface_p = PingusResource::load_surface("Buttons/editor_p", "menu");
 
-  surface   = PingusResource::load_surface("NewButtons/create_off", "menu");
+  
+
+  //  surface   = PingusResource::load_surface("NewButtons/ice_off", "menu");
+  surface   = PingusResource::load_surface("NewButtons/ice_off", "menu");
   surface_p = PingusResource::load_surface("NewButtons/create_on", "menu");
 }
 
@@ -246,7 +267,8 @@ ThemeButton::ThemeButton()
   // surface   = PingusResource::load_surface("Buttons/worlds", "menu");
   // surface_p = PingusResource::load_surface("Buttons/worlds_p", "menu");     
 
-  surface   = PingusResource::load_surface("NewButtons/play_off", "menu");
+  surface   = PingusResource::load_surface("NewButtons/ice_off", "menu");
+  //  surface   = PingusResource::load_surface("NewButtons/play_off", "menu");
   surface_p = PingusResource::load_surface("NewButtons/play_on", "menu");     
 }
 

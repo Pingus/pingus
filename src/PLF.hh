@@ -1,4 +1,4 @@
-//  $Id: PLF.hh,v 1.12 2000/07/30 01:47:35 grumbel Exp $
+//  $Id: PLF.hh,v 1.13 2000/07/31 23:45:02 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -174,7 +174,9 @@ public:
   ///
   std::vector<LiquidData>    get_liquids(void);
   ///
-  std::vector<SurfaceData> get_groundpieces(void);
+  std::vector<SurfaceData>   get_groundpieces(void);
+  //
+  //std::vector<EmptyData>            get_groups(void);
 };
 
 #endif

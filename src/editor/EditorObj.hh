@@ -1,4 +1,4 @@
-//  $Id: EditorObj.hh,v 1.13 2000/07/30 01:47:37 grumbel Exp $
+//  $Id: EditorObj.hh,v 1.14 2000/07/31 23:45:02 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,14 +39,20 @@
 class EditorObj
 {
 protected:
+  Position pos;
   
 public:
-  Position pos;
   ///
   int x_of, y_of;
 
   ///
-  struct {
+  struct Color {
+    Color(float r = 1.0, float g = 1.0, float b = 1.0, float a = 1.0) {
+      this->r = r;
+      this->g = g;
+      this->b = b;
+      this->a = a;
+    }
     ///
     float r;
     ///
@@ -55,8 +61,8 @@ public:
     float b;
     ///
     float a;
-  } ///
- mark_color;
+  };
+  Color mark_color;
 
   ///
   CL_Surface* surf;
@@ -89,13 +95,35 @@ public:
   bool operator> (const EditorObj& w);
   //@}
 
-  ///
+  /// Return true if the object is a group of objects
+  virtual bool is_group() { return false; } 
+
+  /** Members to manipulate the objects position */
+  //@{
+  /** Move the object to the given coordinates */
+  virtual void set_position(int new_x_pos, int new_y_pos);
+  /** Move the object to the given coordinates */
+  virtual void set_position_offset(int x_pos_add, int y_pos_add, 
+				   int z_pos_add =0);
+  /// Return the object x_pos
+  virtual int get_x_pos() { return pos.x_pos; }
+  /// Return the object y_pos
+  virtual int get_y_pos() { return pos.y_pos; }
+  /// Return the object z_pos
+  virtual int get_z_pos() { return pos.z_pos; }
+  //@}
+
+  /** Draw the object */
   virtual void   draw_offset(int, int);
-  ///
-  virtual void   draw_mark_offset(int, int);
-  ///
+
+  /** Draw the caputre rectangle around the object */
+  virtual void   draw_mark_offset(int, int, EditorObj::Color* color = 0);
+  
+  /** Return true when the mouse is over the current object */
   virtual bool   mouse_over(int, int);
-  ///
+
+  /** Return true if the current object is inside the current
+      selection rectangle */
   virtual bool   is_in_rect(int x1, int y1, int x2, int y2);
 
   /** Save the give object in the ofstream, this member uses the old
@@ -114,8 +142,7 @@ public:
   virtual std::string status_line();
   ///
   virtual EditorObj* duplicate() = 0;
-}///
-;
+};
 
 // Structure for the sorting algorithm (stable_sort)
 class EditorObj_less : public std::binary_function<EditorObj*, EditorObj*, bool>
@@ -127,13 +154,43 @@ public:
     }
 };
 
-class EditorGroup : public EditorObj
+class EditorObjGroup : public EditorObj
 {
 private:
   list<EditorObj*> objs;
 public:
-  EditorGroup();
-  virtual ~EditorGroup();
+  EditorObjGroup();
+  virtual ~EditorObjGroup();
+
+
+  /// Return true if the object is a group of objects
+  virtual bool is_group() { return true; } 
+  
+  ///
+  virtual void set_position_offset(int x_pos_add, int y_pos_add, 
+				   int z_pos_add =0);
+  ///
+  virtual void set_position(int new_x_pos, int new_y_pos);
+
+  /** Draw the object */
+  virtual void   draw_offset(int, int);
+
+  /** Draw the caputre rectangle around the object */
+  virtual void   draw_mark_offset(int, int, EditorObj::Color* arg_color = 0);
+
+  /** Return true when the mouse is over the current object */
+  virtual bool   mouse_over(int, int);
+
+  /** Return true if the current object is inside the current
+      selection rectangle */
+  virtual bool   is_in_rect(int x1, int y1, int x2, int y2);
+
+  /** Add an object to the group */
+  virtual void EditorObjGroup::push_back(EditorObj*);
+
+  ///
+  virtual list<EditorObj*>* EditorObjGroup::get_objs();
+
   ///
   virtual void   save(std::ofstream* plf, std::ofstream* psm);
   ///

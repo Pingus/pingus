@@ -1,4 +1,4 @@
-//  $Id: EditorEvent.cc,v 1.23 2000/07/30 01:47:37 grumbel Exp $
+//  $Id: EditorEvent.cc,v 1.24 2000/07/31 23:45:02 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -149,6 +149,15 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key &key)
 	  editor_delete_selected_objects();
 	  break;
       
+	  // Form the current selection into a group
+	case CL_KEY_G:
+	  if (CL_Keyboard::get_keycode(CL_KEY_RSHIFT)
+	      || CL_Keyboard::get_keycode(CL_KEY_LSHIFT))
+	    editor_convert_group_to_selection();
+	  else
+	    editor_convert_selection_to_group();
+	  break;
+
 	  // Lower all object in the current selection
 	case CL_KEY_PAGEDOWN:
 	  object_manager->lower_current_objs();
@@ -159,7 +168,7 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key &key)
 		   i != object_manager->current_objs.end(); 
 		   ++i)
 		{
-		  (*i)->pos.z_pos -= 50;
+		  (*i)->set_position_offset(0, 0, -50);
 		}
 	    }
 	  else if (CL_Keyboard::get_keycode(CL_KEY_RCTRL))
@@ -168,7 +177,7 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key &key)
 		   i != object_manager->current_objs.end(); 
 		   ++i)
 		{
-		  (*i)->pos.z_pos -= 5;
+		  (*i)->set_position_offset(0, 0, -5);
 		}
 	    }
 	  break;
@@ -182,7 +191,7 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key &key)
 		   i != object_manager->current_objs.end(); 
 		   ++i) 
 		{
-		  (*i)->pos.z_pos += 50;
+		  (*i)->set_position_offset(0, 0, 50);
 		}
 	    }
 	  else if (CL_Keyboard::get_keycode(CL_KEY_RCTRL)) 
@@ -191,7 +200,7 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key &key)
 		   i != object_manager->current_objs.end(); 
 		   ++i)
 		{
-		  (*i)->pos.z_pos += 5;
+		  (*i)->set_position_offset(0, 0, 5);
 		}
 	    }
 	  break;
@@ -297,6 +306,68 @@ EditorEvent::on_button_release(CL_InputDevice *device, const CL_Key &key)
     }
   
   return true;
+}
+
+void
+EditorEvent::editor_convert_group_to_selection()
+{
+  if (object_manager->current_objs.size() == 1)
+    {
+      EditorObj* obj = *(object_manager->current_objs.begin());
+
+      if (obj->is_group())
+	{      
+	  EditorObjGroup* group = (EditorObjGroup*)obj;
+	  list<EditorObj*>* objs = group->get_objs();
+	  
+	  object_manager->editor_objs.erase(std::find(object_manager->editor_objs.begin(), object_manager->editor_objs.end(), group));
+	  object_manager->delete_selection();
+
+	  for(list<EditorObj*>::iterator i = objs->begin();
+	      i != objs->end();
+	      i++)
+	    {
+	      object_manager->editor_objs.push_back(*i);
+	      object_manager->current_objs.push_back(*i);
+	    }
+
+	  objs->clear();
+
+	  delete group;
+	}
+      else
+	{
+	  std::cout << "EditorEvent::editor_convert_group_to_selection: No group selected" << std::endl;
+	}
+    }
+  else
+    {
+      std::cout << "EditorEvent::editor_convert_group_to_selection: To many/(not enough) objects selected" << std::endl;
+    }
+}
+
+void
+EditorEvent::editor_convert_selection_to_group()
+{
+  if (object_manager->current_objs.size() > 1)
+    {
+      EditorObjGroup* group = new EditorObjGroup();
+
+      for (ObjectManager::CurrentObjIter i = object_manager->current_objs.begin();
+	   i != object_manager->current_objs.end();
+	   i++)
+	{ 
+	  group->push_back(*i);
+	  object_manager->editor_objs.erase(std::find(object_manager->editor_objs.begin(), object_manager->editor_objs.end(), *i));
+	}
+      object_manager->editor_objs.push_back(group);
+      object_manager->delete_selection();
+      object_manager->add_to_selection(group);
+    }
+  else
+    {
+      std::cout << "EditorEvent::editor_convert_selection_to_group: Not enough objects selected for a group" << std::endl;
+    }
 }
 
 void

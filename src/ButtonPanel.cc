@@ -1,4 +1,4 @@
-//  $Id: ButtonPanel.cc,v 1.9 2000/07/30 01:47:35 grumbel Exp $
+//  $Id: ButtonPanel.cc,v 1.10 2000/07/31 23:45:02 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,6 +30,15 @@ ButtonPanel::ButtonPanel(PLF* plf)
   last_press = 0;
 
   std::vector<ActionData> buttons_data = plf->get_actions();
+
+  if (buttons_data.size() == 0)
+    {
+      std::cout << "ButtonPanel: No actions given in this level, fall back to default" << std::endl;
+      buttons_data.push_back(ActionData("bridger", 20));
+      buttons_data.push_back(ActionData("basher", 20));
+      buttons_data.push_back(ActionData("digger", 20));
+      buttons_data.push_back(ActionData("miner", 20));
+    }
 
   for(std::vector<ActionData>::size_type i = 0; i < buttons_data.size(); i++)
     {

@@ -1,4 +1,4 @@
-//  $Id: System.hh,v 1.11 2000/07/30 01:47:35 grumbel Exp $
+//  $Id: System.hh,v 1.12 2000/07/31 23:45:02 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,7 @@
 
 #include <string>
 #include <list>
+#include <map>
 
 /** A wrapper class around some system dependend functions (mostly
     POSIX stuff) */
@@ -90,6 +91,10 @@ public:
       from the enviroment variable LANG, on Windows this is obtained
       from the config file */
   static std::string get_language();
+
+  /** Choose the correct translation out of the map, if there is none
+      present, fall back to the default language */
+  static std::string translate(std::map<std::string, std::string> strs);
 };
 
 #endif
