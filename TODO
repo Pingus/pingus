@@ -1,6 +1,8 @@
-if level is smaller than screen, no tiles are drawn
+Clearing stuff which are outsite the View
 
-optimize which tiles are drawn
+Colmap manipulation for traps, entrances, etc.
+
+if level is smaller than screen, no tiles are drawn
 
 fix themes
 'map' might be an reserved keyword
@@ -20,11 +22,7 @@ Floater - check if killed if falling to height
 For 0.3.x
 ~~~~~~~~~
 Rewrite some of the map generation code
-Allow transparent hotspots
-
 Level replays gehen schief
-
-left/right buttons in Themes
 editor, check if file exist before overwriteing it
 fixed PgUp/PgDown for zooming
 tump nail for level
@@ -38,7 +36,6 @@ Important Things:
 * animated/parallax scrolling backgrounds
 
 -= GRAPHIC WORK =-
-* horizontal tiled backgrounds (elevator)
 * Some exits and entrances
 
 -= SOUND WORK =-
@@ -88,6 +85,6 @@ Star Wars - Escape from the death star.
 Vulcan - Run as fast as you can.
 
 
-$Date: 2000/04/08 20:20:25 $
+$Date: 2000/04/10 21:27:39 $
 
 -= EOF =-
