@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapGraph.cc,v 1.17 2001/07/23 21:49:14 grumbel Exp $
+//  $Id: PingusWorldMapGraph.cc,v 1.18 2001/07/24 09:10:12 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,7 +43,7 @@ void
 PingusWorldMapTubeNode::on_click ()
 {
   std::cout << "Not Supported" << std::endl;
-  PingusWorldMapManager::get_current ()->change_map (worldmap_name);
+  PingusWorldMapManager::get_current ()->change_map (worldmap_name, link_node);
 }
 
 void 
@@ -193,7 +193,6 @@ void
 PingusWorldMapGraph::parse_node_list (xmlNodePtr cur)
 {
   cur = cur->children;
-
   while (cur != NULL)
     {
       if (xmlIsBlankNode(cur)) 
@@ -210,6 +209,10 @@ PingusWorldMapGraph::parse_node_list (xmlNodePtr cur)
 	{
 	  parse_tube (cur);
 	}
+      else if (strcmp((char*)cur->name, "comment") == 0)
+	{
+	  // ignore
+	}
       else
 	{
 	  printf("PingusWorldMapGraph:parse_node_list: Unhandled: %s\n", (char*)cur->name);	  
@@ -222,6 +225,12 @@ void
 PingusWorldMapGraph::parse_tube (xmlNodePtr cur)
 {
   boost::shared_ptr<PingusWorldMapTubeNode> node (new PingusWorldMapTubeNode ());
+
+  char* id = (char*)xmlGetProp(cur, (xmlChar*)"id");
+  if (id)
+    node->id = StringConverter::to_int (id);
+  else
+    std::cout << "PingusWorldMapGraph::parse_tube: no node 'id' given" << std::endl;
 
   cur = cur->children;
   
@@ -239,7 +248,21 @@ PingusWorldMapGraph::parse_tube (xmlNodePtr cur)
 	}
       else if (strcmp((char*)cur->name, "worldmap") == 0)
 	{
+	  char* link_node = (char*)xmlGetProp(cur, (xmlChar*)"linknode");
+	  if (link_node)
+	    from_string (link_node, node->link_node);
+	  else
+	    std::cout << "PingusWorldMapGraph::parse_tube: no node 'linknode' given" << std::endl;
+
 	  node->worldmap_name = XMLhelper::parse_string (doc, cur);
+	}
+      else if (strcmp((char*)cur->name, "link") == 0)
+	{
+	  char* id = (char*)xmlGetProp(cur, (xmlChar*)"id");
+	  if (id)
+	    node->links.push_back(StringConverter::to_int (id));
+	  else
+	    std::cout << "PingusWorldMapGraph::parse_node: no id given" << std::endl;	    
 	}
 
       cur = cur->next;

@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapManager.cc,v 1.14 2001/07/23 21:49:14 grumbel Exp $
+//  $Id: PingusWorldMapManager.cc,v 1.15 2001/07/24 09:10:12 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -73,6 +73,7 @@ PingusWorldMapManager::display ()
 	  new_worldmap = boost::shared_ptr<PingusWorldMap>();
 	}
 
+      CL_System::sleep (20);
       CL_System::keep_alive ();
       Display::flip_display ();
     }
@@ -107,10 +108,11 @@ PingusWorldMapManager::on_resize(int w, int h)
 }
 
 void 
-PingusWorldMapManager::change_map (std::string filename)
+PingusWorldMapManager::change_map (std::string filename, int node)
 {
   new_worldmap = boost::shared_ptr<PingusWorldMap>
     (new PingusWorldMap (path_manager.complete("worldmaps/" + filename)));
+  new_worldmap->set_pingus (node);
 }
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapManager.hh,v 1.6 2001/07/23 21:49:14 grumbel Exp $
+//  $Id: PingusWorldMapManager.hh,v 1.7 2001/07/24 09:10:12 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -59,7 +59,7 @@ private:
 public:
   /// Display the worldmap and let the user select a level
   void display ();
-  void change_map (std::string filename);
+  void change_map (std::string filename, int node);
   static PingusWorldMapManager* get_current () { return current_manager; } 
 };
 

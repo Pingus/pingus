@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapGraph.hh,v 1.12 2001/07/23 21:49:14 grumbel Exp $
+//  $Id: PingusWorldMapGraph.hh,v 1.13 2001/07/24 09:10:12 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -54,6 +54,7 @@ class PingusWorldMapTubeNode
 public:
   std::string worldmap_name;
   Sprite tube;
+  int link_node;
 public:  
   PingusWorldMapTubeNode ();
   void on_click ();

@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMap.hh,v 1.19 2001/07/23 21:49:14 grumbel Exp $
+//  $Id: PingusWorldMap.hh,v 1.20 2001/07/24 09:10:12 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -105,6 +105,9 @@ public:
       background is larger than the screen. 
       @return the currently used draw offset */
   CL_Vector get_offset ();
+
+  /** Set the pingu to the given node with 'id' */
+  void set_pingus (int node_id);
 };
 
 #endif
