@@ -38,4 +38,5 @@ section Particles
 	particle    = ../images/particles/particle.pcx   (type=surface, x=0, y=0, width=3,   height=3, tcol=0);
 	ground      = ../images/particles/ground.tga     (type=surface, x=0, y=0, width=32, height=32, array=4x1);
 	smoke       = ../images/particles/smoke.tga     (type=surface, x=0, y=0, width=32, height=32, array=8x1);
+	smoke2       = ../images/particles/smoke2.tga     (type=surface, x=0, y=0, width=32, height=32, array=8x1);
 }

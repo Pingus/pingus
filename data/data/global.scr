@@ -241,6 +241,14 @@ section GroundPieces
 		turftufty        = ../images/groundpieces/foliage/turftufty.pcx        (type=surface, x=0, y=0, width=20,  height=17, tcol=0);
 	}
 
+	section Mushroom
+	{
+        	toadstool1 = ../images/groundpieces/mushroom/toadstool1.pcx (type=surface, x=0, y=0, width=211, height=187, tcol=0);
+	        toadstool2 = ../images/groundpieces/mushroom/toadstool2.pcx (type=surface, x=0, y=0, width=63, height=56, tcol=0);
+	        toadstool3 = ../images/groundpieces/mushroom/toadstool3.pcx (type=surface, x=0, y=0, width=214, height=178, tcol=0);
+	        toadstool4 = ../images/groundpieces/mushroom/toadstool4.pcx (type=surface, x=0, y=0, width=197, height=210, tcol=0);
+	}
+
 	section Sweets
 	{
 		allsort1          = ../images/groundpieces/sweets/allsort1.pcx (type=surface, x=0, y=0, width=61,  height=60, tcol=0);
