@@ -1,4 +1,4 @@
-//  $Id: pingu_action.cxx,v 1.19 2002/11/26 10:12:53 grumbel Exp $
+//  $Id: pingu_action.cxx,v 1.20 2002/11/26 18:55:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -237,7 +237,7 @@ PinguAction::move_with_forces ()
 		{
                   // FIXME: this shouldn't be really here, but its a
                   // FIXME: quick&dirty way to kill falling pingus
-                  if (resultant_force.y >= Actions::Faller::deadly_velocity)
+                  if (resultant_force.y >= deadly_velocity)
                     {
                       pingu->set_action(Actions::Splashed);
                       return;
