@@ -68,10 +68,10 @@ Credits::Credits()
   credits.push_back(_("-Gfx"));
   credits.push_back("_Alan Tennent");
   credits.push_back("_Craig Timpany");
+  credits.push_back("_Erik Søe Sørensen");
   credits.push_back("_Ingo Ruhnke");
   credits.push_back("_Jarno Elonen");
   credits.push_back("_Joel Fauche");
-  credits.push_back("_Jessica Philippi");
   credits.push_back("_Mark Collinson");
   credits.push_back("_Michael Mestre");
   credits.push_back("_Stefan Stiasny");
@@ -82,11 +82,13 @@ Credits::Credits()
   credits.push_back("_H. Matthew Smith");
   credits.push_back("_Joseph Toscano");
   credits.push_back("_Yuri Sucupira");
+
   credits.push_back("n");
 
   credits.push_back(_("-Level Design"));
   credits.push_back("_Craig Timpany");
   credits.push_back("_Ingo Ruhnke");
+  credits.push_back("_Rune Zedeler");
   credits.push_back("n");
 
   credits.push_back(_("-Story"));
@@ -94,16 +96,18 @@ Credits::Credits()
   credits.push_back("n");
 
   credits.push_back(_("-Translation"));
+  credits.push_back("_Alejandro Pérez Ortega");
   credits.push_back("_Cagri Coltekin");
   credits.push_back("_David Philippi");
+  credits.push_back("_Giuseppe D'Aqui'");
   credits.push_back("_Giray Devlet");
   credits.push_back("_Ingo Ruhnke");
   credits.push_back("_Janne Morén");
   credits.push_back("_Jarno Elonen");
   credits.push_back("_Milan Babuskov");
   credits.push_back("_Philippe Saint-Pierre");
-  credits.push_back("_Skule Solvang");
   credits.push_back("_Ricardo Cruz");
+  credits.push_back("_Skule Solvang");
   credits.push_back("_Tomas Blaha");
   credits.push_back("n");
 
@@ -119,11 +123,14 @@ Credits::Credits()
   credits.push_back("_Debian");
   credits.push_back("_Etienne Marcotte");
   credits.push_back("_Felix Natter");
+  credits.push_back("_Francisco "Pacho" Ramos");
   credits.push_back("_Giray Devlet ");
   credits.push_back("_Giuseppe D'Aqui");
   credits.push_back("_Henri Manson");
   credits.push_back("_Jeff Binder");
   credits.push_back("_Jens Henrik Goebbert");
+  credits.push_back("_Jessica Philippi");
+  credits.push_back("_John August");
   credits.push_back("_Johnny Taporg");
   credits.push_back("_Jules Bean");
   credits.push_back("_Keir Fraser");
