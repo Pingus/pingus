@@ -986,6 +986,10 @@ SOURCE=.\src\demo_recorder.cxx
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\demo_session.cxx
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\direction.cxx
 # End Source File
 # Begin Source File
@@ -1250,11 +1254,19 @@ SOURCE=.\src\screen_manager.cxx
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\screen_ptr.cxx
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\screenshot.cxx
 # End Source File
 # Begin Source File
 
 SOURCE=.\src\server.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\server_event.cxx
 # End Source File
 # Begin Source File
 
@@ -1359,6 +1371,10 @@ SOURCE=.\src\worldobj_data_factory.cxx
 # Begin Source File
 
 SOURCE=.\src\xml_helper.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\xml_pdf.cxx
 # End Source File
 # Begin Source File
 
