@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.137 2003/03/10 11:29:49 grumbel Exp $
+#  $Id: Makefile.am,v 1.138 2003/03/18 17:24:55 torangan Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -174,6 +174,8 @@ main_menu.hxx \
 math.hxx \
 menu_background.cxx \
 menu_background.hxx \
+menu_button.cxx \
+menu_button.hxx \
 mover.cxx \
 mover.hxx \
 multiline_text.cxx \
@@ -256,8 +258,6 @@ sprite.cxx \
 sprite.hxx \
 string_converter.cxx \
 string_converter.hxx \
-surface_button.cxx \
-surface_button.hxx \
 system.cxx \
 system.hxx \
 target_provider.cxx \
