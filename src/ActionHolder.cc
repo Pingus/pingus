@@ -1,4 +1,4 @@
-//  $Id: ActionHolder.cc,v 1.14 2000/05/28 16:47:24 grumbel Exp $
+//  $Id: ActionHolder.cc,v 1.15 2000/05/28 19:54:08 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,6 +25,8 @@
 #include "globals.hh"
 
 #include "ActionHolder.hh"
+
+// FIXME: This file needs a complete rewrite...
 
 #define MAX_ACTION_BUFFER_SIZE 0
 

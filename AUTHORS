@@ -14,15 +14,16 @@ Michael KÅ‰ser <michaelk@gmx.ch>
 Joel Fauche <joel-fauche@worldonline.fr>
 	* most of the pingus (floater, walker, ...)
 
-Jules Bean <jmlb2@hermes.cam.ac.uk>
-	* Mailing List
-
 Michael Mestre <mmestre@teaser.fr>
 	* some gfx (rock tile, weed, traps)
 
 Craig Timpany <timpany@es.co.nz>
-	* some pingu gfx(digger, tumbler)
+	* some pingu gfx(digger, tumbler, bridger2)
 	* traps
+	* lots of levels
+
+Jules Bean <jmlb2@hermes.cam.ac.uk>
+	* Mailing List
 
 David Philippi <david@torangan.saar.de>
 	* RPM version maintainer

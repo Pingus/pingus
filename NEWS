@@ -15,6 +15,7 @@ Release 0.3.2 (15/Mar/1999)
 * Added some new gfx (pingu splash animation, a new exit), thanks to
   Craig Timpany and Joel Fauche
 * Added some more playable levels, thanks to Craig Timpany
+* Fixed line-wrapping code
 * Fixed the jumper
 * Fixed the bridger
 * Fixed a clipping bug in the colmap

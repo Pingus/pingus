@@ -71,9 +71,11 @@ section Hotspots
 	cabin       = ../images/hotspots/cabin.pcx   (type=surface, x=0, y=0, width=129, height=94, tcol=0);
 	cabin_winter= ../images/hotspots/cabin_winter.pcx (type=surface, x=0, y=0, width=129, height=94, tcol=0);
 	dragon      = ../images/hotspots/dragon.pcx  (type=surface, x=0, y=0, width=255, height=169, tcol=0);
+
 	pillar1     = ../images/hotspots/pillar1.pcx (type=surface, x=0, y=0, width=36, height=161, tcol=0);
 	pillar2     = ../images/hotspots/pillar2.pcx (type=surface, x=0, y=0, width=37, height=130, tcol=0);
 	pillar3     = ../images/hotspots/pillar3.pcx (type=surface, x=0, y=0, width=36, height=147, tcol=0);
+
 	well        = ../images/hotspots/well.pcx    (type=surface, x=0, y=0, width=32, height=54, tcol=0);
 	plate       = ../images/hotspots/plate.pcx   (type=surface, x=0, y=0, width=64, height=32);
 	plate2      = ../images/hotspots/plate2.pcx  (type=surface, x=0, y=0, width=64, height=64);
@@ -181,6 +183,8 @@ section GroundPieces
 		snowman   = ../images/groundpieces/snow/snowman.pcx  (type=surface, x=0, y=0, width=67,  height=110, tcol=0);
 		xmas-tree = ../images/groundpieces/snow/xmas-tree.pcx  (type=surface, x=0, y=0, width=74,  height=98, tcol=0);
 		piece1    = ../images/groundpieces/snow/piece1.pcx  (type=surface, x=0, y=0, width=126,  height=73, tcol=0);
+		slopedr = ../images/groundpieces/snow/slopedr.pcx (type=surface, x=0, y=0, width=126, height=73, tcol=0);
+
 		piece2    = ../images/groundpieces/snow/piece2.pcx  (type=surface, x=0, y=0, width=80,  height=19, tcol=0);
 		piece3    = ../images/groundpieces/snow/piece3.pcx  (type=surface, x=0, y=0, width=178,  height=22, tcol=0);
 
@@ -329,6 +333,16 @@ section GroundPieces
 		way        = ../images/groundpieces/space/way.pcx  (type=surface, x=0, y=0, width=100,  height=6); 
 	}
 
+	section Desert
+	{
+	        Sluggydu = ../images/groundpieces/desert/Sluggydu.pcx (type=surface, x=0, y=0, width=192, height=36, tcol=0);
+	        blobdune = ../images/groundpieces/desert/blobdune.pcx (type=surface, x=0, y=0, width=112, height=32, tcol=0);
+
+		pillar1     = ../images/groundpieces/desert/pillar1.pcx (type=surface, x=0, y=0, width=36, height=161, tcol=0);
+		pillar2     = ../images/groundpieces/desert/pillar2.pcx (type=surface, x=0, y=0, width=37, height=130, tcol=0);
+		pillar3     = ../images/groundpieces/desert/pillar3.pcx (type=surface, x=0, y=0, width=36, height=147, tcol=0);
+	}
+
 	section Sortie
 	{
 	        column1   = ../images/groundpieces/sortie/column.pcx (type=surface, x=0, y=0, width=168, height=312, tcol=0);
@@ -347,11 +361,6 @@ section Themes
 	xmas99  = ../images/themes/xmas99.tga    (type=surface, x=0, y=0, width=240,  height=98);
 	tutorial = ../images/themes/tutorial.tga    (type=surface, x=0, y=0, width=236,  height=154);
 	space = ../images/themes/space.tga    (type=surface, x=0, y=0, width=258,  height=145);
-}
-
-section Traps
-{
-	smasher_cmap = ../images/traps/smasher_cmap.pcx   (type=surface, x=0, y=0, width=275, height=7,tcol=0);
 }
 
 // EOF //

@@ -1,5 +1,7 @@
 Release Critical:
 ~~~~~~~~~~~~~~~~~
+ o many segfaults when quitting the game
+ o Basher doesn't care about solid objects
  o Change the config file syntax
  o groundpiece type (transparent, ...) editable from the editor
  o verbose level sorting
@@ -16,7 +18,7 @@ Release Critical:
  o miner and basher needs to be slower
  o *.wav not found erros if sound is disabled.
  o test if put_target() works or where it fails (small surfaces?!)
- o Segfaults in CL_MouseCursor...
+ o Segfaults in CL_MouseCursor...?!
  o basher isn't falling if he goes over a hole in the ground
  o Splashed can be captured.
  o z_pos handlig im editor braucht nen fix
@@ -28,7 +30,6 @@ Release Critical:
 
 Probably fixed:
 ~~~~~~~~~~~~~~~
- o many segfaults when quitting the game
  o Mouse Zeiger im Result screen
  o Zerquetschte Pinguine sollten keine Pixel werfen (smasher)
  o Bridger verhacken sich in Waenden
@@ -154,6 +155,6 @@ DOOR.WAV      MOUSEPRE.WAV  OING.WAV	     THUD.WAV
 
 
 
-$Date: 2000/05/26 18:15:58 $
+$Date: 2000/05/28 19:54:05 $
 
 -= EOF =-

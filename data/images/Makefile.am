@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.11 2000/05/26 18:15:58 grumbel Exp $
+#  $Id: Makefile.am,v 1.12 2000/05/28 19:54:06 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -257,6 +257,7 @@ GROUNDPIECES = \
                groundpieces/snow/ice2.pcx             \
                groundpieces/snow/ice1.pcx             \
                groundpieces/snow/gpiece1.pcx          \
+               groundpieces/snow/slopedr.pcx          \
                groundpieces/snow/piece1.pcx           \
                groundpieces/snow/piece2.pcx           \
                groundpieces/snow/piece3.pcx           \
@@ -373,7 +374,13 @@ GROUNDPIECES = \
                groundpieces/sortie/column3.pcx \
                groundpieces/sortie/plate_forme.pcx \
                groundpieces/sortie/plate_forme_left.pcx \
-               groundpieces/sortie/plate_forme_right.pcx
+               groundpieces/sortie/plate_forme_right.pcx \
+               \
+               groundpieces/desert/Sluggydu.pcx \
+               groundpieces/desert/blobdune.pcx \
+               groundpieces/desert/pillar1.pcx \
+               groundpieces/desert/pillar2.pcx \
+               groundpieces/desert/pillar3.pcx
 
 LIQUIDS = \
           liquids/water.pcx  \

@@ -1,4 +1,4 @@
-//  $Id: OptionMenu.cc,v 1.12 2000/04/29 13:13:26 grumbel Exp $
+//  $Id: OptionMenu.cc,v 1.13 2000/05/28 19:54:08 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -287,23 +287,28 @@ OptionMenu::display()
   EntryIter temp_item = EntryIter();
   int mouse_x = -1, mouse_y = -1;
   
-  while(CL_Mouse::left_pressed()) {
+  while(CL_Mouse::left_pressed())
     CL_System::keep_alive();
-  }
 
   quit = false;
 
   CL_Input::chain_button_press.push_back(event);
   CL_Input::chain_button_release.push_back(event);
 
+
+
+  CL_MouseCursor::set_cursor(CL_MouseCursorProvider::load("Cursors/cursor", PingusResource::get("game.dat")));
+  CL_MouseCursor::show(true);
+
   draw();
 
   while(!quit)
     {
       item = current_item();
-      if (temp_item != item || (cursor_enabled 
+
+      /*      if (temp_item != item || (cursor_enabled 
 				&& mouse_x != CL_Mouse::get_x()
-				&& mouse_y != CL_Mouse::get_y()))
+				&& mouse_y != CL_Mouse::get_y()))*/
 	{
 	  mouse_x = CL_Mouse::get_x();
 	  mouse_y = CL_Mouse::get_y();
@@ -330,6 +335,8 @@ OptionMenu::display()
 	}
       CL_System::keep_alive();
     }
+
+  CL_MouseCursor::hide();
 
   CL_Input::chain_button_release.remove(event);
   CL_Input::chain_button_press.remove(event);
