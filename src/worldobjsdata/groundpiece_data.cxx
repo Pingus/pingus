@@ -1,4 +1,4 @@
-//  $Id: groundpiece_data.cxx,v 1.1 2002/09/16 20:31:09 grumbel Exp $
+//  $Id: groundpiece_data.cxx,v 1.2 2002/09/16 21:03:59 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -70,7 +70,8 @@ GroundpieceData::GroundpieceData (xmlDocPtr doc, xmlNodePtr cur)
 }
 
 GroundpieceData::GroundpieceData (const GroundpieceData& old) 
-                                 : surface(old.surface),
+                                 : WorldObjData(old),
+				   surface(old.surface),
 				   desc(old.desc),
 				   pos(old.pos),
 				   gptype(old.gptype)
