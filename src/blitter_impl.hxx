@@ -1,4 +1,4 @@
-//  $Id: blitter_impl.hxx,v 1.7 2003/04/02 20:37:47 grumbel Exp $
+//  $Id: blitter_impl.hxx,v 1.8 2003/04/02 20:47:45 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -205,7 +205,7 @@ CL_Surface modify(const CL_Surface& sur)
       for (int y = 0; y < pheight; ++y)
         for (int x = 0; x < pwidth; ++x)
           {
-// start: bounce check
+#ifdef PINGUS_DO_ROTBLITTER_BOUNDCHECK 
             int i = TransF::get_index(pwidth, pheight, x, y);
             if (i < 0 || i >= pwidth * pheight)
               {
@@ -219,8 +219,7 @@ CL_Surface modify(const CL_Surface& sur)
                 std::cout << "Source: Out of bounce: " << i << " " << pwidth << "x" << pheight
                           << " " <<  typeid(TransF()).name() << std::endl;
               }
-// end: bounce check
-
+#endif
             target_buf[TransF::get_index(pwidth, pheight, x, y)] = source_buf[y * pwidth + x];
           }
 
