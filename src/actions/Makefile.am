@@ -63,7 +63,8 @@ libpingu_actions_a_SOURCES =       \
          smashed.cc  smashed.hh    \
          LaserKill.cc LaserKill.hh \
          teleported.cc teleported.hh \
-         Splashed.cc   Splashed.hh \
-	 Waiter.cc    Waiter.hh
+         Splashed.cc Splashed.hh \
+	 Waiter.cc   Waiter.hh \
+         Drown.cc    Drown.hh
 
 # EOF #
