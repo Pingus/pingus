@@ -1,4 +1,4 @@
-//  $Id: menu_background.cxx,v 1.10 2003/10/18 23:17:27 grumbel Exp $
+//  $Id: menu_background.cxx,v 1.11 2003/12/13 15:10:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,8 +25,8 @@ namespace Pingus {
 
 MenuBackground::MenuBackground ()
 {
-  layer_manager.add_layer (PingusResource::load_surface ("menu/layer1", "core"),  0, 0, 12, 0);
-  layer_manager.add_layer (PingusResource::load_surface ("menu/layer2", "core"),  0, 150, 25, 0);
+  layer_manager.add_layer (PingusResource::load_surface("menu/layer1", "core"),  0, 0, 12, 0);
+  layer_manager.add_layer (PingusResource::load_surface("menu/layer2", "core"),  0, 150, 25, 0);
   layer_manager.add_layer (PingusResource::load_surface ("menu/layer3", "core"), 0, 200, 50, 0);
   layer_manager.add_layer (PingusResource::load_surface ("menu/layer4", "core"), 0, 600 - 171, 100, 0);
   layer_manager.add_layer (PingusResource::load_surface ("menu/layer5", "core"), 0, 500, 200, 0);

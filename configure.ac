@@ -1,4 +1,4 @@
-#  $Id: configure.ac,v 1.20 2003/10/18 12:11:30 grumbel Exp $
+#  $Id: configure.ac,v 1.21 2003/12/13 15:10:44 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -119,11 +119,12 @@ PKG_CHECK_MODULES(PINGUS,
   clanApp-0.7            >= $REQUIRED_CLANLIB_VERSION
   clanDisplay-0.7        >= $REQUIRED_CLANLIB_VERSION
   clanGL-0.7             >= $REQUIRED_CLANLIB_VERSION
+  clanSDL-0.7            >= $REQUIRED_CLANLIB_VERSION
   clanGUI-0.7            >= $REQUIRED_CLANLIB_VERSION
   clanGUIStyleSilver-0.7 >= $REQUIRED_CLANLIB_VERSION
   clanSound-0.7          >= $REQUIRED_CLANLIB_VERSION
   clanVorbis-0.7         >= $REQUIRED_CLANLIB_VERSION
- clanMikMod-0.7         >= $REQUIRED_CLANLIB_VERSION
+  clanMikMod-0.7         >= $REQUIRED_CLANLIB_VERSION
   ],
  [])
 

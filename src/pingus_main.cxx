@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.102 2003/10/21 21:37:06 grumbel Exp $
+//   $Id: pingus_main.cxx,v 1.103 2003/12/13 15:10:44 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___
@@ -224,9 +224,8 @@ PingusMain::check_args(int argc, char** argv)
       {"cheat",             required_argument, 0, 156},
       {"controller",        required_argument, 0, 160},
       {"render-preview",    required_argument, 0, 161},
-#ifdef HAVE_LIBCLANGL
       {"use-opengl",        no_argument,       0, 'G'},
-#endif
+
       // FIXME: is the number stuff correct?
       {"fast",            no_argument,       0, 132},
       {"fast-mode",       no_argument,       0, 132},
@@ -281,11 +280,9 @@ PingusMain::check_args(int argc, char** argv)
       //std::cout << "PingusMain: Starting Editor" << std::endl;
       break;
 
-#ifdef HAVE_LIBCLANGL
     case 'G':
       use_opengl = true;
       break;
-#endif
 
     case 's': // -s, --disable-sound
       sound_enabled = false;
@@ -497,9 +494,7 @@ PingusMain::check_args(int argc, char** argv)
         << "\n                            " << _("Set the resolution for pingus (default: 800x600)")
         << "\n   -h, --help               " << _("Displays this help")
         << "\n   --disable-intro          " << _("Disable intro");
-#ifdef HAVE_LIBCLANGL
       std::cout << "   -G, --use-opengl         " << _("Use OpenGL");
-#endif
       std::cout
 	<< "\n   -w, --window             " << _("Start in Window Mode")
         << "\n   -f, --fullscreen         " << _("Start in Fullscreen")

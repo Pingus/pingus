@@ -1,4 +1,4 @@
-//  $Id: fonts.cxx,v 1.6 2003/10/20 19:28:54 grumbel Exp $
+//  $Id: fonts.cxx,v 1.7 2003/12/13 15:10:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,24 +41,24 @@ CL_Font lcd;
 void
 init ()
 {
-#ifdef WORDS_BIGENDIAN
+#ifndef CLANLIB_0_6
   // FIXME: Just a workaround, no fix
-  xterm        = PingusResource::load_font("Fonts/xterm","fonts");
+  pingus_small = PingusResource::load_font("Fonts/pingus_small","fonts");
+  xterm        = pingus_small;
 
-  pingus_small = xterm;
-  pingus_small_fix_num = xterm;
-  pingus_large = xterm;
+  pingus_small_fix_num = pingus_small;
+  pingus_large = pingus_small;
 
-  chalk_large  = xterm;
-  chalk_normal = xterm;
-  chalk_small  = xterm;
+  chalk_large  = pingus_small;
+  chalk_normal = pingus_small;
+  chalk_small  = pingus_small;
 
-  courier_small = xterm;
+  courier_small = pingus_small;
 
-  smallfont    = xterm;
-  smallfont_h  = xterm;
+  smallfont    = pingus_small;
+  smallfont_h  = pingus_small;
 
-  lcd          = xterm;
+  lcd          = pingus_small;
 #else 
   pingus_small = PingusResource::load_font("Fonts/pingus_small", "fonts");
   pingus_small_fix_num = PingusResource::load_font("Fonts/pingus_small_fix_num", "fonts");

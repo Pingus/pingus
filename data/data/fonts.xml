@@ -1,18 +1,90 @@
+<?xml version="1.0"  encoding="ISO-8859-1"?>
 <resources>
   <section name="Fonts">
-    <font letters="0123456789:" name="numbers" spacelen="0" value="../images/fonts/number_fnt.png" x="1" y="1" />
-    <font letters="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890_-\/=[]().," name="courier" spacelen="8" tcol="0" value="../images/fonts/courier.png" x="1" y="1" />
-    <font letters="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890_-\/=[]().," name="courier_h" spacelen="8" tcol="0" value="../images/fonts/courier_h.png" x="1" y="1" />
-    <font letters="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890_-\/=[]().," name="smallfont" spacelen="8" tcol="0" value="../images/fonts/smallfont.png" x="1" y="1" />
-    <font letters="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890_-\/=[]().," name="smallfont_h" spacelen="8" tcol="0" value="../images/fonts/smallfont_h.png" x="1" y="1" />
-    <font letters="abcdefghijklmnopqrstuvwxyz1234567890-?!." name="font" spacelen="8" tcol="0" value="../images/fonts/font.png" x="1" y="1" />
-    <font alphafont="1" letters="!&amp;quot;#$%&amp;'()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~&#161;&#162;&#163;&#164;&#165;&#166;&#167;&#168;&#169;&#170;&#171;&#172;&#173;&#174;&#175;&#176;&#177;&#178;&#179;&#180;&#181;&#182;&#183;&#184;&#185;&#186;&#187;&#188;&#189;&#190;&#191;&#192;&#193;&#194;&#195;&#196;&#197;&#198;&#199;&#200;&#201;&#202;&#203;&#204;&#205;&#206;&#207;&#208;&#209;&#210;&#211;&#212;&#213;&#214;&#215;&#216;&#217;&#218;&#219;&#220;&#221;&#222;&#223;&#224;&#225;&#226;&#227;&#228;&#229;&#230;&#231;&#232;&#233;&#234;&#235;&#236;&#237;&#238;&#239;&#240;&#241;&#242;&#243;&#244;&#245;&#246;&#247;&#248;&#249;&#250;&#251;&#252;&#253;&#254;&#255;" name="courier_small" spacelen="8" subtract_width="0" trans_limit="0.25" value="../images/fonts/verdana11_bold_latin1.png" />
-    <font alphafont="1" letters="!&amp;quot;#$%&amp;'()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~&#161;&#162;&#163;&#164;&#165;&#166;&#167;&#168;&#169;&#170;&#171;&#172;&#173;&#174;&#175;&#176;&#177;&#178;&#179;&#180;&#181;&#182;&#183;&#184;&#185;&#186;&#187;&#188;&#189;&#190;&#191;&#192;&#193;&#194;&#195;&#196;&#197;&#198;&#199;&#200;&#201;&#202;&#203;&#204;&#205;&#206;&#207;&#208;&#209;&#210;&#211;&#212;&#213;&#214;&#215;&#216;&#217;&#218;&#219;&#220;&#221;&#222;&#223;&#224;&#225;&#226;&#227;&#228;&#229;&#230;&#231;&#232;&#233;&#234;&#235;&#236;&#237;&#238;&#239;&#240;&#241;&#242;&#243;&#244;&#245;&#246;&#247;&#248;&#249;&#250;&#251;&#252;&#253;&#254;&#255;" name="chalk_normal" spacelen="8" subtract_width="0" trans_limit="0.25" value="../images/fonts/chalk_normal.png" />
-    <font alphafont="1" letters="!&amp;quot;#$%&amp;'()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~&#161;&#162;&#163;&#164;&#165;&#166;&#167;&#168;&#169;&#170;&#171;&#172;&#173;&#174;&#175;&#176;&#177;&#178;&#179;&#180;&#181;&#182;&#183;&#184;&#185;&#186;&#187;&#188;&#189;&#190;&#191;&#192;&#193;&#194;&#195;&#196;&#197;&#198;&#199;&#200;&#201;&#202;&#203;&#204;&#205;&#206;&#207;&#208;&#209;&#210;&#211;&#212;&#213;&#214;&#215;&#216;&#217;&#218;&#219;&#220;&#221;&#222;&#223;&#224;&#225;&#226;&#227;&#228;&#229;&#230;&#231;&#232;&#233;&#234;&#235;&#236;&#237;&#238;&#239;&#240;&#241;&#242;&#243;&#244;&#245;&#246;&#247;&#248;&#249;&#250;&#251;&#252;&#253;&#254;&#255;" name="chalk_large" spacelen="8" subtract_width="1" trans_limit="0.0" value="../images/fonts/chalk_large.png" />
-    <font alphafont="1" letters="!&amp;quot;#$%&amp;'()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~&#161;&#162;&#163;&#164;&#165;&#166;&#167;&#168;&#169;&#170;&#171;&#172;&#173;&#174;&#175;&#176;&#177;&#178;&#179;&#180;&#181;&#182;&#183;&#184;&#185;&#186;&#187;&#188;&#189;&#190;&#191;&#192;&#193;&#194;&#195;&#196;&#197;&#198;&#199;&#200;&#201;&#202;&#203;&#204;&#205;&#206;&#207;&#208;&#209;&#210;&#211;&#212;&#213;&#214;&#215;&#216;&#217;&#218;&#219;&#220;&#221;&#222;&#223;&#224;&#225;&#226;&#227;&#228;&#229;&#230;&#231;&#232;&#233;&#234;&#235;&#236;&#237;&#238;&#239;&#240;&#241;&#242;&#243;&#244;&#245;&#246;&#247;&#248;&#249;&#250;&#251;&#252;&#253;&#254;&#255;" name="chalk_small" spacelen="8" subtract_width="0" trans_limit="0.1" value="../images/fonts/chalk_small.png" />
-    <font alphafont="1" letters="!&amp;quot;#$%&amp;'()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~&#161;&#162;&#163;&#164;&#165;&#166;&#167;&#168;&#169;&#170;&#171;&#172;&#173;&#174;&#175;&#176;&#177;&#178;&#179;&#180;&#181;&#182;&#183;&#184;&#185;&#186;&#187;&#188;&#189;&#190;&#191;&#192;&#193;&#194;&#195;&#196;&#197;&#198;&#199;&#200;&#201;&#202;&#203;&#204;&#205;&#206;&#207;&#208;&#209;&#210;&#211;&#212;&#213;&#214;&#215;&#216;&#217;&#218;&#219;&#220;&#221;&#222;&#223;&#224;&#225;&#226;&#227;&#228;&#229;&#230;&#231;&#232;&#233;&#234;&#235;&#236;&#237;&#238;&#239;&#240;&#241;&#242;&#243;&#244;&#245;&#246;&#247;&#248;&#249;&#250;&#251;&#252;&#253;" name="pingus_small" spacelen="8" subtract_width="0" trans_limit="0.4" value="../images/fonts/pingus_small-2.png" />
-    <font alphafont="1" letters="!&amp;quot;#$%&amp;'()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~&#161;&#162;&#163;&#164;&#165;&#166;&#167;&#168;&#169;&#170;&#171;&#172;&#173;&#174;&#175;&#176;&#177;&#178;&#179;&#180;&#181;&#182;&#183;&#184;&#185;&#186;&#187;&#188;&#189;&#190;&#191;&#192;&#193;&#194;&#195;&#196;&#197;&#198;&#199;&#200;&#201;&#202;&#203;&#204;&#205;&#206;&#207;&#208;&#209;&#210;&#211;&#212;&#213;&#214;&#215;&#216;&#217;&#218;&#219;&#220;&#221;&#222;&#223;&#224;&#225;&#226;&#227;&#228;&#229;&#230;&#231;&#232;&#233;&#234;&#235;&#236;&#237;&#238;&#239;&#240;&#241;&#242;&#243;&#244;&#245;&#246;&#247;&#248;&#249;&#250;&#251;&#252;&#253;" name="pingus" spacelen="8" subtract_width="3" trans_limit="0.0" value="../images/fonts/pingus_large-2.png" />
-    <font alphafont="1" letters="!&amp;quot;#$%&amp;'()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~&#196;&#214;&#220;&#228;&#246;&#252;&#199;&#231;&#208;&#240;&#221;&#253;&#222;&#254;" name="pingus_small_fix_num" spacelen="13" subtract_width="0" trans_limit="0" value="../images/fonts/pingus_small4_fix_num.png" />
-    <font letters="!&amp;quot;#$%&amp;'()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~" name="xterm" spacelen="6" tcol="0" value="../images/fonts/xterm.png" x="1" y="1" />
+    <!--    <sprite name="courier_small_glyphs">
+    <image file="../images/fonts/verdana11_bold_latin1.png"><alpha/></image>
+  </sprite>
+    <font name="courier_small">
+    <bitmap
+    glyphs="courier_small_glyphs"
+    letters="!&amp;quot;#$%&amp;'()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~&#161;&#162;&#163;&#164;&#165;&#166;&#167;&#168;&#169;&#170;&#171;&#172;&#173;&#174;&#175;&#176;&#177;&#178;&#179;&#180;&#181;&#182;&#183;&#184;&#185;&#186;&#187;&#188;&#189;&#190;&#191;&#192;&#193;&#194;&#195;&#196;&#197;&#198;&#199;&#200;&#201;&#202;&#203;&#204;&#205;&#206;&#207;&#208;&#209;&#210;&#211;&#212;&#213;&#214;&#215;&#216;&#217;&#218;&#219;&#220;&#221;&#222;&#223;&#224;&#225;&#226;&#227;&#228;&#229;&#230;&#231;&#232;&#233;&#234;&#235;&#236;&#237;&#238;&#239;&#240;&#241;&#242;&#243;&#244;&#245;&#246;&#247;&#248;&#249;&#250;&#251;&#252;&#253;&#254;&#255;"
+    spacelen="8"
+    subtract_width="0"
+    trans_limit="0.25" />
+  </font>
+
+
+    <sprite name="../images/fonts/xterm.png">
+    <image file=""><alpha/></image>
+  </sprite>
+    <font name="xterm">
+    <bitmap 
+    letters="!&amp;quot;#$%&amp;'()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~"
+    spacelen="6" tcol="0" />
+  </font>
+    -->
+
+    <sprite name="pingus_glyphs">
+      <image file="../images/fonts/pingus_large-2.png"><alpha subtract_width="3" trans_limit="0.0" /></image>
+    </sprite>
+    <font name="pingus">
+      <bitmap
+        glyphs="Fonts/pingus_glyphs" 
+        letters="!&quot;#$%&amp;'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüý"
+        spacelen="8" />
+    </font>
+
+    <sprite name="pingus_small_fix_num_glyphs">
+      <image file="../images/fonts/pingus_small4_fix_num.png"><alpha/></image>
+    </sprite>
+    <font name="pingus_small_fix_num">
+      <bitmap 
+        glyphs="Fonts/pingus_small_fix_num_glyphs" 
+        letters="!&quot;#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~ÄÖÜäöüÇçÐðÝýÞþ"
+        spacelen="13" subtract_width="0" trans_limit="0" />
+    </font>
+
+    <sprite name="pingus_small_glyphs">
+      <image file="../images/fonts/pingus_small-2.png"><alpha trans_limit="0.4" /></image>
+    </sprite>
+    <font name="pingus_small">
+      <bitmap 
+        glyphs="Fonts/pingus_small_glyphs"
+        letters="!&quot;#$%&amp;'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüý"
+        spacelen="8" subtract_width="0" />
+    </font>
+
+    <sprite name="chalk_normal_glyphs">
+      <image file="../images/fonts/chalk_normal.png"><alpha/></image>
+    </sprite>
+    <font name="chalk_normal">
+      <bitmap 
+        glyphs="Fonts/chalk_normal_glyphs"
+        letters="!&quot;#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüý"
+        spacelen="8" subtract_width="0" trans_limit="0.25" />
+    </font>
+
+    <sprite name="chalk_large_glyphs">
+      <image file="../images/fonts/chalk_large.png"><alpha/></image>
+    </sprite>
+    <font name="chalk_large">
+      <bitmap 
+        glyphs="Fonts/chalk_large_glyphs"
+        letters="!&quot;#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüý"
+        spacelen="8" subtract_width="1" trans_limit="0.0" value="../images/fonts/chalk_large.png" />
+    </font>
+
+    <sprite name="chalk_small_glyphs">
+      <image file="../images/fonts/chalk_small.png"><alpha/></image>
+    </sprite>
+    <font name="chalk_small">
+      <bitmap
+        glyphs="Fonts/chalk_small_glyphs"
+        letters="!&amp;quot;#$%&amp;'()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~&#161;&#162;&#163;&#164;&#165;&#166;&#167;&#168;&#169;&#170;&#171;&#172;&#173;&#174;&#175;&#176;&#177;&#178;&#179;&#180;&#181;&#182;&#183;&#184;&#185;&#186;&#187;&#188;&#189;&#190;&#191;&#192;&#193;&#194;&#195;&#196;&#197;&#198;&#199;&#200;&#201;&#202;&#203;&#204;&#205;&#206;&#207;&#208;&#209;&#210;&#211;&#212;&#213;&#214;&#215;&#216;&#217;&#218;&#219;&#220;&#221;&#222;&#223;&#224;&#225;&#226;&#227;&#228;&#229;&#230;&#231;&#232;&#233;&#234;&#235;&#236;&#237;&#238;&#239;&#240;&#241;&#242;&#243;&#244;&#245;&#246;&#247;&#248;&#249;&#250;&#251;&#252;&#253;&#254;&#255;"
+        spacelen="8" subtract_width="0" trans_limit="0.1">
+    </font>
+
+
+
   </section>
 </resources>

@@ -1,4 +1,4 @@
-//  $Id: pingus_resource.cxx,v 1.34 2003/12/13 11:21:23 grumbel Exp $
+//  $Id: pingus_resource.cxx,v 1.35 2003/12/13 15:10:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -64,7 +64,7 @@ PingusResource::deinit()
 CL_ResourceManager*
 PingusResource::get(const std::string& arg_filename)
 {
-  std::string filename = arg_filename + ".scr";
+  std::string filename = arg_filename + ".xml";
 
   CL_ResourceManager* res_manager;
 
@@ -81,8 +81,8 @@ PingusResource::get(const std::string& arg_filename)
       res_filename = "data/" + filename;
 
       // FIXME: Memory hole...
-      res_manager = new CL_ResourceManager(path_manager.complete (res_filename.c_str()),
-      					   /* is_datafile = */false);
+      res_manager = new CL_ResourceManager(path_manager.complete(res_filename));
+      					
 
       resource_map[filename] = res_manager;
       return res_manager;
@@ -131,7 +131,6 @@ PingusResource::load_surface_provider(const std::string& res_name,
 CL_Surface
 PingusResource::load_surface(const ResDescriptor& res_desc)
 {
-
   // try to load from cache
   CL_Surface surf = load_from_cache(res_desc);
 
@@ -289,12 +288,19 @@ PingusResource::load_font(const ResDescriptor& res_desc)
 	{
 	case ResDescriptor::RD_RESOURCE:
 	  try {
-	    font = CL_Font(res_desc.res_name.c_str(),
+	    font = CL_Font(res_desc.res_name,
                            get(res_desc.datafile));
 	  } catch (CL_Error err) {
-	    pout << "PingusResource: " << err.message << std::endl
+            std::list<std::string> lst = get(res_desc.datafile)->get_all_resources();
+            for(std::list<std::string>::iterator i = lst.begin(); i != lst.end(); ++i)
+              {
+                std::cout << "Res: " << *i << std::endl;
+              }
+            
+            std::cout << "DatafileRes: " << get(res_desc.datafile) << std::endl;
+	    pout << "PingusResource: CL_Error: " << err.message << std::endl
 	         << "PingusResource: Couldn't load font: " << res_desc << std::endl;
-	    assert (!"PingusResource: Fatal error can't continue!");
+            assert (!"PingusResource: Fatal error can't continue!");
 	  }
 	  font_map[res_desc] = font;
 	  return font;
