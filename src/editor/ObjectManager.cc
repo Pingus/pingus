@@ -1,4 +1,4 @@
-//  $Id: ObjectManager.cc,v 1.17 2000/06/25 20:22:18 grumbel Exp $
+//  $Id: ObjectManager.cc,v 1.18 2000/06/26 15:32:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -125,10 +125,7 @@ ObjectManager::load_level (string filename)
   for(vector<trap_data>::iterator i = temp_traps.begin(); i != temp_traps.end(); ++i)
     editor_objs.push_back(EditorObj::create(*i));
 
-  for (EditorObjIter i = editor_objs.begin(); i != editor_objs.end(); ++i)
-    std::cout << (*i)->z_pos << std::endl;
-
-#ifndef WIN32 // FIXME: Compiler error in Windows      
+#ifndef WIN32 // FIXME: Compiler error in Windows
   editor_objs.sort(EditorObj_less());
 #endif
 
@@ -189,7 +186,7 @@ ObjectManager::save_level (string filename)
   // FIXME: we need some error checking
   
   plf_out << "/* This level was created with the PLE\n"
-	  << " * $Id: ObjectManager.cc,v 1.17 2000/06/25 20:22:18 grumbel Exp $\n"
+	  << " * $Id: ObjectManager.cc,v 1.18 2000/06/26 15:32:26 grumbel Exp $\n"
 	  << " */"
 	  << endl;
   

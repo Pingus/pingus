@@ -1,4 +1,4 @@
-//  $Id: ThemeSelector.cc,v 1.24 2000/06/25 20:22:18 grumbel Exp $
+//  $Id: ThemeSelector.cc,v 1.25 2000/06/26 15:32:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -184,12 +184,12 @@ ThemeSelector::Event::on_mouse_move(CL_InputDevice *device)
 ThemeSelector::ThemeSelector()
 {
   dir_read = false;
-  title_font = CL_Font::load("Fonts/pingus", PingusResource::get("fonts.dat"));
-  theme_font = CL_Font::load("Fonts/pingus_small", PingusResource::get("fonts.dat"));
+  title_font = PingusResource::load_font("Fonts/pingus", "fonts");
+  theme_font = PingusResource::load_font("Fonts/pingus_small", "fonts");
 
-  left_arrow = CL_Surface::load("Hotspots/left_arrow", PingusResource::get("global.dat"));
-  right_arrow = CL_Surface::load("Hotspots/right_arrow", PingusResource::get("global.dat"));
-  back = CL_Surface::load("Buttons/back", PingusResource::get("menu.dat"));
+  left_arrow  = PingusResource::load_surface("Hotspots/left_arrow", "global");
+  right_arrow = PingusResource::load_surface("Hotspots/right_arrow", "global");
+  back        = PingusResource::load_surface("Buttons/back", "menu");
 
   event = new ThemeSelector::Event;
   event->enabled = false;

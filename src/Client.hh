@@ -1,4 +1,4 @@
-//  $Id: Client.hh,v 1.14 2000/06/18 17:01:49 grumbel Exp $
+//  $Id: Client.hh,v 1.15 2000/06/26 15:32:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -61,8 +61,6 @@ private:
   bool pause;
   ///
   int  skip_frame;
-  ///
-  int  current_fps;
   ///
   bool do_replay;
   ///
@@ -127,10 +125,6 @@ public:
   ///
   void set_pause(bool value);
 
-  ///
-  void count_fps();
-  ///
-  int  get_fps();
   ///
   bool replay();
   ///

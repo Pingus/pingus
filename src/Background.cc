@@ -1,4 +1,4 @@
-//  $Id: Background.cc,v 1.19 2000/06/25 20:22:18 grumbel Exp $
+//  $Id: Background.cc,v 1.20 2000/06/26 15:32:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -95,8 +95,7 @@ Background::load (background_data bg_data)
 	}
       else
 	{
-	  bg_surface = CL_Surface::load(bg_data.desc.res_name.c_str(),
-					PingusResource::get(bg_data.desc.datafile));
+	  bg_surface = PingusResource::load_surface(bg_data.desc);
 	}
     }
 

@@ -1,4 +1,4 @@
-//  $Id: Client.cc,v 1.28 2000/06/26 06:45:59 grumbel Exp $
+//  $Id: Client.cc,v 1.29 2000/06/26 15:32:26 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -245,9 +245,7 @@ Client::play_level(std::string plf_filename, std::string psm_filename)
 	  for(std::vector<GuiObj*>::size_type i=0; i < obj.size(); ++i) 
 	    obj[i]->draw_clipped();
       
-	  Display::flip_display();
-      
-	  count_fps();
+	  Display::flip_display();     
 	}
       else 
 	{
@@ -280,29 +278,6 @@ Client::send_next_event()
 	 }
        }
    }
-}
-
-void
-Client::count_fps()
-{
-  static unsigned int last_time;
-  static int fps_count;
-  
-  ++fps_count;
-  // Print the fps rate every 2secs
-  if (print_fps && (last_time + 1000 < CL_System::get_time()))
-    {
-      //cout << "Client: " << fps_count << "fps" << std::endl;
-      current_fps = fps_count;
-      fps_count = 0;
-      last_time = CL_System::get_time();
-    }
-} 
-
-int
-Client::get_fps()
-{
-  return current_fps;
 }
 
 void

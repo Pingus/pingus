@@ -1,4 +1,4 @@
-//  $Id: OptionMenu.cc,v 1.18 2000/06/25 20:22:18 grumbel Exp $
+//  $Id: OptionMenu.cc,v 1.19 2000/06/26 15:32:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -193,11 +193,10 @@ OptionMenu::init()
   if (!preload_data)
     loading_screen.draw();
 
-  font = CL_Font::load("Fonts/smallfont_h",  PingusResource::get("fonts.dat"));
-  title_font = CL_Font::load("Fonts/pingus", PingusResource::get("fonts.dat"));
-  background =  CL_Surface::load("Textures/rocktile", PingusResource::get("textures.dat"));
-  //  cursor_sur = CL_Surface::load("Cursors/cursor", PingusResource::get("game.dat"));
-  back = CL_Surface::load("Buttons/back", PingusResource::get("menu.dat"));
+  font       = PingusResource::load_font("Fonts/smallfont_h",  "fonts");
+  title_font = PingusResource::load_font("Fonts/pingus", "fonts");
+  background =  PingusResource::load_surface("Textures/rocktile", "textures");
+  back       = PingusResource::load_surface("Buttons/back", "menu");
 
   entry_x = 20;
   entry_y = 60;

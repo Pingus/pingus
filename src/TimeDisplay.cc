@@ -1,4 +1,4 @@
-//  $Id: TimeDisplay.cc,v 1.2 2000/02/09 21:43:41 grumbel Exp $
+//  $Id: TimeDisplay.cc,v 1.3 2000/06/26 15:32:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,21 +32,30 @@ TimeDisplay::TimeDisplay()
 void
 TimeDisplay::draw()
 {
-  time_value = server->get_world()->get_time();
-
-  int millisecs = (((time_value * 100)) / game_speed) % 100;
-  int seconds   = (time_value / game_speed % 60);
-  int minutes   = (time_value / (60 * game_speed));
-  char* p;
-
-  sprintf(time_string, "%2d:%2d:%2d", minutes, seconds, millisecs);
-
-  p = time_string;
-
-  while(*p++)
+  if (!debug_game_time)
     {
-      if (*p == ' ')
-	*p = '0';
+      time_value = server->get_world()->get_time();
+
+      int millisecs = (((time_value * 100)) / game_speed) % 100;
+      int seconds   = (time_value / game_speed % 60);
+      int minutes   = (time_value / (60 * game_speed));
+      char* p;
+      // FIXME: Buffer overflow...
+      sprintf(time_string, "%2d:%2d:%2d", minutes, seconds, millisecs);
+
+      p = time_string;
+
+      while(*p++)
+	{
+	  if (*p == ' ')
+	    *p = '0';
+	}
+    }
+  else
+    {
+      time_value = server->get_world()->get_time();
+      // FIXME: Buffer overflow...
+      sprintf(time_string, "%4d", time_value);
     }
 
   font->print_right(CL_Display::get_width() - 5, 1, time_string);

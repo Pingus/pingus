@@ -1,4 +1,4 @@
-//  $Id: PingusLevelResult.cc,v 1.14 2000/06/12 14:42:11 grumbel Exp $
+//  $Id: PingusLevelResult.cc,v 1.15 2000/06/26 15:32:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -55,9 +55,11 @@ PingusLevelResult::draw(void)
   CL_Display::fill_rect(0, 0, CL_Display::get_width(), CL_Display::get_height(), 0.0, 0.0, 0.0, 0.5);
   
   title->print_center(CL_Display::get_width() / 2, 50, "Results:");
-  font->print_center(CL_Display::get_width() / 2, 100,
+  
+  /* Ending messages are censored for the momement
+    font->print_center(CL_Display::get_width() / 2, 100,
 		     get_message(100 * world->get_saved_pingus() / world->get_allowed_pingus()).c_str());
-
+  */
   sprintf(str,  "Pingus saved:   %3d/%3d", 
 	  world->get_saved_pingus(),
 	  world->get_allowed_pingus());

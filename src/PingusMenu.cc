@@ -1,4 +1,4 @@
-//  $Id: PingusMenu.cc,v 1.24 2000/06/21 20:55:52 grumbel Exp $
+//  $Id: PingusMenu.cc,v 1.25 2000/06/26 15:32:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,8 +34,8 @@
 
 PingusMenu::PingusMenu()
 {
-  bg         = CL_Surface::load("Game/logo_t", PingusResource::get("game.dat"));
-  background = CL_Surface::load("Textures/stones", PingusResource::get("textures.dat"));
+  bg         = PingusResource::load_surface("Game/logo_t", "game");
+  background = PingusResource::load_surface("Textures/stones", "textures");
  
   event = new Event;
   event->enabled = false;

@@ -1,4 +1,4 @@
-//  $Id: ActionButton.cc,v 1.8 2000/06/25 20:22:17 grumbel Exp $
+//  $Id: ActionButton.cc,v 1.9 2000/06/26 15:32:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -260,7 +260,7 @@ VerticalActionButton::draw()
 
 ArmageddonButton::ArmageddonButton(int x, int y)
 {
-  surface = CL_Surface::load("Buttons/armageddon_anim", PingusResource::get("global.dat"));
+  surface = PingusResource::load_surface("Buttons/armageddon_anim", "global");
   counter.set_size(surface->get_num_frames());
   counter = 0;
   x_pos = x;
@@ -300,7 +300,7 @@ ArmageddonButton::mouse_over()
 
 ForwardButton::ForwardButton(int x, int y)
 {
-  surface = CL_Surface::load("Buttons/forward", PingusResource::get("global.dat"));
+  surface = PingusResource::load_surface("Buttons/forward", "global");
   x_pos = x;
   y_pos = y;
 }
@@ -334,7 +334,7 @@ ForwardButton::mouse_over()
 
 PauseButton::PauseButton(int x, int y)
 {
-  surface = CL_Surface::load("Buttons/pause", PingusResource::get("global.dat"));
+  surface = PingusResource::load_surface("Buttons/pause", "global");
   x_pos = x;
   y_pos = y;
 }

@@ -1,4 +1,4 @@
-//  $Id: Theme.cc,v 1.14 2000/06/25 20:22:18 grumbel Exp $
+//  $Id: Theme.cc,v 1.15 2000/06/26 15:32:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -71,7 +71,7 @@ Theme::load(std::string filename)
   try 
     {
       if (plt.get_surface() != "-")
-	surface = CL_Surface::load(plt.get_surface().c_str(), PingusResource::get("global.dat"));
+	surface = PingusResource::load_surface(plt.get_surface(), "global");
       else
 	surface = 0;
     }

@@ -1,4 +1,4 @@
-//  $Id: Pingu.cc,v 1.24 2000/06/23 18:39:56 grumbel Exp $
+//  $Id: Pingu.cc,v 1.25 2000/06/26 15:32:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -61,7 +61,7 @@ Pingu::Pingu(int x, int y)
       local_res_p = PingusResource::get("pingus.dat");
       PinguAction::SetResourceManager(local_res());
 
-      font   = CL_Font::load("Fonts/numbers", PingusResource::get("fonts.dat"));  
+      font   = PingusResource::load_font("Fonts/numbers", "fonts");
       //walker = CL_Surface::load("XMas/walker", local_res());
       walker = CL_Surface::load("Pingus/walker", local_res());
       faller = CL_Surface::load("Pingus/faller", local_res());

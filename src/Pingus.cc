@@ -1,4 +1,4 @@
-//   $Id: Pingus.cc,v 1.41 2000/06/24 20:51:25 grumbel Exp $
+//   $Id: Pingus.cc,v 1.42 2000/06/26 15:32:26 grumbel Exp $
 //    ___
 //   |  _\ A free Lemmings clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -203,6 +203,7 @@ PingusMain::check_args(int argc, char* argv[])
     {"maintainer-mode", no_argument,       0, 134},
     {"enable-uactions", no_argument,       0, 136},
     {"disable-auto-scrolling",   no_argument,       0, 137},
+    {"debug-game-time", no_argument,       0, 149},
 
 #ifdef HAVE_LIBSDL_MIXER
     // Sound stuff
@@ -405,6 +406,10 @@ PingusMain::check_args(int argc, char* argv[])
       
     case 148:
       background_manipulation_enabled = true;
+      break;
+
+    case 149:
+      debug_game_time = true;
       break;
 
     default:
