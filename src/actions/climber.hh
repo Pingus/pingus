@@ -1,4 +1,4 @@
-//  $Id: climber.hh,v 1.12 2001/08/16 17:46:51 grumbel Exp $
+//  $Id: climber.hh,v 1.13 2001/12/15 00:56:48 cagri Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,6 +28,7 @@ class Climber : public PinguAction
 {
 private:
   Sprite sprite;
+  int sprite_width, sprite_height;
 public:
   Climber();
   void   init();

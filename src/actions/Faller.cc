@@ -1,4 +1,4 @@
-//  $Id: Faller.cc,v 1.7 2001/12/09 13:48:43 grumbel Exp $
+//  $Id: Faller.cc,v 1.8 2001/12/15 00:56:47 cagri Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -44,6 +44,13 @@ Faller::update (float delta)
   tumbler.update (delta);
   faller.update (delta);
 
+ for (unsigned int i=0; i < pingu->persist.size(); ++i) {
+       if (pingu->persist[i]->get_name() == "Floater") {
+	       pingu->set_paction("floater");
+	       return;
+       }
+ }
+ 
   // Apply all forces
   pingu->velocity = ForcesHolder::apply_forces(pingu->pos, pingu->velocity);
     

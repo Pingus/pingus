@@ -1,4 +1,4 @@
-//  $Id: climber.cc,v 1.17 2001/08/10 10:56:14 grumbel Exp $
+//  $Id: climber.cc,v 1.18 2001/12/15 00:56:48 cagri Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,6 +30,18 @@ void
 Climber::init(void)
 {
   sprite = Sprite ("Pingus/climber0", "pingus");
+
+  // these alignments are necessary to prevent climber walking 
+  // inside the wall.
+  sprite_height = sprite.get_height();
+  sprite_width = sprite.get_width();
+  if (pingu->direction.is_left ()) {
+      sprite.set_align (0, -sprite_height/2);
+      sprite.set_direction (Sprite::LEFT); 
+  } else {
+      sprite.set_align (-sprite_width, -sprite_height/2);
+      sprite.set_direction (Sprite::RIGHT);
+  }
 }
 
 void
@@ -42,6 +54,8 @@ Climber::update(float delta)
     printf("%3d %3d %3d\n", rel_getpixel(1,0), rel_getpixel(0,0), rel_getpixel(-1,0));
     printf("%3d %3d %3d\n", rel_getpixel(1,-1), rel_getpixel(0,-1),rel_getpixel(-1, -1));
   */  
+
+  sprite.update(delta);
 
   // If above is free
   if (rel_getpixel(0, 1) == ColMap::NOTHING

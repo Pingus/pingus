@@ -1,4 +1,4 @@
-//  $Id: Walker.cc,v 1.8 2001/12/09 13:48:43 grumbel Exp $
+//  $Id: Walker.cc,v 1.9 2001/12/15 00:56:48 cagri Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -69,7 +69,13 @@ Walker::update(float delta)
 		    {
 		      if (pingus_debug_flags & PINGUS_DEBUG_ACTIONS)
 			std::cout << "Pingu: We are in front of a wall, setting persistant action" << std::endl;
-		      pingu->set_paction(pingu->persist[i]->get_name());
+		      // pingu->set_paction(pingu->persist[i]->get_name());
+		      // FIXME: above fails because of Capitalised name
+		      // returned from get_name(). May be we should 
+		      // use capitalised names everywhere. 
+  
+		      // Do we set  any other action here?
+		      pingu->set_paction("climber");
 		    }
 		  return;
 		}
