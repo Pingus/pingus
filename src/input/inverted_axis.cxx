@@ -1,4 +1,4 @@
-//  $Id: inverted_axis.cxx,v 1.1 2002/07/05 09:59:20 torangan Exp $
+//  $Id: inverted_axis.cxx,v 1.2 2002/07/05 10:06:20 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,8 +21,10 @@
 
 namespace Input
 {
-  InvertedAxis::InvertedAxis(Axis* axis_) : axis(axis_) { }
-
+  InvertedAxis::InvertedAxis(Axis* axis_) : axis(axis_)
+  {
+    angle = (static_cast<int>(axis->get_angle()) + 180) % 360;
+  }
 
   float
   InvertedAxis::get_pos ()
@@ -33,7 +35,7 @@ namespace Input
   float
   InvertedAxis::get_angle ()
   {
-    return (static_cast<int>(axis->get_angle()) + 180) % 360;
+    return angle;
   }
   
   void
