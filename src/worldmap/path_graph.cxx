@@ -1,4 +1,4 @@
-//  $Id: path_graph.cxx,v 1.5 2002/10/13 16:39:17 grumbel Exp $
+//  $Id: path_graph.cxx,v 1.6 2002/10/13 19:28:34 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -75,6 +75,8 @@ PathGraph::parse_nodes(xmlDocPtr doc, xmlNodePtr cur)
         {
           // add the dot to the pathfinding
           NodeId id = graph.add_node(dot);
+
+          std::cout << "Adding to lookup table: " << dot->get_name() << std::endl;
           node_lookup[dot->get_name()] = id;
 
           // add the dot to the list of drawables
@@ -123,7 +125,7 @@ PathGraph::parse_edges(xmlDocPtr doc, xmlNodePtr cur)
 
           // FIXME: add path-data parsing here
           Path* path = new Path();
-          xmlNodePtr child_cur = cur;
+          xmlNodePtr child_cur = XMLhelper::skip_blank(cur->children);
           while (child_cur)
             {
               if (XMLhelper::equal_str(child_cur->name, "position"))
@@ -133,22 +135,28 @@ PathGraph::parse_edges(xmlDocPtr doc, xmlNodePtr cur)
                 }
               else
                 {
-                  std::cout << "12929929" << std::endl;
+                  std::cout << "12929929: " << child_cur->name  << std::endl;
                 }
               
               child_cur = child_cur->next;
               child_cur = XMLhelper::skip_blank(child_cur);
             }
 
+          Path full_path;
+
+          full_path.push_back(graph.resolve_node(lookup_node(source)).data->get_pos());
+          full_path.insert(full_path.end(), path->begin(), path->end());
+          full_path.push_back(graph.resolve_node(lookup_node(destination)).data->get_pos());
+          
           // FIXME: Memory leak
-          worldmap->add_drawable(new PathDrawable(path, 
-                                                  node_lookup[source], 
-                                                  node_lookup[destination]));
+          worldmap->add_drawable(new PathDrawable(full_path));
           
           // FIXME: No error checking, 
-          graph.add_bi_edge(path, // FIXME: Memory leak!
-                            node_lookup[source], node_lookup[destination], 
-                            0 /* costs */);
+          std::pair<EdgeId, EdgeId> id 
+            = graph.add_bi_edge(path, // FIXME: Memory leak!
+                                lookup_node(source), lookup_node(destination), 
+                                0 /* costs */);
+          edge_lookup[name] = id.first;
         }
       else
         {
@@ -171,6 +179,36 @@ PathGraph::get_path(NodeId start_id, NodeId end_id)
 
   // insert pathfinding magic here...
   return std::vector<Vector>();
+}
+
+EdgeId
+PathGraph::lookup_edge(const std::string& name)
+{
+  std::map<std::string, EdgeId>::iterator i = edge_lookup.find(name);
+  if (i == edge_lookup.end())
+    {
+      std::cout << "Couldn't find EdgeId for: " << name << std::endl;
+      return 0;
+    }
+  else
+    {
+      return i->second;
+    }
+}
+
+NodeId
+PathGraph::lookup_node(const std::string& name)
+{
+  std::map<std::string, NodeId>::iterator i = node_lookup.find(name);
+  if (i == node_lookup.end())
+    {
+      std::cout << "Couldn't find NodeId for: " << name << std::endl;
+      return 0;
+    }
+  else
+    {
+      return i->second;
+    }
 }
 
 } // namespace WorldMapNS

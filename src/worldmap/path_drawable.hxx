@@ -1,4 +1,4 @@
-//  $Id: path_drawable.hxx,v 1.1 2002/10/13 16:39:17 grumbel Exp $
+//  $Id: path_drawable.hxx,v 1.2 2002/10/13 19:28:34 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,9 +30,9 @@ namespace WorldMapNS {
 class PathDrawable : public Drawable
 {
 private:
-  
+  Path path;
 public:
-  PathDrawable(Path* path, NodeId source, NodeId destination);
+  PathDrawable(const Path& arg_path);
 
   void draw(GraphicContext& gc);
   void update();

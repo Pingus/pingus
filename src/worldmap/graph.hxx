@@ -1,4 +1,4 @@
-//  $Id: graph.hxx,v 1.15 2002/10/12 23:43:20 grumbel Exp $
+//  $Id: graph.hxx,v 1.16 2002/10/13 19:28:34 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -96,17 +96,21 @@ public:
     return NodeId (nodes.size ()-1);
   }
   
-  void add_edge (const EdgeType& data, const NodeId& a, const NodeId& b, int cost)
+  EdgeId add_edge (const EdgeType& data, const NodeId& a, const NodeId& b, int cost)
   {
     Edge<EdgeType> new_edge (data, a, b, cost);
     edges.push_back (new_edge);
     resolve_node (a).next.push_back (edges.size ()-1);
+    return EdgeId (edges.size ()-1);
   }
 
-  void add_bi_edge (const EdgeType& data, const NodeId& a, const NodeId& b, int cost)
+  std::pair<EdgeId, EdgeId>
+  add_bi_edge (const EdgeType& data, const NodeId& a, const NodeId& b, int cost)
   {
-    add_edge (data, a, b, cost);
-    add_edge (data, b, a, cost);
+    std::pair<EdgeId, EdgeId> ret;
+    ret.first  = add_edge (data, a, b, cost);
+    ret.second = add_edge (data, b, a, cost);
+    return ret;
   }
 
   void remove_node (const NodeId& node)

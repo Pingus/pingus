@@ -1,4 +1,4 @@
-//  $Id: dot.cxx,v 1.2 2002/10/13 13:34:40 grumbel Exp $
+//  $Id: dot.cxx,v 1.3 2002/10/13 19:28:34 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,19 +27,26 @@ Dot::Dot(xmlDocPtr doc, xmlNodePtr cur)
 {
   assert(cur);
 
+  std::cout << "Dot::Dot: " << cur->name << std::endl;
+
   // cur = <dot>...</dot>
   cur = cur->children;
   cur = XMLhelper::skip_blank(cur);
 	  
   while (cur)
     {
+      std::cout << "cur->name: " << cur->name << std::endl;
+
       if (XMLhelper::equal_str(cur->name, "position"))
         {
           pos = XMLhelper::parse_vector(doc, cur);
         }
       else if (XMLhelper::equal_str(cur->name, "name"))
         {
-          XMLhelper::node_list_get_string(doc, cur, 1, name);
+          if (!XMLhelper::node_list_get_string(doc, cur->children, 1, name))
+            {
+              std::cout << "couldn't parse name" << std::endl;
+            }
         }
       else
         {
@@ -49,6 +56,8 @@ Dot::Dot(xmlDocPtr doc, xmlNodePtr cur)
       cur = cur->next;
       cur = XMLhelper::skip_blank(cur);
     }
+  
+  assert(!name.empty());
 }
 
 } // namespace WorldMapNS

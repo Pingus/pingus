@@ -1,4 +1,4 @@
-//  $Id: level_dot.cxx,v 1.3 2002/10/13 16:39:17 grumbel Exp $
+//  $Id: level_dot.cxx,v 1.4 2002/10/13 19:28:34 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,7 +37,7 @@ LevelDot::LevelDot(xmlDocPtr doc, xmlNodePtr cur)
 void
 LevelDot::draw(GraphicContext& gc)
 {
-  std::cout << "Drawing level dat: " << pos << std::endl;
+  //std::cout << "Drawing level dat: " << pos << std::endl;
   gc.draw (green_dot_sur, pos);
 }
 
