@@ -1,4 +1,4 @@
-//  $Id: View.cc,v 1.18 2002/06/08 20:19:54 torangan Exp $
+//  $Id: View.cc,v 1.19 2002/06/09 11:18:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,7 +30,8 @@
 World* View::world;
 
 View::View(int x1, int y1, int x2, int y2, float s)
-  : controller (new MouseController ()) 
+  : current_pingu (0),
+    controller (new MouseController ()) 
 {
   assert(world);
 

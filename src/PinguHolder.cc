@@ -1,4 +1,4 @@
-//  $Id: PinguHolder.cc,v 1.20 2002/06/09 00:56:25 grumbel Exp $
+//  $Id: PinguHolder.cc,v 1.21 2002/06/09 11:18:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -55,11 +55,7 @@ PinguHolder::add (Pingu* pingu)
 Pingu*
 PinguHolder::create_pingu (const CL_Vector& pos, int owner_id)
 {
-  std::cout << "XXXXXXXXXXX: PinguHolder: owner_id: " << owner_id << std::endl;
-
   Pingu* pingu = new Pingu (pos, owner_id);
-  std::cout << "XXXXX: Allocating new pingu done" << std::endl;
-  
   // This list will get evaluated and deleted and destruction
   all_pingus.push_back (pingu);
 

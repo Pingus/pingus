@@ -1,4 +1,4 @@
-//  $Id: Faller.cc,v 1.14 2002/06/09 00:56:26 grumbel Exp $
+//  $Id: Faller.cc,v 1.15 2002/06/09 11:18:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,8 +33,6 @@ const float Faller::deadly_velocity = 20.0f;
 void
 Faller::init(void)
 {
-  std::cout << "Faller::init(void)" << std::endl;
-
   faller = Sprite("Pingus/faller" + to_string(pingu->owner_id), "pingus");
   faller.set_align_center_bottom ();
   

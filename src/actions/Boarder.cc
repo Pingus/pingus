@@ -1,4 +1,4 @@
-//  $Id: Boarder.cc,v 1.5 2002/06/07 20:35:14 torangan Exp $
+//  $Id: Boarder.cc,v 1.6 2002/06/09 11:18:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -51,7 +51,6 @@ Boarder::update(float delta)
       if (speed < 15.0)
 	speed += 15.0 * delta;
       else {
-	//std::cout << "MAXSPEED REACHED: " << pingu->direction * speed << std::endl;
 	speed = 15.0;
       }
       

@@ -1,4 +1,4 @@
-//  $Id: PinguActionFactory.cc,v 1.5 2002/06/09 00:56:25 grumbel Exp $
+//  $Id: PinguActionFactory.cc,v 1.6 2002/06/09 11:18:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -102,7 +102,7 @@ PinguActionFactory::create (const std::string& id)
     throw PingusError("PinguActionFactory: Invalid id: " + id);
   else 
     {
-      PinguAction* action;
+      PinguAction* action = it->second->create ();
       all_actions.push_back (action);
       return action;
     }

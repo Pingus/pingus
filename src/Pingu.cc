@@ -1,4 +1,4 @@
-//  $Id: Pingu.cc,v 1.75 2002/06/09 00:56:25 grumbel Exp $
+//  $Id: Pingu.cc,v 1.76 2002/06/09 11:18:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -53,8 +53,6 @@ Pingu::Pingu(const CL_Vector& arg_pos, int owner)
     owner_id (owner),
     pos (arg_pos)
 {
-  std::cout << "XXXXXXXXXXX: Pingu: owner_id: " << owner_id << std::endl;
-
   action_time = -1;
 
   direction.left ();
@@ -63,7 +61,6 @@ Pingu::Pingu(const CL_Vector& arg_pos, int owner)
   velocity.x = 0;
   velocity.y = 0;
 
-  std::cout << "XXX setting action" << std::endl;
   set_action("faller");
 }
 
@@ -119,8 +116,6 @@ Pingu::set_action(PinguAction* act)
 {
   assert(act);
 
-  std::cout << "XXX Action:" << act << std::endl;
-
   if (status == PS_DEAD)
     {
       if (pingus_debug_flags & PINGUS_DEBUG_ACTIONS)
@@ -128,7 +123,6 @@ Pingu::set_action(PinguAction* act)
       return 0;
     }
 
-  std::cout << "1. Pingu" << id << "::set_action(PinguAction* act): " << this << std::endl;
   act->set_pingu(this);
 
   // Use the activation time of the action
@@ -214,7 +208,6 @@ void
 Pingu::set_paction(PinguAction* act) 
 {
   action = act;
-  std::cout << "2. Pingu::set_paction(PinguAction* act): " << this << std::endl;
   action->set_pingu(this);
 }
 
@@ -307,7 +300,6 @@ Pingu::update(float delta)
   if (action_time == 0 && countdown_action) 
     {
       action = countdown_action;
-      std::cout << "3. Pingu::set_action(PinguAction* act): " << this << std::endl;
       action->set_pingu(this);
     }
   

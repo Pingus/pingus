@@ -1,4 +1,4 @@
-//  $Id: Walker.cc,v 1.15 2002/06/09 00:56:26 grumbel Exp $
+//  $Id: Walker.cc,v 1.16 2002/06/09 11:18:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,7 +31,6 @@ const int Walker::max_steps=4;
 void
 Walker::init(void)
 {
-  std::cout << "Walker::init(void)" << std::endl;
   walker = Sprite ("Pingus/walker" + to_string(pingu->owner_id), "pingus");
   walker.set_align_center_bottom ();
 }

@@ -1,4 +1,4 @@
- //  $Id: Theme.cc,v 1.34 2002/01/19 16:13:46 grumbel Exp $
+ //  $Id: Theme.cc,v 1.35 2002/06/09 11:18:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -180,8 +180,6 @@ Theme::draw_title()
 
   for(std::vector<std::string>::iterator i = levelnames.begin(); i != levelnames.end(); ++i)
     {
-      //std::cout << "XXX Level: " << *i << ": " << i << std::endl;
-
       if (j > accessible_levels) 
 	{
 	  // Level is not yet accessible

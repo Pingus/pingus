@@ -1,4 +1,4 @@
-//  $Id: Entrance.cc,v 1.29 2002/06/09 00:56:25 grumbel Exp $
+//  $Id: Entrance.cc,v 1.30 2002/06/09 11:18:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,8 +37,6 @@ Entrance::Entrance(const EntranceData& data)
   last_release = -release_rate;
   direction = data.direction;
   owner_id = data.owner_id;
-
-  std::cout << "XXXXXXXXXXX: Entrance: owner_id: " << owner_id << std::endl;
 }
 
 bool
@@ -58,9 +56,7 @@ Entrance::get_pingu()
   static int last_direction;
   Direction d;
 
-  std::cout << "XXX Entrance::get_pingu()" << std::endl;
   Pingu* pingu = world->get_pingu_p()->create_pingu (pos, owner_id);
-  std::cout << "XXX Pingu created" << std::endl;
   switch (direction) 
     {
     case EntranceData::LEFT:
@@ -93,8 +89,6 @@ Entrance::get_pingu()
       pingu->set_direction(d);
       break;
     }
-
-  std::cout << "XXX Entrance::get_pingu(): done" << std::endl;
   return pingu;
 }
 
