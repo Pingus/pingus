@@ -1,4 +1,4 @@
-//  $Id: object_manager.cxx,v 1.2 2002/06/13 14:25:13 torangan Exp $
+//  $Id: object_manager.cxx,v 1.3 2002/06/18 16:18:14 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -372,12 +372,12 @@ ObjectManager::lower_obj(boost::shared_ptr<EditorObj> obj)
   
   prev = current;
   prev--;
-  swap(*prev, *current);
 
-  /*
+  swap(*prev, *current);
+  /* FIXME: not sure if we need this on windows, if not delete it
   boost::shared_ptr<EditorObj> tmp = *prev;
   *prev = *current;
-  *current = *prev;
+  *current = tmp;
   */
   return true;
 }
@@ -398,11 +398,12 @@ ObjectManager::raise_obj(boost::shared_ptr<EditorObj> obj)
       return false;
     }
   
-//  swap(*next, *current);
+  swap(*next, *current);
+  /* FIXME: not sure if we need this on windows, if not delete it
   boost::shared_ptr<EditorObj> tmp = *next;
   *next = *current;
-  *current = *next;
-    
+  *current = tmp;
+  */
   return true;
 }
 
