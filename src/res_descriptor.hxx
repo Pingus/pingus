@@ -1,4 +1,4 @@
-//  $Id: res_descriptor.hxx,v 1.1 2002/06/12 19:09:37 grumbel Exp $
+//  $Id: res_descriptor.hxx,v 1.2 2002/06/14 11:16:53 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,6 @@
 #ifndef RESDESCRIPTOR_HH
 #define RESDESCRIPTOR_HH
 
-#include <iosfwd>
 #include <string>
 
 /// Resource descriptor, tells were to find a resource.
