@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.93 2003/08/13 13:46:39 sphair Exp $
+//   $Id: pingus_main.cxx,v 1.94 2003/08/14 20:02:25 torangan Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___
@@ -124,7 +124,8 @@ signal_handler(int signo)
       break;
     }
   puts ("exit(EXIT_FAILURE);");
-  abort();
+  //abort();
+  throw "crash";
 }
 
 PingusMain::PingusMain()
@@ -846,17 +847,15 @@ PingusMain::main(int argc, char** argv)
 
   // Register the segfault_handler
 #ifndef WIN32
-  signal(SIGSEGV, signal_handler);
+  //signal(SIGSEGV, signal_handler);
 #endif
   //signal(SIGINT,  signal_handler);
 
   // Redirect stdout to somewhere where it is readable
-  #ifdef WIN32 
-  #ifdef _DEBUG
+#if defined WIN32 && defined _DEBUG
   CL_ConsoleWindow cl_console(PACKAGE VERSION);
   cl_console.redirect_stdio();
-  #endif
-  #endif
+#endif
 
   // Init error/warning/notice streams
   pout.add (std::cout);
@@ -910,11 +909,9 @@ PingusMain::main(int argc, char** argv)
       deinit_pingus();
       deinit_clanlib();
 
-  #ifdef WIN32 
-  #ifdef _DEBUG
+#if defined WIN32 && defined _DEBUG
   cl_console.wait_for_key();
-  #endif
-  #endif
+#endif
 
   return 0;
 }
