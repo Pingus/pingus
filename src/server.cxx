@@ -1,4 +1,4 @@
-//  $Id: server.cxx,v 1.22 2002/10/04 16:54:04 grumbel Exp $
+//  $Id: server.cxx,v 1.23 2002/10/05 12:40:02 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -66,7 +66,7 @@ Server::update()
 }
 
 void
-Server::send_armageddon_event()
+Server::send_armageddon_event ()
 {
   world->armageddon();
 
@@ -75,7 +75,7 @@ Server::send_armageddon_event()
 }
 
 void
-Server::send_pingu_action_event(Pingu* pingu, Actions::ActionName action)
+Server::send_pingu_action_event (Pingu* pingu, Actions::ActionName action)
 {
   PinguAction* tmp_action = action_holder.get_action(action);
 	  
@@ -94,25 +94,25 @@ Server::send_pingu_action_event(Pingu* pingu, Actions::ActionName action)
 }
 
 bool
-Server::is_finished()
+Server::is_finished ()
 {
-  goal_manager->is_finished();
+  return goal_manager->is_finished();
 }
 
 void
-Server::set_finished()
+Server::set_finished ()
 {
   goal_manager->set_abort_goal();
 }
 
 ActionHolder*
-Server::get_action_holder()
+Server::get_action_holder ()
 {
   return &action_holder;
 }
 
 int
-Server::get_time()
+Server::get_time ()
 {
   return get_world()->get_game_time()->get_ticks();
 }
