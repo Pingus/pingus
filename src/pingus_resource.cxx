@@ -1,4 +1,4 @@
-//  $Id: pingus_resource.cxx,v 1.11 2002/06/26 09:29:47 grumbel Exp $
+//  $Id: pingus_resource.cxx,v 1.12 2002/06/26 12:04:24 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -127,8 +127,6 @@ PingusResource::load_surface(const ResDescriptor& res_desc)
 
   CL_Surface surf(surface_map[res_desc]);
 
-  std::cout << "Desc.Modifier: " << rs_to_string(res_desc.modifier) << std::endl;
-  
   if (!surf)
     {
       //std::cout << "PingusResource: Loading resource: " << res_desc.type << ":" 

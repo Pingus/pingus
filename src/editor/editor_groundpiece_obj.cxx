@@ -1,4 +1,4 @@
-//  $Id: editor_groundpiece_obj.cxx,v 1.4 2002/06/25 21:31:40 grumbel Exp $
+//  $Id: editor_groundpiece_obj.cxx,v 1.5 2002/06/26 12:04:24 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -70,16 +70,30 @@ void
 EditorGroundpieceObj::rotate_90 ()
 {
   std::cout << "rot90" << std::endl;
+
+  pos.x += sprite.get_width ()/2;
+  pos.y += sprite.get_height ()/2;
+
   desc.modifier = Pingus::rotate_90(desc.modifier);
   sprite.get_surface () = PingusResource::load_surface (desc);
+
+  pos.x -= sprite.get_width ()/2;
+  pos.y -= sprite.get_height ()/2;
 }
 
 void
 EditorGroundpieceObj::rotate_270 ()
 {
   std::cout << "rot 270" << std::endl;
+
+  pos.x += sprite.get_width ()/2;
+  pos.y += sprite.get_height ()/2;
+
   desc.modifier = Pingus::rotate_270(desc.modifier);
   sprite.get_surface () = PingusResource::load_surface (desc);
+
+  pos.x -= sprite.get_width ()/2;
+  pos.y -= sprite.get_height ()/2;
 }
 
 /* EOF */
