@@ -177,11 +177,11 @@ msgstr "Bild runter - Objekt nach unten"
 
 #: src/editor/editor_help_screen.cxx:67
 msgid "Shift PageUp   - increase objects z-pos by 50"
-msgstr "Umschalt Bild rauf - Objekt nach oben"
+msgstr "Shift Bild rauf - Objekt nach oben"
 
 #: src/editor/editor_help_screen.cxx:68
 msgid "Shift PageDown - decrease objects z-pos by 50"
-msgstr "Umschalt Bild runter - Objekt nach unten"
+msgstr "Shift Bild runter - Objekt nach unten"
 
 #: src/editor/editor_help_screen.cxx:69
 msgid "Enter - Set default zoom (1:1)"
@@ -197,7 +197,7 @@ msgstr "a - Markierte Objecte löschen"
 
 #: src/editor/editor_help_screen.cxx:72
 msgid "shift leftmouseclick - add object to selection"
-msgstr "Umschalt + linke Maustaste - Objekt zur Auswahl hinzufügen"
+msgstr "Shift + linke Maustaste - Objekt zur Auswahl tun"
 
 #: src/editor/editor_help_screen.cxx:73
 msgid "leftmouseclick - select object"
@@ -217,11 +217,11 @@ msgstr "g - Auswahl gruppieren / Gruppierung aufheben"
 
 #: src/editor/editor_help_screen.cxx:77
 msgid "Ctrl PageUp   - increase objects z-pos by 1"
-msgstr "Steuerung Bild rauf - z-pos des Objekts um 1 erhöhen"
+msgstr "Strg Bild rauf - z-pos des Objekts um 1 erhöhen"
 
 #: src/editor/editor_help_screen.cxx:78
 msgid "Ctrl PageDown - decrease objects z-pos by 1"
-msgstr "Steuerung Bild runter - z-pos des Objekts um 1 senken"
+msgstr "Strg Bild runter - z-pos des Objekts um 1 senken"
 
 #: src/editor/editor_help_screen.cxx:84
 msgid "Naming Convention: <LEVELNAME><NUMBER>-<CREATOR>.plf"
