@@ -1,4 +1,4 @@
-//  $Id: buffer_graphic_context.cxx,v 1.5 2003/10/20 13:33:43 grumbel Exp $
+//  $Id: buffer_graphic_context.cxx,v 1.6 2004/04/02 18:13:00 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -45,6 +45,11 @@ BufferGraphicContext::clear (float r, float g, float b)
   UNUSED_ARG(g);
   UNUSED_ARG(b);
   std::cout << "BufferGraphicContext: clear" << std::endl;
+}
+
+void 
+BufferGraphicContext::draw(CL_Sprite&, const Pingus::Vector&)
+{
 }
 
 void

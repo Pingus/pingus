@@ -1,4 +1,4 @@
-//  $Id: buffer_graphic_context.hxx,v 1.5 2003/10/19 12:25:47 grumbel Exp $
+//  $Id: buffer_graphic_context.hxx,v 1.6 2004/04/02 18:13:00 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -65,6 +65,8 @@ public:
   Vector world_to_screen (Vector pos) { return pos; }
 
   void clear (float r, float g, float b);
+
+  void draw(CL_Sprite&, const Pingus::Vector&);
 
   void draw (CL_Surface& sur, int x_pos, int y_pos);
   void draw (CL_Surface& sur, int x_pos, int y_pos, int frame);

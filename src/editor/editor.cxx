@@ -1,4 +1,4 @@
-//  $Id: editor.cxx,v 1.59 2003/12/13 23:41:11 grumbel Exp $
+//  $Id: editor.cxx,v 1.60 2004/04/02 18:12:59 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -271,6 +271,7 @@ Editor::read_string (const std::string & prefix, const std::string & default_str
   {
     CL_InputEvent event;
     CL_InputBuffer* keys = new CL_InputBuffer;
+    keys->add_device(CL_Keyboard::get_device());
     bool  finished = false;
 
     while (!finished)

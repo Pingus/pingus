@@ -1,4 +1,4 @@
-//  $Id: display_graphic_context.cxx,v 1.10 2003/10/20 13:33:44 grumbel Exp $
+//  $Id: display_graphic_context.cxx,v 1.11 2004/04/02 18:13:00 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -161,6 +161,12 @@ DisplayGraphicContext::clear (float r, float g, float b)
 }
 
 void
+DisplayGraphicContext::draw (CL_Sprite& sprite, const Vector& pos)
+{
+  sprite.draw(w2s_x(pos.x), w2s_y(pos.y));
+}
+
+void
 DisplayGraphicContext::draw (CL_Surface& sur, int x_pos, int y_pos)
 {
   if (offset.z == 1.0)
@@ -197,8 +203,8 @@ void
 DisplayGraphicContext::draw (CL_Surface& sur, int x_pos, int y_pos,
 	    float size_x, float size_y, int frame)
 {
+  sur.draw(w2s_x(x_pos), w2s_y(y_pos));
 #ifdef CLANLIB_0_6
-  sur.draw(w2s_x(x_pos), w2s_y(y_pos),
            size_x * offset.z,
            size_y * offset.z, frame);
 #endif
@@ -274,19 +280,19 @@ DisplayGraphicContext::print_left (CL_Font font, int x_pos, int y_pos, const std
 }
 
 void
-DisplayGraphicContext::print_center (CL_Font font, int x_pos, int y_pos, const std::string& str)
+DisplayGraphicContext::print_center (CL_Font font_, int x_pos, int y_pos, const std::string& str)
 {
-#ifdef CLANLIB_0_6
-  font.print_center(w2s_x(x_pos), w2s_y(y_pos), str.c_str ());
-#endif
+  CL_Font font = font_;
+  font.set_alignment(origin_bottom_center);
+  font.draw(w2s_x(x_pos), w2s_y(y_pos), str.c_str ());
 }
 
 void
-DisplayGraphicContext::print_right (CL_Font font, int x_pos, int y_pos, const std::string& str)
+DisplayGraphicContext::print_right (CL_Font font_, int x_pos, int y_pos, const std::string& str)
 {
-#ifdef CLANLIB_0_6
-  font->print_right(w2s_x(x_pos), w2s_y(y_pos), str.c_str ());
-#endif
+  CL_Font font = font_;
+  font.set_alignment(origin_bottom_center);
+  font.draw(w2s_x(x_pos), w2s_y(y_pos), str.c_str ());
 }
 
 } // namespace Pingus

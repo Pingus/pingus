@@ -1,4 +1,4 @@
-//  $Id: graphic_context.cxx,v 1.5 2004/04/02 18:13:00 grumbel Exp $
+//  $Id: resources.cxx,v 1.1 2004/04/02 18:12:59 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,45 +17,11 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <assert.h>
-#include <iostream>
-#include "../sprite.hxx"
-#include "graphic_context.hxx"
+#include "resources.hxx"
 
 namespace Pingus {
 
-void
-GraphicContext::draw (CL_Sprite& sprite, const Vector& pos, int frame)
-{
-  // FIXME: Frame ignored
-  sprite.draw((int)pos.x, (int)pos.y);
-}
-
-void
-GraphicContext::draw (Sprite& sprite, const Vector& pos)
-{
-  sprite.draw(*this, pos);
-}
-
-void
-GraphicContext::draw (Sprite& sprite, const Vector& pos, int frame)
-{
-  sprite.set_frame(frame);
-  sprite.draw(*this, pos);
-}
-
-void
-GraphicContext::draw (CL_Surface& sur, const Vector& pos, int frame)
-{
-  draw(sur, int(pos.x), int(pos.y), frame);
-}
-
-
-void
-GraphicContext::draw (CL_Surface& sur, const Vector& pos)
-{
-  draw(sur, int(pos.x), int(pos.y));
-}
+CL_ResourceManager* resources;
 
 } // namespace Pingus
 

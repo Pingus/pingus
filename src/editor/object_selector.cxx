@@ -1,4 +1,4 @@
-//  $Id: object_selector.cxx,v 1.44 2003/10/19 12:25:47 grumbel Exp $
+//  $Id: object_selector.cxx,v 1.45 2004/04/02 18:12:59 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -617,7 +617,7 @@ ObjectSelector::select_surface (const std::string & resource_file)
 
   data.pos = pos;
 
-  std::list<std::string> liste = res->get_resources_of_type("surface");
+  std::list<std::string> liste = res->get_resources_of_type("sprite");
   surface_obj sur_obj;
   std::vector<surface_obj> sur_list;
   int j = 0;
@@ -646,6 +646,7 @@ int
 ObjectSelector::read_key ()
 {
   CL_InputBuffer keys;
+  keys.add_device(CL_Keyboard::get_device());
   CL_InputEvent  event;
 
   keys.clear();

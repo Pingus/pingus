@@ -1,4 +1,4 @@
-//  $Id: string_reader.cxx,v 1.11 2003/10/19 12:25:47 grumbel Exp $
+//  $Id: string_reader.cxx,v 1.12 2004/04/02 18:13:00 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -54,6 +54,7 @@ StringReader::read_string()
 {
   finished = false;
   CL_InputBuffer keys;
+  keys.add_device(CL_Keyboard::get_device());
   CL_InputEvent  event;
 
   CL_System::keep_alive();
