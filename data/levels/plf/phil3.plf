@@ -1,0 +1,67 @@
+/* This level was created with the PLE
+ * $Id: phil3.plf,v 1.1 2001/07/09 10:11:04 grumbel Exp $
+ */
+global {
+  author = "Ingo Ruhnke <grumbel@gmx.de>";
+  start_x_pos = 0;
+  start_y_pos = 0;
+  levelname = "Hardest the fall be";
+  description = "build on the edge";
+  number_of_pingus = 10;
+  number_to_save = 10;
+  time = 3000;
+}
+
+ground {
+  maptype = "SPOT";
+  width   = 1600;
+  height  = 800;
+  colmap  = (auto);
+}
+
+background {
+  image = (resource:textures.dat)"Textures/desert";
+  dim   = "0";
+  red   = "0";
+  green = "0";
+  blue  = "0";
+  scroll_x = 0;
+  scroll_y = 0;
+  para_x = 0.5;
+  para_y = 0.5;
+  stretch_x = 0;
+  stretch_y = 0;
+}
+
+buttons {
+  basher = 3;
+  blocker = 2;
+  bomber = 20;
+  bridger = 20;
+  climber = 2;
+  floater = 2;
+  jumper = 2;
+  miner = 2;
+  digger = 2;
+}
+
+entrance {
+  type  = generic;
+  x_pos = 403;
+  y_pos = 309;
+  z_pos = 0;
+  release_rate = 100;
+  direction = right;
+}
+
+exit {
+  image = (resource:global)"Exits/desert";
+  x_pos = 1043;
+  y_pos = 512;
+  z_pos = 0;
+}
+
+/* EOF */
+
+
+

@@ -1,0 +1,275 @@
+/* This level was created with the PLE
+ * $Id: phil4.plf,v 1.1 2001/07/09 10:11:04 grumbel Exp $
+ */
+global {
+  author = "Philippe Descamps <pwrdesc@free.fr>";
+  start_x_pos = 0;
+  start_y_pos = 0;
+  levelname = "Close encounter";
+  description = "Another level without blocker. How do you escape from traps ?";
+  number_of_pingus = 100;
+  number_to_save = 60;
+  time = 9000;
+}
+
+ground {
+  maptype = "SPOT";
+  width   = 1600;
+  height  = 1024;
+  colmap  = (auto);
+}
+
+background {
+  image = (resource:textures.dat)"Textures/crystal";
+  dim   = "0";
+  red   = "0";
+  green = "0";
+  blue  = "0";
+  scroll_x = 0;
+  scroll_y = 0;
+  para_x = 0.5;
+  para_y = 0.5;
+  stretch_x = 0;
+  stretch_y = 0;
+}
+
+buttons {
+  basher = 10;
+  bridger = 2;
+  jumper = 5;
+  floater = 5;
+}
+
+entrance {
+  type  = generic;
+  x_pos = 595;
+  y_pos = 181;
+  z_pos = 0;
+  release_rate = 100;
+  direction = right;
+}
+
+entrance {
+  type  = generic;
+  x_pos = 1199;
+  y_pos = 183;
+  z_pos = 0;
+  release_rate = 100;
+  direction = left;
+}
+
+exit {
+  image = (resource:global)"Exits/stone";
+  x_pos = 872;
+  y_pos = 872;
+  z_pos = 0;
+}
+
+hotspot {
+  image = (resource:global)"GroundPieces/Crystal/smcrystal";
+  x_pos = 550;
+  y_pos = 147;
+  z_pos = 100;
+  speed = -1;
+  para = "1";
+}
+
+hotspot {
+  image = (resource:global)"GroundPieces/Crystal/smcrystal";
+  x_pos = 1145;
+  y_pos = 144;
+  z_pos = 100;
+  speed = -1;
+  para = "1";
+}
+
+hotspot {
+  image = (resource:global)"GroundPieces/Crystal/pipeend";
+  x_pos = 545;
+  y_pos = 169;
+  z_pos = 100;
+  speed = -1;
+  para = "1";
+}
+
+hotspot {
+  image = (resource:global)"GroundPieces/Crystal/pipeend";
+  x_pos = 566;
+  y_pos = 178;
+  z_pos = 100;
+  speed = -1;
+  para = "1";
+}
+
+hotspot {
+  image = (resource:global)"GroundPieces/Crystal/pipeend";
+  x_pos = 587;
+  y_pos = 178;
+  z_pos = 100;
+  speed = -1;
+  para = "1";
+}
+
+hotspot {
+  image = (resource:global)"GroundPieces/Crystal/pipeend";
+  x_pos = 614;
+  y_pos = 169;
+  z_pos = 100;
+  speed = -1;
+  para = "1";
+}
+
+hotspot {
+  image = (resource:global)"GroundPieces/Crystal/pipeend";
+  x_pos = 1213;
+  y_pos = 177;
+  z_pos = 100;
+  speed = -1;
+  para = "1";
+}
+
+hotspot {
+  image = (resource:global)"GroundPieces/Crystal/pipeend";
+  x_pos = 1139;
+  y_pos = 170;
+  z_pos = 100;
+  speed = -1;
+  para = "1";
+}
+
+hotspot {
+  image = (resource:global)"GroundPieces/Crystal/pipeend";
+  x_pos = 645;
+  y_pos = 306;
+  z_pos = 100;
+  speed = -1;
+  para = "1";
+}
+
+hotspot {
+  image = (resource:global)"GroundPieces/Crystal/pipeend";
+  x_pos = 1110;
+  y_pos = 302;
+  z_pos = 100;
+  speed = -1;
+  para = "1";
+}
+
+hotspot {
+  image = (resource:global)"GroundPieces/Crystal/pipeend";
+  x_pos = 591;
+  y_pos = 155;
+  z_pos = 100;
+  speed = -1;
+  para = "1";
+}
+
+hotspot {
+  image = (resource:global)"GroundPieces/Crystal/pipeend";
+  x_pos = 565;
+  y_pos = 155;
+  z_pos = 100;
+  speed = -1;
+  para = "1";
+}
+
+hotspot {
+  image = (resource:global)"GroundPieces/Crystal/pipeend";
+  x_pos = 581;
+  y_pos = 146;
+  z_pos = 100;
+  speed = -1;
+  para = "1";
+}
+
+hotspot {
+  image = (resource:global)"GroundPieces/Crystal/pipeend";
+  x_pos = 1193;
+  y_pos = 185;
+  z_pos = 100;
+  speed = -1;
+  para = "1";
+}
+
+hotspot {
+  image = (resource:global)"GroundPieces/Crystal/pipeend";
+  x_pos = 1199;
+  y_pos = 160;
+  z_pos = 100;
+  speed = -1;
+  para = "1";
+}
+
+hotspot {
+  image = (resource:global)"GroundPieces/Crystal/pipeend";
+  x_pos = 1157;
+  y_pos = 160;
+  z_pos = 100;
+  speed = -1;
+  para = "1";
+}
+
+hotspot {
+  image = (resource:global)"GroundPieces/Crystal/pipeend";
+  x_pos = 1180;
+  y_pos = 154;
+  z_pos = 100;
+  speed = -1;
+  para = "1";
+}
+
+hotspot {
+  image = (resource:global)"GroundPieces/Crystal/pipeend";
+  x_pos = 1163;
+  y_pos = 183;
+  z_pos = 100;
+  speed = -1;
+  para = "1";
+}
+
+hotspot {
+  image = (resource:global)"GroundPieces/Crystal/pipeend";
+  x_pos = 1163;
+  y_pos = 183;
+  z_pos = 100;
+  speed = -1;
+  para = "1";
+}
+
+trap {
+  name = "spike";
+  x_pos = 849;
+  y_pos = 315;
+  z_pos = 100;
+}
+
+trap {
+  name = "spike";
+  x_pos = 915;
+  y_pos = 316;
+  z_pos = 100;
+}
+
+trap {
+  name = "spike";
+  x_pos = 394;
+  y_pos = 683;
+  z_pos = 100;
+}
+
+trap {
+  name = "spike";
+  x_pos = 428;
+  y_pos = 607;
+  z_pos = 100;
+}
+
+trap {
+  name = "spike";
+  x_pos = 393;
+  y_pos = 651;
+  z_pos = 100;
+}
+
+/* EOF */
+
