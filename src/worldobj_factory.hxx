@@ -23,7 +23,7 @@
 #include <map>
 #include <string>
 
-#include "xml_file_reader.hxx"
+#include "xml_file_reader_old.hxx"
 #include "libxmlfwd.hxx"
 
 namespace Pingus {
@@ -90,7 +90,7 @@ public:
     : WorldObjAbstractFactory (id) {}
 
   WorldObj* create (xmlDocPtr doc, xmlNodePtr cur) {
-    return new T(XMLFileReader(doc, cur));
+    return new T(XMLFileReaderOld(doc, cur));
   }
 
 private:

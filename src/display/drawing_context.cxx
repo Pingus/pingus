@@ -82,6 +82,8 @@ public:
     font.set_alignment(origin);
   }
 
+  virtual ~FontDrawingRequest() {}
+
   void draw(CL_GraphicContext* gc) {
     font.draw(static_cast<int>(pos.x), static_cast<int>(pos.y), text, gc);
   }
@@ -179,7 +181,7 @@ public:
       dc(dc_)
   {}
   
-  ~DrawingContextDrawingRequest()
+  virtual ~DrawingContextDrawingRequest()
   {
     delete dc;
   }

@@ -25,6 +25,7 @@
 #include <string>
 #include <vector>
 #include <map>
+#include "file_reader.hxx"
 
 namespace Pingus {
 
@@ -35,9 +36,8 @@ class PingusLevelImpl;
     (groundpieces, worldobjs, etc.) alike. */
 class PingusLevel
 {
-private:
 public:
-  PingusLevel(const std::string& file);
+  PingusLevel();
 
   /** Returns the name of the current level, {\em not} the level file name. */
   const std::map<std::string, std::string>& get_levelname() const;
@@ -73,9 +73,9 @@ public:
   const std::string& get_music() const;
 
   /** Returns the body of this file */
-  const std::vector<FileReader>& get_body() const;
+  const std::vector<FileReader>& get_objects() const;
 
-private:
+protected:
   CL_SharedPtr<PingusLevelImpl> impl;
 };
 

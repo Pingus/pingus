@@ -19,7 +19,7 @@
 
 #include <iostream>
 #include <ClanLib/Core/System/clanstring.h>
-#include "xml_file_reader.hxx"
+#include "xml_file_reader_old.hxx"
 #include "xml_file_writer.hxx"
 #include "savegame.hxx"
 
@@ -91,7 +91,7 @@ Savegame::write_xml(std::ostream& xml)
 void
 Savegame::read_xml (xmlDocPtr doc, xmlNodePtr node)
 {
-  XMLFileReader reader(doc, node);
+  XMLFileReaderOld reader(doc, node);
   reader.read_string ("name", levelname);
   reader.read_enum   ("status", status, string_to_status);
   reader.read_int    ("time", needed_time);

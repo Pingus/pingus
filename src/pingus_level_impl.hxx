@@ -1,5 +1,5 @@
-//  $Id: dot.cxx,v 1.7 2003/10/19 12:25:47 grumbel Exp $
-//
+//  $Id$
+// 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -12,36 +12,47 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//
+// 
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <iostream>
-#include <assert.h>
-#include "../xml_file_reader_old.hxx"
-#include "dot.hxx"
+#ifndef HEADER_PINGUS_LEVEL_IMPL_HXX
+#define HEADER_PINGUS_LEVEL_IMPL_HXX
+
+#include <ClanLib/Core/System/sharedptr.h>
+#include <ClanLib/Core/Math/size.h>
+#include <string>
+#include <vector>
+#include <map>
+
 
 namespace Pingus {
-namespace WorldMapNS {
 
-Dot::Dot(xmlDocPtr doc, xmlNodePtr cur)
-  : Drawable()
+class PingusLevelImpl
 {
-  assert(cur);
+public:
+  std::map<std::string, std::string> levelname;
+  std::map<std::string, std::string> description;
 
-  //std::cout << "Dot::Dot: " << cur->name << std::endl;
+  CL_Size     size;
 
-  // cur = <dot>...</dot>
+  int number_of_pingus;
+  int number_to_save;
 
-  XMLFileReaderOld reader(doc, cur);
-  reader.read_vector("position", pos);
-  reader.read_string("name", name);
+  std::map<std::string, int> actions;
 
-  assert(!name.empty());
-}
+  int time;
+  int difficulty;
+  
+  std::string author;
+  std::string music;
 
-} // namespace WorldMapNS
+  std::vector<FileReader> objects;
+}; 
+
 } // namespace Pingus
+
+#endif
 
 /* EOF */

@@ -23,6 +23,8 @@
 #include <string>
 #include <ClanLib/Core/System/sharedptr.h>
 
+class CL_Size;
+class CL_Sizef;
 class CL_Colorf;
 
 namespace Pingus {
@@ -47,6 +49,7 @@ public:
   bool read_string(const char* name, std::string&)   const;
   bool read_vector(const char* name, Vector&)        const;
   bool read_color (const char* name, CL_Colorf&)     const;
+  bool read_size  (const char* name, CL_Size&)       const;
   bool read_desc  (const char* name, ResDescriptor&) const;
   bool read_section(const char* name, FileReader&)   const;
 

@@ -81,6 +81,12 @@ FileReader::read_desc(const char* name, ResDescriptor& desc) const
 }
 
 bool
+FileReader::read_size  (const char* name, CL_Size& value) const
+{
+  return impl->read_size(name, value);
+}
+
+bool
 FileReader::read_section(const char* name, FileReader& reader) const
 {
   return impl->read_section(name, reader);

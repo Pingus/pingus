@@ -208,6 +208,8 @@ plf.cxx \
 plf.hxx \
 pingus_level.hxx \
 pingus_level.cxx \
+xml_pingus_level.hxx \
+xml_pingus_level.cxx \
 plf_handle.hxx \
 plf_res_mgr.hxx \
 plf_res_mgr.cxx \
@@ -273,6 +275,8 @@ xml_helper.cxx \
 xml_helper.hxx \
 xmlgz_reader.hxx \
 xmlgz_reader.cxx \
+xml_file_reader_old.hxx \
+xml_file_reader_old.cxx \
 xml_file_reader.hxx \
 xml_file_reader.cxx \
 xml_file_writer.hxx \

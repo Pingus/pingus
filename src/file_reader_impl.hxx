@@ -20,7 +20,17 @@
 #ifndef HEADER_FILE_READER_IMPL_HXX
 #define HEADER_FILE_READER_IMPL_HXX
 
+#include <string>
+
+class CL_Size;
+class CL_Sizef;
+class CL_Colorf;
+
 namespace Pingus {
+
+class FileReader;
+class Vector;
+class ResDescriptor;
 
 /** */
 class FileReaderImpl
@@ -37,6 +47,7 @@ public:
   virtual bool read_vector(const char* name, Vector&)      const =0;
   virtual bool read_color (const char* name, CL_Colorf&)   const =0;
   virtual bool read_desc  (const char* name, ResDescriptor&) const =0;
+  virtual bool read_size  (const char* name, CL_Size&)       const =0;
   virtual bool read_section(const char* name, FileReader&)   const =0;
 };
 

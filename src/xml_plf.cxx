@@ -20,7 +20,7 @@
 #include <iostream>
 #include "xml_helper.hxx"
 #include "xmlgz_reader.hxx"
-#include "xml_file_reader.hxx"
+#include "xml_file_reader_old.hxx"
 #include "xml_plf.hxx"
 #include "globals.hxx"
 #include "system.hxx"
@@ -239,7 +239,7 @@ XMLPLF::parse_actions (xmlNodePtr cur)
 void
 XMLPLF::parse_global (xmlNodePtr cur)
 {
-  XMLFileReader reader(doc, cur);
+  XMLFileReaderOld reader(doc, cur);
 
   reader.read_string("author", author);
   reader.read_int("number-of-pingus", number_of_pingus);
@@ -292,7 +292,7 @@ XMLPLF::parse_global (xmlNodePtr cur)
 void
 XMLPLF::parse_groundpiece(xmlNodePtr cur)
 {
-  worldobjs.push_back(new WorldObjs::Groundpiece(XMLFileReader(doc, cur)));
+  worldobjs.push_back(new WorldObjs::Groundpiece(XMLFileReaderOld(doc, cur)));
 }
 
 void

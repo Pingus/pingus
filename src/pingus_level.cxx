@@ -20,30 +20,11 @@
 #include <ClanLib/Core/XML/dom_node.h>
 #include "file_reader.hxx"
 #include "pingus_level.hxx"
+#include "pingus_level_impl.hxx"
 
 namespace Pingus {
 
-class PingusLevelImpl
-{
-public:
-  std::map<std::string, std::string> levelname;
-  std::map<std::string, std::string> description;
-
-  CL_Size     size;
-
-  int number_of_pingus;
-  int number_to_save;
-
-  std::map<std::string, int> actions;
-
-  int time;
-  int difficulty;
-  
-  std::string author;
-  std::string music;
-};
-
-PingusLevel::PingusLevel(const std::string& file)
+PingusLevel::PingusLevel()
   : impl(new PingusLevelImpl())
 {
 }
@@ -81,6 +62,7 @@ PingusLevel::get_number_to_save() const
 const std::map<std::string, int>&
 PingusLevel::get_actions() const
 {
+  return impl->actions;
 }
 
 int
@@ -108,10 +90,9 @@ PingusLevel::get_music() const
 }
 
 const std::vector<FileReader>&
-PingusLevel::get_body() const
+PingusLevel::get_objects() const
 {
-  static std::vector<FileReader> nodes;
-  return nodes;
+  return impl->objects;
 }
 
 } // namespace Pingus

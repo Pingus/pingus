@@ -19,7 +19,7 @@
 
 #include <iostream>
 
-#include "../xml_file_reader.hxx"
+#include "../xml_file_reader_old.hxx"
 #include "../xml_helper.hxx"
 #include "../resource.hxx"
 #include "../display/drawing_context.hxx"
@@ -37,7 +37,7 @@ SurfaceDrawable::SurfaceDrawable(xmlDocPtr doc, xmlNodePtr cur)
   auto_uncover = false;
   ResDescriptor desc;
 
-  XMLFileReader reader(doc, cur);
+  XMLFileReaderOld reader(doc, cur);
   reader.read_desc ("surface", desc);
   reader.read_vector ("position", pos);
   reader.read_bool ("auto-uncover", auto_uncover);

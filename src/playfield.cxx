@@ -38,8 +38,8 @@ namespace Pingus {
 Playfield::Playfield (Client* client_, const CL_Rect& rect_)
   : rect(rect_),
     client(client_),
-    current_pingu(0),
     buttons(client->get_button_panel()),
+    current_pingu(0),
     scene_context(new SceneContext()),
     state(rect.get_width(), rect.get_height()),
     cap(client->get_button_panel())
