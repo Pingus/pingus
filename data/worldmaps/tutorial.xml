@@ -201,7 +201,7 @@
           <position>
             <x-pos>630</x-pos>
             <y-pos>467</y-pos>
-            <z-pos>0</z-pos>
+            <z-pos>150</z-pos>
           </position>
         </dot>
         <levelname>tutorial/snow16-grumbel</levelname>
