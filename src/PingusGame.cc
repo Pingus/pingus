@@ -1,4 +1,4 @@
-//  $Id: PingusGame.cc,v 1.17 2001/04/06 12:49:19 grumbel Exp $
+//  $Id: PingusGame.cc,v 1.18 2001/04/13 13:45:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,7 @@
 
 #include <fstream>
 
+#include "PingusLevelDesc.hh"
 #include "System.hh"
 #include "globals.hh"
 #include "PingusError.hh"
@@ -29,27 +30,23 @@
 #include "DemoPlayer.hh"
 #include "Console.hh"
 #include "PingusGame.hh"
+#include "Controller.hh"
+#include "GamepadController.hh"
+#include "MouseController.hh"
+#include "XMLPLF.hh"
+#include "PLFPLF.hh"
+
+using boost::shared_ptr;
 
 // A wrapper class around the client and the server, to allow a much
 // easier start of the game. 
 
 PingusGame::PingusGame()
 {
-  server = 0;
-  client = 0;
 }
 
 PingusGame::~PingusGame()
 {
-  std::cout << "PingusGame:~PingusGame" << std::endl;
-  if (client) {
-    std::cout << "Deleting client" << std::endl;
-    delete client;
-  }
-  if (server) {
-    std::cout << "Server client" << std::endl;
-    delete server;
-  }
 }
 
 std::string
@@ -95,82 +92,57 @@ PingusGame::write_lastlevel_file(std::string levelfile)
 
 // Start the given level
 void
-PingusGame::start_game(std::string plf_filename, std::string psm_filename)
+PingusGame::start_game (boost::shared_ptr<PLF> arg_plf)
 {
+  plf = arg_plf;
   if (verbose) std::cout << "PingusGame: start" << std::endl;
 
-  std::cout << "Level: " << plf_filename << std::endl;
+  boost::shared_ptr<Controller> controller;
+  
+  if (CL_Input::joysticks.size () > 0)
+    controller = boost::shared_ptr<Controller>(new GamepadController (CL_Input::joysticks[0]));
+  else
+    controller = boost::shared_ptr<Controller>(new MouseController ());
+  
+  PingusLevelDesc leveldesc(plf, controller);
+  leveldesc.draw(PingusLevelDesc::LOADING);
+	
+  server = boost::shared_ptr<Server>(new TrueServer(plf));
+  client = boost::shared_ptr<Client>(new Client(controller, server));
+  
+  leveldesc.draw(PingusLevelDesc::FINISHED);
 
-  try 
-    {
-      if (plf_filename.empty()) {
-	plf_filename = read_lastlevel_file();
-      }
-
-      if (!plf_filename.empty())
-	write_lastlevel_file(plf_filename);
-
-      do {
-	console << "Loading level:\n"
-		<< "  PLF: " << plf_filename << std::endl
-		<< "  PSM: " << psm_filename << std::endl;
-    
-	if (client)
-	  delete client;
-      
-	if (server)
-	  delete server;
-
-	server = new TrueServer();
-	client = new Client(server);
-    
-	if (psm_filename.empty()) 
-	  {
-	    client->start(plf_filename);
-	  } 
-	else 
-	  {
-	    client->start(plf_filename, psm_filename);
-	  }
-    
-      } while (client->replay());
-    }
-
-  catch(PingusError err)
-    {
-      PingusMessageBox(" PingusError: " + err.get_message ());
-    }
-
+  try {
+    client->start();
+  } catch(PingusError err) {
+    PingusMessageBox(" PingusError: " + err.get_message ());
+  }
+  
   if (verbose) std::cout << "PingusGame: start_game() done" << std::endl;
 }
 
-void
-PingusGame::start_demo(std::string pdm_filename)
+
+void  
+PingusGame::start_game(std::string plf_filename, std::string psm_filename)
 {
-  DemoPlayer player;
-  
-  try 
+  if (plf_filename.substr(plf_filename.size() - 4) == ".xml")
     {
-      if (client)
-	delete client;
-      
-      if (server)
-	delete server;
-
-      player.load(pdm_filename);
-     
-      server = new TrueServer();
-      client = new Client(server);
-      
-      client->start(&player);
-    }  
-
-  catch(PingusError err)
-    {
-      PingusMessageBox(" PingusError: " + err.get_message ());
+      plf = shared_ptr<PLF>(new XMLPLF(plf_filename));
     }
+  else // Assuming we are reading a .plf file
+    {
+      plf = shared_ptr<PLF>(new PLFPLF(plf_filename));
 
-  if (verbose) std::cout << "PingusGame: start_demo() done" << std::endl;
+      // FIXME: dirty hack, should replace or merge the psm files
+      {
+	std::string filename = plf_filename.substr(0, plf_filename.size() - 4);
+    
+	if (verbose > 1) std::cout << "PSM: " << filename + ".psm" << std::endl;
+    
+	plf->set_psm_filename(filename + ".psm");
+      }
+    }
+  start_game (plf);
 }
 
 /* EOF */

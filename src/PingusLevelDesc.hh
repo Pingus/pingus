@@ -1,4 +1,4 @@
-//  $Id: PingusLevelDesc.hh,v 1.9 2001/04/13 11:26:54 grumbel Exp $
+//  $Id: PingusLevelDesc.hh,v 1.10 2001/04/13 13:45:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,7 @@
 
 #include <ClanLib/core.h>
 
+#include "Controller.hh"
 #include "MultiLineText.hh"
 #include "PLF.hh"
 
@@ -43,12 +44,14 @@ private:
   ///
   MultiLineText description;
   ///
+  boost::shared_ptr<Controller> controller;
+  ///
   std::string         levelname;
 public:
   ///
   enum LoadingStatus { LOADING, FINISHED };
   ///
-  PingusLevelDesc(boost::shared_ptr<PLF>);
+  PingusLevelDesc(boost::shared_ptr<PLF>,  boost::shared_ptr<Controller>);
   
   ///
   void draw(PingusLevelDesc::LoadingStatus status);

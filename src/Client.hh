@@ -1,4 +1,4 @@
-//  $Id: Client.hh,v 1.25 2001/04/13 11:26:54 grumbel Exp $
+//  $Id: Client.hh,v 1.26 2001/04/13 13:45:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,9 +30,9 @@
 #include "TimeDisplay.hh"
 #include "PinguInfo.hh"
 #include "PingusCounter.hh"
-#include "DemoPlayer.hh"
 #include "SmallMap.hh"
 #include "HurryUp.hh"
+#include "Controller.hh"
 
 class Playfield;
 class ButtonPanel;
@@ -48,7 +48,7 @@ private:
   ///
   Result result;
   ///
-  Server* server;
+  boost::shared_ptr<Server> server;
   ///
   PingusGameMode       mode;
   ///
@@ -61,8 +61,6 @@ private:
   bool do_replay;
   ///
   bool is_finished;
-  ///
-  DemoPlayer* player;
 
   ///
   std::vector<boost::shared_ptr<GuiObj> > obj;
@@ -104,27 +102,23 @@ private:
   bool enabled;
 public:
   ///
-  Client(Server* s);
+  Client(boost::shared_ptr<Controller> arg_controller, 
+	 boost::shared_ptr<Server> s);
   ///
   virtual ~Client();
 
   ///
-  Server*    get_server() { return server; }
+  boost::shared_ptr<Server>   get_server() { return server; }
   ///
   boost::shared_ptr<Playfield> get_playfield() { return playfield; }
 
   ///
-  void start(std::string filename, PingusGameMode m = (PingusGameMode)INTERACTIVE_MODE);
-  ///
-  void start(std::string plf_filename, std::string psm_filename);
-  ///
-  void start(DemoPlayer*);
-
+  void start();
   ///
   void send_next_event();
 
   ///
-  void play_level(std::string plf_filename, std::string psm_filename = "");
+  void play_level(boost::shared_ptr<PLF>);
 
 
   /// FIXME: Document me... or rewrite me

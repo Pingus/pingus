@@ -1,4 +1,4 @@
-//  $Id: Client.cc,v 1.47 2001/04/13 11:26:54 grumbel Exp $
+//  $Id: Client.cc,v 1.48 2001/04/13 13:45:09 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -50,19 +50,18 @@ shared_ptr<TimeDisplay>   Client::time_display;
 shared_ptr<SmallMap>      Client::small_map;
 shared_ptr<HurryUp>       Client::hurry_up;
 
-Client::Client(Server* s)
+Client::Client(boost::shared_ptr<Controller> arg_controller, 
+	       boost::shared_ptr<Server> s)
+  : controller (arg_controller)
 {
-  player = 0;
+  //player = 0;
   server = s;
   fast_forward = false;
   pause = false;
   skip_frame = 0;
   do_replay = false;
   is_finished = false;
-  if (CL_Input::joysticks.size () > 0)
-    controller = shared_ptr<Controller>(new GamepadController (0, CL_Input::joysticks[0]));
-  else
-    controller = shared_ptr<Controller>(new MouseController());
+
   Display::add_flip_screen_hook(new Cursor (controller));
 }
 
@@ -73,20 +72,7 @@ Client::~Client()
 }
 
 void
-Client::start(DemoPlayer* player)
-{
-  assert(player);
-  this->player = player;
-
-  std::string demo_level_file = "levels/" + player->get_levelname();
-
-  std::cout << "Demo_level_file: " << demo_level_file << std::endl;
-
-  play_level(demo_level_file);
-}
-
-void
-Client::start(std::string filename, PingusGameMode m)
+Client::start()
 {
   fast_forward = false;
   pause = false;
@@ -94,26 +80,15 @@ Client::start(std::string filename, PingusGameMode m)
   is_finished = false;
   skip_frame = 0;
 
-  mode = m;
-
-  play_level(filename);
+  play_level(server->get_plf ());
 
   FadeOut::random();
 
   if (verbose) std::cout << "Displaying results..." << CL_System::get_time()  << std::flush;
-  
   PingusLevelResult r(server->get_world());
   r.draw();
   
   if (verbose) std::cout << "finished " << CL_System::get_time()  << std::endl;
-}
-
-void
-Client::start(std::string plf_filename, std::string psm_filename)
-{
-  play_level(plf_filename, psm_filename);
-  do_replay = false;
-  FadeOut::random();
 }
 
 void 
@@ -138,8 +113,8 @@ Client::init_display()
   hurry_up     = shared_ptr<HurryUp>(new HurryUp());
   gui_is_init = true;
    
-  button_panel->set_server(server);
-  time_display->set_server(server);
+  button_panel->set_server(server.get ());
+  time_display->set_server(server.get ());
   button_panel->set_client(this);
   pcounter->set_client(this);
   small_map->set_client(this);
@@ -154,7 +129,7 @@ Client::init_display()
 
   // Connect the button_panel with the playfield
   playfield->set_buttons(button_panel);
-  playfield->set_server(server);
+  playfield->set_server(server.get ());
   playfield->set_client(this);
 
   // Adding all GuiObj's to the screen
@@ -179,37 +154,15 @@ Client::resize_display()
 {
 }
 
-void
-Client::play_level(std::string plf_filename, std::string psm_filename)
+void 
+Client::play_level(boost::shared_ptr<PLF> arg_plf)
 {
   Timer timer;
 
+  plf = arg_plf;
+
   timer.start();
   std::cout << "Client::play_level(), Reading PLF..." << std::flush;
-
-  if (plf_filename.substr(plf_filename.size() - 4) == ".xml")
-    {
-      plf = shared_ptr<PLF>(new XMLPLF(plf_filename));
-    }
-  else // Assuming we are reading a .plf file
-    {
-      plf = shared_ptr<PLF>(new PLFPLF(plf_filename));
-
-      std::cout << "done " << timer.stop() << std::endl;
-
-      // FIXME: dirty hack, should replace or merge the psm files
-      {
-	std::string filename = plf_filename.substr(0, plf_filename.size() - 4);
-    
-	if (verbose > 1) std::cout << "PSM: " << filename + ".psm" << std::endl;
-    
-	plf->set_psm_filename(filename + ".psm");
-      }
-    }
-  server->start(plf);
-
-  if (!player)
-    server->record_demo();
 
   register_event_handler();
 
@@ -288,26 +241,6 @@ Client::update (float delta)
 void
 Client::send_next_event()
 {
-  if (!player) 
-    {
-      return;
-    }
-  else
-    {
-      while(!player->empty())
-	{
-	  const PingusEvent& event = player->peek_event();
-	 
-	  if (event.game_time > GameTime::get_time()) {
-	    break;
-	  } else if (event.game_time == GameTime::get_time()) {
-	    server->send_event(event.str);
-	    player->dequeue_event();
-	  } else {
-	    std::cout << "Client: Demo code currupt..." << std::endl;
-	  }
-	}
-    }
 }
 
 void
@@ -376,8 +309,8 @@ Client::register_event_handler()
   //CL_Input::chain_button_press.push_back(this);
   //CL_Input::chain_button_release.push_back(this);
 
-  on_button_press_slot = CL_Input::sig_button_press.connect (CL_CreateSlot(this, &Client::on_button_press));
-  on_button_release_slot = CL_Input::sig_button_release.connect (CL_CreateSlot(this, &Client::on_button_release));
+  //on_button_press_slot = CL_Input::sig_button_press.connect (CL_CreateSlot(this, &Client::on_button_press));
+  //on_button_release_slot = CL_Input::sig_button_release.connect (CL_CreateSlot(this, &Client::on_button_release));
 
   slot_left_pressed   = controller->left->signal_pressed.connect (CL_CreateSlot (this, &Client::on_left_pressed));
   slot_left_released   = controller->left->signal_released.connect (CL_CreateSlot (this, &Client::on_left_released));

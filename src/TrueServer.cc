@@ -1,4 +1,4 @@
-//  $Id: TrueServer.cc,v 1.21 2001/04/12 20:52:40 grumbel Exp $
+//  $Id: TrueServer.cc,v 1.22 2001/04/13 13:45:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,25 +17,21 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "PingusLevelDesc.hh"
 #include "GameTime.hh"
 #include "Timer.hh"
 #include "globals.hh"
 
 #include "TrueServer.hh"
 
-TrueServer::TrueServer(boost::shared_ptr<PLF> level_data)
+TrueServer::TrueServer(boost::shared_ptr<PLF> arg_plf)
+  : plf (arg_plf)
 {
-  filename = level_data->get_filename();
+  filename = plf->get_filename();
   local_game_speed = game_speed;
   world = 0;
+  finished = false;
   client_needs_redraw = true;
-  start(level_data);
-}
-
-TrueServer::TrueServer()
-{
-  world = 0;
+  start(plf);
 }
 
 TrueServer::~TrueServer()
@@ -66,7 +62,6 @@ TrueServer::start(boost::shared_ptr<PLF> level_data)
   filename = level_data->get_filename();
 
   std::vector<ActionData> bdata;
-  PingusLevelDesc leveldesc(level_data);
 
   timer.start();
   
@@ -90,9 +85,8 @@ TrueServer::start(boost::shared_ptr<PLF> level_data)
   // object or so...
   world->set_action_holder(&action_holder);
 
-  leveldesc.draw(PingusLevelDesc::LOADING);
   world->init(level_data);
-  leveldesc.draw(PingusLevelDesc::FINISHED);
+
   GameTime::reset();
 }
 
@@ -155,6 +149,12 @@ TrueServer::needs_redraw()
     return true;
   }
   return false;
+}
+
+boost::shared_ptr<PLF> 
+TrueServer::get_plf ()
+{
+  return plf;
 }
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: PingusGameSession.cc,v 1.3 2001/04/07 16:48:30 grumbel Exp $
+//  $Id: PingusGameSession.cc,v 1.4 2001/04/13 13:45:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -40,20 +40,22 @@ PingusGameSessionResults::percentage_time ()
 }
 
 PingusGameSession::PingusGameSession (std::string arg_filename)
-  : filename (arg_filename),
-    server (new TrueServer ()),
-    client (new Client(server.get ()))
+  //  : filename (arg_filename),
+  //server (new TrueServer ()),
+  //client (new Client(server))
 {
+  //plf = boost::smart_ptr<PLF>(new XMLPLF (filename));
 }
 
 PingusGameSession::~PingusGameSession ()
-{}
+{
+}
 
 void 
 PingusGameSession::start ()
 {
-  // Giving control to the client here... Client should be rewritten
-  client->start(filename);
+  //server = new TrueServer(plf);
+  //client->start(filename);
 }
 
 PingusGameSessionResults 

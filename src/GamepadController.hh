@@ -1,4 +1,4 @@
-//  $Id: GamepadController.hh,v 1.4 2001/04/13 11:26:54 grumbel Exp $
+//  $Id: GamepadController.hh,v 1.5 2001/04/13 13:45:09 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,7 +42,7 @@ private:
   int y2;
 
 public:
-  GamepadController (int arg_owner_id, CL_InputDevice*);
+  GamepadController (CL_InputDevice*, int arg_owner_id = 0);
   ~GamepadController () {}
   
   int get_x ();

@@ -1,4 +1,4 @@
-//  $Id: PingusGame.hh,v 1.7 2001/04/06 12:49:19 grumbel Exp $
+//  $Id: PingusGame.hh,v 1.8 2001/04/13 13:45:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,15 +25,18 @@
 
 #include "Client.hh"
 #include "Server.hh"
+#include "boost/smart_ptr.hpp"
 
 ///
 class PingusGame
 {
 private:
   ///
-  Client* client;
+  boost::shared_ptr<Client> client;
   ///
-  Server* server;
+  boost::shared_ptr<Server> server;
+  ///
+  boost::shared_ptr<PLF> plf;
   ///
   Result  result;
 public:
@@ -47,10 +50,9 @@ public:
   ///
   void   write_lastlevel_file(std::string levelfile);
   ///
-  void   start_game(std::string plf_filename = "",
-		    std::string psm_filename = "");
+  void   start_game(boost::shared_ptr<PLF> plf);
   ///
-  void   start_demo(std::string pdm_filename = "");
+  void   start_game(std::string plf_filename, std::string psm_filename = "");
 };
 
 #endif

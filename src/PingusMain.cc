@@ -1,4 +1,4 @@
-//   $Id: PingusMain.cc,v 1.23 2001/04/11 20:31:40 grumbel Exp $
+//   $Id: PingusMain.cc,v 1.24 2001/04/13 13:45:09 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -814,11 +814,6 @@ PingusMain::do_lemmings_mode(void)
 	  std::cout << _("PingusMain: Levelfile not found, ignoring: ") << levelfile << std::endl;
 	}
     }
-
-  if (!demo_file.empty()) {
-    PingusGame game;
-    game.start_demo(demo_file);
-  }
 
   try  {
     PingusMenu menu; 

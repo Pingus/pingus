@@ -1,4 +1,4 @@
-//  $Id: PingusLevelDesc.cc,v 1.20 2001/04/13 11:26:54 grumbel Exp $
+//  $Id: PingusLevelDesc.cc,v 1.21 2001/04/13 13:45:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,7 +28,9 @@
 #include "PingusLevelDesc.hh"
 #include "System.hh"
 
-PingusLevelDesc::PingusLevelDesc(boost::shared_ptr<PLF> arg_plf)
+PingusLevelDesc::PingusLevelDesc(boost::shared_ptr<PLF> arg_plf,
+				 boost::shared_ptr<Controller> arg_controller)
+  : controller (arg_controller)
 {
   plf = arg_plf;
 
@@ -88,7 +90,7 @@ PingusLevelDesc::draw(PingusLevelDesc::LoadingStatus status)
     Display::flip_display();
     
     // FIXME: Busy waiting... ugly
-    while (!CL_Mouse::left_pressed() && !CL_Mouse::right_pressed() && !CL_Mouse::middle_pressed())
+    while (!controller->pause->is_pressed ())
       {
 	CL_System::keep_alive();
 	CL_System::sleep (50);

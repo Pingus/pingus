@@ -1,4 +1,4 @@
-//  $Id: Server.hh,v 1.12 2001/04/10 21:51:22 grumbel Exp $
+//  $Id: Server.hh,v 1.13 2001/04/13 13:45:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -93,6 +93,9 @@ public:
   virtual bool needs_redraw() = 0;
 
   ///
+  virtual boost::shared_ptr<PLF> get_plf () =0;
+
+  ///
   World* get_world();
   ///
   ActionHolder* get_action_holder();
@@ -108,8 +111,7 @@ public:
   void set_demo(std::string);
   ///
   void record_demo();
-}///
-;
+};
 
 #endif
 
