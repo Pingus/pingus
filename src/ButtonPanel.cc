@@ -1,4 +1,4 @@
-//  $Id: ButtonPanel.cc,v 1.6 2000/04/24 13:15:40 grumbel Exp $
+//  $Id: ButtonPanel.cc,v 1.7 2000/04/29 20:03:04 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -156,48 +156,43 @@ ButtonPanel::set_button(int i)
 bool
 ButtonPanel::on_button_press(const CL_Key &key)
 {
-  for(AButtonIter button = a_buttons.begin(); button != a_buttons.end(); button++)
+  if (key.id == 0)
     {
-      if ((*button)->mouse_over()) {
-	pressed_button = *button;
-      }
-    }
-  
-  if (armageddon->mouse_over()) 
-    {
-      last_press = CL_System::get_time();
-      
-      if (verbose) std::cout << "Armageddon: " << armageddon_pressed << std::endl;
-      armageddon_pressed++;
-           
-      if (armageddon_pressed == 2)
+      for(AButtonIter button = a_buttons.begin(); button != a_buttons.end(); button++)
 	{
-	  arma_counter = 0;
-	  armageddon_pressed = 4;
-	  armageddon->pressed = true;
-	  world->armageddon();
+	  if ((*button)->mouse_over())
+	    pressed_button = *button;
+	}
+  
+      if (armageddon->mouse_over()) 
+	{
+	  last_press = CL_System::get_time();
+      
+	  if (verbose) std::cout << "Armageddon: " << armageddon_pressed << std::endl;
+	  armageddon_pressed++;
+           
+	  if (armageddon_pressed == 2)
+	    {
+	      arma_counter = 0;
+	      armageddon_pressed = 4;
+	      armageddon->pressed = true;
+	      world->armageddon();
+	    }
+	  return true;
+	}
+    
+      if (pause->mouse_over())
+	{
+	  client->set_pause(!client->get_pause());
+	  return true;
+	}
+      else if (forward->mouse_over())
+	{
+	  client->set_fast_forward(!client->get_fast_forward());
+	  return true;
 	}
     }
-    
-  if (pause->mouse_over())
-    {
-      client->set_pause(!client->get_pause());
-    }
-  else if (forward->mouse_over())
-    {
-      client->set_fast_forward(!client->get_fast_forward());
-    }
-
-  /*  if (pause->mouse_over())
-    {
-      pause->pressed = true;
-    }
-    
-  if (forward->mouse_over() && !left_pressed)
-    {
-      forward->pressed = true;
-      }*/
-  return true;
+  return false;
 }
 
 bool

@@ -1,4 +1,4 @@
-//  $Id: SmallMap.hh,v 1.4 2000/03/12 01:43:23 grumbel Exp $
+//  $Id: SmallMap.hh,v 1.5 2000/04/29 20:03:04 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,8 +46,8 @@ public:
   SmallMap();
   ~SmallMap();
   
-  void button_press(const CL_Key& key);
-  void button_release(const CL_Key& key);
+  bool on_button_press(const CL_Key& key);
+  bool on_button_release(const CL_Key& key);
   void set_client(Client* c);
 
   bool mouse_over();

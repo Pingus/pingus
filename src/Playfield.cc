@@ -1,4 +1,4 @@
-//  $Id: Playfield.cc,v 1.10 2000/04/25 17:54:39 grumbel Exp $
+//  $Id: Playfield.cc,v 1.11 2000/04/29 20:03:04 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -197,13 +197,19 @@ Playfield::let_move()
 	  break;
 	}
     }
-  
-  if (current_pingu && CL_Mouse::left_pressed())
+}
+
+bool 
+Playfield::on_button_press(const CL_Key &key)
+{
+  if (current_pingu)
     {
       char str[256];
       sprintf(str, "Pingu: %d:%s", current_pingu->get_id(), buttons->get_action_name().c_str());
       server->send_event(str);
+      return true;
     }
+  return false;
 }
 
 void
