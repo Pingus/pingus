@@ -1,4 +1,4 @@
-//  $Id: blitter.cxx,v 1.4 2002/06/20 15:41:28 grumbel Exp $
+//  $Id: blitter.cxx,v 1.5 2002/06/20 15:43:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -205,8 +205,8 @@ Blitter::put_surface_32bit(CL_Canvas* canvas, CL_SurfaceProvider* provider,
   provider->lock();
   if (1) // slow
     {
-      for(int y = max(0, -y_pos); y < sheight && (y + y_pos) < theight ; y++) 
-	for(int x = max(0,-x_pos); x < swidth && (x + x_pos) < twidth; x++) 
+      for(int y = Math::max(0, -y_pos); y < sheight && (y + y_pos) < theight ; y++) 
+	for(int x = Math::max(0,-x_pos); x < swidth && (x + x_pos) < twidth; x++) 
 	  {
 	    provider->get_pixel(x, y, &red, &green, &blue, &alpha);
 	    canvas->get_pixel(x + x_pos, y + y_pos, &tred, &tgreen, &tblue, &talpha);
