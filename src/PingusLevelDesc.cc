@@ -1,4 +1,4 @@
-//  $Id: PingusLevelDesc.cc,v 1.3 2000/02/11 16:58:26 grumbel Exp $
+//  $Id: PingusLevelDesc.cc,v 1.4 2000/02/15 12:30:45 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,7 +34,7 @@ PingusLevelDesc::PingusLevelDesc(PLF* tplf)
   desc_string = plf->get_description();
   levelname = plf->get_levelname();
 
-  // BUG: Begin, this is very buggy and don't work in all situations
+  // FIXME: Begin, this is very buggy and don't work in all situations
   pos = 0;
   pos_next = desc_string.find("\n", 0);
   
@@ -55,7 +55,7 @@ PingusLevelDesc::PingusLevelDesc(PLF* tplf)
   if (pos_next == string::npos) {
     description.push_back(desc_string.substr(pos, desc_string.size() - pos));
   }
-  // BUG: End
+  // FIXME: End
   
   background = CL_Surface::load("Textures/stone", PingusResource::get("textures.dat"));
   font       = CL_Font::load("Fonts/pingus_small", PingusResource::get("fonts.dat"));
@@ -65,13 +65,16 @@ PingusLevelDesc::PingusLevelDesc(PLF* tplf)
 void
 PingusLevelDesc::draw(PingusLevelDesc::LoadingStatus status)
 {
-  CL_Display::clear_display();
-  background->put_screen(0, 0, CL_Display::get_width(), CL_Display::get_height());
+  for(int y = 0; y < CL_Display::get_height(); y += background->get_height())
+    for(int x = 0; x < CL_Display::get_width(); x += background->get_width())
+      background->put_screen(x, y);
+
   CL_Display::fill_rect(0, 0, CL_Display::get_width(), CL_Display::get_height(), 0.0, 0.0, 0.0, 0.5);
+
   title->print_center(CL_Display::get_width() / 2, 50, levelname.c_str());
 
   for(unsigned int i=0; i < description.size(); ++i)
-    font->print_center(CL_Display::get_width() / 2 - 20, 100 + (20 * i), description[i].c_str());
+    font->print_center(CL_Display::get_width() / 2 - 20, 120 + (20 * i), description[i].c_str());
 
 
   if (status == LOADING) {

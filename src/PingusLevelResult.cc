@@ -1,4 +1,4 @@
-//  $Id: PingusLevelResult.cc,v 1.4 2000/02/12 12:00:34 grumbel Exp $
+//  $Id: PingusLevelResult.cc,v 1.5 2000/02/15 12:30:45 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,7 +37,10 @@ PingusLevelResult::draw(void)
 {
   char  str[1024];
 
-  background->put_screen(0,0, CL_Display::get_width(), CL_Display::get_height());
+  for(int y = 0; y < CL_Display::get_height(); y += background->get_height())
+    for(int x = 0; x < CL_Display::get_width(); x += background->get_width())
+      background->put_screen(x, y);
+
   CL_Display::fill_rect(0, 0, CL_Display::get_width(), CL_Display::get_height(), 0.0, 0.0, 0.0, 0.5);
 
   title->print_center(CL_Display::get_width() / 2, 50, "Results:");
@@ -57,7 +60,7 @@ PingusLevelResult::draw(void)
 	  (result.time * 100) / game_speed % 100);
   font->print_center(CL_Display::get_width() / 2, 180, str);
 
-  font->print_center(CL_Display::get_width()/2, CL_Display::get_height() - 30,
+  font->print_center(CL_Display::get_width()/2, CL_Display::get_height() - 80,
 		     "Press button to continue...");  
   CL_Display::flip_display();
 

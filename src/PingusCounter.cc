@@ -1,4 +1,4 @@
-//  $Id: PingusCounter.cc,v 1.2 2000/02/09 21:43:40 grumbel Exp $
+//  $Id: PingusCounter.cc,v 1.3 2000/02/15 12:30:45 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,11 +36,12 @@ PingusCounter::draw(void)
   //CL_Display::fill_rect(0,0, 400, 20,
   //			0.0, 0.0, 0.0, 0.5);
 
-  sprintf(str, "Released: %3d  Allowed: %3d  Out: %3d  Saved: %3d",
+  sprintf(str, "Released: %3d/%3d  Out: %3d  Saved: %3d/%3d",
 	  world->get_released_pingus(),
 	  world->get_allowed_pingus(),
 	  world->get_pingus_out(),
-	  world->get_saved_pingus());
+	  world->get_saved_pingus(),
+	  world->get_number_to_save());
   font->print_left(10,5, str);
 }
 
