@@ -1,4 +1,4 @@
-//  $Id: story_screen.cxx,v 1.1 2003/03/21 22:40:12 grumbel Exp $
+//  $Id: story_screen.cxx,v 1.2 2003/03/22 23:28:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,6 +33,7 @@ class StoryScreenComponent : public GUI::Component
 {
 private:
   CL_Surface sur;
+  CL_Surface background;
   std::string text;
   std::string display_text;
   float time_passed;
@@ -76,7 +77,10 @@ StoryScreen::~StoryScreen()
 
 StoryScreenComponent::StoryScreenComponent ()
 {
+  time_passed = 0;
   sur = PingusResource::load_surface("Story/story1", "story");
+  background = PingusResource::load_surface("Story/background", "story");
+
   text = 
     "Dies ist ein Tet blabla, sehr lang blabla und mit umbruechen blabal\n"
     "Zeile zwei mehr text blabla umbrauchuauaneh usnthu snaotehu nostehusano\n"
@@ -87,7 +91,8 @@ StoryScreenComponent::StoryScreenComponent ()
 void
 StoryScreenComponent::draw (GraphicContext& gc)
 {
-  gc.clear(0,0,0);
+  //gc.clear(0,0,0);
+  gc.draw(background, 0, 0);
   gc.print_center(Fonts::pingus_large, 400, 20, "Chapter 1 - Enter the unknown...");
   sur.put_screen(400-320, 90);
   gc.print_left(Fonts::pingus_small, 100, 315, display_text);

@@ -1,4 +1,4 @@
-//  $Id: screen_manager.hxx,v 1.1 2003/02/19 09:51:44 grumbel Exp $
+//  $Id: screen_manager.hxx,v 1.2 2003/03/22 23:28:51 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -40,11 +40,6 @@ private:
       or replaced) */
   std::vector<ScreenPtr> screens;
 
-  /** Screens in this vector will be deleted at the end of the
-      main-loop. Its really more a keep alive vector, than a deleting
-      one, but well... */
-  std::vector<ScreenPtr> delete_screens;
-
   /** the screen that was used in the last update() */
   ScreenPtr last_screen;
 
@@ -80,10 +75,10 @@ private:
   void real_pop_screen ();
 
   /** FadeOver test*/
-  void fade_over (const ScreenPtr& old_screen, const ScreenPtr& new_screen);
+  void fade_over (ScreenPtr& old_screen, ScreenPtr& new_screen);
 
   /** @return a pointer to the current Screen */
-  ScreenPtr get_current_screen();
+  ScreenPtr& get_current_screen();
 
 public:  
   static ScreenManager* instance ();

@@ -1,4 +1,4 @@
-//  $Id: screen_manager.cxx,v 1.2 2003/02/19 17:17:00 grumbel Exp $
+//  $Id: screen_manager.cxx,v 1.3 2003/03/22 23:28:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -85,6 +85,10 @@ ScreenManager::display ()
 	  real_replace_screen (replace_screen_arg);
 	  cached_action = none;
 	}
+      else
+        {
+	  cached_action = none;
+        }
 
       // FIXME: is there a more gentel way to do that instead of spreading the checks all around here?
       // Last screen has poped, so we are going to end here
@@ -100,18 +104,15 @@ ScreenManager::display ()
       else
 	{
 	  //std::cout << "ScreenManager: fading screens" << std::endl;
-	  //fade_over (last_screen, get_current_screen());
+	  fade_over (last_screen, get_current_screen());
 	}
 
       // Stupid hack to make this thing take less CPU
       CL_System::sleep (0);
-
-      /** Delete all screens that are no longer needed */
-      delete_screens.clear();
     } 
 }
 
-ScreenPtr
+ScreenPtr&
 ScreenManager::get_current_screen()
 {
   assert(!screens.empty());
@@ -130,11 +131,8 @@ ScreenManager::instance ()
 void
 ScreenManager::push_screen (Screen* screen, bool delete_screen)
 {
-  std::cout << "XXXXXXXX ScreenManager::push_screen" << std::endl;
-
   if (!screens.empty())
     {
-      std::cout << "ScreenManager::push_screen" << std::endl;
       screens.back ()->on_shutdown ();
     }
 
@@ -160,12 +158,7 @@ ScreenManager::replace_screen (Screen* screen, bool delete_screen)
 void
 ScreenManager::real_replace_screen (const ScreenPtr& ptr)
 {
-  std::cout << "XXXXXXXX ScreenManager::replace_screen" << std::endl;
-
   screens.back ()->on_shutdown ();
-
-  delete_screens.push_back(screens.back ());
-  
   screens.back () = ptr;
   screens.back ()->on_startup ();
 }
@@ -173,13 +166,8 @@ ScreenManager::real_replace_screen (const ScreenPtr& ptr)
 void
 ScreenManager::real_pop_screen ()
 {
-  std::cout << "XXXXXXXX ScreenManager::pop_screen" << std::endl;
-
   screens.back ()->on_shutdown ();
 
-  delete_screens.push_back(screens.back ());
-  
-  std::cout << "ScreenManager::real_pop_screen ()" << std::endl;
   screens.pop_back ();
 
   if (!screens.empty ())
@@ -195,45 +183,47 @@ ScreenManager::fade_out()
 }
 
 void
-ScreenManager::fade_over (const ScreenPtr& old_screen, const ScreenPtr& new_screen)
+ScreenManager::fade_over (ScreenPtr& old_screen, ScreenPtr& new_screen)
 {
+#if 0
   FadeOut::fade_to_black();
   UNUSED_ARG(old_screen);
   UNUSED_ARG(new_screen);
-
-#if 0
+#else
   DeltaManager delta_manager;
   float passed_time = 0;
 
+  Input::EventLst events;
 
-  std::list<Input::Event*> events;
-  while (passed_time < 2.0f)
+  float progress = 0.0f;
+  while (progress <= 1.0f)
     {
       float time_delta = delta_manager.getset ();
       passed_time += time_delta;
+      
+      int border_x = int((CL_Display::get_width ()/2) * (1.0f - progress));
+      int border_y = int((CL_Display::get_height ()/2) * (1.0f - progress));
 
-      int border_x = int((CL_Display::get_width ()/2) * passed_time/2.0f);
-      int border_y = int((CL_Display::get_height ()/2) * passed_time/2.0f);
-
-      //std::cout << "FadeOver: " << border_x << " " << border_y << std::endl;
-
-      new_screen->draw (display_gc);
-
+      old_screen->draw (display_gc);
       CL_Display::push_clip_rect(CL_ClipRect (0 + border_x, 
 					      0 + border_y,
 					      CL_Display::get_width () - border_x,
 					      CL_Display::get_height () - border_y));
-      old_screen->draw (display_gc);
+      new_screen->draw (display_gc);
 
-      GameDelta delta (time_delta, events);
-      new_screen->update (delta);
-      old_screen->update (delta);
+      //GameDelta delta (time_delta, CL_System::get_time(), events);
+      // FIXME: Animation looks nifty but doesn't work all that good
+      //new_screen->update (delta);
+      //old_screen->update (delta);
 
       CL_Display::pop_clip_rect ();
 
       Display::flip_display ();
       CL_System::keep_alive ();
+     
+      progress = passed_time/1.0f;
     }
+
 #endif 
 }
 

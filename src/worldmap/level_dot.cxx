@@ -1,4 +1,4 @@
-//  $Id: level_dot.cxx,v 1.11 2003/03/21 22:08:06 grumbel Exp $
+//  $Id: level_dot.cxx,v 1.12 2003/03/22 23:28:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -78,7 +78,6 @@ void
 LevelDot::on_click()
 {
   std::cout << "Starting level: " << levelname << std::endl;
-  ScreenManager::instance()->fade_out();
   ScreenManager::instance()->push_screen(new StartScreen(PLFResMgr::load_plf(levelname)),
                                          true);
 }
