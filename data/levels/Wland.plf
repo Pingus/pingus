@@ -1,8 +1,9 @@
 /* This level was created with the PLE
- * $Id: Wland.plf,v 1.1 2000/05/20 12:07:13 grumbel Exp $
+ * $Id: Wland.plf,v 1.2 2000/05/21 12:03:24 grumbel Exp $
  * (Heavily altered foliage1.plf)
  */
 global {
+  author = "Craig Timpany <timpany@pingus.cx>";
   start_x_pos = 0;
   start_y_pos = 0;
   levelname = "Pingus in Wonderland";
@@ -31,11 +32,8 @@ background {
 
 buttons {
   basher = 10;
-  blocker = 0;
-  bomber = 0;
   bridger = 2;
   climber = 10;
-  digger = 0;
   floater = 5;
   miner = 1;
 }
