@@ -1,4 +1,4 @@
-//  $Id: smallmap.cxx,v 1.29 2002/12/29 23:29:00 torangan Exp $
+//  $Id: smallmap.cxx,v 1.30 2003/02/19 09:50:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,7 @@
 #include <ClanLib/Display/Display/display.h>
 #include <ClanLib/Display/SurfaceProviders/canvas.h>
 #include "pingu_holder.hxx"
-#include "display.hxx"
+#include "gui/display.hxx"
 #include "playfield.hxx"
 #include "world.hxx"
 #include "pingus_resource.hxx"

@@ -1,4 +1,4 @@
-//  $Id: spot_map.cxx,v 1.23 2002/12/29 23:29:00 torangan Exp $
+//  $Id: spot_map.cxx,v 1.24 2003/02/19 09:50:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,7 +19,7 @@
 
 #include <stdio.h>
 #include <ClanLib/Display/SurfaceProviders/canvas.h>
-#include "graphic_context.hxx"
+#include "gui/graphic_context.hxx"
 #include "plf.hxx"
 #include "pingus_error.hxx"
 #include "blitter.hxx"

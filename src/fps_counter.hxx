@@ -1,4 +1,4 @@
-//  $Id: fps_counter.hxx,v 1.5 2002/09/27 11:26:43 torangan Exp $
+//  $Id: fps_counter.hxx,v 1.6 2003/02/19 09:50:35 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_FPS_COUNTER_HXX
 #define HEADER_PINGUS_FPS_COUNTER_HXX
 
-#include "display.hxx"
+#include "gui/display.hxx"
 
 class CL_Font;
 

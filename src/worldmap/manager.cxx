@@ -1,4 +1,4 @@
-//  $Id: manager.cxx,v 1.22 2003/01/25 18:34:36 torangan Exp $
+//  $Id: manager.cxx,v 1.23 2003/02/19 09:50:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,7 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
-#include "../screen_manager.hxx"
+#include "../gui/screen_manager.hxx"
 #include "../path_manager.hxx"
 #include "worldmap.hxx"
 #include "manager.hxx"

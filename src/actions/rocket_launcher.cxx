@@ -1,4 +1,4 @@
-//  $Id: rocket_launcher.cxx,v 1.13 2002/12/28 16:10:18 torangan Exp $
+//  $Id: rocket_launcher.cxx,v 1.14 2003/02/19 09:50:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,7 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "../graphic_context.hxx"
+#include "../gui/graphic_context.hxx"
 //#include "../particles/particle_holder.hxx"
 //#include "../particles/explosive_particle.hxx"
 #include "../world.hxx"

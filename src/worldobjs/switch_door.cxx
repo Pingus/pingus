@@ -1,4 +1,4 @@
-//  $Id: switch_door.cxx,v 1.22 2002/10/04 13:46:56 grumbel Exp $
+//  $Id: switch_door.cxx,v 1.23 2003/02/19 09:50:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,7 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "../col_map.hxx"
-#include "../graphic_context.hxx"
+#include "../gui/graphic_context.hxx"
 #include "../pingu.hxx"
 #include "../pingu_holder.hxx"
 #include "../world.hxx"

@@ -1,4 +1,4 @@
-//  $Id: slider.cxx,v 1.16 2002/10/13 20:25:00 torangan Exp $
+//  $Id: slider.cxx,v 1.17 2003/02/19 09:50:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,7 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "../col_map.hxx"
-#include "../graphic_context.hxx"
+#include "../gui/graphic_context.hxx"
 #include "../string_converter.hxx"
 #include "../pingu.hxx"
 #include "slider.hxx"

@@ -1,4 +1,4 @@
-//  $Id: pingus_sub_menu.hxx,v 1.7 2002/09/27 11:26:44 torangan Exp $
+//  $Id: pingus_sub_menu.hxx,v 1.8 2003/02/19 09:50:36 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_PINGUS_SUB_MENU_HXX
 #define HEADER_PINGUS_PINGUS_SUB_MENU_HXX
 
-#include "gui_screen.hxx"
+#include "gui/gui_screen.hxx"
 
 class CL_Key;
 class CL_InputDevice;

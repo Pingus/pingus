@@ -1,4 +1,4 @@
-//  $Id: surface_background.cxx,v 1.6 2003/02/18 17:04:13 grumbel Exp $
+//  $Id: surface_background.cxx,v 1.7 2003/02/19 09:50:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,7 @@
 #include <iostream>
 #include <ClanLib/Display/SurfaceProviders/canvas.h>
 #include <ClanLib/Display/Display/display.h>
-#include "../graphic_context.hxx"
+#include "../gui/graphic_context.hxx"
 #include "../world.hxx"
 #include "../timer.hxx"
 #include "../pingus_resource.hxx"

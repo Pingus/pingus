@@ -1,4 +1,4 @@
-//  $Id: fade_out.cxx,v 1.6 2002/12/29 23:29:00 torangan Exp $
+//  $Id: fade_out.cxx,v 1.7 2003/02/19 09:50:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,7 @@
 #include <iostream>
 #include <ClanLib/Core/System/system.h>
 #include <ClanLib/Display/Display/display.h>
-#include "display.hxx"
+#include "gui/display.hxx"
 #include "fade_out.hxx"
 #include "globals.hxx"
 #include "math.hxx"

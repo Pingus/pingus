@@ -1,4 +1,4 @@
-//  $Id: path_drawable.cxx,v 1.5 2002/11/03 23:31:35 grumbel Exp $
+//  $Id: path_drawable.cxx,v 1.6 2003/02/19 09:50:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,7 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
-#include "../graphic_context.hxx"
+#include "../gui/graphic_context.hxx"
 #include "path_drawable.hxx"
 
 namespace WorldMapNS {

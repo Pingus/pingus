@@ -1,4 +1,4 @@
-//  $Id: surface_selector.cxx,v 1.6 2002/12/29 23:29:01 torangan Exp $
+//  $Id: surface_selector.cxx,v 1.7 2003/02/19 09:50:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,7 @@
 #include <ClanLib/Core/System/system.h>
 #include <ClanLib/Display/Display/display.h>
 #include <ClanLib/Display/Input/mouse.h>
-#include "../display.hxx"
+#include "../gui/display.hxx"
 #include "../pingus_resource.hxx"
 #include "surface_selector.hxx"
 

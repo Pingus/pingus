@@ -1,4 +1,4 @@
-//  $Id: worldobj.cxx,v 1.10 2002/10/10 12:25:53 grumbel Exp $
+//  $Id: worldobj.cxx,v 1.11 2003/02/19 09:50:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,7 @@
 #include <typeinfo>
 #include <iostream>
 #include "worldobj.hxx"
-#include "graphic_context.hxx"
+#include "gui/graphic_context.hxx"
 
 World* WorldObj::world;
 

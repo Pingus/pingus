@@ -1,4 +1,4 @@
-//  $Id: surface_drawable.cxx,v 1.1 2002/10/12 23:37:23 grumbel Exp $
+//  $Id: surface_drawable.cxx,v 1.2 2003/02/19 09:50:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,7 @@
 
 #include "../xml_helper.hxx"
 #include "../pingus_resource.hxx"
-#include "../graphic_context.hxx"
+#include "../gui/graphic_context.hxx"
 #include "surface_drawable.hxx"
 
 namespace WorldMapNS {

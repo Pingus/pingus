@@ -1,4 +1,4 @@
-//  $Id: gui_manager.cxx,v 1.18 2002/12/20 01:22:32 grumbel Exp $
+//  $Id: gui_manager.cxx,v 1.19 2003/02/19 09:50:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,7 @@
 #include "../debug.hxx"
 #include "../globals.hxx"
 #include "../input/event.hxx"
-#include "../game_delta.hxx"
+#include "game_delta.hxx"
 
 #include "gui_manager.hxx"
 

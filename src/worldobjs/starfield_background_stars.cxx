@@ -1,4 +1,4 @@
-//  $Id: starfield_background_stars.cxx,v 1.5 2003/01/27 22:14:52 torangan Exp $
+//  $Id: starfield_background_stars.cxx,v 1.6 2003/02/19 09:50:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,7 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "../graphic_context.hxx"
+#include "../gui/graphic_context.hxx"
 #include "../world.hxx"
 #include "../pingus_resource.hxx"
 #include "starfield_background_stars.hxx"

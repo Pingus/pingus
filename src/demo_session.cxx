@@ -1,4 +1,4 @@
-//  $Id: demo_session.cxx,v 1.4 2002/12/29 23:29:00 torangan Exp $
+//  $Id: demo_session.cxx,v 1.5 2003/02/19 09:50:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,7 +25,7 @@
 #include "demo_player.hxx"
 #include "pingus_counter.hxx"
 #include "gui/gui_manager.hxx"
-#include "graphic_context.hxx"
+#include "gui/graphic_context.hxx"
 #include "demo_session.hxx"
 
 DemoSession::DemoSession(const std::string& filename)

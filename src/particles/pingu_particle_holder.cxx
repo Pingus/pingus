@@ -1,4 +1,4 @@
-//  $Id: pingu_particle_holder.cxx,v 1.3 2003/01/25 11:03:58 torangan Exp $
+//  $Id: pingu_particle_holder.cxx,v 1.4 2003/02/19 09:50:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,9 +17,9 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "../algo.hxx"
+#include "../gui/graphic_context.hxx"
+#include "../math.hxx"
 #include "../col_map.hxx"
-#include "../graphic_context.hxx"
 #include "../pingus_resource.hxx"
 #include "../world.hxx"
 #include "pingu_particle_holder.hxx"
@@ -36,7 +36,7 @@ PinguParticleHolder::PinguParticle::PinguParticle (int x, int y)
   : livetime(50 + (rand() % 50)),
     use_frame2((rand() % 5) == 0),
     pos(Vector(x, y)),
-    velocity(Vector(frand() * 7 - 3.5, frand() * -7))
+    velocity(Vector(Math::frand() * 7 - 3.5, Math::frand() * -7))
 {
 }
 

@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.132 2003/02/18 15:04:47 grumbel Exp $
+#  $Id: Makefile.am,v 1.133 2003/02/19 09:50:34 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -81,8 +81,6 @@ action_data.hxx \
 action_data.cxx \
 action_holder.cxx \
 action_holder.hxx \
-algo.cxx \
-algo.hxx \
 alpha_button.cxx \
 alpha_button.hxx \
 blitter.cxx \
@@ -109,8 +107,6 @@ counter.cxx \
 counter.hxx \
 credits.cxx \
 credits.hxx \
-cursor.cxx \
-cursor.hxx \
 debug.cxx \
 debug.hxx \
 debug_stream.cxx \
@@ -124,10 +120,6 @@ demo_session.hxx \
 demo_session.cxx \
 direction.cxx \
 direction.hxx \
-display.cxx \
-display.hxx \
-display_graphic_context.hxx \
-display_graphic_context.cxx \
 exit_menu.cxx \
 exit_menu.hxx \
 fade_out.cxx \
@@ -140,7 +132,6 @@ fps_counter.cxx \
 fps_counter.hxx \
 game_counter.cxx \
 game_counter.hxx \
-game_delta.hxx \
 game_event.hxx \
 game_session.cxx \
 game_session.hxx \
@@ -156,18 +147,13 @@ goal_manager.hxx \
 goal_manager.cxx \
 groundtype.hxx \
 groundtype.cxx \
-graphic_context.hxx \
 gui_obj.hxx \
 gui_obj.cxx \
-gui_screen.cxx \
-gui_screen.hxx \
 html_browser.cxx \
 html_browser.hxx \
 hurry_up.cxx \
 hurry_up.hxx \
 input_event.hxx \
-input_debug_screen.hxx \
-input_debug_screen.cxx \
 indexed_canvas.hxx \
 indexed_canvas.cxx \
 intro.cxx \
@@ -252,11 +238,6 @@ result.cxx \
 result.hxx \
 screenshot.cxx \
 screenshot.hxx \
-screen.hxx \
-screen_manager.hxx \
-screen_manager.cxx \
-screen_ptr.hxx \
-screen_ptr.cxx \
 server.cxx \
 server.hxx \
 server_event.hxx \

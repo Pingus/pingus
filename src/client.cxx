@@ -1,4 +1,4 @@
-//  $Id: client.cxx,v 1.39 2003/02/18 15:04:47 grumbel Exp $
+//  $Id: client.cxx,v 1.40 2003/02/19 09:50:34 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,7 +31,7 @@
 #include "plf.hxx"
 #include "hurry_up.hxx"
 #include "path_manager.hxx"
-#include "cursor.hxx"
+#include "gui/cursor.hxx"
 #include "true_server.hxx"
 #include "button_panel.hxx"
 #include "gui/gui_manager.hxx"

@@ -1,4 +1,4 @@
-//  $Id: floater.cxx,v 1.22 2003/02/12 22:40:47 torangan Exp $
+//  $Id: floater.cxx,v 1.23 2003/02/19 09:50:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,7 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "../pingu.hxx"
-#include "../graphic_context.hxx"
+#include "../gui/graphic_context.hxx"
 #include "../groundtype.hxx"
 #include "floater.hxx"
 

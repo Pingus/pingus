@@ -1,4 +1,4 @@
-//  $Id: fonts.hxx,v 1.2 2002/11/02 21:12:16 grumbel Exp $
+//  $Id: fonts.hxx,v 1.3 2003/02/19 09:50:35 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_FONTS_HXX
 #define HEADER_PINGUS_FONTS_HXX
 
-#include "graphic_context.hxx"
+#include "gui/graphic_context.hxx"
 
 namespace Fonts {
 

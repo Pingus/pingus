@@ -1,4 +1,4 @@
-//  $Id: ice_block.cxx,v 1.20 2002/10/04 13:46:56 grumbel Exp $
+//  $Id: ice_block.cxx,v 1.21 2003/02/19 09:50:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,7 +19,7 @@
 
 #include "../col_map.hxx"
 #include "../game_time.hxx"
-#include "../graphic_context.hxx"
+#include "../gui/graphic_context.hxx"
 #include "../pingu.hxx"
 #include "../pingu_holder.hxx"
 #include "../pingu_map.hxx"

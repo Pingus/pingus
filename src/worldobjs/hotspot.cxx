@@ -1,4 +1,4 @@
-//  $Id: hotspot.cxx,v 1.5 2002/10/02 19:20:19 grumbel Exp $
+//  $Id: hotspot.cxx,v 1.6 2003/02/19 09:50:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,7 @@
 #include <iostream>
 #include "../worldobjsdata/hotspot_data.hxx"
 #include "../globals.hxx"
-#include "../graphic_context.hxx"
+#include "../gui/graphic_context.hxx"
 #include "hotspot.hxx"
 
 namespace WorldObjs {

@@ -1,4 +1,4 @@
-//  $Id: woodthing.cxx,v 1.5 2003/01/27 22:14:52 torangan Exp $
+//  $Id: woodthing.cxx,v 1.6 2003/02/19 09:50:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,8 +17,8 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "../../algo.hxx"
-#include "../../graphic_context.hxx"
+#include "../../math.hxx"
+#include "../../gui/graphic_context.hxx"
 #include "../../particles/smoke_particle_holder.hxx"
 #include "../../pingus_resource.hxx"
 #include "../../world.hxx"
@@ -49,10 +49,10 @@ WoodThing::update ()
 
   if (rand() % 5 == 0) 
     {
-      // FIXME: Memory leak
-      world->get_smoke_particle_holder()->add_particle(static_cast<int>(data->pos.x - surface.get_width () /  2 - 24),
-        				                                       static_cast<int>(data->pos.y - surface.get_height() + 32 - 147),
-					                                             (frand() + 1) * -0.6f, (frand() + 1) * -0.6f);
+      world->get_smoke_particle_holder()->
+        add_particle(static_cast<int>(data->pos.x - surface.get_width () /  2 - 24),
+                     static_cast<int>(data->pos.y - surface.get_height() + 32 - 147),
+                     (Math::frand() + 1) * -0.6f, (Math::frand() + 1) * -0.6f);
     }
 }
 

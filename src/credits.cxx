@@ -1,4 +1,4 @@
-//  $Id: credits.cxx,v 1.15 2003/02/18 18:41:58 grumbel Exp $
+//  $Id: credits.cxx,v 1.16 2003/02/19 09:50:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,10 +20,10 @@
 #include <iostream>
 #include <ClanLib/Display/Display/display.h>
 #include <ClanLib/Display/Font/font.h>
+#include "gui/screen_manager.hxx"
 #include "sound/sound.hxx"
 #include "pingus_resource.hxx"
 #include "credits.hxx"
-#include "screen_manager.hxx"
 #include "my_gettext.hxx"
 
 Credits* Credits::instance_ = 0;

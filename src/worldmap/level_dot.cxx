@@ -1,4 +1,4 @@
-//  $Id: level_dot.cxx,v 1.7 2003/02/18 11:28:41 grumbel Exp $
+//  $Id: level_dot.cxx,v 1.8 2003/02/19 09:50:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,12 +18,12 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
+#include "../gui/graphic_context.hxx"
+#include "../gui/screen_manager.hxx"
 #include "../xml_helper.hxx"
 #include "../pingus_resource.hxx"
-#include "../graphic_context.hxx"
 #include "../plf.hxx"
 #include "../path_manager.hxx"
-#include "../screen_manager.hxx"
 #include "../game_session.hxx"
 #include "level_dot.hxx"
 

@@ -1,4 +1,4 @@
-//  $Id: demo_session.hxx,v 1.3 2002/12/28 16:57:38 torangan Exp $
+//  $Id: demo_session.hxx,v 1.4 2003/02/19 09:50:35 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_DEMO_SESSION_HXX
 #define HEADER_PINGUS_DEMO_SESSION_HXX
 
-#include "gui_screen.hxx"
+#include "gui/gui_screen.hxx"
 
 class Server;
 class XMLPDF;

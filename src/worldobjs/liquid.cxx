@@ -1,4 +1,4 @@
-//  $Id: liquid.cxx,v 1.6 2003/02/18 17:04:13 grumbel Exp $
+//  $Id: liquid.cxx,v 1.7 2003/02/19 09:50:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,7 +19,7 @@
 
 #include <iostream>
 #include "../col_map.hxx"
-#include "../graphic_context.hxx"
+#include "../gui/graphic_context.hxx"
 #include "../pingus_resource.hxx"
 #include "../world.hxx"
 #include "../worldobjsdata/liquid_data.hxx"

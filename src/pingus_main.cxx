@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.46 2003/02/18 21:38:08 grumbel Exp $
+//   $Id: pingus_main.cxx,v 1.47 2003/02/19 09:50:36 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -57,9 +57,10 @@
 
 #include "my_gettext.hxx"
 
+#include "gui/screen_manager.hxx"
+#include "gui/input_debug_screen.hxx"
 #include "path_manager.hxx"
 #include "pingus_main.hxx"
-#include "algo.hxx"
 #include "globals.hxx"
 #include "system.hxx"
 #include "pingus_error.hxx"
@@ -72,11 +73,9 @@
 #include "demo_session.hxx"
 #include "debug.hxx"
 #include "editor/editor.hxx"
-#include "screen_manager.hxx"
 #include "action_data.hxx"
 #include "fonts.hxx"
 #include "xml_helper.hxx"
-#include "input_debug_screen.hxx"
 #include "pingus_menu_manager.hxx"
 #include "pingus_resource.hxx"
 #include "pingu_action_factory.hxx"

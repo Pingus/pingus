@@ -1,4 +1,4 @@
-//  $Id: teleporter.cxx,v 1.15 2002/10/07 23:04:06 grumbel Exp $
+//  $Id: teleporter.cxx,v 1.16 2003/02/19 09:50:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,7 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
-#include "../graphic_context.hxx"
+#include "../gui/graphic_context.hxx"
 #include "../pingu.hxx"
 #include "../pingu_holder.hxx"
 #include "../world.hxx"

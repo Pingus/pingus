@@ -1,4 +1,4 @@
-//  $Id: option_menu.cxx,v 1.12 2003/02/18 18:41:59 grumbel Exp $
+//  $Id: option_menu.cxx,v 1.13 2003/02/19 09:50:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,11 +24,12 @@
 #include <ClanLib/Display/Input/input.h>
 #include <ClanLib/Display/Input/keyboard.h>
 #include <ClanLib/Display/Display/mousecursor_provider.h>
+
+#include "gui/display.hxx"
 #include "globals.hxx"
 #include "pingus_resource.hxx"
 #include "string_converter.hxx"
 #include "pingus_menu_manager.hxx"
-#include "display.hxx"
 #include "cheat.hxx"
 #include "my_gettext.hxx"
 

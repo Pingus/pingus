@@ -1,4 +1,4 @@
-//  $Id: pingus_menu_manager.cxx,v 1.18 2003/02/18 17:04:13 grumbel Exp $
+//  $Id: pingus_menu_manager.cxx,v 1.19 2003/02/19 09:50:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,7 +19,7 @@
 
 #include <iostream>
 #include <ClanLib/Display/Display/display.h>
-#include "screen_manager.hxx"
+#include "gui/screen_manager.hxx"
 #include "sound/sound.hxx"
 #include "pingus_menu_manager.hxx"
 

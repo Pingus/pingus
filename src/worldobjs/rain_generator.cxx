@@ -1,4 +1,4 @@
-//  $Id: rain_generator.cxx,v 1.8 2003/02/18 15:04:47 grumbel Exp $
+//  $Id: rain_generator.cxx,v 1.9 2003/02/19 09:50:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,7 +22,7 @@
 #include "../particles/rain_particle_holder.hxx"
 #include "../sound/sound.hxx"
 #include "../world.hxx"
-#include "../graphic_context.hxx"
+#include "../gui/graphic_context.hxx"
 #include "rain_generator.hxx"
 
 namespace WorldObjs {

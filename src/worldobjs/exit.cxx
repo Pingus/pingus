@@ -1,4 +1,4 @@
-//  $Id: exit.cxx,v 1.7 2002/10/13 20:25:00 torangan Exp $
+//  $Id: exit.cxx,v 1.8 2003/02/19 09:50:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,7 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
-#include "../graphic_context.hxx"
+#include "../gui/graphic_context.hxx"
 #include "../col_map.hxx"
 #include "../world.hxx"
 #include "../globals.hxx"

@@ -1,4 +1,4 @@
-//  $Id: game_session.hxx,v 1.14 2002/10/26 17:27:52 grumbel Exp $
+//  $Id: game_session.hxx,v 1.15 2003/02/19 09:50:36 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,7 @@
 #define HEADER_PINGUS_GAME_SESSION_HXX
 
 #include <string>
-#include "screen.hxx"
+#include "gui/screen.hxx"
 
 class Client;
 class TrueServer;

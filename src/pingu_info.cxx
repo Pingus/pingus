@@ -1,4 +1,4 @@
-//  $Id: pingu_info.cxx,v 1.7 2003/02/18 18:41:59 grumbel Exp $
+//  $Id: pingu_info.cxx,v 1.8 2003/02/19 09:50:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,10 +20,10 @@
 #include <stdio.h>
 #include <ClanLib/Display/Display/display.h>
 #include <ClanLib/Display/Font/font.h>
-#include "algo.hxx"
 #include "pingus_resource.hxx"
 #include "pingu_info.hxx"
 #include "pingu.hxx"
+#include "string_converter.hxx"
 #include "my_gettext.hxx"
 
 PinguInfo::PinguInfo()
@@ -59,7 +59,7 @@ PinguInfo::draw()
 
     font->print_left(x_pos + CL_Display::get_width() - 185, 
 		     y_pos + CL_Display::get_height() - 30,
-		     tolowerstr(str));
+		     string_downcase(str));
   } else {
     font->print_left(x_pos + CL_Display::get_width() - 200, 
 		     y_pos + CL_Display::get_height() - 50,

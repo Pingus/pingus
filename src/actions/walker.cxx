@@ -1,4 +1,4 @@
-//  $Id: walker.cxx,v 1.30 2003/02/18 01:23:52 grumbel Exp $
+//  $Id: walker.cxx,v 1.31 2003/02/19 09:50:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,7 +19,7 @@
 
 #include "../col_map.hxx"
 #include "../globals.hxx"
-#include "../graphic_context.hxx"
+#include "../gui/graphic_context.hxx"
 #include "../string_converter.hxx"
 #include "../pingu.hxx"
 #include "../debug.hxx"

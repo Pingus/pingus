@@ -1,4 +1,4 @@
-//  $Id: faller.cxx,v 1.35 2003/02/12 22:40:47 torangan Exp $
+//  $Id: faller.cxx,v 1.36 2003/02/19 09:50:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,7 @@
 #include "../col_map.hxx"
 #include "../debug.hxx"
 #include "../globals.hxx"
-#include "../graphic_context.hxx"
+#include "../gui/graphic_context.hxx"
 #include "../pingu.hxx"
 #include "../string_converter.hxx"
 #include "faller.hxx"

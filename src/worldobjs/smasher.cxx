@@ -1,4 +1,4 @@
-//  $Id: smasher.cxx,v 1.17 2003/02/18 15:04:47 grumbel Exp $
+//  $Id: smasher.cxx,v 1.18 2003/02/19 09:50:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,9 +18,9 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
-#include "../algo.hxx"
+#include "../math.hxx"
 #include "../col_map.hxx"
-#include "../graphic_context.hxx"
+#include "../gui/graphic_context.hxx"
 #include "../particles/smoke_particle_holder.hxx"
 #include "../pingu.hxx"
 #include "../pingu_holder.hxx"
@@ -72,9 +72,10 @@ Smasher::update ()
 	    
 	            for(int i=0; i < 20; ++i)
 		            {
-		              world->get_smoke_particle_holder()->add_particle(static_cast<int>(data->pos.x + 20 + rand() % 260),
-						                                                       static_cast<int>(data->pos.y + 180),
-						                                                       frand()-0.5f, frand()-0.5f);
+		              world->get_smoke_particle_holder()->
+                                add_particle(static_cast<int>(data->pos.x + 20 + rand() % 260),
+                                             static_cast<int>(data->pos.y + 180),
+                                             Math::frand()-0.5f, Math::frand()-0.5f);
 		            }
 
 	            for (PinguIter pingu = holder->begin (); pingu != holder->end (); ++pingu)

@@ -1,4 +1,4 @@
-//  $Id: client.hxx,v 1.26 2002/12/20 20:45:50 torangan Exp $
+//  $Id: client.hxx,v 1.27 2003/02/19 09:50:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,8 +22,8 @@
 
 #include <ClanLib/Signals/slot.h>
 #include <ClanLib/Display/Input/inputdevice.h>
+#include "gui/gui_screen.hxx"
 #include "result.hxx"
-#include "gui_screen.hxx"
 #include "sprite.hxx"
 
 namespace Input {

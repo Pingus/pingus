@@ -1,4 +1,4 @@
-//  $Id: editor.hxx,v 1.23 2002/12/03 00:51:19 grumbel Exp $
+//  $Id: editor.hxx,v 1.24 2003/02/19 09:50:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,7 +24,7 @@
 #include <vector>
 #include <ClanLib/Signals/slot.h>
 
-#include "../screen.hxx"
+#include "../gui/screen.hxx"
 #include "editor_help_screen.hxx"
 
 class CL_StyleManager_Default;

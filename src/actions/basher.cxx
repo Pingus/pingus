@@ -1,4 +1,4 @@
-//  $Id: basher.cxx,v 1.25 2002/12/29 23:29:01 torangan Exp $
+//  $Id: basher.cxx,v 1.26 2003/02/19 09:50:36 grumbel Exp $
 //
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -19,7 +19,7 @@
 #include "../col_map.hxx"
 #include "../debug.hxx"
 #include "../globals.hxx"
-#include "../graphic_context.hxx"
+#include "../gui/graphic_context.hxx"
 #include "../pingu_map.hxx"
 #include "../pingus_resource.hxx"
 #include "../pingu.hxx"

@@ -1,4 +1,4 @@
-//  $Id: surface_button.cxx,v 1.20 2003/02/18 18:41:59 grumbel Exp $
+//  $Id: surface_button.cxx,v 1.21 2003/02/19 09:50:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,7 +28,7 @@
 #include "editor/editor.hxx"
 #include "theme_selector.hxx"
 #include "surface_button.hxx"
-#include "screen_manager.hxx"
+#include "gui/screen_manager.hxx"
 #include "worldmap/manager.hxx"
 #include "my_gettext.hxx"
 

@@ -1,4 +1,4 @@
-//  $Id: theme_selector.cxx,v 1.8 2003/02/18 15:04:47 grumbel Exp $
+//  $Id: theme_selector.cxx,v 1.9 2003/02/19 09:50:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,8 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <config.h>
+
 #include <iostream>
 #include <ClanLib/Display/Display/display.h>
 #include <ClanLib/Display/Font/font.h>
@@ -25,12 +27,12 @@
 #include <ClanLib/Display/Input/mouse.h>
 #include <ClanLib/Core/System/system.h>
 #include <ClanLib/Display/Display/mousecursor_provider.h>
-#include <config.h>
+
+#include "gui/display.hxx"
 #include "globals.hxx"
 #include "theme_selector.hxx"
 #include "pingus_error.hxx"
 #include "pingus_resource.hxx"
-#include "display.hxx"
 #include "loading.hxx"
 #include "sound/sound.hxx"
 #include "path_manager.hxx"

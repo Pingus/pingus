@@ -1,4 +1,4 @@
-//  $Id: loading.cxx,v 1.2 2002/08/23 15:49:49 torangan Exp $
+//  $Id: loading.cxx,v 1.3 2003/02/19 09:50:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,7 @@
 #include <ClanLib/Display/Display/display.h>
 #include <ClanLib/Display/Font/font.h>
 #include "pingus_resource.hxx"
-#include "display.hxx"
+#include "gui/display.hxx"
 #include "loading.hxx"
 
 Loading loading_screen;

@@ -1,4 +1,4 @@
-//  $Id: math.hxx,v 1.5 2002/11/26 21:30:37 grumbel Exp $
+//  $Id: math.hxx,v 1.6 2003/02/19 09:50:36 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,9 +17,10 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef MATH_HXX
-#define MATH_HXX
+#ifndef HEADER_PINGUS_MATH_HXX
+#define HEADER_PINGUS_MATH_HXX
 
+#include <stdlib.h>
 #include "pingus.hxx"
 
 /** A collection of small math helper functions, some of them might be
@@ -54,6 +55,12 @@ template<class T>
 T mid (const T& a, const T& b, const T& c) 
 {
   return max((a), min((b), (c)));
+}
+
+inline
+double frand()
+{
+  return double(rand()) / (RAND_MAX+1.0);
 }
 
 } // namespace Math

@@ -1,4 +1,4 @@
-//  $Id: game_session.cxx,v 1.25 2003/01/15 21:16:41 torangan Exp $
+//  $Id: game_session.cxx,v 1.26 2003/02/19 09:50:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
+#include "gui/screen_manager.hxx"
 #include "client.hxx"
 #include "true_server.hxx"
 #include "game_session.hxx"
@@ -25,7 +26,6 @@
 #include "timer.hxx"
 #include "plf.hxx"
 #include "globals.hxx"
-#include "screen_manager.hxx"
 
 PingusGameSession::PingusGameSession (std::string arg_filename)
   : filename (arg_filename)

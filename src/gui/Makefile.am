@@ -18,12 +18,29 @@
 noinst_LIBRARIES = libpingus_gui.a
 
 libpingus_gui_a_SOURCES =       \
-        component.hxx \
-	gui_manager.hxx \
+	cursor.cxx \
+	cursor.hxx \
+	display.cxx \
+	display.hxx \
+	display_graphic_context.cxx \
+	display_graphic_context.hxx \
+	game_delta.hxx \
 	gui_manager.cxx \
-	root_gui_manager.hxx \
+	gui_manager.hxx \
+	gui_screen.cxx \
+	gui_screen.hxx \
+	input_debug_screen.cxx \
+	input_debug_screen.hxx \
 	root_gui_manager.cxx \
-        surface_button.hxx \
-        surface_button.cxx
+	root_gui_manager.hxx \
+	screen.hxx \
+	screen_manager.cxx \
+	screen_manager.hxx \
+	screen_ptr.cxx \
+	screen_ptr.hxx \
+        component.hxx \
+        graphic_context.hxx \
+        surface_button.cxx \
+        surface_button.hxx
 
 # EOF #

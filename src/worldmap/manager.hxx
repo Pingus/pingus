@@ -1,4 +1,4 @@
-//  $Id: manager.hxx,v 1.16 2003/01/25 18:34:36 torangan Exp $
+//  $Id: manager.hxx,v 1.17 2003/02/19 09:50:36 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,7 +23,7 @@
 #include <string>
 #include <ClanLib/Signals/slot.h>
 #include "../gui/gui_manager.hxx"
-#include "../gui_screen.hxx"
+#include "../gui/gui_screen.hxx"
 
 class CL_InputDevice;
 class CL_Key;

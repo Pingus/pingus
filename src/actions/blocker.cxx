@@ -1,4 +1,4 @@
-//  $Id: blocker.cxx,v 1.15 2002/10/13 20:25:00 torangan Exp $
+//  $Id: blocker.cxx,v 1.16 2003/02/19 09:50:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,7 +19,7 @@
 
 #include <iostream>
 #include "../col_map.hxx"
-#include "../graphic_context.hxx"
+#include "../gui/graphic_context.hxx"
 #include "../pingu.hxx"
 #include "../pingus_resource.hxx"
 #include "../string_converter.hxx"

@@ -1,4 +1,4 @@
-//  $Id: level_result.cxx,v 1.8 2003/02/18 18:41:58 grumbel Exp $
+//  $Id: level_result.cxx,v 1.9 2003/02/19 09:50:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,9 +22,10 @@
 #include <ClanLib/Display/Display/display.h>
 #include <ClanLib/Display/Font/font.h>
 #include <ClanLib/Display/Input/mouse.h>
+
+#include "gui/display.hxx"
 #include "pingus_resource.hxx"
 #include "level_result.hxx"
-#include "display.hxx"
 #include "sound/sound.hxx"
 #include "world.hxx"
 #include "pingu_holder.hxx"

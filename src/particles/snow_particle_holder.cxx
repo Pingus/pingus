@@ -1,4 +1,4 @@
-//  $Id: snow_particle_holder.cxx,v 1.5 2003/01/28 16:45:12 torangan Exp $
+//  $Id: snow_particle_holder.cxx,v 1.6 2003/02/19 09:50:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,9 +18,9 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <assert.h>
-#include "../algo.hxx"
+#include "../math.hxx"
 #include "../col_map.hxx"
-#include "../graphic_context.hxx"
+#include "../gui/graphic_context.hxx"
 #include "../pingu_map.hxx"
 #include "../pingus_resource.hxx"
 #include "../world.hxx"
@@ -32,7 +32,7 @@ SnowParticleHolder::SnowParticle::SnowParticle (int x, int y, bool colliding_)
   : alive(true),
     colliding(colliding_),
     pos(Vector(x,y)),
-    velocity(Vector(0.0f, 1 + (frand() * 3.5f)))
+    velocity(Vector(0.0f, 1 + (Math::frand() * 3.5f)))
 {
   switch (rand() % 10)
     {
@@ -100,7 +100,7 @@ SnowParticleHolder::update ()
 	  continue;
 	}
       
-      it->velocity.x += (frand() - 0.5f) / 10;
+      it->velocity.x += (Math::frand() - 0.5f) / 10;
 
       if (it->colliding)
         {
