@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMap.cc,v 1.31 2001/11/18 12:43:19 grumbel Exp $
+//  $Id: PingusWorldMap.cc,v 1.32 2001/12/01 17:08:27 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -173,11 +173,11 @@ PingusWorldMap::on_button_press (CL_InputDevice *device, const CL_Key &key)
 	case CL_MOUSE_LEFTBUTTON:
 	  {
 	    boost::shared_ptr<PingusWorldMapNode> node
-	      = get_node (key.x - offset.x, key.y - offset.y);
+	      = get_node ((int) (key.x - offset.x), (int) (key.y - offset.y));
 
 	    if (node.get() && !node->accessible)
 	      {
-		PingusSound::play_sound("sound/chink.wav");
+		PingusSound::play_sound("sounds/chink.wav");
 	      }
 	    else if (node.get() && node->accessible)
 	      {
@@ -270,7 +270,7 @@ PingusWorldMap::draw ()
   if (offset.x > 0)
     CL_Display::clear_display ();
 
-  background.put_screen (offset.x, offset.y);
+  background.put_screen ((int) offset.x, (int) offset.y);
 
   if (last_node.get () && last_node->accessible)
     {
@@ -299,8 +299,8 @@ PingusWorldMap::draw ()
     }
 
   boost::shared_ptr<PingusWorldMapNode> node
-    = get_node (CL_Mouse::get_x () - offset.x,
-		CL_Mouse::get_y () - offset.y);
+    = get_node (CL_Mouse::get_x () - (int) offset.x,
+		CL_Mouse::get_y () - (int) offset.y);
   // The mouse is over a node
   if (node.get ())
     {

@@ -1,4 +1,4 @@
-//  $Id: SwitchDoor.cc,v 1.21 2001/08/12 18:36:42 grumbel Exp $
+//  $Id: SwitchDoor.cc,v 1.22 2001/12/01 17:08:27 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -147,24 +147,24 @@ SwitchDoor::SwitchDoor (const SwitchDoorData& data)
 void 
 SwitchDoor::draw_colmap()
 {
-  world->get_colmap ()->put (door_box, door_pos.x, door_pos.y, GroundpieceData::GP_SOLID);
+  world->get_colmap ()->put (door_box, int(door_pos.x), int(door_pos.y), GroundpieceData::GP_SOLID);
   for (int i=0; i < door_height; i++)
     world->get_colmap ()->put (door_tile_cmap,
-			       door_pos.x + 1, 
-			       door_pos.y + i * door_tile.get_height () + door_box.get_height (),
+			       int(door_pos.x) + 1, 
+			       int(door_pos.y) + i * door_tile.get_height () + door_box.get_height (),
 			       GroundpieceData::GP_SOLID);
 }
 
 void
 SwitchDoor::draw_offset(int x_of, int y_of, float s = 1.0)
 {
-  door_box.put_screen (door_pos.x+ x_of, door_pos.y+ y_of);
+  door_box.put_screen (int(door_pos.x) + x_of, int(door_pos.y) + y_of);
   for (int i=0; i < current_door_height; i++)
-    door_tile.put_screen (door_pos.x+ x_of + 1, 
-			  door_pos.y+ y_of 
+    door_tile.put_screen (int(door_pos.x) + x_of + 1, 
+			  int(door_pos.y) + y_of 
 			  + i * door_tile.get_height ()
 			  + door_box.get_height ());
-  switch_sur.put_screen (switch_pos.x+ x_of, switch_pos.y+ y_of);
+  switch_sur.put_screen (int(switch_pos.x) + x_of, int(switch_pos.y) + y_of);
 }
 
 void
@@ -197,11 +197,11 @@ SwitchDoor::update(float delta)
 	  // it, we remove the door from the colmap
 	  if (current_door_height + 10 < door_height)
 	    {
-	      world->get_colmap ()->put (door_box, door_pos.x, door_pos.y, GroundpieceData::GP_NOTHING);
+	      world->get_colmap ()->put (door_box, int(door_pos.x), int(door_pos.y), GroundpieceData::GP_NOTHING);
 	      for (int i=0; i < door_height; i++)
 		world->get_colmap ()->put (door_tile_cmap,
-					   door_pos.x+ 1, 
-					   door_pos.y+ i * door_tile.get_height () + door_box.get_height (),
+					   int(door_pos.x) + 1, 
+					   int(door_pos.y) + i * door_tile.get_height () + door_box.get_height (),
 					   GroundpieceData::GP_NOTHING);
 	    }
 	}

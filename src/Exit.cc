@@ -1,4 +1,4 @@
-//  $Id: Exit.cc,v 1.28 2001/08/16 22:00:50 grumbel Exp $
+//  $Id: Exit.cc,v 1.29 2001/12/01 17:08:26 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -58,16 +58,16 @@ void
 Exit::draw_colmap()
 {
   world->get_colmap()->remove(sprite.get_surface (), 
-			      pos.x - sprite.get_width ()/2,
-			      pos.y - sprite.get_height ());
+			      int(pos.x) - sprite.get_width ()/2,
+			      int(pos.y) - sprite.get_height ());
 }
 
 void
 Exit::draw_offset(int x_of, int y_of, float s)
 {
   if (s == 1.0) {
-    sprite.put_screen(pos.x + x_of, pos.y + y_of);
-    flag.put_screen (pos.x + 40 + x_of, pos.y + y_of);
+    sprite.put_screen(int(pos.x) + x_of, int(pos.y) + y_of);
+    flag.put_screen (int(pos.x) + 40 + x_of, int(pos.y) + y_of);
   } else {
     //sprite.put_screen((int)((pos.x + x_of) * s), (int)((pos.y + y_of) * s),
     //s, s);

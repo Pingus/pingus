@@ -1,4 +1,4 @@
-//  $Id: Particle.cc,v 1.9 2001/11/22 20:08:39 grumbel Exp $
+//  $Id: Particle.cc,v 1.10 2001/12/01 17:08:27 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -62,7 +62,7 @@ void
 Particle::draw_offset(int ofx, int ofy, float s)
 {
   if (s == 1.0) {
-    surface.put_screen(pos.x + ofx, pos.y + ofy);
+    surface.put_screen((int)pos.x + ofx, (int)pos.y + ofy);
   } else {
     int width  = (int)(surface.get_width() * s);
     int height = (int)(surface.get_height() * s);

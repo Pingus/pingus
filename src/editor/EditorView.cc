@@ -1,4 +1,4 @@
-//  $Id: EditorView.cc,v 1.7 2001/08/15 22:01:45 grumbel Exp $
+//  $Id: EditorView.cc,v 1.8 2001/12/01 17:08:26 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -135,8 +135,8 @@ EditorView::draw (Sprite& sprite, const CL_Vector& pos)
 {
   CL_Surface sur (sprite.get_surface ());
   draw (sur, 
-	pos.x + sprite.get_x_align (),
-	pos.y + sprite.get_y_align ());
+	(int) pos.x + sprite.get_x_align (),
+	(int) pos.y + sprite.get_y_align ());
 }
 
 void 

@@ -1,4 +1,4 @@
-//  $Id: SmallMapImage.cc,v 1.5 2001/08/16 17:46:51 grumbel Exp $
+//  $Id: SmallMapImage.cc,v 1.6 2001/12/01 17:08:26 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -40,7 +40,7 @@ SmallMapImage::~SmallMapImage ()
 void 
 SmallMapImage::draw ()
 {
-  sur.put_screen (pos.x, pos.y);
+  sur.put_screen (int(pos.x), int(pos.y));
 }
 
 void 

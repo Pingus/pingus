@@ -1,4 +1,4 @@
-//  $Id: Liquid.cc,v 1.16 2001/08/12 18:36:40 grumbel Exp $
+//  $Id: Liquid.cc,v 1.17 2001/12/01 17:08:26 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -48,7 +48,7 @@ Liquid::draw_colmap()
   CL_Surface sur = PingusResource::load_surface("Liquid/water_cmap", "global");
 
   for(int i=0; i < width; i++)
-    world->get_colmap()->put(sur, pos.x + i, pos.y, GroundpieceData::GP_WATER);
+    world->get_colmap()->put(sur, (int)pos.x + i, (int)pos.y, GroundpieceData::GP_WATER);
 }
 
 void
@@ -88,7 +88,7 @@ Liquid::draw_offset(int x_of, int y_of, float s)
     CL_Display::set_clip_rect(CL_ClipRect(x1, y1, x2, y2));
     
     for(int x = (int) pos.x; x <= pos.x + width; x += sur.get_width())
-      sur.put_screen(x + x_of, pos.y + y_of, int(counter));
+      sur.put_screen(x + x_of, (int)pos.y + y_of, int(counter));
 
     CL_Display::pop_clip_rect();
   } else {

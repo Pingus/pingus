@@ -1,4 +1,4 @@
-//  $Id: ConveyorBelt.cc,v 1.25 2001/08/13 21:35:38 grumbel Exp $
+//  $Id: ConveyorBelt.cc,v 1.26 2001/12/01 17:08:27 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -113,13 +113,13 @@ ConveyorBelt::ConveyorBelt (WorldObjData* data)
 void
 ConveyorBelt::draw_offset (int x_of, int y_of, float s = 1.0)
 {
-  left_sur.put_screen (int(pos.x + x_of), int(pos.y + y_of), counter);
+  left_sur.put_screen (int(pos.x + x_of), int(pos.y + y_of), int(counter));
   for (int i=0; i < width; i++)
     middle_sur.put_screen (int(pos.x + left_sur.get_width () + i*middle_sur.get_width () + x_of), 
 			   int(pos.y + y_of), 
-			   counter);
+			   int(counter));
   right_sur.put_screen (int(pos.x + left_sur.get_width () + width*middle_sur.get_width () + x_of),
-			int(pos.y + y_of), counter);
+			int(pos.y + y_of), int(counter));
 }
 
 void
@@ -127,7 +127,7 @@ ConveyorBelt::draw_colmap ()
 {
   CL_Surface sur(PingusResource::load_surface("conveyorbelt_cmap", "worldobjs"));
   for (int i=0; i < (width+2); i++)
-    world->get_colmap()->put(sur, pos.x + (15*i), pos.y, GroundpieceData::GP_SOLID);
+    world->get_colmap()->put(sur, int(pos.x) + (15*i), int(pos.y), GroundpieceData::GP_SOLID);
 }
 
 void 
@@ -179,14 +179,14 @@ EditorConveyorBeltObj::duplicate()
 void
 EditorConveyorBeltObj::draw (boost::dummy_ptr<EditorView> view)
 {
-  view->draw (left_sur, pos, counter);
+  view->draw (left_sur, pos, int(counter));
   for (int i=0; i < ConveyorBeltData::width; i++)
-    view->draw (middle_sur, pos.x + left_sur.get_width () + i*middle_sur.get_width (),
-		pos.y,
-		counter);
+    view->draw (middle_sur, int(pos.x) + left_sur.get_width () + i*middle_sur.get_width (),
+		int(pos.y),
+		int(counter));
   view->draw (right_sur,
-	      pos.x + left_sur.get_width () + ConveyorBeltData::width*middle_sur.get_width (),
-	      pos.y, counter);
+	      int(pos.x) + left_sur.get_width () + ConveyorBeltData::width*middle_sur.get_width (),
+	      int(pos.y), int(counter));
   counter += speed;
   if (counter > 14)
     counter = 0;

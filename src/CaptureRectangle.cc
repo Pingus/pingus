@@ -1,4 +1,4 @@
-//  $Id: CaptureRectangle.cc,v 1.13 2001/08/12 23:05:21 grumbel Exp $ 
+//  $Id: CaptureRectangle.cc,v 1.14 2001/12/01 17:08:26 torangan Exp $ 
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -79,8 +79,8 @@ CaptureRectangle::draw_offset(int x_offset, int y_offset, float s)
 	  // If pingu has an action, print its name
 	  if (pingu->get_action().get()) 
 	    {
-	      font->print_center(pingu->get_center_pos().x + x_offset,
-				 pingu->get_center_pos().y + y_offset - 32,
+	      font->print_center(int(pingu->get_center_pos().x) + x_offset,
+				 int(pingu->get_center_pos().y) + y_offset - 32,
 				 pingu->get_action()->get_name().c_str());
 	    }
 	  /*font->print_center(pingu->get_center_pos().x + x_offset,

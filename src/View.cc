@@ -1,4 +1,4 @@
-//  $Id: View.cc,v 1.13 2001/08/12 18:36:40 grumbel Exp $
+//  $Id: View.cc,v 1.14 2001/12/01 17:08:26 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -168,8 +168,8 @@ void
 View::make_range()
 {
   // Bug: this works not very good
-  x_offset.set_range(0, x2_pos - x1_pos - (world->get_width() * size));
-  y_offset.set_range(0, y2_pos - y1_pos - (world->get_height() * size));
+  x_offset.set_range(0, (int)(x2_pos - x1_pos - (world->get_width()  * size)));
+  y_offset.set_range(0, (int)(y2_pos - y1_pos - (world->get_height() * size)));
 }
 
 double

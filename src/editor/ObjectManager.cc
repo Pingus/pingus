@@ -1,4 +1,4 @@
-//  $Id: ObjectManager.cc,v 1.52 2001/08/16 17:46:51 grumbel Exp $
+//  $Id: ObjectManager.cc,v 1.53 2001/12/01 17:08:26 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -393,7 +393,7 @@ ObjectManager::rect_get_current_objs(float x_1, float y_1, float x_2, float y_2)
 
   for(EditorObjIter i = editor_objs.begin(); i != editor_objs.end(); ++i) 
     {
-      if ((*i)->is_in_rect(CL_Rect(x1, y1, x2, y2)))
+      if ((*i)->is_in_rect(CL_Rect((int) x1, (int) y1, (int) x2, (int) y2)))
 	current_objs.push_back(*i);
     }
 }

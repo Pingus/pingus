@@ -433,7 +433,7 @@ CAImageManipulation::getExactColor( unsigned char* data,
   // not exact alternative solution (much faster but not as smooth):
   //
   else {
-    int index = getDataPosition( width, x, y );
+    int index = getDataPosition( width, (int) x, (int) y );
 
     *r = data[ index+3 ];
     *g = data[ index+2 ];
