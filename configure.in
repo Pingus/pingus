@@ -1,4 +1,4 @@
-#  $Id: configure.in,v 1.46 2001/11/18 12:43:18 grumbel Exp $
+#  $Id: configure.in,v 1.47 2001/11/29 10:47:43 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -173,11 +173,17 @@ AC_CHECK_LIB( clanCore,   main,, [
 	echo "the FAQ."
 	exit
 	])
+
+dnl FIXME: This should fail, if the libs are not detected
 AC_CHECK_LIB( clanApp,   main)
 AC_CHECK_LIB( clanDisplay,   main)
 AC_CHECK_LIB( clanSound,   main)
+
 AC_CHECK_LIB( clanMikMod,   main)
 AC_CHECK_LIB( clanVorbis,   main)
+
+dnl This should be optional
+AC_CHECK_LIB( clanGL,   main)
 
 dnl AC_CHECK_LIB( clanGUI,   main,, [
 dnl 	echo "ClanLib is installed, but clanGUI was not found. You probably"

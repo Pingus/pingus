@@ -1,4 +1,4 @@
-//  $Id: FadeOut.cc,v 1.7 2001/08/04 12:46:22 grumbel Exp $
+//  $Id: FadeOut.cc,v 1.8 2001/11/29 10:47:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -110,7 +110,7 @@ FadeOut::black_rect(int steps)
       y2 = (int)((CL_Display::get_height() / 2) + (step_h * i));
       
       CL_Display::fill_rect(x1, y1, x2, y2, 0.0, 0.0, 0.0, 1.0);
-      CL_System::sleep(10);
+      CL_System::sleep(0);
       Display::flip_display(true);
     }  
   clear();

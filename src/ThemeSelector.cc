@@ -1,4 +1,4 @@
-//  $Id: ThemeSelector.cc,v 1.47 2001/11/22 20:08:34 grumbel Exp $
+//  $Id: ThemeSelector.cc,v 1.48 2001/11/29 10:47:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -251,7 +251,7 @@ ThemeSelector::display()
     {
       CL_System::keep_alive();
       draw();
-      CL_System::sleep (50);
+      CL_System::sleep (0);
     }
 
   while (CL_Keyboard::get_keycode(CL_KEY_ESCAPE))

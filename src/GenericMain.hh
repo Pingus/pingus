@@ -1,4 +1,4 @@
-//  $Id: GenericMain.hh,v 1.3 2001/03/18 17:45:04 grumbel Exp $
+//  $Id: GenericMain.hh,v 1.4 2001/11/29 10:47:44 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,8 +28,6 @@ class AbstractMain
 public:
   virtual char* get_title() =0;
   virtual int   main (int argc, char* argv[]) =0;
-  virtual void  init_modules() =0;
-  virtual void  deinit_modules() =0;
 };
 
 class GenericMain : public CL_ClanApplication

@@ -1,4 +1,4 @@
-//  $Id: MultiplayerGame.cc,v 1.2 2001/04/15 20:55:03 grumbel Exp $
+//  $Id: MultiplayerGame.cc,v 1.3 2001/11/29 10:47:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -122,7 +122,7 @@ MultiplayerGame::start ()
       // FIXME: Remove me to gain some fps
       CL_Display::clear_display (1.0, 1.0, 1.0);
       CL_System::keep_alive ();
-      CL_System::sleep (40);
+      CL_System::sleep (0);
     }
   } catch (...) {
     std::cout << "MultiplayerGame: Something went wrong" << std::endl;

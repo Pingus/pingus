@@ -1,4 +1,4 @@
-//  $Id: PingusMenuManager.cc,v 1.3 2001/06/17 17:18:27 grumbel Exp $
+//  $Id: PingusMenuManager.cc,v 1.4 2001/11/29 10:47:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -147,7 +147,7 @@ PingusMenuManager::display ()
 
       
       CL_System::keep_alive ();
-      CL_System::sleep (20);
+      CL_System::sleep (0);
     }
   unregister_events ();
 }
@@ -234,7 +234,7 @@ PingusMenuManager::exit ()
     exitmenu.draw ();
     Display::flip_display ();
     CL_System::keep_alive ();
-    CL_System::sleep (20);
+    CL_System::sleep (0);
   }
   if (CL_Mouse::get_x () > CL_Display::get_width ()/2)
     loop = true;

@@ -1,4 +1,4 @@
-//   $Id: PingusMain.cc,v 1.40 2001/11/22 20:08:34 grumbel Exp $
+//   $Id: PingusMain.cc,v 1.41 2001/11/29 10:47:44 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -42,6 +42,10 @@
 
 #include <ClanLib/core.h>
 #include <ClanLib/jpeg.h>
+
+#ifdef HAVE_LIBCLANGL
+# include <ClanLib/gl.h>
+#endif
 
 #include <boost/smart_ptr.hpp>
 
@@ -119,18 +123,6 @@ PingusMain::get_title()
   static char title[] = "Pingus - http://pingus.seul.org";
   return title;
   //return (string(PACKAGE) + " " + VERSION + " - http://pingus.seul.org").c_str();
-}
-
-void
-PingusMain::init_modules()
-{
-  CL_SetupCore::init();
-  //  CL_SetupMagick::init();
-}
-
-void PingusMain::deinit_modules()
-{
-  CL_SetupCore::deinit();   
 }
 
 void
@@ -645,7 +637,7 @@ PingusMain::get_filenames()
 #endif /* !WIN32 */
  
   // FIXME: Workaround for ClanLib-0.5.0 bug
-  //System::change_dir (path_manager.get_base_path ());
+  System::change_dir (path_manager.get_base_path ());
 
   // First we try to open the file which was given, if that is not
   // there then we try again with filename+".plf". If still no success
@@ -723,6 +715,9 @@ PingusMain::init_clanlib()
     std::cout << "Init ClanLib" << std::endl;
 
   CL_SetupDisplay::init();
+#ifdef HAVE_LIBCLANGL
+  CL_SetupGL::init();
+#endif
 
   if (sound_enabled || music_enabled) 
     {

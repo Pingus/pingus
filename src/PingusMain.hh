@@ -1,4 +1,4 @@
-//  $Id: PingusMain.hh,v 1.7 2001/07/22 12:47:00 grumbel Exp $
+//  $Id: PingusMain.hh,v 1.8 2001/11/29 10:47:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -53,10 +53,6 @@ public:
   virtual int main(int argc, char** argv);
   ///
   virtual char* get_title();
-  ///
-  virtual void init_modules();
-  ///
-  virtual void deinit_modules();
 
   void start_game(void);
 
