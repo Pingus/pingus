@@ -1,4 +1,4 @@
-//  $Id: level_resizer.hxx,v 1.2 2002/11/30 17:11:55 grumbel Exp $
+//  $Id: level_resizer.hxx,v 1.3 2002/12/05 20:38:10 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -53,7 +53,7 @@ public:
 
   /** LevelResizer can't be grabed with a rect, since in most
       situations that would be rather unnatural */
-  bool is_in_rect(const CL_Rect& rect) { return false; }
+  bool is_in_rect(const CL_Rect& rect) { UNUSED_ARG(rect); return false; }
 private:
   LevelResizer (const LevelResizer&);
   LevelResizer& operator= (const LevelResizer&);

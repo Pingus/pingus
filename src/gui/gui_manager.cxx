@@ -1,4 +1,4 @@
-//  $Id: gui_manager.cxx,v 1.16 2002/11/27 20:05:42 grumbel Exp $
+//  $Id: gui_manager.cxx,v 1.17 2002/12/05 20:38:10 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -269,6 +269,7 @@ GUIManager::process_button_event (unsigned int time_stamp, Input::ButtonEvent* e
 	}
     }
 
+  UNUSED_ARG(time_stamp);
 }
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: action_button.cxx,v 1.23 2002/12/01 21:45:14 grumbel Exp $
+//  $Id: action_button.cxx,v 1.24 2002/12/05 20:38:09 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -75,6 +75,7 @@ void
 ActionButton::update(float delta)
 {
   sprite.update(0.010f); // FIXME: Dirty hack
+  UNUSED_ARG(delta);
 }
 
 ActionName

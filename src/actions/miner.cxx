@@ -1,4 +1,4 @@
-// $Id: miner.cxx,v 1.17 2002/10/22 00:07:56 grumbel Exp $
+// $Id: miner.cxx,v 1.18 2002/12/05 20:38:10 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -78,9 +78,12 @@ Miner::update ()
 						   static_cast<int>(pingu->get_y() - miner_radius_width + 3) );
       pingu->set_action(Actions::Walker);
     }
-  else if (rel_getpixel(0, -1) == Groundtype::GP_SOLID)
+  else if (rel_getpixel(0, -1) == Groundtype::GP_SOLID
+	|| rel_getpixel(0, pingu_height) == Groundtype::GP_SOLID)
     {
-      PingusSound::play_sound("sounds/chink.wav");
+      if (rel_getpixel(0, -1) == Groundtype::GP_SOLID)
+	PingusSound::play_sound("sounds/chink.wav");
+
       WorldObj::get_world()->get_colmap ()->remove(miner_radius,
 						   static_cast<int>(pingu->get_x() - (miner_radius_width / 2) + pingu->direction), 
 						   static_cast<int>(pingu->get_y() - miner_radius_width + 1) );
@@ -88,6 +91,9 @@ Miner::update ()
 						   static_cast<int>(pingu->get_x() - (miner_radius_gfx_width / 2) + pingu->direction),
 						   static_cast<int>(pingu->get_y() - miner_radius_gfx_width + 1) );
       pingu->set_action(Actions::Walker);
+
+      // Stop Pingu walking further into the solid.
+      pingu->direction.change();
     }
 }
 

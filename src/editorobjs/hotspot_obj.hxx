@@ -1,4 +1,4 @@
-//  $Id: hotspot_obj.hxx,v 1.4 2002/11/28 20:09:54 grumbel Exp $
+//  $Id: hotspot_obj.hxx,v 1.5 2002/12/05 20:38:10 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,7 +42,7 @@ public:
   EditorObj* duplicate ();
 
   std::string status_line ();
-  EditorNS::PropertyFrame* get_gui_dialog (EditorNS::Editor* parent) { return 0; }
+  EditorNS::PropertyFrame* get_gui_dialog (EditorNS::Editor* parent) { UNUSED_ARG(parent); return 0; }
 private:
   HotspotObj (const HotspotObj&);
   HotspotObj& operator= (const HotspotObj&);

@@ -1,4 +1,4 @@
-//  $Id: level_resizer.cxx,v 1.3 2002/11/30 17:11:55 grumbel Exp $
+//  $Id: level_resizer.cxx,v 1.4 2002/12/05 20:38:10 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,6 +39,7 @@ LevelResizer::update(float delta)
 {
   pos.x = obj_manager->get_width();
   pos.y = obj_manager->get_height();
+  UNUSED_ARG(delta);
 }
 
 void
