@@ -1,4 +1,4 @@
-//  $Id: PLFParser.cc,v 1.7 2000/03/20 18:55:26 grumbel Exp $
+//  $Id: PLFParser.cc,v 1.8 2000/04/25 17:54:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,6 +27,8 @@
 #include "PingusError.hh"
 #include "globals.hh"
 
+using namespace std;
+
 PLFParserEOF::PLFParserEOF()
 {
 }
@@ -41,7 +43,7 @@ PLFParser::~PLFParser()
 }
 
 void
-PLFParser::init(std::string filename)
+PLFParser::init(string filename)
 {
   // Init local vars
   last_atom = ' ';
@@ -54,7 +56,7 @@ PLFParser::init(std::string filename)
 
 // Open the file and do some error checking.
 void
-PLFParser::open(std::string filename)
+PLFParser::open(string filename)
 {
   in.open(filename.c_str());
   eof = false;
@@ -64,7 +66,7 @@ PLFParser::open(std::string filename)
   }
   
   if (verbose > 1)
-    std::cout << "Opened plf file successfully" << std::endl;
+    cout << "Opened plf file successfully" << endl;
 }
 
 // Return the next char from file and check for eof.
@@ -74,14 +76,14 @@ PLFParser::get_char(void)
   int c;
 
   if (eof) {
-    if (verbose > 1) std::cout << "PLFParser: Result of get_char() will be undefined" << std::endl;
+    if (verbose > 1) cout << "PLFParser: Result of get_char() will be undefined" << endl;
     // throw PingusError("");
   }
 
   c = in.get();
 
   if (c == EOF) {
-    if (verbose > 1) std::cout << "PLF::get_char(): Found EOF!" << std::endl;
+    if (verbose > 1) cout << "PLF::get_char(): Found EOF!" << endl;
     eof = true;
     // throw PLFParserEOF();
   }
@@ -124,11 +126,11 @@ PLFParser::get_raw_atom(void)
     }
   }
   
-  if (isspace(c)) {
+  if (std::isspace(c)) {
     temp_c = c;
-    while (isspace(c = get_char()));
+    while (std::isspace(c = get_char()));
     in.putback(c);
-    if (isspace(last_atom)) 
+    if (std::isspace(last_atom)) 
       return get_atom();
     return temp_c;
   }
@@ -149,11 +151,11 @@ string
 PLFParser::get_groupname(void)
 {
   char atom;
-  std::string ret_val;
+  string ret_val;
   
   jump();
 
-  while((isalpha(atom = get_atom()) || atom == '_')) 
+  while((std::isalpha(atom = get_atom()) || atom == '_')) 
     {
       ret_val += atom;
     }
@@ -171,7 +173,7 @@ PLFParser::get_groupname(void)
 string
 PLFParser::get_valueid(void)
 {
-  std::string ret_val;
+  string ret_val;
   char   atom;
   
   jump();
@@ -183,9 +185,9 @@ PLFParser::get_valueid(void)
       return "}";
     }
 
-    if (isalpha(atom) || atom == '_') {
+    if (std::isalpha(atom) || atom == '_') {
       ret_val += atom;
-    } else if (isspace(atom)) {
+    } else if (std::isspace(atom)) {
       return ret_val;
     } else if (atom == '=') {
       in.putback(atom);
@@ -201,7 +203,7 @@ PLFParser::get_valueid(void)
 string
 PLFParser::get_value(void)
 {
-  std::string ret_val;
+  string ret_val;
   char   atom;
 
   jump();
@@ -221,9 +223,9 @@ PLFParser::get_value(void)
       return ret_val;
     }
    
-    if (!isalnum(atom) && atom != '-' && atom != '_' && atom != '.')
+    if (!std::isalnum(atom) && atom != '-' && atom != '_' && atom != '.')
       {
-	if (isspace(atom)){
+	if (std::isspace(atom)){
 	  return ret_val;
 	} else {
 	  syntax_error(string("Unexpected char '") + atom + "'");
@@ -239,7 +241,7 @@ PLFParser::get_value(void)
 string
 PLFParser::get_cast(void)
 {
-  std::string ret_val;
+  string ret_val;
   char   atom;
   jump();
   
@@ -269,7 +271,7 @@ PLFParser::jump_after(char c)
   jump();
 
   atom = get_atom();
-  if (isspace(atom) || atom == c) {
+  if (std::isspace(atom) || atom == c) {
     if (atom == c) {
       return;
     } else {
@@ -287,7 +289,7 @@ PLFParser::jump(void)
   char atom;
   atom = get_atom();
 
-  if (isspace(atom)) {
+  if (std::isspace(atom)) {
     return;
   } else {
     in.putback(atom);
@@ -296,9 +298,9 @@ PLFParser::jump(void)
 
 // Print a error message with lineno and filename.
 void
-PLFParser::syntax_error(std::string error = "")
+PLFParser::syntax_error(string error = "")
 {
-  std::string error_str;
+  string error_str;
   char tmp[256];
 
   sprintf(tmp, "%d\n", lineno);
@@ -315,10 +317,10 @@ PLFParser::syntax_error(std::string error = "")
 void
 PLFParser::parse(void)
 {
-  std::string groupname;
-  std::string valueid;
-  std::string cast;
-  std::string value;
+  string groupname;
+  string valueid;
+  string cast;
+  string value;
 
   while(!eof) 
     {
@@ -343,9 +345,9 @@ PLFParser::parse(void)
 	  
 	  if (verbose > 2) 
 	    {
-	      std::cout << "ValueID: " << valueid << std::endl;
-	      std::cout << "Cast: " << cast << std::endl;
-	      std::cout << "Value: " << value << std::endl;
+	      cout << "ValueID: " << valueid << endl;
+	      cout << "Cast: " << cast << endl;
+	      cout << "Value: " << value << endl;
 	    }
 	  set_value(valueid, cast, value);
 	}
@@ -354,7 +356,7 @@ PLFParser::parse(void)
     }
   
   /*  catch(PLFParserEOF a) {
-    if (verbose > 1) std::cout << "PLF: Catched EOF" << std::endl;
+    if (verbose > 1) cout << "PLF: Catched EOF" << endl;
     }*/
 }
 

@@ -1,4 +1,4 @@
-//  $Id: Range.cc,v 1.2 2000/02/09 21:43:41 grumbel Exp $
+//  $Id: Range.cc,v 1.3 2000/04/25 17:54:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,7 +46,7 @@ Range::Range(int b)
   stop  = b;
 
   if (start > stop)
-    swap(start, stop);
+    std::swap(start, stop);
 }
 
 Range::Range(const Range& range)
@@ -116,7 +116,7 @@ Range::set_range(int a, int b)
   stop  = b;
 
   if (start > stop)
-    swap(start, stop);
+    std::swap(start, stop);
 }
 
 void

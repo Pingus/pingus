@@ -1,4 +1,4 @@
-//  $Id: OptionMenu.cc,v 1.10 2000/04/24 13:15:41 grumbel Exp $
+//  $Id: OptionMenu.cc,v 1.11 2000/04/25 17:54:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -232,7 +232,7 @@ OptionMenu::add_entry(std::string e, int* v)
 }
 
 void 
-OptionMenu::add_entry(std::string e, string* v)
+OptionMenu::add_entry(std::string e, std::string* v)
 {
   entry.push_back(OptionEntry(e, v, entry_x, entry_y));
   entry_y += 20;
@@ -283,8 +283,8 @@ OptionMenu::display()
 
   //int temp_index = -2;
   //int index = -2;
-  EntryIter item = 0 ;
-  EntryIter temp_item = 0;
+  EntryIter item = EntryIter();
+  EntryIter temp_item = EntryIter();
   int mouse_x = -1, mouse_y = -1;
   
   while(CL_Mouse::left_pressed()) {
@@ -313,7 +313,7 @@ OptionMenu::display()
 
       if (CL_Mouse::left_pressed()) 
 	{
-	  if (item != 0) 
+	  if (item != EntryIter()) 
 	    item->toggle();
 	  draw();
 	  while(CL_Mouse::left_pressed())
@@ -322,7 +322,7 @@ OptionMenu::display()
 
       if (CL_Mouse::right_pressed()) 
 	{
-	  if (item != 0) 
+	  if (item != EntryIter()) 
 	    item->rtoggle();
 	  draw();
 	  while(CL_Mouse::right_pressed())
@@ -335,7 +335,7 @@ OptionMenu::display()
   CL_Input::chain_button_press.remove(event);
 }
 
-vector<OptionEntry>::iterator
+std::vector<OptionEntry>::iterator
 OptionMenu::current_item()
 {
   for(EntryIter item = entry.begin(); item != entry.end(); ++item) {
@@ -343,7 +343,7 @@ OptionMenu::current_item()
       return item;
     }
   }
-  return 0;
+  return std::vector<OptionEntry>::iterator();
 }
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: PingusSpotMap.cc,v 1.13 2000/04/10 21:18:56 grumbel Exp $
+//  $Id: PingusSpotMap.cc,v 1.14 2000/04/25 17:54:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -113,7 +113,7 @@ PingusSpotMap::~PingusSpotMap(void)
   delete map_surface;
 
   std::cout << "Trying to delete the map..." << std::flush;
-  for(std::vector<vector<MapTileSurface> >::size_type x = 0; x < tile.size(); x++) 
+  for(std::vector<std::vector<MapTileSurface> >::size_type x = 0; x < tile.size(); x++) 
     {
       for(std::vector<MapTileSurface>::size_type y = 0; y < tile[x].size(); y++) {
 	delete tile[x][y].surface;
@@ -378,7 +378,7 @@ PingusSpotMap::get_colmap(void)
 	}
       
       if (verbose)
-	cout << "done" << std::endl;
+	std::cout << "done" << std::endl;
       
       return colmap;
     }

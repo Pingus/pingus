@@ -1,4 +1,4 @@
-//  $Id: SmallMap.cc,v 1.6 2000/04/08 20:20:25 grumbel Exp $
+//  $Id: SmallMap.cc,v 1.7 2000/04/25 17:54:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -96,7 +96,7 @@ SmallMap::init()
 	}
     }
 
-  vector<exit_data>     exit_d     = plf->get_exit();
+  std::vector<exit_data>     exit_d     = plf->get_exit();
   for(std::vector<exit_data>::iterator i = exit_d.begin(); i != exit_d.end(); i++)
     {
       exit_sur->put_target(i->x_pos * width / colmap->get_width(), 
@@ -104,7 +104,7 @@ SmallMap::init()
 			   0, canvas);
     }
 
-  vector<entrance_data>     entrance_d     = plf->get_entrance();
+  std::vector<entrance_data>     entrance_d     = plf->get_entrance();
   for(std::vector<entrance_data>::iterator i = entrance_d.begin(); i != entrance_d.end(); i++)
     {
       entrance_sur->put_target(i->x_pos * width / colmap->get_width(),
@@ -173,7 +173,7 @@ SmallMap::draw_pingus()
   int y;
   PinguHolder* pingus = client->get_server()->get_world()->get_pingu_p();
 
-  for(list<Pingu*>::iterator i = pingus->begin(); i != pingus->end(); i++)
+  for(std::list<Pingu*>::iterator i = pingus->begin(); i != pingus->end(); i++)
     {
       //FIXME: Replace this with put pixel
       x = x_pos + ((*i)->get_x() * width / client->get_server()->get_world()->get_colmap()->get_width());

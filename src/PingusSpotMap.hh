@@ -1,4 +1,4 @@
-//  $Id: PingusSpotMap.hh,v 1.5 2000/04/10 21:18:56 grumbel Exp $
+//  $Id: PingusSpotMap.hh,v 1.6 2000/04/25 17:54:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -56,13 +56,13 @@ class PingusSpotMap : public PinguMap
 {
 private:
   ColMap* colmap;
-  typedef vector<MapTileSurface>::size_type TileIter;
-  vector<surface_data> surfaces;
+  typedef std::vector<MapTileSurface>::size_type TileIter;
+  std::vector<surface_data> surfaces;
   PSMParser psm_parser;
   CL_Canvas* provider;
   CL_Surface*  map_surface;
   CL_SurfaceProvider* map_provider;
-  vector<vector<MapTileSurface> > tile;
+  std::vector<std::vector<MapTileSurface> > tile;
   int width;
   int height;
 
@@ -73,7 +73,7 @@ public:
 
   void generate_colmap();
   ColMap* PingusSpotMap::get_colmap();
-  void load(string);
+  void load(std::string);
   void load(PLF* plf);
   void gen_tiles();
   void draw(int x, int y, int w, int h, int of_x, int of_y, float s);

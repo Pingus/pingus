@@ -1,4 +1,4 @@
-//  $Id: PingusSound.cc,v 1.7 2000/04/21 09:47:36 grumbel Exp $
+//  $Id: PingusSound.cc,v 1.8 2000/04/25 17:54:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -98,7 +98,7 @@ PingusSound::clean_up()
 }
 
 void
-PingusSound::play(string filename)
+PingusSound::play(std::string filename)
 {
 #ifdef HAVE_LIBSDL_MIXER
   if (!is_init)

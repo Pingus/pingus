@@ -1,4 +1,4 @@
-//  $Id: PingusMusicProvider.cc,v 1.2 2000/04/21 09:47:36 grumbel Exp $
+//  $Id: PingusMusicProvider.cc,v 1.3 2000/04/25 17:54:39 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,10 +21,10 @@
 #include "PingusError.hh"
 #include "PingusMusicProvider.hh"
 
-list<PingusMusicProvider::music_pair> PingusMusicProvider::music;
+std::list<PingusMusicProvider::music_pair> PingusMusicProvider::music;
 
 Mix_Music*
-PingusMusicProvider::load(string str)
+PingusMusicProvider::load(std::string str)
 {
 #ifdef HAVE_LIBSDL_MIXER
   Mix_Music* music_data;
@@ -55,9 +55,9 @@ PingusMusicProvider::load(string str)
 }
 
 Mix_Music*
-PingusMusicProvider::get(string str)
+PingusMusicProvider::get(std::string str)
 {
-  for(list<music_pair>::iterator i = music.begin(); i != music.end(); i++)
+  for(std::list<music_pair>::iterator i = music.begin(); i != music.end(); i++)
     {
       if (i->filename == str)
 	return i->data;

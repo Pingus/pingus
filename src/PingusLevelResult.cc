@@ -1,4 +1,4 @@
-//  $Id: PingusLevelResult.cc,v 1.9 2000/04/21 09:47:36 grumbel Exp $
+//  $Id: PingusLevelResult.cc,v 1.10 2000/04/25 17:54:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -85,7 +85,7 @@ PingusLevelResult::draw(void)
     CL_System::keep_alive();
 }
 
-string
+std::string
 PingusLevelResult::get_message(int saved)
 {
   if (saved == 100) {

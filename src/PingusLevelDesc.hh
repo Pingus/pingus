@@ -1,4 +1,4 @@
-//  $Id: PingusLevelDesc.hh,v 1.3 2000/02/11 16:58:26 grumbel Exp $
+//  $Id: PingusLevelDesc.hh,v 1.4 2000/04/25 17:54:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,7 +33,7 @@ private:
   CL_Font* title;
   PLF*     plf;
   
-  vector<std::string> description;
+  std::vector<std::string> description;
   std::string         levelname;
 public:
   enum LoadingStatus { LOADING, FINISHED };

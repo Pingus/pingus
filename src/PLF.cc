@@ -1,4 +1,4 @@
-//  $Id: PLF.cc,v 1.8 2000/04/10 21:33:06 grumbel Exp $
+//  $Id: PLF.cc,v 1.9 2000/04/25 17:54:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,11 +28,13 @@
 #include "globals.hh"
 #include "PingusError.hh"
 
-int    str_to_int(const std::string& str);
-float str_to_float(const std::string& str);
+using namespace std;
+
+int    str_to_int(const string& str);
+float str_to_float(const string& str);
 
 // Create a PLF object and start parsing the given file.
-PLF::PLF(std::string filename)
+PLF::PLF(string filename)
 {
   x_pos = y_pos = 0;
   width = 0; height = 0;
@@ -44,7 +46,7 @@ PLF::PLF(std::string filename)
   music = ResDescriptor("file", "pingus-4.it");
 
   col = ResDescriptor("auto", "-Auto ColMap-");
-  if (verbose > 1) std::cout << "Starting Parsing" << std::endl;
+  if (verbose > 1) cout << "Starting Parsing" << endl;
   init(filename);
 }
 
@@ -54,9 +56,9 @@ PLF::~PLF()
 }
 
 void
-PLF::set_value(std::string valueid,
-	       std::string cast,
-	       std::string value)
+PLF::set_value(string valueid,
+	       string cast,
+	       string value)
 {
   switch(current_group) {
 
@@ -169,15 +171,15 @@ PLF::set_value(std::string valueid,
   case PLF::EXIT:
     if (valueid == "x_pos") {
       exit_s.x_pos = str_to_int(value);
-      if (verbose > 2) std::cout << "Exit.x_pos: " << exit_s.x_pos << ":'" << value << "'" << std::endl;
+      if (verbose > 2) cout << "Exit.x_pos: " << exit_s.x_pos << ":'" << value << "'" << endl;
     } else if (valueid == "y_pos") {
       exit_s.y_pos = str_to_int(value);
     } else if (valueid == "z_pos") {
       exit_s.z_pos = str_to_int(value);
-      if (verbose > 2) std::cout << "Exit.y_pos: " << exit_s.y_pos << std::endl;
+      if (verbose > 2) cout << "Exit.y_pos: " << exit_s.y_pos << endl;
     } else if (valueid == "image") {
       exit_s.desc = ResDescriptor(cast, value);
-      if (verbose > 2) std::cout << "Exit.desc: " << exit_s.desc.res_name << std::endl;
+      if (verbose > 2) cout << "Exit.desc: " << exit_s.desc.res_name << endl;
     } else {
       throw PingusError("Exit: Unknown ValueID: " + valueid);
     }
@@ -280,7 +282,7 @@ PLF::set_value(std::string valueid,
 }
 
 void
-PLF::set_group_start(std::string groupname)
+PLF::set_group_start(string groupname)
 {
   if (groupname == "global") {
     current_group = PLF::GLOBAL;
@@ -339,7 +341,7 @@ PLF::set_group_end(void)
 
   default:
     if (verbose > 2)
-      std::cout << "PLF:set_group_end(): Nothing to flush" << std::endl;
+      cout << "PLF:set_group_end(): Nothing to flush" << endl;
     break;
   }
 
@@ -364,7 +366,7 @@ PLF::get_fg()
       ret_val.res_name = find_file(pingus_datadir, "levels/" + fg.res_name);
       break;
     case  ResDescriptor::RESOURCE:
-      if (verbose > 1) std::cout << "Not supported" << std::endl;
+      if (verbose > 1) cout << "Not supported" << endl;
       break;
     default:
       assert(false);
@@ -486,31 +488,31 @@ PLF::get_time(void)
 }
 
 int
-PLF::str_to_int(const std::string& str)
+PLF::str_to_int(const string& str)
 {
   int ret_val;
 
   if (sscanf(str.c_str(), "%d", &ret_val) != 1) {
-    throw PingusError("PLF: Couldn't covert std::string to integer: " + str);
+    throw PingusError("PLF: Couldn't covert string to integer: " + str);
   }
 
   return ret_val;
 }
 
 float
-PLF::str_to_float(const std::string& str)
+PLF::str_to_float(const string& str)
 {
   float ret_val;
 
   if (sscanf(str.c_str(), "%f", &ret_val) != 1) {
-    throw PingusError("PLF: Couldn't covert std::string to float: " + str);
+    throw PingusError("PLF: Couldn't covert string to float: " + str);
   }
 
   return ret_val;
 }
 
 bool
-PLF::str_to_bool(const std::string& str)
+PLF::str_to_bool(const string& str)
 {
   if (str == "true" || str == "1")
     {
@@ -527,7 +529,7 @@ PLF::str_to_bool(const std::string& str)
 }
 
 void
-PLF::set_psm_filename(std::string name)
+PLF::set_psm_filename(string name)
 {
   psm_filename = name;
 }
@@ -544,7 +546,7 @@ PLF::get_difficulty()
   return difficulty;
 }
 
-std::string
+string
 PLF::get_author()
 {
   return author;

@@ -1,4 +1,4 @@
-//  $Id: SpecsReader.cc,v 1.3 2000/02/11 16:58:26 grumbel Exp $
+//  $Id: SpecsReader.cc,v 1.4 2000/04/25 17:54:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -67,7 +67,7 @@ SpecsReader::next_token()
   return token_ids[token];
 }
 
-string 
+std::string 
 SpecsReader::operator[](int token_id)
 {
   std::string str = values[token_id];

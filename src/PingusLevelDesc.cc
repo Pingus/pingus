@@ -1,4 +1,4 @@
-//  $Id: PingusLevelDesc.cc,v 1.6 2000/03/09 00:15:31 grumbel Exp $
+//  $Id: PingusLevelDesc.cc,v 1.7 2000/04/25 17:54:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,7 +26,7 @@
 
 PingusLevelDesc::PingusLevelDesc(PLF* tplf)
 {
-  typedef string::size_type ST;
+  typedef std::string::size_type ST;
   ST pos, pos_next;
   std::string desc_string;
   plf = tplf;
@@ -38,11 +38,11 @@ PingusLevelDesc::PingusLevelDesc(PLF* tplf)
   pos = 0;
   pos_next = desc_string.find("\n", 0);
   
-  if (pos_next == string::npos) {
+  if (pos_next == std::string::npos) {
     description.push_back(desc_string);
   }
 
-  while(pos_next != string::npos)
+  while(pos_next != std::string::npos)
     {
       description.push_back(desc_string.substr(pos, pos_next - pos));
       
@@ -52,7 +52,7 @@ PingusLevelDesc::PingusLevelDesc(PLF* tplf)
 
       pos_next = desc_string.find("\n", pos + 1);
     }
-  if (pos_next == string::npos) {
+  if (pos_next == std::string::npos) {
     description.push_back(desc_string.substr(pos, desc_string.size() - pos));
   }
   // FIXME: End

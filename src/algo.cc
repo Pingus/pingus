@@ -1,4 +1,4 @@
-//  $Id: algo.cc,v 1.4 2000/03/12 01:56:56 grumbel Exp $
+//  $Id: algo.cc,v 1.5 2000/04/25 17:54:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,8 @@
 
 #include "System.hh"
 #include "algo.hh"
+#include <cctype>
+#include <iostream>
 
 // Die algo, die.
 
@@ -39,7 +41,7 @@ bool rect_col(int ax1, int ax2, int ay1, int ay2,
 
 // Returns the directory name, of a complete file name:
 // /usr/bin/bla would return /usr/bin/
-string
+std::string
 get_directory(std::string filename)
 {
   char* str;
@@ -60,8 +62,8 @@ get_directory(std::string filename)
 }
 
 // Adds the ending slash to a directory name, if it is not pressent.
-string
-add_slash(string& str)
+std::string
+add_slash(std::string& str)
 {
 #ifndef WIN32
   if (str[str.size() - 1] != '/') 
@@ -78,7 +80,7 @@ tolowerstr(char* s)
 {
   //  puts(s);
   for(unsigned int i=0; i < strlen(s); ++i) {
-    s[i] = tolower(s[i]);
+    s[i] = std::tolower(s[i]);
   }
   //  puts(s);
   return s;
@@ -86,7 +88,7 @@ tolowerstr(char* s)
 
 // Searches the given path to find the given file, it returns the
 // complete filename of the searched file.
-string
+std::string
 find_file(std::string paths, std::string filename)
 {
   char* path;

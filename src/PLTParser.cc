@@ -1,4 +1,4 @@
-//  $Id: PLTParser.cc,v 1.3 2000/02/11 16:58:25 grumbel Exp $
+//  $Id: PLTParser.cc,v 1.4 2000/04/25 17:54:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,8 @@
 #include "PingusError.hh"
 #include "PLTParser.hh"
 
+using namespace std;
+
 PLTParser::PLTParser()
 {
   lineno = 0;
@@ -35,10 +37,10 @@ PLTParser::~PLTParser()
 }
 
 void
-PLTParser::parse(std::string filename)
+PLTParser::parse(string filename)
 {
-  std::string keyword;
-  std::string value;
+  string keyword;
+  string value;
 
   in.open(filename.c_str());
 
@@ -50,31 +52,31 @@ PLTParser::parse(std::string filename)
       while (in_header) 
 	{
 	  keyword = get_string();
-	  // std::cout << "Keyword: " << keyword << std::endl;
+	  // cout << "Keyword: " << keyword << endl;
 	  expect(':');
 	  value = get_line();
-	  // std::cout << "Value: " << value << std::endl;
+	  // cout << "Value: " << value << endl;
 	  add_pair(keyword, value);
 	  check_newline();
 	}
       
-      // std::cout << " ---- " << std::endl;
+      // cout << " ---- " << endl;
       
       while (true) 
 	{
-	  std::string str = get_line();
+	  string str = get_line();
 	  levels.push_back(str);
 	}
     }
   
   catch (PLTEOF a) 
     {
-      // std::cout << "PLT: EOF found" << std::endl;
+      // cout << "PLT: EOF found" << endl;
     }
 }
 
 void
-PLTParser::add_pair(std::string keyword, std::string value)
+PLTParser::add_pair(string keyword, string value)
 {
   if (keyword == "Name") {
     theme_name = value;
@@ -137,9 +139,9 @@ string
 PLTParser::get_string()
 {
   char c;
-  std::string str;
+  string str;
   
-  while (isalnum(c = get_char())) {
+  while (std::isalnum(c = get_char())) {
     str += c;
   }  
   in.putback(c);
@@ -151,7 +153,7 @@ string
 PLTParser::get_line()
 {
   char c;
-  std::string str;
+  string str;
 
   while ((c = get_char()) != '\n') {
     str += c;
@@ -160,7 +162,7 @@ PLTParser::get_line()
   return str;
 }
 
-vector<std::string>
+vector<string>
 PLTParser::get_levels()
 {
   return levels;

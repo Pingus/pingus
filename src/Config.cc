@@ -1,4 +1,4 @@
-//  $Id: Config.cc,v 1.7 2000/04/21 13:35:45 grumbel Exp $
+//  $Id: Config.cc,v 1.8 2000/04/25 17:54:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <cstdio>
+#include <iostream>
 
 #include "globals.hh"
 #include "audio.hh"
@@ -134,7 +135,7 @@ ConfigParser::get_atom(void)
 }
 
 // Return the name of the value identiver.
-string
+std::string
 ConfigParser::get_valueid(void)
 {
   std::string ret_val;
@@ -161,14 +162,14 @@ ConfigParser::get_valueid(void)
 	}
       else 
 	{
-	  syntax_error(string("Unexpected char: '") + atom + "'");
+	  syntax_error(std::string("Unexpected char: '") + atom + "'");
 	}
     } 
   
   return ret_val;
 }
 
-string
+std::string
 ConfigParser::get_value(void)
 {
   std::string ret_val;
@@ -195,7 +196,7 @@ ConfigParser::get_value(void)
       if (isspace(atom)){
 	return ret_val;
       } else {
-	syntax_error(string("Unexpected char '") + atom + "'");
+	syntax_error(std::string("Unexpected char '") + atom + "'");
       }
     }
     
@@ -225,7 +226,7 @@ ConfigParser::jump_after(char c)
 	  return;
       }
     } 
-  syntax_error(string("jump_after(): Expected '") + c + "', got '" + atom + "'" );
+  syntax_error(std::string("jump_after(): Expected '") + c + "', got '" + atom + "'" );
 }
 
 void
@@ -250,7 +251,7 @@ ConfigParser::syntax_error(std::string error = "")
 
   sprintf(tmp, "%d\n", lineno);
   
-  error_str = string("PLF: Syntax Error at line ") + tmp;
+  error_str = std::string("PLF: Syntax Error at line ") + tmp;
 
   if (error != "")
     error_str += "PLF:" + error + "\n";
@@ -284,7 +285,7 @@ Config::Config()
   
 }
 
-Config::Config(string f)
+Config::Config(std::string f)
 {
   filename = f;
   init(filename);
@@ -384,7 +385,7 @@ Config::set_value(std::string valueid,
 }
 
 bool
-Config::str_to_bool(const string& str)
+Config::str_to_bool(const std::string& str)
 {
   if (str == "true" || str == "1")
     {
@@ -401,7 +402,7 @@ Config::str_to_bool(const string& str)
 }
 
 int
-Config::str_to_int(const string& str)
+Config::str_to_int(const std::string& str)
 {
   int ret_val;
 

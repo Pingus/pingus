@@ -1,4 +1,4 @@
-//  $Id: Credits.hh,v 1.1 2000/02/21 23:58:37 grumbel Exp $
+//  $Id: Credits.hh,v 1.2 2000/04/25 17:54:39 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,7 +27,7 @@ private:
   CL_Font*    font;
   CL_Font*    font_small;
 
-  vector<string> credits;
+  std::vector<std::string> credits;
 public:
   Credits();
   ~Credits();

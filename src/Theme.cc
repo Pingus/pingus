@@ -1,4 +1,4 @@
-//  $Id: Theme.cc,v 1.7 2000/03/12 01:56:56 grumbel Exp $
+//  $Id: Theme.cc,v 1.8 2000/04/25 17:54:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -200,7 +200,7 @@ void
 Theme::play()
 {
   PingusGame game;
-  ofstream out;
+  std::ofstream out;
       
   try 
     {

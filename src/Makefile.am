@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.15 2000/04/21 09:47:36 grumbel Exp $
+#  $Id: Makefile.am,v 1.16 2000/04/25 17:54:39 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,9 +33,7 @@ LDADD = traps/libpingu_traps.a          \
         particles/libpingus_particle.a  \
         actions/libpingu_actions.a      \
         entrances/libpingus_entrances.a \
-        editor/libpingus_editor.a       \
-        @MIKMOD_O_FILE@
-
+        editor/libpingus_editor.a
 
 pingus_SOURCES = \
                  Pingus.cc            Pingus.hh            \

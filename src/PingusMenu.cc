@@ -1,4 +1,4 @@
-//  $Id: PingusMenu.cc,v 1.16 2000/04/20 17:17:15 grumbel Exp $
+//  $Id: PingusMenu.cc,v 1.17 2000/04/25 17:54:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -85,7 +85,7 @@ PingusMenu::draw()
   // Putting the logo
   bg->put_screen(CL_Display::get_width()/2 - bg->get_width()/2, 3);
 
-  for(list<SurfaceButton*>::iterator i = buttons.begin(); i != buttons.end(); i++)
+  for(std::list<SurfaceButton*>::iterator i = buttons.begin(); i != buttons.end(); i++)
     {
       // Mouse_over drawing is handled in SurfaceButton.cc
       (*i)->draw();
@@ -168,7 +168,7 @@ PingusMenu::Event::on_button_press(CL_InputDevice *device, const CL_Key &key)
     {
       if (verbose) std::cout << "PingusMenu::Event: on_button_press" << std::endl;
 
-      for(list<SurfaceButton*>::iterator i = menu->buttons.begin(); i != menu->buttons.end(); i++)
+      for(std::list<SurfaceButton*>::iterator i = menu->buttons.begin(); i != menu->buttons.end(); i++)
 	{
 	  // Mouse_over drawing is handled in SurfaceButton.cc
 	  if ((*i)->mouse_over())

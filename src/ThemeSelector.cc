@@ -1,4 +1,4 @@
-//  $Id: ThemeSelector.cc,v 1.10 2000/04/21 09:47:36 grumbel Exp $
+//  $Id: ThemeSelector.cc,v 1.11 2000/04/25 17:54:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -242,17 +242,17 @@ ThemeSelector::readdir(std::string path)
 {
   System::Directory dir; 
   std::string pathname;
-  string::size_type pos = 0; 
-  string::size_type last_pos = 0; 
+  std::string::size_type pos = 0; 
+  std::string::size_type last_pos = 0; 
   bool exit_for = false;
 
   for(pos = path.find(":", last_pos);
       !exit_for;
       last_pos = pos + 1, pos = path.find(":", last_pos))
     {
-      if (pos == string::npos) 
+      if (pos == std::string::npos) 
 	{
-	  pathname = path.substr(last_pos, string::npos);
+	  pathname = path.substr(last_pos, std::string::npos);
 	  exit_for = true;
 	} 
       else 

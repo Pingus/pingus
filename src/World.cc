@@ -1,4 +1,4 @@
-//  $Id: World.cc,v 1.14 2000/04/14 18:28:26 grumbel Exp $
+//  $Id: World.cc,v 1.15 2000/04/25 17:54:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,6 +39,8 @@
 #include "entrances/entrances.hh"
 #include "FVec.hh"
 
+using namespace std;
+
 // Workaround for a VC bug
 #ifdef WIN32
 #  define for if(0);else for
@@ -71,19 +73,19 @@ World::~World()
   delete map;
   delete background;
 
-  for(std::vector<Exit*>::size_type i = 0; i < exits.size(); ++i) 
+  for(vector<Exit*>::size_type i = 0; i < exits.size(); ++i) 
     delete exits[i];
   
-  for(std::vector<Entrance*>::size_type i = 0; i < entrance.size(); ++i) 
+  for(vector<Entrance*>::size_type i = 0; i < entrance.size(); ++i) 
     delete entrance[i];
  
-  for(std::vector<Trap*>::size_type i = 0; i < traps.size(); ++i)
+  for(vector<Trap*>::size_type i = 0; i < traps.size(); ++i)
     delete traps[i];
 
-  for(std::vector<Hotspot*>::size_type i = 0; i < hotspot.size(); ++i)
+  for(vector<Hotspot*>::size_type i = 0; i < hotspot.size(); ++i)
     delete hotspot[i];
   
-  for(std::vector<Liquid*>::size_type i = 0; i < liquid.size(); ++i) {
+  for(vector<Liquid*>::size_type i = 0; i < liquid.size(); ++i) {
     delete liquid[i];
   }
 }
@@ -98,14 +100,14 @@ World::draw(int x1, int y1, int w, int h,
 
   background->draw_offset(x_of, y_of, s);
 
-  for(std::vector<WorldObj*>::iterator obj = world_obj_bg.begin(); obj != world_obj_bg.end(); obj++)
+  for(vector<WorldObj*>::iterator obj = world_obj_bg.begin(); obj != world_obj_bg.end(); obj++)
     {
       (*obj)->draw_offset(x_of, y_of, s);
     }
 
   map->draw(x1, y1, w, h, x_of, y_of, s);
 
-  for(std::vector<WorldObj*>::iterator obj = world_obj_fg.begin(); obj != world_obj_fg.end(); obj++)
+  for(vector<WorldObj*>::iterator obj = world_obj_fg.begin(); obj != world_obj_fg.end(); obj++)
     {
       (*obj)->draw_offset(x_of, y_of, s);
     }
@@ -119,7 +121,7 @@ World::let_move()
   if (!exit_world && (allowed_pingus == released_pingus || do_armageddon)
       && pingus.size() == 0) 
     {
-      if (verbose) std::cout << "World: world finished, going down in the next seconds..." << std::endl;
+      if (verbose) cout << "World: world finished, going down in the next seconds..." << endl;
       exit_world = true;
       exit_time = GameTime::get_time() + 75;
     }
@@ -133,7 +135,7 @@ World::let_move()
   // Create new pingus, if enough time is passed
   if (!do_armageddon && (unsigned int)pingus.total_size() < allowed_pingus)
     {
-      for(std::vector<Entrance*>::iterator i = entrance.begin(); i != entrance.end(); i++) 
+      for(vector<Entrance*>::iterator i = entrance.begin(); i != entrance.end(); i++) 
 	{
 	  if ((*i)->pingu_ready())
 	    {
@@ -158,17 +160,17 @@ World::let_move()
 	}
       }
     
-      for(std::vector<Trap*>::iterator obj = traps.begin(); obj != traps.end(); obj++)
+      for(vector<Trap*>::iterator obj = traps.begin(); obj != traps.end(); obj++)
 	(*obj)->catch_pingu(*pingu);
       
-      for(std::vector<Exit*>::iterator obj = exits.begin(); obj != exits.end(); obj++) 
+      for(vector<Exit*>::iterator obj = exits.begin(); obj != exits.end(); obj++) 
 	(*obj)->catch_pingu(*pingu);
     }
 
-  for(std::vector<trap_data>::size_type i=0; i < traps.size(); ++i)
+  for(vector<trap_data>::size_type i=0; i < traps.size(); ++i)
     traps[i]->let_move();
   
-  for(std::vector<entrance_data>::size_type i2=0; i2 < entrance.size(); ++i2) 
+  for(vector<entrance_data>::size_type i2=0; i2 < entrance.size(); ++i2) 
     entrance[i2]->let_move();
   
   particle.let_move();
@@ -192,9 +194,9 @@ World::init(PLF* plf_data)
   init_map();
   init_background();
 
-  std::cout << "World: Initing world objects... " << std::flush;
+  cout << "World: Initing world objects... " << flush;
   init_worldobjs();
-  std::cout << "done" << std::endl;
+  cout << "done" << endl;
 }
 
 void
@@ -205,7 +207,7 @@ World::init_map()
     {
     case SPOT:
       map = new PingusSpotMap(plf);
-      if (verbose) std::cout << "World: Loaded pingu map" << std::endl;
+      if (verbose) cout << "World: Loaded pingu map" << endl;
       break;
     case BMP:
     case RANDOM:
@@ -223,9 +225,9 @@ void
 World::init_background()
 {
   // load the background map
-  if (verbose) std::cout << "World: Loading background..." << std::flush;
+  if (verbose) cout << "World: Loading background..." << flush;
   background = new Background(plf->get_bg());
-  if (verbose) std::cout << "done" << std::endl;
+  if (verbose) cout << "done" << endl;
 }
 
 void
@@ -238,21 +240,21 @@ World::init_worldobjs()
   vector<liquid_data>   liquid_d   = plf->get_liquids();
 
   // Creating Exit and Entrance
-  for(std::vector<exit_data>::iterator i = exit_d.begin(); i != exit_d.end(); i++) 
+  for(vector<exit_data>::iterator i = exit_d.begin(); i != exit_d.end(); i++) 
     exits.push_back(new Exit(*i));
   
-  for(std::vector<entrance_data>::size_type i = 0; i < entrance_d.size(); ++i) 
+  for(vector<entrance_data>::size_type i = 0; i < entrance_d.size(); ++i) 
     entrance.push_back(get_entrance(entrance_d[i]));
 
-  for(std::vector<trap_data>::size_type i=0; i < trap_d.size(); ++i)
+  for(vector<trap_data>::size_type i=0; i < trap_d.size(); ++i)
     traps.push_back(get_trap(trap_d[i]));
 
   // Creating the foreground and background hotspots
 
-  for(std::vector<hotspot_data>::size_type i = 0; i < hspot_d.size(); ++i)
+  for(vector<hotspot_data>::size_type i = 0; i < hspot_d.size(); ++i)
     hotspot.push_back(new Hotspot(hspot_d[i]));
   
-  for(std::vector<liquid_data>::size_type i=0; i < liquid_d.size(); i++) 
+  for(vector<liquid_data>::size_type i=0; i < liquid_d.size(); i++) 
     liquid.push_back(new Liquid(liquid_d[i]));
   
   Pingu::set_colmap(colmap);
@@ -264,7 +266,7 @@ World::init_worldobjs()
   //world_obj.push_back(map);
 
   // Push all objects to world_obj vector
-  for(std::vector<hotspot_data>::size_type i = 0; i < hotspot.size(); i++)
+  for(vector<hotspot_data>::size_type i = 0; i < hotspot.size(); i++)
     {
       if (hotspot[i]-> z_pos <= 0)
 	world_obj_bg.push_back(hotspot[i]);
@@ -272,7 +274,7 @@ World::init_worldobjs()
 	world_obj_fg.push_back(hotspot[i]);
     }
 
-  for(std::vector<exit_data>::size_type i=0; i < exits.size(); i++)
+  for(vector<exit_data>::size_type i=0; i < exits.size(); i++)
     { 
       if (exits[i]->z_pos <= 0)
 	world_obj_bg.push_back(exits[i]);
@@ -280,7 +282,7 @@ World::init_worldobjs()
 	world_obj_fg.push_back(exits[i]);
     }  
   
-  for(std::vector<entrance_data>::size_type i=0; i < entrance.size(); ++i)
+  for(vector<entrance_data>::size_type i=0; i < entrance.size(); ++i)
     {
       if (entrance[i]->z_pos <= 0)
 	world_obj_bg.push_back(entrance[i]);
@@ -288,7 +290,7 @@ World::init_worldobjs()
 	world_obj_fg.push_back(entrance[i]);
     }
 
-  for(std::vector<liquid_data>::size_type i=0; i < liquid_d.size(); ++i)
+  for(vector<liquid_data>::size_type i=0; i < liquid_d.size(); ++i)
     {
       if (liquid[i]->z_pos <= 0)
 	world_obj_bg.push_back(liquid[i]);
@@ -296,7 +298,7 @@ World::init_worldobjs()
 	world_obj_fg.push_back(liquid[i]);
     }
   
-  for(std::vector<trap_data>::size_type i=0; i < traps.size(); ++i) 
+  for(vector<trap_data>::size_type i=0; i < traps.size(); ++i) 
     {
       if (traps[i]->z_pos <= 0)
 	world_obj_bg.push_back(traps[i]);
@@ -311,10 +313,10 @@ World::init_worldobjs()
   stable_sort(world_obj_fg.begin(), world_obj_fg.end(), WorldObj_less());
 
   // Drawing all world objs to the colmap
-  for(std::vector<WorldObj*>::iterator obj = world_obj_bg.begin(); obj != world_obj_bg.end(); obj++)
+  for(vector<WorldObj*>::iterator obj = world_obj_bg.begin(); obj != world_obj_bg.end(); obj++)
     (*obj)->draw_colmap(colmap);
 
-  for(std::vector<WorldObj*>::iterator obj = world_obj_fg.begin(); obj != world_obj_fg.end(); obj++)
+  for(vector<WorldObj*>::iterator obj = world_obj_fg.begin(); obj != world_obj_fg.end(); obj++)
     (*obj)->draw_colmap(colmap);
   
   // Setup the gravity force
@@ -359,7 +361,7 @@ World::get_time(void)
 void 
 World::armageddon(void)
 {
-  std::cout << "Doing armo" << std::endl;
+  cout << "Doing armo" << endl;
   do_armageddon = true;
   armageddon_count = pingus.begin();
 }
@@ -374,7 +376,7 @@ World::is_finished(void)
     } 
   /*  else if (exit_world)
     {
-      //      std::cout << "The world will exit in: " << exit_time << " : " << GameTime::get_time() << std::endl;
+      //      cout << "The world will exit in: " << exit_time << " : " << GameTime::get_time() << endl;
       return true;
       } */
   else 

@@ -1,4 +1,4 @@
-//  $Id: SpecsReader.hh,v 1.3 2000/02/11 16:58:26 grumbel Exp $
+//  $Id: SpecsReader.hh,v 1.4 2000/04/25 17:54:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,7 +32,7 @@ class SpecsReader
 {
 private:
   std::map<std::string, int> token_ids;
-  std::map<int, string> values;
+  std::map<int, std::string> values;
 
   std::ifstream in;
 

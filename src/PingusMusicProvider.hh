@@ -1,4 +1,4 @@
-//  $Id: PingusMusicProvider.hh,v 1.2 2000/04/21 09:47:36 grumbel Exp $
+//  $Id: PingusMusicProvider.hh,v 1.3 2000/04/25 17:54:39 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,12 +29,12 @@ class PingusMusicProvider
 private:
   struct music_pair {
     Mix_Music* data;
-    string     filename;
+    std::string     filename;
   };
-  static list<music_pair> music;
+  static std::list<music_pair> music;
 public:
-  static Mix_Music* load(string);
-  static Mix_Music* get(string);
+  static Mix_Music* load(std::string);
+  static Mix_Music* get(std::string);
 };
 
 #endif

@@ -1,4 +1,4 @@
-//  $Id: PSMParser.cc,v 1.5 2000/02/22 00:09:48 grumbel Exp $
+//  $Id: PSMParser.cc,v 1.6 2000/04/25 17:54:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,6 +26,8 @@
 
 #include "PSMParser.hh"
 
+using namespace std;
+
 PSMParser::PSMParser()
 {
   lines = 0;
@@ -37,10 +39,10 @@ PSMParser::~PSMParser()
 }
 
 void
-PSMParser::parse(std::string filename)
+PSMParser::parse(string filename)
 {
   try {
-    if (verbose > 1) std::cout << "PSMParser: Filename: " << filename << std::endl;
+    if (verbose > 1) cout << "PSMParser: Filename: " << filename << endl;
     
     in.open(filename.c_str());
 
@@ -81,7 +83,7 @@ PSMParser::parse(std::string filename)
     }
   }
   catch (PSMParseError err) {
-    std::cout << "PSMParseError occured: " << err.message << " at line: " << lines << std::endl;
+    cout << "PSMParseError occured: " << err.message << " at line: " << lines << endl;
     throw PingusError(err.message);
   }
   catch (PSMEOF) {}
@@ -94,10 +96,10 @@ PSMParser::load_surfaces(void)
 {
   assert(file_parsed);
 
-  for (std::vector<surface_data>::size_type i=0; i < surface.size(); ++i) {
+  for (vector<surface_data>::size_type i=0; i < surface.size(); ++i) {
     if (verbose > 1) {
-      std::cout << "Surface: " << "(" << surface[i].res_desc.res_name << ":" << surface[i].res_desc.filename << ") " 
-	   << surface[i].name << std::endl;
+      cout << "Surface: " << "(" << surface[i].res_desc.res_name << ":" << surface[i].res_desc.filename << ") " 
+	   << surface[i].name << endl;
     }
     surface[i].surface = CL_Surface::load(surface[i].name.c_str(), 
 					      PingusResource::get(surface[i].res_name));
@@ -136,17 +138,17 @@ void
 PSMParser::jump_spaces()
 {
   char c;
-  while (isspace(c = get_char()));
+  while (std::isspace(c = get_char()));
   in.putback(c);
 }
 
 string
 PSMParser::get_string(void)
 {
-  std::string str;
+  string str;
   char   c;
 
-  while (!isspace(c = get_atom()) && c != ':') {
+  while (!std::isspace(c = get_atom()) && c != ':') {
     str += c;
   }
   
@@ -162,7 +164,7 @@ PSMParser::get_string(void)
 int
 PSMParser::get_int(void)
 {
-  std::string str;
+  string str;
   char   c;
   int    i;
 
@@ -171,7 +173,7 @@ PSMParser::get_int(void)
   else
     in.putback(c);
 
-  while (isdigit(c = get_atom())) {
+  while (std::isdigit(c = get_atom())) {
     str += c;
   }
 

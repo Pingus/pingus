@@ -1,4 +1,4 @@
-//  $Id: PingusResource.cc,v 1.4 2000/02/22 00:09:48 grumbel Exp $
+//  $Id: PingusResource.cc,v 1.5 2000/04/25 17:54:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,7 +24,7 @@
 #include "algo.hh"
 #include "PingusResource.hh"
 
-vector<PingusResource::Res> PingusResource::resource;
+std::vector<PingusResource::Res> PingusResource::resource;
 
 PingusResource::PingusResource()
 {
@@ -72,3 +72,5 @@ PingusResource::get(std::string filename)
 }
 
 /* EOF */
+
+

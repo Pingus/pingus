@@ -1,4 +1,4 @@
-//  $Id: ResDescriptor.cc,v 1.5 2000/02/17 01:25:26 grumbel Exp $
+//  $Id: ResDescriptor.cc,v 1.6 2000/04/25 17:54:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,8 +29,8 @@ ResDescriptor::ResDescriptor()
 
 ResDescriptor::ResDescriptor(std::string str) 
 {
-  string::size_type pos1;
-  string::size_type pos2;
+  std::string::size_type pos1;
+  std::string::size_type pos2;
 
   //cout << "Resdes: " << str << std::endl;
 
@@ -39,7 +39,7 @@ ResDescriptor::ResDescriptor(std::string str)
   pos1 = str.find_first_of(':');
   pos2 = str.find_first_of(')');
   
-  if (pos1 != string::npos && pos2 != string::npos)
+  if (pos1 != std::string::npos && pos2 != std::string::npos)
     {
       filename = str.substr(pos1 + 1, (pos2 - pos1 - 1));
       res_name = str.substr(pos2 + 1);
@@ -55,7 +55,7 @@ ResDescriptor::ResDescriptor(std::string c_cast, std::string value)
 {
   std::string cast;
 
-  if (c_cast.find_first_of(":") == string::npos) {
+  if (c_cast.find_first_of(":") == std::string::npos) {
     cast = c_cast;
     filename = "global.dat";
   } else {

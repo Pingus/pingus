@@ -1,4 +1,4 @@
-//  $Id: System.cc,v 1.7 2000/03/12 17:08:39 grumbel Exp $
+//  $Id: System.cc,v 1.8 2000/04/25 17:54:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,10 +26,10 @@
 #  include <unistd.h>
 #  include <errno.h>
 #else /* !WIN32 */
-#  include <iostream>
 #  include <windows.h>
 #endif
 
+#include <iostream>
 #include "globals.hh"
 #include "PingusError.hh" 
 #include "System.hh"
@@ -42,7 +42,7 @@ System::DirectoryEntry::DirectoryEntry(const std::string& n)
 System::Directory
 System::opendir(const std::string& pathname, const std::string& pattern)
 {
-  list<System::DirectoryEntry> dir_list;
+  std::list<System::DirectoryEntry> dir_list;
 
 #ifndef WIN32 
   DIR* dp;
@@ -100,7 +100,7 @@ System::opendir(const std::string& pathname, const std::string& pattern)
 }
 
 // Returns the basic filename without the path
-string
+std::string
 System::basename(std::string filename)
 {
   // Should be replaced with STL
@@ -165,7 +165,7 @@ System::get_statdir()
 
   if (homedir) 
     {
-      return string(homedir) + "/.pingus/";
+      return std::string(homedir) + "/.pingus/";
     }
   else
     {
