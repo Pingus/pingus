@@ -507,8 +507,6 @@ src/loading.cxx
 src/loading.hxx
 src/screen_manager.cxx
 src/screen_manager.hxx
-src/story.cxx
-src/story.hxx
 src/pingu_map.cxx
 src/pingu_map.hxx
 src/editorobjs/switch_door_switch_obj.cxx

@@ -117,7 +117,7 @@
 
       <leveldot>
         <dot>
-          <name>leveldot_X</name>
+          <name>leveldot_9</name>
           <position>
             <x-pos>819.5</x-pos>
             <y-pos>298.5</y-pos>
@@ -128,6 +128,160 @@
       </leveldot>
 
 
+      <leveldot>
+        <dot>
+          <name>leveldot_10</name>
+          <position>
+            <x-pos>736</x-pos>
+            <y-pos>330</y-pos>
+            <z-pos>0</z-pos>
+          </position>
+        </dot>
+        <levelname>level10.xml</levelname>
+      </leveldot>
+
+
+      <leveldot>
+        <dot>
+          <name>leveldot_11</name>
+          <position>
+            <x-pos>596</x-pos>
+            <y-pos>374</y-pos>
+            <z-pos>0</z-pos>
+          </position>
+        </dot>
+        <levelname>level10.xml</levelname>
+      </leveldot>
+
+
+      <leveldot>
+        <dot>
+          <name>leveldot_12</name>
+          <position>
+            <x-pos>481</x-pos>
+            <y-pos>373</y-pos>
+            <z-pos>0</z-pos>
+          </position>
+        </dot>
+        <levelname>level10.xml</levelname>
+      </leveldot>
+
+
+      <leveldot>
+        <dot>
+          <name>leveldot_13</name>
+          <position>
+            <x-pos>369</x-pos>
+            <y-pos>414</y-pos>
+            <z-pos>0</z-pos>
+          </position>
+        </dot>
+        <levelname>level10.xml</levelname>
+      </leveldot>
+
+
+      <leveldot>
+        <dot>
+          <name>leveldot_14</name>
+          <position>
+            <x-pos>451</x-pos>
+            <y-pos>456</y-pos>
+            <z-pos>0</z-pos>
+          </position>
+        </dot>
+        <levelname>level10.xml</levelname>
+      </leveldot>
+
+
+      <leveldot>
+        <dot>
+          <name>leveldot_15</name>
+          <position>
+            <x-pos>626</x-pos>
+            <y-pos>462</y-pos>
+            <z-pos>0</z-pos>
+          </position>
+        </dot>
+        <levelname>level10.xml</levelname>
+      </leveldot>
+
+
+      <leveldot>
+        <dot>
+          <name>leveldot_16</name>
+          <position>
+            <x-pos>713</x-pos>
+            <y-pos>469</y-pos>
+            <z-pos>0</z-pos>
+          </position>
+        </dot>
+        <levelname>level10.xml</levelname>
+      </leveldot>
+
+
+      <leveldot>
+        <dot>
+          <name>leveldot_17</name>
+          <position>
+            <x-pos>844</x-pos>
+            <y-pos>441</y-pos>
+            <z-pos>0</z-pos>
+          </position>
+        </dot>
+        <levelname>level10.xml</levelname>
+      </leveldot>
+
+
+      <leveldot>
+        <dot>
+          <name>leveldot_18</name>
+          <position>
+            <x-pos>954</x-pos>
+            <y-pos>382</y-pos>
+            <z-pos>0</z-pos>
+          </position>
+        </dot>
+        <levelname>level10.xml</levelname>
+      </leveldot>
+
+
+      <leveldot>
+        <dot>
+          <name>leveldot_19</name>
+          <position>
+            <x-pos>1035</x-pos>
+            <y-pos>378</y-pos>
+            <z-pos>0</z-pos>
+          </position>
+        </dot>
+        <levelname>level10.xml</levelname>
+      </leveldot>
+
+
+      <leveldot>
+        <dot>
+          <name>leveldot_20</name>
+          <position>
+            <x-pos>719</x-pos>
+            <y-pos>403</y-pos>
+            <z-pos>0</z-pos>
+          </position>
+        </dot>
+        <levelname>level10.xml</levelname>
+      </leveldot>
+
+
+      <leveldot>
+        <dot>
+          <name>leveldot_21</name>
+          <position>
+            <x-pos>870</x-pos>
+            <y-pos>377</y-pos>
+            <z-pos>0</z-pos>
+          </position>
+        </dot>
+        <levelname>level10.xml</levelname>
+      </leveldot>
 
     </nodes>
 
@@ -139,6 +293,24 @@
       <edge name="egde_5" source="leveldot_5" destination="leveldot_6"/>
       <edge name="egde_6" source="leveldot_6" destination="leveldot_7"/>
       <edge name="egde_7" source="leveldot_7" destination="leveldot_8"/>
+
+      <edge name="egde_8"  source="leveldot_7" destination="leveldot_8"/>
+      <edge name="egde_9"  source="leveldot_8" destination="leveldot_9"/>
+      <edge name="egde_10" source="leveldot_9" destination="leveldot_10"/>
+      <edge name="egde_11" source="leveldot_10" destination="leveldot_11"/>
+      <edge name="egde_12" source="leveldot_11" destination="leveldot_12"/>
+      <edge name="egde_13" source="leveldot_12" destination="leveldot_13"/>
+
+      <edge name="egde_22" source="leveldot_13" destination="leveldot_14"/>
+
+      <edge name="egde_14" source="leveldot_14" destination="leveldot_15"/>
+      <edge name="egde_15" source="leveldot_15" destination="leveldot_16"/>
+      <edge name="egde_16" source="leveldot_16" destination="leveldot_17"/>
+      <edge name="egde_17" source="leveldot_17" destination="leveldot_18"/>
+      <edge name="egde_18" source="leveldot_18" destination="leveldot_19"/>
+      <edge name="egde_19" source="leveldot_15" destination="leveldot_20"/>
+      <edge name="egde_20" source="leveldot_20" destination="leveldot_21"/>
+      <edge name="egde_21" source="leveldot_21" destination="leveldot_18"/>
     </edges>
   </graph>
 
