@@ -1,4 +1,4 @@
-//  $Id: world.hxx,v 1.21 2002/12/28 16:57:38 torangan Exp $
+//  $Id: world.hxx,v 1.22 2003/01/25 11:03:58 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,10 +32,6 @@ class Exit;
 class Hotspot;
 class Liquid;
 class PLF;
-class PinguParticleHolder;
-class RainParticleHolder;
-class SmokeParticleHolder;
-class SnowParticleHolder;
 class PinguHolder;
 class PinguMap;
 class Pingu;
@@ -46,6 +42,14 @@ class WorldObj;
 class GameTime;
 class SmallMap;
 class GraphicContext;
+
+namespace Particles {
+  class PinguParticleHolder;
+  class RainParticleHolder;
+  class SmokeParticleHolder;
+  class SnowParticleHolder;
+}
+
 
 /** The World holds all objects of the pingu enviroment. 
     
@@ -72,11 +76,11 @@ private:
   typedef std::vector<WorldObj*>::iterator WorldObjIter;
   
   // These pointers hold objects and must be deleted
-  PinguParticleHolder* pingu_particle_holder;
-  RainParticleHolder*  rain_particle_holder;
-  SmokeParticleHolder* smoke_particle_holder;
-  SnowParticleHolder*  snow_particle_holder;
-  PinguHolder*         pingus;
+  Particles::PinguParticleHolder* pingu_particle_holder;
+  Particles::RainParticleHolder*  rain_particle_holder;
+  Particles::SmokeParticleHolder* smoke_particle_holder;
+  Particles::SnowParticleHolder*  snow_particle_holder;
+  PinguHolder*                    pingus;
 
   // Pointers which are references to objects from other classes
   ActionHolder*   action_holder;
@@ -121,16 +125,16 @@ public:
   PinguMap* get_gfx_map();
 
   /** @return A pointer to the worlds pingu particle holder */
-  PinguParticleHolder* get_pingu_particle_holder () { return pingu_particle_holder; }
+  Particles::PinguParticleHolder* get_pingu_particle_holder () { return pingu_particle_holder; }
   
   /** @return A pointer to the worlds rain particle holder */
-  RainParticleHolder* get_rain_particle_holder () { return rain_particle_holder; }
+  Particles::RainParticleHolder* get_rain_particle_holder () { return rain_particle_holder; }
 
   /** @return A pointer to the worlds smoke particle holder */
-  SmokeParticleHolder* get_smoke_particle_holder () { return smoke_particle_holder; }
+  Particles::SmokeParticleHolder* get_smoke_particle_holder () { return smoke_particle_holder; }
 
   /** @return A pointer to the worlds snow particle holder */
-  SnowParticleHolder* get_snow_particle_holder () { return snow_particle_holder; }
+  Particles::SnowParticleHolder* get_snow_particle_holder () { return snow_particle_holder; }
 
     /** @return true if the world is currently doing an armageddon */
   bool check_armageddon() { return do_armageddon; }

@@ -1,4 +1,4 @@
-//  $Id: rain_particle_holder.hxx,v 1.2 2002/12/31 15:09:33 torangan Exp $
+//  $Id: rain_particle_holder.hxx,v 1.3 2003/01/25 11:03:58 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,6 +26,8 @@
 #include "../worldobj.hxx"
 
 class GraphicContext;
+
+namespace Particles {
 
 class RainParticleHolder : public WorldObj
 {
@@ -73,6 +75,8 @@ private:
   RainParticleHolder (const RainParticleHolder&);
   RainParticleHolder& operator= (const RainParticleHolder&);
 };
+
+} // namespace Particles
 
 #endif
 

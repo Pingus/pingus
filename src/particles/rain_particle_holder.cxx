@@ -1,4 +1,4 @@
-//  $Id: rain_particle_holder.cxx,v 1.2 2002/12/31 15:09:33 torangan Exp $
+//  $Id: rain_particle_holder.cxx,v 1.3 2003/01/25 11:03:58 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,6 +25,7 @@
 #include "../world.hxx"
 #include "rain_particle_holder.hxx"
 
+namespace Particles {
 
 RainParticleHolder::RainParticle::RainParticle(int x, int y)
   : alive(true), splash(false), use_rain2_surf(false), splash_counter(0), splash_frame(0), pos(Vector(x, y))
@@ -128,5 +129,7 @@ RainParticleHolder::set_world_width(int width)
 {
   world_width = width;
 }
+
+} // namespace Particles
 
 /* EOF */

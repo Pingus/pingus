@@ -1,4 +1,4 @@
-//  $Id: world.cxx,v 1.35 2002/12/31 15:09:33 torangan Exp $
+//  $Id: world.cxx,v 1.36 2003/01/25 11:03:58 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -57,10 +57,10 @@ World::World(PLF* plf)
   : gfx_map(new PingusSpotMap(plf)),
     game_time(new GameTime (game_speed)),
     do_armageddon(false),
-    pingu_particle_holder(new PinguParticleHolder()),
-    rain_particle_holder(new RainParticleHolder()),
-    smoke_particle_holder(new SmokeParticleHolder()),
-    snow_particle_holder(new SnowParticleHolder()),
+    pingu_particle_holder(new Particles::PinguParticleHolder()),
+    rain_particle_holder(new Particles::RainParticleHolder()),
+    smoke_particle_holder(new Particles::SmokeParticleHolder()),
+    snow_particle_holder(new Particles::SnowParticleHolder()),
     pingus(new PinguHolder(plf)),
     colmap(gfx_map->get_colmap()),
     view(0)

@@ -1,4 +1,4 @@
-//  $Id: smoke_particle_holder.hxx,v 1.1 2002/12/28 16:10:18 torangan Exp $
+//  $Id: smoke_particle_holder.hxx,v 1.2 2003/01/25 11:03:58 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,6 +26,8 @@
 #include "../worldobj.hxx"
 
 class GraphicContext;
+
+namespace Particles {
 
 class SmokeParticleHolder : public WorldObj
 {
@@ -62,6 +64,8 @@ private:
   SmokeParticleHolder (const SmokeParticleHolder&);
   SmokeParticleHolder& operator= (const SmokeParticleHolder&);
 };
+
+} // namespace Particles
 
 #endif
 
