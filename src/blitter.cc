@@ -1,4 +1,4 @@
-//  $Id: blitter.cc,v 1.14 2000/06/24 20:51:25 grumbel Exp $
+//  $Id: blitter.cc,v 1.15 2000/07/14 12:18:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -71,6 +71,8 @@ Blitter::put_surface_8bit(CL_Canvas* provider, CL_SurfaceProvider* sprovider,
 
   tbuffer = static_cast<unsigned char*>(provider->get_data());
   sbuffer = static_cast<unsigned char*>(sprovider->get_data());
+
+  //std::cout << "Colorkey: " << sprovider->get_src_colorkey() << std::endl;
   
   palette = sprovider->get_palette();
 
@@ -125,7 +127,7 @@ void
 Blitter::put_surface_32bit(CL_Canvas* canvas, CL_SurfaceProvider* provider,
 			   int x_pos, int y_pos)
 {
-  std::cout << "Blitter::put_surface_32bit() --- not implemented" << std::endl;
+  //std::cout << "Blitter::put_surface_32bit() --- not implemented" << std::endl;
   //return;
   float red, green, blue, alpha;
   float tred, tgreen, tblue, talpha;
@@ -250,11 +252,18 @@ Blitter::put_alpha_surface(CL_Canvas* provider, CL_SurfaceProvider* sprovider,
 CL_Canvas*
 Blitter::clear_canvas(CL_Canvas* canvas)
 {
-  void* buffer;
+  unsigned char* buffer;
   
   canvas->lock();
-  buffer = canvas->get_data();
-  
+  buffer = static_cast<unsigned char*>(canvas->get_data());
+
+  /*  for (int i=0; i < canvas->get_pitch() * canvas->get_height(); i += 4)
+    {
+      buffer[i + 0] = 155;
+      buffer[i + 1] = 155;
+      buffer[i + 2] = 155;
+      buffer[i + 3] = 155;
+      }*/
   memset(buffer, 0, sizeof(unsigned char) * canvas->get_pitch() * canvas->get_height());
 
   canvas->unlock();

@@ -1,4 +1,4 @@
-//   $Id: Pingus.cc,v 1.44 2000/07/04 22:59:13 grumbel Exp $
+//   $Id: Pingus.cc,v 1.45 2000/07/14 12:18:49 grumbel Exp $
 //    ___
 //   |  _\ A free Lemmings clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -844,7 +844,7 @@ PingusMain::main(int argc, char** argv)
   bool quit = false;
 
   // Register the segfault_handler
-  signal(SIGSEGV, segfault_handler);
+  //signal(SIGSEGV, segfault_handler);
 
   try 
     {

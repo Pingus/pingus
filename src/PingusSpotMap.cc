@@ -1,4 +1,4 @@
-//  $Id: PingusSpotMap.cc,v 1.30 2000/06/27 06:32:54 grumbel Exp $
+//  $Id: PingusSpotMap.cc,v 1.31 2000/07/14 12:18:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -240,7 +240,7 @@ PingusSpotMap::load(std::string filename)
 	}
       else
 	{
-	  std::cout << "PingusSpotMap: Using put_tartget(), might be unstable" << std::endl;
+	  // std::cout << "PingusSpotMap: Using put_tartget(), might be unstable" << std::endl;
 	  //std::cout << "Color depth: " << i->surface->get_provider()->get_depth() << std::endl;
 	  Blitter::put_surface(map_canvas, i->surface->get_provider(),
 			       i->x_pos, i->y_pos);
@@ -575,7 +575,8 @@ PingusSpotMap::create_maptiles()
 	    {
 	      canvas = new CL_Canvas(tile_size, tile_size);
 	      Blitter::clear_canvas(canvas);
-	      map_surface->put_target(-x * tile_size, -y * tile_size, 0, canvas);
+	      //map_surface->put_target(-x * tile_size, -y * tile_size, 0, canvas);
+	      Blitter::put_surface(canvas, map_surface, -x * tile_size, -y * tile_size);
 	      tile[x][y].surface = CL_Surface::create(canvas, true);
 	    }
 	}

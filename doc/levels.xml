@@ -3,8 +3,6 @@
   
   <global>
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
-    <start-x-pos>0</start-x-pos>
-    <start-y-pos>0</start-y-pos>
     <levelname>Pipe Panic in Penguin World</levelname>
 
     <description lang="de_DE">
@@ -26,7 +24,7 @@
   </ground>
 
   <background>
-    <image><resource>
+    <image><resource type="datafile">
 	<resource-file>textures.dat</resource-file>
 	<resource-ident>Textures/stars</resource-ident>
       </resource></image>
@@ -45,6 +43,13 @@
     <button action="floater">20</button>
     <button action="miner">20</button>
   </button-list>
+
+  <start>
+    <position>
+      <x-pos>0</x-pos>
+      <y-pos>0</y-pos>
+    </position>
+  </start>
 
   <entrance>
     <type>generic</type>

@@ -1,4 +1,4 @@
-//  $Id: EditorObj.hh,v 1.10 2000/06/28 19:49:19 grumbel Exp $
+//  $Id: EditorObj.hh,v 1.11 2000/07/14 12:18:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -116,6 +116,19 @@ public:
     {
       return (*a) < (*b);
     }
+};
+
+class EditorGroup : public EditorObj
+{
+private:
+  list<EditorObj*> objs;
+public:
+  EditorGroup();
+  virtual ~EditorGroup();
+  ///
+  virtual void   save(std::ofstream* plf, std::ofstream* psm) = 0;
+  ///
+  virtual EditorObj* duplicate();
 };
 
 #endif

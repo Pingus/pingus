@@ -129,10 +129,11 @@ section GroundPieces
 	pipe_ph       = ../images/groundpieces/pipe4.pcx     (type=surface, x=0, y=0, width=32,  height=22, tcol=0);
 	pipe_pv       = ../images/groundpieces/pipe5.pcx     (type=surface, x=0, y=0, width=22,  height=32, tcol=0);
 
-	pipe_ul       = ../images/groundpieces/pipe3.pcx     (type=surface, x=0, y=0, width=32,  height=32, tcol=0);
-	pipe_ur       = ../images/groundpieces/pipe3.pcx     (type=surface, x=32, y=0, width=32,  height=32, tcol=0);
-	pipe_dl       = ../images/groundpieces/pipe3.pcx     (type=surface, x=0, y=32, width=32,  height=32, tcol=0);
-	pipe_dr       = ../images/groundpieces/pipe3.pcx     (type=surface, x=32, y=32, width=32,  height=32, tcol=0);
+	pipe_ul       = ../images/groundpieces/misc/pipe_ul.pcx     (type=surface, x=0, y=0, width=32,  height=32, tcol=0);
+	pipe_ur       = ../images/groundpieces/misc/pipe_ur.pcx     (type=surface, x=0, y=0, width=32,  height=32, tcol=0);
+	pipe_dl       = ../images/groundpieces/misc/pipe_bl.pcx     (type=surface, x=0, y=0, width=32,  height=32, tcol=0);
+	pipe_dr       = ../images/groundpieces/misc/pipe_br.pcx     (type=surface, x=0, y=0, width=32,  height=32, tcol=0);
+
 	tree          = ../images/groundpieces/tree.pcx     (type=surface, x=0, y=0, width=192,  height=257, tcol=0);
 
 	section Jungle 
@@ -148,7 +149,7 @@ section GroundPieces
 		carabatreemedium = ../images/groundpieces/jungle/carabatreemedium.pcx (type=surface, x=0, y=0, width=257,  height=300, tcol=0);
 		carabatreesmall = ../images/groundpieces/jungle/carabatreesmall.pcx (type=surface, x=0, y=0, width=164,  height=190, tcol=0);
 		twist = ../images/groundpieces/jungle/twist.pcx (type=surface, x=0, y=0, width=405,  height=70, tcol=0);
-		twistsmooth = ../images/groundpieces/jungle/twist.pcx (type=surface, x=0, y=0, width=405,  height=70, tcol=0);
+		twistsmooth = ../images/groundpieces/jungle/twistsmooth.pcx (type=surface, x=0, y=0, width=405,  height=70, tcol=0);
 
 		stick1 = ../images/groundpieces/jungle/stick1.pcx (type=surface, x=0, y=0, width=446,  height=21, tcol=0);
 		stick2 = ../images/groundpieces/jungle/stick2.pcx (type=surface, x=0, y=0, width=312,  height=21, tcol=0);

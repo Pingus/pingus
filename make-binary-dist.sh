@@ -1,9 +1,58 @@
 #! /bin/bash
 
 PACKAGE=pingus
-VERSION=0.0.16
-ARCH=`uname -m`
-TARNAME=$PACKAGE-$VERSION-binary-$ARCH.tar.gz
+VERSION=0.4.0
+ARCH=i386
+DIRNAME=$PACKAGE-$VERSION-binary-$ARCH
+TARNAME=$DIRNAME.tar.gz
+OUTPUT=`pwd`
+
+if [ -d /tmp/$DIRNAME ]; then
+    echo
+  #  rm -rv /tmp/$DIRNAME/*
+fi
+
+mkdir -p --verbose /tmp/$DIRNAME/data/images
+mkdir -p --verbose /tmp/$DIRNAME/data/levels
+mkdir -p --verbose /tmp/$DIRNAME/data/themes
+mkdir -p --verbose /tmp/$DIRNAME/src/
+
+echo "Copying images..."
+cd data/images/
+yes n | cp -iuvP `clanlib_list_datafile.sh ../../data/data/*.scr` /tmp/$DIRNAME/data/images/
+cd ../..
+cp -iuvP data/data/*.scr /tmp/$DIRNAME/
+cp -iuvP src/pingus /tmp/$DIRNAME/
+
+echo "Stripping"
+strip /tmp/$DIRNAME/src/pingus
+
+echo "Copying docs..."
+cp -iuvP README.binary /tmp/$DIRNAME/
+cp -iuvP COPYING.binary /tmp/$DIRNAME/
+cp -iuvP doc/pingus.info /tmp/$DIRNAME/
+cp -iuvP doc/pingus.texi /tmp/$DIRNAME/
+cp -iuvP doc/pingus.6 /tmp/$DIRNAME/
+cp -iuvP doc/config /tmp/$DIRNAME/
+
+echo "Copying levels and themes..."
+cp -iuvP data/levels/*.plf data/levels/*.psm /tmp/$DIRNAME
+cp -iuvP data/themes/*.plt /tmp/$DIRNAME
+
+echo "Creating wrapper..."
+
+echo "cd data/data/" > /tmp/$DIRNAME/pingus
+echo '../../src/pingus --use-scriptfile -d .. $@' >> /tmp/$DIRNAME/pingus
+chmod +x /tmp/$DIRNAME/pingus
+
+
+echo "Building the tarball..."
+cd /tmp/
+tar cvzf $TARNAME $DIRNAME
+
+exit
+
+# ...........done.........
 
 echo "Creating pingus binary dist started"
 

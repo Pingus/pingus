@@ -3,5 +3,5 @@ Description: After their long journey throu <some country> the Pingus reach Egyp
 Background:  (resource:textures.dat)Textures/desert
 
 desert1.plf
-desert2.plf
 desert3.plf
+desert2.plf

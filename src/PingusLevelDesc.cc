@@ -1,4 +1,4 @@
-//  $Id: PingusLevelDesc.cc,v 1.10 2000/06/27 16:05:16 grumbel Exp $
+ //  $Id: PingusLevelDesc.cc,v 1.11 2000/07/14 12:18:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,6 +41,9 @@ PingusLevelDesc::PingusLevelDesc(PLF* arg_plf)
 void
 PingusLevelDesc::draw(PingusLevelDesc::LoadingStatus status)
 {
+  int x_pos = CL_Display::get_width() / 2 ;
+  int y_pos = 120;
+    
   for(int y = 0; y < CL_Display::get_height(); y += background->get_height())
     for(int x = 0; x < CL_Display::get_width(); x += background->get_width())
       background->put_screen(x, y);
@@ -50,15 +53,13 @@ PingusLevelDesc::draw(PingusLevelDesc::LoadingStatus status)
   title->print_center(CL_Display::get_width() / 2, 50, levelname.c_str());
 
   {
-    int x_pos = CL_Display::get_width() / 2 ;
-    int y_pos = 120;
-
     CL_Display::fill_rect(x_pos - description.get_width()/2 - 15,
 			  y_pos - 15,
 			  x_pos + description.get_width()/2 + 15,
 			  y_pos + description.get_height() + 15,
 			  0.0, 0.0, 0.0, 0.5);
     description.print_center(x_pos, y_pos);
+    y_pos += description.get_height() + 40;
   }
   
   if (!plf->get_author().empty())
@@ -71,9 +72,9 @@ PingusLevelDesc::draw(PingusLevelDesc::LoadingStatus status)
   {
     char str[1024];
     sprintf(str, "Pingus to Save: %d", plf->get_number_to_save());
-    font->print_center(CL_Display::get_width() / 2, 240, str);
+    font->print_center(CL_Display::get_width() / 2, y_pos, str);
     sprintf(str, "Number of Pingus: %d", plf->get_pingus());
-    font->print_center(CL_Display::get_width() / 2, 260, str);
+    font->print_center(CL_Display::get_width() / 2, (y_pos += 20), str);
   }
 
   if (status == LOADING) {

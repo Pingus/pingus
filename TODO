@@ -1,5 +1,6 @@
 Release Critical:
 ~~~~~~~~~~~~~~~~~
+ o pipes are broken...
  o default directory when saving a level
  o Multiple entrances doesn't work correctly
  o Solid can be bashed away if a bridge is placed in it
@@ -167,6 +168,6 @@ DOOR.WAV      MOUSEPRE.WAV  OING.WAV	     THUD.WAV
 
 
 
-$Date: 2000/07/11 15:53:57 $
+$Date: 2000/07/14 12:18:49 $
 
 -= EOF =-

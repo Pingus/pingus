@@ -5,7 +5,7 @@ Background:  (resource:textures.dat)Textures/rooftile
 longway.plf
 rinse.plf
 Lev4.plf
-Wland.plf
+wland.plf
 particle.plf
 Stair.plf
 cages.plf

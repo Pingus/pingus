@@ -1,4 +1,4 @@
-//  $Id: PLFObj.cc,v 1.22 2000/07/11 15:53:57 grumbel Exp $
+//  $Id: PLFObj.cc,v 1.23 2000/07/14 12:18:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -224,7 +224,7 @@ void
 ExitObj::save(ofstream* plf, ofstream* psm)
 {
   (*plf) << "exit {\n"
-	 << "  image = (resource)\"" << desc.res_name << "\";\n"
+	 << "  image = (resource:" << desc.datafile << ")\"" << desc.res_name << "\";\n"
 	 << "  x_pos = " << x_pos << ";\n"
 	 << "  y_pos = " << y_pos << ";\n"
 	 << "  z_pos = " << z_pos << ";\n"

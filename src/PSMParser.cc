@@ -1,4 +1,4 @@
-//  $Id: PSMParser.cc,v 1.14 2000/07/11 15:53:57 grumbel Exp $
+//  $Id: PSMParser.cc,v 1.15 2000/07/14 12:18:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -157,7 +157,7 @@ PSMParser::get_string(void)
     in.putback(c);
 
   if (str.empty())
-    throw PSMParseError("String is empty!");
+    throw PSMParseError("PSMParser::get_string(): String is empty!");
 
   return str;
 }

@@ -1,3 +1,4 @@
+
 section Traps
 {
 	smasher     = ../images/traps/smasher.tga   (type=surface, x=0, y=0, width=282, height=189, array=6x1);

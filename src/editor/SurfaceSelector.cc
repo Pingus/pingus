@@ -1,4 +1,4 @@
-//  $Id: SurfaceSelector.cc,v 1.7 2000/07/04 22:59:13 grumbel Exp $
+//  $Id: SurfaceSelector.cc,v 1.8 2000/07/14 12:18:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,6 +29,9 @@ SurfaceSelector::SurfaceSelector(vector<surface_obj>* s)
   y_of = 0;
   sur_list = s;
   font = PingusResource::load_font("Fonts/courier_small", "fonts");
+
+  width = CL_Display::get_width() - (CL_Display::get_width() % 50);
+  height = (sur_list->size() / (CL_Display::get_width() / 50)) * 50;
 }
 
 SurfaceSelector::~SurfaceSelector()
@@ -102,9 +105,9 @@ SurfaceSelector::draw()
 	}
     }
 
-  Display::draw_rect(CL_Display::get_width() - 16, y/10,
-		     CL_Display::get_width(), y+1/10,
-		     1.0, 1.0, 1.0, 1.0);
+  //Display::draw_rect(CL_Display::get_width() - 16, y/10,
+  //CL_Display::get_width(), y+1/10,
+  //1.0, 1.0, 1.0, 1.0);
 
   // Draw the current object in the bottom/left corner
   if (c_obj != vector<surface_obj>::iterator())
@@ -132,6 +135,8 @@ SurfaceSelector::scroll()
     }
   
   if (y_of < 0) y_of = 0;    
+
+  if (y_of > height) y_of = height;
 }
 
 string

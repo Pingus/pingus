@@ -1,4 +1,4 @@
-//  $Id: ObjectSelector.cc,v 1.25 2000/07/11 15:53:57 grumbel Exp $
+//  $Id: ObjectSelector.cc,v 1.26 2000/07/14 12:18:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -110,6 +110,8 @@ ObjectSelector::get_trap()
 	  trap.name = "bumper";
 	  have_name = true;
 	  break;
+	case CL_KEY_ESCAPE:
+	  return 0;
 	}
     }
 
@@ -413,6 +415,9 @@ ObjectSelector::read_string(string description, string def_str)
 /*
 
 $Log: ObjectSelector.cc,v $
+Revision 1.26  2000/07/14 12:18:50  grumbel
+Fixed misc glitches for the 0.4.0 release
+
 Revision 1.25  2000/07/11 15:53:57  grumbel
 Added surface selectors to all insert functions in the editor, no more typing of resource names required
 Fixed misc bugs in the resource handling, time to rewrite that to use XML...

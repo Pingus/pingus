@@ -10,8 +10,8 @@ section Buttons
 	load        = ../images/buttons/load.tga         (type=surface, x=0, y=0, width=200, height=105);
 	load_p      = ../images/buttons/load_p.tga       (type=surface, x=0, y=0, width=200, height=105);
 
-	quit        = ../images/buttons/quit.tga         (type=surface, x=0, y=0, width=189, height=98);
-	quit_p      = ../images/buttons/quit_p.tga       (type=surface, x=0, y=0, width=189, height=98);
+	quit        = ../images/buttons/quit.tga         (type=surface, x=0, y=0, width=191, height=100);
+	quit_p      = ../images/buttons/quit_p.tga       (type=surface, x=0, y=0, width=191, height=100);
 
 	play        = ../images/buttons/play.tga         (type=surface, x=0, y=0, width=196, height=97);
 	play_p      = ../images/buttons/play_p.tga       (type=surface, x=0, y=0, width=196, height=97);

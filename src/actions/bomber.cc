@@ -1,4 +1,4 @@
-//  $Id: bomber.cc,v 1.8 2000/05/24 15:41:52 grumbel Exp $
+//  $Id: bomber.cc,v 1.9 2000/07/14 12:18:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -115,7 +115,7 @@ Bomber::let_move()
     return;
 
   if (counter > 9 && !sound_played) {
-    PingusSound::play_wav(find_file(pingus_datadir, "sound/EXPLODE.WAV"));
+    PingusSound::play_wav("sound/EXPLODE.WAV");
     sound_played = true;
   }
 

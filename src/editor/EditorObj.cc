@@ -1,4 +1,4 @@
-// $Id: EditorObj.cc,v 1.8 2000/06/23 18:39:56 grumbel Exp $
+// $Id: EditorObj.cc,v 1.9 2000/07/14 12:18:50 grumbel Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -182,9 +182,55 @@ EditorObj::status_line()
 {
   return "Object status not know - I am a bug...";
 }
+
+/***************/
+/* EditorGroup */
+/***************/
+
+EditorGroup::EditorGroup()
+{
+}
+
+EditorGroup::~EditorGroup()
+{
+  for(list<EditorObj*>::iterator i = objs.begin();
+      i != objs.end();
+      i++)
+    {
+      delete *i;
+    }
+}
+
+void
+EditorGroup::save(std::ofstream* plf, std::ofstream* psm)
+{
+  for(list<EditorObj*>::iterator i = objs.begin();
+      i != objs.end();
+      i++)
+    {
+      (*i)->save(plf, psm);
+    }
+}
+
+EditorObj* 
+EditorGroup::duplicate()
+{
+  EditorObj* editor_obj = new EditorGroup();
+  
+  for(list<EditorObj*>::iterator i = objs.begin();
+      i != objs.end();
+      i++)
+    {
+      editor_obj->objs.push_back((*i)->duplicate());
+    }
+  return editor_obj;
+}
   
 /*
 $Log: EditorObj.cc,v $
+Revision 1.9  2000/07/14 12:18:50  grumbel
+Fixed misc glitches for the 0.4.0 release
+
 Revision 1.8  2000/06/23 18:39:56  grumbel
 Applied Michaels win32 patch... ^M's suck...
 
