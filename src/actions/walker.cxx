@@ -1,4 +1,4 @@
-//  $Id: walker.cxx,v 1.3 2002/06/24 09:40:59 grumbel Exp $
+//  $Id: walker.cxx,v 1.4 2002/06/24 12:30:02 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -62,17 +62,36 @@ Walker::update(float delta)
   // FIXME: pingu environment needs to get reviewed
   pingu->environment = ENV_LAND;
 
+  // The Pingu stands no longer on ground, the cause for this could be
+  // a digger, miner or a bomber
   if (rel_getpixel(0, -1) == ColMap::NOTHING)
     { 
-      // The Pingu stands no longer on ground, so its time to fall
-      pingu->set_action ("faller");
-      return;
+      // We search for the nearest ground below the pingu, if we can't
+      // find anything within a few pixels, we will turn into a faller
+      bool found_ground = false;
+      int i;
+      for (i = -2; i > -5; --i)
+	{
+	  if (!(rel_getpixel(0, i) == ColMap::NOTHING))
+	    {
+	      found_ground = true;
+	      break;
+	    }
+	}
+	
+      if (found_ground)
+	{
+	  pingu->pos.y -= i;
+	}
+      else
+	{
+	  pingu->set_action ("faller");
+	  return;
+	}
     }
-  /*  else if (rel_getpixel(1, 0) == ColMap::NOTHING)
-    { // if infront is free
-      pingu->pos.x += pingu->direction;
-    }*/
-  else if (rel_getpixel(1, 0) & ColMap::BRIDGE
+
+  
+  if (rel_getpixel(1, 0) & ColMap::BRIDGE
 	   && !head_collision_on_walk(1, 1))  // bridge
     {
       // simple, stupid, but working bridge code
@@ -95,7 +114,7 @@ Walker::update(float delta)
       // we can continue walking up. search for the correct y_pos
       int y_inc = 0;
       bool found_next_step = false;
-      for(y_inc=-max_steps; y_inc <= max_steps; y_inc++) // up-hill
+       for(y_inc=-max_steps; y_inc <= max_steps; y_inc++) // up-hill
 	if (rel_getpixel(1, y_inc) == ColMap::NOTHING
 	    && rel_getpixel(1, y_inc - 1) != ColMap::NOTHING)
 	  {
