@@ -1,4 +1,4 @@
-//  $Id: pointer.hxx,v 1.2 2002/07/04 10:57:46 torangan Exp $
+//  $Id: pointer.hxx,v 1.3 2002/07/04 15:14:00 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,11 +24,12 @@ namespace Input
 {
   class Pointer
   {
-  private:
-    
   public:
-    virtual int get_x_pos () =0;
-    virtual int get_y_pos () =0;
+
+    virtual ~Pointer() { }  
+    virtual float get_x_pos () =0;
+    virtual float get_y_pos () =0;
+    virtual void  update () =0;
   };
 }
 
