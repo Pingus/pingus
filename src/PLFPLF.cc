@@ -1,4 +1,4 @@
-//  $Id: PLFPLF.cc,v 1.13 2001/08/16 17:46:51 grumbel Exp $
+//  $Id: PLFPLF.cc,v 1.14 2002/06/08 23:11:07 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,11 +17,8 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <iostream>
 #include <cstdio>
 #include <cstdlib>
-#include <string>
-#include <fstream>
 
 #include "PLF.hh"
 #include "algo.hh"

@@ -1,4 +1,4 @@
-//  $Id: PingusMenu.hh,v 1.21 2002/06/07 14:50:34 torangan Exp $
+//  $Id: PingusMenu.hh,v 1.22 2002/06/08 23:11:08 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,10 +21,6 @@
 #define PINGUSMENU_HH
 
 #include <list>
-#include <ClanLib/core.h>
-#include <boost/smart_ptr.hpp>
-
-#include "PingusSubMenu.hh"
 #include "SurfaceButton.hh"
 #include "OptionMenu.hh"
 #include "AlphaButton.hh"

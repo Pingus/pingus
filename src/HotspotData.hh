@@ -1,4 +1,4 @@
-//  $Id: HotspotData.hh,v 1.7 2002/06/08 20:19:53 torangan Exp $
+//  $Id: HotspotData.hh,v 1.8 2002/06/08 23:11:07 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,6 @@
 #ifndef HOTSPOT_DATA_HH
 #define HOTSPOT_DATA_HH
 
-#include <iosfwd>
 #include <ClanLib/core.h>
 #include "ResDescriptor.hh"
 #include "WorldObjData.hh"

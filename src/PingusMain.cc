@@ -1,4 +1,4 @@
-//   $Id: PingusMain.cc,v 1.60 2002/06/05 17:51:08 grumbel Exp $
+//   $Id: PingusMain.cc,v 1.61 2002/06/08 23:11:07 torangan Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -23,9 +23,6 @@
 //   along with this program; if not, write to the Free Software
 //   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-#include <iostream>
-#include <string>
-#include <fstream>
 #include <sys/stat.h>
 
 #include <signal.h>
@@ -39,18 +36,15 @@
 #  include "win32/getopt.h"
 #endif /* !WIN32 */
 
-#include <ClanLib/core.h>
 #include <ClanLib/jpeg.h>
 
 #ifdef HAVE_LIBCLANGL
 # include <ClanLib/gl.h>
 #endif
 
-#include <boost/smart_ptr.hpp>
 
 /* Headers needed for i18n / gettext */
 #include <clocale>
-#include <config.h>
 #include "my_gettext.hh"
 
 // #include "efence.h"

@@ -1,4 +1,4 @@
-//  $Id: PLFParser.cc,v 1.12 2001/06/11 08:45:21 grumbel Exp $
+//  $Id: PLFParser.cc,v 1.13 2002/06/08 23:11:07 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,8 +20,6 @@
 #include <iostream>
 #include <cstdio>
 #include <cstdlib>
-#include <string>
-#include <fstream>
 
 #include "StringConverter.hh"
 #include "PLFParser.hh"

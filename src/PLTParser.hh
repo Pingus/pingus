@@ -1,4 +1,4 @@
-//  $Id: PLTParser.hh,v 1.5 2000/06/18 17:01:50 grumbel Exp $
+//  $Id: PLTParser.hh,v 1.6 2002/06/08 23:11:07 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,6 @@
 #define PLTPARSER_HH
 
 #include <fstream>
-#include <string>
 #include <vector>
 
 #include "ResDescriptor.hh"

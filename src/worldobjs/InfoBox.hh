@@ -1,4 +1,4 @@
-//  $Id: InfoBox.hh,v 1.4 2002/06/08 20:19:55 torangan Exp $
+//  $Id: InfoBox.hh,v 1.5 2002/06/08 23:11:09 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,6 @@
 #ifndef INFOBOX_HH
 #define INFOBOX_HH
 
-#include <ClanLib/core.h>
 #include "../WorldObj.hh"
 #include "../WorldObjData.hh"
 #include "../editor/SpriteEditorObj.hh"

@@ -1,4 +1,4 @@
-//  $Id: basher.cc,v 1.29 2002/06/08 20:19:54 torangan Exp $
+//  $Id: basher.cc,v 1.30 2002/06/08 23:11:08 torangan Exp $
 //
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -21,7 +21,6 @@
 #include "../World.hh"
 #include "../PingusResource.hh"
 #include "../particles/GroundParticle.hh"
-#include "../algo.hh"
 #include "../globals.hh"
 #include "../Pingu.hh"
 #include "basher.hh"

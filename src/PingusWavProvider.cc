@@ -1,4 +1,4 @@
-//  $Id: PingusWavProvider.cc,v 1.9 2002/06/01 18:05:35 torangan Exp $
+//  $Id: PingusWavProvider.cc,v 1.10 2002/06/08 23:11:08 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,6 @@
 #include <config.h>
 #include <iostream>
 #include "globals.hh"
-#include "audio.hh"
 #include "PingusError.hh"
 #include "PingusWavProvider.hh"
 

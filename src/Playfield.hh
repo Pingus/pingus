@@ -1,4 +1,4 @@
-//  $Id: Playfield.hh,v 1.25 2002/06/08 21:43:36 grumbel Exp $
+//  $Id: Playfield.hh,v 1.26 2002/06/08 23:11:08 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,10 +20,7 @@
 #ifndef PLAYFIELD_HH
 #define PLAYFIELD_HH
 
-#include <ClanLib/core.h>
-
 #include "ButtonPanel.hh"
-#include "GuiObj.hh"
 #include "View.hh"
 #include "Client.hh"
 #include "Controller.hh"

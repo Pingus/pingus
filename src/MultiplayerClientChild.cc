@@ -1,4 +1,4 @@
-//  $Id: MultiplayerClientChild.cc,v 1.11 2002/06/08 16:08:16 grumbel Exp $
+//  $Id: MultiplayerClientChild.cc,v 1.12 2002/06/08 23:11:07 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,7 +17,6 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "Display.hh"
 #include "MultiplayerClientChild.hh"
 
 using boost::shared_ptr;

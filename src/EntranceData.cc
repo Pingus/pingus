@@ -1,4 +1,4 @@
-//  $Id: EntranceData.cc,v 1.6 2002/06/08 21:43:36 grumbel Exp $
+//  $Id: EntranceData.cc,v 1.7 2002/06/08 23:11:07 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,11 +17,9 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "Entrance.hh"
 #include "entrances/WoodThing.hh"
 #include "entrances/Cloud.hh"
 #include "editor/PLFObj.hh"
-#include "EntranceData.hh"
 #include "PingusError.hh"
 #include "StringConverter.hh"
 #include "XMLhelper.hh"

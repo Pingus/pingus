@@ -1,4 +1,4 @@
-//  $Id: PingusSound.cc,v 1.21 2001/11/18 12:43:19 grumbel Exp $
+//  $Id: PingusSound.cc,v 1.22 2002/06/08 23:11:08 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,6 @@
 
 #include "globals.hh"
 #include "PingusSoundDummy.hh"
-#include "PingusSound.hh"
 
 PingusSound* PingusSound::sound;
 

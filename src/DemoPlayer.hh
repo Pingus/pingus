@@ -1,4 +1,4 @@
-//  $Id: DemoPlayer.hh,v 1.2 2000/06/18 17:01:49 grumbel Exp $
+//  $Id: DemoPlayer.hh,v 1.3 2002/06/08 23:11:07 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,6 @@
 #define DEMOPLAYER_HH
 
 #include <queue>
-#include <string>
 
 #include "Server.hh"
 

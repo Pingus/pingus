@@ -1,4 +1,4 @@
-//  $Id: Client.cc,v 1.81 2002/06/08 18:39:57 grumbel Exp $
+//  $Id: Client.cc,v 1.82 2002/06/08 23:11:07 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,7 +38,6 @@
 #include "SmallMap.hh"
 #include "PLF.hh"
 #include "HurryUp.hh"
-#include "DeltaManager.hh"
 #include "MouseController.hh"
 #include "PathManager.hh"
 #include "GamepadController.hh"

@@ -1,4 +1,4 @@
-//  $Id: IceBlock.hh,v 1.20 2002/06/08 20:19:55 torangan Exp $
+//  $Id: IceBlock.hh,v 1.21 2002/06/08 23:11:09 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,6 @@
 #ifndef ICEBLOCK_HH
 #define ICEBLOCK_HH
 
-#include <iosfwd>
 #include <ClanLib/core.h>
 
 #include "../WorldObjData.hh"

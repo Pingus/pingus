@@ -1,4 +1,4 @@
-//  $Id: PSMParser.cc,v 1.20 2001/08/31 07:51:51 grumbel Exp $
+//  $Id: PSMParser.cc,v 1.21 2002/06/08 23:11:07 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,7 +17,6 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <fstream>
 #include <cstdio>
 
 #include "globals.hh"

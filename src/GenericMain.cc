@@ -1,4 +1,4 @@
-//  $Id: GenericMain.cc,v 1.18 2002/06/07 19:10:33 grumbel Exp $
+//  $Id: GenericMain.cc,v 1.19 2002/06/08 23:11:07 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,9 +25,7 @@
 #include <ClanLib/png.h>
 
 #include "System.hh"
-//#include "war/WarMain.hh"
 #include "PingusMain.hh"
-#include "GenericMain.hh"
 
 /* Headers needed for i18n / gettext */
 #include <clocale>

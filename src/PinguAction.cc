@@ -1,4 +1,4 @@
-//  $Id: PinguAction.cc,v 1.23 2002/06/08 20:19:53 torangan Exp $
+//  $Id: PinguAction.cc,v 1.24 2002/06/08 23:11:07 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,7 +22,6 @@
 #include "PingusError.hh"
 #include "World.hh"
 #include "PingusResource.hh"
-#include "PinguAction.hh"
 #include "Pingu.hh"
 
 // Initialise class static.

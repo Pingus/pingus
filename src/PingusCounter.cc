@@ -1,4 +1,4 @@
-//  $Id: PingusCounter.cc,v 1.11 2002/06/08 20:19:53 torangan Exp $
+//  $Id: PingusCounter.cc,v 1.12 2002/06/08 23:11:07 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,7 +18,6 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <cstdio>
-#include <ClanLib/core.h>
 
 #include "globals.hh"
 #include "PingusResource.hh"

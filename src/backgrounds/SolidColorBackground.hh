@@ -1,4 +1,4 @@
-//  $Id: SolidColorBackground.hh,v 1.15 2002/06/08 21:43:36 grumbel Exp $
+//  $Id: SolidColorBackground.hh,v 1.16 2002/06/08 23:11:08 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,6 @@
 #define SOLIDCOLORBACKGROUND_HH
 
 #include "../StringConverter.hh"
-#include "../boost/smart_ptr.hpp"
 #include "../Color.hh"
 #include "../WorldObj.hh"
 #include "../WorldObjData.hh"

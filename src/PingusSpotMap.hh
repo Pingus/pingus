@@ -1,4 +1,4 @@
-//  $Id: PingusSpotMap.hh,v 1.20 2002/06/08 20:19:54 torangan Exp $
+//  $Id: PingusSpotMap.hh,v 1.21 2002/06/08 23:11:08 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,9 +21,7 @@
 #ifndef PingusSpotMap_HH
 #define PingusSpotMap_HH
 
-#include <string>
 #include <vector>
-#include <ClanLib/display.h>
 
 #include "globals.hh"
 #include "PinguMap.hh"

@@ -1,4 +1,4 @@
-//  $Id: RainParticle.hh,v 1.7 2001/08/12 18:36:42 grumbel Exp $
+//  $Id: RainParticle.hh,v 1.8 2002/06/08 23:11:09 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,6 @@
 #ifndef RAINPARTICLE_HH
 #define RAINPARTICLE_HH
 
-#include <ClanLib/core.h>
 #include "../Sprite.hh"
 #include "Particle.hh"
 

@@ -1,4 +1,4 @@
-//  $Id: SmallMap.cc,v 1.42 2002/06/08 21:43:36 grumbel Exp $
+//  $Id: SmallMap.cc,v 1.43 2002/06/08 23:11:08 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,8 +18,6 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <vector>
-#include <algorithm>
-#include "boost/smart_ptr.hpp"
 #include "ExitData.hh"
 #include "EntranceData.hh"
 

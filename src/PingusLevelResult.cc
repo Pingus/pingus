@@ -1,4 +1,4 @@
-//  $Id: PingusLevelResult.cc,v 1.25 2001/12/05 09:15:51 grumbel Exp $
+//  $Id: PingusLevelResult.cc,v 1.26 2002/06/08 23:11:07 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,7 +18,6 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <cstdio>
-#include <ClanLib/core.h>
 
 #include "globals.hh"
 #include "PingusResource.hh"

@@ -1,4 +1,4 @@
-//  $Id: PLTXML.hh,v 1.11 2002/06/08 20:19:53 torangan Exp $
+//  $Id: PLTXML.hh,v 1.12 2002/06/08 23:11:07 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,6 @@
 #define PLTXML_HH
 
 #include <vector>
-#include <string>
 #include <map>
 #include "backgrounds/SurfaceBackgroundData.hh"
 

@@ -1,4 +1,4 @@
-//  $Id: PingusSoundReal.cc,v 1.19 2002/06/08 20:19:54 torangan Exp $
+//  $Id: PingusSoundReal.cc,v 1.20 2002/06/08 23:11:08 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,14 +17,16 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <config.h>
-
-#include <string>
 #include <iostream>
 
 // Needed cause of missing include in some sound file...
 #include <ClanLib/core.h>
 #include <ClanLib/sound.h>
+
+#include "globals.hh"
+#include "PingusError.hh"
+#include "PingusSoundReal.hh"
+
 
 #ifdef HAVE_LIBCLANVORBIS
 #  include <ClanLib/vorbis.h>
@@ -32,11 +34,8 @@
 
 #ifdef HAVE_LIBCLANMIKMOD
 #  include <ClanLib/mikmod.h>
+#  include <ClanLib/MikMod/setupmikmod.h>
 #endif
-
-#include "globals.hh"
-#include "PingusError.hh"
-#include "PingusSoundReal.hh"
 
 PingusSoundReal::PingusSoundReal ()
   : sample (0), music (0)

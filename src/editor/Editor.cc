@@ -1,4 +1,4 @@
-//  $Id: Editor.cc,v 1.42 2002/06/07 20:35:14 torangan Exp $
+//  $Id: Editor.cc,v 1.43 2002/06/08 23:11:08 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,8 +18,6 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <cstdio>
-#include <algorithm>
-#include <ClanLib/core.h>
 
 #include "../algo.hh"
 #include "../globals.hh"
@@ -28,7 +26,6 @@
 #include "../Display.hh"
 #include "../PingusResource.hh"
 #include "../System.hh"
-#include "EditorObj.hh"
 #include "Editor.hh"
 #include "EditorEvent.hh"
 #include "Panel.hh"
@@ -36,7 +33,6 @@
 #include "StatusLine.hh"
 #include "ObjectSelector.hh"
 #include "ObjectManager.hh"
-#include "../ActionData.hh"
 
 Editor* Editor::instance_ = 0;
 

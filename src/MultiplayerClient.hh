@@ -1,4 +1,4 @@
-//  $Id: MultiplayerClient.hh,v 1.8 2002/06/07 20:35:14 torangan Exp $
+//  $Id: MultiplayerClient.hh,v 1.9 2002/06/08 23:11:07 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,8 +20,6 @@
 #ifndef MULTIPLAYERCLIENT_HH
 #define MULTIPLAYERCLIENT_HH
 
-#include <vector>
-#include "GuiObj.hh"
 #include "MultiplayerClientChild.hh"
 
 namespace boost {

@@ -1,4 +1,4 @@
-//  $Id: GroundpieceData.hh,v 1.13 2002/06/08 20:19:53 torangan Exp $
+//  $Id: GroundpieceData.hh,v 1.14 2002/06/08 23:11:07 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,6 @@
 #ifndef GROUNDPIECEDATA_HH
 #define GROUNDPIECEDATA_HH
 
-#include <iosfwd>
 #include <ClanLib/core.h>
 #include <ClanLib/display.h>
 

@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapGraph.cc,v 1.32 2002/06/06 14:05:44 grumbel Exp $
+//  $Id: PingusWorldMapGraph.cc,v 1.33 2002/06/08 23:11:09 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,12 +17,8 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <ClanLib/core.h>
-#include <ClanLib/display.h>
-
 #include "../System.hh"
 #include "../my_gettext.hh"
-#include "../globals.hh"
 #include "../PingusError.hh"
 #include "../PathManager.hh"
 #include "../XMLPLF.hh"

@@ -1,4 +1,4 @@
-//  $Id: smasher.cc,v 1.32 2002/06/08 16:08:16 grumbel Exp $
+//  $Id: smasher.cc,v 1.33 2002/06/08 23:11:09 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,9 +27,7 @@
 #include "../particles/ParticleHolder.hh"
 #include "../actions/Splashed.hh"
 #include "../algo.hh"
-#include "../GroundpieceData.hh"
 #include "smasher.hh"
-#include "../boost/smart_ptr.hpp"
 
 using boost::shared_ptr;
 

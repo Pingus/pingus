@@ -1,4 +1,4 @@
-//  $Id: PLFPLF.hh,v 1.6 2001/08/16 17:46:51 grumbel Exp $
+//  $Id: PLFPLF.hh,v 1.7 2002/06/08 23:11:07 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,9 +20,7 @@
 #ifndef PLFPLF_HH
 #define PLFPLF_HH
 
-#include <fstream>
 #include <iostream>
-#include <string>
 #include <vector>
 
 #include "PLF.hh"

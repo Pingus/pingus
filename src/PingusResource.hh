@@ -1,4 +1,4 @@
-//  $Id: PingusResource.hh,v 1.10 2002/06/08 20:19:54 torangan Exp $
+//  $Id: PingusResource.hh,v 1.11 2002/06/08 23:11:08 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,6 @@
 #ifndef PINGUSRESOURCE_HH
 #define PINGUSRESOURCE_HH
 
-#include <string>
 #include <map>
 
 #include <ClanLib/display.h>

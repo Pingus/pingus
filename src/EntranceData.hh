@@ -1,4 +1,4 @@
-//  $Id: EntranceData.hh,v 1.9 2002/06/08 20:19:53 torangan Exp $
+//  $Id: EntranceData.hh,v 1.10 2002/06/08 23:11:07 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,8 +20,6 @@
 #ifndef ENTRANCE_DATA_HH
 #define ENTRANCE_DATA_HH
 
-#include <string>
-#include <iosfwd>
 #include <ClanLib/Core/Math/cl_vector.h>
 #include "WorldObjData.hh"
 #include "ResDescriptor.hh"

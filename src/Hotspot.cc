@@ -1,4 +1,4 @@
-//  $Id: Hotspot.cc,v 1.10 2001/08/10 10:56:13 grumbel Exp $
+//  $Id: Hotspot.cc,v 1.11 2002/06/08 23:11:07 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,7 +19,6 @@
 
 #include <cstdio>
 #include <iostream>
-#include <ClanLib/display.h>
 
 #include "Hotspot.hh"
 #include "globals.hh"

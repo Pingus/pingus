@@ -1,4 +1,4 @@
-//  $Id: SurfaceBackgroundData.cc,v 1.17 2002/06/08 20:19:54 torangan Exp $
+//  $Id: SurfaceBackgroundData.cc,v 1.18 2002/06/08 23:11:08 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,6 @@
 #include "../XMLhelper.hh"
 #include "../StringConverter.hh"
 #include "SurfaceBackground.hh"
-#include "SurfaceBackgroundData.hh"
 
 SurfaceBackgroundData::SurfaceBackgroundData()
 {

@@ -1,4 +1,4 @@
-//  $Id: SolidColorBackground.cc,v 1.12 2002/06/01 18:05:36 torangan Exp $
+//  $Id: SolidColorBackground.cc,v 1.13 2002/06/08 23:11:08 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,7 +17,6 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <ClanLib/core.h>
 #include <ClanLib/display.h>
 #include "SolidColorBackground.hh"
 #include "../XMLhelper.hh"

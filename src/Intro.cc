@@ -1,4 +1,4 @@
-//  $Id: Intro.cc,v 1.22 2001/12/05 09:15:50 grumbel Exp $
+//  $Id: Intro.cc,v 1.23 2002/06/08 23:11:07 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,7 +23,6 @@
 #include "globals.hh"
 #include "Loading.hh"
 #include "algo.hh"
-#include "Story.hh"
 #include "Intro.hh"
 
 /* Headers needed for i18n / gettext */

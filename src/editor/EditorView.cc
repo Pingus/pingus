@@ -1,4 +1,4 @@
-//  $Id: EditorView.cc,v 1.13 2002/06/07 20:35:14 torangan Exp $
+//  $Id: EditorView.cc,v 1.14 2002/06/08 23:11:08 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,7 +19,6 @@
 
 #include "../Sprite.hh"
 #include "EditorView.hh"
-#include <ClanLib/display.h>
 
 EditorView::EditorView (int x1, int y1, int x2, int y2, 
 			int /*x_offset*/, int /*y_offset*/)

@@ -1,4 +1,4 @@
-//  $Id: Panel.cc,v 1.15 2002/06/01 18:05:36 torangan Exp $
+//  $Id: Panel.cc,v 1.16 2002/06/08 23:11:08 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,6 @@
 #include "../globals.hh"
 #include "../PingusResource.hh"
 #include "PanelIcons.hh"
-#include "Panel.hh"
 
 Editor* PanelIcon::editor;
 

@@ -1,4 +1,4 @@
-//  $Id: Story.cc,v 1.14 2002/06/06 14:05:44 grumbel Exp $
+//  $Id: Story.cc,v 1.15 2002/06/08 23:11:08 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,13 +17,8 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <vector>
-#include <string>
-
-#include "worldmap/PingusWorldMapManager.hh"
 #include "Display.hh"
 #include "DeltaManager.hh"
-#include "LayerManager.hh"
 #include "PingusResource.hh"
 #include "PingusMenuManager.hh"
 #include "Story.hh"

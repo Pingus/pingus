@@ -1,4 +1,4 @@
-//  $Id: PingusMenuManager.cc,v 1.8 2002/06/07 14:50:34 torangan Exp $
+//  $Id: PingusMenuManager.cc,v 1.9 2002/06/08 23:11:08 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,7 +23,6 @@
 #include "Intro.hh"
 #include "PingusResource.hh"
 #include "PingusMenu.hh"
-#include "ExitMenu.hh"
 #include "FadeOut.hh"
 #include "PingusMenuManager.hh"
 

@@ -1,4 +1,4 @@
-//  $Id: CaptureRectangle.cc,v 1.18 2002/06/08 18:39:57 grumbel Exp $ 
+//  $Id: CaptureRectangle.cc,v 1.19 2002/06/08 23:11:07 torangan Exp $ 
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,14 +20,11 @@
 #include <iostream>
 #include <cstdio>
 #include <cassert>
-#include <boost/smart_ptr.hpp>
 
 #include "globals.hh"
 #include "Pingu.hh"
 #include "StringConverter.hh"
-#include "PinguAction.hh"
 #include "PingusResource.hh"
-#include "Sprite.hh"
 #include "CaptureRectangle.hh"
 
 using namespace boost;

@@ -1,4 +1,4 @@
-//  $Id: PSMParser.hh,v 1.13 2001/08/04 12:46:22 grumbel Exp $
+//  $Id: PSMParser.hh,v 1.14 2002/06/08 23:11:07 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,13 +20,9 @@
 #ifndef PSMPARSER_HH
 #define PSMPARSER_HH
 
-#include <string>
 #include <vector>
 #include <fstream>
-
-#include <ClanLib/core.h>
 #include "GroundpieceData.hh"
-#include "ResDescriptor.hh"
 
 ///
 struct PSMEOF {}///

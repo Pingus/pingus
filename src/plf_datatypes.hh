@@ -1,4 +1,4 @@
-//  $Id: plf_datatypes.hh,v 1.4 2000/12/16 23:11:20 grumbel Exp $
+//  $Id: plf_datatypes.hh,v 1.5 2002/06/08 23:11:08 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,9 +21,6 @@
 #define PLF_DATATYPES_HH
 
 #include <string>
-
-#include "Direction.hh"
-#include "ResDescriptor.hh"
 
 ///
 struct button_data

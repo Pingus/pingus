@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapNodeData.cc,v 1.3 2002/06/08 20:19:55 torangan Exp $
+//  $Id: PingusWorldMapNodeData.cc,v 1.4 2002/06/08 23:11:09 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,6 @@
 #include "../StringConverter.hh"
 #include "../XMLhelper.hh"
 #include "PingusWorldMapNode.hh"
-#include "PingusWorldMapNodeData.hh"
 
 using namespace Pingus::WorldMap;
 

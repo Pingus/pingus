@@ -1,4 +1,4 @@
-//  $Id: StringReader.cc,v 1.12 2002/06/04 13:43:19 torangan Exp $
+//  $Id: StringReader.cc,v 1.13 2002/06/08 23:11:08 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,7 +19,6 @@
 
 #include "../Console.hh"
 #include "../PingusResource.hh"
-#include "../Display.hh"
 #include "StringReader.hh"
 
 StringReader::StringReader()

@@ -1,4 +1,4 @@
-//  $Id: Spike.cc,v 1.16 2002/06/08 16:08:16 grumbel Exp $
+//  $Id: Spike.cc,v 1.17 2002/06/08 23:11:09 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,7 +17,6 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "../PinguEnums.hh"
 #include "../PingusResource.hh"
 #include "../PinguHolder.hh"
 #include "../World.hh"

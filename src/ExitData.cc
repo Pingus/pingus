@@ -1,4 +1,4 @@
-//  $Id: ExitData.cc,v 1.9 2002/06/08 21:43:36 grumbel Exp $
+//  $Id: ExitData.cc,v 1.10 2002/06/08 23:11:07 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,7 +19,6 @@
 
 #include "Exit.hh"
 #include "editor/PLFObj.hh"
-#include "ExitData.hh"
 #include "StringConverter.hh"
 #include "XMLhelper.hh"
 

@@ -1,4 +1,4 @@
-//  $Id: MultiplayerGame.cc,v 1.7 2002/06/07 19:10:33 grumbel Exp $
+//  $Id: MultiplayerGame.cc,v 1.8 2002/06/08 23:11:07 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,15 +17,10 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "DeltaManager.hh"
-#include "boost/smart_ptr.hpp"
-#include "Server.hh"
 #include "PathManager.hh"
 #include "TrueServer.hh"
-#include "MultiplayerClientChild.hh"
 #include "MultiplayerClient.hh"
 #include "XMLPLF.hh"
-#include "Controller.hh"
 #include "MouseController.hh"
 #include "GamepadController.hh"
 #include "KeyboardController.hh"

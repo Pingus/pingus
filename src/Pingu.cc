@@ -1,4 +1,4 @@
-//  $Id: Pingu.cc,v 1.73 2002/06/08 20:19:53 torangan Exp $
+//  $Id: Pingu.cc,v 1.74 2002/06/08 23:11:07 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,11 +20,8 @@
 #include <cassert>
 #include <cstdio>
 #include <cmath>
-#include <ClanLib/core.h>
-#include <boost/smart_ptr.hpp>
 
-using namespace boost;
-
+#include "boost/smart_ptr.hpp"
 #include "actions/Drown.hh"
 #include "actions/Splashed.hh"
 #include "actions/LaserKill.hh"
@@ -113,7 +110,7 @@ Pingu::set_pos(const CL_Vector& arg_pos)
 // Set the action of the pingu (bridger, blocker, bomber, etc.)
 // This function is used by external stuff, like the ButtonPanel, etc
 int
-Pingu::set_action(shared_ptr<PinguAction> act)
+Pingu::set_action(boost::shared_ptr<PinguAction> act)
 {
   assert(act.get());
 
@@ -140,7 +137,7 @@ Pingu::set_action(shared_ptr<PinguAction> act)
 		    << int(act->get_type() & (ActionType)WALL) << std::endl;
 	}
       
-      for(std::vector<shared_ptr<PinguAction> >::iterator i = persist.begin(); i != persist.end(); i++)
+      for(std::vector<boost::shared_ptr<PinguAction> >::iterator i = persist.begin(); i != persist.end(); i++)
 	{
 	  if ((*i)->get_name() == act->get_name()) 
 	    {
@@ -206,7 +203,7 @@ Pingu::set_paction(const std::string& action_name)
 
 // Sets an action without any checking
 void
-Pingu::set_paction(shared_ptr<PinguAction> act) 
+Pingu::set_paction(boost::shared_ptr<PinguAction> act) 
 {
   action = act;
   action->set_pingu(this);
@@ -400,7 +397,7 @@ Pingu::is_alive(void)
     return false;
 }
 
-shared_ptr<PinguAction>
+boost::shared_ptr<PinguAction>
 Pingu::get_action()
 {
   return action;

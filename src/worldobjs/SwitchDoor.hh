@@ -1,4 +1,4 @@
-//  $Id: SwitchDoor.hh,v 1.21 2002/06/08 20:19:55 torangan Exp $
+//  $Id: SwitchDoor.hh,v 1.22 2002/06/08 23:11:09 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,8 +20,6 @@
 #ifndef SWITCHDOOR_HH
 #define SWITCHDOOR_HH
 
-#include <ClanLib/core.h>
-#include "../boost/smart_ptr.hpp"
 #include "../WorldObj.hh"
 #include "../WorldObjData.hh"
 #include "../editor/SpriteEditorObj.hh"

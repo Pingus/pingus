@@ -1,4 +1,4 @@
-//  $Id: Server.cc,v 1.28 2002/06/08 22:38:32 grumbel Exp $
+//  $Id: Server.cc,v 1.29 2002/06/08 23:11:08 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,7 +31,6 @@
 #include "PingusError.hh"
 #include "PLF.hh"
 #include "StringConverter.hh"
-#include "boost/smart_ptr.hpp"
 #include "World.hh"
 
 using namespace std;
