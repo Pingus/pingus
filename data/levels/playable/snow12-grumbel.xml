@@ -2,7 +2,7 @@
 
 <pingus-level>
   <global>
-    <levelname lang="en">EditorDefaultValue: Please give me a name...</levelname>
+    <levelname lang="en">Two groups in parallel, coordinate wisely</levelname>
     <description lang="en">EditorDefaultValue: ...and a short description</description>
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
     <number-of-pingus>10</number-of-pingus>

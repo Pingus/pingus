@@ -2,8 +2,8 @@
 
 <pingus-level>
   <global>
-    <levelname lang="en">Snowmans land...</levelname>
-    <description lang="en">Insert long and boring story here...</description>
+    <levelname lang="en">Panic Island (float/bash)</levelname>
+    <description lang="en"></description>
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
     <number-of-pingus>40</number-of-pingus>
     <number-to-save>25</number-to-save>

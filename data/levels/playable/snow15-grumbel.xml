@@ -2,7 +2,7 @@
 
 <pingus-level>
   <global>
-    <levelname lang="en">Climb Climber, Climb!</levelname>
+    <levelname lang="en">Climb Climber,... Boom!</levelname>
     <description lang="en">A new action hits the street, if the Pingus
     face a large abstacle, they can sometimes try to climb over it</description>
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>

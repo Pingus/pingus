@@ -2,7 +2,7 @@
 
 <pingus-level>
   <global>
-    <levelname lang="en">Floater Tutorial - Float or Die</levelname>
+    <levelname lang="en">Float or Die</levelname>
     <description lang="en">In this level you will learn how to use the floater action</description>
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
     <number-of-pingus>20</number-of-pingus>

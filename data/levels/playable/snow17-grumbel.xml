@@ -73,7 +73,7 @@
   </resource></surface>
   <position>
     <x-pos>423</x-pos>
-    <y-pos>155</y-pos>
+    <y-pos>148</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -87,7 +87,7 @@
   </resource></surface>
   <position>
     <x-pos>371</x-pos>
-    <y-pos>212</y-pos>
+    <y-pos>205</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -101,7 +101,7 @@
   </resource></surface>
   <position>
     <x-pos>221</x-pos>
-    <y-pos>212</y-pos>
+    <y-pos>205</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -255,7 +255,7 @@
   </resource></surface>
   <position>
     <x-pos>205</x-pos>
-    <y-pos>156</y-pos>
+    <y-pos>149</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -269,7 +269,7 @@
   </resource></surface>
   <position>
     <x-pos>333</x-pos>
-    <y-pos>156</y-pos>
+    <y-pos>149</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -283,7 +283,7 @@
   </resource></surface>
   <position>
     <x-pos>397</x-pos>
-    <y-pos>156</y-pos>
+    <y-pos>149</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -421,7 +421,7 @@
   </resource></surface>
   <position>
     <x-pos>205</x-pos>
-    <y-pos>93</y-pos>
+    <y-pos>86</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -435,7 +435,7 @@
   </resource></surface>
   <position>
     <x-pos>200</x-pos>
-    <y-pos>91</y-pos>
+    <y-pos>84</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -449,7 +449,7 @@
   </resource></surface>
   <position>
     <x-pos>332</x-pos>
-    <y-pos>153</y-pos>
+    <y-pos>146</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -463,7 +463,7 @@
   </resource></surface>
   <position>
     <x-pos>394</x-pos>
-    <y-pos>154</y-pos>
+    <y-pos>147</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -603,7 +603,7 @@
   </resource></surface>
   <position>
     <x-pos>202</x-pos>
-    <y-pos>92</y-pos>
+    <y-pos>85</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -1120,7 +1120,7 @@
   </resource></surface>
   <position>
     <x-pos>269</x-pos>
-    <y-pos>156</y-pos>
+    <y-pos>149</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -1134,7 +1134,7 @@
   </resource></surface>
   <position>
     <x-pos>275</x-pos>
-    <y-pos>154</y-pos>
+    <y-pos>147</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -1157,7 +1157,7 @@
   <start-position>
   <position>
     <x-pos>360</x-pos>
-    <y-pos>247</y-pos>
+    <y-pos>240</y-pos>
     <z-pos>1000</z-pos>
   </position>
   </start-position>

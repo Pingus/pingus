@@ -2,7 +2,7 @@
 
 <pingus-level>
   <global>
-    <levelname lang="en">Jump'n Bump... aeh Bash...</levelname>
+    <levelname lang="en">Jump'n Bump... and Bash...</levelname>
     <description lang="en">Jump, Bash and try to reach the exit</description>
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
     <number-of-pingus>10</number-of-pingus>
@@ -46,6 +46,21 @@
     <z-pos>-150</z-pos>
   </position>
 </background>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>entrances</resource-datafile>
+  <resource-ident>entrances/snow_back</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>143.668</x-pos>
+    <y-pos>157.283</y-pos>
+    <z-pos>-50</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1</parallax>
+</hotspot>
 
 <worldobj type="groundpiece">
   <type>ground</type>
@@ -356,8 +371,8 @@
 
 <entrance>
   <position>
-    <x-pos>196</x-pos>
-    <y-pos>247</y-pos>
+    <x-pos>190</x-pos>
+    <y-pos>197</y-pos>
     <z-pos>0</z-pos>
   </position>
   <type>generic</type>
@@ -771,6 +786,21 @@
     <z-pos>0</z-pos>
   </position>
 </worldobj>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>entrances</resource-datafile>
+  <resource-ident>entrances/snow_front</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>143.688</x-pos>
+    <y-pos>157.332</y-pos>
+    <z-pos>100</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1</parallax>
+</hotspot>
 
   <start-position>
   <position>
