@@ -1,4 +1,4 @@
-//  $Id: display_graphic_context.cxx,v 1.7 2002/10/12 00:49:09 torangan Exp $
+//  $Id: display_graphic_context.cxx,v 1.8 2002/10/17 00:10:46 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -49,8 +49,11 @@ DisplayGraphicContext::set_offset (float x, float y)
 CL_Rect
 DisplayGraphicContext::get_clip_rect()
 {
-  assert (!"DisplayGraphicContext::get_clip_rect(): unimplemented");
-  return CL_Rect ();
+  // FIXME: Zooming isn't handled
+  // FIXME: This might be of-by-one
+  Vector pos = -offset - center;
+  return CL_Rect (int(pos.x), int(pos.y),
+                  int(pos.x + get_width () + 1), int(pos.y + get_height () + 1));
 }
 
 Vector

@@ -1,4 +1,4 @@
-//  $Id: smallmap.cxx,v 1.25 2002/10/16 09:14:45 grumbel Exp $
+//  $Id: smallmap.cxx,v 1.26 2002/10/17 00:10:46 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,6 +30,7 @@
 #include "pingu.hxx"
 #include "timer.hxx"
 #include "math.hxx"
+#include "globals.hxx"
 
 using namespace std;
 
@@ -96,6 +97,12 @@ SmallMap::init()
   
   cbuffer = static_cast<unsigned char*>(canvas->get_data());
 
+  int alpha;
+  if (fast_mode)
+    alpha = 255;
+  else
+    alpha = 150;
+
   int cmap_width  = colmap->get_width();
   int cmap_height = colmap->get_height();
 
@@ -114,7 +121,7 @@ SmallMap::init()
 	  switch (current_pixel)
             {
             case Groundtype::GP_NOTHING:
-	      cbuffer[i + 0] = 150;
+	      cbuffer[i + 0] = alpha;
               cbuffer[i + 1] = 0;
 	      cbuffer[i + 2] = 0;
 	      cbuffer[i + 3] = 0;

@@ -1,4 +1,4 @@
-//  $Id: action_button.cxx,v 1.18 2002/10/14 11:15:15 torangan Exp $
+//  $Id: action_button.cxx,v 1.19 2002/10/17 00:10:46 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -198,7 +198,8 @@ ArmageddonButton::draw (GraphicContext& gc)
     } 
   else 
     {
-      background.put_screen (x_pos, y_pos);
+      if (!fast_mode)
+        background.put_screen (x_pos, y_pos);
       surface.put_screen(x_pos, y_pos, 7);
     }
     
@@ -271,7 +272,8 @@ ForwardButton::draw (GraphicContext& gc)
     }
   else
     {
-      background.put_screen (x_pos, y_pos);
+      if (!fast_mode)
+        background.put_screen (x_pos, y_pos);
     }
 
   surface.put_screen(x_pos, y_pos);
@@ -315,7 +317,10 @@ PauseButton::draw (GraphicContext& gc)
   if (server->get_pause()) 
     backgroundhl.put_screen (x_pos, y_pos);
   else
-    background.put_screen (x_pos, y_pos);
+    {
+    if (!fast_mode)
+      background.put_screen (x_pos, y_pos);
+    }
   
   surface.put_screen(x_pos, y_pos);
   UNUSED_ARG(gc);

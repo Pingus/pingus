@@ -1,4 +1,4 @@
-//  $Id: pingus_counter.cxx,v 1.10 2002/10/04 16:54:04 grumbel Exp $
+//  $Id: pingus_counter.cxx,v 1.11 2002/10/17 00:10:46 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,6 +27,7 @@
 #include "pingu_holder.hxx"
 #include "server.hxx"
 #include "plf.hxx"
+#include "globals.hxx"
 
 PingusCounter::PingusCounter(Server* s)
   : server(s),
@@ -40,7 +41,8 @@ PingusCounter::draw(GraphicContext& gc)
 {
   char str[128];
 
-  background.put_screen (CL_Display::get_width ()/2 - background.get_width()/2, 0);
+  if (!fast_mode)
+    background.put_screen (CL_Display::get_width ()/2 - background.get_width()/2, 0);
   
   World* world = server->get_world();
   

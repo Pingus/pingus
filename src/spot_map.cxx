@@ -1,4 +1,4 @@
-//  $Id: spot_map.cxx,v 1.20 2002/10/07 23:53:41 grumbel Exp $
+//  $Id: spot_map.cxx,v 1.21 2002/10/17 00:10:46 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -148,9 +148,6 @@ PingusSpotMap::draw_colmap(GraphicContext& gc)
 void
 PingusSpotMap::draw(GraphicContext& gc)
 {
-  //std::cout << "Draw: " << " x_pos: " << x_pos << " y_pos: " 
-  //<< " w: " << w << " h: " << h << " s: " << s << std::endl;
-  
 #if 0
   { // calculate number of used/empty tiles
     int tiles_total = 0;
@@ -171,13 +168,9 @@ PingusSpotMap::draw(GraphicContext& gc)
     std::cout << "   " << float(tiles_used)/float(tiles_total) * 100.0f << "% of the map are used" << std::endl;
   }
 #endif
+  const CL_Rect& display = gc.get_clip_rect();
 
   // FIXME: delete the next four lines and replace them with gc.get_clip_rect()
-  int w = CL_Display::get_width ();
-  int h = CL_Display::get_height ();
-  int of_x = static_cast<int>(gc.get_x_offset () + (gc.get_width  ()/2));
-  int of_y = static_cast<int>(gc.get_y_offset () + (gc.get_height ()/2));
-
   if (draw_collision_map)
     {
       draw_colmap(gc);
@@ -185,19 +178,11 @@ PingusSpotMap::draw(GraphicContext& gc)
   else
     {
       // Trying to calc which parts of the tilemap needs to be drawn
-      int start_x = -of_x/tile_size;
-      int start_y = -of_y/tile_size;
-      unsigned int tilemap_width = w / tile_size;
-      unsigned int tilemap_height = h / tile_size + 1;
+      int start_x = Math::max(0, display.x1/tile_size);
+      int start_y = Math::max(0, display.y1/tile_size);
+      unsigned int tilemap_width  = display.get_width()  / tile_size + 1;
+      unsigned int tilemap_height = display.get_height() / tile_size + 1;
 
-      //	  std::cout  << " th: " << tilemap_height << " tw: " << tilemap_width << std::endl;
-
-      if (start_x < 0)
-	start_x = 0;
-      if (start_y < 0)
-	start_y = 0;
-
-      //unsigned int time = CL_System::get_time (); 
       // drawing the stuff
       for (TileIter x = start_x; 
 	   x <= (start_x + tilemap_width) && x < tile.size();
@@ -210,8 +195,13 @@ PingusSpotMap::draw(GraphicContext& gc)
 	      if (!tile[x][y].is_empty()) 
 		{
 		  gc.draw(tile[x][y].surface,
-			  x * tile_size, 
+			  x * tile_size,
 			  y * tile_size);
+#ifdef PINGUS_EARTHQUAKE
+		  gc.draw(tile[x][y].surface,
+			  x * tile_size + rand ()%20-10, 
+			  y * tile_size + rand ()%20-10);
+#endif
 		}
 	      else
 		{
@@ -222,7 +212,6 @@ PingusSpotMap::draw(GraphicContext& gc)
 		}
 	    }
 	}
-      //std::cout << "> time: " << CL_System::get_time() - time << std::endl;
     }
 }
 
