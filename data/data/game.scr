@@ -7,6 +7,7 @@ section Game
 //	logo        = ../images/misc/logo.pcx       (type=surface, x=0, y=0, width=640, height=480);
 
 	loading        = ../images/misc/loading.pcx       (type=surface, x=0, y=0, width=175, height=66,tcol=0);
+	pingubw = ../images/misc/pingubw.pcx (type=surface, x=0, y=0, width=307, height=400, tcol=0);
 }
 
 section Cursors

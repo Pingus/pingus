@@ -2,6 +2,9 @@ Last updated: Sat Jul 31 15:11:43 1999
 
 For 0.3.x
 ~~~~~~~~~
+Rewrite some of the map generation code
+Allow transparent hotspots
+
 Level replays gehen schief
 
 left/right buttons in Themes

@@ -88,7 +88,8 @@ section Exits {
 	ice        = ../images/exits/ice.pcx       (type=surface, x=0, y=0, width=64, height=64, tcol=0);
 	stone      = ../images/exits/stone.pcx     (type=surface, x=0, y=0, width=75, height=60, tcol=0);
 	desert     = ../images/exits/desertexit.pcx  (type=surface, x=0, y=0, width=150, height=100, tcol=0);
-	space     = ../images/exits/space1.tga  (type=surface, x=0, y=0, width=154, height=118, array=4x1);
+	space      = ../images/exits/space1.tga  (type=surface, x=0, y=0, width=154, height=118, array=4x1);
+	sweetexit  = ../images/exits/sweetexit.pcx (type=surface, x=0, y=0, width=180,  height=121, tcol=0);
 }
 
 section Entrances {
@@ -228,6 +229,36 @@ section GroundPieces
 		turfsmallbump    =  ../images/groundpieces/foliage/turfsmallbump.pcx   (type=surface, x=0, y=0, width=20,  height=16, tcol=0);
 		turfsmallnook    =  ../images/groundpieces/foliage/turfsmallnook.pcx   (type=surface, x=0, y=0, width=20,  height=17, tcol=0);
 		turftufty        = ../images/groundpieces/foliage/turftufty.pcx        (type=surface, x=0, y=0, width=20,  height=17, tcol=0);
+	}
+
+	section Sweets
+	{
+		allsort1          = ../images/groundpieces/sweets/allsort1.pcx (type=surface, x=0, y=0, width=61,  height=60, tcol=0);
+		allsort2          = ../images/groundpieces/sweets/allsort2.pcx (type=surface, x=0, y=0, width=67,  height=52, tcol=0);
+		aquachoc          = ../images/groundpieces/sweets/aquachoc.pcx (type=surface, x=0, y=0, width=150,  height=56, tcol=0);
+		canestalk         = ../images/groundpieces/sweets/canestalk.pcx (type=surface, x=0, y=0, width=15,  height=61, tcol=0);
+		canestub          = ../images/groundpieces/sweets/canestub.pcx (type=surface, x=0, y=0, width=16,  height=7, tcol=0);
+		canetop           = ../images/groundpieces/sweets/canetop.pcx (type=surface, x=0, y=0, width=115,  height=72, tcol=0);
+		chocbar           = ../images/groundpieces/sweets/chocbar.pcx (type=surface, x=0, y=0, width=300,  height=74, tcol=0);
+		chocbloc-lowleft  = ../images/groundpieces/sweets/chocbloc-lowleft.pcx (type=surface, x=0, y=0, width=64,  height=64, tcol=0);
+		chocbloc-lowright = ../images/groundpieces/sweets/chocbloc-lowright.pcx (type=surface, x=0, y=0, width=64,  height=64, tcol=0);
+		chocbloc-topleft  = ../images/groundpieces/sweets/chocbloc-topleft.pcx (type=surface, x=0, y=0, width=64,  height=64, tcol=0);
+		chocbloc-topright = ../images/groundpieces/sweets/chocbloc-topright.pcx (type=surface, x=0, y=0, width=64,  height=64, tcol=0);
+		chocbloc          = ../images/groundpieces/sweets/chocbloc.pcx (type=surface, x=0, y=0, width=64,  height=64);
+		icecream          = ../images/groundpieces/sweets/icecream.pcx (type=surface, x=0, y=0, width=114,  height=273, tcol=0);
+		mmblue            = ../images/groundpieces/sweets/mmblue.pcx (type=surface, x=0, y=0, width=50,  height=41, tcol=0);
+		mmbrown           = ../images/groundpieces/sweets/mmbrown.pcx (type=surface, x=0, y=0, width=50,  height=41, tcol=0);
+		mmred             = ../images/groundpieces/sweets/mmred.pcx (type=surface, x=0, y=0, width=54,  height=31, tcol=0);
+		mmyellow          = ../images/groundpieces/sweets/mmyellow.pcx (type=surface, x=0, y=0, width=40,  height=51, tcol=0);
+		purplechoc        = ../images/groundpieces/sweets/purplechoc.pcx (type=surface, x=0, y=0, width=150,  height=57, tcol=0);
+
+		jellybaby        = ../images/groundpieces/sweets/jellybaby.tga (type=surface, x=0, y=0, width=64,  height=83);
+
+	        jellybaby2 = ../images/groundpieces/sweets/jellybaby2.tga (type=surface, x=0, y=0, width=85, height=63);
+	        jube1 = ../images/groundpieces/sweets/jube1.tga (type=surface, x=0, y=0, width=49, height=42);
+	        jube2 = ../images/groundpieces/sweets/jube2.tga (type=surface, x=0, y=0, width=45, height=48);
+	        lollipop-purp = ../images/groundpieces/sweets/lollipop-purp.tga (type=surface, x=0, y=0, width=42, height=238);
+	        lollipop = ../images/groundpieces/sweets/lollipop.tga (type=surface, x=0, y=0, width=42, height=238);
 	}
 
 	section Misc
