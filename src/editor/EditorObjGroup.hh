@@ -1,4 +1,4 @@
-//  $Id: EditorObjGroup.hh,v 1.4 2001/05/18 19:17:08 grumbel Exp $
+//  $Id: EditorObjGroup.hh,v 1.5 2001/05/20 13:00:59 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -40,10 +40,11 @@ public:
   virtual void set_position(int new_x_pos, int new_y_pos);
 
   /** Draw the object */
-  virtual void   draw_offset(CL_Vector offset, float zoom);
+  virtual void   draw (boost::dummy_ptr<EditorView> view);
 
   /** Draw the caputre rectangle around the object */
   virtual void   draw_mark (boost::dummy_ptr<EditorView> view);
+
 
   /** Return true when the mouse is over the current object */
   virtual bool   is_over(int, int);

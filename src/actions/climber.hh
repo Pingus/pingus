@@ -1,4 +1,4 @@
-//  $Id: climber.hh,v 1.8 2001/04/20 20:53:55 grumbel Exp $
+//  $Id: climber.hh,v 1.9 2001/05/20 13:00:58 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,7 +46,7 @@ public:
   ActionType get_type(void) { return (ActionType)WALL; }
 };
 
-REGISTER_PINGUACTION(ClimberFactory, Climber, "floater");
+REGISTER_PINGUACTION(ClimberFactory, Climber, "climber");
 
 #endif
 

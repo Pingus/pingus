@@ -1,4 +1,4 @@
-//  $Id: digger.hh,v 1.10 2001/04/23 08:00:08 grumbel Exp $
+//  $Id: digger.hh,v 1.11 2001/05/20 13:00:58 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,7 +31,7 @@ private:
   ///
   Sprite sprite;
   ///
-  Counter digger_c;
+  int digger_c;
 public:
   ///
   Digger();

@@ -1,4 +1,4 @@
-//  $Id: Editor.cc,v 1.26 2001/05/19 20:58:42 grumbel Exp $
+//  $Id: Editor.cc,v 1.27 2001/05/20 13:00:59 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,6 +35,7 @@ Editor::Editor ()
   move_x = 0;
   move_y = 0;
   event_handler_ref_counter = 0;
+  tool = SELECTOR_TOOL;
 
   EditorObj::set_editor(this);
 
@@ -78,8 +79,10 @@ Editor::register_event_handler()
       //CL_Input::chain_button_press.push_back(event);
       //CL_Input::chain_button_release.push_back(event);
 
-      on_button_press_slot = CL_Input::sig_button_press.connect(CL_CreateSlot(event, &EditorEvent::on_button_press));
-      on_button_release_slot = CL_Input::sig_button_release.connect(CL_CreateSlot(event, &EditorEvent::on_button_release));
+      on_button_press_slot
+	= CL_Input::sig_button_press.connect(CL_CreateSlot(event, &EditorEvent::on_button_press));
+      on_button_release_slot
+	= CL_Input::sig_button_release.connect(CL_CreateSlot(event, &EditorEvent::on_button_release));
 
       if (verbose) std::cout << "done: " << event_handler_ref_counter << std::endl;
     }
@@ -296,6 +299,8 @@ Editor::zoom_mode ()
   CL_Rect rect;
   bool mouse_down = false;
 
+  tool = ZOOM_TOOL;
+
   CL_Surface mouse_cursor = PingusResource::load_surface("editor/region-zoom", "core");
   
   while (true)
@@ -330,6 +335,7 @@ Editor::zoom_mode ()
     }
   
   view->zoom_to (rect);
+  tool = SELECTOR_TOOL;
 }
 
 void
@@ -485,6 +491,9 @@ Editor::interactive_load()
 
 /***********************************************
 $Log: Editor.cc,v $
+Revision 1.27  2001/05/20 13:00:59  grumbel
+Some small fixes to the actions
+
 Revision 1.26  2001/05/19 20:58:42  grumbel
 Some more zooming support
 

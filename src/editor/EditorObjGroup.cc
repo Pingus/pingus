@@ -1,4 +1,4 @@
-//  $Id: EditorObjGroup.cc,v 1.8 2001/05/18 19:17:08 grumbel Exp $
+//  $Id: EditorObjGroup.cc,v 1.9 2001/05/20 13:00:59 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -71,13 +71,13 @@ EditorObjGroup::set_position_offset(int x_pos_add, int y_pos_add, int z_pos_add)
 
 /** Draw the object */
 void
-EditorObjGroup::draw_offset(CL_Vector offset, float zoom)
+EditorObjGroup::draw (boost::dummy_ptr<EditorView> view)
 {
   for(std::list<boost::shared_ptr<EditorObj> >::iterator i = objs.begin();
       i != objs.end();
       i++)
     {
-      (*i)->draw_offset(offset, zoom);
+      (*i)->draw (view);
     }
 }
 
@@ -85,18 +85,13 @@ EditorObjGroup::draw_offset(CL_Vector offset, float zoom)
 void
 EditorObjGroup::draw_mark (boost::dummy_ptr<EditorView> view)
 {
-  //std::cout << "Group..." << std::endl;
-  Color tmp_color = mark_color;
-  Color color(1.0, 0.0, 1.0);
-
   for(std::list<boost::shared_ptr<EditorObj> >::iterator i = objs.begin();
       i != objs.end();
       i++)
     {
       (*i)->draw_mark (view);
     }
-
-  mark_color = tmp_color;
+  
   EditorObj::draw_mark (view);
 }
 

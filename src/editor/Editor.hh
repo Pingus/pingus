@@ -1,4 +1,4 @@
-//  $Id: Editor.hh,v 1.13 2001/05/19 20:58:42 grumbel Exp $
+//  $Id: Editor.hh,v 1.14 2001/05/20 13:00:59 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -87,6 +87,8 @@ private:
   ///
   ObjectSelector* object_selector;
   
+  enum { SELECTOR_TOOL, ZOOM_TOOL } tool;
+
 public:
   ///
   Editor ();

@@ -1,4 +1,4 @@
-//  $Id: ScrollMap.cc,v 1.5 2001/05/18 19:17:08 grumbel Exp $
+//  $Id: ScrollMap.cc,v 1.6 2001/05/20 13:00:59 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,11 +46,11 @@ ScrollMap::on_button_release(CL_InputDevice *device, const CL_Key& key)
 void
 ScrollMap::on_button_press(CL_InputDevice *device, const CL_Key& key)
 {
-  int click_x_pos = (int) key.x - x_pos;
-  int click_y_pos = (int) key.y - y_pos;
+  //int click_x_pos = (int) key.x - x_pos;
+  //int click_y_pos = (int) key.y - y_pos;
 
-  int viewpoint_x_pos = click_x_pos * editor_event->object_manager->get_width ()  / width;
-  int viewpoint_y_pos = click_y_pos * editor_event->object_manager->get_height () / height;
+  //int viewpoint_x_pos = click_x_pos * editor_event->object_manager->get_width ()  / width;
+  //int viewpoint_y_pos = click_y_pos * editor_event->object_manager->get_height () / height;
 
   //editor_event->object_manager->set_viewpoint(viewpoint_x_pos, viewpoint_y_pos);
 }
@@ -73,10 +73,10 @@ ScrollMap::draw(boost::dummy_ptr<EditorView> view)
 			/ editor_event->object_manager->get_width());
   int viewarea_height = (CL_Display::get_height() * height
 			 / editor_event->object_manager->get_height());
-  int viewarea_x_pos = (x_pos - (view->get_offset().x * width
-				 / editor_event->object_manager->get_width()));
-  int viewarea_y_pos = (y_pos - (view->get_offset().y * height
-				 / editor_event->object_manager->get_height())); 
+  int viewarea_x_pos = int((x_pos - (view->get_offset().x * width
+				 / editor_event->object_manager->get_width())));
+  int viewarea_y_pos = int((y_pos - (view->get_offset().y * height
+				 / editor_event->object_manager->get_height()))); 
 
   CL_Display::fill_rect(x_pos, y_pos,
 			x_pos + width,

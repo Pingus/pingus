@@ -1,4 +1,4 @@
-//  $Id: EditorEvent.cc,v 1.45 2001/05/19 20:58:42 grumbel Exp $
+//  $Id: EditorEvent.cc,v 1.46 2001/05/20 13:00:59 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,6 +39,7 @@ EditorEvent::EditorEvent()
   : is_enabled (0)
 {
   enable();
+  
 }
 
 EditorEvent::~EditorEvent()
@@ -639,6 +640,9 @@ EditorEvent::editor_exit()
 void
 EditorEvent::editor_mark_or_move_object()
 {
+  if (editor->tool != Editor::SELECTOR_TOOL)
+    return;
+
   boost::shared_ptr<EditorObj> obj 
     = object_manager->select_object(editor->view->screen_to_world (CL_Vector(CL_Mouse::get_x(), 
 									     CL_Mouse::get_y())));
