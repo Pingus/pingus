@@ -1,4 +1,4 @@
-//  $Id: SwitchDoor.hh,v 1.14 2001/08/07 11:24:40 grumbel Exp $
+//  $Id: SwitchDoor.hh,v 1.15 2001/08/09 08:56:45 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -49,6 +49,12 @@ public:
   virtual void write_xml(std::ofstream* xml);
   ///
   static boost::shared_ptr<WorldObjData> create(xmlDocPtr doc, xmlNodePtr cur);
+
+  /** Create an WorldObj from the given data object */
+  boost::shared_ptr<WorldObj> create_WorldObj ();
+
+  /** Create an EditorObj from the given data object */
+  std::list<boost::shared_ptr<EditorObj> > create_EditorObj ();
 };
 
 /** A door and a switch, if a pingu is passing the switch, the door
@@ -104,7 +110,6 @@ private:
   CL_Surface door_tile;
 
 public:
-  EditorSwitchDoorObj ();
   EditorSwitchDoorObj (WorldObjData* obj);
   virtual ~EditorSwitchDoorObj ();
 

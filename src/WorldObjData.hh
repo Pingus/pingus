@@ -1,4 +1,4 @@
-//  $Id: WorldObjData.hh,v 1.6 2001/04/27 20:44:37 grumbel Exp $
+//  $Id: WorldObjData.hh,v 1.7 2001/08/09 08:56:44 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,8 +21,14 @@
 #define WORLDOBJDATA_HH
 
 #include <fstream>
+#include <list>
 #include "boost/smart_ptr.hpp"
 #include "XMLhelper.hh"
+
+class WorldObj;
+class EditorObj;
+
+typedef std::list<boost::shared_ptr<EditorObj> > EditorObjLst;
 
 /** The root data class for all objects in the Pingus world.  Each
     objects needs a data object for creating, which should be
@@ -39,10 +45,16 @@ public:
  
   /** Writte the content of this object formated as xml to the given
       stream */
-  virtual void write_xml(std::ofstream* xml) =0;
+  virtual void write_xml (std::ofstream* xml) =0;
 
   /** We are reading a <worldobj> tag and decide which sub-worldobj it will be. */
   static boost::shared_ptr<WorldObjData> create(xmlDocPtr doc, xmlNodePtr cur);
+
+  /** Create an WorldObj from the given data object */
+  virtual boost::shared_ptr<WorldObj> create_WorldObj () =0;
+
+  /** Create an EditorObj from the given data object */
+  virtual EditorObjLst create_EditorObj () =0;
 };
 
 #endif

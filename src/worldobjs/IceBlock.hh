@@ -1,4 +1,4 @@
-//  $Id: IceBlock.hh,v 1.10 2001/05/18 19:17:10 grumbel Exp $
+//  $Id: IceBlock.hh,v 1.11 2001/08/09 08:56:45 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,6 +41,12 @@ public:
   virtual void write_xml(std::ofstream* xml);
   ///
   static boost::shared_ptr<WorldObjData> create(xmlDocPtr doc, xmlNodePtr cur);
+
+  /** Create an WorldObj from the given data object */
+  boost::shared_ptr<WorldObj> create_WorldObj ();
+
+  /** Create an EditorObj from the given data object */
+  std::list<boost::shared_ptr<EditorObj> > create_EditorObj ();
 };
 
 class IceBlock : public IceBlockData, 

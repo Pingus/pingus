@@ -1,4 +1,4 @@
-//  $Id: Teleporter.cc,v 1.21 2001/08/02 21:51:03 grumbel Exp $
+//  $Id: Teleporter.cc,v 1.22 2001/08/09 08:56:45 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -80,6 +80,21 @@ TeleporterData::create(xmlDocPtr doc, xmlNodePtr cur)
   return data;
 }
 
+boost::shared_ptr<WorldObj> 
+TeleporterData::create_WorldObj ()
+{
+  std::cout << "TeleportData::create_WorldObj () not implemented" << std::endl;
+  return boost::shared_ptr<WorldObj>();
+}
+
+std::list<boost::shared_ptr<EditorObj> > 
+TeleporterData::create_EditorObj ()
+{
+  std::cout << "TeleportData::create_EditorObj () not implemented" << std::endl;
+  EditorObjLst lst; 
+  //lst.push_back(boost::shared_ptr<EditorObj> (new EditorTeleporterObj(this)));
+  return lst;
+}
 
 /**************/
 /* Teleporter */

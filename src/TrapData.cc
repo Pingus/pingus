@@ -1,4 +1,4 @@
-//  $Id: TrapData.cc,v 1.4 2001/04/27 20:44:37 grumbel Exp $
+//  $Id: TrapData.cc,v 1.5 2001/08/09 08:56:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,8 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "Trap.hh"
+#include "editor/PLFObj.hh"
 #include "XMLhelper.hh"
 #include "TrapData.hh"
 
@@ -33,7 +35,7 @@ TrapData::write_xml(std::ofstream* xml)
 boost::shared_ptr<WorldObjData>
 TrapData::create(xmlDocPtr doc, xmlNodePtr cur)
 {
-  boost::shared_ptr<TrapData> trap(new TrapData);
+  boost::shared_ptr<TrapData> trap(new TrapData ());
   cur = cur->children;
   while (cur != NULL)
     {
@@ -61,6 +63,22 @@ TrapData::create(xmlDocPtr doc, xmlNodePtr cur)
       cur = cur->next;
     }
   return trap;
+}
+
+boost::shared_ptr<WorldObj> 
+TrapData::create_WorldObj ()
+{
+  //return boost::shared_ptr<WorldObj>(new Trap (*this));
+  return boost::shared_ptr<WorldObj>();
+}
+
+EditorObjLst
+TrapData::create_EditorObj () 
+{ 
+  std::cout << "TrapData::create_EditorObj (): Not implemented" << std::endl;
+  EditorObjLst lst; 
+  //lst.push_back(boost::shared_ptr<EditorObj> (new EditorSwitchDoorObj));
+  return lst;
 }
 
 /* EOF */

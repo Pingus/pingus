@@ -1,4 +1,4 @@
-// $Id: LiquidData.hh,v 1.3 2001/08/07 11:24:40 grumbel Exp $
+// $Id: LiquidData.hh,v 1.4 2001/08/09 08:56:44 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,9 +22,11 @@
 
 #include "ResDescriptor.hh"
 #include "Position.hh"
+#include "WorldObjData.hh"
 
 ///
-class LiquidData {
+class LiquidData : public WorldObjData
+{
 public:
   ResDescriptor desc;
   CL_Vector pos;
@@ -51,6 +53,14 @@ public:
     width = 0;
     speed = 50;
   }
+
+  void write_xml(ofstream*);
+
+  /** Create an WorldObj from the given data object */
+  boost::shared_ptr<WorldObj> create_WorldObj ();
+
+  /** Create an EditorObj from the given data object */
+  std::list<boost::shared_ptr<EditorObj> > create_EditorObj ();
 };
 
 #endif

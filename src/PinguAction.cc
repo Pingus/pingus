@@ -1,4 +1,4 @@
-//  $Id: PinguAction.cc,v 1.17 2001/08/02 21:51:02 grumbel Exp $
+//  $Id: PinguAction.cc,v 1.18 2001/08/09 08:56:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,6 +28,7 @@ std::map<std::string, PinguActionFactory*> PinguActionFactory::actions;
 PinguActionFactory::PinguActionFactory (std::string name)
 {
   //std::cout << "Registering: " << name << " " << this << std::endl;
+  // FIXME: Why do we use insert, instead of actions[name] = this ?
   actions.insert( std::make_pair( name, this ));
   //std::cout << "Registering done" << std::endl;
 }
