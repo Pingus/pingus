@@ -1,4 +1,4 @@
-//  $Id: Walker.cc,v 1.5 2001/08/16 22:00:50 grumbel Exp $
+//  $Id: Walker.cc,v 1.6 2001/12/04 12:18:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -84,6 +84,31 @@ Walker::update(float delta)
 	}
     }
   
+
+  if (rel_getpixel(0,-1) & ColMap::WATER)
+    {
+      pingu->set_paction ("drown");
+      return;
+    }
+  // pingu is walking down a hill. 
+  // this should have fixed the following `FIXME'. do we need a 
+  // better transition?
+  // FIXME: We need better translation between walker and faller
+  else if (rel_getpixel(0,-1) == ColMap::NOTHING)
+    {
+       if (rel_getpixel(0,-2) != ColMap::NOTHING) 
+         pingu->pos.y += 1; 
+       else if (rel_getpixel(0,-3) != ColMap::NOTHING) 
+	 pingu->pos.y += 2;  // allow some more steep downhill
+       else {
+         pingu->set_action("faller");
+	 return;
+       }
+    }
+
+  // This is moved here to fix the bug where pingu stuck turning both
+  // sides indefinetely when a head collision occured. the fix needs the
+  // above downhill walk being done before head collision check.
   if (rel_getpixel(0, 26) != ColMap::NOTHING && !(rel_getpixel(0, 26) & ColMap::BRIDGE))
     {
       if (pingus_debug_flags & PINGUS_DEBUG_ACTIONS)
@@ -92,17 +117,6 @@ Walker::update(float delta)
       return;
     }
 
-  if (rel_getpixel(0,-1) & ColMap::WATER)
-    {
-      pingu->set_paction ("drown");
-      return;
-    }
-  else if (rel_getpixel(0,-1) == ColMap::NOTHING
-	   && rel_getpixel(0,-2) == ColMap::NOTHING)
-    {
-      // FIXME: We need better translation between walker and faller
-      pingu->set_action("faller");
-    }
 }
 
 void  

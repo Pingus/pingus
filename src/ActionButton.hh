@@ -1,4 +1,4 @@
-//  $Id: ActionButton.hh,v 1.17 2001/08/16 22:00:50 grumbel Exp $
+//  $Id: ActionButton.hh,v 1.18 2001/12/04 12:18:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -150,6 +150,8 @@ protected:
   CL_Font*    font;
   ///
   CL_Font*    font_h;
+  // Added for printing action names next to the button.
+  CL_Font*    font_b;
 
   /// The x and y position of the button
   std::string name;

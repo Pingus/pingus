@@ -1,4 +1,4 @@
-//  $Id: InfoBox.cc,v 1.2 2001/12/02 21:43:48 grumbel Exp $
+//  $Id: InfoBox.cc,v 1.3 2001/12/04 12:18:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -77,7 +77,7 @@ InfoBoxData::create(xmlDocPtr doc, xmlNodePtr cur)
 }
 
 void 
-InfoBoxData::write_xml(ofstream* xml)
+InfoBoxData::write_xml(std::ofstream* xml)
 {
   (*xml) << "  <worldobj type=\"infobox\">\n";
   XMLhelper::write_position_xml (xml, pos);
@@ -105,7 +105,7 @@ InfoBox::draw_offset (int x, int y, float s)
     {
       int width = font->get_text_width (info_text.c_str ());
       int border = 6;
-      CL_Display::draw_line (pos.x + x, pos.y + y,
+      CL_Display::draw_line (int(pos.x + x), int(pos.y + y),
 			     x_pos, y_pos, 0.0f, 1.0f, 0.0f, 1.0f);
       sprite.put_screen (pos + CL_Vector (x, y));    
       CL_Display::fill_rect (x_pos - width/2 - border, y_pos - border,

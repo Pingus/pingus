@@ -1,4 +1,4 @@
-//   $Id: PingusMain.cc,v 1.44 2001/12/02 21:43:47 grumbel Exp $
+//   $Id: PingusMain.cc,v 1.45 2001/12/04 12:18:50 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -171,61 +171,61 @@ PingusMain::check_args(int argc, char* argv[])
 
   // FIXME: We need some clean up here
   struct option long_options[] =
-  {
-    {"enable-music",      no_argument,       0, 'm'},
-    {"enable-sound",      no_argument,       0, 's'},
-    {"enable-gimmicks",   no_argument,       0, 'i'},
-    {"enable-cursor",     no_argument,       0, 'c'},
-    {"disable-intro",     no_argument,       0, 'n'},
-    {"play-demo",         required_argument, 0, 'p'},
-    {"record-demo",       required_argument, 0, 'r'},
-    {"speed",             required_argument, 0, 't'},
-    {"datadir",           required_argument, 0, 'd'},
-    {"level",             required_argument, 0, 'l'},
-    {"help",              no_argument,       0, 'h'},
-    {"version",           no_argument,       0, 'V'},
-    {"verbose",           required_argument, 0, 'v'},
-    {"print-fps",         no_argument,       0, 'b'},
-    {"sound-specs",       required_argument, 0, 'S'},
-    {"geometry",          required_argument, 0, 'g'},
-    {"editor",            no_argument,       0, 'e'},
-    {"quick-play",        no_argument,       0, 'q'},
-    {"enable-fullscreen", no_argument,       0, 'f'},
-    {"disable-fullscreen",no_argument,       0, 'F'},
-    {"disable-swcursor",  no_argument,       0, 145},
-    {"enable-swcursor",   no_argument,       0, 146},
-    {"enable-bg-manipulation", no_argument,  0, 148},
-    {"use-datafile",      no_argument,       0, 150},
-    {"use-scriptfile",    no_argument,       0, 151},
-    {"max-cpu-usage",     no_argument,       0, 153},
-    {"frame-skip",        required_argument, 0, 154},
-    {"broken-clres-handling", no_argument,    0, 155},
+    {
+      {"enable-music",      no_argument,       0, 'm'},
+      {"enable-sound",      no_argument,       0, 's'},
+      {"enable-gimmicks",   no_argument,       0, 'i'},
+      {"enable-cursor",     no_argument,       0, 'c'},
+      {"disable-intro",     no_argument,       0, 'n'},
+      {"play-demo",         required_argument, 0, 'p'},
+      {"record-demo",       required_argument, 0, 'r'},
+      {"speed",             required_argument, 0, 't'},
+      {"datadir",           required_argument, 0, 'd'},
+      {"level",             required_argument, 0, 'l'},
+      {"help",              no_argument,       0, 'h'},
+      {"version",           no_argument,       0, 'V'},
+      {"verbose",           required_argument, 0, 'v'},
+      {"print-fps",         no_argument,       0, 'b'},
+      {"sound-specs",       required_argument, 0, 'S'},
+      {"geometry",          required_argument, 0, 'g'},
+      {"editor",            no_argument,       0, 'e'},
+      {"quick-play",        no_argument,       0, 'q'},
+      {"enable-fullscreen", no_argument,       0, 'f'},
+      {"disable-fullscreen",no_argument,       0, 'F'},
+      {"disable-swcursor",  no_argument,       0, 145},
+      {"enable-swcursor",   no_argument,       0, 146},
+      {"enable-bg-manipulation", no_argument,  0, 148},
+      {"use-datafile",      no_argument,       0, 150},
+      {"use-scriptfile",    no_argument,       0, 151},
+      {"max-cpu-usage",     no_argument,       0, 153},
+      {"frame-skip",        required_argument, 0, 154},
+      {"broken-clres-handling", no_argument,    0, 155},
 #ifdef HAVE_LIBCLANGL
-    {"use-opengl",        no_argument,       0, 'G'},
+      {"use-opengl",        no_argument,       0, 'G'},
 #endif
-    // FIXME: is the number stuff correct?
-    {"fs-preload",      no_argument,       0, 130},
-    {"fast",            no_argument,       0, 132},
-    {"disable-previews",no_argument,       0, 133}, 
-    {"maintainer-mode", no_argument,       0, 134},
-    {"enable-uactions", no_argument,       0, 136},
-    {"disable-auto-scrolling",   no_argument,       0, 137},
+      // FIXME: is the number stuff correct?
+      {"fs-preload",      no_argument,       0, 130},
+      {"fast",            no_argument,       0, 132},
+      {"disable-previews",no_argument,       0, 133}, 
+      {"maintainer-mode", no_argument,       0, 134},
+      {"enable-uactions", no_argument,       0, 136},
+      {"disable-auto-scrolling",   no_argument,       0, 137},
 
 #ifdef HAVE_LIBSDL_MIXER
-    // Sound stuff
-    {"audio-format",     required_argument, 0, 138},
-    {"audio-rate",       required_argument, 0, 139},
-    {"audio-channels",   required_argument, 0, 140},
-    {"audio-buffers",    required_argument, 0, 141},
+      // Sound stuff
+      {"audio-format",     required_argument, 0, 138},
+      {"audio-rate",       required_argument, 0, 139},
+      {"audio-channels",   required_argument, 0, 140},
+      {"audio-buffers",    required_argument, 0, 141},
 #endif
 
-    // 
-    {"no-cfg-file",    no_argument,       0, 142},
-    {"tile-size",      required_argument, 0, 144},
-    {"config-file",    required_argument, 0, 147},
-    {"debug",          required_argument, 0, 152},
-    {0, 0, 0, 0}
-  };
+      // 
+      {"no-cfg-file",    no_argument,       0, 142},
+      {"tile-size",      required_argument, 0, 144},
+      {"config-file",    required_argument, 0, 147},
+      {"debug",          required_argument, 0, 152},
+      {0, 0, 0, 0}
+    };
 
   while(true) {
     c = getopt_long(argc, argv, "r:p:smv:d:l:hVp:bxS:g:it:cqefFG", long_options, &option_index);
@@ -258,7 +258,7 @@ PingusMain::check_args(int argc, char* argv[])
       game_speed = atoi(optarg);
       if (verbose) 
 	std::cout << "PingusMain:check_args: Game Speed = "
-			  << game_speed << std::endl;
+		  << game_speed << std::endl;
       break;
     case 'e':
       start_editor = true;
@@ -294,7 +294,7 @@ PingusMain::check_args(int argc, char* argv[])
       std::cout << "not impl. XALA" << std::endl;
       //pingus_soundfile = optarg;
       //if (verbose) 
-	//std::cout << "check_args: Sound File = " << pingus_soundfile << std::endl;
+      //std::cout << "check_args: Sound File = " << pingus_soundfile << std::endl;
       break;
     case 'm': // -m, --enable-music
       if (verbose) std::cout << "check_args: Music enabled" << std::endl;
@@ -357,7 +357,7 @@ For more information about these matters, see the files named COPYING.\
       fullscreen_enabled = false;
       break;
 
-    // Starting weird number options... no idea if this is correct.
+      // Starting weird number options... no idea if this is correct.
     case 130: // --fs-preload
       fs_preload = true;
       previews_enabled = true;
@@ -370,8 +370,8 @@ For more information about these matters, see the files named COPYING.\
       break;
     case 134: // --maintainer_mode
       std::cout << "---------------------------------" << std::endl
-	   << "--- Maintainer Mode activated ---" << std::endl
-	   << "---------------------------------" << std::endl; 
+		<< "--- Maintainer Mode activated ---" << std::endl
+		<< "---------------------------------" << std::endl; 
       maintainer_mode = true;
       break;
 
@@ -542,7 +542,7 @@ For more information about these matters, see the files named COPYING.\
 	"   --audio-channels {1,2}   Mono(1) or Stereo(2) output (default: 2)\n"
 	"   --audio-buffers INT      Audio buffer (default: 4096)\n"
 #endif
-	   << std::endl;
+		<< std::endl;
       exit(EXIT_SUCCESS);
       break;
     }
@@ -598,29 +598,29 @@ PingusMain::get_filenames()
 #ifndef WIN32
   /*if (!pingus_datadir_set)
     {
-      if (System::exist("../data/data/global.scr"))
-	{
-	  if (verbose) std::cout << "Assuming that you haven't installed pingus" << std::cout;
+    if (System::exist("../data/data/global.scr"))
+    {
+    if (verbose) std::cout << "Assuming that you haven't installed pingus" << std::cout;
       
-	  pingus_datadir = "../data/";
-	  pingus_datadir_set = true;
-	}
-      else if (System::exist("./data/data/global.scr"))
-	{
-	  if (verbose) std::cout << "Assuming that you are running the binary version" << std::endl;
+    pingus_datadir = "../data/";
+    pingus_datadir_set = true;
+    }
+    else if (System::exist("./data/data/global.scr"))
+    {
+    if (verbose) std::cout << "Assuming that you are running the binary version" << std::endl;
       
-	  pingus_datadir = "./data/"; 
-	  pingus_datadir_set = true; 
-	}
-      else
-	{
-	  if (verbose)
-	    std::cout << "Using intern macro PINGUS_DATADIR (" << PINGUS_DATADIR << ")" << std::endl;
+    pingus_datadir = "./data/"; 
+    pingus_datadir_set = true; 
+    }
+    else
+    {
+    if (verbose)
+    std::cout << "Using intern macro PINGUS_DATADIR (" << PINGUS_DATADIR << ")" << std::endl;
       
-	  pingus_datadir = PINGUS_DATADIR;
-	  pingus_datadir_set = true;
-	}
-	}*/
+    pingus_datadir = PINGUS_DATADIR;
+    pingus_datadir_set = true;
+    }
+    }*/
 
   // FIXME: Do we need this any longer?
   char* pingus_datadir_env = getenv ("PINGUS_DATADIR");
@@ -628,19 +628,35 @@ PingusMain::get_filenames()
     path_manager.add_path (pingus_datadir_env);
 
   /* Some magic for detecting the path */
-  path_manager.add_path ("../data/");     // started from 'src/'
-  path_manager.add_path ("data/");        // started from base directory with 'src/pingus'
-  path_manager.add_path ("share/games/pingus/");  // started from base directory of the binary
-  path_manager.add_path ("../share/games/pingus/");  // started from base directory of the binary
-  path_manager.add_path (PINGUS_DATADIR); // started from $PATH
-  // As a last hope we try this:
-  path_manager.add_path ("/usr/share/pingus/");
-  path_manager.add_path ("/usr/local/share/pingus/");
-  
+  if (broken_clanlib_resource_handling)
+    {
+      path_manager.add_path ("../data/data/");     // started from 'src/'
+      path_manager.add_path ("data/data/");        // started from base directory with 'src/pingus'
+    }
+  else
+    {
+      path_manager.add_path ("../data/");     // started from 'src/'
+      path_manager.add_path ("data/");        // started from base directory with 'src/pingus'
+      path_manager.add_path ("share/games/pingus/");  // started from base directory of the binary
+      path_manager.add_path ("../share/games/pingus/");  // started from base directory of the binary
+      path_manager.add_path (PINGUS_DATADIR); // started from $PATH
+      // As a last hope we try this:
+      path_manager.add_path ("/usr/share/pingus/");
+      path_manager.add_path ("/usr/local/share/pingus/");
+    }
+
   std::list<std::string> file_list;
 
-  file_list.push_back ("data/core.scr");
-  file_list.push_back ("images/core/misc/404.png");
+  if (broken_clanlib_resource_handling)
+    {
+      file_list.push_back ("core.scr");
+      file_list.push_back ("../images/core/misc/404.png");
+    }
+  else
+    {
+      file_list.push_back ("data/core.scr");
+      file_list.push_back ("images/core/misc/404.png");
+    }
 
   if (!path_manager.find_path (file_list))
     {
@@ -669,41 +685,41 @@ PingusMain::get_filenames()
   // there, then we try to search for the filename+".plf" in the
   // pingus_path.
   /* This code really shouldn't be here
-  std::string custom_levelfile = levelfile;
-  bool levelfile_not_found = false;
-  if (!custom_levelfile.empty() && !System::exist(custom_levelfile))
-    {
-      if (System::exist(custom_levelfile + ".plf"))
-	{
-	  custom_levelfile += ".plf";
-	}
-      else
-	{
-	  if (verbose)
-	    std::cout << "Levelfile not found, trying fallbacks" << std::endl;
+     std::string custom_levelfile = levelfile;
+     bool levelfile_not_found = false;
+     if (!custom_levelfile.empty() && !System::exist(custom_levelfile))
+     {
+     if (System::exist(custom_levelfile + ".plf"))
+     {
+     custom_levelfile += ".plf";
+     }
+     else
+     {
+     if (verbose)
+     std::cout << "Levelfile not found, trying fallbacks" << std::endl;
 	  
-	  // Search for the level in the datadir
-	  custom_levelfile = find_file(pingus_datadir, "/levels/" + levelfile);
-	  levelfile_not_found = !System::exist(custom_levelfile.c_str());
+     // Search for the level in the datadir
+     custom_levelfile = find_file(pingus_datadir, "/levels/" + levelfile);
+     levelfile_not_found = !System::exist(custom_levelfile.c_str());
 
-	  if (levelfile_not_found) 
-	    {
-	      custom_levelfile = find_file(pingus_datadir, "/levels/" + levelfile + ".plf");
-	      levelfile_not_found = !System::exist(custom_levelfile.c_str());
-	    }
+     if (levelfile_not_found) 
+     {
+     custom_levelfile = find_file(pingus_datadir, "/levels/" + levelfile + ".plf");
+     levelfile_not_found = !System::exist(custom_levelfile.c_str());
+     }
 
-	  if (levelfile_not_found)
-	    {
-	      std::cout << "Couldn't find level file: \"" << levelfile << "\"" << std::endl;
-	      exit(EXIT_FAILURE);
-	    }
-	}
-    }
+     if (levelfile_not_found)
+     {
+     std::cout << "Couldn't find level file: \"" << levelfile << "\"" << std::endl;
+     exit(EXIT_FAILURE);
+     }
+     }
+     }
 
-  levelfile = custom_levelfile;
+     levelfile = custom_levelfile;
   
-  if (verbose)
-    std::cout << "Pingus Level File: " << levelfile << std::endl;
+     if (verbose)
+     std::cout << "Pingus Level File: " << levelfile << std::endl;
   */
 }
   
@@ -722,7 +738,7 @@ PingusMain::init(int argc, char* argv[])
       if (sscanf(resolution.c_str(), "%d%c%d", &screen_width, &c, &screen_height) != 3) 
 	{
 	  std::cout << "Resolution std::string is wrong, it should be like: \n" 
-	       << "\"640x480\" or \"800x600\"" << std::endl;
+		    << "\"640x480\" or \"800x600\"" << std::endl;
 	  exit(EXIT_FAILURE);
 	}
     }
@@ -763,7 +779,7 @@ PingusMain::init_clanlib()
   if (verbose) 
     {
       std::cout << "Using resolution: " 
-	   << screen_width << "x" << screen_height << std::endl;
+		<< screen_width << "x" << screen_height << std::endl;
     }
 
   // Initing the display

@@ -1,4 +1,4 @@
-//  $Id: Teleporter.hh,v 1.20 2001/08/13 21:35:38 grumbel Exp $
+//  $Id: Teleporter.hh,v 1.21 2001/12/04 12:18:50 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -81,7 +81,7 @@ public:
   boost::shared_ptr<EditorObj> duplicate();
   static std::list<boost::shared_ptr<EditorObj> > create (const TeleporterData& data);
   
-  void write_xml(ofstream* xml) { TeleporterData::write_xml(xml); }
+  void write_xml(std::ofstream* xml) { TeleporterData::write_xml(xml); }
 
   /** Create this object (and child objects) with reasonable defaults
       for the editor */

@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapManager.cc,v 1.16 2001/07/27 16:47:04 grumbel Exp $
+//  $Id: PingusWorldMapManager.cc,v 1.17 2001/12/04 12:18:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -55,8 +55,12 @@ PingusWorldMapManager::display ()
 
   init ();
 
-  worldmap = boost::shared_ptr<PingusWorldMap>
-    (new PingusWorldMap (path_manager.complete("worldmaps/volcano.xml")));
+  if (broken_clanlib_resource_handling)
+    worldmap = boost::shared_ptr<PingusWorldMap>
+      (new PingusWorldMap (path_manager.complete("../worldmaps/volcano.xml")));
+  else
+    worldmap = boost::shared_ptr<PingusWorldMap>
+      (new PingusWorldMap (path_manager.complete("worldmaps/volcano.xml")));
 
   worldmap->init ();
 

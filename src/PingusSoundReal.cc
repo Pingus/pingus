@@ -1,4 +1,4 @@
-//  $Id: PingusSoundReal.cc,v 1.15 2001/12/01 17:54:40 torangan Exp $
+//  $Id: PingusSoundReal.cc,v 1.16 2001/12/04 12:18:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,9 @@
 
 #include <string>
 #include <iostream>
+
+// Needed cause of missing include in some sound file...
+#include <ClanLib/core.h>
 
 #ifdef HAVE_LIBCLANVORBIS
 #  include <ClanLib/vorbis.h>
@@ -72,12 +75,12 @@ PingusSoundReal::init()
   is_init = true;
 
   if (pingus_debug_flags & PINGUS_DEBUG_SOUND)
-    cout << "Initializing ClanLib-Sound" << endl;
+    std::cout << "Initializing ClanLib-Sound" << std::endl;
     
   CL_SetupSound::init();
   
   if (pingus_debug_flags & PINGUS_DEBUG_SOUND)
-    cout << "Initializing ClanLib-MikMod" << endl;
+    std::cout << "Initializing ClanLib-MikMod" << std::endl;
   
 #ifdef HAVE_LIBCLANMIKMOD
   CL_SetupMikMod::init();

@@ -1,4 +1,4 @@
-//  $Id: EntranceData.cc,v 1.1 2001/08/10 11:05:32 grumbel Exp $
+//  $Id: EntranceData.cc,v 1.2 2001/12/04 12:18:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -81,7 +81,7 @@ EntranceData::create(xmlDocPtr doc, xmlNodePtr cur)
 }
 
 void 
-EntranceData::write_xml(ofstream *xml)
+EntranceData::write_xml(std::ofstream *xml)
 {
   std::string dir_str;
   

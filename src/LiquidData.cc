@@ -1,4 +1,4 @@
-//  $Id: LiquidData.cc,v 1.4 2001/11/22 20:08:33 grumbel Exp $
+//  $Id: LiquidData.cc,v 1.5 2001/12/04 12:18:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,7 +24,7 @@
 #include "LiquidData.hh"
 
 void 
-LiquidData::write_xml(ofstream* xml)
+LiquidData::write_xml(std::ofstream* xml)
 {
   std::cout << "LiquidData::write_xml(ofstream* xml)" << std::endl;
   (*xml) << "<liquid use-old-width-handling=\"" << int(old_width_handling) << "\">\n";

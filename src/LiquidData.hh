@@ -1,4 +1,4 @@
-// $Id: LiquidData.hh,v 1.6 2001/08/10 10:56:13 grumbel Exp $
+// $Id: LiquidData.hh,v 1.7 2001/12/04 12:18:49 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -54,7 +54,7 @@ public:
     speed = 50;
   }
 
-  void write_xml(ofstream*);
+  void write_xml(std::ofstream*);
   static boost::shared_ptr<WorldObjData> create(xmlDocPtr doc, xmlNodePtr cur);
 
   /** Create an WorldObj from the given data object */

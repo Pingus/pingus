@@ -1,4 +1,4 @@
-//  $Id: SolidColorBackground.cc,v 1.8 2001/08/13 21:35:37 grumbel Exp $
+//  $Id: SolidColorBackground.cc,v 1.9 2001/12/04 12:18:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -74,7 +74,7 @@ public:
       SpriteEditorObj ("Stars/starfield_icon", "game", pos),
       pos (-64.0f, 0.0f)
   {}
-  void write_xml(ofstream* xml) { this->SolidColorBackgroundData::write_xml (xml); }
+  void write_xml(std::ofstream* xml) { this->SolidColorBackgroundData::write_xml (xml); }
 
   boost::shared_ptr<EditorObj> duplicate() {
     return boost::shared_ptr<EditorObj>

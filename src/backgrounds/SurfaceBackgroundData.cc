@@ -1,4 +1,4 @@
-//  $Id: SurfaceBackgroundData.cc,v 1.10 2001/08/15 07:35:29 grumbel Exp $
+//  $Id: SurfaceBackgroundData.cc,v 1.11 2001/12/04 12:18:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,7 +34,7 @@ public:
   {
   }
 
-  void write_xml(ofstream* xml) { this->SurfaceBackgroundData::write_xml (xml); }
+  void write_xml(std::ofstream* xml) { this->SurfaceBackgroundData::write_xml (xml); }
 
   boost::shared_ptr<EditorObj> duplicate() {
     return boost::shared_ptr<EditorObj>

@@ -1,4 +1,4 @@
-//  $Id: ActionButton.cc,v 1.20 2001/08/04 12:46:21 grumbel Exp $
+//  $Id: ActionButton.cc,v 1.21 2001/12/04 12:18:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -90,6 +90,7 @@ ActionButton::init(int x, int y, std::string str, int owner_id)
 
   font = PingusResource::load_font("Fonts/courier_small", "fonts");
   font_h = PingusResource::load_font("Fonts/smallfont","fonts");
+  font_b = PingusResource::load_font("Fonts/pingus","fonts");
 
   if (str != "empty") 
     {
@@ -191,6 +192,15 @@ HorizontalActionButton::draw()
       }
       font->print_center(x_pos + 25, y_pos + 5, str.c_str ());
     }
+
+  // print the action name under the button, when mouse pointer is 
+  // on the button.
+  if(CL_Mouse::get_x() > x_pos && CL_Mouse::get_x() < x_pos + 37
+     && CL_Mouse::get_y() < y_pos + 55 && CL_Mouse::get_y() > y_pos) 
+  {
+	font_b->print_left( x_pos, y_pos + 56, name.c_str());
+  }
+
   surface.put_screen(x_pos + 3, y_pos + 20, action_c);
 }
 
@@ -252,6 +262,15 @@ VerticalActionButton::draw()
       }
       font->print_center(x_pos + 50, y_pos + 16, str.c_str ());
     }
+
+  // print the action name next to the button, when mouse pointer is on
+  // the button.
+  if(CL_Mouse::get_x() > x_pos && CL_Mouse::get_x() < x_pos + 60
+     && CL_Mouse::get_y() < y_pos + 35 && CL_Mouse::get_y() > y_pos) 
+  {
+	font_b->print_left (61, y_pos, name.c_str());
+  }
+
   surface.put_screen(x_pos + 3, y_pos + 1, action_c);
 }
 

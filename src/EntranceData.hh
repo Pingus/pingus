@@ -1,4 +1,4 @@
-//  $Id: EntranceData.hh,v 1.5 2001/08/10 10:56:13 grumbel Exp $
+//  $Id: EntranceData.hh,v 1.6 2001/12/04 12:18:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -52,7 +52,7 @@ public:
     owner_id = 0;
   }
 
-  void write_xml(ofstream *);
+  void write_xml(std::ofstream *);
   static boost::shared_ptr<WorldObjData> create(xmlDocPtr doc, xmlNodePtr cur);
 
   EditorObjLst create_EditorObj();

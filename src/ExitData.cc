@@ -1,4 +1,4 @@
-//  $Id: ExitData.cc,v 1.4 2001/11/22 20:08:33 grumbel Exp $
+//  $Id: ExitData.cc,v 1.5 2001/12/04 12:18:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,7 +22,7 @@
 #include "ExitData.hh"
 
 void 
-ExitData::write_xml(ofstream* xml)
+ExitData::write_xml(std::ofstream* xml)
 {
   (*xml) << "<exit use-old-pos-handling=\"" << use_old_pos_handling << "\">\n";
 

@@ -1,4 +1,4 @@
-//  $Id: IceBlock.hh,v 1.15 2001/08/13 21:35:38 grumbel Exp $
+//  $Id: IceBlock.hh,v 1.16 2001/12/04 12:18:50 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -77,7 +77,7 @@ public:
   /** Create the object with resonable defaults */
   static std::list<boost::shared_ptr<EditorObj> > create (const CL_Vector& pos);
 
-  void write_xml(ofstream* xml) { IceBlockData::write_xml (xml); }
+  void write_xml(std::ofstream* xml) { IceBlockData::write_xml (xml); }
   boost::shared_ptr<EditorObj> duplicate();
   std::string status_line();
 };
