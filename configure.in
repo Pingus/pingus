@@ -1,4 +1,4 @@
-#  $Id: configure.in,v 1.47 2001/11/29 10:47:43 grumbel Exp $
+#  $Id: configure.in,v 1.48 2001/11/29 10:53:22 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -60,6 +60,9 @@ AC_PROG_MAKE_SET
 
 AC_ARG_WITH(gettext,
 	[  --without-gettext       disable support for multiple languages])
+
+AC_ARG_WITH(clanGL,
+        [  --without-clangl        disable OpenGL support])
 
 if test "x$with_gettext" != "xno"; then
 	dnl -- gettext macros --
@@ -182,8 +185,11 @@ AC_CHECK_LIB( clanSound,   main)
 AC_CHECK_LIB( clanMikMod,   main)
 AC_CHECK_LIB( clanVorbis,   main)
 
-dnl This should be optional
-AC_CHECK_LIB( clanGL,   main)
+if test "x$with_clangl" != "xno"; then
+    AC_CHECK_LIB( clanGL,   main)
+else
+    echo "clanGL support disabled";
+fi
 
 dnl AC_CHECK_LIB( clanGUI,   main,, [
 dnl 	echo "ClanLib is installed, but clanGUI was not found. You probably"
