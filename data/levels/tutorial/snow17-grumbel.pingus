@@ -13,6 +13,7 @@
     <levelname lang="pt">Se for muito alto, os teus Pingus irão morrer...</levelname>
     <levelname lang="no">For høyt, og Pingusene dine vil dø...</levelname>
     <levelname lang="es">Si caen de muy alto, tus pingüinos morirán...</levelname>
+    <levelname lang="da">En tand for højt</levelname>
 
     <description lang="en">Teamwork is the way to the exit this time. You don't have enough
                            Floaters to reach the exit, so just send a few and let them
@@ -56,6 +57,10 @@
     <description lang="es">El trabajo en equipo es la forma de alcanzar el éxito ésta vez. Si no tienes
                            suficientes Voladores para alcanzar la salida, envia unos cuantos y haz que preparen
 			   el camino para el resto
+    </description>
+    <description lang="da">I denne bane må nogle Pinguer hjælpe de andre, selvom de kunne nå i mål på egen hånd.
+                           Der er ikke nok propeller til alle, så send nogle stykker i forvejen for at berede
+			   vejen for resten.
     </description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>

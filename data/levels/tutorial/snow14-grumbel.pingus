@@ -13,6 +13,7 @@
     <levelname lang="pt">Destrói a Rocha</levelname>
     <levelname lang="no">Blokk og spreng</levelname>
     <levelname lang="es">Bloquea la roca.</levelname>
+    <levelname lang="da">Spær og spræng</levelname>
 
     <description lang="en">Once again it's time to combine the stuff you have learned in your
                            previous levels. Blast your way free and make sure you also keep the
@@ -57,6 +58,10 @@
     <description lang="es">De nuevo es necesario que combines lo que has aprendido en anteriores
                            niveles. Deja el camino libre y asegúrate de mantener al resto de pingüinos
 			   bajo control. La habilidad 'Bloqueo' te será útil.
+    </description>
+    <description lang="da">Det er atter tid at kombinere, hvad du har lært i tidligere
+                           baner. Spræng dig vej og sørg samtidig for at holde styr på
+                           resten af Pinguerne. Spærre-Pinguer vil vise sig nyttige.
     </description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>

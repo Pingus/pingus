@@ -14,6 +14,7 @@
     <levelname lang="pt">Salta por prazer</levelname>
     <levelname lang="no">Hopp av glede</levelname>
     <levelname lang="es">Saltar por placer</levelname>
+    <levelname lang="da">Glædesspring</levelname>
 
     <description lang="cs">Nekdy se pingove potrebuji dostat na plosinu, ktera je sice jen kousek
                            od nich, ale nelze na ni dojit. Pak prijde vhod skakani, ktere
@@ -63,6 +64,11 @@
     <description lang="es">A veces un pingüino necesita alcanzar una plataforma lejana, pero
                            no puede llegar andando. Entonces es cuando el Saltador viene de perlas, ya que
 			   permite al pingüino efectuar un pequeño salto y permitirle alcanzar la plataforma.
+    </description>
+    <description lang="da">Det hænder, at en Pingu har brug for at nå en platform, der er
+                           langt væk, og som ikke kan nås til fods. I så tilfælde kan
+                           Hoppe-handlingen vise sig nyttig - den tillader en Pingu at springe
+                           et stykke vej, så den derved kan nå platformen.
     </description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>

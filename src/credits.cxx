@@ -81,6 +81,7 @@ Credits::Credits()
   credits.push_back(_("-Music"));
   credits.push_back("_H. Matthew Smith");
   credits.push_back("_Joseph Toscano");
+  credits.push_back("_Robbie Ferguson");
   credits.push_back("_Yuri Sucupira");
 
   credits.push_back("n");

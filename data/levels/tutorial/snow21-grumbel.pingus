@@ -13,6 +13,7 @@
     <levelname lang="pt">Trepa, Trepador, Trepa... e contrói uma ponte</levelname>
     <levelname lang="no">Klatre, klatrer, klatre... og bygg en bro</levelname>
     <levelname lang="es">Trepar, Trepar, trepar... y contruir un puente</levelname>
+    <levelname lang="da">Klatre-Pinguen bygger bro</levelname>
 
     <description lang="en">Once again you get access to a new action. The Climber action allows
 			   a Pingu to climb up straight walls, thus allowing him to reach stuff
@@ -58,6 +59,13 @@
                            pingüino trepar por muros, de forma que pueda llegar a sitios que le quedan
 			   demasiado altos de otra forma.
     </description>
+    <description lang="da">I denne bane skal du igen stifte bekendtskab med en ny slags
+                           handling. Klatre-Pinguer kan klatre op ad lodrette vægge og
+                           dermed nå til steder, der ellers kan være utilgængelige.
+			   En Pingu, der én gang har lært at klatre, vil - ligesom en
+                           Svæve-Pingu - huske og bruge sine evner ved senere lejligheder.
+    </description>
+
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
     <number-of-pingus>10</number-of-pingus>
     <number-to-save>5</number-to-save>

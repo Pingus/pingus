@@ -13,6 +13,7 @@
     <levelname lang="pt">Saltita... e Perfura...</levelname>
     <levelname lang="no">Hopp, sprett... og slå...</levelname>
     <levelname lang="es">Salta, bota... y excava...</levelname>
+    <levelname lang="da">Hop og spring... og grav...</levelname>
 
     <description lang="en">It's panic time again. The Pingus will not come out very fast, but
 		           since they turn around when they hit walls you will soon have some trouble
@@ -73,6 +74,12 @@
                            når de treffer vegger vil du snart få problemer med å koordinere alle. Siden du
                            kun trenger å redde 5 burde det la seg gjøre, men hvis alt annet feiler bruk
                            pause-modusen ('p') for å få oversikten igjen.
+    </description>
+    <description lang="da">Så er det panik-tid igen. Pinguerne kommer ikke ind på banen særlig
+	                   hurtigt, men da de vender om ved vægge, kan det stadig være svært
+                           at koordinere dem alle. Du behøver kun at redde 5, så det skulle være
+                           muligt - og du kan som altid i nødstilfælde bruge pauseknappen ('p') til
+                           at genvinde overblikket.
     </description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>

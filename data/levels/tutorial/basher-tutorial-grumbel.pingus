@@ -13,6 +13,7 @@
     <levelname lang="pt">Se o caminho está bloqueado, perfura-o</levelname>
     <levelname lang="no">Hvis veien er blokkert, slå i vei</levelname>
     <levelname lang="es">Si el camino está bloqueado, golpéalo</levelname>
+    <levelname lang="da">Hvis vejen er blokeret, så grav løs</levelname>
 
 
     <description lang="en">Similar to the Digger action that you already know from previous
@@ -66,6 +67,12 @@
                            hay una habilidad que permite a los Pingüinos excavar horizontalmente,
 			   en vez de verticalmente como el 'Excavador'. Ésta nueva habilidad se
 			   llama 'Golpeador'.
+    </description>
+
+    <description lang="da">Udover Bore-handlingen, som du allerede kender fra tidligere baner, og
+                           som gjorde det muligt at grave lodret, er der også en handling - at
+                           Grave - der tillader Pinguerne at lave vandrette huller.
+<!-- eller: - der tillader Pinguerne at grave sig vandret frem med lufferne. -->
     </description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>

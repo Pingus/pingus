@@ -13,6 +13,7 @@
     <levelname lang="pt">Sacrifica uns poucos e salva o resto</levelname>
     <levelname lang="no">Ofre noen få og redd resten</levelname>
     <levelname lang="es">Sacrifica unos cuantos y salva el resto</levelname>
+    <levelname lang="da">Ofr nogle få og red resten</levelname>
 
     <description lang="en">Sometimes no other actions are available, so you have to bomb your
                            way through the ground. The Pingus can do this by actually self-
@@ -67,6 +68,11 @@
     			   camino recurriendo a explosivos. Los pingüinos pueden hacer esto
 			   autodestruyéndose.  Ésto les mata, pero a veces es necesario sacrificar
 			   a unos cuantos para salvar al resto.
+    </description>
+    <description lang="da">Hvis der ikke er andre passende handlinger at bruge, kan du blive
+                           nødt til at sprænge dig vej gennem jorden. Pinguerne kan gøre dette ved at
+                           selvdestruere. De dør af det, men nogle gange kan det være den eneste
+                           udvej, hvis resten skal reddes.
     </description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
