@@ -2340,6 +2340,12 @@
 				<File
 					RelativePath=".\src\xml_plf.hxx">
 				</File>
+				<File
+					RelativePath=".\src\xmlgz_reader.cxx">
+				</File>
+				<File
+					RelativePath=".\src\xmlgz_reader.hxx">
+				</File>
 			</Filter>
 		</Filter>
 		<File
