@@ -47,42 +47,34 @@ CaptureRectangle::~CaptureRectangle ()
 }
 
 void
-CaptureRectangle::draw_offset (int x_offset, int y_offset, float s)
+CaptureRectangle::draw(GraphicContext& gc)
 {
   if (pingu && pingu->catchable())
     {
       // Draw the capture rectangle
       if (pingu->change_allowed(button_panel->get_action_name()))
         {
-          good.draw(pingu->get_center_pos().x + x_offset,
-                    pingu->get_center_pos().y + y_offset);
+          gc.draw(good, pingu->get_center_pos());
         }
       else
         {
-          bad.draw(pingu->get_center_pos().x + x_offset,
-                   pingu->get_center_pos().y + y_offset);        
+          gc.draw(bad, pingu->get_center_pos());
         }
       
       // Paint the direction arrow
       if (pingu->direction.is_left())
         {
-          arrow_left.draw(pingu->get_center_pos().x + x_offset,
-                          pingu->get_center_pos().y + y_offset);
+          gc.draw(arrow_left, pingu->get_center_pos());
         }
       else
         {
-          arrow_right.draw(pingu->get_center_pos().x + x_offset,
-                           pingu->get_center_pos().y + y_offset);
+          gc.draw(arrow_right, pingu->get_center_pos());
         }
 
-
-      {
-        CL_Font myfont = font;
-        myfont.set_alignment(origin_top_center);
-        myfont.draw(static_cast<int>(pingu->get_center_pos().x) + x_offset,
-                    static_cast<int>(pingu->get_center_pos().y) + y_offset - 32,
-                    action_str);
-      }
+      gc.print_center(font, 
+                      static_cast<int>(pingu->get_center_pos().x),
+                      static_cast<int>(pingu->get_center_pos().y) - 32,
+                      action_str);
     }
 }
 

@@ -67,9 +67,7 @@ View::draw()
   world->draw (display_gc);
 
   cap.set_pingu(current_pingu);
-  cap.draw_offset(get_x_pos() + get_x_offset(),
-		  get_y_pos() + get_y_offset(),
-		  size);
+  cap.draw(display_gc);           
 
     // FIXME: CL_Display::pop_clip_rect();
 }
