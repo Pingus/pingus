@@ -1,0 +1,589 @@
+<pingus-level-comments>
+  <author>Ingo Ruhnke</author>
+  <email>grumbel@gmx.de</email>
+
+  <level>
+    <name>level19.xml</name>
+    <difficulty>-</difficulty>
+    <rating>-</rating>
+    
+    <comment>
+      looks interesting, but isn't playable
+    </comment>
+  </level>
+
+  <level>
+    <name>jungle1.xml</name>
+    <difficulty>-</difficulty>
+    <rating>-</rating>
+
+    <comment>
+      boring, paralax scrolling hotspots don't show up and it looks
+      like something is missing in this level.
+    </comment>
+  </level>  
+
+
+  <level>
+    <name>level13.xml</name>
+    <difficulty>-</difficulty>
+    <rating>-</rating>
+
+    <comment>
+      some solids are not solid, should be playable beside
+      that. interesting
+    </comment>
+  </level>  
+
+
+  <level>
+    <name>level7.xml</name>
+    <difficulty>-</difficulty>
+    <rating>-</rating>
+
+    <comment>
+      not really playable, looks interesting, but screen to small
+    </comment>
+  </level>  
+
+
+  <level>
+    <name>level2.xml</name>
+    <difficulty>-</difficulty>
+    <rating>-</rating>
+
+    <comment>
+      needs action fixing, a bit boring beside that
+    </comment>
+  </level>  
+
+
+  <level>
+    <name>level3.xml</name>
+    <difficulty>-</difficulty>
+    <rating>-</rating>
+
+    <comment>
+      boring
+    </comment>
+  </level>  
+
+
+  <level>
+    <name>jungle2.xml</name>
+    <difficulty>easy</difficulty>
+    <rating>boring</rating>
+
+    <comment>
+      level looks boring, the basic idea is ok, but needs fixing and
+      improvements.
+    </comment>
+  </level>  
+
+  <level>
+    <name>jungle-crisscross-timpany.xml</name>
+    <difficulty>normal</difficulty>
+    <rating>good</rating>
+
+    <comment>
+      good idea, but a bit short, also its quit obvious due to the
+      limited actions. Not sure why we have climbers here.
+    </comment>
+  </level>  
+
+  <level>
+    <name>jungle-airline-timpany.xml</name>
+    <difficulty>normal</difficulty>
+    <rating></rating>
+
+    <comment>
+      you can simply bash through the right wall and finish the level,
+      doesn't look like that was intented, needs fixing
+    </comment>
+  </level>  
+
+  <level>
+    <name>aliens1-phil.xml</name>
+    <difficulty>hard</difficulty>
+    <rating>good</rating>
+
+    <comment>
+      not sure if it was really indented, but its extremly hard to get
+      the pingus at the start saved, it is possible to build bridges
+      to catch them at ~40 out, but that requires quite preciese
+      timing. Seperating a single pingu to build the rest will also
+      require a bit of timing, but is still possible. The real hard
+      part is to build the final bridge to the exit, since one will
+      easily run out of bridges there. Anyway if timing is correctly
+      this level is solveable, but it might require quite a few
+      retries.
+
+      level is to small and interfers with the GUI elements.
+    </comment>
+  </level>  
+
+  <level>
+    <name>aliens4-phil.xml</name>
+    <difficulty></difficulty>
+    <rating></rating>
+
+    <comment>
+      Hm, don't like this one, spikes in the air don't look really
+      good, maybe the trap should be replaced with something else.
+    </comment>
+  </level>  
+
+  <level>
+    <name>large1.xml</name>
+    <difficulty></difficulty>
+    <rating></rating>
+
+    <comment>
+      unplayable test level
+    </comment>
+  </level>  
+
+  <level>
+    <name>Lev4.xml</name>
+    <difficulty>normal</difficulty>
+    <rating>good</rating>
+    <theme>desert</theme>
+
+    <comment>
+      small and simple level, not to difficult, feels good.
+      fixme: has some solid objects which shouldn't be solid
+    </comment>
+  </level>  
+
+  <level>
+    <name>am_nil-luki.xml</name>
+    <difficulty></difficulty>
+    <rating></rating>
+
+    <comment>unplayable test level
+    </comment>
+  </level>  
+
+  <level>
+    <name>lonely.xml </name>
+    <difficulty>normal</difficulty>
+    <rating>good</rating>
+
+    <comment>
+      the obvious solution isn't the correct one, but on a second
+      guess one should be able to solve this level. a bit short, but
+      otherwise good. 
+    </comment>
+  </level>  
+
+  <level>
+    <name>intensiv-timpany.xml</name>
+    <difficulty></difficulty>
+    <rating></rating>
+
+    <comment>
+      [Output] PingusResource:(datafile: global, res_name: Hotspots/signposts/e):-404-:Resource Hotspots/signposts/e not found.
+[Output] PingusResource:(datafile: global, res_name: Hotspots/signposts/w):-404-:Resource Hotspot
+    </comment>
+  </level>  
+
+  <level>
+    <name>industrial1-grumbel.xml</name>
+    <difficulty></difficulty>
+    <rating></rating>
+
+    <comment>
+      unplayable test level
+    </comment>
+  </level>  
+
+  <level>
+    <name>industrial2-grumbel.xml</name>
+    <difficulty></difficulty>
+    <rating></rating>
+
+    <comment>
+      actions need tuning and levels needs a bit of fixing, but close
+      to be playable
+    </comment>
+  </level>  
+
+  <level>
+    <name>industrial3-grumbel.xml</name>
+    <difficulty>normal</difficulty>
+    <rating>good</rating>
+
+    <comment>
+      short and simple, probally a good introduction in using the switchdoor
+    </comment>
+  </level>  
+
+  <level>
+    <name>industrial4-grumbel.xml</name>
+    <difficulty></difficulty>
+    <rating></rating>
+
+    <comment>
+      unplayable currently, but with a bit of fixing could be playable
+    </comment>
+  </level>  
+
+  <level>
+    <name>industrial-plumber-timpany.xml</name>
+    <difficulty></difficulty>
+    <rating></rating>
+
+    <comment>
+      doesn't use the industrial background, but might be playable, not tested
+    </comment>
+  </level>  
+
+  <level>
+    <name>Stair.xml</name>
+    <difficulty>hard</difficulty>
+    <rating>good</rating>
+
+    <comment>
+      head collision makes this level unplayable, needs fixing (should be playable beside that)
+    </comment>
+  </level>  
+
+  <level>
+    <name>crystal1.xml</name>
+    <difficulty>normal</difficulty>
+    <rating>good</rating>
+
+    <comment>
+      historical level, one of the first ones. its playable, but not
+      really exiting.
+    </comment>
+  </level>  
+
+  <level>
+    <name>crystal2.xml</name>
+    <difficulty>easy</difficulty>
+    <rating>good</rating>
+
+    <comment>
+      introduction level for the blocker, very easy
+      animated background does currently not work.
+    </comment>
+  </level>  
+
+  <level>
+    <name>crystal3.xml</name>
+    <difficulty></difficulty>
+    <rating></rating>
+
+    <comment>
+      unfinished level, needs fixing to become playable
+    </comment>
+  </level>  
+
+
+  <level>
+    <name>crystal5.xml </name>
+    <difficulty>normal</difficulty>
+    <rating>good</rating>
+
+    <comment>
+      simple and not to difficult intro in skipping traps via jumps
+    </comment>
+  </level>  
+
+
+  <level>
+    <name>crystal-phil1.xml</name>
+    <difficulty>normal</difficulty>
+    <rating>ok</rating>
+
+    <comment>
+      I don't like the traps that fly in the air or in the ground,
+      looks ugly. The basic idea to cross two bridges is cool, but the
+      surrounding could be better and less random due to the invisible
+      traps.
+    </comment>
+  </level>  
+
+
+  <level>
+    <name>space1.xml</name>
+    <difficulty>easy</difficulty>
+    <rating>ok</rating>
+
+    <comment>
+      level needs to be lifed so it doesn't block with GUI, actions
+      needs limitation.
+    </comment>
+  </level>  
+
+
+  <level>
+    <name>space2.xml</name>
+    <difficulty>normal</difficulty>
+    <rating>ok</rating>
+
+    <comment>
+      To much randomness in the level solving, to many actions
+    </comment>
+  </level>  
+
+
+  <level>
+    <name>space4-grumbel.xml </name>
+    <difficulty>easy</difficulty>
+    <rating>ok</rating>
+
+    <comment>
+      to many actions and not enough space on the left, beside that ok
+    </comment>
+  </level>  
+
+
+  <level>
+    <name>space-9-tom.xml </name>
+    <difficulty>hard</difficulty>
+    <rating>good</rating>
+
+    <comment>
+      freeing the blocker to get 30 saved is a bit hard, beside that
+      not that difficult, but fun. has some stuckyness problems, due
+      to the shape of the groundpieces.
+    </comment>
+  </level>  
+
+
+  <level>
+    <name>space-loop-timpany.xml</name>
+    <difficulty></difficulty>
+    <rating></rating>
+
+    <comment>
+      might have become unplayable due to the jumper bouncing, needs more testing
+    </comment>
+  </level>  
+
+
+  <level>
+    <name>space-phil1.xml</name>
+    <difficulty></difficulty>
+    <rating></rating>
+
+    <comment>
+      unfinished test level
+    </comment>
+  </level>  
+
+
+  <level>
+    <name>sept-aztec1-mw.xml </name>
+    <difficulty></difficulty>
+    <rating></rating>
+
+    <comment>
+      lack of space between level and GUI elements makes it unplayable
+    </comment>
+  </level>  
+
+
+  <level>
+    <name>sept-cave1-mw.xml</name>
+    <difficulty></difficulty>
+    <rating></rating>
+
+    <comment>
+      uses ugly groundpieces
+    </comment>
+  </level>  
+
+
+  <level>
+    <name>hellmouth2-grumbel.xml</name>
+    <difficulty>hard</difficulty>
+    <rating>good</rating>
+
+    <comment>
+      nice level, it looks like it has multiple solution, but only one
+      is the right one.
+    </comment>
+  </level>  
+
+
+  <level>
+    <name>hellmouth3-grumbel.xml</name>
+    <difficulty></difficulty>
+    <rating></rating>
+
+    <comment>
+      just using all the bridgers will be enough to reach the exit
+    </comment>
+  </level>  
+
+
+  <level>
+    <name>hellmouth9-grumbel.xml</name>
+    <difficulty>very hard</difficulty>
+    <rating>very good</rating>
+
+    <comment>
+      has some stucky bugs, but beside that it looks playable.
+    </comment>
+  </level>  
+
+
+  <level>
+    <name>bombing.xml</name>
+    <difficulty>very hard</difficulty>
+    <rating>very good</rating>
+
+    <comment>
+      has stucky problems and getting the bridge cutted correctly is a
+      bit hard, beside that its very good
+    </comment>
+  </level>  
+
+
+  <level>
+    <name>rockhopping.xml </name>
+    <difficulty>easy</difficulty>
+    <rating>ok</rating>
+
+    <comment>
+      a bit boring
+    </comment>
+  </level>  
+
+
+  <level>
+    <name>stone5-grumbel.xml</name>
+    <difficulty>easy</difficulty>
+    <rating>good</rating>
+
+    <comment>
+      looks good, solution is easy, but due to bridger/builder
+      problems this level gets harder than necesarry and requires a
+      bit try&error, needs fixing
+    </comment>
+  </level>  
+
+
+  <level>
+    <name>stone3-grumbel.xml </name>
+    <difficulty></difficulty>
+    <rating></rating>
+
+    <comment>
+      unplayable test level
+    </comment>
+  </level>  
+
+
+  <level>
+    <name>stone4-grumbel.xml</name>
+    <difficulty></difficulty>
+    <rating></rating>
+
+    <comment>
+      unplayable test level
+    </comment>
+  </level>  
+
+
+  <level>
+    <name>stone9-grumbel.xml</name>
+    <difficulty></difficulty>
+    <rating></rating>
+
+    <comment>
+      close to playable but needs action number fixing
+    </comment>
+  </level>  
+
+
+  <level>
+    <name>stone8-grumbel.xml</name>
+    <difficulty></difficulty>
+    <rating></rating>
+
+    <comment>
+  close to playable but needs action number fixing
+    </comment>
+  </level>  
+
+
+  <level>
+    <name>stone10-grumbel.xml</name>
+    <difficulty></difficulty>
+    <rating></rating>
+
+    <comment>
+  close to playable but needs action number fixing
+    </comment>
+  </level>  
+
+
+  <level>
+    <name>stone11-grumbel.xml</name>
+    <difficulty>hard</difficulty>
+    <rating>good</rating>
+
+    <comment>
+      unplayable due to the bomber-faller 'fix', needs old_action to become usable
+      very similar to stone12-grumbel.xml
+    </comment>
+  </level>  
+
+
+  <level>
+    <name>stone12-grumbel.xml</name>
+    <difficulty></difficulty>
+    <rating></rating>
+
+    <comment>
+      very similar to stone11-grumbel.xml, has the same problem
+    </comment>
+  </level>  
+
+
+  <level>
+    <name>stone6-grumbel.xml</name>
+    <difficulty></difficulty>
+    <rating></rating>
+
+    <comment>
+      might be playable, needs action fixing
+    </comment>
+  </level>  
+
+
+  <level>
+    <name>stone5-phlog.xml</name>
+    <difficulty></difficulty>
+    <rating></rating>
+
+    <comment>
+    </comment>
+  </level>  
+
+
+  <level>
+    <name></name>
+    <difficulty></difficulty>
+    <rating></rating>
+
+    <comment>
+    </comment>
+  </level>  
+
+
+  <level>
+    <name></name>
+    <difficulty></difficulty>
+    <rating></rating>
+
+    <comment>
+    </comment>
+  </level>  
+
+
+</pingus-level-comments>
