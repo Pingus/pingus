@@ -1,4 +1,4 @@
-//  $Id: StarfieldBackground.cc,v 1.1 2000/09/29 15:43:52 grumbel Exp $
+//  $Id: StarfieldBackground.cc,v 1.2 2000/09/29 15:45:33 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -80,7 +80,8 @@ StarfieldBackgroundData::create(xmlDocPtr doc, xmlNodePtr cur)
       else
 	{
 	  std::cout << "StarfildBackgroundData:create: Unhandled tag: " << cur->name << std::endl;
-	}
+	} 
+      cur = cur->next;
     }
 
     return data;
