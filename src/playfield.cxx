@@ -1,4 +1,4 @@
-//  $Id: playfield.cxx,v 1.13 2002/08/05 09:19:08 grumbel Exp $
+//  $Id: playfield.cxx,v 1.14 2002/08/12 22:52:04 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,6 +27,7 @@
 #include "server.hxx"
 #include "pingu.hxx"
 #include "button_panel.hxx"
+#include "pingu_enums.hxx"
 
 using boost::shared_ptr;
 
@@ -205,7 +206,7 @@ Playfield::on_primary_button_press(int x, int y)
     {
       char str[256];
       sprintf(str, "Pingu: %d:%s", current_pingu->get_id(), 
-	      action_to_string(buttons->get_action_name()).c_str());
+		  Pingus::Actions::action_to_string(buttons->get_action_name()).c_str());
       server->send_event(str);
     }
 }

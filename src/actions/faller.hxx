@@ -1,4 +1,4 @@
-//  $Id: faller.hxx,v 1.7 2002/07/02 13:36:06 torangan Exp $
+//  $Id: faller.hxx,v 1.8 2002/08/12 22:52:04 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,10 @@
 
 #ifndef HEADER_PINGUS_ACTIONS_FALLER_HXX
 #define HEADER_PINGUS_ACTIONS_FALLER_HXX
+
+#ifdef WIN32
+#include <math.h>
+#endif
 
 #include "../sprite.hxx"
 #include "../pingu_action.hxx"

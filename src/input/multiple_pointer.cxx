@@ -1,4 +1,4 @@
-//  $Id: multiple_pointer.cxx,v 1.3 2002/07/11 14:51:10 torangan Exp $
+//  $Id: multiple_pointer.cxx,v 1.4 2002/08/12 22:52:04 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -82,8 +82,8 @@ namespace Input
     if ( ! do_break)
       return;
 	          
-    for (unsigned int i = 0; i < pointers.size(); i++)
-      pointers[i]->set_pos(x_pos, y_pos);
+    for (unsigned int n = 0; n < pointers.size(); n++)
+      pointers[n]->set_pos(x_pos, y_pos);
   }
 
 }

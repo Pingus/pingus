@@ -1,4 +1,4 @@
-//  $Id: angel.hxx,v 1.4 2002/06/28 15:12:22 torangan Exp $
+//  $Id: angel.hxx,v 1.5 2002/08/12 22:52:04 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,15 @@
 
 #ifndef HEADER_PINGUS_ACTIONS_ANGEL_HXX
 #define HEADER_PINGUS_ACTIONS_ANGEL_HXX
+
+//
+// Necessary for Windows environment
+//
+// Does it work really on Linux?
+//
+#ifdef WIN32
+#include <math.h>
+#endif
 
 #include "../sprite.hxx"
 #include "../pingu_action.hxx"

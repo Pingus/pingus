@@ -1,4 +1,4 @@
-//  $Id: pingus.hxx,v 1.2 2002/06/24 22:52:59 grumbel Exp $
+//  $Id: pingus.hxx,v 1.3 2002/08/12 22:52:04 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,8 +20,13 @@
 #ifndef HEADER_PINGUS_WORLDMAP_PINGUS_HXX
 #define HEADER_PINGUS_WORLDMAP_PINGUS_HXX
 
-#include <queue>
+#ifdef WIN32
+#include <math.h>
+#endif
+
 #include "node.hxx"
+#include <queue>
+
 
 namespace boost {
   template <class T> class shared_ptr;

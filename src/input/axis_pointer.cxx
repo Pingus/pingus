@@ -1,4 +1,4 @@
-//  $Id: axis_pointer.cxx,v 1.5 2002/07/11 14:51:10 torangan Exp $
+//  $Id: axis_pointer.cxx,v 1.6 2002/08/12 22:52:04 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <math.h>
+#include <assert.h>
 #include "axis.hxx"
 #include "axis_pointer.hxx"
 

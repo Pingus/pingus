@@ -1,4 +1,4 @@
-//  $Id: multiplayer_client_child.hxx,v 1.3 2002/08/09 22:02:13 grumbel Exp $
+//  $Id: multiplayer_client_child.hxx,v 1.4 2002/08/12 22:52:04 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,6 +26,7 @@
 #include "playfield_view.hxx"
 #include "pingus_counter_bar.hxx"
 
+#include <string>
 class Server;
 
 class MultiplayerClientChild : public GuiObj

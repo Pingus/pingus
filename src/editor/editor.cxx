@@ -1,4 +1,4 @@
-//  $Id: editor.cxx,v 1.22 2002/08/04 20:27:22 grumbel Exp $
+//  $Id: editor.cxx,v 1.23 2002/08/12 22:52:04 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,8 +17,9 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <cstdio>
-#include <string>
+#ifdef WIN32
+#pragma warning(disable:4786)
+#endif
 
 #include <ClanLib/Core/System/system.h>
 #include <ClanLib/Display/Display/display.h>
@@ -28,12 +29,10 @@
 #include <ClanLib/Display/Font/font.h>
 #include <ClanLib/Display/Input/inputbuffer.h>
 #include <ClanLib/Display/Input/keyboard.h>
-#include "../algo.hxx"
 #include "../globals.hxx"
 #include "../display.hxx"
 #include "../pingus_resource.hxx"
 #include "../system.hxx"
-#include "editor.hxx"
 #include "editor_event.hxx"
 #include "panel.hxx"
 #include "scroll_map.hxx"
@@ -43,6 +42,11 @@
 #include "action_window.hxx"
 #include "property_window.hxx"
 #include "level_property_window.hxx"
+#include "../algo.hxx"
+#include "editor.hxx"
+
+#include <cstdio>
+#include <string>
 
 using namespace Pingus::Editor;
 

@@ -1,4 +1,4 @@
-//  $Id: world.hxx,v 1.4 2002/06/28 09:51:46 grumbel Exp $
+//  $Id: world.hxx,v 1.5 2002/08/12 22:52:04 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,6 +42,9 @@ class WorldImpl;
 class WorldObj;
 class GameTime;
 
+
+using std::list;
+using std::string;
 /** The World holds all objects of the pingu enviroment. 
     
     It holds the pingus, traps, exits, entrances, etc.. It keeps

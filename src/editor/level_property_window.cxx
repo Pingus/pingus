@@ -1,4 +1,4 @@
-//  $Id: level_property_window.cxx,v 1.4 2002/07/02 16:06:51 grumbel Exp $
+//  $Id: level_property_window.cxx,v 1.5 2002/08/12 22:52:04 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -16,6 +16,10 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+
+#ifdef WIN32
+#pragma warning(disable:4786)
+#endif
 
 #include "object_manager.hxx"
 #include "../string_converter.hxx"

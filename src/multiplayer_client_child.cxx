@@ -1,4 +1,4 @@
-//  $Id: multiplayer_client_child.cxx,v 1.7 2002/08/09 22:02:13 grumbel Exp $
+//  $Id: multiplayer_client_child.cxx,v 1.8 2002/08/12 22:52:04 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,9 +19,12 @@
 
 #include <stdio.h>
 #include <ClanLib/Display/Input/key.h>
-#include "multiplayer_client_child.hxx"
 #include "pingu.hxx"
 #include "server.hxx"
+
+#include "string_converter.hxx"
+#include "multiplayer_client_child.hxx"
+#include "pingu_enums.hxx"
 
 MultiplayerClientChild::MultiplayerClientChild (Server * s, const CL_Rect& arg_rect)
   : server (s),
@@ -96,7 +99,7 @@ void MultiplayerClientChild::on_left_press (const CL_Vector& pos)
       char str[256];
       sprintf(str, "Pingu: %d:%s",
 	      pingu->get_id(), 
-	      action_to_string(button_panel->get_action_name()).c_str());
+		  Pingus::Actions::action_to_string(button_panel->get_action_name()).c_str());
       server->send_event(str);
     }
   */
