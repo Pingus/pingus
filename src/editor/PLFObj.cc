@@ -1,4 +1,4 @@
-//  $Id: PLFObj.cc,v 1.8 2000/05/12 13:34:47 grumbel Exp $
+//  $Id: PLFObj.cc,v 1.9 2000/05/22 21:11:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <fstream>
+#include <cstdio>
 
 #include "../Display.hh"
 #include "../PingusError.hh"
@@ -36,6 +37,16 @@ PLFObj::PLFObj()
 
 PLFObj::~PLFObj()
 {
+}
+
+std::string
+PLFObj::status_line()
+{
+  char str[256];
+
+  sprintf(str, "%s", obj_type().c_str());
+
+  return std::string(str);
 }
 
 HotspotObj::HotspotObj(hotspot_data data)
@@ -72,6 +83,16 @@ HotspotObj::save(ofstream* plf, ofstream* psm)
     	 << "  speed = " << speed << ";\n"
 	 << "}\n"
 	 << endl;  
+}
+
+std::string
+HotspotObj::status_line()
+{
+  char str[256];
+
+  sprintf(str, "Hotspot - Speed: %d",  speed);
+
+  return std::string(str);
 }
 
 EntranceObj::EntranceObj(entrance_data data)
@@ -128,15 +149,55 @@ EntranceObj::duplicate()
 void
 EntranceObj::save(ofstream* plf, ofstream* psm)
 {
+  std::string dir_str = "not set - this is a bug";
+
+  switch(direction)
+    {
+    case entrance_data::LEFT:
+      dir_str = "left";
+      break;
+    case entrance_data::RIGHT:
+      dir_str = "right";
+      break;
+    case entrance_data::MISC:
+      dir_str = "misc";
+      break;
+    }
+
   (*plf) << "entrance {\n"
 	 << "  type  = " << type << ";\n"
 	 << "  x_pos = " << x_pos << ";\n"
 	 << "  y_pos = " << y_pos << ";\n"
 	 << "  z_pos = 0;\n"
 	 << "  release_rate = " << release_rate << ";\n"
-	 << "  direction = left;\n"
+	 << "  direction = " << dir_str << "\n"
 	 << "}\n"
 	 << endl;
+}
+
+std::string
+EntranceObj::status_line()
+{
+  std::string dir_str = "not set - this is a bug";
+  char str[256];
+
+  switch(direction)
+    {
+    case entrance_data::LEFT:
+      dir_str = "left";
+      break;
+    case entrance_data::RIGHT:
+      dir_str = "right";
+      break;
+    case entrance_data::MISC:
+      dir_str = "misc";
+      break;
+    }
+
+  sprintf(str, "Entrance - %s ReleaseRate: %d Direction: %s",
+	  type.c_str(), release_rate, dir_str.c_str());
+
+  return std::string(str);
 }
 
 ExitObj::ExitObj(exit_data data)
@@ -347,6 +408,16 @@ LiquidObj::save(ofstream* plf, ofstream* psm)
     	 << "  speed = " << speed << ";\n"
 	 << "}\n" 
 	 << endl;
+}
+
+std::string  
+LiquidObj::status_line()
+{
+  char str[256];
+
+  sprintf(str, "%4d:%4d:%3d:%2d", x_pos, y_pos, z_pos, speed);
+
+  return std::string(str);
 }
 
 /* EOF */

@@ -1,4 +1,4 @@
-// $Id: EditorObj.cc,v 1.5 2000/04/24 13:15:42 grumbel Exp $
+// $Id: EditorObj.cc,v 1.6 2000/05/22 21:11:13 grumbel Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -163,9 +163,18 @@ EditorObj::obj_type()
 {
   return "EditorObj";
 }
+
+std::string
+EditorObj::status_line()
+{
+  return "Object status not know - I am a bug...";
+}
   
 /*
 $Log: EditorObj.cc,v $
+Revision 1.6  2000/05/22 21:11:13  grumbel
+Added some more usefull infos to the editor status bar
+
 Revision 1.5  2000/04/24 13:15:42  grumbel
 Added  Felix Natter's namespace clean ups
 

@@ -1,4 +1,4 @@
-//  $Id: StatusLine.cc,v 1.3 2000/02/11 16:58:28 grumbel Exp $
+//  $Id: StatusLine.cc,v 1.4 2000/05/22 21:11:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,30 +34,33 @@ StatusLine::~StatusLine()
 void
 StatusLine::draw(int x_offset, int y_offset)
 {
-  char str[1024];
-  std::string obj_name = " - None - ";
-  
+  char mouse_co[256];
+  // FIXME: This is a potential buffer overrun, to lazy to fix it right now
+  std::string status_line_text;
+
   if (current_objs) 
     {
       if (current_objs->size() > 1) 
 	{
-	  obj_name = "Group";
+	  status_line_text = "Group";
 	} 
       else if (current_objs->size() == 1) 
 	{
-	  obj_name = (*(current_objs->begin()))->obj_type();
+	  status_line_text = (*(current_objs->begin()))->status_line();
 	} 
       else 
 	{
-	  obj_name = "None";
+	  status_line_text = "None";
 	}
     }
   
-  sprintf (str, "%-30s X: %d Y: %d",
-	   obj_name.c_str(), 
-	   CL_Mouse::get_x() - x_offset, 
-	   CL_Mouse::get_y() - y_offset);
-  font->print_left(50, 5, str);
+  font->print_left(50, 5, status_line_text.c_str());
+
+  sprintf(mouse_co, "X:%-3d Y:%-3d",
+	  CL_Mouse::get_x() - x_offset,
+	  CL_Mouse::get_y() - y_offset);
+
+  font->print_left(CL_Display::get_width() - 100, 5, mouse_co);
 }
 
 void

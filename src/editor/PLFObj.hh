@@ -1,4 +1,4 @@
-//  $Id: PLFObj.hh,v 1.4 2000/04/24 13:15:42 grumbel Exp $
+//  $Id: PLFObj.hh,v 1.5 2000/05/22 21:11:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,6 +33,7 @@ public:
   virtual ~PLFObj();
 
   virtual void save(std::ofstream* plf, std::ofstream* psm) = 0;
+  virtual std::string  status_line();
 };
 
 class HotspotObj : public PLFObj
@@ -46,6 +47,7 @@ public:
   EditorObj* duplicate();
   void save(std::ofstream* plf, std::ofstream* psm);
   std::string obj_type() { return "Hotspot"; };
+  std::string  status_line();
 };
 
 class EntranceObj : public PLFObj
@@ -60,6 +62,7 @@ public:
   EditorObj* duplicate();
   void save(std::ofstream* plf, std::ofstream* psm);  
   std::string obj_type() { return "Entrance"; };
+  std::string status_line();
 };
 
 class ExitObj : public PLFObj
@@ -103,6 +106,7 @@ public:
   bool mouse_over(int, int);
   void save(std::ofstream* plf, std::ofstream* psm);
   std::string obj_type() { return "Liquid"; };
+  std::string  status_line();
 };
 
 #endif

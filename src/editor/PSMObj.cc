@@ -1,4 +1,4 @@
-//  $Id: PSMObj.cc,v 1.7 2000/05/06 05:52:32 grumbel Exp $
+//  $Id: PSMObj.cc,v 1.8 2000/05/22 21:11:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -67,6 +67,35 @@ PSMObj::save(std::ofstream* plf, std::ofstream* psm)
   
   (*psm) << "(resource:" << desc.filename << ")" << desc.res_name << " : " 
 	 << x_pos << " : " << y_pos << ";" << std::endl;
+}
+
+std::string 
+PSMObj::status_line()
+{
+  // FIXME: This is a potential buffer overrun, to lazy to fix it right now
+  char str[1024];  
+  string type_name;
+
+  switch(type)
+    {
+    case surface_data::SOLID:
+      type_name = "solid";
+      break;
+    case surface_data::GROUND:
+      type_name = "ground";	
+      break;
+    case surface_data::BRIDGE:
+      type_name = "bridge";	
+      break;
+    default:
+      type_name = "Unknown";
+    }
+
+  sprintf (str, "%-30s:%s",
+	   type_name.c_str(),
+	   "PSMObj");
+
+  return std::string(str);
 }
 
 /* EOF */
