@@ -19,6 +19,7 @@ pkgdatadir = $(datadir)/games/@PACKAGE@/images
 
 nobase_pkgdata_DATA = backgrounds/large_star.png \
 backgrounds/middle_star.png \
+backgrounds/otherstuff.jpg \
 backgrounds/small_star.png \
 backgrounds/starfield_icon.png \
 core/buttons/armageddon_anim.png \

@@ -17,17 +17,7 @@
   </global>
 
   <action-list>
-    <basher count="20"/>
-    <blocker count="20"/>
-    <bomber count="20"/>
-    <bridger count="20"/>
-    <climber count="20"/>
-    <digger count="20"/>
-    <floater count="20"/>
-    <jumper count="20"/>
-    <miner count="20"/>
-    <slider count="20"/>
-  </action-list>
+     </action-list>
 
 <worldobj type="groundpiece">
   <type>ground</type>
