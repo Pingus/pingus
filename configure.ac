@@ -1,4 +1,4 @@
-#  $Id: configure.in,v 1.75 2003/02/12 22:40:47 torangan Exp $
+#  $Id: configure.ac,v 1.1 2003/02/16 18:32:44 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,36 +19,17 @@
 
 dnl BUG: This file should be updated with the macros from 'configure.scan'
 
-dnl Process this file with autoconf to produce a configure script.
-AC_INIT( src/pingus_main.cxx )
-AM_CONFIG_HEADER( config.h )
-
-PACKAGE=pingus
-
-# The Pingus Version
-MAJOR_VERSION=0
-MINOR_VERSION=5
-PATCH_VERSION=0pre4
-
 # The required ClanLib version
 CLANLIB_MAJOR_VERSION=0
 CLANLIB_MINOR_VERSION=6
 CLANLIB_PATCH_VERSION=4
 
-VERSION=${MAJOR_VERSION}.${MINOR_VERSION}.${PATCH_VERSION}
+dnl Process this file with autoconf to produce a configure script.
+AC_INIT(Pingus, 0.5.0pre5)
+AC_CONFIG_HEADERS([config.h])
+AC_CONFIG_SRCDIR(src/pingus_main.cxx)
+AM_INIT_AUTOMAKE
 
-dnl Similar to following are already done by AM_INIT_AUTOMAKE:
-dnl (but different in terms of producing quoted vs bare strings)
-dnl  AC_DEFINE_UNQUOTED(PACKAGE, $PACKAGE)
-dnl  AC_DEFINE_UNQUOTED(VERSION, $VERSION)
-dnl  AC_SUBST(VERSION)
-
-AC_DEFINE_UNQUOTED(MAJOR_VERSION, $MAJOR_VERSION)
-AC_DEFINE_UNQUOTED(MINOR_VERSION, $MINOR_VERSION)
-AC_DEFINE_UNQUOTED(PATCH_VERSION, $PATCH_VERSION)
-AC_DEFINE_UNQUOTED(VERSION_STRING, "${MAJOR_VERSION}.${MINOR_VERSION}.${PATCH_VERSION}")
-
-AM_INIT_AUTOMAKE( $PACKAGE, $VERSION )
 
 dnl Checks for programs.
 AC_PROG_AWK
@@ -81,41 +62,10 @@ fi
 dnl -- Static Libaries --
 AC_PROG_RANLIB
 
-dnl -- Dynamic Libraies --
-dnl AM_PROG_LIBTOOL
-
-AC_LANG_CPLUSPLUS
-
-dnl BUG This guesses that the X libs are in that directory
-dnl LIBS="-L/usr/X11R6/lib -lMagick $LIBS"
-dnl BUG end
-
-dnl Checks for libraries.
-dnl Checking for ClanLib
-
-dnl FIXME this is a hack:
-dnl LIBS="$LIBS -lHermes"
-
-
-
 AC_CHECK_HEADER(ClanLib/core.h,, [echo "Please get ClanLib from http://www.clanlib.org"; exit])
 
-dnl -- Testing for this libs cause some systems need them in addition
-dnl -- to clanCore and SDL 
-
+dnl FIXME: we don't need pthread, but some system might need it to succeed at the final link
 AC_CHECK_LIB(pthread,   main,,)
-
-dnl Checking for SDL libraries, used for sound and music support
-dnl 
-dnl AC_ARG_WITH(sound,
-dnl 	[  --without-sound         disable sound support throu SDL and SDL_mixer])
-dnl 
-dnl echo "checking for sound support... $with_sound"
-dnl 
-dnl if test "x$with_sound" != "xno"; then
-dnl 	AC_CHECK_LIB(SDL,   main,,)
-dnl 	AC_CHECK_LIB(SDL_mixer,   main,,SOUND_SUPPORT=false)
-dnl fi
 
 dnl ---------------------------------------------------
 dnl Check the location of the XML library and -headers.
@@ -155,10 +105,10 @@ dnl Check the version of libxml.
 ac_xml_version=`$XML_CONFIG --version`
 case "$ac_xml_version" in
         2.*)
- 	AC_DEFINE_UNQUOTED(LIBXML_2)
+ 	AC_DEFINE_UNQUOTED(LIBXML_2,, [Libxml2 is present])
         ;;
         *)
-        AC_CHECK_LIB(xml, xmlIsBlankNode,, [AC_DEFINE_UNQUOTED(NO_XMLISBLANKNODE)])
+        #AC_CHECK_LIB(xml, xmlIsBlankNode,, [AC_DEFINE_UNQUOTED(NO_XMLISBLANKNODE)])
  	;;
 esac
 
@@ -185,7 +135,7 @@ AC_CHECK_LIB( clanSound,   main)
 AC_CHECK_LIB( clanMikMod,   main)
 AC_CHECK_LIB( clanVorbis,   main)
 
-echo "ClanGL: $with_clanGL"
+#echo "ClanGL: $with_clanGL"
 if test "x$with_clanGL" = "xyes"; then
     AC_CHECK_LIB( clanGL,   main)
 else
@@ -323,11 +273,11 @@ AC_CHECK_FUNCS(select strdup)
 
 dnl Checking for the install prefix and then use it to define PINGUS_DATADIR
 PINGUS_EXPAND_DIR(pingus_datadir, "$datadir/games/$PACKAGE")
-AC_DEFINE_UNQUOTED(PINGUS_DATADIR, "$pingus_datadir")
+AC_DEFINE_UNQUOTED(PINGUS_DATADIR, "$pingus_datadir", [Location of Pingus data files])
 
 dnl -- Define the localedir, needed for gettext --
 PINGUS_EXPAND_DIR(localedir, "$datadir/locale")
-AC_DEFINE_UNQUOTED(LOCALEDIR, "$localedir")
+AC_DEFINE_UNQUOTED(LOCALEDIR, "$localedir", [Location of gettext files])
 
 # po/Makefile.in intl/Makefile <- this must be in one line, if its not
 # po/Makefile will not be generated.
@@ -360,71 +310,11 @@ AC_OUTPUT( Makefile
            data/worldmaps/Makefile
            data/demos/Makefile
            data/data/Makefile
+           data/images/Makefile
            doc/Makefile
            po/Makefile.in intl/Makefile
-  data/images/gui/Makefile
-  data/images/core/menu/Makefile
-  data/images/core/misc/Makefile
-  data/images/core/cursors/Makefile
-  data/images/core/editor/Makefile
-  data/images/core/Makefile
-  data/images/core/worldmap/Makefile
-  data/images/core/buttons/Makefile
-  data/images/backgrounds/Makefile
-  data/images/particles/Makefile
-  data/images/exits/Makefile
-  data/images/fonts/Makefile
-  data/images/story/Makefile
-  data/images/traps/Makefile
-  data/images/groundpieces/solid/misc/Makefile
-  data/images/groundpieces/solid/rock/Makefile
-  data/images/groundpieces/solid/crystal/Makefile
-  data/images/groundpieces/solid/Makefile
-  data/images/groundpieces/solid/industrial/Makefile
-  data/images/groundpieces/bridge/misc/Makefile
-  data/images/groundpieces/bridge/space/Makefile
-  data/images/groundpieces/bridge/Makefile
-  data/images/groundpieces/Makefile
-  data/images/groundpieces/ground/mud/Makefile
-  data/images/groundpieces/ground/misc/Makefile
-  data/images/groundpieces/ground/ordina/Makefile
-  data/images/groundpieces/ground/real/Makefile
-  data/images/groundpieces/ground/rock/Makefile
-  data/images/groundpieces/ground/snow/Makefile
-  data/images/groundpieces/ground/green/Makefile
-  data/images/groundpieces/ground/test/Makefile
-  data/images/groundpieces/ground/crystal/Makefile
-  data/images/groundpieces/ground/space/Makefile
-  data/images/groundpieces/ground/mushroom/Makefile
-  data/images/groundpieces/ground/desert/Makefile
-  data/images/groundpieces/ground/foliage/Makefile
-  data/images/groundpieces/ground/Makefile
-  data/images/groundpieces/ground/jungle/Makefile
-  data/images/groundpieces/ground/sortie/Makefile
-  data/images/groundpieces/ground/sweets/Makefile
-  data/images/groundpieces/ground/industrial/Makefile
-  data/images/groundpieces/ground/signposts/Makefile
-  data/images/groundpieces/remove/misc/Makefile
-  data/images/groundpieces/remove/Makefile
-  data/images/groundpieces/transparent/misc/Makefile
-  data/images/groundpieces/transparent/foliage/Makefile
-  data/images/groundpieces/transparent/Makefile
-  data/images/groundpieces/transparent/industrial/Makefile
-  data/images/liquids/Makefile
-  data/images/worldmaps/Makefile
-  data/images/worldobjs/Makefile
-  data/images/special/Makefile
-  data/images/special/pacman/Makefile
-  data/images/textures/Makefile
-  data/images/Makefile
-  data/images/hotspots/misc/Makefile
-  data/images/hotspots/space/Makefile
-  data/images/hotspots/desert/Makefile
-  data/images/hotspots/Makefile
-  data/images/hotspots/signposts/Makefile
-  data/images/pingus/Makefile
-  data/images/entrances/Makefile
           )
+
 # find . -name "Makefile.am" | grep "\./data/images" | grep -v old | grep -v unsorted | sed "s/^\.\//  /" | sed "s/.am\$//"
 
 
