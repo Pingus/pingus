@@ -2,6 +2,7 @@
 #include "FileCode.h"
 #include "ShellCode.h"
 #include <commctrl.h>
+#include <stdio.h>
 
 
 #define PLAY_NICELY
@@ -9,8 +10,6 @@
 
 #include "resource.h"
 #include "Parameters.h"
-
-//Really no clue whats up with handles, needs more investigating (culprit - BlueZip!!)
 
 
 
@@ -21,7 +20,17 @@
 // GLOBAL STATE
 HINSTANCE hInst;
 bool InDoEvents = false;
+BlueZip zip;
+
+int TotalCompSize;
+int TotalRealSize;
 // END GLOBAL STATE
+
+
+//Predefines
+void PathChanged(HWND hDlg);
+//end
+
 
 
 void InitDialog(HWND hDlg)
@@ -37,6 +46,67 @@ void InitDialog(HWND hDlg)
 	CheckDlgButton(hDlg, chkExecute, BST_CHECKED);
 	CheckDlgButton(hDlg, chkShortcutDesktop, BST_CHECKED);
 	CheckDlgButton(hDlg, chkShortcutStart, BST_CHECKED);
+
+	char ZipFile[MyMaxPath];
+	GetModuleFileName(hInst, ZipFile, MyMaxPath);
+
+#ifdef _DEBUG
+	//make practical debugging a reality
+	strcat(ZipFile, ".zip");
+#endif
+
+	zip.SetZipFile(ZipFile);
+	if (!zip.Read())
+	{
+		ErrBox("Corrupt installer data, please try redownloading");
+		DestroyWindow(hDlg);
+		return;
+	}
+
+	TotalCompSize = 0;
+	TotalRealSize = 0;
+	for (zList* i = zip.Files; i != NULL; i = i->next)
+	{
+		TotalCompSize += i->CompressedSize();
+		TotalRealSize += i->OriginalSize();
+	}
+	PathChanged(hDlg);
+}
+
+void PathChanged(HWND hDlg)
+{
+	static char LastPath = -1;
+	char Buffer[MyMaxPath];
+
+	GetDlgItemText(hDlg, txtEdit, Buffer, MyMaxPath);
+	char NewLastPath;
+	if (Buffer[1] == ':')
+		NewLastPath = toupper(Buffer[0]);
+	else
+		NewLastPath = 0;
+	if ((NewLastPath > 'Z') || (NewLastPath < 'A'))
+		NewLastPath = 0;
+
+	if (LastPath == NewLastPath)
+		return;
+	LastPath = NewLastPath;
+
+	char Buf[MaxFileSizeBuf];
+	FileSize(TotalRealSize, Buf);
+	int Len = sprintf(Buffer, "Space required is %s", Buf);
+
+	if (LastPath != 0)
+	{
+		ULARGE_INTEGER DriveSpace;
+		char Buf[4] = {LastPath, ':', '\\', 0};
+		if (!GetDiskFreeSpaceEx(Buf, &DriveSpace, NULL, NULL))
+			DriveSpace.QuadPart = 0;
+
+		FileSize(DriveSpace.QuadPart, Buf);
+		sprintf(&Buffer[Len], ", installing on drive %c: which has %s free", LastPath, Buf);
+	}
+
+	SetDlgItemText(hDlg, lblSpace, Buffer);
 }
 
 void PaintDialog(HWND hDlg)
@@ -82,34 +152,10 @@ void DoEvents()
 
 bool DoInstall(char* InstallTo, bool RunOnEnd, HWND hDlg)
 {
-	char ZipFile[MyMaxPath];
-	GetModuleFileName(hInst, ZipFile, MyMaxPath);
-
-#ifdef _DEBUG
-	//make practical debugging a reality
-	strcat(ZipFile, ".zip");
-#endif
-
-	BlueZip b(ZipFile);
-	if (!b.Read())
-	{
-		ErrBox("Corrupt installer data, please try redownloading");
-		return true;
-	}
-
 	//Now replace / with \ to make it less confusing
+	//And guarantee it has no trailing slash
 	NormalPath(InstallTo);
 
-	//And guarantee it has a trailing slash
-	int BufLen = strlen(InstallTo);
-	char* BufPos = &InstallTo[BufLen];
-	if ((BufLen > 0) && (BufPos[-1] != '\\'))
-	{
-		BufPos[0] = '\\';
-		BufPos++;
-		BufPos[0] = 0;
-	}
-	
 
 	//Now see if you can create the directory
 	if (ExistsDir(InstallTo))
@@ -121,15 +167,16 @@ bool DoInstall(char* InstallTo, bool RunOnEnd, HWND hDlg)
 	}
 	else
 	{
-		if (!CreateFolder(InstallTo))
+		if (!EnsureFolder(InstallTo))
 		{
 			ErrBox("Could not create the specified directory");
 			return false;
 		}
 	}
 
-
-
+	strcat(InstallTo, "\\");
+	int BufLen = strlen(InstallTo);
+	char* BufPos = &InstallTo[BufLen];
 	//Buffer is C:\\Program Files\\ProgramDir\\<space>
 	//BufPos is <space>
 
@@ -156,29 +203,27 @@ bool DoInstall(char* InstallTo, bool RunOnEnd, HWND hDlg)
 	}
 
 	const int PrgFactor = 4096;
-	int Sum = 0;
-	for (zList* i = b.Files; i != NULL; i = i->next)
-		Sum += i->CompressedSize();
-	SendDlgItemMessage(hDlg, prgBar, PBM_SETRANGE, 0, MAKELPARAM(0, Sum / PrgFactor));
-	Sum = 0;
+	SendDlgItemMessage(hDlg, prgBar, PBM_SETRANGE, 0, MAKELPARAM(0, TotalCompSize / PrgFactor));
+	int Done = 0;
 
 
 	//now you have access to at least the file Str
 	//extract all the files
-	for (i = b.Files; i != NULL; i = i->next)
+	for (zList* i = zip.Files; i != NULL; i = i->next)
 	{
-		SendDlgItemMessage(hDlg, prgBar, PBM_SETPOS, Sum / PrgFactor, 0);
-		Sum += i->CompressedSize();
+		Done += i->CompressedSize();
 
 		strcpy(BufPos, i->FileName);
+		char LastChar = BufPos[strlen(BufPos)-1];
+		bool IsFolder = ((LastChar == '\\') || (LastChar == '/'));
 		NormalPath(BufPos);
-		SetDlgItemText(hDlg, lblInstallFile, InstallTo);
+		SetDlgItemText(hDlg, lblInstallFile, BufPos);
 		DoEvents();
-		
+
 		//if the last char is a '\' then directory
-		if (BufPos[strlen(BufPos)-1] == '\\')
+		if (IsFolder)
 		{
-			if (!ExistsDir(InstallTo) && !CreateFolder(InstallTo))
+			if (!EnsureFolder(InstallTo))
 			{
 				ErrDialog(hDlg, "Could not create the directory\n\n", InstallTo);
 				return false;
@@ -187,14 +232,14 @@ bool DoInstall(char* InstallTo, bool RunOnEnd, HWND hDlg)
 		else
 		{
 			if ( (Exists(InstallTo) && !DeleteFile(InstallTo)) ||
-				 (!b.GetFile(i, InstallTo)))
+				 (!zip.GetFile(i, InstallTo)))
 			{
 				ErrDialog(hDlg, "Could not extract the file\n\n", InstallTo);
 				return false;
 			}
 		}
+		SendDlgItemMessage(hDlg, prgBar, PBM_SETPOS, Done / PrgFactor, 0);
 	}
-	SendDlgItemMessage(hDlg, prgBar, PBM_SETPOS, Sum / PrgFactor, 0);
 	SetDlgItemText(hDlg, lblInstallFile, "Finalising...");
 
 	//now InstallTo is the install directory, plus a \\ character
@@ -292,6 +337,11 @@ int CALLBACK DlgFunc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
 
 		case cmdBrowse:
 			Browse(hDlg, GetDlgItem(hDlg, txtEdit));
+			break;
+
+		case txtEdit:
+			if ((HIWORD(wParam) == EN_CHANGE) && (TotalRealSize != 0))
+				PathChanged(hDlg);
 			break;
 		}
 		break;

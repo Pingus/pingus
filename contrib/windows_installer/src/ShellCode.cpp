@@ -1,6 +1,7 @@
 #include "Header.h"
 #include "Parameters.h"
 #include <shlobj.h>
+#include "FileCode.h"
 
 
 bool OleReady;
@@ -94,12 +95,11 @@ bool CreateStartMenuShortcut(HWND hDlg, char* Folder)
 		return false;
 
 	strcat(Destination, "\\" ProgramName);
-	if (!CreateDirectory(Destination, NULL))
+	if (!EnsureFolder(Destination))
 		return false;
 
+	strcat(Destination, "\\");
 	char* i = &Destination[strlen(Destination)];
-	i[0] = '\\';
-	i++;
 
 	char Target[MyMaxPath];
 	strcpy(Target, Folder);
@@ -124,6 +124,20 @@ void GetProgramFiles(HWND hDlg, char* Buffer)
 
 
 
+int CALLBACK BrowseCallbackProc(HWND hWnd, UINT uMsg, LPARAM lParam, LPARAM lpData)
+{
+	switch(uMsg)
+	{
+	case BFFM_INITIALIZED:
+		char Buffer[MyMaxPath];
+		GetWindowText((HWND) lpData, Buffer, MyMaxPath);
+		SendMessage(hWnd, BFFM_SETSELECTION, TRUE, (LPARAM) Buffer);
+		break;
+	}
+
+	return 0;
+}
+
 
 void Browse(HWND hDlg, HWND hText)
 {
@@ -133,10 +147,10 @@ void Browse(HWND hDlg, HWND hText)
 	bi.hwndOwner = hDlg;
 	bi.pidlRoot = NULL;
 	bi.pszDisplayName = NULL;
-	bi.lpszTitle = "Please select the installation folder";
+	bi.lpszTitle = "Select the installation folder for " ProgramName;
 	bi.ulFlags = BIF_RETURNONLYFSDIRS | bif_NEWDIALOGSTYLE;
-	bi.lpfn = NULL;
-	bi.lParam = 0;
+	bi.lpfn = &BrowseCallbackProc;
+	bi.lParam = (LPARAM) hText;
 	bi.iImage = 0;
 
 	LPITEMIDLIST idl = SHBrowseForFolder(&bi);

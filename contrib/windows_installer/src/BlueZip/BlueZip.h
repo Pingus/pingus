@@ -13,6 +13,8 @@ private:
 	bool ScanZip(File f);
 	void ReadEnd(File f);
 
+	void Setup(LPCTSTR FileName);
+
 #ifndef NO_COMPRESSION
 	fList* Pending; // List of names to add
 	void WriteEnd(File f);
@@ -24,7 +26,10 @@ public:
 	zList* Files;			// A point to the first file in the ZIP
 
 
-	BlueZip(LPCTSTR FileName);
+	BlueZip(){};
+	BlueZip(LPCTSTR FileName){Setup(FileName);}
+	void SetZipFile(LPCTSTR FileName){Setup(FileName);}
+
 	~BlueZip();
 
 	bool Read(); //Load the file into memory

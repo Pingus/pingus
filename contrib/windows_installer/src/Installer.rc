@@ -27,18 +27,18 @@ LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_UK
 // TEXTINCLUDE
 //
 
-1 TEXTINCLUDE DISCARDABLE 
+1 TEXTINCLUDE DISCARDABLE
 BEGIN
     "resource.h\0"
 END
 
-2 TEXTINCLUDE DISCARDABLE 
+2 TEXTINCLUDE DISCARDABLE
 BEGIN
     "#include ""afxres.h""\r\n"
     "\0"
 END
 
-3 TEXTINCLUDE DISCARDABLE 
+3 TEXTINCLUDE DISCARDABLE
 BEGIN
     "\r\n"
     "\0"
@@ -69,14 +69,15 @@ BEGIN
     CONTROL         "Run program after installation",chkExecute,"Button",
                     BS_AUTOCHECKBOX | WS_TABSTOP,7,140,294,11
     CONTROL         "Create shortcut on Desktop",chkShortcutDesktop,"Button",
-                    BS_AUTOCHECKBOX | WS_TABSTOP,7,100,294,10
+                    BS_AUTOCHECKBOX | WS_TABSTOP,7,114,294,10
     CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDHORZ,-1,164,311,1
     LTEXT           "Windows Installer © Neil Mitchell 1999-2004",IDC_STATIC,
                     7,176,155,10,WS_DISABLED
     CONTROL         "Progress2",prgBar,"msctls_progress32",NOT WS_VISIBLE,7,
                     74,294,12
     CONTROL         "Create shortcut in the Start Menu",chkShortcutStart,
-                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,111,294,10
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,124,294,10
+    LTEXT           "#",lblSpace,7,89,294,9
 END
 
 
@@ -86,7 +87,7 @@ END
 //
 
 #ifdef APSTUDIO_INVOKED
-GUIDELINES DESIGNINFO DISCARDABLE 
+GUIDELINES DESIGNINFO DISCARDABLE
 BEGIN
     dlgInstall, DIALOG
     BEGIN

@@ -1,6 +1,6 @@
 #include "BlueHead.h"
 
-BlueZip::BlueZip(LPCTSTR FileName)
+void BlueZip::Setup(LPCTSTR FileName)
 {
 	this->FileName = CopyString(FileName);
 

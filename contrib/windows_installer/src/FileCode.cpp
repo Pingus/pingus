@@ -28,26 +28,74 @@ void NormalPath(char* File)
 		if (File[i] == '/')
 			File[i] = '\\';
 	}
+	if (File[i-1] == '\\')
+		File[i-1] = 0;
 }
 
-// The first file passed must end in a \\ character
-bool CreateFolder(char* File)
+bool ParentFolder(char* File)
 {
 	char* s = strrchr(File, '\\');
 	if (s == NULL)
 		return false;
 
-	int BufChar = s[0];
 	s[0] = 0;
-	bool Success = false;
-	if (!CreateDirectory(File, NULL))
+	return true;
+}
+
+void UnparentFolder(char* File)
+{
+	File[strlen(File)] = '\\';
+}
+
+
+bool EnsureFolder(char* File)
+{
+	if (ExistsDir(File))
+		return true;
+
+	if (ParentFolder(File))
 	{
-		if (CreateFolder(File) && CreateDirectory(File, NULL))
-			Success = true;
+		bool Res = EnsureFolder(File);
+		UnparentFolder(File);
+		if (!Res) return false;
+	}
+
+	return (CreateDirectory(File, NULL) != 0);
+}
+
+void FileSize(__int64 Size, char* Buffer)
+{
+	//set the number of bytes as a Windows standard file count
+	const TCHAR PreFix[] = "KMGTP";
+	//make sure to 3 sf
+
+	if (Size < 1000)
+	{
+		itoa((int) Size, Buffer, 10);
+		strcat(Buffer, " bytes");
 	}
 	else
-		Success = true;
+	{
+		int i, j = 1024;
+		for (i = 0; Size > j * 999; i++)
+			j *= 1024;
 
-	s[0] = BufChar;
-	return Success;
+		itoa((int) (Size / (__int64) j), Buffer, 10);
+		int k = strlen(Buffer);
+		if (k != 3)
+		{
+			Buffer[k] = '.';
+			j = ((int) (Size % j) * 1000) / j;
+			int l = 100;
+			for (k++; k != 4; k++)
+			{
+				Buffer[k] = (j / l) + '0';
+				j %= l;
+				l /= 10;
+			}
+		}
+		Buffer[k + 0] = PreFix[i];
+		Buffer[k + 1] = 'B';
+		Buffer[k + 2] = 0;
+	}
 }
