@@ -1,4 +1,4 @@
-//   $Id: Pingus.cc,v 1.38 2000/06/19 20:10:38 grumbel Exp $
+//   $Id: Pingus.cc,v 1.39 2000/06/21 20:30:34 grumbel Exp $
 //    ___
 //   |  _\ A free Lemmings clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -201,12 +201,13 @@ PingusMain::check_args(int argc, char* argv[])
     {"enable-uactions", no_argument,       0, 136},
     {"disable-auto-scrolling",   no_argument,       0, 137},
 
+#ifdef HAVE_LIBSDL_MIXER
     // Sound stuff
     {"audio-format",     required_argument, 0, 138},
     {"audio-rate",       required_argument, 0, 139},
     {"audio-channels",   required_argument, 0, 140},
     {"audio-buffers",    required_argument, 0, 141},
-
+#endif
     // 
     {"no-cfg-file",    no_argument, 0, 142},
     {"debug-tiles",     no_argument, 0, 143},
@@ -282,7 +283,14 @@ PingusMain::check_args(int argc, char* argv[])
       intro_disabled = true;
       break;
     case 'V':
-      std::cout << PACKAGE << " version " << VERSION << std::endl;
+      std::cout << "Pingus version " << VERSION 
+#ifdef HAVE_LIBSDL_MIXER
+		<< " (with sound support)"
+#else
+		<< " (without sound support)"
+#endif
+		<< std::endl;
+      
       std::cout <<
 	"\n"
 	"Copyright (C) 1998 Ingo Ruhnke <grumbel@pingus.cx>\n"
@@ -348,7 +356,7 @@ PingusMain::check_args(int argc, char* argv[])
     case 137:
       auto_scrolling = false;
       break;
-
+#ifdef HAVE_LIBSDL_MIXER
     case 138:
       if (strcmp(optarg, "8") == 0)
 	pingus_audio_format = AUDIO_S8;
@@ -367,7 +375,7 @@ PingusMain::check_args(int argc, char* argv[])
     case 141:
       sscanf(optarg, "%d", &pingus_audio_buffers);
       break;
-
+#endif
     case 142: // --no-cfg-file
       // Nothing, since that is handled in quick_check_args()
       break;
@@ -430,7 +438,7 @@ PingusMain::check_args(int argc, char* argv[])
 	"\nDemo playing and recording:\n"
 	"   -r, --record-demo FILE   Record a demo session to FILE\n"
 	"   -p, --play-demo FILE     Plays a demo session from FILE\n"
-
+#ifdef HAVE_LIBSDL_MIXER
 	"\nSound:\n"
 	"   -s, --enable-sound       Enable sound\n"
 	"   -m, --enable-music       Enable music\n"
@@ -438,7 +446,7 @@ PingusMain::check_args(int argc, char* argv[])
 	"   --audio-rate INT         Audio rate in Hz (default: 44000)\n"
 	"   --audio-channels {1,2}   Mono(1) or Stereo(2) output (default: 2)\n"
 	"   --audio-buffers INT      Audio buffer (default: 4096)\n"
-
+#endif
 	   << std::endl;
       exit(EXIT_SUCCESS);
       break;
