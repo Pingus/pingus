@@ -1,4 +1,4 @@
-//  $Id: Editor.cc,v 1.17 2000/08/11 01:07:34 grumbel Exp $
+//  $Id: Editor.cc,v 1.18 2000/08/11 21:17:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,21 +36,31 @@ Editor::Editor ()
   move_y = 0;
   event_handler_ref_counter = 0;
 
-  event = new EditorEvent;
-  panel = new Panel;
+  EditorObj::set_editor(this);
+
+  event      = new EditorEvent;
+  panel      = new Panel;
   scroll_map = new ScrollMap;
+  object_manager  = new ObjectManager;
+  status_line     = new StatusLine;
+  object_selector = new ObjectSelector;
   
   event->set_editor(this);
   
   font = PingusResource::load_font("Fonts/courier_small", "fonts");
   panel->init();
-  status_line.set_current_objs(&object_manager.current_objs);
+  status_line->set_current_objs(&object_manager->current_objs);
   panel->set_event(event);
   scroll_map->editor_event = event;
 }
 
 Editor::~Editor ()
 {
+  delete object_manager;
+  delete status_line;
+  delete object_selector;
+
+  delete scroll_map;
   delete event;
   delete panel;
 }
@@ -122,7 +132,7 @@ void
 Editor::draw ()
 {
   CL_Display::clear_display();
-  object_manager.draw();
+  object_manager->draw();
   panel->draw();
 
   /*  {
@@ -143,7 +153,7 @@ Editor::draw ()
 		       1.0, 1.0, 1.0, 1.0);
 		       }*/
 
-  status_line.draw(object_manager.x_offset, object_manager.y_offset);
+  status_line->draw(object_manager->x_offset, object_manager->y_offset);
   scroll_map->draw();
 
   Display::flip_display(true);
@@ -166,8 +176,8 @@ Editor::scroll()
 
       if (mouse_x != CL_Mouse::get_x() || mouse_y != CL_Mouse::get_y())
 	{
-	  object_manager.x_offset += (mouse_x - CL_Mouse::get_x()) / 5;
-	  object_manager.y_offset += (mouse_y - CL_Mouse::get_y()) / 5;
+	  object_manager->x_offset += (mouse_x - CL_Mouse::get_x()) / 5;
+	  object_manager->y_offset += (mouse_y - CL_Mouse::get_y()) / 5;
 	  
 	  /*cout << "ObjectManager: "
 	       << "X: " << object_manager.x_offset 
@@ -272,7 +282,7 @@ Editor::save_tmp_level ()
   
   std::cout << "Saving level to: " << filename << std::endl;
   
-  object_manager.save_level_xml(filename.c_str());
+  object_manager->save_level_xml(filename.c_str());
 
   return filename;
 }
@@ -296,15 +306,15 @@ Editor::rect_get_current_objs()
 
       // Draw the screen
       CL_Display::clear_display();
-      object_manager.draw();
+      object_manager->draw();
       Display::draw_rect(x1, y1, x2, y2,
 			 0.0, 1.0, 0.0, 1.0);
       panel->draw();
-      status_line.draw(object_manager.x_offset, object_manager.y_offset);
+      status_line->draw(object_manager->x_offset, object_manager->y_offset);
       Display::flip_display(true);
     }
   
-  object_manager.rect_get_current_objs(x1, y1, x2, y2);
+  object_manager->rect_get_current_objs(x1, y1, x2, y2);
 
   std::cout << "finished" << std::endl;
 }
@@ -345,7 +355,7 @@ Editor::move_objects()
   else if (CL_Keyboard::get_keycode(CL_KEY_DOWN))
     move_y = move_speed;
         
-  object_manager.move_current_objs(move_x, move_y);
+  object_manager->move_current_objs(move_x, move_y);
 }
 
 void
@@ -358,7 +368,7 @@ Editor::interactive_move_object()
   
   while (CL_Mouse::left_pressed()) 
     {
-      object_manager.move_current_objs(CL_Mouse::get_x() - mouse_x,
+      object_manager->move_current_objs(CL_Mouse::get_x() - mouse_x,
 				       CL_Mouse::get_y() - mouse_y);
       draw();
       mouse_x = CL_Mouse::get_x();
@@ -414,6 +424,9 @@ Editor::interactive_load()
 
 /***********************************************
 $Log: Editor.cc,v $
+Revision 1.18  2000/08/11 21:17:54  grumbel
+Added a level map into the ScrollMap, but its needs some optimizations
+
 Revision 1.17  2000/08/11 01:07:34  grumbel
 Some more fixes for the scrollmap, it work now basically.
 

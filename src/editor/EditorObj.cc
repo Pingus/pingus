@@ -1,4 +1,4 @@
-// $Id: EditorObj.cc,v 1.15 2000/08/11 01:07:34 grumbel Exp $
+// $Id: EditorObj.cc,v 1.16 2000/08/11 21:17:54 grumbel Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,6 +27,8 @@
 #include "config.h"
 
 using namespace std;
+
+Editor* EditorObj::editor;
 
 EditorObj::EditorObj()
 {
@@ -143,9 +145,21 @@ EditorObj::draw_offset(int x_offset, int y_offset)
 void
 EditorObj::draw_scroll_map(int x_pos, int y_pos, int arg_width, int arg_height)
 {
-  /*  x_pos = x_pos + pos.x_pos / 
-
-      Display::draw_rect(x_pos + */
+  if (surf)
+    {
+      surf->put_screen(x_pos + pos.x_pos * arg_width / editor->get_object_manager()->get_width(),
+		       y_pos + pos.y_pos * arg_height / editor->get_object_manager()->get_height(),
+		       width * arg_width / editor->get_object_manager()->get_width(),
+		       height * arg_height / editor->get_object_manager()->get_height());
+    }
+  else
+    {
+      Display::draw_rect(x_pos + pos.x_pos * arg_width / editor->get_object_manager()->get_width(),
+			 y_pos + pos.y_pos * arg_height / editor->get_object_manager()->get_height(),
+			 x_pos + (pos.x_pos + width) * arg_width / editor->get_object_manager()->get_width(),
+			 y_pos + (pos.y_pos + height) * arg_height / editor->get_object_manager()->get_height(),
+			 1.0, 1.0, 0.0, 1.0);       
+    }
 }
 
 void
@@ -258,6 +272,9 @@ EditorObj::save_position_xml(std::ofstream* xml, Position pos)
   
 /*
 $Log: EditorObj.cc,v $
+Revision 1.16  2000/08/11 21:17:54  grumbel
+Added a level map into the ScrollMap, but its needs some optimizations
+
 Revision 1.15  2000/08/11 01:07:34  grumbel
 Some more fixes for the scrollmap, it work now basically.
 

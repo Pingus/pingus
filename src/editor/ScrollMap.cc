@@ -1,4 +1,4 @@
-//  $Id: ScrollMap.cc,v 1.2 2000/08/11 01:07:35 grumbel Exp $
+//  $Id: ScrollMap.cc,v 1.3 2000/08/11 21:17:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,11 +24,11 @@ EditorEvent* ScrollMap::editor_event;
 
 ScrollMap::ScrollMap()
 {
-  x_pos = CL_Display::get_width() - 200 - 1;
-  y_pos = CL_Display::get_height() - 150 - 1;
-  
   width = 200;
-  height = 150;
+  height = 100;
+
+  x_pos = CL_Display::get_width() - width - 1;
+  y_pos = CL_Display::get_height() - height - 1;
 }
 
 ScrollMap::~ScrollMap()
@@ -71,19 +71,26 @@ ScrollMap::draw()
 {
   if (mouse_over(CL_Mouse::get_x(), CL_Mouse::get_y()))
     {
+      CL_Display::fill_rect(x_pos, y_pos,
+			    x_pos + width,
+			    y_pos + height,
+			    0.1, 0.1, 0.1, 0.8);
+    }
+  else
+    {
       // The rectangle, which represents the complet world
       CL_Display::fill_rect(x_pos, y_pos,
 			    x_pos + width,
 			    y_pos + height,
-			    1.0, 1.0, 1.0, 0.1);
+			    0.0, 0.0, 0.0, 0.9);
     }
   
   int viewarea_width = (CL_Display::get_width() * width
-			  / editor_event->object_manager->get_width());
+			/ editor_event->object_manager->get_width());
   int viewarea_height = (CL_Display::get_height() * height
-			   / editor_event->object_manager->get_height());
+			 / editor_event->object_manager->get_height());
   int viewarea_x_pos = (x_pos - (editor_event->object_manager->get_x_offset() * width
-				/ editor_event->object_manager->get_width()));
+				 / editor_event->object_manager->get_width()));
   int viewarea_y_pos = (y_pos - (editor_event->object_manager->get_y_offset() * height
 				 / editor_event->object_manager->get_height())); 
 

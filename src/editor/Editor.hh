@@ -1,4 +1,4 @@
-//  $Id: Editor.hh,v 1.7 2000/08/11 01:07:34 grumbel Exp $
+//  $Id: Editor.hh,v 1.8 2000/08/11 21:17:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,6 +37,9 @@
 class EditorEvent;
 class Panel;
 class ScrollMap;
+class ObjectManager;
+class ObjectSelector;
+class StatusLine;
 
 class Editor
 {
@@ -75,11 +78,11 @@ private:
   ///
   ScrollMap* scroll_map;
   ///
-  ObjectManager object_manager;
+  ObjectManager* object_manager;
   ///
-  StatusLine status_line;
+  StatusLine* status_line;
   ///
-  ObjectSelector object_selector;
+  ObjectSelector* object_selector;
   
 public:
   ///
@@ -113,7 +116,8 @@ public:
   void register_event_handler();
   ///
   void unregister_event_handler();
-
+  ///
+  ObjectManager* get_object_manager() { return object_manager; }
   ///
   std::string save_tmp_level ();
 };

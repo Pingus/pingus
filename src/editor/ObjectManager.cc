@@ -1,4 +1,4 @@
-//  $Id: ObjectManager.cc,v 1.28 2000/08/11 01:07:35 grumbel Exp $
+//  $Id: ObjectManager.cc,v 1.29 2000/08/11 21:17:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -193,13 +193,14 @@ ObjectManager::draw_scroll_map(int x_pos, int y_pos, int arg_width, int arg_heig
 {
   for (EditorObjIter i = editor_objs.begin(); i != editor_objs.end(); ++i) 
     {
-      /*(*i)->draw_scroll_map(x_pos, y_pos,
-	arg_width, arg_height);*/
+      (*i)->draw_scroll_map(x_pos, y_pos,
+			    arg_width, arg_height);
+      /*
       Display::draw_rect(x_pos + (*i)->get_x_pos() * arg_width / width,
 			 y_pos + (*i)->get_y_pos() * arg_height / height,
 			 x_pos + (*i)->get_x_pos() * arg_width / width + 10,
 			 y_pos + (*i)->get_y_pos() * arg_height / height + 10,
-			 0.0, 1.0, 0.0, 1.0);
+			 0.0, 1.0, 0.0, 1.0);*/
     }  
 }
 
@@ -247,7 +248,7 @@ ObjectManager::save_level (string filename)
   // FIXME: we need some error checking
   
   plf_out << "/* This level was created with the PLE\n"
-	  << " * $Id: ObjectManager.cc,v 1.28 2000/08/11 01:07:35 grumbel Exp $\n"
+	  << " * $Id: ObjectManager.cc,v 1.29 2000/08/11 21:17:54 grumbel Exp $\n"
 	  << " */"
 	  << endl;
   

@@ -1,4 +1,4 @@
-//  $Id: EditorObj.hh,v 1.17 2000/08/11 01:07:34 grumbel Exp $
+//  $Id: EditorObj.hh,v 1.18 2000/08/11 21:17:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,17 +29,18 @@
 #include "../EntranceData.hh"
 #include "../WeatherData.hh"
 
-// FIXME: The definitions for trap_data and hotspot_data should go to
-// a seperate file.
 #include "../PSMParser.hh"
 #include "../Trap.hh"
 #include "../PLF.hh"
 #include "../Position.hh"
 
+class Editor;
+
 ///
 class EditorObj
 {
 protected:
+  static Editor* editor;
   Position pos;
   
   ///
@@ -156,6 +157,8 @@ public:
   virtual std::string status_line();
   ///
   virtual EditorObj* duplicate() = 0;
+  
+  static void set_editor(Editor* e) { editor = e; }
 };
 
 // Structure for the sorting algorithm (stable_sort)
@@ -167,6 +170,8 @@ public:
       return (*a) < (*b);
     }
 };
+
+#include "Editor.hh"
 
 #endif
 

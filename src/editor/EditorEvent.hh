@@ -1,4 +1,4 @@
-//  $Id: EditorEvent.hh,v 1.7 2000/08/09 14:39:37 grumbel Exp $
+//  $Id: EditorEvent.hh,v 1.8 2000/08/11 21:17:54 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,8 @@
 
 #include "Editor.hh"
 #include "ObjectManager.hh"
+
+class ObjectManager;
 
 ///
 class Editor;

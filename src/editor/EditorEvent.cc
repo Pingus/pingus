@@ -1,4 +1,4 @@
-//  $Id: EditorEvent.cc,v 1.29 2000/08/11 01:07:34 grumbel Exp $
+//  $Id: EditorEvent.cc,v 1.30 2000/08/11 21:17:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -48,7 +48,7 @@ EditorEvent::set_editor(Editor* e)
 {
   editor = e;
   editor->last_level = System::get_statdir() + "levels/dist/";
-  object_manager = &(editor->object_manager);
+  object_manager = editor->object_manager;
 }
 
 void
@@ -132,7 +132,7 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key& key)
     
 	  // Select another background.
 	case CL_KEY_F10:
-	  object_manager->background.desc.res_name = editor->object_selector.get_background();
+	  object_manager->background.desc.res_name = editor->object_selector->get_background();
 	  break;
 
 	  /*	case CL_KEY_F11:
@@ -571,7 +571,7 @@ EditorEvent::editor_insert_new_object()
   EditorObj* obj;
   try {
     disable();
-    obj = editor->object_selector.get_obj(object_manager->x_offset, object_manager->y_offset);
+    obj = editor->object_selector->get_obj(object_manager->x_offset, object_manager->y_offset);
     enable();
   }
   

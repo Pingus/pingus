@@ -1,4 +1,4 @@
-//  $Id: ObjectManager.hh,v 1.10 2000/08/11 01:07:35 grumbel Exp $
+//  $Id: ObjectManager.hh,v 1.11 2000/08/11 21:17:54 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,8 @@
 #define OBJECTMANAGER_HH
 
 #include "EditorObj.hh"
+
+class EditorObj;
 
 /// Manager for all level objects.
 class ObjectManager
