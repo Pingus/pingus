@@ -1,4 +1,4 @@
-//  $Id: ThemeSelector.cc,v 1.7 2000/04/08 16:57:41 grumbel Exp $
+//  $Id: ThemeSelector.cc,v 1.8 2000/04/14 18:23:45 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,6 +26,7 @@
 #include "Display.hh"
 #include "Loading.hh"
 #include "ThemeSelector.hh"
+#include "PingusSound.hh"
 
 ListBox::ListBox()
 {
@@ -105,6 +106,7 @@ ThemeSelector::Event::on_button_press(CL_InputDevice *device, const CL_Key &key)
 	  loading_screen.draw();
 	  (*(theme_selector->current_theme))->play();
 	  enabled = true;
+	  PingusSound::play("../data/music/pingus-1.it");
 	  break;
 	}
     }
@@ -193,7 +195,7 @@ ThemeSelector::select()
   current_theme = themes.begin();
 
   draw();
-
+  PingusSound::play("../data/music/pingus-1.it");
   while(!key_pressed(CL_KEY_ESCAPE)) 
     {
       CL_System::keep_alive();
