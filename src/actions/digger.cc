@@ -1,4 +1,4 @@
-//  $Id: digger.cc,v 1.24 2001/05/20 13:00:58 grumbel Exp $
+//  $Id: digger.cc,v 1.25 2001/06/11 08:45:21 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,7 +37,7 @@ Digger::init(void)
   environment = (PinguEnvironment)land;
 
   digger_radius = PingusResource::load_surface ("Other/digger_radius", "pingus");
-  sprite = Sprite (std::string("Pingus/digger") + StringConverter::to_string(pingu->get_owner ()),
+  sprite = Sprite (std::string("Pingus/digger") + to_string(pingu->get_owner ()),
 		   "pingus");
   sprite.set_align_center_bottom ();
 

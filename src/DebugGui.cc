@@ -1,4 +1,4 @@
-//  $Id: DebugGui.cc,v 1.7 2001/04/08 14:10:34 grumbel Exp $
+//  $Id: DebugGui.cc,v 1.8 2001/06/11 08:45:21 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,27 +46,6 @@ DebugGui::draw(void)
   
   if (!debug_active) {
     return;
-  } else {
-    /*    vector<std::string> line;
-    char str[256];
-    Result result = world->write_results();
-
-    line.resize(10);
-
-    font->print_left(10, 10, "Debug Window");
-    
-    sprintf(str, "Pingus Saved: %d", result.saved);
-    line[0] = str;
-
-    sprintf(str, "Total Pingus: %d", result.total);
-    line[1] = str;
-
-    sprintf(str, "Pingus Killed: %d", result.killed);
-    line[2] = str;
-
-    for(std::vector<std::string>::size_type i = 0; i < line.size(); ++i)
-      font->print_left(10, 20 + (10*i), line[i].c_str());
-*/
   }
 }
 

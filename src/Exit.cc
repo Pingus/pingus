@@ -1,4 +1,4 @@
-//  $Id: Exit.cc,v 1.22 2001/04/23 08:00:08 grumbel Exp $
+//  $Id: Exit.cc,v 1.23 2001/06/11 08:45:21 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,7 +28,7 @@
 
 Exit::Exit(ExitData data)
   : sprite (data.desc, 10.0f),
-    flag ("misc/flag" + StringConverter::to_string (data.owner_id), "core")
+    flag ("misc/flag" + to_string (data.owner_id), "core")
 {
   flag.set_align_center_bottom ();
   if (verbose > 2)

@@ -1,4 +1,4 @@
-//  $Id: Server.cc,v 1.18 2001/05/18 19:17:08 grumbel Exp $
+//  $Id: Server.cc,v 1.19 2001/06/11 08:45:21 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -110,8 +110,7 @@ Server::send_event(std::string event)
   std::string str;
   char temp[1024];
   
-  sprintf(temp, "%d", GameTime::get_time());
-  str += temp;
+  str += to_string(GameTime::get_time());
   str += ":";
   str += event;
 

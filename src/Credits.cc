@@ -1,4 +1,4 @@
-//  $Id: Credits.cc,v 1.14 2001/04/21 20:31:52 grumbel Exp $
+//  $Id: Credits.cc,v 1.15 2001/06/11 08:45:21 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -115,9 +115,9 @@ Credits::display()
 	quit = true;
 
       if (CL_Keyboard::get_keycode(CL_KEY_SPACE))
-	update (delta.getset ());
+	update (delta.getset () * 500.0f);
       else
-	update (delta.getset () * 10.0f);	
+	update (delta.getset () * 25.0f);	
 	
       draw ();
       Display::flip_display ();
@@ -130,7 +130,6 @@ void
 Credits::update (float delta)
 {
   offset -= 1.0f * delta;
-	
 }
 
 void 

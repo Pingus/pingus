@@ -1,4 +1,4 @@
-//  $Id: Graph.hh,v 1.4 2001/04/30 17:52:00 grumbel Exp $
+//  $Id: Graph.hh,v 1.5 2001/06/11 08:45:22 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,29 +26,35 @@ template<class T> class GraphNode;
 template<class T> class GraphIterator;
 template<class T> class Graph;
 
-template<class T>
 class GraphNode
 {
+private:
+  std::list<boost::dummy_ptr<GraphNode> > next_nodes;
+  
 public:
-  T data;
-  std::list<GraphNode<T>*> next_nodes;
-  typedef std::list<GraphNode<T>*>::iterator NodeIter;
 
   GraphNode ()
   {}
 
-  GraphNode (const T& d) 
-  : data (d)
-  {}
+  /// The distance between this node and another node
+  virtual float distance (boost::dummy_ptr<GraphNode> other_node) =0;
+
+  //virtual float h_distance (boost::dummy_ptr<GraphNode> other_node) =0;
   
   void connect (GraphNode<T>* next_node)
   {
     for (NodeIter i = next_nodes.begin (); i != next_nodes.end (); ++i)
-      if (*i == next_node)
-	return;
+      {
+	// We are already connected to that node, so return
+	if (*i == next_node)
+	  return;
+      }
     next_nodes.push_back (next_node);
   }
-
+  
+  /** Connect a node with another node in both direction, when you
+      want a bidirectional graph, you only need this one, and not
+      connect () */
   void biconnect (GraphNode<T>* next_node)
   {
     next_node->connect (this);
@@ -61,8 +67,8 @@ template<class T>
 class Graph
 {
 public:
-  std::list<GraphNode<T> > nodes;
-  typedef std::list<GraphNode<T> >::iterator NodeIter;
+  std::list<boost::shared_ptr<GraphNode> > nodes;
+  typedef std::list<boost::shared_ptr<GraphNode> >::iterator NodeIter;
   
 
   Graph ()

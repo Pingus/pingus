@@ -1,4 +1,4 @@
-//   $Id: PingusMain.cc,v 1.26 2001/05/13 18:45:08 grumbel Exp $
+//   $Id: PingusMain.cc,v 1.27 2001/06/11 08:45:21 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -831,15 +831,12 @@ PingusMain::do_lemmings_mode(void)
     PingusMessageBox(" PingusError: " + err.get_message ());
   }
 
-  //CL_Input::chain_button_press.remove(&global_event);
-  //CL_Input::chain_button_release.remove(&global_event);
-
   CL_Input::sig_button_press.disconnect (on_button_press_slot);
   CL_Input::sig_button_release.disconnect(on_button_release_slot);
 
   //  Display::remove_flip_screen_hook(&console);
   //  Display::remove_flip_screen_hook(&fps_counter);
-  
+  /* 
   std::cout << "\n"
 	    << ",-------------------------------------------.\n"
 	    << "| Thank you for playing Pingus!             |\n"
@@ -859,7 +856,7 @@ PingusMain::do_lemmings_mode(void)
 	    << "|    Joseph Toscano <scarjt@buffnet.net>    |\n"
 	    << "|                                           |\n"
 	    << "`-------------------------------------------'\n"
-	    << std::endl;
+	    << std::endl; */
   
   return true;
 }

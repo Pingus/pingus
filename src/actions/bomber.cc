@@ -1,4 +1,4 @@
-//  $Id: bomber.cc,v 1.22 2001/04/23 08:00:08 grumbel Exp $
+//  $Id: bomber.cc,v 1.23 2001/06/11 08:45:21 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,6 +37,7 @@ Bomber::init()
 {
   particle_thrown = false;
   action_name = "Bomber";
+  exploded = false;
   
   // Only load the surface again if no static_surface is available
   if (!static_surface_loaded) 
@@ -45,8 +46,9 @@ Bomber::init()
       bomber_radius = PingusResource::load_surface ("Other/bomber_radius", "pingus");
     }
 
-  explo_surf = PingusResource::load_surface ("Other/explo" + StringConverter::to_string (pingu->get_owner ()), "pingus");
-  sprite = Sprite((PingusResource::load_surface ("Pingus/bomber" + StringConverter::to_string(pingu->get_owner ()), "pingus")));
+  explo_surf = PingusResource::load_surface ("Other/explo" + to_string (pingu->get_owner ()), "pingus");
+  sprite = Sprite(PingusResource::load_surface ("Pingus/bomber" + to_string(pingu->get_owner ()), "pingus"),
+		  17.0f, Sprite::NONE, Sprite::ONCE);
   sprite.set_align_center_bottom ();
 
   sound_played = false;
@@ -57,15 +59,18 @@ Bomber::init()
 void
 Bomber::draw_offset(int x, int y, float s)
 {
+  if (sprite.get_frame () >= 13 && !exploded) {
+    explo_surf.put_screen(pingu->get_x () - 32 + x, pingu->get_y () - 48 + y);
+    exploded = true;
+  }
+
   if (pingu->get_status() == dead 
       || pingu->get_status() == exited)
     {
       return;
     }
-
+  
   sprite.put_screen(pingu->get_x () + x, pingu->get_y () + y);
-  if (sprite.finished ())
-    explo_surf.put_screen(pingu->get_x () - 32 + x, pingu->get_y () - 48 + y);
 }
 
 void

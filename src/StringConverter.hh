@@ -1,4 +1,4 @@
-//  $Id: StringConverter.hh,v 1.4 2001/04/07 16:48:30 grumbel Exp $
+//  $Id: StringConverter.hh,v 1.5 2001/06/11 08:45:21 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,43 @@
 #define STRINGCONVERTER_HH
 
 #include <string>
+#include <stdexcept>
+
+#ifdef HAVE_SSTREAM
+#include <sstream>
+#else
+#include <strstream>
+#endif
+
+template <class T>
+std::string to_string(const T& any)
+{
+#ifdef HAVE_SSTREAM
+  std::ostringstream oss;
+  oss << any;
+  return oss.str();
+#else
+  std::ostrstream oss;
+  oss << any << std::ends;
+  std::string temp(oss.str());
+  oss.freeze(false); // tell the ostrstream that it should free the memory
+  return temp;
+#endif
+}
+
+template <class T>
+void from_string(const std::string& rep, T& x)
+{
+#ifdef HAVE_SSTREAM
+  std::istringstream iss(rep);
+#else
+  std::istrstream iss(rep.c_str());
+#endif
+  iss >> x;
+  if (iss.fail())
+    throw std::invalid_argument
+      ("Exception: Failed to extract type T from rep: " + rep);
+}
 
 class StringConverter
 {

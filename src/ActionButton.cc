@@ -1,4 +1,4 @@
-//  $Id: ActionButton.cc,v 1.18 2001/04/15 11:00:41 grumbel Exp $
+//  $Id: ActionButton.cc,v 1.19 2001/06/11 08:45:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -93,7 +93,7 @@ ActionButton::init(int x, int y, std::string str, int owner_id)
 
   if (str != "empty") 
     {
-      surface   = PingusResource::load_surface("Pingus/" + str + StringConverter::to_string(owner_id),
+      surface   = PingusResource::load_surface("Pingus/" + str + to_string(owner_id),
 					       "pingus");
       if (is_multi_direct)
 	{
@@ -158,15 +158,15 @@ HorizontalActionButton::mouse_over(const CL_Vector& pos)
 void
 HorizontalActionButton::draw()
 {
-  char str[256];
+  std::string str;
   // FIXME: This could need some optimization, throwing strings all
   // around, doesn't look like a good idea. 
   available = action_holder->get_available(name);
 
   if (unlimited_actions) {
-    sprintf(str, "oo");
+    str = "oo";
   } else {
-    sprintf(str, "%d", available);
+    str = to_string(available);
   }
 
   if (pressed) 
@@ -178,7 +178,7 @@ HorizontalActionButton::draw()
 	CL_Display::fill_rect(x_pos + 1, y_pos, x_pos + 37, y_pos + 55 ,
 			      1.0, 1.0, 1.0, 0.5);
       }
-      font_h->print_center(x_pos + 25, y_pos + 5, str);
+      font_h->print_center(x_pos + 25, y_pos + 5, str.c_str ());
     }
   else
     {
@@ -189,7 +189,7 @@ HorizontalActionButton::draw()
 	CL_Display::fill_rect(x_pos + 1, y_pos, x_pos + 37, y_pos + 55 ,
 			      0.4, 0.4, 0.4, 0.5);
       }
-      font->print_center(x_pos + 25, y_pos + 5, str);
+      font->print_center(x_pos + 25, y_pos + 5, str.c_str ());
     }
   surface.put_screen(x_pos + 3, y_pos + 20, action_c);
 }
@@ -218,15 +218,15 @@ VerticalActionButton::mouse_over(const CL_Vector& pos)
 void
 VerticalActionButton::draw()
 {
-  char str[256];
+  std::string str;
   // FIXME: This could need some optimization, throwing strings all
   // around, doesn't look like a good idea. 
   available = action_holder->get_available(name);
 
   if (unlimited_actions) {
-    sprintf(str, "oo");
+    str = "oo";
   } else {
-    sprintf(str, "%d", available);
+    str = to_string(available);
   }
 
   if (pressed) 
@@ -238,7 +238,7 @@ VerticalActionButton::draw()
 	CL_Display::fill_rect(x_pos, y_pos, x_pos + 60, y_pos + 35 ,
 			      1.0, 1.0, 1.0, 0.5);
       }
-      font_h->print_center(x_pos + 50, y_pos + 16, str);
+      font_h->print_center(x_pos + 50, y_pos + 16, str.c_str ());
     }
   else
     {
@@ -250,7 +250,7 @@ VerticalActionButton::draw()
 	CL_Display::fill_rect(x_pos + 1, y_pos, x_pos + 60, y_pos + 35 ,
 			      0.4, 0.4, 0.4, 0.5);
       }
-      font->print_center(x_pos + 50, y_pos + 16, str);
+      font->print_center(x_pos + 50, y_pos + 16, str.c_str ());
     }
   surface.put_screen(x_pos + 3, y_pos + 1, action_c);
 }

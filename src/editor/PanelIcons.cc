@@ -1,4 +1,4 @@
-//  $Id: PanelIcons.cc,v 1.9 2001/05/19 20:58:42 grumbel Exp $
+//  $Id: PanelIcons.cc,v 1.10 2001/06/11 08:45:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,7 @@
 
 PanelIconLoad::PanelIconLoad()
 {
+  tooltip = "Load a level";
   sur = PingusResource::load_surface("editor/open", "core");
 }
 
@@ -34,6 +35,7 @@ PanelIconLoad::on_click()
 
 PanelIconExit::PanelIconExit()
 {
+  tooltip = "Exit the editor";
   sur = PingusResource::load_surface("editor/exit", "core");  
 }
 
@@ -45,6 +47,7 @@ PanelIconExit::on_click()
 
 PanelIconSave::PanelIconSave()
 {
+  tooltip = "Save this level";
   sur = PingusResource::load_surface("editor/save", "core");
 }
 
@@ -56,6 +59,7 @@ PanelIconSave::on_click()
 
 PanelIconDelete::PanelIconDelete()
 {
+  tooltip = "Delete marked objects";
   sur = PingusResource::load_surface("editor/delete", "core");
 }
 

@@ -1,4 +1,4 @@
-//  $Id: XMLhelper.cc,v 1.9 2001/04/21 10:55:15 grumbel Exp $
+//  $Id: XMLhelper.cc,v 1.10 2001/06/11 08:45:21 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -67,11 +67,11 @@ XMLhelper::parse_position(xmlDocPtr doc, xmlNodePtr cur)
 	{
 	  //std::cout << "parse_position: ident = " << ident << std::endl;
 	  if (strcmp((char*)cur->name, "x-pos") == 0) {
-	    pos.x_pos = StringConverter::to_int(ident);
+	    from_string (ident, pos.x_pos);
 	  } else if (strcmp((char*)cur->name, "y-pos") == 0) {
-	    pos.y_pos = StringConverter::to_int(ident);
+	    from_string (ident, pos.y_pos);
 	  } else if (strcmp((char*)cur->name, "z-pos") == 0) {
-	    pos.z_pos = StringConverter::to_int(ident);
+	    from_string (ident, pos.z_pos);
 	  } else {
 	    std::cout << "Unhandled position ident: " << ident << std::endl;
 	  }

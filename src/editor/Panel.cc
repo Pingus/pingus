@@ -1,4 +1,4 @@
-//  $Id: Panel.cc,v 1.12 2001/05/19 09:48:24 grumbel Exp $
+//  $Id: Panel.cc,v 1.13 2001/06/11 08:45:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,6 +28,7 @@ PanelIcon::PanelIcon()
 {
   button = PingusResource::load_surface("editor/button","core");
   button_pressed = PingusResource::load_surface("editor/button_pressed", "core");
+  font = PingusResource::load_font("Fonts/courier_small", "fonts");
 }
 
 PanelIcon::~PanelIcon()
@@ -52,6 +53,19 @@ PanelIcon::put_screen(int x, int y)
 	{
 	  button.put_screen(0, y);
 	}
+      if (mouse_over_time == 0)
+	mouse_over_time = CL_System::get_time ();
+      
+      if (CL_System::get_time () - mouse_over_time > 500) {
+	int width = font->get_text_width (tooltip.c_str ());
+	CL_Display::fill_rect (32, y, 32 + width, y + font->get_height (),
+			       0.3f, 0.3f, 0.3f);
+	font->print_left (24, y, tooltip.c_str ());
+      }
+    }
+  else
+    {
+      mouse_over_time = 0;
     }
   sur.put_screen(0, y);
 }

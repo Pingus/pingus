@@ -1,4 +1,4 @@
-//  $Id: XMLPLF.cc,v 1.28 2001/05/18 19:17:08 grumbel Exp $
+//  $Id: XMLPLF.cc,v 1.29 2001/06/11 08:45:21 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -321,7 +321,7 @@ XMLPLF::parse_actions(xmlNodePtr cur)
       char* count = (char*)xmlGetProp(cur, (xmlChar*)"count");
       if (count)
 	{
-	  button.number_of = StringConverter::to_int(count);
+	  from_string(count, button.number_of);
 	  free (count);
 	}
       else

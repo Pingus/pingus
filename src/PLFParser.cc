@@ -1,4 +1,4 @@
-//  $Id: PLFParser.cc,v 1.11 2001/05/18 19:17:08 grumbel Exp $
+//  $Id: PLFParser.cc,v 1.12 2001/06/11 08:45:21 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,7 @@
 #include <string>
 #include <fstream>
 
+#include "StringConverter.hh"
 #include "PLFParser.hh"
 #include "PingusError.hh"
 #include "globals.hh"
@@ -301,14 +302,11 @@ void
 PLFParser::syntax_error(string error = "")
 {
   string error_str;
-  char tmp[256];
 
-  sprintf(tmp, "%d\n", lineno);
-  
-  error_str = string("PLF: Syntax Error at line ") + tmp;
+  error_str = "PLF: Syntax Error at line " + to_string (lineno);
 
   if (error != "")
-    error_str += "PLF:" + error + "\n";
+    error_str += ":PLF:" + error + "\n";
 
   throw PingusError(error_str);
 }

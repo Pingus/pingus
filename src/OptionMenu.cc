@@ -1,4 +1,4 @@
-//  $Id: OptionMenu.cc,v 1.30 2001/05/18 19:17:08 grumbel Exp $
+//  $Id: OptionMenu.cc,v 1.31 2001/06/11 08:45:21 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,6 +25,7 @@
 #include "Display.hh"
 #include "OptionMenu.hh"
 #include "my_gettext.hh"
+#include "StringConverter.hh"
 
 // Define the global option menu
 OptionMenu   option_menu;
@@ -87,9 +88,8 @@ OptionEntry::draw()
   } else if (value_str) {
     font->print_right(x_pos + CL_Display::get_width() - 35, y_pos, value_str->c_str());    
   } else if (value_int) {
-    char str[256];
-    sprintf(str, "%d", *value_int);
-    font->print_right(x_pos + CL_Display::get_width() - 35, y_pos, str);    
+
+    font->print_right(x_pos + CL_Display::get_width() - 35, y_pos, to_string (*value_int).c_str ());
   }
 }
 
@@ -194,7 +194,7 @@ OptionMenu::init()
   font       = PingusResource::load_font("Fonts/smallfont_h",  "fonts");
   title_font = PingusResource::load_font("Fonts/pingus", "fonts");
   background =  PingusResource::load_surface("Textures/rocktile", "textures");
-  back       = PingusResource::load_surface("Buttons/back", "menu");
+  back       = PingusResource::load_surface("buttons/back", "core");
 
   entry_x = 20;
   entry_y = 60;

@@ -1,4 +1,4 @@
-//  $Id: blocker.cc,v 1.15 2001/05/14 08:17:32 grumbel Exp $
+//  $Id: blocker.cc,v 1.16 2001/06/11 08:45:21 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,7 +33,7 @@ Blocker::init(void)
   environment = (PinguEnvironment)land;
   action_name = "Blocker";
 
-  sprite = Sprite(PingusResource::load_surface ("Pingus/blocker" + StringConverter::to_string (pingu->get_owner ()),
+  sprite = Sprite(PingusResource::load_surface ("Pingus/blocker" + to_string (pingu->get_owner ()),
 						"pingus"));
   sprite.set_align_center_bottom ();
 

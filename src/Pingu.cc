@@ -1,4 +1,4 @@
-//  $Id: Pingu.cc,v 1.55 2001/05/18 19:17:08 grumbel Exp $
+//  $Id: Pingu.cc,v 1.56 2001/06/11 08:45:21 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,9 +46,9 @@ int   Pingu::id_counter = 0;
 Pingu::Pingu(const CL_Vector& arg_pos, int owner)
   : id (++id_counter),
     font (PingusResource::load_font("Fonts/numbers", "fonts")),
-    walker ("Pingus/walker" + StringConverter::to_string(owner), "pingus"),
-    faller ("Pingus/faller" + StringConverter::to_string(owner), "pingus"),
-    tumble ("Pingus/tumble" + StringConverter::to_string(owner), "pingus"),
+    walker ("Pingus/walker" + to_string(owner), "pingus"),
+    faller ("Pingus/faller" + to_string(owner), "pingus"),
+    tumble ("Pingus/tumble" + to_string(owner), "pingus"),
     owner_id (owner),
     pos (arg_pos)
 {

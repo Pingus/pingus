@@ -1,4 +1,4 @@
-//  $Id: System.cc,v 1.30 2001/05/18 19:17:08 grumbel Exp $
+//  $Id: System.cc,v 1.31 2001/06/11 08:45:21 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -352,7 +352,7 @@ System::checksum (std::string filename)
 
   fclose (in);
 
-  return StringConverter::to_string (checksum);
+  return to_string (checksum);
 }
 
 /* EOF */

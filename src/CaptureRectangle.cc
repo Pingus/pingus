@@ -1,4 +1,4 @@
-//  $Id: CaptureRectangle.cc,v 1.8 2001/04/12 20:52:40 grumbel Exp $ 
+//  $Id: CaptureRectangle.cc,v 1.9 2001/06/11 08:45:21 grumbel Exp $ 
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -87,7 +87,7 @@ CaptureRectangle::draw_offset(int x_offset, int y_offset, float s)
 
 	  font->print_center(pingu->get_x() + pingu->x_offset() + x_offset + 16,
 			     pingu->get_y() + pingu->y_offset() + y_offset - 16 + 62,
-			     StringConverter::to_string(pingu->get_owner()).c_str());
+			     to_string(pingu->get_owner()).c_str());
 	  
 
 	  // Paint the direction arrow

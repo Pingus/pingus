@@ -1,4 +1,4 @@
-//  $Id: blitter.cc,v 1.28 2001/05/18 19:17:08 grumbel Exp $
+//  $Id: blitter.cc,v 1.29 2001/06/11 08:45:21 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,8 +21,10 @@
 #include <cstdio>
 #include <assert.h>
 #include "PingusError.hh"
-#include "blitter.hh"
 #include "Color.hh"
+#include "StringConverter.hh"
+
+#include "blitter.hh"
 
 void
 Blitter::put_surface(CL_Canvas* canvas, const CL_Surface& sur,
@@ -41,7 +43,6 @@ void
 Blitter::put_surface(CL_Canvas* canvas, CL_SurfaceProvider* provider,
 		     int x, int y)
 {
-  char str[32];
   assert (provider);
   assert (canvas);
   switch(provider->get_depth())
@@ -53,8 +54,7 @@ Blitter::put_surface(CL_Canvas* canvas, CL_SurfaceProvider* provider,
       put_surface_32bit(canvas, provider, x, y);
       break;
     default: 
-      sprintf(str, "%d", provider->get_depth());
-      throw PingusError("Blitter:put_surface:Unknown color depth: " + std::string(str));
+      throw PingusError("Blitter:put_surface:Unknown color depth: " + to_string(provider->get_depth()));
       break;
     }    
 }
@@ -233,12 +233,10 @@ Blitter::put_alpha_surface(CL_Canvas* provider, CL_SurfaceProvider* sprovider,
   //  assert(sprovider->get_depth() == 8);
   if (sprovider->get_depth() != 8)
     {
-      char str[1024];
-      sprintf(str, "Image has wrong color depth: %d", sprovider->get_depth());
       // FIXME: Memory hole
       //sprovider->unlock ();
       //provider->unlock ();
-      throw PingusError(str);
+      throw PingusError("Image has wrong color depth: " + to_string(sprovider->get_depth()));
     }
   //  assert(provider->get_pixel_format() == RGBA8888);
 
