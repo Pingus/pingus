@@ -1,4 +1,4 @@
-//  $Id: pingus_resource.cxx,v 1.8 2002/06/23 19:16:41 torangan Exp $
+//  $Id: pingus_resource.cxx,v 1.9 2002/06/24 12:09:22 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -228,7 +228,7 @@ PingusResource::load_font(const ResDescriptor& res_desc)
 void
 PingusResource::cleanup ()
 {
-  pout << "XXXX PingusResource::cleanup ()" << std::endl;
+  pout(PINGUS_DEBUG_RESOURCES) << "XXXX PingusResource::cleanup ()" << std::endl;
   
   for (std::map<ResDescriptor, CL_Surface>::iterator i = surface_map.begin ();
        i != surface_map.end (); ++i)
@@ -236,15 +236,15 @@ PingusResource::cleanup ()
       if (i->first.type == ResDescriptor::RD_FILE
 	  && i->second.get_reference_count () == 1)
 	{
-	  pout << "XXX Releasing File: " << i->first
-	       << " => " << i->second.get_reference_count () << std::endl;
+	  pout(PINGUS_DEBUG_RESOURCES) << "XXX Releasing File: " << i->first
+	                               << " => " << i->second.get_reference_count () << std::endl;
 	  surface_map.erase(i);
 	}
       else if (i->first.type == ResDescriptor::RD_RESOURCE
 	       && i->second.get_reference_count () == 2)
 	{
-	  pout << "XXX Releasing Resource : " << i->first
-	       << " => " << i->second.get_reference_count () << std::endl;
+	  pout(PINGUS_DEBUG_RESOURCES) << "XXX Releasing Resource : " << i->first
+	                               << " => " << i->second.get_reference_count () << std::endl;
 	  surface_map.erase(i);
 	}
     }

@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.3 2002/06/21 07:45:35 grumbel Exp $
+//   $Id: pingus_main.cxx,v 1.4 2002/06/24 12:09:22 torangan Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -473,6 +473,10 @@ For more information about these matters, see the files named COPYING.\
 	{
 	  pingus_debug_flags |= PINGUS_DEBUG_TRANSLATOR;
 	}
+      else if (strcmp (optarg, "resources") == 0)
+        {
+          pingus_debug_flags |= PINGUS_DEBUG_RESOURCES;
+        }
       else
 	{
 	  std::cout << "PingusMain: Unhandled debug flag: " << optarg << std::endl;
@@ -541,7 +545,7 @@ For more information about these matters, see the files named COPYING.\
 	"   --maintainer-mode        Enables some features, only interesting programmers\n"
 	"   --enable-bg-manipulation Enables color manipulation of level backgrounds\n"
 	"   --debug OPTION           Enable the output of debugging infos, possible\n"
-        "                            OPTION's are tiles, gametime, actions, sound\n"
+        "                            OPTION's are tiles, gametime, actions, sound, resources\n"
 	"   -t, --speed SPEED        Set the game speed (0=fastest, >0=slower)\n"
 	"   -b, --print-fps          Prints the fps to stdout\n"
 	"   -i, --enable-gimmicks    Enable some buggy development stuff\n"
