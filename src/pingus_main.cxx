@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.94 2003/08/14 20:02:25 torangan Exp $
+//   $Id: pingus_main.cxx,v 1.95 2003/08/14 20:08:25 torangan Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___
@@ -124,7 +124,7 @@ signal_handler(int signo)
       break;
     }
   puts ("exit(EXIT_FAILURE);");
-  //abort();
+  abort();
   throw "crash";
 }
 
@@ -847,9 +847,9 @@ PingusMain::main(int argc, char** argv)
 
   // Register the segfault_handler
 #ifndef WIN32
-  //signal(SIGSEGV, signal_handler);
+  signal(SIGSEGV, signal_handler);
 #endif
-  //signal(SIGINT,  signal_handler);
+  //signal(SIGINT, signal_handler);
 
   // Redirect stdout to somewhere where it is readable
 #if defined WIN32 && defined _DEBUG
