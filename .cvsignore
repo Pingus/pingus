@@ -33,3 +33,9 @@ README.dvi
 README.fot
 INSTALL.txt
 old
+pingus.opt
+pingus.plg
+zlib.dll
+iconv.dll
+libxml2.dll
+pingus.ncb
