@@ -1,4 +1,4 @@
-//  $Id: graphic_context.cxx,v 1.2 2003/10/18 23:17:28 grumbel Exp $
+//  $Id: graphic_context.cxx,v 1.3 2003/12/13 11:21:24 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,7 +26,11 @@ namespace Pingus {
 void
 GraphicContext::draw (CL_Sprite& sprite, const Vector& pos)
 {
-  assert(0);
+}
+
+void
+GraphicContext::draw (CL_Sprite& sprite, const Vector& pos, int frame)
+{
 }
 
 void

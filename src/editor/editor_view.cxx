@@ -1,4 +1,4 @@
-//  $Id: editor_view.cxx,v 1.13 2003/10/22 11:11:23 grumbel Exp $
+//  $Id: editor_view.cxx,v 1.14 2003/12/13 11:21:24 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -161,6 +161,16 @@ float
 EditorView::get_y_offset ()
 {
   return offset.y;
+}
+
+void
+EditorView::draw (CL_Sprite& sur, const Vector& pos, int frame)
+{
+}
+
+void
+EditorView::draw (CL_Sprite& sur, const Vector& pos)
+{
 }
 
 void

@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.157 2003/10/22 11:11:22 grumbel Exp $
+#  $Id: Makefile.am,v 1.158 2003/12/13 11:21:23 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -230,6 +230,8 @@ range.cxx \
 range.hxx \
 res_descriptor.cxx \
 res_descriptor.hxx \
+resources.hxx \
+resources.cxx \
 resource_modifier.cxx \
 resource_modifier.hxx \
 result_screen.cxx \

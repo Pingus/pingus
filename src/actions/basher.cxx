@@ -1,4 +1,4 @@
-//  $Id: basher.cxx,v 1.32 2003/10/22 11:11:23 grumbel Exp $
+//  $Id: basher.cxx,v 1.33 2003/12/13 11:21:24 grumbel Exp $
 //
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -25,6 +25,7 @@
 #include "../pingus_resource.hxx"
 #include "../pingu.hxx"
 #include "../world.hxx"
+#include "../resources.hxx"
 #include "basher.hxx"
 
 namespace Pingus {
@@ -32,15 +33,15 @@ namespace Actions {
 
 Basher::Basher (Pingu* p)
   : PinguAction(p),
-    sprite("Pingus/basher0", "pingus"),
+    sprite("Pingus/basher0", resources),
     bash_radius(PingusResource::load_surface("Other/bash_radius", "pingus")),
     bash_radius_gfx(PingusResource::load_surface("Other/bash_radius_gfx", "pingus")),
     basher_c(0),
     first_bash(true)
 {
-  sprite.set_align_center_bottom();
+  sprite.set_alignment(origin_bottom_center);
 
-  bash_radius_width = bash_radius.get_width();
+  bash_radius_width     = bash_radius.get_width();
   bash_radius_gfx_width = bash_radius_gfx.get_width();
 
   // The +1 is just in case bash_radius is an odd no.  In which case, want to
@@ -55,11 +56,12 @@ Basher::Basher (Pingu* p)
 void
 Basher::draw (GraphicContext& gc)
 {
+#ifdef CLANLIB_0_6
   if (pingu->direction.is_left())
     sprite.set_direction (Sprite::LEFT);
   else
     sprite.set_direction (Sprite::RIGHT);
-
+#endif
   gc.draw (sprite, pingu->get_pos() + Vector (0, +1));
 }
 
@@ -99,7 +101,7 @@ Basher::update ()
 	      if (basher_c % 2 == 0)
 		bash();
 	    }
-	  else if (sprite.get_progress () > 0.6f) // FIXME: EVIL!
+	  else if (sprite.get_current_frame()/float(sprite.get_frame_count()) > 0.6f) // FIXME: EVIL!
 	    {
 	      pingu->set_action(Actions::Walker);
 	    }

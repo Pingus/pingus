@@ -1,4 +1,4 @@
-//  $Id: pingus_error.cxx,v 1.11 2003/10/18 23:17:27 grumbel Exp $
+//  $Id: pingus_error.cxx,v 1.12 2003/12/13 11:21:23 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,76 +22,13 @@
 
 namespace Pingus {
 
-PingusException::PingusException (const std::string& mes) : message(mes)
+PingusError::PingusError (const std::string& mes) 
+  : message("PingusError: " + mes)
 {
 }
 
-PingusException::~PingusException ()
+PingusError::~PingusError() throw()
 {
-}
-
-PingusException::PingusException (const PingusException& old) : message(old.message)
-{
-}
-
-PingusException&
-PingusException::operator= (const PingusException& old)
-{
-  if (this != &old)
-    message = old.message;
-
-  return *this;
-}
-
-
-PingusBug::PingusBug (const std::string& mes) : PingusException("PingusBug: " + mes)
-{
-}
-
-PingusBug::PingusBug (const PingusBug& old) : PingusException(old)
-{
-}
-
-PingusBug&
-PingusBug::operator= (const PingusBug& old)
-{
-  if (this == &old)
-    return *this;
-
-  PingusException::operator=(old);
-
-  return *this;
-}
-
-void
-PingusBug::raise (const std::string& msg)
-{
-  throw PingusBug(msg);
-}
-
-const std::string&
-PingusBug::get_message () const
-{
-  return message;
-}
-
-PingusError::PingusError (const std::string& mes) : PingusException("PingusError: " + mes)
-{
-}
-
-PingusError::PingusError (const PingusError& old) : PingusException(old)
-{
-}
-
-PingusError&
-PingusError::operator= (const PingusError& old)
-{
-  if (this == &old)
-    return *this;
-
-  PingusException::operator=(old);
-
-  return *this;
 }
 
 void
@@ -104,6 +41,12 @@ const std::string&
 PingusError::get_message () const
 {
   return message;
+}
+
+const char* 
+PingusError::what() const throw()
+{
+  return message.c_str(); 
 }
 
 } // namespace Pingus

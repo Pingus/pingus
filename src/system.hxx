@@ -1,4 +1,4 @@
-//  $Id: system.hxx,v 1.11 2003/10/18 23:17:27 grumbel Exp $
+//  $Id: system.hxx,v 1.12 2003/12/13 11:21:23 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,13 +37,6 @@ private:
   static std::string default_email;
   static std::string default_username;
 public:
-  struct Error {
-    std::string message;
-
-    Error (const std::string& str)
-      : message (str) {}
-  };
-
   struct DirectoryEntry
   {
     enum FileType { DE_DIRECTORY, DE_FILE } type;
