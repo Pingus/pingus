@@ -1,9 +1,40 @@
-ClanLib 0.4.4 error message when compiling (lua.h not found...)
+Extrem kleine Maps klappen nicht (overdrawing)
+
+z_pos handlig im editor braucht nen fix
+
+Zerquetschte Pinguine sollten keine Pixel werfen (smasher)
+
+Solid blitting in PingusTileMap
+
+Miner laesst manchmal ein Pixel uebrig
+
+ButtonPanel needs to be rewritten/redesigned.
+
+Bridger verhacken sich in Waenden
+
+QuickPlay sollte den Level anzeigen, bzw entfernt werden.
+
+Mouse Zeiger im Result screen
+
+many segfaults when quitting the game
+
+*.wav not found erros if sound is disabled.
+
+Standard World braucht hoeheren feuer hintergrund.
+
+Jumper hacken sich fest
+
+Hotkeys fuers Main menu.
+
+Wolkenausgang, so dass ne Bruecke zum erreichen benoetigt wird.
+
+ClanLibs X11 implementation needs to use X11 events... normal queries
+doesn't work very well... 
 
 glibc2.1 as requirement auf Pingus site
 
-
-Pingus splash even if they are floaters if they were to fast when the floater was appied
+Pingus splash even if they are floaters if they were to fast when the
+floater was appied
 
 Clearing stuff which are outsite the View
 
@@ -119,6 +150,9 @@ DOOR.WAV      MOUSEPRE.WAV  OING.WAV	     THUD.WAV
  * some "slish.."-sound if a pingu looses controll on ice
  * ...
 
-$Date: 2000/05/01 10:35:37 $
+
+
+
+$Date: 2000/05/03 17:00:49 $
 
 -= EOF =-
