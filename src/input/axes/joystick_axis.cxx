@@ -19,6 +19,7 @@
 
 //#include <ClanLib/Display/input.h>
 #include <ClanLib/Display/input_device.h>
+#include <ClanLib/Display/joystick.h>
 //#include <ClanLib/Display/inputaxis.h>
 #include "joystick_axis.hxx"
 #include "../../pingus_error.hxx"
@@ -30,18 +31,16 @@ namespace Axes {
 JoystickAxis::JoystickAxis(int id_, int axis_, float angle_) 
   : id(id_), axis(axis_), pos(0), angle(angle_)
 {
-#ifdef CLANLIB_0_6
-  if (static_cast<unsigned int> (id) >= CL_Input::joysticks.size())
+  if (id >= CL_Joystick::get_device_count())
     PingusError::raise("JoystickAxis: Invalid joystick id");
 
-  if (axis > CL_Input::joysticks[id]->get_num_axes())
+  if (axis > CL_Joystick::get_device(id).get_axis_count())
     PingusError::raise("JoystickAxis: Invalid joystick axis id");
 
   if (angle < 0)
     angle = (static_cast<int>(angle) % 360) + 360;
   else if (angle > 360)
     angle = static_cast<int>(angle) % 360;
-#endif
 }
 
 const float&

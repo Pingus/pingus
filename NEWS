@@ -6,7 +6,7 @@
 
 0.6.1 (??/Sep/2003)
 ===================
-* scrool wheel support in the editor
+* scroll wheel support in the editor
 * file ending for level files changed from .xml to .plf
 * level preview render code
 * lots of spelling fixes

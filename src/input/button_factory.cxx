@@ -18,13 +18,14 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
+#include <ClanLib/Display/keyboard.h>
+#include <ClanLib/Display/input_device.h>
 #include "../xml_helper.hxx"
 #include "../pingus_error.hxx"
 #include "button_factory.hxx"
 #include "buttons/double_button.hxx"
 #include "buttons/joystick_button.hxx"
 #include "buttons/key_button.hxx"
-#include "key_helper.hxx"
 #include "buttons/mouse_button.hxx"
 #include "buttons/multiple_button.hxx"
 #include "buttons/triple_button.hxx"
@@ -94,7 +95,7 @@ Button* ButtonFactory::key_button (xmlNodePtr cur)
   if (!XMLhelper::get_prop(cur, "key", key))
     PingusError::raise("KeyButton without key parameter");
 
-  return new KeyButton(KeyHelper::string_to_key(key));
+  return new KeyButton(CL_Keyboard::get_device().keyid_to_string(key));
 }
 
 Button* ButtonFactory::mouse_button (xmlNodePtr cur)

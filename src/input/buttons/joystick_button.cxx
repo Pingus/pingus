@@ -45,11 +45,7 @@ JoystickButton::update(float)
 bool
 JoystickButton::is_pressed() const
 {
-#ifdef CLANLIB_0_6
-  return CL_Input::joysticks[id]->get_button(button)->is_pressed();
-#else
-  return false;
-#endif
+  return CL_Joystick::get_device(id).get_keycode(button);
 }
 
 } // namespace Buttons

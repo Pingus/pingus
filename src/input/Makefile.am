@@ -32,7 +32,6 @@ libpingus_input_a_SOURCES =       \
 	controller.hxx controller.cxx \
 	event.hxx \
 	event_fwd.hxx \
-	key_helper.hxx key_helper.cxx \
 	pointer.hxx \
 	pointer_factory.hxx pointer_factory.cxx \
 	scroller.hxx \
