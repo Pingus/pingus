@@ -1,4 +1,4 @@
-//  $Id: sound_real.cxx,v 1.9 2002/11/02 22:10:52 grumbel Exp $
+//  $Id: sound_real.cxx,v 1.10 2003/01/25 10:28:15 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,7 @@
 
 
 #include <ClanLib/sound.h>
+#include <ClanLib/Core/System/error.h>
 
 #include "globals.hxx"
 #include "sound_real.hxx"
