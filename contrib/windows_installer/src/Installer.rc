@@ -1,0 +1,129 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.K.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENG)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_UK
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+dlgInstall DIALOG DISCARDABLE  0, 0, 308, 193
+STYLE DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Pingus Installer"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "#",lblInstallTo,7,42,294,10,NOT WS_VISIBLE
+    LTEXT           "#",lblInstallFile,7,58,294,8,NOT WS_VISIBLE
+    CONTROL         "",barTop,"Static",SS_ETCHEDHORZ,0,33,313,1
+    LTEXT           "This will install Pingus on your computer\n\nPlease select an installation directory.",
+                    lblWelcome,7,42,154,25
+    EDITTEXT        txtEdit,7,74,263,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "...",cmdBrowse,277,74,24,12
+    PUSHBUTTON      "Cancel",IDCANCEL,191,172,50,14
+    DEFPUSHBUTTON   "Install",IDOK,251,172,50,14
+    CONTROL         "Run program after installation",chkExecute,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,7,124,294,11
+    CONTROL         "Create shortcut on desktop",chkShortcut,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,7,100,294,10
+    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDHORZ,-1,164,311,1
+    LTEXT           "Windows Installer © Neil Mitchell 1999-2004",IDC_STATIC,
+                    7,176,155,10,WS_DISABLED
+    CONTROL         "Progress2",prgBar,"msctls_progress32",NOT WS_VISIBLE,7,
+                    74,294,12
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    dlgInstall, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 301
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 186
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_ICON1               ICON    DISCARDABLE     "Setup.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// 24
+//
+
+1                       24      DISCARDABLE     "Pingus-Installer.manifest"
+#endif    // English (U.K.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

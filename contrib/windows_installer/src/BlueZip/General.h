@@ -1,0 +1,2 @@
+
+LPTSTR CopyString(LPCTSTR s);
