@@ -1,4 +1,4 @@
-//  $Id: ThemeSelector.cc,v 1.16 2000/06/12 14:42:11 grumbel Exp $
+//  $Id: ThemeSelector.cc,v 1.17 2000/06/14 21:45:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -118,14 +118,14 @@ ThemeSelector::Event::on_button_press(CL_InputDevice *device, const CL_Key &key)
       switch (key.id)
 	{
 	case 0:
-	  std::cout << "X: " << key.x << std::endl;
-	  std::cout << "Y: " << key.y << std::endl;
+	  // std::cout << "X: " << key.x << std::endl;
+	  // std::cout << "Y: " << key.y << std::endl;
 
 	  if (key.x > 0 && key.x < theme_selector->left_arrow->get_width()
 	      && key.y > (CL_Display::get_height() - theme_selector->left_arrow->get_height()) / 2
 	      && key.y < (CL_Display::get_height() + theme_selector->left_arrow->get_height()) / 2)
 	    {
-	      std::cout << "Left pressed" << std::endl;
+	      // std::cout << "Left pressed" << std::endl;
 	      theme_selector->current_theme++;
 	      if (theme_selector->current_theme == theme_selector->themes.end()) 
 		theme_selector->current_theme = theme_selector->themes.begin();
@@ -135,7 +135,7 @@ ThemeSelector::Event::on_button_press(CL_InputDevice *device, const CL_Key &key)
 		   && key.y > (CL_Display::get_height() - theme_selector->right_arrow->get_height()) / 2
 		   && key.y < (CL_Display::get_height() + theme_selector->right_arrow->get_height()) / 2)
 	    {
-	      std::cout << "Right pressed" << std::endl;
+	      // std::cout << "Right pressed" << std::endl;
 	      if (theme_selector->current_theme == theme_selector->themes.begin()) 
 		theme_selector->current_theme = theme_selector->themes.end();
 	      theme_selector->current_theme--;
@@ -198,7 +198,7 @@ ThemeSelector::select()
       readdir(pingus_datadir);
       dir_read = true;
     }
-  current_theme = themes.begin();
+  current_theme = themes.end()-1;
 
 #ifdef HAVE_LIBSDL_MIXER
   PingusSound::play_mod("../data/music/pingus-1.it");

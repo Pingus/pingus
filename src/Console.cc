@@ -1,4 +1,4 @@
-//  $Id: Console.cc,v 1.8 2000/06/14 21:09:55 grumbel Exp $
+//  $Id: Console.cc,v 1.9 2000/06/14 21:45:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,10 +43,12 @@ Console::~Console()
 void
 Console::init()
 {
-  std::cout << "Console: Init..." << std::endl;
+  // std::cout << "Console: Init..." << std::endl;
   font = CL_Font::load("Fonts/xterm", PingusResource::get("fonts.dat"));
-  //*this << "Console V0.2" << std::endl;
-  this->puts("! \" #  $ %% 0 123 <=>");
+
+  (*this) << "Pingus Output Console (hide/show it with F1\n"
+	  << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+
   is_init = true;
 }
 
@@ -102,12 +104,12 @@ Console::add_line(string str)
   string::size_type pos;
   string tmp_string;
 
-  std::cout << "STR: " << str << std::endl;
+  // std::cout << "STR: " << str << std::endl;
 
   while ((pos = str.find("\n")) != string::npos) 
     {
       tmp_string = str.substr(0, pos);
-      std::cout << "TMP:" << tmp_string << std::endl;
+      // std::cout << "TMP:" << tmp_string << std::endl;
       output_buffer.push_back(current_line + tmp_string);
       current_pos++;
       current_line = "";
@@ -116,12 +118,22 @@ Console::add_line(string str)
 
   current_line += str;
 
+  // FIXME: This could be optimized if xterm would be a fixed font...
   while(font->get_text_width(current_line.c_str()) > (CL_Display::get_width() - 20))
     {
-      tmp_string = current_line.substr(0, 80);
+      int pos = current_line.size();
+
+      while (font->get_text_width(current_line.substr(0, pos).c_str())
+	     > (CL_Display::get_width() - 20))
+	{
+	  pos--;
+	}
+
+      tmp_string = current_line.substr(0, pos);
+
       output_buffer.push_back(tmp_string);
       current_pos++;
-      current_line = current_line.substr(80);
+      current_line = current_line.substr(pos);
     }
 }
 

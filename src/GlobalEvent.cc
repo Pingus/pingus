@@ -1,4 +1,4 @@
-//  $Id: GlobalEvent.cc,v 1.6 2000/06/14 16:30:50 grumbel Exp $
+//  $Id: GlobalEvent.cc,v 1.7 2000/06/14 21:45:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,11 +33,13 @@ GlobalEvent::on_button_press(CL_InputDevice *device, const CL_Key &key)
 	{
 	case CL_KEY_F1:
 	  console.toggle_display();
-	  break;
+	  return false;
+
 	case CL_KEY_F11:
 	  fps_counter.toggle_display();
 	  console << "Toggling fps counter display" << Console::endl;
-	  break;
+	  return false;
+
 	case CL_KEY_F12:
 	  {
 	    string filename;
@@ -48,11 +50,11 @@ GlobalEvent::on_button_press(CL_InputDevice *device, const CL_Key &key)
 	    console.newline();
 	  }
 	  return false;
+
 	default:
-	  console << "GlobalEvent: Unknown key pressed: " << key.id;
+	  // console << "GlobalEvent: Unknown key pressed: " << key.id;
 	  break;
 	}
-      return true;
     }
   return true;
 }
