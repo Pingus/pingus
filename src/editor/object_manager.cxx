@@ -1,4 +1,4 @@
-//  $Id: object_manager.cxx,v 1.29 2002/09/14 23:31:12 grumbel Exp $
+//  $Id: object_manager.cxx,v 1.30 2002/09/15 15:30:21 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -334,23 +334,8 @@ ObjectManager::find_object(const CL_Vector& pos)
 }
 
 void
-ObjectManager::add_object_group_from_file (const std::string& filename)
+ObjectManager::add_prefab_from_file (const std::string& filename)
 {
-  std::cout << "ObjectManager::add_object_group_from_file(" << filename << ")" << std::endl;
-  xmlDocPtr doc = xmlParseFile(filename.c_str ());
-
-  if (doc)
-    {
-      xmlNodePtr cur = doc->ROOT;
-      WorldObjGroupData* group = new WorldObjGroupData (doc, cur);
-      const EditorObjLst& temp = group->create_EditorObj ();
-      editor_objs.insert(editor_objs.end(),temp.begin(), temp.end());
-      delete group;
-    }
-  else
-    {
-      std::cout << "ObjectManager::add_object_group_from_file: read error: " << filename << std::endl;
-    }
 }
 
 std::vector<ActionData>*

@@ -1,4 +1,4 @@
-//  $Id: object_selector.cxx,v 1.17 2002/09/15 09:54:33 torangan Exp $
+//  $Id: object_selector.cxx,v 1.18 2002/09/15 15:30:21 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -472,7 +472,7 @@ ObjectSelector::get_prefab()
  
   for (std::vector<std::string>::size_type i = 0; i < dir_lst.size (); ++i)
     {
-      font->print_left(20, 60 + i * 30, to_string(i) + " - " + dir_lst[i]); 
+      font->print_left(20, 60 + i * 30, to_string(i + 1) + " - " + dir_lst[i]); 
     }
 
   Display::flip_display();
@@ -483,11 +483,19 @@ ObjectSelector::get_prefab()
     {
       switch (read_key()) 
 	{
+	case CL_KEY_1:
+	  {
+	    std::string prefab_filename = path_manager.complete ("prefabs/") + dir_lst[0];
+	    std::cout << "prefab_filename: " << prefab_filename << std::endl;
+	  }
+	  break;
+
 	case CL_KEY_ESCAPE: 
 	  exit_loop = true;
 	  break;
 	}
     }
+
   return EditorObjLst();
 }
 

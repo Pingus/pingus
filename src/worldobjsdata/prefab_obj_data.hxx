@@ -1,4 +1,4 @@
-//  $Id: prefab_data.hxx,v 1.2 2002/08/23 15:49:50 torangan Exp $
+//  $Id: prefab_obj_data.hxx,v 1.1 2002/09/15 15:30:21 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,33 +22,47 @@
 
 #include "libxmlfwd.hxx"
 #include "worldobj_data.hxx"
-#include "res_descriptor.hxx"
+
+namespace WorldObjsData {
 
 /** A prefab is a group of WorldObj's which form a bigger object, like
     a generic entrance with background and foreground layer. The
-    prefab itself is just an WorldObjGroupData or a list of
-    WorldObjData. This class supports some additional information for
-    a prefab. Like the location of the thumbnail of it and a name for
-    it. This class is manly used to load prefab files into memory. */
-class PrefabData : public WorldObjData
+    PrefabObjData itself is just an WorldObjData, which gives access
+    to the underlying WorldObjDatas.
+
+    Node that a prefab is saved as 'link' in the xml file, the
+    worldobj data itself is not saved, entry will look like:
+
+    <prefab type="stoney-entrance"/>
+*/
+class PrefabObjData : public WorldObjData
 {
-protected:
-  /** A descriptive name of the prefab */
-  std::string   name;
-
-  /** The location of a thumbnail for this prefab */
-  ResDescriptor thumbnail_desc;
-
-  /** The WorldObjData that represents the prefab itself */
-  WorldObjData* data;
-
 public:
-  PrefabData (xmlDocPtr doc, xmlNodePtr cur);
+  /** The position of the prefab */
+  CL_Vector pos;
+
+  /** The uniq identifer of this prefab */
+  std::string uid;
   
+  /** A pointer to the prefab (just for caching, this is not real data
+      of this object, since it can be consturcted from the name) */
+  Prefab* data;
+
+  PrefabData (xmlDocPtr doc, xmlNodePtr cur);
+
+  /** The PrefabData is flattened to a WorldObjGroup, the World
+      doesn't need to keep track of prefabs */
+  WorldObj* create_WorldObj ();
+  
+  /** Create a EditorObjs::PrefabObj from the prefab data */
+  EditorObjLst create_EditorObj ();
+
 private:
   PrefabData (const PrefabData&);
   PrefabData operator= (const PrefabData&);
 };
+
+} // namespace WorldObjsData
 
 #endif
 

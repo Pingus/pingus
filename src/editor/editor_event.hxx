@@ -1,4 +1,4 @@
-//  $Id: editor_event.hxx,v 1.15 2002/09/13 18:28:26 grumbel Exp $
+//  $Id: editor_event.hxx,v 1.16 2002/09/15 15:30:21 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -81,8 +81,8 @@ public:
   void editor_display_help();
   
   // Export the current selection to a meta-obj
-  void editor_export_object_group_from_selection ();
-  void editor_import_object_group ();
+  void editor_export_prefab_from_selection ();
+  void editor_import_prefab ();
 
   /** Display the configuration window for the actions */
   void editor_show_actions_window ();

@@ -1,4 +1,4 @@
-//  $Id: editor_event.cxx,v 1.34 2002/09/15 00:19:19 grumbel Exp $
+//  $Id: editor_event.cxx,v 1.35 2002/09/15 15:30:21 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -130,12 +130,12 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key& key)
 	  editor_vertical_flip_current_selection ();
 	  break;
 
-	case CL_KEY_I: // import meta-object
-	  editor_import_object_group ();
+	case CL_KEY_I: // import prefab (shouldn't be here, its handled in the object selector already)
+	  editor_import_prefab ();
 	  break;
 
-	case CL_KEY_X: // export meta-object
-	  editor_export_object_group_from_selection ();
+	case CL_KEY_X: // export prefab 
+	  editor_export_prefab_from_selection ();
 	  break;
 
 	case CL_KEY_F3:
@@ -759,7 +759,7 @@ EditorEvent::zoom_mode ()
 }
 
 void
-EditorEvent::editor_export_object_group_from_selection ()
+EditorEvent::editor_export_prefab_from_selection ()
 {
   std::cout << "EditorEvent:editor_export_object_group_from_selection ()" << std::endl;
   
@@ -774,9 +774,9 @@ EditorEvent::editor_export_object_group_from_selection ()
 }
 
 void
-EditorEvent::editor_import_object_group ()
+EditorEvent::editor_import_prefab ()
 {
-  editor->object_manager->add_object_group_from_file ("/tmp/metaobj.xml");
+  editor->object_manager->add_prefab_from_file ("/tmp/metaobj.xml");
 }
 
 void 
