@@ -1,4 +1,4 @@
-//  $Id: multiplayer_game.cxx,v 1.5 2002/06/20 12:36:56 torangan Exp $
+//  $Id: multiplayer_game.cxx,v 1.6 2002/06/20 13:28:37 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -139,6 +139,7 @@ MultiplayerGame::start ()
       }
 
     delete plf;
+    delete client;
     delete controller1;
     delete controller2;
     delete controller3;
