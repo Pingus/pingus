@@ -61,6 +61,7 @@ PanelIcon::draw(int /*x*/, int y)
 	{
 	  button.draw(0, y);
 	}
+
       if (mouse_over_time == 0)
 	mouse_over_time = CL_System::get_time ();
 
@@ -101,7 +102,7 @@ Panel::draw()
   int y = 0;
 
   CL_Display::fill_rect(CL_Rect(0, 0, 25, CL_Display::get_height()),
-                        CL_Color(190, 190, 190, 1));
+                        CL_Color(190, 190, 190, 255));
 
   logo.draw(0, CL_Display::get_height() - logo.get_height());
 

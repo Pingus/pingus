@@ -842,7 +842,7 @@ EditorEvent::accept_input ()
   return
     is_enabled
     &&
-    (editor->get_gui_manager ()->get_focus () == editor->get_gui_manager ());
+    (editor->get_gui_manager ()->has_mouse_over());
 }
 
 } // namespace EditorNS

@@ -195,12 +195,10 @@ Editor::draw ()
 
   gui->show ();
 
-  if (get_gui_manager()->get_focus () == get_gui_manager ())
+  if (get_gui_manager()->has_mouse_over())
     CL_Display::draw_rect(CL_Rect(25, 0, CL_Display::get_width (), CL_Display::get_height ()),
                           CL_Color(255, 255, 255));
-
 }
-
 
 void
 Editor::scroll ()
@@ -444,7 +442,7 @@ Editor::mouse_moved()
 void
 Editor::move_objects()
 {
-  if (get_gui_manager()->get_focus () == get_gui_manager ())
+  if (get_gui_manager()->has_mouse_over())
     {
       // FIXME: this is really a dirty dirty hack
       // FIXME: To fix this the whole editor should be build up out of CL_Components
