@@ -1,4 +1,4 @@
-//  $Id: Credits.cc,v 1.9 2000/09/24 00:22:06 grumbel Exp $
+//  $Id: Credits.cc,v 1.10 2000/10/10 18:14:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "Display.hh"
+#include "PingusSound.hh"
 #include "PingusResource.hh"
 #include "Credits.hh"
 
@@ -101,6 +102,8 @@ Credits::display()
   int y;
   int yof;
   bool quit = false;
+
+  PingusSound::play_mod ("music/pingus-2.it");
 
   y = CL_Display::get_height() + 50;
   x = CL_Display::get_width() * 3 / 4;

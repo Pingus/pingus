@@ -1,4 +1,4 @@
-//  $Id: PingusSound.cc,v 1.14 2000/09/29 16:21:17 grumbel Exp $
+//  $Id: PingusSound.cc,v 1.15 2000/10/10 18:14:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "globals.hh"
 #include "PingusSound.hh"
 
 PingusSound* PingusSound::sound;
@@ -32,7 +33,7 @@ void
 PingusSound::play_mod(std::string filename)
 {
   assert (sound);
-  sound->real_play_mod (filename);
+  if (music_enabled) sound->real_play_mod (filename);
 }
 
 /** Load a wav and play it immediately.
@@ -43,7 +44,7 @@ void
 PingusSound::play_wav(std::string filename)
 {
   assert (sound);
-  sound->real_play_wav (filename);
+  if (sound_enabled) sound->real_play_wav (filename);
 }
 
 /** Shut down the sound and the music and quit SDL */

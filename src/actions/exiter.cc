@@ -1,4 +1,4 @@
-//  $Id: exiter.cc,v 1.6 2000/08/11 01:00:56 grumbel Exp $
+//  $Id: exiter.cc,v 1.7 2000/10/10 18:14:10 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -58,7 +58,7 @@ Exiter::let_move()
   if (pingu->get_status() != exited 
       && (counter >= (int)(surface->get_num_frames()/2) - 1)) 
     {
-      PingusSound::play_wav("sound/OING.WAV");
+      PingusSound::play_wav("oing");
       pingu->set_status(exited); 
       active = true;
       //FIXME: Do we need is_finished = true here?

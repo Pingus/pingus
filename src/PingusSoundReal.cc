@@ -1,4 +1,4 @@
-//  $Id: PingusSoundReal.cc,v 1.3 2000/10/10 13:22:39 grumbel Exp $
+//  $Id: PingusSoundReal.cc,v 1.4 2000/10/10 18:14:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -120,6 +120,9 @@ PingusSoundReal::real_play_wav(std::string arg_str)
 void
 PingusSoundReal::real_play_mod(std::string filename)
 {
+
+  std::cout << "PingusSoundReal: Playing mod file: " << filename << std::endl;
+
   if (music)
     {
       Mix_FadeOutMusic(1000);
@@ -135,7 +138,6 @@ PingusSoundReal::real_play_mod(std::string filename)
   }
 
   Mix_FadeInMusic(music,-1,2000);
-  printf("Playing...now\n");
 }
 
 #endif /* HAVE_LIBSDL_MIXER */
