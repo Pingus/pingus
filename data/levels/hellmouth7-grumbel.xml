@@ -6,10 +6,12 @@
     <description lang="en">EditorDefaultValue: ...and a short description</description>
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
     <number-of-pingus>50</number-of-pingus>
-    <number-to-save>25</number-to-save>
+    <number-to-save>40</number-to-save>
     <time>9000</time>
     <width>1216</width>
     <height>928</height>
+    <difficulty>70</difficulty>
+    <playable>1</playable>
   </global>
 
   <action-list>

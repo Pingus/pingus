@@ -5,13 +5,13 @@
     <levelname lang="en">EditorDefaultValue: Please give me a name...</levelname>
     <description lang="en">EditorDefaultValue: ...and a short description</description>
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
-    <number-of-pingus>50</number-of-pingus>
-    <number-to-save>25</number-to-save>
+    <number-of-pingus>40</number-of-pingus>
+    <number-to-save>30</number-to-save>
     <time>-1</time>
     <width>1608</width>
     <height>608</height>
-    <difficulty>5</difficulty>
-    <playable>0</playable>
+    <difficulty>50</difficulty>
+    <playable>1</playable>
     <comment>description missing</comment>
   </global>
 

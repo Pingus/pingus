@@ -1,4 +1,4 @@
-//  $Id: ObjectManager.cc,v 1.55 2002/02/11 00:10:29 grumbel Exp $
+//  $Id: ObjectManager.cc,v 1.56 2002/02/14 22:23:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -83,6 +83,8 @@ ObjectManager::new_level ()
   width = 1216;
   height = 608;
   level_time = -1;
+  difficulty = 40;
+  playable = 0;
 
   bg.red   = 0.3f;
   bg.green = 0.3f;
@@ -127,6 +129,9 @@ ObjectManager::load_level (std::string filename)
 
   delete_selection();
   delete_all_objs();
+
+  difficulty = 40;
+  playable = 0;
 
   std::cout << "Editor: Clearing current level..." << endl;
   std::cout << "Loading new level: " << filename << endl;

@@ -1,4 +1,4 @@
-//  $Id: PingusSpotMap.hh,v 1.17 2002/01/15 10:48:49 grumbel Exp $
+//  $Id: PingusSpotMap.hh,v 1.18 2002/02/14 22:23:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -40,28 +40,17 @@
 class MapTileSurface
 {
 private:
-  ///
   bool empty;
-  ///
-  bool needs_reload;
 public:
-  ///
   CL_Surface surface;
 
-  ///
   MapTileSurface();
-  ///
   virtual ~MapTileSurface();
 
-  ///
   void reload(void);
-  ///
   inline bool is_empty(void) { return empty; }
-  ///
   void mark_dirty(void);
-  ///
   void check_empty(void);
-  ///
   void set_empty(bool);
 };
 

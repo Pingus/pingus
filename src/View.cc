@@ -1,4 +1,4 @@
-//  $Id: View.cc,v 1.14 2001/12/01 17:08:26 torangan Exp $
+//  $Id: View.cc,v 1.15 2002/02/14 22:23:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -73,7 +73,7 @@ View::draw()
   world->draw(x1_pos, y1_pos,
 	      x2_pos - x1_pos + 1, y2_pos - y1_pos + 1,
 	      x_offset, y_offset, size);
-
+  
   cap.set_pingu(current_pingu);
   cap.draw_offset(get_x_pos() + get_x_offset(), 
 		  get_y_pos() + get_y_offset(),

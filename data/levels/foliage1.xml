@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.0"  encoding="ISO-8859-1"?>
 
 <pingus-level>
   <global>
@@ -13,7 +13,21 @@ no exit
     <time>9000</time>
     <width>1600</width>
     <height>608</height>
+    <difficulty>5</difficulty>
+    <playable>0</playable>
+    <comment></comment>
   </global>
+
+  <action-list>
+    <basher count="20"/>
+    <blocker count="20"/>
+    <bomber count="20"/>
+    <bridger count="20"/>
+    <climber count="20"/>
+    <digger count="20"/>
+    <floater count="20"/>
+    <miner count="20"/>
+  </action-list>
 
 <background type="surface">
   <surface><resource type="datafile">
@@ -32,18 +46,12 @@ no exit
   <para-y>0.5</para-y>
   <stretch-x>0</stretch-x>
   <stretch-y>0</stretch-y>
+  <position>
+    <x-pos>0</x-pos>
+    <y-pos>0</y-pos>
+    <z-pos>-150</z-pos>
+  </position>
 </background>
-
-  <action-list>
-    <basher>20</basher>
-    <blocker>20</blocker>
-    <bomber>20</bomber>
-    <bridger>20</bridger>
-    <climber>20</climber>
-    <digger>20</digger>
-    <floater>20</floater>
-    <miner>20</miner>
-  </action-list>
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
@@ -522,19 +530,20 @@ no exit
   <type>cloud</type>
   <direction>misc</direction>
   <release-rate>25</release-rate>
+  <owner-id>0</owner-id>
 </entrance>
 
-<exit>
+<exit use-old-pos-handling="0">
   <position>
-    <x-pos>1312</x-pos>
-    <y-pos>391</y-pos>
+    <x-pos>1349</x-pos>
+    <y-pos>451</y-pos>
     <z-pos>0</z-pos>
   </position>
   <surface><resource type="datafile">
     <resource-datafile>exits</resource-datafile>
   <resource-ident>Exits/stone</resource-ident>
   </resource></surface>
-</exit>
+  <owner-id>0</owner-id></exit>
 
   <start-position>
   <position>
@@ -543,6 +552,42 @@ no exit
     <z-pos>1000</z-pos>
   </position>
   </start-position>
+
+<groundpiece type="transparent">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-transparent</resource-datafile>
+  <resource-ident>misc/flower</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>997</x-pos>
+    <y-pos>467</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="transparent">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-transparent</resource-datafile>
+  <resource-ident>misc/flower</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>770</x-pos>
+    <y-pos>476</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="transparent">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-transparent</resource-datafile>
+  <resource-ident>misc/flower</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>358</x-pos>
+    <y-pos>460</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
 
 </pingus-level>
 

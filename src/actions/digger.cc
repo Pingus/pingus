@@ -1,4 +1,4 @@
-//  $Id: digger.cc,v 1.31 2002/02/11 20:29:34 grumbel Exp $
+//  $Id: digger.cc,v 1.32 2002/02/14 22:23:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -81,13 +81,10 @@ Digger::have_something_to_dig()
 void
 Digger::dig()
 {
-  static unsigned int time = CL_System::get_time ();
-
   pingu->get_world()->get_colmap()->remove(digger_radius, pingu->get_x () - 16, pingu->get_y() - 14);
   pingu->get_world()->get_gfx_map()->remove(digger_radius, pingu->get_x () - 16, pingu->get_y() - 14);
       
   ++pingu->pos.y;
-  std::cout << "time: " << CL_System::get_time() - time << std::endl;
 }
 
 void  

@@ -20,10 +20,10 @@
   <resource-ident>Textures/rooftile</resource-ident>
   </resource></surface>
   <color>
-    <red>0</red>
-    <green>0</green>
-    <blue>0</blue>
-    <alpha>1</alpha>
+    <red>1</red>
+    <green>1</green>
+    <blue>1</blue>
+    <alpha>.5</alpha>
   </color>
   <scroll-x>0</scroll-x>
   <scroll-y>0</scroll-y>

@@ -50,7 +50,10 @@ section industrial
 
 section misc
 {
+        flower = ../images/groundpieces/transparent/misc/flower.png (type=surface);
         moos1 = ../images/groundpieces/transparent/misc/moos1.png (type=surface);
+        moos2 = ../images/groundpieces/transparent/misc/moos2.png (type=surface);
+        moos3 = ../images/groundpieces/transparent/misc/moos3.png (type=surface);
         weed1 = ../images/groundpieces/transparent/misc/weed1.png (type=surface);
         weed2 = ../images/groundpieces/transparent/misc/weed2.png (type=surface);
 }

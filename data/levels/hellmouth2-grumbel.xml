@@ -10,6 +10,9 @@
     <time>9000</time>
     <width>1600</width>
     <height>800</height>
+    <difficulty>80</difficulty>
+    <playable>1</playable>
+    <comment></comment>
   </global>
 
   <action-list>
@@ -783,7 +786,7 @@
 
 <exit use-old-pos-handling="0">
   <position>
-    <x-pos>1300</x-pos>
+    <x-pos>1420</x-pos>
     <y-pos>330</y-pos>
     <z-pos>0</z-pos>
   </position>

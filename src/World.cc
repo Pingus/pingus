@@ -1,4 +1,4 @@
-//  $Id: World.cc,v 1.65 2002/01/15 10:48:49 grumbel Exp $
+//  $Id: World.cc,v 1.66 2002/02/14 22:23:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -81,10 +81,18 @@ World::draw(int x1, int y1, int w, int h,
 {
   x_of += x1;
   y_of += y1;
-  
+
+  //unsigned int time = CL_System::get_time (); 
   for(WorldObjIter obj = world_obj.begin(); obj != world_obj.end(); ++obj)
-    (*obj)->draw_offset(x_of, y_of, s);
-  
+    {
+      //unsigned int time = CL_System::get_time (); 
+      (*obj)->draw_offset(x_of, y_of, s);
+      /*std::cout << "> time: " << CL_System::get_time() - time 
+		<< " " << typeid (*obj->get()).name()
+		<< std::endl;*/
+    }
+  //std::cout << "time: " << CL_System::get_time() - time << std::endl;
+
   //gfx_map->draw(x1, y1, w, h, x_of, y_of, s);
   
   particle_holder->draw_offset(x_of, y_of, s);

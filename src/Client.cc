@@ -1,4 +1,4 @@
-//  $Id: Client.cc,v 1.75 2002/01/29 20:43:18 grumbel Exp $
+//  $Id: Client.cc,v 1.76 2002/02/14 22:23:52 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -200,7 +200,9 @@ Client::play_level(boost::shared_ptr<PLF> arg_plf)
 	  if (frames % int(frame_skip) == 0)
 	    {
 	      if (!auto_frame_skip)
-		draw ();
+		{
+		  draw ();
+      		}
 	    }
 	}
       else

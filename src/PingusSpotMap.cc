@@ -1,4 +1,4 @@
-//  $Id: PingusSpotMap.cc,v 1.49 2002/01/15 10:48:49 grumbel Exp $
+//  $Id: PingusSpotMap.cc,v 1.50 2002/02/14 22:23:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,7 +34,6 @@ using namespace std;
 MapTileSurface::MapTileSurface()
 {
   empty = true;
-  needs_reload = false;
 }
 
 MapTileSurface::~MapTileSurface()
@@ -56,7 +55,6 @@ MapTileSurface::reload(void)
 void
 MapTileSurface::mark_dirty()
 {
-  //  needs_reload = true;
   empty = false;
 }
 
@@ -265,7 +263,8 @@ PingusSpotMap::draw(int x_pos, int y_pos, int w, int h,
 	  if (start_y < 0)
 	    start_y = 0;
 
-	  // drawing the stuff
+	  //unsigned int time = CL_System::get_time (); 
+      	  // drawing the stuff
 	  for (TileIter x = start_x; 
 	       x <= (start_x + tilemap_width) && x < tile.size();
 	       x++)
@@ -288,6 +287,7 @@ PingusSpotMap::draw(int x_pos, int y_pos, int w, int h,
 		    }
 		}
 	    }
+	  //std::cout << "> time: " << CL_System::get_time() - time << std::endl;
 	} 
       else 
 	{

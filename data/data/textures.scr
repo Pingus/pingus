@@ -16,6 +16,8 @@ section Textures
 	rooftile	= ../images/textures/rooftile.jpg (type=surface, x=0, y=0, width=256, height=256);
 	rooftile2	= ../images/textures/rooftile2.jpg (type=surface, x=0, y=0, width=256, height=256);
 
+	rock6           = ../images/textures/rock6.jpg (type=surface);
+
 	rockagglo	= ../images/textures/rockagglo.jpg (type=surface, x=0, y=0, width=256, height=256);
 
 	icetile         = ../images/textures/icetile.jpg (type=surface, x=0, y=0, width=150, height=400);

@@ -151,6 +151,13 @@ section misc
         well = ../images/groundpieces/ground/misc/well.png (type=surface);
 }
 
+section mud
+{
+        mudpiece1 = ../images/groundpieces/ground/mud/mudpiece1.png (type=surface);
+        mudpiece2 = ../images/groundpieces/ground/mud/mudpiece2.png (type=surface);
+        mudpiece3 = ../images/groundpieces/ground/mud/mudpiece3.png (type=surface);
+}
+
 section mushroom
 {
         toadstool1 = ../images/groundpieces/ground/mushroom/toadstool1.png (type=surface);
