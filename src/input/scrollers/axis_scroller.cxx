@@ -1,4 +1,4 @@
-//  $Id: axis_scroller.cxx,v 1.5 2003/04/19 10:23:19 torangan Exp $
+//  $Id: axis_scroller.cxx,v 1.6 2003/10/20 19:28:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,63 +23,64 @@
 #include "../axis.hxx"
 #include "axis_scroller.hxx"
 
+namespace Pingus {
 namespace Input {
+namespace Scrollers {
 
-  namespace Scrollers {
-
-    AxisScroller::AxisScroller (const std::vector<Axis*>& axes_, float speed_)
-                              : axes(axes_),
-			        speed(speed_),
-				x_delta(0),
-				y_delta(0)
-    {
-      assert(axes.size() > 1);
-      assert(axes[0]->get_angle() != axes[1]->get_angle());
-    }
-
-    AxisScroller::~AxisScroller ()
-    {
-      for (unsigned int i=0; i < axes.size(); ++i)
-        delete axes[i];
-    }
-
-    const float&
-    AxisScroller::get_x_delta () const
-    {
-      return x_delta;
-    }
-
-    const float&
-    AxisScroller::get_y_delta () const
-    {
-      return y_delta;
-    }
-
-    void
-    AxisScroller::get_delta (float& x, float& y) const
-    {
-      x = x_delta;
-      y = y_delta;
-    }
-
-    void
-    AxisScroller::update (float delta)
-    {
-      x_delta = 0;
-      y_delta = 0;
-
-      for (std::vector<Axis*>::const_iterator it = axes.begin(); it != axes.end(); it++)
-        {
-          (*it)->update(delta);
-
-          x_delta += cos((*it)->get_angle() * 3.14159265 / 180) * speed * delta * (*it)->get_pos();
-          y_delta += sin((*it)->get_angle() * 3.14159265 / 180) * speed * delta * (*it)->get_pos();
-        }
-
-    }
-
-  }
+AxisScroller::AxisScroller (const std::vector<Axis*>& axes_, float speed_)
+  : axes(axes_),
+    speed(speed_),
+    x_delta(0),
+    y_delta(0)
+{
+  assert(axes.size() > 1);
+  assert(axes[0]->get_angle() != axes[1]->get_angle());
 }
+
+AxisScroller::~AxisScroller ()
+{
+  for (unsigned int i=0; i < axes.size(); ++i)
+    delete axes[i];
+}
+
+const float&
+AxisScroller::get_x_delta () const
+{
+  return x_delta;
+}
+
+const float&
+AxisScroller::get_y_delta () const
+{
+  return y_delta;
+}
+
+void
+AxisScroller::get_delta (float& x, float& y) const
+{
+  x = x_delta;
+  y = y_delta;
+}
+
+void
+AxisScroller::update (float delta)
+{
+  x_delta = 0;
+  y_delta = 0;
+
+  for (std::vector<Axis*>::const_iterator it = axes.begin(); it != axes.end(); it++)
+    {
+      (*it)->update(delta);
+
+      x_delta += cos((*it)->get_angle() * 3.14159265 / 180) * speed * delta * (*it)->get_pos();
+      y_delta += sin((*it)->get_angle() * 3.14159265 / 180) * speed * delta * (*it)->get_pos();
+    }
+
+}
+
+} // namespace Scrollers
+} // namespace Input
+} // namespace Pingus
 
 /* EOF */
 

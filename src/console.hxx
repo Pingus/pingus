@@ -1,4 +1,4 @@
-//  $Id: console.hxx,v 1.14 2003/10/18 12:11:30 grumbel Exp $
+//  $Id: console.hxx,v 1.15 2003/10/20 19:28:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -65,7 +65,7 @@ private:
   ConsoleBuffer streambuf;
 
 public:
-  CL_Font* font;
+  CL_Font font;
   bool is_init;
   unsigned int current_pos;
 

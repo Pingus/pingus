@@ -1,4 +1,4 @@
-//  $Id: controller.cxx,v 1.28 2003/04/19 10:23:18 torangan Exp $
+//  $Id: controller.cxx,v 1.29 2003/10/20 19:28:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,9 +22,9 @@
 #include "../pingus_error.hxx"
 
 /*#include "axis_event.hxx"
-#include "axis_factory.hxx"
-#include "button_factory.hxx"
-#include "pointer_event.hxx"
+  #include "axis_factory.hxx"
+  #include "button_factory.hxx"
+  #include "pointer_event.hxx"
 */
 #include "controller.hxx"
 #include "axes/dummy_axis.hxx"
@@ -36,6 +36,7 @@
 #include "button_factory.hxx"
 //#include "scroll_event.hxx"
 
+namespace Pingus {
 namespace Input {
 
 using namespace Axes;
@@ -256,6 +257,7 @@ Controller::get_button (ButtonName name)
   return 0;
 }
 
-}
+} // namespace Input
+} // namespace Pingus
 
 /* EOF */

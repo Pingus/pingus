@@ -1,4 +1,4 @@
-//  $Id: switch_door.cxx,v 1.26 2003/10/20 13:11:09 grumbel Exp $
+//  $Id: switch_door.cxx,v 1.27 2003/10/20 19:28:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -48,6 +48,7 @@ SwitchDoor::~SwitchDoor ()
 void
 SwitchDoor::on_startup ()
 {
+#ifdef CLANLIB_0_6
   world->get_colmap()->put(door_box,
                            static_cast<int>(data->door_pos.x),
 			   static_cast<int>(data->door_pos.y),
@@ -60,6 +61,7 @@ SwitchDoor::on_startup ()
 			     + i * door_tile.get_height()
 			     + door_box.get_height(),
 			     Groundtype::GP_SOLID);
+#endif
 }
 
 void

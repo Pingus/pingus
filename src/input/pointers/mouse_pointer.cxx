@@ -1,4 +1,4 @@
-//  $Id: mouse_pointer.cxx,v 1.4 2003/10/19 12:25:47 grumbel Exp $
+//  $Id: mouse_pointer.cxx,v 1.5 2003/10/20 19:28:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #include <ClanLib/Display/mouse.h>
 #include "mouse_pointer.hxx"
 
+namespace Pingus {
 namespace Input {
 namespace Pointers {
 
@@ -65,7 +66,8 @@ MousePointer::move_signal (int x, int y)
   y_pos = y;
 }
 
-}
-}
+} // namespace Pointers
+} // namespace Input
+} // namespace Pingus
 
 /* EOF */

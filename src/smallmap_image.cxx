@@ -1,4 +1,4 @@
-//  $Id: smallmap_image.cxx,v 1.11 2003/10/18 23:17:27 grumbel Exp $
+//  $Id: smallmap_image.cxx,v 1.12 2003/10/20 19:28:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,11 +17,13 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <ClanLib/Display/SurfaceProviders/canvas.h>
+#include <ClanLib/Display/pixel_buffer.h>
 #include "world.hxx"
 #include "smallmap_image.hxx"
 #include "col_map.hxx"
 #include "server.hxx"
+
+namespace Pingus {
 
 SmallMapImage::SmallMapImage (Server * s, Vector arg_pos, int width, int height)
   : sur (create_surface (s, width, height)),
@@ -157,5 +159,7 @@ SmallMapImage::mouse_over (int x, int y)
 	  &&
 	  pos.y < y && pos.y + sur.get_height () > y);
 }
+
+} // namespace Pingus
 
 /* EOF */

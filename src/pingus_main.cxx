@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.100 2003/10/19 12:25:47 grumbel Exp $
+//   $Id: pingus_main.cxx,v 1.101 2003/10/20 19:28:54 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___
@@ -29,13 +29,6 @@
 #include <signal.h>
 #include <locale.h>
 #include <getopt.h>
-
-//#include <ClanLib/Core/System/console_window.h>
-//#include <ClanLib/Display/setupdisplay.h>
-//#include <ClanLib/Display/Display/display.h>
-//#include <ClanLib/Display/Input/input.h>
-//#include <ClanLib/Core/System/setupcore.h>
-//#include <ClanLib/GUI/setupgui.h>
 
 #include <ClanLib/display.h>
 #include <ClanLib/sound.h>

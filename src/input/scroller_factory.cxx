@@ -1,4 +1,4 @@
-//  $Id: scroller_factory.cxx,v 1.11 2003/04/19 10:23:18 torangan Exp $
+//  $Id: scroller_factory.cxx,v 1.12 2003/10/20 19:28:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,7 +34,7 @@
 #include "scrollers/multiple_scroller.hxx"
 #include "scrollers/pointer_scroller.hxx"
 
-
+namespace Pingus {
 namespace Input {
 
 using namespace Scrollers;
@@ -164,5 +164,6 @@ ScrollerFactory::pointer_scroller (xmlNodePtr cur)
 }
 
 } // namespace Input
+} // namespace Pingus
 
 /* EOF */

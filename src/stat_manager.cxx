@@ -1,4 +1,4 @@
-//  $Id: stat_manager.cxx,v 1.8 2003/04/19 10:23:17 torangan Exp $
+//  $Id: stat_manager.cxx,v 1.9 2003/10/20 19:28:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,8 @@
 #include "xml_helper.hxx"
 #include "system.hxx"
 #include "stat_manager.hxx"
+
+namespace Pingus {
 
 StatManager* StatManager::instance_ = 0;
 
@@ -174,5 +176,7 @@ StatManager::set_bool(const std::string& name, bool value)
   stats[name] = to_string(value);
   flush();
 }
+
+} // namespace Pingus
 
 /* EOF */

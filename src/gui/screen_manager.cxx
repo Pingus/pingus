@@ -1,4 +1,4 @@
-//  $Id: screen_manager.cxx,v 1.11 2003/10/18 23:17:28 grumbel Exp $
+//  $Id: screen_manager.cxx,v 1.12 2003/10/20 19:28:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -90,8 +90,8 @@ ScreenManager::display ()
       input_controller->update (time_delta);
 
       // Fill the delta with values
-      GameDelta delta (time_delta, delta_manager.get_absolute(),
-                       input_controller->get_events ());
+      GameDelta delta(time_delta, delta_manager.get_absolute(),
+                      input_controller->get_events ());
 
       last_screen = get_current_screen();
 

@@ -1,4 +1,4 @@
-//  $Id: scroller_factory.hxx,v 1.8 2003/06/16 20:58:11 torangan Exp $
+//  $Id: scroller_factory.hxx,v 1.9 2003/10/20 19:28:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,29 +22,32 @@
 
 #include "../libxmlfwd.hxx"
 
+namespace Pingus {
 namespace Input {
 
-  class Scroller;
+class Scroller;
 
-  class ScrollerFactory
-  {
-    private:
-      static Scroller* axis_scroller     (xmlNodePtr cur);
-      static Scroller* inverted_scroller (xmlNodePtr cur);
-      static Scroller* joystick_scroller (xmlNodePtr cur);
-      static Scroller* mouse_scroller    (xmlNodePtr cur);
-      static Scroller* multiple_scroller (xmlNodePtr cur);
-      static Scroller* pointer_scroller  (xmlNodePtr cur);
+class ScrollerFactory
+{
+private:
+  static Scroller* axis_scroller     (xmlNodePtr cur);
+  static Scroller* inverted_scroller (xmlNodePtr cur);
+  static Scroller* joystick_scroller (xmlNodePtr cur);
+  static Scroller* mouse_scroller    (xmlNodePtr cur);
+  static Scroller* multiple_scroller (xmlNodePtr cur);
+  static Scroller* pointer_scroller  (xmlNodePtr cur);
 
-    public:
-      static Scroller* create (xmlNodePtr cur);
+public:
+  static Scroller* create (xmlNodePtr cur);
 
-    private:
-      ScrollerFactory ();
-      ScrollerFactory (const ScrollerFactory&);
-      ScrollerFactory& operator= (const ScrollerFactory&);
-  };
-}
+private:
+  ScrollerFactory ();
+  ScrollerFactory (const ScrollerFactory&);
+  ScrollerFactory& operator= (const ScrollerFactory&);
+};
+
+} // namespace Input
+} // namespace Pingus
 
 #endif
 

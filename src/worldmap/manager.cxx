@@ -1,4 +1,4 @@
-//  $Id: manager.cxx,v 1.39 2003/06/04 17:22:33 torangan Exp $
+//  $Id: manager.cxx,v 1.40 2003/10/20 19:28:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,6 +32,7 @@
 #include "../story.hxx"
 #include "../story_screen.hxx"
 
+namespace Pingus {
 namespace WorldMapNS {
 
 WorldMapManager* WorldMapManager::instance_ = 0;
@@ -346,5 +347,6 @@ void WorldMapManager::deinit()
 }
 
 } // namespace WorldMapNS
+} // namespace Pingus
 
 /* EOF */

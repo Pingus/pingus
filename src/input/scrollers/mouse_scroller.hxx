@@ -1,4 +1,4 @@
-//  $Id: mouse_scroller.hxx,v 1.4 2003/04/19 10:23:19 torangan Exp $
+//  $Id: mouse_scroller.hxx,v 1.5 2003/10/20 19:28:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,39 +22,40 @@
 
 #include "../scroller.hxx"
 
+namespace Pingus {
 namespace Input {
-
 namespace Scrollers {
 
 /**
-  @brief turns the mouse into a scroller
+   @brief turns the mouse into a scroller
 
-  XML definition: <mouse-scroller/>
-  */
+   XML definition: <mouse-scroller/>
+*/
 class MouseScroller : public Scroller {
-  private:
-    float old_x;
-    float old_y;
-    float x_delta;
-    float y_delta;
+private:
+  float old_x;
+  float old_y;
+  float x_delta;
+  float y_delta;
 
-  public:
-    MouseScroller ();
+public:
+  MouseScroller ();
 
-    const float& get_x_delta () const;
-    const float& get_y_delta () const;
+  const float& get_x_delta () const;
+  const float& get_y_delta () const;
 
-    void  get_delta (float& x, float& y) const;
+  void  get_delta (float& x, float& y) const;
 
-    void  update (float);
+  void  update (float);
 
-  private:
-    MouseScroller (const MouseScroller&);
-    MouseScroller& operator= (const MouseScroller&);
+private:
+  MouseScroller (const MouseScroller&);
+  MouseScroller& operator= (const MouseScroller&);
 };
 
 } // namespace Scrollers
 } // namespace Input
+} // namespace Pingus
 
 #endif
 

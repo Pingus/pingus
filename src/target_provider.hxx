@@ -1,4 +1,4 @@
-//  $Id: target_provider.hxx,v 1.7 2003/10/18 23:17:27 grumbel Exp $
+//  $Id: target_provider.hxx,v 1.8 2003/10/20 19:28:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,11 +21,13 @@
 #define HEADER_PINGUS_TARGET_PROVIDER_HXX
 
 #include "pingus.hxx"
-#include <ClanLib/Display/Display/surfaceprovider.h>
+#include <ClanLib/Display/pixel_buffer.h>
 
 class CL_Target;
 class CL_Palette;
 class CL_Canvas;
+
+namespace Pingus {
 
 class TargetProvider : public CL_PixelBuffer
 {
@@ -59,6 +61,8 @@ private:
   TargetProvider (const TargetProvider&);
   TargetProvider& operator= (const TargetProvider&);
 };
+
+} // namespace Pingus
 
 #endif
 

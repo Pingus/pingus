@@ -1,4 +1,4 @@
-//  $Id: multiple_pointer.cxx,v 1.3 2003/04/19 10:23:19 torangan Exp $
+//  $Id: multiple_pointer.cxx,v 1.4 2003/10/20 19:28:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,83 +19,84 @@
 
 #include "multiple_pointer.hxx"
 
+namespace Pingus {
 namespace Input {
+namespace Pointers {
 
-  namespace Pointers {
+MultiplePointer::MultiplePointer (const std::vector<Pointer*>& pointers_)
+  : pointers(pointers_),
+    old_x_pos(0),
+    old_y_pos(0),
+    x_pos(0),
+    y_pos(0)
+{
+}
 
-    MultiplePointer::MultiplePointer (const std::vector<Pointer*>& pointers_)
-                                    : pointers(pointers_),
-                                      old_x_pos(0),
-				      old_y_pos(0),
-				      x_pos(0),
-				      y_pos(0)
+MultiplePointer::~MultiplePointer ()
+{
+  for (unsigned int i = 0; i < pointers.size(); ++i)
+    delete pointers[i];
+}
+
+const float&
+MultiplePointer::get_x_pos () const
+{
+  return x_pos;
+}
+
+const float&
+MultiplePointer::get_y_pos () const
+{
+  return y_pos;
+}
+
+void
+MultiplePointer::set_pos (float x_pos_, float y_pos_)
+{
+  for (unsigned int i = 0; i < pointers.size(); ++i)
+    pointers[i]->set_pos(x_pos_, y_pos_);
+}
+
+void
+MultiplePointer::update (float delta)
+{
+  unsigned int do_break = UINT_MAX;
+
+  for (unsigned int i = 0; i < pointers.size(); ++i)
+    pointers[i]->update(delta);
+
+  for (unsigned int i = 0; i < pointers.size(); ++i)
     {
-    }
-
-    MultiplePointer::~MultiplePointer ()
-    {
-      for (unsigned int i = 0; i < pointers.size(); ++i)
-        delete pointers[i];
-    }
-
-    const float&
-    MultiplePointer::get_x_pos () const
-    {
-      return x_pos;
-    }
-
-    const float&
-    MultiplePointer::get_y_pos () const
-    {
-      return y_pos;
-    }
-
-    void
-    MultiplePointer::set_pos (float x_pos_, float y_pos_)
-    {
-      for (unsigned int i = 0; i < pointers.size(); ++i)
-        pointers[i]->set_pos(x_pos_, y_pos_);
-    }
-
-    void
-    MultiplePointer::update (float delta)
-    {
-      unsigned int do_break = UINT_MAX;
-
-      for (unsigned int i = 0; i < pointers.size(); ++i)
-        pointers[i]->update(delta);
-
-      for (unsigned int i = 0; i < pointers.size(); ++i)
+      if (pointers[i]->get_x_pos() != old_x_pos)
         {
-	  if (pointers[i]->get_x_pos() != old_x_pos)
-	    {
-	      old_x_pos = x_pos;
-	      x_pos = pointers[i]->get_x_pos();
-	      do_break = i;
-	    }
-
-	  if (pointers[i]->get_y_pos() != old_y_pos)
-	    {
-	      old_y_pos = y_pos;
-	      y_pos = pointers[i]->get_y_pos();
-	      do_break = i;
-	    }
-
-	  if (do_break != UINT_MAX)
-	    break;
+          old_x_pos = x_pos;
+          x_pos = pointers[i]->get_x_pos();
+          do_break = i;
         }
 
-      // no pointer changed, so there's no need to update the other pointers
-      if (do_break == UINT_MAX)
-        return;
+      if (pointers[i]->get_y_pos() != old_y_pos)
+        {
+          old_y_pos = y_pos;
+          y_pos = pointers[i]->get_y_pos();
+          do_break = i;
+        }
 
-      for (unsigned int n = 0; n < pointers.size(); ++n)
-        if (n != do_break)
-          pointers[n]->set_pos(x_pos, y_pos);
+      if (do_break != UINT_MAX)
+        break;
     }
 
-  }
+  // no pointer changed, so there's no need to update the other pointers
+  if (do_break == UINT_MAX)
+    return;
+
+  for (unsigned int n = 0; n < pointers.size(); ++n)
+    if (n != do_break)
+      pointers[n]->set_pos(x_pos, y_pos);
 }
+
+} // namespace Axes
+} // namespace Input
+} // namespace Pingus
 
 /* EOF */
 

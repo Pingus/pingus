@@ -1,4 +1,4 @@
-//  $Id: key_helper.hxx,v 1.4 2003/04/19 10:23:18 torangan Exp $
+//  $Id: key_helper.hxx,v 1.5 2003/10/20 19:28:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,20 +22,23 @@
 
 #include <string>
 
-namespace Input
-{
-  class KeyHelper
-  {
-    public:
-      static std::string key_to_string (int);
-      static int string_to_key (const std::string&);
+namespace Pingus {
+namespace Input {
 
-    private:
-      KeyHelper ();
-      KeyHelper (const KeyHelper&);
-      KeyHelper& operator= (const KeyHelper&);
-  };
-}
+class KeyHelper
+{
+public:
+  static std::string key_to_string (int);
+  static int string_to_key (const std::string&);
+
+private:
+  KeyHelper ();
+  KeyHelper (const KeyHelper&);
+  KeyHelper& operator= (const KeyHelper&);
+};
+
+} // namespace Input
+} // namespace Pingus
 
 #endif
 

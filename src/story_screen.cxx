@@ -1,4 +1,4 @@
-//  $Id: story_screen.cxx,v 1.22 2003/10/18 23:17:27 grumbel Exp $
+//  $Id: story_screen.cxx,v 1.23 2003/10/20 19:28:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,7 +19,7 @@
 
 #include <algorithm>
 #include <vector>
-#include <ClanLib/Display/Display/surface.h>
+#include <ClanLib/Display/surface.h>
 #include "gettext.h"
 #include "pingus_resource.hxx"
 #include "gui/gui_manager.hxx"

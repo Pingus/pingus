@@ -1,4 +1,4 @@
-//  $Id: scroller.hxx,v 1.8 2003/04/19 10:23:18 torangan Exp $
+//  $Id: scroller.hxx,v 1.9 2003/10/20 19:28:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,31 +22,33 @@
 
 #include "../pingus.hxx"
 
+namespace Pingus {
 namespace Input {
 
-  /// abstract base class defining the scroller interface
-  class Scroller {
-    public:
-      Scroller () { }
-      virtual ~Scroller () { }
+/// abstract base class defining the scroller interface
+class Scroller {
+public:
+  Scroller () { }
+  virtual ~Scroller () { }
 
-      /// returns the scroll delta in X direction
-      virtual const float& get_x_delta () const =0;
+  /// returns the scroll delta in X direction
+  virtual const float& get_x_delta () const =0;
 
-      /// returns the scroll delta in Y direction
-      virtual const float& get_y_delta () const =0;
+  /// returns the scroll delta in Y direction
+  virtual const float& get_y_delta () const =0;
 
-      /// writes the X/Y scroll delta into it's parameters
-      virtual void  get_delta (float&, float&) const =0;
+  /// writes the X/Y scroll delta into it's parameters
+  virtual void  get_delta (float&, float&) const =0;
 
-      virtual void  update (float) =0;
+  virtual void  update (float) =0;
 
-    private:
-      Scroller (const Scroller&);
-      Scroller& operator= (const Scroller&);
-  };
+private:
+  Scroller (const Scroller&);
+  Scroller& operator= (const Scroller&);
+};
 
-}
+} // namespace Input
+} // namespace Pingus
 
 #endif
 

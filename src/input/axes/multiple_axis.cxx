@@ -1,4 +1,4 @@
-//  $Id: multiple_axis.cxx,v 1.2 2003/04/19 10:23:19 torangan Exp $
+//  $Id: multiple_axis.cxx,v 1.3 2003/10/20 19:28:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,50 +19,51 @@
 
 #include "multiple_axis.hxx"
 
+namespace Pingus {
 namespace Input {
+namespace Axes {
 
-  namespace Axes {
-
-    MultipleAxis::MultipleAxis (const std::vector<Axis*>& axes_) : axes(axes_),
-                                                                   pos(0), angle(0)
-    {
-    }
-
-    MultipleAxis::~MultipleAxis ()
-    {
-      for (std::vector<Axis*>::const_iterator it = axes.begin(); it != axes.end(); it++)
-        delete *it;
-    }
-
-    const float&
-    MultipleAxis::get_pos () const
-    {
-      return pos;
-    }
-
-    const float&
-    MultipleAxis::get_angle () const
-    {
-      return angle;
-    }
-
-    void
-    MultipleAxis::update (float delta)
-    {
-      for (std::vector<Axis*>::const_iterator it = axes.begin(); it != axes.end(); it++)
-        {
-          (*it)->update(delta);
-          const float & temp = (*it)->get_pos();
-          if (temp)
-            {
-	      pos   = temp;
-	      angle = (*it)->get_angle();
-	    }
-
-        }
-    }
-
-  }
+MultipleAxis::MultipleAxis (const std::vector<Axis*>& axes_) : axes(axes_),
+                                                               pos(0), angle(0)
+{
 }
+
+MultipleAxis::~MultipleAxis ()
+{
+  for (std::vector<Axis*>::const_iterator it = axes.begin(); it != axes.end(); it++)
+    delete *it;
+}
+
+const float&
+MultipleAxis::get_pos () const
+{
+  return pos;
+}
+
+const float&
+MultipleAxis::get_angle () const
+{
+  return angle;
+}
+
+void
+MultipleAxis::update (float delta)
+{
+  for (std::vector<Axis*>::const_iterator it = axes.begin(); it != axes.end(); it++)
+    {
+      (*it)->update(delta);
+      const float & temp = (*it)->get_pos();
+      if (temp)
+        {
+          pos   = temp;
+          angle = (*it)->get_angle();
+        }
+
+    }
+}
+
+} // namespace Axes
+} // namespace Input
+} // namespace Pingus
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: inverted_axis.hxx,v 1.4 2003/04/19 10:23:19 torangan Exp $
+//  $Id: inverted_axis.hxx,v 1.5 2003/10/20 19:28:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,37 +22,38 @@
 
 #include "../axis.hxx"
 
+namespace Pingus {
 namespace Input {
+namespace Axes {
 
-  namespace Axes {
+/**
+   @brief decorator class inverting the angle of an axis
 
-    /**
-      @brief decorator class inverting the angle of an axis
+   XML definition: <inverted-axis> <axis> </inverted-axis>
+*/
+class InvertedAxis : public Axis {
 
-      XML definition: <inverted-axis> <axis> </inverted-axis>
-      */
-    class InvertedAxis : public Axis {
+private:
+  Axis* const axis;
+  float       angle;
 
-    private:
-      Axis* const axis;
-      float       angle;
+public:
+  InvertedAxis (Axis* axis_);
+  ~InvertedAxis ();
 
-    public:
-      InvertedAxis (Axis* axis_);
-     ~InvertedAxis ();
+  virtual const float& get_pos   () const;
+  virtual const float& get_angle () const;
 
-      virtual const float& get_pos   () const;
-      virtual const float& get_angle () const;
+  virtual void  update (float delta);
 
-      virtual void  update (float delta);
+private:
+  InvertedAxis (const InvertedAxis&);
+  InvertedAxis& operator= (const InvertedAxis&);
+};
 
-    private:
-      InvertedAxis (const InvertedAxis&);
-      InvertedAxis& operator= (const InvertedAxis&);
-    };
-
-  }
-}
+} // namespace Axes
+} // namespace Input
+} // namespace Pingus
 
 #endif
 

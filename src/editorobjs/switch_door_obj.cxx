@@ -1,4 +1,4 @@
-//  $Id: switch_door_obj.cxx,v 1.11 2003/10/20 13:33:43 grumbel Exp $
+//  $Id: switch_door_obj.cxx,v 1.12 2003/10/20 19:28:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -90,7 +90,7 @@ SwitchDoorObj::status_line()
 {
   char str[128];
   snprintf(str, 128, "SwitchDoor - (%f %f %f)",
-	  data->door_pos.x, data->door_pos.y, data->door_pos.z);
+           data->door_pos.x, data->door_pos.y, data->door_pos.z);
   return str;
 }
 
@@ -100,16 +100,16 @@ SwitchDoorObj::draw (EditorNS::EditorView * view)
   view->draw_line(data->door_pos, data->switch_pos, 1.0, 0.0, 0.0);
 
   view->draw(door_box,
-             static_cast<int>(data->door_pos.x),
-	     static_cast<int>(data->door_pos.y));
+             Vector(static_cast<int>(data->door_pos.x),
+                    static_cast<int>(data->door_pos.y)));
 
   for (int i = 0; i < data->door_height; ++i)
     {
       view->draw(door_tile,
-		 static_cast<int>(data->door_pos.x),
-		 static_cast<int>(data->door_pos.y
-				  + (i * door_tile.get_height())
-				  + door_box.get_height()));
+		 Vector(static_cast<int>(data->door_pos.x),
+                        static_cast<int>(data->door_pos.y
+                                         + (i * door_tile.get_height())
+                                         + door_box.get_height())));
     }
 }
 

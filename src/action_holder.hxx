@@ -1,4 +1,4 @@
-//  $Id: action_holder.hxx,v 1.13 2003/10/18 23:17:27 grumbel Exp $
+//  $Id: action_holder.hxx,v 1.14 2003/10/20 19:28:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,7 +43,7 @@ private:
    *  where the integer <i>n</i> indicates how much more actions
    *  called <i>name</i> can be created.
    */
-  std::map<ActionName, int> available_actions;
+  std::map<Actions::ActionName, int> available_actions;
 
 public:
   /** Create an action holder from the number of actions given in a
@@ -52,29 +52,29 @@ public:
   ~ActionHolder ();
 
   /** @return a list of available actions in the current level */
-  std::vector<ActionName> get_available_actions();
+  std::vector<Actions::ActionName> get_available_actions();
 
   /** Sets the number of actions, which are available in the pool.
    * @param name the name of the action
    * @param available the number of actions available
    */
-  void set_actions (ActionName name, int available);
+  void set_actions (Actions::ActionName name, int available);
 
   /** Adds an action to the pool of actions, making one more action available
    * @param name the name of the action
    */
-  void push_action (ActionName name);
+  void push_action (Actions::ActionName name);
 
   /** Removes an action from the pool of actions
       @return true if an action was available and removed, false if no
       actions where available */
-  bool pop_action (ActionName name);
+  bool pop_action (Actions::ActionName name);
 
   /** Returns the number of actions of the specified name which are available
    *  thru get_action()
    * @return 0 if the name is unknown FIXME: should use .find instead of []
    */
-  int get_available (ActionName);
+  int get_available (Actions::ActionName name);
 
 private:
   ActionHolder (const ActionHolder&);

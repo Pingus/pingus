@@ -1,4 +1,4 @@
-//  $Id: dummy_button.hxx,v 1.4 2003/04/19 10:23:19 torangan Exp $
+//  $Id: dummy_button.hxx,v 1.5 2003/10/20 19:28:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,29 +22,30 @@
 
 #include "../button.hxx"
 
+namespace Pingus {
 namespace Input {
+namespace Buttons {
 
-  namespace Buttons {
+/**
+   @brief dummy class to be used if a button is required but not defined
 
-    /**
-      @brief dummy class to be used if a button is required but not defined
+   XML definition: none
+*/
+class DummyButton : public Button  {
+public:
+  DummyButton () { }
 
-      XML definition: none
-      */
-    class DummyButton : public Button  {
-      public:
-        DummyButton () { }
+  virtual bool is_pressed ()  const { return false; }
+  virtual void update (float) { }
 
-        virtual bool is_pressed ()  const { return false; }
-        virtual void update (float) { }
+private:
+  DummyButton (const DummyButton&);
+  DummyButton& operator= (const DummyButton&);
+};
 
-      private:
-        DummyButton (const DummyButton&);
-        DummyButton& operator= (const DummyButton&);
-    };
-
-  }
-}
+} // namespace Buttons
+} // namespace Input
+} // namespace Pingus
 
 #endif
 

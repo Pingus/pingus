@@ -1,4 +1,4 @@
-//  $Id: sound.cxx,v 1.5 2003/04/19 10:23:19 torangan Exp $
+//  $Id: sound.cxx,v 1.6 2003/10/20 19:28:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,8 @@
 #include "../globals.hxx"
 #include "sound_dummy.hxx"
 #include "sound_real.hxx"
+
+namespace Pingus {
 
 PingusSound* PingusSound::sound;
 
@@ -69,7 +71,7 @@ PingusSound::deinit ()
 
 /** Load a sound file and play it immediately.
 
-    @param filename The complete filename */
+@param filename The complete filename */
 
 void
 PingusSound::play_sound(const std::string& name, float volume, float panning)
@@ -106,8 +108,8 @@ PingusSound::play_sound(Sound::Name name, float volume, float panning)
 
 /** Load a sound file and play it immediately.
 
-    @param name
-    @param volume   volume */
+@param name
+@param volume   volume */
 void
 PingusSound::play_music(const std::string & name, float volume)
 {
@@ -121,6 +123,8 @@ PingusSound::stop_music()
   assert(sound);
   sound->real_stop_music();
 }
+
+} // namespace Pingus
 
 /* EOF */
 

@@ -1,4 +1,4 @@
- //  $Id: theme.cxx,v 1.20 2003/10/18 23:17:27 grumbel Exp $
+ //  $Id: theme.cxx,v 1.21 2003/10/20 19:28:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,7 +23,6 @@
 #include <ClanLib/Display/display.h>
 #include <ClanLib/Display/font.h>
 #include <ClanLib/Display/keyboard.h>
-#include <ClanLib/Display/key.h>
 #include "path_manager.hxx"
 #include "system.hxx"
 #include "pingus_resource.hxx"

@@ -1,4 +1,4 @@
-//  $Id: axis_scroller.hxx,v 1.4 2003/04/19 10:23:19 torangan Exp $
+//  $Id: axis_scroller.hxx,v 1.5 2003/10/20 19:28:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,46 +23,48 @@
 #include <vector>
 #include "../scroller.hxx"
 
+namespace Pingus {
 namespace Input {
 
-  class Axis;
+class Axis;
 
-  namespace Scrollers {
+namespace Scrollers {
 
-    /**
-      @brief create a Scroller out of two or more axes
+/**
+   @brief create a Scroller out of two or more axes
 
-      XML definition: <axis-scroller speed="?"> <axis 1>...<axis N> </axis-scroller>
+   XML definition: <axis-scroller speed="?"> <axis 1>...<axis N> </axis-scroller>
 
-      This class requires at least two axes whereby it's enforced that the first
-      two have different angles.
-      */
-    class AxisScroller : public Scroller {
-      private:
-        const std::vector<Axis*> axes;
+   This class requires at least two axes whereby it's enforced that the first
+   two have different angles.
+*/
+class AxisScroller : public Scroller {
+private:
+  const std::vector<Axis*> axes;
 
-        const float speed;
-              float x_delta;
-              float y_delta;
+  const float speed;
+  float x_delta;
+  float y_delta;
 
-      public:
-        AxisScroller (const std::vector<Axis*>& axes_, float speed_);
-       ~AxisScroller ();
+public:
+  AxisScroller (const std::vector<Axis*>& axes_, float speed_);
+  ~AxisScroller ();
 
-        const float& get_x_delta () const;
-        const float& get_y_delta () const;
+  const float& get_x_delta () const;
+  const float& get_y_delta () const;
 
-        void  get_delta (float& x, float& y) const;
+  void  get_delta (float& x, float& y) const;
 
-        void  update (float delta);
+  void  update (float delta);
 
-      private:
-        AxisScroller (const AxisScroller&);
-        AxisScroller& operator= (const AxisScroller&);
-    };
+private:
+  AxisScroller (const AxisScroller&);
+  AxisScroller& operator= (const AxisScroller&);
+};
 
-  }
-}
+} // namespace Scroller
+} // namespace Input
+} // namespace Pingus
 
 #endif
 

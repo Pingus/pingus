@@ -1,4 +1,4 @@
-//  $Id: joystick_axis.cxx,v 1.4 2003/10/20 13:33:44 grumbel Exp $
+//  $Id: joystick_axis.cxx,v 1.5 2003/10/20 19:28:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,6 +30,7 @@ namespace Axes {
 JoystickAxis::JoystickAxis(int id_, int axis_, float angle_) 
   : id(id_), axis(axis_), pos(0), angle(angle_)
 {
+#ifdef CLANLIB_0_6
   if (static_cast<unsigned int> (id) >= CL_Input::joysticks.size())
     PingusError::raise("JoystickAxis: Invalid joystick id");
 
@@ -40,6 +41,7 @@ JoystickAxis::JoystickAxis(int id_, int axis_, float angle_)
     angle = (static_cast<int>(angle) % 360) + 360;
   else if (angle > 360)
     angle = static_cast<int>(angle) % 360;
+#endif
 }
 
 const float&

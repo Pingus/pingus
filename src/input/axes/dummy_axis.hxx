@@ -1,4 +1,4 @@
-//  $Id: dummy_axis.hxx,v 1.4 2003/04/19 10:23:19 torangan Exp $
+//  $Id: dummy_axis.hxx,v 1.5 2003/10/20 19:28:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,37 +22,38 @@
 
 #include "../axis.hxx"
 
+namespace Pingus {
 namespace Input {
+namespace Axes {
 
-  namespace Axes {
+/**
+   @brief Dummy Axis to be used if an axis is required but none defined
 
-    /**
-      @brief Dummy Axis to be used if an axis is required but none defined
+   XML definition: none
+*/
+class DummyAxis : public Axis {
 
-      XML definition: none
-     */
-    class DummyAxis : public Axis {
+private:
+  float pos;
+  float angle;
 
-      private:
-        float pos;
-        float angle;
+public:
 
-      public:
+  DummyAxis () : pos(0.0f), angle(0.0f) { }
 
-        DummyAxis () : pos(0.0f), angle(0.0f) { }
+  virtual const float& get_pos ()   const { return pos; }
+  virtual const float& get_angle () const { return angle; }
 
-        virtual const float& get_pos ()   const { return pos; }
-        virtual const float& get_angle () const { return angle; }
+  virtual void  update(float) { }
 
-        virtual void  update(float) { }
+private:
+  DummyAxis (const DummyAxis&);
+  DummyAxis& operator= (const DummyAxis&);
+};
 
-      private:
-        DummyAxis (const DummyAxis&);
-        DummyAxis& operator= (const DummyAxis&);
-    };
-
-  }
-}
+} // namespace Axis
+} // namespace Input
+} // namespace Pingus
 
 #endif
 

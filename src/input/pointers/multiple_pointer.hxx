@@ -1,4 +1,4 @@
-//  $Id: multiple_pointer.hxx,v 1.4 2003/04/19 10:23:19 torangan Exp $
+//  $Id: multiple_pointer.hxx,v 1.5 2003/10/20 19:28:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,48 +23,49 @@
 #include <vector>
 #include "../pointer.hxx"
 
+namespace Pingus {
 namespace Input {
+namespace Pointers {
 
-  namespace Pointers {
+/**
+   @brief wrapper class allowing multiple pointers to be used as one
 
-    /**
-      @brief wrapper class allowing multiple pointers to be used as one
+   XML definition: <multiple-pointer> <pointer 1>...<pointer N> </multiple-pointer>
 
-      XML definition: <multiple-pointer> <pointer 1>...<pointer N> </multiple-pointer>
+   This class will check every contained pointer for changes and if any changes all
+   pointers are updated to the new coordinates. If more than one pointer changes at
+   the same time only the change of the first will be registered.
+*/
+class MultiplePointer : public Pointer {
 
-      This class will check every contained pointer for changes and if any changes all
-      pointers are updated to the new coordinates. If more than one pointer changes at
-      the same time only the change of the first will be registered.
-      */
-    class MultiplePointer : public Pointer {
+private:
+  std::vector<Pointer*> pointers;
 
-      private:
-        std::vector<Pointer*> pointers;
+  float old_x_pos;
+  float old_y_pos;
 
-        float old_x_pos;
-        float old_y_pos;
+  float x_pos;
+  float y_pos;
 
-        float x_pos;
-        float y_pos;
+public:
+  MultiplePointer (const std::vector<Pointer*>& pointers_);
+  ~MultiplePointer ();
 
-      public:
-        MultiplePointer (const std::vector<Pointer*>& pointers_);
-       ~MultiplePointer ();
+  virtual const float& get_x_pos () const;
+  virtual const float& get_y_pos () const;
 
-        virtual const float& get_x_pos () const;
-        virtual const float& get_y_pos () const;
+  virtual void set_pos (float x_pos, float y_pos);
 
-        virtual void set_pos (float x_pos, float y_pos);
+  virtual void update (float delta);
 
-        virtual void update (float delta);
+private:
+  MultiplePointer (const MultiplePointer&);
+  MultiplePointer& operator= (const MultiplePointer&);
+};
 
-      private:
-        MultiplePointer (const MultiplePointer&);
-        MultiplePointer& operator= (const MultiplePointer&);
-    };
-
-  }
-}
+} // namespace Pointers
+} // namespace Input
+} // namespace Pingus
 
 #endif
 

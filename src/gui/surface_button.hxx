@@ -1,4 +1,4 @@
-//  $Id: surface_button.hxx,v 1.9 2003/10/18 23:17:28 grumbel Exp $
+//  $Id: surface_button.hxx,v 1.10 2003/10/20 19:28:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,9 +23,10 @@
 #include <ClanLib/display.h>
 #include "component.hxx"
 
+namespace Pingus {
+
 class ResDescriptor;
 
-namespace Pingus {
 namespace GUI {
 
 /** A simple surface button, which different surfaces for pressed,

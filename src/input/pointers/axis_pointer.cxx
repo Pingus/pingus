@@ -1,4 +1,4 @@
-//  $Id: axis_pointer.cxx,v 1.4 2003/04/19 10:23:19 torangan Exp $
+//  $Id: axis_pointer.cxx,v 1.5 2003/10/20 19:28:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,54 +22,55 @@
 #include "../axis.hxx"
 #include "axis_pointer.hxx"
 
+namespace Pingus {
 namespace Input {
+namespace Pointers {
 
-  namespace Pointers {
-
-    AxisPointer::AxisPointer (float speed_, const std::vector<Axis*>& axes_) : speed(speed_), axes(axes_)
-    {
-      assert(axes.size() >= 2);
-      assert(axes[0]->get_angle() != axes[1]->get_angle());
-    }
-
-    AxisPointer::~AxisPointer ()
-    {
-      for (std::vector<Axis*>::const_iterator it = axes.begin(); it != axes.end(); it++)
-        delete *it;
-    }
-
-    const float&
-    AxisPointer::get_x_pos () const
-    {
-      return x_pos;
-    }
-
-    const float&
-    AxisPointer::get_y_pos () const
-    {
-      return y_pos;
-    }
-
-    void
-    AxisPointer::set_pos (float new_x, float new_y)
-    {
-      x_pos = new_x;
-      y_pos = new_y;
-    }
-
-    void
-    AxisPointer::update (float delta)
-    {
-      for (std::vector<Axis*>::const_iterator it = axes.begin(); it != axes.end(); it++)
-        {
-          (*it)->update(delta);
-
-          x_pos += cos((*it)->get_angle() * 3.14159265 / 180) * speed * delta * (*it)->get_pos();
-          y_pos += sin((*it)->get_angle() * 3.14159265 / 180) * speed * delta * (*it)->get_pos();
-        }
-    }
-
-  }
+AxisPointer::AxisPointer (float speed_, const std::vector<Axis*>& axes_) : speed(speed_), axes(axes_)
+{
+  assert(axes.size() >= 2);
+  assert(axes[0]->get_angle() != axes[1]->get_angle());
 }
+
+AxisPointer::~AxisPointer ()
+{
+  for (std::vector<Axis*>::const_iterator it = axes.begin(); it != axes.end(); it++)
+    delete *it;
+}
+
+const float&
+AxisPointer::get_x_pos () const
+{
+  return x_pos;
+}
+
+const float&
+AxisPointer::get_y_pos () const
+{
+  return y_pos;
+}
+
+void
+AxisPointer::set_pos (float new_x, float new_y)
+{
+  x_pos = new_x;
+  y_pos = new_y;
+}
+
+void
+AxisPointer::update (float delta)
+{
+  for (std::vector<Axis*>::const_iterator it = axes.begin(); it != axes.end(); it++)
+    {
+      (*it)->update(delta);
+
+      x_pos += cos((*it)->get_angle() * 3.14159265 / 180) * speed * delta * (*it)->get_pos();
+      y_pos += sin((*it)->get_angle() * 3.14159265 / 180) * speed * delta * (*it)->get_pos();
+    }
+}
+
+} // namespace Axes
+} // namespace Input
+} // namespace Pingus
 
 /* EOF */

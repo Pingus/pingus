@@ -1,4 +1,4 @@
-//  $Id: button_factory.hxx,v 1.9 2003/06/16 20:58:11 torangan Exp $
+//  $Id: button_factory.hxx,v 1.10 2003/10/20 19:28:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,30 +22,32 @@
 
 #include "../libxmlfwd.hxx"
 
+namespace Pingus {
 namespace Input {
 
-  class Button;
+class Button;
 
-  class ButtonFactory
-  {
-    private:
-      static Button* double_button   (xmlNodePtr cur);
-      static Button* joystick_button (xmlNodePtr cur);
-      static Button* key_button      (xmlNodePtr cur);
-      static Button* mouse_button    (xmlNodePtr cur);
-      static Button* multiple_button (xmlNodePtr cur);
-      static Button* triple_button   (xmlNodePtr cur);
+class ButtonFactory
+{
+private:
+  static Button* double_button   (xmlNodePtr cur);
+  static Button* joystick_button (xmlNodePtr cur);
+  static Button* key_button      (xmlNodePtr cur);
+  static Button* mouse_button    (xmlNodePtr cur);
+  static Button* multiple_button (xmlNodePtr cur);
+  static Button* triple_button   (xmlNodePtr cur);
 
-    public:
-      static Button* create (xmlNodePtr cur);
+public:
+  static Button* create (xmlNodePtr cur);
 
-    private:
-      ButtonFactory ();
-      ButtonFactory (const ButtonFactory&);
-      ButtonFactory& operator= (const ButtonFactory&);
-  };
+private:
+  ButtonFactory ();
+  ButtonFactory (const ButtonFactory&);
+  ButtonFactory& operator= (const ButtonFactory&);
+};
 
-}
+} // namespace Input
+} // namespace Pingus
 
 #endif
 

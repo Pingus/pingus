@@ -1,4 +1,4 @@
-//  $Id: joystick_scroller.hxx,v 1.4 2003/04/19 10:23:19 torangan Exp $
+//  $Id: joystick_scroller.hxx,v 1.5 2003/10/20 19:28:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,47 +22,49 @@
 
 #include "../scroller.hxx"
 
+namespace Pingus {
 namespace Input {
 
-  class Axis;
+class Axis;
 
-  namespace Scrollers {
+namespace Scrollers {
 
-    /**
-      @brief maps the first two axes of a joystick into a Scroller
+/**
+   @brief maps the first two axes of a joystick into a Scroller
 
-      XML definition: <joystick-scroller id="joystick id" speed="?"/>
-      */
-    class JoystickScroller : public Scroller {
-      private:
-        int id;
+   XML definition: <joystick-scroller id="joystick id" speed="?"/>
+*/
+class JoystickScroller : public Scroller {
+private:
+  int id;
 
-        Axis* const axis1;
-        Axis* const axis2;
+  Axis* const axis1;
+  Axis* const axis2;
 
-        const float speed;
+  const float speed;
 
-        float x_delta;
-        float y_delta;
+  float x_delta;
+  float y_delta;
 
-      public:
-        JoystickScroller (int id_, float speed_);
-       ~JoystickScroller ();
+public:
+  JoystickScroller (int id_, float speed_);
+  ~JoystickScroller ();
 
-        const float& get_x_delta () const;
-        const float& get_y_delta () const;
+  const float& get_x_delta () const;
+  const float& get_y_delta () const;
 
-        void  get_delta (float& x, float& y) const;
+  void  get_delta (float& x, float& y) const;
 
-        void  update (float delta);
+  void  update (float delta);
 
-      private:
-        JoystickScroller (const JoystickScroller&);
-        JoystickScroller& operator= (const JoystickScroller&);
-    };
+private:
+  JoystickScroller (const JoystickScroller&);
+  JoystickScroller& operator= (const JoystickScroller&);
+};
 
-  }
-}
+} // namespace Pointers
+} // namespace Input
+} // namespace Pingus
 
 #endif
 

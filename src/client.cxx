@@ -1,4 +1,4 @@
-//  $Id: client.cxx,v 1.48 2003/10/18 23:17:27 grumbel Exp $
+//  $Id: client.cxx,v 1.49 2003/10/20 19:28:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,7 +19,6 @@
 
 #include <iostream>
 #include <ClanLib/Display/display.h>
-#include <ClanLib/Display/mousecursor_provider.h>
 #include "globals.hxx"
 #include "playfield.hxx"
 #include "timer.hxx"
@@ -50,10 +49,7 @@ Client::Client (TrueServer * s)
     time_display (0),
     small_map    (0),
     hurry_up     (0)
-  //cursor       (new Cursor ("cursors/animcross", "core", controller))
 {
-  //Display::add_flip_screen_hook(cursor);
-
   unplayable.set_align_center();
 
   Timer timer("Client UI generation");

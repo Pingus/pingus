@@ -1,4 +1,4 @@
-//  $Id: surface_drawable.hxx,v 1.6 2003/10/19 12:25:47 grumbel Exp $
+//  $Id: surface_drawable.hxx,v 1.7 2003/10/20 19:28:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,7 @@
 #ifndef HEADER_SURFACE_DRAWABLE_HXX
 #define HEADER_SURFACE_DRAWABLE_HXX
 
-#include <ClanLib/Display/Display/surface.h>
+#include <ClanLib/Display/surface.h>
 #include "../vector.hxx"
 #include "drawable.hxx"
 

@@ -1,4 +1,4 @@
-//  $Id: level_dot.cxx,v 1.24 2003/08/23 18:14:33 torangan Exp $
+//  $Id: level_dot.cxx,v 1.25 2003/10/20 19:28:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,7 +19,7 @@
 
 #include <iostream>
 #include <math.h>
-#include <ClanLib/Display/Font/font.h>
+#include <ClanLib/Display/font.h>
 #include "../input/controller.hxx"
 #include "../input/pointer.hxx"
 #include "../gettext.h"
@@ -37,6 +37,7 @@
 #include "../savegame_manager.hxx"
 #include "level_dot.hxx"
 
+namespace Pingus {
 namespace WorldMapNS {
 
 LevelDot::LevelDot(xmlDocPtr doc, xmlNodePtr cur)
@@ -207,5 +208,6 @@ LevelDot::unlock()
 }
 
 } // namespace WorldMapNS
+} // namespace Pingus
 
 /* EOF */

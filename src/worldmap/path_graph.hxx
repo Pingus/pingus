@@ -1,4 +1,4 @@
-//  $Id: path_graph.hxx,v 1.11 2003/06/04 17:22:33 torangan Exp $
+//  $Id: path_graph.hxx,v 1.12 2003/10/20 19:28:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,6 +28,7 @@
 #include "pathfinder.hxx"
 #include "graph.hxx"
 
+namespace Pingus {
 namespace WorldMapNS {
 
 class Dot;
@@ -91,6 +92,7 @@ private:
 };
 
 } // namespace WorldMapNS
+} // namespace Pingus
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: dot_factory.cxx,v 1.4 2003/04/19 10:23:19 torangan Exp $
+//  $Id: dot_factory.cxx,v 1.5 2003/10/20 19:28:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,7 @@
 #include "level_dot.hxx"
 #include "dot_factory.hxx"
 
+namespace Pingus {
 namespace WorldMapNS {
 
 Dot*
@@ -44,5 +45,6 @@ DotFactory::create(xmlDocPtr doc, xmlNodePtr cur)
 }
 
 } // namespace WorldMapNS
+} // namespace Pingus
 
 /* EOF */

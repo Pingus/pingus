@@ -1,4 +1,4 @@
-//  $Id: gui_screen.cxx,v 1.3 2003/10/19 12:25:47 grumbel Exp $
+//  $Id: gui_screen.cxx,v 1.4 2003/10/20 19:28:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,8 +25,8 @@
 namespace Pingus {
 namespace GUI {
 
-GUIScreen::GUIScreen ()
-  : gui_manager (new GUIManager ())
+GUIScreen::GUIScreen()
+  : gui_manager (new GUI::GUIManager())
 {
 }
 

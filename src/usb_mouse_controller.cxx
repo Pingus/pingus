@@ -1,4 +1,4 @@
-//  $Id: usb_mouse_controller.cxx,v 1.5 2003/10/18 23:17:27 grumbel Exp $
+//  $Id: usb_mouse_controller.cxx,v 1.6 2003/10/20 19:28:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,7 +19,7 @@
 
 #ifndef WIN32
 
-#include <ClanLib/Display/Display/display.h>
+#include <ClanLib/Display/display.h>
 #include "pingus_error.hxx"
 #include "usb_mouse_controller.hxx"
 

@@ -1,4 +1,4 @@
-//  $Id: inverted_scroller.hxx,v 1.4 2003/04/19 10:23:19 torangan Exp $
+//  $Id: inverted_scroller.hxx,v 1.5 2003/10/20 19:28:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,45 +22,46 @@
 
 #include "../scroller.hxx"
 
+namespace Pingus {
 namespace Input {
+namespace Scrollers {
 
-  namespace Scrollers {
+/**
+   @brief inverts the results of the contained scroller
 
-    /**
-      @brief inverts the results of the contained scroller
+   XML definition: <inverted-scroller invert-x="0/1" invert-y="0/1" speed="?"> <scroller> </inverted-scroller>
 
-      XML definition: <inverted-scroller invert-x="0/1" invert-y="0/1" speed="?"> <scroller> </inverted-scroller>
+   Wheter the X and/or the Y axis shall be inverted must be specified explizitly.
+*/
+class InvertedScroller : public Scroller {
+private:
+  Scroller* const scroller;
 
-      Wheter the X and/or the Y axis shall be inverted must be specified explizitly.
-      */
-    class InvertedScroller : public Scroller {
-      private:
-        Scroller* const scroller;
+  const bool invert_x;
+  const bool invert_y;
 
-        const bool invert_x;
-        const bool invert_y;
+  float x_pos;
+  float y_pos;
 
-        float x_pos;
-        float y_pos;
+public:
+  InvertedScroller (Scroller* scroller_, bool invert_x_, bool invert_y_);
+  ~InvertedScroller ();
 
-      public:
-        InvertedScroller (Scroller* scroller_, bool invert_x_, bool invert_y_);
-       ~InvertedScroller ();
+  const float& get_x_delta () const;
+  const float& get_y_delta () const;
 
-        const float& get_x_delta () const;
-        const float& get_y_delta () const;
+  void  get_delta (float& x, float& y) const;
 
-        void  get_delta (float& x, float& y) const;
+  void  update (float delta);
 
-        void  update (float delta);
+private:
+  InvertedScroller (const InvertedScroller&);
+  InvertedScroller& operator= (const InvertedScroller&);
+};
 
-      private:
-        InvertedScroller (const InvertedScroller&);
-        InvertedScroller& operator= (const InvertedScroller&);
-    };
-
-  }
-}
+} // namespace Scroller
+} // namespace Input
+} // namespace Pingus
 
 #endif
 

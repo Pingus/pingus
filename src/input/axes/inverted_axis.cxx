@@ -1,4 +1,4 @@
-//  $Id: inverted_axis.cxx,v 1.3 2003/04/19 10:23:19 torangan Exp $
+//  $Id: inverted_axis.cxx,v 1.4 2003/10/20 19:28:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,39 +19,40 @@
 
 #include "inverted_axis.hxx"
 
+namespace Pingus {
 namespace Input {
+namespace Axes {
 
-  namespace Axes {
-
-    InvertedAxis::InvertedAxis (Axis* axis_) : axis(axis_)
-    {
-      angle = static_cast<float>((static_cast<int>(axis->get_angle()) + 180) % 360);
-    }
-
-    InvertedAxis::~InvertedAxis ()
-    {
-      delete axis;
-    }
-
-    const float&
-    InvertedAxis::get_pos () const
-    {
-      return axis->get_pos();
-    }
-
-    const float&
-    InvertedAxis::get_angle () const
-    {
-      return angle;
-    }
-
-    void
-    InvertedAxis::update (float delta)
-    {
-      axis->update(delta);
-    }
-
-  }
+InvertedAxis::InvertedAxis (Axis* axis_) : axis(axis_)
+{
+  angle = static_cast<float>((static_cast<int>(axis->get_angle()) + 180) % 360);
 }
+
+InvertedAxis::~InvertedAxis ()
+{
+  delete axis;
+}
+
+const float&
+InvertedAxis::get_pos () const
+{
+  return axis->get_pos();
+}
+
+const float&
+InvertedAxis::get_angle () const
+{
+  return angle;
+}
+
+void
+InvertedAxis::update (float delta)
+{
+  axis->update(delta);
+}
+
+} // namespace Axes
+} // namespace Input
+} // namespace Pingus
 
 /* EOF */

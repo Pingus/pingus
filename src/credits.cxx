@@ -1,4 +1,4 @@
-//  $Id: credits.cxx,v 1.39 2003/10/18 23:17:27 grumbel Exp $
+//  $Id: credits.cxx,v 1.40 2003/10/20 19:28:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -168,10 +168,10 @@ Credits::Credits()
       switch ((*i)[0])
 	{
 	case '-':
-	  end_offset += font->get_height() + 5;
+	  end_offset += font.get_height() + 5;
 	  break;
 	case '_':
-	  end_offset += font_small->get_height() + 5;
+	  end_offset += font_small.get_height() + 5;
 	  break;
 	case 'n':
 	  end_offset += 50;
@@ -232,12 +232,12 @@ Credits::draw_background (GraphicContext& gc)
       switch ((*i)[0])
 	{
 	case '-':
-	  font->print_center(x, y + yof, i->substr(1).c_str());
-	  yof += font->get_height() + 5;
+	  font.print_center(x, y + yof, i->substr(1).c_str());
+	  yof += font.get_height() + 5;
 	  break;
 	case '_':
-	  font_small->print_center(x, y + yof, i->substr(1).c_str());
-	  yof += font_small->get_height() + 5;
+	  font_small.print_center(x, y + yof, i->substr(1).c_str());
+	  yof += font_small.get_height() + 5;
 	  break;
 	case 'n':
 	  yof += 50;

@@ -1,4 +1,4 @@
-//  $Id: drawable_factory.hxx,v 1.2 2003/04/19 10:23:19 torangan Exp $
+//  $Id: drawable_factory.hxx,v 1.3 2003/10/20 19:28:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,7 @@
 #include "../libxmlfwd.hxx"
 #include "drawable.hxx"
 
+namespace Pingus {
 namespace WorldMapNS {
 
 /** */
@@ -38,6 +39,7 @@ private:
 };
 
 } // namespace WorldMapNS
+} // namespace Pingus
 
 #endif
 

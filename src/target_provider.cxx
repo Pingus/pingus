@@ -1,4 +1,4 @@
-//  $Id: target_provider.cxx,v 1.2 2003/04/19 10:23:17 torangan Exp $
+//  $Id: target_provider.cxx,v 1.3 2003/10/20 19:28:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,8 @@
 #include <ClanLib/Display/SurfaceProviders/canvas.h>
 #include "target_provider.hxx"
 
+namespace Pingus {
+
 CL_Canvas*
 TargetProvider::create_canvas (CL_Target* target)
 {
@@ -37,5 +39,7 @@ TargetProvider::create_canvas (CL_Target* target)
 
   return canvas;
 }
+
+} // namespace Pingus
 
 /* EOF */

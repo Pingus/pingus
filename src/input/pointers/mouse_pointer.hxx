@@ -1,4 +1,4 @@
-//  $Id: mouse_pointer.hxx,v 1.5 2003/06/19 11:00:10 torangan Exp $
+//  $Id: mouse_pointer.hxx,v 1.6 2003/10/20 19:28:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,41 +23,42 @@
 #include <ClanLib/Signals/slot.h>
 #include "../pointer.hxx"
 
+namespace Pingus {
 namespace Input {
+namespace Pointers {
 
-  namespace Pointers {
+/**
+   @brief maps the standard mouse into a pointer
 
-    /**
-      @brief maps the standard mouse into a pointer
+   XML definition: <mouse-pointer/>
+*/
+class MousePointer : public Pointer {
 
-      XML definition: <mouse-pointer/>
-      */
-    class MousePointer : public Pointer {
+private:
+  float x_pos;
+  float y_pos;
+  CL_Slot move_slot;
 
-      private:
-        float x_pos;
-        float y_pos;
-        CL_Slot move_slot;
+public:
+  MousePointer ();
 
-      public:
-        MousePointer ();
+  virtual const float& get_x_pos () const;
+  virtual const float& get_y_pos () const;
 
-        virtual const float& get_x_pos () const;
-        virtual const float& get_y_pos () const;
+  virtual void  set_pos (float new_x, float new_y);
 
-        virtual void  set_pos (float new_x, float new_y);
+  virtual void  update (float);
 
-        virtual void  update (float);
-
-      private:
-        void move_signal (int x, int y);
+private:
+  void move_signal (int x, int y);
       
-        MousePointer (const MousePointer&);
-        MousePointer& operator= (const MousePointer&);
-    };
+  MousePointer (const MousePointer&);
+  MousePointer& operator= (const MousePointer&);
+};
 
-  }
-}
+} // namespace Pointers
+} // namespace Input
+} // namespace Pingus
 
 #endif
 

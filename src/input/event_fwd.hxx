@@ -1,4 +1,4 @@
-//  $Id: event_fwd.hxx,v 1.3 2003/04/19 10:23:18 torangan Exp $
+//  $Id: event_fwd.hxx,v 1.4 2003/10/20 19:28:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,12 +24,14 @@
 
 // Forward Header for event.hxx, just here to reduce compile time
 // dependencies a bit.
+namespace Pingus {
 namespace Input {
 
 union Event;
 typedef std::vector<Event> EventLst;
 
 } // namespace Input
+} // namespace Pingus
 
 #endif
 

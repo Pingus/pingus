@@ -1,4 +1,4 @@
-//  $Id: path_graph.cxx,v 1.22 2003/06/04 17:22:33 torangan Exp $
+//  $Id: path_graph.cxx,v 1.23 2003/10/20 19:28:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,6 +29,7 @@
 #include "path_drawable.hxx"
 #include "../globals.hxx"
 
+namespace Pingus {
 namespace WorldMapNS {
 
 PathGraph::PathGraph(WorldMap* arg_worldmap, xmlDocPtr doc, xmlNodePtr cur)
@@ -306,5 +307,6 @@ PathGraph::get_id(Dot* dot)
 }
 
 } // namespace WorldMapNS
+} // namespace Pingus
 
 /* EOF */

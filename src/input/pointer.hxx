@@ -1,4 +1,4 @@
-//  $Id: pointer.hxx,v 1.11 2003/04/19 10:23:18 torangan Exp $
+//  $Id: pointer.hxx,v 1.12 2003/10/20 19:28:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,32 +22,34 @@
 
 #include "../pingus.hxx"
 
+namespace Pingus {
 namespace Input {
 
-  /// abstract base class defining the pointer interface
-  class Pointer
-  {
-  public:
-    Pointer () { }
-    virtual ~Pointer() { }
+/// abstract base class defining the pointer interface
+class Pointer
+{
+public:
+  Pointer () { }
+  virtual ~Pointer() { }
 
-    /// returns the X coordinate of the pointer
-    virtual const float& get_x_pos () const =0;
+  /// returns the X coordinate of the pointer
+  virtual const float& get_x_pos () const =0;
 
-    /// returns the Y coordinate of the pointer
-    virtual const float& get_y_pos () const =0;
+  /// returns the Y coordinate of the pointer
+  virtual const float& get_y_pos () const =0;
 
-    /// sets the pointer to the given position
-    virtual void  set_pos (float, float) =0;
+  /// sets the pointer to the given position
+  virtual void  set_pos (float, float) =0;
 
-    virtual void  update (float) =0;
+  virtual void  update (float) =0;
 
-   private:
-     Pointer (const Pointer&);
-     Pointer& operator= (const Pointer&);
-  };
+private:
+  Pointer (const Pointer&);
+  Pointer& operator= (const Pointer&);
+};
 
-}
+} // namespace Input
+} // namespace Pingus
 
 #endif
 

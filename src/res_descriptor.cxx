@@ -1,4 +1,4 @@
-//  $Id: res_descriptor.cxx,v 1.17 2003/10/18 23:17:27 grumbel Exp $
+//  $Id: res_descriptor.cxx,v 1.18 2003/10/20 19:28:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -112,6 +112,8 @@ ResDescriptor::operator<(const ResDescriptor& res_desc) const
 
 std::ostream& operator<<(std::ostream& s, const Pingus::ResDescriptor& desc)
 {
+  using namespace Pingus;
+
   switch (desc.type)
     {
     case ResDescriptor::RD_RESOURCE:

@@ -1,4 +1,4 @@
-//  $Id: pointer_factory.hxx,v 1.7 2003/06/16 20:58:11 torangan Exp $
+//  $Id: pointer_factory.hxx,v 1.8 2003/10/20 19:28:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,26 +22,29 @@
 
 #include "../libxmlfwd.hxx"
 
+namespace Pingus {
 namespace Input {
 
-  class Pointer;
+class Pointer;
 
-  class PointerFactory
-  {
-    private:
-      static Pointer* axis_pointer     (xmlNodePtr cur);
-      static Pointer* mouse_pointer    ();
-      static Pointer* multiple_pointer (xmlNodePtr cur);
+class PointerFactory
+{
+private:
+  static Pointer* axis_pointer     (xmlNodePtr cur);
+  static Pointer* mouse_pointer    ();
+  static Pointer* multiple_pointer (xmlNodePtr cur);
 
-    public:
-      static Pointer* create (xmlNodePtr cur);
+public:
+  static Pointer* create (xmlNodePtr cur);
 
-    private:
-      PointerFactory ();
-      PointerFactory (const PointerFactory&);
-      PointerFactory& operator= (const PointerFactory&);
-  };
-}
+private:
+  PointerFactory ();
+  PointerFactory (const PointerFactory&);
+  PointerFactory& operator= (const PointerFactory&);
+};
+
+} // namespace Input
+} // namespace Pingus
 
 #endif
 

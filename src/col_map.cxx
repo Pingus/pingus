@@ -1,4 +1,4 @@
-//  $Id: col_map.cxx,v 1.20 2003/10/18 23:17:27 grumbel Exp $
+//  $Id: col_map.cxx,v 1.21 2003/10/20 19:28:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,7 +19,7 @@
 
 #include <iostream>
 #include <assert.h>
-#include <ClanLib/Display/SurfaceProviders/canvas.h>
+#include <ClanLib/Display/pixel_buffer.h>
 #include "gui/graphic_context.hxx"
 #include "globals.hxx"
 #include "col_map.hxx"
@@ -77,7 +77,9 @@ ColMap::get_width()
 void
 ColMap::remove(const CL_Surface& sur, int x, int y)
 {
+#ifdef CLANLIB_0_6
   remove(sur.get_provider(), x, y);
+#endif
 }
 
 void

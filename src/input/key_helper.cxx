@@ -1,4 +1,4 @@
-//  $Id: key_helper.cxx,v 1.4 2003/04/19 10:23:18 torangan Exp $
+//  $Id: key_helper.cxx,v 1.5 2003/10/20 19:28:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,12 +18,15 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
-#include <ClanLib/Display/Input/key.h>
+#include <ClanLib/Display/keys.h>
 #include "key_helper.hxx"
+
+namespace Pingus {
 
 std::string
 Input::KeyHelper::key_to_string (int key)
 {
+#ifdef CLANLIB_0_6
   switch (key)
     {
     case CL_KEY_0: return "0";
@@ -129,11 +132,14 @@ Input::KeyHelper::key_to_string (int key)
     default:
       return "Unhandled key";
     }
+#endif
+  return "Unhandled key";
 }
 
 int
 Input::KeyHelper::string_to_key (const std::string& key)
 {
+#ifdef CLANLIB_0_6
   if (key == "0") { return CL_KEY_0; }
   else if (key == "1") { return CL_KEY_1; }
   else if (key == "2") { return CL_KEY_2; }
@@ -239,6 +245,10 @@ Input::KeyHelper::string_to_key (const std::string& key)
       std::cout << "Key Name " << key << "not known" << std::endl;
       return CL_NO_KEY;
     }
+#endif
+  return 0;
 }
+
+} // namespace Pingus
 
 /* EOF */

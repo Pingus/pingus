@@ -1,4 +1,4 @@
-//  $Id: axis_pointer.hxx,v 1.4 2003/04/19 10:23:19 torangan Exp $
+//  $Id: axis_pointer.hxx,v 1.5 2003/10/20 19:28:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,51 +23,52 @@
 #include <vector>
 #include "../pointer.hxx"
 
-
+namespace Pingus {
 namespace Input {
 
-  class Axis;
+class Axis;
 
-  namespace Pointers {
+namespace Pointers {
 
-    /**
-      @brief maps two or more axes into a pointer
+/**
+   @brief maps two or more axes into a pointer
 
-      XML definition: <axis-pointer> <axis 1><axis 2>[... <axis N>] </axis-pointer>
+   XML definition: <axis-pointer> <axis 1><axis 2>[... <axis N>] </axis-pointer>
 
-      The number of axes used to create the pointer and their respective angles is
-      unlimited as long as there are at least two axes and the first two axes must have
-      different angles.
-      */
-    class AxisPointer : public Pointer {
+   The number of axes used to create the pointer and their respective angles is
+   unlimited as long as there are at least two axes and the first two axes must have
+   different angles.
+*/
+class AxisPointer : public Pointer {
 
-      private:
+private:
 
-        const float        speed;
-        std::vector<Axis*> axes;
+  const float        speed;
+  std::vector<Axis*> axes;
 
-        float              x_pos;
-        float              y_pos;
+  float              x_pos;
+  float              y_pos;
 
-      public:
+public:
 
-        AxisPointer (float speed, const std::vector<Axis*>& axes_);
-       ~AxisPointer ();
+  AxisPointer (float speed, const std::vector<Axis*>& axes_);
+  ~AxisPointer ();
 
-        virtual const float& get_x_pos () const;
-        virtual const float& get_y_pos () const;
+  virtual const float& get_x_pos () const;
+  virtual const float& get_y_pos () const;
 
-        virtual void  set_pos(float new_x, float new_y);
+  virtual void  set_pos(float new_x, float new_y);
 
-        virtual void  update (float delta);
+  virtual void  update (float delta);
 
-      private:
-        AxisPointer (const AxisPointer&);
-        AxisPointer& operator= (const AxisPointer&);
-    };
+private:
+  AxisPointer (const AxisPointer&);
+  AxisPointer& operator= (const AxisPointer&);
+};
 
-  }
-}
+} // namespace Pointers
+} // namespace Input
+} // namespace Pingus
 
 #endif
 

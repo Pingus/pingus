@@ -17,58 +17,59 @@
 
 #include "multiple_scroller.hxx"
 
+namespace Pingus {
 namespace Input {
+namespace Scrollers {
 
-  namespace Scrollers {
+MultipleScroller::MultipleScroller (const std::vector<Scroller*>& scrollers_) : scrollers(scrollers_)
+{
+}
 
-    MultipleScroller::MultipleScroller (const std::vector<Scroller*>& scrollers_) : scrollers(scrollers_)
+MultipleScroller::~MultipleScroller ()
+{
+  for (std::vector<Scroller*>::const_iterator it = scrollers.begin(); it != scrollers.end(); it++)
+    delete *it;
+}
+
+const float&
+MultipleScroller::get_x_delta () const
+{
+  return x_pos;
+}
+
+const float&
+MultipleScroller::get_y_delta () const
+{
+  return y_pos;
+}
+
+void
+MultipleScroller::get_delta (float& x, float& y) const
+{
+  x = x_pos;
+  y = y_pos;
+}
+
+void
+MultipleScroller::update (float delta)
+{
+  bool found_delta = false;
+
+  for (std::vector<Scroller*>::const_iterator it = scrollers.begin(); it != scrollers.end(); it++)
     {
-    }
+      (*it)->update(delta);
 
-    MultipleScroller::~MultipleScroller ()
-    {
-      for (std::vector<Scroller*>::const_iterator it = scrollers.begin(); it != scrollers.end(); it++)
-        delete *it;
-    }
-
-    const float&
-    MultipleScroller::get_x_delta () const
-    {
-      return x_pos;
-    }
-
-    const float&
-    MultipleScroller::get_y_delta () const
-    {
-      return y_pos;
-    }
-
-    void
-    MultipleScroller::get_delta (float& x, float& y) const
-    {
-      x = x_pos;
-      y = y_pos;
-    }
-
-    void
-    MultipleScroller::update (float delta)
-    {
-      bool found_delta = false;
-
-      for (std::vector<Scroller*>::const_iterator it = scrollers.begin(); it != scrollers.end(); it++)
+      if (!found_delta && ((*it)->get_x_delta() || (*it)->get_y_delta()))
         {
-          (*it)->update(delta);
-
-	  if (!found_delta && ((*it)->get_x_delta() || (*it)->get_y_delta()))
-	    {
-	      x_pos = (*it)->get_x_delta();
-	      y_pos = (*it)->get_y_delta();
-	      found_delta = true;
-	    }
+          x_pos = (*it)->get_x_delta();
+          y_pos = (*it)->get_y_delta();
+          found_delta = true;
         }
     }
-
-  }
 }
+
+} // namespace Scroller
+} // namespace Input
+} // namespace Pingus
 
 /* EOF */

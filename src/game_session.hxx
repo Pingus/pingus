@@ -1,4 +1,4 @@
-//  $Id: game_session.hxx,v 1.20 2003/10/18 23:17:27 grumbel Exp $
+//  $Id: game_session.hxx,v 1.21 2003/10/20 19:28:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,12 +24,12 @@
 #include "gui/screen.hxx"
 #include "plf_handle.hxx"
 
+namespace Pingus {
+
 class Client;
 class TrueServer;
 class PingusGameSessionResult;
 class DemoPlayer;
-
-namespace Pingus {
 
 /** You can use this class to start up a game session, which consist
     of a single level. */

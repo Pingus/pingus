@@ -1,4 +1,4 @@
-//  $Id: fps_counter.cxx,v 1.9 2003/10/18 23:17:27 grumbel Exp $
+//  $Id: fps_counter.cxx,v 1.10 2003/10/20 19:28:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,8 @@
 #include "fonts.hxx"
 #include "fps_counter.hxx"
 #include "gettext.h"
+
+namespace Pingus {
 
 FPSCounter fps_counter;
 
@@ -86,7 +88,6 @@ FPSCounter::update_fps_counter()
     }
 }
 
+} // namespace Pingus
+
 /* EOF */
-
-
-

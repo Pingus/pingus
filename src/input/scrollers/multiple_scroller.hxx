@@ -1,4 +1,4 @@
-//  $Id: multiple_scroller.hxx,v 1.4 2003/04/19 10:23:19 torangan Exp $
+//  $Id: multiple_scroller.hxx,v 1.5 2003/10/20 19:28:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,40 +23,41 @@
 #include <vector>
 #include "../scroller.hxx"
 
+namespace Pingus {
 namespace Input {
+namespace Scrollers {
 
-  namespace Scrollers {
+/**
+   @brief maps multiple Scrollers into one
 
-    /**
-      @brief maps multiple Scrollers into one
+   XML definition: <multiple-scroller> <scroller 1>...<scroller N> </multiple-scroller>
+*/
+class MultipleScroller : public Scroller {
+private:
+  std::vector<Scroller*> scrollers;
 
-      XML definition: <multiple-scroller> <scroller 1>...<scroller N> </multiple-scroller>
-     */
-    class MultipleScroller : public Scroller {
-      private:
-        std::vector<Scroller*> scrollers;
+  float x_pos;
+  float y_pos;
 
-        float x_pos;
-        float y_pos;
+public:
+  MultipleScroller (const std::vector<Scroller*>& scrollers_);
+  ~MultipleScroller ();
 
-      public:
-        MultipleScroller (const std::vector<Scroller*>& scrollers_);
-       ~MultipleScroller ();
+  const float& get_x_delta () const;
+  const float& get_y_delta () const;
 
-        const float& get_x_delta () const;
-        const float& get_y_delta () const;
+  void  get_delta (float& x, float& y) const;
 
-        void  get_delta (float& x, float& y) const;
+  void  update (float delta);
 
-        void  update (float delta);
+private:
+  MultipleScroller (const MultipleScroller&);
+  MultipleScroller& operator= (const MultipleScroller&);
+};
 
-      private:
-        MultipleScroller (const MultipleScroller&);
-        MultipleScroller& operator= (const MultipleScroller&);
-    };
-
-  }
-}
+} // namespace Scroller
+} // namespace Input
+} // namespace Pingus
 
 #endif
 

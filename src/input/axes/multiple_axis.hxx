@@ -1,4 +1,4 @@
-//  $Id: multiple_axis.hxx,v 1.4 2003/04/19 10:23:19 torangan Exp $
+//  $Id: multiple_axis.hxx,v 1.5 2003/10/20 19:28:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,42 +23,43 @@
 #include <vector>
 #include "../axis.hxx"
 
+namespace Pingus {
 namespace Input {
+namespace Axes {
 
-  namespace Axes {
+/**
+   @brief wrapper class, mapping multiple axes to one
 
-    /**
-      @brief wrapper class, mapping multiple axes to one
+   XML definition: <multiple-axis> <axis 1>...<axis n></multiple-axis>
+   <br><br>
+   angle and pos returned by this class will be the values returned by the first class
+   yielding a pos that is not null or of the first axis if none is found
+*/
+class MultipleAxis : public Axis {
 
-      XML definition: <multiple-axis> <axis 1>...<axis n></multiple-axis>
-      <br><br>
-      angle and pos returned by this class will be the values returned by the first class
-      yielding a pos that is not null or of the first axis if none is found
-      */
-    class MultipleAxis : public Axis {
+private:
+  std::vector<Axis*> axes;
+  float              pos;
+  float              angle;
 
-    private:
-      std::vector<Axis*> axes;
-      float              pos;
-      float              angle;
+public:
 
-    public:
+  MultipleAxis (const std::vector<Axis*>& axes_);
+  ~MultipleAxis ();
 
-      MultipleAxis (const std::vector<Axis*>& axes_);
-     ~MultipleAxis ();
+  virtual const float& get_pos   () const;
+  virtual const float& get_angle () const;
 
-      virtual const float& get_pos   () const;
-      virtual const float& get_angle () const;
+  virtual void  update (float delta);
 
-      virtual void  update (float delta);
+private:
+  MultipleAxis (const MultipleAxis&);
+  MultipleAxis& operator= (const MultipleAxis&);
+};
 
-    private:
-      MultipleAxis (const MultipleAxis&);
-      MultipleAxis& operator= (const MultipleAxis&);
-    };
-
-  }
-}
+} // namespace Axes
+} // namespace Input
+} // namespace Pingus
 
 #endif
 

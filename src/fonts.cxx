@@ -1,4 +1,4 @@
-//  $Id: fonts.cxx,v 1.5 2003/10/18 23:17:27 grumbel Exp $
+//  $Id: fonts.cxx,v 1.6 2003/10/20 19:28:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,20 +23,20 @@
 namespace Pingus {
 namespace Fonts {
 
-FontHandle chalk_large;
-FontHandle chalk_normal;
-FontHandle chalk_small;
+CL_Font chalk_large;
+CL_Font chalk_normal;
+CL_Font chalk_small;
 
-FontHandle pingus_small;
-FontHandle pingus_small_fix_num;
-FontHandle pingus_large;
+CL_Font pingus_small;
+CL_Font pingus_small_fix_num;
+CL_Font pingus_large;
 
-FontHandle smallfont;
-FontHandle smallfont_h;
+CL_Font smallfont;
+CL_Font smallfont_h;
 
-FontHandle courier_small;
-FontHandle xterm;
-FontHandle lcd;
+CL_Font courier_small;
+CL_Font xterm;
+CL_Font lcd;
 
 void
 init ()

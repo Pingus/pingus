@@ -1,4 +1,4 @@
-//  $Id: mouse_scroller.cxx,v 1.3 2003/10/20 13:33:44 grumbel Exp $
+//  $Id: mouse_scroller.cxx,v 1.4 2003/10/20 19:28:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #include <ClanLib/Display/mouse.h>
 #include "mouse_scroller.hxx"
 
+namespace Pingus {
 namespace Input {
 namespace Scrollers {
 
@@ -56,8 +57,9 @@ MouseScroller::update (float)
   old_y = CL_Mouse::get_y();
 }
 
-}
-}
+} // namespace Scroller
+} // namespace Input
+} // namespace Pingus
 
 /* EOF */
 

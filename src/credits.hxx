@@ -1,4 +1,4 @@
-//  $Id: credits.hxx,v 1.15 2003/10/18 23:17:27 grumbel Exp $
+//  $Id: credits.hxx,v 1.16 2003/10/20 19:28:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -40,8 +40,8 @@ private:
   CL_Surface background;
   CL_Surface pingu;
 
-  CL_Font*    font;
-  CL_Font*    font_small;
+  CL_Font    font;
+  CL_Font    font_small;
 
   bool is_init;
 

@@ -1,4 +1,4 @@
-//  $Id: dummy_pointer.hxx,v 1.4 2003/04/19 10:23:19 torangan Exp $
+//  $Id: dummy_pointer.hxx,v 1.5 2003/10/20 19:28:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,37 +22,38 @@
 
 #include "../pointer.hxx"
 
+namespace Pingus {
 namespace Input {
+namespace Pointers {
 
-  namespace Pointers {
+/**
+   @brief dummy class to be used if a pointer is required but none defined
 
-    /**
-      @brief dummy class to be used if a pointer is required but none defined
+   XML definition: none
+*/
+class DummyPointer : public Pointer {
 
-      XML definition: none
-      */
-    class DummyPointer : public Pointer {
+private:
+  const float pos;
 
-      private:
-        const float pos;
+public:
 
-      public:
+  DummyPointer () : pos(0) { }
 
-        DummyPointer () : pos(0) { }
+  virtual const float& get_x_pos () const { return pos; }
+  virtual const float& get_y_pos () const { return pos; }
 
-        virtual const float& get_x_pos () const { return pos; }
-        virtual const float& get_y_pos () const { return pos; }
+  virtual void  set_pos (float, float) { }
+  virtual void  update (float)         { }
 
-        virtual void  set_pos (float, float) { }
-        virtual void  update (float)         { }
+private:
+  DummyPointer (const DummyPointer&);
+  DummyPointer& operator= (const DummyPointer&);
+};
 
-      private:
-        DummyPointer (const DummyPointer&);
-        DummyPointer& operator= (const DummyPointer&);
-    };
-
-  }
-}
+} // namespace Pointers
+} // namespace Input
+} // namespace Pingus
 
 #endif
 

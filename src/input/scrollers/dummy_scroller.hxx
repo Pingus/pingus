@@ -1,4 +1,4 @@
-//  $Id: dummy_scroller.hxx,v 1.4 2003/04/19 10:23:19 torangan Exp $
+//  $Id: dummy_scroller.hxx,v 1.5 2003/10/20 19:28:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,37 +22,38 @@
 
 #include "../scroller.hxx"
 
+namespace Pingus {
 namespace Input {
+namespace Scrollers {
 
-  namespace Scrollers {
+/**
+   @brief dummy class to be used if an Scroller is required but none defined
 
-    /**
-      @brief dummy class to be used if an Scroller is required but none defined
+   XML definition: none
+*/
+class DummyScroller : public Scroller {
+private:
+  const float delta;
 
-      XML definition: none
-     */
-    class DummyScroller : public Scroller {
-      private:
-        const float delta;
+public:
 
-      public:
+  DummyScroller () : delta(0) { }
 
-        DummyScroller () : delta(0) { }
+  const float& get_x_delta () const { return delta; }
+  const float& get_y_delta () const { return delta; }
 
-        const float& get_x_delta () const { return delta; }
-        const float& get_y_delta () const { return delta; }
+  void  get_delta (float& x_delta, float& y_delta) const { x_delta = delta; y_delta = delta; }
 
-        void  get_delta (float& x_delta, float& y_delta) const { x_delta = delta; y_delta = delta; }
+  void  update (float) { }
 
-        void  update (float) { }
+private:
+  DummyScroller (const DummyScroller&);
+  DummyScroller& operator= (const DummyScroller&);
+};
 
-      private:
-        DummyScroller (const DummyScroller&);
-        DummyScroller& operator= (const DummyScroller&);
-    };
-
-  }
-}
+} // namespace Scrollers
+} // namespace Input
+} // namespace Pingus
 
 #endif
 

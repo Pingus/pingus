@@ -1,4 +1,4 @@
-//  $Id: inverted_scroller.cxx,v 1.2 2003/04/19 10:23:19 torangan Exp $
+//  $Id: inverted_scroller.cxx,v 1.3 2003/10/20 19:28:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,51 +19,52 @@
 
 #include "inverted_scroller.hxx"
 
+namespace Pingus {
 namespace Input {
+namespace Scrollers {
 
-  namespace Scrollers {
-
-    InvertedScroller::InvertedScroller (Scroller* scroller_, bool invert_x_, bool invert_y_)
-                                      : scroller(scroller_),
-				        invert_x(invert_x_),
-				        invert_y(invert_y_)
-    {
-    }
-
-    InvertedScroller::~InvertedScroller ()
-    {
-      delete scroller;
-    }
-
-    const float&
-    InvertedScroller::get_x_delta () const
-    {
-      return x_pos;
-    }
-
-    const float&
-    InvertedScroller::get_y_delta () const
-    {
-      return y_pos;
-    }
-
-    void
-    InvertedScroller::get_delta (float& x, float& y) const
-    {
-      x = x_pos;
-      y = y_pos;
-    }
-
-    void
-    InvertedScroller::update (float delta)
-    {
-      scroller->update(delta);
-
-      (invert_x) ? x_pos = -(scroller->get_x_delta()) : x_pos = scroller->get_x_delta();
-      (invert_y) ? y_pos = -(scroller->get_y_delta()) : x_pos = scroller->get_y_delta();
-    }
-
-  }
+InvertedScroller::InvertedScroller (Scroller* scroller_, bool invert_x_, bool invert_y_)
+  : scroller(scroller_),
+    invert_x(invert_x_),
+    invert_y(invert_y_)
+{
 }
+
+InvertedScroller::~InvertedScroller ()
+{
+  delete scroller;
+}
+
+const float&
+InvertedScroller::get_x_delta () const
+{
+  return x_pos;
+}
+
+const float&
+InvertedScroller::get_y_delta () const
+{
+  return y_pos;
+}
+
+void
+InvertedScroller::get_delta (float& x, float& y) const
+{
+  x = x_pos;
+  y = y_pos;
+}
+
+void
+InvertedScroller::update (float delta)
+{
+  scroller->update(delta);
+
+  (invert_x) ? x_pos = -(scroller->get_x_delta()) : x_pos = scroller->get_x_delta();
+  (invert_y) ? y_pos = -(scroller->get_y_delta()) : x_pos = scroller->get_y_delta();
+}
+
+} // namespace Scroller
+} // namespace Input
+} // namespace Pingus
 
 /* EOF */
