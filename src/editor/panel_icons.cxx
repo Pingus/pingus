@@ -1,4 +1,4 @@
-//  $Id: panel_icons.cxx,v 1.1 2002/06/12 19:11:31 grumbel Exp $
+//  $Id: panel_icons.cxx,v 1.2 2002/06/29 09:44:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -180,6 +180,18 @@ void
 PanelIconZoomOut::on_click()
 {
   editor->get_event ()->editor_zoom_out ();
+}
+
+PanelIconSetupActions::PanelIconSetupActions ()
+{
+  tooltip = _("Setup Number of Actions");
+  sur = PingusResource::load_surface("editor/actions", "core");
+}
+
+void
+PanelIconSetupActions::on_click()
+{
+  editor->get_event()->editor_show_actions_window ();
 }
 
 /* EOF */

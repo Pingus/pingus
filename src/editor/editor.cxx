@@ -1,4 +1,4 @@
-//  $Id: editor.cxx,v 1.7 2002/06/28 22:21:59 grumbel Exp $
+//  $Id: editor.cxx,v 1.8 2002/06/29 09:44:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -69,6 +69,15 @@ Editor::Editor () : event_handler_ref_counter(0),
   object_manager  = new ObjectManager;
   status_line     = new StatusLine;
   object_selector = new ObjectSelector;
+
+  // FIXME: Should use PingusResource, Memleak
+  CL_ResourceManager* gui_resources = new CL_ResourceManager("../data/data/gui.scr", false);
+  
+  style_manager = new CL_StyleManager_Default (gui_resources);
+  gui   = new CL_GUIManager (style_manager);
+
+  action_window = new ActionWindow (gui, object_manager->get_actions ());
+
   view = new EditorView (0, 0, CL_Display::get_width (), CL_Display::get_height (), 0, 0);
 
   event->set_editor(this);
@@ -142,16 +151,6 @@ Editor::edit ()
   Display::show_cursor();
 
   register_event_handler();
-
-  CL_StyleManager_Default* style_manager;
-  CL_GUIManager* gui;
-
-  CL_ResourceManager gui_resources("../data/data/gui.scr", false);
-  
-  style_manager = new CL_StyleManager_Default (&gui_resources);
-  gui   = new CL_GUIManager (style_manager);
-
-  ActionWindow window (gui, object_manager->get_actions ());
 
   while (!quit) 
     {

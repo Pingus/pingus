@@ -18,6 +18,7 @@ section Icons
 	help = ../images/core/editor/tb_help.png (type=surface, x=0, y=0, width=24,  height=24, tcol=0);
 	delete = ../images/core/editor/tb_trash.png (type=surface, x=0, y=0, width=24,  height=24, tcol=0);
 	index = ../images/core/editor/tb_index.png (type=surface, x=0, y=0, width=24,  height=24, tcol=0);
+	actions = ../images/core/editor/actions.png (type=surface);
 
 	region-zoom = ../images/core/editor/region-zoom.png (type=surface, x=0, y=0, width=24, height=24);
 	zoom-in = ../images/core/editor/zoom-in.png (type=surface, x=0, y=0, width=24, height=24);

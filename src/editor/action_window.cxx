@@ -1,4 +1,4 @@
-//  $Id: action_window.cxx,v 1.1 2002/06/28 22:21:59 grumbel Exp $
+//  $Id: action_window.cxx,v 1.2 2002/06/29 09:44:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,11 +31,11 @@
  [ok]          [cancel]
  **********************/
 
-ActionWindow::ActionWindow (CL_Component* parent, std::vector<ActionData>* arg_actions)
-  : actions (arg_actions)
+ActionWindow::ActionWindow (CL_Component* arg_parent, std::vector<ActionData>* arg_actions)
+  : parent (arg_parent), actions (arg_actions)
 {
-  window = new CL_Window (CL_Rect(200, 30,
-				  400, (actions->size() * 30) + 30), "Pingus Actions", parent);
+  window = new CL_Window (CL_Rect(0, 0,
+				  200, (actions->size() * 20) + 80), "Pingus Actions", parent);
 
   int y = 30;
   for (std::vector<ActionData>::iterator i = actions->begin (); i != actions->end (); ++i)
@@ -44,12 +44,49 @@ ActionWindow::ActionWindow (CL_Component* parent, std::vector<ActionData>* arg_a
       labels.push_back(new CL_Label (CL_Point(10, y), action_to_string(i->name), window));
       y += 20;
     }
+
+  y += 10;
+  ok_button = new CL_Button(CL_Rect (10, y, 90, y + 20), "Ok", window);
+  cancel_button = new CL_Button(CL_Rect (110, y, 190, y + 20), "Cancel", window);
+
+  ok_button->sig_clicked ().connect (this, &ActionWindow::ok_clicked);
+  cancel_button->sig_clicked ().connect (this, &ActionWindow::cancel_clicked);
+
+  hide ();
 }
 
 void
-ActionWindow::on_close ()
+ActionWindow::show ()
+{
+  parent->add_child (window);
+}
+
+void
+ActionWindow::hide ()
+{
+  parent->remove_child (window);
+}
+
+void 
+ActionWindow::ok_clicked ()
+{
+  std::cout << "OK Clicked" << std::endl;
+  sync_with_data ();
+  hide ();
+}
+
+void
+ActionWindow::cancel_clicked ()
+{
+  std::cout << "Cancel Clicked" << std::endl;
+  hide ();
+}
+
+void
+ActionWindow::sync_with_data ()
 {
   // Sync the level data with the data from the window
+  std::cout << "Syncing data" << std::endl;
 }
 
 /* EOF */

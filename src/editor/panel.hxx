@@ -1,4 +1,4 @@
-//  $Id: panel.hxx,v 1.2 2002/06/24 22:52:58 grumbel Exp $
+//  $Id: panel.hxx,v 1.3 2002/06/29 09:44:56 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,67 +32,41 @@ class PanelIcon
 {
 protected:
   CL_Font* font;
-  ///
   CL_Surface sur;
-  ///
   CL_Surface button;
-  ///
   CL_Surface button_pressed;
-  ///
   std::string tooltip;
-  /// 
   unsigned int mouse_over_time;
 public:
-  ///
   static Editor* editor;
-  ///
   PanelIcon();
-  ///
   virtual ~PanelIcon();
-  ///
-  void start();
-  ///
-  void put_screen(int x, int y);
-  ///
-  virtual void on_click();
-}///
-;
 
-///
+  void start();
+  void put_screen(int x, int y);
+  virtual void on_click();
+};
+
 class Panel
 {
 private:
-  ///
   bool is_init;
-  ///
   std::vector<PanelIcon*> buttons;
-  ///
   std::vector<PanelIcon*>::iterator pressed_button;
-  ///
   Editor* editor;
-  ///
   CL_Surface logo;
 
 public:
-  ///
   Panel();
-  ///
   ~Panel();
 
-  ///
   void draw();
-  ///
   void init();
-  ///
   void on_click();
-  ///
   void on_release();
-  ///
   bool mouse_over(int x, int y);
-  ///
   void set_editor(Editor* e);
-}///
-;
+};
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: editor_event.cxx,v 1.11 2002/06/26 09:29:48 grumbel Exp $
+//  $Id: editor_event.cxx,v 1.12 2002/06/29 09:44:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,6 +43,7 @@
 #include "panel.hxx"
 #include "object_selector.hxx"
 #include "editor.hxx"
+#include "action_window.hxx"
 
 EditorEvent::EditorEvent()
   : is_enabled (0)
@@ -820,6 +821,12 @@ EditorEvent::editor_rotate_270_current_selection()
     {
       (*i)->rotate_270 ();
     } 
+}
+
+void
+EditorEvent::editor_show_actions_window ()
+{
+  editor->action_window->show ();
 }
 
 /* EOF */

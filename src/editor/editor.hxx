@@ -1,4 +1,4 @@
-//  $Id: editor.hxx,v 1.2 2002/06/24 22:52:58 grumbel Exp $
+//  $Id: editor.hxx,v 1.3 2002/06/29 09:44:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,6 +33,9 @@ class ScrollMap;
 class ObjectManager;
 class ObjectSelector;
 class StatusLine;
+class ActionWindow;
+class CL_StyleManager_Default;
+class CL_GUIManager;
 
 class Editor
 {
@@ -64,6 +67,12 @@ private:
   StatusLine* status_line;
   ObjectSelector* object_selector;
   
+  // GUI Stuff
+  CL_StyleManager_Default* style_manager;
+  CL_GUIManager* gui;
+
+  ActionWindow* action_window;
+
   enum { SELECTOR_TOOL, ZOOM_TOOL } tool;
 
   static Editor* instance_;

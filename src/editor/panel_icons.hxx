@@ -1,4 +1,4 @@
-//  $Id: panel_icons.hxx,v 1.2 2002/06/24 22:52:58 grumbel Exp $
+//  $Id: panel_icons.hxx,v 1.3 2002/06/29 09:44:56 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,147 +22,110 @@
 
 #include "panel.hxx"
 
-///
 class PanelIconNew : public PanelIcon
 {
 public:
-  ///
   PanelIconNew();
-  ///
   virtual void on_click();
 };
 
-///
 class PanelIconLoad : public PanelIcon
 {
 public:
-  ///
   PanelIconLoad();
-  ///
   virtual void on_click();
 };
 
-///
 class PanelIconSave : public PanelIcon
 {
 public:
-  ///
   PanelIconSave();
-  ///
   virtual void on_click();
 };
 
-///
 class PanelIconCopy : public PanelIcon
 {
 public:
-  ///
   PanelIconCopy();
-  ///
   virtual void on_click();
-}///
-;
+};
 
-///
 class PanelIconPaste : public PanelIcon
 {
 public:
-  ///
   PanelIconPaste();
-  ///
   virtual void on_click();
-}///
-;
+};
 
-///
 class PanelIconEdit : public PanelIcon
 {
 public:
-  ///
   PanelIconEdit();
-  ///
   virtual void on_click();
-}///
-;
+};
 
-///
 class PanelIconPreferences : public PanelIcon
 {
 public:
-  ///
   PanelIconPreferences();
-  ///
   virtual void on_click();
-}///
-;
+};
 
-///
 class PanelIconDelete : public PanelIcon
 {
 public:
-  ///
   PanelIconDelete();
-  ///
   virtual void on_click();
 };
 
-///
 class PanelIconExit : public PanelIcon
 {
 public:
-  ///
   PanelIconExit();
-  ///
   virtual void on_click();
 };
 
-///
 class PanelIconRun : public PanelIcon
 {
 public:
-  ///
   PanelIconRun();
-  ///
   virtual void on_click();
 };
 
-///
 class PanelIconInsertObject : public PanelIcon
 {
 public:
-  ///
   PanelIconInsertObject();
-  ///
   virtual void on_click();
 };
 
 class PanelIconZoomOut : public PanelIcon
 {
 public:
-  ///
   PanelIconZoomOut();
-  ///
   virtual void on_click();
 };
 
 class PanelIconZoomIn : public PanelIcon
 {
 public:
-  ///
   PanelIconZoomIn();
-  ///
   virtual void on_click();
 };
 
 class PanelIconRegionZoom : public PanelIcon
 {
 public:
-  ///
   PanelIconRegionZoom();
-  ///
   virtual void on_click();
 };
 
+class PanelIconSetupActions : public PanelIcon
+{
+public:
+  PanelIconSetupActions ();
+  virtual void on_click();
+};
 
 #endif
 

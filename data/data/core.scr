@@ -40,6 +40,8 @@ section editor
 	button = ../images/core/editor/button.png (type=surface, x=0, y=0, width=24,  height=24);
 	button_pressed = ../images/core/editor/button_pressed.png (type=surface, x=0, y=0, width=24,  height=24);
 
+	actions = ../images/core/editor/actions.png (type=surface);
+
 	logo = ../images/core/editor/logo.png (type=surface, x=0, y=0, width=25,  height=207);
 }
 

@@ -1,4 +1,4 @@
-//  $Id: action_window.hxx,v 1.1 2002/06/28 22:21:59 grumbel Exp $
+//  $Id: action_window.hxx,v 1.2 2002/06/29 09:44:56 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,16 +27,25 @@
 class ActionWindow
 {
 private:
+  CL_Component* parent;
   std::vector<ActionData>* actions;
   CL_Window* window;
   std::vector<CL_InputBox*> inputs;
   std::vector<CL_Label*> labels;
 
+  CL_Button* ok_button;
+  CL_Button* cancel_button;
+
 public:
   ActionWindow (CL_Component* parent, std::vector<ActionData>*); 
 
+  void ok_clicked ();
+  void cancel_clicked ();
+
+  void show ();
+  void hide ();
 private:
-  void on_close ();
+  void sync_with_data ();
 };
 
 #endif
