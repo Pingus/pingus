@@ -1,4 +1,4 @@
-#  $Id: configure.in,v 1.10 2000/04/14 18:25:25 grumbel Exp $
+#  $Id: configure.in,v 1.11 2000/04/20 17:23:00 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,8 +27,8 @@ PACKAGE=pingus
 
 # The Pingus Version
 MAJOR_VERSION=0
-MINOR_VERSION=3
-PATCH_VERSION=2
+MINOR_VERSION=4
+PATCH_VERSION=0
 
 # The required ClanLib version
 CLANLIB_MAJOR_VERSION=0
