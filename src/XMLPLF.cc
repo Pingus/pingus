@@ -1,4 +1,4 @@
-//  $Id: XMLPLF.cc,v 1.3 2000/08/01 22:47:24 grumbel Exp $
+//  $Id: XMLPLF.cc,v 1.4 2000/08/02 19:02:04 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -188,6 +188,38 @@ XMLPLF::parse_background(xmlNodePtr cur)
       if (strcmp((char*)cur->name, "surface") == 0)
 	{
 	  background.desc = parse_surface(cur);
+	}
+      else if (strcmp((char*)cur->name, "color") == 0)
+	{
+	  background.color = parse_color(cur);
+	}
+      else if (strcmp((char*)cur->name, "para-x") == 0)
+	{
+	  background.para_x = parse_int(cur);
+	}
+      else if (strcmp((char*)cur->name, "para-y") == 0)
+	{
+	  background.para_y = parse_int(cur);
+	}
+      else if (strcmp((char*)cur->name, "scroll-x") == 0)
+	{
+	  background.scroll_x = parse_int(cur);
+	}
+      else if (strcmp((char*)cur->name, "scroll-y") == 0)
+	{
+	  background.scroll_y = parse_int(cur);
+	}
+      else if (strcmp((char*)cur->name, "stretch-x") == 0)
+	{
+	  background.stretch_x = parse_int(cur);
+	}
+      else if (strcmp((char*)cur->name, "stretch-y") == 0)
+	{
+	  background.stretch_y = parse_int(cur);
+	}
+      else
+	{
+	  std::cout << "XMLPLF::parse_background(): Unhandled: " << cur->name << std::endl;
 	}
       cur = cur->next;
     }      
@@ -499,6 +531,55 @@ XMLPLF::parse_int(xmlNodePtr cur)
     std::cout << "XMLPLF: parse_int: Field empty" << std::endl;
   }
   return number;
+}
+
+float
+XMLPLF::parse_float(xmlNodePtr cur)
+{
+  cur = cur->childs;
+  
+  float number = 3.1415927;
+  char* number_str = (char*)xmlNodeListGetString(doc, cur, 1);
+  if (number_str) {
+    number = StringConverter::to_float(number_str);
+    free(number_str);
+  } else {
+    std::cout << "XMLPLF: parse_int: Field empty" << std::endl;
+  }
+  return number;
+}
+
+Color
+XMLPLF::parse_color(xmlNodePtr cur)
+{
+  Color color;
+  cur = cur->childs;
+
+  while (cur != NULL)
+    {  
+      if (strcmp((char*)cur->name, "red") == 0)
+	{
+	  color.red = parse_float(cur);
+	}
+      else if (strcmp((char*)cur->name, "green") == 0)
+	{
+	  color.green = parse_float(cur);
+	}
+      else if (strcmp((char*)cur->name, "blue") == 0)
+	{
+	  color.blue = parse_float(cur);
+	}
+      else if (strcmp((char*)cur->name, "alpha") == 0)
+	{
+	  color.alpha = parse_float(cur);
+	}
+      else
+	{
+	  std::cout << "XMLPLF: Unhandled color ident: " << cur->name << std::endl;	  
+	}
+      cur = cur->next;
+    }
+  return color;
 }
 
 ResDescriptor 

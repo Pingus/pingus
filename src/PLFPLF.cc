@@ -1,4 +1,4 @@
-//  $Id: PLFPLF.cc,v 1.1 2000/07/30 01:47:35 grumbel Exp $
+//  $Id: PLFPLF.cc,v 1.2 2000/08/02 19:02:04 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -127,23 +127,23 @@ PLFPLF::set_value(string valueid,
       }
     else if (valueid == "dim") 
       {
-	background.alpha = str_to_float(value);
+	background.color.alpha = str_to_float(value);
       } 
     else if (valueid == "alpha") 
       {
-	background.alpha = str_to_float(value);
+	background.color.alpha = str_to_float(value);
       } 
     else if (valueid == "red") 
       {
-	background.red = str_to_float(value);	
+	background.color.red = str_to_float(value);	
       } 
     else if (valueid == "green") 
       {
-	background.green = str_to_float(value);	
+	background.color.green = str_to_float(value);	
       } 
     else if (valueid == "blue") 
       {
-	background.blue = str_to_float(value);	
+	background.color.blue = str_to_float(value);	
       } 
     else 
       {

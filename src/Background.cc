@@ -1,4 +1,4 @@
-//  $Id: Background.cc,v 1.21 2000/07/30 01:47:35 grumbel Exp $
+//  $Id: Background.cc,v 1.22 2000/08/02 19:02:04 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -66,7 +66,7 @@ Background::load (BackgroundData bg_data)
 {
   surface_need_deletion = false;
 
-  if (bg_data.alpha > 1.0) 
+  if (bg_data.color.alpha > 1.0) 
     std::cout << "Background: Warning dim larger than 1.0 are no longer supported" << std::endl;
   
   // Testing animatied backgrounds...
@@ -89,8 +89,8 @@ Background::load (BackgroundData bg_data)
 					    source_surface->get_height());/// Blitter::create_canvas(source_surface);
 	  source_surface->put_target(0, 0, 0, canvas);
 	  canvas->fill_rect(0, 0, canvas->get_width(), canvas->get_height(),
-			    bg_data.red, bg_data.green, bg_data.blue, 
-			    bg_data.alpha);
+			    bg_data.color.red, bg_data.color.green, bg_data.color.blue, 
+			    bg_data.color.alpha);
 	  bg_surface = CL_Surface::create(canvas, true);
 	}
       else

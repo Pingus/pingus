@@ -1,4 +1,4 @@
-// $Id: BackgroundData.hh,v 1.1 2000/07/30 02:27:48 grumbel Exp $
+// $Id: BackgroundData.hh,v 1.2 2000/08/02 19:02:04 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #define BACKGROUNDDATA_HH
 
 #include "ResDescriptor.hh"
+#include "Color.hh"
 
 ///
 class BackgroundData
@@ -41,19 +42,10 @@ public:
       direction. */
   float scroll_y;
 
-  /**@name fill_rect() components
-     An fill_rect() can be drawn over the background, the following
-     for components are passed to the fill_rect() call. */
-  //@{
-  /// The red component of the fill_rect() call
-  float red;
-  /// The green component of the fill_rect() call
-  float green;
-  /// The blue component of the fill_rect() call
-  float blue;
-  /// The alpha component of the fill_rect() call
-  float alpha;
-  //@}
+  /** fill_rect() components
+      An fill_rect() can be drawn over the background, the following
+      for components are passed to the fill_rect() call. */
+  Color color;
 
   /// Stretch the background to the full screen size in x direction
   bool stretch_x;
@@ -66,8 +58,6 @@ public:
   {
     scroll_x = 0.0;
     scroll_y = 0.0;
-    alpha = 0.0;
-    red = green = blue = 0.0;
     para_x = 0.5;
     para_y = 0.5;
     stretch_x = false;

@@ -1,4 +1,4 @@
-//  $Id: World.cc,v 1.26 2000/07/30 01:47:36 grumbel Exp $
+//  $Id: World.cc,v 1.27 2000/08/02 19:02:04 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,6 +39,7 @@
 #include "entrances/entrances.hh"
 #include "FVec.hh"
 #include "Timer.hh"
+#include "particles/SnowGenerator.hh"
 
 using namespace std;
 
@@ -143,6 +144,26 @@ World::let_move()
   // Let the pingus catch each other and
   // Let the traps catch the pingus and
   // Let the exit catch the pingus
+  for(vector<WorldObj*>::iterator obj = world_obj_bg.begin(); 
+      obj != world_obj_bg.end(); 
+      obj++)
+    {
+      (*obj)->let_move();
+    }
+
+  for(vector<WorldObj*>::iterator obj = world_obj_fg.begin(); 
+      obj != world_obj_fg.end(); 
+      obj++)
+    {
+      (*obj)->let_move();
+    }
+
+  for(vector<WorldObj*>::iterator obj = world_obj_fg.begin(); 
+      obj != world_obj_fg.end(); 
+      obj++)
+    {
+      (*obj)->let_move();
+    }
 
   for(PinguIter pingu = pingus.begin(); pingu != pingus.end(); ++pingu)
     {
@@ -161,15 +182,15 @@ World::let_move()
 	(*obj)->catch_pingu(*pingu);
     }
 
-  for(vector<TrapData>::size_type i=0; i < traps.size(); ++i)
+  /*  for(vector<TrapData>::size_type i=0; i < traps.size(); ++i)
     traps[i]->let_move();
-  
+
   for(vector<EntranceData>::size_type i2=0; i2 < entrance.size(); ++i2) 
     entrance[i2]->let_move();
-  
+  */    
   particle.let_move();
   background->let_move();
-  
+
   // Clear the explosion force list
   ForcesHolder::clear_explo_list();
 }
@@ -256,8 +277,12 @@ World::init_worldobjs()
   Pingu::SetParticleHolder(&particle);
   Trap::SetParticleHolder(&particle);
   Entrance::SetParticleHolder(&particle);
+  SnowGenerator::SetParticleHolder(&particle);
 
-  //world_obj.push_back(map);
+  // world_obj.push_back(map);
+
+  world_obj_bg.push_back(new SnowGenerator(100));
+  //world_obj_fg.push_back(new SnowGenerator(100));
 
   // Push all objects to world_obj vector
   for(vector<HotspotData>::size_type i = 0; i < hotspot.size(); i++)

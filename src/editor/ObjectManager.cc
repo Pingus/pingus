@@ -1,4 +1,4 @@
-//  $Id: ObjectManager.cc,v 1.24 2000/07/31 23:45:02 grumbel Exp $
+//  $Id: ObjectManager.cc,v 1.25 2000/08/02 19:02:04 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -215,7 +215,7 @@ ObjectManager::save_level (string filename)
   // FIXME: we need some error checking
   
   plf_out << "/* This level was created with the PLE\n"
-	  << " * $Id: ObjectManager.cc,v 1.24 2000/07/31 23:45:02 grumbel Exp $\n"
+	  << " * $Id: ObjectManager.cc,v 1.25 2000/08/02 19:02:04 grumbel Exp $\n"
 	  << " */"
 	  << endl;
   
@@ -242,10 +242,10 @@ ObjectManager::save_level (string filename)
   
   plf_out << "background {\n"
 	  << "  image = (resource:" << background.desc.datafile << ")\"" << background.desc.res_name << "\";\n"
-	  << "  dim   = \""   << background.alpha   << "\";\n"
-	  << "  red   = \""   << background.red   << "\";\n"
-	  << "  green = \""   << background.green << "\";\n"
-	  << "  blue  = \""   << background.blue << "\";\n"
+	  << "  dim   = \""   << background.color.alpha   << "\";\n"
+	  << "  red   = \""   << background.color.red   << "\";\n"
+	  << "  green = \""   << background.color.green << "\";\n"
+	  << "  blue  = \""   << background.color.blue << "\";\n"
 	  << "  scroll_x = "  << background.scroll_x << ";\n"
 	  << "  scroll_y = "  << background.scroll_y << ";\n"
 	  << "  para_x = "    << background.para_x << ";\n"
@@ -319,10 +319,12 @@ ObjectManager::save_level_xml (std::string filename)
   xml << "<background>\n";
   EditorObj::save_desc_xml(&xml, background.desc);
   
-  xml  << "  <alpha>"   << background.alpha   << "</alpha>\n"
-       << "  <red>"   << background.red   << "</red>\n"
-       << "  <green>"   << background.green << "</green>\n"
-       << "  <blue>"   << background.blue << "</blue>\n"
+  xml  << "  <color>\n"
+       << "    <red>"   << background.color.red   << "</red>\n"
+       << "    <green>" << background.color.green << "</green>\n"
+       << "    <blue>"  << background.color.blue << "</blue>\n"
+       << "    <alpha>" << background.color.alpha   << "</alpha>\n"
+       << "  </color>\n"
        << "  <scroll-x>"  << background.scroll_x << "</scroll-x>\n"
        << "  <scroll-y>"  << background.scroll_y << "</scroll-y>\n"
        << "  <para-x>"    << background.para_x << "</para-x>\n"

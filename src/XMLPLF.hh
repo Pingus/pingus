@@ -1,4 +1,4 @@
-//  $Id: XMLPLF.hh,v 1.2 2000/07/31 23:45:02 grumbel Exp $
+//  $Id: XMLPLF.hh,v 1.3 2000/08/02 19:02:04 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,7 @@
 
 #include <gnome-xml/parser.h>
 #include "Position.hh"
+#include "Color.hh"
 #include "PLF.hh"
 
 class XMLPLF : public PLF
@@ -41,9 +42,12 @@ private:
   void parse_hotspot(xmlNodePtr cur);
   void parse_liquid(xmlNodePtr cur);
   void parse_group(xmlNodePtr cur);
+
   ResDescriptor parse_surface(xmlNodePtr cur);
   Position parse_position(xmlNodePtr cur);
-  int parse_int(xmlNodePtr cur);
+  int   parse_int(xmlNodePtr cur);
+  float parse_float(xmlNodePtr cur);
+  Color parse_color(xmlNodePtr cur);
 public:
   XMLPLF();
   XMLPLF(const string& filename);
