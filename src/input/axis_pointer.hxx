@@ -1,4 +1,4 @@
-//  $Id: axis_pointer.hxx,v 1.2 2002/07/05 11:02:47 torangan Exp $
+//  $Id: axis_pointer.hxx,v 1.3 2002/07/08 14:52:04 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,21 +31,23 @@ namespace Input
   
     private:
 
-      std::vector<Axis*> axes;      
+      const float        speed;
+      std::vector<Axis*> axes;
+           
       float              x_pos;
       float              y_pos;
       
     public:
-  
-      AxisPointer(Axis* axis1, Axis* axis2);
-      AxisPointer(std::vector<Axis*> axes_);
+
+      AxisPointer(float speed, Axis* axis1, Axis* axis2);
+      AxisPointer(float speed, std::vector<Axis*> axes_);
 
       virtual float get_x_pos ();
       virtual float get_y_pos ();
       
       virtual void  set_pos(float new_x, float new_y);
       
-      virtual void  update (float);
+      virtual void  update (float delta);
   };
 }
 

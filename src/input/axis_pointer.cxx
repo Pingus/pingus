@@ -1,4 +1,4 @@
-//  $Id: axis_pointer.cxx,v 1.2 2002/07/05 11:02:47 torangan Exp $
+//  $Id: axis_pointer.cxx,v 1.3 2002/07/08 14:52:04 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,20 +17,20 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <ClanLib/Core/Math/cl_vector.h>
+#include <math.h>
 #include "axis.hxx"
 #include "axis_pointer.hxx"
 
 namespace Input
 {
-  AxisPointer::AxisPointer(Axis* axis1, Axis* axis2) : axes(2)
+  AxisPointer::AxisPointer(float speed_, Axis* axis1, Axis* axis2) : speed(speed_), axes(2)
   {
     assert(axis1 && axis2);
     axes[0] = axis1;
     axes[1] = axis2;
   }
 
-  AxisPointer::AxisPointer(std::vector<Axis*> axes_) : axes(axes_)
+  AxisPointer::AxisPointer(float speed_, std::vector<Axis*> axes_) : speed(speed_), axes(axes_)
   {
     assert(axes.size() >= 2);
   }
@@ -57,23 +57,11 @@ namespace Input
   void
   AxisPointer::update(float delta)
   {
-    CL_Vector pos_delta;
-    float     x_delta(0), y_delta(0);
-    
-    for (std::vector<Axis*>::iterator it = axes.begin(); it != axes.end(); it++)
+    for (std::vector<Axis*>::const_iterator it = axes.begin(); it != axes.end(); it++)
       {
-        pos_delta.x = (*it)->get_pos();
-        pos_delta.y = 0;
-        pos_delta.z = 0;
-	
-        pos_delta.rotate((*it)->get_angle(), CL_Vector(0, 0, 1));
-      
-        x_delta += pos_delta.x;
-        y_delta += pos_delta.y;
+        x_pos += cos((*it)->get_angle()) * speed * delta;
+        y_pos += sin((*it)->get_angle()) * speed * delta;
       } 
-    
-    x_pos += x_delta * delta;
-    y_pos += y_delta * delta;
   }
 
 }
