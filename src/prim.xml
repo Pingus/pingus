@@ -1,0 +1,28 @@
+<block>
+  <function name="checkprim">
+    <set name="prim" var="1"/>
+
+    <set name="end" var="i" />
+    <add name="end" var="-1" />
+
+    <for name="j" start="2" end="end">
+      <set    name="test" var="i" />
+      <modulo name="test" var="j" />
+     
+      <if-zero var="test">
+        <set name="prim" var="0"/>
+        <set name="j" var="end"/><!-- break -->
+      </if-zero>
+    </for>
+    
+    <if-non-zero var="prim">
+      <printvar var="i" />
+      <print string=" is prime" />
+      <newline />
+    </if-zero>
+  </function>
+
+  <for name="i" start="3" end="150">
+    <funcall name="checkprim" />
+  </for>
+</block>

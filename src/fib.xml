@@ -1,0 +1,18 @@
+<block>
+  <set name="last1" var="0" />
+  <set name="last2" var="1" />
+  
+  <function name="fib">
+    <set name="cur" var="last1" />
+    <add name="cur" var="last2" />
+
+    <printvar var="cur" />
+    <newline />
+
+    <set name="last1" var="last2" />
+    <set name="last2" var="cur" />
+    <funcall name="fib" />
+  </function>
+
+  <funcall name="fib" />
+</block>
