@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.103 2002/09/18 15:00:37 torangan Exp $
+#  $Id: Makefile.am,v 1.104 2002/09/19 15:02:15 torangan Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,7 +30,6 @@ SUBDIRS = \
 	editor              \
 	editorobjs          \
 	entrances           \
-	generic             \
         gui                 \
         input               \
 	particles           \
