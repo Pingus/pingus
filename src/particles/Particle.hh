@@ -1,5 +1,5 @@
 
-//  $Id: Particle.hh,v 1.10 2001/04/03 10:45:50 grumbel Exp $
+//  $Id: Particle.hh,v 1.11 2001/05/14 08:17:32 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,15 +33,15 @@ class Particle : public WorldObj
 protected:
   ///
   CL_Surface surface;
-  ///
-  float x_pos;
-  ///
-  float y_pos;
+  
+  /// The current position of the particle
+  CL_Vector pos;
+  
+  /// The velocity of the particle
+  CL_Vector velocity;
 
-  ///
-  float x_add;
-  ///
-  float y_add;
+  CL_Vector force;
+
   ///
   int livetime;
 public:

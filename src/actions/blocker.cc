@@ -1,4 +1,4 @@
-//  $Id: blocker.cc,v 1.14 2001/04/20 20:53:55 grumbel Exp $
+//  $Id: blocker.cc,v 1.15 2001/05/14 08:17:32 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,6 +35,9 @@ Blocker::init(void)
 
   sprite = Sprite(PingusResource::load_surface ("Pingus/blocker" + StringConverter::to_string (pingu->get_owner ()),
 						"pingus"));
+  sprite.set_align_center_bottom ();
+
+  is_finished = false;
 
   if (rel_getpixel(0,-1) == ColMap::NOTHING && rel_getpixel(0, -2) == ColMap::WALL) 
     {
@@ -55,6 +58,13 @@ Blocker::update(float delta)
     {
       is_finished = true;
     }
+}
+
+void
+Blocker::draw_offset(int x, int y, float s)
+{
+  std::cout << " Drawing blocker" << std::endl;
+  sprite.put_screen (pingu->pos + CL_Vector(x, y));
 }
 
 bool

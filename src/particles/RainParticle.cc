@@ -1,4 +1,4 @@
-//  $Id: RainParticle.cc,v 1.8 2001/04/27 20:44:38 grumbel Exp $
+//  $Id: RainParticle.cc,v 1.9 2001/05/14 08:17:32 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,8 +35,8 @@ RainParticle::RainParticle()
 
 RainParticle::RainParticle(int arg_x_pos, int arg_y_pos)
 {
-  x_pos = arg_x_pos;
-  y_pos = arg_y_pos;
+  pos.x = arg_x_pos;
+  pos.y = arg_y_pos;
   splash = false;
   splash_counter = 0;
   alive = true;
@@ -74,8 +74,8 @@ RainParticle::draw_offset(int x_of, int y_of, float s)
     }
   else
     {
-      rain_splash.put_screen(int(x_pos + x_of),
-			     int(y_pos + y_of)); 
+      rain_splash.put_screen(int(pos.x + x_of),
+			     int(pos.y + y_of)); 
     }
 }
 
@@ -97,18 +97,18 @@ RainParticle::update(float delta)
     }
   else
     {
-      if (world->get_colmap()->getpixel(int(x_pos), int(y_pos)) != ColMap::NOTHING
-	  && world->get_colmap()->getpixel(int(x_pos), int(y_pos)) != ColMap::OUTOFSCREEN)
+      if (world->get_colmap()->getpixel(int(pos.x), int(pos.y)) != ColMap::NOTHING
+	  && world->get_colmap()->getpixel(int(pos.x), int(pos.y)) != ColMap::OUTOFSCREEN)
 	{
 	  splash = true;
 	}
       else
 	{
-	  if (y_pos > world->get_height())
+	  if (pos.y > world->get_height())
 	    alive = false;
     
-	  x_pos -= 5.0 * add;
-	  y_pos += 16.0 * add;
+	  pos.x -= 5.0 * add;
+	  pos.y += 16.0 * add;
 	}
     }
 }

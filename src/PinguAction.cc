@@ -1,4 +1,4 @@
-//  $Id: PinguAction.cc,v 1.12 2001/04/20 20:53:54 grumbel Exp $
+//  $Id: PinguAction.cc,v 1.13 2001/05/14 08:17:32 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,9 +27,9 @@ std::map<std::string, PinguActionFactory*> PinguActionFactory::actions;
 
 PinguActionFactory::PinguActionFactory (std::string name)
 {
-  std::cout << "Registering: " << name << " " << this << std::endl;
+  //std::cout << "Registering: " << name << " " << this << std::endl;
   actions.insert( std::make_pair( name, this ));
-  std::cout << "Registering done" << std::endl;
+  //std::cout << "Registering done" << std::endl;
 }
 
 PinguActionFactory::~PinguActionFactory () 
@@ -49,6 +49,7 @@ PinguActionFactory::create (std::string name)
 
 PinguAction::PinguAction()
 {
+  is_finished = false;
 }
 
 PinguAction::~PinguAction()

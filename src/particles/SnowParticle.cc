@@ -1,4 +1,4 @@
-//  $Id: SnowParticle.cc,v 1.13 2001/04/27 20:44:38 grumbel Exp $
+//  $Id: SnowParticle.cc,v 1.14 2001/05/14 08:17:32 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,10 +36,10 @@ void
 SnowParticle::init(int x, int y)
 {
   CL_Surface snow;
-
-  x_pos = x;
-  y_pos = y;
-  x_add = 0.0;
+  
+  pos.x = x;
+  pos.y = y;
+  velocity.x = 0.0;
 
   switch (rand() % 10)
     {
@@ -63,7 +63,7 @@ SnowParticle::init(int x, int y)
 
   surface = snow;  
   
-  y_add = 1.0 + (frand() * 3.5);
+  velocity.y = 1.0 + (frand() * 3.5);
 }
 
 SnowParticle::~SnowParticle()
@@ -73,15 +73,15 @@ SnowParticle::~SnowParticle()
 void
 SnowParticle::update(float delta)
 {
-  y_pos += y_add;
-  x_pos += x_add;
-  x_add += (frand() - 0.5) / 10;
+  pos.x += velocity.x;
+  pos.y += velocity.y;
+  velocity.x += (frand() - 0.5) / 10;
 }
 
 bool
 SnowParticle::is_alive()
 {
-  if (y_pos < world->get_height())
+  if (pos.y < world->get_height())
     return true;
   else
     return false;
@@ -112,15 +112,15 @@ CollidingSnowParticle::update(float delta)
   assert(ground_snow);
   SnowParticle::update(delta);
 
-  int pixel = world->get_colmap()->getpixel(int(x_pos), int(y_pos));
+  int pixel = world->get_colmap()->getpixel(int(pos.x), int(pos.y));
 
   if (pixel != ColMap::NOTHING && pixel != ColMap::LAVA
       && pixel != ColMap::WATER && pixel != ColMap::OUTOFSCREEN)
     {
       //std::cout << "Snow: touch down: " << x_pos << " " << y_pos << std::endl;
       world->get_gfx_map()->put(ground_snow,
-				(int)x_pos - 1,
-				(int)y_pos - 1);
+				(int)pos.x - 1,
+				(int)pos.y - 1);
       alive = false;
     }
 }

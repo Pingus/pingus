@@ -1,4 +1,4 @@
-//  $Id: blocker.hh,v 1.9 2001/04/20 20:53:55 grumbel Exp $
+//  $Id: blocker.hh,v 1.10 2001/05/14 08:17:32 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,6 +36,7 @@ public:
   void  init();
   ///
   void  update(float delta);
+  void   draw_offset(int, int, float s);
   ///
   bool  standing_on_ground();
   ///

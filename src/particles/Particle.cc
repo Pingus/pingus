@@ -1,4 +1,4 @@
-//  $Id: Particle.cc,v 1.7 2001/04/03 10:45:50 grumbel Exp $
+//  $Id: Particle.cc,v 1.8 2001/05/14 08:17:32 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,11 +26,9 @@ Particle::Particle()
 
 // Set all parameters to theire default value
 Particle::Particle(int x, int y, float x_a, float y_a)
+  : pos (x, y),
+    velocity (x_a, y_a)
 {
-  x_pos = x;
-  y_pos = y;
-  x_add = x_a;
-  y_add = y_a;
   livetime = 50 + ( rand() % 25);
 }
 
@@ -42,19 +40,19 @@ Particle::~Particle()
 void
 Particle::init(int x, int y, float x_a, float y_a)
 {
-  x_pos = x;
-  y_pos = y;
-  x_add = x_a;
-  y_add = y_a;
+  pos.x = x;
+  pos.y = y;
+  velocity.x = x_a;
+  velocity.y = y_a;
   livetime = 50 + ( rand() % 25);
 }
 
 void
 Particle::update(float delta)
 {
-  x_pos += x_add;
-  y_pos += y_add;
-  y_add += 0.1;
+  pos.x += velocity.x;
+  pos.y += velocity.y;
+  velocity.y += 0.1;
 
   if (livetime > 0)
     --livetime;
@@ -64,11 +62,11 @@ void
 Particle::draw_offset(int ofx, int ofy, float s)
 {
   if (s == 1.0) {
-    surface.put_screen(x_pos + ofx, y_pos + ofy);
+    surface.put_screen(pos.x + ofx, pos.y + ofy);
   } else {
     int width  = (int)(surface.get_width() * s);
     int height = (int)(surface.get_height() * s);
-    surface.put_screen((int)((x_pos + ofx) * s) - width/2, (int)((y_pos + ofy) * s) - height/2,
+    surface.put_screen((int)((pos.x + ofx) * s) - width/2, (int)((pos.y + ofy) * s) - height/2,
 		       width, height);
   }
 }
