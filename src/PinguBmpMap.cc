@@ -1,4 +1,4 @@
-//  $Id: PinguBmpMap.cc,v 1.3 2000/02/11 16:58:25 grumbel Exp $
+//  $Id: PinguBmpMap.cc,v 1.4 2000/06/25 20:22:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,16 +28,16 @@ PinguBmpMap::PinguBmpMap()
   colmap  = 0;
 }
 
-PinguBmpMap::PinguBmpMap(ResDescriptor fg)
+PinguBmpMap::PinguBmpMap(ResDescriptor res_desc)
 {
   colmap = 0;
   if (verbose > 1)
     std::cout << "Creating BMP Map" << std::endl;
 
-  surface = CL_Surface::load(fg.res_name.c_str(), PingusResource::get(fg.filename));
+  surface = PingusResource::load_surface(res_desc);
   
   if (!surface) {
-    throw PingusError(fg.res_name + ": Could not open file\n");;
+    throw PingusError(res_desc.res_name + ": Could not open file\n");;
   }
 }
 

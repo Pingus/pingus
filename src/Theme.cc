@@ -1,4 +1,4 @@
-//  $Id: Theme.cc,v 1.13 2000/06/21 15:28:28 grumbel Exp $
+//  $Id: Theme.cc,v 1.14 2000/06/25 20:22:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -85,7 +85,7 @@ Theme::load(std::string filename)
   try 
     {
       if (plt.get_background().res_name != "-")
-	background = CL_Surface::load(plt.get_background().res_name.c_str(), PingusResource::get(plt.get_background().filename));
+	background = PingusResource::load_surface(plt.get_background());
       else
 	background = 0;
     }

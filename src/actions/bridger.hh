@@ -1,4 +1,4 @@
-//  $Id: bridger.hh,v 1.7 2000/06/18 17:01:50 grumbel Exp $
+//  $Id: bridger.hh,v 1.8 2000/06/25 20:22:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,8 +32,6 @@ private:
 
   ///
   static CL_Surface* static_surface;
-  ///
-  static CL_Surface* waiter;
   ///
   static CL_Surface* brick_l;
   ///

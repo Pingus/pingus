@@ -1,4 +1,4 @@
-//  $Id: Editor.cc,v 1.12 2000/06/12 20:31:31 grumbel Exp $
+//  $Id: Editor.cc,v 1.13 2000/06/25 20:22:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,7 +41,7 @@ Editor::Editor ()
   
   event->set_editor(this);
   
-  font = CL_Font::load("Fonts/courier_small", PingusResource::get("fonts.dat"));
+  font = PingusResource::load_font("Fonts/courier_small", "fonts");
   panel->init();
   status_line.set_current_objs(&object_manager.current_objs);
   panel->set_event(event);
@@ -396,6 +396,9 @@ Editor::interactive_load()
 
 /***********************************************
 $Log: Editor.cc,v $
+Revision 1.13  2000/06/25 20:22:18  grumbel
+Rewrote some parts of the resource management, to make it possible to transparently read real files instead of datafiles
+
 Revision 1.12  2000/06/12 20:31:31  grumbel
 Fixed handling of transparent spots in the editor
 Added a faster screenshot function (only for 16bit)

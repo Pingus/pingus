@@ -1,4 +1,4 @@
-//  $Id: ActionButton.cc,v 1.7 2000/06/11 17:38:55 grumbel Exp $
+//  $Id: ActionButton.cc,v 1.8 2000/06/25 20:22:17 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,7 +34,7 @@ Button::~Button()
 
 EventButton::EventButton(int x, int y, std::string str)
 {
-  surface = CL_Surface::load(str.c_str(), PingusResource::get("global.dat"));
+  surface = PingusResource::load_surface(str, "global");
   x_pos = x;
   y_pos = y;
 }

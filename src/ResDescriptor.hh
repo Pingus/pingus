@@ -1,4 +1,4 @@
-//  $Id: ResDescriptor.hh,v 1.5 2000/06/18 22:19:48 grumbel Exp $
+//  $Id: ResDescriptor.hh,v 1.6 2000/06/25 20:22:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,18 +32,26 @@ public:
   /// Where to get the data from?
   ResourceType type; 
   
-  /// The name of the resource file
-  std::string filename;
+  /// The name of the resource (.dat) file
+  std::string datafile;
   
-  /// The name of the data, filename or resourcename.
+  /// The name of the data, filename or resourcename ("Textures/desert")
   std::string res_name;
 
   ///
   ResDescriptor();
   ///
-  ResDescriptor(std::string cast, std::string value);
+  ResDescriptor(const ResDescriptor&);
+
   ///
-  ResDescriptor(std::string str);
+  ResDescriptor(const std::string& res_name, const std::string& datafile,
+		ResourceType type);
+  ///
+  ResDescriptor(const std::string& cast, const std::string& value);
+  ///
+  ResDescriptor(const std::string& str);
+
+  bool operator<(const ResDescriptor&) const;
 };
 
 #endif

@@ -1,4 +1,4 @@
-//  $Id: PingusResource.cc,v 1.5 2000/04/25 17:54:39 grumbel Exp $
+//  $Id: PingusResource.cc,v 1.6 2000/06/25 20:22:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,15 +24,17 @@
 #include "algo.hh"
 #include "PingusResource.hh"
 
-std::vector<PingusResource::Res> PingusResource::resource;
+std::map<std::string, CL_ResourceManager*> PingusResource::resource_map;
+std::map<ResDescriptor, CL_Surface*>       PingusResource::surface_map;
+std::map<ResDescriptor, CL_Font*>          PingusResource::font_map;
 
 PingusResource::PingusResource()
 {
   std::cout << "PingusResource Constructor called" << std::endl;
 }
-
+/*
 void
-PingusResource::open(std::string filename)
+PingusResource::open(const std::string& filename)
 {
   std::string file_n;
 
@@ -54,23 +56,111 @@ PingusResource::open(std::string filename)
     throw PingusError("PingusResource: Couldn't find resource file: " + filename);
   }
 }
-
+*/
 CL_ResourceManager*
-PingusResource::get(std::string filename)
+PingusResource::get(const std::string& filename)
 {
-  for(std::vector<Res>::iterator i = resource.begin(); i != resource.end(); i++) 
+  CL_ResourceManager* res_manager;
+
+  res_manager = resource_map[filename];
+
+  if (res_manager)
     {
-      if (filename == i->filename)
+      return res_manager;
+    }
+  else
+    {
+      std::string res_filename = find_file(pingus_datadir, "data/" + filename);
+      res_manager = CL_ResourceManager::create(res_filename.c_str(),
+					       /* is_datafile = */ true);
+      resource_map[filename] = res_manager;
+      return res_manager;
+    }
+}
+
+CL_Surface*
+PingusResource::load_surface(const std::string& res_name, 
+			    const std::string& datafile)
+{
+  return load_surface(ResDescriptor(res_name, datafile, 
+				    ResDescriptor::RESOURCE));
+}
+
+CL_Surface*
+PingusResource::load_surface(const ResDescriptor& res_desc)
+{
+  CL_Surface* surf = surface_map[res_desc];
+  
+  if (surf) 
+    {
+      return surf;
+    }
+  else
+    {
+      switch(res_desc.type)
 	{
-	  return i->res;
+	case ResDescriptor::RESOURCE:
+	  surf = CL_Surface::load(res_desc.res_name.c_str(),
+				  get(res_desc.datafile + ".dat"));
+	  surface_map[res_desc] = surf;
+	  return surf;
+	  break;
+	  
+	case ResDescriptor::FILE:
+	  std::cout << "PingusResource: ResDescriptor::FILE not implemented" << std::endl;
+	  return 0;
+	  
+	case ResDescriptor::AUTO:
+	  std::cout << "PingusResource: ResDescriptor::AUTO not implemented" << std::endl;
+	  return 0;
+
+	default:
+	  std::cout << "PingusResource: Unknown ResDescriptor::type: " << res_desc.type  << std::endl;
+	  return 0;
 	}
     }
+}
 
-  open(filename);
+CL_Font* 
+PingusResource::load_font(const std::string& res_name,
+			  const std::string& datafile)
+{
+  return load_font(ResDescriptor(res_name, datafile, 
+				 ResDescriptor::RESOURCE));
+}
+
+CL_Font* 
+PingusResource::load_font(const ResDescriptor& res_desc)
+{
+  CL_Font* font = font_map[res_desc];
   
-  return get(filename);
+  if (font) 
+    {
+      return font;
+    }
+  else
+    {
+      switch(res_desc.type)
+	{
+	case ResDescriptor::RESOURCE:
+	  font = CL_Font::load(res_desc.res_name.c_str(),
+				  get(res_desc.datafile + ".dat"));
+	  font_map[res_desc] = font;
+	  return font;
+	  
+	case ResDescriptor::FILE:
+	  std::cout << "PingusResource: ResDescriptor::FILE not implemented" << std::endl;
+	  return 0;
+	  
+	case ResDescriptor::AUTO:
+	  std::cout << "PingusResource: ResDescriptor::AUTO not implemented" << std::endl;
+	  return 0;
+
+	default:
+	  std::cout << "PingusResource: Unknown ResDescriptor::type: " << res_desc.type  << std::endl;
+	  return 0;
+	}
+    }
 }
 
 /* EOF */
-
-

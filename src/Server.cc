@@ -1,4 +1,4 @@
-//  $Id: Server.cc,v 1.13 2000/06/23 18:39:56 grumbel Exp $
+//  $Id: Server.cc,v 1.14 2000/06/25 20:22:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -240,7 +240,7 @@ Server::record_demo()
 {
   cout << "Recording deme..." << endl;
   // We do only save the basename of the demofile, not the complete
-  // path, do gain at least a bit portability of the demo files.
+  // path, to gain at least a bit portability of the demo files.
   recorder.set_levelname(System::basename(filename));
 }
 

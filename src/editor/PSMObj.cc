@@ -1,4 +1,4 @@
-//  $Id: PSMObj.cc,v 1.12 2000/06/23 18:39:56 grumbel Exp $
+//  $Id: PSMObj.cc,v 1.13 2000/06/25 20:22:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -70,7 +70,7 @@ PSMObj::save(std::ofstream* plf, std::ofstream* psm)
     (*psm) << "ground : ";
   }
   
-  (*psm) << "(resource:" << desc.filename << ")" << desc.res_name << " : " 
+  (*psm) << "(resource:" << desc.datafile << ")" << desc.res_name << " : " 
 	 << x_pos << " : " << y_pos << ";" << std::endl;
 }
 

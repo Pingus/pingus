@@ -1,4 +1,4 @@
-//  $Id: PSMParser.cc,v 1.9 2000/06/14 21:45:55 grumbel Exp $
+//  $Id: PSMParser.cc,v 1.10 2000/06/25 20:22:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -102,7 +102,7 @@ PSMParser::load_surfaces(void)
 
   for (vector<surface_data>::size_type i=0; i < surface.size(); ++i) {
     if (verbose > 1) {
-      cout << "Surface: " << "(" << surface[i].res_desc.res_name << ":" << surface[i].res_desc.filename << ") " 
+      cout << "Surface: " << "(" << surface[i].res_desc.res_name << ":" << surface[i].res_desc.datafile << ") " 
 	   << surface[i].name << endl;
     }
     surface[i].surface = CL_Surface::load(surface[i].name.c_str(), 
@@ -196,7 +196,7 @@ PSMParser::get_resdesc(void)
   char c;
   
   temp.res_name = "";
-  temp.filename = "";
+  temp.datafile = "";
 
   jump_spaces();
 
@@ -215,10 +215,10 @@ PSMParser::get_resdesc(void)
       return ResDescriptor(temp.res_name, "global.dat");      
     } else { // c == ':'
       while ((c = get_atom()) != ')') {
-	temp.filename += c;
+	temp.datafile += c;
       }
       jump_spaces();
-      return ResDescriptor(temp.res_name, temp.filename);
+      return ResDescriptor(temp.res_name, temp.datafile);
     }
   }
 }

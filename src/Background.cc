@@ -1,4 +1,4 @@
-//  $Id: Background.cc,v 1.18 2000/06/24 20:51:25 grumbel Exp $
+//  $Id: Background.cc,v 1.19 2000/06/25 20:22:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -48,6 +48,7 @@ Background::Background(background_data bg)
 
 Background::~Background()
 {
+  /*
   std::cout << "Background:~Background" << std::endl;
 
   if (surface_need_deletion) {
@@ -57,6 +58,7 @@ Background::~Background()
     // idea why. So we have a memory hole here
     //delete bg_surface;
   }
+  */
 }
 
 void
@@ -69,7 +71,7 @@ Background::load (background_data bg_data)
   
   // Testing animatied backgrounds...
   std::cout << "Res: " << bg_data.desc.res_name << std::endl
-	    << "file: " << bg_data.desc.filename << std::endl;
+	    << "file: " << bg_data.desc.datafile << std::endl;
 
   if (bg_data.desc.res_name == "none")
     {
@@ -81,8 +83,8 @@ Background::load (background_data bg_data)
       if (background_manipulation_enabled)
 	{
 	  // FIXME: This is extremly buggy and it will crash, no idea why....
-	  CL_Surface* source_surface = CL_Surface::load(bg_data.desc.res_name.c_str(),
-							PingusResource::get(bg_data.desc.filename));
+	  CL_Surface* source_surface = PingusResource::load_surface(bg_data.desc);
+
 	  CL_Canvas* canvas = new CL_Canvas(source_surface->get_width(),
 					    source_surface->get_height());/// Blitter::create_canvas(source_surface);
 	  source_surface->put_target(0, 0, 0, canvas);
@@ -94,7 +96,7 @@ Background::load (background_data bg_data)
       else
 	{
 	  bg_surface = CL_Surface::load(bg_data.desc.res_name.c_str(),
-					PingusResource::get(bg_data.desc.filename));
+					PingusResource::get(bg_data.desc.datafile));
 	}
     }
 

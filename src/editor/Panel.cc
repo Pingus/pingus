@@ -1,4 +1,4 @@
-//  $Id: Panel.cc,v 1.6 2000/04/25 17:54:40 grumbel Exp $
+//  $Id: Panel.cc,v 1.7 2000/06/25 20:22:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,8 +27,8 @@ EditorEvent* PanelIcon::event;
 PanelIcon::PanelIcon()
 {
   sur = 0;
-  button = CL_Surface::load("Icons/button", PingusResource::get("editor.dat"));
-  button_pressed = CL_Surface::load("Icons/button_pressed", PingusResource::get("editor.dat"));
+  button = PingusResource::load_surface("Icons/button","editor");
+  button_pressed = PingusResource::load_surface("Icons/button_pressed", "editor");
 }
 
 PanelIcon::~PanelIcon()

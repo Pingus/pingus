@@ -1,4 +1,4 @@
-//  $Id: FakeExit.cc,v 1.4 2000/06/06 18:51:52 grumbel Exp $
+//  $Id: FakeExit.cc,v 1.5 2000/06/25 20:22:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,7 +23,7 @@
 
 FakeExit::FakeExit(trap_data data)
 {
-  surface = CL_Surface::load("Traps/fake_exit", PingusResource::get("traps.dat"));
+  surface = PingusResource::load_surface("Traps/fake_exit", "traps");
   x_pos = data.x_pos;
   y_pos = data.y_pos;
   z_pos = data.z_pos;

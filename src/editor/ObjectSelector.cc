@@ -1,4 +1,4 @@
-//  $Id: ObjectSelector.cc,v 1.20 2000/06/23 17:06:24 grumbel Exp $
+//  $Id: ObjectSelector.cc,v 1.21 2000/06/25 20:22:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,13 +34,12 @@ using namespace std;
 ObjectSelector::ObjectSelector()
 {
   last_object = "GroundPieces/";
-  font = CL_Font::load("Fonts/courier_small",PingusResource::get("fonts.dat"));
+  font = PingusResource::load_font("Fonts/courier_small", "fonts");
   data_loaded = false;
 }
 
 ObjectSelector::~ObjectSelector()
 {
-  
 }
   
 EditorObj* 
@@ -409,6 +408,9 @@ ObjectSelector::read_string(string description, string def_str)
 /*
 
 $Log: ObjectSelector.cc,v $
+Revision 1.21  2000/06/25 20:22:18  grumbel
+Rewrote some parts of the resource management, to make it possible to transparently read real files instead of datafiles
+
 Revision 1.20  2000/06/23 17:06:24  grumbel
 Added framework for liquid insertion
 

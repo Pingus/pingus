@@ -1,4 +1,4 @@
-//  $Id: CaptureRectangle.cc,v 1.3 2000/06/19 07:26:08 grumbel Exp $ 
+//  $Id: CaptureRectangle.cc,v 1.4 2000/06/25 20:22:18 grumbel Exp $ 
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,13 +32,13 @@ PinguAction* CaptureRectangle::button_action;
 
 CaptureRectangle::CaptureRectangle()
 {
-  good = CL_Surface::load("Cursors/capgood", PingusResource::get("game.dat"));
-  bad  = CL_Surface::load("Cursors/capbad",  PingusResource::get("game.dat")); 
-  font = CL_Font::load("Fonts/courier_small", PingusResource::get("fonts.dat"));
+  good = PingusResource::load_surface("Cursors/capgood", "game");
+  bad  = PingusResource::load_surface("Cursors/capbad",  "game"); 
+  font = PingusResource::load_font("Fonts/courier_small", "fonts");
   button_action = 0;
 
-  arrow_left = CL_Surface::load("Cursors/arrow_left",  PingusResource::get("game.dat")); 
-  arrow_right = CL_Surface::load("Cursors/arrow_right",  PingusResource::get("game.dat")); 
+  arrow_left  = PingusResource::load_surface("Cursors/arrow_left",  "game"); 
+  arrow_right = PingusResource::load_surface("Cursors/arrow_right", "game"); 
 } 
 
 CaptureRectangle::~CaptureRectangle()

@@ -1,4 +1,4 @@
-//  $Id: ResDescriptor.cc,v 1.6 2000/04/25 17:54:39 grumbel Exp $
+//  $Id: ResDescriptor.cc,v 1.7 2000/06/25 20:22:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,10 +24,26 @@ ResDescriptor::ResDescriptor()
 {
   type = RESOURCE;
   res_name = "";
-  filename = "global.dat";
+  datafile = "global.dat";
 }
 
-ResDescriptor::ResDescriptor(std::string str) 
+ResDescriptor::ResDescriptor(const ResDescriptor& res_desc)
+{
+  type     = res_desc.type;
+  datafile = res_desc.datafile;
+  res_name = res_desc.res_name;
+}
+
+ResDescriptor::ResDescriptor(const std::string& arg_res_name,
+			     const std::string& arg_datafile,
+			     ResourceType arg_type)
+{
+  res_name = arg_res_name;
+  datafile = arg_datafile;
+  type     = arg_type;
+}
+
+ResDescriptor::ResDescriptor(const std::string& str) 
 {
   std::string::size_type pos1;
   std::string::size_type pos2;
@@ -41,26 +57,26 @@ ResDescriptor::ResDescriptor(std::string str)
   
   if (pos1 != std::string::npos && pos2 != std::string::npos)
     {
-      filename = str.substr(pos1 + 1, (pos2 - pos1 - 1));
+      datafile = str.substr(pos1 + 1, (pos2 - pos1 - 1));
       res_name = str.substr(pos2 + 1);
     }
   else
     {
       res_name = str;
-      filename = "global.dat";
+      datafile = "global.dat";
     }
 }
 
-ResDescriptor::ResDescriptor(std::string c_cast, std::string value) 
+ResDescriptor::ResDescriptor(const std::string& c_cast, const std::string& value) 
 {
   std::string cast;
 
   if (c_cast.find_first_of(":") == std::string::npos) {
     cast = c_cast;
-    filename = "global.dat";
+    datafile = "global.dat";
   } else {
     cast     = c_cast.substr(0, c_cast.find_first_of(":"));
-    filename = c_cast.substr(c_cast.find_first_of(":") + 1);
+    datafile = c_cast.substr(c_cast.find_first_of(":") + 1);
   }
   
   if (cast == "file") {
@@ -73,6 +89,12 @@ ResDescriptor::ResDescriptor(std::string c_cast, std::string value)
     throw PingusError("ResDescriptor: Wrong cast '"+cast+"' for value '"+value+"'\n");
   }
   res_name = value;
+}
+
+bool
+ResDescriptor::operator<(const ResDescriptor& res_desc) const
+{
+  return (res_name < res_desc.res_name);
 }
 
 /* EOF */

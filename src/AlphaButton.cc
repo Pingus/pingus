@@ -1,4 +1,4 @@
-//  $Id: AlphaButton.cc,v 1.3 2000/02/11 16:58:25 grumbel Exp $
+//  $Id: AlphaButton.cc,v 1.4 2000/06/25 20:22:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,8 +29,8 @@ AlphaButton::AlphaButton(std::string str, int x1, int y1, int w, int h)
   x2_pos = x1 + w - 1;
   y2_pos = y1 + h - 1;
  
-  font_h = CL_Font::load("Fonts/smallfont", PingusResource::get("fonts.dat"));
-  font   = CL_Font::load("Fonts/smallfont_h", PingusResource::get("fonts.dat"));
+  font_h = PingusResource::load_font("Fonts/smallfont", "fonts");
+  font   = PingusResource::load_font("Fonts/smallfont_h", "fonts.dat");
 }
 
 void

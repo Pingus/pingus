@@ -1,4 +1,4 @@
-//  $Id: Exit.cc,v 1.8 2000/06/07 13:52:36 grumbel Exp $
+//  $Id: Exit.cc,v 1.9 2000/06/25 20:22:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,7 +42,7 @@ Exit::Exit(exit_data data)
   z_pos = data.z_pos;
 
   surface = CL_Surface::load(data.desc.res_name.c_str(),
-			     PingusResource::get(data.desc.filename));
+			     PingusResource::get(data.desc.datafile));
 
   counter.set_size(surface->get_num_frames());
   counter.set_speed(10);

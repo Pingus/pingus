@@ -1,4 +1,4 @@
-//  $Id: basher.cc,v 1.11 2000/06/17 11:46:23 grumbel Exp $
+//  $Id: basher.cc,v 1.12 2000/06/25 20:22:18 grumbel Exp $
 //
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -50,11 +50,7 @@ Basher::init(void)
   
   counter.set_size(surface->get_num_frames() / 2);
   counter.set_type(GameCounter::loop);
-  //counter.set_count(0);
   counter.set_speed(1);
-
-  //basher_c.set_size(2);
-  //  basher_c.set_speed(.1);
 
   is_multi_direct = true;
   first_bash = true;
@@ -79,12 +75,11 @@ void
 Basher::let_move()
 {
   ++counter;
-
-  if (basher_c++ > 2)
+  ++basher_c;
+  if (basher_c % 3 == 0)
     {
       walk_forward();
 
-      basher_c = 0;
       if (have_something_to_dig())
 	{
 	  bash();

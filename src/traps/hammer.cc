@@ -1,4 +1,4 @@
-//  $Id: hammer.cc,v 1.4 2000/06/06 18:51:53 grumbel Exp $
+//  $Id: hammer.cc,v 1.5 2000/06/25 20:22:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,7 +28,7 @@ Hammer::Hammer(trap_data data)
   x_pos = data.x_pos;
   y_pos = data.y_pos;
   z_pos = data.z_pos;
-  surface = CL_Surface::load("Traps/hammer", PingusResource::get("traps.dat"));
+  surface = PingusResource::load_surface("Traps/hammer", "traps");
   counter.set_size(surface->get_num_frames());
   counter.set_type(GameCounter::ping_pong);
   counter.set_speed(1);

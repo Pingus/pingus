@@ -1,4 +1,4 @@
-//  $Id: Teleport.cc,v 1.3 2000/03/01 02:57:48 grumbel Exp $
+//  $Id: Teleport.cc,v 1.4 2000/06/25 20:22:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,7 +27,7 @@
 
 Teleport::Teleport(trap_data data)
 {
-  surface = CL_Surface::load("Traps/teleporter", PingusResource::get("traps.dat"));
+  surface = PingusResource::load_surface("Traps/teleporter", "traps");
   x_pos = data.x_pos;
   y_pos = data.y_pos;
   z_pos = data.z_pos;

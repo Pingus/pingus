@@ -1,4 +1,4 @@
-//  $Id: smasher.cc,v 1.7 2000/05/12 13:32:23 grumbel Exp $
+//  $Id: smasher.cc,v 1.8 2000/06/25 20:22:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,7 +31,7 @@ Smasher::Smasher(trap_data data)
   x_pos = data.x_pos;
   y_pos = data.y_pos;
   z_pos = data.z_pos;
-  surface = CL_Surface::load("Traps/smasher", PingusResource::get("traps.dat"));
+  surface = PingusResource::load_surface("Traps/smasher", "traps");
   count = 0;
 }
 
@@ -73,7 +73,8 @@ Smasher::draw_colmap(ColMap* colmap)
 {
   std::cout << "Drawing colmap entry" << std::endl;
 
-  CL_SurfaceProvider* prov = CL_SurfaceProvider::load("Traps/smasher_cmap", PingusResource::get("traps.dat"));
+  CL_SurfaceProvider* prov
+    = PingusResource::load_surface("Traps/smasher_cmap", "traps")->get_provider();
   colmap->put(prov, x_pos, y_pos, surface_data::SOLID);
 }
 

@@ -1,4 +1,4 @@
-//  $Id: PanelIcons.cc,v 1.3 2000/02/11 16:58:28 grumbel Exp $
+//  $Id: PanelIcons.cc,v 1.4 2000/06/25 20:22:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -100,7 +100,7 @@ PanelIconEdit::on_click()
 
 PanelIconRun::PanelIconRun()
 {
-  sur = CL_Surface::load("Icons/clock_run", PingusResource::get("editor.dat"));  
+  sur = PingusResource::load_surface("Icons/clock_run", "editor");  
 }
 
 void 

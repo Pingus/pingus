@@ -1,4 +1,4 @@
-//  $Id: Guillotine.cc,v 1.2 2000/02/09 21:43:44 grumbel Exp $
+//  $Id: Guillotine.cc,v 1.3 2000/06/25 20:22:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,8 +27,8 @@ Guillotine::Guillotine(trap_data data)
   y_pos = data.y_pos;
   z_pos = data.z_pos;
 
-  surface = CL_Surface::load("Traps/guillotinekill", PingusResource::get("traps.dat"));
-  idle_surf = CL_Surface::load("Traps/guillotineidle", PingusResource::get("traps.dat"));
+  surface = PingusResource::load_surface("Traps/guillotinekill", "traps");
+  idle_surf = PingusResource::load_surface("Traps/guillotineidle", "traps");
 
   counter.set_size(surface->get_num_frames()/2);
   counter.set_type(GameCounter::once);

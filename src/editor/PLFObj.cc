@@ -1,4 +1,4 @@
-//  $Id: PLFObj.cc,v 1.17 2000/06/23 17:06:25 grumbel Exp $
+//  $Id: PLFObj.cc,v 1.18 2000/06/25 20:22:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -58,8 +58,7 @@ HotspotObj::HotspotObj(hotspot_data data)
   speed = data.speed;
   para  = data.para;
   cout << "Lodaing Hotspot: " << desc.res_name << endl;
-  surf = CL_Surface::load(desc.res_name.c_str(), 
-			  PingusResource::get(desc.filename));
+  surf = PingusResource::load_surface(desc);
 }
 
 HotspotObj::~HotspotObj()
@@ -108,13 +107,13 @@ EntranceObj::EntranceObj(entrance_data data)
   
   if (type == "generic")
     {
-      surf = CL_Surface::load("Entrances/generic", PingusResource::get("global.dat"));
+      surf = PingusResource::load_surface("Entrances/generic", "global");
       x_of = -(surf->get_width()/2);
       y_of = -surf->get_height();
     } 
   else if (type == "woodthing") 
     {
-      surf = CL_Surface::load("Entrances/woodthing_mov", PingusResource::get("global.dat"));
+      surf = PingusResource::load_surface("Entrances/woodthing_mov", "global");
       cout << "Loading woodthing..." << endl;
       if (!surf) {
 	throw PingusError("EntranceObj: Fatal error!");
@@ -126,7 +125,7 @@ EntranceObj::EntranceObj(entrance_data data)
     } 
   else if (type == "cloud")
     {
-      surf = CL_Surface::load("Entrances/cloud", PingusResource::get("global.dat"));
+      surf = PingusResource::load_surface("Entrances/cloud", "global");
       x_of = -115;
       y_of = -75;
     } 
@@ -208,7 +207,7 @@ ExitObj::ExitObj(exit_data data)
   y_pos = data.y_pos;
   z_pos = data.z_pos;
   desc = data.desc;
-  surf = CL_Surface::load(desc.res_name.c_str(), PingusResource::get("global.dat"));
+  surf = PingusResource::load_surface(desc);
 }
 
 ExitObj::~ExitObj()
@@ -251,18 +250,18 @@ TrapObj::TrapObj(trap_data data)
     surf = CL_Surface::load("Traps/laser_exit", PingusResource::get("traps.dat"));
   } else if (name == "spike") {
     frame = 5;
-    surf = CL_Surface::load("Traps/spike", PingusResource::get("traps.dat"));
+    surf = PingusResource::load_surface("Traps/spike", "traps");
     z_pos = 100;
   } else if (name == "hammer") {
-    surf = CL_Surface::load("Traps/hammer", PingusResource::get("traps.dat"));    
+    surf = PingusResource::load_surface("Traps/hammer", "traps");    
   } else if (name == "smasher") {
-    surf = CL_Surface::load("Traps/smasher", PingusResource::get("traps.dat"));
+    surf = PingusResource::load_surface("Traps/smasher", "traps");
     z_pos = 100;
   } else if (name == "bumper") {
-    surf = CL_Surface::load("Traps/bumper", PingusResource::get("traps.dat"));
+    surf = PingusResource::load_surface("Traps/bumper", "traps");
     z_pos = -100;
   } else if (name == "teleport") {
-    surf = CL_Surface::load("Traps/teleporter", PingusResource::get("traps.dat"));
+    surf = PingusResource::load_surface("Traps/teleporter", "traps");
     z_pos = 100;
   } else {
     throw PingusError(name + ": trap is not implemented in editor");
@@ -323,8 +322,7 @@ LiquidObj::LiquidObj(liquid_data data)
   width = data.width;
   desc  = data.desc;
   speed = data.speed;
-  surf = CL_Surface::load(desc.res_name.c_str(), 
-			      PingusResource::get(desc.filename));
+  surf = PingusResource::load_surface(desc);
   counter.set_size(surf->get_num_frames());
   counter.set_speed(50);
 }

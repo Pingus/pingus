@@ -1,4 +1,4 @@
-//  $Id: Bumper.cc,v 1.1 2000/05/12 13:29:29 grumbel Exp $
+//  $Id: Bumper.cc,v 1.2 2000/06/25 20:22:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,7 +29,7 @@ Bumper::Bumper(trap_data data)
   x_pos = data.x_pos;
   y_pos = data.y_pos;
   z_pos = data.z_pos;
-  surface = CL_Surface::load("Traps/bumper", PingusResource::get("traps.dat"));
+  surface = PingusResource::load_surface("Traps/bumper", "traps");
   count = 0;
 }
 
@@ -43,7 +43,7 @@ Bumper::let_move()
   if (upwards) 
     {
       ++count;
-      if (count >= surface->get_num_frames())
+      if (count >= (int)surface->get_num_frames())
 	{
 	  count = 0;
 	  upwards = false;

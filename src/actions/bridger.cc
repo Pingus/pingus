@@ -1,4 +1,4 @@
-//  $Id: bridger.cc,v 1.17 2000/06/23 17:08:09 grumbel Exp $
+//  $Id: bridger.cc,v 1.18 2000/06/25 20:22:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,7 +24,6 @@
 
 using namespace std;
 
-CL_Surface* Bridger::waiter = 0;
 CL_Surface* Bridger::brick_l = 0;
 CL_Surface* Bridger::brick_r = 0;
 CL_Surface* Bridger::static_surface = 0;
@@ -49,8 +48,6 @@ Bridger::init(void)
     static_surface = CL_Surface::load("Pingus/bridger", local_res());
   surface = static_surface;
 
-  if (!waiter)
-    waiter  = CL_Surface::load("Pingus/blocker", local_res());
   if (!brick_l)
     brick_l = CL_Surface::load("Other/brick_left", local_res());
   if (!brick_r)
@@ -63,34 +60,16 @@ Bridger::init(void)
   is_multi_direct = true;
   step = 0;
   do_steps = 0;
-
-  /*
-  // FIXME: This needs to be moved to let_move()
-
-  // Ressetting the bridger position a bit, so that we don't get a
-  // hole at the start of the bridge
-  pingu->x_pos -= pingu->direction * 2;
-  pingu->y_pos += 1;
-  */
-} 
+}
 
 void
 Bridger::draw_offset(int x, int y, float s)
 {
   if (s == 1.0) 
     {
-      if (bricks > 0)
-	{
-	  //	  surface->put_screen(pingu->x_pos + x + x_offset() + 3, pingu->y_pos + y + y_offset() + 3,
-	  surface->put_screen(pingu->x_pos + x + x_offset(), pingu->y_pos + y + y_offset(),
-			      do_steps + ((pingu->direction.is_left()) ? 0 : counter.get_size()));
-	}
-      else
-	{
-	  waiter->put_screen(pingu->x_pos + x + x_offset(), 
-			     pingu->y_pos + y + y_offset());
-	}
-    } 
+      surface->put_screen(pingu->x_pos + x + x_offset(), pingu->y_pos + y + y_offset(),
+			  do_steps + ((pingu->direction.is_left()) ? 0 : counter.get_size()));
+    }
   else 
     {
       surface->put_screen(int((pingu->x_pos + x + x_offset()) * s), int((pingu->y_pos + y + y_offset() - 1) * s), 
@@ -113,28 +92,20 @@ Bridger::let_move()
   
   if (do_steps == 8)
     {
-      if (bricks <= -2)
-	{
-	  is_finished = true;
-	}
-      else if (bricks > 0)
-	{
 	  if (way_is_free())
 	    {
 	      place_a_brick();
 	      walk_one_step_up();
+	      if (!(bricks > 0))
+		{
+		  // Waiting some seconds after we are out of bricks 
+		  pingu->set_action(pingu->action_holder->get_uaction("waiter"));
+		}
 	    }
-	  else
+	  else // We reached a wall...
 	    {
 	      is_finished = true;
 	    }
-	}
-      else
-	{
-	  // Waiting some seconds after we are out of bricks 
-	  pingu->set_action(pingu->action_holder->get_uaction("waiter"));
-	  // bricks--;
-	}
     }
 }
 

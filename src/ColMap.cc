@@ -1,4 +1,4 @@
-//  $Id: ColMap.cc,v 1.13 2000/06/11 15:23:29 grumbel Exp $
+//  $Id: ColMap.cc,v 1.14 2000/06/25 20:22:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -62,7 +62,7 @@ ColMap::load(ResDescriptor desc)
       CL_Surface* sur;
       CL_SurfaceProvider* provider;
       
-      sur = CL_Surface::load(desc.res_name.c_str(), PingusResource::get(desc.filename));
+      sur = PingusResource::load_surface(desc);
       provider = sur->get_provider();
       if (provider->get_depth() != 8)
 	throw PingusError("PingusBmpMap::get_colmap: Surface has wrong pixel format, need 8bpp!"); 

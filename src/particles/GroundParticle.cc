@@ -1,4 +1,4 @@
-//  $Id: GroundParticle.cc,v 1.3 2000/03/08 01:37:22 grumbel Exp $
+//  $Id: GroundParticle.cc,v 1.4 2000/06/25 20:22:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,7 +23,7 @@
 
 GroundParticle::GroundParticle(int x, int y, float x_a, float y_a)
 {
-  surface = CL_Surface::load("Particles/ground", PingusResource::get("pingus.dat"));
+  surface = PingusResource::load_surface("Particles/ground", "pingus");
   x_pos = x;
   y_pos = y;
   x_add = x_a;
