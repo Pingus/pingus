@@ -1,4 +1,4 @@
-//  $Id: world.cxx,v 1.38 2003/02/19 10:37:31 grumbel Exp $
+//  $Id: world.cxx,v 1.39 2003/02/26 17:08:29 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -72,13 +72,22 @@ World::World(PLF* plf)
   WorldObj::set_world(this);
 
   world_obj.push_back(gfx_map);
+
   world_obj.push_back(pingu_particle_holder);
-  world_obj.push_back (rain_particle_holder);
+  world_obj.push_back(rain_particle_holder);
   world_obj.push_back(smoke_particle_holder);
-  world_obj.push_back (snow_particle_holder);
+  world_obj.push_back(snow_particle_holder);
 
   init_worldobjs(plf);
+
+  // FIXME: Ugly
   rain_particle_holder->set_world_width(get_width());
+}
+
+void
+World::add_object (WorldObj* obj)
+{
+  world_obj.push_back(obj);
 }
 
 void
@@ -90,20 +99,11 @@ World::init_worldobjs(PLF* plf)
        i != worldobj_d.end ();
        ++i)
     {
-      WorldObj* obj = (*i)->create_WorldObj ();
-      if (obj)
-	{
-	  world_obj.push_back(obj);
-	}
-      else
-	{
-	  std::cout << "World: Couldn't create object from data" << std::endl;
-	}
+      (*i)->insert_WorldObjs (this);
     }
 
    world_obj.push_back(pingus);
 
-   //world_obj->sort(WorldObj_less);
    std::stable_sort (world_obj.begin (), world_obj.end (), WorldObj_less);
 
   // Drawing all world objs to the colmap, gfx, or what ever the

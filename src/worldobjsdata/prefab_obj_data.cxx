@@ -1,4 +1,4 @@
-//  $Id: prefab_obj_data.cxx,v 1.6 2003/02/18 10:14:52 grumbel Exp $
+//  $Id: prefab_obj_data.cxx,v 1.7 2003/02/26 17:08:29 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -40,10 +40,9 @@ PrefabObjData::PrefabObjData (xmlDocPtr doc, xmlNodePtr cur)
   data = Prefab::create (uid);
 }
 
-WorldObj*
-PrefabObjData::create_WorldObj ()
+void
+PrefabObjData::insert_WorldObjs ()
 {
-  return 0; //data->create_EditorObj ();
 }
 
 EditorObjLst

@@ -1,4 +1,4 @@
-//  $Id: thunderstorm_background_data.cxx,v 1.4 2003/02/18 01:23:52 grumbel Exp $
+//  $Id: thunderstorm_background_data.cxx,v 1.5 2003/02/26 17:08:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
+#include "../world.hxx"
 #include "../xml_helper.hxx"
 #include "../xml_file_reader.hxx"
 #include "../editorobjs/thunderstorm_background_obj.hxx"
@@ -45,10 +46,10 @@ ThunderstormBackgroundData::ThunderstormBackgroundData (xmlDocPtr doc, xmlNodePt
   reader.read_vector("position", pos);
 }
 
-WorldObj* 
-ThunderstormBackgroundData::create_WorldObj ()
+void
+ThunderstormBackgroundData::insert_WorldObjs (World* world)
 {
-  return new WorldObjs::ThunderstormBackground(*this);
+  world->add_object(new WorldObjs::ThunderstormBackground(*this));
 }
 
 EditorObjLst 

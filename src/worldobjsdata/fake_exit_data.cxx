@@ -1,4 +1,4 @@
-//  $Id: fake_exit_data.cxx,v 1.8 2003/02/18 10:14:52 grumbel Exp $
+//  $Id: fake_exit_data.cxx,v 1.9 2003/02/26 17:08:29 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,7 @@
 
 #include <iostream>
 #include "fake_exit_data.hxx"
+#include "../world.hxx"
 #include "../xml_helper.hxx"
 #include "../xml_file_reader.hxx"
 #include "../editorobjs/fake_exit_obj.hxx"
@@ -51,10 +52,10 @@ FakeExitData::write_xml (std::ostream& xml)
   xml << "</worldobj>\n\n";
 }
 
-WorldObj*
-FakeExitData::create_WorldObj ()
+void
+FakeExitData::insert_WorldObjs (World* world)
 {
-  return new WorldObjs::FakeExit(*this);
+  world->add_object(new WorldObjs::FakeExit(*this));
 }
 
 EditorObjLst

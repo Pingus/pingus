@@ -1,4 +1,4 @@
-//  $Id: world.hxx,v 1.24 2003/02/19 10:37:31 grumbel Exp $
+//  $Id: world.hxx,v 1.25 2003/02/26 17:08:29 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -97,6 +97,10 @@ private:
 public:
   World(PLF*);
   virtual ~World();
+  
+  /** Add an object to the world, obj needs to be new'ed the World
+      make sure that it will get deleted */
+  void add_object (WorldObj* obj);
 
   /** Draw the world onto the given GraphicContext */
   void    draw (GraphicContext& gc);

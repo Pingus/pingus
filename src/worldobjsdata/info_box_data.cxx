@@ -1,4 +1,4 @@
-//  $Id: info_box_data.cxx,v 1.9 2003/02/18 10:14:52 grumbel Exp $
+//  $Id: info_box_data.cxx,v 1.10 2003/02/26 17:08:29 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
+#include "../world.hxx"
 #include "../xml_file_reader.hxx"
 #include "../xml_helper.hxx"
 #include "../editorobjs/info_box_obj.hxx"
@@ -34,10 +35,10 @@ InfoBoxData::~InfoBoxData ()
 {
 }
 
-WorldObj* 
-InfoBoxData::create_WorldObj ()
+void
+InfoBoxData::insert_WorldObjs (World* world)
 {
-  return new WorldObjs::InfoBox(*this);
+  world->add_object(new WorldObjs::InfoBox(*this));
 }
 
 EditorObjLst

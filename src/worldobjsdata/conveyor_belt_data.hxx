@@ -1,4 +1,4 @@
-//  $Id: conveyor_belt_data.hxx,v 1.5 2003/01/27 22:14:52 torangan Exp $
+//  $Id: conveyor_belt_data.hxx,v 1.6 2003/02/26 17:08:29 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -44,7 +44,7 @@ public:
   void write_xml (std::ostream& xml);
 
   /** Create an WorldObj from the given data object */
-  WorldObj* create_WorldObj ();
+  void insert_WorldObjs (World* world);
 
   /** Create an EditorObj from the given data object */
   EditorObjLst create_EditorObj ();

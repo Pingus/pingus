@@ -1,4 +1,4 @@
-//  $Id: hotspot_data.cxx,v 1.4 2003/02/18 01:23:52 grumbel Exp $
+//  $Id: hotspot_data.cxx,v 1.5 2003/02/26 17:08:29 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
+#include "../world.hxx"
 #include "../editorobjs/hotspot_obj.hxx"
 #include "../worldobjs/hotspot.hxx"
 #include "../xml_helper.hxx"
@@ -58,10 +59,10 @@ HotspotData::HotspotData (const HotspotData& old) : WorldObjData(old),
 {
 }
 
-WorldObj* 
-HotspotData::create_WorldObj ()
+void 
+HotspotData::insert_WorldObjs (World* world)
 {
-  return new WorldObjs::Hotspot(*this);
+  world->add_object(new WorldObjs::Hotspot(*this));
 }
 
 EditorObjLst 

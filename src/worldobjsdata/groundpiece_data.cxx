@@ -1,4 +1,4 @@
-//  $Id: groundpiece_data.cxx,v 1.13 2003/02/18 22:03:39 grumbel Exp $
+//  $Id: groundpiece_data.cxx,v 1.14 2003/02/26 17:08:29 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
+#include "../world.hxx"
 #include "../xml_file_reader.hxx"
 #include "../editorobjs/groundpiece_obj.hxx"
 #include "../worldobjs/groundpiece.hxx"
@@ -88,10 +89,10 @@ GroundpieceData::create_EditorObj ()
   return EditorObjLst(1, new EditorObjs::GroundpieceObj(*this));
 }
 
-WorldObj*
-GroundpieceData::create_WorldObj ()
+void
+GroundpieceData::insert_WorldObjs (World* world)
 {
-  return new WorldObjs::Groundpiece(*this);
+  world->add_object(new WorldObjs::Groundpiece(*this));
 }
 
 void

@@ -1,4 +1,4 @@
-//  $Id: smallmap.cxx,v 1.31 2003/02/19 10:37:31 grumbel Exp $
+//  $Id: smallmap.cxx,v 1.32 2003/02/26 17:08:29 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -134,6 +134,7 @@ SmallMap::init()
 	      cbuffer[i + 3] =   0;
               break;
               
+            case Groundtype::GP_WATER:
             case Groundtype::GP_LAVA:
               cbuffer[i + 0] = 255;
 	      cbuffer[i + 1] = 100;

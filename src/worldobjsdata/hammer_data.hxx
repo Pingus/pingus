@@ -1,4 +1,4 @@
-//  $Id: hammer_data.hxx,v 1.5 2002/10/01 23:40:19 grumbel Exp $
+//  $Id: hammer_data.hxx,v 1.6 2003/02/26 17:08:29 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,8 +20,9 @@
 #ifndef HEADER_PINGUS_WORLDOBJSDATA_HAMMER_DATA_HXX
 #define HEADER_PINGUS_WORLDOBJSDATA_HAMMER_DATA_HXX
 
-#include "../vector.hxx"
 #include <ClanLib/Display/Display/surface.h>
+#include "../vector.hxx"
+#include "../world.hxx"
 #include "../game_counter.hxx"
 #include "../libxmlfwd.hxx"
 #include "../worldobj_data.hxx"
@@ -39,7 +40,7 @@ public:
       
   void write_xml (std::ostream& xml);
       
-  WorldObj* create_WorldObj ();
+  void insert_WorldObjs (World* world);
       
   EditorObjLst create_EditorObj ();
       

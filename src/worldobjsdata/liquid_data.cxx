@@ -1,4 +1,4 @@
-//  $Id: liquid_data.cxx,v 1.8 2003/02/19 17:17:01 grumbel Exp $
+//  $Id: liquid_data.cxx,v 1.9 2003/02/26 17:08:29 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
+#include "../world.hxx"
 #include "../editorobjs/liquid_obj.hxx"
 #include "../worldobjs/liquid.hxx"
 #include "../string_converter.hxx"
@@ -74,10 +75,10 @@ LiquidData::write_xml (std::ostream& xml)
       << "</liquid>\n" << std::endl;
 }
 
-WorldObj* 
-LiquidData::create_WorldObj ()
+void
+LiquidData::insert_WorldObjs (World* world)
 {
-  return new WorldObjs::Liquid(*this);
+  world->add_object(new WorldObjs::Liquid(*this));
 }
 
 EditorObjLst

@@ -1,4 +1,4 @@
-// $Id: liquid_data.hxx,v 1.4 2003/02/18 17:04:13 grumbel Exp $
+// $Id: liquid_data.hxx,v 1.5 2003/02/26 17:08:29 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #define HEADER_PINGUS_WORLDOBJSDATA_LIQUID_DATA_HXX
 
 #include "../vector.hxx"
+#include "../world.hxx"
 #include "../libxmlfwd.hxx"
 #include "../res_descriptor.hxx"
 #include "../worldobj_data.hxx"
@@ -49,7 +50,7 @@ public:
   void write_xml(std::ostream&);
 
   /** Create an WorldObj from the given data object */
-  WorldObj* create_WorldObj ();
+  void insert_WorldObjs (World* world);
 
   /** Create an EditorObj from the given data object */
   EditorObjLst create_EditorObj ();

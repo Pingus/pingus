@@ -1,4 +1,4 @@
-//  $Id: game_session.cxx,v 1.27 2003/02/19 11:33:00 grumbel Exp $
+//  $Id: game_session.cxx,v 1.28 2003/02/26 17:08:29 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -90,6 +90,8 @@ PingusGameSession::draw(GraphicContext& gc)
 void
 PingusGameSession::update (const GameDelta& delta)
 {
+#if 0
+  // FIXME: Timing code could need another rewrite...
   if (server->is_finished())
     {
       ScreenManager::instance()->pop_screen();
@@ -112,8 +114,6 @@ PingusGameSession::update (const GameDelta& delta)
       ++number_of_updates;
     }
 
-  //std::cout << "Number of updates: " << i << std::endl;
-
   // Time that got not used for updates
   left_over_time = time_passed - (i * update_time);
 
@@ -124,6 +124,10 @@ PingusGameSession::update (const GameDelta& delta)
     }
   
   // Client is independend of the update limit, well, not completly...
+  client->update (delta);
+#endif
+  // Move the game one loop further
+  server->update ();
   client->update (delta);
 }
 

@@ -1,4 +1,4 @@
-//  $Id: worldobj_data.hxx,v 1.7 2002/09/27 11:26:44 torangan Exp $
+//  $Id: worldobj_data.hxx,v 1.8 2003/02/26 17:08:29 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,7 +23,7 @@
 #include <iosfwd>
 #include <vector>
 
-class WorldObj;
+class World;
 class EditorObj;
 
 typedef std::vector<EditorObj*> EditorObjLst;
@@ -52,8 +52,8 @@ public:
       stream */
   virtual void write_xml (std::ostream& xml) =0;
 
-  /** Create an WorldObj from the given data object */
-  virtual WorldObj* create_WorldObj () =0;
+  /** Insert all WorldObjs into the World */
+  virtual void insert_WorldObjs (World*) =0;
 
   /** Create an EditorObj from the given data object, caller is
       responible for deleting the pointers in the vector */

@@ -1,4 +1,4 @@
-//  $Id: laser_exit_data.cxx,v 1.8 2003/02/18 01:23:52 grumbel Exp $
+//  $Id: laser_exit_data.cxx,v 1.9 2003/02/26 17:08:29 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,7 @@
 
 #include <iostream>
 #include "laser_exit_data.hxx"
+#include "../world.hxx"
 #include "../xml_helper.hxx"
 #include "../xml_file_reader.hxx"
 #include "../editorobjs/laser_exit_obj.hxx"
@@ -51,10 +52,10 @@ LaserExitData::write_xml (std::ostream& xml)
   xml << "</worldobj>\n\n";
 }
 
-WorldObj*
-LaserExitData::create_WorldObj ()
+void
+LaserExitData::insert_WorldObjs (World* world)
 {
-  return new WorldObjs::LaserExit(*this);
+  world->add_object(new WorldObjs::LaserExit(*this));
 }
 
 EditorObjLst

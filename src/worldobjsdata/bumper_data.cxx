@@ -1,4 +1,4 @@
-//  $Id: bumper_data.cxx,v 1.8 2003/02/18 01:23:52 grumbel Exp $
+//  $Id: bumper_data.cxx,v 1.9 2003/02/26 17:08:29 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,7 @@
 
 #include <iostream>
 #include "bumper_data.hxx"
+#include "../world.hxx"
 #include "../xml_helper.hxx"
 #include "../xml_file_reader.hxx"
 #include "../editorobjs/bumper_obj.hxx"
@@ -52,10 +53,10 @@ BumperData::write_xml (std::ostream& xml)
   xml << "</worldobj>\n\n";
 }
 
-WorldObj*
-BumperData::create_WorldObj ()
+void
+BumperData::insert_WorldObjs (World* world)
 {
-  return new WorldObjs::Bumper(*this);
+  world->add_object(new WorldObjs::Bumper(*this));
 }
 
 EditorObjLst

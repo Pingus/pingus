@@ -1,4 +1,4 @@
-//  $Id: exit_data.cxx,v 1.5 2003/02/18 01:23:52 grumbel Exp $
+//  $Id: exit_data.cxx,v 1.6 2003/02/26 17:08:29 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
+#include "../world.hxx"
 #include "../string_converter.hxx"
 #include "../xml_helper.hxx"
 #include "../xml_file_reader.hxx"
@@ -70,10 +71,10 @@ ExitData::write_xml (std::ostream& xml)
       << std::endl;
 }
 
-WorldObj* 
-ExitData::create_WorldObj ()
+void 
+ExitData::insert_WorldObjs (World* world)
 {
-  return new WorldObjs::Exit(*this);
+  world->add_object(new WorldObjs::Exit(*this));
 }
 
 EditorObjLst 

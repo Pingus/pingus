@@ -1,4 +1,4 @@
-//  $Id: entrance_data.hxx,v 1.2 2002/09/28 11:52:26 torangan Exp $
+//  $Id: entrance_data.hxx,v 1.3 2003/02/26 17:08:29 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -50,7 +50,7 @@ public:
   void write_xml (std::ostream&);
 
   EditorObjLst create_EditorObj ();
-  WorldObj* create_WorldObj ();
+  void insert_WorldObjs (World*);
 
 private:
   EntranceData& operator= (const EntranceData& old);

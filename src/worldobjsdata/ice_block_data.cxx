@@ -1,4 +1,4 @@
-//  $Id: ice_block_data.cxx,v 1.7 2003/02/18 10:14:52 grumbel Exp $
+//  $Id: ice_block_data.cxx,v 1.8 2003/02/26 17:08:29 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
+#include "../world.hxx"
 #include "../xml_file_reader.hxx"
 #include "../xml_helper.hxx"
 #include "../editorobjs/ice_block_obj.hxx"
@@ -54,10 +55,10 @@ IceBlockData::write_xml (std::ostream& xml)
       << "  </worldobj>\n" << std::endl;
 }
 
-WorldObj* 
-IceBlockData::create_WorldObj ()
+void
+IceBlockData::insert_WorldObjs (World* world)
 {
-  return new WorldObjs::IceBlock(*this);
+  world->add_object(new WorldObjs::IceBlock(*this));
 }
 
 EditorObjLst

@@ -1,4 +1,4 @@
-//  $Id: conveyor_belt_data.cxx,v 1.8 2003/02/18 01:23:52 grumbel Exp $
+//  $Id: conveyor_belt_data.cxx,v 1.9 2003/02/26 17:08:29 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
+#include "../world.hxx"
 #include "../xml_file_reader.hxx"
 #include "../xml_file_writer.hxx"
 #include "../editorobjs/conveyor_belt_obj.hxx"
@@ -63,10 +64,10 @@ ConveyorBeltData::write_xml (std::ostream& xml)
   writer.end_section();
 }
 
-WorldObj* 
-ConveyorBeltData::create_WorldObj ()
+void 
+ConveyorBeltData::insert_WorldObjs (World* world)
 {
-  return new WorldObjs::ConveyorBelt(*this);
+  world->add_object(new WorldObjs::ConveyorBelt(*this));
 }
 
 EditorObjLst

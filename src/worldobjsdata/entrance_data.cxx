@@ -1,4 +1,4 @@
-//  $Id: entrance_data.cxx,v 1.5 2003/02/19 17:17:01 grumbel Exp $
+//  $Id: entrance_data.cxx,v 1.6 2003/02/26 17:08:29 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
+#include "../world.hxx"
 #include "../editorobjs/entrance_obj.hxx"
 #include "../worldobjs/entrances/woodthing.hxx"
 #include "../worldobjs/entrances/cloud.hxx"
@@ -103,19 +104,17 @@ EntranceData::write_xml (std::ostream& xml)
       << std::endl;  
 }
 
-WorldObj* 
-EntranceData::create_WorldObj ()
+void
+EntranceData::insert_WorldObjs (World* world)
 {
   if (type == "generic") {
-    return new WorldObjs::Entrance(*this);
+    world->add_object(new WorldObjs::Entrance(*this));
   } else if (type == "woodthing") {
-    return new WorldObjs::Entrances::WoodThing(*this);
+    world->add_object(new WorldObjs::Entrances::WoodThing(*this));
   } else if (type == "cloud") {
-    return new WorldObjs::Entrances::Cloud(*this);
-  } else {
-    PingusError::raise("Entrance: Entrance type in Level file is unknown: " + type);
-    return 0; // never reached
+    world->add_object(new WorldObjs::Entrances::Cloud(*this));
   }
+  //PingusError::raise("Entrance: Entrance type in Level file is unknown: " + type);
 }
 
 EditorObjLst 

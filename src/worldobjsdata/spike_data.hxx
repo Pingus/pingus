@@ -1,4 +1,4 @@
-//  $Id: spike_data.hxx,v 1.5 2003/02/18 01:23:52 grumbel Exp $
+//  $Id: spike_data.hxx,v 1.6 2003/02/26 17:08:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,7 +42,7 @@ public:
       
   void write_xml (std::ostream& xml);
       
-  WorldObj* create_WorldObj ();
+  void insert_WorldObjs (World*);
       
   EditorObjLst create_EditorObj ();
       

@@ -1,4 +1,4 @@
-//  $Id: worldobj_group_data.cxx,v 1.6 2002/09/28 11:52:27 torangan Exp $
+//  $Id: worldobj_group_data.cxx,v 1.7 2003/02/26 17:08:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
+#include "../world.hxx"
 #include "../editor/editorobj_group.hxx"
 #include "../xml_helper.hxx"
 #include "../worldobj_data_factory.hxx"
@@ -79,10 +80,10 @@ WorldObjGroupData::write_xml (std::ostream& xml)
   xml << "</group>\n\n";
 }
 
-WorldObj* 
-WorldObjGroupData::create_WorldObj ()
+void 
+WorldObjGroupData::insert_WorldObjs (World* world)
 {
-  return new WorldObjs::WorldObjGroup (*this);
+  world->add_object(new WorldObjs::WorldObjGroup (*this));
 }
 
 EditorObjLst 

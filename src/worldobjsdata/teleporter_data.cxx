@@ -1,4 +1,4 @@
-//  $Id: teleporter_data.cxx,v 1.9 2003/02/18 17:04:13 grumbel Exp $
+//  $Id: teleporter_data.cxx,v 1.10 2003/02/26 17:08:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,7 @@
 
 #include <iostream>
 #include "teleporter_data.hxx"
+#include "../world.hxx"
 #include "../xml_helper.hxx"
 #include "../xml_file_reader.hxx"
 #include "../editorobjs/teleporter_obj.hxx"
@@ -59,10 +60,10 @@ TeleporterData::TeleporterData (xmlDocPtr doc, xmlNodePtr cur)
   subreader.read_vector("position", target_pos);
 }
 
-WorldObj* 
-TeleporterData::create_WorldObj ()
+void 
+TeleporterData::insert_WorldObjs (World* world)
 {
-  return new WorldObjs::Teleporter(*this);
+  world->add_object(new WorldObjs::Teleporter(*this));
 }
 
 EditorObjLst

@@ -1,4 +1,4 @@
-//  $Id: prefab_obj_data.hxx,v 1.4 2002/09/28 11:52:27 torangan Exp $
+//  $Id: prefab_obj_data.hxx,v 1.5 2003/02/26 17:08:29 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -56,7 +56,7 @@ public:
 
   /** The PrefabData is flattened to a WorldObjGroup, the World
       doesn't need to keep track of prefabs */
-  WorldObj* create_WorldObj ();
+  void insert_WorldObjs ();
   
   /** Create a EditorObjs::PrefabObj from the prefab data */
   EditorObjLst create_EditorObj ();
