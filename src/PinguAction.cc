@@ -1,4 +1,4 @@
-//  $Id: PinguAction.cc,v 1.21 2002/02/10 22:14:06 grumbel Exp $
+//  $Id: PinguAction.cc,v 1.22 2002/04/03 21:00:07 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,9 @@
 #include "World.hh"
 #include "PingusResource.hh"
 #include "PinguAction.hh"
+
+// Initialise class static.
+const int PinguAction::pingu_height = 26;
 
 PinguAction::PinguAction()
 {
@@ -68,6 +71,17 @@ PinguAction::get_persistent_char ()
 {
   assert(!"This is not a persitent action!");
   return '-';
+}
+
+bool
+PinguAction::head_collision_on_walk (int x, int y)
+{
+  int pixel = rel_getpixel(x, y + pingu_height);
+
+  if (pixel != ColMap::NOTHING && !(pixel & ColMap::BRIDGE))
+    return true;
+
+  return false;
 }
 
 /* EOF */

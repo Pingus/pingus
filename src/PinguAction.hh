@@ -1,4 +1,4 @@
-//  $Id: PinguAction.hh,v 1.28 2002/02/10 22:14:06 grumbel Exp $
+//  $Id: PinguAction.hh,v 1.29 2002/04/03 21:00:07 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -49,6 +49,9 @@ class PinguAction : public WorldObj
 protected:
   /** A pointer to the pingu, which hold the action. */
   Pingu*      pingu;
+
+  /// Height of Pingu.  Used in head collision.
+  const static int pingu_height;
 
 public:
   /** Indicate if the action should be canceled at the next possible
@@ -106,6 +109,9 @@ public:
 
   // FIXME: z_pos is currently unused for pingu actions
   virtual float get_z_pos () const { return 0; }
+
+  /// True if Pingu in specified position would bang its head if it were walking
+  bool head_collision_on_walk (int x, int y);
 };
 
 #endif /* PINGU_ACTION_HH */
