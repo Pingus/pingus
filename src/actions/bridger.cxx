@@ -1,4 +1,4 @@
-//  $Id: bridger.cxx,v 1.16 2002/09/16 20:31:09 grumbel Exp $
+//  $Id: bridger.cxx,v 1.17 2002/09/24 17:03:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,6 +32,9 @@ using namespace std;
 
 namespace Actions {
 
+// Initialise class static
+const int Bridger::brick_length = 16;
+
 bool Bridger::static_surfaces_loaded = false;
 CL_Surface Bridger::brick_l;
 CL_Surface Bridger::brick_r;
@@ -61,8 +64,6 @@ Bridger::init (void)
 			"pingus", 15.0f, Sprite::NONE, Sprite::ONCE);
   build_sprite.set_align_center_bottom ();
   walk_sprite.set_align_center_bottom ();
-
-  last_pos = pingu->get_pos();
 }
 
 void
@@ -118,8 +119,6 @@ Bridger::update(float delta)
       update_walk (delta);
       break;
     }
-
-  last_pos = pingu->get_pos();
 }
 
 void
@@ -138,7 +137,6 @@ Bridger::update_walk (float delta)
 	{
 	  pingu->direction.change ();
 	  pingu->set_action (Actions::Walker);
-	  pingu->set_pos(last_pos);
 	  return;
 	}
     }
@@ -159,7 +157,14 @@ Bridger::update_build (float delta)
 
       if (bricks > 0)
 	{
-	  place_a_brick();
+	  if (brick_placement_allowed())
+	    place_a_brick();
+	  else
+	    {
+	      pingu->direction.change ();
+	      pingu->set_action (Actions::Walker);
+	      return;
+	    }
 	}
       else // Out of bricks
 	{
@@ -177,9 +182,27 @@ Bridger::update_build (float delta)
 bool
 Bridger::way_is_free()
 {
-  return (rel_getpixel(4,2) ==  Groundtype::GP_NOTHING)
-    && !head_collision_on_walk(4, 2)
-    && !head_collision_on_walk(8, 4);
+  return (rel_getpixel(4,2) ==  Groundtype::GP_NOTHING);
+}
+
+bool
+Bridger::brick_placement_allowed(void)
+{
+  bool brick_allowed = true;
+
+  // Don't allow a brick to be placed if a Pingu would have a head collision
+  // if it walked along the whole of the brick.  Otherwise the Pingu,
+  // especially a walker, could get stuck between the brick and the ceiling.
+  for (int x_inc = 1; x_inc <= brick_length; ++x_inc)
+    {
+      if (head_collision_on_walk(x_inc, 2))
+	{
+	  brick_allowed = false;
+	  break;
+	}
+    }
+
+  return brick_allowed;
 }
 
 void

@@ -1,4 +1,4 @@
-//  $Id: bridger.hxx,v 1.11 2002/09/10 19:24:19 grumbel Exp $
+//  $Id: bridger.hxx,v 1.12 2002/09/24 17:03:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,6 +39,8 @@ private:
 
   GameCounter counter;
 
+  static const int brick_length;
+
   static bool static_surfaces_loaded;
   static CL_Surface static_surface;
   static CL_Surface brick_l;
@@ -48,8 +50,6 @@ private:
   //int step;
   //int do_steps;
   bool block_build;
-
-  CL_Vector last_pos;
 
   std::string name;
 public:
@@ -66,6 +66,7 @@ public:
   void   draw (GraphicContext& gc);
     
   bool   way_is_free ();
+  bool   brick_placement_allowed (void);
   void   place_a_brick ();
   void   walk_one_step_up ();
   
