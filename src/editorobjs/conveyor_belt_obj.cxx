@@ -1,4 +1,4 @@
-//  $Id: conveyor_belt_obj.cxx,v 1.2 2002/09/15 11:02:24 grumbel Exp $
+//  $Id: conveyor_belt_obj.cxx,v 1.3 2002/09/20 08:43:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <stdio.h>
 #include "../editor/editor_view.hxx"
 #include "../worldobjsdata/conveyor_belt_data.hxx"
 #include "../pingus_resource.hxx"
