@@ -1,4 +1,4 @@
-//  $Id: SmallMap.cc,v 1.1 2000/02/25 02:35:27 grumbel Exp $
+//  $Id: SmallMap.cc,v 1.2 2000/02/26 03:11:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,11 +17,17 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "Display.hh"
+#include "Playfield.hh"
+#include "World.hh"
 #include "SmallMap.hh"
 
 SmallMap::SmallMap()
 {
   sur = 0;
+  width = 175;
+  height = 75;
+  scroll_mode = false;
 }
 
 SmallMap::~SmallMap()
@@ -32,10 +38,9 @@ SmallMap::~SmallMap()
 void
 SmallMap::init()
 {
-  cout << "SmallMap: init()" << endl;
-
   CL_Canvas*  canvas;
   ColMap* colmap;
+  World* world = client->get_server()->get_world();
   unsigned char* buffer;
   unsigned char* cbuffer;
   int tx, ty;
@@ -43,40 +48,32 @@ SmallMap::init()
   colmap = world->get_colmap(); 
   buffer = colmap->get_data();
 
-  canvas = new CL_Canvas(200, 50);
+  canvas = new CL_Canvas(width, height);
  
   canvas->lock();
   
   cbuffer = static_cast<unsigned char*>(canvas->get_data());
 
-  /*  for (unsigned int i = 0; i < (200 * 50); i++)
+  for(int y = 0; y < height; y++)
     {
-      cbuffer[4*i + 0] = ;
-      cbuffer[4*i + 1] = 125;
-      cbuffer[4*i + 2] = 125;
-      cbuffer[4*i + 3] = 125;
-    }
-  */
-  for(int y = 0; y < 50; y++)
-    {
-      for (int x = 0; x < 200; x++)
+      for (int x = 0; x < width; x++)
 	{
-	  tx = x * colmap->get_width() / 200;
-	  ty = y * colmap->get_height() / 50;
+	  tx = x * colmap->get_width() / width;
+	  ty = y * colmap->get_height() / height;
 
 	  switch(buffer[tx + (ty * colmap->get_width())])
 	    {
 	    case ColMap::NOTHING:
-	      cbuffer[4 * ((y * 200) + x) + 0] = 150;
-	      cbuffer[4 * ((y * 200) + x) + 1] = 0;
-	      cbuffer[4 * ((y * 200) + x) + 2] = 0;
-	      cbuffer[4 * ((y * 200) + x) + 3] = 0;
+	      cbuffer[4 * ((y * width) + x) + 0] = 150;
+	      cbuffer[4 * ((y * width) + x) + 1] = 0;
+	      cbuffer[4 * ((y * width) + x) + 2] = 0;
+	      cbuffer[4 * ((y * width) + x) + 3] = 0;
 	      break;
 	    default:
-	      cbuffer[4 * ((y * 200) + x) + 0] = 255;
-	      cbuffer[4 * ((y * 200) + x) + 1] = 255;
-	      cbuffer[4 * ((y * 200) + x) + 2] = 255;
-	      cbuffer[4 * ((y * 200) + x) + 3] = 255;
+	      cbuffer[4 * ((y * width) + x) + 0] = 255;
+	      cbuffer[4 * ((y * width) + x) + 1] = 255;
+	      cbuffer[4 * ((y * width) + x) + 2] = 255;
+	      cbuffer[4 * ((y * width) + x) + 3] = 255;
 	      break;
 	    }
 	}
@@ -86,26 +83,91 @@ SmallMap::init()
   
   sur = CL_Surface::create(canvas, true);
 
-  cout << "SmallMap::setWorld" << endl;
+  x_pos = 0;
+  y_pos = CL_Display::get_height() - sur->get_height();
+
+  rwidth = CL_Display::get_width() * width / client->get_server()->get_world()->get_colmap()->get_width();
+  rheight = CL_Display::get_height() * height / client->get_server()->get_world()->get_colmap()->get_height();
 }
 
 void
-SmallMap::set_world(World* w)
+SmallMap::set_client(Client* c)
 {
-  world = w;
+  client = c;
   init();
 }
 
 void
 SmallMap::draw()
 {
-  cout << "Drawing smallmap" << endl;
+  Playfield* playfield = client->get_playfield();
+  int x_of = playfield->get_x_offset();
+  int y_of = playfield->get_y_offset();
+
   sur->put_screen(0, CL_Display::get_height() - sur->get_height()); 
+  
+  x_of = -x_of * width / client->get_server()->get_world()->get_colmap()->get_width();
+  y_of = -y_of * height / client->get_server()->get_world()->get_colmap()->get_height();
+
+  Display::draw_rect(x_of, y_of + CL_Display::get_height() - sur->get_height(),
+		     x_of + rwidth, y_of + rheight + CL_Display::get_height() - sur->get_height(),
+		     0.0, 1.0, 0.0, 1.0);
 }
 
 void
 SmallMap::let_move()
 {
+  int cx, cy;
+  ColMap* colmap = client->get_server()->get_world()->get_colmap();
+  
+  if (scroll_mode)
+    {
+      cx = (CL_Mouse::get_x() - x_pos) * colmap->get_width() / width;
+      cy = (CL_Mouse::get_y() - y_pos) * colmap->get_height() / height ;
+
+      client->get_playfield()->set_viewpoint(cx, cy);
+
+      cout << "scrolling...cx:" << cx << " cy:" << cy << endl;
+    }
+}
+
+bool
+SmallMap::mouse_over()
+{
+  if (CL_Mouse::get_x() > x_pos && CL_Mouse::get_x() < x_pos + width
+      && CL_Mouse::get_y() > y_pos && CL_Mouse::get_y() < y_pos + height)
+    {
+      return true;
+    }
+  else
+    {
+      return false;
+    }
+}
+
+void
+SmallMap::button_press(const CL_Key& key)
+{
+  switch(key.id)
+    {
+    case 0:
+      if (mouse_over())
+	{
+	  scroll_mode = true;
+	}
+      break;
+    }
+}
+
+void
+SmallMap::button_release(const CL_Key& key)
+{
+  switch(key.id)
+    {
+    case 0:
+      scroll_mode = false;
+      break;
+    }
 }
 
 /* EOF */
