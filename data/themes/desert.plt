@@ -4,3 +4,4 @@ Background:  (resource:textures.dat)Textures/desert
 
 desert1.plf
 desert2.plf
+desert3.plf
