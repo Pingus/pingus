@@ -1,7 +1,7 @@
 global {
   start_x_pos = 0;
   start_y_pos = 0;
-  levelname = "X-Mas '99 - 2";
+  levelname = "Over the water";
   description = "Happy Christmas!
 ";
 }

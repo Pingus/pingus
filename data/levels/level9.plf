@@ -1,12 +1,9 @@
 global {
 	start_x_pos = 0;
 	start_y_pos = 0;
-	levelname = "Stone Cave and Traps" ;
+	levelname = "Teleporter, Spikes and other funny stuff" ;
 	description = 
-"This level is a good introduction to 
-the use of ground pices, the complete
-level  is build out of only a few ground
-pices, but still looks very induvidually.
+"
 ";
 	number_of_pingus = 150;
 	number_to_save = 50;

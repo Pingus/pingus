@@ -19,7 +19,7 @@ ground {
 }
 
 background {
-	image = (resource:textures.dat)"Textures/solartile";
+	image = (resource:textures.dat)"Textures/lunartile";
 	dim = "0.2";
 	scroll_x = 0;
 	scroll_y = 0;

@@ -1,7 +1,7 @@
 global {
   start_x_pos = 0;
   start_y_pos = 0;
-  levelname = "X-Mas '99";
+  levelname = "Cliffs in the ice";
   description = "
 ";
   number_of_pingus = 120;

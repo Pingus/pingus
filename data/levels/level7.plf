@@ -1,13 +1,8 @@
 global {
 	start_x_pos = 1200;
 	start_y_pos = 240;
-	levelname = "Level 7" ;
-	description = 
-"Same as level 8, just some background changes.
-A totaly unfinished dragon cave, most of
-the gfx which isn't used at the moment is 
-packed into this level, gives also an example
-of a scrolling background.";
+	levelname = "Evil in the dark" ;
+	description = "";
 }
 
 ground {

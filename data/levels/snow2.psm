@@ -169,5 +169,5 @@ ground : (resource:global.dat)GroundPieces/Snow/gpiece1 : 2751 : 459;
 ground : (resource:global.dat)GroundPieces/Snow/gpiece1 : 2932 : 503;
 ground : (resource:global.dat)GroundPieces/Snow/gpiece1 : 3763 : 241;
 ground : (resource:global.dat)GroundPieces/Snow/gpiece1 : 4087 : 496;
-ground : (resource:global.dat)Fonts/right_arrow : 550 : 458;
+ground : (resource:global.dat)Hotspots/right_arrow : 550 : 458;
 ground : (resource:global.dat)GroundPieces/Snow/snowman : 2034 : 335;

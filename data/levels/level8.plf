@@ -1,12 +1,11 @@
 /* This level was created with the PLE
- * $Id: level8.plf,v 1.2 2000/02/09 22:13:21 grumbel Exp $
+ * $Id: level8.plf,v 1.3 2000/02/15 13:27:06 grumbel Exp $
  */
 global {
   start_x_pos = 1200;
   start_y_pos = 240;
   levelname = "A Hammer in the Dragon Cave";
-  description = "Same as level 7, but has another trap,
-the hammer. This level is know to segfault.";
+  description = "";
   number_of_pingus = 100;
   number_to_save = 0;
   time = 0;
@@ -14,7 +13,6 @@ the hammer. This level is know to segfault.";
 
 ground {
   maptype = "SPOT";
-  data    = (file)"level8.psm";
   width   = 1400;
   height  = 480;
   colmap  = (auto);
@@ -41,13 +39,6 @@ buttons {
   miner = 20;
 }
 
-exit {
-  image = (resource)"Exits/stone";
-  x_pos = 694;
-  y_pos = 362;
-  z_pos = 0;
-}
-
 entrance {
   type  = generic;
   x_pos = 150;
@@ -66,6 +57,13 @@ entrance {
   direction = left;
 }
 
+exit {
+  image = (resource)"Exits/stone";
+  x_pos = 694;
+  y_pos = 362;
+  z_pos = 0;
+}
+
 liquid {
   image = (resource)"Liquid/water";
   x_pos = 0;
@@ -77,8 +75,8 @@ liquid {
 
 trap {
   name = "hammer";
-  x_pos = 615;
-  y_pos = 86;
+  x_pos = 608;
+  y_pos = 89;
   z_pos = 10000;
 }
 

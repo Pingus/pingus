@@ -1,10 +1,8 @@
 global {
   start_x_pos = 0;
   start_y_pos = 0;
-  levelname = "Hard work to dig!";
-  description = "This level demonstrates the woodthing entrance.
-Its is not meant to be finished or playable.
-";
+  levelname = "Stone blocks and spikes";
+  description = "";
   number_of_pingus = 100;
   number_to_save = 50;
 }
