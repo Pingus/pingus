@@ -1,4 +1,4 @@
-//  $Id: SmallMap.cc,v 1.9 2000/05/27 23:09:09 grumbel Exp $
+//  $Id: SmallMap.cc,v 1.10 2000/06/08 20:05:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -66,9 +66,9 @@ SmallMap::init()
   
   cbuffer = static_cast<unsigned char*>(canvas->get_data());
 
-  for(int y = 0; y < height; y++)
+  for(unsigned int y = 0; y < height; y++)
     {
-      for (int x = 0; x < width; x++)
+      for (unsigned int x = 0; x < width; x++)
 	{
 	  tx = x * colmap->get_width() / width;
 	  ty = y * colmap->get_height() / height;
@@ -204,8 +204,8 @@ SmallMap::let_move()
 bool
 SmallMap::mouse_over()
 {
-  if (CL_Mouse::get_x() > x_pos && CL_Mouse::get_x() < x_pos + width
-      && CL_Mouse::get_y() > y_pos && CL_Mouse::get_y() < y_pos + height)
+  if (CL_Mouse::get_x() > x_pos && CL_Mouse::get_x() < x_pos + (int)width
+      && CL_Mouse::get_y() > y_pos && CL_Mouse::get_y() < y_pos + (int)height)
     {
       return true;
     }

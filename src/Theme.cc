@@ -1,4 +1,4 @@
-//  $Id: Theme.cc,v 1.10 2000/05/28 16:47:24 grumbel Exp $
+//  $Id: Theme.cc,v 1.11 2000/06/08 20:05:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -222,7 +222,7 @@ Theme::play()
       
   try 
     {
-      game.start(find_file(pingus_datadir, "levels/" + plt.get_levels()[current_level]));
+      game.start_game(find_file(pingus_datadir, "levels/" + plt.get_levels()[current_level]));
 
       if (current_level == accessible_levels)
 	++accessible_levels;

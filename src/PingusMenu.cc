@@ -1,4 +1,4 @@
-//  $Id: PingusMenu.cc,v 1.19 2000/05/01 20:11:15 grumbel Exp $
+//  $Id: PingusMenu.cc,v 1.20 2000/06/08 20:05:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -100,7 +100,7 @@ PingusMenu::select(void)
   if (quick_play) 
     {
       PingusGame game;
-      game.start ();
+      game.start_game();
       quick_play = false;
     }
   

@@ -1,4 +1,4 @@
-//  $Id: Server.cc,v 1.9 2000/06/06 18:51:51 grumbel Exp $
+//  $Id: Server.cc,v 1.10 2000/06/08 20:05:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,12 +26,29 @@
 #include "Pingu.hh"
 #include "PingusError.hh"
 
+PingusEvent::PingusEvent()
+{
+}
+
+PingusEvent::PingusEvent(std::string event_str)
+{
+  std::string game_time_str;
+  std::string::size_type split_pos = event_str.find(":");
+  
+  game_time_str = event_str.substr(0, split_pos);
+  str = event_str.substr(split_pos + 1);
+
+  if (sscanf(game_time_str.c_str(), "%d", &game_time) != 1) {
+    throw PingusError("PingusEvent: Unable to parse: " + event_str);
+  }
+}
+
 Server::Server()
 {
   demo_mode = false;
   get_next_event = true;
   finished = false;
-  demo_out.open("/tmp/demo.plt", (PingusDemoMode)record); 
+  //demo_out.open("/tmp/demo.plt", (PingusDemoMode)record); 
 }
 
 Server::~Server()
@@ -47,7 +64,7 @@ Server::get_world()
 void
 Server::let_move()
 {
-  static PingusEvent event;
+  /*  static PingusEvent event;
   
   if (!demo_mode) {
     return;
@@ -57,11 +74,11 @@ Server::let_move()
     {
       // Getting next event from file
       get_next_event = false;    
-      event = demo_in->get_next_event();
+      //event = demo_in->get_next_event();
     }
   
   // Check if the time for the event is right
-  if (GameTime::get_time() == event.game_time) 
+  if (GameTime::get_time() == event.game_time)
     {
       process_event(event.str);
       get_next_event = true;
@@ -75,6 +92,7 @@ Server::let_move()
 		<< std::endl;
       get_next_event = true;
     }
+  */
 }
 
 // Some simple event management
@@ -88,8 +106,8 @@ Server::send_event(std::string event)
   str += temp;
   str += ":";
   str += event;
-  demo_out.set_next_event(str);
 
+  recorder.queue_event(str);
   process_event(event);
 }
 
@@ -171,16 +189,17 @@ Server::set_demo(std::string s)
 {
   demo_mode = true;
   demo_file = s;
-  demo_in->open(demo_file, (PingusDemoMode)play);
+  //demo_in->open(demo_file, (PingusDemoMode)play);
 
   std::cout << "Set_demo(): " << demo_file << " file opened" << std::endl;
 }
 
 void 
-Server::set_record_file(std::string file)
+Server::record_demo()
 {
-  demo_out.open(file.c_str(), (PingusDemoMode)record);
-};
+  cout << "Recording deme..." << endl;
+  recorder.set_levelname("test3");
+}
 
 ActionHolder*
 Server::get_action_holder()

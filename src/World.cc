@@ -1,4 +1,4 @@
-//  $Id: World.cc,v 1.20 2000/06/06 18:51:51 grumbel Exp $
+//  $Id: World.cc,v 1.21 2000/06/08 20:05:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -59,7 +59,8 @@ struct WorldObj_less : public binary_function<WorldObj*, WorldObj*, bool>
 World::World()
 {
   released_pingus = 0;
-
+  map = 0;
+  background = 0;
   exit_world = false;
 }
 

@@ -1,4 +1,4 @@
-//  $Id: Pingus.hh,v 1.8 2000/05/15 06:50:06 grumbel Exp $
+//  $Id: Pingus.hh,v 1.9 2000/06/08 20:05:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -66,8 +66,6 @@ public:
   void init_clanlib(void);
   // void intro(void);
   void init_pingus(void);
-
-  void play_level(std::string filename, PingusGameMode);
 } my_app; // notice this line. It creates the global instance.
 
 #endif

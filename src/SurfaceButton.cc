@@ -1,4 +1,4 @@
-//  $Id: SurfaceButton.cc,v 1.7 2000/03/12 01:42:12 grumbel Exp $
+//  $Id: SurfaceButton.cc,v 1.8 2000/06/08 20:05:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -100,7 +100,7 @@ PlayButton::on_click()
   loading_screen.draw();
 
   PingusGame game;
-  game.start();
+  game.start_game();
 }
 
 ///////////////////////////////////////////////

@@ -1,4 +1,4 @@
-//  $Id: TrueServer.cc,v 1.10 2000/06/06 18:51:51 grumbel Exp $
+//  $Id: TrueServer.cc,v 1.11 2000/06/08 20:05:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -48,12 +48,13 @@ TrueServer::~TrueServer()
 void
 TrueServer::let_move(void)
 {
-  if (enough_time_passed()) {
-    client_needs_redraw = true;
-    GameTime::increase();
-    Server::let_move();
-    world->let_move();
-  }
+  if (enough_time_passed()) 
+    {
+      client_needs_redraw = true;
+      GameTime::increase();
+      Server::let_move();
+      world->let_move();
+    }
 }
 
 void
@@ -74,7 +75,6 @@ TrueServer::start(PLF* level_data)
     action_holder.set_actions(b->name, b->number_of);
   }
   std::cout << "done " << timer.stop() << std::endl;
-  
 
   fast_forward = false;
   pause = false;
@@ -86,6 +86,7 @@ TrueServer::start(PLF* level_data)
   // FIXME: this is complete trash, delete it and place it in world
   // object or so...
   world->set_action_holder(&action_holder);
+  Exit::set_action_holder(&action_holder);
   Entrance::set_action_holder(&action_holder);
   Pingu::set_action_holder(&action_holder);
   Trap::set_action_holder(&action_holder);

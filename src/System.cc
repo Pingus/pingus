@@ -1,4 +1,4 @@
-//  $Id: System.cc,v 1.8 2000/04/25 17:54:40 grumbel Exp $
+//  $Id: System.cc,v 1.9 2000/06/08 20:05:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -138,6 +138,10 @@ System::create_dir(std::string directory)
 	  std::cout << "Successfully created: " << directory << std::endl;
 	}
     }
+  else
+    {
+      std::cout << "Found: " << directory << std::endl;
+    }
 }
 
 void
@@ -150,6 +154,8 @@ System::init_directories()
   create_dir(statdir + "levels/");
   create_dir(statdir + "levels/dist");
   create_dir(statdir + "stat/");
+  create_dir(statdir + "demos/");
+  create_dir(statdir + "demos/");
   create_dir(statdir + "themes/");
 
   // create_dir(vardir);

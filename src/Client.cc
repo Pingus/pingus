@@ -1,4 +1,4 @@
-//  $Id: Client.cc,v 1.23 2000/05/26 17:54:11 grumbel Exp $
+//  $Id: Client.cc,v 1.24 2000/06/08 20:05:35 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -40,6 +40,7 @@ SmallMap*      Client::small_map;
 
 Client::Client(Server* s)
 {
+  player = 0;
   server = s;
   fast_forward = false;
   pause = false;
@@ -54,6 +55,19 @@ Client::Client(Server* s)
 Client::~Client()
 {
   delete event;
+}
+
+void
+Client::start(DemoPlayer* player)
+{
+  assert(player);
+  this->player = player;
+
+  std::string demo_level_file = find_file(pingus_datadir, "levels/" + player->get_levelname());
+
+  std::cout << "Demo_level_file: " << demo_level_file << std::endl;
+
+  play_level(demo_level_file);
 }
 
 void
@@ -97,17 +111,14 @@ Client::init_display()
 
   CL_MouseCursor::set_cursor(CL_MouseCursorProvider::load("Cursors/cursor", PingusResource::get("game.dat")));
   CL_MouseCursor::show(true);
-  /*
-  if (!gui_is_init)
-    {*/
-      playfield    = new Playfield(plf, server->get_world());
-      button_panel = new ButtonPanel(plf);
-      pcounter     = new PingusCounter();
-      small_map    = new SmallMap();
-      time_display = new TimeDisplay();
-      gui_is_init = true;
-      //}
-
+  
+  playfield    = new Playfield(plf, server->get_world());
+  button_panel = new ButtonPanel(plf);
+  pcounter     = new PingusCounter();
+  small_map    = new SmallMap();
+  time_display = new TimeDisplay();
+  gui_is_init = true;
+   
   button_panel->set_server(server);
   time_display->set_server(server);
   button_panel->set_client(this);
@@ -116,12 +127,9 @@ Client::init_display()
   
   event->playfield = playfield;
 
-  if (play_demo)
+  /*  if (play_demo)
     server->set_demo(demo_file);
-  
-  if (record_demo)
-    server->set_record_file(demo_file);
-
+  */
   playfield->set_clip_rect(0, 0, 
 			   CL_Display::get_width(),
 			   CL_Display::get_height());
@@ -179,7 +187,10 @@ Client::play_level(std::string plf_filename, std::string psm_filename)
     
     plf->set_psm_filename(filename + ".psm");
   }
-  
+
+  if (!player)
+    server->record_demo();
+
   server->start(plf);
   event->register_event_handler();
 
@@ -203,7 +214,10 @@ Client::play_level(std::string plf_filename, std::string psm_filename)
     {
       CL_System::keep_alive(); 
     
+      // Let the server process a game loop
       server->let_move();
+
+      send_next_event();
     
       // Let the window move its content
       for(std::vector<GuiObj*>::size_type i=0; i < obj.size(); ++i) 
@@ -226,6 +240,31 @@ Client::play_level(std::string plf_filename, std::string psm_filename)
 	}
     }
   event->unregister_event_handler();
+}
+
+void
+Client::send_next_event()
+{
+  if (!player) 
+    {
+      return;
+    }
+ else
+   {
+     while(!player->empty())
+       {
+	 const PingusEvent& event = player->peek_event();
+	 
+	 if (event.game_time > GameTime::get_time()) {
+	   break;
+	 } else if (event.game_time == GameTime::get_time()) {
+	   server->send_event(event.str);
+	   player->dequeue_event();
+	 } else {
+	   std::cout << "Client: Demo code currupt..." << std::endl;
+	 }
+       }
+   }
 }
 
 void

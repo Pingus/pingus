@@ -1,4 +1,4 @@
-//  $Id: Client.hh,v 1.11 2000/05/26 17:54:12 grumbel Exp $
+//  $Id: Client.hh,v 1.12 2000/06/08 20:05:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,6 +30,7 @@
 #include "TimeDisplay.hh"
 #include "PinguInfo.hh"
 #include "PingusCounter.hh"
+#include "DemoPlayer.hh"
 #include "SmallMap.hh"
 
 class ClientEvent;
@@ -53,6 +54,7 @@ private:
   int  current_fps;
   bool do_replay;
   bool is_finished;
+  DemoPlayer* player;
 
   std::vector<GuiObj* > obj;
 
@@ -72,6 +74,10 @@ public:
 
   void start(std::string filename, PingusGameMode m = (PingusGameMode)INTERACTIVE_MODE);
   void start(std::string plf_filename, std::string psm_filename);
+  void start(DemoPlayer*);
+
+  void send_next_event();
+
   void play_level(std::string plf_filename, std::string psm_filename = "");
 
   void init_display();

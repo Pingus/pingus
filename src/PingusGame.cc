@@ -1,4 +1,4 @@
-//  $Id: PingusGame.cc,v 1.11 2000/05/25 17:16:21 grumbel Exp $
+//  $Id: PingusGame.cc,v 1.12 2000/06/08 20:05:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,6 +26,7 @@
 #include "algo.hh"
 #include "Timer.hh"
 #include "TrueServer.hh"
+#include "DemoPlayer.hh"
 #include "PingusGame.hh"
 
 // A wrapper class around the client and the server, to allow a much
@@ -93,7 +94,7 @@ PingusGame::write_lastlevel_file(std::string levelfile)
 
 // Start the given level
 void
-PingusGame::start(std::string plf_filename, std::string psm_filename)
+PingusGame::start_game(std::string plf_filename, std::string psm_filename)
 {
   if (verbose) std::cout << "PingusGame: start" << std::endl;
 
@@ -115,7 +116,7 @@ PingusGame::start(std::string plf_filename, std::string psm_filename)
 	if (server)
 	  delete server;
 
-	server = new TrueServer;
+	server = new TrueServer();
 	client = new Client(server);
     
 	if (psm_filename.empty()) 
@@ -135,7 +136,36 @@ PingusGame::start(std::string plf_filename, std::string psm_filename)
       PingusMessageBox(" PingusError: " + err.message);
     }
 
-  if (verbose) std::cout << "PingusGame: start() done" << std::endl;
+  if (verbose) std::cout << "PingusGame: start_game() done" << std::endl;
+}
+
+void
+PingusGame::start_demo(std::string pdm_filename)
+{
+  DemoPlayer player;
+  
+  try 
+    {
+      if (client)
+	delete client;
+      
+      if (server)
+	delete server;
+
+      player.load(pdm_filename);
+     
+      server = new TrueServer();
+      client = new Client(server);
+      
+      client->start(&player);
+    }  
+
+  catch(PingusError err)
+    {
+      PingusMessageBox(" PingusError: " + err.message);
+    }
+
+  if (verbose) std::cout << "PingusGame: start_demo() done" << std::endl;
 }
 
 /* EOF */

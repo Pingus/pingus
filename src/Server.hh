@@ -1,4 +1,4 @@
-//  $Id: Server.hh,v 1.5 2000/04/24 13:15:41 grumbel Exp $
+//  $Id: Server.hh,v 1.6 2000/06/08 20:05:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,7 +24,16 @@
 #include <fstream>
 #include "World.hh"
 #include "ActionHolder.hh"
-#include "PingusDemo.hh"
+#include "DemoRecorder.hh"
+
+class PingusEvent {
+public:
+  PingusEvent();
+  PingusEvent(std::string);
+
+  int          game_time;
+  std::string  str;
+};
 
 class Server
 {
@@ -34,8 +43,7 @@ protected:
   bool demo_mode;
   std::string demo_file;
   bool get_next_event;
-  PingusDemo demo_out;
-  PingusDemo* demo_in;
+  DemoRecorder recorder;
   bool finished;
 
 public:
@@ -61,7 +69,7 @@ public:
   void process_event(std::string);
   void send_event(std::string);
   void set_demo(std::string);
-  void set_record_file(std::string);
+  void record_demo();
 };
 
 #endif

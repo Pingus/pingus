@@ -1,4 +1,4 @@
-//   $Id: Pingus.cc,v 1.28 2000/06/08 06:14:19 grumbel Exp $
+//   $Id: Pingus.cc,v 1.29 2000/06/08 20:05:35 grumbel Exp $
 //    ___
 //   |  _\ A free Lemmings clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -43,9 +43,6 @@
 #include <ClanLib/core.h>
 #include <ClanLib/magick.h>
 
-#include "Client.hh"
-#include "Server.hh"
-#include "TrueServer.hh"
 #include "Pingus.hh"
 #include "algo.hh"
 #include "globals.hh"
@@ -690,7 +687,13 @@ PingusMain::do_lemmings_mode(void)
   if (!levelfile.empty()) 
     {
       PingusGame game;
-      game.start(levelfile);    
+      game.start_game(levelfile);
+    }
+
+  if (!demo_file.empty())
+    {
+      PingusGame game;
+      game.start_demo(demo_file);
     }
 
   try 
