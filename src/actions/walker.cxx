@@ -1,4 +1,4 @@
-//  $Id: walker.cxx,v 1.8 2002/06/26 17:43:18 grumbel Exp $
+//  $Id: walker.cxx,v 1.9 2002/06/26 19:13:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -59,9 +59,6 @@ Walker::update(float delta)
   4)
   
   */
-
-  // FIXME: pingu environment needs to get reviewed
-  pingu->environment = ENV_LAND;
 
   if (rel_getpixel(0, -1) ==  GroundpieceData::GP_WATER)
     {

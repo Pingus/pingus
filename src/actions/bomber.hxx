@@ -1,4 +1,4 @@
-//  $Id: bomber.hxx,v 1.3 2002/06/26 15:38:44 grumbel Exp $
+//  $Id: bomber.hxx,v 1.4 2002/06/26 19:13:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,18 +28,16 @@
 class Bomber : public PinguAction
 {
 private:
-  ///
   bool particle_thrown;
-  ///
   bool sound_played;
   bool gfx_exploded; 
   bool colmap_exploded; 
-  ///
+
   static bool static_surface_loaded;
   Sprite sprite;
   static CL_Surface bomber_radius;
   static CL_Surface bomber_radius_gfx;
-  ///
+
   CL_Surface explo_surf;
 
 public:
@@ -47,7 +45,6 @@ public:
   
   void   init(void);
   std::string get_name () const { return "Bomber"; }
-  PinguEnvironment get_environment() const { return PinguEnvironment(ENV_LAND|ENV_AIR); }
   void   draw_offset(int x, int y, float s);
   void   update(float delta);
   int    activation_time() { return 50; }

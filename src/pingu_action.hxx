@@ -1,4 +1,4 @@
-//  $Id: pingu_action.hxx,v 1.4 2002/06/24 22:52:55 grumbel Exp $
+//  $Id: pingu_action.hxx,v 1.5 2002/06/26 19:13:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -66,10 +66,6 @@ public:
       @param y 1 is up, -1 is down
    */
   int  rel_getpixel(int x, int y);
-
-  /** Returns the enviroment, used to check if an action can be
-      applied. */
-  virtual PinguEnvironment get_environment() const =0;
 
   /** Checks if this action allows to be overwritten with the given new action */
   virtual bool change_allowed (const std::string&) { return true; }

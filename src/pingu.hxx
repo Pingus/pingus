@@ -1,4 +1,4 @@
-//  $Id: pingu.hxx,v 1.6 2002/06/26 17:43:18 grumbel Exp $
+//  $Id: pingu.hxx,v 1.7 2002/06/26 19:13:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -76,7 +76,6 @@ public:
 
   // The stat of the pingu, these can be modified by PinguActions
   
-  PinguEnvironment environment;
   PinguStatus status;
   /// The postion of the pingu (CL_Vector::z is always zero)
   CL_Vector pos;
@@ -109,8 +108,6 @@ public:
   /** Returns the y position of the pingu
       For backward comp. only */
   int  get_y(void);
-  ///
-  PinguEnvironment get_environment(); 
 
   /** Checks if this action allows to be overwritten with the given new action */
   bool change_allowed (const std::string&);
@@ -171,22 +168,12 @@ public:
   /** Returns true if the pingu needs to catch another pingu */
   bool need_catch();
   
-  ///
   void draw_offset(int x, int y, float s = 1.0);
-  ///
   void apply_force(CL_Vector);
-
-  ///
+  
   void update(float delta);
-  ///
-  void update_persistent(float delta);
-  ///
   void update_action(float delta);
-  ///
-  //void update_falling(float delta);
-  ///
-  //void update_walking(float delta);
-
+  
   /** Indicate if the pingu's speed is above the deadly velocity */
   //bool is_tumbling () const;
   

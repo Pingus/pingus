@@ -1,4 +1,4 @@
-//  $Id: string_converter.cxx,v 1.3 2002/06/20 11:23:53 grumbel Exp $
+//  $Id: string_converter.cxx,v 1.4 2002/06/26 19:13:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,8 @@
 
 #include <stdio.h>
 #include "string_converter.hxx"
+
+using namespace std;
 
 int 
 StringConverter::to_int(const std::string& str)
@@ -64,6 +66,20 @@ StringConverter::to_string (float i)
   char buffer[256];
   sprintf (buffer, "%f", i);
   return buffer;
+}
+
+std::string string_upcase (const std::string& str)
+{
+  std::string name = str;
+  std::transform(name.begin(), name.end(), name.begin(), ::tolower);
+  return name;
+}
+
+std::string string_downcase (const std::string& str)
+{
+  std::string name = str;
+  std::transform(name.begin(), name.end(), name.begin(), ::tolower);
+  return name;
 }
 
 /* EOF */

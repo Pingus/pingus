@@ -1,4 +1,4 @@
-//  $Id: climber.hxx,v 1.2 2002/06/24 22:52:57 grumbel Exp $
+//  $Id: climber.hxx,v 1.3 2002/06/26 19:13:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,7 +33,6 @@ public:
   Climber();
   void   init();
   std::string get_name () const { return "Climber"; }
-  PinguEnvironment get_environment() const { return PinguEnvironment(ENV_LAND|ENV_AIR); }
   void draw_offset(int x, int y, float s=1.0);
   void update(float delta);
   ActionType get_type(void) { return (ActionType)WALL; }

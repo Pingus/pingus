@@ -1,4 +1,4 @@
-//  $Id: string_converter.hxx,v 1.2 2002/06/24 22:52:57 grumbel Exp $
+//  $Id: string_converter.hxx,v 1.3 2002/06/26 19:13:13 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -68,6 +68,9 @@ void from_string(const std::string& rep, T& x)
       ("Exception: 'failed to extract type T from rep' " __FILE__ ": " + rep);
   x = temp;
 }
+
+std::string string_upcase (const std::string&);
+std::string string_downcase (const std::string&);
 
 class StringConverter
 {

@@ -32,7 +32,6 @@ public:
   Teleported();
 
   std::string get_name() const { return "LaserKill"; }
-  PinguEnvironment get_environment() const { return (PinguEnvironment)ENV_LAND; }
   void init(void);
   void update(float delta);
   void draw_offset(int x, int y, float s);

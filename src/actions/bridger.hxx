@@ -1,4 +1,4 @@
-//  $Id: bridger.hxx,v 1.5 2002/06/26 10:48:19 torangan Exp $
+//  $Id: bridger.hxx,v 1.6 2002/06/26 19:13:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -54,7 +54,6 @@ public:
 
   void   init();
   std::string get_name () const;
-  PinguEnvironment get_environment() const { return ENV_LAND; }
   void   update(float delta);
   void   update_build (float delta);
   void   update_walk (float delta);

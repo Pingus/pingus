@@ -1,4 +1,4 @@
-//  $Id: faller.hxx,v 1.4 2002/06/24 22:52:57 grumbel Exp $
+//  $Id: faller.hxx,v 1.5 2002/06/26 19:13:13 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -44,7 +44,6 @@ public:
 
   bool change_allowed (const std::string&);
   
-  PinguEnvironment get_environment() const { return ENV_ALWAYS; }
   std::string get_name() const { return "Faller"; }
   bool is_tumbling () const;
 };

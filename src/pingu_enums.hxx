@@ -1,4 +1,4 @@
-//  $Id: pingu_enums.hxx,v 1.2 2002/06/24 22:52:55 grumbel Exp $
+//  $Id: pingu_enums.hxx,v 1.3 2002/06/26 19:13:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,15 +23,6 @@
 /** Haven't yet experimented much with pingu status, but maybe it is a
     good idea. Maybe that should be changed to a bitmask. */
 enum PinguStatus { PS_ALIVE, PS_EXITED, PS_DEAD };
-
-/// The environment in which a PinguAction get be activated.
-enum PinguEnvironment {
-  ENV_LAND   = 1<<0,
-  ENV_WATER  = 1<<1,
-  ENV_FIRE   = 1<<2,
-  ENV_AIR    = 1<<3,
-  ENV_ALWAYS = ~0
-};
 
 ///
 enum PingusGameMode { 

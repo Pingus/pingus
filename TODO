@@ -14,7 +14,7 @@ Major Items:
 
 * multiplayer mode should be ripped out if not working correctly
 
-* meta objects:
+* meta objects [nearly done]:
 
   Syntax of a metaobject file:
 
@@ -36,9 +36,9 @@ Major Items:
 	</parameter>
   </metaobject>
 
-* fix all major action bugs
+* fix all major action bugs [mostly done, needs more testing]
 
-* resource syntax change
+* resource syntax change [not done]
 
     <surface>
       <resource type="datafile">
@@ -104,7 +104,7 @@ Current Bugs:
 'grep' at the sources for "Bug" or "FIXME" that should give you some
 more known bugs and other stuff. 
 
-$Date: 2002/06/26 12:08:38 $
+$Date: 2002/06/26 19:13:13 $
 
 =======
 
@@ -252,7 +252,7 @@ Random crash while scrolling
 'grep' at the sources for "Bug" or "FIXME" that should give you some
 more known bugs and other stuff. 
 
-$Date: 2002/06/26 12:08:38 $
+$Date: 2002/06/26 19:13:13 $
 
 =======
 

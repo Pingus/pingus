@@ -1,4 +1,4 @@
-//  $Id: exiter.hxx,v 1.2 2002/06/24 22:52:57 grumbel Exp $
+//  $Id: exiter.hxx,v 1.3 2002/06/26 19:13:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,7 +31,6 @@ private:
 public:
   void init(void);
   std::string get_name () const { return "Exiter"; }
-  PinguEnvironment get_environment() const { return (PinguEnvironment)ENV_LAND; }
   void update(float delta);
   void draw_offset(int x, int y, float s);
 };

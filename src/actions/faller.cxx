@@ -1,4 +1,4 @@
-//  $Id: faller.cxx,v 1.9 2002/06/26 17:43:18 grumbel Exp $
+//  $Id: faller.cxx,v 1.10 2002/06/26 19:13:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -119,8 +119,8 @@ Faller::update (float delta)
     { // if pingu is not on ground
       ++falling;
 	  
-      if (falling > 3) 
-	pingu->environment = ENV_AIR; 
+      //if (falling > 3) //FIXME: insert floater check here
+      //pingu->environment = ENV_AIR; 
     }
   else // Ping is on ground/water/something
     {

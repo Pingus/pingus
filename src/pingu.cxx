@@ -1,4 +1,4 @@
-//  $Id: pingu.cxx,v 1.14 2002/06/26 17:43:18 grumbel Exp $
+//  $Id: pingu.cxx,v 1.15 2002/06/26 19:13:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,6 +31,7 @@
 #include "pingu_action_factory.hxx"
 #include "my_gettext.hxx"
 #include "debug.hxx"
+#include "string_converter.hxx"
 
 const float deadly_velocity = 20.0;
 int   Pingu::id_counter = 0;
@@ -42,7 +43,6 @@ Pingu::Pingu(const CL_Vector& arg_pos, int owner)
     id (++id_counter),
     font (PingusResource::load_font("Fonts/numbers", "fonts")),
     owner_id (owner),
-    environment (ENV_LAND),
     status (PS_ALIVE),
     pos (arg_pos)
 {
@@ -81,13 +81,6 @@ Pingu::get_id()
   return id;
 }
 
-// Returns environment
-PinguEnvironment
-Pingu::get_environment()
-{
-  return environment;
-}
-
 bool
 Pingu::change_allowed (const std::string& new_action)
 {
@@ -123,11 +116,10 @@ Pingu::request_set_action(PinguAction* act)
       pout(PINGUS_DEBUG_ACTIONS) << _("Setting action to a dead pingu") << std::endl;
       return false;
     }
-
   act->set_pingu(this);
 
   // check for persistent actions
-  if (act->get_type() != (ActionType)ONCE) 
+  if (act->get_type() != (ActionType)ONCE) // action is persistent
     {
       pout(PINGUS_DEBUG_ACTIONS) << "Pingu: Found some persistant action" << std::endl
 	                         << "Pingu: Action is " 
@@ -144,21 +136,9 @@ Pingu::request_set_action(PinguAction* act)
 
       persist.push_back(act);
       return true;
-    } 
+    }
   else 
-    {
-      if (act->get_environment() == (PinguEnvironment)ENV_ALWAYS)
-	{
-	  action = act;
-	  return true;
-	}
-
-      // if environment is bad return
-      if (!(act->get_environment() & environment))
-	{ 
-	  return false; 
-	}
-    
+    {  
       if (act->activation_time() == -1)
 	{ // Immediately activate the action
 	  if (action && (action->get_name() == act->get_name()))
@@ -166,10 +146,18 @@ Pingu::request_set_action(PinguAction* act)
 	      pout(PINGUS_DEBUG_ACTIONS) << "Pingu: Already have action" << std::endl;
 	      return false;
 	    }
-	  action = act;
-	  return true;	    
+
+	  if (act->change_allowed (string_downcase(action->get_name ()))) //FIXME: ugly
+	    {
+	      set_action (act);
+	      return true;
+	    }
+	  else
+	    {
+	      return false;	    
+	    }
 	}
-      else 
+      else // timed action
 	{
 	  if (countdown_action && countdown_action->get_name() == act->get_name())
 	    { // We skip the action, since it is already set
@@ -178,8 +166,8 @@ Pingu::request_set_action(PinguAction* act)
 	  // We set the action and start the countdown
 	  action_time = act->activation_time();
 	  countdown_action = act;
+	  return true;
 	}
-      return true;
     }
 }
 
@@ -246,24 +234,6 @@ Pingu::dist (int x, int y)
   return sqrt(((p.x - x) * (p.x - x) + (p.y - y) * (p.y - y)));
 }
 
-void
-Pingu::update_persistent(float /*delta*/)
-{
-  // set floater action if required
-  if (environment == ENV_AIR
-      && action->get_type() != (ActionType)FALL && rel_getpixel(0, -1) == GroundpieceData::GP_NOTHING) 
-    {
-      for (unsigned int i=0; i < persist.size(); ++i) 
-	{
-	  if (persist[i]->get_type() == (ActionType)FALL) 
-	    {
-	      // FIXME: Use action slots instead of the persistend vector
-              set_action("floater");
-	    }
-	}
-    }
-}
-
 // Let the pingu do his job (i.e. walk his way)
 // FIXME: This function is *much* too large, it needs a real cut down
 // into smaller pieces.  
@@ -303,7 +273,6 @@ Pingu::update(float delta)
       update_action(delta);
     }
 
-  update_persistent(delta);
   action->update(delta);
 }
 

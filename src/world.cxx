@@ -1,4 +1,4 @@
-//  $Id: world.cxx,v 1.9 2002/06/21 08:11:27 grumbel Exp $
+//  $Id: world.cxx,v 1.10 2002/06/26 19:13:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -130,7 +130,8 @@ World::update(float delta)
 
   if (do_armageddon && armageddon_count != pingus->end())
     {
-      (*armageddon_count)->set_action("bomber");
+      // The iterator here might be invalid
+      (*armageddon_count)->request_set_action("bomber");
       armageddon_count++;
     }
   

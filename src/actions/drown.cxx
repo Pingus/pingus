@@ -1,4 +1,4 @@
-//  $Id: drown.cxx,v 1.2 2002/06/13 14:25:12 torangan Exp $
+//  $Id: drown.cxx,v 1.3 2002/06/26 19:13:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,12 +24,12 @@
 void 
 Drown::init()
 {
-  if (pingu->environment == ENV_AIR)
+  //if (pingu->environment == ENV_AIR)
     sprite = Sprite ("Pingus/drownfall0", "pingus", 60.0f,
 		     Sprite::NONE, Sprite::ONCE);
-  else
-    sprite = Sprite ("Pingus/drownwalk0", "pingus", 30.0f,
-		     Sprite::NONE, Sprite::ONCE);
+    //else
+    //sprite = Sprite ("Pingus/drownwalk0", "pingus", 30.0f,
+    //	     Sprite::NONE, Sprite::ONCE);
 
   sprite.set_align_center_bottom ();
 }

@@ -1,4 +1,4 @@
-//  $Id: floater.cxx,v 1.5 2002/06/26 17:43:18 grumbel Exp $
+//  $Id: floater.cxx,v 1.6 2002/06/26 19:13:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "../pingu.hxx"
+#include "../groundpiece_data.hxx"
 #include "floater.hxx"
 
 Floater::Floater() : falling_depth(0), step(0)
@@ -39,7 +40,7 @@ Floater::update(float delta)
   sprite.update (delta);
 
   pingu->velocity = CL_Vector(0.0, 0.0);
-  if (rel_getpixel(0, -1) == 0) {
+  if (rel_getpixel(0, -1) == GroundpieceData::GP_NOTHING) {
     ++step;
     if (step > 0) {
       ++(pingu->pos.y);
@@ -48,6 +49,19 @@ Floater::update(float delta)
   } else {
     pingu->set_action ("walker");
   }
+
+  // FIXME: use action slots here instead of a for-loop
+  if (rel_getpixel(0, -1) == GroundpieceData::GP_NOTHING) 
+    {
+      for (unsigned int i=0; i < pingu->get_persistent_actions ()->size(); ++i) 
+	{
+	  if ((*(pingu->get_persistent_actions ()))[i]->get_type() == (ActionType)FALL) 
+	    {
+	      // FIXME: Use action slots instead of the persistend vector
+              pingu->set_action("floater");
+	    }
+	}
+    }
 }
 
 void 
