@@ -1,4 +1,4 @@
-//  $Id: floater.cc,v 1.6 2000/12/16 23:11:21 grumbel Exp $
+//  $Id: floater.cc,v 1.7 2001/03/31 10:54:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -45,7 +45,7 @@ Floater::let_move()
   if (rel_getpixel(0, -1) == 0) {
     ++step;
     if (step > 0) {
-      ++(pingu->y_pos);
+      ++(pingu->pos.y);
       step = 0;
     }
   } else {

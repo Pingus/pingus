@@ -1,4 +1,4 @@
-//  $Id: Pingu.cc,v 1.41 2001/03/31 09:54:51 grumbel Exp $
+//  $Id: Pingu.cc,v 1.42 2001/03/31 10:54:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,10 @@
 #include <boost/smart_ptr.hpp>
 
 using namespace boost;
+
+#include "actions/Drown.hh"
+#include "actions/Splashed.hh"
+#include "actions/LaserKill.hh"
 
 #include "globals.hh"
 #include "World.hh"
@@ -245,6 +249,17 @@ Pingu::is_over(int x, int y)
     {
       return false;
     }
+}
+
+bool
+Pingu::is_inside (int x1, int y1, int x2, int y2)
+{
+  assert (x1 < x2);
+  assert (y1 < y2);
+
+  return (pos.x > x1 && pos.x < x2 
+	  &&
+	  pos.y > y1 && pos.y < y2);
 }
 
 // Returns the distance between the Pingu and a given coordinate
@@ -657,5 +672,6 @@ Pingu::is_tumbling () const
       return false;
     }
 }
+
 
 /* EOF */

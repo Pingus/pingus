@@ -1,4 +1,4 @@
-//  $Id: bridger.cc,v 1.30 2000/12/16 23:11:21 grumbel Exp $
+//  $Id: bridger.cc,v 1.31 2001/03/31 10:54:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -64,12 +64,12 @@ Bridger::draw_offset(int x, int y, float s)
 {
   if (s == 1.0) 
     {
-      surface.put_screen(pingu->x_pos + x + x_offset(), pingu->y_pos + y + y_offset(),
+      surface.put_screen(pingu->get_x () + x + x_offset(), pingu->get_y () + y + y_offset(),
 			  do_steps + ((pingu->direction.is_left()) ? 0 : counter.get_size()));
     }
   else 
     {
-      surface.put_screen(int((pingu->x_pos + x + x_offset()) * s), int((pingu->y_pos + y + y_offset() - 1) * s), 
+      surface.put_screen(int((pingu->get_x () + x + x_offset()) * s), int((pingu->get_y () + y + y_offset() - 1) * s), 
 			  s, s, do_steps + ((pingu->direction.is_left()) ? 0 : counter.get_size()));
     }
 }
@@ -150,29 +150,29 @@ Bridger::place_a_brick()
   if (pingu->direction.is_right())
     {
       pingu->get_world()->get_colmap()->put(brick_r, 
-					    pingu->x_pos + 10 - brick_r.get_width(),
-					    pingu->y_pos,
+					    pingu->get_x () + 10 - brick_r.get_width(),
+					    pingu->get_y (),
 					    GroundpieceData::BRIDGE);
       pingu->get_world()->get_gfx_map()->put(brick_r,
-					     (int) pingu->x_pos + 10 - brick_r.get_width(),
-					     pingu->y_pos);
+					     (int) pingu->get_x () + 10 - brick_r.get_width(),
+					     pingu->get_y ());
     }
   else
     {
-      pingu->get_world()->get_colmap()->put(brick_r, pingu->x_pos - 10,
-					    pingu->y_pos,
+      pingu->get_world()->get_colmap()->put(brick_r, pingu->get_x () - 10,
+					    pingu->get_y (),
 					    GroundpieceData::BRIDGE);
       pingu->get_world()->get_gfx_map()->put(brick_l,
-					     pingu->x_pos - 10,
-					     pingu->y_pos);
+					     pingu->get_x () - 10,
+					     pingu->get_y ());
     }
 }
 
 void
 Bridger::walk_one_step_up()
 {
-  pingu->x_pos += 4 * pingu->direction;
-  pingu->y_pos -= 2;
+  pingu->pos.x += 4.0 * pingu->direction;
+  pingu->pos.y -= 2.0;
   counter = 0;
 }
 

@@ -1,4 +1,4 @@
-//  $Id: basher.cc,v 1.17 2000/12/16 23:11:21 grumbel Exp $
+//  $Id: basher.cc,v 1.18 2001/03/31 10:54:27 grumbel Exp $
 //
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -60,12 +60,12 @@ Basher::draw_offset(int x, int y, float s)
 {
   if (s == 1.0) 
     {
-      surface.put_screen(pingu->x_pos + x + x_offset(), pingu->y_pos + y + y_offset(), 
+      surface.put_screen(pingu->get_x () + x + x_offset(), pingu->get_y () + y + y_offset(), 
 			  counter + ((pingu->direction.is_left()) ? 0 : counter.get_size()));
     } 
   else 
     {
-      surface.put_screen(int((pingu->x_pos + x + x_offset()) * s), int((pingu->y_pos + y + y_offset()) * s), 
+      surface.put_screen(int((pingu->get_x () + x + x_offset()) * s), int((pingu->get_y () + y + y_offset()) * s), 
 			 s, s, counter + ((pingu->direction.is_left()) ? 0 : counter.get_size()));
     }
 }
@@ -97,9 +97,9 @@ void
 Basher::bash()
 {
   pingu->get_world()->get_colmap()->remove(bash_radius,
-					   pingu->x_pos - (bash_radius.get_width()/2), pingu->y_pos - 31);
+					   pingu->get_x () - (bash_radius.get_width()/2), pingu->get_y () - 31);
   pingu->get_world()->get_gfx_map()->remove(bash_radius,
-					    pingu->x_pos - (bash_radius.get_width()/2), pingu->y_pos - 31);
+					    pingu->get_x () - (bash_radius.get_width()/2), pingu->get_y () - 31);
 }
 
 void
@@ -110,7 +110,7 @@ Basher::walk_forward()
     is_finished = true;
   } else {
     // On ground, walk forward...
-    pingu->x_pos += pingu->direction;
+    pingu->pos.x += pingu->direction;
   }
 }
 

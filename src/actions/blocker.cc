@@ -1,4 +1,4 @@
-//  $Id: blocker.cc,v 1.9 2000/12/16 23:11:21 grumbel Exp $
+//  $Id: blocker.cc,v 1.10 2001/03/31 10:54:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -40,13 +40,13 @@ Blocker::init(void)
 
   if (rel_getpixel(0,-1) == ColMap::NOTHING && rel_getpixel(0, -2) == ColMap::WALL) 
     {
-      ++pingu->y_pos;
+      ++pingu->pos.x;
     } 
   else if (rel_getpixel(0,-1) == ColMap::NOTHING && rel_getpixel(0, -2) == ColMap::NOTHING
 	   && rel_getpixel(0,-3) == ColMap::WALL) 
     {
-      ++pingu->y_pos;
-      ++pingu->y_pos;
+      ++pingu->pos.y;
+      ++pingu->pos.y;
     }
 }
 
@@ -75,13 +75,13 @@ Blocker::need_catch()
 void
 Blocker::catch_pingu(Pingu* target)
 {
-  if (target->x_pos > pingu->x_pos - 16 
-      && target->x_pos < pingu->x_pos + 16
-      && target->y_pos > pingu->y_pos - 32
-      && target->y_pos < pingu->y_pos + 5
+  if (target->get_x () > pingu->get_x () - 16 
+      && target->get_x () < pingu->get_x () + 16
+      && target->get_y () > pingu->get_y () - 32
+      && target->get_y () < pingu->get_y () + 5
       ) 
     {
-      if (target->x_pos > pingu->x_pos) {
+      if (target->get_x () > pingu->get_x ()) {
 	target->direction.right();
       } else {
 	target->direction.left();

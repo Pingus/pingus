@@ -1,4 +1,4 @@
-// $Id: miner.cc,v 1.14 2000/12/16 23:11:21 grumbel Exp $
+// $Id: miner.cc,v 1.15 2001/03/31 10:54:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -50,29 +50,29 @@ Miner::let_move()
     {
       if (slow_count % 3 == 0) 
 	{
-	  pingu->get_world()->get_colmap()->remove(miner_radius.get_provider(), pingu->x_pos - 16 + pingu->direction, 
-						   pingu->y_pos - 31);
-	  pingu->get_world()->get_gfx_map()->remove(miner_radius.get_provider(), pingu->x_pos - 16 + pingu->direction, 
-						    pingu->y_pos - 31);
+	  pingu->get_world()->get_colmap()->remove(miner_radius.get_provider(), pingu->get_x () - 16 + pingu->direction, 
+						   pingu->get_y () - 31);
+	  pingu->get_world()->get_gfx_map()->remove(miner_radius.get_provider(), pingu->get_x () - 16 + pingu->direction, 
+						    pingu->get_y () - 31);
 	}
 
-      pingu->x_pos += pingu->direction;
-      pingu->y_pos += 1;
+      pingu->pos.x += pingu->direction;
+      pingu->pos.y += 1;
     }
   
   if (rel_getpixel(0, -1) == ColMap::NOTHING)
     {
-      pingu->get_world()->get_colmap()->remove(miner_radius, pingu->x_pos - 16 + pingu->direction, pingu->y_pos - 29);
-      pingu->get_world()->get_gfx_map()->remove(miner_radius, pingu->x_pos - 16 + pingu->direction, pingu->y_pos - 29);
+      pingu->get_world()->get_colmap()->remove(miner_radius, pingu->get_x () - 16 + pingu->direction, pingu->get_y () - 29);
+      pingu->get_world()->get_gfx_map()->remove(miner_radius, pingu->get_x () - 16 + pingu->direction, pingu->get_y () - 29);
       is_finished = true;
     }
   else if (rel_getpixel(0, -1) & ColMap::SOLID)
     {
       PingusSound::play_wav("chink");
-      pingu->get_world()->get_colmap()->remove(miner_radius, pingu->x_pos - 16 + pingu->direction, 
-					       pingu->y_pos - 31);
-      pingu->get_world()->get_gfx_map()->remove(miner_radius, pingu->x_pos - 16 + pingu->direction, 
-						pingu->y_pos - 31);
+      pingu->get_world()->get_colmap()->remove(miner_radius, pingu->get_x () - 16 + pingu->direction, 
+					       pingu->get_y () - 31);
+      pingu->get_world()->get_gfx_map()->remove(miner_radius, pingu->get_x () - 16 + pingu->direction, 
+						pingu->get_y () - 31);
       is_finished = true;
     }
 }

@@ -1,4 +1,4 @@
-//  $Id: bomber.cc,v 1.13 2000/12/16 23:11:21 grumbel Exp $
+//  $Id: bomber.cc,v 1.14 2001/03/31 10:54:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -73,12 +73,12 @@ Bomber::draw_offset(int x, int y, float s)
     {
       if (is_multi_direct) 
 	{
-	  surface.put_screen(pingu->x_pos + x + x_offset(), pingu->y_pos + y + y_offset(), 
+	  surface.put_screen(pingu->get_x () + x + x_offset(), pingu->get_y () + y + y_offset(), 
 			      ++counter + ((pingu->direction.is_left()) ? 0 : counter.size()));
 	}
       else 
 	{
-	  surface.put_screen(pingu->x_pos + x + x_offset(), pingu->y_pos + y + y_offset(),
+	  surface.put_screen(pingu->get_x () + x + x_offset(), pingu->get_y () + y + y_offset(),
 			      ++counter);
 	}
     } 
@@ -86,19 +86,19 @@ Bomber::draw_offset(int x, int y, float s)
     {
       if (is_multi_direct) 
 	{
-	  surface.put_screen(int((pingu->x_pos + x + x_offset()) * s), int((pingu->y_pos + y + y_offset()) * s), 
+	  surface.put_screen(int((pingu->get_x () + x + x_offset()) * s), int((pingu->get_y () + y + y_offset()) * s), 
 			      s, s, ++counter + ((pingu->direction.is_left()) ? 0 : counter.size()));
 	} 
       else 
 	{
-	  surface.put_screen(int((pingu->x_pos + x + x_offset()) * s), int((pingu->y_pos + y + y_offset()) * s),
+	  surface.put_screen(int((pingu->get_x () + x + x_offset()) * s), int((pingu->get_y () + y + y_offset()) * s),
 			      s, s, ++counter);
 	}
     }
   
   if (counter >= (int)(surface.get_num_frames()) - 1) 
     {
-      explo_surf.put_screen(pingu->x_pos - 32 + x, pingu->y_pos - 48 + y);
+      explo_surf.put_screen(pingu->get_x () - 32 + x, pingu->get_y () - 48 + y);
     } 
 }
 
@@ -117,7 +117,7 @@ Bomber::let_move()
   if (counter > 12 && !particle_thrown) 
     {
       particle_thrown = true;
-      pingu->get_world()->get_particle_holder()->add_pingu_explo(pingu->x_pos, pingu->y_pos - 5);
+      pingu->get_world()->get_particle_holder()->add_pingu_explo(pingu->get_x (), pingu->get_y () - 5);
     }
 
   // The pingu explode
@@ -125,15 +125,15 @@ Bomber::let_move()
     {
       pingu->set_status(dead);
       pingu->get_world()->get_colmap()->remove(bomber_radius,
-					       pingu->x_pos - (bomber_radius.get_width()/2),
-					       pingu->y_pos - 16 - (bomber_radius.get_width()/2));
+					       pingu->get_x () - (bomber_radius.get_width()/2),
+					       pingu->get_y () - 16 - (bomber_radius.get_width()/2));
       pingu->get_world()->get_gfx_map()->remove(bomber_radius, 
-						pingu->x_pos - (bomber_radius.get_width()/2),
-						pingu->y_pos - 16 - (bomber_radius.get_width()/2));
+						pingu->get_x () - (bomber_radius.get_width()/2),
+						pingu->get_y () - 16 - (bomber_radius.get_width()/2));
       
       // Add an explosion to the forces list
-      ForcesHolder::add_force(ExplosionForce(5,30,CL_Vector(pingu->x_pos,
-							     pingu->y_pos - 20)));
+      ForcesHolder::add_force(ExplosionForce(5,30,CL_Vector(pingu->get_x (),
+							     pingu->get_y () - 20)));
     }
 }
 

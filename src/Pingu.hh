@@ -1,4 +1,4 @@
-//  $Id: Pingu.hh,v 1.20 2001/03/31 09:54:51 grumbel Exp $
+//  $Id: Pingu.hh,v 1.21 2001/03/31 10:54:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -177,6 +177,8 @@ public:
 
   ///
   bool   is_over(int x, int y);
+  ///
+  bool   is_inside (int x1, int y1, int x2, int y2);
   ///
   double dist(int x, int y);
 };
