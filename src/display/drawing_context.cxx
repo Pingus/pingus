@@ -19,6 +19,7 @@
 
 #include <assert.h>
 #include <ClanLib/Display/sprite.h>
+#include <ClanLib/Display/font.h>
 #include <ClanLib/Display/graphic_context.h>
 #include <iostream>
 #include "drawing_context.hxx"
@@ -62,6 +63,26 @@ public:
 
   void draw(CL_GraphicContext* gc) {
     sprite.draw(static_cast<int>(pos.x), static_cast<int>(pos.y), gc);
+  }
+};
+
+class FontDrawingRequest : public DrawingRequest
+{
+private:
+  CL_Font font;
+  std::string text;
+  float x;
+  float y;
+public:
+  FontDrawingRequest(CL_Font font_, CL_Origin origin, const CL_Vector& pos, const std::string& text_)
+    : DrawingRequest(pos),
+      font(font_), text(text_)
+  {
+    font.set_alignment(origin);
+  }
+
+  void draw(CL_GraphicContext* gc) {
+    font.draw(static_cast<int>(pos.x), static_cast<int>(pos.y), text, gc);
   }
 };
 
@@ -263,30 +284,45 @@ DrawingContext::get_height() const
 }
 
 void
-DrawingContext::print_left (const CL_Font& font, float x_pos, float y_pos, const std::string& str)
+DrawingContext::print_left (const CL_Font& font_, float x_pos, float y_pos, const std::string& str)
 {
+  draw(new FontDrawingRequest(font_, 
+                              origin_top_left,
+                              CL_Vector(x_pos + translate_stack.back().x,
+                                        y_pos + translate_stack.back().y),
+                              str));
 }
 
 void
-DrawingContext::print_center (const CL_Font& font, float x_pos, float y_pos, const std::string& str)
+DrawingContext::print_center (const CL_Font& font_, float x_pos, float y_pos, const std::string& str)
 {
+  draw(new FontDrawingRequest(font_, 
+                              origin_top_center,
+                              CL_Vector(x_pos + translate_stack.back().x,
+                                        y_pos + translate_stack.back().y),
+                              str));
 }
 
 void
-DrawingContext::print_right (const CL_Font& font, float x_pos, float y_pos, const std::string& str)
+DrawingContext::print_right (const CL_Font& font_, float x_pos, float y_pos, const std::string& str)
 {
+  draw(new FontDrawingRequest(font_, 
+                              origin_top_right,
+                              CL_Vector(x_pos + translate_stack.back().x,
+                                        y_pos + translate_stack.back().y),
+                              str));
 }
 
 Vector
 DrawingContext::screen_to_world (Vector pos)
 {
-  return pos;
+  return pos - Vector(translate_stack.back().x, translate_stack.back().y);
 }
 
 Vector
 DrawingContext::world_to_screen (Vector pos)
 {
-  return pos;
+  return pos + Vector(translate_stack.back().x, translate_stack.back().y);
 }
 
 }
