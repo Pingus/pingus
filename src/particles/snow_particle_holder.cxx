@@ -1,4 +1,4 @@
-//  $Id: snow_particle_holder.cxx,v 1.1 2002/12/28 16:10:18 torangan Exp $
+//  $Id: snow_particle_holder.cxx,v 1.2 2002/12/31 14:34:19 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,21 +36,21 @@ SnowParticleHolder::SnowParticle::SnowParticle (int x, int y, bool colliding_)
   switch (rand() % 10)
     {
       case 0:
-        type = Snow1;
-	      break;
-	    case 1:
-	      type = Snow2;
-	      break;
-	    case 2:
-	    case 3:
-	      type = Snow3;
-	      break;
-	    case 5:
-	    case 6:
-	      type = Snow4;
-	    default:
-	      type = Snow5;
-	      break;
+        type = SnowParticleHolder::Snow1;
+	break;
+      case 1:
+	type = SnowParticleHolder::Snow2;
+	break;
+      case 2:
+      case 3:
+	type = SnowParticleHolder::Snow3;
+	break;
+      case 5:
+      case 6:
+	type = SnowParticleHolder::Snow4;
+      default:
+	type = SnowParticleHolder::Snow5;
+	break;
     }
 }
 

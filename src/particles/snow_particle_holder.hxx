@@ -1,4 +1,4 @@
-//  $Id: snow_particle_holder.hxx,v 1.1 2002/12/28 16:10:18 torangan Exp $
+//  $Id: snow_particle_holder.hxx,v 1.2 2002/12/31 14:34:19 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,6 +41,8 @@ private:
 
     SnowParticle(int x, int y, bool colliding_);
   };
+
+friend struct SnowParticle;
 
 private:
   CL_Surface snow1;
