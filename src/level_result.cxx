@@ -1,4 +1,4 @@
-//  $Id: level_result.cxx,v 1.12 2003/04/15 19:06:50 grumbel Exp $
+//  $Id: level_result.cxx,v 1.13 2003/04/15 20:08:26 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -113,7 +113,7 @@ PingusLevelResult::get_message (int saved)
   } else if (saved > 30) {
     return _("Maybe you would feel more at home playing Quake.");
   } else if (saved > 20) {
-    return _("Maybe this level calls for a different stratagy. Like attempting to save them, for example.");
+    return _("Maybe this level calls for a different strategy. Like attempting to save them, for example.");
   } else if (saved > 10) {
     return _("Ever considered a career as a Pingu exterminator?");
   } else if (saved > 0) {
