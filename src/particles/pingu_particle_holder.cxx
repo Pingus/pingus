@@ -1,4 +1,4 @@
-//  $Id: pingu_particle_holder.cxx,v 1.5 2003/03/05 15:29:47 torangan Exp $
+//  $Id: pingu_particle_holder.cxx,v 1.6 2003/03/05 15:40:16 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,8 +23,6 @@
 #include "../pingus_resource.hxx"
 #include "../world.hxx"
 #include "pingu_particle_holder.hxx"
-
-#include <iostream>
 
 namespace Particles {
 
