@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.89 2002/08/16 17:15:31 grumbel Exp $
+#  $Id: Makefile.am,v 1.90 2002/08/22 00:36:29 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -282,6 +282,7 @@ smallmap_image.cxx \
 smallmap_image.hxx \
 sound.cxx \
 sound.hxx \
+sounds.hxx \
 sound_dummy.cxx \
 sound_dummy.hxx \
 sound_real.cxx \

@@ -1,4 +1,4 @@
-//  $Id: button_factory.cxx,v 1.6 2002/08/16 15:14:00 torangan Exp $
+//  $Id: button_factory.cxx,v 1.7 2002/08/22 00:36:30 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -85,8 +85,8 @@ namespace Input {
     int id     = strtol(id_str,     reinterpret_cast<char**>(NULL), 10);
     int button = strtol(button_str, reinterpret_cast<char**>(NULL), 10);
     
-    free(id_str);
-    free(button_str);
+    xmlFree(id_str);
+    xmlFree(button_str);
     
     return new JoystickButton(id, button);
   }
@@ -99,7 +99,7 @@ namespace Input {
     
     int key = KeyHelper::string_to_key(key_str);
     
-    free(key_str);
+    xmlFree(key_str);
     
     return new KeyButton(key);
   }
@@ -111,7 +111,7 @@ namespace Input {
       PingusError::raise("MouseButton without button parameter");
     
     int button = strtol(button_str, reinterpret_cast<char**>(NULL), 10);
-    free(button_str);
+    xmlFree(button_str);
     
     return new MouseButton(button);
   }

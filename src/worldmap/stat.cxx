@@ -1,4 +1,4 @@
-//  $Id: stat.cxx,v 1.3 2002/08/16 15:14:00 torangan Exp $
+//  $Id: stat.cxx,v 1.4 2002/08/22 00:36:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -101,24 +101,24 @@ PingusWorldMapStat::parse_node (xmlNodePtr cur)
 
   if (id) {
     from_string (id, node.id);
-    free (id);
+    xmlFree(id);
   } else {
     std::cout << "PingusWorldMapStat: id missing" << std::endl;
   }
   
   if (accessible) {
     node.accessible = StringConverter::to_int (accessible);
-    free (accessible);    
+    xmlFree(accessible);    
   }
   
   if (finished) {
     node.finished = StringConverter::to_int (finished);
-    free (finished);  
+    xmlFree(finished);  
   }
   
   if (checksum) {
     //node.checksum = StringConverter::to_int (checksum);
-    free (checksum);
+    xmlFree(checksum);
   }
 
   stats[node.id] = node;

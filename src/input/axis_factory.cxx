@@ -1,4 +1,4 @@
-//  $Id: axis_factory.cxx,v 1.7 2002/08/16 15:14:00 torangan Exp $
+//  $Id: axis_factory.cxx,v 1.8 2002/08/22 00:36:30 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -64,7 +64,7 @@ namespace Input {
       PingusError::raise("ButtonAxis without angle parameter");
       
     float angle = strtod(angle_str, reinterpret_cast<char**>(NULL));
-    free(angle_str);
+    xmlFree(angle_str);
 
     cur = XMLhelper::skip_blank(cur->children);
     Button* button1 = ButtonFactory::create(cur);   
@@ -98,9 +98,9 @@ namespace Input {
     int   id    = strtol(id_str,    reinterpret_cast<char**>(NULL), 10);
     int   axis  = strtol(axis_str,  reinterpret_cast<char**>(NULL), 10);
     
-    free(angle_str);
-    free(id_str);
-    free(axis_str);
+    xmlFree(angle_str);
+    xmlFree(id_str);
+    xmlFree(axis_str);
     
     return new JoystickAxis(id, axis, angle);
   }
@@ -118,8 +118,8 @@ namespace Input {
     float angle = strtod(angle_str, reinterpret_cast<char**>(NULL));
     int   axis  = strtol(axis_str,  reinterpret_cast<char**>(NULL), 10);
     
-    free(angle_str);
-    free(axis_str);
+    xmlFree(angle_str);
+    xmlFree(axis_str);
     
     return new MouseAxis(axis, angle);
   }

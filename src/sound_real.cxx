@@ -1,4 +1,4 @@
-//  $Id: sound_real.cxx,v 1.4 2002/08/17 17:56:23 torangan Exp $
+//  $Id: sound_real.cxx,v 1.5 2002/08/22 00:36:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -92,17 +92,17 @@ PingusSoundReal::real_play_sound(const std::string & filename, float volume, flo
   if (!sound_enabled)
     return;
 
-  
-
   std::vector<CL_SoundBuffer_Session *>::iterator it;
 
+  std::cout << "FIXME: this is broken PingusSoundReal::real_play_sound(const std::string & filename, float volume, float panning)" << std::endl;
   // search for unused SoundBuffer_Sessions - clean them up
+  /* FIXME: This causes segfaults, newing SoundBuffer_Session is IIRC incorrect
   for (it = sound_holder.begin(); it != sound_holder.end(); it++) {
     if (!(*it) -> is_playing()) {
       delete *it;
       sound_holder.erase(it);
     }
-  }
+    }*/
 
   CL_SoundBuffer         * buffer;
   CL_SoundBuffer_Session * sess;
@@ -111,7 +111,8 @@ PingusSoundReal::real_play_sound(const std::string & filename, float volume, flo
     buffer = new CL_SoundBuffer (new CL_Sample(filename.c_str(), NULL), true);
     sess   = new CL_SoundBuffer_Session(buffer -> prepare());
   } catch (const CL_Error & e) {
-    pout(PINGUS_DEBUG_SOUND) << "Can't open file " << filename << " -- skipping\n";
+    perr(PINGUS_DEBUG_SOUND) << "Can't open file " << filename << " -- skipping\n"
+			     << "  CL_Error: " << e.message << std::endl;    
     return;
   }
   

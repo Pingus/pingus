@@ -1,4 +1,4 @@
-//  $Id: sound.cxx,v 1.4 2002/06/21 07:45:35 grumbel Exp $
+//  $Id: sound.cxx,v 1.5 2002/08/22 00:36:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <assert.h>
+#include "path_manager.hxx"
 #include "sound_dummy.hxx"
 
 PingusSound* PingusSound::sound;
@@ -33,14 +34,39 @@ PingusSound::init (PingusSound* s)
 /** Load a sound file and play it immediately.
     
     @param filename The complete filename */
-    
+   
 void 
 PingusSound::play_sound(const std::string & filename, float volume, float panning)
 {
   assert (sound);
-  sound->real_play_sound (filename, volume, panning);
+  sound->real_play_sound (path_manager.complete (filename), volume, panning);
 }
 
+void
+PingusSound::play_sound(Sound::Name name, float volume, float panning)
+{
+  // FIXME: We need to return a handle to the sound
+
+  // This should be configurable via a .xml file
+  switch (name)
+    {
+    case Sound::DIGGER:
+      play_sound (path_manager.complete ("sounds/digger.wav"));
+      break;
+    case Sound::PLOP:
+      play_sound (path_manager.complete ("sounds/plop.wav"));
+      break;
+    case Sound::GOODIDEA:
+      play_sound (path_manager.complete ("sounds/goodidea.wav"));
+      break;
+    case Sound::OHNO:
+      play_sound (path_manager.complete ("sounds/ohno.wav"));
+      break;
+    case Sound::TICK:
+      play_sound (path_manager.complete ("sounds/tick.wav"));
+      break;
+    }
+}
 
 /** Load a sound file and play it immediately.
     
@@ -51,7 +77,7 @@ void
 PingusSound::play_music(const std::string & filename, float volume)
 {
   assert (sound);
-  sound->real_play_music(filename, volume);
+  sound->real_play_music(path_manager.complete (filename), volume);
 }
 
 

@@ -1,4 +1,4 @@
-//  $Id: xml_helper.cxx,v 1.12 2002/08/16 17:15:31 grumbel Exp $
+//  $Id: xml_helper.cxx,v 1.13 2002/08/22 00:36:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -89,7 +89,7 @@ XMLhelper::parse_vector(xmlDocPtr doc, xmlNodePtr cur)
 	  } else {
 	    std::cout << "Unhandled position ident: " << ident << std::endl;
 	  }
-	  free(ident);
+	  xmlFree(ident);
 	}
       cur = cur->next;
     }
@@ -105,7 +105,7 @@ XMLhelper::parse_int(xmlDocPtr doc, xmlNodePtr cur)
   char* number_str = (char*)xmlNodeListGetString(doc, cur, 1);
   if (number_str) {
     number = StringConverter::to_int(number_str);
-    free(number_str);
+    xmlFree(number_str);
   } else {
     std::cout << "Error: XMLhelper: parse_int: Field empty" << std::endl;
   }
@@ -121,7 +121,7 @@ XMLhelper::parse_float(xmlDocPtr doc, xmlNodePtr cur)
   char* number_str = (char*)xmlNodeListGetString(doc, cur, 1);
   if (number_str) {
     number = StringConverter::to_float(number_str);
-    free(number_str);
+    xmlFree(number_str);
   } else {
     std::cout << "XMLhelper: parse_int: Field empty" << std::endl;
   }
@@ -204,7 +204,7 @@ XMLhelper::parse_surface(xmlDocPtr doc, xmlNodePtr cur)
 			{
 			  desc.res_name = filename;
 			  desc.type = ResDescriptor::RD_FILE;
-			  free(filename);
+			  xmlFree(filename);
 			}       
 		    }
 		  else if (strcmp((char*) ccur->name, "modifier") == 0)
@@ -215,7 +215,7 @@ XMLhelper::parse_surface(xmlDocPtr doc, xmlNodePtr cur)
 			  //std::cout << "Seen: modifier: " << ident << std::endl;
 
 			  desc.modifier = rs_from_string(ident);
-			  free(ident);
+			  xmlFree(ident);
 			}
 		    }
 		  else
@@ -244,7 +244,7 @@ XMLhelper::parse_surface(xmlDocPtr doc, xmlNodePtr cur)
 		      if (datafile) 
 			{
 			  desc.datafile = datafile;
-			  free(datafile);
+			  xmlFree(datafile);
 			}
 		      else
 			{
@@ -257,7 +257,7 @@ XMLhelper::parse_surface(xmlDocPtr doc, xmlNodePtr cur)
 		      if (ident) 
 			{
 			  desc.res_name = ident;
-			  free(ident);		  
+			  xmlFree(ident);		  
 			}
 		    }
 		  else if (strcmp((char*)ccur->name, "modifier") == 0)
@@ -269,7 +269,7 @@ XMLhelper::parse_surface(xmlDocPtr doc, xmlNodePtr cur)
 			  //std::cout << "Seen: modifier: " << ident << std::endl;
 		      
 			  desc.modifier = rs_from_string(ident);
-			  free(ident);
+			  xmlFree(ident);
 			}
 		    }
 		  else
@@ -283,7 +283,7 @@ XMLhelper::parse_surface(xmlDocPtr doc, xmlNodePtr cur)
 	    {
 	      std::cout << "XMLhelper: Unhandled resource type: " << type << std::endl;	  
 	    }
-	  free(type);
+	  xmlFree(type);
 	}
       cur = cur->next;
     }
@@ -303,7 +303,7 @@ XMLhelper::parse_string(xmlDocPtr doc, xmlNodePtr cur)
   if (str) 
     {
       ret_str = str;
-      free(str);
+      xmlFree(str);
       return ret_str;
     }
   else

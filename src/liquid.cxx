@@ -1,4 +1,4 @@
-//  $Id: liquid.cxx,v 1.2 2002/08/17 17:56:23 torangan Exp $
+//  $Id: liquid.cxx,v 1.3 2002/08/22 00:36:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -84,6 +84,7 @@ Liquid::draw_offset(int x_of, int y_of, float s)
   }
 
   if (s == 1.0) {
+    // FIXME: I don't need we need clip_rects here any longer
     CL_Display::push_clip_rect();
     CL_Display::set_clip_rect(CL_ClipRect(x1, y1, x2, y2));
     

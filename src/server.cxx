@@ -1,4 +1,4 @@
-//  $Id: server.cxx,v 1.9 2002/08/16 15:13:59 torangan Exp $
+//  $Id: server.cxx,v 1.10 2002/08/22 00:36:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -183,7 +183,7 @@ Server::process_event(std::string event)
       std::cout << "Server: Unknown Event: " << event << std::endl;
     }
   
-  free(event_str);
+  free(event_str); // from a strdup
 }
 
 bool

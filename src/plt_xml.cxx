@@ -1,4 +1,4 @@
-//  $Id: plt_xml.cxx,v 1.3 2002/08/16 15:13:59 torangan Exp $
+//  $Id: plt_xml.cxx,v 1.4 2002/08/22 00:36:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -107,8 +107,8 @@ PLTXML::parse_description(xmlNodePtr cur)
       description[default_language] = desc;
   }
 
-  if (desc) free(desc);	  
-  if (lang) free(lang);
+  if (desc) xmlFree(desc);	  
+  if (lang) xmlFree(lang);
 }
 
 void 
@@ -125,8 +125,8 @@ PLTXML::parse_world_name(xmlNodePtr cur)
 	world_name[default_language] = name;
     }
 
-  if (name) free(name);
-  if (lang) free(lang);
+  if (name) xmlFree(name);
+  if (lang) xmlFree(lang);
 }
 
 void
@@ -142,7 +142,7 @@ PLTXML::parse_level_list(xmlNodePtr cur)
 	  if (name)
 	    {
 	      level_list.push_back(name);
-	      free(name);
+	      xmlFree(name);
 	    }
 	}
       else

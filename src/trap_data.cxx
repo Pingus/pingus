@@ -1,4 +1,4 @@
-//  $Id: trap_data.cxx,v 1.4 2002/08/16 15:13:59 torangan Exp $
+//  $Id: trap_data.cxx,v 1.5 2002/08/22 00:36:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -49,7 +49,7 @@ TrapData::TrapData (xmlDocPtr doc, xmlNodePtr cur)
 	    {
 	      // std::cout << "parse_trap: name = " << name << std::endl;
 	      type = name;
-	      free(name);
+	      xmlFree(name);
 	    }
 	} 
       else if (strcmp((char*)cur->name, "position") == 0) 

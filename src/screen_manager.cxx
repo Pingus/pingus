@@ -1,4 +1,4 @@
-//  $Id: screen_manager.cxx,v 1.13 2002/08/17 12:32:23 grumbel Exp $
+//  $Id: screen_manager.cxx,v 1.14 2002/08/22 00:36:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -106,7 +106,7 @@ ScreenManager::display ()
 	}
       else
 	{
-	  fade_over (last_screen, current_screen);
+	  //fade_over (last_screen, current_screen);
 	}
 
       // Stupid hack to make this thing take less CPU

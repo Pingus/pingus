@@ -1,4 +1,4 @@
-//  $Id: algo.cxx,v 1.2 2002/06/13 14:25:12 torangan Exp $
+//  $Id: algo.cxx,v 1.3 2002/08/22 00:36:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -57,7 +57,7 @@ get_directory(std::string filename)
   }
 
   t_str = str;
-  free (str);
+  free (str); // from strdup
   return t_str;
 }
 
@@ -110,7 +110,7 @@ find_file(const std::string& paths, const std::string& filename)
 #endif
   }
   if (verbose) std::cout << "find_file(): " << filename << ": File not found!" << std::endl;
-  free(path);
+  free(path); // from strdup
   return filename;
 }
 /*

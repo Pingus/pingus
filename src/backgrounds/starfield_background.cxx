@@ -1,4 +1,4 @@
-//  $Id: starfield_background.cxx,v 1.6 2002/08/17 17:56:23 torangan Exp $
+//  $Id: starfield_background.cxx,v 1.7 2002/08/22 00:36:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -64,7 +64,7 @@ StarfieldBackgroundData::StarfieldBackgroundData (xmlDocPtr /*doc*/, xmlNodePtr 
 	  if (count)
 	    {
 	      small_stars_count = StringConverter::to_int(count);
-	      free (count);
+	      xmlFree(count);
 	    }
 	}
       else if (strcmp((char*)cur->name, "middle-stars") == 0)
@@ -73,7 +73,7 @@ StarfieldBackgroundData::StarfieldBackgroundData (xmlDocPtr /*doc*/, xmlNodePtr 
 	  if (count)
 	    {
 	      middle_stars_count = StringConverter::to_int(count);
-	      free (count);
+	      xmlFree(count);
 	    }	  
 	}
       else if (strcmp((char*)cur->name, "large-stars") == 0)
@@ -82,7 +82,7 @@ StarfieldBackgroundData::StarfieldBackgroundData (xmlDocPtr /*doc*/, xmlNodePtr 
 	  if (count)
 	    {
 	      large_stars_count = StringConverter::to_int(count);
-	      free (count);
+	      xmlFree(count);
 	    }	  
 	}
       else

@@ -1,4 +1,4 @@
-//  $Id: xml_plf.cxx,v 1.7 2002/08/16 15:13:59 torangan Exp $
+//  $Id: xml_plf.cxx,v 1.8 2002/08/22 00:36:30 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -290,7 +290,7 @@ XMLPLF::parse_background(xmlNodePtr cur)
 			       ->create ("surface-background", doc, cur));
     }
 
-  free (type_cstr);
+  xmlFree(type_cstr);
 }
 
 void 
@@ -313,7 +313,7 @@ XMLPLF::parse_actions(xmlNodePtr cur)
       if (count)
 	{
 	  from_string(count, button.number_of);
-	  free (count);
+	  xmlFree(count);
 	}
       else
 	{
@@ -325,7 +325,7 @@ XMLPLF::parse_actions(xmlNodePtr cur)
 	  } else {
 	    std::cout << "XMLPLF:parse_actions: no action number given" << std::endl;
 	  }
-	  free(number);
+	  xmlFree(number);
 	}
 
       actions.push_back(button);
@@ -358,8 +358,8 @@ XMLPLF::parse_global(xmlNodePtr cur)
 	      levelname[default_language] = name;
 	  }
 
-	  if (name) free(name);
-	  if (lang) free(lang);
+	  if (name) xmlFree(name);
+	  if (lang) xmlFree(lang);
 	}
       else if (strcmp((char*)cur->name, "description") == 0)
 	{
@@ -373,15 +373,15 @@ XMLPLF::parse_global(xmlNodePtr cur)
 	      description[default_language] = desc;
 	  }
 
-	  if (desc) free(desc);	  
-	  if (lang) free(lang);
+	  if (desc) xmlFree(desc);	  
+	  if (lang) xmlFree(lang);
 	}
       else if (strcmp((char*)cur->name, "author") == 0)
 	{
 	  char* tmp_author = (char*)xmlNodeListGetString(doc, cur->children, 1);
 	  if (tmp_author) {
 	    author = tmp_author;
-	    free(tmp_author);
+	    xmlFree(tmp_author);
 	  }
 	  //std::cout << "Author: " << author << " -----------------------" << std::endl;
 	}

@@ -1,4 +1,4 @@
-//  $Id: console.cxx,v 1.6 2002/08/17 17:21:25 torangan Exp $
+//  $Id: console.cxx,v 1.7 2002/08/22 00:36:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <config.h>
 #include <assert.h>
 #include <ClanLib/Display/Display/display.h>
 #include <ClanLib/Display/Font/font.h>
@@ -120,6 +121,13 @@ Console::Console() : std::ostream (&streambuf)
   is_visible = false;
   current_pos = 0;
   number_of_lines = 12;
+
+  *this << "================================" << std::endl;
+  *this << "Welcome to Pingus " << VERSION << std::endl;
+  *this << "================================" << std::endl;
+  newline ();
+  *this << "This is the output and debug console, you can toggle it with ^" << std::endl;
+  newline ();
 }
 
 Console::~Console()

@@ -1,4 +1,4 @@
-//  $Id: surface_button.cxx,v 1.9 2002/08/16 17:15:31 grumbel Exp $
+//  $Id: surface_button.cxx,v 1.10 2002/08/22 00:36:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -121,7 +121,7 @@ void
 SurfaceButton::on_pointer_enter ()
 {
   mouse_over = true;
-  PingusSound::play_sound ("sounds/chain.wav", 0.1f);
+  PingusSound::play_sound ("sounds/tick.wav");
   //std::cout << "X: " << this << "enter" << std::endl;
 }
 
@@ -261,6 +261,7 @@ void
 QuitButton::on_click()
 {
   std::cout << "QuitButton: do exit" << std::endl;
+  PingusSound::play_sound ("sounds/goodidea.wav");
   menu->get_manager ()->show_exit_menu ();
 }
 

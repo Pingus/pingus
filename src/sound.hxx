@@ -1,4 +1,4 @@
-//  $Id: sound.hxx,v 1.4 2002/08/16 13:03:35 torangan Exp $
+//  $Id: sound.hxx,v 1.5 2002/08/22 00:36:30 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,7 @@
 
 #include <string>
 #include "pingus.hxx"
+#include "sounds.hxx"
 
 class PingusSound
 {
@@ -43,6 +44,7 @@ public:
   
   static void play_music(const std::string & filename, float volume = 0.5f);
 
+  static void play_sound(Sound::Name name, float volume = 0.5f, float panning = 0.0f);
 };
 
 #endif

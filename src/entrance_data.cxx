@@ -1,4 +1,4 @@
-//  $Id: entrance_data.cxx,v 1.4 2002/08/16 15:13:59 torangan Exp $
+//  $Id: entrance_data.cxx,v 1.5 2002/08/22 00:36:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,7 +43,7 @@ EntranceData::EntranceData (xmlDocPtr doc, xmlNodePtr cur)
 	{
 	  char* name = (char*)xmlNodeListGetString(doc, cur->children, 1); 
 	  type = name;
-	  free(name);
+	  xmlFree(name);
 	}
       else if (strcmp((char*)cur->name, "owner-id") == 0)
 	{
@@ -57,7 +57,7 @@ EntranceData::EntranceData (xmlDocPtr doc, xmlNodePtr cur)
 	{
 	  char* release_rate_str = (char*)xmlNodeListGetString(doc, cur->children, 1);
 	  release_rate = StringConverter::to_int(release_rate_str);
-	  free(release_rate_str);
+	  xmlFree(release_rate_str);
 	}
       else if (strcmp((char*)cur->name, "direction") == 0)
 	{
@@ -70,7 +70,7 @@ EntranceData::EntranceData (xmlDocPtr doc, xmlNodePtr cur)
 	  else if (strcmp(direction_str, "misc") == 0)
 	    direction = EntranceData::MISC;
 	  
-	  free(direction_str);
+	  xmlFree(direction_str);
 	}
       else
 	{

@@ -1,4 +1,4 @@
-//  $Id: world.cxx,v 1.14 2002/08/17 17:56:23 torangan Exp $
+//  $Id: world.cxx,v 1.15 2002/08/22 00:36:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -281,7 +281,9 @@ World::get_saved_pingus()
 void 
 World::armageddon(void)
 {
+  PingusSound::play_sound ("sounds/goodidea.wav");
   do_armageddon = true;
+  // FIXME: Ugly to use iterator, since it can get invalid
   armageddon_count = pingus->begin();
 }
 

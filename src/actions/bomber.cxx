@@ -1,4 +1,4 @@
-//  $Id: bomber.cxx,v 1.6 2002/08/14 12:45:02 torangan Exp $
+//  $Id: bomber.cxx,v 1.7 2002/08/22 00:36:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,8 +25,9 @@
 #include "../force_vector.hxx"
 #include "../string_converter.hxx"
 #include "../pingu.hxx"
-#include "bomber.hxx"
+#include "../sounds.hxx"
 #include "../particles/particle_holder.hxx"
+#include "bomber.hxx"
 
 bool Bomber::static_surface_loaded = false;
 CL_Surface Bomber::bomber_radius;
@@ -77,7 +78,7 @@ Bomber::update(float delta)
   sprite.update (delta);
 
   if (sprite.get_frame () > 9 && !sound_played) {
-    pingu->get_world ()->play_wav("sounds/explode.wav", pingu->get_pos ());
+    pingu->get_world ()->play_wav("sounds/plop.wav", pingu->get_pos ());
     sound_played = true;
   }
 

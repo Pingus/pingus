@@ -1,4 +1,4 @@
-//  $Id: scroller_factory.cxx,v 1.5 2002/08/16 15:14:00 torangan Exp $
+//  $Id: scroller_factory.cxx,v 1.6 2002/08/22 00:36:30 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -74,7 +74,7 @@ namespace Input {
       PingusError::raise("AxisScroller without speed parameter");
     
     float speed = strtod(speed_str, reinterpret_cast<char**>(NULL));
-    free(speed_str);
+    xmlFree(speed_str);
 
     std::vector<Axis*> axes;
     cur = cur->children;
@@ -108,8 +108,8 @@ namespace Input {
     bool invert_x = strtol(invert_x_str, reinterpret_cast<char**>(NULL), 10);
     bool invert_y = strtol(invert_x_str, reinterpret_cast<char**>(NULL), 10);
     
-    free(invert_x_str);
-    free(invert_y_str);
+    xmlFree(invert_x_str);
+    xmlFree(invert_y_str);
     
     Scroller* scroller;
     cur = XMLhelper::skip_blank(cur->children);
@@ -132,8 +132,8 @@ namespace Input {
     int   id    = strtol(id_str,    reinterpret_cast<char**>(NULL), 10);
     float speed = strtod(speed_str, reinterpret_cast<char**>(NULL));
     
-    free(id_str);
-    free(speed_str);
+    xmlFree(id_str);
+    xmlFree(speed_str);
     
     return new JoystickScroller(id, speed);
   }

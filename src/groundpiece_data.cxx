@@ -1,4 +1,4 @@
-//  $Id: groundpiece_data.cxx,v 1.5 2002/07/02 10:42:38 grumbel Exp $
+//  $Id: groundpiece_data.cxx,v 1.6 2002/08/22 00:36:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,7 +36,7 @@ GroundpieceData::GroundpieceData (xmlDocPtr doc, xmlNodePtr cur)
   if (gptype_c_str)
     {
       gptype = GroundpieceData::string_to_type (gptype_c_str);
-      free(gptype_c_str);
+      xmlFree(gptype_c_str);
     }
   else
     std::cout << "XMLPLF: groundtype empty" << std::endl;
