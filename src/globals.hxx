@@ -1,4 +1,4 @@
-//  $Id: globals.hxx,v 1.13 2003/04/10 18:28:30 grumbel Exp $
+//  $Id: globals.hxx,v 1.14 2003/04/10 19:38:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,10 +29,13 @@
 extern int         game_speed;                      ///< -t, --set-speed
 extern bool        print_fps;                       ///< --print-fps
 extern int         verbose;                         ///< -v, --verbose
+
 extern bool        music_enabled;                   ///< -m, --enable-music
 extern bool        sound_enabled;                   ///< -s, --enable-sound
-extern bool        record_demo;                     ///< --record-demo
+
+extern bool        enable_demo_recording;
 extern bool        play_demo;                       ///< --play-demo
+
 extern bool        cursor_enabled;                  ///< --enable-cursor
 extern bool        debug_actions;                   ///< --debug-actions
 extern bool        fast_mode;                       ///< --fast

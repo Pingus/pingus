@@ -1,4 +1,4 @@
-//  $Id: start_screen.cxx,v 1.13 2003/04/10 16:59:57 grumbel Exp $
+//  $Id: start_screen.cxx,v 1.14 2003/04/10 19:38:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -147,9 +147,9 @@ StartScreenComponent::draw(GraphicContext& gc)
                   System::translate(plf->get_levelname()));
 
   gc.print_left(Fonts::chalk_normal,
-                CL_Display::get_width()/2 - 270,
+                CL_Display::get_width()/2 - 290,
                 CL_Display::get_height()/2 - 140,
-                format_description(800 - 260));
+                format_description(800 - 230));
 
   gc.print_left (Fonts::chalk_normal, left_x,  y, _("Number of Pingus: "));
   gc.print_right(Fonts::chalk_normal, right_x, y, to_string(plf->get_pingus()));

@@ -1,4 +1,4 @@
-//  $Id: server.cxx,v 1.26 2003/04/05 18:36:50 grumbel Exp $
+//  $Id: server.cxx,v 1.27 2003/04/10 19:38:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "pingu.hxx"
+#include "globals.hxx"
 #include "server.hxx"
 #include "game_time.hxx"
 #include "world.hxx"
@@ -31,8 +32,10 @@ Server::Server (PLF* arg_plf)
     world(new World (plf)),
     action_holder (plf),
     goal_manager(new GoalManager(this)),
-    demo_recorder(new DemoRecorder(this))
+    demo_recorder(0)
 {
+  if (enable_demo_recording)
+    demo_recorder = new DemoRecorder(this);
 }
 
 Server::~Server ()

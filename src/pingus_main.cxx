@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.71 2003/04/10 18:28:30 grumbel Exp $
+//   $Id: pingus_main.cxx,v 1.72 2003/04/10 19:38:51 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -209,7 +209,7 @@ PingusMain::check_args(int argc, char** argv)
       {"enable-cursor",     no_argument,       0, 'c'},
       {"disable-intro",     no_argument,       0, 'n'},
       {"play-demo",         required_argument, 0, 'p'},
-      {"record-demo",       required_argument, 0, 'r'},
+      {"enable-demo-recording", required_argument, 0, 'r'},
       {"speed",             required_argument, 0, 't'},
       {"datadir",           required_argument, 0, 'd'},
       {"level",             required_argument, 0, 'l'},
@@ -354,9 +354,8 @@ PingusMain::check_args(int argc, char** argv)
 
       exit(EXIT_SUCCESS);
       break;
-    case 'r': // -r, --record-demo
-      record_demo = true;
-      demo_file = optarg;
+    case 'r': // -r, --enabled-demo-recording
+      enable_demo_recording = true;
       break;
     case 'p': // -p, --play-demo
       play_demo = true;
@@ -494,12 +493,9 @@ PingusMain::check_args(int argc, char** argv)
           "   -g, --geometry {width}x{height}\n"
           "                            Set the resolution for pingus (default: 800x600)\n"
           "   -h, --help               Displays this screen\n"
-          "   --disable-intro          Disable intro\n")
-		<< std::endl;
+          "   --disable-intro          Disable intro\n");
 #ifdef HAVE_LIBCLANGL
-      std::cout <<
-	_("   -G, --use-opengl         Use OpenGL\n")
-                << std::endl;
+      std::cout << _("   -G, --use-opengl         Use OpenGL\n");
 #endif
       std::cout <<
 	_("   -w, --window             Start in Window Mode\n"
@@ -507,37 +503,38 @@ PingusMain::check_args(int argc, char** argv)
           "   -d, --datadir PATH       Set the path to load the data files to `path'\n"
           //"   --use-datafile           Use the pre-compiled datafile (default)\n"
           //          "   --use-scriptfile         Use the scriptfile and read all data from files\n"
-          "   -l, --level FILE         Load a custom level from `file'\n"
+          "   -l, --level FILE         Load a custom level from FILE\n"
+          "   -w, --worldmap FILE      Load a custom worldmap from FILE\n"
           "   -v, --verbose            Print some more messages to stdout, can be set\n"
           "                            multible times to increase verbosity\n"
           "   -V, --version            Prints version number and exit\n"
-          "   --fast-mode              Disable some cpu intensive features\n"
           "   -e, --editor             Launch the Level editor (experimental)\n"
           "   --disable-auto-scrolling Disable automatic scrolling\n"
-          "   --disable-swcursor       Disable software cursor, use hw cursor instead\n"
-          "   --enable-swcursor        Enable software cursor\n"
-          "   --disable-action-help    Disable action button help strings\n"
-          "   --enable-action-help     Enable action button help strings(default)\n"
+          //          "   --disable-swcursor       Disable software cursor, use hw cursor instead\n"
+          //          "   --enable-swcursor        Enable software cursor\n"
+          //"   --disable-action-help    Disable action button help strings\n"
+          //"   --enable-action-help     Enable action button help strings(default)\n"
           "   --no-cfg-file            Don't read ~/.pingus/config\n"
           "   --config-file FILE       Read config from FILE (default: ~/.pingus/config)\n"
-          "   --min-cpu-usage          Reduces the CPU usage by issuing sleep()\n"
           "                            reduce CPU usage, might speed up the game on slower machines\n"
-          "   --min-frame-skip N       Skip at least N frames, larger values speed the game up\n"
-          "   --max-frame-skip N       Skip at most N frames\n"
-          "   --frame-skip N           Set both min and max frameskip to N\n"
-
           "\nDebugging and experimental stuff:\n"
           "   --maintainer-mode        Enables some features, only interesting programmers\n"
           "   --debug OPTION           Enable the output of debugging infos, possible\n"
           "                            OPTION's are tiles, gametime, actions, sound, resources, gui,\n"
           "                            input\n"
+          "   --min-frame-skip N       Skip at least N frames, larger values speed the game up\n"
+          "   --max-frame-skip N       Skip at most N frames\n"
+          "   --frame-skip N           Set both min and max frameskip to N\n"
           "   -t, --speed SPEED        Set the game speed (0=fastest, >0=slower)\n"
           "   -b, --print-fps          Prints the fps to stdout\n"
           "   --tile-size INT          Set the size of the map tiles (default: 32)\n"
+          "   --fast-mode              Disable some cpu intensive features\n"
+          "   --min-cpu-usage          Reduces the CPU usage by issuing sleep()\n"
           "\n"
           "\nDemo playing and recording:\n"
-          "   -r, --record-demo FILE   Record a demo session to FILE\n"
-          "   -p, --play-demo FILE     Plays a demo session from FILE\n")
+          "   -p, --play-demo FILE     Plays a demo session from FILE\n"
+          "   -r, --enable-demo-recording\n"
+          "                            Record demos for each played level\n")
                 << std::endl;
       std::cout
         << _("\nSound:\n"
