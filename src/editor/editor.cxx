@@ -344,7 +344,7 @@ Editor::save_tmp_level ()
 
   StatManager::instance()->set_int("next-backup-id", backup_id + 1);
 
-  std::string filename = System::get_backupdir () + "pingus-backup-" + to_string(backup_id) + ".plf";
+  std::string filename = System::get_backupdir () + "pingus-backup-" + to_string(backup_id) + ".pingus";
   std::cout << "Editor: saving backup level to: " << filename << std::endl;
   object_manager->save_level_xml(filename.c_str());
   return filename;

@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cs\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-04-09 01:07+0000\n"
+"POT-Creation-Date: 2004-04-09 18:37+0000\n"
 "PO-Revision-Date: 2003-04-15 21:05+0200\n"
 "Last-Translator: Tomáš Bláha\n"
 "Language-Team: czech\n"
@@ -23,6 +23,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.0\n"
+
+#: src/actions/bridger.cxx:48 src/actions/bridger.cxx:232
+#: src/pingu_enums.cxx:40
+msgid "Bridger"
+msgstr ""
 
 #: src/config.cxx:73
 msgid "Couldn't open: "
@@ -686,10 +691,6 @@ msgstr ""
 
 #: src/pingu_enums.cxx:39
 msgid "Bomber"
-msgstr ""
-
-#: src/pingu_enums.cxx:40
-msgid "Bridger"
 msgstr ""
 
 #: src/pingu_enums.cxx:41

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-04-09 01:07+0000\n"
+"POT-Creation-Date: 2004-04-09 18:37+0000\n"
 "PO-Revision-Date: 2003-08-29 21:01+0100\n"
 "Last-Translator: Ricardo Cruz <rick2@aeiou.pt>\n"
 "Language-Team: Portuguese\n"
@@ -16,6 +16,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.0.1\n"
+
+#: src/actions/bridger.cxx:48 src/actions/bridger.cxx:232
+#: src/pingu_enums.cxx:40
+msgid "Bridger"
+msgstr "Construtor"
 
 #: src/config.cxx:73
 msgid "Couldn't open: "
@@ -681,10 +686,6 @@ msgstr "Skater"
 #: src/pingu_enums.cxx:39
 msgid "Bomber"
 msgstr "Bombista"
-
-#: src/pingu_enums.cxx:40
-msgid "Bridger"
-msgstr "Construtor"
 
 #: src/pingu_enums.cxx:41
 msgid "Climber"

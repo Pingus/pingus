@@ -86,7 +86,7 @@ EditorHelpScreen::draw ()
 
   x_pos = 64;
   y_pos = 500;
-  font.draw(x_pos, y_pos + 0, _("Naming Convention: <LEVELNAME><NUMBER>-<CREATOR>.plf"));
+  font.draw(x_pos, y_pos + 0, _("Naming Convention: <LEVELNAME><NUMBER>-<CREATOR>.pingus"));
 
   font.draw(x_pos, y_pos + 30, _("When you have created a level and want to have it in the next Pingus release,\n"
 					 "please mail it to pingus-devel@nongnu.org."));

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-04-09 01:07+0000\n"
+"POT-Creation-Date: 2004-04-09 18:37+0000\n"
 "PO-Revision-Date: 2004-04-07 18:48+0200\n"
 "Last-Translator: Giuseppe D'Aqui' <kumber@tiscalinet.it>\n"
 "Language-Team: \n"
@@ -15,6 +15,11 @@ msgstr ""
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.3.1\n"
+
+#: src/actions/bridger.cxx:48 src/actions/bridger.cxx:232
+#: src/pingu_enums.cxx:40
+msgid "Bridger"
+msgstr "Pontiere"
 
 #: src/config.cxx:73
 msgid "Couldn't open: "
@@ -681,10 +686,6 @@ msgstr "Skater"
 #: src/pingu_enums.cxx:39
 msgid "Bomber"
 msgstr "Bombarolo"
-
-#: src/pingu_enums.cxx:40
-msgid "Bridger"
-msgstr "Pontiere"
 
 #: src/pingu_enums.cxx:41
 msgid "Climber"

@@ -6,14 +6,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Pingus 0.6.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-04-09 01:07+0000\n"
+"POT-Creation-Date: 2004-04-09 18:37+0000\n"
 "PO-Revision-Date: 2004-04-08 01:50+0200\n"
 "Last-Translator: Philippe Saint-Pierre <stpere@linuxmail.org>\n"
-"Language-Team: David Philippi <david@torangan.de>, Ingo Ruhnke <grumbel@gmx."
+"Language-Team: Philippe Saint-Pierre <stpere@linuxmail.org>"
 "de>, Giray Devlet <giray@devlet.cc>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: src/actions/bridger.cxx:48 src/actions/bridger.cxx:232
+#: src/pingu_enums.cxx:40
+msgid "Bridger"
+msgstr "Charpentier"
 
 #: src/config.cxx:73
 msgid "Couldn't open: "
@@ -137,7 +142,7 @@ msgstr "F8 - sauvegarde rapide/copie de secours?!"
 
 #: src/editor/editor_help_screen.cxx:59
 msgid "F9 - change level width and height"
-msgstr "F9 - change la hauteur et la largeur du niveau"
+msgstr "F9 - changer la hauteur et la largeur du niveau"
 
 #: src/editor/editor_help_screen.cxx:60
 msgid "F10 - [unset]"
@@ -201,7 +206,7 @@ msgstr "Maj + clique gauche - ajouter un objet à la sélection"
 
 #: src/editor/editor_help_screen.cxx:78
 msgid "leftmouseclick - select object"
-msgstr "clique gauche - sélectionner un objet"
+msgstr "click gauche - sélectionner un objet"
 
 #: src/editor/editor_help_screen.cxx:79
 msgid "Insert - insert new object"
@@ -501,7 +506,7 @@ msgstr "Conçu par "
 #: src/level_desc.cxx:79
 #, c-format
 msgid "Pingus to Save: %d"
-msgstr "Pingus a sauver: %d"
+msgstr "Pingus à sauver: %d"
 
 #: src/level_desc.cxx:81
 #, c-format
@@ -540,7 +545,7 @@ msgid ""
 "As many Pingus escaped as entered the level. That's going to be hard to "
 "beat.... unless this game becomes pornographic."
 msgstr ""
-"Autant de Pingus en sont sortis qu'il n'y en a d'entrés. Cela ve être "
+"Autant de Pingus en sont sortis qu'il n'y en a d'entré. Cela ve être "
 "vraiment dur à battre... à moins que le jeu ne devienne pornographique."
 
 #: src/level_result.cxx:104
@@ -560,8 +565,8 @@ msgid ""
 "That was OK, but Pingu life insurance premiums have just gotten more "
 "expensive."
 msgstr ""
-"C'est acceptable, par contre les primes d'assurance vie Pingu sont maintant "
-"plus dispendieuses."
+"C'est acceptable, par contre les primes d'assurance vie Pingu sont "
+"maintenant plus dispendieuses."
 
 #: src/level_result.cxx:112
 msgid "Maybe this level calls for a different strategy."
@@ -677,15 +682,11 @@ msgstr "Bloqueur"
 
 #: src/pingu_enums.cxx:38
 msgid "Boarder"
-msgstr ""
+msgstr "Planchiste"
 
 #: src/pingu_enums.cxx:39
 msgid "Bomber"
 msgstr "Démolisseur"
-
-#: src/pingu_enums.cxx:40
-msgid "Bridger"
-msgstr "Charpentier"
 
 #: src/pingu_enums.cxx:41
 msgid "Climber"

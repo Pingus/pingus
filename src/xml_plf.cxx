@@ -45,7 +45,7 @@ XMLPLF::XMLPLF (const std::string& arg_filename)
     PingusError::raise("XMLPLF: Couldn't open \"" + filename + "\"");
 
   resname = System::basename(System::dirname(filename))
-    + "/" + System::basename(filename.substr(0, filename.length()-4));
+    + "/" + System::basename(filename.substr(0, filename.length()-7));
 
   parse_file();
 }

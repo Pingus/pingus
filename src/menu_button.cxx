@@ -290,7 +290,7 @@ LoadButton::~LoadButton()
 void LoadButton::on_click()
 {
   /*  std::string levelfile;
-  levelfile = file.select(pXXXus_datadir, "*.plf");
+  levelfile = file.select(pXXXus_datadir, "*.pingus");
   if (!levelfile.empty()) {
     PingusGame game;
     game.start(levelfile);

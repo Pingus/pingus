@@ -21,10 +21,10 @@
 pkgdatadir = $(datadir)/games/@PACKAGE@/levels
 
 nobase_pkgdata_DATA = \
-	$(wildcard tutorial/*.plf) \
-        $(wildcard playable/*.plf) \
-        $(wildcard wip/*.plf)      \
-        $(wildcard test/*.plf)
+	$(wildcard tutorial/*.pingus) \
+        $(wildcard playable/*.pingus) \
+        $(wildcard wip/*.pingus)      \
+        $(wildcard test/*.pingus)
 
 EXTRA_DIST = README  \
              $(nobase_pkgdata_DATA)

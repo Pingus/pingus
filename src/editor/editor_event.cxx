@@ -588,7 +588,7 @@ EditorEvent::editor_save_level_as()
   StringReader reader(_("Enter filename to save as:"), editor->last_level);
 
   // FIXME: The pattern '*' will not work on windows, we should use
-  // FIXME: *.plf or better switch to CL_DirectoryScanner
+  // FIXME: *.pingus or better switch to CL_DirectoryScanner
   dir = System::opendir(System::get_statdir() + "levels/", "*");
 
   for (System::Directory::iterator i = dir.begin(); i != dir.end(); ++i)
@@ -607,10 +607,10 @@ EditorEvent::editor_save_level_as()
 
   if (!str.empty())
     {
-      if (str.substr(str.size() - 4) ==  ".plf")
+      if (str.substr(str.size() - 4) ==  ".pingus")
 	object_manager->save_level_xml(str);
       else
-	object_manager->save_level_xml(str + ".plf");
+	object_manager->save_level_xml(str + ".pingus");
 
       editor->last_level = str;
     }

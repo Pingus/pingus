@@ -49,7 +49,7 @@ public:
   /** @return a handle to the PLF, instead of loading it from a
       res_name, load it from a system dependend filename
 
-      @param filename The filename of the plf, aka "../data/levels/snow11-grumbel.plf" */
+      @param filename The filename of the plf, aka "../data/levels/snow11-grumbel.pingus" */
   static PLFHandle load_plf_from_filename(const std::string& filename);
   static  void free_plf_map();
 };

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-04-09 01:07+0000\n"
+"POT-Creation-Date: 2004-04-09 18:37+0000\n"
 "PO-Revision-Date: 2003-08-21 18:29+0300\n"
 "Last-Translator: Jarno Elonen <elonen@iki.fi>\n"
 "Language-Team: Finnish <elonen@iki.fi>\n"
@@ -16,6 +16,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.0.2\n"
+
+#: src/actions/bridger.cxx:48 src/actions/bridger.cxx:232
+#: src/pingu_enums.cxx:40
+msgid "Bridger"
+msgstr "Siltaaja"
 
 #: src/config.cxx:73
 msgid "Couldn't open: "
@@ -682,10 +687,6 @@ msgstr "Laatoittaja"
 #: src/pingu_enums.cxx:39
 msgid "Bomber"
 msgstr "Pommittaja"
-
-#: src/pingu_enums.cxx:40
-msgid "Bridger"
-msgstr "Siltaaja"
 
 #: src/pingu_enums.cxx:41
 msgid "Climber"

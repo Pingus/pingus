@@ -7,13 +7,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Pingus 0.6.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-04-09 01:07+0000\n"
+"POT-Creation-Date: 2004-04-09 18:37+0000\n"
 "PO-Revision-Date: 2003-04-23 22:26+0200\n"
 "Last-Translator: Jan Morén <jan.moren@lucs.lu.se>\n"
 "Language-Team: sv <jan.moren@lucs.lu.se>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: src/actions/bridger.cxx:48 src/actions/bridger.cxx:232
+#: src/pingu_enums.cxx:40
+msgid "Bridger"
+msgstr "Byggare"
 
 #: src/config.cxx:73
 msgid "Couldn't open: "
@@ -679,10 +684,6 @@ msgstr "Skejtare"
 #: src/pingu_enums.cxx:39
 msgid "Bomber"
 msgstr "Bombare"
-
-#: src/pingu_enums.cxx:40
-msgid "Bridger"
-msgstr "Byggare"
 
 #: src/pingu_enums.cxx:41
 msgid "Climber"

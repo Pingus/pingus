@@ -7,13 +7,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.6.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-04-09 01:07+0000\n"
+"POT-Creation-Date: 2004-04-09 18:37+0000\n"
 "PO-Revision-Date: 2003-08-24 21:08+0200\n"
 "Last-Translator: Skule Solvang <sk-so@online.no>\n"
 "Language-Team: no <sk-so@online.no>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: src/actions/bridger.cxx:48 src/actions/bridger.cxx:232
+#: src/pingu_enums.cxx:40
+msgid "Bridger"
+msgstr "Bridger"
 
 #: src/config.cxx:73
 msgid "Couldn't open: "
@@ -677,10 +682,6 @@ msgstr "Boarder"
 #: src/pingu_enums.cxx:39
 msgid "Bomber"
 msgstr "Bomber"
-
-#: src/pingu_enums.cxx:40
-msgid "Bridger"
-msgstr "Bridger"
 
 #: src/pingu_enums.cxx:41
 msgid "Climber"

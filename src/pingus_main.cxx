@@ -501,8 +501,8 @@ PingusMain::check_args(int argc, char** argv)
         << "\n   -d, --datadir PATH       Set the path to load the data files to `path'"
         //"   --use-datafile           Use the pre-compiled datafile (default)\n"
         //          "   --use-scriptfile         Use the scriptfile and read all data from files\n"
-        << "\n   -l, --level " << _("FILE      ") << _("Load a custom level from FILE")
-        << "\n   --worldmap "<< _("FILE        ") << _("Load a custom worldmap from FILE")
+        << "\n   -l, --level    " << _("FILE      ") << _("Load a custom level from FILE")
+        << "\n   --worldmap   "<< _("FILE        ") << _("Load a custom worldmap from FILE")
         << "\n   -v, --verbose            " << _("Print some more messages to stdout, can be set")
         << "\n                            " << _("multiple times to increase verbosity")
         << "\n   -V, --version            " << _("Prints version number and exit")
@@ -797,9 +797,9 @@ PingusMain::start_game ()
       if (!System::exist(levelfile))
         {
           if (System::exist(levelfile + ".xml"))
-            levelfile += ".plf";
-          else if (System::exist("levels/" + levelfile + ".plf"))
-            levelfile = "levels/" + levelfile + ".plf";
+            levelfile += ".pingus";
+          else if (System::exist("levels/" + levelfile + ".pingus"))
+            levelfile = "levels/" + levelfile + ".pingus";
           else
             {
               pout << _("PingusMain: Levelfile not found, ignoring: ") << levelfile << std::endl;
