@@ -49,5 +49,7 @@ section Textures
 	green_tendrils = ../images/textures/green_tendrils.png (type=surface, x=0, y=0, width=256, height=256);
 	mountain = ../images/textures/mountain.png (type=surface, x=0, y=0, width=400, height=600);
         thunderstorm = ../images/textures/thunderstorm.png (type=surface, x=0, y=0, width=256, height=800);
+        ordina = ../images/textures/ordina.jpg (type=surface);
+        fond1 = ../images/textures/ordina.jpg (type=surface);
 }
 

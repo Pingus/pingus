@@ -94,16 +94,13 @@ section jungle {
 }
 
 section misc {
-	bpice1 = ../images/groundpieces/ground/misc/bpice1.png (type=surface, x=0, y=0, width=217, height=154);
-	bpice4 = ../images/groundpieces/ground/misc/bpice4.png (type=surface, x=0, y=0, width=156, height=215);
-	bpice5 = ../images/groundpieces/ground/misc/bpice5.png (type=surface, x=0, y=0, width=226, height=100);
-	bpice6 = ../images/groundpieces/ground/misc/bpice6.png (type=surface, x=0, y=0, width=161, height=168);
 	bpiece1 = ../images/groundpieces/ground/misc/bpiece1.png (type=surface, x=0, y=0, width=217, height=154);
 	bpiece2 = ../images/groundpieces/ground/misc/bpiece2.png (type=surface, x=0, y=0, width=166, height=192);
 	bpiece3 = ../images/groundpieces/ground/misc/bpiece3.png (type=surface, x=0, y=0, width=220, height=146);
 	bpiece4 = ../images/groundpieces/ground/misc/bpiece4.png (type=surface, x=0, y=0, width=156, height=215);
 	bpiece5 = ../images/groundpieces/ground/misc/bpiece5.png (type=surface, x=0, y=0, width=226, height=100);
 	bpiece6 = ../images/groundpieces/ground/misc/bpiece6.png (type=surface, x=0, y=0, width=161, height=168);
+	bpiece7 = ../images/groundpieces/ground/misc/bpiece7.png (type=surface);
 	brick1 = ../images/groundpieces/ground/misc/brick1.png (type=surface, x=0, y=0, width=32, height=16);
 	brick2 = ../images/groundpieces/ground/misc/brick2.png (type=surface, x=0, y=0, width=64, height=48);
 	brick3 = ../images/groundpieces/ground/misc/brick3.png (type=surface, x=0, y=0, width=16, height=16);
@@ -288,6 +285,19 @@ section sweets {
 	purpchoc = ../images/groundpieces/ground/sweets/purpchoc.png (type=surface, x=0, y=0, width=189, height=70);
 	purplechoc = ../images/groundpieces/ground/sweets/purplechoc.png (type=surface, x=0, y=0, width=150, height=57);
 	redjellybaby = ../images/groundpieces/ground/sweets/redjellybaby.png (type=surface, x=0, y=0, width=85, height=63);
+}
+
+section ordina
+{
+       cable1 = ../images/groundpieces/ground/ordina/cable1.png (type=surface);
+       cable2 = ../images/groundpieces/ground/ordina/cable2.png (type=surface);
+       cdrom1 = ../images/groundpieces/ground/ordina/cdrom1.png (type=surface);
+       clavier1 = ../images/groundpieces/ground/ordina/clavier1.png (type=surface);
+       cpu1 = ../images/groundpieces/ground/ordina/cpu1.png (type=surface);
+       ecran = ../images/groundpieces/ground/ordina/ecran.png (type=surface);
+       sol2 = ../images/groundpieces/ground/ordina/sol2.png (type=surface);
+       sol3 = ../images/groundpieces/ground/ordina/sol3.png (type=surface);
+       sol4 = ../images/groundpieces/ground/ordina/sol4.png (type=surface);
 }
 
 section test {
