@@ -36,10 +36,8 @@
     <blocker count="20"/>
     <bomber count="20"/>
     <bridger count="20"/>
-    <climber count="20"/>
     <digger count="20"/>
     <floater count="20"/>
-    <jumper count="20"/>
     <miner count="20"/>
   </action-list>
 
