@@ -1,4 +1,4 @@
-//  $Id: ThemeSelector.cc,v 1.22 2000/06/23 17:05:43 grumbel Exp $
+//  $Id: ThemeSelector.cc,v 1.23 2000/06/23 18:39:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -259,7 +259,7 @@ ThemeSelector::draw()
   
   {
     int item_width = (CL_Display::get_width() / themes.size());
-    int item_index = themes.size() - distance(themes.begin(), current_theme) - 1;
+    int item_index = themes.size() - std::distance(themes.begin(), current_theme) - 1;
     
     Display::draw_rect(item_index * item_width, CL_Display::get_height() - 15, 
 		       (item_index + 1) * item_width, CL_Display::get_height(),

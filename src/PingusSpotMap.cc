@@ -1,4 +1,4 @@
-//  $Id: PingusSpotMap.cc,v 1.27 2000/06/19 20:10:38 grumbel Exp $
+//  $Id: PingusSpotMap.cc,v 1.28 2000/06/23 18:39:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -533,11 +533,11 @@ PingusSpotMap::get_colmap(void)
 	std::cout << "PingusSpotMap: Generating Colision Map..." << std::flush;
       }
 
-      for(std::vector<surface_data>::iterator i = surfaces.begin(); 
-	  i != surfaces.end(); 
-	  i++) 
+      for(std::vector<surface_data>::iterator i2 = surfaces.begin();
+	  i2 != surfaces.end(); 
+	  i2++) 
 	{
-	  colmap->put(i->surface, i->x_pos, i->y_pos, i->type);
+	  colmap->put(i2->surface, i2->x_pos, i2->y_pos, i2->type);
 	}
       
       if (verbose)

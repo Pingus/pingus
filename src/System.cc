@@ -1,4 +1,4 @@
-//  $Id: System.cc,v 1.11 2000/06/20 20:30:53 grumbel Exp $
+//  $Id: System.cc,v 1.12 2000/06/23 18:39:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,6 +27,7 @@
 #  include <errno.h>
 #else /* !WIN32 */
 #  include <windows.h>
+#  include <fstream>
 #endif
 
 #include <iostream>
@@ -74,8 +75,6 @@ System::opendir(const std::string& pathname, const std::string& pattern)
       closedir(dp);
     }
 #else /* !WIN32 */
-  // FIXME: This Windows code is untested and may not work!
-
   WIN32_FIND_DATA coFindData;
   std::string FindFileDir = pathname + "\\" + pattern;
   std::string FileLocation;
@@ -83,13 +82,12 @@ System::opendir(const std::string& pathname, const std::string& pattern)
 
   if (hFind == INVALID_HANDLE_VALUE)
     {
-      //BUG, errors aren't supported :)
-      std::cout << "System: Error: No theme files found";
+      std::cout << "System: Couldn't open: " << pathname << std::endl;
     }
   
   do
     {     
-      dir_list.push_back(coFindData.cFileName);
+      dir_list.push_back(DirectoryEntry(coFindData.cFileName));
     }
   while (FindNextFile(hFind,&coFindData));
 
@@ -121,12 +119,20 @@ System::basename(std::string filename)
 bool
 System::exist(std::string filename)
 {
+#ifndef WIN32
   return !access(filename.c_str(), F_OK);
+#else
+  //don't know a better solution
+  std::ifstream check(filename.c_str());
+  if(!check) return false;
+  return true;
+#endif
 }
 
 void
 System::create_dir(std::string directory)
 {
+#ifndef WIN32
   if (!exist(directory))
     {
       if (mkdir(directory.c_str(), S_IRUSR | S_IWUSR | S_IXUSR | S_IRGRP | S_IXGRP) != 0)
@@ -137,11 +143,13 @@ System::create_dir(std::string directory)
 	{
 	  std::cout << "Successfully created: " << directory << std::endl;
 	}
-    }
-  else
+    }  else
     {
       std::cout << "Found: " << directory << std::endl;
     }
+#else
+  CreateDirectory(directory.c_str(), 0);
+#endif
 }
 
 void

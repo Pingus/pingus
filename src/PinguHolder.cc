@@ -1,4 +1,4 @@
-//  $Id: PinguHolder.cc,v 1.6 2000/06/11 15:23:29 grumbel Exp $
+//  $Id: PinguHolder.cc,v 1.7 2000/06/23 18:39:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,7 +46,11 @@ PinguHolder::push_back(Pingu* pingu)
 {
   total_size_count++;
   pingu->set_id(id_count++);
+  #ifndef WIN32
   std::list<Pingu*>::push_back(pingu);
+  #else
+  push_front(pingu);
+  #endif
   pingus.push_back(pingu);
 }
 
@@ -76,10 +80,10 @@ PinguHolder::draw_offset(int x_of, int y_of, float s)
 	}
     }
 
-  for(PinguIter pingu = this->begin(); pingu != this->end(); pingu++)
+  for(PinguIter pingu2 = this->begin(); pingu2 != this->end(); pingu2++)
     {
-      if ((*pingu)->get_action()) 
-	(*pingu)->draw_offset(x_of, y_of, s);
+      if ((*pingu2)->get_action()) 
+	(*pingu2)->draw_offset(x_of, y_of, s);
     }
 }
 

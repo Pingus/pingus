@@ -1,4 +1,4 @@
-//  $Id: SmokeParticle.cc,v 1.4 2000/05/12 13:31:24 grumbel Exp $
+//  $Id: SmokeParticle.cc,v 1.5 2000/06/23 18:39:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,7 +31,7 @@ SmokeParticle::SmokeParticle()
 SmokeParticle::SmokeParticle(int x, int y, float x_a, float y_a)
 {
   // FIXME: Probably slow??
-  if (std::rand() % 2)
+  if (rand() % 2)
     surface = CL_Surface::load("Particles/smoke", PingusResource::get("pingus.dat"));
   else
     surface = CL_Surface::load("Particles/smoke2", PingusResource::get("pingus.dat"));

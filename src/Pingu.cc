@@ -1,4 +1,4 @@
-//  $Id: Pingu.cc,v 1.23 2000/06/19 20:10:38 grumbel Exp $
+//  $Id: Pingu.cc,v 1.24 2000/06/23 18:39:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -408,13 +408,13 @@ Pingu::do_falling()
   else // Ping is on ground
     {
       // Did we stop too fast?
-      if (std::fabs(velocity.y) > deadly_velocity)
+      if (fabs(velocity.y) > deadly_velocity)
 	{
 	  // FIXME: This is a LinuxTag Hack and should be replaced
 	  // with a real ground smashing action! 
 	  set_action(action_holder->get_uaction("splashed"));
 	}
-      else if (std::fabs(velocity.x) > deadly_velocity)
+      else if (fabs(velocity.x) > deadly_velocity)
 	{
 	  std::cout << "x Smashed on ground, jumping" << std::endl;
 	}

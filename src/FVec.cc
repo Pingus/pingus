@@ -1,4 +1,4 @@
-//  $Id: FVec.cc,v 1.4 2000/05/01 20:11:15 grumbel Exp $
+//  $Id: FVec.cc,v 1.5 2000/06/23 18:39:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -98,8 +98,8 @@ ForcesHolder::apply_forces(CL_Vector p,CL_Vector v)
     tv = i->apply_forces(p,v);
   
   // Explosion array...
-  for (EForceIter i = explo_array.begin(); i != explo_array.end(); i++)
-    tv = i->apply_forces(p,v);
+  for (EForceIter j = explo_array.begin(); j != explo_array.end(); j++)
+    tv = j->apply_forces(p,v);
   
   return tv;
 }

@@ -1,4 +1,4 @@
-// $Id: EditorObj.cc,v 1.7 2000/06/20 17:49:40 grumbel Exp $
+// $Id: EditorObj.cc,v 1.8 2000/06/23 18:39:56 grumbel Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,7 @@
 #include "PSMObj.hh"
 #include "PLFObj.hh"
 #include "EditorObj.hh"
+#include "config.h"
 
 using namespace std;
 
@@ -184,6 +185,9 @@ EditorObj::status_line()
   
 /*
 $Log: EditorObj.cc,v $
+Revision 1.8  2000/06/23 18:39:56  grumbel
+Applied Michaels win32 patch... ^M's suck...
+
 Revision 1.7  2000/06/20 17:49:40  grumbel
 Fixed sorting of objects (caused problems in level12 before)
 added support for teleporter

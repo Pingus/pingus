@@ -1,4 +1,4 @@
-//  $Id: Cloud.cc,v 1.2 2000/06/19 20:10:39 grumbel Exp $
+//  $Id: Cloud.cc,v 1.3 2000/06/23 18:39:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <cstdlib>
+#include <assert.h>
 
 #include "../PingusResource.hh"
 #include "../particles/SmokeParticle.hh"

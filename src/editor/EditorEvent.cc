@@ -1,4 +1,4 @@
-//  $Id: EditorEvent.cc,v 1.17 2000/06/20 17:49:40 grumbel Exp $
+//  $Id: EditorEvent.cc,v 1.18 2000/06/23 18:39:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -320,7 +320,7 @@ EditorEvent::editor_delete_selected_objects()
        i != object_manager->current_objs.end();
        i++)
     { 
-      object_manager->editor_objs.erase(find(object_manager->editor_objs.begin(), object_manager->editor_objs.end(), *i));
+      object_manager->editor_objs.erase(std::find(object_manager->editor_objs.begin(), object_manager->editor_objs.end(), *i));
     }
   
   object_manager->current_objs.erase(object_manager->current_objs.begin(), 
@@ -438,9 +438,9 @@ EditorEvent::editor_duplicate_current_selection()
        i != object_manager->current_objs.end();
        i++)
     {
-      ObjectManager::EditorObjIter iter = find(object_manager->editor_objs.begin(), 
-					       object_manager->editor_objs.end(), 
-					       *i);
+      ObjectManager::EditorObjIter iter = std::find(object_manager->editor_objs.begin(), 
+						    object_manager->editor_objs.end(), 
+						    *i);
       EditorObj* obj = (*i)->duplicate();
 
       object_manager->editor_objs.insert(iter, obj);

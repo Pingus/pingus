@@ -1,4 +1,4 @@
-//  $Id: PingusGame.cc,v 1.13 2000/06/14 21:09:55 grumbel Exp $
+//  $Id: PingusGame.cc,v 1.14 2000/06/23 18:39:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,13 +41,13 @@ PingusGame::PingusGame()
 
 PingusGame::~PingusGame()
 {
-  cout << "PingusGame:~PingusGame" << endl;
+  std::cout << "PingusGame:~PingusGame" << std::endl;
   if (client) {
-    cout << "Deleting client" << endl;
+    std::cout << "Deleting client" << std::endl;
     delete client;
   }
   if (server) {
-    cout << "Server client" << endl;
+    std::cout << "Server client" << std::endl;
     delete server;
   }
 }

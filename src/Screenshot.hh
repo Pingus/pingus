@@ -1,4 +1,4 @@
-//  $Id: Screenshot.hh,v 1.4 2000/06/18 17:01:50 grumbel Exp $
+//  $Id: Screenshot.hh,v 1.5 2000/06/23 18:39:56 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,8 @@
 #define SCREENSHOT_HH
 
 #include <ClanLib/core.h>
+
+using namespace std;
 
 ///
 class Screenshot

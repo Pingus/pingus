@@ -1,4 +1,4 @@
-//  $Id: PingusDemo.hh,v 1.5 2000/06/18 17:01:50 grumbel Exp $
+//  $Id: PingusDemo.hh,v 1.6 2000/06/23 18:39:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,15 +23,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-
-///
-struct PingusEvent {
-  ///
-  int     game_time;
-  ///
-  std::string  str;
-}///
-;
+#include "Server.hh"
 
 ///
 enum PingusDemoMode { play, record }///

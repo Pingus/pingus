@@ -1,4 +1,4 @@
-//  $Id: algo.cc,v 1.6 2000/06/20 17:52:48 grumbel Exp $
+//  $Id: algo.cc,v 1.7 2000/06/23 18:39:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -80,7 +80,7 @@ tolowerstr(char* s)
 {
   //  puts(s);
   for(unsigned int i=0; i < strlen(s); ++i) {
-    s[i] = std::tolower(s[i]);
+    s[i] = tolower(s[i]);
   }
   //  puts(s);
   return s;

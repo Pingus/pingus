@@ -1,4 +1,4 @@
-//  $Id: Server.cc,v 1.12 2000/06/20 17:52:48 grumbel Exp $
+//  $Id: Server.cc,v 1.13 2000/06/23 18:39:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,7 @@
 
 #include <cstdio>
 #include <cstdlib>
+#include <functional>
 
 #include "System.hh"
 #include "globals.hh"
@@ -27,6 +28,8 @@
 #include "GameTime.hh"
 #include "Pingu.hh"
 #include "PingusError.hh"
+
+using namespace std;
 
 PingusEvent::PingusEvent()
 {

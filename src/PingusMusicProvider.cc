@@ -1,4 +1,4 @@
-//  $Id: PingusMusicProvider.cc,v 1.3 2000/04/25 17:54:39 grumbel Exp $
+//  $Id: PingusMusicProvider.cc,v 1.4 2000/06/23 18:39:56 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -52,6 +52,7 @@ PingusMusicProvider::load(std::string str)
 	}
     }
 #endif /* HAVE_LIBSDL_MIXER */
+  return 0;
 }
 
 Mix_Music*

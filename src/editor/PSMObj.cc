@@ -1,4 +1,4 @@
-//  $Id: PSMObj.cc,v 1.11 2000/06/20 17:49:41 grumbel Exp $
+//  $Id: PSMObj.cc,v 1.12 2000/06/23 18:39:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -79,7 +79,7 @@ PSMObj::status_line()
 {
   // FIXME: This is a potential buffer overrun, to lazy to fix it right now
   char str[1024];  
-  string type_name;
+  std::string type_name;
 
   switch(type)
     {

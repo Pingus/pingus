@@ -1,4 +1,4 @@
-//  $Id: DebugGui.cc,v 1.3 2000/02/11 16:58:25 grumbel Exp $
+//  $Id: DebugGui.cc,v 1.4 2000/06/23 18:39:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <assert.h>
 #include "PingusResource.hh"
 
 #include "DebugGui.hh"

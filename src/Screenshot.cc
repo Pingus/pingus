@@ -1,4 +1,4 @@
-//  $Id: Screenshot.cc,v 1.3 2000/06/13 22:19:17 grumbel Exp $
+//  $Id: Screenshot.cc,v 1.4 2000/06/23 18:39:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,7 @@
 
 
 #include <cstdio>
+#include <time.h>
 #include "globals.hh"
 #include "System.hh"
 #include "Screenshot.hh"

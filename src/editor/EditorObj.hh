@@ -1,4 +1,4 @@
-//  $Id: EditorObj.hh,v 1.8 2000/06/23 17:06:24 grumbel Exp $
+//  $Id: EditorObj.hh,v 1.9 2000/06/23 18:39:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,7 @@
 
 #include <fstream>
 #include <ClanLib/core.h>
+#include <functional>
 
 #include "../ResDescriptor.hh"
 #include "../exit_data.hh"
@@ -108,7 +109,7 @@ public:
 ;
 
 // Structure for the sorting algorithm (stable_sort)
-class EditorObj_less : public binary_function<EditorObj*, EditorObj*, bool>
+class EditorObj_less : public std::binary_function<EditorObj*, EditorObj*, bool>
 {
 public:
   bool operator() (EditorObj* a, EditorObj* b) const 

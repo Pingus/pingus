@@ -1,4 +1,4 @@
-//  $Id: TrueServer.cc,v 1.12 2000/06/20 17:52:48 grumbel Exp $
+//  $Id: TrueServer.cc,v 1.13 2000/06/23 18:39:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -40,7 +40,7 @@ TrueServer::TrueServer()
 TrueServer::~TrueServer()
 {
   if (world) {
-    std::cout << "TrueServer: Deleting World" << endl;
+    std::cout << "TrueServer: Deleting World" << std::endl;
     delete world;
   }
 }

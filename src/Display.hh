@@ -1,4 +1,4 @@
-//  $Id: Display.hh,v 1.6 2000/06/18 17:01:49 grumbel Exp $
+//  $Id: Display.hh,v 1.7 2000/06/23 18:39:56 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -48,7 +48,7 @@ private:
   ///
   static bool displaying_cursor;
   ///
-  static list<DisplayHook*> display_hooks;
+  static std::list<DisplayHook*> display_hooks;
 public:
   ///
   static void draw_rect(int x1, int y1, int x2, int y2, float r, float g, float b, float a);

@@ -1,4 +1,4 @@
-//  $Id: DemoRecorder.cc,v 1.3 2000/06/23 17:13:32 grumbel Exp $
+//  $Id: DemoRecorder.cc,v 1.4 2000/06/23 18:39:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,8 @@
 #include "Console.hh"
 #include "PingusError.hh"
 #include "DemoRecorder.hh"
+
+using namespace std;
 
 DemoRecorder::DemoRecorder()
 {

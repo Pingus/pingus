@@ -1,4 +1,4 @@
-//  $Id: Console.hh,v 1.10 2000/06/19 20:10:38 grumbel Exp $
+//  $Id: Console.hh,v 1.11 2000/06/23 18:39:56 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,16 +39,16 @@ private:
   ///
   int  current_pos;
   ///
-  vector<string> output_buffer;
+  std::vector<std::string> output_buffer;
   ///
-  string current_line;
+  std::string current_line;
   ///
   int number_of_lines;
 
   ///
   void draw();
   ///
-  void add_line(string);
+  void add_line(std::string);
 public:
   /** A incarnation of the Endl class, just there to make the
       operator<<() behave like the standard std::cout stuff. */
@@ -101,7 +101,7 @@ public:
       only up to 1023 characters at a time, the rest is lost. */
   void printf(char* format, ...);
   ///
-  void puts(string);
+  void puts(std::string);
   ///
   void newline();
 }///

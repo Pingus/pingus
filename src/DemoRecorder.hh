@@ -1,4 +1,4 @@
-//  $Id: DemoRecorder.hh,v 1.2 2000/06/18 17:01:49 grumbel Exp $
+//  $Id: DemoRecorder.hh,v 1.3 2000/06/23 18:39:56 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,9 +43,9 @@ public:
   ~DemoRecorder();
 
   ///
-  void queue_event(const string&);
+  void queue_event(const std::string&);
   ///
-  void set_levelname(const string&);
+  void set_levelname(const std::string&);
 }///
 ;
 
