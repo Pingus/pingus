@@ -607,8 +607,8 @@ public:
           }
         else
           {
-            std::cerr << "tinygettext: expected 'msgid' keyword, got " << token.keyword 
-                      << " at line " << line_num << std::endl;
+            std::cerr << "tinygettext: expected 'msgid' keyword, got '" << token.keyword 
+                      << "' at line " << line_num << std::endl;
           }
         break;
     
@@ -690,13 +690,17 @@ public:
 
     while((c = getchar(in)) != EOF)
       {
-        //std::cout << "Lexing char: " << char(c) << " " << state << std::endl;
+        //std::cout << "Lexing char: '" << char(c) << "' " << c << " state: " << state << std::endl;
         switch(state)
           {
           case READ_KEYWORD:
             if (c == '#')
               {
                 state = SKIP_COMMENT;
+              }
+            else if (isspace(c))
+              {
+                state = READ_KEYWORD;
               }
             else
               {
@@ -761,7 +765,7 @@ public:
             break;
           }
       }
-    add_token(token);
+    // add_token(token);
   }
 };
 

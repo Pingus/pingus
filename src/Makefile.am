@@ -53,7 +53,6 @@ pingus_CPPFLAGS = @PINGUS_CFLAGS@
 
 pingus_LDADD = \
         @PINGUS_LIBS@ \
-        @LIBINTL@ \
         @LIBS@     \
         \
         caimagemanipulation/libcaimagemanipulation.a \
