@@ -1,4 +1,4 @@
-//  $Id: axis_factory.cxx,v 1.4 2002/08/14 12:41:22 torangan Exp $
+//  $Id: axis_factory.cxx,v 1.5 2002/08/15 11:33:38 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -65,9 +65,17 @@ namespace Input {
     free(angle_str);
 
     cur = cur->children;
-    Button* button1 = ButtonFactory::create(cur);
+    // FIXME: We should add a helper function for this
+    if (xmlIsBlankNode(cur))
+      cur = cur->next;
+
+    Button* button1 = ButtonFactory::create(cur);   
+
     cur = cur->next;
-    Button* button2 = ButtonFactory::create(cur);    
+    if (xmlIsBlankNode(cur))
+      cur = cur->next;
+
+    Button* button2 = ButtonFactory::create(cur);
 	    
     return new ButtonAxis(angle, button1, button2);
   }
