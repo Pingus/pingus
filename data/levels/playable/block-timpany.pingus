@@ -4,7 +4,7 @@
   <global>
     <levelname lang="en">Armour-plated chocolate bar</levelname>
     <description lang="en">
-
+    <playable>1</playable>
 </description>
     <author>Craig Timpany &lt;timpany@pingus.cx&gt;</author>
     <number-of-pingus>40</number-of-pingus>

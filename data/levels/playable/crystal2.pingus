@@ -7,6 +7,7 @@
 an animated background. More 
 animated backgrounds might follow later.
 </description>
+    <playable>1</playable>
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
     <number-of-pingus>50</number-of-pingus>
     <number-to-save>30</number-to-save>

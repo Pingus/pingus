@@ -4,6 +4,7 @@
   <global>
     <levelname lang="en">Lois and Clark</levelname>
     <description lang="en">
+    <playable>1</playable>
 
 </description>
     <author></author>

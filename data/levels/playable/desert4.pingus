@@ -13,7 +13,7 @@
     <width>1400</width>
     <height>800</height>
     <difficulty>60</difficulty>
-    <playable>0</playable>
+    <playable>1</playable>
     <comment>actions not tuned and very similar to desert5.xml</comment>
     <music>pingus-3.it</music>
   </global>

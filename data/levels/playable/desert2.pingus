@@ -13,7 +13,7 @@ Can you help them?</description>
     <height>600</height>
 
     <difficulty>80</difficulty>
-    <playable>0</playable>
+    <playable>1</playable>
     <comment>got broken due to the new head-bounce feature</comment>
     <music>pingus-3.it</music>
   </global>

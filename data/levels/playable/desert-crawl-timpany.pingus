@@ -3,9 +3,7 @@
 <pingus-level>
   <global>
     <levelname lang="en">Crawl space</levelname>
-    <description lang="en">
-
-</description>
+    <description lang="en"></description>
     <author>timpany@pingus.cx</author>
     <number-of-pingus>40</number-of-pingus>
     <number-to-save>30</number-to-save>
@@ -13,7 +11,7 @@
     <width>1280</width>
     <height>704</height>
     <difficulty>5</difficulty>
-    <playable>0</playable>
+    <playable>1</playable>
     <comment></comment>
   </global>
 
