@@ -1,4 +1,4 @@
-//  $Id: SurfaceBackgroundData.cc,v 1.12 2002/01/03 13:36:01 grumbel Exp $
+//  $Id: SurfaceBackgroundData.cc,v 1.13 2002/01/19 18:12:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -84,10 +84,10 @@ SurfaceBackgroundData::write_xml(std::ofstream* xml)
 	  << std::endl;
 }
 
-boost::shared_ptr<SurfaceBackgroundData>
+boost::shared_ptr<WorldObjData>
 SurfaceBackgroundData::create(xmlDocPtr doc, xmlNodePtr cur)
 {
-  boost::shared_ptr<SurfaceBackgroundData> background(new SurfaceBackgroundData ());
+  SurfaceBackgroundData* background = new SurfaceBackgroundData ();
 
   background->pos.z = -100;
 
@@ -142,7 +142,7 @@ SurfaceBackgroundData::create(xmlDocPtr doc, xmlNodePtr cur)
 	}
       cur = cur->next;
     }      
-  return background;
+  return boost::shared_ptr<WorldObjData>(background);
 }
 
 boost::shared_ptr<WorldObj> 

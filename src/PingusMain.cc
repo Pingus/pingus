@@ -1,4 +1,4 @@
-//   $Id: PingusMain.cc,v 1.50 2002/01/15 10:48:49 grumbel Exp $
+//   $Id: PingusMain.cc,v 1.51 2002/01/19 18:12:54 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -147,7 +147,7 @@ PingusMain::read_rc_file(void)
 // Checking for all options, which needs to be known *before* the
 // config file is read. 
 void 
-PingusMain::quick_check_args(int argc, char* argv[])
+PingusMain::quick_check_args(int argc, char** argv)
 {
   no_config_file = false;
   for(int i=1; i < argc; i++)
@@ -162,7 +162,7 @@ PingusMain::quick_check_args(int argc, char* argv[])
 // check_ars() checks the command line for options and set the
 // corresponding global variables to the set values.
 void 
-PingusMain::check_args(int argc, char* argv[])
+PingusMain::check_args(int argc, char** argv)
 {
 #ifdef WIN32
   cursor_enabled = true;
@@ -720,7 +720,7 @@ PingusMain::get_filenames()
 }
   
 void
-PingusMain::init(int argc, char* argv[])
+PingusMain::init(int argc, char** argv)
 {
   char c;
 

@@ -64,19 +64,19 @@ section menu
 {
 	//background = ../images/core/menu/background.jpg (type=surface, x=0, y=0, width=800, height=600);
 
-	create_on = ../images/core/menu/create_on.png (type=surface, x=0, y=0, width=200, height=128);
-	credits_on = ../images/core/menu/credits_on.png (type=surface, x=0, y=0, width=200, height=128);
-	exit_on = ../images/core/menu/exit_on.png (type=surface, x=0, y=0, width=200, height=130);
-	ice_off = ../images/core/menu/ice_off.png (type=surface, x=0, y=0, width=228, height=189);
-	options_on = ../images/core/menu/options_on.png (type=surface, x=0, y=0, width=200, height=127);
-	play_on = ../images/core/menu/play_on.png (type=surface, x=0, y=0, width=201, height=127);
-	multi_on = ../images/core/menu/multi_on.png (type=surface, x=0, y=0, width=201, height=127);
+	create_on = ../images/core/menu/create_on.png (type=surface);
+	credits_on = ../images/core/menu/credits_on.png (type=surface);
+	exit_on = ../images/core/menu/exit_on.png (type=surface);
+	ice_off = ../images/core/menu/ice_off.png (type=surface);
+	options_on = ../images/core/menu/options_on.png (type=surface);
+	play_on = ../images/core/menu/play_on.png (type=surface);
+	multi_on = ../images/core/menu/multi_on.png (type=surface);
 
-	layer1 = ../images/core/menu/layer1.jpg (type=surface, x=0, y=0, width=800, height=268);
-	layer2 = ../images/core/menu/layer2.png (type=surface, x=0, y=0, width=800, height=362);
-	layer3 = ../images/core/menu/layer3.png (type=surface, x=0, y=0, width=800, height=201);
-	layer4 = ../images/core/menu/layer4.png (type=surface, x=0, y=0, width=800, height=223);
-	layer5 = ../images/core/menu/layer5.png (type=surface, x=0, y=0, width=302, height=104);
+	layer1 = ../images/core/menu/layer1.jpg (type=surface);
+	layer2 = ../images/core/menu/layer2.png (type=surface);
+	layer3 = ../images/core/menu/layer3.png (type=surface);
+	layer4 = ../images/core/menu/layer4.png (type=surface);
+	layer5 = ../images/core/menu/layer5.png (type=surface);
 }
 
 section misc

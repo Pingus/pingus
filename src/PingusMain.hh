@@ -1,4 +1,4 @@
-//  $Id: PingusMain.hh,v 1.8 2001/11/29 10:47:44 grumbel Exp $
+//  $Id: PingusMain.hh,v 1.9 2002/01/19 18:12:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -57,16 +57,16 @@ public:
   void start_game(void);
 
   ///
-  void check_args(int argc, char* argv[]);
+  void check_args(int argc, char** argv);
   ///
-  void quick_check_args(int argc, char* argv[]);
+  void quick_check_args(int argc, char** argv);
   ///
   void read_rc_file(void);
 
   ///
   void get_filenames(void);
   ///
-  void init(int argc, char* argv[]);
+  void init(int argc, char** argv);
   ///
   void init_clanlib(void);
   /// void intro(void);

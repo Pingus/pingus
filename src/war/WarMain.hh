@@ -1,4 +1,4 @@
-//  $Id: WarMain.hh,v 1.2 2000/08/09 14:35:46 grumbel Exp $
+//  $Id: WarMain.hh,v 1.3 2002/01/19 18:12:54 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,7 +28,7 @@ private:
 
 public:
   char* get_title();
-  int   main (int argc, char* argv[]);
+  int   main (int argc, char** argv);
   void  init_modules();
   void  deinit_modules();
 

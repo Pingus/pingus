@@ -1,4 +1,4 @@
-//  $Id: HurryUp.cc,v 1.8 2002/01/15 10:48:49 grumbel Exp $
+//  $Id: HurryUp.cc,v 1.9 2002/01/19 18:12:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,7 +27,7 @@ HurryUp::HurryUp()
   center_reached = false;
   is_running = false;
   is_finished = false;
-  speed = 3.0;
+  speed = 3.0f;
 }
 
 HurryUp::~HurryUp()
