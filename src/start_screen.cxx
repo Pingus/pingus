@@ -1,4 +1,4 @@
-//  $Id: start_screen.cxx,v 1.6 2003/03/30 14:49:49 grumbel Exp $
+//  $Id: start_screen.cxx,v 1.7 2003/03/30 16:51:43 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -66,7 +66,26 @@ public:
   }
 };
 
-//cancel button 122, 444
+
+class StartScreenAbortButton
+  : public GUI::SurfaceButton
+{
+private:
+  StartScreen* parent;
+public:
+  StartScreenAbortButton(StartScreen* p)
+    : GUI::SurfaceButton(122, 444, 
+                         ResDescriptor("start/back", "core", ResDescriptor::RD_RESOURCE),
+                         ResDescriptor("start/back_clicked", "core", ResDescriptor::RD_RESOURCE),
+                         ResDescriptor("start/back_hover", "core", ResDescriptor::RD_RESOURCE)),
+      parent(p)
+  {
+  }
+
+  void on_click() {
+    parent->cancel_game();
+  }
+};
 
 StartScreen::~StartScreen()
 {
@@ -122,7 +141,7 @@ StartScreenComponent::draw(GraphicContext& gc)
     {
     }*/
 
-  gc.print_left(Fonts::chalk_small, 110, 460, _("Author: ") + plf->get_author());
+  gc.print_center(Fonts::chalk_small, 400, 470, _("Author: ") + plf->get_author());
 
   if (maintainer_mode)
     gc.print_left(Fonts::chalk_small, 110, 430, _("Filename: ") + plf->get_filename());
@@ -134,6 +153,7 @@ StartScreen::StartScreen(PLFHandle arg_plf)
   StartScreenComponent* comp = new StartScreenComponent(plf);
   gui_manager->add(comp);
   gui_manager->add(new StartScreenOkButton(this));
+  gui_manager->add(new StartScreenAbortButton(this));
 }
 
 void

@@ -1,4 +1,4 @@
-//  $Id: manager.cxx,v 1.26 2003/03/25 00:37:44 grumbel Exp $
+//  $Id: manager.cxx,v 1.27 2003/03/30 16:51:43 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,7 @@
 #include "../gui/surface_button.hxx"
 #include "../path_manager.hxx"
 #include "../res_descriptor.hxx"
+#include "../sound/sound.hxx"
 #include "worldmap.hxx"
 #include "manager.hxx"
 
@@ -98,6 +99,7 @@ void
 WorldMapManager::on_startup ()
 {
   exit_worldmap = false;
+  PingusSound::stop_music();
 }
 
 WorldMapManager::~WorldMapManager ()

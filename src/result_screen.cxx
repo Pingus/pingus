@@ -1,4 +1,4 @@
-//  $Id: result_screen.cxx,v 1.7 2003/03/30 15:34:57 grumbel Exp $
+//  $Id: result_screen.cxx,v 1.8 2003/03/30 16:51:43 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -65,6 +65,26 @@ public:
   }
 };
 
+class ResultScreenAbortButton
+  : public GUI::SurfaceButton
+{
+private:
+  ResultScreen* parent;
+public:
+  ResultScreenAbortButton(ResultScreen* p)
+    : GUI::SurfaceButton(122, 444, 
+                         ResDescriptor("start/back", "core", ResDescriptor::RD_RESOURCE),
+                         ResDescriptor("start/back_clicked", "core", ResDescriptor::RD_RESOURCE),
+                         ResDescriptor("start/back_hover", "core", ResDescriptor::RD_RESOURCE)),
+      parent(p)
+  {
+  }
+
+  void on_click() {
+    parent->close_screen();
+  }
+};
+
 class ResultScreenRetryButton 
   : public GUI::SurfaceButton
 {
@@ -72,10 +92,10 @@ private:
   ResultScreen* parent;
 public:
   ResultScreenRetryButton(ResultScreen* p)
-    : GUI::SurfaceButton(500, 500, 
-                         ResDescriptor("result/retry", "core", ResDescriptor::RD_RESOURCE),
-                         ResDescriptor("result/retry", "core", ResDescriptor::RD_RESOURCE),
-                         ResDescriptor("result/retry", "core", ResDescriptor::RD_RESOURCE)),
+    : GUI::SurfaceButton(625, 425, 
+                         ResDescriptor("start/ok", "core", ResDescriptor::RD_RESOURCE),
+                         ResDescriptor("start/ok_clicked", "core", ResDescriptor::RD_RESOURCE),
+                         ResDescriptor("start/ok_hover", "core", ResDescriptor::RD_RESOURCE)),
       parent(p)
   {
   }
@@ -101,8 +121,24 @@ void
 ResultScreenComponent::draw(GraphicContext& gc) 
 {
   gc.draw(background, 0, 0);
+
+  if (!result.success())
+    gc.print_left(Fonts::chalk_small, 635, 415, "Retry?");
+
   gc.print_center(Fonts::chalk_large, gc.get_width()/2, 100, System::translate(result.plf->get_levelname()));
-  gc.print_left(Fonts::chalk_large, 150, 180, _("Results:"));
+
+  if (result.success())
+    {
+      gc.print_left(Fonts::chalk_large, 150, 180, _("Result: Success!"));
+      gc.print_center(Fonts::pingus_small, gc.get_width()/2, gc.get_height()-30,
+                      "..:: Press Space to continue ::..");
+    }
+  else
+    {
+      gc.print_left(Fonts::chalk_large, 150, 180, _("Result: Failure! :("));
+      gc.print_center(Fonts::pingus_small, gc.get_width()/2, gc.get_height()-30,
+                      "..:: Press Space to retry the level ::..");
+    }
 
   gc.print_left(Fonts::chalk_small, 150, 280, "Saved: ");
   for (int i = 0; i < result.saved; ++i)
@@ -123,19 +159,6 @@ ResultScreenComponent::draw(GraphicContext& gc)
     gc.print_left(Fonts::chalk_small, 250, 370, "-");
   else
     gc.print_left(Fonts::chalk_small, 250, 370, to_string(result.max_time - result.used_time));
-
-  if (result.success())
-    {
-      gc.print_center(Fonts::chalk_large, gc.get_width()/2, 450, "Success! =:-)");
-      gc.print_center(Fonts::pingus_small, gc.get_width()/2, gc.get_height()-30,
-                      "..:: Press Space to continue ::..");
-    }
-  else
-    {
-      gc.print_center(Fonts::chalk_large, gc.get_width()/2, 450, "Failure! :-(");
-      gc.print_center(Fonts::pingus_small, gc.get_width()/2, gc.get_height()-30,
-                      "..:: Press Space to retry the level ::..");
-    }
 }
 
 ResultScreen::ResultScreen(Result arg_result)
@@ -148,9 +171,14 @@ ResultScreen::ResultScreen(Result arg_result)
   gui_manager->add(comp);
 
   if (result.success())
-    gui_manager->add(new ResultScreenOkButton(this));
+    {
+      gui_manager->add(new ResultScreenOkButton(this));
+    }
   else
-    gui_manager->add(new ResultScreenRetryButton(this));
+    {
+      gui_manager->add(new ResultScreenAbortButton(this));
+      gui_manager->add(new ResultScreenRetryButton(this));
+    }
 
   //gui_manager->add(new GUI::SurfaceButton(500, 500, cancel_desc, cancel_desc, cancel_desc));
 }

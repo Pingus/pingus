@@ -86,6 +86,10 @@ core/menu/result_retry.png \
 core/menu/startscreenbg.jpg \
 core/menu/worldscreenbg.jpg \
 core/misc/404.png \
+core/misc/chalk_pingu1.png \
+core/misc/chalk_pingu2.png \
+core/misc/chalk_pingu3.png \
+core/misc/chalk_pingu4.png \
 core/misc/flag0.png \
 core/misc/flag1.png \
 core/misc/flag2.png \
@@ -96,6 +100,12 @@ core/misc/logo.png \
 core/misc/pingubw.png \
 core/misc/smallmap_entrance.png \
 core/misc/smallmap_exit.png \
+core/misc/start_back.png \
+core/misc/start_back_clicked.png \
+core/misc/start_back_hover.png \
+core/misc/start_ok.png \
+core/misc/start_ok_clicked.png \
+core/misc/start_ok_hover.png \
 core/misc/unplayable.png \
 core/misc/unplayable2.png \
 core/worldmap/arrow.png \

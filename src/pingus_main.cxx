@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.58 2003/03/30 15:34:57 grumbel Exp $
+//   $Id: pingus_main.cxx,v 1.59 2003/03/30 16:51:43 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -336,7 +336,7 @@ PingusMain::check_args(int argc, char** argv)
 		<< std::endl;
       
       std::cout << _("\n\
-Copyright (C) 1998 Ingo Ruhnke <grumbel@pingus.cx>\n\
+Copyright (C) 2003 Ingo Ruhnke <grumbel@pingus.cx>\n\
 There is NO warranty.  You may redistribute this software\n\
 under the terms of the GN General Public License.\n\
 For more information about these matters, see the files named COPYING.\
