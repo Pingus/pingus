@@ -2,8 +2,12 @@
 
 <pingus-level>
   <global>
-    <levelname lang="en">EditorDefaultValue: Please give me a name...</levelname>
-    <description lang="en">EditorDefaultValue: ...and a short description</description>
+    <levelname lang="en">Three solution, its up to you</levelname>
+
+    <description lang="en"> Now that you have learned all the actions, its time for some
+more practice, this levels presents you with at least three
+different ways to solve it, which one you pick is your choice.</description>
+
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
     <number-of-pingus>20</number-of-pingus>
     <number-to-save>10</number-to-save>
