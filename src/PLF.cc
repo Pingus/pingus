@@ -1,4 +1,4 @@
-//  $Id: PLF.cc,v 1.28 2002/01/15 10:48:49 grumbel Exp $
+//  $Id: PLF.cc,v 1.29 2002/01/24 16:11:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -135,6 +135,7 @@ PLF::get_pingus()
 vector<ActionData>
 PLF::get_actions()
 {
+  // FIXME: we should merge duplicated actions
   return actions;
 }
 

@@ -1,4 +1,4 @@
-//  $Id: Teleporter.hh,v 1.23 2002/01/16 23:51:01 grumbel Exp $
+//  $Id: Teleporter.hh,v 1.24 2002/01/24 16:11:36 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -56,13 +56,14 @@ class Teleporter : private TeleporterData,
 		   public WorldObj
 {
 private:
-  CL_Surface sur;
+  Sprite sprite;
+  Sprite target_sprite;
   
 public:
   Teleporter (const TeleporterData& data);
 
   int get_z_pos() { return 0; }  
-  void draw (boost::dummy_ptr<EditorView> view);
+  void draw_offset (int x, int y, float s = 1.0);
   void update(float delta);
   float get_z_pos() const { return (int) pos.z; }
 };

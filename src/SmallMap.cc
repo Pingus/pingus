@@ -1,4 +1,4 @@
-//  $Id: SmallMap.cc,v 1.36 2002/01/15 10:48:49 grumbel Exp $
+//  $Id: SmallMap.cc,v 1.37 2002/01/24 16:11:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -116,8 +116,7 @@ SmallMap::init()
 	    }
 	}
     }
-
-  /*
+  /* FIXME: due to API change in PLF disabled
   std::vector<ExitData>     exit_d     = plf->get_exit();
   for(std::vector<ExitData>::iterator i = exit_d.begin(); i != exit_d.end(); i++)
     {
@@ -133,8 +132,8 @@ SmallMap::init()
       Blitter::put_surface(canvas, entrance_sur,
 			   i->pos.x * width / colmap->get_width() - (entrance_sur.get_width()/2),
 			   i->pos.y * height / colmap->get_height() - (entrance_sur.get_height()));
-    }*/
-
+    }
+  */
   canvas->unlock();
   
   sur = CL_Surface(canvas, true);
@@ -220,8 +219,6 @@ SmallMap::update(float delta)
       cx = (int(CL_Mouse::get_x()) - x_pos) * int(colmap->get_width()) / width;
       cy = (int(CL_Mouse::get_y()) - y_pos) * int(colmap->get_height()) / height ;
 
-      std::cout << "Viewpoint: " << cx << " " << cy << std::endl;
-
       client->get_playfield()->set_viewpoint(cx, cy);
     }
 }
@@ -229,17 +226,8 @@ SmallMap::update(float delta)
 bool
 SmallMap::mouse_over()
 {
-  //std::cout << "x_pos: " << CL_Mouse::get_x() << " y_pos: " << CL_Mouse::get_y() << std::endl;
-
-  if (CL_Mouse::get_x() > x_pos && CL_Mouse::get_x() < x_pos + (int)width
-      && CL_Mouse::get_y() > y_pos && CL_Mouse::get_y() < y_pos + (int)height)
-    {
-      return true;
-    }
-  else
-    {
-      return false;
-    }
+  return (CL_Mouse::get_x() > x_pos && CL_Mouse::get_x() < x_pos + (int)width
+	  && CL_Mouse::get_y() > y_pos && CL_Mouse::get_y() < y_pos + (int)height);
 }
 
 bool

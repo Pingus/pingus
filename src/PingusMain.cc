@@ -1,4 +1,4 @@
-//   $Id: PingusMain.cc,v 1.53 2002/01/20 14:17:26 grumbel Exp $
+//   $Id: PingusMain.cc,v 1.54 2002/01/24 16:11:35 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -791,6 +791,9 @@ PingusMain::init_clanlib()
       glEnable (GL_BLEND);
     }
 #endif
+
+  CL_Display::clear_display ();
+  CL_Display::flip_display ();
 }
 
 void

@@ -1,4 +1,4 @@
-//  $Id: PLFObj.cc,v 1.57 2002/01/16 23:51:00 grumbel Exp $
+//  $Id: PLFObj.cc,v 1.58 2002/01/24 16:11:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -97,8 +97,6 @@ ExitObj::ExitObj(const ExitData& data)
   : SpriteEditorObj (data.desc.res_name, data.desc.datafile, pos),
     ExitData (data)
 {
-  std::cout << "EXITOBJ: " << &pos << std::endl;
-  
   sprite.set_align_center_bottom ();
          
   if (use_old_pos_handling)
@@ -146,7 +144,7 @@ TrapObj::TrapObj(const TrapData& data)
   } else if (type == "spike") {
     pos.z = -100;
     sprite = Sprite("Traps/spike", "traps");
-    sprite.set_align_center_bottom ();
+    //sprite.set_align_center_bottom ();
     frame = 5;
   } else if (type == "hammer") {
     sprite = Sprite("Traps/hammer", "traps");

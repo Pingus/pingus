@@ -1,4 +1,4 @@
-//  $Id: EditorHelpScreen.cc,v 1.1 2002/01/19 14:29:59 grumbel Exp $
+//  $Id: EditorHelpScreen.cc,v 1.2 2002/01/24 16:11:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -73,6 +73,10 @@ EditorHelpScreen::draw ()
   font->print_left (x_pos, y_pos + 300, _("g - ungroup/group current selection"));
   //font->print_left (x_pos, y_pos + 320, _(""));
   //font->print_left (x_pos, y_pos + 340, _(""));
+  
+  x_pos = 32;
+  y_pos = 500;
+  font->print_left (x_pos, y_pos + 300, _("Naming Convention: "));
 }
 
 void

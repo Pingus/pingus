@@ -1,4 +1,4 @@
-//  $Id: Teleporter.cc,v 1.29 2002/01/21 11:13:55 grumbel Exp $
+//  $Id: Teleporter.cc,v 1.30 2002/01/24 16:11:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -110,8 +110,13 @@ TeleporterData::create_EditorObj ()
 /**************/
 
 Teleporter::Teleporter (const TeleporterData& data)
-{
-  sur = PingusResource::load_surface("teleporter", "worldobjs");
+  : sprite ("teleporter", "worldobjs", 20.0f, Sprite::NONE, Sprite::ONCE),
+    target_sprite ("teleportertarget", "worldobjs", 20.0f, Sprite::NONE, Sprite::ONCE)
+{  
+  sprite.set_align_center_bottom ();
+  target_sprite.set_align_center ();
+
+  //FIXME: we need a Sprite::set_frame()
 
   pos = data.pos;
   target_pos = data.target_pos;
@@ -120,23 +125,30 @@ Teleporter::Teleporter (const TeleporterData& data)
 }
 
 void 
-Teleporter::draw (boost::dummy_ptr<EditorView> view)
+Teleporter::draw_offset (int x_of, int y_of, float s)
 {
   //std::cout << "Teleporter::draw_offset ()" << std::endl;
-  view->draw (sur, pos);
+  //view->draw (sur, pos);
+  sprite.put_screen (pos + CL_Vector(x_of, y_of));
+  target_sprite.put_screen (target_pos + CL_Vector(x_of, y_of));
 }
 
 void 
 Teleporter::update (float delta)
 {
+  sprite.update (delta);
+  target_sprite.update (delta);
+
   PinguHolder* holder = world->get_pingu_p();
 
   for (PinguIter pingu = holder->begin (); pingu != holder->end (); pingu++)
     {
-      if ((*pingu)->get_x() > pos.x  && (*pingu)->get_x() < pos.x + 35
-	  && (*pingu)->get_y() > pos.y && (*pingu)->get_y() < pos.y + 52)
+      if ((*pingu)->get_x() > pos.x - 3 && (*pingu)->get_x() < pos.x + 3
+	  && (*pingu)->get_y() < pos.y && (*pingu)->get_y() > pos.y - 52)
 	{
 	  (*pingu)->set_pos (int(target_pos.x), int(target_pos.y));
+	  sprite.reset ();
+	  target_sprite.reset ();
 	}
     }
 }
@@ -148,7 +160,7 @@ Teleporter::update (float delta)
 EditorTeleporterObj::EditorTeleporterObj (const TeleporterData& data)
   : SpriteEditorObj ("teleporter", "worldobjs", pos)
 {
-  sprite.set_align_center ();
+  sprite.set_align_center_bottom ();
 
   pos        = data.pos;
   target_pos = data.target_pos;
