@@ -1,4 +1,4 @@
-//  $Id: level_result.cxx,v 1.16 2003/04/24 15:18:19 grumbel Exp $
+//  $Id: level_result.cxx,v 1.17 2003/06/17 14:09:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -66,7 +66,7 @@ PingusLevelResult::draw(void)
 	   world->get_pingus()->get_number_of_allowed());
   font->print_center(CL_Display::get_width() / 2, 140, str);
 
-  snprintf(str, 128, _("Pingus killed:  %3d/%3d"),
+  snprintf(str, 128, _("Pingus died:  %3d/%3d"),
 	  world->get_pingus()->get_number_of_allowed()
            - world->get_pingus()->get_number_of_exited(),
 	  world->get_pingus()->get_number_of_allowed());

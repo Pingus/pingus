@@ -1,4 +1,4 @@
-//  $Id: editor_event.cxx,v 1.58 2003/04/24 15:18:19 grumbel Exp $
+//  $Id: editor_event.cxx,v 1.59 2003/06/17 14:09:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -274,7 +274,7 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key& key)
 	  break;
 
 	case CL_KEY_F2:
-	  HTMLBrowser::launch ("http://pingus.seul.org/levels.html");
+          HTMLBrowser::launch ("http://pingus.seul.org/levels.html");
 	  break;
 
 	  // Change the width and height of the current level.

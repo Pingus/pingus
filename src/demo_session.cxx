@@ -1,4 +1,4 @@
-//  $Id: demo_session.cxx,v 1.8 2003/04/19 10:23:17 torangan Exp $
+//  $Id: demo_session.cxx,v 1.9 2003/06/17 14:09:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -70,13 +70,13 @@ DemoSession::draw_background(GraphicContext& gc)
   float x_of = -gc.get_x_offset();
   float y_of = -gc.get_y_offset();
 
-  x_of = Math::mid(float(gc.get_width()/2),
+  x_of = Math::mid(gc.get_width()/2.0f,
                    x_of,
-                   float(world->get_width() - 1 - gc.get_width()/2));
+                   world->get_width() - 1 - gc.get_width()/2.0f);
 
-  y_of = Math::mid(float(gc.get_height()/2),
+  y_of = Math::mid(gc.get_height()/2.0f,
                    y_of,
-                   float(world->get_height() - 1 - gc.get_height()/2));
+                   world->get_height() - 1 - gc.get_height()/2.0f);
 
   gc.set_offset(-x_of, -y_of);
 

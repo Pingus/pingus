@@ -1,4 +1,4 @@
-//  $Id: result_screen.cxx,v 1.17 2003/04/24 15:18:19 grumbel Exp $
+//  $Id: result_screen.cxx,v 1.18 2003/06/17 14:09:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -231,7 +231,7 @@ ResultScreenComponent::draw(GraphicContext& gc)
   gc.print_right(Fonts::chalk_normal, right_x, y, to_string(result.saved)
                  + "/" + to_string(result.needed));;
 
-  gc.print_left(Fonts::chalk_normal,  left_x,  y+=30, _("Killed: "));
+  gc.print_left(Fonts::chalk_normal,  left_x,  y+=30, _("Died: "));
   gc.print_right(Fonts::chalk_normal, right_x, y, to_string(result.killed));
 
 

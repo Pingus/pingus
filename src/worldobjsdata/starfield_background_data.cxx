@@ -1,4 +1,4 @@
-//  $Id: starfield_background_data.cxx,v 1.10 2003/04/19 10:23:19 torangan Exp $
+//  $Id: starfield_background_data.cxx,v 1.11 2003/06/17 14:09:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,40 +28,40 @@
 namespace WorldObjsData {
 
 StarfieldBackgroundData::StarfieldBackgroundData ()
-  :  small_stars_count(400),
-    middle_stars_count(200),
-     large_stars_count(100)
+  :  small_stars_count(40),
+    middle_stars_count(20),
+     large_stars_count(10)
 {
 }
 
 StarfieldBackgroundData::StarfieldBackgroundData (const StarfieldBackgroundData& old)
   : WorldObjData(old),
-    small_stars_count(old. small_stars_count),
+    small_stars_count (old.small_stars_count),
     middle_stars_count(old.middle_stars_count),
-    large_stars_count(old. large_stars_count)
+    large_stars_count (old.large_stars_count)
 {
 }
 
 StarfieldBackgroundData::StarfieldBackgroundData (xmlDocPtr doc, xmlNodePtr cur)
 {
-  small_stars_count = 100;
-  middle_stars_count = 50;
-  large_stars_count = 25;
+  small_stars_count  = 100;
+  middle_stars_count =  50;
+  large_stars_count  =  25;
 
 
   XMLFileReader reader(doc, cur);
-  reader.read_int("small-stars", small_stars_count);
+  reader.read_int("small-stars",  small_stars_count);
   reader.read_int("middle-stars", middle_stars_count);
-  reader.read_int("large-stars", large_stars_count);
+  reader.read_int("large-stars",  large_stars_count);
 }
 
 void
 StarfieldBackgroundData::write_xml(std::ostream& xml)
 {
   xml << "<background type=\"starfield\">\n"
-      << "  <small-stars  count=\"" <<  small_stars_count << "\"/>\n"
-      << "  <middle-stars count=\"" << middle_stars_count << "\"/>\n"
-      << "  <large-stars  count=\"" <<  large_stars_count << "\"/>\n"
+      << "  <small-stars>" <<  small_stars_count << "</small-stars>\n"
+      << "  <middle-stars>" << middle_stars_count << "</middle-stars>\n"
+      << "  <large-stars>" <<  large_stars_count << "</large-stars>\n"
       << "</background>\n"
       << std::endl;
 }

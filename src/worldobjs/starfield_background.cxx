@@ -1,4 +1,4 @@
-//  $Id: starfield_background.cxx,v 1.5 2003/04/19 10:23:19 torangan Exp $
+//  $Id: starfield_background.cxx,v 1.6 2003/06/17 14:09:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <iostream>
 #include "../worldobjsdata/starfield_background_data.hxx"
 #include "starfield_background.hxx"
 #include "starfield_background_stars.hxx"
@@ -26,7 +27,6 @@ namespace WorldObjs {
 StarfieldBackground::StarfieldBackground (const WorldObjsData::StarfieldBackgroundData& data_)
   : data(new WorldObjsData::StarfieldBackgroundData(data_))
 {
-
   int i;
 
   for (i=0; i < data->small_stars_count; ++i)

@@ -1,4 +1,4 @@
-//  $Id: console.cxx,v 1.14 2003/04/22 16:40:41 grumbel Exp $
+//  $Id: console.cxx,v 1.15 2003/06/17 14:09:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -165,7 +165,7 @@ Console::draw()
 
   const std::list<std::string>& buffer = streambuf.get_buffer ();
 
-  unsigned int window_start = Math::max(0, static_cast<int>(buffer.size() - number_of_lines - current_pos));
+  unsigned int window_start = Math::max(0, int(buffer.size() - number_of_lines - current_pos));
 
   std::list<std::string>::const_iterator it = buffer.begin();
 

@@ -1,4 +1,4 @@
-//  $Id: smallmap.cxx,v 1.37 2003/04/19 10:23:17 torangan Exp $
+//  $Id: smallmap.cxx,v 1.38 2003/06/17 14:09:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -209,8 +209,8 @@ SmallMap::draw (GraphicContext& gc)
 
   Display::draw_rect(x_of,
 		     y_of,
-		     x_of + Math::min(rwidth,  static_cast<int>(sur.get_width()  - 1)),
-		     y_of + Math::min(rheight, static_cast<int>(sur.get_height() - 1)),
+		     x_of + Math::min(rwidth,  int(sur.get_width()  - 1)),
+		     y_of + Math::min(rheight, int(sur.get_height() - 1)),
 		     0.0, 1.0, 0.0, 1.0);
 
   // FIXME: This should use put_target(), but put_target(), does not

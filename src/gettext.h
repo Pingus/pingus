@@ -21,8 +21,8 @@
 
 #include <config.h>
 
-#define _(String) gettext (String)
-#define N_(String) gettext_noop (String)
+#define _(String) gettext(String)
+#define N_(String) gettext_noop(String)
 
 /* NLS can be disabled through the configure --disable-nls option.  */
 #if ENABLE_NLS

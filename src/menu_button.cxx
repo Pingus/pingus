@@ -1,4 +1,4 @@
-//  $Id: menu_button.cxx,v 1.11 2003/04/24 15:18:19 grumbel Exp $
+//  $Id: menu_button.cxx,v 1.12 2003/06/17 14:09:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -62,7 +62,7 @@ SurfaceButton::draw (GraphicContext& gc)
   if (mouse_over && !pressed)
     {
       gc.print_center(font, CL_Display::get_width() / 2,
-                      CL_Display::get_height() - 20,
+                      CL_Display::get_height() - font->get_height(),
                       desc.c_str());
 
       gc.draw(surface_p, x_pos - surface_p.get_width()/2,
@@ -76,7 +76,7 @@ SurfaceButton::draw (GraphicContext& gc)
 	}
       else
 	{
-	  gc.print_center(font_large, x_pos + 32, y_pos - 32 - font_large->get_height(),
+	  gc.print_center(font_large, x_pos + 32, y_pos - 32 - (font_large->get_height() - 5),
                           line1.c_str());
 	  gc.print_center(font_large, x_pos + 32, y_pos - 32,
                           line2.c_str());

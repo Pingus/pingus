@@ -1,4 +1,4 @@
-//  $Id: editor_view.cxx,v 1.8 2003/04/19 10:23:18 torangan Exp $
+//  $Id: editor_view.cxx,v 1.9 2003/06/17 14:09:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -66,10 +66,10 @@ EditorView::zoom_to (const CL_Rect & arg_rect)
 {
   CL_Rect rect;
 
-  rect.x1 = Math::min (arg_rect.x1, arg_rect.x2);
-  rect.x2 = Math::max (arg_rect.x1, arg_rect.x2);
-  rect.y1 = Math::min (arg_rect.y1, arg_rect.y2);
-  rect.y2 = Math::max (arg_rect.y1, arg_rect.y2);
+  rect.x1 = Math::min(arg_rect.x1, arg_rect.x2);
+  rect.x2 = Math::max(arg_rect.x1, arg_rect.x2);
+  rect.y1 = Math::min(arg_rect.y1, arg_rect.y2);
+  rect.y2 = Math::max(arg_rect.y1, arg_rect.y2);
 
   Vector pos1 = screen_to_world (Vector(rect.x1, rect.y1));
   Vector pos2 = screen_to_world (Vector(rect.x2, rect.y2));
