@@ -1,4 +1,4 @@
-//  $Id: PingusMenu.cc,v 1.23 2000/06/15 19:32:44 grumbel Exp $
+//  $Id: PingusMenu.cc,v 1.24 2000/06/21 20:55:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -162,7 +162,7 @@ PingusMenu::Event::on_button_press(CL_InputDevice *device, const CL_Key &key)
 	  }
 	  break;
 	default:
-	  std::cout << "Unknown key pressed:" << key.ascii << std::endl;
+	  std::cout << "PingusMenu: Unknown key pressed:" << key.ascii << std::endl;
 	}
     }
   return true;

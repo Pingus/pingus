@@ -2,6 +2,8 @@
 
 section Buttons
 {
+	back = ../images/buttons/back.pcx (type=surface, x=0, y=0, width=64, height=34, tcol=0);
+
 	editor        = ../images/buttons/editor.tga         (type=surface, x=0, y=0, width=105, height=227);
 	editor_p      = ../images/buttons/editor_p.tga       (type=surface, x=0, y=0, width=105, height=227);
 

@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.15 2000/06/18 18:06:55 grumbel Exp $
+#  $Id: Makefile.am,v 1.16 2000/06/21 20:55:51 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,7 +19,8 @@
 
 # Trying to get all the image names out of the .scr files...
 
-EXTRA_DIST = editor/tb_copy.pcx \
+EXTRA_DIST = \
+editor/tb_copy.pcx \
 editor/tb_new.pcx \
 editor/tb_open.pcx \
 editor/tb_save.pcx \
@@ -308,6 +309,7 @@ themes/crystal.pcx \
 themes/xmas99.tga \
 themes/tutorial.tga \
 themes/space.tga \
+buttons/back.pcx \
 buttons/editor.tga \
 buttons/editor_p.tga \
 buttons/load.tga \
@@ -346,6 +348,7 @@ particles/particle.pcx \
 particles/ground.tga \
 particles/smoke.tga \
 particles/smoke2.tga \
+story/story0.jpg \
 story/story1.jpg \
 story/story2.jpg \
 story/story3.jpg \
@@ -378,7 +381,7 @@ traps/guillotineidle.pcx \
 traps/laser_exit.pcx \
 traps/teleporter.tga \
 traps/bumper.pcx \
-traps/bumper_cmap.pcx 
+traps/bumper_cmap.pcx
 
 # cat ../data/*.scr | sed -n "s/^[ 	]*[A-Za-z0-9_]*[ 	]*=[ 	]*\([^ ]*\) (.*);/\1/p"
 
