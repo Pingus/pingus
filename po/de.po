@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Pingus 0.5.0\n"
 "POT-Creation-Date: 2003-04-11 16:28+0200\n"
-"PO-Revision-Date: 2003-04-11 16:24+0200\n"
+"PO-Revision-Date: 2003-04-11 16:32+0200\n"
 "Last-Translator: Ingo Ruhnke <grumbel@gmx.de>\n"
 "Language-Team: Ingo Ruhnke <grumbel@gmx.de>, Giray Devlet <giray@devlet.cc>\n"
 "MIME-Version: 1.0\n"
@@ -677,7 +677,7 @@ msgstr "Keine Fähigkeit"
 #: src/pingus_counter.cxx:49
 #, c-format
 msgid "Released:%3d/%-3d   Out:%3d   Saved:%3d/%-3d"
-msgstr "Rein: %3d/-%3d  Raus: %3d Gerettet: %3d/-%3d"
+msgstr "Rein: %3d/%-3d  Raus: %3d Gerettet: %3d/%-3d"
 
 #: src/pingus_main.cxx:102
 msgid "| segfault_handler: catched a SIGSEGV."
