@@ -1,4 +1,4 @@
-//  $Id: solidcolor_background.hxx,v 1.2 2002/06/23 11:08:30 grumbel Exp $
+//  $Id: solidcolor_background.hxx,v 1.3 2002/06/24 22:52:58 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,8 +17,8 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef SOLIDCOLORBACKGROUND_HH
-#define SOLIDCOLORBACKGROUND_HH
+#ifndef HEADER_PINGUS_BACKGROUNDS_SOLIDCOLOR_BACKGROUND_HXX
+#define HEADER_PINGUS_BACKGROUNDS_SOLIDCOLOR_BACKGROUND_HXX
 
 #include "../string_converter.hxx"
 #include "../color.hxx"

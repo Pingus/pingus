@@ -1,4 +1,4 @@
-//  $Id: screen_manager_impl.hxx,v 1.1 2002/06/12 19:09:38 grumbel Exp $
+//  $Id: screen_manager_impl.hxx,v 1.2 2002/06/24 22:52:56 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,8 +17,8 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef SCREENMANAGERIMPL_HH
-#define SCREENMANAGERIMPL_HH
+#ifndef HEADER_PINGUS_SCREEN_MANAGER_IMPL_HXX
+#define HEADER_PINGUS_SCREEN_MANAGER_IMPL_HXX
 
 class ScreenManagerImpl
 {

@@ -1,4 +1,4 @@
-//  $Id: editor_event.hxx,v 1.2 2002/06/24 18:53:14 grumbel Exp $
+//  $Id: editor_event.hxx,v 1.3 2002/06/24 22:52:58 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,8 +17,8 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef EDITOREVENT_HH
-#define EDITOREVENT_HH
+#ifndef HEADER_PINGUS_EDITOR_EDITOR_EVENT_HXX
+#define HEADER_PINGUS_EDITOR_EDITOR_EVENT_HXX
 
 class CL_Key;
 class CL_Font;

@@ -1,4 +1,4 @@
-//  $Id: surface_selector.hxx,v 1.2 2002/06/23 12:47:50 grumbel Exp $
+//  $Id: surface_selector.hxx,v 1.3 2002/06/24 22:52:58 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,8 +17,8 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef SURFACESELECTOR_HH
-#define SURFACESELECTOR_HH
+#ifndef HEADER_PINGUS_EDITOR_SURFACE_SELECTOR_HXX
+#define HEADER_PINGUS_EDITOR_SURFACE_SELECTOR_HXX
 
 #include <string>
 #include <vector>

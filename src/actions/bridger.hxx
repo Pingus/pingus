@@ -1,4 +1,4 @@
-//  $Id: bridger.hxx,v 1.3 2002/06/24 09:40:59 grumbel Exp $
+//  $Id: bridger.hxx,v 1.4 2002/06/24 22:52:57 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,8 +17,8 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef BRIDGER_HH
-#define BRIDGER_HH
+#ifndef HEADER_PINGUS_ACTIONS_BRIDGER_HXX
+#define HEADER_PINGUS_ACTIONS_BRIDGER_HXX
 
 #include <ClanLib/Core/Math/cl_vector.h>
 #include "../game_counter.hxx"

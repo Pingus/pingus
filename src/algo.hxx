@@ -1,4 +1,4 @@
-//  $Id: algo.hxx,v 1.1 2002/06/12 19:04:10 grumbel Exp $
+//  $Id: algo.hxx,v 1.2 2002/06/24 22:52:53 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,8 +18,8 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
 //  02111-1307, USA. 
 
-#ifndef ALGO_HH
-#define ALGO_HH
+#ifndef HEADER_PINGUS_ALGO_HXX
+#define HEADER_PINGUS_ALGO_HXX
 
 #include <string>
 

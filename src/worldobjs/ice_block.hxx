@@ -1,4 +1,4 @@
-//  $Id: ice_block.hxx,v 1.1 2002/06/12 19:03:10 grumbel Exp $
+//  $Id: ice_block.hxx,v 1.2 2002/06/24 22:53:00 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,8 +17,8 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef ICEBLOCK_HH
-#define ICEBLOCK_HH
+#ifndef HEADER_PINGUS_WORLDOBJS_ICE_BLOCK_HXX
+#define HEADER_PINGUS_WORLDOBJS_ICE_BLOCK_HXX
 
 #include "../worldobj_data.hxx"
 #include "../editor/sprite_editorobj.hxx"

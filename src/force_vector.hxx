@@ -1,4 +1,4 @@
-//  $Id: force_vector.hxx,v 1.1 2002/06/12 19:09:37 grumbel Exp $
+//  $Id: force_vector.hxx,v 1.2 2002/06/24 22:52:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,8 +19,8 @@
 
 // Force Vectors implementation. Made by Peter Todd
 
-#ifndef FVEC_HH
-#define FVEC_HH
+#ifndef HEADER_PINGUS_FORCE_VECTOR_HXX
+#define HEADER_PINGUS_FORCE_VECTOR_HXX
 
 #include <vector>
 #include <ClanLib/Core/Math/cl_vector.h>

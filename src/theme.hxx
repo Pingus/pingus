@@ -1,4 +1,4 @@
-//  $Id: theme.hxx,v 1.1 2002/06/12 19:09:38 grumbel Exp $
+//  $Id: theme.hxx,v 1.2 2002/06/24 22:52:57 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,8 +18,8 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
 //  02111-1307, USA. 
 
-#ifndef THEME_HH
-#define THEME_HH
+#ifndef HEADER_PINGUS_THEME_HXX
+#define HEADER_PINGUS_THEME_HXX
 
 #include "multiline_text.hxx"
 #include "plt_xml.hxx"

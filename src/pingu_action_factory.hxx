@@ -1,4 +1,4 @@
-//  $Id: pingu_action_factory.hxx,v 1.1 2002/06/12 19:06:12 grumbel Exp $
+//  $Id: pingu_action_factory.hxx,v 1.2 2002/06/24 22:52:55 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,8 +17,8 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef PINGUACTIONFACTORY_HH
-#define PINGUACTIONFACTORY_HH
+#ifndef HEADER_PINGUS_PINGU_ACTION_FACTORY_HXX
+#define HEADER_PINGUS_PINGU_ACTION_FACTORY_HXX
 
 #include <map>
 #include <string>

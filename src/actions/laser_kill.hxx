@@ -1,4 +1,4 @@
-//  $Id: laser_kill.hxx,v 1.1 2002/06/12 19:01:42 grumbel Exp $
+//  $Id: laser_kill.hxx,v 1.2 2002/06/24 22:52:58 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,8 +17,8 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef LASERKILL_HH
-#define LASERKILL_HH
+#ifndef HEADER_PINGUS_ACTIONS_LASER_KILL_HXX
+#define HEADER_PINGUS_ACTIONS_LASER_KILL_HXX
 
 #include "../sprite.hxx"
 #include "../pingu_action.hxx"

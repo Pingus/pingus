@@ -1,4 +1,4 @@
-//  $Id: guillotine.hxx,v 1.1 2002/06/12 19:11:32 grumbel Exp $
+//  $Id: guillotine.hxx,v 1.2 2002/06/24 22:52:59 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,8 +17,8 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef GUILLOTINE_HH
-#define GUILLOTINE_HH
+#ifndef HEADER_PINGUS_TRAPS_GUILLOTINE_HXX
+#define HEADER_PINGUS_TRAPS_GUILLOTINE_HXX
 
 
 #include "../direction.hxx"

@@ -1,4 +1,4 @@
-//  $Id: sound_real.hxx,v 1.1 2002/06/12 19:09:38 grumbel Exp $
+//  $Id: sound_real.hxx,v 1.2 2002/06/24 22:52:57 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,8 +19,8 @@
 
 #include <config.h>
 
-#ifndef PINGUSSOUNDREAL_HH
-#define PINGUSSOUNDREAL_HH
+#ifndef HEADER_PINGUS_SOUND_REAL_HXX
+#define HEADER_PINGUS_SOUND_REAL_HXX
 
 #include "audio.hxx"
 #include <map>

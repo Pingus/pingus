@@ -1,4 +1,4 @@
-//  $Id: demo_recorder.hxx,v 1.1 2002/06/12 19:09:37 grumbel Exp $
+//  $Id: demo_recorder.hxx,v 1.2 2002/06/24 22:52:54 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,8 +17,8 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef DEMORECORDER_HH
-#define DEMORECORDER_HH
+#ifndef HEADER_PINGUS_DEMO_RECORDER_HXX
+#define HEADER_PINGUS_DEMO_RECORDER_HXX
 
 #include <fstream>
 #include <string>

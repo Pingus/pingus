@@ -1,4 +1,4 @@
-//  $Id: globals.hxx,v 1.2 2002/06/24 12:09:22 torangan Exp $
+//  $Id: globals.hxx,v 1.3 2002/06/24 22:52:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,8 +21,8 @@
     keep the values of command line arguments. */
 
 
-#ifndef GLOBALS_HH
-#define GLOBALS_HH
+#ifndef HEADER_PINGUS_GLOBALS_HXX
+#define HEADER_PINGUS_GLOBALS_HXX
 
 // Workaround for a VC bug
 #ifdef WIN32

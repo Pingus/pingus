@@ -1,4 +1,4 @@
-//  $Id: console.hxx,v 1.3 2002/06/21 07:45:35 grumbel Exp $
+//  $Id: console.hxx,v 1.4 2002/06/24 22:52:54 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,8 +17,8 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef CONSOLE_HH
-#define CONSOLE_HH
+#ifndef HEADER_PINGUS_CONSOLE_HXX
+#define HEADER_PINGUS_CONSOLE_HXX
 
 #include <string>
 #include <vector>

@@ -1,4 +1,4 @@
-//  $Id: entrance_data.hxx,v 1.2 2002/06/23 11:08:29 grumbel Exp $
+//  $Id: entrance_data.hxx,v 1.3 2002/06/24 22:52:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,8 +17,8 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef ENTRANCE_DATA_HH
-#define ENTRANCE_DATA_HH
+#ifndef HEADER_PINGUS_ENTRANCE_DATA_HXX
+#define HEADER_PINGUS_ENTRANCE_DATA_HXX
 
 #include <ClanLib/Core/Math/cl_vector.h>
 #include "worldobj_data.hxx"

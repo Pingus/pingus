@@ -1,4 +1,4 @@
-//  $Id: pingus_sub_menu.hxx,v 1.1 2002/06/12 19:06:13 grumbel Exp $
+//  $Id: pingus_sub_menu.hxx,v 1.2 2002/06/24 22:52:55 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,8 +17,8 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef PINGUSSUBMENU_HH
-#define PINGUSSUBMENU_HH
+#ifndef HEADER_PINGUS_PINGUS_SUB_MENU_HXX
+#define HEADER_PINGUS_PINGUS_SUB_MENU_HXX
 
 class CL_Key;
 class CL_InputDevice;

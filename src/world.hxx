@@ -1,4 +1,4 @@
-//  $Id: world.hxx,v 1.2 2002/06/13 19:53:21 torangan Exp $
+//  $Id: world.hxx,v 1.3 2002/06/24 22:52:57 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,8 +17,8 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef WORLD_HH
-#define WORLD_HH
+#ifndef HEADER_PINGUS_WORLD_HXX
+#define HEADER_PINGUS_WORLD_HXX
 
 #include <list>
 #include <string>

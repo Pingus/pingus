@@ -1,4 +1,4 @@
-//  $Id: info_box.hxx,v 1.2 2002/06/23 11:08:30 grumbel Exp $
+//  $Id: info_box.hxx,v 1.3 2002/06/24 22:53:00 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,8 +17,8 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef INFOBOX_HH
-#define INFOBOX_HH
+#ifndef HEADER_PINGUS_WORLDOBJS_INFO_BOX_HXX
+#define HEADER_PINGUS_WORLDOBJS_INFO_BOX_HXX
 
 #include "../worldobj.hxx"
 #include "../worldobj_data.hxx"

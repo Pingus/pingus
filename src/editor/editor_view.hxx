@@ -1,4 +1,4 @@
-//  $Id: editor_view.hxx,v 1.1 2002/06/12 19:11:31 grumbel Exp $
+//  $Id: editor_view.hxx,v 1.2 2002/06/24 22:52:58 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,8 +17,8 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef EDITORVIEW_HH
-#define EDITORVIEW_HH
+#ifndef header_pingus_editor_editor_view_hxx
+#define header_pingus_editor_editor_view_hxx
 
 #include <ClanLib/Core/Math/cl_vector.h>
 
@@ -26,6 +26,10 @@ class Sprite;
 class CL_Rect;
 class CL_Surface;
 
+/** The EdtiorView is basically the graphic context to which the
+    editor draws. It provides function to manipulate the display of
+    the level content, like zooming and scrolling and wrapper
+    functions for most of the ClanLib drawing primitives. */
 class EditorView
 {
 private:
