@@ -35,8 +35,8 @@ haben.</description>
 
 <background>
   <surface><resource type="datafile">
-    <resource-datafile>textures.dat</resource-datafile>
-  <resource-ident>Textures/anim_fire</resource-ident>
+    <resource-datafile>textures</resource-datafile>
+  <resource-ident>Textures/greentex</resource-ident>
   </resource></surface>
   <color>
     <red>0</red>
@@ -49,7 +49,7 @@ haben.</description>
   <para-x>0</para-x>
   <para-y>0</para-y>
   <stretch-x>0</stretch-x>
-  <stretch-y>1</stretch-y>
+  <stretch-y>0</stretch-y>
 </background>
 
 <liquid use-old-width-handling="0">

@@ -1,4 +1,4 @@
-#  $Id: configure.in,v 1.73 2002/10/01 23:10:40 grumbel Exp $
+#  $Id: configure.in,v 1.74 2002/10/12 23:43:19 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -350,14 +350,12 @@ AC_OUTPUT( Makefile
 	   src/worldobjsdata/Makefile
 	   src/worldmap/Makefile
            data/Makefile 
-           data/images/Makefile
            data/controller/Makefile 
            data/sounds/Makefile 
            data/music/Makefile 
            data/levels/Makefile
            data/themes/Makefile
            data/worldmaps/Makefile
-           data/data/Makefile
            data/demos/Makefile
            data/data/Makefile
            doc/Makefile
@@ -391,6 +389,7 @@ AC_OUTPUT( Makefile
   data/images/groundpieces/ground/real/Makefile
   data/images/groundpieces/ground/rock/Makefile
   data/images/groundpieces/ground/snow/Makefile
+  data/images/groundpieces/ground/green/Makefile
   data/images/groundpieces/ground/test/Makefile
   data/images/groundpieces/ground/crystal/Makefile
   data/images/groundpieces/ground/space/Makefile

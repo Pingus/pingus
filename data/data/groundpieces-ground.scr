@@ -66,6 +66,13 @@ section foliage
         talltree = ../images/groundpieces/ground/foliage/talltree.png (type=surface);
 }
 
+section green
+{
+        piece1 = ../images/groundpieces/ground/green/piece1.png (type=surface);
+        piece2 = ../images/groundpieces/ground/green/piece2.png (type=surface);
+        piece3 = ../images/groundpieces/ground/green/piece3.png (type=surface);
+}
+
 section industrial
 {
         pipe1 = ../images/groundpieces/ground/industrial/pipe1.png (type=surface);
@@ -147,6 +154,7 @@ section misc
         stone4 = ../images/groundpieces/ground/misc/stone4.png (type=surface);
         stone5 = ../images/groundpieces/ground/misc/stone5.png (type=surface);
         stone6 = ../images/groundpieces/ground/misc/stone6.png (type=surface);
+        stone7 = ../images/groundpieces/ground/misc/stone7.png (type=surface);
         stoneblock1 = ../images/groundpieces/ground/misc/stoneblock1.png (type=surface);
         stoneblock2 = ../images/groundpieces/ground/misc/stoneblock2.png (type=surface);
         stoneblock3 = ../images/groundpieces/ground/misc/stoneblock3.png (type=surface);

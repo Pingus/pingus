@@ -31,6 +31,7 @@
   <surface><resource type="datafile">
     <resource-datafile>textures</resource-datafile>
   <resource-ident>textures/desert_room</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <color>
     <red>0</red>
@@ -45,91 +46,125 @@
   <stretch-x>0</stretch-x>
   <stretch-y>0</stretch-y>
   <position>
-    <x-pos>0</x-pos>
-    <y-pos>0</y-pos>
+    <x-pos>227</x-pos>
+    <y-pos>32</y-pos>
     <z-pos>-150</z-pos>
   </position>
 </background>
 
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>desert/bigprickpiece</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>647</x-pos>
+    <y-pos>366</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>desert/bigprickpiece</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>279</x-pos>
+    <y-pos>365</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<entrance>
+  <position>
+    <x-pos>775</x-pos>
+    <y-pos>272</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+  <type>generic</type>
+  <direction>misc</direction>
+  <release-rate>50</release-rate>
+  <owner-id>0</owner-id>
+</entrance>
+
+<entrance>
+  <position>
+    <x-pos>424</x-pos>
+    <y-pos>270</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+  <type>generic</type>
+  <direction>misc</direction>
+  <release-rate>50</release-rate>
+  <owner-id>0</owner-id>
+</entrance>
+
+<worldobj type="groundpiece">
+  <type>transparent</type>
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-transparent</resource-datafile>
+  <resource-ident>misc/moos1</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>754</x-pos>
+    <y-pos>439</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>transparent</type>
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-transparent</resource-datafile>
+  <resource-ident>misc/moos1</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>374</x-pos>
+    <y-pos>428</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<entrance>
+  <position>
+    <x-pos>618</x-pos>
+    <y-pos>492</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+  <type>generic</type>
+  <direction>misc</direction>
+  <release-rate>50</release-rate>
+  <owner-id>0</owner-id>
+</entrance>
+
   <start-position>
   <position>
-    <x-pos>50</x-pos>
-    <y-pos>50</y-pos>
+    <x-pos>277</x-pos>
+    <y-pos>82</y-pos>
     <z-pos>1000</z-pos>
   </position>
   </start-position>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>desert/bigprickpiece</resource-ident>
+  <resource-ident>test/test2</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>420</x-pos>
-    <y-pos>334</y-pos>
+    <x-pos>585</x-pos>
+    <y-pos>581</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>desert/bigprickpiece</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>52</x-pos>
-    <y-pos>333</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<entrance>
-  <position>
-    <x-pos>548</x-pos>
-    <y-pos>240</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-  <type>generic</type>
-  <direction>misc</direction>
-  <release-rate>50</release-rate>
-  <owner-id>0</owner-id>
-</entrance>
-
-<entrance>
-  <position>
-    <x-pos>197</x-pos>
-    <y-pos>238</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-  <type>generic</type>
-  <direction>misc</direction>
-  <release-rate>50</release-rate>
-  <owner-id>0</owner-id>
-</entrance>
-
-<groundpiece type="transparent">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-transparent</resource-datafile>
-  <resource-ident>misc/moos1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>527</x-pos>
-    <y-pos>407</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="transparent">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-transparent</resource-datafile>
-  <resource-ident>misc/moos1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>147</x-pos>
-    <y-pos>396</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
+</worldobj>
 
 </pingus-level>
 

@@ -21,7 +21,7 @@
     <red>1</red>
     <green>1</green>
     <blue>1</blue>
-    <alpha>0.9</alpha>
+    <alpha>0.2</alpha>
   </color>
   <scroll-x>0</scroll-x>
   <scroll-y>0</scroll-y>
@@ -36,11 +36,7 @@
     <basher>1</basher>
     <blocker>4</blocker>
     <bomber>2</bomber>
-    <bridger>0</bridger>
-    <climber>0</climber>
     <digger>1</digger>
-    <floater>0</floater>
-    <miner>0</miner>
   </action-list>
 
 <hotspot>

@@ -1,4 +1,4 @@
-//  $Id: dot_factory.cxx,v 1.1 2002/10/12 23:34:43 grumbel Exp $
+//  $Id: dot_factory.cxx,v 1.2 2002/10/12 23:43:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,8 +17,11 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "../pingus_error.hxx"
 #include "../xml_helper.hxx"
 #include "dot_factory.hxx"
+
+namespace WorldMapNS {
 
 Dot*
 DotFactory::create(xmlDocPtr doc, xmlNodePtr cur)
@@ -33,8 +36,11 @@ DotFactory::create(xmlDocPtr doc, xmlNodePtr cur)
     }
   else
     {
-      PingusError::raise("DotFactory: unknown tag: " + cur->name);
+      PingusError::raise("DotFactory: unknown tag: ");
     }
+  return 0;
 }
+
+} // namespace WorldMapNS
 
 /* EOF */

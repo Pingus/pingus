@@ -404,18 +404,6 @@
 
 <groundpiece type="transparent">
   <surface><resource type="datafile">
-    <resource-datafile>exits</resource-datafile>
-  <resource-ident>Entrances/entrance</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>369</x-pos>
-    <y-pos>146</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="transparent">
-  <surface><resource type="datafile">
     <resource-datafile>entrances</resource-datafile>
   <resource-ident>Entrances/entrance</resource-ident>
   </resource></surface>

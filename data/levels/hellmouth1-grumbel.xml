@@ -16,103 +16,18 @@
   </global>
 
   <action-list>
-    <basher count="20"/>
+    <bomber count="5"/>
+    <bridger count="10"/>
+    <floater count="5"/>
+    <digger count="1"/>
     <blocker count="20"/>
-    <bomber count="20"/>
-    <bridger count="20"/>
-    <climber count="20"/>
-    <digger count="20"/>
-    <floater count="20"/>
-    <jumper count="20"/>
-    <miner count="20"/>
   </action-list>
-
-<liquid use-old-width-handling="0">
-  <surface><resource type="datafile">
-    <resource-datafile>liquids</resource-datafile>
-  <resource-ident>Liquid/slime</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1351</x-pos>
-    <y-pos>371</y-pos>
-    <z-pos>-60</z-pos>
-  </position>
-  <width>6</width>
-  <speed>50</speed>
-</liquid>
-
-<liquid use-old-width-handling="0">
-  <surface><resource type="datafile">
-    <resource-datafile>liquids</resource-datafile>
-  <resource-ident>Liquid/slime</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1418</x-pos>
-    <y-pos>400</y-pos>
-    <z-pos>-57</z-pos>
-  </position>
-  <width>5</width>
-  <speed>50</speed>
-</liquid>
-
-<liquid use-old-width-handling="0">
-  <surface><resource type="datafile">
-    <resource-datafile>liquids</resource-datafile>
-  <resource-ident>Liquid/slime</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1423</x-pos>
-    <y-pos>426</y-pos>
-    <z-pos>-56</z-pos>
-  </position>
-  <width>5</width>
-  <speed>50</speed>
-</liquid>
-
-<liquid use-old-width-handling="0">
-  <surface><resource type="datafile">
-    <resource-datafile>liquids</resource-datafile>
-  <resource-ident>Liquid/slime</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1480</x-pos>
-    <y-pos>454</y-pos>
-    <z-pos>-54</z-pos>
-  </position>
-  <width>4</width>
-  <speed>50</speed>
-</liquid>
-
-<liquid use-old-width-handling="0">
-  <surface><resource type="datafile">
-    <resource-datafile>liquids</resource-datafile>
-  <resource-ident>Liquid/slime</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1538</x-pos>
-    <y-pos>481</y-pos>
-    <z-pos>-51</z-pos>
-  </position>
-  <width>3</width>
-  <speed>50</speed>
-</liquid>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>misc/bpiece7</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1065</x-pos>
-    <y-pos>292</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
 
 <background type="surface">
   <surface><resource type="datafile">
     <resource-datafile>textures</resource-datafile>
   <resource-ident>Textures/cyanspace</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <color>
     <red>0</red>
@@ -133,1013 +48,1072 @@
   </position>
 </background>
 
-<groundpiece type="ground">
+<liquid use-old-width-handling="0">
+  <surface><resource type="datafile">
+    <resource-datafile>liquids</resource-datafile>
+  <resource-ident>Liquid/slime</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>1369</x-pos>
+    <y-pos>368</y-pos>
+    <z-pos>-60</z-pos>
+  </position>
+  <width>6</width>
+  <speed>50</speed>
+</liquid>
+
+<liquid use-old-width-handling="0">
+  <surface><resource type="datafile">
+    <resource-datafile>liquids</resource-datafile>
+  <resource-ident>Liquid/slime</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>712</x-pos>
+    <y-pos>854</y-pos>
+    <z-pos>-60</z-pos>
+  </position>
+  <width>14</width>
+  <speed>50</speed>
+</liquid>
+
+<liquid use-old-width-handling="0">
+  <surface><resource type="datafile">
+    <resource-datafile>liquids</resource-datafile>
+  <resource-ident>Liquid/slime</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>730</x-pos>
+    <y-pos>866</y-pos>
+    <z-pos>-60</z-pos>
+  </position>
+  <width>14</width>
+  <speed>50</speed>
+</liquid>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>misc/bpiece7</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>1065</x-pos>
+    <y-pos>292</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
   <resource-ident>misc/bpiece1</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
     <x-pos>828</x-pos>
     <y-pos>295</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
   <resource-ident>misc/bpiece6</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
     <x-pos>197</x-pos>
     <y-pos>473</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
   <resource-ident>jungle/carabatreesmall</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1650</x-pos>
-    <y-pos>354</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>jungle/carabatreesmall</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
     <x-pos>708</x-pos>
     <y-pos>140</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
   <resource-ident>misc/bpiece6</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
     <x-pos>800</x-pos>
     <y-pos>333</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
   <resource-ident>misc/bpiece6</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
     <x-pos>750</x-pos>
     <y-pos>443</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
   <resource-ident>misc/bpiece6</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
     <x-pos>691</x-pos>
     <y-pos>333</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
   <resource-ident>misc/bpiece6</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
     <x-pos>650</x-pos>
     <y-pos>409</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
   <resource-ident>misc/bpiece5</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
     <x-pos>748</x-pos>
     <y-pos>295</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
   <resource-ident>misc/bpiece5</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
     <x-pos>1163</x-pos>
     <y-pos>290</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
   <resource-ident>misc/bpiece5</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
     <x-pos>1127</x-pos>
     <y-pos>304</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
   <resource-ident>misc/bpiece5</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
     <x-pos>940</x-pos>
     <y-pos>284</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
   <resource-ident>misc/bpiece5</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>1232</x-pos>
-    <y-pos>520</y-pos>
+    <x-pos>1295</x-pos>
+    <y-pos>524</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
   <resource-ident>misc/bpiece5</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
     <x-pos>1142</x-pos>
     <y-pos>399</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
   <resource-ident>misc/bpiece5</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
     <x-pos>1101.22</x-pos>
     <y-pos>320.195</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
   <resource-ident>misc/bpiece1</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
     <x-pos>599</x-pos>
     <y-pos>376</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
   <resource-ident>misc/bpiece6</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
     <x-pos>539</x-pos>
     <y-pos>501</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
   <resource-ident>misc/bpiece6</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
     <x-pos>643</x-pos>
     <y-pos>506</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
   <resource-ident>misc/bpiece6</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>772</x-pos>
-    <y-pos>518</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>misc/bpiece6</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>861</x-pos>
-    <y-pos>456</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>misc/bpiece6</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
     <x-pos>907</x-pos>
     <y-pos>364</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
   <resource-ident>misc/bpiece6</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
     <x-pos>911</x-pos>
     <y-pos>315</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
   <resource-ident>jungle/carabatreesmall</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
     <x-pos>189</x-pos>
     <y-pos>326</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
   <resource-ident>misc/bpiece6</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
     <x-pos>1005</x-pos>
     <y-pos>328</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
   <resource-ident>misc/bpiece6</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>879</x-pos>
-    <y-pos>582</y-pos>
+    <x-pos>607</x-pos>
+    <y-pos>842</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
   <resource-ident>misc/bpiece6</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>671</x-pos>
-    <y-pos>620</y-pos>
+    <x-pos>594</x-pos>
+    <y-pos>760</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>misc/bpiece6</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>603</x-pos>
-    <y-pos>777</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
   <resource-ident>misc/bpiece1</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>724</x-pos>
-    <y-pos>613</y-pos>
+    <x-pos>1559</x-pos>
+    <y-pos>802</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>misc/bpiece1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1547</x-pos>
-    <y-pos>810</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
   <resource-ident>misc/bpiece6</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
     <x-pos>401</x-pos>
     <y-pos>811</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
   <resource-ident>misc/bpiece6</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>1669</x-pos>
-    <y-pos>811</y-pos>
+    <x-pos>1681</x-pos>
+    <y-pos>803</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
   <resource-ident>misc/bpiece6</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
     <x-pos>453</x-pos>
     <y-pos>779</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
   <resource-ident>misc/bpiece6</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
     <x-pos>456</x-pos>
     <y-pos>695</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
   <resource-ident>misc/bpiece6</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
     <x-pos>513</x-pos>
     <y-pos>599</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
   <resource-ident>misc/bpiece6</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
     <x-pos>1142</x-pos>
     <y-pos>366</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
   <resource-ident>misc/bpiece6</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1463</x-pos>
-    <y-pos>515</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>misc/bpiece6</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
     <x-pos>1401</x-pos>
     <y-pos>461</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
   <resource-ident>misc/bpiece6</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>1247.72</x-pos>
-    <y-pos>334.283</y-pos>
+    <x-pos>1223.72</x-pos>
+    <y-pos>292.283</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
   <resource-ident>misc/bpiece6</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>1321</x-pos>
-    <y-pos>395</y-pos>
+    <x-pos>1295</x-pos>
+    <y-pos>415</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
   <resource-ident>misc/bpiece6</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
     <x-pos>1230</x-pos>
     <y-pos>423</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
   <resource-ident>misc/bpiece6</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
     <x-pos>1082</x-pos>
     <y-pos>298</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>misc/bpiece1</resource-ident>
+  <resource-ident>misc/bpiece7</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>725</x-pos>
-    <y-pos>520</y-pos>
+    <x-pos>1417</x-pos>
+    <y-pos>444</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
   <resource-ident>misc/bpiece1</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
     <x-pos>485</x-pos>
     <y-pos>590</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
   <resource-ident>misc/bpiece1</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
     <x-pos>463</x-pos>
     <y-pos>816</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
   <resource-ident>misc/bpiece1</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>566</x-pos>
-    <y-pos>725</y-pos>
+    <x-pos>550</x-pos>
+    <y-pos>680</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
   <resource-ident>misc/bpiece1</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>543</x-pos>
-    <y-pos>697</y-pos>
+    <x-pos>791</x-pos>
+    <y-pos>456</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
   <resource-ident>misc/bpiece1</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>1572</x-pos>
-    <y-pos>528</y-pos>
+    <x-pos>1502</x-pos>
+    <y-pos>459</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
   <resource-ident>misc/bpiece1</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
     <x-pos>950</x-pos>
     <y-pos>378</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
   <resource-ident>misc/bpiece6</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
     <x-pos>234</x-pos>
     <y-pos>502</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
   <resource-ident>misc/bpiece6</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
     <x-pos>185</x-pos>
     <y-pos>504</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
   <resource-ident>desert/platform_left</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>816</x-pos>
-    <y-pos>821</y-pos>
+    <x-pos>786</x-pos>
+    <y-pos>770</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
   <resource-ident>desert/platform_left</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
     <x-pos>1489</x-pos>
     <y-pos>329</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
   <resource-ident>desert/platform_left</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
     <x-pos>1420</x-pos>
     <y-pos>329</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
   <resource-ident>desert/platform_left</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
     <x-pos>1060</x-pos>
     <y-pos>610</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
   <resource-ident>desert/platform_left</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>990</x-pos>
-    <y-pos>819</y-pos>
+    <x-pos>975</x-pos>
+    <y-pos>769</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
   <resource-ident>desert/platform_left</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
     <x-pos>1184</x-pos>
     <y-pos>710</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
   <resource-ident>desert/platform_right</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>897</x-pos>
-    <y-pos>821</y-pos>
+    <x-pos>867</x-pos>
+    <y-pos>770</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
   <resource-ident>desert/platform_right</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
     <x-pos>1570</x-pos>
     <y-pos>329</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
   <resource-ident>desert/platform_right</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
     <x-pos>1501</x-pos>
     <y-pos>329</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
   <resource-ident>desert/platform_right</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
     <x-pos>1141</x-pos>
     <y-pos>610</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
   <resource-ident>desert/platform_right</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>1186</x-pos>
-    <y-pos>818</y-pos>
+    <x-pos>1171</x-pos>
+    <y-pos>768</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
   <resource-ident>desert/platform_right</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
     <x-pos>1380</x-pos>
     <y-pos>709</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
   <resource-ident>desert/platform</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>1070</x-pos>
-    <y-pos>815</y-pos>
+    <x-pos>1055</x-pos>
+    <y-pos>765</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
   <resource-ident>desert/platform</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
     <x-pos>1264</x-pos>
     <y-pos>706</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
   <resource-ident>misc/well</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
     <x-pos>328</x-pos>
     <y-pos>477</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="solid">
+<worldobj type="groundpiece">
+  <type>solid</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-solid</resource-datafile>
   <resource-ident>crystal/rectsolid</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
     <x-pos>1664</x-pos>
     <y-pos>326</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="solid">
+<worldobj type="groundpiece">
+  <type>solid</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-solid</resource-datafile>
   <resource-ident>crystal/rectsolid</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
     <x-pos>1728</x-pos>
     <y-pos>233</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="solid">
+<worldobj type="groundpiece">
+  <type>solid</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-solid</resource-datafile>
   <resource-ident>crystal/rectsolid</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
     <x-pos>1664</x-pos>
     <y-pos>233</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="solid">
+<worldobj type="groundpiece">
+  <type>solid</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-solid</resource-datafile>
   <resource-ident>crystal/rectsolid</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
     <x-pos>1728</x-pos>
     <y-pos>326</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="solid">
+<worldobj type="groundpiece">
+  <type>solid</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-solid</resource-datafile>
   <resource-ident>crystal/smallsolid</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>1476</x-pos>
-    <y-pos>554</y-pos>
+    <x-pos>1438</x-pos>
+    <y-pos>428</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="solid">
+<worldobj type="groundpiece">
+  <type>solid</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-solid</resource-datafile>
   <resource-ident>crystal/smallsolid</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1452</x-pos>
-    <y-pos>546</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="solid">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-solid</resource-datafile>
-  <resource-ident>crystal/smallsolid</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1424</x-pos>
-    <y-pos>532</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="solid">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-solid</resource-datafile>
-  <resource-ident>crystal/smallsolid</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1393</x-pos>
-    <y-pos>521</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="solid">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-solid</resource-datafile>
-  <resource-ident>crystal/smallsolid</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1367</x-pos>
-    <y-pos>497</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="solid">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-solid</resource-datafile>
-  <resource-ident>crystal/smallsolid</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1356</x-pos>
-    <y-pos>468</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="solid">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-solid</resource-datafile>
-  <resource-ident>crystal/smallsolid</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1355</x-pos>
-    <y-pos>436</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="solid">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-solid</resource-datafile>
-  <resource-ident>crystal/smallsolid</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
     <x-pos>1354</x-pos>
     <y-pos>405</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="solid">
+<worldobj type="groundpiece">
+  <type>solid</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-solid</resource-datafile>
   <resource-ident>crystal/smallsolid</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
     <x-pos>1354</x-pos>
     <y-pos>374</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="solid">
+<worldobj type="groundpiece">
+  <type>solid</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-solid</resource-datafile>
   <resource-ident>crystal/smallsolid</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
     <x-pos>1760</x-pos>
     <y-pos>295</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="solid">
+<worldobj type="groundpiece">
+  <type>solid</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-solid</resource-datafile>
   <resource-ident>crystal/smallsolid</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
     <x-pos>1710</x-pos>
     <y-pos>233</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="solid">
+<worldobj type="groundpiece">
+  <type>solid</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-solid</resource-datafile>
   <resource-ident>crystal/smallsolid</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
     <x-pos>1710</x-pos>
     <y-pos>326</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="solid">
+<worldobj type="groundpiece">
+  <type>solid</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-solid</resource-datafile>
   <resource-ident>crystal/smallsolid</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
     <x-pos>1760</x-pos>
     <y-pos>265</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
   <resource-ident>misc/bpiece7</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>1510</x-pos>
-    <y-pos>533</y-pos>
+    <x-pos>1556</x-pos>
+    <y-pos>428</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="transparent">
+<worldobj type="groundpiece">
+  <type>transparent</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-transparent</resource-datafile>
   <resource-ident>misc/moos1</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
     <x-pos>246</x-pos>
     <y-pos>499</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
 <entrance>
   <position>
@@ -1174,14 +1148,15 @@
   <surface><resource type="datafile">
     <resource-datafile>exits</resource-datafile>
   <resource-ident>Exits/stone</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <owner-id>0</owner-id></exit>
 
   <worldobj type="switchdoor">
     <switch>
   <position>
-    <x-pos>852</x-pos>
-    <y-pos>783</y-pos>
+    <x-pos>822</x-pos>
+    <y-pos>732</y-pos>
     <z-pos>0</z-pos>
   </position>
     </switch>
@@ -1196,10 +1171,150 @@
     </door>
   </worldobj>
 
+<worldobj type="groundpiece">
+  <type>solid</type>
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-solid</resource-datafile>
+  <resource-ident>crystal/rectsolid</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>1374</x-pos>
+    <y-pos>428</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>solid</type>
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-solid</resource-datafile>
+  <resource-ident>crystal/smallsolid</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>1534</x-pos>
+    <y-pos>428</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>solid</type>
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-solid</resource-datafile>
+  <resource-ident>crystal/rectsolid</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>1470</x-pos>
+    <y-pos>428</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>solid</type>
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-solid</resource-datafile>
+  <resource-ident>crystal/rectsolid</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>1566</x-pos>
+    <y-pos>429</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>solid</type>
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-solid</resource-datafile>
+  <resource-ident>crystal/smallsolid</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>1630</x-pos>
+    <y-pos>429</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>solid</type>
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-solid</resource-datafile>
+  <resource-ident>crystal/rectsolid</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>1662</x-pos>
+    <y-pos>429</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>solid</type>
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-solid</resource-datafile>
+  <resource-ident>crystal/smallsolid</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>1726</x-pos>
+    <y-pos>429</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>solid</type>
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-solid</resource-datafile>
+  <resource-ident>crystal/smallsolid</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>1748</x-pos>
+    <y-pos>377</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>solid</type>
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-solid</resource-datafile>
+  <resource-ident>crystal/smallsolid</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>1748</x-pos>
+    <y-pos>408</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>misc/bpiece1</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>670</x-pos>
+    <y-pos>570</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
   <start-position>
   <position>
-    <x-pos>914</x-pos>
-    <y-pos>101</y-pos>
+    <x-pos>909</x-pos>
+    <y-pos>275</y-pos>
     <z-pos>1000</z-pos>
   </position>
   </start-position>

@@ -27,47 +27,47 @@
     <miner count="20"/>
   </action-list>
 
-<groundpiece type="ground">
+<group>
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
   <resource-ident>misc/bpiece8</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>472</x-pos>
-    <y-pos>235</y-pos>
+    <x-pos>531</x-pos>
+    <y-pos>160</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
   <resource-ident>misc/bpiece7</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>323</x-pos>
-    <y-pos>226</y-pos>
+    <x-pos>382</x-pos>
+    <y-pos>151</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-  <start-position>
-  <position>
-    <x-pos>50</x-pos>
-    <y-pos>50</y-pos>
-    <z-pos>1000</z-pos>
-  </position>
-  </start-position>
+</group>
 
 <group>
 <hotspot>
   <surface><resource type="datafile">
     <resource-datafile>hotspots</resource-datafile>
   <resource-ident>signposts/arrow_south</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>242</x-pos>
-    <y-pos>315</y-pos>
+    <x-pos>335</x-pos>
+    <y-pos>298</y-pos>
     <z-pos>0</z-pos>
   </position>
   <speed>-1</speed>
@@ -78,10 +78,11 @@
   <surface><resource type="datafile">
     <resource-datafile>hotspots</resource-datafile>
   <resource-ident>signposts/arrow_northwest</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>257</x-pos>
-    <y-pos>333</y-pos>
+    <x-pos>350</x-pos>
+    <y-pos>316</y-pos>
     <z-pos>0</z-pos>
   </position>
   <speed>-1</speed>
@@ -89,6 +90,14 @@
 </hotspot>
 
 </group>
+
+  <start-position>
+  <position>
+    <x-pos>50</x-pos>
+    <y-pos>50</y-pos>
+    <z-pos>1000</z-pos>
+  </position>
+  </start-position>
 
 </pingus-level>
 

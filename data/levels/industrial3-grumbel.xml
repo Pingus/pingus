@@ -10,6 +10,9 @@
     <time>9000</time>
     <width>1216</width>
     <height>600</height>
+    <difficulty>5</difficulty>
+    <playable>0</playable>
+    <comment></comment>
   </global>
 
   <action-list>
@@ -21,6 +24,7 @@
   <surface><resource type="datafile">
     <resource-datafile>textures</resource-datafile>
   <resource-ident>textures/industrial</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <color>
     <red>0</red>
@@ -35,8 +39,8 @@
   <stretch-x>0</stretch-x>
   <stretch-y>0</stretch-y>
   <position>
-    <x-pos>0</x-pos>
-    <y-pos>0</y-pos>
+    <x-pos>-27</x-pos>
+    <y-pos>-50</y-pos>
     <z-pos>-150</z-pos>
   </position>
 </background>
@@ -45,308 +49,329 @@
   <surface><resource type="datafile">
     <resource-datafile>entrances</resource-datafile>
   <resource-ident>entrances/industrial</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>388</x-pos>
-    <y-pos>218</y-pos>
+    <x-pos>361</x-pos>
+    <y-pos>168</y-pos>
     <z-pos>-50</z-pos>
   </position>
   <speed>-1</speed>
   <parallax>1</parallax>
 </hotspot>
 
-<groundpiece type="solid">
+<worldobj type="groundpiece">
+  <type>solid</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-solid</resource-datafile>
   <resource-ident>industrial/greybri1</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>831</x-pos>
-    <y-pos>381</y-pos>
+    <x-pos>804</x-pos>
+    <y-pos>331</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="solid">
+<worldobj type="groundpiece">
+  <type>solid</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-solid</resource-datafile>
   <resource-ident>industrial/greybri1</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>442</x-pos>
-    <y-pos>375</y-pos>
+    <x-pos>415</x-pos>
+    <y-pos>325</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="solid">
+<worldobj type="groundpiece">
+  <type>solid</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-solid</resource-datafile>
   <resource-ident>industrial/greybri1</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>244</x-pos>
-    <y-pos>375</y-pos>
+    <x-pos>217</x-pos>
+    <y-pos>325</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="solid">
+<worldobj type="groundpiece">
+  <type>solid</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-solid</resource-datafile>
   <resource-ident>crystal/rectsolid</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>640</x-pos>
-    <y-pos>405</y-pos>
+    <x-pos>613</x-pos>
+    <y-pos>355</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="solid">
+<worldobj type="groundpiece">
+  <type>solid</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-solid</resource-datafile>
   <resource-ident>crystal/rectsolid</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>729</x-pos>
-    <y-pos>395</y-pos>
+    <x-pos>702</x-pos>
+    <y-pos>345</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="solid">
+<worldobj type="groundpiece">
+  <type>solid</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-solid</resource-datafile>
   <resource-ident>crystal/rectsolid</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>244</x-pos>
-    <y-pos>312</y-pos>
+    <x-pos>217</x-pos>
+    <y-pos>262</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="solid">
+<worldobj type="groundpiece">
+  <type>solid</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-solid</resource-datafile>
   <resource-ident>crystal/smallsolid</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>931</x-pos>
-    <y-pos>222</y-pos>
+    <x-pos>904</x-pos>
+    <y-pos>172</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="solid">
+<worldobj type="groundpiece">
+  <type>solid</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-solid</resource-datafile>
   <resource-ident>crystal/smallsolid</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>867</x-pos>
-    <y-pos>222</y-pos>
+    <x-pos>840</x-pos>
+    <y-pos>172</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="solid">
+<worldobj type="groundpiece">
+  <type>solid</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-solid</resource-datafile>
   <resource-ident>crystal/smallsolid</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>995</x-pos>
-    <y-pos>222</y-pos>
+    <x-pos>968</x-pos>
+    <y-pos>172</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="solid">
+<worldobj type="groundpiece">
+  <type>solid</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-solid</resource-datafile>
   <resource-ident>crystal/smallsolid</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>831</x-pos>
-    <y-pos>254</y-pos>
+    <x-pos>804</x-pos>
+    <y-pos>204</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="solid">
+<worldobj type="groundpiece">
+  <type>solid</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-solid</resource-datafile>
   <resource-ident>crystal/smallsolid</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>1029</x-pos>
-    <y-pos>317</y-pos>
+    <x-pos>1002</x-pos>
+    <y-pos>267</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="solid">
+<worldobj type="groundpiece">
+  <type>solid</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-solid</resource-datafile>
   <resource-ident>crystal/smallsolid</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>1029</x-pos>
-    <y-pos>254</y-pos>
+    <x-pos>1002</x-pos>
+    <y-pos>204</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="solid">
+<worldobj type="groundpiece">
+  <type>solid</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-solid</resource-datafile>
   <resource-ident>crystal/smallsolid</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>1029</x-pos>
-    <y-pos>380</y-pos>
+    <x-pos>1002</x-pos>
+    <y-pos>330</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="solid">
+<worldobj type="groundpiece">
+  <type>solid</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-solid</resource-datafile>
   <resource-ident>crystal/smallsolid</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>835</x-pos>
-    <y-pos>222</y-pos>
+    <x-pos>808</x-pos>
+    <y-pos>172</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="solid">
+<worldobj type="groundpiece">
+  <type>solid</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-solid</resource-datafile>
   <resource-ident>crystal/smallsolid</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>963</x-pos>
-    <y-pos>222</y-pos>
+    <x-pos>936</x-pos>
+    <y-pos>172</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="solid">
+<worldobj type="groundpiece">
+  <type>solid</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-solid</resource-datafile>
   <resource-ident>crystal/smallsolid</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>899</x-pos>
-    <y-pos>222</y-pos>
+    <x-pos>872</x-pos>
+    <y-pos>172</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="solid">
+<worldobj type="groundpiece">
+  <type>solid</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-solid</resource-datafile>
   <resource-ident>crystal/smallsolid</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>1027</x-pos>
-    <y-pos>222</y-pos>
+    <x-pos>1000</x-pos>
+    <y-pos>172</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="solid">
+<worldobj type="groundpiece">
+  <type>solid</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-solid</resource-datafile>
   <resource-ident>crystal/smallsolid</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>831</x-pos>
-    <y-pos>286</y-pos>
+    <x-pos>804</x-pos>
+    <y-pos>236</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="solid">
+<worldobj type="groundpiece">
+  <type>solid</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-solid</resource-datafile>
   <resource-ident>crystal/smallsolid</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>1029</x-pos>
-    <y-pos>348</y-pos>
+    <x-pos>1002</x-pos>
+    <y-pos>298</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="solid">
+<worldobj type="groundpiece">
+  <type>solid</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-solid</resource-datafile>
   <resource-ident>crystal/smallsolid</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>1029</x-pos>
-    <y-pos>285</y-pos>
+    <x-pos>1002</x-pos>
+    <y-pos>235</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="solid">
+<worldobj type="groundpiece">
+  <type>solid</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-solid</resource-datafile>
   <resource-ident>crystal/smallsolid</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>1029</x-pos>
-    <y-pos>411</y-pos>
+    <x-pos>1002</x-pos>
+    <y-pos>361</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="solid">
+<worldobj type="groundpiece">
+  <type>solid</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-solid</resource-datafile>
   <resource-ident>crystal/smallsolid</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>244</x-pos>
-    <y-pos>344</y-pos>
+    <x-pos>217</x-pos>
+    <y-pos>294</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>desert/mediumsand</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>707</x-pos>
-    <y-pos>76</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>desert/mediumsand</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>699</x-pos>
-    <y-pos>68</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
+</worldobj>
 
 <entrance>
   <position>
-    <x-pos>440</x-pos>
-    <y-pos>302</y-pos>
+    <x-pos>413</x-pos>
+    <y-pos>252</y-pos>
     <z-pos>0</z-pos>
   </position>
   <type>generic</type>
@@ -357,21 +382,22 @@
 
 <exit use-old-pos-handling="0">
   <position>
-    <x-pos>951</x-pos>
-    <y-pos>381</y-pos>
+    <x-pos>924</x-pos>
+    <y-pos>331</y-pos>
     <z-pos>0</z-pos>
   </position>
   <surface><resource type="datafile">
     <resource-datafile>exits</resource-datafile>
   <resource-ident>exits/industrial</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <owner-id>0</owner-id></exit>
 
   <worldobj type="switchdoor">
     <switch>
   <position>
-    <x-pos>270</x-pos>
-    <y-pos>272</y-pos>
+    <x-pos>243</x-pos>
+    <y-pos>222</y-pos>
     <z-pos>0</z-pos>
   </position>
     </switch>
@@ -379,8 +405,8 @@
     <height>
 16</height>
   <position>
-    <x-pos>838</x-pos>
-    <y-pos>318</y-pos>
+    <x-pos>811</x-pos>
+    <y-pos>268</y-pos>
     <z-pos>0</z-pos>
   </position>
     </door>
@@ -390,10 +416,11 @@
   <surface><resource type="datafile">
     <resource-datafile>liquids</resource-datafile>
   <resource-ident>Liquid/slime</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>-76</x-pos>
-    <y-pos>536</y-pos>
+    <x-pos>-89</x-pos>
+    <y-pos>525</y-pos>
     <z-pos>0</z-pos>
   </position>
   <width>21</width>
@@ -404,10 +431,11 @@
   <surface><resource type="datafile">
     <resource-datafile>liquids</resource-datafile>
   <resource-ident>Liquid/slime</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>-46</x-pos>
-    <y-pos>548</y-pos>
+    <x-pos>-58</x-pos>
+    <y-pos>538</y-pos>
     <z-pos>0</z-pos>
   </position>
   <width>20</width>
@@ -418,10 +446,11 @@
   <surface><resource type="datafile">
     <resource-datafile>entrances</resource-datafile>
   <resource-ident>entrances/industrial_top</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>417</x-pos>
-    <y-pos>276</y-pos>
+    <x-pos>390</x-pos>
+    <y-pos>226</y-pos>
     <z-pos>100</z-pos>
   </position>
   <speed>-1</speed>
@@ -430,8 +459,8 @@
 
   <start-position>
   <position>
-    <x-pos>50</x-pos>
-    <y-pos>50</y-pos>
+    <x-pos>396</x-pos>
+    <y-pos>288</y-pos>
     <z-pos>1000</z-pos>
   </position>
   </start-position>

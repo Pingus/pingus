@@ -4,6 +4,7 @@ section misc
 {
         column1 = ../images/groundpieces/remove/misc/column1.png (type=surface);
         rect1 = ../images/groundpieces/remove/misc/rect1.png (type=surface);
+        rect2 = ../images/groundpieces/remove/misc/rect2.png (type=surface);
 }
 
 // EOF //

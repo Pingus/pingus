@@ -8,9 +8,9 @@ an animated background. More
 animated backgrounds might follow later.
 </description>
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
-    <number-of-pingus>100</number-of-pingus>
-    <number-to-save>50</number-to-save>
-    <time>9000</time>
+    <number-of-pingus>50</number-of-pingus>
+    <number-to-save>30</number-to-save>
+    <time>-1</time>
     <width>1504</width>
     <height>1312</height>
   </global>
@@ -35,15 +35,7 @@ animated backgrounds might follow later.
 </background>
 
   <action-list>
-    <basher>20</basher>
     <blocker>20</blocker>
-    <bomber>20</bomber>
-    <bridger>20</bridger>
-    <climber>20</climber>
-    <digger>20</digger>
-    <floater>20</floater>
-    <jumper>20</jumper>
-    <miner>20</miner>
   </action-list>
 
 <entrance>

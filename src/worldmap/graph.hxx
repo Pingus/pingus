@@ -1,4 +1,4 @@
-//  $Id: graph.hxx,v 1.14 2002/10/12 23:34:43 grumbel Exp $
+//  $Id: graph.hxx,v 1.15 2002/10/12 23:43:20 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,7 +28,7 @@ namespace WorldMapNS {
 typedef int NodeId;
 typedef int EdgeId;
 
-extern const NodeId NoNode = -1;
+extern const NodeId NoNode;
 
 template<class NodeType>
 class Node 

@@ -44,5 +44,17 @@
   </sound>
 </pingus-config>
 
+<directory name="sound">
+  <entry name="music-enabled" type="int">122</value>
+  <entry name="music-enabled" type="string">Hello World</value>
+</directory>
+
+<sound>
+  <music-enabled>123</music-enabled>
+  <audio-format>8</audio-format>
+</sound>
+
+music_enabled = PropManager::get_float("sound/music-enabled");
+
 <!-- EOF -->
     
