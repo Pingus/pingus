@@ -1,0 +1,75 @@
+/* This level was created with the PLE
+ * $Id: phil7.plf,v 1.1 2001/07/24 17:59:03 grumbel Exp $
+ */
+global {
+  author = "Philippe Descamps <pwrdesc@free.fr>";
+  start_x_pos = 0;
+  start_y_pos = 0;
+  levelname = "Lawnmower Tux";
+  description = "Mow the fern or bump";
+  number_of_pingus = 100;
+  number_to_save = 80;
+  time = 4500;
+}
+
+ground {
+  maptype = "SPOT";
+  width   = 2016;
+  height  = 608;
+  colmap  = (auto);
+}
+
+background {
+  image = (resource:textures.dat)"Textures/desert";
+  dim   = "0";
+  red   = "0";
+  green = "0";
+  blue  = "0";
+  scroll_x = 0;
+  scroll_y = 0;
+  para_x = 0.5;
+  para_y = 0.5;
+  stretch_x = 0;
+  stretch_y = 0;
+}
+
+buttons {
+  basher = 30;
+  blocker = 1;
+  bomber = 2;
+  bridger = 2;
+}
+
+trap {
+  name = "bumper";
+  x_pos = 356;
+  y_pos = 258;
+  z_pos = -100;
+}
+
+entrance {
+  type  = woodthing;
+  x_pos = 379;
+  y_pos = 171;
+  z_pos = 0;
+  release_rate = 25;
+  direction = left;
+}
+
+exit {
+  image = (resource:global)"Exits/stone";
+  x_pos = 1775;
+  y_pos = 412;
+  z_pos = 0;
+}
+
+hotspot {
+  image = (resource:global)"Entrances/woodthing_nmov";
+  x_pos = 305;
+  y_pos = 36;
+  z_pos = 100;
+  speed = -1;
+  para = "1";
+}
+
+/* EOF */
