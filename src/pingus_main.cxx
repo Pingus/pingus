@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.70 2003/04/10 14:36:35 grumbel Exp $
+//   $Id: pingus_main.cxx,v 1.71 2003/04/10 18:28:30 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -239,9 +239,8 @@ PingusMain::check_args(int argc, char** argv)
       {"use-opengl",        no_argument,       0, 'G'},
 #endif
       // FIXME: is the number stuff correct?
-      {"fs-preload",      no_argument,       0, 130},
       {"fast",            no_argument,       0, 132},
-      {"fast-mode",            no_argument,       0, 132},
+      {"fast-mode",       no_argument,       0, 132},
       {"disable-previews",no_argument,       0, 133}, 
       {"maintainer-mode", no_argument,       0, 134},
       {"disable-auto-scrolling",   no_argument,       0, 137},
@@ -286,7 +285,6 @@ PingusMain::check_args(int argc, char** argv)
 	  levelfile = std::string(cwd) + "/" + levelfile;
 	if (verbose) 
 	  std::cout << "PingusMain:check_args: Levelfile = " << levelfile << std::endl;
-	intro_disabled = true;
       }
       break;
     case 't': // -t, --set-speed
@@ -294,11 +292,7 @@ PingusMain::check_args(int argc, char** argv)
       break;
     case 'e':
       start_editor = true;
-      intro_disabled = true;
       //std::cout << "PingusMain: Starting Editor" << std::endl;
-      break;
-    case 'q':
-      quick_play = true;
       break;
 
 #ifdef HAVE_LIBCLANGL
@@ -345,9 +339,6 @@ PingusMain::check_args(int argc, char** argv)
 	  std::cout << "PingusMain: -d: optarg is (null)" << std::endl;
 	}
       break;
-    case 'n':
-      intro_disabled = true;
-      break;
     case 'V':
       std::cout << "Pingus Version " << VERSION 
 #ifndef OFFICIAL_PINGUS_BUILD
@@ -363,10 +354,6 @@ PingusMain::check_args(int argc, char** argv)
 
       exit(EXIT_SUCCESS);
       break;
-    case 'i':
-      gimmicks_enabled = true;
-      if (verbose) std::cout << "Pingus: Gimmicks enabled" << std::endl;
-      break; 
     case 'r': // -r, --record-demo
       record_demo = true;
       demo_file = optarg;
@@ -391,15 +378,8 @@ PingusMain::check_args(int argc, char** argv)
       break;
 
       // Starting weird number options... no idea if this is correct.
-    case 130: // --fs-preload
-      fs_preload = true;
-      previews_enabled = true;
-      break;
     case 132:
       fast_mode = true;
-      break;
-    case 133:
-      previews_enabled = false;
       break;
     case 134: // --maintainer_mode
       std::cout << "---------------------------------" << std::endl
@@ -431,10 +411,6 @@ PingusMain::check_args(int argc, char** argv)
       config_file = optarg;
       break;
       
-    case 148:
-      background_manipulation_enabled = true;
-      break;
-
     case 152:
       if (strcmp (optarg, "all") == 0)
 	{
@@ -529,8 +505,8 @@ PingusMain::check_args(int argc, char** argv)
 	_("   -w, --window             Start in Window Mode\n"
           "   -f, --fullscreen         Start in Fullscreen\n"
           "   -d, --datadir PATH       Set the path to load the data files to `path'\n"
-          "   --use-datafile           Use the pre-compiled datafile (default)\n"
-          "   --use-scriptfile         Use the scriptfile and read all data from files\n"
+          //"   --use-datafile           Use the pre-compiled datafile (default)\n"
+          //          "   --use-scriptfile         Use the scriptfile and read all data from files\n"
           "   -l, --level FILE         Load a custom level from `file'\n"
           "   -v, --verbose            Print some more messages to stdout, can be set\n"
           "                            multible times to increase verbosity\n"
@@ -552,14 +528,11 @@ PingusMain::check_args(int argc, char** argv)
 
           "\nDebugging and experimental stuff:\n"
           "   --maintainer-mode        Enables some features, only interesting programmers\n"
-          "   --enable-bg-manipulation Enables color manipulation of level backgrounds\n"
           "   --debug OPTION           Enable the output of debugging infos, possible\n"
           "                            OPTION's are tiles, gametime, actions, sound, resources, gui,\n"
           "                            input\n"
           "   -t, --speed SPEED        Set the game speed (0=fastest, >0=slower)\n"
           "   -b, --print-fps          Prints the fps to stdout\n"
-          "   -i, --enable-gimmicks    Enable some buggy development stuff\n"
-          "   -S, --sound-specs FILE   Use files mentioned in FILE\n"
           "   --tile-size INT          Set the size of the map tiles (default: 32)\n"
           "\n"
           "\nDemo playing and recording:\n"
@@ -581,7 +554,6 @@ PingusMain::check_args(int argc, char** argv)
     {
       if (levelfile.empty()) {
 	levelfile = argv[i];
-	intro_disabled = true;
 
 	if (!System::exist(levelfile))
 	  {

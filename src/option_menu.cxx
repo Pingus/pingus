@@ -1,4 +1,4 @@
-//  $Id: option_menu.cxx,v 1.13 2003/02/19 09:50:36 grumbel Exp $
+//  $Id: option_menu.cxx,v 1.14 2003/04/10 18:28:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -272,7 +272,6 @@ OptionMenu::init()
   is_init = true;
 
   // Bool options
-  add_entry(_("Gimmicks"),  &gimmicks_enabled);
   add_entry(_("Unlimited Actions"),  &Cheat::unlimited_actions);
   add_entry(_("Print fps"), &print_fps);
   //  add_entry("Debug actions", &debug_actions);  
@@ -283,10 +282,7 @@ OptionMenu::init()
   add_entry(_("Verbose"), &verbose);
   add_entry(_("Music"), &music_enabled);
   add_entry(_("Sound"), &sound_enabled);
-  add_entry(_("Level Previews"), &previews_enabled);
   add_entry(_("Draw ColMap"), &draw_collision_map);
-  //add_entry(_("Debug GameTime"), &debug_game_time);
-  //add_entry(_("Debug Tiles"), &debug_tiles);
   add_entry(_("Auto Scrolling"), &auto_scrolling);
   add_entry(_("Action Help Strings"), &action_help);
 }

@@ -1,4 +1,4 @@
-//  $Id: globals.hxx,v 1.12 2003/02/18 21:38:08 grumbel Exp $
+//  $Id: globals.hxx,v 1.13 2003/04/10 18:28:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,16 +31,11 @@ extern bool        print_fps;                       ///< --print-fps
 extern int         verbose;                         ///< -v, --verbose
 extern bool        music_enabled;                   ///< -m, --enable-music
 extern bool        sound_enabled;                   ///< -s, --enable-sound
-extern bool        gimmicks_enabled;                ///< -i, --enable-gimmicks
-extern bool        intro_disabled;                  ///< -n, --disable-intro
 extern bool        record_demo;                     ///< --record-demo
 extern bool        play_demo;                       ///< --play-demo
 extern bool        cursor_enabled;                  ///< --enable-cursor
 extern bool        debug_actions;                   ///< --debug-actions
-extern bool        fs_preload;                      ///< --fs-preload
 extern bool        fast_mode;                       ///< --fast
-extern bool        previews_enabled;                ///< --disable-previews
-extern bool        quick_play;                      ///< -q, --quick_play
 extern bool        maintainer_mode;                 ///< --maintainer-mode
 extern bool        start_editor;                    ///<
 extern std::string demo_file;                       ///<
@@ -49,13 +44,9 @@ extern int         tile_size;                       ///< --tile-size
 extern bool        fullscreen_enabled;              ///< --enable-fullscreen
 extern int         screen_width;                    ///<
 extern int         screen_height;                   ///<
-extern bool        preload_data;                    ///<
 extern bool        draw_collision_map;              ///<
-extern bool        debug_tiles;                     ///<
 extern bool        swcursor_enabled;                ///< --enable-swcursor
 extern std::string config_file;                     ///< --config-file
-extern bool        background_manipulation_enabled; ///< --enable-bg-manipulation
-extern bool        debug_game_time;                 ///< --debug-game-time
 extern bool        max_cpu_usage;                   ///< --max-cpu-usage
 extern bool        use_opengl;                      ///< --use-opengl
 extern bool        action_help;                     ///< --action-help

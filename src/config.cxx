@@ -1,4 +1,4 @@
-//  $Id: config.cxx,v 1.12 2003/04/08 19:56:40 torangan Exp $
+//  $Id: config.cxx,v 1.13 2003/04/10 18:28:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -314,10 +314,6 @@ Config::set_value(const std::string& valueid, const std::string& value)
     {
       print_fps = str_to_bool(value);
     }
-  else if (valueid == "show-intro")
-    {
-      intro_disabled = !str_to_bool(value);
-    }
   else if (valueid == "fast-mode")
     {
       fast_mode = str_to_bool(value);
@@ -329,10 +325,6 @@ Config::set_value(const std::string& valueid, const std::string& value)
   else if (valueid == "unlimited-actions")
     {
       Cheat::unlimited_actions = str_to_bool(value);
-    }
-  else if (valueid == "quick-play")
-    {
-      quick_play = str_to_bool(value);
     }
   else if (valueid == "cursor-enabled")
     {
@@ -353,10 +345,6 @@ Config::set_value(const std::string& valueid, const std::string& value)
   else if (valueid == "height")
     {
       screen_height = str_to_int(value);
-    }
-  else if (valueid == "preload-data")
-    {
-      preload_data = str_to_bool(value);
     }
   else if (valueid == "sound")
     {

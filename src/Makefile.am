@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.144 2003/04/05 23:24:32 grumbel Exp $
+#  $Id: Makefile.am,v 1.145 2003/04/10 18:28:30 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -156,8 +156,6 @@ hurry_up.hxx \
 input_event.hxx \
 indexed_canvas.hxx \
 indexed_canvas.cxx \
-intro.cxx \
-intro.hxx \
 layer_manager.cxx \
 layer_manager.hxx \
 level_desc.cxx \

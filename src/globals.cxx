@@ -1,4 +1,4 @@
-//  $Id: globals.cxx,v 1.9 2003/04/10 11:51:32 grumbel Exp $
+//  $Id: globals.cxx,v 1.10 2003/04/10 18:28:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,15 +24,10 @@ bool        print_fps                       = false;
 int         verbose                         = 0;
 bool        music_enabled                   = true;
 bool        sound_enabled                   = true;
-bool        gimmicks_enabled                = false;
-bool        intro_disabled                  = false;
 bool        record_demo                     = false;
 bool        play_demo                       = false;
 bool        cursor_enabled                  = false;
-bool        fs_preload                      = false;  
 bool        fast_mode                       = false;
-bool        previews_enabled                = true;
-bool        quick_play                      = false;
 bool        maintainer_mode                 = false;
 std::string demo_file;
 bool        start_editor                    = false;
@@ -45,11 +40,9 @@ bool        fullscreen_enabled              = false;
 #endif
 int         screen_width                    = 800;
 int         screen_height                   = 600;
-bool        preload_data                    = false; // FIXME: Should be default if it would work
 bool        draw_collision_map              = false;
 bool        swcursor_enabled                = false;
 std::string config_file;
-bool        background_manipulation_enabled = true;
 bool        max_cpu_usage                   = true;
 bool        use_opengl                      = false;
 bool        action_help                     = true;

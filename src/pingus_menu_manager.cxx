@@ -1,4 +1,4 @@
-//  $Id: pingus_menu_manager.cxx,v 1.23 2003/03/27 15:57:22 grumbel Exp $
+//  $Id: pingus_menu_manager.cxx,v 1.24 2003/04/10 18:28:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,15 +26,10 @@
 PingusMenuManager* PingusMenuManager::instance_ = 0;
 
 PingusMenuManager::PingusMenuManager ()
-  : intro (this), mainmenu (this), optionmenu (this),
+  : mainmenu (this), optionmenu (this),
     exitmenu (this)
 {
-  //current_menu = 0;
-  //if (intro_disabled)
   push_menu (&mainmenu);
-  
-  //else
-  //push_menu (&intro); 
 }
 
 PingusMenuManager::~PingusMenuManager ()

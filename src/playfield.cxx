@@ -1,4 +1,4 @@
-//  $Id: playfield.cxx,v 1.31 2003/02/19 10:37:31 grumbel Exp $
+//  $Id: playfield.cxx,v 1.32 2003/04/10 18:28:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -64,23 +64,12 @@ Playfield::Playfield (Client* client_)
 	generate_clipping_rects(x1, y1, x2, y2);
       }
 
-    if (gimmicks_enabled) 
-      {
-	if (verbose)
-	  std::cout << "Playfield: Using gimmick" << std::endl;
-	view.push_back(new View(client, 0, 21, x2/2, y2/2, 0.5f));
-	view.push_back(new View(client, x2/2, y1, x2, y2, 1.0f));
-	view.push_back(new View(client, 0, y2/2, x2/2, y2, 2.0f));
-      } 
-    else
-      { // !gimmicks_enabled
-	view.push_back(new View(client, x1, y1, x2, y2));
+    view.push_back(new View(client, x1, y1, x2, y2));
 	
-	view[0]->set_x_offset(((x2 - x1) / 2) - world->get_start_x());
-	view[0]->set_y_offset(((y2 - y1) / 2) - world->get_start_y());
+    view[0]->set_x_offset(((x2 - x1) / 2) - world->get_start_x());
+    view[0]->set_y_offset(((y2 - y1) / 2) - world->get_start_y());
 	
-	world->set_view (view[0]);
-      }
+    world->set_view (view[0]);
   }
 }
 

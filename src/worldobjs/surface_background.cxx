@@ -1,4 +1,4 @@
-//  $Id: surface_background.cxx,v 1.7 2003/02/19 09:50:37 grumbel Exp $
+//  $Id: surface_background.cxx,v 1.8 2003/04/10 18:28:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,75 +42,64 @@ SurfaceBackground::SurfaceBackground (const WorldObjsData::SurfaceBackgroundData
   if (data->color.alpha > 1.0) 
     std::cout << "Background: Warning dim larger than 1.0 are no longer supported" << std::endl;
   
-  // Testing animatied backgrounds...
-  /*std::cout << "Res: " << data->desc.res_name << std::endl
-    << "file: " << data->desc.datafile << std::endl;*/
-
-  if (background_manipulation_enabled)
-    {
-      CL_Surface source_surface = PingusResource::load_surface(data->desc);
+  CL_Surface source_surface = PingusResource::load_surface(data->desc);
       
-      CL_Canvas* canvas;
+  CL_Canvas* canvas;
 
-      // Scaling Code
-      if (data->stretch_x && data->stretch_y)
+  // Scaling Code
+  if (data->stretch_x && data->stretch_y)
+    {
+      canvas = Blitter::scale_surface_to_canvas(source_surface, world->get_width(), world->get_height());
+    }
+  else if (data->stretch_x && !data->stretch_y)
+    {
+      if (data->keep_aspect)
         {
-          canvas = Blitter::scale_surface_to_canvas(source_surface, world->get_width(), world->get_height());
-        }
-      else if (data->stretch_x && !data->stretch_y)
-        {
-          if (data->keep_aspect)
-            {
-              float aspect = source_surface.get_height()/float(source_surface.get_width());
-              canvas = Blitter::scale_surface_to_canvas(source_surface, 
-                                                        world->get_width(), 
-                                                        int(world->get_width()*aspect));
-            }
-          else
-            {
-              canvas = Blitter::scale_surface_to_canvas(source_surface, source_surface.get_width(), world->get_height());
-            }
-        }
-      else if (!data->stretch_x && data->stretch_y)
-        {
-          if (data->keep_aspect)
-            {
-              float aspect = float(source_surface.get_width())/source_surface.get_height();
-              canvas = Blitter::scale_surface_to_canvas(source_surface,
-                                                        int(world->get_height() * aspect),
-                                                        world->get_height());
-            }
-          else
-            {
-              canvas = Blitter::scale_surface_to_canvas(source_surface, source_surface.get_width(), world->get_height());
-            }
+          float aspect = source_surface.get_height()/float(source_surface.get_width());
+          canvas = Blitter::scale_surface_to_canvas(source_surface, 
+                                                    world->get_width(), 
+                                                    int(world->get_width()*aspect));
         }
       else
         {
-          canvas = Blitter::create_canvas(source_surface);
+          canvas = Blitter::scale_surface_to_canvas(source_surface, source_surface.get_width(), world->get_height());
         }
-
-      /* FIXME: fill_rect doesn't work with RGB images
-	 FIXME: seems to work fine with indexed images
-	 FIXME: not tested with RGBA images
-	 FIXME: the bug might be in create_canvas() and not in fill_rect()
-      */
-    
-      if (data->color.alpha != 0.0 && data->color != Color(0, 0, 0, 1.0f))
-	{ // Workaround for a bug which caused all levels to have the
-	  // wrong background color
-	  canvas->fill_rect(0, 0, 
-			    canvas->get_width(), canvas->get_height(),
-			    data->color.red, data->color.green, data->color.blue, 
-			    data->color.alpha);
-	}
-      
-      bg_surface = CL_Surface(canvas, true);
+    }
+  else if (!data->stretch_x && data->stretch_y)
+    {
+      if (data->keep_aspect)
+        {
+          float aspect = float(source_surface.get_width())/source_surface.get_height();
+          canvas = Blitter::scale_surface_to_canvas(source_surface,
+                                                    int(world->get_height() * aspect),
+                                                    world->get_height());
+        }
+      else
+        {
+          canvas = Blitter::scale_surface_to_canvas(source_surface, source_surface.get_width(), world->get_height());
+        }
     }
   else
     {
-      bg_surface = PingusResource::load_surface(data->desc);
+      canvas = Blitter::create_canvas(source_surface);
     }
+
+  /* FIXME: fill_rect doesn't work with RGB images
+     FIXME: seems to work fine with indexed images
+     FIXME: not tested with RGBA images
+     FIXME: the bug might be in create_canvas() and not in fill_rect()
+  */
+    
+  if (data->color.alpha != 0.0 && data->color != Color(0, 0, 0, 1.0f))
+    { // Workaround for a bug which caused all levels to have the
+      // wrong background color
+      canvas->fill_rect(0, 0, 
+                        canvas->get_width(), canvas->get_height(),
+                        data->color.red, data->color.green, data->color.blue, 
+                        data->color.alpha);
+    }
+      
+  bg_surface = CL_Surface(canvas, true);
 
   //bg_surface = CAImageManipulation::changeHSV(bg_surface, 150, 100, 0);
   counter.set_size(bg_surface.get_num_frames());
