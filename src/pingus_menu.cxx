@@ -1,4 +1,4 @@
-//  $Id: pingus_menu.cxx,v 1.18 2003/04/01 18:24:25 grumbel Exp $
+//  $Id: pingus_menu.cxx,v 1.19 2003/04/10 16:01:02 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <ClanLib/Display/Display/display.h>
 #include <config.h>
 #include "menu_button.hxx"
 #include "pingus_resource.hxx"
@@ -72,15 +73,25 @@ PingusMenu::on_escape_press ()
 void
 PingusMenu::draw_foreground(GraphicContext& gc)
 {
-  gc.draw(background, (gc.get_width()/2) - (background.get_width()/2), 50);
+  if (gc.get_height() == 480)
+    {
+      gc.draw(background, 
+              (gc.get_width()/2) - (background.get_width()/2), 
+              20);
+    }
+  else
+    {
+      gc.draw(background, (gc.get_width()/2) - (background.get_width()/2), 
+              CL_Display::get_height()/10);
+    }
 #ifdef OFFICIAL_PINGUS_BUILD
-  gc.print_left(Fonts::pingus_small, 20, 500, 
+  gc.print_left(Fonts::pingus_small, 20, CL_Display::get_height()-100, 
                 "Pingus version "VERSION", Copyright (C) 2003 Ingo Ruhnke <grumbel@gmx.de>\n");
 #else
-  gc.print_left(Fonts::pingus_small, 20, 500, 
+  gc.print_left(Fonts::pingus_small, 20, CL_Display::get_height()-100, 
                 "Pingus version "VERSION" (unofficial build), Copyright (C) 2003 Ingo Ruhnke <grumbel@gmx.de>\n");
 #endif
-  gc.print_left(Fonts::pingus_small, 20, 530, 
+  gc.print_left(Fonts::pingus_small, 20, CL_Display::get_height()-70, 
                 "Pingus comes with ABSOLUTELY NO WARRANTY. This is free software, and you are welcome\n"
                 "to redistribute it under certain conditions; see the file COPYING for details.\n");
 }

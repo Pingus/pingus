@@ -1,4 +1,4 @@
-//  $Id: exit_menu.cxx,v 1.17 2003/04/09 21:57:24 grumbel Exp $
+//  $Id: exit_menu.cxx,v 1.18 2003/04/10 16:01:02 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,7 +31,8 @@ private:
   PingusMenuManager* manager;
 public:
   ExitMenuYesButton (PingusMenuManager* m) 
-    : GUI::SurfaceButton(230, 315,
+    : GUI::SurfaceButton(CL_Display::get_width()/2 - 170,
+                         CL_Display::get_height()/2 + 15,
                          ResDescriptor("menu/exit_button_normal", "core"),
                          ResDescriptor("menu/exit_button_pressed", "core"),
                          ResDescriptor("menu/exit_button_hover", "core")),
@@ -41,7 +42,8 @@ public:
  
   void draw (GraphicContext& gc) {
     SurfaceButton::draw(gc);
-    gc.print_right(Fonts::chalk_large, 320,  325, _("Yes"));
+    gc.print_right(Fonts::chalk_large, CL_Display::get_width()/2 - 80,
+                   CL_Display::get_height()/2 + 25, _("Yes"));
   }
 
   void on_click()
@@ -63,7 +65,7 @@ private:
   PingusMenuManager* manager;
 public:
   ExitMenuNoButton (PingusMenuManager* m)
-    : GUI::SurfaceButton(400, 315,
+    : GUI::SurfaceButton(CL_Display::get_width()/2, CL_Display::get_height()/2 + 15,
                          ResDescriptor("menu/exit_button_normal", "core"),
                          ResDescriptor("menu/exit_button_pressed", "core"),
                          ResDescriptor("menu/exit_button_hover", "core")),
@@ -73,7 +75,8 @@ public:
 
   void draw (GraphicContext& gc) {
     SurfaceButton::draw(gc);
-    gc.print_right(Fonts::chalk_large, 480, 325, _("No"));
+    gc.print_right(Fonts::chalk_large, CL_Display::get_width()/2 + 80,
+                   CL_Display::get_height()/2 + 25, _("No"));
   }
 
   void on_click() {
