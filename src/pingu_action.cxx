@@ -1,4 +1,4 @@
-//  $Id: pingu_action.cxx,v 1.18 2002/11/03 22:20:29 grumbel Exp $
+//  $Id: pingu_action.cxx,v 1.19 2002/11/26 10:12:53 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,6 +30,7 @@
 
 // Initialise class static.
 const int PinguAction::pingu_height = 26;
+const float deadly_velocity = 20.0f;
 
 PinguAction::PinguAction (Pingu* p)
   : pingu (p)

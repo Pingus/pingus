@@ -1,4 +1,4 @@
-//  $Id: pingu.cxx,v 1.36 2002/10/13 16:39:55 grumbel Exp $
+//  $Id: pingu.cxx,v 1.37 2002/11/26 10:12:53 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,9 +32,6 @@
 #include "fonts.hxx"
 
 using namespace Actions;
-
-// FIXME: We should read all this 'constants' from a configuration file at startup
-const float deadly_velocity = 20.0;
 
 // Init a pingu at the given position while falling
 Pingu::Pingu (int arg_id, const Vector& arg_pos, int owner)
