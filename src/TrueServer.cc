@@ -1,4 +1,4 @@
-//  $Id: TrueServer.cc,v 1.7 2000/05/24 15:45:02 grumbel Exp $
+//  $Id: TrueServer.cc,v 1.8 2000/05/25 17:16:21 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,6 +39,10 @@ TrueServer::TrueServer()
 
 TrueServer::~TrueServer()
 {
+  if (world) {
+    std::cout << "TrueServer: Deleting World" << endl;
+    delete world;
+  }
 }
 
 void
@@ -75,9 +79,6 @@ TrueServer::start(PLF* level_data)
   pause = false;
   last_time = 0;
   local_game_speed = game_speed;
-
-  if (world)
-    delete world;
 
   world = new World;
   leveldesc.draw(PingusLevelDesc::LOADING);

@@ -1,4 +1,4 @@
-//  $Id: PingusGame.cc,v 1.10 2000/05/24 15:45:02 grumbel Exp $
+//  $Id: PingusGame.cc,v 1.11 2000/05/25 17:16:21 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,10 +39,13 @@ PingusGame::PingusGame()
 
 PingusGame::~PingusGame()
 {
+  cout << "PingusGame:~PingusGame" << endl;
   if (client) {
+    cout << "Deleting client" << endl;
     delete client;
   }
   if (server) {
+    cout << "Server client" << endl;
     delete server;
   }
 }
@@ -92,8 +95,6 @@ PingusGame::write_lastlevel_file(std::string levelfile)
 void
 PingusGame::start(std::string plf_filename, std::string psm_filename)
 {
-  Timer timer;
-
   if (verbose) std::cout << "PingusGame: start" << std::endl;
 
   std::cout << "Level: " << plf_filename << std::endl;
@@ -114,15 +115,8 @@ PingusGame::start(std::string plf_filename, std::string psm_filename)
 	if (server)
 	  delete server;
 
-	//timer.start();    
-	//std::cout << "PingusGame: Creating Server..." << std::endl;
 	server = new TrueServer;
-	//std::cout << "PingusGame: Creating Server... done " << timer.stop() << std::endl;
-
-	//timer.start();
-	//std::cout << "PingusGame: Creating Client..." << std::endl;
 	client = new Client(server);
-	//std::cout << "PingusGame: Creating Client.. done " << timer.stop() << std::endl;
     
 	if (psm_filename.empty()) 
 	  {

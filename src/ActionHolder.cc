@@ -1,4 +1,4 @@
-//  $Id: ActionHolder.cc,v 1.12 2000/05/24 18:48:33 grumbel Exp $
+//  $Id: ActionHolder.cc,v 1.13 2000/05/25 17:16:21 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,6 +30,12 @@
 
 std::vector<PinguAction*> ActionHolder::uactions;
 std::map<std::string, ActionCounter> ActionHolder::uaction_buffer;
+
+std::vector<Basher>   ActionHolder::bashers;
+std::vector<Blocker>  ActionHolder::blockers;
+std::vector<Bomber>   ActionHolder::bombers;
+std::vector<Bridger>  ActionHolder::bridgers;
+std::vector<Climber>  ActionHolder::climbers;
 
 ActionHolder::ActionHolder()
 {
@@ -186,6 +192,11 @@ ActionHolder::init_uactions()
       uaction_buffer["bomber"].number = 0;
     }
 
+  std::cout << "done " << timer.stop()  << std::endl;
+
+  timer.start();
+  std::cout << "ActionHoler:init_uaction(): static Generating actions..." << std::flush;
+  bombers.resize(MAX_ACTION_BUFFER_SIZE);
   std::cout << "done " << timer.stop()  << std::endl;
 }
 

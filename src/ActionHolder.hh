@@ -1,4 +1,4 @@
-//  $Id: ActionHolder.hh,v 1.6 2000/05/24 18:48:33 grumbel Exp $
+//  $Id: ActionHolder.hh,v 1.7 2000/05/25 17:16:21 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -51,12 +51,12 @@ class ActionHolder
 private:
   std::vector<std::string>   action_name;
   std::map<std::string, ActionCounter> action;
-
-  std::vector<Basher>   bashers;
-  std::vector<Blocker>  blockers;
-  std::vector<Bomber>   bombers;
-  std::vector<Bridger> bridgers;
-  std::vector<Climber>  climbers;
+  
+  static std::vector<Basher>   bashers;
+  static std::vector<Blocker>  blockers;
+  static std::vector<Bomber>   bombers;
+  static std::vector<Bridger> bridgers;
+  static std::vector<Climber>  climbers;
 
   static std::vector<PinguAction*> uactions;
   static std::map<std::string, ActionCounter> uaction_buffer;
