@@ -1,4 +1,4 @@
-//  $Id: pingus_menu_manager.cxx,v 1.4 2002/07/29 22:29:22 grumbel Exp $
+//  $Id: pingus_menu_manager.cxx,v 1.5 2002/07/30 01:58:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -91,6 +91,7 @@ PingusMenuManager::disable_events ()
   --event_register_counter;
 }
 
+/*
 void 
 PingusMenuManager::on_button_press (CL_InputDevice* device,const CL_Key& key)
 {
@@ -127,6 +128,7 @@ PingusMenuManager::on_mouse_move (CL_InputDevice* device, int x, int y)
   //<< device << ", " << x << ", " << y << ")" << std::endl;
   current_menu ()->on_mouse_move (device, x, y);
 }
+*/
 
 void 
 PingusMenuManager::display ()

@@ -1,4 +1,4 @@
-//  $Id: root_gui_manager.hxx,v 1.2 2002/07/29 11:57:38 grumbel Exp $
+//  $Id: root_gui_manager.hxx,v 1.3 2002/07/30 01:58:16 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,33 +31,12 @@ namespace GUI
   {
   private:
     Input::Controller* controller;
-    std::vector<Component*> components;
 
-    /** The component which recieved the last pressed event */
-    Component* pressed_component;
-
-    /** The component over which the mouse was in the last update,
-	used to detecte enter/leave events */
-    Component* mouse_over_component;
-
-    // FIXME: Hack:
-    int x_pos;
-    int y_pos;
   public:
     RootGUIManager (Input::Controller* c);
     ~RootGUIManager ();
     
-    void draw ();
     void update (float delta);
-
-    bool is_at (int x, int y);
-
-    void process_input (float delta);
-    Component* component_at (int x, int y);
-    
-
-    void add (Component* c) { components.push_back(c); }
-    void remove (Component* c) { /* components.erase(c); */ }
   };
 }
 

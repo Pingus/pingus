@@ -1,4 +1,4 @@
-//  $Id: component.hxx,v 1.3 2002/07/29 11:57:38 grumbel Exp $
+//  $Id: component.hxx,v 1.4 2002/07/30 01:58:16 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,7 +32,7 @@ namespace GUI
     virtual void draw () =0;
     virtual void update (float delta) {}
     
-    virtual bool is_at (int x, int y) =0;
+    virtual bool is_at (int x, int y) { return false; }
 
     // Events
     /** Gets issued once the primary button is pressed */

@@ -1,4 +1,4 @@
-//  $Id: pingus_sub_menu.hxx,v 1.2 2002/06/24 22:52:55 grumbel Exp $
+//  $Id: pingus_sub_menu.hxx,v 1.3 2002/07/30 01:58:16 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,11 +20,13 @@
 #ifndef HEADER_PINGUS_PINGUS_SUB_MENU_HXX
 #define HEADER_PINGUS_PINGUS_SUB_MENU_HXX
 
+#include "gui/component.hxx"
+
 class CL_Key;
 class CL_InputDevice;
 class PingusMenuManager;
 
-class PingusSubMenu
+class PingusSubMenu : public GUI::Component
 {
 protected:
   PingusMenuManager* manager;
@@ -33,18 +35,8 @@ public:
   PingusSubMenu (PingusMenuManager* m);
   virtual ~PingusSubMenu ();
 
-  /// draw the menu
-  virtual void draw () =0;
-
-  /// update the menu
-  virtual void update (float delta) =0;
-  
   /// load all the data which is needed for the menu
   virtual void preload () =0;
-
-  virtual void on_button_press (CL_InputDevice*,const CL_Key &) {}
-  virtual void on_button_release (CL_InputDevice*,const CL_Key &) {}
-  virtual void on_mouse_move (CL_InputDevice*, int, int) {}
 
   /// Return a handle to the parent menu manager
   PingusMenuManager* get_manager () { return manager; }

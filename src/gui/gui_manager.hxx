@@ -1,4 +1,4 @@
-//  $Id: gui_manager.hxx,v 1.2 2002/07/29 10:44:12 grumbel Exp $
+//  $Id: gui_manager.hxx,v 1.3 2002/07/30 01:58:16 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,11 @@
 
 #include "component.hxx"
 
+namespace Input
+{
+  class Event;
+}
+
 namespace GUI
 {
   /** interface class which holds all GUI components and displays
@@ -29,15 +34,38 @@ namespace GUI
   class GUIManager : public Component
   {
   private:
+    std::vector<Component*> components;
+
+    /** The component which recieved the last pressed event */
+    Component* pressed_component;
+
+    /** The component over which the mouse was in the last update,
+	used to detecte enter/leave events */
+    Component* mouse_over_component;
+
+    // FIXME: Hack: should be handled inside the controller
+    int x_pos;
+    int y_pos;
   public:
-    GUIManager () {}
+    GUIManager ();
     virtual ~GUIManager () {}
     
-    virtual void draw () =0;
-    virtual void update (float delta) =0;
+    void draw ();
+    void update (float delta);
 
-    virtual void add (Component*)    =0;
-    virtual void remove (Component*) =0;
+    /** Add a component to the manager, if delete_component is true
+	the component will get deleted on destruction of the manager,
+	if false is supplied the user has to handle the component
+	itself */
+    void add (Component*, bool delete_component = true);
+
+    /** */
+    void remove (Component*);
+
+    void process_input (std::list<Input::Event*>& events);
+
+    Component* component_at (int x, int y);  
+    bool is_at (int x, int y);
   };
 }
 

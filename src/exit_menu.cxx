@@ -1,4 +1,4 @@
-//  $Id: exit_menu.cxx,v 1.2 2002/06/13 14:25:12 torangan Exp $
+//  $Id: exit_menu.cxx,v 1.3 2002/07/30 01:58:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -49,24 +49,6 @@ void
 ExitMenu::preload ()
 {
   sur = PingusResource::load_surface ("misc/exitmenu", "core");
-}
-
-void 
-ExitMenu::on_button_release (CL_InputDevice* device, const CL_Key& key)
-{
-  if (device == CL_Input::pointers[0])
-    {
-      if (key.id == CL_MOUSE_LEFTBUTTON && key.x > CL_Display::get_width ()/2)
-	{
-	  manager->pop_menu ();
-	}
-      else
-	{
-	  std::cout << "ExitMenu: yes pressed, doing exit" << std::endl;
-	  std::cout << "Pingus is now shutdown via: exit (EXIT_SUCCESS);" << std::endl;
-	  exit (EXIT_SUCCESS);
-	}
-    }
 }
 
 /* EOF */

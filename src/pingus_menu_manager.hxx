@@ -1,4 +1,4 @@
-//  $Id: pingus_menu_manager.hxx,v 1.3 2002/07/29 22:29:22 grumbel Exp $
+//  $Id: pingus_menu_manager.hxx,v 1.4 2002/07/30 01:58:16 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -72,10 +72,12 @@ public:
   void fadeout ();
 
   // !FIXME! Should use controller instead
+  /*
   void on_button_press (CL_InputDevice*,const CL_Key &);
   void on_button_release (CL_InputDevice*,const CL_Key &);
   void on_mouse_move (CL_InputDevice*, int, int);
-  
+  */
+
   /// Exit the menu manager (which means to exit the while() loop in display ())
   void exit ();
 

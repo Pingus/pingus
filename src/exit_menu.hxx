@@ -1,4 +1,4 @@
-//  $Id: exit_menu.hxx,v 1.3 2002/07/02 15:46:58 torangan Exp $
+//  $Id: exit_menu.hxx,v 1.4 2002/07/30 01:58:16 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,9 +36,6 @@ public:
   void draw ();
   void update (float delta);
   void preload ();
-
-  void on_button_press (CL_InputDevice*,const CL_Key &) {}
-  void on_button_release (CL_InputDevice*,const CL_Key &);
 };
 
 #endif
