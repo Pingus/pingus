@@ -171,6 +171,10 @@ section rock {
 	rock4 = images/groundpieces/ground/rock/rock4.png (type=surface, x=0, y=0, width=136, height=191);
 	rock5 = images/groundpieces/ground/rock/rock5.png (type=surface, x=0, y=0, width=101, height=88);
 	rock6 = images/groundpieces/ground/rock/rock6.png (type=surface, x=0, y=0, width=143, height=185);
+	blackrock2 = images/groundpieces/ground/rock/blackrock2.png (type=surface, x=0, y=0, width=150, height=171);
+	blackrock3 = images/groundpieces/ground/rock/blackrock3.png (type=surface, x=0, y=0, width=170, height=175);
+	blackrock4 = images/groundpieces/ground/rock/blackrock4.png (type=surface, x=0, y=0, width=156, height=150);
+	blackrock1 = images/groundpieces/ground/rock/blackrock1.png (type=surface, x=0, y=0, width=136, height=171);
 }
 
 section sortie {

@@ -205,10 +205,10 @@ section GroundPieces
 	        real28 = images/groundpieces/ground/real/real28.png (type=surface, x=0, y=0, width=140, height=155, tcol=0);
 	        real29 = images/groundpieces/ground/real/real29.png (type=surface, x=0, y=0, width=150, height=89, tcol=0);
 	        real30 = images/groundpieces/ground/real/real30.png (type=surface, x=0, y=0, width=171, height=101, tcol=0);
-	        real31 = images/groundpieces/ground/real/real31.png (type=surface, x=0, y=0, width=136, height=171, tcol=0);
-	        real32 = images/groundpieces/ground/real/real32.png (type=surface, x=0, y=0, width=150, height=171, tcol=0);
-	        real33 = images/groundpieces/ground/real/real33.png (type=surface, x=0, y=0, width=170, height=175, tcol=0);
-	        real34 = images/groundpieces/ground/real/real34.png (type=surface, x=0, y=0, width=156, height=150, tcol=0);
+	        real31 = images/groundpieces/ground/rock/blackrock1.png (type=surface, x=0, y=0, width=136, height=171);
+	        real32 = images/groundpieces/ground/rock/blackrock2.png (type=surface, x=0, y=0, width=150, height=171);
+	        real33 = images/groundpieces/ground/rock/blackrock3.png (type=surface, x=0, y=0, width=170, height=175);
+	        real34 = images/groundpieces/ground/rock/blackrock4.png (type=surface, x=0, y=0, width=156, height=150);
 	        real35 = images/groundpieces/ground/real/real35.png (type=surface, x=0, y=0, width=179, height=48, tcol=0);
         	real36 = images/groundpieces/ground/real/real36.png (type=surface, x=0, y=0, width=181, height=60, tcol=0);
 	       	real37 = images/groundpieces/ground/real/real37.png (type=surface, x=0, y=0, width=184, height=64, tcol=0);
