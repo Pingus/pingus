@@ -13,6 +13,7 @@
     <levelname lang="pt">Entrada elevada, Saída baixa</levelname>
     <levelname lang="no">Inngang høyt, utgang lavt</levelname>
     <levelname lang="es">Entra a lo alto, Sal a lo bajo</levelname>
+    <levelname lang="da">Kom så ned derfra!</levelname>
 
     <description lang="en">If you don't have enough floaters to bring all the Pingus down to
                            the exit - you have to find other ways to guide them down. You
@@ -70,6 +71,11 @@
                            tienes que encontrar otras formas de guiarlos. Ya deberías haber aprendido
 			   el resto de habilidades en anteriores niveles, así que no tendrías que tener
 			   muchos problemas con éste.
+    </description>
+    <description lang="da">Hvis du ikke har nok propeller til at få alle Pinguerne ned i
+			   god behold - så må du tage alternative metoder i brug. Du
+			   skulle kende de nødvendige midler i forvejen, så det skulle du
+			   nok kunne klare.
     </description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>

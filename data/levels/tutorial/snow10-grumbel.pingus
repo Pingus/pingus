@@ -13,6 +13,7 @@
     <levelname lang="pt">Ilha de Pânico (flutuar/perfurar)</levelname>
     <levelname lang="no">Panikkøya (flyt/slå)</levelname>
     <levelname lang="es">Isla del Pánico</levelname>
+    <levelname lang="da">Panik-øen</levelname>
 
     <description lang="en">While the previous levels have not required much quick action from
                            you, this one gets a bit trickier. The Pingus are coming
@@ -66,6 +67,10 @@
 			   entradas en paralelo, y es tu trabajo coordinar los dos grupos
 			   sabiamente.
    </description>
+    <description lang="da">Denne baner kræver i modsætning til de foregående, at du er hurtig
+                           på aftrækkeren. Pinguerne kommer ud af to indgange på samme tid, og
+                           du skal sørge for at holde styr på begge grupper samtidig.
+    </description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
     <number-of-pingus>40</number-of-pingus>

@@ -13,6 +13,7 @@
     <levelname lang="pt">Escavar, perfurar e outros problemas</levelname>
     <levelname lang="no">Grav, slå og andre problemer</levelname>
     <levelname lang="es">Excavar, golpear y otros problemas</levelname>
+    <levelname lang="da">En bore- og graveøvelse</levelname>
 
     <description lang="en">The more levels you master, the more difficult they will get,
                            but don't panic, as this one is still pretty easy. Just use the stuff that
@@ -77,6 +78,12 @@
     			  éste es de los facilitos. Usa lo que has aprendido en anteriores niveles y no
 			  tendrás muchos problemas. Si llegas a un punto en que no ves solución, pulsa dos
 			  veces el botón Armagedon e inténtalo de nuevo.
+    </description>
+    <description lang="da">Jo flere baner, du klarer, desto sværere vil de blive - men bare rolig,
+                           denne er også ret nem. Bare brug, hvad du har lært i de tidligere baner, så
+                           skulle der ikke være de store problemer. Hvis du tror du er nået til en
+                           baglås-tilstand, hvorfra det ikke længere er muligt at gennemføre banen, så
+                           dobbeltklik på 'dommedagsknappen' nederst til højre i skærmen.
     </description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>

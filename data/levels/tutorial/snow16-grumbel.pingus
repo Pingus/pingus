@@ -13,6 +13,7 @@
     <levelname lang="pt">A construção começa a complicar...</levelname>
     <levelname lang="no">Brobygging blir mer komplisert...</levelname>
     <levelname lang="es">Construir se complica...</levelname>
+    <levelname lang="da">Brobygning for viderekomne</levelname>
 
     <description lang="en">Once again you have to combine actions carefully and wisely. If you
                            don't you could end up in the hole just before the exit, so
@@ -56,6 +57,9 @@
     <description lang="es">Nuevamente, tienes que combinar tus acciones con cuidado y sabiamente;
                           si no, puedes acabar en la fosa que hay justo delante de la sali, así
 			  que piensa como evitarlo.
+    </description>
+    <description lang="da">Nok en gang skal handlingerne kombineres med omtanke og omhu -
+                           hvis ikke du vil ende i faldgruben lige før udgangen.
     </description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>

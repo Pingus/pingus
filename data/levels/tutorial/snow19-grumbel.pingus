@@ -13,6 +13,7 @@
     <levelname lang="pt">Aprendendo a usar a ponte</levelname>
     <levelname lang="no">Lær og bruke broen</levelname>
     <levelname lang="es">Aprende a construir puentes</levelname>
+    <levelname lang="da">Brobygning for begyndere</levelname>
 
     <description lang="en">If no Jumper is at hand and a large hole needs to be passed, a bridge
 			   can be pretty helpful. It takes some time to build, but unlike the
@@ -63,6 +64,10 @@
     			   puede ser algo muy práctico. Toma algo de tiempo construirlo, pero al contrario
 			   que el Saltador, ésta habilidad permite que los pingüinos que siguen puedan llegar
 			   al final.
+    </description>
+    <description lang="da">Hvis man skal over et stort hul og ikke kan hoppe, kan man tit
+			   klare sig med en bro. Den tager lidt tid at bygge, men til
+			   gengæld kan de efterfølgende Pinguer også bruge den.
     </description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>

@@ -47,7 +47,7 @@ AC_ARG_WITH(gettext,
 
 if test "x$with_gettext" != "xno"; then
 	dnl -- gettext macros --
-	ALL_LINGUAS="cs de es fi fr it no pt sr sv tr" # nl
+	ALL_LINGUAS="cs de da es fi fr it no pt sr sv tr" # nl
 
 	dnl AM_WITH_NLS
 	dnl AM_LC_MESSAGES

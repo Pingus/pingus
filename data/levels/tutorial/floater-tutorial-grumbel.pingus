@@ -13,6 +13,7 @@
     <levelname lang="pt">Flutua ou Morre</levelname>
     <levelname lang="no">Flyt eller dø</levelname>
     <levelname lang="es">Flota o muere</levelname>
+    <levelname lang="da">Svæv eller dø</levelname>
 
     <description lang="en">Well done in mission one! Now let's start the next one. This
                            time you will need to equip your Pingus with a little propeller,
@@ -48,6 +49,14 @@
                            treba da opremis Pinguse sa malim propelerom, da bi mogli da lebde
                            i lagano se spuste na zemlju. Ako padnu predaleko, nece uspeti da
                            prezive pad. Zato obrati paznju!
+    </description>
+    <description lang="da">Første mission klarede du jo flot - lad os straks
+			   gå videre til den næste.
+                           Denne gang skal du udstyre dine Pinguer med
+                           små propeller, så de kan svæve blødt ned
+                           til jorden. Hvis Pinguer falder fra for
+                           stor højde, vil de ikke overleve faldet, så
+                           pas nu på!
     </description>
     <description lang="fi">Ykköskenttähän sujui hyvin! Tällä kertaa tehtäväsi on varustaa
                            pingut pienillä propelleilla, joiden avulla ne leijuvat pehmeästi

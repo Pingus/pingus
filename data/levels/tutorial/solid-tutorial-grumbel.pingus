@@ -13,6 +13,7 @@
     <levelname lang="pt">Piso sólido pode bloquear a passagem</levelname>
     <levelname lang="no">Fast grunn kan blokkere veien</levelname>
     <levelname lang="es">El terreno duro puede bloquear el camino</levelname>
+    <levelname lang="da">Hårde ting kan blokere vejen</levelname>
 
     <description lang="en">As you have learned in earlier levels your Pingus can dig through
                            basically any terrain, but there is one material which they can't
@@ -76,6 +77,12 @@
     <description lang="es">Como ya has visto, tus pingüinos pueden excavar casi cualquier tipo de terreno, excepto
                            uno : el acero. Éstos terrenos se muestran en color gris, y deberás encontrar alguna
 			   forma de sortearlos.
+    </description>
+    <description lang="da">Som du har lært i tidligere baner, kan dine Pinguer lave huller i
+                           stort set alle slags terræn, men der er én slags materiale, de ikke
+                           kan gennemtrænge: stål. Sådanne områder markeres med mørkegråt på
+                           oversigtskortet (som ses i nederste venstre hjørne), og kan ikke fjernes
+                           eller ødelægges, så du må finde en vej rundt om dem.
     </description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
