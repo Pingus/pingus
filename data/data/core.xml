@@ -157,6 +157,11 @@
     <surface file="../images/core/misc/chalk_pingu4.png" name="chalk_pingu4" />
     <surface file="../images/core/misc/flag0.png" height="38" name="flag0" width="27" x="0" y="0" />
     <surface file="../images/core/misc/404.png" height="64" name="404" width="64" x="0" y="0" />
+
+    <sprite name="404sprite">
+      <image file="../images/core/misc/404.png" />
+    </sprite>
+
     <surface file="../images/core/menu/exitmenu.png" height="296" name="exitmenu" width="400" x="0" y="0" />
     <surface file="../images/core/misc/logo.png" name="logo" />
     <surface file="../images/core/misc/loading.png" height="66" name="loading" tcol="0" width="175" x="0" y="0" />
