@@ -1,4 +1,4 @@
-//  $Id: FPSCounter.hh,v 1.3 2000/06/18 17:01:49 grumbel Exp $
+//  $Id: FPSCounter.hh,v 1.4 2000/06/21 20:30:55 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,32 +27,42 @@
 class FPSCounter : public DisplayHook
 {
 private:
-  ///
+  /** The font... */
   CL_Font* font;
-  ///
+
+  /** Used to know when the frame has changed */
+  bool odd_frame;
+
+  /** A string holding the current value of frames + "fps", its
+      updated every second */
   char fps_string[64];
-  ///
+
+  /** Count the fps until one second is passed */
   int fps_count;
-  ///
+
+  /** The time were the last fps string update was performent */
   unsigned int start_time;
-  ///
-  bool is_init;
+
+  /** Check if one second is passed and if that is the case, update
+      everything then. */
+  virtual void update_fps_counter();
+
 public:
   ///
   FPSCounter();
   ///
   virtual ~FPSCounter();
 
-  ///
-  void init();
-  ///
+  /** When we got a Display::flip_display() this function is
+      called... */
   virtual void on_event();
-  ///
-  virtual void update_fps_counter();
-}///
-;
 
-///
+  /** Load all the gfx and fonts... */
+  void init();
+};
+
+/** The fps_counter is a global object, so we don't need to construct
+    it over and over again */
 extern FPSCounter fps_counter;
 
 #endif

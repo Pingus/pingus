@@ -1,4 +1,4 @@
-//  $Id: FPSCounter.cc,v 1.2 2000/06/13 17:50:46 grumbel Exp $
+//  $Id: FPSCounter.cc,v 1.3 2000/06/21 20:30:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,13 +42,24 @@ FPSCounter::init()
   start_time = CL_System::get_time();
   strcat(fps_string, "unknown");
   fps_count = 0;
-  is_init = true;
 }
 
 void
 FPSCounter::on_event()
 {
   update_fps_counter();
+
+  if (odd_frame)
+    {
+      font->print_right(CL_Display::get_width(), 
+			CL_Display::get_height() - (2 * font->get_height()),
+			"o");
+      odd_frame = false;
+    }
+  else
+    {
+      odd_frame = true;
+    }
 
   font->print_right(CL_Display::get_width(), 
 		    CL_Display::get_height() - font->get_height(),
@@ -63,12 +74,13 @@ FPSCounter::update_fps_counter()
 
   fps_count++;
   
-  if (start_time + 1000 < current_time) {
-    current_fps = fps_count * 1000 / (current_time - start_time);
-    sprintf(fps_string, "%d fps", current_fps);
-    fps_count = 0;
-    start_time = CL_System::get_time();
-  }
+  if (start_time + 1000 < current_time) 
+    {
+      current_fps = fps_count * 1000 / (current_time - start_time);
+      sprintf(fps_string, "%d fps", current_fps);
+      fps_count = 0;
+      start_time = CL_System::get_time();
+    }
 }
 
 /* EOF */
