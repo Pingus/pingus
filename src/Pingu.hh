@@ -1,4 +1,4 @@
-//  $Id: Pingu.hh,v 1.2 2000/02/09 21:43:40 grumbel Exp $
+//  $Id: Pingu.hh,v 1.3 2000/02/26 03:17:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -96,16 +96,15 @@ public:
   
   void draw_offset(int x, int y, float s = 1.0) const;
   void let_move();
+  void do_persistent();
 
   bool   is_over(int x, int y);
   double dist(int x, int y);
 
   static CL_ResourceManager* local_res();
-  // static int SetResourceManager( CL_ResourceManager* );
   
   static void set_colmap(ColMap*);
   static void set_map(PinguMap*);
-  // static void load_data();
 };
 
 #endif /* PINGU_HH */

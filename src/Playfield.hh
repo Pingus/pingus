@@ -1,4 +1,4 @@
-//  $Id: Playfield.hh,v 1.2 2000/02/09 21:43:40 grumbel Exp $
+//  $Id: Playfield.hh,v 1.3 2000/02/26 03:17:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -60,6 +60,11 @@ public:
   Playfield();
   Playfield(PLF*, World*);
   ~Playfield();
+
+  int get_x_offset();
+  int get_y_offset();
+
+  void set_viewpoint(int, int);
 
   void draw();
   void let_move();

@@ -1,4 +1,4 @@
-//  $Id: Client.hh,v 1.4 2000/02/25 02:35:27 grumbel Exp $
+//  $Id: Client.hh,v 1.5 2000/02/26 03:17:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -62,6 +62,10 @@ private:
   SmallMap*      small_map;
 public:
   Client(Server* s);
+
+  Server*    get_server() { return server; }
+  Playfield* get_playfield() { return playfield; }
+
   void start(std::string filename, PingusGameMode m = (PingusGameMode)INTERACTIVE_MODE);
   void start(std::string plf_filename, std::string psm_filename);
   void play_level(std::string plf_filename, std::string psm_filename = "");

@@ -1,4 +1,4 @@
-//  $Id: Client.cc,v 1.9 2000/02/25 02:35:27 grumbel Exp $
+//  $Id: Client.cc,v 1.10 2000/02/26 03:17:06 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -108,7 +108,7 @@ Client::play_level(std::string plf_filename, std::string psm_filename)
   time_display->set_server(server);
   button_panel->set_client(this);
   pcounter->set_world(server->get_world());
-  small_map->set_world(server->get_world());
+  small_map->set_client(this);
   
   event->playfield = playfield;
 

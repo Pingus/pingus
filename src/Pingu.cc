@@ -1,4 +1,4 @@
-//  $Id: Pingu.cc,v 1.6 2000/02/25 02:35:27 grumbel Exp $
+//  $Id: Pingu.cc,v 1.7 2000/02/26 03:17:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -263,6 +263,28 @@ Pingu::dist(int x, int y)
 		      + (y_pos - 16 - y) * (y_pos - 16 - y))));
 }
 
+void
+Pingu::do_persistent()
+{
+  if (environment == sky && action == 0 && rel_getpixel(0, -1) == ColMap::NOTHING) 
+    {
+      for (unsigned int i=0; i < persist.size(); ++i) 
+	{
+	  if (persist[i]->get_type() & (ActionType)FALL) 
+	    {
+	      if (action && persist[i]->name() == action->name()) 
+		{
+		  std::cout << "Not using action, we have allready" << std::endl;
+		} 
+	      else 
+		{
+		  set_paction(ActionHolder::get_uaction(persist[i]->name()));
+		}
+	    }
+	}
+    }
+}
+
 // Let the pingu do his job (i.e. walk his way)
 // FIXME: This function is *much* to large, it needs a real cut down
 // into smaller pieces.  
@@ -296,23 +318,7 @@ Pingu::let_move(void)
       return;
     }
 
-  if (environment == sky && action == 0 && rel_getpixel(0, -1) == ColMap::NOTHING) 
-    {
-      for (unsigned int i=0; i < persist.size(); ++i) 
-	{
-	  if (persist[i]->get_type() & (ActionType)FALL) 
-	    {
-	      if (action && persist[i]->name() == action->name()) 
-		{
-		  std::cout << "Not using action, we have allready" << std::endl;
-		} 
-	      else 
-		{
-		  set_paction(ActionHolder::get_uaction(persist[i]->name()));
-		}
-	    }
-	}
-    }
+  do_persistent();
   
   if (action) 
     { // if we have an action, let_move() it
@@ -321,120 +327,94 @@ Pingu::let_move(void)
   else 
     { // if we have no action, let the pingu walk
       // Forces are only applied if the pingu isn't going something else
-      if (force_vectors)
-	{
-	  // Apply forces
-	  CL_Vector tmpvec;
-	  tmpvec.x = x_pos;
-	  tmpvec.y = y_pos;
+      // Apply forces
+      CL_Vector tmpvec;
+      tmpvec.x = x_pos;
+      tmpvec.y = y_pos;
       
-	  // Apply all forces
-	  v = ForcesHolder::apply_forces(tmpvec,v);
+      // Apply all forces
+      v = ForcesHolder::apply_forces(tmpvec,v);
     
-	  // Update x and y by moving the penguin to it's target *slowly*
-	  // and checking if the penguin has hit the bottom at each loop
-	  CL_Vector newp = v;
+      // Update x and y by moving the penguin to it's target *slowly*
+      // and checking if the penguin has hit the bottom at each loop
+      CL_Vector newp = v;
 	  
-	  while((rel_getpixel(0, -1) == ColMap::NOTHING) 
-		&& !((newp.x < 1 && newp.x > -1) && (newp.y < 1 && newp.y > -1)))
-	    {
-	      if (!(newp.x < 1 && newp.x > -1)) 
-		{ 
-		  // Since the velocity might be a
-		  // fraction stop when we are within 1 unit of the target
-		  if (newp.x > 0)
-		    {
-		      x_pos++;
-		      newp.x--;
-		    }
-		  else
-		    {
-		      x_pos--;
-		      newp.x++;
-		    }
+      while((rel_getpixel(0, -1) == ColMap::NOTHING) 
+	    && !((newp.x < 1 && newp.x > -1) && (newp.y < 1 && newp.y > -1)))
+	{
+	  if (!(newp.x < 1 && newp.x > -1)) 
+	    { 
+	      // Since the velocity might be a
+	      // fraction stop when we are within 1 unit of the target
+	      if (newp.x > 0)
+		{
+		  x_pos++;
+		  newp.x--;
 		}
+	      else
+		{
+		  x_pos--;
+		  newp.x++;
+		}
+	    }
 
-	      if (!(newp.y < 1 && newp.y > -1)) 
-		{
-		  if (newp.y > 0)
-		    {
-		      y_pos++;
-		      newp.y--;
-		    }
-		  else 
-		    {
-		      y_pos--;
-		      newp.y++;
-		    }
-		}
-	      /*
-	      if ((rel_getpixel(0, -1) != ColMap::NOTHING) 
-		  || ((newp.x < 1 && newp.x > -1) && (newp.y < 1 && newp.y > -1))) 
-		{
-		  break;
-		  }*/
-	    }
-    
-	  if (rel_getpixel(0, -1) == ColMap::NOTHING)
-	    { // if pingu is not on ground
-	      ++falling;
-	      old_v = v;
-	  
-	      if (falling > 3) 
-		environment = sky;
-	  
-	      // If we are going fast enough to get smashed set falling to 80
-	      if (((v.x > 15) || (v.x < - 15))
-		  || ((v.y > 15) || (v.y < - 15))) 
-		{
-		  falling = 80;
-		}
-	    } 
-	  else
+	  if (!(newp.y < 1 && newp.y > -1)) 
 	    {
-	      // Did we stop too fast?
-	      if (((v.x - old_v.x > 15) || (v.x - old_v.x < - 15))
-		  || ((v.y - old_v.y > 15) || (v.y - old_v.y < - 15))) 
+	      if (newp.y > 0)
 		{
-		  // FIXME: This is a LinuxTag Hack and should be replaced
-		  // with a real ground smashing action! 
-		  set_action(new Smashed);
+		  y_pos++;
+		  newp.y--;
 		}
-	  
-	      // Reset the velocity
-	      v.x = 0;
-	      v.y = 0;
-	  
-	      falling = 0;
+	      else 
+		{
+		  y_pos--;
+		  newp.y++;
+		}
 	    }
+	  /*
+	    if ((rel_getpixel(0, -1) != ColMap::NOTHING) 
+	    || ((newp.x < 1 && newp.x > -1) && (newp.y < 1 && newp.y > -1))) 
+	    {
+	    break;
+	    }*/
 	}
-
+    
       if (rel_getpixel(0, -1) == ColMap::NOTHING)
 	{ // if pingu is not on ground
-	  // Replaced by the force vectors
-	  if (!force_vectors)
+	  ++falling;
+	  old_v = v;
+	  
+	  if (falling > 3) 
+	    environment = sky;
+	  
+	  // If we are going fast enough to get smashed set falling to 80
+	  if (((v.x > 15) || (v.x < - 15))
+	      || ((v.y > 15) || (v.y < - 15))) 
 	    {
-	      ++y_pos;
-	      if (rel_getpixel(0, -1) == ColMap::NOTHING)
-		++y_pos;
-	      ++falling;
-	      if (falling > 3) {
-		environment = sky;
-	      }
+	      falling = 80;
 	    }
 	} 
       else
-	{ // if pingu is on ground
-	  if (!force_vectors) 
+	{
+	  // Did we stop too fast?
+	  if (((v.x - old_v.x > 15) || (v.x - old_v.x < - 15))
+	      || ((v.y - old_v.y > 15) || (v.y - old_v.y < - 15))) 
 	    {
-	      if (falling > 75) 
-		{
-		  // FIXME: This is a LinuxTag Hack and should be replaced
-		  // with a real ground smashing action! 
-		  set_action(new Smashed);
-		}
-	      falling = 0;
+	      // FIXME: This is a LinuxTag Hack and should be replaced
+	      // with a real ground smashing action! 
+	      set_action(new Smashed);
 	    }
+	  
+	  // Reset the velocity
+	  v.x = 0;
+	  v.y = 0;
+	  
+	  falling = 0;
+	}
+	
+
+      if (rel_getpixel(0, -1) != ColMap::NOTHING)
+	{ // if pingu is on ground
 	  environment = land;
 
 	  if (rel_getpixel(1, 0) == ColMap::NOTHING) 

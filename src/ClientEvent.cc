@@ -1,4 +1,4 @@
-//  $Id: ClientEvent.cc,v 1.5 2000/02/22 00:09:48 grumbel Exp $
+//  $Id: ClientEvent.cc,v 1.6 2000/02/26 03:17:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -218,6 +218,7 @@ bool
 ClientEvent::on_mouse_button_press(const CL_Key& key)
 {
   client->button_panel->on_button_press(key);
+  client->small_map->button_press(key);
 
   switch(key.id)
     {
@@ -238,6 +239,8 @@ bool
 ClientEvent::on_mouse_button_release(const CL_Key& key)
 {
   client->button_panel->on_button_release(key);
+
+  client->small_map->button_release(key);
 
   switch(key.id)
     {

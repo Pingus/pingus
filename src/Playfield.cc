@@ -1,4 +1,4 @@
-//  $Id: Playfield.cc,v 1.5 2000/02/22 00:09:48 grumbel Exp $
+//  $Id: Playfield.cc,v 1.6 2000/02/26 03:17:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -243,6 +243,25 @@ Playfield::disable_scroll_mode()
 {
   if (verbose) std::cout << "done" << std::endl;
   mouse_scrolling = false;
+}
+
+int
+Playfield::get_x_offset()
+{
+  return view[0].get_x_offset();
+}
+
+int
+Playfield::get_y_offset()
+{
+  return view[0].get_y_offset();  
+}
+
+void
+Playfield::set_viewpoint(int x, int y)
+{
+  view[0].set_x_offset((CL_Display::get_width() / 2) - x);
+  view[0].set_y_offset((CL_Display::get_height() / 2) - y);
 }
 
 /* EOF */
