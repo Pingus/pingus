@@ -567,11 +567,14 @@
 
 
   <level>
-    <name></name>
-    <difficulty></difficulty>
-    <rating></rating>
+    <name>bridger-tutorial-grumbel.xml</name>
+    <difficulty>1</difficulty>
+    <rating>ok</rating>
 
     <comment>
+      Level needs more warning time so that player can look around and
+      figure out what to do, currently pingus fall into dead two
+      meters away from the entranc.
     </comment>
   </level>  
 

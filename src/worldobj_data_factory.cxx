@@ -1,4 +1,4 @@
-//  $Id: worldobj_data_factory.cxx,v 1.28 2002/10/01 23:10:41 grumbel Exp $
+//  $Id: worldobj_data_factory.cxx,v 1.29 2002/11/02 20:46:10 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -156,7 +156,7 @@ WorldObjDataFactory::create (const std::string& id,
   
   if (it == factories.end())
     PingusError::raise("WorldObjDataFactory: Invalid id: '" + id + "' at line "
-		       + to_string(XML_GET_LINE(cur)));
+		       + to_string(XMLhelper::get_line(cur)));
   else 
     return it->second->create (doc, cur);
     

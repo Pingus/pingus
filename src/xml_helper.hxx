@@ -1,4 +1,4 @@
-//  $Id: xml_helper.hxx,v 1.16 2002/10/12 00:02:21 grumbel Exp $
+//  $Id: xml_helper.hxx,v 1.17 2002/11/02 20:46:10 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -118,6 +118,9 @@ public:
   /** Write a Vector to an xml stream */
   static void write_vector_xml (std::ostream& xml, const Vector& pos);
   //@}
+
+  /** @return the number of the line in which these element starts */
+  static int get_line(xmlNodePtr cur);
 
   static void init();
   
