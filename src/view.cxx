@@ -1,4 +1,4 @@
-//  $Id: view.cxx,v 1.5 2002/08/02 11:53:52 grumbel Exp $
+//  $Id: view.cxx,v 1.6 2002/08/02 13:17:42 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -57,19 +57,7 @@ void
 View::draw()
 {
   assert(world);
-  float color;
-
-  if (is_over(mouse_x, mouse_y))
-    {
-      color = 1.0;
-      mouse_over = true;
-    } 
-  else 
-    {
-      color = 0.0;
-      mouse_over = false;
-    }
-
+  
   CL_Display::push_clip_rect();
   CL_Display::set_clip_rect(clip_rect);
 
@@ -84,6 +72,19 @@ View::draw()
 		  size);
   
   CL_Display::pop_clip_rect();
+}
+
+void
+View::update (float /*delta */)
+{
+  if (is_over(mouse_x, mouse_y))
+    {
+      mouse_over = true;
+    }
+  else 
+    {
+      mouse_over = false;
+    }
 }
 
 void

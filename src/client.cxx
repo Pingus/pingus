@@ -1,4 +1,4 @@
-//  $Id: client.cxx,v 1.9 2002/08/02 11:53:52 grumbel Exp $
+//  $Id: client.cxx,v 1.10 2002/08/02 13:17:42 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -118,21 +118,7 @@ Client::~Client()
 void 
 Client::update (float delta)
 {
-  std::cout << "Client::update (float delta)" << std::endl;
-  //cursor->update (delta);
-  //process input events
-  //process_events ();
-
-  // Let the window move its content
-#if 0
-  for(GuiObjIter i = obj.begin (); i != obj.end (); ++i)
-    (*i)->updateX();
-  
-  for(GuiObjIter i = obj.begin (); i != obj.end (); ++i)
-    (*i)->update(delta);
-#endif 
   // Let the server process a game loop
-  server->update(delta);
   //send_next_event();
 
   /*float wannabe_delta = 0.0333f;
@@ -482,141 +468,31 @@ Client::on_keyboard_button_release(const CL_Key& key)
       if (verbose > 1) std::cout << "Client: Got unknown button: ID=" << key.id << " ASCII=" << char(key.ascii) << std::endl;
     }
 }
+#endif
 
 void
-Client::on_mouse_button_press(const CL_Key& key)
-{
-  // button_panel->on_button_press(key);
-  //small_map->on_button_press(key);
-
-  switch(key.id)
-    {
-    case CL_MOUSE_LEFTBUTTON:
-      playfield->on_button_press(key);
-      break;
-    case CL_MOUSE_MIDDLEBUTTON:
-      break;
-    case CL_MOUSE_RIGHTBUTTON:
-      playfield->enable_scroll_mode();
-      break;
-    default:
-      if (verbose > 1) std::cout << "Client: Unknown mouse button released: " << key.id << std::endl;
-    }
-}
-
-void
-Client::on_mouse_button_release(const CL_Key& key)
-{
-  //button_panel->on_button_release(key);
-  //small_map->on_button_release(key);
-
-  switch(key.id)
-    {
-    case CL_MOUSE_LEFTBUTTON:
-      break;
-    case CL_MOUSE_MIDDLEBUTTON:
-      break;
-    case CL_MOUSE_RIGHTBUTTON:
-      playfield->disable_scroll_mode();
-      break;
-    default:
-      if (verbose > 1) std::cout << "Client: Unknown mouse button released: " << key.id << std::endl;
-    }
-  return;
-}
-
-void
-Client:: on_left_pressed (const CL_Vector& pos)
-{
-  CL_Key key;
-  
-  key.id = CL_MOUSE_LEFTBUTTON;
-  key.x = pos.x;
-  key.y = pos.y;
-  
-  //button_panel->on_button_press(key);
-  //small_map->on_button_press(key);
-  playfield->on_button_press(key);
-}
-
-void
-Client:: on_left_released (const CL_Vector& pos)
-{
-  CL_Key key;
-  
-  key.id = CL_MOUSE_LEFTBUTTON;
-  key.x = pos.x;
-  key.y = pos.y;
-  
-  //button_panel->on_button_release(key);
-  //small_map->on_button_release(key);
-}
-
-
-void
-Client:: on_middle_pressed (const CL_Vector& /*pos*/)
-{
-  std::cout << "Middle Pressed" << std::endl;
-}
-
-void
-Client:: on_right_pressed (const CL_Vector& /*pos*/)
-{
-  //std::cout << "Right Pressed" << std::endl;
-  playfield->enable_scroll_mode();
-}
-
-void 
-Client::on_right_released (const CL_Vector& /*pos*/)
-{
-  //std::cout << "Right released" << std::endl;
-  playfield->disable_scroll_mode();
-}
-
-void
-Client:: on_abort_pressed (const CL_Vector& /*pos*/)
+Client:: on_escape_press ()
 {
   server->set_finished();
 }
 
 void
-Client:: on_pause_pressed (const CL_Vector& /*pos*/)
+Client:: on_pause_press ()
 {
   set_pause (!get_pause ());
 }
 
 void 
-Client::on_fast_forward_pressed (const CL_Vector& /*pos*/)
+Client::on_fast_forward_press ()
 {
   set_fast_forward(!get_fast_forward());
 }
 
-void
-Client::on_scroll_left_pressed (const CL_Vector& /*pos*/)
-{
-  std::cout << "Scroll left pressed" << std::endl;
-}
-
-void
-Client::on_scroll_right_pressed (const CL_Vector& /*pos*/)
-{
-  std::cout << "Scroll right pressed" << std::endl;
-}
-
 void 
-Client::on_next_action_pressed (const CL_Vector& /*pos*/)
+Client::on_armageddon_press ()
 {
-  std::cout << "Action next pressed" << std::endl;
-  button_panel->next_action();
+  server->send_event("armageddon");
 }
-
-void 
-Client::on_previous_action_pressed (const CL_Vector& /*pos*/)
-{
-  std::cout << "Action previous pressed" << std::endl;
-  button_panel->previous_action();
-}
-#endif
 
 void
 Client::draw ()
@@ -627,7 +503,6 @@ Client::draw ()
 void
 Client::update (const GameDelta& delta)
 {
-  std::cout << "Client:update ()" << std::endl;
   update (delta.get_time ());
   GUIScreen::update (delta);
 }

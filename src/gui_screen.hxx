@@ -1,4 +1,4 @@
-//  $Id: gui_screen.hxx,v 1.1 2002/08/01 21:40:01 grumbel Exp $
+//  $Id: gui_screen.hxx,v 1.2 2002/08/02 13:17:42 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,6 +28,11 @@ namespace GUI
   class GUIManager;
 }
 
+namespace Input
+{
+  class ButtonEvent;
+}
+
 class GUIScreen : public Screen
 {
 protected:
@@ -42,6 +47,14 @@ public:
 
   /** Pass a delta to the screen */
   virtual void update (const GameDelta& delta);
+
+  virtual void on_pause_press () {}
+  virtual void on_fast_forward_press () {}
+  virtual void on_armageddon_press () {}
+  virtual void on_escape_press () {}
+
+private:
+  void process_button_event (Input::ButtonEvent* event);
 };
 
 #endif

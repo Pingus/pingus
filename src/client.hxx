@@ -1,4 +1,4 @@
-//  $Id: client.hxx,v 1.7 2002/08/02 11:25:46 grumbel Exp $
+//  $Id: client.hxx,v 1.8 2002/08/02 13:17:42 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -116,6 +116,11 @@ public:
   void update (const GameDelta& delta);
   void on_startup ();
   void on_shutdown ();
+
+  void on_pause_press ();
+  void on_fast_forward_press ();
+  void on_armageddon_press ();
+  void on_escape_press ();
 };
 
 #endif

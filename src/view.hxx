@@ -1,4 +1,4 @@
-//  $Id: view.hxx,v 1.4 2002/08/02 11:53:52 grumbel Exp $
+//  $Id: view.hxx,v 1.5 2002/08/02 13:17:42 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -71,6 +71,8 @@ public:
   ~View();
 
   void draw();
+  void update(float);
+
   bool is_over(int x, int y);
   bool is_current();
   int  get_x_offset() const;

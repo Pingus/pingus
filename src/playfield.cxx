@@ -1,4 +1,4 @@
-//  $Id: playfield.cxx,v 1.9 2002/08/02 11:53:52 grumbel Exp $
+//  $Id: playfield.cxx,v 1.10 2002/08/02 13:17:42 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -178,10 +178,11 @@ Playfield::process_input_interactive()
 #endif
 
 void
-Playfield::update(float /*delta*/)
+Playfield::update(float delta)
 {
   for(unsigned int i=0; i < view.size(); ++i)
     {
+      view[i]->update (delta);
       if (view[i]->is_current() && !mouse_scrolling)
 	{ 
 	  current_view = i;
