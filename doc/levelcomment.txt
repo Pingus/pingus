@@ -1,0 +1,27 @@
+<pingus-level-comments>
+  <author>insert your name here</author>
+  <email>insert your email address here</email>
+
+  <level>
+    <name>hellmouth13.xml</name>
+    <difficulty>hard</difficulty>
+    <rating>boring</rating>
+
+    <comment>
+      This level is good for this and that reason and bad because this
+      and that...
+    </comment>
+  </level>
+
+  <level>
+    <name>hellmouth14.xml</name>
+    <difficulty>easy</difficulty>
+    <rating>interesting</rating>
+
+    <comment>
+      This level is good for this and that reason and bad because this
+      and that...
+    </comment>
+  </level>
+  
+</pingus-level-comments>
