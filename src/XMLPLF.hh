@@ -1,4 +1,4 @@
-//  $Id: XMLPLF.hh,v 1.8 2000/09/23 18:19:00 grumbel Exp $
+//  $Id: XMLPLF.hh,v 1.9 2000/09/30 21:34:42 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,7 @@
 #ifndef XMLPLF_HH
 #define XMLPLF_HH
 
-#include <libxml/parser.h>
+#include "XMLhelper.hh"
 #include "Position.hh"
 #include "Color.hh"
 #include "PLF.hh"

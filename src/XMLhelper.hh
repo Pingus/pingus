@@ -1,4 +1,4 @@
-//  $Id: XMLhelper.hh,v 1.5 2000/09/18 12:22:16 grumbel Exp $
+//  $Id: XMLhelper.hh,v 1.6 2000/09/30 21:34:42 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,11 +22,22 @@
 
 #include <string>
 #include <fstream>
-#include <libxml/parser.h> 
+
+// FIXME: This should be <libxml/parser.h>, but that doesn't work with
+// libxml1.x :-/
+#include <parser.h>
 
 #include "ResDescriptor.hh"
 #include "Position.hh"
 #include "Color.hh"
+
+// Some compatibility stuff
+#ifdef LIBXML_2
+#define ROOT children
+#else // libxml 1.x
+#define children childs
+#define ROOT root
+#endif
 
 class XMLhelper
 {

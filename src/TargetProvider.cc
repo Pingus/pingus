@@ -1,4 +1,4 @@
-//  $Id: TargetProvider.cc,v 1.1 2000/09/25 16:23:09 grumbel Exp $
+//  $Id: TargetProvider.cc,v 1.2 2000/09/30 21:34:42 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,8 +27,8 @@ TargetProvider::create_canvas (CL_Target* target)
 
   canvas = new CL_Canvas (target->get_width (), target->get_height ());
 
-  for (int y_pos = 0; y_pos < canvas->get_height (); y_pos++)
-    for (int x_pos = 0; x_pos < canvas->get_width (); x_pos++)
+  for (int y_pos = 0; y_pos < (int) canvas->get_height (); y_pos++)
+    for (int x_pos = 0; x_pos < (int) canvas->get_width (); x_pos++)
       {
 	target->get_pixel (x_pos, y_pos, &r, &g, &b, &a);
 	canvas->draw_pixel (x_pos, y_pos, r, g, b);

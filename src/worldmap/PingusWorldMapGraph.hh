@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapGraph.hh,v 1.4 2000/09/26 12:35:35 grumbel Exp $
+//  $Id: PingusWorldMapGraph.hh,v 1.5 2000/09/30 21:34:42 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,8 +21,8 @@
 #define PINGUSWORLDMAPGRAPH_HH
 
 #include <string>
-#include <libxml/parser.h>
 
+#include "../XMLhelper.hh"
 #include "../ResDescriptor.hh"
 #include "../Position.hh"
 #include "../generic/Graph.hh"

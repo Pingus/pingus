@@ -1,4 +1,4 @@
-//   $Id: PingusMain.cc,v 1.7 2000/09/29 16:21:17 grumbel Exp $
+//   $Id: PingusMain.cc,v 1.8 2000/09/30 21:34:42 grumbel Exp $
 //    ___
 //   |  _\ A free Lemmings clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -59,10 +59,16 @@
 #include "Config.hh"
 #include "Console.hh"
 #include "FPSCounter.hh"
-#include "PingusSound.hh"
 #include "PingusMenu.hh"
 #include "PingusMessageBox.hh"
 #include "audio.hh"
+
+#include "PingusSound.hh"
+
+#ifdef HAVE_LIBSDL_MIXER
+#  include "PingusSoundReal.hh"
+#endif
+
 
 void
 segfault_handler(int signo)
@@ -177,7 +183,7 @@ PingusMain::check_args(int argc, char* argv[])
     {"enable-gimmicks",   no_argument,       0, 'i'},
     {"enable-cursor",     no_argument,       0, 'c'},
     {"disable-intro",     no_argument,       0, 'n'},
-    {"play-demo",         required_argument, 0, 'd'},
+    {"play-demo",         required_argument, 0, 'p'},
     {"record-demo",       required_argument, 0, 'r'},
     {"speed",             required_argument, 0, 't'},
     {"datadir",           required_argument, 0, 'd'},
@@ -216,10 +222,11 @@ PingusMain::check_args(int argc, char* argv[])
     {"audio-buffers",    required_argument, 0, 141},
 #endif
     // 
-    {"no-cfg-file",    no_argument, 0, 142},
-    {"debug-tiles",     no_argument, 0, 143},
-    {"tile-size",     required_argument, 0, 144},
+    {"no-cfg-file",    no_argument,       0, 142},
+    {"debug-tiles",    no_argument,       0, 143},
+    {"tile-size",      required_argument, 0, 144},
     {"config-file",    required_argument, 0, 147},
+    {"debug",          required_argument, 0, 152},
     {0, 0, 0, 0}
   };
 
@@ -421,6 +428,26 @@ PingusMain::check_args(int argc, char* argv[])
 
     case 151:
       use_datafile = false;
+      break;
+
+    case 152:
+      if (strcmp (optarg, "actions") == 0)
+	{
+	  debug_flags |= DEBUG_ACTIONS;
+	}
+      else if (strcmp (optarg, "sound") == 0)
+	{
+	  debug_flags |= DEBUG_SOUND;
+	}
+      else if (strcmp (optarg, "music") == 0)
+	{
+	  debug_flags |= DEBUG_MUSIC;
+	}
+      else
+	{
+	  std::cout << "PingusMain: Unhandled debug flag: " << optarg << std::endl;
+	}
+
       break;
 
     default:
@@ -740,7 +767,13 @@ PingusMain::init_clanlib()
     {
       if (verbose)
 	std::cout << "Init Sound" << std::endl;
+#ifdef HAVE_LIBSDL_MIXER
+      //PingusSound::init (new PingusSoundReal ());
       PingusSound::init (new PingusSoundDummy ());
+#else
+      std::cout << "Sound enabled, but not supported by binary." << std::endl;
+      PingusSound::init (new PingusSoundDummy ());
+#endif
     }
   else
     {

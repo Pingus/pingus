@@ -1,4 +1,4 @@
-//  $Id: globals.hh,v 1.21 2000/07/30 01:47:36 grumbel Exp $
+//  $Id: globals.hh,v 1.22 2000/09/30 21:34:42 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -69,6 +69,13 @@ extern std::string global_email;
 /** The default language, which is used when the env var LANG is not
     set */
 extern std::string default_language;
+
+/** Set some bits in this thing to get debug infos */
+extern int debug_flags;
+
+#define DEBUG_ACTIONS (1 << 0)
+#define DEBUG_SOUND   (1 << 1)
+#define DEBUG_MUSIC   (1 << 2)
 
 #endif
 

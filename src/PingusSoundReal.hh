@@ -1,4 +1,4 @@
-//  $Id: PingusSoundReal.hh,v 1.1 2000/09/29 16:21:17 grumbel Exp $
+//  $Id: PingusSoundReal.hh,v 1.2 2000/09/30 21:34:42 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,9 +23,11 @@
 #include "audio.hh"
 #include <string>
 
+#include "PingusSound.hh"
+
 /** A simple wrapper class around SDL_Mixer, it will init itself
     automatically if a sound is played. */
-class PingusSoundReal
+class PingusSoundReal : public PingusSound
 {
 private:
   ///
@@ -39,7 +41,8 @@ private:
   void init(int audio_rate, Uint16 audio_format,
 		   int audio_channels, int audio_buffers);
 public:
-  PingusSoundReal ();
+  PingusSoundReal () {}
+  virtual ~PingusSoundReal () {}
 
   /** Load a mod and play it immediately.
 

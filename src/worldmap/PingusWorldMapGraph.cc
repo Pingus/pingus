@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapGraph.cc,v 1.3 2000/09/24 00:22:06 grumbel Exp $
+//  $Id: PingusWorldMapGraph.cc,v 1.4 2000/09/30 21:34:42 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,7 +36,7 @@ void
 PingusWorldMapGraph::parse_file (std::string filename)
 {
   doc = xmlParseFile(filename.c_str());
-  xmlNodePtr cur = doc->children;
+  xmlNodePtr cur = doc->ROOT;
 
   if (cur != NULL && strcmp((const char*)cur->name, "pingus-worldmap") == 0)
     {

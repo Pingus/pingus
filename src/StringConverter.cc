@@ -1,4 +1,4 @@
-//  $Id: StringConverter.cc,v 1.2 2000/09/29 16:21:17 grumbel Exp $
+//  $Id: StringConverter.cc,v 1.3 2000/09/30 21:34:42 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -55,7 +55,7 @@ std::string
 StringConverter::to_string (float i)
 {
   char buffer[256];
-  sprintf (buffer, "%d", i);
+  sprintf (buffer, "%f", i);
   return buffer;
 }
 

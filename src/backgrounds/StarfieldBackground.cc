@@ -1,4 +1,4 @@
-//  $Id: StarfieldBackground.cc,v 1.2 2000/09/29 15:45:33 grumbel Exp $
+//  $Id: StarfieldBackground.cc,v 1.3 2000/09/30 21:34:42 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -112,7 +112,7 @@ StarfieldBackgroundStars::StarfieldBackgroundStars (Type type)
   x_pos = rand () % world->get_width ();
   y_pos = rand () % world->get_height ();
   
-  x_add = rand () % 5;
+  x_add = rand () % 5 + 1.0;
   y_add = 0.0;
 }
 
@@ -144,8 +144,6 @@ StarfieldBackgroundStars::let_move(void)
 void
 StarfieldBackgroundStars::draw_offset(int x_of, int y_of, float s = 1.0)
 {
-  //  std::cout << "x: " << x_pos << " y: " << y_pos << std::endl;
-  
   sur->put_screen (x_pos + x_of, y_pos + y_of);
 }
 
@@ -153,8 +151,12 @@ StarfieldBackground::StarfieldBackground ()
 {
 }
 
-StarfieldBackground::StarfieldBackground (StarfieldBackgroundData*)
+StarfieldBackground::StarfieldBackground (StarfieldBackgroundData* data)
 {
+  small_stars_count = data->small_stars_count;
+  middle_stars_count = data->middle_stars_count;
+  large_stars_count = data->large_stars_count;
+
   for (int i=0; i < small_stars_count; i++)
     stars.push_back (StarfieldBackgroundStars (StarfieldBackgroundStars::SMALL_STAR));
 
@@ -184,8 +186,6 @@ StarfieldBackground::create (BackgroundData* arg_data)
 void 
 StarfieldBackground::let_move(void)
 {
-  //std::cout << "StarfieldBackground: let_move ()" << std::endl;
-
   for (vector<StarfieldBackgroundStars>::iterator i = stars.begin ();
        i != stars.end (); i++)
     {
@@ -196,8 +196,6 @@ StarfieldBackground::let_move(void)
 void 
 StarfieldBackground::draw_offset(int x_of, int y_of, float s = 1.0)
 {
-  //std::cout << "StarfieldBackground: draw_offset ()" << std::endl;
-
   for (vector<StarfieldBackgroundStars>::iterator i = stars.begin ();
        i != stars.end (); i++)
     {

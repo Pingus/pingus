@@ -1,4 +1,4 @@
-//  $Id: XMLPLF.cc,v 1.14 2000/09/25 16:29:43 grumbel Exp $
+//  $Id: XMLPLF.cc,v 1.15 2000/09/30 21:34:42 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -62,7 +62,7 @@ void
 XMLPLF::parse_file()
 {
   std::cout << "parsing file" << std::endl;
-  xmlNodePtr cur = doc->children; // ex root
+  xmlNodePtr cur = doc->ROOT;
 
   if (xmlIsBlankNode(cur)) cur = cur->next;
 

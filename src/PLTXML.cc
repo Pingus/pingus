@@ -1,4 +1,4 @@
-//  $Id: PLTXML.cc,v 1.4 2000/09/18 12:22:15 grumbel Exp $
+//  $Id: PLTXML.cc,v 1.5 2000/09/30 21:34:42 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -156,7 +156,7 @@ PLTXML::parse_level_list(xmlNodePtr cur)
 void
 PLTXML::parse_file()
 {
-  xmlNodePtr cur = doc->children;
+  xmlNodePtr cur = doc->ROOT;
 
   if (cur != NULL && strcmp((const char*)cur->name, "pingus-world") == 0)
     {

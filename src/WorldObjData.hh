@@ -1,4 +1,4 @@
-//  $Id: WorldObjData.hh,v 1.2 2000/09/25 16:29:43 grumbel Exp $
+//  $Id: WorldObjData.hh,v 1.3 2000/09/30 21:34:42 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,7 @@
 #define WORLDOBJDATA_HH
 
 #include <fstream>
-#include <libxml/parser.h>
+#include "XMLhelper.hh"
 
 class WorldObjData
 {
