@@ -175,8 +175,6 @@ AC_OUTPUT( Makefile  m4/Makefile  intl/Makefile
            src/actions/Makefile
 	   src/caimagemanipulation/Makefile
            src/colliders/Makefile
-           src/editor/Makefile
-	   src/editorobjs/Makefile
            src/gui/Makefile
            src/input/Makefile
 	   src/input/axes/Makefile
@@ -187,8 +185,6 @@ AC_OUTPUT( Makefile  m4/Makefile  intl/Makefile
            src/particles/Makefile
            src/sound/Makefile
            src/worldobjs/Makefile
-           src/worldobjs/entrances/Makefile
-	   src/worldobjsdata/Makefile
 	   src/worldmap/Makefile
            data/Makefile 
            data/controller/Makefile 

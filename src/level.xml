@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 
-<pingus-level>
+<pingus-level version="1">
   <head>
     <levelname>Jump'n Bump... and Bash...</levelname>
     <description>
@@ -55,6 +55,5 @@
       </surface>
       <position><vector x="74" y="262" z="0" /></position>
     </groundpiece>
-
   </objects>
 </pingus-level>

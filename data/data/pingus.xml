@@ -1,5 +1,10 @@
 <resources>
   <section name="pingus">
+    <sprite name="light">
+      <image file="../images/pingus/light.png" />
+      <translation origin="center" x="0" y="0"/>
+    </sprite>
+
     <section name="floaterlayer">
       <sprite name="left">
         <translation origin="bottom_center" x="0" y="2"/>

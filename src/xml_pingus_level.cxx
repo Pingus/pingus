@@ -20,9 +20,12 @@
 #include <vector>
 #include <iostream>
 #include <ClanLib/Core/IOData/inputsource_provider_file.h>
+#include <ClanLib/Core/System/clanstring.h>
 #include <ClanLib/Core/XML/dom_node.h>
+#include <ClanLib/Core/XML/dom_attr.h>
 #include <ClanLib/Core/XML/dom_node_list.h>
 #include <ClanLib/Core/XML/dom_document.h>
+#include <ClanLib/Core/XML/dom_named_node_map.h>
 #include <ClanLib/Core/XML/dom_element.h>
 #include "pingus_error.hxx"
 #include "xml_file_reader.hxx"
@@ -37,12 +40,23 @@ XMLPingusLevel::XMLPingusLevel(const std::string& filename)
   CL_DomDocument doc(provider.open_source(filename), true);
 
   CL_DomElement root = doc.get_document_element();
+
+  int version = 0;
+  {
+    CL_DomNode node = root.get_attributes().get_named_item("version");
+    if (node.is_attr())
+      version = CL_String::to_int(node.to_attr().get_node_value());
+  }
   
   if (root.get_tag_name() != "pingus-level")
     {
       PingusError::raise("Error: " + filename + ": not a <pingus-level> file");
     }
-  else
+  else if (version != 1)
+    {
+      PingusError::raise("Error: Can only handle level files of version 1");
+    }
+  else 
     {
       CL_DomNodeList lst = root.get_child_nodes();
 

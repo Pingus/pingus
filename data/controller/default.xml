@@ -29,7 +29,7 @@
 
     <scroller>
       <axis-scroller speed="1000">
-        <button-axis angle="90">
+        <button-axis angle="-90">
           <key-button key="DOWN"/>
           <key-button key="UP"/>
         </button-axis>      
