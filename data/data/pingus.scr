@@ -40,4 +40,10 @@ section Particles
 	ground      = ../images/particles/ground.tga     (type=surface, x=0, y=0, width=32, height=32, array=4x1);
 	smoke       = ../images/particles/smoke.tga     (type=surface, x=0, y=0, width=32, height=32, array=8x1);
 	smoke2       = ../images/particles/smoke2.tga     (type=surface, x=0, y=0, width=32, height=32, array=8x1);
+
+	snow1 = ../images/particles/snow1.pcx (type=surface, x=0, y=0, width=8, height=8, tcol=0);
+	snow2 = ../images/particles/snow2.pcx (type=surface, x=0, y=0, width=12, height=12, tcol=0);
+	snow3 = ../images/particles/snow3.pcx (type=surface, x=0, y=0, width=5, height=5, tcol=0);
+	snow4 = ../images/particles/snow4.pcx (type=surface, x=0, y=0, width=3, height=3, tcol=0);
+	snow5 = ../images/particles/snow5.pcx (type=surface, x=0, y=0, width=2, height=2, tcol=0);
 }
