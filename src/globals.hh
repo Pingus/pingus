@@ -1,4 +1,4 @@
-//  $Id: globals.hh,v 1.19 2000/07/04 22:59:13 grumbel Exp $
+//  $Id: globals.hh,v 1.20 2000/07/08 13:21:33 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,6 @@
 #define GLOBALS_HH
 
 #include <string>
-#include <config.h>
 
 /** This file defines some global variables, most of them are used to
     keep the values of command line arguments. */

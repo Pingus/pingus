@@ -1,4 +1,4 @@
-//  $Id: World.hh,v 1.12 2000/06/19 07:26:08 grumbel Exp $
+//  $Id: World.hh,v 1.13 2000/07/08 13:21:33 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -66,8 +66,13 @@ private:
 
   ///
   bool exit_world;
-  ///
-  int  exit_time;  
+  
+  /** End the world when the given time is reached, this is set by
+      armageddon or similar events.  */
+  int  shutdown_time;  
+
+  /// The time you have to finish a level
+  int exit_time;
 
   ///
   std::vector<WorldObj*> world_obj_bg;

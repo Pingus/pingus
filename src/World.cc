@@ -1,4 +1,4 @@
-//  $Id: World.cc,v 1.24 2000/07/04 22:59:13 grumbel Exp $
+//  $Id: World.cc,v 1.25 2000/07/08 13:21:33 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -117,7 +117,7 @@ World::let_move()
     {
       if (verbose) cout << "World: world finished, going down in the next seconds..." << endl;
       exit_world = true;
-      exit_time = GameTime::get_time() + 75;
+      shutdown_time = GameTime::get_time() + 75;
     }
 
   if (do_armageddon && armageddon_count != pingus.end())
@@ -184,7 +184,8 @@ World::init(PLF* plf_data)
   released_pingus = 0;
 
   exit_time = plf->get_time();
-  
+  shutdown_time = exit_time;
+
   init_map();
   init_background();
 
@@ -362,7 +363,8 @@ bool
 World::is_finished(void)
 {
   // Return true if the world is finished and some time has passed
-  if (exit_time < GameTime::get_time()) 
+  if (exit_time < GameTime::get_time()
+      || shutdown_time < GameTime::get_time())
     {
       return true;
     } 

@@ -1,4 +1,4 @@
-//  $Id: HurryUp.cc,v 1.3 2000/07/05 07:25:03 grumbel Exp $
+//  $Id: HurryUp.cc,v 1.4 2000/07/08 13:21:33 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,7 +23,7 @@
 HurryUp::HurryUp()
 {
   font = PingusResource::load_font("Fonts/pingus","fonts");
-  x_pos = 0.0;
+  x_pos = -200.0;
   center_reached = false;
   is_running = false;
   is_finished = false;
@@ -38,19 +38,23 @@ HurryUp::~HurryUp()
 void
 HurryUp::draw()
 {
-  //font->print_left(50, 50, "Hurry");
-  //  font->print_right(50, 50, "Up");
+  if (is_finished) return;
 
-  font->print_right(CL_Display::get_width() - (int)x_pos,
-		    CL_Display::get_height()/2 - font->get_height(),
-		    "Hurry");
-  font->print_left((int)x_pos,
-		   CL_Display::get_height()/2 - font->get_height(),
-		   "Up");
+  if (is_running)
+    {
+      font->print_right(CL_Display::get_width() - (int)x_pos,
+			CL_Display::get_height()/2 - font->get_height(),
+			"Hurry");
+      font->print_left((int)x_pos,
+		       CL_Display::get_height()/2 - font->get_height(),
+		       "Up");
+    }
 }
 
 void HurryUp::let_move()
 {
+  if (is_finished) return;
+
   if (is_running)
     {
       if (center_reached)
@@ -74,13 +78,13 @@ void HurryUp::let_move()
 	    {
 	      x_pos = CL_Display::get_width()/2;
 	      center_reached = true;
-	      wait_counter = CL_System::get_time() + 500;
+	      wait_counter = CL_System::get_time() + 2000;
 	    }
 	}
     }
   else if (!is_finished)
     {
-      if (client->get_server()->get_world()->get_time() < 30)
+      if (client->get_server()->get_world()->get_time() < 10 * 15)
 	is_running = true;
     }
 }
