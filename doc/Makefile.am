@@ -15,10 +15,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-# BUG: Why is the man page not automaticly packed into the dist?
-EXTRA_DIST = pingus.6 levelformat.txt config editor
+dist_man_MANS = pingus.6
 
-info_TEXINFOS = pingus.texi
-
-man_MANS = pingus.6
+# EOF #
 
