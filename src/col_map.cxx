@@ -1,4 +1,4 @@
-//  $Id: col_map.cxx,v 1.11 2002/09/28 11:52:21 torangan Exp $
+//  $Id: col_map.cxx,v 1.12 2002/09/28 18:11:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,6 +36,8 @@ ColMap::ColMap(int w, int h)
     height(h),
     colmap(new unsigned char[width * height])
 {
+  // Clear the colmap
+  memset(colmap, Groundtype::GP_NOTHING, sizeof(unsigned char) * width * height);
 }
 
 ColMap::~ColMap()
@@ -43,50 +45,6 @@ ColMap::~ColMap()
   //std::cout << "ColMap:~ColMap" << std::endl;
   delete[] colmap;
 }
-
-#if 0
-int
-ColMap::load(ResDescriptor desc)
-{
-  switch(desc.type) {
-  case ResDescriptor::RD_FILE:
-    PingusError::raise(_("ColMap: File load - Feature is no longer implemented")); //    return load(desc.res_name);
-    break;
-  case ResDescriptor::RD_RESOURCE:
-    {
-      CL_Surface sur;
-      CL_SurfaceProvider* provider;
-      
-      sur = PingusResource::load_surface(desc);
-      provider = sur.get_provider();
-      if (provider->get_depth() != 8)
-	PingusError::raise(_("PingusBmpMap::get_colmap: Surface has wrong pixel format, need 8bpp!")); 
-
-      width  = provider->get_width();
-      height = provider->get_height();
-     
-      provider->lock();    
-      
-      colmap = new unsigned char[provider->get_pitch() * provider->get_height()];
-      memcpy(colmap, provider->get_data(), provider->get_pitch() *  provider->get_height());
-      
-      // FIXME: Memory hole
-      //provider->unlock();
-      
-      init = true;
-
-      return 0;
-    }
-    break;
-  default:
-    assert(false);
-    return 0;
-    break;
-  }
-  
-  return 0; // never reached
-}
-#endif
 
 int
 ColMap::getpixel(int x, int y)
