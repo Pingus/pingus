@@ -1,4 +1,4 @@
- //  $Id: Theme.cc,v 1.33 2002/01/15 10:48:49 grumbel Exp $
+ //  $Id: Theme.cc,v 1.34 2002/01/19 16:13:46 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -168,7 +168,7 @@ Theme::draw_title()
 			    y_pos - 15,
 			    x_center + (description.get_width()/2) + 15,
 			    y_pos + description.get_height() + 15,
-			    1.0, 1.0, 1.0, 0.5);
+			    0.0, 0.0, 0.0, 0.5);
 
       description.print_center(x_center, y_pos);
     }
@@ -184,6 +184,7 @@ Theme::draw_title()
 
       if (j > accessible_levels) 
 	{
+	  // Level is not yet accessible
 	  font->print_center(x_center, y_pos, (*i).c_str());
 	  CL_Display::fill_rect(x_center - font->get_text_width(i->c_str())/2 - 1,
 				y_pos - 1,
@@ -193,11 +194,17 @@ Theme::draw_title()
 	} 
       else if (j == current_level) 
 	{
+	  // Level is accessible
 	  CL_Display::fill_rect(x_center - font->get_text_width(i->c_str())/2 - 1,
 				y_pos - 1,
 				x_center + font->get_text_width(i->c_str())/2 + 1, 
 				y_pos + font->get_height() + 1,
-				1.0f, 1.0f, 1.0f, 0.9f);
+				0.0f, 0.0f, 0.0f, 1.0f);
+	  CL_Display::draw_rect(x_center - font->get_text_width(i->c_str())/2 - 1,
+				y_pos - 1,
+				x_center + font->get_text_width(i->c_str())/2 + 1, 
+				y_pos + font->get_height() + 1,
+				1.0f, 1.0f, 1.0f, 1.0f);
 	  font->print_center(x_center, y_pos, (*i).c_str());
 	} 
       else 
