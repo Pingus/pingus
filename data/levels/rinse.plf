@@ -1,0 +1,91 @@
+/* This level was created with the PLE
+ * $Id: rinse.plf,v 1.1 2000/05/25 15:45:52 grumbel Exp $
+ */
+global {
+  start_x_pos = 0;
+  start_y_pos = 0;
+  levelname = "Lather, Rinse, Repeat.";
+  description = "
+
+";
+  number_of_pingus = 40;
+  number_to_save = 20;
+  time = 9000;
+}
+
+ground {
+  maptype = "SPOT";
+  width   = 1024;
+  height  = 608;
+  colmap  = (auto);
+}
+
+background {
+  image = (resource:textures.dat)"Textures/enchantedjungle";
+  dim = "0.2";
+	red = "0.8";
+	green = "1.2";
+	blue = "1.2";
+  scroll_x = 0;
+  scroll_y = 0;
+}
+
+buttons {
+  basher = 20;
+  blocker = 10;
+  bomber = 10;
+  bridger = 20;
+}
+
+entrance {
+  type  = woodthing;
+  x_pos = 186;
+  y_pos = 120;
+  z_pos = 0;
+  release_rate = 25;
+  direction = left;
+}
+
+exit {
+  image = (resource)"Exits/stone";
+  x_pos = 845;
+  y_pos = 471;
+  z_pos = 0;
+}
+
+hotspot {
+  image = (resource)"Entrances/woodthing_nmov";
+  x_pos = 110;
+  y_pos = -14;
+  z_pos = 100;
+  speed = -1;
+}
+
+liquid {
+  image = (resource)"Liquid/water";
+  x_pos = -8;
+  y_pos = 386;
+  z_pos = -100;
+  width = 192;
+  speed = 50;
+}
+
+liquid {
+  image = (resource)"Liquid/water";
+  x_pos = 808;
+  y_pos = 278;
+  z_pos = -100;
+  width = 256;
+  speed = 50;
+}
+
+liquid {
+  image = (resource)"Liquid/water";
+  x_pos = 1;
+  y_pos = 576;
+  z_pos = 100;
+  width = 1024;
+  speed = 30;
+}
+
+/* EOF */

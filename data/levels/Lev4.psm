@@ -1,0 +1,13 @@
+ground : (resource:global.dat)GroundPieces/Misc/way : 335 : 150;
+ground : (resource:global.dat)GroundPieces/Misc/way : 452 : 150;
+ground : (resource:global.dat)GroundPieces/Misc/way : 569 : 150;
+ground : (resource:global.dat)GroundPieces/Misc/way_left : 463 : 297;
+ground : (resource:global.dat)GroundPieces/Misc/way_left : 255 : 153;
+ground : (resource:global.dat)GroundPieces/Misc/way_right : 544 : 298;
+ground : (resource:global.dat)GroundPieces/Misc/way_right : 686 : 154;
+solid : (resource:global.dat)GroundPieces/Misc/middleprickpiece : 121 : 475;
+ground : (resource:global.dat)GroundPieces/Misc/stoneblock3 : 691 : 552;
+ground : (resource:global.dat)GroundPieces/Misc/stoneblock3 : 755 : 552;
+ground : (resource:global.dat)Hotspots/pillar2 : 133 : 550;
+ground : (resource:global.dat)Hotspots/pillar2 : 27 : 533;
+ground : (resource:global.dat)Hotspots/pillar2 : 224 : 550;
