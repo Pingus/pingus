@@ -1,4 +1,4 @@
-//  $Id: EditorView.hh,v 1.4 2001/08/12 23:05:22 grumbel Exp $
+//  $Id: EditorView.hh,v 1.5 2001/12/18 00:44:24 cagri Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -65,6 +65,7 @@ public:
   CL_Vector world_to_screen (CL_Vector pos);
 
   void draw (Sprite& sprite, const CL_Vector& pos);
+  void draw (Sprite& sprite, const CL_Vector& pos, int frame);
   void draw (CL_Surface& sur, const CL_Vector& pos);
   void draw (CL_Surface& sur, const CL_Vector& pos, int frame);
   void draw (CL_Surface& sur, int x_pos, int y_pos);

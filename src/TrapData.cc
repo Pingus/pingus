@@ -1,4 +1,4 @@
-//  $Id: TrapData.cc,v 1.6 2001/08/10 10:56:13 grumbel Exp $
+//  $Id: TrapData.cc,v 1.7 2001/12/18 00:44:23 cagri Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,10 +34,10 @@
 void
 TrapData::write_xml(std::ofstream* xml)
 {
-  (*xml) << "<worldobj type=" << type << ">\n"
+    (*xml) << "<trap>\n"
 	 << "  <type>" << type << "</type>\n";
   XMLhelper::write_position_xml(xml, pos);
-  (*xml) << "</worldobj>\n"
+  (*xml) << "</trap>\n"
 	 << std::endl;
 }
 
@@ -98,9 +98,8 @@ TrapData::create_WorldObj ()
 EditorObjLst
 TrapData::create_EditorObj () 
 { 
-  std::cout << "TrapData::create_EditorObj (): Not implemented" << std::endl;
   EditorObjLst lst; 
-  //lst.push_back(boost::shared_ptr<EditorObj> (new EditorSwitchDoorObj));
+  lst.push_back(boost::shared_ptr<EditorObj> (new TrapObj(*this)));
   return lst;
 }
 

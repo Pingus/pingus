@@ -1,4 +1,4 @@
-//  $Id: EditorEvent.cc,v 1.53 2001/08/11 18:53:39 grumbel Exp $
+//  $Id: EditorEvent.cc,v 1.54 2001/12/18 00:44:24 cagri Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -615,7 +615,7 @@ EditorEvent::editor_insert_new_object()
   try 
     {
       disable();
-      std::cout << "Object selector on" << std::endl;
+      std::cout << "Object selector on" <<std::endl;
       objs = editor->object_selector->get_obj(int(editor->view->get_offset ().x + CL_Display::get_width ()/2),
 					      int(editor->view->get_offset ().y + CL_Display::get_height ()/2));
       std::cout << "Object selector off" << std::endl;

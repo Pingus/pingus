@@ -1,4 +1,4 @@
-//  $Id: PLFObj.cc,v 1.54 2001/08/15 07:35:29 grumbel Exp $
+//  $Id: PLFObj.cc,v 1.55 2001/12/18 00:44:24 cagri Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -129,40 +129,45 @@ ExitObj::status_line()
 }
 
 TrapObj::TrapObj(const TrapData& data)
-  : SpriteEditorObj ("", "", pos),
+  : SpriteEditorObj (pos),
     TrapData (data)
-{/*
-  *position = data.pos;
+{
   frame = 0;
 
   if (type == "guillotine") {
-    surf = PingusResource::load_surface("Traps/guillotineidle", "traps");
+    sprite = Sprite("Traps/guillotineidle", "traps");
+    sprite.set_align_center_bottom ();
   } else if (type == "fake_exit") {
-    surf = PingusResource::load_surface("Traps/fake_exit", "traps");
+    sprite = Sprite("Traps/fake_exit", "traps");
+    sprite.set_align_center_bottom ();
   } else if (type == "laser_exit") {
     frame = 5;
-    position->z = -100;
-    surf = PingusResource::load_surface("Traps/laser_exit", "traps");
+    pos.z = -100;
+    sprite = Sprite("Traps/laser_exit", "traps");
+    sprite.set_align_center_bottom ();
   } else if (type == "spike") {
+    pos.z = -100;
+    sprite = Sprite("Traps/spike", "traps");
+    sprite.set_align_center_bottom ();
     frame = 5;
-    surf = PingusResource::load_surface("Traps/spike", "traps");
-    position->z = 100;
   } else if (type == "hammer") {
-    surf = PingusResource::load_surface("Traps/hammer", "traps");    
+    sprite = Sprite("Traps/hammer", "traps");
+    sprite.set_align_center_bottom ();
   } else if (type == "smasher") {
-    surf = PingusResource::load_surface("Traps/smasher", "traps");
-    position->z = 100;
+    pos.z = 100;
+    sprite = Sprite("Traps/smasher", "traps");
+    sprite.set_align_center_bottom ();
   } else if (type == "bumper") {
-    surf = PingusResource::load_surface("Traps/bumper", "traps");
-    position->z = -100;
+    pos.z = -100;
+    sprite = Sprite("Traps/bumper", "traps");
+    sprite.set_align_center_bottom ();
   } else if (type == "teleport") {
-    surf = PingusResource::load_surface("Traps/teleporter", "traps");
-    position->z = 100;
+    pos.z = 100;
+    sprite = Sprite("Traps/teleporter", "traps");
+    sprite.set_align_center_bottom ();
   } else {
     throw PingusError("'" + type + "': trap is not implemented in editor");
   }
-  width = surf.get_width ();
-  height = surf.get_height ();*/
 }
 
 boost::shared_ptr<EditorObj>
@@ -174,11 +179,7 @@ TrapObj::duplicate()
 void
 TrapObj::draw (boost::dummy_ptr<EditorView> view)
 {
-  /*  if (surf) {
-    view->draw(surf, *position, frame);
-  } else {
-    EditorObj::draw(view);
-    }*/
+    view->draw(sprite, pos, frame);
 }
 
 std::string  
