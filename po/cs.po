@@ -13,7 +13,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: cs\n"
-"POT-Creation-Date: 2003-04-15 00:32+0200\n"
+"POT-Creation-Date: 2003-04-15 09:27+0200\n"
 "PO-Revision-Date: 2003-04-14 21:05+0200\n"
 "Last-Translator: Tomáš Bláha\n"
 "Language-Team: czech\n"
@@ -582,9 +582,8 @@ msgid "Maybe you would feel more at home playing Quake."
 msgstr "Treba by si radeji hral Quake."
 
 #: src/level_result.cxx:118
-#, fuzzy
 msgid ""
-"Maybe this level calls for a different stratagy. Like attempting to save "
+"Maybe this level calls for a different strategy. Like attempting to save "
 "them, for example."
 msgstr "Mozna by to chtelo jinou strategii. Treba se pokusit nekoho zachranit."
 

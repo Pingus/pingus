@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Pingus 0.5.0\n"
-"POT-Creation-Date: 2003-04-15 00:32+0200\n"
+"POT-Creation-Date: 2003-04-15 09:27+0200\n"
 "PO-Revision-Date: 2001-12-04 22:50+02:00\n"
 "Last-Translator: Çaðrý Çöltekin <cagri@metu.edu.tr>\n"
 "Language-Team: Giray Devlet <giray@devlet.cc>, Caðrý Çöltekin <cagri@metu."
@@ -580,7 +580,7 @@ msgstr "Abisi, belki de Quake sana daha uygun bi oyun."
 
 #: src/level_result.cxx:118
 msgid ""
-"Maybe this level calls for a different stratagy. Like attempting to save "
+"Maybe this level calls for a different strategy. Like attempting to save "
 "them, for example."
 msgstr ""
 "Tikkat tikkat! Stateji deðiþikliði! Bir daha sefere þunlarý kurtarmaya "
