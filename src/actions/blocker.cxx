@@ -1,4 +1,4 @@
-//  $Id: blocker.cxx,v 1.9 2002/09/14 19:06:33 torangan Exp $
+//  $Id: blocker.cxx,v 1.10 2002/09/16 20:31:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,14 +39,14 @@ Blocker::init(void)
 						"pingus"));
   sprite.set_align_center_bottom ();
 
-  if (rel_getpixel(0,-1)     ==  GroundpieceData::GP_NOTHING
-      && rel_getpixel(0, -2) ==  GroundpieceData::GP_GROUND)
+  if (rel_getpixel(0,-1)     ==  Groundtype::GP_NOTHING
+      && rel_getpixel(0, -2) ==  Groundtype::GP_GROUND)
     {
       pingu->set_x(pingu->get_x() + 1);
     } 
-  else if (rel_getpixel(0,-1) ==  GroundpieceData::GP_NOTHING
-	   && rel_getpixel(0, -2) ==  GroundpieceData::GP_NOTHING
-	   && rel_getpixel(0,-3) ==  GroundpieceData::GP_GROUND)
+  else if (rel_getpixel(0,-1) ==  Groundtype::GP_NOTHING
+	   && rel_getpixel(0, -2) ==  Groundtype::GP_NOTHING
+	   && rel_getpixel(0,-3) ==  Groundtype::GP_GROUND)
     {
       pingu->set_y(pingu->get_y() + 2);
     }
@@ -72,7 +72,7 @@ Blocker::draw (GraphicContext& gc)
 bool
 Blocker::standing_on_ground()
 {
-  return (rel_getpixel(0,-1) !=  GroundpieceData::GP_NOTHING);
+  return (rel_getpixel(0,-1) !=  Groundtype::GP_NOTHING);
 }
 
 bool

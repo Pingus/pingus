@@ -1,4 +1,4 @@
-//  $Id: smallmap.cxx,v 1.16 2002/09/14 19:06:33 torangan Exp $
+//  $Id: smallmap.cxx,v 1.17 2002/09/16 20:31:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -74,28 +74,28 @@ SmallMap::init()
 	  
 	  current_pixel = buffer[tx + (ty * colmap->get_width())];
 	  
-	  if (current_pixel == GroundpieceData::GP_NOTHING)
+	  if (current_pixel == Groundtype::GP_NOTHING)
 	    {
 	      cbuffer[4 * ((y * width) + x) + 0] = 150;
 	      cbuffer[4 * ((y * width) + x) + 1] = 0;
 	      cbuffer[4 * ((y * width) + x) + 2] = 0;
 	      cbuffer[4 * ((y * width) + x) + 3] = 0;
 	    }
-	  else if (current_pixel == GroundpieceData::GP_BRIDGE)
+	  else if (current_pixel == Groundtype::GP_BRIDGE)
 	    {
 	      cbuffer[4 * ((y * width) + x) + 0] = 255;
 	      cbuffer[4 * ((y * width) + x) + 1] = 100;
 	      cbuffer[4 * ((y * width) + x) + 2] = 255;
 	      cbuffer[4 * ((y * width) + x) + 3] =   0;
 	    }
-	  else if (current_pixel == GroundpieceData::GP_LAVA)
+	  else if (current_pixel == Groundtype::GP_LAVA)
 	    {
 	      cbuffer[4 * ((y * width) + x) + 0] = 255;
 	      cbuffer[4 * ((y * width) + x) + 1] = 100;
 	      cbuffer[4 * ((y * width) + x) + 2] = 100;
 	      cbuffer[4 * ((y * width) + x) + 3] = 255;
 	    }
-	  else if (current_pixel == GroundpieceData::GP_SOLID)
+	  else if (current_pixel == Groundtype::GP_SOLID)
 	    {
 	      cbuffer[4 * ((y * width) + x) + 0] = 255;
 	      cbuffer[4 * ((y * width) + x) + 1] = 100;

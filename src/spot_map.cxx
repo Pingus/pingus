@@ -1,4 +1,4 @@
-//  $Id: spot_map.cxx,v 1.14 2002/09/16 15:47:35 grumbel Exp $
+//  $Id: spot_map.cxx,v 1.15 2002/09/16 20:31:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,6 +31,7 @@
 #include "col_map.hxx"
 #include "math.hxx"
 
+using namespace WorldObjsData;
 using namespace std;
 
 MapTileSurface::MapTileSurface () : empty(true)
@@ -197,7 +198,7 @@ PingusSpotMap::create_map()
       // test cause png
       if (i->surface.get_provider()->get_depth() == 8)
 	{
-	  if (i->gptype == GroundpieceData::GP_REMOVE)
+	  if (i->gptype == Groundtype::GP_REMOVE)
 	    {
 	      Blitter::put_alpha_surface(map_canvas, i->surface.get_provider (),
 					 (int) i->pos.x, (int) i->pos.y);
@@ -399,7 +400,7 @@ PingusSpotMap::put_alpha_surface(CL_Canvas* provider, CL_SurfaceProvider* sprovi
 	    {
 	      if (pingus_debug_flags & PINGUS_DEBUG_ACTIONS)
 		{
-		  if (!(colmap->getpixel(real_x, real_y) == GroundpieceData::GP_SOLID)) 
+		  if (!(colmap->getpixel(real_x, real_y) == Groundtype::GP_SOLID)) 
 		    {
 		      tbuffer[i + 0] = 255;
 		      tbuffer[i + 1] = 255;
@@ -416,7 +417,7 @@ PingusSpotMap::put_alpha_surface(CL_Canvas* provider, CL_SurfaceProvider* sprovi
 		}
 	      else
 		{
-		  if (!(colmap->getpixel(real_x, real_y) == GroundpieceData::GP_SOLID))
+		  if (!(colmap->getpixel(real_x, real_y) == Groundtype::GP_SOLID))
 		    {
 		      tbuffer[i + 0] = 0;		      
 		    }
@@ -509,7 +510,7 @@ PingusSpotMap::get_colmap(void)
       }
       for(int i=0; i < width * height; ++i) 
 	{
-	  buffer[i] = GroundpieceData::GP_NOTHING;
+	  buffer[i] = Groundtype::GP_NOTHING;
 	}
       
       if (verbose) std::cout << "done " << timer.stop() << std::endl;
@@ -526,7 +527,7 @@ PingusSpotMap::get_colmap(void)
 	  i2 != surfaces.end(); 
 	  i2++) 
 	{
-	  if (i2->gptype == GroundpieceData::GP_REMOVE)
+	  if (i2->gptype == Groundtype::GP_REMOVE)
 	    colmap->remove(i2->surface.get_provider (), (int) i2->pos.x, (int) i2->pos.y);
 	  else
 	    colmap->put(i2->surface, (int) i2->pos.x, (int) i2->pos.y, i2->gptype);

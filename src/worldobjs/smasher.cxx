@@ -1,4 +1,4 @@
-//  $Id: smasher.cxx,v 1.5 2002/09/16 16:47:41 grumbel Exp $
+//  $Id: smasher.cxx,v 1.6 2002/09/16 20:31:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -116,7 +116,7 @@ Smasher::draw_colmap ()
   world->get_colmap()->put(PingusResource::load_surface("Traps/smasher_cmap", "traps"),
 			   static_cast<int>(data->pos.x),
 			   static_cast<int>(data->pos.y),
-			   GroundpieceData::GP_SOLID);
+			   Groundtype::GP_SOLID);
 }
 
 void 

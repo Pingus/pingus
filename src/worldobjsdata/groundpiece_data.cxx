@@ -1,4 +1,4 @@
-//  $Id: groundpiece_data.cxx,v 1.11 2002/09/16 19:18:56 grumbel Exp $
+//  $Id: groundpiece_data.cxx,v 1.1 2002/09/16 20:31:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,10 +18,12 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <fstream>
-#include "editor/editor_groundpiece_obj.hxx"
-#include "worldobjs/groundpiece.hxx"
-#include "world.hxx"
-#include "xml_helper.hxx"
+#include "../editor/editor_groundpiece_obj.hxx"
+#include "../worldobjs/groundpiece.hxx"
+#include "../world.hxx"
+#include "../xml_helper.hxx"
+
+namespace WorldObjsData {
 
 GroundpieceData::GroundpieceData () 
 {
@@ -30,12 +32,12 @@ GroundpieceData::GroundpieceData ()
 
 GroundpieceData::GroundpieceData (xmlDocPtr doc, xmlNodePtr cur)
 {
-  gptype = GroundpieceData::GP_GROUND;
+  gptype = Groundtype::GP_GROUND;
 
   char* gptype_c_str = XMLhelper::get_prop(cur, "type");
   if (gptype_c_str)
     {
-      gptype = GroundpieceData::string_to_type (gptype_c_str);
+      gptype = Groundtype::string_to_type (gptype_c_str);
       xmlFree(gptype_c_str);
     }
   else
@@ -92,58 +94,6 @@ GroundpieceData::operator= (const GroundpieceData& old)
 GroundpieceData::~GroundpieceData ()
 {
 }
-
-GroundpieceData::GPType 
-GroundpieceData::string_to_type(const std::string& arg_type) 
-{
-  if (arg_type == "solid")
-    return GroundpieceData::GP_SOLID;
-  else if (arg_type == "transparent")    
-    return GroundpieceData::GP_TRANSPARENT;
-  else if (arg_type == "ground")
-    return GroundpieceData::GP_GROUND;
-  else if (arg_type == "bridge")
-    return GroundpieceData::GP_BRIDGE;
-  else if (arg_type == "water")
-    return GroundpieceData::GP_WATER;
-  else if (arg_type == "lava") 
-    return GroundpieceData::GP_LAVA;
-  else if (arg_type == "remove") 
-    return GroundpieceData::GP_REMOVE;
-  else
-    {
-      std::cout << "GroundpieceData: Unhandled type: " << arg_type << std::endl;
-      return GroundpieceData::GP_GROUND;
-    }
-}
-
-
-std::string 
-GroundpieceData::type_to_string(GPType arg_type) 
-  {
-    switch (arg_type)
-      { 
-      case GroundpieceData::GP_SOLID:
-	return "solid";
-      case GroundpieceData::GP_TRANSPARENT:
-	return "transparent";
-      case GroundpieceData::GP_GROUND:
-	return "ground";
-      case GroundpieceData::GP_BRIDGE:
-	return "bridge";
-      case GroundpieceData::GP_WATER:
-	return "water";
-      case GroundpieceData::GP_LAVA:
-	return "lava";
-      case GroundpieceData::GP_REMOVE:
-	return "remove";
-      default:
-	std::cout << "GroundpieceData: Unhandled type: " << arg_type << std::endl;
-	return "ground";
-      }
-  }
-
-
 EditorObjLst
 GroundpieceData::create_EditorObj()
 {
@@ -161,10 +111,12 @@ GroundpieceData::create_WorldObj()
 void
 GroundpieceData::write_xml(std::ostream& xml)
 {
-  xml << "<groundpiece type=\"" << GroundpieceData::type_to_string(gptype) << "\">\n";
+  xml << "<groundpiece type=\"" << Groundtype::type_to_string(gptype) << "\">\n";
   XMLhelper::write_desc_xml(xml, desc);
   XMLhelper::write_vector_xml(xml, pos);
   xml << "</groundpiece>\n" << std::endl;
 }
+
+} // namespace WorldObjsData
 
 /* EOF */

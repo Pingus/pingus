@@ -1,4 +1,4 @@
-//  $Id: object_selector.cxx,v 1.20 2002/09/16 17:17:17 grumbel Exp $
+//  $Id: object_selector.cxx,v 1.21 2002/09/16 20:31:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -130,10 +130,10 @@ ObjectSelector::get_trap()
 }
 
 EditorObjLst
-ObjectSelector::get_groundpiece(const GroundpieceData::GPType & gptype)
+ObjectSelector::get_groundpiece(const Groundtype::GPType & gptype)
 {
   GroundpieceData data;
-  std::string datafile = std::string("groundpieces-") + GroundpieceData::type_to_string (gptype);
+  std::string datafile = std::string("groundpieces-") + Groundtype::type_to_string (gptype);
 
   data.pos = pos;
 
@@ -405,19 +405,19 @@ ObjectSelector::select_obj_type()
 	  return get_trap();
 
 	case CL_KEY_B:
-	  return get_groundpiece(GroundpieceData::GP_BRIDGE);
+	  return get_groundpiece(Groundtype::GP_BRIDGE);
 	  
 	case CL_KEY_R:
-	  return get_groundpiece(GroundpieceData::GP_REMOVE);
+	  return get_groundpiece(Groundtype::GP_REMOVE);
 	  
 	case CL_KEY_S:
-	  return get_groundpiece(GroundpieceData::GP_SOLID);
+	  return get_groundpiece(Groundtype::GP_SOLID);
 
 	case CL_KEY_G:
-	  return get_groundpiece(GroundpieceData::GP_GROUND);
+	  return get_groundpiece(Groundtype::GP_GROUND);
 
 	case CL_KEY_N:
-	  return get_groundpiece(GroundpieceData::GP_TRANSPARENT);
+	  return get_groundpiece(Groundtype::GP_TRANSPARENT);
 
 	case CL_KEY_H:
 	  return get_hotspot("hotspots");

@@ -1,4 +1,4 @@
-//  $Id: groundpiece.hxx,v 1.1 2002/09/16 19:18:56 grumbel Exp $
+//  $Id: groundpiece.hxx,v 1.2 2002/09/16 20:31:09 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,7 @@
 #define HEADER_GROUNDPIECE_HXX
 
 #include "../worldobj.hxx"
-#include "../groundpiece_data.hxx"
+#include "../worldobjsdata/groundpiece_data.hxx"
 
 namespace WorldObjs {
 
@@ -30,11 +30,11 @@ namespace WorldObjs {
 class Groundpiece : public WorldObj
 {
 private:
-  GroundpieceData data;
+  WorldObjsData::GroundpieceData data;
   CL_Surface surface;
 
 public:
-  Groundpiece(const GroundpieceData& data_);
+  Groundpiece(const WorldObjsData::GroundpieceData& data_);
   ~Groundpiece() {};
 
   float get_z_pos () const { return 0; }

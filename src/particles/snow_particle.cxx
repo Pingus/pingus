@@ -1,4 +1,4 @@
-//  $Id: snow_particle.cxx,v 1.5 2002/09/04 14:55:12 torangan Exp $
+//  $Id: snow_particle.cxx,v 1.6 2002/09/16 20:31:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -116,8 +116,8 @@ CollidingSnowParticle::update(float delta)
 
   int pixel = WorldObj::get_world()->get_colmap()->getpixel(int(pos.x), int(pos.y));
 
-  if (pixel != GroundpieceData::GP_NOTHING && pixel !=  GroundpieceData::GP_WATER
-      && pixel != GroundpieceData::GP_OUTOFSCREEN)
+  if (pixel != Groundtype::GP_NOTHING && pixel !=  Groundtype::GP_WATER
+      && pixel != Groundtype::GP_OUTOFSCREEN)
     {
       //std::cout << "Snow: touch down: " << x_pos << " " << y_pos << std::endl;
       WorldObj::get_world()->get_gfx_map()->put(ground_snow,

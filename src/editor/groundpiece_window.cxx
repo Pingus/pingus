@@ -1,4 +1,4 @@
-//  $Id: groundpiece_window.cxx,v 1.8 2002/09/11 12:45:58 grumbel Exp $
+//  $Id: groundpiece_window.cxx,v 1.9 2002/09/16 20:31:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,6 +30,8 @@
  ------------------------
  [ok] [cancel]
 *************************/
+
+using namespace WorldObjsData;
 
 namespace EditorNS {
 
@@ -73,16 +75,16 @@ GroundpieceWindow::read_data ()
 {
   switch (data->gptype)
     {
-    case GroundpieceData::GP_SOLID:
+    case Groundtype::GP_SOLID:
       solid_radiobutton.set_checked (true);
       break;
-    case GroundpieceData::GP_BRIDGE:
+    case Groundtype::GP_BRIDGE:
       bridge_radiobutton.set_checked (true);
       break;
-    case GroundpieceData::GP_TRANSPARENT:
+    case Groundtype::GP_TRANSPARENT:
       transparent_radiobutton.set_checked (true);
       break;
-    case GroundpieceData::GP_GROUND:
+    case Groundtype::GP_GROUND:
       ground_radiobutton.set_checked (true);
       break;
     default:
@@ -97,13 +99,13 @@ GroundpieceWindow::write_data ()
   if (EditorObj::get_editor ()->get_object_manager ()->has_object (data))
     {
       if (ground_radiobutton.is_checked ())
-	data->gptype = GroundpieceData::GP_GROUND;
+	data->gptype = Groundtype::GP_GROUND;
       else if (transparent_radiobutton.is_checked ())
-	data->gptype = GroundpieceData::GP_TRANSPARENT;
+	data->gptype = Groundtype::GP_TRANSPARENT;
       else if (solid_radiobutton.is_checked ())
-	data->gptype = GroundpieceData::GP_SOLID;
+	data->gptype = Groundtype::GP_SOLID;
       else if (bridge_radiobutton.is_checked ())
-	data->gptype = GroundpieceData::GP_BRIDGE;
+	data->gptype = Groundtype::GP_BRIDGE;
       else
 	{
 	  std::cout << "Unhandled" << std::endl;

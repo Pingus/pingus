@@ -1,4 +1,4 @@
-//  $Id: col_map.cxx,v 1.8 2002/09/16 19:18:56 grumbel Exp $
+//  $Id: col_map.cxx,v 1.9 2002/09/16 20:31:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -99,7 +99,7 @@ ColMap::getpixel(int x, int y)
   if (x >= 0 && x < width && y >= 0 && y < height) {
     return colmap[x+y*width];
   } else {
-    return GroundpieceData::GP_OUTOFSCREEN; 
+    return Groundtype::GP_OUTOFSCREEN; 
   }
 }
 
@@ -151,8 +151,8 @@ ColMap::remove(CL_SurfaceProvider* provider, int x, int y)
 	    {
 	      if (buffer[(i + (swidth*line)) * 4] != 0) 
 		{
-		  if (colmap[i + (width*(line+y) + x)] != GroundpieceData::GP_SOLID)
-		    colmap[i + (width*(line+y) + x)] = GroundpieceData::GP_NOTHING;
+		  if (colmap[i + (width*(line+y) + x)] != Groundtype::GP_SOLID)
+		    colmap[i + (width*(line+y) + x)] = Groundtype::GP_NOTHING;
 		}
 	    }
 	}
@@ -178,8 +178,8 @@ ColMap::remove(CL_SurfaceProvider* provider, int x, int y)
 	    {
 	      if (buffer[i + (swidth*line)]) 
 		{
-		  if (colmap[i + (width*(line+y) + x)] != GroundpieceData::GP_SOLID)
-		    colmap[i + (width*(line+y) + x)] = GroundpieceData::GP_NOTHING;
+		  if (colmap[i + (width*(line+y) + x)] != Groundtype::GP_SOLID)
+		    colmap[i + (width*(line+y) + x)] = Groundtype::GP_NOTHING;
 		}
 	    }
 	}
@@ -193,7 +193,7 @@ ColMap::remove(CL_SurfaceProvider* provider, int x, int y)
 }
 
 void
-ColMap::put(int x, int y, GroundpieceData::GPType p)
+ColMap::put(int x, int y, Groundtype::GPType p)
 {
   if (x > 0 && x < width
       && y > 0 && y < height) 
@@ -225,13 +225,13 @@ ColMap::load(unsigned char* b, int w, int h)
 }
 
 bool
-ColMap::blit_allowed (int x, int y,  GroundpieceData::GPType gtype)
+ColMap::blit_allowed (int x, int y,  Groundtype::GPType gtype)
 {
   // FIXME: Inline me
-  if (gtype == GroundpieceData::GP_BRIDGE)
+  if (gtype == Groundtype::GP_BRIDGE)
     {
       int pixel = getpixel (x, y);
-      return pixel == GroundpieceData::GP_NOTHING;
+      return pixel == Groundtype::GP_NOTHING;
     }
   else
     {
@@ -240,17 +240,17 @@ ColMap::blit_allowed (int x, int y,  GroundpieceData::GPType gtype)
 }
 
 void
-ColMap::put(const CL_Surface& sur, int sur_x, int sur_y, GroundpieceData::GPType gptype)
+ColMap::put(const CL_Surface& sur, int sur_x, int sur_y, Groundtype::GPType gptype)
 {
   put(sur.get_provider(), sur_x, sur_y, gptype);
 }
 
 // Puts a surface on the colmap
 void
-ColMap::put(CL_SurfaceProvider* provider, int sur_x, int sur_y, GroundpieceData::GPType pixel)
+ColMap::put(CL_SurfaceProvider* provider, int sur_x, int sur_y, Groundtype::GPType pixel)
 {
   // transparent groundpieces are only drawn on the gfx map, not on the colmap
-  if (pixel == GroundpieceData::GP_TRANSPARENT)
+  if (pixel == Groundtype::GP_TRANSPARENT)
     return;
 
   if ((sur_x > width) || (sur_y > height)) 
@@ -338,21 +338,21 @@ ColMap::draw(GraphicContext& gc)
     {
       switch(colmap[i])
 	{
-	case GroundpieceData::GP_NOTHING:
+	case Groundtype::GP_NOTHING:
 	  buffer[i * 4 + 0] = 0;
 	  buffer[i * 4 + 1] = 0;
 	  buffer[i * 4 + 2] = 0;
 	  buffer[i * 4 + 3] = 0;
 	  break;
 
-	case GroundpieceData::GP_SOLID:
+	case Groundtype::GP_SOLID:
 	  buffer[i * 4 + 0] = 255;
 	  buffer[i * 4 + 1] = 100;
 	  buffer[i * 4 + 2] = 100;
 	  buffer[i * 4 + 3] = 100;
 	  break;
 
-	case GroundpieceData::GP_BRIDGE:
+	case Groundtype::GP_BRIDGE:
 	  buffer[i * 4 + 0] = 255;
 	  buffer[i * 4 + 1] = 0;
 	  buffer[i * 4 + 2] = 0;

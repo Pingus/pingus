@@ -1,4 +1,4 @@
-//  $Id: bridger.cxx,v 1.15 2002/09/14 19:06:33 torangan Exp $
+//  $Id: bridger.cxx,v 1.16 2002/09/16 20:31:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -177,7 +177,7 @@ Bridger::update_build (float delta)
 bool
 Bridger::way_is_free()
 {
-  return (rel_getpixel(4,2) ==  GroundpieceData::GP_NOTHING)
+  return (rel_getpixel(4,2) ==  Groundtype::GP_NOTHING)
     && !head_collision_on_walk(4, 2)
     && !head_collision_on_walk(8, 4);
 }
@@ -196,7 +196,7 @@ Bridger::place_a_brick()
       WorldObj::get_world()->get_colmap()->put(brick_r, 
 					       static_cast<int>(pingu->get_x() + 10 - brick_r.get_width()),
 					       static_cast<int>(pingu->get_y()),
-					       GroundpieceData::GP_BRIDGE);
+					       Groundtype::GP_BRIDGE);
       WorldObj::get_world()->get_gfx_map()->put(brick_r,
 						static_cast<int>(pingu->get_x() + 10 - brick_r.get_width()),
 						static_cast<int>(pingu->get_y()));
@@ -206,7 +206,7 @@ Bridger::place_a_brick()
       WorldObj::get_world()->get_colmap()->put(brick_r, 
 					       static_cast<int>(pingu->get_x() - 10),
 					       static_cast<int>(pingu->get_y()),
-					       GroundpieceData::GP_BRIDGE);
+					       Groundtype::GP_BRIDGE);
       WorldObj::get_world()->get_gfx_map()->put(brick_l,
 						static_cast<int>(pingu->get_x() - 10),
 						static_cast<int>(pingu->get_y()));

@@ -1,4 +1,4 @@
-//  $Id: conveyor_belt.cxx,v 1.14 2002/09/15 11:02:24 grumbel Exp $
+//  $Id: conveyor_belt.cxx,v 1.15 2002/09/16 20:31:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -61,7 +61,7 @@ ConveyorBelt::draw_colmap ()
     world->get_colmap()->put(sur,
                              static_cast<int>(data->pos.x) + (15 * i),
 			     static_cast<int>(data->pos.y),
-			     GroundpieceData::GP_SOLID);
+			     Groundtype::GP_SOLID);
 }
 
 void 

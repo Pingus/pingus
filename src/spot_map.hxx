@@ -1,4 +1,4 @@
-//  $Id: spot_map.hxx,v 1.5 2002/09/04 19:40:19 grumbel Exp $
+//  $Id: spot_map.hxx,v 1.6 2002/09/16 20:31:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,7 +24,7 @@
 #include <vector>
 #include "globals.hxx"
 #include "pingu_map.hxx"
-#include "groundpiece_data.hxx"
+#include "worldobjsdata/groundpiece_data.hxx"
 
 class PLF;
 class ColMap;
@@ -61,7 +61,7 @@ private:
 
   typedef std::vector<MapTileSurface>::size_type TileIter;
 
-  std::vector<GroundpieceData> surfaces;
+  std::vector<WorldObjsData::GroundpieceData> surfaces;
 
   CL_Canvas* provider;
   CL_Surface map_surface;

@@ -1,4 +1,4 @@
-//  $Id: basher.cxx,v 1.15 2002/09/14 19:06:33 torangan Exp $
+//  $Id: basher.cxx,v 1.16 2002/09/16 20:31:09 grumbel Exp $
 //
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -96,7 +96,7 @@ Basher::bash()
 void
 Basher::walk_forward()
 {
-  if (rel_getpixel(0, -1) ==  GroundpieceData::GP_NOTHING) {
+  if (rel_getpixel(0, -1) ==  Groundtype::GP_NOTHING) {
     // We are in the air... lets fall...
     pingu->set_action(Actions::Faller);
   } else {
@@ -121,7 +121,7 @@ Basher::have_something_to_dig()
       // up to head collision height.
       for (int j = bash_height + 1; j <= 26; ++j)
 	{
-	  if (rel_getpixel(i,j) == GroundpieceData::GP_GROUND)
+	  if (rel_getpixel(i,j) == Groundtype::GP_GROUND)
 	    {
 	      pout(PINGUS_DEBUG_ACTIONS) << "Basher: Found something to dig..." << std::endl;
 	      return true;

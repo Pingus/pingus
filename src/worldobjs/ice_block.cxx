@@ -1,4 +1,4 @@
-//  $Id: ice_block.cxx,v 1.14 2002/09/15 11:02:24 grumbel Exp $
+//  $Id: ice_block.cxx,v 1.15 2002/09/16 20:31:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -53,7 +53,7 @@ IceBlock::draw_colmap ()
   world->get_colmap()->put(surf,
                            static_cast<int>(data->pos.x),
                            static_cast<int>(data->pos.y),
-			   GroundpieceData::GP_GROUND);
+			   Groundtype::GP_GROUND);
 }
 
 void 

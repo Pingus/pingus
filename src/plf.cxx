@@ -1,4 +1,4 @@
-//  $Id: plf.cxx,v 1.8 2002/09/16 15:47:35 grumbel Exp $
+//  $Id: plf.cxx,v 1.9 2002/09/16 20:31:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -145,7 +145,7 @@ PLF::get_author()
   return author;
 }
 
-std::vector<GroundpieceData> 
+std::vector<WorldObjsData::GroundpieceData> 
 PLF::get_groundpieces(void)
 {
   return groundpieces;

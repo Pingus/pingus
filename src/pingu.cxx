@@ -1,4 +1,4 @@
-//  $Id: pingu.cxx,v 1.25 2002/09/14 19:06:33 torangan Exp $
+//  $Id: pingu.cxx,v 1.26 2002/09/16 20:31:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -309,7 +309,7 @@ Pingu::update (float delta)
   // FIXME: Out of screen check is ugly
   /** The Pingu has hit the edge of the screen, a good time to let him
       die. */
-  if (rel_getpixel(0, -1) == GroundpieceData::GP_OUTOFSCREEN) 
+  if (rel_getpixel(0, -1) == Groundtype::GP_OUTOFSCREEN) 
     {
       PingusSound::play_sound("sounds/die.wav");
       status = PS_DEAD;

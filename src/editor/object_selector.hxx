@@ -1,4 +1,4 @@
-// $Id: object_selector.hxx,v 1.10 2002/09/11 12:45:58 grumbel Exp $
+// $Id: object_selector.hxx,v 1.11 2002/09/16 20:31:09 grumbel Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,8 +23,9 @@
 #include <config.h>
 #include <map>
 #include <list>
-#include "../groundpiece_data.hxx"
+#include "../groundtype.hxx"
 #include "surface_selector.hxx"
+#include "editorobj.hxx"
 
 class EditorObj;
 
@@ -58,7 +59,7 @@ public:
   
   EditorObjLst get_obj(int, int);
   EditorObjLst get_trap();
-  EditorObjLst get_groundpiece(const GroundpieceData::GPType & gptype);
+  EditorObjLst get_groundpiece(const Groundtype::GPType& gptype);
   EditorObjLst get_hotspot(const std::string&);
   EditorObjLst get_entrance();
   EditorObjLst get_exit();

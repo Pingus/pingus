@@ -1,4 +1,4 @@
-//  $Id: worldobj_data_factory.cxx,v 1.17 2002/09/16 19:18:56 grumbel Exp $
+//  $Id: worldobj_data_factory.cxx,v 1.18 2002/09/16 20:31:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -48,7 +48,7 @@
 #include "worldobjsdata/teleporter_data.hxx"
 #include "worldobjsdata/rain_generator_data.hxx"
 #include "worldobjsdata/snow_generator_data.hxx"
-#include "groundpiece_data.hxx"
+#include "worldobjsdata/groundpiece_data.hxx"
 
 using namespace WorldObjsData;
 

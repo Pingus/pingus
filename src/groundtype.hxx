@@ -1,7 +1,7 @@
-//  $Id: groundpiece_data.hxx,v 1.14 2002/09/16 19:18:56 grumbel Exp $
+//  $Id: groundtype.hxx,v 1.1 2002/09/16 20:31:09 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
-//  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
+//  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
 //
 //  This program is free software; you can redistribute it and/or
 //  modify it under the terms of the GNU General Public License
@@ -17,25 +17,17 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef HEADER_PINGUS_GROUNDPIECE_DATA_HXX
-#define HEADER_PINGUS_GROUNDPIECE_DATA_HXX
+#ifndef HEADER_PINGUS_GROUNDTYPE_HXX
+#define HEADER_PINGUS_GROUNDTYPE_HXX
 
-#include <ClanLib/Core/Math/cl_vector.h>
-#include <ClanLib/Display/Display/surface.h>
-#include "libxmlfwd.hxx"
-#include "res_descriptor.hxx"
-#include "worldobj_data.hxx"
+#include <string>
 
-class EditorObj;
-class WorldObj;
-
-class GroundpieceData : public WorldObjData
+/** This class olds the definitions of the different types of ground
+    available in pingus, it might also provide converter function from
+    GPType to std::string and vice verse. */
+class Groundtype
 {
 public:
-  CL_Surface surface;
-  ResDescriptor desc;
-  CL_Vector pos;
-
   enum GPType { 
     GP_NOTHING,
     GP_SOLID, 
@@ -47,32 +39,11 @@ public:
     GP_REMOVE, 
     GP_OUTOFSCREEN
   };
-  
-  GPType gptype; 
-
-  GroundpieceData ();
-  GroundpieceData (xmlDocPtr doc, xmlNodePtr cur);
-  
-  GroundpieceData (const GroundpieceData& old);
-  GroundpieceData operator= (const GroundpieceData& old);
-
-  ~GroundpieceData ();
-
-  WorldObj*    create_WorldObj();
-  EditorObjLst create_EditorObj();
-
-  void write_xml(std::ostream& xml);
 
   static GPType string_to_type(const std::string& arg_type);
   static std::string type_to_string(GPType arg_type);
 };
 
-/* EOF */
-
 #endif
 
 /* EOF */
-
-
-
-

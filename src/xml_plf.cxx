@@ -1,4 +1,4 @@
-//  $Id: xml_plf.cxx,v 1.18 2002/09/16 15:47:35 grumbel Exp $
+//  $Id: xml_plf.cxx,v 1.19 2002/09/16 20:31:09 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -412,7 +412,7 @@ XMLPLF::parse_global (xmlNodePtr cur)
 void 
 XMLPLF::parse_groundpiece (xmlNodePtr cur)
 {
-  groundpieces.push_back(GroundpieceData (doc, cur));
+  groundpieces.push_back(WorldObjsData::GroundpieceData (doc, cur));
 }
 
 void

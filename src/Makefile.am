@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.100 2002/09/16 15:47:35 grumbel Exp $
+#  $Id: Makefile.am,v 1.101 2002/09/16 20:31:09 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -162,8 +162,8 @@ global_event.cxx \
 global_event.hxx \
 globals.cxx \
 globals.hxx \
-groundpiece_data.cxx \
-groundpiece_data.hxx \
+groundtype.hxx \
+groundtype.cxx \
 graphic_context.hxx \
 gui_obj.hxx \
 gui_obj.cxx \
@@ -269,8 +269,6 @@ plt_xml.cxx \
 plt_xml.hxx \
 prefab.cxx \
 prefab.hxx \
-psm_parser.cxx \
-psm_parser.hxx \
 range.cxx \
 range.hxx \
 res_descriptor.cxx \

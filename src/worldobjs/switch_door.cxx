@@ -1,4 +1,4 @@
-//  $Id: switch_door.cxx,v 1.16 2002/09/15 11:02:24 grumbel Exp $
+//  $Id: switch_door.cxx,v 1.17 2002/09/16 20:31:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -51,7 +51,7 @@ SwitchDoor::draw_colmap ()
   world->get_colmap()->put(door_box,
                            static_cast<int>(data->door_pos.x),
 			   static_cast<int>(data->door_pos.y),
-			   GroundpieceData::GP_SOLID);
+			   Groundtype::GP_SOLID);
 			   
   for (int i=0; i < data->door_height; ++i)
     world->get_colmap()->put(door_tile_cmap,
@@ -59,7 +59,7 @@ SwitchDoor::draw_colmap ()
 			     static_cast<int>(data->door_pos.y) 
 			     + i * door_tile.get_height()
 			     + door_box.get_height(),
-			     GroundpieceData::GP_SOLID);
+			     Groundtype::GP_SOLID);
 }
 
 void
@@ -109,13 +109,13 @@ SwitchDoor::update (float /*delta*/)
 	      world->get_colmap()->put(door_box,
 	                               static_cast<int>(data->door_pos.x),
 				       static_cast<int>(data->door_pos.y),
-				       GroundpieceData::GP_NOTHING);
+				       Groundtype::GP_NOTHING);
 	      for (int i=0; i < data->door_height; ++i)
 		world->get_colmap()->put(door_tile_cmap,
 					 static_cast<int>(data->door_pos.x), 
 					 static_cast<int>(data->door_pos.y) + i * door_tile.get_height()
 					                                    + door_box.get_height(),
-					 GroundpieceData::GP_NOTHING);
+					 Groundtype::GP_NOTHING);
 	    }
 	}
     }

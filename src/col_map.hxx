@@ -1,4 +1,4 @@
-//  $Id: col_map.hxx,v 1.6 2002/09/04 19:40:19 grumbel Exp $
+//  $Id: col_map.hxx,v 1.7 2002/09/16 20:31:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_COL_MAP_HXX
 #define HEADER_PINGUS_COL_MAP_HXX
 
-#include "groundpiece_data.hxx"
+#include "groundtype.hxx"
 
 class GraphicContext;
 class ResDescriptor;
@@ -76,11 +76,11 @@ public:
   int  getpixel(int x, int y);
   
   /** Return true if the given GroundType i*/
-  bool blit_allowed (int x, int y,  GroundpieceData::GPType);
+  bool blit_allowed (int x, int y,  Groundtype::GPType);
 
-  void put(int x, int y, GroundpieceData::GPType p = GroundpieceData::GP_GROUND);
-  void put(const CL_Surface&, int x, int y, GroundpieceData::GPType);
-  void put(CL_SurfaceProvider*, int x, int y, GroundpieceData::GPType);
+  void put(int x, int y, Groundtype::GPType p = Groundtype::GP_GROUND);
+  void put(const CL_Surface&, int x, int y, Groundtype::GPType);
+  void put(CL_SurfaceProvider*, int x, int y, Groundtype::GPType);
 
   /// void remove(int x, int y);
   void remove(const CL_Surface&, int x, int y);

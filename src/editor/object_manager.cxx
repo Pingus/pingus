@@ -1,4 +1,4 @@
-//  $Id: object_manager.cxx,v 1.33 2002/09/16 15:47:35 grumbel Exp $
+//  $Id: object_manager.cxx,v 1.34 2002/09/16 20:31:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,6 +34,7 @@
 
 using namespace std;
 using namespace Actions;
+using namespace WorldObjsData;
 
 namespace EditorNS {
 

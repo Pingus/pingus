@@ -1,4 +1,4 @@
-//  $Id: rain_particle.cxx,v 1.3 2002/09/04 14:55:12 torangan Exp $
+//  $Id: rain_particle.cxx,v 1.4 2002/09/16 20:31:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -98,8 +98,8 @@ RainParticle::update(float delta)
     }
   else
     {
-      if (WorldObj::get_world()->get_colmap()->getpixel(int(pos.x), int(pos.y)) != GroundpieceData::GP_NOTHING
-	  && WorldObj::get_world()->get_colmap()->getpixel(int(pos.x), int(pos.y)) !=  GroundpieceData::GP_OUTOFSCREEN)
+      if (WorldObj::get_world()->get_colmap()->getpixel(int(pos.x), int(pos.y)) != Groundtype::GP_NOTHING
+	  && WorldObj::get_world()->get_colmap()->getpixel(int(pos.x), int(pos.y)) !=  Groundtype::GP_OUTOFSCREEN)
 	{
 	  splash = true;
 	}

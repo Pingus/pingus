@@ -1,4 +1,4 @@
-//  $Id: editor_groundpiece_obj.cxx,v 1.12 2002/09/11 12:45:58 grumbel Exp $
+//  $Id: editor_groundpiece_obj.cxx,v 1.13 2002/09/16 20:31:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,7 +38,7 @@ std::string
 EditorGroundpieceObj::status_line()
 {
   char str[1024];  
-  std::string type_name = GroundpieceData::type_to_string(gptype);
+  std::string type_name = Groundtype::type_to_string(gptype);
   
   snprintf (str, 1024, "Groundpiece: %s Type: %s",
 	   desc.res_name.c_str(), type_name.c_str());

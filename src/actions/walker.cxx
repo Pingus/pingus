@@ -1,4 +1,4 @@
-//  $Id: walker.cxx,v 1.22 2002/09/14 19:06:33 torangan Exp $
+//  $Id: walker.cxx,v 1.23 2002/09/16 20:31:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -61,7 +61,7 @@ Walker::update (float delta)
   
   */
 
-  if (rel_getpixel(0, -1) ==  GroundpieceData::GP_WATER)
+  if (rel_getpixel(0, -1) ==  Groundtype::GP_WATER)
     {
       pingu->set_action(Actions::Drown);
       return;
@@ -69,7 +69,7 @@ Walker::update (float delta)
 
   // The Pingu stands no longer on ground, the cause for this could be
   // a digger, miner or a bomber
-  if (rel_getpixel(0, -1) ==  GroundpieceData::GP_NOTHING)
+  if (rel_getpixel(0, -1) ==  Groundtype::GP_NOTHING)
     { 
       // We search for the nearest ground below the pingu, if we can't
       // find anything within a few pixels, we will turn into a faller
@@ -77,7 +77,7 @@ Walker::update (float delta)
       int i;
       for (i = -2; i > -5; --i)
 	{
-	  if (!(rel_getpixel(0, i) == GroundpieceData::GP_NOTHING))
+	  if (!(rel_getpixel(0, i) == Groundtype::GP_NOTHING))
 	    {
 	      found_ground = true;
 	      break;
@@ -97,7 +97,7 @@ Walker::update (float delta)
 
   
   // FIXME: here we could/should scan more pixels
-  if (rel_getpixel(1, 0) == GroundpieceData::GP_BRIDGE
+  if (rel_getpixel(1, 0) == Groundtype::GP_BRIDGE
       && !head_collision_on_walk(1, 1))  // bridge
     {
       // simple, stupid, but working bridge code
@@ -122,9 +122,9 @@ Walker::update (float delta)
       bool found_next_step = false;
       for (y_inc = -max_steps; y_inc <= max_steps; ++y_inc)
 	{// up/down-hill scan
-	  if ((   rel_getpixel(1, y_inc)     == GroundpieceData::GP_NOTHING
-		  || rel_getpixel(1, y_inc)     == GroundpieceData::GP_BRIDGE) // FIXME: This causes a rather huge step
-	      && rel_getpixel(1, y_inc - 1) != GroundpieceData::GP_NOTHING)
+	  if ((   rel_getpixel(1, y_inc)     == Groundtype::GP_NOTHING
+		  || rel_getpixel(1, y_inc)     == Groundtype::GP_BRIDGE) // FIXME: This causes a rather huge step
+	      && rel_getpixel(1, y_inc - 1) != Groundtype::GP_NOTHING)
 	    { // FIXME:
 	      found_next_step = true;
 	      possible_y_step = y_inc;
@@ -140,7 +140,7 @@ Walker::update (float delta)
 	}
       else
 	{
-	  if (rel_getpixel(1, 0) !=  GroundpieceData::GP_NOTHING)
+	  if (rel_getpixel(1, 0) !=  Groundtype::GP_NOTHING)
 	    {
 	      // We reached a wall
 	      if (pingu->request_wall_action()) 

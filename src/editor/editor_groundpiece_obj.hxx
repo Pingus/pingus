@@ -1,4 +1,4 @@
-// $Id: editor_groundpiece_obj.hxx,v 1.9 2002/09/11 12:45:58 grumbel Exp $
+// $Id: editor_groundpiece_obj.hxx,v 1.10 2002/09/16 20:31:09 grumbel Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,10 +21,10 @@
 #define HEADER_PINGUS_EDITOR_EDITOR_GROUNDPIECE_OBJ_HXX
 
 #include "sprite_editorobj.hxx"
-#include "../groundpiece_data.hxx"
+#include "../worldobjsdata/groundpiece_data.hxx"
 
 ///
-class EditorGroundpieceObj : public GroundpieceData,
+class EditorGroundpieceObj : public WorldObjsData::GroundpieceData,
 			     public SpriteEditorObj
 {
 public:

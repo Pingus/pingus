@@ -1,4 +1,4 @@
-//  $Id: groundpiece.cxx,v 1.1 2002/09/16 19:18:56 grumbel Exp $
+//  $Id: groundpiece.cxx,v 1.2 2002/09/16 20:31:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,7 +25,7 @@
 
 namespace WorldObjs {
 
-Groundpiece::Groundpiece(const GroundpieceData& data_)
+Groundpiece::Groundpiece(const WorldObjsData::GroundpieceData& data_)
   : data(data_),
     surface (PingusResource::load_surface(data.desc))
 {
@@ -38,12 +38,12 @@ Groundpiece::on_startup()
 {
   // FIXME: overdrawing of bridges and similar things aren't handled
   // FIXME: here
-  if (data.gptype == GroundpieceData::GP_REMOVE)
+  if (data.gptype == Groundtype::GP_REMOVE)
     get_world()->get_gfx_map()->remove(surface, int(data.pos.x), int(data.pos.y));
   else
     get_world()->get_gfx_map()->put(surface, int(data.pos.x), int(data.pos.y));
 
-  if (data.gptype == GroundpieceData::GP_REMOVE)
+  if (data.gptype == Groundtype::GP_REMOVE)
     get_world()->get_colmap()->remove(surface, int(data.pos.x), int(data.pos.y));
   else
     get_world()->get_colmap()->put(surface, int(data.pos.x), int(data.pos.y),
