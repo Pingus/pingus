@@ -66,6 +66,8 @@ section menu
 {
 	//background = ../images/core/menu/background.jpg (type=surface, x=0, y=0, width=800, height=600);
 
+        startscreenbg = ../images/core/menu/startscreenbg.jpg (type=surface);
+
 	create_on = ../images/core/menu/create_on.png (type=surface);
 	credits_on = ../images/core/menu/credits_on.png (type=surface);
 	exit_on = ../images/core/menu/exit_on.png (type=surface);
@@ -79,6 +81,20 @@ section menu
 	layer3 = ../images/core/menu/layer3.png (type=surface);
 	layer4 = ../images/core/menu/layer4.png (type=surface);
 	layer5 = ../images/core/menu/layer5.png (type=surface);
+
+        enterlevel = ../images/core/menu/enterlevel.png(type=surface);
+        enterlevel = ../images/core/menu/enterlevel.png(type=surface);
+        enterlevel = ../images/core/menu/enterlevel.png(type=surface);
+
+        close_highlight = ../images/core/menu/close_highlight.png(type=surface);
+        close_normal    = ../images/core/menu/close_normal.png(type=surface);
+        close_pressed   = ../images/core/menu/close_pressed.png(type=surface);
+}
+
+section result
+{
+	retry = ../images/core/menu/result_retry.png (type=surface);
+	ok    = ../images/core/menu/result_ok.png (type=surface);
 }
 
 section misc
@@ -93,9 +109,9 @@ section misc
 	loading        = ../images/core/misc/loading.png       (type=surface, x=0, y=0, width=175, height=66,tcol=0);
 	pingubw = ../images/core/misc/pingubw.png (type=surface, x=0, y=0, width=307, height=400);
 
-	dot_green = ../images/core/worldmap/dot_green.png (type=surface, x=0, y=0, width=32, height=12);
-        dot_red = ../images/core/worldmap/dot_red.png (type=surface, x=0, y=0, width=32, height=12);
-        dot_border = ../images/core/worldmap/dot_border.png (type=surface, x=0, y=0, width=44, height=22, tcol=0);
+	dot_green = ../images/core/worldmap/dot_green.png (type=surface);
+        dot_red = ../images/core/worldmap/dot_red.png (type=surface);
+        dot_border = ../images/core/worldmap/dot_border.png (type=surface);
 
 	smallmap_entrance = ../images/core/misc/smallmap_entrance.png (type=surface, x=0, y=0, width=6, height=6, tcol=0);
 	smallmap_exit     = ../images/core/misc/smallmap_exit.png     (type=surface, x=0, y=0, width=6, height=6, tcol=0);
@@ -120,6 +136,8 @@ section worldmap
         dot_red = ../images/core/worldmap/dot_red.png (type=surface, x=0, y=0, width=32, height=12);
         dot_border = ../images/core/worldmap/dot_border.png (type=surface, x=0, y=0, width=44, height=22);
 	flaggreen = ../images/core/worldmap/flaggreen.png (type=surface, x=0, y=0, width=27, height=38);
+
+	arrow = ../images/core/worldmap/arrow.png (type=surface);
 }
 
 // EOF //

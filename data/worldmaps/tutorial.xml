@@ -150,7 +150,7 @@
             <z-pos>0</z-pos>
           </position>
         </dot>
-        <levelname>playable/snow12-grumbel</levelname>
+        <levelname>playable/placeholder</levelname>
       </leveldot>
 
 
@@ -280,7 +280,7 @@
             <z-pos>0</z-pos>
           </position>
         </dot>
-        <levelname>playable/placeholder</levelname>
+        <levelname>playable/snow12-grumbel</levelname>
       </leveldot>
 
     </nodes>
@@ -345,7 +345,7 @@
         <y-pos>305</y-pos>
         <z-pos>100</z-pos>
       </position>
-      <auto-uncover>1</auto-uncover>
+      <auto-uncover>0</auto-uncover>
     </surface>
 
 
@@ -363,7 +363,7 @@
         <z-pos>100</z-pos>
       </position>
       
-      <auto-uncover>1</auto-uncover>
+      <auto-uncover>0</auto-uncover>
     </surface>
   </objects>
 

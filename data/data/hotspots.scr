@@ -38,11 +38,11 @@ section signposts
         bomber = ../images/hotspots/signposts/bomber.png (type=surface);
         bridger = ../images/hotspots/signposts/bridger.png (type=surface);
         climber = ../images/hotspots/signposts/climber.png (type=surface);
+        danger = ../images/hotspots/signposts/danger.png (type=surface);
         digger = ../images/hotspots/signposts/digger.png (type=surface);
         floater = ../images/hotspots/signposts/floater.png (type=surface);
         miner = ../images/hotspots/signposts/miner.png (type=surface);
         nogo = ../images/hotspots/signposts/nogo.png (type=surface);
-        danger = ../images/hotspots/signposts/danger.png (type=surface);
 }
 
 section space
