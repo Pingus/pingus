@@ -1,4 +1,4 @@
-//  $Id: graph.hxx,v 1.21 2003/04/18 12:48:50 grumbel Exp $
+//  $Id: graph.hxx,v 1.22 2003/04/18 20:32:34 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,7 @@
 
 #include <algorithm>
 #include <assert.h>
+#include <iostream>
 #include <vector>
 
 namespace WorldMapNS {
@@ -43,6 +44,7 @@ public:
   Node& operator= (const NodeType& d) 
   {
     data = d;
+    return *this;
   }
 
   NodeType data;
@@ -86,6 +88,7 @@ public:
   Graph& operator= (const Graph&)
   {
     assert (false);
+    return *this;
   }
 
   ~Graph () 
