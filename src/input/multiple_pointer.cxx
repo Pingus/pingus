@@ -1,4 +1,4 @@
-//  $Id: multiple_pointer.cxx,v 1.5 2002/08/14 12:41:22 torangan Exp $
+//  $Id: multiple_pointer.cxx,v 1.6 2002/08/17 17:56:24 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,7 +31,7 @@ namespace Input
 
   MultiplePointer::~MultiplePointer ()
   {
-    for (unsigned int i = 0; i < pointers.size(); i++)
+    for (unsigned int i = 0; i < pointers.size(); ++i)
       delete pointers[i];
   }
 
@@ -50,7 +50,7 @@ namespace Input
   void
   MultiplePointer::set_pos (float x_pos, float y_pos)
   {
-    for (unsigned int i = 0; i < pointers.size(); i++)
+    for (unsigned int i = 0; i < pointers.size(); ++i)
       pointers[i]->set_pos(x_pos, y_pos);
   }    
 
@@ -59,10 +59,10 @@ namespace Input
   {
     unsigned int do_break = UINT_MAX;
   
-    for (unsigned int i = 0; i < pointers.size(); i++)
+    for (unsigned int i = 0; i < pointers.size(); ++i)
       pointers[i]->update(delta);
 	
-    for (unsigned int i = 0; i < pointers.size(); i++)
+    for (unsigned int i = 0; i < pointers.size(); ++i)
       {
 	if (pointers[i]->get_x_pos() != old_x_pos)
 	  {
@@ -86,7 +86,7 @@ namespace Input
     if (do_break == UINT_MAX)
       return;
 	          
-    for (unsigned int n = 0; n < pointers.size(); n++)
+    for (unsigned int n = 0; n < pointers.size(); ++n)
       if (n != do_break)
         pointers[n]->set_pos(x_pos, y_pos);
   }

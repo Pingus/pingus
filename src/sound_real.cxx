@@ -1,4 +1,4 @@
-//  $Id: sound_real.cxx,v 1.3 2002/06/23 19:16:41 torangan Exp $
+//  $Id: sound_real.cxx,v 1.4 2002/08/17 17:56:23 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -50,8 +50,8 @@ PingusSoundReal::~PingusSoundReal()
     delete music;
   }
   
-  // Alle allozierten Sound Buffer wieder löschen
-  for (unsigned int i = 0; i < sound_holder.size(); i++)
+  // delete all sound buffers
+  for (unsigned int i = 0; i < sound_holder.size(); ++i)
     delete sound_holder[i];
   
   if (is_init) {

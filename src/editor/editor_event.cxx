@@ -1,4 +1,4 @@
-//  $Id: editor_event.cxx,v 1.28 2002/08/16 13:03:36 torangan Exp $
+//  $Id: editor_event.cxx,v 1.29 2002/08/17 17:56:23 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -399,7 +399,7 @@ EditorEvent::editor_convert_group_to_selection()
 
 	  for(std::vector<EditorObj*>::iterator i = objs->begin();
 	      i != objs->end();
-	      i++)
+	      ++i)
 	    {
 	      EditorObj* obj = (*i)->duplicate ();
 	      if (obj)
@@ -437,11 +437,11 @@ EditorEvent::editor_convert_selection_to_group()
       // We need to collect the objects out of the editor_objs list to keep the correct sorting
       for (ObjectManager::EditorObjIter j = object_manager->editor_objs.begin();
 	   j != object_manager->editor_objs.end();
-	   j++)
+	   ++j)
 	{
 	  for (std::vector<EditorObj*>::const_iterator i = selection->get_objects().begin();
 	       i != selection->get_objects().end();
-	       i++)
+	       ++i)
 	    { 
 	      if (*j == *i)
 		{
@@ -453,7 +453,7 @@ EditorEvent::editor_convert_selection_to_group()
 
       for(std::vector<EditorObj*>::iterator i = to_erase.begin();
 	  i != to_erase.end();
-	  i++)
+	  ++i)
 	object_manager->erase(*i);
 
       object_manager->add (group);
@@ -539,7 +539,7 @@ EditorEvent::editor_load_level()
 
   dir = System::opendir(System::get_statdir() + "levels/", "*");
 
-  for (System::Directory::iterator i = dir.begin(); i != dir.end(); i++)
+  for (System::Directory::iterator i = dir.begin(); i != dir.end(); ++i)
     {
       //std::cout << "dirs: " << System::get_statdir() + "levels/" +  i->name << std::endl;
       
@@ -583,7 +583,7 @@ EditorEvent::editor_save_level_as()
   // FIXME: *.xml or better switch to CL_DirectoryScanner
   dir = System::opendir(System::get_statdir() + "levels/", "*");
 
-  for (System::Directory::iterator i = dir.begin(); i != dir.end(); i++)
+  for (System::Directory::iterator i = dir.begin(); i != dir.end(); ++i)
     {
       //std::cout << "dirs: " << System::get_statdir() + "levels/" +  i->name << std::endl;
       str = System::get_statdir() + "levels/" + i->name;
@@ -615,7 +615,7 @@ EditorEvent::editor_duplicate_current_selection()
   
   for (std::vector<EditorObj*>::const_iterator i = selection->get_objects().begin(); 
        i != selection->get_objects().end();
-       i++)
+       ++i)
     {
       /*ObjectManager::EditorObjIter iter = std::find(object_manager->editor_objs.begin(), 
 						    object_manager->editor_objs.end(), 
@@ -661,7 +661,7 @@ EditorEvent::editor_insert_new_object()
       
   if (!objs.empty ()) 
     {
-      for (ObjectManager::EditorObjIter i = objs.begin (); i != objs.end (); i++)
+      for (ObjectManager::EditorObjIter i = objs.begin (); i != objs.end (); ++i)
 	object_manager->editor_objs.push_back(*i);
     } 
   else 

@@ -1,4 +1,4 @@
-//  $Id: button_panel.cxx,v 1.10 2002/08/14 12:45:01 torangan Exp $
+//  $Id: button_panel.cxx,v 1.11 2002/08/17 17:56:23 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -52,7 +52,7 @@ ButtonPanel::ButtonPanel(PLF* plf, int arg_x_pos, int arg_y_pos)
       buttons_data.push_back(ActionData(Miner, 20));
     }
 
-  for(std::vector<ActionData>::size_type i = 0; i < buttons_data.size(); i++)
+  for(std::vector<ActionData>::size_type i = 0; i < buttons_data.size(); ++i)
     {
       a_buttons.push_back(new VerticalActionButton (x_pos, i * 38 + y_pos,
 						    buttons_data[i].name,

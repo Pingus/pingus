@@ -1,4 +1,4 @@
-//  $Id: screenshot.cxx,v 1.4 2002/06/21 07:45:35 grumbel Exp $
+//  $Id: screenshot.cxx,v 1.5 2002/08/17 17:56:23 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -145,8 +145,8 @@ Screenshot::save_generic_target_to_file(CL_Target* target, std::string filename)
       << "255" << std::endl;
 
   target->lock();
-  for (unsigned int y=0; y < target->get_height(); y++) {
-    for (unsigned int x=0; x < target->get_width(); x++)
+  for (unsigned int y=0; y < target->get_height(); ++y) {
+    for (unsigned int x=0; x < target->get_width(); ++x)
       {
 	target->get_pixel(x, y, &red, &green, &blue, &alpha);
 	out << (int)(red * 255) << " " 
@@ -168,7 +168,7 @@ Screenshot::get_filename()
     sprintf(str, "%d.pnm", i);
     tmp_filename = System::get_statdir() + "screenshots/" 
       + "pingus-" + get_date() + "-" + std::string(str);
-    i++;
+    ++i;
   } while (System::exist(tmp_filename));
   
   return tmp_filename;

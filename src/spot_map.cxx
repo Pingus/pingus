@@ -1,4 +1,4 @@
-//  $Id: spot_map.cxx,v 1.6 2002/08/16 15:13:59 torangan Exp $
+//  $Id: spot_map.cxx,v 1.7 2002/08/17 17:56:23 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -170,7 +170,7 @@ PingusSpotMap::load(PLF* plf)
 
   for (vector<GroundpieceData>::iterator i = surfaces.begin();
        i != surfaces.end();
-       i++) // WIN32BUG
+       ++i) // WIN32BUG
     {
       i->surface = PingusResource::load_surface(i->desc);
     }
@@ -190,7 +190,7 @@ PingusSpotMap::create_map()
   // Drawing all surfaces to the provider
   for(std::vector<GroundpieceData>::iterator i = surfaces.begin(); 
       i != surfaces.end(); 
-      i++)
+      ++i)
     {
       mark_tiles_not_empty((int) i->pos.x, (int) i->pos.y,
 			   i->surface.get_width(), i->surface.get_height());
@@ -265,11 +265,11 @@ PingusSpotMap::draw(int x_pos, int y_pos, int w, int h,
       	  // drawing the stuff
 	  for (TileIter x = start_x; 
 	       x <= (start_x + tilemap_width) && x < tile.size();
-	       x++)
+	       ++x)
 	    {
 	      for (TileIter y = start_y;
 		   y <= start_y + tilemap_height && y < tile[x].size();
-		   y++)
+		   ++y)
 		{
 		  if (!tile[x][y].is_empty()) 
 		    {
@@ -581,8 +581,8 @@ PingusSpotMap::mark_tiles_not_empty(int x_pos, int y_pos, int sur_width, int sur
   //cout << "X: " << start_x << " Y: " << start_y << endl;
   //cout << "stop_X: " << stop_x << " stop_Y: " << stop_y << endl;
 
-  for(int y = start_y; y < stop_y; y++) {
-    for(int x = start_x; x < stop_x; x++) {
+  for(int y = start_y; y < stop_y; ++y) {
+    for(int x = start_x; x < stop_x; ++x) {
       tile[x][y].set_empty(false);
     }
   }

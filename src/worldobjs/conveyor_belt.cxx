@@ -1,4 +1,4 @@
-//  $Id: conveyor_belt.cxx,v 1.5 2002/07/02 10:42:39 grumbel Exp $
+//  $Id: conveyor_belt.cxx,v 1.6 2002/08/17 17:56:24 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -109,7 +109,7 @@ void
 ConveyorBelt::draw_offset (int x_of, int y_of, float /*s*/)
 {
   left_sur.put_screen (int(pos.x + x_of), int(pos.y + y_of), int(counter));
-  for (int i=0; i < width; i++)
+  for (int i=0; i < width; ++i)
     middle_sur.put_screen (int(pos.x + left_sur.get_width () + i*middle_sur.get_width () + x_of), 
 			   int(pos.y + y_of), 
 			   int(counter));
@@ -121,7 +121,7 @@ void
 ConveyorBelt::draw_colmap ()
 {
   CL_Surface sur(PingusResource::load_surface("conveyorbelt_cmap", "worldobjs"));
-  for (int i=0; i < (width+2); i++)
+  for (int i=0; i < (width+2); ++i)
     world->get_colmap()->put(sur, int(pos.x) + (15*i), int(pos.y), GroundpieceData::GP_SOLID);
 }
 
@@ -174,7 +174,7 @@ void
 EditorConveyorBeltObj::draw (EditorView * view)
 {
   view->draw (left_sur, pos, int(counter));
-  for (int i=0; i < ConveyorBeltData::width; i++)
+  for (int i=0; i < ConveyorBeltData::width; ++i)
     view->draw (middle_sur, int(pos.x) + left_sur.get_width () + i*middle_sur.get_width (),
 		int(pos.y),
 		int(counter));

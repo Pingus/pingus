@@ -1,4 +1,4 @@
-//  $Id: axis_scroller.cxx,v 1.3 2002/08/14 12:41:22 torangan Exp $
+//  $Id: axis_scroller.cxx,v 1.4 2002/08/17 17:56:24 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,7 +34,7 @@ namespace Input {
   
   AxisScroller::~AxisScroller ()
   {
-    for (unsigned int i=0; i < axes.size(); i++)
+    for (unsigned int i=0; i < axes.size(); ++i)
       delete axes[i];
   }
   

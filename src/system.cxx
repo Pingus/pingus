@@ -1,4 +1,4 @@
-//  $Id: system.cxx,v 1.4 2002/06/22 17:40:55 grumbel Exp $
+//  $Id: system.cxx,v 1.5 2002/08/17 17:56:23 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -421,7 +421,7 @@ System::checksum (std::string filename)
 	  throw Error (_("System:checksum: file read error"));
 	}
 
-      for (int i=0; i < bytes_read; i++)
+      for (int i=0; i < bytes_read; ++i)
 	checksum = checksum * 17 + buffer[i];
     } 
   while (bytes_read != 0);

@@ -1,4 +1,4 @@
-//  $Id: string_reader.cxx,v 1.5 2002/07/08 17:05:09 grumbel Exp $
+//  $Id: string_reader.cxx,v 1.6 2002/08/17 17:56:23 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -117,12 +117,12 @@ StringReader::complete_string()
     
   console << "\nCompletions:\n" <<   "~~~~~~~~~~~~" << std::endl;
 
-  for(std::list<std::string>::iterator i = strings->begin(); i != strings->end(); i++)
+  for(std::list<std::string>::iterator i = strings->begin(); i != strings->end(); ++i)
     {
       if (i->find(current_string) == 0)
 	{
 	  console << *i << std::endl;
-	  completions_counter++;
+	  ++completions_counter;
 	  completion = &(*i);
 	  completions.push_back(&(*i));
 	}
@@ -144,7 +144,7 @@ StringReader::find_uniq()
   while (i != completions.end())
     {
       ret_string = while_eq(ret_string, **i);
-      i++;
+      ++i;
     }
 
   return ret_string;
@@ -157,7 +157,7 @@ StringReader::while_eq(const std::string& a, const std::string& b)
   
   for(std::string::size_type i = 0;
       i < a.size() && i < b.size() && a[i] == b[i];
-      i++)
+      ++i)
     {
       ret_string += a[i];
     }

@@ -1,4 +1,4 @@
-//  $Id: object_selector.cxx,v 1.8 2002/07/08 17:05:09 grumbel Exp $
+//  $Id: object_selector.cxx,v 1.9 2002/08/17 17:56:23 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -575,7 +575,7 @@ ObjectSelector::select_surface(const std::string & resource_file)
   std::vector<surface_obj> sur_list;
   int j = 0;
 
-  for(std::list<string>::iterator i = liste->begin(); i != liste->end(); i++)
+  for(std::list<string>::iterator i = liste->begin(); i != liste->end(); ++i)
     {
       // FIXME: This should be moved to ThumbCache
       ++j;

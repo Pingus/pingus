@@ -1,4 +1,4 @@
-//  $Id: world.cxx,v 1.13 2002/06/28 15:12:22 torangan Exp $
+//  $Id: world.cxx,v 1.14 2002/08/17 17:56:23 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -138,7 +138,7 @@ World::update(float delta)
     {
       // The iterator here might be invalid
       (*armageddon_count)->request_set_action(Bomber);
-      armageddon_count++;
+      ++armageddon_count;
     }
     
   // Let all pingus move and
@@ -160,7 +160,7 @@ World::update(float delta)
       (*pingu)->update(delta);
       
       if ((*pingu)->need_catch()) {
-	for(PinguIter i = pingus->begin(); i != pingus->end(); i++) {
+	for(PinguIter i = pingus->begin(); i != pingus->end(); ++i) {
 	  (*pingu)->catch_pingu(*i);
 	}
       }
@@ -189,14 +189,14 @@ World::init_worldobjs()
 
   for(vector<WeatherData>::iterator i = weather_d.begin();
       i != weather_d.end();
-      i++)
+      ++i)
     {
       world_obj->push_back(WeatherGenerator::create(*i));
     }
 
   for (vector<WorldObjData*>::iterator i = worldobj_d.begin ();
        i != worldobj_d.end ();
-       i++)
+       ++i)
     {
       WorldObj* obj = (*i)->create_WorldObj ();
       if (obj)

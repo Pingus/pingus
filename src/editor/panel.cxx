@@ -1,4 +1,4 @@
-//  $Id: panel.cxx,v 1.3 2002/07/01 12:46:22 grumbel Exp $
+//  $Id: panel.cxx,v 1.4 2002/08/17 17:56:23 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -101,7 +101,7 @@ Panel::draw()
  
   logo.put_screen(0, CL_Display::get_height() - logo.get_height());
 
-  for (std::vector<PanelIcon*>::iterator i = buttons.begin(); i != buttons.end(); i++)
+  for (std::vector<PanelIcon*>::iterator i = buttons.begin(); i != buttons.end(); ++i)
     {
       (*i)->put_screen(0, y);
       y += 25;
@@ -146,7 +146,7 @@ Panel::on_click()
       int y = 0;
       // std::cout << "Click" << std::endl;
 
-      for (std::vector<PanelIcon*>::iterator i = buttons.begin(); i != buttons.end(); i++)
+      for (std::vector<PanelIcon*>::iterator i = buttons.begin(); i != buttons.end(); ++i)
 	{
 	  if (CL_Mouse::get_y() > y && CL_Mouse::get_y() < y + 25)
 	    {
@@ -165,7 +165,7 @@ Panel::on_release()
     {
       int y = 0;
       
-      for (std::vector<PanelIcon*>::iterator i = buttons.begin(); i != buttons.end(); i++)
+      for (std::vector<PanelIcon*>::iterator i = buttons.begin(); i != buttons.end(); ++i)
 	{
 	  if (CL_Mouse::get_y() > y && CL_Mouse::get_y() < y + 25)
 	    {

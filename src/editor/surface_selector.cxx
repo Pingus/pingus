@@ -1,4 +1,4 @@
-//  $Id: surface_selector.cxx,v 1.2 2002/06/23 12:47:50 grumbel Exp $
+//  $Id: surface_selector.cxx,v 1.3 2002/08/17 17:56:24 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -52,7 +52,7 @@ SurfaceSelector::get_current_obj()
   
   for(vector<surface_obj>::iterator i = sur_list->begin(); 
       i != sur_list->end(); 
-      i++)
+      ++i)
     {
       if (CL_Mouse::get_x() > x && CL_Mouse::get_x() <= x + 50
 	  && CL_Mouse::get_y() > y && CL_Mouse::get_y() <= y + 50)
@@ -96,7 +96,7 @@ SurfaceSelector::draw()
   CL_Display::clear_display();
 
   // Draw all surfaces
-  for(vector<surface_obj>::iterator i = sur_list->begin(); i != sur_list->end(); i++)
+  for(vector<surface_obj>::iterator i = sur_list->begin(); i != sur_list->end(); ++i)
     {
       if (i->thumbnail.get_width() <= 50 && i->thumbnail.get_height() <= 50)
 	{

@@ -1,4 +1,4 @@
-//  $Id: starfield_background.cxx,v 1.5 2002/07/02 10:42:38 grumbel Exp $
+//  $Id: starfield_background.cxx,v 1.6 2002/08/17 17:56:23 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -179,13 +179,13 @@ StarfieldBackground::StarfieldBackground (const StarfieldBackgroundData& data)
 
   int i = 0;
 
-  for (i=0; i < small_stars_count; i++)
+  for (i=0; i < small_stars_count; ++i)
     stars.push_back (StarfieldBackgroundStars (StarfieldBackgroundStars::SMALL_STAR));
 
-  for (i=0; i < middle_stars_count; i++)
+  for (i=0; i < middle_stars_count; ++i)
     stars.push_back (StarfieldBackgroundStars (StarfieldBackgroundStars::MIDDLE_STAR));
 
-  for (i=0; i < large_stars_count; i++)
+  for (i=0; i < large_stars_count; ++i)
     stars.push_back (StarfieldBackgroundStars (StarfieldBackgroundStars::LARGE_STAR));
 }
 
@@ -200,7 +200,7 @@ void
 StarfieldBackground::update(float delta)
 {
   for (std::vector<StarfieldBackgroundStars>::iterator i = stars.begin ();
-       i != stars.end (); i++)
+       i != stars.end (); ++i)
     {
       i->update (delta);
     }
@@ -210,7 +210,7 @@ void
 StarfieldBackground::draw_offset(int x_of, int y_of, float /*s*/)
 {
   for (std::vector<StarfieldBackgroundStars>::iterator i = stars.begin ();
-       i != stars.end (); i++)
+       i != stars.end (); ++i)
     {
       i->draw_offset (x_of, y_of);
     }

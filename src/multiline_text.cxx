@@ -1,4 +1,4 @@
-//  $Id: multiline_text.cxx,v 1.3 2002/06/20 16:48:11 grumbel Exp $
+//  $Id: multiline_text.cxx,v 1.4 2002/08/17 17:56:23 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -51,7 +51,7 @@ MultiLineText::set_text(const string& str, int text_width)
 
       for(unsigned int i=j; /* i < (text_width + j) */ 
 	  font->get_text_width(str.substr(j, i-j).c_str()) < text_width;
-	  i++)
+	  ++i)
 	{
 	  if (i >= str.length()) 
 	    {
@@ -75,11 +75,11 @@ MultiLineText::set_text(const string& str, int text_width)
   //cout << "MultiLineText: " << str << endl;
   /*
   cout << "MultiLineText: " << endl;
-  for(vector<string>::iterator i = text.begin(); i != text.end(); i++)
+  for(vector<string>::iterator i = text.begin(); i != text.end(); ++i)
     cout << "  " << *i << endl;
   */
   width = 0;
-  for(vector<string>::iterator i = text.begin(); i != text.end(); i++)
+  for(vector<string>::iterator i = text.begin(); i != text.end(); ++i)
 	  width = Math::max(width, font->get_text_width(i->c_str()));
 
   height = text.size() * font->get_height();
@@ -92,7 +92,7 @@ MultiLineText::print_left(int x_pos, int y_pos)
 
   for(vector<string>::iterator i = text.begin(); 
       i != text.end();
-      i++)
+      ++i)
     {
       font->print_left(x_pos, y_pos + y_inc, i->c_str());
       y_inc += font->get_height();
@@ -106,7 +106,7 @@ MultiLineText::print_right(int x_pos, int y_pos)
 
   for(vector<string>::iterator i = text.begin(); 
       i != text.end();
-      i++)
+      ++i)
     {
       font->print_right(x_pos, y_pos + y_inc, i->c_str());
       y_inc += font->get_height();
@@ -120,7 +120,7 @@ MultiLineText::print_center(int x_pos, int y_pos)
 
   for(vector<string>::iterator i = text.begin(); 
       i != text.end();
-      i++)
+      ++i)
     {
       font->print_center(x_pos, y_pos + y_inc, i->c_str());
       y_inc += font->get_height();

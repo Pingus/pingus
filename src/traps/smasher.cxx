@@ -1,4 +1,4 @@
-//  $Id: smasher.cxx,v 1.5 2002/06/28 15:12:23 torangan Exp $
+//  $Id: smasher.cxx,v 1.6 2002/08/17 17:56:24 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -59,7 +59,7 @@ Smasher::update(float /*delta*/)
 	      --count; 
 	      PingusSound::play_sound("sounds/tenton.wav", 0.7f);
 	      
-	      for(int i=0; i < 20; i++)
+	      for(int i=0; i < 20; ++i)
 		{
 		  world->get_particle_holder()
 		    ->add_particle(new SmokeParticle(int(pos.x + 20 + rand() % 260),

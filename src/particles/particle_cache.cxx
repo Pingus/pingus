@@ -1,4 +1,4 @@
-//  $Id: particle_cache.cxx,v 1.2 2002/06/13 14:25:13 torangan Exp $
+//  $Id: particle_cache.cxx,v 1.3 2002/08/17 17:56:24 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,7 +39,7 @@ ParticleCache::create()
     {
       std::vector<Particle*>::iterator particle = position;
       
-      position++;
+      ++position;
       return *particle;
     }
   else 
@@ -48,7 +48,7 @@ ParticleCache::create()
       
       std::cout << "Out of particles" << std::endl;
       particles.push_back(new PinguParticle());
-      position++;
+      ++position;
 
       return *particle;
     }
@@ -57,7 +57,7 @@ ParticleCache::create()
 void
 ParticleCache::allocate(int num_objs)
 {
-  for(int i=0; i < num_objs; i++)
+  for(int i=0; i < num_objs; ++i)
     {
       particles.push_back(new PinguParticle());
     }
@@ -66,7 +66,7 @@ ParticleCache::allocate(int num_objs)
 void
 ParticleCache::clear()
 {
-  for(std::vector<Particle*>::iterator i = particles.begin(); i != particles.end(); i++)
+  for(std::vector<Particle*>::iterator i = particles.begin(); i != particles.end(); ++i)
     {
       delete (*i);
     }  

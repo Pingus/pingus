@@ -1,4 +1,4 @@
-//  $Id: particle_holder.cxx,v 1.1 2002/06/12 19:11:31 grumbel Exp $
+//  $Id: particle_holder.cxx,v 1.2 2002/08/17 17:56:24 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,7 +36,7 @@ ParticleHolder::~ParticleHolder()
 void
 ParticleHolder::update(float delta)
 {
-  for(std::list<Particle*>::iterator i = this->begin(); i != this->end(); i++) 
+  for(std::list<Particle*>::iterator i = this->begin(); i != this->end(); ++i) 
     {
       if ((*i)->is_alive()) 
 	{
@@ -53,7 +53,7 @@ ParticleHolder::update(float delta)
 void
 ParticleHolder::draw_offset(int x, int y, float s) // const
 {
-  for(std::list<Particle*>::iterator i = this->begin(); i != this->end(); i++) 
+  for(std::list<Particle*>::iterator i = this->begin(); i != this->end(); ++i) 
     { 
       (*i)->draw_offset(x, y, s);
     }
@@ -62,7 +62,7 @@ ParticleHolder::draw_offset(int x, int y, float s) // const
 void
 ParticleHolder::add_pingu_explo(int x, int y)
 {
-  for(int i=0; i < 50; i++) 
+  for(int i=0; i < 50; ++i) 
     {
       add_pingu_particle(x, y, frand()*7 - 3.5, frand()* -7.0);
     }
@@ -96,7 +96,7 @@ void
 ParticleHolder::clear_particles()
 {
   std::cout << "ParticleHolder:: Clearing particles" << std::endl;
-  for(std::vector<Particle*>::iterator i = all_particles.begin(); i != all_particles.end(); i++)
+  for(std::vector<Particle*>::iterator i = all_particles.begin(); i != all_particles.end(); ++i)
     {
       delete (*i);
     }

@@ -1,4 +1,4 @@
-//  $Id: credits.cxx,v 1.6 2002/08/17 00:25:06 grumbel Exp $
+//  $Id: credits.cxx,v 1.7 2002/08/17 17:56:23 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -139,7 +139,7 @@ Credits::draw_background ()
 			0.0, 0.0, 0.0, 1.0);
 
   yof = 0;
-  for (std::vector<std::string>::iterator i = credits.begin(); i != credits.end(); i++)
+  for (std::vector<std::string>::iterator i = credits.begin(); i != credits.end(); ++i)
     {
       switch ((*i)[0])
 	{

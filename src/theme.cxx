@@ -1,4 +1,4 @@
- //  $Id: theme.cxx,v 1.3 2002/08/02 11:25:47 grumbel Exp $
+ //  $Id: theme.cxx,v 1.4 2002/08/17 17:56:23 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -108,7 +108,7 @@ Theme::mark_level_at_point(int x, int y)
 
   for(std::vector<std::string>::iterator i = levelnames.begin();
       i < levelnames.end(); 
-      i++, j++)
+      ++i, ++j)
     {
       int width = font->get_text_width(i->c_str());
       
@@ -215,7 +215,7 @@ Theme::draw_title()
 	{
 	  font->print_center(x_center, y_pos, (*i).c_str());
 	}
-      j++;
+      ++j;
       y_pos += font->get_height() + 4;     
     }
 }
@@ -294,7 +294,7 @@ Theme::next_level()
 {
   preload ();
 
-  current_level++;
+  ++current_level;
 
   if ((unsigned int)(current_level) >= level_filenames.size()) 
     current_level = level_filenames.size() - 1;
@@ -326,7 +326,7 @@ Theme::load_levels()
   if (verbose) std::cout << "Theme opening levels... " << std::flush;
 
   for(std::vector<std::string>::iterator i = level_filenames.begin(); 
-      i != level_filenames.end(); i++)
+      i != level_filenames.end(); ++i)
     {
       filename = path_manager.complete("levels/" + *i);
 

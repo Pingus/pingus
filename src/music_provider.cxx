@@ -1,4 +1,4 @@
-//  $Id: music_provider.cxx,v 1.1 2002/06/12 19:09:37 grumbel Exp $
+//  $Id: music_provider.cxx,v 1.2 2002/08/17 17:56:23 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -59,7 +59,7 @@ PingusMusicProvider::load(std::string str)
 Mix_Music*
 PingusMusicProvider::get(std::string str)
 {
-  for(std::list<music_pair>::iterator i = music.begin(); i != music.end(); i++)
+  for(std::list<music_pair>::iterator i = music.begin(); i != music.end(); ++i)
     {
       if (i->filename == str)
 	return i->data;

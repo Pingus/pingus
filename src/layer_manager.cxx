@@ -1,4 +1,4 @@
-//  $Id: layer_manager.cxx,v 1.1 2002/06/12 19:09:37 grumbel Exp $
+//  $Id: layer_manager.cxx,v 1.2 2002/08/17 17:56:23 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -52,7 +52,7 @@ void
 LayerManager::update (float delta)
 {
   for (std::vector<Layer>::iterator i = layers.begin (); 
-       i != layers.end (); i++)
+       i != layers.end (); ++i)
     i->update (delta);
 }
 

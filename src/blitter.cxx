@@ -1,4 +1,4 @@
-//  $Id: blitter.cxx,v 1.11 2002/08/16 15:13:59 torangan Exp $
+//  $Id: blitter.cxx,v 1.12 2002/08/17 17:56:23 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -201,8 +201,8 @@ Blitter::put_surface_32bit(CL_Canvas* canvas, CL_SurfaceProvider* provider,
   provider->lock();
   if (1) // slow
     {
-      for(int y = Math::max(0, -y_pos); y < sheight && (y + y_pos) < theight ; y++) 
-	for(int x = Math::max(0,-x_pos); x < swidth && (x + x_pos) < twidth; x++) 
+      for(int y = Math::max(0, -y_pos); y < sheight && (y + y_pos) < theight; ++y) 
+	for(int x = Math::max(0,-x_pos); x < swidth && (x + x_pos) < twidth; ++x) 
 	  {
 	    provider->get_pixel(x, y, &red, &green, &blue, &alpha);
 	    canvas->get_pixel(x + x_pos, y + y_pos, &tred, &tgreen, &tblue, &talpha);
@@ -393,9 +393,9 @@ Blitter::scale_surface_to_canvas (const CL_Surface& sur, int width, int height)
     {
       // Slow but generic, using get_data () would be better, but would
       // require quite a bit of work
-      for (int y = 0; y < height; y++)
+      for (int y = 0; y < height; ++y)
 	{
-	  for (int x = 0; x < width; x++)
+	  for (int x = 0; x < width; ++x)
 	    {
 	      unsigned char pixel = *(static_cast<unsigned char*>(provider->get_data ()) 
 				      + (y * pheight/height) * provider->get_pitch() + (x * pwidth/width));
@@ -422,8 +422,8 @@ Blitter::scale_surface_to_canvas (const CL_Surface& sur, int width, int height)
 	  {
 	    // We assume that we have the data in RGB888, which might not be
 	    // the case
-	    for (int y = 0; y < height; y++)
-	      for (int x = 0; x < width; x++)
+	    for (int y = 0; y < height; ++y)
+	      for (int x = 0; x < width; ++x)
 		{
 		  int ti = (y * width + x) * 4;
 		  int si = ((y * pheight / height) * pwidth
@@ -440,8 +440,8 @@ Blitter::scale_surface_to_canvas (const CL_Surface& sur, int width, int height)
 	  {
 	    // We assume that we have the data in RGBA8888, which might not be
 	    // the case
-	    for (int y = 0; y < height; y++)
-	      for (int x = 0; x < width; x++)
+	    for (int y = 0; y < height; ++y)
+	      for (int x = 0; x < width; ++x)
 		{
 		  int ti = (y * width + x) * 4;
 		  int si = ((y * pheight / height) * pwidth
@@ -457,8 +457,8 @@ Blitter::scale_surface_to_canvas (const CL_Surface& sur, int width, int height)
 	default:
 	  // Slow but generic, using get_data () would be better, but would
 	  // require quite a bit of work
-	  for (int y = 0; y < height; y++)
-	    for (int x = 0; x < width; x++)
+	  for (int y = 0; y < height; ++y)
+	    for (int x = 0; x < width; ++x)
 	      {
 		// std::cout << "X: " << x << " Y: " << y << std::endl;
 		provider->get_pixel (x * provider->get_width () / width,

@@ -1,4 +1,4 @@
-//  $Id: force_vector.cxx,v 1.3 2002/06/21 07:45:35 grumbel Exp $
+//  $Id: force_vector.cxx,v 1.4 2002/08/17 17:56:23 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -92,11 +92,11 @@ ForcesHolder::apply_forces(CL_Vector p,CL_Vector v)
   CL_Vector tv = v;
 
   // Go through all of the forces and apply them all
-  for (GForceIter i = grav_array.begin(); i != grav_array.end(); i++)
+  for (GForceIter i = grav_array.begin(); i != grav_array.end(); ++i)
     tv = i->apply_forces(p,v);
   
   // Explosion array...
-  for (EForceIter j = explo_array.begin(); j != explo_array.end(); j++)
+  for (EForceIter j = explo_array.begin(); j != explo_array.end(); ++j)
     tv = j->apply_forces(p,v);
   
   return tv;

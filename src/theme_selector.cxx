@@ -1,4 +1,4 @@
-//  $Id: theme_selector.cxx,v 1.3 2002/08/16 15:13:59 torangan Exp $
+//  $Id: theme_selector.cxx,v 1.4 2002/08/17 17:56:23 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -49,7 +49,7 @@ ListBox::draw_offset(int x, int y)
   CL_Display::fill_rect(x, y, x + 200, CL_Display::get_height() - 20,
 			0.0, 0.0, 0.0, 0.5);
   for(ListIter item = items.begin(); item != items.end(); ++item) {
-    item->draw_offset(x, y + (i++ * 20));
+    item->draw_offset(x, y + (i++ * 20)); // FIXME i++ is a bit ambigious here
   }
 }
 
@@ -215,7 +215,7 @@ ThemeSelector::~ThemeSelector()
 {
   // FIXME: Deleting the stuff which was allocated in readdir()
   // FIXME: Should be rewritten
-  for(std::vector<Theme*>::iterator i = themes.begin(); i != themes.end(); i++)
+  for(std::vector<Theme*>::iterator i = themes.begin(); i != themes.end(); ++i)
     delete (*i);
 
   // CL_Input::chain_mouse_move.remove(event);
@@ -326,7 +326,7 @@ ThemeSelector::readdir(std::string path)
       std::cout << "ThemeSelector: " << pathname << std::endl;
       dir = System::opendir(pathname, "*.xml");
       
-      for(System::Directory::iterator entry = dir.begin(); entry != dir.end(); entry++)
+      for(System::Directory::iterator entry = dir.begin(); entry != dir.end(); ++entry)
 	{
 	  if (verbose) std::cout << "ThemeSelelector: Name of entry: " << pathname + entry->name << std::endl;
 	  try {

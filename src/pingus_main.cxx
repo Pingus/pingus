@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.11 2002/08/17 00:27:21 grumbel Exp $
+//   $Id: pingus_main.cxx,v 1.12 2002/08/17 17:56:23 torangan Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -158,7 +158,7 @@ void
 PingusMain::quick_check_args(int argc, char** argv)
 {
   no_config_file = false;
-  for(int i=1; i < argc; i++)
+  for(int i=1; i < argc; ++i)
     {
       if (strcmp(argv[i], "--no-cfg-file") == 0)
 	{

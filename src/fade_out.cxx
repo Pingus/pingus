@@ -1,4 +1,4 @@
-//  $Id: fade_out.cxx,v 1.2 2002/06/20 16:48:11 grumbel Exp $
+//  $Id: fade_out.cxx,v 1.3 2002/08/17 17:56:23 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -125,7 +125,7 @@ FadeOut::fade_to_black(int steps)
 {
   CL_Display::sync_buffers();
 
-  for(int i = 0; i < steps; i++)
+  for(int i = 0; i < steps; ++i)
     {
       CL_Display::fill_rect(0,0,
 			    CL_Display::get_width(),

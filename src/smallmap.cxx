@@ -1,4 +1,4 @@
-//  $Id: smallmap.cxx,v 1.10 2002/08/14 12:45:02 torangan Exp $
+//  $Id: smallmap.cxx,v 1.11 2002/08/17 17:56:23 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -68,9 +68,9 @@ SmallMap::init()
   
   cbuffer = static_cast<unsigned char*>(canvas->get_data());
 
-  for(int y = 0; y < height; y++)
+  for(int y = 0; y < height; ++y)
     {
-      for (int x = 0; x < width; x++)
+      for (int x = 0; x < width; ++x)
 	{
 	  tx = x * colmap->get_width() / width;
 	  ty = y * colmap->get_height() / height;
@@ -116,7 +116,7 @@ SmallMap::init()
     }
   /* FIXME: due to API change in PLF disabled
   std::vector<ExitData>     exit_d     = plf->get_exit();
-  for(std::vector<ExitData>::iterator i = exit_d.begin(); i != exit_d.end(); i++)
+  for(std::vector<ExitData>::iterator i = exit_d.begin(); i != exit_d.end(); ++i)
     {
       // FIXME: Replace this with put_target() when it is bug free
       Blitter::put_surface(canvas, exit_sur, 
@@ -125,7 +125,7 @@ SmallMap::init()
     }
 
   std::vector<EntranceData>     entrance_d     = plf->get_entrance();
-  for(std::vector<EntranceData>::iterator i = entrance_d.begin(); i != entrance_d.end(); i++)
+  for(std::vector<EntranceData>::iterator i = entrance_d.begin(); i != entrance_d.end(); ++i)
     {
       Blitter::put_surface(canvas, entrance_sur,
 			   i->pos.x * width / colmap->get_width() - (entrance_sur.get_width()/2),
@@ -178,14 +178,14 @@ SmallMap::draw()
   // FIXME: This should use put_target(), but put_target(), does not
   // seem to work?!
   /*  vector<exit_data>     exit_d     = plf->get_exit();
-  for(std::vector<exit_data>::iterator i = exit_d.begin(); i != exit_d.end(); i++)
+  for(std::vector<exit_data>::iterator i = exit_d.begin(); i != exit_d.end(); ++i)
     {
       exit_sur->put_screen(i->x_pos * width / colmap->get_width() +  x_pos - 3, 
 			   i->y_pos * height / colmap->get_height() + y_pos - 3);
     }
 
   vector<entrance_data>     entrance_d     = plf->get_entrance();
-  for(std::vector<entrance_data>::iterator i = entrance_d.begin(); i != entrance_d.end(); i++)
+  for(std::vector<entrance_data>::iterator i = entrance_d.begin(); i != entrance_d.end(); ++i)
     {
       entrance_sur->put_screen(i->x_pos * width / colmap->get_width() + x_pos - 3,
 			       i->y_pos * height / colmap->get_height() + y_pos);
@@ -201,7 +201,7 @@ SmallMap::draw_pingus()
   int y;
   PinguHolder* pingus = client->get_server()->get_world()->get_pingu_p();
 
-  for(PinguIter i = pingus->begin(); i != pingus->end(); i++)
+  for(PinguIter i = pingus->begin(); i != pingus->end(); ++i)
     {
       //FIXME: Replace this with put pixel
       x = x_pos + ((*i)->get_x() * width / client->get_server()->get_world()->get_colmap()->get_width());

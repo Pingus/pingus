@@ -1,4 +1,4 @@
-//  $Id: thumb_cache.cxx,v 1.7 2002/06/23 19:16:42 torangan Exp $
+//  $Id: thumb_cache.cxx,v 1.8 2002/08/17 17:56:24 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -63,7 +63,7 @@ ThumbCache::load (const std::string & res_ident, const std::string & datafile)
 {
   std::string filename = res_ident + "-" + datafile;
 
-  for (unsigned int i = 0; i < filename.size (); i++)
+  for (unsigned int i = 0; i < filename.size (); ++i)
     if (filename[i] == '/')
       filename[i] = '_';
 
@@ -137,7 +137,7 @@ ThumbCache::cache (const CL_Surface& sur, const std::string & res_ident, const s
     
   std::string filename = res_ident + "-" + datafile;
 
-  for (unsigned int i = 0; i < filename.size (); i++)
+  for (unsigned int i = 0; i < filename.size (); ++i)
     if (filename[i] == '/')
       filename[i] = '_';
 

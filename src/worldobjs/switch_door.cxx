@@ -1,4 +1,4 @@
-//  $Id: switch_door.cxx,v 1.5 2002/07/02 10:42:39 grumbel Exp $
+//  $Id: switch_door.cxx,v 1.6 2002/08/17 17:56:24 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -146,7 +146,7 @@ void
 SwitchDoor::draw_colmap()
 {
   world->get_colmap ()->put (door_box, int(door_pos.x), int(door_pos.y), GroundpieceData::GP_SOLID);
-  for (int i=0; i < door_height; i++)
+  for (int i=0; i < door_height; ++i)
     world->get_colmap ()->put (door_tile_cmap,
 			       int(door_pos.x), 
 			       int(door_pos.y) + i * door_tile.get_height () + door_box.get_height (),
@@ -157,7 +157,7 @@ void
 SwitchDoor::draw_offset(int x_of, int y_of, float /*s*/)
 {
   door_box.put_screen (int(door_pos.x) + x_of, int(door_pos.y) + y_of);
-  for (int i=0; i < current_door_height; i++)
+  for (int i=0; i < current_door_height; ++i)
     door_tile.put_screen (int(door_pos.x) + x_of, 
 			  int(door_pos.y) + y_of 
 			  + i * door_tile.get_height ()
@@ -175,7 +175,7 @@ SwitchDoor::update(float /*delta*/)
 	  // Check if a pingu is passing the switch
 	  PinguHolder* holder = world->get_pingu_p();
       
-	  for (PinguIter pingu = holder->begin (); pingu != holder->end (); pingu++)
+	  for (PinguIter pingu = holder->begin (); pingu != holder->end (); ++pingu)
 	    {
 	      if ((*pingu)->get_x()    > switch_pos.x
 		  && (*pingu)->get_x() < switch_pos.x + (int) switch_sur.get_width ()
@@ -196,7 +196,7 @@ SwitchDoor::update(float /*delta*/)
 	  if (current_door_height + 10 < door_height)
 	    {
 	      world->get_colmap ()->put (door_box, int(door_pos.x), int(door_pos.y), GroundpieceData::GP_NOTHING);
-	      for (int i=0; i < door_height; i++)
+	      for (int i=0; i < door_height; ++i)
 		world->get_colmap ()->put (door_tile_cmap,
 					   int(door_pos.x), 
 					   int(door_pos.y) + i * door_tile.get_height () + door_box.get_height (),
@@ -282,7 +282,7 @@ EditorSwitchDoorObj::draw (EditorView * view)
 
   view->draw (door_box, int(door_pos.x), int(door_pos.y));
 
-  for (int i = 0; i < door_height; i++)
+  for (int i = 0; i < door_height; ++i)
     {
       view->draw (door_tile, 
 		  int(door_pos.x), 

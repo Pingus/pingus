@@ -1,4 +1,4 @@
-//  $Id: plfobj.cxx,v 1.7 2002/08/16 15:14:00 torangan Exp $
+//  $Id: plfobj.cxx,v 1.8 2002/08/17 17:56:23 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -209,7 +209,7 @@ LiquidObj::duplicate()
 void
 LiquidObj::draw (EditorView * view)
 {
-  for(int i = 0; i < width; i++)
+  for(int i = 0; i < width; ++i)
     view->draw (sprite, pos + CL_Vector (i * sprite.get_width (), 0));
 }
 

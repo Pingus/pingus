@@ -1,4 +1,4 @@
-//  $Id: basher.cxx,v 1.8 2002/06/28 15:12:22 torangan Exp $
+//  $Id: basher.cxx,v 1.9 2002/08/17 17:56:23 torangan Exp $
 //
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -115,12 +115,12 @@ Basher::have_something_to_dig()
       return true;
     }
 
-  for(int i = 0; i < 16; i++)
+  for(int i = 0; i < 16; ++i)
     {
       // Check that there is a high enough wall (i.e. not 1 pixel) to bash.
       // Probably best to check from where Pingu can't automatically walk up
       // up to head collision height.
-      for (int j = bash_height + 1; j <= 26; j++)
+      for (int j = bash_height + 1; j <= 26; ++j)
         {
           if (rel_getpixel(i,j) == GroundpieceData::GP_GROUND)
 	    {
