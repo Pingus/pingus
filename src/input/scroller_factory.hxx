@@ -1,4 +1,4 @@
-//  $Id: scroller_factory.hxx,v 1.3 2002/08/23 15:49:56 torangan Exp $
+//  $Id: scroller_factory.hxx,v 1.4 2002/08/24 11:37:30 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,20 +24,22 @@
 
 namespace Input {
 
-  class Scroller;
+  namespace Scrollers {
+    class Scroller;
+  }
 
   class ScrollerFactory 
   {
     private:
-      static inline Scroller* axis_scroller     (xmlNodePtr cur);
-      static inline Scroller* inverted_scroller (xmlNodePtr cur);
-      static inline Scroller* joystick_scroller (xmlNodePtr cur);
-      static inline Scroller* mouse_scroller    (xmlNodePtr cur);
-      static inline Scroller* multiple_scroller (xmlNodePtr cur);
-      static inline Scroller* pointer_scroller  (xmlNodePtr cur);
+      static inline Scrollers::Scroller* axis_scroller     (xmlNodePtr cur);
+      static inline Scrollers::Scroller* inverted_scroller (xmlNodePtr cur);
+      static inline Scrollers::Scroller* joystick_scroller (xmlNodePtr cur);
+      static inline Scrollers::Scroller* mouse_scroller    (xmlNodePtr cur);
+      static inline Scrollers::Scroller* multiple_scroller (xmlNodePtr cur);
+      static inline Scrollers::Scroller* pointer_scroller  (xmlNodePtr cur);
     
     public:
-      static Scroller* create (xmlNodePtr cur);
+      static Scrollers::Scroller* create (xmlNodePtr cur);
       
     private:
       ScrollerFactory ();

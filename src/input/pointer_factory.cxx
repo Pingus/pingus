@@ -1,4 +1,4 @@
-//  $Id: pointer_factory.cxx,v 1.5 2002/08/22 00:36:30 grumbel Exp $
+//  $Id: pointer_factory.cxx,v 1.6 2002/08/24 11:37:30 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,35 +20,38 @@
 #include <stdlib.h>
 #include "../xml_helper.hxx"
 #include "../pingus_error.hxx"
-#include "axis_pointer.hxx"
 #include "axis_factory.hxx"
-#include "mouse_pointer.hxx"
-#include "multiple_pointer.hxx"
-#include "pointer.hxx"
+#include "pointers/axis_pointer.hxx"
+#include "pointers/mouse_pointer.hxx"
+#include "pointers/multiple_pointer.hxx"
+#include "pointers/pointer.hxx"
 #include "pointer_factory.hxx"
 
 namespace Input {
 
-  Pointer* PointerFactory::create(xmlNodePtr cur)
+  using namespace Pointers;
+  using Axes::Axis;
+  
+  Pointer* PointerFactory::create (xmlNodePtr cur)
   {
     if (!cur)
       PingusError::raise("PointerFactory called without an element");
 
     if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "axis-pointer"))
       return axis_pointer(cur);
-      
+    
     else if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "mouse-pointer"))
       return mouse_pointer();
-      
+    
     else if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "multiple-pointer"))
       return multiple_pointer(cur->children);
-      
+    
     else
       PingusError::raise(std::string("Unknown pointer type: ") + ((cur->name) ? reinterpret_cast<const char*>(cur->name) : ""));
-      
+    
     return 0; // never reached
   }
-  
+
   Pointer* PointerFactory::axis_pointer (xmlNodePtr cur)
   {
     char* speed_str = reinterpret_cast<char*>(xmlGetProp(cur, reinterpret_cast<const xmlChar*>("speed")));
@@ -60,7 +63,7 @@ namespace Input {
 
     std::vector<Axis*> axes;
     cur = cur->children;
-    
+  
     while (cur)
       {
         if (xmlIsBlankNode(cur))
@@ -68,11 +71,11 @@ namespace Input {
   	    cur = cur->next;
 	    continue;
 	  }
-	  
+	
 	axes.push_back(AxisFactory::create(cur));
 	cur = cur->next;
       }
-      
+    
     return new AxisPointer(speed, axes);
   }
 
@@ -96,7 +99,7 @@ namespace Input {
 	pointers.push_back(create(cur));
 	cur = cur->next;
       }
-    
+  
     return new MultiplePointer(pointers);
   }
 

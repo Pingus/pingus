@@ -1,4 +1,4 @@
-//  $Id: controller.cxx,v 1.20 2002/08/23 15:49:55 torangan Exp $
+//  $Id: controller.cxx,v 1.21 2002/08/24 11:37:29 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,17 +24,22 @@
 #include "axis_factory.hxx"
 #include "button_factory.hxx"
 #include "controller.hxx"
-#include "dummy_axis.hxx"
-#include "dummy_button.hxx"
-#include "dummy_pointer.hxx"
-#include "dummy_scroller.hxx"
+#include "axes/dummy_axis.hxx"
+#include "buttons/dummy_button.hxx"
+#include "pointers/dummy_pointer.hxx"
+#include "scrollers/dummy_scroller.hxx"
 #include "pointer_event.hxx"
 #include "pointer_factory.hxx"
 #include "scroller_factory.hxx"
 #include "scroll_event.hxx"
 
-namespace Input
-{
+namespace Input {
+
+  using namespace Axes;
+  using namespace Buttons;
+  using namespace Pointers;
+  using namespace Scrollers;
+
   Controller::Controller (const std::string& configfile) : action_axis(0),
                                                            standard_pointer(0), 
 							   scroller(0),

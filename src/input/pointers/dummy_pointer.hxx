@@ -1,4 +1,4 @@
-//  $Id: pointer_factory.hxx,v 1.3 2002/08/24 11:37:30 torangan Exp $
+//  $Id: dummy_pointer.hxx,v 1.1 2002/08/24 11:37:31 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,32 +17,41 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef HEADER_PINGUS_INPUT_POINTER_FACTORY_HXX
-#define HEADER_PINGUS_INPUT_POINTER_FACTORY_HXX
+#ifndef HEADER_PINGUS_INPUT_DUMMY_POINTER_HXX
+#define HEADER_PINGUS_INPUT_DUMMY_POINTER_HXX
 
-#include "../libxmlfwd.hxx"
+#include "pointer.hxx"
 
 namespace Input {
 
   namespace Pointers {
-    class Pointer;
-  }
 
-  class PointerFactory 
-  {
-    private:
-      static inline Pointers::Pointer* axis_pointer     (xmlNodePtr cur);
-      static inline Pointers::Pointer* mouse_pointer    ();
-      static inline Pointers::Pointer* multiple_pointer (xmlNodePtr cur);
+    /**
+      @brief dummy class to be used if a pointer is required but none defined
     
-    public:
-      static Pointers::Pointer* create (xmlNodePtr cur);
+      XML definition: none
+      */
+    class DummyPointer : public Pointer {
+  
+      private:
+        const float pos;
+  
+      public:
+
+        DummyPointer () : pos(0) { }
+
+        virtual const float& get_x_pos () const { return pos; }
+        virtual const float& get_y_pos () const { return pos; }
       
-    private:
-      PointerFactory ();
-      PointerFactory (const PointerFactory&);
-      PointerFactory operator= (const PointerFactory&);
-  };
+        virtual void  set_pos (float, float) { }
+        virtual void  update (float)         { }
+      
+      private:
+        DummyPointer (const DummyPointer&);
+        DummyPointer operator= (const DummyPointer&);
+    };
+
+  }
 }
 
 #endif

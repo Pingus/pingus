@@ -1,4 +1,4 @@
-//  $Id: button_factory.hxx,v 1.4 2002/08/23 15:49:55 torangan Exp $
+//  $Id: button_factory.hxx,v 1.5 2002/08/24 11:37:29 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,26 +24,29 @@
 
 namespace Input {
 
-  class Button;
+  namespace Buttons {
+    class Button;
+  }
 
   class ButtonFactory 
   {
     private:
-      static inline Button* double_button   (xmlNodePtr cur);
-      static inline Button* joystick_button (xmlNodePtr cur);
-      static inline Button* key_button      (xmlNodePtr cur);
-      static inline Button* mouse_button    (xmlNodePtr cur);
-      static inline Button* multiple_button (xmlNodePtr cur);
-      static inline Button* triple_button   (xmlNodePtr cur);
-    
+      static inline Buttons::Button* double_button   (xmlNodePtr cur);
+      static inline Buttons::Button* joystick_button (xmlNodePtr cur);
+      static inline Buttons::Button* key_button      (xmlNodePtr cur);
+      static inline Buttons::Button* mouse_button    (xmlNodePtr cur);
+      static inline Buttons::Button* multiple_button (xmlNodePtr cur);
+      static inline Buttons::Button* triple_button   (xmlNodePtr cur);
+  
     public:
-      static Button* create (xmlNodePtr cur);
-      
+      static Buttons::Button* create (xmlNodePtr cur);
+    
     private:
       ButtonFactory ();
       ButtonFactory (const ButtonFactory&);
       ButtonFactory operator= (const ButtonFactory&);
   };
+
 }
 
 #endif

@@ -1,4 +1,4 @@
-//  $Id: axis_factory.hxx,v 1.4 2002/08/23 15:49:55 torangan Exp $
+//  $Id: axis_factory.hxx,v 1.5 2002/08/24 11:37:29 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,25 +24,28 @@
 
 namespace Input {
 
-  class Axis;
-
+  namespace Axes {
+    class Axis;
+  }
+  
   class AxisFactory 
   {
     private:
-      static inline Axis* button_axis   (xmlNodePtr cur);
-      static inline Axis* inverted_axis (xmlNodePtr cur);
-      static inline Axis* joystick_axis (xmlNodePtr cur);
-      static inline Axis* mouse_axis    (xmlNodePtr cur);
-      static inline Axis* multiple_axis (xmlNodePtr cur);
-    
+      static inline Axes::Axis* button_axis   (xmlNodePtr cur);
+      static inline Axes::Axis* inverted_axis (xmlNodePtr cur);
+      static inline Axes::Axis* joystick_axis (xmlNodePtr cur);
+      static inline Axes::Axis* mouse_axis    (xmlNodePtr cur);
+      static inline Axes::Axis* multiple_axis (xmlNodePtr cur);
+  
     public:
-      static Axis* create (xmlNodePtr cur);
-      
+      static Axes::Axis* create (xmlNodePtr cur);
+    
     private:
       AxisFactory ();
       AxisFactory (const AxisFactory&);
       AxisFactory operator= (const AxisFactory&);
   };
+    
 }
 
 #endif

@@ -15,24 +15,16 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-noinst_LIBRARIES = libpingus_input.a
+noinst_LIBRARIES = libpingus_input_scrollers.a
 
-SUBDIRS = \
-        axes \
-	buttons \
-	pointers \
-	scrollers
-
-libpingus_input_a_SOURCES =       \
-	axis_event.hxx \
-	axis_factory.hxx axis_factory.cxx \
-	button_event.hxx \
-	button_factory.hxx button_factory.cxx \
-	controller.hxx controller.cxx \
-	event.hxx \
-	pointer_event.hxx \
-	pointer_factory.hxx pointer_factory.cxx \
-	scroller_factory.hxx scroller_factory.cxx \
-	scroll_event.hxx 
+libpingus_input_scrollers_a_SOURCES =       \
+	axis_scroller.hxx axis_scroller.cxx \
+	dummy_scroller.hxx \
+	inverted_scroller.hxx inverted_scroller.cxx \
+	joystick_scroller.hxx joystick_scroller.cxx \
+	mouse_scroller.hxx mouse_scroller.cxx \
+	multiple_scroller.hxx multiple_scroller.cxx \
+	pointer_scroller.hxx pointer_scroller.cxx \
+	scroller.hxx
 
 # EOF #

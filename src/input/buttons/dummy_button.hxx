@@ -1,4 +1,4 @@
-//  $Id: pointer_factory.hxx,v 1.3 2002/08/24 11:37:30 torangan Exp $
+//  $Id: dummy_button.hxx,v 1.1 2002/08/24 11:37:31 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,32 +17,33 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef HEADER_PINGUS_INPUT_POINTER_FACTORY_HXX
-#define HEADER_PINGUS_INPUT_POINTER_FACTORY_HXX
+#ifndef HEADER_PINGUS_INPUT_DUMMY_BUTTON_HXX
+#define HEADER_PINGUS_INPUT_DUMMY_BUTTON_HXX
 
-#include "../libxmlfwd.hxx"
+#include "button.hxx"
 
 namespace Input {
 
-  namespace Pointers {
-    class Pointer;
-  }
-
-  class PointerFactory 
-  {
-    private:
-      static inline Pointers::Pointer* axis_pointer     (xmlNodePtr cur);
-      static inline Pointers::Pointer* mouse_pointer    ();
-      static inline Pointers::Pointer* multiple_pointer (xmlNodePtr cur);
+  namespace Buttons {
+  
+    /**
+      @brief dummy class to be used if a button is required but not defined
     
-    public:
-      static Pointers::Pointer* create (xmlNodePtr cur);
+      XML definition: none
+      */
+    class DummyButton : public Button  {
+      public:
+        DummyButton () { }
       
-    private:
-      PointerFactory ();
-      PointerFactory (const PointerFactory&);
-      PointerFactory operator= (const PointerFactory&);
-  };
+        virtual bool is_pressed ()  const { return false; }
+        virtual void update (float) { }
+      
+      private:
+        DummyButton (const DummyButton&);
+        DummyButton operator= (const DummyButton&);
+    };
+    
+  }
 }
 
 #endif

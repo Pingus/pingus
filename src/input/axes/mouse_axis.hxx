@@ -1,4 +1,4 @@
-//  $Id: pointer_factory.hxx,v 1.3 2002/08/24 11:37:30 torangan Exp $
+//  $Id: mouse_axis.hxx,v 1.1 2002/08/24 11:37:31 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,32 +17,42 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef HEADER_PINGUS_INPUT_POINTER_FACTORY_HXX
-#define HEADER_PINGUS_INPUT_POINTER_FACTORY_HXX
+#ifndef HEADER_PINGUS_INPUT_MOUSE_AXIS_HXX
+#define HEADER_PINGUS_INPUT_MOUSE_AXIS_HXX
 
-#include "../libxmlfwd.hxx"
+#include "axis.hxx"
 
 namespace Input {
 
-  namespace Pointers {
-    class Pointer;
-  }
+  namespace Axes {
 
-  class PointerFactory 
-  {
-    private:
-      static inline Pointers::Pointer* axis_pointer     (xmlNodePtr cur);
-      static inline Pointers::Pointer* mouse_pointer    ();
-      static inline Pointers::Pointer* multiple_pointer (xmlNodePtr cur);
+    /**
+      @brief represents an axis of the mouse
     
-    public:
-      static Pointers::Pointer* create (xmlNodePtr cur);
+      XML definition: <mouse-axis angle="?" axis="0/1"/>
+      */
+    class MouseAxis : public Axis {
+
+      private:
+        int   axis;
+        float angle;
+        float pos;
+        float old_pos;
+    
+      public:
+        MouseAxis (int axis_, float angle_);
+
+        virtual const float& get_pos   () const;
+        virtual const float& get_angle () const;
       
-    private:
-      PointerFactory ();
-      PointerFactory (const PointerFactory&);
-      PointerFactory operator= (const PointerFactory&);
-  };
+        virtual void  update (float);
+      
+      private:
+        MouseAxis (const MouseAxis&);
+        MouseAxis operator= (const MouseAxis&);
+    };
+
+  }
 }
 
 #endif

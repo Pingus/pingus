@@ -1,4 +1,4 @@
-//  $Id: pointer_factory.hxx,v 1.3 2002/08/24 11:37:30 torangan Exp $
+//  $Id: mouse_button.cxx,v 1.1 2002/08/24 11:37:31 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,34 +17,34 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef HEADER_PINGUS_INPUT_POINTER_FACTORY_HXX
-#define HEADER_PINGUS_INPUT_POINTER_FACTORY_HXX
-
-#include "../libxmlfwd.hxx"
+#include <ClanLib/Display/Input/input.h>
+#include <ClanLib/Display/Input/inputdevice.h>
+#include <ClanLib/Display/Input/inputbutton.h>
+#include "mouse_button.hxx"
+#include "../../pingus_error.hxx"
 
 namespace Input {
 
-  namespace Pointers {
-    class Pointer;
+  namespace Buttons {
+
+    MouseButton::MouseButton (int button_) : button(button_)
+    {
+      if (button > CL_Input::pointers[0]->get_num_buttons())
+        PingusError::raise("MouseButton: Invalid button id");
+    }
+
+    void
+    MouseButton::update (float)
+    {
+    }
+  
+    bool
+    MouseButton::is_pressed () const
+    {
+      return CL_Input::pointers[0]->get_button(button)->is_pressed();
+    }
+  
   }
-
-  class PointerFactory 
-  {
-    private:
-      static inline Pointers::Pointer* axis_pointer     (xmlNodePtr cur);
-      static inline Pointers::Pointer* mouse_pointer    ();
-      static inline Pointers::Pointer* multiple_pointer (xmlNodePtr cur);
-    
-    public:
-      static Pointers::Pointer* create (xmlNodePtr cur);
-      
-    private:
-      PointerFactory ();
-      PointerFactory (const PointerFactory&);
-      PointerFactory operator= (const PointerFactory&);
-  };
 }
-
-#endif
 
 /* EOF */

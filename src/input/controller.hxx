@@ -1,4 +1,4 @@
-//  $Id: controller.hxx,v 1.11 2002/08/23 15:49:55 torangan Exp $
+//  $Id: controller.hxx,v 1.12 2002/08/24 11:37:29 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,22 +27,34 @@
 #include "../libxmlfwd.hxx"
 #include "button_event.hxx"
 
-namespace Input
-{
-  class Axis;
-  class Button;
+namespace Input {
+
+  namespace Axes {
+    class Axis;
+  }
+  
+  namespace Buttons {
+    class Button;
+  }
+
+  namespace Pointers {
+    class Pointer;
+  }
+
+  namespace Scrollers {
+    class Scroller;
+  }
+
   class Event;
-  class Pointer;
-  class Scroller;
 
   class Controller {
 
     private:
-      Axis*     action_axis;
-      Pointer*  standard_pointer;
-      Scroller* scroller;
+      Axes::Axis*          action_axis;
+      Pointers::Pointer*   standard_pointer;
+      Scrollers::Scroller* scroller;
     
-      std::map<ButtonName, std::pair<Button*, bool> > buttons;
+      std::map<ButtonName, std::pair<Buttons::Button*, bool> > buttons;
       
       std::list<Event*> events;
 
@@ -54,14 +66,14 @@ namespace Input
       
       std::list<Event*>& get_events () { return events; }
       
-      const Pointer * get_pointer     () const { return standard_pointer; }
-      const Scroller* get_scroller    () const { return scroller;         }
-      const Axis    * get_action_axis () const { return action_axis;      }
+      const Pointers::Pointer  * get_pointer     () const { return standard_pointer; }
+      const Scrollers::Scroller* get_scroller    () const { return scroller;         }
+      const Axes::Axis         * get_action_axis () const { return action_axis;      }
 
-      /// returns the requested button or 0 if it doesn't exist (e.g. undefined action button)
-      const Button* get_button (ButtonName name);
+      /// returns the requested Buttons::Button or 0 if it doesn't exist (e.g. undefined action Buttons::Button)
+      const Buttons::Button* get_button (ButtonName name);
       
-      void update(float delta);
+      void update (float delta);
 
     private:
       void create_action_buttons (xmlNodePtr cur);

@@ -1,4 +1,4 @@
-//  $Id: axis_factory.cxx,v 1.8 2002/08/22 00:36:30 grumbel Exp $
+//  $Id: axis_factory.cxx,v 1.9 2002/08/24 11:37:29 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,15 +21,18 @@
 #include "../xml_helper.hxx"
 #include "../pingus_error.hxx"
 #include "axis_factory.hxx"
-#include "button.hxx"
-#include "button_axis.hxx"
 #include "button_factory.hxx"
-#include "inverted_axis.hxx"
-#include "joystick_axis.hxx"
-#include "mouse_axis.hxx"
-#include "multiple_axis.hxx"
+#include "axes/button_axis.hxx"
+#include "axes/inverted_axis.hxx"
+#include "axes/joystick_axis.hxx"
+#include "axes/mouse_axis.hxx"
+#include "axes/multiple_axis.hxx"
+#include "buttons/button.hxx"
 
 namespace Input {
+
+  using namespace Axes;
+  using Buttons::Button;
 
   Axis* AxisFactory::create(xmlNodePtr cur)
   {
@@ -38,31 +41,31 @@ namespace Input {
 
     if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "button-axis"))
       return button_axis(cur);
-      
+    
     else if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "inverted-axis"))
       return inverted_axis(cur);
-      
+    
     else if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "joystick-axis"))
       return joystick_axis(cur);
-      
+    
     else if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "mouse-axis"))
       return mouse_axis(cur);
 
     else if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "multiple-axis"))
       return multiple_axis(cur->children);
-      
+    
     else
       PingusError::raise(std::string("Unknown axis type: ") + ((cur->name) ? reinterpret_cast<const char*>(cur->name) : ""));
-      
+    
     return 0; // never reached
   }
-  
+
   Axis* AxisFactory::button_axis (xmlNodePtr cur)
   {
     char * angle_str = reinterpret_cast<char *>(xmlGetProp(cur, reinterpret_cast<const xmlChar*>("angle")));
     if (!angle_str)
       PingusError::raise("ButtonAxis without angle parameter");
-      
+    
     float angle = strtod(angle_str, reinterpret_cast<char**>(NULL));
     xmlFree(angle_str);
 
@@ -71,7 +74,7 @@ namespace Input {
 
     cur = XMLhelper::skip_blank(cur->next);
     Button* button2 = ButtonFactory::create(cur);
-	    
+	  
     return new ButtonAxis(angle, button1, button2);
   }
 
@@ -79,7 +82,7 @@ namespace Input {
   {
     return new InvertedAxis(create(cur->children));
   }
-      
+    
   Axis* AxisFactory::joystick_axis (xmlNodePtr cur)
   {
     char * angle_str = reinterpret_cast<char *>(xmlGetProp(cur, reinterpret_cast<const xmlChar*>("angle")));
@@ -89,45 +92,45 @@ namespace Input {
     char * id_str    = reinterpret_cast<char *>(xmlGetProp(cur, reinterpret_cast<const xmlChar*>("id")));
     if (!id_str)
       PingusError::raise("JoystickAxis without id parameter");
-      
+    
     char * axis_str  = reinterpret_cast<char *>(xmlGetProp(cur, reinterpret_cast<const xmlChar*>("axis")));
     if (!axis_str)
       PingusError::raise("JoystickAxis without axis parameter");
-    
+  
     float angle = strtod(angle_str, reinterpret_cast<char**>(NULL));
     int   id    = strtol(id_str,    reinterpret_cast<char**>(NULL), 10);
     int   axis  = strtol(axis_str,  reinterpret_cast<char**>(NULL), 10);
-    
+  
     xmlFree(angle_str);
     xmlFree(id_str);
     xmlFree(axis_str);
-    
+  
     return new JoystickAxis(id, axis, angle);
   }
-  
+
   Axis* AxisFactory::mouse_axis (xmlNodePtr cur)
   {
     char * angle_str = reinterpret_cast<char *>(xmlGetProp(cur, reinterpret_cast<const xmlChar*>("angle")));
     if (!angle_str)
       PingusError::raise("MouseAxis without angle parameter");
-      
+    
     char * axis_str  = reinterpret_cast<char *>(xmlGetProp(cur, reinterpret_cast<const xmlChar*>("axis")));
     if (!axis_str)
       PingusError::raise("MouseAxis without axis parameter");
-    
+  
     float angle = strtod(angle_str, reinterpret_cast<char**>(NULL));
     int   axis  = strtol(axis_str,  reinterpret_cast<char**>(NULL), 10);
-    
+  
     xmlFree(angle_str);
     xmlFree(axis_str);
-    
+  
     return new MouseAxis(axis, angle);
   }
 
   Axis* AxisFactory::multiple_axis (xmlNodePtr cur)
   {
     std::vector<Axis*> axes;
-    
+  
     while (cur)
       {
         if (xmlIsBlankNode(cur))
@@ -135,11 +138,11 @@ namespace Input {
 	    cur = cur->next;
 	    continue;
 	  }
-	  
+	
 	axes.push_back(create(cur));
 	cur = cur->next;
       }
-      
+    
     if (!axes.size())
       PingusError::raise("MultipleAxis without any axis");
 

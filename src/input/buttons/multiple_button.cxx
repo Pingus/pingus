@@ -1,4 +1,4 @@
-//  $Id: pointer_factory.hxx,v 1.3 2002/08/24 11:37:30 torangan Exp $
+//  $Id: multiple_button.cxx,v 1.1 2002/08/24 11:37:31 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,34 +17,40 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef HEADER_PINGUS_INPUT_POINTER_FACTORY_HXX
-#define HEADER_PINGUS_INPUT_POINTER_FACTORY_HXX
-
-#include "../libxmlfwd.hxx"
+#include "multiple_button.hxx"
 
 namespace Input {
 
-  namespace Pointers {
-    class Pointer;
+  namespace Buttons {
+  
+    MultipleButton::MultipleButton (const std::vector<Button*>& buttons_) : buttons(buttons_)
+    {
+    }
+
+    MultipleButton::~MultipleButton ()
+    {
+      for (std::vector<Button*>::iterator it = buttons.begin(); it != buttons.end(); it++)
+        delete *it;
+    }
+
+    void
+    MultipleButton::update (float delta)
+    {
+      for (std::vector<Button*>::iterator it = buttons.begin(); it != buttons.end(); it++)
+        (*it)->update(delta);
+    }
+  
+    bool
+    MultipleButton::is_pressed () const
+    {
+      for (std::vector<Button*>::const_iterator it = buttons.begin(); it != buttons.end(); it++)
+        if ((*it)->is_pressed())
+          return true;
+
+      return false;
+    }
+  
   }
-
-  class PointerFactory 
-  {
-    private:
-      static inline Pointers::Pointer* axis_pointer     (xmlNodePtr cur);
-      static inline Pointers::Pointer* mouse_pointer    ();
-      static inline Pointers::Pointer* multiple_pointer (xmlNodePtr cur);
-    
-    public:
-      static Pointers::Pointer* create (xmlNodePtr cur);
-      
-    private:
-      PointerFactory ();
-      PointerFactory (const PointerFactory&);
-      PointerFactory operator= (const PointerFactory&);
-  };
 }
-
-#endif
 
 /* EOF */
