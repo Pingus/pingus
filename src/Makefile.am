@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.134 2003/02/19 12:08:03 grumbel Exp $
+#  $Id: Makefile.am,v 1.135 2003/02/19 23:03:51 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -60,7 +60,7 @@ pingus_LDADD = \
 	worldobjsdata/libpingus_worldobjsdata.a \
         worldobjs/entrances/libpingus_worldobjs_entrances.a \
 	editorobjs/libpingus_editorobjs.a \
-        actions/libpingu_actions.a      \
+        actions/libpingus_actions.a      \
 	movers/libpingus_movers.a \
 	colliders/libpingus_colliders.a \
         editor/libpingus_editor.a       \

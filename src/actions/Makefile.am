@@ -15,9 +15,9 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-noinst_LIBRARIES = libpingu_actions.a
+noinst_LIBRARIES = libpingus_actions.a
 
-libpingu_actions_a_SOURCES =       \
+libpingus_actions_a_SOURCES =       \
          angel.cxx    angel.hxx \
          basher.cxx   basher.hxx     \
          blocker.cxx  blocker.hxx    \

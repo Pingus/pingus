@@ -1,23 +1,51 @@
-LDADD = caimagemanipulation/libcaimagemanipulation.a \
-        worldobjsdata/libpingus_worldobjsdata.a \
-        worldobjs/entrances/libpingus_worldobjs_entrances.a \
-        worldobjs/libpingus_worldobjs.a \
-        editorobjs/libpingus_editorobjs.a \
-	actions/libpingu_actions.a \
-	entrances/libpingus_entrances.a \
-	particles/libpingus_particle.a \
-	editor/libpingus_editor.a \
-	gui/libpingus_gui.a \
-	worldmap/libpingus_worldmap.a \
-        input/libpingus_input.a \
-        input/axes/libpingus_input_axes.a \
-        input/buttons/libpingus_input_buttons.a \
-	input/pointers/libpingus_input_pointers.a \
-	input/scrollers/libpingus_input_scrollers.a \
+LDADD = backgrounds/libpingus_backgrounds.a \
+colliders/libpingus_colliders.a \
+editor/libpingus_editor.a \
+editorobjs/libpingus_editorobjs.a \
+entrances/libpingus_entrances.a \
+generic/libpingus_generic.a \
+gui/libpingus_gui.a \
+input/libpingus_input.a \
+movers/libpingus_movers.a \
+particles/libpingus_particle.a \
+sound/libpingus_sound.a \
+worldmap/libpingus_worldmap.a \
+worldobjs/libpingus_worldobjs.a \
+worldobjsdata/libpingus_worldobjsdata.a \
+worldobjs/entrances/libpingus_worldobjs_entrances.a \
+input/scrollers/libpingus_input_scrollers.a \
+input/pointers/libpingus_input_pointers.a \
+input/buttons/libpingus_input_buttons.a \
+input/axes/libpingus_input_axes.a \
+actions/libpingus_actions.a \
+caimagemanipulation/libcaimagemanipulation.a \
+actions/libpingus_actions.a \
+input/axes/libpingus_input_axes.a \
+input/buttons/libpingus_input_buttons.a \
+input/pointers/libpingus_input_pointers.a \
+input/scrollers/libpingus_input_scrollers.a \
+worldobjs/entrances/libpingus_worldobjs_entrances.a \
+worldobjsdata/libpingus_worldobjsdata.a \
+worldobjs/libpingus_worldobjs.a \
+worldmap/libpingus_worldmap.a \
+sound/libpingus_sound.a \
+particles/libpingus_particle.a \
+movers/libpingus_movers.a \
+input/libpingus_input.a \
+gui/libpingus_gui.a \
+generic/libpingus_generic.a \
+entrances/libpingus_entrances.a \
+editorobjs/libpingus_editorobjs.a \
+editor/libpingus_editor.a \
+colliders/libpingus_colliders.a \
+backgrounds/libpingus_backgrounds.a
+
+OBJECTS = $(wildcard *.o)
 
 LIBS = -lclanGUI -lclanCore -lclanDisplay -lclanApp -lclanPNG -lclanJPEG -lHermes \
--lclanDisplay -lclanMikMod -lclanVorbis -logg -lvorbis -logg -lmikmod -lclanCore -lclanSound \
+-lclanDisplay -lclanMikMod -lclanVorbis -logg -lvorbis -logg -lmikmod -lclanSound -lclanCore  \
 -L/usr/X11R6/lib/ \
+-lstdc++ \
 -lpthread \
 -lxml2 \
 -lm \
@@ -32,9 +60,8 @@ LIBS = -lclanGUI -lclanCore -lclanDisplay -lclanApp -lclanPNG -lclanJPEG -lHerme
 -lX11 \
 -lSM \
 -lICE \
--lXxf86vm
-
-SDLLIBS=-lSDL -lSDL_mixer -laudiofile
+-lXxf86vm \
+-lstdc++
 
 all : pingus.static pingus.static.comp
 
@@ -44,7 +71,7 @@ pingus.static.comp : pingus.static
 	upx-ucl -q --best pingus.static.comp
 
 pingus.static: Makefile.static pingus
-	$(CXX) -s -O2 -Wall -static -o pingus.static *.o $(LDADD)  $(LIBS) 
+	$(CXX) -s -O2 -Wall -static -o pingus.static $(OBJECTS) $(LDADD)  $(LIBS) 
 
 clean :
 	rm -f pingus.static.comp pingus.static

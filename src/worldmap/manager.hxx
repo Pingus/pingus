@@ -1,4 +1,4 @@
-//  $Id: manager.hxx,v 1.17 2003/02/19 09:50:36 grumbel Exp $
+//  $Id: manager.hxx,v 1.18 2003/02/19 23:03:51 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -60,8 +60,9 @@ class WorldMapManager : public GUIScreen
     WorldMapComponent (const WorldMapComponent&);
     WorldMapComponent& operator= (const WorldMapComponent&);
 
-  } worldmap_component;
+  };
 
+  WorldMapComponent* worldmap_component;
     
   friend class WorldMapComponent;
 private:

@@ -1,4 +1,4 @@
-//  $Id: manager.cxx,v 1.23 2003/02/19 09:50:36 grumbel Exp $
+//  $Id: manager.cxx,v 1.24 2003/02/19 23:03:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,10 +28,12 @@ namespace WorldMapNS {
 WorldMapManager* WorldMapManager::instance_ = 0;
 
 WorldMapManager::WorldMapManager ()
+  : worldmap(0),
+    new_worldmap(0)
 {
   is_init = false;
   exit_worldmap = false;
-
+ 
   // FIXME: The default startup map should be configurable by some file
   worldmap = new WorldMap (path_manager.complete("worldmaps/tutorial.xml"));
 
@@ -40,7 +42,8 @@ WorldMapManager::WorldMapManager ()
   // FIXME: a bit ugly because of the proteced member, but should work
   // FIXME: well enough. GUIScreen could also use multi-inheritage,
   // FIXME: but that could lead to member function name conflicts
-  gui_manager->add (&worldmap_component);
+  worldmap_component = new WorldMapComponent();
+  gui_manager->add (worldmap_component);
 }
 
 void
