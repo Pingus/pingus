@@ -1,4 +1,4 @@
-//  $Id: blitter.cc,v 1.4 2000/02/18 03:08:41 grumbel Exp $
+//  $Id: blitter.cc,v 1.5 2000/05/26 18:04:11 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -164,6 +164,8 @@ put_alpha_surface(CL_Canvas* provider, CL_SurfaceProvider* sprovider,
   provider->unlock();  
 }
 
+
+#if 0
 // Converts a SurfaceProvider based surface, to a Canvas
 // based one. The old one will not be deleted.
 CL_Surface*
@@ -239,5 +241,7 @@ convert_to_emptyprovider(CL_SurfaceProvider* sprov)
   
   return tprov;
 }
+
+#endif // 0
 
 /* EOF */
