@@ -1,4 +1,4 @@
-//  $Id: path_graph.cxx,v 1.11 2002/10/15 17:12:59 grumbel Exp $
+//  $Id: path_graph.cxx,v 1.12 2002/10/15 19:13:33 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -147,25 +147,12 @@ PathGraph::parse_edges(xmlDocPtr doc, xmlNodePtr cur)
 
           Path full_path;
           full_path.push_back(graph.resolve_node(lookup_node(source)).data->get_pos());
-          full_path.insert(full_path.end(), path->begin(), path->end());
+          full_path.insert(*path);
           full_path.push_back(graph.resolve_node(lookup_node(destination)).data->get_pos());
 
           // FIXME: merge this together with the Pingus::distance() stuff in a seperate Path class
-          float cost = 0;
-          {
-            //std::cout << "Edgepath size: " << edge_path.size() << std::endl;
-            Path::iterator prev = full_path.begin();
-            for(Path::iterator next = prev + 1; next != full_path.end(); ++next)
-              {
-                float x = prev->x - next->x;
-                float y = prev->y - next->y;
-  
-                float distance = fabsf(sqrt((x * x) + (y * y)));
-                cost += distance;
-                prev = next;
-              }
-          }
-          
+          float cost = full_path.length();
+
           // FIXME: Memory leak
           //worldmap->add_drawable(new PathDrawable(full_path));
           
@@ -174,7 +161,9 @@ PathGraph::parse_edges(xmlDocPtr doc, xmlNodePtr cur)
                                       lookup_node(destination), lookup_node(source), 
                                       cost /* costs */);
 
-          EdgeId id2 = graph.add_edge(new Path(path->rbegin(), path->rend()), // FIXME: Memory leak!
+          Path* path2 = new Path();
+          path2->reverse_insert(*path);
+          EdgeId id2 = graph.add_edge(path2, // FIXME: Memory leak!
                                       lookup_node(source), lookup_node(destination), 
                                       cost /* costs */);
           
@@ -194,18 +183,12 @@ PathGraph::parse_edges(xmlDocPtr doc, xmlNodePtr cur)
     }    
 }
 
-std::vector<NodeId>
+PathfinderResult
 PathGraph::get_path(NodeId start_id, NodeId end_id)
 {
-  //Node<Dot*>& start = graph.resolve_node(start_id);
-  //Node<Dot*>& end   = graph.resolve_node(end_id);
-
+  // FIXME: This could get cached by the node
   Pathfinder<Dot*, Path*> pathfinder(graph, start_id);
-  std::vector<NodeId> path = pathfinder.get_path(end_id);
-
-  assert(path.size() > 0);
-
-  return path;
+  return pathfinder.get_result(end_id);
 }
 
 EdgeId

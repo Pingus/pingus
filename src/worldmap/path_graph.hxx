@@ -1,4 +1,4 @@
-//  $Id: path_graph.hxx,v 1.5 2002/10/15 15:48:49 grumbel Exp $
+//  $Id: path_graph.hxx,v 1.6 2002/10/15 19:13:33 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,14 +24,14 @@
 #include <vector>
 #include "../vector.hxx"
 #include "../libxmlfwd.hxx"
+#include "path.hxx"
+#include "pathfinder.hxx"
 #include "graph.hxx"
 
 namespace WorldMapNS {
 
 class Dot;
 class WorldMap;
-
-typedef std::vector<Vector> Path;
 
 /** This class represents the walkable path on the Worldmap */
 class PathGraph
@@ -62,7 +62,7 @@ public:
 
   /** @return a list of positions to walk to reach node \a end, by
       starting from \a start */
-  std::vector<NodeId> get_path(NodeId start, NodeId end);
+  PathfinderResult get_path(NodeId start, NodeId end);
 
   /** Get a node by it id */
   Dot* get_dot(NodeId id);

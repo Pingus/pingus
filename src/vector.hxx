@@ -1,4 +1,4 @@
-//  $Id: vector.hxx,v 1.1 2002/09/28 11:52:22 torangan Exp $
+//  $Id: vector.hxx,v 1.2 2002/10/15 19:13:32 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -49,6 +49,13 @@ public:
   void normalize ();
   
   Vector rotate (float angle, const Vector& pos) const;
+
+  static float distance(const Vector& a, const Vector& b);
+  static float distance2d(const Vector& a, const Vector& b);
+
+  /** Calculate a position between a and b, relative to the value of
+      \a perc (perc == 0 -> a, perc == 1.0 -> b) */
+  static Vector interpolate(const Vector& a, const Vector& b, float perc);  
 
   friend std::ostream& operator<< (std::ostream& os, const Vector& v);
 };

@@ -1,4 +1,4 @@
-//  $Id: pingus.cxx,v 1.17 2002/10/15 15:48:49 grumbel Exp $
+//  $Id: pingus.cxx,v 1.18 2002/10/15 19:13:33 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -67,7 +67,7 @@ Pingus::update_walk (float delta)
   // Update the edge_path_position
   edge_path_position += velocity * delta;
   
-  if (edge_path_position > edge_path_length) // target reached
+  if (edge_path_position > edge_path.length()) // target reached
     {
       if (node_path.empty ()) // final target reached
         {
@@ -83,26 +83,12 @@ Pingus::update_walk (float delta)
   pos = calc_pos ();
 }
 
-float 
-Pingus::calc_edge_path_length()
-{
-  std::cout << "Edgepath size: " << edge_path.size() << std::endl;
-  float length = 0;
-  Path::iterator prev = edge_path.begin();
-  for(Path::iterator next = prev + 1; next != edge_path.end(); ++next)
-    {
-      length += distance(*prev, *next);
-      prev = next;
-    }
-  return length;
-}
-
 bool
 Pingus::walk_to_node (NodeId target)
 {
   if (current_node != NoNode) // pingu stands still
     {
-      node_path = path->get_path (current_node, target);
+      node_path = path->get_path (current_node, target).path;
 
       // Simulate that we just reached current_node, then update the edge_path
       target_node = node_path.back(); // equal to current_node;
@@ -114,27 +100,44 @@ Pingus::walk_to_node (NodeId target)
     }
   else // pingu between two nodes
     {
-      assert(false);
-#if 0
-      std::vector<NodeId> node_path1 = path->get_path (source_node, target);
-      std::vector<NodeId> node_path2 = path->get_path (target_node, target);
-	
-      // Select the shorter path
-      if (length (node_path1) < length (node_path2))
-        { // walk to source node, which means to reverse the pingu
-          node_path = node_path1;
-
+      if (target_node == target)
+        {
+          node_path.clear();
+          return true;
+        }
+      else if (source_node == target)
+        {
           // Reverse the pingu
           std::swap(target_node, source_node);
-          std::reverse(edge_path.begin (), edge_path.end ());
-          edge_path_position = edge_path_lenght - edge_path_position;
+          edge_path.reverse();
+          edge_path_position = edge_path.length() - edge_path_position;         
+          node_path.clear();
+          return true;
         }
       else
-        { // walk to target_node
-          node_path = node_path2;
+        {
+          PathfinderResult node_path1 = path->get_path (source_node, target);
+          PathfinderResult node_path2 = path->get_path (target_node, target);
+	
+          // Select the shorter path
+          if (node_path1.cost < node_path2.cost)
+            { // walk to source node, which means to reverse the pingu
+              node_path = node_path1.path;
+
+              // Reverse the pingu
+              std::swap(target_node, source_node);
+              edge_path.reverse();
+              edge_path_position = edge_path.length() - edge_path_position;
+            }
+          else
+            { // walk to target_node
+              node_path = node_path2.path;
+            }
+          // Pop the first element on the stack, since we are already targeting it
+          node_path.pop_back();
+
+          return true;
         }
-#endif
-      return false;
     }
 }
 
@@ -147,47 +150,8 @@ Pingus::calc_pos ()
     }
   else // between two nodes
     {
-      Path::iterator current = edge_path.begin ();
-      Path::iterator next    = edge_path.begin () + 1;
-
-      float comp_length = 0.0f;
-      while (next != edge_path.end())
-        {
-          float length = distance(*current, *next);
-
-          // The pingu is between current and next
-          if (comp_length + length > edge_path_position) 
-            {
-              float perc = (edge_path_position - comp_length) // length to walk from current node
-                / length;
-
-              return interpolate (*current, *next, perc);
-            }
-
-          comp_length += length;
-
-          ++current;
-          ++next;
-        }
-      assert (!"This shouldn't happen, traveled bejoint target node");
-      return path->graph.resolve_node(target_node).data->get_pos ();
+      return edge_path.at(edge_path_position);
     }
-}
-
-float
-Pingus::distance(const Vector& a, const Vector& b)
-{
-  float x = b.x - a.x;
-  float y = b.y - a.y;
-  
-  return fabsf(sqrt((x * x) + (y * y)));
-}
-
-Vector
-Pingus::interpolate(const Vector& a, const Vector& b, float perc)
-{
-  Vector c = b - a;
-  return a + (c * perc);
 }
 
 void
@@ -206,7 +170,7 @@ Pingus::get_z_pos() const
 }
 
 void
-Pingus:: update_edge_path()
+Pingus::update_edge_path()
 {
   // Update source and target nodes
   source_node = target_node;
@@ -220,10 +184,8 @@ Pingus:: update_edge_path()
           
   edge_path.push_back(path->graph.resolve_node(source_node).data->get_pos());
   // Why do we need to reverse this?!
-  edge_path.insert(edge_path.end(), partial_path->rbegin(), partial_path->rend());
+  edge_path.reverse_insert(*partial_path);
   edge_path.push_back(path->graph.resolve_node(target_node).data->get_pos());
-  
-  edge_path_length = calc_edge_path_length();
 }
 
 bool

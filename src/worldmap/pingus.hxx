@@ -1,4 +1,4 @@
-//  $Id: pingus.hxx,v 1.17 2002/10/15 15:48:49 grumbel Exp $
+//  $Id: pingus.hxx,v 1.18 2002/10/15 19:13:33 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -66,9 +66,6 @@ private:
       both source and destinations position, so it is complete */
   Path edge_path;
   
-  /** The length of the edge_path in pixels */
-  float edge_path_length;
-
   /** The position in the edge_path, 0 means the pingu is on the
       source_node, edge_path_length means that the pingu has reached
       the target node. Position between edge_path nodes is
@@ -107,14 +104,13 @@ public:
 
 private:
   void  update_walk (float delta);
-  void  update_edge_path();
+
+  void update_edge_path();
+
   float calc_edge_path_length();
   
   /** */
   Vector interpolate(const Vector& a, const Vector& b, float perc);
-
-  float distance(const Vector& a, const Vector& b);
-
 
   Pingus (const Pingus&);
   Pingus& operator= (const Pingus&);

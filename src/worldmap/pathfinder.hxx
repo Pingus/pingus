@@ -1,4 +1,4 @@
-//  $Id: pathfinder.hxx,v 1.6 2002/10/15 17:12:59 grumbel Exp $
+//  $Id: pathfinder.hxx,v 1.7 2002/10/15 19:13:33 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,12 @@
 #include "graph.hxx"
 
 namespace WorldMapNS {
+
+struct PathfinderResult
+{
+  std::vector<NodeId> path;
+  float cost;
+};
 
 /** */
 template<class T, class C>
@@ -138,6 +144,20 @@ public:
 	  }	
       }
     while (1);
+  }
+
+  /** @return the cost of the path to node */
+  float get_cost(NodeId node)
+  {
+    return stat_graph[node].cost;
+  }
+
+  PathfinderResult get_result(NodeId node)
+  {
+    PathfinderResult res;
+    res.path = get_path(node);
+    res.cost = get_cost(node);
+    return res;
   }
 
   void push_to_open (NodeId handle)

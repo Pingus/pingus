@@ -1,4 +1,4 @@
-//  $Id: vector.cxx,v 1.1 2002/09/28 11:52:22 torangan Exp $
+//  $Id: vector.cxx,v 1.2 2002/10/15 19:13:32 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -124,6 +124,32 @@ Vector::rotate (float angle, const Vector& pos) const
 		+ y * (pos.y * pos.z * (1-c) + pos.x *s)
 		+ z * (pos.z * pos.z * (1-c) + c)
 	       );
+}
+
+float
+Vector::distance(const Vector& a, const Vector& b)
+{
+  float x = b.x - a.x;
+  float y = b.y - a.y;
+  float z = b.z - a.z;
+  
+  return fabsf(sqrt((x * x) + (y * y) + (z * z)));
+}
+
+float
+Vector::distance2d(const Vector& a, const Vector& b)
+{
+  float x = b.x - a.x;
+  float y = b.y - a.y;
+  
+  return fabsf(sqrt((x * x) + (y * y)));
+}
+
+Vector
+Vector::interpolate(const Vector& a, const Vector& b, float perc)
+{
+  Vector c = b - a;
+  return a + (c * perc);
 }
 
 std::ostream& operator<< (std::ostream& os, const Vector& v)
