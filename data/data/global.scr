@@ -356,20 +356,20 @@ section GroundPieces
 
 		spike     = ../images/groundpieces/ground/misc/spike.png    (type=surface, x=0, y=0, width=262,  height=125);
 
-		piece1 = ../images/groundpieces/ground/snow/piece1.png  (type=surface, x=0, y=0, width=302,  height=92);
-		piece2 = ../images/groundpieces/ground/misc/piece2.png  (type=surface, x=0, y=0, width=99,  height=283);
-		piece3 = ../images/groundpieces/ground/snow/piece3.png  (type=surface, x=0, y=0, width=96,  height=371);
-//		piece4 = ../images/groundpieces/ground/misc/piece4.png  (type=surface, x=0, y=0, width=116,  height=341);
-//		piece5 = ../images/groundpieces/ground/misc/piece5.png  (type=surface, x=0, y=0, width=119,  height=271); 
-//		piece6 = ../images/groundpieces/ground/misc/piece6.png  (type=surface, x=0, y=0, width=137,  height=117); 
-		piece7 = ../images/groundpieces/ground/snow/piece7.png  (type=surface, x=0, y=0, width=171,  height=126); 
-		piece8 = ../images/groundpieces/ground/snow/piece8.png  (type=surface, x=0, y=0, width=367,  height=107); 
-		piece9 = ../images/groundpieces/ground/snow/piece9.png  (type=surface, x=0, y=0, width=273,  height=86); 
+		piece1 = ../images/groundpieces/ground/misc/piece1.png  (type=surface);
+		piece2 = ../images/groundpieces/ground/misc/piece2.png  (type=surface);
+		piece3 = ../images/groundpieces/ground/snow/piece3.png  (type=surface);
+//		piece4 = ../images/groundpieces/ground/misc/piece4.png  (type=surface);
+//		piece5 = ../images/groundpieces/ground/misc/piece5.png  (type=surface);
+//		piece6 = ../images/groundpieces/ground/misc/piece6.png  (type=surface);
+		piece7 = ../images/groundpieces/ground/snow/piece7.png  (type=surface);
+		piece8 = ../images/groundpieces/ground/snow/piece8.png  (type=surface);
+		piece9 = ../images/groundpieces/ground/snow/piece9.png  (type=surface);
 		
-		brick1 = ../images/groundpieces/ground/misc/brick1.png  (type=surface, x=0, y=0, width=32,  height=16); 
-		brick2 = ../images/groundpieces/ground/misc/brick2.png  (type=surface, x=0, y=0, width=64,  height=48); 
-		brick3 = ../images/groundpieces/ground/misc/brick3.png  (type=surface, x=0, y=0, width=16,  height=16); 
-		brick4 = ../images/groundpieces/ground/misc/brick4.png  (type=surface, x=0, y=0, width=32,  height=16); 
+		brick1 = ../images/groundpieces/ground/misc/brick1.png  (type=surface);
+		brick2 = ../images/groundpieces/ground/misc/brick2.png  (type=surface);
+		brick3 = ../images/groundpieces/ground/misc/brick3.png  (type=surface);
+		brick4 = ../images/groundpieces/ground/misc/brick4.png  (type=surface);
 
 		stoneblock1 = ../images/groundpieces/ground/misc/stoneblock1.png  (type=surface, x=0, y=0, width=64,  height=64); 
 		stoneblock2 = ../images/groundpieces/ground/misc/stoneblock2.png  (type=surface, x=0, y=0, width=64,  height=64); 
