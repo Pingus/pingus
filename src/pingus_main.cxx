@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.31 2002/11/02 20:53:58 grumbel Exp $
+//   $Id: pingus_main.cxx,v 1.32 2002/11/02 21:12:16 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -883,17 +883,17 @@ PingusMain::init_pingus()
 		<< std::endl;
     }
 
-  Fonts::init_fonts ();
   PingusResource::init();
+  Fonts::init();
   fps_counter.init();
   console.init();
   XMLhelper::init();
 
-  pout.add (std::cerr);
+  pout.add (std::cout);
   pout.add (console);
-  pwarn.add (std::cerr);
+  pwarn.add (std::cout);
   pout.add (console);
-  perr.add (std::cerr);
+  perr.add (std::cout);
   perr.add (console);
 
   if (sound_enabled || music_enabled) 
@@ -915,7 +915,9 @@ PingusMain::init_pingus()
 void
 PingusMain::deinit_pingus()
 {
-  
+  XMLhelper::deinit();
+  Fonts::deinit();
+  PingusResource::deinit();
 }  
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: xml_helper.hxx,v 1.17 2002/11/02 20:46:10 grumbel Exp $
+//  $Id: xml_helper.hxx,v 1.18 2002/11/02 21:12:16 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -123,6 +123,7 @@ public:
   static int get_line(xmlNodePtr cur);
 
   static void init();
+  static void deinit();
   
 private:
   XMLhelper ();

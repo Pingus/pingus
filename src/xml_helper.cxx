@@ -1,4 +1,4 @@
-//  $Id: xml_helper.cxx,v 1.24 2002/11/02 20:46:10 grumbel Exp $
+//  $Id: xml_helper.cxx,v 1.25 2002/11/02 21:12:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -418,6 +418,11 @@ void
 XMLhelper::init()
 {
   xmlLineNumbersDefault(1);
+}
+
+void
+XMLhelper::deinit()
+{
 }
 
 int

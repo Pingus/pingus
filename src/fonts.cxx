@@ -1,4 +1,4 @@
-//  $Id: fonts.cxx,v 1.1 2002/09/05 11:26:35 grumbel Exp $
+//  $Id: fonts.cxx,v 1.2 2002/11/02 21:12:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,25 +20,28 @@
 #include "pingus_resource.hxx"
 #include "fonts.hxx"
 
-namespace Fonts
+namespace Fonts {
+
+FontHandle pingus_small;
+FontHandle pingus_large;
+FontHandle smallfont;
+FontHandle xterm;
+FontHandle lcd;
+
+void
+init ()
 {
-  FontHandle pingus_small;
-  FontHandle pingus_large;
-  FontHandle smallfont;
-  FontHandle xterm;
-  FontHandle lcd;
+  pingus_small = PingusResource::load_font("Fonts/pingus_small", "fonts");
+  pingus_large = PingusResource::load_font("Fonts/pingus","fonts");
 
-  void
-  init_fonts ()
-  {
-    pingus_small = PingusResource::load_font("Fonts/pingus_small", "fonts");
-    pingus_large = PingusResource::load_font("Fonts/pingus","fonts");
+  xterm        = PingusResource::load_font("Fonts/xterm","fonts");
+  smallfont    = PingusResource::load_font("Fonts/smallfont","fonts");
 
-    xterm        = PingusResource::load_font("Fonts/xterm","fonts");
-    smallfont    = PingusResource::load_font("Fonts/smallfont","fonts");
-
-    lcd          = PingusResource::load_font("Fonts/numbers", "fonts");
-  }
+  lcd          = PingusResource::load_font("Fonts/numbers", "fonts");
 }
+
+void deinit () {}
+
+} // namespace Fonts
 
 /* EOF */
