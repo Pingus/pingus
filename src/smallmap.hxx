@@ -1,4 +1,4 @@
-//  $Id: smallmap.hxx,v 1.12 2002/10/06 23:14:19 grumbel Exp $
+//  $Id: smallmap.hxx,v 1.13 2002/10/07 23:09:14 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,6 +25,7 @@
 
 class CL_Key;
 class Client;
+class CL_Canvas;
 
 /** This is the map that appears in the corner of the screen */
 class SmallMap : public GUI::Component
@@ -40,6 +41,9 @@ private:
 
   /** Graphic surface for the generated rectanglar background of the small map */
   CL_Surface sur;
+  
+  /** The canvas that represents the small-colmap */
+  CL_Canvas* canvas;
 
   /** Horizontal position of the small map */
   int x_pos;
@@ -70,6 +74,11 @@ private:
   int rheight;
 
   bool has_focus;
+
+  /** number of seconds till the smallmap will update itself */
+  float update_count;
+
+  unsigned int colmap_serial;
 
 public:
   SmallMap();

@@ -1,4 +1,4 @@
-//  $Id: smallmap.cxx,v 1.21 2002/10/06 23:14:19 grumbel Exp $
+//  $Id: smallmap.cxx,v 1.22 2002/10/07 23:09:14 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,11 +28,14 @@
 #include "col_map.hxx"
 #include "true_server.hxx"
 #include "pingu.hxx"
+#include "timer.hxx"
 #include "math.hxx"
 
 using namespace std;
 
 SmallMap::SmallMap()
+  : canvas(0),
+    update_count(0)
 {
   max_width = 175;
   max_height = 100;
@@ -47,12 +50,12 @@ SmallMap::SmallMap()
 
 SmallMap::~SmallMap()
 {
+  delete canvas;
 }
   
 void
 SmallMap::init()
 {
-  CL_Canvas*  canvas;
   unsigned char* buffer;
   unsigned char* cbuffer;
   unsigned char  current_pixel;
@@ -63,99 +66,113 @@ SmallMap::init()
 
   ColMap* colmap = client->get_server()->get_world()->get_colmap(); 
   buffer = colmap->get_data();
-  //Plf* plf = world->get_plf();
 
-  // Scaling values used in order to keep the aspect ratio
-  int x_scaling = colmap->get_width() / max_width;
-  int y_scaling = colmap->get_height() / max_height;
+  colmap_serial = colmap->get_serial();
 
-  // If at best one horizontal pixel in the smallmap represents more colmap
-  // pixels than one vertical pixel
-  if (x_scaling > y_scaling)
+  if (!canvas)
     {
-    width = max_width;
-    height = colmap->get_height() / x_scaling;
-    }
-  else
-    {
-    width = colmap->get_width() / y_scaling;
-    height = max_height;
-    }
+      // Scaling values used in order to keep the aspect ratio
+      int x_scaling = colmap->get_width() / max_width;
+      int y_scaling = colmap->get_height() / max_height;
 
-  canvas = new CL_Canvas(width, height);
+      // If at best one horizontal pixel in the smallmap represents more colmap
+      // pixels than one vertical pixel
+      if (x_scaling > y_scaling)
+        {
+          width = max_width;
+          height = colmap->get_height() / x_scaling;
+        }
+      else
+        {
+          width = colmap->get_width() / y_scaling;
+          height = max_height;
+        }
+
+      canvas = new CL_Canvas(width, height);
+    }
  
   canvas->lock();
   
   cbuffer = static_cast<unsigned char*>(canvas->get_data());
 
+  int cmap_width  = colmap->get_width();
+  int cmap_height = colmap->get_height();
+
   for(int y = 0; y < height; ++y)
     {
       for (int x = 0; x < width; ++x)
 	{
-	  tx = x * colmap->get_width() / width;
-	  ty = y * colmap->get_height() / height;
+          // Index on the smallmap canvas
+          int i = 4 * ((y * width) + x);
+
+	  tx = x * cmap_width / width;
+	  ty = y * cmap_height / height;
 	  
-	  current_pixel = buffer[tx + (ty * colmap->get_width())];
+	  current_pixel = buffer[tx + (ty * cmap_width)];
 	  
-	  if (current_pixel == Groundtype::GP_NOTHING)
-	    {
-	      cbuffer[4 * ((y * width) + x) + 0] = 150;
-	      cbuffer[4 * ((y * width) + x) + 1] = 0;
-	      cbuffer[4 * ((y * width) + x) + 2] = 0;
-	      cbuffer[4 * ((y * width) + x) + 3] = 0;
-	    }
-	  else if (current_pixel == Groundtype::GP_BRIDGE)
-	    {
-	      cbuffer[4 * ((y * width) + x) + 0] = 255;
-	      cbuffer[4 * ((y * width) + x) + 1] = 100;
-	      cbuffer[4 * ((y * width) + x) + 2] = 255;
-	      cbuffer[4 * ((y * width) + x) + 3] =   0;
-	    }
-	  else if (current_pixel == Groundtype::GP_LAVA)
-	    {
-	      cbuffer[4 * ((y * width) + x) + 0] = 255;
-	      cbuffer[4 * ((y * width) + x) + 1] = 100;
-	      cbuffer[4 * ((y * width) + x) + 2] = 100;
-	      cbuffer[4 * ((y * width) + x) + 3] = 255;
-	    }
-	  else if (current_pixel == Groundtype::GP_SOLID)
-	    {
-	      cbuffer[4 * ((y * width) + x) + 0] = 255;
-	      cbuffer[4 * ((y * width) + x) + 1] = 100;
-	      cbuffer[4 * ((y * width) + x) + 2] = 100;
-	      cbuffer[4 * ((y * width) + x) + 3] = 100;
-	    }
-	  else
-	    {
-	      cbuffer[4 * ((y * width) + x) + 0] = 255;
-	      cbuffer[4 * ((y * width) + x) + 1] = 200;
-	      cbuffer[4 * ((y * width) + x) + 2] = 200;
-	      cbuffer[4 * ((y * width) + x) + 3] = 200;
-	    }
+	  switch (current_pixel)
+            {
+            case Groundtype::GP_NOTHING:
+	      cbuffer[i + 0] = 150;
+              cbuffer[i + 1] = 0;
+	      cbuffer[i + 2] = 0;
+	      cbuffer[i + 3] = 0;
+              break;
+              
+            case Groundtype::GP_BRIDGE:
+              cbuffer[i + 0] = 255;
+	      cbuffer[i + 1] = 100;
+	      cbuffer[i + 2] = 255;
+	      cbuffer[i + 3] =   0;
+              break;
+              
+            case Groundtype::GP_LAVA:
+              cbuffer[i + 0] = 255;
+	      cbuffer[i + 1] = 100;
+	      cbuffer[i + 2] = 100;
+	      cbuffer[i + 3] = 255;
+              break;
+              
+            case Groundtype::GP_SOLID:
+              cbuffer[i + 0] = 255;
+	      cbuffer[i + 1] = 100;
+	      cbuffer[i + 2] = 100;
+	      cbuffer[i + 3] = 100;
+              break;
+
+            default:
+              cbuffer[i + 0] = 255;
+	      cbuffer[i + 1] = 200;
+	      cbuffer[i + 2] = 200;
+	      cbuffer[i + 3] = 200;
+              break;
+            }
 	}
     }
   /* FIXME: due to API change in PLF disabled
-  std::vector<ExitData>     exit_d     = plf->get_exit();
-  for(std::vector<ExitData>::iterator i = exit_d.begin(); i != exit_d.end(); ++i)
-    {
-      // FIXME: Replace this with put_target() when it is bug free
-      Blitter::put_surface(canvas, exit_sur, 
-			   i->pos.x * width / colmap->get_width() - (exit_sur.get_width()/2), 
-			   i->pos.y * height / colmap->get_height());
-    }
+     std::vector<ExitData>     exit_d     = plf->get_exit();
+     for(std::vector<ExitData>::iterator i = exit_d.begin(); i != exit_d.end(); ++i)
+     {
+     // FIXME: Replace this with put_target() when it is bug free
+     Blitter::put_surface(canvas, exit_sur, 
+     i->pos.x * width / colmap->get_width() - (exit_sur.get_width()/2), 
+     i->pos.y * height / colmap->get_height());
+     }
 
-  std::vector<EntranceData>     entrance_d     = plf->get_entrance();
-  for(std::vector<EntranceData>::iterator i = entrance_d.begin(); i != entrance_d.end(); ++i)
-    {
-      Blitter::put_surface(canvas, entrance_sur,
-			   i->pos.x * width / colmap->get_width() - (entrance_sur.get_width()/2),
-			   i->pos.y * height / colmap->get_height() - (entrance_sur.get_height()));
-    }
+     std::vector<EntranceData>     entrance_d     = plf->get_entrance();
+     for(std::vector<EntranceData>::iterator i = entrance_d.begin(); i != entrance_d.end(); ++i)
+     {
+     Blitter::put_surface(canvas, entrance_sur,
+     i->pos.x * width / colmap->get_width() - (entrance_sur.get_width()/2),
+     i->pos.y * height / colmap->get_height() - (entrance_sur.get_height()));
+     }
   */
   canvas->unlock();
-  
-  sur = CL_Surface(canvas, true);
-  
+
+  //Timer surface_timer("Smallmap surface creation");
+  sur = CL_Surface(canvas, false);
+  //surface_timer.stop();
+
   x_pos = 5;
   y_pos = CL_Display::get_height() - sur.get_height();
 
@@ -238,7 +255,21 @@ SmallMap::draw_pingus ()
 void
 SmallMap::update (float delta)
 {
+  float smallmap_update_time = 2.0f;
+
   UNUSED_ARG(delta);
+  update_count += delta;
+
+  if (update_count > smallmap_update_time)
+    {
+      update_count = 0.0f;
+      ColMap* colmap = client->get_server()->get_world()->get_colmap(); 
+
+      if (colmap_serial != colmap->get_serial())
+        {
+          init();
+        }
+    }
 }
 
 bool

@@ -1,4 +1,4 @@
-//  $Id: col_map.cxx,v 1.12 2002/09/28 18:11:40 grumbel Exp $
+//  $Id: col_map.cxx,v 1.13 2002/10/07 23:09:14 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,9 +30,12 @@
 #include <config.h>
 #include "my_gettext.hxx"
 
+#define COLMAP_WITH_MEMORY_HOLE 1
+
 // Obtain the colmap from a memory area
 ColMap::ColMap(int w, int h)
-  : width(w),
+  : serial(0),
+    width(w),
     height(h),
     colmap(new unsigned char[width * height])
 {
@@ -83,6 +86,8 @@ ColMap::remove(const CL_Surface& sur, int x, int y)
 void 
 ColMap::remove(CL_SurfaceProvider* provider, int x, int y)
 {
+  ++serial;
+
   assert(provider);
 
   if (provider->get_depth() == 32) 
@@ -109,8 +114,9 @@ ColMap::remove(CL_SurfaceProvider* provider, int x, int y)
 		}
 	    }
 	}
-      // FIXME: Memory hole      
-      //provider->unlock();
+#if COLMAP_WITH_MEMORY_HOLE
+      provider->unlock();
+#endif
     }
   else if (provider->get_depth() == 8)
     {
@@ -136,8 +142,9 @@ ColMap::remove(CL_SurfaceProvider* provider, int x, int y)
 		}
 	    }
 	}
-      // FIXME: Memory hole      
-      //provider->unlock();
+#if COLMAP_WITH_MEMORY_HOLE
+      provider->unlock();
+#endif
     }
   else
     {
@@ -148,6 +155,8 @@ ColMap::remove(CL_SurfaceProvider* provider, int x, int y)
 void
 ColMap::put(int x, int y, Groundtype::GPType p)
 {
+  ++serial;
+
   if (x > 0 && x < width
       && y > 0 && y < height) 
     {
@@ -160,24 +169,6 @@ ColMap::put(int x, int y, Groundtype::GPType p)
     }
 }
 
-#if 0
-int
-ColMap::load(unsigned char* b, int w, int h)
-{
-  if (!init) 
-    {
-      std::cout << "ColMap: loading..." << std::endl;
-      init = true;
-      colmap = b;
-      width = w;
-      height = h;
-      return 1;
-    } else {
-      PingusError::raise(_("ColMap::load: Reloaded ColMap!"));
-      return 0;
-    }
-}
-#endif
 bool
 ColMap::blit_allowed (int x, int y,  Groundtype::GPType gtype)
 {
@@ -323,11 +314,19 @@ ColMap::draw(GraphicContext& gc)
     }
 
   // FIXME: Memory hole
-  //canvas->unlock();
+#if COLMAP_WITH_MEMORY_HOLE
+  canvas->unlock();
+#endif
 
   sur = CL_Surface(canvas, true);
 
   gc.draw(sur, 0, 0);
+}
+
+unsigned
+ColMap::get_serial()
+{
+  return serial;
 }
 
 /* EOF */

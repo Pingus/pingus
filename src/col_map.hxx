@@ -1,4 +1,4 @@
-//  $Id: col_map.hxx,v 1.9 2002/09/27 11:26:43 torangan Exp $
+//  $Id: col_map.hxx,v 1.10 2002/10/07 23:09:14 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,6 +35,10 @@ class CL_SurfaceProvider;
 class ColMap
 {
 private:
+  /** The serial number indicates the state of the colmap, on every
+      change of the colmap it will get increased. */
+  unsigned int serial;
+  
   /** The width of the collision map. */
   int    width;
 
@@ -63,6 +67,10 @@ public:
   int get_width();
 
   int  getpixel(int x, int y);
+
+  /** @return a number which represents the state of the collision
+      map, once it changes the serial changes also */
+  unsigned get_serial();
   
   /** Return true if the given GroundType i*/
   bool blit_allowed (int x, int y,  Groundtype::GPType);
