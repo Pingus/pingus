@@ -1,4 +1,4 @@
-//  $Id: pingus_main.hxx,v 1.8 2003/03/28 13:06:55 grumbel Exp $
+//  $Id: pingus_main.hxx,v 1.9 2003/03/31 21:52:03 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,6 +34,7 @@ private:
   /// the name of the exe: argv[0]
   std::string executable_name;
   std::string levelfile;
+  std::string worldmapfile;
   std::string resolution;
 
   CL_Slot on_button_press_slot;

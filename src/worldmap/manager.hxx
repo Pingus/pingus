@@ -1,4 +1,4 @@
-//  $Id: manager.hxx,v 1.19 2003/03/07 00:08:58 grumbel Exp $
+//  $Id: manager.hxx,v 1.20 2003/03/31 21:52:03 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -78,6 +78,8 @@ private:
 public:
   ~WorldMapManager ();
   
+  void load (const std::string& filename);
+
   /** Check if WorldMap manager still needs to run and exit if if
       not */
   void update (float);

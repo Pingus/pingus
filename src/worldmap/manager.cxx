@@ -1,4 +1,4 @@
-//  $Id: manager.cxx,v 1.27 2003/03/30 16:51:43 grumbel Exp $
+//  $Id: manager.cxx,v 1.28 2003/03/31 21:52:03 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -82,7 +82,7 @@ WorldMapManager::WorldMapManager ()
   exit_worldmap = false;
  
   // FIXME: The default startup map should be configurable by some file
-  worldmap = new WorldMap (path_manager.complete("worldmaps/tutorial.xml"));
+
 
   //worldmap->on_startup ();
 
@@ -96,10 +96,24 @@ WorldMapManager::WorldMapManager ()
 }
 
 void
+WorldMapManager::load (const std::string& filename)
+{
+  if (worldmap)
+    delete worldmap;
+    
+  worldmap = new WorldMap (filename);
+}
+
+void
 WorldMapManager::on_startup ()
 {
   exit_worldmap = false;
   PingusSound::stop_music();
+
+  if (!worldmap)
+    {
+      load(path_manager.complete("worldmaps/tutorial.xml"));
+    }
 }
 
 WorldMapManager::~WorldMapManager ()
@@ -125,6 +139,7 @@ WorldMapManager::update (float)
   // Check if new worldmap is set and if so, change it
   if (new_worldmap)
     {
+      delete worldmap;
       worldmap     = new_worldmap;
       new_worldmap = 0;
     }

@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.59 2003/03/30 16:51:43 grumbel Exp $
+//   $Id: pingus_main.cxx,v 1.60 2003/03/31 21:52:03 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -86,6 +86,7 @@
 #include "pingu_action_factory.hxx"
 #include "credits.hxx"
 #include "sound/sound.hxx"
+#include "worldmap/manager.hxx"
 #include "cheat.hxx"
 
 using EditorNS::Editor;
@@ -206,6 +207,7 @@ PingusMain::check_args(int argc, char** argv)
       {"speed",             required_argument, 0, 't'},
       {"datadir",           required_argument, 0, 'd'},
       {"level",             required_argument, 0, 'l'},
+      {"worldmap",          required_argument, 0, 'w'},
       {"help",              no_argument,       0, 'h'},
       {"version",           no_argument,       0, 'V'},
       {"verbose",           required_argument, 0, 'v'},
@@ -260,6 +262,10 @@ PingusMain::check_args(int argc, char** argv)
       print_fps = true;
       if (verbose) std::cout << "PingusMain:check_args: Printing fps enabled" << std::endl;
       break;
+    case 'w': // -w, --worldmap
+      worldmapfile = optarg;
+      break;
+
     case 'l': // -l, --level
       {
 	// FIXME: Quick hack to get an absolute path
@@ -655,35 +661,35 @@ PingusMain::print_greeting_message()
   std::cout << std::endl;
   
 #ifdef HAVE_LIBCLANVORBIS
-  std::cout << "clanVorbis support: ok" << std::endl;
+  std::cout << _("clanVorbis support:           ok") << std::endl;
 #else
-  std::cout << "clanVoribs support: missing (.ogg music files will not be playable)" << std::endl;
+  std::cout << _("clanVoribs support:  missing (.ogg music files will not be playable)") << std::endl;
 #endif
 
 #ifdef HAVE_LIBCLANMIKMOD
-  std::cout << "clanMikMod support: ok" << std::endl;
+  std::cout << _("clanMikMod support:           ok") << std::endl;
 #else
-  std::cout << "clanMikMod support: missing (.it and .s3m music files will not be playable)" << std::endl;
+  std::cout << _("clanMikMod support:  missing (music files will not be playable)") << std::endl;
 #endif
 
 #ifdef HAVE_GETTEXT
-  std::cout << "getext support: ok" << std::endl;
-  std::cout << gettext("gettext language: english") << std::endl;
+  std::cout << _("getext support:               ok") << std::endl;
+  std::cout << _("gettext language:        english") << std::endl;
 #else
   std::cout << "getext support: missing (only support for english will be available)" << std::endl;
 #endif
 
   if (sound_enabled)
-    std::cout << "sound support: enabled" << std::endl;
+    std::cout << _("sound support:           enabled") << std::endl;
   else
-    std::cout << "sound support: disabled" << std::endl;
+    std::cout << _("sound support:          disabled") << std::endl;
 
   if (music_enabled)
-    std::cout << "music support: enabled" << std::endl;
+    std::cout << _("music support:           enabled") << std::endl;
   else
-    std::cout << "music support: disabled" << std::endl;
+    std::cout << _("music support:          disabled") << std::endl;
 
-  std::cout << "resolution set to: " << screen_width << "x" << screen_height << std::endl;
+  std::cout << _("resolution set to:       ") << screen_width << "x" << screen_height << std::endl;
 
   std::cout << std::endl;
 }
@@ -748,6 +754,11 @@ PingusMain::start_game ()
   else if (!demo_file.empty()) // start a demo
     {
       ScreenManager::instance()->push_screen(new DemoSession (demo_file));
+    }
+  else if (!worldmapfile.empty())
+    {
+      WorldMapNS::WorldMapManager::instance()->load(worldmapfile);
+      ScreenManager::instance()->push_screen(WorldMapNS::WorldMapManager::instance());
     }
   else // start a normal game
     {
