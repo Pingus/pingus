@@ -1,4 +1,4 @@
-//  $Id: Sprite.hh,v 1.13 2001/08/12 23:05:21 grumbel Exp $
+//  $Id: Sprite.hh,v 1.14 2001/09/23 16:33:48 japj Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,8 +27,8 @@
 class Sprite
 {
 public:
-  enum Direction { NONE, LEFT, RIGHT };
-  enum LoopType { ENDLESS, ONCE, };
+  typedef enum { NONE, LEFT, RIGHT } Direction;
+  typedef enum { ENDLESS, ONCE, } LoopType;
   
 private:
   float frame;
@@ -53,17 +53,17 @@ public:
   Sprite (std::string arg_sur_name,
 	  std::string arg_datafile,
 	  float arg_frames_per_second = 10.0f,
-	  Sprite::Direction dir = NONE,
+	  Direction dir = NONE,
 	  LoopType arg_loop_type = ENDLESS);
 
   Sprite (const CL_Surface& sur,
 	  float frames_per_second = 10.0f,
-	  Sprite::Direction dir = NONE,
+	  Direction dir = NONE,
 	  LoopType arg_loop_type = ENDLESS);
 
   Sprite (const ResDescriptor&,
 	  float frames_per_second = 10.0f,
-	  Sprite::Direction dir = NONE,
+	  Direction dir = NONE,
 	  LoopType arg_loop_type = ENDLESS);
 
   /** High level version of put_screen (), it handles the frame count
