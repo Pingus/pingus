@@ -3,6 +3,7 @@
 <pingus-level>
   <global>
     <levelname lang="en">If the way is blocked, bash away</levelname>
+    <levelname lang="nl">Als de weg is geblokkeerd, sloop het</levelname>
     <levelname lang="de">Ist der Weg blockiert, dann grab ihn frei</levelname>
     <levelname lang="cs">Kdy¾ nevede cesta dál, tak ji prohrabej</levelname>
     <levelname lang="tr">Eðer yol kapalýysa, temizlemek gerek</levelname>
@@ -20,6 +21,11 @@
                            levels, there is also an action that allows the Pingus to dig
                            horizontally, as opposed to the vertical dig ability the Digger action
                            provides. This new action is called Basher.
+    </description>
+    <description lang="nl">Vergelijkbaar met de graafactie did je al kent van eerdere niveau's, is
+                           er ook een actie die de Pingus in staat stelt om horizontaal te graven, 
+                           in tegenstelling tot de verticale graafmogelijkheid die de graafactie
+                           biedt. Deze nieuwe actie heet slooper.
     </description>
     <description lang="it">Un po' come lo 'Scavatore' che hai visto nei livelli precedenti, esiste
                            un'abilità che permette ai Pingus di scavare orizzontalmente, invece che

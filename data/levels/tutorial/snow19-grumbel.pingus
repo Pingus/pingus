@@ -3,6 +3,7 @@
 <pingus-level>
   <global>
     <levelname lang="en">Learn to use the bridge</levelname>
+    <levelname lang="nl">Leer hoe de brug te gebruiken</levelname>
     <levelname lang="it">Impara ad usare i ponti</levelname>
     <levelname lang="de">Lerne Brücken zu bauen</levelname>
     <levelname lang="cs">Nauè se stavìt mosty</levelname>
@@ -18,6 +19,10 @@
     <description lang="en">If no Jumper is at hand and a large hole needs to be passed, a bridge
 			   can be pretty helpful. It takes some time to build, but unlike the
 			   jumper action it allows following Pingus to reach the other end too.
+    </description>
+    <description lang="nl">Als er geen springen bij de hand is en grote gaten moeten worden gepasseerd, een
+                           brug kan dan erg handig zijn. Het kost was tijd om te maken, maar in tegenstelling
+                           tot de springactie, geeft het de Pingus de mogelijkheid de andere kant de halen.
     </description>
     <description lang="it">Se non hai 'Saltatori' sottomano e devi attraversare un grosso buco,
                            un ponte è quello che ci vuole. Ci vuole un po' a costruirlo, ma in

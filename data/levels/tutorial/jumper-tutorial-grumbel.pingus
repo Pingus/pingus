@@ -6,6 +6,7 @@
     <levelname lang="cs">Skákání je legrace</levelname>
     <levelname lang="de">Springe aus Freude</levelname>
     <levelname lang="en">Jump for joy</levelname>
+    <levelname lang="nl">Spring van Plezier</levelname>
     <levelname lang="it">Salti di gioia</levelname>
     <levelname lang="tr">Zevkle zýpla</levelname>
     <levelname lang="fr">Saute de joie</levelname>
@@ -29,6 +30,11 @@
                            but not reachable by walking. That's when the Jumper comes in handy -
                            it allows the Pingu to make a small jump and so enables him to
                            reach the platform.
+    </description>
+    <description lang="nl">Some moet een Pingu een platvormrand bereiken dat ver weg is, en
+                           niet bereikbaar te voet. Dat is waar de Springer goed van pas komt -
+                           Het biedt de Pingu de mogelijkeheid om een kleine sprong te maken om
+                           zo het platvorm te bereiken.
     </description>
     <description lang="it">Certe volte un Pingus ha bisogno di raggiungere una piattaforma lontana,
                            irraggiungibile a piedi. In questi casi il 'Saltatore' diventa utile:

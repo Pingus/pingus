@@ -3,6 +3,7 @@
 <pingus-level>
   <global>
     <levelname lang="en">Dig, bash and other problems</levelname>
+    <levelname lang="nl">Graaf, sloop en andere problemen</levelname>
     <levelname lang="it">Scavare, sfondare ed altri problemi</levelname>
     <levelname lang="de">Graben und andere Probleme</levelname>
     <levelname lang="cs">Kopání, hrabání a dal¹í problémy</levelname>
@@ -21,6 +22,13 @@
                            problems. If you think you've reached a situation from which you can
                            no longer solve the level, double click the armageddon button at the
                            lower right.
+    </description>
+    <description lang="nl">Des te meer levels je hebt gehaald, des te moeilijker het zal worden,
+                           geen paniek, deze is erg eenvoudig. Gebruik gewoonweg de dingen
+                           die je hebt geleerd in de voorgaande niveau's, en je zult niet veel problemen
+                           tegenkomen. Als je denkt dat je in een situatie zit waarin je het level niet
+                           meer kan oplossen, dubbel klik dan op de Armageddon knop rechtsonderaan.
+
     </description>
     <description lang="it">Più livelli superi, più difficile diventa il successo. Ma non preoccuparti,
                            perché questo è ancora abbastanza facile. Usa ciò che hai imparato nei

@@ -3,6 +3,7 @@
 <pingus-level>
   <global>
     <levelname lang="en">Float or Die</levelname>
+    <levelname lang="nl">Drijf of sterf</levelname>
     <levelname lang="it">Fluttua o muori</levelname>
     <levelname lang="de">Schwebe oder Stirb</levelname>
     <levelname lang="cs">Le», nebo zemøe¹</levelname>
@@ -19,6 +20,11 @@
                            time you will need to equip your Pingus with a little propeller,
                            so that they can float to the ground smoothly. If Pingus fall too
                            far, they will not be able to survive the fall, so keep your eyes open!
+    </description>
+    <description lang="nl">Good gedaan in de eerste missie! Nu verder met de volgende. Deze keer
+                           moet je je Pingus voorzien van een kleine propellor, zodat ze zachtjes
+                           naar de grond zweven. Als de Pingus te diep valt, zijn ze niet in staat
+                           de val te overleven, dus hou je ogen open!
     </description>
     <description lang="it">Ben fatto nella prima missione! Ecco la prossima: stavolta devi
                            equipaggiare i Pingus con un piccolo propulsore; in questo modo potranno

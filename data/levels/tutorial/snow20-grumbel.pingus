@@ -3,6 +3,7 @@
 <pingus-level>
   <global>
     <levelname lang="en">Three solutions, it's up to you</levelname>
+    <levelname lang="nl">3 Mogelijkheden, aan jouw de keus</levelname>
     <levelname lang="it">Tre soluzioni, scegline una</levelname>
     <levelname lang="de">Drei Lösungen, es liegt bei Dir</levelname>
     <levelname lang="cs">Tøi øe¹ení - zvol si, které chce¹</levelname>
@@ -18,6 +19,10 @@
     <description lang="en">Now that you've learned all the actions, it's time for some
                            more practice. This levels presents you with at least three
                            different ways to solve it. It's up to you which one you pick.
+    </description>
+    <description lang="nl">Nu je alle acties hebt geleerd, is de tijd gekomen om wat
+                           meer te oefenen. Dit niveau biedt minstens drie verschillende mogelijkheden
+                           om het op te lossen. Aan jouw te kiezen welke oplossing je neemt.
     </description>
     <description lang="it">Adesso che hai appreso tutte le abilità è il momento di
                            allenarsi un po'. Ci sono almeno tre modi per risolvere questo

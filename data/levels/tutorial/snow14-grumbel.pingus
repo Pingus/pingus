@@ -3,6 +3,7 @@
 <pingus-level>
   <global>
     <levelname lang="en">Block'a Rock</levelname>
+    <levelname lang="nl">Blokkeer een keer</levelname>
     <levelname lang="it">Blocca la via</levelname>
     <levelname lang="de">Blockiere und sprenge</levelname>
     <levelname lang="cs">Blokování</levelname>
@@ -18,6 +19,10 @@
     <description lang="en">Once again it's time to combine the stuff you have learned in your
                            previous levels. Blast your way free and make sure you also keep the
                            rest of the Pingus under control. The Blocker action will be helpful.
+    </description>
+    <description lang="nl">Het is weer tijd om dat wat je geleerd hebt in de voorgaande niveau's
+                           te combineren. Beuk je weg naar de vrijheid en zorg en voor dat je ook
+                           de andere Pingus onder controle houdt. De Blokkeer actie zal handig zijn.
     </description>
     <description lang="it">E' di nuovo il momento di combinare quanto appreso nei livelli
                            precedenti. Scavati una strada, ma cerca di mantenere gli altri

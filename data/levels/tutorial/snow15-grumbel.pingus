@@ -3,6 +3,7 @@
 <pingus-level>
   <global>
     <levelname lang="en">Climb, Climber,... Boom!</levelname>
+    <levelname lang="nl">Klim, Klauter,... Kaboem!</levelname>
     <levelname lang="it">Arrampicati,... Boom!</levelname>
     <levelname lang="de">Kletter, Climber... Boom!</levelname>
     <levelname lang="cs">©plhej horolezèe,... Bum!</levelname>
@@ -19,6 +20,11 @@
                            often have to combine different actions to get the job done. Due
                            to the lack of a Digger action in this level the Bomber needs to
                            jump in, but how can it reach the place to bomb?
+    </description>
+    <description lang="nl">Zoals je wellicht al hebt ontdekt in voorgaande niveau's, dien je
+                           vaak verschillende acties te combineren om de klus te klaren. Door
+                           gebrek aan graaf acties in dit niveau zal de explosievendienst moeten
+                           helpen, maar hoe kan je de te bombarderen plaats bereiken ?
     </description>
     <description lang="it">Come avrai intuito nei livelli precedenti, spesso dovrai combinare
                            abilità differenti per svolgere il tuo lavoro. Il questo livello
