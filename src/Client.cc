@@ -1,4 +1,4 @@
-//  $Id: Client.cc,v 1.52 2001/04/15 17:01:51 grumbel Exp $
+//  $Id: Client.cc,v 1.53 2001/04/15 22:54:49 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,7 +36,6 @@
 #include "PLFPLF.hh"
 #include "XMLPLF.hh"
 #include "DeltaManager.hh"
-#include "Cursor.hh"
 #include "MouseController.hh"
 #include "GamepadController.hh"
 
@@ -52,7 +51,8 @@ shared_ptr<HurryUp>       Client::hurry_up;
 
 Client::Client(boost::shared_ptr<Controller> arg_controller, 
 	       boost::dummy_ptr<Server> s)
-  : controller (arg_controller)
+  : controller (arg_controller),
+    cursor (new Cursor ("cursors/cross", "core", controller))
 {
   //player = 0;
   server = s;
@@ -61,14 +61,15 @@ Client::Client(boost::shared_ptr<Controller> arg_controller,
   skip_frame = 0;
   do_replay = false;
   is_finished = false;
-
-  Display::add_flip_screen_hook(new Cursor ("cursors/cross", "core", controller));
-  Display::add_flip_screen_hook(new Cursor ("cursors/cursor", "core", boost::shared_ptr<Controller>(new MouseController ())));
+ 
+  Display::add_flip_screen_hook(cursor.get ());
+  //Display::add_flip_screen_hook(new Cursor ("cursors/cursor", "core", boost::shared_ptr<Controller>(new MouseController ())));
 }
 
 Client::~Client()
 {
-  std::cout << "Client:~Client" << std::endl;
+  //std::cout << "Client:~Client" << std::endl;
+  Display::remove_flip_screen_hook(cursor.get ());
   deinit_display();
 }
 

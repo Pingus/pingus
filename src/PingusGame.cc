@@ -1,4 +1,4 @@
-//  $Id: PingusGame.cc,v 1.19 2001/04/15 17:01:51 grumbel Exp $
+//  $Id: PingusGame.cc,v 1.20 2001/04/15 22:54:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -99,9 +99,9 @@ PingusGame::start_game (boost::shared_ptr<PLF> arg_plf)
 
   boost::shared_ptr<Controller> controller;
   
-  if (CL_Input::joysticks.size () > 0)
+  /*  if (CL_Input::joysticks.size () > 0)
     controller = boost::shared_ptr<Controller>(new GamepadController (CL_Input::joysticks[0]));
-  else
+  else*/
     controller = boost::shared_ptr<Controller>(new MouseController ());
   
   PingusLevelDesc leveldesc(plf, controller);

@@ -1,4 +1,4 @@
-//  $Id: PingusLevelDesc.cc,v 1.21 2001/04/13 13:45:09 grumbel Exp $
+//  $Id: PingusLevelDesc.cc,v 1.22 2001/04/15 22:54:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -90,7 +90,7 @@ PingusLevelDesc::draw(PingusLevelDesc::LoadingStatus status)
     Display::flip_display();
     
     // FIXME: Busy waiting... ugly
-    while (!controller->pause->is_pressed ())
+    while (!controller->pause->is_pressed () && !controller->left->is_pressed ())
       {
 	CL_System::keep_alive();
 	CL_System::sleep (50);

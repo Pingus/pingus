@@ -1,4 +1,4 @@
-//  $Id: MouseController.cc,v 1.6 2001/04/15 11:00:41 grumbel Exp $
+//  $Id: MouseController.cc,v 1.7 2001/04/15 22:54:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -89,15 +89,15 @@ public:
 MouseController::MouseController (int arg_owner_id)
   : Controller (arg_owner_id)
 {
-  left = boost::shared_ptr<ControllerButton> (new LeftMouseButton (this));
-  middle = boost::shared_ptr<ControllerButton> (new MiddleMouseButton (this));
-  right = boost::shared_ptr<ControllerButton> (new RightMouseButton (this));
-  abort = boost::shared_ptr<ControllerButton> (new AbortMouseButton (this));
-  pause = boost::shared_ptr<ControllerButton> (new PauseMouseButton (this));
+  left         = boost::shared_ptr<ControllerButton> (new LeftMouseButton (this));
+  middle       = boost::shared_ptr<ControllerButton> (new MiddleMouseButton (this));
+  right        = boost::shared_ptr<ControllerButton> (new RightMouseButton (this));
+  abort        = boost::shared_ptr<ControllerButton> (new AbortMouseButton (this));
+  pause        = boost::shared_ptr<ControllerButton> (new PauseMouseButton (this));
   scroll_left  = boost::shared_ptr<ControllerButton> (new ScrollLeftButton (this));
   scroll_right = boost::shared_ptr<ControllerButton> (new ScrollRightButton(this));
-  scroll_up  = boost::shared_ptr<ControllerButton> (new ScrollUpButton (this));
-  scroll_down = boost::shared_ptr<ControllerButton> (new ScrollDownButton(this));
+  scroll_up    = boost::shared_ptr<ControllerButton> (new ScrollUpButton (this));
+  scroll_down  = boost::shared_ptr<ControllerButton> (new ScrollDownButton(this));
 }
 
 MouseController::~MouseController ()

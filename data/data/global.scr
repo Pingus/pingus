@@ -1,5 +1,5 @@
-// Pingus - A free Lemmings Clone
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// Obsolete file, only here for backward compatibility!
+// 
 
 section Liquid
 {
@@ -30,9 +30,9 @@ section Hotspots
 	colum       = images/groundpieces/ground/misc/colum.png      (type=surface, x=0, y=0, width=142, height=184, tcol=0);
 	colum_flat  = images/groundpieces/ground/misc/colum_flat.png (type=surface, x=0, y=0, width=184, height=122, tcol=0);
 
-	colum_pice1 = images/groundpieces/ground/desert/colum_piece1.png      (type=surface, x=0, y=0, width=103, height=66, tcol=0);
-	colum_pice2 = images/groundpieces/ground/desert/colum_piece2.png      (type=surface, x=0, y=0, width=128, height=66, tcol=0);
-	colum_pice3 = images/groundpieces/ground/desert/colum_piece3.png      (type=surface, x=0, y=0, width=128, height=111, tcol=0);
+	colum_pice1 = images/groundpieces/ground/desert/column_piece1.png      (type=surface, x=0, y=0, width=103, height=66, tcol=0);
+	colum_pice2 = images/groundpieces/ground/desert/column_piece2.png      (type=surface, x=0, y=0, width=128, height=66, tcol=0);
+	colum_pice3 = images/groundpieces/ground/desert/column_piece3.png      (type=surface, x=0, y=0, width=128, height=111, tcol=0);
 
 	bridge     = images/hotspots/bridge.png    (type=surface, x=0, y=0, width=150,  height=58, tcol=0);
 

@@ -1,4 +1,4 @@
-//  $Id: exiter.cc,v 1.11 2001/04/08 14:10:34 grumbel Exp $
+//  $Id: exiter.cc,v 1.12 2001/04/15 22:54:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,7 +37,7 @@ Exiter::init(void)
   environment = (PinguEnvironment)(land | sky);
   action_name = "Exiter";
   
-  surface = PingusResource::load_surface ("Pingus/exit", "pingus");
+  surface = PingusResource::load_surface ("Pingus/exit0", "pingus");
   counter.set_size(surface.get_num_frames());
   counter.set_type(Counter::once);
   counter.set_count(0);

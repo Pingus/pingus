@@ -1,4 +1,4 @@
-//  $Id: climber.cc,v 1.12 2001/04/08 14:10:34 grumbel Exp $
+//  $Id: climber.cc,v 1.13 2001/04/15 22:54:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,7 +35,7 @@ Climber::init(void)
 
   if (!static_surfaces_loaded)
     {
-      static_surface = PingusResource::load_surface ("Pingus/climber", "pingus");
+      static_surface = PingusResource::load_surface ("Pingus/climber0", "pingus");
       static_surfaces_loaded = true;
     }
 

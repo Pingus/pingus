@@ -1,4 +1,4 @@
-//  $Id: digger.cc,v 1.20 2001/04/15 11:00:41 grumbel Exp $
+//  $Id: digger.cc,v 1.21 2001/04/15 22:54:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,7 +42,7 @@ Digger::init(void)
 
   if (!static_surfaces_loaded)
     {
-      static_surface = PingusResource::load_surface ("Pingus/digger", "pingus");
+      static_surface = PingusResource::load_surface ("Pingus/digger0", "pingus");
       digger_radius = PingusResource::load_surface ("Other/digger_radius", "pingus");  
       surface = static_surface;
     }

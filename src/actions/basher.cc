@@ -1,4 +1,4 @@
-//  $Id: basher.cc,v 1.20 2001/04/08 14:10:34 grumbel Exp $
+//  $Id: basher.cc,v 1.21 2001/04/15 22:54:49 grumbel Exp $
 //
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -41,7 +41,7 @@ Basher::init(void)
 
   if (!static_surf_loaded)
     {
-      static_surface = PingusResource::load_surface ("Pingus/basher", "pingus");
+      static_surface = PingusResource::load_surface ("Pingus/basher0", "pingus");
       bash_radius = PingusResource::load_surface ("Other/bash_radius", "pingus");
       static_surf_loaded = true;
     }

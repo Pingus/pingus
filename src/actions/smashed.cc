@@ -1,4 +1,4 @@
-//  $Id: smashed.cc,v 1.8 2001/04/08 14:10:34 grumbel Exp $
+//  $Id: smashed.cc,v 1.9 2001/04/15 22:54:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,7 +30,7 @@ Smashed::init(void)
   environment = (PinguEnvironment)(land | sky);
   action_name = "Smashed";
 
-  surface = PingusResource::load_surface ("Pingus/bomber", "pingus");
+  surface = PingusResource::load_surface ("Pingus/bomber0", "pingus");
   counter.set_size(surface.get_num_frames());
   counter.set_type(Counter::once);
   counter.set_count(0);

@@ -1,4 +1,4 @@
-//  $Id: Splashed.cc,v 1.12 2001/04/08 14:10:34 grumbel Exp $
+//  $Id: Splashed.cc,v 1.13 2001/04/15 22:54:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,7 +36,7 @@ Splashed::init(void)
 
   if (!static_surface)
     {
-      static_surface = PingusResource::load_surface ("Pingus/splat", "pingus");
+      static_surface = PingusResource::load_surface ("Pingus/splat0", "pingus");
     }
   
   surface = static_surface;

@@ -1,4 +1,4 @@
-//  $Id: Client.hh,v 1.29 2001/04/15 17:01:51 grumbel Exp $
+//  $Id: Client.hh,v 1.30 2001/04/15 22:54:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,6 +35,7 @@
 #include "SmallMap.hh"
 #include "HurryUp.hh"
 #include "Controller.hh"
+#include "Cursor.hh"
 
 class Playfield;
 class ButtonPanel;
@@ -81,7 +82,9 @@ private:
   static boost::shared_ptr<SmallMap>      small_map;
   /// 
   static boost::shared_ptr<HurryUp>       hurry_up;
-  boost::shared_ptr<Controller>   controller;
+
+  boost::shared_ptr<Controller> controller;
+  boost::shared_ptr<Cursor>     cursor;
   ///
   CL_Slot on_button_press_slot;
   ///
