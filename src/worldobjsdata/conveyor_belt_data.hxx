@@ -1,4 +1,4 @@
-//  $Id: conveyor_belt_data.hxx,v 1.7 2003/03/04 12:53:47 grumbel Exp $
+//  $Id: conveyor_belt_data.hxx,v 1.8 2003/03/05 19:13:59 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -47,7 +47,7 @@ public:
   void insert_WorldObjs (World* world);
 
   /** Create an EditorObj from the given data object */
-  void insert_EditorObjs (EditorNS::ObjectManager*);
+  void insert_EditorObjs (EditorNS::EditorObjMgr*);
   
 private:
   ConveyorBeltData& operator= (const ConveyorBeltData&);

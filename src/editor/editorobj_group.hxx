@@ -1,4 +1,4 @@
-//  $Id: editorobj_group.hxx,v 1.13 2002/11/28 20:09:54 grumbel Exp $
+//  $Id: editorobj_group.hxx,v 1.14 2003/03/05 19:13:59 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,8 +23,11 @@
 #include <vector>
 #include "../vector.hxx"
 #include "editorobj.hxx"
+#include "editorobj_mgr.hxx"
 
-class EditorObjGroup : public EditorObj
+class EditorObjGroup 
+  : public EditorObj,
+    public EditorNS::EditorObjMgr
 {
 private:
   std::vector<EditorObj*> objs;
@@ -66,6 +69,3 @@ private:
 #endif
 
 /* EOF */
-
-
-

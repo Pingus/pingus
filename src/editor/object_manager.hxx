@@ -1,4 +1,4 @@
-//  $Id: object_manager.hxx,v 1.26 2003/02/19 11:33:00 grumbel Exp $
+//  $Id: object_manager.hxx,v 1.27 2003/03/05 19:13:59 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,7 @@
 #include "../color.hxx"
 #include "../action_data.hxx"
 #include "editorobj.hxx"
+#include "editorobj_mgr.hxx"
 
 namespace EditorNS {
 
@@ -31,7 +32,7 @@ class EditorView;
 
 /** Manager for all level objects. This class is kind of analog to the
     World. */
-class ObjectManager
+class ObjectManager : public EditorObjMgr
 {
 private:
   // FIXME: The object manager should really not have these friends,
@@ -70,7 +71,7 @@ public:
   typedef std::vector<EditorObj*>::reverse_iterator EditorObjRIter;
 
   ObjectManager();
-  ~ObjectManager();
+  virtual ~ObjectManager();
 
   /// Create a new level
   void new_level ();

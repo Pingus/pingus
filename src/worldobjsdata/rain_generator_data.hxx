@@ -1,4 +1,4 @@
-//  $Id: rain_generator_data.hxx,v 1.5 2003/03/04 12:53:47 grumbel Exp $
+//  $Id: rain_generator_data.hxx,v 1.6 2003/03/05 19:13:59 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,7 +33,7 @@ public:
   RainGeneratorData(xmlDocPtr doc, xmlNodePtr cur) { UNUSED_ARG(doc); UNUSED_ARG(cur); }
 
   void insert_WorldObjs (World* world);
-  void insert_EditorObjs (EditorNS::ObjectManager*);
+  void insert_EditorObjs (EditorNS::EditorObjMgr*);
 
   void write_xml(std::ostream& xml);
 private:

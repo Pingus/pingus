@@ -1,4 +1,4 @@
-//  $Id: rain_generator_data.cxx,v 1.5 2003/03/04 12:53:47 grumbel Exp $
+//  $Id: rain_generator_data.cxx,v 1.6 2003/03/05 19:13:59 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,7 @@
 #include "../world.hxx"
 #include "../editor/weather_obj.hxx"
 #include "../worldobjs/rain_generator.hxx"
-#include "../editor/object_manager.hxx"
+#include "../editor/editorobj_mgr.hxx"
 #include "rain_generator_data.hxx"
 
 namespace WorldObjsData {
@@ -39,7 +39,7 @@ RainGeneratorData::insert_WorldObjs (World* world)
 }
 
 void
-RainGeneratorData::insert_EditorObjs (EditorNS::ObjectManager* obj_mgr)
+RainGeneratorData::insert_EditorObjs (EditorNS::EditorObjMgr* obj_mgr)
 {
   obj_mgr->add(new WeatherObj("rain-generator"));
 }

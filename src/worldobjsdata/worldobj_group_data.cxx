@@ -1,4 +1,4 @@
-//  $Id: worldobj_group_data.cxx,v 1.8 2003/03/04 12:53:47 grumbel Exp $
+//  $Id: worldobj_group_data.cxx,v 1.9 2003/03/05 19:13:59 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,7 +23,7 @@
 #include "../xml_helper.hxx"
 #include "../worldobj_data_factory.hxx"
 #include "../worldobjs/worldobj_group.hxx"
-#include "../editor/object_manager.hxx"
+#include "../editor/editorobj_mgr.hxx"
 #include "worldobj_group_data.hxx"
 
 namespace WorldObjsData {
@@ -84,18 +84,23 @@ WorldObjGroupData::write_xml (std::ostream& xml)
 void 
 WorldObjGroupData::insert_WorldObjs (World* world)
 {
-  world->add_object(new WorldObjs::WorldObjGroup (*this));
+  // Flatten all objects of the group and insert them normal into the
+  // world
+  for (ObjsIter i = objs.begin (); i != objs.end (); ++i)
+    (*i)->insert_WorldObjs(world);
 }
 
 void
-WorldObjGroupData::insert_EditorObjs (EditorNS::ObjectManager* obj_mgr)
+WorldObjGroupData::insert_EditorObjs (EditorNS::EditorObjMgr* obj_mgr)
 {
-  //EditorObjGroup* group = new EditorObjGroup();
+  EditorObjGroup* group = new EditorObjGroup();
 
   for (ObjsIter i = objs.begin (); i != objs.end (); ++i)
     {
-      (*i)->insert_EditorObjs (obj_mgr);
+      (*i)->insert_EditorObjs(group);
     }
+  
+  obj_mgr->add(group);
 }
  
 } // namespace WorldObjsData

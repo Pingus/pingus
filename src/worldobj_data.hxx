@@ -1,4 +1,4 @@
-//  $Id: worldobj_data.hxx,v 1.9 2003/03/04 12:53:46 grumbel Exp $
+//  $Id: worldobj_data.hxx,v 1.10 2003/03/05 19:13:59 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,7 +27,7 @@ class World;
 class EditorObj;
 
 namespace EditorNS {
-class ObjectManager;
+class EditorObjMgr;
 }
 
 typedef std::vector<EditorObj*> EditorObjLst;
@@ -61,7 +61,7 @@ public:
 
   /** Create an EditorObj from the given data object, caller is
       responible for deleting the pointers in the vector */
-  virtual void insert_EditorObjs (EditorNS::ObjectManager*) =0;
+  virtual void insert_EditorObjs (EditorNS::EditorObjMgr*) =0;
 };
 
 #endif

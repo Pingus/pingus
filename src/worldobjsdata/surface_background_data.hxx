@@ -1,4 +1,4 @@
-//  $Id: surface_background_data.hxx,v 1.6 2003/03/04 12:53:47 grumbel Exp $
+//  $Id: surface_background_data.hxx,v 1.7 2003/03/05 19:13:59 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -76,7 +76,7 @@ public:
   void write_xml (std::ostream& xml);
   
   void insert_WorldObjs (World* world);
-  void insert_EditorObjs (EditorNS::ObjectManager*);
+  void insert_EditorObjs (EditorNS::EditorObjMgr*);
 
 private:
   SurfaceBackgroundData& operator= (const SurfaceBackgroundData&);

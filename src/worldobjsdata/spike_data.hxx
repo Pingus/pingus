@@ -1,4 +1,4 @@
-//  $Id: spike_data.hxx,v 1.7 2003/03/04 12:53:47 grumbel Exp $
+//  $Id: spike_data.hxx,v 1.8 2003/03/05 19:13:59 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -44,7 +44,7 @@ public:
       
   void insert_WorldObjs (World*);
       
-  void insert_EditorObjs (EditorNS::ObjectManager*);
+  void insert_EditorObjs (EditorNS::EditorObjMgr*);
       
 private:
   SpikeData& operator= (const SpikeData&);

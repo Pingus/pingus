@@ -1,4 +1,4 @@
-//  $Id: prefab.cxx,v 1.4 2002/09/15 21:21:47 grumbel Exp $
+//  $Id: prefab.cxx,v 1.5 2003/03/05 19:13:59 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -53,9 +53,9 @@ Prefab::Prefab (const std::string& filename)
 		{
 		  description = XMLhelper::parse_string (doc, cur);
 		}
-	      else if (XMLhelper::equal_str (cur->name, "uid"))
+	      else if (XMLhelper::equal_str (cur->name, "type"))
 		{
-		  uid = XMLhelper::parse_string (doc, cur);
+		  type = XMLhelper::parse_string (doc, cur);
 		}
 	      else if (XMLhelper::equal_str (cur->name, "thumbnail"))
 		{
@@ -97,9 +97,9 @@ Prefab::~Prefab ()
 }
 
 Prefab*
-Prefab::create (const std::string& uid)
+Prefab::create (const std::string& type)
 {
-  return new Prefab (path_manager.complete ("prefab/") + uid);
+  return new Prefab (path_manager.complete ("prefab/") + type);
 }
 
 std::string
@@ -109,9 +109,9 @@ Prefab::get_name ()
 }
 
 std::string
-Prefab::get_uid ()
+Prefab::get_type ()
 {
-  return uid;
+  return type;
 }
 
 std::string

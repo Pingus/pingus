@@ -1,4 +1,4 @@
-//  $Id: exit_data.hxx,v 1.4 2003/03/04 12:53:47 grumbel Exp $
+//  $Id: exit_data.hxx,v 1.5 2003/03/05 19:13:59 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -50,7 +50,7 @@ public:
   void write_xml (std::ostream&);
   
   void insert_WorldObjs (World*);
-  void insert_EditorObjs (EditorNS::ObjectManager*);
+  void insert_EditorObjs (EditorNS::EditorObjMgr*);
 
 private:
   ExitData& operator= (const ExitData& old);

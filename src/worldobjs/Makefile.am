@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.17 2002/09/27 16:01:55 torangan Exp $
+#  $Id: Makefile.am,v 1.18 2003/03/05 19:13:59 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -45,7 +45,6 @@ libpingus_worldobjs_a_SOURCES = \
 	surface_background.cxx	       surface_background.hxx         \
         switch_door.cxx                switch_door.hxx                \
         teleporter.cxx                 teleporter.hxx                 \
-	thunderstorm_background.cxx    thunderstorm_background.hxx    \
-        worldobj_group.hxx             worldobj_group.cxx
+	thunderstorm_background.cxx    thunderstorm_background.hxx
 
 ## EOF ##

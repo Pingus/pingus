@@ -1,4 +1,4 @@
-//  $Id: prefab_obj.hxx,v 1.2 2002/09/27 11:26:46 torangan Exp $
+//  $Id: prefab_obj.hxx,v 1.3 2003/03/05 19:13:59 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -40,7 +40,6 @@ private:
   
 public:
   PrefabObj ();
-
 
 private:
   PrefabObj (const PrefabObj&);

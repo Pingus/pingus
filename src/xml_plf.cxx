@@ -1,4 +1,4 @@
-//  $Id: xml_plf.cxx,v 1.33 2003/02/19 11:33:00 grumbel Exp $
+//  $Id: xml_plf.cxx,v 1.34 2003/03/05 19:13:59 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -150,8 +150,9 @@ XMLPLF::parse_file()
 	    }
 	  else if (XMLhelper::equal_str(cur->name, "group"))
 	    {
+              worldobjs_data.push_back(WorldObjDataFactory::instance()->create(doc, cur));
 	      //worldobjs_data.push_back (new WorldObjsData::WorldObjGroupData (doc, cur));
-	      parse_group (cur);
+	      //parse_group (cur);
 	    }
 	  else if (XMLhelper::equal_str(cur->name, "start-position"))
 	    {

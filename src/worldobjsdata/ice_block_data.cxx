@@ -1,4 +1,4 @@
-//  $Id: ice_block_data.cxx,v 1.9 2003/03/04 12:53:47 grumbel Exp $
+//  $Id: ice_block_data.cxx,v 1.10 2003/03/05 19:13:59 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,7 +23,7 @@
 #include "../xml_helper.hxx"
 #include "../editorobjs/ice_block_obj.hxx"
 #include "../worldobjs/ice_block.hxx"
-#include "../editor/object_manager.hxx"
+#include "../editor/editorobj_mgr.hxx"
 #include "ice_block_data.hxx"
 
 namespace WorldObjsData {
@@ -63,7 +63,7 @@ IceBlockData::insert_WorldObjs (World* world)
 }
 
 void
-IceBlockData::insert_EditorObjs (EditorNS::ObjectManager* obj_mgr)
+IceBlockData::insert_EditorObjs (EditorNS::EditorObjMgr* obj_mgr)
 {
   obj_mgr->add(new EditorObjs::IceBlockObj(*this));
 }

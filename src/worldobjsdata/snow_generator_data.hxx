@@ -1,4 +1,4 @@
-//  $Id: snow_generator_data.hxx,v 1.8 2003/03/04 12:53:47 grumbel Exp $
+//  $Id: snow_generator_data.hxx,v 1.9 2003/03/05 19:13:59 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,7 +34,7 @@ public:
   SnowGeneratorData(xmlDocPtr doc, xmlNodePtr cur);
   
   void insert_WorldObjs (World* world);
-  void insert_EditorObjs (EditorNS::ObjectManager*);
+  void insert_EditorObjs (EditorNS::EditorObjMgr*);
 
   void write_xml(std::ostream& xml);
 private:

@@ -1,4 +1,4 @@
-//  $Id: liquid_data.cxx,v 1.11 2003/03/04 17:02:51 grumbel Exp $
+//  $Id: liquid_data.cxx,v 1.12 2003/03/05 19:13:59 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,7 +24,7 @@
 #include "../string_converter.hxx"
 #include "../xml_helper.hxx"
 #include "../xml_file_reader.hxx"
-#include "../editor/object_manager.hxx"
+#include "../editor/editorobj_mgr.hxx"
 #include "liquid_data.hxx"
 
 namespace WorldObjsData {
@@ -84,7 +84,7 @@ LiquidData::insert_WorldObjs (World* world)
 }
 
 void
-LiquidData::insert_EditorObjs (EditorNS::ObjectManager* obj_mgr)
+LiquidData::insert_EditorObjs (EditorNS::EditorObjMgr* obj_mgr)
 { 
   obj_mgr->add(new EditorObjs::LiquidObj(*this));
 }

@@ -1,4 +1,4 @@
-//  $Id: switch_door_data.cxx,v 1.10 2003/03/04 12:53:47 grumbel Exp $
+//  $Id: switch_door_data.cxx,v 1.11 2003/03/05 19:13:59 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,7 +23,7 @@
 #include "../xml_helper.hxx"
 #include "../editorobjs/switch_door_obj.hxx"
 #include "../worldobjs/switch_door.hxx"
-#include "../editor/object_manager.hxx"
+#include "../editor/editorobj_mgr.hxx"
 #include "switch_door_data.hxx"
 
 namespace WorldObjsData {
@@ -77,7 +77,7 @@ SwitchDoorData::insert_WorldObjs (World* world)
 
 /** Create an EditorObj from the given data object */
 void
-SwitchDoorData::insert_EditorObjs (EditorNS::ObjectManager* obj_mgr)
+SwitchDoorData::insert_EditorObjs (EditorNS::EditorObjMgr* obj_mgr)
 {
   EditorObjs::SwitchDoorObj* obj = new EditorObjs::SwitchDoorObj(*this);
   obj_mgr->add(obj);

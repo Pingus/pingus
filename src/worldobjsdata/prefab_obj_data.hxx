@@ -1,4 +1,4 @@
-//  $Id: prefab_obj_data.hxx,v 1.6 2003/03/04 12:53:47 grumbel Exp $
+//  $Id: prefab_obj_data.hxx,v 1.7 2003/03/05 19:13:59 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,7 +46,7 @@ public:
   Vector pos;
 
   /** The uniq identifer of this prefab */
-  std::string uid;
+  std::string type;
   
   /** A pointer to the prefab (just for caching, this is not real data
       of this object, since it can be consturcted from the name) */
@@ -59,7 +59,7 @@ public:
   void insert_WorldObjs ();
   
   /** Create a EditorObjs::PrefabObj from the prefab data */
-  void insert_EditorObjs (EditorNS::ObjectManager*);
+  void insert_EditorObjs (EditorNS::EditorObjMgr*);
 
 private:
   PrefabObjData (const PrefabObjData&);

@@ -1,4 +1,4 @@
-//  $Id: prefab.hxx,v 1.4 2002/09/27 11:26:44 torangan Exp $
+//  $Id: prefab.hxx,v 1.5 2003/03/05 19:13:59 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,7 +38,7 @@ private:
 
   std::string name;
   std::string description;
-  std::string uid;
+  std::string type;
 public:
   /** Create a Prefab object from a given prefab description file
       @param filename The fully qualitfied filename of the prefab
@@ -59,7 +59,7 @@ public:
   std::string get_name ();
 
   /** @return the uniq identifer of this prefab */
-  std::string get_uid ();
+  std::string get_type ();
 
   /** @return a description of this prefab, where and how it should be
       used and things like that. */

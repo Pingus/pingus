@@ -1,4 +1,4 @@
-//  $Id: smasher_data.cxx,v 1.10 2003/03/04 12:53:47 grumbel Exp $
+//  $Id: smasher_data.cxx,v 1.11 2003/03/05 19:13:59 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,7 +24,7 @@
 #include "../xml_file_reader.hxx"
 #include "../editorobjs/smasher_obj.hxx"
 #include "../worldobjs/smasher.hxx"
-#include "../editor/object_manager.hxx"
+#include "../editor/editorobj_mgr.hxx"
 #include "../pingus_resource.hxx"
 
 namespace WorldObjsData {
@@ -60,7 +60,7 @@ SmasherData::insert_WorldObjs (World* world)
 }
 
 void
-SmasherData::insert_EditorObjs (EditorNS::ObjectManager* obj_mgr)
+SmasherData::insert_EditorObjs (EditorNS::EditorObjMgr* obj_mgr)
 {
   obj_mgr->add(new EditorObjs::SmasherObj(*this));
 }

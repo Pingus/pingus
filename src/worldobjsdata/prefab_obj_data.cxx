@@ -1,4 +1,4 @@
-//  $Id: prefab_obj_data.cxx,v 1.9 2003/03/04 20:18:33 torangan Exp $
+//  $Id: prefab_obj_data.cxx,v 1.10 2003/03/05 19:13:59 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,17 +27,12 @@ namespace WorldObjsData {
 
 PrefabObjData::PrefabObjData (xmlDocPtr doc, xmlNodePtr cur)
 {
-  if (!XMLhelper::get_prop(cur, "type", uid))
-    {
-      std::cout << "PrefabObjData: missing type! Default to test" << std::endl;
-      uid = "test";
-    }
-
   XMLFileReader reader(doc, cur);
   reader.read_vector("position", pos);
+  reader.read_string("type", type);
   
   // try to load the data for this prefab-uid
-  data = Prefab::create (uid);
+  data = Prefab::create (type);
 }
 
 void
@@ -47,7 +42,7 @@ PrefabObjData::insert_WorldObjs ()
 }
 
 void
-PrefabObjData::insert_EditorObjs (EditorNS::ObjectManager* obj_mgr)
+PrefabObjData::insert_EditorObjs (EditorNS::EditorObjMgr* obj_mgr)
 {
   UNUSED_ARG(obj_mgr);
   // FIXME:
