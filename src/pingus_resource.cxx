@@ -1,4 +1,4 @@
-//  $Id: pingus_resource.cxx,v 1.14 2002/06/28 17:48:42 grumbel Exp $
+//  $Id: pingus_resource.cxx,v 1.15 2002/09/10 15:36:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -152,7 +152,7 @@ PingusResource::load_surface(const ResDescriptor& res_desc)
 	  surf = load_from_source (desc);
 	  surface_map[desc] = surf; // add to cache
 
-	  surf = apply_modifier (surf, desc);
+	  surf = apply_modifier (surf, res_desc);
 	  surface_map[res_desc] = surf; // add modified version to cache
 	}
     }
@@ -174,8 +174,8 @@ CL_Surface
 PingusResource::apply_modifier (const CL_Surface& surf, const ResDescriptor& res_desc)
 {
   if (res_desc.modifier != ROT0)
-    std::cout << "Using expensive blitting" << std::endl;
-
+    pout << "PingusResource::apply_modifier: Using expensive blitting" << std::endl;
+  
   switch (res_desc.modifier)
     {
       // FIXME: muahhhaa... I write slower code than you....
@@ -204,7 +204,7 @@ PingusResource::apply_modifier (const CL_Surface& surf, const ResDescriptor& res
       return Blitter::flip_horizontal(Blitter::rotate_90(Blitter::rotate_90(Blitter::rotate_90(surf))));
 
     default:
-      std::cout << "PingusResource: Unhandled modifier: " << res_desc.modifier << std::endl;
+      perr << "PingusResource: Unhandled modifier: " << res_desc.modifier << std::endl;
       return surf;
     }
 }

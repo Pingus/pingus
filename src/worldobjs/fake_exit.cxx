@@ -1,4 +1,4 @@
-//  $Id: fake_exit.cxx,v 1.2 2002/09/05 11:26:35 grumbel Exp $
+//  $Id: fake_exit.cxx,v 1.3 2002/09/10 15:36:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,68 +26,71 @@
 
 namespace WorldObjs {
 
-  FakeExit::FakeExit (WorldObjsData::FakeExitData* data_) : smashing(false),
-                                                            data (new WorldObjsData::FakeExitData(*data_))
-  {
-    data->counter.set_size(data->surface.get_num_frames());
-    data->counter.set_type(GameCounter::once);
-    data->counter.set_speed(2.5);
-    data->counter = data->surface.get_num_frames() - 1;
-  }
+FakeExit::FakeExit (WorldObjsData::FakeExitData* data_) 
+  : smashing(false),
+    data (new WorldObjsData::FakeExitData(*data_))
+{
+  data->counter.set_size(data->surface.get_num_frames());
+  data->counter.set_type(GameCounter::once);
+  data->counter.set_speed(2.5);
+  data->counter = data->surface.get_num_frames() - 1;
 
-  FakeExit::~FakeExit()
-  {
-    delete data;
-  }
-
-  float
-  FakeExit::get_z_pos () const
-  {
-    return data->pos.z;
-  }
-
-  void 
-  FakeExit::draw (GraphicContext& gc)
-  {
-    gc.draw (data->surface, data->pos, data->counter.value());
-  }
-
-
-  void
-  FakeExit::update (float delta)
-  {
-    PinguHolder* holder = world->get_pingu_p ();
-    for (PinguIter pingu = holder->begin (); pingu != holder->end (); ++pingu){
-         catch_pingu(*pingu);
-    }
-
-    if (smashing)
-      ++data->counter;
-      
-    UNUSED_ARG(delta);
-  }
-
-  void
-  FakeExit::catch_pingu (Pingu* pingu)
-  {
-    if (data->counter.finished()) {
-      smashing = false;
-    }
-
-    if (   pingu->get_x() > data->pos.x + 31 && pingu->get_x() < data->pos.x + 31 + 15
-        && pingu->get_y() > data->pos.y + 56 && pingu->get_y() < data->pos.y + 56 + 56) 
-      {
-        if (!smashing) {
-	  data->counter = 0;
-	  smashing = true; 
-        }
-
-        if (data->counter >= 3 && data->counter <= 5) {
-	  pingu->set_action(Actions::Smashed);
-        }
-      }
-  }
-
+  data->pos -= CL_Vector(data->surface.get_width ()/2, data->surface.get_height ());
 }
+
+FakeExit::~FakeExit()
+{
+  delete data;
+}
+
+float
+FakeExit::get_z_pos () const
+{
+  return data->pos.z;
+}
+
+void 
+FakeExit::draw (GraphicContext& gc)
+{
+  gc.draw (data->surface, data->pos, data->counter.value());
+}
+
+
+void
+FakeExit::update (float delta)
+{
+  PinguHolder* holder = world->get_pingu_p ();
+  for (PinguIter pingu = holder->begin (); pingu != holder->end (); ++pingu){
+    catch_pingu(*pingu);
+  }
+
+  if (smashing)
+    ++data->counter;
+      
+  UNUSED_ARG(delta);
+}
+
+void
+FakeExit::catch_pingu (Pingu* pingu)
+{
+  if (data->counter.finished()) {
+    smashing = false;
+  }
+
+  if (   pingu->get_x() > data->pos.x + 31 && pingu->get_x() < data->pos.x + 31 + 15
+	 && pingu->get_y() > data->pos.y + 56 && pingu->get_y() < data->pos.y + 56 + 56) 
+    {
+      if (!smashing) {
+	data->counter = 0;
+	smashing = true; 
+      }
+
+      if (data->counter >= 3 && data->counter <= 5) {
+	pingu->set_action(Actions::Smashed);
+      }
+    }
+}
+
+} // namespace WorldObjs
 
 /* EOF */

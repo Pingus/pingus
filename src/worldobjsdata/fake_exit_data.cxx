@@ -1,4 +1,4 @@
-//  $Id: fake_exit_data.cxx,v 1.1 2002/09/04 14:55:13 torangan Exp $
+//  $Id: fake_exit_data.cxx,v 1.2 2002/09/10 15:36:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -55,7 +55,7 @@ namespace WorldObjsData {
   void
   FakeExitData::write_xml (std::ostream& xml)
   {
-    xml << "<worldobj name=\"fake_exit\">\n\t";
+    xml << "<worldobj type=\"fake_exit\">\n\t";
     XMLhelper::write_vector_xml(xml, pos);
     xml << "</worldobj>\n\n";
   }

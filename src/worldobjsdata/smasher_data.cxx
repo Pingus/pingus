@@ -1,4 +1,4 @@
-//  $Id: smasher_data.cxx,v 1.2 2002/09/10 14:33:08 grumbel Exp $
+//  $Id: smasher_data.cxx,v 1.3 2002/09/10 15:36:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -55,7 +55,7 @@ SmasherData::SmasherData (const SmasherData& old) : WorldObjData(old),
 void
 SmasherData::write_xml (std::ostream& xml)
 {
-  xml << "<worldobj name=\"smasher\">\n\t";
+  xml << "<worldobj type=\"smasher\">\n\t";
   XMLhelper::write_vector_xml(xml, pos);
   xml << "</worldobj>\n\n";
 }
