@@ -30,4 +30,5 @@ section Textures
 	happyclouds = ../images/textures/happyclouds.jpg (type=surface, x=0, y=0, width=384,height=600);
 
 	desert = ../images/textures/desert.jpg (type=surface, x=0, y=0, width=256, height=600);
+	desert_room = ../images/textures/desert_room.jpg (type=surface, x=0, y=0, width=378, height=378);
 }

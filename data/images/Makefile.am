@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.16 2000/06/21 20:55:51 grumbel Exp $
+#  $Id: Makefile.am,v 1.17 2000/06/25 18:16:08 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,8 +19,7 @@
 
 # Trying to get all the image names out of the .scr files...
 
-EXTRA_DIST = \
-editor/tb_copy.pcx \
+EXTRA_DIST = editor/tb_copy.pcx \
 editor/tb_new.pcx \
 editor/tb_open.pcx \
 editor/tb_save.pcx \
@@ -126,6 +125,8 @@ entrances/generic.pcx \
 entrances/woodthing_nmov.tga \
 entrances/woodthing_mov.pcx \
 entrances/cloudent.pcx \
+entrances/space.tga \
+hotspots/sun.tga \
 groundpieces/bpice1.pcx \
 groundpieces/bpice2.pcx \
 groundpieces/bpice3.pcx \
@@ -197,6 +198,38 @@ groundpieces/rock/real5.pcx \
 groundpieces/rock/real6.pcx \
 groundpieces/rock/real7.pcx \
 groundpieces/rock/real8.pcx \
+groundpieces/rock/real9.pcx \
+groundpieces/rock/real10.pcx \
+groundpieces/rock/real11.pcx \
+groundpieces/rock/real12.pcx \
+groundpieces/rock/real13.pcx \
+groundpieces/rock/real14.pcx \
+groundpieces/rock/real15.pcx \
+groundpieces/rock/real16.pcx \
+groundpieces/rock/real17.pcx \
+groundpieces/rock/real18.pcx \
+groundpieces/rock/real19.pcx \
+groundpieces/rock/real20.pcx \
+groundpieces/rock/real21.pcx \
+groundpieces/rock/real22.pcx \
+groundpieces/rock/real23.pcx \
+groundpieces/rock/real24.pcx \
+groundpieces/rock/real25.pcx \
+groundpieces/rock/real26.pcx \
+groundpieces/rock/real27.pcx \
+groundpieces/rock/real28.pcx \
+groundpieces/rock/real29.pcx \
+groundpieces/rock/real30.pcx \
+groundpieces/rock/real31.pcx \
+groundpieces/rock/real32.pcx \
+groundpieces/rock/real33.pcx \
+groundpieces/rock/real34.pcx \
+groundpieces/rock/real35.pcx \
+groundpieces/rock/real36.pcx \
+groundpieces/rock/real37.pcx \
+groundpieces/rock/fish.pcx \
+groundpieces/rock/green1.pcx \
+groundpieces/rock/green2.pcx \
 groundpieces/rock/granit1.pcx \
 groundpieces/rock/granit2.pcx \
 groundpieces/rock/granit3.pcx \
@@ -290,6 +323,8 @@ groundpieces/misc/pfosten.pcx \
 groundpieces/space/grid1.pcx \
 groundpieces/space/grid2.pcx \
 groundpieces/space/grid3.pcx \
+groundpieces/space/diagonal.pcx \
+groundpieces/space/diagonalr.pcx \
 groundpieces/space/block1.pcx \
 groundpieces/space/tower1.pcx \
 groundpieces/space/smalltower.pcx \
@@ -371,6 +406,8 @@ textures/darkjungle.jpg \
 textures/latejungle.jpg \
 textures/nightjungle.jpg \
 textures/happyclouds.jpg \
+textures/desert.jpg \
+textures/desert_room.jpg \
 traps/smasher.tga \
 traps/smasher_cmap.pcx \
 traps/hammer.tga \
@@ -381,7 +418,7 @@ traps/guillotineidle.pcx \
 traps/laser_exit.pcx \
 traps/teleporter.tga \
 traps/bumper.pcx \
-traps/bumper_cmap.pcx
+traps/bumper_cmap.pcx 
 
 # cat ../data/*.scr | sed -n "s/^[ 	]*[A-Za-z0-9_]*[ 	]*=[ 	]*\([^ ]*\) (.*);/\1/p"
 
