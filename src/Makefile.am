@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.104 2002/09/19 15:02:15 torangan Exp $
+#  $Id: Makefile.am,v 1.105 2002/09/20 08:52:46 torangan Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -65,7 +65,6 @@ pingus_LDADD = \
         particles/libpingus_particle.a  \
         editor/libpingus_editor.a       \
         worldmap/libpingus_worldmap.a \
-        generic/libpingus_generic.a \
 	gui/libpingus_gui.a \
         input/libpingus_input.a \
         input/axes/libpingus_input_axes.a \
