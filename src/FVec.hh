@@ -1,4 +1,4 @@
-//  $Id: FVec.hh,v 1.6 2002/06/01 18:05:34 torangan Exp $
+//  $Id: FVec.hh,v 1.7 2002/06/10 11:00:25 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,7 +23,7 @@
 #define FVEC_HH
 
 #include <vector>
-#include <ClanLib/core.h>
+#include <ClanLib/Core/Math/cl_vector.h>
 
 /// Gravity
 extern CL_Vector grav;
@@ -107,4 +107,7 @@ public:
 #endif /* FVEC_HH */
 
 /* EOF */
+
+
+
 

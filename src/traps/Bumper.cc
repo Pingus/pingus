@@ -1,4 +1,4 @@
-//  $Id: Bumper.cc,v 1.19 2002/06/08 16:08:16 grumbel Exp $
+//  $Id: Bumper.cc,v 1.20 2002/06/10 11:00:28 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <ClanLib/Display/Display/surfaceprovider.h>
 #include "../World.hh"
 #include "../ActionHolder.hh"
 #include "../PingusResource.hh"

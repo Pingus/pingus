@@ -1,4 +1,4 @@
-//  $Id: Controller.hh,v 1.12 2002/06/07 14:50:34 torangan Exp $
+//  $Id: Controller.hh,v 1.13 2002/06/10 11:00:25 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,11 @@
 #ifndef CONTROLLER_HH
 #define CONTROLLER_HH
 
-#include <ClanLib/core.h>
+#include <ClanLib/Signals/slot.h>
+#include <ClanLib/Signals/signal_v1.h>
+#include <ClanLib/Core/Math/rect.h>
+#include <ClanLib/Core/Math/cl_vector.h>
+#include <ClanLib/Core/System/keep_alive.h>
 #include "boost/smart_ptr.hpp"
 
 template <class T> class CL_Signal_v1;
@@ -141,3 +145,6 @@ public:
 #endif
 
 /* EOF */
+
+
+

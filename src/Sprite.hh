@@ -1,4 +1,4 @@
-//  $Id: Sprite.hh,v 1.15 2002/06/08 20:19:54 torangan Exp $
+//  $Id: Sprite.hh,v 1.16 2002/06/10 11:00:27 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,7 @@
 #ifndef SPRITE_HH
 #define SPRITE_HH
 
-#include <ClanLib/display.h>
+#include <ClanLib/Display/Display/surface.h>
 
 class CL_Vector;
 class ResDescriptor;
@@ -139,3 +139,4 @@ public:
 #endif
 
 /* EOF */
+

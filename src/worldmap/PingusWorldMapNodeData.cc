@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapNodeData.cc,v 1.4 2002/06/08 23:11:09 torangan Exp $
+//  $Id: PingusWorldMapNodeData.cc,v 1.5 2002/06/10 11:00:29 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -191,7 +191,7 @@ LevelNodeData::create(xmlDocPtr doc, xmlNodePtr cur)
 }
 
 NodeData* 
-EmptyNodeData::create(xmlDocPtr doc, xmlNodePtr cur)
+EmptyNodeData::create(xmlDocPtr /*doc*/, xmlNodePtr /*cur*/)
 {
   return new EmptyNodeData ();
 }

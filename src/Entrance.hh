@@ -1,4 +1,4 @@
-//  $Id: Entrance.hh,v 1.20 2002/06/08 16:08:16 grumbel Exp $
+//  $Id: Entrance.hh,v 1.21 2002/06/10 11:00:25 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,7 @@
 #ifndef ENTRANCE_HH
 #define ENTRANCE_HH
 
-#include <ClanLib/display.h>
+#include <ClanLib/Display/Display/surface.h>
 #include "WorldObj.hh"
 #include "EntranceData.hh"
 
@@ -49,3 +49,4 @@ public:
 #endif
 
 /* EOF */
+

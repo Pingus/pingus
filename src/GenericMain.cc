@@ -1,4 +1,4 @@
-//  $Id: GenericMain.cc,v 1.19 2002/06/08 23:11:07 torangan Exp $
+//  $Id: GenericMain.cc,v 1.20 2002/06/10 11:00:25 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,7 @@
 
 #include <iostream>
 
-#include <ClanLib/core.h>
+#include <ClanLib/Core/System/setupcore.h>
 #include <ClanLib/jpeg.h>
 #include <ClanLib/png.h>
 
@@ -96,3 +96,6 @@ GenericMain::main(int argc, char** argv)
 }
 
 /* EOF */
+
+
+

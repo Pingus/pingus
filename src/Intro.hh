@@ -1,4 +1,4 @@
-//  $Id: Intro.hh,v 1.16 2002/06/07 20:35:14 torangan Exp $
+//  $Id: Intro.hh,v 1.17 2002/06/10 11:00:26 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,8 +20,12 @@
 #ifndef INTRO_HH
 #define INTRO_HH
 
-#include <ClanLib/core.h>
-#include <ClanLib/display.h>
+#include <ClanLib/Core/Math/cl_vector.h>
+#include <ClanLib/Display/Display/surface.h>
+
+class CL_Key;
+class CL_Font;
+class CL_InputDevice;
 
 #include "PingusSubMenu.hh"
 
@@ -51,3 +55,7 @@ public:
 #endif
 
 /* EOF */
+
+
+
+

@@ -1,4 +1,4 @@
-//  $Id: OptionMenu.hh,v 1.12 2002/06/07 20:35:14 torangan Exp $
+//  $Id: OptionMenu.hh,v 1.13 2002/06/10 11:00:26 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,9 +21,6 @@
 #define OPTIONMENU_HH
 
 #include <vector>
-
-#include <ClanLib/display.h>
-
 #include "PingusSubMenu.hh"
 
 class CL_Key;
@@ -137,3 +134,4 @@ extern OptionMenu option_menu;
 #endif
 
 /* EOF */
+

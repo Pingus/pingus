@@ -1,4 +1,4 @@
-//  $Id: Timer.cc,v 1.1 2000/05/23 21:08:43 grumbel Exp $
+//  $Id: Timer.cc,v 1.2 2002/06/10 11:00:27 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,7 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <cassert>
-#include <ClanLib/core.h>
+#include <ClanLib/Core/System/system.h>
 #include "Timer.hh"
 
 Timer::Timer()
@@ -43,3 +43,6 @@ Timer::stop()
 }
 
 /* EOF */
+
+
+

@@ -1,4 +1,4 @@
-//  $Id: PingusSoundReal.cc,v 1.20 2002/06/08 23:11:08 torangan Exp $
+//  $Id: PingusSoundReal.cc,v 1.21 2002/06/10 11:00:27 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,8 +19,7 @@
 
 #include <iostream>
 
-// Needed cause of missing include in some sound file...
-#include <ClanLib/core.h>
+#include <ClanLib/Core/System/cl_assert.h>
 #include <ClanLib/sound.h>
 
 #include "globals.hh"
@@ -185,3 +184,6 @@ PingusSoundReal::real_play_music(const std::string & arg_filename, float volume)
 
 
 /* EOF */
+
+
+

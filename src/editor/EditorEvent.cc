@@ -1,4 +1,4 @@
-//  $Id: EditorEvent.cc,v 1.60 2002/06/08 23:11:08 torangan Exp $
+//  $Id: EditorEvent.cc,v 1.61 2002/06/10 11:00:28 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,7 +17,11 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-
+#include <ClanLib/Display/Input/input.h>
+#include <ClanLib/Display/Input/keyboard.h>
+#include <ClanLib/Core/System/error.h>
+#include <ClanLib/Display/Display/display.h>
+#include <ClanLib/Display/Input/mouse.h>
 #include "../globals.hh"
 #include "../PingusGameSession.hh"
 #include "../PingusMessageBox.hh"

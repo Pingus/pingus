@@ -1,4 +1,4 @@
-//  $Id: ActionButton.hh,v 1.22 2002/06/08 23:11:07 torangan Exp $
+//  $Id: ActionButton.hh,v 1.23 2002/06/10 11:00:25 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,13 +20,14 @@
 #ifndef ACTIONBUTTON_HH
 #define ACTIONBUTTON_HH
 
+#include <ClanLib/Display/Display/surface.h>
 #include <string>
-#include <ClanLib/core.h>
-#include <ClanLib/display.h>
 #include "AnimCounter.hh"
 
 class Server;
 class ActionHolder;
+class CL_Font;
+class CL_Vector;
 
 // ----------------- snip --------------------
 ///
@@ -202,3 +203,7 @@ public:
 #endif /* ACTIONBUTTON */
 
 /* EOF */
+
+
+
+

@@ -19,8 +19,6 @@
 #ifndef CAIMAGEMANIPULATION_H
 #define CAIMAGEMANIPULATION_H
 
-#include <ClanLib/core.h>
-#include <ClanLib/display.h>
 
 #define ARAD 57.29577951308232
 
@@ -30,6 +28,7 @@ typedef unsigned int uint;
 #define rint(a) ((int) (a+0.5f))
 #endif
 
+class CL_Surface;
 
 /** Provides some functions fo manipulate images (CL_Surfaces).
     @author Andrew Mustun <andrew@qcad.org>
@@ -62,3 +61,7 @@ public:
 };
 
 #endif
+
+
+
+

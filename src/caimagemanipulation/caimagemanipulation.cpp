@@ -16,6 +16,9 @@
  *                                                                         *
  ***************************************************************************/
 
+#include <math.h>
+#include <ClanLib/Display/Display/surface.h>
+#include <ClanLib/Display/SurfaceProviders/canvas.h>
 #include "caimagemanipulation.h"
 
 /** Constructor.

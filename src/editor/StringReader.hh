@@ -1,4 +1,4 @@
-//  $Id: StringReader.hh,v 1.7 2002/06/04 13:43:19 torangan Exp $
+//  $Id: StringReader.hh,v 1.8 2002/06/10 11:00:28 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,7 +22,6 @@
 
 #include <list>
 #include <string>
-#include <ClanLib/core.h>
 
 ///
 class StringReader
@@ -69,3 +68,6 @@ public:
 #endif
 
 /* EOF */
+
+
+

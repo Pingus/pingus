@@ -1,4 +1,4 @@
-//  $Id: FPSCounter.cc,v 1.6 2001/12/05 09:15:50 grumbel Exp $
+//  $Id: FPSCounter.cc,v 1.7 2002/06/10 11:00:25 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,7 +18,9 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <cstdio>
-#include <ClanLib/core.h>
+#include <ClanLib/Core/System/system.h>
+#include <ClanLib/Display/Display/display.h>
+#include <ClanLib/Display/Font/font.h>
 #include "PingusResource.hh"
 #include "FPSCounter.hh"
 
@@ -89,3 +91,6 @@ FPSCounter::update_fps_counter()
 }
 
 /* EOF */
+
+
+

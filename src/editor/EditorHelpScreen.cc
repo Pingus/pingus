@@ -1,4 +1,4 @@
-//  $Id: EditorHelpScreen.cc,v 1.6 2002/06/08 23:11:08 torangan Exp $
+//  $Id: EditorHelpScreen.cc,v 1.7 2002/06/10 11:00:28 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,8 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <ClanLib/Display/Display/display.h>
+#include <ClanLib/Display/Font/font.h>
 #include "../my_gettext.hh"
 #include "../PingusResource.hh"
 #include "EditorHelpScreen.hh"

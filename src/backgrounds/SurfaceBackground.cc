@@ -1,4 +1,4 @@
-//  $Id: SurfaceBackground.cc,v 1.20 2002/06/08 20:19:54 torangan Exp $
+//  $Id: SurfaceBackground.cc,v 1.21 2002/06/10 11:00:28 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,8 @@
 
 #include <cassert>
 
+#include <ClanLib/Display/SurfaceProviders/canvas.h>
+#include <ClanLib/Display/Display/display.h>
 #include "../globals.hh"
 #include "../Timer.hh"
 #include "../PingusResource.hh"

@@ -1,4 +1,4 @@
-//  $Id: PingusMapManager.hh,v 1.5 2002/06/08 20:19:54 torangan Exp $
+//  $Id: PingusMapManager.hh,v 1.6 2002/06/10 11:00:27 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,12 +21,13 @@
 #define PINGUSMAPMANAGER_HH
 
 #include <string>
-#include <ClanLib/display.h>
 
 /* Support to assert macro under MS's compiler */
 #ifdef WIN32
     #include <assert.h>
 #endif
+
+class CL_Surface;
 
 class PingusMapManager
 {
@@ -41,3 +42,4 @@ public:
 #endif
 
 /* EOF */
+

@@ -1,4 +1,4 @@
-//  $Id: ConveyorBelt.hh,v 1.21 2002/06/09 13:03:11 grumbel Exp $
+//  $Id: ConveyorBelt.hh,v 1.22 2002/06/10 11:00:29 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,6 @@
 #ifndef CONVEYORBELT_HH
 #define CONVEYORBELT_HH
 
-#include <ClanLib/core.h>
 #include "../WorldObj.hh"
 #include "../WorldObjData.hh"
 #include "../editor/RectEditorObj.hh"
@@ -106,3 +105,6 @@ public:
 #endif
 
 /* EOF */
+
+
+

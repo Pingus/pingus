@@ -1,4 +1,4 @@
-//  $Id: Pingu.cc,v 1.76 2002/06/09 11:18:50 grumbel Exp $
+//  $Id: Pingu.cc,v 1.77 2002/06/10 11:00:26 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #include <cstdio>
 #include <cmath>
 
+#include <ClanLib/Display/Font/font.h>
 #include "boost/smart_ptr.hpp"
 #include "actions/Drown.hh"
 #include "actions/Splashed.hh"

@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapStat.cc,v 1.6 2002/06/06 14:05:44 grumbel Exp $
+//  $Id: PingusWorldMapStat.cc,v 1.7 2002/06/10 11:00:29 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <fstream>
 #include <iostream>
 #include "../System.hh"
 #include "../StringConverter.hh"

@@ -1,4 +1,4 @@
-//  $Id: ObjectSelector.cc,v 1.62 2002/06/08 23:11:08 torangan Exp $
+//  $Id: ObjectSelector.cc,v 1.63 2002/06/10 11:00:28 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,12 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <ClanLib/Core/System/system.h>
+#include <ClanLib/Display/Input/mouse.h>
+#include <ClanLib/Display/Display/display.h>
+#include <ClanLib/Display/Font/font.h>
+#include <ClanLib/Core/Resources/resource_manager.h>
+#include <ClanLib/Display/Input/inputbuffer.h>
 #include "../Console.hh"
 #include "../globals.hh"
 #include "../PingusResource.hh"

@@ -1,4 +1,4 @@
-//  $Id: MultiplayerGame.cc,v 1.9 2002/06/09 20:59:43 grumbel Exp $
+//  $Id: MultiplayerGame.cc,v 1.10 2002/06/10 11:00:26 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,8 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <ClanLib/Display/Input/input.h>
+#include <ClanLib/Display/Display/display.h>
 #include "PathManager.hh"
 #include "TrueServer.hh"
 #include "MultiplayerClient.hh"

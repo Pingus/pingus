@@ -1,4 +1,4 @@
-//  $Id: Pingu.hh,v 1.42 2002/06/09 00:56:25 grumbel Exp $
+//  $Id: Pingu.hh,v 1.43 2002/06/10 11:00:26 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,14 +20,15 @@
 #ifndef PINGU_HH
 #define PINGU_HH
 
-#include <ClanLib/core.h>
-#include <ClanLib/display.h>
+#include <vector>
+#include <ClanLib/Core/Math/cl_vector.h>
 #include "boost/smart_ptr.hpp"
 
 #include "Direction.hh"
 #include "PinguAction.hh"
 
 // Forward declarations
+class CL_Font;
 class ActionHolder;
 class PinguAction;
 
@@ -189,3 +190,7 @@ public:
 #endif /* PINGU_HH */
 
 /* EOF */
+
+
+
+

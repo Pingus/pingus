@@ -1,4 +1,4 @@
-//  $Id: PingusMessageBox.cc,v 1.6 2000/06/28 19:49:18 grumbel Exp $
+//  $Id: PingusMessageBox.cc,v 1.7 2002/06/10 11:00:27 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,7 +17,11 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <ClanLib/core.h>
+#include <iostream>
+#include <ClanLib/Core/System/system.h>
+#include <ClanLib/Display/Input/mouse.h>
+#include <ClanLib/Display/Display/display.h>
+#include <ClanLib/Display/Font/font.h>
 #include "Display.hh"
 #include "PingusResource.hh"
 #include "PingusMessageBox.hh"
@@ -49,3 +53,6 @@ PingusMessageBox::draw()
 }
 
 /* EOF */
+
+
+

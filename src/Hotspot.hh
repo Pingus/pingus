@@ -1,4 +1,4 @@
-//  $Id: Hotspot.hh,v 1.10 2002/06/07 20:35:14 torangan Exp $
+//  $Id: Hotspot.hh,v 1.11 2002/06/10 11:00:25 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,7 @@
 #ifndef HOTSPOT_HH
 #define HOTSPOT_HH
 
-#include <ClanLib/display.h>
+#include <ClanLib/Display/Display/surface.h>
 
 #include "WorldObj.hh"
 #include "AnimCounter.hh"
@@ -44,3 +44,4 @@ public:
 #endif
 
 /* EOF */
+

@@ -1,4 +1,4 @@
-//  $Id: InfoBox.hh,v 1.6 2002/06/09 13:03:11 grumbel Exp $
+//  $Id: InfoBox.hh,v 1.7 2002/06/10 11:00:29 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,8 @@
 #include "../WorldObjData.hh"
 #include "../editor/SpriteEditorObj.hh"
 
+class CL_Font;
+class CL_Vector;
 class _xmlDoc;  typedef _xmlDoc*  xmlDocPtr;
 class _xmlNode; typedef _xmlNode* xmlNodePtr;
 

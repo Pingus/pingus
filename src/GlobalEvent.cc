@@ -1,4 +1,4 @@
-//  $Id: GlobalEvent.cc,v 1.17 2002/06/01 18:05:34 torangan Exp $
+//  $Id: GlobalEvent.cc,v 1.18 2002/06/10 11:00:25 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,9 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <ClanLib/Display/Input/input.h>
+#include <ClanLib/Display/Input/keyboard.h>
+#include <ClanLib/Display/Input/key.h>
 #include "Screenshot.hh"
 #include "Console.hh"
 #include "FPSCounter.hh"

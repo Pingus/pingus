@@ -1,4 +1,4 @@
-//  $Id: USBMouseController.cc,v 1.3 2002/06/06 15:55:54 torangan Exp $
+//  $Id: USBMouseController.cc,v 1.4 2002/06/10 11:00:27 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,9 +17,9 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <ClanLib/Display/Display/display.h>
 #include "PingusError.hh"
 #include "USBMouseController.hh"
-#include <ClanLib/display.h>
 
 USBMouseController::USBMouseController (int /*arg_owner_id*/, std::string mousedev)
 {
@@ -99,3 +99,4 @@ USBMouseController::keep_alive ()
 }
 
 /* EOF */
+

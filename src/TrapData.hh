@@ -1,4 +1,4 @@
-// $Id: TrapData.hh,v 1.15 2002/06/09 14:04:10 torangan Exp $
+// $Id: TrapData.hh,v 1.16 2002/06/10 11:00:27 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,7 @@
 #define TRAP_DATA_HH
 
 #include <config.h>
-#include <ClanLib/core.h>
+#include <ClanLib/Core/Math/cl_vector.h>
 #include "WorldObjData.hh"
 
 class _xmlDoc;  typedef _xmlDoc*  xmlDocPtr;
@@ -61,3 +61,6 @@ public:
 #endif
 
 /* EOF */
+
+
+

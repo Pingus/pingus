@@ -1,4 +1,4 @@
-//  $Id: TargetProvider.hh,v 1.3 2001/03/18 17:45:04 grumbel Exp $
+//  $Id: TargetProvider.hh,v 1.4 2002/06/10 11:00:27 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,8 +20,11 @@
 #ifndef TARGETPROVIDER_HH
 #define TARGETPROVIDER_HH
 
-#include <ClanLib/core.h>
-#include <ClanLib/display.h>
+#include <ClanLib/Display/Display/surfaceprovider.h>
+
+class CL_Target;
+class CL_Palette;
+class CL_Canvas;
 
 class TargetProvider : public CL_SurfaceProvider
 {
@@ -55,3 +58,7 @@ public:
 #endif
 
 /* EOF */
+
+
+
+

@@ -1,4 +1,4 @@
-//  $Id: ColMap.cc,v 1.31 2002/06/08 23:11:07 torangan Exp $
+//  $Id: ColMap.cc,v 1.32 2002/06/10 11:00:25 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,8 @@
 #include <cstdio>
 #include <cstdlib>
 
+#include <ClanLib/Display/Display/surfaceprovider.h>
+#include <ClanLib/Display/SurfaceProviders/canvas.h>
 #include "algo.hh"
 #include "globals.hh"
 #include "PingusResource.hh"

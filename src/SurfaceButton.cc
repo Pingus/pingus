@@ -1,4 +1,4 @@
-//  $Id: SurfaceButton.cc,v 1.38 2002/06/08 20:19:54 torangan Exp $
+//  $Id: SurfaceButton.cc,v 1.39 2002/06/10 11:00:27 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,7 +17,9 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-
+#include <ClanLib/Display/Input/mouse.h>
+#include <ClanLib/Display/Display/display.h>
+#include <ClanLib/Display/Font/font.h>
 #include "PingusSound.hh"
 #include "globals.hh"
 #include "PingusResource.hh"

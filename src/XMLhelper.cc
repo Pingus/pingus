@@ -1,4 +1,4 @@
-//  $Id: XMLhelper.cc,v 1.17 2002/06/08 21:43:36 grumbel Exp $
+//  $Id: XMLhelper.cc,v 1.18 2002/06/10 11:00:28 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,8 +17,9 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <ClanLib/Core/Math/cl_vector.h>
 #include <fstream>
+#include <iostream>
+#include <ClanLib/Core/Math/cl_vector.h>
 #include "StringConverter.hh"
 #include "XMLhelper.hh"
 #include "Color.hh"
@@ -306,3 +307,5 @@ XMLhelper::write_vector_xml(std::ofstream* xml, const CL_Vector& pos)
 }
 
 /* EOF */
+
+

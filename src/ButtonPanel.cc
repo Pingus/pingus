@@ -1,4 +1,4 @@
-//  $Id: ButtonPanel.cc,v 1.30 2002/06/09 20:59:43 grumbel Exp $
+//  $Id: ButtonPanel.cc,v 1.31 2002/06/10 11:00:25 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,9 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <ClanLib/Core/System/system.h>
+#include <ClanLib/Display/Input/mouse.h>
+#include <ClanLib/Display/Display/display.h>
 #include "PingusResource.hh"
 #include "globals.hh"
 #include "Pingu.hh"

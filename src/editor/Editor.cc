@@ -1,4 +1,4 @@
-//  $Id: Editor.cc,v 1.43 2002/06/08 23:11:08 torangan Exp $
+//  $Id: Editor.cc,v 1.44 2002/06/10 11:00:28 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,15 @@
 
 #include <cstdio>
 
+#include <ClanLib/Core/System/system.h>
+#include <ClanLib/Core/Math/rect.h>
+#include <ClanLib/Display/Display/display.h>
+#include <ClanLib/Display/Input/input.h>
+#include <ClanLib/Display/Display/mousecursor_provider.h>
+#include <ClanLib/Display/Input/mouse.h>
+#include <ClanLib/Display/Font/font.h>
+#include <ClanLib/Display/Input/inputbuffer.h>
+#include <ClanLib/Display/Input/keyboard.h>
 #include "../algo.hh"
 #include "../globals.hh"
 #include "../PingusError.hh"

@@ -1,4 +1,4 @@
-//  $Id: blitter.hh,v 1.12 2002/06/07 13:25:02 torangan Exp $
+//  $Id: blitter.hh,v 1.13 2002/06/10 11:00:28 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,9 +20,8 @@
 #ifndef BLITTER_HH
 #define BLITTER_HH
 
-#include <ClanLib/display.h>
-
 class CL_Canvas;
+class CL_Surface;
 class CL_SurfaceProvider;
 
 /** A bunch of blitting and creation functions to operate on
@@ -90,3 +89,4 @@ public:
 #endif 
 
 /* EOF */
+

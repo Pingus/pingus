@@ -1,4 +1,4 @@
-//  $Id: EditorView.hh,v 1.7 2002/06/07 20:35:14 torangan Exp $
+//  $Id: EditorView.hh,v 1.8 2002/06/10 11:00:28 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,9 +20,10 @@
 #ifndef EDITORVIEW_HH
 #define EDITORVIEW_HH
 
-#include <ClanLib/core.h>
+#include <ClanLib/Core/Math/cl_vector.h>
 
 class Sprite;
+class CL_Rect;
 class CL_Surface;
 
 class EditorView
@@ -90,3 +91,6 @@ public:
 #endif
 
 /* EOF */
+
+
+

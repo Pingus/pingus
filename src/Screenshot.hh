@@ -1,4 +1,4 @@
-//  $Id: Screenshot.hh,v 1.7 2001/03/18 17:45:04 grumbel Exp $
+//  $Id: Screenshot.hh,v 1.8 2002/06/10 11:00:27 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,8 +20,9 @@
 #ifndef SCREENSHOT_HH
 #define SCREENSHOT_HH
 
-#include <ClanLib/core.h>
-#include <ClanLib/display.h>
+#include <string>
+
+class CL_Target;
 
 /** Simple class to get a screenshot and save it as pnm */
 class Screenshot
@@ -45,3 +46,7 @@ public:
 #endif
 
 /* EOF */
+
+
+
+

@@ -1,4 +1,4 @@
-//  $Id: ThumbCache.hh,v 1.5 2002/06/04 13:43:19 torangan Exp $
+//  $Id: ThumbCache.hh,v 1.6 2002/06/10 11:00:28 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,8 +21,6 @@
 #define THUMBCACHE_HH
 
 #include <string>
-#include <ClanLib/core.h>
-#include <ClanLib/display.h>
 
 /** This class is used inside the SurfaceSelector to load thumbnails
     of surfaces for selection */
@@ -44,3 +42,7 @@ public:
 #endif
 
 /* EOF */
+
+
+
+

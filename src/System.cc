@@ -1,4 +1,4 @@
-//  $Id: System.cc,v 1.40 2002/06/02 21:09:11 grumbel Exp $
+//  $Id: System.cc,v 1.41 2002/06/10 11:00:27 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,7 +34,6 @@
 #include <cstdio>
 #include <iostream>
 
-//#include "PingusError.hh" 
 #include "globals.hh"
 #include "StringConverter.hh"
 #include "System.hh"

@@ -1,4 +1,4 @@
-//  $Id: CaptureRectangle.cc,v 1.21 2002/06/09 11:18:50 grumbel Exp $ 
+//  $Id: CaptureRectangle.cc,v 1.22 2002/06/10 11:00:25 torangan Exp $ 
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #include <cstdio>
 #include <cassert>
 
+#include <ClanLib/Display/Font/font.h>
 #include "globals.hh"
 #include "Pingu.hh"
 #include "StringConverter.hh"

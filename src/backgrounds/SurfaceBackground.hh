@@ -1,4 +1,4 @@
-//  $Id: SurfaceBackground.hh,v 1.9 2002/06/08 20:19:54 torangan Exp $
+//  $Id: SurfaceBackground.hh,v 1.10 2002/06/10 11:00:28 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,6 @@
 #ifndef SURFACEBACKGROUND_HH
 #define SURFACEBACKGROUND_HH
 
-#include <ClanLib/display.h>
 #include "../WorldObj.hh"
 #include "../AnimCounter.hh"
 #include "../GameCounter.hh"
@@ -56,3 +55,4 @@ public:
 #endif
 
 /* EOF */
+

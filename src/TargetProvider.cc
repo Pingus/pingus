@@ -1,4 +1,4 @@
-//  $Id: TargetProvider.cc,v 1.2 2000/09/30 21:34:42 grumbel Exp $
+//  $Id: TargetProvider.cc,v 1.3 2002/06/10 11:00:27 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <ClanLib/Display/SurfaceProviders/canvas.h>
 #include "TargetProvider.hh"
 
 CL_Canvas* 

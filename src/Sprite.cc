@@ -1,4 +1,4 @@
-//  $Id: Sprite.cc,v 1.16 2002/06/08 20:19:54 torangan Exp $
+//  $Id: Sprite.cc,v 1.17 2002/06/10 11:00:27 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <iostream>
 #include <ClanLib/Core/Math/cl_vector.h>
 #include "PingusResource.hh"
 #include "Sprite.hh"
@@ -255,3 +256,5 @@ Sprite::get_surface ()
 }
 
 /* EOF */
+
+

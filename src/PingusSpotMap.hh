@@ -1,4 +1,4 @@
-//  $Id: PingusSpotMap.hh,v 1.21 2002/06/08 23:11:08 torangan Exp $
+//  $Id: PingusSpotMap.hh,v 1.22 2002/06/10 11:00:27 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,13 +22,14 @@
 #define PingusSpotMap_HH
 
 #include <vector>
-
+#include <ClanLib/Display/Display/surface.h>
 #include "globals.hh"
 #include "PinguMap.hh"
 #include "GroundpieceData.hh"
 
 class PLF;
 class ColMap;
+class CL_Canvas;
 
 class MapTileSurface
 {

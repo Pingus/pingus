@@ -1,4 +1,4 @@
-//  $Id: SpriteEditorObj.hh,v 1.4 2002/06/08 20:19:54 torangan Exp $
+//  $Id: SpriteEditorObj.hh,v 1.5 2002/06/10 11:00:28 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,7 @@
 #ifndef SPRITEEDITOROBJ_HH
 #define SPRITEEDITOROBJ_HH
 
-#include <ClanLib/core.h>
+#include <ClanLib/Core/Math/cl_vector.h>
 #include "../Sprite.hh"
 #include "RectEditorObj.hh"
 
@@ -64,3 +64,6 @@ public:
 #endif
 
 /* EOF */
+
+
+

@@ -1,4 +1,4 @@
-//  $Id: Controller.cc,v 1.11 2002/06/07 14:50:34 torangan Exp $
+//  $Id: Controller.cc,v 1.12 2002/06/10 11:00:25 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,10 +17,12 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <ClanLib/signals.h>
+#include <ClanLib/Display/Input/inputbutton.h>
+#include <ClanLib/Display/Input/keyboard.h>
+#include <ClanLib/Display/Display/display.h>
 #include "PingusError.hh"
 #include "Controller.hh"
-#include <ClanLib/display.h>
-#include <ClanLib/signals.h>
 
 /* Headers needed for i18n / gettext */
 #include <clocale>
@@ -164,3 +166,4 @@ Controller::get_owner ()
 }
 
 /* EOF */
+

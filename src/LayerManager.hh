@@ -1,4 +1,4 @@
-//  $Id: LayerManager.hh,v 1.8 2002/06/09 14:04:10 torangan Exp $
+//  $Id: LayerManager.hh,v 1.9 2002/06/10 11:00:26 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,7 +22,7 @@
 
 #include <math.h>
 #include <vector>
-#include <ClanLib/display.h>
+#include <ClanLib/Display/Display/surface.h>
 
 class LayerManager
 {
@@ -73,3 +73,4 @@ public:
 #endif
 
 /* EOF */
+

@@ -1,4 +1,4 @@
-//  $Id: PLFPreview.hh,v 1.6 2002/06/07 19:10:33 grumbel Exp $
+//  $Id: PLFPreview.hh,v 1.7 2002/06/10 11:00:26 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,8 +20,6 @@
 #ifndef PLFPREVIEW_HH
 #define PLFPREVIEW_HH
 
-#include <ClanLib/core.h>
-
 class PLF;
 
 /// A class to load and manage a small level preview surface
@@ -40,3 +38,6 @@ public:
 #endif
 
 /* EOF */
+
+
+

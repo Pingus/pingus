@@ -1,4 +1,4 @@
-//  $Id: EditorObjGroup.hh,v 1.10 2002/06/07 20:35:14 torangan Exp $
+//  $Id: EditorObjGroup.hh,v 1.11 2002/06/10 11:00:28 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,7 @@
 #ifndef EDITOROBJGROUP_HH
 #define EDITOROBJGROUP_HH
 
-#include <ClanLib/core.h>
+#include <ClanLib/Core/Math/cl_vector.h>
 #include "../boost/smart_ptr.hpp"
 #include "EditorObj.hh"
 #include <list>
@@ -58,3 +58,6 @@ public:
 #endif
 
 /* EOF */
+
+
+

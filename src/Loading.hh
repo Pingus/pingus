@@ -1,4 +1,4 @@
-//  $Id: Loading.hh,v 1.6 2002/06/08 20:19:53 torangan Exp $
+//  $Id: Loading.hh,v 1.7 2002/06/10 11:00:26 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,7 @@
 #ifndef LOADING_HH
 #define LOADING_HH
 
-#include <ClanLib/display.h>
+#include <ClanLib/Display/Display/surface.h>
 
 class CL_Font;
 
@@ -55,3 +55,4 @@ extern Loading loading_screen;
 #endif
 
 /* EOF */
+

@@ -1,4 +1,4 @@
-//  $Id: Position.hh,v 1.8 2002/06/08 20:19:54 torangan Exp $
+//  $Id: Position.hh,v 1.9 2002/06/10 11:00:27 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,6 @@
 #define POSITION_HH
 
 #include <iosfwd>
-#include <ClanLib/core.h>
 
 /**
  * z_position contains aliases for the integers that specify 
@@ -72,6 +71,9 @@ std::ostream& operator<<(std::ostream& s, const Position& pos);
 #endif
 
 /* EOF */
+
+
+
 
 
 

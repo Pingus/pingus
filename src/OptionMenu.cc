@@ -1,4 +1,4 @@
-//  $Id: OptionMenu.cc,v 1.44 2002/06/08 23:11:07 torangan Exp $
+//  $Id: OptionMenu.cc,v 1.45 2002/06/10 11:00:26 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,13 @@
 
 #include <cstdio>
 
+#include <ClanLib/Core/System/system.h>
+#include <ClanLib/Display/Display/display.h>
+#include <ClanLib/Display/Font/font.h>
+#include <ClanLib/Display/Input/mouse.h>
+#include <ClanLib/Display/Input/input.h>
+#include <ClanLib/Display/Input/keyboard.h>
+#include <ClanLib/Display/Display/mousecursor_provider.h>
 #include "globals.hh"
 #include "PingusResource.hh"
 #include "StringConverter.hh"

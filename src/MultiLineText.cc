@@ -1,4 +1,4 @@
-//  $Id: MultiLineText.cc,v 1.4 2002/06/07 20:35:14 torangan Exp $
+//  $Id: MultiLineText.cc,v 1.5 2002/06/10 11:00:26 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,8 +19,8 @@
 
 #include <cassert>
 #include <algorithm>
+#include <ClanLib/Display/Font/font.h>
 #include "MultiLineText.hh"
-#include <ClanLib/display.h>
 
 using namespace std;
 
@@ -139,3 +139,4 @@ MultiLineText::get_height()
 }
 
 /* EOF */
+

@@ -1,4 +1,4 @@
-//  $Id: Liquid.hh,v 1.13 2002/06/07 20:35:14 torangan Exp $
+//  $Id: Liquid.hh,v 1.14 2002/06/10 11:00:26 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,7 @@
 #ifndef LIQUID_HH
 #define LIQUID_HH
 
-#include <ClanLib/display.h>
+#include <ClanLib/Display/Display/surface.h>
 #include "AnimCounter.hh"
 #include "WorldObj.hh"
 #include "LiquidData.hh"
@@ -46,3 +46,4 @@ public:
 #endif
 
 /* EOF */
+

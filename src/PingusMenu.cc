@@ -1,4 +1,4 @@
-//  $Id: PingusMenu.cc,v 1.56 2002/06/08 23:11:08 torangan Exp $
+//  $Id: PingusMenu.cc,v 1.57 2002/06/10 11:00:27 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,10 +17,12 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <ClanLib/Display/Input/input.h>
+#include <ClanLib/Display/Input/keyboard.h>
+#include <ClanLib/Display/Input/inputdevice.h>
 #include "globals.hh"
 #include "AlphaButton.hh"
 #include "Credits.hh"
-// #include "FileSelector.hh"
 #include "PingusResource.hh"
 #include "PingusMessageBox.hh"
 #include "PingusError.hh"

@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMap.hh,v 1.25 2002/06/08 23:11:09 torangan Exp $
+//  $Id: PingusWorldMap.hh,v 1.26 2002/06/10 11:00:28 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,9 +21,12 @@
 #define PINGUSWORLDMAP_HH
 
 #include <string>
-//#include "../generic/Graph.hh"
 #include "PingusWorldMapPingus.hh"
 #include "PingusWorldMapStat.hh"
+
+class CL_Key;
+class CL_Font;
+class CL_InputDevice;
 
 namespace Pingus
 {

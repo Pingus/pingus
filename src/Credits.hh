@@ -1,4 +1,4 @@
-//  $Id: Credits.hh,v 1.8 2002/06/07 13:25:02 torangan Exp $
+//  $Id: Credits.hh,v 1.9 2002/06/10 11:00:25 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,7 +22,7 @@
 
 #include <string>
 #include <vector>
-#include <ClanLib/display.h>
+#include <ClanLib/Display/Display/surface.h>
 
 class CL_Font;
 
@@ -67,3 +67,4 @@ extern Credits credit_screen;
 #endif
 
 /* EOF */
+

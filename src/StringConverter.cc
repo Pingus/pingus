@@ -1,4 +1,4 @@
-//  $Id: StringConverter.cc,v 1.6 2001/04/07 21:03:42 grumbel Exp $
+//  $Id: StringConverter.cc,v 1.7 2002/06/10 11:00:27 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,7 +19,6 @@
 
 #include <cstdio>
 #include "StringConverter.hh"
-//#include "PingusError.hh"
 
 int 
 StringConverter::to_int(const std::string& str)

@@ -1,4 +1,4 @@
-//  $Id: PingusResource.hh,v 1.11 2002/06/08 23:11:08 torangan Exp $
+//  $Id: PingusResource.hh,v 1.12 2002/06/10 11:00:27 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,10 +22,11 @@
 
 #include <map>
 
-#include <ClanLib/display.h>
+#include <ClanLib/Display/Display/surface.h>
 #include "ResDescriptor.hh"
 
 class CL_Font;
+class CL_ResourceManager;
 
 /** General Resource Managing class, it provides wrappers around
     CL_Surface::load(), CL_Font::load() and friends.  This class is
@@ -62,3 +63,4 @@ public:
 #endif
 
 /* EOF */
+

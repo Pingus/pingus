@@ -1,4 +1,4 @@
-//  $Id: Console.cc,v 1.20 2002/06/05 17:51:08 grumbel Exp $
+//  $Id: Console.cc,v 1.21 2002/06/10 11:00:25 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,8 @@
 #include <stdio.h>
 #include <stdarg.h>
 #include <assert.h>
+#include <ClanLib/Display/Display/display.h>
+#include <ClanLib/Display/Font/font.h>
 #include "PingusResource.hh"
 #include "Console.hh"
 

@@ -1,4 +1,4 @@
-//  $Id: PingusSpotMap.cc,v 1.53 2002/06/08 20:19:54 torangan Exp $
+//  $Id: PingusSpotMap.cc,v 1.54 2002/06/10 11:00:27 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,9 +17,9 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-//#include <algorithm>
-//#include <cstdio>
-
+#include <ClanLib/Display/Display/surfaceprovider.h>
+#include <ClanLib/Display/SurfaceProviders/canvas.h>
+#include <ClanLib/Display/Display/display.h>
 #include "PingusResource.hh"
 #include "PLF.hh"
 #include "PingusError.hh"

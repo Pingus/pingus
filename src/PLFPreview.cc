@@ -1,4 +1,4 @@
-//  $Id: PLFPreview.cc,v 1.10 2002/06/07 19:10:33 grumbel Exp $
+//  $Id: PLFPreview.cc,v 1.11 2002/06/10 11:00:26 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,6 @@
 #include <iostream>
 
 #include "PingusSpotMap.hh"
-//#include "PinguBmpMap.hh"
 #include "PingusResource.hh"
 
 #include "PLFPreview.hh"

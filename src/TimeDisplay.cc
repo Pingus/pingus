@@ -1,4 +1,4 @@
-//  $Id: TimeDisplay.cc,v 1.11 2002/06/09 14:04:10 torangan Exp $
+//  $Id: TimeDisplay.cc,v 1.12 2002/06/10 11:00:27 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,7 +18,8 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <cstdio>
-
+#include <ClanLib/Display/Display/display.h>
+#include <ClanLib/Display/Font/font.h>
 #include "globals.hh"
 #include "GameTime.hh"
 #include "PingusResource.hh"

@@ -1,4 +1,4 @@
-//   $Id: PingusMain.cc,v 1.62 2002/06/09 00:56:25 grumbel Exp $
+//   $Id: PingusMain.cc,v 1.63 2002/06/10 11:00:27 torangan Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -36,6 +36,10 @@
 #  include "win32/getopt.h"
 #endif /* !WIN32 */
 
+#include <ClanLib/Core/System/system.h>
+#include <ClanLib/Display/setupdisplay.h>
+#include <ClanLib/Display/Display/display.h>
+#include <ClanLib/Display/Input/input.h>
 #include <ClanLib/jpeg.h>
 
 #ifdef HAVE_LIBCLANGL
@@ -47,7 +51,6 @@
 #include <clocale>
 #include "my_gettext.hh"
 
-// #include "efence.h"
 
 #include "PathManager.hh"
 #include "PingusMain.hh"
@@ -69,12 +72,10 @@
 #include "editor/Editor.hh"
 
 #include "PingusMenuManager.hh"
-//#include "Story.hh"
-
 #include "PingusSound.hh"
 #include "PingusSoundDummy.hh"
 
-#  include "PingusSoundReal.hh"
+#include "PingusSoundReal.hh"
 
 void
 signal_handler(int signo)

@@ -1,4 +1,4 @@
-//  $Id: Story.hh,v 1.4 2001/07/27 19:35:36 grumbel Exp $
+//  $Id: Story.hh,v 1.5 2002/06/10 11:00:27 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,8 +20,10 @@
 #ifndef STORY_HH
 #define STORY_HH
 
+#include <ClanLib/Display/Display/surface.h>
 #include "PingusSubMenu.hh"
 
+class CL_Font;
 class PingusMenuManager;
 
 /** This class displays the story of the Pingus. */

@@ -1,4 +1,4 @@
-//  $Id: SpriteEditorObj.cc,v 1.3 2002/06/07 14:50:35 torangan Exp $
+//  $Id: SpriteEditorObj.cc,v 1.4 2002/06/10 11:00:28 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <ClanLib/Display/Display/surfaceprovider.h>
 #include "EditorView.hh"
 #include "SpriteEditorObj.hh"
 

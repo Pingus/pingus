@@ -1,4 +1,4 @@
-//  $Id: PingusMain.hh,v 1.10 2002/02/17 14:16:27 grumbel Exp $
+//  $Id: PingusMain.hh,v 1.11 2002/06/10 11:00:27 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,7 @@
 #define PINGUS_HH
 
 #include <string>
-#include <ClanLib/core.h>
+#include <ClanLib/Signals/slot.h>
 
 #include "GenericMain.hh"
 
@@ -75,3 +75,6 @@ public:
 #endif
 
 /* EOF */
+
+
+

@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapNodeData.hh,v 1.3 2002/06/08 20:19:55 torangan Exp $
+//  $Id: PingusWorldMapNodeData.hh,v 1.4 2002/06/10 11:00:29 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,7 +22,6 @@
 
 #include <list>
 #include <string>
-#include <ClanLib/core.h>
 
 class _xmlDoc;  typedef _xmlDoc*  xmlDocPtr;
 class _xmlNode; typedef _xmlNode* xmlNodePtr;
@@ -143,3 +142,6 @@ namespace Pingus
 #endif
 
 /* EOF */
+
+
+

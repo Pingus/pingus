@@ -1,4 +1,4 @@
-//  $Id: WorldObjGroupData.hh,v 1.4 2002/06/09 14:04:10 torangan Exp $
+//  $Id: WorldObjGroupData.hh,v 1.5 2002/06/10 11:00:28 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,8 +20,9 @@
 #ifndef WORLDOBJGROUPDATA_HH
 #define WORLDOBJGROUPDATA_HH
 
-#include "WorldObjData.hh"
+#include <vector>
 #include <iostream>
+#include "WorldObjData.hh"
 
 
 class WorldObjGroupData : public WorldObjData

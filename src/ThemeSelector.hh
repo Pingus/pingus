@@ -1,4 +1,4 @@
-//  $Id: ThemeSelector.hh,v 1.16 2002/06/08 20:19:54 torangan Exp $
+//  $Id: ThemeSelector.hh,v 1.17 2002/06/10 11:00:27 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,14 +20,17 @@
 #ifndef THEMESELECTOR_HH
 #define THEMESELECTOR_HH
 
-#include <ClanLib/core.h>
-#include <ClanLib/display.h>
-
 #include <vector>
 #include <string>
+#include <ClanLib/Signals/slot.h>
+#include <ClanLib/Display/Display/surface.h>
 
+class CL_Key;
+class CL_Font;
+class CL_InputDevice;
 class Theme;
 class AlphaButton;
+
 ///
 class ListItem
 {
@@ -149,3 +152,7 @@ public:
 #endif
 
 /* EOF */
+
+
+
+

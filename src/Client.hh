@@ -1,4 +1,4 @@
-//  $Id: Client.hh,v 1.39 2002/06/09 20:59:43 grumbel Exp $
+//  $Id: Client.hh,v 1.40 2002/06/10 11:00:25 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,15 +20,16 @@
 #ifndef CLIENT_HH
 #define CLIENT_HH
 
-#include <ClanLib/core.h>
-#include <ClanLib/display.h>
-
+#include <ClanLib/Signals/slot.h>
+#include <ClanLib/Display/Input/inputdevice.h>
 #include <string>
 #include <vector>
 #include "boost/smart_ptr.hpp"
 
 #include "Result.hh"
 
+class CL_Key;
+class CL_Vector;
 class ButtonPanel;
 class Controller;
 class Cursor;
@@ -157,3 +158,7 @@ public:
 #endif
 
 /* EOF */
+
+
+
+

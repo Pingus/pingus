@@ -1,4 +1,4 @@
-//  $Id: EditorView.cc,v 1.14 2002/06/08 23:11:08 torangan Exp $
+//  $Id: EditorView.cc,v 1.15 2002/06/10 11:00:28 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,8 +17,13 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <ClanLib/Core/Math/rect.h>
+#include <ClanLib/Display/Display/display.h>
 #include "../Sprite.hh"
 #include "EditorView.hh"
+
+using std::min;
+using std::max;
 
 EditorView::EditorView (int x1, int y1, int x2, int y2, 
 			int /*x_offset*/, int /*y_offset*/)

@@ -1,4 +1,4 @@
-//  $Id: ThumbCache.cc,v 1.5 2002/06/04 13:43:19 torangan Exp $
+//  $Id: ThumbCache.cc,v 1.6 2002/06/10 11:00:28 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,9 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <iostream>
+#include <ClanLib/Display/Display/surface.h>
+#include <ClanLib/Display/SurfaceProviders/canvas.h>
 #include "../globals.hh"
 #include "../blitter.hh"
 #include "../System.hh"

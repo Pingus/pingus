@@ -1,4 +1,4 @@
-//  $Id: IceBlock.hh,v 1.22 2002/06/09 13:03:11 grumbel Exp $
+//  $Id: IceBlock.hh,v 1.23 2002/06/10 11:00:29 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,8 +19,6 @@
 
 #ifndef ICEBLOCK_HH
 #define ICEBLOCK_HH
-
-#include <ClanLib/core.h>
 
 #include "../WorldObjData.hh"
 #include "../editor/SpriteEditorObj.hh"
@@ -92,3 +90,6 @@ public:
 #endif
 
 /* EOF */
+
+
+

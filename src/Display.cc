@@ -1,4 +1,4 @@
-//  $Id: Display.cc,v 1.10 2002/06/07 20:35:14 torangan Exp $
+//  $Id: Display.cc,v 1.11 2002/06/10 11:00:25 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,10 +17,10 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <iostream>
 #include <algorithm>
-#include <ClanLib/core.h>
-#include <ClanLib/display.h>
-
+#include <ClanLib/Display/Display/display.h>
+#include <ClanLib/Display/Display/mousecursor.h>
 #include "globals.hh"
 #include "Display.hh"
 
@@ -111,3 +111,7 @@ Display::remove_flip_screen_hook(DisplayHook* hook)
 }
 
 /* EOF */
+
+
+
+

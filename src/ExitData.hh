@@ -1,4 +1,4 @@
-//  $Id: ExitData.hh,v 1.9 2002/06/09 13:03:11 grumbel Exp $
+//  $Id: ExitData.hh,v 1.10 2002/06/10 11:00:25 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,7 @@
 #ifndef EXIT_DATA_HH
 #define EXIT_DATA_HH
 
-#include <ClanLib/core.h>
+#include <ClanLib/Core/Math/cl_vector.h>
 #include "ResDescriptor.hh"
 #include "WorldObjData.hh"
 
@@ -62,3 +62,6 @@ public:
 #endif
 
 /* EOF */
+
+
+

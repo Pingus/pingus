@@ -1,4 +1,4 @@
-//  $Id: blitter.cc,v 1.36 2002/01/22 22:48:05 grumbel Exp $
+//  $Id: blitter.cc,v 1.37 2002/06/10 11:00:28 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,8 +18,13 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <algorithm>
+#include <iostream>
 #include <cstdio>
 #include <assert.h>
+#include <ClanLib/Display/Display/surface.h>
+#include <ClanLib/Display/Display/surfaceprovider.h>
+#include <ClanLib/Display/SurfaceProviders/canvas.h>
+#include <ClanLib/Display/Display/palette.h>
 #include "PingusError.hh"
 #include "Color.hh"
 #include "StringConverter.hh"
