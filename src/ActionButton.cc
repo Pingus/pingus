@@ -1,4 +1,4 @@
-//  $Id: ActionButton.cc,v 1.26 2002/01/15 16:55:56 grumbel Exp $
+//  $Id: ActionButton.cc,v 1.27 2002/01/15 22:32:05 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -217,6 +217,10 @@ VerticalActionButton::draw()
 ArmageddonButton::ArmageddonButton(int x, int y)
 {
   surface = PingusResource::load_surface("buttons/armageddon_anim", "core");
+
+  background = PingusResource::load_surface("buttons/hbuttonbgb", "core");
+  backgroundhl = PingusResource::load_surface("buttons/hbuttonbg", "core");
+
   counter.set_size(surface.get_num_frames());
   counter = 0;
   x_pos = x;
@@ -231,13 +235,12 @@ ArmageddonButton::draw()
 {
   if (pressed)
     {
-      CL_Display::fill_rect(x_pos, y_pos, 
-			    x_pos + surface.get_width(), y_pos + surface.get_height(),
-			    1.0, 1.0, 1.0, 1.0);
+      backgroundhl.put_screen (x_pos, y_pos);
       surface.put_screen(x_pos, y_pos, ++counter);
     } 
   else 
     {
+      background.put_screen (x_pos, y_pos);
       surface.put_screen(x_pos, y_pos, 7);
     }
 }
@@ -257,6 +260,9 @@ ArmageddonButton::mouse_over(const CL_Vector& pos)
 ForwardButton::ForwardButton(int x, int y)
 {
   surface = PingusResource::load_surface("buttons/fast_forward", "core");
+  background = PingusResource::load_surface("buttons/hbuttonbgb", "core");
+  backgroundhl = PingusResource::load_surface("buttons/hbuttonbg", "core");
+
   x_pos = x;
   y_pos = y;
 }
@@ -267,12 +273,10 @@ void
 ForwardButton::draw()
 {
   if (server->get_fast_forward())
-    {
-      CL_Display::fill_rect(x_pos, y_pos, 
-			    x_pos + surface.get_width(), y_pos + surface.get_height(),
-			    1.0, 1.0, 1.0, 1.0);
-    }
-
+    backgroundhl.put_screen (x_pos, y_pos);
+  else
+    background.put_screen (x_pos, y_pos);
+  
   surface.put_screen(x_pos, y_pos);
 }
 
@@ -291,6 +295,10 @@ ForwardButton::mouse_over(const CL_Vector& pos)
 PauseButton::PauseButton(int x, int y)
 {
   surface = PingusResource::load_surface("buttons/pause", "core");
+
+  background = PingusResource::load_surface("buttons/hbuttonbgb", "core");
+  backgroundhl = PingusResource::load_surface("buttons/hbuttonbg", "core");
+
   x_pos = x;
   y_pos = y;
 }
@@ -301,11 +309,10 @@ void
 PauseButton::draw()
 {
   if (server->get_pause()) 
-    {
-      CL_Display::fill_rect(x_pos, y_pos, 
-			    x_pos + surface.get_width(), y_pos + surface.get_height(),
-			    1.0, 1.0, 1.0, 1.0);
-    }
+    backgroundhl.put_screen (x_pos, y_pos);
+  else
+    background.put_screen (x_pos, y_pos);
+  
   surface.put_screen(x_pos, y_pos);
 }
 

@@ -1,4 +1,4 @@
-//  $Id: ActionButton.hh,v 1.19 2002/01/14 23:37:59 grumbel Exp $
+//  $Id: ActionButton.hh,v 1.20 2002/01/15 22:32:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -77,21 +77,17 @@ public:
 class ArmageddonButton : public Button
 {
 private:
-  ///
+  CL_Surface background;
+  CL_Surface backgroundhl;
+
   AnimCounter counter;
-  ///
   Server* server;
-  ///
   friend class ButtonPanel;
 public:
-  ///
   ArmageddonButton(int x, int y);
-  ///
   virtual ~ArmageddonButton();
 
-  ///
   void draw();
-  ///
   bool mouse_over(const CL_Vector& pos);
 };
 
@@ -101,19 +97,15 @@ public:
 class ForwardButton : public Button
 {
 private:
-  ///
+  CL_Surface background;
+  CL_Surface backgroundhl;
   Server* server;
-  ///
   friend class ButtonPanel;
 public:
-  ///
   ForwardButton(int x, int y);
-  ///
   virtual ~ForwardButton();
 
-  ///
   void draw();
-  ///
   bool mouse_over(const CL_Vector& pos);
 };
 
@@ -123,19 +115,15 @@ public:
 class PauseButton : public Button
 {
 private:
-  ///
+  CL_Surface background;
+  CL_Surface backgroundhl;
   Server* server;
-  ///
   friend class ButtonPanel;
 public:
-  ///
   PauseButton(int x, int y);
-  ///
   virtual ~PauseButton();
 
-  ///
   void draw();
-  ///
   bool mouse_over(const CL_Vector& pos);
 };
 

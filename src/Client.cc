@@ -1,4 +1,4 @@
-//  $Id: Client.cc,v 1.72 2002/01/15 17:52:02 grumbel Exp $
+//  $Id: Client.cc,v 1.73 2002/01/15 22:32:06 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -185,7 +185,8 @@ Client::play_level(boost::shared_ptr<PLF> arg_plf)
   unsigned int frames = 1;
   bool auto_frame_skip = false;
   float current_delta;
-  CL_MouseCursor::hide ();
+  // FIXME: using this twice will crash with an X Error
+  //CL_MouseCursor::hide ();
   while (!server->is_finished()) 
     {       
       CL_System::keep_alive ();
@@ -206,7 +207,8 @@ Client::play_level(boost::shared_ptr<PLF> arg_plf)
 	  CL_System::sleep (int(1000 * (wannabe_delta - delta.get ())));
 	}
     }
-  CL_MouseCursor::show ();
+  // FIXME: using this twice will crash with an X Error
+  //CL_MouseCursor::show ();
 
   unregister_event_handler();
 }

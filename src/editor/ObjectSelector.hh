@@ -1,4 +1,4 @@
-// $Id: ObjectSelector.hh,v 1.25 2002/01/15 10:48:52 grumbel Exp $
+// $Id: ObjectSelector.hh,v 1.26 2002/01/15 22:32:06 grumbel Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,10 +20,7 @@
 #ifndef OBJECTSELECTOR_HH
 #define OBJECTSELECTOR_HH
 
-#ifndef LIBXML_2
-  #define LIBXML_2
-#endif
-
+#include <config.h>
 #include <list>
 #include <string>
 #include <iostream>
@@ -62,7 +59,7 @@ public:
   std::list<boost::shared_ptr<EditorObj> > get_obj(int, int);
   std::list<boost::shared_ptr<EditorObj> > get_trap();
   std::list<boost::shared_ptr<EditorObj> > get_groundpiece(GroundpieceData::GPType gptype);
-  std::list<boost::shared_ptr<EditorObj> > get_hotspot();
+  std::list<boost::shared_ptr<EditorObj> > get_hotspot(const std::string&);
   std::list<boost::shared_ptr<EditorObj> > get_entrance();
   std::list<boost::shared_ptr<EditorObj> > get_exit();
   std::list<boost::shared_ptr<EditorObj> > get_liquid();

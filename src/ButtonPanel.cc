@@ -1,4 +1,4 @@
-//  $Id: ButtonPanel.cc,v 1.24 2002/01/15 17:52:02 grumbel Exp $
+//  $Id: ButtonPanel.cc,v 1.25 2002/01/15 22:32:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -59,12 +59,12 @@ ButtonPanel::ButtonPanel(boost::shared_ptr<PLF> plf,
 						    controller->get_owner ())));
     }
 
-  armageddon = shared_ptr<ArmageddonButton>(new ArmageddonButton(CL_Display::get_width() - 38, 
-								 CL_Display::get_height() - 56));
-  forward    = shared_ptr<ForwardButton>(new ForwardButton(CL_Display::get_width() - 38 * 2,
-							   CL_Display::get_height() - 56));
-  pause      = shared_ptr<PauseButton>(new PauseButton(CL_Display::get_width() - 38 * 3,
-						       CL_Display::get_height() - 56));
+  armageddon = shared_ptr<ArmageddonButton>(new ArmageddonButton(CL_Display::get_width() - 40, 
+								 CL_Display::get_height() - 62));
+  forward    = shared_ptr<ForwardButton>(new ForwardButton(CL_Display::get_width() - 40 * 2,
+							   CL_Display::get_height() - 62));
+  pause      = shared_ptr<PauseButton>(new PauseButton(CL_Display::get_width() - 40 * 3,
+						       CL_Display::get_height() - 62));
 
   forward->pressed = false;
   pause->pressed   = false;

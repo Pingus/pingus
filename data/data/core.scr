@@ -47,6 +47,9 @@ section buttons
 {
 	info = ../images/core/buttons/info.png (type=surface);
 
+	hbuttonbg  = ../images/core/buttons/hbuttonbg.png (type=surface);
+	hbuttonbgb = ../images/core/buttons/hbuttonbgb.png (type=surface);
+
 	buttonbackground = ../images/core/buttons/buttonbackground.png (type=surface);
 	buttonbackgroundhl = ../images/core/buttons/buttonbackgroundhl.png (type=surface);
 

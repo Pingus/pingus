@@ -1,4 +1,4 @@
-//  $Id: ObjectSelector.cc,v 1.54 2002/01/15 10:48:52 grumbel Exp $
+//  $Id: ObjectSelector.cc,v 1.55 2002/01/15 22:32:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -147,15 +147,15 @@ ObjectSelector::get_groundpiece(GroundpieceData::GPType gptype)
 }
 
 std::list<boost::shared_ptr<EditorObj> >
-ObjectSelector::get_hotspot()
+ObjectSelector::get_hotspot(const std::string& filename)
 {
   HotspotData data;
   data.pos = pos;
-  std::string str = select_surface("hotspots");
+  std::string str = select_surface(filename);
 
   if (!str.empty())
     {
-      data.desc = ResDescriptor("resource:hotspots", str);
+      data.desc = ResDescriptor("resource:" + filename, str);
       data.speed = -1;
 
       std::list<boost::shared_ptr<EditorObj> > objs;
@@ -247,6 +247,7 @@ ObjectSelector::get_entrance()
   font->print_left(20, 50, _("1 - generic"));
   font->print_left(20, 70, _("2 - woodthing"));
   font->print_left(20, 90, _("3 - cloud"));
+  font->print_left(20, 120, _("h - entrance surface (hotspot)"));
   Display::flip_display();
 
   while (!have_name) 
@@ -268,6 +269,10 @@ ObjectSelector::get_entrance()
 	  entrance.type = "cloud";
 	  have_name = true;
 	  break;
+
+	case CL_KEY_4:
+	case CL_KEY_H:
+	  return get_hotspot("entrances");
 
 	default:
 	  if (verbose) std::cout << "Unknown keypressed" << endl;
@@ -413,7 +418,7 @@ ObjectSelector::select_obj_type()
 	  return get_groundpiece(GroundpieceData::GP_TRANSPARENT);
 
 	case CL_KEY_H:
-	  return get_hotspot();
+	  return get_hotspot("hotspots");
 		  
 	case CL_KEY_E:
 	  return get_entrance();
