@@ -1,4 +1,4 @@
-//  $Id: PinguAction.cc,v 1.20 2001/08/16 17:46:51 grumbel Exp $
+//  $Id: PinguAction.cc,v 1.21 2002/02/10 22:14:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -61,6 +61,13 @@ ActionType
 PinguAction::get_type(void)
 {
   return (ActionType)ONCE;
+}
+
+char
+PinguAction::get_persistent_char ()
+{
+  assert(!"This is not a persitent action!");
+  return '-';
 }
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: CaptureRectangle.cc,v 1.14 2001/12/01 17:08:26 torangan Exp $ 
+//  $Id: CaptureRectangle.cc,v 1.15 2002/02/10 22:14:06 grumbel Exp $ 
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -73,6 +73,20 @@ CaptureRectangle::draw_offset(int x_offset, int y_offset, float s)
       
       if (s == 1.0) 
 	{
+	  std::string action_str = pingu->get_action()->get_name();
+
+	  std::vector<boost::shared_ptr<PinguAction> >* persitant = pingu->get_persistent_actions ();
+	  if (persitant->size() > 0)
+	    {
+	      action_str += " [";
+	      for (std::vector<boost::shared_ptr<PinguAction> >::iterator i = persitant->begin ();
+		   i != persitant->end (); ++i)
+		{
+		  action_str += (*i)->get_persistent_char ();
+		}
+	      action_str += "]";
+	    }
+
 	  // Draw the caputure rectangle
 	  sur->put_screen(pingu->get_center_pos() + CL_Vector(x_offset,y_offset));
 	  
@@ -81,7 +95,7 @@ CaptureRectangle::draw_offset(int x_offset, int y_offset, float s)
 	    {
 	      font->print_center(int(pingu->get_center_pos().x) + x_offset,
 				 int(pingu->get_center_pos().y) + y_offset - 32,
-				 pingu->get_action()->get_name().c_str());
+				 action_str.c_str());
 	    }
 	  /*font->print_center(pingu->get_center_pos().x + x_offset,
 			     pingu->get_center_pos().y + y_offset - 16 + 62,

@@ -1,4 +1,4 @@
-//  $Id: bridger.cc,v 1.48 2001/12/02 11:02:13 torangan Exp $
+//  $Id: bridger.cc,v 1.49 2002/02/10 22:14:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,6 +25,7 @@
 #include "../algo.hh"
 #include "../ActionHolder.hh"
 #include "../ColMap.hh"
+#include "../StringConverter.hh"
 #include "bridger.hh"
 
 using namespace std;
@@ -215,6 +216,13 @@ Bridger::walk_one_step_up()
   pingu->pos.x += 4.0 * pingu->direction;
   pingu->pos.y -= 2.0;
   counter = 0;
+}
+
+std::string
+Bridger::get_name () const
+{ 
+  // FIXME: Could need caching
+  return "Bridger (" + to_string(bricks) + ")";
 }
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMap.cc,v 1.32 2001/12/01 17:08:27 torangan Exp $
+//  $Id: PingusWorldMap.cc,v 1.33 2002/02/10 22:14:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "../PathManager.hh"
 #include "../PingusError.hh"
 #include "../System.hh"
 #include "../globals.hh"
@@ -133,7 +134,7 @@ PingusWorldMap::init ()
 {
   std::cout << "PingusWorldMap::init" << std::endl;
   if (!graph_data.get_music ().empty ())
-    PingusSound:: play_music ("music/" + graph_data.get_music ());
+    PingusSound:: play_music (path_manager.complete("music/" + graph_data.get_music ()));
 }
 
 void 

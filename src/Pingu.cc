@@ -1,4 +1,4 @@
-//  $Id: Pingu.cc,v 1.70 2001/12/02 11:02:12 torangan Exp $
+//  $Id: Pingu.cc,v 1.71 2002/02/10 22:14:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -410,6 +410,7 @@ Pingu::apply_force(CL_Vector arg_v)
 {
   velocity += arg_v;
   // Moving the pingu on pixel up, so that the force can take effect
+  // FIXME: this should be handled by a state-machine
   pos.y -= 1; 
 }
 

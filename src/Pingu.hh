@@ -1,4 +1,4 @@
-//  $Id: Pingu.hh,v 1.38 2001/08/16 22:00:50 grumbel Exp $
+//  $Id: Pingu.hh,v 1.39 2002/02/10 22:14:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -134,6 +134,8 @@ public:
 
   ///
   boost::shared_ptr<PinguAction> get_action();
+
+  std::vector<boost::shared_ptr<PinguAction> >* get_persistent_actions () { return &persist; } 
 
   /** Returns the `color' of the colmap in the walking direction 
       Examples: 

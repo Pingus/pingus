@@ -1,4 +1,4 @@
-//  $Id: Cursor.hh,v 1.3 2002/01/13 15:24:18 grumbel Exp $
+//  $Id: Cursor.hh,v 1.4 2002/02/10 22:14:06 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,6 +25,9 @@
 #include "Controller.hh"
 #include "Sprite.hh"
 
+/** A simple mouse cursor class and stupid. We can't use the X11/win32
+    nativ mouse cursor because we want also to support non-mouse input
+    devices and because we want to support multiple cursors */
 class Cursor : public DisplayHook
 {
 private:

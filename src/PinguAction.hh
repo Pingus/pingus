@@ -1,4 +1,4 @@
-//  $Id: PinguAction.hh,v 1.27 2001/08/16 17:46:51 grumbel Exp $
+//  $Id: PinguAction.hh,v 1.28 2002/02/10 22:14:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -86,6 +86,10 @@ public:
   /// The name of the action, used in PinguInfo.hh
   virtual std::string get_name(void) const =0;
   
+  /** Return the character that is shown when a persitent action is
+      activated in the CaptureRectangle. */
+  virtual char get_persistent_char ();
+
   /// Catch another pingu and act on it (see blocker.hh)
   virtual bool  need_catch();
 

@@ -1,4 +1,4 @@
-//  $Id: climber.hh,v 1.13 2001/12/15 00:56:48 cagri Exp $
+//  $Id: climber.hh,v 1.14 2002/02/10 22:14:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,6 +37,7 @@ public:
   void draw_offset(int x, int y, float s=1.0);
   void update(float delta);
   ActionType get_type(void) { return (ActionType)WALL; }
+  char get_persistent_char () { return 'c'; }
 };
 
 #endif
