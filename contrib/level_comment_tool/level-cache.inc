@@ -56,12 +56,12 @@ function create_table( $tablename )
 
   if (!$table_exists)
   {
-    $SQL = "CREATE TABLE `$tablename` (`Key` VARCHAR( 255 ) NOT NULL ,`Value` TEXT NOT NULL , PRIMARY KEY ( `Key` ) );";    
-    $res = mysql_query( $SQL, $db_handle );       
+    $SQL = "CREATE TABLE `$tablename` (`Key` VARCHAR( 255 ) NOT NULL ,`Value` TEXT NOT NULL , PRIMARY KEY ( `Key` ) );";
+    $res = mysql_query( $SQL, $db_handle );
 	if (!$res)
 	  return False;
 	else
-	  return $tablename;  
+	  return $tablename;
   }
   else
     return $tablename;
@@ -175,11 +175,11 @@ function fetch_from_DB( $cathegory, $level )
       $res = mysql_query( $SQL, $db_handle );
       if (mysql_num_rows($res) != 1)
       	$data = False;
-      else	
-        list(,$data) = mysql_fetch_row( $res );  
+      else
+        list(,$data) = mysql_fetch_row( $res );
       break;
   }
-  
+
   if ( !$data )
     return False;
   else
@@ -209,7 +209,7 @@ function level_cache_get( $cathegory, $level, $recache )
     $leveldata = parse_level( $levelfile );
     $leveldata["md5sum"] = md5(implode("", file($levelfile)));
 
-    $comments = parse_level_comments($cathegory, $level);
+    $comments = parse_level_comments($cathegory, $level, "ASC");
     $avgrating = 0;
     if (count($comments) > 0 )
     {
@@ -266,10 +266,10 @@ function level_cache_save( $cathegory, $level, $arr )
   $data = "";
   $key = make_db_key( $cathegory, $level );
   reset( $arr );
-  
+
   while (list($k,$v) = each($arr))
     $data .= $k . "=" . $v . "\255";
-        
+
   switch ($DBMS)
   {
     case "DBA":
@@ -282,7 +282,7 @@ function level_cache_save( $cathegory, $level, $arr )
       if (mysql_num_rows( $ret ) == 1)
         $SQL = "UPDATE `$db_tablename` SET `Value`='" . str_replace( "'", "\'", $data ) . "' WHERE `Key`='$key'";
       else
-        $SQL = "INSERT INTO $db_tablename (`Key`,`Value`) VALUES ('$key','" . str_replace( "'", "\'", $data ) . "')";          
+        $SQL = "INSERT INTO $db_tablename (`Key`,`Value`) VALUES ('$key','" . str_replace( "'", "\'", $data ) . "')";
       $ret = mysql_query( $SQL, $db_handle );
       break;
   }
@@ -329,7 +329,7 @@ function parse_level( $filename )
   return $arr;
 }
 
-function parse_level_comments( $cathegory, $level )
+function parse_level_comments( $cathegory, $level, $order )
 {
   $res = Array();
   $comment_dir = "comments/$cathegory/$level";
@@ -340,7 +340,7 @@ function parse_level_comments( $cathegory, $level )
   $dir = dir($comment_dir);
   $comments = Array();
   while ($file = $dir->read())
-    if ($file != "." && $file != ".." && file_exists("$comment_dir/$file"))
+    if ($file != "." && $file != ".." && file_exists("$comment_dir/$file") && !is_dir("$comment_dir/$file"))
       $comments[] = "$comment_dir/$file";
   $dir->close();
 
@@ -350,6 +350,7 @@ function parse_level_comments( $cathegory, $level )
       "author" => "pingus-level-comment/author",
       "email" => "pingus-level-comment/email",
       "date" => "pingus-level-comment/date",
+	  "time" => "pingus-level-comment/time",
       "difficulty" => "pingus-level-comment/difficulty",
       "rating" => "pingus-level-comment/rating",
       "comment" => "pingus-level-comment/comment",
@@ -361,8 +362,58 @@ function parse_level_comments( $cathegory, $level )
       $cmt[$k] = $v["v"];
 
     $cmt["filename"] = $filename;
-    $res[] = $cmt;
+
+    // is the time set? (it is not in old comment files)
+	if (isset($cmt["time"]))
+	  $res[$cmt["date"] . '-' . $cmt["time"]] = $cmt;
+    else
+      $res[$cmt["date"] . '-' . substr(md5(implode("", file($filename))),0,8)] = $cmt;
   }
+  if ($order == "DESC")
+    arsort($res);
+  else
+    asort($res);
+
+  return $res;
+}
+
+function parse_level_demos( $cathegory, $level )
+{
+  $res = Array();
+  $demo_dir = "comments/$cathegory/$level/demos";
+  if ( !is_dir( $demo_dir ))
+    return $res;
+  sandbox_check($demo_dir, "comments/");
+
+  $dir = dir($demo_dir);
+  $demos = Array();
+  while ($file = $dir->read())
+    if ($file != "." && $file != ".." && file_exists("$demo_dir/$file")
+        && !is_dir("$demo_dir/$file") && strpos( $file, ".demo" ))
+      $demos[] = "$demo_dir/$file";
+  $dir->close();
+
+  while( list($key, $filename) = each($demos))
+  {
+    $cmt = xml_search( $filename, Array(
+      "username" => "pingus-demo-metafile/username",
+      "email" => "pingus-demo-metafile/email",
+      "date" => "pingus-demo-metafile/date",
+	  "time" => "pingus-demo-metafile/time",
+	  "demofile" => "pingus-demo-metafile/demofile",
+      "levelmd5" => "pingus-demo-metafile/levelmd5"
+    ));
+
+    // We don't need tag names and attributes, strip them off:
+    while( list($k,$v) = each($cmt))
+      $cmt[$k] = $v["v"];
+
+    $cmt["filename"] = $filename;
+
+    $res[$cmt["date"] . '-' . $cmt["time"]] = $cmt;
+  }
+  asort($res);
+
   return $res;
 }
 

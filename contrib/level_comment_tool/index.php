@@ -278,7 +278,8 @@ else
         $jpg = htmlentities($c) . "/" . htmlentities($l) . ".jpg";
         print ("<td rowspan='5' valign='top' align='center'>\n".
           "  <img src='http://pingus.seul.org/levels/thumb/$jpg' border='1'><br/>\n".
-          "  see <a href='http://pingus.seul.org/levels/50/$jpg' target='levelview'>half</a> / \n".
+          "  see <a href='http://pingus.seul.org/levels/33/$jpg' target='levelview'>third</a> /".
+          " <a href='http://pingus.seul.org/levels/50/$jpg' target='levelview'>half</a> / \n".
           "  <a href='http://pingus.seul.org/levels/100/$jpg' target='levelview'>full</a> size\n<br>".
           "<a href='data/levels/" . htmlentities($c) . "/" . htmlentities($l) . ".pingus'>play</a>\n" .
           "</td>\n" );
@@ -299,8 +300,12 @@ else
           $ac = "<strong>?</strong>";
         else
           $ac = htmlentities($ac);
-        print ("<img alt='$a' title='$a' src='gfx/actions/$a.png'> x ".
-          $ac . " ");
+          print ("<img id='Pic$a' name='$a' alt='$a' title='$a' " .
+                 "style='cursor: pointer' src='gfx/actions/$a.png' " .
+                 "onclick='document.getElementById(\"CommentForm\").comment.value = " .
+                 "document.getElementById(\"CommentForm\").comment.value + " .
+                 "document.getElementById(\"Pic$a\").name'></a> x " .
+                 $ac . " ");
       }
     }
 
@@ -338,6 +343,7 @@ else
         "  <level>" . xmlentities("$c/$l") . "</level>\n" .
         "  <levelmd5>" . xmlentities(stripslashes($_POST["levelmd5"])) . "</levelmd5>\n" .
         "  <date>" . xmlentities(date("Y-m-d")) . "</date>\n" .
+        "  <time>" . xmlentities(date("H:i:s")) . "</time>\n" .        
         "  <difficulty>" . xmlentities(stripslashes($_POST["difficulty"])) . "</difficulty>\n" .
         "  <rating>" . xmlentities(stripslashes($_POST["rating"])) . "</rating>\n" .
         "  <comment>" . xmlentities(decode_html(stripslashes($_POST["comment"]))) . "</comment>\n" .
@@ -404,12 +410,89 @@ else
       print "<p><strong>Deleted '" . htmlentities($_GET["delcomment"]) . "'</strong></p>";
     }
 
+	// ==================================================================
+    // Save uploaded Demofile
     // ==================================================================
-    // List user comments
+    if ( isset($_POST["adddemo"]))
+    {
+      //create directory if necessary
+      if ( !is_dir("comments/$c/$l/demos") &&
+           (@mkdir("comments/$c", 0775) || True) &&
+           (@mkdir("comments/$c/$l", 0775) || True) &&
+           !(@mkdir("comments/$c/$l/demos", 0775)))
+      {
+        print ("<strong>ERROR: 'comments/$c/$l/demos' does not exist and ".
+               "could not be created.</strong>\n");
+        exit;
+      }
+      
+      $uploaddir = sandbox_check( "comments/$c/$l/demos", "comments/" );
+      
+      if(!strpos( strtolower( $_FILES["demofile"]["name"] ), ".xml" ))
+        print("<strong> Please upload only .xml files </strong><hr/>");
+      else
+      {
+        if (move_uploaded_file($_FILES['demofile']['tmp_name'], $uploaddir. '/' . $_FILES['demofile']['name']))
+        {
+          print("<strong>File uploaded successfully</strong><hr/>");
+          $str = '<' . '?xml version="1.0"  encoding="ISO-8859-1"?' . ">\n" .
+                "<pingus-demo-metafile>\n".
+                "  <username>" . xmlentities(decode_html(stripslashes($_POST["username"]))) . "</username>\n" .
+                "  <email>" . xmlentities(decode_html(stripslashes($_POST["email"]))) . "</email>\n" .
+                "  <level>" . xmlentities("$c/$l") . "</level>\n" .
+                "  <levelmd5>" . xmlentities(stripslashes($_POST["levelmd5"])) . "</levelmd5>\n" .
+                "  <date>" . xmlentities(date("Y-m-d")) . "</date>\n" .
+                "  <time>" . xmlentities(date("H:i:s")) . "</time>\n" .        
+                "  <demofile>" . xmlentities( $_FILES['demofile']['name'] ) . "</demofile>\n" .
+                "</pingus-demo-metafile>\n";
+            
+          $filename = "comments/$c/$l/demos/" . substr(md5($str),0,8) . ".demo";
+          if ( !file_exists($filename) || is_writable($filename))
+          {
+            if (!$fp = fopen($filename, 'w'))
+            {
+              print "<strong>ERROR: Cannot open file ($filename)</strong>\n";
+              exit;
+            }
+            if (!fwrite($fp, $str))
+            {
+              print "<strong>ERROR: Cannot write to file ($filename)</strong>\n";
+              exit;
+            }
+            fclose($fp);
+            chmod($filename, 0775);
+     	  }
+     	}  
+        else
+        {
+          print("<strong>error:");
+          print_r($_FILES);
+          print("</strong><hr/>");
+        }  
+      }
+    }
+    
     // ==================================================================
-    $comments = parse_level_comments($c, $l);
+    // List user comments and demo files
+    // ==================================================================
+    if (isset( $_GET["o"] )) //determine order of comments
+    {
+      $comments = parse_level_comments($c, $l, $_GET["o"]);
+      if ($_GET["o"] == "ASC")
+        $OrderLink = " (<a href='$PHP_SELF?c=$c&l=$l&o=DESC'>revert order</a>)";
+      else
+        $OrderLink = " (<a href='$PHP_SELF?c=$c&l=$l&o=ASC'>revert order</a>)"; 
+    }    
+    else  
+    {
+      $comments = parse_level_comments($c, $l, "ASC");
+      $OrderLink = " (<a href='$PHP_SELF?c=$c&l=$l&o=DESC'>revert order</a>)";
+    }  
+    $showComments = False;
+    $showDemos = False; 
     if ( count($comments) > 0 )
     {
+      $showComments = True;
       while( list(,$cmt) = each($comments))
       {
         $leveldata["totalcomments"]++;
@@ -424,7 +507,8 @@ else
           "<p class='message'><strong>From:</strong> " . htmlentities($cmt["author"]) .
           " &lt;" . str_replace("@", "<b><small>PingusNoSpam</small></b>@",
             htmlentities($cmt["email"])) .
-            "&gt;, <strong>Date: </strong> " . htmlentities($cmt["date"]) . "<br/>\n" .
+            "&gt;, <strong>Date: </strong> " . htmlentities($cmt["date"]) . 
+          ", <strong>Time: </strong> " . htmlentities($cmt["time"]) . "<br/>\n" .
           "<b>Difficulty: </b>" . htmlentities($cmt["difficulty"]) . "\n" .
           ", <b>Rating: </b>" . str_repeat( "*", intval($rating)) . $del_link . "<br/>\n" .
           "<cite>\n" .
@@ -436,10 +520,49 @@ else
         else
           $old_comments_text .= $str;
       }
-      print("<h2>Comments</h2>\n" . $new_comments_text );
-      print("<h3>Comments for older version(s)</h3>\n" . $old_comments_text);
-    }
-    else print "<em>No comments for this level yet!</em>";
+    }  
+     
+    $demos = parse_level_demos( $c, $l );
+    if ( count($demos) > 0 )
+    {
+      $showDemos = True;
+
+      while( list(,$cmt) = each($demos))
+      {
+        $leveldata["totaldemos"]++;
+        
+        $str =
+          "<p class='message'><strong>From:</strong> " . htmlentities($cmt["username"]) .
+          " &lt;" . str_replace("@", "<b><small>PingusNoSpam</small></b>@", htmlentities($cmt["email"])) .
+          "&gt;<br><strong>Date: </strong> " . htmlentities($cmt["date"]) . 
+          ", <strong>Time: </strong> " . htmlentities($cmt["time"]) . "<br/>\n" .
+          "<b>Demofile: </b><a href='comments/$c/$l/demos/" . $cmt["demofile"] . "'>" .
+          $cmt["demofile"] . "</a><br/>\n" .
+          "</p>\n";
+		  
+        if (strtolower($cmt["levelmd5"]) == strtolower($curlevelmd5))
+          $new_demos_text .= $str;
+        else
+          $old_demos_text .= $str;
+      }
+    } 
+    
+    print("<table width='100%' cellpadding='10'><tr><td width='60%' valign='top'>");
+    if ($showComments)
+      print ("<table cellpadding='5'><tr><td valign='bottom'><h2>Comments</h2></td>" .
+             "<td valign='bottom'><strong>$OrderLink</strong></td></tr></table>\n" . $new_comments_text .
+             "<h3>Comments for older version(s)</h3>\n" . $old_comments_text);
+    else
+     print ("<em>No comments for this level yet!</em>");
+     
+    print("</td><td valign='top'>");    
+    if ($showDemos)           
+      print ("<table cellpadding='5'><tr><td valign='bottom'><h2>Demo Files</h2></td></tr></table>\n" .
+             $new_demos_text . "<h3>Demos for older version(s)</h3>\n" . $old_demos_text);
+	else
+      print ("<em>No Demos for this level yet!</em>");
+    
+    print ("</td></tr></table>");
 
     // Calc avg rating
     if ( $leveldata["totalcomments"] > 0 )
@@ -454,55 +577,92 @@ else
       $levelmd5 = $_GET["levelmd5"];
 ?>
     <hr/>
-    <p><em><strong>Add a comment:</strong></em></p>
-    <form action="<? echo $PHP_SELF . "?c=" . urlencode($c) . "&l=" . urlencode($l); ?>" method="POST">
-      <input type="hidden" name="addcomment" value="1">
-      <input type="hidden" name="c" value="<? echo urlencode("$c"); ?>">
-      <input type="hidden" name="l" value="<? echo urlencode("$l"); ?>">
-      <input type="hidden" name="levelmd5" value="<? echo urlencode($levelmd5); ?>">
-      <table>
-        <tr>
-          <td>Your name</td>
-          <td><input type="text" name="author"></td>
-        </tr>
-        <tr>
-          <td>Your email</td>
-          <td><input type="text" name="email"></td>
-        </tr>
-        <tr>
-          <td>Difficulty</td>
-          <td>
-            <select name="difficulty">
-              <option value="easy">easy</option>
-              <option value="normal">normal</option>
-              <option value="hard">hard</option>
-              <option value="very hard">very hard</option>
-              <option value="unplayable">unplayable</option>
-              <option value="unfinished" selected>unfinished</option>
-            </select>
-          </td>
-        </tr>
-        <tr>
-          <td>Rating</td>
-          <td>
-            <select name="rating">
-              <option value="1">1 bad</option>
-              <option value="2">2 well...</option>
-              <option value="3" selected>3 ok</option>
-              <option value="4">4 good</option>
-              <option value="5">5 very good</option>
-            </select>
-          </td>
-        </tr>
-        <tr>
-          <td>Comments</td>
-          <td><textarea rows="8" cols="40" name="comment"></textarea></td>
-        </tr>
-        <tr>
-          <td colspan="2"><input type="submit"/></td>
-        </tr>
-      </table>
-    </form>
+    <table width="100%">
+      <tr>
+        <td width="60%" valign="top">
+          <p><em><strong>Add a comment:</strong></em></p>
+          <form id="CommentForm" action="<? echo $PHP_SELF . "?c=" . urlencode($c) . "&l=" . urlencode($l); ?>" method="POST">
+            <input type="hidden" name="addcomment" value="1">
+            <input type="hidden" name="c" value="<? echo urlencode("$c"); ?>">
+            <input type="hidden" name="l" value="<? echo urlencode("$l"); ?>">
+            <input type="hidden" name="levelmd5" value="<? echo urlencode($levelmd5); ?>">
+            <table>
+              <tr>
+                <td>Your name</td>
+                <td><input type="text" name="author"></td>
+              </tr>
+              <tr>
+                <td>Your email</td>
+                <td><input type="text" name="email"></td>
+              </tr>
+              <tr>
+                <td>Difficulty</td>
+                <td>
+                  <select name="difficulty">
+                    <option value="easy">easy</option>
+                    <option value="normal">normal</option>
+                    <option value="hard">hard</option>
+                    <option value="very hard">very hard</option>
+                    <option value="unplayable">unplayable</option>
+                    <option value="unfinished" selected>unfinished</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>Rating</td>
+                <td>
+                  <select name="rating">
+                    <option value="1">1 bad</option>
+                    <option value="2">2 well...</option>
+                    <option value="3" selected>3 ok</option>
+                    <option value="4">4 good</option>
+                    <option value="5">5 very good</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>Comments</td>
+                <td><textarea rows="8" cols="40" name="comment"></textarea></td>
+              </tr>
+              <tr>
+                <td colspan="2"><input type="submit"/></td>
+              </tr>
+            </table>
+          </form>
+        </td>
+        <td width="50%" valign="top">
+          <p><em><strong>Upload a demofile:</strong></em></p>
+          <form enctype="multipart/form-data"  name="UploadDemo" action="<? echo $PHP_SELF . "?c=" . urlencode($c) . "&l=" . urlencode($l); ?>" method="POST">
+            <input type="hidden" name="adddemo" value="1">
+            <input type="hidden" name="c" value="<? echo urlencode("$c"); ?>">
+            <input type="hidden" name="l" value="<? echo urlencode("$l"); ?>">
+            <input type="hidden" name="levelmd5" value="<? echo urlencode($levelmd5); ?>">
+            <table>
+              <tr>
+                <td>Your name</td>
+                <td><input type="text" name="username"></td>
+              </tr>
+              <tr>
+                <td>Your email</td>
+                <td><input type="text" name="email"></td>
+              </tr>
+              <tr>
+                <td>Demofile</td>
+                <td>
+                  <input type="file" name="demofile">
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2">
+                  <input type="submit" value="Upload file">
+              	</td>
+              </tr>
+            </table>
+          </form>
+        </td>
+      </tr>
+    </table>      
+          
 <?
     print "<p><a href='$PHP_SELF?c=" . urlencode($c) . "'>Back to level list</a></p>";
     if ( !$is_admin )
