@@ -1,4 +1,4 @@
-//  $Id: Pingu.cc,v 1.10 2000/02/28 04:12:23 grumbel Exp $
+//  $Id: Pingu.cc,v 1.11 2000/02/28 17:54:21 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,6 +28,8 @@
 #include "PingusResource.hh"
 #include "actions/smashed.hh"
 #include "FVec.hh"
+
+const float deadly_velocity = 20.0;
 
 // Create the static objects of the class
 ColMap*             Pingu::colmap;
@@ -63,6 +65,7 @@ Pingu::Pingu(int x, int y)
       tumble = CL_Surface::load("Pingus/tumble", local_res());
     }
 
+  tumbling = false;
   falling = 4;
   status = alive;
 
@@ -329,6 +332,12 @@ Pingu::let_move(void)
     }
 }
 
+PinguEnvironment
+Pingu::check_enviroment()
+{
+  
+}
+
 // Check if the pingu is on ground and then do something.
 void 
 Pingu::do_normal()
@@ -344,19 +353,20 @@ Pingu::do_normal()
 }
 
 // The Pingu is not on ground, so lets fall...
-void Pingu::do_falling()
+void
+Pingu::do_falling()
 {
   // Apply all forces
   velocity = ForcesHolder::apply_forces(CL_Vector(x_pos, y_pos), velocity);
     
-  // Update x and y by moving the penguin to it's target *slowly*
-  // and checking if the penguin has hit the bottom at each loop
   CL_Vector newp = velocity;
 	  
+  // Update x and y by moving the penguin to it's target *slowly*
+  // and checking if the penguin has hit the bottom at each loop
   while(rel_getpixel(0, -1) == ColMap::NOTHING
-	&& !(fabs(newp.x) < 1 && fabs(newp.y) < 1))
+	&& (fabs(newp.x) >= 1 || fabs(newp.y) >= 1))
     {
-      if (!(fabs(newp.x) < 1))
+      if (fabs(newp.x) >= 1)
 	{ 
 	  // Since the velocity might be a
 	  // fraction stop when we are within 1 unit of the target
@@ -372,7 +382,7 @@ void Pingu::do_falling()
 	    }
 	}
 
-      if (!(fabs(newp.y) < 1))
+      if (fabs(newp.y) >= 1)
 	{
 	  if (newp.y > 0)
 	    {
@@ -386,7 +396,8 @@ void Pingu::do_falling()
 	    }
 	}
     }
-    
+
+  // Now that the Pingu is moved, check if he hits the ground.
   if (rel_getpixel(0, -1) == ColMap::NOTHING)
     { // if pingu is not on ground
       ++falling;
@@ -395,24 +406,24 @@ void Pingu::do_falling()
 	environment = sky;
 	  
       // If we are going fast enough to get smashed set falling to 80
-      if (fabs(velocity.x) > 15 || fabs(velocity.y) > 15)
+      if (fabs(velocity.x) > deadly_velocity || fabs(velocity.y) > deadly_velocity)
 	{
-	  falling = 80;
+	  tumbling = true;
 	}
-    } 
+    }
   else // Ping is on ground
     {
-      cout << "Fabs: " << std::fabs(velocity.y) << endl;
+      //      cout << "Fabs: " << std::fabs(velocity.y) << endl;
 
       // Did we stop too fast?
-      if (std::fabs(velocity.y) > 30)
+      if (std::fabs(velocity.y) > deadly_velocity)
 	{
 	  // FIXME: This is a LinuxTag Hack and should be replaced
 	  // with a real ground smashing action! 
 	  cout << "Smashing..." << endl;
 	  set_action(new Smashed);
 	}
-      else if (std::fabs(velocity.x) > 15)
+      else if (std::fabs(velocity.x) > deadly_velocity)
 	{
 	  cout << "x Smashed on ground, jumping" << endl;
 	}
@@ -468,7 +479,7 @@ Pingu::do_walking()
 		      set_paction(ActionHolder::get_uaction(persist[i]->name()));
 		    }
 		  return;
-		} 
+		}
 	    }
 	  direction.change();
 	}
@@ -492,10 +503,11 @@ Pingu::draw_offset(int x, int y, float s) const
 	{
 	  CL_Surface* surf;
 	  
-	  if (falling > 75)
+	  if (tumbling) {
 	    surf = tumble;
-	  else
+	  } else {
 	    surf = faller;
+	  }
 	  
 	  if (s == 1.0) 
 	    {

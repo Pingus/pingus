@@ -1,4 +1,4 @@
-//  $Id: Pingu.hh,v 1.4 2000/02/28 03:41:46 grumbel Exp $
+//  $Id: Pingu.hh,v 1.5 2000/02/28 17:54:21 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,11 +29,13 @@
 #include "PinguAction.hh"
 #include "PinguEnums.hh"
 
-class PinguAction; // FIXME: Should work, but it that good style?
+class PinguAction; 
 
 class Pingu
 {
-private:
+protected:
+  friend class PinguAction;
+
   PinguAction* action;
   PinguAction* sec_action;
   vector<PinguAction* > persist;
@@ -58,6 +60,7 @@ public:
   int x_pos;
   int y_pos;
   int falling;
+  bool tumbling;
 
   Pingu();
   Pingu(int x, int y);
@@ -101,6 +104,7 @@ public:
   void do_normal();
   void do_falling();
   void do_walking();
+  PinguEnvironment check_enviroment();
 
   bool   is_over(int x, int y);
   double dist(int x, int y);
