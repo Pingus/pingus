@@ -1,4 +1,4 @@
-//  $Id: xml_helper.cxx,v 1.32 2003/04/24 17:59:15 grumbel Exp $
+//  $Id: xml_helper.cxx,v 1.32.2.1 2004/03/31 18:14:48 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -155,21 +155,21 @@ XMLhelper::node_list_get_string (xmlDocPtr doc, xmlNodePtr cur, int inLine, int&
 std::string
 XMLhelper::encode_entities (const std::string& arg_str)
 {
-  ///xmlEncodeEntitiesReentrant()
-  std::string str = arg_str;
-  std::string::size_type i;
-  //  std::cout << "encode_xml: " << str << std::endl;
-
-  i = str.find("<");
-  if (i != std::string::npos)
-    str.replace(i, 1, "&lt;");
-
-  i = str.find(">");
-  if (i != std::string::npos)
-    str.replace(i, 1, "&gt;");
-
-  //  std::cout << "encode_xml-done: " << str << std::endl;
-
+  //xmlEncodeEntitiesReentrant()
+  std::string str;
+	for (unsigned int i=0; i < arg_str.size(); ++i)
+	  {
+			switch (arg_str[i])
+			  {
+				  case '\'': str += "&apos;"; break;
+					case '"' : str += "&quot;"; break;
+				  case '<' : str += "&lt;"  ; break;
+					case '>' : str += "&gt;"  ; break;
+					case '&' : str += "&amp;" ; break;
+					default: str += arg_str[i];
+				}
+		}
+	
   return str;
 }
 

@@ -1,4 +1,4 @@
-//  $Id: xml_file_writer.cxx,v 1.4 2003/04/19 10:23:17 torangan Exp $
+//  $Id: xml_file_writer.cxx,v 1.4.2.1 2004/03/31 18:14:48 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #include "vector.hxx"
 #include "color.hxx"
 #include "xml_file_writer.hxx"
+#include "xml_helper.hxx"
 
 XMLFileWriter::XMLFileWriter(std::ostream& out_)
   : out(&out_)
@@ -89,9 +90,7 @@ XMLFileWriter::write_bool   (const char* name, bool value)
 void
 XMLFileWriter::write_string (const char* name, const std::string& value)
 {
-  // FIXME: We don't handle escaping of characters here, might end
-  // FIXME: ugly if people enter '<>' in there strings.
-  (*out) << "<" << name << ">" << value << "</" << name << ">\n";
+  (*out) << "<" << name << ">" << XMLhelper::encode_entities(value) << "</" << name << ">\n";
 }
 
 void
