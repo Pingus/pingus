@@ -1,4 +1,4 @@
-//  $Id: pingus.hxx,v 1.14 2002/10/12 23:34:43 grumbel Exp $
+//  $Id: pingus.hxx,v 1.15 2002/10/13 23:02:29 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,7 +27,7 @@
 #include "../vector.hxx"
 #include "../pingus.hxx"
 #include "drawable.hxx"
-#include "graph.hxx"
+#include "path_graph.hxx"
 
 namespace boost {
   template <class T> class shared_ptr;
@@ -40,9 +40,10 @@ namespace WorldMapNS {
 class Pingus : public Drawable
 {
 private:
+  PathGraph* path;
   Sprite sprite;
 
-  /** The node on which the pingu currently stands, 0 if the pingu is
+  /** The node on which the pingu currently stands, NoNode if the pingu is
       currently on the move to another node */
   NodeId current_node;
   
@@ -59,8 +60,9 @@ private:
       represented as a array of positions */
   std::vector<NodeId> node_path;
 
-  /** The path which represents an edge between two nodes */
-  std::vector<Vector> edge_path;
+  /** The path which represents an edge between two nodes, it includes
+      both source and destinations position, so it is complete */
+  Path edge_path;
   
   /** The length of the edge_path in pixels */
   float edge_path_length;
@@ -74,22 +76,21 @@ private:
   /** Current position of the pingu, only for caching purpose */
   Vector pos;
 
-  Vector velocity;
+  float velocity;
 public:
-  Pingus ();
+  /** */
+  Pingus (PathGraph* arg_path);
   ~Pingus ();
 
   void draw (GraphicContext& gc);
+  void update ();
 
-  void update_walk (float delta);
-  
   /** @return true if the node is reachable, false otherwise */
   bool walk_to_node (NodeId target);
   
   /** calculate the position of the pingu */
   Vector calc_pos ();
 
-  void update (float delta);
   
   /** @return the node on which the pingu is currently standing, 0 is
       returned if the pingu is currently between two nodes */
@@ -98,9 +99,14 @@ public:
   }
 
   /** Set the pingu to the position of a given node */
-  void set_position (NodeId node);
+  void set_position (NodeId node); 
+
+  float get_z_pos() const;
 
 private:
+  void  update_walk (float delta);
+  float calc_edge_path_length();
+
   Pingus (const Pingus&);
   Pingus& operator= (const Pingus&);
 };

@@ -1,4 +1,4 @@
-//  $Id: path_graph.cxx,v 1.7 2002/10/13 20:25:00 torangan Exp $
+//  $Id: path_graph.cxx,v 1.8 2002/10/13 23:02:29 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -143,7 +143,6 @@ PathGraph::parse_edges(xmlDocPtr doc, xmlNodePtr cur)
             }
 
           Path full_path;
-
           full_path.push_back(graph.resolve_node(lookup_node(source)).data->get_pos());
           full_path.insert(full_path.end(), path->begin(), path->end());
           full_path.push_back(graph.resolve_node(lookup_node(destination)).data->get_pos());
@@ -168,7 +167,7 @@ PathGraph::parse_edges(xmlDocPtr doc, xmlNodePtr cur)
     }    
 }
 
-std::vector<Vector>
+std::vector<NodeId>
 PathGraph::get_path(NodeId start_id, NodeId end_id)
 {
   //Node<Dot*>& start = graph.resolve_node(start_id);
@@ -177,8 +176,9 @@ PathGraph::get_path(NodeId start_id, NodeId end_id)
   Pathfinder<Dot*, Path*> pathfinder(graph, start_id);
   std::vector<NodeId> path = pathfinder.get_path(end_id);
 
-  // insert pathfinding magic here...
-  return std::vector<Vector>();
+  assert(path.size() > 0);
+
+  return path;
 }
 
 EdgeId
@@ -209,6 +209,12 @@ PathGraph::lookup_node(const std::string& name)
     {
       return i->second;
     }
+}
+
+Dot*
+PathGraph::get_dot(NodeId id)
+{
+  return graph.resolve_node(id).data; 
 }
 
 } // namespace WorldMapNS

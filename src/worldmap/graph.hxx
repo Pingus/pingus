@@ -1,4 +1,4 @@
-//  $Id: graph.hxx,v 1.16 2002/10/13 19:28:34 grumbel Exp $
+//  $Id: graph.hxx,v 1.17 2002/10/13 23:02:29 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -51,14 +51,14 @@ template<class EdgeType>
 class Edge
 {
 public:
-  NodeId prev;
-  NodeId next;
+  NodeId source;
+  NodeId destination;
   int cost;
 
   EdgeType data;
 
-  Edge (const EdgeType& arg_data, const NodeId& p, const NodeId& n, int c)
-    : prev (p), next (n), cost (c), data(arg_data)
+  Edge (const EdgeType& arg_data, const NodeId& s, const NodeId& d, int c)
+    : source (s), destination (d), cost (c), data(arg_data)
   {
   }
 };
@@ -134,6 +134,19 @@ public:
     return nodes[node];
   }
 
+  Edge<EdgeType>& resolve_edge(const NodeId& source, const NodeId& destination)
+  {
+    // FIXME: this could be done faster with an adjacense matrix
+    for (typename std::vector<Edge<EdgeType> >::iterator i = edges.begin();
+         i != edges.end(); ++i)
+      {
+        if (i->source == source
+            && i->destination == destination)
+          return *i;
+      }
+    assert(false);
+  }
+  
   /* FIXME: This might give problems under MSVC, so it could be better to not use it */
   template<class Func>
   void for_each_node (Func func) 

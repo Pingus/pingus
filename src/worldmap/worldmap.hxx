@@ -1,4 +1,4 @@
-//  $Id: worldmap.hxx,v 1.16 2002/10/13 01:09:18 grumbel Exp $
+//  $Id: worldmap.hxx,v 1.17 2002/10/13 23:02:29 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -52,6 +52,8 @@ private:
   typedef std::vector<Drawable*>   ObjectLst;
   typedef std::vector<Drawable*> DrawableLst;
 
+  Pingus* pingus;
+
   /** The graph that represents the path on the map */
   PathGraph* path_graph;
   
@@ -65,8 +67,9 @@ private:
   ObjectLst objects;
 public:
   /** Load the given*/
-  WorldMap (const std::string& filename);
-  
+  WorldMap(const std::string& filename);
+  ~WorldMap();
+
   void draw (GraphicContext& gc);
   void update ();
   

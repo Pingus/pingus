@@ -1,4 +1,4 @@
-//  $Id: path_graph.hxx,v 1.3 2002/10/13 19:28:34 grumbel Exp $
+//  $Id: path_graph.hxx,v 1.4 2002/10/13 23:02:29 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -40,8 +40,11 @@ class PathGraph
 private:
   WorldMap* worldmap;
 
+public:
   // FIXME: Memory leak? Where do we free stuff data inside the graph?
+  // FIXME: shouldn't be public
   Graph<Dot*, Path*> graph;
+private:
 
   // FIXME: This could/should probally be moved inside the graph (or not?!)
   /** Map to look up node names and get the coresponding id's */
@@ -58,12 +61,14 @@ public:
 
   /** @return a list of positions to walk to reach node \a end, by
       starting from \a start */
-  std::vector<Vector> get_path(NodeId start, NodeId end);
+  std::vector<NodeId> get_path(NodeId start, NodeId end);
 
-private:
+  Dot* get_dot(NodeId id);
+
   EdgeId lookup_edge(const std::string& name);
   NodeId lookup_node(const std::string& name);
 
+private:
   void parse_nodes(xmlDocPtr doc, xmlNodePtr cur);
   void parse_edges(xmlDocPtr doc, xmlNodePtr cur);
 

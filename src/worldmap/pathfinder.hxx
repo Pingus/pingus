@@ -1,4 +1,4 @@
-//  $Id: pathfinder.hxx,v 1.2 2002/10/13 14:19:25 grumbel Exp $
+//  $Id: pathfinder.hxx,v 1.3 2002/10/13 23:02:29 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -74,7 +74,7 @@ public:
 	     e != node.next.end ();
 	     ++e)
 	  {
-	    NodeId child_node = graph.resolve_edge(*e).next;
+	    NodeId child_node = graph.resolve_edge(*e).destination;
 	    NodeStat& stat = stat_graph[child_node];
 	    int new_cost = stat_graph[current].cost + graph.resolve_edge(*e).cost;
 	    

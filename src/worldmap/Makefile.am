@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.9 2002/10/13 16:39:17 grumbel Exp $
+#  $Id: Makefile.am,v 1.10 2002/10/13 23:02:29 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,7 +33,8 @@ dot_factory.hxx dot_factory.cxx \
 dot.hxx dot.cxx \
 level_dot.hxx level_dot.cxx \
 pathfinder.hxx \
-path_drawable.hxx path_drawable.cxx
+path_drawable.hxx path_drawable.cxx \
+graph.cxx
 
 #node.cxx
 #node.hxx
