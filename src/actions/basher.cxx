@@ -1,4 +1,4 @@
-//  $Id: basher.cxx,v 1.6 2002/06/25 18:15:18 grumbel Exp $
+//  $Id: basher.cxx,v 1.7 2002/06/26 15:38:44 grumbel Exp $
 //
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -39,8 +39,13 @@ Basher::init(void)
 {
   first_bash = true;
   bash_radius = PingusResource::load_surface ("Other/bash_radius", "pingus");
+  bash_radius_gfx = PingusResource::load_surface ("Other/bash_radius_gfx", "pingus");
   sprite = Sprite (PingusResource::load_surface ("Pingus/basher0", "pingus"));
   sprite.set_align_center_bottom ();
+
+  // Start a bash even so the action will stops instantly after the
+  // first bash
+  bash ();
 }
 
 void
@@ -82,9 +87,11 @@ void
 Basher::bash()
 {
   pingu->get_world()->get_colmap()->remove(bash_radius,
-					   pingu->get_x () - (bash_radius.get_width()/2), pingu->get_y () - 31);
-  pingu->get_world()->get_gfx_map()->remove(bash_radius,
-					    pingu->get_x () - (bash_radius.get_width()/2), pingu->get_y () - 31);
+					   pingu->get_x () - (bash_radius.get_width()/2),
+					   pingu->get_y () - 31);
+  pingu->get_world()->get_gfx_map()->remove(bash_radius_gfx,
+					    pingu->get_x () - (bash_radius_gfx.get_width()/2),
+					    pingu->get_y () - 31);
 }
 
 void

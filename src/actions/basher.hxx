@@ -1,4 +1,4 @@
-//  $Id: basher.hxx,v 1.2 2002/06/24 22:52:57 grumbel Exp $
+//  $Id: basher.hxx,v 1.3 2002/06/26 15:38:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,6 +29,7 @@ class Basher : public PinguAction
 private:
   Sprite sprite;
   CL_Surface bash_radius;
+  CL_Surface bash_radius_gfx;
   int basher_c;
   bool first_bash;
 public:
