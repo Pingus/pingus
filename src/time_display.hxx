@@ -1,4 +1,4 @@
-//  $Id: time_display.hxx,v 1.9 2002/12/28 16:57:38 torangan Exp $
+//  $Id: time_display.hxx,v 1.10 2003/02/19 10:37:31 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,6 +25,7 @@
 
 class CL_Font;
 class Server;
+class Client;
 
 class TimeDisplay : public GUI::Component
 {
@@ -34,11 +35,10 @@ private:
   CL_Surface infinity_symbol;
   
 public:
-  TimeDisplay();
+  TimeDisplay(Client* c);
   virtual ~TimeDisplay() {}
 
   void draw(GraphicContext& gc);
-  void set_server(Server*);
   
 private:
   TimeDisplay (const TimeDisplay&);

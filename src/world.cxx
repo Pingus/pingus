@@ -1,4 +1,4 @@
-//  $Id: world.cxx,v 1.37 2003/02/18 15:04:47 grumbel Exp $
+//  $Id: world.cxx,v 1.38 2003/02/19 10:37:31 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -65,6 +65,9 @@ World::World(PLF* plf)
     colmap(gfx_map->get_colmap()),
     view(0)
 { 
+  start_x_pos = plf->get_startx();
+  start_y_pos = plf->get_starty();
+
   // Not perfect, but works
   WorldObj::set_world(this);
 

@@ -1,4 +1,4 @@
-//  $Id: smallmap.cxx,v 1.30 2003/02/19 09:50:36 grumbel Exp $
+//  $Id: smallmap.cxx,v 1.31 2003/02/19 10:37:31 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,8 +31,9 @@
 #include "math.hxx"
 #include "globals.hxx"
 
-SmallMap::SmallMap()
-  : canvas(0),
+SmallMap::SmallMap(Client* c)
+  : client(c),
+    canvas(0),
     update_count(0),
     gc_ptr(0)
 {
@@ -45,6 +46,8 @@ SmallMap::SmallMap()
   height = 100;
 
   scroll_mode = false;
+  
+  init();
 }
 
 SmallMap::~SmallMap()
@@ -165,13 +168,6 @@ SmallMap::init()
 
   rwidth = CL_Display::get_width() * width / client->get_server()->get_world()->get_colmap()->get_width();
   rheight = CL_Display::get_height() * height / client->get_server()->get_world()->get_colmap()->get_height();
-}
-
-void
-SmallMap::set_client (Client* c)
-{
-  client = c;
-  init();
 }
 
 void

@@ -1,4 +1,4 @@
-//  $Id: hurry_up.cxx,v 1.5 2002/12/29 23:29:00 torangan Exp $
+//  $Id: hurry_up.cxx,v 1.6 2003/02/19 10:37:31 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,12 +23,12 @@
 #include "pingus_resource.hxx"
 #include "hurry_up.hxx"
 
-HurryUp::HurryUp () 
+HurryUp::HurryUp (Client* c) 
   : font(PingusResource::load_font("Fonts/pingus","fonts")),
     is_running(false),
     is_finished(false),
     center_reached(false),
-    client(0),
+    client(c),
     wait_counter(0),
     x_pos(-200.0),
     speed(3.0f)
@@ -98,12 +98,6 @@ HurryUp::update(float /*delta*/)
 	is_running = true;
 #endif
     }
-}
-
-void
-HurryUp::set_client(Client* c)
-{
-  client = c;
 }
 
 /* EOF */

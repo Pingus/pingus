@@ -1,4 +1,4 @@
-//  $Id: playfield.hxx,v 1.13 2002/10/12 00:49:10 torangan Exp $
+//  $Id: playfield.hxx,v 1.14 2003/02/19 10:37:31 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -61,7 +61,7 @@ private:
   int mouse_x;
   int mouse_y;
 public:
-  Playfield (Client*, PLF* plf, World*);
+  Playfield (Client*);
   virtual ~Playfield();
 
   int get_x_offset();

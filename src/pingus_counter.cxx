@@ -1,4 +1,4 @@
-//  $Id: pingus_counter.cxx,v 1.12 2002/11/28 18:05:40 grumbel Exp $
+//  $Id: pingus_counter.cxx,v 1.13 2003/02/19 10:37:31 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,7 +25,7 @@
 #include "pingus_counter.hxx"
 #include "world.hxx"
 #include "pingu_holder.hxx"
-#include "server.hxx"
+#include "true_server.hxx"
 #include "plf.hxx"
 #include "globals.hxx"
 

@@ -1,4 +1,4 @@
-//  $Id: playfield.cxx,v 1.30 2003/01/15 21:16:41 torangan Exp $
+//  $Id: playfield.cxx,v 1.31 2003/02/19 10:37:31 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,13 +26,14 @@
 #include "pingu_holder.hxx"
 #include "world.hxx"
 #include "server.hxx"
+#include "true_server.hxx"
 #include "pingu.hxx"
 #include "button_panel.hxx"
 
-Playfield::Playfield (Client* client_, PLF* level_data, World* w)
+Playfield::Playfield (Client* client_)
   : client(client_), current_pingu(0), current_view(0)
 {
-  world = w;
+  world = client->get_server()->get_world();
   mouse_scrolling = false;
   View::set_world(world);
 
@@ -75,8 +76,8 @@ Playfield::Playfield (Client* client_, PLF* level_data, World* w)
       { // !gimmicks_enabled
 	view.push_back(new View(client, x1, y1, x2, y2));
 	
-	view[0]->set_x_offset(((x2 - x1) / 2) - level_data->get_startx());
-	view[0]->set_y_offset(((y2 - y1) / 2) - level_data->get_starty());
+	view[0]->set_x_offset(((x2 - x1) / 2) - world->get_start_x());
+	view[0]->set_y_offset(((y2 - y1) / 2) - world->get_start_y());
 	
 	world->set_view (view[0]);
       }

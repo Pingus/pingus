@@ -1,4 +1,4 @@
-//  $Id: smallmap.hxx,v 1.15 2002/12/28 16:57:38 torangan Exp $
+//  $Id: smallmap.hxx,v 1.16 2003/02/19 10:37:31 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -86,7 +86,7 @@ private:
   GraphicContext* gc_ptr;
 
 public:
-  SmallMap();
+  SmallMap(Client* c);
   virtual ~SmallMap();
 
   /*{ @name Stuff called from the GUIManager */

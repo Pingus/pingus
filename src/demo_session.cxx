@@ -1,4 +1,4 @@
-//  $Id: demo_session.cxx,v 1.5 2003/02/19 09:50:35 grumbel Exp $
+//  $Id: demo_session.cxx,v 1.6 2003/02/19 10:37:31 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,7 +34,7 @@ DemoSession::DemoSession(const std::string& filename)
   pdf    = new XMLPDF(filename);
 
   // Create server
-  server = new TrueServer(pdf->get_plf());
+  server      = new TrueServer(pdf->get_plf());
   demo_player = new DemoPlayer(server, pdf);
 
   // Create GUI
