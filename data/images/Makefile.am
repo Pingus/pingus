@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.18 2000/06/26 19:21:14 grumbel Exp $
+#  $Id: Makefile.am,v 1.19 2000/07/10 18:42:25 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -344,9 +344,6 @@ groundpieces/sortie/column3.pcx \
 groundpieces/sortie/plate_forme.pcx \
 groundpieces/sortie/plate_forme_left.pcx \
 groundpieces/sortie/plate_forme_right.pcx \
-themes/crystal.pcx \
-themes/xmas99.tga \
-themes/tutorial.tga \
 themes/space.tga \
 buttons/back.pcx \
 buttons/editor.tga \

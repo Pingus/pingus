@@ -2,13 +2,17 @@
 <pingus-level>
   
   <global>
-    <author>Ingo Ruhnke grumbel@gmx.de</author>
+    <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
     <start-x-pos>0</start-x-pos>
     <start-y-pos>0</start-y-pos>
     <levelname>Pipe Panic in Penguin World</levelname>
-    <description>This level show a simple pipe system,
+
+    <description lang="de_DE">
+      This level show a simple pipe system,
       which can be created with just a few 
-      pipe tiles.</description>
+      pipe tiles.
+    </description>
+
     <number-of-pingus>100</number-of-pingus>
     <number-to-save>50</number-to-save>
   </global>
@@ -18,7 +22,7 @@
     <data><file>level3.psm</file></data>
     <width>1100</width>
     <height>800</height>
-    <colmap></colmap>
+    <colmap>auto</colmap>
   </ground>
 
   <background>
@@ -31,7 +35,7 @@
     <scroll-y>0</scroll-y>
   </background>
 
-  <buttons>
+  <button-list>
     <basher>20</basher>
     <button action="blocker">20</button>
     <button action="bomber">20</button>
@@ -40,50 +44,74 @@
     <button action="digger">20</button>
     <button action="floater">20</button>
     <button action="miner">20</button>
-  </buttons>
+  </button-list>
 
-  <world-objs>
-    <entrance>
-      <type>generic</type>
+  <entrance>
+    <type>generic</type>
+    <position>
       <x-pos>324</x-pos>
       <y-pos>242</y-pos>
       <z-pos>0</z-pos>
-      <release-rate>30</release-rate>
-      <direction>left</direction>
-    </entrance>
+    </position>
+    <release-rate>30</release-rate>
+    <direction>left</direction>
+  </entrance>
 
-    <entrance>
-      <type>generic</type>
+  <entrance>
+    <type>generic</type>
+    <position>
       <x-pos>824</x-pos>
       <y-pos>342</y-pos>
       <z-pos>0</z-pos>
-      <release-rate>30</release-rate>
-      <direction>left</direction>
-    </entrance>
+    </position>
+    <release-rate>30</release-rate>
+    <direction>left</direction>
+  </entrance>
 
-    <exit>
-      <image><resource>Exits/stone</resource></image>
+  <exit>
+    <image><resource>Exits/stone</resource></image>
+    <position>
       <x-pos>783</x-pos>
       <y-pos>436</y-pos>
       <z-pos>0</z-pos>
-    </exit>
+    </position>
+  </exit>
 
-    <trap>
-      <name>guillotine</name>
+  <trap>
+    <name>guillotine</name>
+    <position>
       <x-pos>399</x-pos>
       <y-pos>205</y-pos>
       <z-pos>-10</z-pos>
-    </trap>
-  </world-objs>
+    </position>
+  </trap>
   
   <ground-objs>
+    
+    <spot type="ground">
 
-    <spot>
-      <type>ground</type>
-      <image><resource>
-	  <resource-file>textures.dat</resource-file>
-	  <resource-ident>Textures/stars</resource-ident>
-	</resource></image>
+      <image>
+	<resource><file>bla.tga</file></resource>
+      </image>
+
+      <position>
+	<x-pos>399</x-pos>
+	<y-pos>205</y-pos>
+	<z-pos>-10</z-pos>    
+      </position>
+    </spot>
+
+    <spot type="ground">
+
+      <image>
+	<resource>
+	  <datafile>
+	    <resource-file>textures.dat</resource-file>
+	    <resource-ident>Textures/stars</resource-ident>
+	  </datafile>
+	</resource>
+      </image>
+
       <position>
 	<x-pos>399</x-pos>
 	<y-pos>205</y-pos>

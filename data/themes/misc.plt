@@ -1,6 +1,6 @@
-Name:        Misc
+Name:        Experimental
 Image:       -
-Description: -
+Description: All this level are experimental and *not* playable.
 Background:  (resource:textures.dat)Textures/rooftile2
 
 stone.plf

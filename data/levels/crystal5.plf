@@ -1,10 +1,10 @@
 /* This level was created with the PLE
- * $Id: crystal5.plf,v 1.1 2000/06/27 16:02:32 grumbel Exp $
+ * $Id: crystal5.plf,v 1.2 2000/07/10 18:42:25 grumbel Exp $
  */
 global {
   author = "Ingo Ruhnke <grumbel@gmx.de>";
-  start_x_pos = 0;
-  start_y_pos = 0;
+  start_x_pos = 536;
+  start_y_pos = 381;
   levelname = "Only the fastest will survive";
   description = "
 
@@ -17,7 +17,7 @@ global {
 ground {
   maptype = "SPOT";
   width   = 1408;
-  height  = 704;
+  height  = 928;
   colmap  = (auto);
 }
 
@@ -42,10 +42,28 @@ buttons {
   jumper = 5;
 }
 
+liquid {
+  image = (resource)"Liquid/water2";
+  x_pos = -11;
+  y_pos = 857;
+  z_pos = -100;
+  width = 1656;
+  speed = 50;
+}
+
+hotspot {
+  image = (resource)"Entrances/wood_bottom";
+  x_pos = 482;
+  y_pos = 308;
+  z_pos = -100;
+  speed = -1;
+  para = "1";
+}
+
 entrance {
   type  = generic;
-  x_pos = 515;
-  y_pos = 183;
+  x_pos = 532;
+  y_pos = 335;
   z_pos = 0;
   release_rate = 25;
   direction = right;
@@ -53,16 +71,34 @@ entrance {
 
 exit {
   image = (resource)"Exits/stone";
-  x_pos = 1150;
-  y_pos = 450;
+  x_pos = 1171;
+  y_pos = 648;
   z_pos = 0;
+}
+
+liquid {
+  image = (resource)"Liquid/water2";
+  x_pos = -41;
+  y_pos = 869;
+  z_pos = 100;
+  width = 1656;
+  speed = 50;
 }
 
 trap {
   name = "spike";
-  x_pos = 729;
-  y_pos = 227;
+  x_pos = 750;
+  y_pos = 425;
   z_pos = 100;
+}
+
+hotspot {
+  image = (resource)"Entrances/wood_top";
+  x_pos = 482;
+  y_pos = 308;
+  z_pos = 100;
+  speed = -1;
+  para = "1";
 }
 
 /* EOF */

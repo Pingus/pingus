@@ -1,4 +1,4 @@
-Release 0.4.0 (??/Jun/2000)
+Release 0.4.0 (??/Jul/2000)
 ===========================
 * Changed the config file syntax (see doc/config)
 * Changed default resolution to 800x600
@@ -8,6 +8,7 @@ Release 0.4.0 (??/Jun/2000)
 * Added a better config file parser (it still sucks...)
 * Added option for disabling fullscreen support
 * Added a credits screen
+* Added HurryUp, when time is running away
 * Added a small quick scroll map
 * Added some nice particle/ground collision
 * Added mouse support in the worlds selector (incomplete)

@@ -1,5 +1,5 @@
-Name:        -
-Image:       Themes/tutorial
+Name:        Tutorials
+Image:       -
 Description: Before the real life starts, the Pingus can do some practice in this tutorial levels.
 Background:  (resource:textures.dat)Textures/latejungle
 

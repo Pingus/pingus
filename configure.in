@@ -1,4 +1,4 @@
-#  $Id: configure.in,v 1.20 2000/06/25 20:23:30 grumbel Exp $
+#  $Id: configure.in,v 1.21 2000/07/10 18:42:25 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,7 +28,7 @@ PACKAGE=pingus
 # The Pingus Version
 MAJOR_VERSION=0
 MINOR_VERSION=4
-PATCH_VERSION=0pre3
+PATCH_VERSION=0
 
 # The required ClanLib version
 CLANLIB_MAJOR_VERSION=0
@@ -89,15 +89,15 @@ dnl -- to clanCore and SDL
 AC_CHECK_LIB(pthread,   main,,)
 
 dnl Checking for SDL libraries, used for sound and music support
-dnl WITH_SOUND=true
-AC_ARG_WITH(sound, \
-[  --without-sound         disable sound support throu SDL and SDL_mixer])
+
+AC_ARG_WITH(sound,
+	[  --without-sound         disable sound support throu SDL and SDL_mixer])
 
 echo "checking for sound support... $with_sound"
 
 if test "x$with_sound" != "xno"; then
 	AC_CHECK_LIB(SDL,   main,,)
-	AC_CHECK_LIB(SDL_mixer,   main,,)
+	AC_CHECK_LIB(SDL_mixer,   main,,SOUND_SUPPORT=false)
 fi
 
 AC_CHECK_LIB(Hermes,   main,,)
@@ -111,7 +111,8 @@ AC_CHECK_LIB( clanCore,   main,, [
 
 AC_CHECK_LIB( clanMagick,   main,, [
 	echo "ClanLib is installed, but clanMagick was not found. You probably"
-	echo "forgot to compile clanMagick or you need to run 'ldconfig'."
+	echo "forgot to compile clanMagick, which is part of the ClanLib package"
+	echo "or you need to run 'ldconfig'."
 	echo "If you think you have everything correctly installed have a look at"
 	echo "the file 'config.log' to see what went wrong"
 	exit
@@ -216,11 +217,15 @@ AC_OUTPUT( Makefile
 
 # ----------------------------------------
 
-# if test "x$with_sound" != "xno"; then
-# 	if test $HAVE_LIBSDL_MIXER
-# else
-# 	echo "Sound support is disabled"
-# fi
+echo "sdlmixer: $HAVE_LIBSDL_MIXER"
+
+env
+
+if test $HAVE_LIBSDL_MIXER; then
+	echo "Sound support enabled"
+else
+ 	echo "Sound support is disabled"
+fi
 
 # echo "sound     = $WITH_SOUND"
 # echo "sdl_mixer = $HAVE_LIBSDL_MIXER"

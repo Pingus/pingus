@@ -1,75 +1,107 @@
+/* This level was created with the PLE
+ * $Id: snow6.plf,v 1.4 2000/07/10 18:42:25 grumbel Exp $
+ */
 global {
+  author = "";
   start_x_pos = 0;
   start_y_pos = 0;
   levelname = "Dragon illusion";
   description = "
 ";
   number_of_pingus = 120;
+  number_to_save = 0;
+  time = 9000;
 }
 
 ground {
   maptype = "SPOT";
-  data    = (file)"snow6.psm";
-  width   = 2048;
+  width   = 1216;
   height  = 800;
   colmap  = (auto);
 }
 
 background {
   image = (resource:textures.dat)"Textures/clouds";
-  dim = "0.0";
+  dim   = "0";
+  red   = "0";
+  green = "0";
+  blue  = "0";
   scroll_x = 0;
   scroll_y = 0;
+  para_x = 0.5;
+  para_y = 0.5;
+  stretch_x = 0;
+  stretch_y = 0;
 }
 
 buttons {
-  basher  = 20;
+  basher = 20;
   blocker = 20;
-  bomber  = 20;
+  bomber = 20;
   bridger = 20;
   climber = 20;
-  digger  = 20;
+  digger = 20;
   floater = 20;
-  miner   = 20;
+  miner = 20;
+}
+
+liquid {
+  image = (resource)"Liquid/water2";
+  x_pos = -67;
+  y_pos = 732;
+  z_pos = -100;
+  width = 1056;
+  speed = 50;
+}
+
+trap {
+  name = "laser_exit";
+  x_pos = 545;
+  y_pos = 204;
+  z_pos = -100;
 }
 
 entrance {
   type  = generic;
-  x_pos = 378;
-  y_pos = 183;
+  x_pos = 332;
+  y_pos = 221;
   z_pos = 0;
   release_rate = 30;
   direction = left;
 }
 
+hotspot {
+  image = (resource)"Entrances/wood_bottom";
+  x_pos = 280;
+  y_pos = 195;
+  z_pos = -100;
+  speed = -1;
+  para = "1";
+}
+
 exit {
   image = (resource)"Exits/stone";
-  x_pos = 201;
-  y_pos = 618;
+  x_pos = 362;
+  y_pos = 649;
   z_pos = 0;
 }
 
 liquid {
   image = (resource)"Liquid/water2";
-  x_pos = -32;
-  y_pos = 736;
-  z_pos = -100;
-  width = 1056;
-}
-
-liquid {
-  image = (resource)"Liquid/water2";
-  x_pos = 0;
-  y_pos = 746;
+  x_pos = -35;
+  y_pos = 742;
   z_pos = 100;
   width = 1024;
+  speed = 50;
 }
 
-trap {
-  name = "laser_exit";
-  x_pos = 362;
-  y_pos = 54;
-  z_pos = -100;
+hotspot {
+  image = (resource)"Entrances/wood_top";
+  x_pos = 280;
+  y_pos = 195;
+  z_pos = 100;
+  speed = -1;
+  para = "1";
 }
 
 /* EOF */

@@ -1,10 +1,10 @@
 /* This level was created with the PLE
- * $Id: crystal1.plf,v 1.5 2000/06/26 15:37:26 grumbel Exp $
+ * $Id: crystal1.plf,v 1.6 2000/07/10 18:42:25 grumbel Exp $
  */
 global {
   start_x_pos = 0;
   start_y_pos = 0;
-  levelname = "Crystal 1 - So close, but still so far";
+  levelname = "So close, but still so far";
   description = "";
   number_of_pingus = 120;
   number_to_save = 100;
@@ -168,7 +168,7 @@ liquid {
   x_pos = 0;
   y_pos = 746;
   z_pos = 100;
-  width = 1024;
+  width = 1056;
   speed = 50;
 }
 

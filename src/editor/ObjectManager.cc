@@ -1,4 +1,4 @@
-//  $Id: ObjectManager.cc,v 1.21 2000/07/04 22:59:13 grumbel Exp $
+//  $Id: ObjectManager.cc,v 1.22 2000/07/10 18:42:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -72,7 +72,7 @@ ObjectManager::new_level ()
   number_of_pingus = 100;
 
   background.desc.datafile = "textures";
-  background.desc.res_name = "Textures/crystal";
+  background.desc.res_name = "Textures/default";
 
   // FIXME: Memory hole
   editor_objs.erase(editor_objs.begin(), editor_objs.end());
@@ -195,7 +195,7 @@ ObjectManager::save_level (string filename)
   // FIXME: we need some error checking
   
   plf_out << "/* This level was created with the PLE\n"
-	  << " * $Id: ObjectManager.cc,v 1.21 2000/07/04 22:59:13 grumbel Exp $\n"
+	  << " * $Id: ObjectManager.cc,v 1.22 2000/07/10 18:42:26 grumbel Exp $\n"
 	  << " */"
 	  << endl;
   

@@ -9,10 +9,12 @@ Pingus BUGS:
 * Zooming is broken
 * Some non Critical Errors (file not found, etc.)  quit Pingus, when
   it still should be able to contiune
+* Bridger's bridges are put wrongly to the colmap
 * Extremly short mouse clicks are not registered (its a bug in
   ClanLibs event system)
+* Shift selection in editor can capture an object twice
 
 'grep' at the sources for "Bug" or "FIXME" that should give you some
 more known bugs and other stuff. 
 
-$Date: 2000/07/04 23:01:38 $
+$Date: 2000/07/10 18:42:25 $

@@ -1,4 +1,4 @@
-//  $Id: PingusResource.cc,v 1.8 2000/07/04 22:59:13 grumbel Exp $
+//  $Id: PingusResource.cc,v 1.9 2000/07/10 18:42:25 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -50,14 +50,14 @@ suffix_fixer(const std::string& filename)
   // Filename ends with ".dat", replace it with ".scr" and return.
   if (filename.substr(filename.size() - 4, std::string::npos) == wrong_suffix)
     {
-      std::cout << "PingusResource: Filename with \"" << wrong_suffix << "\" found: " << filename << std::endl;
+      //std::cout << "PingusResource: Filename with \"" << wrong_suffix << "\" found: " << filename << std::endl;
       return filename.substr(0, filename.size() - 4) + right_suffix;
     }
 
   // Filename does not end with ".scr", than add it and return
   if (filename.substr(filename.size() - 4, std::string::npos) != right_suffix)
     {
-      std::cout << "PingusResource: filename doesn't contain \"" << right_suffix << "\", fixing: " << filename << std::endl;
+      //std::cout << "PingusResource: filename doesn't contain \"" << right_suffix << "\", fixing: " << filename << std::endl;
       return (filename + right_suffix);
     }
 
@@ -67,7 +67,7 @@ suffix_fixer(const std::string& filename)
 
 PingusResource::PingusResource()
 {
-  std::cout << "PingusResource Constructor called" << std::endl;
+  //std::cout << "PingusResource Constructor called" << std::endl;
 }
 /*
 void
@@ -99,8 +99,7 @@ PingusResource::get(const std::string& arg_filename)
 {
 
   string filename = suffix_fixer(arg_filename);
-  std::cout << "PingusResource: getting: " << filename << std::endl;
-
+  //std::cout << "PingusResource: getting: " << filename << std::endl;
 
   CL_ResourceManager* res_manager;
 
@@ -139,8 +138,8 @@ PingusResource::load_surface(const ResDescriptor& res_desc)
     }
   else
     {
-      std::cout << "PingusResource: Loading resource: " << res_desc.type << ":" 
-		<< res_desc.datafile << " - " << res_desc.res_name << std::endl;
+      //std::cout << "PingusResource: Loading resource: " << res_desc.type << ":" 
+      //<< res_desc.datafile << " - " << res_desc.res_name << std::endl;
 
       switch(res_desc.type)
 	{

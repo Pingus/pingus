@@ -1,5 +1,5 @@
 /* This level was created with the PLE
- * $Id: crystal4.plf,v 1.1 2000/06/27 16:02:32 grumbel Exp $
+ * $Id: crystal4.plf,v 1.2 2000/07/10 18:42:25 grumbel Exp $
  */
 global {
   author = "Ingo Ruhnke <grumbel@gmx.de>";
@@ -14,8 +14,8 @@ global {
 
 ground {
   maptype = "SPOT";
-  width   = 1200;
-  height  = 600;
+  width   = 1600;
+  height  = 1024;
   colmap  = (auto);
 }
 
@@ -45,8 +45,8 @@ buttons {
 
 hotspot {
   image = (resource)"GroundPieces/Crystal/smcrystal";
-  x_pos = 202;
-  y_pos = 135;
+  x_pos = 477;
+  y_pos = 294;
   z_pos = -200;
   speed = -1;
   para = "1";
@@ -54,8 +54,8 @@ hotspot {
 
 hotspot {
   image = (resource)"GroundPieces/Crystal/pipeend";
-  x_pos = 203;
-  y_pos = 155;
+  x_pos = 478;
+  y_pos = 314;
   z_pos = -100;
   speed = -1;
   para = "1";
@@ -63,8 +63,8 @@ hotspot {
 
 hotspot {
   image = (resource)"GroundPieces/Crystal/pipeend";
-  x_pos = 224;
-  y_pos = 164;
+  x_pos = 499;
+  y_pos = 323;
   z_pos = -100;
   speed = -1;
   para = "1";
@@ -72,8 +72,8 @@ hotspot {
 
 hotspot {
   image = (resource)"GroundPieces/Crystal/pipeend";
-  x_pos = 243;
-  y_pos = 164;
+  x_pos = 518;
+  y_pos = 323;
   z_pos = -100;
   speed = -1;
   para = "1";
@@ -81,8 +81,8 @@ hotspot {
 
 hotspot {
   image = (resource)"GroundPieces/Crystal/pipeend";
-  x_pos = 261;
-  y_pos = 154;
+  x_pos = 536;
+  y_pos = 313;
   z_pos = -100;
   speed = -1;
   para = "1";
@@ -90,8 +90,8 @@ hotspot {
 
 entrance {
   type  = generic;
-  x_pos = 251;
-  y_pos = 183;
+  x_pos = 526;
+  y_pos = 342;
   z_pos = 0;
   release_rate = 25;
   direction = left;
@@ -99,15 +99,15 @@ entrance {
 
 exit {
   image = (resource)"Exits/stone";
-  x_pos = 927;
-  y_pos = 307;
+  x_pos = 1202;
+  y_pos = 466;
   z_pos = 0;
 }
 
 hotspot {
   image = (resource)"GroundPieces/Crystal/pipeend";
-  x_pos = 251;
-  y_pos = 148;
+  x_pos = 526;
+  y_pos = 307;
   z_pos = 100;
   speed = -1;
   para = "1";
@@ -115,8 +115,8 @@ hotspot {
 
 hotspot {
   image = (resource)"GroundPieces/Crystal/pipeend";
-  x_pos = 209;
-  y_pos = 148;
+  x_pos = 484;
+  y_pos = 307;
   z_pos = 100;
   speed = -1;
   para = "1";
@@ -124,8 +124,8 @@ hotspot {
 
 hotspot {
   image = (resource)"GroundPieces/Crystal/pipeend";
-  x_pos = 232;
-  y_pos = 142;
+  x_pos = 507;
+  y_pos = 301;
   z_pos = 100;
   speed = -1;
   para = "1";
@@ -133,22 +133,22 @@ hotspot {
 
 trap {
   name = "spike";
-  x_pos = 382;
-  y_pos = 421;
+  x_pos = 657;
+  y_pos = 580;
   z_pos = 100;
 }
 
 trap {
   name = "spike";
-  x_pos = 572;
-  y_pos = 361;
+  x_pos = 847;
+  y_pos = 520;
   z_pos = 100;
 }
 
 trap {
   name = "spike";
-  x_pos = 527;
-  y_pos = 289;
+  x_pos = 802;
+  y_pos = 448;
   z_pos = 100;
 }
 

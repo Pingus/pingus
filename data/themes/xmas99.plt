@@ -1,5 +1,5 @@
-Name:        -
-Image:       Themes/xmas99
+Name:        Xmas
+Image:       -
 Description: -
 Background:  (resource:textures.dat)Textures/blueflame
 

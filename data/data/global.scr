@@ -413,9 +413,9 @@ section GroundPieces
 
 section Themes
 {
-	crystal = ../images/themes/crystal.pcx   (type=surface, x=0, y=0, width=256,  height=128);
-	xmas99  = ../images/themes/xmas99.tga    (type=surface, x=0, y=0, width=240,  height=98);
-	tutorial = ../images/themes/tutorial.tga    (type=surface, x=0, y=0, width=236,  height=154);
+//	crystal = ../images/themes/crystal.pcx   (type=surface, x=0, y=0, width=256,  height=128);
+//	xmas99  = ../images/themes/xmas99.tga    (type=surface, x=0, y=0, width=240,  height=98);
+//	tutorial = ../images/themes/tutorial.tga    (type=surface, x=0, y=0, width=236,  height=154);
 	space = ../images/themes/space.tga    (type=surface, x=0, y=0, width=258,  height=145);
 }
 

@@ -1,10 +1,10 @@
 /* This level was created with the PLE
- * $Id: crystal2.plf,v 1.3 2000/04/08 20:05:12 grumbel Exp $
+ * $Id: crystal2.plf,v 1.4 2000/07/10 18:42:25 grumbel Exp $
  */
 global {
   start_x_pos = 870;
   start_y_pos = 520;
-  levelname = "Crystal 2 - Its getting hot...";
+  levelname = "Its getting hot...";
   description =
 "This is one of the first levels, which
 contains an animated background more 
