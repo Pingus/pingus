@@ -22,6 +22,7 @@ libpingus_input_a_SOURCES =       \
 	axis_event.hxx \
 	axis_factory.hxx axis_factory.cxx \
         axis_pointer.hxx axis_pointer.cxx \
+	axis_scroller.hxx axis_scroller.cxx \
 	button.hxx  \
         button_axis.hxx button_axis.cxx \
 	button_event.hxx \
@@ -44,6 +45,8 @@ libpingus_input_a_SOURCES =       \
 	multiple_pointer.hxx multiple_pointer.cxx \
         pointer.hxx \
 	pointer_event.hxx \
-	pointer_factory.hxx pointer_factory.cxx
+	pointer_factory.hxx pointer_factory.cxx \
+	pointer_scroller.hxx pointer_scroller.cxx \
+	scroller.hxx
 
 # EOF #
