@@ -45,7 +45,6 @@ pkgdata_DATA = $(EXTRA_DIST)
 # /usr/bin/msgmerge --update de.po pingus.pot
 # ................... done.
 
-
 update-po:
 	xgettext --default-domain=pingus --directory=../.. \
    --add-comments=TRANSLATORS: --keyword=_ --keyword=N_ \
