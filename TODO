@@ -1,5 +1,6 @@
 Release Critical:
 ~~~~~~~~~~~~~~~~~
+ o climber capturing doesn't work
  o check for ./configure --disable-sound
  o bottom tile isn't draw (foliage1.plf)
  o many segfaults when quitting the game
@@ -159,6 +160,6 @@ DOOR.WAV      MOUSEPRE.WAV  OING.WAV	     THUD.WAV
 
 
 
-$Date: 2000/06/08 06:14:18 $
+$Date: 2000/06/10 08:23:47 $
 
 -= EOF =-
