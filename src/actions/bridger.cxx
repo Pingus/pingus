@@ -32,12 +32,6 @@
 namespace Pingus {
 namespace Actions {
 
-// Initialise class static
-bool Bridger::static_surfaces_loaded = false;
-CL_PixelBuffer Bridger::brick_l;
-CL_PixelBuffer Bridger::brick_r;
-CL_Surface Bridger::static_surface;
-
 Bridger::Bridger (Pingu* p)
   : PinguAction(p),
     mode(B_BUILDING),
@@ -51,13 +45,8 @@ Bridger::Bridger (Pingu* p)
   build_sprite.load (Direction::LEFT,  Resource::load_sprite("pingus/bridger/left"));
   build_sprite.load (Direction::RIGHT, Resource::load_sprite("pingus/bridger/right"));
 
-  if (!static_surfaces_loaded)
-    {
-      static_surface = Resource::load_surface ("pingus/bridger");
-      brick_l = Resource::load_pixelbuffer("other/brick_left");
-      brick_r = Resource::load_pixelbuffer("other/brick_right");
-      static_surfaces_loaded = true;
-    }
+  brick_l = Resource::load_pixelbuffer("other/brick_left");
+  brick_r = Resource::load_pixelbuffer("other/brick_right");
 }
 
 void

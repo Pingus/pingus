@@ -19,6 +19,7 @@
 
 #include <iostream>
 #include <math.h>
+#include "../vector.hxx"
 #include "../gui/graphic_context.hxx"
 #include "dot.hxx"
 #include "../math.hxx"
@@ -71,6 +72,8 @@ Pingus::draw (GraphicContext& gc)
         gc.draw(sprite[Direction::RIGHT], pos);
       else
         gc.draw(sprite[Direction::LEFT], pos);
+
+      //std::cout << "Drawing at: " << pos.x << ", " << pos.y << " " << get_z_pos() << std::endl;
     }
 }
 

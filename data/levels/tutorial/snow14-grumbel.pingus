@@ -92,7 +92,7 @@
   <resource-ident>textures/happyclouds</resource-ident>
     <modifier>ROT0</modifier>
   </resource></surface>
-  <color>
+     <color>
     <red>0.5</red>
     <green>0</green>
     <blue>0</blue>

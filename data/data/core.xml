@@ -308,7 +308,7 @@
     <section name="worldmap">
       <section name="pingus">
         <sprite name="left">
-          <animation speed="60" loop="no" />
+          <animation speed="60" />
           <translation origin="bottom_center" x="0" y="2"/>
           <image file="../images/core/worldmap/pingus.png">
             <grid pos="0,0" size="24,24" array="8,1"/>
@@ -316,7 +316,7 @@
         </sprite>
 
         <sprite name="right">
-          <animation speed="60" loop="no" />
+          <animation speed="60" />
           <translation origin="bottom_center" x="0" y="2"/>
           <image file="../images/core/worldmap/pingus.png">
             <grid pos="0,24" size="24,24" array="8,1"/>

@@ -300,7 +300,8 @@ Blitter::put_alpha_surface(CL_PixelBuffer target, CL_PixelBuffer source,
 void
 Blitter::fill_rect(CL_PixelBuffer target, const CL_Rect& rect, const CL_Color& color)
 {
-  if (target.get_format().get_depth() != 32)
+  if (target.get_format().get_depth() != 32
+      && target.get_format().get_depth() != 24)
     {
       std::cout << "Blitter::fill_rect: depth must be 32 but is " << target.get_format().get_depth() << std::endl;
       return;
@@ -322,35 +323,71 @@ Blitter::fill_rect(CL_PixelBuffer target, const CL_Rect& rect, const CL_Color& c
 
   cl_uint8* target_buf = static_cast<cl_uint8*>(target.get_data());
 
-  if (color.get_alpha() == 255)
+  if (target.get_format().get_depth() == 24)
     {
-      for (int y = start_y; y < end_y; ++y)
+      if (color.get_alpha() == 255)
         {
-          cl_uint8* tptr = target_buf + 4*((twidth*(y + rect.top)) + rect.left + start_x);
+          for (int y = start_y; y < end_y; ++y)
+            {
+              cl_uint8* tptr = target_buf + 3*((twidth*(y + rect.top)) + rect.left + start_x);
 
-          for (int x = start_x; x < end_x; ++x)
-            { 
-              *tptr++ = 255;
-              *tptr++ = color.get_blue();
-              *tptr++ = color.get_green();
-              *tptr++ = color.get_red();
+              for (int x = start_x; x < end_x; ++x)
+                { 
+                  *tptr++ = color.get_red();
+                  *tptr++ = color.get_green();
+                  *tptr++ = color.get_blue();
+                }
+            }
+        }
+      else
+        {
+          for (int y = start_y; y < end_y; ++y)
+            {
+              cl_uint8* tptr = target_buf + 3*((twidth*(y + rect.top)) + rect.left + start_x);
+
+              for (int x = start_x; x < end_x; ++x)
+                { 
+                  float a = color.get_alpha()/255.0f;
+
+                  *tptr++ = Math::mid(0, int((1.0f - a) * *tptr + a * color.get_red()) , 255);
+                  *tptr++ = Math::mid(0, int((1.0f - a) * *tptr + a * color.get_green()), 255);
+                  *tptr++ = Math::mid(0, int((1.0f - a) * *tptr + a * color.get_blue())  , 255);
+                }
             }
         }
     }
-  else
+  else if (target.get_format().get_depth() == 32)
     {
-      for (int y = start_y; y < end_y; ++y)
+      if (color.get_alpha() == 255)
         {
-          cl_uint8* tptr = target_buf + 4*((twidth*(y + rect.top)) + rect.left + start_x);
+          for (int y = start_y; y < end_y; ++y)
+            {
+              cl_uint8* tptr = target_buf + 4*((twidth*(y + rect.top)) + rect.left + start_x);
 
-          for (int x = start_x; x < end_x; ++x)
-            { 
-              float a = color.get_alpha()/255.0f;
+              for (int x = start_x; x < end_x; ++x)
+                { 
+                  *tptr++ = 255;
+                  *tptr++ = color.get_blue();
+                  *tptr++ = color.get_green();
+                  *tptr++ = color.get_red();
+                }
+            }
+        }
+      else
+        {
+          for (int y = start_y; y < end_y; ++y)
+            {
+              cl_uint8* tptr = target_buf + 4*((twidth*(y + rect.top)) + rect.left + start_x);
 
-              *tptr++ = Math::mid(0, int(*tptr + a * color.get_alpha()), 255);
-              *tptr++ = Math::mid(0, int((1.0f - a) * *tptr + a * color.get_blue()) , 255);
-              *tptr++ = Math::mid(0, int((1.0f - a) * *tptr + a * color.get_green()), 255);
-              *tptr++ = Math::mid(0, int((1.0f - a) * *tptr + a * color.get_red())  , 255);
+              for (int x = start_x; x < end_x; ++x)
+                { 
+                  float a = color.get_alpha()/255.0f;
+
+                  *tptr++ = Math::mid(0, int(*tptr + a * color.get_alpha()), 255);
+                  *tptr++ = Math::mid(0, int((1.0f - a) * *tptr + a * color.get_blue()) , 255);
+                  *tptr++ = Math::mid(0, int((1.0f - a) * *tptr + a * color.get_green()), 255);
+                  *tptr++ = Math::mid(0, int((1.0f - a) * *tptr + a * color.get_red())  , 255);
+                }
             }
         }
     }

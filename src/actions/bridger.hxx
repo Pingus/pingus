@@ -38,13 +38,10 @@ private:
 private:
   StateSprite walk_sprite;
   StateSprite build_sprite;
+  CL_PixelBuffer brick_l;
+  CL_PixelBuffer brick_r;
 
   GameCounter counter;
-
-  static bool static_surfaces_loaded;
-  static CL_Surface static_surface;
-  static CL_PixelBuffer brick_l;
-  static CL_PixelBuffer brick_r;
 
   int bricks;
   //int step;
