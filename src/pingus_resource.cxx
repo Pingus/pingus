@@ -1,4 +1,4 @@
-//  $Id: pingus_resource.cxx,v 1.23 2003/03/03 20:32:18 grumbel Exp $
+//  $Id: pingus_resource.cxx,v 1.24 2003/03/04 10:26:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,13 +33,11 @@
 #include "pingus_resource.hxx"
 #include "blitter.hxx"
 #include "debug.hxx"
-#include "plf.hxx"
 #include "debug.hxx"
 
 std::map<std::string, CL_ResourceManager*> PingusResource::resource_map;
 std::map<ResDescriptor, CL_Surface>        PingusResource::surface_map;
 std::map<ResDescriptor, CL_Font*>          PingusResource::font_map;
-PingusResource::PLFMap PingusResource::plf_map;
 
 void 
 PingusResource::init()
@@ -337,49 +335,6 @@ PingusResource::get_mtime (const std::string& res_name,
       std::cout << "PingusResource::get_mtime: CL_Error: " << err.message << std::endl;
       return 0;
     }
-}
-
-PLFHandle
-PingusResource::load_plf_raw(const std::string& filename)
-{
-  std::string res_name = System::basename(filename);
-  res_name = res_name.substr(0, res_name.length()-4);
-  
-  pout(PINGUS_DEBUG_LOADING) << "PingusResource: Loading level: '" << res_name << "' -> '" << filename << "'" << std::endl;
-
-  PLFMap::iterator i = plf_map.find(res_name);
-
-  if (i == plf_map.end ())
-    {
-      PLF* plf = PLF::create(filename);
-      plf_map[res_name]  = plf;
-      return PLFHandle (plf);
-    }
-  else
-    {
-      return PLFHandle (i->second);
-    }
-}
-
-PLFHandle
-PingusResource::load_plf(const std::string& res_name)
-{
-  PLFMap::iterator i   = plf_map.find(res_name);
-  std::string filename = path_manager.complete("levels/" + res_name + ".xml");
-
-  pout(PINGUS_DEBUG_LOADING) << "PingusResource: Loading level: '" << res_name << "' -> '" << filename << "'" << std::endl;
-
-  if (i == plf_map.end ())
-    {
-      PLF* plf = PLF::create(filename);
-      plf_map[res_name]  = plf;
-      return PLFHandle (plf);
-    }
-  else
-    {
-      return PLFHandle (i->second);
-    }
-
 }
 
 /* EOF */

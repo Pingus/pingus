@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.49 2003/03/03 20:32:18 grumbel Exp $
+//   $Id: pingus_main.cxx,v 1.50 2003/03/04 10:26:18 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -69,6 +69,7 @@
 #include "config_xml.hxx"
 #include "console.hxx"
 #include "fps_counter.hxx"
+#include "plf_res_mgr.hxx"
 #include "game_session.hxx"
 #include "demo_session.hxx"
 #include "debug.hxx"
@@ -725,7 +726,8 @@ PingusMain::start_game ()
             } 
           else
             {
-              ScreenManager::instance()->push_screen(new PingusGameSession (PingusResource::load_plf_raw(levelfile)), true);
+              ScreenManager::instance()->push_screen
+                (new PingusGameSession (PLFResMgr::load_plf_from_filename(levelfile)), true);
             }
         }    
     }
