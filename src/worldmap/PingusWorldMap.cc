@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMap.cc,v 1.30 2001/11/18 00:03:29 grumbel Exp $
+//  $Id: PingusWorldMap.cc,v 1.31 2001/11/18 12:43:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -133,7 +133,7 @@ PingusWorldMap::init ()
 {
   std::cout << "PingusWorldMap::init" << std::endl;
   if (!graph_data.get_music ().empty ())
-    PingusSound:: play ("music/" + graph_data.get_music ());
+    PingusSound:: play_music ("music/" + graph_data.get_music ());
 }
 
 void 
@@ -177,7 +177,7 @@ PingusWorldMap::on_button_press (CL_InputDevice *device, const CL_Key &key)
 
 	    if (node.get() && !node->accessible)
 	      {
-		PingusSound::play("chink.wav");
+		PingusSound::play_sound("sound/chink.wav");
 	      }
 	    else if (node.get() && node->accessible)
 	      {

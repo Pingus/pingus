@@ -1,4 +1,4 @@
-//  $Id: Splashed.cc,v 1.20 2001/11/18 00:03:29 grumbel Exp $
+//  $Id: Splashed.cc,v 1.21 2001/11/18 12:43:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,7 +46,7 @@ Splashed::update(float delta)
   if (!particle_thrown)
     {
       particle_thrown = true;
-      PingusSound::play("splat.wav");
+      PingusSound::play_sound("sound/splat.wav");
     }
 
   if (sprite.finished ())

@@ -1,4 +1,4 @@
-//  $Id: PingusSoundReal.cc,v 1.12 2001/11/18 00:03:28 grumbel Exp $
+//  $Id: PingusSoundReal.cc,v 1.13 2001/11/18 12:43:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,8 +35,10 @@
 #include "PingusSoundReal.hh"
 
 PingusSoundReal::PingusSoundReal ()
+  : sample (0), music (0)
 {
-  init();
+  if (music_enabled || sound_enabled)
+    init();
 }
 
 PingusSoundReal::~PingusSoundReal()
@@ -45,6 +47,16 @@ PingusSoundReal::~PingusSoundReal()
     if (music -> is_playing())
       music -> stop();
     delete music;
+  }
+  
+  if (is_init) {
+
+#ifdef HAVE_LIBCLANMIKMOD
+    CL_SetupMikMod::deinit();
+#endif
+
+    CL_SetupSound::deinit();
+  
   }
 }
 
@@ -68,13 +80,37 @@ PingusSoundReal::init()
 #endif
 }
 
+void
+PingusSoundReal::real_play_sound(const std::string & filename, 
+				 float volume, 
+				 float panning)
+{
+  if (pingus_debug_flags & PINGUS_DEBUG_SOUND)
+    std::cout << "PingusSoundReal: Playing sound: " << filename << std::endl;
+
+  if (!sound_enabled)
+    return;
+
+  // create a new CL_SoundBuffer_Session if there is none for the requested effect yet
+  if (!sounds.count(filename)) {
+    CL_SoundBuffer * sound = new CL_SoundBuffer (new CL_Sample(filename.c_str(), NULL), true);
+    sounds[filename] = CL_SoundBuffer_Session(sound -> prepare());
+  }
+  
+  sounds[filename].set_volume(volume);
+  sounds[filename].set_pan(panning);
+  sounds[filename].set_looping(false);
+  sounds[filename].play();  
+}
 
 void
-PingusSoundReal::real_play(std::string filename, float volume, float panning)
+PingusSoundReal::real_play_music(const std::string & filename, float volume)
 {
+  if (!music_enabled)
+    return;
 
   if (pingus_debug_flags & PINGUS_DEBUG_SOUND)
-    std::cout << "PingusSoundReal: Playing file: " << filename << std::endl;
+    std::cout << "PingusSoundReal: Playing music: " << filename << std::endl;
   
   if (music) {
     if (music -> is_playing())
@@ -83,28 +119,34 @@ PingusSoundReal::real_play(std::string filename, float volume, float panning)
     music = NULL;
   }
 
-  sample = 0;
-  if (filename.substr(filename.size()-4, 4) == ".ogg") {
+  if (filename.substr(filename.size()-4, 4) == ".ogg") 
+    {
 #ifdef HAVE_LIBCLANVORBIS
-    sample = new CL_SoundBuffer (new CL_VorbisSoundProvider(filename.c_str()), true);
+      sample = new CL_SoundBuffer (new CL_VorbisSoundProvider(filename.c_str()), true);
+#else
+      sample = 0;
 #endif
-  } else if (filename.substr(filename.size()-4, 4) == ".wav") {
-    std::cout << "Überspringe .WAV" << std::endl;
-    //sample = new CL_SoundBuffer (new CL_Sample(filename.c_str(), NULL), true);
-        
-  } else {  // MikMod wird den Rest schon schaffen ;-)
+    } 
+  else if (filename.substr(filename.size()-4, 4) == ".wav") 
+    {
+      std::cout << "Überspringe .WAV" << std::endl;
+      sample = new CL_SoundBuffer (new CL_Sample(filename.c_str(), NULL), true);
+      return;
+    } 
+  else // MikMod unterst<FC>tzt verschiedene Formate
+    { 
 #ifdef HAVE_LIBCLANMIKMOD
-    sample = new CL_SoundBuffer (new CL_Streamed_MikModSample(filename.c_str()), true);
-#endif
-  }
+      sample = new CL_SoundBuffer (new CL_Streamed_MikModSample(filename.c_str()), true);
+#else
+      sample = 0;
+#endif    
+    }
   
   if (sample)
     {
       music = new CL_SoundBuffer_Session(sample -> prepare());
   
-      std::cout << "vor set_volume\n";
       music -> set_volume(volume);
-      std::cout << "nach set_volume\n";
       music -> set_looping(true);
       music -> play();
     }

@@ -1,4 +1,4 @@
-#  $Id: configure.in,v 1.45 2001/11/18 00:03:28 grumbel Exp $
+#  $Id: configure.in,v 1.46 2001/11/18 12:43:18 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -103,16 +103,16 @@ dnl -- to clanCore and SDL
 AC_CHECK_LIB(pthread,   main,,)
 
 dnl Checking for SDL libraries, used for sound and music support
-
-AC_ARG_WITH(sound,
-	[  --without-sound         disable sound support throu SDL and SDL_mixer])
-
-echo "checking for sound support... $with_sound"
-
-if test "x$with_sound" != "xno"; then
-	AC_CHECK_LIB(SDL,   main,,)
-	AC_CHECK_LIB(SDL_mixer,   main,,SOUND_SUPPORT=false)
-fi
+dnl 
+dnl AC_ARG_WITH(sound,
+dnl 	[  --without-sound         disable sound support throu SDL and SDL_mixer])
+dnl 
+dnl echo "checking for sound support... $with_sound"
+dnl 
+dnl if test "x$with_sound" != "xno"; then
+dnl 	AC_CHECK_LIB(SDL,   main,,)
+dnl 	AC_CHECK_LIB(SDL_mixer,   main,,SOUND_SUPPORT=false)
+dnl fi
 
 dnl ---------------------------------------------------
 dnl Check the location of the XML library and -headers.

@@ -1,4 +1,4 @@
-//  $Id: World.cc,v 1.61 2001/11/18 00:03:29 grumbel Exp $
+//  $Id: World.cc,v 1.62 2001/11/18 12:43:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -379,12 +379,12 @@ World::play_wav (std::string name, const CL_Vector& pos, float volume = 0.5f)
 
       if (panning < -1.0f)
 	panning = -1.0f;
-#warning Ziemlich dummer Code
-      PingusSound::play (name + ".wav", volume, panning);
+
+      PingusSound::play_sound (name, volume, panning);
     }
   else // No view available, so no stereo enabled
     {
-      PingusSound::play (name + ".wav", volume);
+      PingusSound::play_sound (name, volume);
     }
 }
 

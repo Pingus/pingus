@@ -1,4 +1,4 @@
-//  $Id: PingusMenu.cc,v 1.51 2001/11/18 00:03:28 grumbel Exp $
+//  $Id: PingusMenu.cc,v 1.52 2001/11/18 12:43:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -64,6 +64,10 @@ PingusMenu::preload ()
       buttons.push_back(boost::shared_ptr<SurfaceButton>(new StoryButton (this)));
       buttons.push_back(editor_button);
     }
+
+  // FIXME: Preload is probally the wrong place for this, there should
+  // be show_hook and remove_hook
+  PingusSound::play_music("../data/music/pingus-1.it");
 }
 
 PingusMenu::~PingusMenu()
@@ -73,7 +77,6 @@ PingusMenu::~PingusMenu()
 void
 PingusMenu::draw()
 {
-  //PingusSound::play("../data/music/pingus-1.it");
   for(std::list<boost::shared_ptr<SurfaceButton> >::iterator i = buttons.begin();
       i != buttons.end(); ++i)
     (*i)->draw();

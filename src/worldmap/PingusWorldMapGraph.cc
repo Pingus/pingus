@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapGraph.cc,v 1.20 2001/11/18 00:03:29 grumbel Exp $
+//  $Id: PingusWorldMapGraph.cc,v 1.21 2001/11/18 12:43:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -67,7 +67,7 @@ PingusWorldMapLevelNode::on_click ()
   if (maintainer_mode) 
     std::cout << "Start a level...: " << levelname << std::endl;
 		  
-  PingusSound::play("letsgo.wav");
+  PingusSound::play_sound("sound/letsgo.wav");
   PingusGameSession game (levelname);
       
   // Launch the game and wait until it is finished

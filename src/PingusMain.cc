@@ -1,4 +1,4 @@
-//   $Id: PingusMain.cc,v 1.37 2001/08/18 09:54:26 grumbel Exp $
+//   $Id: PingusMain.cc,v 1.38 2001/11/18 12:43:19 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -73,9 +73,9 @@
 #include "PingusSound.hh"
 #include "PingusSoundDummy.hh"
 
-#ifdef HAVE_LIBSDL_MIXER
+//#ifdef HAVE_LIBSDL_MIXER
 #  include "PingusSoundReal.hh"
-#endif
+//#endif
 
 
 void
@@ -735,13 +735,16 @@ PingusMain::init_clanlib()
     {
       if (verbose)
 	std::cout << "Init Sound" << std::endl;
-#ifdef HAVE_LIBSDL_MIXER
+
+      PingusSound::init (new PingusSoundReal ());
+      
+      /*#ifdef HAVE_LIBSDL_MIXER
       PingusSound::init (new PingusSoundReal ());
       //PingusSound::init (new PingusSoundDummy ());
 #else
       std::cout << "Sound enabled, but not supported by binary." << std::endl;
       PingusSound::init (new PingusSoundDummy ());
-#endif
+      #endif*/
     }
   else
     {
