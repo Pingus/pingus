@@ -2,8 +2,8 @@
 
 <pingus-level>
   <global>
-    <levelname lang="en">EditorDefaultValue: Please give me a name...</levelname>
-    <description lang="en">EditorDefaultValue: ...and a short description</description>
+    <levelname lang="en">Floater Tutorial - Float or Die</levelname>
+    <description lang="en">In this level you will learn how to use the floater action</description>
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
     <number-of-pingus>20</number-of-pingus>
     <number-to-save>10</number-to-save>
