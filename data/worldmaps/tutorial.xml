@@ -111,7 +111,7 @@
             <z-pos>0</z-pos>
           </position>
         </dot>
-        <levelname>playable/miner-tutorial-grumbel.xml</levelname>
+        <levelname>playable/miner-tutorial2-grumbel.xml</levelname>
       </leveldot>
 
 
@@ -124,7 +124,7 @@
             <z-pos>0</z-pos>
           </position>
         </dot>
-        <levelname>playable/placeholder.xml</levelname>
+        <levelname>playable/snow11-grumbel.xml</levelname>
       </leveldot>
 
 
