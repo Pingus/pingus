@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Pingus 0.5.0\n"
-"POT-Creation-Date: 2003-04-08 22:18+0200\n"
+"POT-Creation-Date: 2003-04-09 23:17+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Stefano Brivio <stefab@infinito.it>\n"
 "Language-Team: stefab@infinito.it\n"
@@ -469,6 +469,11 @@ msgstr ""
 msgid "unknown"
 msgstr "sconosciuto"
 
+#: src/game_time.cxx:66
+#, fuzzy
+msgid "unlimited"
+msgstr "Azioni illimitate"
+
 #: src/intro.cxx:62 src/intro.cxx:113
 msgid "..:: Press Start ::.."
 msgstr "..:: Clikka Start ::.."
@@ -774,13 +779,6 @@ msgstr "nessuna azione"
 msgid "Released:%3d/%-3d   Out:%3d   Saved:%3d/%-3d"
 msgstr "Usciti: %3d/%3d  Fuori: %3d  Salvati: %3d/%3d"
 
-#: src/pingus_main.cxx:101 src/pingus_main.cxx:124
-#, fuzzy
-msgid ""
-"\n"
-",------------------------------------------------------------------------"
-msgstr "-----------------------------------------------------------------\n"
-
 #: src/pingus_main.cxx:102
 #, fuzzy
 msgid "| segfault_handler: catched a SIGSEGV."
@@ -851,14 +849,16 @@ msgstr "[gioca finche' non si blocchi di nuovo]"
 msgid "'------------------------------------------------------------------------\n"
 msgstr "-----------------------------------------------------------------\n"
 
+#: src/pingus_main.cxx:124
+#, fuzzy
+msgid ""
+"\n"
+",------------------------------------------------------------------------"
+msgstr "-----------------------------------------------------------------\n"
+
 #: src/pingus_main.cxx:125
 msgid "| Warning: Pingus recieved a SIGINT, exiting now."
 msgstr ""
-
-#: src/pingus_main.cxx:126
-#, fuzzy
-msgid "`------------------------------------------------------------------------\n"
-msgstr "-----------------------------------------------------------------\n"
 
 #: src/pingus_main.cxx:352
 #, fuzzy
@@ -1107,7 +1107,7 @@ msgstr "Pingus: Standard exception!:\n"
 msgid "Pingus: Unknown throw caught!"
 msgstr "Pingus: Unknown throw!"
 
-#: src/result_screen.cxx:94 src/start_screen.cxx:100
+#: src/result_screen.cxx:94 src/start_screen.cxx:104
 msgid "Abort"
 msgstr ""
 
@@ -1204,36 +1204,36 @@ msgstr "Screenshot: Impossibile scrivere il file: "
 msgid "Image has wrong color depth: %d"
 msgstr "L'immagine ha una profondita' di colore sbagliata: %d"
 
-#: src/start_screen.cxx:65
+#: src/start_screen.cxx:69
 msgid "Ok"
 msgstr ""
 
-#: src/start_screen.cxx:135
+#: src/start_screen.cxx:139
 #, fuzzy
 msgid "Number of Pingus: "
 msgstr "Numero di Pingus: %d"
 
-#: src/start_screen.cxx:138
+#: src/start_screen.cxx:142
 #, fuzzy
 msgid "Number to Save: "
 msgstr "Pingus da salvare: %d"
 
-#: src/start_screen.cxx:141
+#: src/start_screen.cxx:145
 msgid "Time: "
 msgstr ""
 
-#: src/start_screen.cxx:144
+#: src/start_screen.cxx:148
 msgid "Difficulty:"
 msgstr ""
 
 #. for (int i = 0; plf->get_difficulty())
 #. {
 #. }
-#: src/start_screen.cxx:151
+#: src/start_screen.cxx:155
 msgid "Author: "
 msgstr ""
 
-#: src/start_screen.cxx:154
+#: src/start_screen.cxx:158
 msgid "Filename: "
 msgstr ""
 
@@ -1362,11 +1362,11 @@ msgstr "Trovato: "
 msgid "Environment variable $HOME not set, fix that and start again."
 msgstr "Variabile d'ambiente $HOME non impostata, sistemala e ricomincia."
 
-#: src/system.cxx:422
+#: src/system.cxx:426
 msgid "System::checksum: Couldn't open file: "
 msgstr "System::checksum: Impossibile aprire il file: "
 
-#: src/system.cxx:432
+#: src/system.cxx:436
 msgid "System:checksum: file read error"
 msgstr "System:checksum: errore di lettura del file"
 
@@ -1400,6 +1400,10 @@ msgstr "PingusWorldMapGraph: File non trovato: "
 #, fuzzy
 msgid "...walking..."
 msgstr "Sto caricando..."
+
+#, fuzzy
+#~ msgid "`------------------------------------------------------------------------\n"
+#~ msgstr "-----------------------------------------------------------------\n"
 
 #~ msgid "PingusBug: "
 #~ msgstr "Bug di Pingus: "

@@ -134,11 +134,6 @@ section misc
 	loading        = ../images/core/misc/loading.png       (type=surface, x=0, y=0, width=175, height=66,tcol=0);
 	pingubw = ../images/core/misc/pingubw.png (type=surface, x=0, y=0, width=307, height=400);
 
-	dot_green = ../images/core/worldmap/dot_green.png (type=surface);
-	dot_invalid = ../images/core/worldmap/dot_invalid.png (type=surface);
-        dot_red = ../images/core/worldmap/dot_red.png (type=surface);
-        dot_border = ../images/core/worldmap/dot_border.png (type=surface);
-
 	smallmap_entrance = ../images/core/misc/smallmap_entrance.png (type=surface, x=0, y=0, width=6, height=6, tcol=0);
 	smallmap_exit     = ../images/core/misc/smallmap_exit.png     (type=surface, x=0, y=0, width=6, height=6, tcol=0);
 
@@ -158,10 +153,14 @@ section worldmap
 	tube = ../images/core/worldmap/tube.png (type=surface, x=0, y=0, width=32, height=37);
 
 	dot_invalid = ../images/core/worldmap/dot_invalid.png (type=surface);
-	dot_green = ../images/core/worldmap/dot_green.png (type=surface, x=0, y=0, width=32, height=12);
-        dot_red = ../images/core/worldmap/dot_red.png (type=surface, x=0, y=0, width=32, height=12);
-        dot_border = ../images/core/worldmap/dot_border.png (type=surface, x=0, y=0, width=44, height=22);
-	flaggreen = ../images/core/worldmap/flaggreen.png (type=surface, x=0, y=0, width=27, height=38);
+	dot_green = ../images/core/worldmap/dot_green.png (type=surface);
+        dot_red = ../images/core/worldmap/dot_red.png (type=surface);
+
+	dot_green_hl = ../images/core/worldmap/dot_green_hl.png (type=surface);
+        dot_red_hl   = ../images/core/worldmap/dot_red_hl.png (type=surface);
+
+        dot_border = ../images/core/worldmap/dot_border.png (type=surface);
+	flaggreen = ../images/core/worldmap/flaggreen.png (type=surface);
 
 	arrow = ../images/core/worldmap/arrow.png (type=surface);
         pingus = ../images/core/worldmap/pingus.png     (type=surface, x=0, y=0, width=24, height=24, array=8x2);

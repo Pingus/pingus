@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Pingus 0.5.0\n"
-"POT-Creation-Date: 2003-04-08 22:18+0200\n"
-"PO-Revision-Date: 2003-04-02 16:32+0200\n"
+"POT-Creation-Date: 2003-04-09 23:17+0200\n"
+"PO-Revision-Date: 2003-04-09 23:12+0200\n"
 "Last-Translator: Ingo Ruhnke <grumbel@gmx.de>\n"
 "Language-Team: Ingo Ruhnke <grumbel@gmx.de>, Giray Devlet <giray@devlet.cc>\n"
 "MIME-Version: 1.0\n"
@@ -458,6 +458,10 @@ msgstr "Pingus beenden?"
 msgid "unknown"
 msgstr "unbekannt"
 
+#: src/game_time.cxx:66
+msgid "unlimited"
+msgstr "unbegrenzt"
+
 #: src/intro.cxx:62 src/intro.cxx:113
 msgid "..:: Press Start ::.."
 msgstr "..:: Druecke start ::.."
@@ -762,12 +766,6 @@ msgstr "Keine Fähigkeit"
 msgid "Released:%3d/%-3d   Out:%3d   Saved:%3d/%-3d"
 msgstr "Eingelassen: %3d/%3d  Raus: %3d Gerettet: %3d/%3d"
 
-#: src/pingus_main.cxx:101 src/pingus_main.cxx:124
-msgid ""
-"\n"
-",------------------------------------------------------------------------"
-msgstr ""
-
 #: src/pingus_main.cxx:102
 msgid "| segfault_handler: catched a SIGSEGV."
 msgstr "| segfault_handler: SIGSEGV abgefangen."
@@ -823,13 +821,15 @@ msgstr "| [spiele bis es wieder crasht]"
 msgid "'------------------------------------------------------------------------\n"
 msgstr ""
 
+#: src/pingus_main.cxx:124
+msgid ""
+"\n"
+",------------------------------------------------------------------------"
+msgstr ""
+
 #: src/pingus_main.cxx:125
 msgid "| Warning: Pingus recieved a SIGINT, exiting now."
 msgstr "| Warnung: Pingus erhielt einen SIGIN, beende jetzt."
-
-#: src/pingus_main.cxx:126
-msgid "`------------------------------------------------------------------------\n"
-msgstr ""
 
 #: src/pingus_main.cxx:352
 msgid ""
@@ -1014,8 +1014,8 @@ msgid "getext support:               ok"
 msgstr "gettext Unterstützung:       ok"
 
 #: src/pingus_main.cxx:688
-msgid "gettext language:      english"
-msgstr "gettext Sprache:       deutsch"
+msgid "gettext language:        english"
+msgstr "gettext Sprache:        deutsch"
 
 #: src/pingus_main.cxx:694
 msgid "sound support:           enabled"
@@ -1077,7 +1077,7 @@ msgstr "Pingus: Standard Ausnahme abgefangen!:\n"
 msgid "Pingus: Unknown throw caught!"
 msgstr "Pingus: Unbekannte Ausnahme abgefangen!"
 
-#: src/result_screen.cxx:94 src/start_screen.cxx:100
+#: src/result_screen.cxx:94 src/start_screen.cxx:104
 msgid "Abort"
 msgstr "Abbruch"
 
@@ -1176,36 +1176,36 @@ msgstr "Screenshot: Datei konnte nicht geschrieben werden: "
 #: src/spot_map.cxx:278
 #, c-format
 msgid "Image has wrong color depth: %d"
-msgstr "Bild hat falsche Farbintensität: %d"
+msgstr "Bild hat falsche Farbtiefe: %d"
 
-#: src/start_screen.cxx:65
+#: src/start_screen.cxx:69
 msgid "Ok"
 msgstr ""
 
-#: src/start_screen.cxx:135
+#: src/start_screen.cxx:139
 msgid "Number of Pingus: "
-msgstr "Anzahl an Pingus: %d"
+msgstr "Anzahl an Pingus: "
 
-#: src/start_screen.cxx:138
+#: src/start_screen.cxx:142
 msgid "Number to Save: "
-msgstr "Zu rettende Pingus: %d"
+msgstr "Zu rettende Pingus: "
 
-#: src/start_screen.cxx:141
+#: src/start_screen.cxx:145
 msgid "Time: "
 msgstr "Zeit: "
 
-#: src/start_screen.cxx:144
+#: src/start_screen.cxx:148
 msgid "Difficulty:"
 msgstr "Schwierigkeitsgrad:"
 
 #. for (int i = 0; plf->get_difficulty())
 #. {
 #. }
-#: src/start_screen.cxx:151
+#: src/start_screen.cxx:155
 msgid "Author: "
 msgstr "Autor: "
 
-#: src/start_screen.cxx:154
+#: src/start_screen.cxx:158
 msgid "Filename: "
 msgstr "Dateiname: "
 
@@ -1390,12 +1390,12 @@ msgid "Environment variable $HOME not set, fix that and start again."
 msgstr ""
 "Umgebungs Variable $HOME ist nicht gesetzt. Setze sie und starte erneut."
 
-#: src/system.cxx:422
+#: src/system.cxx:426
 msgid "System::checksum: Couldn't open file: "
 msgstr ""
 "System::checksum: Datei oder Verzeichnis konnte nicht geoeffnet werden: "
 
-#: src/system.cxx:432
+#: src/system.cxx:436
 msgid "System:checksum: file read error"
 msgstr "System:checksum: Fehler beim Lesen von Datei"
 

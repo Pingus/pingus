@@ -1,4 +1,4 @@
-//  $Id: xml_helper.cxx,v 1.29 2003/04/09 20:20:20 torangan Exp $
+//  $Id: xml_helper.cxx,v 1.30 2003/04/09 21:57:24 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -458,11 +458,14 @@ XMLhelper::get_line(xmlNodePtr cur)
 std::string
 XMLhelper::xmlChar2string(const xmlChar* in)
 {
-  int in_len = xmlUTF8Strsize(in, xmlUTF8Strlen(in)) + 1;
-  int out_len = in_len;
+  int chars   = xmlUTF8Strlen(in);
+  int in_len  = xmlUTF8Strsize(in, chars);
+  int out_len = chars + 1;
   unsigned char* out = new unsigned char[out_len];
-  int ret = UTF8Toisolat1(out, &out_len, in,  &in_len);
-    
+
+  //std::cout << "OUT: in_len: " << in_len << " out_len: " << out_len << std::endl;
+  int ret = UTF8Toisolat1(out, &out_len, in,  &in_len);   
+
   if (ret != 0)
     {
       std::cout << "Error: XMLhelper: Encoding failed: ret: " << ret 
@@ -475,7 +478,11 @@ XMLhelper::xmlChar2string(const xmlChar* in)
     }
   else
     {
-      out[out_len-1] = '\0';
+      out[out_len] = '\0';
+
+      //std::cout << "IN:  in_len: " << in_len << " out_len: " << out_len
+      //        << " => " << out << std::endl;
+
       std::string ret_str = reinterpret_cast<char*>(out);
       delete[] out;
       return ret_str;

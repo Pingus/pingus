@@ -121,8 +121,10 @@ core/worldmap/credits_button_normal.png \
 core/worldmap/credits_button_pressed.png \
 core/worldmap/dot_border.png \
 core/worldmap/dot_green.png \
+core/worldmap/dot_green_hl.png \
 core/worldmap/dot_invalid.png \
 core/worldmap/dot_red.png \
+core/worldmap/dot_red_hl.png \
 core/worldmap/enter_button_hover.png \
 core/worldmap/enter_button_normal.png \
 core/worldmap/enter_button_pressed.png \

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Pingus 0.5.0\n"
-"POT-Creation-Date: 2003-04-08 22:18+0200\n"
+"POT-Creation-Date: 2003-04-09 23:17+0200\n"
 "Last-Translator: Martijn Santen <martijn@jomarsoft.nl>\n"
 "Language-Team: Giray Devlet <giray@devlet.cc>, Martijn Santen "
 "<martijn@jomarsoft.nl>\n"
@@ -540,6 +540,12 @@ msgstr ""
 msgid "unknown"
 msgstr "onbekend"
 
+# src/OptionMenu.cc:208
+#: src/game_time.cxx:66
+#, fuzzy
+msgid "unlimited"
+msgstr "Ongelimiteerd acties"
+
 # src/Intro.cc:66 src/Intro.cc:123
 #: src/intro.cxx:62 src/intro.cxx:113
 msgid "..:: Press Start ::.."
@@ -912,12 +918,6 @@ msgstr "geen actie"
 msgid "Released:%3d/%-3d   Out:%3d   Saved:%3d/%-3d"
 msgstr "Vrijgelaten: %3d/%3d  Uit: %3d  Gered: %3d/%3"
 
-#: src/pingus_main.cxx:101 src/pingus_main.cxx:124
-msgid ""
-"\n"
-",------------------------------------------------------------------------"
-msgstr ""
-
 #: src/pingus_main.cxx:102
 msgid "| segfault_handler: catched a SIGSEGV."
 msgstr ""
@@ -971,12 +971,14 @@ msgstr ""
 msgid "'------------------------------------------------------------------------\n"
 msgstr ""
 
-#: src/pingus_main.cxx:125
-msgid "| Warning: Pingus recieved a SIGINT, exiting now."
+#: src/pingus_main.cxx:124
+msgid ""
+"\n"
+",------------------------------------------------------------------------"
 msgstr ""
 
-#: src/pingus_main.cxx:126
-msgid "`------------------------------------------------------------------------\n"
+#: src/pingus_main.cxx:125
+msgid "| Warning: Pingus recieved a SIGINT, exiting now."
 msgstr ""
 
 # src/PingusMain.cc:323
@@ -1177,7 +1179,7 @@ msgstr "Pingus: Standard uitzondering!:\n"
 msgid "Pingus: Unknown throw caught!"
 msgstr "Pingus: Onbekende worp aangetroffen!"
 
-#: src/result_screen.cxx:94 src/start_screen.cxx:100
+#: src/result_screen.cxx:94 src/start_screen.cxx:104
 msgid "Abort"
 msgstr ""
 
@@ -1280,38 +1282,38 @@ msgstr "Schermafdruk: kon bestand niet opslaan"
 msgid "Image has wrong color depth: %d"
 msgstr "Plaatje heeft de verkeerde kleurdiepte: %d"
 
-#: src/start_screen.cxx:65
+#: src/start_screen.cxx:69
 msgid "Ok"
 msgstr ""
 
 # src/PingusLevelDesc.cc:81
-#: src/start_screen.cxx:135
+#: src/start_screen.cxx:139
 #, fuzzy
 msgid "Number of Pingus: "
 msgstr "Aantal Pingus"
 
 # src/PingusLevelDesc.cc:79
-#: src/start_screen.cxx:138
+#: src/start_screen.cxx:142
 #, fuzzy
 msgid "Number to Save: "
 msgstr "Pingus op te slaan:"
 
-#: src/start_screen.cxx:141
+#: src/start_screen.cxx:145
 msgid "Time: "
 msgstr ""
 
-#: src/start_screen.cxx:144
+#: src/start_screen.cxx:148
 msgid "Difficulty:"
 msgstr ""
 
 #. for (int i = 0; plf->get_difficulty())
 #. {
 #. }
-#: src/start_screen.cxx:151
+#: src/start_screen.cxx:155
 msgid "Author: "
 msgstr ""
 
-#: src/start_screen.cxx:154
+#: src/start_screen.cxx:158
 msgid "Filename: "
 msgstr ""
 
@@ -1445,12 +1447,12 @@ msgid "Environment variable $HOME not set, fix that and start again."
 msgstr "Omgevings variabele $HOME niet gezet, repareer dat en begin overnieuw"
 
 # src/System.cc:354
-#: src/system.cxx:422
+#: src/system.cxx:426
 msgid "System::checksum: Couldn't open file: "
 msgstr "Systeem::controle: Kon bestand niet openen: "
 
 # src/System.cc:364
-#: src/system.cxx:432
+#: src/system.cxx:436
 msgid "System:checksum: file read error"
 msgstr "Systeem: controle: leesfout bestand"
 

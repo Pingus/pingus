@@ -1,4 +1,4 @@
-//  $Id: result_screen.cxx,v 1.12 2003/04/06 14:37:07 grumbel Exp $
+//  $Id: result_screen.cxx,v 1.13 2003/04/09 21:57:24 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -155,7 +155,7 @@ ResultScreenComponent::draw(GraphicContext& gc)
   gc.draw(background, 0, 0);
 
   if (!result.success())
-    gc.print_left(Fonts::chalk_normal, 635, 410, _("Retry"));
+    gc.print_right(Fonts::chalk_normal, 675, 410, _("Retry"));
 
   gc.print_center(Fonts::chalk_large, gc.get_width()/2, 100, 
                   System::translate(result.plf->get_levelname()));

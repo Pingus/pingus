@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.66 2003/04/08 19:56:40 torangan Exp $
+//   $Id: pingus_main.cxx,v 1.67 2003/04/09 21:57:24 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -98,7 +98,7 @@ signal_handler(int signo)
   switch(signo)
     {
     case SIGSEGV:
-      puts(_("\n,------------------------------------------------------------------------"));
+      puts("\n,------------------------------------------------------------------------");
       puts(_("| segfault_handler: catched a SIGSEGV."));
       puts ("|");
       puts(_("| Woops, Pingus just crashed, congratulations you've found a bug."));
@@ -123,7 +123,7 @@ signal_handler(int signo)
     case SIGINT:
       puts(_("\n,------------------------------------------------------------------------"));
       puts (_("| Warning: Pingus recieved a SIGINT, exiting now."));
-      puts(_("`------------------------------------------------------------------------\n"));
+      puts("`------------------------------------------------------------------------\n");
       break;
 
     default:

@@ -1,4 +1,4 @@
-//  $Id: exit_menu.cxx,v 1.16 2003/04/03 17:03:24 grumbel Exp $
+//  $Id: exit_menu.cxx,v 1.17 2003/04/09 21:57:24 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,7 +41,7 @@ public:
  
   void draw (GraphicContext& gc) {
     SurfaceButton::draw(gc);
-    gc.print_left(Fonts::chalk_large, 250,  325, _("Yes"));
+    gc.print_right(Fonts::chalk_large, 320,  325, _("Yes"));
   }
 
   void on_click()
@@ -73,7 +73,7 @@ public:
 
   void draw (GraphicContext& gc) {
     SurfaceButton::draw(gc);
-    gc.print_left(Fonts::chalk_large, 460, 325, _("No"));
+    gc.print_right(Fonts::chalk_large, 480, 325, _("No"));
   }
 
   void on_click() {

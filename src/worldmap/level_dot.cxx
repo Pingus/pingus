@@ -1,4 +1,4 @@
-//  $Id: level_dot.cxx,v 1.16 2003/04/01 21:54:55 grumbel Exp $
+//  $Id: level_dot.cxx,v 1.17 2003/04/09 21:57:24 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,13 +37,17 @@ namespace WorldMapNS {
 
 LevelDot::LevelDot(xmlDocPtr doc, xmlNodePtr cur)
   : Dot(doc, XMLhelper::skip_blank(cur->children)),
-    green_dot_sur("misc/dot_green", "core"),
-    red_dot_sur("misc/dot_red", "core"),
-    unaccessible_dot_sur("misc/dot_invalid", "core"),
+    green_dot_sur("worldmap/dot_green", "core"),
+    red_dot_sur("worldmap/dot_red", "core"),
+    unaccessible_dot_sur("worldmap/dot_invalid", "core"),
+    highlight_green_dot_sur("worldmap/dot_green_hl", "core"),
+    highlight_red_dot_sur("worldmap/dot_red_hl", "core"),
     plf(0)
 {
   green_dot_sur.set_align_center();
   red_dot_sur.set_align_center();
+  highlight_green_dot_sur.set_align_center();
+  highlight_red_dot_sur.set_align_center();
   unaccessible_dot_sur.set_align_center();
 
   cur = cur->children;
@@ -124,10 +128,21 @@ LevelDot::accessible()
 void
 LevelDot::draw_hover(GraphicContext& gc)
 {
+  Savegame* savegame = SavegameManager::instance()->get(levelname);
+  if (savegame 
+      && (savegame->status == Savegame::FINISHED
+          || savegame->status == Savegame::ACCESSIBLE))
+    {
+      if (savegame->status == Savegame::FINISHED)
+        gc.draw (highlight_green_dot_sur, pos);
+      else
+        gc.draw (highlight_red_dot_sur, pos);
+    }
+
   if (accessible())
     {
       gc.print_center(Fonts::pingus_small,
-                      int(pos.x), int(pos.y - 30),
+                      int(pos.x), int(pos.y - 40),
                       System::translate(get_plf()->get_levelname()));
     }
   else

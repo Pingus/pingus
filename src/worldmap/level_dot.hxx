@@ -1,4 +1,4 @@
-//  $Id: level_dot.hxx,v 1.7 2003/03/30 22:09:33 grumbel Exp $
+//  $Id: level_dot.hxx,v 1.8 2003/04/09 21:57:24 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,6 +33,8 @@ private:
   Sprite green_dot_sur;
   Sprite red_dot_sur;
   Sprite unaccessible_dot_sur;
+  Sprite highlight_green_dot_sur;
+  Sprite highlight_red_dot_sur;
 
   std::string levelname;
   PLFHandle plf;

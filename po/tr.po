@@ -462,6 +462,11 @@ msgstr "Çýkýyor musun?"
 msgid "unknown"
 msgstr "bilinmeyen"
 
+#: src/game_time.cxx:66
+#, fuzzy
+msgid "unlimited"
+msgstr "Sýnýrsýz Eylem"
+
 #: src/intro.cxx:62 src/intro.cxx:113
 msgid "..:: Press Start ::.."
 msgstr "..:: Baþla ::.."
@@ -779,14 +784,6 @@ msgstr "eylem yok"
 msgid "Released:%3d/%-3d   Out:%3d   Saved:%3d/%-3d"
 msgstr "Çýkan: %3d/%-3d Dýþarýda: %3d  Kurtulan: %3d/%-3d"
 
-#: src/pingus_main.cxx:101 src/pingus_main.cxx:124
-msgid ""
-"\n"
-",------------------------------------------------------------------------"
-msgstr ""
-"\n"
-",------------------------------------------------------------------------"
-
 #: src/pingus_main.cxx:102
 msgid "| segfault_handler: catched a SIGSEGV."
 msgstr "| segfault_handler: catched a SIGSEGV."
@@ -842,13 +839,15 @@ msgstr "| [... ve çökene kadar tekrar oyna ... ]"
 msgid "'------------------------------------------------------------------------\n"
 msgstr "'------------------------------------------------------------------------\n"
 
+#: src/pingus_main.cxx:124
+msgid ""
+"\n"
+",------------------------------------------------------------------------"
+msgstr ""
+
 #: src/pingus_main.cxx:125
 msgid "| Warning: Pingus recieved a SIGINT, exiting now."
 msgstr "| Uyarý: SIGINT sinyali aldýk, oyundan çýkýyoruz."
-
-#: src/pingus_main.cxx:126
-msgid "`------------------------------------------------------------------------\n"
-msgstr "`------------------------------------------------------------------------\n"
 
 #: src/pingus_main.cxx:352
 msgid ""
@@ -1354,11 +1353,11 @@ msgstr "Bulundu: "
 msgid "Environment variable $HOME not set, fix that and start again."
 msgstr "$HOME deðiþkeni atanmamýþ, düzeltip yeniden dene."
 
-#: src/system.cxx:422
+#: src/system.cxx:426
 msgid "System::checksum: Couldn't open file: "
 msgstr "Sistem::checksum: Açýlamayan dosya: "
 
-#: src/system.cxx:432
+#: src/system.cxx:436
 msgid "System:checksum: file read error"
 msgstr "Sistem:checksum: Dosya okunurken hata oluþtu"
 

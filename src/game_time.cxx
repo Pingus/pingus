@@ -1,4 +1,4 @@
-//  $Id: game_time.cxx,v 1.6 2003/04/09 16:20:19 torangan Exp $
+//  $Id: game_time.cxx,v 1.7 2003/04/09 21:57:24 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "my_gettext.hxx"
 #include "globals.hxx"
 #include "game_time.hxx"
 
@@ -58,24 +59,25 @@ GameTime::reset(void)
 std::string
 GameTime::ticks_to_realtime_string(int ticks)
 {
-  char time_str[10];
+  const int time_str_size = 20;
+  char time_str[time_str_size];
 
   if (ticks == -1)
     {
-      snprintf(time_str, 10, "unlimited");
+      snprintf(time_str, time_str_size, _("unlimited"));
     }
   else
     {
       int total_seconds = ticks * game_speed / 1000;
-      int seconds   = total_seconds % 60;
-      int minutes   = total_seconds / 60;
+      int seconds       = total_seconds % 60;
+      int minutes       = total_seconds / 60;
   
       // Stop displaying negative seconds, which can happen if armageddon is
       // clicked with 1 second left.
       if (seconds < 0)
         seconds = 0;
   
-      snprintf(time_str, 10, "%2d:%02d", minutes, seconds);
+      snprintf(time_str, time_str_size, "%2d:%02d", minutes, seconds);
     }
   return time_str;
 }
