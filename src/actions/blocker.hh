@@ -1,4 +1,4 @@
-//  $Id: blocker.hh,v 1.8 2001/04/08 14:10:34 grumbel Exp $
+//  $Id: blocker.hh,v 1.9 2001/04/20 20:53:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,7 +26,7 @@
 class Blocker : public PinguAction
 {
 private:
-  
+  Sprite sprite;
 public:
   ///
   Blocker();
@@ -42,8 +42,9 @@ public:
   bool  need_catch();
   ///
   void  catch_pingu(Pingu* pingu);
-}///
-;
+};
+
+REGISTER_PINGUACTION(BlockerFactory, Blocker, "blocker");
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: digger.cc,v 1.21 2001/04/15 22:54:49 grumbel Exp $
+//  $Id: digger.cc,v 1.22 2001/04/20 20:53:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,10 +26,6 @@
 #include "../algo.hh"
 #include "digger.hh"
 
-bool Digger::static_surfaces_loaded = false;
-CL_Surface Digger::digger_radius;
-CL_Surface Digger::static_surface;
-
 Digger::Digger()
 {
 }
@@ -40,21 +36,9 @@ Digger::init(void)
   action_name = "Digger";
   environment = (PinguEnvironment)land;
 
-  if (!static_surfaces_loaded)
-    {
-      static_surface = PingusResource::load_surface ("Pingus/digger0", "pingus");
-      digger_radius = PingusResource::load_surface ("Other/digger_radius", "pingus");  
-      surface = static_surface;
-    }
-  
-  surface = PingusResource::load_surface (std::string("Pingus/digger") + StringConverter::to_string(pingu->get_owner ()),
-					  "pingus");
-
-  counter.set_size(surface.get_num_frames());
-  counter.set_type(Counter::loop);
-  counter.set_count(0);
-  counter.set_speed(1);
-
+  digger_radius = PingusResource::load_surface ("Other/digger_radius", "pingus");  
+  sprite = Sprite (std::string("Pingus/digger") + StringConverter::to_string(pingu->get_owner ()),
+		   "pingus");
   digger_c.set_size(4);
   digger_c.set_count(0);
 

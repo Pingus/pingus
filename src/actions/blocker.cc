@@ -1,4 +1,4 @@
-//  $Id: blocker.cc,v 1.13 2001/04/15 22:54:49 grumbel Exp $
+//  $Id: blocker.cc,v 1.14 2001/04/20 20:53:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,10 +33,8 @@ Blocker::init(void)
   environment = (PinguEnvironment)land;
   action_name = "Blocker";
 
-  surface = PingusResource::load_surface ("Pingus/blocker0", "pingus");
-  counter.set_size(4);
-  counter.set_type(Counter::ping_pong);
-  is_multi_direct = false;
+  sprite = Sprite(PingusResource::load_surface ("Pingus/blocker" + StringConverter::to_string (pingu->get_owner ()),
+						"pingus"));
 
   if (rel_getpixel(0,-1) == ColMap::NOTHING && rel_getpixel(0, -2) == ColMap::WALL) 
     {

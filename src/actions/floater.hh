@@ -1,4 +1,4 @@
-//  $Id: floater.hh,v 1.5 2001/04/08 14:10:34 grumbel Exp $
+//  $Id: floater.hh,v 1.6 2001/04/20 20:53:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,10 +26,9 @@
 class Floater : public PinguAction
 {
 private:
-  ///
   int falling_depth;
-  ///
   int step;
+  Sprite sprite;
 public:
   ///
   Floater();
@@ -43,6 +42,8 @@ public:
   ///
   void   update(float delta);
 };
+
+REGISTER_PINGUACTION(FloaterFactory, Floater, "floater");
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: Pingu.hh,v 1.28 2001/04/15 00:53:11 grumbel Exp $
+//  $Id: Pingu.hh,v 1.29 2001/04/20 20:53:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -151,6 +151,8 @@ public:
 
   ///
   int  set_action(boost::shared_ptr<PinguAction>);
+  ///
+  void set_action (const std::string action_name);
   ///
   int  set_paction(boost::shared_ptr<PinguAction>);
   ///

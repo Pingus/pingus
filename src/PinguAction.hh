@@ -1,4 +1,4 @@
-//  $Id: PinguAction.hh,v 1.14 2001/04/08 14:10:34 grumbel Exp $
+//  $Id: PinguAction.hh,v 1.15 2001/04/20 20:53:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,6 +39,36 @@ enum ActionType
   FALL = 1<<3
 };
 
+
+class PinguActionFactory
+{  
+private:
+  static std::map<std::string, PinguActionFactory*>  actions;
+  
+protected:
+  PinguActionFactory (std::string);
+  virtual ~PinguActionFactory ();
+  virtual PinguAction* create () =0; 
+
+public:
+  static  boost::shared_ptr<PinguAction> create (std::string action_name);
+};
+
+// Now follows a little Factory Macro
+//
+#define REGISTER_PINGUACTION(f_class, a_class, name)   \
+class f_class : public PinguActionFactory              \
+{                                                      \
+public:                                                \
+  f_class () : PinguActionFactory (name) {             \
+     std::cout << "Name: " << name << std::endl;       \
+  }                                                    \
+  PinguAction* create () {                             \
+    return new a_class ();                             \
+  }                                                    \
+}
+
+
 // This class provides an abstract interface for pingu actions. It is 
 // used to inherit classes which represent the actions. The actions
 // are stored in a seperate library, have a look in actions/ for some
@@ -52,17 +82,6 @@ protected:
 
   /** A pointer to the pingu, which hold the action. */
   Pingu*      pingu;
-
-  /** The basic surface used to display an action, the inherit action
-      needs to load it in PinguAction::init(). */
-  CL_Surface surface;
-  
-  /// The font used for counting (used by the bomber)
-  CL_Font*    font; 
-
-  /** Sets the speed and number of frames, PinguAction::init() needs to
-      set this to the correct values. */
-  AnimCounter counter;
 
   /// The enviroment of the action (see PinguEnvironment).
   PinguEnvironment environment;
@@ -78,8 +97,9 @@ public:
       point. Bug: Only keeped public for lazyness. */
   bool is_finished;
 
-  ///
   PinguAction();
+
+public:
   ///
   virtual ~PinguAction();
 
@@ -89,7 +109,8 @@ public:
   /// Get the pixel from the colmap, relative to the pingu position. 
   int  rel_getpixel(int x, int y);
 
-  /// True if the action was used the last update()
+  /** True if the action was used the last update()
+      FIXME: Where is this used?! */
   bool is_active(void);
   
   /** Returns the enviroment, used to check if an action can be

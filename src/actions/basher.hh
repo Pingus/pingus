@@ -1,4 +1,4 @@
-//  $Id: basher.hh,v 1.11 2001/04/08 14:10:34 grumbel Exp $
+//  $Id: basher.hh,v 1.12 2001/04/20 20:53:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,17 +27,10 @@
 class Basher : public PinguAction
 {
 private:
-  ///
-  static bool static_surf_loaded;
-  ///
-  static CL_Surface static_surface;
-  ///
-  static CL_Surface bash_radius;
-  ///
+  Sprite sprite;
+  CL_Surface bash_radius;
   int basher_c;
-  ///
   GameCounter counter;
-  ///
   bool first_bash;
 public:
   ///
@@ -54,8 +47,9 @@ public:
   void   walk_forward();
   ///
   void   bash();
-}///
-;
+};
+
+REGISTER_PINGUACTION(BasherFactory, Basher, "basher");
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: Pingu.cc,v 1.52 2001/04/15 00:53:11 grumbel Exp $
+//  $Id: Pingu.cc,v 1.53 2001/04/20 20:53:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -199,6 +199,12 @@ Pingu::set_action(shared_ptr<PinguAction> act)
 	}
       return true;
     }
+}
+
+void 
+Pingu::set_action (const std::string action_name)
+{
+  set_action (PinguActionFactory::create (action_name));
 }
 
 // Sets an action without any checking

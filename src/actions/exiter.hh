@@ -1,4 +1,4 @@
-//  $Id: exiter.hh,v 1.6 2001/04/08 14:10:34 grumbel Exp $
+//  $Id: exiter.hh,v 1.7 2001/04/20 20:53:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,6 +26,7 @@
 class Exiter : public PinguAction
 {
 private:
+  Sprite sprite;
 public:
   ///
   Exiter();
@@ -43,8 +44,9 @@ public:
   ///
   void   update(float delta);
 
-}///
-;
+};
+
+REGISTER_PINGUACTION(ExiterFactory, Exiter, "exiter");
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: Waiter.hh,v 1.4 2001/04/08 14:10:34 grumbel Exp $
+//  $Id: Waiter.hh,v 1.5 2001/04/20 20:53:55 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,6 +28,7 @@ class Waiter : public PinguAction
 {
 private:
   int countdown;
+  Sprite sprite;
 public:
   ///
   Waiter();
@@ -36,6 +37,8 @@ public:
   ///
   void update(float delta);
 };
+
+REGISTER_PINGUACTION(WaiterFactory, Waiter, "waiter");
 
 #endif
 

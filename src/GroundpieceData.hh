@@ -1,4 +1,4 @@
-//  $Id: GroundpieceData.hh,v 1.3 2001/03/18 17:45:04 grumbel Exp $
+//  $Id: GroundpieceData.hh,v 1.4 2001/04/20 20:53:54 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -40,7 +40,7 @@ public:
   ///
   std::string type_str; 
   ///
-  enum Type { SOLID, TRANSPARENT, GROUND, BRIDGE, WATER, LAVA, NOTHING } type; 
+  enum Type { SOLID, TRANSPARENT, GROUND, BRIDGE, WATER, LAVA, REMOVE, NOTHING } type; 
 
   static Type string_to_type(const std::string& arg_type) 
   {
@@ -56,6 +56,8 @@ public:
       return GroundpieceData::WATER;
     else if (arg_type == "lava") 
       return GroundpieceData::LAVA;
+    else if (arg_type == "remove") 
+      return GroundpieceData::REMOVE;
     else
       {
 	std::cout << "GroundpieceData: Unhandeld type: " << arg_type << std::endl;
@@ -79,6 +81,8 @@ public:
 	return "water";
       case GroundpieceData::LAVA:
 	return "lava";
+      case GroundpieceData::REMOVE:
+	return "remove";
       default:
 	std::cout << "GroundpieceData: unhandeld type: " << arg_type << std::endl;
 	return "ground";

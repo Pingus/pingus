@@ -1,4 +1,4 @@
-//  $Id: basher.cc,v 1.21 2001/04/15 22:54:49 grumbel Exp $
+//  $Id: basher.cc,v 1.22 2001/04/20 20:53:55 grumbel Exp $
 //
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -25,10 +25,6 @@
 
 using namespace std;
 
-CL_Surface Basher::static_surface;
-CL_Surface Basher::bash_radius;
-bool Basher::static_surf_loaded = false;
-
 Basher::Basher()
 {
 }
@@ -39,17 +35,9 @@ Basher::init(void)
   action_name = "Basher";
   environment = (PinguEnvironment)land;
 
-  if (!static_surf_loaded)
-    {
-      static_surface = PingusResource::load_surface ("Pingus/basher0", "pingus");
-      bash_radius = PingusResource::load_surface ("Other/bash_radius", "pingus");
-      static_surf_loaded = true;
-    }
-  surface = static_surface; 
+  bash_radius = PingusResource::load_surface ("Other/bash_radius", "pingus");
   
-  counter.set_size(surface.get_num_frames() / 2);
-  counter.set_type(GameCounter::loop);
-  counter.set_speed(1);
+  sprite = Sprite (PingusResource::load_surface ("Pingus/basher0", "pingus"));
 
   is_multi_direct = true;
   first_bash = true;
@@ -58,16 +46,7 @@ Basher::init(void)
 void
 Basher::draw_offset(int x, int y, float s)
 {
-  if (s == 1.0) 
-    {
-      surface.put_screen(pingu->get_x () + x + x_offset(), pingu->get_y () + y + y_offset(), 
-			  counter + ((pingu->direction.is_left()) ? 0 : counter.get_size()));
-    } 
-  else 
-    {
-      surface.put_screen(int((pingu->get_x () + x + x_offset()) * s), int((pingu->get_y () + y + y_offset()) * s), 
-			 s, s, counter + ((pingu->direction.is_left()) ? 0 : counter.get_size()));
-    }
+  sprite.put_screen (pingu->get_pos () + CL_Vector(x, y));
 }
 
 void

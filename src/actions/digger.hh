@@ -1,4 +1,4 @@
-//  $Id: digger.hh,v 1.8 2001/04/08 14:10:34 grumbel Exp $
+//  $Id: digger.hh,v 1.9 2001/04/20 20:53:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,11 +27,9 @@ class Digger : public PinguAction
 {
 private:
   ///
-  static bool static_surfaces_loaded;
+  CL_Surface digger_radius;
   ///
-  static CL_Surface digger_radius;
-  ///
-  static CL_Surface static_surface;
+  Sprite sprite;
   ///
   Counter digger_c;
 public:
@@ -49,8 +47,9 @@ public:
   void   init(void);
   ///
   void   update(float delta);
-}///
-;
+};
+
+REGISTER_PINGUACTION(DiggerFactory, Digger, "digger");
 
 #endif
 

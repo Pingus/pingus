@@ -1,4 +1,4 @@
-//  $Id: PinguAction.cc,v 1.11 2001/03/31 09:54:51 grumbel Exp $
+//  $Id: PinguAction.cc,v 1.12 2001/04/20 20:53:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,16 +18,37 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <cassert>
+#include "PingusError.hh"
 #include "World.hh"
 #include "PingusResource.hh"
 #include "PinguAction.hh"
 
+std::map<std::string, PinguActionFactory*> PinguActionFactory::actions;
+
+PinguActionFactory::PinguActionFactory (std::string name)
+{
+  std::cout << "Registering: " << name << " " << this << std::endl;
+  actions.insert( std::make_pair( name, this ));
+  std::cout << "Registering done" << std::endl;
+}
+
+PinguActionFactory::~PinguActionFactory () 
+{
+}
+
+boost::shared_ptr<PinguAction>
+PinguActionFactory::create (std::string name)
+{
+  std::map<std::string, PinguActionFactory*>::iterator it = actions.find(name);
+
+  if (it == actions.end())
+    throw PingusError("PinguAction: Invalid action: " + name);
+  else 
+    return boost::shared_ptr<PinguAction> (it->second->create ());
+}
+
 PinguAction::PinguAction()
 {
-  is_finished = false;
-  font = PingusResource::load_font("Fonts/numbers","fonts");
-  active = false;
-  environment = (PinguEnvironment)land;
 }
 
 PinguAction::~PinguAction()
@@ -73,26 +94,26 @@ PinguAction::draw_offset(int x, int y, float s)
     {
       if (is_multi_direct) 
 	{
-	  surface.put_screen(pingu->get_x () + x + x_offset(), pingu->get_y () + y + y_offset(), 
-			     ++counter + ((pingu->direction.is_left()) ? 0 : counter.size()));
+	  //surface.put_screen(pingu->get_x () + x + x_offset(), pingu->get_y () + y + y_offset(), 
+			     //		     ++counter + ((pingu->direction.is_left()) ? 0 : counter.size()));
 	} 
       else 
 	{
-	  surface.put_screen(pingu->get_x () + x + x_offset(), pingu->get_y () + y + y_offset(),
-			     ++counter);
+	  //	  surface.put_screen(pingu->get_x () + x + x_offset(), pingu->get_y () + y + y_offset(),
+	  //++counter);
 	}
     } 
   else 
     {
       if (is_multi_direct) 
 	{
-	  surface.put_screen(int((pingu->get_x () + x + x_offset()) * s), int((pingu->get_y () + y + y_offset()) * s), 
-			      s, s, ++counter + ((pingu->direction.is_left()) ? 0 : counter.size()));
+	  //surface.put_screen(int((pingu->get_x () + x + x_offset()) * s), int((pingu->get_y () + y + y_offset()) * s), 
+	  //			      s, s, ++counter + ((pingu->direction.is_left()) ? 0 : counter.size()));
 	} 
       else
 	{
-	  surface.put_screen(int((pingu->get_x () + x + x_offset()) * s), int((pingu->get_y () + y + y_offset()) * s),
-			     s, s, ++counter);
+	  //	  surface.put_screen(int((pingu->get_x () + x + x_offset()) * s), int((pingu->get_y () + y + y_offset()) * s),
+	  //	     s, s, ++counter);
 	}
     }
 }

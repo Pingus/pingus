@@ -1,4 +1,4 @@
-//  $Id: LaserKill.cc,v 1.9 2001/04/15 22:54:49 grumbel Exp $
+//  $Id: LaserKill.cc,v 1.10 2001/04/20 20:53:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,9 +24,6 @@
 #include "../particles/GroundParticle.hh"
 #include "../algo.hh"
 
-bool LaserKill::static_surfaces_loaded = false;
-CL_Surface LaserKill::static_surface;
-
 LaserKill::LaserKill()
 {
 }
@@ -37,15 +34,8 @@ LaserKill::init(void)
   action_name = "LaserKill";
   environment = (PinguEnvironment)always;
 
-  if (!static_surfaces_loaded)
-    static_surface = PingusResource::load_surface ("Other/laser_kill0", "pingus");
-  surface = static_surface;
-
-  counter.set_count(0);
-  counter.set_size(surface.get_num_frames()/2);
-  counter.set_speed(0);
-  counter.set_type(Counter::once);
-
+  sprite = Sprite ("Other/laser_kill0", "pingus");
+  
   is_multi_direct = true;
   pingu->set_status(not_catchable);
 }
@@ -53,10 +43,10 @@ LaserKill::init(void)
 void
 LaserKill::update(float delta)
 {
-  if (counter >= (int)(surface.get_num_frames()) - 1) 
-    {
+  //if (counter >= (int)(surface.get_num_frames()) - 1) 
+  //{
       pingu->set_status(dead);
-    }
+      //}
 }
 
 /* EOF */

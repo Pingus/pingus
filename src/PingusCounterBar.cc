@@ -1,4 +1,4 @@
-//  $Id: PingusCounterBar.cc,v 1.1 2001/04/15 20:55:03 grumbel Exp $
+//  $Id: PingusCounterBar.cc,v 1.2 2001/04/20 20:53:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,7 +23,7 @@
 
 ostream& operator<<(ostream& s, const CL_Rect& rect)
 {
-  s << "[" << rect.x1 << ", " << rect.y1 << ", " << rect.x2 << ", " << rect.y2 << "]";
+  return s << "[" << rect.x1 << ", " << rect.y1 << ", " << rect.x2 << ", " << rect.y2 << "]";
 }
 
 PingusCounterBar::PingusCounterBar (boost::dummy_ptr<Server> s, Orientation o, const CL_Rect& arg_rect)

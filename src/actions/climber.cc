@@ -1,4 +1,4 @@
-//  $Id: climber.cc,v 1.13 2001/04/15 22:54:49 grumbel Exp $
+//  $Id: climber.cc,v 1.14 2001/04/20 20:53:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,9 +20,6 @@
 #include "../PingusResource.hh"
 #include "climber.hh"
 
-bool Climber::static_surfaces_loaded = false;
-CL_Surface Climber::static_surface;
-
 Climber::Climber()
 {
 }
@@ -33,17 +30,8 @@ Climber::init(void)
   action_name = "climber";
   environment = PinguEnvironment(sky | land);
 
-  if (!static_surfaces_loaded)
-    {
-      static_surface = PingusResource::load_surface ("Pingus/climber0", "pingus");
-      static_surfaces_loaded = true;
-    }
+  sprite = Sprite ("Pingus/climber0", "pingus");
 
-  surface = static_surface;
-  counter.set_size(surface.get_num_frames()/2);
-  counter.set_type(Counter::loop);
-  counter.set_count(0);
-  counter.set_speed(10);
   is_multi_direct = true;
 }
 
@@ -98,24 +86,11 @@ Climber::update(float delta)
       is_finished = true;
     }
 }
-/*
-void
-Climber::draw_offset(int x, int y, double s=1.0)
-{
-  if (pingu->status == (dead || exited))
-    return;
 
-  assert(surface);
-  
-  if (pingu->direction.is_left()) {
-    surface->put_screen(int((pingu->x_pos + x) * s), int((pingu->y_pos + y -16) * s), 
-                        int(surface->get_width() * s), int(surface->get_height() * s),
-			++counter + ((pingu->direction.is_left()) ? 0 : counter.size()));
-  } else {
-    surface->put_screen(int((pingu->x_pos + x - 32) * s), int((pingu->y_pos + y -16) * s),
-                        int(surface->get_width() * s), int(surface->get_height() * s),
-                        ++counter + ((pingu->direction.is_left()) ? 0 : counter.size()));
-  }
+void
+Climber::draw_offset(int x, int y, float s)
+{
+  sprite.put_screen (pingu->get_pos () + CL_Vector (x, y));
 }
-*/
+
 /* EOF */

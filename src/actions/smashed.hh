@@ -1,4 +1,4 @@
-//  $Id: smashed.hh,v 1.5 2001/04/08 14:10:34 grumbel Exp $
+//  $Id: smashed.hh,v 1.6 2001/04/20 20:53:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,10 +26,9 @@
 class Smashed : public PinguAction
 {
 private:
-  ///
   bool particle_thrown;
-  ///
   bool sound_played;
+  Sprite sprite;
 public:
   ///
   Smashed();
@@ -41,10 +40,10 @@ public:
   ///
   void   update(float delta);
   ///
-  bool   can_reset(void) { return false; }///
-;
-}///
-;
+  bool   can_reset(void) { return false; }
+};
+
+REGISTER_PINGUACTION(SmashedFactory, Smashed, "smashed");
 
 #endif
 

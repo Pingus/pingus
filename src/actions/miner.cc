@@ -1,4 +1,4 @@
-// $Id: miner.cc,v 1.18 2001/04/15 22:54:49 grumbel Exp $
+// $Id: miner.cc,v 1.19 2001/04/20 20:53:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,11 +34,7 @@ Miner::init(void)
   action_name = "Miner";
 
   miner_radius = PingusResource::load_surface ("Other/bash_radius", "pingus");
-  surface = PingusResource::load_surface ("Pingus/miner0", "pingus");
-  counter.set_size(surface.get_num_frames()/2);
-  counter.set_speed(10);
-  is_multi_direct = true;
-  //  slow_count.set_size(3);
+  sprite = Sprite ("Pingus/miner0", "pingus");
   slow_count = 0;
 }
 

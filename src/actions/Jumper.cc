@@ -1,4 +1,4 @@
-//  $Id: Jumper.cc,v 1.12 2001/04/15 18:34:43 grumbel Exp $
+//  $Id: Jumper.cc,v 1.13 2001/04/20 20:53:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,8 +34,6 @@ Jumper::init(void)
 		  "pingus");
 
   environment = (PinguEnvironment)(land);
-  counter.set_size(4);
-  counter.set_type(Counter::loop);
 }
 
 void

@@ -1,4 +1,4 @@
-//  $Id: bridger.cc,v 1.36 2001/04/15 22:54:49 grumbel Exp $
+//  $Id: bridger.cc,v 1.37 2001/04/20 20:53:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -48,14 +48,11 @@ Bridger::init(void)
       brick_r = PingusResource::load_surface ("Other/brick_right", "pingus");
       static_surfaces_loaded = true;
     }
-  surface = PingusResource::load_surface ("Pingus/bridger" + StringConverter::to_string(pingu->get_owner ()),
-					  "pingus");
+  sprite = Sprite (PingusResource::load_surface ("Pingus/bridger" + StringConverter::to_string(pingu->get_owner ()),
+						 "pingus"));
 
   bricks = 15;
 
-  counter.set_size(surface.get_num_frames()/2);
-  counter.set_speed(1);
-  is_multi_direct = true;
   step = 0;
   do_steps = 0;
 }
@@ -63,16 +60,8 @@ Bridger::init(void)
 void
 Bridger::draw_offset(int x, int y, float s)
 {
-  if (s == 1.0) 
-    {
-      surface.put_screen(pingu->get_x () + x + x_offset(), pingu->get_y () + y + y_offset(),
-			  do_steps + ((pingu->direction.is_left()) ? 0 : counter.get_size()));
-    }
-  else 
-    {
-      surface.put_screen(int((pingu->get_x () + x + x_offset()) * s), int((pingu->get_y () + y + y_offset() - 1) * s), 
-			  s, s, do_steps + ((pingu->direction.is_left()) ? 0 : counter.get_size()));
-    }
+  sprite.put_screen(pingu->get_x () + x,
+		    pingu->get_y () + y);
 }
 
 void

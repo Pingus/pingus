@@ -28,6 +28,7 @@ private:
   bool particle_thrown;
   ///
   bool sound_played;
+  Sprite sprite;
 public:
   ///
   Teleported();
@@ -41,8 +42,9 @@ public:
 
   ///
   int x_target, y_target;
-}///
-;
+};
+
+REGISTER_PINGUACTION(TeleportedFactory, Teleported, "teleported");
 
 #endif
 

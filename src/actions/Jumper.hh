@@ -1,4 +1,4 @@
-//  $Id: Jumper.hh,v 1.10 2001/04/15 18:34:43 grumbel Exp $
+//  $Id: Jumper.hh,v 1.11 2001/04/20 20:53:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,6 +38,8 @@ public:
   ///
   void  update(float delta);
 };
+
+REGISTER_PINGUACTION(JumperFactory, Jumper, "jumper");
 
 #endif
 
