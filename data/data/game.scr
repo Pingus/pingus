@@ -10,6 +10,9 @@ section Game
 	pingubw = images/misc/pingubw.pcx (type=surface, x=0, y=0, width=307, height=400, tcol=0);
 
 	404 = images/misc/404.pcx (type=surface, x=0, y=0, width=64, height=64);
+
+	dot_green = images/misc/dot_green.tga (type=surface, x=0, y=0, width=32, height=12);
+        dot_red = images/misc/dot_red.tga (type=surface, x=0, y=0, width=32, height=12);
 }
 
 section Cursors

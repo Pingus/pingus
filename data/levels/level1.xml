@@ -1,16 +1,5 @@
-<?xml version="1.0"?>
-
-
-<pingus-level>
-  <global>
-    <levelname lang="en">Hard work to dig!</levelname>
-    <levelname lang="de">Ziemlich viel zu graben!</levelname>
-
-    <description lang="en">This level demonstrates the woodthing entrance. Its is not meant to be finished or playable.</description>
-
-    <description lang="de">Die Pingus scheinen nun in der H"olle gelandet zu sein, um sie herum Lava und Fallen. Der Ausgang scheint unerreichbar.
+<pingus-level><global><levelname lang="en">Hard work to dig!</levelname><levelname lang="de">Ziemlich viel zu graben!</levelname><description lang="en">This level demonstrates the woodthing entrance. Its is not meant to be finished or playable.</description><description lang="de">Die Pingus scheinen nun in der H"olle gelandet zu sein, um sie herum Lava und Fallen. Der Ausgang scheint unerreichbar.
 Doch mit gezieltem graben sollten sie noch eine Chance haben.</description>
-
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
     <number-of-pingus>100</number-of-pingus>
     <number-to-save>50</number-to-save>
@@ -18,7 +7,6 @@ Doch mit gezieltem graben sollten sie noch eine Chance haben.</description>
     <width>1728</width>
     <height>864</height>
   </global>
-
 
 <background type="surface">
   <surface><resource type="datafile">
