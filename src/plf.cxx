@@ -1,4 +1,4 @@
-//  $Id: plf.cxx,v 1.6 2002/09/14 23:31:12 grumbel Exp $
+//  $Id: plf.cxx,v 1.7 2002/09/14 23:46:58 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,8 +35,6 @@ PLF::PLF()
   difficulty = 5;  
   playable = false;
   music = ResDescriptor("file", "pingus-4.it");
-  //maptype = SPOT;
-  foreground.type = ResDescriptor::RD_FILE;
 }
 
 // Destroy all data
@@ -49,58 +47,6 @@ PLF::~PLF()
       delete *i;
     }
 }
-/*
-vector<shared_ptr<BackgroundData> >
-PLF::get_backgrounds()
-{
-  return backgrounds;
-}*/
-/*
-ResDescriptor
-PLF::get_foreground()
-{
-  if (!psm_filename.empty()) {
-    return ResDescriptor("file", psm_filename);
-  } else {
-    ResDescriptor ret_val = foreground;
-    
-    switch(foreground.type) {
-    case  ResDescriptor::RD_FILE:
-      ret_val.res_name = "levels/" + foreground.res_name;
-      break;
-    case  ResDescriptor::RD_RESOURCE:
-      if (verbose > 1) std::cout << "Not supported" << endl;
-      break;
-    default:
-      assert(false);
-      break;
-    }
-    return ret_val;
-  }
-}
-*/
-/*
-MapType
-PLF::map_type()
-{
-  return maptype;
-}
-*/
-/*
-ResDescriptor
-PLF::get_mapfile()
-{
-  switch(col.type) {
-  case  ResDescriptor::RD_FILE:
-    col.res_name = "levels/" + col.res_name;
-    break;
-  case  ResDescriptor::RD_RESOURCE:
-    break;
-  default:
-    break;
-  }
-  return col;
-}*/
 
 int
 PLF::get_startx()
@@ -198,12 +144,6 @@ PLF::get_author()
 {
   return author;
 }
-
-/*void
-PLF::set_psm_filename(string name)
-{
-  psm_filename = name;
-}*/
 
 std::vector<GroundpieceData> 
 PLF::get_groundpieces(void)

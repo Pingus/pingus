@@ -1,4 +1,4 @@
-//  $Id: pingus_counter_bar.cxx,v 1.1 2002/06/12 19:06:12 grumbel Exp $
+//  $Id: pingus_counter_bar.cxx,v 1.2 2002/09/14 23:46:58 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,15 +17,11 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <iostream>
 #include <ClanLib/Display/Display/display.h>
 #include "pingus_counter_bar.hxx"
 #include "server.hxx"
 #include "world.hxx"
-
-std::ostream& operator<<(std::ostream& s, const CL_Rect& rect)
-{
-  return s << "[" << rect.x1 << ", " << rect.y1 << ", " << rect.x2 << ", " << rect.y2 << "]";
-}
 
 PingusCounterBar::PingusCounterBar (Server * s, Orientation o, const CL_Rect& arg_rect)
   : server (s),
@@ -46,8 +42,6 @@ PingusCounterBar::update(float /*delta*/)
 void
 PingusCounterBar::draw ()
 {
-  //std::cout << "Drawing Clip: " << x1 << " " << y1 << " " << x2 << " " << y2 << std::endl;
-
   int length = rect.y2 - rect.y1;
   
   int complete      = server->get_world ()->get_allowed_pingus ();
