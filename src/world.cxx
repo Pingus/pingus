@@ -1,4 +1,4 @@
-//  $Id: world.cxx,v 1.16 2002/08/22 02:17:19 grumbel Exp $
+//  $Id: world.cxx,v 1.17 2002/08/22 14:37:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <algorithm>
 #include <assert.h>
 #include "force_vector.hxx"
 #include "plf.hxx"
