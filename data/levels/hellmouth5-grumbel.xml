@@ -15,7 +15,7 @@
   <action-list>
     <basher count="5"/>
     <blocker count="5"/>
-    <bomber count="5"/>
+    <bomber count="2"/>
     <bridger count="5"/>
     <slider count="5"/>
   </action-list>
