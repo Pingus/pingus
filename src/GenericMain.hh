@@ -1,4 +1,4 @@
-//  $Id: GenericMain.hh,v 1.4 2001/11/29 10:47:44 grumbel Exp $
+//  $Id: GenericMain.hh,v 1.5 2002/01/16 23:58:44 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,7 +37,7 @@ private:
   
 public:
   char* get_title();
-  int   main (int argc, char* argv[]);
+  int   main (int argc, char** argv);
 };
 
 #endif
