@@ -1,4 +1,4 @@
-//  $Id: PLFPLF.hh,v 1.1 2000/07/30 01:47:35 grumbel Exp $
+//  $Id: PLFPLF.hh,v 1.2 2000/09/07 09:41:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,7 +28,8 @@
 #include "PLF.hh"
 #include "PLFParser.hh"
 #include "PinguMap.hh"
-#include "BackgroundData.hh"
+#include "backgrounds/BackgroundData.hh"
+#include "backgrounds/SurfaceBackgroundData.hh"
 #include "ActionData.hh"
 #include "EntranceData.hh"
 #include "ExitData.hh"
@@ -44,7 +45,7 @@
 class PLFPLF : public PLFParser, public PLF
 {
 private:
- 
+  SurfaceBackgroundData* sur_background;
   ///
   EntranceData entrance_s;
   ///
