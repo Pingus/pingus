@@ -3,10 +3,8 @@
 <pingus-level>
   <global>
     <levelname lang="en">Lois and Clark</levelname>
-    <description lang="en">
+    <description lang="en"></description>
     <playable>1</playable>
-
-</description>
     <author></author>
     <number-of-pingus>100</number-of-pingus>
     <number-to-save>90</number-to-save>

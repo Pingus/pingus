@@ -39,8 +39,8 @@ $db_handle = False;
 $db_tablename = 'lct_cache';
 $db_name = 'pingus';
 $db_host = 'localhost';
-$db_user = '';
-$db_pass = '';
+$db_user = 'pingus';
+$db_pass = 'pingus';
 
 function create_table( $tablename )
 {
