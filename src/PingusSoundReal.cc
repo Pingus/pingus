@@ -1,4 +1,4 @@
-//  $Id: PingusSoundReal.cc,v 1.14 2001/11/18 23:21:33 grumbel Exp $
+//  $Id: PingusSoundReal.cc,v 1.15 2001/12/01 17:54:40 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -49,11 +49,9 @@ PingusSoundReal::~PingusSoundReal()
     delete music;
   }
   
-  map<std::string, CL_SoundBuffer_Session *>::iterator it;
-  
   // Alle allozierten Sound Buffer wieder löschen
-  for (it=sounds.begin(); it != sounds.end(); it++)
-    delete it -> second;
+  for (unsigned int i = 0; i < sound_holder.size(); i++)
+    delete sound_holder[i];
   
   if (is_init) {
 
@@ -91,25 +89,41 @@ PingusSoundReal::real_play_sound(const std::string & filename, float volume, flo
 {
 
   if (pingus_debug_flags & PINGUS_DEBUG_SOUND)
-    std::cout << "PingusSoundReal: Playing sound: " << filename << std::endl;
+    std::cout << "PingusSoundReal: Playing sound: " << filename << "Buffer-Size: " << sound_holder.size() << std::endl;
 
   if (!sound_enabled)
     return;
 
+  
 
-  // create a new CL_SoundBuffer_Session if there is none for the requested effect yet
-  if (!sounds.count(filename)) {
-    CL_SoundBuffer * sound = new CL_SoundBuffer (new CL_Sample(filename.c_str(), NULL), true);
-    sounds[filename] = new CL_SoundBuffer_Session(sound -> prepare());
+  std::vector<CL_SoundBuffer_Session *>::iterator it;
+
+  // search for unused SoundBuffer_Sessions - clean them up
+  for (it = sound_holder.begin(); it != sound_holder.end(); it++) {
+    if (!(*it) -> is_playing()) {
+      delete *it;
+      sound_holder.erase(it);
+    }
+  }
+
+  CL_SoundBuffer         * buffer;
+  CL_SoundBuffer_Session * sess;
+  
+  try {
+    buffer = new CL_SoundBuffer (new CL_Sample(filename.c_str(), NULL), true);
+    sess   = new CL_SoundBuffer_Session(buffer -> prepare());
+  } catch (const CL_Error & e) {
+    if (pingus_debug_flags & PINGUS_DEBUG_SOUND)
+      std::cout << "Can't open file " << filename << " -- skipping\n";
+    return;
   }
   
-  if (sounds[filename] -> is_playing())
-    sounds[filename] -> stop();
-  sounds[filename] -> set_volume(volume);
-  sounds[filename] -> set_pan(panning);
-  sounds[filename] -> set_looping(false);
-  sounds[filename] -> play();  
+  sess -> set_volume(volume);
+  sess -> set_pan(panning);
+  sess -> set_looping(false);
+  sess -> play();  
 
+  sound_holder.push_back(sess);
 }
 
 
@@ -130,7 +144,7 @@ PingusSoundReal::real_play_music(const std::string & filename, float volume)
   }
 
   sample = 0;
-  
+
   if (filename.substr(filename.size()-4, 4) == ".ogg") 
     {
 #ifdef HAVE_LIBCLANVORBIS

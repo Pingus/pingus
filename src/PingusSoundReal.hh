@@ -1,4 +1,4 @@
-//  $Id: PingusSoundReal.hh,v 1.9 2001/11/18 23:21:33 grumbel Exp $
+//  $Id: PingusSoundReal.hh,v 1.10 2001/12/01 17:54:53 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -44,7 +44,7 @@ private:
   CL_SoundBuffer_Session * music;
 
   /// Stores all Sound Effects
-  std::map<std::string, CL_SoundBuffer_Session *> sounds;
+  std::vector<CL_SoundBuffer_Session *> sound_holder;
 
   /// Init ClanSound and ClanMikMod
   void init();
@@ -56,7 +56,8 @@ public:
 
   /** Load a music file and play it immediately.
 
-      @param filename The complete filename */
+      @param filename The complete filename
+      @param volume   The volume to play the music with  */
   virtual void real_play_music(const std::string & filename, float volume);
 
   /** Load a sound file and play it immediately
