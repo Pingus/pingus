@@ -1,4 +1,4 @@
-//  $Id: PingusLevelResult.cc,v 1.26 2002/06/08 23:11:07 torangan Exp $
+//  $Id: PingusLevelResult.cc,v 1.27 2002/06/09 20:59:43 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,7 +31,7 @@
 #include "my_gettext.hh"
 
 
-PingusLevelResult::PingusLevelResult(World* w, boost::shared_ptr<Controller> c)
+PingusLevelResult::PingusLevelResult(World* w, Controller* c)
   : controller (c)
 {
   font = PingusResource::load_font("Fonts/pingus_small","fonts");

@@ -1,4 +1,4 @@
-//  $Id: PingusLevelResult.hh,v 1.7 2001/04/13 14:50:59 grumbel Exp $
+//  $Id: PingusLevelResult.hh,v 1.8 2002/06/09 20:59:43 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,26 +27,18 @@
 class PingusLevelResult
 {
 private:
-  ///
   CL_Surface background;
-  ///
   CL_Font*    title;
-  ///
   CL_Font*    font;
-  ///
   World*      world;
-  boost::shared_ptr<Controller> controller;
+  Controller* controller;
 
 public:
-  ///
-  PingusLevelResult(World*, boost::shared_ptr<Controller> c);
+  PingusLevelResult(World*, Controller* c);
 
-  ///
   void   draw(void);
-  ///
   std::string get_message(int);
-}///
-;
+};
 
 #endif
 

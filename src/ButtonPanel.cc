@@ -1,4 +1,4 @@
-//  $Id: ButtonPanel.cc,v 1.29 2002/06/08 23:11:07 torangan Exp $
+//  $Id: ButtonPanel.cc,v 1.30 2002/06/09 20:59:43 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,7 +31,7 @@ using boost::shared_ptr;
 CL_Surface ButtonPanel::button_cap;
 
 ButtonPanel::ButtonPanel(PLF* plf,
-			 boost::shared_ptr<Controller> arg_controller,
+			 Controller* arg_controller,
 			 int arg_x_pos, int arg_y_pos)
   : controller (arg_controller),
     x_pos (arg_x_pos), y_pos (arg_y_pos)

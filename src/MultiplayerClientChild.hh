@@ -1,4 +1,4 @@
-//  $Id: MultiplayerClientChild.hh,v 1.8 2002/06/08 23:11:07 torangan Exp $
+//  $Id: MultiplayerClientChild.hh,v 1.9 2002/06/09 20:59:43 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -48,7 +48,7 @@ private:
   CL_Vector scroll_vec;
 
 public:
-  MultiplayerClientChild (boost::shared_ptr<Controller> arg_controller, 
+  MultiplayerClientChild (Controller* arg_controller, 
 			  Server * s, const CL_Rect& arg_rect);
   ~MultiplayerClientChild ();
 

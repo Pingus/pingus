@@ -1,4 +1,4 @@
-//  $Id: View.cc,v 1.20 2002/06/09 14:04:10 torangan Exp $
+//  $Id: View.cc,v 1.21 2002/06/09 20:59:43 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -50,6 +50,12 @@ View::View(int x1, int y1, int x2, int y2, float s)
   make_range();
 }
 
+View::~View()
+{
+  //FIXME: This is dangerous and might cause throuble when the code is reordered
+  delete controller;
+}
+
 void
 View::draw()
 {
@@ -81,10 +87,6 @@ View::draw()
 		  size);
   
   CL_Display::pop_clip_rect();
-}
-
-View::~View()
-{
 }
 
 void

@@ -1,4 +1,4 @@
-//  $Id: Controllable.cc,v 1.5 2001/12/22 15:15:09 cagri Exp $
+//  $Id: Controllable.cc,v 1.6 2002/06/09 20:59:43 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,7 +19,7 @@
 
 #include "Controllable.hh"
 
-Controllable::Controllable (boost::shared_ptr<Controller> arg_controller)
+Controllable::Controllable (Controller* arg_controller)
   : controller (arg_controller)
 {
   //std::cout << "Basic buttons..." << std::endl;

@@ -1,4 +1,4 @@
-//  $Id: Playfield.hh,v 1.26 2002/06/08 23:11:08 torangan Exp $
+//  $Id: Playfield.hh,v 1.27 2002/06/09 20:59:43 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,7 +23,6 @@
 #include "ButtonPanel.hh"
 #include "View.hh"
 #include "Client.hh"
-#include "Controller.hh"
 
 class Pingu;
 class World;
@@ -31,6 +30,7 @@ class Server;
 class PinguInfo;
 class PinguHolder;
 class ButtonPanel;
+class Controller;
 
 ///
 class Playfield : public GuiObj
@@ -70,10 +70,10 @@ private:
 
   std::vector<Rect> clipping_rectangles;
 
-  boost::shared_ptr<Controller> controller;
+  Controller* controller;
 public:
   Playfield(PLF* plf, World*,
-	    boost::shared_ptr<Controller>);
+	    Controller*);
   ~Playfield();
 
   int get_x_offset();

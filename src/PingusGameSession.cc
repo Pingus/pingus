@@ -1,4 +1,4 @@
-//  $Id: PingusGameSession.cc,v 1.15 2002/06/09 13:03:11 grumbel Exp $
+//  $Id: PingusGameSession.cc,v 1.16 2002/06/09 20:59:43 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,10 +28,10 @@ using boost::shared_ptr;
 
 PingusGameSession::PingusGameSession (std::string arg_filename)
   : filename (arg_filename),
+    controller (new MouseController ()),
     plf(PLF::create (filename)),
     server (new TrueServer (plf)),
-    client (new Client(shared_ptr<Controller>(new MouseController ()), 
-		       server))
+    client (new Client(controller, server))
 {
 }
 
@@ -40,6 +40,7 @@ PingusGameSession::~PingusGameSession ()
   delete client;
   delete server;
   delete plf;
+  delete controller;
 }
 
 void 

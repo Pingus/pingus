@@ -1,4 +1,4 @@
-//  $Id: PingusGameSession.hh,v 1.9 2002/06/08 20:19:53 torangan Exp $
+//  $Id: PingusGameSession.hh,v 1.10 2002/06/09 20:59:43 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,6 +25,7 @@
 class Client;
 class Server;
 class PLF;
+class Controller;
 class PingusGameSessionResult;
 
 /** You can use this class to start up a game session, which consist
@@ -34,6 +35,8 @@ class PingusGameSession
 private:
   /// The filename of the level
   std::string filename;
+
+  Controller* controller;
 
   /// The level data
   PLF* plf;

@@ -1,4 +1,4 @@
-//  $Id: Cursor.hh,v 1.6 2002/06/08 23:11:07 torangan Exp $
+//  $Id: Cursor.hh,v 1.7 2002/06/09 20:59:43 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,10 +32,10 @@ class Cursor : public DisplayHook
 {
 private:
   Sprite sprite;
-  boost::shared_ptr<Controller> controller;
+  Controller* controller;
   
 public:
-  Cursor (std::string ident, std::string datafile, boost::shared_ptr<Controller>);
+  Cursor (std::string ident, std::string datafile, Controller*);
   virtual ~Cursor ();
   
   virtual void update (float delta);

@@ -1,4 +1,4 @@
-//  $Id: Client.cc,v 1.82 2002/06/08 23:11:07 torangan Exp $
+//  $Id: Client.cc,v 1.83 2002/06/09 20:59:43 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,7 +46,7 @@
 
 using boost::shared_ptr;
 
-Client::Client(boost::shared_ptr<Controller> arg_controller, Server * s)
+Client::Client(Controller* arg_controller, Server * s)
   : controller (arg_controller),
     cursor (new Cursor ("cursors/animcross", "core", controller))
 {
@@ -65,14 +65,14 @@ Client::Client(boost::shared_ptr<Controller> arg_controller, Server * s)
   time_display = 0;
   hurry_up = 0;
  
-  Display::add_flip_screen_hook(cursor.get ());
+  Display::add_flip_screen_hook(cursor);
   //Display::add_flip_screen_hook(new Cursor ("cursors/cursor", "core", boost::shared_ptr<Controller>(new MouseController ())));
 }
 
 Client::~Client()
 {
   //std::cout << "Client:~Client" << std::endl;
-  Display::remove_flip_screen_hook(cursor.get ());
+  Display::remove_flip_screen_hook(cursor);
   deinit_display();
 
   delete playfield;    
@@ -81,6 +81,7 @@ Client::~Client()
   delete small_map;
   delete time_display;
   delete hurry_up;
+  delete cursor;
 }
 
 void

@@ -1,4 +1,4 @@
-//  $Id: ButtonPanel.hh,v 1.15 2002/06/07 19:10:33 grumbel Exp $
+//  $Id: ButtonPanel.hh,v 1.16 2002/06/09 20:59:43 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -54,12 +54,11 @@ private:
   static CL_Surface button_cap;
   World* world;
 
-  boost::shared_ptr<Controller> controller;
+  Controller* controller;
 
   int x_pos, y_pos;
 public:
-  ButtonPanel(PLF* plf,
-	      boost::shared_ptr<Controller>,int arg_x_pos, int arg_y_pos);
+  ButtonPanel(PLF* plf, Controller*, int arg_x_pos, int arg_y_pos);
   ~ButtonPanel();
 
   void on_button_press(const CL_Key& key);

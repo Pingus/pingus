@@ -1,4 +1,4 @@
-//  $Id: PingusMenu.hh,v 1.22 2002/06/08 23:11:08 torangan Exp $
+//  $Id: PingusMenu.hh,v 1.23 2002/06/09 20:59:43 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -50,25 +50,20 @@ private:
   
   void on_resize(int w, int h);
 public:
-  ///
   PingusMenu(PingusMenuManager* m);
-  ///
   ~PingusMenu();
+
   /// Load all images and other stuff for the menu
   void preload ();
-  ////
+
   void update (float /*delta*/) {}
-  ///
   void draw(void);
-  ///
+
   void select(void);
-  ///
   bool event_enabled;
-  ///
+
   void on_button_press(CL_InputDevice *device, const CL_Key &key);
-  ///
   void on_button_release(CL_InputDevice *device, const CL_Key &key);
-  ///
   void on_mouse_move(CL_InputDevice *,int mouse_x, int mouse_y);
 };
 

@@ -1,4 +1,4 @@
-//  $Id: View.hh,v 1.12 2002/06/08 21:43:36 grumbel Exp $
+//  $Id: View.hh,v 1.13 2002/06/09 20:59:43 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -48,7 +48,7 @@ private:
 
   ///
   void make_range();
-  boost::shared_ptr<Controller> controller;
+  Controller* controller;
 public:
   /** @name The position of the View.
       

@@ -1,4 +1,4 @@
-//  $Id: PingusLevelDesc.cc,v 1.27 2002/06/08 23:11:07 torangan Exp $
+//  $Id: PingusLevelDesc.cc,v 1.28 2002/06/09 20:59:43 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,7 +32,7 @@
 
 
 PingusLevelDesc::PingusLevelDesc(PLF* arg_plf,
-				 boost::shared_ptr<Controller> arg_controller)
+				 Controller* arg_controller)
   : controller (arg_controller)
 {
   plf = arg_plf;

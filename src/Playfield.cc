@@ -1,4 +1,4 @@
-//  $Id: Playfield.cc,v 1.36 2002/06/08 23:11:08 torangan Exp $
+//  $Id: Playfield.cc,v 1.37 2002/06/09 20:59:43 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #include <cstdio>
 #include <cassert>
 
+#include "Controller.hh"
 #include "algo.hh"
 #include "globals.hh"
 #include "Playfield.hh"
@@ -35,7 +36,7 @@
 using boost::shared_ptr;
 
 Playfield::Playfield(PLF* level_data, World* w,
-		     boost::shared_ptr<Controller> arg_controller)
+		     Controller* arg_controller)
   : controller (arg_controller)
 {
   world = w;

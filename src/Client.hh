@@ -1,4 +1,4 @@
-//  $Id: Client.hh,v 1.38 2002/06/08 18:39:57 grumbel Exp $
+//  $Id: Client.hh,v 1.39 2002/06/09 20:59:43 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -66,8 +66,8 @@ private:
   SmallMap*      small_map;
   HurryUp*       hurry_up;
 
-  boost::shared_ptr<Controller> controller;
-  boost::shared_ptr<Cursor>     cursor;
+  Controller* controller;
+  Cursor*     cursor;
 
   CL_Slot on_button_press_slot;
   CL_Slot on_button_release_slot;
@@ -88,7 +88,7 @@ private:
   
   bool enabled;
 public:
-  Client(boost::shared_ptr<Controller> arg_controller, Server * s);
+  Client(Controller* arg_controller, Server * s);
   virtual ~Client();
 
   Server* get_server() { return server; }

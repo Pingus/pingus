@@ -1,4 +1,4 @@
-//  $Id: Controllable.hh,v 1.5 2002/06/08 23:11:07 torangan Exp $
+//  $Id: Controllable.hh,v 1.6 2002/06/09 20:59:43 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -57,9 +57,9 @@ protected:
   CL_Slot next_action_release_slot;
   CL_Slot previous_action_release_slot;
 
-  boost::shared_ptr<Controller> controller;
+  Controller* controller;
 public:
-  Controllable (boost::shared_ptr<Controller> arg_controller);
+  Controllable (Controller* arg_controller);
   virtual ~Controllable ();
 
   void wrapper_on_left_press (const CL_Vector& pos) { on_left_press (pos); }
