@@ -1,4 +1,4 @@
-#  $Id: configure.ac,v 1.1 2003/02/16 18:32:44 grumbel Exp $
+#  $Id: configure.ac,v 1.2 2003/02/18 17:58:28 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -297,6 +297,7 @@ AC_OUTPUT( Makefile
 	   src/input/scrollers/Makefile
            src/movers/Makefile
            src/particles/Makefile
+           src/sound/Makefile
            src/worldobjs/Makefile
            src/worldobjs/entrances/Makefile
 	   src/worldobjsdata/Makefile
