@@ -1,4 +1,4 @@
-//  $Id: Walker.cc,v 1.7 2001/12/06 10:50:40 grumbel Exp $
+//  $Id: Walker.cc,v 1.8 2001/12/09 13:48:43 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -51,7 +51,7 @@ Walker::update(float delta)
 	  for(y_inc=1; y_inc <= max_steps; y_inc++)
             if (rel_getpixel(1, y_inc) == ColMap::NOTHING)
                break; 
-	  pingu->pos.y -= --y_inc;
+	  pingu->pos.y -= y_inc;
 	  pingu->pos.x += pingu->direction;
 	}
       else

@@ -1,4 +1,4 @@
-//  $Id: ActionButton.cc,v 1.22 2001/12/06 10:50:39 grumbel Exp $
+//  $Id: ActionButton.cc,v 1.23 2001/12/09 13:48:42 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -270,7 +270,7 @@ VerticalActionButton::draw()
      && CL_Mouse::get_x() > x_pos && CL_Mouse::get_x() < x_pos + 60
      && CL_Mouse::get_y() < y_pos + 35 && CL_Mouse::get_y() > y_pos) 
   {
-	font_b->print_left (61, y_pos, name.c_str());
+	font_b->print_left (x_pos + 61, y_pos, name.c_str());
   }
 
   surface.put_screen(x_pos + 3, y_pos + 1, action_c);

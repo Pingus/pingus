@@ -1,4 +1,4 @@
-//  $Id: Faller.cc,v 1.6 2001/12/06 10:50:40 grumbel Exp $
+//  $Id: Faller.cc,v 1.7 2001/12/09 13:48:43 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,6 +31,11 @@ Faller::init(void)
 {
   faller = Sprite("Pingus/faller" + to_string(pingu->owner_id), "pingus");
   faller.set_align_center_bottom ();
+  
+  // FIXME: we can save some cpu cycles & memory if we do this when it
+  // is necessary
+  tumbler = Sprite("Pingus/tumble" + to_string(pingu->owner_id), "pingus");
+  tumbler.set_align_center_bottom ();
 }
 
 void
@@ -90,7 +95,7 @@ Faller::update (float delta)
     }
   else // Ping is on ground
     {
-      if (rel_getpixel(0, -1) == ColMap::WATER)
+      if (rel_getpixel(0, -1) & ColMap::WATER)
 	{
 	  pingu->set_paction("drown");
 	  return;
