@@ -1,4 +1,4 @@
-//  $Id: Entrance.cc,v 1.3 2000/02/11 16:58:25 grumbel Exp $
+//  $Id: Entrance.cc,v 1.4 2000/02/15 13:06:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -66,6 +66,7 @@ Entrance::pingu_ready()
 Pingu*
 Entrance::get_pingu()
 {
+  static int last_direction;
   Pingu* p;
   Direction d;
 
@@ -74,13 +75,33 @@ Entrance::get_pingu()
   p = new Pingu(x_pos, y_pos);
   
   switch (direction) {
+
   case entrance_data::LEFT:
     d.left();
     p->set_direction(d);
     break;
-  case entrance_data::RIGHT:
+
   case entrance_data::MISC:
+    if (last_direction) 
+      {
+	d.left();
+	last_direction = 0;
+      } 
+    else
+      {
+	d.right();
+	last_direction = 1;
+      }
+    p->set_direction(d);
+    break;
+	
+  case entrance_data::RIGHT:  
+    d.right();
+    p->set_direction(d);
+    break;
+    
   default:
+    std::cout << "Entrance:: Warning direction is wrong: " << direction << std::endl;
     d.right();
     p->set_direction(d);
     break;
