@@ -1,4 +1,4 @@
-//  $Id: Timer.hh,v 1.2 2000/06/18 17:01:50 grumbel Exp $
+//  $Id: Timer.hh,v 1.3 2000/08/28 00:34:39 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,8 @@
 #ifndef TIMER_HH
 #define TIMER_HH
 
-///
+/** A simple class for benchmark purpose. It lets you start and stop a
+    timer and recieve the time passed.*/
 class Timer
 {
 private:
@@ -31,9 +32,12 @@ private:
 public:
   ///
   Timer();
-  ///
+
+  /** Start the timer
+      @return The current time, as returned by CL_System::get_time() */
   int start();
-  ///
+  /** Stop the timer
+      @return The time passed since the last start() */
   int stop();
 }///
 ;

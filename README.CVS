@@ -1,0 +1,12 @@
+$Date: 2000/08/28 00:39:20 $
+
+To compile the CVS version, first run ./autogen.sh, after that then
+the normal ./configure && make stuff. You need ClanLib0.5 CVS to get
+this version compiled.
+The current CVS version requires that you start Pingus through the
+wrapper script src/run_static.sh.
+
+A lot of levels are at the moment broken.
+
+EOF
+

@@ -1,4 +1,4 @@
-//  $Id: XMLPLF.cc,v 1.7 2000/08/05 18:52:22 grumbel Exp $
+//  $Id: XMLPLF.cc,v 1.8 2000/08/28 00:34:39 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -232,47 +232,8 @@ XMLPLF::parse_liquid(xmlNodePtr cur)
 void 
 XMLPLF::parse_background(xmlNodePtr cur)
 {
-  cur = cur->childs;
-  while (cur != NULL)
-    {
-      if (strcmp((char*)cur->name, "surface") == 0)
-	{
-	  background.desc = XMLhelper::parse_surface(doc, cur);
-	}
-      else if (strcmp((char*)cur->name, "color") == 0)
-	{
-	  background.color = XMLhelper::parse_color(doc, cur);
-	}
-      else if (strcmp((char*)cur->name, "para-x") == 0)
-	{
-	  background.para_x = XMLhelper::parse_float(doc, cur);
-	}
-      else if (strcmp((char*)cur->name, "para-y") == 0)
-	{
-	  background.para_y = XMLhelper::parse_float(doc, cur);
-	}
-      else if (strcmp((char*)cur->name, "scroll-x") == 0)
-	{
-	  background.scroll_x = XMLhelper::parse_float(doc, cur);
-	}
-      else if (strcmp((char*)cur->name, "scroll-y") == 0)
-	{
-	  background.scroll_y = XMLhelper::parse_float(doc, cur);
-	}
-      else if (strcmp((char*)cur->name, "stretch-x") == 0)
-	{
-	  background.stretch_x = XMLhelper::parse_float(doc, cur);
-	}
-      else if (strcmp((char*)cur->name, "stretch-y") == 0)
-	{
-	  background.stretch_y = XMLhelper::parse_float(doc, cur);
-	}
-      else
-	{
-	  std::cout << "XMLPLF::parse_background(): Unhandled: " << cur->name << std::endl;
-	}
-      cur = cur->next;
-    }      
+  // FIXME: Memory leak?!
+  backgrounds.push_back(BackgroundData::create (doc, cur));
 }
 
 void 

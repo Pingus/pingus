@@ -1,4 +1,4 @@
-// $Id: BackgroundData.hh,v 1.2 2000/08/02 19:02:04 grumbel Exp $
+// $Id: BackgroundData.hh,v 1.3 2000/08/28 00:34:39 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,9 @@
 #ifndef BACKGROUNDDATA_HH
 #define BACKGROUNDDATA_HH
 
+#include <fstream>
+#include <gnome-xml/parser.h>
+
 #include "ResDescriptor.hh"
 #include "Color.hh"
 
@@ -27,42 +30,14 @@
 class BackgroundData
 {
 public:
-  ///
-  ResDescriptor desc;
-  ///
-  float para_x;
-  ///
-  float para_y;
+  BackgroundData();
+  virtual ~BackgroundData();
 
-  /** The amount of pixel the background is scrolled each frame in x
-      direction. */
-  float scroll_x;
-
-  /** The amount of pixel the background is scrolled each frame in x
-      direction. */
-  float scroll_y;
-
-  /** fill_rect() components
-      An fill_rect() can be drawn over the background, the following
-      for components are passed to the fill_rect() call. */
-  Color color;
-
-  /// Stretch the background to the full screen size in x direction
-  bool stretch_x;
-
-  /// Stretch the background to the full screen size in x direction
-  bool stretch_y;
-
-  /// Init all fields with some usefull defaults values.
-  BackgroundData() 
-  {
-    scroll_x = 0.0;
-    scroll_y = 0.0;
-    para_x = 0.5;
-    para_y = 0.5;
-    stretch_x = false;
-    stretch_y = false;
-  }
+  /** Writte the content of this object formated as xml to the given
+      stream */
+  virtual void write_xml(ofstream* xml) =0;
+  
+  static BackgroundData* create(xmlDocPtr doc, xmlNodePtr cur);
 };
 
 #endif

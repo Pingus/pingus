@@ -1,6 +1,9 @@
 Release 0.4.1 (??/???/2000)
 ===========================
 * Added object grouping in the editor
+* Added multiple backgrounds (paralax scrolling)
+* Fullblown xml support
+* More flexible object handling
 // * Added insertion of complex objects
 
 

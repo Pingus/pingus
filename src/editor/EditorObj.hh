@@ -1,4 +1,4 @@
-//  $Id: EditorObj.hh,v 1.18 2000/08/11 21:17:54 grumbel Exp $
+//  $Id: EditorObj.hh,v 1.19 2000/08/28 00:34:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -125,6 +125,9 @@ public:
   /// Return the object height
   virtual int get_height() { return height; }
   //@}
+
+  /** Open a gui dialog to edit the object */
+  virtual void gui_edit_obj();
 
   /** Draw the object */
   virtual void   draw_offset(int, int);

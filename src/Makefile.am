@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.33 2000/08/11 01:11:04 grumbel Exp $
+#  $Id: Makefile.am,v 1.34 2000/08/28 00:34:39 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,7 +19,7 @@
 
 bindir=$(prefix)/games
 
-SUBDIRS = actions traps particles entrances editor war caimagemanipulation
+SUBDIRS = actions traps particles entrances editor war backgrounds caimagemanipulation 
 
 EXTRA_DIST = README \
              win32/Getopt.c  \
@@ -36,6 +36,7 @@ LDADD = caimagemanipulation/libcaimagemanipulation.a \
         entrances/libpingus_entrances.a \
         particles/libpingus_particle.a  \
         editor/libpingus_editor.a       \
+        backgrounds/libpingus_backgrounds.a       \
         war/libpingus_war.a
 
 pingus_SOURCES = \
@@ -110,7 +111,7 @@ pingus_SOURCES = \
                  World.cc             World.hh             \
                  WorldObj.cc          WorldObj.hh          \
                  algo.cc              algo.hh              \
-                 BackgroundData.hh    \
+                 BackgroundData.cc    BackgroundData.hh    \
                  blitter.cc           blitter.hh	   \
                  ActionData.hh        \
 	         EntranceData.hh     \
@@ -140,7 +141,7 @@ pingus_SOURCES = \
                  SurfaceData.hh \
                  XMLhelper.cc         XMLhelper.hh \
                  PLTXML.cc            PLTXML.hh   \
-                       WeatherData.hh
+                 WeatherData.hh   
 
 #                 PinguRandomMap.cc    PinguRandomMap.hh    
 

@@ -1,4 +1,4 @@
-//  $Id: PLFObj.cc,v 1.27 2000/08/04 16:08:40 grumbel Exp $
+//  $Id: PLFObj.cc,v 1.28 2000/08/28 00:34:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -116,13 +116,13 @@ EntranceObj::EntranceObj(EntranceData data)
   
   if (type == "generic")
     {
-      surf = PingusResource::load_surface("Entrances/generic", "global");
+      surf = PingusResource::load_surface("Entrances/generic", "entrances");
       x_of = -(surf->get_width()/2);
       y_of = -surf->get_height();
     } 
   else if (type == "woodthing") 
     {
-      surf = PingusResource::load_surface("Entrances/woodthing_mov", "global");
+      surf = PingusResource::load_surface("Entrances/woodthing_mov", "entrances");
       cout << "Loading woodthing..." << endl;
       if (!surf) {
 	throw PingusError("EntranceObj: Fatal error!");
@@ -134,7 +134,7 @@ EntranceObj::EntranceObj(EntranceData data)
     } 
   else if (type == "cloud")
     {
-      surf = PingusResource::load_surface("Entrances/cloud", "global");
+      surf = PingusResource::load_surface("Entrances/cloud", "entrances");
       x_of = -115;
       y_of = -75;
     } 

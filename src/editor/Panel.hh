@@ -1,4 +1,4 @@
-//  $Id: Panel.hh,v 1.4 2000/06/18 17:01:50 grumbel Exp $
+//  $Id: Panel.hh,v 1.5 2000/08/28 00:34:39 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,7 +39,7 @@ protected:
   CL_Surface* button_pressed;
 public:
   ///
-  static EditorEvent* event;
+  static Editor* editor;
 
   ///
   PanelIcon();
@@ -65,7 +65,7 @@ private:
   ///
   std::vector<PanelIcon*>::iterator pressed_button;
   ///
-  EditorEvent* event;
+  Editor* editor;
   ///
   CL_Surface* background;
   ///
@@ -88,7 +88,7 @@ public:
   ///
   bool mouse_over(int x, int y);
   ///
-  void set_event(EditorEvent* e);
+  void set_editor(Editor* e);
 }///
 ;
 

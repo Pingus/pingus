@@ -1,4 +1,4 @@
-//  $Id: Cloud.cc,v 1.5 2000/07/30 01:47:38 grumbel Exp $
+//  $Id: Cloud.cc,v 1.6 2000/08/28 00:34:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,7 +35,7 @@ Cloud::Cloud(EntranceData data)
   pos.z_pos = 100;
   direction = data.direction;
 
-  surface = PingusResource::load_surface("Entrances/cloud","global");
+  surface = PingusResource::load_surface("Entrances/cloud","entrances");
 }
 
 void

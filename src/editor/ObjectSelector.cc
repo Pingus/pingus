@@ -1,4 +1,4 @@
-//  $Id: ObjectSelector.cc,v 1.29 2000/08/05 18:52:22 grumbel Exp $
+//  $Id: ObjectSelector.cc,v 1.30 2000/08/28 00:34:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,7 +37,7 @@ ObjectSelector::ObjectSelector()
 {
   last_object = "GroundPieces/";
   font = PingusResource::load_font("Fonts/courier_small", "fonts");
-  data_loaded = false;
+  //data_loaded = false;
 }
 
 ObjectSelector::~ObjectSelector()
@@ -246,14 +246,14 @@ ObjectSelector::get_exit()
   data.pos.y_pos = CL_Mouse::get_y() - y_offset;
   data.pos.z_pos = 0;
   
-  str = select_surface("global");
+  str = select_surface("exits");
   
   last_object = str;
 
   if (str.empty())
     return 0;
   
-  data.desc = ResDescriptor("resource:global", str);
+  data.desc = ResDescriptor("resource:exits", str);
   
   return new ExitObj(data);
 }
@@ -346,9 +346,12 @@ std::string
 ObjectSelector::select_surface(std::string resource_file)
 {
   std::string str;
+  bool datafile_loaded;
   CL_ResourceManager* res = PingusResource::get(resource_file);
-    
   SurfaceData data;
+
+  datafile_loaded = data_loaded[resource_file];
+  
   data.pos.x_pos = CL_Mouse::get_x() - x_offset;
   data.pos.y_pos = CL_Mouse::get_y() - y_offset;
 
@@ -365,15 +368,15 @@ ObjectSelector::select_surface(std::string resource_file)
       sur_obj.name = *i;
       sur_list.push_back(sur_obj);
 
-      if (!data_loaded && (j % 5) == 0)
+      if (!datafile_loaded && (j % 5) == 0)
 	{
 	  loading_screen.draw_progress(i->c_str(), (float)j / liste->size());
 	}
     }
   // Showing the mousecursor again, since loading_screen hides it
   Display::show_cursor();
-
-  data_loaded = false;
+  data_loaded[resource_file] = true;
+  //data_loaded = false;
   return select_surface(sur_list);
 }
 
@@ -410,6 +413,10 @@ ObjectSelector::read_string(string description, string def_str)
 /*
 
 $Log: ObjectSelector.cc,v $
+Revision 1.30  2000/08/28 00:34:39  grumbel
+Added support for multiple background types and multiple background layers
+Removed some .disconnect() cause they segfault here
+
 Revision 1.29  2000/08/05 18:52:22  grumbel
 Added support for weather loading/saving and inserting into the editor
 Weather is now saved in the level file

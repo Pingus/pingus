@@ -1,4 +1,4 @@
-//  $Id: PLTXML.cc,v 1.2 2000/08/05 00:00:42 grumbel Exp $
+//  $Id: PLTXML.cc,v 1.3 2000/08/28 00:34:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -51,6 +51,7 @@ void
 PLTXML::parse_background(xmlNodePtr cur)
 {
   cur = cur->childs;
+
   while (cur != NULL)
     {
       if (strcmp((char*)cur->name, "surface") == 0)
@@ -207,7 +208,7 @@ PLTXML::get_description()
   return description;
 }
 
-BackgroundData 
+SurfaceBackgroundData
 PLTXML::get_background()
 {
   return background;

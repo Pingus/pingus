@@ -1,4 +1,4 @@
-//  $Id: ClientEvent.cc,v 1.11 2000/08/09 14:39:37 grumbel Exp $
+//  $Id: ClientEvent.cc,v 1.12 2000/08/28 00:34:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -54,8 +54,9 @@ ClientEvent::unregister_event_handler()
   //CL_Input::chain_button_release.remove(this);
   //CL_Input::chain_button_press.remove(this);
 
-  CL_Input::sig_button_press.disconnect (on_button_press_slot); 
-  CL_Input::sig_button_release.disconnect (on_button_release_slot); 
+  // Disconnect segfaults
+  //CL_Input::sig_button_press.disconnect (on_button_press_slot); 
+  //CL_Input::sig_button_release.disconnect (on_button_release_slot); 
 
   enabled = false;
 }

@@ -1,4 +1,4 @@
-//  $Id: SurfaceButton.hh,v 1.8 2000/07/31 23:45:02 grumbel Exp $
+//  $Id: SurfaceButton.hh,v 1.9 2000/08/28 00:34:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -49,10 +49,10 @@ protected:
   ///
   int y_pos;
   ///
-  std::string desc;
+  map<std::string, std::string> desc;
 
-  std::string line1;
-  std::string line2;
+  map<std::string, std::string> line1;
+  map<std::string, std::string> line2;
 public:
   ///
   SurfaceButton();

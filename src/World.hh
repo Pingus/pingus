@@ -1,4 +1,4 @@
-//  $Id: World.hh,v 1.15 2000/08/09 14:39:37 grumbel Exp $
+//  $Id: World.hh,v 1.16 2000/08/28 00:34:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -60,9 +60,6 @@ private:
   ///
   PinguMap* gfx_map;
   ///
-  Background* background;
-
-  ///
   bool do_armageddon;
   ///
   std::list<Pingu*>::iterator armageddon_count;
@@ -85,6 +82,8 @@ private:
   /// The time you have to finish a level
   int exit_time;
 
+  ///
+  std::vector<Background*> backgrounds;
   ///
   std::vector<WorldObj*> world_obj_bg;
   ///
@@ -136,15 +135,15 @@ public:
   void    draw(int x1, int y1, int w, int h,
 	       int x_of, int y_of, float s);
   ///
-  void    let_move (void);
+  void    let_move ();
 
   /// Issue an armageddon, all Pingus will explode in some seconds.
-  void    armageddon (void);
+  void    armageddon ();
 
   /** @return The absolute height of the world. */
-  int     get_height (void);
+  int     get_height ();
   /** @return The absolute width of the world */
-  int     get_width(void);
+  int     get_width();
   ///
   bool    is_finished ();
 

@@ -1,4 +1,4 @@
-//  $Id: SurfaceButton.cc,v 1.11 2000/07/31 23:45:02 grumbel Exp $
+//  $Id: SurfaceButton.cc,v 1.12 2000/08/28 00:34:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,7 @@
 #include "Loading.hh"
 #include "PingusGame.hh"
 #include "OptionMenu.hh"
+#include "System.hh"
 
 #include "SurfaceButton.hh"
 
@@ -42,19 +43,27 @@ SurfaceButton::draw()
     {
       // font->print_center(CL_Display::get_width() / 2, 10, desc.c_str());
       font->print_center(CL_Display::get_width() / 2, 
-			 CL_Display::get_height() - 20, desc.c_str());
+			 CL_Display::get_height() - 20, 
+			 System::translate(desc).c_str());
 
       surface->put_screen(x_pos - surface->get_width()/2,
 			  y_pos - surface->get_height()/2);
       surface_p->put_screen(x_pos - surface_p->get_width()/2,
 			    y_pos - surface_p->get_height()/2);
 
-      font_large->print_center(x_pos + 50 - surface->get_width()/2,
-			       y_pos - surface->get_height()/2,
-			       line1.c_str());
-      font_large->print_center(x_pos + 50 - surface->get_width()/2,
-			       y_pos + font_large->get_height() - surface->get_height()/2,
-			       line2.c_str());
+  if (System::translate(line2).empty())
+    {
+      font_large->print_center(x_pos + 32, 
+			       y_pos - 32 - font_large->get_height()/2,
+			       System::translate(line1).c_str());
+    }
+  else
+    {
+      font_large->print_center(x_pos + 32, y_pos - 32 - font_large->get_height(), 
+			       System::translate(line1).c_str());
+      font_large->print_center(x_pos + 32, y_pos - 32,
+			       System::translate(line2).c_str());
+    }
     }
   else if (mouse_over() && CL_Mouse::left_pressed()) 
     {
@@ -62,11 +71,28 @@ SurfaceButton::draw()
       
       // font->print_center(CL_Display::get_width() / 2, 10, desc.c_str());
       font->print_center(CL_Display::get_width() / 2, 
-			 CL_Display::get_height() - 20, desc.c_str());
+			 CL_Display::get_height() - 20, 
+			 System::translate(desc).c_str());
+
+      surface->put_screen(x_pos - surface->get_width()/2,
+			  y_pos - surface->get_height()/2);
 
       surface_p->put_screen(x_pos - surface_p->get_width()/2 * shrink,
 			    y_pos - surface_p->get_height()/2 * shrink,
 			    shrink, shrink);
+  if (System::translate(line2).empty())
+    {
+      font_large->print_center(x_pos + 32, 
+			       y_pos - 32 - font_large->get_height()/2,
+			       System::translate(line1).c_str());
+    }
+  else
+    {
+      font_large->print_center(x_pos + 32, y_pos - 32 - font_large->get_height(), 
+			       System::translate(line1).c_str());
+      font_large->print_center(x_pos + 32, y_pos - 32,
+			       System::translate(line2).c_str());
+    }
     } 
   else 
     {
@@ -104,7 +130,7 @@ PlayButton::PlayButton()
   x_pos = CL_Display::get_width() * 126 / 640;
   y_pos = CL_Display::get_height() * 369 / 480;
 
-  desc = "..:: Starts the level you played at last ::..";
+  //  desc["en"] = "..:: Starts the level you played at last ::..";
 
   surface   = PingusResource::load_surface("NewButtons/ice_off", "menu");
   //  surface   = PingusResource::load_surface("NewButtons/credits_off", "menu");
@@ -137,7 +163,11 @@ OptionsButton::OptionsButton()
   x_pos = CL_Display::get_width() * 516 / 640; //150;
   y_pos = CL_Display::get_height() * 113 / 480; //330;
 
-  desc = "..:: Brings you to the option menu ::..";
+  desc["en"] = "..:: Brings you to the option menu ::..";
+  desc["de"] = "..:: Einstellungen und Mogeleien ::..";
+  
+  line1["en"] = "Options";
+  line1["de"] = "Einstellungen";
 
   surface   = PingusResource::load_surface("NewButtons/ice_off", "menu");
   //  surface   = PingusResource::load_surface("NewButtons/options_off", "menu");
@@ -167,7 +197,11 @@ QuitButton::QuitButton()
   x_pos = CL_Display::get_width() * 516 / 640; 
   y_pos = CL_Display::get_height() * 369 / 480; 
 
-  desc = "..:: Bye, bye ::..";
+  desc["en"] = "..:: Bye, bye ::..";
+  desc["de"] = "..:: Auf Wiedersehen ::..";
+
+  line1["en"] = "Exit";
+  line1["de"] = "Ausgang";
 
   // surface   = PingusResource::load_surface("Buttons/quit", "menu");
   // surface_p = PingusResource::load_surface("Buttons/quit_p", "menu");  
@@ -226,14 +260,17 @@ EditorButton::EditorButton()
   x_pos = CL_Display::get_width() * 126 / 640;
   y_pos = CL_Display::get_height() * 113 / 480;
 
-  desc = "..:: Launch the level editor ::..";
-  line1 = "Create a";
-  line2 = "Level";
+  desc["en"] = "..:: Launch the level editor ::..";
+  desc["de"] = "..:: Den Level Editor starten ::..";
+
+  line1["en"] = "Create a";
+  line2["en"] = "Level";
+
+  line1["de"] = "Level";
+  line2["de"] = "Editor";
 
   // surface   = PingusResource::load_surface("Buttons/editor", "menu");
   // surface_p = PingusResource::load_surface("Buttons/editor_p", "menu");
-
-  
 
   //  surface   = PingusResource::load_surface("NewButtons/ice_off", "menu");
   surface   = PingusResource::load_surface("NewButtons/ice_off", "menu");
@@ -262,7 +299,11 @@ ThemeButton::ThemeButton()
   x_pos = CL_Display::get_width() * 321 / 640; 
   y_pos = CL_Display::get_height() * 241 / 480;
 
-  desc = "..:: Let you select a world to start ::..";
+  desc["en"] = "..:: Let you select a world to start ::..";
+  desc["de"] = "..:: Such dir eine Welt zum beginnen aus ::..";
+
+  line1["en"] = "Start";
+  line1["de"] = "Start";
 
   // surface   = PingusResource::load_surface("Buttons/worlds", "menu");
   // surface_p = PingusResource::load_surface("Buttons/worlds_p", "menu");     

@@ -1,4 +1,4 @@
-#  $Id: configure.in,v 1.25 2000/08/11 01:12:37 grumbel Exp $
+#  $Id: configure.in,v 1.26 2000/08/28 00:39:20 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -70,7 +70,7 @@ dnl What are we doing here?
 PINGUS_EXTRA_PATHS
 
 dnl BUG This guesses that the X libs are in that directory
-dnl LIBS="-L/usr/X11R6/lib $LIBS"
+dnl LIBS="-L/usr/X11R6/lib -lMagick $LIBS"
 dnl BUG end
 
 dnl Checks for libraries.
@@ -121,6 +121,16 @@ AC_CHECK_LIB( clanMagick,   main,, [
 	echo "the file 'config.log' to see what went wrong"
 	exit
 	])
+
+AC_CHECK_LIB( clanGUI,   main,, [
+	echo "ClanLib is installed, but clanGUI was not found. You probably"
+	echo "forgot to compile clanGUI, which is part of the ClanLib package"
+	echo "or you need to run 'ldconfig'."
+	echo "If you think you have everything correctly installed have a look at"
+	echo "the file 'config.log' to see what went wrong"
+	exit
+	])
+
 
 dnl AC_CHECK_PROG( HAVE_CLANLIB_CONFIG, clanlib-config, "yes")
 
@@ -205,6 +215,7 @@ AC_DEFINE_UNQUOTED( PINGUS_DATADIR, "$pingus_datadir")
 AC_OUTPUT( Makefile 
            src/Makefile 
            src/actions/Makefile
+           src/backgrounds/Makefile
            src/traps/Makefile
            src/particles/Makefile
            src/entrances/Makefile

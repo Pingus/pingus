@@ -1,4 +1,4 @@
-//  $Id: WarMain.cc,v 1.2 2000/08/09 14:35:46 grumbel Exp $
+//  $Id: WarMain.cc,v 1.3 2000/08/28 00:34:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,6 +30,7 @@
 #include "WarGlobals.hh"
 #include "WarGame.hh"
 #include "WarMain.hh"
+#include "../PingusError.hh"
 
 /* Option flags and variables */
 static struct option const long_options[] =
@@ -51,20 +52,31 @@ WarMain::get_title()
 int
 WarMain::main (int argc, char* argv[])
 {
-  decode_switches(argc, argv);
+  try 
+    {
+      decode_switches(argc, argv);
 
-  CL_SetupCore::init_display();
+      CL_SetupCore::init_display();
 
-  // Initing the display
-  CL_Display::set_videomode(WarGlobals::screen_width, 
-			    WarGlobals::screen_height, 
-			    16, 
-			    WarGlobals::fullscreen_enabled, 
-			    true); // allow resize
+      // Initing the display
+      CL_Display::set_videomode(WarGlobals::screen_width, 
+				WarGlobals::screen_height, 
+				16, 
+				WarGlobals::fullscreen_enabled, 
+				true); // allow resize
 
-  WarGame game;
-  game.display();
-  
+      WarGame game;
+      game.display();
+    }
+
+  catch (CL_Error err) {
+    std::cout << "CL_Error: " << err.message << std::endl;
+  }
+
+  catch (PingusError err) {
+    std::cout << "PingusError: " << err.message << std::endl;
+  }
+
   return 0;
 }
 
@@ -134,4 +146,3 @@ WarMain::usage(int status)
 }
 
 /* EOF */
-

@@ -1,4 +1,4 @@
-//  $Id: WoodThing.cc,v 1.6 2000/08/03 10:31:18 grumbel Exp $
+//  $Id: WoodThing.cc,v 1.7 2000/08/28 00:34:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,8 +32,8 @@ WoodThing::WoodThing(EntranceData data)
   last_release = -release_rate;
   direction = data.direction;
 
-  surface  = PingusResource::load_surface("Entrances/woodthing_mov", "global");
-  surface2 = PingusResource::load_surface("Entrances/woodthing_nmov", "global");
+  surface  = PingusResource::load_surface("Entrances/woodthing_mov", "entrances");
+  surface2 = PingusResource::load_surface("Entrances/woodthing_nmov", "entrances");
 
   counter.set_size(surface->get_num_frames());
   counter.set_type(GameCounter::once);

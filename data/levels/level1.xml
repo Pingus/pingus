@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 
-<!DOCTYPE pingus-level SYSTEM "http://www.pingus.cx/dtd/pingus-level.dtd">
+
 <pingus-level>
   <global>
     <levelname lang="en">Hard work to dig!</levelname>
@@ -19,24 +19,54 @@ Doch mit gezieltem graben sollten sie noch eine Chance haben.</description>
     <height>864</height>
   </global>
 
+
 <background>
   <surface><resource type="datafile">
     <resource-datafile>textures</resource-datafile>
-  <resource-ident>Textures/rocktile</resource-ident>
+  <resource-ident>Textures/clouds</resource-ident>
+  </resource></surface>
+  <para-x>0.1</para-x>
+  <para-y>0.1</para-y>
+  <scroll-x>3</scroll-x>
+  </background>
+
+<background>
+  <surface><resource type="datafile">
+    <resource-datafile>thunderstorm</resource-datafile>
+  <resource-ident>mounten</resource-ident>
   </resource></surface>
   <color>
-    <red>0.6</red>
+    <red>0</red>
     <green>0</green>
     <blue>0</blue>
-    <alpha>0.3</alpha>
+    <alpha>0</alpha>
   </color>
   <scroll-x>0</scroll-x>
   <scroll-y>0</scroll-y>
-  <para-x>0.5</para-x>
-  <para-y>0.5</para-y>
+  <para-x>0.2</para-x>
+  <para-y>0.2</para-y>
   <stretch-x>0</stretch-x>
   <stretch-y>0</stretch-y>
 </background>
+<background>
+  <surface><resource type="datafile">
+    <resource-datafile>thunderstorm</resource-datafile>
+  <resource-ident>mounten</resource-ident>
+  </resource></surface>
+  <color>
+    <red>0</red>
+    <green>0</green>
+    <blue>0</blue>
+    <alpha>0</alpha>
+  </color>
+  <scroll-x>0</scroll-x>
+  <scroll-y>0</scroll-y>
+  <para-x>0.4</para-x>
+  <para-y>0.4</para-y>
+  <stretch-x>0</stretch-x>
+  <stretch-y>0</stretch-y>
+</background>
+
 
   <action-list>
     <basher>20</basher>
@@ -106,7 +136,7 @@ Doch mit gezieltem graben sollten sie noch eine Chance haben.</description>
     <z-pos>0</z-pos>
   </position>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
+    <resource-datafile>exits</resource-datafile>
   <resource-ident>Exits/stone</resource-ident>
   </resource></surface>
 </exit>

@@ -1,4 +1,4 @@
-//  $Id: EditorEvent.cc,v 1.30 2000/08/11 21:17:54 grumbel Exp $
+//  $Id: EditorEvent.cc,v 1.31 2000/08/28 00:34:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,6 +28,7 @@
 #include "../System.hh"
 #include "../Loading.hh"
 #include "../Display.hh"
+#include "../backgrounds/SurfaceBackgroundData.hh"
 #include "ObjectManager.hh"
 #include "EditorObjGroup.hh"
 #include "StringReader.hh"
@@ -132,7 +133,11 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key& key)
     
 	  // Select another background.
 	case CL_KEY_F10:
-	  object_manager->background.desc.res_name = editor->object_selector->get_background();
+	  {
+	    SurfaceBackgroundData* sur_bg;
+	    if ((sur_bg = dynamic_cast<SurfaceBackgroundData*>(*(object_manager->backgrounds.begin()))) != 0)
+	      sur_bg->desc.res_name = editor->object_selector->get_background();
+	  }
 	  break;
 
 	  /*	case CL_KEY_F11:

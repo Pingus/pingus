@@ -1,4 +1,4 @@
-//  $Id: PanelIcons.cc,v 1.5 2000/06/27 16:05:16 grumbel Exp $
+//  $Id: PanelIcons.cc,v 1.6 2000/08/28 00:34:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,7 +29,7 @@ void
 PanelIconLoad::on_click()
 {
   std::cout << "Load level..." << std::endl;
-  event->editor_load_level();
+  editor->get_event()->editor_load_level();
 }
 
 PanelIconExit::PanelIconExit()
@@ -40,7 +40,7 @@ PanelIconExit::PanelIconExit()
 void 
 PanelIconExit::on_click()
 {
-  event->editor_exit();
+  editor->get_event()->editor_exit();
 }
 
 PanelIconSave::PanelIconSave()
@@ -51,7 +51,7 @@ PanelIconSave::PanelIconSave()
 void 
 PanelIconSave::on_click()
 {
-  event->editor_save_level_as();
+  editor->get_event()->editor_save_level_as();
 }
 
 PanelIconDelete::PanelIconDelete()
@@ -62,7 +62,7 @@ PanelIconDelete::PanelIconDelete()
 void 
 PanelIconDelete::on_click()
 {
-  event->editor_delete_selected_objects();
+  editor->get_event()->editor_delete_selected_objects();
 }
 
 PanelIconCopy::PanelIconCopy()
@@ -73,7 +73,7 @@ PanelIconCopy::PanelIconCopy()
 void
 PanelIconCopy::on_click()
 {
-  event->editor_duplicate_current_selection();
+  editor->get_event()->editor_duplicate_current_selection();
 }
 
 PanelIconEdit::PanelIconEdit()
@@ -95,7 +95,8 @@ PanelIconPreferences::on_click()
 void 
 PanelIconEdit::on_click()
 {
-  std::cout << "Edit not implemented" << std::endl;
+  // std::cout << "Edit not implemented" << std::endl;
+  editor->edit_current_objs();
 }
 
 PanelIconRun::PanelIconRun()
@@ -106,7 +107,7 @@ PanelIconRun::PanelIconRun()
 void 
 PanelIconRun::on_click()
 {
-  event->editor_start_current_level();
+  editor->get_event()->editor_start_current_level();
 }
 
 PanelIconNew::PanelIconNew()
@@ -117,7 +118,7 @@ PanelIconNew::PanelIconNew()
 void
 PanelIconNew::on_click()
 {
-  event->editor_new_level();
+  editor->get_event()->editor_new_level();
 }
 
 PanelIconInsertObject::PanelIconInsertObject()
@@ -128,7 +129,7 @@ PanelIconInsertObject::PanelIconInsertObject()
 void
 PanelIconInsertObject::on_click()
 {
-  event->editor_insert_new_object();
+  editor->get_event()->editor_insert_new_object();
 }
 
 /* EOF */

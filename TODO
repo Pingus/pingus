@@ -1,11 +1,13 @@
 Release Critical:
 ~~~~~~~~~~~~~~~~~
+ o Bridge building is broken
+ o Input handling is broken, the number keys doesn't seem to work
+ o Editor reagiert nicht auf Nummern Tastatur
  o Screen border isn't fatal
  o Minner goes throu metal
  o Bridger colmap bug
  o default directory when saving a level
  o Solid can be bashed away if a bridge is placed in it
-
  o Basher bash thru solid object
  o Exits are not drawn at the correct positions in the small map
  o Resource aren't found from time to time, even if they are present
@@ -170,6 +172,6 @@ DOOR.WAV      MOUSEPRE.WAV  OING.WAV	     THUD.WAV
 
 
 
-$Date: 2000/07/31 23:49:45 $
+$Date: 2000/08/28 00:39:20 $
 
 -= EOF =-

@@ -1,4 +1,4 @@
-//  $Id: PLTXML.hh,v 1.1 2000/08/04 22:19:21 grumbel Exp $
+//  $Id: PLTXML.hh,v 1.2 2000/08/28 00:34:39 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,7 +24,7 @@
 #include <vector>
 #include <string>
 #include <map>
-#include "BackgroundData.hh"
+#include "backgrounds/SurfaceBackgroundData.hh"
 
 class PLTXML
 {
@@ -33,7 +33,7 @@ private:
   std::vector<std::string> level_list;
   map<std::string, std::string> world_name;
   map<std::string, std::string> description;
-  BackgroundData background;
+  SurfaceBackgroundData background;
 
   void parse_file();
   void parse_background(xmlNodePtr cur);
@@ -55,7 +55,7 @@ public:
   ///
   map<std::string,std::string> get_description();
   ///
-  BackgroundData get_background();
+  SurfaceBackgroundData get_background();
   ///
   std::string get_surface() { return ""; }
   ///

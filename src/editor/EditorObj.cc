@@ -1,4 +1,4 @@
-// $Id: EditorObj.cc,v 1.16 2000/08/11 21:17:54 grumbel Exp $
+// $Id: EditorObj.cc,v 1.17 2000/08/28 00:34:39 grumbel Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -269,9 +269,19 @@ EditorObj::save_position_xml(std::ofstream* xml, Position pos)
 	 << "    <z-pos>" << pos.z_pos << "</z-pos>\n"
 	 << "  </position>\n";
 }
+
+void
+EditorObj::gui_edit_obj()
+{
+  std::cout << "EditorObj::gui_edit_obj() not implemented" << std::endl;
+}
   
 /*
 $Log: EditorObj.cc,v $
+Revision 1.17  2000/08/28 00:34:39  grumbel
+Added support for multiple background types and multiple background layers
+Removed some .disconnect() cause they segfault here
+
 Revision 1.16  2000/08/11 21:17:54  grumbel
 Added a level map into the ScrollMap, but its needs some optimizations
 

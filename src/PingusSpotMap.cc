@@ -1,4 +1,4 @@
-//  $Id: PingusSpotMap.cc,v 1.33 2000/08/03 19:12:26 grumbel Exp $
+//  $Id: PingusSpotMap.cc,v 1.34 2000/08/28 00:34:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -242,19 +242,16 @@ PingusSpotMap::create_map()
 	{
 	  mark_tiles_not_empty(i->pos.x_pos, i->pos.y_pos,
 			      i->surface->get_width(), i->surface->get_height());
-
-	  // i->surface->put_target(i->x_pos, i->y_pos, 0, map_canvas);
 	  // FIXME: Replace this with a ClanLib built in
-	  Blitter::put_surface(map_canvas, i->surface->get_provider(),
+	  //i->surface->put_target(i->pos.x_pos, i->pos.y_pos, 0, map_canvas);
+	  Blitter::put_surface(map_canvas, i->surface,
 			       i->pos.x_pos, i->pos.y_pos);
 	}
       else
 	{
-	  // std::cout << "PingusSpotMap: Using put_tartget(), might be unstable" << std::endl;
-	  //std::cout << "Color depth: " << i->surface->get_provider()->get_depth() << std::endl;
-	  Blitter::put_surface(map_canvas, i->surface->get_provider(),
-			       i->pos.x_pos, i->pos.y_pos);
-	  //i->surface->put_target(i->x_pos, i->y_pos, 0, map_canvas);
+	  Blitter::put_surface(map_canvas, i->surface,
+	    i->pos.x_pos, i->pos.y_pos);
+	  //i->surface->put_target(i->pos.x_pos, i->pos.y_pos, 0, map_canvas);
 	}
     }
 
@@ -484,9 +481,9 @@ PingusSpotMap::put(CL_SurfaceProvider* sprovider, int x, int y)
   if (start_y < 0)
     start_y = 0;
 
-  if (end_x > tile.size() - 1)
+  if (end_x > (int) tile.size() - 1)
     end_x = tile.size() - 1;
-  if (end_y > tile[0].size() - 1)
+  if (end_y > (int) tile[0].size() - 1)
     end_y = tile[0].size() - 1;
 
   for(int ix = start_x; ix <= end_x; ++ix) 
@@ -499,17 +496,17 @@ PingusSpotMap::put(CL_SurfaceProvider* sprovider, int x, int y)
 	      std::cout << "PingusSpotMap: Drawing to an emtpy tile: " << ix << " " << iy << std::endl;
 	      canvas = new CL_Canvas(tile_size, tile_size);
 	      Blitter::clear_canvas(canvas);
-	      
+
 	      Blitter::put_surface(canvas, sprovider,
 				   x - (ix * tile_size), y - (iy * tile_size));
-	      
+
 	      tile[ix][iy].surface = CL_Surface::create(canvas, true);
 	    }
 	  else
 	    {
 	      Blitter::put_surface(static_cast<CL_Canvas*>(tile[ix][iy].surface->get_provider()),
-			  sprovider,
-			  x - (ix * tile_size), y - (iy * tile_size));
+				   sprovider,
+				   x - (ix * tile_size), y - (iy * tile_size));
 	    }
 	  /*
 	  CL_Surface* s = CL_Surface::create(sprovider);

@@ -1,4 +1,4 @@
-//  $Id: XMLhelper.hh,v 1.3 2000/08/05 18:52:22 grumbel Exp $
+//  $Id: XMLhelper.hh,v 1.4 2000/08/28 00:34:39 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,9 @@
 #define XMLHELPER_HH
 
 #include <string>
+#include <fstream>
 #include <gnome-xml/parser.h> 
+
 #include "ResDescriptor.hh"
 #include "Position.hh"
 #include "Color.hh"
@@ -33,12 +35,23 @@ private:
 public:
   static std::string XMLhelper::encode_entities(const std::string& arg_str);
 
+  /// A set of function to parse an xml file
+  //@{
   static ResDescriptor parse_surface(xmlDocPtr doc, xmlNodePtr cur);
   static Position      parse_position(xmlDocPtr doc, xmlNodePtr cur);
   static std::string   parse_string(xmlDocPtr doc, xmlNodePtr cur);
   static int           parse_int(xmlDocPtr doc, xmlNodePtr cur);
   static float         parse_float(xmlDocPtr doc, xmlNodePtr cur);
   static Color         parse_color(xmlDocPtr doc, xmlNodePtr cur);
+  //@}
+
+  /// A set of functions to write data down to an xml file
+  //@{
+  /** Writes the given res_desc to the ofstream */
+  static void write_desc_xml(std::ofstream* xml, ResDescriptor desc);
+  /** Write a position to the xml ofstream */
+  static void write_position_xml(std::ofstream* xml, Position pos);
+  //@}
 };
 
 #endif

@@ -1,4 +1,4 @@
-//  $Id: World.cc,v 1.32 2000/08/09 14:39:37 grumbel Exp $
+//  $Id: World.cc,v 1.33 2000/08/28 00:34:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,7 +30,7 @@
 #include "PingusError.hh"
 #include "algo.hh"
 #include "globals.hh"
-#include "Background.hh"
+#include "backgrounds/SurfaceBackground.hh"
 #include "World.hh"
 #include "traps/traps.hh"
 #include "Result.hh"
@@ -40,6 +40,7 @@
 #include "FVec.hh"
 #include "Timer.hh"
 #include "particles/SnowGenerator.hh"
+#include "Background.hh"
 
 using namespace std;
 
@@ -62,7 +63,7 @@ World::World()
   particle_holder = 0;
   released_pingus = 0;
   gfx_map = 0;
-  background = 0;
+  //background = 0;
   exit_world = false;
   WorldObj::set_world(this);
 }
@@ -81,7 +82,9 @@ World::~World()
   delete pingus;
   delete particle_holder;
   delete gfx_map;
-  delete background;
+  
+  for (vector<Background*>::iterator i = backgrounds.begin(); i != backgrounds.end(); i++)
+    delete *i;
 
   for(vector<WorldObj*>::iterator obj = world_obj_bg.begin();
       obj != world_obj_bg.end();
@@ -98,8 +101,9 @@ World::draw(int x1, int y1, int w, int h,
 {
   x_of += x1;
   y_of += y1;
-
-  background->draw_offset(x_of, y_of, s);
+  
+  for (vector<Background*>::iterator i = backgrounds.begin(); i != backgrounds.end(); i++)
+    (*i)->draw_offset(x_of, y_of, s);
 
   for(vector<WorldObj*>::iterator obj = world_obj_bg.begin(); obj != world_obj_bg.end(); obj++)
     {
@@ -195,7 +199,9 @@ World::let_move()
     entrance[i2]->let_move();
   */    
   particle_holder->let_move();
-  background->let_move();
+
+  for (vector<Background*>::iterator i = backgrounds.begin(); i != backgrounds.end(); i++)
+    (*i)->let_move();
 
   // Clear the explosion force list
   ForcesHolder::clear_explo_list();
@@ -250,8 +256,12 @@ World::init_map()
 void 
 World::init_background()
 {
+  vector<BackgroundData*> bg_data = plf->get_backgrounds();
   // load the background map
-  background = new Background(plf->get_background());
+  for (vector<BackgroundData*>::iterator i = bg_data.begin();
+       i != bg_data.end();
+       ++i)
+    backgrounds.push_back(Background::create(*i));
 }
 
 void

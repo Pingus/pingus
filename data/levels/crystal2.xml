@@ -1,6 +1,5 @@
 <?xml version="1.0"?>
 
-<!DOCTYPE pingus-level SYSTEM "http://www.pingus.cx/dtd/pingus-level.dtd">
 <pingus-level>
   <global>
     <levelname lang="en">Its getting hot...</levelname>
@@ -57,18 +56,6 @@ animated backgrounds might follow later.
   <direction>left</direction>
   <release-rate>25</release-rate>
 </entrance>
-
-<exit>
-  <position>
-    <x-pos>1020</x-pos>
-    <y-pos>920</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>Exits/stone</resource-ident>
-  </resource></surface>
-</exit>
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
@@ -352,8 +339,8 @@ animated backgrounds might follow later.
   <resource-ident>GroundPieces/Crystal/pipe</resource-ident>
   </resource></surface>
   <position>
-    <x-pos>1055</x-pos>
-    <y-pos>981</y-pos>
+    <x-pos>1072</x-pos>
+    <y-pos>1006</y-pos>
     <z-pos>43</z-pos>
   </position>
 </groundpiece>
@@ -448,8 +435,8 @@ animated backgrounds might follow later.
   <resource-ident>GroundPieces/Crystal/pipe</resource-ident>
   </resource></surface>
   <position>
-    <x-pos>853</x-pos>
-    <y-pos>981</y-pos>
+    <x-pos>870</x-pos>
+    <y-pos>1006</y-pos>
     <z-pos>43</z-pos>
   </position>
 </groundpiece>
@@ -616,8 +603,8 @@ animated backgrounds might follow later.
   <resource-ident>GroundPieces/Crystal/pipe</resource-ident>
   </resource></surface>
   <position>
-    <x-pos>954</x-pos>
-    <y-pos>981</y-pos>
+    <x-pos>971</x-pos>
+    <y-pos>1006</y-pos>
     <z-pos>43</z-pos>
   </position>
 </groundpiece>
@@ -1024,8 +1011,8 @@ animated backgrounds might follow later.
   <resource-ident>GroundPieces/Crystal/pointright</resource-ident>
   </resource></surface>
   <position>
-    <x-pos>821</x-pos>
-    <y-pos>981</y-pos>
+    <x-pos>838</x-pos>
+    <y-pos>1006</y-pos>
     <z-pos>43</z-pos>
   </position>
 </groundpiece>
@@ -1300,8 +1287,8 @@ animated backgrounds might follow later.
   <resource-ident>GroundPieces/Crystal/pointleft</resource-ident>
   </resource></surface>
   <position>
-    <x-pos>1156</x-pos>
-    <y-pos>981</y-pos>
+    <x-pos>1173</x-pos>
+    <y-pos>1006</y-pos>
     <z-pos>43</z-pos>
   </position>
 </groundpiece>
@@ -1325,6 +1312,18 @@ animated backgrounds might follow later.
     <z-pos>1000</z-pos>
   </position>
   </start-position>
+
+<exit>
+  <position>
+    <x-pos>1010</x-pos>
+    <y-pos>902</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+  <surface><resource type="datafile">
+    <resource-datafile>exits</resource-datafile>
+  <resource-ident>Exits/crystal</resource-ident>
+  </resource></surface>
+</exit>
 
 </pingus-level>
 

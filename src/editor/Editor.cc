@@ -1,4 +1,4 @@
-//  $Id: Editor.cc,v 1.18 2000/08/11 21:17:54 grumbel Exp $
+//  $Id: Editor.cc,v 1.19 2000/08/28 00:34:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -50,7 +50,7 @@ Editor::Editor ()
   font = PingusResource::load_font("Fonts/courier_small", "fonts");
   panel->init();
   status_line->set_current_objs(&object_manager->current_objs);
-  panel->set_event(event);
+  panel->set_editor(this);
   scroll_map->editor_event = event;
 }
 
@@ -97,8 +97,8 @@ Editor::unregister_event_handler()
   //CL_Input::chain_button_release.remove(event);
   //CL_Input::chain_button_press.remove(event);
 
-  CL_Input::sig_button_press.disconnect (on_button_press_slot);
-  CL_Input::sig_button_release.disconnect (on_button_release_slot);
+  //  CL_Input::sig_button_press.disconnect (on_button_press_slot);
+  //  CL_Input::sig_button_release.disconnect (on_button_release_slot);
 
   CL_System::keep_alive();
   if (verbose) std::cout << "done: " << event_handler_ref_counter << std::endl;
@@ -376,6 +376,20 @@ Editor::interactive_move_object()
       CL_System::keep_alive();
     }
 }
+
+void
+Editor::edit_current_objs()
+{
+  EditorObj* obj = object_manager->get_current_obj();
+
+  if (obj)
+    obj->gui_edit_obj();
+  else
+    std::cout << "No single object selected" << std::endl;
+  //EditorEditGUI::edit_obj(obj);
+}
+
+
 /*
 void
 Editor::interactive_load()
@@ -424,6 +438,10 @@ Editor::interactive_load()
 
 /***********************************************
 $Log: Editor.cc,v $
+Revision 1.19  2000/08/28 00:34:39  grumbel
+Added support for multiple background types and multiple background layers
+Removed some .disconnect() cause they segfault here
+
 Revision 1.18  2000/08/11 21:17:54  grumbel
 Added a level map into the ScrollMap, but its needs some optimizations
 

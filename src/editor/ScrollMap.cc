@@ -1,4 +1,4 @@
-//  $Id: ScrollMap.cc,v 1.3 2000/08/11 21:17:54 grumbel Exp $
+//  $Id: ScrollMap.cc,v 1.4 2000/08/28 00:34:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -69,22 +69,6 @@ ScrollMap::mouse_over(int x, int y)
 void 
 ScrollMap::draw()
 {
-  if (mouse_over(CL_Mouse::get_x(), CL_Mouse::get_y()))
-    {
-      CL_Display::fill_rect(x_pos, y_pos,
-			    x_pos + width,
-			    y_pos + height,
-			    0.1, 0.1, 0.1, 0.8);
-    }
-  else
-    {
-      // The rectangle, which represents the complet world
-      CL_Display::fill_rect(x_pos, y_pos,
-			    x_pos + width,
-			    y_pos + height,
-			    0.0, 0.0, 0.0, 0.9);
-    }
-  
   int viewarea_width = (CL_Display::get_width() * width
 			/ editor_event->object_manager->get_width());
   int viewarea_height = (CL_Display::get_height() * height
@@ -94,14 +78,23 @@ ScrollMap::draw()
   int viewarea_y_pos = (y_pos - (editor_event->object_manager->get_y_offset() * height
 				 / editor_event->object_manager->get_height())); 
 
+  CL_Display::fill_rect(x_pos, y_pos,
+			x_pos + width,
+			y_pos + height,
+			0.0, 0.0, 0.0, 1.0);
+
+  // The rectangle, which represents the current viewpoint
+  if (mouse_over(CL_Mouse::get_x(), CL_Mouse::get_y()))
+    {
+      Display::draw_rect(viewarea_x_pos,
+			 viewarea_y_pos,
+			 viewarea_x_pos + viewarea_width,
+			 viewarea_y_pos + viewarea_height,
+			 1.0, 1.0, 1.0, 1.0);
+    }
+
   editor_event->object_manager->draw_scroll_map(x_pos, y_pos, width, height);
   
-  // The rectangle, which represents the current viewpoint
-  Display::draw_rect(viewarea_x_pos,
-		     viewarea_y_pos,
-		     viewarea_x_pos + viewarea_width,
-		     viewarea_y_pos + viewarea_height,
-		     1.0, 1.0, 1.0, 1.0);
 
   // The rectangle, which represents the complet world
   Display::draw_rect(x_pos, y_pos,

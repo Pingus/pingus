@@ -15,8 +15,36 @@
 
 <background>
   <surface><resource type="datafile">
-    <resource-datafile>textures.dat</resource-datafile>
-  <resource-ident>Textures/stars</resource-ident>
+    <resource-datafile>thunderstorm</resource-datafile>
+  <resource-ident>green</resource-ident>
+  </resource></surface>
+  <color>
+    <red>0</red>
+    <green>0</green>
+    <blue>0</blue>
+    <alpha>0</alpha>
+  </color>
+  <scroll-x>0</scroll-x>
+  <scroll-y>0</scroll-y>
+  <para-x>0.5</para-x>
+  <para-y>0.5</para-y>
+  <stretch-x>0</stretch-x>
+  <stretch-y>0</stretch-y>
+</background>
+
+
+<background>
+  <surface><resource type="datafile">
+    <resource-datafile>textures</resource-datafile>
+  <resource-ident>Textures/rocktile</resource-ident>
+  </resource></surface>
+
+  </background>
+
+<background>
+  <surface><resource type="datafile">
+    <resource-datafile>thunderstorm</resource-datafile>
+  <resource-ident>green</resource-ident>
   </resource></surface>
   <color>
     <red>0</red>
@@ -94,7 +122,7 @@
     <z-pos>0</z-pos>
   </position>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
+    <resource-datafile>exits</resource-datafile>
   <resource-ident>Exits/stone</resource-ident>
   </resource></surface>
 </exit>

@@ -1,4 +1,4 @@
-//  $Id: ObjectManager.hh,v 1.11 2000/08/11 21:17:54 grumbel Exp $
+//  $Id: ObjectManager.hh,v 1.12 2000/08/28 00:34:39 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -40,7 +40,7 @@ private:
   ///
   std::vector<ActionData> actions;
   ///
-  BackgroundData background;
+  std::vector<BackgroundData*> backgrounds;
   ///
   int    number_to_save;
   ///
@@ -60,9 +60,11 @@ private:
   ///
   bool   quit;
 
-  ///
+  /** All objects which are visible in the editor */ 
   std::list<EditorObj*> editor_objs;
-  ///
+
+  /** This list contains all objects, which are in the current
+      selection */
   std::list<EditorObj*> current_objs;
 
   ///
@@ -134,6 +136,10 @@ public:
   ///
   void set_viewpoint(int x, int y);
 
+  /** Return the currently selected object, if none is selected or
+      multiple objects are selected return 0 */
+  EditorObj* get_current_obj();
+  
   ///
   void move_current_objs(int x, int y);
   ///

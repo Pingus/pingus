@@ -1,4 +1,4 @@
-//  $Id: PLFPLF.cc,v 1.4 2000/08/03 19:12:26 grumbel Exp $
+//  $Id: PLFPLF.cc,v 1.5 2000/08/28 00:34:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,6 +29,7 @@
 #include "PingusError.hh"
 #include "PSMParser.hh"
 #include "PLFPLF.hh"
+#include "backgrounds/SurfaceBackgroundData.hh"
 
 using namespace std;
 
@@ -48,6 +49,7 @@ PLFPLF::PLFPLF(string arg_filename)
   max_time = 9000;
   number_to_save = 0;
   difficulty = 5;
+  //background = 0;
   music = ResDescriptor("file", "pingus-4.it");
 
   col = ResDescriptor("auto", "-Auto ColMap-");
@@ -97,84 +99,93 @@ PLFPLF::set_value(string valueid,
     break;
 
   case PLFPLF::BACKGROUND:
-    if (valueid == "image") 
-      {
-	background.desc = ResDescriptor(cast, value);
-      } 
-    else if (valueid == "scroll_x") 
-      {
-	background.scroll_x  = str_to_float(value);
-      } 
-    else if (valueid == "scroll_y") 
-      {
-	background.scroll_y = str_to_float(value);
-      } 
-    else if (valueid == "para_x")
-      {
-	background.para_x = str_to_float(value);
-      }
-    else if (valueid == "para_y")
-      {
-	background.para_y = str_to_float(value);
-      }
-    else if (valueid == "stretch_x")
-      {
-	background.stretch_x = str_to_bool(value);
-      }
-    else if (valueid == "stretch_y")
-      {
-	background.stretch_y = str_to_bool(value);
-      }
-    else if (valueid == "dim") 
-      {
-	background.color.alpha = str_to_float(value);
-      } 
-    else if (valueid == "alpha") 
-      {
-	background.color.alpha = str_to_float(value);
-      } 
-    else if (valueid == "red") 
-      {
-	background.color.red = str_to_float(value);	
-      } 
-    else if (valueid == "green") 
-      {
-	background.color.green = str_to_float(value);	
-      } 
-    else if (valueid == "blue") 
-      {
-	background.color.blue = str_to_float(value);	
-      } 
-    else 
-      {
-	std::cout << "Background: Unknown ValueID: " << valueid << std::endl;
-      }
+    {
+      SurfaceBackgroundData* sur_background;
+
+      // FIXME: Memory leak, but not important, this file will be
+      // FIXME: deleted soon 
+      sur_background = new SurfaceBackgroundData();
+      backgrounds.push_back(sur_background);
+    
+      if (valueid == "image") 
+	{
+	  sur_background->desc = ResDescriptor(cast, value);
+	} 
+      else if (valueid == "scroll_x") 
+	{
+	  sur_background->scroll_x  = str_to_float(value);
+	} 
+      else if (valueid == "scroll_y") 
+	{
+	  sur_background->scroll_y = str_to_float(value);
+	} 
+      else if (valueid == "para_x")
+	{
+	  sur_background->para_x = str_to_float(value);
+	}
+      else if (valueid == "para_y")
+	{
+	  sur_background->para_y = str_to_float(value);
+	}
+      else if (valueid == "stretch_x")
+	{
+	  sur_background->stretch_x = str_to_bool(value);
+	}
+      else if (valueid == "stretch_y")
+	{
+	  sur_background->stretch_y = str_to_bool(value);
+	}
+      else if (valueid == "dim") 
+	{
+	  sur_background->color.alpha = str_to_float(value);
+	} 
+      else if (valueid == "alpha") 
+	{
+	  sur_background->color.alpha = str_to_float(value);
+	} 
+      else if (valueid == "red") 
+	{
+	  sur_background->color.red = str_to_float(value);	
+	} 
+      else if (valueid == "green") 
+	{
+	  sur_background->color.green = str_to_float(value);	
+	} 
+      else if (valueid == "blue") 
+	{
+	  sur_background->color.blue = str_to_float(value);	
+	} 
+      else 
+	{
+	  std::cout << "Background: Unknown ValueID: " << valueid << std::endl;
+	}
+    }
     break;
 
   case PLFPLF::GROUND:
     /*
-    if (valueid == "maptype") {
+      if (valueid == "maptype") {
       if (value == "BMP") {
-	maptype = BMP;
+      maptype = BMP;
       } else if (value == "SPOT") {
-	maptype = SPOT;
+      maptype = SPOT;
       } else if (value == "RANDOM") {
-	maptype = RANDOM;
+      maptype = RANDOM;
       } else {
-	maptype = UNDEF;
+      maptype = UNDEF;
       }
-    } else*/ if (valueid == "data") {
-      foreground = ResDescriptor(cast, value);
-    } else if (valueid == "colmap") {
-      col = ResDescriptor(cast, value);
-    } else if (valueid == "width") {
-      width = str_to_int(value);
-    } else if (valueid == "height") {    
-      height = str_to_int(value);
-    } else {
-      std::cout << "Ground: Unknown ValueID: " << valueid << std::endl;
-    }
-    break;
+      } else*/ if (valueid == "data") {
+	foreground = ResDescriptor(cast, value);
+      } else if (valueid == "colmap") {
+	col = ResDescriptor(cast, value);
+      } else if (valueid == "width") {
+	width = str_to_int(value);
+      } else if (valueid == "height") {    
+	height = str_to_int(value);
+      } else {
+	std::cout << "Ground: Unknown ValueID: " << valueid << std::endl;
+      }
+  break;
 
   case PLFPLF::MUSIC:
     if (valueid == "data")
@@ -232,9 +243,9 @@ PLFPLF::set_value(string valueid,
     if (valueid == "name") {
       trap_s.type = value;
       /*    } else if (valueid == "x_target") {
-      trap_s.x_target = str_to_int(value);
-    } else if (valueid == "y_target") {
-    trap_s.y_target = str_to_int(value);*/
+	    trap_s.x_target = str_to_int(value);
+	    } else if (valueid == "y_target") {
+	    trap_s.y_target = str_to_int(value);*/
     } else if (valueid == "x_pos") {
       trap_s.pos.x_pos = str_to_int(value);
     } else if (valueid == "y_pos") {

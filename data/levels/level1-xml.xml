@@ -81,7 +81,7 @@
     <z-pos>0</z-pos>
   </position>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
+    <resource-datafile>exits</resource-datafile>
   <resource-ident>Exits/stone</resource-ident>
   </resource></surface>
 </exit>

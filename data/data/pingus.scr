@@ -1,60 +1,60 @@
 // The surfaces for the different pingu actions
 section Pingus
 {
-	bomber      = ../images/pingus/bomber.pcx     (type=surface, x=0, y=0, width=32, height=32, tcol=0, array=16x1);
-	basher      = ../images/pingus/basher.pcx     (type=surface, x=0, y=0, width=32, height=32, tcol=0, array=12x2);
-	climber     = ../images/pingus/climber.pcx    (type=surface, x=0, y=0, width=32, height=32, tcol=0, array=8x2);
-	faller      = ../images/pingus/faller.pcx     (type=surface, x=0, y=0, width=32, height=32, tcol=0, array=8x1);
-	jumper      = ../images/pingus/faller.pcx     (type=surface, x=0, y=0, width=32, height=32, tcol=0, array=8x1);
-	tumble      = ../images/pingus/tumble.pcx     (type=surface, x=0, y=0, width=32, height=32, tcol=77, array=8x1);
-	bridger     = ../images/pingus/bridgerl3.pcx    (type=surface, x=0, y=0, width=32, height=32, tcol=0, array=15x2);
-        walker      = ../images/pingus/walker.pcx     (type=surface, x=0, y=0, width=32, height=32, tcol=0, array=8x2);
-	blocker     = ../images/pingus/blocker.pcx    (type=surface, x=0, y=0, width=32, height=32, tcol=0, array=6x1);
-	floater     = ../images/pingus/floater.pcx    (type=surface, x=0, y=0, width=32, height=32, tcol=0, array=8x1);
-	digger      = ../images/pingus/digger.pcx     (type=surface, x=0, y=0, width=32, height=32, tcol=0, array=14x1);
-	miner       = ../images/pingus/miner.pcx      (type=surface, x=0, y=0, width=32, height=32, tcol=0, array=12x2);
-	splash      = ../images/pingus/splash.pcx     (type=surface, x=0, y=0, width=32, height=32, tcol=0, array=12x1);
-	splash_debris = ../images/pingus/splash_debris.pcx     (type=surface, x=0, y=0, width=32, height=32, tcol=0, array=6x2);
+	bomber      = images/pingus/bomber.pcx     (type=surface, x=0, y=0, width=32, height=32, tcol=0, array=16x1);
+	basher      = images/pingus/basher.pcx     (type=surface, x=0, y=0, width=32, height=32, tcol=0, array=12x2);
+	climber     = images/pingus/climber.pcx    (type=surface, x=0, y=0, width=32, height=32, tcol=0, array=8x2);
+	faller      = images/pingus/faller.pcx     (type=surface, x=0, y=0, width=32, height=32, tcol=0, array=8x1);
+	jumper      = images/pingus/faller.pcx     (type=surface, x=0, y=0, width=32, height=32, tcol=0, array=8x1);
+	tumble      = images/pingus/tumble.pcx     (type=surface, x=0, y=0, width=32, height=32, tcol=77, array=8x1);
+	bridger     = images/pingus/bridgerl3.pcx    (type=surface, x=0, y=0, width=32, height=32, tcol=0, array=15x2);
+        walker      = images/pingus/walker.pcx     (type=surface, x=0, y=0, width=32, height=32, tcol=0, array=8x2);
+	blocker     = images/pingus/blocker.pcx    (type=surface, x=0, y=0, width=32, height=32, tcol=0, array=6x1);
+	floater     = images/pingus/floater.pcx    (type=surface, x=0, y=0, width=32, height=32, tcol=0, array=8x1);
+	digger      = images/pingus/digger.pcx     (type=surface, x=0, y=0, width=32, height=32, tcol=0, array=14x1);
+	miner       = images/pingus/miner.pcx      (type=surface, x=0, y=0, width=32, height=32, tcol=0, array=12x2);
+	splash      = images/pingus/splash.pcx     (type=surface, x=0, y=0, width=32, height=32, tcol=0, array=12x1);
+	splash_debris = images/pingus/splash_debris.pcx     (type=surface, x=0, y=0, width=32, height=32, tcol=0, array=6x2);
 
-	splat = ../images/pingus/splat.pcx     (type=surface, x=0, y=0, width=32, height=32, tcol=0, array=16x2);
+	splat = images/pingus/splat.pcx     (type=surface, x=0, y=0, width=32, height=32, tcol=0, array=16x2);
 
-	exit        = ../images/pingus/exit.pcx (type=surface, x=0, y=0, width=32, height=32, tcol=0, array=9x2);
-	drownfall   = ../images/pingus/drownfall.pcx (type=surface, x=0, y=0, width=32, height=32, tcol=0, array=15x2);
-	drownwalk   = ../images/pingus/drownwalk.pcx (type=surface, x=0, y=0, width=32, height=32, tcol=0, array=15x2);
+	exit        = images/pingus/exit.pcx (type=surface, x=0, y=0, width=32, height=32, tcol=0, array=9x2);
+	drownfall   = images/pingus/drownfall.pcx (type=surface, x=0, y=0, width=32, height=32, tcol=0, array=15x2);
+	drownwalk   = images/pingus/drownwalk.pcx (type=surface, x=0, y=0, width=32, height=32, tcol=0, array=15x2);
 }
 
 section Other
 {
-	brick_right   = ../images/misc/brick_right.pcx     (type=surface, x=0, y=0, width=16, height=2);
-	brick_left    = ../images/misc/brick_left.pcx      (type=surface, x=0, y=0, width=16, height=2);
+	brick_right   = images/misc/brick_right.pcx     (type=surface, x=0, y=0, width=16, height=2);
+	brick_left    = images/misc/brick_left.pcx      (type=surface, x=0, y=0, width=16, height=2);
 
-	bash_radius   = ../images/pingus/bash_radius.pcx (type=surface, x=0, y=0, width=32, height=32, tcol=0);
-	digger_radius = ../images/pingus/digger_radius.pcx (type=surface, x=0, y=0, width=30, height=4, tcol=0);
-	bomber_radius = ../images/pingus/bomber_radius.pcx (type=surface, x=0, y=0, width=64, height=64, tcol=0);
-	explo         = ../images/pingus/explo.pcx         (type=surface, x=0, y=0, width=64, height=64, tcol=0);
-	laser_kill    = ../images/pingus/laser_kill.tga    (type=surface, x=0, y=0, width=33, height=32, array=9x2);
+	bash_radius   = images/pingus/bash_radius.pcx (type=surface, x=0, y=0, width=32, height=32, tcol=0);
+	digger_radius = images/pingus/digger_radius.pcx (type=surface, x=0, y=0, width=30, height=4, tcol=0);
+	bomber_radius = images/pingus/bomber_radius.pcx (type=surface, x=0, y=0, width=64, height=64, tcol=0);
+	explo         = images/pingus/explo.pcx         (type=surface, x=0, y=0, width=64, height=64, tcol=0);
+	laser_kill    = images/pingus/laser_kill.tga    (type=surface, x=0, y=0, width=33, height=32, array=9x2);
 }
 
 section XMas
 {
-        walker      = ../images/pingus/xmas-walker.pcx     (type=surface, x=0, y=0, width=32, height=44, tcol=0, array=8x2);
+        walker      = images/pingus/xmas-walker.pcx     (type=surface, x=0, y=0, width=32, height=44, tcol=0, array=8x2);
 }
 
 section Particles
 {
-	particle    = ../images/particles/particle.pcx   (type=surface, x=0, y=0, width=3,   height=3, tcol=0);
-	ground      = ../images/particles/ground.tga     (type=surface, x=0, y=0, width=32, height=32, array=4x1);
-	smoke       = ../images/particles/smoke.tga     (type=surface, x=0, y=0, width=32, height=32, array=8x1);
-	smoke2       = ../images/particles/smoke2.tga     (type=surface, x=0, y=0, width=32, height=32, array=8x1);
+	particle    = images/particles/particle.pcx   (type=surface, x=0, y=0, width=3,   height=3, tcol=0);
+	ground      = images/particles/ground.tga     (type=surface, x=0, y=0, width=32, height=32, array=4x1);
+	smoke       = images/particles/smoke.tga     (type=surface, x=0, y=0, width=32, height=32, array=8x1);
+	smoke2       = images/particles/smoke2.tga     (type=surface, x=0, y=0, width=32, height=32, array=8x1);
 
-	snow1 = ../images/particles/snow1.pcx (type=surface, x=0, y=0, width=8, height=8, tcol=0);
-	snow2 = ../images/particles/snow2.pcx (type=surface, x=0, y=0, width=12, height=12, tcol=0);
-	snow3 = ../images/particles/snow3.pcx (type=surface, x=0, y=0, width=5, height=5, tcol=0);
-	snow4 = ../images/particles/snow4.pcx (type=surface, x=0, y=0, width=3, height=3, tcol=0);
-	snow5 = ../images/particles/snow5.pcx (type=surface, x=0, y=0, width=2, height=2, tcol=0);
+	snow1 = images/particles/snow1.pcx (type=surface, x=0, y=0, width=8, height=8, tcol=0);
+	snow2 = images/particles/snow2.pcx (type=surface, x=0, y=0, width=12, height=12, tcol=0);
+	snow3 = images/particles/snow3.pcx (type=surface, x=0, y=0, width=5, height=5, tcol=0);
+	snow4 = images/particles/snow4.pcx (type=surface, x=0, y=0, width=3, height=3, tcol=0);
+	snow5 = images/particles/snow5.pcx (type=surface, x=0, y=0, width=2, height=2, tcol=0);
 
-	ground_snow = ../images/particles/ground_snow.pcx (type=surface, x=0, y=0, width=3, height=2, tcol=0);
+	ground_snow = images/particles/ground_snow.pcx (type=surface, x=0, y=0, width=3, height=2, tcol=0);
 
-	rain_splash = ../images/particles/rain_splash.pcx (type=surface, x=0, y=0, width=16, height=5, tcol=0, array=4x1);
-	rain1 = ../images/particles/rain1.pcx (type=surface, x=0, y=0, width=18, height=32, tcol=0);
+	rain_splash = images/particles/rain_splash.pcx (type=surface, x=0, y=0, width=16, height=5, tcol=0, array=4x1);
+	rain1 = images/particles/rain1.pcx (type=surface, x=0, y=0, width=18, height=32, tcol=0);
 }

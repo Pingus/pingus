@@ -1,4 +1,4 @@
-//  $Id: Counter.cc,v 1.3 2000/02/11 16:58:25 grumbel Exp $
+//  $Id: Counter.cc,v 1.4 2000/08/28 00:34:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,9 +38,9 @@ Counter::Counter(int a)
   type = loop;
 }
 
-Counter::Counter(const Counter& counter)
+Counter::Counter(const Counter& counter) : s(counter.s)
 {
-  s = counter.s;
+  //  s = counter.s;
   count = counter.count;
   add = counter.add;
   type = counter.type;

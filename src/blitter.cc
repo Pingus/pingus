@@ -1,4 +1,4 @@
-//  $Id: blitter.cc,v 1.16 2000/08/10 15:13:07 grumbel Exp $
+//  $Id: blitter.cc,v 1.17 2000/08/28 00:34:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,8 +28,11 @@ void
 Blitter::put_surface(CL_Canvas* canvas, CL_Surface* sur,
 		     int x, int y)
 {
+  //Blitter::put_surface(canvas, sur->get_provider(), x, y);
+  /*  if (sur->get_provider()->get_depth() != 8)
+      sur->put_target(x, y, 0, canvas);
+  else*/
   Blitter::put_surface(canvas, sur->get_provider(), x, y);
-  //sur->put_target(x, y, 0, canvas);
 }
 
 void 

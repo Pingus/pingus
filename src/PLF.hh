@@ -1,4 +1,4 @@
-//  $Id: PLF.hh,v 1.15 2000/08/05 18:52:22 grumbel Exp $
+//  $Id: PLF.hh,v 1.16 2000/08/28 00:34:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -60,7 +60,7 @@ protected:
   ///
   ResDescriptor foreground;
   ///
-  BackgroundData background;
+  vector<BackgroundData*> backgrounds;
   ///
   ResDescriptor music;
   ///
@@ -111,7 +111,7 @@ public:
   virtual ~PLF();
 
   ///
-  BackgroundData get_background(void);
+  vector<BackgroundData*> get_backgrounds(void);
   ///
   ResDescriptor get_foreground(void);
   ///

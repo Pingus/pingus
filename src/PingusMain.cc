@@ -1,4 +1,4 @@
-//   $Id: PingusMain.cc,v 1.3 2000/08/10 15:13:07 grumbel Exp $
+//   $Id: PingusMain.cc,v 1.4 2000/08/28 00:34:39 grumbel Exp $
 //    ___
 //   |  _\ A free Lemmings clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -478,7 +478,6 @@ PingusMain::check_args(int argc, char* argv[])
       exit(EXIT_SUCCESS);
       break;
     }
-
   }
 
   // Treating non option arguments
@@ -589,7 +588,7 @@ PingusMain::get_filenames()
     
       if (env) 
 	{
-	  if (verbose > 1)
+	  if (verbose)
 	    std::cout << "Using envar $PINGUS_DATADIR" << std::endl;
 	
 	  pingus_datadir = env;
@@ -601,14 +600,16 @@ PingusMain::get_filenames()
       
       if (System::exist("../data/data/global.scr"))
 	{
-	  if (verbose > 1)
+	  if (verbose)
 	    std::cout << "Assuming that you haven't installed pingus, overriding current value." << std::endl;
 	  
 	  pingus_datadir += ":../data/";
+
+	  chdir("../data");
 	}
       else if (System::exist("./data/data/global.scr"))
 	{
-	  if (verbose > 1)
+	  if (verbose)
 	    std::cout << "Assuming that you are running the binary version" << std::endl;
 	  
 	  pingus_datadir += ":./data/"; 
@@ -616,7 +617,7 @@ PingusMain::get_filenames()
 
       if (!pingus_datadir_set) 
 	{
-	  if (verbose > 1)
+	  if (verbose)
 	    std::cout << "Using intern macro PINGUS_DATADIR" << std::endl;
 	
 	  pingus_datadir += ":";
@@ -800,8 +801,8 @@ PingusMain::do_lemmings_mode(void)
   //CL_Input::chain_button_press.remove(&global_event);
   //CL_Input::chain_button_release.remove(&global_event);
 
-  CL_Input::sig_button_press.disconnect (on_button_press_slot);
-  CL_Input::sig_button_release.disconnect(on_button_release_slot);
+  // CL_Input::sig_button_press.disconnect (on_button_press_slot);
+  // CL_Input::sig_button_release.disconnect(on_button_release_slot);
 
   //  Display::remove_flip_screen_hook(&console);
   //  Display::remove_flip_screen_hook(&fps_counter);

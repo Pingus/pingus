@@ -1,4 +1,4 @@
-//  $Id: Theme.cc,v 1.18 2000/08/05 00:00:42 grumbel Exp $
+//  $Id: Theme.cc,v 1.19 2000/08/28 00:34:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -318,12 +318,12 @@ Theme::load_levels()
 	  if (filename.substr(filename.size() - 4) == ".plf")
 	    {
 	      PLFPLF plf(filename);
-	      levelnames.push_back(plf.get_levelname()[System::get_language()]);
+	      levelnames.push_back(System::translate(plf.get_levelname()));
 	    }
 	  else
 	    {
 	      XMLPLF plf(filename);
-	      levelnames.push_back(plf.get_levelname()[System::get_language()]);
+	      levelnames.push_back(System::translate(plf.get_levelname()));
 	    }
 	}
       catch (PingusError err) 

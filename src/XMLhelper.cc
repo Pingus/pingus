@@ -1,4 +1,4 @@
-//  $Id: XMLhelper.cc,v 1.3 2000/08/05 18:52:22 grumbel Exp $
+//  $Id: XMLhelper.cc,v 1.4 2000/08/28 00:34:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -228,6 +228,46 @@ XMLhelper::parse_string(xmlDocPtr doc, xmlNodePtr cur)
       std::cout << "XMLhelper::parse_string: Field empty" << std::endl;
       return "";
     }
+}
+
+
+void
+XMLhelper::write_desc_xml(std::ofstream* xml, ResDescriptor desc)
+{
+  (*xml) << "  <surface><resource type=\"";
+  switch (desc.type)
+    {
+    case ResDescriptor::FILE:
+      (*xml) << "file\">\n"
+	     << "    <resource-file>"
+	     << desc.res_name
+	     << "</resource-file>\n";
+      break;
+    case ResDescriptor::RESOURCE:
+      (*xml) << "datafile\">\n"
+	     << "    <resource-datafile>"
+	     << desc.datafile
+	     << "</resource-datafile>\n"
+	     << "  <resource-ident>"
+	     << desc.res_name
+	     << "</resource-ident>\n";
+      break;
+    default:
+      std::cout << "EditorObj::save_desc_xml(): Unhandled resource type" << std::endl;
+      break;
+    }
+  
+  (*xml) << "  </resource></surface>" << std::endl;
+}
+
+void
+XMLhelper::write_position_xml(std::ofstream* xml, Position pos)
+{
+  (*xml) << "  <position>\n"
+	 << "    <x-pos>" << pos.x_pos << "</x-pos>\n"
+	 << "    <y-pos>" << pos.y_pos << "</y-pos>\n"
+	 << "    <z-pos>" << pos.z_pos << "</z-pos>\n"
+	 << "  </position>\n";
 }
 
 /* EOF */

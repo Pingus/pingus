@@ -1,4 +1,4 @@
-//  $Id: Panel.cc,v 1.8 2000/07/04 22:59:13 grumbel Exp $
+//  $Id: Panel.cc,v 1.9 2000/08/28 00:34:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,7 +22,7 @@
 #include "PanelIcons.hh"
 #include "Panel.hh"
 
-EditorEvent* PanelIcon::event;
+Editor* PanelIcon::editor;
 
 PanelIcon::PanelIcon()
 {
@@ -163,10 +163,10 @@ Panel::mouse_over(int x, int y)
 }
 
 void
-Panel::set_event(EditorEvent* e)
+Panel::set_editor(Editor* e)
 {
-  event = e;
-  PanelIcon::event = event;
+  editor = e;
+  PanelIcon::editor = e;
 }
 
 /* EOF */

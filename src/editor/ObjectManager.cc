@@ -1,4 +1,4 @@
-//  $Id: ObjectManager.cc,v 1.29 2000/08/11 21:17:54 grumbel Exp $
+//  $Id: ObjectManager.cc,v 1.30 2000/08/28 00:34:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,6 +27,7 @@
 #include "../PingusResource.hh"
 #include "../PingusError.hh"
 #include "../XMLhelper.hh"
+#include "../backgrounds/SurfaceBackgroundData.hh"
 #include "StartPos.hh"
 #include "ObjectManager.hh"
 
@@ -77,9 +78,11 @@ ObjectManager::new_level ()
 
   number_to_save   = 25;
   number_of_pingus = 50;
+  
+  backgrounds.push_back(new SurfaceBackgroundData ());
 
-  background.desc.datafile = "textures";
-  background.desc.res_name = "Textures/default";
+  //background->desc.datafile = "textures";
+  //background->desc.res_name = "Textures/default";
 
   delete_all_objs();
   editor_objs.push_back(new StartPos(50, 50));
@@ -137,7 +140,8 @@ ObjectManager::load_level (string filename)
     {
       i->surface = PingusResource::load_surface(i->desc);
     }
-  
+
+  try {
   vector<EntranceData> temp_entraces = plf->get_entrance();
   vector<HotspotData>  temp_hotspots = plf->get_hotspot();
   vector<ExitData>     temp_exits    = plf->get_exit();
@@ -147,29 +151,41 @@ ObjectManager::load_level (string filename)
 
   for(vector<SurfaceData>::iterator i = temp_surfaces.begin(); i != temp_surfaces.end(); ++i)
     editor_objs.push_back(EditorObj::create(*i));
-      
+
   for(vector<EntranceData>::iterator i = temp_entraces.begin(); i != temp_entraces.end(); ++i)
     editor_objs.push_back(EditorObj::create(*i));
-      
+
   for(vector<ExitData>::iterator i = temp_exits.begin(); i != temp_exits.end(); ++i)
     editor_objs.push_back(EditorObj::create(*i));
       
   for(vector<HotspotData>::iterator i = temp_hotspots.begin(); i != temp_hotspots.end(); ++i)
     editor_objs.push_back(EditorObj::create(*i));
-      
+  std::cout << "hotspot done" << std::endl;      
   for(vector<LiquidData>::iterator i = temp_liquid.begin(); i != temp_liquid.end(); ++i)
     editor_objs.push_back(EditorObj::create(*i));
-      
+
   for(vector<TrapData>::iterator i = temp_traps.begin(); i != temp_traps.end(); ++i)
     editor_objs.push_back(EditorObj::create(*i));
 
   for(vector<WeatherData>::iterator i = temp_weather.begin(); i != temp_weather.end(); ++i)
     editor_objs.push_back(EditorObj::create(*i));
+  }
+  catch (PingusError err) {
+    std::cout << err.message << std::endl;
+  }
+  catch (CL_Error err) {
+    std::cout << err.message << std::endl;
+  }
+  catch (...) {
+    std::cout << "Catched something" << std::endl;
+  }
+  std::cout << "sorting" << std::endl;
 
 #ifndef WIN32 // FIXME: Compiler error in Windows
   editor_objs.sort(EditorObj_less());
 #endif
 
+  std::cout << "Reading probs" << std::endl;
   description = plf->get_description();
   levelname   = plf->get_levelname();
   level_time  = plf->get_time();
@@ -177,11 +193,14 @@ ObjectManager::load_level (string filename)
   number_of_pingus = plf->get_pingus();
   height      = plf->get_height();
   width       = plf->get_width();
-  background  = plf->get_background();
+  backgrounds  = plf->get_backgrounds();
   author      = plf->get_author();
   start_x_pos = plf->get_startx();
   start_y_pos = plf->get_starty();
   actions     = plf->get_actions();
+
+  std::cout << "Width: " << width << std::endl;
+  std::cout << "Height: " << height << std::endl;
 
   set_viewpoint(start_x_pos, start_y_pos);
 
@@ -248,7 +267,7 @@ ObjectManager::save_level (string filename)
   // FIXME: we need some error checking
   
   plf_out << "/* This level was created with the PLE\n"
-	  << " * $Id: ObjectManager.cc,v 1.29 2000/08/11 21:17:54 grumbel Exp $\n"
+	  << " * $Id: ObjectManager.cc,v 1.30 2000/08/28 00:34:39 grumbel Exp $\n"
 	  << " */"
 	  << endl;
   
@@ -272,21 +291,31 @@ ObjectManager::save_level (string filename)
 	  << "  colmap  = (auto);\n"
 	  << "}\n"
 	  << endl;
-  
-  plf_out << "background {\n"
-	  << "  image = (resource:" << background.desc.datafile << ")\"" << background.desc.res_name << "\";\n"
-	  << "  dim   = \""   << background.color.alpha   << "\";\n"
-	  << "  red   = \""   << background.color.red   << "\";\n"
-	  << "  green = \""   << background.color.green << "\";\n"
-	  << "  blue  = \""   << background.color.blue << "\";\n"
-	  << "  scroll_x = "  << background.scroll_x << ";\n"
-	  << "  scroll_y = "  << background.scroll_y << ";\n"
-	  << "  para_x = "    << background.para_x << ";\n"
-	  << "  para_y = "    << background.para_y << ";\n"
-    	  << "  stretch_x = " << background.stretch_x << ";\n"
-	  << "  stretch_y = " << background.stretch_y << ";\n" 
-	  << "}\n"
-	  << endl;
+  SurfaceBackgroundData* sur_background;
+
+  sur_background = dynamic_cast<SurfaceBackgroundData*>(*backgrounds.begin());
+
+  if (sur_background)
+    {
+      plf_out << "background {\n"
+	      << "  image = (resource:" << sur_background->desc.datafile << ")\"" << sur_background->desc.res_name << "\";\n"
+	      << "  dim   = \""   << sur_background->color.alpha   << "\";\n"
+	      << "  red   = \""   << sur_background->color.red   << "\";\n"
+	      << "  green = \""   << sur_background->color.green << "\";\n"
+	      << "  blue  = \""   << sur_background->color.blue << "\";\n"
+	      << "  scroll_x = "  << sur_background->scroll_x << ";\n"
+	      << "  scroll_y = "  << sur_background->scroll_y << ";\n"
+	      << "  para_x = "    << sur_background->para_x << ";\n"
+	      << "  para_y = "    << sur_background->para_y << ";\n"
+	      << "  stretch_x = " << sur_background->stretch_x << ";\n"
+	      << "  stretch_y = " << sur_background->stretch_y << ";\n" 
+	      << "}\n"
+	      << endl;
+    }
+  else
+    {
+      std::cout << "ObjectManager: Background of unknown type, not supported by .plf files" << std::endl;
+    }
 
   // Printing actions to file
   plf_out << "buttons {\n";
@@ -303,8 +332,8 @@ ObjectManager::save_level (string filename)
 
   psm_out.close();
   plf_out.close();
-  cout << "Saveing finished" << endl;
-}
+  cout << "Saveing finished" << endl;}
+
 
 /// Save the current level in an xml file
 void
@@ -318,7 +347,7 @@ ObjectManager::save_level_xml (std::string filename)
     throw PingusError("ObjectManager:save_level_xml: Couldn't save level: " + filename);
 
   xml << "<?xml version=\"1.0\"?>\n\n"
-      << "<!DOCTYPE pingus-level SYSTEM \"http://www.pingus.cx/dtd/pingus-level.dtd\">\n"
+    // << "<!DOCTYPE pingus-level SYSTEM \"http://www.pingus.cx/dtd/pingus-level.dtd\">\n"
       << "<pingus-level>\n";
  
   xml << "  <global>\n";
@@ -348,8 +377,13 @@ ObjectManager::save_level_xml (std::string filename)
       << "    <height>" << height << "</height>\n"
       << "  </global>\n"
       << std::endl;
+  
+  for (std::vector<BackgroundData*>::iterator i = backgrounds.begin();
+       i != backgrounds.end();
+       i++)
+    (*i)->write_xml(&xml);
 
-  xml << "<background>\n";
+  /*  xml << "<background>\n";
   EditorObj::save_desc_xml(&xml, background.desc);
   
   xml  << "  <color>\n"
@@ -366,7 +400,7 @@ ObjectManager::save_level_xml (std::string filename)
        << "  <stretch-y>" << background.stretch_y << "</stretch-y>\n" 
        << "</background>\n"
        << endl;
-
+  */
   // Printing actions to file
   xml << "  <action-list>\n";
   for (vector<ActionData>::iterator i = actions.begin(); i != actions.end(); ++i) {
@@ -531,6 +565,15 @@ ObjectManager::set_viewpoint(int x, int y)
 {
   x_offset = -x + CL_Display::get_width()/2;
   y_offset = -y + CL_Display::get_height()/2;
+}
+
+EditorObj* 
+ObjectManager::get_current_obj()
+{
+  if (current_objs.size() == 1)
+    return *current_objs.begin();
+  else
+    return 0;
 }
 
 /* EOF */

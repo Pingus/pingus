@@ -1,4 +1,4 @@
-//  $Id: PLFObj.hh,v 1.9 2000/07/30 01:47:37 grumbel Exp $
+//  $Id: PLFObj.hh,v 1.10 2000/08/28 00:34:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -93,8 +93,7 @@ public:
   std::string obj_type() { return "Entrance"; }
   ///
   std::string status_line();
-}///
-;
+};
 
 ///
 class ExitObj : public PLFObj

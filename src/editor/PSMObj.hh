@@ -1,4 +1,4 @@
-// $Id: PSMObj.hh,v 1.7 2000/07/30 01:47:37 grumbel Exp $
+// $Id: PSMObj.hh,v 1.8 2000/08/28 00:34:39 grumbel Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -45,12 +45,12 @@ public:
   ///
   EditorObj*   duplicate();
   ///
-  std::string obj_type() { return "Groundpiece"; }///
-;
+  std::string obj_type() { return "Groundpiece"; };
   ///
   std::string status_line();
-}///
-;
+  ///
+  void gui_edit_obj();
+};
 
 #endif
 

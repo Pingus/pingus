@@ -59,7 +59,7 @@
 
 <hotspot>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
+    <resource-datafile>exits</resource-datafile>
   <resource-ident>Exits/stone</resource-ident>
   </resource></surface>
   <position>

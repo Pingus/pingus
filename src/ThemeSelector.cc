@@ -1,4 +1,4 @@
-//  $Id: ThemeSelector.cc,v 1.29 2000/08/09 14:39:37 grumbel Exp $
+//  $Id: ThemeSelector.cc,v 1.30 2000/08/28 00:34:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -213,9 +213,9 @@ ThemeSelector::~ThemeSelector()
   // CL_Input::chain_button_press.remove(event);
   // CL_Input::chain_button_release.remove(event);
   
-  CL_Input::sig_button_press.disconnect (on_button_press_slot);
-  CL_Input::sig_button_release.disconnect (on_button_release_slot);
-  CL_Input::sig_mouse_move.disconnect (on_mouse_move_slot);
+  //CL_Input::sig_button_press.disconnect (on_button_press_slot);
+  //CL_Input::sig_button_release.disconnect (on_button_release_slot);
+  //CL_Input::sig_mouse_move.disconnect (on_mouse_move_slot);
   
   delete event;
 }

@@ -1,4 +1,4 @@
-//  $Id: PSMObj.cc,v 1.19 2000/08/11 01:07:35 grumbel Exp $
+//  $Id: PSMObj.cc,v 1.20 2000/08/28 00:34:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,7 +19,9 @@
 
 #include <fstream>
 #include <ClanLib/core.h>
-
+#include <ClanLib/gui.h>
+#include "../algo.hh"
+#include "../globals.hh"
 #include "../PingusResource.hh"
 
 #include "PSMObj.hh"
@@ -129,6 +131,36 @@ PSMObj::status_line()
 	   desc.res_name.c_str(), type_name.c_str());
 
   return std::string(str);
+}
+
+void
+PSMObj::gui_edit_obj()
+{
+  std::cout << "Gui... trala" << std::endl;
+  CL_StyleManager*     style;
+  CL_ComponentManager* manager;
+  CL_GUIManager*       gui;
+  CL_ResourceManager*  resources;
+
+  std::cout << "Step..." << std::endl;
+  resources = PingusResource::get ("gui");
+  std::cout << "Step..." << std::endl;
+  style = new CL_StyleManager_Default(resources);
+  std::cout << "Step..." << std::endl;
+  manager = CL_ComponentManager::create("gui/editor-psm.gui", false, style);
+  std::cout << "Step..." << std::endl;
+  gui = CL_GUIManager::create(manager);
+
+  std::cout << "Looping start loop" << std::endl;
+  while(CL_Keyboard::get_keycode(CL_KEY_ESCAPE) == false) 
+    {
+      std::cout << "Loopy loop" << std::endl;
+      CL_Display::clear_display(0.60f, 0.60f, 0.60f);
+      gui->show();
+      CL_Display::flip_display();       
+      CL_System::keep_alive();
+    }
+  std::cout << "Gui... trala done" << std::endl;
 }
 
 /* EOF */
