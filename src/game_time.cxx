@@ -1,4 +1,4 @@
-//  $Id: game_time.cxx,v 1.5 2003/04/06 14:37:07 grumbel Exp $
+//  $Id: game_time.cxx,v 1.6 2003/04/09 16:20:19 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -66,8 +66,9 @@ GameTime::ticks_to_realtime_string(int ticks)
     }
   else
     {
-      int seconds   = (ticks / game_speed % 60);
-      int minutes   = (ticks / (60 * game_speed));
+      int total_seconds = ticks * game_speed / 1000;
+      int seconds   = total_seconds % 60;
+      int minutes   = total_seconds / 60;
   
       // Stop displaying negative seconds, which can happen if armageddon is
       // clicked with 1 second left.

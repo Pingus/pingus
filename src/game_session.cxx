@@ -1,4 +1,4 @@
-//  $Id: game_session.cxx,v 1.38 2003/04/01 16:00:08 grumbel Exp $
+//  $Id: game_session.cxx,v 1.39 2003/04/09 16:20:19 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -157,7 +157,7 @@ PingusGameSession::update (const GameDelta& delta)
     left_over_time = time_passed - (i * update_time);
   }
 
-  if (!max_cpu_usage && left_over_time < 0)
+  if (left_over_time < 0)
     {
       // FIXME: This doesn't really belong here
       CL_System::sleep(-left_over_time);
