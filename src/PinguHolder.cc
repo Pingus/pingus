@@ -1,4 +1,4 @@
-//  $Id: PinguHolder.cc,v 1.11 2000/12/30 23:54:05 grumbel Exp $
+//  $Id: PinguHolder.cc,v 1.12 2000/12/31 00:48:34 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -78,15 +78,18 @@ PinguHolder::draw_offset(int x_of, int y_of, float s)
 	}
       else 
 	{
-	  if ((*pingu)->get_action().get())
+	  // We don't draw the actions here, since we want them above
+	  // all other pingus, for better visibility
+	  if (!((*pingu)->get_action().get()))
 	    (*pingu)->draw_offset(x_of, y_of, s);
 	}
     }
 
-  for(PinguIter pingu2 = this->begin(); pingu2 != this->end(); pingu2++)
+  // We draw all actions here, so we have them above all others
+  for(PinguIter pingu = this->begin(); pingu != this->end(); pingu++)
     {
-      if ((*pingu2)->get_action().get()) 
-	(*pingu2)->draw_offset(x_of, y_of, s);
+      if ((*pingu)->get_action().get()) 
+	(*pingu)->draw_offset(x_of, y_of, s);
     }
 }
 

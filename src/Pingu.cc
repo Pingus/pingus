@@ -1,4 +1,4 @@
-//  $Id: Pingu.cc,v 1.39 2000/12/16 23:11:20 grumbel Exp $
+//  $Id: Pingu.cc,v 1.40 2000/12/31 00:48:34 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -302,7 +302,7 @@ Pingu::let_move(void)
   
   if (action.get() && action->is_finished) 
     {
-      action = shared_ptr<PinguAction>();
+      action.reset ();
     }
     
   if (rel_getpixel(0, -1) == ColMap::OUTOFSCREEN) 
@@ -490,7 +490,7 @@ Pingu::draw_offset(int x, int y, float s) const
 {
   char str[64];
   y += 2;
-  
+
   if (action.get()) 
     {
       action->draw_offset(x, y,s);
@@ -499,22 +499,22 @@ Pingu::draw_offset(int x, int y, float s) const
     {
       if (falling > 3) 
 	{
-	  CL_Surface surf;
+	  CL_Surface* surf;
 	  
 	  if (is_tumbling ()) {
-	    surf = tumble;
+	    surf = &tumble;
 	  } else {
-	    surf = faller;
+	    surf = &faller;
 	  }
 	  
 	  if (s == 1.0) 
 	    {
-	      surf.put_screen(x_pos + x - 16, y_pos + y - 32,
+	      surf->put_screen(x_pos + x - 16, y_pos + y - 32,
 			      tumble_c);
 	    } 
 	  else 
 	    {
-	      surf.put_screen((x_pos + x - 16) * s , (y_pos + y - 32) * s,
+	      surf->put_screen((x_pos + x - 16) * s , (y_pos + y - 32) * s,
 			       s, s, tumble_c);
 	    }
 	} 
