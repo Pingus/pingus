@@ -1,4 +1,4 @@
-//  $Id: Liquid.cc,v 1.6 2000/06/27 16:05:16 grumbel Exp $
+//  $Id: Liquid.cc,v 1.7 2000/07/04 22:59:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,7 +43,7 @@ void
 Liquid::draw_colmap(ColMap* colmap)
 {
   CL_SurfaceProvider* prov = CL_SurfaceProvider::load("Liquid/water_cmap",
-						      PingusResource::get("global.dat"));
+						      PingusResource::get("global"));
 
   for(int i=0; i < width; i++)
     colmap->put(prov, x_pos + i, y_pos, surface_data::WATER);

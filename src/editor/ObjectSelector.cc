@@ -1,4 +1,4 @@
-//  $Id: ObjectSelector.cc,v 1.23 2000/06/27 16:05:16 grumbel Exp $
+//  $Id: ObjectSelector.cc,v 1.24 2000/07/04 22:59:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -165,7 +165,7 @@ EditorObj*
 ObjectSelector::get_groundpiece(surface_data::Type type)
 {
   string str;
-  CL_ResourceManager* res = PingusResource::get("global.dat");
+  CL_ResourceManager* res = PingusResource::get("global");
     
   surface_data data;
   data.x_pos = CL_Mouse::get_x() - x_offset;
@@ -197,8 +197,8 @@ ObjectSelector::get_groundpiece(surface_data::Type type)
 
   if (!str.empty())
     {
-      data.res_desc = ResDescriptor("resource:global.dat", str);
-      data.res_name = "global.dat";
+      data.res_desc = ResDescriptor("resource:global", str);
+      data.res_name = "global";
       data.name = str;
       data.type = type;
 
@@ -211,7 +211,7 @@ EditorObj*
 ObjectSelector::get_hotspot()
 {
   string str;
-  CL_ResourceManager* res = PingusResource::get("global.dat");
+  CL_ResourceManager* res = PingusResource::get("global");
     
   hotspot_data data;
   data.x_pos = CL_Mouse::get_x() - x_offset;
@@ -243,34 +243,13 @@ ObjectSelector::get_hotspot()
 
   if (!str.empty())
     {
-      data.desc = ResDescriptor("resource:global.dat", str);
+      data.desc = ResDescriptor("resource:global", str);
       //data.name = str;
       data.speed = -1;
 
       return new HotspotObj(data);
     }
   return 0;
-
-  /*  string str;
-  hotspot_data data;
-  data.x_pos = CL_Mouse::get_x() - x_offset;
-  data.y_pos = CL_Mouse::get_y() - y_offset;
-  data.z_pos = 0;
-  
-  if (last_object.empty())
-    last_object = "Hotspots/";
-
-  str = read_string("Input Hotspot gfx:", last_object);
-  
-  last_object = str;
-
-  if (str.empty())
-    return 0;
-  
-  last_object = str;
-  data.desc = ResDescriptor("resource:global.dat", str);
-  
-  return new HotspotObj(data);*/
 }
 
 EditorObj*
@@ -333,7 +312,7 @@ ObjectSelector::get_exit()
   if (str.empty())
     return 0;
   
-  data.desc = ResDescriptor("resource:global.dat", str);
+  data.desc = ResDescriptor("resource:global", str);
   
   return new ExitObj(data);
 }
@@ -438,13 +417,17 @@ ObjectSelector::read_string(string description, string def_str)
 {
   StringReader reader(description, def_str);
 
-  reader.set_strings(PingusResource::get("global.dat")->get_resources_of_type("surface"));
+  reader.set_strings(PingusResource::get("global")->get_resources_of_type("surface"));
   return reader.read_string();
 }
 
 /*
 
 $Log: ObjectSelector.cc,v $
+Revision 1.24  2000/07/04 22:59:13  grumbel
+Fixed scrolling to be no longer fast-forward depended, thanks to Alan Cox for finding this and some other bugs :-)
+Added support for reading datafile or scriptfile (--use-datafile, --use-scriptfile)
+
 Revision 1.23  2000/06/27 16:05:16  grumbel
 Replaced all CL_*::load with PingusResource::load_*
 Tried to fix the bridger with not much success...

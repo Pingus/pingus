@@ -1,4 +1,4 @@
-//  $Id: GuiObj.hh,v 1.5 2000/06/18 22:19:48 grumbel Exp $
+//  $Id: GuiObj.hh,v 1.6 2000/07/04 22:59:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,12 +43,19 @@ public:
 
   ///
   void    set_clip_rect(int, int, int, int);
-  ///
+  
+  /// Draw the gui element and do the clipping.
   virtual void draw_clipped();
-  ///
+
+  /// Draw the gui element
   virtual void draw() = 0;
-  ///
+
+  /// Move the world one step further
   virtual void let_move();
+
+  /** Update all elements, which are indepented of the world speed
+      (for example scrolling). */
+  virtual void update();
 };
 
 #endif

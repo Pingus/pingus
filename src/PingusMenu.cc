@@ -1,4 +1,4 @@
-//  $Id: PingusMenu.cc,v 1.26 2000/06/27 16:05:16 grumbel Exp $
+//  $Id: PingusMenu.cc,v 1.27 2000/07/04 22:59:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -116,7 +116,7 @@ PingusMenu::select(void)
   event->enabled = true;
 
   Display::set_cursor(CL_MouseCursorProvider::load("Cursors/cursor",
-						   PingusResource::get("game.dat")));
+						   PingusResource::get("game")));
   Display::show_cursor();
 
   PingusSound::play_mod("../data/music/pingus-1.it");
@@ -202,7 +202,7 @@ PingusMenu::Event::on_button_release(CL_InputDevice *device, const CL_Key &key)
 	      Display::hide_cursor();
 	      (*i)->on_click();
 	      Display::set_cursor(CL_MouseCursorProvider::load("Cursors/cursor", 
-							       PingusResource::get("game.dat")));
+							       PingusResource::get("game")));
 	      Display::show_cursor();
 	      enabled = true;
 	    }

@@ -1,4 +1,4 @@
-//   $Id: Pingus.cc,v 1.43 2000/06/27 16:05:16 grumbel Exp $
+//   $Id: Pingus.cc,v 1.44 2000/07/04 22:59:13 grumbel Exp $
 //    ___
 //   |  _\ A free Lemmings clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -194,6 +194,8 @@ PingusMain::check_args(int argc, char* argv[])
     {"disable-swcursor",  no_argument,       0, 145},
     {"enable-swcursor",   no_argument,       0, 146},
     {"enable-bg-manipulation", no_argument,  0, 148},
+    {"use-datafile",      no_argument,       0, 150},
+    {"use-scriptfile",    no_argument,       0, 151},
 
     // FIXME: is the number stuff correct?
     {"debug-actions",   no_argument,       0, 129},
@@ -299,7 +301,7 @@ PingusMain::check_args(int argc, char* argv[])
 	"\n"
 	"Copyright (C) 1998 Ingo Ruhnke <grumbel@pingus.cx>\n"
 	"There is NO warranty.  You may redistribute this software\n"
-	"under the terms of the GNU General Public License.\n"
+	"under the terms of the GN General Public License.\n"
 	"For more information about these matters, see the files named COPYING."
 	   << std::endl;
 
@@ -412,6 +414,14 @@ PingusMain::check_args(int argc, char* argv[])
       debug_game_time = true;
       break;
 
+    case 150:
+      use_datafile = true;
+      break;
+
+    case 151:
+      use_datafile = false;
+      break;
+
     default:
       
       std::cout << "Unknow char: " << c << std::endl << std::endl;
@@ -426,6 +436,8 @@ PingusMain::check_args(int argc, char* argv[])
 	"   -F, --disable-fullscreen Disable Fullscreen (default)\n"
 	"   -f, --enable-fullscreen  Enable Fullscreen\n"
        	"   -d, --datadir PATH       Set the path to load the data files to `path'\n"
+	"   --use-datafile           Use the pre-compiled datafile (default)\n"
+	"   --use-scriptfile         Use the scriptfile and read all data from files\n"
 	"   -l, --level FILE         Load a custom level from `file'\n"
 	"   -v, --verbose            Print some more messages to stdout, can be set\n"
 	"                            multible times to increase verbosity\n"
@@ -587,14 +599,14 @@ PingusMain::get_filenames()
       // Correct the path name, if no slash is pressent
       // add_slash(pingus_datadir);
       
-      if (System::exist("../data/data/global.dat"))
+      if (System::exist("../data/data/global.scr"))
 	{
 	  if (verbose > 1)
 	    std::cout << "Assuming that you haven't installed pingus, overriding current value." << std::endl;
 	  
 	  pingus_datadir += ":../data/";
 	}
-      else if (System::exist("./data/data/global.dat"))
+      else if (System::exist("./data/data/global.scr"))
 	{
 	  if (verbose > 1)
 	    std::cout << "Assuming that you are running the binary version" << std::endl;
@@ -616,8 +628,8 @@ PingusMain::get_filenames()
     std::cout << "pingus_datadir: " << pingus_datadir << std::endl;
 
   // FIXME: find_file() sucks.
-  global_datafile   = find_file(pingus_datadir, "data/global.dat");
-  pingus_datafile   = find_file(pingus_datadir, "data/pingus.dat");
+  global_datafile   = find_file(pingus_datadir, "data/global.scr");
+  pingus_datafile   = find_file(pingus_datadir, "data/pingus.scr");
   
   if (System::exist(pingus_datafile)) 
     {
@@ -629,7 +641,7 @@ PingusMain::get_filenames()
       std::cout << "Pingus Datafile: " << pingus_datafile
 		<< std::endl << std::endl;
       std::cout << "Couldn't find `global.scr', please set the enviroment variable\n"
-		<< "PINGUS_DATADIR to the path of the file `pingus.dat' or use the\n"
+		<< "PINGUS_DATADIR to the path of the file `pingus.scr' or use the\n"
 		<< "-d option." << std::endl;
       exit(EXIT_SUCCESS);
     } 
@@ -638,8 +650,8 @@ PingusMain::get_filenames()
   //If the User uses Windows, the Datadir is always the Subdirectory "data"
   pingus_datadir_set = true;
   pingus_datadir = "data\\";
-  global_datafile = pingus_datadir + "data\\global.dat";
-  pingus_datafile = pingus_datadir + "data\\pingus.dat";
+  global_datafile = pingus_datadir + "data\\global.scr";
+  pingus_datafile = pingus_datadir + "data\\pingus.scr";
 #endif /* !WIN32 */
   
   // First we try to open the file which was given, if that is not

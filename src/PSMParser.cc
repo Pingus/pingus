@@ -1,4 +1,4 @@
-//  $Id: PSMParser.cc,v 1.12 2000/06/27 16:05:16 grumbel Exp $
+//  $Id: PSMParser.cc,v 1.13 2000/07/04 22:59:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -51,7 +51,7 @@ PSMParser::parse(string filename)
     
     surface_data temp;
     
-    temp.res_name = "global.dat";
+    temp.res_name = "global";
     
     while(!in.eof()) {
       jump_spaces();

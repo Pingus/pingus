@@ -1,4 +1,4 @@
-//  $Id: Pingu.cc,v 1.26 2000/06/27 16:05:16 grumbel Exp $
+//  $Id: Pingu.cc,v 1.27 2000/07/04 22:59:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -58,7 +58,7 @@ Pingu::Pingu(int x, int y)
     {
       init = true;
 
-      local_res_p = PingusResource::get("pingus.dat");
+      local_res_p = PingusResource::get("pingus");
       PinguAction::SetResourceManager(local_res());
 
       font   = PingusResource::load_font("Fonts/numbers", "fonts");
@@ -405,8 +405,9 @@ Pingu::do_falling()
       if (falling > 3) 
 	environment = sky;
 	  
-      // If we are going fast enough to get smashed set falling to 80
-      if (fabs(velocity.x) > deadly_velocity || fabs(velocity.y) > deadly_velocity)
+      // If we are going fast enough to get smashed, start tumbling
+      if (fabs(velocity.x) > deadly_velocity
+	  || fabs(velocity.y) > deadly_velocity)
 	{
 	  tumbling = true;
 	}

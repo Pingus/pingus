@@ -1,4 +1,4 @@
-//  $Id: World.cc,v 1.23 2000/07/02 07:39:50 grumbel Exp $
+//  $Id: World.cc,v 1.24 2000/07/04 22:59:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -183,7 +183,7 @@ World::init(PLF* plf_data)
   number_to_save = plf->get_number_to_save();
   released_pingus = 0;
 
-  exit_time = plf->get_time() + 999999;
+  exit_time = plf->get_time();
   
   init_map();
   init_background();

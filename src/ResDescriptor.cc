@@ -1,4 +1,4 @@
-//  $Id: ResDescriptor.cc,v 1.7 2000/06/25 20:22:18 grumbel Exp $
+//  $Id: ResDescriptor.cc,v 1.8 2000/07/04 22:59:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,7 +24,7 @@ ResDescriptor::ResDescriptor()
 {
   type = RESOURCE;
   res_name = "";
-  datafile = "global.dat";
+  datafile = "global";
 }
 
 ResDescriptor::ResDescriptor(const ResDescriptor& res_desc)
@@ -63,7 +63,7 @@ ResDescriptor::ResDescriptor(const std::string& str)
   else
     {
       res_name = str;
-      datafile = "global.dat";
+      datafile = "global";
     }
 }
 
@@ -73,7 +73,7 @@ ResDescriptor::ResDescriptor(const std::string& c_cast, const std::string& value
 
   if (c_cast.find_first_of(":") == std::string::npos) {
     cast = c_cast;
-    datafile = "global.dat";
+    datafile = "global";
   } else {
     cast     = c_cast.substr(0, c_cast.find_first_of(":"));
     datafile = c_cast.substr(c_cast.find_first_of(":") + 1);

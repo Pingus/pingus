@@ -1,4 +1,4 @@
-//  $Id: StringReader.cc,v 1.9 2000/06/25 20:22:18 grumbel Exp $
+//  $Id: StringReader.cc,v 1.10 2000/07/04 22:59:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,7 +25,7 @@
 StringReader::StringReader()
 {
   strings = 0;
-  font = CL_Font::load("Fonts/courier_small",PingusResource::get("fonts.dat"));
+  font = PingusResource::load_font("Fonts/courier_small", "fonts");
 }
 
 StringReader::StringReader(std::string d, std::string def)

@@ -1,4 +1,4 @@
-//  $Id: Client.cc,v 1.31 2000/07/02 07:39:50 grumbel Exp $
+//  $Id: Client.cc,v 1.32 2000/07/04 22:59:13 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -123,7 +123,7 @@ Client::init_display()
   if (verbose) std::cout << "Client: Generating UI elements..." << std::flush;
 
   Display::set_cursor(CL_MouseCursorProvider::load("Cursors/cursor", 
-						   PingusResource::get("game.dat")));
+						   PingusResource::get("game")));
   Display::show_cursor();
   
   if (!playfield) playfield    = new Playfield(plf, server->get_world());
@@ -229,6 +229,7 @@ Client::play_level(std::string plf_filename, std::string psm_filename)
   PingusSound::play_mod(find_file(pingus_datadir, "music/" + plf->get_music().res_name));
 #endif
 
+  unsigned int last_update = CL_System::get_time();
   // Main Game Loop
   while (!server->is_finished()) 
     {
@@ -238,17 +239,46 @@ Client::play_level(std::string plf_filename, std::string psm_filename)
       server->let_move();
 
       send_next_event();
-    
+      
+      // Update every 3/100 seconds
+      if (last_update + 30 < CL_System::get_time())
+	{
+	  last_update = CL_System::get_time();
+
+	  for(std::vector<GuiObj*>::size_type i=0; i < obj.size(); ++i) 
+	    obj[i]->update();
+	}
+
       // Let the window move its content
       for(std::vector<GuiObj*>::size_type i=0; i < obj.size(); ++i) 
 	obj[i]->let_move();
-    
+
+      // Update every 3/100 seconds
+      if (last_update + 30 < CL_System::get_time())
+	{
+	  last_update = CL_System::get_time();
+
+	  for(std::vector<GuiObj*>::size_type i=0; i < obj.size(); ++i) 
+	    obj[i]->update();
+	}
+  
       if (!fast_forward || skip_frame >= 10) 
 	{
 	  skip_frame = 0;
 
 	  for(std::vector<GuiObj*>::size_type i=0; i < obj.size(); ++i) 
-	    obj[i]->draw_clipped();
+	    {
+	      // Update every 3/100 seconds
+	      if (last_update + 30 < CL_System::get_time())
+		{
+		  last_update = CL_System::get_time();
+
+		  for(std::vector<GuiObj*>::size_type i=0; i < obj.size(); ++i) 
+		    obj[i]->update();
+		}
+	      
+	      obj[i]->draw_clipped();
+	    }
       
 	  Display::flip_display();     
 	}

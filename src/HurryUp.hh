@@ -1,4 +1,4 @@
-//  $Id: HurryUp.hh,v 1.1 2000/07/02 07:39:50 grumbel Exp $
+//  $Id: HurryUp.hh,v 1.2 2000/07/04 22:59:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,8 +31,8 @@ private:
   bool is_running;
   bool center_reached;
 
-  int hurry_x_pos;
-  int up_x_pos;
+  int  wait_counter;
+  float x_pos;
 
   float speed;
 

@@ -1,4 +1,4 @@
-//  $Id: StatusLine.cc,v 1.4 2000/05/22 21:11:13 grumbel Exp $
+//  $Id: StatusLine.cc,v 1.5 2000/07/04 22:59:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,7 +24,7 @@
 
 StatusLine::StatusLine()
 {
-  font = CL_Font::load("Fonts/courier_small", PingusResource::get("fonts.dat"));
+  font = PingusResource::load_font("Fonts/courier_small", "fonts");
 }
  
 StatusLine::~StatusLine()

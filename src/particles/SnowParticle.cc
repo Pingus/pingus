@@ -1,4 +1,4 @@
-//  $Id: SnowParticle.cc,v 1.1 2000/02/04 23:45:19 mbn Exp $
+//  $Id: SnowParticle.cc,v 1.2 2000/07/04 22:59:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,7 +24,7 @@
 SnowParticle::SnowParticle(int x, int y)
 {
   if (!snow) {
-    snow = CL_Res_Surface("Particles/snow", PingusResource::get("pingus.dat"));
+    snow = PingusResource::load_surface("Particles/snow", "pingus");
   }
   y_add = 1.0;
 }

@@ -1,4 +1,4 @@
-//  $Id: Editor.cc,v 1.13 2000/06/25 20:22:18 grumbel Exp $
+//  $Id: Editor.cc,v 1.14 2000/07/04 22:59:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -87,7 +87,7 @@ Editor::edit ()
 {
   quit = false;
 
-  Display::set_cursor(CL_MouseCursorProvider::load("Cursors/cursor", PingusResource::get("game.dat")));
+  Display::set_cursor(CL_MouseCursorProvider::load("Cursors/cursor", PingusResource::get("game")));
   
   Display::show_cursor();
 
@@ -396,6 +396,10 @@ Editor::interactive_load()
 
 /***********************************************
 $Log: Editor.cc,v $
+Revision 1.14  2000/07/04 22:59:13  grumbel
+Fixed scrolling to be no longer fast-forward depended, thanks to Alan Cox for finding this and some other bugs :-)
+Added support for reading datafile or scriptfile (--use-datafile, --use-scriptfile)
+
 Revision 1.13  2000/06/25 20:22:18  grumbel
 Rewrote some parts of the resource management, to make it possible to transparently read real files instead of datafiles
 

@@ -1,4 +1,4 @@
-//  $Id: OptionMenu.cc,v 1.22 2000/07/02 07:39:50 grumbel Exp $
+//  $Id: OptionMenu.cc,v 1.23 2000/07/04 22:59:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -304,7 +304,7 @@ OptionMenu::display()
   CL_Input::chain_button_release.push_back(event);
 
   Display::set_cursor(CL_MouseCursorProvider::load("Cursors/cursor",
-						   PingusResource::get("game.dat")));
+						   PingusResource::get("game")));
   Display::show_cursor();
 
   draw();

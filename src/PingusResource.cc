@@ -1,4 +1,4 @@
-//  $Id: PingusResource.cc,v 1.7 2000/06/26 06:45:59 grumbel Exp $
+//  $Id: PingusResource.cc,v 1.8 2000/07/04 22:59:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,14 +30,38 @@ std::map<ResDescriptor, CL_Font*>          PingusResource::font_map;
 
 
 std::string
-sufix_fixer(const std::string& filename)
+suffix_fixer(const std::string& filename)
 {
-  //std::cout << "Filename: " << filename.substr(filename.size() - 4, std::string::npos) << std::endl;
+  std::string wrong_suffix;
+  std::string right_suffix;
 
-  if (filename.substr(filename.size() - 4, std::string::npos) != ".dat")
+  // Using compiled datafiles, they load faster, but are larger
+  if (use_datafile)
     {
-      return (filename + ".dat");
+      right_suffix = ".dat";
+      wrong_suffix = ".scr";
     }
+  else
+    {
+      right_suffix = ".scr";
+      wrong_suffix = ".dat";
+    }
+
+  // Filename ends with ".dat", replace it with ".scr" and return.
+  if (filename.substr(filename.size() - 4, std::string::npos) == wrong_suffix)
+    {
+      std::cout << "PingusResource: Filename with \"" << wrong_suffix << "\" found: " << filename << std::endl;
+      return filename.substr(0, filename.size() - 4) + right_suffix;
+    }
+
+  // Filename does not end with ".scr", than add it and return
+  if (filename.substr(filename.size() - 4, std::string::npos) != right_suffix)
+    {
+      std::cout << "PingusResource: filename doesn't contain \"" << right_suffix << "\", fixing: " << filename << std::endl;
+      return (filename + right_suffix);
+    }
+
+  // Everything should be all right, just return.
   return filename;
 }
 
@@ -71,8 +95,13 @@ PingusResource::open(const std::string& filename)
 }
 */
 CL_ResourceManager*
-PingusResource::get(const std::string& filename)
+PingusResource::get(const std::string& arg_filename)
 {
+
+  string filename = suffix_fixer(arg_filename);
+  std::cout << "PingusResource: getting: " << filename << std::endl;
+
+
   CL_ResourceManager* res_manager;
 
   res_manager = resource_map[filename];
@@ -85,7 +114,7 @@ PingusResource::get(const std::string& filename)
     {
       std::string res_filename = find_file(pingus_datadir, "data/" + filename);
       res_manager = CL_ResourceManager::create(res_filename.c_str(),
-					       /* is_datafile = */ true);
+					       /* is_datafile = */ use_datafile);
       resource_map[filename] = res_manager;
       return res_manager;
     }
@@ -117,7 +146,7 @@ PingusResource::load_surface(const ResDescriptor& res_desc)
 	{
 	case ResDescriptor::RESOURCE:
 	  surf = CL_Surface::load(res_desc.res_name.c_str(),
-				  get(sufix_fixer(res_desc.datafile)));
+				  get(suffix_fixer(res_desc.datafile)));
 	  surface_map[res_desc] = surf;
 	  return surf;
 	  
@@ -161,7 +190,7 @@ PingusResource::load_font(const ResDescriptor& res_desc)
 	{
 	case ResDescriptor::RESOURCE:
 	  font = CL_Font::load(res_desc.res_name.c_str(),
-			       get(sufix_fixer(res_desc.datafile)));
+			       get(suffix_fixer(res_desc.datafile)));
 	  font_map[res_desc] = font;
 	  return font;
 	  
