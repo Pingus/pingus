@@ -1,4 +1,4 @@
-//  $Id: ObjectSelector.cc,v 1.14 2000/05/19 14:27:37 grumbel Exp $
+//  $Id: ObjectSelector.cc,v 1.15 2000/05/28 19:30:10 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -118,11 +118,11 @@ ObjectSelector::get_trap()
  
   // FIXME: Can somebody enlight me, why gcc gives here a warrning?: 
   // ObjectSelector.cc:107: warning: control reaches end of non-void function `ObjectSelector::get_trap()'
-  return new TrapObj(trap);
+  return (new TrapObj(trap));
 }
 
 EditorObj*
-ObjectSelector::get_groundpiece()
+ObjectSelector::get_groundpiece(surface_data::Type type)
 {
   string str;
   CL_ResourceManager* res = PingusResource::get("global.dat");
@@ -155,11 +155,16 @@ ObjectSelector::get_groundpiece()
   data_loaded = true;
   str = select_surface(sur_list);
 
-  data.res_desc = ResDescriptor("resource:global.dat", str);
-  data.res_name = "global.dat";
-  data.name = str;
+  if (!str.empty())
+    {
+      data.res_desc = ResDescriptor("resource:global.dat", str);
+      data.res_name = "global.dat";
+      data.name = str;
+      data.type = type;
 
-  return new PSMObj(data);
+      return new PSMObj(data);
+    }
+  return 0;
 }
 
 EditorObj*
@@ -264,10 +269,12 @@ ObjectSelector::select_obj_type()
   CL_Display::clear_display();
   font->print_left(20, 20, "What object do you want?");
   font->print_left(20, 50, "t - Trap");
-  font->print_left(20, 70, "g - Groundpiece");
-  font->print_left(20, 90, "h - Hotspot");
-  font->print_left(20,110, "e - Entrance");
-  font->print_left(20,130, "x - Exit");
+  font->print_left(20, 70, "g - Groundpiece (ground)");
+  font->print_left(20, 90, "s - Groundpiece (solid)");
+  font->print_left(20,110, "b - Groundpiece (bridge)");
+  font->print_left(20,130, "h - Hotspot");
+  font->print_left(20,150, "e - Entrance");
+  font->print_left(20,170, "x - Exit");
   CL_Display::flip_display();
     
   while (true) 
@@ -277,8 +284,14 @@ ObjectSelector::select_obj_type()
 	case CL_KEY_T:
 	  return get_trap();
 	  break;
+	case CL_KEY_B:
+	  return get_groundpiece(surface_data::BRIDGE);
+	  break;
+	case CL_KEY_S:
+	  return get_groundpiece(surface_data::SOLID);
+	  break;
 	case CL_KEY_G:
-	  return get_groundpiece();
+	  return get_groundpiece(surface_data::GROUND);
 	  break;
 	case CL_KEY_H:
 	  return get_hotspot();
@@ -334,6 +347,9 @@ ObjectSelector::read_string(string description, string def_str)
 /*
 
 $Log: ObjectSelector.cc,v $
+Revision 1.15  2000/05/28 19:30:10  grumbel
+Cleaned the status line a bit and added support to include solid groundpiecs from the editor
+
 Revision 1.14  2000/05/19 14:27:37  grumbel
 Misc changes
 

@@ -1,4 +1,4 @@
-//  $Id: PLFObj.cc,v 1.10 2000/05/24 15:45:02 grumbel Exp $
+//  $Id: PLFObj.cc,v 1.11 2000/05/28 19:30:10 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -194,7 +194,7 @@ EntranceObj::status_line()
       break;
     }
 
-  sprintf(str, "Entrance - %s ReleaseRate: %d Direction: %s",
+  sprintf(str, "Entrance: %s Rate: %d Direction: %s",
 	  type.c_str(), release_rate, dir_str.c_str());
 
   return std::string(str);

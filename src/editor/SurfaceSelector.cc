@@ -1,4 +1,4 @@
-//  $Id: SurfaceSelector.cc,v 1.3 2000/04/24 13:15:43 grumbel Exp $
+//  $Id: SurfaceSelector.cc,v 1.4 2000/05/28 19:30:10 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -132,7 +132,8 @@ string
 SurfaceSelector::select()
 {
   string str;
-  
+  vector<surface_obj>::iterator iter;
+
   while (!CL_Mouse::left_pressed())
     {
       draw();
@@ -142,7 +143,12 @@ SurfaceSelector::select()
       CL_System::keep_alive();
     } 
 
-  str = get_current_obj()->name;
+  iter = get_current_obj();
+  
+  if (iter != vector<surface_obj>::iterator())
+    str = iter->name;
+  else 
+    str = "";
 
   cout << "str: " << str << endl;
 

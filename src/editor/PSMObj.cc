@@ -1,4 +1,4 @@
-//  $Id: PSMObj.cc,v 1.8 2000/05/22 21:11:13 grumbel Exp $
+//  $Id: PSMObj.cc,v 1.9 2000/05/28 19:30:10 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -91,9 +91,8 @@ PSMObj::status_line()
       type_name = "Unknown";
     }
 
-  sprintf (str, "%-30s:%s",
-	   type_name.c_str(),
-	   "PSMObj");
+  sprintf (str, "Groundpiece: %s Type: %s",
+	   desc.res_name.c_str(), type_name.c_str());
 
   return std::string(str);
 }
