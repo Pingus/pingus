@@ -1,4 +1,4 @@
-//  $Id: PLF.cc,v 1.25 2001/08/12 18:36:40 grumbel Exp $
+//  $Id: PLF.cc,v 1.26 2001/08/15 22:01:45 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -44,7 +44,7 @@ PLF::PLF()
   difficulty = 5;
   music = ResDescriptor("file", "pingus-4.it");
   //maptype = SPOT;
-  foreground.type = ResDescriptor::FILE;
+  foreground.type = ResDescriptor::RD_FILE;
 }
 
 // Destroy all data
@@ -67,10 +67,10 @@ PLF::get_foreground()
     ResDescriptor ret_val = foreground;
     
     switch(foreground.type) {
-    case  ResDescriptor::FILE:
+    case  ResDescriptor::RD_FILE:
       ret_val.res_name = "levels/" + foreground.res_name;
       break;
-    case  ResDescriptor::RESOURCE:
+    case  ResDescriptor::RD_RESOURCE:
       if (verbose > 1) cout << "Not supported" << endl;
       break;
     default:
@@ -91,10 +91,10 @@ ResDescriptor
 PLF::get_mapfile()
 {
   switch(col.type) {
-  case  ResDescriptor::FILE:
+  case  ResDescriptor::RD_FILE:
     col.res_name = "levels/" + col.res_name;
     break;
-  case  ResDescriptor::RESOURCE:
+  case  ResDescriptor::RD_RESOURCE:
     break;
   default:
     break;

@@ -1,4 +1,4 @@
-//  $Id: PingusResource.cc,v 1.19 2001/08/04 12:46:22 grumbel Exp $
+//  $Id: PingusResource.cc,v 1.20 2001/08/15 22:01:45 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,7 @@
 
 #include <assert.h>
 #include <iostream>
+#include <ClanLib/png.h>
 
 #include "PingusError.hh"
 #include "globals.hh"
@@ -103,7 +104,7 @@ PingusResource::load_surface(const std::string& res_name,
 			     const std::string& datafile)
 {
   return load_surface(ResDescriptor(res_name, datafile, 
-				    ResDescriptor::RESOURCE));
+				    ResDescriptor::RD_RESOURCE));
 }
 
 CL_Surface
@@ -125,7 +126,7 @@ PingusResource::load_surface(const ResDescriptor& res_desc)
 
       switch(res_desc.type)
 	{
-	case ResDescriptor::RESOURCE:
+	case ResDescriptor::RD_RESOURCE:
 	  try {
 	    surf = CL_Surface (res_desc.res_name.c_str(), get(suffix_fixer(res_desc.datafile)));
 	    //	    CL_Surface::load(res_desc.res_name.c_str(),
@@ -143,14 +144,15 @@ PingusResource::load_surface(const ResDescriptor& res_desc)
 	  surface_map[res_desc] = surf;
 	  return surf;
 	  
-	case ResDescriptor::FILE:
-	  std::cout << "PingusResource: ResDescriptor::FILE not implemented" << std::endl;
-	  assert (!"FIXME---234234");
-	  //surf = CL_PCXProvider::create(find_file("", res_desc.res_name), 0);
-	  surface_map[res_desc] = surf;	  
+	case ResDescriptor::RD_FILE:
+	  // FIXME: Memory leak?
+	  std::cout << "PingusResource::load_surface(" << res_desc.res_name << ")" << std::endl;
+	  surf = CL_Surface(new CL_PNGProvider(res_desc.res_name, NULL), false);
+	  std::cout << "DONE" << std::endl;
+	  surface_map[res_desc] = surf;
 	  return surf;
 	  
-	case ResDescriptor::AUTO:
+	case ResDescriptor::RD_AUTO:
 	  std::cerr << "PingusResource: ResDescriptor::AUTO not implemented" << std::endl;
 	  assert (false);
 
@@ -166,7 +168,7 @@ PingusResource::load_font(const std::string& res_name,
 			  const std::string& datafile)
 {
   return load_font(ResDescriptor(res_name, datafile, 
-				 ResDescriptor::RESOURCE));
+				 ResDescriptor::RD_RESOURCE));
 }
 
 CL_Font* 
@@ -185,7 +187,7 @@ PingusResource::load_font(const ResDescriptor& res_desc)
     {
       switch(res_desc.type)
 	{
-	case ResDescriptor::RESOURCE:
+	case ResDescriptor::RD_RESOURCE:
 	  try {
 	  font = CL_Font::load(res_desc.res_name.c_str(),
 			       get(suffix_fixer(res_desc.datafile)));
@@ -197,11 +199,11 @@ PingusResource::load_font(const ResDescriptor& res_desc)
 	  font_map[res_desc] = font;
 	  return font;
 	  
-	case ResDescriptor::FILE:
+	case ResDescriptor::RD_FILE:
 	  std::cout << "PingusResource: ResDescriptor::FILE not implemented" << std::endl;
 	  return 0;
 	  
-	case ResDescriptor::AUTO:
+	case ResDescriptor::RD_AUTO:
 	  std::cout << "PingusResource: ResDescriptor::AUTO not implemented" << std::endl;
 	  return 0;
 

@@ -1,4 +1,4 @@
-//  $Id: StatusLine.cc,v 1.8 2001/08/11 18:53:39 grumbel Exp $
+//  $Id: StatusLine.cc,v 1.9 2001/08/15 22:01:45 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -50,7 +50,7 @@ StatusLine::draw(boost::dummy_ptr<EditorView> view)
 	} 
       else 
 	{
-	  status_line_text = "None";
+	  status_line_text = "";
 	}
     }
   

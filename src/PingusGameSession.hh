@@ -1,4 +1,4 @@
-//  $Id: PingusGameSession.hh,v 1.5 2001/07/27 15:00:47 grumbel Exp $
+//  $Id: PingusGameSession.hh,v 1.6 2001/08/15 22:01:45 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,7 +28,7 @@
 /** With this class you can obtain information about the success or
     failure of a level, in addition you can get details like how many
     penguins where saved or killed, etc. */
-class PingusGameSessionResults 
+class PingusGameSessionResult
 {
 public:
   /** Gives information if the level was succeeded or not 
@@ -72,7 +72,7 @@ public:
   void start ();
 
   /** Get the results of the last gaming session */
-  PingusGameSessionResults get_results ();
+  PingusGameSessionResult get_result ();
 };
 
 #endif

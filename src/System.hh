@@ -1,4 +1,4 @@
-//  $Id: System.hh,v 1.19 2001/07/27 21:53:22 grumbel Exp $
+//  $Id: System.hh,v 1.20 2001/08/15 22:01:45 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,21 +41,17 @@ public:
       : message (str) {}
   };
 
-  ///
   struct DirectoryEntry
   {
-    ///
-    enum FileType { DIRECTORY, FILE } ///
- type;
-    ///
+    enum FileType { DE_DIRECTORY, DE_FILE } type;
     std::string name;
 
-    ///
-    DirectoryEntry(const std::string&);
+    DirectoryEntry(const std::string&, FileType t = DE_FILE);
   };
 
   ///
   typedef std::list<DirectoryEntry> Directory;
+  typedef std::list<DirectoryEntry>::iterator DirectoryIter;
   
   ///
   static Directory opendir(const std::string& pathname, const std::string& pattern = "*");

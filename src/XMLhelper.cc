@@ -1,4 +1,4 @@
-//  $Id: XMLhelper.cc,v 1.10 2001/06/11 08:45:21 grumbel Exp $
+//  $Id: XMLhelper.cc,v 1.11 2001/08/15 22:01:45 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -206,9 +206,9 @@ XMLhelper::parse_surface(xmlDocPtr doc, xmlNodePtr cur)
 	{
 	  if (strcmp(type, "file") == 0)
 	    {
-	      desc.type = ResDescriptor::FILE;	 
+	      desc.type = ResDescriptor::RD_FILE;	 
 	      xmlNodePtr ccur = cur->children;
-	      desc.type = ResDescriptor::RESOURCE;
+	      desc.type = ResDescriptor::RD_RESOURCE;
 	      while (ccur != NULL)
 		{
 		  if (strcmp((char*)ccur->name, "resource-file") == 0)
@@ -225,7 +225,7 @@ XMLhelper::parse_surface(xmlDocPtr doc, xmlNodePtr cur)
 	  else if (strcmp(type, "datafile") == 0)
 	    {
 	      xmlNodePtr ccur = cur->children;
-	      desc.type = ResDescriptor::RESOURCE;
+	      desc.type = ResDescriptor::RD_RESOURCE;
 	      while (ccur != NULL)
 		{
 		  if (strcmp((char*)ccur->name, "resource-datafile") == 0)
@@ -294,13 +294,13 @@ XMLhelper::write_desc_xml(std::ofstream* xml, ResDescriptor desc)
   (*xml) << "  <surface><resource type=\"";
   switch (desc.type)
     {
-    case ResDescriptor::FILE:
+    case ResDescriptor::RD_FILE:
       (*xml) << "file\">\n"
 	     << "    <resource-file>"
 	     << desc.res_name
 	     << "</resource-file>\n";
       break;
-    case ResDescriptor::RESOURCE:
+    case ResDescriptor::RD_RESOURCE:
       (*xml) << "datafile\">\n"
 	     << "    <resource-datafile>"
 	     << desc.datafile

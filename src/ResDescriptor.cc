@@ -1,4 +1,4 @@
-//  $Id: ResDescriptor.cc,v 1.11 2001/04/27 20:44:37 grumbel Exp $
+//  $Id: ResDescriptor.cc,v 1.12 2001/08/15 22:01:45 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,7 +22,7 @@
 
 ResDescriptor::ResDescriptor()
 {
-  type = RESOURCE;
+  type = RD_RESOURCE;
   res_name = "";
   datafile = "global";
 }
@@ -50,7 +50,7 @@ ResDescriptor::ResDescriptor(const std::string& str)
 
   //cout << "Resdes: " << str << std::endl;
 
-  type = RESOURCE;
+  type = RD_RESOURCE;
   
   pos1 = str.find_first_of(':');
   pos2 = str.find_first_of(')');
@@ -80,11 +80,11 @@ ResDescriptor::ResDescriptor(const std::string& c_cast, const std::string& value
   }
   
   if (cast == "file") {
-    type = FILE;
+    type = RD_FILE;
   } else if (cast == "resource") {
-    type = RESOURCE;
+    type = RD_RESOURCE;
   } else if (cast == "auto") {
-    type = AUTO;
+    type = RD_AUTO;
   } else {
     throw PingusError("ResDescriptor: Wrong cast '"+cast+"' for value '"+value+"'\n");
   }
@@ -101,13 +101,13 @@ std::ostream& operator<<(std::ostream& s, const ResDescriptor& desc)
 {
   switch (desc.type)
     {
-    case ResDescriptor::RESOURCE:
+    case ResDescriptor::RD_RESOURCE:
       return s << "(datafile: " << desc.datafile << ", res_name: " << desc.res_name << ")";
       break;
-    case ResDescriptor::FILE:
+    case ResDescriptor::RD_FILE:
       return s << "(file:" << desc.res_name << ")";
       break;
-    case ResDescriptor::AUTO:
+    case ResDescriptor::RD_AUTO:
       return s << "(auto)";
       break;
     default:

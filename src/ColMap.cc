@@ -1,4 +1,4 @@
-//  $Id: ColMap.cc,v 1.25 2001/08/04 12:46:22 grumbel Exp $
+//  $Id: ColMap.cc,v 1.26 2001/08/15 22:01:45 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -56,10 +56,10 @@ int
 ColMap::load(ResDescriptor desc)
 {
   switch(desc.type) {
-  case ResDescriptor::FILE:
+  case ResDescriptor::RD_FILE:
     throw PingusError("ColMap: File load - Feature is no longer implemented"); //    return load(desc.res_name);
     break;
-  case ResDescriptor::RESOURCE:
+  case ResDescriptor::RD_RESOURCE:
     {
       CL_Surface sur;
       CL_SurfaceProvider* provider;

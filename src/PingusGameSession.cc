@@ -1,4 +1,4 @@
-//  $Id: PingusGameSession.cc,v 1.9 2001/08/04 12:46:22 grumbel Exp $
+//  $Id: PingusGameSession.cc,v 1.10 2001/08/15 22:01:45 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,20 +46,20 @@ create_plf (std::string filename)
 }
 
 bool
-PingusGameSessionResults::finished ()
+PingusGameSessionResult::finished ()
 {
   // FIXME: Always success
   return true;
 }
 
 float
-PingusGameSessionResults::percentage_saved ()
+PingusGameSessionResult::percentage_saved ()
 {
   return 100.0;
 }
 
 float 
-PingusGameSessionResults::percentage_time ()
+PingusGameSessionResult::percentage_time ()
 {
   return 100.0;
 }
@@ -85,10 +85,10 @@ PingusGameSession::start ()
   std::cout << "PingusGameSession: Got control back from the client." << std::endl;
 }
 
-PingusGameSessionResults 
-PingusGameSession::get_results ()
+PingusGameSessionResult
+PingusGameSession::get_result ()
 {
-  return PingusGameSessionResults ();
+  return PingusGameSessionResult ();
 }
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: Editor.cc,v 1.33 2001/08/13 21:35:37 grumbel Exp $
+//  $Id: Editor.cc,v 1.34 2001/08/15 22:01:45 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -178,7 +178,7 @@ Editor::draw ()
 		       }*/
 
   status_line->draw(view);
-  scroll_map->draw(view);
+  scroll_map->draw();
 }
 
 
@@ -413,7 +413,7 @@ Editor::move_objects()
   move_y = 0;
 
   if (CL_Keyboard::get_keycode(CL_KEY_RSHIFT)
-      && CL_Keyboard::get_keycode(CL_KEY_RSHIFT))
+      || CL_Keyboard::get_keycode(CL_KEY_RSHIFT))
     {
       move_speed = 10;
     }
@@ -428,7 +428,7 @@ Editor::move_objects()
   else if (CL_Keyboard::get_keycode(CL_KEY_DOWN))
     move_y = move_speed;
         
-  //object_manager->move_current_objs(move_x, move_y);
+  object_manager->move_current_objs(move_x, move_y);
 }
 
 void

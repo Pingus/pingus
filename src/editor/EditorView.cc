@@ -1,4 +1,4 @@
-//  $Id: EditorView.cc,v 1.6 2001/08/12 23:05:22 grumbel Exp $
+//  $Id: EditorView.cc,v 1.7 2001/08/15 22:01:45 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,8 +24,8 @@ EditorView::EditorView (int x1, int y1, int x2, int y2,
 			int x_offset, int y_offset)
   : x1 (x1), y1 (y1), x2 (x2), y2 (y2), offset (-(x2 - x1)/2.0f, -(y2-x1)/2.0f, 1.0f)
 {
-  center = CL_Vector ((x2 - x1)/2.0f,
-		      (y2 - y1)/2.0f);
+  center = CL_Vector ((x2 - x1)/2.0f + x1,
+		      (y2 - y1)/2.0f + y1);
   std::cout << "View: " << x1 << ", " << y1 << ", " << x2 << ", " << y2 
 	    << std::endl;
 }

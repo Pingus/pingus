@@ -1,4 +1,4 @@
-//  $Id: System.cc,v 1.34 2001/08/04 12:46:22 grumbel Exp $
+//  $Id: System.cc,v 1.35 2001/08/15 22:01:45 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -44,9 +44,9 @@ int System::verbose;
 std::string System::default_email;
 std::string System::default_username;
 
-System::DirectoryEntry::DirectoryEntry(const std::string& n)
+System::DirectoryEntry::DirectoryEntry(const std::string& n, FileType t)
+  : name (n), type (t)
 {
-  name = n;
 }
 
 System::Directory
@@ -70,13 +70,16 @@ System::opendir(const std::string& pathname, const std::string& pattern)
 	{
 	  if (fnmatch(pattern.c_str(), de->d_name, FNM_PATHNAME) == 0) 
 	    {
-	      if (de->d_type == 'd')
+	      struct stat buf;
+	      stat ((pathname + "/" + de->d_name).c_str (), &buf);
+	      
+	      if (S_ISDIR(buf.st_mode))
 		{
-		  dir_list.push_back(DirectoryEntry(de->d_name));
+		  dir_list.push_back(DirectoryEntry(de->d_name, DirectoryEntry::DE_DIRECTORY));
 		}
 	      else 
 		{
-		  dir_list.push_back(DirectoryEntry(de->d_name));
+		  dir_list.push_back(DirectoryEntry(de->d_name, DirectoryEntry::DE_FILE));
 		}
 	    }
 	}

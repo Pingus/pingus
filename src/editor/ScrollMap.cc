@@ -1,4 +1,4 @@
-//  $Id: ScrollMap.cc,v 1.6 2001/05/20 13:00:59 grumbel Exp $
+//  $Id: ScrollMap.cc,v 1.7 2001/08/15 22:01:45 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,12 +23,13 @@
 EditorEvent* ScrollMap::editor_event;
 
 ScrollMap::ScrollMap()
+  : width (200), height (100),
+    x_pos (CL_Display::get_width() - width - 1),
+    y_pos (CL_Display::get_height() - height - 1),
+    view (new EditorView(x_pos, y_pos, x_pos + width, y_pos + height))
 {
-  width = 200;
-  height = 100;
-
-  x_pos = CL_Display::get_width() - width - 1;
-  y_pos = CL_Display::get_height() - height - 1;
+  view->set_zoom (0.1f);
+  view->move (CL_Vector (-640, -480));
 }
 
 ScrollMap::~ScrollMap()
@@ -67,8 +68,12 @@ ScrollMap::mouse_over(int x, int y)
 }
 
 void 
-ScrollMap::draw(boost::dummy_ptr<EditorView> view)
+ScrollMap::draw()
 {
+  CL_Display::draw_rect (x_pos, y_pos, x_pos + width, y_pos + height,
+			 1.0f, 1.0f, 1.0f);
+  Editor::instance ()->get_object_manager ()->draw (view.get ());
+  /*
   int viewarea_width = (CL_Display::get_width() * width
 			/ editor_event->object_manager->get_width());
   int viewarea_height = (CL_Display::get_height() * height
@@ -100,7 +105,7 @@ ScrollMap::draw(boost::dummy_ptr<EditorView> view)
   Display::draw_rect(x_pos, y_pos,
 		     x_pos + width,
 		     y_pos + height,
-		     1.0, 1.0, 1.0, 1.0);
+		     1.0, 1.0, 1.0, 1.0);*/
 }
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapGraph.cc,v 1.18 2001/07/24 09:10:12 grumbel Exp $
+//  $Id: PingusWorldMapGraph.cc,v 1.19 2001/08/15 22:01:46 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -73,7 +73,7 @@ PingusWorldMapLevelNode::on_click ()
   // Launch the game and wait until it is finished
   game.start ();
 
-  if (game.get_results ().finished ())
+  if (game.get_result ().finished ())
     {
       finished = true;	
     }

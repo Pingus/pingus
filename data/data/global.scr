@@ -582,6 +582,35 @@ section Ywlam
 	clyde = images/special/pacman/clyde.png (type=surface, x=0, y=0, width=32,  height=32); 
 }
 
+section Steel
+{
+	steel1 = images/groundpieces/solid/industrial/steel1.png (type=surface, x=0, y=0, width=84, height=43);
+	steel2 = images/groundpieces/solid/industrial/steel2.png (type=surface, x=0, y=0, width=44, height=167);
+	steel3 = images/groundpieces/solid/industrial/steel3.png (type=surface, x=0, y=0, width=167, height=44);
+	steel4 = images/groundpieces/solid/industrial/steel4.png (type=surface, x=0, y=0, width=233, height=105);
+	steel5 = images/groundpieces/solid/industrial/steel5.png (type=surface, x=0, y=0, width=253, height=106);
+}
+
+section Gunge
+{
+	gunge1 = images/groundpieces/transparent/industrial/gunge1.png (type=surface, x=0, y=0, width=65, height=59);
+	gunge10 = images/groundpieces/transparent/industrial/gunge10.png (type=surface, x=0, y=0, width=147, height=45);
+	gunge11 = images/groundpieces/transparent/industrial/gunge11.png (type=surface, x=0, y=0, width=69, height=51);
+	gunge12 = images/groundpieces/transparent/industrial/gunge12.png (type=surface, x=0, y=0, width=32, height=4);
+	gunge13 = images/groundpieces/transparent/industrial/gunge13.png (type=surface, x=0, y=0, width=75, height=4);
+	gunge14 = images/groundpieces/transparent/industrial/gunge14.png (type=surface, x=0, y=0, width=129, height=10);
+	gunge15 = images/groundpieces/transparent/industrial/gunge15.png (type=surface, x=0, y=0, width=98, height=10);
+	gunge2 = images/groundpieces/transparent/industrial/gunge2.png (type=surface, x=0, y=0, width=13, height=17);
+	gunge3 = images/groundpieces/transparent/industrial/gunge3.png (type=surface, x=0, y=0, width=18, height=10);
+	gunge4 = images/groundpieces/transparent/industrial/gunge4.png (type=surface, x=0, y=0, width=38, height=16);
+	gunge5 = images/groundpieces/transparent/industrial/gunge5.png (type=surface, x=0, y=0, width=9, height=26);
+	gunge6 = images/groundpieces/transparent/industrial/gunge6.png (type=surface, x=0, y=0, width=14, height=27);
+	gunge7 = images/groundpieces/transparent/industrial/gunge7.png (type=surface, x=0, y=0, width=11, height=24);
+	gunge8 = images/groundpieces/transparent/industrial/gunge8.png (type=surface, x=0, y=0, width=89, height=33);
+	gunge9 = images/groundpieces/transparent/industrial/gunge9.png (type=surface, x=0, y=0, width=24, height=9);
+
+}
+
 section Buttons
 {
         pause = images/core/buttons/pause.png (type=surface, x=0, y=0, width=38, height=56);

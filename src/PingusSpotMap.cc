@@ -1,4 +1,4 @@
-//  $Id: PingusSpotMap.cc,v 1.44 2001/08/10 10:56:13 grumbel Exp $
+//  $Id: PingusSpotMap.cc,v 1.45 2001/08/15 22:01:45 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -93,11 +93,11 @@ PingusSpotMap::PingusSpotMap(boost::shared_ptr<PLF> plf)
 
   switch(plf->get_foreground().type) 
     {
-    case ResDescriptor::RESOURCE:
+    case ResDescriptor::RD_RESOURCE:
       throw PingusError("PingusSpotMap: ResType RESOURCE is not implemented, sorry");
       break;
 
-    case ResDescriptor::FILE:
+    case ResDescriptor::RD_FILE:
       load(plf);
       gen_tiles();
       break;

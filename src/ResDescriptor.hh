@@ -1,4 +1,4 @@
-//  $Id: ResDescriptor.hh,v 1.8 2001/04/27 20:44:37 grumbel Exp $
+//  $Id: ResDescriptor.hh,v 1.9 2001/08/15 22:01:45 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,7 +28,7 @@ class ResDescriptor
 {
 public:
   ///
-  enum ResourceType { RESOURCE, FILE, AUTO };
+  enum ResourceType { RD_RESOURCE, RD_FILE, RD_AUTO };
   
   /// Where to get the data from?
   ResourceType type; 
