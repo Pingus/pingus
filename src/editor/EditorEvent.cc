@@ -1,4 +1,4 @@
-//  $Id: EditorEvent.cc,v 1.5 2000/02/12 20:53:45 grumbel Exp $
+//  $Id: EditorEvent.cc,v 1.6 2000/02/15 13:09:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,7 +17,9 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "../globals.hh"
 #include "../PingusGame.hh"
+#include "../PingusMessageBox.hh"
 #include "../globals.hh"
 #include "../System.hh"
 #include "../PingusError.hh"
@@ -82,7 +84,7 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key &key)
 	case CL_KEY_F7:
 	  editor->save_tmp_level();
 	  editor->checkpoint = string(tmpnam(0)) + ".pingus";
-	  std::cout << "Setting checkpoint: " << editor->checkpoint << std::endl;
+	  if (verbose) std::cout << "Setting checkpoint: " << editor->checkpoint << std::endl;
 	  object_manager->save_level(editor->checkpoint);
 	  break;
 	
@@ -91,12 +93,12 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key &key)
 	  editor->save_tmp_level();
 	  if (!editor->checkpoint.empty()) 
 	    {
-	      std::cout << "Restoring checkpoint: " << editor->checkpoint << std::endl;
+	      if (verbose) std::cout << "Restoring checkpoint: " << editor->checkpoint << std::endl;
 	      object_manager->load_level(editor->checkpoint);
 	    } 
 	  else 
 	    {
-	      std::cout << "No checkpoint set, no restoring done. " << std::endl;
+	      if (verbose) std::cout << "No checkpoint set, no restoring done. " << std::endl;
 	    }
 	  break;
       
@@ -176,7 +178,7 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key &key)
 		if ((twidth % tile_size) != 0)
 		  {
 		    twidth += (tile_size - (twidth % tile_size));
-		    std::cout << "Editor: Width not a multiple of " 
+		    std::cout << "Warrning: Editor: Width not a multiple of " 
 			 << tile_size << ", fixing width to " << twidth
 			 << std::endl; 
 		  }
@@ -207,13 +209,12 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key &key)
 	  break;
 	  
 	default:
-	  std::cout << "EdiorEvent: Unknown key pressed: id=" << key.id << " ascii=" << key.ascii << std::endl;
+	  if (verbose)
+	    std::cout << "EdiorEvent: Unknown key pressed: id=" << key.id << " ascii=" << key.ascii << std::endl;
 	}
     }
   else if (device == CL_Input::pointers[0])
     {
-      // std::cout << "Mouse Button Pressed" << std::endl;
-
       switch (key.id)
 	{
 	case 0:
@@ -227,18 +228,16 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key &key)
 	    }
 	  break;
 	case 1:
-	  //cout << "Middle button pressed" << std::endl;
 	  editor->rect_get_current_objs();
 	  break;
 	case 2:
-	  //cout << "Right button pressed" << std::endl;
 	  editor->scroll();
 	  break;
 	}
     }
   else
     {
-      std::cout << "Unkown input device" << std::endl;
+      if (verbose) std::cout << "Warrning: Unkown input device" << std::endl;
     }
   
   // Redraw the screen, since something may have changed
@@ -254,15 +253,11 @@ EditorEvent::on_button_release(CL_InputDevice *device, const CL_Key &key)
 
   if (device == CL_Input::keyboards[0])
     {
-
     }
   else if (device == CL_Input::pointers[0])
     {
       if (key.id == 0)
-	{
-	  // std::cout << "Mouse release: " << key.x << key.y << std::endl;
-	  editor->panel->on_release();
-	}
+	editor->panel->on_release();
     }
   else
     {
@@ -370,8 +365,14 @@ EditorEvent::editor_load_level()
 
   if (!str.empty()) 
     {
-      object_manager->load_level(str);
-      editor->last_level = str;
+      try {
+	object_manager->load_level(str);
+	editor->last_level = str;
+      }
+      catch(PingusError err) {
+	std::cout << " PingusError: " + err.message << std::endl;
+	PingusMessageBox(" PingusError: " + err.message);
+      }
     }
 }
 

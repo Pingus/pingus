@@ -1,4 +1,4 @@
-// $Id: EditorObj.cc,v 1.3 2000/02/12 20:53:45 grumbel Exp $
+// $Id: EditorObj.cc,v 1.4 2000/02/15 13:09:51 grumbel Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -99,8 +99,8 @@ EditorObj::draw_mark_offset(int x_offset, int y_offset)
   if (surf) 
     {
       Display::draw_rect(x_pos + x_offset + x_of, y_pos + y_offset + y_of,
-			 x_pos + surf->get_width() + x_offset + x_of,
-			 y_pos + surf->get_height() + y_offset + y_of,
+			 x_pos + surf->get_width() + x_offset + x_of - 1,
+			 y_pos + surf->get_height() + y_offset + y_of - 1,
 			 mark_color.r, 
 			 mark_color.g,
 			 mark_color.b,
@@ -164,6 +164,9 @@ EditorObj::obj_type()
   
 /*
 $Log: EditorObj.cc,v $
+Revision 1.4  2000/02/15 13:09:51  grumbel
+Misc cleanups, changes some messages to only appear when verbose > 0
+
 Revision 1.3  2000/02/12 20:53:45  grumbel
 Changed the rectangle selection in the editor to use non filled rects
 

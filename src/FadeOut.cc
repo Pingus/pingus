@@ -1,4 +1,4 @@
-//  $Id: FadeOut.cc,v 1.3 2000/02/11 16:58:25 grumbel Exp $
+//  $Id: FadeOut.cc,v 1.4 2000/02/15 13:09:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -57,16 +57,17 @@ FadeOut::black_rect(int steps)
 
   CL_Display::sync_buffers();
 
-  for(int i=0; i <= steps; ++i) {
-    x1 = (int)((CL_Display::get_width()  / 2) - (step_w * i));
-    y1 = (int)((CL_Display::get_height() / 2) - (step_h * i));
-    x2 = (int)((CL_Display::get_width()  / 2) + (step_w * i));
-    y2 = (int)((CL_Display::get_height() / 2) + (step_h * i));
-
-    CL_Display::fill_rect(x1, y1, x2, y2, 0.0, 0.0, 0.0, 1.0);
-    CL_System::sleep(10);
-    CL_Display::flip_display(true);
-  }  
+  for(int i=0; i <= steps; ++i) 
+    {
+      x1 = (int)((CL_Display::get_width()  / 2) - (step_w * i));
+      y1 = (int)((CL_Display::get_height() / 2) - (step_h * i));
+      x2 = (int)((CL_Display::get_width()  / 2) + (step_w * i));
+      y2 = (int)((CL_Display::get_height() / 2) + (step_h * i));
+      
+      CL_Display::fill_rect(x1, y1, x2, y2, 0.0, 0.0, 0.0, 1.0);
+      CL_System::sleep(10);
+      CL_Display::flip_display(true);
+    }  
   clear();
 }
 
@@ -74,14 +75,17 @@ void
 FadeOut::fade_to_black(int steps)
 {
   CL_Display::sync_buffers();
-  for(int i = 0; i < steps; ++i) {
-    CL_Display::fill_rect(0,0,
-			  CL_Display::get_width(),
-			  CL_Display::get_height(),
-			  0.0, 0.0, 0.0,
-			  ((double)i)/steps);
-    CL_Display::flip_display(true);
-  }
+
+  for(int i = 0; i < steps; i++)
+    {
+      CL_Display::fill_rect(0,0,
+			    CL_Display::get_width(),
+			    CL_Display::get_height(),
+			    0.0, 0.0, 0.0,
+			    ((double)i)/steps);
+
+      CL_Display::flip_display(true);
+    }
 }
 
 void

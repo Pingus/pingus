@@ -1,4 +1,4 @@
-//  $Id: ObjectSelector.cc,v 1.5 2000/02/12 12:00:34 grumbel Exp $
+//  $Id: ObjectSelector.cc,v 1.6 2000/02/15 13:09:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #include <string>
 #include <iostream>
 
+#include "../globals.hh"
 #include "StringReader.hh"
 #include "../PingusResource.hh"
 
@@ -76,10 +77,12 @@ ObjectSelector::get_trap()
       
       for(std::vector<std::string>::iterator i = traps.begin(); i != traps.end(); i++, j += font->get_height())
 	{
-	  std::cout << "Trap Name: " << *i << std::endl;
+	  if (verbose) std::cout << "Trap Name: " << *i << std::endl;
+
 	  if (i == current_trap)
 	    CL_Display::fill_rect(10, 150 + j, 200, 170 + j,
 				  0.5, 0.5, 0.5, 1.0);
+	  
 	  font->print_left(20,150 + j, i->c_str());
 	}
       
@@ -216,7 +219,7 @@ ObjectSelector::get_entrance()
 	  break;
 
 	default:
-	  std::cout << "unknow keypressed" << std::endl;
+	  if (verbose) std::cout << "unknow keypressed" << std::endl;
 	}
     }
   
@@ -315,6 +318,9 @@ ObjectSelector::read_string(std::string description, std::string def_str)
 /*
 
 $Log: ObjectSelector.cc,v $
+Revision 1.6  2000/02/15 13:09:51  grumbel
+Misc cleanups, changes some messages to only appear when verbose > 0
+
 Revision 1.5  2000/02/12 12:00:34  grumbel
 Misc changes
 

@@ -1,4 +1,4 @@
-//  $Id: World.hh,v 1.2 2000/02/09 21:43:41 grumbel Exp $
+//  $Id: World.hh,v 1.3 2000/02/15 13:09:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -55,6 +55,7 @@ private:
   unsigned int allowed_pingus;
   unsigned int pingus_out;
   unsigned int saved_pingus;
+  unsigned int number_to_save;
 
   bool exit_world;
   int  exit_time;  
@@ -94,6 +95,7 @@ public:
   unsigned int get_allowed_pingus() { return allowed_pingus; }
   unsigned int get_pingus_out() { return pingus_out; } 
   unsigned int get_saved_pingus() { return saved_pingus; }
+  unsigned int get_number_to_save() { return number_to_save; }
 
   int   get_width(void);
   void  write_result(void);

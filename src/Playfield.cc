@@ -1,4 +1,4 @@
-//  $Id: Playfield.cc,v 1.3 2000/02/11 16:58:26 grumbel Exp $
+//  $Id: Playfield.cc,v 1.4 2000/02/15 13:09:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,11 +34,8 @@
 Playfield::Playfield()
 {
   current_pingu = 0;
-  //  x_offset = 0;
-  //y_offset = 0;
   server = 0;
   client = 0;
-  //  pause = false;
   mouse_scrolling = false;
 }
 
@@ -48,13 +45,7 @@ Playfield::Playfield(PLF* level_data, World* w)
   current_pingu = 0;
   current_view = 0;
   pingus = world->get_pingu_p();
-
-  //x_offset = 0; 
-  //y_offset = 0; 
-
-  //  x_offset2 = x_offset;
-  // y_offset2 = y_offset;
-
+  mouse_scrolling = false;
   View::set_world(world);
 
   // Create a default view
@@ -78,11 +69,11 @@ Playfield::Playfield(PLF* level_data, World* w)
 
     if (verbose) 
       {
-	cout << "Playfield: Using screen size: " 
-	     << x1 << ", "
-	     << y1 << ", " 
-	     << x2 << ", "
-	     << y2 << std::endl;
+	std::cout << "Playfield: Using screen size: " 
+		  << x1 << ", "
+		  << y1 << ", " 
+		  << x2 << ", "
+		  << y2 << std::endl;
       }
     
     if (gimmicks_enabled) 
@@ -96,9 +87,6 @@ Playfield::Playfield(PLF* level_data, World* w)
     else
       { // !gimmicks_enabled
 	view.push_back(View(x1, y1, x2, y2));
-	
-	cout << "Playfield: start_X: " << ((x2 - x1) / 2) - level_data->get_startx() << std::endl;
-	cout << "Playfield: start_Y: " << ((y2 - y1) / 2) - level_data->get_starty() << std::endl;
 	
 	view[0].set_x_offset(((x2 - x1) / 2) - level_data->get_startx());
 	view[0].set_y_offset(((y2 - y1) / 2) - level_data->get_starty());
@@ -115,9 +103,10 @@ Playfield::~Playfield()
 void
 Playfield::draw()
 { 
-  for(unsigned int i=0; i < view.size(); ++i) {
-    view[i].draw();
-  }
+  for(vector<View>::iterator i = view.begin(); i != view.end(); i++)
+    {
+      i->draw();
+    }
 }
 
 Pingu*
@@ -163,43 +152,11 @@ Playfield::process_input_demomode()
 void 
 Playfield::process_input_interactive()
 {
-
-  // Scroll around if the mouse button is pressed
-  /*  if (CL_Mouse::right_pressed())
-    {
-      if (!mouse_scrolling) 
-	{
-	  char str[1024];
-
-	  mouse_scrolling = true;
-	  scroll_center_x = CL_Mouse::get_x();
-	  scroll_center_y = CL_Mouse::get_y();
-	  x_offset = view[current_view].get_x_offset();
-	  y_offset = view[current_view].get_y_offset();
-
-	  sprintf(str, "Playfield: Start scrolling: X: %d Y: %d", x_offset, y_offset);
-	  //      event.send(str);
-	}
-      x_offset += (scroll_center_x - CL_Mouse::get_x()) / 5;
-      y_offset += (scroll_center_y - CL_Mouse::get_y()) / 5;
-    
-      view[current_view].set_x_offset(x_offset);
-      view[current_view].set_y_offset(y_offset);
-    }
-  else 
-    {
-      if (mouse_scrolling) 
-	{
-	  char str[1024];
-	  sprintf(str, "Playfield: Stop scrolling: X: %d Y: %d", x_offset, y_offset);
-	  //      event.send(str);
-	}
-      mouse_scrolling = false;
-    }
-*/
   // FIXME: This should be replaced with something getting relative mouse co's
   if (auto_scrolling)
     {
+      scroll_speed = 30;
+
       if (CL_Mouse::get_x() < 2) 
 	{
 	  view[current_view].set_x_offset(view[current_view].get_x_offset() + scroll_speed);
@@ -218,14 +175,6 @@ Playfield::process_input_interactive()
 	  view[current_view].set_y_offset(view[current_view].get_y_offset() - scroll_speed);
 	}
     }
-  /*
-  if (CL_Mouse::middle_pressed()) 
-    {
-      std::cout << "Mouse Coordinates ="
-	   << " X: " << CL_Mouse::get_x() + x_offset
-	   << " Y: " << CL_Mouse::get_y() + y_offset << std::endl;
-      world->print_status();
-    }*/
 }
 
 void
@@ -233,6 +182,7 @@ Playfield::let_move()
 {
   process_input();
   do_scrolling();
+  
   for(unsigned int i=0; i < view.size(); ++i)
     {
       if (view[i].is_current() && !mouse_scrolling)
@@ -280,14 +230,11 @@ Playfield::set_client(Client* c)
 void
 Playfield::enable_scroll_mode()
 {
-  std::cout << "Started scrolling..." << std::flush;
+  if (verbose) std::cout << "Started scrolling..." << std::flush;
   mouse_scrolling = true;
 
   scroll_center_x = CL_Mouse::get_x();
   scroll_center_y = CL_Mouse::get_y();
-  
-  //x_offset = view[current_view].get_x_offset();
-  //  y_offset = view[current_view].get_y_offset(); 
 }  
 
 void
@@ -303,7 +250,7 @@ Playfield::do_scrolling()
 void
 Playfield::disable_scroll_mode()
 {
-  std::cout << "done" << std::endl;
+  if (verbose) std::cout << "done" << std::endl;
   mouse_scrolling = false;
 }
 

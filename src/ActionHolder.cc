@@ -1,4 +1,4 @@
-//  $Id: ActionHolder.cc,v 1.4 2000/02/11 21:26:37 grumbel Exp $
+//  $Id: ActionHolder.cc,v 1.5 2000/02/15 13:09:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -47,13 +47,13 @@ std::map<std::string, ActionCounter> ActionHolder::uaction_buffer;
 
 ActionHolder::ActionHolder()
 {
-  std::cout << "Init u actions" << std::endl;
+  if (verbose) std::cout << "ActionHolder: Init uactios" << std::endl;
   init_uactions();
 }
 
 ActionHolder::~ActionHolder()
 {
-  std::cout << "ActionHolder: Destructing ActionHolder" << std::endl;
+  if (verbose) std::cout << "ActionHolder: Destructing ActionHolder" << std::endl;
 
   for (std::vector<std::string>::iterator i = action_name.begin(); i != action_name.end(); i++)
     {

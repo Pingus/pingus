@@ -1,4 +1,4 @@
-//  $Id: Panel.cc,v 1.3 2000/02/11 16:58:28 grumbel Exp $
+//  $Id: Panel.cc,v 1.4 2000/02/15 13:09:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "../globals.hh"
 #include "../PingusResource.hh"
 #include "PanelIcons.hh"
 #include "Panel.hh"
@@ -156,7 +157,7 @@ Panel::on_release()
 	}
     }
   pressed_button = 0;
-  std::cout << "On release finished" << std::endl;
+  if (verbose) std::cout << "On release finished" << std::endl;
 }
 
 bool

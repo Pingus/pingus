@@ -1,4 +1,4 @@
-// $Id: liquid_data.hh,v 1.2 2000/02/09 21:43:41 grumbel Exp $
+// $Id: liquid_data.hh,v 1.3 2000/02/15 13:09:50 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,6 +30,7 @@ struct liquid_data {
   int width;
   int speed;
 
+  liquid_data();
   void clean();
 };
 

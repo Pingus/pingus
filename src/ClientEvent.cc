@@ -1,4 +1,4 @@
-//  $Id: ClientEvent.cc,v 1.3 2000/02/11 16:58:25 grumbel Exp $
+//  $Id: ClientEvent.cc,v 1.4 2000/02/15 13:09:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,7 @@
 
 #include <iostream>
 
+#include "globals.hh"
 #include "OptionMenu.hh"
 #include "ClientEvent.hh"
 
@@ -35,7 +36,7 @@ ClientEvent::~ClientEvent()
 void 
 ClientEvent::register_event_handler()
 {
-  std::cout << "ClientEvent: register_event_handler()" << std::endl;
+  if (verbose) std::cout << "ClientEvent: register_event_handler()" << std::endl;
   CL_Input::chain_button_press.push_back(this);
   CL_Input::chain_button_release.push_back(this);
   enabled = true;
@@ -44,7 +45,7 @@ ClientEvent::register_event_handler()
 void
 ClientEvent::unregister_event_handler()
 {
-  std::cout << "ClientEvent: unregister_event_handler()" << std::endl;
+  if (verbose) std::cout << "ClientEvent: unregister_event_handler()" << std::endl;
   CL_Input::chain_button_release.remove(this);
   CL_Input::chain_button_press.remove(this);
   enabled = false;
@@ -66,7 +67,7 @@ bool
 ClientEvent::on_button_press(CL_InputDevice *device, const CL_Key &key)
 {
   if (!enabled)
-    return false;
+    return true;
   
   if (device == CL_Input::keyboards[0])
     {
@@ -78,8 +79,8 @@ ClientEvent::on_button_press(CL_InputDevice *device, const CL_Key &key)
     }
   else
     {
-      std::cout << "Unknown device pressed: device=" << device << "; key.id=" << key.id << std::endl;
-      return false;
+      if (verbose) std::cout << "Unknown device pressed: device=" << device << "; key.id=" << key.id << std::endl;
+      return true;
     }
 }
 
@@ -87,7 +88,7 @@ bool
 ClientEvent::on_button_release(CL_InputDevice *device, const CL_Key &key)
 {
   if (!enabled)
-    return false;
+    return true;
 
   if (device == CL_Input::keyboards[0])
     {
@@ -99,10 +100,10 @@ ClientEvent::on_button_release(CL_InputDevice *device, const CL_Key &key)
     }
   else
     {
-      std::cout << "Unknown device released: device=" << device << "; key.id=" << key.id << std::endl;
-      return false;
+      if (verbose) std::cout << "Unknown device released: device=" << device << "; key.id=" << key.id << std::endl;
+      return true;
     }  
-  return false;
+  return true;
 }
 
 bool
@@ -208,7 +209,7 @@ ClientEvent::on_keyboard_button_release(const CL_Key& key)
       client->button_panel->set_button(7);
       break;      
     default:
-      std::cout << "ClientEvent: Got unknown button: ID=" << key.id << " ASCII=" << char(key.ascii) << std::endl;
+      if (verbose) std::cout << "ClientEvent: Got unknown button: ID=" << key.id << " ASCII=" << char(key.ascii) << std::endl;
     }
   return true;
 }
@@ -228,7 +229,7 @@ ClientEvent::on_mouse_button_press(const CL_Key& key)
       playfield->enable_scroll_mode();
       break;
     default:
-      std::cout << "ClientEvent: Unknown mouse button released: " << key.id << std::endl;
+      if (verbose) std::cout << "ClientEvent: Unknown mouse button released: " << key.id << std::endl;
     }
   return false;
 }
@@ -248,7 +249,7 @@ ClientEvent::on_mouse_button_release(const CL_Key& key)
       playfield->disable_scroll_mode();
       break;
     default:
-      std::cout << "ClientEvent: Unknown mouse button released: " << key.id << std::endl;
+      if (verbose) std::cout << "ClientEvent: Unknown mouse button released: " << key.id << std::endl;
     }
   return false;
 }

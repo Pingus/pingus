@@ -1,4 +1,4 @@
-//  $Id: Intro.cc,v 1.3 2000/02/11 16:58:25 grumbel Exp $
+//  $Id: Intro.cc,v 1.4 2000/02/15 13:09:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #include "PingusResource.hh"
 
 #include "globals.hh"
+#include "Loading.hh"
 #include "Intro.hh"
 
 Intro::Intro()
@@ -91,8 +92,7 @@ Intro::draw()
 
   if (quit)
     {
-      CL_Display::clear_display();
-      CL_Display::flip_display(true);
+      loading_screen.draw();
     }
 
   if (verbose) std::cout << "Intro: Removing event handler" << std::endl;

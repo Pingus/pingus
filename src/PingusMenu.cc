@@ -1,4 +1,4 @@
-//  $Id: PingusMenu.cc,v 1.3 2000/02/11 16:58:26 grumbel Exp $
+//  $Id: PingusMenu.cc,v 1.4 2000/02/15 13:09:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,21 +27,14 @@
 #include "PingusMessageBox.hh"
 #include "PingusError.hh"
 #include "PingusMenu.hh"
+#include "Loading.hh"
 
 PingusMenu::PingusMenu()
 {
   bg         = CL_Surface::load("Game/logo_t", PingusResource::get("game.dat"));
-  background = CL_Surface::load("Game/logo_bg", PingusResource::get("game.dat"));
+  background = CL_Surface::load("Textures/stones", PingusResource::get("textures.dat"));
   cursor_sur = CL_Surface::load("Cursors/cursor", PingusResource::get("game.dat"));
  
-  buttons.push_back(new AlphaButton("Quit", 260, 200, 60, 40));
-  buttons.push_back(new AlphaButton("Play", 260, 240, 60, 40));
-  buttons.push_back(new AlphaButton("Load", 320, 200, 60, 40));
-  buttons.push_back(new AlphaButton("Theme", 320, 240, 60, 40));
-  buttons.push_back(new AlphaButton("Options", 320, 280, 60, 40));
-
-  do_quit = false;
-  
   event = new Event;
 }
 
@@ -54,9 +47,12 @@ void
 PingusMenu::draw(void)
 {
   CL_Display::clear_display();
-  background->put_screen(0, CL_Display::get_height() - 300);
-  bg->put_screen(CL_Display::get_width()/2 - bg->get_width()/2,
-		 3);
+
+  for(int y = 0; y < CL_Display::get_height(); y += background->get_height())
+    for(int x = 0; x < CL_Display::get_width(); x += background->get_width())
+      background->put_screen(x, y);
+
+  bg->put_screen(CL_Display::get_width()/2 - bg->get_width()/2, 3);
   options_button.draw();
   play_button.draw();
   quit_button.draw();
@@ -64,67 +60,55 @@ PingusMenu::draw(void)
   editor_button.draw();
   theme_button.draw();
   CL_Display::flip_display();
-  
-  /*
-  CL_Display::fill_rect(250, 190, 390, 330,
-			0.0, 0.0, 0.0, 0.3);
-
-  for(ButtonIter button = buttons.begin(); button != buttons.end(); ++button) {
-    (*button)->draw();
-  }
-
-  if (cursor_enabled) cursor_sur->put_screen(CL_Mouse::get_x(), CL_Mouse::get_y());
-  */  
 }
 
 void
 PingusMenu::select(void)
 {
-  /*  buffer = CL_SoundBuffer::create(new CL_Streamed_MikModSample("../data/music/gd-walk.it"), true);
-  buffer2 = CL_SoundBuffer::create(new CL_Streamed_MikModSample("../data/music/strut.it"), true);
-
-  ses = new CL_SoundBuffer_Session(buffer->play());
-  */
-  if (quick_play) {
-    PingusGame game;
-    game.start ();
-    quick_play = false;
-  }
+  if (quick_play) 
+    {
+      PingusGame game;
+      game.start ();
+      quick_play = false;
+    }
   
   if (start_editor) {
     editor_button.on_click ();
   }
-  
-  while(!do_quit) {
-    CL_System::keep_alive();
 
-    /*if (CL_Keyboard::get_keycode(CL_KEY_ESCAPE)) {
-      do_quit = true;
-    }*/
+  do_quit = false;
 
-    draw();
-    if (CL_Mouse::left_pressed()) {
+  while(!do_quit) 
+    {
+      CL_System::keep_alive();
+
       draw();
-      while(CL_Mouse::left_pressed()) {
-	CL_System::keep_alive();
-      }
-      draw();  
 
-      if (play_button.mouse_over()) {
-	play_button.on_click();
-      } else if (options_button.mouse_over()) {
-	options_button.on_click();
-      } else if (quit_button.mouse_over()) {
-	do_quit = true;
-	/*      } else if (load_button.mouse_over()) {
-		load_button.on_click();*/
-      } else if (editor_button.mouse_over()) {
-	editor_button.on_click();
-      } else if (theme_button.mouse_over()) {
-	theme_button.on_click();
-      }
+      if (CL_Mouse::left_pressed()) 
+	{
+	  draw();
+
+	  while(CL_Mouse::left_pressed()) {
+	    CL_System::keep_alive();
+	  }
+
+	  draw();  
+
+	  if (play_button.mouse_over()) {
+	    play_button.on_click();
+	  } else if (options_button.mouse_over()) {
+	    options_button.on_click();
+	  } else if (quit_button.mouse_over()) {
+	    do_quit = true;
+	    /*      } else if (load_button.mouse_over()) {
+		    load_button.on_click();*/
+	  } else if (editor_button.mouse_over()) {
+	    editor_button.on_click();
+	  } else if (theme_button.mouse_over()) {
+	    theme_button.on_click();
+	  }
+	}
     }
-  }
 }
 
 bool

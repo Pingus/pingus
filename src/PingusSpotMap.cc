@@ -1,4 +1,4 @@
-//  $Id: PingusSpotMap.cc,v 1.3 2000/02/11 16:58:26 grumbel Exp $
+//  $Id: PingusSpotMap.cc,v 1.4 2000/02/15 13:09:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -95,11 +95,11 @@ PingusSpotMap::PingusSpotMap(PLF* plf)
       break;
 
     case ResDescriptor::FILE:
-      std::cout << "PingusSpotMap: Loading..." << std::endl;
+      if (verbose) std::cout << "PingusSpotMap: Loading..." << std::endl;
       load(plf);
-      std::cout << "PingusSpotMap: Generating Tiles..." << std::endl;
+      if (verbose) std::cout << "PingusSpotMap: Generating Tiles..." << std::endl;
       gen_tiles();
-      std::cout << "PingusSpotMap: Generating Tiles... done" << std::endl;    
+      if (verbose) std::cout << "PingusSpotMap: Generating Tiles... done" << std::endl;    
       break;
 
     default:
@@ -307,7 +307,7 @@ PingusSpotMap::get_colmap(void)
       // But don't delete it, since the ColMap will do that.
       buffer = new unsigned char[width * height];
       
-      std::cout << "PingusSpotMap: Clearing ColMap buffer..." << std::flush;
+      if (verbose) std::cout << "PingusSpotMap: Clearing ColMap buffer..." << std::flush;
       for(int i=0; i < width * height; ++i) 
 	{
 	  buffer[i] = 0;
@@ -318,7 +318,7 @@ PingusSpotMap::get_colmap(void)
       // Create a empty ColMap
       colmap = new ColMap(buffer, width, height);
       
-      std::cout << "PingusSpotMap: Putting objects to ColMap" << std::endl;
+      if (verbose) std::cout << "PingusSpotMap: Putting objects to ColMap" << std::endl;
       for(std::vector<surface_data>::iterator i = surfaces.begin(); i != surfaces.end(); i++) 
 	{
 	  colmap->put(i->surface, i->x_pos, i->y_pos, i->type);

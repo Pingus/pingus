@@ -1,4 +1,4 @@
-//  $Id: World.cc,v 1.3 2000/02/11 16:58:26 grumbel Exp $
+//  $Id: World.cc,v 1.4 2000/02/15 13:09:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -122,12 +122,11 @@ World::let_move()
     }
   
   // Create new pingus, if enough time is passed
-  if (!do_armageddon) 
+  if (!do_armageddon && (int)pingus.total_size() < allowed_pingus)
     {
-      for(std::vector<Entrance*>::iterator i = entrance.begin(); i != entrance.end(); ++i) 
+      for(std::vector<Entrance*>::iterator i = entrance.begin(); i != entrance.end(); i++) 
 	{
-	  if (pingus.size() < allowed_pingus
-              && (*i)->pingu_ready())
+	  if ((*i)->pingu_ready())
 	    {
 	      pingus.push_back((*i)->get_pingu());
 	      ++released_pingus;
@@ -187,6 +186,7 @@ World::init(PLF* plf_data)
   plf = plf_data;
   do_armageddon = false;
   allowed_pingus = plf->get_pingus();
+  number_to_save = plf->get_number_to_save();
   released_pingus = 0;
   pingus_out = 0;
 

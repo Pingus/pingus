@@ -1,4 +1,4 @@
-// $Id: liquid_data.cc,v 1.2 2000/02/09 21:43:41 grumbel Exp $
+// $Id: liquid_data.cc,v 1.3 2000/02/15 13:09:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,11 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "liquid_data.hh"
+
+liquid_data::liquid_data()
+{
+  clean();
+}
 
 void 
 liquid_data::clean() 

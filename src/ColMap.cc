@@ -1,4 +1,4 @@
-//  $Id: ColMap.cc,v 1.3 2000/02/11 16:58:25 grumbel Exp $
+//  $Id: ColMap.cc,v 1.4 2000/02/15 13:09:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -181,7 +181,7 @@ ColMap::put(CL_SurfaceProvider* provider, int sur_x, int sur_y, surface_data::Ty
 {
   if ((sur_x > width) || (sur_y > height)) {
     //    throw PingusError("Spot out of screen, please repair");
-    cerr << "Warning: ColMap: Spot out of screen, please repair" << std::endl;
+    if (verbose) std::cerr << "Warning: ColMap: Spot out of screen, please repair" << std::endl;
     return;
   }
 

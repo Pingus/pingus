@@ -1,4 +1,4 @@
-//  $Id: PingusGame.cc,v 1.3 2000/02/11 16:58:26 grumbel Exp $
+//  $Id: PingusGame.cc,v 1.4 2000/02/15 13:09:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,8 @@
 #include <fstream>
 
 #include "globals.hh"
+#include "PingusError.hh"
+#include "PingusMessageBox.hh"
 #include "algo.hh"
 #include "PingusGame.hh"
 
@@ -87,36 +89,41 @@ PingusGame::write_lastlevel_file(std::string levelfile)
 void
 PingusGame::start(std::string plf_filename, std::string psm_filename)
 {
-  if (plf_filename.empty()) {
-    plf_filename = read_lastlevel_file();
-  }
-
-  if (!plf_filename.empty())
-    write_lastlevel_file(plf_filename);
-
-  client = 0;
-  server = 0;
-
-  do {
-    if (client)
-      delete client;
-      
-    if (server)
-      delete server;
-    
-    server = new TrueServer;
-    client = new Client(server);
-    
-    if (psm_filename.empty()) 
-      {
-	client->start(plf_filename);
-      } 
-    else 
-      {
-	client->start(plf_filename, psm_filename);
+  try 
+    {
+      if (plf_filename.empty()) {
+	plf_filename = read_lastlevel_file();
       }
+
+      if (!plf_filename.empty())
+	write_lastlevel_file(plf_filename);
+
+      do {
+	if (client)
+	  delete client;
+      
+	if (server)
+	  delete server;
     
-  } while (client->replay());
+	server = new TrueServer;
+	client = new Client(server);
+    
+	if (psm_filename.empty()) 
+	  {
+	    client->start(plf_filename);
+	  } 
+	else 
+	  {
+	    client->start(plf_filename, psm_filename);
+	  }
+    
+      } while (client->replay());
+    }
+
+  catch(PingusError err)
+    {
+      PingusMessageBox(" PingusError: " + err.message);
+    }
 }
 
 // Returns the results, which were created by the last level.

@@ -1,4 +1,4 @@
-//  $Id: Editor.cc,v 1.4 2000/02/12 20:53:45 grumbel Exp $
+//  $Id: Editor.cc,v 1.5 2000/02/15 13:09:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -59,14 +59,14 @@ Editor::register_event_handler()
     {
       event_handler_ref_counter++;
       CL_System::keep_alive();
-      std::cout << "Editor: Registering event handler..." << event << std::flush; 
+      if (verbose) std::cout << "Editor: Registering event handler..." << event << std::flush; 
       CL_Input::chain_button_press.push_back(event);
       CL_Input::chain_button_release.push_back(event);
-      std::cout << "done: " << event_handler_ref_counter << std::endl;
+      if (verbose) std::cout << "done: " << event_handler_ref_counter << std::endl;
     }
   else
     {
-      std::cout << "Editor: event_handler allready installed" << std::endl;
+      if (verbose) std::cout << "Editor: event_handler allready installed" << std::endl;
     }
 }
 
@@ -74,11 +74,11 @@ void
 Editor::unregister_event_handler()
 {
   event_handler_ref_counter--;
-  std::cout << "Editor: unregestering event handler" << event << "... " << std::flush; 
+  if (verbose) std::cout << "Editor: unregestering event handler" << event << "... " << std::flush; 
   CL_Input::chain_button_release.remove(event);
   CL_Input::chain_button_press.remove(event);
   CL_System::keep_alive();
-  std::cout << "done: " << event_handler_ref_counter << std::endl;
+  if (verbose) std::cout << "done: " << event_handler_ref_counter << std::endl;
 }
 
 void
@@ -116,7 +116,7 @@ Editor::scroll()
   int mouse_x = CL_Mouse::get_x();
   int mouse_y = CL_Mouse::get_y();
 
-  std::cout << "Editor::scroll()..." << std::flush;
+  if (verbose) std::cout << "Editor::scroll()..." << std::flush;
 
   while (CL_Mouse::right_pressed())
     {
@@ -135,7 +135,7 @@ Editor::scroll()
 	}
     }
   
-  std::cout << "finished" << std::endl;
+  if (verbose) std::cout << "finished" << std::endl;
 }
 
 string
@@ -370,6 +370,9 @@ Editor::interactive_load()
 
 /***********************************************
 $Log: Editor.cc,v $
+Revision 1.5  2000/02/15 13:09:51  grumbel
+Misc cleanups, changes some messages to only appear when verbose > 0
+
 Revision 1.4  2000/02/12 20:53:45  grumbel
 Changed the rectangle selection in the editor to use non filled rects
 
