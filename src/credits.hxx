@@ -37,8 +37,8 @@ private:
   static Credits* instance_;
 
   bool fast_scrolling;
-  CL_Surface background;
-  CL_Surface pingu;
+  CL_Sprite background;
+  CL_Sprite pingu;
 
   CL_Font    font;
   CL_Font    font_small;

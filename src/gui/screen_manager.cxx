@@ -277,7 +277,6 @@ ScreenManager::fade_over (ScreenPtr& old_screen, ScreenPtr& new_screen)
 
       progress = passed_time/1.0f;
     }
-
 #endif
 }
 

@@ -308,9 +308,8 @@ DisplayGraphicContext::print_left (CL_Font font, int x_pos, int y_pos, const std
 }
 
 void
-DisplayGraphicContext::print_center (CL_Font font_, int x_pos, int y_pos, const std::string& str)
+DisplayGraphicContext::print_center (CL_Font font, int x_pos, int y_pos, const std::string& str)
 {
-  CL_Font font = font_;
   font.set_alignment(origin_top_center);
   font.draw(w2s_x(x_pos), w2s_y(y_pos), str.c_str ());
 }

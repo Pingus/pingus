@@ -34,8 +34,11 @@ Credits* Credits::instance_ = 0;
 Credits::Credits()
 {
   fast_scrolling = false;
-  background = Resource::load_surface("core/menu/startscreenbg");
-  pingu = Resource::load_surface("core/misc/creditpingu");
+  background = Resource::load_sprite("core/menu/startscreenbg");
+  pingu = Resource::load_sprite("core/misc/creditpingu");
+
+  background.set_alignment(origin_center);
+  pingu.set_alignment(origin_center);
 
   font       = Fonts::chalk_normal;
   font_small = Fonts::chalk_large;
@@ -220,32 +223,22 @@ Credits::draw_background (GraphicContext& gc)
   x = CL_Display::get_width()/2;
   y = int(offset);
 
-  gc.draw(background,
-          gc.get_width()/2 - background.get_width()/2,
-          gc.get_height()/2 - background.get_height()/2);
-
-  gc.draw(pingu, (gc.get_width() / 2) - (pingu.get_width() / 2),
-          (gc.get_height() / 2) - (pingu.get_height() / 2) - 20);
+  gc.draw(background, Vector(gc.get_width()/2, gc.get_height()/2));
+  gc.draw(pingu, Vector(gc.get_width()/2, gc.get_height()/2 - 20));
 
   CL_Display::push_cliprect(CL_Rect(0, gc.get_height()/2-225, 600, gc.get_height()/2+200));
   yof = 0;
-
-  CL_Font myfont = font;
-  CL_Font myfont_small = font_small;
-
-  myfont.set_alignment(origin_top_center);
-  myfont_small.set_alignment(origin_top_center);
 
   for (std::vector<std::string>::iterator i = credits.begin(); i != credits.end(); ++i)
     {
       switch ((*i)[0])
 	{
 	case '-':
-	  font.draw(x, y + yof, i->substr(1).c_str());
+	  gc.print_center(font, x, y + yof, i->substr(1));
 	  yof += font.get_height() + 5;
 	  break;
 	case '_':
-	  font_small.draw(x, y + yof, i->substr(1).c_str());
+	  gc.print_center(font_small, x, y + yof, i->substr(1));
 	  yof += font_small.get_height() + 5;
 	  break;
 	case 'n':

@@ -42,7 +42,7 @@ class StartScreenComponent : public GUI::Component
 {
 private:
   PLFHandle plf;
-  Sprite background;
+  CL_Sprite background;
   std::string time_str;
   std::string description;
 
@@ -130,8 +130,8 @@ StartScreen::~StartScreen()
 StartScreenComponent::StartScreenComponent(PLFHandle p)
   : plf(p)
 {
-  background = Sprite("menu/startscreenbg", "core");
-  background.set_align_center();
+  background = Resource::load_sprite("core/menu/startscreenbg");
+  background.set_alignment(origin_center);
   time_str = GameTime::ticks_to_realtime_string(plf->get_time());
 }
 

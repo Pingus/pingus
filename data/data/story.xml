@@ -1,5 +1,5 @@
 <resources>
-  <section name="Story">
+  <section name="story">
     <surface file="../images/story/story0.png" name="story0" />
     <surface file="../images/story/story1.png" name="story1" />
     <surface file="../images/story/story2.png" name="story2" />

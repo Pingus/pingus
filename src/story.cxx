@@ -41,7 +41,7 @@ Story::init_credits()
   credits.title = _("The Journey Continues");
   credits.pages.push_back
     (StoryPage
-     (ResDescriptor("Story/credits1", "story"),
+     (ResDescriptor("story/credits1"),
       StringFormat::break_line(
       _("Now after you and the Pingus have learned the basics and\n"
         "practiced a bit it is time to move on and begin the journey into\n"
@@ -53,7 +53,7 @@ Story::init_credits()
 
   credits.pages.push_back
     (StoryPage
-     (ResDescriptor("Story/credits2", "story"),
+     (ResDescriptor("story/credits2"),
       StringFormat::break_line(
       _("But as the eldest have said, the Tutorial Island provides not\n"
         "only a good way to practice, but it is also the starting point into\n"
@@ -64,7 +64,7 @@ Story::init_credits()
 
   credits.pages.push_back
     (StoryPage
-     (ResDescriptor("Story/credits3", "story"),
+     (ResDescriptor("story/credits3"),
       StringFormat::break_line(
       _("So the Pingus set out and constructed some large rafts, enough\n"
         "to carry them all. After also packing a bunch of provisions\n"
@@ -74,7 +74,7 @@ Story::init_credits()
 
   credits.pages.push_back
     (StoryPage
-     (ResDescriptor("Story/credits4", "story"),
+     (ResDescriptor("story/credits4"),
       StringFormat::break_line(
       _("So the Pingus sit on their raft, worrying about what's to come and\n"
         "where to go, while floating into the sunset.\n"
@@ -91,7 +91,7 @@ Story::init_intro()
   intro.title = _("The Journey Begins");
   intro.pages.push_back
     (StoryPage
-     (ResDescriptor("Story/story0", "story"),
+     (ResDescriptor("story/story0"),
       StringFormat::break_line(
       _("For a long time, the Pingus have lived happily in peace on the\n"
         "South Pole along with all the other animals. Everything was in\n"
@@ -101,7 +101,7 @@ Story::init_intro()
 
   intro.pages.push_back
     (StoryPage
-     (ResDescriptor("Story/story1", "story"),
+     (ResDescriptor("story/story1"),
       StringFormat::break_line(
       _("But then one day, things began to change slowly: the sky got darker\n"
         "and the earth got warmer. Firstly, they thought this was just a\n"
@@ -112,7 +112,7 @@ Story::init_intro()
 
   intro.pages.push_back
     (StoryPage
-     (ResDescriptor("Story/story2", "story"),
+     (ResDescriptor("story/story2"),
       StringFormat::break_line(
       _("The snow began to melt away in a few areas and food became an\n"
         "issue. Other animals tried to leave the region to search\n"
@@ -122,7 +122,7 @@ Story::init_intro()
 
   intro.pages.push_back
     (StoryPage
-     (ResDescriptor("Story/story3", "story"),
+     (ResDescriptor("story/story3"),
       StringFormat::break_line(
       _("So the circle of the eldest came together to decide what to do\n"
         "about it. They decided to send out an expedition around the world\n"
@@ -132,7 +132,7 @@ Story::init_intro()
 
   intro.pages.push_back
     (StoryPage
-     (ResDescriptor("Story/story4", "story"),
+     (ResDescriptor("story/story4"),
       StringFormat::break_line(
       _("And they picked you to lead them on their journey around the\n"
         "world. Since the journey will be dangerous and difficult, your\n"
@@ -143,7 +143,7 @@ Story::init_intro()
 
   intro.pages.push_back
     (StoryPage
-     (ResDescriptor("Story/story5", "story"),
+     (ResDescriptor("story/story5"),
       StringFormat::break_line(
       _("The island consists of many areas that are ideal to teach the\n"
         "Pingus their abilities. The Pingus can learn to build\n"
@@ -153,7 +153,7 @@ Story::init_intro()
 
   intro.pages.push_back
     (StoryPage
-     (ResDescriptor("Story/story6", "story"),
+     (ResDescriptor("story/story6"),
       StringFormat::break_line(
       _("While there, you can practice your abilities in commanding\n"
         "and guiding the Pingus. You can also get familiar with\n"
@@ -164,7 +164,7 @@ Story::init_intro()
 
   intro.pages.push_back
     (StoryPage
-     (ResDescriptor("Story/story6", "story"),
+     (ResDescriptor("story/story6"),
       StringFormat::break_line(
       _("Now that you and the Pingus have arrived at Tutorial Island it\n"
         "is time to take command and begin your mission.\n"

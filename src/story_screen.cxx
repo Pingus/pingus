@@ -44,7 +44,7 @@ class StoryScreenComponent : public GUI::Component
 private:
   bool show_credits;
 
-  CL_Surface background;
+  CL_Sprite background;
   std::string display_text;
   float time_passed;
 
@@ -116,15 +116,14 @@ StoryScreenComponent::StoryScreenComponent (const Story& arg_story)
 
   current_page = story.pages.back();
   page_surface = Resource::load_surface(current_page.image);
-  background   = Resource::load_surface("menu/startscreenbg", "core");
+  background   = Resource::load_sprite("core/menu/startscreenbg");
+  background.set_alignment(origin_center);
 }
 
 void
 StoryScreenComponent::draw (GraphicContext& gc)
 {
-  gc.draw(background,
-          gc.get_width()/2 - background.get_width()/2,
-          gc.get_height()/2 - background.get_height()/2);
+  gc.draw(background, Vector(gc.get_width()/2, gc.get_height()/2));
 
   gc.print_center(Fonts::chalk_large, CL_Display::get_width()/2,
                   CL_Display::get_height()/2 - 200, story.title);
