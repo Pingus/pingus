@@ -38,7 +38,6 @@ public:
   void draw(DrawingContext& gc);
   void update(float delta);
 
-  float get_z_pos() const { return 10000; }
 private:
   PathDrawable (const PathDrawable&);
   PathDrawable& operator= (const PathDrawable&);

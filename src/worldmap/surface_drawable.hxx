@@ -43,7 +43,6 @@ public:
   void update(float delta);
   void draw(DrawingContext&);
 
-  float get_z_pos() const { return pos.z; }
 private:
   SurfaceDrawable (const SurfaceDrawable&);
   SurfaceDrawable& operator= (const SurfaceDrawable&);

@@ -51,20 +51,9 @@
 namespace Pingus {
 namespace WorldMapNS {
 
-struct z_pos_sorter
-{
-  bool operator()(Drawable* a, Drawable* b)
-  {
-    return a->get_z_pos() < b->get_z_pos();
-  }
-};
-
 WorldMap::WorldMap(const std::string& arg_filename)
-  : /*display_gc (0, 0, CL_Display::get_width()-1, CL_Display::get_height()-1,
-      0, 0),*/
-    filename(arg_filename),
+  : filename(arg_filename),
     width(1161), height(600), // FIXME: ugly..
-    gc_state(800, 600),
     mouse_x(0),
     mouse_y(0)
 {
@@ -189,8 +178,6 @@ WorldMap::draw (DrawingContext& gc)
   gc_state.set_pos(CL_Pointf(pingu_pos.x, pingu_pos.y));
 
   gc_state.push(*display_gc);
-  // FIXME: Unneeded sorting, drawing context already does it
-  std::stable_sort(drawables.begin(), drawables.end(), z_pos_sorter());
 
   for (DrawableLst::iterator i = drawables.begin (); i != drawables.end (); ++i)
     {

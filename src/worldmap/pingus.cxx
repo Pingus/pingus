@@ -54,9 +54,11 @@ Pingus::~Pingus ()
 void
 Pingus::draw (DrawingContext& gc)
 {
+  // Add 10 to z_pos so that the pingu gets drawn above the node it is
+  // standing one
   if (final_target_node != NoNode && current_node == NoNode)
     {
-      gc.draw(arrow, path->get_dot(final_target_node)->get_pos());
+      gc.draw(arrow, path->get_dot(final_target_node)->get_pos() + Vector(0, 0, 10));
     }
 
   if (!is_walking())
@@ -69,11 +71,9 @@ Pingus::draw (DrawingContext& gc)
       float direction = get_direction();
       
       if (direction >= 0 && direction < 180)
-        gc.draw(sprite[Direction::RIGHT], pos);
+        gc.draw(sprite[Direction::RIGHT], pos + Vector(0, 0, 10));
       else
-        gc.draw(sprite[Direction::LEFT], pos);
-
-      //std::cout << "Drawing at: " << pos.x << ", " << pos.y << " " << get_z_pos() << std::endl;
+        gc.draw(sprite[Direction::LEFT], pos + Vector(0, 0, 10));
     }
 }
 
@@ -233,16 +233,6 @@ Pingus::set_position (NodeId node)
 {
   pos = path->get_dot(node)->get_pos();
   current_node = node;
-}
-
-float
-Pingus::get_z_pos() const
-{
-  /** We add 1.0f here so that the pingu is guranteed to stay above
-      the level-dots (this is a hack), but I currently don't know a
-      better way, since both pingu and level dot have the same
-      z-pos */
-  return pos.z + 10.0f;
 }
 
 void

@@ -104,9 +104,6 @@ public:
   /** return the current position in world coordinates */
   Vector get_pos() const { return pos; }
 
-  /** Used for z-ordering for drawing */
-  float get_z_pos() const;
-
 private:
   /** Calculate the direction in which the pingu is heading, return
       value is in degrees => [0,360[, 0=north, 180=south, 270=east, 90=west */

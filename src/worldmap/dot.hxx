@@ -41,7 +41,6 @@ public:
   virtual void draw_hover(DrawingContext& gc) =0;
 
   Vector get_pos() { return pos; }
-  float  get_z_pos() const { return pos.z; }
 
   virtual void on_click() =0;
 
