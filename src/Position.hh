@@ -1,4 +1,4 @@
-//  $Id: Position.hh,v 1.5 2001/02/13 18:58:56 grumbel Exp $
+//  $Id: Position.hh,v 1.6 2001/04/10 19:42:57 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #define POSITION_HH
 
 #include <iostream>
+#include <ClanLib/core.h>
 
 /**
  * z_position contains aliases for the integers that specify 
@@ -54,6 +55,13 @@ public:
     y_pos = arg_y_pos;
     z_pos = arg_z_pos;
   }
+
+  Position(const CL_Vector& pos) {
+    x_pos = int(pos.x);
+    y_pos = int(pos.y);
+    z_pos = int(pos.z);
+  }
+
   int x_pos;
   int y_pos; 
   int z_pos;

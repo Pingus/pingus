@@ -1,4 +1,4 @@
-//  $Id: Sprite.cc,v 1.8 2001/04/10 10:45:14 grumbel Exp $
+//  $Id: Sprite.cc,v 1.9 2001/04/10 19:42:57 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -113,6 +113,13 @@ Sprite::set_align_center ()
 {
   x_align = -int(sur.get_width ())/2;
   y_align = -int(sur.get_height ())/2;
+}
+
+void 
+Sprite::set_align_center_bottom ()
+{
+  x_align = -int(sur.get_width ())/2;
+  y_align = -int(sur.get_height ()); 
 }
 
 void 

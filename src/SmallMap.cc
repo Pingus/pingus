@@ -1,4 +1,4 @@
-//  $Id: SmallMap.cc,v 1.29 2001/04/08 14:10:34 grumbel Exp $
+//  $Id: SmallMap.cc,v 1.30 2001/04/10 19:42:57 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -130,8 +130,8 @@ SmallMap::init()
   for(std::vector<EntranceData>::iterator i = entrance_d.begin(); i != entrance_d.end(); i++)
     {
       Blitter::put_surface(canvas, entrance_sur,
-			   i->pos.x_pos * width / colmap->get_width() - (entrance_sur.get_width()/2),
-			   i->pos.y_pos * height / colmap->get_height() - (entrance_sur.get_height()));
+			   i->pos.x * width / colmap->get_width() - (entrance_sur.get_width()/2),
+			   i->pos.y * height / colmap->get_height() - (entrance_sur.get_height()));
       
       /*entrance_sur->put_target(i->x_pos * width / colmap->get_width(),
 	i->y_pos * height / colmap->get_height(),

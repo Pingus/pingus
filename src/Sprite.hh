@@ -1,4 +1,4 @@
-//  $Id: Sprite.hh,v 1.6 2001/04/10 10:45:14 grumbel Exp $
+//  $Id: Sprite.hh,v 1.7 2001/04/10 19:42:57 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -76,6 +76,10 @@ public:
   
   /** Shortcut for setting the aligment to the center of the surface */
   void set_align_center ();
+
+  /** Shortcut for setting the aligment to the center of x-axis and to
+      the bottom of the y-axis. */
+  void set_align_center_bottom ();
   
   /** Go to the next frame */
   void next_frame ();

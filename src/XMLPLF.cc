@@ -1,4 +1,4 @@
-//  $Id: XMLPLF.cc,v 1.19 2001/04/07 21:03:42 grumbel Exp $
+//  $Id: XMLPLF.cc,v 1.20 2001/04/10 19:42:57 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -363,7 +363,7 @@ XMLPLF::parse_entrance(xmlNodePtr cur)
 	}
       else if (strcmp((char*)cur->name, "position") == 0)
 	{
-	  entrance.pos = XMLhelper::parse_position(doc, cur);
+	  entrance.pos = XMLhelper::parse_vector(doc, cur);
 	}
       else if (strcmp((char*)cur->name, "release-rate") == 0)
 	{

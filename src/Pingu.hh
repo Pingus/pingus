@@ -1,4 +1,4 @@
-//  $Id: Pingu.hh,v 1.24 2001/04/08 14:10:34 grumbel Exp $
+//  $Id: Pingu.hh,v 1.25 2001/04/10 19:42:57 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,12 +28,15 @@
 #include "PinguMap.hh"
 #include "Direction.hh"
 #include "PinguEnums.hh"
-#include "AnimCounter.hh"
+#include "Sprite.hh"
 
 // Forward declarations
 class ActionHolder;
 class PinguAction; 
 
+/** The class for managing one of the many penguins which are walking
+    around in the World. All actions are handled by PinguAction
+    objects. */
 class Pingu : public WorldObj
 {
 protected:
@@ -48,28 +51,24 @@ protected:
   /** The uniq id of the Pingu, this is used to refer to the Pingu in
       a demo file or in a network connection */
   int id;
-  
+
+  /** Static id_counter, which holds the id last pingu, which
+      got created. */
+  static int id_counter;
+
   ///
-  static bool init;
+  CL_Font* font;
 
   /** @name surfaces that represent the Pingu in different situations */
   //@{
   ///
-  static CL_Surface walker; 
+  Sprite walker; 
   ///
-  static CL_Surface faller;
+  Sprite faller;
   ///
-  static CL_Surface tumble;
+  Sprite tumble;
   //@}
 
-  ///
-  static CL_Font* font;
-  ///
-  AnimCounter walker_c;
-  ///
-  AnimCounter faller_c;
-  ///
-  AnimCounter tumble_c;
   ///
   int action_time;
 
@@ -77,33 +76,29 @@ protected:
   PinguStatus status;
   ///
   PinguEnvironment environment;
+  ///
+  int falling;
 
 public:
   // The postion of the pingu (CL_Vector::z is always zero)
   CL_Vector pos;
-
-  //int x_pos;
-  //int y_pos;
-
-  ///
-  int falling;
-  ///
-  Pingu();
-  ///
-  Pingu(int x, int y);
-  ///
-  ~Pingu();
- 
   ///
   Direction direction;
-
-  // Force Vector stuff:
-
   /// Current velocity
   CL_Vector velocity; 
 
+  /** Creates a new Pingu at the given coordinates
+      @param pos The start position of the pingu
+      @param owner The owner id of the pingu (used for multiplayer) */
+  Pingu(const CL_Vector& pos, int owner = 0);
+  
+  /** Destruct the pingu... */
+  ~Pingu();
+  
+  /** @return The world the pingu lives in */
   static World* get_world();
 
+  /** Return the pingus position */
   CL_Vector get_pos () { return pos; }
 
   /** Returns the x position of the pingu
@@ -115,10 +110,14 @@ public:
       For backward comp. only */
   int  get_y(void);
 
-  ///
+  /** FIXME: Ugly hack to get the sprites drawn at the correct
+      positions, can be removed when Sprite is available */
   int  x_offset(void);
-  ///
+  
+  /** FIXME: Ugly hack to get the sprites drawn at the correct
+      positions, can be removed when Sprite is available */
   int  y_offset(void);
+  
   ///
   PinguEnvironment get_environment(); 
 
@@ -160,7 +159,7 @@ public:
   bool need_catch();
   
   ///
-  void draw_offset(int x, int y, float s = 1.0) const;
+  void draw_offset(int x, int y, float s = 1.0);
   ///
   void apply_force(CL_Vector);
 

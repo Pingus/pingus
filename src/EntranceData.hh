@@ -1,4 +1,4 @@
-//  $Id: EntranceData.hh,v 1.2 2000/08/03 19:12:26 grumbel Exp $
+//  $Id: EntranceData.hh,v 1.3 2001/04/10 19:42:57 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,7 +32,7 @@ public:
   enum EntranceDirection { LEFT, RIGHT, MISC };
   EntranceDirection direction;
   ResDescriptor desc;
-  Position pos;
+  CL_Vector pos;
   int  release_rate;
 
   /// The type of the entrance type (woodthing, generic, etc.)

@@ -1,4 +1,4 @@
-//  $Id: ObjectSelector.cc,v 1.38 2000/12/16 23:11:24 grumbel Exp $
+//  $Id: ObjectSelector.cc,v 1.39 2001/04/10 19:42:58 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -245,9 +245,9 @@ ObjectSelector::get_entrance()
 {
   EntranceData entrance;
   bool have_name = false;
-  entrance.pos.x_pos = CL_Mouse::get_x() - x_offset;
-  entrance.pos.y_pos = CL_Mouse::get_y() - y_offset;
-  entrance.pos.z_pos = 0;
+  entrance.pos.x = CL_Mouse::get_x() - x_offset;
+  entrance.pos.y = CL_Mouse::get_y() - y_offset;
+  entrance.pos.z = 0;
 
   CL_Display::clear_display();
   font->print_left(20, 20, "Select an entrance");
@@ -481,6 +481,9 @@ ObjectSelector::read_string(string description, string def_str)
 /*
 
 $Log: ObjectSelector.cc,v $
+Revision 1.39  2001/04/10 19:42:58  grumbel
+Rewrote some parts of Pingu to use CL_Vector and Sprite, instead of Position and CL_Surface
+
 Revision 1.38  2000/12/16 23:11:24  grumbel
 replaced most pointers with smart_ptr's, this might fix some memory holes and is probally a good start to clean up the dirty object generation code
 

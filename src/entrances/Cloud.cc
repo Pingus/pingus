@@ -1,4 +1,4 @@
-//  $Id: Cloud.cc,v 1.9 2001/04/01 18:00:42 grumbel Exp $
+//  $Id: Cloud.cc,v 1.10 2001/04/10 19:42:58 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,7 +32,7 @@ Cloud::Cloud(EntranceData data)
   pos = data.pos;
   release_rate = data.release_rate;
   last_release = -release_rate;
-  pos.z_pos = 100;
+  pos.z = 100;
   direction = data.direction;
 
   surface = PingusResource::load_surface("Entrances/cloud","entrances");
@@ -47,11 +47,11 @@ void
 Cloud::draw_offset(int x, int y, float s)
 {
   if (s == 1.0) {
-    surface.put_screen(x + pos.x_pos - 115,
-		       y + pos.y_pos - 100);
+    surface.put_screen(x + pos.x - 115,
+		       y + pos.y - 100);
   } else {
-    surface.put_screen((int)((pos.x_pos-32 + x) * s),
-		       (int)((pos.y_pos-16 + y) * s),
+    surface.put_screen((int)((pos.x-32 + x) * s),
+		       (int)((pos.y-16 + y) * s),
 		       s, s);  
   }
 }

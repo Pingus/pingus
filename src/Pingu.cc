@@ -1,4 +1,4 @@
-//  $Id: Pingu.cc,v 1.46 2001/04/08 14:10:34 grumbel Exp $
+//  $Id: Pingu.cc,v 1.47 2001/04/10 19:42:57 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -40,44 +40,25 @@ using namespace boost;
 #include "FVec.hh"
 
 const float deadly_velocity = 20.0;
-
-bool                Pingu::init;
-CL_Surface         Pingu::walker;
-CL_Surface         Pingu::faller;
-CL_Surface         Pingu::tumble;
-CL_Font*            Pingu::font;
-
-Pingu::Pingu()
-{
-}
+int   Pingu::id_counter = 0;
 
 // Init a pingu at the given position while falling
-Pingu::Pingu(int x, int y)
+Pingu::Pingu(const CL_Vector& arg_pos, int owner)
+  : id (++id_counter),
+    font (PingusResource::load_font("Fonts/numbers", "fonts")),
+    walker ("Pingus/walker", "pingus"),
+    faller ("Pingus/faller", "pingus"),
+    tumble ("Pingus/tumble", "pingus"),
+    pos (arg_pos)
 {
-  if (!init) 
-    {
-      init = true;
-
-      font   = PingusResource::load_font("Fonts/numbers", "fonts");
-      walker = PingusResource::load_surface ("Pingus/walker", "pingus");
-      faller = PingusResource::load_surface ("Pingus/faller", "pingus");
-      tumble = PingusResource::load_surface ("Pingus/tumble", "pingus");
-    }
+  walker.set_align_center_bottom ();
+  faller.set_align_center_bottom ();
+  tumble.set_align_center_bottom ();
 
   falling = 4;
   status = alive;
 
-  pos.x = x;
-  pos.y = y;
-
   action_time = -1;
-
-  // Init all animation timer
-  walker_c.set_size(walker.get_num_frames() / 2);
-  walker_c.set_speed(50);
-  
-  faller_c.set_size(faller.get_num_frames());
-  tumble_c.set_size(tumble.get_num_frames());
 
   environment = (PinguEnvironment)land;
 
@@ -305,13 +286,13 @@ Pingu::do_persistent()
 void
 Pingu::update(float delta)
 {
+  walker.update (delta);
+  tumble.update (delta);
+  faller.update (delta);
+
   if (status == dead) 
     return;
   
-  // Increase the AnimCounter's
-  ++tumble_c;
-  ++walker_c;
-
   if (action_time > -1) 
     --action_time;
 
@@ -507,7 +488,7 @@ Pingu::do_walking()
 
 // Draws the pingu on the screen with the given offset
 void
-Pingu::draw_offset(int x, int y, float s) const
+Pingu::draw_offset(int x, int y, float s)
 {
   char str[64];
   y += 2;
@@ -520,42 +501,23 @@ Pingu::draw_offset(int x, int y, float s) const
     {
       if (falling > 3) 
 	{
-	  CL_Surface* surf;
-	  
 	  if (is_tumbling ()) {
-	    surf = &tumble;
+	    tumble.put_screen (pos.x + x, pos.y + y);
 	  } else {
-	    surf = &faller;
+	    faller.put_screen (pos.x + x, pos.y + y);
 	  }
-	  
-	  if (s == 1.0) 
-	    {
-	      surf->put_screen(pos.x + x - 16, pos.y + y - 32,
-			      tumble_c);
-	    } 
-	  else 
-	    {
-	      surf->put_screen((pos.x + x - 16) * s , (pos.y + y - 32) * s,
-			       s, s, tumble_c);
-	    }
 	} 
       else // If not falling
 	{
 	  if (s == 1.0) 
 	    {
-	      walker.put_screen(pos.x + x - 16, pos.y + y - walker.get_height(), 
-				 walker_c
-				 + ((direction.is_left() ? 0 :
-				     walker_c.size())));
+	      if (direction.is_left ())
+		walker.set_direction (Sprite::LEFT);
+	      else
+		walker.set_direction (Sprite::RIGHT);
+	      
+	      walker.put_screen(pos.x + x, pos.y + y);
 	    } 
-	  else 
-	    {
-	      walker.put_screen((pos.x + x - 16) * s, (pos.y + y - walker.get_height()) * s, 
-				 s, s,
-				 walker_c
-				 + ((direction.is_left() ? 0 :
-				     walker_c.size())));
-	    }
 	}
     }
 

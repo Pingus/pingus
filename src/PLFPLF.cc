@@ -1,4 +1,4 @@
-//  $Id: PLFPLF.cc,v 1.7 2000/12/16 23:11:20 grumbel Exp $
+//  $Id: PLFPLF.cc,v 1.8 2001/04/10 19:42:57 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -214,11 +214,11 @@ PLFPLF::set_value(string valueid,
 
   case PLFPLF::ENTRANCE:
     if (valueid == "x_pos") {
-      entrance_s.pos.x_pos = str_to_int(value);
+      entrance_s.pos.x = str_to_int(value);
     } else if (valueid == "y_pos") {
-      entrance_s.pos.y_pos = str_to_int(value);
+      entrance_s.pos.y = str_to_int(value);
     } else if (valueid == "z_pos") {
-      entrance_s.pos.z_pos = str_to_int(value);
+      entrance_s.pos.z = str_to_int(value);
     } else if (valueid == "image") {
       entrance_s.desc.res_name = value;
     } else if (valueid == "type") {

@@ -1,4 +1,4 @@
-//  $Id: World.cc,v 1.42 2001/04/08 14:10:34 grumbel Exp $
+//  $Id: World.cc,v 1.43 2001/04/10 19:42:57 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -319,7 +319,7 @@ World::init_worldobjs()
   
   for(vector<EntranceData>::size_type i=0; i < entrance.size(); ++i)
     {
-      if (entrance[i]->pos.z_pos <= 0)
+      if (entrance[i]->pos.z <= 0)
 	world_obj_bg.push_back(entrance[i]);
       else 
 	world_obj_fg.push_back(entrance[i]);
