@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.15 2002/09/14 19:06:33 torangan Exp $
+//   $Id: pingus_main.cxx,v 1.16 2002/09/16 22:36:48 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -850,6 +850,11 @@ PingusMain::start_game(void)
 	      ScreenManager::instance()->push_screen(new PingusGameSession (levelfile), true);
 	    }
 	}    
+    }
+  else
+    { // Start an empty editor workspace
+      if (start_editor)
+	ScreenManager::instance()->push_screen(Editor::instance (), false);
     }
 
   // show the main menu, the rest of the game is spawn from there

@@ -1,4 +1,4 @@
-//  $Id: groundpiece_data.cxx,v 1.2 2002/09/16 21:03:59 torangan Exp $
+//  $Id: groundpiece_data.cxx,v 1.3 2002/09/16 22:36:48 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,7 +41,7 @@ GroundpieceData::GroundpieceData (xmlDocPtr doc, xmlNodePtr cur)
       xmlFree(gptype_c_str);
     }
   else
-    std::cout << "XMLPLF: groundtype empty" << std::endl;
+    std::cout << "XMLPLF: groundtype empty, which might be ok." << std::endl;
 
   cur = cur->children;
 
@@ -60,6 +60,11 @@ GroundpieceData::GroundpieceData (xmlDocPtr doc, xmlNodePtr cur)
       else if (XMLhelper::equal_str(cur->name, "surface"))
 	{
 	  desc = XMLhelper::parse_surface(doc, cur);
+	}
+      else if (XMLhelper::equal_str(cur->name, "type"))
+	{
+	  std::string type = XMLhelper::parse_string(doc, cur);
+	  gptype = Groundtype::string_to_type (type);
 	}
       else
 	{
@@ -112,10 +117,11 @@ GroundpieceData::create_WorldObj()
 void
 GroundpieceData::write_xml(std::ostream& xml)
 {
-  xml << "<groundpiece type=\"" << Groundtype::type_to_string(gptype) << "\">\n";
+  xml << "<worldobj type=\"groundpiece\">\n";
+  xml << "  <type>" << Groundtype::type_to_string(gptype) << "</type>\n";
   XMLhelper::write_desc_xml(xml, desc);
   XMLhelper::write_vector_xml(xml, pos);
-  xml << "</groundpiece>\n" << std::endl;
+  xml << "</worldobj>\n" << std::endl;
 }
 
 } // namespace WorldObjsData
