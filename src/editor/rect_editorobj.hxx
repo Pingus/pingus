@@ -1,4 +1,4 @@
-//  $Id: rect_editorobj.hxx,v 1.3 2002/08/23 15:49:54 torangan Exp $
+//  $Id: rect_editorobj.hxx,v 1.4 2002/09/06 17:33:29 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,7 +28,6 @@ class RectEditorObj : public EditorObj
 {
 public:
   RectEditorObj ();
-  virtual ~RectEditorObj ();
 
   /** Returns the position of the upper left corner of the object */
   virtual CL_Vector get_upper_left_corner () =0;

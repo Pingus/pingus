@@ -1,4 +1,4 @@
-//  $Id: sprite_editorobj.cxx,v 1.3 2002/08/23 15:49:54 torangan Exp $
+//  $Id: sprite_editorobj.cxx,v 1.4 2002/09/06 17:33:29 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -60,8 +60,9 @@ SpriteEditorObj::operator= (const SpriteEditorObj& old)
     }
 }
 
-SpriteEditorObj::~SpriteEditorObj ()
-{
+float
+SpriteEditorObj::get_z_pos() {
+  return pos_ref.z;
 }
 
 void 

@@ -1,4 +1,4 @@
-//  $Id: weather_obj.hxx,v 1.5 2002/08/23 15:49:55 torangan Exp $
+//  $Id: weather_obj.hxx,v 1.6 2002/09/06 17:33:29 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #ifndef HEADER_PINGUS_EDITOR_WEATHER_OBJ_HXX
 #define HEADER_PINGUS_EDITOR_WEATHER_OBJ_HXX
 
+#include <ClanLib/Core/Math/cl_vector.h>
 #include "../weather_data.hxx"
 #include "sprite_editorobj.hxx"
 

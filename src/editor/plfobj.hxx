@@ -1,4 +1,4 @@
-//  $Id: plfobj.hxx,v 1.8 2002/09/04 14:55:12 torangan Exp $
+//  $Id: plfobj.hxx,v 1.9 2002/09/06 17:33:29 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,7 +23,6 @@
 #include "../liquid_data.hxx"
 #include "../entrance_data.hxx"
 #include "../exit_data.hxx"
-#include "../trap_data.hxx"
 #include "sprite_editorobj.hxx"
 
 class EntranceObj : public SpriteEditorObj,
@@ -57,24 +56,6 @@ private:
   ExitObj operator= (const ExitObj&);
 };
 
-
-class TrapObj : public SpriteEditorObj,
-		protected TrapData
-{
-private:
-  int frame;
-public:
-  TrapObj (const TrapData&);
-
-  EditorObj* duplicate ();
-  void write_xml (std::ostream& xml) { TrapData::write_xml (xml); }
-  void draw (EditorView * view);
-  std::string status_line ();
-  
-private:
-  TrapObj (const TrapObj&);
-  TrapObj operator= (const TrapObj&);
-};
 
 class LiquidObj : public SpriteEditorObj,
 		  protected LiquidData

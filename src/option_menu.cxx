@@ -1,4 +1,4 @@
-//  $Id: option_menu.cxx,v 1.4 2002/09/05 12:24:02 grumbel Exp $
+//  $Id: option_menu.cxx,v 1.5 2002/09/06 17:33:29 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -155,6 +155,7 @@ OptionEntry::draw(GraphicContext& gc)
 
     font->print_right(x_pos + CL_Display::get_width() - 35, y_pos, to_string (*value_int).c_str ());
   }
+  UNUSED_ARG(gc);
 }
 
 void

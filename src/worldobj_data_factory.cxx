@@ -1,4 +1,4 @@
-//  $Id: worldobj_data_factory.cxx,v 1.4 2002/09/04 14:55:11 torangan Exp $
+//  $Id: worldobj_data_factory.cxx,v 1.5 2002/09/06 17:33:29 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,7 +34,6 @@
 #include "worldobjs/conveyor_belt.hxx"
 #include "worldobjs/teleporter.hxx"
 
-#include "trap_data.hxx"
 #include "hotspot_data.hxx"
 #include "entrance_data.hxx"
 #include "worldobj_data_factory.hxx"
@@ -64,7 +63,7 @@ WorldObjDataFactory::instance ()
       instance_ = new WorldObjDataFactory ();
       
       // Registring Factories
-      new WorldObjDataFactoryImpl<TrapData>("trap");
+      //new WorldObjDataFactoryImpl<TrapData>("trap");
       new WorldObjDataFactoryImpl<LiquidData>("liquid");
       new WorldObjDataFactoryImpl<HotspotData>("hotspot");
       new WorldObjDataFactoryImpl<EntranceData>("entrance");

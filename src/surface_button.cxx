@@ -1,4 +1,4 @@
-//  $Id: surface_button.cxx,v 1.11 2002/09/05 12:24:02 grumbel Exp $
+//  $Id: surface_button.cxx,v 1.12 2002/09/06 17:33:29 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,7 +34,7 @@
 #include <config.h>
 #include "my_gettext.hxx"
 
-SurfaceButton::SurfaceButton()
+SurfaceButton::SurfaceButton ()
 {
   font = PingusResource::load_font("Fonts/pingus_small", "fonts");
   font_large = PingusResource::load_font("Fonts/pingus", "fonts");
@@ -49,12 +49,12 @@ SurfaceButton::SurfaceButton()
   //std::cout << "done" << std::endl;
 }
 
-SurfaceButton::~SurfaceButton()
+SurfaceButton::~SurfaceButton ()
 {
 }
 
 void 
-SurfaceButton::draw(GraphicContext& gc)
+SurfaceButton::draw (GraphicContext& gc)
 {
   if (mouse_over && !pressed)
     {
@@ -87,8 +87,8 @@ SurfaceButton::draw(GraphicContext& gc)
 			 CL_Display::get_height() - 20, 
 			 desc.c_str());
 
-      surface_p.put_screen(int(x_pos - surface_p.get_width()/2 * shrink),
-			   int(y_pos - surface_p.get_height()/2 * shrink),
+      surface_p.put_screen(static_cast<int>(x_pos - surface_p.get_width()/2 * shrink),
+			   static_cast<int>(y_pos - surface_p.get_height()/2 * shrink),
 			   shrink, shrink);
       if (line2.empty())
 	{
@@ -109,12 +109,13 @@ SurfaceButton::draw(GraphicContext& gc)
       surface_p.put_screen(x_pos - surface_p.get_width()/2,
 			   y_pos - surface_p.get_height()/2);
     }
+  UNUSED_ARG(gc);
 }
 
 void
 SurfaceButton::update (float delta)
 {    
-  if(delta);
+  UNUSED_ARG(delta);
 }
 
 void

@@ -1,4 +1,4 @@
-//  $Id: hurry_up.cxx,v 1.2 2002/09/05 12:24:02 grumbel Exp $
+//  $Id: hurry_up.cxx,v 1.3 2002/09/06 17:33:29 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,14 +26,15 @@
 #include "world.hxx"
 #include "server.hxx"
 
-HurryUp::HurryUp()
+HurryUp::HurryUp () : font(PingusResource::load_font("Fonts/pingus","fonts")),
+                      is_running(false),
+		      is_finished(false),
+		      center_reached(false),
+		      client(0),
+		      wait_counter(0),
+		      x_pos(-200.0),
+		      speed(3.0f)
 {
-  font = PingusResource::load_font("Fonts/pingus","fonts");
-  x_pos = -200.0;
-  center_reached = false;
-  is_running = false;
-  is_finished = false;
-  speed = 3.0f;
 }
 
 HurryUp::~HurryUp()
@@ -48,13 +49,14 @@ HurryUp::draw(GraphicContext& gc)
 
   if (is_running)
     {
-      font->print_right(CL_Display::get_width() - (int)x_pos,
+      font->print_right(CL_Display::get_width() - static_cast<int>(x_pos),
 			CL_Display::get_height()/2 - font->get_height(),
 			"Hurry");
-      font->print_left((int)x_pos,
+      font->print_left(static_cast<int>(x_pos),
 		       CL_Display::get_height()/2 - font->get_height(),
 		       "Up");
     }
+  UNUSED_ARG(gc);
 }
 
 void
@@ -67,7 +69,7 @@ HurryUp::update(float /*delta*/)
       if (center_reached)
 	{
 	  // Wait some secs
-	  if ((unsigned int)wait_counter < CL_System::get_time())
+	  if (static_cast<unsigned int>(wait_counter) < CL_System::get_time())
 	    {
 	      speed *= 1.2f;
 	      x_pos += speed;
@@ -81,7 +83,7 @@ HurryUp::update(float /*delta*/)
 	  x_pos += speed;
 	  speed *= 1.2f;
 
-	  if ((int)x_pos > CL_Display::get_width()/2)
+	  if (static_cast<int>(x_pos) > CL_Display::get_width()/2)
 	    {
 	      x_pos = CL_Display::get_width()/2;
 	      center_reached = true;
@@ -91,8 +93,8 @@ HurryUp::update(float /*delta*/)
     }
   else if (!is_finished)
     {
-      if (client->get_server()->get_world()->get_time_left() != -1 &&
-	  client->get_server()->get_world()->get_time_left() < 10 * 15)
+      if (   client->get_server()->get_world()->get_time_left() != -1
+          && client->get_server()->get_world()->get_time_left() < 10 * 15)
 	is_running = true;
     }
 }
@@ -104,4 +106,3 @@ HurryUp::set_client(Client* c)
 }
 
 /* EOF */
-

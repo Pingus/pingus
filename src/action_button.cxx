@@ -1,4 +1,4 @@
-//  $Id: action_button.cxx,v 1.11 2002/09/05 12:24:01 grumbel Exp $
+//  $Id: action_button.cxx,v 1.12 2002/09/06 17:33:29 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -107,10 +107,10 @@ VerticalActionButton::VerticalActionButton(int x, int y, ActionName name, int ow
   init(x, y, name, owner_id);
 }
 
-VerticalActionButton::~VerticalActionButton() {}
+VerticalActionButton::~VerticalActionButton () {}
 
 bool
-VerticalActionButton::is_at(int x, int y)
+VerticalActionButton::is_at (int x, int y)
 {
   if (x > x_pos && x < x_pos + 60
       && y > y_pos && y <= y_pos + 35) 
@@ -124,7 +124,7 @@ VerticalActionButton::is_at(int x, int y)
 }
 
 void
-VerticalActionButton::draw(GraphicContext& gc)
+VerticalActionButton::draw (GraphicContext& gc)
 {
   std::string str;
   // FIXME: This could need some optimization, throwing strings all
@@ -173,9 +173,10 @@ VerticalActionButton::draw(GraphicContext& gc)
   surface.put_screen(x_pos + 20 - surface.get_width ()/2,
 		     y_pos + 17 - surface.get_height ()/2,
 		     action_c);
+  UNUSED_ARG(gc);
 }
 
-ArmageddonButton::ArmageddonButton(Server* s, int x, int y)
+ArmageddonButton::ArmageddonButton (Server* s, int x, int y)
   : server (s),
     x_pos (x), y_pos (y),
     background  (PingusResource::load_surface("buttons/hbuttonbgb", "core")),
@@ -187,10 +188,10 @@ ArmageddonButton::ArmageddonButton(Server* s, int x, int y)
   counter = 0;
 }
 
-ArmageddonButton::~ArmageddonButton() { }
+ArmageddonButton::~ArmageddonButton () { }
 
 void
-ArmageddonButton::draw(GraphicContext& gc)
+ArmageddonButton::draw (GraphicContext& gc)
 {
   if (server->get_armageddon ())
     {
@@ -202,10 +203,12 @@ ArmageddonButton::draw(GraphicContext& gc)
       background.put_screen (x_pos, y_pos);
       surface.put_screen(x_pos, y_pos, 7);
     }
+    
+  UNUSED_ARG(gc);
 }
 
 void
-ArmageddonButton::update(float delta)
+ArmageddonButton::update (float delta)
 {
   if (pressed)
     {
@@ -250,7 +253,7 @@ ArmageddonButton::on_primary_button_click (int x, int y)
   if(x); if(y);
 }
 
-ForwardButton::ForwardButton(Server* s, int x, int y) 
+ForwardButton::ForwardButton (Server* s, int x, int y) 
   : server (s),
     x_pos (x), y_pos (y),
     background  (PingusResource::load_surface("buttons/hbuttonbgb", "core")),
@@ -259,10 +262,10 @@ ForwardButton::ForwardButton(Server* s, int x, int y)
   surface = PingusResource::load_surface("buttons/fast_forward", "core");
 }
 
-ForwardButton::~ForwardButton() {}
+ForwardButton::~ForwardButton () {}
 
 void
-ForwardButton::draw(GraphicContext& gc)
+ForwardButton::draw (GraphicContext& gc)
 {
   if (server->get_fast_forward())
     {
@@ -274,10 +277,11 @@ ForwardButton::draw(GraphicContext& gc)
     }
 
   surface.put_screen(x_pos, y_pos);
+  UNUSED_ARG(gc);
 }
 
 bool
-ForwardButton::is_at(int x, int y)
+ForwardButton::is_at (int x, int y)
 {
   if (x > x_pos && x < x_pos + int(surface.get_width())
       && y > y_pos && y < y_pos + int(surface.get_height()))
@@ -296,7 +300,7 @@ ForwardButton::on_primary_button_click (int x, int y)
   if(x); if(y);
 }
 
-PauseButton::PauseButton(Server* s, int x, int y) 
+PauseButton::PauseButton (Server* s, int x, int y) 
   : server (s),
     x_pos(x), y_pos(y),
     background  (PingusResource::load_surface("buttons/hbuttonbgb", "core")),
@@ -305,10 +309,10 @@ PauseButton::PauseButton(Server* s, int x, int y)
   surface = PingusResource::load_surface("buttons/pause", "core");
 }
 
-PauseButton::~PauseButton() {}
+PauseButton::~PauseButton () {}
 
 void
-PauseButton::draw(GraphicContext& gc)
+PauseButton::draw (GraphicContext& gc)
 {
   if (server->get_pause()) 
     backgroundhl.put_screen (x_pos, y_pos);
@@ -316,6 +320,7 @@ PauseButton::draw(GraphicContext& gc)
     background.put_screen (x_pos, y_pos);
   
   surface.put_screen(x_pos, y_pos);
+  UNUSED_ARG(gc);
 }
 
 bool
@@ -335,7 +340,8 @@ PauseButton::on_primary_button_click (int x, int y)
 {
   server->set_pause(!server->get_pause ());
   
-  if(x); if(y);
+  UNUSED_ARG(x);
+  UNUSED_ARG(y);
 }
 
 /* EOF */

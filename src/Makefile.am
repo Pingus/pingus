@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.96 2002/09/05 12:40:22 grumbel Exp $
+#  $Id: Makefile.am,v 1.97 2002/09/06 17:33:29 torangan Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -320,10 +320,6 @@ time_display.cxx \
 time_display.hxx \
 timer.cxx \
 timer.hxx \
-trap.cxx \
-trap.hxx \
-trap_data.cxx \
-trap_data.hxx \
 true_server.cxx \
 true_server.hxx \
 view.cxx \

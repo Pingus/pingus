@@ -1,4 +1,4 @@
-//  $Id: exit_menu.cxx,v 1.6 2002/09/05 12:24:01 grumbel Exp $
+//  $Id: exit_menu.cxx,v 1.7 2002/09/06 17:33:29 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,7 +37,7 @@ public:
     return x > 270 && x < 390 && y > 300 && y < 380;
   }
 
-  void draw (GraphicContext& gc) {}
+  void draw (GraphicContext& gc) { UNUSED_ARG(gc); }
 
   void on_primary_button_press (int, int)
   {
@@ -61,7 +61,7 @@ public:
     return x > 430 && x < 540 && y > 300 && y < 380;
   }
 
-  void draw (GraphicContext& gc) {}
+  void draw (GraphicContext& gc) { UNUSED_ARG(gc); }
 
   void on_primary_button_press (int, int)
   {
@@ -88,6 +88,7 @@ ExitMenu::draw (GraphicContext& gc)
 			 0, 0, 0, 0.5);
   sur.put_screen (CL_Display::get_width ()/2 - sur.get_width ()/2, 
 		  CL_Display::get_height ()/2 - sur.get_height ()/2);
+  UNUSED_ARG(gc);
 }
 
 void 

@@ -1,4 +1,4 @@
-//  $Id: xml_helper.hxx,v 1.7 2002/08/23 15:49:52 torangan Exp $
+//  $Id: xml_helper.hxx,v 1.8 2002/09/06 17:33:29 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,7 +25,6 @@
 #include <string>
 #include <iosfwd>
 
-#include <ClanLib/Core/Math/cl_vector.h>
 
 // FIX: Under windows, it's necessary to use libxml/parser.h, or MS's
 // compiler will fails.
@@ -54,7 +53,7 @@
   int xmlIsBlankNode(xmlNodePtr node);
 #endif
 
-// class CL_Vector;
+class CL_Vector;
 class Color;
 class ResDescriptor;
 
@@ -62,26 +61,26 @@ class XMLhelper
 {
 
 public:
-  static std::string encode_entities(const std::string& arg_str);
+  static std::string encode_entities (const std::string& arg_str);
 
-  static xmlNodePtr skip_blank(xmlNodePtr cur);
+  static xmlNodePtr skip_blank (xmlNodePtr cur);
 
   /// A set of function to parse an xml file
   //@{
-  static ResDescriptor parse_surface(xmlDocPtr doc, xmlNodePtr cur);
-  static CL_Vector     parse_vector(xmlDocPtr doc, xmlNodePtr cur);
-  static std::string   parse_string(xmlDocPtr doc, xmlNodePtr cur);
-  static int           parse_int(xmlDocPtr doc, xmlNodePtr cur);
-  static float         parse_float(xmlDocPtr doc, xmlNodePtr cur);
-  static Color         parse_color(xmlDocPtr doc, xmlNodePtr cur);
+  static ResDescriptor parse_surface (xmlDocPtr doc, xmlNodePtr cur);
+  static CL_Vector     parse_vector  (xmlDocPtr doc, xmlNodePtr cur);
+  static std::string   parse_string  (xmlDocPtr doc, xmlNodePtr cur);
+  static int           parse_int     (xmlDocPtr doc, xmlNodePtr cur);
+  static float         parse_float   (xmlDocPtr doc, xmlNodePtr cur);
+  static Color         parse_color   (xmlDocPtr doc, xmlNodePtr cur);
   //@}
 
   /// A set of functions to write data down to an xml file
   //@{
   /** Writes the given res_desc to the ofstream */
-  static void write_desc_xml(std::ostream& xml, ResDescriptor desc);
+  static void write_desc_xml (std::ostream& xml, ResDescriptor desc);
   /** Write a CL_Vector to an xml stream */
-  static void write_vector_xml(std::ostream& xml, const CL_Vector& pos);
+  static void write_vector_xml (std::ostream& xml, const CL_Vector& pos);
   //@}
   
 private:

@@ -1,4 +1,4 @@
-//  $Id: teleporter.hxx,v 1.9 2002/09/05 11:26:35 grumbel Exp $
+//  $Id: teleporter.hxx,v 1.10 2002/09/06 17:33:29 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -113,7 +113,6 @@ private:
 public:
   /// Basic constructor
   EditorTeleporterTargetObj (EditorTeleporterObj* obj);
-  virtual ~EditorTeleporterTargetObj () {}
 
   EditorObj* duplicate() { return teleporter->duplicate (); }
 

@@ -1,4 +1,4 @@
-//  $Id: smallmap.cxx,v 1.13 2002/09/05 12:24:02 grumbel Exp $
+//  $Id: smallmap.cxx,v 1.14 2002/09/06 17:33:29 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -144,14 +144,14 @@ SmallMap::init()
 }
 
 void
-SmallMap::set_client(Client* c)
+SmallMap::set_client (Client* c)
 {
   client = c;
   init();
 }
 
 void
-SmallMap::draw(GraphicContext& gc)
+SmallMap::draw (GraphicContext& gc)
 {
   Playfield* playfield = client->get_playfield();
 
@@ -171,8 +171,8 @@ SmallMap::draw(GraphicContext& gc)
 
   Display::draw_rect(x_of, 
 		     y_of + CL_Display::get_height() - sur.get_height(),
-			 x_of + Math::min(rwidth, int(sur.get_width())),
-			 y_of + Math::min(rheight, int(sur.get_height())) + CL_Display::get_height() - sur.get_height(),
+		     x_of + Math::min(rwidth,  static_cast<int>(sur.get_width())),
+		     y_of + Math::min(rheight, static_cast<int>(sur.get_height())) + CL_Display::get_height() - sur.get_height(),
 		     0.0, 1.0, 0.0, 1.0);
   
   // FIXME: This should use put_target(), but put_target(), does not
@@ -192,10 +192,11 @@ SmallMap::draw(GraphicContext& gc)
     }
   */
   draw_pingus();
+  UNUSED_ARG(gc);
 }
 
 void
-SmallMap::draw_pingus()
+SmallMap::draw_pingus ()
 {
   int x;
   int y;

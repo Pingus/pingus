@@ -1,4 +1,4 @@
-//  $Id: sprite_editorobj.hxx,v 1.3 2002/08/23 15:49:54 torangan Exp $
+//  $Id: sprite_editorobj.hxx,v 1.4 2002/09/06 17:33:29 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,10 +20,10 @@
 #ifndef HEADER_PINGUS_EDITOR_SPRITE_EDITOROBJ_HXX
 #define HEADER_PINGUS_EDITOR_SPRITE_EDITOROBJ_HXX
 
-#include <ClanLib/Core/Math/cl_vector.h>
 #include "../sprite.hxx"
 #include "rect_editorobj.hxx"
 
+class CL_Vector;
 
 class SpriteEditorObj : public RectEditorObj
 {
@@ -41,24 +41,22 @@ public:
   SpriteEditorObj (const ResDescriptor&,
 		   CL_Vector& arg_pos);
 
-  virtual ~SpriteEditorObj ();
-
   /// Return the object width
   virtual int get_width() { return sprite.get_width (); }
   /// Return the object height
   virtual int get_height() { return sprite.get_height (); }
 
-  virtual float get_z_pos() { return pos_ref.z; }
+  virtual float get_z_pos();
 
   virtual CL_Vector get_upper_left_corner();
 
-  virtual void draw(EditorView *);
+  virtual void draw (EditorView *);
 
-  virtual void set_position_offset(const CL_Vector& offset);
+  virtual void set_position_offset (const CL_Vector& offset);
 
   /** This will be overritten to provide pixel exact click
       detection */
-  virtual bool   is_over(const CL_Vector&);
+  virtual bool   is_over (const CL_Vector&);
   
 protected:
   SpriteEditorObj (const SpriteEditorObj& old);
@@ -68,6 +66,3 @@ protected:
 #endif
 
 /* EOF */
-
-
-

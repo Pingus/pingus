@@ -1,4 +1,4 @@
-//  $Id: worldobj_group_data.cxx,v 1.6 2002/07/02 10:42:38 grumbel Exp $
+//  $Id: worldobj_group_data.cxx,v 1.7 2002/09/06 17:33:29 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,7 +26,6 @@
 // FIXME: Factory pattern for this would be nice
 #include "exit_data.hxx"
 #include "entrance_data.hxx"
-#include "trap_data.hxx"
 #include "hotspot_data.hxx"
 #include "liquid_data.hxx"
 
@@ -61,10 +60,10 @@ WorldObjGroupData::WorldObjGroupData (xmlDocPtr doc, xmlNodePtr cur)
 	{
 	  add (new EntranceData (doc, cur));
 	}
-      else if (strcmp((char*)cur->name, "trap") == 0)
-	{
-	  add (new TrapData (doc, cur));
-	}
+      //else if (strcmp((char*)cur->name, "trap") == 0)
+	//{
+	  //add (new TrapData (doc, cur));
+	//}
       else if (strcmp((char*)cur->name, "hotspot") == 0)
 	{
 	  add(new HotspotData (doc, cur));

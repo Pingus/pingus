@@ -1,4 +1,4 @@
-//  $Id: plfobj.cxx,v 1.9 2002/09/04 14:55:12 torangan Exp $
+//  $Id: plfobj.cxx,v 1.10 2002/09/06 17:33:29 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -127,67 +127,6 @@ ExitObj::status_line()
   return str;
 }
 
-TrapObj::TrapObj(const TrapData& data)
-  : SpriteEditorObj (pos),
-    TrapData (data)
-{
-  frame = 0;
-
-  if (type == "guillotine") {
-    sprite = Sprite("Traps/guillotineidle", "traps");
-    //sprite.set_align_center_bottom ();
-  } else if (type == "fake_exit") {
-    sprite = Sprite("Traps/fake_exit", "traps");
-    sprite.set_align_center_bottom ();
-  } else if (type == "laser_exit") {
-    frame = 5;
-    pos.z = -100;
-    sprite = Sprite("Traps/laser_exit", "traps");
-    sprite.set_align_center_bottom ();
-  } else if (type == "spike") {
-    pos.z = -100;
-    sprite = Sprite("Traps/spike", "traps");
-    //sprite.set_align_center_bottom ();
-    frame = 5;
-  } else if (type == "hammer") {
-    sprite = Sprite("Traps/hammer", "traps");
-    sprite.set_align_center_bottom ();
-  } else if (type == "smasher") {
-    pos.z = 100;
-    sprite = Sprite("Traps/smasher", "traps");
-    //sprite.set_align_center_bottom ();
-  } else if (type == "bumper") {
-    pos.z = -100;
-    sprite = Sprite("Traps/bumper", "traps");
-    sprite.set_align_center_bottom ();
-  } else if (type == "teleport") {
-    pos.z = 100;
-    sprite = Sprite("Traps/teleporter", "traps");
-    sprite.set_align_center_bottom ();
-  } else {
-    PingusError::raise("'" + type + "': trap is not implemented in editor");
-  }
-}
-
-EditorObj*
-TrapObj::duplicate()
-{
-  return new TrapObj(static_cast<TrapData>(*this));
-}
-
-void
-TrapObj::draw (EditorView * view)
-{
-    view->draw(sprite, pos, frame);
-}
-
-std::string  
-TrapObj::status_line()
-{
-  char str[1024];
-  sprintf (str, "TrapObj: %4.2fx%4.2fx%4.2f", pos.x, pos.y, pos.z);
-  return str;
-}
 
 LiquidObj::LiquidObj(const LiquidData& data)
   : SpriteEditorObj (data.desc.res_name, data.desc.datafile, pos),

@@ -1,4 +1,4 @@
-//  $Id: time_display.cxx,v 1.6 2002/09/05 12:24:02 grumbel Exp $
+//  $Id: time_display.cxx,v 1.7 2002/09/06 17:33:29 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,14 +27,14 @@
 #include "world.hxx"
 #include "server.hxx"
 
-TimeDisplay::TimeDisplay()
+TimeDisplay::TimeDisplay ()
 {
   //font = PingusResource::load_font("Fonts/numbers","fonts");
   font = PingusResource::load_font("Fonts/pingus_small","fonts");
 }
 
 void
-TimeDisplay::draw(GraphicContext& gc)
+TimeDisplay::draw (GraphicContext& gc)
 {
   int time_value = server->get_world()->get_time_left();
   char time_string[8];
@@ -57,7 +57,7 @@ TimeDisplay::draw(GraphicContext& gc)
 	  p = time_string;
 
 	  // Replace any space with a zero
-	  while(*p++)
+	  while (*p++)
 	    {
 	      if (*p == ' ')
 		*p = '0';
@@ -70,6 +70,8 @@ TimeDisplay::draw(GraphicContext& gc)
 	}
     }
   font->print_right(CL_Display::get_width() - 5, 1, time_string);
+
+  UNUSED_ARG(gc);
 }
 
 void

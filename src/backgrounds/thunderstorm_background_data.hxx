@@ -1,4 +1,4 @@
-//  $Id: thunderstorm_background_data.hxx,v 1.7 2002/08/23 15:49:54 torangan Exp $
+//  $Id: thunderstorm_background_data.hxx,v 1.8 2002/09/06 17:33:29 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,9 +20,9 @@
 #ifndef HEADER_PINGUS_BACKGROUNDS_THUNDERSTORM_BACKGROUND_DATA_HXX
 #define HEADER_PINGUS_BACKGROUNDS_THUNDERSTORM_BACKGROUND_DATA_HXX
 
+#include <ClanLib/Core/Math/cl_vector.h>
 #include "../worldobj_data.hxx"
 #include "../editor/sprite_editorobj.hxx"
-
 #include "../libxmlfwd.hxx"
 
 class ThunderstormBackgroundData : public WorldObjData

@@ -1,4 +1,4 @@
-//  $Id: object_selector.cxx,v 1.9 2002/08/17 17:56:23 torangan Exp $
+//  $Id: object_selector.cxx,v 1.10 2002/09/06 17:33:29 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -80,7 +80,7 @@ ObjectSelector::get_obj(int x_off, int y_off)
 
   return select_obj_type();
 }
-
+/*
 EditorObjLst
 ObjectSelector::get_trap()
 {
@@ -136,6 +136,7 @@ ObjectSelector::get_trap()
   // object_selector.cxx:107: warning: control reaches end of non-void function `ObjectSelector::get_trap()'
   return trap.create_EditorObj ();
 }
+*/
 
 EditorObjLst
 ObjectSelector::get_groundpiece(const GroundpieceData::GPType & gptype)
@@ -385,7 +386,7 @@ ObjectSelector::select_obj_type()
 
   CL_Display::clear_display();
   font->print_left(20, 20, _("Which object do you want?"));
-  font->print_left(20, 50, _("t - Trap"));
+  //font->print_left(20, 50, _("t - Trap"));
   font->print_left(20, 70, _("g - Groundpiece (ground)"));
   font->print_left(20, 90, _("s - Groundpiece (solid)"));
   font->print_left(20,110, _("b - Groundpiece (bridge)"));
@@ -408,8 +409,8 @@ ObjectSelector::select_obj_type()
     {
       switch (read_key()) 
 	{
-	case CL_KEY_T:
-	  return get_trap();
+	//case CL_KEY_T:
+	  //return get_trap();
 
 	case CL_KEY_B:
 	  return get_groundpiece(GroundpieceData::GP_BRIDGE);

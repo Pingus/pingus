@@ -1,4 +1,4 @@
-//  $Id: pingus_counter.cxx,v 1.6 2002/09/05 12:24:02 grumbel Exp $
+//  $Id: pingus_counter.cxx,v 1.7 2002/09/06 17:33:29 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -55,6 +55,7 @@ PingusCounter::draw(GraphicContext& gc)
 	   world->get_number_to_save());
 
   font->print_center(CL_Display::get_width ()/2,3, str);
+  UNUSED_ARG(gc);
 }
 
 void
