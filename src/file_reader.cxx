@@ -35,73 +35,109 @@ FileReader::FileReader()
 std::string
 FileReader::get_name() const
 {
-  return impl->get_name();
+  if (impl)
+    return impl->get_name();
+  else
+    return "";
 }
 
 bool
 FileReader::read_int(const char* name, int& value) const
 {
-  return impl->read_int(name, value);
+  if (impl)
+    return impl->read_int(name, value);
+  else
+    return false;
 }
 
 bool
 FileReader::read_float (const char* name, float& value) const
 {
-  return impl->read_float(name, value);
+  if (impl)
+    return impl->read_float(name, value);
+  else
+    return false;
 }
 
 bool
 FileReader::read_bool  (const char* name, bool& value) const
 {
-  return impl->read_bool(name, value);
+  if (impl)
+    return impl->read_bool(name, value);
+  else
+    return false;
 }
 
 bool
 FileReader::read_string(const char* name, std::string& value) const
 {
-  return impl->read_string(name, value);
+  if (impl)
+    return impl->read_string(name, value);
+  else
+    return false;
 }
 
 bool
 FileReader::read_vector(const char* name, Vector& value) const
 {
-  return impl->read_vector(name, value);
+  if (impl)
+    return impl->read_vector(name, value);
+  else
+    return false;
 }
 
 bool
 FileReader::read_color(const char* name, CL_Colorf& value) const
 {
-  return impl->read_color(name, value);
+  if (impl)
+    return impl->read_color(name, value);
+  else
+    return false;
 }
 
 bool
 FileReader::read_desc(const char* name, ResDescriptor& desc) const
 {
-  return impl->read_desc(name, desc);
+  if (impl)
+    return impl->read_desc(name, desc);
+  else
+    return false;
 }
 
 bool
 FileReader::read_size  (const char* name, CL_Size& value) const
 {
-  return impl->read_size(name, value);
+  if (impl)
+    return impl->read_size(name, value);
+  else
+    return false;
 }
 
 bool
 FileReader::read_section(const char* name, FileReader& reader) const
 {
-  return impl->read_section(name, reader);
+  if (impl)
+    return impl->read_section(name, reader);
+  else
+    return false;
 }
 
 std::vector<std::string>
 FileReader::get_section_names() const
 {
-  return impl->get_section_names();
+  if (impl)
+    return impl->get_section_names();
+  else
+    return std::vector<std::string>();
 }
 
 std::vector<FileReader>
 FileReader::get_sections() const
 {
-  return impl->get_sections();
+  if (impl)
+    return impl->get_sections();
+  else
+    return std::vector<FileReader>();
 }
 
 FileReader

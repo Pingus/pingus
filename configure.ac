@@ -61,57 +61,7 @@ fi
 dnl -- Static Libaries --
 AC_PROG_RANLIB
 
-dnl ---------------------------------------------------
-dnl Check the location of the XML library and -headers.
-AC_ARG_WITH(libxml,[  --with-libxml=PREFIX    set the path to your libxml installation])
-
-dnl first check for xml2-config, then xml-config
-if test "x$with_libxml" != "x"
-then
-        AC_MSG_CHECKING([for xml(2)-config])
-        XML_CONFIG="$with_libxml/bin/xml2-config"
-        if test -x "$XML_CONFIG"
-        then
-                AC_MSG_RESULT([$XML_CONFIG])
-        else
-		XML_CONFIG="$with_libxml/bin/xml-config"
-		if test -x "$XML_CONFIG"
-	        then
-			AC_MSG_RESULT([$XML_CONFIG])
-		else
-                AC_MSG_ERROR([
-*** I was not able to find the script \"xml(2)-config\".
-*** Did you specify the correct prefix for --with-libxml ?])
-		fi
-	fi
-else
-	dnl try xml2-config, then xml-config
-	AC_CHECK_PROGS(XML_CONFIG,xml2-config xml-config,no)
-        if test "x$XML_CONFIG" = "xno"
-        then
-		AC_MSG_ERROR([
-*** I was not able to find the script \"xml(2)-config\".
-*** Please check your installation of libxml.])
-	fi
-fi
-
-dnl Check the version of libxml.
-ac_xml_version=`$XML_CONFIG --version`
-case "$ac_xml_version" in
-        2.*)
- 	AC_DEFINE_UNQUOTED(LIBXML_2,, [Libxml2 is present])
-        ;;
-        *)
-        #AC_CHECK_LIB(xml, xmlIsBlankNode,, [AC_DEFINE_UNQUOTED(NO_XMLISBLANKNODE)])
- 	;;
-esac
-
-dnl Add the apropriate xml-flags to CPPFLAGS and LIBS.
-CPPFLAGS="$CPPFLAGS `$XML_CONFIG --cflags`"
-LIBS="$LIBS `$XML_CONFIG --libs`"
-dnl ---------------------------------------------------
-
-REQUIRED_CLANLIB_VERSION="0.7.3"
+REQUIRED_CLANLIB_VERSION="0.7.9"
 
 PKG_CHECK_MODULES(PINGUS,
  [
