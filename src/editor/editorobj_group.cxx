@@ -1,4 +1,4 @@
-//  $Id: editorobj_group.cxx,v 1.8 2003/03/05 19:13:59 grumbel Exp $
+//  $Id: editorobj_group.cxx,v 1.9 2003/03/05 22:18:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -186,6 +186,72 @@ EditorObjGroup::is_in_rect(const CL_Rect& rect)
 	return true;
     }
   return false;
+}
+
+void
+EditorObjGroup::vertical_flip ()
+{
+  for(std::vector<EditorObj*>::iterator i = objs.begin();
+      i != objs.end();
+      ++i)
+    {
+      (*i)->vertical_flip();
+    }
+}
+
+void 
+EditorObjGroup::horizontal_flip ()
+{
+  for(std::vector<EditorObj*>::iterator i = objs.begin();
+      i != objs.end();
+      ++i)
+    {
+      (*i)->horizontal_flip();
+    }
+}
+
+void 
+EditorObjGroup::rotate_90 ()
+{
+  for(std::vector<EditorObj*>::iterator i = objs.begin();
+      i != objs.end();
+      ++i)
+    {
+      (*i)->rotate_90();
+    }
+}
+
+void 
+EditorObjGroup::rotate_270 ()
+{
+  for(std::vector<EditorObj*>::iterator i = objs.begin();
+      i != objs.end();
+      ++i)
+    {
+      (*i)->rotate_270();
+    }
+}
+
+void
+EditorObjGroup::make_larger ()
+{
+  for(std::vector<EditorObj*>::iterator i = objs.begin();
+      i != objs.end();
+      ++i)
+    {
+      (*i)->make_larger();
+    }
+}
+
+void
+EditorObjGroup::make_smaller ()
+{
+  for(std::vector<EditorObj*>::iterator i = objs.begin();
+      i != objs.end();
+      ++i)
+    {
+      (*i)->make_smaller();
+    }
 }
 
 /* EOF */

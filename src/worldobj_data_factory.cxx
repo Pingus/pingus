@@ -1,4 +1,4 @@
-//  $Id: worldobj_data_factory.cxx,v 1.32 2003/03/05 19:55:14 grumbel Exp $
+//  $Id: worldobj_data_factory.cxx,v 1.33 2003/03/05 22:18:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -138,6 +138,10 @@ WorldObjDataFactory::create (xmlDocPtr doc, xmlNodePtr cur)
   else if (XMLhelper::equal_str(cur->name, "prefab"))
     {
       return create ("prefab", doc, cur);
+    }
+  else if (XMLhelper::equal_str(cur->name, "liquid"))
+    {
+      return create ("liquid", doc, cur);
     }
   else
     {
