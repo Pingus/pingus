@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Pingus 0.6.0\n"
 "POT-Creation-Date: 2003-04-15 15:16+0200\n"
-"PO-Revision-Date: 2003-04-15 12:02+0200\n"
+"PO-Revision-Date: 2003-04-15 17:18+0200\n"
 "Last-Translator: Ingo Ruhnke <grumbel@gmx.de>\n"
 "Language-Team: David Philippi <david@torangan.de>, Ingo Ruhnke <grumbel@gmx."
 "de>, Giray Devlet <giray@devlet.cc>\n"
@@ -319,7 +319,7 @@ msgstr "3 - Wolke"
 
 #: src/editor/object_selector.cxx:269
 msgid "h - entrance surface (hotspot)"
-msgstr "h - Eingangs Oberfläche (Grafikelement)"
+msgstr "h - Eingangs Grafik (hotspot)"
 
 #: src/editor/object_selector.cxx:343
 msgid "What object type do you want?"
@@ -327,7 +327,7 @@ msgstr "Was für ein Objekt willst du?"
 
 #: src/editor/object_selector.cxx:344 src/editor/object_selector.cxx:400
 msgid "h - Hotspot"
-msgstr "h - Grafikelement"
+msgstr "h - Grafikelement (hotspot)"
 
 #: src/editor/object_selector.cxx:345
 msgid "g - Groundpiece (ground) [not implemented]"

@@ -18,7 +18,7 @@
 SUBDIRS = m4 intl src data doc po contrib
 
 EXTRA_DIST = config.rpath autogen.sh pingus.dsp pingus.dsw ABOUT-NLS  \
- README.languages INSTALL.Win32 
+ README.languages INSTALL.Win32 INSTALL.unix
 
 ACLOCAL_AMFLAGS = -I m4
 

@@ -8,10 +8,11 @@ Introduction
    operating systems supported by ClanLib. It is covered under the GPLv2,
    check the file COPYING, for more information.
    
-   See 'INSTALL' for instructions on how to compile and run Pingus from
-   source. See README.binary on informations how to use the binary
-   versions of the game, precompiled binaries are available at the
-   Pingus webpage.
+   See INSTALL for generic install instructions, INSTALL.unix for
+   instructions on how to compile and run Pingus from source on
+   GNU/Linux and INSTALL.Win32 for Windows. See README.binary on
+   informations how to use the binary versions of the game,
+   precompiled binaries are available at the Pingus webpage.
 
    Information about the game, new versions and additional
    documentation can be found at the Pingus webpage:
@@ -53,4 +54,4 @@ Bug Reports
    pingus-devel lists. You may also contact Ingo Ruhnke <grumbel@gmx.de>. 
 
 ---
-Last update  ... ir 2003-04-10
+Last update  ... ir 2003-04-15
