@@ -1,4 +1,4 @@
-//  $Id: Teleporter.cc,v 1.8 2000/12/09 01:18:55 grumbel Exp $
+//  $Id: Teleporter.cc,v 1.9 2000/12/12 09:12:59 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -122,6 +122,9 @@ Teleporter::let_move ()
 EditorTeleporterObj::EditorTeleporterObj (WorldObjData* obj)
 {
   surf = PingusResource::load_surface ("teleporter", "worldobjs");
+  width = surf->get_width ();
+  height = surf->get_height ();
+
   TeleporterData* data = dynamic_cast<TeleporterData*> (obj);  
   assert (data);
   
@@ -193,6 +196,8 @@ EditorTeleporterTargetObj::EditorTeleporterTargetObj ()
 EditorTeleporterTargetObj::EditorTeleporterTargetObj (WorldObjData* obj, Position* pos)
 {
   surf = PingusResource::load_surface ("teleporter2", "worldobjs");
+  width = surf->get_width ();
+  height = surf->get_height ();
 
   TeleporterData* data = dynamic_cast<TeleporterData*> (obj);
   assert (data);

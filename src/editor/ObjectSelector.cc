@@ -1,4 +1,4 @@
-//  $Id: ObjectSelector.cc,v 1.35 2000/12/09 01:18:55 grumbel Exp $
+//  $Id: ObjectSelector.cc,v 1.36 2000/12/12 09:12:59 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -134,19 +134,19 @@ EditorObj*
 ObjectSelector::get_groundpiece(GroundpieceData::Type type)
 {
   GroundpieceData data;
+  std::string datafile = std::string("groundpieces-") + GroundpieceData::type_to_string (type);
 
   data.pos.x_pos = CL_Mouse::get_x() - x_offset;
   data.pos.y_pos = CL_Mouse::get_y() - y_offset;
 
-  std::string str = select_surface("global");
+  std::string str = select_surface(datafile);
 
   if (!str.empty())
     {
-      data.desc = ResDescriptor("resource:global", str);
+      data.desc = ResDescriptor("resource:" + datafile, str);
       data.type = type;
 
       EditorObj* obj = new PSMObj(data);
-      obj->init ();
       return obj;
     }
   return 0;
@@ -479,6 +479,9 @@ ObjectSelector::read_string(string description, string def_str)
 /*
 
 $Log: ObjectSelector.cc,v $
+Revision 1.36  2000/12/12 09:12:59  grumbel
+Some more experiments with shared and scoped pointers
+
 Revision 1.35  2000/12/09 01:18:55  grumbel
 Made the switchdoor working
 

@@ -1,4 +1,4 @@
-//  $Id: PingusMenu.hh,v 1.11 2000/12/04 23:12:12 grumbel Exp $
+//  $Id: PingusMenu.hh,v 1.12 2000/12/12 09:12:59 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,6 +27,9 @@
 #include "OptionMenu.hh"
 #include "AlphaButton.hh"
 #include "LayerManager.hh"
+#include <boost/smart_ptr.hpp>
+
+using namespace boost;
 
 ///
 class SurfaceButton;
@@ -77,7 +80,7 @@ private:
   Event* event;
 
   ///
-  std::list<SurfaceButton*> buttons;
+  std::list<shared_ptr<SurfaceButton> > buttons;
   ///
   SurfaceButton* temp_button;
   ///
@@ -102,15 +105,15 @@ private:
   PingusMenuItem current_item;
   
   ///
-  PlayButton*     play_button;
+  shared_ptr<PlayButton> play_button;
   ///
-  OptionsButton*  options_button;
+  shared_ptr<OptionsButton> options_button;
   ///
-  QuitButton*     quit_button;
+  shared_ptr<QuitButton>  quit_button;
   ///
-  EditorButton*   editor_button;
+  shared_ptr<EditorButton> editor_button;
   ///
-  ThemeButton*    theme_button;
+  shared_ptr<ThemeButton> theme_button;
   
 
   void on_resize(int w, int h);

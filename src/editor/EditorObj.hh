@@ -1,4 +1,4 @@
-//  $Id: EditorObj.hh,v 1.23 2000/12/09 01:18:55 grumbel Exp $
+//  $Id: EditorObj.hh,v 1.24 2000/12/12 09:12:59 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -50,9 +50,6 @@ protected:
       class, when the child class doesn't provide a position element,
       EditorObj creates one */
   Position* position;
-  
-  ///
-  bool is_init;
   ///
   int x_of, y_of;
   ///
@@ -89,10 +86,6 @@ public:
   EditorObj();
   ///
   virtual ~EditorObj();
-
-  /** This function needs to be called after the surface is set, it
-      starts then to calculate width and height of the object */
-  virtual void init();
   ///
   static std::list<EditorObj*> create(GroundpieceData);
   ///

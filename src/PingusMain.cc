@@ -1,4 +1,4 @@
-//   $Id: PingusMain.cc,v 1.16 2000/10/30 16:17:49 grumbel Exp $
+//   $Id: PingusMain.cc,v 1.17 2000/12/12 09:12:59 grumbel Exp $
 //    ___
 //   |  _\ A free Lemmings clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -42,6 +42,8 @@
 
 #include <ClanLib/core.h>
 #include <ClanLib/jpeg.h>
+
+#include <boost/smart_ptr.hpp>
 
 #include "my_gettext.hh"
 
@@ -137,7 +139,6 @@ PingusMain::read_rc_file(void)
 {
   if (!no_config_file)
     {
-      Config* config;
       std::string   rcfile;
 
       if (config_file.empty())
@@ -146,8 +147,7 @@ PingusMain::read_rc_file(void)
 	rcfile = config_file;
 
       // FIXME: kind of weird...
-      config = new Config(rcfile);
-      delete config;
+      boost::shared_ptr<Config> config(new Config(rcfile));
     }
 }
 

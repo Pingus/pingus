@@ -1,4 +1,4 @@
-// $Id: EditorObj.cc,v 1.25 2000/12/09 01:18:55 grumbel Exp $
+// $Id: EditorObj.cc,v 1.26 2000/12/12 09:12:59 grumbel Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,7 +39,6 @@ Editor* EditorObj::editor;
 
 EditorObj::EditorObj()
 {
-  is_init = false;
   position = &private_pos;
   surf = 0;
   x_of = 0;
@@ -56,29 +55,11 @@ EditorObj::~EditorObj()
 {
 }
 
-void 
-EditorObj::init()
-{
-  if (is_init)
-    {
-      assert (!"EditorObj: Object already init, you can only call this function once");
-    }
-
-  is_init = true;
-
-  if (surf && width == -1 && height == -1)
-    {
-      width = surf->get_width();
-      height = surf->get_height();
-    }
-}
-
 std::list<EditorObj*>
 EditorObj::create(GroundpieceData data)
 {
   std::list<EditorObj*> objs;
   EditorObj* obj = new PSMObj(data);
-  obj->init ();
   objs.push_back (obj);
   return objs;
 }
@@ -88,7 +69,6 @@ EditorObj::create(EntranceData data)
 {
   std::list<EditorObj*> objs;
   EditorObj* obj = new EntranceObj(data);
-  obj->init ();
   objs.push_back(obj);
   return objs;
 }
@@ -98,7 +78,6 @@ EditorObj::create(ExitData data)
 {
   std::list<EditorObj*> objs;
   EditorObj* obj = new ExitObj(data);
-  obj->init ();
   objs.push_back (obj);
   return objs;
 }
@@ -108,7 +87,6 @@ EditorObj::create(TrapData data)
 {
   std::list<EditorObj*> objs;
   EditorObj* obj = new TrapObj(data);
-  obj->init ();
   objs.push_back (obj);
   return objs;
 }
@@ -118,7 +96,6 @@ EditorObj::create(HotspotData data)
 {
   std::list<EditorObj*> objs;
   EditorObj* obj = new HotspotObj(data);
-  obj->init ();
   objs.push_back (obj);
   return objs;
 }
@@ -128,7 +105,6 @@ EditorObj::create(LiquidData data)
 {
   std::list<EditorObj*> objs;
   EditorObj* obj = new LiquidObj(data);
-  obj->init ();
   objs.push_back (obj);
   return objs;
 }
@@ -138,7 +114,6 @@ EditorObj::create(WeatherData data)
 {
   std::list<EditorObj*> objs;
   EditorObj* obj = new WeatherObj(data);
-  obj->init ();
   objs.push_back (obj);
   return objs;
 }
@@ -162,9 +137,6 @@ EditorObj::create (WorldObjData* obj)
       // FIXME: empty dummy
       return list<EditorObj*>();
     }
-  
-  for (list<EditorObj*>::iterator i = objs.begin (); i != objs.end (); i++)
-    (*i)->init ();
   
   return objs;
 }
@@ -200,12 +172,6 @@ EditorObj::set_position_offset(int x_pos_add, int y_pos_add,
 void
 EditorObj::draw_offset(int x_offset, int y_offset)
 {
-  if (!is_init)
-    {
-      std::cout << "----" << this->status_line () << std::endl;
-      assert (!"EditorObj: init () wasn't called");
-    }
-
   assert(surf);
   if (surf) {
     surf->put_screen(position->x_pos + x_offset + x_of,
@@ -308,6 +274,9 @@ EditorObj::gui_edit_obj()
   
 /*
 $Log: EditorObj.cc,v $
+Revision 1.26  2000/12/12 09:12:59  grumbel
+Some more experiments with shared and scoped pointers
+
 Revision 1.25  2000/12/09 01:18:55  grumbel
 Made the switchdoor working
 

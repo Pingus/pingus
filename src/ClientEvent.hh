@@ -1,4 +1,4 @@
-//  $Id: ClientEvent.hh,v 1.5 2000/08/10 15:13:07 grumbel Exp $
+//  $Id: ClientEvent.hh,v 1.6 2000/12/12 09:12:58 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,7 +28,7 @@
 class Client;
 class Playfield;
 
-class ClientEvent //: public CL_Event_ButtonPress, public CL_Event_ButtonRelease
+class ClientEvent
 {
 private:
   ///
