@@ -1,4 +1,4 @@
-//  $Id: SolidColorBackground.hh,v 1.14 2002/06/08 20:19:54 torangan Exp $
+//  $Id: SolidColorBackground.hh,v 1.15 2002/06/08 21:43:36 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,7 +27,6 @@
 #include "../WorldObjData.hh"
 #include "../editor/RectEditorObj.hh"
 #include "../editor/EditorView.hh"
-#include "../Position.hh"
 
 class _xmlDoc;  typedef _xmlDoc*  xmlDocPtr;
 class _xmlNode; typedef _xmlNode* xmlNodePtr;
@@ -104,7 +103,10 @@ public:
     pos += offset;
   }  
 
-  std::string status_line () { return "SolidColorBackground: " + to_string (pos); }
+  std::string status_line () { return "SolidColorBackground: " 
+				 + to_string (pos.x) + ", "
+				 + to_string (pos.y) + ", "
+				 + to_string (pos.z); }
 };
 
 #endif

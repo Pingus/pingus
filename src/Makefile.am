@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.75 2002/06/07 19:10:33 grumbel Exp $
+#  $Id: Makefile.am,v 1.76 2002/06/08 21:43:36 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -169,7 +169,6 @@ pingus_SOURCES = \
                  TargetProvider.hh    TargetProvider.cc \
                  PingusMapManager.hh  PingusMapManager.cc \
                  Color.hh              \
-                 Position.cc          Position.hh \
                  LayerManager.cc      LayerManager.hh \
                  Sprite.cc            Sprite.hh \
                  DeltaManager.hh \

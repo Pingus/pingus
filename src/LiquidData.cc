@@ -1,4 +1,4 @@
-//  $Id: LiquidData.cc,v 1.7 2002/06/08 20:19:53 torangan Exp $
+//  $Id: LiquidData.cc,v 1.8 2002/06/08 21:43:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,7 +23,6 @@
 #include "StringConverter.hh"
 #include "LiquidData.hh"
 #include "XMLhelper.hh"
-#include "Position.hh"
 
 void 
 LiquidData::write_xml(std::ofstream* xml)
@@ -31,7 +30,7 @@ LiquidData::write_xml(std::ofstream* xml)
   std::cout << "LiquidData::write_xml(std::ofstream* xml)" << std::endl;
   (*xml) << "<liquid use-old-width-handling=\"" << int(old_width_handling) << "\">\n";
   XMLhelper::write_desc_xml(xml, desc);
-  XMLhelper::write_position_xml(xml, pos);
+  XMLhelper::write_vector_xml(xml, pos);
   (*xml) << "  <width>" << width << "</width>\n"
 	 << "  <speed>" << speed << "</speed>\n"
 	 << "</liquid>\n" << std::endl;

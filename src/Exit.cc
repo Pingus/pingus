@@ -1,4 +1,4 @@
-//  $Id: Exit.cc,v 1.30 2002/01/20 19:29:38 grumbel Exp $
+//  $Id: Exit.cc,v 1.31 2002/06/08 21:43:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -47,7 +47,6 @@ Exit::Exit(const ExitData& data)
     pos.x = pos.x + (sprite.get_width() / 2);
     pos.y = pos.y + sprite.get_height();
     use_old_pos_handling = false;
-    std::cout << "Exit:pos: " << pos << std::endl;
   }
 }
 

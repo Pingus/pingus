@@ -1,4 +1,4 @@
-//  $Id: InfoBox.cc,v 1.5 2002/06/08 20:19:55 torangan Exp $
+//  $Id: InfoBox.cc,v 1.6 2002/06/08 21:43:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,6 @@
 #include "../World.hh"
 #include "../PingusResource.hh"
 #include "../XMLhelper.hh"
-#include "../Position.hh"
 #include "InfoBox.hh"
 
 InfoBoxData::InfoBoxData ()
@@ -35,14 +34,12 @@ InfoBoxData::~InfoBoxData ()
 boost::shared_ptr<WorldObj> 
 InfoBoxData::create_WorldObj()
 {
-  std::cout << "InfoBoxData::create_WorldObj(): " << this->pos << std::endl;
   return boost::shared_ptr<WorldObj> (new InfoBox (*this));
 }
 
 EditorObjLst
 InfoBoxData::create_EditorObj()
 {
-  std::cout << "InfoBoxData::create_EditorObj()" << this->pos << std::endl;
   EditorObjLst lst;
   lst.push_back (boost::shared_ptr<EditorObj>(new EditorInfoBox (*this)));
   return lst;
@@ -82,7 +79,7 @@ void
 InfoBoxData::write_xml(std::ofstream* xml)
 {
   (*xml) << "  <worldobj type=\"infobox\">\n";
-  XMLhelper::write_position_xml (xml, pos);
+  XMLhelper::write_vector_xml (xml, pos);
   
   (*xml) << "   <info-text>" << info_text << "</info-text>\n" 
 	 << "  </worldobj>\n" << std::endl;

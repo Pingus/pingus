@@ -1,4 +1,4 @@
-//  $Id: EntranceData.cc,v 1.5 2002/06/08 20:19:53 torangan Exp $
+//  $Id: EntranceData.cc,v 1.6 2002/06/08 21:43:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,8 +25,6 @@
 #include "PingusError.hh"
 #include "StringConverter.hh"
 #include "XMLhelper.hh"
-#include "Position.hh"
-
 
 boost::shared_ptr<WorldObjData> 
 EntranceData::create(xmlDocPtr doc, xmlNodePtr cur)
@@ -104,7 +102,7 @@ EntranceData::write_xml(std::ofstream *xml)
     }
 
   (*xml) << "<entrance>\n";
-  XMLhelper::write_position_xml(xml, pos);
+  XMLhelper::write_vector_xml(xml, pos);
   (*xml) << "  <type>" << type << "</type>\n"
 	 << "  <direction>" << dir_str << "</direction>\n"
 	 << "  <release-rate>" << release_rate << "</release-rate>\n"

@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMap.hh,v 1.23 2002/06/06 16:24:50 grumbel Exp $
+//  $Id: PingusWorldMap.hh,v 1.24 2002/06/08 21:43:36 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,7 +23,6 @@
 #include <string>
 #include <ClanLib/core.h>
 //#include "../generic/Graph.hh"
-#include "../Position.hh"
 #include "PingusWorldMapGraph.hh"
 #include "PingusWorldMapPingus.hh"
 #include "PingusWorldMapStat.hh"

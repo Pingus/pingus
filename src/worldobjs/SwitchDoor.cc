@@ -1,4 +1,4 @@
-//  $Id: SwitchDoor.cc,v 1.27 2002/06/08 20:19:55 torangan Exp $
+//  $Id: SwitchDoor.cc,v 1.28 2002/06/08 21:43:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,7 +24,6 @@
 #include "../editor/EditorView.hh"
 #include "../GroundpieceData.hh"
 #include "../XMLhelper.hh"
-#include "../Position.hh"
 #include "SwitchDoor.hh"
 
 SwitchDoorData::SwitchDoorData ()
@@ -37,11 +36,11 @@ SwitchDoorData::write_xml(std::ofstream* xml)
 {
   (*xml) << "  <worldobj type=\"switchdoor\">\n";
   (*xml) << "    <switch>\n";
-  XMLhelper::write_position_xml (xml, switch_pos);
+  XMLhelper::write_vector_xml (xml, switch_pos);
   (*xml) << "    </switch>\n"
 	 << "    <door>\n"
 	 << "    <height>\n" << door_height << "</height>\n";
-  XMLhelper::write_position_xml (xml, door_pos);
+  XMLhelper::write_vector_xml (xml, door_pos);
   (*xml) << "    </door>\n"
 	 << "  </worldobj>\n" << std::endl;
 }

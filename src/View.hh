@@ -1,4 +1,4 @@
-//  $Id: View.hh,v 1.11 2002/06/08 20:19:54 torangan Exp $
+//  $Id: View.hh,v 1.12 2002/06/08 21:43:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,8 @@
 #include "Range.hh"
 #include "Controller.hh"
 #include "CaptureRectangle.hh"
+
+class Pingu;
 
 class World;
 

@@ -1,4 +1,4 @@
-//  $Id: XMLPLF.cc,v 1.43 2002/06/08 20:19:54 torangan Exp $
+//  $Id: XMLPLF.cc,v 1.44 2002/06/08 21:43:36 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,7 +32,6 @@
 #include "TrapData.hh"
 #include "HotspotData.hh"
 #include "LiquidData.hh"
-#include "Position.hh"
 
 using namespace std;
 
@@ -176,9 +175,9 @@ XMLPLF::parse_start_pos(xmlNodePtr cur)
       
       if (strcmp((char*)cur->name, "position") == 0)
 	{
-	  Position pos = XMLhelper::parse_position(doc, cur);
-	  start_x_pos = pos.x_pos;
-	  start_y_pos = pos.y_pos;
+	  CL_Vector pos = XMLhelper::parse_vector(doc, cur);
+	  start_x_pos = int(pos.x);
+	  start_y_pos = int(pos.y);
 	}
       else
 	{

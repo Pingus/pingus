@@ -1,4 +1,4 @@
-//  $Id: SurfaceBackgroundData.hh,v 1.13 2002/06/08 20:19:54 torangan Exp $
+//  $Id: SurfaceBackgroundData.hh,v 1.14 2002/06/08 21:43:36 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,7 +25,6 @@
 #include "../WorldObjData.hh"
 #include "../Color.hh"
 #include "../ResDescriptor.hh"
-#include "../Position.hh"
 
 class SurfaceBackground;
 class _xmlDoc;  typedef _xmlDoc*  xmlDocPtr;

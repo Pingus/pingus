@@ -1,4 +1,4 @@
-//  $Id: XMLhelper.cc,v 1.16 2002/06/08 20:19:54 torangan Exp $
+//  $Id: XMLhelper.cc,v 1.17 2002/06/08 21:43:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,10 +17,10 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <ClanLib/Core/Math/cl_vector.h>
 #include <fstream>
 #include "StringConverter.hh"
 #include "XMLhelper.hh"
-#include "Position.hh"
 #include "Color.hh"
 #include "ResDescriptor.hh"
 
@@ -48,42 +48,6 @@ XMLhelper::encode_entities(const std::string& arg_str)
   //  std::cout << "encode_xml-done: " << str << std::endl;
 
   return str;
-}
-
-
-
-Position
-XMLhelper::parse_position(xmlDocPtr doc, xmlNodePtr cur)
-{
-  Position pos;
-  cur = cur->children;  
-  while (cur != NULL)
-    {
-      if (xmlIsBlankNode(cur)) 
-	{
-	  cur = cur->next;
-	  continue;
-	}
-
-      char* ident = (char*)xmlNodeListGetString(doc, cur->children, 1);
-
-      if (ident)
-	{
-	  //std::cout << "parse_position: ident = " << ident << std::endl;
-	  if (strcmp((char*)cur->name, "x-pos") == 0) {
-	    from_string (ident, pos.x_pos);
-	  } else if (strcmp((char*)cur->name, "y-pos") == 0) {
-	    from_string (ident, pos.y_pos);
-	  } else if (strcmp((char*)cur->name, "z-pos") == 0) {
-	    from_string (ident, pos.z_pos);
-	  } else {
-	    std::cout << "Unhandled position ident: " << ident << std::endl;
-	  }
-	  free(ident);
-	}
-      cur = cur->next;
-    }
-  return pos;
 }
 
 CL_Vector
@@ -329,16 +293,6 @@ XMLhelper::write_desc_xml(std::ofstream* xml, ResDescriptor desc)
     }
   
   (*xml) << "  </resource></surface>" << std::endl;
-}
-
-void
-XMLhelper::write_position_xml(std::ofstream* xml, Position pos)
-{
-  (*xml) << "  <position>\n"
-	 << "    <x-pos>" << pos.x_pos << "</x-pos>\n"
-	 << "    <y-pos>" << pos.y_pos << "</y-pos>\n"
-	 << "    <z-pos>" << pos.z_pos << "</z-pos>\n"
-	 << "  </position>\n";
 }
 
 void 

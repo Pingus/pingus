@@ -1,4 +1,4 @@
-//  $Id: TrapData.cc,v 1.9 2002/06/08 20:19:54 torangan Exp $
+//  $Id: TrapData.cc,v 1.10 2002/06/08 21:43:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,14 +30,13 @@
 #include "editor/PLFObj.hh"
 #include "XMLhelper.hh"
 #include "TrapData.hh"
-#include "Position.hh"
 
 void
 TrapData::write_xml(std::ofstream* xml)
 {
     (*xml) << "<trap>\n"
 	 << "  <type>" << type << "</type>\n";
-  XMLhelper::write_position_xml(xml, pos);
+  XMLhelper::write_vector_xml(xml, pos);
   (*xml) << "</trap>\n"
 	 << std::endl;
 }

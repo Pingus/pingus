@@ -1,4 +1,4 @@
-//  $Id: Teleporter.cc,v 1.35 2002/06/08 20:19:55 torangan Exp $
+//  $Id: Teleporter.cc,v 1.36 2002/06/08 21:43:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,7 +22,6 @@
 #include "../PinguHolder.hh"
 #include "../XMLhelper.hh"
 #include "../editor/EditorView.hh"
-#include "../Position.hh"
 #include "Teleporter.hh"
 
 TeleporterData::TeleporterData (const TeleporterData& data) : WorldObjData(data)
@@ -35,9 +34,9 @@ void
 TeleporterData::write_xml(std::ofstream* xml)
 {
   (*xml) << "  <worldobj type=\"teleporter\">";
-  XMLhelper::write_position_xml (xml, pos);
+  XMLhelper::write_vector_xml (xml, pos);
   (*xml) << "    <target>" << std::endl;
-  XMLhelper::write_position_xml (xml, target_pos);
+  XMLhelper::write_vector_xml (xml, target_pos);
   (*xml) << "    </target>" << std::endl;
   (*xml) << "  </worldobj>" << std::endl;
 }
@@ -178,8 +177,6 @@ std::list<boost::shared_ptr<EditorObj> >
 EditorTeleporterObj::create (const TeleporterData& data)
 {
   std::list<boost::shared_ptr<EditorObj> > objs;
-
-  //std::cout << "EditorTeleporterObj: " << tdata << " - " << tdata->target_pos << std::endl;
 
   EditorTeleporterObj* teleporter=new EditorTeleporterObj (data);
   EditorTeleporterTargetObj* teleporter_target=new EditorTeleporterTargetObj (teleporter);

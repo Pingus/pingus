@@ -1,4 +1,4 @@
-//  $Id: CaptureRectangle.hh,v 1.14 2002/06/08 18:39:57 grumbel Exp $
+//  $Id: CaptureRectangle.hh,v 1.15 2002/06/08 21:43:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,7 @@
 
 #include "Sprite.hh"
 
+class Pingu;
 class PinguAction;
 class CL_Font;
 

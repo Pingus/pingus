@@ -1,4 +1,4 @@
-//  $Id: Playfield.hh,v 1.24 2002/06/08 20:19:54 torangan Exp $
+//  $Id: Playfield.hh,v 1.25 2002/06/08 21:43:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,6 +28,7 @@
 #include "Client.hh"
 #include "Controller.hh"
 
+class Pingu;
 class World;
 class Server;
 class PinguInfo;

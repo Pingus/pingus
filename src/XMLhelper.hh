@@ -1,4 +1,4 @@
-//  $Id: XMLhelper.hh,v 1.17 2002/06/08 20:19:54 torangan Exp $
+//  $Id: XMLhelper.hh,v 1.18 2002/06/08 21:43:36 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -55,7 +55,6 @@
 
 class CL_Vector;
 class Color;
-class Position;
 class ResDescriptor;
 
 class XMLhelper
@@ -67,7 +66,6 @@ public:
   /// A set of function to parse an xml file
   //@{
   static ResDescriptor parse_surface(xmlDocPtr doc, xmlNodePtr cur);
-  static Position      parse_position(xmlDocPtr doc, xmlNodePtr cur);
   static CL_Vector     parse_vector(xmlDocPtr doc, xmlNodePtr cur);
   static std::string   parse_string(xmlDocPtr doc, xmlNodePtr cur);
   static int           parse_int(xmlDocPtr doc, xmlNodePtr cur);
@@ -79,8 +77,6 @@ public:
   //@{
   /** Writes the given res_desc to the ofstream */
   static void write_desc_xml(std::ofstream* xml, ResDescriptor desc);
-  /** Write a position to the xml ofstream */
-  static void write_position_xml(std::ofstream* xml, Position pos);
   /** Write a CL_Vector to an xml stream */
   static void write_vector_xml(std::ofstream* xml, const CL_Vector& pos);
   //@}

@@ -1,4 +1,4 @@
-//  $Id: StarfieldBackground.hh,v 1.14 2002/06/08 20:19:54 torangan Exp $
+//  $Id: StarfieldBackground.hh,v 1.15 2002/06/08 21:43:36 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,7 +24,6 @@
 #include "../boost/smart_ptr.hpp"
 #include "../WorldObj.hh"
 #include "../WorldObjData.hh"
-#include "../Position.hh"
 
 class _xmlDoc;  typedef _xmlDoc*  xmlDocPtr;
 class _xmlNode; typedef _xmlNode* xmlNodePtr;
@@ -115,7 +114,10 @@ public:
       (new EditorStarfieldBackground (static_cast<StarfieldBackgroundData>(*this)));
   }
 
-  std::string status_line () { return "StarfieldBackground: " + to_string (pos); }
+  std::string status_line () { return "StarfieldBackground: " 
+				 + to_string (pos.x) + ", "
+				 + to_string (pos.y) + ", "
+				 + to_string (pos.z); }
 };
 
 #endif

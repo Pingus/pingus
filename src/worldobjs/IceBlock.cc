@@ -1,4 +1,4 @@
-//  $Id: IceBlock.cc,v 1.25 2002/06/08 20:19:55 torangan Exp $
+//  $Id: IceBlock.cc,v 1.26 2002/06/08 21:43:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,7 +25,6 @@
 #include "../GroundpieceData.hh"
 #include "../PinguMap.hh"
 #include "../GameTime.hh"
-#include "../Position.hh"
 #include "IceBlock.hh"
 
 IceBlockData::IceBlockData ()
@@ -37,7 +36,7 @@ void
 IceBlockData::write_xml(std::ofstream* xml)
 {
   (*xml) << "  <worldobj type=\"iceblock\">";
-  XMLhelper::write_position_xml (xml, pos);
+  XMLhelper::write_vector_xml (xml, pos);
   (*xml) << "    <width>" << width << "</width>\n"
 	 << "  </worldobj>\n" << std::endl;
 }

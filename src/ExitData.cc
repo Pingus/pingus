@@ -1,4 +1,4 @@
-//  $Id: ExitData.cc,v 1.8 2002/06/08 20:19:53 torangan Exp $
+//  $Id: ExitData.cc,v 1.9 2002/06/08 21:43:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,7 +22,6 @@
 #include "ExitData.hh"
 #include "StringConverter.hh"
 #include "XMLhelper.hh"
-#include "Position.hh"
 
 void 
 ExitData::write_xml(std::ofstream* xml)
@@ -32,7 +31,7 @@ ExitData::write_xml(std::ofstream* xml)
   // FIXME: Repair me
   //pos.x += surf.get_width ()/2;
   //pos.y += surf.get_height ();
-  XMLhelper::write_position_xml(xml, pos);
+  XMLhelper::write_vector_xml(xml, pos);
   
   XMLhelper::write_desc_xml(xml, desc);
   (*xml) << "  <owner-id>" << owner_id << "</owner-id>"

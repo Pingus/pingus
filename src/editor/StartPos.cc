@@ -1,4 +1,4 @@
-//  $Id: StartPos.cc,v 1.11 2002/06/08 20:19:54 torangan Exp $
+//  $Id: StartPos.cc,v 1.12 2002/06/08 21:43:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,6 @@
 #include "../XMLhelper.hh"
 #include "../PingusResource.hh"
 #include "../boost/smart_ptr.hpp"
-#include "../Position.hh"
 #include "StartPos.hh"
 
 StartPos::StartPos(int arg_x_pos, int arg_y_pos)
@@ -35,7 +34,7 @@ void
 StartPos::write_xml(std::ofstream* xml)
 {
   (*xml) << "  <start-position>\n";
-  XMLhelper::write_position_xml(xml, pos);
+  XMLhelper::write_vector_xml(xml, pos);
   (*xml) << "  </start-position>\n" << std::endl;  
 }
 

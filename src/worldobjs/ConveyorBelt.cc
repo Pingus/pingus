@@ -1,4 +1,4 @@
-//  $Id: ConveyorBelt.cc,v 1.32 2002/06/08 20:19:55 torangan Exp $
+//  $Id: ConveyorBelt.cc,v 1.33 2002/06/08 21:43:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,7 +23,6 @@
 #include "../PinguHolder.hh"
 #include "../PingusResource.hh"
 #include "../XMLhelper.hh"
-#include "../Position.hh"
 #include "ConveyorBelt.hh"
 #include "../GroundpieceData.hh"
 
@@ -39,7 +38,7 @@ void
 ConveyorBeltData::write_xml(std::ofstream* xml)
 {
   (*xml) << "  <worldobj type=\"conveyorbelt\">";
-  XMLhelper::write_position_xml (xml, pos);
+  XMLhelper::write_vector_xml (xml, pos);
   (*xml) << "    <width>" << width << "</width>\n"
 	 << "    <speed>" << speed << "</speed>\n"
 	 << "  </worldobj>\n" << std::endl;
