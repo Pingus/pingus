@@ -1,4 +1,4 @@
-//  $Id: ObjectManager.hh,v 1.21 2002/01/15 10:48:52 grumbel Exp $
+//  $Id: ObjectManager.hh,v 1.22 2002/02/11 00:10:29 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -53,6 +53,9 @@ private:
   int    start_y_pos;
   std::string author;
   bool   quit;
+  bool   playable;
+  int    difficulty;
+  std::string comment;
 
   /** All objects which are visible in the editor */ 
   std::list<boost::shared_ptr<EditorObj> > editor_objs;

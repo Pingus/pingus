@@ -1,4 +1,4 @@
-//  $Id: ObjectManager.cc,v 1.54 2002/01/15 10:48:52 grumbel Exp $
+//  $Id: ObjectManager.cc,v 1.55 2002/02/11 00:10:29 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -82,7 +82,7 @@ ObjectManager::new_level ()
   start_y_pos = 0;
   width = 1216;
   height = 608;
-  level_time = 9000;
+  level_time = -1;
 
   bg.red   = 0.3f;
   bg.green = 0.3f;
@@ -184,6 +184,10 @@ ObjectManager::load_level (std::string filename)
   start_y_pos = plf->get_starty();
   actions     = plf->get_actions();
 
+  comment = plf->get_comment ();
+  difficulty = plf->get_difficulty ();
+  playable = plf->get_playable ();
+
   std::cout << "Width: " << width << std::endl;
   std::cout << "Height: " << height << std::endl;
 
@@ -265,6 +269,9 @@ ObjectManager::save_level_xml (std::string filename)
       << "    <time>" << level_time << "</time>\n"
       << "    <width>" << width << "</width>\n"
       << "    <height>" << height << "</height>\n"
+      << "    <difficulty>" << difficulty << "</difficulty>\n"
+      << "    <playable>" << playable << "</playable>\n"
+      << "    <comment>" << comment << "</comment>\n"
       << "  </global>\n"
       << std::endl;
   

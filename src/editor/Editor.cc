@@ -1,4 +1,4 @@
-//  $Id: Editor.cc,v 1.37 2002/01/19 14:29:58 grumbel Exp $
+//  $Id: Editor.cc,v 1.38 2002/02/11 00:10:29 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -509,7 +509,7 @@ Editor::interactive_load()
 	      start_y_pos = 320;
 	      number_of_pingus = 150;
 	      number_to_save = 50;
-	      level_time = 9000;
+	      level_time = -1;
 	      levelname = "none";
 	      description = "no levelname given";
 	      edit();
