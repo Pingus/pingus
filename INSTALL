@@ -1,4 +1,3 @@
-[FIXME: completly out of date]
 
 Pingus Installation Guide
      _________________________________________________________________
@@ -7,8 +6,8 @@ Introduction
 
    To be able to compile pingus you need a working version of ClanLib, it
    should always work with current version of ClanLib, but if you are
-   using the CVS version of pingus it may that it will only work with the
-   CVS version of ClanLib.
+   using the CVS version of pingus it may be that it will only work with 
+   the current CVS version of ClanLib.
      _________________________________________________________________
    
 Preparing compilation
@@ -16,74 +15,89 @@ Preparing compilation
    First you have to make sure that you have all required libaries
    installed, these are:
    
-     * zlib
-     * Hermes
-     * ImageMagick
-     * ClanLib
+     * Hermes   (http://clanlib.org/hermes)
+                Hermes is a library whose only purpose is to convert 
+                graphic data from one pixel format to another in the 
+                fastest possible way.
+
+     * ClanLib  (http://clanlib.org/)
+                ClanLib is a multi-platform game development library.
+
+     * libxml   (http://rpmfind.net/veillard/XML/)
+                Libxml is the XML C library developed for the Gnome project.
+
        
    If you are trying to compile the CVS version of Pingus, you first have
    run:
         $ ./autogen.sh
 
-
-   To generate the `Makefile.in's' and the `configure' script. If you are
-   compiling a normal pingus release then you can go to step 2.).
+   (This will  generate the `Makefile.in's' and the `configure' script. If you are
+   compiling a normal pingus release then you can go to the next step).
      _________________________________________________________________
    
 Configuration and Compilation
 
+   To configure pingus:
+        $ ./configure 
+
+   Look at the messages this script generates, if you are missing any
+   libraries 'configure' will let you know.
+
    To compile pingus:
-        $ ./configure && make
+        $ make
+
+   Then you can also install it with:
+        # make install
+  
+   (to be able to perform an install you need to be 'root'!)
 
 
-   You can also install it with:
-        $ make install
-
-
-   The installation is completely working, but it isn't tested much, so
-   bug reports are very welcom.
+   The installation should be complete and working, however,  it 
+   might not be tested enough, so bug reports are always very welcome.
+   (you should contact the pingus-devel list for bug reports)
    
-   If pingus fails to build or something else went wrong, checkout first
-   you followed the steps correctly and if that is the case go over to
-   section 5.) Throuble Shooting.
+   If pingus fails to build or something else goes wrong, make first sure
+   that you have followed the steps correctly.
+
+   You can find further help in the "Trouble Shooting" section of this 
+   document.
      _________________________________________________________________
    
-Running Pingus The First Time
+Running Pingus for the First Time
 
-   To run pingus without installing it, `cd' to the Pingus source dir
-   'src/' and type:
-        $ ./pingus
+   To run pingus without installing it, 'cd' to the Pingus data 
+   directory 'data/' and type:
+        $ ../src/pingus
 
+   (note that the locale support 'i18n' will not work)
 
-   If you have installed Pingus you can just type:
+   If you have installed (make install) Pingus you can just type:
         $ pingus
-
-     _________________________________________________________________
    
-Running Pingus The Second Time
-
-   *** This section is out of date, I'll rewrite it at time ***
+   When the game starts you will be faced with the Main Menu.
    
-   If you have successfully build pingus and got it to run, you may want
-   to play another level or try some things which are in development
-   stages and therefore not activated by default, the following gives and
-   introduction to this things:
      _________________________________________________________________
    
 Running another level
 
    To do so, type:
-        $ ./pingus level1.plf
+        $ ./pingus level1.xml
 
 
-   There are some levels provided at the moment:
+   There are some levels provided at the moment, you can find them under
+   your source directory in 
+	./Pingus/data/levels/
+
+   or if installed
+
+       /usr/local/share/games/pingus/levels/
      _________________________________________________________________
    
 Speeding things up
 
    Pingus is to slow for you? Than you have different choices, you can
    set another speed with: (0 is the fastest, greater values are slower)
-            $ ./pingus --set-speed 0
+            $ ./pingus --speed 1
         
    You can also set the resolution to a lower value:
             $ ./pingus -g 320x240
@@ -110,12 +124,36 @@ Playing Music
      _________________________________________________________________
    
 Trouble Shooting
+    
+   * Problems compiling with some Distributions
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    - Hermes will complain 
+            "But automake >= 1.5b is required"
+      if you have a more decent distribution you can ignore this
+      and use the following commands
+            $ aclocal
+            $ automake --add-missing
+            $ autoconf
 
-   You tried to compile or run pingus, but all you got was a boring error
-   message? Read the file `FAQ' in this directory, it contains some
-   information about what could went wrong.
+    - Clanlib will complain if you do not have autoconf greater
+      then 2.5.  If you have a RPM based system, you can find
+      the lates rpm at 
+            "http://www.rpmfind.net"
+      Otherwise go to 
+            "ftp://ftp.gnu.org/gnu/autoconf/"
+
+    - If you are using a RedHat/Mandrake based system with gcc 2.96 
+      you might want to downgrade your gcc to 2.95
+   
+
+   if still all you got was a boring error message? Read the file 
+   'FAQ' in this directory, it contains some information about what 
+   could went wrong.
    
    Thats all for now, Have fun! Ingo Ruhnke <grumbel@gmx.de>
+     _________________________________________________________________
+ 
+ Last update ... gd 2002-06-02
      _________________________________________________________________
    
 Generic Installation Instructions

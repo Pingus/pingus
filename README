@@ -1,4 +1,3 @@
-[FIXME: completly out of date]
 
 Pingus
 
@@ -9,32 +8,41 @@ Introduction
 
    Pingus is a free Lemmings(tm) clone for GNU/Linux, Win32 and other
    operating systems supported by ClanLib. It is covered under the GPLv2,
-   check the file COPYING, for more informations.
+   check the file COPYING, for more information.
    
-   See `INSTALL' for instructions on how to compile and run Pingus from
+   See 'INSTALL' for instructions on how to compile and run Pingus from
    source. If you are using the static binary have a look at the file
-   README.binary. You might also want to read the file `FAQ' if you have
-   throuble getting things to work.
+   README.binary. You might also want to read the file 'FAQ' if you have
+   trouble getting things to work.
    
    Music for the game is seperatly available at the Pingus web page.
    
    If you want to help developing Pingus, have a look on its web page:
    
-     * http://www.pingus.cx
+     * http://pingus.seul.org
+     * http://www.pingus.cc
        
-   for up to date informations.
+   for up to date information.
      _________________________________________________________________
    
 Mailing Lists
 
-   There exist currently four mailing lists for Pingus (announce, users,
-   developers and cvs), for information on how to subscribe to any of
-   this list have a look at:
+ There are currently three mailing lists available:
+
+    * pingus-announce - A extremly low traffic list, where new Pingus releases are announced.
+    * pingus-users - A low traffic list for discussing gaming and playing issues with Pingus.
+    * pingus-devel - A list for discussing development issues, like level creation or code changes.
+
+
+ For information on how to subscribe to any of these lists have a look at:
    
-     * http://pingus.seul.org/contact.html 
+      http://pingus.seul.org/contact.html 
      _________________________________________________________________
    
 Bug Reports
 
-   Questions about the game and bug reports should go to Ingo Ruhnke
-   <grumbel@gmx.de> or even better one of the mailing lists.
+   Questions about the game and bug reports should go to pingus-users or
+   pingus-devel lists. You may also contact Ingo Ruhnke <grumbel@gmx.de>. 
+
+---
+Last update  ... gd 2002-06-02
