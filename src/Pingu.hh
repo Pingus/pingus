@@ -1,4 +1,4 @@
-//  $Id: Pingu.hh,v 1.30 2001/04/27 20:44:37 grumbel Exp $
+//  $Id: Pingu.hh,v 1.31 2001/07/22 12:47:00 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -156,13 +156,23 @@ public:
   void set_action (const std::string action_name);
   ///
   int  set_paction(boost::shared_ptr<PinguAction>);
+
   ///
   boost::shared_ptr<PinguAction> get_action();
-  ///
+
+  /** Returns the `color' of the colmap in the walking direction 
+      Examples: 
+      (0, -1) is the pixel under the pingu
+      (1, 0)  is the pixel in front of the pingu
+  */
   int  rel_getpixel(int x, int y);
-  ///
+
+  /** Let the pingu catch another pingu, so that an action can be
+      applied (i.e. let a blocker change the direction f another
+      pingu) */
   void catch_pingu(Pingu* pingu);
-  ///
+
+  /** Returns true if the pingu needs to catch another pingu */
   bool need_catch();
   
   ///

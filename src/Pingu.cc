@@ -1,4 +1,4 @@
-//  $Id: Pingu.cc,v 1.57 2001/06/17 17:18:27 grumbel Exp $
+//  $Id: Pingu.cc,v 1.58 2001/07/22 12:47:00 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -549,7 +549,6 @@ Pingu::draw_offset(int x, int y, float s)
     }
 }
 
-// Returns the `color' of the colmap in the walking direction 
 int
 Pingu::rel_getpixel(int x, int y)
 {
@@ -557,15 +556,12 @@ Pingu::rel_getpixel(int x, int y)
   return world->get_colmap()->getpixel(int(pos.x + (x * direction)), int((pos.y) - y));
 }
 
-// Let the pingu catch another pingu, so that an action can be aplied
-// (i.e. let a blocker change the direction f another pingu)
 void
 Pingu::catch_pingu(Pingu* pingu)
 {
   action->catch_pingu(pingu);
 }
 
-// Returns true if the pingu needs to catch another pingu
 bool
 Pingu::need_catch()
 {

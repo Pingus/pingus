@@ -1,4 +1,4 @@
-//  $Id: ObjectManager.cc,v 1.43 2001/05/18 19:17:08 grumbel Exp $
+//  $Id: ObjectManager.cc,v 1.44 2001/07/22 12:47:00 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -256,7 +256,7 @@ ObjectManager::save_level (string filename)
 
   // FIXME: we need some error checking 
   plf_out << "/* This level was created with the PLE\n"
-	  << " * $Id: ObjectManager.cc,v 1.43 2001/05/18 19:17:08 grumbel Exp $\n"
+	  << " * $Id: ObjectManager.cc,v 1.44 2001/07/22 12:47:00 grumbel Exp $\n"
 	  << " */"
 	  << endl;
   
@@ -339,7 +339,7 @@ ObjectManager::save_level_xml (std::string filename)
   if (!xml)
     throw PingusError("ObjectManager:save_level_xml: Couldn't save level: " + filename);
 
-  xml << "<?xml version=\"1.0\"?>\n\n"
+  xml << "<?xml version=\"1.0\"  encoding=\"ISO-8859-1\"?>\n\n"
       << "<pingus-level>\n"
       << "  <global>\n";
     

@@ -1,4 +1,4 @@
-//  $Id: Splashed.cc,v 1.14 2001/04/20 20:53:54 grumbel Exp $
+//  $Id: Splashed.cc,v 1.15 2001/07/22 12:47:00 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,6 +33,7 @@ Splashed::init(void)
   action_name = "splashed";
 
   sprite = Sprite ("Pingus/splat0", "pingus");
+  sprite.set_align_center_bottom ();
   
   pingu->set_status(not_catchable);
 

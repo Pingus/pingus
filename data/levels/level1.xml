@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="ISO-8859-1"?>
 
 <pingus-level>
   <global>
@@ -81,6 +81,7 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
 -->
   <action-list>
     <angel count="20"/>
+    <boarder count="20"/>
     <superman count="20"/>
     <basher count="20"/>
     <basher count="20"/>

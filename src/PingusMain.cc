@@ -1,4 +1,4 @@
-//   $Id: PingusMain.cc,v 1.29 2001/06/16 15:01:53 grumbel Exp $
+//   $Id: PingusMain.cc,v 1.30 2001/07/22 12:47:00 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -571,11 +571,6 @@ PingusMain::init_pingus()
   console.init();
 }
 
-void
-PingusMain::load_resources(std::string filename)
-{
-}
-      
 // Get all filenames and directories
 void
 PingusMain::get_filenames()
@@ -757,8 +752,8 @@ PingusMain::init_clanlib()
 			    true); // allow resize
 }
 
-bool
-PingusMain::do_lemmings_mode(void)
+void
+PingusMain::start_game(void)
 {
   if (verbose) {
     std::cout << _("PingusMain: Starting Main: ") << CL_System::get_time() << std::endl;
@@ -766,8 +761,7 @@ PingusMain::do_lemmings_mode(void)
 
   if (print_fps)
     Display::add_flip_screen_hook(&fps_counter);
-
-
+  
   on_button_press_slot = CL_Input::sig_button_press.connect (CL_CreateSlot(&global_event, &GlobalEvent::on_button_press));
   on_button_release_slot = CL_Input::sig_button_release.connect (CL_CreateSlot(&global_event, &GlobalEvent::on_button_release));
 
@@ -789,18 +783,13 @@ PingusMain::do_lemmings_mode(void)
 	}
     }
 
-  try  {
+  try {
     PingusMenuManager menu;
     menu.display ();
-    //PingusMenu menu; 
-    //menu.select();
   }
   
   catch (CL_Error err) {
-    std::string str;
-    str = "CL_Error: ";
-    str += err.message;
-    PingusMessageBox box(str);
+    PingusMessageBox box(std::string("CL_Error: " + err.message));
   }
   
   catch (PingusError err) {
@@ -809,60 +798,31 @@ PingusMain::do_lemmings_mode(void)
 
   CL_Input::sig_button_press.disconnect (on_button_press_slot);
   CL_Input::sig_button_release.disconnect(on_button_release_slot);
-
-  return true;
-}
-
-bool
-PingusMain::do_worms_mode(void)
-{
-  std::cout << "do_worms_mode() not implemented" << std::endl;
-  std::cout << "Have a look at Beans." << std::endl;
-  return false;
-}
-
-PingusMain::GameMode
-PingusMain::select_game_mode(void)
-{
-  return Lemmings;
 }
 
 int
 PingusMain::main(int argc, char** argv)
 {
-  bool quit = false;
-
   // Register the segfault_handler
-  //signal(SIGSEGV, segfault_handler);
+  // signal(SIGSEGV, segfault_handler);
 
-  try 
-    {
-      init(argc, argv);
-      init_clanlib();
-      init_pingus();	
+  try {
+    init(argc, argv);
+    init_clanlib();
+    init_pingus();	
       
-      if (!intro_disabled && levelfile.empty()) 
-	{
-	  //intro.draw();
-	}
+    if (!intro_disabled && levelfile.empty()) 
+      {
+	//intro.draw();
+      }
       
-      while (!quit) 
-	{
-	  switch (select_game_mode()) {
-	  case PingusMain::Lemmings: // Select the Lemmings(tm) like mode
-	    quit = do_lemmings_mode();
-	    break;
-	  case PingusMain::Worms:  // Select the Worms(tm) like mode
-	    quit = do_worms_mode();
-	    break;
-	  }
-	}
+    start_game();
   }
   
   catch (CL_Error err) {
     std::cout << _("Error caught from ClanLib: ") << err.message << std::endl;
   }
-
+  
   catch (PingusError err) {
     std::cout << _("Error caught from Pingus: ") << err.get_message () << std::endl;
   }

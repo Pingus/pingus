@@ -1,4 +1,4 @@
-//  $Id: ActionHolder.cc,v 1.27 2001/07/21 20:41:03 grumbel Exp $
+//  $Id: ActionHolder.cc,v 1.28 2001/07/22 12:47:00 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,7 @@
 #include "Timer.hh"
 #include "globals.hh"
 
+#include "actions/Boarder.hh"
 #include "actions/Superman.hh"
 #include "actions/Angel.hh"
 #include "actions/basher.hh"
@@ -57,6 +58,7 @@ ActionHolder::ActionHolder()
       //std::cout << "ActionHolder: Registering all actions..." << std::endl;
       new AngelFactory ();
       new BasherFactory ();
+      new BoarderFactory ();
       new BlockerFactory ();
       new BomberFactory ();
       new BridgerFactory ();

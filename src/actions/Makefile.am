@@ -67,6 +67,7 @@ libpingu_actions_a_SOURCES =       \
 	 Waiter.cc   Waiter.hh \
          Drown.cc    Drown.hh \
          Angel.cc    Angel.hh \
-         Superman.cc Superman.hh
+         Superman.cc Superman.hh \
+         Boarder.cc  Boarder.hh
 
 # EOF #
