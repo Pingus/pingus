@@ -1,4 +1,4 @@
-//  $Id: SmallMap.cc,v 1.2 2000/02/26 03:11:19 grumbel Exp $
+//  $Id: SmallMap.cc,v 1.3 2000/02/26 16:15:42 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "PinguHolder.hh"
 #include "Display.hh"
 #include "Playfield.hh"
 #include "World.hh"
@@ -69,11 +70,17 @@ SmallMap::init()
 	      cbuffer[4 * ((y * width) + x) + 2] = 0;
 	      cbuffer[4 * ((y * width) + x) + 3] = 0;
 	      break;
+	    case ColMap::SOLID:
+	      cbuffer[4 * ((y * width) + x) + 0] = 255;
+	      cbuffer[4 * ((y * width) + x) + 1] = 100;
+	      cbuffer[4 * ((y * width) + x) + 2] = 100;
+	      cbuffer[4 * ((y * width) + x) + 3] = 100;
+	      break;
 	    default:
 	      cbuffer[4 * ((y * width) + x) + 0] = 255;
-	      cbuffer[4 * ((y * width) + x) + 1] = 255;
-	      cbuffer[4 * ((y * width) + x) + 2] = 255;
-	      cbuffer[4 * ((y * width) + x) + 3] = 255;
+	      cbuffer[4 * ((y * width) + x) + 1] = 200;
+	      cbuffer[4 * ((y * width) + x) + 2] = 200;
+	      cbuffer[4 * ((y * width) + x) + 3] = 200;
 	      break;
 	    }
 	}
@@ -101,6 +108,7 @@ void
 SmallMap::draw()
 {
   Playfield* playfield = client->get_playfield();
+
   int x_of = playfield->get_x_offset();
   int y_of = playfield->get_y_offset();
 
@@ -112,6 +120,25 @@ SmallMap::draw()
   Display::draw_rect(x_of, y_of + CL_Display::get_height() - sur->get_height(),
 		     x_of + rwidth, y_of + rheight + CL_Display::get_height() - sur->get_height(),
 		     0.0, 1.0, 0.0, 1.0);
+
+  draw_pingus();
+}
+
+void
+SmallMap::draw_pingus()
+{
+  int x;
+  int y;
+  PinguHolder* pingus = client->get_server()->get_world()->get_pingu_p();
+
+  for(list<Pingu*>::iterator i = pingus->begin(); i != pingus->end(); i++)
+    {
+      //FIXME: Replace this with put pixel
+      x = x_pos + ((*i)->get_x() * width / client->get_server()->get_world()->get_colmap()->get_width());
+      y = y_pos + ((*i)->get_y() * height / client->get_server()->get_world()->get_colmap()->get_height());
+
+      CL_Display::draw_line(x, y, x, y-1, 1.0, 0.0, 0.0, 1.0);
+    }
 }
 
 void
