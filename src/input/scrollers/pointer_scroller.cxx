@@ -1,4 +1,4 @@
-//  $Id: pointer_scroller.cxx,v 1.3 2003/04/19 10:23:19 torangan Exp $
+//  $Id: pointer_scroller.cxx,v 1.4 2003/06/19 11:00:10 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,8 +25,12 @@ namespace Input {
 
   namespace Scrollers {
 
-    PointerScroller::PointerScroller (Pointer* pointer_, Button* modifier_) : pointer(pointer_), modifier(modifier_),
-                                                                              x_delta(0), y_delta(0), x_pos(-1), y_pos(-1)
+    PointerScroller::PointerScroller (Pointer* pointer_, Button* modifier_) : pointer(pointer_),
+                                                                              modifier(modifier_),
+                                                                              x_delta(0),
+                                                                              y_delta(0),
+                                                                              x_pos(-1),
+                                                                              y_pos(-1)
     {
     }
 
@@ -65,21 +69,21 @@ namespace Input {
         {
           if (x_pos == -1)
             {
-	      x_pos = pointer->get_x_pos();
-	      y_pos = pointer->get_y_pos();
-	    }
+              x_pos = pointer->get_x_pos();
+              y_pos = pointer->get_y_pos();
+	           }
           else
             {
-	      x_delta = pointer->get_x_pos() - x_pos;
-	      y_delta = pointer->get_y_pos() - y_pos;
+              x_delta = pointer->get_x_pos() - x_pos;
+              y_delta = pointer->get_y_pos() - y_pos;
 
-	      pointer->set_pos(x_pos, y_pos);
-	  }
+              pointer->set_pos(x_pos, y_pos);
+	          }
         }
       else
         {
           x_pos = -1;
-	  y_pos = -1;
+          y_pos = -1;
         }
     }
 

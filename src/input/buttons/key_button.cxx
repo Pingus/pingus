@@ -1,4 +1,4 @@
-//  $Id: key_button.cxx,v 1.2 2003/04/19 10:23:19 torangan Exp $
+//  $Id: key_button.cxx,v 1.3 2003/06/19 11:00:10 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,14 +17,21 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <ClanLib/Display/Input/keyboard.h>
+#include <ClanLib/Display/Input/input.h>
 #include "key_button.hxx"
+
+#include <iostream>
 
 namespace Input {
 
   namespace Buttons {
 
-    KeyButton::KeyButton (int button_) : button(button_) { }
+    KeyButton::KeyButton (int button_) : button(button_),
+                                         key_press  (CL_Input::sig_button_press  ().connect(this, &Input::Buttons::KeyButton::key_press_handler)),
+                                         key_release(CL_Input::sig_button_release().connect(this, &Input::Buttons::KeyButton::key_release_handler)),
+                                         pressed(false)
+    {
+    }
 
     void
     KeyButton::update (float)
@@ -34,7 +41,21 @@ namespace Input {
     bool
     KeyButton::is_pressed () const
     {
-      return CL_Keyboard::get_keycode(button);
+      return pressed;
+    }
+
+    void
+    KeyButton::key_press_handler (CL_InputDevice*, const CL_Key& key)
+    {
+      if (key.id == button)
+        pressed = true;
+    }
+
+    void
+    KeyButton::key_release_handler (CL_InputDevice*, const CL_Key& key)
+    {
+      if (key.id == button)
+        pressed = false;
     }
 
   }

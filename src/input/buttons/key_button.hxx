@@ -1,4 +1,4 @@
-//  $Id: key_button.hxx,v 1.6 2003/06/16 20:59:17 torangan Exp $
+//  $Id: key_button.hxx,v 1.7 2003/06/19 11:00:10 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,11 @@
 #ifndef HEADER_PINGUS_INPUT_KEY_BUTTON_HXX
 #define HEADER_PINGUS_INPUT_KEY_BUTTON_HXX
 
+#include <ClanLib/Signals/slot.h>
 #include "../button.hxx"
+
+class CL_Key;
+class CL_InputDevice;
 
 namespace Input {
 
@@ -34,7 +38,10 @@ namespace Input {
     class KeyButton : public Button {
 
       private:
-        int button;
+        int     button;
+        CL_Slot key_press;
+        CL_Slot key_release;
+        bool    pressed;
 
       public:
 
@@ -44,6 +51,9 @@ namespace Input {
         virtual void update (float);
 
       private:
+        void key_press_handler (CL_InputDevice*, const CL_Key&);
+        void key_release_handler (CL_InputDevice*, const CL_Key&);
+      
         KeyButton (const KeyButton&);
         KeyButton& operator= (const KeyButton&);
     };

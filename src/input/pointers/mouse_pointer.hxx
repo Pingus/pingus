@@ -1,4 +1,4 @@
-//  $Id: mouse_pointer.hxx,v 1.4 2003/04/19 10:23:19 torangan Exp $
+//  $Id: mouse_pointer.hxx,v 1.5 2003/06/19 11:00:10 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #ifndef HEADER_PINGUS_INPUT_MOUSE_POINTER_HXX
 #define HEADER_PINGUS_INPUT_MOUSE_POINTER_HXX
 
+#include <ClanLib/Signals/slot.h>
 #include "../pointer.hxx"
 
 namespace Input {
@@ -36,6 +37,7 @@ namespace Input {
       private:
         float x_pos;
         float y_pos;
+        CL_Slot move_slot;
 
       public:
         MousePointer ();
@@ -48,6 +50,8 @@ namespace Input {
         virtual void  update (float);
 
       private:
+        void move_signal (int x, int y);
+      
         MousePointer (const MousePointer&);
         MousePointer& operator= (const MousePointer&);
     };
