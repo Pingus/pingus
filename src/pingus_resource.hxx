@@ -1,4 +1,4 @@
-//  $Id: pingus_resource.hxx,v 1.1 2002/06/12 19:06:12 grumbel Exp $
+//  $Id: pingus_resource.hxx,v 1.2 2002/06/18 21:17:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -65,6 +65,9 @@ public:
 
   /** Load a font from the ResDescriptor */
   static CL_Font* load_font(const ResDescriptor&);
+
+  /** Cleanup all currently unused surfaces */
+  static void cleanup ();
 
   /** */
   static CL_ResourceManager* get(const std::string&);

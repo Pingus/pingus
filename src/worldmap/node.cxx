@@ -1,4 +1,4 @@
-//  $Id: node.cxx,v 1.2 2002/06/13 14:25:13 torangan Exp $
+//  $Id: node.cxx,v 1.3 2002/06/18 21:17:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,6 +27,7 @@
 #include "../xml_plf.hxx"
 #include "../pingus_error.hxx"
 #include "../sound.hxx"
+#include "../pingus_resource.hxx"
 #include "node.hxx"
 
 using namespace Pingus::WorldMap;
@@ -123,6 +124,8 @@ LevelNode::on_click ()
     {
       std::cout << "LevelNode::on_click (): Error: level is invalid" << std::endl;
     }
+
+  PingusResource::cleanup ();
 }
 
 void 

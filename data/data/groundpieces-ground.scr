@@ -121,6 +121,8 @@ section misc
         column_flat_left = ../images/groundpieces/ground/misc/column_flat_left.png (type=surface);
         column_flat_right = ../images/groundpieces/ground/misc/column_flat_right.png (type=surface);
         column_up = ../images/groundpieces/ground/misc/column_up.png (type=surface);
+        column_horz = ../images/groundpieces/ground/misc/column_horz.png (type=surface);
+        column_vert = ../images/groundpieces/ground/misc/column_vert.png (type=surface);
         dragon = ../images/groundpieces/ground/misc/dragon.png (type=surface);
         green1 = ../images/groundpieces/ground/misc/green1.png (type=surface);
         green2 = ../images/groundpieces/ground/misc/green2.png (type=surface);

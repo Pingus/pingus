@@ -1,4 +1,4 @@
-//  $Id: res_descriptor.hxx,v 1.2 2002/06/14 11:16:53 torangan Exp $
+//  $Id: res_descriptor.hxx,v 1.3 2002/06/18 21:17:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,7 +26,6 @@
 class ResDescriptor
 {
 public:
-  ///
   enum ResourceType { RD_RESOURCE, RD_FILE, RD_AUTO };
   
   /// Where to get the data from?
@@ -38,17 +37,12 @@ public:
   /// The name of the data, filename or resourcename ("Textures/desert")
   std::string res_name;
 
-  ///
   ResDescriptor();
-  ///
   ResDescriptor(const ResDescriptor&);
 
-  ///
   ResDescriptor(const std::string& res_name, const std::string& datafile,
 		ResourceType type);
-  ///
   ResDescriptor(const std::string& cast, const std::string& value);
-  ///
   ResDescriptor(const std::string& str);
 
   bool operator<(const ResDescriptor&) const;

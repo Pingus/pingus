@@ -1,4 +1,4 @@
-#  $Id: configure.in,v 1.61 2002/06/12 23:38:44 giray Exp $
+#  $Id: configure.in,v 1.62 2002/06/18 21:17:16 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,7 @@
 dnl BUG: This file should be updated with the macros from 'configure.scan'
 
 dnl Process this file with autoconf to produce a configure script.
-AC_INIT( src/pingus_main.cxx)
+AC_INIT( src/pingus_main.cxx )
 AM_CONFIG_HEADER( config.h )
 
 PACKAGE=pingus
@@ -71,9 +71,10 @@ if test "x$with_gettext" != "xno"; then
 
 	dnl AM_WITH_NLS
 	dnl AM_LC_MESSAGES
-	dnl AM_GNU_GETTEXT
+	AM_GNU_GETTEXT
 else
 	echo "Gnu gettext disabled"
+	dnl We probally need a AC_SUBST(@INTLLIBS@) here
 fi
 
 dnl -- Static Libaries --

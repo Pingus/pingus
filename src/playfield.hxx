@@ -1,4 +1,4 @@
-//  $Id: playfield.hxx,v 1.2 2002/06/17 15:45:26 torangan Exp $
+//  $Id: playfield.hxx,v 1.3 2002/06/18 21:17:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,7 +31,7 @@ class PinguInfo;
 class ButtonPanel;
 class Controller;
 
-///
+/** This class encapsulates all the different Views */
 class Playfield : public GuiObj
 {
 private:  

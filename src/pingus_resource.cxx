@@ -1,4 +1,4 @@
-//  $Id: pingus_resource.cxx,v 1.2 2002/06/13 14:25:12 torangan Exp $
+//  $Id: pingus_resource.cxx,v 1.3 2002/06/18 21:17:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -195,8 +195,8 @@ PingusResource::load_font(const ResDescriptor& res_desc)
 	{
 	case ResDescriptor::RD_RESOURCE:
 	  try {
-	  font = CL_Font::load(res_desc.res_name.c_str(),
-			       get(suffix_fixer(res_desc.datafile)));
+	    font = CL_Font::load(res_desc.res_name.c_str(),
+				 get(suffix_fixer(res_desc.datafile)));
 	  } catch (CL_Error err) {
 	    std::cout << "PingusResource: " << err.message << std::endl;
 	    std::cout << "PingusResource: Couldn't load font: " << res_desc << std::endl;
@@ -216,6 +216,31 @@ PingusResource::load_font(const ResDescriptor& res_desc)
 	default:
 	  std::cout << "PingusResource: Unknown ResDescriptor::type: " << res_desc.type  << std::endl;
 	  return 0;
+	}
+    }
+}
+
+void
+PingusResource::cleanup ()
+{
+  std::cout << "XXXX PingusResource::cleanup ()" << std::endl;
+  
+  for (std::map<ResDescriptor, CL_Surface>::iterator i = surface_map.begin ();
+       i != surface_map.end (); ++i)
+    {
+      if (i->first.type == ResDescriptor::RD_FILE
+	  && i->second.get_reference_count () == 1)
+	{
+	  std::cout << "XXX Releasing File: " << i->first
+		    << " => " << i->second.get_reference_count () << std::endl;
+	  surface_map.erase(i);
+	}
+      else if (i->first.type == ResDescriptor::RD_RESOURCE
+	       && i->second.get_reference_count () == 2)
+	{
+	  std::cout << "XXX Releasing Resource : " << i->first
+		    << " => " << i->second.get_reference_count () << std::endl;
+	  surface_map.erase(i);
 	}
     }
 }
