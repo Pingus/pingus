@@ -26,8 +26,6 @@ Duplication doesn't work for entrances
 
 * with-extra-libs broken
 
-* sstream buggy, doesn't work with gcc-3.0
-
 * plf entrances are buggy
 
 'grep' at the sources for "Bug" or "FIXME" that should give you some
@@ -35,8 +33,7 @@ more known bugs and other stuff.
 
 
 Controller:
- * axis event has up/down only, should be float -1,1
  * factories should not skip empty nodes, but instead signal an error
 
-$Date: 2002/09/05 12:40:22 $
+$Date: 2002/09/05 16:48:07 $
 
