@@ -1,4 +1,4 @@
-//  $Id: WorldObj.cc,v 1.5 2000/08/03 10:31:17 grumbel Exp $
+//  $Id: WorldObj.cc,v 1.6 2000/09/23 18:19:00 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,7 @@
 //  02111-1307, USA. 
 
 #include <iostream>
+#include "Teleporter.hh"
 #include "WorldObj.hh"
 
 World* WorldObj::world;
@@ -55,6 +56,20 @@ bool
 WorldObj::operator< (const WorldObj& w)
 {
   return (get_z_pos () < w.get_z_pos ());
+}
+
+WorldObj* 
+WorldObj::create (WorldObjData* data)
+{
+  if (dynamic_cast<TeleporterData*>(data) != 0)
+    {
+      return new Teleporter (data);
+    }
+  else
+    {
+      std::cout << "WorldObj::create (): Unknown WorldObjData" << std::endl;
+      return 0;
+    }
 }
 
 /* EOF */

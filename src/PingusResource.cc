@@ -1,4 +1,4 @@
-//  $Id: PingusResource.cc,v 1.10 2000/09/07 09:45:39 grumbel Exp $
+//  $Id: PingusResource.cc,v 1.11 2000/09/23 18:19:00 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -148,7 +148,7 @@ PingusResource::load_surface(const ResDescriptor& res_desc)
 	    surf = CL_Surface::load(res_desc.res_name.c_str(),
 				    get(suffix_fixer(res_desc.datafile)));
 	  } catch (CL_Error err) {
-	    std::cout << "PingusResource: CL_Error: " << err.message << std::endl;
+	    std::cout << "PingusResource: -404- CL_Error: " << err.message << std::endl;
 	    try {
 	      surf = CL_Surface::load("Game/404", get(suffix_fixer("game")));
 	    } catch (CL_Error err2) {

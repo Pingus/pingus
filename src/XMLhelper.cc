@@ -1,4 +1,4 @@
-//  $Id: XMLhelper.cc,v 1.5 2000/09/18 12:22:15 grumbel Exp $
+//  $Id: XMLhelper.cc,v 1.6 2000/09/23 18:19:00 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -50,6 +50,12 @@ XMLhelper::parse_position(xmlDocPtr doc, xmlNodePtr cur)
   cur = cur->children;  
   while (cur != NULL)
     {
+      if (xmlIsBlankNode(cur)) 
+	{
+	  cur = cur->next;
+	  continue;
+	}
+
       char* ident = (char*)xmlNodeListGetString(doc, cur->children, 1);
 
       if (ident)
@@ -111,6 +117,12 @@ XMLhelper::parse_color(xmlDocPtr doc, xmlNodePtr cur)
 
   while (cur != NULL)
     {  
+      if (xmlIsBlankNode(cur)) 
+	{
+	  cur = cur->next;
+	  continue;
+	}
+
       if (strcmp((char*)cur->name, "red") == 0)
 	{
 	  color.red = parse_float(doc, cur);
@@ -143,6 +155,12 @@ XMLhelper::parse_surface(xmlDocPtr doc, xmlNodePtr cur)
   cur = cur->children;  
   while (cur != NULL)
     {
+      if (xmlIsBlankNode(cur)) 
+	{
+	  cur = cur->next;
+	  continue;
+	}
+      
       char* type = (char*)xmlGetProp(cur, (xmlChar*)"type");
       
       if (type)

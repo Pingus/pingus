@@ -1,4 +1,4 @@
-//  $Id: XMLPLF.hh,v 1.8 2000/09/23 18:19:00 grumbel Exp $
+//  $Id: EditorWorldObj.hh,v 1.1 2000/09/23 18:19:00 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,39 +17,30 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef XMLPLF_HH
-#define XMLPLF_HH
+#ifndef EDITORWORLDOBJ_HH
+#define EDITORWORLDOBJ_HH
 
-#include <libxml/parser.h>
-#include "Position.hh"
-#include "Color.hh"
-#include "PLF.hh"
+#include "../WorldObjData.hh"
+#include "PLFObj.hh"
 
-class XMLPLF : public PLF
+///
+class EditorWorldObj : public PLFObj,
+		       public WorldObjData
 {
 private:
-  xmlDocPtr doc;  
-
-  void parse_file();
-
-  void parse_background (xmlNodePtr cur);
-  void parse_actions (xmlNodePtr cur);
-  void parse_entrance (xmlNodePtr cur);
-  void parse_exit (xmlNodePtr cur);
-  void parse_global (xmlNodePtr cur);
-  void parse_groundpiece (xmlNodePtr cur);
-  void parse_traps (xmlNodePtr cur);
-  void parse_hotspot (xmlNodePtr cur);
-  void parse_liquid (xmlNodePtr cur);
-  void parse_group (xmlNodePtr cur);
-  void parse_start_pos (xmlNodePtr cur);
-  void parse_worldobj (xmlNodePtr cur);
-  void parse_weather (xmlNodePtr cur);
-
 public:
-  XMLPLF();
-  XMLPLF(const string& filename);
-  virtual ~XMLPLF();
+  ///
+  EditorWorldObj () {}
+  ///
+  virtual ~EditorWorldObj () {}
+  ///
+  EditorObj* duplicate();
+  ///
+  void save(std::ofstream* plf, std::ofstream* psm) {}
+  ///
+  void save_xml(std::ofstream* xml);
+  ///
+  std::string obj_type() { return "Trap"; };
 };
 
 #endif

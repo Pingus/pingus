@@ -1,4 +1,4 @@
-//  $Id: PLFObj.hh,v 1.10 2000/08/28 00:34:39 grumbel Exp $
+//  $Id: PLFObj.hh,v 1.11 2000/09/23 18:19:00 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #ifndef PLFOBJ_HH
 #define PLFOBJ_HH
 
+#include "../WorldObjData.hh"
 #include "../Direction.hh"
 #include "../Liquid.hh"
 #include "EditorObj.hh"
@@ -139,10 +140,8 @@ public:
   ///
   void draw_offset(int x_offset, int y_offset);
   ///
-  std::string obj_type() { return "Trap"; }///
-;
-}///
-;
+  std::string obj_type() { return "Trap"; };
+};
 
 ///
 class LiquidObj : public PLFObj
@@ -174,12 +173,10 @@ public:
   ///
   void save_xml(std::ofstream* xml);
   ///
-  std::string obj_type() { return "Liquid"; }///
-;
+  std::string obj_type() { return "Liquid"; }
   ///
   std::string  status_line();
-}///
-;
+};
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: WorldObj.hh,v 1.6 2000/08/03 10:31:17 grumbel Exp $
+//  $Id: WorldObj.hh,v 1.7 2000/09/23 18:19:00 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #ifndef WORLDOBJ_HH
 #define WORLDOBJ_HH
 
+#include "WorldObjData.hh"
 #include "Position.hh"
 
 class World;
@@ -46,6 +47,8 @@ public:
   virtual void draw_colmap();
   ///
   virtual void let_move(void);
+  /// Create an WorldObj out of some WorldObj data
+  static WorldObj* create (WorldObjData* data);
   /// Set the world pointer for all world objects 
   static void set_world(World*);
 };

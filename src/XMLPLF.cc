@@ -1,4 +1,4 @@
-//  $Id: XMLPLF.cc,v 1.11 2000/09/20 14:28:35 grumbel Exp $
+//  $Id: XMLPLF.cc,v 1.12 2000/09/23 18:19:00 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -45,6 +45,17 @@ XMLPLF::XMLPLF(const string& filename)
 XMLPLF::~XMLPLF()
 {
   xmlFreeDoc(doc);
+
+  // Free all the allocated memory
+  for(vector<BackgroundData*>::iterator i = backgrounds.begin ();
+      i != backgrounds.end ();
+      i++)
+    delete *i;
+
+  for(vector<WorldObjData*>::iterator i = worldobjs_data.begin ();
+      i != worldobjs_data.end ();
+      i++)
+    delete *i;
 }
 
 void
@@ -69,7 +80,13 @@ XMLPLF::parse_file()
       
       while (cur != NULL)
 	{
-	  puts("global loop");
+	  if (xmlIsBlankNode(cur)) 
+	    {
+	      cur = cur->next;
+	      continue;
+	    }
+
+	  //puts("global loop");
 	  if (strcmp((char*)cur->name, "global") == 0)
 	    {
 	      parse_global(cur);
@@ -124,7 +141,7 @@ XMLPLF::parse_file()
 	    }
 	  cur = cur->next;
 	}
-      puts("global done");
+      //puts("global done");
     } else {
       throw PingusError("XMLPLF: This is no valid Pingus level");
     }
@@ -137,6 +154,12 @@ XMLPLF::parse_start_pos(xmlNodePtr cur)
 
   while (cur != NULL)
     {
+      if (xmlIsBlankNode(cur)) 
+	{
+	  cur = cur->next;
+	  continue;
+	}
+      
       if (strcmp((char*)cur->name, "position") == 0)
 	{
 	  Position pos = XMLhelper::parse_position(doc, cur);
@@ -159,6 +182,12 @@ XMLPLF::parse_weather(xmlNodePtr cur)
 
   while (cur != NULL)
     {
+      if (xmlIsBlankNode(cur)) 
+	{
+	  cur = cur->next;
+	  continue;
+	}
+      
       if (strcmp((char*)cur->name, "type") == 0)
 	{
 	  weather.type = XMLhelper::parse_string(doc, cur);
@@ -179,6 +208,12 @@ XMLPLF::parse_group(xmlNodePtr cur)
 
   while (cur != NULL)
     {
+      if (xmlIsBlankNode(cur)) 
+	{
+	  cur = cur->next;
+	  continue;
+	}
+      
       if (strcmp((char*)cur->name, "groundpiece") == 0)
 	{
 	  parse_groundpiece(cur);
@@ -206,6 +241,10 @@ XMLPLF::parse_group(xmlNodePtr cur)
       else if (strcmp((char*)cur->name, "group") == 0)
 	{
 	  parse_group(cur);
+	}
+      else if (strcmp ((char*)cur->name, "worldobj") == 0)
+	{
+	  parse_worldobj (cur);
 	}
       else
 	{
@@ -245,7 +284,7 @@ XMLPLF::parse_liquid(xmlNodePtr cur)
 void 
 XMLPLF::parse_background(xmlNodePtr cur)
 {
-  // FIXME: Memory leak?!
+  // The allocated objects are delete'd in the destructor
   backgrounds.push_back(BackgroundData::create (doc, cur));
 }
 
@@ -253,8 +292,15 @@ void
 XMLPLF::parse_actions(xmlNodePtr cur)
 {
   cur = cur->children;
+
   while (cur != NULL)
     {
+      if (xmlIsBlankNode(cur)) 
+	{
+	  cur = cur->next;
+	  continue;
+	}
+ 
       ActionData button;
       button.name = (char*)cur->name;
 
@@ -279,6 +325,12 @@ XMLPLF::parse_entrance(xmlNodePtr cur)
   cur = cur->children;  
   while (cur != NULL)
     {
+      if (xmlIsBlankNode(cur)) 
+	{
+	  cur = cur->next;
+	  continue;
+	}
+
       if (strcmp((char*)cur->name, "type") == 0)
 	{
 	  char* name = (char*)xmlNodeListGetString(doc, cur->children, 1); 
@@ -324,6 +376,12 @@ XMLPLF::parse_exit(xmlNodePtr cur)
   cur = cur->children;
   while (cur != NULL)
     {
+      if (xmlIsBlankNode(cur)) 
+	{
+	  cur = cur->next;
+	  continue;
+	}
+      
       if (strcmp((char*)cur->name, "position") == 0)
 	{
 	  exit.pos = XMLhelper::parse_position(doc, cur);
@@ -344,6 +402,12 @@ XMLPLF::parse_global(xmlNodePtr cur)
   cur = cur->children;
   while (cur != NULL)
     {
+      if (xmlIsBlankNode(cur)) 
+	{
+	  cur = cur->next;
+	  continue;
+	}
+
       if (strcmp((char*)cur->name, "levelname") == 0)
 	{
 	  char* name = (char*)xmlNodeListGetString(doc, cur->children, 1);
@@ -443,6 +507,12 @@ XMLPLF::parse_groundpiece(xmlNodePtr cur)
 
   while (cur != NULL)
     {
+      if (xmlIsBlankNode(cur)) 
+	{
+	  cur = cur->next;
+	  continue;
+	}
+      
       if (strcmp((char*)cur->name, "position") == 0)
 	{
 	  surface.pos = XMLhelper::parse_position(doc, cur);
@@ -467,6 +537,12 @@ XMLPLF::parse_traps(xmlNodePtr cur)
   cur = cur->children;
   while (cur != NULL)
     {
+      if (xmlIsBlankNode(cur)) 
+	{
+	  cur = cur->next;
+	  continue;
+	}
+
       if (strcmp((char*)cur->name, "type") == 0)
 	{
 	  char* name = (char*)xmlNodeListGetString(doc, cur->children, 1);
@@ -494,6 +570,12 @@ XMLPLF::parse_hotspot(xmlNodePtr cur)
   cur = cur->children;
   while (cur != NULL)
     {
+      if (xmlIsBlankNode(cur)) 
+	{
+	  cur = cur->next;
+	  continue;
+	}
+      
       if (strcmp((char*)cur->name, "surface") == 0)
 	{
 	  hotspot.desc = XMLhelper::parse_surface(doc, cur);
@@ -517,6 +599,13 @@ XMLPLF::parse_hotspot(xmlNodePtr cur)
       cur = cur->next;
     }
   hotspots.push_back(hotspot);
+}
+
+void 
+XMLPLF::parse_worldobj (xmlNodePtr cur)
+{
+  // The alloctated objects are delete'd in the destructor
+  worldobjs_data.push_back(WorldObjData::create (doc, cur));
 }
 
 /* EOF */

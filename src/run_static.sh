@@ -1,5 +1,5 @@
 #! /bin/sh
 
 cd ../data/
-../src/pingus -d .. --use-scriptfile $@
+../src/pingus -d .. --use-scriptfile $@ 
 

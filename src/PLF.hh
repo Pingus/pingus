@@ -1,4 +1,4 @@
-//  $Id: PLF.hh,v 1.17 2000/09/07 09:45:39 grumbel Exp $
+//  $Id: PLF.hh,v 1.18 2000/09/23 18:19:00 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,6 +36,7 @@
 #include "TrapData.hh"
 #include "PinguMap.hh"
 #include "WeatherData.hh"
+#include "WorldObjData.hh"
 
 /** The Pingus Level File
     
@@ -104,6 +105,8 @@ protected:
   std::vector<SurfaceData>  groundpieces;
   ///
   std::vector<WeatherData>  weathers;
+  ///
+  std::vector<WorldObjData*> worldobjs_data;
 public:
   ///
   PLF();
@@ -180,6 +183,8 @@ public:
   std::vector<SurfaceData>   get_groundpieces(void);
   ///
   std::vector<WeatherData>   get_weather(void);
+  ///
+  std::vector<WorldObjData*> get_worldobjs_data ();
   //
   //std::vector<EmptyData>            get_groups(void);
 };
