@@ -1,4 +1,4 @@
-//  $Id: Guillotine.cc,v 1.4 2000/07/30 01:47:38 grumbel Exp $
+//  $Id: Guillotine.cc,v 1.5 2000/08/04 16:08:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -76,7 +76,7 @@ Guillotine::catch_pingu(Pingu* pingu)
 {
   if (!killing) {
     if (pingu->x_pos < pos.x_pos + 42 && pingu->x_pos > pos.x_pos + 38 
-	&& pingu->y_pos < pos.y_pos + 98 && pingu->y_pos > pos.y_pos + 94) {
+	&& pingu->y_pos < pos.y_pos + 98 && pingu->y_pos > pos.y_pos + 90) {
       killing = true;
       pingu->set_status(dead);
       direction = pingu->direction;

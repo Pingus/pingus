@@ -1,4 +1,4 @@
-//  $Id: EditorEvent.cc,v 1.25 2000/08/01 22:40:06 grumbel Exp $
+//  $Id: EditorEvent.cc,v 1.26 2000/08/04 16:08:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -430,8 +430,7 @@ EditorEvent::editor_delete_selected_objects()
       object_manager->editor_objs.erase(std::find(object_manager->editor_objs.begin(), object_manager->editor_objs.end(), *i));
     }
   
-  object_manager->current_objs.erase(object_manager->current_objs.begin(), 
-				     object_manager->current_objs.end());
+  object_manager->delete_selection();
 }
 
 void
@@ -444,9 +443,10 @@ EditorEvent::editor_start_current_level()
   try {
     PingusGame game;
     std::string levelfile = editor->save_tmp_level();
-    
-    game.start_game(levelfile + ".plf",
-		    levelfile + ".psm");
+    /*
+      game.start_game(levelfile + ".plf",
+      levelfile + ".psm");*/
+    game.start_game(levelfile);
   }
   
   catch(PingusError err) {
@@ -555,9 +555,11 @@ EditorEvent::editor_duplicate_current_selection()
 						    object_manager->editor_objs.end(), 
 						    *i);
       EditorObj* obj = (*i)->duplicate();
-
-      object_manager->editor_objs.insert(iter, obj);
-      new_objs.push_back(obj);
+      if (obj)
+	{
+	  object_manager->editor_objs.insert(iter, obj);
+	  new_objs.push_back(obj);
+	}
     }
 
   object_manager->delete_selection();

@@ -43,4 +43,6 @@ libpingus_editor_a_SOURCES = \
      StringReader.cc      \
      StringReader.hh      \
      SurfaceSelector.cc   \
-     SurfaceSelector.hh
+     SurfaceSelector.hh   \
+     StartPos.cc          \
+     StartPos.hh

@@ -1,4 +1,4 @@
-//  $Id: XMLPLF.hh,v 1.3 2000/08/02 19:02:04 grumbel Exp $
+//  $Id: XMLPLF.hh,v 1.4 2000/08/04 16:08:40 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,6 +42,7 @@ private:
   void parse_hotspot(xmlNodePtr cur);
   void parse_liquid(xmlNodePtr cur);
   void parse_group(xmlNodePtr cur);
+  void parse_start_pos(xmlNodePtr cur);
 
   ResDescriptor parse_surface(xmlNodePtr cur);
   Position parse_position(xmlNodePtr cur);

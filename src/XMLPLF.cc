@@ -1,4 +1,4 @@
-//  $Id: XMLPLF.cc,v 1.4 2000/08/02 19:02:04 grumbel Exp $
+//  $Id: XMLPLF.cc,v 1.5 2000/08/04 16:08:40 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -98,6 +98,10 @@ XMLPLF::parse_file()
 	    {
 	      parse_group(cur);
 	    }
+	  else if (strcmp ((char*)cur->name, "start-position") == 0)
+	    {
+	      parse_start_pos(cur);
+	    }
 	  else
 	    {
 	      printf("Unhandled: %s\n", (char*)cur->name);
@@ -106,6 +110,27 @@ XMLPLF::parse_file()
 	}
     } else {
       throw PingusError("XMLPLF: This is no valid Pingus level");
+    }
+}
+
+void
+XMLPLF::parse_start_pos(xmlNodePtr cur)
+{
+  cur = cur->childs;
+
+  while (cur != NULL)
+    {
+      if (strcmp((char*)cur->name, "position") == 0)
+	{
+	  Position pos = parse_position(cur);
+	  start_x_pos = pos.x_pos;
+	  start_y_pos = pos.y_pos;
+	}
+      else
+	{
+	  std::cout << "XMLPLF::parse_start_pos: " << cur->name << std::endl;
+	}
+      cur = cur->next;
     }
 }
 
@@ -195,27 +220,27 @@ XMLPLF::parse_background(xmlNodePtr cur)
 	}
       else if (strcmp((char*)cur->name, "para-x") == 0)
 	{
-	  background.para_x = parse_int(cur);
+	  background.para_x = parse_float(cur);
 	}
       else if (strcmp((char*)cur->name, "para-y") == 0)
 	{
-	  background.para_y = parse_int(cur);
+	  background.para_y = parse_float(cur);
 	}
       else if (strcmp((char*)cur->name, "scroll-x") == 0)
 	{
-	  background.scroll_x = parse_int(cur);
+	  background.scroll_x = parse_float(cur);
 	}
       else if (strcmp((char*)cur->name, "scroll-y") == 0)
 	{
-	  background.scroll_y = parse_int(cur);
+	  background.scroll_y = parse_float(cur);
 	}
       else if (strcmp((char*)cur->name, "stretch-x") == 0)
 	{
-	  background.stretch_x = parse_int(cur);
+	  background.stretch_x = parse_float(cur);
 	}
       else if (strcmp((char*)cur->name, "stretch-y") == 0)
 	{
-	  background.stretch_y = parse_int(cur);
+	  background.stretch_y = parse_float(cur);
 	}
       else
 	{

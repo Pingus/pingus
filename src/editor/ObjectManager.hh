@@ -1,4 +1,4 @@
-//  $Id: ObjectManager.hh,v 1.8 2000/07/30 01:47:37 grumbel Exp $
+//  $Id: ObjectManager.hh,v 1.9 2000/08/04 16:08:40 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -114,6 +114,8 @@ public:
   ///
   void delete_selection();
   ///
+  void delete_all_objs();
+  ///
   void rect_get_current_objs(int x1, int y1, int x2, int y2);
 
   ///
@@ -129,15 +131,16 @@ public:
   void raise_current_objs();
   ///
   bool lower_obj(EditorObj* obj);
+
   ///
   void lower_current_objs();
 
-  ///
+  /** Remove an object from the current selection */
   void unselect_object(EditorObj* c_obj);
-  ///
+
+  /** Add the object at the given position to the selection */
   EditorObj* select_object(int x, int y);
-}///
-;
+};
 
 #endif
 

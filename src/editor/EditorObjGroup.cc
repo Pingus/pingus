@@ -1,4 +1,4 @@
-//  $Id: EditorObjGroup.cc,v 1.1 2000/08/02 16:14:26 grumbel Exp $
+//  $Id: EditorObjGroup.cc,v 1.2 2000/08/04 16:08:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -185,7 +185,9 @@ EditorObjGroup::duplicate()
       i != objs.end();
       i++)
     {
-      editor_obj->objs.push_back((*i)->duplicate());
+      EditorObj* obj = (*i)->duplicate();
+      if (obj)
+	editor_obj->objs.push_back(obj);
     }
   return editor_obj;
 }

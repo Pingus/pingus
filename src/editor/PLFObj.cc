@@ -1,4 +1,4 @@
-//  $Id: PLFObj.cc,v 1.26 2000/08/01 22:40:06 grumbel Exp $
+//  $Id: PLFObj.cc,v 1.27 2000/08/04 16:08:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -377,7 +377,8 @@ LiquidObj::LiquidObj(const LiquidObj& data)
   speed = data.speed;
   surf  = data.surf;
   counter = data.counter;
-  init();
+  //init();
+  height = surf->get_height();
 }
 
 LiquidObj::LiquidObj(LiquidData data)

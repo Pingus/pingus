@@ -1,4 +1,4 @@
-//  $Id: ObjectManager.cc,v 1.25 2000/08/02 19:02:04 grumbel Exp $
+//  $Id: ObjectManager.cc,v 1.26 2000/08/04 16:08:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,6 +27,7 @@
 #include "../PingusResource.hh"
 #include "../PingusError.hh"
 #include "../XMLhelper.hh"
+#include "StartPos.hh"
 #include "ObjectManager.hh"
 
 #ifdef WIN32
@@ -80,8 +81,8 @@ ObjectManager::new_level ()
   background.desc.datafile = "textures";
   background.desc.res_name = "Textures/default";
 
-  // FIXME: Memory hole
-  editor_objs.erase(editor_objs.begin(), editor_objs.end());
+  delete_all_objs();
+  editor_objs.push_back(new StartPos(50, 50));
 
   // Set some default actions
   actions.clear();
@@ -96,14 +97,21 @@ ObjectManager::new_level ()
   actions.push_back(ActionData("miner",   20));
 }
 
+///
+void
+ObjectManager::delete_all_objs()
+{
+  // Fixme: Memory hole the pointers needs to be delete'd
+  editor_objs.clear();
+}
+
 void
 ObjectManager::load_level (string filename)
 {
   cout << "ObjectManager::Loading level: " << filename << endl;
 
-  current_objs.erase(current_objs.begin(), current_objs.end());
-  //FIXME: Memory hole
-  editor_objs.erase(editor_objs.begin(), editor_objs.end());
+  delete_selection();
+  delete_all_objs();
 
   cout << "Editor: Clearing current level..." << endl;
   cout << "Loading new level: " << filename << endl;
@@ -118,6 +126,9 @@ ObjectManager::load_level (string filename)
   
   //psm.parse (filename + ".psm");
   //psm.load_surfaces();
+
+  editor_objs.push_back(new StartPos(plf->get_startx(), 
+				     plf->get_starty()));
 
   vector<SurfaceData>  temp_surfaces = plf->get_groundpieces();
   for (vector<SurfaceData>::iterator i = temp_surfaces.begin();
@@ -215,7 +226,7 @@ ObjectManager::save_level (string filename)
   // FIXME: we need some error checking
   
   plf_out << "/* This level was created with the PLE\n"
-	  << " * $Id: ObjectManager.cc,v 1.25 2000/08/02 19:02:04 grumbel Exp $\n"
+	  << " * $Id: ObjectManager.cc,v 1.26 2000/08/04 16:08:40 grumbel Exp $\n"
 	  << " */"
 	  << endl;
   
@@ -357,7 +368,7 @@ ObjectManager::delete_selection()
 void
 ObjectManager::unselect_object(EditorObj* c_obj)
 {
-  current_objs.erase(find(current_objs.begin(), current_objs.end(), c_obj));
+  current_objs.erase(std::find(current_objs.begin(), current_objs.end(), c_obj));
 }
 
 void

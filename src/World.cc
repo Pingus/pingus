@@ -1,4 +1,4 @@
-//  $Id: World.cc,v 1.28 2000/08/03 10:31:17 grumbel Exp $
+//  $Id: World.cc,v 1.29 2000/08/04 16:08:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -279,8 +279,7 @@ World::init_worldobjs()
   
   // world_obj.push_back(map);
 
-  world_obj_bg.push_back(new SnowGenerator(100));
-  //world_obj_fg.push_back(new SnowGenerator(100));
+  //world_obj_bg.push_back(new SnowGenerator(100));
 
   // Push all objects to world_obj vector
   for(vector<HotspotData>::size_type i = 0; i < hotspot.size(); i++)
