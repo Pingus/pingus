@@ -1,4 +1,4 @@
-//  $Id: screen_manager.cxx,v 1.12 2002/08/17 11:50:09 grumbel Exp $
+//  $Id: screen_manager.cxx,v 1.13 2002/08/17 12:32:23 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,9 +33,8 @@
 ScreenManager* ScreenManager::instance_ = 0;
 
 ScreenManager::ScreenManager ()
+  : last_screen (0)
 {
-  last_screen = 0;
-
   replace_screen_arg = std::pair<Screen*, bool>(0, false);
   cached_action = none;
 
@@ -61,7 +60,6 @@ ScreenManager::display ()
     {
       Screen* current_screen = screens.back ().first;
       float time_delta = delta_manager.getset ();
-      int num_screens = screens.size ();
       
       if (time_delta > 1.0)
 	{
@@ -80,30 +78,48 @@ ScreenManager::display ()
       GameDelta delta (time_delta, input_controller.get_events ());
 
       last_screen = current_screen;
+
       // Most likly the screen will get changed in this update call
       current_screen->update (delta);    
+
+      if (screens.empty ())
+	continue;
+
+      current_screen = screens.back ().first;
 
       if (cached_action == pop)
 	{
 	  real_pop_screen ();
 	  cached_action = none;
-	  continue; // skip the draw once the screen has changed
 	}
       else if (cached_action == replace)
 	{
 	  real_replace_screen (replace_screen_arg.first, replace_screen_arg.second);
 	  cached_action = none;
-	  continue; // skip the draw once the screen has changed
 	}
-
-      if (num_screens != screens.size ())
-	continue;
-
-      current_screen->draw ();
-      Display::flip_display ();
+      
+      // skip draw if the screen changed
+      if (last_screen == current_screen)
+      	{
+	  current_screen->draw ();
+	  Display::flip_display ();
+	}
+      else
+	{
+	  fade_over (last_screen, current_screen);
+	}
 
       // Stupid hack to make this thing take less CPU
       CL_System::sleep (0);
+
+      /** Delete all screens that are no longer needed */
+      for (std::vector<Screen*>::iterator i = delete_screens.begin (); 
+	   i != delete_screens.end (); 
+	   ++i)
+	{
+	  delete *i;
+	}
+      delete_screens.clear ();
     } 
 }
 
@@ -154,7 +170,7 @@ ScreenManager::real_replace_screen (Screen* screen, bool delete_screen)
   screens.back ().first->on_shutdown ();
 
   if (screens.back ().second) // delete_screen
-    delete screens.back ().first;
+    delete_screens.push_back(screens.back ().first);
   
   screens.back () = std::pair<Screen*, bool> (screen, delete_screen);
   screens.back ().first->on_startup ();
@@ -168,8 +184,8 @@ ScreenManager::real_pop_screen ()
   screens.back ().first->on_shutdown ();
 
   if (screens.back ().second) // delete_screen
-    delete screens.back ().first;
-
+    delete_screens.push_back(screens.back ().first);
+  
   std::cout << "ScreenManager::real_pop_screen ()" << std::endl;
   screens.pop_back ();
 
@@ -184,16 +200,18 @@ ScreenManager::fade_over (Screen* old_screen, Screen* new_screen)
 {
   DeltaManager delta_manager;
   float passed_time = 0;
-  
-  while (passed_time < 1.0f)
+
+
+  std::list<Input::Event*> events;
+  while (passed_time < 2.0f)
     {
       float time_delta = delta_manager.getset ();
       passed_time += time_delta;
 
-      int border_x = int((CL_Display::get_width ()/2) * passed_time);
-      int border_y = int((CL_Display::get_height ()/2) * passed_time);
+      int border_x = int((CL_Display::get_width ()/2) * passed_time/2.0f);
+      int border_y = int((CL_Display::get_height ()/2) * passed_time/2.0f);
 
-      std::cout << "FadeOver: " << border_x << " " << border_y << std::endl;
+      //std::cout << "FadeOver: " << border_x << " " << border_y << std::endl;
 
       new_screen->draw ();
 
@@ -202,6 +220,11 @@ ScreenManager::fade_over (Screen* old_screen, Screen* new_screen)
 					      CL_Display::get_width () - border_x,
 					      CL_Display::get_height () - border_y));
       old_screen->draw ();
+
+      GameDelta delta (time_delta, events);
+      new_screen->update (delta);
+      old_screen->update (delta);
+
       CL_Display::pop_clip_rect ();
 
       Display::flip_display ();

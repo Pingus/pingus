@@ -1,4 +1,4 @@
-//  $Id: screen_manager.hxx,v 1.8 2002/08/17 00:30:53 grumbel Exp $
+//  $Id: screen_manager.hxx,v 1.9 2002/08/17 12:32:23 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,6 +34,10 @@ private:
       which tells if the screen should be deleted onces it got poped
       or replaced) */
   std::vector<std::pair<Screen*, bool> > screens;
+
+  /** Screens in this vector will be deleted at the end of the
+      main-loop */
+  std::vector<Screen*> delete_screens;
 
   /** the screen that was used in the last update() */
   Screen* last_screen;
