@@ -192,5 +192,4 @@ src/Counter.cc
 src/SurfaceButton.cc
 src/PlayfieldView.cc
 src/GameCounter.cc
-src/QuestionDialog.cc
 src/AlphaButton.cc
