@@ -1,4 +1,4 @@
-//  $Id: Playfield.cc,v 1.6 2000/02/26 03:17:06 grumbel Exp $
+//  $Id: Playfield.cc,v 1.7 2000/02/27 18:24:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -60,8 +60,8 @@ Playfield::Playfield(PLF* level_data, World* w)
 
     if (x1 < 0)  
       x1 = 0;
-    if (x2 > CL_Display::get_width() - 1) 
-      x2 =  CL_Display::get_width() - 1;
+    if (x2 > CL_Display::get_width()) 
+      x2 =  CL_Display::get_width();
     if (y1 < 0)
       y1 = 0;
     if (y2 >  CL_Display::get_height())
