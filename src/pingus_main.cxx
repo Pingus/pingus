@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.48 2003/02/19 12:34:16 grumbel Exp $
+//   $Id: pingus_main.cxx,v 1.49 2003/03/03 20:32:18 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -725,7 +725,7 @@ PingusMain::start_game ()
             } 
           else
             {
-              ScreenManager::instance()->push_screen(new PingusGameSession (levelfile), true);
+              ScreenManager::instance()->push_screen(new PingusGameSession (PingusResource::load_plf_raw(levelfile)), true);
             }
         }    
     }

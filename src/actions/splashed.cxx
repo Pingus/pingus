@@ -1,4 +1,4 @@
-//  $Id: splashed.cxx,v 1.13 2003/02/19 09:50:36 grumbel Exp $
+//  $Id: splashed.cxx,v 1.14 2003/03/03 20:32:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,7 +43,7 @@ Splashed::update ()
   if (!particle_thrown)
     {
       particle_thrown = true;
-      WorldObj::get_world()->play_wav("sounds/splash.wav", pingu->get_pos());
+      WorldObj::get_world()->play_sound("splash", pingu->get_pos());
     }
 
   if (sprite.finished())

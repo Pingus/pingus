@@ -1,4 +1,4 @@
-//  $Id: world.cxx,v 1.39 2003/02/26 17:08:29 grumbel Exp $
+//  $Id: world.cxx,v 1.40 2003/03/03 20:32:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -245,7 +245,7 @@ World::get_action_holder ()
 }*/
 
 void 
-World::play_wav (std::string name, const Vector& pos, float volume)
+World::play_sound(std::string name, const Vector& pos, float volume)
 {
   if (view)
     {
@@ -259,11 +259,11 @@ World::play_wav (std::string name, const Vector& pos, float volume)
       if (panning < -1.0f)
       	panning = -1.0f;
 
-      PingusSound::play_sound(name, volume, panning);
+      PingusSound::play_sound("sounds/" + name + ".wav", volume, panning);
     }
   else // No view available, so no stereo enabled
     {
-      PingusSound::play_sound(name, volume);
+      PingusSound::play_sound("sounds/" + name + ".wav", volume);
     }
 }
 

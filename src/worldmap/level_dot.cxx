@@ -1,4 +1,4 @@
-//  $Id: level_dot.cxx,v 1.8 2003/02/19 09:50:36 grumbel Exp $
+//  $Id: level_dot.cxx,v 1.9 2003/03/03 20:32:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -53,7 +53,7 @@ LevelDot::LevelDot(xmlDocPtr doc, xmlNodePtr cur)
         {
           levelname = XMLhelper::parse_string(doc, cur);
           //std::cout << "Levelname: " << levelname << std::endl;         
-          plf = PLF::create(path_manager.complete("levels/") + levelname);
+          plf = PingusResource::load_plf(levelname);
         }
       
       cur = cur->next;
@@ -78,7 +78,7 @@ LevelDot::on_click()
 {
   std::cout << "Starting level: " << levelname << std::endl;
   ScreenManager::instance()->fade_out();
-  ScreenManager::instance()->push_screen(new PingusGameSession (path_manager.complete("levels/") + levelname),
+  ScreenManager::instance()->push_screen(new PingusGameSession (PingusResource::load_plf(levelname)),
                                          true);
 }
 

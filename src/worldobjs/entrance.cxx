@@ -1,4 +1,4 @@
-//  $Id: entrance.cxx,v 1.9 2003/02/19 09:50:36 grumbel Exp $
+//  $Id: entrance.cxx,v 1.10 2003/03/03 20:32:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -104,6 +104,9 @@ Entrance::create_pingu ()
           pingu->set_direction(d);
           break;
         }
+
+      // FIXME: Replace me with a real sound
+      world->play_sound("plop2", data->pos);
     }
   else
     {

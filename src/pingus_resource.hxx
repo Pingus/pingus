@@ -1,4 +1,4 @@
-//  $Id: pingus_resource.hxx,v 1.11 2002/11/02 19:03:40 grumbel Exp $
+//  $Id: pingus_resource.hxx,v 1.12 2003/03/03 20:32:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,7 @@
 #include <map>
 
 #include <ClanLib/Display/Display/surface.h>
+#include "plf_handle.hxx"
 #include "res_descriptor.hxx"
 
 class CL_Font;
@@ -34,6 +35,9 @@ class CL_ResourceManager;
 class PingusResource
 {
 private:
+  typedef std::map<std::string, PLF*> PLFMap; 
+  static  PLFMap plf_map;
+
   static std::map<std::string, CL_ResourceManager*> resource_map;
   static std::map<ResDescriptor, CL_Surface> surface_map;
   static std::map<ResDescriptor, CL_Font*> font_map;
@@ -49,6 +53,13 @@ public:
   /** */
   static unsigned int get_mtime (const std::string& res_name,
 				 const std::string& datafile);
+
+  /** @returns a handle to the PLF, which the caller *must not* delete */
+  static PLFHandle load_plf(const std::string& res_name);
+
+  /** @return a handle to the PLF, instead of loading it from a
+      res_name, load it from a system dependend filename */
+  static PLFHandle load_plf_raw(const std::string& filename);
 
   /** Load a surface with res_name from datafile */
   static CL_Surface load_surface(const std::string& res_name,

@@ -1,4 +1,4 @@
-//  $Id: game_session.hxx,v 1.16 2003/02/19 11:33:00 grumbel Exp $
+//  $Id: game_session.hxx,v 1.17 2003/03/03 20:32:18 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,10 +22,10 @@
 
 #include <string>
 #include "gui/screen.hxx"
+#include "plf_handle.hxx"
 
 class Client;
 class TrueServer;
-class PLF;
 class PingusGameSessionResult;
 class DemoPlayer;
 
@@ -34,11 +34,8 @@ class DemoPlayer;
 class PingusGameSession : public Screen
 {
 private:
-  /// The filename of the level
-  std::string filename;
-
   /// The level data
-  PLF* plf;
+  PLFHandle plf;
 
   /// The server
   TrueServer* server;
@@ -57,10 +54,7 @@ private:
   unsigned int number_of_redraws;
   
 public:
-  /** Create a new game session which is launched on start ()
-      @param arg_filename The filename of a Pingus Level file 
-      FIXME: Absolute or relative filename? */
-  PingusGameSession (std::string arg_filename);
+  PingusGameSession (PLFHandle arg_plf);
 
   /** Clean up */
   ~PingusGameSession ();

@@ -1,4 +1,4 @@
-//  $Id: bomber.cxx,v 1.29 2003/02/19 09:50:36 grumbel Exp $
+//  $Id: bomber.cxx,v 1.30 2003/03/03 20:32:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -61,7 +61,7 @@ Bomber::Bomber (Pingu* p)
 void
 Bomber::on_successfull_apply ()
 {
-  WorldObj::get_world()->play_wav("sounds/ohno.wav", pingu->get_pos ());
+  WorldObj::get_world()->play_sound("ohno", pingu->get_pos ());
 }
 
 void
@@ -112,7 +112,7 @@ Bomber::update ()
     }
 
   if (sprite.get_frame () > 9 && !sound_played) {
-    WorldObj::get_world()->play_wav("sounds/plop.wav", pingu->get_pos ());
+    WorldObj::get_world()->play_sound("plop", pingu->get_pos ());
     sound_played = true;
   }
 

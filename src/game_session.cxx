@@ -1,4 +1,4 @@
-//  $Id: game_session.cxx,v 1.29 2003/02/28 22:14:05 grumbel Exp $
+//  $Id: game_session.cxx,v 1.30 2003/03/03 20:32:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,18 +24,19 @@
 #include "game_session.hxx"
 #include "game_session_result.hxx"
 #include "timer.hxx"
+#include "pingus_resource.hxx"
 #include "plf.hxx"
 #include "globals.hxx"
 
-PingusGameSession::PingusGameSession (std::string arg_filename)
-  : filename (arg_filename)
+PingusGameSession::PingusGameSession (PLFHandle arg_plf)
+  : plf(arg_plf)
 {
   Timer plf_timer("GameSession plf creation");
-  plf    = PLF::create(filename);
+
   plf_timer.stop();
 
   Timer server_timer("GameSession server creation");
-  server = new TrueServer(plf);
+  server = new TrueServer(*plf);
   server_timer.stop();
 
   Timer client_timer("GameSession client creation");
@@ -58,7 +59,6 @@ PingusGameSession::~PingusGameSession ()
 
   delete client;
   delete server;
-  delete plf;
 }
 
 void

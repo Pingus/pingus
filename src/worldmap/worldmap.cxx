@@ -1,4 +1,4 @@
-//  $Id: worldmap.cxx,v 1.31 2003/02/18 17:04:13 grumbel Exp $
+//  $Id: worldmap.cxx,v 1.32 2003/03/03 20:32:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -40,6 +40,7 @@
 #include "dot.hxx"
 #include "level_dot.hxx"
 #include "path_graph.hxx"
+#include "../plf_handle.hxx"
 #include "../plf.hxx"
 #include "../math.hxx"
 
@@ -193,7 +194,7 @@ WorldMap::draw (GraphicContext& gc)
   if (pingus->get_node() != NoNode)
     {
       LevelDot* leveldot = dynamic_cast<LevelDot*>(path_graph->get_dot(pingus->get_node()));
-
+      
       if (leveldot)
         gc.print_center(Fonts::pingus_small, gc.get_width ()/2, gc.get_height() - 40,
                         System::translate(leveldot->get_plf()->get_levelname()));
@@ -212,8 +213,10 @@ WorldMap::draw (GraphicContext& gc)
                           System::translate(leveldot->get_plf()->get_levelname()));
 
           if (maintainer_mode)
-            gc.print_center(Fonts::pingus_small, mouse_x, mouse_y - 56,
-                            leveldot->get_plf()->get_filename());
+            {
+              gc.print_center(Fonts::pingus_small, mouse_x, mouse_y - 56,
+                              leveldot->get_plf()->get_filename());
+            }
         }
     }
 }

@@ -2,7 +2,6 @@ LDADD = backgrounds/libpingus_backgrounds.a \
 colliders/libpingus_colliders.a \
 editor/libpingus_editor.a \
 editorobjs/libpingus_editorobjs.a \
-entrances/libpingus_entrances.a \
 generic/libpingus_generic.a \
 gui/libpingus_gui.a \
 input/libpingus_input.a \
@@ -61,7 +60,8 @@ LIBS = -lclanGUI -lclanCore -lclanDisplay -lclanApp -lclanPNG -lclanJPEG -lHerme
 -lSM \
 -lICE \
 -lXxf86vm \
--lstdc++
+-lstdc++ \
+-ldl
 
 all : pingus.static pingus.static.comp
 

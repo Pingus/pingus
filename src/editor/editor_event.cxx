@@ -1,4 +1,4 @@
-//  $Id: editor_event.cxx,v 1.48 2003/02/19 09:50:36 grumbel Exp $
+//  $Id: editor_event.cxx,v 1.49 2003/03/03 20:32:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,29 +26,31 @@
 #include <ClanLib/Display/Input/keyboard.h>
 #include <ClanLib/Display/Display/display.h>
 #include <ClanLib/Display/Input/mouse.h>
-#include "../html_browser.hxx"
+
 #include "../debug.hxx"
-#include "../globals.hxx"
 #include "../game_session.hxx"
-#include "../system.hxx"
-#include "../pingus_error.hxx"
+#include "../globals.hxx"
+#include "../gui/screen_manager.hxx"
+#include "../html_browser.hxx"
 #include "../loading.hxx"
 #include "../my_gettext.hxx"
-#include "selection.hxx"
-#include "editorobj_group.hxx"
-#include "string_reader.hxx"
-#include "editor_event.hxx"
-#include "scroll_map.hxx"
-#include "panel.hxx"
-#include "object_selector.hxx"
-#include "editor.hxx"
+#include "../pingus_error.hxx"
+#include "../pingus_resource.hxx"
+#include "../system.hxx"
 #include "action_window.hxx"
-#include "property_window.hxx"
+#include "editor.hxx"
+#include "editor_event.hxx"
+#include "editor_view.hxx"
+#include "editorobj_group.hxx"
 #include "level_property_window.hxx"
 #include "level_resizer.hxx"
+#include "object_selector.hxx"
 #include "object_selector_window.hxx"
-#include "../gui/screen_manager.hxx"
-#include "editor_view.hxx"
+#include "panel.hxx"
+#include "property_window.hxx"
+#include "scroll_map.hxx"
+#include "selection.hxx"
+#include "string_reader.hxx"
 
 namespace EditorNS {
 
@@ -510,7 +512,7 @@ EditorEvent::editor_start_current_level()
   try 
     {
       std::string levelfile = editor->save_tmp_level();
-      ScreenManager::instance()->push_screen(new PingusGameSession (levelfile), true);
+      ScreenManager::instance()->push_screen(new PingusGameSession (PingusResource::load_plf_raw(levelfile)), true);
     }
   catch(const PingusError& err) 
     {

@@ -1,4 +1,4 @@
-//  $Id: world.hxx,v 1.25 2003/02/26 17:08:29 grumbel Exp $
+//  $Id: world.hxx,v 1.26 2003/03/03 20:32:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -119,11 +119,6 @@ public:
   /** @return The absolute width of the world */
   int     get_width();
 
-  /** @return true if the world is finished, meaning the time limit
-      has passed or the world is out of pingus (which is simulated by
-      the time => FIXME: hack) */
-  bool    finished ();
-
   /** Returns the time passed since the level was started */
   int get_time_passed();
 
@@ -151,12 +146,12 @@ public:
   /** Play a sound as if it would have been generated at the given
       position, adjust panning and volume by the position relative to
       the center of the screen 
-      @param name Filename of the wav file to play
+      @param name The name of the sound to play ("ohno", not "sounds/ohno.wav")
       @param pos Position from which the sound seems to come (z-pos is
-      going to be ignored) void play_wav (std::string name, const
+      going to be ignored) void play_sound (std::string name, const
       @param volume The volume of the sound
   */
-  void play_wav (std::string name, const Vector& pos, float volume = 0.5f);
+  void play_sound (std::string name, const Vector& pos, float volume = 0.5f);
 
   /** Sets the main view, it is needed to play stereo wave and for
       other screen orientated effects 
