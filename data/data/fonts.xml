@@ -1,9 +1,34 @@
 <?xml version="1.0"  encoding="ISO-8859-1"?>
 <resources>
+  <section name="glyphs">
+    <section name="iso-8859-1">
+      <sprite name="chalk_small">
+        <image file="../images/fonts/chalk_small-iso-8859-1.png"><alpha trans_limit="0.0" /></image>
+      </sprite>
+
+      <sprite name="chalk_normal">
+        <image file="../images/fonts/chalk_normal-iso-8859-1.png"><alpha trans_limit="0.0" /></image>
+      </sprite>
+
+      <sprite name="chalk_large">
+        <image file="../images/fonts/chalk_large-iso-8859-1.png"><alpha trans_limit="0.0" /></image>
+      </sprite>
+
+      <sprite name="pingus">
+        <image file="../images/fonts/pingus-iso-8859-1.png"><alpha trans_limit="0.0" /></image>
+      </sprite>
+
+      <sprite name="pingus_small">
+        <image file="../images/fonts/pingus_small-iso-8859-1.png"><alpha trans_limit="0.0" /></image>
+      </sprite>
+    </section>
+  </section>
+
   <section name="Fonts">
     <sprite name="courier_small_glyphs">
       <image file="../images/fonts/verdana11_bold_latin1.png"><alpha trans_limit="0.25" /></image>
     </sprite>
+
     <font name="courier_small">
       <bitmap
         glyphs="Fonts/courier_small_glyphs"
@@ -27,64 +52,69 @@
     <sprite name="pingus_glyphs">
       <image file="../images/fonts/pingus_large-2.png"><alpha subtract_width="3" trans_limit="0.0" /></image>
     </sprite>
-    <font name="pingus">
-      <bitmap
-        glyphs="Fonts/pingus_glyphs" 
-        letters="!&quot;#$%&amp;'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüý"
-        spacelen="8" />
-    </font>
 
     <sprite name="pingus_small_fix_num_glyphs">
       <image file="../images/fonts/pingus_small4_fix_num.png"><alpha trans_limit="0" /></image>
     </sprite>
+
+    <sprite name="pingus_small_glyphs">
+      <image file="../images/fonts/pingus_small-2.png"><alpha trans_limit="0.4" /></image>
+    </sprite>
+
+    <sprite name="chalk_normal_glyphs">
+      <image file="../images/fonts/chalk_normal.png"><alpha trans_limit="0.25"/></image>
+    </sprite>
+
+    <sprite name="chalk_large_glyphs">
+      <image file="../images/fonts/chalk_large.png"><alpha trans_limit="0.0"/></image>
+    </sprite>
+
+    <sprite name="chalk_small_glyphs">
+      <image file="../images/fonts/chalk_small.png"><alpha trans_limit="0.1" /></image>
+    </sprite>
+
+
+    <font name="pingus_small">
+      <bitmap 
+        glyphs="glyphs/iso-8859-1/pingus_small"
+        letters="!&quot;#$%&amp;'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüý"
+        spacelen="8" subtract_width="0" />
+    </font>
+
+    <font name="chalk_normal">
+      <bitmap 
+        glyphs="glyphs/iso-8859-1/chalk_normal"
+        letters="!&quot;#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüý"
+        spacelen="8" subtract_width="0" />
+    </font>
+
+    <font name="chalk_large">
+      <bitmap 
+        glyphs="glyphs/iso-8859-1/chalk_large"
+        letters="!&quot;#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüý"
+        spacelen="8" subtract_width="1" />
+    </font>
+
+    <font name="chalk_small">
+      <bitmap
+        glyphs="glyphs/iso-8859-1/chalk_small"
+        letters="!&quot;#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüý"
+        spacelen="8" subtract_width="0 " />
+    </font>
+
+    <font name="pingus">
+      <bitmap
+        glyphs="glyphs/iso-8859-1/pingus" 
+        letters="!&quot;#$%&amp;'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüý"
+        spacelen="8" />
+    </font>
+
     <font name="pingus_small_fix_num">
       <bitmap 
         glyphs="Fonts/pingus_small_fix_num_glyphs" 
         letters="!&quot;#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~ÄÖÜäöüÇçÐðÝýÞþ"
         spacelen="13" subtract_width="0"  />
     </font>
-
-    <sprite name="pingus_small_glyphs">
-      <image file="../images/fonts/pingus_small-2.png"><alpha trans_limit="0.4" /></image>
-    </sprite>
-    <font name="pingus_small">
-      <bitmap 
-        glyphs="Fonts/pingus_small_glyphs"
-        letters="!&quot;#$%&amp;'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüý"
-        spacelen="8" subtract_width="0" />
-    </font>
-
-    <sprite name="chalk_normal_glyphs">
-      <image file="../images/fonts/chalk_normal.png"><alpha trans_limit="0.25"/></image>
-    </sprite>
-    <font name="chalk_normal">
-      <bitmap 
-        glyphs="Fonts/chalk_normal_glyphs"
-        letters="!&quot;#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüý"
-        spacelen="8" subtract_width="0" />
-    </font>
-
-    <sprite name="chalk_large_glyphs">
-      <image file="../images/fonts/chalk_large.png"><alpha trans_limit="0.0"/></image>
-    </sprite>
-    <font name="chalk_large">
-      <bitmap 
-        glyphs="Fonts/chalk_large_glyphs"
-        letters="!&quot;#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüý"
-        spacelen="8" subtract_width="1" />
-    </font>
-
-    <sprite name="chalk_small_glyphs">
-      <image file="../images/fonts/chalk_small.png"><alpha trans_limit="0.1" /></image>
-    </sprite>
-    <font name="chalk_small">
-      <bitmap
-        glyphs="Fonts/chalk_small_glyphs"
-        letters="!&quot;#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüý"
-        spacelen="8" subtract_width="0 " />
-    </font>
-
-
 
   </section>
 </resources>

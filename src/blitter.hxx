@@ -21,6 +21,7 @@
 #define HEADER_PINGUS_BLITTER_HXX
 
 #include "pingus.hxx"
+#include <ClanLib/Display/color.h>
 
 class CL_Surface;
 class CL_PixelBuffer;
@@ -34,8 +35,10 @@ class Blitter
 {
 private:
   ///
+  static void put_surface_8bit_old(CL_PixelBuffer target, CL_PixelBuffer source,
+                                   int x, int y);
   static void put_surface_8bit(CL_PixelBuffer target, CL_PixelBuffer source,
-			       int x, int y);
+                                   int x, int y);
   ///
   static void put_surface_32bit(CL_PixelBuffer target, CL_PixelBuffer source,
 			       int x, int y);
@@ -68,7 +71,7 @@ public:
   static CL_PixelBuffer create_canvas(CL_PixelBuffer );
 
   /** Sets all pixels of a canvas to zero */
-  static CL_PixelBuffer clear_canvas(CL_PixelBuffer );
+  static void clear_canvas(CL_PixelBuffer, CL_Color color = CL_Color(0, 0, 0, 0));
 
   /** Creates a new surface (based on a canvas) with the given width
       and height and stretches the source surface onto it

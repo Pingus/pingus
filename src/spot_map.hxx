@@ -34,27 +34,21 @@ namespace Pingus {
 class PLF;
 class ColMap;
 
-class MapTileSurface
+class MapTile
 {
 private:
-  bool empty;
-
-public:
   CL_Surface     surface;
-  CL_PixelBuffer buffer;
+  CL_PixelBuffer pixelbuffer;
 
-  MapTileSurface ();
-  virtual ~MapTileSurface ();
+  void prepare();
+public:
+  MapTile();
+  ~MapTile();
 
-  MapTileSurface (const MapTileSurface& old);
-  MapTileSurface& operator= (const MapTileSurface& old);
+  void remove(CL_PixelBuffer, int x, int y);  
+  void put(CL_PixelBuffer, int x, int y);  
 
   CL_Surface get_surface() const { return surface; }
-  void reload ();
-
-  inline bool is_empty() { return empty; }
-  void mark_dirty ();
-  void set_empty (bool);
 };
 
 /** This map type is the defaulh maptype, it is should be used for the
@@ -66,16 +60,16 @@ class PingusSpotMap : public PinguMap
 private:
   ColMap* colmap;
 
-  typedef std::vector<MapTileSurface>::size_type TileIter;
-
   /** The tiles out of which the map is constructed */
-  std::vector<std::vector<MapTileSurface> > tile;
+  std::vector<std::vector<MapTile> > tile;
 
   /** Width of the map */
   int width;
   /** Height of the map */
   int height;
 
+  int tile_width;
+  int tile_height;
 public:
   PingusSpotMap(PLF*);
   virtual ~PingusSpotMap();

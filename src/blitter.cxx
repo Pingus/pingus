@@ -67,9 +67,12 @@ Blitter::put_surface(CL_PixelBuffer canvas, CL_PixelBuffer provider,
 }
 
 void
-Blitter::put_surface_8bit(CL_PixelBuffer provider, CL_PixelBuffer sprovider,
+Blitter::put_surface_8bit_old(CL_PixelBuffer provider, CL_PixelBuffer sprovider,
 			  int x, int y)
 {
+  assert(provider);
+  assert(sprovider);
+  
   int start_i;
   unsigned char* tbuffer; // Target buffer
   int twidth, theight, tpitch;
@@ -162,56 +165,147 @@ Blitter::put_surface_8bit(CL_PixelBuffer provider, CL_PixelBuffer sprovider,
 }
 
 void
-Blitter::put_surface_32bit(CL_PixelBuffer canvas, CL_PixelBuffer provider_,
-			   const int x_pos, const int y_pos)
+Blitter::put_surface_8bit(CL_PixelBuffer target, CL_PixelBuffer source,
+                          int x_pos, int y_pos)
 {
-  CL_PixelBuffer provider = provider_;
+  assert(target.get_format().get_depth() == 32);
 
-  pout(PINGUS_DEBUG_BLITTER) << "Blitting: SurfaceProvider:" << provider.get_width ()
-                             << "x" << provider.get_height () << ":" 
-                	     << " Canvas:" << canvas.get_width () << "x"
-                             << canvas.get_height () << ":" <<  std::endl;
+  target.lock();
+  source.lock();
 
-  int swidth = provider.get_width();
-  int sheight = provider.get_height();
+  int swidth  = source.get_width();
+  int twidth  = target.get_width();
 
-  int twidth = canvas.get_width();
-  int theight = canvas.get_height();
+  int start_x = std::max(0, -x_pos);
+  int start_y = std::max(0, -y_pos);
 
-  // Surface is out of the screen
-  if (x_pos > twidth-1 || y_pos > theight-1)
+  int end_x = std::min(swidth,  twidth  - x_pos);
+  int end_y = std::min(source.get_height(), target.get_height() - y_pos);
+
+  if (end_x - start_x <= 0 || end_y - start_y <= 0)
     return;
 
-  canvas.lock();
-  provider.lock();
+  cl_uint8* target_buf = static_cast<cl_uint8*>(target.get_data());
+  cl_uint8* source_buf = static_cast<cl_uint8*>(source.get_data());
 
-  if (1) // slow
+  CL_Palette palette = source.get_palette();
+
+  if (source.get_format().has_colorkey())
     {
-      for(int y = Math::max(0, -y_pos); y < sheight && (y + y_pos) < theight; ++y)
-	for(int x = Math::max(0,-x_pos); x < swidth && (x + x_pos) < twidth; ++x)
-	  {
-            CL_Color sc = provider.get_pixel(x, y);
-            CL_Color tc = canvas.get_pixel(x + x_pos, y + y_pos);
+      unsigned int colorkey = source.get_format().get_colorkey();
 
-            // FIXME: This doesn't give correct alpha values
-	    canvas.draw_pixel(x + x_pos, y + y_pos,
-                              CL_Color(Math::mid(0, 255, 
-                                                 int((sc.get_red()   * sc.get_alpha()) + (tc.get_red()   * (255 - sc.get_alpha())))),
-                                       Math::mid(0, 255, 
-                                                 int((sc.get_green() * sc.get_alpha()) + (tc.get_green() * (255 - sc.get_alpha())))),
-                                       Math::mid(0, 255,
-                                                 int((sc.get_blue()  * sc.get_alpha()) + (tc.get_blue()  * (255 - sc.get_alpha())))),
-                                       Math::mid(0, 255,
-                                                 int((sc.get_alpha() * sc.get_alpha()  + (tc.get_alpha() * (255 - sc.get_alpha())))))));
-	  }
+      for (int y = start_y; y < end_y; ++y)
+        {
+          cl_uint8* tptr = target_buf + 4*((twidth*(y+y_pos)) + x_pos + start_x);
+          cl_uint8* sptr = source_buf + swidth*y + start_x;
+
+          for (int x = start_x; x < end_x; ++x)
+            { 
+              if (*sptr != colorkey)
+                {
+                  *tptr++ = 255;
+                  *tptr++ = palette.colors[*sptr].get_blue();
+                  *tptr++ = palette.colors[*sptr].get_green();
+                  *tptr++ = palette.colors[*sptr].get_red();
+                }
+              sptr += 1;
+            }
+        }
     }
-  else // fast?!
+  else
     {
+      for (int y = start_y; y < end_y; ++y)
+        {
+          cl_uint8* tptr = target_buf + 4*((twidth*(y+y_pos)) + x_pos + start_x);
+          cl_uint8* sptr = source_buf + swidth*y + start_x;
 
+          for (int x = start_x; x < end_x; ++x)
+            { 
+              *tptr++ = 255;
+              *tptr++ = palette.colors[*sptr].get_blue();
+              *tptr++ = palette.colors[*sptr].get_green();
+              *tptr++ = palette.colors[*sptr].get_red();
+
+              sptr += 1;
+            }
+        }
     }
+  
+  source.unlock();
+  target.unlock();
+}
 
-  provider.unlock();
-  canvas.unlock();
+void
+Blitter::put_surface_32bit(CL_PixelBuffer target, CL_PixelBuffer source,
+			   const int x_pos, const int y_pos)
+{
+  std::cout << "32bit: pos: " << x_pos << "x" << y_pos 
+            << " ssize: " << source.get_width() << "x" << source.get_height()
+            << " tsize: " << target.get_width() << "x" << target.get_height()
+            << std::endl;
+
+  target.lock();
+  source.lock();
+
+  int swidth  = source.get_width();
+  int sheight = source.get_height();
+
+  int twidth  = target.get_width();
+  int theight = target.get_height();
+
+  int start_x = std::max(0, -x_pos);
+  int start_y = std::max(0, -y_pos);
+
+  int end_x = std::min(swidth,  twidth  - x_pos);
+  int end_y = std::min(sheight, theight - y_pos);
+
+  if (end_x - start_x <= 0
+      || end_y - start_y <= 0)
+    return;
+
+  /* Benchmarks: 
+   * ===========
+   * 6msec with memcpy
+   * 10msec with uint32
+   * 17msec with uint8
+   */
+      
+  std::cout << "X: " << start_x << " " << end_x << std::endl;
+  std::cout << "Y: " << start_y << " " << end_y << std::endl;
+
+  cl_uint8* target_buf = static_cast<cl_uint8*>(target.get_data());
+  cl_uint8* source_buf = static_cast<cl_uint8*>(source.get_data());
+
+  for (int y = start_y; y < end_y; ++y)
+    {
+      int tidx = 4*(twidth * (y_pos + y) + x_pos);
+      int sidx = 4*(swidth * y);
+      
+      if (0)
+        { // Fast but doesn't handle masks
+          memcpy(target_buf + tidx + 4*start_x, source_buf + sidx + 4*start_x, 
+                 sizeof(cl_uint32)*(end_x - start_x));
+        }
+      else
+        { // doesn't handle masks either, but looks half correct
+          cl_uint8* tptr = target_buf + tidx + 4*start_x;
+          cl_uint8* sptr = source_buf + sidx + 4*start_x;
+
+          for (int x = start_x; x < end_x; ++x)
+            {
+              *tptr++ = sptr[3];
+              *tptr++ = sptr[0];
+              *tptr++ = sptr[1];
+              *tptr++ = sptr[2];
+
+              sptr += 4;
+            }
+        }
+    }
+  
+  source.unlock();
+  target.unlock();
+  std::cout << "done" << std::endl;
 }
 
 void
@@ -278,17 +372,15 @@ Blitter::put_alpha_surface(CL_PixelBuffer provider, CL_PixelBuffer sprovider,
   provider.unlock();
 }
 
-CL_PixelBuffer
-Blitter::clear_canvas(CL_PixelBuffer canvas)
+void
+Blitter::clear_canvas(CL_PixelBuffer canvas, CL_Color color)
 {
   unsigned char* buffer;
 
   canvas.lock();
   buffer = static_cast<unsigned char*>(canvas.get_data());
-  memset(buffer, 0, sizeof(unsigned char) * canvas.get_pitch() * canvas.get_height());
+  memset(buffer, color, sizeof(unsigned char) * canvas.get_pitch() * canvas.get_height());
   canvas.unlock();
-
-  return canvas;
 }
 
 CL_PixelBuffer

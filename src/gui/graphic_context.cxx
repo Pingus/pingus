@@ -25,34 +25,14 @@
 namespace Pingus {
 
 void
-GraphicContext::draw (CL_Sprite& sprite, const Vector& pos, int frame)
-{
-  // FIXME: Frame ignored
-  sprite.draw((int)pos.x, (int)pos.y);
-}
-
-void
-GraphicContext::draw (Sprite& sprite, const Vector& pos)
-{
-  sprite.draw(*this, pos);
-}
-
-void
-GraphicContext::draw (Sprite& sprite, const Vector& pos, int frame)
-{
-  sprite.set_frame(frame);
-  sprite.draw(*this, pos);
-}
-
-void
-GraphicContext::draw (CL_Surface& sur, const Vector& pos, int frame)
+GraphicContext::draw (CL_Surface sur, const Vector& pos, int frame)
 {
   draw(sur, int(pos.x), int(pos.y), frame);
 }
 
 
 void
-GraphicContext::draw (CL_Surface& sur, const Vector& pos)
+GraphicContext::draw (CL_Surface sur, const Vector& pos)
 {
   draw(sur, int(pos.x), int(pos.y));
 }

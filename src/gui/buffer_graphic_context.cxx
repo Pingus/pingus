@@ -50,13 +50,28 @@ BufferGraphicContext::clear (float r, float g, float b)
   std::cout << "BufferGraphicContext: clear" << std::endl;
 }
 
-void 
-BufferGraphicContext::draw(CL_Sprite&, const Pingus::Vector&)
+void
+BufferGraphicContext::draw (Sprite& sprite, const Vector& pos)
 {
 }
 
 void
-BufferGraphicContext::draw (CL_Surface& sur, int x_pos, int y_pos)
+BufferGraphicContext::draw (Sprite& sprite, const Vector& pos, int frame)
+{
+}
+
+void 
+BufferGraphicContext::draw(CL_Sprite, const Pingus::Vector&)
+{
+}
+
+void
+BufferGraphicContext::draw(CL_Sprite, const Pingus::Vector&, int)
+{
+}
+
+void
+BufferGraphicContext::draw (CL_Surface sur, int x_pos, int y_pos)
 {
   //std::cout << "BufferGraphicContext: " << x_pos << ", " << y_pos  << std::endl;
   try {
@@ -67,7 +82,7 @@ BufferGraphicContext::draw (CL_Surface& sur, int x_pos, int y_pos)
 }
 
 void
-BufferGraphicContext::draw (CL_Surface& sur, int x_pos, int y_pos, int frame)
+BufferGraphicContext::draw (CL_Surface sur, int x_pos, int y_pos, int frame)
 {
   //std::cout << "BufferGraphicContext: " << x_pos << ", " << y_pos  << " frame: " << frame << std::endl;
   try {
@@ -79,7 +94,7 @@ BufferGraphicContext::draw (CL_Surface& sur, int x_pos, int y_pos, int frame)
 }
 
 void
-BufferGraphicContext::draw (CL_Surface& sur, int x_pos, int y_pos,
+BufferGraphicContext::draw (CL_Surface sur, int x_pos, int y_pos,
                             float size_x, float size_y, int frame)
 {
   std::cout << "BufferGraphicContext: unsupported" << std::endl;

@@ -68,20 +68,20 @@ public:
 
   virtual void clear (float r, float g, float b) =0;
 
-  virtual void draw (CL_Sprite& sprite, const Vector& pos) =0;
-  virtual void draw (CL_Sprite& sprite, const Vector& pos, int frame);
+  virtual void draw (CL_Sprite sprite, const Vector& pos) =0;
+  virtual void draw (CL_Sprite sprite, const Vector& pos, int frame) =0;
 
-  virtual void draw (Sprite& sprite, const Vector& pos);
-  virtual void draw (Sprite& sprite, const Vector& pos, int frame);
+  virtual void draw (Sprite& sprite, const Vector& pos) =0;
+  virtual void draw (Sprite& sprite, const Vector& pos, int frame) =0;
 
-  virtual void draw (CL_Surface& sur, const Vector& pos);
-  virtual void draw (CL_Surface& sur, const Vector& pos, int frame);
+  virtual void draw (CL_Surface sur, const Vector& pos);
+  virtual void draw (CL_Surface sur, const Vector& pos, int frame);
 
-  virtual void draw (CL_Surface& sur, int x_pos, int y_pos) =0;
-  virtual void draw (CL_Surface& sur, int x_pos, int y_pos, int frame) =0;
+  virtual void draw (CL_Surface sur, int x_pos, int y_pos) =0;
+  virtual void draw (CL_Surface sur, int x_pos, int y_pos, int frame) =0;
 
   /** Draw a scaled surface */
-  virtual void draw (CL_Surface& sur, int x_pos, int y_pos,
+  virtual void draw (CL_Surface sur, int x_pos, int y_pos,
 		     float size_x, float size_y, int frame) =0;
 
   /** Draw a line */

@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <iostream>
 #include "../world.hxx"
 #include "../pingu_map.hxx"
 #include "../col_map.hxx"
@@ -43,6 +44,8 @@ Groundpiece::~Groundpiece ()
 void
 Groundpiece::on_startup ()
 {
+  std::cout << "Groundpiece on startup" << std::endl;
+
   CL_PixelBuffer surface = PingusResource::load_surface_provider(data->desc);
 
   // FIXME: overdrawing of bridges and similar things aren't handled

@@ -99,7 +99,9 @@ World::init_worldobjs(PLF* plf)
   // Drawing all world objs to the colmap, gfx, or what ever the
   // objects want to do
   for(WorldObjIter obj = world_obj.begin(); obj != world_obj.end(); ++obj)
-    (*obj)->on_startup();
+    {
+      (*obj)->on_startup();
+    }
 }
 
 World::~World()
@@ -110,22 +112,6 @@ World::~World()
 
   delete game_time;
 }
-
-// Merge the different layers on the screen together
-/*void
-World::draw(int x1, int y1, int w, int h,
-	    int x_of, int y_of, float s)
-{
-  x_of += x1;
-  y_of += y1;
-
-  for(WorldObjIter obj = world_obj.begin(); obj != world_obj.end(); ++obj)
-    {
-      (*obj)->draw_offset(x_of, y_of, s);
-    }
-
-  particle_holder->draw_offset(x_of, y_of, s);
-}*/
 
 void
 World::draw (GraphicContext& gc)
@@ -236,12 +222,6 @@ World::get_gfx_map ()
 {
   return gfx_map;
 }
-
-/*ActionHolder*
-World::get_action_holder ()
-{
-  return action_holder;
-}*/
 
 void
 World::play_sound(std::string name, const Vector& pos, float volume)

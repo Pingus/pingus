@@ -92,6 +92,8 @@ alpha_button.cxx \
 alpha_button.hxx \
 blitter.cxx \
 blitter.hxx \
+blitter_test.hxx \
+blitter_test.cxx \
 blitter_impl.hxx \
 button_panel.cxx \
 button_panel.hxx \

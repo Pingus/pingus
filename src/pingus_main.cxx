@@ -72,6 +72,7 @@
 #include "string_tokenizer.hxx"
 #include "story.hxx"
 #include "cheat.hxx"
+#include "blitter_test.hxx"
 #include "preview_renderer.hxx"
 #include "worldmap/manager.hxx"
 #include "worldobj_data_factory.hxx"
@@ -126,6 +127,7 @@ signal_handler(int signo)
 PingusMain::PingusMain()
 {
   show_credits = false;
+  blitter_test = false;
 }
 
 PingusMain::~PingusMain()
@@ -224,6 +226,7 @@ PingusMain::check_args(int argc, char** argv)
       {"cheat",             required_argument, 0, 156},
       {"controller",        required_argument, 0, 160},
       {"render-preview",    required_argument, 0, 161},
+      {"blitter-test",      no_argument,       0, 162},
       {"use-opengl",        no_argument,       0, 'G'},
 
       // FIXME: is the number stuff correct?
@@ -482,6 +485,10 @@ PingusMain::check_args(int argc, char** argv)
       std::cout << "Rendering a Level Preview..." << std::endl;
       render_preview = true;
       preview_file   = optarg;
+      break;
+
+    case 162: // Blitter test
+      blitter_test = true;
       break;
 
     default:
@@ -901,8 +908,16 @@ PingusMain::main(int argc, char** argv)
           CL_Display::clear();
           CL_Display::flip();
         }
-      start_game();
 
+      if (blitter_test)
+        {
+          BlitterTest test;
+          test.run();
+        }
+      else
+        {
+          start_game();
+        }
     }
 
   catch (const CL_Error& err) {

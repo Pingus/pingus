@@ -34,51 +34,40 @@ namespace Pingus {
 
 using namespace WorldObjsData;
 
-MapTileSurface::MapTileSurface () : empty(false)
+MapTile::MapTile () 
 {
 }
 
-MapTileSurface::~MapTileSurface()
+MapTile::~MapTile()
 {
-}
-
-MapTileSurface::MapTileSurface (const MapTileSurface& old) : empty(old.empty),
-                                                             surface(old.surface)
-{
-}
-
-MapTileSurface&
-MapTileSurface::operator= (const MapTileSurface& old)
-{
-  if (this == &old)
-    return *this;
-
-  empty   = old.empty;
-  surface = old.surface;
-
-  return *this;
 }
 
 void
-MapTileSurface::set_empty(bool e)
+MapTile::prepare()
 {
-  empty = e;
+  if (!pixelbuffer)
+    {
+      pixelbuffer = CL_PixelBuffer(tile_size, tile_size, tile_size*4, CL_PixelFormat::rgba8888);
+      Blitter::clear_canvas(pixelbuffer);
+    }
 }
 
 void
-MapTileSurface::reload()
+MapTile::remove(CL_PixelBuffer obj, int x, int y)
 {
-  std::cout << "Reload" << std::endl;
-  surface = CL_Surface(new CL_PixelBuffer(buffer), true);
-  empty = false;
+  if (surface)
+    {
+      
+    }
 }
 
 void
-MapTileSurface::mark_dirty()
+MapTile::put(CL_PixelBuffer obj, int x, int y)
 {
-  empty = false;
+  prepare();
+  Blitter::put_surface(pixelbuffer, obj, x, y);
+  surface = CL_Surface(new CL_PixelBuffer(pixelbuffer), true);
 }
-
 
 PingusSpotMap::PingusSpotMap(PLF* plf)
 {
@@ -100,10 +89,13 @@ PingusSpotMap::PingusSpotMap(PLF* plf)
       height += (tile_size - (height % tile_size));
     }
 
+  tile_width  = width/tile_size;
+  tile_height = height/tile_size;
+
   // Allocating tile map
-  tile.resize(width/tile_size);
-  for(TileIter i=0; i < tile.size(); ++i)
-    tile[i].resize(height/tile_size);
+  tile.resize(tile_width);
+  for(unsigned int i=0; i < tile.size(); ++i)
+    tile[i].resize(tile_height);
 
   // fix the height back to the correct values
   width  = plf->get_width();
@@ -125,26 +117,6 @@ PingusSpotMap::draw_colmap(GraphicContext& gc)
 void
 PingusSpotMap::draw(GraphicContext& gc)
 {
-#if 0
-  { // calculate number of used/empty tiles
-    int tiles_total = 0;
-    int tiles_empty = 0;
-    int tiles_used  = 0;
-    for(TileIter x=0; x < tile.size(); ++x)
-      {
-	for(TileIter y=0; y < tile[x].size(); ++y)
-	  {
-	    if (tile[x][y].is_empty())
-	      ++tiles_empty;
-	    else
-	      ++tiles_used;
-	    ++tiles_total;
-	  }
-      }
-    std::cout << "Tiles: " << tiles_total << " " << tiles_empty << "/" << tiles_used << std::endl;
-    std::cout << "   " << float(tiles_used)/float(tiles_total) * 100.0f << "% of the map are used" << std::endl;
-  }
-#endif
   const CL_Rect& display = gc.get_clip_rect();
 
   // FIXME: delete the next four lines and replace them with gc.get_clip_rect()
@@ -157,38 +129,26 @@ PingusSpotMap::draw(GraphicContext& gc)
       // Trying to calc which parts of the tilemap needs to be drawn
       int start_x = Math::max(0, display.left/tile_size);
       int start_y = Math::max(0, display.top/tile_size);
-      unsigned int tilemap_width  = display.get_width()  / tile_size + 1;
-      unsigned int tilemap_height = display.get_height() / tile_size + 1;
+      int tilemap_width  = display.get_width()  / tile_size + 1;
+      int tilemap_height = display.get_height() / tile_size + 1;
 
       // drawing the stuff
-      for (TileIter x = start_x;
-	   x <= (start_x + tilemap_width) && x < tile.size();
-	   ++x)
-	{
-	  for (TileIter y = start_y;
-	       y <= start_y + tilemap_height && y < tile[x].size();
-	       ++y)
-	    {
-	      if (!tile[x][y].is_empty())
-		{
-		  gc.draw(tile[x][y].surface,
-			  x * tile_size,
-			  y * tile_size);
-#ifdef PINGUS_EARTHQUAKE
-		  gc.draw(tile[x][y].surface,
-			  x * tile_size + rand ()%20-10,
-			  y * tile_size + rand ()%20-10);
-#endif
-		}
-	      else
-		{
-		  if (pingus_debug_flags & PINGUS_DEBUG_TILES)
-		    gc.draw_fillrect(x * tile_size, y * tile_size,
-				     x * tile_size + tile_size, y * tile_size + tile_size,
-				     1.0f, 0.0f, 0.0f, 0.3f);
-		}
-	    }
-	}
+      for (int x = start_x; x <= (start_x + tilemap_width) && x < int(tile.size()); ++x)
+        for (int y = start_y; y <= start_y + tilemap_height && y < int(tile[x].size()); ++y)
+          {
+            if (tile[x][y].get_surface())
+              {
+                gc.draw(tile[x][y].get_surface(),
+                        Vector(x * tile_size, y * tile_size));
+              }
+            else
+              {
+                if (pingus_debug_flags & PINGUS_DEBUG_TILES)
+                  gc.draw_fillrect(x * tile_size, y * tile_size,
+                                   x * tile_size + tile_size, y * tile_size + tile_size,
+                                   1.0f, 0.0f, 0.0f, 0.3f);
+              }
+          }
     }
 }
 
@@ -218,23 +178,11 @@ PingusSpotMap::remove(CL_PixelBuffer sprovider, int x, int y)
                           (height - 1) / tile_size);
 
   for(int ix = start_x; ix <= end_x; ++ix)
-    {
-      for(int iy = start_y; iy <= end_y; ++iy)
-	{
-	  if (!tile[ix][iy].is_empty())
-	    {
-              CL_PixelBuffer target    = tile[ix][iy].buffer;
-              CL_PixelBuffer sprovider = sprovider;
-	      put_alpha_surface(target,
-				sprovider,
-				x - (ix * tile_size), y - (iy * tile_size),
-				// FIXME, I am broken
-				Math::max(x, ix * tile_size),
-				Math::max(y, iy * tile_size));
-	      tile[ix][iy].reload();
-	    }
-	}
-    }
+    for(int iy = start_y; iy <= end_y; ++iy)
+      {
+        tile[ix][iy].remove(sprovider, x - (ix * tile_size),
+                            y - (iy * tile_size));
+      }
 }
 
 void
@@ -339,52 +287,19 @@ void
 PingusSpotMap::put(CL_PixelBuffer sprovider, int x, int y)
 {
   // Get the start tile and end tile
-  int start_x = x / tile_size;
-  int start_y = y / tile_size;
-  int end_x   = (x + sprovider.get_width())  / tile_size;
-  int end_y   = (y + sprovider.get_height()) / tile_size;
+  int start_x = std::max(0, x / tile_size);
+  int start_y = std::max(0, y / tile_size);
+  int end_x   = std::min(tile_width,  (x + sprovider.get_width())  / tile_size + 1);
+  int end_y   = std::min(tile_height, (y + sprovider.get_height()) / tile_size + 1);
 
-  if (start_x < 0)
-    start_x = 0;
-  if (start_y < 0)
-    start_y = 0;
-
-  if (end_x > (int) tile.size() - 1)
-    end_x = tile.size() - 1;
-  if (end_y > (int) tile[0].size() - 1)
-    end_y = tile[0].size() - 1;
-
-  for(int ix = start_x; ix <= end_x; ++ix)
-    {
-      for(int iy = start_y; iy <= end_y; ++iy)
-	{
-	  if (!tile[ix][iy].surface)
-	    {
-	      CL_PixelBuffer canvas(tile_size, tile_size, tile_size * 4, CL_PixelFormat::rgba8888);
-              
-	      Blitter::clear_canvas(canvas);
-
-	      Blitter::put_surface(canvas, sprovider,
-				   x - (ix * tile_size), y - (iy * tile_size));
-
-	      tile[ix][iy].buffer = canvas;
-	      tile[ix][iy].reload();
-	    }
-	  else
-	    {
-              CL_PixelBuffer target = tile[ix][iy].buffer;
-	      Blitter::put_surface(target,
-				   sprovider,
-				   x - (ix * tile_size), y - (iy * tile_size));
-              tile[ix][iy].reload();
-	    }
-
-	  tile[ix][iy].set_empty(false);
-	}
-    }
+  for(int ix = start_x; ix < end_x; ++ix)
+    for(int iy = start_y; iy < end_y; ++iy)
+      {
+        tile[ix][iy].put(sprovider,
+                         x - (ix * tile_size), y - (iy * tile_size));
+      }
 }
 
-// Generates a ColMap (with new) and returns a pointer to it
 ColMap*
 PingusSpotMap::get_colmap(void)
 {

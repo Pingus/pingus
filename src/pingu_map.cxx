@@ -31,35 +31,6 @@ PinguMap::~PinguMap()
   //std::cout << "PinguMap:~PinguMap()" << std::endl;
 }
 
-void
-PinguMap::mark_dirty(int x,int y,int w,int h)
-{
-	UNUSED_ARG(x);
-	UNUSED_ARG(y);
-	UNUSED_ARG(w);
-	UNUSED_ARG(h);
-}
-
-// Return '0' to indicate that the colmap can not be generated
-// automaticly.
-ColMap*
-PinguMap::get_colmap()
-{
-  return 0;
-}
-
-void
-PinguMap::remove(const CL_PixelBuffer&, int, int)
-{
-
-}
-
-void
-PinguMap::put(const CL_PixelBuffer&, int, int)
-{
-
-}
-
 } // namespace Pingus
 
 /* EOF */

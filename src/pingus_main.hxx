@@ -35,6 +35,7 @@ private:
   CL_DisplayWindow* window; 
   CL_SoundOutput*   sound;
 
+  bool    blitter_test;
   bool    no_config_file;
   bool    show_credits;
   /// the name of the exe: argv[0]

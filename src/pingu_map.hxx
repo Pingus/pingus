@@ -41,15 +41,13 @@ public:
   PinguMap();
   virtual ~PinguMap();
 
-  virtual void mark_dirty(int,int,int,int);
-  virtual ColMap *get_colmap();
+  virtual ColMap *get_colmap() =0;
 
-  virtual int  get_width() = 0;
-  virtual int  get_height() = 0;
+  virtual int  get_width() =0;
+  virtual int  get_height() =0;
 
-  virtual void remove(int, int) {};
-  virtual void remove(const CL_PixelBuffer&, int, int);
-  virtual void put(const CL_PixelBuffer&, int, int);
+  virtual void remove(CL_PixelBuffer obj, int x, int y) =0;
+  virtual void put(CL_PixelBuffer obj, int x, int y) =0;
 
 private:
   PinguMap (const PinguMap&);

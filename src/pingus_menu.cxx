@@ -42,7 +42,7 @@ PingusMenu::preload ()
       //event_enabled = true;
       is_init = true;
 
-      background = PingusResource::load_surface("misc/logo", "core");
+      background = PingusResource::load_sprite("misc/logo", "core");
 
       //gui_manager->add(new OptionsButton(this));
       /*if (game_finished)
@@ -78,13 +78,14 @@ PingusMenu::draw_foreground(GraphicContext& gc)
   if (gc.get_height() == 480)
     {
       gc.draw(background,
-              (gc.get_width()/2) - (background.get_width()/2),
-              20);
+              Vector((gc.get_width()/2) - (background.get_width()/2),
+                     20));
     }
   else
     {
-      gc.draw(background, (gc.get_width()/2) - (background.get_width()/2),
-              CL_Display::get_height()/10);
+      gc.draw(background, 
+              Vector((gc.get_width()/2) - (background.get_width()/2),
+                     CL_Display::get_height()/10));
     }
 #ifdef OFFICIAL_PINGUS_BUILD
   gc.print_left(Fonts::pingus_small, 20, CL_Display::get_height()-100,

@@ -67,11 +67,15 @@ public:
 
   void clear (float r, float g, float b);
 
-  void draw(CL_Sprite&, const Pingus::Vector&);
+  void draw (Sprite& sprite, const Vector& pos);
+  void draw (Sprite& sprite, const Vector& pos, int frame);
 
-  void draw (CL_Surface& sur, int x_pos, int y_pos);
-  void draw (CL_Surface& sur, int x_pos, int y_pos, int frame);
-  void draw (CL_Surface& sur, int x_pos, int y_pos,
+  void draw(CL_Sprite, const Pingus::Vector&);
+  void draw(CL_Sprite, const Pingus::Vector&, int);
+
+  void draw (CL_Surface sur, int x_pos, int y_pos);
+  void draw (CL_Surface sur, int x_pos, int y_pos, int frame);
+  void draw (CL_Surface sur, int x_pos, int y_pos,
              float size_x, float size_y, int frame);
 
   void draw_line (const Vector& /*pos1*/, const Vector& /*pos2*/,

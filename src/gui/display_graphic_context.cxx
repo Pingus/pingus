@@ -161,14 +161,33 @@ DisplayGraphicContext::clear (float r, float g, float b)
 }
 
 void
-DisplayGraphicContext::draw (CL_Sprite& sprite, const Vector& pos)
+DisplayGraphicContext::draw(Pingus::Sprite& sprite, const Pingus::Vector& pos)
+{
+  draw(sprite.get_sprite(), pos);
+}
+
+void
+DisplayGraphicContext::draw(Pingus::Sprite& sprite, const Pingus::Vector& pos, int frame)
+{
+  draw(sprite.get_sprite(), pos, frame);
+}
+
+void
+DisplayGraphicContext::draw(CL_Sprite sprite, const Pingus::Vector& pos, int)
 {
   if (sprite)
     sprite.draw(w2s_x(pos.x), w2s_y(pos.y));
 }
 
 void
-DisplayGraphicContext::draw (CL_Surface& sur, int x_pos, int y_pos)
+DisplayGraphicContext::draw (CL_Sprite sprite, const Vector& pos)
+{
+  if (sprite)
+    sprite.draw(w2s_x(pos.x), w2s_y(pos.y));
+}
+
+void
+DisplayGraphicContext::draw (CL_Surface sur, int x_pos, int y_pos)
 {
   if (sur)
     {
@@ -187,7 +206,7 @@ DisplayGraphicContext::draw (CL_Surface& sur, int x_pos, int y_pos)
 }
 
 void
-DisplayGraphicContext::draw (CL_Surface& sur, int x_pos, int y_pos, int frame)
+DisplayGraphicContext::draw (CL_Surface sur, int x_pos, int y_pos, int frame)
 {
   if (sur)
     {
@@ -207,7 +226,7 @@ DisplayGraphicContext::draw (CL_Surface& sur, int x_pos, int y_pos, int frame)
 }
 
 void
-DisplayGraphicContext::draw (CL_Surface& sur, int x_pos, int y_pos,
+DisplayGraphicContext::draw (CL_Surface sur, int x_pos, int y_pos,
 	    float size_x, float size_y, int frame)
 {
   if (sur)
@@ -292,7 +311,7 @@ void
 DisplayGraphicContext::print_center (CL_Font font_, int x_pos, int y_pos, const std::string& str)
 {
   CL_Font font = font_;
-  font.set_alignment(origin_bottom_center);
+  font.set_alignment(origin_top_center);
   font.draw(w2s_x(x_pos), w2s_y(y_pos), str.c_str ());
 }
 
@@ -300,7 +319,7 @@ void
 DisplayGraphicContext::print_right (CL_Font font_, int x_pos, int y_pos, const std::string& str)
 {
   CL_Font font = font_;
-  font.set_alignment(origin_bottom_center);
+  font.set_alignment(origin_top_center);
   font.draw(w2s_x(x_pos), w2s_y(y_pos), str.c_str ());
 }
 

@@ -49,7 +49,7 @@ private:
 
   SurfaceButton * temp_button;
   SurfaceButton * current_button;
-  CL_Surface background;
+  CL_Sprite background;
   LayerManager layer_manager;
   CL_Surface cursor_sur;
 

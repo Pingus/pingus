@@ -39,7 +39,8 @@ ScreenManager::ScreenManager ()
   if (render_preview)
     display_gc = new BufferGraphicContext(800, 600);
   else
-    display_gc = new DisplayGraphicContext(0, 0, CL_Display::get_width (), CL_Display::get_height (), 0, 0);
+    display_gc = new DisplayGraphicContext(0, 0, CL_Display::get_width (), CL_Display::get_height (),
+                                           0, 0);
 
   cached_action = CA_NONE;
 }
