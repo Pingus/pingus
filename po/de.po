@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Pingus 0.5.0\n"
-"POT-Creation-Date: 2003-04-11 16:28+0200\n"
+"POT-Creation-Date: 2003-04-11 17:16+0200\n"
 "PO-Revision-Date: 2003-04-11 16:32+0200\n"
 "Last-Translator: Ingo Ruhnke <grumbel@gmx.de>\n"
 "Language-Team: Ingo Ruhnke <grumbel@gmx.de>, Giray Devlet <giray@devlet.cc>\n"
@@ -800,7 +800,9 @@ msgstr "Konfiguration aus DATEI lesen"
 
 #: src/pingus_main.cxx:519
 msgid "reduce CPU usage, might speed up the game on slower machines"
-msgstr "reduziere CPU Belastung, könnte das Spiel auf langsamen Rechnern beschleunigen"
+msgstr ""
+"reduziere CPU Belastung, könnte das Spiel auf langsamen Rechnern "
+"beschleunigen"
 
 #: src/pingus_main.cxx:520
 msgid "Debugging and experimental stuff:"
@@ -824,7 +826,8 @@ msgstr "input"
 
 #: src/pingus_main.cxx:525
 msgid "Skip at least N frames, larger values speed the game up"
-msgstr "Überspringe mindestens N Bilder, größere Werte erhöhen die Geschwindigkeit"
+msgstr ""
+"Überspringe mindestens N Bilder, größere Werte erhöhen die Geschwindigkeit"
 
 #: src/pingus_main.cxx:526
 msgid "Skip at most N frames"
@@ -923,11 +926,11 @@ msgstr "Musik Unterstützung:        aus"
 
 #: src/pingus_main.cxx:679
 msgid "resolution set to:       "
-msgstr "Auflösung:               "
+msgstr "Auflösung:              "
 
 #: src/pingus_main.cxx:680
 msgid "fullscreen:              "
-msgstr "Vollbild:                "
+msgstr "Vollbild:           "
 
 #: src/pingus_main.cxx:681
 msgid " enabled"
@@ -965,7 +968,7 @@ msgstr "Pingus: Standard Ausnahme abgefangen!:\n"
 msgid "Pingus: Unknown throw caught!"
 msgstr "Pingus: Unbekannte Ausnahme abgefangen!"
 
-#: src/result_screen.cxx:97 src/start_screen.cxx:107
+#: src/result_screen.cxx:97 src/start_screen.cxx:108
 msgid "Abort"
 msgstr "Abbruch"
 
@@ -1066,31 +1069,31 @@ msgstr "Screenshot: Datei konnte nicht geschrieben werden: "
 msgid "Image has wrong color depth: %d"
 msgstr "Bild hat falsche Farbtiefe: %d"
 
-#: src/start_screen.cxx:71
+#: src/start_screen.cxx:72
 msgid "Ok"
 msgstr "Ok"
 
-#: src/start_screen.cxx:154
+#: src/start_screen.cxx:155
 msgid "Number of Pingus: "
 msgstr "Anzahl an Pingus: "
 
-#: src/start_screen.cxx:157
+#: src/start_screen.cxx:158
 msgid "Number to Save: "
 msgstr "Zu rettende Pingus: "
 
-#: src/start_screen.cxx:160
+#: src/start_screen.cxx:161
 msgid "Time: "
 msgstr "Zeit: "
 
-#: src/start_screen.cxx:163
+#: src/start_screen.cxx:164
 msgid "Difficulty:"
 msgstr "Schwierigkeitsgrad:"
 
-#: src/start_screen.cxx:171
+#: src/start_screen.cxx:172
 msgid "Author: "
 msgstr "Autor: "
 
-#: src/start_screen.cxx:174
+#: src/start_screen.cxx:175
 msgid "Filename: "
 msgstr "Dateiname: "
 
@@ -1272,7 +1275,8 @@ msgstr "Gefunden: "
 
 #: src/system.cxx:264
 msgid "Environment variable $HOME not set, fix that and start again."
-msgstr "Umgebungs Variable $HOME ist nicht gesetzt. Setze sie und starte erneut."
+msgstr ""
+"Umgebungs Variable $HOME ist nicht gesetzt. Setze sie und starte erneut."
 
 #: src/system.cxx:426
 msgid "System::checksum: Couldn't open file: "
