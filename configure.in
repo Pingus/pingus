@@ -1,4 +1,4 @@
-#  $Id: configure.in,v 1.26 2000/08/28 00:39:20 grumbel Exp $
+#  $Id: configure.in,v 1.27 2000/09/20 07:26:04 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,9 @@
 
 dnl BUG: This file should be updated with the macros from 'configure.scan'
 
+dnl Hack to make ImageMagick work
+LIBS="-L/usr/X11R6/lib -lMagick"
+
 dnl Process this file with autoconf to produce a configure script.
 AC_INIT( src/PingusMain.cc )
 AM_CONFIG_HEADER( config.h )
@@ -27,7 +30,7 @@ PACKAGE=pingus
 
 # The Pingus Version
 MAJOR_VERSION=0
-MINOR_VERSION=4
+MINOR_VERSION=5
 PATCH_VERSION=0
 
 # The required ClanLib version
@@ -222,6 +225,8 @@ AC_OUTPUT( Makefile
            src/editor/Makefile
            src/caimagemanipulation/Makefile
            src/war/Makefile
+	   src/generic/Makefile
+	   src/worldmap/Makefile
            data/Makefile 
            data/images/Makefile 
            data/levels/Makefile
