@@ -38,17 +38,23 @@ XMLPingusLevel::XMLPingusLevel(const std::string& filename)
 
   CL_DomElement root = doc.get_document_element();
   
-  if (root.get_tag_name() == "pingus-level")
+  if (root.get_tag_name() != "pingus-level")
+    {
+      PingusError::raise("Error: " + filename + ": not a <pingus-level> file");
+    }
+  else
     {
       CL_DomNodeList lst = root.get_child_nodes();
+
       for(int i = 0; i < lst.get_length(); ++i)
         {
           CL_DomElement node = lst.item(i).to_element();
-          if (node.get_node_value() == "head")
+
+          if (node.get_tag_name() == "head")
             {
               XMLFileReader reader(node);
-              reader.read_string("levelname",        impl->levelname["en"]);
-              reader.read_string("description",      impl->description["en"]);
+              reader.read_string("levelname",        impl->levelname);
+              reader.read_string("description",      impl->description);
               reader.read_size  ("size",             impl->size);
               reader.read_string("music",            impl->music);
               reader.read_int   ("time",             impl->number_of_pingus);
@@ -66,7 +72,7 @@ XMLPingusLevel::XMLPingusLevel(const std::string& filename)
               impl->actions["basher"] = 5;
               impl->actions["jumper"] = 50;
             }
-          else if (node.get_node_value() == "objects")
+          else if (node.get_tag_name() == "objects")
             {
               CL_DomNodeList objects = node.get_child_nodes();
               for(int i = 0; i < lst.get_length(); ++i)
@@ -76,13 +82,9 @@ XMLPingusLevel::XMLPingusLevel(const std::string& filename)
             }
           else
             {
-              std::cout << "Warning: Unknown element: " << node.get_node_value() << std::endl;
+              std::cout << "Warning: Unknown element: " << node.get_tag_name() << std::endl;
             }
         }
-    }
-  else
-    {
-      throw PingusError("Error: " + filename + ": not a <pingus-level> file");
     }
 }
 

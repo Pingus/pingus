@@ -21,6 +21,7 @@
 #define HEADER_PINGUS_FILE_READER_HXX
 
 #include <string>
+#include <vector>
 #include <ClanLib/Core/System/sharedptr.h>
 
 class CL_Size;
@@ -65,6 +66,9 @@ public:
 
     return false;
   }
+
+  std::vector<std::string> get_section_names() const;
+  std::vector<FileReader> get_sections() const;
 private:
   CL_SharedPtr<FileReaderImpl> impl;
 };

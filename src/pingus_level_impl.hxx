@@ -32,8 +32,8 @@ namespace Pingus {
 class PingusLevelImpl
 {
 public:
-  std::map<std::string, std::string> levelname;
-  std::map<std::string, std::string> description;
+  std::string levelname;
+  std::string description;
 
   CL_Size     size;
 

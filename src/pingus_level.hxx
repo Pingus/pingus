@@ -40,11 +40,11 @@ public:
   PingusLevel();
 
   /** Returns the name of the current level, {\em not} the level file name. */
-  const std::map<std::string, std::string>& get_levelname() const;
+  const std::string& get_levelname() const;
 
   /** Returns the description of the level, which fit to the current
       language */
-  const std::map<std::string, std::string>& get_description() const;
+  const std::string& get_description() const;
 
   /** Returns the width of the level */
   const CL_Size&     get_size() const;

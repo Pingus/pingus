@@ -75,7 +75,8 @@ public:
   }
 
   bool read_section(const char* name, FileReader&) const;
-
+  std::vector<FileReader> get_sections() const;
+  std::vector<std::string> get_section_names() const;
 private:
   XMLFileReaderOldImpl (const XMLFileReaderOldImpl&);
   XMLFileReaderOldImpl& operator= (const XMLFileReaderOldImpl&);

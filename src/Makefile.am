@@ -43,7 +43,7 @@ EXTRA_DIST = \
              win32/config.h  \
              make_docs.sh
 
-bin_PROGRAMS = pingus xmleval
+bin_PROGRAMS = pingus xmleval pingus_level_test
 
 xmleval_CPPFLAGS = @PINGUS_CFLAGS@
 xmleval_LDADD    = @PINGUS_LIBS@
@@ -70,6 +70,17 @@ pingus_LDADD = \
         input/buttons/libpingus_input_buttons.a \
 	input/pointers/libpingus_input_pointers.a \
 	input/scrollers/libpingus_input_scrollers.a
+
+pingus_level_test_CPPFLAGS = @PINGUS_CFLAGS@
+pingus_level_test_LDADD    = @PINGUS_LIBS@
+
+pingus_level_test_SOURCES = \
+pingus_level_test.cxx \
+pingus_level.cxx      \
+xml_pingus_level.cxx  \
+xml_file_reader.cxx   \
+file_reader.cxx       \
+pingus_error.cxx   
 
 pingus_SOURCES = \
 action_button.cxx \

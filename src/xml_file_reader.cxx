@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <iostream>
 #include <ClanLib/Display/color.h>
 #include <ClanLib/Core/Math/size.h>
 #include <ClanLib/Core/XML/dom_element.h>
@@ -40,9 +41,12 @@ private:
   {
     for(int i = 0; i < childs.get_length(); ++i)
       {
-        if (strcmp(childs.item(i).get_node_value().c_str(), name) == 0)
+        if (childs.item(i).is_element())
           {
-            return childs.item(i).to_element();
+            if (childs.item(i).to_element().get_tag_name() == name)
+              {
+                return childs.item(i).to_element();
+              }
           }
       }
     return CL_DomElement();
@@ -57,25 +61,25 @@ public:
 
   std::string get_name() const
   {
-    return root.get_node_value();
+    return root.get_tag_name();
   }
 
   bool read_int(const char* name, int& value) const
   {
     CL_DomElement node = get_node_by_name(name);
-    return !node.is_null() && CL_String::from(node.get_node_value(), value);
+    return !node.is_null() && CL_String::from(node.get_first_child().get_node_value(), value);
   }
   
   bool read_float (const char* name, float& value) const
   {
     CL_DomElement node = get_node_by_name(name);
-    return !node.is_null() && CL_String::from(node.get_node_value(), value);
+    return !node.is_null() && CL_String::from(node.get_first_child().get_node_value(), value);
   }
 
   bool read_bool  (const char* name, bool& value) const
   {
     CL_DomElement node = get_node_by_name(name);
-    return !node.is_null() && CL_String::from(node.get_node_value(), value);
+    return !node.is_null() && CL_String::from(node.get_first_child().get_node_value(), value);
   }
 
   bool read_string(const char* name, std::string& value) const
@@ -83,7 +87,7 @@ public:
     CL_DomElement node = get_node_by_name(name);
     if (!node.is_null())
       {
-        value = node.get_node_value();
+        value = node.get_first_child().get_node_value();
         return true;
       }
     else
@@ -155,7 +159,7 @@ public:
     if (!node.is_null())
       {
         value.datafile = "";
-        value.res_name = node.get_node_value();
+        value.res_name = node.get_first_child().get_node_value();
         value.modifier = ResourceModifierNS::ROT0;
 
         return true;
@@ -179,6 +183,28 @@ public:
       {
         return false;
       }
+  }
+
+  std::vector<FileReader> get_sections() const
+  {
+    std::vector<FileReader> lst;
+    for(int i = 0; i < childs.get_length(); ++i)
+      {
+        if (childs.item(i).is_element())
+          lst.push_back(XMLFileReader(childs.item(i).to_element()));
+      }
+    return lst;
+  }
+
+  std::vector<std::string> get_section_names() const
+  {
+    std::vector<std::string> lst;
+    for(int i = 0; i < childs.get_length(); ++i)
+      {
+        if (childs.item(i).is_element())
+          lst.push_back(childs.item(i).to_element().get_tag_name());
+      }
+    return lst;
   }
 };
 

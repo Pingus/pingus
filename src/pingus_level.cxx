@@ -29,13 +29,13 @@ PingusLevel::PingusLevel()
 {
 }
 
-const std::map<std::string, std::string>& 
+const std::string&
 PingusLevel::get_levelname() const
 {
   return impl->levelname;
 }
 
-const std::map<std::string, std::string>&
+const std::string&
 PingusLevel::get_description() const
 {
   return impl->description;

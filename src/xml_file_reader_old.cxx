@@ -189,6 +189,18 @@ XMLFileReaderOldImpl::get_name() const
   return XMLhelper::xmlChar2string(section_node->name);
 }
 
+std::vector<FileReader>
+XMLFileReaderOldImpl::get_sections() const
+{
+  return std::vector<FileReader>();
+}
+
+std::vector<std::string>
+XMLFileReaderOldImpl::get_section_names() const
+{
+  return std::vector<std::string>();
+}
+
 bool
 XMLFileReaderOldImpl::read_size(const char* name, CL_Size&)   const
 {
