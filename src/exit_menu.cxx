@@ -1,4 +1,4 @@
-//  $Id: exit_menu.cxx,v 1.10 2002/09/28 11:52:21 torangan Exp $
+//  $Id: exit_menu.cxx,v 1.11 2002/10/01 21:48:32 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -82,7 +82,7 @@ ExitMenu::~ExitMenu ()
 {
 }
 
-void 
+bool 
 ExitMenu::draw (GraphicContext& gc)
 {
   CL_Display::fill_rect (0, 0, CL_Display::get_width (), CL_Display::get_height (),
@@ -90,6 +90,7 @@ ExitMenu::draw (GraphicContext& gc)
   sur.put_screen (CL_Display::get_width ()/2 - sur.get_width ()/2, 
 		  CL_Display::get_height ()/2 - sur.get_height ()/2);
   UNUSED_ARG(gc);
+  return true;
 }
 
 void 

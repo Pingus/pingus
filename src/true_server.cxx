@@ -1,4 +1,4 @@
-//  $Id: true_server.cxx,v 1.12 2002/10/01 19:53:44 grumbel Exp $
+//  $Id: true_server.cxx,v 1.13 2002/10/01 21:48:32 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,7 +36,6 @@ TrueServer::TrueServer(PLF* arg_plf)
   fast_forward = false;
   pause = false;
   last_time = 0;
-  local_game_speed = game_speed;
 
   world = new World (plf);
 }
@@ -58,14 +57,13 @@ TrueServer::update()
       // times
       for (int i = 0; i < 4; ++i)
 	{
-	  Server::update();
 	  world->update();
 	}
     }
   else
     {
-      Server::update();
-      world->update();
+      if (!pause)
+	world->update();
     }
 }
 

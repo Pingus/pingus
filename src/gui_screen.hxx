@@ -1,4 +1,4 @@
-//  $Id: gui_screen.hxx,v 1.10 2002/09/27 11:26:43 torangan Exp $
+//  $Id: gui_screen.hxx,v 1.11 2002/10/01 21:48:32 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -44,7 +44,7 @@ public:
   /** Draw this screen */
   virtual void draw_foreground () {}
   virtual void draw_background () {}
-  virtual void draw (GraphicContext& gc);
+  virtual bool draw (GraphicContext& gc);
 
   /** Pass a game delta to the screen */
   virtual void update (const GameDelta& delta);

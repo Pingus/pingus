@@ -1,4 +1,4 @@
-//  $Id: client.cxx,v 1.24 2002/09/28 11:52:21 torangan Exp $
+//  $Id: client.cxx,v 1.25 2002/10/01 21:48:32 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -111,42 +111,11 @@ Client::update (const GameDelta& delta)
 void 
 Client::update (float delta)
 {
-  // Let the server process a game loop
-  //send_next_event();
-
-  /*float wannabe_delta = 0.0333f;
-    unsigned int frames = 1;
-    bool auto_frame_skip = false;
-    float current_delta;*/
-
   if (server->is_finished())
     {
       std::cout << "Client: update(): Server is finished" << std::endl;
       ScreenManager::instance ()->pop_screen ();
     }
-
-  /*
-    CL_System::keep_alive ();
-    CL_System::sleep (0);
-
-    if (current_delta > wannabe_delta)
-    {
-    update (delta.getset ());
-    ++frames;
-    if (frames % int(frame_skip) == 0)
-    {
-    if (!auto_frame_skip)
-    {
-    draw ();
-    }
-    }
-    else
-    {
-    CL_System::sleep (int(1000 * (wannabe_delta - delta.get ())));
-    }
-    }*/
-    
-  if(delta);
 }
 
 #if 0
@@ -438,12 +407,13 @@ Client::on_action_axis_move (float move)
     button_panel->previous_action ();
 }
 
-void
+bool
 Client::draw (GraphicContext& gc)
 {
   GUIScreen::draw (gc);
   if (!server->get_plf()->get_playable())
     gc.draw(unplayable, Vector(400, 50));
+  return true;
 }
 
 void

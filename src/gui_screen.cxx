@@ -1,4 +1,4 @@
-//  $Id: gui_screen.cxx,v 1.9 2002/09/19 13:30:08 torangan Exp $
+//  $Id: gui_screen.cxx,v 1.10 2002/10/01 21:48:32 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,13 +37,14 @@ GUIScreen::~GUIScreen ()
   delete gui_manager;
 }
 
-  /** Draw this screen */
-void
+/** Draw this screen */
+bool
 GUIScreen::draw (GraphicContext& gc)
 {
   draw_background ();
   gui_manager->draw (gc);
   draw_foreground ();
+  return true;
 }
 
   /** Pass a delta to the screen */

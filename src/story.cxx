@@ -1,4 +1,4 @@
-//  $Id: story.cxx,v 1.12 2002/09/28 11:52:22 torangan Exp $
+//  $Id: story.cxx,v 1.13 2002/10/01 21:48:32 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -52,7 +52,7 @@ Story::update (float /*delta*/)
 {
 }
 
-void 
+bool 
 Story::draw(GraphicContext& gc)
 {
   CL_Display::fill_rect (0,0,
@@ -74,6 +74,8 @@ Story::draw(GraphicContext& gc)
   gc.print_left(Fonts::pingus_small, 125, 80 + story.get_height() + 25 + (4 * 15), "...");
   gc.print_left(Fonts::pingus_small, 125, 80 + story.get_height() + 25 + (5 * 15), "...");
   gc.print_left(Fonts::pingus_small, 125, 80 + story.get_height() + 25 + (6 * 15), "Press <Space> to continue...");
+
+  return true;
 }
 
 void

@@ -1,4 +1,4 @@
-//  $Id: sprite.cxx,v 1.8 2002/10/01 19:53:44 grumbel Exp $
+//  $Id: sprite.cxx,v 1.9 2002/10/01 21:48:32 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -211,7 +211,7 @@ void
 Sprite::update ()
 {
   // FIXME: game_speed is incorrect, but should work
-  update(game_speed/1000.0f);
+  update(1.0f/float(game_speed));
 }
 
 void

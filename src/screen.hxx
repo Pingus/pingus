@@ -1,4 +1,4 @@
-//  $Id: screen.hxx,v 1.9 2002/09/27 11:26:44 torangan Exp $
+//  $Id: screen.hxx,v 1.10 2002/10/01 21:48:32 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,11 +35,14 @@ public:
 
   Screen () { }
   
-  /** Draw this screen */
-  virtual void draw (GraphicContext& gc) =0;
+  /** Draw this screen @return true if draw was successfull, false if
+      frameskip has taken place ('causes a skip of flip_display) */
+  virtual bool draw (GraphicContext& gc) =0;
 
   /** Pass a delta to the screen */
   virtual void update (const GameDelta& delta) =0;
+
+  virtual unsigned int time_till_next_update() { return 0; }
 
   /** Called once the screen gets activated and becomes the current
       screen */

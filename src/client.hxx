@@ -1,4 +1,4 @@
-//  $Id: client.hxx,v 1.20 2002/10/01 19:53:44 grumbel Exp $
+//  $Id: client.hxx,v 1.21 2002/10/01 21:48:32 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -104,7 +104,7 @@ public:
   void on_mouse_button_release(const CL_Key &key);
 
   // Overloaded GUIScreen stuff
-  void draw (GraphicContext& gc);
+  bool draw (GraphicContext& gc);
   void on_startup ();
   void on_shutdown ();
 

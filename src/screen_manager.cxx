@@ -1,4 +1,4 @@
-//  $Id: screen_manager.cxx,v 1.18 2002/09/30 14:20:49 torangan Exp $
+//  $Id: screen_manager.cxx,v 1.19 2002/10/01 21:48:32 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -99,8 +99,8 @@ ScreenManager::display ()
       // skip draw if the screen changed to avoid glitches
       if (last_screen == get_current_screen())
       	{
-	  get_current_screen()->draw (display_gc);
-	  Display::flip_display ();
+	  if (get_current_screen()->draw (display_gc))
+	    Display::flip_display ();
 	}
       else
 	{

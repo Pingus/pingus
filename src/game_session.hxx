@@ -1,4 +1,4 @@
-//  $Id: game_session.hxx,v 1.8 2002/09/27 11:26:43 torangan Exp $
+//  $Id: game_session.hxx,v 1.9 2002/10/01 21:48:32 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -49,6 +49,12 @@ private:
       the called must delete the returned PLF object */
   PLF* create_plf (std::string filename);
 
+  unsigned int last_redraw;
+  unsigned int last_update;
+
+  unsigned int frames;
+  unsigned int frame_skips;
+  
 public:
   /** Create a new game session which is launched on start ()
       @param arg_filename The filename of a Pingus Level file 
@@ -63,7 +69,7 @@ public:
 
   // Overloaded Screen functions 
   /** Draw this screen */
-  void draw (GraphicContext& gc);
+  bool draw (GraphicContext& gc);
 
   /** Pass a delta to the screen */
   void update (const GameDelta& delta);

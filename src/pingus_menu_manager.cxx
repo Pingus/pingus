@@ -1,4 +1,4 @@
-//  $Id: pingus_menu_manager.cxx,v 1.14 2002/09/28 11:52:22 torangan Exp $
+//  $Id: pingus_menu_manager.cxx,v 1.15 2002/10/01 21:48:32 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,7 +43,7 @@ PingusMenuManager::~PingusMenuManager ()
 {
 }
 
-void
+bool
 PingusMenuManager::draw (GraphicContext& gc)
 {
   background.draw ();
@@ -56,6 +56,8 @@ PingusMenuManager::draw (GraphicContext& gc)
 
   for (MenuStackIter i = menu_stack.begin (); i != menu_stack.end (); ++i)
     (*i)->draw (gc);
+
+  return true;
 }
 
 void

@@ -1,4 +1,4 @@
-//  $Id: true_server.hxx,v 1.7 2002/10/01 19:53:44 grumbel Exp $
+//  $Id: true_server.hxx,v 1.8 2002/10/01 21:48:32 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,7 +29,6 @@ private:
   bool fast_forward;
   bool pause;
   unsigned int  last_time;
-  int  local_game_speed;
   float delta;
   bool armageddon;
 
