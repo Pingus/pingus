@@ -1,20 +1,27 @@
 <?
-//  Pingus Level Feedback system
+//  Pingus Level Comment Tool
 //  Copyright (C) 2003 by Jarno Elonen <elonen@iki.fi>
 //
-//  This program is free software; you can redistribute it and/or
-//  modify it under the terms of the GNU General Public License
-//  as published by the Free Software Foundation; either version 2
-//  of the License, or (at your option) any later version.
+// Redistribution and use in source and binary forms, with or without modification,
+// are permitted provided that the following conditions are met:
 //
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY; without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-//  GNU General Public License for more details.
+// + Redistributions of source code must retain the above copyright notice, this
+//   list of conditions and the following disclaimer.
+// + Redistributions in binary form must reproduce the above copyright notice,
+//   this list of conditions and the following disclaimer in the documentation
+//   and/or other materials provided with the distribution.
+// + The name of the author may not be used to endorse or promote products derived
+//   from this software without specific prior written permission.
 //
-//  You should have received a copy of the GNU General Public License
-//  along with this program; if not, write to the Free Software
-//  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+// THIS SOFTWARE IS PROVIDED BY THE AUTHOR ''AS IS'' AND ANY EXPRESS OR IMPLIED
+// WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
+// AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE AUTHOR
+// BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+// DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+// LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+// ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+// NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+// EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 require_once("xml-search.inc");
 require_once("level-cache.inc");
@@ -34,7 +41,7 @@ if ( isset($_GET["adminlogin"]))
 {
   if (!isset($_SERVER['PHP_AUTH_USER']))
   {
-    header('WWW-Authenticate: Basic realm="Pingus Feedback Admin"');
+    header('WWW-Authenticate: Basic realm="Pingus Comment Tool Admin"');
     header('HTTP/1.0 401 Unauthorized');
     echo 'Cancelled. Hit Back.';
     exit;
@@ -70,17 +77,17 @@ else if ( isset($_COOKIE["showthumbs"]) )
 ?>
 <html>
   <head>
-    <title>Pingus level feedback database</title>
+    <title>Pingus level comment database</title>
     <link rel="stylesheet" type="text/css" href="default.css">
   </head>
   <body>
 
-    <h1>Pingus level feedback database</h1>
+    <h1>Pingus level comment database</h1>
     <div class="mainbody">
 
 <?
 
-$preferred_order = Array( 'tutorial', 'playable', 'wip', 'test' );
+$preferred_order = Array( 'tutorial', 'playable', 'volcano', 'wip', 'test' );
 
 // ==================================================================
 // Read cathegory and level names from filesystem
@@ -120,10 +127,10 @@ if  ( !isset($_GET["l"]) || !isset($_GET["c"]) )
     $showCath = '';
   else
     $showCath = '&c=' . $_GET["c"];
-       	
+
   if ( $show_thumbs )
   	print "<a href='$PHP_SELF?showthumbs=0$showCath'>[hide thumbnails]</a></br>";
-      
+
   else
     print "<a href='$PHP_SELF?showthumbs=1$showCath'>[show thumbnails]</a></br>";
 
@@ -494,8 +501,8 @@ close_cache();
 ?>
     </div>
     <div>
-      <small>Pingus level feedback system &copy; 2003, 2004 by Jarno Elonen,
-      Licensed under the GNU General Public License (GPL) 2.0 or newer
+      <small>Pingus level comment tool &copy; 2003, 2004 by Jarno Elonen,
+      Licensed under the Modified BSD License
       </small>
     </div>
   </body>

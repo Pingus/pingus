@@ -1,26 +1,8 @@
 Pingus Level Comment Tool
 
-Installing:
+Copyright (C) by
 
-  1) Make sure you have installed
-     Apache and PHP 4.2+
-
-  2) Uncompress the tar into a directory where Apache
-     can see it.
-
-  3) Create directory 'comments' where the script will
-     write the xml comment files and MAKE IT WRITABLE
-     for Apache.
-
-  4) Create directory 'data' and copy Pingus source directories
-     'levels' into it.
-
-  5) Tweak your .htaccess - you might want to deny from all
-     comments/* and add "AddType application/pingus-level plf"
-
-Copyright
-
-Pingus Level Feedback System is (c) 2003-2004 by Jarno Elonen
+  2003-2004, Jarno Elonen <elonen@iki.fi>
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
