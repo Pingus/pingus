@@ -1,4 +1,4 @@
-//  $Id: ObjectSelector.cc,v 1.17 2000/06/12 20:31:32 grumbel Exp $
+//  $Id: ObjectSelector.cc,v 1.18 2000/06/13 17:50:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -273,10 +273,10 @@ ObjectSelector::select_obj_type()
   font->print_left(20, 70, "g - Groundpiece (ground)");
   font->print_left(20, 90, "s - Groundpiece (solid)");
   font->print_left(20,110, "b - Groundpiece (bridge)");
-  font->print_left(20,110, "n - Groundpiece (transparent)");
-  font->print_left(20,130, "h - Hotspot");
-  font->print_left(20,150, "e - Entrance");
-  font->print_left(20,170, "x - Exit");
+  font->print_left(20,130, "n - Groundpiece (transparent)");
+  font->print_left(20,150, "h - Hotspot");
+  font->print_left(20,170, "e - Entrance");
+  font->print_left(20,190, "x - Exit");
   Display::flip_display();
     
   while (true) 
@@ -352,6 +352,11 @@ ObjectSelector::read_string(string description, string def_str)
 /*
 
 $Log: ObjectSelector.cc,v $
+Revision 1.18  2000/06/13 17:50:47  grumbel
+Added a simple console (output only), can be activated with ` or ^
+Fixed the groundpiece selection dialog in the editor
+made fps_counter a global object
+
 Revision 1.17  2000/06/12 20:31:32  grumbel
 Fixed handling of transparent spots in the editor
 Added a faster screenshot function (only for 16bit)

@@ -1,4 +1,4 @@
-//  $Id: FPSCounter.cc,v 1.1 2000/06/12 20:33:47 grumbel Exp $
+//  $Id: FPSCounter.cc,v 1.2 2000/06/13 17:50:46 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,16 +22,27 @@
 #include "PingusResource.hh"
 #include "FPSCounter.hh"
 
+FPSCounter fps_counter;
+
 FPSCounter::FPSCounter()
+{
+}
+
+FPSCounter::~FPSCounter()
+{
+}
+
+
+// We are not initialising the fpscounter in the constructor, 'cause
+// that doesn't work (ClanLib hasn't init the display at that point) 
+void
+FPSCounter::init()
 {
   font = CL_Font::load("Fonts/pingus_small", PingusResource::get("fonts.dat"));
   start_time = CL_System::get_time();
   strcat(fps_string, "unknown");
   fps_count = 0;
-}
-
-FPSCounter::~FPSCounter()
-{
+  is_init = true;
 }
 
 void

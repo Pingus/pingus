@@ -1,4 +1,4 @@
-//  $Id: GlobalEvent.hh,v 1.1 2000/06/12 14:42:10 grumbel Exp $
+//  $Id: GlobalEvent.hh,v 1.2 2000/06/13 17:50:46 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,6 +32,8 @@ public:
   virtual bool on_button_release(CL_InputDevice *device, const CL_Key &key);
   
 };
+
+extern GlobalEvent global_event;
 
 #endif
 

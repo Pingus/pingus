@@ -1,4 +1,4 @@
-//  $Id: FPSCounter.hh,v 1.2 2000/06/13 17:50:46 grumbel Exp $
+//  $Id: Console.hh,v 1.1 2000/06/13 17:50:46 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,30 +17,39 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef FPSCOUNTER_HH
-#define FPSCOUNTER_HH
+#ifndef CONSOLE_HH
+#define CONSOLE_HH
 
+#include <string>
+#include <vector>
 #include <ClanLib/core.h>
 #include "Display.hh"
 
-class FPSCounter : public DisplayHook
+class Console : public DisplayHook
 {
 private:
   CL_Font* font;
-  char fps_string[64];
-  int fps_count;
-  unsigned int start_time;
   bool is_init;
+  bool is_visible;
+  int  current_pos;
+  vector<string> output_buffer;
+  string current_line;
+
+  void draw();
+
 public:
-  FPSCounter();
-  virtual ~FPSCounter();
+  Console();
+  virtual ~Console();
 
   void init();
   virtual void on_event();
-  virtual void update_fps_counter();
+  void toggle_display();
+  Console& operator<<(string);
+  Console& operator<<(int);
+  void println(char* format, ...);
 };
 
-extern FPSCounter fps_counter;
+extern Console console;
 
 #endif
 

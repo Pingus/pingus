@@ -1,4 +1,4 @@
-//  $Id: GlobalEvent.cc,v 1.1 2000/06/12 14:42:10 grumbel Exp $
+//  $Id: GlobalEvent.cc,v 1.2 2000/06/13 17:50:46 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,7 +18,10 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "Screenshot.hh"
+#include "Console.hh"
 #include "GlobalEvent.hh"
+
+GlobalEvent global_event;
 
 bool
 GlobalEvent::on_button_press(CL_InputDevice *device, const CL_Key &key)
@@ -31,8 +34,11 @@ GlobalEvent::on_button_press(CL_InputDevice *device, const CL_Key &key)
 	  std::cout << "GlobalEvent::Makeing scrennshoot..." << std::endl;
 	  Screenshot::make_screenshot();
 	  return false;
+	case CL_KEY_NONE_OF_THE_ABOVE:
+	  console.toggle_display();
+	  break;
 	default:
-	  std::cout << "Unknown key pressed" << std::endl;
+	  console << "GlobalEvent: Unknown key pressed: " << key.id;
 	  break;
 	}
       return true;

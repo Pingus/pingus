@@ -1,4 +1,4 @@
-//   $Id: Pingus.cc,v 1.33 2000/06/12 20:31:30 grumbel Exp $
+//   $Id: Pingus.cc,v 1.34 2000/06/13 17:50:46 grumbel Exp $
 //    ___
 //   |  _\ A free Lemmings clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -55,7 +55,7 @@
 #include "Display.hh"
 #include "GlobalEvent.hh"
 #include "Config.hh"
-
+#include "Console.hh"
 #include "FPSCounter.hh"
 #include "PingusSound.hh"
 #include "PingusMenu.hh"
@@ -470,6 +470,9 @@ PingusMain::init_pingus()
 		<< std::endl;
     }
 
+  fps_counter.init();
+  console.init();
+
   if (preload_data)
     {
       load_resources("global.dat");
@@ -669,7 +672,7 @@ PingusMain::init_clanlib()
   // Init ClanLib
   if (verbose) 
     std::cout << "Init ClanLib" << std::endl;
-  // CL_System::init_display();
+
   CL_SetupCore::init_display();
 
   if (sound_enabled || music_enabled) 
@@ -694,17 +697,15 @@ PingusMain::init_clanlib()
 bool
 PingusMain::do_lemmings_mode(void)
 {
-  GlobalEvent* global_event = new GlobalEvent();
-  FPSCounter   fps_counter;
-
-  Display::add_flip_screen_hook(&fps_counter);
-
   if (verbose) {
     std::cout << "PingusMain: Starting Main: " << CL_System::get_time() << std::endl;
   }
 
-  CL_Input::chain_button_release.push_back(global_event);
-  CL_Input::chain_button_press.push_back(global_event);
+  Display::add_flip_screen_hook(&fps_counter);
+  Display::add_flip_screen_hook(&console);
+
+  CL_Input::chain_button_release.push_back(&global_event);
+  CL_Input::chain_button_press.push_back(&global_event);
 
   if (!levelfile.empty()) 
     {
@@ -733,9 +734,10 @@ PingusMain::do_lemmings_mode(void)
     PingusMessageBox(" PingusError: " + err.message);
   }
 
-  CL_Input::chain_button_press.remove(global_event);
-  CL_Input::chain_button_release.remove(global_event);
+  CL_Input::chain_button_press.remove(&global_event);
+  CL_Input::chain_button_release.remove(&global_event);
 
+  Display::remove_flip_screen_hook(&console);
   Display::remove_flip_screen_hook(&fps_counter);
   
   std::cout << "\n"
