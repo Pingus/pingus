@@ -1,4 +1,4 @@
-//  $Id: Background.cc,v 1.12 2000/06/11 15:23:29 grumbel Exp $
+//  $Id: Background.cc,v 1.13 2000/06/11 17:38:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -72,33 +72,27 @@ Background::load (background_data bg_data)
     {
       try
 	{
-	  /* Testing animatied backgrounds... */
+	  // Testing animatied backgrounds...
 	  bg_surface = CL_Surface::load(bg_data.desc.res_name.c_str(), PingusResource::get(bg_data.desc.filename));
-	  /*
-	  if (sur->get_num_frames() > 1 || true)
-	    {
-	      // We have an animated surface
-	      bg_surface = sur;
-	      surface_need_deletion = false;
-	    }
-	  else
+	  
+	  if (bg_surface->get_num_frames() != 1)
 	    {
 	      // We have a static surface
-
+     
 	      // Create a canvas as large as the surface
-	      canvas = new CL_Canvas(sur->get_width(), sur->get_height());
+	      CL_Canvas* canvas = new CL_Canvas(bg_surface->get_width(),
+						bg_surface->get_height());
 	      
-	      sur->put_target(0, 0, 0, canvas);
+	      bg_surface->put_target(0, 0, 0, canvas);
 	      
 	      canvas->fill_rect(0, 0,
-				sur->get_width(), sur->get_height(),
-				bg.red, bg.green, bg.blue, bg.dim);
+				bg_surface->get_width(), bg_surface->get_height(),
+				bg_data.red, bg_data.green, bg_data.blue,
+				bg_data.dim);
 	    
 	      bg_surface = CL_Surface::create(canvas, true);
 	      surface_need_deletion = true;
 	    }
-	  counter.set_size(bg_surface->get_num_frames());
-	  counter.set_speed(1.0);*/
 	}
 
       catch (CL_Error err)
@@ -111,6 +105,9 @@ Background::load (background_data bg_data)
 	  bg_surface = 0;
 	}
     }
+
+  counter.set_size(bg_surface->get_num_frames());
+  counter.set_speed(1.0);
 
   stretch_x = bg_data.stretch_x;
   stretch_y = bg_data.stretch_y;

@@ -1,4 +1,4 @@
-//  $Id: blitter.hh,v 1.2 2000/02/09 21:43:41 grumbel Exp $
+//  $Id: blitter.hh,v 1.3 2000/06/11 17:38:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,19 +22,25 @@
 
 #include <ClanLib/core.h>
 
-
-/*void put_surface(CL_LockableSurface* provider, CL_Surface* surface,
-		 int x, int y);
-void put_surface(CL_LockableSurface* provider, CL_SurfaceProvider* surface,
-                 int x, int y);
-*/
-void put_surface(CL_Canvas*, CL_SurfaceProvider*,
-		 int x, int y);
-void put_alpha_surface(CL_Canvas*, CL_SurfaceProvider*,
-		 int x, int y);
-
-CL_Surface* convert_to_emptyprovider(CL_Surface*);
-CL_Canvas* convert_to_emptyprovider(CL_SurfaceProvider*);
+class Blitter
+{
+public:
+  /*void put_surface(CL_LockableSurface* provider, CL_Surface* surface,
+    int x, int y);
+    void put_surface(CL_LockableSurface* provider, CL_SurfaceProvider* surface,
+    int x, int y);
+  */
+  static void put_surface(CL_Canvas*, CL_SurfaceProvider*,
+		   int x, int y);
+  static void put_alpha_surface(CL_Canvas*, CL_SurfaceProvider*,
+			 int x, int y);
+  
+  static CL_Canvas* clear_canvas(CL_Canvas*);
+  
+  //static CL_Surface* convert_to_emptyprovider(CL_Surface*);
+  //static CL_Canvas* convert_to_emptyprovider(CL_SurfaceProvider*);
+  
+};
 
 #endif 
 

@@ -1,4 +1,4 @@
-//  $Id: ActionButton.cc,v 1.6 2000/06/11 15:23:29 grumbel Exp $
+//  $Id: ActionButton.cc,v 1.7 2000/06/11 17:38:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,6 +38,8 @@ EventButton::EventButton(int x, int y, std::string str)
   x_pos = x;
   y_pos = y;
 }
+
+EventButton::~EventButton() {}
 
 void
 EventButton::draw()
@@ -303,7 +305,7 @@ ForwardButton::ForwardButton(int x, int y)
   y_pos = y;
 }
 
-ForwardButton::~ForwardButton();
+ForwardButton::~ForwardButton() {}
 
 void
 ForwardButton::draw()

@@ -1,4 +1,4 @@
-//  $Id: blitter.cc,v 1.6 2000/06/06 18:51:51 grumbel Exp $
+//  $Id: blitter.cc,v 1.7 2000/06/11 17:38:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,7 +23,7 @@
 
 
 void
-put_surface(CL_Canvas* provider, CL_SurfaceProvider* sprovider,
+Blitter::put_surface(CL_Canvas* provider, CL_SurfaceProvider* sprovider,
 	    int x, int y)
 {
   int start_i;
@@ -101,7 +101,7 @@ put_surface(CL_Canvas* provider, CL_SurfaceProvider* sprovider,
 
 
 void
-put_alpha_surface(CL_Canvas* provider, CL_SurfaceProvider* sprovider,
+Blitter::put_alpha_surface(CL_Canvas* provider, CL_SurfaceProvider* sprovider,
 	    int x, int y)
 {
   int start_i;
@@ -165,12 +165,26 @@ put_alpha_surface(CL_Canvas* provider, CL_SurfaceProvider* sprovider,
   provider->unlock();  
 }
 
+CL_Canvas*
+Blitter::clear_canvas(CL_Canvas* canvas)
+{
+  void* buffer;
+  
+  canvas->lock();
+  buffer = canvas->get_data();
+  
+  memset(buffer, 150, sizeof(unsigned char*) * canvas->get_pitch() * canvas->get_height() - 50);
 
-#if 0
+  canvas->unlock();
+
+  return canvas;
+}
+
+/*
 // Converts a SurfaceProvider based surface, to a Canvas
 // based one. The old one will not be deleted.
 CL_Surface*
-convert_to_emptyprovider(CL_Surface* ssurf)
+Blitter::convert_to_emptyprovider(CL_Surface* ssurf)
 {
   CL_Canvas* tprov = convert_to_emptyprovider(ssurf->get_provider());
   return CL_Surface::create(tprov, true);
@@ -179,16 +193,8 @@ convert_to_emptyprovider(CL_Surface* ssurf)
 // Converts a SurfaceProvider, to an Canvas and returns
 // the newly allocated provider, you need to delete it yourself.
 CL_Canvas*
-convert_to_emptyprovider(CL_SurfaceProvider* sprov)
+Blitter::convert_to_emptyprovider(CL_SurfaceProvider* sprov)
 {
-  /*  CL_Canvas* canvas;
-
-  canvas = new CL_Canvas(sprov->get_width(), sprov->get_height());
-  
-  sprov->put_target(canvas);
-
-  return canvas;
-  */
   CL_Canvas* tprov;
   CL_Palette* palette;
   unsigned char* sbuffer;
@@ -242,7 +248,6 @@ convert_to_emptyprovider(CL_SurfaceProvider* sprov)
   
   return tprov;
 }
-
-#endif // 0
+*/ 
 
 /* EOF */
