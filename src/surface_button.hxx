@@ -1,4 +1,4 @@
-//  $Id: surface_button.hxx,v 1.10 2002/09/27 11:26:44 torangan Exp $
+//  $Id: surface_button.hxx,v 1.11 2002/10/14 11:15:15 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -62,7 +62,7 @@ public:
   void on_pointer_press ();
   void on_pointer_release ();
   
-  void on_primary_button_click (int x, int y) { on_click (); if(x); if(y); }
+  void on_primary_button_click (int x, int y) { on_click (); UNUSED_ARG(x); UNUSED_ARG(y); }
 
   virtual void on_click () =0;
   

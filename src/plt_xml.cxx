@@ -1,4 +1,4 @@
-//  $Id: plt_xml.cxx,v 1.10 2002/09/30 14:20:48 torangan Exp $
+//  $Id: plt_xml.cxx,v 1.11 2002/10/14 11:15:15 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -80,11 +80,11 @@ PLTXML::parse_background (xmlNodePtr cur)
 	}
       else if (XMLhelper::equal_str(cur->name, "stretch-x"))
 	{
-	  background.stretch_x = XMLhelper::parse_float(doc, cur);
+	  background.stretch_x = XMLhelper::parse_bool(doc, cur);
 	}
       else if (XMLhelper::equal_str(cur->name, "stretch-y"))
 	{
-	  background.stretch_y = XMLhelper::parse_float(doc, cur);
+	  background.stretch_y = XMLhelper::parse_bool(doc, cur);
 	}
       else
 	{

@@ -1,4 +1,4 @@
-//  $Id: pingus.hxx,v 1.3 2002/09/27 11:32:44 torangan Exp $
+//  $Id: pingus.hxx,v 1.4 2002/10/14 11:15:15 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,7 +33,10 @@
 
 #  define snprintf _snprintf
 
-#  pragma warning(disable:4786)
+#  pragma warning(disable:4786) //over 255 characters in debug indentifier, due to STL instantiation
+   //sadly this does not actually work on 6.0, but it does in .NET
+
+#  pragma warning(disable:4355) //this used in constructor base
 #endif
 
 #define UNUSED_ARG(a) do {/* null */} while (&a == 0)

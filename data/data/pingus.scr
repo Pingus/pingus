@@ -82,8 +82,8 @@ section Other
 	brick_right   = ../images/pingus/brick_right.png     (type=surface, x=0, y=0, width=16, height=2);
 	brick_left    = ../images/pingus/brick_left.png      (type=surface, x=0, y=0, width=16, height=2);
 
-	bash_radius       = ../images/pingus/bash_radius.png (type=surface, x=0, y=0, width=32, height=32);
-	bash_radius_gfx   = ../images/pingus/bash_radius_gfx.png (type=surface, x=0, y=0, width=32, height=32);
+	bash_radius       = ../images/pingus/bash_radius.png (type=surface, x=0, y=0, width=34, height=34);
+	bash_radius_gfx   = ../images/pingus/bash_radius_gfx.png (type=surface, x=0, y=0, width=34, height=34);
 
 	digger_radius     = ../images/pingus/digger_radius.png (type=surface);
 	digger_radius_gfx = ../images/pingus/digger_radius_gfx.png (type=surface);

@@ -1,4 +1,4 @@
-//  $Id: story.cxx,v 1.13 2002/10/01 21:48:32 grumbel Exp $
+//  $Id: story.cxx,v 1.14 2002/10/14 11:15:15 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -150,7 +150,8 @@ Story::on_pause_press ()
 bool
 Story::is_at (int x, int y)
 {
-  if(x); if(y);
+  UNUSED_ARG(x);
+  UNUSED_ARG(y);
 
   std::cout << "bla" << std::endl; 
   return true;

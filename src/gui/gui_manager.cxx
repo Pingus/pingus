@@ -1,4 +1,4 @@
-//  $Id: gui_manager.cxx,v 1.14 2002/10/04 11:38:29 torangan Exp $
+//  $Id: gui_manager.cxx,v 1.15 2002/10/14 11:15:15 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -97,14 +97,14 @@ void
 GUIManager::add (Component* c, bool delete_component) 
 { 
   components.push_back(c); 
-  if(delete_component);
+  UNUSED_ARG(delete_component);
 }
 
 void
 GUIManager::remove (Component* c)
 {
   /* components.erase(c); */ 
-  if(c);
+  UNUSED_ARG(c);
 }
 
 Component*

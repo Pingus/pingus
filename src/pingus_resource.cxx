@@ -1,4 +1,4 @@
-//  $Id: pingus_resource.cxx,v 1.17 2002/10/12 00:49:10 torangan Exp $
+//  $Id: pingus_resource.cxx,v 1.18 2002/10/14 11:15:15 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -243,7 +243,7 @@ PingusResource::load_from_source (const ResDescriptor& res_desc)
     default:
       perr << "PingusResource: Unknown ResDescriptor::type: " << res_desc.type  << std::endl;
       assert (false);
-      //return CL_Surface();
+      return CL_Surface();
     }
 }
 

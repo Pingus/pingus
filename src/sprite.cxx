@@ -1,4 +1,4 @@
-//  $Id: sprite.cxx,v 1.9 2002/10/01 21:48:32 grumbel Exp $
+//  $Id: sprite.cxx,v 1.10 2002/10/14 11:15:15 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -204,6 +204,7 @@ Sprite::max_frames ()
       return sur.get_num_frames ()/2;
     default:
       assert (0);
+	  return 0;
     }
 }
 

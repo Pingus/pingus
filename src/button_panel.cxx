@@ -1,4 +1,4 @@
-//  $Id: button_panel.cxx,v 1.16 2002/10/04 16:54:03 grumbel Exp $
+//  $Id: button_panel.cxx,v 1.17 2002/10/14 11:15:15 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -186,7 +186,8 @@ ButtonPanel::is_at (int x, int y)
 void
 ButtonPanel::on_primary_button_release(int x, int y)
 {
-  if(x); if(y);
+  UNUSED_ARG(x);
+  UNUSED_ARG(y);
 }
 
 /// Select the next action

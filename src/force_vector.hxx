@@ -1,4 +1,4 @@
-//  $Id: force_vector.hxx,v 1.6 2002/09/28 11:52:21 torangan Exp $
+//  $Id: force_vector.hxx,v 1.7 2002/10/14 11:15:15 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -44,7 +44,7 @@ public:
   /** Applies the force to a velocity vector, v, a position p and
       returns the new velicty vector. Just adds fv to v, p is ignored
       as gravity is universal. */
-  Vector apply_forces(Vector p,Vector v)
+  Vector apply_forces(const Vector& p, const Vector& v)
   {
     UNUSED_ARG(p);
     return v + ifv;
@@ -71,7 +71,7 @@ protected:
   Vector ip;
 
 public:
-  ExplosionForce(float inten, float size,Vector p) : iinten(inten), isize(size), ip(p) 
+  ExplosionForce(float inten, float size, const Vector& p) : iinten(inten), isize(size), ip(p) 
   {
   }
 
@@ -81,7 +81,7 @@ public:
 
   ExplosionForce& operator= (const ExplosionForce& old);
 
-  Vector apply_forces(Vector p,Vector v);
+  Vector apply_forces(const Vector& p, const Vector& v);
 
 };
 
@@ -113,7 +113,7 @@ public:
   static void clear_all_forces();
 
   /// Apply forces
-  static Vector apply_forces(Vector p,Vector v);
+  static Vector apply_forces(const Vector& p, const Vector& v);
   
 private:
   ForcesHolder (const ForcesHolder&);
@@ -123,7 +123,3 @@ private:
 #endif /* FVEC_HH */
 
 /* EOF */
-
-
-
-

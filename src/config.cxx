@@ -1,4 +1,4 @@
-//  $Id: config.cxx,v 1.5 2002/09/04 14:55:11 torangan Exp $
+//  $Id: config.cxx,v 1.6 2002/10/14 11:15:15 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -282,7 +282,9 @@ ConfigParser::parse(void)
 	  set_value(valueid, value);
 	}
     }
-  catch (ConfigParserEOF a) {}
+  catch (ConfigParserEOF)
+	{
+	}
 }
 
 Config::Config()

@@ -1,4 +1,4 @@
-//  $Id: basher.cxx,v 1.22 2002/10/13 20:25:00 torangan Exp $
+//  $Id: basher.cxx,v 1.23 2002/10/14 11:15:15 torangan Exp $
 //
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -39,6 +39,13 @@ Basher::Basher (Pingu* p)
     first_bash(true)
 {
   sprite.set_align_center_bottom();
+
+  bash_radius_width = bash_radius.get_width();
+  bash_radius_gfx_width = bash_radius_gfx.get_width();
+
+  // The +1 is just in case bash_radius is an odd no.  In which case, want to
+  // round up the result.
+  bash_reach = static_cast<int>(bash_radius_width + 1) / 2;
 
   // Start a bash even so the action will stops instantly after the
   // first bash
@@ -84,11 +91,11 @@ void
 Basher::bash()
 {
   WorldObj::get_world()->get_colmap()->remove(bash_radius,
-					      static_cast<int>(pingu->get_x () - (bash_radius.get_width()/2)),
-					      static_cast<int>(pingu->get_y () - 31));
+					      static_cast<int>(pingu->get_x () - (bash_radius_width / 2)),
+					      static_cast<int>(pingu->get_y () - bash_radius_width - 1));
   WorldObj::get_world()->get_gfx_map()->remove(bash_radius_gfx,
-					       static_cast<int>(pingu->get_x () - (bash_radius_gfx.get_width()/2)),
-					       static_cast<int>(pingu->get_y () - 31));
+					       static_cast<int>(pingu->get_x () - (bash_radius_gfx_width / 2)),
+					       static_cast<int>(pingu->get_y () - bash_radius_gfx_width - 1));
 }
 
 void
@@ -127,12 +134,10 @@ Basher::have_something_to_dig()
       return true;
     }
 
-  for(int x = 0; x <= 16; ++x)
+  // Check that there is something "within" the Basher's reach
+  for(int x = 0; x <= bash_reach; ++x)
     {
-      // Check that there is a high enough wall (i.e. not 1 pixel) to bash.
-      // Probably best to check from where Pingu can't automatically walk up
-      // up to head collision height.
-      for (int y = bash_height + 1; y <= bash_height + pingu_height + 1; ++y)
+      for (int y = min_bash_height; y <= max_bash_height; ++y)
 	{
 	  if (rel_getpixel(x, y) == Groundtype::GP_GROUND)
 	    {

@@ -1,4 +1,4 @@
-//  $Id: surface_button.cxx,v 1.4 2002/09/04 14:55:12 torangan Exp $
+//  $Id: surface_button.cxx,v 1.5 2002/10/14 11:15:15 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -56,7 +56,7 @@ SurfaceButton::is_at (int x, int y)
 	    << std::endl;*/
 
   return x > x_pos && x < x_pos + int(button_surface.get_width ())
-    && y > y_pos && y < y_pos + int(button_surface.get_height ());
+      && y > y_pos && y < y_pos + int(button_surface.get_height ());
 }
 
 void
@@ -65,7 +65,8 @@ SurfaceButton::on_primary_button_press (int x, int y)
   std::cout << "XXXXXXXXX press" << std::endl;
   pressed = true;
   
-  if(x); if(y);
+  UNUSED_ARG(x);
+  UNUSED_ARG(y);
 }
 
 void
@@ -74,7 +75,8 @@ SurfaceButton::on_primary_button_release (int x, int y)
   std::cout << "XXXXXXXXX release" << std::endl;
   pressed = false;
   
-  if(x); if(y);
+  UNUSED_ARG(x);
+  UNUSED_ARG(y);
 }
 
 void
@@ -96,7 +98,8 @@ SurfaceButton::on_primary_button_click (int x, int y)
 {
   std::cout << "Surfacebutton got click" << std::endl;
   
-  if(x); if(y);
+  UNUSED_ARG(x);
+  UNUSED_ARG(y);
 }
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: action_button.cxx,v 1.17 2002/10/12 00:49:09 torangan Exp $
+//  $Id: action_button.cxx,v 1.18 2002/10/14 11:15:15 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,7 +42,7 @@ ActionButton::init(int x, int y, ActionName name_, int owner_id)
   y_pos = y;
   name = name_;
  
-  if (name == Digger || name == Bomber
+  if (   name == Digger || name == Bomber
       || name == Floater || name == Blocker)
     {
       is_multi_direct = false;
@@ -82,9 +82,10 @@ ActionButton::is_pressed()
 }
 
 void
-ActionButton::update(float /*delta*/)
+ActionButton::update(float delta)
 {
   ++action_c;
+  UNUSED_ARG(delta);
 }
 
 ActionName
@@ -280,7 +281,7 @@ ForwardButton::draw (GraphicContext& gc)
 bool
 ForwardButton::is_at (int x, int y)
 {
-  if (x > x_pos && x < x_pos + int(surface.get_width())
+  if (   x > x_pos && x < x_pos + int(surface.get_width())
       && y > y_pos && y < y_pos + int(surface.get_height()))
     {
       return true;
@@ -335,7 +336,7 @@ PauseButton::is_at (int x, int y)
 void
 PauseButton::on_primary_button_click (int x, int y)
 {
-  server->set_pause(!server->get_pause ());
+  server->set_pause(!server->get_pause());
   
   UNUSED_ARG(x);
   UNUSED_ARG(y);

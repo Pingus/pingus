@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.24 2002/10/10 12:25:53 grumbel Exp $
+//   $Id: pingus_main.cxx,v 1.25 2002/10/14 11:15:15 torangan Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -930,7 +930,7 @@ PingusMain::main(int argc, char** argv)
     std::cout << _("Error caught from Pingus: ") << err.get_message () << std::endl;
   }
 
-  catch (const std::bad_alloc& a) {
+  catch (const std::bad_alloc&) {
     std::cout << _("Pingus: Out of memory!") << std::endl;
   }
 

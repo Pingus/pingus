@@ -1,4 +1,4 @@
-//  $Id: plt_parser.cxx,v 1.5 2002/09/04 14:55:11 torangan Exp $
+//  $Id: plt_parser.cxx,v 1.6 2002/10/14 11:15:15 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -69,7 +69,7 @@ PLTParser::parse(string filename)
 	}
     }
   
-  catch (PLTEOF a) 
+  catch (PLTEOF) 
     {
       // cout << "PLT: EOF found" << endl;
     }

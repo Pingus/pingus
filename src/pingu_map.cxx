@@ -1,4 +1,4 @@
-//  $Id: pingu_map.cxx,v 1.4 2002/09/16 20:31:09 grumbel Exp $
+//  $Id: pingu_map.cxx,v 1.5 2002/10/14 11:15:15 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,7 +33,10 @@ PinguMap::~PinguMap()
 void 
 PinguMap::mark_dirty(int x,int y,int w,int h)
 {
-  if (x || y || w || h); // no warnings
+	UNUSED_ARG(x);
+	UNUSED_ARG(y);
+	UNUSED_ARG(w);
+	UNUSED_ARG(h);
 }
 
 // Return '0' to indicate that the colmap can not be generated

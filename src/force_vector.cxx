@@ -1,4 +1,4 @@
-//  $Id: force_vector.cxx,v 1.7 2002/09/28 11:52:21 torangan Exp $
+//  $Id: force_vector.cxx,v 1.8 2002/10/14 11:15:15 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -52,17 +52,17 @@ ExplosionForce& ExplosionForce::operator= (const ExplosionForce& old)
 
 // Apply the explosion force
 Vector
-ExplosionForce::apply_forces(Vector p,Vector v)
+ExplosionForce::apply_forces(const Vector& p, const Vector& v)
 {
-  Vector tmpv = v;
-  float imod,dist;
-
   // Is p within the radius of the explosion?
-  if (!((p.x - ip.x < isize && p.x - ip.x > -isize)
+  if (!(   (p.x - ip.x < isize && p.x - ip.x > -isize)
 	&& (p.y - ip.y < isize && p.y - ip.y > -isize)))
     {
       return v;
     }
+
+  Vector tmpv = v;
+  float imod,dist;
 
   dist = fabs(p.x - ip.x);
   imod = iinten * ((isize - dist) / isize);
@@ -110,17 +110,17 @@ ForcesHolder::clear_all_forces()
 }
 
 Vector
-ForcesHolder::apply_forces(Vector p,Vector v)
+ForcesHolder::apply_forces(const Vector& p, const Vector& v)
 {
   Vector tv = v;
 
   // Go through all of the forces and apply them all
   for (GForceIter i = grav_array.begin(); i != grav_array.end(); ++i)
-    tv = i->apply_forces(p,v);
+    tv = i->apply_forces(p,tv);
   
   // Explosion array...
   for (EForceIter j = explo_array.begin(); j != explo_array.end(); ++j)
-    tv = j->apply_forces(p,v);
+    tv = j->apply_forces(p,tv);
   
   return tv;
 }

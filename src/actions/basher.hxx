@@ -1,4 +1,4 @@
-//  $Id: basher.hxx,v 1.14 2002/10/13 16:40:00 grumbel Exp $
+//  $Id: basher.hxx,v 1.15 2002/10/14 11:15:15 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,9 +33,24 @@ private:
   CL_Surface bash_radius_gfx;
   int basher_c;
   bool first_bash;
+
+  /** Width of the bash_radius surface */
+  unsigned int bash_radius_width;
+
+  /** Width of the bash_radius_gfx surface */
+  unsigned int bash_radius_gfx_width;
+
+  /** The no. of pixels ahead that a Basher checks for something bashable.
+      This is initialised using the size of the bash_radius surface. */
+  int bash_reach;
     
-  /// Defines "wall" height needed so as to determine whether it should be bashed.
-  enum { bash_height = 4 };
+  /** Defines the minimum "wall" height needed for a bash to happen. */
+  enum { min_bash_height = 5 };
+
+  /** Defines the maximum height up to which a check is made to see if there
+      is anything to bash.  Best to make this at least (min_bash_height +
+      pingu_height). */
+  enum { max_bash_height = 33 };
 
   /** Defines the maximum no. of steps down a Basher can go down before it
       stops being a Basher and turns into a Faller. */

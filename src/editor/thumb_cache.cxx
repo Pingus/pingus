@@ -1,4 +1,4 @@
-//  $Id: thumb_cache.cxx,v 1.10 2002/09/11 12:45:58 grumbel Exp $
+//  $Id: thumb_cache.cxx,v 1.11 2002/10/14 11:15:15 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -177,7 +177,7 @@ ThumbCache::cache (const CL_Surface& sur, const std::string & res_ident, const s
       // Canvas will get deleted on the end of the lifetime of this surface
       return CL_Surface (canvas, true);
     }
-  catch (CL_Error& err) 
+  catch (CL_Error&) 
     {
       perr << "ThumbCache: Couldn't open file for writing: " << filename << std::endl;
       

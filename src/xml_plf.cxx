@@ -1,4 +1,4 @@
-//  $Id: xml_plf.cxx,v 1.30 2002/10/03 12:33:09 grumbel Exp $
+//  $Id: xml_plf.cxx,v 1.31 2002/10/14 11:15:15 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -360,7 +360,7 @@ XMLPLF::parse_global (xmlNodePtr cur)
 	}
       else if (XMLhelper::equal_str(cur->name, "playable"))
 	{
-	  playable = XMLhelper::parse_int(doc, cur);
+	  playable = XMLhelper::parse_bool(doc, cur);
 	}
       else if (XMLhelper::equal_str(cur->name, "comment"))
 	{
