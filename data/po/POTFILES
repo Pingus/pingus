@@ -115,6 +115,8 @@ src/game_session_result.cxx
 src/game_session_result.hxx
 src/game_time.cxx
 src/game_time.hxx
+src/gettext.cxx
+src/gettext.h
 src/global_event.cxx
 src/global_event.hxx
 src/globals.cxx
@@ -131,7 +133,6 @@ src/gui/cursor.hxx
 src/gui/display.cxx
 src/gui/display.hxx
 src/gui/game_delta.hxx
-src/gui/graphic_context.hxx
 src/gui/gui_manager.cxx
 src/gui/gui_manager.hxx
 src/gui/gui_screen.cxx
@@ -338,6 +339,8 @@ src/time_display.cxx
 src/time_display.hxx
 src/timer.cxx
 src/timer.hxx
+src/tinygettext.cxx
+src/tinygettext.hxx
 src/true_server.cxx
 src/true_server.hxx
 src/vector.cxx
