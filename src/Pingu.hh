@@ -1,4 +1,4 @@
-//  $Id: Pingu.hh,v 1.45 2002/06/10 15:01:23 torangan Exp $
+//  $Id: Pingu.hh,v 1.46 2002/06/11 15:43:12 giray Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #define PINGU_HH
 
 #include <vector>
+#include <string>
 #include <ClanLib/Core/Math/cl_vector.h>
 
 #include "Direction.hh"
