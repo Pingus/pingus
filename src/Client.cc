@@ -1,4 +1,4 @@
-//  $Id: Client.cc,v 1.76 2002/02/14 22:23:52 grumbel Exp $
+//  $Id: Client.cc,v 1.77 2002/02/24 20:40:25 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -339,8 +339,8 @@ Client::unregister_event_handler()
   //CL_Input::chain_button_press.remove(this);
 
   // Disconnect segfaults
-  CL_Input::sig_button_press.disconnect (on_button_press_slot); 
-  CL_Input::sig_button_release.disconnect (on_button_release_slot); 
+  CL_Input::sig_button_press ().disconnect (on_button_press_slot); 
+  CL_Input::sig_button_release ().disconnect (on_button_release_slot); 
 
   enabled = false;
 }

@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapManager.cc,v 1.19 2002/01/13 15:24:19 grumbel Exp $
+//  $Id: PingusWorldMapManager.cc,v 1.20 2002/02/24 20:40:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -49,9 +49,9 @@ PingusWorldMapManager::init ()
 void
 PingusWorldMapManager::display ()
 {
-  on_button_press_slot   = CL_Input::sig_button_press.connect (this, &PingusWorldMapManager::on_button_press);
-  on_button_release_slot = CL_Input::sig_button_release.connect (this, &PingusWorldMapManager::on_button_release);
-  on_mouse_move_slot     = CL_Input::sig_mouse_move.connect (this, &PingusWorldMapManager::on_mouse_move);
+  on_button_press_slot   = CL_Input::sig_button_press ().connect (this, &PingusWorldMapManager::on_button_press);
+  on_button_release_slot = CL_Input::sig_button_release ().connect (this, &PingusWorldMapManager::on_button_release);
+  on_mouse_move_slot     = CL_Input::sig_mouse_move ().connect (this, &PingusWorldMapManager::on_mouse_move);
 
   init ();
 
@@ -78,9 +78,9 @@ PingusWorldMapManager::display ()
       Display::flip_display ();
     }
 
-  CL_Input::sig_button_press.disconnect(on_button_press_slot);
-  CL_Input::sig_button_release.disconnect(on_button_release_slot);
-  CL_Input::sig_mouse_move.disconnect(on_mouse_move_slot);
+  CL_Input::sig_button_press ().disconnect(on_button_press_slot);
+  CL_Input::sig_button_release ().disconnect(on_button_release_slot);
+  CL_Input::sig_mouse_move ().disconnect(on_mouse_move_slot);
 }
 
 void
