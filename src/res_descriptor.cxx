@@ -1,4 +1,4 @@
-//  $Id: res_descriptor.cxx,v 1.4 2002/06/26 09:29:47 grumbel Exp $
+//  $Id: res_descriptor.cxx,v 1.5 2002/06/28 17:05:45 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #include <assert.h>
 #include <iostream>
 #include "res_descriptor.hxx"
+#include "string_converter.hxx"
 #include "pingus_error.hxx"
 
 using namespace Pingus;
@@ -105,7 +106,8 @@ ResDescriptor::ResDescriptor(const std::string& c_cast, const std::string& value
 bool
 ResDescriptor::operator<(const ResDescriptor& res_desc) const
 {
-  return (datafile + res_name) < (res_desc.datafile + res_desc.res_name);
+  return (datafile + res_name + to_string (type) + to_string (modifier)) 
+    < (res_desc.datafile + res_desc.res_name + to_string (res_desc.type) + to_string (res_desc.modifier));
 }
 
 std::ostream& operator<<(std::ostream& s, const ResDescriptor& desc)

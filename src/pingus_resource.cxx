@@ -1,4 +1,4 @@
-//  $Id: pingus_resource.cxx,v 1.12 2002/06/26 12:04:24 grumbel Exp $
+//  $Id: pingus_resource.cxx,v 1.13 2002/06/28 17:02:25 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -125,57 +125,52 @@ PingusResource::load_surface(const ResDescriptor& res_desc)
 {
   pout(PINGUS_DEBUG_RESOURCES) << "PingusResource: Loading surface: " << res_desc << std::endl;
 
-  CL_Surface surf(surface_map[res_desc]);
+  // try to load from cache
+  CL_Surface surf = load_from_cache(res_desc);
 
-  if (!surf)
+  if (!surf) // not in cache
     {
-      //std::cout << "PingusResource: Loading resource: " << res_desc.type << ":" 
-      //<< res_desc.datafile << " - " << res_desc.res_name << std::endl;
+      ResDescriptor desc = res_desc;
+      desc.modifier = ROT0;
 
-      switch(res_desc.type)
+      // Try to an unmodified version from cache
+      surf = load_from_cache(desc);
+
+      if (surf) // found unmodified version in cache
 	{
-	case ResDescriptor::RD_RESOURCE:
-	  try {
-	    surf = CL_Surface (res_desc.res_name.c_str(), get(suffix_fixer(res_desc.datafile)));
-	    //	    CL_Surface::load(res_desc.res_name.c_str(),
-	    //  get(suffix_fixer(res_desc.datafile)));
-	  } catch (CL_Error err) {
-	    pout << "PingusResource:" << res_desc
-	         <<  ":-404-:" << err.message << std::endl;
-	    try {
-	      surf = CL_Surface ("misc/404", get(suffix_fixer("core")));
-	    } catch (CL_Error err2) {
-	      pout << "PingusResource: Fatal error, important gfx files (404.pcx) couldn't be loaded!" << std::endl;
-	      throw err;
-	    }
-	  }
+	  surf = apply_modifier (surf, res_desc);
+      
+	  // add to cache (FIXME: doesn't work)
 	  surface_map[res_desc] = surf;
-	  break;
-	  
-	case ResDescriptor::RD_FILE:
-	  {
-	    std::string filename = System::get_statdir() + "images/" + res_desc.res_name;
-	    // FIXME: Memory leak?
-	    pout << "PingusResource::load_surface(" << res_desc.res_name << ")" << std::endl;
-	    // FIXME: Add pcx, jpeg, tga support here 
-	    surf = CL_Surface(new CL_PNGProvider(filename, NULL), false);
-	    pout << "DONE" << std::endl;
-	    surface_map[res_desc] = surf;
-	    break;
-	  }
-	  
-	case ResDescriptor::RD_AUTO:
-	  perr << "PingusResource: ResDescriptor::AUTO not implemented" << std::endl;
-	  assert (false);
+	}
+      else // never loaded, need to load it from source
+	{
+	  ResDescriptor desc = res_desc;
+	  desc.modifier = ROT0;
 
-	default:
-	  perr << "PingusResource: Unknown ResDescriptor::type: " << res_desc.type  << std::endl;
-	  assert (false);
-	  surf = CL_Surface();
-	  break;
+	  surf = load_from_source (desc);
+	  surface_map[desc] = surf; // add to cache
+
+	  surf = apply_modifier (surf, desc);
+	  surface_map[res_desc] = surf; // add modified version to cache
 	}
     }
-  
+
+  return surf;
+}
+
+CL_Surface
+PingusResource::load_from_cache (const ResDescriptor& res_desc)
+{
+  return surface_map[res_desc];
+}
+
+CL_Surface
+PingusResource::apply_modifier (const CL_Surface& surf, const ResDescriptor& res_desc)
+{
+  if (res_desc.modifier != ROT0)
+    std::cout << "Using expensive blitting" << std::endl;
+
   switch (res_desc.modifier)
     {
       // FIXME: muahhhaa... I write slower code than you....
@@ -206,6 +201,49 @@ PingusResource::load_surface(const ResDescriptor& res_desc)
     default:
       std::cout << "PingusResource: Unhandled modifier: " << res_desc.modifier << std::endl;
       return surf;
+    }
+}
+
+CL_Surface
+PingusResource::load_from_source (const ResDescriptor& res_desc)
+{
+  switch(res_desc.type)
+    {
+    case ResDescriptor::RD_RESOURCE:
+      try {
+	return CL_Surface (res_desc.res_name.c_str(), get(suffix_fixer(res_desc.datafile)));
+      } catch (CL_Error err) {
+	pout << "PingusResource:" << res_desc
+	     <<  ":-404-:" << err.message << std::endl;
+	try {
+	  return CL_Surface ("misc/404", get(suffix_fixer("core")));
+	} catch (CL_Error err2) {
+	  pout << "PingusResource: Fatal error, important gfx files (404.pcx) couldn't be loaded!" << std::endl;
+	  throw err;
+	}
+      }
+      break;
+	  
+    case ResDescriptor::RD_FILE:
+      {
+	std::string filename = System::get_statdir() + "images/" + res_desc.res_name;
+	// FIXME: Memory leak?
+	pout << "PingusResource::load_surface(" << res_desc.res_name << ")" << std::endl;
+	// FIXME: Add pcx, jpeg, tga support here 
+	return CL_Surface(new CL_PNGProvider(filename, NULL), true);
+	pout << "DONE" << std::endl;
+	break;
+      }
+	  
+    case ResDescriptor::RD_AUTO:
+      perr << "PingusResource: ResDescriptor::AUTO not implemented" << std::endl;
+      assert (false);
+
+    default:
+      perr << "PingusResource: Unknown ResDescriptor::type: " << res_desc.type  << std::endl;
+      assert (false);
+      return CL_Surface();
+      break;
     }
 }
 

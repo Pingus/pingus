@@ -1,4 +1,4 @@
-//  $Id: pingus_resource.hxx,v 1.5 2002/06/25 21:31:40 grumbel Exp $
+//  $Id: pingus_resource.hxx,v 1.6 2002/06/28 17:02:25 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,6 +38,10 @@ private:
   static std::map<std::string, CL_ResourceManager*> resource_map;
   static std::map<ResDescriptor, CL_Surface> surface_map;
   static std::map<ResDescriptor, CL_Font*> font_map;
+
+  static CL_Surface load_from_source (const ResDescriptor& res_desc);
+  static CL_Surface load_from_cache (const ResDescriptor& res_desc);
+  static CL_Surface apply_modifier (const CL_Surface&, const ResDescriptor& res_desc);
 
 public:
   ///
