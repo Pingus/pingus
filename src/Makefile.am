@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.131 2003/02/18 00:15:32 grumbel Exp $
+#  $Id: Makefile.am,v 1.132 2003/02/18 15:04:47 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,6 +34,7 @@ SUBDIRS = \
         input               \
 	movers		    \
 	particles           \
+	sound               \
         worldobjs           \
 	worldobjsdata       \
 	worldmap
@@ -64,6 +65,7 @@ pingus_LDADD = \
 	colliders/libpingus_colliders.a \
         editor/libpingus_editor.a       \
         particles/libpingus_particle.a  \
+        sound/libpingus_sound.a  \
         worldmap/libpingus_worldmap.a \
 	gui/libpingus_gui.a \
         input/libpingus_input.a \
@@ -263,15 +265,6 @@ smallmap.cxx \
 smallmap.hxx \
 smallmap_image.cxx \
 smallmap_image.hxx \
-sound.cxx \
-sound.hxx \
-sounds.hxx \
-sound_dummy.cxx \
-sound_dummy.hxx \
-sound_real.cxx \
-sound_real.hxx \
-specs_reader.cxx \
-specs_reader.hxx \
 spot_map.cxx \
 spot_map.hxx \
 sprite.cxx \

@@ -1,4 +1,4 @@
-//  $Id: pingus_main.hxx,v 1.6 2002/11/02 19:03:40 grumbel Exp $
+//  $Id: pingus_main.hxx,v 1.7 2003/02/18 15:04:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -56,6 +56,8 @@ private:
   void check_args(int argc, char** argv);
   void quick_check_args(int argc, char** argv);
   void read_rc_file(void);
+
+  void print_greeting_message();
 
   void init_clanlib();
   void deinit_clanlib();

@@ -1,4 +1,4 @@
-//  $Id: digger.cxx,v 1.19 2002/10/20 18:28:49 torangan Exp $
+//  $Id: digger.cxx,v 1.20 2003/02/18 15:04:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,7 +23,7 @@
 #include "../pingu_map.hxx"
 #include "../world.hxx"
 #include "../pingus_resource.hxx"
-#include "../sound.hxx"
+#include "../sound/sound.hxx"
 #include "../string_converter.hxx"
 #include "../pingu.hxx"
 #include "digger.hxx"

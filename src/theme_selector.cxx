@@ -1,4 +1,4 @@
-//  $Id: theme_selector.cxx,v 1.7 2002/09/28 11:52:22 torangan Exp $
+//  $Id: theme_selector.cxx,v 1.8 2003/02/18 15:04:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,7 +32,7 @@
 #include "pingus_resource.hxx"
 #include "display.hxx"
 #include "loading.hxx"
-#include "sound.hxx"
+#include "sound/sound.hxx"
 #include "path_manager.hxx"
 #include "system.hxx"
 #include "theme.hxx"

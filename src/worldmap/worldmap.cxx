@@ -1,4 +1,4 @@
-//  $Id: worldmap.cxx,v 1.29 2003/02/18 11:28:41 grumbel Exp $
+//  $Id: worldmap.cxx,v 1.30 2003/02/18 15:04:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,7 +27,7 @@
 #include "../system.hxx"
 #include "../pingus_resource.hxx"
 #include "../globals.hxx"
-#include "../sound.hxx"
+#include "../sound/sound.hxx"
 #include "../xml_helper.hxx"
 #include "../pingus_error.hxx"
 #include "../my_gettext.hxx"

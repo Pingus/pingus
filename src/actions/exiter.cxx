@@ -1,4 +1,4 @@
-//  $Id: exiter.cxx,v 1.13 2003/02/18 11:28:41 grumbel Exp $
+//  $Id: exiter.cxx,v 1.14 2003/02/18 15:04:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,7 @@
 #include "../vector.hxx"
 #include "../graphic_context.hxx"
 #include "../pingu.hxx"
-#include "../sound.hxx"
+#include "../sound/sound.hxx"
 #include "exiter.hxx"
 
 namespace Actions {

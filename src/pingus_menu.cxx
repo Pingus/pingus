@@ -1,4 +1,4 @@
-//  $Id: pingus_menu.cxx,v 1.10 2002/11/08 01:38:27 grumbel Exp $
+//  $Id: pingus_menu.cxx,v 1.11 2003/02/18 15:04:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,7 +19,7 @@
 
 #include "surface_button.hxx"
 #include "pingus_resource.hxx"
-#include "sound.hxx"
+#include "sound/sound.hxx"
 #include "debug.hxx"
 #include "pingus_menu_manager.hxx"
 #include "gui/gui_manager.hxx"

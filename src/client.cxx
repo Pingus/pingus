@@ -1,4 +1,4 @@
-//  $Id: client.cxx,v 1.38 2003/01/15 21:16:41 torangan Exp $
+//  $Id: client.cxx,v 1.39 2003/02/18 15:04:47 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,7 +24,7 @@
 #include "playfield.hxx"
 #include "timer.hxx"
 #include "pingus_resource.hxx"
-#include "sound.hxx"
+#include "sound/sound.hxx"
 #include "time_display.hxx"
 #include "pingus_counter.hxx"
 #include "smallmap.hxx"

@@ -1,4 +1,4 @@
-//  $Id: pingu.cxx,v 1.37 2002/11/26 10:12:53 grumbel Exp $
+//  $Id: pingu.cxx,v 1.38 2003/02/18 15:04:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,7 +22,7 @@
 #include <stdio.h>
 #include "globals.hxx"
 #include "world.hxx"
-#include "sound.hxx"
+#include "sound/sound.hxx"
 #include "col_map.hxx"
 #include "pingu_action.hxx"
 #include "pingu_action_factory.hxx"

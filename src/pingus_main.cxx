@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.42 2003/02/18 11:28:41 grumbel Exp $
+//   $Id: pingus_main.cxx,v 1.43 2003/02/18 15:04:47 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -81,7 +81,7 @@
 #include "pingus_resource.hxx"
 #include "pingu_action_factory.hxx"
 #include "credits.hxx"
-#include "sound.hxx"
+#include "sound/sound.hxx"
 #include "cheat.hxx"
 
 using EditorNS::Editor;
@@ -222,6 +222,7 @@ PingusMain::check_args(int argc, char** argv)
       {"min-cpu-usage",     no_argument,       0, 153},
       {"min-frame-skip",    required_argument, 0, 154},
       {"max-frame-skip",    required_argument, 0, 155},
+      {"frame-skip",        required_argument, 0, 157},
       {"cheat",             required_argument, 0, 156},
 #ifdef HAVE_LIBCLANGL
       {"use-opengl",        no_argument,       0, 'G'},
@@ -498,6 +499,11 @@ For more information about these matters, see the files named COPYING.\
       sscanf(optarg, "%d", &max_frame_skip);
       break;
 
+    case 157: // frame_skip
+      sscanf(optarg, "%d", &max_frame_skip);
+      min_frame_skip = max_frame_skip;
+      break;
+
     case 156: // Cheats
       Cheat::activate(optarg);
       break;
@@ -543,6 +549,7 @@ For more information about these matters, see the files named COPYING.\
           "                            reduce CPU usage, might speed up the game on slower machines\n"
           "   --min-frame-skip N       Skip at least N frames, larger values speed the game up\n"
           "   --max-frame-skip N       Skip at most N frames\n"
+          "   --frame-skip N           Set both min and max frameskip to N\n"
 
           "\nDebugging and experimental stuff:\n"
           "   --maintainer-mode        Enables some features, only interesting programmers\n"
@@ -645,6 +652,27 @@ PingusMain::init_path_finder()
 }
 
 void
+PingusMain::print_greeting_message()
+{
+  std::cout << "Welcome to Pingus "VERSION"!\n"
+            << "=========================\n" << std::endl;
+  
+#ifdef HAVE_LIBCLANVORBIS
+  std::cout << "clanVorbis support: ok" << std::endl;
+#else
+  std::cout << "clanVoribs support: missing (.ogg music files will not be playable)" << std::endl;
+#endif
+
+#ifdef HAVE_LIBCLANMIKMOD
+  std::cout << "clanMikMod support: ok" << std::endl;
+#else
+  std::cout << "clanMikMod support: missing (.it and .s3m music files will not be playable)" << std::endl;
+#endif
+
+  std::cout << std::endl;
+}
+
+void
 PingusMain::start_game ()
 {
   if (verbose) {
@@ -731,6 +759,8 @@ PingusMain::main(int argc, char** argv)
 
   try 
     {
+      print_greeting_message();
+
       quick_check_args(argc, argv);
       read_rc_file();
       check_args(argc, argv);

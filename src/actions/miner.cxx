@@ -1,4 +1,4 @@
-// $Id: miner.cxx,v 1.18 2002/12/05 20:38:10 torangan Exp $
+// $Id: miner.cxx,v 1.19 2003/02/18 15:04:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,7 +22,7 @@
 #include "../graphic_context.hxx"
 #include "../world.hxx"
 #include "../pingus_resource.hxx"
-#include "../sound.hxx"
+#include "../sound/sound.hxx"
 #include "../pingu.hxx"
 #include "miner.hxx"
 

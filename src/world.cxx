@@ -1,4 +1,4 @@
-//  $Id: world.cxx,v 1.36 2003/01/25 11:03:58 torangan Exp $
+//  $Id: world.cxx,v 1.37 2003/02/18 15:04:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,7 +22,7 @@
 #include <iostream>
 #include "plf.hxx"
 #include "pingu_holder.hxx"
-#include "sound.hxx"
+#include "sound/sound.hxx"
 #include "spot_map.hxx"
 #include "view.hxx"
 #include "world.hxx"
