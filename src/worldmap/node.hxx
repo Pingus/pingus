@@ -1,4 +1,4 @@
-//  $Id: node.hxx,v 1.5 2002/09/07 19:29:04 grumbel Exp $
+//  $Id: node.hxx,v 1.6 2002/09/07 23:33:47 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,97 +26,97 @@
 class CL_Vector;
 class PLF;
 
-namespace Pingus
+namespace pingus {
+namespace worldmap {
+
+/** An node in the WorldmapGraph on which the Pingu walks */
+class Node 
 {
-  namespace WorldMap
-  {
-    /** An node in the WorldmapGraph on which the Pingu walks */
-    class Node 
-    {
-    public:
-      /** should links or nodes be accessible? */
-      bool accessible;
+public:
+  /** should links or nodes be accessible? */
+  bool accessible;
   
-      Node () {}
-      virtual ~Node () {}
-
-      virtual void on_click () =0;
-      virtual void mark (bool /*value*/) {}
-      virtual void draw (CL_Vector /*offset*/) {}
-      virtual std::string get_string () =0;
-
-      virtual int  get_id () =0;
-      virtual CL_Vector get_pos () =0;
-      virtual std::list<int>& get_links () =0;
-      
-    private:
-      Node (const Node&);
-      Node operator= (const Node&);
-    };
-
-    /** A wrap/beam object which brings you to the next worldmap 
-	FIXME: Multi-Inheritage is evil */
-    class TubeNode : public Node, 
-		     public TubeNodeData
-    {
-    public:
-      std::string worldmap_name;
-      Sprite tube;
-      int link_node;
-    public:  
-      TubeNode (const TubeNodeData&);
-      void on_click ();
-      void draw (CL_Vector offset);
-      std::string get_string ();
-
-      int  get_id ()               { return NodeData::get_id();    }
-      CL_Vector get_pos ()         { return NodeData::get_pos();   }
-      std::list<int>& get_links () { return NodeData::get_links(); }
-
-    private:
-      TubeNode (const TubeNode&);
-      TubeNode operator= (const TubeNode&);
-    };
-
-    /** The entrance to a level 
-	FIXME: Multi-Inheritage is evil */
-    class LevelNode :  public Pingus::WorldMap::Node,
-                       public Pingus::WorldMap::LevelNodeData
-    {
-    private:
-      Sprite green_dot;
-      Sprite red_dot;
-      Sprite invalid_dot;
-      Sprite dot_border;
-      Sprite green_flag;
-
-      PLF* plf;
+  Node () {}
+  virtual ~Node () {}
   
-      /** true if the level is invalid, which means that the levelfile
-	  could not be loaded or had errors. false is the default */
-      bool invalid;
+  virtual void on_click () =0;
+  virtual void mark (bool /*value*/) {}
+  virtual void draw (CL_Vector /*offset*/) {}
+  virtual std::string get_string () =0;
 
-    public:
-      bool finished;
-      PLF* get_plf ();
-
-      LevelNode (const LevelNodeData&);
-      virtual ~LevelNode ();
-      void on_click ();
-      void mark (bool value);
-      void draw (CL_Vector offset);
-      std::string get_string ();
-
-      int  get_id ()               { return NodeData::get_id(); }
-      CL_Vector get_pos ()         { return NodeData::get_pos(); }
-      std::list<int>& get_links () { return NodeData::get_links(); }
+  virtual int  get_id () =0;
+  virtual CL_Vector get_pos () =0;
+  virtual std::list<int>& get_links () =0;
       
-    private:
-      LevelNode (const LevelNode&);
-      LevelNode operator= (const LevelNode&);
-    };
-  }
-}
+private:
+  Node (const Node&);
+  Node operator= (const Node&);
+};
+
+/** A wrap/beam object which brings you to the next worldmap 
+    FIXME: Multi-Inheritage is evil */
+class TubeNode : public Node, 
+		 public TubeNodeData
+{
+public:
+  std::string worldmap_name;
+  Sprite tube;
+  int link_node;
+public:  
+  TubeNode (const TubeNodeData&);
+  void on_click ();
+  void draw (CL_Vector offset);
+  std::string get_string ();
+
+  int  get_id ()               { return NodeData::get_id();    }
+  CL_Vector get_pos ()         { return NodeData::get_pos();   }
+  std::list<int>& get_links () { return NodeData::get_links(); }
+
+private:
+  TubeNode (const TubeNode&);
+  TubeNode operator= (const TubeNode&);
+};
+
+/** The entrance to a level 
+    FIXME: Multi-Inheritage is evil */
+class LevelNode :  public Node,
+		   public LevelNodeData
+{
+private:
+  Sprite green_dot;
+  Sprite red_dot;
+  Sprite invalid_dot;
+  Sprite dot_border;
+  Sprite green_flag;
+
+  PLF* plf;
+  
+  /** true if the level is invalid, which means that the levelfile
+      could not be loaded or had errors. false is the default */
+  bool invalid;
+
+public:
+  bool finished;
+  PLF* get_plf ();
+
+  LevelNode (const LevelNodeData&);
+  virtual ~LevelNode ();
+  void on_click ();
+  void mark (bool value);
+  void draw (CL_Vector offset);
+  std::string get_string ();
+
+  int  get_id ()               { return NodeData::get_id(); }
+  CL_Vector get_pos ()         { return NodeData::get_pos(); }
+  std::list<int>& get_links () { return NodeData::get_links(); }
+      
+private:
+  LevelNode (const LevelNode&);
+  LevelNode operator= (const LevelNode&);
+};
+
+} // namespace worldmap
+} // namespace pingus
 
 #endif
 

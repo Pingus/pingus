@@ -1,4 +1,4 @@
-//  $Id: manager.hxx,v 1.9 2002/09/07 19:29:04 grumbel Exp $
+//  $Id: manager.hxx,v 1.10 2002/09/07 23:33:47 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,85 +30,84 @@ class CL_InputDevice;
 class CL_Key;
 class GameDelta;
 
-namespace Pingus
+namespace pingus {
+namespace worldmap {
+
+class WorldMap;
+
+/** The WorldMapManager manages the worldmaps and the translation
+    between two worldmaps */
+class WorldMapManager : public GUIScreen
 {
-  namespace WorldMap
+  /** FIXME: Workaround class to let the worldmap play with well
+      FIXME: with the Screen, should be deleted at a later point. */
+  class WorldMapComponent : public GUI::Component
   {
-    class WorldMap;
-  }
-
-  /** The WorldMapManager manages the worldmaps and the translation
-      between two worldmaps */
-  class WorldMapManager : public GUIScreen
-  {
-    /** FIXME: Workaround class to let the worldmap play with well
-	FIXME: with the Screen, should be deleted at a later point. */
-    class WorldMapComponent : public GUI::Component
-    {
-    public:
-      WorldMapComponent () { }
-      
-      void on_primary_button_press (int x, int y);
- 
-      void draw (GraphicContext& gc);
-      void update (float delta);
-      
-      bool is_at (int, int) { return true; }
-      
-    private:
-      WorldMapComponent (const WorldMapComponent&);
-      WorldMapComponent operator= (const WorldMapComponent&);
-
-    } worldmap_component;
-
-    
-    friend class WorldMapComponent;
-  private:
-    static WorldMapManager* instance_;
-
-    bool is_init;
-    bool exit_worldmap;
-    boost::shared_ptr<WorldMap::WorldMap> worldmap;
-    boost::shared_ptr<WorldMap::WorldMap> new_worldmap;
-
-    WorldMapManager ();
   public:
-    ~WorldMapManager ();
-  
-    /** Check if WorldMap manager still needs to run and exit if if
-	not */
-    void update (float);
-
-    /** @defgroup WorldMapManagerBindings Controller bindings of the WorldMapManager
-	@{*/
-    /** Calculate the node that was clicked and set the pingu to walk
-	to that node. If a node is double-cliked, the pingu should go
-	faster. */
+    WorldMapComponent () { }
+      
     void on_primary_button_press (int x, int y);
-
-    /** Exit the WorldMapManager and return to the previous screen */
-    void on_escape_press ();
-    /** @}*/
-
-    /** Change the current map to the given map 
-
-	@param filename the filename of the new map, filename must be
-	@param filename relative to the worldmap directory
-	@param filename Example: "volcano.xml" */
-    void change_map (const std::string& filename, int node);
-
-    /** Singleton access function */
-    static WorldMapManager* instance ();
-    
+ 
+    void draw (GraphicContext& gc);
+    void update (float delta);
+      
+    bool is_at (int, int) { return true; }
+      
   private:
-    /** Startup Hook of the Screen */
-    void on_startup ();
+    WorldMapComponent (const WorldMapComponent&);
+    WorldMapComponent operator= (const WorldMapComponent&);
 
-    WorldMapManager (const WorldMapManager&);
-    WorldMapManager operator= (const WorldMapManager&);
-  };
+  } worldmap_component;
 
-}
+    
+  friend class WorldMapComponent;
+private:
+  static WorldMapManager* instance_;
+
+  bool is_init;
+  bool exit_worldmap;
+  boost::shared_ptr<WorldMap> worldmap;
+  boost::shared_ptr<WorldMap> new_worldmap;
+
+  WorldMapManager ();
+public:
+  ~WorldMapManager ();
+  
+  /** Check if WorldMap manager still needs to run and exit if if
+      not */
+  void update (float);
+
+  /** @defgroup WorldMapManagerBindings Controller bindings of the WorldMapManager
+      @{*/
+  /** Calculate the node that was clicked and set the pingu to walk
+      to that node. If a node is double-cliked, the pingu should go
+      faster. */
+  void on_primary_button_press (int x, int y);
+
+  /** Exit the WorldMapManager and return to the previous screen */
+  void on_escape_press ();
+  /** @}*/
+
+  /** Change the current map to the given map 
+
+  @param filename the filename of the new map, filename must be
+  @param filename relative to the worldmap directory
+  @param filename Example: "volcano.xml" */
+  void change_map (const std::string& filename, int node);
+
+  /** Singleton access function */
+  static WorldMapManager* instance ();
+    
+private:
+  /** Startup Hook of the Screen */
+  void on_startup ();
+
+  WorldMapManager (const WorldMapManager&);
+  WorldMapManager operator= (const WorldMapManager&);
+};
+
+} // namespace worldmap
+} // namespace pingus
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: stat.hxx,v 1.5 2002/08/23 15:49:57 torangan Exp $
+//  $Id: stat.hxx,v 1.6 2002/09/07 23:33:47 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,9 @@
 
 #include <map>
 #include "graph.hxx"
+
+namespace pingus {
+namespace worldmap {
 
 /** This class holds the information on a level's completeness, etc.
     It's only here for internal use by PingusWorldMapStat. */
@@ -64,7 +67,7 @@ public:
 
   /** Save the given nodes status to the file from which they are
       loaded */
-  void save (std::list<boost::shared_ptr<Pingus::WorldMap::Node> >& nodes);
+  void save (std::list<boost::shared_ptr<Node> >& nodes);
 
   /// @return true if the node is finished
   bool finished (int id);
@@ -78,6 +81,9 @@ private:
   PingusWorldMapStat (const PingusWorldMapStat&);
   PingusWorldMapStat operator= (const PingusWorldMapStat&);
 };
+
+} // namespace worldmap
+} // namespace pingus
 
 #endif
 

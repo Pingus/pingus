@@ -1,4 +1,4 @@
-//  $Id: stat.cxx,v 1.6 2002/08/23 15:49:57 torangan Exp $
+//  $Id: stat.cxx,v 1.7 2002/09/07 23:33:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,22 +25,24 @@
 #include "../xml_helper.hxx"
 #include "stat.hxx"
 
-using namespace Pingus::WorldMap;
+namespace pingus {
+namespace worldmap {
 
-PingusWorldMapNodeStat::PingusWorldMapNodeStat () : finished(false),
-                                                    accessible(false),
-						    id(-1),
-						    percentage(25)
+PingusWorldMapNodeStat::PingusWorldMapNodeStat () 
+  : finished(false),
+    accessible(false),
+    id(-1),
+    percentage(25)
 {
 }
 
 PingusWorldMapNodeStat::PingusWorldMapNodeStat (const PingusWorldMapNodeStat& old)
-                                              : finished(old.finished),
-					        accessible(old.accessible),
-					        id(old.id),
-						percentage(old.percentage),
-						levelfile(old.levelfile),
-						checksum(old.checksum)
+  : finished(old.finished),
+    accessible(old.accessible),
+    id(old.id),
+    percentage(old.percentage),
+    levelfile(old.levelfile),
+    checksum(old.checksum)
 {
 }
 
@@ -166,7 +168,7 @@ PingusWorldMapStat::accessible (int id)
 }
 
 void
-PingusWorldMapStat::save (std::list<boost::shared_ptr<Pingus::WorldMap::Node> >& nodes)
+PingusWorldMapStat::save (std::list<boost::shared_ptr<Node> >& nodes)
 {
   std::ofstream out (filename.c_str ());
   
@@ -192,5 +194,8 @@ PingusWorldMapStat::save (std::list<boost::shared_ptr<Pingus::WorldMap::Node> >&
       out << "</pingus-worldmap-stat>" << std::endl;
     }
 }
+
+} // namespace worldmap
+} // namespace pingus
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: node_data.hxx,v 1.6 2002/08/23 15:49:57 torangan Exp $
+//  $Id: node_data.hxx,v 1.7 2002/09/07 23:33:47 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -47,114 +47,114 @@
    ...
 */
 
-namespace Pingus 
+namespace pingus {
+namespace worldmap {
+
+class Node;
+
+/** Node */
+class NodeData
 {
-  namespace WorldMap 
+protected:
+  /** The id of this node, id's have to be uniq in a worldmap */
+  int id;
+
+  /** List of connections to other node, the int values are the id's
+      of other nodes */
+  std::list<int> links;  
+
+  /** The position of the node in the worldmap, pos.z is used for
+      z-sorting */
+  CL_Vector pos;
+
+public:
+  NodeData () { }
+      
+  NodeData (const NodeData& old);
+  NodeData operator= (const NodeData& old);
+      
+  virtual ~NodeData () { }
+
+  int       get_id () { return id; } 
+  CL_Vector get_pos () { return pos; } 
+  std::list<int>& get_links () { return links; } 
+
+  void assign (const NodeData& data) 
   {
-    class Node;
-
-    /** Node */
-    class NodeData
-    {
-    protected:
-      /** The id of this node, id's have to be uniq in a worldmap */
-      int id;
-
-      /** List of connections to other node, the int values are the id's
-	  of other nodes */
-      std::list<int> links;  
-
-      /** The position of the node in the worldmap, pos.z is used for
-	  z-sorting */
-      CL_Vector pos;
-
-    public:
-      NodeData () { }
-      
-      NodeData (const NodeData& old);
-      NodeData operator= (const NodeData& old);
-      
-      virtual ~NodeData () { }
-
-      int       get_id () { return id; } 
-      CL_Vector get_pos () { return pos; } 
-      std::list<int>& get_links () { return links; } 
-
-      void assign (const NodeData& data) 
-      {
-	id    = data.id;
-	links = data.links;
-	pos   = data.pos;
-      }
-      virtual Node* create ();
-
-      static NodeData* create(xmlDocPtr doc, xmlNodePtr cur);
-    };
-
-    /** EmptyNode */ 
-    class EmptyNodeData : public NodeData
-    {
-    public:
-      EmptyNodeData () { }
-      virtual ~EmptyNodeData () { }
-
-      virtual Node* create ();
-
-      static NodeData* create(xmlDocPtr doc, xmlNodePtr cur);
-      
-    private:
-      EmptyNodeData (const EmptyNodeData&);
-      EmptyNodeData operator= (const EmptyNodeData&);
-    };
-
-    /** Level */
-    class LevelNodeData : public NodeData
-    {
-    protected:
-      /** The filename of the level to start 
-
-      FIXME: Is the filename relative to the worldmap directory,
-      FIXME: relative to the ~/.pingus/ directory or what?
-      */
-      std::string levelname;
-    public:
-      LevelNodeData () { }
-      
-      LevelNodeData (const LevelNodeData& old);
-      LevelNodeData operator= (const LevelNodeData& old);
-      
-      virtual ~LevelNodeData () {}
-
-      virtual Node* create ();
-
-      static LevelNodeData* create(xmlDocPtr doc, xmlNodePtr cur);
-      void write_xml(std::ofstream* xml) { UNUSED_ARG(xml); }
-    };
-
-    /** Tube */
-    class TubeNodeData : public NodeData
-    {
-    protected:
-      /** The world to which this tupe 'beams' */
-      std::string worldmap;
-  
-      /** The node id in the worldmap to which this tube beams/links */
-      int link_node;
-
-    public:
-      TubeNodeData () { }
-      
-      TubeNodeData (const TubeNodeData& old);
-      TubeNodeData operator= (const TubeNodeData& old);
-  
-      virtual ~TubeNodeData () { }
-
-      virtual Node* create ();
-
-      static TubeNodeData* create(xmlDocPtr doc, xmlNodePtr cur);
-    };
+    id    = data.id;
+    links = data.links;
+    pos   = data.pos;
   }
-}
+  virtual Node* create ();
+
+  static NodeData* create(xmlDocPtr doc, xmlNodePtr cur);
+};
+
+/** EmptyNode */ 
+class EmptyNodeData : public NodeData
+{
+public:
+  EmptyNodeData () { }
+  virtual ~EmptyNodeData () { }
+
+  virtual Node* create ();
+
+  static NodeData* create(xmlDocPtr doc, xmlNodePtr cur);
+      
+private:
+  EmptyNodeData (const EmptyNodeData&);
+  EmptyNodeData operator= (const EmptyNodeData&);
+};
+
+/** Level */
+class LevelNodeData : public NodeData
+{
+protected:
+  /** The filename of the level to start 
+
+  FIXME: Is the filename relative to the worldmap directory,
+  FIXME: relative to the ~/.pingus/ directory or what?
+  */
+  std::string levelname;
+public:
+  LevelNodeData () { }
+      
+  LevelNodeData (const LevelNodeData& old);
+  LevelNodeData operator= (const LevelNodeData& old);
+      
+  virtual ~LevelNodeData () {}
+
+  virtual Node* create ();
+
+  static LevelNodeData* create(xmlDocPtr doc, xmlNodePtr cur);
+  void write_xml(std::ofstream* xml) { UNUSED_ARG(xml); }
+};
+
+/** Tube */
+class TubeNodeData : public NodeData
+{
+protected:
+  /** The world to which this tupe 'beams' */
+  std::string worldmap;
+  
+  /** The node id in the worldmap to which this tube beams/links */
+  int link_node;
+
+public:
+  TubeNodeData () { }
+      
+  TubeNodeData (const TubeNodeData& old);
+  TubeNodeData operator= (const TubeNodeData& old);
+  
+  virtual ~TubeNodeData () { }
+
+  virtual Node* create ();
+
+  static TubeNodeData* create(xmlDocPtr doc, xmlNodePtr cur);
+};
+
+} // namespace worldmap
+} // namespace pingus
 
 #endif
 

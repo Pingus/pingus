@@ -1,4 +1,4 @@
-//  $Id: pingus.cxx,v 1.7 2002/09/04 17:49:48 grumbel Exp $
+//  $Id: pingus.cxx,v 1.8 2002/09/07 23:33:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,35 +20,36 @@
 #include "pingus.hxx"
 #include "../boost/smart_ptr.hpp"
 
-using namespace Pingus::WorldMap;
+namespace pingus {
+namespace worldmap {
 
-PingusWorldMapPingus::PingusWorldMapPingus ()
+Pingus::Pingus ()
   : sprite ("Pingus/walker0", "pingus", 20.0f, Sprite::RIGHT)
 {
   sprite.set_align (-sprite.get_width()/2,  4 - sprite.get_height());
   is_left = false;
 }
 
-PingusWorldMapPingus::~PingusWorldMapPingus ()
+Pingus::~Pingus ()
 {
 }
 
 void 
-PingusWorldMapPingus::set_position (boost::shared_ptr<Pingus::WorldMap::Node> node)
+Pingus::set_position (boost::shared_ptr<Node> node)
 {
   pos = node->get_pos ();
   current_node = node.get ();
 }
 
 void 
-PingusWorldMapPingus::walk_to (Node* node)
+Pingus::walk_to (Node* node)
 {
   ///pos = node.pos;
   targets.push (node);
 }
 
 void
-PingusWorldMapPingus::draw (const CL_Vector& offset)
+Pingus::draw (const CL_Vector& offset)
 {
   sprite.set_direction (is_left ? Sprite::LEFT : Sprite::RIGHT);
   if (!targets.empty ())
@@ -61,13 +62,13 @@ PingusWorldMapPingus::draw (const CL_Vector& offset)
 }
 
 bool
-PingusWorldMapPingus::is_walking ()
+Pingus::is_walking ()
 {
   return false;
 }
 
 void
-PingusWorldMapPingus::update (float delta)
+Pingus::update (float delta)
 {
   //if (!targets.empty ())
   sprite.update (delta);
@@ -109,9 +110,12 @@ PingusWorldMapPingus::update (float delta)
 }
 
 Node*
-PingusWorldMapPingus::get_node ()
+Pingus::get_node ()
 {
   return current_node;
 }
+
+} // namespace worldmap
+} // namespace pingus
 
 /* EOF */

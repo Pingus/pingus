@@ -1,4 +1,4 @@
-//  $Id: worldmap.cxx,v 1.9 2002/09/07 19:29:04 grumbel Exp $
+//  $Id: worldmap.cxx,v 1.10 2002/09/07 23:33:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,7 +33,8 @@
 #include "worldmap.hxx"
 #include "pingus.hxx"
 
-using namespace Pingus::WorldMap;
+namespace pingus {
+namespace worldmap {
 
 WorldMap::WorldMap (std::string filename) 
   : green_dot ("worldmap/dot_green", "core"),
@@ -51,7 +52,7 @@ WorldMap::WorldMap (std::string filename)
 
   background = PingusResource::load_surface (graph_data.get_background ());
   
-  pingus = new PingusWorldMapPingus;
+  pingu = new Pingus ();
 
   stat = boost::shared_ptr<PingusWorldMapStat>
     (new PingusWorldMapStat (System::basename(filename)));
@@ -68,18 +69,18 @@ WorldMap::WorldMap (std::string filename)
 	    (*i)->accessible = stat->accessible ((*i)->get_id ());
 	}
       
-      pingus->set_position (*graph_data.nodes.begin ());
+      pingu->set_position (*graph_data.nodes.begin ());
     }
   else
     {
-      pingus->set_position (*graph_data.nodes.begin ());
+      pingu->set_position (*graph_data.nodes.begin ());
     }
 }
 
 WorldMap::~WorldMap ()
 {
   //delete graph;
-  delete pingus;
+  delete pingu;
 }
 
 void 
@@ -93,9 +94,9 @@ CL_Vector
 WorldMap::get_offset ()
 {
   // FIXME: Handling of background smaller than screen isn't handled
-  assert (pingus);
+  assert (pingu);
 
-  CL_Vector offset = pingus->get_pos ();
+  CL_Vector offset = pingu->get_pos ();
   offset *= -1.0;
 
   if (CL_Display::get_width () <= int(background.get_width ()))
@@ -150,7 +151,7 @@ WorldMap::on_primary_button_press (int x, int y)
       }
     else if (node.get() && node->accessible)
       {
-	Pingus::WorldMap::Node* pingus_node = pingus->get_node ();
+	Node* pingus_node = pingu->get_node ();
 	if (maintainer_mode)
 	  {
 	    std::cout << "Click on: " << node->get_id () << std::endl;
@@ -180,7 +181,7 @@ WorldMap::on_primary_button_press (int x, int y)
       	  }
 	else
 	  {
-	    pingus->walk_to (node.get ());
+	    pingu->walk_to (node.get ());
 	  }
       }
     else
@@ -260,17 +261,17 @@ WorldMap::draw (GraphicContext& gc)
 	}
     }
  
-  pingus->draw (offset);
+  pingu->draw (offset);
   UNUSED_ARG(gc);
 }
 
 void
 WorldMap::update (float delta)
 {
-  pingus->update (delta);
+  pingu->update (delta);
 }
 
-boost::shared_ptr<Pingus::WorldMap::Node>
+boost::shared_ptr<Node>
 WorldMap::get_node (int x, int y)
 {
   for (GraphIter i = graph_data.nodes.begin ();
@@ -300,10 +301,13 @@ WorldMap::set_pingus (int node_id)
     {
       if ((*i)->get_id () == node_id)
 	{
-	  pingus->set_position (*i);
+	  pingu->set_position (*i);
 	  return;
 	}
     }
 }
+
+} // namespace worldmap
+} // namespace pingus
 
 /* EOF */

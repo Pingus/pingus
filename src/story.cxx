@@ -1,4 +1,4 @@
-//  $Id: story.cxx,v 1.7 2002/09/06 17:33:29 torangan Exp $
+//  $Id: story.cxx,v 1.8 2002/09/07 23:33:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,10 +19,14 @@
 
 #include <ClanLib/Display/Display/display.h>
 #include <ClanLib/Display/Font/font.h>
+#include "fonts.hxx"
 #include "pingus_resource.hxx"
 #include "pingus_menu_manager.hxx"
 #include "screen_manager.hxx"
 #include "worldmap/manager.hxx"
+
+// using NS_Pingus::NS_WorldMap::WorldMapManager;
+using pingus::worldmap::WorldMapManager;
 
 Story::Story(PingusMenuManager* manager)
   : PingusSubMenu (manager)
@@ -38,8 +42,6 @@ Story::~Story()
 void
 Story::init()
 {
-  small_font = PingusResource::load_font("Fonts/pingus_small", "fonts");
-  large_font = PingusResource::load_font("Fonts/pingus", "fonts");
   background = PingusResource::load_surface("Textures/stones", "textures");  
   story = PingusResource::load_surface("Story/story1", "story");
 
@@ -67,14 +69,12 @@ Story::draw(GraphicContext& gc)
 			CL_Display::get_height() - 25,
 			0.0, 0.0, 0.0, 0.5);
 
-  small_font->print_left(125, 80 + story.get_height() + 25 + (1 * small_font->get_height()), "Insert extremly interesting story here...");
-  small_font->print_left(125, 80 + story.get_height() + 25 + (2 * small_font->get_height()), "...");
-  small_font->print_left(125, 80 + story.get_height() + 25 + (3 * small_font->get_height()), "...");
-  small_font->print_left(125, 80 + story.get_height() + 25 + (4 * small_font->get_height()), "...");
-  small_font->print_left(125, 80 + story.get_height() + 25 + (5 * small_font->get_height()), "...");
-  small_font->print_left(125, 80 + story.get_height() + 25 + (6 * small_font->get_height()), "...");
-
-  UNUSED_ARG(gc);
+  gc.print_left(Fonts::pingus_small, 125, 80 + story.get_height() + 25 + (1 * 15), "Insert extremly interesting story here...");
+  gc.print_left(Fonts::pingus_small, 125, 80 + story.get_height() + 25 + (2 * 15), "...");
+  gc.print_left(Fonts::pingus_small, 125, 80 + story.get_height() + 25 + (3 * 15), "...");
+  gc.print_left(Fonts::pingus_small, 125, 80 + story.get_height() + 25 + (4 * 15), "...");
+  gc.print_left(Fonts::pingus_small, 125, 80 + story.get_height() + 25 + (5 * 15), "...");
+  gc.print_left(Fonts::pingus_small, 125, 80 + story.get_height() + 25 + (6 * 15), "...");
 }
 
 void
@@ -140,7 +140,7 @@ Story::on_pause_press ()
   // press
 
   // FIXME: This looks ugly... 
-  ScreenManager::instance()->push_screen(Pingus::WorldMapManager::instance ());
+  ScreenManager::instance()->push_screen(WorldMapManager::instance ());
   //worldmap_manager.display();
   //manager->enable_events ();
   manager->set_menu (&manager->mainmenu);
