@@ -1,4 +1,4 @@
-//  $Id: Controller.hh,v 1.10 2001/07/27 15:00:47 grumbel Exp $
+//  $Id: Controller.hh,v 1.11 2002/06/06 15:54:14 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,13 +20,13 @@
 #ifndef CONTROLLER_HH
 #define CONTROLLER_HH
 
-#include <ClanLib/signals.h>
-#include <ClanLib/display.h>
 #include <ClanLib/core.h>
 #include "boost/smart_ptr.hpp"
 #include "boost/dummy_ptr.hpp"
 
+template <class T> class CL_Signal_v1;
 class Controller;
+class CL_InputButton;
 
 class ControllerButton 
 {
