@@ -12,4 +12,25 @@
 #define PINGUS_DATADIR "data"
 #define LIBXML_2 1
 
+/* 'real' config values */
+#define HAVE_STDDEF_H 1
+#define HAVE_STRING_H 1
+#define HAVE_STDLIB_H 1
+#define HAVE_ALLOCA 1
+#define HAVE_GETCWD 1
+#define HAVE_SETLOCALE 1
+#define HAVE_STRDUP 1
+
+/* MSVC specifics */
+#if defined(_MSC_VER) && !defined(__cplusplus)
+#define inline __inline
+#endif
+
+#define alloca _alloca
+// ????
+#define LOCALEDIR "."
+#define LOCALE_ALIAS_PATH "."
+
+typedef unsigned __int64 uintmax_t;
+
 #endif
