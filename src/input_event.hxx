@@ -1,4 +1,4 @@
-//  $Id: input_event.hxx,v 1.2 2002/06/24 22:52:55 grumbel Exp $
+//  $Id: input_event.hxx,v 1.3 2002/07/02 15:46:58 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,8 @@
 
 #ifndef HEADER_PINGUS_INPUT_EVENT_HXX
 #define HEADER_PINGUS_INPUT_EVENT_HXX
+
+#include <ClanLib/Core/Math/cl_vector.h>
 
 /** This will need some^H^H^H^H a lot of work */
 typedef enum {

@@ -1,4 +1,4 @@
-//  $Id: time_display.hxx,v 1.2 2002/06/24 22:52:57 grumbel Exp $
+//  $Id: time_display.hxx,v 1.3 2002/07/02 15:46:58 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,7 @@
 
 #include "gui_obj.hxx"
 
+class CL_Font;
 class Server;
 
 ///

@@ -1,4 +1,4 @@
-//  $Id: plf_preview.hxx,v 1.2 2002/06/24 22:52:56 grumbel Exp $
+//  $Id: plf_preview.hxx,v 1.3 2002/07/02 15:46:58 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,8 @@
 
 #ifndef HEADER_PINGUS_PLF_PREVIEW_HXX
 #define HEADER_PINGUS_PLF_PREVIEW_HXX
+
+#include <ClanLib/Display/Display/surface.h>
 
 class CL_Canvas;
 class PLF;

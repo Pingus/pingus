@@ -1,4 +1,4 @@
-//  $Id: worldobj_data_factory.hxx,v 1.3 2002/06/24 22:52:57 grumbel Exp $
+//  $Id: worldobj_data_factory.hxx,v 1.4 2002/07/02 15:46:58 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #define HEADER_PINGUS_WORLDOBJ_DATA_FACTORY_HXX
 
 #include <map>
+#include <string>
 
 class WorldObjData;
 class WorldObjDataAbstractFactory;

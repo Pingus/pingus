@@ -1,4 +1,4 @@
-//  $Id: option_menu.hxx,v 1.2 2002/06/24 22:52:55 grumbel Exp $
+//  $Id: option_menu.hxx,v 1.3 2002/07/02 15:46:58 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,10 +20,13 @@
 #ifndef HEADER_PINGUS_OPTION_MENU_HXX
 #define HEADER_PINGUS_OPTION_MENU_HXX
 
+#include <string>
 #include <vector>
+#include <ClanLib/Display/Display/surface.h>
 #include "pingus_sub_menu.hxx"
 
 class CL_Key;
+class CL_Font;
 class CL_InputDevice;
 
 ///

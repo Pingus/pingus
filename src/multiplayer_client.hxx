@@ -1,4 +1,4 @@
-//  $Id: multiplayer_client.hxx,v 1.3 2002/06/24 22:52:55 grumbel Exp $
+//  $Id: multiplayer_client.hxx,v 1.4 2002/07/02 15:46:58 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #ifndef HEADER_PINGUS_MULTIPLAYER_CLIENT_HXX
 #define HEADER_PINGUS_MULTIPLAYER_CLIENT_HXX
 
+#include <vector>
 #include "gui_obj.hxx"
 
 class Server;

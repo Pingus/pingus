@@ -1,4 +1,4 @@
-//  $Id: sound_real.hxx,v 1.2 2002/06/24 22:52:57 grumbel Exp $
+//  $Id: sound_real.hxx,v 1.3 2002/07/02 15:46:58 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,11 +22,11 @@
 #ifndef HEADER_PINGUS_SOUND_REAL_HXX
 #define HEADER_PINGUS_SOUND_REAL_HXX
 
-#include "audio.hxx"
 #include <map>
-
-#include "sound.hxx"
+#include <vector>
 #include <ClanLib/Core/System/error.h>
+#include "audio.hxx"
+#include "sound.hxx"
 
 class CL_SoundBuffer;
 class CL_SoundBuffer_Session;

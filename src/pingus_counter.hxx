@@ -1,4 +1,4 @@
-//  $Id: pingus_counter.hxx,v 1.3 2002/06/24 22:52:55 grumbel Exp $
+//  $Id: pingus_counter.hxx,v 1.4 2002/07/02 15:46:58 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,8 +20,10 @@
 #ifndef HEADER_PINGUS_PINGUS_COUNTER_HXX
 #define HEADER_PINGUS_PINGUS_COUNTER_HXX
 
+#include <ClanLib/Display/Display/surface.h>
 #include "gui_obj.hxx"
 
+class CL_Font;
 class World;
 class Client;
 
