@@ -1,4 +1,4 @@
-//  $Id: GamepadController.cc,v 1.7 2001/04/14 14:37:04 grumbel Exp $
+//  $Id: GamepadController.cc,v 1.8 2001/04/15 17:01:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,6 +27,9 @@ GamepadController::GamepadController (CL_InputDevice* arg_device, int arg_owner_
 	 CL_Display::get_height ()/2),
     acceleration (1.0)
 {
+  if (!device)
+    throw PingusError ("GamepadController: Couldn't find a gamepad controlling device!");
+  
   x_axis = device->get_axis (0);
   y_axis = device->get_axis (1);
 

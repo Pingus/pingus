@@ -1,4 +1,4 @@
-//  $Id: TwoPlayerGame.cc,v 1.6 2001/04/15 12:28:15 grumbel Exp $
+//  $Id: MultiplayerGame.cc,v 1.1 2001/04/15 17:01:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,32 +24,39 @@
 #include "TrueServer.hh"
 #include "MultiplayerClientChild.hh"
 #include "MultiplayerClient.hh"
-#include "TwoPlayerGame.hh"
 #include "XMLPLF.hh"
 #include "Controller.hh"
 #include "MouseController.hh"
 #include "GamepadController.hh"
 #include "KeyboardController.hh"
+#include "MultiplayerGame.hh"
 
 using boost::dummy_ptr;
 using boost::shared_ptr;
 
-TwoPlayerGame::TwoPlayerGame ()
+MultiplayerGame::MultiplayerGame ()
 {
 }
 
-TwoPlayerGame::~TwoPlayerGame ()
+MultiplayerGame::~MultiplayerGame ()
 {
 }
 
 void 
-TwoPlayerGame::start ()
+MultiplayerGame::start ()
 {
   std::cout << "Starting Multiplayer Game" << std::endl;
   try {
     shared_ptr<PLF>               plf (new XMLPLF ("../data/levels/multi2-grumbel.xml"));
     shared_ptr<Server>            server (new TrueServer (plf));
-    shared_ptr<Controller>        controller1 (new GamepadController (CL_Input::joysticks[0], 0));
+
+    shared_ptr<Controller>        controller1;
+
+    if (CL_Input::joysticks.size () > 0)
+      controller1 = shared_ptr<Controller>(new GamepadController (CL_Input::joysticks[0], 0));
+    else 
+      controller1 = shared_ptr<Controller>(new KeyboardController (0));
+
     shared_ptr<Controller>        controller2 (new MouseController (1));
     shared_ptr<Controller>        controller3 (new KeyboardController (2));
     shared_ptr<Controller>        controller4 (new MouseController (3));
@@ -115,9 +122,9 @@ TwoPlayerGame::start ()
       CL_System::keep_alive ();
       CL_System::sleep (40);
     }
-} catch (...) {
-  std::cout << "TruePlayerGame: Something went wrong" << std::endl;
-}
+  } catch (...) {
+    std::cout << "MultiplayerGame: Something went wrong" << std::endl;
+  }
 }
 
 /* EOF */

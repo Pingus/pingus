@@ -1,4 +1,4 @@
-//  $Id: PingusGameSession.hh,v 1.3 2001/04/13 13:45:09 grumbel Exp $
+//  $Id: PingusGameSession.hh,v 1.4 2001/04/15 17:01:51 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -50,14 +50,15 @@ private:
   /// The filename of the level
   std::string filename;
 
+  /// The level data
+  boost::shared_ptr<PLF> plf;
+
   /// The server
   boost::shared_ptr<Server> server;
 
   /// The client
   boost::shared_ptr<Client> client;
 
-  /// The level data
-  boost::shared_ptr<PLF> plf;
 public:
   /** Create a new game session which is launched on start ()
       @param filename The filename of a Pingus Level file */

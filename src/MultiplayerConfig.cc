@@ -1,4 +1,4 @@
-//  $Id: MultiplayerConfig.cc,v 1.3 2001/04/14 14:37:04 grumbel Exp $
+//  $Id: MultiplayerConfig.cc,v 1.4 2001/04/15 17:01:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,7 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "Display.hh"
-#include "TwoPlayerGame.hh"
+#include "MultiplayerGame.hh"
 #include "MultiplayerConfig.hh"
 
 MultiplayerConfig::MultiplayerConfig ()
@@ -53,7 +53,7 @@ void
 MultiplayerConfig::start ()
 {
   std::cout << "MultiplayerConfig::start ()" << std::endl;
-  TwoPlayerGame game;
+  MultiplayerGame game;
   game.start ();
 }
 

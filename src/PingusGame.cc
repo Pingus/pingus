@@ -1,4 +1,4 @@
-//  $Id: PingusGame.cc,v 1.18 2001/04/13 13:45:09 grumbel Exp $
+//  $Id: PingusGame.cc,v 1.19 2001/04/15 17:01:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -108,7 +108,7 @@ PingusGame::start_game (boost::shared_ptr<PLF> arg_plf)
   leveldesc.draw(PingusLevelDesc::LOADING);
 	
   server = boost::shared_ptr<Server>(new TrueServer(plf));
-  client = boost::shared_ptr<Client>(new Client(controller, server));
+  client = boost::shared_ptr<Client>(new Client(controller, server.get ()));
   
   leveldesc.draw(PingusLevelDesc::FINISHED);
 

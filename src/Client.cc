@@ -1,4 +1,4 @@
-//  $Id: Client.cc,v 1.51 2001/04/13 22:17:46 grumbel Exp $
+//  $Id: Client.cc,v 1.52 2001/04/15 17:01:51 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -51,7 +51,7 @@ shared_ptr<SmallMap>      Client::small_map;
 shared_ptr<HurryUp>       Client::hurry_up;
 
 Client::Client(boost::shared_ptr<Controller> arg_controller, 
-	       boost::shared_ptr<Server> s)
+	       boost::dummy_ptr<Server> s)
   : controller (arg_controller)
 {
   //player = 0;

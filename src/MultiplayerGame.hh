@@ -1,4 +1,4 @@
-//  $Id: TwoPlayerGame.hh,v 1.1 2001/04/13 22:17:46 grumbel Exp $
+//  $Id: MultiplayerGame.hh,v 1.1 2001/04/15 17:01:51 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,16 +17,16 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef TWOPLAYERGAME_HH
-#define TWOPLAYERGAME_HH
+#ifndef MULTIPLAYERGAME_HH
+#define MULTIPLAYERGAME_HH
 
-class TwoPlayerGame
+class MultiplayerGame
 {
 private:
 
 public:
-  TwoPlayerGame ();
-  ~TwoPlayerGame ();
+  MultiplayerGame ();
+  ~MultiplayerGame ();
 
   void start ();
 };

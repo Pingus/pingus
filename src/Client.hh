@@ -1,4 +1,4 @@
-//  $Id: Client.hh,v 1.28 2001/04/13 22:17:46 grumbel Exp $
+//  $Id: Client.hh,v 1.29 2001/04/15 17:01:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,8 @@
 #include <string>
 
 #include "boost/smart_ptr.hpp"
+#include "boost/dummy_ptr.hpp"
+
 #include "Server.hh"
 #include "Result.hh"
 
@@ -48,7 +50,7 @@ private:
   ///
   Result result;
   ///
-  boost::shared_ptr<Server> server;
+  boost::dummy_ptr<Server> server;
   ///
   PingusGameMode       mode;
   ///
@@ -103,12 +105,12 @@ private:
 public:
   ///
   Client(boost::shared_ptr<Controller> arg_controller, 
-	 boost::shared_ptr<Server> s);
+	 boost::dummy_ptr<Server> s);
   ///
   virtual ~Client();
 
   ///
-  boost::shared_ptr<Server>   get_server() { return server; }
+  boost::dummy_ptr<Server>   get_server() { return server; }
   ///
   boost::shared_ptr<Playfield> get_playfield() { return playfield; }
 
