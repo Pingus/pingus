@@ -44,7 +44,7 @@
 
 <hotspot>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
+    <resource-datafile>entrances</resource-datafile>
   <resource-ident>Entrances/wood_bottom</resource-ident>
   </resource></surface>
   <position>
@@ -58,8 +58,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/bigprickpiece</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/bigprickpiece</resource-ident>
   </resource></surface>
   <position>
     <x-pos>699</x-pos>
@@ -70,8 +69,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/bigprickpiece</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/bigprickpiece</resource-ident>
   </resource></surface>
   <position>
     <x-pos>699</x-pos>
@@ -82,8 +80,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/bigprickpiece</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/bigprickpiece</resource-ident>
   </resource></surface>
   <position>
     <x-pos>699</x-pos>
@@ -94,8 +91,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/middleprickpiece</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/middleprickpiece</resource-ident>
   </resource></surface>
   <position>
     <x-pos>295</x-pos>
@@ -106,8 +102,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/bigprickpiece</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/bigprickpiece</resource-ident>
   </resource></surface>
   <position>
     <x-pos>699</x-pos>
@@ -118,8 +113,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/bigprickpiece</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/bigprickpiece</resource-ident>
   </resource></surface>
   <position>
     <x-pos>404</x-pos>
@@ -130,8 +124,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/middleprickpiece</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/middleprickpiece</resource-ident>
   </resource></surface>
   <position>
     <x-pos>255</x-pos>
@@ -142,8 +135,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/middleprickpiece</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/middleprickpiece</resource-ident>
   </resource></surface>
   <position>
     <x-pos>827</x-pos>
@@ -154,8 +146,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/middleprickpiece</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/middleprickpiece</resource-ident>
   </resource></surface>
   <position>
     <x-pos>272</x-pos>
@@ -166,8 +157,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/middleprickpiece</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/middleprickpiece</resource-ident>
   </resource></surface>
   <position>
     <x-pos>725</x-pos>
@@ -178,8 +168,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/middleprickpiece</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/middleprickpiece</resource-ident>
   </resource></surface>
   <position>
     <x-pos>849</x-pos>
@@ -190,8 +179,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/middleprickpiece</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/middleprickpiece</resource-ident>
   </resource></surface>
   <position>
     <x-pos>849</x-pos>
@@ -202,8 +190,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/middleprickpiece</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/middleprickpiece</resource-ident>
   </resource></surface>
   <position>
     <x-pos>676</x-pos>
@@ -214,8 +201,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/middleprickpiece</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/middleprickpiece</resource-ident>
   </resource></surface>
   <position>
     <x-pos>448</x-pos>
@@ -226,8 +212,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/middleprickpiece</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/middleprickpiece</resource-ident>
   </resource></surface>
   <position>
     <x-pos>624</x-pos>
@@ -238,8 +223,7 @@
 
 <groundpiece type="solid">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>Hotspots/plate</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>Hotspots/plate</resource-ident>
   </resource></surface>
   <position>
     <x-pos>676</x-pos>
@@ -250,8 +234,7 @@
 
 <groundpiece type="solid">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>Hotspots/plate</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>Hotspots/plate</resource-ident>
   </resource></surface>
   <position>
     <x-pos>676</x-pos>
@@ -262,8 +245,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/smallbrickpiece</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/smallbrickpiece</resource-ident>
   </resource></surface>
   <position>
     <x-pos>570</x-pos>
@@ -274,8 +256,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/smallbrickpiece</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/smallbrickpiece</resource-ident>
   </resource></surface>
   <position>
     <x-pos>399</x-pos>
@@ -286,8 +267,7 @@
 
 <groundpiece type="solid">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>Hotspots/plate</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>Hotspots/plate</resource-ident>
   </resource></surface>
   <position>
     <x-pos>676</x-pos>
@@ -298,8 +278,7 @@
 
 <groundpiece type="solid">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>Hotspots/plate2</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>Hotspots/plate2</resource-ident>
   </resource></surface>
   <position>
     <x-pos>643</x-pos>
@@ -310,8 +289,7 @@
 
 <groundpiece type="solid">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>Hotspots/plate2</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>Hotspots/plate2</resource-ident>
   </resource></surface>
   <position>
     <x-pos>676</x-pos>
@@ -322,8 +300,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/smallbrickpiece</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/smallbrickpiece</resource-ident>
   </resource></surface>
   <position>
     <x-pos>923</x-pos>
@@ -334,8 +311,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/smallbrickpiece</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/smallbrickpiece</resource-ident>
   </resource></surface>
   <position>
     <x-pos>756</x-pos>
@@ -346,8 +322,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/smallbrickpiece</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/smallbrickpiece</resource-ident>
   </resource></surface>
   <position>
     <x-pos>923</x-pos>
@@ -358,8 +333,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/smallbrickpiece</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/smallbrickpiece</resource-ident>
   </resource></surface>
   <position>
     <x-pos>794</x-pos>
@@ -370,8 +344,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/smallbrickpiece</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/smallbrickpiece</resource-ident>
   </resource></surface>
   <position>
     <x-pos>662</x-pos>
@@ -382,8 +355,7 @@
 
 <groundpiece type="solid">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>Hotspots/plate2</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>Hotspots/plate2</resource-ident>
   </resource></surface>
   <position>
     <x-pos>685</x-pos>
@@ -394,8 +366,7 @@
 
 <groundpiece type="solid">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>Hotspots/plate2</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>Hotspots/plate2</resource-ident>
   </resource></surface>
   <position>
     <x-pos>676</x-pos>
@@ -406,8 +377,7 @@
 
 <groundpiece type="solid">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>Hotspots/plate2</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>Hotspots/plate2</resource-ident>
   </resource></surface>
   <position>
     <x-pos>713</x-pos>
@@ -418,8 +388,7 @@
 
 <groundpiece type="solid">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>Hotspots/plate2</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>Hotspots/plate2</resource-ident>
   </resource></surface>
   <position>
     <x-pos>676</x-pos>
@@ -430,8 +399,7 @@
 
 <groundpiece type="solid">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>Hotspots/plate_small</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>Hotspots/plate_small</resource-ident>
   </resource></surface>
   <position>
     <x-pos>702</x-pos>
@@ -442,8 +410,7 @@
 
 <groundpiece type="solid">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>Hotspots/plate</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>Hotspots/plate</resource-ident>
   </resource></surface>
   <position>
     <x-pos>660</x-pos>
@@ -454,8 +421,7 @@
 
 <groundpiece type="solid">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>Hotspots/plate</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>Hotspots/plate</resource-ident>
   </resource></surface>
   <position>
     <x-pos>663</x-pos>
@@ -466,8 +432,7 @@
 
 <groundpiece type="solid">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>Hotspots/plate</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>Hotspots/plate</resource-ident>
   </resource></surface>
   <position>
     <x-pos>655</x-pos>
@@ -478,8 +443,7 @@
 
 <groundpiece type="solid">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>Hotspots/plate</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>Hotspots/plate</resource-ident>
   </resource></surface>
   <position>
     <x-pos>688</x-pos>
@@ -490,8 +454,7 @@
 
 <groundpiece type="solid">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>Hotspots/plate_small</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>Hotspots/plate_small</resource-ident>
   </resource></surface>
   <position>
     <x-pos>676</x-pos>
@@ -502,8 +465,7 @@
 
 <groundpiece type="solid">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>Hotspots/plate_small</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>Hotspots/plate_small</resource-ident>
   </resource></surface>
   <position>
     <x-pos>698</x-pos>
@@ -514,8 +476,7 @@
 
 <groundpiece type="solid">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>Hotspots/plate_small</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>Hotspots/plate_small</resource-ident>
   </resource></surface>
   <position>
     <x-pos>679</x-pos>
@@ -526,8 +487,7 @@
 
 <groundpiece type="solid">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>Hotspots/plate_small</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>Hotspots/plate_small</resource-ident>
   </resource></surface>
   <position>
     <x-pos>674</x-pos>
@@ -538,8 +498,7 @@
 
 <groundpiece type="solid">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>Hotspots/plate_small</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>Hotspots/plate_small</resource-ident>
   </resource></surface>
   <position>
     <x-pos>693</x-pos>
@@ -550,8 +509,7 @@
 
 <groundpiece type="solid">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>Hotspots/plate_small</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>Hotspots/plate_small</resource-ident>
   </resource></surface>
   <position>
     <x-pos>702</x-pos>
@@ -562,8 +520,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>Hotspots/pillar1</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>Hotspots/pillar1</resource-ident>
   </resource></surface>
   <position>
     <x-pos>295</x-pos>
@@ -574,8 +531,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>Hotspots/pillar1</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>Hotspots/pillar1</resource-ident>
   </resource></surface>
   <position>
     <x-pos>963</x-pos>
@@ -602,14 +558,14 @@
     <z-pos>0</z-pos>
   </position>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
+    <resource-datafile>exits</resource-datafile>
   <resource-ident>Exits/desert</resource-ident>
   </resource></surface>
 </exit>
 
 <hotspot>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
+    <resource-datafile>entrances</resource-datafile>
   <resource-ident>Entrances/wood_top</resource-ident>
   </resource></surface>
   <position>

@@ -62,15 +62,14 @@
     <z-pos>0</z-pos>
   </position>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
+    <resource-datafile>exits</resource-datafile>
   <resource-ident>Exits/space</resource-ident>
   </resource></surface>
 </exit>
 
 <hotspot>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>Hotspots/engine</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>Hotspots/engine</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1201</x-pos>
@@ -83,8 +82,7 @@
 
 <hotspot>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>Hotspots/engine</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>Hotspots/engine</resource-ident>
   </resource></surface>
   <position>
     <x-pos>683</x-pos>
@@ -97,8 +95,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/diagonal</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/diagonal</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1067</x-pos>
@@ -109,8 +106,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/diagonal</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/diagonal</resource-ident>
   </resource></surface>
   <position>
     <x-pos>779</x-pos>
@@ -121,8 +117,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/diagonal</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/diagonal</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1067</x-pos>
@@ -133,8 +128,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/diagonal</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/diagonal</resource-ident>
   </resource></surface>
   <position>
     <x-pos>779</x-pos>
@@ -145,8 +139,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/diagonal</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/diagonal</resource-ident>
   </resource></surface>
   <position>
     <x-pos>913</x-pos>
@@ -157,8 +150,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/diagonal</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/diagonal</resource-ident>
   </resource></surface>
   <position>
     <x-pos>846</x-pos>
@@ -169,8 +161,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/diagonal</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/diagonal</resource-ident>
   </resource></surface>
   <position>
     <x-pos>779</x-pos>
@@ -181,8 +172,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/diagonal</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/diagonal</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1067</x-pos>
@@ -193,8 +183,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/diagonal</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/diagonal</resource-ident>
   </resource></surface>
   <position>
     <x-pos>779</x-pos>
@@ -205,8 +194,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/diagonalr</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/diagonalr</resource-ident>
   </resource></surface>
   <position>
     <x-pos>933</x-pos>
@@ -217,8 +205,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/diagonalr</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/diagonalr</resource-ident>
   </resource></surface>
   <position>
     <x-pos>999</x-pos>
@@ -229,8 +216,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/diagonalr</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/diagonalr</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1067</x-pos>
@@ -241,8 +227,7 @@
 
 <groundpiece type="bridge">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/grid3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/grid3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1067</x-pos>
@@ -253,8 +238,7 @@
 
 <groundpiece type="bridge">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/grid3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/grid3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1525</x-pos>
@@ -265,8 +249,7 @@
 
 <groundpiece type="bridge">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/grid3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/grid3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>922</x-pos>
@@ -277,8 +260,7 @@
 
 <groundpiece type="bridge">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/grid3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/grid3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>922</x-pos>
@@ -289,8 +271,7 @@
 
 <groundpiece type="bridge">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/grid3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/grid3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1635</x-pos>
@@ -301,8 +282,7 @@
 
 <groundpiece type="bridge">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/grid3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/grid3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1598</x-pos>
@@ -313,8 +293,7 @@
 
 <groundpiece type="bridge">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/grid3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/grid3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1598</x-pos>
@@ -325,8 +304,7 @@
 
 <groundpiece type="bridge">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/grid3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/grid3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>995</x-pos>
@@ -337,8 +315,7 @@
 
 <groundpiece type="bridge">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/grid3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/grid3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1598</x-pos>
@@ -349,8 +326,7 @@
 
 <groundpiece type="bridge">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/grid3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/grid3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>995</x-pos>
@@ -361,8 +337,7 @@
 
 <groundpiece type="bridge">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/grid3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/grid3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>995</x-pos>
@@ -373,8 +348,7 @@
 
 <groundpiece type="bridge">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/grid3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/grid3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1739</x-pos>
@@ -385,8 +359,7 @@
 
 <groundpiece type="bridge">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/grid3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/grid3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1449</x-pos>
@@ -397,8 +370,7 @@
 
 <groundpiece type="bridge">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/grid3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/grid3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1067</x-pos>
@@ -409,8 +381,7 @@
 
 <groundpiece type="bridge">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/grid3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/grid3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1594</x-pos>
@@ -421,8 +392,7 @@
 
 <groundpiece type="bridge">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/grid3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/grid3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1304</x-pos>
@@ -433,8 +403,7 @@
 
 <groundpiece type="bridge">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/grid3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/grid3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>922</x-pos>
@@ -445,8 +414,7 @@
 
 <groundpiece type="bridge">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/grid3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/grid3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1667</x-pos>
@@ -457,8 +425,7 @@
 
 <groundpiece type="bridge">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/grid3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/grid3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1377</x-pos>
@@ -469,8 +436,7 @@
 
 <groundpiece type="bridge">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/grid3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/grid3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>995</x-pos>
@@ -481,8 +447,7 @@
 
 <groundpiece type="bridge">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/grid3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/grid3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1774</x-pos>
@@ -493,8 +458,7 @@
 
 <groundpiece type="bridge">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/grid3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/grid3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1775</x-pos>
@@ -505,8 +469,7 @@
 
 <groundpiece type="bridge">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/grid3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/grid3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1775</x-pos>
@@ -517,8 +480,7 @@
 
 <groundpiece type="bridge">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/grid3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/grid3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1485</x-pos>
@@ -529,8 +491,7 @@
 
 <groundpiece type="bridge">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/grid3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/grid3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1232</x-pos>
@@ -541,8 +502,7 @@
 
 <groundpiece type="bridge">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/grid3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/grid3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1774</x-pos>
@@ -553,8 +513,7 @@
 
 <groundpiece type="bridge">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/grid3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/grid3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1775</x-pos>
@@ -565,8 +524,7 @@
 
 <groundpiece type="bridge">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/grid3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/grid3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1775</x-pos>
@@ -577,8 +535,7 @@
 
 <groundpiece type="bridge">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/grid3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/grid3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1485</x-pos>
@@ -589,8 +546,7 @@
 
 <groundpiece type="bridge">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/grid3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/grid3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1522</x-pos>
@@ -601,8 +557,7 @@
 
 <groundpiece type="bridge">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/grid3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/grid3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1232</x-pos>
@@ -613,8 +568,7 @@
 
 <groundpiece type="bridge">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/grid3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/grid3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>850</x-pos>
@@ -625,8 +579,7 @@
 
 <groundpiece type="bridge">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/grid3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/grid3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1561</x-pos>
@@ -637,8 +590,7 @@
 
 <groundpiece type="bridge">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/grid3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/grid3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>958</x-pos>
@@ -649,8 +601,7 @@
 
 <groundpiece type="bridge">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/grid3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/grid3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1561</x-pos>
@@ -661,8 +612,7 @@
 
 <groundpiece type="bridge">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/grid3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/grid3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>958</x-pos>
@@ -673,8 +623,7 @@
 
 <groundpiece type="bridge">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/grid3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/grid3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>958</x-pos>
@@ -685,8 +634,7 @@
 
 <groundpiece type="bridge">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/grid3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/grid3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1738</x-pos>
@@ -697,8 +645,7 @@
 
 <groundpiece type="bridge">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/grid3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/grid3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1671</x-pos>
@@ -709,8 +656,7 @@
 
 <groundpiece type="bridge">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/grid3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/grid3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1701</x-pos>
@@ -721,8 +667,7 @@
 
 <groundpiece type="bridge">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/grid3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/grid3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1634</x-pos>
@@ -733,8 +678,7 @@
 
 <groundpiece type="bridge">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/grid3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/grid3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1031</x-pos>
@@ -745,8 +689,7 @@
 
 <groundpiece type="bridge">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/grid3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/grid3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1031</x-pos>
@@ -757,8 +700,7 @@
 
 <groundpiece type="bridge">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/grid3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/grid3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>886</x-pos>
@@ -769,8 +711,7 @@
 
 <groundpiece type="bridge">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/grid3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/grid3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1775</x-pos>
@@ -781,8 +722,7 @@
 
 <groundpiece type="bridge">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/grid3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/grid3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1775</x-pos>
@@ -793,8 +733,7 @@
 
 <groundpiece type="bridge">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/grid3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/grid3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1775</x-pos>
@@ -805,8 +744,7 @@
 
 <groundpiece type="bridge">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/grid3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/grid3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1775</x-pos>
@@ -817,8 +755,7 @@
 
 <groundpiece type="bridge">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/grid3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/grid3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1485</x-pos>
@@ -829,8 +766,7 @@
 
 <groundpiece type="bridge">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/grid3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/grid3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1103</x-pos>
@@ -841,8 +777,7 @@
 
 <groundpiece type="bridge">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/grid3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/grid3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1630</x-pos>
@@ -853,8 +788,7 @@
 
 <groundpiece type="bridge">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/grid3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/grid3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1340</x-pos>
@@ -865,8 +799,7 @@
 
 <groundpiece type="bridge">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/grid3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/grid3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>958</x-pos>
@@ -877,8 +810,7 @@
 
 <groundpiece type="bridge">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/grid3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/grid3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1703</x-pos>
@@ -889,8 +821,7 @@
 
 <groundpiece type="bridge">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/grid3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/grid3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1413</x-pos>
@@ -901,8 +832,7 @@
 
 <groundpiece type="bridge">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/grid3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/grid3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1031</x-pos>
@@ -913,8 +843,7 @@
 
 <groundpiece type="bridge">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/grid3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/grid3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1558</x-pos>
@@ -925,8 +854,7 @@
 
 <groundpiece type="bridge">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/grid3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/grid3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1268</x-pos>
@@ -937,8 +865,7 @@
 
 <groundpiece type="bridge">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/grid3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/grid3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>886</x-pos>
@@ -949,8 +876,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/diagonalr</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/diagonalr</resource-ident>
   </resource></surface>
   <position>
     <x-pos>779</x-pos>
@@ -961,8 +887,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/diagonalr</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/diagonalr</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1067</x-pos>
@@ -973,8 +898,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/diagonalr</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/diagonalr</resource-ident>
   </resource></surface>
   <position>
     <x-pos>779</x-pos>
@@ -985,8 +909,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/diagonalr</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/diagonalr</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1066</x-pos>
@@ -997,8 +920,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/diagonalr</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/diagonalr</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1067</x-pos>
@@ -1009,8 +931,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/diagonalr</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/diagonalr</resource-ident>
   </resource></surface>
   <position>
     <x-pos>779</x-pos>
@@ -1021,8 +942,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/way</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/way</resource-ident>
   </resource></surface>
   <position>
     <x-pos>957</x-pos>
@@ -1033,8 +953,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/way</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/way</resource-ident>
   </resource></surface>
   <position>
     <x-pos>957</x-pos>
@@ -1045,8 +964,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/way</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/way</resource-ident>
   </resource></surface>
   <position>
     <x-pos>926</x-pos>
@@ -1057,8 +975,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/way</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/way</resource-ident>
   </resource></surface>
   <position>
     <x-pos>926</x-pos>
@@ -1069,8 +986,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/way</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/way</resource-ident>
   </resource></surface>
   <position>
     <x-pos>957</x-pos>
@@ -1081,8 +997,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/way</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/way</resource-ident>
   </resource></surface>
   <position>
     <x-pos>954</x-pos>
@@ -1093,8 +1008,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/way</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/way</resource-ident>
   </resource></surface>
   <position>
     <x-pos>933</x-pos>
@@ -1105,8 +1019,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/way</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/way</resource-ident>
   </resource></surface>
   <position>
     <x-pos>918</x-pos>
@@ -1117,8 +1030,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/smalltower</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/smalltower</resource-ident>
   </resource></surface>
   <position>
     <x-pos>957</x-pos>
@@ -1129,8 +1041,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/smalltower</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/smalltower</resource-ident>
   </resource></surface>
   <position>
     <x-pos>978</x-pos>
@@ -1141,8 +1052,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/smalltower</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/smalltower</resource-ident>
   </resource></surface>
   <position>
     <x-pos>978</x-pos>
@@ -1153,8 +1063,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/smalltower</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/smalltower</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1027</x-pos>
@@ -1165,8 +1074,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/smalltower</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/smalltower</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1051</x-pos>
@@ -1177,8 +1085,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/smalltower</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/smalltower</resource-ident>
   </resource></surface>
   <position>
     <x-pos>948</x-pos>
@@ -1189,8 +1096,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/smalltower</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/smalltower</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1051</x-pos>
@@ -1201,8 +1107,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/smalltower</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/smalltower</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1020</x-pos>
@@ -1213,8 +1118,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/smalltower</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/smalltower</resource-ident>
   </resource></surface>
   <position>
     <x-pos>926</x-pos>
@@ -1225,8 +1129,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/smalltower</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/smalltower</resource-ident>
   </resource></surface>
   <position>
     <x-pos>918</x-pos>
@@ -1237,8 +1140,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/block1</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/block1</resource-ident>
   </resource></surface>
   <position>
     <x-pos>683</x-pos>
@@ -1249,8 +1151,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/block1</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/block1</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1519</x-pos>
@@ -1261,8 +1162,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/block1</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/block1</resource-ident>
   </resource></surface>
   <position>
     <x-pos>997</x-pos>
@@ -1273,8 +1173,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/block1</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/block1</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1353</x-pos>
@@ -1285,8 +1184,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/block1</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/block1</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1085</x-pos>
@@ -1297,8 +1195,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/block1</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/block1</resource-ident>
   </resource></surface>
   <position>
     <x-pos>796</x-pos>
@@ -1309,8 +1206,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/block1</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/block1</resource-ident>
   </resource></surface>
   <position>
     <x-pos>884</x-pos>
@@ -1321,8 +1217,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/block1</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/block1</resource-ident>
   </resource></surface>
   <position>
     <x-pos>884</x-pos>
@@ -1333,8 +1228,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/tower1</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/tower1</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1220</x-pos>
@@ -1345,8 +1239,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/tower1</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Space/tower1</resource-ident>
   </resource></surface>
   <position>
     <x-pos>693</x-pos>
@@ -1357,7 +1250,7 @@
 
 <hotspot>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
+    <resource-datafile>entrances</resource-datafile>
   <resource-ident>Entrances/space</resource-ident>
   </resource></surface>
   <position>

@@ -52,8 +52,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Desert/pillar2</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/pillar2</resource-ident>
   </resource></surface>
   <position>
     <x-pos>727</x-pos>
@@ -64,8 +63,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Desert/pillar2</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/pillar2</resource-ident>
   </resource></surface>
   <position>
     <x-pos>624</x-pos>
@@ -76,8 +74,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/middleprickpiece</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/middleprickpiece</resource-ident>
   </resource></surface>
   <position>
     <x-pos>953</x-pos>
@@ -88,8 +85,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/middleprickpiece</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/middleprickpiece</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1102</x-pos>
@@ -100,8 +96,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/bigprickpiece</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/bigprickpiece</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1537</x-pos>
@@ -112,8 +107,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/bigprickpiece</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/bigprickpiece</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1409</x-pos>
@@ -124,8 +118,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/bigprickpiece</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/bigprickpiece</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1552</x-pos>
@@ -136,8 +129,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/bigprickpiece</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/bigprickpiece</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1252</x-pos>
@@ -148,8 +140,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1027</x-pos>
@@ -160,8 +151,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
   </resource></surface>
   <position>
     <x-pos>505</x-pos>
@@ -172,8 +162,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1334</x-pos>
@@ -184,8 +173,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/middleprickpiece</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/middleprickpiece</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1252</x-pos>
@@ -196,8 +184,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1082</x-pos>
@@ -208,8 +195,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
   </resource></surface>
   <position>
     <x-pos>253</x-pos>
@@ -220,8 +206,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
   </resource></surface>
   <position>
     <x-pos>219</x-pos>
@@ -232,8 +217,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
   </resource></surface>
   <position>
     <x-pos>349</x-pos>
@@ -244,8 +228,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
   </resource></surface>
   <position>
     <x-pos>344</x-pos>
@@ -256,8 +239,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
   </resource></surface>
   <position>
     <x-pos>324</x-pos>
@@ -268,8 +250,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/smallbrickpiece</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/smallbrickpiece</resource-ident>
   </resource></surface>
   <position>
     <x-pos>694</x-pos>
@@ -280,8 +261,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/smallbrickpiece</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/smallbrickpiece</resource-ident>
   </resource></surface>
   <position>
     <x-pos>619</x-pos>
@@ -292,8 +272,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/smallbrickpiece</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/smallbrickpiece</resource-ident>
   </resource></surface>
   <position>
     <x-pos>813</x-pos>
@@ -304,8 +283,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/smallbrickpiece</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/smallbrickpiece</resource-ident>
   </resource></surface>
   <position>
     <x-pos>497</x-pos>
@@ -316,8 +294,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
   </resource></surface>
   <position>
     <x-pos>563</x-pos>
@@ -328,8 +305,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1384</x-pos>
@@ -340,8 +316,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1132</x-pos>
@@ -352,8 +327,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
   </resource></surface>
   <position>
     <x-pos>626</x-pos>
@@ -364,8 +338,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1448</x-pos>
@@ -376,8 +349,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1196</x-pos>
@@ -388,8 +360,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
   </resource></surface>
   <position>
     <x-pos>504</x-pos>
@@ -400,8 +371,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
   </resource></surface>
   <position>
     <x-pos>404</x-pos>
@@ -412,8 +382,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
   </resource></surface>
   <position>
     <x-pos>471</x-pos>
@@ -424,8 +393,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
   </resource></surface>
   <position>
     <x-pos>451</x-pos>
@@ -436,8 +404,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
   </resource></surface>
   <position>
     <x-pos>684</x-pos>
@@ -448,8 +415,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1551</x-pos>
@@ -460,8 +426,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1299</x-pos>
@@ -472,8 +437,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
   </resource></surface>
   <position>
     <x-pos>799</x-pos>
@@ -484,8 +448,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
   </resource></surface>
   <position>
     <x-pos>586</x-pos>
@@ -496,8 +459,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
   </resource></surface>
   <position>
     <x-pos>866</x-pos>
@@ -508,8 +470,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
   </resource></surface>
   <position>
     <x-pos>783</x-pos>
@@ -520,8 +481,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
   </resource></surface>
   <position>
     <x-pos>771</x-pos>
@@ -532,8 +492,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
   </resource></surface>
   <position>
     <x-pos>850</x-pos>
@@ -544,8 +503,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
   </resource></surface>
   <position>
     <x-pos>922</x-pos>
@@ -556,8 +514,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
   </resource></surface>
   <position>
     <x-pos>709</x-pos>
@@ -568,8 +525,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
   </resource></surface>
   <position>
     <x-pos>638</x-pos>
@@ -580,8 +536,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
   </resource></surface>
   <position>
     <x-pos>691</x-pos>
@@ -592,8 +547,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
   </resource></surface>
   <position>
     <x-pos>259</x-pos>
@@ -604,8 +558,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
   </resource></surface>
   <position>
     <x-pos>201</x-pos>
@@ -616,8 +569,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
   </resource></surface>
   <position>
     <x-pos>111</x-pos>
@@ -628,8 +580,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
   </resource></surface>
   <position>
     <x-pos>135</x-pos>
@@ -640,8 +591,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
   </resource></surface>
   <position>
     <x-pos>159</x-pos>
@@ -652,8 +602,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
   </resource></surface>
   <position>
     <x-pos>291</x-pos>
@@ -664,8 +613,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1386</x-pos>
@@ -676,8 +624,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1134</x-pos>
@@ -688,8 +635,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
   </resource></surface>
   <position>
     <x-pos>627</x-pos>
@@ -700,8 +646,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1022</x-pos>
@@ -712,8 +657,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
   </resource></surface>
   <position>
     <x-pos>506</x-pos>
@@ -724,8 +668,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1509</x-pos>
@@ -736,8 +679,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Desert/pillar1</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/pillar1</resource-ident>
   </resource></surface>
   <position>
     <x-pos>259</x-pos>
@@ -748,8 +690,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1257</x-pos>
@@ -760,8 +701,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
   </resource></surface>
   <position>
     <x-pos>751</x-pos>
@@ -772,8 +712,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
   </resource></surface>
   <position>
     <x-pos>946</x-pos>
@@ -784,8 +723,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
   </resource></surface>
   <position>
     <x-pos>424</x-pos>
@@ -796,8 +734,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
   </resource></surface>
   <position>
     <x-pos>933</x-pos>
@@ -808,8 +745,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
   </resource></surface>
   <position>
     <x-pos>868</x-pos>
@@ -820,8 +756,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
   </resource></surface>
   <position>
     <x-pos>378</x-pos>
@@ -832,8 +767,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1535</x-pos>
@@ -844,8 +778,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1283</x-pos>
@@ -856,8 +789,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/Sluggydu</resource-ident>
   </resource></surface>
   <position>
     <x-pos>761</x-pos>
@@ -868,8 +800,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
   </resource></surface>
   <position>
     <x-pos>227</x-pos>
@@ -880,8 +811,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Desert/pillar1</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/pillar1</resource-ident>
   </resource></surface>
   <position>
     <x-pos>679</x-pos>
@@ -897,14 +827,14 @@
     <z-pos>50</z-pos>
   </position>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
+    <resource-datafile>exits</resource-datafile>
   <resource-ident>Exits/desert</resource-ident>
   </resource></surface>
 </exit>
 
 <hotspot>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
+    <resource-datafile>entrances</resource-datafile>
   <resource-ident>Entrances/wood_bottom</resource-ident>
   </resource></surface>
   <position>
@@ -918,7 +848,7 @@
 
 <hotspot>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
+    <resource-datafile>entrances</resource-datafile>
   <resource-ident>Entrances/wood_top</resource-ident>
   </resource></surface>
   <position>

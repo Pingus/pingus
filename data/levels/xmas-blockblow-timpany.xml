@@ -55,7 +55,7 @@
     <z-pos>0</z-pos>
   </position>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
+    <resource-datafile>exits</resource-datafile>
   <resource-ident>Exits/stone</resource-ident>
   </resource></surface>
 </exit>
@@ -71,8 +71,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_ph</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_ph</resource-ident>
   </resource></surface>
   <position>
     <x-pos>355</x-pos>
@@ -83,8 +82,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_ph</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_ph</resource-ident>
   </resource></surface>
   <position>
     <x-pos>151</x-pos>
@@ -95,8 +93,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_ph</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_ph</resource-ident>
   </resource></surface>
   <position>
     <x-pos>215</x-pos>
@@ -107,8 +104,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_ph</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_ph</resource-ident>
   </resource></surface>
   <position>
     <x-pos>87</x-pos>
@@ -119,8 +115,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_h</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_h</resource-ident>
   </resource></surface>
   <position>
     <x-pos>55</x-pos>
@@ -131,8 +126,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_ph</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_ph</resource-ident>
   </resource></surface>
   <position>
     <x-pos>23</x-pos>
@@ -143,8 +137,7 @@
 
 <groundpiece type="solid">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>Hotspots/plate2</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>Hotspots/plate2</resource-ident>
   </resource></surface>
   <position>
     <x-pos>569</x-pos>
@@ -155,8 +148,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_h</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_h</resource-ident>
   </resource></surface>
   <position>
     <x-pos>387</x-pos>
@@ -167,8 +159,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_h</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_h</resource-ident>
   </resource></surface>
   <position>
     <x-pos>183</x-pos>
@@ -179,8 +170,7 @@
 
 <groundpiece type="solid">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>Hotspots/plate2</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>Hotspots/plate2</resource-ident>
   </resource></surface>
   <position>
     <x-pos>505</x-pos>
@@ -191,8 +181,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_h</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_h</resource-ident>
   </resource></surface>
   <position>
     <x-pos>-9</x-pos>
@@ -203,8 +192,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Rock/granit5</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Rock/granit5</resource-ident>
   </resource></surface>
   <position>
     <x-pos>632</x-pos>
@@ -215,8 +203,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Rock/granit5</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Rock/granit5</resource-ident>
   </resource></surface>
   <position>
     <x-pos>477</x-pos>
@@ -227,8 +214,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_h</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_h</resource-ident>
   </resource></surface>
   <position>
     <x-pos>247</x-pos>
@@ -239,8 +225,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_h</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_h</resource-ident>
   </resource></surface>
   <position>
     <x-pos>119</x-pos>
@@ -251,8 +236,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Snow/piece2</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Snow/piece2</resource-ident>
   </resource></surface>
   <position>
     <x-pos>117</x-pos>
@@ -263,8 +247,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Snow/piece2</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Snow/piece2</resource-ident>
   </resource></surface>
   <position>
     <x-pos>-13</x-pos>
@@ -275,8 +258,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_h</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_h</resource-ident>
   </resource></surface>
   <position>
     <x-pos>317</x-pos>
@@ -287,8 +269,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_h</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_h</resource-ident>
   </resource></surface>
   <position>
     <x-pos>320</x-pos>
@@ -299,8 +280,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Snow/piece2</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Snow/piece2</resource-ident>
   </resource></surface>
   <position>
     <x-pos>188</x-pos>
@@ -311,8 +291,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_ul</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_ul</resource-ident>
   </resource></surface>
   <position>
     <x-pos>533</x-pos>
@@ -323,8 +302,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_ph</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_ph</resource-ident>
   </resource></surface>
   <position>
     <x-pos>409</x-pos>
@@ -335,8 +313,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_ph</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_ph</resource-ident>
   </resource></surface>
   <position>
     <x-pos>288</x-pos>
@@ -347,8 +324,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_ph</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_ph</resource-ident>
   </resource></surface>
   <position>
     <x-pos>286</x-pos>
@@ -359,8 +335,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Snow/piece2</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Snow/piece2</resource-ident>
   </resource></surface>
   <position>
     <x-pos>48</x-pos>
@@ -371,8 +346,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_ul</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_ul</resource-ident>
   </resource></surface>
   <position>
     <x-pos>96</x-pos>
@@ -383,8 +357,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_ul</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_ul</resource-ident>
   </resource></surface>
   <position>
     <x-pos>298</x-pos>
@@ -395,8 +368,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_ul</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_ul</resource-ident>
   </resource></surface>
   <position>
     <x-pos>323</x-pos>
@@ -407,8 +379,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_ul</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_ul</resource-ident>
   </resource></surface>
   <position>
     <x-pos>263</x-pos>
@@ -419,8 +390,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_dr</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_dr</resource-ident>
   </resource></surface>
   <position>
     <x-pos>418</x-pos>
@@ -431,8 +401,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_ul</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_ul</resource-ident>
   </resource></surface>
   <position>
     <x-pos>301</x-pos>
@@ -443,8 +412,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_ul</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_ul</resource-ident>
   </resource></surface>
   <position>
     <x-pos>498</x-pos>
@@ -455,8 +423,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_h</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_h</resource-ident>
   </resource></surface>
   <position>
     <x-pos>377</x-pos>
@@ -467,8 +434,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_h</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_h</resource-ident>
   </resource></surface>
   <position>
     <x-pos>320</x-pos>
@@ -479,8 +445,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_v</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_v</resource-ident>
   </resource></surface>
   <position>
     <x-pos>353</x-pos>
@@ -491,8 +456,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_h</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_h</resource-ident>
   </resource></surface>
   <position>
     <x-pos>318</x-pos>
@@ -503,8 +467,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_ur</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_ur</resource-ident>
   </resource></surface>
   <position>
     <x-pos>337</x-pos>
@@ -515,8 +478,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_ur</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_ur</resource-ident>
   </resource></surface>
   <position>
     <x-pos>343</x-pos>
@@ -527,8 +489,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_ur</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_ur</resource-ident>
   </resource></surface>
   <position>
     <x-pos>278</x-pos>
@@ -539,8 +500,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_ur</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_ur</resource-ident>
   </resource></surface>
   <position>
     <x-pos>345</x-pos>
@@ -551,8 +511,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_v</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_v</resource-ident>
   </resource></surface>
   <position>
     <x-pos>263</x-pos>
@@ -563,8 +522,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_v</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_v</resource-ident>
   </resource></surface>
   <position>
     <x-pos>263</x-pos>
@@ -575,8 +533,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_v</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_v</resource-ident>
   </resource></surface>
   <position>
     <x-pos>346</x-pos>
@@ -587,8 +544,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_v</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_v</resource-ident>
   </resource></surface>
   <position>
     <x-pos>298</x-pos>
@@ -599,8 +555,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Snow/piece2</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Snow/piece2</resource-ident>
   </resource></surface>
   <position>
     <x-pos>355</x-pos>
@@ -611,8 +566,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Snow/piece2</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Snow/piece2</resource-ident>
   </resource></surface>
   <position>
     <x-pos>236</x-pos>
@@ -623,8 +577,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Snow/piece2</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Snow/piece2</resource-ident>
   </resource></surface>
   <position>
     <x-pos>297</x-pos>
@@ -635,8 +588,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_v</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_v</resource-ident>
   </resource></surface>
   <position>
     <x-pos>427</x-pos>
@@ -647,8 +599,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_v</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_v</resource-ident>
   </resource></surface>
   <position>
     <x-pos>427</x-pos>
@@ -659,8 +610,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_v</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_v</resource-ident>
   </resource></surface>
   <position>
     <x-pos>301</x-pos>
@@ -671,8 +621,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_v</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_v</resource-ident>
   </resource></surface>
   <position>
     <x-pos>498</x-pos>
@@ -683,8 +632,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_v</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_v</resource-ident>
   </resource></surface>
   <position>
     <x-pos>263</x-pos>
@@ -695,8 +643,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_v</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_v</resource-ident>
   </resource></surface>
   <position>
     <x-pos>346</x-pos>
@@ -707,8 +654,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_v</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_v</resource-ident>
   </resource></surface>
   <position>
     <x-pos>298</x-pos>
@@ -719,8 +665,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_v</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_v</resource-ident>
   </resource></surface>
   <position>
     <x-pos>427</x-pos>
@@ -731,8 +676,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_v</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_v</resource-ident>
   </resource></surface>
   <position>
     <x-pos>427</x-pos>
@@ -743,8 +687,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_v</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_v</resource-ident>
   </resource></surface>
   <position>
     <x-pos>427</x-pos>
@@ -755,8 +698,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_v</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_v</resource-ident>
   </resource></surface>
   <position>
     <x-pos>427</x-pos>
@@ -767,8 +709,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_v</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_v</resource-ident>
   </resource></surface>
   <position>
     <x-pos>301</x-pos>
@@ -779,8 +720,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_v</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_v</resource-ident>
   </resource></surface>
   <position>
     <x-pos>498</x-pos>
@@ -791,8 +731,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_pv</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_pv</resource-ident>
   </resource></surface>
   <position>
     <x-pos>263</x-pos>
@@ -803,8 +742,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_pv</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_pv</resource-ident>
   </resource></surface>
   <position>
     <x-pos>427</x-pos>
@@ -815,8 +753,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_pv</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_pv</resource-ident>
   </resource></surface>
   <position>
     <x-pos>427</x-pos>
@@ -827,8 +764,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_pv</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_pv</resource-ident>
   </resource></surface>
   <position>
     <x-pos>301</x-pos>
@@ -839,8 +775,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_pv</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_pv</resource-ident>
   </resource></surface>
   <position>
     <x-pos>498</x-pos>
@@ -851,8 +786,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_pv</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_pv</resource-ident>
   </resource></surface>
   <position>
     <x-pos>263</x-pos>
@@ -863,8 +797,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_pv</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_pv</resource-ident>
   </resource></surface>
   <position>
     <x-pos>298</x-pos>
@@ -875,8 +808,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_pv</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_pv</resource-ident>
   </resource></surface>
   <position>
     <x-pos>427</x-pos>
@@ -887,8 +819,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_pv</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_pv</resource-ident>
   </resource></surface>
   <position>
     <x-pos>427</x-pos>
@@ -899,8 +830,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_pv</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_pv</resource-ident>
   </resource></surface>
   <position>
     <x-pos>301</x-pos>
@@ -911,8 +841,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_pv</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_pv</resource-ident>
   </resource></surface>
   <position>
     <x-pos>498</x-pos>
@@ -923,8 +852,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_dr</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_dr</resource-ident>
   </resource></surface>
   <position>
     <x-pos>343</x-pos>
@@ -935,8 +863,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_dr</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_dr</resource-ident>
   </resource></surface>
   <position>
     <x-pos>530</x-pos>
@@ -947,8 +874,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_dr</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_dr</resource-ident>
   </resource></surface>
   <position>
     <x-pos>345</x-pos>
@@ -959,8 +885,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_dr</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_dr</resource-ident>
   </resource></surface>
   <position>
     <x-pos>489</x-pos>
@@ -971,8 +896,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_dl</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_dl</resource-ident>
   </resource></surface>
   <position>
     <x-pos>345</x-pos>
@@ -983,8 +907,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_dl</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_dl</resource-ident>
   </resource></surface>
   <position>
     <x-pos>297</x-pos>
@@ -995,8 +918,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_dl</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_dl</resource-ident>
   </resource></surface>
   <position>
     <x-pos>300</x-pos>
@@ -1007,8 +929,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_dl</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_dl</resource-ident>
   </resource></surface>
   <position>
     <x-pos>262</x-pos>
@@ -1019,8 +940,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_ph</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_ph</resource-ident>
   </resource></surface>
   <position>
     <x-pos>364</x-pos>
@@ -1031,8 +951,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_ph</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_ph</resource-ident>
   </resource></surface>
   <position>
     <x-pos>537</x-pos>
@@ -1043,8 +962,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_ph</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_ph</resource-ident>
   </resource></surface>
   <position>
     <x-pos>89</x-pos>
@@ -1055,8 +973,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_ph</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_ph</resource-ident>
   </resource></surface>
   <position>
     <x-pos>660</x-pos>
@@ -1067,8 +984,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_ph</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_ph</resource-ident>
   </resource></surface>
   <position>
     <x-pos>793</x-pos>
@@ -1079,8 +995,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_ph</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_ph</resource-ident>
   </resource></surface>
   <position>
     <x-pos>665</x-pos>
@@ -1091,8 +1006,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_ph</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_ph</resource-ident>
   </resource></surface>
   <position>
     <x-pos>473</x-pos>
@@ -1103,8 +1017,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_ph</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_ph</resource-ident>
   </resource></surface>
   <position>
     <x-pos>217</x-pos>
@@ -1115,8 +1028,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_ph</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_ph</resource-ident>
   </resource></surface>
   <position>
     <x-pos>596</x-pos>
@@ -1127,8 +1039,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_ph</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_ph</resource-ident>
   </resource></surface>
   <position>
     <x-pos>729</x-pos>
@@ -1139,8 +1050,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_ph</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_ph</resource-ident>
   </resource></surface>
   <position>
     <x-pos>428</x-pos>
@@ -1151,8 +1061,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_ph</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_ph</resource-ident>
   </resource></surface>
   <position>
     <x-pos>601</x-pos>
@@ -1163,8 +1072,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_ph</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_ph</resource-ident>
   </resource></surface>
   <position>
     <x-pos>153</x-pos>
@@ -1175,8 +1083,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_ph</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_ph</resource-ident>
   </resource></surface>
   <position>
     <x-pos>281</x-pos>
@@ -1187,8 +1094,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_h</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_h</resource-ident>
   </resource></surface>
   <position>
     <x-pos>396</x-pos>
@@ -1199,8 +1105,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_h</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_h</resource-ident>
   </resource></surface>
   <position>
     <x-pos>569</x-pos>
@@ -1211,8 +1116,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_h</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_h</resource-ident>
   </resource></surface>
   <position>
     <x-pos>121</x-pos>
@@ -1223,8 +1127,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_h</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_h</resource-ident>
   </resource></surface>
   <position>
     <x-pos>564</x-pos>
@@ -1235,8 +1138,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_h</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_h</resource-ident>
   </resource></surface>
   <position>
     <x-pos>697</x-pos>
@@ -1247,8 +1149,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_h</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_h</resource-ident>
   </resource></surface>
   <position>
     <x-pos>332</x-pos>
@@ -1259,8 +1160,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_h</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_h</resource-ident>
   </resource></surface>
   <position>
     <x-pos>505</x-pos>
@@ -1271,8 +1171,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_h</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_h</resource-ident>
   </resource></surface>
   <position>
     <x-pos>249</x-pos>
@@ -1283,8 +1182,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_h</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_h</resource-ident>
   </resource></surface>
   <position>
     <x-pos>628</x-pos>
@@ -1295,8 +1193,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_h</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_h</resource-ident>
   </resource></surface>
   <position>
     <x-pos>761</x-pos>
@@ -1307,8 +1204,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_h</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_h</resource-ident>
   </resource></surface>
   <position>
     <x-pos>460</x-pos>
@@ -1319,8 +1215,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_h</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_h</resource-ident>
   </resource></surface>
   <position>
     <x-pos>633</x-pos>
@@ -1331,8 +1226,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_h</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_h</resource-ident>
   </resource></surface>
   <position>
     <x-pos>441</x-pos>
@@ -1343,8 +1237,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_h</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_h</resource-ident>
   </resource></surface>
   <position>
     <x-pos>185</x-pos>
@@ -1355,8 +1248,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_h</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_h</resource-ident>
   </resource></surface>
   <position>
     <x-pos>313</x-pos>
@@ -1367,8 +1259,7 @@
 
 <groundpiece type="transparent">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_h</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_h</resource-ident>
   </resource></surface>
   <position>
     <x-pos>128</x-pos>
@@ -1379,8 +1270,7 @@
 
 <groundpiece type="transparent">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_h</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_h</resource-ident>
   </resource></surface>
   <position>
     <x-pos>256</x-pos>
@@ -1391,8 +1281,7 @@
 
 <groundpiece type="transparent">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_h</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_h</resource-ident>
   </resource></surface>
   <position>
     <x-pos>192</x-pos>
@@ -1403,8 +1292,7 @@
 
 <groundpiece type="transparent">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_h</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_h</resource-ident>
   </resource></surface>
   <position>
     <x-pos>320</x-pos>
@@ -1415,8 +1303,7 @@
 
 <groundpiece type="transparent">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_ph</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_ph</resource-ident>
   </resource></surface>
   <position>
     <x-pos>224</x-pos>
@@ -1427,8 +1314,7 @@
 
 <groundpiece type="transparent">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_ph</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_ph</resource-ident>
   </resource></surface>
   <position>
     <x-pos>160</x-pos>
@@ -1439,8 +1325,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Rock/granit4</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Rock/granit4</resource-ident>
   </resource></surface>
   <position>
     <x-pos>477</x-pos>
@@ -1451,8 +1336,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Rock/granit4</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Rock/granit4</resource-ident>
   </resource></surface>
   <position>
     <x-pos>483</x-pos>
@@ -1463,8 +1347,7 @@
 
 <groundpiece type="transparent">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_ph</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_ph</resource-ident>
   </resource></surface>
   <position>
     <x-pos>288</x-pos>
@@ -1475,8 +1358,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Snow/ice2</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Snow/ice2</resource-ident>
   </resource></surface>
   <position>
     <x-pos>432</x-pos>
@@ -1487,8 +1369,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Snow/ice2</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Snow/ice2</resource-ident>
   </resource></surface>
   <position>
     <x-pos>370</x-pos>
@@ -1499,8 +1380,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Snow/ice2</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Snow/ice2</resource-ident>
   </resource></surface>
   <position>
     <x-pos>358</x-pos>
@@ -1511,8 +1391,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Snow/ice2</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Snow/ice2</resource-ident>
   </resource></surface>
   <position>
     <x-pos>310</x-pos>
@@ -1523,8 +1402,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Rock/granit5</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Rock/granit5</resource-ident>
   </resource></surface>
   <position>
     <x-pos>578</x-pos>
@@ -1535,8 +1413,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Rock/granit5</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Rock/granit5</resource-ident>
   </resource></surface>
   <position>
     <x-pos>183</x-pos>
@@ -1547,8 +1424,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Rock/granit6</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Rock/granit6</resource-ident>
   </resource></surface>
   <position>
     <x-pos>190</x-pos>
@@ -1559,8 +1435,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Rock/granit4</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Rock/granit4</resource-ident>
   </resource></surface>
   <position>
     <x-pos>33</x-pos>
@@ -1571,8 +1446,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Rock/granit4</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Rock/granit4</resource-ident>
   </resource></surface>
   <position>
     <x-pos>348</x-pos>
@@ -1583,8 +1457,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Rock/granit4</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Rock/granit4</resource-ident>
   </resource></surface>
   <position>
     <x-pos>545</x-pos>
@@ -1595,8 +1468,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Rock/granit4</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Rock/granit4</resource-ident>
   </resource></surface>
   <position>
     <x-pos>13</x-pos>
@@ -1607,8 +1479,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Rock/granit4</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Rock/granit4</resource-ident>
   </resource></surface>
   <position>
     <x-pos>301</x-pos>
@@ -1619,8 +1490,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Rock/granit4</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Rock/granit4</resource-ident>
   </resource></surface>
   <position>
     <x-pos>751</x-pos>
@@ -1631,8 +1501,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>-42</x-pos>
@@ -1643,8 +1512,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>246</x-pos>
@@ -1655,8 +1523,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>405</x-pos>
@@ -1667,8 +1534,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>81</x-pos>
@@ -1679,8 +1545,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Rock/granit2</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Rock/granit2</resource-ident>
   </resource></surface>
   <position>
     <x-pos>-115</x-pos>
@@ -1691,8 +1556,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Rock/granit2</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Rock/granit2</resource-ident>
   </resource></surface>
   <position>
     <x-pos>173</x-pos>
@@ -1703,8 +1567,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Rock/granit1</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Rock/granit1</resource-ident>
   </resource></surface>
   <position>
     <x-pos>481</x-pos>
@@ -1715,8 +1578,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/pipe_ur</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_ur</resource-ident>
   </resource></surface>
   <position>
     <x-pos>485</x-pos>
@@ -1727,8 +1589,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Rock/granit1</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Rock/granit1</resource-ident>
   </resource></surface>
   <position>
     <x-pos>477</x-pos>
@@ -1739,8 +1600,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Rock/granit1</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Rock/granit1</resource-ident>
   </resource></surface>
   <position>
     <x-pos>663</x-pos>
@@ -1751,8 +1611,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Snow/slopedr</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Snow/slopedr</resource-ident>
   </resource></surface>
   <position>
     <x-pos>686</x-pos>
@@ -1763,8 +1622,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Snow/snowman</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Snow/snowman</resource-ident>
   </resource></surface>
   <position>
     <x-pos>77</x-pos>
@@ -1775,8 +1633,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Snow/piece2</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Snow/piece2</resource-ident>
   </resource></surface>
   <position>
     <x-pos>432</x-pos>
@@ -1787,8 +1644,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Snow/piece2</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Snow/piece2</resource-ident>
   </resource></surface>
   <position>
     <x-pos>492</x-pos>
@@ -1799,8 +1655,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Snow/piece2</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Snow/piece2</resource-ident>
   </resource></surface>
   <position>
     <x-pos>630</x-pos>
@@ -1811,8 +1666,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Snow/piece2</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Snow/piece2</resource-ident>
   </resource></surface>
   <position>
     <x-pos>567</x-pos>
@@ -1823,8 +1677,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Snow/piece3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Snow/piece3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>318</x-pos>
@@ -1834,8 +1687,7 @@
 </groundpiece>
 
 <liquid>  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>Liquid/water</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>Liquid/water</resource-ident>
   </resource></surface>
   <position>
     <x-pos>-73</x-pos>

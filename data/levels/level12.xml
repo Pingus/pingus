@@ -1,6 +1,5 @@
 <?xml version="1.0"?>
 
-<!DOCTYPE pingus-level SYSTEM "http://www.pingus.cx/dtd/pingus-level.dtd">
 <pingus-level>
   <global>
     <levelname lang="en">Get up</levelname>
@@ -14,7 +13,7 @@ How can they reach it?</description>
     <height>800</height>
   </global>
 
-<background>
+<background type="surface">
   <surface><resource type="datafile">
     <resource-datafile>textures.dat</resource-datafile>
   <resource-ident>Textures/stars</resource-ident>
@@ -43,8 +42,7 @@ How can they reach it?</description>
 
 <hotspot>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1319</x-pos>
@@ -57,8 +55,7 @@ How can they reach it?</description>
 
 <hotspot>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1291</x-pos>
@@ -71,8 +68,7 @@ How can they reach it?</description>
 
 <hotspot>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1270</x-pos>
@@ -85,8 +81,7 @@ How can they reach it?</description>
 
 <hotspot>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1307</x-pos>
@@ -99,8 +94,7 @@ How can they reach it?</description>
 
 <hotspot>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>935</x-pos>
@@ -113,8 +107,7 @@ How can they reach it?</description>
 
 <hotspot>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>927</x-pos>
@@ -127,8 +120,7 @@ How can they reach it?</description>
 
 <hotspot>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1103</x-pos>
@@ -141,8 +133,7 @@ How can they reach it?</description>
 
 <hotspot>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1106</x-pos>
@@ -155,8 +146,7 @@ How can they reach it?</description>
 
 <hotspot>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>750</x-pos>
@@ -169,8 +159,7 @@ How can they reach it?</description>
 
 <hotspot>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>734</x-pos>
@@ -183,8 +172,7 @@ How can they reach it?</description>
 
 <hotspot>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1202</x-pos>
@@ -197,8 +185,7 @@ How can they reach it?</description>
 
 <hotspot>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1201</x-pos>
@@ -211,8 +198,7 @@ How can they reach it?</description>
 
 <hotspot>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>846</x-pos>
@@ -225,8 +211,7 @@ How can they reach it?</description>
 
 <hotspot>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>700</x-pos>
@@ -239,8 +224,7 @@ How can they reach it?</description>
 
 <hotspot>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>639</x-pos>
@@ -253,8 +237,7 @@ How can they reach it?</description>
 
 <hotspot>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>642</x-pos>
@@ -267,8 +250,7 @@ How can they reach it?</description>
 
 <hotspot>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>831</x-pos>
@@ -281,8 +263,7 @@ How can they reach it?</description>
 
 <hotspot>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1297</x-pos>
@@ -295,8 +276,7 @@ How can they reach it?</description>
 
 <hotspot>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1281</x-pos>
@@ -309,8 +289,7 @@ How can they reach it?</description>
 
 <hotspot>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1306</x-pos>
@@ -323,8 +302,7 @@ How can they reach it?</description>
 
 <hotspot>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>912</x-pos>
@@ -337,8 +315,7 @@ How can they reach it?</description>
 
 <hotspot>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1303</x-pos>
@@ -351,8 +328,7 @@ How can they reach it?</description>
 
 <hotspot>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>931</x-pos>
@@ -365,8 +341,7 @@ How can they reach it?</description>
 
 <hotspot>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1007</x-pos>
@@ -379,8 +354,7 @@ How can they reach it?</description>
 
 <hotspot>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1011</x-pos>
@@ -393,8 +367,7 @@ How can they reach it?</description>
 
 <hotspot>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>647</x-pos>
@@ -407,8 +380,7 @@ How can they reach it?</description>
 
 <hotspot>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>640</x-pos>
@@ -421,8 +393,7 @@ How can they reach it?</description>
 
 <hotspot>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1096</x-pos>
@@ -435,8 +406,7 @@ How can they reach it?</description>
 
 <hotspot>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1109</x-pos>
@@ -449,8 +419,7 @@ How can they reach it?</description>
 
 <hotspot>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>727</x-pos>
@@ -463,8 +432,7 @@ How can they reach it?</description>
 
 <hotspot>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>751</x-pos>
@@ -477,8 +445,7 @@ How can they reach it?</description>
 
 <hotspot>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1191</x-pos>
@@ -491,8 +458,7 @@ How can they reach it?</description>
 
 <hotspot>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1204</x-pos>
@@ -505,8 +471,7 @@ How can they reach it?</description>
 
 <hotspot>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>819</x-pos>
@@ -519,8 +484,7 @@ How can they reach it?</description>
 
 <hotspot>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>843</x-pos>
@@ -533,8 +497,7 @@ How can they reach it?</description>
 
 <hotspot>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1009</x-pos>
@@ -547,8 +510,7 @@ How can they reach it?</description>
 
 <hotspot>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1022</x-pos>
@@ -561,7 +523,7 @@ How can they reach it?</description>
 
 <hotspot>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
+    <resource-datafile>entrances</resource-datafile>
   <resource-ident>Entrances/wood_bottom</resource-ident>
   </resource></surface>
   <position>
@@ -591,15 +553,14 @@ How can they reach it?</description>
     <z-pos>0</z-pos>
   </position>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
+    <resource-datafile>exits</resource-datafile>
   <resource-ident>Exits/sortie_anim</resource-ident>
   </resource></surface>
 </exit>
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/way_left</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/way_left</resource-ident>
   </resource></surface>
   <position>
     <x-pos>621</x-pos>
@@ -610,8 +571,7 @@ How can they reach it?</description>
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/way_left</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/way_left</resource-ident>
   </resource></surface>
   <position>
     <x-pos>613</x-pos>
@@ -622,8 +582,7 @@ How can they reach it?</description>
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/way_left</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/way_left</resource-ident>
   </resource></surface>
   <position>
     <x-pos>614</x-pos>
@@ -634,8 +593,7 @@ How can they reach it?</description>
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/way</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/way</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1287</x-pos>
@@ -646,8 +604,7 @@ How can they reach it?</description>
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/way</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/way</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1279</x-pos>
@@ -658,8 +615,7 @@ How can they reach it?</description>
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/way</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/way</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1280</x-pos>
@@ -670,8 +626,7 @@ How can they reach it?</description>
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/way</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/way</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1053</x-pos>
@@ -682,8 +637,7 @@ How can they reach it?</description>
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/way</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/way</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1046</x-pos>
@@ -694,8 +648,7 @@ How can they reach it?</description>
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/way</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/way</resource-ident>
   </resource></surface>
   <position>
     <x-pos>819</x-pos>
@@ -706,8 +659,7 @@ How can they reach it?</description>
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/way</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/way</resource-ident>
   </resource></surface>
   <position>
     <x-pos>812</x-pos>
@@ -718,8 +670,7 @@ How can they reach it?</description>
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/way</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/way</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1170</x-pos>
@@ -730,8 +681,7 @@ How can they reach it?</description>
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/way</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/way</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1162</x-pos>
@@ -742,8 +692,7 @@ How can they reach it?</description>
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/way</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/way</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1163</x-pos>
@@ -754,8 +703,7 @@ How can they reach it?</description>
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/way</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/way</resource-ident>
   </resource></surface>
   <position>
     <x-pos>936</x-pos>
@@ -766,8 +714,7 @@ How can they reach it?</description>
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/way</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/way</resource-ident>
   </resource></surface>
   <position>
     <x-pos>929</x-pos>
@@ -778,8 +725,7 @@ How can they reach it?</description>
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/way</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/way</resource-ident>
   </resource></surface>
   <position>
     <x-pos>702</x-pos>
@@ -790,8 +736,7 @@ How can they reach it?</description>
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/way_left</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/way_left</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1686</x-pos>
@@ -802,8 +747,7 @@ How can they reach it?</description>
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/way_left</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/way_left</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1673</x-pos>
@@ -814,8 +758,7 @@ How can they reach it?</description>
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/way_left</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/way_left</resource-ident>
   </resource></surface>
   <position>
     <x-pos>274</x-pos>
@@ -826,8 +769,7 @@ How can they reach it?</description>
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/way_left</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/way_left</resource-ident>
   </resource></surface>
   <position>
     <x-pos>253</x-pos>
@@ -838,8 +780,7 @@ How can they reach it?</description>
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/way_left</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/way_left</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1505</x-pos>
@@ -850,8 +791,7 @@ How can they reach it?</description>
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/way_left</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/way_left</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1492</x-pos>
@@ -862,8 +802,7 @@ How can they reach it?</description>
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/way_left</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/way_left</resource-ident>
   </resource></surface>
   <position>
     <x-pos>450</x-pos>
@@ -874,8 +813,7 @@ How can they reach it?</description>
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/way_left</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/way_left</resource-ident>
   </resource></surface>
   <position>
     <x-pos>429</x-pos>
@@ -886,8 +824,7 @@ How can they reach it?</description>
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/way_left</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/way_left</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1500</x-pos>
@@ -898,8 +835,7 @@ How can they reach it?</description>
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/way_left</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/way_left</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1487</x-pos>
@@ -910,8 +846,7 @@ How can they reach it?</description>
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/way_left</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/way_left</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1081</x-pos>
@@ -922,8 +857,7 @@ How can they reach it?</description>
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/way_left</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/way_left</resource-ident>
   </resource></surface>
   <position>
     <x-pos>445</x-pos>
@@ -934,8 +868,7 @@ How can they reach it?</description>
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/way_left</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/way_left</resource-ident>
   </resource></surface>
   <position>
     <x-pos>424</x-pos>
@@ -946,8 +879,7 @@ How can they reach it?</description>
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/way</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/way</resource-ident>
   </resource></surface>
   <position>
     <x-pos>694</x-pos>
@@ -958,8 +890,7 @@ How can they reach it?</description>
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/way</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/way</resource-ident>
   </resource></surface>
   <position>
     <x-pos>695</x-pos>
@@ -970,8 +901,7 @@ How can they reach it?</description>
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/way_right</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/way_right</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1404</x-pos>
@@ -982,8 +912,7 @@ How can they reach it?</description>
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/way_right</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/way_right</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1396</x-pos>
@@ -994,8 +923,7 @@ How can they reach it?</description>
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/way_right</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/way_right</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1397</x-pos>
@@ -1006,8 +934,7 @@ How can they reach it?</description>
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/way_right</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/way_right</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1767</x-pos>
@@ -1018,8 +945,7 @@ How can they reach it?</description>
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/way_right</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/way_right</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1754</x-pos>
@@ -1030,8 +956,7 @@ How can they reach it?</description>
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/way_right</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/way_right</resource-ident>
   </resource></surface>
   <position>
     <x-pos>355</x-pos>
@@ -1042,8 +967,7 @@ How can they reach it?</description>
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/way_right</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/way_right</resource-ident>
   </resource></surface>
   <position>
     <x-pos>334</x-pos>
@@ -1054,8 +978,7 @@ How can they reach it?</description>
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/way_right</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/way_right</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1586</x-pos>
@@ -1066,8 +989,7 @@ How can they reach it?</description>
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/way_right</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/way_right</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1573</x-pos>
@@ -1078,8 +1000,7 @@ How can they reach it?</description>
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/way_right</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/way_right</resource-ident>
   </resource></surface>
   <position>
     <x-pos>531</x-pos>
@@ -1090,8 +1011,7 @@ How can they reach it?</description>
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/way_right</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/way_right</resource-ident>
   </resource></surface>
   <position>
     <x-pos>510</x-pos>
@@ -1102,8 +1022,7 @@ How can they reach it?</description>
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/way_right</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/way_right</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1581</x-pos>
@@ -1114,8 +1033,7 @@ How can they reach it?</description>
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/way_right</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/way_right</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1568</x-pos>
@@ -1126,8 +1044,7 @@ How can they reach it?</description>
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/way_right</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/way_right</resource-ident>
   </resource></surface>
   <position>
     <x-pos>811</x-pos>
@@ -1138,8 +1055,7 @@ How can they reach it?</description>
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/way_right</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/way_right</resource-ident>
   </resource></surface>
   <position>
     <x-pos>526</x-pos>
@@ -1150,8 +1066,7 @@ How can they reach it?</description>
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/way_right</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/way_right</resource-ident>
   </resource></surface>
   <position>
     <x-pos>505</x-pos>
@@ -1162,7 +1077,7 @@ How can they reach it?</description>
 
 <hotspot>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
+    <resource-datafile>entrances</resource-datafile>
   <resource-ident>Entrances/wood_top</resource-ident>
   </resource></surface>
   <position>

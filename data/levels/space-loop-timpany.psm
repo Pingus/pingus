@@ -53,4 +53,4 @@ ground : (resource:global)GroundPieces/Space/smalltower : 598 : 327;
 ground : (resource:global)GroundPieces/Space/smalltower : 552 : 230;
 ground : (resource:global)GroundPieces/Space/tower1 : 731 : 321;
 ground : (resource:global)GroundPieces/Space/grid2 : 919 : 424;
-transparent : (resource:global)Entrances/entrance : 812 : 94;
+transparent : (resource:entrances)Entrances/entrance : 812 : 94;

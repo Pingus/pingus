@@ -43,7 +43,7 @@
 
 <hotspot>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
+    <resource-datafile>entrances</resource-datafile>
   <resource-ident>Entrances/wood_bottom</resource-ident>
   </resource></surface>
   <position>
@@ -56,8 +56,7 @@
 </hotspot>
 
 <liquid>  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>Liquid/water2</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>Liquid/water2</resource-ident>
   </resource></surface>
   <position>
     <x-pos>-11</x-pos>
@@ -93,8 +92,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/skinnycrystal</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Crystal/skinnycrystal</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1120</x-pos>
@@ -105,8 +103,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/skinnycrystal</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Crystal/skinnycrystal</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1232</x-pos>
@@ -117,8 +114,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/skinnycrystal</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Crystal/skinnycrystal</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1195</x-pos>
@@ -129,8 +125,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/skinnycrystal</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Crystal/skinnycrystal</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1163</x-pos>
@@ -141,8 +136,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/hexcrystal</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Crystal/hexcrystal</resource-ident>
   </resource></surface>
   <position>
     <x-pos>636</x-pos>
@@ -153,8 +147,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/hexcrystal</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Crystal/hexcrystal</resource-ident>
   </resource></surface>
   <position>
     <x-pos>933</x-pos>
@@ -165,8 +158,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/hexcrystal</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Crystal/hexcrystal</resource-ident>
   </resource></surface>
   <position>
     <x-pos>841</x-pos>
@@ -177,8 +169,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/hexcrystal</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Crystal/hexcrystal</resource-ident>
   </resource></surface>
   <position>
     <x-pos>694</x-pos>
@@ -189,8 +180,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/hexcrystal</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Crystal/hexcrystal</resource-ident>
   </resource></surface>
   <position>
     <x-pos>823</x-pos>
@@ -201,8 +191,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/hexcrystal</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Crystal/hexcrystal</resource-ident>
   </resource></surface>
   <position>
     <x-pos>922</x-pos>
@@ -213,8 +202,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/hexcrystal</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Crystal/hexcrystal</resource-ident>
   </resource></surface>
   <position>
     <x-pos>735</x-pos>
@@ -225,8 +213,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/hexcrystal</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Crystal/hexcrystal</resource-ident>
   </resource></surface>
   <position>
     <x-pos>270</x-pos>
@@ -237,8 +224,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/hexcrystal</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Crystal/hexcrystal</resource-ident>
   </resource></surface>
   <position>
     <x-pos>121</x-pos>
@@ -249,8 +235,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/diagcrystal</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Crystal/diagcrystal</resource-ident>
   </resource></surface>
   <position>
     <x-pos>390</x-pos>
@@ -261,8 +246,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/hexcrystal</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Crystal/hexcrystal</resource-ident>
   </resource></surface>
   <position>
     <x-pos>338</x-pos>
@@ -273,8 +257,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/hexcrystal</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Crystal/hexcrystal</resource-ident>
   </resource></surface>
   <position>
     <x-pos>444</x-pos>
@@ -285,8 +268,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/hexcrystal</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Crystal/hexcrystal</resource-ident>
   </resource></surface>
   <position>
     <x-pos>386</x-pos>
@@ -297,8 +279,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/hexcrystal</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Crystal/hexcrystal</resource-ident>
   </resource></surface>
   <position>
     <x-pos>561</x-pos>
@@ -309,8 +290,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/diagcrystal</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Crystal/diagcrystal</resource-ident>
   </resource></surface>
   <position>
     <x-pos>633</x-pos>
@@ -321,8 +301,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/diagcrystal</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Crystal/diagcrystal</resource-ident>
   </resource></surface>
   <position>
     <x-pos>763</x-pos>
@@ -333,8 +312,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/diagcrystal</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Crystal/diagcrystal</resource-ident>
   </resource></surface>
   <position>
     <x-pos>436</x-pos>
@@ -345,8 +323,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/diagcrystal</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Crystal/diagcrystal</resource-ident>
   </resource></surface>
   <position>
     <x-pos>786</x-pos>
@@ -357,8 +334,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/diagcrystal</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Crystal/diagcrystal</resource-ident>
   </resource></surface>
   <position>
     <x-pos>972</x-pos>
@@ -369,8 +345,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/diagcrystal</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Crystal/diagcrystal</resource-ident>
   </resource></surface>
   <position>
     <x-pos>976</x-pos>
@@ -381,8 +356,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/diagcrystal</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Crystal/diagcrystal</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1174</x-pos>
@@ -393,8 +367,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/diagcrystal</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Crystal/diagcrystal</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1226</x-pos>
@@ -405,8 +378,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/diagcrystal</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Crystal/diagcrystal</resource-ident>
   </resource></surface>
   <position>
     <x-pos>874</x-pos>
@@ -417,8 +389,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/hexcrystal</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Crystal/hexcrystal</resource-ident>
   </resource></surface>
   <position>
     <x-pos>182</x-pos>
@@ -429,8 +400,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/pipeend</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Crystal/pipeend</resource-ident>
   </resource></surface>
   <position>
     <x-pos>743</x-pos>
@@ -441,8 +411,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/diagcrystal</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Crystal/diagcrystal</resource-ident>
   </resource></surface>
   <position>
     <x-pos>266</x-pos>
@@ -453,8 +422,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/pipe</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Crystal/pipe</resource-ident>
   </resource></surface>
   <position>
     <x-pos>787</x-pos>
@@ -465,8 +433,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/pipe</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Crystal/pipe</resource-ident>
   </resource></surface>
   <position>
     <x-pos>383</x-pos>
@@ -477,8 +444,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/pipe</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Crystal/pipe</resource-ident>
   </resource></surface>
   <position>
     <x-pos>989</x-pos>
@@ -489,8 +455,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/pipe</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Crystal/pipe</resource-ident>
   </resource></surface>
   <position>
     <x-pos>585</x-pos>
@@ -501,8 +466,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/hexcrystal</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Crystal/hexcrystal</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1088</x-pos>
@@ -513,8 +477,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/pipe</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Crystal/pipe</resource-ident>
   </resource></surface>
   <position>
     <x-pos>733</x-pos>
@@ -525,8 +488,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/pipe</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Crystal/pipe</resource-ident>
   </resource></surface>
   <position>
     <x-pos>632</x-pos>
@@ -537,8 +499,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/hexcrystal</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Crystal/hexcrystal</resource-ident>
   </resource></surface>
   <position>
     <x-pos>281</x-pos>
@@ -549,8 +510,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/hexcrystal</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Crystal/hexcrystal</resource-ident>
   </resource></surface>
   <position>
     <x-pos>497</x-pos>
@@ -561,8 +521,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/pipe</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Crystal/pipe</resource-ident>
   </resource></surface>
   <position>
     <x-pos>686</x-pos>
@@ -573,8 +532,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/pipe</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Crystal/pipe</resource-ident>
   </resource></surface>
   <position>
     <x-pos>282</x-pos>
@@ -585,8 +543,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/pipe</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Crystal/pipe</resource-ident>
   </resource></surface>
   <position>
     <x-pos>430</x-pos>
@@ -597,8 +554,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/pipe</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Crystal/pipe</resource-ident>
   </resource></surface>
   <position>
     <x-pos>888</x-pos>
@@ -609,8 +565,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/pipe</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Crystal/pipe</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1154</x-pos>
@@ -621,8 +576,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/pipe</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Crystal/pipe</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1066</x-pos>
@@ -633,8 +587,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/pipe</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Crystal/pipe</resource-ident>
   </resource></surface>
   <position>
     <x-pos>995</x-pos>
@@ -645,8 +598,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/pipe</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Crystal/pipe</resource-ident>
   </resource></surface>
   <position>
     <x-pos>484</x-pos>
@@ -657,8 +609,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/pipe</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Crystal/pipe</resource-ident>
   </resource></surface>
   <position>
     <x-pos>531</x-pos>
@@ -669,8 +620,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/pipeend</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Crystal/pipeend</resource-ident>
   </resource></surface>
   <position>
     <x-pos>737</x-pos>
@@ -681,8 +631,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/pipeend</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Crystal/pipeend</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1076</x-pos>
@@ -693,8 +642,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/pipeend</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Crystal/pipeend</resource-ident>
   </resource></surface>
   <position>
     <x-pos>818</x-pos>
@@ -705,8 +653,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/pipeend</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Crystal/pipeend</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1136</x-pos>
@@ -717,8 +664,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/pipeend</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Crystal/pipeend</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1067</x-pos>
@@ -729,8 +675,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/pipeend</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Crystal/pipeend</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1056</x-pos>
@@ -741,8 +686,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/pipeend</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Crystal/pipeend</resource-ident>
   </resource></surface>
   <position>
     <x-pos>977</x-pos>
@@ -753,8 +697,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/pipeend</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Crystal/pipeend</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1047</x-pos>
@@ -765,8 +708,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/pipeend</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Crystal/pipeend</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1235</x-pos>
@@ -777,8 +719,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/pipeend</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Crystal/pipeend</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1147</x-pos>
@@ -789,8 +730,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/pipeend</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Crystal/pipeend</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1070</x-pos>
@@ -801,8 +741,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/pipeend</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Crystal/pipeend</resource-ident>
   </resource></surface>
   <position>
     <x-pos>257</x-pos>
@@ -813,8 +752,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/pipeend</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Crystal/pipeend</resource-ident>
   </resource></surface>
   <position>
     <x-pos>405</x-pos>
@@ -825,8 +763,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/hexcrystal</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Crystal/hexcrystal</resource-ident>
   </resource></surface>
   <position>
     <x-pos>666</x-pos>
@@ -837,8 +774,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/pipeend</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Crystal/pipeend</resource-ident>
   </resource></surface>
   <position>
     <x-pos>740</x-pos>
@@ -849,7 +785,7 @@
 
 <hotspot>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
+    <resource-datafile>entrances</resource-datafile>
   <resource-ident>Entrances/wood_top</resource-ident>
   </resource></surface>
   <position>
@@ -862,8 +798,7 @@
 </hotspot>
 
 <liquid>  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>Liquid/water2</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>Liquid/water2</resource-ident>
   </resource></surface>
   <position>
     <x-pos>-41</x-pos>

@@ -73,15 +73,14 @@
     <z-pos>0</z-pos>
   </position>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
+    <resource-datafile>exits</resource-datafile>
   <resource-ident>Exits/stone</resource-ident>
   </resource></surface>
 </exit>
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/spike</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/spike</resource-ident>
   </resource></surface>
   <position>
     <x-pos>840</x-pos>
@@ -92,8 +91,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/spike</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/spike</resource-ident>
   </resource></surface>
   <position>
     <x-pos>236</x-pos>
@@ -104,8 +102,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/stoneblock1</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/stoneblock1</resource-ident>
   </resource></surface>
   <position>
     <x-pos>229</x-pos>
@@ -116,8 +113,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/spike</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/spike</resource-ident>
   </resource></surface>
   <position>
     <x-pos>746</x-pos>
@@ -128,8 +124,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/spike</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/spike</resource-ident>
   </resource></surface>
   <position>
     <x-pos>963</x-pos>
@@ -140,8 +135,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/stoneblock1</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/stoneblock1</resource-ident>
   </resource></surface>
   <position>
     <x-pos>229</x-pos>
@@ -152,8 +146,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/stoneblock1</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/stoneblock1</resource-ident>
   </resource></surface>
   <position>
     <x-pos>229</x-pos>
@@ -164,8 +157,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/spike</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/spike</resource-ident>
   </resource></surface>
   <position>
     <x-pos>437</x-pos>
@@ -176,8 +168,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/spike</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/spike</resource-ident>
   </resource></surface>
   <position>
     <x-pos>654</x-pos>
@@ -188,8 +179,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/stoneblock1</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/stoneblock1</resource-ident>
   </resource></surface>
   <position>
     <x-pos>357</x-pos>
@@ -200,8 +190,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/stoneblock1</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/stoneblock1</resource-ident>
   </resource></surface>
   <position>
     <x-pos>549</x-pos>
@@ -212,8 +201,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/stoneblock1</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/stoneblock1</resource-ident>
   </resource></surface>
   <position>
     <x-pos>805</x-pos>
@@ -224,8 +212,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/stoneblock1</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/stoneblock1</resource-ident>
   </resource></surface>
   <position>
     <x-pos>357</x-pos>
@@ -236,8 +223,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/spike</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/spike</resource-ident>
   </resource></surface>
   <position>
     <x-pos>871</x-pos>
@@ -248,8 +234,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/stoneblock1</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/stoneblock1</resource-ident>
   </resource></surface>
   <position>
     <x-pos>357</x-pos>
@@ -260,8 +245,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/stoneblock1</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/stoneblock1</resource-ident>
   </resource></surface>
   <position>
     <x-pos>677</x-pos>
@@ -272,8 +256,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/stoneblock1</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/stoneblock1</resource-ident>
   </resource></surface>
   <position>
     <x-pos>933</x-pos>
@@ -284,8 +267,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/stoneblock1</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/stoneblock1</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1323</x-pos>
@@ -296,8 +278,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/spike</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/spike</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1088</x-pos>
@@ -308,8 +289,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/stoneblock1</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/stoneblock1</resource-ident>
   </resource></surface>
   <position>
     <x-pos>293</x-pos>
@@ -320,8 +300,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/stoneblock1</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/stoneblock1</resource-ident>
   </resource></surface>
   <position>
     <x-pos>293</x-pos>
@@ -332,8 +311,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/stoneblock2</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/stoneblock2</resource-ident>
   </resource></surface>
   <position>
     <x-pos>485</x-pos>
@@ -344,8 +322,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/stoneblock2</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/stoneblock2</resource-ident>
   </resource></surface>
   <position>
     <x-pos>741</x-pos>
@@ -356,8 +333,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/stoneblock1</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/stoneblock1</resource-ident>
   </resource></surface>
   <position>
     <x-pos>293</x-pos>
@@ -368,8 +344,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/stoneblock2</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/stoneblock2</resource-ident>
   </resource></surface>
   <position>
     <x-pos>229</x-pos>
@@ -380,8 +355,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/stoneblock1</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/stoneblock1</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1061</x-pos>
@@ -392,8 +366,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/stoneblock1</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/stoneblock1</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1451</x-pos>
@@ -404,8 +377,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/stoneblock1</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/stoneblock1</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1155</x-pos>
@@ -416,8 +388,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/stoneblock2</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/stoneblock2</resource-ident>
   </resource></surface>
   <position>
     <x-pos>229</x-pos>
@@ -428,8 +399,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/stoneblock1</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/stoneblock1</resource-ident>
   </resource></surface>
   <position>
     <x-pos>421</x-pos>
@@ -440,8 +410,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/stoneblock1</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/stoneblock1</resource-ident>
   </resource></surface>
   <position>
     <x-pos>421</x-pos>
@@ -452,8 +421,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/stoneblock2</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/stoneblock2</resource-ident>
   </resource></surface>
   <position>
     <x-pos>229</x-pos>
@@ -464,8 +432,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/stoneblock2</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/stoneblock2</resource-ident>
   </resource></surface>
   <position>
     <x-pos>613</x-pos>
@@ -476,8 +443,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/stoneblock2</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/stoneblock2</resource-ident>
   </resource></surface>
   <position>
     <x-pos>869</x-pos>
@@ -488,8 +454,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/stoneblock2</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/stoneblock2</resource-ident>
   </resource></surface>
   <position>
     <x-pos>997</x-pos>
@@ -500,8 +465,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/stoneblock2</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/stoneblock2</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1387</x-pos>
@@ -512,8 +476,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/stoneblock2</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/stoneblock2</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1515</x-pos>
@@ -524,8 +487,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/stoneblock2</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/stoneblock2</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1219</x-pos>
@@ -536,8 +498,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/stoneblock2</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/stoneblock2</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1387</x-pos>
@@ -548,8 +509,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/stoneblock2</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/stoneblock2</resource-ident>
   </resource></surface>
   <position>
     <x-pos>357</x-pos>
@@ -560,8 +520,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/stoneblock2</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/stoneblock2</resource-ident>
   </resource></surface>
   <position>
     <x-pos>357</x-pos>
@@ -572,8 +531,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/stoneblock2</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/stoneblock2</resource-ident>
   </resource></surface>
   <position>
     <x-pos>293</x-pos>
@@ -584,8 +542,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/stoneblock2</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/stoneblock2</resource-ident>
   </resource></surface>
   <position>
     <x-pos>357</x-pos>
@@ -596,8 +553,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/stoneblock2</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/stoneblock2</resource-ident>
   </resource></surface>
   <position>
     <x-pos>293</x-pos>
@@ -608,8 +564,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/stoneblock2</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/stoneblock2</resource-ident>
   </resource></surface>
   <position>
     <x-pos>293</x-pos>
@@ -620,8 +575,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/stoneblock2</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/stoneblock2</resource-ident>
   </resource></surface>
   <position>
     <x-pos>421</x-pos>
@@ -632,8 +586,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/stoneblock2</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/stoneblock2</resource-ident>
   </resource></surface>
   <position>
     <x-pos>421</x-pos>
@@ -644,7 +597,7 @@
 
 <hotspot>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
+    <resource-datafile>entrances</resource-datafile>
   <resource-ident>Entrances/woodthing_nmov</resource-ident>
   </resource></surface>
   <position>

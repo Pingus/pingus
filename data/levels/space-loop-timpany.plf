@@ -1,5 +1,5 @@
 /* This level was created with the PLE
- * $Id: space-loop-timpany.plf,v 1.1 2000/08/14 21:58:41 grumbel Exp $
+ * $Id: space-loop-timpany.plf,v 1.2 2000/08/30 23:42:13 grumbel Exp $
  */
 global {
   author = "";
@@ -51,7 +51,7 @@ entrance {
 }
 
 exit {
-  image = (resource)"Exits/space";
+  image = (resource:exits)"Exits/space";
   x_pos = 139;
   y_pos = 383;
   z_pos = 0;

@@ -56,8 +56,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>Steel/steel1</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>Steel/steel1</resource-ident>
   </resource></surface>
   <position>
     <x-pos>639</x-pos>
@@ -68,8 +67,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>Steel/steel2</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>Steel/steel2</resource-ident>
   </resource></surface>
   <position>
     <x-pos>688</x-pos>
@@ -80,8 +78,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>Steel/steel2</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>Steel/steel2</resource-ident>
   </resource></surface>
   <position>
     <x-pos>492</x-pos>
@@ -92,8 +89,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>Steel/steel2</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>Steel/steel2</resource-ident>
   </resource></surface>
   <position>
     <x-pos>688</x-pos>
@@ -104,8 +100,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>Steel/steel2</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>Steel/steel2</resource-ident>
   </resource></surface>
   <position>
     <x-pos>492</x-pos>
@@ -116,8 +111,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>Steel/steel5</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>Steel/steel5</resource-ident>
   </resource></surface>
   <position>
     <x-pos>681</x-pos>
@@ -128,8 +122,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>Steel/steel4</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>Steel/steel4</resource-ident>
   </resource></surface>
   <position>
     <x-pos>296</x-pos>
@@ -140,8 +133,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>Steel/steel3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>Steel/steel3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>724</x-pos>
@@ -152,8 +144,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>Steel/steel3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>Steel/steel3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>444</x-pos>
@@ -164,8 +155,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>Steel/steel3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>Steel/steel3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>501</x-pos>
@@ -176,8 +166,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>Steel/steel3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>Steel/steel3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>585</x-pos>
@@ -188,8 +177,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>Steel/steel3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>Steel/steel3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>305</x-pos>

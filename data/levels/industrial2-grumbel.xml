@@ -1,0 +1,1208 @@
+<?xml version="1.0"?>
+
+<pingus-level>
+  <global>
+    <levelname lang="en">PLE Level</levelname>
+    <description lang="en">This level has no name
+
+</description>
+    <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
+    <number-of-pingus>50</number-of-pingus>
+    <number-to-save>25</number-to-save>
+    <time>9000</time>
+    <width>1824</width>
+    <height>800</height>
+  </global>
+
+<background>
+  <surface><resource type="datafile">
+    <resource-datafile>textures</resource-datafile>
+  <resource-ident>Textures/industrial</resource-ident>
+  </resource></surface>
+  <color>
+    <red>0</red>
+    <green>0</green>
+    <blue>0</blue>
+    <alpha>1</alpha>
+  </color>
+  <scroll-x>0</scroll-x>
+  <scroll-y>0</scroll-y>
+  <para-x>0.5</para-x>
+  <para-y>0.5</para-y>
+  <stretch-x>0</stretch-x>
+  <stretch-y>0</stretch-y>
+</background>
+
+  <action-list>
+    <basher>20</basher>
+    <blocker>20</blocker>
+    <bomber>20</bomber>
+    <bridger>20</bridger>
+    <climber>20</climber>
+    <digger>20</digger>
+    <floater>20</floater>
+    <jumper>20</jumper>
+    <miner>20</miner>
+  </action-list>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>71</x-pos>
+    <y-pos>694</y-pos>
+    <z-pos>-150</z-pos>
+  </position>
+</groundpiece>
+
+<exit>
+  <position>
+    <x-pos>470</x-pos>
+    <y-pos>500</y-pos>
+    <z-pos>-100</z-pos>
+  </position>
+  <surface><resource type="datafile">
+    <resource-datafile>exits</resource-datafile>
+  <resource-ident>Exits/industrial</resource-ident>
+  </resource></surface>
+</exit>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>entrances</resource-datafile>
+  <resource-ident>Entrances/industrial</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>350</x-pos>
+    <y-pos>149</y-pos>
+    <z-pos>-100</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1</parallax>
+</hotspot>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/peakdune</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>-2</x-pos>
+    <y-pos>543</y-pos>
+    <z-pos>-50</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_pv</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1453</x-pos>
+    <y-pos>771</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_pv</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1349</x-pos>
+    <y-pos>771</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_h</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1380</x-pos>
+    <y-pos>708</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_pv</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1453</x-pos>
+    <y-pos>739</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_ur</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1444</x-pos>
+    <y-pos>707</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_pv</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1349</x-pos>
+    <y-pos>739</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>Industrial/steel4</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1657</x-pos>
+    <y-pos>476</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>Industrial/steel2</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1229</x-pos>
+    <y-pos>595</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>Industrial/steel2</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>776</x-pos>
+    <y-pos>722</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>Industrial/steel2</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1653</x-pos>
+    <y-pos>683</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>Industrial/steel2</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1229</x-pos>
+    <y-pos>734</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>Industrial/screw</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1240</x-pos>
+    <y-pos>736</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>Industrial/steel2</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1653</x-pos>
+    <y-pos>544</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>Industrial/steel2</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>904</x-pos>
+    <y-pos>688</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>Industrial/steel2</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1053</x-pos>
+    <y-pos>643</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/peakdune</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>-29</x-pos>
+    <y-pos>433</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>Industrial/steel4</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>472</x-pos>
+    <y-pos>363</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>Industrial/steel4</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1134</x-pos>
+    <y-pos>554</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>Industrial/steel4</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>933</x-pos>
+    <y-pos>611</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>Industrial/steel4</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>732</x-pos>
+    <y-pos>668</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>Industrial/steel4</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>531</x-pos>
+    <y-pos>725</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>Industrial/steel4</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>671</x-pos>
+    <y-pos>307</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>Industrial/greybri2</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>-93</x-pos>
+    <y-pos>469</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>Industrial/greybri2</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>-63</x-pos>
+    <y-pos>593</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>Industrial/greybri2</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>-14</x-pos>
+    <y-pos>716</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>Industrial/greybri1</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>227</x-pos>
+    <y-pos>307</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>12</x-pos>
+    <y-pos>968</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>Industrial/steel3</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1522</x-pos>
+    <y-pos>647</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>Industrial/steel3</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1076</x-pos>
+    <y-pos>307</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>Industrial/steel3</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>935</x-pos>
+    <y-pos>307</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>Industrial/steel3</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>654</x-pos>
+    <y-pos>307</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>Industrial/steel3</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>794</x-pos>
+    <y-pos>307</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>Industrial/steel3</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>513</x-pos>
+    <y-pos>307</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>Industrial/greybri1</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>-81</x-pos>
+    <y-pos>531</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>Industrial/greybri1</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>-50</x-pos>
+    <y-pos>655</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>Industrial/greybri1</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>227</x-pos>
+    <y-pos>555</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>Industrial/greybri2</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>227</x-pos>
+    <y-pos>431</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>Industrial/greybri2</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>227</x-pos>
+    <y-pos>679</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>Industrial/greybri3</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>326</x-pos>
+    <y-pos>369</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>Industrial/greybri3</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>524</x-pos>
+    <y-pos>617</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>Industrial/greybri3</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>326</x-pos>
+    <y-pos>617</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>Industrial/greybri5</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>425</x-pos>
+    <y-pos>307</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/flatdune</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>75</x-pos>
+    <y-pos>926</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>Industrial/greybri5</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>326</x-pos>
+    <y-pos>493</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>Industrial/greybri5</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>425</x-pos>
+    <y-pos>431</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>Industrial/greybri5</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>425</x-pos>
+    <y-pos>679</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/domedune</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>652</x-pos>
+    <y-pos>764</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/domedune</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>681</x-pos>
+    <y-pos>747</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>Industrial/greybri5</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>227</x-pos>
+    <y-pos>369</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>Industrial/greybri5</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>227</x-pos>
+    <y-pos>617</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>Industrial/greybri5</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>227</x-pos>
+    <y-pos>493</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>Industrial/greybri5</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>-8</x-pos>
+    <y-pos>159</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>Industrial/greybri5</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>-57</x-pos>
+    <y-pos>283</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>Industrial/greybri5</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>-46</x-pos>
+    <y-pos>221</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>Industrial/greybri5</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>-72</x-pos>
+    <y-pos>345</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>Industrial/greybri5</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>-52</x-pos>
+    <y-pos>407</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/domedune</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>177</x-pos>
+    <y-pos>919</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/peakdune</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>161</x-pos>
+    <y-pos>722</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/flatdune</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>139</x-pos>
+    <y-pos>913</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/flatdune</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>173</x-pos>
+    <y-pos>947</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/peakdune</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>600</x-pos>
+    <y-pos>741</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/peakdune</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>136</x-pos>
+    <y-pos>951</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>619</x-pos>
+    <y-pos>992</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>672</x-pos>
+    <y-pos>996</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/blobdune</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>279</x-pos>
+    <y-pos>726</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>Gunge/gunge14</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>-38</x-pos>
+    <y-pos>153</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>Gunge/gunge14</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>239</x-pos>
+    <y-pos>301</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>Gunge/gunge14</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>709</x-pos>
+    <y-pos>336</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>Gunge/gunge1</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>590</x-pos>
+    <y-pos>372</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>Gunge/gunge12</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>958</x-pos>
+    <y-pos>345</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>Gunge/gunge2</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1000</x-pos>
+    <y-pos>320</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>Gunge/gunge7</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>554</x-pos>
+    <y-pos>317</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>Gunge/gunge13</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>902</x-pos>
+    <y-pos>307</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>Gunge/gunge13</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>712</x-pos>
+    <y-pos>307</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>Gunge/gunge6</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>77</x-pos>
+    <y-pos>159</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>Gunge/gunge6</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>325</x-pos>
+    <y-pos>368</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>Gunge/gunge5</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>422</x-pos>
+    <y-pos>553</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>Gunge/gunge5</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>320</x-pos>
+    <y-pos>619</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>Industrial/steel5</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>666</x-pos>
+    <y-pos>540</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/bigdune1</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>-36</x-pos>
+    <y-pos>758</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/bigdune1</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>193</x-pos>
+    <y-pos>738</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/bigdune1</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>357</x-pos>
+    <y-pos>728</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/peakdune</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>139</x-pos>
+    <y-pos>758</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/flatdune</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>533</x-pos>
+    <y-pos>781</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/peakdune</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>684</x-pos>
+    <y-pos>917</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>Industrial/screw</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>653</x-pos>
+    <y-pos>317</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>Industrial/screw</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>677</x-pos>
+    <y-pos>376</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>Industrial/screw</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1076</x-pos>
+    <y-pos>318</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>Gunge/gunge1</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1656</x-pos>
+    <y-pos>521</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>Industrial/screw</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1664</x-pos>
+    <y-pos>658</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>Industrial/screw</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1663</x-pos>
+    <y-pos>545</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>Industrial/rivet</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>878</x-pos>
+    <y-pos>317</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>Industrial/rivet</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1240</x-pos>
+    <y-pos>596</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>Industrial/rivet</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>914</x-pos>
+    <y-pos>688</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>Industrial/rivet</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1063</x-pos>
+    <y-pos>645</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>Industrial/pipe_ul</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1348</x-pos>
+    <y-pos>707</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/pipe_h</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1412</x-pos>
+    <y-pos>708</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<entrance>
+  <position>
+    <x-pos>811</x-pos>
+    <y-pos>515</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+  <type>generic</type>
+  <direction>misc</direction>
+  <release-rate>50</release-rate>
+</entrance>
+
+<entrance>
+  <position>
+    <x-pos>400</x-pos>
+    <y-pos>247</y-pos>
+    <z-pos>50</z-pos>
+  </position>
+  <type>generic</type>
+  <direction>misc</direction>
+  <release-rate>50</release-rate>
+</entrance>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>entrances</resource-datafile>
+  <resource-ident>Entrances/industrial_top</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>380</x-pos>
+    <y-pos>206</y-pos>
+    <z-pos>100</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1</parallax>
+</hotspot>
+
+  <start-position>
+  <position>
+    <x-pos>946</x-pos>
+    <y-pos>491</y-pos>
+    <z-pos>1000</z-pos>
+  </position>
+  </start-position>
+
+</pingus-level>
+

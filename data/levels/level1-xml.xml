@@ -29,8 +29,7 @@
 </background>
 
 <liquid>  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>Liquid/lava</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>Liquid/lava</resource-ident>
   </resource></surface>
   <position>
     <x-pos>-5</x-pos>
@@ -88,8 +87,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice5</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/bpice5</resource-ident>
   </resource></surface>
   <position>
     <x-pos>271</x-pos>
@@ -101,8 +99,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice5</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/bpice5</resource-ident>
   </resource></surface>
   <position>
     <x-pos>620</x-pos>
@@ -114,8 +111,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice1</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/bpice1</resource-ident>
   </resource></surface>
   <position>
     <x-pos>504</x-pos>
@@ -127,8 +123,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice4</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/bpice4</resource-ident>
   </resource></surface>
   <position>
     <x-pos>719</x-pos>
@@ -140,8 +135,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice1</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/bpice1</resource-ident>
   </resource></surface>
   <position>
     <x-pos>311</x-pos>
@@ -153,8 +147,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice6</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/bpice6</resource-ident>
   </resource></surface>
   <position>
     <x-pos>434</x-pos>
@@ -166,8 +159,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice5</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/bpice5</resource-ident>
   </resource></surface>
   <position>
     <x-pos>291</x-pos>
@@ -179,8 +171,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice6</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/bpice6</resource-ident>
   </resource></surface>
   <position>
     <x-pos>204</x-pos>
@@ -192,8 +183,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice4</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/bpice4</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1404</x-pos>
@@ -205,8 +195,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice6</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/bpice6</resource-ident>
   </resource></surface>
   <position>
     <x-pos>234</x-pos>
@@ -218,8 +207,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice6</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/bpice6</resource-ident>
   </resource></surface>
   <position>
     <x-pos>273</x-pos>
@@ -231,8 +219,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice6</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/bpice6</resource-ident>
   </resource></surface>
   <position>
     <x-pos>734</x-pos>
@@ -244,8 +231,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice6</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/bpice6</resource-ident>
   </resource></surface>
   <position>
     <x-pos>565</x-pos>
@@ -257,8 +243,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice6</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/bpice6</resource-ident>
   </resource></surface>
   <position>
     <x-pos>644</x-pos>
@@ -270,8 +255,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice1</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/bpice1</resource-ident>
   </resource></surface>
   <position>
     <x-pos>204</x-pos>
@@ -283,8 +267,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice6</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/bpice6</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1404</x-pos>
@@ -296,8 +279,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice6</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/bpice6</resource-ident>
   </resource></surface>
   <position>
     <x-pos>234</x-pos>
@@ -309,8 +291,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice5</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/bpice5</resource-ident>
   </resource></surface>
   <position>
     <x-pos>254</x-pos>
@@ -322,8 +303,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice6</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/bpice6</resource-ident>
   </resource></surface>
   <position>
     <x-pos>174</x-pos>
@@ -335,8 +315,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice4</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/bpice4</resource-ident>
   </resource></surface>
   <position>
     <x-pos>227</x-pos>
@@ -348,8 +327,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice6</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/bpice6</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1036</x-pos>
@@ -361,8 +339,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice6</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/bpice6</resource-ident>
   </resource></surface>
   <position>
     <x-pos>958</x-pos>
@@ -374,8 +351,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice6</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/bpice6</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1092</x-pos>
@@ -387,8 +363,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice6</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/bpice6</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1006</x-pos>
@@ -400,8 +375,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice5</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/bpice5</resource-ident>
   </resource></surface>
   <position>
     <x-pos>442</x-pos>
@@ -413,8 +387,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice5</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/bpice5</resource-ident>
   </resource></surface>
   <position>
     <x-pos>658</x-pos>
@@ -426,8 +399,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice5</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/bpice5</resource-ident>
   </resource></surface>
   <position>
     <x-pos>825</x-pos>
@@ -439,8 +411,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice5</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/bpice5</resource-ident>
   </resource></surface>
   <position>
     <x-pos>959</x-pos>
@@ -452,8 +423,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice5</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/bpice5</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1048</x-pos>
@@ -465,8 +435,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice5</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/bpice5</resource-ident>
   </resource></surface>
   <position>
     <x-pos>864</x-pos>
@@ -478,8 +447,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice5</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/bpice5</resource-ident>
   </resource></surface>
   <position>
     <x-pos>827</x-pos>
@@ -491,8 +459,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice5</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/bpice5</resource-ident>
   </resource></surface>
   <position>
     <x-pos>652</x-pos>
@@ -504,8 +471,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice5</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/bpice5</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1024</x-pos>
@@ -517,8 +483,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice5</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/bpice5</resource-ident>
   </resource></surface>
   <position>
     <x-pos>982</x-pos>
@@ -530,8 +495,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice5</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/bpice5</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1085</x-pos>
@@ -543,8 +507,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice5</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/bpice5</resource-ident>
   </resource></surface>
   <position>
     <x-pos>524</x-pos>
@@ -556,8 +519,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice4</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/bpice4</resource-ident>
   </resource></surface>
   <position>
     <x-pos>884</x-pos>
@@ -569,8 +531,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice4</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/bpice4</resource-ident>
   </resource></surface>
   <position>
     <x-pos>908</x-pos>
@@ -582,8 +543,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice5</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/bpice5</resource-ident>
   </resource></surface>
   <position>
     <x-pos>629</x-pos>
@@ -595,8 +555,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice5</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/bpice5</resource-ident>
   </resource></surface>
   <position>
     <x-pos>404</x-pos>
@@ -608,8 +567,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice6</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/bpice6</resource-ident>
   </resource></surface>
   <position>
     <x-pos>961</x-pos>
@@ -621,8 +579,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice4</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/bpice4</resource-ident>
   </resource></surface>
   <position>
     <x-pos>994</x-pos>
@@ -634,8 +591,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice6</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/bpice6</resource-ident>
   </resource></surface>
   <position>
     <x-pos>224</x-pos>
@@ -647,8 +603,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice4</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/bpice4</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1281</x-pos>
@@ -660,8 +615,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice4</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/bpice4</resource-ident>
   </resource></surface>
   <position>
     <x-pos>942</x-pos>
@@ -673,8 +627,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice6</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/bpice6</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1337</x-pos>
@@ -686,8 +639,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice6</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/bpice6</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1381</x-pos>
@@ -699,8 +651,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice6</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/bpice6</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1204</x-pos>
@@ -712,8 +663,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice5</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/bpice5</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1182</x-pos>
@@ -725,8 +675,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice5</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/bpice5</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1235</x-pos>
@@ -738,8 +687,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice5</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/bpice5</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1118</x-pos>
@@ -751,8 +699,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice6</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/bpice6</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1051</x-pos>
@@ -764,8 +711,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice6</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/bpice6</resource-ident>
   </resource></surface>
   <position>
     <x-pos>772</x-pos>
@@ -777,8 +723,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice4</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/bpice4</resource-ident>
   </resource></surface>
   <position>
     <x-pos>734</x-pos>
@@ -790,8 +735,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice1</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/bpice1</resource-ident>
   </resource></surface>
   <position>
     <x-pos>357</x-pos>
@@ -803,8 +747,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice1</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/bpice1</resource-ident>
   </resource></surface>
   <position>
     <x-pos>408</x-pos>
@@ -816,8 +759,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice1</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/bpice1</resource-ident>
   </resource></surface>
   <position>
     <x-pos>383</x-pos>
@@ -829,8 +771,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice6</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/bpice6</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1354</x-pos>
@@ -842,8 +783,7 @@
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice6</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/bpice6</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1454</x-pos>
@@ -855,8 +795,7 @@
 
 <groundpiece type="solid">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>Hotspots/plate</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>Hotspots/plate</resource-ident>
   </resource></surface>
   <position>
     <x-pos>685</x-pos>
@@ -868,8 +807,7 @@
 
 <groundpiece type="solid">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>Hotspots/plate</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>Hotspots/plate</resource-ident>
   </resource></surface>
   <position>
     <x-pos>651</x-pos>
@@ -881,8 +819,7 @@
 
 <groundpiece type="solid">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>Hotspots/plate</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>Hotspots/plate</resource-ident>
   </resource></surface>
   <position>
     <x-pos>779</x-pos>
@@ -894,8 +831,7 @@
 
 <groundpiece type="solid">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>Hotspots/plate</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>Hotspots/plate</resource-ident>
   </resource></surface>
   <position>
     <x-pos>460</x-pos>
@@ -907,8 +843,7 @@
 
 <groundpiece type="solid">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>Hotspots/plate</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>Hotspots/plate</resource-ident>
   </resource></surface>
   <position>
     <x-pos>587</x-pos>
@@ -920,8 +855,7 @@
 
 <groundpiece type="solid">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>Hotspots/plate</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>Hotspots/plate</resource-ident>
   </resource></surface>
   <position>
     <x-pos>715</x-pos>
@@ -933,8 +867,7 @@
 
 <groundpiece type="solid">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>Hotspots/plate</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>Hotspots/plate</resource-ident>
   </resource></surface>
   <position>
     <x-pos>396</x-pos>
@@ -946,8 +879,7 @@
 
 <groundpiece type="solid">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>Hotspots/plate</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>Hotspots/plate</resource-ident>
   </resource></surface>
   <position>
     <x-pos>268</x-pos>
@@ -959,8 +891,7 @@
 
 <groundpiece type="solid">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>Hotspots/plate</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>Hotspots/plate</resource-ident>
   </resource></surface>
   <position>
     <x-pos>523</x-pos>
@@ -972,8 +903,7 @@
 
 <groundpiece type="solid">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>Hotspots/plate</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>Hotspots/plate</resource-ident>
   </resource></surface>
   <position>
     <x-pos>332</x-pos>
@@ -985,8 +915,7 @@
 
 <groundpiece type="solid">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>Hotspots/plate</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>Hotspots/plate</resource-ident>
   </resource></surface>
   <position>
     <x-pos>204</x-pos>
@@ -998,8 +927,7 @@
 
 <groundpiece type="solid">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>Hotspots/plate2</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>Hotspots/plate2</resource-ident>
   </resource></surface>
   <position>
     <x-pos>676</x-pos>
@@ -1011,8 +939,7 @@
 
 <hotspot>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>Entrances/woodthing_nmov</resource-ident>
+    <resource-datafile>entrances</resource-datafile>  <resource-ident>Entrances/woodthing_nmov</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1345</x-pos>
@@ -1025,7 +952,7 @@
 
 <hotspot>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
+    <resource-datafile>entrances</resource-datafile>
   <resource-ident>Entrances/woodthing_nmov</resource-ident>
   </resource></surface>
   <position>
@@ -1039,7 +966,7 @@
 
 <hotspot>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
+    <resource-datafile>entrances</resource-datafile>
   <resource-ident>Entrances/woodthing_nmov</resource-ident>
   </resource></surface>
   <position>
@@ -1052,8 +979,7 @@
 </hotspot>
 
 <liquid>  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>Liquid/lava</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>Liquid/lava</resource-ident>
   </resource></surface>
   <position>
     <x-pos>-40</x-pos>

@@ -1,6 +1,5 @@
 <?xml version="1.0"?>
 
-<!DOCTYPE pingus-level SYSTEM "http://www.pingus.cx/dtd/pingus-level.dtd">
 <pingus-level>
   <global>
     <levelname lang="en">Blockers and crowd control</levelname>
@@ -43,8 +42,7 @@ can make it stop by giving it another job.
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/pfosten</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/pfosten</resource-ident>
   </resource></surface>
   <position>
     <x-pos>627</x-pos>
@@ -55,8 +53,7 @@ can make it stop by giving it another job.
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/pfosten</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/pfosten</resource-ident>
   </resource></surface>
   <position>
     <x-pos>273</x-pos>
@@ -67,8 +64,7 @@ can make it stop by giving it another job.
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/pfosten</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/pfosten</resource-ident>
   </resource></surface>
   <position>
     <x-pos>-23</x-pos>
@@ -79,8 +75,7 @@ can make it stop by giving it another job.
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>416</x-pos>
@@ -91,8 +86,7 @@ can make it stop by giving it another job.
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>712</x-pos>
@@ -103,8 +97,7 @@ can make it stop by giving it another job.
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Rock/granit6</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Rock/granit6</resource-ident>
   </resource></surface>
   <position>
     <x-pos>582</x-pos>
@@ -115,8 +108,7 @@ can make it stop by giving it another job.
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Rock/granit5</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Rock/granit5</resource-ident>
   </resource></surface>
   <position>
     <x-pos>265</x-pos>
@@ -127,8 +119,7 @@ can make it stop by giving it another job.
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Rock/granit5</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Rock/granit5</resource-ident>
   </resource></surface>
   <position>
     <x-pos>324</x-pos>
@@ -139,8 +130,7 @@ can make it stop by giving it another job.
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Rock/granit1</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Rock/granit1</resource-ident>
   </resource></surface>
   <position>
     <x-pos>506</x-pos>
@@ -151,8 +141,7 @@ can make it stop by giving it another job.
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Rock/granit1</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Rock/granit1</resource-ident>
   </resource></surface>
   <position>
     <x-pos>295</x-pos>
@@ -163,8 +152,7 @@ can make it stop by giving it another job.
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Rock/granit1</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Rock/granit1</resource-ident>
   </resource></surface>
   <position>
     <x-pos>-44</x-pos>
@@ -175,8 +163,7 @@ can make it stop by giving it another job.
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Rock/granit2</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Rock/granit2</resource-ident>
   </resource></surface>
   <position>
     <x-pos>211</x-pos>
@@ -187,8 +174,7 @@ can make it stop by giving it another job.
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Rock/granit2</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Rock/granit2</resource-ident>
   </resource></surface>
   <position>
     <x-pos>603</x-pos>
@@ -199,8 +185,7 @@ can make it stop by giving it another job.
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Snow/igloo</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Snow/igloo</resource-ident>
   </resource></surface>
   <position>
     <x-pos>140</x-pos>
@@ -211,8 +196,7 @@ can make it stop by giving it another job.
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Rock/granit3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>114</x-pos>
@@ -223,8 +207,7 @@ can make it stop by giving it another job.
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Rock/granit2</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Rock/granit2</resource-ident>
   </resource></surface>
   <position>
     <x-pos>-19</x-pos>
@@ -235,8 +218,7 @@ can make it stop by giving it another job.
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Rock/granit2</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Rock/granit2</resource-ident>
   </resource></surface>
   <position>
     <x-pos>193</x-pos>
@@ -247,8 +229,7 @@ can make it stop by giving it another job.
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Rock/granit2</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Rock/granit2</resource-ident>
   </resource></surface>
   <position>
     <x-pos>37</x-pos>
@@ -259,8 +240,7 @@ can make it stop by giving it another job.
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Snow/piece3</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Snow/piece3</resource-ident>
   </resource></surface>
   <position>
     <x-pos>116</x-pos>
@@ -271,8 +251,7 @@ can make it stop by giving it another job.
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Snow/piece2</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Snow/piece2</resource-ident>
   </resource></surface>
   <position>
     <x-pos>279</x-pos>
@@ -283,8 +262,7 @@ can make it stop by giving it another job.
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Snow/piece2</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Snow/piece2</resource-ident>
   </resource></surface>
   <position>
     <x-pos>47</x-pos>
@@ -295,8 +273,7 @@ can make it stop by giving it another job.
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Snow/slopedr</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Snow/slopedr</resource-ident>
   </resource></surface>
   <position>
     <x-pos>759</x-pos>
@@ -307,8 +284,7 @@ can make it stop by giving it another job.
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Snow/slopedr</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Snow/slopedr</resource-ident>
   </resource></surface>
   <position>
     <x-pos>351</x-pos>
@@ -319,8 +295,7 @@ can make it stop by giving it another job.
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Snow/slopedr</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Snow/slopedr</resource-ident>
   </resource></surface>
   <position>
     <x-pos>-46</x-pos>
@@ -331,8 +306,7 @@ can make it stop by giving it another job.
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Snow/piece2</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Snow/piece2</resource-ident>
   </resource></surface>
   <position>
     <x-pos>684</x-pos>
@@ -343,8 +317,7 @@ can make it stop by giving it another job.
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Snow/piece2</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Snow/piece2</resource-ident>
   </resource></surface>
   <position>
     <x-pos>451</x-pos>
@@ -355,8 +328,7 @@ can make it stop by giving it another job.
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Snow/piece1</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Snow/piece1</resource-ident>
   </resource></surface>
   <position>
     <x-pos>598</x-pos>
@@ -367,7 +339,7 @@ can make it stop by giving it another job.
 
 <groundpiece type="transparent">
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
+    <resource-datafile>entrances</resource-datafile>
   <resource-ident>Entrances/entrance</resource-ident>
   </resource></surface>
   <position>
@@ -395,14 +367,13 @@ can make it stop by giving it another job.
     <z-pos>0</z-pos>
   </position>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
+    <resource-datafile>exits</resource-datafile>
   <resource-ident>Exits/stone</resource-ident>
   </resource></surface>
 </exit>
 
 <liquid>  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>Liquid/water</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>Liquid/water</resource-ident>
   </resource></surface>
   <position>
     <x-pos>-6</x-pos>
@@ -423,8 +394,7 @@ can make it stop by giving it another job.
 
 <hotspot>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>Hotspots/signposts/blocker</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>Hotspots/signposts/blocker</resource-ident>
   </resource></surface>
   <position>
     <x-pos>457</x-pos>
