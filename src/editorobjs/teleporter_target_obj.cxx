@@ -1,4 +1,4 @@
-//  $Id: teleporter_target_obj.cxx,v 1.3 2002/09/10 19:24:19 grumbel Exp $
+//  $Id: teleporter_target_obj.cxx,v 1.4 2002/09/16 23:49:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <stdio.h>
 #include <ClanLib/Core/Math/cl_vector.h>
 #include "teleporter_obj.hxx"
 #include "teleporter_target_obj.hxx"

@@ -1,4 +1,4 @@
-//  $Id: pingu.cxx,v 1.26 2002/09/16 20:31:09 grumbel Exp $
+//  $Id: pingu.cxx,v 1.27 2002/09/16 23:49:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -322,8 +322,6 @@ Pingu::update (float delta)
 
   if (action_time == 0 && countdown_action) 
     {
-      std::cout << "COUNTDOWNACTION SET: " << countdown_action->get_name () << std::endl;
-
       set_action(countdown_action);
       // Reset the countdown action handlers 
       countdown_action = 0;

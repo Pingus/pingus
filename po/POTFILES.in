@@ -2,18 +2,6 @@ src/spot_map.cxx
 src/spot_map.hxx
 src/pingus_counter.cxx
 src/pingus_counter.hxx
-src/backgrounds/surface_background_data.cxx
-src/backgrounds/surface_background_data.hxx
-src/backgrounds/thunderstorm_background_data.cxx
-src/backgrounds/thunderstorm_background_data.hxx
-src/backgrounds/surface_background.cxx
-src/backgrounds/surface_background.hxx
-src/backgrounds/solidcolor_background.cxx
-src/backgrounds/solidcolor_background.hxx
-src/backgrounds/thunderstorm_background.cxx
-src/backgrounds/thunderstorm_background.hxx
-src/backgrounds/starfield_background.cxx
-src/backgrounds/starfield_background.hxx
 src/level_desc.cxx
 src/level_desc.hxx
 src/color.hxx
@@ -25,9 +13,7 @@ src/intro.cxx
 src/intro.hxx
 src/pingus_menu_manager.cxx
 src/pingus_menu_manager.hxx
-src/psm_parser.cxx
 src/counter.cxx
-src/psm_parser.hxx
 src/counter.hxx
 src/main_menu.cxx
 src/main_menu.hxx
@@ -283,8 +269,6 @@ src/xml_helper.cxx
 src/xml_helper.hxx
 src/multiplayer_client.cxx
 src/multiplayer_client.hxx
-src/groundpiece_data.cxx
-src/groundpiece_data.hxx
 src/message_box.cxx
 src/message_box.hxx
 src/global_event.cxx
