@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.45 2000/10/18 20:16:36 grumbel Exp $
+#  $Id: Makefile.am,v 1.46 2000/10/30 16:17:49 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,6 +35,7 @@ SUBDIRS = \
 	particles           \
 	traps               \
 	war                 \
+        worldobjs           \
 	worldmap
 
 EXTRA_DIST = README \
@@ -55,6 +56,7 @@ LDADD = caimagemanipulation/libcaimagemanipulation.a \
         backgrounds/libpingus_backgrounds.a       \
         war/libpingus_war.a \
         worldmap/libpingus_worldmap.a \
+        worldobjs/libpingus_worldobjs.a \
         generic/libpingus_generic.a
 
 pingus_SOURCES = \
@@ -136,7 +138,7 @@ pingus_SOURCES = \
                  globals.cc           globals.hh           \
                  HotspotData.hh       \
                  LiquidData.hh        \
-                 TrapData.hh          \
+                 TrapData.hh          TrapData.cc \
                  Display.cc           Display.hh           \
                  Loading.cc           Loading.hh           \
                  Credits.cc           Credits.hh           \
@@ -160,7 +162,6 @@ pingus_SOURCES = \
                  XMLhelper.cc         XMLhelper.hh \
                  PLTXML.cc            PLTXML.hh   \
                  WeatherData.hh   \
-                 Teleporter.cc Teleporter.hh \
                  TargetProvider.hh    TargetProvider.cc \
                  PingusMapManager.hh  PingusMapManager.cc \
                  Color.hh             Position.hh \

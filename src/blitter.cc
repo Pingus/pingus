@@ -1,4 +1,4 @@
-//  $Id: blitter.cc,v 1.21 2000/10/14 16:09:45 grumbel Exp $
+//  $Id: blitter.cc,v 1.22 2000/10/30 16:17:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -260,16 +260,7 @@ Blitter::clear_canvas(CL_Canvas* canvas)
   
   canvas->lock();
   buffer = static_cast<unsigned char*>(canvas->get_data());
-
-  /*  for (int i=0; i < canvas->get_pitch() * canvas->get_height(); i += 4)
-    {
-      buffer[i + 0] = 155;
-      buffer[i + 1] = 155;
-      buffer[i + 2] = 155;
-      buffer[i + 3] = 155;
-      }*/
   memset(buffer, 0, sizeof(unsigned char) * canvas->get_pitch() * canvas->get_height());
-
   canvas->unlock();
 
   return canvas;
@@ -346,8 +337,6 @@ Blitter::scale_surface_to_canvas (CL_Surface* sur, int width, int height)
   int pwidth = provider->get_width ();
   int pheight = provider->get_height ();
   
-  std::cout << "starting scale..." << std::endl;
-  
   switch (provider->get_bytes_per_pixel ())
     {
     case 3:
@@ -402,7 +391,6 @@ Blitter::scale_surface_to_canvas (CL_Surface* sur, int width, int height)
       break;
     }
 
-  std::cout << "scale done" << std::endl;
   canvas->unlock ();
   provider->unlock ();
 

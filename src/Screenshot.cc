@@ -1,4 +1,4 @@
-//  $Id: Screenshot.cc,v 1.6 2000/10/13 12:19:46 grumbel Exp $
+//  $Id: Screenshot.cc,v 1.7 2000/10/30 16:17:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,9 +21,7 @@
 #include <cstdio>
 #include <time.h>
 
-// -- Gettext -- //
-#include <libintl.h>
-#define _(String) gettext (String)
+#include "my_gettext.hh"
 
 #include "globals.hh"
 #include "System.hh"

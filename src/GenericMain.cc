@@ -1,4 +1,4 @@
-//  $Id: GenericMain.cc,v 1.4 2000/10/13 12:19:46 grumbel Exp $
+//  $Id: GenericMain.cc,v 1.5 2000/10/30 16:17:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,12 +23,11 @@
 
 #include <locale.h>
 
-// -- Gettext --
-#include <libintl.h>
-#define _(String) gettext (String)
+#include "my_gettext.hh"
 
 #include <ClanLib/core.h>
 #include <ClanLib/jpeg.h>
+#include <ClanLib/png.h>
 
 #include "System.hh"
 #include "war/WarMain.hh"
@@ -36,21 +35,6 @@
 #include "GenericMain.hh"
 
 GenericMain my_app; // notice this line. It creates the global instance.
-
-void
-GenericMain::init_modules()
-{
-  std::cout << "Module init.." << std::endl;
-  CL_SetupCore::init();
-  CL_SetupJPEG::init();
-}
-
-void
-GenericMain::deinit_modules()
-{
-  std::cout << "Module deinit.." << std::endl;
-  CL_SetupCore::deinit();
-}
 
 char* 
 GenericMain::get_title()
@@ -62,14 +46,17 @@ int
 GenericMain::main(int argc, char* argv[])
 {
   // Init stuff needed by gettext
+#ifdef HAVE_GETTEXT
   setlocale (LC_ALL, "");
   bindtextdomain (PACKAGE, LOCALEDIR);
   textdomain (PACKAGE);
+#endif
 
   int ret_value;
 
-  CL_SetupCore::init();
-  CL_SetupJPEG::init();
+  CL_SetupCore::init ();
+  CL_SetupPNG::init ();
+  CL_SetupJPEG::init ();
 
   std::cout << _("Starting...") << std::endl;
 
@@ -90,6 +77,7 @@ GenericMain::main(int argc, char* argv[])
 
   ret_value = main_obj->main(argc, argv);
 
+  CL_SetupPNG::deinit();
   CL_SetupJPEG::deinit();
   CL_SetupCore::deinit();
 

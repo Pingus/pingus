@@ -1,4 +1,4 @@
-//  $Id: ResDescriptor.hh,v 1.6 2000/06/25 20:22:18 grumbel Exp $
+//  $Id: ResDescriptor.hh,v 1.7 2000/10/30 16:17:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #ifndef RESDESCRIPTOR_HH
 #define RESDESCRIPTOR_HH
 
+#include <iostream>
 #include <string>
 
 /// Resource descriptor, tells were to find a resource.
@@ -53,6 +54,9 @@ public:
 
   bool operator<(const ResDescriptor&) const;
 };
+
+/// Our own function to print out the ResDescriptor
+ostream& operator<<(ostream& s, const ResDescriptor& desc);
 
 #endif
 

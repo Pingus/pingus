@@ -1,4 +1,4 @@
-//  $Id: ObjectManager.cc,v 1.34 2000/10/18 20:16:36 grumbel Exp $
+//  $Id: ObjectManager.cc,v 1.35 2000/10/30 16:17:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,6 +31,7 @@
 #include "../WorldObjData.hh"
 #include "EditorWorldObj.hh"
 #include "StartPos.hh"
+#include "../generic/ListHelper.hh"
 #include "ObjectManager.hh"
 
 #ifdef WIN32
@@ -146,7 +147,6 @@ ObjectManager::load_level (std::string filename)
       i->surface = PingusResource::load_surface(i->desc);
     }
 
-
   vector<EntranceData> temp_entraces = plf->get_entrance();
   vector<HotspotData>  temp_hotspots = plf->get_hotspot();
   vector<ExitData>     temp_exits    = plf->get_exit();
@@ -177,7 +177,7 @@ ObjectManager::load_level (std::string filename)
     editor_objs.push_back(EditorObj::create(*i));
 
   for(vector<WorldObjData*>::iterator i = temp_worldobj.begin(); i != temp_worldobj.end(); ++i)
-    editor_objs.push_back (EditorWorldObj::create (*i));
+    ListHelper::append (editor_objs, EditorWorldObj::create (*i));
 
 #ifndef WIN32 // FIXME: Compiler error in Windows
   editor_objs.sort(EditorObj_less());
@@ -265,7 +265,7 @@ ObjectManager::save_level (string filename)
   // FIXME: we need some error checking
   
   plf_out << "/* This level was created with the PLE\n"
-	  << " * $Id: ObjectManager.cc,v 1.34 2000/10/18 20:16:36 grumbel Exp $\n"
+	  << " * $Id: ObjectManager.cc,v 1.35 2000/10/30 16:17:51 grumbel Exp $\n"
 	  << " */"
 	  << endl;
   

@@ -1,4 +1,4 @@
-//  $Id: WorldObjData.cc,v 1.3 2000/09/25 16:29:43 grumbel Exp $
+//  $Id: WorldObjData.cc,v 1.4 2000/10/30 16:17:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,7 +17,8 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "Teleporter.hh"
+#include "TrapData.hh"
+#include "worldobjs/Teleporter.hh"
 #include "WorldObjData.hh"
 
 WorldObjData* 
@@ -34,9 +35,9 @@ WorldObjData::create(xmlDocPtr doc, xmlNodePtr cur)
   else
     {
       if (strcmp(type, "teleporter") == 0)
-	{
-	  data = TeleporterData::create (doc, cur);
-	}
+	data = TeleporterData::create (doc, cur);
+      else if (strcmp(type, "trap") == 0)	
+	data = TrapData::create (doc, cur);
       else
 	{
 	  std::cout << "WorldObjData::create (): Unknown type: \"" << type << "\"" << std::endl;
@@ -44,7 +45,7 @@ WorldObjData::create(xmlDocPtr doc, xmlNodePtr cur)
     }
   return data;
 }
-
+/*
 WorldObjData* 
 WorldObjData::create (WorldObjData* data)
 {
@@ -58,5 +59,5 @@ WorldObjData::create (WorldObjData* data)
       return 0;
     }
 }
-
+*/
 /* EOF */

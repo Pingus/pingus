@@ -1,4 +1,4 @@
-//  $Id: Credits.cc,v 1.11 2000/10/13 12:19:46 grumbel Exp $
+//  $Id: Credits.cc,v 1.12 2000/10/30 16:17:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,9 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-// -- Gettext -- //
-#include <libintl.h>
-#define _(String) gettext (String)
+#include "my_gettext.hh"
 
 #include "Display.hh"
 #include "PingusSound.hh"

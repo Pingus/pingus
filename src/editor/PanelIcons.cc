@@ -1,4 +1,4 @@
-//  $Id: PanelIcons.cc,v 1.6 2000/08/28 00:34:39 grumbel Exp $
+//  $Id: PanelIcons.cc,v 1.7 2000/10/30 16:17:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,7 +22,7 @@
 
 PanelIconLoad::PanelIconLoad()
 {
-  sur = PingusResource::load_surface("Icons/open", "editor");
+  sur = PingusResource::load_surface("editor/open", "core");
 }
 
 void
@@ -34,7 +34,7 @@ PanelIconLoad::on_click()
 
 PanelIconExit::PanelIconExit()
 {
-  sur = PingusResource::load_surface("Icons/exit", "editor");  
+  sur = PingusResource::load_surface("editor/exit", "core");  
 }
 
 void 
@@ -45,7 +45,7 @@ PanelIconExit::on_click()
 
 PanelIconSave::PanelIconSave()
 {
-  sur = PingusResource::load_surface("Icons/save", "editor");
+  sur = PingusResource::load_surface("editor/save", "core");
 }
 
 void 
@@ -56,7 +56,7 @@ PanelIconSave::on_click()
 
 PanelIconDelete::PanelIconDelete()
 {
-  sur = PingusResource::load_surface("Icons/delete", "editor");
+  sur = PingusResource::load_surface("editor/delete", "core");
 }
 
 void 
@@ -67,7 +67,7 @@ PanelIconDelete::on_click()
 
 PanelIconCopy::PanelIconCopy()
 {
-  sur = PingusResource::load_surface("Icons/copy", "editor");
+  sur = PingusResource::load_surface("editor/copy", "core");
 }
 
 void
@@ -78,12 +78,12 @@ PanelIconCopy::on_click()
 
 PanelIconEdit::PanelIconEdit()
 {
-  sur = PingusResource::load_surface("Icons/edit", "editor");  
+  sur = PingusResource::load_surface("editor/edit", "core");  
 }
 
 PanelIconPreferences::PanelIconPreferences()
 {
-  sur = PingusResource::load_surface("Icons/preferences", "editor");
+  sur = PingusResource::load_surface("editor/preferences", "core");
 }
 
 void
@@ -101,7 +101,7 @@ PanelIconEdit::on_click()
 
 PanelIconRun::PanelIconRun()
 {
-  sur = PingusResource::load_surface("Icons/clock_run", "editor");  
+  sur = PingusResource::load_surface("editor/clock_run", "core");  
 }
 
 void 
@@ -112,7 +112,7 @@ PanelIconRun::on_click()
 
 PanelIconNew::PanelIconNew()
 {
-  sur = PingusResource::load_surface("Icons/new", "editor");  
+  sur = PingusResource::load_surface("editor/new", "core");  
 }
 
 void
@@ -123,7 +123,7 @@ PanelIconNew::on_click()
 
 PanelIconInsertObject::PanelIconInsertObject()
 {
-  sur = PingusResource::load_surface("Icons/index", "editor");  
+  sur = PingusResource::load_surface("editor/index", "core");  
 }
 
 void

@@ -1,4 +1,4 @@
-//  $Id: PLFObj.cc,v 1.28 2000/08/28 00:34:39 grumbel Exp $
+//  $Id: PLFObj.cc,v 1.29 2000/10/30 16:17:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,11 +42,7 @@ PLFObj::~PLFObj()
 std::string
 PLFObj::status_line()
 {
-  char str[256];
-
-  sprintf(str, "%s", obj_type().c_str());
-
-  return std::string(str);
+  return std::string("--- unsupported object ---");
 }
 
 HotspotObj::HotspotObj(HotspotData data)
@@ -362,6 +358,7 @@ TrapObj::save(ofstream* plf, ofstream* psm)
 void
 TrapObj::save_xml(std::ofstream* xml)
 {
+  // FIXME: Move this to trap data!
   (*xml) << "<trap>\n"
 	 << "  <type>" << type << "</type>\n";
   save_position_xml(xml, pos);

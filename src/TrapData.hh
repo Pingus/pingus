@@ -1,4 +1,4 @@
-// $Id: TrapData.hh,v 1.1 2000/07/30 02:27:48 grumbel Exp $
+// $Id: TrapData.hh,v 1.2 2000/10/30 16:17:50 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,17 +22,23 @@
 
 #include <string>
 
+#include "WorldObjData.hh"
 #include "Position.hh"
 
 /// Structure holding all the data needed for a trap.
-class TrapData
+class TrapData : public WorldObjData
 {
 public:
   std::string type;
   Position pos;
   
   TrapData(){}
+  virtual ~TrapData(){}
   void clean(){}
+
+  void write_xml(ofstream* xml);
+
+  static WorldObjData* create(xmlDocPtr doc, xmlNodePtr cur);
 };
 
 #endif

@@ -1,4 +1,4 @@
-//  $Id: System.cc,v 1.23 2000/10/14 16:09:45 grumbel Exp $
+//  $Id: System.cc,v 1.24 2000/10/30 16:17:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,8 +33,7 @@
 #include <cstdio>
 #include <iostream>
 
-#include <libintl.h>
-#define _(String) gettext (String)
+#include "my_gettext.hh"
 
 #include "globals.hh"
 #include "PingusError.hh" 
@@ -151,7 +150,7 @@ System::create_dir(std::string directory)
 	}
     }  else
     {
-      std::cout << _("Found: ") << directory << std::endl;
+      if (verbose) std::cout << _("Found: ") << directory << std::endl;
     }
 #else
   CreateDirectory(directory.c_str(), 0);

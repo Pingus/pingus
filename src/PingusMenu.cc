@@ -1,4 +1,4 @@
-//  $Id: PingusMenu.cc,v 1.33 2000/10/18 20:16:36 grumbel Exp $
+//  $Id: PingusMenu.cc,v 1.34 2000/10/30 16:17:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,14 +35,22 @@
 
 PingusMenu::PingusMenu()
 {
-  bg         = PingusResource::load_surface("Game/logo_t", "game");
-  background = PingusResource::load_surface("NewButtons/background", "menu");
+  is_init = false;
+  // We need this button a bit earlier than the other ones, so we allocate it here.
+  editor_button  = new EditorButton;
+}
 
-  layer_manager.add_layer (PingusResource::load_surface ("Layer/layer1", "menu"),  0, 0, 2, 0);
-  layer_manager.add_layer (PingusResource::load_surface ("Layer/layer2", "menu"),  0, 150, 5, 0);
-  layer_manager.add_layer (PingusResource::load_surface ("Layer/layer3", "menu"), 0, 200, 10, 0);
-  layer_manager.add_layer (PingusResource::load_surface ("Layer/layer4", "menu"), 0, 377, 25, 0);
-  layer_manager.add_layer (PingusResource::load_surface ("Layer/layer5", "menu"), 0, 500, 35, 0);
+void
+PingusMenu::init ()
+{
+  bg         = PingusResource::load_surface("misc/logo_t", "core");
+  background = PingusResource::load_surface("menu/background", "core");
+
+  layer_manager.add_layer (PingusResource::load_surface ("menu/layer1", "core"),  0, 0, 2, 0);
+  layer_manager.add_layer (PingusResource::load_surface ("menu/layer2", "core"),  0, 150, 5, 0);
+  layer_manager.add_layer (PingusResource::load_surface ("menu/layer3", "core"), 0, 200, 10, 0);
+  layer_manager.add_layer (PingusResource::load_surface ("menu/layer4", "core"), 0, 377, 25, 0);
+  layer_manager.add_layer (PingusResource::load_surface ("menu/layer5", "core"), 0, 500, 35, 0);
 
   background = Blitter::scale_surface (background, CL_Display::get_width (), CL_Display::get_height ());
   //  background = PingusResource::load_surface("Textures/stones", "textures");
@@ -57,12 +65,11 @@ PingusMenu::PingusMenu()
 
   on_button_press_slot   = CL_Input::sig_button_press.connect (thCreateSlot(event, &PingusMenu::Event::on_button_press));
   on_button_release_slot = CL_Input::sig_button_release.connect (thCreateSlot(event, &PingusMenu::Event::on_button_release));
-  on_mouse_move_slot     = CL_Input::sig_mouse_move.connect (thCreateSlot(event, &PingusMenu::Event::on_mouse_move));
+  //on_mouse_move_slot     = CL_Input::sig_mouse_move.connect (thCreateSlot(event, &PingusMenu::Event::on_mouse_move));
 
   on_resize_slot = CL_Display::get_sig_resize().connect(thCreateSlot(this, &PingusMenu::on_resize));
   //CL_Display::get_sig_resize().disconnect(on_resize_slot);
 
-  editor_button  = new EditorButton;
   options_button = new OptionsButton;
   play_button    = new PlayButton;
   quit_button    = new QuitButton;
@@ -93,7 +100,7 @@ PingusMenu::~PingusMenu()
 
   CL_Input::sig_button_press.disconnect (on_button_press_slot);
   CL_Input::sig_button_release.disconnect (on_button_release_slot);
-  CL_Input::sig_mouse_move.disconnect (on_mouse_move_slot);
+  //CL_Input::sig_mouse_move.disconnect (on_mouse_move_slot);
 
   delete event;
 }
@@ -136,14 +143,16 @@ PingusMenu::select(void)
     editor_button->on_click ();
   }
 
+  if (!is_init) init();
+
   do_quit = false;
 
   draw();
 
   event->enabled = true;
 
-  Display::set_cursor(CL_MouseCursorProvider::load("Cursors/cursor",
-						   PingusResource::get("game")));
+  //Display::set_cursor(CL_MouseCursorProvider::load("Cursors/cursor",
+  //						   PingusResource::get("game")));
   Display::show_cursor();
 
   PingusSound::play_mod("../data/music/pingus-1.it");
@@ -163,9 +172,8 @@ PingusMenu::select(void)
 void
 PingusMenu::Event::on_mouse_move(CL_InputDevice *, int mouse_x, int mouse_y)
 {
-  if (!enabled) return;
- 
-  menu->draw();
+  // if (!enabled) return;
+  // menu->draw();
 }
 
 void
@@ -226,8 +234,8 @@ PingusMenu::Event::on_button_release(CL_InputDevice *device, const CL_Key &key)
 	      enabled = false;
 	      Display::hide_cursor();
 	      (*i)->on_click();
-	      Display::set_cursor(CL_MouseCursorProvider::load("Cursors/cursor", 
-							       PingusResource::get("game")));
+	      //Display::set_cursor(CL_MouseCursorProvider::load("Cursors/cursor", 
+	      //PingusResource::get("game")));
 	      Display::show_cursor();
 	      enabled = true;
 	    }

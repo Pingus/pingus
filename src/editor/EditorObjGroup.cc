@@ -1,4 +1,4 @@
-//  $Id: EditorObjGroup.cc,v 1.2 2000/08/04 16:08:40 grumbel Exp $
+//  $Id: EditorObjGroup.cc,v 1.3 2000/10/30 16:17:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,9 +19,9 @@
 
 #include "EditorObjGroup.hh"
 
-/***************/
+/******************/
 /* EditorObjGroup */
-/***************/
+/******************/
 
 EditorObjGroup::EditorObjGroup()
 {

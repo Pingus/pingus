@@ -1,4 +1,4 @@
- //  $Id: PingusLevelDesc.cc,v 1.15 2000/10/13 18:08:33 grumbel Exp $
+ //  $Id: PingusLevelDesc.cc,v 1.16 2000/10/30 16:17:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,9 +21,7 @@
 #include <cstdio>
 #include <string>
 
-// -- Gettext -- //
-#include <libintl.h>
-#define _(String) gettext (String)
+#include "my_gettext.hh"
 
 #include "Display.hh"
 #include "PingusResource.hh"

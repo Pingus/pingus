@@ -1,4 +1,4 @@
-//  $Id: SurfaceBackground.cc,v 1.3 2000/10/09 19:17:30 grumbel Exp $
+//  $Id: SurfaceBackground.cc,v 1.4 2000/10/30 16:17:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -45,7 +45,6 @@ SurfaceBackground::SurfaceBackground(SurfaceBackgroundData* bg_data)
     timer.start();
     std::cout << "Creating Background..." << std::flush;
   }
-
   
   surface_need_deletion = false;
 

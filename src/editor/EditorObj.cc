@@ -1,4 +1,4 @@
-// $Id: EditorObj.cc,v 1.18 2000/10/18 20:16:36 grumbel Exp $
+// $Id: EditorObj.cc,v 1.19 2000/10/30 16:17:51 grumbel Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,13 +17,17 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "../my_gettext.hh"
+
 #include "../Display.hh"
 #include "../PSMParser.hh"
 #include "../PingusResource.hh"
+#include "../worldobjs/Teleporter.hh"
 #include "PSMObj.hh"
 #include "PLFObj.hh"
 #include "WeatherObj.hh"
 #include "EditorObj.hh"
+#include "EditorWorldObj.hh"
 #include "config.h"
 
 using namespace std;
@@ -98,6 +102,21 @@ EditorObj*
 EditorObj::create(WeatherData data)
 {
   return new WeatherObj(data);
+}
+
+list<EditorObj*>
+EditorObj::create (WorldObjData* obj)
+{
+  if (dynamic_cast<TeleporterData*>(obj))
+    {
+      return EditorTeleporterObj::create (dynamic_cast<TeleporterData*>(obj));
+    }
+  else
+    {
+      std::cout << _("EditorObj: Warrning unknown WorldObjData pointer!") << std::endl;
+      // FIXME: empty dummy
+      return list<EditorObj*>();
+    }
 }
 
 bool
@@ -219,12 +238,6 @@ EditorObj::is_in_rect(int x1, int y1, int x2, int y2)
     }
 }
 
-string
-EditorObj::obj_type()
-{
-  return "EditorObj";
-}
-
 std::string
 EditorObj::status_line()
 {
@@ -278,6 +291,15 @@ EditorObj::gui_edit_obj()
   
 /*
 $Log: EditorObj.cc,v $
+Revision 1.19  2000/10/30 16:17:51  grumbel
+- added support to disable gnu gettext
+- added support for the teleporter in the editor (mostly untested)
+- fixed some resource names to fit the new directory structure
+
+I am now starting to move to the new directory structure and to the png
+files, this will take some time, so expect some throuble when you do a
+cvs update
+
 Revision 1.18  2000/10/18 20:16:36  grumbel
 Added a scrolling background to the menu
 

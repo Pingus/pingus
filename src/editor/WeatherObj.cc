@@ -1,4 +1,4 @@
-//  $Id: WeatherObj.cc,v 1.1 2000/08/05 18:52:22 grumbel Exp $
+//  $Id: WeatherObj.cc,v 1.2 2000/10/30 16:17:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,16 +35,16 @@ WeatherObj::WeatherObj(WeatherData data)
 
   if (type == "rain")
     {
-      surf = PingusResource::load_surface("Objects/weather_rain", "editor");
+      surf = PingusResource::load_surface("editor/weather_rain", "core");
     }
   else if (type == "snow")
     {
-      surf = PingusResource::load_surface("Objects/weather_snow", "editor");
+      surf = PingusResource::load_surface("editor/weather_snow", "core");
     }  
   else 
     {
       std::cout << "WeatherObj: Unknown weather type: " << type << std::endl;
-      surf = PingusResource::load_surface("Objects/weather_rain", "editor");
+      surf = PingusResource::load_surface("editor/weather_rain", "core");
     }
   init();
 }

@@ -1,4 +1,4 @@
-//  $Id: ResDescriptor.cc,v 1.9 2000/09/07 09:45:39 grumbel Exp $
+//  $Id: ResDescriptor.cc,v 1.10 2000/10/30 16:17:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -95,6 +95,26 @@ bool
 ResDescriptor::operator<(const ResDescriptor& res_desc) const
 {
   return (datafile + res_name) < (res_desc.datafile + res_desc.res_name);
+}
+
+ostream& operator<<(ostream& s, const ResDescriptor& desc)
+{
+  switch (desc.type)
+    {
+    case ResDescriptor::RESOURCE:
+      return s << "(datafile: " << desc.datafile << ", res_name: " << desc.res_name << ")";
+      break;
+    case ResDescriptor::FILE:
+      return s << "(file:" << desc.res_name << ")";
+      break;
+    case ResDescriptor::AUTO:
+      return s << "(auto)";
+      break;
+    default:
+      std::cout << "ResDescriptor: Unknown type: " << desc.type << std::endl;
+      assert (!"Unknown type");
+      return s;
+    }
 }
 
 /* EOF */

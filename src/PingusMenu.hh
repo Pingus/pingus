@@ -1,4 +1,4 @@
-//  $Id: PingusMenu.hh,v 1.9 2000/10/18 20:16:36 grumbel Exp $
+//  $Id: PingusMenu.hh,v 1.10 2000/10/30 16:17:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -40,9 +40,9 @@ class PingusMenu
 {
 public:
   ///
-  enum PingusMenuItem { pmiSTART, pmiLOAD, pmiQUIT, pmiVOID }///
-  ;
-  
+  enum PingusMenuItem { pmiSTART, pmiLOAD, pmiQUIT, pmiVOID };
+  bool is_init;
+
 private:
   ///
   thSlot on_button_press_slot;
@@ -124,7 +124,8 @@ public:
   PingusMenu();
   ///
   ~PingusMenu();
-
+  /// Load all images and other stuff for the menu
+  void init ();
   ///
   void draw(void);
   ///

@@ -1,4 +1,4 @@
-//  $Id: SmallMap.cc,v 1.20 2000/08/11 01:11:04 grumbel Exp $
+//  $Id: SmallMap.cc,v 1.21 2000/10/30 16:17:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -57,8 +57,8 @@ SmallMap::init()
   unsigned char  current_pixel;
   int tx, ty;
 
-  entrance_sur = PingusResource::load_surface("SmallMap/entrance", "game");
-  exit_sur     = PingusResource::load_surface("SmallMap/exit", "game");
+  entrance_sur = PingusResource::load_surface("misc/smallmap_entrance", "core");
+  exit_sur     = PingusResource::load_surface("misc/smallmap_exit", "core");
 
   world = client->get_server()->get_world();
 

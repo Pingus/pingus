@@ -1,4 +1,4 @@
-//  $Id: GenericMain.hh,v 1.1 2000/08/06 13:05:31 grumbel Exp $
+//  $Id: GenericMain.hh,v 1.2 2000/10/30 16:17:49 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,8 +37,6 @@ private:
   AbstractMain* main_obj;
   
 public:
-  void  init_modules();
-  void  deinit_modules(); 
   char* get_title();
   int   main (int argc, char* argv[]);
 };

@@ -1,4 +1,4 @@
-//   $Id: PingusMain.cc,v 1.15 2000/10/18 20:16:36 grumbel Exp $
+//   $Id: PingusMain.cc,v 1.16 2000/10/30 16:17:49 grumbel Exp $
 //    ___
 //   |  _\ A free Lemmings clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -40,12 +40,10 @@
 #  include "win32/getopt.h"
 #endif /* !WIN32 */
 
-// -- Gettext -- //
-#include <libintl.h>
-#define _(String) gettext (String)
-
 #include <ClanLib/core.h>
 #include <ClanLib/jpeg.h>
+
+#include "my_gettext.hh"
 
 // #include "efence.h"
 
@@ -210,14 +208,12 @@ PingusMain::check_args(int argc, char* argv[])
     {"use-scriptfile",    no_argument,       0, 151},
 
     // FIXME: is the number stuff correct?
-    {"debug-actions",   no_argument,       0, 129},
     {"fs-preload",      no_argument,       0, 130},
     {"fast",            no_argument,       0, 132},
     {"disable-previews",no_argument,       0, 133}, 
     {"maintainer-mode", no_argument,       0, 134},
     {"enable-uactions", no_argument,       0, 136},
     {"disable-auto-scrolling",   no_argument,       0, 137},
-    {"debug-game-time", no_argument,       0, 149},
 
 #ifdef HAVE_LIBSDL_MIXER
     // Sound stuff
@@ -228,7 +224,6 @@ PingusMain::check_args(int argc, char* argv[])
 #endif
     // 
     {"no-cfg-file",    no_argument,       0, 142},
-    {"debug-tiles",    no_argument,       0, 143},
     {"tile-size",      required_argument, 0, 144},
     {"config-file",    required_argument, 0, 147},
     {"debug",          required_argument, 0, 152},
@@ -431,7 +426,11 @@ For more information about these matters, see the files named COPYING.\
       break;
 
     case 152:
-      if (strcmp (optarg, "actions") == 0)
+      if (strcmp (optarg, "all") == 0)
+	{
+	  pingus_debug_flags |= PINGUS_DEBUG_ALL;
+	}
+      else if (strcmp (optarg, "actions") == 0)
 	{
 	  pingus_debug_flags |= PINGUS_DEBUG_ACTIONS;
 	}
@@ -446,6 +445,10 @@ For more information about these matters, see the files named COPYING.\
       else if (strcmp (optarg, "tiles") == 0)
 	{
 	  pingus_debug_flags |= PINGUS_DEBUG_TILES;
+	}
+      else if (strcmp (optarg, "loading") == 0)
+	{
+	  pingus_debug_flags |= PINGUS_DEBUG_LOADING;
 	}
       else
 	{
@@ -782,20 +785,21 @@ PingusMain::do_lemmings_mode(void)
 
   //pingus_story.display ();
 
-  {
-    PingusGame game;
-    
-    if (System::exist(levelfile))
-      game.start_game(levelfile);
-    else if (System::exist(levelfile + ".xml"))
-      game.start_game(levelfile + ".xml");
-    else if (System::exist("levels/" + levelfile + ".xml"))
-      game.start_game("levels/" + levelfile);
-    else
-      {
-	std::cout << _("PingusMain: Levelfile not found, ignoring: ") << levelfile << std::endl;
-      }
-  }
+  if (!levelfile.empty ())
+    {
+      PingusGame game;
+      
+      if (System::exist(levelfile))
+	game.start_game(levelfile);
+      else if (System::exist(levelfile + ".xml"))
+	game.start_game(levelfile + ".xml");
+      else if (System::exist("levels/" + levelfile + ".xml"))
+	game.start_game("levels/" + levelfile);
+      else
+	{
+	  std::cout << _("PingusMain: Levelfile not found, ignoring: ") << levelfile << std::endl;
+	}
+    }
 
   if (!demo_file.empty()) {
     PingusGame game;

@@ -1,4 +1,4 @@
-//  $Id: EditorObj.hh,v 1.20 2000/10/18 20:16:36 grumbel Exp $
+//  $Id: EditorObj.hh,v 1.21 2000/10/30 16:17:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -96,7 +96,9 @@ public:
   ///
   static EditorObj* create(LiquidData);
   ///
-  static EditorObj* create(WeatherData);
+  static EditorObj* create (WeatherData);
+  ///
+  static list<EditorObj*> create (WorldObjData*);
 
   /** @name Z-Pos sort operators */
   //@{
@@ -147,19 +149,18 @@ public:
   /** Save the give object in the ofstream, this member uses the old
       plf/psm syntax which is considered obsolete, save_xml() should
       be used */
-  virtual void   save(std::ofstream* plf, std::ofstream* psm) = 0;
+  virtual void   save(std::ofstream* plf, std::ofstream* psm) {};
   /** Save the given object in the ofstream as xml */
   virtual void   save_xml(std::ofstream* xml) = 0;
+
   /** Writes the given res_desc to the ofstream */
   static void save_desc_xml(std::ofstream* xml, ResDescriptor desc);
   /** Write a position to the xml ofstream */
   static void save_position_xml(std::ofstream* xml, Position pos);
   ///
-  virtual std::string obj_type();
-  ///
   virtual std::string status_line();
   ///
-  virtual EditorObj* duplicate() = 0;
+  virtual EditorObj* duplicate() { return 0; }
   
   static void set_editor(Editor* e) { editor = e; }
 };

@@ -1,4 +1,4 @@
-//  $Id: WorldObjData.hh,v 1.3 2000/09/30 21:34:42 grumbel Exp $
+//  $Id: WorldObjData.hh,v 1.4 2000/10/30 16:17:50 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,21 +23,25 @@
 #include <fstream>
 #include "XMLhelper.hh"
 
+/** The root data class for all objects in the Pingus world.  Each
+    objects needs a data object for creating, which should be
+    inherited from this one. The world data objects needs then to be
+    able to write down the xml stuff and load themself out of an xml
+    file. */
 class WorldObjData
 {
 public:
-  ///
+  /// Empty placeholder
   WorldObjData() {}
-  ///
+  /// Empty placeholder
   virtual ~WorldObjData() {}
  
   /** Writte the content of this object formated as xml to the given
       stream */
   virtual void write_xml(ofstream* xml) =0;
-  ///
+
+  /** We are reading a <worldobj> tag and decide which sub-worldobj it will be. */
   static WorldObjData* create(xmlDocPtr doc, xmlNodePtr cur);
-  ///
-  WorldObjData* create (WorldObjData*);
 };
 
 #endif

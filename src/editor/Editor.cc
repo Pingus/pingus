@@ -1,4 +1,4 @@
-//  $Id: Editor.cc,v 1.20 2000/09/12 11:11:36 grumbel Exp $
+//  $Id: Editor.cc,v 1.21 2000/10/30 16:17:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -109,7 +109,7 @@ Editor::edit ()
 {
   quit = false;
 
-  Display::set_cursor(CL_MouseCursorProvider::load("Cursors/cursor", PingusResource::get("game")));
+  Display::set_cursor(CL_MouseCursorProvider::load("cursors/cursor", PingusResource::get("core")));
   
   Display::show_cursor();
 
@@ -438,6 +438,15 @@ Editor::interactive_load()
 
 /***********************************************
 $Log: Editor.cc,v $
+Revision 1.21  2000/10/30 16:17:50  grumbel
+- added support to disable gnu gettext
+- added support for the teleporter in the editor (mostly untested)
+- fixed some resource names to fit the new directory structure
+
+I am now starting to move to the new directory structure and to the png
+files, this will take some time, so expect some throuble when you do a
+cvs update
+
 Revision 1.20  2000/09/12 11:11:36  grumbel
 Reinserted the signal disconnect()'s
 
