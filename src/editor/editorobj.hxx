@@ -1,4 +1,4 @@
-//  $Id: editorobj.hxx,v 1.11 2002/07/03 17:14:25 grumbel Exp $
+//  $Id: editorobj.hxx,v 1.12 2002/08/16 13:03:36 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,7 @@
 
 #include <string>
 #include <iosfwd>
+#include "../pingus.hxx"
 
 class CL_Rect;
 class CL_Vector;

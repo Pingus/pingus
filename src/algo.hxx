@@ -1,4 +1,4 @@
-//  $Id: algo.hxx,v 1.2 2002/06/24 22:52:53 grumbel Exp $
+//  $Id: algo.hxx,v 1.3 2002/08/16 13:03:34 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,7 @@
 #define HEADER_PINGUS_ALGO_HXX
 
 #include <string>
+#include "pingus.hxx"
 
 #ifndef WIN32
 #include <unistd.h>

@@ -1,4 +1,4 @@
-//  $Id: scroller_factory.cxx,v 1.3 2002/08/14 12:41:22 torangan Exp $
+//  $Id: scroller_factory.cxx,v 1.4 2002/08/16 13:03:36 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,9 +42,6 @@ namespace Input {
     if (!cur)
       throw PingusError("ScrollerFactory called without an element");
   
-    if (xmlIsBlankNode(cur)) 
-      cur = cur->next;
-
     if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "axis-scroller"))
       return axis_scroller(cur);
       
@@ -58,10 +55,10 @@ namespace Input {
       return mouse_scroller(cur);
       
     else if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "multiple-scroller"))
-      return multiple_scroller(cur);
+      return multiple_scroller(cur->children);
       
     else if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "pointer-scroller"))
-      return pointer_scroller(cur);
+      return pointer_scroller(XMLhelper::skip_blank(cur->children));
       
     else
       throw PingusError(std::string("Unknown scroller type: ") + ((cur->name) ? reinterpret_cast<const char*>(cur->name) : ""));
@@ -113,11 +110,7 @@ namespace Input {
     free(invert_y_str);
     
     Scroller* scroller;
-    cur = cur->children;
-    
-    if (xmlIsBlankNode(cur))
-      cur = cur->next;
-    
+    cur = XMLhelper::skip_blank(cur->children);
     scroller = create(cur);
     
     return new InvertedScroller(scroller, invert_x, invert_y);
@@ -154,8 +147,6 @@ namespace Input {
   {
     std::vector<Scroller*> scrollers;
     
-    cur = cur->children;
-
     while (cur)
       {    
         if (xmlIsBlankNode(cur))
@@ -173,18 +164,10 @@ namespace Input {
   {
     Pointer* pointer;
     Button*  button;
-    cur = cur->children;
     
-    if (xmlIsBlankNode(cur))
-      cur = cur->next;
-      
     pointer = PointerFactory::create(cur);
     
-    cur = cur->next;
-	    
-    if (xmlIsBlankNode(cur))
-      cur = cur->next;
-      
+    cur = XMLhelper::skip_blank(cur->next);
     button = ButtonFactory::create(cur);
     
     return new PointerScroller(pointer, button);

@@ -1,4 +1,4 @@
-//  $Id: groundpiece_window.hxx,v 1.5 2002/07/01 09:09:31 grumbel Exp $
+//  $Id: groundpiece_window.hxx,v 1.6 2002/08/16 13:03:36 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,10 @@
 #ifndef HEADER_PINGUS_EDITOR_GROUNDPIECE_WINDOW_HXX
 #define HEADER_PINGUS_EDITOR_GROUNDPIECE_WINDOW_HXX
 
+#include <ClanLib/GUI/label.h>
+#include <ClanLib/GUI/button.h>
+#include <ClanLib/GUI/radiogroup.h>
+#include <ClanLib/GUI/radiobutton.h>
 #include "property_frame.hxx"
 #include "editor_groundpiece_obj.hxx"
 

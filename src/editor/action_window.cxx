@@ -1,4 +1,4 @@
-//  $Id: action_window.cxx,v 1.6 2002/07/08 17:05:09 grumbel Exp $
+//  $Id: action_window.cxx,v 1.7 2002/08/16 13:03:35 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,11 @@
 
 #include <iostream>
 #include <algorithm>
+#include <ClanLib/GUI/button.h>
+#include <ClanLib/GUI/window.h>
+#include <ClanLib/GUI/checkbox.h>
+#include <ClanLib/GUI/inputbox.h>
+#include <ClanLib/Core/Math/rect.h>
 #include "../string_converter.hxx"
 #include "action_window.hxx"
 

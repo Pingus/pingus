@@ -19,6 +19,7 @@
 #ifndef CAIMAGEMANIPULATION_H
 #define CAIMAGEMANIPULATION_H
 
+#include "../pingus.hxx"
 
 #define ARAD 57.29577951308232
 

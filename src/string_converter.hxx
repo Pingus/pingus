@@ -1,4 +1,4 @@
-//  $Id: string_converter.hxx,v 1.3 2002/06/26 19:13:13 grumbel Exp $
+//  $Id: string_converter.hxx,v 1.4 2002/08/16 13:03:35 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,7 @@
 
 #include <string>
 #include <stdexcept>
+#include "pingus.hxx"
 
 #ifdef HAVE_CONFIG_H
 #include <config.h>

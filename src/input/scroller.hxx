@@ -1,4 +1,4 @@
-//  $Id: scroller.hxx,v 1.2 2002/08/14 12:41:22 torangan Exp $
+//  $Id: scroller.hxx,v 1.3 2002/08/16 13:03:36 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,8 @@
 
 #ifndef HEADER_PINGUS_INPUT_SCROLLER_HXX
 #define HEADER_PINGUS_INPUT_SCROLLER_HXX
+
+#include "../pingus.hxx"
 
 namespace Input {
 

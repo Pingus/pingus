@@ -1,4 +1,4 @@
-//  $Id: level_property_window.hxx,v 1.4 2002/07/02 16:06:51 grumbel Exp $
+//  $Id: level_property_window.hxx,v 1.5 2002/08/16 13:03:36 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,11 @@
 #ifndef HEADER_PINGUS_LEVEL_PROPERTY_WINDOW_HXX
 #define HEADER_PINGUS_LEVEL_PROPERTY_WINDOW_HXX
 
-#include <ClanLib/gui.h>
+#include <ClanLib/GUI/label.h>
+#include <ClanLib/GUI/window.h>
+#include <ClanLib/GUI/checkbox.h>
+#include <ClanLib/GUI/inputbox.h>
+#include "../pingus.hxx"
 
 class ObjectManager;
 

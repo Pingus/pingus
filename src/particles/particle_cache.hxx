@@ -1,4 +1,4 @@
-//  $Id: particle_cache.hxx,v 1.2 2002/06/24 22:52:59 grumbel Exp $
+//  $Id: particle_cache.hxx,v 1.3 2002/08/16 13:03:36 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #define HEADER_PINGUS_PARTICLES_PARTICLE_CACHE_HXX
 
 #include <vector>
+#include "../pingus.hxx"
 
 class Particle;
 

@@ -1,4 +1,4 @@
-//  $Id: ice_block.hxx,v 1.5 2002/07/02 10:42:39 grumbel Exp $
+//  $Id: ice_block.hxx,v 1.6 2002/08/16 13:03:36 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,11 +24,6 @@
 #include "../editor/sprite_editorobj.hxx"
 
 class WorldObj;
-
-namespace boost {
-  template <class T> class shared_ptr;
-}
-
 
 class IceBlockData : public WorldObjData
 {

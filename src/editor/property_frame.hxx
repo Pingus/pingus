@@ -1,4 +1,4 @@
-//  $Id: property_frame.hxx,v 1.2 2002/07/01 09:09:31 grumbel Exp $
+//  $Id: property_frame.hxx,v 1.3 2002/08/16 13:03:36 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,10 @@
 #ifndef HEADER_PINGUS_EDITOR_PROPERTY_FRAME_HXX
 #define HEADER_PINGUS_EDITOR_PROPERTY_FRAME_HXX
 
-#include <ClanLib/gui.h>
+#include <ClanLib/GUI/frame.h>
+#include "../pingus.hxx"
+
+class CL_Component;
 
 namespace Pingus
 {

@@ -1,4 +1,4 @@
-//  $Id: screenshot.hxx,v 1.2 2002/06/24 22:52:56 grumbel Exp $
+//  $Id: screenshot.hxx,v 1.3 2002/08/16 13:03:35 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #define HEADER_PINGUS_SCREENSHOT_HXX
 
 #include <string>
+#include "pingus.hxx"
 
 class CL_Target;
 

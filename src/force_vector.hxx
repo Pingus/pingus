@@ -1,4 +1,4 @@
-//  $Id: force_vector.hxx,v 1.2 2002/06/24 22:52:54 grumbel Exp $
+//  $Id: force_vector.hxx,v 1.3 2002/08/16 13:03:35 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,7 @@
 
 #include <vector>
 #include <ClanLib/Core/Math/cl_vector.h>
+#include "pingus.hxx"
 
 /// Gravity
 extern CL_Vector grav;

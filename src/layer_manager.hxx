@@ -1,4 +1,4 @@
-//  $Id: layer_manager.hxx,v 1.3 2002/06/24 22:52:55 grumbel Exp $
+//  $Id: layer_manager.hxx,v 1.4 2002/08/16 13:03:35 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,7 @@
 
 #include <cmath>
 #include <ClanLib/Display/Display/surface.h>
+#include "pingus.hxx"
 
 class LayerManager
 {

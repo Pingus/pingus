@@ -1,4 +1,4 @@
-//  $Id: component.hxx,v 1.7 2002/08/14 12:45:02 torangan Exp $
+//  $Id: component.hxx,v 1.8 2002/08/16 13:03:36 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,8 @@
 
 #ifndef HEADER_PINGUS_GUI_COMPONENT_HXX
 #define HEADER_PINGUS_GUI_COMPONENT_HXX
+
+#include "../pingus.hxx"
 
 namespace GUI
 {

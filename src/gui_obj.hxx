@@ -1,4 +1,4 @@
-//  $Id: gui_obj.hxx,v 1.4 2002/08/14 12:45:02 torangan Exp $
+//  $Id: gui_obj.hxx,v 1.5 2002/08/16 13:03:35 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,8 @@
 
 #ifndef HEADER_PINGUS_GUI_OBJ_HXX
 #define HEADER_PINGUS_GUI_OBJ_HXX
+
+#include "pingus.hxx"
 
 /** A GuiObj is an abstract interface for seperate parts of the
     screen, the complete screen is representated by a window obtect. A

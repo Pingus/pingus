@@ -1,4 +1,4 @@
-//  $Id: axis_factory.cxx,v 1.5 2002/08/15 11:33:38 grumbel Exp $
+//  $Id: axis_factory.cxx,v 1.6 2002/08/16 13:03:36 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,9 +36,6 @@ namespace Input {
     if (!cur)
       throw PingusError("AxisFactory called without an element");
 
-    if (xmlIsBlankNode(cur)) 
-      cur = cur->next;
-
     if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "button-axis"))
       return button_axis(cur);
       
@@ -51,6 +48,9 @@ namespace Input {
     else if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "mouse-axis"))
       return mouse_axis(cur);
 
+    else if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "multiple-axis"))
+      return multiple_axis(cur->children);
+      
     else
       throw PingusError(std::string("Unknown axis type: ") + ((cur->name) ? reinterpret_cast<const char*>(cur->name) : ""));
   }
@@ -64,17 +64,10 @@ namespace Input {
     float angle = strtod(angle_str, reinterpret_cast<char**>(NULL));
     free(angle_str);
 
-    cur = cur->children;
-    // FIXME: We should add a helper function for this
-    if (xmlIsBlankNode(cur))
-      cur = cur->next;
-
+    cur = XMLhelper::skip_blank(cur->children);
     Button* button1 = ButtonFactory::create(cur);   
 
-    cur = cur->next;
-    if (xmlIsBlankNode(cur))
-      cur = cur->next;
-
+    cur = XMLhelper::skip_blank(cur->next);
     Button* button2 = ButtonFactory::create(cur);
 	    
     return new ButtonAxis(angle, button1, button2);
@@ -132,7 +125,6 @@ namespace Input {
   Axis* AxisFactory::multiple_axis (xmlNodePtr cur)
   {
     std::vector<Axis*> axes;
-    cur = cur->children;
     
     while (cur)
       {

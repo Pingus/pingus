@@ -1,4 +1,4 @@
-//  $Id: range.hxx,v 1.2 2002/06/24 22:52:56 grumbel Exp $
+//  $Id: range.hxx,v 1.3 2002/08/16 13:03:35 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,8 @@
 
 #ifndef HEADER_PINGUS_RANGE_HXX
 #define HEADER_PINGUS_RANGE_HXX
+
+#include "pingus.hxx"
 
 // A class similar to an integer, but keeps the value in a given range.
 

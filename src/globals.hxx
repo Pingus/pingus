@@ -1,4 +1,4 @@
-//  $Id: globals.hxx,v 1.4 2002/08/12 22:52:04 grumbel Exp $
+//  $Id: globals.hxx,v 1.5 2002/08/16 13:03:35 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,22 +20,11 @@
 /** This file defines some global variables, most of them are used to
     keep the values of command line arguments. */
 
-
-#ifdef WIN32
-#pragma warning (disable : 4786)
-#endif
-
-
 #ifndef HEADER_PINGUS_GLOBALS_HXX
 #define HEADER_PINGUS_GLOBALS_HXX
 
-// Workaround for a VC bug
-#ifdef WIN32
-#define for if(0);else for
-#endif /* WIN32 */
-
-
 #include <string>
+#include "pingus.hxx"
 
 extern int         game_speed;                      ///< -t, --set-speed
 extern bool        print_fps;                       ///< --print-fps

@@ -1,4 +1,4 @@
-//  $Id: event.hxx,v 1.3 2002/07/11 15:15:19 torangan Exp $
+//  $Id: event.hxx,v 1.4 2002/08/16 13:03:36 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,8 @@
 
 #ifndef HEADER_PINGUS_INPUT_EVENT_HXX
 #define HEADER_PINGUS_INPUT_EVENT_HXX
+
+#include "../pingus.hxx"
 
 namespace Input {
 

@@ -1,4 +1,4 @@
-//  $Id: game_delta.hxx,v 1.6 2002/07/30 14:57:25 grumbel Exp $
+//  $Id: game_delta.hxx,v 1.7 2002/08/16 13:03:35 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #define HEADER_PINGUS_GAME_DELTA_HXX
 
 #include <list>
+#include "pingus.hxx"
 
 namespace Input
 {

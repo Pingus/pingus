@@ -1,4 +1,4 @@
-//  $Id: controller.cxx,v 1.11 2002/08/15 11:35:13 grumbel Exp $
+//  $Id: controller.cxx,v 1.12 2002/08/16 13:03:36 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -53,52 +53,51 @@ namespace Input
     
     if (!cur || strcmp(reinterpret_cast<const char*>(cur->name), "pingus-controller") != 0)
       throw PingusError("Controller: invalid config file <" + configfile + ">");
-      
-    if (xmlIsBlankNode(cur))
-      cur = cur->next;
+    
+    cur = XMLhelper::skip_blank(cur);  
       
     cur = cur->children;
     
     while (cur) 
       {
-        if (xmlIsBlankNode(cur))
+        if (xmlIsBlankNode(cur)) // explicit check cause we need the continue to check for cur again
 	  {
             cur = cur->next;
 	    continue;
 	  }
 
 	else if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "controller-config"))
-	  cur = cur->children;
+	  cur = XMLhelper::skip_blank(cur->children);
 	  
 	else if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "standard-pointer"))
-          standard_pointer = PointerFactory::create(cur->children);
+          standard_pointer = PointerFactory::create(XMLhelper::skip_blank(cur->children));
 	  
 	else if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "scroller"))
-	  scroller = ScrollerFactory::create(cur->children);
+	  scroller = ScrollerFactory::create(XMLhelper::skip_blank(cur->children));
 	  
 	else if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "primary-button"))
-	  buttons.push_back(std::pair<int, Button*>(primary, ButtonFactory::create(cur->children)));
+	  buttons.push_back(std::pair<int, Button*>(primary, ButtonFactory::create(XMLhelper::skip_blank(cur->children))));
 	  
 	else if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "secondary-button"))
-	  buttons.push_back(std::pair<int, Button*>(secondary, ButtonFactory::create(cur->children)));
+	  buttons.push_back(std::pair<int, Button*>(secondary, ButtonFactory::create(XMLhelper::skip_blank(cur->children))));
 	  
 	else if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "pause-button"))
-	  buttons.push_back(std::pair<int, Button*>(pause, ButtonFactory::create(cur->children)));
+	  buttons.push_back(std::pair<int, Button*>(pause, ButtonFactory::create(XMLhelper::skip_blank(cur->children))));
 
 	else if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "fast-forward-button"))
-	  buttons.push_back(std::pair<int, Button*>(fast_forward, ButtonFactory::create(cur->children)));
+	  buttons.push_back(std::pair<int, Button*>(fast_forward, ButtonFactory::create(XMLhelper::skip_blank(cur->children))));
 	
 	else if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "armageddon-button"))
-	  buttons.push_back(std::pair<int, Button*>(armageddon, ButtonFactory::create(cur->children)));
+	  buttons.push_back(std::pair<int, Button*>(armageddon, ButtonFactory::create(XMLhelper::skip_blank(cur->children))));
 	
 	else if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "escape-button"))
-	  buttons.push_back(std::pair<int, Button*>(escape, ButtonFactory::create(cur->children)));
+	  buttons.push_back(std::pair<int, Button*>(escape, ButtonFactory::create(XMLhelper::skip_blank(cur->children))));
 	
 	else if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "action-buttons"))
-	  create_action_buttons(cur->children);
+	  create_action_buttons(XMLhelper::skip_blank(cur->children));
 	
 	else if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "action-axis"))
-	  action_axis = AxisFactory::create(cur->children);
+	  action_axis = AxisFactory::create(XMLhelper::skip_blank(cur->children));
 	  
 	else
 	  throw PingusError(std::string("Unkown Element in Controller Config: ") + ((cur->name) ? reinterpret_cast<const char*>(cur->name) : ""));
@@ -128,7 +127,6 @@ namespace Input
   void
   Controller::create_action_buttons (xmlNodePtr cur)
   {
-    cur = cur->children;
     int count = 0;
     
     while (cur)
@@ -140,7 +138,7 @@ namespace Input
 	  }
 	  
 	if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "action-button"))
-	  buttons.push_back(std::pair<int, Button*>(action_1 + count, ButtonFactory::create(cur)));
+	  buttons.push_back(std::pair<int, Button*>(action_1 + count, ButtonFactory::create(XMLhelper::skip_blank(cur->children))));
 	else
 	  throw PingusError(std::string("Wrong Element in Controller Config (action-buttons): ") + ((cur->name) ? reinterpret_cast<const char*>(cur->name) : ""));
 	
@@ -185,7 +183,6 @@ namespace Input
 	    events.push_back(new ButtonEvent(static_cast<ButtonName>(buttons[i].first), released));
 	}
       
-    std::cout << "ActionAxis: " << action_axis->get_pos() << std::endl;
     if (action_axis->get_pos())
       if (action_axis->get_pos() > 0)
         events.push_back(new AxisEvent(up));

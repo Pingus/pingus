@@ -1,4 +1,4 @@
-//  $Id: generic_main.cxx,v 1.2 2002/06/28 22:21:59 grumbel Exp $
+//  $Id: generic_main.cxx,v 1.3 2002/08/16 13:03:35 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,7 +23,7 @@
 #include <ClanLib/Core/System/setupcore.h>
 #include <ClanLib/jpeg.h>
 #include <ClanLib/png.h>
-#include <ClanLib/gui.h>
+#include <ClanLib/GUI/setupgui.h>
 
 #include "system.hxx"
 #include "pingus_main.hxx"

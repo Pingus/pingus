@@ -1,4 +1,4 @@
-//  $Id: thumb_cache.hxx,v 1.4 2002/07/02 13:36:07 torangan Exp $
+//  $Id: thumb_cache.hxx,v 1.5 2002/08/16 13:03:36 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #define HEADER_PINGUS_EDITOR_THUMB_CACHE_HXX
 
 #include <string>
+#include "../pingus.hxx"
 
 class CL_Surface;
 

@@ -1,4 +1,4 @@
-//  $Id: action_window.hxx,v 1.4 2002/06/29 14:01:32 grumbel Exp $
+//  $Id: action_window.hxx,v 1.5 2002/08/16 13:03:35 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,9 +20,15 @@
 #ifndef HEADER_PINGUS_EDITOR_ACTION_WINDOW_HXX
 #define HEADER_PINGUS_EDITOR_ACTION_WINDOW_HXX
 
-#include <ClanLib/gui.h>
+#include <ClanLib/Signals/slot.h>
 #include <vector>
 #include "../action_data.hxx"
+
+class CL_Button;
+class CL_Window;
+class CL_CheckBox;
+class CL_InputBox;
+class CL_Component;
 
 class ActionWindow
 {

@@ -1,4 +1,4 @@
-//  $Id: game_time.hxx,v 1.4 2002/06/28 09:51:46 grumbel Exp $
+//  $Id: game_time.hxx,v 1.5 2002/08/16 13:03:35 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,8 @@
 
 #ifndef HEADER_PINGUS_GAME_TIME_HXX
 #define HEADER_PINGUS_GAME_TIME_HXX
+
+#include "pingus.hxx"
 
 /** The GameTime represents the time which passes in the Pingus World.
     Its behaviour is analogue to CL_System::get_time (), but with the

@@ -1,4 +1,4 @@
-//  $Id: pointer.hxx,v 1.5 2002/08/14 12:41:22 torangan Exp $
+//  $Id: pointer.hxx,v 1.6 2002/08/16 13:03:36 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,8 @@
 
 #ifndef HEADER_PINGUS_INPUT_POINTER_HXX
 #define HEADER_PINGUS_INPUT_POINTER_HXX
+
+#include "../pingus.hxx"
 
 namespace Input
 {

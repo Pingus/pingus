@@ -1,4 +1,4 @@
-//  $Id: blitter.hxx,v 1.5 2002/06/25 21:31:40 grumbel Exp $
+//  $Id: blitter.hxx,v 1.6 2002/08/16 13:03:34 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,8 @@
 
 #ifndef HEADER_PINGUS_BLITTER_HXX
 #define HEADER_PINGUS_BLITTER_HXX
+
+#include "pingus.hxx"
 
 class CL_Canvas;
 class CL_Surface;

@@ -1,4 +1,4 @@
-//  $Id: plf_parser.hxx,v 1.2 2002/06/24 22:52:56 grumbel Exp $
+//  $Id: plf_parser.hxx,v 1.3 2002/08/16 13:03:35 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,7 @@
 
 #include <fstream>
 #include <string>
+#include "pingus.hxx"
 
 /** This gets thrown if a end of file is found inside a PLF file */
 class PLFParserEOF {

@@ -1,4 +1,4 @@
-//  $Id: sprite.hxx,v 1.3 2002/06/25 21:31:40 grumbel Exp $
+//  $Id: sprite.hxx,v 1.4 2002/08/16 13:03:35 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #define HEADER_PINGUS_SPRITE_HXX
 
 #include <ClanLib/Display/Display/surface.h>
+#include "pingus.hxx"
 
 class CL_Vector;
 class ResDescriptor;

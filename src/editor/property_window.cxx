@@ -1,4 +1,4 @@
-//  $Id: property_window.cxx,v 1.8 2002/07/03 17:14:25 grumbel Exp $
+//  $Id: property_window.cxx,v 1.9 2002/08/16 13:03:36 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,8 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <iostream>
+#include <ClanLib/GUI/gui_manager.h>
 #include "editor.hxx"
 #include "editorobj.hxx"
 #include "property_frame.hxx"

@@ -1,4 +1,4 @@
-//  $Id: system.hxx,v 1.2 2002/06/24 22:52:57 grumbel Exp $
+//  $Id: system.hxx,v 1.3 2002/08/16 13:03:35 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,7 @@
 #include <string>
 #include <list>
 #include <map>
+#include "pingus.hxx"
 
 /** A wrapper class around some system dependend functions (mostly
     POSIX stuff) */

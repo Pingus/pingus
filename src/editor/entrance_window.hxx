@@ -1,4 +1,4 @@
-//  $Id: entrance_window.hxx,v 1.3 2002/07/01 09:09:31 grumbel Exp $
+//  $Id: entrance_window.hxx,v 1.4 2002/08/16 13:03:36 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,10 @@
 #ifndef HEADER_PINGUS_EDITOR_ENTRANCE_WINDOW_HXX
 #define HEADER_PINGUS_EDITOR_ENTRANCE_WINDOW_HXX
 
+#include <ClanLib/GUI/label.h>
+#include <ClanLib/GUI/inputbox.h>
+#include <ClanLib/GUI/radiogroup.h>
+#include <ClanLib/GUI/radiobutton.h>
 #include "property_frame.hxx"
 
 class EntranceObj;

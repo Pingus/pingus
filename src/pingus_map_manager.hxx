@@ -1,4 +1,4 @@
-//  $Id: pingus_map_manager.hxx,v 1.2 2002/06/24 22:52:55 grumbel Exp $
+//  $Id: pingus_map_manager.hxx,v 1.3 2002/08/16 13:03:35 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,11 +21,8 @@
 #define HEADER_PINGUS_PINGUS_MAP_MANAGER_HXX
 
 #include <string>
-
-/* Support to assert macro under MS's compiler */
-#ifdef WIN32
-    #include <assert.h>
-#endif
+#include <assert.h>
+#include "pingus.hxx"
 
 class CL_Surface;
 

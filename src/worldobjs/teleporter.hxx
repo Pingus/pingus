@@ -1,4 +1,4 @@
-//  $Id: teleporter.hxx,v 1.6 2002/07/02 10:42:39 grumbel Exp $
+//  $Id: teleporter.hxx,v 1.7 2002/08/16 13:03:36 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,14 +23,9 @@
 #include "../worldobj.hxx"
 #include "../worldobj_data.hxx"
 #include "../editor/sprite_editorobj.hxx"
-#include "../boost/smart_ptr.hpp"
-
-class EditorTeleporterObj;
 #include "../libxmlfwd.hxx"
 
-namespace boost {
-  template <class T> class shared_ptr;
-}
+class EditorTeleporterObj;
 
 class TeleporterData : public WorldObjData
 {

@@ -1,4 +1,4 @@
-//  $Id: direction.hxx,v 1.3 2002/06/24 22:52:54 grumbel Exp $
+//  $Id: direction.hxx,v 1.4 2002/08/16 13:03:34 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,8 @@
 
 #ifndef HEADER_PINGUS_DIRECTION_HXX
 #define HEADER_PINGUS_DIRECTION_HXX
+
+#include "pingus.hxx"
 
 /// Simple class for managing the direction of a pingu
 class Direction

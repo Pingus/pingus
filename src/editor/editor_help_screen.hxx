@@ -1,4 +1,4 @@
-//  $Id: editor_help_screen.hxx,v 1.2 2002/06/24 22:52:58 grumbel Exp $
+//  $Id: editor_help_screen.hxx,v 1.3 2002/08/16 13:03:36 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,8 @@
 
 #ifndef HEADER_PINGUS_EDITOR_EDITOR_HELP_SCREEN_HXX
 #define HEADER_PINGUS_EDITOR_EDITOR_HELP_SCREEN_HXX
+
+#include "../pingus.hxx"
 
 class CL_Font;
 

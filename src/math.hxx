@@ -1,4 +1,4 @@
-//  $Id: math.hxx,v 1.2 2002/06/20 15:43:44 grumbel Exp $
+//  $Id: math.hxx,v 1.3 2002/08/16 13:03:35 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,8 @@
 
 #ifndef MATH_HXX
 #define MATH_HXX
+
+#include "pingus.hxx"
 
 namespace Pingus
 {

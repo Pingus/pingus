@@ -1,4 +1,4 @@
-//  $Id: status_line.hxx,v 1.6 2002/07/02 13:36:07 torangan Exp $
+//  $Id: status_line.hxx,v 1.7 2002/08/16 13:03:36 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #define HEADER_PINGUS_EDITOR_STATUS_LINE_HXX
 
 #include <vector>
+#include "../pingus.hxx"
 
 class CL_Font;
 class EditorObj;

@@ -1,4 +1,4 @@
-//  $Id: editor_view.hxx,v 1.2 2002/06/24 22:52:58 grumbel Exp $
+//  $Id: editor_view.hxx,v 1.3 2002/08/16 13:03:36 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #define header_pingus_editor_editor_view_hxx
 
 #include <ClanLib/Core/Math/cl_vector.h>
+#include "../pingus.hxx"
 
 class Sprite;
 class CL_Rect;

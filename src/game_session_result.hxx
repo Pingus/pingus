@@ -1,4 +1,4 @@
-//  $Id: game_session_result.hxx,v 1.2 2002/06/24 22:52:54 grumbel Exp $
+//  $Id: game_session_result.hxx,v 1.3 2002/08/16 13:03:35 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,8 @@
 
 #ifndef HEADER_PINGUS_GAME_SESSION_RESULT_HXX
 #define HEADER_PINGUS_GAME_SESSION_RESULT_HXX
+
+#include "pingus.hxx"
 
 /** With this class you can obtain information about the success or
     failure of a level, in addition you can get details like how many

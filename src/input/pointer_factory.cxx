@@ -1,4 +1,4 @@
-//  $Id: pointer_factory.cxx,v 1.2 2002/07/10 14:06:20 torangan Exp $
+//  $Id: pointer_factory.cxx,v 1.3 2002/08/16 13:03:36 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,9 +33,6 @@ namespace Input {
   {
     if (!cur)
       throw PingusError("PointerFactory called without an element");
-  
-    if (xmlIsBlankNode(cur)) 
-      cur = cur->next;
 
     if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "axis-pointer"))
       return axis_pointer(cur);
@@ -44,7 +41,7 @@ namespace Input {
       return mouse_pointer();
       
     else if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "multiple-pointer"))
-      return multiple_pointer(cur);
+      return multiple_pointer(cur->children);
       
     else
       throw PingusError(std::string("Unknown pointer type: ") + ((cur->name) ? reinterpret_cast<const char*>(cur->name) : ""));
@@ -85,7 +82,6 @@ namespace Input {
   Pointer* PointerFactory::multiple_pointer (xmlNodePtr cur)
   {
     std::vector<Pointer*> pointers;
-    cur = cur->children;
 
     while (cur)    
       {

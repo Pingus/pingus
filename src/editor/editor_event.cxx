@@ -1,4 +1,4 @@
-//  $Id: editor_event.cxx,v 1.27 2002/08/04 20:27:22 grumbel Exp $
+//  $Id: editor_event.cxx,v 1.28 2002/08/16 13:03:36 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,11 +19,12 @@
 
 #include <stdio.h>
 #include <fstream>
+#include <ClanLib/GUI/gui_manager.h>
+#include <ClanLib/Core/System/error.h>
 #include <ClanLib/Display/Input/input.h>
 #include <ClanLib/Display/Input/keyboard.h>
 #include <ClanLib/Display/Display/display.h>
 #include <ClanLib/Display/Input/mouse.h>
-
 #include "../html_browser.hxx"
 #include "../debug.hxx"
 #include "../globals.hxx"
@@ -438,7 +439,7 @@ EditorEvent::editor_convert_selection_to_group()
 	   j != object_manager->editor_objs.end();
 	   j++)
 	{
-	  for (vector<EditorObj*>::const_iterator i = selection->get_objects().begin();
+	  for (std::vector<EditorObj*>::const_iterator i = selection->get_objects().begin();
 	       i != selection->get_objects().end();
 	       i++)
 	    { 

@@ -1,4 +1,4 @@
-//  $Id: editor.cxx,v 1.24 2002/08/14 12:45:02 torangan Exp $
+//  $Id: editor.cxx,v 1.25 2002/08/16 13:03:35 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,11 +17,8 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifdef WIN32
-#pragma warning(disable:4786)
-#endif
-
 #include <ClanLib/Core/System/system.h>
+#include <ClanLib/Core/Resources/resource_manager.h>
 #include <ClanLib/Display/Display/display.h>
 #include <ClanLib/Display/Input/input.h>
 #include <ClanLib/Display/Display/mousecursor_provider.h>
@@ -29,6 +26,8 @@
 #include <ClanLib/Display/Font/font.h>
 #include <ClanLib/Display/Input/inputbuffer.h>
 #include <ClanLib/Display/Input/keyboard.h>
+#include <ClanLib/GUI/gui_manager.h>
+#include <ClanLib/GUI/stylemanager_default.h>
 #include "../globals.hxx"
 #include "../display.hxx"
 #include "../pingus_resource.hxx"

@@ -1,4 +1,4 @@
-//  $Id: object_manager.cxx,v 1.24 2002/07/08 17:05:09 grumbel Exp $
+//  $Id: object_manager.cxx,v 1.25 2002/08/16 13:03:36 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,10 +29,6 @@
 #include "start_pos.hxx"
 #include "object_manager.hxx"
 #include "editor_view.hxx"
-
-#ifdef WIN32
-#  define for if(0);else for
-#endif
 
 using namespace std;
 using namespace Pingus;

@@ -1,4 +1,4 @@
-//  $Id: selection.cxx,v 1.11 2002/08/12 22:52:04 grumbel Exp $
+//  $Id: selection.cxx,v 1.12 2002/08/16 13:03:36 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -16,10 +16,6 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
-
-#ifdef WIN32
-#pragma warning(disable:4786)
-#endif
 
 #include <algorithm>
 #include <ClanLib/Core/Math/cl_vector.h>

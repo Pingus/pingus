@@ -1,4 +1,4 @@
-//  $Id: property_window.hxx,v 1.4 2002/07/03 17:14:25 grumbel Exp $
+//  $Id: property_window.hxx,v 1.5 2002/08/16 13:03:36 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,10 +20,13 @@
 #ifndef PINGUS_EDITOR_PROPERTY_WINDOW_HXX
 #define PINGUS_EDITOR_PROPERTY_WINDOW_HXX
 
-#include <ClanLib/gui.h>
+#include <ClanLib/GUI/label.h>
+#include <ClanLib/GUI/window.h>
+#include "../pingus.hxx"
 
 class Editor;
 class EditorObj;
+class CL_Component;
 
 namespace Pingus
 {

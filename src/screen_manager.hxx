@@ -1,4 +1,4 @@
-//  $Id: screen_manager.hxx,v 1.6 2002/08/03 09:59:23 grumbel Exp $
+//  $Id: screen_manager.hxx,v 1.7 2002/08/16 13:03:35 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #define HEADER_PINGUS_SCREEN_MANAGER_HXX
 
 #include <vector>
+#include "pingus.hxx"
 
 class Screen;
 

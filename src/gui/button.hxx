@@ -1,4 +1,4 @@
-//  $Id: button.hxx,v 1.3 2002/08/02 22:55:19 grumbel Exp $
+//  $Id: button.hxx,v 1.4 2002/08/16 13:03:36 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,8 @@
 
 #ifndef HEADER_PINGUS_GUI_BUTTON_HXX
 #define HEADER_PINGUS_GUI_BUTTON_HXX
+
+#include "../pingus.hxx"
 
 namespace GUI
 {

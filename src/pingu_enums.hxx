@@ -1,4 +1,4 @@
-//  $Id: pingu_enums.hxx,v 1.4 2002/06/28 15:12:22 torangan Exp $
+//  $Id: pingu_enums.hxx,v 1.5 2002/08/16 13:03:35 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #define HEADER_PINGUS_PINGU_ENUMS_HXX
 
 #include <string>
+#include "pingus.hxx"
 
 /** Haven't yet experimented much with pingu status, but maybe it is a
     good idea. Maybe that should be changed to a bitmask. */

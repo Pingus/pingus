@@ -1,4 +1,4 @@
-//  $Id: level_interrupt.hxx,v 1.2 2002/06/24 22:52:55 grumbel Exp $
+//  $Id: level_interrupt.hxx,v 1.3 2002/08/16 13:03:35 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,8 @@
 
 #ifndef HEADER_PINGUS_LEVEL_INTERRUPT_HXX
 #define HEADER_PINGUS_LEVEL_INTERRUPT_HXX
+
+#include "pingus.hxx"
 
 ///
 class LevelInterrupt

@@ -1,4 +1,4 @@
-//  $Id: button_factory.cxx,v 1.4 2002/07/11 15:38:07 torangan Exp $
+//  $Id: button_factory.cxx,v 1.5 2002/08/16 13:03:36 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,11 +36,8 @@ namespace Input {
     if (!cur)
       throw PingusError("ButtonFactory called without an element");
   
-    if (xmlIsBlankNode(cur)) 
-      cur = cur->next;
-
     if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "double-button"))
-      return double_button(cur);
+      return double_button(XMLhelper::skip_blank(cur->children));
       
     else if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "joystick-button"))
       return joystick_button(cur);
@@ -52,10 +49,10 @@ namespace Input {
       return mouse_button(cur);
 
     else if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "multiple-button"))
-      return multiple_button(cur);
+      return multiple_button(cur->children);
     
     else if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "triple-button"))
-      return triple_button(cur);
+      return triple_button(XMLhelper::skip_blank(cur->children));
     
     else
       throw PingusError(std::string("Unknown button type: ") + ((cur->name) ? reinterpret_cast<const char*>(cur->name) : ""));
@@ -65,16 +62,9 @@ namespace Input {
   {
     Button *button1, *button2;
     
-    cur = cur->children;
-
-    if (xmlIsBlankNode(cur))
-      cur = cur->next;
     button1 = create(cur);
     
-    cur = cur-> next;	
-
-    if (xmlIsBlankNode(cur))
-      cur = cur->next;
+    cur = XMLhelper::skip_blank(cur->next);	
     button2 = create(cur);
             
     return new DoubleButton(button1, button2);
@@ -128,8 +118,6 @@ namespace Input {
   {
     std::vector<Button*> buttons;
     
-    cur = cur->children;
-    
     while (cur)
       {
         if (xmlIsBlankNode(cur)) {
@@ -148,22 +136,12 @@ namespace Input {
   {
     Button *button1, *button2, *button3;
     
-    cur = cur->children;
-
-    if (xmlIsBlankNode(cur))
-      cur = cur->next;
     button1 = create(cur);
     
-    cur = cur-> next;	
-
-    if (xmlIsBlankNode(cur))
-      cur = cur->next;
+    cur = XMLhelper::skip_blank(cur->next);	
     button2 = create(cur);
     
-    cur = cur-> next;	
-
-    if (xmlIsBlankNode(cur))
-      cur = cur->next;
+    cur = XMLhelper::skip_blank(cur->next);
     button3 = create(cur);
             
     return new TripleButton(button1, button2, button3);

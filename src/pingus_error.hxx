@@ -1,4 +1,4 @@
-//  $Id: pingus_error.hxx,v 1.3 2002/07/10 18:10:06 torangan Exp $
+//  $Id: pingus_error.hxx,v 1.4 2002/08/16 13:03:35 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #define HEADER_PINGUS_PINGUS_ERROR_HXX
 
 #include <string>
+#include "pingus.hxx"
 
 class PingusException  
 {

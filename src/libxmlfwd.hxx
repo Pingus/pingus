@@ -1,4 +1,4 @@
-//  $Id: libxmlfwd.hxx,v 1.1 2002/06/23 11:08:29 grumbel Exp $
+//  $Id: libxmlfwd.hxx,v 1.2 2002/08/16 13:03:35 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,8 @@
 
 #ifndef PINGUS_XMLFWD_HXX
 #define PINGUS_XMLFWD_HXX
+
+#include "pingus.hxx"
 
 #ifndef WIN32
 // FIXME: This might not work with each and every version of libxml
