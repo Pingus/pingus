@@ -1,4 +1,4 @@
-//  $Id: col_map.cxx,v 1.7 2002/09/04 19:40:19 grumbel Exp $
+//  $Id: col_map.cxx,v 1.8 2002/09/16 19:18:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -227,6 +227,7 @@ ColMap::load(unsigned char* b, int w, int h)
 bool
 ColMap::blit_allowed (int x, int y,  GroundpieceData::GPType gtype)
 {
+  // FIXME: Inline me
   if (gtype == GroundpieceData::GP_BRIDGE)
     {
       int pixel = getpixel (x, y);

@@ -1,4 +1,4 @@
-//  $Id: worldobj.hxx,v 1.7 2002/09/16 15:47:35 grumbel Exp $
+//  $Id: worldobj.hxx,v 1.8 2002/09/16 19:18:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -72,6 +72,12 @@ public:
   /** Draws the objects collision map to the main collision map, draws
       stuff onto the gfx map or do other manipulations to the World */
   virtual void on_startup ();
+
+  /** @return true if this WorldObj is empty and doesn't have an
+      update() or draw() function, but only a on_startup() one. The
+      World can so decide which objects need to stay active and which
+      one can get purged after calling on_startup() */
+  virtual bool purge_after_startup() { return false; }
 
   /** The update function is called once a game loop, the delta
    * specifies how much time is passed since the last update

@@ -1,4 +1,4 @@
-//  $Id: groundpiece_data.cxx,v 1.10 2002/09/14 19:06:33 torangan Exp $
+//  $Id: groundpiece_data.cxx,v 1.11 2002/09/16 19:18:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,8 @@
 
 #include <fstream>
 #include "editor/editor_groundpiece_obj.hxx"
+#include "worldobjs/groundpiece.hxx"
+#include "world.hxx"
 #include "xml_helper.hxx"
 
 GroundpieceData::GroundpieceData () 
@@ -148,6 +150,12 @@ GroundpieceData::create_EditorObj()
   EditorObjLst lst;
   lst.push_back(new EditorGroundpieceObj(*this));
   return lst;
+}
+
+WorldObj*
+GroundpieceData::create_WorldObj()
+{
+  return new WorldObjs::Groundpiece(*this);
 }
 
 void

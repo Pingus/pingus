@@ -1,4 +1,4 @@
-//  $Id: world.cxx,v 1.24 2002/09/16 15:47:35 grumbel Exp $
+//  $Id: world.cxx,v 1.25 2002/09/16 19:18:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -71,17 +71,12 @@ World::World(PLF* plf)
     std::cout << "World: Time is not in the tolerated range: " << exit_time << std::endl;
   shutdown_time = -1;
 
-  init_map(plf);
-  init_worldobjs(plf);
-}
-
-void
-World::init_map(PLF* plf)
-{
+  // Create the groundmap
   gfx_map = new PingusSpotMap(plf);
-  colmap = gfx_map->get_colmap();
-
+  colmap  = gfx_map->get_colmap();
   world_obj.push_back (gfx_map);
+
+  init_worldobjs(plf);
 }
 
 void

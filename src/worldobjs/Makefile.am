@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.10 2002/09/16 16:04:58 grumbel Exp $
+#  $Id: Makefile.am,v 1.11 2002/09/16 19:18:56 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,7 @@ libpingus_worldobjs_a_SOURCES = \
         conveyor_belt.cxx          conveyor_belt.hxx \
 	fake_exit.cxx              fake_exit.hxx     \
 	guillotine.cxx             guillotine.hxx    \
+        groundpiece.hxx            groundpiece.cxx   \
 	hammer.cxx                 hammer.hxx        \
         ice_block.cxx              ice_block.hxx     \
         info_box.cxx               info_box.hxx      \
