@@ -1,4 +1,4 @@
-//  $Id: Console.hh,v 1.4 2000/06/14 16:11:56 grumbel Exp $
+//  $Id: Console.hh,v 1.5 2000/06/14 16:30:50 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,8 +35,9 @@ private:
   vector<string> output_buffer;
   string current_line;
   int number_of_lines;
-  void draw();
 
+  void draw();
+  void add_line(string);
 public:
   static Endl endl;
 

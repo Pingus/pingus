@@ -1,4 +1,4 @@
-//  $Id: Console.cc,v 1.4 2000/06/14 16:11:56 grumbel Exp $
+//  $Id: Console.cc,v 1.5 2000/06/14 16:30:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,7 +46,7 @@ Console::init()
   std::cout << "Console: Init..." << std::endl;
   font = CL_Font::load("Fonts/xterm", PingusResource::get("fonts.dat"));
   //*this << "Console V0.2" << std::endl;
-  this->println("! \" #  $ %% 0 123 <=>");
+  this->puts("! \" #  $ %% 0 123 <=>");
   is_init = true;
 }
 
@@ -86,7 +86,16 @@ Console::draw()
 void 
 Console::add_line(string str)
 {
-  
+  string::size_type pos;
+  string tmp_string;
+
+  while ((pos = str.find("\n")) != string::npos) {
+    tmp_string = str.substr(0, pos - 1);
+    output_buffer.push_back(current_line + tmp_string);
+    current_line = "";
+    str += str.substr(pos);
+  }
+  current_line += str;
 }
 
 // Simple wrapper around sprintf, warrning it will only be able to
@@ -101,7 +110,7 @@ Console::printf(char* format, ...)
   vsnprintf(str_buffer, 128, format, argp);
   va_end(argp);
 
-  this->add_line(str_buffer);
+ add_line(str_buffer);
 }
 
 void
@@ -114,9 +123,7 @@ Console::puts(string str)
 void
 Console::newline()
 {
-  output_buffer.push_back(current_line);
-  current_pos++;
-  current_line = "";
+  add_line("\n");
 }
 
 Console& 
@@ -129,7 +136,7 @@ Console::operator<<(const Console::Endl& endl)
 Console& 
 Console::operator<<(string str)
 {
-  current_line += str;
+  add_line(str);
   return *this;
 }
 

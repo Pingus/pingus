@@ -1,4 +1,4 @@
-//  $Id: GlobalEvent.cc,v 1.5 2000/06/14 16:11:56 grumbel Exp $
+//  $Id: GlobalEvent.cc,v 1.6 2000/06/14 16:30:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,14 +36,14 @@ GlobalEvent::on_button_press(CL_InputDevice *device, const CL_Key &key)
 	  break;
 	case CL_KEY_F11:
 	  fps_counter.toggle_display();
-	  console << "Toggling fps counter display";
+	  console << "Toggling fps counter display" << Console::endl;
 	  break;
 	case CL_KEY_F12:
 	  {
 	    string filename;
 	    std::cout << "GlobalEvent::Makeing scrennshoot..." << std::endl;
 	    filename = Screenshot::make_screenshot();
-	    console.println("GlobalEvent: Saved screenshot to \"%s\"", filename.c_str());
+	    console.printf("GlobalEvent: Saved screenshot to \"%s\"\n", filename.c_str());
 	    console << "!\"#$%&'()*+,-./0123456789:;<=>?@";
 	    console.newline();
 	  }
