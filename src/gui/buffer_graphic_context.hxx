@@ -1,4 +1,4 @@
-//  $Id: buffer_graphic_context.hxx,v 1.1 2003/08/16 16:20:30 grumbel Exp $
+//  $Id: buffer_graphic_context.hxx,v 1.2 2003/08/17 20:53:17 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -53,7 +53,7 @@ public:
   int   get_width ()  { return canvas->get_width(); }
   int   get_height () { return canvas->get_height(); }
 
-  float get_zoom () {}
+  float get_zoom () { return 1.0f; }
   void  set_zoom (float new_zoom) {}
 
   void zoom_to (const CL_Rect & rect) {}
