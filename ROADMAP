@@ -16,7 +16,42 @@ Major Items:
 
 * multiplayer mode should be ripped out if not working correctly
 
-- hint system via herring or flower
+* meta objects:
+
+  Syntax of a metaobject file:
+
+  <pingus-metaobject>
+	<worldobj type="...">
+        ...
+	</worldobj>
+	<worldobj type="...">
+        ...
+	</worldobj>
+        ...
+  </pingus-metaobject>
+
+  Syntax of a metaobject in a level file:
+
+  <metaobject type="bla.xml">
+	<parameter>
+	
+	</parameter>
+  </metaobject>
+
+* Documentation:
+
+  - upload an uptodate doxygen source docu (might be incomplete)
+
+  - upload a tutorial game introduction
+
+  - update the level building tutorial and include it in the tarball
+
+  - all docu should be included in the tarball (source code docu might
+    only be on the webpage due to space issues)
+
+- floater and jumper don't work together
+
+- hint system via herring or flower (it should show the path to walk)
 
 - [important] diggers seem to be extremly slow in some situations
   (transparent groundpieces?!), no idea what could causing this...
