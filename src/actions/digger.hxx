@@ -1,4 +1,4 @@
-//  $Id: digger.hxx,v 1.12 2002/10/13 16:40:01 grumbel Exp $
+//  $Id: digger.hxx,v 1.13 2002/10/20 18:28:49 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,6 +32,18 @@ private:
   CL_Surface digger_radius_gfx;
   Sprite sprite;
   int digger_c;
+
+  /** Width of the digger_radius surface */
+  unsigned int digger_radius_width;
+
+  /** Height of the digger_radius surface */
+  unsigned int digger_radius_height;
+
+  /** Width of the digger_radius_gfx surface */
+  unsigned int digger_radius_gfx_width;
+
+  /** Height of the digger_radius_gfx surface */
+  unsigned int digger_radius_gfx_height;
 
 public:
   Digger(Pingu*);

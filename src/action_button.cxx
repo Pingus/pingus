@@ -1,4 +1,4 @@
-//  $Id: action_button.cxx,v 1.19 2002/10/17 00:10:46 grumbel Exp $
+//  $Id: action_button.cxx,v 1.20 2002/10/20 18:28:48 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -249,7 +249,8 @@ ArmageddonButton::on_primary_button_click (int x, int y)
       pressed = true;
     }
     
-  if(x); if(y);
+  UNUSED_ARG(x);
+  UNUSED_ARG(y);
 }
 
 ForwardButton::ForwardButton (TrueServer* s, int x, int y) 
@@ -297,7 +298,8 @@ ForwardButton::on_primary_button_click (int x, int y)
 {
   server->set_fast_forward(!server->get_fast_forward());
   
-  if(x); if(y);
+  UNUSED_ARG(x);
+  UNUSED_ARG(y);
 }
 
 PauseButton::PauseButton (TrueServer* s, int x, int y) 

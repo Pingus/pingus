@@ -1,4 +1,4 @@
-//  $Id: digger.cxx,v 1.18 2002/10/13 20:25:00 torangan Exp $
+//  $Id: digger.cxx,v 1.19 2002/10/20 18:28:49 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,6 +43,12 @@ Digger::Digger (Pingu* p)
 		   "pingus", PropertyMgr::instance()->get_int ("actions/digger/sprite-fps", 20));
 #endif
   sprite.set_align_center_bottom();
+  
+  digger_radius_width  = digger_radius.get_width();
+  digger_radius_height = digger_radius.get_height();
+  
+  digger_radius_gfx_width  = digger_radius_gfx.get_width();
+  digger_radius_gfx_height = digger_radius_gfx.get_height();
 }
 
 void
@@ -86,11 +92,11 @@ void
 Digger::dig ()
 {
   WorldObj::get_world()->get_colmap()->remove(digger_radius, 
-					      static_cast<int>(pingu->get_x () - 16),
-					      static_cast<int>(pingu->get_y() - 14));
+					      static_cast<int>(pingu->get_x() - (digger_radius_width / 2)),
+					      static_cast<int>(pingu->get_y() - digger_radius_height + 2));
   WorldObj::get_world()->get_gfx_map()->remove(digger_radius_gfx,
-					       static_cast<int>(pingu->get_x () - 16),
-					       static_cast<int>(pingu->get_y() - 14));
+					       static_cast<int>(pingu->get_x () - (digger_radius_gfx_width / 2)),
+					       static_cast<int>(pingu->get_y() - digger_radius_gfx_height + 2));
       
   pingu->set_y(pingu->get_y() + 1);
 }

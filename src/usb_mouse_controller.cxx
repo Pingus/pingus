@@ -1,4 +1,4 @@
-//  $Id: usb_mouse_controller.cxx,v 1.2 2002/09/28 11:52:22 torangan Exp $
+//  $Id: usb_mouse_controller.cxx,v 1.3 2002/10/20 18:28:49 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -16,6 +16,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+
+#ifndef WIN32
 
 #include <ClanLib/Display/Display/display.h>
 #include "pingus_error.hxx"
@@ -97,6 +99,8 @@ USBMouseController::keep_alive ()
       else if (mouse.y > CL_Display::get_height () - 1) mouse.y = CL_Display::get_height () - 1;
     }
 }
+
+#endif //WIN32
 
 /* EOF */
 

@@ -1,4 +1,4 @@
-//  $Id: indexed_canvas.cxx,v 1.2 2002/10/16 10:27:31 grumbel Exp $
+//  $Id: indexed_canvas.cxx,v 1.3 2002/10/20 18:28:48 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "indexed_canvas.hxx"
+#include <assert.h>
 
 IndexedCanvas::IndexedCanvas(int w, int h)
   : width(w),

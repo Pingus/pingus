@@ -1,4 +1,4 @@
-//  $Id: path_graph.cxx,v 1.15 2002/10/16 09:14:45 grumbel Exp $
+//  $Id: path_graph.cxx,v 1.16 2002/10/20 18:28:49 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
+#include <math.h>
 #include "../xml_helper.hxx"
 #include "../pingus_error.hxx"
 #include "dot.hxx"

@@ -1,4 +1,4 @@
-//  $Id: fake_exit.hxx,v 1.6 2002/10/01 19:53:46 grumbel Exp $
+//  $Id: fake_exit.hxx,v 1.7 2002/10/20 18:28:49 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #define HEADER_PINGUS_TRAPS_FAKE_EXIT_HXX
 
 #include "../worldobj.hxx"
+#include "../sprite.hxx"
 
 class Pingu;
 
@@ -38,6 +39,7 @@ class FakeExit : public WorldObj
 private:
   WorldObjsData::FakeExitData* const data;
   bool smashing;
+  Sprite smallmap_symbol;
     
 public:
   FakeExit (const WorldObjsData::FakeExitData& data_);
@@ -48,6 +50,9 @@ public:
   void draw (GraphicContext& gc);
 
   void update ();
+
+  /** Draws an exit symbol on to the small map. */
+  void draw_smallmap(SmallMap* smallmap);
 
 private:
   void catch_pingu (Pingu*);

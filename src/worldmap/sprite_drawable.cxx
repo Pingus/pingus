@@ -1,4 +1,4 @@
-//  $Id: sprite_drawable.cxx,v 1.1 2002/10/12 23:37:23 grumbel Exp $
+//  $Id: sprite_drawable.cxx,v 1.2 2002/10/20 18:28:49 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,6 +26,11 @@ SpriteDrawable::SpriteDrawable(xmlDocPtr doc, xmlNodePtr cur)
   : Drawable(doc, cur)
 {
   
+}
+
+SpriteDrawable::~SpriteDrawable()
+{
+
 }
 
 void

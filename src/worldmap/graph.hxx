@@ -1,4 +1,4 @@
-//  $Id: graph.hxx,v 1.19 2002/10/15 15:48:49 grumbel Exp $
+//  $Id: graph.hxx,v 1.20 2002/10/20 18:28:49 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -149,6 +149,7 @@ public:
       }
     std::cout << "couldn't resolve edge: source=" << source << " destination=" << destination << std::endl;
     assert(false);
+	return *((Edge<EdgeType>*) 0);
   }
   
   /* FIXME: This might give problems under MSVC, so it could be better to not use it */

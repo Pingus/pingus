@@ -1,4 +1,4 @@
-//  $Id: drawable.hxx,v 1.5 2002/10/13 20:25:00 torangan Exp $
+//  $Id: drawable.hxx,v 1.6 2002/10/20 18:28:49 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -72,7 +72,7 @@ public:
   
 private:
   Drawable (const Drawable&);
-  Drawable operator= (const Drawable&);
+  Drawable& operator= (const Drawable&);
 };
 
 } // namespace WorldMapNS

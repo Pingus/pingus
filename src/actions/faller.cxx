@@ -1,4 +1,4 @@
-//  $Id: faller.cxx,v 1.30 2002/10/13 20:25:00 torangan Exp $
+//  $Id: faller.cxx,v 1.31 2002/10/20 18:28:49 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,6 @@
 #include <math.h>
 #include "../col_map.hxx"
 #include "../debug.hxx"
-#include "../force_vector.hxx"
 #include "../globals.hxx"
 #include "../graphic_context.hxx"
 #include "../pingu.hxx"
@@ -63,46 +62,9 @@ Faller::update ()
   if (pingu->get_velocity().y > 5.0 && pingu->request_fall_action())
     return;
 
-  // Apply all forces
-  pingu->set_velocity(ForcesHolder::apply_forces(pingu->get_pos(), pingu->get_velocity()));
-    
-  Vector newp = pingu->get_velocity();
-  
-  // Update x and y by moving the penguin to it's target *slowly*
-  // and checking if the penguin has hit the bottom at each loop
-  while (  rel_getpixel(0, -1) == Groundtype::GP_NOTHING
-	&& (fabs(newp.x) >= 1 || fabs(newp.y) >= 1))
-    {
-      if (fabs(newp.x) >= 1)
-	{ 
-	  // Since the velocity might be a
-	  // fraction stop when we are within 1 unit of the target
-	  if (newp.x > 0)
-	    {
-	      pingu->set_x(pingu->get_x() + 1);
-	      newp.x--;
-	    }
-	  else
-	    {
-	      pingu->set_x(pingu->get_x() - 1);
-	      newp.x++;
-	    }
-	}
-
-      if (fabs(newp.y) >= 1)
-	{
-	  if (newp.y > 0)
-	    {
-	      pingu->set_y(pingu->get_y() + 1);
-	      newp.y--;
-	    }
-	  else 
-	    {
-	      pingu->set_y(pingu->get_y() - 1);
-	      newp.y++;
-	    }
-	}
-    }
+  // Move the Faller according to the forces that currently exist, which
+  // includes gravity.
+  move_with_forces (0.0, 0.0);
 
   // Now that the Pingu is moved, check if he hits the ground.
   if (rel_getpixel(0, -1) == Groundtype::GP_NOTHING)
@@ -114,7 +76,8 @@ Faller::update ()
     }
   else // Ping is on ground/water/something
     {
-      if (rel_getpixel(0, -1) == Groundtype::GP_WATER)
+      if (   rel_getpixel(0, -1) == Groundtype::GP_WATER
+	  || rel_getpixel(0, -1) == Groundtype::GP_LAVA) 
 	{
 	  pingu->set_action(Actions::Drown);
 	  return;

@@ -1,4 +1,4 @@
-//  $Id: pingus.hxx,v 1.4 2002/10/14 11:15:15 torangan Exp $
+//  $Id: pingus.hxx,v 1.5 2002/10/20 18:28:49 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,6 +37,8 @@
    //sadly this does not actually work on 6.0, but it does in .NET
 
 #  pragma warning(disable:4355) //this used in constructor base
+
+#  pragma warning(disable:4800) //'int' : forcing value to bool 'true' or 'false' (performance warning)
 #endif
 
 #define UNUSED_ARG(a) do {/* null */} while (&a == 0)

@@ -1,4 +1,4 @@
-//  $Id: fake_exit.cxx,v 1.11 2002/10/13 20:25:00 torangan Exp $
+//  $Id: fake_exit.cxx,v 1.12 2002/10/20 18:28:49 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,13 +22,15 @@
 #include "../pingu_holder.hxx"
 #include "../world.hxx"
 #include "../worldobjsdata/fake_exit_data.hxx"
+#include "../smallmap.hxx"
 #include "fake_exit.hxx"
 
 namespace WorldObjs {
 
 FakeExit::FakeExit (const WorldObjsData::FakeExitData& data_) 
   : data (new WorldObjsData::FakeExitData(data_)),
-    smashing(false)
+    smashing(false),
+    smallmap_symbol("misc/smallmap_exit", "core")
 {
   data->counter.set_size(data->surface.get_num_frames());
   data->counter.set_type(GameCounter::once);
@@ -36,6 +38,8 @@ FakeExit::FakeExit (const WorldObjsData::FakeExitData& data_)
   data->counter = data->surface.get_num_frames() - 1;
 
   data->pos -= Vector(data->surface.get_width ()/2, data->surface.get_height ());
+
+  smallmap_symbol.set_align_center_bottom();
 }
 
 FakeExit::~FakeExit()
@@ -90,6 +94,12 @@ FakeExit::catch_pingu (Pingu* pingu)
 	  }
 	}
     }
+}
+
+void
+FakeExit::draw_smallmap(SmallMap* smallmap)
+{
+  smallmap->draw_sprite(smallmap_symbol, data->pos);
 }
 
 } // namespace WorldObjs
