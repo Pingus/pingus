@@ -1,4 +1,4 @@
-#  $Id: configure.in,v 1.8 2000/04/08 20:20:25 grumbel Exp $
+#  $Id: configure.in,v 1.9 2000/04/13 20:27:12 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -187,13 +187,16 @@ PINGUS_EXPAND_DIR(pingus_datadir, "$datadir/games/$PACKAGE")
 AC_DEFINE_UNQUOTED( PINGUS_DATADIR, "$pingus_datadir")
 
 MIKMOD_CC_FILE="MikMod_dummy.cc"
+MIKMOD_O_FILE="MikMod_dummy.o"
 
 if test x$HAVE_LIBMIKMOD=xyes ;  then
 	AC_DEFINE_UNQUOTED( HAVE_LIBMIKMOD, 1)
 	MIKMOD_CC_FILE="MikMod.cc"
+	MIKMOD_O_FILE="MikMod.o"
 fi
 
 AC_SUBST(MIKMOD_CC_FILE)
+AC_SUBST(MIKMOD_O_FILE)
 
 AC_OUTPUT( Makefile 
            src/Makefile 
