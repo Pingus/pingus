@@ -1,4 +1,4 @@
-//  $Id: editor_event.cxx,v 1.3 2002/06/20 11:10:17 grumbel Exp $
+//  $Id: editor_event.cxx,v 1.4 2002/06/22 15:24:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -184,11 +184,13 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key& key)
 	  break;
 
 	case CL_KEY_HOME:
-	  object_manager->get_current_obj()->make_larger ();
+	  if (object_manager->get_current_obj().get())
+	    object_manager->get_current_obj()->make_larger ();
 	  break;
 
 	case CL_KEY_END:
-	  object_manager->get_current_obj()->make_smaller ();
+	  if (object_manager->get_current_obj().get())
+	    object_manager->get_current_obj()->make_smaller ();
 	  break;
 
 	  // Lower all object in the current selection
