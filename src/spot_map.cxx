@@ -1,4 +1,4 @@
-//  $Id: spot_map.cxx,v 1.19 2002/09/27 11:26:44 torangan Exp $
+//  $Id: spot_map.cxx,v 1.20 2002/10/07 23:53:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -244,11 +244,15 @@ void
 PingusSpotMap::remove(CL_SurfaceProvider* sprovider, int x, int y)
 {
   // Get the start tile and end tile
-  int start_x = x / tile_size;
-  int start_y = y / tile_size;
-  int end_x = (x + sprovider->get_width()) / tile_size;
-  int end_y = (y + sprovider->get_height()) / tile_size;
-      
+  int start_x = Math::max(x / tile_size, 0);
+  int start_y = Math::max(y / tile_size, 0);
+  int end_x   = Math::min((x + sprovider->get_width()) / tile_size, 
+                          static_cast<unsigned int>(width/tile_size));
+  int end_y   = Math::min((y + sprovider->get_height()) / tile_size, 
+                          static_cast<unsigned int>(height/tile_size));
+     
+  
+
   for(int ix = start_x; ix <= end_x; ++ix) 
     {
       for(int iy = start_y; iy <= end_y; ++iy) 
