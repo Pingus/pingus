@@ -1,4 +1,4 @@
-//  $Id: action_button.cxx,v 1.21 2002/11/08 01:38:27 grumbel Exp $
+//  $Id: action_button.cxx,v 1.22 2002/12/01 17:45:21 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,6 +27,8 @@
 #include "action_button.hxx"
 #include "true_server.hxx"
 #include "world.hxx"
+#include "vector.hxx"
+#include "graphic_context.hxx"
 #include "string_converter.hxx"
 
 using namespace Actions;
@@ -43,37 +45,20 @@ ActionButton::init(int x, int y, ActionName name_, int owner_id)
   x_pos = x;
   y_pos = y;
   name = name_;
- 
-  if (   name == Digger || name == Bomber
-      || name == Floater || name == Blocker)
-    {
-      is_multi_direct = false;
-    }
-  else
-    {
-      is_multi_direct = true;
-    }
 
-  /*
-  font = PingusResource::load_font("Fonts/courier_small", "fonts");
-  font_h = PingusResource::load_font("Fonts/smallfont","fonts");
-  font_b = PingusResource::load_font("Fonts/pingus","fonts");
-  */
 
   font   = PingusResource::load_font("Fonts/pingus_small", "fonts");
   font_b = PingusResource::load_font("Fonts/pingus",       "fonts");
 
-  surface = PingusResource::load_surface("Pingus/" + action_to_string(name) + to_string(owner_id), "pingus");
-  if (is_multi_direct)
-    {
-      action_c.set_size(surface.get_num_frames()/2);
-    }
-  else
-    {
-      action_c.set_size(surface.get_num_frames());
-    }
+  sprite = Sprite("Pingus/" + action_to_string(name) + to_string(owner_id), "pingus", 20.0f);
+  sprite.set_align_center_bottom();
 
-  action_c.set_speed(50);
+  // FIXME: Big fat hack
+  if (   name == Digger  || name == Bomber
+      || name == Floater || name == Blocker)
+    {
+      sprite.set_direction(Sprite::LEFT);
+    }
 }
 
 bool
@@ -85,8 +70,7 @@ ActionButton::is_pressed()
 void
 ActionButton::update(float delta)
 {
-  ++action_c;
-  UNUSED_ARG(delta);
+  sprite.update(delta);
 }
 
 ActionName
@@ -138,8 +122,8 @@ VerticalActionButton::draw (GraphicContext& gc)
     }
   else
     {
-      action_c = 0;
-
+      sprite.set_frame(0);
+      
       if (fast_mode) {
         // do nothing
       } else {
@@ -148,9 +132,7 @@ VerticalActionButton::draw (GraphicContext& gc)
     }
 
 
-  surface.put_screen(x_pos + 20 - surface.get_width ()/2,
-                     y_pos + 17 - surface.get_height()/2,
-                     action_c);
+  gc.draw(sprite, Vector(x_pos, y_pos));
       
   // print the action name next to the button, when mouse pointer is on
   // the button.
@@ -182,9 +164,7 @@ ArmageddonButton::ArmageddonButton (TrueServer* s, int x, int y)
     backgroundhl(PingusResource::load_surface("buttons/hbuttonbg", "core"))
 {
   pressed      = false;
-  surface      = PingusResource::load_surface("buttons/armageddon_anim", "core");
-  counter.set_size(surface.get_num_frames());
-  counter = 0;
+  sprite       = Sprite("buttons/armageddon_anim", "core");
 }
 
 ArmageddonButton::~ArmageddonButton () { }
@@ -195,21 +175,22 @@ ArmageddonButton::draw (GraphicContext& gc)
   if (server->get_world()->check_armageddon ())
     {
       backgroundhl.put_screen (x_pos, y_pos);
-      surface.put_screen(x_pos, y_pos, ++counter);
+      gc.draw(sprite, Vector(x_pos, y_pos));
     } 
   else 
     {
       if (!fast_mode)
         background.put_screen (x_pos, y_pos);
-      surface.put_screen(x_pos, y_pos, 7);
+      sprite.set_frame(7);
+      gc.draw(sprite, Vector(x_pos, y_pos));
     }
-    
-  UNUSED_ARG(gc);
 }
 
 void
 ArmageddonButton::update (float delta)
 {
+  sprite.update(delta);
+
   if (pressed)
     {
       press_time += delta;
@@ -229,8 +210,8 @@ ArmageddonButton::update (float delta)
 bool
 ArmageddonButton::is_at(int x, int y)
 {
-  if (x > x_pos && x < x_pos + int(surface.get_width())
-      && y > y_pos && y < y_pos + int(surface.get_height()))
+  if (x > x_pos && x < x_pos + sprite.get_width()
+      && y > y_pos && y < y_pos + sprite.get_height())
     {
       return true;
     } else  {

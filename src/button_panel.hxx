@@ -1,4 +1,4 @@
-//  $Id: button_panel.hxx,v 1.15 2002/11/08 01:38:27 grumbel Exp $
+//  $Id: button_panel.hxx,v 1.16 2002/12/01 17:45:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,7 +41,6 @@ private:
   int pressed_button;
 
   int  armageddon_pressed;
-  AnimCounter arma_counter;
 
   bool left_pressed;
   unsigned int  last_press;

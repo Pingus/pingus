@@ -1,4 +1,4 @@
-//  $Id: liquid.hxx,v 1.3 2002/09/27 18:36:41 torangan Exp $
+//  $Id: liquid.hxx,v 1.4 2002/12/01 17:45:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,8 +20,7 @@
 #ifndef HEADER_PINGUS_WORLDOBJS_LIQUID_HXX
 #define HEADER_PINGUS_WORLDOBJS_LIQUID_HXX
 
-#include <ClanLib/Display/Display/surface.h>
-#include "../anim_counter.hxx"
+#include "../sprite.hxx"
 #include "../worldobj.hxx"
 
 namespace WorldObjsData {
@@ -34,8 +33,7 @@ class Liquid : public WorldObj
 {
 private:
   WorldObjsData::LiquidData* const data;
-  CL_Surface sur;
-  AnimCounter counter;
+  Sprite sur;
   
 public:
   CL_Surface colmap_sur;
@@ -46,6 +44,7 @@ public:
   float get_z_pos () const;
   void  on_startup();
   void  draw      (GraphicContext& gc);
+  void  update(float delta);
   
 private:
   Liquid (const Liquid&);

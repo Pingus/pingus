@@ -1,4 +1,4 @@
-//  $Id: action_button.hxx,v 1.15 2002/11/08 01:38:27 grumbel Exp $
+//  $Id: action_button.hxx,v 1.16 2002/12/01 17:45:21 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,8 +22,8 @@
 
 #include <ClanLib/Display/Display/surface.h>
 #include <string>
-#include "anim_counter.hxx"
 #include "pingu_enums.hxx"
+#include "sprite.hxx"
 #include "gui/component.hxx"
 
 using Actions::ActionName;
@@ -41,15 +41,14 @@ class ArmageddonButton : public GUI::Component
 {
 private:
   TrueServer* server;
-  int x_pos;
-  int y_pos;
-  bool pressed;
+  int   x_pos;
+  int   y_pos;
+  bool  pressed;
   float press_time;
-  CL_Surface surface;
+  Sprite     sprite;
   CL_Surface background;
   CL_Surface backgroundhl;
 
-  AnimCounter counter;
   friend class ButtonPanel;
 public:
   ArmageddonButton(TrueServer*, int x, int y);
@@ -130,7 +129,7 @@ private:
 class ActionButton : public GUI::Component
 {
 protected:
-  CL_Surface surface;
+  Sprite sprite;
   int x_pos;
   int y_pos;
   CL_Font*    font;
@@ -141,7 +140,7 @@ protected:
   bool is_multi_direct;
 
   ActionHolder* action_holder;
-  AnimCounter action_c;
+
 public:  
   bool pressed;
 
