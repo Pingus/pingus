@@ -1,4 +1,4 @@
-//  $Id: Config.cc,v 1.6 2000/04/20 17:12:11 grumbel Exp $
+//  $Id: Config.cc,v 1.7 2000/04/21 13:35:45 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #include <cstdio>
 
 #include "globals.hh"
+#include "audio.hh"
 #include "PingusError.hh"
 #include "Config.hh"
 
