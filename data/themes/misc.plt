@@ -1,5 +1,5 @@
-Name:        -
-Image:       Themes/crystal
+Name:        Misc
+Image:       -
 Description: All Pingus are traped in a work of crystals and danger, can you free them.
 Background:  (resource:textures.dat)Textures/crystal
 
