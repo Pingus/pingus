@@ -1,4 +1,4 @@
-//  $Id: dot.hxx,v 1.5 2002/10/17 16:06:21 grumbel Exp $
+//  $Id: dot.hxx,v 1.6 2003/03/30 22:09:33 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,12 +36,19 @@ protected:
 
 public:
   Dot(xmlDocPtr doc, xmlNodePtr cur);
+
+  /** Draw stuff that should be displayed if the mouse is over the dot */
+  virtual void draw_hover(GraphicContext& gc) =0;
   
   Vector get_pos() { return pos; }
   float  get_z_pos() const { return pos.z; }
 
   virtual void on_click() =0;
 
+  virtual bool finished() =0;
+  virtual bool accessible() =0;
+  /** makes the node accessible */
+  virtual void unlock() =0;
 private:
   Dot (const Dot&);
   Dot& operator= (const Dot&);

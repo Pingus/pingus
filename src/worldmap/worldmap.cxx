@@ -1,4 +1,4 @@
-//  $Id: worldmap.cxx,v 1.36 2003/03/30 20:43:52 grumbel Exp $
+//  $Id: worldmap.cxx,v 1.37 2003/03/30 22:09:33 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -207,21 +207,7 @@ WorldMap::draw (GraphicContext& gc)
   Dot* dot = path_graph->get_dot(mpos.x, mpos.y);
   if (dot)
     {
-      LevelDot* leveldot = dynamic_cast<LevelDot*>(dot);
-
-      if (leveldot)
-        {
-          gc.print_center(Fonts::pingus_small,
-                          mouse_x, mouse_y - 30,
-                          System::translate(leveldot->get_plf()->get_levelname()));
-
-          if (maintainer_mode)
-            {
-              gc.print_center(Fonts::pingus_small,
-                              mouse_x, mouse_y - 56,
-                              leveldot->get_plf()->get_resname());
-            }
-        }
+      dot->draw_hover(display_gc);
     }
 }
 
@@ -232,6 +218,7 @@ WorldMap::update ()
     {
       (*i)->update ();
     }
+  update_locked_nodes();
 }
 
 void
@@ -294,10 +281,17 @@ WorldMap::on_primary_button_press(int x, int y)
         }
       else
         {
-          if (!pingus->walk_to_node(path_graph->lookup_node(dot->get_name())))
+          if (dot->accessible())
             {
-              if (maintainer_mode)
-                std::cout << "WorldMap: NO PATH TO NODE FOUND!" << std::endl;
+              if (!pingus->walk_to_node(path_graph->lookup_node(dot->get_name())))
+                {
+                  if (maintainer_mode)
+                    std::cout << "WorldMap: NO PATH TO NODE FOUND!" << std::endl;
+                }
+            }
+          else
+            {
+              PingusSound::play_sound("chink");
             }
         }
     }
@@ -306,12 +300,15 @@ WorldMap::on_primary_button_press(int x, int y)
 void
 WorldMap::on_secondary_button_press(int x, int y)
 {
-  const Vector& click_pos = display_gc.screen_to_world(Vector(x, y));
-  Dot* dot = path_graph->get_dot(click_pos.x, click_pos.y);
-  if (dot)
-    { // FIXME: Dot NodeID missmatch...
-      NodeId id = path_graph->get_id(dot);
-      pingus->set_position(id);
+  if (maintainer_mode)
+    {
+      const Vector& click_pos = display_gc.screen_to_world(Vector(x, y));
+      Dot* dot = path_graph->get_dot(click_pos.x, click_pos.y);
+      if (dot)
+        { // FIXME: Dot NodeID missmatch...
+          NodeId id = path_graph->get_id(dot);
+          pingus->set_position(id);
+        }
     }
 }
 
@@ -328,6 +325,37 @@ WorldMap::enter_level()
       if (maintainer_mode)
         std::cout << "WorldMap: Pingus not on level" << std::endl;
     }
+}
+
+struct unlock_nodes
+{
+  PathGraph* path_graph;
+  unlock_nodes(PathGraph* g)
+  {
+    path_graph = g;
+  }
+  
+  void operator()(Node<Dot*>& node) 
+  {
+    if (node.data->finished())
+      {
+        //std::cout << "Unlocking neightbours of: " << node.data << std::endl;
+        for (std::vector<EdgeId>::iterator i = node.next.begin(); i != node.next.end(); ++i)
+          {
+            Edge<Path*>& edge = path_graph->graph.resolve_edge(*i);
+
+            // FIXME: This should be identical to node.data->unlock(), but not sure
+            path_graph->graph.resolve_node(edge.source).data->unlock();
+            path_graph->graph.resolve_node(edge.destination).data->unlock();
+          }
+      }
+  }
+};
+
+void
+WorldMap::update_locked_nodes()
+{
+  path_graph->graph.for_each_node(unlock_nodes(path_graph));
 }
 
 } // namespace WorldMapNS

@@ -1,4 +1,4 @@
-//  $Id: result_screen.cxx,v 1.8 2003/03/30 16:51:43 grumbel Exp $
+//  $Id: result_screen.cxx,v 1.9 2003/03/30 22:09:33 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -199,7 +199,7 @@ ResultScreen::on_startup()
 void
 ResultScreen::retry_level()
 {
-  ScreenManager::instance()->replace_screen(new PingusGameSession (result.plf, false),
+  ScreenManager::instance()->replace_screen(new PingusGameSession (result.plf, true),
                                             true);
 }
 

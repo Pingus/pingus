@@ -1,4 +1,4 @@
-//  $Id: plf_res_mgr.cxx,v 1.3 2003/03/30 20:43:52 grumbel Exp $
+//  $Id: plf_res_mgr.cxx,v 1.4 2003/03/30 22:09:33 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,7 +30,7 @@ PLFHandle
 PLFResMgr::load_plf_raw(const std::string& res_name,
                         const std::string& filename)
 {
-  std::cout << "PLFResMgr: " << res_name << "\n   " << filename << std::endl;
+  //std::cout << "PLFResMgr: " << res_name << "\n   " << filename << std::endl;
 
   PLFMap::iterator i = plf_map.find(res_name);
   

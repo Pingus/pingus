@@ -1,4 +1,4 @@
-//  $Id: worldmap.hxx,v 1.23 2003/03/21 22:08:06 grumbel Exp $
+//  $Id: worldmap.hxx,v 1.24 2003/03/30 22:09:33 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -123,6 +123,9 @@ private:
   /** Parse the propertie section of a WorldMap XML file, it contains
       meta data such as the author or the name of the Worldmap */
   void parse_properties(xmlDocPtr doc, xmlNodePtr cur);
+  
+  /** Unlock nodes according to the finished ones */
+  void update_locked_nodes();
 };
 
 } // namespace WorldMapNS

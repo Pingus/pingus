@@ -128,6 +128,7 @@ section misc
 	pingubw = ../images/core/misc/pingubw.png (type=surface, x=0, y=0, width=307, height=400);
 
 	dot_green = ../images/core/worldmap/dot_green.png (type=surface);
+	dot_invalid = ../images/core/worldmap/dot_invalid.png (type=surface);
         dot_red = ../images/core/worldmap/dot_red.png (type=surface);
         dot_border = ../images/core/worldmap/dot_border.png (type=surface);
 
