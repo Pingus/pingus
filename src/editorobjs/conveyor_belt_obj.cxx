@@ -1,4 +1,4 @@
-//  $Id: conveyor_belt_obj.cxx,v 1.5 2002/09/28 11:52:24 torangan Exp $
+//  $Id: conveyor_belt_obj.cxx,v 1.6 2003/03/04 10:25:31 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,9 +18,12 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <stdio.h>
+#include "../editor/editor.hxx"
 #include "../editor/editor_view.hxx"
-#include "../worldobjsdata/conveyor_belt_data.hxx"
+#include "../editor/generic_property_frame.hxx"
+#include "../editor/property_window.hxx"
 #include "../pingus_resource.hxx"
+#include "../worldobjsdata/conveyor_belt_data.hxx"
 #include "conveyor_belt_obj.hxx"
 
 namespace EditorObjs {
@@ -137,6 +140,19 @@ ConveyorBeltObj::make_smaller ()
 {
   if (data->width)
     --data->width;
+}
+
+EditorNS::PropertyFrame*
+ConveyorBeltObj::get_gui_dialog(EditorNS::Editor* editor)
+{
+  EditorNS::GenericPropertyFrame* propframe 
+    = new EditorNS::GenericPropertyFrame("ConveyorBelt Properties",
+                                         editor->get_property_window()->get_client_area());
+
+  propframe->add_integer_box("Width", &data->width);
+  propframe->add_float_box("Speed", &data->speed);
+  
+  return propframe; 
 }
 
 } // namespace EditorObjs

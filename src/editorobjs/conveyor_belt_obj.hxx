@@ -1,4 +1,4 @@
-//  $Id: conveyor_belt_obj.hxx,v 1.6 2002/11/28 20:09:54 grumbel Exp $
+//  $Id: conveyor_belt_obj.hxx,v 1.7 2003/03/04 10:25:31 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -68,7 +68,7 @@ public:
   void make_larger ();
   void make_smaller ();
 
-  EditorNS::PropertyFrame* get_gui_dialog(EditorNS::Editor*) { return 0; }  
+  EditorNS::PropertyFrame* get_gui_dialog(EditorNS::Editor*);
 private:
   ConveyorBeltObj (const ConveyorBeltObj&);
   ConveyorBeltObj& operator= (const ConveyorBeltObj&);

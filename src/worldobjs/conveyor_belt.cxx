@@ -1,4 +1,4 @@
-//  $Id: conveyor_belt.cxx,v 1.21 2003/02/19 09:50:36 grumbel Exp $
+//  $Id: conveyor_belt.cxx,v 1.22 2003/03/04 10:25:32 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -82,7 +82,7 @@ ConveyorBelt::update ()
 	  && (*pingu)->get_y() < data->pos.y + 10)
 	{
 	  Vector pos = (*pingu)->get_pos();
-	  data->pos.x -= data->speed * 0.025f;
+	  pos.x -= data->speed * 0.025f;
 	  (*pingu)->set_pos(pos);
 	}
     }
