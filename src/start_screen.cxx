@@ -1,4 +1,4 @@
-//  $Id: start_screen.cxx,v 1.16 2003/04/12 12:35:53 torangan Exp $
+//  $Id: start_screen.cxx,v 1.17 2003/04/12 15:52:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -185,7 +185,7 @@ StartScreenComponent::format_description(int length)
     
   description = System::translate(plf->get_description());
   
-  if (description != "")
+  if (description == "")
     return description;
 
   unsigned int pos = 0;
@@ -217,7 +217,7 @@ StartScreenComponent::format_description(int length)
         description.replace(pos - 1, 2, 1, '\n');			// no whitespace in front
 	
       if (pos < description.length() && description[pos + 1] == ' ')
-        description.replace(pos, 2, 1, '\n');				// no whitespace behind
+         description.replace(pos, 2, 1, '\n');				// no whitespace behind
 	
       ++pos;								// we don't want to find it again
     }
