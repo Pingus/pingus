@@ -6,7 +6,7 @@
     <description lang="en">EditorDefaultValue: ...and a short description</description>
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
     <number-of-pingus>50</number-of-pingus>
-    <number-to-save>40</number-to-save>
+    <number-to-save>40   </number-to-save>
     <time>-1</time>
     <width>1408</width>
     <height>800</height>
