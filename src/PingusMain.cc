@@ -1,4 +1,4 @@
-//   $Id: PingusMain.cc,v 1.59 2002/06/04 08:35:30 grumbel Exp $
+//   $Id: PingusMain.cc,v 1.60 2002/06/05 17:51:08 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -71,6 +71,7 @@
 #include "PingusMessageBox.hh"
 #include "audio.hh"
 #include "PingusGameSession.hh"
+#include "Debug.hh"
 #include "editor/Editor.hh"
 
 #include "PingusMenuManager.hh"
@@ -614,6 +615,13 @@ PingusMain::init_pingus()
 
   fps_counter.init();
   console.init();
+
+  pout.add (std::cerr);
+  pout.add (console);
+  pwarn.add (std::cerr);
+  pout.add (console);
+  perr.add (std::cerr);
+  perr.add (console);
 }
 
 // Get all filenames and directories
@@ -790,7 +798,7 @@ void
 PingusMain::start_game(void)
 {
   if (verbose) {
-    std::cout << _("PingusMain: Starting Main: ") << CL_System::get_time() << std::endl;
+    pout << _("PingusMain: Starting Main: ") << CL_System::get_time() << std::endl;
   }
 
   if (print_fps)
@@ -814,7 +822,7 @@ PingusMain::start_game(void)
 	    levelfile = "levels/" + levelfile + ".xml";
 	  else
 	    {
-	      std::cout << _("PingusMain: Levelfile not found, ignoring: ") << levelfile << std::endl;
+	      pout << _("PingusMain: Levelfile not found, ignoring: ") << levelfile << std::endl;
 	      successfull = false;
 	    }
 	}
@@ -857,8 +865,8 @@ PingusMain::main(int argc, char** argv)
   signal(SIGINT,  signal_handler);
 
 #ifdef WIN32
-  CL_ConsoleWindow console(PACKAGE VERSION);
-  console.redirect_stdio();
+  CL_ConsoleWindow cl_console(PACKAGE VERSION);
+  cl_console.redirect_stdio();
 #endif
 
   executable_name = argv[0];

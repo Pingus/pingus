@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.73 2002/06/02 21:09:11 grumbel Exp $
+#  $Id: Makefile.am,v 1.74 2002/06/05 17:51:08 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -200,6 +200,8 @@ pingus_SOURCES = \
                  WorldObjDataFactory.cc  WorldObjDataFactory.hh \
                  EditorHotspot.hh \
                  PinguActionFactory.cc PinguActionFactory.hh \
-                 USBMouseController.hh USBMouseController.cc
+                 USBMouseController.hh USBMouseController.cc \
+                 PingusStream.hh     PingusStream.cc \
+                 Debug.cc            Debug.hh
 
 ## EOF ##

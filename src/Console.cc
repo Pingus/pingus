@@ -1,4 +1,4 @@
-//  $Id: Console.cc,v 1.19 2002/06/04 08:35:30 grumbel Exp $
+//  $Id: Console.cc,v 1.20 2002/06/05 17:51:08 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,7 +35,7 @@ ConsoleBuffer::ConsoleBuffer ()
   // Set the output buffer
   setp (char_buffer, char_buffer + CONSOLE_BUFFER_SIZE - 1);
   
-    // Switch of input buffer
+  // Switch of input buffer
   setg(0, 0, 0);
 }
   

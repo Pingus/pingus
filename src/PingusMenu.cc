@@ -1,4 +1,4 @@
-//  $Id: PingusMenu.cc,v 1.54 2002/06/01 18:05:35 torangan Exp $
+//  $Id: PingusMenu.cc,v 1.55 2002/06/05 17:51:08 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,6 +30,7 @@
 #include "Loading.hh"
 #include "Display.hh"
 #include "PingusSound.hh"
+#include "Debug.hh"
 #include "blitter.hh"
 
 PingusMenu::PingusMenu(PingusMenuManager* m)
@@ -43,7 +44,7 @@ PingusMenu::preload ()
 {
   if (!is_init)
     {
-      std::cout << "PingusMenu::init ()" << std::endl;
+      pout << "PingusMenu::init ()" << std::endl;
       event_enabled = true;
       is_init = true;
       boost::shared_ptr<SurfaceButton> editor_button (new EditorButton (this));
@@ -91,7 +92,7 @@ void
 PingusMenu::on_button_press(CL_InputDevice *device, const CL_Key &key)
 {
   if (!event_enabled) return;
-  std::cout << "Buttonpress: " << event_enabled << std::endl;
+  pout << "Buttonpress: " << event_enabled << std::endl;
 
   draw();
   
@@ -109,7 +110,7 @@ PingusMenu::on_button_press(CL_InputDevice *device, const CL_Key &key)
 	  }
 	  break;
 	default:
-	  std::cout << "PingusMenu: Unknown key pressed:" << key.ascii << std::endl;
+	  pout << "PingusMenu: Unknown key pressed:" << key.ascii << std::endl;
 	}
     }
 }
@@ -118,7 +119,7 @@ void
 PingusMenu::on_button_release(CL_InputDevice *device, const CL_Key &key)
 {
   if (!event_enabled) return;
-  std::cout << "Buttonrel: " << event_enabled << std::endl;
+  pout << "Buttonrel: " << event_enabled << std::endl;
   
   draw();
 
@@ -131,13 +132,13 @@ PingusMenu::on_button_release(CL_InputDevice *device, const CL_Key &key)
 	case CL_KEY_F:
 	  break;
 	default:
-	  if (verbose) std::cout << "PingusMenu::Event: Unknown key pressed: " << key.id << std::endl;
+	  if (verbose) pout << "PingusMenu::Event: Unknown key pressed: " << key.id << std::endl;
 	  break;
 	}
     }
   else if (device == CL_Input::pointers[0])
     {
-      if (verbose) std::cout << "PingusMenu::Event: on_button_press" << std::endl;
+      if (verbose) pout << "PingusMenu::Event: on_button_press" << std::endl;
 
       for(std::list<boost::shared_ptr<SurfaceButton> >::iterator i = buttons.begin(); 
 	  i != buttons.end(); 
@@ -159,7 +160,7 @@ PingusMenu::on_button_release(CL_InputDevice *device, const CL_Key &key)
 void
 PingusMenu::on_resize(int w, int h)
 {
-  std::cout << "Width: " << w << " Height: " << h << std::endl;
+  pout << "Width: " << w << " Height: " << h << std::endl;
 }
 
 /* EOF */
