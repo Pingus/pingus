@@ -1,0 +1,69 @@
+/* This level was created with the PLE
+ * $Id: bombing.plf,v 1.1 2000/05/19 18:41:15 grumbel Exp $
+ */
+global {
+  start_x_pos = 0;
+  start_y_pos = 0;
+  levelname = "Bombing run";
+  description = "
+
+";
+  number_of_pingus = 100;
+  number_to_save = 15;
+  time = 9000;
+}
+
+ground {
+  maptype = "SPOT";
+  width   = 800;
+  height  = 600;
+  colmap  = (auto);
+}
+
+background {
+  image = (resource:textures.dat)"Textures/rooftile";
+  dim   = "0.2";
+  red   = "0";
+  green = "0";
+  blue  = "0";
+  scroll_x = 0;
+  scroll_y = 0;
+}
+
+buttons {
+  basher = 5;
+  blocker = 0;
+  bomber = 1;
+  bridger = 2;
+  climber = 1;
+  digger = 1;
+  floater = 2;
+  miner = 4;
+}
+
+entrance {
+  type  = generic;
+  x_pos = 298;
+  y_pos = 151;
+  z_pos = 0;
+  release_rate = 25;
+  direction = left;
+}
+
+exit {
+  image = (resource)"Exits/stone";
+  x_pos = 701;
+  y_pos = 166;
+  z_pos = 0;
+}
+
+liquid {
+  image = (resource)"Liquid/lava";
+  x_pos = 276;
+  y_pos = 551;
+  z_pos = -100;
+  width = 800;
+  speed = 50;
+}
+
+/* EOF */
