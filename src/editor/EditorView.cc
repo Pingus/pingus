@@ -1,4 +1,4 @@
-//  $Id: EditorView.cc,v 1.4 2001/08/04 12:46:22 grumbel Exp $
+//  $Id: EditorView.cc,v 1.5 2001/08/04 21:55:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -139,8 +139,8 @@ EditorView::draw (CL_Surface& sur, const CL_Vector& pos)
     }
   else
     {
-      sur.put_screen (int(pos.x + get_x_offset () * offset.z + center.x),
-		      int(pos.y + get_y_offset () * offset.z + center.y),
+      sur.put_screen (int((pos.x + get_x_offset ()) * offset.z + center.x),
+		      int((pos.y + get_y_offset ()) * offset.z + center.y),
 		      offset.z, offset.z);
     }
   //CL_Display::draw_line (x1, y1, x2, y2, 1.0, 1.0, 0.0);
