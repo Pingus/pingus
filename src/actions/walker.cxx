@@ -1,4 +1,4 @@
-//  $Id: walker.cxx,v 1.9 2002/06/26 19:13:13 grumbel Exp $
+//  $Id: walker.cxx,v 1.10 2002/06/28 09:51:46 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -117,19 +117,22 @@ Walker::update(float delta)
       // Pingu is walking up the mountain 
       // we can continue walking up. search for the correct y_pos
       int y_inc = 0;
+      int possible_y_step = 0;
       bool found_next_step = false;
-       for(y_inc=-max_steps; y_inc <= max_steps; y_inc++) // up-hill
+       for(y_inc=-max_steps; y_inc <= max_steps; y_inc++) // up/down-hill scan
 	if (rel_getpixel(1, y_inc) ==  GroundpieceData::GP_NOTHING
 	    && rel_getpixel(1, y_inc - 1) !=  GroundpieceData::GP_NOTHING)
-	  {
+	  { // FIXME:
 	    found_next_step = true;
-	    break;
+	    possible_y_step = y_inc;
+	    // No break here, since we always want to use the highest possible position
+	    //break;
 	  }
       
       if (found_next_step)
 	{
 	  pingu->pos.x += pingu->direction;
-	  pingu->pos.y -= y_inc; // pos.y has a reversed co-system to rel_getpixel()?
+	  pingu->pos.y -= possible_y_step; // pos.y has a reversed co-system to rel_getpixel()?
 	}
       else
 	{

@@ -1,4 +1,4 @@
-//  $Id: true_server.cxx,v 1.2 2002/06/13 14:25:12 torangan Exp $
+//  $Id: true_server.cxx,v 1.3 2002/06/28 09:51:46 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -52,8 +52,6 @@ TrueServer::TrueServer(PLF* arg_plf)
   // FIXME: this is complete trash, delete it and place it in world
   // object or so...
   world->set_action_holder(&action_holder);
-
-  GameTime::reset();
 }
 
 TrueServer::~TrueServer()
@@ -75,20 +73,17 @@ TrueServer::update(float delta)
 	{
 	  // To let the game run faster we just update it multiple
 	  // times
-          GameTime::increase();
-	  Server::update(delta);
-	  world->update(delta);
-          GameTime::increase();
-	  Server::update(delta);
-	  world->update(delta);
-          GameTime::increase();
+	  for (int i = 0; i < 4; ++i)
+	    {
+	      Server::update(delta);
+	      world->update(delta);
+	    }
+	}
+      else
+	{
 	  Server::update(delta);
 	  world->update(delta);
 	}
-
-      GameTime::increase();
-      Server::update(delta);
-      world->update(delta);
     }
 }
 

@@ -1,4 +1,4 @@
-//  $Id: ice_block.cxx,v 1.4 2002/06/28 08:32:21 grumbel Exp $
+//  $Id: ice_block.cxx,v 1.5 2002/06/28 09:51:46 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,6 +28,7 @@
 #include "ice_block.hxx"
 #include "../pingu.hxx"
 #include "../boost/smart_ptr.hpp"
+#include "../game_time.hxx"
 
 IceBlockData::IceBlockData () : width(1)
 {
@@ -126,11 +127,11 @@ IceBlock::update(float /*delta*/)
       if ((*pingu)->get_x() > pos.x && (*pingu)->get_x() < pos.x + block_sur.get_width()
 	  && (*pingu)->get_y() > pos.y - 4 && (*pingu)->get_y() < pos.y + block_sur.get_height())
 	{
-	  last_contact = GameTime::get_ticks ();
+	  last_contact = world->get_game_time()->get_ticks ();
 	}
     }
 
-  if (last_contact && last_contact + 1000 > GameTime::get_ticks ())
+  if (last_contact && last_contact + 1000 > world->get_game_time ()->get_ticks ())
     {
       //std::cout << "IceBlock: Catched Pingu: " << thickness  << std::endl;
       thickness -= 0.01f;

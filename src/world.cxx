@@ -1,4 +1,4 @@
-//  $Id: world.cxx,v 1.11 2002/06/28 08:32:20 grumbel Exp $
+//  $Id: world.cxx,v 1.12 2002/06/28 09:51:46 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,6 +30,7 @@
 #include "particles/weather_generator.hxx"
 #include "pingu.hxx"
 #include "worldobj_data.hxx"
+#include "game_time.hxx"
 
 using namespace std;
 using boost::shared_ptr;
@@ -56,7 +57,8 @@ bool WorldObj_less (WorldObj* a, WorldObj* b)
 #endif
 
 World::World(PLF* arg_plf)
-  : world_obj (new std::list<WorldObj*>),
+  : game_time (new GameTime (game_speed)),
+    world_obj (new std::list<WorldObj*>),
     particle_holder (new ParticleHolder()),
     pingus (new PinguHolder()),
     plf (arg_plf),
@@ -89,6 +91,7 @@ World::~World()
   }
   
   delete world_obj;
+  delete game_time;
 }
 
 // Merge the different layers on the screen together
@@ -118,6 +121,8 @@ World::draw(int x1, int y1, int /*w*/, int /*h*/,
 void 
 World::update(float delta)
 {
+  game_time->update ();
+
   //std::cout << "World::update (" << delta << ")" << std::endl;
 
   if (!exit_world && (allowed_pingus == released_pingus || do_armageddon)
@@ -125,7 +130,7 @@ World::update(float delta)
     {
       if (verbose) std::cout << "World: world finished, going down in the next seconds..." << endl;
       exit_world = true;
-      shutdown_time = GameTime::get_ticks() + 75;
+      shutdown_time = game_time->get_ticks() + 75;
     }
 
   if (do_armageddon && armageddon_count != pingus->end())
@@ -134,21 +139,7 @@ World::update(float delta)
       (*armageddon_count)->request_set_action("bomber");
       armageddon_count++;
     }
-  
-  // Create new pingus, if enough time is passed
-  /*
-    if (!do_armageddon)
-    {
-    for(vector<shared_ptr<Entrance> >::iterator i = entrance.begin(); i != entrance.end(); i++) 
-    {
-    if ((*i)->pingu_ready() && (unsigned int)pingus->total_size() < allowed_pingus)
-    {
-    pingus->push_back((*i)->get_pingu());
-    ++released_pingus;
-    }
-    }
-    }*/
-  
+    
   // Let all pingus move and
   // Let the pingus catch each other and
   // Let the traps catch the pingus and
@@ -160,6 +151,9 @@ World::update(float delta)
       (*obj)->update(delta);
     }
   
+  // FIXME: This is a relictn, pingus should handle that themself
+  // FIXME: WorldObj::for_each_pingu (Func f); might cause throuble
+  // FIXME: with MSVC
   for(PinguIter pingu = pingus->begin(); pingu != pingus->end(); ++pingu) {
 
       (*pingu)->update(delta);
@@ -257,7 +251,7 @@ World::get_time_left()
 {
   if (exit_time != -1) // There is a time limit
     {
-      return exit_time - GameTime::get_ticks();
+      return exit_time - game_time->get_ticks();
     }
   else // No timelimit given
     {
@@ -268,7 +262,7 @@ World::get_time_left()
 int
 World::get_time_passed()
 {
-  return GameTime::get_ticks();
+  return game_time->get_ticks();
 }
 
 unsigned int
@@ -294,11 +288,11 @@ bool
 World::is_finished(void)
 {
   // Return true if the world is finished and some time has passed
-  if (((exit_time != -1) && (exit_time < (GameTime::get_ticks())))
-      || ((shutdown_time != -1) && shutdown_time < GameTime::get_ticks()))
+  if (((exit_time != -1) && (exit_time < (game_time->get_ticks())))
+      || ((shutdown_time != -1) && shutdown_time < game_time->get_ticks()))
     {
       std::cout << "ExitTime: " << exit_time << std::endl
-		<< "GameTime: " << GameTime::get_ticks() << std::endl
+		<< "GameTime: " << game_time->get_ticks() << std::endl
 		<< "ShutDown: " << shutdown_time << std::endl;
       return true;
     } 
@@ -391,6 +385,12 @@ World::get_pingu (const CL_Vector& pos)
   }
   
   return current_pingu;
+}
+
+GameTime*
+World::get_game_time ()
+{
+  return game_time;
 }
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: game_time.hxx,v 1.3 2002/06/28 08:32:20 grumbel Exp $
+//  $Id: game_time.hxx,v 1.4 2002/06/28 09:51:46 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,24 +30,29 @@ class GameTime
 {
 private:
   /** Tick counter */
-  static int count;
+  int count;
+  
+  /** How long does a tick take in msec */
+  int tick_time;
 
 public:
+  GameTime (int arg_tick_time);
+  
   /** Number of ticks since the time starts, a tick is one basically
       update call to the world */
-  static int  get_ticks(void);
+  int  get_ticks(void);
 
   /** Return the passed time in miliseconds (1000msec = 1sec) */
-  static int get_time ();
+  int get_time ();
 
   /** Return in realtime (milisecondons ) how long a tick normally takes */
-  static int get_tick_time ();
+  int get_tick_time ();
 
   /** Increase the tick count */
-  static void increase(void);
+  void update(void);
   
   /** Start from zero */
-  static void reset(void);
+  void reset(void);
 };
 
 #endif

@@ -1,4 +1,4 @@
-//  $Id: world.hxx,v 1.3 2002/06/24 22:52:57 grumbel Exp $
+//  $Id: world.hxx,v 1.4 2002/06/28 09:51:46 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -40,6 +40,7 @@ class View;
 class ColMap;
 class WorldImpl;
 class WorldObj;
+class GameTime;
 
 /** The World holds all objects of the pingu enviroment. 
     
@@ -52,6 +53,7 @@ private:
   WorldImpl* impl;
 
   PinguMap* gfx_map;
+  GameTime* game_time;
   bool do_armageddon;
   std::list<Pingu*>::iterator armageddon_count;
 
@@ -160,6 +162,9 @@ public:
   /** @return the pingu at the given word coordinates, an empty
       shared_ptr is returned if none is there */
   Pingu* get_pingu (const CL_Vector& pos);
+  
+  /** Return a pointer to the GameTime object of this World */
+  GameTime* get_game_time ();
 };
 
 #endif

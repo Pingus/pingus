@@ -1,4 +1,4 @@
-//  $Id: entrance.cxx,v 1.3 2002/06/28 08:32:20 grumbel Exp $
+//  $Id: entrance.cxx,v 1.4 2002/06/28 09:51:46 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,7 @@
 #include "entrance.hxx"
 #include "game_time.hxx"
 #include "pingu.hxx"
+#include "game_time.hxx"
 
 Entrance::Entrance(const EntranceData& data)
 {
@@ -38,8 +39,8 @@ Entrance::Entrance(const EntranceData& data)
 bool
 Entrance::pingu_ready()
 {
-  if (last_release < (GameTime::get_ticks() - release_rate)) {
-    last_release = GameTime::get_ticks();
+  if (last_release < (world->get_game_time()->get_ticks() - release_rate)) {
+    last_release = world->get_game_time()->get_ticks();
     return true;
   } else {
     return false;

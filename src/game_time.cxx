@@ -1,4 +1,4 @@
-//  $Id: game_time.cxx,v 1.3 2002/06/28 08:32:20 grumbel Exp $
+//  $Id: game_time.cxx,v 1.4 2002/06/28 09:51:46 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,10 @@
 #include "globals.hxx"
 #include "game_time.hxx"
 
-int GameTime::count;
+GameTime::GameTime (int arg_tick_time)
+  : count (0), tick_time (arg_tick_time)
+{
+}
 
 int
 GameTime::get_time ()
@@ -41,9 +44,9 @@ GameTime::get_tick_time ()
 }
 
 void
-GameTime::increase(void)
+GameTime::update(void)
 {
-  ++count;
+  count += 1;
 }
 
 void
