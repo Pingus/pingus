@@ -1,4 +1,4 @@
-//  $Id: editor.cxx,v 1.2 2002/06/13 15:40:22 giray Exp $
+//  $Id: editor.cxx,v 1.3 2002/06/18 10:04:11 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -49,7 +49,7 @@ Editor* Editor::instance_ = 0;
 Editor*
 Editor::instance ()
 { 
-  if (instance_ == 0)
+  if ( ! instance_)
     instance_ = new Editor ();
   
   return instance_; 

@@ -1,4 +1,4 @@
-//  $Id: pingu_action_factory.cxx,v 1.2 2002/06/13 14:25:12 torangan Exp $
+//  $Id: pingu_action_factory.cxx,v 1.3 2002/06/18 10:04:11 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -55,7 +55,7 @@ PinguActionFactory* PinguActionFactory::instance_ = 0;
 PinguActionFactory* 
 PinguActionFactory::instance ()
 {
-  if (instance_ == 0)
+  if ( ! instance_)
     {
       instance_ = new PinguActionFactory ();
       instance_->register_core_actions ();

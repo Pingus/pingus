@@ -1,4 +1,4 @@
-//  $Id: worldobj_data_factory.cxx,v 1.1 2002/06/12 19:09:38 grumbel Exp $
+//  $Id: worldobj_data_factory.cxx,v 1.2 2002/06/18 10:04:11 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -49,7 +49,7 @@ WorldObjDataFactory::WorldObjDataFactory ()
 WorldObjDataFactory* 
 WorldObjDataFactory::instance () 
 { 
-  if (instance_ == 0) 
+  if ( ! instance_) 
     {
       instance_ = new WorldObjDataFactory ();
       
