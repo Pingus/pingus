@@ -1,5 +1,5 @@
 /* This level was created with the PLE
- * $Id: real1.plf,v 1.1 2000/06/12 12:02:14 grumbel Exp $
+ * $Id: real1.plf,v 1.2 2000/06/20 20:35:15 grumbel Exp $
  */
 global {
   start_x_pos = 0;
@@ -46,20 +46,65 @@ buttons {
   miner = 20;
 }
 
+hotspot {
+  image = (resource)"GroundPieces/Rock/real5";
+  x_pos = 373;
+  y_pos = 326;
+  z_pos = 0;
+  speed = -1;
+  para = "1";
+}
+/*
 entrance {
   type  = cloud;
-  x_pos = 211;
-  y_pos = 313;
+  x_pos = 199;
+  y_pos = 280;
   z_pos = 0;
   release_rate = 25;
   direction = left;
 }
-
+*/
 exit {
   image = (resource)"Exits/stone";
   x_pos = 421;
   y_pos = 597;
   z_pos = 0;
+}
+
+entrance {
+  type  = generic;
+  x_pos = 512;
+  y_pos = 360;
+  z_pos = 0;
+  release_rate = 25;
+  direction = left;
+}
+
+hotspot {
+  image = (resource)"GroundPieces/Rock/real5";
+  x_pos = 373;
+  y_pos = 279;
+  z_pos = 0;
+  speed = -1;
+  para = "1";
+}
+
+hotspot {
+  image = (resource)"GroundPieces/Rock/real5";
+  x_pos = 326;
+  y_pos = 303;
+  z_pos = 0;
+  speed = -1;
+  para = "1";
+}
+
+hotspot {
+  image = (resource)"GroundPieces/Rock/real5";
+  x_pos = 428;
+  y_pos = 295;
+  z_pos = 0;
+  speed = -1;
+  para = "1";
 }
 
 /* EOF */

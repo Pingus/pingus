@@ -33,6 +33,8 @@ Copyright @copyright{} 1999 Ingo Ruhnke @email{grumbel@@gmx.de}.
 @top Pingus - guide the little pingus to the exit
 @c @contents
 
+$Id: pingus.texi,v 1.7 2000/06/20 20:35:15 grumbel Exp $ 
+
 This TeXInfo documentation is still under development, but it should
 contain some usefull informations
 
@@ -280,6 +282,12 @@ right shift key, the objects are moved 10 pixels, instead of 1 pixel.
 @item LShift
 If the left Shift key is hold down while marking objects with the mouse,
 the objects are added to the selection.
+
+@item PgUp
+Moves the current object or group one position up.
+
+@item PgDown
+Moves the current object or group one position down.
 
 @item Escape
 Exit the editor, the current level is temporary saved under '/tmp/'.

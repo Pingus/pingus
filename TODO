@@ -18,7 +18,6 @@ Release Critical:
    3. Loading of data
  o Bridger, if in waiting state, can recive another new action
  o Editor doesn't handle entrance direction!!
- o Segfault when the quit button is pressed
  o fix themes
  o Position of cap rect doesn't fit for climber
  o miner and basher needs to be slower
@@ -35,6 +34,7 @@ Release Critical:
 
 Probably fixed:
 ~~~~~~~~~~~~~~~
+ o Segfault when the quit button is pressed
  o Standard World braucht hoeheren feuer-hintergrund. [anderer hintergrund]
  o Segfaults in CL_MouseCursor...?! [gibt es hwcursor]
  o Mouse Zeiger im Result screen
@@ -164,6 +164,6 @@ DOOR.WAV      MOUSEPRE.WAV  OING.WAV	     THUD.WAV
 
 
 
-$Date: 2000/06/18 18:06:55 $
+$Date: 2000/06/20 20:35:15 $
 
 -= EOF =-
