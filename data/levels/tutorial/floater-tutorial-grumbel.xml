@@ -14,7 +14,8 @@ open!</description>
     <number-to-save>10</number-to-save> <time>-1</time>
     <width>1230</width> <height>900</height>
     <difficulty>10</difficulty> <playable>1</playable>
-    <comment></comment> <music>none</music>
+    <comment></comment> 
+    <music>pingus-8.it</music>
   </global>
 
   <action-list>
