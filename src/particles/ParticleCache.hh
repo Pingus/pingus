@@ -1,4 +1,4 @@
-//  $Id: ParticleCache.hh,v 1.4 2000/06/18 17:01:50 grumbel Exp $
+//  $Id: ParticleCache.hh,v 1.5 2000/08/03 10:31:18 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,8 @@
 #define PARTICLECACHE_HH
 
 #include "Particle.hh"
+
+class Particle;
 
 ///
 class ParticleCache

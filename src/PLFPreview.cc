@@ -1,4 +1,4 @@
-//  $Id: PLFPreview.cc,v 1.5 2000/06/27 16:05:16 grumbel Exp $
+//  $Id: PLFPreview.cc,v 1.6 2000/08/03 10:31:17 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,7 @@
 #include <iostream>
 
 #include "PingusSpotMap.hh"
-#include "PinguBmpMap.hh"
+//#include "PinguBmpMap.hh"
 #include "PingusResource.hh"
 
 #include "PLFPreview.hh"
@@ -42,26 +42,26 @@ PLFPreview::load(PLF* p)
 {
   if (surface)
     return;
-
+  /*
   switch (plf->map_type()) {
   case SPOT: 
-    {
+    {*/
       PingusSpotMap p_map;
       p_map.load(plf);
       surface = p_map.get_surface();
-    }
+      /*    }
     break;
   case BMP: 
     {
-      /*PinguBmpMap map(plf->get_fg());
-	surface = map.get_surface();*/
+    PinguBmpMap map(plf->get_fg());
+	surface = map.get_surface();
     }
     break;
   default:
     std::cout << "PLFPreview::load not implemented" << std::endl;
     surface = PingusResource::load_surface("Game/logo", "global");
     break;
-  }
+  }*/
 }
 
 /* EOF */

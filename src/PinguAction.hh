@@ -1,4 +1,4 @@
-//  $Id: PinguAction.hh,v 1.7 2000/06/23 17:13:32 grumbel Exp $
+//  $Id: PinguAction.hh,v 1.8 2000/08/03 10:31:17 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -136,10 +136,6 @@ public:
 
   /// The time the action needs to get activated (see bomber.cc)
   virtual int   activation_time() { return -1; };
-  
-  /** Get access to the ParticleHolder to be able to place some
-      particles (see bomber or digger as on example) */
-  static void SetParticleHolder(ParticleHolder* );
   
   /// Keep a seperate file for the Pingu animation and manage it
   static CL_ResourceManager* local_res();

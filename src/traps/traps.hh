@@ -1,4 +1,4 @@
-//  $Id: traps.hh,v 1.4 2000/07/30 01:47:39 grumbel Exp $
+//  $Id: traps.hh,v 1.5 2000/08/03 10:31:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,8 @@
 
 #include "../Trap.hh"
 #include "../TrapData.hh"
+
+class Trap;
 
 ///
 Trap* get_trap(TrapData data);

@@ -1,4 +1,4 @@
-//  $Id: Entrance.cc,v 1.12 2000/07/30 01:47:35 grumbel Exp $
+//  $Id: Entrance.cc,v 1.13 2000/08/03 10:31:17 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,15 +25,6 @@
 #include "globals.hh"
 #include "Entrance.hh"
 #include "GameTime.hh"
-
-ParticleHolder* Entrance::particle;
-ActionHolder*   Entrance::action_holder;
-
-void
-Entrance::SetParticleHolder(ParticleHolder* p)
-{
-  particle = p;
-}
 
 Entrance::Entrance()
 {
@@ -129,12 +120,6 @@ Entrance::draw_offset(int x, int y, float s)
 			  (int)((pos.y_pos-16 + y) * s),
 			  s, s);
     }
-}
-
-void
-Entrance::set_action_holder(ActionHolder* a)
-{
-  action_holder = a;
 }
 
 /* EOF */

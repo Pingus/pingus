@@ -1,4 +1,4 @@
-//  $Id: World.cc,v 1.27 2000/08/02 19:02:04 grumbel Exp $
+//  $Id: World.cc,v 1.28 2000/08/03 10:31:17 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,9 +23,9 @@
 #include <algorithm>
 #include <functional>
 
-#include "PinguBmpMap.hh"
+//#include "PinguBmpMap.hh"
 #include "PingusSpotMap.hh"
-#include "PinguRandomMap.hh"
+//#include "PinguRandomMap.hh"
 
 #include "PingusError.hh"
 #include "algo.hh"
@@ -59,14 +59,17 @@ struct WorldObj_less : public binary_function<WorldObj*, WorldObj*, bool>
 
 World::World()
 {
+  particle_holder = 0;
   released_pingus = 0;
-  map = 0;
+  gfx_map = 0;
   background = 0;
   exit_world = false;
+  WorldObj::set_world(this);
 }
 
 World::World(PLF* plf)
 { 
+  particle_holder = 0;
   init(plf);
 }
 
@@ -74,7 +77,9 @@ World::~World()
 {
   std::cout << "World:~World" << std::endl;
 
-  delete map;
+  delete pingus;
+  delete particle_holder;
+  delete gfx_map;
   delete background;
 
   for(vector<WorldObj*>::iterator obj = world_obj_bg.begin();
@@ -100,41 +105,41 @@ World::draw(int x1, int y1, int w, int h,
       (*obj)->draw_offset(x_of, y_of, s);
     }
 
-  map->draw(x1, y1, w, h, x_of, y_of, s);
+  gfx_map->draw(x1, y1, w, h, x_of, y_of, s);
 
   for(vector<WorldObj*>::iterator obj = world_obj_fg.begin(); obj != world_obj_fg.end(); obj++)
     {
       (*obj)->draw_offset(x_of, y_of, s);
     }
   
-  particle.draw_offset(x_of, y_of, s);
+  particle_holder->draw_offset(x_of, y_of, s);
 }
 
 void 
 World::let_move()
 {
   if (!exit_world && (allowed_pingus == released_pingus || do_armageddon)
-      && pingus.size() == 0) 
+      && pingus->size() == 0) 
     {
       if (verbose) cout << "World: world finished, going down in the next seconds..." << endl;
       exit_world = true;
       shutdown_time = GameTime::get_time() + 75;
     }
 
-  if (do_armageddon && armageddon_count != pingus.end())
+  if (do_armageddon && armageddon_count != pingus->end())
     {
       (*armageddon_count)->set_action(action_holder->get_uaction("bomber"));
       armageddon_count++;
     }
   
   // Create new pingus, if enough time is passed
-  if (!do_armageddon && (unsigned int)pingus.total_size() < allowed_pingus)
+  if (!do_armageddon && (unsigned int)pingus->total_size() < allowed_pingus)
     {
       for(vector<Entrance*>::iterator i = entrance.begin(); i != entrance.end(); i++) 
 	{
 	  if ((*i)->pingu_ready())
 	    {
-	      pingus.push_back((*i)->get_pingu());
+	      pingus->push_back((*i)->get_pingu());
 	      ++released_pingus;
 	    }
 	}
@@ -165,12 +170,12 @@ World::let_move()
       (*obj)->let_move();
     }
 
-  for(PinguIter pingu = pingus.begin(); pingu != pingus.end(); ++pingu)
+  for(PinguIter pingu = pingus->begin(); pingu != pingus->end(); ++pingu)
     {
       (*pingu)->let_move();
 
       if ((*pingu)->need_catch()) {
-	for(PinguIter i = pingus.begin(); i != pingus.end(); i++) {
+	for(PinguIter i = pingus->begin(); i != pingus->end(); i++) {
 	  (*pingu)->catch_pingu(*i);
 	}
       }
@@ -188,7 +193,7 @@ World::let_move()
   for(vector<EntranceData>::size_type i2=0; i2 < entrance.size(); ++i2) 
     entrance[i2]->let_move();
   */    
-  particle.let_move();
+  particle_holder->let_move();
   background->let_move();
 
   // Clear the explosion force list
@@ -210,6 +215,9 @@ World::init(PLF* plf_data)
   init_map();
   init_background();
 
+  particle_holder = new ParticleHolder();
+  pingus = new PinguHolder();
+
   Timer timer;
 
   timer.start();
@@ -222,21 +230,18 @@ void
 World::init_map()
 {
   // load the foreground map
-  switch (plf->map_type()) 
+  /*switch (plf->map_type())
     {
-    case SPOT:
-      map = new PingusSpotMap(plf);
-      break;
+    case SPOT:*/
+      gfx_map = new PingusSpotMap(plf);
+      /*      break;
     case BMP:
     case RANDOM:
     default:
       throw PingusError("World: Error in PLF file: Undef or unsupported Maptype");
       break;
-    }
-  
-  colmap = map->get_colmap();
-
-  Particle::set_map(map);
+    } */
+  colmap = gfx_map->get_colmap();
 }
 
 void 
@@ -272,13 +277,6 @@ World::init_worldobjs()
   for(vector<LiquidData>::size_type i=0; i < liquid_d.size(); i++) 
     liquid.push_back(new Liquid(liquid_d[i]));
   
-  Pingu::set_colmap(colmap);
-  Pingu::set_map(map);
-  Pingu::SetParticleHolder(&particle);
-  Trap::SetParticleHolder(&particle);
-  Entrance::SetParticleHolder(&particle);
-  SnowGenerator::SetParticleHolder(&particle);
-
   // world_obj.push_back(map);
 
   world_obj_bg.push_back(new SnowGenerator(100));
@@ -325,7 +323,7 @@ World::init_worldobjs()
 	world_obj_fg.push_back(traps[i]);
     }
 
-  world_obj_fg.push_back(&pingus);
+  world_obj_fg.push_back(pingus);
 
   // After all objects are in world_obj, sort them to there z_pos
   stable_sort(world_obj_bg.begin(), world_obj_bg.end(), WorldObj_less());
@@ -333,10 +331,10 @@ World::init_worldobjs()
 
   // Drawing all world objs to the colmap
   for(vector<WorldObj*>::iterator obj = world_obj_bg.begin(); obj != world_obj_bg.end(); obj++)
-    (*obj)->draw_colmap(colmap);
+    (*obj)->draw_colmap();
 
   for(vector<WorldObj*>::iterator obj = world_obj_fg.begin(); obj != world_obj_fg.end(); obj++)
-    (*obj)->draw_colmap(colmap);
+    (*obj)->draw_colmap();
   
   // Setup the gravity force
   // Clear all old forces
@@ -347,21 +345,21 @@ World::init_worldobjs()
 PinguHolder*
 World::get_pingu_p(void)
 {
-  return &pingus;
+  return pingus;
 }
 
 int
 World::get_width(void)
 {
-  assert(map);
-  return map->get_width();  
+  assert(gfx_map);
+  return gfx_map->get_width();  
 }
 
 int
 World::get_height(void)
 {
-  assert(map);
-  return map->get_height();
+  assert(gfx_map);
+  return gfx_map->get_height();
 }
 
 int
@@ -377,11 +375,23 @@ World::get_time(void)
     }
 }
 
+unsigned int
+World::get_pingus_out()
+{
+  return pingus->size(); 
+}
+
+unsigned int 
+World::get_saved_pingus() 
+{
+  return pingus->get_saved(); 
+}
+
 void 
 World::armageddon(void)
 {
   do_armageddon = true;
-  armageddon_count = pingus.begin();
+  armageddon_count = pingus->begin();
 }
 
 bool
@@ -403,6 +413,24 @@ ColMap*
 World::get_colmap()
 {
   return colmap;
+}
+
+PinguMap* 
+World::get_gfx_map()
+{
+  return gfx_map;
+}
+
+ActionHolder*
+World::get_action_holder()
+{
+  return action_holder;
+}
+
+ParticleHolder* 
+World::get_particle_holder()
+{
+  return particle_holder;
 }
 
 PLF*    

@@ -1,4 +1,4 @@
-//  $Id: Pingu.cc,v 1.28 2000/07/14 12:18:49 grumbel Exp $
+//  $Id: Pingu.cc,v 1.29 2000/08/03 10:31:17 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,11 +33,6 @@
 
 const float deadly_velocity = 20.0;
 
-// Create the static objects of the class
-ColMap*             Pingu::colmap;
-PinguMap*           Pingu::map;
-ActionHolder*       Pingu::action_holder;
-
 bool                Pingu::init;
 CL_Surface*         Pingu::walker;
 CL_Surface*         Pingu::faller;
@@ -45,7 +40,6 @@ CL_Surface*         Pingu::tumble;
 CL_Font*            Pingu::font;
 
 CL_ResourceManager* Pingu::local_res_p;
-ParticleHolder* Pingu::particle;
 
 Pingu::Pingu()
 {
@@ -96,6 +90,12 @@ Pingu::~Pingu()
 {
 }
 
+World* 
+Pingu::get_world()
+{
+  return world;
+}
+
 // Returns the x position of the pingu
 int
 Pingu::get_x()
@@ -129,20 +129,6 @@ Pingu::set_pos(int x, int y)
 {
   x_pos = x;
   y_pos = y;
-}
-
-// Static function which set the colmap for all pingus
-void
-Pingu::set_colmap(ColMap* a)
-{
-  colmap = a;
-}
-
-// Static function which set the map for all pingus
-void
-Pingu::set_map(PinguMap* a)
-{
-  map = a;
 }
 
 // Set the action of the pingu (bridger, blocker, bomber, etc.)
@@ -285,7 +271,7 @@ Pingu::do_persistent()
 		} 
 	      else 
 		{
-		  set_paction(action_holder->get_uaction(persist[i]->name()));
+		  set_paction(world->get_action_holder()->get_uaction(persist[i]->name()));
 		}
 	    }
 	}
@@ -419,7 +405,7 @@ Pingu::do_falling()
 	{
 	  // FIXME: This is a LinuxTag Hack and should be replaced
 	  // with a real ground smashing action! 
-	  set_action(action_holder->get_uaction("splashed"));
+	  set_action(world->get_action_holder()->get_uaction("splashed"));
 	}
       else if (fabs(velocity.x) > deadly_velocity)
 	{
@@ -481,7 +467,7 @@ Pingu::do_walking()
 		  else 
 		    {
 		      if (verbose) std::cout << "We are infront of a wall, setting persistant action" << std::endl;
-		      set_paction(action_holder->get_uaction(persist[i]->name()));
+		      set_paction(world->get_action_holder()->get_uaction(persist[i]->name()));
 		    }
 		  return;
 		}
@@ -571,8 +557,8 @@ Pingu::draw_offset(int x, int y, float s) const
 int
 Pingu::rel_getpixel(int x, int y)
 {
-  assert(colmap);
-  return colmap->getpixel(x_pos + (x * direction), (y_pos) - y);
+  //assert(colmap);
+  return world->get_colmap()->getpixel(x_pos + (x * direction), (y_pos) - y);
 }
 
 // Let the pingu catch another pingu, so that an action can be aplied
@@ -624,12 +610,6 @@ Pingu::local_res()
   return local_res_p;
 }
 
-void
-Pingu::SetParticleHolder(ParticleHolder* p)
-{
-  particle = p;
-}
-
 int 
 Pingu::set_id(int i)
 {
@@ -661,12 +641,6 @@ Pingu::apply_force(CL_Vector arg_v)
   velocity += arg_v;
   // Moving the pingu on pixel up, so that the force can take effect
   y_pos -= 1; 
-}
-
-void
-Pingu::set_action_holder(ActionHolder* a)
-{
-  action_holder = a;
 }
 
 /* EOF */

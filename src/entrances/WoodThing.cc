@@ -1,4 +1,4 @@
-//  $Id: WoodThing.cc,v 1.5 2000/07/30 01:47:38 grumbel Exp $
+//  $Id: WoodThing.cc,v 1.6 2000/08/03 10:31:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -49,9 +49,10 @@ WoodThing::let_move(void)
   if (rand() % 5 == 0) 
     {
       // This does not work and I have no idea why?!
-      particle->add_particle(new SmokeParticle(pos.x_pos - (surface->get_width()/2) - 24,
-					       pos.y_pos - surface->get_height() + 32 - 147,
-					       -0.6 * (frand() + 1), -0.6 * (frand() + 1)));
+      world->get_particle_holder()
+	->add_particle(new SmokeParticle(pos.x_pos - (surface->get_width()/2) - 24,
+					 pos.y_pos - surface->get_height() + 32 - 147,
+					 -0.6 * (frand() + 1), -0.6 * (frand() + 1)));
       // particle->add_particle(new SmokeParticle());
     }
 }

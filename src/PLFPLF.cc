@@ -1,4 +1,4 @@
-//  $Id: PLFPLF.cc,v 1.2 2000/08/02 19:02:04 grumbel Exp $
+//  $Id: PLFPLF.cc,v 1.3 2000/08/03 10:31:17 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -152,6 +152,7 @@ PLFPLF::set_value(string valueid,
     break;
 
   case PLFPLF::GROUND:
+    /*
     if (valueid == "maptype") {
       if (value == "BMP") {
 	maptype = BMP;
@@ -162,7 +163,7 @@ PLFPLF::set_value(string valueid,
       } else {
 	maptype = UNDEF;
       }
-    } else if (valueid == "data") {
+    } else*/ if (valueid == "data") {
       foreground = ResDescriptor(cast, value);
     } else if (valueid == "colmap") {
       col = ResDescriptor(cast, value);

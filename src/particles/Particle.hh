@@ -1,4 +1,5 @@
-//  $Id: Particle.hh,v 1.4 2000/06/18 17:01:50 grumbel Exp $
+
+//  $Id: Particle.hh,v 1.5 2000/08/03 10:31:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,18 +23,13 @@
 
 #include <ClanLib/core.h>
 
-#include "../PinguMap.hh"
-#include "../ColMap.hh"
+#include "../WorldObj.hh"
+
 
 ///
-class Particle
+class Particle : public WorldObj
 {
 protected:
-  ///
-  static PinguMap* map;
-  ///
-  static ColMap*   colmap;
-
   ///
   CL_Surface* surface;
   ///
@@ -55,9 +51,6 @@ public:
 
   ///
   virtual ~Particle();
-
-  ///
-  static void set_map(PinguMap* m);
 
   /// Reinit a allready created particle with now coordinates
   virtual void init(int x, int y, float x_a, float y_a);

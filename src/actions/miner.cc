@@ -1,4 +1,4 @@
-// $Id: miner.cc,v 1.9 2000/07/14 12:18:50 grumbel Exp $
+// $Id: miner.cc,v 1.10 2000/08/03 10:31:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -54,8 +54,10 @@ Miner::let_move()
     {
       if (slow_count % 3 == 0) 
 	{
-	  pingu->colmap->remove(miner_radius->get_provider(), pingu->x_pos - 16 + pingu->direction, pingu->y_pos - 31);
-	  pingu->map->remove(miner_radius->get_provider(), pingu->x_pos - 16 + pingu->direction, pingu->y_pos - 31);
+	  pingu->get_world()->get_colmap()->remove(miner_radius->get_provider(), pingu->x_pos - 16 + pingu->direction, 
+						   pingu->y_pos - 31);
+	  pingu->get_world()->get_gfx_map()->remove(miner_radius->get_provider(), pingu->x_pos - 16 + pingu->direction, 
+						    pingu->y_pos - 31);
 	}
 
       pingu->x_pos += pingu->direction;
@@ -64,8 +66,8 @@ Miner::let_move()
   
   if (rel_getpixel(0, -1) == ColMap::NOTHING)
     {
-      pingu->colmap->remove(miner_radius->get_provider(), pingu->x_pos - 16 + pingu->direction, pingu->y_pos - 29);
-      pingu->map->remove(miner_radius->get_provider(), pingu->x_pos - 16 + pingu->direction, pingu->y_pos - 29);
+      pingu->get_world()->get_colmap()->remove(miner_radius->get_provider(), pingu->x_pos - 16 + pingu->direction, pingu->y_pos - 29);
+      pingu->get_world()->get_gfx_map()->remove(miner_radius->get_provider(), pingu->x_pos - 16 + pingu->direction, pingu->y_pos - 29);
       is_finished = true;
     }
   else if (rel_getpixel(0, -1) == ColMap::SOLID)

@@ -1,4 +1,4 @@
-//  $Id: bomber.cc,v 1.9 2000/07/14 12:18:50 grumbel Exp $
+//  $Id: bomber.cc,v 1.10 2000/08/03 10:31:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -123,20 +123,20 @@ Bomber::let_move()
   if (counter > 12 && !particle_thrown) 
     {
       particle_thrown = true;
-      pingu->particle->add_pingu_explo(pingu->x_pos, pingu->y_pos - 5);
+      pingu->get_world()->get_particle_holder()->add_pingu_explo(pingu->x_pos, pingu->y_pos - 5);
     }
 
   // The pingu explode
   if (counter >= (int)(surface->get_num_frames()) - 1) 
     {
       pingu->set_status(dead);
-      pingu->colmap->remove(bomber_radius,
-			    pingu->x_pos - (bomber_radius->get_width()/2),
-			    pingu->y_pos - 16 - (bomber_radius->get_width()/2));
-      pingu->map->remove(bomber_radius, 
-			 pingu->x_pos - (bomber_radius->get_width()/2),
-			 pingu->y_pos - 16 - (bomber_radius->get_width()/2));
-
+      pingu->get_world()->get_colmap()->remove(bomber_radius,
+					       pingu->x_pos - (bomber_radius->get_width()/2),
+					       pingu->y_pos - 16 - (bomber_radius->get_width()/2));
+      pingu->get_world()->get_gfx_map()->remove(bomber_radius, 
+						pingu->x_pos - (bomber_radius->get_width()/2),
+						pingu->y_pos - 16 - (bomber_radius->get_width()/2));
+      
       // Add an explosion to the forces list
       ForcesHolder::add_force(ExplosionForce(5,30,CL_Vector(pingu->x_pos,
 							     pingu->y_pos - 20)));

@@ -1,4 +1,4 @@
-//  $Id: PLF.hh,v 1.13 2000/07/31 23:45:02 grumbel Exp $
+//  $Id: PLF.hh,v 1.14 2000/08/03 10:31:17 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,7 +26,6 @@
 #include <vector>
 #include <map>
 
-#include "PinguMap.hh"
 #include "BackgroundData.hh"
 #include "ActionData.hh"
 #include "EntranceData.hh"
@@ -34,6 +33,7 @@
 #include "HotspotData.hh"
 #include "LiquidData.hh"
 #include "TrapData.hh"
+#include "PinguMap.hh"
 
 /** The Pingus Level File
     
@@ -63,8 +63,8 @@ protected:
   ResDescriptor music;
   ///
   ResDescriptor col;
-  ///
-  MapType  maptype;
+  //
+  //MapType  maptype;
   ///
   int  bg_speed;
   ///
@@ -143,7 +143,7 @@ public:
   int         get_difficulty();
 
   ///
-  MapType     map_type(void);
+  //MapType     map_type(void);
 
   /// Returns the number of pingus you need to save in this level.
   int         get_number_to_save();

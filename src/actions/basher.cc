@@ -1,4 +1,4 @@
-//  $Id: basher.cc,v 1.13 2000/06/26 15:19:17 grumbel Exp $
+//  $Id: basher.cc,v 1.14 2000/08/03 10:31:17 grumbel Exp $
 //
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -97,9 +97,9 @@ Basher::let_move()
 void
 Basher::bash()
 {
-  pingu->colmap->remove(bash_radius->get_provider(), 
+  pingu->get_world()->get_colmap()->remove(bash_radius->get_provider(), 
 			pingu->x_pos - (bash_radius->get_width()/2), pingu->y_pos - 31);
-  pingu->map->remove(bash_radius->get_provider(), 
+  pingu->get_world()->get_gfx_map()->remove(bash_radius->get_provider(), 
 		     pingu->x_pos - (bash_radius->get_width()/2), pingu->y_pos - 31);
 }
 

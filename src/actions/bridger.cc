@@ -1,4 +1,4 @@
-//  $Id: bridger.cc,v 1.23 2000/07/30 02:35:56 grumbel Exp $
+//  $Id: bridger.cc,v 1.24 2000/08/03 10:31:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -109,7 +109,7 @@ Bridger::let_move()
 	{
 	  //std::cout << "bridger finisted" << std::endl;
 	  // Waiting some seconds after we are out of bricks 
-	  pingu->set_action(pingu->action_holder->get_uaction("waiter"));
+	  pingu->set_action(pingu->get_world()->get_action_holder()->get_uaction("waiter"));
 	}
     }
 
@@ -154,22 +154,22 @@ Bridger::place_a_brick()
  
   if (pingu->direction.is_right())
     {
-      pingu->colmap->put(brick_r, 
-			 pingu->x_pos + 10 - brick_r->get_width(),
-			 pingu->y_pos,
-			 SurfaceData::BRIDGE);
-      pingu->map->put(brick_r->get_provider(), 
-		      pingu->x_pos + 10 - brick_r->get_width(),
-		      pingu->y_pos);
+      pingu->get_world()->get_colmap()->put(brick_r, 
+					    pingu->x_pos + 10 - brick_r->get_width(),
+					    pingu->y_pos,
+					    SurfaceData::BRIDGE);
+      pingu->get_world()->get_gfx_map()->put(brick_r->get_provider(), 
+					     pingu->x_pos + 10 - brick_r->get_width(),
+					     pingu->y_pos);
     }
   else
     {
-      pingu->colmap->put(brick_r, pingu->x_pos - 10,
-			 pingu->y_pos,
-			 SurfaceData::BRIDGE);
-      pingu->map->put(brick_l->get_provider(), 
-		      pingu->x_pos - 10,
-		      pingu->y_pos);
+      pingu->get_world()->get_colmap()->put(brick_r, pingu->x_pos - 10,
+					    pingu->y_pos,
+					    SurfaceData::BRIDGE);
+      pingu->get_world()->get_colmap()->put(brick_l->get_provider(), 
+					    pingu->x_pos - 10,
+					    pingu->y_pos);
     }
 }
 

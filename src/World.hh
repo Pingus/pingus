@@ -1,4 +1,4 @@
-//  $Id: World.hh,v 1.13 2000/07/08 13:21:33 grumbel Exp $
+//  $Id: World.hh,v 1.14 2000/08/03 10:31:17 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,8 +24,8 @@
 #include <vector>
 #include <iterator>
 
-#include "PinguHolder.hh"
 #include "WorldObj.hh"
+#include "PinguHolder.hh"
 #include "PLF.hh"
 #include "Pingu.hh"
 #include "Background.hh"
@@ -37,6 +37,17 @@
 #include "Trap.hh"
 #include "traps/traps.hh"
 #include "particles/ParticleHolder.hh"
+#include "PinguMap.hh"
+
+class WorldObj;
+class Exit;
+class Entrance;
+class Liquid;
+class Hotspot;
+class PinguHolder;
+class Trap;
+class ParticleHolder;
+class ActionHolder;
 
 /** The World holds all objects of the pingu enviroment. 
     
@@ -47,14 +58,14 @@ class World
 {
 private:
   ///
-  PinguMap*  map;
+  PinguMap* gfx_map;
   ///
   Background* background;
 
   ///
   bool do_armageddon;
   ///
-  PinguIter armageddon_count;
+  std::list<Pingu*>::iterator armageddon_count;
 
   ///
   unsigned int released_pingus;
@@ -90,14 +101,11 @@ private:
   std::vector<Trap*>     traps;
 
   ///
-  ParticleHolder particle;
-  ///
-  CL_InputSourceProvider* datafile;
+  ParticleHolder* particle_holder;
   ///
   ActionHolder* action_holder;
-
   ///
-  PinguHolder pingus;
+  PinguHolder* pingus;
   ///
   ColMap* colmap;
   ///
@@ -145,6 +153,15 @@ public:
   /** @return A pointer to the collision map used in this world */
   ColMap* get_colmap();
 
+  /** @return A pointer to the gfx map of this world */
+  PinguMap* get_gfx_map();
+
+  /** @return A pointer to the worlds particle holder */
+  ParticleHolder* get_particle_holder();
+  
+  /** @return Pointer to the ActionHolder of the world */
+  ActionHolder* get_action_holder();
+
   ///
   PLF*    get_plf();
 
@@ -153,9 +170,9 @@ public:
   ///
   unsigned int get_allowed_pingus() { return allowed_pingus; }
   ///
-  unsigned int get_pingus_out() { return pingus.size(); }
+  unsigned int get_pingus_out();
   ///
-  unsigned int get_saved_pingus() { return pingus.get_saved(); }
+  unsigned int get_saved_pingus();
   ///
   unsigned int get_number_to_save() { return number_to_save; }
 

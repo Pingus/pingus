@@ -1,4 +1,4 @@
-//  $Id: TrueServer.cc,v 1.15 2000/07/30 01:47:36 grumbel Exp $
+//  $Id: TrueServer.cc,v 1.16 2000/08/03 10:31:17 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -89,10 +89,10 @@ TrueServer::start(PLF* level_data)
   // FIXME: this is complete trash, delete it and place it in world
   // object or so...
   world->set_action_holder(&action_holder);
-  Exit::set_action_holder(&action_holder);
-  Entrance::set_action_holder(&action_holder);
-  Pingu::set_action_holder(&action_holder);
-  Trap::set_action_holder(&action_holder);
+  //  Exit::set_action_holder(&action_holder);
+  //Entrance::set_action_holder(&action_holder);
+  //Pingu::set_action_holder(&action_holder);
+  //Trap::set_action_holder(&action_holder);
 
   leveldesc.draw(PingusLevelDesc::LOADING);
   world->init(level_data);

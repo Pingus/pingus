@@ -1,4 +1,4 @@
-//  $Id: PinguParticle.cc,v 1.5 2000/06/25 20:22:18 grumbel Exp $
+//  $Id: PinguParticle.cc,v 1.6 2000/08/03 10:31:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -86,12 +86,13 @@ PinguParticle::let_move()
     {
       for (tmp_y_add = y_add; tmp_y_add >= 1.0; tmp_y_add -= 1.0)
 	{
-	  if (colmap->getpixel((int)x_pos, (int)y_pos)) {
-	    y_add = y_add * -y_collision_decrease;
-	    tmp_y_add = -tmp_y_add;
-	    y_pos -= 1.0;
-	    break;
-	  }
+	  if (world->get_colmap()->getpixel((int)x_pos, (int)y_pos)) 
+	    {
+	      y_add = y_add * -y_collision_decrease;
+	      tmp_y_add = -tmp_y_add;
+	      y_pos -= 1.0;
+	      break;
+	    }
 	  y_pos += 1.0;
 	}
       y_pos += tmp_y_add;
@@ -100,7 +101,7 @@ PinguParticle::let_move()
     {
       for (tmp_y_add = y_add; tmp_y_add <= -1.0; tmp_y_add += 1.0)
 	{
-	  if (colmap->getpixel((int)x_pos, (int)y_pos)) {
+	  if (world->get_colmap()->getpixel((int)x_pos, (int)y_pos)) {
 	    y_add = y_add * -y_collision_decrease;
 	    tmp_y_add = -tmp_y_add;
 	    y_pos += 1.0;
@@ -115,7 +116,7 @@ PinguParticle::let_move()
     {
       for (tmp_x_add = x_add; tmp_x_add >= 1.0; tmp_x_add -= 1.0)
 	{
-	  if (colmap->getpixel((int)x_pos, (int)y_pos)) {
+	  if (world->get_colmap()->getpixel((int)x_pos, (int)y_pos)) {
 	    x_add = x_add * -x_collision_decrease;
 	    tmp_x_add = -tmp_x_add;
 	    x_pos -= 1.0;
@@ -129,7 +130,7 @@ PinguParticle::let_move()
     {
       for (tmp_x_add = x_add; tmp_x_add <= -1.0; tmp_x_add += 1.0)
 	{
-	  if (colmap->getpixel((int)x_pos, (int)y_pos)) {
+	  if (world->get_colmap()->getpixel((int)x_pos, (int)y_pos)) {
 	    x_add = x_add * -x_collision_decrease;
 	    tmp_x_add = -tmp_x_add;
 	    x_pos += 1.0;

@@ -1,4 +1,4 @@
-//  $Id: Particle.cc,v 1.3 2000/03/08 01:37:22 grumbel Exp $
+//  $Id: Particle.cc,v 1.4 2000/08/03 10:31:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,9 +20,6 @@
 #include <cassert>
 #include "Particle.hh"
 
-PinguMap* Particle::map;
-ColMap*   Particle::colmap;
-
 Particle::Particle()
 {
 }
@@ -40,13 +37,6 @@ Particle::Particle(int x, int y, float x_a, float y_a)
 Particle::~Particle()
 {
   
-}
-
-void
-Particle::set_map(PinguMap* m)
-{
-  map = m;
-  colmap = map->get_colmap();
 }
 
 void

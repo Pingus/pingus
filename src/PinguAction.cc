@@ -1,4 +1,4 @@
-//  $Id: PinguAction.cc,v 1.6 2000/06/27 16:05:16 grumbel Exp $
+//  $Id: PinguAction.cc,v 1.7 2000/08/03 10:31:17 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -57,7 +57,7 @@ PinguAction::need_catch()
 int
 PinguAction::rel_getpixel(int x, int y)
 {
-  return pingu->colmap->getpixel(pingu->x_pos + (x * pingu->direction), (pingu->y_pos) - y);
+  return pingu->get_world()->get_colmap()->getpixel(pingu->x_pos + (x * pingu->direction), (pingu->y_pos) - y);
 }
 
 void

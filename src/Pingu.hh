@@ -1,4 +1,4 @@
-//  $Id: Pingu.hh,v 1.12 2000/06/18 18:06:56 grumbel Exp $
+//  $Id: Pingu.hh,v 1.13 2000/08/03 10:31:17 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,7 +22,7 @@
 
 #include <ClanLib/core.h>
 
-#include "ColMap.hh"
+#include "WorldObj.hh"
 #include "PinguMap.hh"
 #include "particles/ParticleHolder.hh"
 #include "Direction.hh"
@@ -34,11 +34,10 @@
 class ActionHolder;
 class PinguAction; 
 
-class Pingu
+class Pingu : public WorldObj
 {
 protected:
   friend class PinguAction;
-
   ///
   PinguAction* action;
   ///
@@ -91,18 +90,7 @@ public:
   Pingu(int x, int y);
   ///
   ~Pingu();
-  
-  /// Should be friends
-  static ParticleHolder* particle;
-  ///
-  static void SetParticleHolder(ParticleHolder* );
-  ///
-  static ColMap* colmap;
-  ///
-  static PinguMap*  map;
-  ///
-  static ActionHolder* action_holder;
-
+ 
   ///
   Direction direction;
 
@@ -110,6 +98,8 @@ public:
 
   /// Current velocity
   CL_Vector velocity; 
+
+  static World* get_world();
 
   /// Returns the x position of the pingu
   int  get_x(void);
@@ -181,13 +171,6 @@ public:
 
   ///
   static CL_ResourceManager* local_res();
-  
-  ///
-  static void set_colmap(ColMap*);
-  ///
-  static void set_map(PinguMap*);
-  ///
-  static void set_action_holder(ActionHolder*);
 };
 
 #endif /* PINGU_HH */

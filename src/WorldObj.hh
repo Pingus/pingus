@@ -1,4 +1,4 @@
-//  $Id: WorldObj.hh,v 1.5 2000/07/30 01:47:36 grumbel Exp $
+//  $Id: WorldObj.hh,v 1.6 2000/08/03 10:31:17 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,12 +21,16 @@
 #define WORLDOBJ_HH
 
 #include "Position.hh"
-#include "ColMap.hh"
 
-///
+class World;
+
+/** All objects that act in the world should be derived from this
+    class, it provides access to all the important data from the world */
 class WorldObj
 {
 protected:
+  static World*  world;
+
 public:
   ///
   WorldObj();
@@ -35,14 +39,18 @@ public:
   ///
   bool operator< (const WorldObj& w);
   ///
-  virtual int  get_z_pos() const =0;
+  virtual int  get_z_pos() const { return 0; }
   ///
-  virtual void draw_offset(int, int, float s = 1.0) = 0;
+  virtual void draw_offset(int, int, float s = 1.0) {}
   ///
-  virtual void draw_colmap(ColMap*);
+  virtual void draw_colmap();
   ///
   virtual void let_move(void);
+  /// Set the world pointer for all world objects 
+  static void set_world(World*);
 };
+
+#include "World.hh"
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: Bumper.hh,v 1.3 2000/07/30 01:47:38 grumbel Exp $
+//  $Id: Bumper.hh,v 1.4 2000/08/03 10:31:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -40,7 +40,7 @@ public:
   ///
   void draw_offset(int x, int y, float s);
   ///
-  void draw_colmap(ColMap*);
+  void draw_colmap();
   ///
   void let_move();
   ///

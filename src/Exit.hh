@@ -1,4 +1,4 @@
-//  $Id: Exit.hh,v 1.8 2000/07/30 01:47:35 grumbel Exp $
+//  $Id: Exit.hh,v 1.9 2000/08/03 10:31:17 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,38 +22,35 @@
 
 #include <ClanLib/core.h>
 
+#include "WorldObj.hh"
 #include "ExitData.hh"
 #include "Pingu.hh"
 #include "AnimCounter.hh"
-#include "WorldObj.hh"
 #include "ActionHolder.hh"
 
 ///
-class Exit : public WorldObj, public ExitData
+class Exit : public ExitData,
+	     public WorldObj
 {
 private:
   ///
   CL_Surface* surface;
 
   AnimCounter counter;
-  ///
-  static ActionHolder* action_holder;
 public:
   ///
   Exit(ExitData data);
-  
   ///
-  void draw_colmap(ColMap*);
+  virtual ~Exit();
+  ///
+  void draw_colmap();
   ///
   void draw_offset(int x, int y, float s = 1.0);
   ///
   bool catch_pingu(Pingu* pingu);
   ///
   virtual int  get_z_pos() const { return pos.z_pos; }
-  ///
-  static void set_action_holder(ActionHolder*);
-}///
-;
+};
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: PLF.cc,v 1.13 2000/07/30 01:47:35 grumbel Exp $
+//  $Id: PLF.cc,v 1.14 2000/08/03 10:31:17 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,7 +41,7 @@ PLF::PLF()
   number_of_pingus = 100;
   difficulty = 5;
   music = ResDescriptor("file", "pingus-4.it");
-  maptype = SPOT;
+  //maptype = SPOT;
   foreground.type = ResDescriptor::FILE;
 }
 
@@ -78,13 +78,13 @@ PLF::get_foreground()
     return ret_val;
   }
 }
-
+/*
 MapType
 PLF::map_type()
 {
   return maptype;
 }
-
+*/
 ResDescriptor
 PLF::get_mapfile()
 {

@@ -1,4 +1,4 @@
-//  $Id: Exit.cc,v 1.11 2000/07/30 01:47:35 grumbel Exp $
+//  $Id: Exit.cc,v 1.12 2000/08/03 10:31:17 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,8 +24,6 @@
 #include "Exit.hh"
 #include "actions/exiter.hh"
 
-ActionHolder* Exit::action_holder;
-
 Exit::Exit(ExitData data)
 {
   if (verbose > 2)
@@ -40,6 +38,10 @@ Exit::Exit(ExitData data)
   counter.set_speed(10);
 }
 
+Exit::~Exit()
+{
+}
+
 bool
 Exit::catch_pingu(Pingu* pingu)
 {
@@ -52,7 +54,7 @@ Exit::catch_pingu(Pingu* pingu)
       if (pingu->get_status() != exited
 	  && pingu->get_status() != dead)
 	{
-	  pingu->set_action(action_holder->get_uaction("exiter"));
+	  pingu->set_action(world->get_action_holder()->get_uaction("exiter"));
 	}
       return true;
     }
@@ -60,9 +62,9 @@ Exit::catch_pingu(Pingu* pingu)
 }
 
 void
-Exit::draw_colmap(ColMap* colmap)
+Exit::draw_colmap()
 {
-  colmap->remove(surface, pos.x_pos, pos.y_pos);
+  world->get_colmap()->remove(surface, pos.x_pos, pos.y_pos);
 }
 
 void
@@ -74,12 +76,6 @@ Exit::draw_offset(int x_of, int y_of, float s)
     surface->put_screen((int)((pos.x_pos + x_of) * s), (int)((pos.y_pos + y_of) * s),
 			s, s);
   }
-}
-
-void
-Exit::set_action_holder(ActionHolder* a)
-{
-  action_holder = a;
 }
 
 /* EOF */

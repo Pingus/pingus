@@ -1,4 +1,4 @@
-//  $Id: SnowParticle.cc,v 1.3 2000/08/02 19:00:08 grumbel Exp $
+//  $Id: SnowParticle.cc,v 1.4 2000/08/03 10:31:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -72,7 +72,7 @@ SnowParticle::let_move()
 bool
 SnowParticle::is_alive()
 {
-  if (y_pos < colmap->get_height())
+  if (y_pos < world->get_colmap()->get_height())
     return true;
   else
     return false;

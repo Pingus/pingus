@@ -1,4 +1,4 @@
-//  $Id: Entrance.hh,v 1.6 2000/07/30 01:47:35 grumbel Exp $
+//  $Id: Entrance.hh,v 1.7 2000/08/03 10:31:17 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,28 +25,27 @@
 
 #include "Pingu.hh"
 #include "WorldObj.hh"
-#include "particles/ParticleHolder.hh"
 #include "ActionHolder.hh"
 #include "EntranceData.hh"
 
 /** A abstract representation of an entrance, the implementation
     currently sucks and needs to be rewritten */
-class Entrance : public WorldObj, public EntranceData
+class Entrance : public EntranceData, 
+		 public WorldObj
 {
 protected:
   ///
   CL_Surface* surface;
   ///
   int last_release;
-  ///
-  static ParticleHolder* particle;
-  ///
-  static ActionHolder* action_holder;
+
 public:
   ///
   Entrance();
   ///
   Entrance(EntranceData data);
+  ///
+  virtual ~Entrance() {}
   ///
   int  get_z_pos() const { return pos.z_pos; }
   ///
@@ -57,13 +56,7 @@ public:
   virtual void   let_move(void);
   ///
   virtual void   draw_offset(int x, int y, float s = 1.0);
-
-  ///
-  static void set_action_holder(ActionHolder* a);
-  ///
-  static void SetParticleHolder(ParticleHolder* p);
-}///
-;
+};
 
 #endif
 
