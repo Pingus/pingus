@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapGraph.hh,v 1.2 2000/09/21 15:23:57 grumbel Exp $
+//  $Id: PingusWorldMapPingus.hh,v 1.1 2000/09/21 15:23:57 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,51 +17,32 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef PINGUSWORLDMAPGRAPH_HH
-#define PINGUSWORLDMAPGRAPH_HH
+#ifndef PINGUSWORLDMAPPINGUS_HH
+#define PINGUSWORLDMAPPINGUS_HH
 
-#include <string>
-#include <libxml/parser.h>
-
-#include "../ResDescriptor.hh"
+#include <stack>
 #include "../Position.hh"
-#include "../generic/Graph.hh"
+#include "../AnimCounter.hh"
+#include "PingusWorldMapGraph.hh"
 
-class PingusWorldMapNode
+/** This is the representation of the horde of Pingus which will walk
+    on the worldmap */
+class PingusWorldMapPingus
 {
-public:
-  std::string levelname;
+private:
+  CL_Surface* sur;
   Position pos;
-  list<int> links;
-  int id;
-};
+  AnimCounter counter;
+  stack<Position> targets;
 
-class PingusWorldMapGraph
-{
-private:
-  Graph<PingusWorldMapNode>* graph;
-  ResDescriptor bg_desc;
-  xmlDocPtr doc;
-  
 public:
-  list<PingusWorldMapNode>   nodes;
+  PingusWorldMapPingus ();
+  ~PingusWorldMapPingus ();
 
-  PingusWorldMapGraph ();
-  ~PingusWorldMapGraph ();
- 
-  ResDescriptor             get_background ();
-  Graph<PingusWorldMapNode>* get_graph ();
-  
   void draw ();
-
-  /// Some functions to parse the data out of an xml file
-  //@{ 
-  void parse_file (std::string filename);
-private:
-  void parse_node_list (xmlNodePtr);
-  void parse_node (xmlNodePtr);
-  void parse_background (xmlNodePtr);
-  //@}
+  void let_move ();
+  void walk_to (PingusWorldMapNode node);
+  void set_position (PingusWorldMapNode node);
 };
 
 #endif

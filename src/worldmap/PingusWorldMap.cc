@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMap.cc,v 1.3 2000/09/20 14:31:11 grumbel Exp $
+//  $Id: PingusWorldMap.cc,v 1.4 2000/09/21 15:23:57 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,30 +31,49 @@ PingusWorldMap::PingusWorldMap (std::string filename)
   graph_data.parse_file (filename);
 
   background = PingusResource::load_surface (graph_data.get_background ());
+
+  pingus = new PingusWorldMapPingus;
+
+  pingus->set_position (*graph_data.nodes.begin ());
 }
 
 PingusWorldMap::~PingusWorldMap ()
 {
   delete graph;
+  delete pingus;
 }
 
 void 
 PingusWorldMap::on_button_press (CL_InputDevice *device, const CL_Key &key)
 {
-  for (list<PingusWorldMapNode>::iterator i = graph_data.nodes.begin ();
-       i != graph_data.nodes.end ();
-       i++)
-    if (i->pos.x_pos - (red_dot->get_width()/2) < key.x
-	&& i->pos.x_pos + (red_dot->get_width()/2) > key.x
-	&& i->pos.y_pos - (red_dot->get_height()/2) < key.y
-	&& i->pos.y_pos + (red_dot->get_height()/2) > key.y)
-      {
-	std::cout << "Click on: " << i->id << std::endl;
-	PingusGame game;
-	game.start_game(find_file(pingus_datadir, "levels/" + i->levelname));
-	return;
-      }
-  std::cout << "no id clicked" << std::endl;
+  if (device == CL_Input::pointers[0])
+    {
+      if (key.id == 0)
+	{
+	  for (list<PingusWorldMapNode>::iterator i = graph_data.nodes.begin ();
+	       i != graph_data.nodes.end ();
+	       i++)
+	    if (i->pos.x_pos - (red_dot->get_width()/2) - 3 < key.x
+		&& i->pos.x_pos + (red_dot->get_width()/2) + 3 > key.x
+		&& i->pos.y_pos - (red_dot->get_width()/2) - 3 < key.y
+		&& i->pos.y_pos + (red_dot->get_width()/2) + 3 > key.y)
+	      {
+		std::cout << "Click on: " << i->id << std::endl;
+		//PingusGame game;
+		//game.start_game(find_file(pingus_datadir, "levels/" + i->levelname));
+		pingus->walk_to (*i);
+		return;
+	      }
+	  std::cout << "no id clicked" << std::endl;
+      	}
+      else 
+	{
+	  std::cout << "<position>" << std::endl;
+	  std::cout << "  <x-pos>" << key.x << "</x-pos>" << std::endl;
+	  std::cout << "  <y-pos>" << key.y << "</y-pos>" << std::endl;
+	  std::cout << "</position>" << std::endl;
+	}
+    }
 }
  
 void 
@@ -67,17 +86,21 @@ PingusWorldMap::draw ()
 {
   background->put_screen (0,0, CL_Display::get_width (), CL_Display::get_height ());
 
+  graph_data.draw();
+
   for (list<PingusWorldMapNode>::iterator i = graph_data.nodes.begin ();
        i != graph_data.nodes.end ();
        i++)
     red_dot->put_screen (i->pos.x_pos - (red_dot->get_width()/2),
 			 i->pos.y_pos - (red_dot->get_height()/2));
+
+  pingus->draw ();
 }
 
 void
 PingusWorldMap::let_move ()
 {
-  
+  pingus->let_move ();
 }
 
 /* EOF */

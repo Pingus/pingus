@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapGraph.cc,v 1.1 2000/09/20 14:31:11 grumbel Exp $
+//  $Id: PingusWorldMapGraph.cc,v 1.2 2000/09/21 15:23:57 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <ClanLib/core.h>
 #include "../XMLhelper.hh"
 #include "../StringConverter.hh"
 #include "PingusWorldMapGraph.hh"
@@ -144,6 +145,27 @@ Graph<PingusWorldMapNode>*
 PingusWorldMapGraph::get_graph ()
 {
   return graph;
+}
+
+void
+PingusWorldMapGraph::draw ()
+{
+  for (list<PingusWorldMapNode>::iterator i = nodes.begin();
+       i != nodes.end();
+       i++)
+    {
+      for (list<PingusWorldMapNode>::iterator j = nodes.begin();
+	   j != nodes.end();
+	   j++)
+      for (list<int>::iterator k = i->links.begin();
+	   k != i->links.end();
+	   k++)
+	if (j->id == *k)
+	  CL_Display::draw_line (j->pos.x_pos, j->pos.y_pos,
+				 i->pos.x_pos, i->pos.y_pos,
+				 1.0, 1.0, 1.0, 1.0);
+      
+    }
 }
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMap.hh,v 1.3 2000/09/20 14:31:11 grumbel Exp $
+//  $Id: PingusWorldMap.hh,v 1.4 2000/09/21 15:23:57 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,6 +25,7 @@
 #include "../generic/Graph.hh"
 #include "../Position.hh"
 #include "PingusWorldMapGraph.hh"
+#include "PingusWorldMapPingus.hh"
 
 class PingusWorldMap
 {
@@ -34,6 +35,8 @@ private:
   CL_Surface* red_dot;
   Graph<PingusWorldMapNode>* graph;
   PingusWorldMapGraph graph_data;
+
+  PingusWorldMapPingus* pingus;
   
 public:
   /** Load a worldmap from a given worldmap description file */
