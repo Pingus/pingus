@@ -1,4 +1,4 @@
-//  $Id: smasher.cc,v 1.18 2001/04/01 18:22:17 grumbel Exp $
+//  $Id: smasher.cc,v 1.19 2001/04/06 12:49:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,9 +22,12 @@
 #include "../PingusResource.hh"
 #include "../PingusSound.hh"
 #include "../particles/SmokeParticle.hh"
+#include "../actions/Splashed.hh"
 #include "../algo.hh"
-
+#include "../boost/smart_ptr.hpp"
 #include "smasher.hh"
+
+using boost::shared_ptr;
 
 Smasher::Smasher(TrapData data)
 {
@@ -66,7 +69,9 @@ Smasher::update(float delta)
 		  if ((*pingu)->is_inside (pos.x_pos + 30, pos.y_pos + 90,
 					   pos.x_pos + 250, pos.y_pos + 190))
 		    {
-		      (*pingu)->set_status (dead);
+		      if ((*pingu)->get_status () != not_catchable)
+			(*pingu)->set_action (shared_ptr<PinguAction>(new Splashed ()));
+		      //(*pingu)->set_status (dead);
 		    }
 		}
 	    }
@@ -105,6 +110,9 @@ Smasher::draw_offset(int x, int y, float s)
 void 
 Smasher::catch_pingu(boost::shared_ptr<Pingu> pingu)
 {
+  if (pingu->get_status () == not_catchable)
+    return;
+
   // Activate the smasher if a Pingu is under it
   if ((pingu->direction.is_left() 
        && pingu->get_x() > pos.x_pos + 65 && pingu->get_x() < pos.x_pos + 85)

@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapGraph.cc,v 1.8 2001/04/04 10:21:17 grumbel Exp $
+//  $Id: PingusWorldMapGraph.cc,v 1.9 2001/04/06 12:49:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -112,6 +112,10 @@ PingusWorldMapGraph::parse_node (xmlNodePtr cur)
   else
     std::cout << "PingusWorldMapGraph::parse_node: no node id given" << std::endl;
 
+  char* accessible = (char*)xmlGetProp(cur, (xmlChar*)"accessible");
+  if (accessible)
+    node.accessible = StringConverter::to_int (accessible);
+  
   cur = cur->children;
 
   while (cur != NULL)
@@ -136,7 +140,7 @@ PingusWorldMapGraph::parse_node (xmlNodePtr cur)
 	}
       else if (strcmp((char*)cur->name, "link") == 0)
 	{
-	  char* id = (char*)xmlGetProp(cur, (xmlChar*)"id");	  
+	  char* id = (char*)xmlGetProp(cur, (xmlChar*)"id");
 	  if (id)
 	    node.links.push_back(StringConverter::to_int (id));
 	  else
@@ -199,19 +203,20 @@ PingusWorldMapGraph::draw ()
 
   for (list<PingusWorldMapNode>::iterator i = nodes.begin();
        i != nodes.end();
-       i++)
+       ++i)
     {
       for (list<PingusWorldMapNode>::iterator j = nodes.begin();
 	   j != nodes.end();
-	   j++)
-      for (list<int>::iterator k = i->links.begin();
-	   k != i->links.end();
-	   k++)
-	if (j->id == *k)
-	  CL_Display::draw_line (j->pos.x * x_scale, j->pos.y * y_scale,
-				 i->pos.x * x_scale, i->pos.y * y_scale,
-				 1.0, 1.0, 1.0, 1.0);
-      
+	   ++j)
+	{
+	  for (list<int>::iterator k = i->links.begin();
+	       k != i->links.end();
+	       ++k)
+	    if (j->id == *k)
+	      CL_Display::draw_line (j->pos.x * x_scale, j->pos.y * y_scale,
+				     i->pos.x * x_scale, i->pos.y * y_scale,
+				     1.0, 1.0, 1.0, 1.0);
+	}
     }
 }
 

@@ -1,4 +1,4 @@
-//  $Id: PingusGame.hh,v 1.6 2000/06/18 17:01:50 grumbel Exp $
+//  $Id: PingusGame.hh,v 1.7 2001/04/06 12:49:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -51,8 +51,7 @@ public:
 		    std::string psm_filename = "");
   ///
   void   start_demo(std::string pdm_filename = "");
-}///
-;
+};
 
 #endif
 

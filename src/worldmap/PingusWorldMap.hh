@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMap.hh,v 1.11 2001/04/04 10:21:17 grumbel Exp $
+//  $Id: PingusWorldMap.hh,v 1.12 2001/04/06 12:49:20 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -47,6 +47,10 @@ public:
   PingusWorldMap (std::string filename);
   /** Destruct the worldmap */
   virtual ~PingusWorldMap ();
+
+  /** Launch the level at the given node
+      @param node The current node from which the level should be started */
+  void start_level (PingusWorldMapNode* node);
 
   /** Start up the music and other things that need only to me run
       once on startup of a new WorldMap */

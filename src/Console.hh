@@ -1,4 +1,4 @@
-//  $Id: Console.hh,v 1.12 2000/10/09 19:17:30 grumbel Exp $
+//  $Id: Console.hh,v 1.13 2001/04/06 12:49:19 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,15 +23,38 @@
 #include <string>
 #include <vector>
 #include <ClanLib/core.h>
+#include <iostream>
 #include "Display.hh"
+
+class ConsoleBuffer :
+  public std::streambuf
+{
+private:
+  std::string current_line;
+  bool continue_last;
+  std::vector<std::string> buffer;
+  static const unsigned int buffer_size = 100;
+  char char_buffer[buffer_size];
+  
+public:
+  ConsoleBuffer ();  
+  virtual ~ConsoleBuffer ();
+  int overflow (int c);  
+  int sync ();
+  std::vector<std::string>* get_buffer ();
+};
 
 /** A "Quake" like console, but it can just handle output, you can't
     type anything. */
-class Console : public DisplayHook
+class Console : 
+  public std::ostream,
+  public DisplayHook
 {
 private:
-  /// 
-  struct Endl {};
+  ConsoleBuffer streambuf;
+  std::vector<std::string>* buffer;
+
+public:
   ///
   CL_Font* font;
   ///
@@ -39,26 +62,16 @@ private:
   ///
   int  current_pos;
   ///
-  std::vector<std::string> output_buffer;
-  ///
   std::string current_line;
   ///
   int number_of_lines;
-
   ///
   void draw();
-  ///
-  void add_line(std::string);
 public:
-  /** A incarnation of the Endl class, just there to make the
-      operator<<() behave like the standard std::cout stuff. */
-  static Endl endl;
-
   ///
-  Console();
+  Console ();
   ///
   virtual ~Console();
-
   ///
   void init();
   ///
@@ -83,31 +96,16 @@ public:
   /** Scroll up */
   void scroll_down();
 
-  /** @name Output operators, similar to std::cout */
-  //@{
-  /// Wrapper around the end-of-line operator, its just insert a newline in the console.
-  Console& operator<<(const Console::Endl&);
+  /** Scroll down or up n lines, depending on the sign */
+  void scroll (int n);
 
-  /// Prints the given string to the console.
-  Console& operator<<(std::string);
-
-  /// Converts the given int to a string and prints it to the console.
-  Console& operator<<(int);
-  //@}
-
-  /** Print to the console, just like a normal printf(). All format
-      specifies available in printf() are also available here, since
-      this is just a wrapper around vsnprintf(). This function prints
-      only up to 1023 characters at a time, the rest is lost. */
-  void printf(char* format, ...);
   ///
-  void puts(std::string);
+  void puts(const std::string&);
   ///
   void newline();
-}///
-;
+};
 
-///
+/** The globale console object to which you can send messages */
 extern Console console;
 
 #endif

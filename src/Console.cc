@@ -1,4 +1,4 @@
-//  $Id: Console.cc,v 1.16 2001/04/04 10:21:16 grumbel Exp $
+//  $Id: Console.cc,v 1.17 2001/04/06 12:49:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,9 +29,80 @@ using namespace std;
 
 // Globale console
 Console console;
-Console::Endl Console::endl;
+
+ConsoleBuffer::ConsoleBuffer () {
+  // Set the output buffer
+  setp (char_buffer, char_buffer + buffer_size - 1);
+  
+    // Switch of input buffer
+  setg(0, 0, 0);
+}
+  
+ConsoleBuffer::~ConsoleBuffer () {
+  sync ();
+  int c = 1;
+  std::cout << "----------- Debugging Output ------------" << std::endl;
+  for (std::vector<std::string>::iterator i = buffer.begin ();
+       i != buffer.end (); ++i)
+    {
+      std::cout << "pingus:" << c++ << ": " << *i << std::endl;
+    }
+}
+
+int
+ConsoleBuffer::overflow (int c) 
+{
+  std::string str;
+    
+  for (char* ptr = pbase (); ptr != pptr (); ++ptr)
+    {
+      if (*ptr != '\n') 
+	str += *ptr;
+      else
+	{
+	  std::cout << str << std::endl;
+	  buffer.push_back (str);
+	  str = "";
+	}
+    }
+  str += c;
+  buffer.push_back (str);    
+    
+  setp (char_buffer, char_buffer + buffer_size - 1);
+  return 0;
+}
+  
+int 
+ConsoleBuffer::sync () 
+{
+  std::string str;
+    
+  for (char* c = pbase (); c != pptr (); ++c)
+    {
+      if (*c != '\n') 
+	str += *c;
+      else
+	{
+	  std::cout << str << std::endl;
+	  buffer.push_back (str);
+	  str = "";
+	}
+    }
+    
+  if (!str.empty ())
+    buffer.push_back (str);
+
+  setp (char_buffer, char_buffer + buffer_size - 1);
+  return 0;
+}
+
+std::vector<std::string>* 
+ConsoleBuffer::get_buffer () {
+  return &buffer;
+}
 
 Console::Console()
+  : ostream (&streambuf)
 {
   is_init = false;
   is_visible = false;
@@ -51,8 +122,8 @@ Console::init()
   // std::cout << "Console: Init..." << std::endl;
   font = PingusResource::load_font("Fonts/xterm","fonts");
 
-  (*this) << "Pingus Output Console (hide/show it with F1)\n"
-	  << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+  //  (*this) << "Pingus Output Console (hide/show it with F1)\n"
+  //	  << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
 
   is_init = true;
 }
@@ -78,13 +149,14 @@ Console::draw()
 			CL_Display::get_height(),
 			0.0, 0.0, 0.0, 0.5);
 
+  std::vector<std::string>* output_buffer = streambuf.get_buffer ();
   for(i = start_index, j=1; 
-      i < (int)output_buffer.size(); 
+      i < (int)output_buffer->size(); 
       ++i, ++j)
     {
       font->print_left(10, 
 		       start_y_pos + j * font->get_height(), 
-		       output_buffer[i].c_str());
+		       (*output_buffer)[i].c_str());
     }
   if (draw_current_line)
     font->print_left(10, start_y_pos + j * font->get_height(),
@@ -107,15 +179,15 @@ Console::decrease_lines()
 void 
 Console::scroll_up()
 {
-  if (current_pos - number_of_lines > 0)
-    --current_pos;
+  /*  if (current_pos - number_of_lines > 0)
+      --current_pos;*/
 }
 
 void
 Console::scroll_down()
 {
-  if (current_pos - number_of_lines < (int)output_buffer.size())
-    ++current_pos;
+  /*if (current_pos - number_of_lines < (int)output_buffer.size())
+    ++current_pos;*/
 }
 
 void
@@ -130,96 +202,16 @@ Console::get_lines()
   return number_of_lines;
 }
 
-void 
-Console::add_line(string str)
-{
-  string::size_type pos;
-  string tmp_string;
-
-  // std::cout << "STR: " << str << std::endl;
-
-  while ((pos = str.find("\n")) != string::npos) 
-    {
-      tmp_string = str.substr(0, pos);
-      // std::cout << "TMP:" << tmp_string << std::endl;
-      output_buffer.push_back(current_line + tmp_string);
-      current_pos++;
-      current_line = "";
-      str = str.substr(pos+1);
-    }
-
-  current_line += str;
-
-  // FIXME: This could be optimized if xterm would be a fixed font...
-  while(font->get_text_width(current_line.c_str()) > (CL_Display::get_width() - 20))
-    {
-      int pos = current_line.size();
-
-      while (font->get_text_width(current_line.substr(0, pos).c_str())
-	     > (CL_Display::get_width() - 20))
-	{
-	  pos--;
-	}
-
-      tmp_string = current_line.substr(0, pos);
-
-      output_buffer.push_back(tmp_string);
-      current_pos++;
-      current_line = current_line.substr(pos);
-    }
-}
-
-// Simple wrapper around sprintf, warrning it will only be able to
-// handle up to 1023 characters
 void
-Console::printf(char* format, ...) 
+Console::puts(const std::string& str)
 {
-  char str_buffer[1024];
-  va_list argp;
-
-  va_start(argp, format);
-#ifndef WIN32
-  vsnprintf(str_buffer, 1024, format, argp);
-#else
-  vsprintf(str_buffer, format, argp);
-#endif
-  va_end(argp);
-
- add_line(str_buffer);
-}
-
-void
-Console::puts(string str)
-{
-  add_line(str);
-  newline();
+  (*this) << str << std::endl;
 }
 
 void
 Console::newline()
 {
-  add_line("\n");
-}
-
-Console& 
-Console::operator<<(const Console::Endl& endl)
-{
-  newline();
-  return *this;
-}
-
-Console& 
-Console::operator<<(string str)
-{
-  add_line(str);
-  return *this;
-}
-
-Console&
-Console::operator<<(int a)
-{
-  this->printf("%d", a);
-  return *this;
+  (*this) <<  std::endl;
 }
 
 void

@@ -1,4 +1,4 @@
-//  $Id: PingusGame.cc,v 1.16 2000/12/30 23:54:05 grumbel Exp $
+//  $Id: PingusGame.cc,v 1.17 2001/04/06 12:49:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -112,8 +112,8 @@ PingusGame::start_game(std::string plf_filename, std::string psm_filename)
 
       do {
 	console << "Loading level:\n"
-		<< "  PLF: " << plf_filename << Console::endl
-		<< "  PSM: " << psm_filename << Console::endl;
+		<< "  PLF: " << plf_filename << std::endl
+		<< "  PSM: " << psm_filename << std::endl;
     
 	if (client)
 	  delete client;

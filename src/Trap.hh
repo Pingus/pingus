@@ -1,4 +1,4 @@
-//  $Id: Trap.hh,v 1.14 2001/04/01 18:00:37 grumbel Exp $
+//  $Id: Trap.hh,v 1.15 2001/04/06 12:49:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,9 +30,9 @@
 
 class Pingu;
 
-// An abstract class for all trap or moving objects in the pingu word
-// which are not under controll of the player (i.e. fire traps,
-/// rolling stones, etc.)
+/** An abstract class for all trap or moving objects in the pingu word
+    which are not under controll of the player (i.e. fire traps,
+    rolling stones, etc.) */
 class Trap : public TrapData,
 	     public WorldObj
 {

@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapPingus.cc,v 1.9 2001/04/04 10:21:17 grumbel Exp $
+//  $Id: PingusWorldMapPingus.cc,v 1.10 2001/04/06 12:49:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,7 +25,7 @@
 PingusWorldMapPingus::PingusWorldMapPingus ()
   : sprite ("Pingus/walker", "pingus", 20.0f, Sprite::RIGHT)
 {
-  //std::cout << "PingusWorldMap: walker: num_frames = " << sur.get_num_frames () << std::endl;
+  sprite.set_align (-sprite.get_width()/2,  4 - sprite.get_height());
   is_left = false;
 }
 
@@ -54,8 +54,8 @@ PingusWorldMapPingus::draw ()
   float y_scale = CL_Display::get_height () / 600.0;
 
   sprite.set_direction (is_left ? Sprite::LEFT : Sprite::RIGHT);
-  sprite.put_screen ((pos.x - (sprite.get_width()/2)) * x_scale,
-		     (pos.y + 4 - sprite.get_height()) * y_scale);
+  sprite.put_screen (pos.x * x_scale,
+		     pos.y * y_scale);
 }
 
 bool

@@ -1,6 +1,6 @@
-//   $Id: PingusMain.cc,v 1.20 2001/04/01 18:00:37 grumbel Exp $
+//   $Id: PingusMain.cc,v 1.21 2001/04/06 12:49:19 grumbel Exp $
 //    ___
-//   |  _\ A free Lemmings clone
+//   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
 //   |  || || \ || _ || |_| ||_ -'
 //   |__||_||_\_||_  ||_____||___|

@@ -1,4 +1,4 @@
-//  $Id: Sprite.hh,v 1.2 2001/04/04 10:21:16 grumbel Exp $
+//  $Id: Sprite.hh,v 1.3 2001/04/06 12:49:19 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,12 +26,18 @@ class Sprite
 {
 public:
   enum Direction { NONE, LEFT, RIGHT };
-
+  enum LoopType { ENDLESS, ONCE, };
+  
 private:
   float frame;
   float frames_per_second;
   CL_Surface sur;
   Direction direction;
+  LoopType looptype;
+  bool is_finished;
+
+  int x_align;
+  int y_align;
   
   int max_frames ();
   
@@ -41,24 +47,40 @@ public:
 	  std::string arg_datafile,
 	  float arg_frames_per_second = 10.0f,
 	  Sprite::Direction dir = NONE,
-	  int arg_loop_type = 0);
+	  LoopType arg_loop_type = ENDLESS);
 
   Sprite (const CL_Surface& sur,
 	  float frames_per_second = 10.0f,
 	  Sprite::Direction dir = NONE,
-	  int arg_loop_type = 0);
+	  LoopType arg_loop_type = ENDLESS);
 
+  /** */
   void put_screen (int x, int y);
+
+  /** High level version put_screen (), it handles the framecount and
+      the alignment */
   void put_screen (const CL_Vector& pos);
 
+  /** Set the alignment (aka offset) of the surface 
+   @param arg_x The x offset by which the surface drawn
+   @param arg_y The y offset by which the surface drawn */
+  void set_align (int arg_x, int arg_y);
+  
   void next_frame ();
   void previous_frame ();
 
+  /** Set the current direction of the surface, WARNING: Does only
+      work in a few case... FIXME: rewrite when
+      CL_Surface::get_num_xframes () exists 
+  @param dir Direction: LEFT, RIGHT, NONE */
   void set_direction (Sprite::Direction dir) { direction = dir; }
+
   void update (float delta);
 
   int get_width () { return sur.get_width (); }
   int get_height () { return sur.get_height (); }
+
+  bool finished ();
 };
 
 #endif

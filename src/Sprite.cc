@@ -1,4 +1,4 @@
-//  $Id: Sprite.cc,v 1.2 2001/04/04 10:21:16 grumbel Exp $
+//  $Id: Sprite.cc,v 1.3 2001/04/06 12:49:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,10 +24,13 @@ Sprite::Sprite (std::string arg_sur_name,
 		std::string arg_datafile,
 		float arg_frames_per_second,
 		Sprite::Direction dir,
-		int arg_loop_type = 0)
+		LoopType arg_loop_type)
   : frame (0.0f),
     frames_per_second (arg_frames_per_second),
-    direction (dir)
+    direction (dir),
+    looptype (arg_loop_type),
+    is_finished (false),
+    x_align (0), y_align (0)
 {
   sur = PingusResource::load_surface (arg_sur_name, arg_datafile);
 }
@@ -35,10 +38,13 @@ Sprite::Sprite (std::string arg_sur_name,
 Sprite::Sprite (const CL_Surface& arg_sur,
 		float arg_frames_per_second = 10.0f,
 		Sprite::Direction dir,
-		int arg_loop_type = 0)
+		LoopType arg_loop_type)
   : frame (0.0f),
     frames_per_second (arg_frames_per_second),
-    direction (dir)
+    direction (dir),
+    looptype (arg_loop_type),
+    is_finished (false),
+    x_align (0), y_align (0)
 {
   sur = arg_sur;
 }
@@ -49,13 +55,13 @@ Sprite::put_screen (int x, int y)
   switch (direction)
     {
     case Sprite::NONE:
-      sur.put_screen (x, y, int(frame));
+      sur.put_screen (x + x_align, y + y_align, int(frame));
       break;
     case Sprite::LEFT:
-      sur.put_screen (x, y, int(frame));
+      sur.put_screen (x + x_align, y + y_align, int(frame));
       break;
     case Sprite::RIGHT:
-      sur.put_screen (x, y, int(frame) + max_frames ());
+      sur.put_screen (x + x_align, y + y_align, int(frame) + max_frames ());
       break;
     default:
       std::cout << "Direction: " << direction << std::endl;
@@ -67,6 +73,13 @@ void
 Sprite::put_screen (const CL_Vector& pos)
 {
   put_screen (int(pos.x), int(pos.y));
+}
+
+void 
+Sprite::set_align (int arg_x, int arg_y)
+{
+  x_align = arg_x;
+  y_align = arg_y;
 }
 
 void 
@@ -105,16 +118,47 @@ Sprite::max_frames ()
 void
 Sprite::update (float delta)
 {
-  frame += frames_per_second * delta;
-
-  if (frame < 0) {
-    std::cout << "frame below zero: " << frame << std::endl;
-    frame  = 0;
-  }
-
-  while (frame >= max_frames ())
+  switch (looptype)
     {
-      frame -= (max_frames ()-1);
+    case ENDLESS:
+      frame += frames_per_second * delta;
+
+      if (frame < 0) {
+	std::cout << "frame below zero: " << frame << std::endl;
+	frame  = 0;
+      }
+
+      while (frame >= max_frames ())
+	{
+	  frame -= (max_frames ()-1);
+	}   
+      
+      break;
+    case ONCE:
+      frame += frames_per_second * delta;
+      if (frame >= max_frames ()) 
+	{
+	  is_finished = true;
+	  frame = max_frames () - 1;
+	}
+      
+      break;
+    }
+}
+
+bool 
+Sprite::finished ()
+{
+  switch (looptype)
+    {
+    case ENDLESS:
+      return false;
+
+    case ONCE:
+      return is_finished;
+
+    default:
+      assert (!"Wrong looptype!");
     }
 }
 
