@@ -1,4 +1,4 @@
-//  $Id: PingusSpotMap.cc,v 1.8 2000/02/22 00:09:48 grumbel Exp $
+//  $Id: PingusSpotMap.cc,v 1.9 2000/03/16 21:36:33 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -196,9 +196,9 @@ PingusSpotMap::load(std::string filename)
       else
 	{
 	  std::cout << "Color depth: " << i->surface->get_provider()->get_depth() << std::endl;
-	  canvas->lock();
+	  //canvas->lock();
 	  i->surface->put_target(i->x_pos, i->y_pos, 0, canvas);
-	  canvas->unlock();  
+	  //canvas->unlock();  
 	}
     }
 
@@ -210,14 +210,36 @@ PingusSpotMap::load(std::string filename)
 
 // Draws the map with a offset, needed for scrolling
 void
-PingusSpotMap::draw_offset(int of_x, int of_y, float s)
+PingusSpotMap::draw(int x, int y, int w, int h, 
+		    int of_x, int of_y, float s)
 {
+  // Ignoring x and y for the moment
+
   if (s == 1.0) 
     {
-      for (TileIter x = 0; x < tile.size(); ++x) 
+      int start_x = -of_x/tile_size;
+      int start_y = -of_y/tile_size; 
+      unsigned int tilemap_width = w / tile_size + 1;
+      unsigned int tilemap_height = h / tile_size + 1;
+
+      if (tilemap_width > tile[0].size())
+	tilemap_width = tile[0].size() - 1;
+      else if (tilemap_width < 0)
+	tilemap_width = 0;
+
+      if (tilemap_height > tile.size())
+	tilemap_height = tile.size() - 1;
+      else if (tilemap_height < 0)
+	tilemap_height = 0;          
+
+      for (TileIter x = start_x; x < start_x + tilemap_width; ++x)
 	{
-	  for (TileIter y = 0; y < tile[x].size(); ++y) 
+	  assert(x >= 0);
+	  assert(x < tile.size());
+	  for (TileIter y = start_y; y < start_y + tilemap_height; ++y)
 	    {
+	      assert(y >= 0);
+	      assert(y < tile[x].size());
 	      if (tile[x][y].is_empty()) 
 		{
 		  // Uncomment the following lines to see the empty tiles

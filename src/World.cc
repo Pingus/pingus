@@ -1,4 +1,4 @@
-//  $Id: World.cc,v 1.11 2000/03/12 01:43:23 grumbel Exp $
+//  $Id: World.cc,v 1.12 2000/03/16 21:38:15 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -90,11 +90,22 @@ World::~World()
 
 // Merge the different layers on the screen together
 void 
-World::draw_offset(int x_of, int y_of, float s)
+World::draw(int x1, int y1, int w, int h,
+	    int x_of, int y_of, float s)
 {
+  x_of += x1;
+  y_of += y1;
+
   background->draw_offset(x_of, y_of, s);
 
-  for(std::vector<WorldObj*>::iterator obj = world_obj.begin(); obj != world_obj.end(); obj++)
+  for(std::vector<WorldObj*>::iterator obj = world_obj_bg.begin(); obj != world_obj_bg.end(); obj++)
+    {
+      (*obj)->draw_offset(x_of, y_of, s);
+    }
+
+  map->draw(x1, y1, w, h, x_of, y_of, s);
+
+  for(std::vector<WorldObj*>::iterator obj = world_obj_fg.begin(); obj != world_obj_fg.end(); obj++)
     {
       (*obj)->draw_offset(x_of, y_of, s);
     }
@@ -250,28 +261,54 @@ World::init_worldobjs()
   Trap::SetParticleHolder(&particle);
   Entrance::SetParticleHolder(&particle);
 
-  world_obj.push_back(map);
+  //world_obj.push_back(map);
 
   // Push all objects to world_obj vector
   for(std::vector<hotspot_data>::size_type i = 0; i < hotspot.size(); i++)
-    world_obj.push_back(hotspot[i]);
+    {
+      if (hotspot[i]-> z_pos <= 0)
+	world_obj_bg.push_back(hotspot[i]);
+      else 
+	world_obj_fg.push_back(hotspot[i]);
+    }
 
   for(std::vector<exit_data>::size_type i=0; i < exits.size(); i++)
-    world_obj.push_back(exits[i]);
+    { 
+      if (exits[i]->z_pos <= 0)
+	world_obj_bg.push_back(exits[i]);
+      else 
+	world_obj_fg.push_back(exits[i]);
+    }  
   
   for(std::vector<entrance_data>::size_type i=0; i < entrance.size(); ++i)
-    world_obj.push_back(entrance[i]);
+    {
+      if (entrance[i]->z_pos <= 0)
+	world_obj_bg.push_back(entrance[i]);
+      else 
+	world_obj_fg.push_back(entrance[i]);
+    }
 
   for(std::vector<liquid_data>::size_type i=0; i < liquid_d.size(); ++i)
-    world_obj.push_back(liquid[i]);
-
+    {
+      if (liquid[i]->z_pos <= 0)
+	world_obj_bg.push_back(liquid[i]);
+      else 
+	world_obj_fg.push_back(liquid[i]);
+    }
+  
   for(std::vector<trap_data>::size_type i=0; i < traps.size(); ++i) 
-    world_obj.push_back(traps[i]);
+    {
+      if (traps[i]->z_pos <= 0)
+	world_obj_bg.push_back(traps[i]);
+      else 
+	world_obj_fg.push_back(traps[i]);
+    }
 
-  world_obj.push_back(&pingus);
+  world_obj_fg.push_back(&pingus);
 
   // After all objects are in world_obj, sort them to there z_pos
-  stable_sort(world_obj.begin(), world_obj.end(), WorldObj_less());
+  stable_sort(world_obj_bg.begin(), world_obj_bg.end(), WorldObj_less());
+  stable_sort(world_obj_fg.begin(), world_obj_fg.end(), WorldObj_less());
   
   // Setup the gravity force
   // Clear all old forces

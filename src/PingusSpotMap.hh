@@ -1,4 +1,4 @@
-//  $Id: PingusSpotMap.hh,v 1.3 2000/02/18 03:08:41 grumbel Exp $
+//  $Id: PingusSpotMap.hh,v 1.4 2000/03/16 21:36:33 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -75,7 +75,7 @@ public:
   void load(string);
   void load(PLF* plf);
   void gen_tiles(void);
-  void draw_offset(int of_x, int of_y, float s);
+  void draw(int x, int y, int w, int h, int of_x, int of_y, float s);
   int  get_height(void);
   int  get_width(void);
   CL_Surface* get_surface(void);

@@ -1,4 +1,4 @@
-//  $Id: World.hh,v 1.6 2000/03/12 01:43:23 grumbel Exp $
+//  $Id: World.hh,v 1.7 2000/03/16 21:38:15 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -58,7 +58,8 @@ private:
   bool exit_world;
   int  exit_time;  
 
-  vector<WorldObj*> world_obj;
+  vector<WorldObj*> world_obj_bg;
+  vector<WorldObj*> world_obj_fg;
   vector<Entrance*> entrance;
   vector<Exit*>     exits;
   vector<Hotspot*>  hotspot;
@@ -80,7 +81,8 @@ public:
   void    init_background (void);
   void    init_worldobjs (void);
   void    init_map (void);
-  void    draw_offset (int x, int y, float s=1.0);
+  void    draw(int x1, int y1, int w, int h,
+	       int x_of, int y_of, float s);
   void    let_move (void);
   void    armageddon (void);
   int     get_height (void);
