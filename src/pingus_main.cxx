@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.47 2003/02/19 09:50:36 grumbel Exp $
+//   $Id: pingus_main.cxx,v 1.48 2003/02/19 12:34:16 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -664,6 +664,18 @@ PingusMain::print_greeting_message()
 #else
   std::cout << "getext support: missing (only support for english will be available" << std::endl;
 #endif
+
+  if (sound_enabled)
+    std::cout << "sound support: enabled" << std::endl;
+  else
+    std::cout << "sound support: disabled" << std::endl;
+
+  if (music_enabled)
+    std::cout << "music support: enabled" << std::endl;
+  else
+    std::cout << "music support: disabled" << std::endl;
+
+  std::cout << "resolution set to: " << screen_width << "x" << screen_height << std::endl;
 
   std::cout << std::endl;
 }

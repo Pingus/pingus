@@ -34,6 +34,7 @@ libpingus_gui_a_SOURCES =       \
 	root_gui_manager.cxx \
 	root_gui_manager.hxx \
 	screen.hxx \
+	screen.cxx \
 	screen_manager.cxx \
 	screen_manager.hxx \
 	screen_ptr.cxx \
