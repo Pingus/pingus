@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.9 2002/09/15 20:33:45 grumbel Exp $
+#  $Id: Makefile.am,v 1.10 2002/09/16 16:04:58 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,6 +33,8 @@ libpingus_worldobjs_a_SOURCES = \
 	spike.cxx                  spike.hxx         \
         switch_door.cxx            switch_door.hxx   \
         teleporter.cxx             teleporter.hxx    \
-        worldobj_group.hxx         worldobj_group.cxx
+        worldobj_group.hxx         worldobj_group.cxx \
+        rain_generator.hxx         rain_generator.cxx \
+        snow_generator.hxx         snow_generator.cxx
 
 ## EOF ##

@@ -1,4 +1,4 @@
-//  $Id: rain_generator.hxx,v 1.1 2002/09/16 15:47:35 grumbel Exp $
+//  $Id: rain_generator.hxx,v 1.2 2002/09/16 16:04:58 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,8 @@
 
 #include "../worldobj.hxx"
 
+namespace WorldObjs {
+
 class RainGenerator : public WorldObj
 {
 private:
@@ -40,6 +42,8 @@ private:
   RainGenerator (const RainGenerator&);
   RainGenerator operator= (const RainGenerator&);
 };
+
+} // namespace WorldObjs
 
 #endif
 

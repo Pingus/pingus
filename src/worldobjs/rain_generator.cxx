@@ -1,4 +1,4 @@
-//  $Id: rain_generator.cxx,v 1.1 2002/09/16 15:47:35 grumbel Exp $
+//  $Id: rain_generator.cxx,v 1.2 2002/09/16 16:04:58 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,10 +20,12 @@
 #include <ClanLib/Display/Display/display.h>
 #include "../world.hxx"
 #include "../particles/particle_holder.hxx"
-#include "rain_particle.hxx"
+#include "../particles/rain_particle.hxx"
 #include "../sound.hxx"
 #include "../world.hxx"
 #include "rain_generator.hxx"
+
+namespace WorldObjs {
 
 RainGenerator::RainGenerator ()
   : do_thunder (false),
@@ -77,5 +79,7 @@ RainGenerator::update(float delta)
   get_world()->get_particle_holder()->add_particle(new RainParticle(rand() % world->get_width(), -32));
   get_world()->get_particle_holder()->add_particle(new RainParticle(rand() % world->get_width(), -32));
 }
+
+} // namespace WorldObjs
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: rain_generator_data.cxx,v 1.1 2002/09/16 15:47:35 grumbel Exp $
+//  $Id: rain_generator_data.cxx,v 1.2 2002/09/16 16:04:58 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,7 +32,7 @@ RainGeneratorData::write_xml(std::ostream& xml)
 WorldObj*
 RainGeneratorData::create_WorldObj ()
 {
-  return new RainGenerator();
+  return new WorldObjs::RainGenerator();
 }
 
 EditorObjLst

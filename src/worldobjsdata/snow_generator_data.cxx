@@ -1,4 +1,4 @@
-//  $Id: snow_generator_data.cxx,v 1.1 2002/09/16 15:47:36 grumbel Exp $
+//  $Id: snow_generator_data.cxx,v 1.2 2002/09/16 16:04:58 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,7 +32,7 @@ SnowGeneratorData::write_xml(std::ostream& xml)
 WorldObj*
 SnowGeneratorData::create_WorldObj ()
 {
-  return new SnowGenerator();
+  return new WorldObjs::SnowGenerator();
 }
 
 EditorObjLst
