@@ -1,4 +1,4 @@
-//  $Id: xml_helper.cxx,v 1.22 2002/10/03 01:02:12 grumbel Exp $
+//  $Id: xml_helper.cxx,v 1.23 2002/10/12 00:02:14 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -183,6 +183,12 @@ XMLhelper::parse_vector (xmlDocPtr doc, xmlNodePtr cur)
       cur = cur->next;
     }
   return pos;
+}
+
+bool
+XMLhelper::parse_bool (xmlDocPtr doc, xmlNodePtr cur)
+{
+  return static_cast<bool>(parse_int(doc, cur));
 }
 
 int

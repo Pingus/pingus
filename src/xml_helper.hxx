@@ -1,4 +1,4 @@
-//  $Id: xml_helper.hxx,v 1.15 2002/10/01 23:10:41 grumbel Exp $
+//  $Id: xml_helper.hxx,v 1.16 2002/10/12 00:02:21 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -105,6 +105,7 @@ public:
   static ResDescriptor parse_surface (xmlDocPtr doc, xmlNodePtr cur);
   static Vector        parse_vector  (xmlDocPtr doc, xmlNodePtr cur);
   static std::string   parse_string  (xmlDocPtr doc, xmlNodePtr cur);
+  static bool          parse_bool    (xmlDocPtr doc, xmlNodePtr cur);
   static int           parse_int     (xmlDocPtr doc, xmlNodePtr cur);
   static float         parse_float   (xmlDocPtr doc, xmlNodePtr cur);
   static Color         parse_color   (xmlDocPtr doc, xmlNodePtr cur);
