@@ -1,4 +1,4 @@
-#  $Id: configure.ac,v 1.2 2003/02/18 17:58:28 grumbel Exp $
+#  $Id: configure.ac,v 1.3 2003/02/19 17:16:58 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -53,6 +53,7 @@ if test "x$with_gettext" != "xno"; then
 
 	dnl AM_WITH_NLS
 	dnl AM_LC_MESSAGES
+        AM_ICONV
 	AM_GNU_GETTEXT
 else
 	echo "Gnu gettext disabled"

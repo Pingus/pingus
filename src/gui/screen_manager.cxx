@@ -1,4 +1,4 @@
-//  $Id: screen_manager.cxx,v 1.1 2003/02/19 09:51:44 grumbel Exp $
+//  $Id: screen_manager.cxx,v 1.2 2003/02/19 17:17:00 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -96,12 +96,10 @@ ScreenManager::display ()
       	{
 	  if (get_current_screen()->draw (display_gc))
 	    Display::flip_display ();
-
-          //CL_Display::put_display(CL_Rect(0, 0, 100, 100));
 	}
       else
 	{
-	  std::cout << "ScreenManager: fading screens" << std::endl;
+	  //std::cout << "ScreenManager: fading screens" << std::endl;
 	  //fade_over (last_screen, get_current_screen());
 	}
 

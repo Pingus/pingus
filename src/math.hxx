@@ -1,4 +1,4 @@
-//  $Id: math.hxx,v 1.6 2003/02/19 09:50:36 grumbel Exp $
+//  $Id: math.hxx,v 1.7 2003/02/19 17:16:59 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -61,6 +61,12 @@ inline
 double frand()
 {
   return double(rand()) / (RAND_MAX+1.0);
+}
+
+inline
+bool rand_bool()
+{
+  return rand()%2 == 0;
 }
 
 } // namespace Math

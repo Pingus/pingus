@@ -1,4 +1,4 @@
-//  $Id: snow_generator.hxx,v 1.5 2002/10/01 19:53:46 grumbel Exp $
+//  $Id: snow_generator.hxx,v 1.6 2003/02/19 17:17:01 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,14 +22,18 @@
 
 #include "../worldobj.hxx"
 
+namespace WorldObjsData {
+class SnowGeneratorData;
+}
+
 namespace WorldObjs {
 
 class SnowGenerator : public WorldObj
 {
 private:
-
+  float intensity;
 public:
-  SnowGenerator ();
+  SnowGenerator (const WorldObjsData::SnowGeneratorData& data_);
   ~SnowGenerator ();
 
   /** fill the screen with snow flocks */

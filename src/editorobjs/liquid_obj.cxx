@@ -1,4 +1,4 @@
-//  $Id: liquid_obj.cxx,v 1.4 2002/10/06 19:18:46 grumbel Exp $
+//  $Id: liquid_obj.cxx,v 1.5 2003/02/19 17:16:59 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,9 @@
 
 #include <stdio.h>
 #include "../editor/editor_view.hxx"
+#include "../editor/editor.hxx"
+#include "../editor/property_window.hxx"
+#include "../editor/generic_property_frame.hxx"
 #include "liquid_obj.hxx"
 
 namespace EditorObjs {
@@ -96,6 +99,18 @@ LiquidObj::make_smaller ()
 {
   if (data->width > 1)
     --data->width;
+}
+
+EditorNS::PropertyFrame*
+LiquidObj::get_gui_dialog(EditorNS::Editor* editor)
+{
+  EditorNS::GenericPropertyFrame* propframe 
+    = new EditorNS::GenericPropertyFrame("Liquid Properties",
+                                         editor->get_property_window()->get_client_area());
+
+  propframe->add_integer_box("speed", &data->speed);
+
+  return propframe;
 }
 
 } // namespace EditorObjs

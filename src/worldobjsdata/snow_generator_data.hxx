@@ -1,4 +1,4 @@
-//  $Id: snow_generator_data.hxx,v 1.5 2002/10/12 00:49:11 torangan Exp $
+//  $Id: snow_generator_data.hxx,v 1.6 2003/02/19 17:17:01 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,9 +28,10 @@ namespace WorldObjsData {
 /** */
 class SnowGeneratorData : public WorldObjData
 {
-private:
 public:
-  SnowGeneratorData(xmlDocPtr doc, xmlNodePtr cur) { UNUSED_ARG(doc); UNUSED_ARG(cur); }
+  float intensity;
+public:
+  SnowGeneratorData(xmlDocPtr doc, xmlNodePtr cur);
   
   WorldObj* create_WorldObj ();
   EditorObjLst create_EditorObj ();

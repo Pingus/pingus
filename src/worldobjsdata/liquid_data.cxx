@@ -1,4 +1,4 @@
-//  $Id: liquid_data.cxx,v 1.7 2003/02/18 17:04:13 grumbel Exp $
+//  $Id: liquid_data.cxx,v 1.8 2003/02/19 17:17:01 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,14 +30,14 @@ namespace WorldObjsData {
 LiquidData::LiquidData () 
   : old_width_handling(true),
     width(0),
-    speed(0)
+    speed(20)
 {
 }
 
 LiquidData::LiquidData (xmlDocPtr doc, xmlNodePtr cur)
   : old_width_handling(true),
     width(0),
-    speed(0)
+    speed(20)
 {
   if (XMLhelper::get_prop(cur, "use-old-width-handling", old_width_handling))
     {

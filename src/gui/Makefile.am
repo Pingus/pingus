@@ -17,7 +17,7 @@
 
 noinst_LIBRARIES = libpingus_gui.a
 
-libpingus_gui_a_SOURCES =       \
+libpingus_gui_a_SOURCES = \
 	cursor.cxx \
 	cursor.hxx \
 	display.cxx \

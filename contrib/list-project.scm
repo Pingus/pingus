@@ -126,6 +126,7 @@
                         (dump-source-files "src/input/Makefile.am")
                         (dump-source-files "src/input/scrollers/Makefile.am")
                         (dump-source-files "src/input/buttons/Makefile.am")
+                        (dump-source-files "src/gui/Makefile.am")
                         (dump-source-files "src/sound/Makefile.am")
                         (dump-source-files "src/worldobjs/Makefile.am")
                         (dump-source-files "src/worldobjs/entrances/Makefile.am")

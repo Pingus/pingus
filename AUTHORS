@@ -1,6 +1,6 @@
-I tried to list here all people, which have contributed to pingus. If
+I tried to list here all people, which have contributed to Pingus. If
 you know somebody who I have missed please drop me a quick reminder to 
-<grumbel@gmx.de>.
+<grumbel@gmx.de>. 
 
 Ingo Ruhnke <grumbel@gmx.de> - http://pingus.seul.org/~grumbel/
 	* some gfx (mostly placeholder, ...)
@@ -20,14 +20,17 @@ Michael Mestre <mmestre@teaser.fr> - http://www.teaser.fr/~mmestre/
 Craig Timpany <craigtimpany@w3.to>
 	* some pingu gfx(digger, tumbler, bridger2)
 	* traps
-	* lots of levels
+	* lots of great levels
 
 Jules Bean <jmlb2@hermes.cam.ac.uk>
 	* first pingus Mailing List
 
 David Philippi <david@torangan.de>
 	* RPM version maintainer
-	* Sound Code
+	* Sound code
+        * Input code
+        * include cleanup
+        * lots and lots of code cleanup
 
 Johnny Taporg <taporg@yahoo.com>
 	* A little Banner

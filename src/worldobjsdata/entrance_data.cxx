@@ -1,4 +1,4 @@
-//  $Id: entrance_data.cxx,v 1.4 2003/02/18 01:23:52 grumbel Exp $
+//  $Id: entrance_data.cxx,v 1.5 2003/02/19 17:17:01 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <iostream>
 #include "../editorobjs/entrance_obj.hxx"
 #include "../worldobjs/entrances/woodthing.hxx"
 #include "../worldobjs/entrances/cloud.hxx"
@@ -47,7 +48,7 @@ EntranceData::EntranceData (xmlDocPtr doc, xmlNodePtr cur) : direction(MISC),
   reader.read_int("release-rate", release_rate);
   
   std::string direction_str;
-  reader.read_string("directorion-rate", direction_str);
+  reader.read_string("direction", direction_str);
 
   if (direction_str == "left")
     direction = EntranceData::LEFT;
@@ -56,16 +57,20 @@ EntranceData::EntranceData (xmlDocPtr doc, xmlNodePtr cur) : direction(MISC),
   else if (direction_str == "misc")
     direction = EntranceData::MISC;
   else
-    direction = EntranceData::MISC;
+    {
+      std::cout << "EntranceData: Unknown direction: '" << direction_str << "'" << std::endl;
+      direction = EntranceData::MISC;
+    }
 }
 
-EntranceData::EntranceData (const EntranceData& old) : WorldObjData(old),
-                                                       direction(old.direction),
-						       desc(old.desc),
-						       pos(old.pos),
-						       release_rate(old.release_rate),
-						       owner_id(old.owner_id),
-						       type(old.type)
+EntranceData::EntranceData (const EntranceData& old)
+  : WorldObjData(old),
+    direction(old.direction),
+    desc(old.desc),
+    pos(old.pos),
+    release_rate(old.release_rate),
+    owner_id(old.owner_id),
+    type(old.type)
 {
 }
 
