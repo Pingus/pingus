@@ -1,4 +1,4 @@
-//  $Id: worldmap.cxx,v 1.42 2003/04/06 12:40:47 grumbel Exp $
+//  $Id: worldmap.cxx,v 1.43 2003/04/06 20:45:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -368,10 +368,15 @@ WorldMap::on_secondary_button_press(int x, int y)
 void
 WorldMap::enter_level()
 {
-  Dot* dot = path_graph->get_dot(get_pingus()->get_node());
-  if (dot)
+  NodeId node = get_pingus()->get_node();
+
+  if (node != NoNode)
     {
-      dot->on_click();
+      Dot* dot = path_graph->get_dot(node);
+      if (dot)
+        {
+          dot->on_click();
+        }
     }
   else
     {
