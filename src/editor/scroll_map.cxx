@@ -1,4 +1,4 @@
-//  $Id: scroll_map.cxx,v 1.2 2002/06/13 14:25:13 torangan Exp $
+//  $Id: scroll_map.cxx,v 1.3 2002/07/01 12:46:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -72,8 +72,8 @@ ScrollMap::mouse_over(int x, int y)
 void 
 ScrollMap::draw()
 {
-  CL_Display::draw_rect (x_pos, y_pos, x_pos + width, y_pos + height,
-			 1.0f, 1.0f, 1.0f);
+  CL_Display::fill_rect (x_pos, y_pos, x_pos + width, y_pos + height,
+			 0.4f, 0.4f, 0.0f);
   Editor::instance ()->get_object_manager ()->draw (view.get ());
   /*
   int viewarea_width = (CL_Display::get_width() * width

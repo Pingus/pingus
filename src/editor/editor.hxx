@@ -1,4 +1,4 @@
-//  $Id: editor.hxx,v 1.5 2002/06/30 22:03:13 grumbel Exp $
+//  $Id: editor.hxx,v 1.6 2002/07/01 12:46:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -40,6 +40,7 @@ namespace Pingus
   namespace Editor
   {
     class PropertyWindow;
+    class LevelPropertyWindow;
   }
 }
 
@@ -81,6 +82,8 @@ private:
   CL_GUIManager* gui;
 
   ActionWindow*   action_window;
+
+  Pingus::Editor::LevelPropertyWindow* level_property_window;
   Pingus::Editor::PropertyWindow* property_window;
 
   enum { SELECTOR_TOOL, ZOOM_TOOL } tool;

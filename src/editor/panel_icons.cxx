@@ -1,4 +1,4 @@
-//  $Id: panel_icons.cxx,v 1.3 2002/06/29 11:54:22 grumbel Exp $
+//  $Id: panel_icons.cxx,v 1.4 2002/07/01 12:46:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -85,27 +85,27 @@ PanelIconCopy::on_click()
   editor->get_event()->editor_duplicate_current_selection();
 }
 
-PanelIconEdit::PanelIconEdit()
+PanelIconLevelProperties::PanelIconLevelProperties()
 {
-  tooltip = _("Edit Properties (not implemented)");
+  tooltip = _("Edit Object Properties");
   sur = PingusResource::load_surface("editor/edit", "core");  
 }
 
-PanelIconPreferences::PanelIconPreferences()
+void 
+PanelIconLevelProperties::on_click()
 {
-  tooltip = _("Edit Preferences (not implemented)");
+  editor->get_event ()->editor_show_level_properties ();
+}
+
+PanelIconObjectProperties::PanelIconObjectProperties()
+{
+  tooltip = _("Edit Level Properties");
   sur = PingusResource::load_surface("editor/preferences", "core");
 }
 
 void
-PanelIconPreferences::on_click()
+PanelIconObjectProperties::on_click()
 {
-}
-
-void 
-PanelIconEdit::on_click()
-{
-  std::cout << "Preferences not implemented" << std::endl;
   editor->get_event ()->editor_show_object_properties ();
 }
 

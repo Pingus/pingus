@@ -1,4 +1,4 @@
-//  $Id: editor_event.cxx,v 1.15 2002/06/30 22:03:13 grumbel Exp $
+//  $Id: editor_event.cxx,v 1.16 2002/07/01 12:46:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -45,6 +45,7 @@
 #include "editor.hxx"
 #include "action_window.hxx"
 #include "property_window.hxx"
+#include "level_property_window.hxx"
 
 EditorEvent::EditorEvent()
   : is_enabled (1)
@@ -844,6 +845,15 @@ EditorEvent::editor_show_object_properties ()
     editor->property_window->show (false);
   else
     editor->property_window->show (true);
+}
+
+void
+EditorEvent::editor_show_level_properties ()
+{
+  if (editor->level_property_window->is_visible ())
+    editor->level_property_window->show (false);
+  else
+    editor->level_property_window->show (true);  
 }
 
 bool

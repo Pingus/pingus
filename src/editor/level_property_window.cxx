@@ -1,4 +1,4 @@
-//  $Id: level_property_window.cxx,v 1.1 2002/06/29 17:39:21 grumbel Exp $
+//  $Id: level_property_window.cxx,v 1.2 2002/07/01 12:46:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,8 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "object_manager.hxx"
+#include "../string_converter.hxx"
 #include "level_property_window.hxx"
 
 /******************
@@ -41,8 +43,34 @@
  [  OK  ] [Cancel]
 *********************/
 
-LevelPropertyWindow::LevelPropertyWindow ()
+using namespace Pingus::Editor;
+
+LevelPropertyWindow::LevelPropertyWindow (CL_Component* parent, ObjectManager* manager)
+  : CL_Window (CL_Rect (0, 0, 200, 300), "Level Properties", parent),
+    levelname_label (CL_Rect (10, 10, 90, 30), "Levelname", get_client_area ()),
+    levelname_input (CL_Rect(110, 10, 190, 30), "bla", get_client_area ()),
+
+    descritpion_label (CL_Rect (10, 30, 90, 50), "Description", get_client_area ()),
+    //description_input(CL_Rect(110, 30, 190, 50), "descrip", get_client_area ()),
+
+    author_label (CL_Rect (10, 50, 90, 70), "Author", get_client_area ()),
+    author_input (CL_Rect(110, 50, 190, 70), "me", get_client_area ()),
+
+    number_of_pingus_label (CL_Rect (10, 70, 90, 90), "Number of Pingus", get_client_area ()),
+    number_of_pingus_input (CL_Rect(110, 70, 190, 90), to_string (10), get_client_area ()),
+
+    pingus_to_save_label (CL_Rect (10, 90, 90, 110), "Pingus To Save", get_client_area ()),
+    pingus_to_save_input (CL_Rect(110, 90, 190, 110), to_string (10), get_client_area ()),
+
+    time_label (CL_Rect (10, 110, 90, 130), "Time", get_client_area ()),
+    time_input (CL_Rect(110, 110, 190, 130), to_string (-1), get_client_area ())
+{  
+  show (false);
+}
+
+LevelPropertyWindow::~LevelPropertyWindow ()
 {
+  
 }
 
 /* EOF */

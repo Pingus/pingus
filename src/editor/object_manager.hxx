@@ -1,4 +1,4 @@
-//  $Id: object_manager.hxx,v 1.5 2002/06/28 22:21:59 grumbel Exp $
+//  $Id: object_manager.hxx,v 1.6 2002/07/01 12:46:22 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #ifndef HEADER_PINGUS_EDITOR_OBJECT_MANAGER_HXX
 #define HEADER_PINGUS_EDITOR_OBJECT_MANAGER_HXX
 
+#include <list>
 #include <map>
 #include "../color.hxx"
 #include "../action_data.hxx"

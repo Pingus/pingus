@@ -1,4 +1,4 @@
-//  $Id: level_property_window.hxx,v 1.1 2002/06/29 17:39:21 grumbel Exp $
+//  $Id: level_property_window.hxx,v 1.2 2002/07/01 12:46:22 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,13 +20,40 @@
 #ifndef HEADER_PINGUS_LEVEL_PROPERTY_WINDOW_HXX
 #define HEADER_PINGUS_LEVEL_PROPERTY_WINDOW_HXX
 
-class LevelPropertyWindow
+#include <ClanLib/gui.h>
+
+class ObjectManager;
+
+namespace Pingus
 {
-private:
-  
-public:
-  LevelPropertyWindow ();
-};
+  namespace Editor
+  {
+    class LevelPropertyWindow : public CL_Window
+    {
+    private:
+      CL_Label    levelname_label;
+      CL_InputBox levelname_input;
+
+      CL_Label    descritpion_label;
+      //CL_InputBox description_input;
+
+      CL_Label    author_label;
+      CL_InputBox author_input;
+
+      CL_Label    number_of_pingus_label;
+      CL_InputBox number_of_pingus_input;
+
+      CL_Label    pingus_to_save_label;
+      CL_InputBox pingus_to_save_input;
+
+      CL_Label    time_label;
+      CL_InputBox time_input;
+    public:
+      LevelPropertyWindow (CL_Component* parent, ObjectManager*);
+      ~LevelPropertyWindow ();
+    };
+  }
+}
 
 #endif
 

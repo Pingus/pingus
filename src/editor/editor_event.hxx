@@ -1,4 +1,4 @@
-//  $Id: editor_event.hxx,v 1.8 2002/06/30 22:03:13 grumbel Exp $
+//  $Id: editor_event.hxx,v 1.9 2002/07/01 12:46:22 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -81,8 +81,12 @@ public:
   /** Display the configuration window for the actions */
   void editor_show_actions_window ();
   
-  /** Display the propertie dialog for the current object */
+  /** Display the property dialog for the current object */
   void editor_show_object_properties ();
+
+  /** Display the property dialog for window width/height, number of
+      pingus, etc. */
+  void editor_show_level_properties ();
 
   /** Decrease the owner number or another value specific to the
       current object */

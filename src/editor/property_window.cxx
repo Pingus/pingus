@@ -1,4 +1,4 @@
-//  $Id: property_window.cxx,v 1.4 2002/07/01 09:36:13 grumbel Exp $
+//  $Id: property_window.cxx,v 1.5 2002/07/01 12:46:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,10 +26,11 @@ using namespace Pingus::Editor;
 
 PropertyWindow::PropertyWindow (CL_Component* parent)
   : CL_Window (CL_Rect (0, 0, 200, 200), "Object Properties", parent),
-    current_frame (0), label (CL_Point (50, 25), "no properties available", this)
+    current_frame (0), label (CL_Point (50, 0), "no properties available", get_client_area ())
 {
   label.show (true);
   set_client_size (200, 20);
+  show (false);
 }
 
 void

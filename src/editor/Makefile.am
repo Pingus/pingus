@@ -40,6 +40,7 @@ editorobj.cxx		    rect_editorobj.cxx	  weather_obj.cxx \
 groundpiece_window.hxx groundpiece_window.cxx \
 property_window.hxx property_window.cxx \
 property_frame.hxx property_frame.cxx \
-entrance_window.hxx entrance_window.cxx
+entrance_window.hxx entrance_window.cxx \
+level_property_window.hxx level_property_window.cxx
 
 # EOF #
