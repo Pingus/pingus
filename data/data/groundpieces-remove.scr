@@ -1,0 +1,8 @@
+section images/groundpieces/remove/rect1.png {
+	rect1 = images/groundpieces/remove/rect1.png (type=surface, x=0, y=0, width=64, height=32);
+}
+
+section images/groundpieces/remove/column1.png {
+	column1 = images/groundpieces/remove/column1.png (type=surface, x=0, y=0, width=56, height=113);
+}
+
