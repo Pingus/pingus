@@ -1,30 +1,30 @@
 <pingus-controller>
   <controller-config>
     <standard-pointer>
-      <axis-pointer speed="200">
-        <joystick-axis id="1" axis="0" angle="0" />
-        <joystick-axis id="1" axis="1" angle="90" />
+      <axis-pointer speed="250">
+        <joystick-axis id="0" axis="0" angle="0" />
+        <joystick-axis id="0" axis="1" angle="90" />
       </axis-pointer>
     </standard-pointer>
 
     <primary-button>
       <multiple-button>
         <mouse-button button="0"/>
-        <joystick-button id="1" button="4"/>
+        <joystick-button id="0" button="4"/>
       </multiple-button>
     </primary-button>
 
     <secondary-button>
       <multiple-button>
         <mouse-button button="2"/>
-        <joystick-button id="1" button="1"/>
+        <joystick-button id="0" button="1"/>
       </multiple-button>
     </secondary-button>
 
     <pause-button>
       <multiple-button>
         <key-button key="P"/>
-        <joystick-button id="1" button="9"/>
+        <joystick-button id="0" button="9"/>
       </multiple-button>
     </pause-button>
 
@@ -32,21 +32,21 @@
       <multiple-button>
         <key-button key="F"/>
         <key-button key="SPACE"/>
-        <joystick-button id="1" button="2"/>
+        <joystick-button id="0" button="0"/>
+        <joystick-button id="0" button="2"/>
       </multiple-button>
     </fast-forward-button>
 
     <armageddon-button>
       <multiple-button>
         <key-button key="A"/>
-        <joystick-button id="1" button="0"/>
       </multiple-button>
     </armageddon-button>
 
     <escape-button>
       <multiple-button>
         <key-button key="ESCAPE"/>
-        <joystick-button id="1" button="8"/>
+        <joystick-button id="0" button="8"/>
       </multiple-button>
     </escape-button>
 
@@ -79,14 +79,14 @@
     <action-up>
       <multiple-button>
         <key-button key="PAGEUP"/>
-        <joystick-button id="1" button="7"/>
+        <joystick-button id="0" button="3"/>
       </multiple-button>
     </action-up>
 
     <action-down>
       <multiple-button>
         <key-button key="PAGEDOWN"/>
-        <joystick-button id="1" button="6"/>
+        <joystick-button id="0" button="5"/>
       </multiple-button>
     </action-down>
 
