@@ -1,4 +1,4 @@
-//  $Id: sprite.hxx,v 1.14 2003/10/22 11:11:22 grumbel Exp $
+//  $Id: sprite.hxx,v 1.15 2003/10/22 12:35:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -52,25 +52,9 @@ public:
   /// Creates an empty sprite, drawing and updating does nothing
   Sprite ();
 
-  /// Copy a sprite
-  Sprite (const Sprite& sprite);
-
-  /// Copy a sprite
-  Sprite& operator= (const Sprite& sprite);
-
   Sprite (std::string arg_sur_name,
 	  std::string arg_datafile,
 	  float arg_frames_per_second = 10.0f,
-	  Direction dir = NONE,
-	  LoopType arg_loop_type = ENDLESS);
-
-  Sprite (const CL_Sprite& sur,
-	  float frames_per_second = 10.0f,
-	  Direction dir = NONE,
-	  LoopType arg_loop_type = ENDLESS);
-
-  Sprite (const ResDescriptor&,
-	  float frames_per_second = 10.0f,
 	  Direction dir = NONE,
 	  LoopType arg_loop_type = ENDLESS);
 

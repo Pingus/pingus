@@ -1,4 +1,4 @@
-//  $Id: hotspot.cxx,v 1.8 2003/10/19 12:25:47 grumbel Exp $
+//  $Id: hotspot.cxx,v 1.9 2003/10/22 12:35:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,7 +28,7 @@ namespace WorldObjs {
 
 Hotspot::Hotspot (const WorldObjsData::HotspotData& data_)
   : data(new WorldObjsData::HotspotData(data_)),
-    sprite(data->desc)
+    sprite(data->desc.res_name, data->desc.datafile)
 {
   if (verbose > 2)
     std::cout << "Creating Hotspot" << std::endl;

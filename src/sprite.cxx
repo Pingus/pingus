@@ -1,4 +1,4 @@
-//  $Id: sprite.cxx,v 1.18 2003/10/22 11:11:22 grumbel Exp $
+//  $Id: sprite.cxx,v 1.19 2003/10/22 12:35:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,36 +32,6 @@ Sprite::Sprite ()
 {
 }
 
-Sprite::Sprite (const Sprite& sprite) 
-  : sprite(sprite.sprite),
-    frame (sprite.frame),
-    frames_per_second (sprite.frames_per_second),
-    direction (sprite.direction),
-    looptype (sprite.looptype),
-    is_finished (sprite.is_finished),
-    x_align (sprite.x_align),
-    y_align (sprite.y_align)
-{
-}
-
-Sprite&
-Sprite::operator= (const Sprite& arg_sprite)
-{
-  if (this == &arg_sprite)
-    return *this;
-
-  sprite            = arg_sprite.sprite;
-  frame             = arg_sprite.frame;
-  frames_per_second = arg_sprite.frames_per_second;
-  direction         = arg_sprite.direction;
-  looptype          = arg_sprite.looptype;
-  is_finished       = arg_sprite.is_finished;
-  x_align           = arg_sprite.x_align;
-  y_align           = arg_sprite.y_align;
-
-  return *this;
-}
-
 Sprite::Sprite (std::string arg_sprite_name,
 		std::string arg_datafile,
 		float arg_frames_per_second,
@@ -75,34 +45,6 @@ Sprite::Sprite (std::string arg_sprite_name,
     is_finished (false),
     x_align (0), y_align (0)
 {
-}
-
-Sprite::Sprite (const CL_Sprite& arg_sprite,
-		float arg_frames_per_second,
-		Sprite::Direction dir,
-		LoopType arg_loop_type)
-  : frame (0.0f),
-    frames_per_second (arg_frames_per_second),
-    direction (dir),
-    looptype (arg_loop_type),
-    is_finished (false),
-    x_align (0), y_align (0)
-{
-  sprite = arg_sprite;
-}
-
-Sprite::Sprite (const ResDescriptor& desc,
-		float arg_frames_per_second,
-		Sprite::Direction dir,
-		LoopType arg_loop_type)
-  : frame (0.0f),
-    frames_per_second (arg_frames_per_second),
-    direction (dir),
-    looptype (arg_loop_type),
-    is_finished (false),
-    x_align (0), y_align (0)
-{
-  sprite = PingusResource::load_sprite(desc);
 }
 
 void
@@ -319,6 +261,18 @@ void
 Sprite::set_frame (int n)
 {
   frame = n;
+}
+
+int
+Sprite::get_width ()
+{
+  return sprite.get_width();
+}
+
+int
+Sprite::get_height ()
+{
+  return sprite.get_height();
 }
 
 } // namespace Pingus

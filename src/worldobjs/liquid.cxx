@@ -1,4 +1,4 @@
-//  $Id: liquid.cxx,v 1.11 2003/10/20 13:11:09 grumbel Exp $
+//  $Id: liquid.cxx,v 1.12 2003/10/22 12:35:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,7 +30,9 @@ namespace WorldObjs {
 
 Liquid::Liquid (const WorldObjsData::LiquidData& data_) :
   data(new WorldObjsData::LiquidData(data_)),
-  sur(data->desc, (data->speed == 0) ? 30 : 1000.0f/data->speed)
+  sur(data->desc.res_name, 
+      data->desc.datafile, 
+      (data->speed == 0) ? 30 : 1000.0f/data->speed)
 {
   if (!data->old_width_handling)
     data->width *= sur.get_width();

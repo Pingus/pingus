@@ -1,4 +1,4 @@
-//  $Id: menu_button.cxx,v 1.14 2003/10/21 11:01:52 grumbel Exp $
+//  $Id: menu_button.cxx,v 1.15 2003/10/22 12:35:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -381,8 +381,10 @@ ThemeButton::on_click ()
 {
   Sound::PingusSound::play_sound ("letsgo");
 
+#ifdef CLANLIB_0_6
   ThemeSelector theme_selector;
   theme_selector.display();
+#endif
 }
 
 #if 0

@@ -1,4 +1,4 @@
-//  $Id: exit.cxx,v 1.10 2003/10/21 11:01:52 grumbel Exp $
+//  $Id: exit.cxx,v 1.11 2003/10/22 12:35:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,7 +34,8 @@ namespace WorldObjs {
 
 Exit::Exit (const WorldObjsData::ExitData& data_)
   : data(new WorldObjsData::ExitData(data_)),
-    sprite(data->desc, 10.0f),
+    sprite(data->desc.res_name, data->desc.datafile,
+           10.0f),
     flag("misc/flag" + to_string(data->owner_id), "core"),
     smallmap_symbol("misc/smallmap_exit", "core")
 {

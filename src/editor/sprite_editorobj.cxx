@@ -1,4 +1,4 @@
-//  $Id: sprite_editorobj.cxx,v 1.11 2003/10/18 23:17:27 grumbel Exp $
+//  $Id: sprite_editorobj.cxx,v 1.12 2003/10/22 12:35:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #include <assert.h>
 #include <ClanLib/Display/pixel_buffer.h>
 #include "../math.hxx"
+#include "../res_descriptor.hxx"
 #include "editor_view.hxx"
 #include "sprite_editorobj.hxx"
 
@@ -39,7 +40,7 @@ SpriteEditorObj::SpriteEditorObj (Vector* arg_pos)
 
 SpriteEditorObj::SpriteEditorObj (const ResDescriptor& desc,
 				  Vector* arg_pos)
-  : sprite (desc),
+  : sprite (desc.res_name, desc.datafile),
     pos_ref (arg_pos)
 {
 }
