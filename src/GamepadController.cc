@@ -1,4 +1,4 @@
-//  $Id: GamepadController.cc,v 1.3 2001/04/13 09:31:37 grumbel Exp $
+//  $Id: GamepadController.cc,v 1.4 2001/04/13 11:26:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,13 +33,17 @@ GamepadController::GamepadController (int arg_owner_id, CL_InputDevice* arg_devi
   if (!x_axis || !y_axis)
     throw PingusError ("Couldn't find enough axis on joystick");
   
+  set_range (0, 0, CL_Display::get_width () - 1, CL_Display::get_height () - 1);
+
   left   = boost::shared_ptr<ControllerButton>(new InputDeviceButton(this, device->get_button (4)));
-  middle = boost::shared_ptr<ControllerButton>(new InputDeviceButton(this, device->get_button (5)));
-  right  = boost::shared_ptr<ControllerButton>(new InputDeviceButton(this, device->get_button (1)));
+  middle = boost::shared_ptr<ControllerButton>(new InputDeviceButton(this, device->get_button (2)));
+  right  = boost::shared_ptr<ControllerButton>(new InputDeviceButton(this, device->get_button (0)));
   scroll_left  = boost::shared_ptr<ControllerButton>(new InputDeviceButton(this, device->get_button (7)));
   scroll_right  = boost::shared_ptr<ControllerButton>(new InputDeviceButton(this, device->get_button (6)));
+  next_action  = boost::shared_ptr<ControllerButton>(new InputDeviceButton(this, device->get_button (5)));
+  previous_action  = boost::shared_ptr<ControllerButton>(new InputDeviceButton(this, device->get_button (3)));
   abort  = boost::shared_ptr<ControllerButton>(new InputDeviceButton(this, device->get_button (8)));
-  pause  = boost::shared_ptr<ControllerButton>(new InputDeviceButton(this, device->get_button (7)));
+  pause  = boost::shared_ptr<ControllerButton>(new InputDeviceButton(this, device->get_button (9)));
 }
 
 int
@@ -63,14 +67,32 @@ GamepadController::get_pos ()
 void 
 GamepadController::set_range (int x1, int y1, int x2, int y2)
 {
-  // FIXME: Not implemented
+  this->x1 = x1;
+  this->y1 = y1;
+  this->x2 = x2;
+  this->y2 = y2;
 }
 
 void 
 GamepadController::keep_alive ()
 {
   float cdelta = delta.getset ();
-  pos += CL_Vector(x_axis->get_pos (), y_axis->get_pos ()) * cdelta * 200 * acceleration;
+
+  if (device->get_button (1) && device->get_button (1)->is_pressed ())
+    pos += CL_Vector(x_axis->get_pos (), y_axis->get_pos ()) * cdelta * 200 * 3.5;
+  else
+    pos += CL_Vector(x_axis->get_pos (), y_axis->get_pos ()) * cdelta * 200 * 1.0;
+
+  if (pos.x <= x1)
+    pos.x = x1;
+  if (pos.y <= y1)
+    pos.y = y1;
+
+  if (pos.x >= x2)
+    pos.x = x2;
+  if (pos.y >= y2)
+    pos.y = y2;
+
   Controller::keep_alive();
 }
 

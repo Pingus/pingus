@@ -1,4 +1,4 @@
-//  $Id: ButtonPanel.hh,v 1.11 2001/04/12 19:47:09 grumbel Exp $
+//  $Id: ButtonPanel.hh,v 1.12 2001/04/13 11:26:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -45,8 +45,7 @@ private:
   ///
   typedef std::vector<boost::shared_ptr<ActionButton> >::iterator AButtonIter;
   ///
-  boost::shared_ptr<ActionButton>     pressed_button;
-
+  AButtonIter  pressed_button;
   ///
   boost::shared_ptr<ArmageddonButton> armageddon;
   ///
@@ -97,8 +96,13 @@ public:
   void   set_client(Client*);
   ///
   void   set_button(int);
-}///
-;
+
+  /// Select the next action
+  void next_action ();
+
+  /// Select the previous action
+  void previous_action ();
+};
 
 #endif
 

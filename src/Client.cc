@@ -1,4 +1,4 @@
-//  $Id: Client.cc,v 1.46 2001/04/13 09:38:19 grumbel Exp $
+//  $Id: Client.cc,v 1.47 2001/04/13 11:26:54 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -380,6 +380,7 @@ Client::register_event_handler()
   on_button_release_slot = CL_Input::sig_button_release.connect (CL_CreateSlot(this, &Client::on_button_release));
 
   slot_left_pressed   = controller->left->signal_pressed.connect (CL_CreateSlot (this, &Client::on_left_pressed));
+  slot_left_released   = controller->left->signal_released.connect (CL_CreateSlot (this, &Client::on_left_released));
   slot_middle_pressed = controller->middle->signal_pressed.connect (CL_CreateSlot (this, &Client::on_middle_pressed));
   slot_right_pressed  = controller->right->signal_pressed.connect (CL_CreateSlot (this, &Client::on_right_pressed));
   slot_right_released  = controller->right->signal_released.connect (CL_CreateSlot (this, &Client::on_right_released));
@@ -387,6 +388,10 @@ Client::register_event_handler()
   slot_pause_pressed  = controller->pause->signal_pressed.connect (CL_CreateSlot (this, &Client::on_pause_pressed));
   slot_scroll_left_pressed  = controller->scroll_left->signal_pressed.connect (CL_CreateSlot (this, &Client::on_scroll_left_pressed));
   slot_scroll_right_pressed = controller->scroll_right->signal_pressed.connect (CL_CreateSlot (this, &Client::on_scroll_right_pressed));
+
+  slot_next_action_pressed  = controller->next_action->signal_pressed.connect (CL_CreateSlot (this, &Client::on_next_action_pressed));
+  slot_previous_action_pressed = controller->previous_action->signal_pressed.connect (CL_CreateSlot (this, &Client::on_previous_action_pressed));
+
   enabled = true;
 }
 
@@ -609,8 +614,34 @@ Client::on_mouse_button_release(const CL_Key& key)
 void
 Client:: on_left_pressed (const CL_Vector& pos)
 {
+  CL_Key key;
+  
+  key.id = CL_MOUSE_LEFTBUTTON;
+  key.x = pos.x;
+  key.y = pos.y;
+  
+  button_panel->on_button_press(key);
+  small_map->on_button_press(key);
+  playfield->on_button_press(key);
+
   std::cout << "Left Pressed" << std::endl;
 }
+
+void
+Client:: on_left_released (const CL_Vector& pos)
+{
+  CL_Key key;
+  
+  key.id = CL_MOUSE_LEFTBUTTON;
+  key.x = pos.x;
+  key.y = pos.y;
+  
+  button_panel->on_button_release(key);
+  small_map->on_button_release(key);
+
+  std::cout << "Left Pressed" << std::endl;
+}
+
 
 void
 Client:: on_middle_pressed (const CL_Vector& pos)
@@ -635,23 +666,40 @@ Client::on_right_released (const CL_Vector& pos)
 void
 Client:: on_abort_pressed (const CL_Vector& pos)
 {
+  server->set_finished();
 }
 
 void
 Client:: on_pause_pressed (const CL_Vector& pos)
 {
+  set_pause (!get_pause ());
 }
 
 void
 Client::on_scroll_left_pressed (const CL_Vector& pos)
 {
+  std::cout << "Scroll left pressed" << std::endl;
 }
 
 void
 Client::on_scroll_right_pressed (const CL_Vector& pos)
 {
+  std::cout << "Scroll right pressed" << std::endl;
 }
 
+void 
+Client::on_next_action_pressed (const CL_Vector& pos)
+{
+  std::cout << "Action next pressed" << std::endl;
+  button_panel->next_action();
+}
+
+void 
+Client::on_previous_action_pressed (const CL_Vector& pos)
+{
+  std::cout << "Action previous pressed" << std::endl;
+  button_panel->previous_action();
+}
 
 /* EOF */
 

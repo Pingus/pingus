@@ -1,4 +1,4 @@
-//  $Id: Controller.hh,v 1.3 2001/04/13 09:31:37 grumbel Exp $
+//  $Id: Controller.hh,v 1.4 2001/04/13 11:26:54 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -85,6 +85,8 @@ public:
   boost::shared_ptr<ControllerButton> pause;
   boost::shared_ptr<ControllerButton> scroll_left;
   boost::shared_ptr<ControllerButton> scroll_right;
+  boost::shared_ptr<ControllerButton> next_action;
+  boost::shared_ptr<ControllerButton> previous_action;
 };
 
 #endif

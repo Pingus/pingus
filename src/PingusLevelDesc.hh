@@ -1,4 +1,4 @@
-//  $Id: PingusLevelDesc.hh,v 1.8 2001/04/10 21:51:22 grumbel Exp $
+//  $Id: PingusLevelDesc.hh,v 1.9 2001/04/13 11:26:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -52,8 +52,7 @@ public:
   
   ///
   void draw(PingusLevelDesc::LoadingStatus status);
-}///
-;
+};
 
 #endif
 

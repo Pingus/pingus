@@ -1,4 +1,4 @@
-//  $Id: ButtonPanel.cc,v 1.18 2001/04/12 19:47:09 grumbel Exp $
+//  $Id: ButtonPanel.cc,v 1.19 2001/04/13 11:26:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -74,7 +74,7 @@ ButtonPanel::ButtonPanel(boost::shared_ptr<PLF> plf,
   
   left_pressed = 0;
   
-  pressed_button = *a_buttons.begin();
+  pressed_button = a_buttons.begin();
 }
 
 ButtonPanel::~ButtonPanel()
@@ -84,7 +84,7 @@ ButtonPanel::~ButtonPanel()
 void
 ButtonPanel::update(float delta)
 {
-  pressed_button->update(delta);
+  (*pressed_button)->update(delta);
 
   if (last_press + 350 < CL_System::get_time()) 
     {
@@ -95,7 +95,7 @@ ButtonPanel::update(float delta)
 std::string
 ButtonPanel::get_action_name()
 {
-  return pressed_button->get_action_name();
+  return (*pressed_button)->get_action_name();
 }
 
 void 
@@ -111,7 +111,7 @@ ButtonPanel::draw()
   // draw the buttons
   for(AButtonIter button = a_buttons.begin(); button != a_buttons.end(); ++button) 
     {
-      if (*button == pressed_button) 
+      if (*button == *pressed_button) 
 	(*button)->pressed = true;
       else
 	(*button)->pressed = false;
@@ -151,7 +151,7 @@ ButtonPanel::set_button(int i)
 {
   if ((unsigned int)(i) < a_buttons.size())
     {
-      pressed_button = a_buttons[i];
+      pressed_button = a_buttons.begin() + i;
     }
 }
 
@@ -163,7 +163,7 @@ ButtonPanel::on_button_press(const CL_Key &key)
       for(AButtonIter button = a_buttons.begin(); button != a_buttons.end(); button++)
 	{
 	  if ((*button)->mouse_over(controller->get_pos ()))
-	    pressed_button = *button;
+	    pressed_button = button;
 	}
   
       if (armageddon->mouse_over(CL_Vector (key.x, key.y)))
@@ -203,6 +203,25 @@ ButtonPanel::on_button_release(const CL_Key &key)
   //forward->pressed = false;
   //pause->pressed = false;
   
+}
+
+/// Select the next action
+void 
+ButtonPanel::next_action ()
+{
+  ++pressed_button;
+  if (pressed_button == a_buttons.end ())
+    pressed_button = a_buttons.begin ();
+}
+
+/// Select the previous action
+void 
+ButtonPanel::previous_action ()
+{
+  if (pressed_button == a_buttons.begin ())
+    pressed_button = a_buttons.end ();
+
+  --pressed_button;
 }
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: Controller.cc,v 1.1 2001/04/13 09:57:03 grumbel Exp $
+//  $Id: Controller.cc,v 1.2 2001/04/13 11:26:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -65,6 +65,8 @@ Controller::keep_alive ()
   if (pause.get ()) pause->keep_alive ();
   if (scroll_left.get ()) scroll_left->keep_alive ();
   if (scroll_right.get ()) scroll_right->keep_alive ();
+  if (next_action.get ()) next_action->keep_alive ();
+  if (previous_action.get ()) previous_action->keep_alive ();
 }
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: GamepadController.hh,v 1.3 2001/04/13 09:31:37 grumbel Exp $
+//  $Id: GamepadController.hh,v 1.4 2001/04/13 11:26:54 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,6 +35,11 @@ private:
   CL_Vector pos;
   DeltaManager delta;
   float acceleration;
+
+  int x1;
+  int y1;
+  int x2;
+  int y2;
 
 public:
   GamepadController (int arg_owner_id, CL_InputDevice*);
