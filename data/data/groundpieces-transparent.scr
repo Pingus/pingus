@@ -1,0 +1,51 @@
+section misc {
+	weed2 = images/groundpieces/transparent/misc/weed2.png (type=surface, x=0, y=0, width=12, height=132);
+	weed1 = images/groundpieces/transparent/misc/weed1.png (type=surface, x=0, y=0, width=29, height=149);
+}
+
+section foliage {
+	grass1 = images/groundpieces/transparent/foliage/grass1.png (type=surface, x=0, y=0, width=31, height=21);
+	grass10 = images/groundpieces/transparent/foliage/grass10.png (type=surface, x=0, y=0, width=14, height=7);
+	grass11 = images/groundpieces/transparent/foliage/grass11.png (type=surface, x=0, y=0, width=14, height=10);
+	grass12 = images/groundpieces/transparent/foliage/grass12.png (type=surface, x=0, y=0, width=12, height=10);
+	grass13 = images/groundpieces/transparent/foliage/grass13.png (type=surface, x=0, y=0, width=10, height=6);
+	grass14 = images/groundpieces/transparent/foliage/grass14.png (type=surface, x=0, y=0, width=13, height=6);
+	grass15 = images/groundpieces/transparent/foliage/grass15.png (type=surface, x=0, y=0, width=54, height=9);
+	grass16 = images/groundpieces/transparent/foliage/grass16.png (type=surface, x=0, y=0, width=11, height=7);
+	grass2 = images/groundpieces/transparent/foliage/grass2.png (type=surface, x=0, y=0, width=14, height=21);
+	grass3 = images/groundpieces/transparent/foliage/grass3.png (type=surface, x=0, y=0, width=12, height=11);
+	grass4 = images/groundpieces/transparent/foliage/grass4.png (type=surface, x=0, y=0, width=13, height=21);
+	grass5 = images/groundpieces/transparent/foliage/grass5.png (type=surface, x=0, y=0, width=9, height=5);
+	grass6 = images/groundpieces/transparent/foliage/grass6.png (type=surface, x=0, y=0, width=37, height=23);
+	grass7 = images/groundpieces/transparent/foliage/grass7.png (type=surface, x=0, y=0, width=12, height=9);
+	grass8 = images/groundpieces/transparent/foliage/grass8.png (type=surface, x=0, y=0, width=13, height=7);
+	grass9 = images/groundpieces/transparent/foliage/grass9.png (type=surface, x=0, y=0, width=14, height=8);
+	turfconcave = images/groundpieces/transparent/foliage/turfconcave.png (type=surface, x=0, y=0, width=59, height=16);
+	turfflat = images/groundpieces/transparent/foliage/turfflat.png (type=surface, x=0, y=0, width=90, height=13);
+	turfslopeleft = images/groundpieces/transparent/foliage/turfslopeleft.png (type=surface, x=0, y=0, width=70, height=17);
+	turfslopeleft20 = images/groundpieces/transparent/foliage/turfslopeleft20.png (type=surface, x=0, y=0, width=52, height=20);
+	turfsloperight = images/groundpieces/transparent/foliage/turfsloperight.png (type=surface, x=0, y=0, width=40, height=17);
+	turfsloperight20 = images/groundpieces/transparent/foliage/turfsloperight20.png (type=surface, x=0, y=0, width=52, height=20);
+	turfsmallbump = images/groundpieces/transparent/foliage/turfsmallbump.png (type=surface, x=0, y=0, width=20, height=16);
+	turfsmallnook = images/groundpieces/transparent/foliage/turfsmallnook.png (type=surface, x=0, y=0, width=20, height=17);
+	turftufty = images/groundpieces/transparent/foliage/turftufty.png (type=surface, x=0, y=0, width=20, height=17);
+}
+
+section industrial {
+	gunge1 = images/groundpieces/transparent/industrial/gunge1.png (type=surface, x=0, y=0, width=65, height=59);
+	gunge10 = images/groundpieces/transparent/industrial/gunge10.png (type=surface, x=0, y=0, width=147, height=45);
+	gunge11 = images/groundpieces/transparent/industrial/gunge11.png (type=surface, x=0, y=0, width=69, height=51);
+	gunge12 = images/groundpieces/transparent/industrial/gunge12.png (type=surface, x=0, y=0, width=32, height=4);
+	gunge13 = images/groundpieces/transparent/industrial/gunge13.png (type=surface, x=0, y=0, width=75, height=4);
+	gunge14 = images/groundpieces/transparent/industrial/gunge14.png (type=surface, x=0, y=0, width=129, height=10);
+	gunge15 = images/groundpieces/transparent/industrial/gunge15.png (type=surface, x=0, y=0, width=98, height=10);
+	gunge2 = images/groundpieces/transparent/industrial/gunge2.png (type=surface, x=0, y=0, width=13, height=17);
+	gunge3 = images/groundpieces/transparent/industrial/gunge3.png (type=surface, x=0, y=0, width=18, height=10);
+	gunge4 = images/groundpieces/transparent/industrial/gunge4.png (type=surface, x=0, y=0, width=38, height=16);
+	gunge5 = images/groundpieces/transparent/industrial/gunge5.png (type=surface, x=0, y=0, width=9, height=26);
+	gunge6 = images/groundpieces/transparent/industrial/gunge6.png (type=surface, x=0, y=0, width=14, height=27);
+	gunge7 = images/groundpieces/transparent/industrial/gunge7.png (type=surface, x=0, y=0, width=11, height=24);
+	gunge8 = images/groundpieces/transparent/industrial/gunge8.png (type=surface, x=0, y=0, width=89, height=33);
+	gunge9 = images/groundpieces/transparent/industrial/gunge9.png (type=surface, x=0, y=0, width=24, height=9);
+}
+

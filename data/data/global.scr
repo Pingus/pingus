@@ -381,7 +381,7 @@ section GroundPieces
 
 	section Desert
 	{
-	        Sluggydu = images/groundpieces/ground/desert/Sluggydu.png (type=surface, x=0, y=0, width=192, height=36, tcol=0);
+	        Sluggydu = images/groundpieces/ground/desert/sluggydu.png (type=surface, x=0, y=0, width=192, height=36, tcol=0);
 	        blobdune = images/groundpieces/ground/desert/blobdune.png (type=surface, x=0, y=0, width=112, height=32, tcol=0);
 
 		domedune = images/groundpieces/ground/desert/domedune.png (type=surface, x=0, y=0, width=154, height=45, tcol=0);

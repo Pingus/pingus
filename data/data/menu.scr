@@ -1,8 +1,6 @@
-// location = datafile("menu.dat");
-
 section Buttons
 {
-	back = images/core/buttons/back.pcx (type=surface, x=0, y=0, width=64, height=34, tcol=0);
+	back = images/core/buttons/back.png (type=surface, x=0, y=0, width=64, height=34, tcol=0);
 }
 
 section NewButtons
@@ -19,11 +17,11 @@ section NewButtons
 
 section Layer
 {
-	layer1 = images/menu/layer1.pcx (type=surface, x=0, y=0, width=800, height=268);
-	layer2 = images/menu/layer2.pcx (type=surface, x=0, y=0, width=800, height=362, tcol=0);
-	layer3 = images/menu/layer3.pcx (type=surface, x=0, y=0, width=800, height=201, tcol=0);
-	layer4 = images/menu/layer4.pcx (type=surface, x=0, y=0, width=800, height=223, tcol=0);
-	layer5 = images/menu/layer5.pcx (type=surface, x=0, y=0, width=302, height=104, tcol=0);
+	layer1 = images/menu/layer1.png (type=surface, x=0, y=0, width=800, height=268);
+	layer2 = images/menu/layer2.png (type=surface, x=0, y=0, width=800, height=362, tcol=0);
+	layer3 = images/menu/layer3.png (type=surface, x=0, y=0, width=800, height=201, tcol=0);
+	layer4 = images/menu/layer4.png (type=surface, x=0, y=0, width=800, height=223, tcol=0);
+	layer5 = images/menu/layer5.png (type=surface, x=0, y=0, width=302, height=104, tcol=0);
 }
 
 // EOF
