@@ -1,4 +1,4 @@
-//  $Id: WorldObj.hh,v 1.11 2000/12/30 23:54:06 grumbel Exp $
+//  $Id: WorldObj.hh,v 1.12 2001/03/31 10:51:01 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -67,7 +67,7 @@ public:
   virtual void draw_colmap();
 
   /// XXX
-  virtual void let_move(void);
+  virtual void let_move(float delta = 0.0);
 
   /** Create an WorldObj out of some WorldObj data
    *  @return a new suitable WorldObj for the specified data, or null if no 
