@@ -1,4 +1,4 @@
-//  $Id: playfield.cxx,v 1.11 2002/08/02 22:55:19 grumbel Exp $
+//  $Id: playfield.cxx,v 1.12 2002/08/04 12:56:10 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,7 +31,7 @@
 using boost::shared_ptr;
 
 Playfield::Playfield(Client* client, PLF* level_data, World* w)
-  : current_view(0)
+  : current_pingu(0), current_view(0)
 {
   world = w;
   mouse_scrolling = false;
@@ -125,7 +125,9 @@ Playfield::current_pingu_find(int x_pos, int y_pos)
   double dist;
   Pingu* c_pingu = 0;
 
-  for (PinguIter pingu = world->get_pingu_p()->begin(); pingu != world->get_pingu_p()->end(); pingu++)
+  for (PinguIter pingu = world->get_pingu_p()->begin(); 
+       pingu != world->get_pingu_p()->end();
+       ++pingu)
     {
       if ((*pingu)->is_over(x_pos, y_pos))
 	{

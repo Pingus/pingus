@@ -1,4 +1,4 @@
-//  $Id: digger.cxx,v 1.6 2002/07/02 13:36:06 torangan Exp $
+//  $Id: digger.cxx,v 1.7 2002/08/04 12:56:11 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,6 +39,11 @@ Digger::init(void)
   digger_radius_gfx = PingusResource::load_surface ("Other/digger_radius_gfx", "pingus");
   sprite = Sprite (std::string("Pingus/digger") + to_string(pingu->get_owner ()),
 		   "pingus");
+#if 0
+  // FIXME: Just an idea...
+  sprite = Sprite (std::string("Pingus/digger") + to_string(pingu->get_owner ()),
+		   "pingus", PropertyMgr::instance()->get_int ("actions/digger/sprite-fps", 20));
+#endif
   sprite.set_align_center_bottom ();
 }
 
