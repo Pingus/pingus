@@ -1,4 +1,4 @@
-//  $Id: graphic_context.hxx,v 1.2 2003/03/16 23:07:02 grumbel Exp $
+//  $Id: graphic_context.hxx,v 1.3 2003/03/21 22:08:06 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,6 +36,7 @@ class GraphicContext
 private:
 public:
   virtual Vector get_offset () =0;
+  virtual void   set_offset (float, float) =0;
 
   /** Return the rectandle which represents the visible part of the
       world, so that objects outsite it can be cliped away easily */

@@ -17,12 +17,6 @@
 
 libdir=$(prefix)/share/games/@PACKAGE@/libs
 
-EXTRA_DIST = README
-
-# -- Dynamic Libs --
-#lib_LTLIBRARIES = libpingu_colliders.la
-
-
 # -- Static Libs --
 noinst_LIBRARIES = libpingus_colliders.a
 

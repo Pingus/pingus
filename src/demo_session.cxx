@@ -1,4 +1,4 @@
-//  $Id: demo_session.cxx,v 1.6 2003/02/19 10:37:31 grumbel Exp $
+//  $Id: demo_session.cxx,v 1.7 2003/03/21 22:08:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,7 @@
 
 #include <ClanLib/Display/Input/input.h>
 #include <ClanLib/Display/Input/keyboard.h>
+#include "math.hxx"
 #include "xml_pdf.hxx"
 #include "true_server.hxx"
 #include "world.hxx"
@@ -52,6 +53,8 @@ DemoSession::~DemoSession()
 void
 DemoSession::draw_background(GraphicContext& gc)
 {
+  World* world = server->get_world();
+
   if (CL_Keyboard::get_keycode(CL_KEY_LEFT))
     gc.move(Vector(10.0, 0.0));
   
@@ -64,7 +67,21 @@ DemoSession::draw_background(GraphicContext& gc)
   if(CL_Keyboard::get_keycode(CL_KEY_DOWN))
     gc.move(Vector(0.0, -10.0));
 
-  server->get_world()->draw(gc);
+  float x_of = -gc.get_x_offset();
+  float y_of = -gc.get_y_offset();
+
+  x_of = Math::mid(float(gc.get_width()/2),
+                   x_of, 
+                   float(world->get_width() - 1 - gc.get_width()/2));
+
+  y_of = Math::mid(float(gc.get_height()/2),
+                   y_of, 
+                   float(world->get_height() - 1 - gc.get_height()/2));
+
+  gc.set_offset(-x_of, -y_of);
+
+
+  world->draw(gc);
   while (CL_Keyboard::get_keycode(CL_KEY_D))
     {
       server->get_world()->draw(gc);

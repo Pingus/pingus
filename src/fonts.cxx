@@ -1,4 +1,4 @@
-//  $Id: fonts.cxx,v 1.2 2002/11/02 21:12:16 grumbel Exp $
+//  $Id: fonts.cxx,v 1.3 2003/03/21 22:08:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,10 @@
 
 namespace Fonts {
 
+FontHandle chalk_large;
+FontHandle chalk_normal;
+FontHandle chalk_small;
+
 FontHandle pingus_small;
 FontHandle pingus_large;
 FontHandle smallfont;
@@ -33,6 +37,10 @@ init ()
 {
   pingus_small = PingusResource::load_font("Fonts/pingus_small", "fonts");
   pingus_large = PingusResource::load_font("Fonts/pingus","fonts");
+
+  chalk_large  = PingusResource::load_font("Fonts/chalk_large","fonts");
+  chalk_normal = PingusResource::load_font("Fonts/chalk_normal","fonts");
+  chalk_small  = PingusResource::load_font("Fonts/chalk_small","fonts");
 
   xterm        = PingusResource::load_font("Fonts/xterm","fonts");
   smallfont    = PingusResource::load_font("Fonts/smallfont","fonts");

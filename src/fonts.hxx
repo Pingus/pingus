@@ -1,4 +1,4 @@
-//  $Id: fonts.hxx,v 1.3 2003/02/19 09:50:35 grumbel Exp $
+//  $Id: fonts.hxx,v 1.4 2003/03/21 22:08:06 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,10 @@
 #include "gui/graphic_context.hxx"
 
 namespace Fonts {
+
+extern FontHandle chalk_large;
+extern FontHandle chalk_normal;
+extern FontHandle chalk_small;
 
 extern FontHandle pingus_small;
 extern FontHandle pingus_large;

@@ -1,4 +1,4 @@
-//  $Id: manager.cxx,v 1.24 2003/02/19 23:03:51 grumbel Exp $
+//  $Id: manager.cxx,v 1.25 2003/03/21 22:08:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,13 +19,59 @@
 
 #include <iostream>
 #include "../gui/screen_manager.hxx"
+#include "../gui/surface_button.hxx"
 #include "../path_manager.hxx"
+#include "../res_descriptor.hxx"
 #include "worldmap.hxx"
 #include "manager.hxx"
 
 namespace WorldMapNS {
 
 WorldMapManager* WorldMapManager::instance_ = 0;
+
+class WorldMapManagerCloseButton 
+  : public GUI::SurfaceButton
+{
+public:
+  WorldMapManagerCloseButton();
+  void on_click();
+};
+
+class WorldMapManagerEnterButton
+  : public GUI::SurfaceButton
+{
+public:
+  WorldMapManagerEnterButton();
+  void on_click();
+};
+
+WorldMapManagerCloseButton::WorldMapManagerCloseButton()
+  : GUI::SurfaceButton(5, 5,
+                       ResDescriptor("menu/close_normal", "core"),
+                       ResDescriptor("menu/close_pressed", "core"),
+                       ResDescriptor("menu/close_highlight", "core"))
+{
+}
+
+void
+WorldMapManagerCloseButton::on_click()
+{
+  ScreenManager::instance ()->pop_screen ();
+}
+
+WorldMapManagerEnterButton::WorldMapManagerEnterButton()
+  : GUI::SurfaceButton(500, 10,
+                       ResDescriptor("menu/enterlevel", "core"),
+                       ResDescriptor("menu/enterlevel", "core"),
+                       ResDescriptor("menu/enterlevel", "core"))
+{
+}
+
+void
+WorldMapManagerEnterButton::on_click()
+{
+  WorldMapManager::instance()->get_worldmap()->enter_level();
+   }
 
 WorldMapManager::WorldMapManager ()
   : worldmap(0),
@@ -44,6 +90,8 @@ WorldMapManager::WorldMapManager ()
   // FIXME: but that could lead to member function name conflicts
   worldmap_component = new WorldMapComponent();
   gui_manager->add (worldmap_component);
+  gui_manager->add(new WorldMapManagerCloseButton());
+  gui_manager->add(new WorldMapManagerEnterButton());
 }
 
 void

@@ -1,4 +1,4 @@
-//  $Id: result_screen.cxx,v 1.2 2003/03/16 22:54:32 grumbel Exp $
+//  $Id: result_screen.cxx,v 1.3 2003/03/21 22:08:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -74,7 +74,8 @@ public:
   void on_click() 
   {
     std::cout << "Got CLICK on Retry!!!" << std::endl;
-    ScreenManager::instance()->replace_screen(new PingusGameSession (parent->result.plf), true);
+    ScreenManager::instance()->replace_screen(new PingusGameSession (parent->result.plf, false),
+                                              true);
   }
 };
 
@@ -88,7 +89,7 @@ ResultScreenComponent::draw(GraphicContext& gc)
 {
   gc.clear(.0f, .0f, .0f);
   gc.print_center(Fonts::pingus_large, gc.get_width()/2, 20, "Results for ");
-  gc.print_center(Fonts::pingus_large, gc.get_width()/2, 70, System::translate(result.plf->get_levelname()));
+  gc.print_center(Fonts::pingus_large, gc.get_width()/2, 70, "\"" + System::translate(result.plf->get_levelname()) + "\"");
 
   gc.print_left(Fonts::pingus_small, 100, 180, "Saved: ");
   gc.print_left(Fonts::pingus_small, 200, 180, to_string(result.saved));

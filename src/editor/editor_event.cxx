@@ -1,4 +1,4 @@
-//  $Id: editor_event.cxx,v 1.52 2003/03/05 21:19:18 grumbel Exp $
+//  $Id: editor_event.cxx,v 1.53 2003/03/21 22:08:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -515,7 +515,7 @@ EditorEvent::editor_start_current_level()
       std::string levelfile = editor->save_tmp_level();
       // FIXME: Insert here something that checks if a level needs a reload
       ScreenManager::instance()->push_screen
-        (new PingusGameSession (PLFResMgr::load_plf_from_filename(levelfile)), true);
+        (new PingusGameSession (PLFResMgr::load_plf_from_filename(levelfile), false), true);
     }
   catch(const PingusError& err) 
     {

@@ -1,4 +1,4 @@
-//  $Id: object_selector.cxx,v 1.35 2003/03/16 10:40:36 torangan Exp $
+//  $Id: object_selector.cxx,v 1.36 2003/03/21 22:08:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -291,8 +291,7 @@ ObjectSelector::get_entrance ()
 
 	case CL_KEY_4:
 	case CL_KEY_H:
-	  //FIXME: what's supposed to happen here?
-	  //return get_hotspot("entrances");
+          get_hotspot("entrances");
           break;
 
 	default:

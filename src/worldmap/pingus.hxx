@@ -1,4 +1,4 @@
-//  $Id: pingus.hxx,v 1.22 2003/01/25 18:34:36 torangan Exp $
+//  $Id: pingus.hxx,v 1.23 2003/03/21 22:08:06 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,6 +34,7 @@ class Pingus : public Drawable
 private:
   PathGraph* path;
   Sprite sprite;
+  Sprite arrow;
 
   /** The node on which the pingu currently stands, NoNode if the pingu is
       currently on the move to another node */
@@ -49,6 +50,11 @@ private:
       is not the final target node (aka node_path.back()), but instead
       the end node of an edge */
   NodeId target_node;
+
+  /** While the target_node holds the next node to which the pingu is
+      walking, the final_target_node holds the node on which the pingu
+      will stop */
+  NodeId final_target_node;
 
   /** The node path to walk. The edge between two nodes is itself
       represented as a array of positions */

@@ -1,4 +1,4 @@
- //  $Id: theme.cxx,v 1.14 2003/03/04 10:26:18 grumbel Exp $
+ //  $Id: theme.cxx,v 1.15 2003/03/21 22:08:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -263,7 +263,8 @@ Theme::play()
       assert (!"Theme::play unimplemented");
       
       ScreenManager::instance()->push_screen
-	(new PingusGameSession(PLFResMgr::load_plf(plt.get_levels()[current_level])));
+	(new PingusGameSession(PLFResMgr::load_plf(plt.get_levels()[current_level]), true),
+         true);
 
       if (current_level == accessible_levels)
 	++accessible_levels;

@@ -1,4 +1,4 @@
-//  $Id: game_session.hxx,v 1.17 2003/03/03 20:32:18 grumbel Exp $
+//  $Id: game_session.hxx,v 1.18 2003/03/21 22:08:06 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,6 +37,8 @@ private:
   /// The level data
   PLFHandle plf;
 
+  bool show_result_screen;
+
   /// The server
   TrueServer* server;
 
@@ -54,7 +56,7 @@ private:
   unsigned int number_of_redraws;
   
 public:
-  PingusGameSession (PLFHandle arg_plf);
+  PingusGameSession (PLFHandle arg_plf, bool arg_show_result_screen);
 
   /** Clean up */
   ~PingusGameSession ();

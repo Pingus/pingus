@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.50 2003/03/04 10:26:18 grumbel Exp $
+//   $Id: pingus_main.cxx,v 1.51 2003/03/21 22:08:06 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -71,6 +71,8 @@
 #include "fps_counter.hxx"
 #include "plf_res_mgr.hxx"
 #include "game_session.hxx"
+#include "story_screen.hxx"
+#include "start_screen.hxx"
 #include "demo_session.hxx"
 #include "debug.hxx"
 #include "editor/editor.hxx"
@@ -726,8 +728,11 @@ PingusMain::start_game ()
             } 
           else
             {
+              /*ScreenManager::instance()->push_screen
+                (new PingusGameSession (PLFResMgr::load_plf_from_filename(levelfile), false), true);*/
               ScreenManager::instance()->push_screen
-                (new PingusGameSession (PLFResMgr::load_plf_from_filename(levelfile)), true);
+                (new StartScreen(PLFResMgr::load_plf_from_filename(levelfile)),
+                 true);
             }
         }    
     }
@@ -741,7 +746,8 @@ PingusMain::start_game ()
     }
   else // start a normal game
     {
-      ScreenManager::instance()->push_screen (PingusMenuManager::instance (), false);
+      //ScreenManager::instance()->push_screen (PingusMenuManager::instance (), false);
+      ScreenManager::instance()->push_screen (new StoryScreen(), true);
     }
 
   // show the main menu, the rest of the game is spawn from there

@@ -1,4 +1,4 @@
-//  $Id: world.cxx,v 1.41 2003/03/04 13:59:44 grumbel Exp $
+//  $Id: world.cxx,v 1.42 2003/03/21 22:08:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -162,22 +162,25 @@ World::update()
 
   if (do_armageddon)
     {
-      while (armageddon_count < pingus->get_end_id())
+      if (game_time->get_ticks() % 4 == 0)
         {
-          Pingu* pingu = pingus->get_pingu(armageddon_count);
+          while (armageddon_count < pingus->get_end_id())
+            {
+              Pingu* pingu = pingus->get_pingu(armageddon_count);
       
-          if (pingu && pingu->get_status() == PS_ALIVE)
-            {
-              pingu->request_set_action(Bomber);
-              break;
+              if (pingu && pingu->get_status() == PS_ALIVE)
+                {
+                  pingu->request_set_action(Bomber);
+                  break;
+                }
+              else
+                {
+                  ++armageddon_count;
+                }
             }
-          else
-            {
-              ++armageddon_count;
-            }
+      
+          ++armageddon_count;
         }
-      
-      ++armageddon_count;
     }
     
   // Let all pingus move and

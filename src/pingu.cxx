@@ -1,4 +1,4 @@
-//  $Id: pingu.cxx,v 1.39 2003/03/04 13:59:44 grumbel Exp $
+//  $Id: pingu.cxx,v 1.40 2003/03/21 22:08:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -347,7 +347,7 @@ Pingu::draw (GraphicContext& gc)
       // FIXME: some people preffer a 5-0 or a 9-0 countdown, not sure
       // FIXME: about that got used to the 50-0 countdown [counting is
       // FIXME: in ticks, should probally be in seconds]
-      snprintf(str, 16, "%d", action_time);
+      snprintf(str, 16, "%d", action_time/3);
       
       gc.print_center(Fonts::lcd, 
 		      static_cast<int>(pos_x), static_cast<int>(pos_y - 45) + 2, 

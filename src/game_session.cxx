@@ -1,4 +1,4 @@
-//  $Id: game_session.cxx,v 1.33 2003/03/16 23:07:02 grumbel Exp $
+//  $Id: game_session.cxx,v 1.34 2003/03/21 22:08:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,8 +31,9 @@
 #include "result_screen.hxx"
 #include "globals.hxx"
 
-PingusGameSession::PingusGameSession (PLFHandle arg_plf)
-  : plf(arg_plf)
+PingusGameSession::PingusGameSession (PLFHandle arg_plf, bool arg_show_result_screen)
+  : plf(arg_plf),
+    show_result_screen(arg_show_result_screen)
 {
   Timer plf_timer("GameSession plf creation");
 
@@ -111,7 +112,10 @@ PingusGameSession::update (const GameDelta& delta)
       result.max_time  = server->get_plf()->get_time();
       result.used_time = server->get_time();
 
-      ScreenManager::instance()->replace_screen(new ResultScreen(result));
+      if (show_result_screen)
+        ScreenManager::instance()->replace_screen(new ResultScreen(result));
+      else
+        ScreenManager::instance()->pop_screen();
       return;
     }
 

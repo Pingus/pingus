@@ -1,4 +1,4 @@
-//  $Id: worldmap.hxx,v 1.22 2003/03/07 00:09:00 grumbel Exp $
+//  $Id: worldmap.hxx,v 1.23 2003/03/21 22:08:06 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -85,6 +85,9 @@ public:
   void draw (GraphicContext& gc);
   void update ();
   
+  /** Enters the level on which the Pingu is currently standing */
+  void enter_level();
+
   /** The the pingu to the given Node */
   void set_pingus(NodeId id);
   

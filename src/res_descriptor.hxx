@@ -1,4 +1,4 @@
-//  $Id: res_descriptor.hxx,v 1.10 2003/03/10 11:29:49 grumbel Exp $
+//  $Id: res_descriptor.hxx,v 1.11 2003/03/21 22:08:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -44,7 +44,7 @@ public:
   ResDescriptor& operator= (const ResDescriptor&);
 
   ResDescriptor (const std::string& res_name, const std::string& datafile,
-		 ResourceType type,
+		 ResourceType type = RD_RESOURCE,
 		 ResourceModifierNS::ResourceModifier modifier 
 		 = ResourceModifierNS::ROT0);
   ResDescriptor (const std::string& str);

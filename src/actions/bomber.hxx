@@ -1,4 +1,4 @@
-//  $Id: bomber.hxx,v 1.17 2002/11/03 14:37:20 grumbel Exp $
+//  $Id: bomber.hxx,v 1.18 2003/03/21 22:08:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -52,7 +52,7 @@ public:
   void draw (GraphicContext& gc);
   void update();
 
-  int  activation_time() { return 50; }
+  int  activation_time() { return 150; }
   void on_successfull_apply ();
   
 private:

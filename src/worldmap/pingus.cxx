@@ -1,4 +1,4 @@
-//  $Id: pingus.cxx,v 1.26 2003/02/19 09:50:36 grumbel Exp $
+//  $Id: pingus.cxx,v 1.27 2003/03/21 22:08:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,8 +29,11 @@ namespace WorldMapNS {
 Pingus::Pingus (PathGraph* arg_path)
   : Drawable("pingus"),
     path(arg_path),
-    sprite ("Pingus/walker0", "pingus", 20.0f, Sprite::RIGHT)
+    sprite ("Pingus/walker0", "pingus", 20.0f, Sprite::RIGHT),
+    arrow ("worldmap/arrow", "core")
 {
+  arrow.set_align_center_bottom();
+
   pos.x = 320;
   pos.y = 200;
 
@@ -48,6 +51,10 @@ Pingus::draw (GraphicContext& gc)
   // FIXME: Our sprite class is quite a bit sucky...
   if (!is_walking())
     sprite.set_frame(5);
+  else
+    {
+      gc.draw(arrow, path->get_dot(final_target_node)->get_pos());
+    }
 
   // FIXME: Replace the sprite and add up/down here
   float direction = get_direction();
@@ -104,6 +111,8 @@ Pingus::get_direction() const
 bool
 Pingus::walk_to_node (NodeId target)
 {
+  final_target_node = target;
+
   if (current_node == target)
     {
       return true;

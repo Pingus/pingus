@@ -1,4 +1,4 @@
-//  $Id: smallmap.cxx,v 1.34 2003/03/16 23:07:02 grumbel Exp $
+//  $Id: smallmap.cxx,v 1.35 2003/03/21 22:08:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -137,18 +137,18 @@ SmallMap::init()
             case Groundtype::GP_WATER:
             case Groundtype::GP_LAVA:
               cbuffer[i + 0] = 255;
-	      cbuffer[i + 1] = 0;
+	      cbuffer[i + 1] = 200;
 	      cbuffer[i + 2] = 0;
-	      cbuffer[i + 3] = 200;
+	      cbuffer[i + 3] = 0;
               break;
 
 #if 0
               // FIXME: temporaty disabled for 0.6.0 release, since all liquids are currently lava
             case Groundtype::GP_LAVA:
-              cbuffer[i + 0] = 255;
-	      cbuffer[i + 1] = 200;
-	      cbuffer[i + 2] = 0;
-	      cbuffer[i + 3] = 0;
+              cbuffer[i + 0] = 255; // alpha
+	      cbuffer[i + 1] = 255; // blue
+	      cbuffer[i + 2] = 128;   // green
+	      cbuffer[i + 3] = 128;   // red 
               break;
 #endif
               
@@ -206,8 +206,8 @@ SmallMap::draw (GraphicContext& gc)
 
   Display::draw_rect(x_of, 
 		     y_of,
-		     x_of + Math::min(rwidth,  static_cast<int>(sur.get_width())),
-		     y_of + Math::min(rheight, static_cast<int>(sur.get_height())),
+		     x_of + Math::min(rwidth,  static_cast<int>(sur.get_width()  - 1)),
+		     y_of + Math::min(rheight, static_cast<int>(sur.get_height() - 1)),
 		     0.0, 1.0, 0.0, 1.0);
   
   // FIXME: This should use put_target(), but put_target(), does not
