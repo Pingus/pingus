@@ -1,4 +1,4 @@
-//  $Id: basher.cc,v 1.9 2000/06/10 07:56:59 grumbel Exp $
+//  $Id: basher.cc,v 1.10 2000/06/15 19:32:44 grumbel Exp $
 //
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -53,8 +53,8 @@ Basher::init(void)
   //counter.set_count(0);
   counter.set_speed(1);
 
-  basher_c.set_size(2);
-  basher_c.set_speed(.3);
+  //basher_c.set_size(2);
+  //  basher_c.set_speed(.1);
 
   is_multi_direct = true;
   first_bash = true;
@@ -81,8 +81,9 @@ Basher::let_move()
   ++counter;
   walk_forward();
 
-  if (basher_c++ == 0)
+  if (basher_c++ > 2)
     {
+      basher_c = 0;
       if (have_something_to_dig())
 	{
 	  bash();

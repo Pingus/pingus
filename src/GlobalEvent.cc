@@ -1,4 +1,4 @@
-//  $Id: GlobalEvent.cc,v 1.7 2000/06/14 21:45:55 grumbel Exp $
+//  $Id: GlobalEvent.cc,v 1.8 2000/06/15 19:32:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,7 +46,7 @@ GlobalEvent::on_button_press(CL_InputDevice *device, const CL_Key &key)
 	    std::cout << "GlobalEvent::Makeing scrennshoot..." << std::endl;
 	    filename = Screenshot::make_screenshot();
 	    console.printf("GlobalEvent: Saved screenshot to \"%s\"\n", filename.c_str());
-	    console << "!\"#$%&'()*+,-./0123456789:;<=>?@";
+	    //console << "!\"#$%&'()*+,-./0123456789:;<=>?@";
 	    console.newline();
 	  }
 	  return false;

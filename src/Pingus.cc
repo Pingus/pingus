@@ -1,4 +1,4 @@
-//   $Id: Pingus.cc,v 1.35 2000/06/13 22:19:17 grumbel Exp $
+//   $Id: Pingus.cc,v 1.36 2000/06/15 19:32:44 grumbel Exp $
 //    ___
 //   |  _\ A free Lemmings clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -599,10 +599,10 @@ PingusMain::get_filenames()
   else 
     {
       std::cout << "Pingus Datafile: " << pingus_datafile
-				<< std::endl << std::endl;
+		<< std::endl << std::endl;
       std::cout << "Couldn't find `global.scr', please set the enviroment variable\n"
-	   << "PINGUS_DATADIR to the path of the file `pingus.dat' or use the\n"
-	   << "-p option." << std::endl;
+		<< "PINGUS_DATADIR to the path of the file `pingus.dat' or use the\n"
+		<< "-p option." << std::endl;
       exit(EXIT_SUCCESS);
     } 
 
@@ -614,23 +614,42 @@ PingusMain::get_filenames()
   pingus_datafile = pingus_datadir + "data\\pingus.dat";
 #endif /* !WIN32 */
   
+  // First we try to open the file which was given, if that is not
+  // there then we try again with filename+".plf". If still no success
+  // we try to search for that file in the pingus_path, if its not
+  // there, then we try to search for the filename+".plf" in the
+  // pingus_path.
   std::string custom_levelfile = levelfile;
-  if (!levelfile.empty()) 
+  bool levelfile_not_found = false;
+  if (!custom_levelfile.empty() && !System::exist(custom_levelfile))
     {
-      if (!System::exist(custom_levelfile)) 
+      if (System::exist(custom_levelfile + ".plf"))
+	{
+	  custom_levelfile += ".plf";
+	}
+      else
 	{
 	  if (verbose)
 	    std::cout << "Levelfile not found, trying fallbacks" << std::endl;
 	  
 	  // Search for the level in the datadir
-	  custom_levelfile = find_file(pingus_datadir, "/levels/" + custom_levelfile);
-	  if (!System::exist(custom_levelfile.c_str())) 
+	  custom_levelfile = find_file(pingus_datadir, "/levels/" + levelfile);
+	  levelfile_not_found = !System::exist(custom_levelfile.c_str());
+
+	  if (levelfile_not_found) 
 	    {
-	      std::cout << "Couldn't find level file: \"" << custom_levelfile << "\"" << std::endl;
+	      custom_levelfile = find_file(pingus_datadir, "/levels/" + levelfile + ".plf");
+	      levelfile_not_found = !System::exist(custom_levelfile.c_str());
+	    }
+
+	  if (levelfile_not_found)
+	    {
+	      std::cout << "Couldn't find level file: \"" << levelfile << "\"" << std::endl;
 	      exit(EXIT_FAILURE);
 	    }
 	}
     }
+
   levelfile = custom_levelfile;
   
   if (verbose)

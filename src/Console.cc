@@ -1,4 +1,4 @@
-//  $Id: Console.cc,v 1.9 2000/06/14 21:45:55 grumbel Exp $
+//  $Id: Console.cc,v 1.10 2000/06/15 19:32:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,8 +46,8 @@ Console::init()
   // std::cout << "Console: Init..." << std::endl;
   font = CL_Font::load("Fonts/xterm", PingusResource::get("fonts.dat"));
 
-  (*this) << "Pingus Output Console (hide/show it with F1\n"
-	  << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+  (*this) << "Pingus Output Console (hide/show it with F1)\n"
+	  << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
 
   is_init = true;
 }

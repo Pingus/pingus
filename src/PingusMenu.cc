@@ -1,4 +1,4 @@
-//  $Id: PingusMenu.cc,v 1.22 2000/06/12 14:42:11 grumbel Exp $
+//  $Id: PingusMenu.cc,v 1.23 2000/06/15 19:32:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -136,10 +136,8 @@ PingusMenu::Event::on_mouse_move(CL_InputDevice *device)
 {
   if (!enabled) return true;
  
-  if (device == CL_Input::pointers[0])
-    {
-      menu->draw();
-    }
+  menu->draw();
+
   return true;
 }
 
@@ -147,6 +145,8 @@ bool
 PingusMenu::Event::on_button_press(CL_InputDevice *device, const CL_Key &key)
 {
   if (!enabled) return true;
+
+  menu->draw();
   
   if (device == CL_Input::keyboards[0])
     {
@@ -163,6 +163,29 @@ PingusMenu::Event::on_button_press(CL_InputDevice *device, const CL_Key &key)
 	  break;
 	default:
 	  std::cout << "Unknown key pressed:" << key.ascii << std::endl;
+	}
+    }
+  return true;
+}
+
+bool
+PingusMenu::Event::on_button_release(CL_InputDevice *device, const CL_Key &key)
+{
+  if (!enabled) return true;
+  
+  menu->draw();
+
+  if (device == CL_Input::keyboards[0])
+    {
+      switch (key.id)
+	{
+	case CL_KEY_L:
+	  break;
+	case CL_KEY_F:
+	  break;
+	default:
+	  if (verbose) std::cout << "PingusMenu::Event: Unknown key pressed: " << key.id << std::endl;
+	  break;
 	}
     }
   else if (device == CL_Input::pointers[0])
@@ -183,31 +206,6 @@ PingusMenu::Event::on_button_press(CL_InputDevice *device, const CL_Key &key)
 	    }
 	}
   
-    }
-  return true;
-}
-
-bool
-PingusMenu::Event::on_button_release(CL_InputDevice *device, const CL_Key &key)
-{
-  if (!enabled) return true;
-  
-  if (device == CL_Input::keyboards[0])
-    {
-      switch (key.id)
-	{
-	case CL_KEY_L:
-	  break;
-	case CL_KEY_F:
-	  break;
-	default:
-	  if (verbose) std::cout << "PingusMenu::Event: Unknown key pressed: " << key.id << std::endl;
-	  break;
-	}
-    }
-  else if (device == CL_Input::pointers[0])
-    {
-      
     }
   return true;
 }

@@ -1,4 +1,4 @@
-//  $Id: blitter.cc,v 1.9 2000/06/15 14:08:16 grumbel Exp $
+//  $Id: blitter.cc,v 1.10 2000/06/15 19:32:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -284,16 +284,24 @@ Blitter::create_canvas(CL_SurfaceProvider* prov)
 {
   CL_Canvas* canvas = new CL_Canvas(prov->get_width(), prov->get_height());
 
-  canvas->lock();
-  prov->lock();
-  
-  memcpy(canvas->get_data(), prov->get_data(),
-	 sizeof(unsigned char) * prov->get_height() * prov->get_pitch());
+  switch (prov->get_depth())
+    {
+    case 32:
+      canvas->lock();
+      prov->lock();
+      
+      memcpy(canvas->get_data(), prov->get_data(),
+	     sizeof(unsigned char) * prov->get_height() * prov->get_pitch());
+      
+      prov->unlock();
+      canvas->unlock();
+      break;
+    default:
+      put_surface(canvas, prov, 0, 0);
+      break;
+    }
 
-  prov->unlock();
-  canvas->unlock();
-
-  return canvas;
+      return canvas;
 }
 
 /*

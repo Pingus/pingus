@@ -1,4 +1,4 @@
-//  $Id: PingusSpotMap.cc,v 1.24 2000/06/14 21:45:55 grumbel Exp $
+//  $Id: PingusSpotMap.cc,v 1.25 2000/06/15 19:32:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -277,11 +277,11 @@ PingusSpotMap::draw(int x_pos, int y_pos, int w, int h,
 
 	  // drawing the stuff
 	  for (TileIter x = start_x; 
-	       x < (start_x + tilemap_width) && x < tile.size();
+	       x <= (start_x + tilemap_width) && x < tile.size();
 	       x++)
 	    {
 	      for (TileIter y = start_y;
-		   y < start_y + tilemap_height && y < tile[x].size();
+		   y <= start_y + tilemap_height && y < tile[x].size();
 		   y++)
 		{
 		  if (!tile[x][y].is_empty()) 
