@@ -5,9 +5,9 @@
     <levelname lang="en">Tutorial 2 - Miners having fun</levelname>
     <description lang="en">Use the miner action and dig into the ground to reach the exit.</description>
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
-    <number-of-pingus>100</number-of-pingus>
-    <number-to-save>50</number-to-save>
-    <time>9000</time>
+    <number-of-pingus>20</number-of-pingus>
+    <number-to-save>10</number-to-save>
+    <time>-1</time>
     <width>1200</width>
     <height>600</height>
   </global>
