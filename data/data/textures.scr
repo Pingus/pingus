@@ -35,4 +35,7 @@ section Textures
 	desert_room = ../images/textures/desert_room.jpg (type=surface, x=0, y=0, width=378, height=378);
 
 	sortie	= ../images/textures/sortie.jpg (type=surface, x=0, y=0, width=256, height=256);
+
+	cyanspace = ../images/textures/cyanspace.jpg (type=surface, x=0, y=0, width=400, height=600);
+	bwsortiebg = ../images/textures/bwsortiebg.jpg (type=surface, x=0, y=0, width=400, height=600);
 }

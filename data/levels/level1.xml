@@ -44,12 +44,12 @@
   </action-list>
 
   <weather>
-    <type>rain</type>
+    <type>snow</type>
   </weather>
 
 <liquid>  <surface><resource type="datafile">
     <resource-datafile>global</resource-datafile>
-  <resource-ident>Liquid/lava</resource-ident>
+  <resource-ident>Liquid/slime</resource-ident>
   </resource></surface>
   <position>
     <x-pos>-5</x-pos>
@@ -1001,7 +1001,7 @@
 
 <liquid>  <surface><resource type="datafile">
     <resource-datafile>global</resource-datafile>
-  <resource-ident>Liquid/lava</resource-ident>
+  <resource-ident>Liquid/slime</resource-ident>
   </resource></surface>
   <position>
     <x-pos>-40</x-pos>
