@@ -1,4 +1,4 @@
-//  $Id: controller.cxx,v 1.7 2002/07/12 15:19:09 torangan Exp $
+//  $Id: controller.cxx,v 1.8 2002/07/29 10:41:17 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,7 +39,8 @@
 
 namespace Input
 {
-  Controller::Controller (const std::string& configfile) : standard_pointer(0), scroller(0), buttons(16), action_axis(0),
+  Controller::Controller (const std::string& configfile) : standard_pointer(0), 
+							   scroller(0), action_axis(0),
 							   std_pointer_x(0), std_pointer_y(0)
   {
 
@@ -148,6 +149,9 @@ namespace Input
   void
   Controller::update (float delta)
   {
+    // FIXME: Memory leak
+    events.clear ();
+
     scroller        ->update(delta);
     standard_pointer->update(delta);
     action_axis     ->update(delta);

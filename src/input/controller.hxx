@@ -1,4 +1,4 @@
-//  $Id: controller.hxx,v 1.6 2002/07/12 15:09:47 torangan Exp $
+//  $Id: controller.hxx,v 1.7 2002/07/29 10:41:17 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -53,7 +53,7 @@ namespace Input
     public:
       explicit Controller (const std::string& configfile);
       
-      std::list<Event*>& get_events ();
+      std::list<Event*>& get_events () { return events; }
       
       void update(float delta);
 
