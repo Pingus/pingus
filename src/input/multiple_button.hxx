@@ -1,4 +1,4 @@
-//  $Id: multiple_button.hxx,v 1.1 2002/07/08 14:48:03 torangan Exp $
+//  $Id: multiple_button.hxx,v 1.2 2002/07/09 15:03:20 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,7 +32,7 @@ namespace Input {
       
     public:
     
-      MultipleButton(std::vector<Button*> buttons_);
+      MultipleButton(const std::vector<Button*>& buttons_);
 
       virtual bool is_pressed ();
       virtual void update (float delta);
