@@ -1,4 +1,4 @@
-//  $Id: start_screen.cxx,v 1.5 2003/03/30 14:24:24 grumbel Exp $
+//  $Id: start_screen.cxx,v 1.6 2003/03/30 14:49:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,12 +31,14 @@
 #include "plf.hxx"
 #include "pingus_resource.hxx"
 #include "start_screen.hxx"
+#include "sound/sound.hxx"
 
 class StartScreenComponent : public GUI::Component
 {
 private:
   PLFHandle plf;
   CL_Surface background;
+  char time_str[10];
 public:
   StartScreenComponent(PLFHandle plf);
   virtual ~StartScreenComponent() {}
@@ -59,6 +61,7 @@ public:
 
   void on_click() 
   {
+    PingusSound::play_sound("yipee");
     parent->start_game();
   }
 };
@@ -74,6 +77,24 @@ StartScreenComponent::StartScreenComponent(PLFHandle p)
   : plf(p)
 {
   background = PingusResource::load_surface("menu/startscreenbg", "core");
+
+  int time_value = plf->get_time();
+  if (time_value == -1)
+    {
+      snprintf(time_str, 10, "unlimited");
+    }
+  else
+    {
+      int seconds   = (time_value / game_speed % 60);
+      int minutes   = (time_value / (60 * game_speed));
+  
+      // Stop displaying negative seconds, which can happen if armageddon is
+      // clicked with 1 second left.
+      if (seconds < 0)
+        seconds = 0;
+  
+      snprintf(time_str, 8, "%2d:%02d", minutes, seconds);
+    }
 }
 
 void
@@ -92,7 +113,7 @@ StartScreenComponent::draw(GraphicContext& gc)
   gc.print_right(Fonts::chalk_normal, 500, 340, to_string(plf->get_number_to_save()));
 
   gc.print_left (Fonts::chalk_normal, 300, 370, _("Time: "));
-  gc.print_right(Fonts::chalk_normal, 500, 370, to_string(plf->get_time()));
+  gc.print_right(Fonts::chalk_normal, 500, 370, time_str);
   
   gc.print_left (Fonts::chalk_normal, 300, 400, _("Difficulty:"));
   gc.print_right(Fonts::chalk_normal, 500, 400, to_string(plf->get_difficulty()) + "/100");
