@@ -1,4 +1,4 @@
-//  $Id: Server.cc,v 1.27 2002/06/08 20:19:54 torangan Exp $
+//  $Id: Server.cc,v 1.28 2002/06/08 22:38:32 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -53,7 +53,8 @@ PingusEvent::PingusEvent(std::string event_str)
   }
 }
 
-Server::Server()
+Server::Server(PLF* plf)
+  : action_holder (plf)
 {
   demo_mode = false;
   get_next_event = true;
@@ -62,11 +63,6 @@ Server::Server()
 }
 
 Server::~Server()
-{
-}
-
-void 
-Server::start(PLF* /*level_data*/)
 {
 }
 

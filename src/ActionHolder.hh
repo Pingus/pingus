@@ -1,4 +1,4 @@
-//  $Id: ActionHolder.hh,v 1.14 2001/08/16 22:00:50 grumbel Exp $
+//  $Id: ActionHolder.hh,v 1.15 2002/06/08 22:38:32 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,6 +27,8 @@
 
 #include "PinguAction.hh"
 
+class PLF;
+
 ///
 class PinguAction;
 
@@ -47,6 +49,9 @@ private:
   std::map<std::string, int> available_actions;
 
 public:
+  ActionHolder (PLF* plf);
+  ~ActionHolder ();
+
   /** Sets the number of actions, which are available in the pool.
    * @param name the name of the action
    * @param available the number of actions available

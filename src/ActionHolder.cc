@@ -1,4 +1,4 @@
-//  $Id: ActionHolder.cc,v 1.32 2001/08/16 22:00:50 grumbel Exp $
+//  $Id: ActionHolder.cc,v 1.33 2002/06/08 22:38:32 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,11 +23,25 @@
 #include "PingusError.hh"
 #include "Timer.hh"
 #include "globals.hh"
+#include "PLF.hh"
 
 #include "PinguActionFactory.hh"
 #include "ActionHolder.hh"
 
 using namespace boost;
+
+ActionHolder::ActionHolder (PLF* plf)
+{
+  std::vector<ActionData> action_data = plf->get_actions ();
+  
+  for(std::vector<ActionData>::iterator i = action_data.begin(); i != action_data.end(); ++i) {
+    set_actions(i->name, i->number_of);
+  }
+}
+
+ActionHolder::~ActionHolder ()
+{
+}
 
 void
 ActionHolder::set_actions(const std::string& name, int available)

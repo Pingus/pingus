@@ -1,4 +1,4 @@
-//  $Id: TrueServer.cc,v 1.30 2002/06/08 20:19:54 torangan Exp $
+//  $Id: TrueServer.cc,v 1.31 2002/06/08 22:38:32 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,14 +28,35 @@
 using namespace std;
 
 TrueServer::TrueServer(PLF* arg_plf)
-  : plf (arg_plf)
+  : Server (arg_plf),
+    plf (arg_plf)
 {
   filename = plf->get_filename();
   local_game_speed = game_speed;
   world = 0;
   finished = false;
   client_needs_redraw = true;
-  start(plf);
+
+  plf = arg_plf;
+  
+  filename = plf->get_filename();
+
+  std::vector<ActionData> bdata;
+
+  fast_forward = false;
+  pause = false;
+  last_time = 0;
+  local_game_speed = game_speed;
+
+  world = new World ();
+
+  // FIXME: this is complete trash, delete it and place it in world
+  // object or so...
+  world->set_action_holder(&action_holder);
+
+  world->init(plf);
+
+  GameTime::reset();
 }
 
 TrueServer::~TrueServer()
@@ -72,44 +93,6 @@ TrueServer::update(float delta)
       Server::update(delta);
       world->update(delta);
     }
-}
-
-void
-TrueServer::start(PLF* arg_plf)
-{
-  Timer timer;
-
-  plf = arg_plf;
-  
-  filename = plf->get_filename();
-
-  std::vector<ActionData> bdata;
-
-  timer.start();
-  
-  std::cout << "TrueServer: Generating actions..." << std::flush;
-
-  bdata = plf->get_actions();
-
-  for(std::vector<ActionData>::iterator b = bdata.begin(); b != bdata.end(); ++b) {
-    action_holder.set_actions(b->name, b->number_of);
-  }
-  std::cout << "done " << timer.stop() << std::endl;
-
-  fast_forward = false;
-  pause = false;
-  last_time = 0;
-  local_game_speed = game_speed;
-
-  world = new World ();
-
-  // FIXME: this is complete trash, delete it and place it in world
-  // object or so...
-  world->set_action_holder(&action_holder);
-
-  world->init(plf);
-
-  GameTime::reset();
 }
 
 bool

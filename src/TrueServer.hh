@@ -1,4 +1,4 @@
-//  $Id: TrueServer.hh,v 1.11 2002/06/07 19:10:33 grumbel Exp $
+//  $Id: TrueServer.hh,v 1.12 2002/06/08 22:38:32 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,7 +39,6 @@ public:
   TrueServer(PLF* plf);
   virtual ~TrueServer();
 
-  void start(PLF* level_data);
   bool enough_time_passed(void);
   void update(float delta);
   bool needs_redraw();
