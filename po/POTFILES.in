@@ -498,8 +498,6 @@ src/worldmap/pingus.cxx
 src/worldmap/pingus.hxx
 src/worldmap/sprite_drawable.cxx
 src/worldmap/sprite_drawable.hxx
-src/worldmap/stat.cxx
-src/worldmap/stat.hxx
 src/worldmap/surface_drawable.cxx
 src/worldmap/surface_drawable.hxx
 src/worldmap/worldmap.cxx
