@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMap.cc,v 1.25 2001/05/22 16:10:12 grumbel Exp $
+//  $Id: PingusWorldMap.cc,v 1.26 2001/06/11 20:40:17 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -213,11 +213,12 @@ PingusWorldMap::on_button_press (CL_InputDevice *device, const CL_Key &key)
       else if (key.id == CL_MOUSE_RIGHTBUTTON)
 	{
 	  PingusWorldMapNode* node = get_node (key.x - offset.x, key.y - offset.y);
-	  if (node) {
+
+	  /*if (node) {
 	    std::cout << "Node: " << node->id << std::endl;
 	  } else {
 	    std::cout << "No node selected" << std::endl;
-	  }
+	  }*/
 	}
     }
 }

@@ -1,4 +1,4 @@
-//  $Id: MultiplayerClientChild.cc,v 1.5 2001/04/15 20:55:03 grumbel Exp $
+//  $Id: MultiplayerClientChild.cc,v 1.6 2001/06/11 20:40:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,7 +41,7 @@ MultiplayerClientChild::MultiplayerClientChild (shared_ptr<Controller> arg_contr
   // FIXME: The buttonpanel sucks...
   button_panel->set_server (server.get ());
   
-  std::cout << "MultiplayerClientChild: Creating: " << server.get() << std::endl;
+  //std::cout << "MultiplayerClientChild: Creating: " << server.get() << std::endl;
   gui_objs.push_back (playfield);
   gui_objs.push_back (button_panel);
   gui_objs.push_back (counterbar);

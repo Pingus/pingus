@@ -1,4 +1,4 @@
-//  $Id: WorldObjData.cc,v 1.8 2000/12/16 23:11:20 grumbel Exp $
+//  $Id: WorldObjData.cc,v 1.9 2001/06/11 20:40:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,7 +29,6 @@
 boost::shared_ptr<WorldObjData>
 WorldObjData::create(xmlDocPtr doc, xmlNodePtr cur)
 {
-  std::cout << "WroldObjDATa:create" << std::endl;
   boost::shared_ptr<WorldObjData> data;
   char* type = (char*)xmlGetProp(cur, (xmlChar*)"type");
   

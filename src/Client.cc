@@ -1,4 +1,4 @@
-//  $Id: Client.cc,v 1.56 2001/04/27 20:44:37 grumbel Exp $
+//  $Id: Client.cc,v 1.57 2001/06/11 20:40:16 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -161,7 +161,7 @@ Client::play_level(boost::shared_ptr<PLF> arg_plf)
   plf = arg_plf;
 
   timer.start();
-  std::cout << "Client::play_level(), Reading PLF..." << std::flush;
+  //std::cout << "Client::play_level(), Reading PLF..." << std::flush;
 
   register_event_handler();
 

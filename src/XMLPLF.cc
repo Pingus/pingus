@@ -1,4 +1,4 @@
-//  $Id: XMLPLF.cc,v 1.29 2001/06/11 08:45:21 grumbel Exp $
+//  $Id: XMLPLF.cc,v 1.30 2001/06/11 20:40:16 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,9 +33,9 @@ XMLPLF::XMLPLF()
 XMLPLF::XMLPLF(const std::string& filename)
 {
   //  std::cout << "----- Parsing .xml file" << std::endl;
-  std::cout << "--- Checksum: " << std::flush;
+  //std::cout << "--- Checksum: " << std::flush;
   std::string str = System::checksum (filename);
-  std::cout << str << std::endl;
+  //std::cout << str << std::endl;
 
   doc = xmlParseFile(filename.c_str());
 
@@ -65,20 +65,20 @@ XMLPLF::~XMLPLF()
 void
 XMLPLF::parse_file()
 {
-  std::cout << "parsing file" << std::endl;
+  //std::cout << "parsing file" << std::endl;
   xmlNodePtr cur = doc->ROOT;
 
   if (xmlIsBlankNode(cur)) cur = cur->next;
 
   if (cur != NULL && strcmp((const char*)cur->name, "pingus-level") == 0)
     {
-      std::cout << "parse_file...." << std::endl;
+      //std::cout << "parse_file...." << std::endl;
 
       if (xmlIsBlankNode(cur)) cur = cur->next;
 
       if (cur->children == NULL)
-	std::cout << "node: " << cur->name << std::endl;
-
+	std::cout << "XMLPLF: node: " << cur->name << std::endl;
+      
       cur = cur->children;
       if (xmlIsBlankNode(cur)) cur = cur->next;
       

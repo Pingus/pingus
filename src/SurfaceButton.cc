@@ -1,4 +1,4 @@
-//  $Id: SurfaceButton.cc,v 1.23 2001/05/18 19:17:08 grumbel Exp $
+//  $Id: SurfaceButton.cc,v 1.24 2001/06/11 20:40:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -367,7 +367,7 @@ MultiplayerButton::~MultiplayerButton ()
 void
 MultiplayerButton::on_click()
 {
-  std::cout << "MultiplayerButton: Launching MultiplayerGame" << std::endl;
+  //std::cout << "MultiplayerButton: Launching MultiplayerGame" << std::endl;
   multiplayer_config.display ();
 }
 

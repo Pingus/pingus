@@ -1,4 +1,4 @@
-//  $Id: PinguAction.hh,v 1.17 2001/05/18 19:17:08 grumbel Exp $
+//  $Id: PinguAction.hh,v 1.18 2001/06/11 20:40:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -142,7 +142,7 @@ class f_class : public PinguActionFactory              \
 {                                                      \
 public:                                                \
   f_class () : PinguActionFactory (name) {             \
-     std::cout << _("Name: ") << name << std::endl;       \
+     /*std::cout << _("Name: ") << name << std::endl;*/\
   }                                                    \
   PinguAction* create () {                             \
     return new a_class ();                             \

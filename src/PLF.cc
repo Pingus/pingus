@@ -1,4 +1,4 @@
-//  $Id: PLF.cc,v 1.22 2000/12/30 23:54:05 grumbel Exp $
+//  $Id: PLF.cc,v 1.23 2001/06/11 20:40:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -237,7 +237,7 @@ PLF::get_weather(void)
 std::vector<shared_ptr<WorldObjData> > 
 PLF::get_worldobjs_data ()
 {
-  std::cout << "World: " << worldobjs_data.size () << std::endl;
+  //std::cout << "World: " << worldobjs_data.size () << std::endl;
   return worldobjs_data;
 }
 

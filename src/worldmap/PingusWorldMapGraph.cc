@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapGraph.cc,v 1.15 2001/05/22 16:10:12 grumbel Exp $
+//  $Id: PingusWorldMapGraph.cc,v 1.16 2001/06/11 20:40:17 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,7 +33,7 @@ PingusWorldMapNode::get_plf ()
 {
   if (plf.get () == 0) 
     {
-      console << "Loading levelname" << std::endl;
+      //console << "Loading " << levelname << std::endl;
       try {
 	plf = boost::shared_ptr<PLF> (new XMLPLF (levelname));
       } catch (PingusError e) {

@@ -1,4 +1,4 @@
-//  $Id: SurfaceBackground.cc,v 1.9 2001/05/18 19:17:08 grumbel Exp $
+//  $Id: SurfaceBackground.cc,v 1.10 2001/06/11 20:40:17 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -52,8 +52,8 @@ SurfaceBackground::SurfaceBackground(SurfaceBackgroundData* bg_data)
     std::cout << "Background: Warning dim larger than 1.0 are no longer supported" << std::endl;
   
   // Testing animatied backgrounds...
-  std::cout << "Res: " << bg_data->desc.res_name << std::endl
-	    << "file: " << bg_data->desc.datafile << std::endl;
+  /*std::cout << "Res: " << bg_data->desc.res_name << std::endl
+    << "file: " << bg_data->desc.datafile << std::endl;*/
 
   if (background_manipulation_enabled && bg_data->color.alpha != 0.0)
     {

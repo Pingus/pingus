@@ -1,4 +1,4 @@
-//  $Id: PanelIcons.cc,v 1.10 2001/06/11 08:45:22 grumbel Exp $
+//  $Id: PanelIcons.cc,v 1.11 2001/06/11 20:40:17 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -82,11 +82,13 @@ PanelIconCopy::on_click()
 
 PanelIconEdit::PanelIconEdit()
 {
+  tooltip = "???";
   sur = PingusResource::load_surface("editor/edit", "core");  
 }
 
 PanelIconPreferences::PanelIconPreferences()
 {
+  tooltip = "???";
   sur = PingusResource::load_surface("editor/preferences", "core");
 }
 
@@ -105,6 +107,7 @@ PanelIconEdit::on_click()
 
 PanelIconRun::PanelIconRun()
 {
+  tooltip = "Start the level and test it";
   sur = PingusResource::load_surface("editor/clock_run", "core");  
 }
 
@@ -116,6 +119,7 @@ PanelIconRun::on_click()
 
 PanelIconNew::PanelIconNew()
 {
+  tooltip = "Create a new level from scratch";
   sur = PingusResource::load_surface("editor/new", "core");  
 }
 
@@ -127,6 +131,7 @@ PanelIconNew::on_click()
 
 PanelIconInsertObject::PanelIconInsertObject()
 {
+  tooltip = "Insert an object";
   sur = PingusResource::load_surface("editor/index", "core");  
 }
 
@@ -138,6 +143,7 @@ PanelIconInsertObject::on_click()
 
 PanelIconRegionZoom::PanelIconRegionZoom ()
 {
+  tooltip = "Zoom into a region";
   sur = PingusResource::load_surface("editor/region-zoom", "core");
 }
 
@@ -149,6 +155,7 @@ PanelIconRegionZoom::on_click()
 
 PanelIconZoomIn::PanelIconZoomIn()
 {
+  tooltip = "Zoom in";
   sur = PingusResource::load_surface("editor/zoom-in", "core");
 }
 
@@ -160,6 +167,7 @@ PanelIconZoomIn::on_click()
 
 PanelIconZoomOut::PanelIconZoomOut()
 {
+  tooltip = "Zoom out";
   sur = PingusResource::load_surface("editor/zoom-out", "core");
 }
 

@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapStat.cc,v 1.1 2001/04/07 16:48:30 grumbel Exp $
+//  $Id: PingusWorldMapStat.cc,v 1.2 2001/06/11 20:40:17 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -93,13 +93,13 @@ PingusWorldMapStat::parse_node (xmlNodePtr cur)
   char* finished   = (char*)xmlGetProp(cur, (xmlChar*)"finished");
   char* checksum   = (char*)xmlGetProp(cur, (xmlChar*)"checksum");
 
-  std::cout << "Parsing node: " << cur->name << std::endl;
+  //std::cout << "Parsing node: " << cur->name << std::endl;
 
   if (id) {
-    node.id = StringConverter::to_int (id);
+    from_string (id, node.id);
     free (id);
   } else {
-    std::cout << "XMLXMXLMXLM id missing" << std::endl;
+    std::cout << "PingusWorldMapStat: id missing" << std::endl;
   }
   
   if (accessible) {
