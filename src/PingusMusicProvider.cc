@@ -1,4 +1,4 @@
-//  $Id: PingusMusicProvider.cc,v 1.4 2000/06/23 18:39:56 grumbel Exp $
+//  $Id: PingusMusicProvider.cc,v 1.5 2000/10/10 13:22:39 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>

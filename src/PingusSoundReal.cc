@@ -1,4 +1,4 @@
-//  $Id: PingusSoundReal.cc,v 1.2 2000/10/09 19:17:30 grumbel Exp $
+//  $Id: PingusSoundReal.cc,v 1.3 2000/10/10 13:22:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,8 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "../config.h"
+
 #ifdef HAVE_LIBSDL_MIXER
 
 #include <string>
@@ -25,6 +27,7 @@
 
 #include "algo.hh"
 #include "globals.hh"
+#include "PingusError.hh"
 #include "PingusMusicProvider.hh"
 #include "PingusWavProvider.hh"
 #include "PingusSoundReal.hh"
@@ -75,7 +78,7 @@ PingusSoundReal::init(int audio_rate, Uint16 audio_format,
 }
 
 void
-PingusSoundReal::clean_up()
+PingusSoundReal::real_clean_up()
 {
   assert (is_init);
 
@@ -100,7 +103,7 @@ PingusSoundReal::clean_up()
 }
 
 void
-PingusSoundReal::play_wav(std::string arg_str)
+PingusSoundReal::real_play_wav(std::string arg_str)
 {
   std::string str = "sound/" +  arg_str + ".wav";
   
@@ -115,7 +118,7 @@ PingusSoundReal::play_wav(std::string arg_str)
 }
 
 void
-PingusSoundReal::play_mod(std::string filename)
+PingusSoundReal::real_play_mod(std::string filename)
 {
   if (music)
     {
@@ -124,8 +127,13 @@ PingusSoundReal::play_mod(std::string filename)
     }
   
   printf("Playing...\n");
-  music = PingusMusicProvider::load(filename);
-  
+
+  try {
+    music = PingusMusicProvider::load(filename);
+  } catch (PingusError err) {
+    std::cout << err.message << std::endl;
+  }
+
   Mix_FadeInMusic(music,-1,2000);
   printf("Playing...now\n");
 }

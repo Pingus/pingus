@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapManager.hh,v 1.3 2000/09/20 14:31:11 grumbel Exp $
+//  $Id: PingusWorldMapManager.hh,v 1.4 2000/10/10 13:22:40 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,6 +26,7 @@ class PingusWorldMapManager
 {
 private:
   bool is_init;
+  bool exit_worldmap;
   PingusWorldMap* worldmap;
 
   /// Some slots to manage the event handling

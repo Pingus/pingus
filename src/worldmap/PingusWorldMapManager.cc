@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapManager.cc,v 1.6 2000/10/09 19:17:32 grumbel Exp $
+//  $Id: PingusWorldMapManager.cc,v 1.7 2000/10/10 13:22:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -54,7 +54,8 @@ PingusWorldMapManager::display ()
 
   worldmap->init ();
 
-  while (true)
+  exit_worldmap = false;
+  while (!exit_worldmap)
     {
       worldmap->draw ();
       // if (enough_time_passed ())
@@ -77,7 +78,22 @@ PingusWorldMapManager::on_button_press (CL_InputDevice *device, const CL_Key &ke
   /*  std::cout << "key press: " << key.id << " " 
 	    << CL_Mouse::get_x() << " "
 	    << CL_Mouse::get_y() << std::endl;  */
-  worldmap->on_button_press (device, key);
+
+  if (device == CL_Input::keyboards[0])
+    {
+      switch(key.id)
+	{
+	case CL_KEY_ESCAPE:
+	  exit_worldmap = true;
+	  break;
+	default:
+	  break;
+	}
+    }
+  else
+    {
+      worldmap->on_button_press (device, key);
+    }
 }
 
 void 

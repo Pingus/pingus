@@ -1,4 +1,4 @@
-//  $Id: PingusSoundReal.hh,v 1.2 2000/09/30 21:34:42 grumbel Exp $
+//  $Id: PingusSoundReal.hh,v 1.3 2000/10/10 13:22:39 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,8 +17,12 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "../config.h"
+
+#ifdef HAVE_LIBSDL_MIXER
+
 #ifndef PINGUSSOUNDREAL_HH
-#define PINGUSSOUND_HH
+#define PINGUSSOUNDREAL_HH
 
 #include "audio.hh"
 #include <string>
@@ -41,7 +45,7 @@ private:
   void init(int audio_rate, Uint16 audio_format,
 		   int audio_channels, int audio_buffers);
 public:
-  PingusSoundReal () {}
+  PingusSoundReal ();
   virtual ~PingusSoundReal () {}
 
   /** Load a mod and play it immediately.
@@ -60,6 +64,7 @@ public:
   virtual void real_clean_up();
 };
 
+#endif
 #endif
 
 /* EOF */

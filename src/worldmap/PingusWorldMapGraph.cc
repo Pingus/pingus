@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapGraph.cc,v 1.5 2000/10/02 14:30:04 grumbel Exp $
+//  $Id: PingusWorldMapGraph.cc,v 1.6 2000/10/10 13:22:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,7 @@
 
 PingusWorldMapGraph::PingusWorldMapGraph ()
 {
+  music = "pingus-1.it";
   graph = 0;
 }
 
@@ -57,6 +58,10 @@ PingusWorldMapGraph::parse_file (std::string filename)
 	  else if (strcmp ((char*)cur->name, "surface") == 0)
 	    {
 	      parse_background (cur);
+	    }
+	  else if (strcmp ((char*)cur->name, "music") == 0)
+	    {
+	      parse_music (cur);
 	    }
 	  else
 	    {
@@ -153,10 +158,29 @@ PingusWorldMapGraph::parse_background (xmlNodePtr cur)
   bg_desc = XMLhelper::parse_surface(doc, cur);
 }
 
+void
+PingusWorldMapGraph::parse_music (xmlNodePtr cur)
+{
+  char* file = (char*)xmlGetProp(cur, (xmlChar*)"file");
+
+  if (file)
+    music = file;
+  else
+    {
+      std::cout << "PingusWorldMapGraph: No music file given" << std::endl;
+    }
+}
+
 ResDescriptor 
 PingusWorldMapGraph::get_background ()
 {
   return bg_desc;
+}
+
+std::string 
+PingusWorldMapGraph::get_music ()
+{
+  return music;
 }
 
 Graph<PingusWorldMapNode>* 
