@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.88 2003/04/22 16:40:41 grumbel Exp $
+//   $Id: pingus_main.cxx,v 1.89 2003/04/24 13:18:18 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___
@@ -648,8 +648,13 @@ PingusMain::init_path_finder()
   path_manager.add_path ("/usr/local/share/pingus/");
   path_manager.add_path ("/usr/share/pingus/");
 
-  std::list<std::string> file_list;
+#else /* !WIN32 */
+  path_manager.add_path("../data");
+  path_manager.add_path("data");
+  path_manager.add_path(".");
 
+#endif /* !WIN32 */
+  std::list<std::string> file_list;
   file_list.push_back ("data/core.scr");
 
   if (!path_manager.find_path (file_list))
@@ -659,12 +664,6 @@ PingusMain::init_path_finder()
 		<< "-d option." << std::endl;
       exit(EXIT_FAILURE);
     }
-
-#else /* !WIN32 */
-  path_manager.set_path("../data");
-  path_manager.set_path("data");
-  path_manager.set_path(".");
-#endif /* !WIN32 */
 
 #ifdef HAVE_GETTEXT
   if (maintainer_mode)
