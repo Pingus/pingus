@@ -5,7 +5,7 @@
     <levelname lang="en">Block'a Rock</levelname>
     <levelname lang="it">Blocca la via</levelname>
     <levelname lang="de">Blockiere und sprenge</levelname>
-    <levelname lang="cs">Blokovani</levelname>
+    <levelname lang="cs">Blokování</levelname>
     <levelname lang="tr">Blokla ve patlat</levelname>
     <levelname lang="fr">Bloque la route</levelname>
     <levelname lang="sr">Blok i stena</levelname>
@@ -27,9 +27,9 @@
                            zu verbinden. Sprenge Dir den Weg frei und achte darauf das du auch
                            die restlichen Pingu unter Kontrolle hälst. Der Blocker wird Dir helfen.
     </description>
-    <description lang="cs">A mame tu znovu prilezitost zkombinovat znalosti, ktere jsi se
-                           drive naucil. Uvolni si cestu k cili a zaroven davej pozor i na
-                           ostatni pingy. Pomuze ti nova akce - zablokovani cesty.
+    <description lang="cs">A máme tu znovu pøíle¾itost zkombinovat znalosti, které jsi
+                           zatím získal. Uvolni si cestu k cíli a zároveò dávej pozor i na
+                           ostatní pingy. Pomù¾e ti nová akce - zablokování cesty.
     </description>
     <description lang="tr">Bu seviyede de, daha önce öðrendiðin eylemleri birleþtirme þansýn
                            olacak. Yoldaki bloklarý bombala ve ayný zamanda gerideki Pingularý da

@@ -34,9 +34,9 @@
 </background>
 
   <action-list>
-    <bomber>20</bomber>
-    <climber>20</climber>
-    <floater>20</floater>
+    <bomber count="20"/>
+    <climber count="20"/>
+    <floater count="20"/>
   </action-list>
 
 <groundpiece type="ground">

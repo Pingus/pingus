@@ -13,7 +13,7 @@ Can you help them?</description>
     <height>600</height>
 
     <difficulty>80</difficulty>
-    <playable>0</playable>
+    <playable>1</playable>
     <comment>got broken due to the new head-bounce feature</comment>
     <music>pingus-3.it</music>
   </global>
@@ -38,12 +38,12 @@ Can you help them?</description>
 </background>
 
   <action-list>
-    <basher>2</basher>
-    <blocker>5</blocker>
-    <bridger>20</bridger>
-    <climber>5</climber>
-    <digger>5</digger>
-    <floater>5</floater>
+    <basher count="2"/>
+    <blocker count="5"/>
+    <bridger count="20"/>
+    <climber count="5"/>
+    <digger count="5"/>
+    <floater count="5"/>
   </action-list>
 
 <hotspot>

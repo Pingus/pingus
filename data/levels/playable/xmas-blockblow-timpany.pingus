@@ -35,8 +35,8 @@
 </background>
 
   <action-list>
-    <blocker>20</blocker>
-    <bomber>20</bomber>
+    <blocker count="20"/>
+    <bomber count="20"/>
   </action-list>
 
 <entrance>

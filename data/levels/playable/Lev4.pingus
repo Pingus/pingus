@@ -33,11 +33,11 @@
 </background>
 
   <action-list>
-    <miner>2</miner>
-    <blocker>5</blocker>
-    <bomber>5</bomber>
-    <bridger>15</bridger>
-    <floater>3</floater>
+    <miner count="2"/>
+    <blocker count="5"/>
+    <bomber count="5"/>
+    <bridger count="15"/>
+    <floater count="3"/>
   </action-list>
 
 <groundpiece type="ground">

@@ -32,11 +32,11 @@
 </background>
 
   <action-list>
-    <blocker>5</blocker>
-    <basher>10</basher>
-    <bridger>20</bridger>
-    <digger>10</digger>
-    <miner>5</miner>
+    <blocker count="5"/>
+    <basher count="10"/>
+    <bridger count="20"/>
+    <digger count="10"/>
+    <miner count="5"/>
   </action-list>
 
 <groundpiece type="ground">

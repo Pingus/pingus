@@ -33,10 +33,10 @@
 
 
   <action-list>
-    <basher>1</basher>
-    <blocker>4</blocker>
-    <bomber>2</bomber>
-    <digger>1</digger>
+    <basher count="1"/>
+    <blocker count="4"/>
+    <bomber count="2"/>
+    <digger count="1"/>
   </action-list>
 
 <hotspot>

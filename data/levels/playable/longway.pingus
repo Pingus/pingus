@@ -38,9 +38,9 @@
 
 
   <action-list>
-    <basher>2</basher>
-    <blocker>3</blocker>
-    <miner>10</miner>
+    <basher count="2"/>
+    <blocker count="3"/>
+    <miner count="10"/>
   </action-list>
 
 <groundpiece type="ground">

@@ -4,6 +4,7 @@
   <global>
     <levelname lang="en">Lois and Clark</levelname>
     <description lang="en">
+    <playable>1</playable>
 
 </description>
     <author></author>
@@ -34,15 +35,15 @@
 </background>
 
   <action-list>
-    <basher>5</basher>
-    <blocker>5</blocker>
-    <bomber>5</bomber>
-    <bridger>5</bridger>
-    <climber>5</climber>
-    <digger>5</digger>
-    <floater>5</floater>
-    <jumper>5</jumper>
-    <miner>5</miner>
+    <basher count="5"/>
+    <blocker count="5"/>
+    <bomber count="5"/>
+    <bridger count="5"/>
+    <climber count="5"/>
+    <digger count="5"/>
+    <floater count="5"/>
+    <jumper count="5"/>
+    <miner count="5"/>
   </action-list>
 
 <hotspot>

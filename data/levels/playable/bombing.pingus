@@ -32,13 +32,13 @@
 </background>
 
   <action-list>
-    <basher>5</basher>
-    <bomber>1</bomber>
-    <bridger>2</bridger>
-    <climber>1</climber>
-    <digger>1</digger>
-    <floater>2</floater>
-    <miner>4</miner>
+    <basher count="5"/>
+    <bomber count="1"/>
+    <bridger count="2"/>
+    <climber count="1"/>
+    <digger count="1"/>
+    <floater count="2"/>
+    <miner count="4"/>
   </action-list>
 
 <hotspot>

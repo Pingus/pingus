@@ -39,11 +39,11 @@
 
 
   <action-list>
-    <basher>5</basher>
-    <blocker>3</blocker>
-    <bomber>3</bomber>
-    <bridger>15</bridger>
-    <digger>5</digger>
+    <basher count="5"/>
+    <blocker count="3"/>
+    <bomber count="3"/>
+    <bridger count="15"/>
+    <digger count="5"/>
   </action-list>
 
 <hotspot>

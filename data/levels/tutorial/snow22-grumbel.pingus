@@ -5,7 +5,7 @@
     <levelname lang="en">Entrance high, Exit low</levelname>
     <levelname lang="it">Entrata in alto, uscita in basso</levelname>
     <levelname lang="de">Eingang hoch, Ausgang tief</levelname>
-    <levelname lang="cs">Vchod nahore, vychod dole</levelname>
+    <levelname lang="cs">Vchod nahoøe, východ dole</levelname>
     <levelname lang="tr">Giriþ yüksek, Çýkýþ alçak</levelname>
     <levelname lang="fr">Entrée haute, Sortie basse</levelname>
     <levelname lang="sr">Ulaz visoko, izlaz nisko</levelname>
@@ -32,10 +32,10 @@
                            du bereits in vorangegangen Levels gelernt haben. Von daher
                            sollte dies kein sonderliches Problem darstellen.
     </description>
-    <description lang="cs">Kdyz nemas dostatek vrtuli, aby jsi dostal vsechny pingy dolu,
-                           budes muset vymyslet jiny zpusob. Vse, co potrebujes, jsi se
-                           naucil v predchozich urovnich, takze to pro tebe nebude zadny zvlastni
-                           problem.
+    <description lang="cs">Kdy¾ nemá¹ dostatek vrtulek, abys dostal v¹echny pingy bezpeènì dolù,
+                           bude¹ muset vymyslet jiný zpùsob. V¹e, co potøebuje¹, ses u¾
+                           nauèil v pøedchozích úrovních, tak¾e to pro tebe nebude ¾ádný zvlá¹tní
+                           problém.
     </description>
     <description lang="tr">Eðer Pingularýn tamamýný kurtaracak kadar Floater yoksa, hepsini
                            yükseklerden indirebilmenin baþka yollarýný bulmak zorundasýn. Bu

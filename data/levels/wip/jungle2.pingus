@@ -32,14 +32,14 @@
 </background>
 
   <action-list>
-    <basher>10</basher>
-    <blocker>10</blocker>
-    <bomber>10</bomber>
-    <bridger>15</bridger>
-    <climber>10</climber>
-    <digger>10</digger>
-    <floater>10</floater>
-    <miner>10</miner>
+    <basher count="10"/>
+    <blocker count="10"/>
+    <bomber count="10"/>
+    <bridger count="15"/>
+    <climber count="10"/>
+    <digger count="10"/>
+    <floater count="10"/>
+    <miner count="10"/>
   </action-list>
 
 <trap>

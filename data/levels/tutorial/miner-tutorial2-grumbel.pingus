@@ -5,7 +5,7 @@
     <levelname lang="en">Miner's heaven</levelname>
     <levelname lang="it">Il paradiso del minatore</levelname>
     <levelname lang="de">Miner's Himmel</levelname>
-    <levelname lang="cs">Raj horniku</levelname>
+    <levelname lang="cs">Ráj horníkù</levelname>
     <levelname lang="tr">Madenci cenneti</levelname>
     <levelname lang="fr">Paradis des mineurs</levelname>
     <levelname lang="sr">Rudarski raj</levelname>
@@ -28,9 +28,9 @@
                            diagonal durch den Boden zu graben und damit einen Pfad für die
                            folgenden Pingu zu erschaffen. Diese Fähigkeit heißt Miner.
     </description>
-    <description lang="cs">A dalsi akce se dostava na vysluni a opet se jedna o kopani do
-                           zeme, tentokrat sikmo. Dolovani umozni pingum vyhloubit sikme
-                           chodby, kterymi pak mohou ostatni projit.
+    <description lang="cs">A dal¹í akce se dostává na výsluní a opìt se jedná o kopání do
+                           zemì, tentokrát ¹ikmo. Hornictví umo¾ní pingùm hloubit ¹ikmé
+                           chodby, kterými pak mohou ostatní projít.
     </description>
     <description lang="sr">Ucimo jos jednu akciju koja obuhvata kopanje. Ovog puta se radi o 
 	                   kopanju ukoso, cime omogucavamo Pingusu da dijagonalno kopa kroz

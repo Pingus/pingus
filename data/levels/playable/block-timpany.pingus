@@ -4,7 +4,7 @@
   <global>
     <levelname lang="en">Armour-plated chocolate bar</levelname>
     <description lang="en">
-
+    <playable>1</playable>
 </description>
     <author>Craig Timpany &lt;timpany@pingus.cx&gt;</author>
     <number-of-pingus>40</number-of-pingus>
@@ -34,15 +34,15 @@
 </background>
 
   <action-list>
-    <basher>3</basher>
-    <blocker>1</blocker>
-    <bomber>1</bomber>
-    <bridger>1</bridger>
-    <climber>1</climber>
-    <digger>1</digger>
-    <floater>1</floater>
-    <jumper>1</jumper>
-    <miner>3</miner>
+    <basher count="3"/>
+    <blocker count="1"/>
+    <bomber count="1"/>
+    <bridger count="1"/>
+    <climber count="1"/>
+    <digger count="1"/>
+    <floater count="1"/>
+    <jumper count="1"/>
+    <miner count="3"/>
   </action-list>
 
 <groundpiece type="ground">

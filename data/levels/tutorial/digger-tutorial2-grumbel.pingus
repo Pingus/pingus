@@ -4,7 +4,7 @@
   <global>
     <levelname lang="en">Learning to dig</levelname>
     <levelname lang="de">Lernen zu graben</levelname>
-    <levelname lang="cs">Vyuka kopani</levelname>
+    <levelname lang="cs">Výuka kopání</levelname>
     <levelname lang="it">Impara a scavare</levelname>
     <levelname lang="tr">Kazmayý öðreniyoruz</levelname>
     <levelname lang="fr">Apprendre à creuser</levelname>
@@ -30,10 +30,10 @@
                            eines Lochs in den Boden zu erteilen, damit alle den Ausgang erreichen
                            können. Dies kann einfach dadurch erreicht werden, auf einen Pingu zu klicken.
     </description>
-    <description lang="cs">Toto je tvuj prvni ukol a bude celkem jednoduchy. Vsechno, co
-                           budes muset udelat, je dat pingovi prikaz k vykopani jamy do
-                           zeme, aby se vytvorila cesta k vychodu. Toho dosahnes jednoduse
-                           tak, ze na nejakeho pinga kliknes.
+    <description lang="cs">Toto je tvùj první úkol a bude celkem jednoduchý. V¹echno, co
+                           bude¹ muset udìlat, je dát pingovi pøíkaz k vykopání jámy do
+                           zemì, aby se vytvoøila cesta k východu. To udìlá¹ prostì tak,
+                           ¾e na nìjakého pinga klikne¹.
     </description>
     <description lang="sr">Ovo je tvoj prvi zadatak. Kao takav, prilicno je lak. Sve sto
 	                   treba da uradis je da naredis Pingusima da iskopaju rupu u

@@ -5,7 +5,7 @@
     <levelname lang="en">Solid ground can block the path</levelname>
     <levelname lang="it">Il terreno duro può bloccare il cammino</levelname>
     <levelname lang="de">Fester Boden kann den Weg blockieren</levelname>
-    <levelname lang="cs">Pevne podlozi muze omezit cestu</levelname>
+    <levelname lang="cs">Pevné podlo¾í mù¾e omezit cestu</levelname>
     <levelname lang="tr">Katý bloklar yolu týkayabilir</levelname>
     <levelname lang="fr">L'acier bloque le passage</levelname>
     <levelname lang="sr">Cvrsto zemljiste moze blokirati put</levelname>
@@ -33,11 +33,11 @@
                            dunkelgrau markiert und können nicht zerstört werden, also finde
                            einen Weg, sie zu umgehen.
     </description>
-    <description lang="cs">Uz drive jsi se naucil, ze se pingove dokazi prokopat skoro skrze
-                           vsechny druhy zeminy. V zemi se ale obcas nachazeji kovove predmety,
-			   ktere prokopat nemuzou. Tyto veci jsou na mapce vyznaceny
-                           tmave sedou barvou a nemohou byt nijak zniceny. Musis je
-                           obejit.
+    <description lang="cs">U¾ døíve ses nauèil, ¾e se pingové doká¾í prokopat skrze jakýkoliv
+			   druh zeminy. Tady se ale v zemi nacházejí kovové pøedmìty,
+			   které prokopat nejdou. Tyto vìci jsou na mapce vyznaèeny
+                           tmavì ¹edou barvou a nemohou být nijak znièeny. Musí¹ je
+                           obejít.
     </description>
     <description lang="tr">Daha önceki seviylerde, Pingularýmýz istedikleri yeri
                            delebiliyoralardý, ama çelikten yapýlmýþ bazý nesneleri delmeleri

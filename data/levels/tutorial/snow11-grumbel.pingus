@@ -5,7 +5,7 @@
     <levelname lang="en">Jump'n Bump... and Bash...</levelname>
     <levelname lang="it">Salta e sbatti... e scava...</levelname>
     <levelname lang="de">Springe... und grabe...</levelname>
-    <levelname lang="cs">Skakani a hrabani...</levelname>
+    <levelname lang="cs">Skákání a hrabání...</levelname>
     <levelname lang="tr">Zýpla, düþ... ve Kaz...</levelname>
     <levelname lang="fr">Saute, rebondis ... et défonce...</levelname>
     <levelname lang="sr">Skakutanje... i glodanje...</levelname>
@@ -31,11 +31,11 @@
 			   musst, sollte es schaffbar sein, aber wenn alles andere versagt, nutze den
 			   Pause Modus ('p') um dir wieder einen Überblick zu verschaffen.
     </description>
-    <description lang="cs">Je na case si delat starosti. Pingove sice nebudou prichazet prilis
-                           rychle, ale protoze se u zdi otaceji, tak brzo vznikne situace,
-                           kdy je uz nebudes stihat ovladat. Nastesti jich potrebujes do domecku
-                           dostat jen 5, tak to snad zvladnes. Kdyz ti to bude delat problemy,
-                           muzes pouzivat pauzu (P).
+    <description lang="cs">Je na èase si dìlat starosti. Pingové sice nebudou pøicházet pøíli¹
+                           rychle, ale proto¾e se u zdí otáèejí, tak brzo vznikne nepøehledná situace,
+                           kdy je u¾ nebude¹ stíhat ovládat. Na¹tìstí jich potøebuje¹ do domeèku
+                           dostat jen 5, tak to snad zvládne¹. Kdy¾ ti to bude dìlat problémy,
+                           mù¾e¹ pou¾ívat pauzu (P).
     </description>
     <description lang="tr">Yine panik zamaný. Pingular çok hýzlý gelmeyecekler, ancak
                            duvarlardan geri döneceklerinden, eni sonu baþýna dert açacaklar.

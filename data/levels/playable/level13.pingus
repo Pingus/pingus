@@ -10,6 +10,7 @@
     <time>15000</time>
     <width>2528</width>
     <height>800</height>
+    <playable>1</playable>
   </global>
 
 <background type="surface">
@@ -32,11 +33,11 @@
 </background>
 
   <action-list>
-    <basher>20</basher>
-    <blocker>10</blocker>
-    <bomber>10</bomber>
-    <bridger>10</bridger>
-    <climber>10</climber>
+    <basher count="20"/>
+    <blocker count="10"/>
+    <bomber count="10"/>
+    <bridger count="10"/>
+    <climber count="10"/>
   </action-list>
 
 <entrance>

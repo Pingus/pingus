@@ -5,7 +5,7 @@
     <levelname lang="en">Dig, bash and other problems</levelname>
     <levelname lang="it">Scavare, sfondare ed altri problemi</levelname>
     <levelname lang="de">Graben und andere Probleme</levelname>
-    <levelname lang="cs">Kopani, hrabani a dalsi problemy</levelname>
+    <levelname lang="cs">Kopání, hrabání a dal¹í problémy</levelname>
     <levelname lang="tr">Kaz, oy ve diðer sorunlar</levelname>
     <levelname lang="fr">Creuse, défonce et d'autres problèmes</levelname>
     <levelname lang="sr">Kopanje, glodanje i drugi problemi</levelname>
@@ -34,10 +34,10 @@
                            den Level nicht mehr lösen zu können, klicke doppelt auf den Armageddon
                            Knopf am unteren, rechten Rand.
     </description>
-    <description lang="cs">Cim vice urovni zvladnes, tim tezsi te budou cekat. Ale neboj se,
-                           nasledujici je zatim celkem jednoducha. Proste pouzij vse, co jsi se
-                           zatim naucil a nebudes mit potize. Kdyz se dostanes do bezvychodne
-			   situace, dvojklikni na tlacitko armagedon vpravo dole.
+    <description lang="cs">Èím více úrovní zvládne¹, tím tì¾¹í tì budou èekat. Ale neboj se,
+                           následující je je¹tì celkem jednoduchá. Prostì pou¾ij v¹e, co ses
+                           zatím nauèil a nebude¹ mít potí¾e. Kdy¾ se dostane¹ do bezvýchodné
+			   situace, dvojklikni na tlaèítko Armagedon vpravo dole.
     </description>
     <description lang="tr">Daha çok seviye geçtikçe daha zorlarýyla karþýlaþacaksýn, ama korkma
                            sýradaki de oldukça kolay. Daha önceki öðrendiklerile bu seviyeyi

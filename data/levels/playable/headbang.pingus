@@ -35,12 +35,12 @@
 </background>
 
   <action-list>
-    <basher>5</basher>
-    <climber>5</climber>
-    <digger>5</digger>
-    <floater>5</floater>
-    <bridger>5</bridger>
-    <bomber>1</bomber>
+    <basher count="5"/>
+    <climber count="5"/>
+    <digger count="5"/>
+    <floater count="5"/>
+    <bridger count="5"/>
+    <bomber count="1"/>
   </action-list>
 
 <entrance>

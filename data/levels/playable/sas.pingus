@@ -35,12 +35,12 @@
 
 
   <action-list>
-    <miner>1</miner>
-    <blocker>4</blocker>
-    <bomber>20</bomber>
-    <bridger>20</bridger>
-    <climber>20</climber>
-    <digger>20</digger>
+    <miner count="1"/>
+    <blocker count="4"/>
+    <bomber count="20"/>
+    <bridger count="20"/>
+    <climber count="20"/>
+    <digger count="20"/>
   </action-list>
 
 <groundpiece type="ground">

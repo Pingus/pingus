@@ -34,7 +34,7 @@
 
 
   <action-list>
-    <bridger>10</bridger>
+    <bridger count="10"/>
   </action-list>
 
 <groundpiece type="ground">

@@ -37,12 +37,12 @@
 
 
   <action-list>
-    <basher>4</basher>
-    <blocker>2</blocker>
-    <bomber>2</bomber>
-    <bridger>20</bridger>
-    <digger>1</digger>
-    <miner>2</miner>
+    <basher count="4"/>
+    <blocker count="2"/>
+    <bomber count="2"/>
+    <bridger count="20"/>
+    <digger count="1"/>
+    <miner count="2"/>
   </action-list>
 
 <liquid>  <surface><resource type="datafile">

@@ -5,7 +5,7 @@
     <levelname lang="en">Dig and float, but just don't fall and smash</levelname>
     <levelname lang="it">Scava e fluttua, ma attento a non cadere</levelname>
     <levelname lang="de">Graben und schweben, nicht fallen und sterben</levelname>
-    <levelname lang="cs">Kopej a letej, ale hlavne nespadni</levelname>
+    <levelname lang="cs">Kopej a skákej, ale hlavnì nespadni</levelname>
     <levelname lang="tr">Kaz ve uç, ama sakýn düþüp ölme</levelname>
     <levelname lang="fr">Creuse et flotte, mais ne tombe pas et éclate</levelname>
     <levelname lang="sr">Kopaj i lebdi, samo nemoj pasti i razbiti se</levelname>
@@ -31,10 +31,10 @@
                            damit sie den Ausgang erreichen können. Stelle sicher das nicht zu
                            viele von ihnen sterben.
     </description>
-    <description lang="cs">Na rozdil od predchozich dvou urovni budes mit tentokrat k dispozici
-                           dve schopnosti. Tvuj ukol bude, jako obvykle, velmi snadny - vyberes
-                           schopnost na levem panelu a pouzijes ji na pinga, aby se otevrela cesta k cili.
-                           Jen si dej pozor, aby ti mnoho sverencu nezemrelo.
+    <description lang="cs">Na rozdíl od pøedchozích dvou úrovní bude¹ mít tentokrát k dispozici
+                           dvì schopnosti. Tvùj úkol bude, jako obvykle, velmi snadný - vybere¹
+                           schopnost na levém panelu a pou¾ije¹ ji na pinga, abys vytvoøil cestu k cíli.
+                           Jen si dej pozor, aby ti mnoho svìøencù nezemøelo.
     </description>
     <description lang="tr">Ýlk iki seviyeden farklý olarak þimdi iki farklý eylem mümkün. Ama
                            iþin yine kolay: soldaki panelden uygun eylemleri seçip, Pingularý

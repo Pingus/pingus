@@ -5,7 +5,7 @@
     <levelname lang="en">Float or Die</levelname>
     <levelname lang="it">Fluttua o muori</levelname>
     <levelname lang="de">Schwebe oder Stirb</levelname>
-    <levelname lang="cs">Let, nebo zemres</levelname>
+    <levelname lang="cs">Le», nebo zemøe¹</levelname>
     <levelname lang="tr">Uçamazsan ölürsün</levelname>
     <levelname lang="fr">Flotte ou Meurt</levelname>
     <levelname lang="sr">Lebdi ili umri</levelname>
@@ -31,10 +31,11 @@
                            können. Wenn ein Pingu zu tief fällt, wird er dies nicht überleben.
                            Darum halte die Augen offen!
     </description>
-    <description lang="cs">V prvni misi jsi dopadl dobre, takze se ted podivame na dalsi.
-                           Tentokrat budes muset sve sverence vybavit malou vrtuli, aby se
-                           mohli pomalu snest z utesu na zem. Kdyz totiz pingove spadnou z prilis velke
-                           vysky, tak nepreziji. Takze na ne davej dobry pozor!
+    <description lang="cs">V první misi jsi dopadl dobøe, tak¾e se teï podíváme na dal¹í.
+                           Tentokrát bude¹ muset své svìøence vybavit malou vrtulkou, aby se
+                           mohli pomalu a bezpeènì snést z útesu na zem. Kdy¾ toti¾ pingové
+			   spadnou z pøíli¹ velké vý¹ky, tak nepøe¾ijí. Tak¾e na nì dávej
+			   dobrý pozor!
     </description>
     <description lang="tr">Birinci görevi baþarýyla tamamladýn, þimdi sýra ikincide. Bu kez
                            Pingularýn yavaþca düþmeleri için birer küçük pervane vermen gerekecek.

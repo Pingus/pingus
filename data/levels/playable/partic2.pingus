@@ -32,9 +32,9 @@
 </background>
 
   <action-list>
-    <digger>10</digger>
-    <blocker>3</blocker>
-    <floater>1</floater>
+    <digger count="10"/>
+    <blocker count="3"/>
+    <floater count="1"/>
   </action-list>
 
 <groundpiece type="solid">

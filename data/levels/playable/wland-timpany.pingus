@@ -34,11 +34,11 @@
 </background>
 
   <action-list>
-    <basher>10</basher>
-    <bridger>2</bridger>
-    <climber>10</climber>
-    <floater>5</floater>
-    <miner>1</miner>
+    <basher count="10"/>
+    <bridger count="2"/>
+    <climber count="10"/>
+    <floater count="5"/>
+    <miner count="1"/>
   </action-list>
 
 <hotspot>

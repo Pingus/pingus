@@ -5,7 +5,7 @@
     <levelname lang="en">One must prepare, the rest must follow</levelname>
     <levelname lang="it">Uno prepara, gli altri seguono</levelname>
     <levelname lang="de">Einer muss vorbereiten, der Rest folgen</levelname>
-    <levelname lang="cs">Jeden pripravi, ostatni nasleduji</levelname>
+    <levelname lang="cs">Jeden pøipraví, ostatní ho následují</levelname>
     <levelname lang="tr">Birisi yolu hazýrlamalý, diðerleri izlemeli</levelname>
     <levelname lang="fr">Un fais le travail, les autres suivent</levelname>
     <levelname lang="sr">Jedan priprema, ostali ga prate</levelname>
@@ -29,9 +29,9 @@
                            sie unter Kontrolle zu halten, während ein einzelner den Weg für
                            die anderen vorbereitet.
     </description>
-    <description lang="cs">Cas od casu se dostanes do situace, kdy zadny blokovac neni
-                           k dispozici. Mel by si vymyslet nejaky jiny zpusob, jak
-                           pingy udrzet pod kontrolou, nez nekdo pripravi cestu.
+    <description lang="cs">Èas od èasu se dostane¹ do situace, kdy ¾ádný blokovaè není
+                           k dispozici. Mìl bys vymyslet nìjaký jiný zpùsob, jak
+                           pingy udr¾et pod kontrolou, ne¾ nìkdo pøipraví cestu.
     </description>
     <description lang="tr">Bazý durumlarda, Blocker olmadan Pingularý kontrol altýnda tutmanýn
                            bir yolunu bulup, birinin yolu hazýrlamasýný saðlaman gerekebilir.

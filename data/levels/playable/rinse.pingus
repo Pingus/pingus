@@ -40,10 +40,10 @@
 
 
   <action-list>
-    <basher>20</basher>
-    <blocker>10</blocker>
-    <bomber>10</bomber>
-    <bridger>20</bridger>
+    <basher count="20"/>
+    <blocker count="10"/>
+    <bomber count="10"/>
+    <bridger count="20"/>
   </action-list>
 
 <liquid>  <surface><resource type="datafile">
