@@ -1,0 +1,2210 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE pingus-level SYSTEM "http://www.pingus.cx/dtd/pingus-level.dtd">
+<pingus-level>
+  <global>
+    <levelname lang="en">Pipe Panic in Penguin World</levelname>
+    <description lang="en">This level show a simple pipe system, which can be created with just a few pipe tiles.</description>
+    <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
+    <number-of-pingus>100</number-of-pingus>
+    <number-to-save>50</number-to-save>
+    <time>1000</time>
+    <width>1100</width>
+    <height>800</height>
+  </global>
+
+<background>
+  <surface><resource type="datafile">
+    <resource-datafile>textures.dat</resource-datafile>
+  <resource-ident>Textures/stars</resource-ident>
+  </resource></surface>
+  <color>
+    <red>0</red>
+    <green>0</green>
+    <blue>0</blue>
+    <alpha>0</alpha>
+  </color>
+  <scroll-x>0</scroll-x>
+  <scroll-y>0</scroll-y>
+  <para-x>0.5</para-x>
+  <para-y>0.5</para-y>
+  <stretch-x>0</stretch-x>
+  <stretch-y>0</stretch-y>
+</background>
+
+  <action-list>
+    <basher>20</basher>
+    <blocker>20</blocker>
+    <bomber>20</bomber>
+    <bridger>20</bridger>
+    <climber>20</climber>
+    <digger>20</digger>
+    <floater>20</floater>
+    <miner>20</miner>
+  </action-list>
+
+<trap>
+  <type>guillotine</type>
+  <position>
+    <x-pos>399</x-pos>
+    <y-pos>205</y-pos>
+    <z-pos>-10</z-pos>
+  </position>
+</trap>
+
+<entrance>
+  <position>
+    <x-pos>324</x-pos>
+    <y-pos>242</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+  <type>generic</type>
+  <direction>left</direction>
+  <release-rate>30</release-rate>
+</entrance>
+
+<entrance>
+  <position>
+    <x-pos>824</x-pos>
+    <y-pos>342</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+  <type>generic</type>
+  <direction>left</direction>
+  <release-rate>30</release-rate>
+</entrance>
+
+<exit>
+  <position>
+    <x-pos>783</x-pos>
+    <y-pos>436</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Exits/stone</resource-ident>
+  </resource></surface>
+</exit>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_h</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>253</x-pos>
+    <y-pos>163</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_h</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>198</x-pos>
+    <y-pos>133</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_h</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>96</x-pos>
+    <y-pos>711</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_h</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>369</x-pos>
+    <y-pos>754</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_h</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>693</x-pos>
+    <y-pos>729</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_h</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>195</x-pos>
+    <y-pos>494</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_ph</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>285</x-pos>
+    <y-pos>163</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_ph</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>230</x-pos>
+    <y-pos>133</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_ph</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>128</x-pos>
+    <y-pos>711</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_ph</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>401</x-pos>
+    <y-pos>754</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_ph</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>725</x-pos>
+    <y-pos>729</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_ph</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>227</x-pos>
+    <y-pos>494</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_h</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>317</x-pos>
+    <y-pos>163</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_h</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>262</x-pos>
+    <y-pos>133</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_h</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>160</x-pos>
+    <y-pos>711</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_h</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>433</x-pos>
+    <y-pos>754</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_h</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>757</x-pos>
+    <y-pos>729</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_h</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>259</x-pos>
+    <y-pos>494</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_ph</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>349</x-pos>
+    <y-pos>163</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_ph</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>294</x-pos>
+    <y-pos>133</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_ph</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>192</x-pos>
+    <y-pos>711</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_ph</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>465</x-pos>
+    <y-pos>754</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_ph</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>789</x-pos>
+    <y-pos>729</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_ph</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>291</x-pos>
+    <y-pos>494</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_h</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>381</x-pos>
+    <y-pos>163</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_h</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>326</x-pos>
+    <y-pos>133</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_h</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>224</x-pos>
+    <y-pos>711</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_h</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>497</x-pos>
+    <y-pos>754</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_h</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>821</x-pos>
+    <y-pos>729</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_h</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>323</x-pos>
+    <y-pos>494</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_ph</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>413</x-pos>
+    <y-pos>163</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_ph</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>358</x-pos>
+    <y-pos>133</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_ph</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>355</x-pos>
+    <y-pos>494</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_ph</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>796</x-pos>
+    <y-pos>133</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_h</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>445</x-pos>
+    <y-pos>163</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_h</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>390</x-pos>
+    <y-pos>133</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_h</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>387</x-pos>
+    <y-pos>494</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_h</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>828</x-pos>
+    <y-pos>133</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_h</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>825</x-pos>
+    <y-pos>494</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_h</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>793</x-pos>
+    <y-pos>494</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_h</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>881</x-pos>
+    <y-pos>133</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_h</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>878</x-pos>
+    <y-pos>494</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_ph</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>477</x-pos>
+    <y-pos>163</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_ph</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>422</x-pos>
+    <y-pos>133</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_ph</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>419</x-pos>
+    <y-pos>494</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_ph</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>860</x-pos>
+    <y-pos>133</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_ph</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>857</x-pos>
+    <y-pos>494</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_h</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>509</x-pos>
+    <y-pos>163</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_h</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>454</x-pos>
+    <y-pos>133</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_h</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>451</x-pos>
+    <y-pos>494</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_ph</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>541</x-pos>
+    <y-pos>163</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_ph</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>486</x-pos>
+    <y-pos>133</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_ph</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>483</x-pos>
+    <y-pos>494</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_h</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>573</x-pos>
+    <y-pos>163</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_h</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>518</x-pos>
+    <y-pos>133</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_h</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>515</x-pos>
+    <y-pos>494</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_ph</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>605</x-pos>
+    <y-pos>163</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_ph</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>550</x-pos>
+    <y-pos>133</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_ph</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>547</x-pos>
+    <y-pos>494</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_h</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>637</x-pos>
+    <y-pos>163</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_h</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>582</x-pos>
+    <y-pos>133</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_h</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>579</x-pos>
+    <y-pos>494</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_ph</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>669</x-pos>
+    <y-pos>163</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_ph</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>614</x-pos>
+    <y-pos>133</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_ph</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>611</x-pos>
+    <y-pos>494</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_h</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>701</x-pos>
+    <y-pos>163</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_h</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>646</x-pos>
+    <y-pos>133</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_h</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>643</x-pos>
+    <y-pos>494</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_ph</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>723</x-pos>
+    <y-pos>163</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_ph</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>668</x-pos>
+    <y-pos>133</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_ph</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>665</x-pos>
+    <y-pos>494</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_h</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>755</x-pos>
+    <y-pos>163</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_h</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>700</x-pos>
+    <y-pos>133</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_h</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>697</x-pos>
+    <y-pos>494</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_ph</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>786</x-pos>
+    <y-pos>163</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_ph</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>731</x-pos>
+    <y-pos>133</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_ph</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>728</x-pos>
+    <y-pos>494</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_h</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>818</x-pos>
+    <y-pos>163</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_h</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>763</x-pos>
+    <y-pos>133</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_h</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>760</x-pos>
+    <y-pos>494</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_h</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>819</x-pos>
+    <y-pos>163</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_h</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>764</x-pos>
+    <y-pos>133</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_h</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>761</x-pos>
+    <y-pos>494</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_ul</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>221</x-pos>
+    <y-pos>162</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_ul</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>166</x-pos>
+    <y-pos>132</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_ul</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>64</x-pos>
+    <y-pos>710</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_ul</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>337</x-pos>
+    <y-pos>753</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_ul</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>661</x-pos>
+    <y-pos>728</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_v</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>222</x-pos>
+    <y-pos>194</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_v</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>167</x-pos>
+    <y-pos>164</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_v</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>65</x-pos>
+    <y-pos>742</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_v</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>338</x-pos>
+    <y-pos>785</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_v</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>662</x-pos>
+    <y-pos>760</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_v</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>167</x-pos>
+    <y-pos>356</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_v</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>167</x-pos>
+    <y-pos>260</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_v</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>167</x-pos>
+    <y-pos>452</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_v</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>222</x-pos>
+    <y-pos>226</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_v</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>167</x-pos>
+    <y-pos>196</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_v</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>65</x-pos>
+    <y-pos>774</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_v</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>662</x-pos>
+    <y-pos>792</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_v</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>167</x-pos>
+    <y-pos>388</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_v</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>167</x-pos>
+    <y-pos>292</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_v</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>222</x-pos>
+    <y-pos>258</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_v</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>167</x-pos>
+    <y-pos>228</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_v</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>167</x-pos>
+    <y-pos>420</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_v</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>167</x-pos>
+    <y-pos>324</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_dl</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>221</x-pos>
+    <y-pos>290</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_h</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>253</x-pos>
+    <y-pos>299</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_h</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>275</x-pos>
+    <y-pos>299</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_h</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>307</x-pos>
+    <y-pos>299</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_ph</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>339</x-pos>
+    <y-pos>299</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_h</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>371</x-pos>
+    <y-pos>299</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_h</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>403</x-pos>
+    <y-pos>299</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_h</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>435</x-pos>
+    <y-pos>299</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_ur</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>467</x-pos>
+    <y-pos>298</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_dr</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>467</x-pos>
+    <y-pos>330</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_h</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>253</x-pos>
+    <y-pos>339</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_h</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>275</x-pos>
+    <y-pos>339</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_ph</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>307</x-pos>
+    <y-pos>339</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_h</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>339</x-pos>
+    <y-pos>339</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_ph</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>371</x-pos>
+    <y-pos>339</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_h</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>403</x-pos>
+    <y-pos>339</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_h</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>435</x-pos>
+    <y-pos>339</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_ul</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>221</x-pos>
+    <y-pos>338</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_v</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>222</x-pos>
+    <y-pos>370</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_dl</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>221</x-pos>
+    <y-pos>402</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_dl</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>166</x-pos>
+    <y-pos>484</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_h</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>253</x-pos>
+    <y-pos>411</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_h</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>275</x-pos>
+    <y-pos>411</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_ph</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>307</x-pos>
+    <y-pos>411</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_h</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>339</x-pos>
+    <y-pos>411</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_ph</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>371</x-pos>
+    <y-pos>411</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_h</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>403</x-pos>
+    <y-pos>411</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_ph</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>435</x-pos>
+    <y-pos>411</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_h</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>467</x-pos>
+    <y-pos>411</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_ph</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>499</x-pos>
+    <y-pos>411</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_h</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>531</x-pos>
+    <y-pos>411</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_ph</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>563</x-pos>
+    <y-pos>411</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_h</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>595</x-pos>
+    <y-pos>411</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_ph</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>627</x-pos>
+    <y-pos>411</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_h</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>659</x-pos>
+    <y-pos>411</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_ph</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>691</x-pos>
+    <y-pos>411</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_h</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>723</x-pos>
+    <y-pos>411</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_ph</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>755</x-pos>
+    <y-pos>411</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_v</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>910</x-pos>
+    <y-pos>462</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_h</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>787</x-pos>
+    <y-pos>411</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_h</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>819</x-pos>
+    <y-pos>411</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_dr</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>851</x-pos>
+    <y-pos>402</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_dr</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>901</x-pos>
+    <y-pos>485</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_v</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>860</x-pos>
+    <y-pos>370</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_v</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>910</x-pos>
+    <y-pos>340</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_v</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>910</x-pos>
+    <y-pos>404</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_v</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>860</x-pos>
+    <y-pos>338</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_v</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>910</x-pos>
+    <y-pos>308</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_v</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>910</x-pos>
+    <y-pos>372</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_v</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>910</x-pos>
+    <y-pos>433</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_v</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>860</x-pos>
+    <y-pos>306</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_v</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>910</x-pos>
+    <y-pos>276</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_v</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>860</x-pos>
+    <y-pos>274</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_v</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>910</x-pos>
+    <y-pos>244</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_v</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>860</x-pos>
+    <y-pos>242</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_v</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>910</x-pos>
+    <y-pos>212</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_v</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>860</x-pos>
+    <y-pos>210</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_v</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>910</x-pos>
+    <y-pos>180</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_v</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>265</x-pos>
+    <y-pos>772</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_v</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>862</x-pos>
+    <y-pos>790</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_v</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>860</x-pos>
+    <y-pos>188</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_v</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>910</x-pos>
+    <y-pos>158</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_v</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>265</x-pos>
+    <y-pos>740</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_v</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>538</x-pos>
+    <y-pos>783</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_v</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>862</x-pos>
+    <y-pos>758</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_ur</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>851</x-pos>
+    <y-pos>162</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_ur</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>901</x-pos>
+    <y-pos>132</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_ur</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>256</x-pos>
+    <y-pos>710</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_ur</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>529</x-pos>
+    <y-pos>753</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/pipe_ur</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>853</x-pos>
+    <y-pos>728</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+  <start-position>
+  <position>
+    <x-pos>0</x-pos>
+    <y-pos>0</y-pos>
+    <z-pos>1000</z-pos>
+  </position>
+  </start-position>
+
+</pingus-level>
+
