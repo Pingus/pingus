@@ -27,10 +27,6 @@
 namespace Pingus {
 namespace WorldObjsData {
 
-HotspotData::HotspotData () : speed(-1), para(1.0)
-{
-}
-
 HotspotData::HotspotData (xmlDocPtr doc, xmlNodePtr cur)
 {
   XMLFileReader reader(doc, cur);

@@ -36,8 +36,6 @@ public:
   ResDescriptor desc;
   Vector     pos;
 
-  HotspotData ();
-
   HotspotData (xmlDocPtr doc, xmlNodePtr cur);
   void insert_WorldObjs (World*);
 };

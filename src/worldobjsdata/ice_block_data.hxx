@@ -36,7 +36,6 @@ public:
   /** The number of iceblocks, only complete blocks are supported */
   int width;
 
-  IceBlockData ();
   IceBlockData (xmlDocPtr doc, xmlNodePtr cur);
   void insert_WorldObjs (World* world);
 };

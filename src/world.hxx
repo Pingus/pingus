@@ -60,11 +60,6 @@ namespace Particles {
 class World
 {
 private:
-  /** Start x-position of the camera */
-  int  start_x_pos;
-  /** Start y-position of the camera */
-  int  start_y_pos;
-
   /** groundmap for the pingus */
   PinguMap* gfx_map;
 
@@ -163,9 +158,6 @@ public:
 
   /** Return a pointer to the GameTime object of this World */
   GameTime* get_game_time ();
-
-  int get_start_x() const { return start_x_pos; }
-  int get_start_y() const { return start_y_pos; }
 
   /** Get the acceleration due to gravity in the world */
   float get_gravity();

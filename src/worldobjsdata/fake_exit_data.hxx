@@ -37,7 +37,6 @@ public:
   GameCounter counter;
 
 public:
-  FakeExitData ();
   FakeExitData (xmlDocPtr doc, xmlNodePtr node);
 
   void insert_WorldObjs (World*);

@@ -28,11 +28,6 @@
 namespace Pingus {
 namespace WorldObjsData {
 
-SpikeData::SpikeData ()
-{
-  pos.z = 100;
-}
-
 SpikeData::SpikeData (xmlDocPtr doc, xmlNodePtr cur)
   : surface(Resource::load_sprite("traps/spike"))
 {

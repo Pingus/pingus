@@ -35,7 +35,6 @@ public:
   Vector   pos;
 
 public:
-  HammerData ();
   HammerData (xmlDocPtr doc, xmlNodePtr node);
   void insert_WorldObjs (World* world);
 };

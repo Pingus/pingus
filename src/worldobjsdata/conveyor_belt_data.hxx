@@ -35,7 +35,6 @@ public:
   float  speed;
   float  counter;
 
-  ConveyorBeltData ();
   ConveyorBeltData (xmlDocPtr doc, xmlNodePtr cur);
 
   /** Create an WorldObj from the given data object */

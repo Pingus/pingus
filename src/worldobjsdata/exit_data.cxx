@@ -27,11 +27,6 @@
 namespace Pingus {
 namespace WorldObjsData {
 
-ExitData::ExitData () : owner_id(0),
-                        use_old_pos_handling(true)
-{
-}
-
 ExitData::ExitData (xmlDocPtr doc, xmlNodePtr cur) : owner_id(0),
                                                      use_old_pos_handling(true)
 {

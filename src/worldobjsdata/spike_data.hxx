@@ -37,7 +37,6 @@ public:
   GameCounter counter;
 
 public:
-  SpikeData ();
   SpikeData (xmlDocPtr doc, xmlNodePtr node);
   void insert_WorldObjs (World*);
 };

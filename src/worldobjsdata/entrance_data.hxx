@@ -44,7 +44,6 @@ public:
   std::string type;
 
 public:
-  EntranceData ();
   EntranceData (xmlDocPtr doc, xmlNodePtr cur);
 
   void insert_WorldObjs (World*);

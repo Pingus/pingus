@@ -28,10 +28,6 @@
 namespace Pingus {
 namespace WorldObjsData {
 
-BumperData::BumperData ()
-{
-}
-
 BumperData::BumperData (xmlDocPtr doc, xmlNodePtr cur)
 {
   XMLFileReader reader(doc, cur);

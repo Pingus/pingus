@@ -41,7 +41,6 @@ public:
   // The height of the door in graphic tiles
   int door_height;
 
-  SwitchDoorData ();
   SwitchDoorData (xmlDocPtr doc, xmlNodePtr cur);
   void insert_WorldObjs (World* world);
 };

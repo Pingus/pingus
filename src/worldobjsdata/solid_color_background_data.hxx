@@ -34,11 +34,7 @@ public:
   Vector pos;
   CL_Colorf     color;
 
-  // FIXME: Add z_pos handling here
-
-  SolidColorBackgroundData () {}
   SolidColorBackgroundData (xmlDocPtr doc, xmlNodePtr cur);
-  virtual ~SolidColorBackgroundData() {}
   void insert_WorldObjs (World* world);
 };
 

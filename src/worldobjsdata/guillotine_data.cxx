@@ -28,10 +28,6 @@
 namespace Pingus {
 namespace WorldObjsData {
 
-GuillotineData::GuillotineData ()
-{
-}
-
 GuillotineData::GuillotineData (xmlDocPtr doc, xmlNodePtr cur)
   : surface  (Resource::load_sprite("traps/guillotinekill")),
     idle_surf(Resource::load_sprite("traps/guillotineidle"))

@@ -33,7 +33,6 @@ public:
   Vector pos;
 
 public:
-  ThunderstormBackgroundData () {}
   ThunderstormBackgroundData (xmlDocPtr doc, xmlNodePtr cur);
   void insert_WorldObjs (World* world);
 };

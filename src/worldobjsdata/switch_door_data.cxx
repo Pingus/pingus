@@ -27,11 +27,6 @@
 namespace Pingus {
 namespace WorldObjsData {
 
-SwitchDoorData::SwitchDoorData ()
-  : door_height(10)
-{
-}
-
 SwitchDoorData::SwitchDoorData (xmlDocPtr doc, xmlNodePtr cur)
 {
   XMLFileReader reader(doc, cur);

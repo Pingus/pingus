@@ -43,7 +43,6 @@ public:
   bool use_old_pos_handling;
 
 public:
-  ExitData ();
   ExitData (xmlDocPtr doc, xmlNodePtr cur);
 
   void insert_WorldObjs (World*);

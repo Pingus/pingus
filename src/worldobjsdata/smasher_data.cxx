@@ -28,10 +28,6 @@
 namespace Pingus {
 namespace WorldObjsData {
 
-SmasherData::SmasherData ()
-{
-}
-
 SmasherData::SmasherData (xmlDocPtr doc, xmlNodePtr cur) 
   : surface(Resource::load_sprite("traps/smasher"))
 {

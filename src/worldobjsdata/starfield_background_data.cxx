@@ -26,13 +26,6 @@
 namespace Pingus {
 namespace WorldObjsData {
 
-StarfieldBackgroundData::StarfieldBackgroundData ()
-  :  small_stars_count(40),
-    middle_stars_count(20),
-     large_stars_count(10)
-{
-}
-
 StarfieldBackgroundData::StarfieldBackgroundData (xmlDocPtr doc, xmlNodePtr cur)
 {
   small_stars_count  = 100;

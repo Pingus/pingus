@@ -40,7 +40,6 @@ public:
   GameCounter idle_counter;
 
 public:
-  GuillotineData ();
   GuillotineData (xmlDocPtr doc, xmlNodePtr node);
 
   void insert_WorldObjs (World*);

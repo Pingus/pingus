@@ -36,7 +36,6 @@ public:
   GameCounter counter;
 
 public:
-  LaserExitData ();
   LaserExitData (xmlDocPtr doc, xmlNodePtr node);
   void insert_WorldObjs (World*);
 };

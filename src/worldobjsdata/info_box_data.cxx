@@ -27,14 +27,6 @@
 namespace Pingus {
 namespace WorldObjsData {
 
-InfoBoxData::InfoBoxData ()
-{
-}
-
-InfoBoxData::~InfoBoxData ()
-{
-}
-
 void
 InfoBoxData::insert_WorldObjs (World* world)
 {

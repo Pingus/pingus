@@ -29,13 +29,6 @@
 namespace Pingus {
 namespace WorldObjsData {
 
-EntranceData::EntranceData () : direction(MISC),
-                                release_rate(50),
-				owner_id(0),
-				type("generic")
-{
-}
-
 EntranceData::EntranceData (xmlDocPtr doc, xmlNodePtr cur) : direction(MISC),
                                                              release_rate(50),
 							     owner_id(0),

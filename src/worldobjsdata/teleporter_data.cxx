@@ -27,10 +27,6 @@
 namespace Pingus {
 namespace WorldObjsData {
 
-TeleporterData::TeleporterData ()
-{
-}
-
 TeleporterData::TeleporterData (xmlDocPtr doc, xmlNodePtr cur)
 {
   XMLFileReader reader(doc, cur);

@@ -53,9 +53,6 @@ World::World(PLF* plf)
 {
   WorldObj::set_world(this);
 
-  start_x_pos = plf->get_startx();
-  start_y_pos = plf->get_starty();
-
   // These get deleted via the world_obj vector in the destructor
   pingu_particle_holder = new Particles::PinguParticleHolder();
   rain_particle_holder  = new Particles::RainParticleHolder();

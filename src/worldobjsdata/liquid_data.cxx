@@ -27,13 +27,6 @@
 namespace Pingus {
 namespace WorldObjsData {
 
-LiquidData::LiquidData ()
-  : old_width_handling(true),
-    width(0),
-    speed(20)
-{
-}
-
 LiquidData::LiquidData (xmlDocPtr doc, xmlNodePtr cur)
   : old_width_handling(true),
     width(0),

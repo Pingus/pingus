@@ -28,10 +28,6 @@
 namespace Pingus {
 namespace WorldObjsData {
 
-FakeExitData::FakeExitData ()
-{
-}
-
 FakeExitData::FakeExitData (xmlDocPtr doc, xmlNodePtr cur)
   : surface(Resource::load_sprite("traps/fake_exit"))
 {

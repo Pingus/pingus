@@ -27,11 +27,6 @@
 namespace Pingus {
 namespace WorldObjsData {
 
-IceBlockData::IceBlockData ()
-  : width(1)
-{
-}
-
 IceBlockData::IceBlockData (xmlDocPtr doc, xmlNodePtr cur)
 {
   XMLFileReader reader(doc, cur);

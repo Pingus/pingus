@@ -42,10 +42,7 @@ public:
 
   Groundtype::GPType gptype;
 
-  GroundpieceData ();
   GroundpieceData (xmlDocPtr doc, xmlNodePtr cur);
-
-  ~GroundpieceData ();
 
   void insert_WorldObjs (World*);
 };

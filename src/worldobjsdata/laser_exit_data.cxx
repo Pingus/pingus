@@ -28,10 +28,6 @@
 namespace Pingus {
 namespace WorldObjsData {
 
-LaserExitData::LaserExitData ()
-{
-}
-
 LaserExitData::LaserExitData (xmlDocPtr doc, xmlNodePtr cur) 
   : surface(Resource::load_sprite("traps/laser_exit"))
 {

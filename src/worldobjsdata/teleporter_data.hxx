@@ -33,7 +33,6 @@ public:
   Vector pos;
   Vector target_pos;
 
-  TeleporterData ();
   TeleporterData (xmlDocPtr doc, xmlNodePtr cur);
   void insert_WorldObjs (World*);
 };

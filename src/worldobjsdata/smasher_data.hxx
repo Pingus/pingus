@@ -34,7 +34,6 @@ public:
   Vector   pos;
 
 public:
-  SmasherData ();
   SmasherData (xmlDocPtr doc, xmlNodePtr node);
   void insert_WorldObjs (World*);
 };

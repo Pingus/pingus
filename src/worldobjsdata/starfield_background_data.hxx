@@ -33,7 +33,6 @@ public:
   int middle_stars_count;
   int  large_stars_count;
 
-  StarfieldBackgroundData ();
   StarfieldBackgroundData (xmlDocPtr doc, xmlNodePtr cur);
   void insert_WorldObjs (World*);
 };

@@ -27,10 +27,6 @@
 namespace Pingus {
 namespace WorldObjsData {
 
-HammerData::HammerData ()
-{
-}
-
 HammerData::HammerData (xmlDocPtr doc, xmlNodePtr cur)
 {
   XMLFileReader reader(doc, cur);

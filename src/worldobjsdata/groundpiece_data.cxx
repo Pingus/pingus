@@ -27,11 +27,6 @@
 namespace Pingus {
 namespace WorldObjsData {
 
-GroundpieceData::GroundpieceData ()
-{
-  gptype = Groundtype::GP_GROUND;
-}
-
 GroundpieceData::GroundpieceData (xmlDocPtr doc, xmlNodePtr cur)
 {
   gptype = Groundtype::GP_GROUND;
@@ -51,10 +46,6 @@ GroundpieceData::GroundpieceData (xmlDocPtr doc, xmlNodePtr cur)
       if (reader.read_string("type", type))
         gptype = Groundtype::string_to_type (type);
     }
-}
-
-GroundpieceData::~GroundpieceData ()
-{
 }
 
 void

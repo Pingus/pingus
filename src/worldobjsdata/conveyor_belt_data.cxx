@@ -27,13 +27,6 @@
 namespace Pingus {
 namespace WorldObjsData {
 
-ConveyorBeltData::ConveyorBeltData ()
-  : width(5),
-    speed(2),
-    counter(0)
-{
-}
-
 ConveyorBeltData::ConveyorBeltData (xmlDocPtr doc, xmlNodePtr cur)
 {
   XMLFileReader reader(doc, cur);

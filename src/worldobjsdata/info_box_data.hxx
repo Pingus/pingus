@@ -38,9 +38,7 @@ public:
   Vector text_pos;
 
 public:
-  InfoBoxData ();
   InfoBoxData (xmlDocPtr doc, xmlNodePtr cur);
-  ~InfoBoxData ();
   void insert_WorldObjs (World* world);
 };
 
