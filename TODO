@@ -1,3 +1,15 @@
+> 1.  basher: The basher can go through small solid objects. He does
+> not bash them away, so nobody can follow. But anyway it looks
+> strange.  I have this problem in the level I send to you (level_2)
+> because the width of the vertical solid objects is so small.
+
+> 2. digger: The digger can dig to the left and the right through
+> solid objects if there width is small. I saw this problem in my
+> level_2.
+
+
+Log file
+
 GFX ToDo:
 ~~~~~~~~~
 
@@ -211,6 +223,6 @@ DOOR.WAV      MOUSEPRE.WAV  OING.WAV	     THUD.WAV
 
 
 
-$Date: 2000/09/13 00:14:55 $
+$Date: 2000/09/26 12:35:34 $
 
 -= EOF =-

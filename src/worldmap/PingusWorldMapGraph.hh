@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapGraph.hh,v 1.3 2000/09/25 16:29:43 grumbel Exp $
+//  $Id: PingusWorldMapGraph.hh,v 1.4 2000/09/26 12:35:35 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,6 +30,10 @@
 class PingusWorldMapNode
 {
 public:
+  PingusWorldMapNode () 
+  {
+    accessible = false;
+  }
   std::string levelname;
   Position pos;
   list<int> links;

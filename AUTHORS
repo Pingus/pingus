@@ -91,6 +91,16 @@ Mark Collinson <mark.collinson@lineone.net>
 
 Tom Flavel <sknull@yahoo.com>
 	* gfx
+	* levels
+
+Michael Wand <mwand@gmx.de>
+	* levels
+
+Jens Henrik Goebbert <jens.goebbert@post.rwth-aachen.de>
+	* levels 
+
+Bernhard Trummer <bernhard.trummer@gmx.at>
+	* libxml configure.in entry
 
 Andrew Mustun <andrew@qcad.org>
 Benjamin Winkler

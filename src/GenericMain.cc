@@ -1,4 +1,4 @@
-//  $Id: GenericMain.cc,v 1.2 2000/08/09 14:39:37 grumbel Exp $
+//  $Id: GenericMain.cc,v 1.3 2000/09/26 12:35:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,7 +19,7 @@
 
 #include <iostream>
 #include <ClanLib/core.h>
-#include <ClanLib/magick.h>
+#include <ClanLib/jpeg.h>
 
 #include "System.hh"
 #include "war/WarMain.hh"
@@ -33,7 +33,7 @@ GenericMain::init_modules()
 {
   std::cout << "Module init.." << std::endl;
   CL_SetupCore::init();
-  CL_SetupMagick::init();
+  CL_SetupJPEG::init();
 }
 
 void
@@ -54,7 +54,7 @@ GenericMain::main(int argc, char* argv[])
 {
   int ret_value;
   CL_SetupCore::init();
-  CL_SetupMagick::init();
+  CL_SetupJPEG::init();
 
   std::cout << "Starting..." << std::endl;
 
@@ -75,7 +75,7 @@ GenericMain::main(int argc, char* argv[])
 
   ret_value = main_obj->main(argc, argv);
 
-  CL_SetupMagick::deinit();
+  CL_SetupJPEG::deinit();
   CL_SetupCore::deinit();
 
   return ret_value;

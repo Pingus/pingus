@@ -13,6 +13,7 @@ section Game
 
 	dot_green = images/misc/dot_green.tga (type=surface, x=0, y=0, width=32, height=12);
         dot_red = images/misc/dot_red.tga (type=surface, x=0, y=0, width=32, height=12);
+        dot_border = images/misc/dot_border.pcx (type=surface, x=0, y=0, width=34, height=14, tcol=0);
 }
 
 section Cursors

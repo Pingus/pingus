@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMap.cc,v 1.5 2000/09/25 16:29:43 grumbel Exp $
+//  $Id: PingusWorldMap.cc,v 1.6 2000/09/26 12:35:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -68,29 +68,20 @@ PingusWorldMap::on_button_press (CL_InputDevice *device, const CL_Key &key)
 		  CL_Target* target = CL_Display::get_target ();
 		  if (target)
 		    {
-		      std::cout << "red:   " << target->get_red_mask () << std::endl;
-		      std::cout << "green: " << target->get_green_mask () << std::endl;
-		      std::cout << "blue:  " << target->get_blue_mask () << std::endl;
-		      std::cout << "alpha: " << target->get_alpha_mask () << std::endl;
-
 		      CL_SurfaceProvider* provider = new TargetProvider (target);
-		      CL_Canvas* canvas = new CL_Canvas (target->get_width (), target->get_height ());
 		      CL_Surface* sur = CL_Surface::create (provider);
-
-		      sur->put_target (0, 0, 0, canvas);
-		      
-		      CL_Surface* sur2 = CL_Surface::create (canvas);
 
 		      for (int y = 0; y < CL_Display::get_width(); 
 			   y += CL_Display::get_width() / 40)
 			{
 			  CL_System::keep_alive ();
-			  // CL_Display::clear_display ();
+			  CL_Display::clear_display ();
 			  sur->put_screen (0, y);
-			  sur2->put_screen (0, 0);
 			  Display::flip_display ();
 			}
-		    }		  
+		      delete sur;
+		      delete provider;
+		    }
 		}
 	      else
 		{

@@ -1,4 +1,4 @@
-#  $Id: configure.in,v 1.28 2000/09/23 20:30:48 grumbel Exp $
+#  $Id: configure.in,v 1.29 2000/09/26 12:35:34 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -149,7 +149,7 @@ AC_CHECK_LIB( clanCore,   main,, [
 	exit
 	])
 
-AC_CHECK_LIB( clanMagick,   main,, [
+AC_CHECK_LIB( clanJPEG,   main,, [
 	echo "ClanLib is installed, but clanMagick was not found. You probably"
 	echo "forgot to compile clanMagick, which is part of the ClanLib package"
 	echo "or you need to run 'ldconfig'."
@@ -158,14 +158,14 @@ AC_CHECK_LIB( clanMagick,   main,, [
 	exit
 	])
 
-AC_CHECK_LIB( clanGUI,   main,, [
-	echo "ClanLib is installed, but clanGUI was not found. You probably"
-	echo "forgot to compile clanGUI, which is part of the ClanLib package"
-	echo "or you need to run 'ldconfig'."
-	echo "If you think you have everything correctly installed have a look at"
-	echo "the file 'config.log' to see what went wrong"
-	exit
-	])
+dnl AC_CHECK_LIB( clanGUI,   main,, [
+dnl 	echo "ClanLib is installed, but clanGUI was not found. You probably"
+dnl 	echo "forgot to compile clanGUI, which is part of the ClanLib package"
+dnl 	echo "or you need to run 'ldconfig'."
+dnl 	echo "If you think you have everything correctly installed have a look at"
+dnl 	echo "the file 'config.log' to see what went wrong"
+dnl 	exit
+dnl 	])
 
 
 dnl AC_CHECK_PROG( HAVE_CLANLIB_CONFIG, clanlib-config, "yes")

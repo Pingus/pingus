@@ -1,4 +1,4 @@
-//   $Id: PingusMain.cc,v 1.5 2000/09/12 11:11:36 grumbel Exp $
+//   $Id: PingusMain.cc,v 1.6 2000/09/26 12:35:35 grumbel Exp $
 //    ___
 //   |  _\ A free Lemmings clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -41,7 +41,7 @@
 #endif /* !WIN32 */
 
 #include <ClanLib/core.h>
-#include <ClanLib/magick.h>
+#include <ClanLib/jpeg.h>
 
 // #include "efence.h"
 

@@ -1,4 +1,4 @@
-//  $Id: PSMObj.cc,v 1.21 2000/09/07 09:45:39 grumbel Exp $
+//  $Id: PSMObj.cc,v 1.22 2000/09/26 12:35:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,7 +19,7 @@
 
 #include <fstream>
 #include <ClanLib/core.h>
-#include <ClanLib/gui.h>
+//#include <ClanLib/gui.h>
 #include "../algo.hh"
 #include "../globals.hh"
 #include "../PingusResource.hh"
@@ -138,6 +138,7 @@ PSMObj::status_line()
 void
 PSMObj::gui_edit_obj()
 {
+  /*
   std::cout << "Gui... trala" << std::endl;
   CL_StyleManager*     style;
   CL_ComponentManager* manager;
@@ -163,6 +164,7 @@ PSMObj::gui_edit_obj()
       CL_System::keep_alive();
     }
   std::cout << "Gui... trala done" << std::endl;
+  */
 }
 
 /* EOF */
