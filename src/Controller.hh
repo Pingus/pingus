@@ -1,4 +1,4 @@
-//  $Id: Controller.hh,v 1.7 2001/04/15 11:00:41 grumbel Exp $
+//  $Id: Controller.hh,v 1.8 2001/04/15 12:28:15 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,17 +24,19 @@
 #include <ClanLib/display.h>
 #include <ClanLib/core.h>
 #include "boost/smart_ptr.hpp"
+#include "boost/dummy_ptr.hpp"
 
 class Controller;
 
 class ControllerButton 
 {
 private:
-  Controller* controller;
+  // FIXME: Do we really need this?! I guess no...
+  boost::dummy_ptr<Controller> controller;
   bool pressed;
 
 public:
-  ControllerButton (Controller* );
+  ControllerButton (boost::dummy_ptr<Controller>);
   virtual ~ControllerButton () {}
   
   virtual bool is_pressed () =0;
@@ -63,6 +65,31 @@ public:
   
   virtual bool is_pressed ();
 };
+
+class KeyboardButton : public ControllerButton 
+{
+private:
+  int button_id;
+public:
+  KeyboardButton (boost::dummy_ptr<Controller>, int arg_button_id);
+  
+  virtual bool is_pressed ();
+};
+
+class MultiplexButton : public ControllerButton 
+{
+private:
+  std::list<boost::shared_ptr<ControllerButton> > buttons;
+  typedef std::list<boost::shared_ptr<ControllerButton> >::iterator ButtonIter;
+public:
+  MultiplexButton (boost::dummy_ptr<Controller>);
+  
+  void add (boost::shared_ptr<ControllerButton> button);
+  void remove (boost::shared_ptr<ControllerButton> button);
+  
+  bool is_pressed ();
+};
+
 
 /** An abstract controller class representing an controlling device
     for Pingus. Implementations for mouse and the sidewinder gamepad

@@ -1,4 +1,4 @@
-//  $Id: TwoPlayerGame.cc,v 1.5 2001/04/15 11:00:41 grumbel Exp $
+//  $Id: TwoPlayerGame.cc,v 1.6 2001/04/15 12:28:15 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,6 +29,7 @@
 #include "Controller.hh"
 #include "MouseController.hh"
 #include "GamepadController.hh"
+#include "KeyboardController.hh"
 
 using boost::dummy_ptr;
 using boost::shared_ptr;
@@ -50,7 +51,8 @@ TwoPlayerGame::start ()
     shared_ptr<Server>            server (new TrueServer (plf));
     shared_ptr<Controller>        controller1 (new GamepadController (CL_Input::joysticks[0], 0));
     shared_ptr<Controller>        controller2 (new MouseController (1));
-    shared_ptr<Controller>        controller3 (new MouseController (2));
+    shared_ptr<Controller>        controller3 (new KeyboardController (2));
+    shared_ptr<Controller>        controller4 (new MouseController (3));
 
     shared_ptr<MultiplayerClient> client;
     int player = 4;
@@ -87,13 +89,13 @@ TwoPlayerGame::start ()
 											 0,
 											 CL_Display::get_width (), 
 											 CL_Display::get_height ()/2-2))),
-		 shared_ptr<MultiplayerClientChild>(new MultiplayerClientChild (controller1,
+		 shared_ptr<MultiplayerClientChild>(new MultiplayerClientChild (controller3,
 										server.get (),
 										CL_Rect (0,
 											 CL_Display::get_height ()/2,
 											 CL_Display::get_width (), 
 											 CL_Display::get_height ()))),
-		 shared_ptr<MultiplayerClientChild>(new MultiplayerClientChild (controller2,
+		 shared_ptr<MultiplayerClientChild>(new MultiplayerClientChild (controller4,
 										server.get (),
 										CL_Rect (CL_Display::get_width ()/2,
 											 CL_Display::get_height ()/2,

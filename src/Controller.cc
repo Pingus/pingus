@@ -1,4 +1,4 @@
-//  $Id: Controller.cc,v 1.5 2001/04/15 11:00:41 grumbel Exp $
+//  $Id: Controller.cc,v 1.6 2001/04/15 12:28:14 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,7 +19,7 @@
 
 #include "Controller.hh"
 
-ControllerButton::ControllerButton (Controller* arg_controller)
+ControllerButton::ControllerButton (boost::dummy_ptr<Controller> arg_controller)
   : controller (arg_controller),
     pressed (false)
 {
@@ -58,6 +58,48 @@ bool
 InputDeviceButton::is_pressed ()
 {
   return button->is_pressed ();
+}
+
+KeyboardButton::KeyboardButton (boost::dummy_ptr<Controller> c, int arg_button_id)
+  : ControllerButton (c),
+    button_id (arg_button_id)
+    
+{
+}
+
+bool 
+KeyboardButton::is_pressed ()
+{
+  return CL_Keyboard::get_keycode (button_id);
+}
+
+
+MultiplexButton::MultiplexButton (boost::dummy_ptr<Controller> c)
+  : ControllerButton (c)
+{
+}
+  
+void 
+MultiplexButton::add (boost::shared_ptr<ControllerButton> button)
+{
+  buttons.push_back (button);
+}
+
+void 
+MultiplexButton::remove (boost::shared_ptr<ControllerButton> button)
+{
+  buttons.remove (button);
+}
+  
+bool 
+MultiplexButton::is_pressed ()
+{
+  for (ButtonIter i = buttons.begin (); i != buttons.end (); ++i)
+    {
+      if ((*i)->is_pressed ())
+	return true;
+    }
+  return false;
 }
 
 Controller::Controller (int arg_owner_id)
