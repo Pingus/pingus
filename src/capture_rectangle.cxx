@@ -1,4 +1,4 @@
-//  $Id: capture_rectangle.cxx,v 1.13 2003/04/19 10:23:17 torangan Exp $
+//  $Id: capture_rectangle.cxx,v 1.14 2003/04/22 16:40:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,6 +26,7 @@
 #include "button_panel.hxx"
 #include "globals.hxx"
 #include "string_converter.hxx"
+#include "fonts.hxx"
 
 CaptureRectangle::CaptureRectangle (ButtonPanel* arg_button_panel)
   : pingu(0),
@@ -35,7 +36,7 @@ CaptureRectangle::CaptureRectangle (ButtonPanel* arg_button_panel)
     arrow_left(PingusResource::load_surface("Cursors/arrow_left",  "game")),
     arrow_right(PingusResource::load_surface("Cursors/arrow_right", "game")),
     button_panel(arg_button_panel),
-    font(PingusResource::load_font("Fonts/courier_small", "fonts"))
+    font(Fonts::courier_small)
 {
   good.set_align_center();
   bad.set_align_center();

@@ -1,4 +1,4 @@
-//  $Id: status_line.cxx,v 1.10 2003/04/19 10:23:18 torangan Exp $
+//  $Id: status_line.cxx,v 1.11 2003/04/22 16:40:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,7 @@
 #include <ClanLib/Display/Input/mouse.h>
 #include <ClanLib/Display/Display/display.h>
 #include "../pingus_resource.hxx"
+#include "../fonts.hxx"
 #include "editor_view.hxx"
 #include "status_line.hxx"
 #include "editorobj.hxx"
@@ -31,7 +32,7 @@ namespace EditorNS {
 
 StatusLine::StatusLine()
 {
-  font = PingusResource::load_font("Fonts/courier_small", "fonts");
+  font = Fonts::courier_small;
 }
 
 StatusLine::~StatusLine()

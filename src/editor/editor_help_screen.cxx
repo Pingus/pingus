@@ -1,4 +1,4 @@
-//  $Id: editor_help_screen.cxx,v 1.10 2003/04/19 10:23:18 torangan Exp $
+//  $Id: editor_help_screen.cxx,v 1.11 2003/04/22 16:40:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,11 +21,12 @@
 #include <ClanLib/Display/Font/font.h>
 #include "../my_gettext.hxx"
 #include "../pingus_resource.hxx"
+#include "../fonts.hxx"
 #include "editor_help_screen.hxx"
 
 EditorHelpScreen::EditorHelpScreen ()
-  : font (PingusResource::load_font("Fonts/pingus_small", "fonts")),
-    large_font (PingusResource::load_font("Fonts/pingus", "fonts"))
+  : font (Fonts::pingus_small),
+    large_font (Fonts::pingus_large)
 {
 
 }

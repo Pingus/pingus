@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.87 2003/04/19 10:23:17 torangan Exp $
+//   $Id: pingus_main.cxx,v 1.88 2003/04/22 16:40:41 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___
@@ -661,7 +661,7 @@ PingusMain::init_path_finder()
     }
 
 #else /* !WIN32 */
-  //If the User uses Windows, the Datadir is always the Subdirectory "data"
+  path_manager.set_path("../data");
   path_manager.set_path("data");
   path_manager.set_path(".");
 #endif /* !WIN32 */

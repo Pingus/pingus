@@ -1,4 +1,4 @@
-//  $Id: object_selector.cxx,v 1.40 2003/04/19 10:23:18 torangan Exp $
+//  $Id: object_selector.cxx,v 1.41 2003/04/22 16:40:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -64,6 +64,7 @@
 #include "../editorobjs/spike_obj.hxx"
 #include "../editorobjs/switch_door_obj.hxx"
 #include "../editorobjs/teleporter_obj.hxx"
+#include "../fonts.hxx"
 
 using namespace EditorObjs;
 using namespace WorldObjsData;
@@ -73,7 +74,7 @@ namespace EditorNS {
 ObjectSelector::ObjectSelector ()
 {
   last_object = "GroundPieces/";
-  font = PingusResource::load_font("Fonts/courier_small", "fonts");
+  font = Fonts::courier_small;
   //data_loaded = false;
 }
 

@@ -1,4 +1,4 @@
-//  $Id: loading.cxx,v 1.5 2003/04/19 10:23:17 torangan Exp $
+//  $Id: loading.cxx,v 1.6 2003/04/22 16:40:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #include <ClanLib/Display/Font/font.h>
 #include "pingus_resource.hxx"
 #include "gui/display.hxx"
+#include "fonts.hxx"
 #include "loading.hxx"
 
 Loading loading_screen;
@@ -37,8 +38,8 @@ Loading::~Loading()
 void
 Loading::init()
 {
-  sur = PingusResource::load_surface("Game/loading", "game");
-  font = PingusResource::load_font("Fonts/courier_small", "fonts");
+  sur  = PingusResource::load_surface("Game/loading", "game");
+  font = Fonts::courier_small;
   is_init = true;
 }
 

@@ -1,4 +1,4 @@
-//  $Id: fonts.hxx,v 1.5 2003/04/19 10:23:17 torangan Exp $
+//  $Id: fonts.hxx,v 1.6 2003/04/22 16:40:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,9 +28,14 @@ extern FontHandle chalk_large;
 extern FontHandle chalk_normal;
 extern FontHandle chalk_small;
 
+extern FontHandle courier_small;
+
 extern FontHandle pingus_small;
+extern FontHandle pingus_small_fix_num;
 extern FontHandle pingus_large;
+
 extern FontHandle smallfont;
+extern FontHandle smallfont_h;
 extern FontHandle xterm;
 extern FontHandle lcd;
 

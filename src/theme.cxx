@@ -1,4 +1,4 @@
- //  $Id: theme.cxx,v 1.17 2003/04/19 10:23:17 torangan Exp $
+ //  $Id: theme.cxx,v 1.18 2003/04/22 16:40:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,11 +33,12 @@
 #include "globals.hxx"
 #include "theme.hxx"
 #include "xml_plf.hxx"
+#include "fonts.hxx"
 #include "gui/screen_manager.hxx"
 
 Theme::Theme (const std::string& filename_)
-            : font(PingusResource::load_font("Fonts/pingus_small","fonts")),
-	      title(PingusResource::load_font("Fonts/pingus","fonts")),
+            : font(Fonts::pingus_small),
+	      title(Fonts::pingus_large),
 	      filename (filename_),
 	      is_loaded(false)
 {

@@ -1,4 +1,4 @@
-//  $Id: string_reader.cxx,v 1.8 2003/04/19 10:23:18 torangan Exp $
+//  $Id: string_reader.cxx,v 1.9 2003/04/22 16:40:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,12 +23,13 @@
 #include <ClanLib/Display/Font/font.h>
 #include "../console.hxx"
 #include "../pingus_resource.hxx"
+#include "../fonts.hxx"
 #include "string_reader.hxx"
 
 StringReader::StringReader()
 {
   strings = 0;
-  font = PingusResource::load_font("Fonts/courier_small", "fonts");
+  font = Fonts::courier_small;
 }
 
 StringReader::StringReader(const std::string & d, const std::string & def)
@@ -36,7 +37,7 @@ StringReader::StringReader(const std::string & d, const std::string & def)
   strings = 0;
   description = d;
   default_string = def;
-  font =  PingusResource::load_font("Fonts/courier_small", "fonts");
+  font = Fonts::courier_small;
 }
 
 StringReader::~StringReader()

@@ -1,4 +1,4 @@
-//  $Id: theme_selector.cxx,v 1.12 2003/04/19 10:23:17 torangan Exp $
+//  $Id: theme_selector.cxx,v 1.13 2003/04/22 16:40:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,6 +37,7 @@
 #include "sound/sound.hxx"
 #include "path_manager.hxx"
 #include "system.hxx"
+#include "fonts.hxx"
 #include "theme.hxx"
 
 ListBox::ListBox ()
@@ -65,7 +66,7 @@ ListBox::add_item(std::string l)
 ListItem::ListItem(std::string l)
 {
   label = l;
-  font = PingusResource::load_font("Fonts/smallfont_h","fonts");
+  font = Fonts::smallfont_h;
 }
 
 ListItem::ListItem (const ListItem& old) : label(old.label), font(new CL_Font(*(old.font)))
@@ -205,8 +206,8 @@ ThemeSelector::Event::on_mouse_move(CL_InputDevice *, int mouse_x, int mouse_y)
 ThemeSelector::ThemeSelector()
 {
   dir_read = false;
-  title_font = PingusResource::load_font("Fonts/pingus", "fonts");
-  theme_font = PingusResource::load_font("Fonts/pingus_small", "fonts");
+  title_font = Fonts::pingus_large;
+  theme_font = Fonts::pingus_small;
 
   left_arrow  = PingusResource::load_surface("Hotspots/left_arrow", "global");
   right_arrow = PingusResource::load_surface("Hotspots/right_arrow", "global");

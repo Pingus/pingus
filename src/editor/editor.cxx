@@ -1,4 +1,4 @@
-//  $Id: editor.cxx,v 1.51 2003/04/19 10:23:18 torangan Exp $
+//  $Id: editor.cxx,v 1.52 2003/04/22 16:40:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,6 +46,7 @@
 #include "../path_manager.hxx"
 #include "../stat_manager.hxx"
 #include "../string_converter.hxx"
+#include "../fonts.hxx"
 #include "editor_view.hxx"
 
 #include <cstdio>
@@ -105,7 +106,7 @@ Editor::Editor () : event_handler_ref_counter(0),
 
   event->set_editor(this);
 
-  font = PingusResource::load_font("Fonts/courier_small", "fonts");
+  font = Fonts::courier_small;
   panel->init();
   status_line->set_current_objs(&selection->get_objects());
   panel->set_editor(this);

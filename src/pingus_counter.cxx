@@ -1,4 +1,4 @@
-//  $Id: pingus_counter.cxx,v 1.14 2003/04/19 10:23:17 torangan Exp $
+//  $Id: pingus_counter.cxx,v 1.15 2003/04/22 16:40:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,12 +28,13 @@
 #include "true_server.hxx"
 #include "plf.hxx"
 #include "globals.hxx"
+#include "fonts.hxx"
 
 PingusCounter::PingusCounter(Server* s)
   : server(s),
     background (PingusResource::load_surface("Buttons/info","core"))
 {
-  font = PingusResource::load_font("Fonts/pingus_small_fix_num","fonts");
+  font = Fonts::pingus_small_fix_num;
 }
 
 void

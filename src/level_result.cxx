@@ -1,4 +1,4 @@
-//  $Id: level_result.cxx,v 1.14 2003/04/19 10:23:17 torangan Exp $
+//  $Id: level_result.cxx,v 1.15 2003/04/22 16:40:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,13 +29,14 @@
 #include "sound/sound.hxx"
 #include "world.hxx"
 #include "pingu_holder.hxx"
+#include "fonts.hxx"
 #include "my_gettext.hxx"
 
 PingusLevelResult::PingusLevelResult(World* w, Controller* c)
   : controller (c)
 {
-  font = PingusResource::load_font("Fonts/pingus_small","fonts");
-  title = PingusResource::load_font("Fonts/pingus","fonts");
+  font  = Fonts::pingus_small;
+  title = Fonts::pingus_large;
   background = PingusResource::load_surface("Textures/stone", "textures");
   //result = r;
   world = w;

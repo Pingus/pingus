@@ -1,4 +1,4 @@
-//  $Id: time_display.cxx,v 1.14 2003/04/19 10:23:17 torangan Exp $
+//  $Id: time_display.cxx,v 1.15 2003/04/22 16:40:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,15 +29,14 @@
 #include "client.hxx"
 #include "plf.hxx"
 #include "game_time.hxx"
+#include "fonts.hxx"
 #include "string_converter.hxx"
 
 TimeDisplay::TimeDisplay (Client* c)
   : server(c->get_server()),
     infinity_symbol(PingusResource::load_surface("misc/infinity", "core"))
 {
-  //font = PingusResource::load_font("Fonts/numbers","fonts");
-  //font = PingusResource::load_font("Fonts/pingus_small","fonts");
-  font = PingusResource::load_font("Fonts/pingus_small_fix_num","fonts");
+  font = Fonts::pingus_small_fix_num;
 }
 
 void

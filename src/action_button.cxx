@@ -1,4 +1,4 @@
-//  $Id: action_button.cxx,v 1.30 2003/04/19 10:23:17 torangan Exp $
+//  $Id: action_button.cxx,v 1.31 2003/04/22 16:40:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,6 +29,7 @@
 #include "world.hxx"
 #include "gui/graphic_context.hxx"
 #include "string_converter.hxx"
+#include "fonts.hxx"
 
 using namespace Actions;
 
@@ -46,8 +47,8 @@ ActionButton::init(int x, int y, ActionName name_, int owner_id)
   name = name_;
 
 
-  font   = PingusResource::load_font("Fonts/pingus_small", "fonts");
-  font_b = PingusResource::load_font("Fonts/pingus",       "fonts");
+  font   = Fonts::pingus_small;
+  font_b = Fonts::pingus_large;
 
   sprite = Sprite("Pingus/" + action_to_string(name) + to_string(owner_id), "pingus", 25.0f);
   sprite.set_align_center_bottom();

@@ -1,4 +1,4 @@
-//  $Id: menu_button.cxx,v 1.9 2003/04/19 10:23:17 torangan Exp $
+//  $Id: menu_button.cxx,v 1.10 2003/04/22 16:40:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,8 +39,8 @@ using EditorNS::Editor;
 
 SurfaceButton::SurfaceButton ()
 {
-  font = PingusResource::load_font("Fonts/pingus_small", "fonts");
-  font_large = PingusResource::load_font("Fonts/pingus", "fonts");
+  font       = Fonts::pingus_small;
+  font_large = Fonts::pingus_large;
 
   mouse_over = false;
   pressed = false;

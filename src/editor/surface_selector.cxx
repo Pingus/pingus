@@ -1,4 +1,4 @@
-//  $Id: surface_selector.cxx,v 1.8 2003/04/19 10:23:18 torangan Exp $
+//  $Id: surface_selector.cxx,v 1.9 2003/04/22 16:40:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,11 +22,12 @@
 #include <ClanLib/Display/Display/display.h>
 #include <ClanLib/Display/Input/mouse.h>
 #include "../gui/display.hxx"
+#include "../fonts.hxx"
 #include "../pingus_resource.hxx"
 #include "surface_selector.hxx"
 
 SurfaceSelector::SurfaceSelector (std::vector<surface_obj>* s)
-  : font(PingusResource::load_font("Fonts/courier_small", "fonts")),
+  : font(Fonts::courier_small),
     sur_list(s),
     y_of(0),
     width(CL_Display::get_width() - (CL_Display::get_width() % 50)),
