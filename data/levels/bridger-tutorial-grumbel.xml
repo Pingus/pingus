@@ -33,15 +33,7 @@
 
 
   <action-list>
-    <basher>20</basher>
-    <blocker>20</blocker>
-    <bomber>20</bomber>
-    <bridger>20</bridger>
-    <climber>20</climber>
-    <digger>20</digger>
-    <floater>20</floater>
-    <jumper>20</jumper>
-    <miner>20</miner>
+    <bridger>10</bridger>
   </action-list>
 
 <groundpiece type="ground">
