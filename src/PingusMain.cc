@@ -1,4 +1,4 @@
-//   $Id: PingusMain.cc,v 1.61 2002/06/08 23:11:07 torangan Exp $
+//   $Id: PingusMain.cc,v 1.62 2002/06/09 00:56:25 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -855,8 +855,8 @@ int
 PingusMain::main(int argc, char** argv)
 {
   // Register the segfault_handler
-  signal(SIGSEGV, signal_handler);
-  signal(SIGINT,  signal_handler);
+  //signal(SIGSEGV, signal_handler);
+  //signal(SIGINT,  signal_handler);
 
 #ifdef WIN32
   CL_ConsoleWindow cl_console(PACKAGE VERSION);

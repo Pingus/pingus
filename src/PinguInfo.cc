@@ -1,4 +1,4 @@
-//  $Id: PinguInfo.cc,v 1.11 2002/06/08 16:08:16 grumbel Exp $
+//  $Id: PinguInfo.cc,v 1.12 2002/06/09 00:56:25 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,6 +31,7 @@
 
 
 PinguInfo::PinguInfo()
+  : pingu (0)
 {
   font = PingusResource::load_font("Fonts/courier_small","fonts");
 }
@@ -55,7 +56,7 @@ PinguInfo::draw()
 		     y_pos + CL_Display::get_height() - 50,
 		     tolowerstr(str1));
 
-    if (pingu->get_action().get()) {
+    if (pingu->get_action()) {
       sprintf(str2, _("action %s"), pingu->get_action()->get_name().c_str());
     } else {
       sprintf(str2, _("action none"));

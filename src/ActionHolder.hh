@@ -1,4 +1,4 @@
-//  $Id: ActionHolder.hh,v 1.15 2002/06/08 22:38:32 grumbel Exp $
+//  $Id: ActionHolder.hh,v 1.16 2002/06/09 00:56:25 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -80,7 +80,7 @@ public:
    *  actions if necessary. If the actions are out, it returns 0. 
    *  The deletion of the action is handled by this class.  
    */
-  boost::shared_ptr<PinguAction> get_action(const std::string&);
+  PinguAction* get_action(const std::string&);
 };
 
 #endif

@@ -1,4 +1,4 @@
-//  $Id: Server.cc,v 1.29 2002/06/08 23:11:08 torangan Exp $
+//  $Id: Server.cc,v 1.30 2002/06/09 00:56:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -165,9 +165,9 @@ Server::process_event(std::string event)
 
       if (pingu != pingus->end()) 
 	{
-	  boost::shared_ptr<PinguAction> tmp_action = action_holder.get_action(action);
+	  PinguAction* tmp_action = action_holder.get_action(action);
 	  
-	  if (tmp_action.get())
+	  if (tmp_action)
 	    {
 	      if (!(*pingu)->set_action(tmp_action))
 		{

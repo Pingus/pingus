@@ -1,4 +1,4 @@
-//  $Id: ActionHolder.cc,v 1.33 2002/06/08 22:38:32 grumbel Exp $
+//  $Id: ActionHolder.cc,v 1.34 2002/06/09 00:56:25 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -61,12 +61,12 @@ ActionHolder::get_available(const std::string& name)
   return available_actions[name];
 }
 
-boost::shared_ptr<PinguAction>
+PinguAction*
 ActionHolder::get_action(const std::string& name)
 {
   if (unlimited_actions) // runtime option; defined in global.hh
     {    
-      return shared_ptr<PinguAction>(PinguActionFactory::instance ()->create(name));
+      return PinguActionFactory::instance ()->create(name);
     } 
   else 
     {
@@ -74,11 +74,11 @@ ActionHolder::get_action(const std::string& name)
       if (count > 0) 
 	{
 	  --count;
-	  return shared_ptr<PinguAction>(PinguActionFactory::instance ()->create(name));
+	  return PinguActionFactory::instance ()->create(name);
 	}
       else // Out of actions
 	{
-	  return shared_ptr<PinguAction>();
+	  return 0;
 	}
     }
 }

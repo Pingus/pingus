@@ -1,4 +1,4 @@
-//  $Id: Pingu.cc,v 1.74 2002/06/08 23:11:07 torangan Exp $
+//  $Id: Pingu.cc,v 1.75 2002/06/09 00:56:25 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -44,13 +44,17 @@ int   Pingu::id_counter = 0;
 
 // Init a pingu at the given position while falling
 Pingu::Pingu(const CL_Vector& arg_pos, int owner)
-  : id (++id_counter),
+  : action (0),
+    countdown_action (0),
+    id (++id_counter),
     font (PingusResource::load_font("Fonts/numbers", "fonts")),
     status (PS_ALIVE),
     environment (ENV_LAND),
     owner_id (owner),
     pos (arg_pos)
 {
+  std::cout << "XXXXXXXXXXX: Pingu: owner_id: " << owner_id << std::endl;
+
   action_time = -1;
 
   direction.left ();
@@ -59,6 +63,7 @@ Pingu::Pingu(const CL_Vector& arg_pos, int owner)
   velocity.x = 0;
   velocity.y = 0;
 
+  std::cout << "XXX setting action" << std::endl;
   set_action("faller");
 }
 
@@ -110,9 +115,11 @@ Pingu::set_pos(const CL_Vector& arg_pos)
 // Set the action of the pingu (bridger, blocker, bomber, etc.)
 // This function is used by external stuff, like the ButtonPanel, etc
 int
-Pingu::set_action(boost::shared_ptr<PinguAction> act)
+Pingu::set_action(PinguAction* act)
 {
-  assert(act.get());
+  assert(act);
+
+  std::cout << "XXX Action:" << act << std::endl;
 
   if (status == PS_DEAD)
     {
@@ -121,6 +128,7 @@ Pingu::set_action(boost::shared_ptr<PinguAction> act)
       return 0;
     }
 
+  std::cout << "1. Pingu" << id << "::set_action(PinguAction* act): " << this << std::endl;
   act->set_pingu(this);
 
   // Use the activation time of the action
@@ -137,7 +145,7 @@ Pingu::set_action(boost::shared_ptr<PinguAction> act)
 		    << int(act->get_type() & (ActionType)WALL) << std::endl;
 	}
       
-      for(std::vector<boost::shared_ptr<PinguAction> >::iterator i = persist.begin(); i != persist.end(); i++)
+      for(std::vector<PinguAction*>::iterator i = persist.begin(); i != persist.end(); i++)
 	{
 	  if ((*i)->get_name() == act->get_name()) 
 	    {
@@ -166,7 +174,7 @@ Pingu::set_action(boost::shared_ptr<PinguAction> act)
     
       if (act->activation_time() == -1)
 	{ // Immediately activate the action
-	  if (action.get() && (action->get_name() == act->get_name()))
+	  if (action && (action->get_name() == act->get_name()))
 	    {
 	      if (pingus_debug_flags & PINGUS_DEBUG_ACTIONS)
 		std::cout << "Pingu: Already have action" << std::endl;
@@ -177,7 +185,7 @@ Pingu::set_action(boost::shared_ptr<PinguAction> act)
 	}
       else 
 	{ // Use the activation time, given by t
-	  if (countdown_action.get() && countdown_action->get_name() == act->get_name())
+	  if (countdown_action && countdown_action->get_name() == act->get_name())
 	    {
 	      return false;
 	    }
@@ -192,20 +200,21 @@ Pingu::set_action(boost::shared_ptr<PinguAction> act)
 void 
 Pingu::set_action (const std::string& action_name)
 {
-  set_action (PinguActionFactory::instance ()->create_sp (action_name));
+  set_action (PinguActionFactory::instance ()->create (action_name));
 }
 
 void
 Pingu::set_paction(const std::string& action_name) 
 {
-  set_paction (PinguActionFactory::instance ()->create_sp (action_name));
+  set_paction (PinguActionFactory::instance ()->create (action_name));
 }
 
 // Sets an action without any checking
 void
-Pingu::set_paction(boost::shared_ptr<PinguAction> act) 
+Pingu::set_paction(PinguAction* act) 
 {
   action = act;
+  std::cout << "2. Pingu::set_paction(PinguAction* act): " << this << std::endl;
   action->set_pingu(this);
 }
 
@@ -255,13 +264,13 @@ void
 Pingu::update_persistent(float /*delta*/)
 {
   // 
-  if (environment == ENV_AIR && action.get() == 0 && rel_getpixel(0, -1) == ColMap::NOTHING) 
+  if (environment == ENV_AIR && action == 0 && rel_getpixel(0, -1) == ColMap::NOTHING) 
     {
       for (unsigned int i=0; i < persist.size(); ++i) 
 	{
 	  if (persist[i]->get_type() & (ActionType)FALL) 
 	    {
-	      if (action.get() && persist[i]->get_name() == action->get_name()) 
+	      if (action && persist[i]->get_name() == action->get_name()) 
 		{
 		  if (pingus_debug_flags & PINGUS_DEBUG_ACTIONS)
 		    std::cout << "Pingu: Not using action, we already did." << std::endl;
@@ -295,22 +304,23 @@ Pingu::update(float delta)
   if (action_time > -1) 
     --action_time;
 
-  if (action_time == 0 && countdown_action.get()) 
+  if (action_time == 0 && countdown_action) 
     {
       action = countdown_action;
+      std::cout << "3. Pingu::set_action(PinguAction* act): " << this << std::endl;
       action->set_pingu(this);
     }
   
-  if (action.get() && action->is_finished) 
+  if (action && action->is_finished) 
     {
-      action.reset ();
+      action = 0;
     }
 
   update_persistent(delta);
 
   /** When we have an action evaluate it, else evaluate the normal
       walking */
-  if (action.get()) 
+  if (action) 
     action->update(delta);
   else 
     update_normal(delta);
@@ -334,7 +344,7 @@ Pingu::draw_offset(int x, int y, float s)
   char str[64];
   y += 2;
 
-  if (action.get()) 
+  if (action) 
     action->draw_offset(x, y,s);
   
   if (action_time != -1) 
@@ -376,7 +386,7 @@ Pingu::need_catch()
   if (status == PS_DEAD)
     return false;
   
-  if (action.get())
+  if (action)
     return action->need_catch();
   else 
     return false;
@@ -397,7 +407,7 @@ Pingu::is_alive(void)
     return false;
 }
 
-boost::shared_ptr<PinguAction>
+PinguAction*
 Pingu::get_action()
 {
   return action;
@@ -433,7 +443,7 @@ Pingu::get_owner ()
 bool 
 Pingu::catchable ()
 {
-  if (action.get())
+  if (action)
     return action->catchable ();
   
   std::cout << "Pingu:catchable: No action given, default to true" << std::endl;

@@ -1,4 +1,4 @@
-//  $Id: PinguHolder.cc,v 1.19 2002/06/08 23:11:07 torangan Exp $
+//  $Id: PinguHolder.cc,v 1.20 2002/06/09 00:56:25 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -55,7 +55,10 @@ PinguHolder::add (Pingu* pingu)
 Pingu*
 PinguHolder::create_pingu (const CL_Vector& pos, int owner_id)
 {
+  std::cout << "XXXXXXXXXXX: PinguHolder: owner_id: " << owner_id << std::endl;
+
   Pingu* pingu = new Pingu (pos, owner_id);
+  std::cout << "XXXXX: Allocating new pingu done" << std::endl;
   
   // This list will get evaluated and deleted and destruction
   all_pingus.push_back (pingu);
@@ -86,7 +89,7 @@ PinguHolder::draw_offset(int x_of, int y_of, float s)
 	{
 	  // We don't draw the actions here, since we want them above
 	  // all other pingus, for better visibility
-	  if (!((*pingu)->get_action().get()))
+	  if (!(*pingu)->get_action())
 	    (*pingu)->draw_offset(x_of, y_of, s);
 	}
     }
@@ -94,7 +97,7 @@ PinguHolder::draw_offset(int x_of, int y_of, float s)
   // We draw all actions here, so we have them above all others
   for(PinguIter pingu = pingus.begin(); pingu != pingus.end(); pingu++)
     {
-      if ((*pingu)->get_action().get()) 
+      if ((*pingu)->get_action()) 
 	(*pingu)->draw_offset(x_of, y_of, s);
     }
 }

@@ -1,4 +1,4 @@
-//  $Id: PinguActionFactory.cc,v 1.4 2002/06/08 20:19:53 torangan Exp $
+//  $Id: PinguActionFactory.cc,v 1.5 2002/06/09 00:56:25 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -101,13 +101,23 @@ PinguActionFactory::create (const std::string& id)
   if (it == factories.end())
     throw PingusError("PinguActionFactory: Invalid id: " + id);
   else 
-    return it->second->create ();
+    {
+      PinguAction* action;
+      all_actions.push_back (action);
+      return action;
+    }
 }
 
-boost::shared_ptr<PinguAction> 
-PinguActionFactory::create_sp (const std::string& id)
+void
+PinguActionFactory::delete_actions ()
 {
-  return boost::shared_ptr<PinguAction>(create (id));
+  std::cout << "PinguActionFactory::delete_actions (): Deleting all Actions" << std::endl;
+  for (std::vector<PinguAction*>::iterator i = all_actions.begin ();
+       i != all_actions.end (); ++i)
+    {
+      delete *i;
+    }
+  std::cout << "PinguActionFactory::delete_actions (): Deleting all Actions: done" << std::endl;
 }
 
 void 

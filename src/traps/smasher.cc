@@ -1,4 +1,4 @@
-//  $Id: smasher.cc,v 1.33 2002/06/08 23:11:09 torangan Exp $
+//  $Id: smasher.cc,v 1.34 2002/06/09 00:56:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,8 +28,7 @@
 #include "../actions/Splashed.hh"
 #include "../algo.hh"
 #include "smasher.hh"
-
-using boost::shared_ptr;
+#include "../PinguActionFactory.hh"
 
 Smasher::Smasher(const TrapData& data)
 {
@@ -74,7 +73,7 @@ Smasher::update(float /*delta*/)
 		  if ((*pingu)->is_inside (int(pos.x + 30), int(pos.y + 90),
 					   int(pos.x + 250), int(pos.y + 190)))
 		    {
-		      (*pingu)->set_action (shared_ptr<PinguAction>(new Splashed ()));
+		      (*pingu)->set_action (PinguActionFactory::instance ()->create ("splashed"));
 		    }
 		}
 	    }

@@ -1,4 +1,4 @@
-//  $Id: CaptureRectangle.hh,v 1.16 2002/06/08 23:11:07 torangan Exp $
+//  $Id: CaptureRectangle.hh,v 1.17 2002/06/09 00:56:25 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -40,7 +40,7 @@ class CaptureRectangle
 {
 private:
   Pingu*       pingu; 
-  boost::shared_ptr<PinguAction> button_action;
+  PinguAction* button_action;
 
   /// The id of the owner of this capture rectangle
   int owner_id;
@@ -56,7 +56,7 @@ public:
   ~CaptureRectangle(); 
   
   void set_pingu(Pingu* pingu);  
-  void set_action(boost::shared_ptr<PinguAction>);
+  void set_action(PinguAction*);
 
   void draw_offset(int x_offset, int y_offset, float s = 1.0); 
 };

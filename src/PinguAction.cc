@@ -1,4 +1,4 @@
-//  $Id: PinguAction.cc,v 1.24 2002/06/08 23:11:07 torangan Exp $
+//  $Id: PinguAction.cc,v 1.25 2002/06/09 00:56:25 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,6 +28,7 @@
 const int PinguAction::pingu_height = 26;
 
 PinguAction::PinguAction()
+  : pingu (0)
 {
   is_finished = false;
 }
@@ -39,8 +40,10 @@ PinguAction::~PinguAction()
 void
 PinguAction::set_pingu(Pingu* pingu_data)
 {
+  std::cout << "PinguAction::set_pingu(" << pingu << ")" << std::endl;
+  std::cout << "Pingu:X: " << pingu->get_pos ().x << std::endl;;
   pingu = pingu_data;
-  //assert(pingu);
+  assert(pingu);
   init();
 }
 

@@ -1,4 +1,4 @@
-//  $Id: Walker.cc,v 1.14 2002/06/08 20:19:54 torangan Exp $
+//  $Id: Walker.cc,v 1.15 2002/06/09 00:56:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,6 +31,7 @@ const int Walker::max_steps=4;
 void
 Walker::init(void)
 {
+  std::cout << "Walker::init(void)" << std::endl;
   walker = Sprite ("Pingus/walker" + to_string(pingu->owner_id), "pingus");
   walker.set_align_center_bottom ();
 }
@@ -69,7 +70,7 @@ Walker::update(float delta)
 	    {
 	      if (pingu->persist[i]->get_type() & (ActionType)WALL) 
 		{
-		  if (pingu->action.get() && pingu->persist[i]->get_name() == pingu->action->get_name()) 
+		  if (pingu->action && pingu->persist[i]->get_name() == pingu->action->get_name()) 
 		    {
 		      if (pingus_debug_flags & PINGUS_DEBUG_ACTIONS)
 			std::cout << "Pingu: Not using action, we already did." << std::endl;

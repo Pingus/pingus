@@ -1,4 +1,4 @@
-//  $Id: Entrance.cc,v 1.28 2002/06/08 16:08:16 grumbel Exp $
+//  $Id: Entrance.cc,v 1.29 2002/06/09 00:56:25 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,6 +37,8 @@ Entrance::Entrance(const EntranceData& data)
   last_release = -release_rate;
   direction = data.direction;
   owner_id = data.owner_id;
+
+  std::cout << "XXXXXXXXXXX: Entrance: owner_id: " << owner_id << std::endl;
 }
 
 bool
@@ -56,13 +58,14 @@ Entrance::get_pingu()
   static int last_direction;
   Direction d;
 
-  Pingu* p (world->get_pingu_p()->create_pingu (pos, owner_id));
-  
+  std::cout << "XXX Entrance::get_pingu()" << std::endl;
+  Pingu* pingu = world->get_pingu_p()->create_pingu (pos, owner_id);
+  std::cout << "XXX Pingu created" << std::endl;
   switch (direction) 
     {
     case EntranceData::LEFT:
       d.left();
-      p->set_direction(d);
+      pingu->set_direction(d);
       break;
 
     case EntranceData::MISC:
@@ -76,22 +79,23 @@ Entrance::get_pingu()
 	  d.right();
 	  last_direction = 1;
 	}
-      p->set_direction(d);
+      pingu->set_direction(d);
       break;
 	
     case EntranceData::RIGHT:  
       d.right();
-      p->set_direction(d);
+      pingu->set_direction(d);
       break;
     
     default:
       std::cout << "Entrance:: Warning direction is wrong: " << direction << std::endl;
       d.right();
-      p->set_direction(d);
+      pingu->set_direction(d);
       break;
     }
 
-  return p;
+  std::cout << "XXX Entrance::get_pingu(): done" << std::endl;
+  return pingu;
 }
 
 void

@@ -1,4 +1,4 @@
-//  $Id: Pingu.hh,v 1.41 2002/06/08 23:11:07 torangan Exp $
+//  $Id: Pingu.hh,v 1.42 2002/06/09 00:56:25 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,16 +42,16 @@ public:
   static int id_counter;
 
   /** The primary action with is currently in use */
-  boost::shared_ptr<PinguAction> action;
+  PinguAction* action;
 
   /** A secondary action with will turn active after a given amount of time
       The only example is currently the bomber. */
-  boost::shared_ptr<PinguAction> countdown_action;
+  PinguAction* countdown_action;
 
   /** A list of action with are activated on-demand, so when the pingu
       is in the air a floater will get activated, if he needs to climb
       a climber gets active. */
-  std::vector<boost::shared_ptr<PinguAction> > persist;
+  std::vector<PinguAction*> persist;
 
   /** The uniq id of the Pingu, this is used to refer to the Pingu in
       a demo file or in a network connection */
@@ -72,7 +72,7 @@ public:
   /** Creates a new Pingu at the given coordinates
       @param pos The start position of the pingu
       @param owner The owner id of the pingu (used for multiplayer) */
-  Pingu(const CL_Vector& pos, int owner = 0);
+  Pingu(const CL_Vector& pos, int owner);
   
   /** Destruct the pingu... */
   ~Pingu();
@@ -121,17 +121,17 @@ public:
   // Set the pingu in the gives direction
   void set_direction(Direction d);
 
-  int  set_action (boost::shared_ptr<PinguAction>);
+  int  set_action (PinguAction*);
   void set_action (const std::string& action_name);
 
   /// FIXME: Stupid function name, need a better one.
-  void  set_paction (boost::shared_ptr<PinguAction>);
+  void  set_paction (PinguAction*);
   void  set_paction (const std::string& action_name);
 
   ///
-  boost::shared_ptr<PinguAction> get_action();
+  PinguAction* get_action();
 
-  std::vector<boost::shared_ptr<PinguAction> >* get_persistent_actions () { return &persist; } 
+  std::vector<PinguAction*>* get_persistent_actions () { return &persist; } 
 
   /** Returns the `color' of the colmap in the walking direction 
       Examples: 

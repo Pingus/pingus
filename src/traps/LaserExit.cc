@@ -1,4 +1,4 @@
-//  $Id: LaserExit.cc,v 1.19 2002/06/08 16:08:16 grumbel Exp $
+//  $Id: LaserExit.cc,v 1.20 2002/06/09 00:56:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -49,7 +49,7 @@ LaserExit::update(float /*delta*/)
 
   PinguHolder* holder = world->get_pingu_p ();
   for (PinguIter pingu = holder->begin (); pingu != holder->end (); ++pingu){
-       catch_pingu(*pingu);
+    catch_pingu(*pingu);
   }
 
   if (killing) {
@@ -68,16 +68,18 @@ LaserExit::catch_pingu(Pingu* pingu)
   //if (!pingu->is_alive())
   //return;
 
-  if (!killing) {
-    if (pingu->get_x () < pos.x + 34 + 10 && pingu->get_x () > pos.x + 34 
-	&& pingu->get_y () < pos.y + 43 + 20 && pingu->get_y () > pos.y + 43) 
-      {
-	if (!(pingu->get_action().get() && pingu->get_action()->get_name() == "LaserKill")) {
-	  killing = true;
-	  pingu->set_action(PinguActionFactory::instance ()->create_sp ("laserkill"));
+  if (!killing) 
+    {
+      if (pingu->get_x () < pos.x + 34 + 10 && pingu->get_x () > pos.x + 34 
+	  && pingu->get_y () < pos.y + 43 + 20 && pingu->get_y () > pos.y + 43) 
+	{
+	  if (!(pingu->get_action() && pingu->get_action()->get_name() == "LaserKill")) 
+	    {
+	      killing = true;
+	      pingu->set_action(PinguActionFactory::instance ()->create ("laserkill"));
+	    }
 	}
-      }
-  }
+    }
 }
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: CaptureRectangle.cc,v 1.19 2002/06/08 23:11:07 torangan Exp $ 
+//  $Id: CaptureRectangle.cc,v 1.20 2002/06/09 00:56:25 grumbel Exp $ 
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,6 +31,7 @@ using namespace boost;
 
 CaptureRectangle::CaptureRectangle()
   : pingu (0),
+    button_action (0),
     owner_id (0),
     good (PingusResource::load_surface("Cursors/capgood", "game")),
     bad (PingusResource::load_surface("Cursors/capbad",  "game")),
@@ -59,8 +60,7 @@ CaptureRectangle::draw_offset(int x_offset, int y_offset, float s)
     {
       Sprite * sur;
       
-      if (button_action.get() 
-	  && (button_action->get_environment() & pingu->get_environment()))
+      if (button_action && (button_action->get_environment() & pingu->get_environment()))
 	sur = &bad;
       else 
 	sur = &good;
@@ -69,11 +69,11 @@ CaptureRectangle::draw_offset(int x_offset, int y_offset, float s)
 	{
 	  std::string action_str = pingu->get_action()->get_name();
 
-	  std::vector<boost::shared_ptr<PinguAction> >* persitant = pingu->get_persistent_actions ();
+	  std::vector<PinguAction*>* persitant = pingu->get_persistent_actions ();
 	  if (persitant->size() > 0)
 	    {
 	      action_str += " [";
-	      for (std::vector<boost::shared_ptr<PinguAction> >::iterator i = persitant->begin ();
+	      for (std::vector<PinguAction*>::iterator i = persitant->begin ();
 		   i != persitant->end (); ++i)
 		{
 		  action_str += (*i)->get_persistent_char ();
@@ -85,7 +85,7 @@ CaptureRectangle::draw_offset(int x_offset, int y_offset, float s)
 	  sur->put_screen(pingu->get_center_pos() + CL_Vector(x_offset,y_offset));
 	  
 	  // If pingu has an action, print its name
-	  if (pingu->get_action().get()) 
+	  if (pingu->get_action())
 	    {
 	      font->print_center(int(pingu->get_center_pos().x) + x_offset,
 				 int(pingu->get_center_pos().y) + y_offset - 32,
@@ -116,7 +116,7 @@ CaptureRectangle::draw_offset(int x_offset, int y_offset, float s)
 // Sets the current buttons action, it is used to change the color of
 // the cap rect, if the action can't be applied.
 void 
-CaptureRectangle::set_action(shared_ptr<PinguAction> action)
+CaptureRectangle::set_action(PinguAction* action)
 {
   button_action = action;
 }

@@ -1,4 +1,4 @@
-//  $Id: PinguActionFactory.hh,v 1.3 2002/06/08 20:19:53 torangan Exp $
+//  $Id: PinguActionFactory.hh,v 1.4 2002/06/09 00:56:25 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,6 +33,9 @@ namespace boost {
 class PinguActionFactory
 {
 private:
+  /** This vector saves all allocated actions to delete them at a later point */
+  std::vector<PinguAction*> all_actions;
+
   std::map<std::string, PinguActionAbstractFactory*> factories;
   static PinguActionFactory* instance_;
   
@@ -42,10 +45,13 @@ public:
   static PinguActionFactory* instance ();
   void register_factory (const std::string& id, PinguActionAbstractFactory*);
 
+  /** Delete all actions which this class has allocated. This needs to
+      be called seperatly from the constructor, due to the used
+      singleton pattern. [FIXME] */
+  void delete_actions ();
+
   /** Allocate the given action */
   PinguAction* create (const std::string& id);
-  /** Allocate the given action into a shared_ptr<> */
-  boost::shared_ptr<PinguAction> create_sp (const std::string& id);
 };
 
 class PinguActionAbstractFactory
