@@ -1,4 +1,4 @@
-//  $Id: color.cxx,v 1.1 2003/04/11 16:51:15 grumbel Exp $
+//  $Id: color.cxx,v 1.2 2003/04/12 00:57:43 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,6 +26,8 @@ std::ostream& operator<<(std::ostream& s, const Color& color)
     << color.green << ", "
     << color.blue << ", "
     << color.alpha << "]";
+
+  return s;
 }
 
 /* EOF */
