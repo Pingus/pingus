@@ -67,14 +67,16 @@ BEGIN
     PUSHBUTTON      "Cancel",IDCANCEL,191,172,50,14
     DEFPUSHBUTTON   "Install",IDOK,251,172,50,14
     CONTROL         "Run program after installation",chkExecute,"Button",
-                    BS_AUTOCHECKBOX | WS_TABSTOP,7,124,294,11
-    CONTROL         "Create shortcut on desktop",chkShortcut,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,7,140,294,11
+    CONTROL         "Create shortcut on Desktop",chkShortcutDesktop,"Button",
                     BS_AUTOCHECKBOX | WS_TABSTOP,7,100,294,10
     CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDHORZ,-1,164,311,1
     LTEXT           "Windows Installer © Neil Mitchell 1999-2004",IDC_STATIC,
                     7,176,155,10,WS_DISABLED
     CONTROL         "Progress2",prgBar,"msctls_progress32",NOT WS_VISIBLE,7,
                     74,294,12
+    CONTROL         "Create shortcut in the Start Menu",chkShortcutStart,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,111,294,10
 END
 
 

@@ -8,6 +8,8 @@
 #define cmdBrowse                       1001
 #define chkExecute                      1003
 #define chkShortcut                     1004
+#define chkShortcutDesktop              1004
+#define chkShortcutStart                1005
 #define barTop                          1009
 #define prgBar                          1012
 #define lblWelcome                      1013

@@ -35,7 +35,8 @@ void InitDialog(HWND hDlg)
 
 	SetDlgItemText(hDlg, txtEdit, Buffer);
 	CheckDlgButton(hDlg, chkExecute, BST_CHECKED);
-	CheckDlgButton(hDlg, chkShortcut, BST_CHECKED);
+	CheckDlgButton(hDlg, chkShortcutDesktop, BST_CHECKED);
+	CheckDlgButton(hDlg, chkShortcutStart, BST_CHECKED);
 }
 
 void PaintDialog(HWND hDlg)
@@ -196,14 +197,22 @@ bool DoInstall(char* InstallTo, bool RunOnEnd, HWND hDlg)
 	SendDlgItemMessage(hDlg, prgBar, PBM_SETPOS, Sum / PrgFactor, 0);
 	SetDlgItemText(hDlg, lblInstallFile, "Finalising...");
 
-	//now InstallTo points to the primary file
-	strcpy(BufPos, PrimaryFile);
-	if (IsDlgButtonChecked(hDlg, chkShortcut) == BST_CHECKED)
+	//now InstallTo is the install directory, plus a \\ character
+	BufPos[-1] = 0;
+	if (IsDlgButtonChecked(hDlg, chkShortcutDesktop) == BST_CHECKED)
 	{
 		if (!CreateDesktopShortcut(hDlg, InstallTo))
-			ErrBox("Could not create the desktop shortcut");
+			ErrBox("Could not create the Desktop shortcut");
 	}
+	if (IsDlgButtonChecked(hDlg, chkShortcutStart) == BST_CHECKED)
+	{
+		if (!CreateStartMenuShortcut(hDlg, InstallTo))
+			ErrBox("Could not create the Start Menu shortcut");
+	}
+	BufPos[-1] = '\\';
 
+	//now InstallTo is the directory
+	strcpy(BufPos, PrimaryFile);
 	if (RunOnEnd)
 	{
 		if ((int) ShellExecute(hDlg, NULL, InstallTo, NULL, NULL, SW_SHOWDEFAULT) <= 32)
@@ -219,7 +228,7 @@ void ShowProgress(HWND hDlg, bool State)
 {
 	int Show[] = {txtEdit, cmdBrowse, lblWelcome, 0};
 	int Hide[] = {prgBar, lblInstallTo, lblInstallFile, 0};
-	int Enable[] = {chkExecute, chkShortcut, IDOK, IDCANCEL, 0};
+	int Enable[] = {chkExecute, chkShortcutDesktop, chkShortcutStart, IDOK, IDCANCEL, 0};
 
 	int i;
 	for (i = 0; Show[i] != 0; i++)

@@ -18,7 +18,7 @@ void ShellDest()
 }
 
 
-bool CreateShortcut(char* Destination, char* Target, char* Parameters, char* Desc)
+bool CreateShortcut(char* Destination, char* Target, char* StartIn, char* Parameters, char* Desc)
 {
 	if (!OleReady)
 		return false;
@@ -37,6 +37,7 @@ bool CreateShortcut(char* Destination, char* Target, char* Parameters, char* Des
         psl->SetPath(Target);
 		if (Parameters != NULL) psl->SetArguments(Parameters);
         if (Desc != NULL) psl->SetDescription(Desc);
+		if (StartIn != NULL) psl->SetWorkingDirectory(StartIn);
 
         // Query IShellLink for the IPersistFile interface for saving the
         // shortcut in persistent storage.
@@ -71,15 +72,47 @@ bool GetFolder(HWND hDlg, int nFolder, char* Buffer)
 }
 
 
-bool CreateDesktopShortcut(HWND hDlg, char* Target)
+bool CreateDesktopShortcut(HWND hDlg, char* Folder)
 {
-	char DesktopBuf[MyMaxPath];
-	if (!GetFolder(hDlg, CSIDL_DESKTOP, DesktopBuf))
+	char Destination[MyMaxPath];
+	if (!GetFolder(hDlg, CSIDL_DESKTOP, Destination))
 		return false;
 
-	strcat(DesktopBuf, "\\" ProgramName ".lnk");
+	strcat(Destination, "\\" ProgramName ".lnk");
 
-	return CreateShortcut(DesktopBuf, Target, NULL, ProgramName " - " Description);
+	char Target[MyMaxPath];
+	strcpy(Target, Folder);
+	strcat(Target, "\\" PrimaryFile);
+
+	return CreateShortcut(Destination, Target, Folder, NULL, ProgramName " - " Description);
+}
+
+bool CreateStartMenuShortcut(HWND hDlg, char* Folder)
+{
+	char Destination[MyMaxPath];
+	if (!GetFolder(hDlg, CSIDL_PROGRAMS, Destination))
+		return false;
+
+	strcat(Destination, "\\" ProgramName);
+	if (!CreateDirectory(Destination, NULL))
+		return false;
+
+	char* i = &Destination[strlen(Destination)];
+	i[0] = '\\';
+	i++;
+
+	char Target[MyMaxPath];
+	strcpy(Target, Folder);
+	strcat(Target, "\\" PrimaryFile);
+
+	strcpy(i, ProgramName ".lnk");
+	bool res = CreateShortcut(Destination, Target, Folder, NULL, ProgramName " - " Description);
+
+	strcpy(i, "Readme.lnk");
+	strcpy(&Target[strlen(Folder)+1], "readme.htm");
+	res &= CreateShortcut(Destination, Target, NULL, NULL, ProgramName " - Read Me");
+
+	return res;
 }
 
 
