@@ -1,4 +1,4 @@
-//  $Id: ObjectSelector.cc,v 1.42 2001/04/21 20:31:53 grumbel Exp $
+//  $Id: ObjectSelector.cc,v 1.43 2001/05/15 17:59:46 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -119,7 +119,7 @@ ObjectSelector::get_trap()
   return EditorObj::create(trap);
 }
 
-boost::shared_ptr<EditorObj>
+std::list<boost::shared_ptr<EditorObj> >
 ObjectSelector::get_groundpiece(GroundpieceData::Type type)
 {
   GroundpieceData data;
@@ -135,12 +135,15 @@ ObjectSelector::get_groundpiece(GroundpieceData::Type type)
       data.desc = ResDescriptor("resource:" + datafile, str);
       data.type = type;
 
-      return boost::shared_ptr<EditorObj>(new EditorGroundpieceObj(data));
+      std::list<boost::shared_ptr<EditorObj> > objs;
+      objs.push_back(boost::shared_ptr<EditorObj>(new EditorGroundpieceObj(data)));
+      return objs;
     }
-  return boost::shared_ptr<EditorObj>();
+  
+  return std::list<boost::shared_ptr<EditorObj> >();
 }
 
-boost::shared_ptr<EditorObj>
+std::list<boost::shared_ptr<EditorObj> >
 ObjectSelector::get_hotspot()
 {
   HotspotData data;
@@ -154,9 +157,11 @@ ObjectSelector::get_hotspot()
       data.desc = ResDescriptor("resource:hotspots", str);
       data.speed = -1;
 
-      return boost::shared_ptr<EditorObj>(new HotspotObj(data));
+      std::list<boost::shared_ptr<EditorObj> > objs;
+      objs.push_back(boost::shared_ptr<EditorObj>(new HotspotObj(data)));
+      return objs;
     }
-  return boost::shared_ptr<EditorObj>();
+  return std::list<boost::shared_ptr<EditorObj> >();
 }
 
 std::list<boost::shared_ptr<EditorObj> >
@@ -196,7 +201,7 @@ ObjectSelector::get_worldobj()
     }
 }
 
-boost::shared_ptr<EditorObj>
+std::list<boost::shared_ptr<EditorObj> >
 ObjectSelector::get_weather()
 {
   WeatherData weather;
@@ -226,7 +231,9 @@ ObjectSelector::get_weather()
 	}
     }
   
-  return boost::shared_ptr<EditorObj>(new WeatherObj(weather));
+  std::list<boost::shared_ptr<EditorObj> > objs;
+  objs.push_back(boost::shared_ptr<EditorObj>(new WeatherObj(weather)));
+  return objs;
 }
 
 std::list<boost::shared_ptr<EditorObj> >
@@ -273,7 +280,7 @@ ObjectSelector::get_entrance()
   return EditorObj::create(entrance);
 }
 
-boost::shared_ptr<EditorObj>
+std::list<boost::shared_ptr<EditorObj> >
 ObjectSelector::get_exit()
 {
   string str;
@@ -287,25 +294,26 @@ ObjectSelector::get_exit()
   last_object = str;
 
   if (str.empty())
-    return boost::shared_ptr<EditorObj>();
+    return std::list<boost::shared_ptr<EditorObj> >();
   
   data.desc = ResDescriptor("resource:exits", str);
   
-  return boost::shared_ptr<EditorObj>(new ExitObj(data));
+  std::list<boost::shared_ptr<EditorObj> > objs;
+  objs.push_back(boost::shared_ptr<EditorObj>(new ExitObj(data)));
+  return objs;
 }
 
-boost::shared_ptr<EditorObj>
+std::list<boost::shared_ptr<EditorObj> >
 ObjectSelector::get_liquid()
 {
   std::cout << "ObjectSelector::get_liquid() not implemented" << std::endl;
-  return boost::shared_ptr<EditorObj>();
+  return std::list<boost::shared_ptr<EditorObj> >();
 }
 
 std::list<boost::shared_ptr<EditorObj> >
 ObjectSelector::select_obj_type()
 {
   bool exit_loop;
-  std::list<boost::shared_ptr<EditorObj> > objs;
 
   CL_Display::clear_display();
   font->print_left(20, 20, "What object do you want?");
@@ -333,44 +341,35 @@ ObjectSelector::select_obj_type()
 	  return get_trap();
 
 	case CL_KEY_B:
-	  objs.push_back(get_groundpiece(GroundpieceData::BRIDGE));
-	  return objs;
-
+	  return get_groundpiece(GroundpieceData::BRIDGE);
+	  
 	case CL_KEY_R:
-	  objs.push_back(get_groundpiece(GroundpieceData::REMOVE));
-	  return objs;
+	  return get_groundpiece(GroundpieceData::REMOVE);
 	  
 	case CL_KEY_S:
-	  objs.push_back(get_groundpiece(GroundpieceData::SOLID));
-	  return objs;
+	  return get_groundpiece(GroundpieceData::SOLID);
 
 	case CL_KEY_G:
-	  objs.push_back(get_groundpiece(GroundpieceData::GROUND));
-	  return objs;
+	  return get_groundpiece(GroundpieceData::GROUND);
 
 	case CL_KEY_N:
-	  objs.push_back(get_groundpiece(GroundpieceData::TRANSPARENT));
-	  return objs;
+	  return get_groundpiece(GroundpieceData::TRANSPARENT);
 
 	case CL_KEY_H:
-	  objs.push_back(get_hotspot());
-	  return objs;
+	  return get_hotspot();
 		  
 	case CL_KEY_E:
 	  return get_entrance();
 
 	case CL_KEY_X:
-	  objs.push_back(get_exit());
-	  return objs;
+	  return get_exit();
 
 	case CL_KEY_L:
 	  std::cout << "ObjectSelector: Liquid not implemented" << std::endl;
-	  //objs.push_back(get_liquid());
-	  return objs;
+	  return get_liquid();
 
 	case CL_KEY_W:
-	  objs.push_back(get_weather());
-	  return objs;
+	  return get_weather();
 
 	case CL_KEY_O:
 	  return get_worldobj();
@@ -380,7 +379,7 @@ ObjectSelector::select_obj_type()
 	  break;
 	}
     }
-  return objs;
+  return std::list<boost::shared_ptr<EditorObj> > ();
 }
 
 std::string 
@@ -477,6 +476,10 @@ ObjectSelector::read_string(string description, string def_str)
 /*
 
 $Log: ObjectSelector.cc,v $
+Revision 1.43  2001/05/15 17:59:46  grumbel
+- added some removeable groundpieces
+- fixed a segfault-bug in the editor
+
 Revision 1.42  2001/04/21 20:31:53  grumbel
 Added a thunder effect to the rain
 

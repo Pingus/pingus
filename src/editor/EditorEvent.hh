@@ -1,4 +1,4 @@
-//  $Id: EditorEvent.hh,v 1.10 2001/04/21 14:40:23 grumbel Exp $
+//  $Id: EditorEvent.hh,v 1.11 2001/05/15 17:59:46 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,7 +34,7 @@ class EditorEvent //: public CL_Event_ButtonPress, public CL_Event_ButtonRelease
 {
 private:
   ///
-  bool is_enabled;
+  int is_enabled;
   ///
   CL_Font* font;
 public:

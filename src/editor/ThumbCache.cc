@@ -1,4 +1,4 @@
-//  $Id: ThumbCache.cc,v 1.2 2000/12/14 21:35:55 grumbel Exp $
+//  $Id: ThumbCache.cc,v 1.3 2001/05/15 17:59:46 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "../globals.hh"
 #include "../blitter.hh"
 #include "../System.hh"
 #include "ThumbCache.hh"
@@ -47,7 +48,8 @@ ThumbCache::load (std::string res_ident, std::string datafile)
 	  size_t read_size = fread (buffer, sizeof (unsigned char*), buffer_size, in);
 	  if (read_size != buffer_size)
 	    {
-	      std::cerr << "ThumbCache: " << filename << ": read error: wanted " << buffer_size << " got " << read_size << std::endl;
+	      if (pingus_debug_flags & PINGUS_DEBUG_EDITOR)
+		std::cerr << "ThumbCache: " << filename << ": read error: wanted " << buffer_size << " got " << read_size << std::endl;
 	    }
 	  fclose (in);
 	  canvas->unlock ();

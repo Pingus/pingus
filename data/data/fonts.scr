@@ -7,8 +7,8 @@ section Fonts
 	smallfont_h = images/fonts/smallfont_h.png (type=font, x=1, y=1, tcol=0, spacelen=8, letters="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890_-\/=[]().,");
 	font	= images/fonts/font.png (type=font, x=1, y=1, tcol=0, spacelen=8, letters="abcdefghijklmnopqrstuvwxyz1234567890-?!.");
 	courier_small = images/fonts/courier_small2.png (type=font, alphafont=1, spacelen=8, trans_limit=0.25, subtract_width=0,letters="!""#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~");
-	pingus = images/fonts/pingus2.png (type=font, alphafont=1, spacelen=8, trans_limit=0.25, subtract_width=0,letters="!""#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~");
-	pingus_small = images/fonts/pingus_small3.png (type=font, alphafont=1, spacelen=8, trans_limit=0.25, subtract_width=0,letters="!""#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~");
+	pingus = images/fonts/pingus2.png (type=font, alphafont=1, spacelen=8, trans_limit=0.25, subtract_width=0,letters="!""#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~ÄÖÜäöü");
+	pingus_small = images/fonts/pingus_small3.png (type=font, alphafont=1, spacelen=8, trans_limit=0.25, subtract_width=0,letters="!""#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~ÄÖÜäöü");
 	xterm = images/fonts/xterm.pcx  (type=font, tcol=0, x=1, y=1, spacelen=6,letters="!""#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~");
 
 //	numbers = images/fonts/number_fnt.pcx (type=font, x=1, y=1, tcol=0, spacelen=0, letters=" 0123456789:");

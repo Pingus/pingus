@@ -1,4 +1,4 @@
-//  $Id: globals.hh,v 1.27 2001/04/11 20:31:40 grumbel Exp $
+//  $Id: globals.hh,v 1.28 2001/05/15 17:59:46 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -89,6 +89,7 @@ extern int pingus_debug_flags;
 #define PINGUS_DEBUG_GAMETIME (1 << 2)
 #define PINGUS_DEBUG_TILES    (1 << 3)
 #define PINGUS_DEBUG_LOADING  (1 << 4)
+#define PINGUS_DEBUG_EDITOR   (1 << 5)
 #define PINGUS_DEBUG_ALL      (~0)
 
 #endif

@@ -1,4 +1,4 @@
-// $Id: ObjectSelector.hh,v 1.19 2001/04/21 10:55:16 grumbel Exp $
+// $Id: ObjectSelector.hh,v 1.20 2001/05/15 17:59:46 grumbel Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -67,17 +67,17 @@ public:
   ///
   std::list<boost::shared_ptr<EditorObj> > get_trap();
   ///
-  boost::shared_ptr<EditorObj> get_groundpiece(GroundpieceData::Type type);
+  std::list<boost::shared_ptr<EditorObj> > get_groundpiece(GroundpieceData::Type type);
   ///
-  boost::shared_ptr<EditorObj> get_hotspot();
+  std::list<boost::shared_ptr<EditorObj> > get_hotspot();
   ///
   std::list<boost::shared_ptr<EditorObj> > get_entrance();
   ///
-  boost::shared_ptr<EditorObj> get_exit();
+  std::list<boost::shared_ptr<EditorObj> > get_exit();
   /// 
-  boost::shared_ptr<EditorObj> get_liquid();
+  std::list<boost::shared_ptr<EditorObj> > get_liquid();
   ///
-  boost::shared_ptr<EditorObj> get_weather();
+  std::list<boost::shared_ptr<EditorObj> > get_weather();
   ///
   std::list<boost::shared_ptr<EditorObj> > get_worldobj();
   ///

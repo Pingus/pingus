@@ -1,4 +1,4 @@
-//  $Id: EditorObj.hh,v 1.27 2001/04/21 10:55:16 grumbel Exp $
+//  $Id: EditorObj.hh,v 1.28 2001/05/15 17:59:46 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -83,6 +83,7 @@ protected:
       that object */
   static std::list<boost::shared_ptr<EditorObj> > make_list(EditorObj* obj) 
   {
+    assert (obj);
     std::list<boost::shared_ptr<EditorObj> > objs;
     objs.push_back (boost::shared_ptr<EditorObj>(obj));
     return objs;

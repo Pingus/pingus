@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Pingus 0.5.0\n"
 "POT-Creation-Date: 2000-11-01 14:14+0100\n"
-"PO-Revision-Date: 2000-10-14 14:07+02:00\n"
+"PO-Revision-Date: 2001-05-14 08:09+02:00\n"
 "Last-Translator: Ingo Ruhnke <grumbel@gmx.de>\n"
 "Language-Team: Ingo Ruhnke <grumbel@gmx.de>\n"
 "MIME-Version: 1.0\n"
@@ -54,7 +54,7 @@ msgstr "PingusMain: Hauptteil wird gestartet: "
 
 #: src/PingusMain.cc:800
 msgid "PingusMain: Levelfile not found, ignoring: "
-msgstr ""
+msgstr "PingusMain: Leveldatei nicht gefunden, Fehler wird ignoriert: "
 
 #: src/PingusMain.cc:905
 msgid "Error caught from ClanLib: "

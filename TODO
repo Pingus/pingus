@@ -1,3 +1,7 @@
+Editor Bugs:
+
+Teleporter isn't offseted
+
 * alterration of the lemmings rate
 print version on startup
 ---------------------
@@ -316,6 +320,6 @@ DOOR.WAV      MOUSEPRE.WAV  OING.WAV	     THUD.WAV
 
 
 
-$Date: 2001/05/13 18:45:08 $
+$Date: 2001/05/15 17:59:45 $
 
 -= EOF =-
