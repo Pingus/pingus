@@ -1,4 +1,4 @@
-//  $Id: SurfaceButton.hh,v 1.6 2000/06/18 17:01:50 grumbel Exp $
+//  $Id: SurfaceButton.hh,v 1.7 2000/06/23 17:13:32 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,10 +28,11 @@
 #include "editor/Editor.hh"
 #include "ThemeSelector.hh"
 #include "PingusMenu.hh"
-/// #include "FileSelector.hh"
+// #include "FileSelector.hh"
 
 class PingusMenu;
 
+///
 class SurfaceButton
 {
 protected:

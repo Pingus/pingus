@@ -1,4 +1,4 @@
-//  $Id: PinguAction.hh,v 1.6 2000/06/18 17:01:50 grumbel Exp $
+//  $Id: PinguAction.hh,v 1.7 2000/06/23 17:13:32 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -101,15 +101,14 @@ public:
   /// True if the action was used the last let_move()
   bool is_active(void);
   
-  // Returns the enviroment, used to check if an action can be
-  /// applied.
+  /** Returns the enviroment, used to check if an action can be
+      applied. */
   PinguEnvironment get_environment();
   
   /** Used to load all data, which is needed by the action, its
       seperated and called in set_pingu(), because some data will be
       only valid if set_pingu() is called. */
-  virtual void  init(void) {}///
-;
+  virtual void  init(void) {};
 
   /// The "AI" of the pingu. The walker and faller is in class Pingu
   virtual void  let_move(void) = 0;

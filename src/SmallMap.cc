@@ -1,4 +1,4 @@
-//  $Id: SmallMap.cc,v 1.14 2000/06/19 20:10:38 grumbel Exp $
+//  $Id: SmallMap.cc,v 1.15 2000/06/23 17:13:32 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -50,6 +50,7 @@ SmallMap::init()
   CL_Canvas*  canvas;
   unsigned char* buffer;
   unsigned char* cbuffer;
+  unsigned char  current_pixel;
   int tx, ty;
 
   entrance_sur = CL_Surface::load("SmallMap/entrance", PingusResource::get("game.dat"));
@@ -73,27 +74,43 @@ SmallMap::init()
 	{
 	  tx = x * colmap->get_width() / width;
 	  ty = y * colmap->get_height() / height;
-
-	  switch(buffer[tx + (ty * colmap->get_width())])
+	  
+	  current_pixel = buffer[tx + (ty * colmap->get_width())];
+	  
+	  if (current_pixel == ColMap::NOTHING)
 	    {
-	    case ColMap::NOTHING:
 	      cbuffer[4 * ((y * width) + x) + 0] = 150;
 	      cbuffer[4 * ((y * width) + x) + 1] = 0;
 	      cbuffer[4 * ((y * width) + x) + 2] = 0;
 	      cbuffer[4 * ((y * width) + x) + 3] = 0;
-	      break;
-	    case ColMap::SOLID:
+	    }
+	  else if (current_pixel & ColMap::BRIDGE)
+	    {
+	      cbuffer[4 * ((y * width) + x) + 0] = 255;
+	      cbuffer[4 * ((y * width) + x) + 1] = 100;
+	      cbuffer[4 * ((y * width) + x) + 2] = 255;
+	      cbuffer[4 * ((y * width) + x) + 3] =   0;
+	    }
+	  else if (current_pixel & ColMap::LAVA)
+	    {
+	      cbuffer[4 * ((y * width) + x) + 0] = 255;
+	      cbuffer[4 * ((y * width) + x) + 1] = 100;
+	      cbuffer[4 * ((y * width) + x) + 2] = 100;
+	      cbuffer[4 * ((y * width) + x) + 3] = 255;
+	    }
+	  else if (current_pixel & ColMap::SOLID)
+	    {
 	      cbuffer[4 * ((y * width) + x) + 0] = 255;
 	      cbuffer[4 * ((y * width) + x) + 1] = 100;
 	      cbuffer[4 * ((y * width) + x) + 2] = 100;
 	      cbuffer[4 * ((y * width) + x) + 3] = 100;
-	      break;
-	    default:
+	    }
+	  else
+	    {
 	      cbuffer[4 * ((y * width) + x) + 0] = 255;
 	      cbuffer[4 * ((y * width) + x) + 1] = 200;
 	      cbuffer[4 * ((y * width) + x) + 2] = 200;
 	      cbuffer[4 * ((y * width) + x) + 3] = 200;
-	      break;
 	    }
 	}
     }
@@ -115,8 +132,8 @@ SmallMap::init()
 			   i->y_pos * height / colmap->get_height() - (entrance_sur->get_height()));
       
       /*entrance_sur->put_target(i->x_pos * width / colmap->get_width(),
-			       i->y_pos * height / colmap->get_height(),
-			       0, canvas);*/
+	i->y_pos * height / colmap->get_height(),
+	0, canvas);*/
     }
 
   canvas->unlock();

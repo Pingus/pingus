@@ -28,4 +28,6 @@ section Textures
 	nightjungle = ../images/textures/nightjungle.jpg (type=surface, x=0, y=0, width=300,height=500);
 
 	happyclouds = ../images/textures/happyclouds.jpg (type=surface, x=0, y=0, width=384,height=600);
+
+	desert = ../images/textures/desert.jpg (type=surface, x=0, y=0, width=256, height=600);
 }

@@ -107,6 +107,9 @@ section Entrances {
 	woodthing_mov  = ../images/entrances/woodthing_mov.pcx   (type=surface, x=0, y=0, width=105, height=17, array=17x1, tcol=0);
 
 	cloud  = ../images/entrances/cloudent.pcx   (type=surface, x=0, y=0, width=188, height=90, tcol=0);
+	space = ../images/entrances/space.tga (type=surface, x=0, y=0, width=62, height=64, array=5x1);
+
+	sun = ../images/hotspots/sun.tga (type=surface, x=0, y=0, width=215, height=215);
 }
 
 section GroundPieces
@@ -208,6 +211,24 @@ section GroundPieces
 	        real6 = ../images/groundpieces/rock/real6.pcx (type=surface, x=0, y=0, width=110, height=206, tcol=0);
 	        real7 = ../images/groundpieces/rock/real7.pcx (type=surface, x=0, y=0, width=247, height=132, tcol=0);
 	        real8 = ../images/groundpieces/rock/real8.pcx (type=surface, x=0, y=0, width=263, height=132, tcol=0);
+	        real9 = ../images/groundpieces/rock/real9.pcx (type=surface, x=0, y=0, width=79, height=76, tcol=0);
+
+	        real10 = ../images/groundpieces/rock/real10.pcx (type=surface, x=0, y=0, width=100, height=95, tcol=0);
+	        real11 = ../images/groundpieces/rock/real11.pcx (type=surface, x=0, y=0, width=149, height=91, tcol=0);
+	        real12 = ../images/groundpieces/rock/real12.pcx (type=surface, x=0, y=0, width=180, height=79, tcol=0);
+	        real13 = ../images/groundpieces/rock/real13.pcx (type=surface, x=0, y=0, width=300, height=56, tcol=0);
+	        real14 = ../images/groundpieces/rock/real14.pcx (type=surface, x=0, y=0, width=100, height=110, tcol=0);
+	        real15 = ../images/groundpieces/rock/real15.pcx (type=surface, x=0, y=0, width=150, height=114, tcol=0);
+	        real16 = ../images/groundpieces/rock/real16.pcx (type=surface, x=0, y=0, width=150, height=94, tcol=0);
+	        real17 = ../images/groundpieces/rock/real17.pcx (type=surface, x=0, y=0, width=175, height=94, tcol=0);
+	        real18 = ../images/groundpieces/rock/real18.pcx (type=surface, x=0, y=0, width=160, height=106, tcol=0);
+        	real19 = ../images/groundpieces/rock/real19.pcx (type=surface, x=0, y=0, width=184, height=79, tcol=0);
+	        real20 = ../images/groundpieces/rock/real20.pcx (type=surface, x=0, y=0, width=181, height=82, tcol=0);
+	        real21 = ../images/groundpieces/rock/real21.pcx (type=surface, x=0, y=0, width=185, height=106, tcol=0);
+	        real22 = ../images/groundpieces/rock/real22.pcx (type=surface, x=0, y=0, width=160, height=142, tcol=0);
+        	real23 = ../images/groundpieces/rock/real23.pcx (type=surface, x=0, y=0, width=200, height=81, tcol=0);
+	        real24 = ../images/groundpieces/rock/real24.pcx (type=surface, x=0, y=0, width=138, height=84, tcol=0);
+	        real25 = ../images/groundpieces/rock/real25.pcx (type=surface, x=0, y=0, width=184, height=128, tcol=0);
 
 	        granit1 = ../images/groundpieces/rock/granit1.pcx (type=surface, x=0, y=0, width=173, height=107, tcol=0);
 	        granit2 = ../images/groundpieces/rock/granit2.pcx (type=surface, x=0, y=0, width=139, height=112, tcol=0);

@@ -1,4 +1,4 @@
-//  $Id: DemoRecorder.cc,v 1.2 2000/06/14 21:45:55 grumbel Exp $
+//  $Id: DemoRecorder.cc,v 1.3 2000/06/23 17:13:32 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,13 +35,14 @@ DemoRecorder::~DemoRecorder()
 void
 DemoRecorder::set_levelname(const string& levelname)
 {
-  filename = System::get_statdir() + "demos/" + levelname + "-" + get_date() + ".plt";
+  filename = System::get_statdir() + "demos/pingus-" + levelname + "-" + get_date() + ".plt";
 
   //std::cout << "Demo filename: " + filename << std::endl;
   console << "Recording demo to: " << filename << Console::endl;
   
   is_recording = true;
 
+  std::cout << "DemoRecorder: levelname = " << levelname << std::endl;
   out.open(filename.c_str());
 
   out << levelname << std::endl;

@@ -1,4 +1,4 @@
-//  $Id: DemoPlayer.cc,v 1.2 2000/06/20 17:52:48 grumbel Exp $
+//  $Id: DemoPlayer.cc,v 1.3 2000/06/23 17:13:32 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -45,7 +45,8 @@ DemoPlayer::load(const std::string& arg_filename)
   std::string filename;
   ifstream in;
   
-  filename = find_file(pingus_datadir, "levels/" + arg_filename);
+  //filename = find_file(pingus_datadir, "demos/" + arg_filename);
+  filename = arg_filename;
 
   in.open(filename.c_str());
 

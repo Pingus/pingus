@@ -15,13 +15,14 @@ Release 0.4.0 (??/Jun/2000)
 * Added support for animated backgrounds (crystal2.plf)
 * Added ColMap support for all objects
 * Added a new ground property (transparent)
-* Added some new gfx (pingu splash animation, a new exit), thanks to
-  Craig Timpany and Joel Fauche
+* Added some new gfx (pingu splash animation, a new exit,etc.), thanks
+  to Craig Timpany and Joel Fauche
 * Added some more playable levels, thanks to Craig Timpany
 * Fixed line-wrapping code
 * Fixed the jumper
 * Fixed the bridger
 * Fixed a clipping bug in the colmap
+* Source is now docified (doc++)
 * Fixed image color -> colmap color translation (level10.plf)
 * Software mouse cursor support (disabled at default, buggy)
 

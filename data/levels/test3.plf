@@ -1,5 +1,5 @@
 /* This level was created with the PLE
- * $Id: test3.plf,v 1.4 2000/06/11 20:59:35 grumbel Exp $
+ * $Id: test3.plf,v 1.5 2000/06/23 17:13:32 grumbel Exp $
  */
 global {
   start_x_pos = 0;
@@ -19,7 +19,7 @@ ground {
 }
 
 background {
-  image = (resource:textures.dat)"Textures/crystal";
+  image = (resource:textures.dat)"Textures/desert";
   dim   = "0.9";
   red   = "0";
   green = "1";
@@ -60,6 +60,15 @@ entrance {
   z_pos = 0;
   release_rate = 125;
   direction = misc;
+}
+
+hotspot {
+  image = (resource)"Entrances/sun";
+  x_pos = 146;
+  y_pos = 111;
+  z_pos = 0;
+  speed = -1;
+  para = "0.5";
 }
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: PLF.cc,v 1.11 2000/06/20 17:52:48 grumbel Exp $
+//  $Id: PLF.cc,v 1.12 2000/06/23 17:13:32 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,6 +37,7 @@ float str_to_float(const string& str);
 PLF::PLF(string arg_filename)
 {
   filename = arg_filename;
+
   x_pos = y_pos = 0;
   width = 0; height = 0;
   pingus = 100;

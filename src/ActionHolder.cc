@@ -1,4 +1,4 @@
-//  $Id: ActionHolder.cc,v 1.17 2000/06/10 07:56:58 grumbel Exp $
+//  $Id: ActionHolder.cc,v 1.18 2000/06/23 17:13:32 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,6 +39,7 @@
 #include "actions/smashed.hh"
 #include "actions/LaserKill.hh"
 #include "actions/Splashed.hh"
+#include "actions/Waiter.hh"
 
 #include "ActionHolder.hh"
 
@@ -129,6 +130,8 @@ ActionHolder::translate_action(const std::string& name)
     return new Smashed;
   } else if (name == "splashed") {
     return new Splashed;
+  } else if (name == "waiter") {
+    return new Waiter;
   } else {
     throw PingusError(std::string("ActionHolder:Action `") + name +"' unkown");
   }  
