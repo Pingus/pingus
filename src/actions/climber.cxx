@@ -1,4 +1,4 @@
-//  $Id: climber.cxx,v 1.12 2002/09/16 20:31:09 grumbel Exp $
+//  $Id: climber.cxx,v 1.13 2002/09/16 23:06:01 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,15 +35,19 @@ Climber::init(void)
 
   // these alignments are necessary to prevent climber walking 
   // inside the wall.
-  sprite_height = sprite.get_height();
-  sprite_width = sprite.get_width();
-  if (pingu->direction.is_left ()) {
-    sprite.set_align (0, -sprite_height/2);
-    sprite.set_direction (Sprite::LEFT); 
-  } else {
-    sprite.set_align (-sprite_width, -sprite_height/2);
-    sprite.set_direction (Sprite::RIGHT);
-  }
+  int sprite_height = sprite.get_height();
+  int sprite_width  = sprite.get_width();
+
+  if (pingu->direction.is_left ()) 
+    {
+      sprite.set_align (0, -sprite_height/2);
+      sprite.set_direction (Sprite::LEFT); 
+    } 
+  else 
+    {
+      sprite.set_align (-sprite_width, -sprite_height/2);
+      sprite.set_direction (Sprite::RIGHT);
+    }
 }
 
 void
@@ -66,7 +70,8 @@ Climber::update(float delta)
       // and there is still ground to walk on
       if (rel_getpixel(1, 1) !=  Groundtype::GP_NOTHING) 
 	{
-	  pingu->set_pos(pingu->get_y() - 1);
+	  pingu->set_pos(pingu->get_x(), 
+			 pingu->get_y() - 1);
 	  return;
 	}
       else if (rel_getpixel(1, 1) ==  Groundtype::GP_NOTHING) 
@@ -77,7 +82,8 @@ Climber::update(float delta)
 	  if (!head_collision_on_walk(pingu->direction, 1))
 	    {
               // Get ready to walk
-	      pingu->set_pos(pingu->get_x() + pingu->direction, pingu->get_y() - 1);
+	      pingu->set_pos(pingu->get_x() + pingu->direction, 
+			     pingu->get_y() - 1);
 	    }
 	  else
 	    {
