@@ -89,17 +89,18 @@ GUIManager::process_input (const GameDelta& delta)
 }
 
 void
-GUIManager::add (Component* c, bool delete_component)
+GUIManager::add(Component* c, bool delete_component)
 {
   components.push_back(c);
   UNUSED_ARG(delete_component);
 }
 
 void
-GUIManager::remove (Component* c)
+GUIManager::remove(Component* c)
 {
-  /* components.erase(c); */
-  UNUSED_ARG(c);
+  Components::iterator i = std::find(components.begin(), components.end(), c);
+  if (i != components.end())
+    components.erase(i); 
 }
 
 Component*

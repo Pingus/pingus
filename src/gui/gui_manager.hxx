@@ -42,7 +42,8 @@ namespace GUI {
 class GUIManager : public Component
 {
 private:
-  std::vector<Component*> components;
+  typedef std::vector<Component*> Components;
+  Components components;
 
   /** The component which recieved the last pressed event */
   Component* primary_pressed_component;

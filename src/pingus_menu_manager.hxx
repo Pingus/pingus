@@ -50,17 +50,10 @@ public:
   MenuBackground background;
   ExitMenu exitmenu;
 
-  virtual ~PingusMenuManager ();
+  virtual ~PingusMenuManager();
 
-  bool draw (GraphicContext& gc);
-  void update (const GameDelta&);
-
-  // !FIXME! Should use controller instead
-  /*
-  void on_button_press (CL_InputDevice*,const CL_Key &);
-  void on_button_release (CL_InputDevice*,const CL_Key &);
-  void on_mouse_move (CL_InputDevice*, int, int);
-  */
+  bool draw(GraphicContext& gc);
+  void update(const GameDelta&);
 
   /// Exit the menu manager (which means to exit the while() loop in display ())
   void show_exit_menu ();
@@ -71,9 +64,10 @@ public:
 
   // Replace the current menu with a new one
   void set_menu (PingusSubMenu * menu);
+
   /** Remove the current menu and fall back to the last one.
       This is used for yes/no dialoges and such things. */
-  void pop_menu ();
+  void pop_menu();
 
   /** Add's a new menu to the menu stack. This is used for yes/no
       dialoges and such things.*/

@@ -41,6 +41,73 @@ PingusMenu::PingusMenu (PingusMenuManager* m)
   : PingusSubMenu (m)
 {
   is_init = false;
+  
+  editor_button = new MenuButton(CL_Point(CL_Display::get_width() * 150 / 800,
+                                          CL_Display::get_height() * 370 / 600),
+                                 Resource::load_sprite("menu/create_on", "core"),
+                                 _("Create a\nLevel"),
+                                 _("..:: Launch the level editor ::.."));
+  
+  start_button = new MenuButton(CL_Point(CL_Display::get_width() * 400 / 800,
+                                         CL_Display::get_height() * 370 / 600),
+                                Resource::load_sprite("menu/play_on", "core"),
+                                _("Start"),
+                                _("..:: Start the game ::.."));
+  
+  quit_button = new MenuButton(CL_Point(CL_Display::get_width() * 650 / 800,
+                                        CL_Display::get_height() * 370 / 600),
+                               Resource::load_sprite("menu/exit_on", "core"),
+                               _("Exit"),
+                               _("..:: Bye, bye ::.."));
+
+  contrib_button = new MenuButton(CL_Point(CL_Display::get_width() * 150 / 800,
+                                          CL_Display::get_height() * 370 / 600),
+                                  Resource::load_sprite("menu/options_on", "core"),
+                                  _("Contrib\nLevels"),
+                                  _("..:: Play User Build levels ::.."));
+
+  story_button  = new MenuButton(CL_Point(CL_Display::get_width() * 400 / 800,
+                                          CL_Display::get_height() * 370 / 600),
+                                 Resource::load_sprite("menu/credits_on", "core"),
+                                 _("Story"),
+                                 _("..:: Start the story ::.."));
+  
+  multiplayer_button = new MenuButton(CL_Point(CL_Display::get_width() * 650 / 800,
+                                               CL_Display::get_height() * 370 / 600),
+                                      Resource::load_sprite("menu/multi_on", "core"),
+                                      _("Multiplayer"),
+                                      _("..:: Multiplayer Match ::.."));
+
+  slots.push_back(editor_button->sig_click().connect(this, &PingusMenu::do_editor));
+  slots.push_back(start_button->sig_click().connect(this, &PingusMenu::setup_game_menu));
+  slots.push_back(quit_button->sig_click().connect(this, &PingusMenu::do_quit));
+
+  slots.push_back(story_button->sig_click().connect(this, &PingusMenu::do_start));
+  slots.push_back(multiplayer_button->sig_click().connect(this, &PingusMenu::setup_main_menu));
+}
+
+void
+PingusMenu::setup_main_menu()
+{
+  gui_manager->remove(contrib_button);
+  gui_manager->remove(story_button);
+  gui_manager->remove(multiplayer_button);
+
+  gui_manager->add(quit_button);
+  gui_manager->add(start_button);
+  gui_manager->add(editor_button);
+}
+
+void
+PingusMenu::setup_game_menu()
+{
+  gui_manager->remove(quit_button);
+  gui_manager->remove(start_button);
+  gui_manager->remove(editor_button);
+
+  gui_manager->add(contrib_button);
+  gui_manager->add(story_button);
+  gui_manager->add(multiplayer_button);
 }
 
 void
@@ -51,32 +118,7 @@ PingusMenu::preload ()
       is_init = true;
 
       background = Resource::load_sprite("misc/logo", "core");
-
-      MenuButton* editor_button = new MenuButton(CL_Point(CL_Display::get_width() * 150 / 800,
-                                                                CL_Display::get_height() * 370 / 600),
-                                                       Resource::load_sprite("menu/create_on", "core"),
-                                                       _("Create a\nLevel"),
-                                                       _("..:: Launch the level editor ::.."));
-
-      MenuButton* start_button = new MenuButton(CL_Point(CL_Display::get_width() * 400 / 800,
-                                                              CL_Display::get_height() * 370 / 600),
-                                                      Resource::load_sprite("menu/play_on", "core"),
-                                                      _("Start"),
-                                                      _("..:: Start the game ::.."));
-
-      MenuButton* quit_button = new MenuButton(CL_Point(CL_Display::get_width() * 650 / 800,
-                                                              CL_Display::get_height() * 370 / 600),
-                                                     Resource::load_sprite("menu/exit_on", "core"),
-                                                     _("Exit"),
-                                                     _("..:: Bye, bye ::.."));
-
-      slots.push_back(editor_button->sig_click().connect(this, &PingusMenu::do_editor));
-      slots.push_back(start_button->sig_click().connect(this, &PingusMenu::do_start));
-      slots.push_back(quit_button->sig_click().connect(this, &PingusMenu::do_quit));
-      
-      gui_manager->add(quit_button);
-      gui_manager->add(start_button);
-      gui_manager->add(editor_button);
+      setup_main_menu();
     }
 }
 

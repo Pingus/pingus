@@ -62,7 +62,7 @@ PingusMenuManager::update (const GameDelta& delta)
   //std::vector<PingusSubMenu *> tmp_menu_stack = menu_stack;
   /*for (MenuStackIter i = tmp_menu_stack.begin (); i != tmp_menu_stack.end (); ++i)
     (*i)->update (delta);*/
-  menu_stack.back ()->update (delta);
+  menu_stack.back()->update (delta);
 }
 
 void

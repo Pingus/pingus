@@ -36,9 +36,7 @@ namespace GUI {
 class GUIManager;
 } // namespace GUI
 
-namespace Input {
-class Controller;
-} // namespace Input
+class MenuButton;
 
 class PingusMenu : public PingusSubMenu
 {
@@ -46,17 +44,28 @@ public:
   bool is_init;
 private:
   std::vector<CL_Slot> slots;
-  Input::Controller* controller;
 
   CL_Sprite background;
   LayerManager layer_manager;
   CL_Surface cursor_sur;
 
+  MenuButton* editor_button;
+  MenuButton* start_button;
+  MenuButton* quit_button;
+
+  MenuButton* contrib_button;
+  MenuButton* story_button;
+  MenuButton* multiplayer_button;
+  
   void on_resize (int w, int h);
+
+  void setup_main_menu();
+  void setup_game_menu();
 
   void do_quit();
   void do_start();
   void do_editor();
+
 public:
   PingusMenu (PingusMenuManager* m);
   ~PingusMenu();
