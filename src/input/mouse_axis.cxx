@@ -1,4 +1,4 @@
-//  $Id: mouse_axis.cxx,v 1.3 2002/08/14 12:41:22 torangan Exp $
+//  $Id: mouse_axis.cxx,v 1.4 2002/08/15 10:57:16 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,7 +24,7 @@
 
 namespace Input
 {
-  MouseAxis::MouseAxis(int axis_, float angle_) : axis(axis_), angle(angle_), pos(0)
+  MouseAxis::MouseAxis(int axis_, float angle_) : axis(axis_), angle(angle_), pos(0), old_pos(0)
   {
     if (angle < 0)
       angle = (static_cast<int>(angle) % 360) + 360;

@@ -1,4 +1,4 @@
-//  $Id: controller.cxx,v 1.9 2002/08/14 12:41:22 torangan Exp $
+//  $Id: controller.cxx,v 1.10 2002/08/15 10:57:15 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -189,9 +189,8 @@ namespace Input
     if (action_axis->get_pos())
       if (action_axis->get_pos() > 0)
         events.push_back(new AxisEvent(up));
-      else
+      else 
         events.push_back(new AxisEvent(down));
-
   }
 
 }
