@@ -1,0 +1,1313 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Ingo Ruhnke
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2003-04-18 11:16+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/config.cxx:71
+msgid "Couldn't open: "
+msgstr ""
+
+#: src/config.cxx:170
+msgid "Unexpected char: '"
+msgstr ""
+
+#: src/config.cxx:204
+msgid "Unexpected char '"
+msgstr ""
+
+#: src/credits.cxx:46
+msgid "-Idea"
+msgstr ""
+
+#: src/credits.cxx:50
+msgid "-Maintaining"
+msgstr ""
+
+#: src/credits.cxx:54
+msgid "-Programming"
+msgstr ""
+
+#: src/credits.cxx:60
+msgid "-Porting (Win32)"
+msgstr ""
+
+#: src/credits.cxx:68
+msgid "-Gfx"
+msgstr ""
+
+#: src/credits.cxx:79
+msgid "-Music"
+msgstr ""
+
+#: src/credits.cxx:85
+msgid "-Level Design"
+msgstr ""
+
+#: src/credits.cxx:90
+msgid "-Story"
+msgstr ""
+
+#: src/credits.cxx:94
+msgid "-Translation"
+msgstr ""
+
+#: src/credits.cxx:104
+msgid "-Special"
+msgstr ""
+
+#: src/credits.cxx:105
+msgid "-Thanks to"
+msgstr ""
+
+#: src/credits.cxx:142
+msgid "_And a very Special Thanks"
+msgstr ""
+
+#: src/credits.cxx:143
+msgid "_to all the people who"
+msgstr ""
+
+#: src/credits.cxx:144
+msgid "_contribute to"
+msgstr ""
+
+#: src/credits.cxx:145
+msgid "_Free Software!"
+msgstr ""
+
+#: src/credits.cxx:151
+msgid "_Thank you for"
+msgstr ""
+
+#: src/credits.cxx:152
+msgid "_playing!"
+msgstr ""
+
+#: src/editor/editor_event.cxx:580
+msgid "Enter filename to save as:"
+msgstr ""
+
+#: src/editor/editor_help_screen.cxx:38
+msgid "Editor Helpscreen (hide with F1)"
+msgstr ""
+
+#: src/editor/editor_help_screen.cxx:45
+msgid "F1 - show/hide this help screen"
+msgstr ""
+
+#: src/editor/editor_help_screen.cxx:46
+msgid "F2 - launch level building tutorial"
+msgstr ""
+
+#: src/editor/editor_help_screen.cxx:47
+msgid "F3 - toggle background color"
+msgstr ""
+
+#: src/editor/editor_help_screen.cxx:48
+msgid "F4 - play/test the level"
+msgstr ""
+
+#: src/editor/editor_help_screen.cxx:49
+msgid "F5 - load a level"
+msgstr ""
+
+#: src/editor/editor_help_screen.cxx:50
+msgid "F6 - save this level"
+msgstr ""
+
+#: src/editor/editor_help_screen.cxx:51
+msgid "F7 - [unset]"
+msgstr ""
+
+#: src/editor/editor_help_screen.cxx:52
+msgid "F8 - quick save/backup save?!"
+msgstr ""
+
+#: src/editor/editor_help_screen.cxx:53
+msgid "F9 - change level width and height"
+msgstr ""
+
+#: src/editor/editor_help_screen.cxx:54
+msgid "F10 - [unset]"
+msgstr ""
+
+#: src/editor/editor_help_screen.cxx:55
+msgid "F11 - toggle fps counter"
+msgstr ""
+
+#: src/editor/editor_help_screen.cxx:56
+msgid "F12 - make screenshot"
+msgstr ""
+
+#: src/editor/editor_help_screen.cxx:60
+msgid "Home - increase object size"
+msgstr ""
+
+#: src/editor/editor_help_screen.cxx:61
+msgid "End  - decrease object size"
+msgstr ""
+
+#: src/editor/editor_help_screen.cxx:62
+msgid "Cursor Keys - Move object"
+msgstr ""
+
+#: src/editor/editor_help_screen.cxx:63
+msgid "Shift 'Cursor Keys' - Move objects fast "
+msgstr ""
+
+#: src/editor/editor_help_screen.cxx:64
+msgid "PageUp   - level object up"
+msgstr ""
+
+#: src/editor/editor_help_screen.cxx:65
+msgid "PageDown - level object down"
+msgstr ""
+
+#: src/editor/editor_help_screen.cxx:66
+msgid "Shift PageUp   - increase objects z-pos by 50"
+msgstr ""
+
+#: src/editor/editor_help_screen.cxx:67
+msgid "Shift PageDown - decrease objects z-pos by 50"
+msgstr ""
+
+#: src/editor/editor_help_screen.cxx:68
+msgid "Enter - Set default zoom (1:1)"
+msgstr ""
+
+#: src/editor/editor_help_screen.cxx:69
+msgid "d - duplicate object"
+msgstr ""
+
+#: src/editor/editor_help_screen.cxx:70
+msgid "a - mark all objects"
+msgstr ""
+
+#: src/editor/editor_help_screen.cxx:71
+msgid "shift leftmouseclick - add object to selection"
+msgstr ""
+
+#: src/editor/editor_help_screen.cxx:72
+msgid "leftmouseclick - select object"
+msgstr ""
+
+#: src/editor/editor_help_screen.cxx:73
+msgid "Insert - insert new object"
+msgstr ""
+
+#: src/editor/editor_help_screen.cxx:74
+msgid "Remove - remove selected object"
+msgstr ""
+
+#: src/editor/editor_help_screen.cxx:75
+msgid "g - ungroup/group current selection"
+msgstr ""
+
+#: src/editor/editor_help_screen.cxx:76
+msgid "Ctrl PageUp   - increase objects z-pos by 1"
+msgstr ""
+
+#: src/editor/editor_help_screen.cxx:77
+msgid "Ctrl PageDown - decrease objects z-pos by 1"
+msgstr ""
+
+#: src/editor/editor_help_screen.cxx:83
+msgid "Naming Convention: <LEVELNAME><NUMBER>-<CREATOR>.xml"
+msgstr ""
+
+#: src/editor/editor_help_screen.cxx:85
+msgid ""
+"When you have created a level and want to have it in the next Pingus "
+"release,\n"
+"please mail it to pingus-devel@nongnu.org."
+msgstr ""
+
+#: src/editor/object_selector.cxx:106
+msgid "1 - guillotine"
+msgstr ""
+
+#: src/editor/object_selector.cxx:107
+msgid "2 - hammer"
+msgstr ""
+
+#: src/editor/object_selector.cxx:108
+msgid "3 - spike"
+msgstr ""
+
+#: src/editor/object_selector.cxx:109
+msgid "4 - laser_exit"
+msgstr ""
+
+#: src/editor/object_selector.cxx:110
+msgid "5 - fake_exit"
+msgstr ""
+
+#: src/editor/object_selector.cxx:111
+msgid "6 - smasher"
+msgstr ""
+
+#: src/editor/object_selector.cxx:112
+msgid "7 - bumper"
+msgstr ""
+
+#: src/editor/object_selector.cxx:186
+msgid "Select a WorldObj"
+msgstr ""
+
+#: src/editor/object_selector.cxx:187
+msgid "1 - teleporter"
+msgstr ""
+
+#: src/editor/object_selector.cxx:188
+msgid "2 - switch and door"
+msgstr ""
+
+#: src/editor/object_selector.cxx:189
+msgid "3 - ConveyorBelt"
+msgstr ""
+
+#: src/editor/object_selector.cxx:190
+msgid "4 - IceBlock"
+msgstr ""
+
+#: src/editor/object_selector.cxx:191
+msgid "5 - InfoBox"
+msgstr ""
+
+#: src/editor/object_selector.cxx:232
+msgid "Select a weather"
+msgstr ""
+
+#: src/editor/object_selector.cxx:233
+msgid "1 - snow"
+msgstr ""
+
+#: src/editor/object_selector.cxx:234
+msgid "2 - rain"
+msgstr ""
+
+#: src/editor/object_selector.cxx:265
+msgid "Select an entrance"
+msgstr ""
+
+#: src/editor/object_selector.cxx:266
+msgid "1 - generic"
+msgstr ""
+
+#: src/editor/object_selector.cxx:267
+msgid "2 - woodthing"
+msgstr ""
+
+#: src/editor/object_selector.cxx:268
+msgid "3 - cloud"
+msgstr ""
+
+#: src/editor/object_selector.cxx:269
+msgid "h - entrance surface (hotspot)"
+msgstr ""
+
+#: src/editor/object_selector.cxx:343
+msgid "What object type do you want?"
+msgstr ""
+
+#: src/editor/object_selector.cxx:344 src/editor/object_selector.cxx:400
+msgid "h - Hotspot"
+msgstr ""
+
+#: src/editor/object_selector.cxx:345
+msgid "g - Groundpiece (ground) [not implemented]"
+msgstr ""
+
+#: src/editor/object_selector.cxx:394 src/editor/object_selector.cxx:562
+msgid "Which object do you want?"
+msgstr ""
+
+#: src/editor/object_selector.cxx:395
+msgid "g - Groundpiece (ground)"
+msgstr ""
+
+#: src/editor/object_selector.cxx:396
+msgid "s - Groundpiece (solid)"
+msgstr ""
+
+#: src/editor/object_selector.cxx:397
+msgid "b - Groundpiece (bridge)"
+msgstr ""
+
+#: src/editor/object_selector.cxx:398
+msgid "n - Groundpiece (transparent)"
+msgstr ""
+
+#: src/editor/object_selector.cxx:399
+msgid "r - Groundpiece (remove)"
+msgstr ""
+
+#: src/editor/object_selector.cxx:401
+msgid "e - Entrance"
+msgstr ""
+
+#: src/editor/object_selector.cxx:402
+msgid "x - Exit"
+msgstr ""
+
+#: src/editor/object_selector.cxx:403
+msgid "l - Liquid"
+msgstr ""
+
+#: src/editor/object_selector.cxx:404
+msgid "w - Weather"
+msgstr ""
+
+#: src/editor/object_selector.cxx:405
+msgid "t - Traps"
+msgstr ""
+
+#: src/editor/object_selector.cxx:406
+msgid "o - WorldObject"
+msgstr ""
+
+#: src/editor/object_selector.cxx:407
+msgid "z - Background"
+msgstr ""
+
+#: src/editor/object_selector.cxx:408
+msgid "p - Prefab (ObjectGroup)"
+msgstr ""
+
+#: src/editor/object_selector.cxx:409
+msgid "f - something from file (~/.pingus/images/)"
+msgstr ""
+
+#: src/editor/object_selector.cxx:498
+msgid "Which prefab do you want?"
+msgstr ""
+
+#: src/editor/object_selector.cxx:563
+msgid "1 - Surface Background"
+msgstr ""
+
+#: src/editor/object_selector.cxx:564
+msgid "2 - Solid Color Background"
+msgstr ""
+
+#: src/editor/object_selector.cxx:565
+msgid "3 - Starfield Background"
+msgstr ""
+
+#: src/editor/object_selector.cxx:566
+msgid "4 - Thunderstorm Background"
+msgstr ""
+
+#: src/editor/panel_icons.cxx:31
+msgid "Load a level (F5)"
+msgstr ""
+
+#: src/editor/panel_icons.cxx:44
+msgid "Exit the editor (Escape)"
+msgstr ""
+
+#: src/editor/panel_icons.cxx:56
+msgid "Save this level (F6)"
+msgstr ""
+
+#: src/editor/panel_icons.cxx:68
+msgid "Delete marked objects (delete"
+msgstr ""
+
+#: src/editor/panel_icons.cxx:80
+msgid "Duplicate current object (d)"
+msgstr ""
+
+#: src/editor/panel_icons.cxx:92
+msgid "Edit Level Properties"
+msgstr ""
+
+#: src/editor/panel_icons.cxx:104
+msgid "Edit Object Properties"
+msgstr ""
+
+#: src/editor/panel_icons.cxx:116
+msgid "Start the level and test it (F4)"
+msgstr ""
+
+#: src/editor/panel_icons.cxx:128
+msgid "Create a new level from scratch"
+msgstr ""
+
+#: src/editor/panel_icons.cxx:140
+msgid "Insert an object (Insert)"
+msgstr ""
+
+#: src/editor/panel_icons.cxx:152
+msgid "Zoom into a region"
+msgstr ""
+
+#: src/editor/panel_icons.cxx:164
+msgid "Zoom in"
+msgstr ""
+
+#: src/editor/panel_icons.cxx:176
+msgid "Zoom out"
+msgstr ""
+
+#: src/editor/panel_icons.cxx:188
+msgid "Setup Number of Actions"
+msgstr ""
+
+#: src/editor/panel_icons.cxx:200
+msgid "Display Help Screen (F1)"
+msgstr ""
+
+#: src/exit_menu.cxx:46
+msgid "Yes"
+msgstr ""
+
+#: src/exit_menu.cxx:79
+msgid "No"
+msgstr ""
+
+#: src/exit_menu.cxx:112
+msgid "Exit Pingus?"
+msgstr ""
+
+#: src/fps_counter.cxx:46
+msgid "unknown"
+msgstr ""
+
+#: src/game_time.cxx:68
+msgid "unlimited"
+msgstr ""
+
+#: src/level_desc.cxx:71
+msgid "Designed by "
+msgstr ""
+
+#: src/level_desc.cxx:76
+#, c-format
+msgid "Pingus to Save: %d"
+msgstr ""
+
+#: src/level_desc.cxx:78
+#, c-format
+msgid "Number of Pingus: %d"
+msgstr ""
+
+#: src/level_desc.cxx:83
+msgid "Loading..."
+msgstr ""
+
+#: src/level_desc.cxx:86
+msgid "Loading finished. Press a mouse button to start the level"
+msgstr ""
+
+#: src/level_result.cxx:57
+msgid "Results:"
+msgstr ""
+
+#: src/level_result.cxx:63
+#, c-format
+msgid "Pingus saved:   %3d/%3d"
+msgstr ""
+
+#: src/level_result.cxx:68
+#, c-format
+msgid "Pingus killed:  %3d/%3d"
+msgstr ""
+
+#: src/level_result.cxx:84
+msgid "Press button to continue..."
+msgstr ""
+
+#: src/level_result.cxx:98
+msgid ""
+"As many Pingus escaped as entered the level. That's going to be hard to "
+"beat.... unless this game becomes pornographic."
+msgstr ""
+
+#: src/level_result.cxx:100
+msgid "Very impressive indeed."
+msgstr ""
+
+#: src/level_result.cxx:102
+msgid "Good work. Still room for improvement though."
+msgstr ""
+
+#: src/level_result.cxx:104
+msgid "Not too shabby, not too shabby at all."
+msgstr ""
+
+#: src/level_result.cxx:106
+msgid ""
+"That was OK, but Pingu life insurance premiums have just gotten more "
+"expensive."
+msgstr ""
+
+#: src/level_result.cxx:108
+msgid "Maybe this level calls for a different strategy."
+msgstr ""
+
+#: src/level_result.cxx:110
+msgid "Exactly half. Are you saving only the female ones?"
+msgstr ""
+
+#: src/level_result.cxx:112
+msgid "If I were a Pingu, I never would have left that entrance."
+msgstr ""
+
+#: src/level_result.cxx:114
+msgid "Maybe you would feel more at home playing Quake."
+msgstr ""
+
+#: src/level_result.cxx:116
+msgid ""
+"Maybe this level calls for a different strategy. Like attempting to save "
+"them, for example."
+msgstr ""
+
+#: src/level_result.cxx:118
+msgid "Ever considered a career as a Pingu exterminator?"
+msgstr ""
+
+#: src/level_result.cxx:120
+msgid "You missed one! What's your excuse!?"
+msgstr ""
+
+#: src/level_result.cxx:122
+msgid "Please reassure me that you hit the Armageddon button."
+msgstr ""
+
+#: src/level_result.cxx:124
+msgid "You've got a negative save/total value, something is buggy."
+msgstr ""
+
+#: src/menu_button.cxx:177
+msgid "..:: The people who brought this game to you ::.."
+msgstr ""
+
+#: src/menu_button.cxx:180
+msgid "Credits"
+msgstr ""
+
+#: src/menu_button.cxx:212
+msgid "..:: Takes you to the options menu ::.."
+msgstr ""
+
+#: src/menu_button.cxx:215
+msgid "Options"
+msgstr ""
+
+#: src/menu_button.cxx:248
+msgid "..:: Bye, bye ::.."
+msgstr ""
+
+#: src/menu_button.cxx:251
+msgid "Exit"
+msgstr ""
+
+#: src/menu_button.cxx:302
+msgid "..:: Launch the level editor ::.."
+msgstr ""
+
+#: src/menu_button.cxx:305
+msgid "Create a"
+msgstr ""
+
+#: src/menu_button.cxx:306
+msgid "Level"
+msgstr ""
+
+#: src/menu_button.cxx:340
+msgid "..:: Start the game ::.."
+msgstr ""
+
+#: src/menu_button.cxx:341
+msgid "Start"
+msgstr ""
+
+#: src/menu_button.cxx:371
+msgid "..:: Start a contrib level ::.."
+msgstr ""
+
+#: src/menu_button.cxx:373
+msgid "Contrib"
+msgstr ""
+
+#: src/menu_button.cxx:393
+msgid "..:: Multiplayer Modes... experimental stuff ::.."
+msgstr ""
+
+#: src/menu_button.cxx:395
+msgid "Multi"
+msgstr ""
+
+#: src/pingu_enums.cxx:34
+msgid "Angel"
+msgstr ""
+
+#: src/pingu_enums.cxx:35
+msgid "Basher"
+msgstr ""
+
+#: src/pingu_enums.cxx:36
+msgid "Blocker"
+msgstr ""
+
+#: src/pingu_enums.cxx:37
+msgid "Boarder"
+msgstr ""
+
+#: src/pingu_enums.cxx:38
+msgid "Bomber"
+msgstr ""
+
+#: src/pingu_enums.cxx:39
+msgid "Bridger"
+msgstr ""
+
+#: src/pingu_enums.cxx:40
+msgid "Climber"
+msgstr ""
+
+#: src/pingu_enums.cxx:41
+msgid "Digger"
+msgstr ""
+
+#: src/pingu_enums.cxx:42
+msgid "Drown"
+msgstr ""
+
+#: src/pingu_enums.cxx:43
+msgid "Exiter"
+msgstr ""
+
+#: src/pingu_enums.cxx:44
+msgid "Faller"
+msgstr ""
+
+#: src/pingu_enums.cxx:45
+msgid "Floater"
+msgstr ""
+
+#: src/pingu_enums.cxx:46
+msgid "Jumper"
+msgstr ""
+
+#: src/pingu_enums.cxx:47
+msgid "Laserkill"
+msgstr ""
+
+#: src/pingu_enums.cxx:48
+msgid "Miner"
+msgstr ""
+
+#: src/pingu_enums.cxx:49
+msgid "Rocketlauncher"
+msgstr ""
+
+#: src/pingu_enums.cxx:50
+msgid "Slider"
+msgstr ""
+
+#: src/pingu_enums.cxx:51
+msgid "Smashed"
+msgstr ""
+
+#: src/pingu_enums.cxx:52
+msgid "Splashed"
+msgstr ""
+
+#: src/pingu_enums.cxx:53
+msgid "Superman"
+msgstr ""
+
+#: src/pingu_enums.cxx:54
+msgid "Teleported"
+msgstr ""
+
+#: src/pingu_enums.cxx:55
+msgid "Waiter"
+msgstr ""
+
+#: src/pingu_enums.cxx:56
+msgid "Walker"
+msgstr ""
+
+#: src/pingus_counter.cxx:49
+#, c-format
+msgid "Released:%3d/%-3d   Out:%3d   Saved:%3d/%-3d"
+msgstr ""
+
+#: src/pingus_main.cxx:93
+msgid "| segfault_handler: catched a SIGSEGV."
+msgstr ""
+
+#: src/pingus_main.cxx:95
+msgid "| Woops, Pingus just crashed, congratulations you've found a bug."
+msgstr ""
+
+#: src/pingus_main.cxx:96
+msgid ""
+"| Please write a little bug report to <grumbel@gmx.de>, include informations"
+msgstr ""
+
+#: src/pingus_main.cxx:97
+msgid "| where exacly the SIGSEGV occured and how to reproduce it."
+msgstr ""
+
+#: src/pingus_main.cxx:98
+msgid "| Also try include a backtrace, you can get it like this:"
+msgstr ""
+
+#: src/pingus_main.cxx:104
+msgid "| If that doesn't work, try this:"
+msgstr ""
+
+#: src/pingus_main.cxx:108
+msgid "| [play until it crashes again]"
+msgstr ""
+
+#: src/pingus_main.cxx:116
+msgid "| Warning: Pingus recieved a SIGINT, exiting now."
+msgstr ""
+
+#: src/pingus_main.cxx:306
+msgid "Warning: Larger resolution than 800x600 will result in visual problems"
+msgstr ""
+
+#: src/pingus_main.cxx:487
+msgid "Unknow char: "
+msgstr ""
+
+#: src/pingus_main.cxx:488
+msgid "Usage: "
+msgstr ""
+
+#: src/pingus_main.cxx:488
+msgid " [OPTIONS]... [LEVELFILE]"
+msgstr ""
+
+#: src/pingus_main.cxx:491
+msgid "Options:"
+msgstr ""
+
+#: src/pingus_main.cxx:493
+msgid "Set the resolution for pingus (default: 800x600)"
+msgstr ""
+
+#: src/pingus_main.cxx:494
+msgid "Displays this help"
+msgstr ""
+
+#: src/pingus_main.cxx:495
+msgid "Disable intro"
+msgstr ""
+
+#: src/pingus_main.cxx:497
+msgid "Use OpenGL"
+msgstr ""
+
+#: src/pingus_main.cxx:500
+msgid "Start in Window Mode"
+msgstr ""
+
+#: src/pingus_main.cxx:501
+msgid "Start in Fullscreen"
+msgstr ""
+
+#: src/pingus_main.cxx:505
+msgid "FILE      "
+msgstr ""
+
+#: src/pingus_main.cxx:505
+msgid "Load a custom level from FILE"
+msgstr ""
+
+#: src/pingus_main.cxx:506
+msgid "FILE        "
+msgstr ""
+
+#: src/pingus_main.cxx:506
+msgid "Load a custom worldmap from FILE"
+msgstr ""
+
+#: src/pingus_main.cxx:507
+msgid "Print some more messages to stdout, can be set"
+msgstr ""
+
+#: src/pingus_main.cxx:508
+msgid "multiple times to increase verbosity"
+msgstr ""
+
+#: src/pingus_main.cxx:509
+msgid "Prints version number and exit"
+msgstr ""
+
+#: src/pingus_main.cxx:510
+msgid "Launch the Level editor (experimental)"
+msgstr ""
+
+#: src/pingus_main.cxx:511
+msgid "Disable automatic scrolling"
+msgstr ""
+
+#: src/pingus_main.cxx:513
+msgid "Enable software cursor"
+msgstr ""
+
+#: src/pingus_main.cxx:516
+msgid "Don't read ~/.pingus/config"
+msgstr ""
+
+#: src/pingus_main.cxx:517
+msgid "FILE       "
+msgstr ""
+
+#: src/pingus_main.cxx:517
+msgid "Read config from FILE (default: ~/.pingus/config)"
+msgstr ""
+
+#: src/pingus_main.cxx:518
+msgid "reduce CPU usage, might speed up the game on slower machines"
+msgstr ""
+
+#: src/pingus_main.cxx:519
+msgid "Uses the controller given in FILE"
+msgstr ""
+
+#: src/pingus_main.cxx:521
+msgid "Debugging and experimental stuff:"
+msgstr ""
+
+#: src/pingus_main.cxx:522
+msgid "Enables some features, only interesting programmers"
+msgstr ""
+
+#: src/pingus_main.cxx:523
+msgid "Enable the output of debugging infos, possible"
+msgstr ""
+
+#: src/pingus_main.cxx:524
+msgid "OPTION's are tiles, gametime, actions, sound, resources, gui,"
+msgstr ""
+
+#: src/pingus_main.cxx:526
+msgid "Skip at least N frames, larger values speed the game up"
+msgstr ""
+
+#: src/pingus_main.cxx:527
+msgid "Skip at most N frames"
+msgstr ""
+
+#: src/pingus_main.cxx:528
+msgid "Set both min and max frameskip to N"
+msgstr ""
+
+#: src/pingus_main.cxx:529
+msgid "Set the game speed (0=fastest, >0=slower)"
+msgstr ""
+
+#: src/pingus_main.cxx:530
+msgid "Prints the fps to stdout"
+msgstr ""
+
+#: src/pingus_main.cxx:531
+msgid "Set the size of the map tiles (default: 32)"
+msgstr ""
+
+#: src/pingus_main.cxx:532
+msgid "Disable some cpu intensive features"
+msgstr ""
+
+#: src/pingus_main.cxx:533
+msgid "Reduces the CPU usage by issuing sleep()"
+msgstr ""
+
+#: src/pingus_main.cxx:535
+msgid "Demo playing and recording:"
+msgstr ""
+
+#: src/pingus_main.cxx:536
+msgid "FILE     "
+msgstr ""
+
+#: src/pingus_main.cxx:536
+msgid "Plays a demo session from FILE"
+msgstr ""
+
+#: src/pingus_main.cxx:538
+msgid "Record demos for each played level"
+msgstr ""
+
+#: src/pingus_main.cxx:540
+msgid "Sound:"
+msgstr ""
+
+#: src/pingus_main.cxx:541
+msgid "Disable sound"
+msgstr ""
+
+#: src/pingus_main.cxx:542
+msgid "Disable music"
+msgstr ""
+
+#: src/pingus_main.cxx:712
+msgid "clanVorbis support:           ok"
+msgstr ""
+
+#: src/pingus_main.cxx:714
+msgid "clanVoribs support:  missing (.ogg music files will not be playable)"
+msgstr ""
+
+#: src/pingus_main.cxx:718
+msgid "clanMikMod support:           ok"
+msgstr ""
+
+#: src/pingus_main.cxx:720
+msgid "clanMikMod support:  missing (music files will not be playable)"
+msgstr ""
+
+#: src/pingus_main.cxx:724
+msgid "getext support:               ok"
+msgstr ""
+
+#: src/pingus_main.cxx:725
+msgid "gettext language:        english"
+msgstr ""
+
+#: src/pingus_main.cxx:731
+msgid "sound support:           enabled"
+msgstr ""
+
+#: src/pingus_main.cxx:733
+msgid "sound support:          disabled"
+msgstr ""
+
+#: src/pingus_main.cxx:736
+msgid "music support:           enabled"
+msgstr ""
+
+#: src/pingus_main.cxx:738
+msgid "music support:          disabled"
+msgstr ""
+
+#: src/pingus_main.cxx:740
+msgid "resolution set to:       "
+msgstr ""
+
+#: src/pingus_main.cxx:741
+msgid "fullscreen:              "
+msgstr ""
+
+#: src/pingus_main.cxx:742
+msgid " enabled"
+msgstr ""
+
+#: src/pingus_main.cxx:742
+msgid "disabled"
+msgstr ""
+
+#: src/pingus_main.cxx:752
+msgid "PingusMain: Starting Main: "
+msgstr ""
+
+#: src/pingus_main.cxx:782
+msgid "PingusMain: Levelfile not found, ignoring: "
+msgstr ""
+
+#: src/pingus_main.cxx:883
+msgid "Error caught from ClanLib: "
+msgstr ""
+
+#: src/pingus_main.cxx:887
+msgid "Error caught from Pingus: "
+msgstr ""
+
+#: src/pingus_main.cxx:891
+msgid "Pingus: Out of memory!"
+msgstr ""
+
+#: src/pingus_main.cxx:895
+msgid "Pingus: Standard exception caught!:\n"
+msgstr ""
+
+#: src/pingus_main.cxx:899
+msgid "Pingus: Unknown throw caught!"
+msgstr ""
+
+#: src/result_screen.cxx:97 src/start_screen.cxx:109
+msgid "Abort"
+msgstr ""
+
+#: src/result_screen.cxx:165
+msgid "Retry"
+msgstr ""
+
+#: src/result_screen.cxx:173
+msgid "Success!"
+msgstr ""
+
+#: src/result_screen.cxx:180
+msgid "Failure!"
+msgstr ""
+
+#: src/result_screen.cxx:189
+msgid "Perfect! You saved everybody possibly, great!"
+msgstr ""
+
+#: src/result_screen.cxx:191
+msgid "None got killed, pretty good work"
+msgstr ""
+
+#: src/result_screen.cxx:193
+msgid ""
+"You saved just what you needed, you made it, but\n"
+"maybe you can do better?"
+msgstr ""
+
+#: src/result_screen.cxx:196
+msgid "Not everybody could get saved, but still good work!"
+msgstr ""
+
+#: src/result_screen.cxx:198
+msgid "What can I say, you made it, congratulations!"
+msgstr ""
+
+#: src/result_screen.cxx:203
+msgid "You killed everybody, not good."
+msgstr ""
+
+#: src/result_screen.cxx:205
+msgid "None got saved, I know you can do better."
+msgstr ""
+
+#: src/result_screen.cxx:207
+msgid ""
+"You didn't saved enough, but still saved a few, next\n"
+"time you might be better."
+msgstr ""
+
+#: src/result_screen.cxx:210
+msgid "Only one more and you would have made it, try again!"
+msgstr ""
+
+#: src/result_screen.cxx:212
+msgid "Only a handfull more and you would have made it, try again!"
+msgstr ""
+
+#: src/result_screen.cxx:214
+msgid "Better luck next time!"
+msgstr ""
+
+#: src/result_screen.cxx:230
+msgid "Saved: "
+msgstr ""
+
+#: src/result_screen.cxx:234
+msgid "Killed: "
+msgstr ""
+
+#: src/result_screen.cxx:238
+msgid "Time left: "
+msgstr ""
+
+#: src/screenshot.cxx:43
+msgid "Screenshot: Saving screenshot to: "
+msgstr ""
+
+#: src/screenshot.cxx:45
+msgid "Screnshot: Screenshot is done."
+msgstr ""
+
+#: src/screenshot.cxx:51
+msgid "Screenshot: Couldn't save screenshot"
+msgstr ""
+
+#: src/screenshot.cxx:134
+msgid "Screenshot: Couldn't write file: "
+msgstr ""
+
+#: src/spot_map.cxx:278
+#, c-format
+msgid "Image has wrong color depth: %d"
+msgstr ""
+
+#: src/start_screen.cxx:73
+msgid "Ok"
+msgstr ""
+
+#: src/start_screen.cxx:156
+msgid "Number of Pingus: "
+msgstr ""
+
+#: src/start_screen.cxx:159
+msgid "Number to Save: "
+msgstr ""
+
+#: src/start_screen.cxx:162
+msgid "Time: "
+msgstr ""
+
+#: src/start_screen.cxx:165
+msgid "Difficulty:"
+msgstr ""
+
+#: src/start_screen.cxx:173
+msgid "Author: "
+msgstr ""
+
+#: src/start_screen.cxx:176
+msgid "Filename: "
+msgstr ""
+
+#: src/story.cxx:39
+msgid "The Journey Continues"
+msgstr ""
+
+#: src/story.cxx:44
+msgid ""
+"Now after you and the Pingus have learned the basics and\n"
+"practiced a bit it is time to move on and begin the journey into\n"
+"the world. Since the floe with which the Pingus traveled to the\n"
+"Tutorial Island isn't going to hold the whole way into the warmer\n"
+"climated regions the Pingus have to find something else to guide\n"
+"them on their journey.\n"
+msgstr ""
+
+#: src/story.cxx:56
+msgid ""
+"But as the eldest have said, the Tutorial Island provides not\n"
+"only a way to practive, but it is also the starting point into\n"
+"the world. After some search the Pingus discovered the meaning\n"
+"of this, the large tree at the end of the island provides good\n"
+"wood to construct a float.\n"
+msgstr ""
+
+#: src/story.cxx:67
+msgid ""
+"So the Pingus set out and constructed some large floats, enough\n"
+"to carry them all. After also packaging up a bunch of provisions\n"
+"they where prepared to finally start of their journey and leave\n"
+"their familiar ground and enter the unknown parts of the world.\n"
+msgstr ""
+
+#: src/story.cxx:77
+msgid ""
+"So the Pingus sat on their float, worrying whats to come and\n"
+"where to go, while floating into the sunset.\n"
+"\n"
+"To be continued..."
+msgstr ""
+
+#: src/story.cxx:89
+msgid "The Journey Begins"
+msgstr ""
+
+#: src/story.cxx:94
+msgid ""
+"For a long time now the Pingus have lived happily in peace on the\n"
+"south pole along with all the other animals. Everything was in\n"
+"balance and it seemed like nothing could disrupt their peace.  The\n"
+"Pingus where happy and it seemed like this could never end.\n"
+msgstr ""
+
+#: src/story.cxx:104
+msgid ""
+"But then one day, things began to slowly change, the sky got darker\n"
+"and the earth got warmer, first of they thought this was just a\n"
+"normal fluctuation in the world's climate, but things seemed to get\n"
+"worse and worse with every year."
+msgstr ""
+
+#: src/story.cxx:115
+msgid ""
+"The snow began to melt away in a few regions and food became an\n"
+"issue. Other animals tended to leave the region to search\n"
+"for colder areas, but the Pingus knew that this wouldn't help,\n"
+"they knew that they had to do something about this problem."
+msgstr ""
+
+#: src/story.cxx:125
+msgid ""
+"So the circle of the eldest came together to decide what to do\n"
+"about it. They decided to send out an expedition around the world\n"
+"to find the cause for this warming. The expedition consisted of\n"
+"hundreds of the bravest Pingus around on the south pole."
+msgstr ""
+
+#: src/story.cxx:135
+msgid ""
+"And they picked you to lead them on their journey around the\n"
+"world. Since the journey will be dangerous and difficult, your\n"
+"first goal is the Island of Mogorok, also known has Tutorial\n"
+"Island. According to the eldest, this island has always been the\n"
+"first stop of Pingus that where send out into the world."
+msgstr ""
+
+#: src/story.cxx:146
+msgid ""
+"The island consists of many regions which are ideal to train the\n"
+"abilities of the Pingus. The Pingus can there train their ability\n"
+"to build bridges, climb, bash and all the rest of their talents\n"
+"which they will surely need on their long and dangerous journey."
+msgstr ""
+
+#: src/story.cxx:156
+msgid ""
+"You may, on the other hand, practice there your ability to\n"
+"command and guide the Pingus. You can also get familiar with\n"
+"all the abilities the Pingus provide and learn to master them,\n"
+"since you will need them all for sure on your journey around the\n"
+"world."
+msgstr ""
+
+#: src/story.cxx:167
+msgid ""
+"Now that you and the Pingus have arrived at Tutorial Island it\n"
+"is time to take command and begin your mission.\n"
+"\n"
+"Good Luck!"
+msgstr ""
+
+#: src/system.cxx:265
+msgid "Environment variable $HOME not set, fix that and start again."
+msgstr ""
+
+#: src/worldmap/level_dot.cxx:162
+msgid "locked"
+msgstr ""
+
+#: src/worldmap/manager.cxx:102
+msgid "Show Ending?"
+msgstr ""
+
+#: src/worldmap/manager.cxx:132
+msgid "Show Story?"
+msgstr ""
+
+#: src/worldmap/manager.cxx:160
+msgid "Leave?"
+msgstr ""
+
+#: src/worldmap/manager.cxx:200
+msgid "Enter?"
+msgstr ""
+
+#: src/worldmap/worldmap.cxx:76
+msgid "WorldMap: File not found: "
+msgstr ""
+
+#: src/worldmap/worldmap.cxx:249
+msgid "...walking..."
+msgstr ""
