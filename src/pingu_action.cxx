@@ -1,4 +1,4 @@
-//  $Id: pingu_action.cxx,v 1.16 2002/11/03 17:32:25 grumbel Exp $
+//  $Id: pingu_action.cxx,v 1.17 2002/11/03 20:30:38 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,6 +25,7 @@
 #include "pingu.hxx"
 #include "pingu_action.hxx"
 #include "worldobj.hxx"
+#include "actions/faller.hxx"
 
 // Initialise class static.
 const int PinguAction::pingu_height = 26;
@@ -186,11 +187,16 @@ PinguAction::move_with_forces ()
 	      // If there is something below the Pingu
 	      if (rel_getpixel(0, -1) != Groundtype::GP_NOTHING)
 		{
+                  // FIXME: this shouldn't be really here, but its a
+                  // FIXME: quick&dirty way to kill falling pingus
+                  if (resultant_force.y >= Actions::Faller::deadly_velocity)
+                    {
+                      pingu->set_action(Actions::Splashed);
+                      return;
+                    }
 		  // Make it so that the Pingu won't go down any further.
-		  force_counter.y = 0;
-		  resultant_force.y = 0;
-
-		  pingu->set_velocity(resultant_force);
+                  pingu->set_velocity(Vector(0, 0));
+                  return;
 		}
 	      else
 		{
