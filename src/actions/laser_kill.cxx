@@ -27,7 +27,7 @@ namespace Actions {
 
 LaserKill::LaserKill(Pingu* p)
   : PinguAction(p),
-    sprite(Sprite ("other/laser_kill", "pingus", 20.0f, Sprite::NONE, Sprite::ONCE))
+    sprite(Sprite ("other/laser_kill", "", 20.0f, Sprite::NONE, Sprite::ONCE))
 {
   sprite.set_align_center_bottom();
 }

@@ -41,8 +41,8 @@ CL_Surface Bridger::static_surface;
 Bridger::Bridger (Pingu* p)
   : PinguAction(p),
     mode(B_BUILDING),
-    walk_sprite(Sprite("pingus/bridger_walk", "pingus", 15.0f, Sprite::NONE, Sprite::ONCE)),
-    build_sprite(Sprite("pingus/bridger_build", "pingus", 15.0f, Sprite::NONE, Sprite::ONCE)),
+    walk_sprite(Sprite("pingus/bridger_walk", "", 15.0f, Sprite::NONE, Sprite::ONCE)),
+    build_sprite(Sprite("pingus/bridger_build", "", 15.0f, Sprite::NONE, Sprite::ONCE)),
     bricks(MAX_BRICKS),
     block_build(false),
     name(_("Bridger") + std::string(" (") + to_string(bricks) + ")")

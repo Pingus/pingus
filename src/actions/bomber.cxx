@@ -46,7 +46,7 @@ Bomber::Bomber (Pingu* p)
     sound_played(false),
     gfx_exploded(false),
     colmap_exploded(false),
-    sprite("pingus/bomber", "pingus", 17.0f, Sprite::NONE, Sprite::ONCE),
+    sprite("pingus/bomber", "", 17.0f, Sprite::NONE, Sprite::ONCE),
     explo_surf(Resource::load_sprite("other/explo"))
 {
   // Only load the surface again if no static_surface is available

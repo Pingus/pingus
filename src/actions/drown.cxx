@@ -27,7 +27,7 @@ namespace Actions {
 
 Drown::Drown (Pingu* p)
   : PinguAction(p),
-    sprite(Sprite("pingus/drownfall0", "pingus", 60.0f, Sprite::NONE, Sprite::ONCE))
+    sprite(Sprite("pingus/drownfall0", "", 60.0f, Sprite::NONE, Sprite::ONCE))
 {
   sprite.set_align_center_bottom();
 }

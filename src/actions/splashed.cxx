@@ -31,7 +31,7 @@ Splashed::Splashed (Pingu* p)
   : PinguAction(p),
     particle_thrown(false),
     sound_played(false),
-    sprite("pingus/splat", "pingus", 30.0f, Sprite::NONE, Sprite::ONCE)
+    sprite("pingus/splat", "", 30.0f, Sprite::NONE, Sprite::ONCE)
 {
   sprite.set_align_center_bottom();
 }

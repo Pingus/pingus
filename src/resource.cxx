@@ -41,6 +41,23 @@ CL_ResourceManager Resource::resmgr;
 std::map<std::string, CL_ResourceManager> Resource::resource_map;
 std::map<ResDescriptor, CL_Surface>       Resource::surface_map;
 
+std::string 
+fix_file(std::string res_name, std::string datafile)
+{
+  if (datafile.empty())
+    {
+      return res_name;
+    }
+  else
+    {
+  for (std::string::size_type i = 0; i != datafile.size(); ++i)
+    if (datafile[i] == '-')
+      datafile[i] = '/';
+
+  return datafile + "/" + res_name;
+    }
+}
+
 void
 Resource::init()
 {
@@ -82,33 +99,33 @@ Resource::get(const std::string& arg_filename)
     }
   else
     {
-  std::string filename = arg_filename + ".xml";
+      std::string filename = arg_filename + ".xml";
 
-  std::map<std::string, CL_ResourceManager>::iterator i = resource_map.find(filename);
+      std::map<std::string, CL_ResourceManager>::iterator i = resource_map.find(filename);
 
-  if (i != resource_map.end())
-    {
-      return i->second;
-    }
-  else
-    {
-      std::string res_filename;
+      if (i != resource_map.end())
+        {
+          return i->second;
+        }
+      else
+        {
+          std::string res_filename;
 
-      res_filename = "data/" + filename;
+          res_filename = "data/" + filename;
 
-      CL_ResourceManager res_manager = CL_ResourceManager(path_manager.complete(res_filename));
+          CL_ResourceManager res_manager = CL_ResourceManager(path_manager.complete(res_filename));
       
-      resource_map[filename] = res_manager;
+          resource_map[filename] = res_manager;
 
-      return res_manager;
-    }
+          return res_manager;
+        }
     }
 }
 
 CL_Surface
 Resource::load_surface(const std::string& res_name,
-			     const std::string& datafile,
-			     ResourceModifierNS::ResourceModifier modifier)
+                       const std::string& datafile,
+                       ResourceModifierNS::ResourceModifier modifier)
 {
   return load_surface(ResDescriptor(res_name, datafile,
 				    modifier));
@@ -122,17 +139,14 @@ Resource::load_sprite(const ResDescriptor& desc)
 
 CL_Sprite
 Resource::load_sprite(const std::string& res_name, 
-                            const std::string& datafile)
+                      const std::string& datafile)
 {
-  CL_ResourceManager res = get(datafile);
   try {
-    CL_Sprite sprite(res_name, &res);
-    return sprite;
+    return CL_Sprite(fix_file(res_name, datafile), &resmgr);
   } catch (CL_Error& err) {
-      std::cout << "Resource::load_sprite: CL_Error: '" << res_name << "', '" << datafile  << "'" << std::endl;
-      std::cout << "CL_Error: " << err.message << std::endl;
-    CL_ResourceManager res_mgr = get("core");
-    return CL_Sprite("core/misc/404sprite", &res_mgr);
+    std::cout << "Resource::load_sprite: CL_Error: '" << res_name << "', '" << datafile  << "'" << std::endl;
+    std::cout << "CL_Error: " << err.message << std::endl;
+    return CL_Sprite("core/misc/404sprite", &resmgr);
   }
 }
 
@@ -140,15 +154,12 @@ CL_SpriteDescription
 Resource::load_sprite_desc(const std::string& res_name,
                            const std::string& datafile)
 {
-  CL_ResourceManager res = get(datafile);
   try {
-    CL_SpriteDescription desc(res_name, &res);
-    return desc;
+    return CL_SpriteDescription(fix_file(res_name, datafile), &resmgr);
   } catch(CL_Error& err) {
     std::cout << "Resource::load_sprite_desc: CL_Error: '" << res_name << "', '" << datafile  << "'" << std::endl;
     std::cout << "CL_Error: " << err.message << std::endl;
-    res = get("core");
-    return CL_SpriteDescription("core/misc/404sprite", &res);
+    return CL_SpriteDescription("core/misc/404sprite", &resmgr);
   }
 }
 
@@ -168,7 +179,7 @@ Resource::load_pixelbuffer(const ResDescriptor& desc_)
 
 CL_PixelBuffer
 Resource::load_pixelbuffer(const std::string& res_name,
-                                 const std::string& datafile)
+                           const std::string& datafile)
 {
   return load_pixelbuffer(ResDescriptor(res_name, datafile));
 }
@@ -305,8 +316,7 @@ CL_Surface
 Resource::load_from_source (const ResDescriptor& res_desc)
 {
   try {
-    CL_ResourceManager res_mgr = get(res_desc.datafile);
-    return CL_Surface(res_desc.res_name.c_str(), &res_mgr);
+    return CL_Surface(fix_file(res_desc.res_name, res_desc.datafile), &resmgr);
   } catch (CL_Error err) {
     pout << "CL_Error: " << err.message << std::endl;
     pout << "Resource:" << res_desc
@@ -336,8 +346,8 @@ Resource::cleanup ()
   for (std::map<ResDescriptor, CL_Surface>::iterator i = surface_map.begin ();
        i != surface_map.end (); ++i)
     {
-	  pout(PINGUS_DEBUG_RESOURCES) << "XXXX Lookat Resource : " << i->first
-	                               << " => " << i->second.get_reference_count () << std::endl;
+      pout(PINGUS_DEBUG_RESOURCES) << "XXXX Lookat Resource : " << i->first
+                                   << " => " << i->second.get_reference_count () << std::endl;
       if (i->first.type == ResDescriptor::RD_FILE
 	  && i->second.get_reference_count () == 1)
 	{
@@ -359,7 +369,7 @@ Resource::cleanup ()
 
 unsigned int
 Resource::get_mtime (const std::string& res_name,
-			   const std::string& datafile)
+                     const std::string& datafile)
 {
 #ifdef CLANLIB_0_6
   try
