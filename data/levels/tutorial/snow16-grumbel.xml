@@ -3,8 +3,11 @@
 <pingus-level>
   <global>
     <levelname lang="en">Bridging gets more complicated...</levelname>
-    <description lang="en">If no jumper is at hand and a large hole
-    needs to be passed a bridge can be pretty helpfull</description>
+
+    <description lang="en">And again you have to combine actions carefully and wisly, without
+doing that you would end up in the hole short before the exit, so
+think about how to avoid that.</description>
+
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
     <number-of-pingus>25</number-of-pingus>
     <number-to-save>15</number-to-save>

@@ -3,7 +3,11 @@
 <pingus-level>
   <global>
     <levelname lang="en">Climb, climber, climb... and build a bridge</levelname>
-    <description lang="en">EditorDefaultValue: ...and a short description</description>
+
+    <description lang="en">One again you get access to a new action. The climber actions allows a
+Pingu to climb of streight walls, thus allowing him to reach stuff
+that might be to high to reach by other means.</description>
+
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
     <number-of-pingus>10</number-of-pingus>
     <number-to-save>5</number-to-save>

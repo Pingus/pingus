@@ -3,7 +3,13 @@
 <pingus-level>
   <global>
     <levelname lang="en">Panic Island (float/bash)</levelname>
-    <description lang="en"></description>
+
+    <description lang="en">While the previous levels have not required much fast actions of
+yourself, this one gets a bit trickier. The Pingus are coming
+out of two entrances in parallel and it is your job to coordinate
+both of these groups wisely.
+    </description>
+
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
     <number-of-pingus>40</number-of-pingus>
     <number-to-save>25</number-to-save>

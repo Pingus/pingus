@@ -2,28 +2,31 @@
 
 <pingus-level>
   <global>
-    <levelname lang="en">Learning to dig</levelname>
-    <levelname lang="de">Lernen zu graben</levelname>
+    <levelname lang="en">Solid ground can block the path</levelname>
 
-    <description lang="en">This is your first mission, as always, its pretty easy. All you
-have to do is to give a Pingu the command to dig a hole into the
-ground so that they can reach the exit. This can be acomplished by
-simply clicking on a Pingu.</description>
+    <description lang="en">As you have learned in earlier levels your Pingus can dig through
+basically every ground, but there is one thing which they can't
+penetrate and that are steal objects. Those reagions are marked
+dark-grey on the levelmap and cannot be destroyed, so find a way
+around them.</description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
-    <number-of-pingus>10</number-of-pingus>
-    <number-to-save>5</number-to-save>
-    <time>6000</time>
-    <width>1400</width>
+    <number-of-pingus>20</number-of-pingus>
+    <number-to-save>10</number-to-save>
+    <time>-1</time>
+    <width>1000</width>
     <height>700</height>
-    <difficulty>0</difficulty>
+    <difficulty>10</difficulty>
     <playable>1</playable>
-    <comment>first level for the story mode, tutorial island</comment>
+    <comment></comment>
     <music>none</music>
   </global>
 
   <action-list>
+    <basher count="10"/>
+    <bomber count="10"/>
     <digger count="10"/>
+    <blocker count="5"/>
   </action-list>
 
 <background type="surface">
@@ -33,12 +36,12 @@ simply clicking on a Pingu.</description>
     <modifier>ROT0</modifier>
   </resource></surface>
   <color>
-    <red>0.1</red>
+    <red>0</red>
     <green>0</green>
     <blue>0</blue>
-    <alpha>0.3</alpha>
+    <alpha>0</alpha>
   </color>
-  <scroll-x>-1</scroll-x>
+  <scroll-x>1</scroll-x>
   <scroll-y>0</scroll-y>
   <para-x>0.5</para-x>
   <para-y>0.5</para-y>
@@ -46,56 +49,11 @@ simply clicking on a Pingu.</description>
   <stretch-y>0</stretch-y>
   <keep-aspect>0</keep-aspect>
   <position>
-    <x-pos>0</x-pos>
-    <y-pos>0</y-pos>
+    <x-pos>150</x-pos>
+    <y-pos>-3</y-pos>
     <z-pos>-150</z-pos>
   </position>
 </background>
-
-<liquid use-old-width-handling="0">
-  <surface><resource type="datafile">
-    <resource-datafile>liquids</resource-datafile>
-  <resource-ident>Liquid/water2</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>-19.52</x-pos>
-    <y-pos>629</y-pos>
-    <z-pos>-50</z-pos>
-  </position>
-  <width>23</width>
-  <speed>55</speed>
-</liquid>
-
-<hotspot>
-  <surface><resource type="datafile">
-    <resource-datafile>hotspots</resource-datafile>
-  <resource-ident>signposts/digger</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>796.28</x-pos>
-    <y-pos>302.92</y-pos>
-    <z-pos>-50</z-pos>
-  </position>
-  <speed>-1</speed>
-  <parallax>1</parallax>
-</hotspot>
-
-<hotspot>
-  <surface><resource type="datafile">
-    <resource-datafile>hotspots</resource-datafile>
-  <resource-ident>signposts/arrow_south</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>760.28</x-pos>
-    <y-pos>301.92</y-pos>
-    <z-pos>-50</z-pos>
-  </position>
-  <speed>-1</speed>
-  <parallax>1</parallax>
-</hotspot>
 
 <hotspot>
   <surface><resource type="datafile">
@@ -104,8 +62,8 @@ simply clicking on a Pingu.</description>
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>469.411</x-pos>
-    <y-pos>170.769</y-pos>
+    <x-pos>481.668</x-pos>
+    <y-pos>95.2828</y-pos>
     <z-pos>-50</z-pos>
   </position>
   <speed>-1</speed>
@@ -117,249 +75,11 @@ simply clicking on a Pingu.</description>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
   <resource-ident>snow/piece7</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>305</x-pos>
-    <y-pos>351</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<worldobj type="groundpiece">
-  <type>ground</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>snow/piece7</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>267</x-pos>
-    <y-pos>379</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<worldobj type="groundpiece">
-  <type>ground</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>snow/piece9</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>653</x-pos>
-    <y-pos>344</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<worldobj type="groundpiece">
-  <type>ground</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>snow/piece9</resource-ident>
-    <modifier>ROT90</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>373</x-pos>
-    <y-pos>362</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<worldobj type="groundpiece">
-  <type>ground</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>misc/stone7</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>332</x-pos>
-    <y-pos>260</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<worldobj type="groundpiece">
-  <type>ground</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>snow/piece9</resource-ident>
-    <modifier>ROT90FLIP</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>288</x-pos>
-    <y-pos>317</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<worldobj type="groundpiece">
-  <type>ground</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>misc/stone7</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>298</x-pos>
-    <y-pos>297</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<worldobj type="groundpiece">
-  <type>ground</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>misc/stone7</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>366</x-pos>
-    <y-pos>305</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<worldobj type="groundpiece">
-  <type>ground</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>misc/stone7</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>880</x-pos>
-    <y-pos>260</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<worldobj type="groundpiece">
-  <type>ground</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>snow/piece9</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>318</x-pos>
-    <y-pos>535</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<worldobj type="groundpiece">
-  <type>ground</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>snow/piece9</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>500</x-pos>
-    <y-pos>534</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<worldobj type="groundpiece">
-  <type>ground</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>snow/piece7</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>217</x-pos>
-    <y-pos>483</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<worldobj type="groundpiece">
-  <type>ground</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>snow/piece9</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>657</x-pos>
-    <y-pos>535</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<worldobj type="groundpiece">
-  <type>ground</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>snow/piece7</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>844</x-pos>
-    <y-pos>484</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<worldobj type="groundpiece">
-  <type>ground</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>snow/piece9</resource-ident>
-    <modifier>ROT180</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>498</x-pos>
-    <y-pos>344</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<worldobj type="groundpiece">
-  <type>ground</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>misc/stone7</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>914</x-pos>
-    <y-pos>305</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<worldobj type="groundpiece">
-  <type>ground</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>misc/stone7</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>846</x-pos>
-    <y-pos>297</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<worldobj type="groundpiece">
-  <type>ground</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>snow/piece7</resource-ident>
     <modifier>ROT0FLIP</modifier>
   </resource></surface>
   <position>
-    <x-pos>286</x-pos>
-    <y-pos>482</y-pos>
+    <x-pos>252</x-pos>
+    <y-pos>270</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -369,66 +89,10 @@ simply clicking on a Pingu.</description>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
   <resource-ident>snow/piece9</resource-ident>
-    <modifier>ROT0</modifier>
+    <modifier>ROT270FLIP</modifier>
   </resource></surface>
   <position>
-    <x-pos>779</x-pos>
-    <y-pos>343</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<worldobj type="groundpiece">
-  <type>ground</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>snow/piece7</resource-ident>
-    <modifier>ROT0FLIP</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>883</x-pos>
-    <y-pos>362</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<worldobj type="groundpiece">
-  <type>ground</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>snow/piece9</resource-ident>
-    <modifier>ROT90FLIP</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>872</x-pos>
-    <y-pos>342</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<worldobj type="groundpiece">
-  <type>ground</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>snow/piece9</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>337</x-pos>
-    <y-pos>340</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<worldobj type="groundpiece">
-  <type>ground</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>snow/piece7</resource-ident>
-    <modifier>ROT0FLIP</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>896</x-pos>
+    <x-pos>283</x-pos>
     <y-pos>437</y-pos>
     <z-pos>0</z-pos>
   </position>
@@ -438,12 +102,12 @@ simply clicking on a Pingu.</description>
   <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>snow/piece3</resource-ident>
+  <resource-ident>snow/piece9</resource-ident>
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>441</x-pos>
-    <y-pos>533</y-pos>
+    <x-pos>387</x-pos>
+    <y-pos>333</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -452,12 +116,12 @@ simply clicking on a Pingu.</description>
   <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>snow/piece3</resource-ident>
+  <resource-ident>snow/piece7</resource-ident>
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>548</x-pos>
-    <y-pos>533</y-pos>
+    <x-pos>623</x-pos>
+    <y-pos>257</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -466,12 +130,12 @@ simply clicking on a Pingu.</description>
   <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>snow/piece3</resource-ident>
+  <resource-ident>snow/piece10</resource-ident>
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>713</x-pos>
-    <y-pos>533</y-pos>
+    <x-pos>248</x-pos>
+    <y-pos>248</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -480,12 +144,12 @@ simply clicking on a Pingu.</description>
   <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>snow/piece3</resource-ident>
+  <resource-ident>snow/piece8</resource-ident>
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>305</x-pos>
-    <y-pos>339</y-pos>
+    <x-pos>338</x-pos>
+    <y-pos>268</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -494,12 +158,12 @@ simply clicking on a Pingu.</description>
   <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>snow/piece3</resource-ident>
+  <resource-ident>snow/piece10</resource-ident>
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>405</x-pos>
-    <y-pos>344</y-pos>
+    <x-pos>396</x-pos>
+    <y-pos>247</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -508,12 +172,12 @@ simply clicking on a Pingu.</description>
   <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>snow/piece3</resource-ident>
+  <resource-ident>snow/piece10</resource-ident>
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>570</x-pos>
-    <y-pos>344</y-pos>
+    <x-pos>569</x-pos>
+    <y-pos>246</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -522,11 +186,39 @@ simply clicking on a Pingu.</description>
   <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>snow/piece3</resource-ident>
+  <resource-ident>snow/piece8</resource-ident>
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>730</x-pos>
+    <x-pos>391</x-pos>
+    <y-pos>398</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>snow/piece7</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>618</x-pos>
+    <y-pos>328</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>snow/piece7</resource-ident>
+    <modifier>ROT0FLIP</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>258</x-pos>
     <y-pos>342</y-pos>
     <z-pos>0</z-pos>
   </position>
@@ -536,12 +228,12 @@ simply clicking on a Pingu.</description>
   <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>snow/piece2</resource-ident>
-    <modifier>ROT0</modifier>
+  <resource-ident>snow/piece7</resource-ident>
+    <modifier>ROT0FLIP</modifier>
   </resource></surface>
   <position>
-    <x-pos>893</x-pos>
-    <y-pos>347</y-pos>
+    <x-pos>273</x-pos>
+    <y-pos>409</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -550,12 +242,12 @@ simply clicking on a Pingu.</description>
   <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>snow/piece2</resource-ident>
-    <modifier>ROT0</modifier>
+  <resource-ident>snow/piece7</resource-ident>
+    <modifier>ROT0FLIP</modifier>
   </resource></surface>
   <position>
-    <x-pos>952</x-pos>
-    <y-pos>357</y-pos>
+    <x-pos>332</x-pos>
+    <y-pos>405</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -564,40 +256,26 @@ simply clicking on a Pingu.</description>
   <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>snow/ice1</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>311</x-pos>
-    <y-pos>348</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<worldobj type="groundpiece">
-  <type>ground</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>snow/ice1</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>842</x-pos>
-    <y-pos>347</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<worldobj type="groundpiece">
-  <type>ground</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>snow/ice1</resource-ident>
+  <resource-ident>snow/piece9</resource-ident>
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
     <x-pos>447</x-pos>
-    <y-pos>348</y-pos>
+    <y-pos>437</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>snow/piece9</resource-ident>
+    <modifier>ROT270</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>688</x-pos>
+    <y-pos>406</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -610,8 +288,8 @@ simply clicking on a Pingu.</description>
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>244</x-pos>
-    <y-pos>429</y-pos>
+    <x-pos>596</x-pos>
+    <y-pos>605</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -620,12 +298,12 @@ simply clicking on a Pingu.</description>
   <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>snow/piece7</resource-ident>
+  <resource-ident>snow/piece10</resource-ident>
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>178</x-pos>
-    <y-pos>537</y-pos>
+    <x-pos>288</x-pos>
+    <y-pos>615</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -634,12 +312,12 @@ simply clicking on a Pingu.</description>
   <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>snow/ice1</resource-ident>
+  <resource-ident>snow/piece10</resource-ident>
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>446</x-pos>
-    <y-pos>540</y-pos>
+    <x-pos>461</x-pos>
+    <y-pos>614</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -648,12 +326,12 @@ simply clicking on a Pingu.</description>
   <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>snow/ice2</resource-ident>
+  <resource-ident>snow/piece3</resource-ident>
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>593</x-pos>
-    <y-pos>539</y-pos>
+    <x-pos>245</x-pos>
+    <y-pos>244</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -662,12 +340,12 @@ simply clicking on a Pingu.</description>
   <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>snow/ice2</resource-ident>
+  <resource-ident>snow/piece3</resource-ident>
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>796</x-pos>
-    <y-pos>538</y-pos>
+    <x-pos>394</x-pos>
+    <y-pos>244</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -676,12 +354,12 @@ simply clicking on a Pingu.</description>
   <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>snow/ice2</resource-ident>
+  <resource-ident>snow/piece3</resource-ident>
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>578</x-pos>
-    <y-pos>350</y-pos>
+    <x-pos>620</x-pos>
+    <y-pos>243</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -690,20 +368,34 @@ simply clicking on a Pingu.</description>
   <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>snow/ice2</resource-ident>
+  <resource-ident>snow/piece2</resource-ident>
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>737</x-pos>
-    <y-pos>348</y-pos>
+    <x-pos>559</x-pos>
+    <y-pos>244</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>snow/piece8</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>311</x-pos>
+    <y-pos>636</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
 
 <exit use-old-pos-handling="0">
   <position>
-    <x-pos>810.48</x-pos>
-    <y-pos>535.52</y-pos>
+    <x-pos>563</x-pos>
+    <y-pos>616</y-pos>
     <z-pos>0</z-pos>
   </position>
   <surface><resource type="datafile">
@@ -717,167 +409,407 @@ simply clicking on a Pingu.</description>
   <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>snow/piece7</resource-ident>
+  <resource-ident>snow/piece3</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>364</x-pos>
+    <y-pos>611</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>snow/piece3</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>522</x-pos>
+    <y-pos>613</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>solid</type>
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-solid</resource-datafile>
+  <resource-ident>misc/metalplate_horiz</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>285</x-pos>
+    <y-pos>298</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>solid</type>
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-solid</resource-datafile>
+  <resource-ident>misc/metalplate_horiz</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>387</x-pos>
+    <y-pos>298</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>solid</type>
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-solid</resource-datafile>
+  <resource-ident>misc/metalplate_horiz</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>450</x-pos>
+    <y-pos>298</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>solid</type>
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-solid</resource-datafile>
+  <resource-ident>misc/metalplate_horiz</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>704</x-pos>
+    <y-pos>298</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>solid</type>
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-solid</resource-datafile>
+  <resource-ident>misc/metalplate_horiz</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>641</x-pos>
+    <y-pos>298</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>solid</type>
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-solid</resource-datafile>
+  <resource-ident>misc/metalplate_horiz</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>578</x-pos>
+    <y-pos>298</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>solid</type>
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-solid</resource-datafile>
+  <resource-ident>misc/metalplate_horiz</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>514</x-pos>
+    <y-pos>298</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>solid</type>
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-solid</resource-datafile>
+  <resource-ident>misc/metalplate_small</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>758</x-pos>
+    <y-pos>298</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>solid</type>
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-solid</resource-datafile>
+  <resource-ident>misc/metalplate_small</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>255</x-pos>
+    <y-pos>298</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>solid</type>
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-solid</resource-datafile>
+  <resource-ident>misc/metalplate_horiz</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>260</x-pos>
+    <y-pos>381</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>solid</type>
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-solid</resource-datafile>
+  <resource-ident>misc/metalplate_horiz</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>324</x-pos>
+    <y-pos>381</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>solid</type>
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-solid</resource-datafile>
+  <resource-ident>misc/metalplate_horiz</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>387</x-pos>
+    <y-pos>381</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>solid</type>
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-solid</resource-datafile>
+  <resource-ident>misc/metalplate_horiz</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>450</x-pos>
+    <y-pos>381</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>solid</type>
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-solid</resource-datafile>
+  <resource-ident>misc/metalplate_horiz</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>715</x-pos>
+    <y-pos>381</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>solid</type>
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-solid</resource-datafile>
+  <resource-ident>misc/metalplate_horiz</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>578</x-pos>
+    <y-pos>381</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>solid</type>
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-solid</resource-datafile>
+  <resource-ident>misc/metalplate_horiz</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>514</x-pos>
+    <y-pos>381</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>solid</type>
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-solid</resource-datafile>
+  <resource-ident>misc/metalplate_small</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>641</x-pos>
+    <y-pos>380</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>solid</type>
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-solid</resource-datafile>
+  <resource-ident>misc/metalplate_horiz</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>278</x-pos>
+    <y-pos>477</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>solid</type>
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-solid</resource-datafile>
+  <resource-ident>misc/metalplate_horiz</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>328</x-pos>
+    <y-pos>477</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>solid</type>
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-solid</resource-datafile>
+  <resource-ident>misc/metalplate_horiz</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>454</x-pos>
+    <y-pos>477</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>solid</type>
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-solid</resource-datafile>
+  <resource-ident>misc/metalplate_horiz</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>709</x-pos>
+    <y-pos>477</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>solid</type>
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-solid</resource-datafile>
+  <resource-ident>misc/metalplate_horiz</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>645</x-pos>
+    <y-pos>477</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>solid</type>
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-solid</resource-datafile>
+  <resource-ident>misc/metalplate_horiz</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>582</x-pos>
+    <y-pos>477</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>solid</type>
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-solid</resource-datafile>
+  <resource-ident>misc/metalplate_horiz</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>518</x-pos>
+    <y-pos>477</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>solid</type>
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-solid</resource-datafile>
+  <resource-ident>misc/metalplate_small</resource-ident>
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
     <x-pos>392</x-pos>
-    <y-pos>579</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<worldobj type="groundpiece">
-  <type>ground</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>snow/piece7</resource-ident>
-    <modifier>ROT0FLIP</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>350</x-pos>
-    <y-pos>578</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<worldobj type="groundpiece">
-  <type>ground</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>snow/piece7</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>733</x-pos>
-    <y-pos>571</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<worldobj type="groundpiece">
-  <type>ground</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>snow/piece9</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>492</x-pos>
-    <y-pos>560</y-pos>
+    <y-pos>476</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
 
 <entrance>
   <position>
-    <x-pos>516.494</x-pos>
-    <y-pos>210.525</y-pos>
+    <x-pos>529.357</x-pos>
+    <y-pos>137.143</y-pos>
     <z-pos>0</z-pos>
   </position>
   <type>generic</type>
-  <direction>right</direction>
+  <direction>misc</direction>
   <release-rate>150</release-rate>
   <owner-id>0</owner-id>
 </entrance>
 
-<worldobj type="groundpiece">
-  <type>ground</type>
+<group>
+<liquid use-old-width-handling="0">
   <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>snow/piece7</resource-ident>
+    <resource-datafile>liquids</resource-datafile>
+  <resource-ident>Liquid/water2</resource-ident>
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>110</x-pos>
-    <y-pos>599</y-pos>
-    <z-pos>0</z-pos>
+    <x-pos>-9</x-pos>
+    <y-pos>625</y-pos>
+    <z-pos>-50</z-pos>
   </position>
-</worldobj>
-
-<worldobj type="groundpiece">
-  <type>ground</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>snow/piece7</resource-ident>
-    <modifier>ROT0FLIP</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>1056</x-pos>
-    <y-pos>590</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<worldobj type="groundpiece">
-  <type>ground</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>snow/piece9</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>493</x-pos>
-    <y-pos>614</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<worldobj type="groundpiece">
-  <type>ground</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>snow/piece9</resource-ident>
-    <modifier>ROT0FLIP</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>851</x-pos>
-    <y-pos>623</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<worldobj type="groundpiece">
-  <type>ground</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>snow/piece9</resource-ident>
-    <modifier>ROT0FLIP</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>866</x-pos>
-    <y-pos>563</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<worldobj type="groundpiece">
-  <type>ground</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>snow/piece7</resource-ident>
-    <modifier>ROT0FLIP</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>923</x-pos>
-    <y-pos>492</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<worldobj type="groundpiece">
-  <type>ground</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>snow/piece7</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>251</x-pos>
-    <y-pos>584</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
+  <width>17</width>
+  <speed>55</speed>
+</liquid>
 
 <liquid use-old-width-handling="0">
   <surface><resource type="datafile">
@@ -886,13 +818,15 @@ simply clicking on a Pingu.</description>
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>-49.52</x-pos>
-    <y-pos>643</y-pos>
-    <z-pos>50</z-pos>
+    <x-pos>-45</x-pos>
+    <y-pos>638</y-pos>
+    <z-pos>100</z-pos>
   </position>
-  <width>23</width>
+  <width>17</width>
   <speed>60</speed>
 </liquid>
+
+</group>
 
 <hotspot>
   <surface><resource type="datafile">
@@ -901,8 +835,8 @@ simply clicking on a Pingu.</description>
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>469.6</x-pos>
-    <y-pos>170.896</y-pos>
+    <x-pos>481.688</x-pos>
+    <y-pos>95.3324</y-pos>
     <z-pos>100</z-pos>
   </position>
   <speed>-1</speed>
@@ -911,8 +845,8 @@ simply clicking on a Pingu.</description>
 
   <start-position>
   <position>
-    <x-pos>638</x-pos>
-    <y-pos>423</y-pos>
+    <x-pos>519</x-pos>
+    <y-pos>162</y-pos>
     <z-pos>1000</z-pos>
   </position>
   </start-position>

@@ -3,7 +3,13 @@
 <pingus-level>
   <global>
     <levelname lang="en">If the way is blocked, bash away</levelname>
-    <description lang="en">EditorDefaultValue: ...and a short description</description>
+
+    <description lang="en">Similar to the digger action that you already know from previous
+levels, there is also an action that allows the Pingus to dig
+horizontally, as opposed to the vertical dig ability the digger action
+provides. This new action is called basher.
+</description>
+
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
     <number-of-pingus>20</number-of-pingus>
     <number-to-save>10</number-to-save>

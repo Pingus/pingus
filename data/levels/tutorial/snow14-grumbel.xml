@@ -3,7 +3,12 @@
 <pingus-level>
   <global>
     <levelname lang="en">Block'a Rock</levelname>
-    <description lang="en"></description>
+
+    <description lang="en">Again is the time to combine the stuff you have learned in your
+previous levels. Blast your way free and make sure you also keep the
+rest of the Pingus in controll, the blocker action will
+help.</description>
+
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
     <number-of-pingus>35</number-of-pingus>
     <number-to-save>15</number-to-save>

@@ -3,7 +3,13 @@
 <pingus-level>
   <global>
     <levelname lang="en">Jump'n Bump... and Bash...</levelname>
-    <description lang="en">Jump, Bash and try to reach the exit</description>
+
+    <description lang="en">Its panic time again. The Pingus will not come out very fast, but
+since they turn around on walls you soon will have some throuble
+coordinating them all. Since you only need to save 3 it should be
+doable, but if all fails use the pause-mode to get an overview
+again.</description>
+
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
     <number-of-pingus>10</number-of-pingus>
     <number-to-save>3</number-to-save>

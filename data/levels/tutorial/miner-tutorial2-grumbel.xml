@@ -3,7 +3,13 @@
 <pingus-level>
   <global>
     <levelname lang="en">Miners heaven</levelname>
-    <description lang="en">EditorDefaultValue: ...and a short description</description>
+
+    <description lang="en">And another action hits the street, it is again a digging action, this
+time a diagonal one, it allows a Pingu to dig diagonally through
+ground and thus creating a path for following Pingus. The action is
+called Miner.</description>
+
+
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
     <number-of-pingus>20</number-of-pingus>
     <number-to-save>10</number-to-save>

@@ -2,9 +2,13 @@
 
 <pingus-level>
   <global>
-    <levelname lang="en">Bomber Tutorial - Sacrify a few, to save the most</levelname>
-    <description lang="en">If no other actions are available, you have
-    to bomb your way through the ground.</description>
+    <levelname lang="en">Sacrify a few and save the rest</levelname>
+
+    <description lang="en">Sometimes if no other actions are available, you have to bomb your
+way through the ground. The Pingus can to this by actually self
+destructing themself, this will kill them, but it is sometimes
+necessary to sacrify a few, to save the rest.</description>
+
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
     <number-of-pingus>30</number-of-pingus>
     <number-to-save>10</number-to-save>
