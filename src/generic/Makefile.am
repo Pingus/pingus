@@ -18,8 +18,8 @@
 noinst_LIBRARIES = libpingus_generic.a
 
 libpingus_generic_a_SOURCES =  \
+                             Graph.hh \
                               FloatPosition.hh  \
                               ListHelper.hh
-#Graph.hh Graph.cc \
 
 # EOF #

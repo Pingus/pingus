@@ -1,4 +1,4 @@
-//  $Id: Graph.cc,v 1.2 2001/04/27 20:44:38 grumbel Exp $
+//  $Id: Graph.cc,v 1.3 2001/04/30 17:52:00 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,65 +17,96 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <iostream>
+#include <ClanLib/core.h>
+#include <ClanLib/display.h>
+#include <ClanLib/application.h>
 #include "Graph.hh"
 
-#ifdef DO_GRAPH_TEST
-
-#include <iostream>
-
-void display_subgraph(GraphIterator<int> graph);
-
-int main ()
+void
+print_connections (GraphNode<CL_Vector>& obj)
 {
+  std::cout << "Data: (" << obj.data << ")";
+  for (std::list<GraphNode<CL_Vector>* >::iterator i = obj.next_nodes.begin ();
+       i != obj.next_nodes.end(); ++i)
+    std::cout << "(" << (*i)->data << ") ";
+  std::cout << std::endl;
+}
+
+void
+draw_graph (Graph<CL_Vector>& graph)
+{
+  for (std::list<GraphNode<CL_Vector> >::iterator i = graph.nodes.begin ();
+       i != graph.nodes.end(); ++i)
+    {
+      std::cout << "Drawing:..." << std::endl;
+      for (std::list<GraphNode<CL_Vector>* >::iterator j = (*i).next_nodes.begin ();      
+	   j != (*i).next_nodes.end(); ++j)
+	{
+	  std::cout << "Drawing: " << i->data << std::endl;
+	  CL_Display::draw_line (int(i->data.x), int(i->data.y),
+				 int((*j)->data.x), int((*j)->data.y),
+				 1.0, 1.0, 1.0);
+	}
+    }
+}
+
+class GenericMain : public CL_ClanApplication
+{
+  char * get_title()
+  {
+    return "Graph Test";
+  }
+
+  int main (int argc, char* argv[])
+{
+  CL_SetupCore::init ();
+  CL_SetupDisplay::init();
+
+  CL_Display::set_videomode(640, 480, 16, 
+			    false, 
+			    false); // allow resize
+
   Graph<CL_Vector> graph;
 
-  graph.add (CL_Vector (10, 10));
+  GraphNode<CL_Vector> a (CL_Vector (10, 10));
+  GraphNode<CL_Vector> b (CL_Vector (630, 10));
+  GraphNode<CL_Vector> c (CL_Vector (10, 400));
+  GraphNode<CL_Vector> d (CL_Vector (630, 400));
+  GraphNode<CL_Vector> e (CL_Vector (320, 150));
 
-  Graph<int> graph (5);
-  GraphIterator<int> iter = graph.begin ();
+  a.biconnect (&b);
+  b.biconnect (&c);
+  c.biconnect (&d);
+  e.biconnect (&a);
 
-  std::cout << "Graph constructed " << *(graph.begin()) << std::endl;
+  a.biconnect (&d);
 
-  iter = 2;
-
-  GraphIterator<int> iter2 = iter.attach (6);
-
-  std::cout << "Graph constructed " << *(graph.begin()) << std::endl;
-
-  std::cout << "attached " << *iter2 << std::endl;
-
-  GraphIterator<int> iter3 = iter2.attach (3);
-  iter3.attach (32).attach (56);
-  iter3.attach (101).attach (123);
-  std::cout << "attached " << *iter3 << std::endl;
-
-  GraphIterator<int> iter4 = iter2.attach (2);
-  std::cout << "attached " << *iter4 << std::endl;
+  graph.add (a);
+  graph.add (b);
+  graph.add (c);
+  graph.add (d);
+  graph.add (e);
 
 
-  display_subgraph(graph.begin());
-  //  std::cout << "Graph constructed " << g << std::endl;
+  print_connections (a);
+  print_connections (b);
+  print_connections (c);
+  print_connections (d);
+  print_connections (e);
+
+  CL_System::keep_alive ();
+  while (!CL_Keyboard::get_keycode (CL_KEY_ESCAPE))
+    {
+      CL_Display::clear_display ();
+      draw_graph (graph);
+      CL_Display::flip_display ();
+      CL_System::sleep (20);
+      CL_System::keep_alive ();
+    }
+
+  return 0;
 }
-
-void display_subgraph(GraphIterator<int> graph)
-{
-  GraphIterator<int> iter = graph;
-  std::cout << "Value: " << *iter << " Attached: ";
-
-  list<GraphIterator<int> > next_nodes = iter.next_nodes ();
-  
-    for (list<GraphIterator<int> >::iterator i = next_nodes.begin();
-	 i != next_nodes.end();
-	 i++)
-      std::cout << **i << " ";
-    std::cout << std::endl;
-
-    for (list<GraphIterator<int> >::iterator i = next_nodes.begin();
-	 i != next_nodes.end();
-	 i++)
-      display_subgraph(*i);
-}
-
-#endif /* DO_GRAPH_TEST */
+} app;
 
 /* EOF */

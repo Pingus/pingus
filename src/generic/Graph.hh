@@ -1,4 +1,4 @@
-//  $Id: Graph.hh,v 1.3 2001/04/27 20:44:38 grumbel Exp $
+//  $Id: Graph.hh,v 1.4 2001/04/30 17:52:00 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,20 +32,15 @@ class GraphNode
 public:
   T data;
   std::list<GraphNode<T>*> next_nodes;
-  typedef std::list<GraphNode<T>*> NodeIter;
+  typedef std::list<GraphNode<T>*>::iterator NodeIter;
 
-  GraphNode () {}
-  GraphNode (const T& obj) 
-  {
-    data = obj;
-  }
+  GraphNode ()
+  {}
 
-  void biconnect (GraphNode<T>* next_node)
-  {
-    next_node->connect (this);
-    next_nodes.connect (next_node);
-  }
-
+  GraphNode (const T& d) 
+  : data (d)
+  {}
+  
   void connect (GraphNode<T>* next_node)
   {
     for (NodeIter i = next_nodes.begin (); i != next_nodes.end (); ++i)
@@ -53,17 +48,23 @@ public:
 	return;
     next_nodes.push_back (next_node);
   }
+
+  void biconnect (GraphNode<T>* next_node)
+  {
+    next_node->connect (this);
+    connect (next_node);
+  }
 };
 
 /** A general class for handling a bidirectional graph */
 template<class T>
 class Graph
 {
-private:
-  std::list<GraphNodes<T> > nodes;
-  typedef std::list<GraphNodes<T> >::iterator NodeIter;
-  
 public:
+  std::list<GraphNode<T> > nodes;
+  typedef std::list<GraphNode<T> >::iterator NodeIter;
+  
+
   Graph ()
   {
   }
@@ -82,7 +83,7 @@ public:
     nodes.push_back (GraphNode<T>(data));
   }
   
-  GraphNode* find (const T& data)
+  GraphNode<T>* find (const T& data)
   {
     for (NodeIter i = nodes.begin (); nodes.end (); ++i)
       {
