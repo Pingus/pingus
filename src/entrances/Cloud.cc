@@ -1,4 +1,4 @@
-//  $Id: entrances.cc,v 1.3 2000/02/11 21:22:11 grumbel Exp $
+//  $Id: Cloud.cc,v 1.1 2000/02/11 21:22:11 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,24 +17,43 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "../Entrance.hh"
-#include "../PingusError.hh"
+#include <cstdlib>
 
-#include "WoodThing.hh"
+#include "../PingusResource.hh"
+#include "../particles/SmokeParticle.hh"
+#include "../particles/GroundParticle.hh"
+#include "../algo.hh"
+
 #include "Cloud.hh"
 
-Entrance*
-get_entrance(entrance_data data)
+Cloud::Cloud(entrance_data data)
 {
-  if (data.type == "generic") {
-    return new Entrance(data);
-  } else if (data.type == "woodthing") {
-    return new WoodThing(data);
-  } else if (data.type == "cloud") {
-    return new Cloud(data);
+  x_pos = data.x_pos;
+  y_pos = data.y_pos;
+  release_rate = data.release_rate;
+  last_release = -release_rate;
+  z_pos = 100;
+  direction = data.direction;
+
+  surface = CL_Surface::load("Entrances/cloud", PingusResource::get("global.dat"));
+}
+
+void
+Cloud::let_move(void)
+{
+}
+
+void
+Cloud::draw_offset(int x, int y, float s)
+{
+  if (s == 1.0) {
+    surface->put_screen(x + x_pos - 115,
+			y + y_pos - 100);
   } else {
-    throw PingusError("Entrance: Entrane type in PLF file is unknow: " + data.type);
+    surface->put_screen((int)((x_pos-32 + x) * s), (int)((y_pos-16 + y) * s),
+			s, s);  
   }
 }
+
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: entrances.cc,v 1.3 2000/02/11 21:22:11 grumbel Exp $
+//  $Id: Cloud.hh,v 1.1 2000/02/11 21:22:11 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,24 +17,23 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#ifndef CLOUD_HH
+#define CLOUD_HH
+
+#include "../GameCounter.hh"
 #include "../Entrance.hh"
-#include "../PingusError.hh"
 
-#include "WoodThing.hh"
-#include "Cloud.hh"
-
-Entrance*
-get_entrance(entrance_data data)
+class Cloud : public Entrance
 {
-  if (data.type == "generic") {
-    return new Entrance(data);
-  } else if (data.type == "woodthing") {
-    return new WoodThing(data);
-  } else if (data.type == "cloud") {
-    return new Cloud(data);
-  } else {
-    throw PingusError("Entrance: Entrane type in PLF file is unknow: " + data.type);
-  }
-}
+private:
+public:
+  Cloud(entrance_data);
+
+  void let_move(void);
+  void draw_offset(int x, int y, float s = 1.0);
+};
+
+#endif
 
 /* EOF */
+
