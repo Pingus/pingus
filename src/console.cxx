@@ -1,4 +1,4 @@
-//  $Id: console.cxx,v 1.3 2002/06/20 16:48:11 grumbel Exp $
+//  $Id: console.cxx,v 1.4 2002/06/21 07:45:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,6 +25,7 @@
 #include "math.hxx"
 
 using namespace Pingus;
+using namespace std;
 
 // Globale console
 Console console;
@@ -106,7 +107,7 @@ ConsoleBuffer::get_buffer () {
 }
 
 Console::Console()
-  : std::ostream (&streambuf)
+  : ostream (&streambuf)
 {
   is_init = false;
   is_visible = false;

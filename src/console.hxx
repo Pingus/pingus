@@ -1,4 +1,4 @@
-//  $Id: console.hxx,v 1.2 2002/06/19 15:19:26 torangan Exp $
+//  $Id: console.hxx,v 1.3 2002/06/21 07:45:35 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -57,26 +57,17 @@ private:
   std::vector<std::string>* buffer;
 
 public:
-  ///
   CL_Font* font;
-  ///
   bool is_init;
-  ///
   int  current_pos;
-  ///
   std::string current_line;
-  ///
   int number_of_lines;
-  ///
   void draw();
 public:
-  ///
   Console ();
-  ///
   virtual ~Console();
-  ///
+
   void init();
-  ///
   virtual void on_event();
 
   /** Sets the number of lines, which are displayed

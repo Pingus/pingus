@@ -1,4 +1,4 @@
-//  $Id: xml_helper.hxx,v 1.2 2002/06/13 19:53:21 torangan Exp $
+//  $Id: xml_helper.hxx,v 1.3 2002/06/21 07:45:35 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,13 +24,13 @@
 #include <string>
 #include <iosfwd>
 
-#include <config.h>
+#include <ClanLib/Core/Math/cl_vector.h>
 
 // FIX: Under windows, it's necessary to use libxml/parser.h, or MS's
 // compiler will fails.
 #ifdef WIN32
   #define list
-  #include <libxml/parser.h>
+    #include <libxml/parser.h>
   #undef list
 #else
   #ifdef LIBXML_2
@@ -53,7 +53,7 @@
   int xmlIsBlankNode(xmlNodePtr node);
 #endif
 
-class CL_Vector;
+// class CL_Vector;
 class Color;
 class ResDescriptor;
 

@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.2 2002/06/20 11:23:53 grumbel Exp $
+//   $Id: pingus_main.cxx,v 1.3 2002/06/21 07:45:35 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -36,6 +36,7 @@
 #  include "win32/getopt.h"
 #endif /* !WIN32 */
 
+#include <ClanLib/core.h>
 #include <ClanLib/Core/System/system.h>
 #include <ClanLib/Display/setupdisplay.h>
 #include <ClanLib/Display/Display/display.h>

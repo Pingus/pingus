@@ -1,4 +1,4 @@
-//  $Id: debug_stream.hxx,v 1.1 2002/06/12 19:09:37 grumbel Exp $
+//  $Id: debug_stream.hxx,v 1.2 2002/06/21 07:45:35 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,9 +24,11 @@
 #include <vector>
 #include <iostream>
 
+using namespace std;
+
 class NilStream;
 
-class DebugStream : public std::ostream
+class DebugStream : public ostream
 {
 
 private:
@@ -39,7 +41,7 @@ private:
     // static const int buffersize;
     enum { buffersize = 200 };
 
-    std::vector<std::ostream*> out_streams;
+    std::vector<ostream*> out_streams;
 
     char char_buffer[200];
     std::string prefix;
@@ -52,7 +54,7 @@ private:
     int overflow (int c);  
     int sync ();
 
-    void add (std::ostream& s);
+    void add (ostream& s);
     void set_prefix (const std::string & prefix_);
   
   private:
@@ -70,14 +72,14 @@ public:
 
   std::ostream & operator () (int component);
 
-  void add (std::ostream& s);
+  void add (ostream& s);
   void set_prefix (const std::string & prefix);
 };
 
 
 
 /// Stream used to consume unwanted debugmessages
-class NilStream : public std::ostream
+class NilStream : public ostream
 {
   private:
 
@@ -97,7 +99,7 @@ class NilStream : public std::ostream
         int sync     () { return 0; }
     } buffer;
 
-    NilStream () : std::ostream(&buffer) { }
+    NilStream () : ostream(&buffer) { }
    ~NilStream () { }
 
     NilStream (const NilStream &); ///< not supported    

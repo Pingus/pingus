@@ -243,15 +243,15 @@ SOURCE=.\src\editor\editor_help_screen.cxx
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\editor\editor_view.cxx
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\editor\editorobj.cxx
 # End Source File
 # Begin Source File
 
 SOURCE=.\src\editor\editorobj_group.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editor\editor_view.cxx
 # End Source File
 # Begin Source File
 
@@ -410,6 +410,18 @@ SOURCE=.\src\worldobjs\switch_door.cxx
 SOURCE=.\src\worldobjs\teleporter.cxx
 # End Source File
 # End Group
+# Begin Group "Worldmap Src"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=.\src\worldmap\node.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\worldmap\node_data.cxx
+# End Source File
+# End Group
 # Begin Source File
 
 SOURCE=.\src\action_button.cxx
@@ -437,6 +449,10 @@ SOURCE=.\src\audio.cxx
 # Begin Source File
 
 SOURCE=.\src\blitter.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\bmp_map.cxx
 # End Source File
 # Begin Source File
 
@@ -484,7 +500,15 @@ SOURCE=.\src\cursor.cxx
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\debug.cxx
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\debug_gui.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\debug_stream.cxx
 # End Source File
 # Begin Source File
 
@@ -528,11 +552,11 @@ SOURCE=.\src\fade_out.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\fps_counter.cxx
+SOURCE=.\src\force_vector.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\force_vector.cxx
+SOURCE=.\src\fps_counter.cxx
 # End Source File
 # Begin Source File
 
@@ -540,11 +564,15 @@ SOURCE=.\src\game_counter.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\gamepad_controller.cxx
+SOURCE=.\src\game_session.cxx
 # End Source File
 # Begin Source File
 
 SOURCE=.\src\game_time.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\gamepad_controller.cxx
 # End Source File
 # Begin Source File
 
@@ -557,6 +585,10 @@ SOURCE=.\src\global_event.cxx
 # Begin Source File
 
 SOURCE=.\src\globals.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\worldmap\graph.cxx
 # End Source File
 # Begin Source File
 
@@ -592,7 +624,15 @@ SOURCE=.\src\layer_manager.cxx
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\level_desc.cxx
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\level_interrupt.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\level_result.cxx
 # End Source File
 # Begin Source File
 
@@ -612,7 +652,15 @@ SOURCE=.\src\main_menu.cxx
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\worldmap\manager.cxx
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\menu_background.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\message_box.cxx
 # End Source File
 # Begin Source File
 
@@ -640,6 +688,10 @@ SOURCE=.\src\multiplayer_game.cxx
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\music_provider.cxx
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\option_menu.cxx
 # End Source File
 # Begin Source File
@@ -660,10 +712,6 @@ SOURCE=.\src\pingu_action_factory.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\bmp_map.cxx
-# End Source File
-# Begin Source File
-
 SOURCE=.\src\pingu_holder.cxx
 # End Source File
 # Begin Source File
@@ -676,6 +724,10 @@ SOURCE=.\src\pingu_map.cxx
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\worldmap\pingus.cxx
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\pingus_counter.cxx
 # End Source File
 # Begin Source File
@@ -685,18 +737,6 @@ SOURCE=.\src\pingus_counter_bar.cxx
 # Begin Source File
 
 SOURCE=.\src\pingus_error.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\game_session.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\level_desc.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\level_result.cxx
 # End Source File
 # Begin Source File
 
@@ -716,59 +756,11 @@ SOURCE=.\src\pingus_menu_manager.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\message_box.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\music_provider.cxx
-# End Source File
-# Begin Source File
-
 SOURCE=.\src\pingus_resource.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\sound.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\sound_dummy.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\sound_real.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\spot_map.cxx
-# End Source File
-# Begin Source File
-
 SOURCE=.\src\pingus_sub_menu.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\wav_provider.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\worldmap\worldmap.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\worldmap\graph.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\worldmap\manager.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\worldmap\pingus.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\worldmap\stat.cxx
 # End Source File
 # Begin Source File
 
@@ -840,7 +832,23 @@ SOURCE=.\src\backgrounds\solidcolor_background.cxx
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\sound.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\sound_dummy.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\sound_real.cxx
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\specs_reader.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\spot_map.cxx
 # End Source File
 # Begin Source File
 
@@ -849,6 +857,10 @@ SOURCE=.\src\sprite.cxx
 # Begin Source File
 
 SOURCE=.\src\backgrounds\starfield_background.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\worldmap\stat.cxx
 # End Source File
 # Begin Source File
 
@@ -932,6 +944,10 @@ SOURCE=.\src\war\WarMain.cc
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\wav_provider.cxx
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\weather_data.cxx
 # End Source File
 # Begin Source File
@@ -941,6 +957,10 @@ SOURCE=.\src\particles\weather_generator.cxx
 # Begin Source File
 
 SOURCE=.\src\world.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\worldmap\worldmap.cxx
 # End Source File
 # Begin Source File
 
@@ -986,6 +1006,18 @@ SOURCE=.\src\boost\dummy_ptr.hpp
 SOURCE=.\src\boost\smart_ptr.hpp
 # End Source File
 # End Group
+# Begin Source File
+
+SOURCE=.\src\debug_stream.hxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\math.hxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\xml_helper.hxx
+# End Source File
 # End Group
 # Begin Group "Resources"
 

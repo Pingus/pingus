@@ -1,4 +1,4 @@
-//  $Id: debug_stream.cxx,v 1.1 2002/06/12 19:09:37 grumbel Exp $
+//  $Id: debug_stream.cxx,v 1.2 2002/06/21 07:45:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,8 @@
 
 #include "debug_stream.hxx"
 #include "globals.hxx"
+
+using namespace std;
 
 NilStream DebugStream::nilstream;
 
@@ -64,7 +66,7 @@ DebugStream::Buffer::put_line (const std::string& line)
 {
   if (!out_streams.empty ())
     {
-      for (std::vector<std::ostream*>::iterator i = out_streams.begin ();
+      for (std::vector<ostream*>::iterator i = out_streams.begin ();
 	    i != out_streams.end (); ++i)
       	{
       	  *(*i) << line;
@@ -103,7 +105,7 @@ DebugStream::Buffer::sync ()
 }
 
 void
-DebugStream::Buffer::add (std::ostream& s)
+DebugStream::Buffer::add (ostream& s)
 {
   out_streams.push_back (&s);
 }
@@ -120,7 +122,7 @@ DebugStream::Buffer::set_prefix (const std::string & prefix_)
 
 
 DebugStream::DebugStream (const std::string& prefix)
-  : std::ostream (&buffer),
+  : ostream (&buffer),
     buffer (prefix)
 {
 }
@@ -130,7 +132,7 @@ DebugStream::~DebugStream ()
 }
 
 /// returns self if the debug flag is set, else nilstream
-std::ostream & DebugStream::operator () (int component) {
+ostream & DebugStream::operator () (int component) {
 
   if (pingus_debug_flags & component) {
     return *this;
@@ -140,7 +142,7 @@ std::ostream & DebugStream::operator () (int component) {
 }
 
 void
-DebugStream::add (std::ostream& s)
+DebugStream::add (ostream& s)
 {
   buffer.add (s);
 }

@@ -1,4 +1,4 @@
-//  $Id: starfield_background.cxx,v 1.2 2002/06/13 14:25:12 torangan Exp $
+//  $Id: starfield_background.cxx,v 1.3 2002/06/21 07:45:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -177,13 +177,15 @@ StarfieldBackground::StarfieldBackground (const StarfieldBackgroundData& data)
   middle_stars_count = data.middle_stars_count;
   large_stars_count  = data.large_stars_count;
 
-  for (int i=0; i < small_stars_count; i++)
+  int i = 0;
+
+  for (i=0; i < small_stars_count; i++)
     stars.push_back (StarfieldBackgroundStars (StarfieldBackgroundStars::SMALL_STAR));
 
-  for (int i=0; i < middle_stars_count; i++)
+  for (i=0; i < middle_stars_count; i++)
     stars.push_back (StarfieldBackgroundStars (StarfieldBackgroundStars::MIDDLE_STAR));
 
-  for (int i=0; i < large_stars_count; i++)
+  for (i=0; i < large_stars_count; i++)
     stars.push_back (StarfieldBackgroundStars (StarfieldBackgroundStars::LARGE_STAR));
 }
 

@@ -1,4 +1,4 @@
-//  $Id: pingus_menu.cxx,v 1.2 2002/06/13 14:25:12 torangan Exp $
+//  $Id: pingus_menu.cxx,v 1.3 2002/06/21 07:45:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -44,7 +44,7 @@ PingusMenu::preload ()
       pout << "PingusMenu::init ()" << std::endl;
       event_enabled = true;
       is_init = true;
-      SurfaceButton* editor_button (new EditorButton (this));
+	  SurfaceButton* editor_button = new EditorButton (this);
  
       if (start_editor)
 	{

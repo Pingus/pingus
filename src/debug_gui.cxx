@@ -1,4 +1,4 @@
-//  $Id: debug_gui.cxx,v 1.2 2002/06/19 15:19:26 torangan Exp $
+//  $Id: debug_gui.cxx,v 1.3 2002/06/21 07:45:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
+#include <assert.h>
 #include "pingus_resource.hxx"
 
 #include "debug_gui.hxx"
