@@ -1,4 +1,4 @@
-//  $Id: pingu_particle_holder.cxx,v 1.1 2002/12/28 16:10:18 torangan Exp $
+//  $Id: pingu_particle_holder.cxx,v 1.2 2003/01/01 20:57:26 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,6 +30,7 @@ const float y_collision_decrease = 0.6f;
 
 PinguParticleHolder::PinguParticle::PinguParticle (int x, int y)
   : livetime(50 + (rand() % 50)),
+    use_frame2((rand() % 5) == 0),
     pos(Vector(x, y)),
     velocity(Vector(frand() * 7 - 3.5, frand() * -7))
 {
@@ -37,7 +38,7 @@ PinguParticleHolder::PinguParticle::PinguParticle (int x, int y)
 
 
 PinguParticleHolder::PinguParticleHolder ()
-  : surface(PingusResource::load_surface("Particles/particle", "pingus"))
+  : surface(PingusResource::load_surface("Particles/pingu_explo", "pingus"))
 {
 }
 
@@ -154,8 +155,8 @@ PinguParticleHolder::draw (GraphicContext& gc)
       // skip dead particles
       if (!it->livetime)
         continue;
-	
-      gc.draw(surface, it->pos);
+      
+      gc.draw(surface, it->pos, it->use_frame2);
     }
 }
 

@@ -1,4 +1,4 @@
-//  $Id: pingu_particle_holder.hxx,v 1.1 2002/12/28 16:10:18 torangan Exp $
+//  $Id: pingu_particle_holder.hxx,v 1.2 2003/01/01 20:57:26 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,8 +30,8 @@ class GraphicContext;
 class PinguParticleHolder : public WorldObj
 {
   struct PinguParticle {
-    int   livetime;    
-
+    int  livetime;
+    bool use_frame2;
     /// The current position of the particle
     Vector pos;
   
