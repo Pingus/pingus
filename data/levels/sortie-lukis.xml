@@ -1,0 +1,414 @@
+<?xml version="1.0"  encoding="ISO-8859-1"?>
+
+<pingus-level>
+  <global>
+    <levelname lang="en">Hard work to jump!</levelname>
+    <description lang="en">JUMP, JUMP, JUMP!
+
+</description>
+    <author>Carmen Müller, carmen@othello.ch</author>
+    <number-of-pingus>121</number-of-pingus>
+    <number-to-save>111</number-to-save>
+    <time>9000</time>
+    <width>1408</width>
+    <height>1024</height>
+  </global>
+
+  <action-list>
+    <jumper count="100"/>
+  </action-list>
+
+<background type="surface">
+  <surface><resource type="datafile">
+    <resource-datafile>textures</resource-datafile>
+  <resource-ident>Textures/rocktile</resource-ident>
+  </resource></surface>
+  <color>
+    <red>0</red>
+    <green>0</green>
+    <blue>0</blue>
+    <alpha>0</alpha>
+  </color>
+  <scroll-x>0</scroll-x>
+  <scroll-y>0</scroll-y>
+  <para-x>0.5</para-x>
+  <para-y>0.5</para-y>
+  <stretch-x>0</stretch-x>
+  <stretch-y>0</stretch-y>
+  <position>
+    <x-pos>149</x-pos>
+    <y-pos>119</y-pos>
+    <z-pos>-150</z-pos>
+  </position>
+</background>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Sortie/plate_forme_left</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>150</x-pos>
+    <y-pos>332</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Sortie/plate_forme_left</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>150</x-pos>
+    <y-pos>748</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Sortie/plate_forme</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>658</x-pos>
+    <y-pos>748</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Sortie/plate_forme</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>657</x-pos>
+    <y-pos>332</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Sortie/plate_forme_right</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>925</x-pos>
+    <y-pos>748</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Sortie/plate_forme_right</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>923</x-pos>
+    <y-pos>332</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Sortie/plate_forme_left</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>895</x-pos>
+    <y-pos>479</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Sortie/plate_forme_right</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1137</x-pos>
+    <y-pos>479</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="transparent">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Sortie/column3</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>404</x-pos>
+    <y-pos>730</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Sortie/plate_forme</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>391</x-pos>
+    <y-pos>748</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="transparent">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Sortie/column1</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>426</x-pos>
+    <y-pos>439</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="transparent">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Sortie/column2</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>425</x-pos>
+    <y-pos>128</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Sortie/plate_forme</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>391</x-pos>
+    <y-pos>332</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>entrances</resource-datafile>
+  <resource-ident>entrances/underlay_eyes</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>200</x-pos>
+    <y-pos>593</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1</parallax>
+</hotspot>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Hotspots/up_arrow</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1015</x-pos>
+    <y-pos>614</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Sortie/column3</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>61</x-pos>
+    <y-pos>166</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Sortie/column3</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>63</x-pos>
+    <y-pos>594</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="bridge">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Exits/sortie</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>800</x-pos>
+    <y-pos>459</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="bridge">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Exits/sortie</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>742</x-pos>
+    <y-pos>529</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="bridge">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Exits/sortie</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>682</x-pos>
+    <y-pos>602</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="bridge">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Exits/sortie</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>625</x-pos>
+    <y-pos>673</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<exit use-old-pos-handling="0">
+  <position>
+    <x-pos>1119</x-pos>
+    <y-pos>482</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Exits/sortie_anim</resource-ident>
+  </resource></surface>
+  <owner-id>0</owner-id></exit>
+
+<entrance>
+  <position>
+    <x-pos>277</x-pos>
+    <y-pos>660</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+  <type>generic</type>
+  <direction>left</direction>
+  <release-rate>25</release-rate>
+  <owner-id>0</owner-id>
+</entrance>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>entrances</resource-datafile>
+  <resource-ident>entrances/entrance_eyes_anim</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>201</x-pos>
+    <y-pos>590</y-pos>
+    <z-pos>100</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1</parallax>
+</hotspot>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>entrances</resource-datafile>
+  <resource-ident>entrances/entrance_eyes_anim</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>224</x-pos>
+    <y-pos>197</y-pos>
+    <z-pos>100</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1</parallax>
+</hotspot>
+
+<entrance>
+  <position>
+    <x-pos>301</x-pos>
+    <y-pos>199</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+  <type>generic</type>
+  <direction>left</direction>
+  <release-rate>25</release-rate>
+  <owner-id>0</owner-id>
+</entrance>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>entrances</resource-datafile>
+  <resource-ident>entrances/entrance_eyes</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>138</x-pos>
+    <y-pos>369</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1</parallax>
+</hotspot>
+
+  <start-position>
+  <position>
+    <x-pos>399</x-pos>
+    <y-pos>307</y-pos>
+    <z-pos>1000</z-pos>
+  </position>
+  </start-position>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>entrances</resource-datafile>
+  <resource-ident>entrances/underlay_eyes</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>222</x-pos>
+    <y-pos>200</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1</parallax>
+</hotspot>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>entrances</resource-datafile>
+  <resource-ident>entrances/entrance_eyes</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>161</x-pos>
+    <y-pos>-24</y-pos>
+    <z-pos>100</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1</parallax>
+</hotspot>
+
+</pingus-level>
+
