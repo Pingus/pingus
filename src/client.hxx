@@ -63,8 +63,6 @@ private:
   bool do_replay;
   bool is_finished;
 
-  CL_Sprite unplayable;
-
   ButtonPanel*   button_panel;
   PingusCounter* pcounter;
   Playfield*     playfield;
@@ -100,7 +98,6 @@ public:
   void on_mouse_button_release(const CL_InputEvent &key);
 
   // Overloaded GUIScreen stuff
-  bool draw (DrawingContext& gc);
   void on_startup ();
   void on_shutdown ();
 

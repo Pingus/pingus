@@ -50,8 +50,6 @@ class Pingus;
 class WorldMap
 {
 private:
-  DrawingContext display_gc;
-
   CL_Sprite levelname_bg;
 
   /** name of the file to parse */

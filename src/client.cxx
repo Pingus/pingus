@@ -42,7 +42,6 @@ Client::Client (TrueServer * s)
     skip_frame   (0),
     do_replay    (false),
     is_finished  (false),
-    unplayable   (Resource::load_sprite("misc/unplayable2", "core")),
     button_panel (0),
     pcounter     (0),
     playfield    (0),
@@ -54,24 +53,24 @@ Client::Client (TrueServer * s)
 
   // These object will get deleted by the gui_manager
   button_panel = new ButtonPanel(this, 2, CL_Display::get_height()/2);
-  playfield    = new Playfield(this);
+  playfield    = new Playfield(this, CL_Rect(CL_Point(0, 0), CL_Size(CL_Display::get_width(), 
+                                                                     CL_Display::get_height())));
   hurry_up     = new HurryUp(this);
   pcounter     = new PingusCounter(get_server());
   small_map    = new SmallMap(this);
   time_display = new TimeDisplay(this);
 
-  gui_manager->add (playfield, true);
-  gui_manager->add (button_panel, true);
-  gui_manager->add (hurry_up, true);
-  gui_manager->add (pcounter, true);
-  gui_manager->add (small_map, true);
-  gui_manager->add (time_display, true);
+  gui_manager->add(playfield,    true);
+  gui_manager->add(button_panel, true);
+  gui_manager->add(hurry_up,     true);
+  gui_manager->add(pcounter,     true);
+  gui_manager->add(small_map,    true);
+  gui_manager->add(time_display, true);
 
-  gui_manager->add (new ArmageddonButton(server, CL_Display::get_width() - 40,     CL_Display::get_height() - 62), true);
-  gui_manager->add (new ForwardButton   (server, CL_Display::get_width() - 40 * 2, CL_Display::get_height() - 62), true);
-  gui_manager->add (new PauseButton     (server, CL_Display::get_width() - 40 * 3, CL_Display::get_height() - 62), true);
+  gui_manager->add(new ArmageddonButton(server, CL_Display::get_width() - 40,     CL_Display::get_height() - 62), true);
+  gui_manager->add(new ForwardButton   (server, CL_Display::get_width() - 40 * 2, CL_Display::get_height() - 62), true);
+  gui_manager->add(new PauseButton     (server, CL_Display::get_width() - 40 * 3, CL_Display::get_height() - 62), true);
   // Connect the button_panel with the playfield
-  playfield->set_buttons(button_panel);
   playfield->set_server(server);
 
   timer.stop();
@@ -327,15 +326,6 @@ Client::on_action_axis_move (float move)
     button_panel->next_action ();
   else if (move < 0)
     button_panel->previous_action ();
-}
-
-bool
-Client::draw (DrawingContext& gc)
-{
-  GUIScreen::draw (gc);
-  if (!server->get_plf()->get_playable())
-    gc.draw(unplayable, Vector(400, 50));
-  return true;
 }
 
 void

@@ -45,6 +45,7 @@ extern bool        maintainer_mode;                 ///< --maintainer-mode
 extern bool        start_editor;                    ///<
 extern std::string demo_file;                       ///<
 extern bool        auto_scrolling;                  ///< --enable-auto-scrolling
+extern bool        drag_drop_scrolling; 
 extern int         tile_size;                       ///< --tile-size
 extern bool        fullscreen_enabled;              ///< --enable-fullscreen
 extern int         screen_width;                    ///<

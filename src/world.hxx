@@ -91,7 +91,6 @@ private:
   // Pointers which are references to objects from other classes
   ActionHolder*   action_holder;
   ColMap*         colmap;
-  View*           view;
 
   void    init_worldobjs (PLF* plf);
 
@@ -156,14 +155,6 @@ public:
       @param volume The volume of the sound
   */
   void play_sound (std::string name, const Vector& pos, float volume = 0.5f);
-
-  /** Sets the main view, it is needed to play stereo wave and for
-      other screen orientated effects
-
-      FIXME: This is really ugly and should be handled otherwise, by a
-      FIXME: play_sound (View*) analog to draw() and update() or something
-      FIXME: like that */
-  void set_view (View* v);
 
   PinguHolder* get_pingus(void);
 

@@ -220,14 +220,15 @@ WorldMap::draw (DrawingContext& gc)
                           pingu_pos.y,
                           float(height - gc.get_height()/2));
 
-  display_gc.push_modelview();
-  display_gc.translate(-pingu_pos.x, -pingu_pos.y);
+  DrawingContext* display_gc = new DrawingContext();
+
+  display_gc->translate(-pingu_pos.x, -pingu_pos.y);
 
   std::stable_sort(drawables.begin(), drawables.end(), z_pos_sorter());
 
   for (DrawableLst::iterator i = drawables.begin (); i != drawables.end (); ++i)
     {
-      (*i)->draw (display_gc);
+      (*i)->draw(*display_gc);
     }
 
   gc.draw(levelname_bg,
@@ -241,35 +242,34 @@ WorldMap::draw (DrawingContext& gc)
       if (leveldot)
         {
           gc.print_center(Fonts::chalk_small,
-                          display_gc.get_width ()/2,
-                          display_gc.get_height() - 20,
+                          display_gc->get_width ()/2,
+                          display_gc->get_height() - 20,
                           System::translate(leveldot->get_plf()->get_levelname()));
           
         }
       else
         {
           gc.print_center(Fonts::chalk_small,
-                          display_gc.get_width ()/2,
-                          display_gc.get_height() - 20,
+                          display_gc->get_width ()/2,
+                          display_gc->get_height() - 20,
                           "---");
         }
     }
   else
     {
           gc.print_center(Fonts::chalk_small,
-                          display_gc.get_width ()/2,
-                          display_gc.get_height() - 20,
+                          display_gc->get_width ()/2,
+                          display_gc->get_height() - 20,
                           _("...walking..."));
     }
 
-
-  Vector mpos = display_gc.screen_to_world(Vector(mouse_x, mouse_y));
+  Vector mpos = display_gc->screen_to_world(Vector(mouse_x, mouse_y));
   Dot* dot = path_graph->get_dot(mpos.x, mpos.y);
   if (dot)
     {
-      dot->draw_hover(display_gc);
+      dot->draw_hover(*display_gc);
     }
-  display_gc.pop_modelview();
+  gc.draw(display_gc);
 }
 
 void
@@ -315,7 +315,8 @@ WorldMap::on_pointer_move(int x, int y)
 void
 WorldMap::on_primary_button_press(int x, int y)
 {
-  const Vector& click_pos = display_gc.screen_to_world(Vector(x, y));
+  //FIXME: const Vector& click_pos = display_gc->screen_to_world(Vector(x, y));
+  Vector click_pos(x, y);
 
   if (pingus_debug_flags & PINGUS_DEBUG_WORLDMAP)
     {
@@ -372,7 +373,9 @@ WorldMap::on_secondary_button_press(int x, int y)
 {
   if (maintainer_mode)
     {
-      const Vector& click_pos = display_gc.screen_to_world(Vector(x, y));
+      //FIXME: const Vector& click_pos = display_gc->screen_to_world(Vector(x, y));
+      Vector click_pos(x, y);
+
       Dot* dot = path_graph->get_dot(click_pos.x, click_pos.y);
       if (dot)
         { // FIXME: Dot NodeID missmatch...

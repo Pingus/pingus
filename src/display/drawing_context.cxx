@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <assert.h>
+#include <iostream>
 #include <ClanLib/Display/sprite.h>
 #include <ClanLib/Display/font.h>
 #include <ClanLib/Display/graphic_context.h>
@@ -86,6 +87,28 @@ public:
   }
 };
 
+class RectDrawingRequest : public DrawingRequest
+{
+private:
+  CL_Rectf  rect;
+  CL_Color color;
+  bool     filled;
+  
+public:
+  RectDrawingRequest(const CL_Rectf& rect_, const CL_Color& color_, bool filled_, float z)
+    : DrawingRequest(CL_Vector(rect.left, rect.top, z)),
+      rect(rect_), color(color_), filled(filled_)
+  {}
+  
+  void draw(CL_GraphicContext* gc) 
+  {
+    if (filled)
+      gc->fill_rect(rect, color);
+    else
+      gc->draw_rect(rect, color);
+  }
+};
+
 class SpriteDrawingRequest : public DrawingRequest
 {
 private:
@@ -119,6 +142,27 @@ public:
   }
 };
 
+class DrawingContextDrawingRequest : public DrawingRequest
+{
+private:
+  DrawingContext* dc;
+  
+public:
+  DrawingContextDrawingRequest(DrawingContext* dc_, float z)
+    : DrawingRequest(CL_Vector(0,0,z)),
+      dc(dc_)
+  {}
+  
+  ~DrawingContextDrawingRequest()
+  {
+    delete dc;
+  }
+
+  void draw(CL_GraphicContext* gc) {
+    dc->render(gc);
+  }
+};
+
 DrawingContext::DrawingContext()
 {
   translate_stack.push_back(CL_Pointf(0, 0));
@@ -129,8 +173,16 @@ DrawingContext::render(CL_GraphicContext* gc)
 {
   std::stable_sort(drawingrequests.begin(), drawingrequests.end(), DrawingRequestsSorter());
   
+  if (0)
+    {
+      std::cout << "<<<<<<<<<<<<<<" << std::endl;
+      for(DrawingRequests::iterator i = drawingrequests.begin(); i != drawingrequests.end(); ++i)
+        std::cout << (*i)->get_z_pos() << std::endl;
+      std::cout << ">>>>>>>>>>>>>>" << std::endl;
+    }
   for(DrawingRequests::iterator i = drawingrequests.begin(); i != drawingrequests.end(); ++i)
     {
+      //std::cout << this << ": " << (*i)->get_z_pos() << std::endl;
       (*i)->draw(gc);
     }
 }
@@ -149,6 +201,12 @@ void
 DrawingContext::draw(DrawingRequest* request)
 {
   drawingrequests.push_back(request);
+}
+
+void
+DrawingContext::draw(DrawingContext* dc, float z)
+{
+  draw(new DrawingContextDrawingRequest(dc, z));
 }
 
 void
@@ -175,7 +233,7 @@ DrawingContext::draw(const CL_Sprite&   sprite,  float x, float y, float z)
 }
 
 void
-DrawingContext::draw(const std::string& text,    float x, float y, float z)
+DrawingContext::draw(const std::string& text, float x, float y, float z)
 { 
   draw(new TextDrawingRequest(text, CL_Vector(x, y, z)));
 }
@@ -188,19 +246,29 @@ DrawingContext::draw_line (float x1, float y1, float x2, float y2,
 
 void
 DrawingContext::draw_fillrect (float x1, float y1, float x2, float y2, 
-		      const CL_Color& color)
+                               const CL_Color& color, float z)
 {
+  draw(new RectDrawingRequest(CL_Rectf(x1 + translate_stack.back().x, y1 + translate_stack.back().y, 
+                                       x2 + translate_stack.back().x, y2 + translate_stack.back().y),
+                              color,
+                              true,
+                              z));
 }
 
 void
 DrawingContext::draw_rect (float x1, float y1, float x2, float y2, 
-		  const CL_Color& color)
+                           const CL_Color& color, float z)
 {
+  draw(new RectDrawingRequest(CL_Rectf(x1 + translate_stack.back().x, y1 + translate_stack.back().y, 
+                                       x2 + translate_stack.back().x, y2 + translate_stack.back().y),
+                              color,
+                              false,
+                              z));
 }
 
 void
 DrawingContext::draw_pixel (float x_pos, float y_pos, 
-		   const CL_Color& color)
+                            const CL_Color& color)
 {
 }
 

@@ -144,6 +144,8 @@ globals.cxx \
 globals.hxx \
 goal_manager.hxx \
 goal_manager.cxx \
+graphic_context_state.hxx \
+graphic_context_state.cxx \
 groundtype.hxx \
 groundtype.cxx \
 gui_obj.hxx \
@@ -206,8 +208,6 @@ pingus_sub_menu.cxx \
 pingus_sub_menu.hxx \
 playfield.cxx \
 playfield.hxx \
-playfield_view.cxx \
-playfield_view.hxx \
 plf.cxx \
 plf.hxx \
 plf_handle.hxx \
@@ -267,8 +267,6 @@ true_server.cxx \
 true_server.hxx \
 vector.cxx \
 vector.hxx \
-view.cxx \
-view.hxx \
 world.cxx \
 world.hxx \
 worldobj.cxx \

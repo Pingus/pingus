@@ -62,6 +62,13 @@ public:
 
   /*{ */
   void draw(DrawingRequest* request);
+
+  /** Inserts another DrawingContext into the pipeline, translation is
+      ignored. DrawingContext ownership is transfered to this
+      DrawingContext FIXME: Not such a good feeling with this, but
+      worth a try */
+  void draw(DrawingContext* dc, float z = 0);
+
   void draw(const CL_Surface&  surface, const Vector& pos);
   void draw(const CL_Sprite&   sprite,  float x, float y, float z = 0);
   void draw(const std::string& text,    float x, float y, float z = 0);
@@ -71,9 +78,9 @@ public:
   void draw_line (float x1, float y1, float x2, float y2, 
 		  const CL_Color& color);
   void draw_fillrect (float x1, float y1, float x2, float y2, 
-		      const CL_Color& color);
+		      const CL_Color& color, float z = 0);
   void draw_rect (float x1, float y1, float x2, float y2, 
-		  const CL_Color& color);
+		  const CL_Color& color, float z = 0);
   void draw_pixel (float x_pos, float y_pos, 
 		   const CL_Color& color);
   void draw_circle (float x_pos, float y_pos, float radius,

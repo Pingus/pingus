@@ -20,6 +20,8 @@
 #ifndef HEADER_PINGUS_CAPTURE_RECTANGLE_HXX
 #define HEADER_PINGUS_CAPTURE_RECTANGLE_HXX
 
+#include <ClanLib/Display/font.h>
+
 class CL_Font;
 
 namespace Pingus {

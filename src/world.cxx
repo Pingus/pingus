@@ -25,7 +25,6 @@
 #include "pingu_holder.hxx"
 #include "sound/sound.hxx"
 #include "spot_map.hxx"
-#include "view.hxx"
 #include "world.hxx"
 #include "particles/pingu_particle_holder.hxx"
 #include "particles/rain_particle_holder.hxx"
@@ -50,7 +49,6 @@ World::World(PLF* plf)
     do_armageddon(false),
     pingus(new PinguHolder(plf)),
     colmap(gfx_map->get_colmap()),
-    view(0),
     gravitational_acceleration(0.25f)
 {
   WorldObj::set_world(this);
@@ -226,30 +224,21 @@ World::get_gfx_map ()
 void
 World::play_sound(std::string name, const Vector& pos, float volume)
 {
-  if (view)
-    {
-      Vector center = view->get_center();
-      float panning = pos.x - center.x;
-      panning /= view->get_width()/2;
+  // FIXME: Stereo is for the moment disabled
+  /*
+    Vector center = view->get_center();
+    float panning = pos.x - center.x;
+    panning /= view->get_width()/2;
 
-      if (panning > 1.0f)
-      	panning = 1.0f;
+    if (panning > 1.0f)
+    panning = 1.0f;
 
-      if (panning < -1.0f)
-      	panning = -1.0f;
+    if (panning < -1.0f)
+    panning = -1.0f;
+  */
+  float panning = 0.0f;
 
-      Sound::PingusSound::play_sound(name, volume, panning);
-    }
-  else // No view available, so no stereo enabled
-    {
-      Sound::PingusSound::play_sound(name, volume);
-    }
-}
-
-void
-World::set_view (View* v)
-{
-  view = v;
+  Sound::PingusSound::play_sound(name, volume, panning);
 }
 
 Pingu*

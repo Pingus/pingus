@@ -34,6 +34,7 @@ bool        maintainer_mode                 = false;
 std::string demo_file;
 bool        start_editor                    = false;
 bool        auto_scrolling                  = true;
+bool        drag_drop_scrolling             = true;
 int         tile_size                       = 32;
 #ifdef WIN32
 #ifdef _DEBUG

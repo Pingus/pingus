@@ -21,9 +21,10 @@
 #define HEADER_PINGUS_PLAYFIELD_HXX
 
 #include <ClanLib/Core/Math/rect.h>
-#include "view.hxx"
 #include "client.hxx"
+#include "graphic_context_state.hxx"
 #include "gui/component.hxx"
+#include "capture_rectangle.hxx"
 
 namespace Pingus {
 
@@ -32,6 +33,7 @@ class World;
 class Server;
 class ButtonPanel;
 class Controller;
+class View;
 
 /** This class encapsulates all the different Views */
 class Playfield : public GUI::Component
@@ -39,33 +41,37 @@ class Playfield : public GUI::Component
 private:
   friend class Client;
 
+  CL_Rect rect;
+
   CL_Surface buffer;
   Server* server;
   Client* client;
-  ///Range x_offset2, y_offset2;
-  ButtonPanel* buttons;
-  World* world;
-  std::vector<View*> view;
 
-  ///int  x_offset, y_offset;
+  ButtonPanel* buttons;
+  World*       world;
+  View*        view;
+
   Pingu* current_pingu;
   bool mouse_scrolling;
   bool needs_clear_screen;
-  int current_view;
   int scroll_speed;
-  int scroll_center_x;
-  int scroll_center_y;
+
+  CL_Point scroll_center;
+
+  GraphicContextState state;
+  CaptureRectangle cap;
 
   std::vector<CL_Rect> clipping_rectangles;
-
-  int mouse_x;
-  int mouse_y;
+  
+  CL_Point  mouse_pos;
+  CL_Pointf old_state_pos;
 public:
-  Playfield (Client*);
+  Playfield (Client*, const CL_Rect& rect);
   virtual ~Playfield();
 
-  int get_x_offset();
-  int get_y_offset();
+  /** Returns the point onto which the Playfield is currently focused
+      (ie. center of the Playfield) in WorldCO */
+  CL_Point get_pos() const;
 
   void scroll (int x, int y);
 
@@ -73,8 +79,7 @@ public:
 
   void draw(DrawingContext& gc);
   void update(float delta);
-  void set_world(World*);
-  Pingu* current_pingu_find(int x_pos, int y_pos);
+  Pingu* current_pingu_find(const CL_Pointf& pos);
 
   void on_primary_button_press (int x, int y);
   void on_secondary_button_press (int x, int y);
@@ -88,7 +93,6 @@ public:
   void generate_clipping_rects(int, int, int, int);
 
   /// Members used to communicate between different screen objs
-  void set_buttons(ButtonPanel*);
   void set_server(Server*);
 
   bool is_at (int x, int y) { UNUSED_ARG(x); UNUSED_ARG(y); return true; }

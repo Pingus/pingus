@@ -20,6 +20,7 @@
 #include <ClanLib/Display/display.h>
 #include "pingu_holder.hxx"
 #include "gui/display.hxx"
+#include "display/drawing_context.hxx"
 #include "playfield.hxx"
 #include "world.hxx"
 #include "resource.hxx"
@@ -28,6 +29,7 @@
 #include "true_server.hxx"
 #include "pingu.hxx"
 #include "math.hxx"
+#include "vector.hxx"
 #include "globals.hxx"
 
 namespace Pingus {
@@ -77,7 +79,7 @@ SmallMap::init()
   if (!canvas)
     {
       // Scaling values used in order to keep the aspect ratio
-      int x_scaling = colmap->get_width() / max_width;
+      int x_scaling = colmap->get_width()  / max_width;
       int y_scaling = colmap->get_height() / max_height;
 
       // If at best one horizontal pixel in the smallmap represents more colmap
@@ -187,12 +189,10 @@ SmallMap::init()
 void
 SmallMap::draw (DrawingContext& gc)
 {
+  // FIXME: This is potentially dangerous, since we don't know how long 'gc' will be alive
   gc_ptr = &gc;
 
   Playfield* playfield = client->get_playfield();
-
-  int x_of = playfield->get_x_offset();
-  int y_of = playfield->get_y_offset();
 
   sur.draw(x_pos, y_pos);
 
@@ -203,15 +203,17 @@ SmallMap::draw (DrawingContext& gc)
 		       1.0f, 1.0f, 1.0f, 1.0f);
 #endif
 
+  CL_Point of = playfield->get_pos();
+    
+  of.x = x_pos + of.x * width  / client->get_server()->get_world()->get_colmap()->get_width();
+  of.y = y_pos + of.y * height / client->get_server()->get_world()->get_colmap()->get_height();
 
-  x_of = x_pos - x_of * width / client->get_server()->get_world()->get_colmap()->get_width();
-  y_of = y_pos - y_of * height / client->get_server()->get_world()->get_colmap()->get_height();
+  int w = Math::min(rwidth,  int(sur.get_width()  - 1));
+  int h = Math::min(rheight, int(sur.get_height() - 1));
 
-  Display::draw_rect(x_of,
-		     y_of,
-		     x_of + Math::min(rwidth,  int(sur.get_width()  - 1)),
-		     y_of + Math::min(rheight, int(sur.get_height() - 1)),
-		     0.0, 1.0, 0.0, 1.0);
+  gc.draw_rect(of.x - w/2, of.y - h/2,
+               of.x + w/2, of.y + h/2,
+               CL_Color(0, 255, 0));
 
   // FIXME: This should use put_target(), but put_target(), does not
   // seem to work?!
