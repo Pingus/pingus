@@ -1,4 +1,4 @@
-//  $Id: pingu.cxx,v 1.22 2002/09/04 20:30:28 grumbel Exp $
+//  $Id: pingu.cxx,v 1.23 2002/09/04 22:10:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -77,10 +77,31 @@ Pingu::change_allowed (ActionName new_action)
 }
 
 void
+Pingu::set_x (float x)
+{
+  //std::cout << "Pingu::set_x (" << x << ")" << std::endl;
+  pos_x = x; 
+}
+  
+void
+Pingu::set_y (float y)
+{ 
+  //std::cout << "Pingu::set_y (" << y << ")" << std::endl;
+  pos_y = y; 
+}
+
+void
+Pingu::set_pos (float x, float y)
+{
+  set_x (x);
+  set_y (y);
+}
+
+void
 Pingu::set_pos (const CL_Vector& arg_pos)
 {
-  pos_x = arg_pos.x;
-  pos_y = arg_pos.y;
+  set_x (arg_pos.x);
+  set_y (arg_pos.y);
 }
 
 void

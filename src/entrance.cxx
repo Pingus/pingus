@@ -1,4 +1,4 @@
-//  $Id: entrance.cxx,v 1.5 2002/09/04 19:40:19 grumbel Exp $
+//  $Id: entrance.cxx,v 1.6 2002/09/04 22:10:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -108,7 +108,8 @@ Entrance::draw (GraphicContext& gc)
 {
   if (!surface) 
     {
-      std::cout << "Entrance::draw (GraphicContext& gc): entrance without a surface?!" << std::endl;
+      // Entrances have only a surface for historical reasons
+      //std::cout << "Entrance::draw (GraphicContext& gc): entrance without a surface?!" << std::endl;
       return;
     }
 

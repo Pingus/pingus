@@ -1,4 +1,4 @@
-//  $Id: faller.cxx,v 1.18 2002/09/04 20:30:29 grumbel Exp $
+//  $Id: faller.cxx,v 1.19 2002/09/04 22:10:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -98,12 +98,12 @@ namespace Actions {
 	  {
 	    if (newp.y > 0)
 	      {
-	        pingu->set_x(pingu->get_y() + 1);
+	        pingu->set_y(pingu->get_y() + 1);
 	        newp.y--;
 	      }
 	    else 
 	      {
-	        pingu->set_x(pingu->get_y() - 1);
+	        pingu->set_y(pingu->get_y() - 1);
 	        newp.y++;
 	      }
 	  }

@@ -1,4 +1,4 @@
-//  $Id: pingu.hxx,v 1.13 2002/09/04 20:30:28 grumbel Exp $
+//  $Id: pingu.hxx,v 1.14 2002/09/04 22:10:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -124,11 +124,11 @@ public:
   int  set_id (int);
   
   /// Set the pingu to the given coordinates
-  void set_pos (float x, float y) { pos_x = x; pos_y = y; }
+  void set_pos (float x, float y);
 
-  void set_x (float x) { pos_y = x; }
+  void set_x (float x);
   
-  void set_y (float y) { pos_y = y; }
+  void set_y (float y);
 
   /// Set the pingu to the given coordinates
   void set_pos (const CL_Vector& arg_pos);

@@ -1,4 +1,4 @@
-//  $Id: walker.cxx,v 1.19 2002/09/04 20:30:29 grumbel Exp $
+//  $Id: walker.cxx,v 1.20 2002/09/04 22:10:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -203,7 +203,7 @@ namespace Actions {
     else
       walker.set_direction(Sprite::RIGHT);
 
-    gc.draw (walker, pingu->get_pos());
+    gc.draw (walker, pingu->get_pos() + CL_Vector (0, +2));
   }
 
 }
