@@ -1,4 +1,4 @@
-// $Id: miner.cxx,v 1.22 2003/04/19 10:23:18 torangan Exp $
+// $Id: miner.cxx,v 1.23 2003/08/17 11:48:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,18 +39,17 @@ Miner::Miner (Pingu* p)
 
   miner_radius_width = miner_radius.get_width();
   miner_radius_gfx_width = miner_radius_gfx.get_width();
+
+  if (pingu->direction.is_left())
+    sprite.set_direction(Sprite::LEFT);
+  else
+    sprite.set_direction(Sprite::RIGHT);
 }
 
 void
 Miner::update ()
 {
   sprite.update();
-
-  // FIXME: Direction handling is ugly
-  if (pingu->direction.is_left())
-    sprite.set_direction(Sprite::LEFT);
-  else
-    sprite.set_direction(Sprite::RIGHT);
 
   ++slow_count;
   if (!(slow_count % 4))
