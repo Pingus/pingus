@@ -1,5 +1,5 @@
 # Pingus - A free Lemmings clone
-# Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
+# Copyright (C) 2003 Ingo Ruhnke <grumbel@gmx.de>
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -15,12 +15,10 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-SUBDIRS = controller images levels demos data music sounds worldmaps themes prefabs
+## Override automake so that "make install" puts these in proper place:
+pkgdatadir = $(datadir)/games/@PACKAGE@/prefabs
 
-# Tweaking the `datadir' to install the files in the correct location
-pkgdatadir = $(datadir)/games/@PACKAGE@
-
-EXTRA_DIST = README
+EXTRA_DIST = water.xml snow-entrance.xml
 pkgdata_DATA = $(EXTRA_DIST)
 
 # EOF #

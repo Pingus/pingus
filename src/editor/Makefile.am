@@ -24,6 +24,7 @@ libpingus_editor_a_SOURCES = \
 	editor.cxx editor.hxx \
 	editorobj_group.cxx editorobj_group.hxx \
 	editorobj.cxx editorobj.hxx \
+	editorobj_mgr.hxx \
 	editor_view.cxx editor_view.hxx \
 	generic_property_frame.cxx generic_property_frame.hxx \
 	level_property_window.cxx level_property_window.hxx \

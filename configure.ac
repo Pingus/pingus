@@ -1,4 +1,4 @@
-#  $Id: configure.ac,v 1.6 2003/03/30 13:12:35 grumbel Exp $
+#  $Id: configure.ac,v 1.7 2003/04/05 23:24:32 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,7 +22,7 @@ dnl BUG: This file should be updated with the macros from 'configure.scan'
 # The required ClanLib version
 CLANLIB_MAJOR_VERSION=0
 CLANLIB_MINOR_VERSION=6
-CLANLIB_PATCH_VERSION=4
+CLANLIB_PATCH_VERSION=5
 
 dnl Process this file with autoconf to produce a configure script.
 AC_INIT(Pingus, 0.6.0rc1)
@@ -309,6 +309,7 @@ AC_OUTPUT( Makefile
            data/sounds/Makefile 
            data/music/Makefile 
            data/levels/Makefile
+           data/prefabs/Makefile
            data/themes/Makefile
            data/worldmaps/Makefile
            data/demos/Makefile

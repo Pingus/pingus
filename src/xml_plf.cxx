@@ -1,4 +1,4 @@
-//  $Id: xml_plf.cxx,v 1.36 2003/03/30 20:43:52 grumbel Exp $
+//  $Id: xml_plf.cxx,v 1.37 2003/04/05 23:24:32 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -93,10 +93,14 @@ XMLPLF::parse_file()
 	      continue;
 	    }
 
+	  if (XMLhelper::equal_str(cur->name, "version"))
+            {
+              // FIXME: ignoring version at the moment
+            }
 	  // FIXME: This can mostly be unified with the
 	  // WorldObjDataFactory, exit, backgrounds, etc. are all
 	  // WorldObjs
-	  if (XMLhelper::equal_str(cur->name, "global"))
+	  else if (XMLhelper::equal_str(cur->name, "global"))
 	    {
 	      parse_global(cur);
 	    }

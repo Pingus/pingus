@@ -1,4 +1,4 @@
-//  $Id: worldobj_group_data.cxx,v 1.10 2003/03/25 00:37:44 grumbel Exp $
+//  $Id: worldobj_group_data.cxx,v 1.11 2003/04/05 23:24:32 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,7 +22,6 @@
 #include "../editor/editorobj_group.hxx"
 #include "../xml_helper.hxx"
 #include "../worldobj_data_factory.hxx"
-#include "../worldobjs/worldobj_group.hxx"
 #include "../editor/editorobj_mgr.hxx"
 #include "worldobj_group_data.hxx"
 

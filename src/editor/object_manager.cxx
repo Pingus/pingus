@@ -1,4 +1,4 @@
-//  $Id: object_manager.cxx,v 1.44 2003/04/01 22:43:32 grumbel Exp $
+//  $Id: object_manager.cxx,v 1.45 2003/04/05 23:24:32 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -218,6 +218,7 @@ ObjectManager::save_level_xml (const std::string & filename)
 
   xml << "<?xml version=\"1.0\"  encoding=\"ISO-8859-1\"?>\n\n"
       << "<pingus-level>\n"
+      << "  <version>1</version>\n"
       << "  <global>\n";
     
   for(std::map<std::string, std::string>::const_iterator i = levelname.begin();

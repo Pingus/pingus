@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Pingus 0.5.0\n"
-"POT-Creation-Date: 2003-04-02 16:33+0200\n"
+"POT-Creation-Date: 2003-04-06 00:38+0200\n"
 "PO-Revision-Date: 2001-12-19 13:50+0100\n"
 "Last-Translator: Martijn Santen <martijn@jomarsoft.nl>\n"
 "Language-Team: Giray Devlet <giray@devlet.cc>, Martijn Santen "
@@ -257,7 +257,7 @@ msgstr ""
 msgid ""
 "When you have create a level and want to have it in the next Pingus "
 "release,\n"
-"please mail it to grumbel@gmx.de. "
+"please mail it to pingus-devel@nongnu.org."
 msgstr ""
 
 # src/editor/ObjectSelector.cc:83
@@ -554,15 +554,15 @@ msgstr "Aantal Pingus"
 msgid "Display Help Screen (F1)"
 msgstr ""
 
-#: src/exit_menu.cxx:43
-msgid " Yes"
+#: src/exit_menu.cxx:44
+msgid "Yes"
 msgstr ""
 
-#: src/exit_menu.cxx:68
+#: src/exit_menu.cxx:76
 msgid "No"
 msgstr ""
 
-#: src/exit_menu.cxx:94
+#: src/exit_menu.cxx:109
 msgid "Exit Pingus?"
 msgstr ""
 
@@ -714,13 +714,13 @@ msgstr "Je hebt een negatief gered/totaal waarde, iets gaat er mis."
 
 # src/SurfaceButton.cc:159
 #.  desc["en"] = "..:: Starts the level you played at last ::..";
-#: src/menu_button.cxx:178
+#: src/menu_button.cxx:179
 msgid "..:: The people who brought this game to you ::.."
 msgstr "Iedereen die dit spel mogelijk maakte ::.."
 
 # src/SurfaceButton.cc:162
 #. desc["de"] = "..:: Wer hat den dieses Spiel verbrochen...? ::..";
-#: src/menu_button.cxx:181
+#: src/menu_button.cxx:182
 msgid "Credits"
 msgstr "Krediet"
 
@@ -729,72 +729,72 @@ msgstr "Krediet"
 #. y_pos = CL_Display::get_height() * 330 / 480; //330;
 #. 150;
 #. 330;
-#: src/menu_button.cxx:214
+#: src/menu_button.cxx:215
 msgid "..:: Takes you to the options menu ::.."
 msgstr ""
 
 # src/SurfaceButton.cc:204
 #.  desc["de"] = "..:: Einstellungen und Mogeleien ::..";
-#: src/menu_button.cxx:217
+#: src/menu_button.cxx:218
 msgid "Options"
 msgstr "Opties"
 
 # src/SurfaceButton.cc:237
-#: src/menu_button.cxx:251
+#: src/menu_button.cxx:252
 msgid "..:: Bye, bye ::.."
 msgstr "..:: Doei, Doei ::.."
 
 # src/SurfaceButton.cc:240
 #. desc["de"] = "..:: Auf Wiedersehen ::..";
-#: src/menu_button.cxx:254
+#: src/menu_button.cxx:255
 msgid "Exit"
 msgstr "Exit"
 
 # src/SurfaceButton.cc:295
-#: src/menu_button.cxx:306
+#: src/menu_button.cxx:307
 msgid "..:: Launch the level editor ::.."
 msgstr "..:: Start de niveau bewerker ::.."
 
 # src/SurfaceButton.cc:298
 #. desc["de"] = "..:: Den Level Editor starten ::..";
-#: src/menu_button.cxx:309
+#: src/menu_button.cxx:310
 msgid "Create a"
 msgstr "Creer een"
 
 # src/SurfaceButton.cc:299
-#: src/menu_button.cxx:310
+#: src/menu_button.cxx:311
 msgid "Level"
 msgstr "Niveau"
 
 # src/SurfaceButton.cc:370
-#: src/menu_button.cxx:346
+#: src/menu_button.cxx:347
 #, fuzzy
 msgid "..:: Start the game ::.."
 msgstr "..:: Start een deelname niveau ::.."
 
 # src/SurfaceButton.cc:344
 #. desc["de"] = "..:: Such dir eine Welt zum beginnen aus ::..";
-#: src/menu_button.cxx:349
+#: src/menu_button.cxx:350
 msgid "Start"
 msgstr "Start"
 
 # src/SurfaceButton.cc:370
-#: src/menu_button.cxx:385
+#: src/menu_button.cxx:386
 msgid "..:: Start a contrib level ::.."
 msgstr "..:: Start een deelname niveau ::.."
 
 # src/SurfaceButton.cc:372
-#: src/menu_button.cxx:387
+#: src/menu_button.cxx:388
 msgid "Contrib"
 msgstr "Deelname"
 
 # src/SurfaceButton.cc:394
-#: src/menu_button.cxx:408
+#: src/menu_button.cxx:409
 msgid "..:: Multiplayer Modes... experimental stuff ::.."
 msgstr "..:: Multispeler Mode... experimentele zooi ::.."
 
 # src/SurfaceButton.cc:396
-#: src/menu_button.cxx:410
+#: src/menu_button.cxx:411
 msgid "Multi"
 msgstr "Multi"
 
@@ -949,75 +949,75 @@ msgstr ""
 msgid "PingusError: "
 msgstr ""
 
-#: src/pingus_main.cxx:100 src/pingus_main.cxx:123
+#: src/pingus_main.cxx:101 src/pingus_main.cxx:124
 msgid ""
 "\n"
 ",------------------------------------------------------------------------"
 msgstr ""
 
-#: src/pingus_main.cxx:101
+#: src/pingus_main.cxx:102
 msgid "| segfault_handler: catched a SIGSEGV."
 msgstr ""
 
-#: src/pingus_main.cxx:103
+#: src/pingus_main.cxx:104
 msgid "| Woops, Pingus just crashed, congratulations you've found a bug."
 msgstr ""
 
-#: src/pingus_main.cxx:104
+#: src/pingus_main.cxx:105
 msgid ""
 "| Please write a little bug report to <grumbel@gmx.de>, include informations"
 msgstr ""
 
-#: src/pingus_main.cxx:105
+#: src/pingus_main.cxx:106
 msgid "| where exacly the SIGSEGV occured and how to reproduce it."
 msgstr ""
 
-#: src/pingus_main.cxx:106
+#: src/pingus_main.cxx:107
 msgid "| Also try include a backtrace, you can get it like this:"
 msgstr ""
 
-#: src/pingus_main.cxx:108
+#: src/pingus_main.cxx:109
 msgid "| $ gdb pingus core"
 msgstr ""
 
-#: src/pingus_main.cxx:109
+#: src/pingus_main.cxx:110
 msgid "| (gdb) bt"
 msgstr ""
 
-#: src/pingus_main.cxx:110 src/pingus_main.cxx:117
+#: src/pingus_main.cxx:111 src/pingus_main.cxx:118
 msgid "| ..."
 msgstr ""
 
-#: src/pingus_main.cxx:112
+#: src/pingus_main.cxx:113
 msgid "| If that doesn't work, try this:"
 msgstr ""
 
-#: src/pingus_main.cxx:114
+#: src/pingus_main.cxx:115
 msgid "| $ gdb pingus"
 msgstr ""
 
-#: src/pingus_main.cxx:115
+#: src/pingus_main.cxx:116
 msgid "| (gdb) r"
 msgstr ""
 
-#: src/pingus_main.cxx:116
+#: src/pingus_main.cxx:117
 msgid "| [play until it crashes again]"
 msgstr ""
 
-#: src/pingus_main.cxx:119
+#: src/pingus_main.cxx:120
 msgid "'------------------------------------------------------------------------\n"
 msgstr ""
 
-#: src/pingus_main.cxx:124
+#: src/pingus_main.cxx:125
 msgid "| Warning: Pingus recieved a SIGINT, exiting now."
 msgstr ""
 
-#: src/pingus_main.cxx:125
+#: src/pingus_main.cxx:126
 msgid "`------------------------------------------------------------------------\n"
 msgstr ""
 
 # src/PingusMain.cc:323
-#: src/pingus_main.cxx:351
+#: src/pingus_main.cxx:352
 #, fuzzy
 msgid ""
 "\n"
@@ -1033,21 +1033,21 @@ msgstr ""
 "Voor meer informatie hierover, kijk naar de bestanden genaamd COPYING."
 
 # src/PingusMain.cc:481
-#: src/pingus_main.cxx:507
+#: src/pingus_main.cxx:508
 msgid "Unknow char: "
 msgstr "Onbekend char: "
 
 # src/PingusMain.cc:482
-#: src/pingus_main.cxx:508
+#: src/pingus_main.cxx:509
 msgid "Usage: "
 msgstr "gebruik: "
 
 # src/PingusMain.cc:482
-#: src/pingus_main.cxx:508
+#: src/pingus_main.cxx:509
 msgid " [OPTIONS]... [LEVELFILE]"
 msgstr " [OPTIES]... [BESTANDSNIVEAU]"
 
-#: src/pingus_main.cxx:510
+#: src/pingus_main.cxx:511
 msgid ""
 "\n"
 "Options:\n"
@@ -1058,13 +1058,13 @@ msgid ""
 "   --disable-intro          Disable intro\n"
 msgstr ""
 
-#: src/pingus_main.cxx:519
+#: src/pingus_main.cxx:520
 msgid "   -G, --use-opengl         Use OpenGL\n"
 msgstr ""
 
 #. 	"   --fs-preload             Preload all Levelpreviews\n"a
 #. 	"   --disable-previews       Disables all level preview in the level selector\n"
-#: src/pingus_main.cxx:523
+#: src/pingus_main.cxx:524
 msgid ""
 "   -F, --disable-fullscreen Disable Fullscreen\n"
 "   -f, --enable-fullscreen  Enable Fullscreen (default)\n"
@@ -1113,7 +1113,7 @@ msgid ""
 "   -p, --play-demo FILE     Plays a demo session from FILE\n"
 msgstr ""
 
-#: src/pingus_main.cxx:566
+#: src/pingus_main.cxx:567
 msgid ""
 "\n"
 "Sound:\n"
@@ -1121,105 +1121,173 @@ msgid ""
 "   -m, --enable-music       Enable music\n"
 msgstr ""
 
-#: src/pingus_main.cxx:675
+#: src/pingus_main.cxx:676
 msgid "clanVorbis support:           ok"
 msgstr ""
 
-#: src/pingus_main.cxx:677
+#: src/pingus_main.cxx:678
 msgid "clanVoribs support:  missing (.ogg music files will not be playable)"
 msgstr ""
 
-#: src/pingus_main.cxx:681
+#: src/pingus_main.cxx:682
 msgid "clanMikMod support:           ok"
 msgstr ""
 
-#: src/pingus_main.cxx:683
+#: src/pingus_main.cxx:684
 msgid "clanMikMod support:  missing (music files will not be playable)"
 msgstr ""
 
-#: src/pingus_main.cxx:687
+#: src/pingus_main.cxx:688
 msgid "getext support:               ok"
 msgstr ""
 
-#: src/pingus_main.cxx:688
+#: src/pingus_main.cxx:689
 msgid "gettext language:        english"
 msgstr ""
 
-#: src/pingus_main.cxx:694
+#: src/pingus_main.cxx:695
 msgid "sound support:           enabled"
 msgstr ""
 
-#: src/pingus_main.cxx:696
+#: src/pingus_main.cxx:697
 msgid "sound support:          disabled"
 msgstr ""
 
-#: src/pingus_main.cxx:699
+#: src/pingus_main.cxx:700
 msgid "music support:           enabled"
 msgstr ""
 
-#: src/pingus_main.cxx:701
+#: src/pingus_main.cxx:702
 msgid "music support:          disabled"
 msgstr ""
 
-#: src/pingus_main.cxx:703
+#: src/pingus_main.cxx:704
 msgid "resolution set to:       "
 msgstr ""
 
-#: src/pingus_main.cxx:704
+#: src/pingus_main.cxx:705
 msgid "fullcscreen:            "
 msgstr ""
 
 # src/OptionMenu.cc:211
-#: src/pingus_main.cxx:705
+#: src/pingus_main.cxx:706
 #, fuzzy
 msgid " enabled"
 msgstr "Cursor aan"
 
-#: src/pingus_main.cxx:705
+#: src/pingus_main.cxx:706
 msgid "disabled"
 msgstr ""
 
 # src/PingusMain.cc:775
-#: src/pingus_main.cxx:715
+#: src/pingus_main.cxx:716
 msgid "PingusMain: Starting Main: "
 msgstr "PingusMain: Starten hoofddeel: "
 
 # src/PingusMain.cc:797
-#: src/pingus_main.cxx:741
+#: src/pingus_main.cxx:742
 msgid "PingusMain: Levelfile not found, ignoring: "
 msgstr "PingusMainL Bestand van dit niveau niet gevonden, negeren: "
 
 # src/PingusMain.cc:851
-#: src/pingus_main.cxx:832
+#: src/pingus_main.cxx:833
 msgid "Error caught from ClanLib: "
 msgstr "Fout gevonden in Clanlib: "
 
 # src/PingusMain.cc:855
-#: src/pingus_main.cxx:836
+#: src/pingus_main.cxx:837
 msgid "Error caught from Pingus: "
 msgstr "Error gevonden in Pingus: "
 
 # src/PingusMain.cc:859
-#: src/pingus_main.cxx:840
+#: src/pingus_main.cxx:841
 msgid "Pingus: Out of memory!"
 msgstr "Pingus: te weinig geheugen!"
 
 # src/PingusMain.cc:863
-#: src/pingus_main.cxx:844
+#: src/pingus_main.cxx:845
 msgid "Pingus: Standard exception caught!:\n"
 msgstr "Pingus: Standard uitzondering!:\n"
 
 # src/PingusMain.cc:867
-#: src/pingus_main.cxx:848
+#: src/pingus_main.cxx:849
 msgid "Pingus: Unknown throw caught!"
 msgstr "Pingus: Onbekende worp aangetroffen!"
 
-#: src/result_screen.cxx:132
-msgid "Result: Success!"
+#: src/result_screen.cxx:92 src/start_screen.cxx:99
+msgid "Abort"
 msgstr ""
 
-#: src/result_screen.cxx:138
-msgid "Result: Failure! :("
+#: src/result_screen.cxx:151
+msgid "Retry"
+msgstr ""
+
+#: src/result_screen.cxx:158
+msgid "Success!"
+msgstr ""
+
+#: src/result_screen.cxx:164
+msgid "Failure!"
+msgstr ""
+
+#: src/result_screen.cxx:173
+msgid "Perfect! You saved everybody possibly, great!"
+msgstr ""
+
+#: src/result_screen.cxx:175
+msgid "None got killed, pretty good work"
+msgstr ""
+
+#: src/result_screen.cxx:177
+msgid ""
+"You saved just what you needed, you made it, but\n"
+"maybe you can do better?"
+msgstr ""
+
+#: src/result_screen.cxx:180
+msgid "Not everybody could get saved, but still good work!"
+msgstr ""
+
+#: src/result_screen.cxx:182
+msgid "What can I say, you made it, congratulations!"
+msgstr ""
+
+#: src/result_screen.cxx:187
+msgid "You killed everybody, not good."
+msgstr ""
+
+#: src/result_screen.cxx:189
+msgid "None got saved, I know you can do better."
+msgstr ""
+
+#: src/result_screen.cxx:191
+msgid ""
+"You didn't saved enough, but still saved a few, next\n"
+"time you might be better."
+msgstr ""
+
+#: src/result_screen.cxx:194
+msgid "Only one more and you would have made it, try again!"
+msgstr ""
+
+#: src/result_screen.cxx:196
+msgid "Only a handfull more and you would have made it, try again!"
+msgstr ""
+
+#: src/result_screen.cxx:198
+msgid "Better luck next time!"
+msgstr ""
+
+#: src/result_screen.cxx:209
+msgid "Saved: "
+msgstr ""
+
+#: src/result_screen.cxx:213
+msgid "Killed: "
+msgstr ""
+
+#: src/result_screen.cxx:217
+msgid "Time left: "
 msgstr ""
 
 # src/Screenshot.cc:39
@@ -1249,35 +1317,140 @@ msgstr "Schermafdruk: kon bestand niet opslaan"
 msgid "Image has wrong color depth: %d"
 msgstr "Plaatje heeft de verkeerde kleurdiepte: %d"
 
+#: src/start_screen.cxx:64
+msgid "Ok"
+msgstr ""
+
 # src/PingusLevelDesc.cc:81
-#: src/start_screen.cxx:128
+#: src/start_screen.cxx:151
 #, fuzzy
 msgid "Number of Pingus: "
 msgstr "Aantal Pingus"
 
 # src/PingusLevelDesc.cc:79
-#: src/start_screen.cxx:131
+#: src/start_screen.cxx:154
 #, fuzzy
 msgid "Number to Save: "
 msgstr "Pingus op te slaan:"
 
-#: src/start_screen.cxx:134
+#: src/start_screen.cxx:157
 msgid "Time: "
 msgstr ""
 
-#: src/start_screen.cxx:137
+#: src/start_screen.cxx:160
 msgid "Difficulty:"
 msgstr ""
 
 #. for (int i = 0; plf->get_difficulty())
 #. {
 #. }
-#: src/start_screen.cxx:144
+#: src/start_screen.cxx:167
 msgid "Author: "
 msgstr ""
 
-#: src/start_screen.cxx:147
+#: src/start_screen.cxx:170
 msgid "Filename: "
+msgstr ""
+
+#: src/story.cxx:40
+msgid ""
+"Now after you and the Pingus have learned the basics and\n"
+"practiced a bit it is time to move on and begin the journey into\n"
+"the world. Since the floe with which the Pingus traveled to the\n"
+"Tutorial Island isn't going to hold the whole way into the warmer\n"
+"climated regions the Pingus have to find something else to guide\n"
+"there on there journey.\n"
+msgstr ""
+
+#: src/story.cxx:50
+msgid ""
+"But as the eldest have said, the Tutorial Island provides not\n"
+"only a way to practive, but it is also the starting point into\n"
+"the world, cause the wood if the large tree at the end of the\n"
+"island is brings good wood to construct a float.\n"
+msgstr ""
+
+#: src/story.cxx:58
+msgid ""
+"So the Pingus set out and constructed a some large floats, enough\n"
+"to carry them all. After also packaging up a bunch of provisions\n"
+"they where prepared to finally start of there journey and leave\n"
+"their familiar ground and entering the unknown parts of the\n"
+"world.\n"
+msgstr ""
+
+#: src/story.cxx:67
+msgid ""
+"So the Pingus sat on there float, worrying whats to come and\n"
+"where to go, while floating into the sunset.\n"
+"\n"
+"To be continued..."
+msgstr ""
+
+#: src/story.cxx:81
+msgid ""
+"For a long time now the Pingus have lived happily in peace on the\n"
+"south pole along with all the other animals, everything was in\n"
+"balance and it seemed like nothing could disrupt there peace.  The\n"
+"Pingus where happy and it seemed like this could never end.\n"
+msgstr ""
+
+#: src/story.cxx:89
+msgid ""
+"But then one day, things began to change slowly, the sky got darker\n"
+"and the earth got warmer, first of they thought this was just a\n"
+"normal fluctuation in the worlds climate, but things seemed to get\n"
+"worse and worse with every year."
+msgstr ""
+
+#: src/story.cxx:98
+msgid ""
+"The snow began to melt away in a few regions and food became an\n"
+"issue. Other animals already tend to leave the region to search\n"
+"for colder areas, but the Pingus knew that this couldn't help,\n"
+"they knew that they had to do something about this problem."
+msgstr ""
+
+#: src/story.cxx:106
+msgid ""
+"So the circle of the eldest came together to decide what to do\n"
+"about it. They decided to send out an expedition around the world\n"
+"to find the cause for this warming. The expedition consisted of\n"
+"hundreds of the bravest Pingus around on the south pole."
+msgstr ""
+
+#: src/story.cxx:114
+msgid ""
+"And they picked you to lead them on there journey around the\n"
+"world. Since the journey will be dangerous and difficult. Your\n"
+"first goal is the Island of Mogorok, also know has Tutorial\n"
+"Island. According to the eldest, this island has always been the\n"
+"first stop of Pingus which where send out into the world."
+msgstr ""
+
+#: src/story.cxx:123
+msgid ""
+"The island consists of many regions which are ideally to train the\n"
+"abilities of the Pingus. The Pingus can train there their ability\n"
+"to build bridges, climb, bash and all the rest of there talents\n"
+"which they will surly need on there long and dangerous journey."
+msgstr ""
+
+#: src/story.cxx:131
+msgid ""
+"While you on the other site can practice there your ability to\n"
+"command and guide the Pingus. You can also get familiar there with\n"
+"all the abilities the Pingus provide and learn to master them,\n"
+"since you will need them all for sure an your journey around the\n"
+"world."
+msgstr ""
+
+#: src/story.cxx:140
+msgid ""
+"Now that you and the Pingus have arrive at tutorial island it\n"
+"is time to take over the command and begin your mission\n"
+"\n"
+"                                                  Good Luck!"
 msgstr ""
 
 # src/System.cc:65 src/System.cc:97
@@ -1314,24 +1487,32 @@ msgstr "Systeem: controle: leesfout bestand"
 msgid "locked"
 msgstr ""
 
+#: src/worldmap/manager.cxx:102
+msgid "Show Ending?"
+msgstr ""
+
+#: src/worldmap/manager.cxx:132
+msgid "Show Story?"
+msgstr ""
+
 # src/SurfaceButton.cc:299
-#: src/worldmap/manager.cxx:66
+#: src/worldmap/manager.cxx:160
 #, fuzzy
 msgid "Leave?"
 msgstr "Niveau"
 
-#: src/worldmap/manager.cxx:93
+#: src/worldmap/manager.cxx:197
 msgid "Enter?"
 msgstr ""
 
 # src/worldmap/PingusWorldMapGraph.cc:152
-#: src/worldmap/worldmap.cxx:68
+#: src/worldmap/worldmap.cxx:73
 #, fuzzy
 msgid "WorldMap: File not found: "
 msgstr "PingusWereldKaart: Bestand niet gevonden: "
 
 # src/PingusLevelDesc.cc:86
-#: src/worldmap/worldmap.cxx:241
+#: src/worldmap/worldmap.cxx:246
 #, fuzzy
 msgid "...walking..."
 msgstr "Laden...."

@@ -1,0 +1,36 @@
+<pingus-prefab>
+  <name>Water</name>
+  <object>
+    <group>
+      <liquid use-old-width-handling="0">
+        <surface><resource type="datafile">
+            <resource-datafile>liquids</resource-datafile>
+            <resource-ident>Liquid/water2</resource-ident>
+            <modifier>ROT0</modifier>
+          </resource></surface>
+        <position>
+          <x-pos>-40</x-pos>
+          <y-pos>525</y-pos>
+          <z-pos>-50</z-pos>
+        </position>
+        <width>20</width>
+        <speed>55</speed>
+      </liquid>
+
+      <liquid use-old-width-handling="0">
+        <surface><resource type="datafile">
+            <resource-datafile>liquids</resource-datafile>
+            <resource-ident>Liquid/water2</resource-ident>
+            <modifier>ROT0</modifier>
+          </resource></surface>
+        <position>
+          <x-pos>-76</x-pos>
+          <y-pos>538</y-pos>
+          <z-pos>100</z-pos>
+        </position>
+        <width>20</width>
+        <speed>60</speed>
+      </liquid>
+    </group>
+  </object>
+</pingus-prefab>
