@@ -24,6 +24,8 @@ libpingus_editor_a_SOURCES = \
      EditorEvent.cc       \
      EditorObj.cc         \
      EditorObj.hh         \
+     EditorObjGroup.cc    \
+     EditorObjGroup.hh    \
      PSMObj.cc            \
      PSMObj.hh            \
      PLFObj.cc            \

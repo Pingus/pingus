@@ -1,4 +1,4 @@
-//  $Id: EditorEvent.cc,v 1.24 2000/07/31 23:45:02 grumbel Exp $
+//  $Id: EditorEvent.cc,v 1.25 2000/08/01 22:40:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,8 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <vector>
+
 #include "../globals.hh"
 #include "../PingusGame.hh"
 #include "../PingusMessageBox.hh"
@@ -26,6 +28,8 @@
 #include "../System.hh"
 #include "../Loading.hh"
 #include "../Display.hh"
+#include "ObjectManager.hh"
+#include "EditorObjGroup.hh"
 #include "StringReader.hh"
 #include "EditorEvent.hh"
 
@@ -314,10 +318,10 @@ EditorEvent::editor_convert_group_to_selection()
   if (object_manager->current_objs.size() == 1)
     {
       EditorObj* obj = *(object_manager->current_objs.begin());
+      EditorObjGroup* group = dynamic_cast<EditorObjGroup*>(obj);
 
-      if (obj->is_group())
+      if (group)
 	{      
-	  EditorObjGroup* group = (EditorObjGroup*)obj;
 	  list<EditorObj*>* objs = group->get_objs();
 	  
 	  object_manager->editor_objs.erase(std::find(object_manager->editor_objs.begin(), object_manager->editor_objs.end(), group));
@@ -352,14 +356,30 @@ EditorEvent::editor_convert_selection_to_group()
   if (object_manager->current_objs.size() > 1)
     {
       EditorObjGroup* group = new EditorObjGroup();
+      std::vector<std::list<EditorObj*>::iterator> to_erase;
 
-      for (ObjectManager::CurrentObjIter i = object_manager->current_objs.begin();
-	   i != object_manager->current_objs.end();
-	   i++)
-	{ 
-	  group->push_back(*i);
-	  object_manager->editor_objs.erase(std::find(object_manager->editor_objs.begin(), object_manager->editor_objs.end(), *i));
+      // We need to collect the objects out of the editor_objs list to keep the correct sorting
+      for (ObjectManager::EditorObjIter j = object_manager->editor_objs.begin();
+	   j != object_manager->editor_objs.end();
+	   j++)
+	{
+	  for (ObjectManager::CurrentObjIter i = object_manager->current_objs.begin();
+	       i != object_manager->current_objs.end();
+	       i++)
+	    { 
+	      if (*j == *i)
+		{
+		  group->push_back(*i);
+		  to_erase.push_back(std::find(object_manager->editor_objs.begin(), object_manager->editor_objs.end(), *i));
+		}
+	    }
 	}
+
+      for(std::vector<std::list<EditorObj*>::iterator>::iterator i = to_erase.begin();
+	  i != to_erase.end();
+	  i++)
+	object_manager->editor_objs.erase(*i);
+
       object_manager->editor_objs.push_back(group);
       object_manager->delete_selection();
       object_manager->add_to_selection(group);

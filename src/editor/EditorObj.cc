@@ -1,4 +1,4 @@
-// $Id: EditorObj.cc,v 1.12 2000/07/31 23:45:02 grumbel Exp $
+// $Id: EditorObj.cc,v 1.13 2000/08/01 22:40:06 grumbel Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,6 +32,8 @@ EditorObj::EditorObj()
   surf = 0;
   x_of = 0;
   y_of = 0;
+  width = 0;
+  height = 0;
   mark_color.r = 0.0;
   mark_color.g = 1.0;
   mark_color.b = 0.0;
@@ -41,6 +43,16 @@ EditorObj::EditorObj()
 EditorObj::~EditorObj()
 {
   
+}
+
+void 
+EditorObj::init()
+{
+  if (surf)
+    {
+      width = surf->get_width();
+      height = surf->get_height();
+    }
 }
 
 EditorObj*
@@ -131,26 +143,13 @@ EditorObj::draw_mark_offset(int x_offset, int y_offset, EditorObj::Color* arg_co
   else
     color = mark_color;
   
-  if (surf) 
-    {
-      Display::draw_rect(pos.x_pos + x_offset + x_of, pos.y_pos + y_offset + y_of,
-			 pos.x_pos + surf->get_width() + x_offset + x_of - 1,
-			 pos.y_pos + surf->get_height() + y_offset + y_of - 1,
-			 color.r, 
-			 color.g,
-			 color.b,
-			 color.a);
-    } 
-  else 
-    {
-      Display::draw_rect(pos.x_pos + x_offset + x_of, pos.y_pos + y_offset + y_of,
-			 pos.x_pos + 10 + x_offset + x_of,
-			 pos.y_pos + 10 + y_offset + y_of,
-			 color.r, 
-			 color.g,
-			 color.b,
-			 color.a);
-    }
+  Display::draw_rect(pos.x_pos + x_offset + x_of, pos.y_pos + y_offset + y_of,
+		     pos.x_pos + get_width() + x_offset + x_of - 1,
+		     pos.y_pos + get_height() + y_offset + y_of - 1,
+		     color.r, 
+		     color.g,
+		     color.b,
+		     color.a);
 }
 
 bool
@@ -224,6 +223,9 @@ EditorObj::save_desc_xml(std::ofstream* xml, ResDescriptor desc)
 	     << desc.res_name
 	     << "</resource-ident>\n";
       break;
+    default:
+      std::cout << "EditorObj::save_desc_xml(): Unhandled resource type" << std::endl;
+      break;
     }
   
   (*xml) << "  </resource></surface>" << std::endl;
@@ -238,161 +240,12 @@ EditorObj::save_position_xml(std::ofstream* xml, Position pos)
 	 << "    <z-pos>" << pos.z_pos << "</z-pos>\n"
 	 << "  </position>\n";
 }
-
-/***************/
-/* EditorObjGroup */
-/***************/
-
-EditorObjGroup::EditorObjGroup()
-{
-}
-
-EditorObjGroup::~EditorObjGroup()
-{
-  for(list<EditorObj*>::iterator i = objs.begin();
-      i != objs.end();
-      i++)
-    {
-      delete *i;
-    }
-}
-
-/** Move the object to the given coordinates */
-void 
-EditorObjGroup::set_position(int new_x_pos, int new_y_pos)
-{
-  for(list<EditorObj*>::iterator i = objs.begin();
-      i != objs.end();
-      i++)
-    {
-      (*i)->set_position(new_x_pos, new_y_pos);
-    }
-}
-
-void 
-EditorObjGroup::set_position_offset(int x_pos_add, int y_pos_add, int z_pos_add)
-{
-  for(list<EditorObj*>::iterator i = objs.begin();
-      i != objs.end();
-      i++)
-    {
-      (*i)->set_position_offset(x_pos_add, y_pos_add, z_pos_add);
-    }
-}
-
-/** Draw the object */
-void
-EditorObjGroup::draw_offset(int x_offset, int y_offset)
-{
-  for(list<EditorObj*>::iterator i = objs.begin();
-      i != objs.end();
-      i++)
-    {
-      (*i)->draw_offset(x_offset, y_offset);
-    }
-}
-
-/** Draw the caputre rectangle around the object */
-void
-EditorObjGroup::draw_mark_offset(int x_offset, int y_offset, EditorObj::Color* arg_color)
-{
-  //std::cout << "Group..." << std::endl;
-  Color tmp_color = mark_color;
-  Color color(0.0, 0.0, 1.0);
-
-  for(list<EditorObj*>::iterator i = objs.begin();
-      i != objs.end();
-      i++)
-    {
-      (*i)->draw_mark_offset(x_offset, y_offset, &color);
-    }
-
-  mark_color = tmp_color;
-}
-
-bool
-EditorObjGroup::mouse_over(int x_offset, int y_offset)
-{
-  for(list<EditorObj*>::iterator i = objs.begin();
-      i != objs.end();
-      i++)
-    {
-      if ((*i)->mouse_over(x_offset, y_offset))
-	{
-	  return true;
-	}
-    }
-  return false;
-}
-
-bool
-EditorObjGroup::is_in_rect(int x1, int y1, int x2, int y2)
-{
-  for(list<EditorObj*>::iterator i = objs.begin();
-      i != objs.end();
-      i++)
-    {
-      if ((*i)->is_in_rect(x1, y1, x2, y2))
-	{
-	  return true;
-	}
-    }
-  return false;
-}
-
-void
-EditorObjGroup::push_back(EditorObj* obj)
-{
-  objs.push_back(obj);
-}
-
-list<EditorObj*>* 
-EditorObjGroup::get_objs()
-{
-  return &objs;
-}
-
-void
-EditorObjGroup::save(std::ofstream* plf, std::ofstream* psm)
-{
-  for(list<EditorObj*>::iterator i = objs.begin();
-      i != objs.end();
-      i++)
-    {
-      (*i)->save(plf, psm);
-    }
-}
-
-///
-void
-EditorObjGroup::save_xml(std::ofstream* xml)
-{
-  (*xml) << "<group>\n";
-  for(list<EditorObj*>::iterator i = objs.begin();
-      i != objs.end();
-      i++)
-    {
-      (*i)->save_xml(xml);
-    }
-  (*xml) << "</group>\n" << std::endl;
-}
-
-EditorObj* 
-EditorObjGroup::duplicate()
-{
-  EditorObjGroup* editor_obj = new EditorObjGroup();
-  
-  for(list<EditorObj*>::iterator i = objs.begin();
-      i != objs.end();
-      i++)
-    {
-      editor_obj->objs.push_back((*i)->duplicate());
-    }
-  return editor_obj;
-}
   
 /*
 $Log: EditorObj.cc,v $
+Revision 1.13  2000/08/01 22:40:06  grumbel
+Some more improvements to the grouping (capture rectangle), fixed the group sorting
+
 Revision 1.12  2000/07/31 23:45:02  grumbel
 Fixed xml reader and writer
 Fixed multi language support

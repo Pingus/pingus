@@ -1,4 +1,4 @@
-//  $Id: ObjectSelector.cc,v 1.27 2000/07/30 01:47:37 grumbel Exp $
+//  $Id: ObjectSelector.cc,v 1.28 2000/08/01 22:40:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -114,49 +114,6 @@ ObjectSelector::get_trap()
 	  return 0;
 	}
     }
-
-  /*
-  while (!have_name)
-    {
-      CL_Display::clear_display();
-      font->print_left(20, 20, "Select a trap");
-      j = -3;
-      
-      for(vector<string>::iterator i = traps.begin(); i != traps.end(); i++, j += font->get_height())
-	{
-	  if (verbose) cout << "Trap Name: " << *i << endl;
-
-	  if (i == current_trap)
-	    CL_Display::fill_rect(10, 150 + j, 200, 170 + j,
-				  0.5, 0.5, 0.5, 1.0);
-	  
-	  font->print_left(20,150 + j, i->c_str());
-	}
-      
-      Display::flip_display();
-
-      switch (read_key()) 
-	{
-	case CL_KEY_DOWN:
-	  current_trap++;
-	  
-	  if (current_trap == traps.end())
-	    current_trap--;
-	  break;
-	  
-	case CL_KEY_UP:
-	  if (current_trap != traps.begin())
-	    current_trap--;
-	  break;
-	  
-	case CL_KEY_ENTER:
-	  trap.type = *current_trap;
-	  have_name = true;
-	  break;
-	default:
-	  cout << "ObjectSelector:get_trap(): Unknow key pressed" << endl;
-	}
-    }*/
  
   // FIXME: Can somebody enlight me, why gcc gives here a warrning?: 
   // ObjectSelector.cc:107: warning: control reaches end of non-void function `ObjectSelector::get_trap()'
@@ -415,6 +372,9 @@ ObjectSelector::read_string(string description, string def_str)
 /*
 
 $Log: ObjectSelector.cc,v $
+Revision 1.28  2000/08/01 22:40:06  grumbel
+Some more improvements to the grouping (capture rectangle), fixed the group sorting
+
 Revision 1.27  2000/07/30 01:47:37  grumbel
 XML support, currently not activated
 

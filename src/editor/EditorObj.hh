@@ -1,4 +1,4 @@
-//  $Id: EditorObj.hh,v 1.14 2000/07/31 23:45:02 grumbel Exp $
+//  $Id: EditorObj.hh,v 1.15 2000/08/01 22:40:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,9 +41,12 @@ class EditorObj
 protected:
   Position pos;
   
-public:
   ///
   int x_of, y_of;
+  ///
+  int width;
+  ///
+  int height;
 
   ///
   struct Color {
@@ -68,12 +71,16 @@ public:
   CL_Surface* surf;
   ///
   ResDescriptor desc;
-  
+
+public:
   ///
   EditorObj();
   ///
   virtual ~EditorObj();
 
+  /** This function needs to be called after the surface is set, it
+      starts then to calculate width and height of the object */
+  virtual void init();
   ///
   static EditorObj* create(SurfaceData);
   ///
@@ -95,9 +102,6 @@ public:
   bool operator> (const EditorObj& w);
   //@}
 
-  /// Return true if the object is a group of objects
-  virtual bool is_group() { return false; } 
-
   /** Members to manipulate the objects position */
   //@{
   /** Move the object to the given coordinates */
@@ -111,6 +115,11 @@ public:
   virtual int get_y_pos() { return pos.y_pos; }
   /// Return the object z_pos
   virtual int get_z_pos() { return pos.z_pos; }
+
+  /// Return the object width
+  virtual int get_width() { return width; }
+  /// Return the object height
+  virtual int get_height() { return height; }
   //@}
 
   /** Draw the object */
@@ -152,51 +161,6 @@ public:
     {
       return (*a) < (*b);
     }
-};
-
-class EditorObjGroup : public EditorObj
-{
-private:
-  list<EditorObj*> objs;
-public:
-  EditorObjGroup();
-  virtual ~EditorObjGroup();
-
-
-  /// Return true if the object is a group of objects
-  virtual bool is_group() { return true; } 
-  
-  ///
-  virtual void set_position_offset(int x_pos_add, int y_pos_add, 
-				   int z_pos_add =0);
-  ///
-  virtual void set_position(int new_x_pos, int new_y_pos);
-
-  /** Draw the object */
-  virtual void   draw_offset(int, int);
-
-  /** Draw the caputre rectangle around the object */
-  virtual void   draw_mark_offset(int, int, EditorObj::Color* arg_color = 0);
-
-  /** Return true when the mouse is over the current object */
-  virtual bool   mouse_over(int, int);
-
-  /** Return true if the current object is inside the current
-      selection rectangle */
-  virtual bool   is_in_rect(int x1, int y1, int x2, int y2);
-
-  /** Add an object to the group */
-  virtual void EditorObjGroup::push_back(EditorObj*);
-
-  ///
-  virtual list<EditorObj*>* EditorObjGroup::get_objs();
-
-  ///
-  virtual void   save(std::ofstream* plf, std::ofstream* psm);
-  ///
-  virtual void   save_xml(std::ofstream* xml);
-  ///
-  virtual EditorObj* duplicate();
 };
 
 #endif
