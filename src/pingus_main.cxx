@@ -694,6 +694,11 @@ PingusMain::init_path_finder()
         std::cout << "setlocale returned '" << ret << "'" << std::endl;
     }
 
+  if ((ret = setlocale (LC_CTYPE, "")) == NULL)
+    {
+      std::cout << "ERROR: setlocale LC_CTYPE failed!" <<  std::endl;
+    }
+
 #ifndef WIN32
   bindtextdomain(PACKAGE, path_manager.complete("/../../locale/").c_str());
 #else
