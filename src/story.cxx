@@ -1,4 +1,4 @@
-//  $Id: story.cxx,v 1.26 2003/04/19 10:23:17 torangan Exp $
+//  $Id: story.cxx,v 1.27 2003/04/21 18:07:21 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,9 +43,9 @@ Story::init_credits()
       StringFormat::break_line(
       _("Now after you and the Pingus have learned the basics and\n"
         "practiced a bit it is time to move on and begin the journey into\n"
-        "the world. Since the floe with which the Pingus traveled to the\n"
-        "Tutorial Island isn't going to hold the whole way into the warmer\n"
-        "climated regions the Pingus have to find something else to guide\n"
+        "the world. Since the flow with which the Pingus traveled to the\n"
+        "Tutorial Island isn't going to hold on the whole way into the warmer\n"
+        "climates the Pingus have to find something else to guide\n"
         "them on their journey.\n"), 570, Fonts::chalk_normal)
         ));
 
@@ -54,10 +54,10 @@ Story::init_credits()
      (ResDescriptor("Story/credits2", "story"),
       StringFormat::break_line(
       _("But as the eldest have said, the Tutorial Island provides not\n"
-        "only a way to practive, but it is also the starting point into\n"
-        "the world. After some search the Pingus discovered the meaning\n"
-        "of this, the large tree at the end of the island provides good\n"
-        "wood to construct a float.\n"), 570, Fonts::chalk_normal)
+        "only a good way to practice, but it is also the starting point into\n"
+        "the world. After some searching the Pingus discovered the meaning\n"
+        "of this, and they found the large tree at the end of the island\n"
+        "which gave them wood to construct a float.\n"), 570, Fonts::chalk_normal)
        ));
 
   credits.pages.push_back
@@ -65,8 +65,8 @@ Story::init_credits()
      (ResDescriptor("Story/credits3", "story"),
       StringFormat::break_line(
       _("So the Pingus set out and constructed some large floats, enough\n"
-        "to carry them all. After also packaging up a bunch of provisions\n"
-        "they where prepared to finally start of their journey and leave\n"
+        "to carry them all. After also packing a bunch of provisions\n"
+        "they were prepared to start of their journey and leave\n"
         "their familiar ground and enter the unknown parts of the world.\n"), 570, Fonts::chalk_normal)
         ));
 
@@ -74,7 +74,7 @@ Story::init_credits()
     (StoryPage
      (ResDescriptor("Story/credits4", "story"),
       StringFormat::break_line(
-      _("So the Pingus sat on their float, worrying whats to come and\n"
+      _("So the Pingus sat on their float, worrying about what's to come and\n"
         "where to go, while floating into the sunset.\n"
         "\n"
         "To be continued..."), 570, Fonts::chalk_normal)
@@ -91,8 +91,8 @@ Story::init_intro()
     (StoryPage
      (ResDescriptor("Story/story0", "story"),
       StringFormat::break_line(
-      _("For a long time now the Pingus have lived happily in peace on the\n"
-        "south pole along with all the other animals. Everything was in\n"
+      _("For a long time, the Pingus have lived happily in peace on the\n"
+        "South Pole along with all the other animals. Everything was in\n"
         "balance and it seemed like nothing could disrupt their peace.  The\n"
         "Pingus where happy and it seemed like this could never end.\n"), 570, Fonts::chalk_normal)
        ));
@@ -101,8 +101,8 @@ Story::init_intro()
     (StoryPage
      (ResDescriptor("Story/story1", "story"),
       StringFormat::break_line(
-      _("But then one day, things began to slowly change, the sky got darker\n"
-        "and the earth got warmer, first of they thought this was just a\n"
+      _("But then one day, things began to change slowly, the sky got darker\n"
+        "and the earth got warmer. Firstly, they thought this was just a\n"
         "normal fluctuation in the world's climate, but things seemed to get\n"
         "worse and worse with every year."), 570, Fonts::chalk_normal)
        ));
@@ -112,10 +112,10 @@ Story::init_intro()
     (StoryPage
      (ResDescriptor("Story/story2", "story"),
       StringFormat::break_line(
-      _("The snow began to melt away in a few regions and food became an\n"
-        "issue. Other animals tended to leave the region to search\n"
+      _("The snow began to melt away in a few areas and food became an\n"
+        "issue. Other animals tried to leave the region to search\n"
         "for colder areas, but the Pingus knew that this wouldn't help,\n"
-        "they knew that they had to do something about this problem."), 570, Fonts::chalk_normal)
+        "they knew that they had to do something about this."), 570, Fonts::chalk_normal)
        ));
 
   intro.pages.push_back
@@ -125,7 +125,7 @@ Story::init_intro()
       _("So the circle of the eldest came together to decide what to do\n"
         "about it. They decided to send out an expedition around the world\n"
         "to find the cause for this warming. The expedition consisted of\n"
-        "hundreds of the bravest Pingus around on the south pole."), 570, Fonts::chalk_normal)
+        "hundreds of the bravest Pingus around on the South Pole."), 570, Fonts::chalk_normal)
        ));
 
   intro.pages.push_back
@@ -134,19 +134,19 @@ Story::init_intro()
       StringFormat::break_line(
       _("And they picked you to lead them on their journey around the\n"
         "world. Since the journey will be dangerous and difficult, your\n"
-        "first goal is the Island of Mogorok, also known has Tutorial\n"
+        "first goal is the Island of Mogorok, also known as the Tutorial\n"
         "Island. According to the eldest, this island has always been the\n"
-        "first stop of Pingus that where send out into the world."), 570, Fonts::chalk_normal)
+        "first stop of Pingus that were send out into the world."), 570, Fonts::chalk_normal)
        ));
 
   intro.pages.push_back
     (StoryPage
      (ResDescriptor("Story/story5", "story"),
       StringFormat::break_line(
-      _("The island consists of many regions which are ideal to train the\n"
-        "abilities of the Pingus. The Pingus can there train their ability\n"
+      _("The island consists of many areas which are ideal to train the\n"
+        "abilities of the Pingus. The Pingus can train their ability\n"
         "to build bridges, climb, bash and all the rest of their talents\n"
-        "which they will surely need on their long and dangerous journey."), 570, Fonts::chalk_normal)
+        "which they will need on their long and dangerous journey."), 570, Fonts::chalk_normal)
        ));
 
   intro.pages.push_back
@@ -156,7 +156,7 @@ Story::init_intro()
       _("You may, on the other hand, practice there your ability to\n"
         "command and guide the Pingus. You can also get familiar with\n"
         "all the abilities the Pingus provide and learn to master them,\n"
-        "since you will need them all for sure on your journey around the\n"
+        "since you will need all of them on your journey around the\n"
         "world."), 570, Fonts::chalk_normal)
        ));
 
