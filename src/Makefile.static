@@ -3,7 +3,7 @@ LDADD = caimagemanipulation/libcaimagemanipulation.a         worldobjs/libpingus
 LIBS =   libclanstatic.a libHermes.a \
 -L/usr/X11R6/lib/ \
 -lpthread \
--lxml \
+-lxml2 \
 -lm \
 -lbz2 \
 -ldl \

@@ -1,4 +1,4 @@
-//  $Id: bomber.cc,v 1.23 2001/06/11 08:45:21 grumbel Exp $
+//  $Id: bomber.cc,v 1.24 2001/08/02 21:51:03 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,7 +36,6 @@ void
 Bomber::init()
 {
   particle_thrown = false;
-  action_name = "Bomber";
   exploded = false;
   
   // Only load the surface again if no static_surface is available
@@ -52,7 +51,6 @@ Bomber::init()
   sprite.set_align_center_bottom ();
 
   sound_played = false;
-  environment = (PinguEnvironment)(land | sky);
   pingu->set_status(not_catchable);
 }
 

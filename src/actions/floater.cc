@@ -1,4 +1,4 @@
-//  $Id: floater.cc,v 1.13 2001/07/24 21:39:45 grumbel Exp $
+//  $Id: floater.cc,v 1.14 2001/08/02 21:51:03 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,7 +22,6 @@
 
 Floater::Floater()
 {
-  is_multi_direct = false;
 }
 
 void
@@ -30,8 +29,6 @@ Floater::init(void)
 {
   falling_depth = 0;
   step = 0;
-  environment = PinguEnvironment(sky | land);
-  action_name = "floater";
   sprite = Sprite ("Pingus/floater0", "pingus");
   sprite.set_align_center_bottom ();
 }

@@ -1,4 +1,4 @@
-//  $Id: Pingu.cc,v 1.58 2001/07/22 12:47:00 grumbel Exp $
+//  $Id: Pingu.cc,v 1.59 2001/08/02 21:51:02 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -61,7 +61,7 @@ Pingu::Pingu(const CL_Vector& arg_pos, int owner)
 
   action_time = -1;
 
-  environment = (PinguEnvironment)land;
+  environment = (PinguEnvironment)ENV_LAND;
 
   // Set the velocity to zero
   velocity.x = 0;
@@ -151,7 +151,7 @@ Pingu::set_action(shared_ptr<PinguAction> act)
       
       for(std::vector<shared_ptr<PinguAction> >::iterator i = persist.begin(); i != persist.end(); i++)
 	{
-	  if ((*i)->name() == act->name()) 
+	  if ((*i)->get_name() == act->get_name()) 
 	    {
 	      if (pingus_debug_flags & PINGUS_DEBUG_ACTIONS)
 		std::cout << "Not using action, we have allready" << std::endl;
@@ -164,7 +164,7 @@ Pingu::set_action(shared_ptr<PinguAction> act)
     } 
   else 
     {
-      if (act->get_environment() == (PinguEnvironment)always)
+      if (act->get_environment() == (PinguEnvironment)ENV_ALWAYS)
 	{
 	  action = act;
 	  return 1;
@@ -178,7 +178,7 @@ Pingu::set_action(shared_ptr<PinguAction> act)
     
       if (act->activation_time() == -1)
 	{ // Immediately activate the action
-	  if (action.get() && (action->name() == act->name()))
+	  if (action.get() && (action->get_name() == act->get_name()))
 	    {
 	      if (pingus_debug_flags & PINGUS_DEBUG_ACTIONS)
 		std::cout << "Pingu: Already have action" << std::endl;
@@ -189,7 +189,7 @@ Pingu::set_action(shared_ptr<PinguAction> act)
 	}
       else 
 	{ // Use the activation time, given by t
-	  if (sec_action.get() && sec_action->name() == act->name())
+	  if (sec_action.get() && sec_action->get_name() == act->get_name())
 	    {
 	      return false;
 	    }
@@ -233,16 +233,10 @@ Pingu::set_status(PinguStatus s)
 bool
 Pingu::is_over(int x, int y)
 {
-  // FIXME: We should use the x/y_offset here
-  if (x > pos.x + x_offset() && x < pos.x + x_offset() + 32
-      && y > pos.y + y_offset() && y < pos.y + y_offset() + 32)
-    {
-      return true;
-    } 
-  else 
-    {
-      return false;
-    }
+  CL_Vector center = get_center_pos ();
+
+  return (center.x + 16 > x && center.x - 16 < x &&
+	  center.y + 16 > y && center.y - 16 < y);
 }
 
 bool
@@ -267,20 +261,20 @@ Pingu::dist (int x, int y)
 void
 Pingu::update_persistent(float delta)
 {
-  if (environment == sky && action.get() == 0 && rel_getpixel(0, -1) == ColMap::NOTHING) 
+  if (environment == ENV_AIR && action.get() == 0 && rel_getpixel(0, -1) == ColMap::NOTHING) 
     {
       for (unsigned int i=0; i < persist.size(); ++i) 
 	{
 	  if (persist[i]->get_type() & (ActionType)FALL) 
 	    {
-	      if (action.get() && persist[i]->name() == action->name()) 
+	      if (action.get() && persist[i]->get_name() == action->get_name()) 
 		{
 		  if (pingus_debug_flags & PINGUS_DEBUG_ACTIONS)
 		    std::cout << "Pingu: Not using action, we already did." << std::endl;
 		} 
 	      else 
 		{
-		  set_paction(world->get_action_holder()->get_uaction(persist[i]->name()));
+		  set_paction(world->get_action_holder()->get_uaction(persist[i]->get_name()));
 		}
 	    }
 	}
@@ -398,7 +392,7 @@ Pingu::update_falling(float delta)
       ++falling;
 	  
       if (falling > 3) 
-	environment = sky; 
+	environment = ENV_AIR; 
     }
   else // Ping is on ground
     {
@@ -426,7 +420,7 @@ Pingu::update_falling(float delta)
 void 
 Pingu::update_walking(float delta)
 {
-  environment = land;
+  environment = ENV_LAND;
 
   if (rel_getpixel(0,-1) & ColMap::WATER)
     {
@@ -466,7 +460,7 @@ Pingu::update_walking(float delta)
 	    {
 	      if (persist[i]->get_type() & (ActionType)WALL) 
 		{
-		  if (action.get() && persist[i]->name() == action->name()) 
+		  if (action.get() && persist[i]->get_name() == action->get_name()) 
 		    {
 		      if (pingus_debug_flags & PINGUS_DEBUG_ACTIONS)
 			std::cout << "Pingu: Not using action, we already did." << std::endl;
@@ -475,7 +469,7 @@ Pingu::update_walking(float delta)
 		    {
 		      if (pingus_debug_flags & PINGUS_DEBUG_ACTIONS)
 			std::cout << "Pingu: We are in front of a wall, setting persistant action" << std::endl;
-		      set_paction(world->get_action_holder()->get_uaction(persist[i]->name()));
+		      set_paction(world->get_action_holder()->get_uaction(persist[i]->get_name()));
 		    }
 		  return;
 		}
@@ -602,31 +596,18 @@ Pingu::set_id(int i)
   return (id = i);
 }
 
-int
-Pingu::x_offset(void)
-{
-  if (action.get())
-    return action->x_offset();
-  else
-    return -16;
-}
-
-int
-Pingu::y_offset(void)
-
-{
-  if (action.get()) 
-    return action->y_offset();
-  else 
-    return -32;
-}
-
 void
 Pingu::apply_force(CL_Vector arg_v)
 {
   velocity += arg_v;
   // Moving the pingu on pixel up, so that the force can take effect
   pos.y -= 1; 
+}
+
+CL_Vector
+Pingu::get_center_pos ()
+{
+  return pos + CL_Vector (0, -16); 
 }
 
 bool

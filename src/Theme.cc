@@ -1,4 +1,4 @@
- //  $Id: Theme.cc,v 1.29 2001/07/27 21:53:22 grumbel Exp $
+ //  $Id: Theme.cc,v 1.30 2001/08/02 21:51:02 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -50,6 +50,8 @@ Theme::load(std::string filename)
   if (verbose) std::cout << "Theme: loading: " << filename << std::endl;
   plt.parse(filename);
   if (verbose > 1) std::cout << "Theme: Surface: " << plt.get_surface() << std::endl;
+
+  title_name = System::translate(plt.get_name());
 
   level_filenames = plt.get_levels();
   load_levels();
@@ -147,9 +149,9 @@ Theme::draw_title()
 	}
     }
   
-  if (System::translate(plt.get_name()) != "-") 
+  if (title_name != "-") 
     {
-      title->print_center(x_center, y_pos, System::translate(plt.get_name()).c_str());
+      title->print_center(x_center, y_pos, title_name.c_str());
       y_pos += 50;
     }
 

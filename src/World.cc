@@ -1,4 +1,4 @@
-//  $Id: World.cc,v 1.50 2001/06/11 20:40:16 grumbel Exp $
+//  $Id: World.cc,v 1.51 2001/08/02 21:51:02 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -75,7 +75,7 @@ World::World(boost::shared_ptr<PLF> plf)
 
 World::~World()
 {
-  std::cout << "World:~World" << std::endl;
+  //std::cout << "World:~World" << std::endl;
 
   /*  for (vector<shared_ptr<Background> >::iterator i = backgrounds.begin();
       i != backgrounds.end(); i++)

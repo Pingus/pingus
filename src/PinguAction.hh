@@ -1,4 +1,4 @@
-//  $Id: PinguAction.hh,v 1.19 2001/07/27 15:00:47 grumbel Exp $
+//  $Id: PinguAction.hh,v 1.20 2001/08/02 21:51:02 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -47,28 +47,15 @@ enum ActionType
 class PinguAction
 {
 protected:
-  // True if the animation differ in both direction. draw_offset() then
-  /// handle the case apropried.
-  bool is_multi_direct;
-
   /** A pointer to the pingu, which hold the action. */
   Pingu*      pingu;
 
-  /// The enviroment of the action (see PinguEnvironment).
-  PinguEnvironment environment;
-
-  /// The name of the action, needs to be set in PinguAction::init().
-  std::string action_name;
-
 public:
   /** Indicate if the action should be canceled at the next possible
-      point. Bug: Only keeped public for lazyness. */
+      point. FIXME: Only keeped public for lazyness. */
   bool is_finished;
 
   PinguAction();
-
-public:
-  ///
   virtual ~PinguAction();
 
   /// Gives the PinguAction class access to the data of the Pingu.
@@ -79,7 +66,7 @@ public:
 
   /** Returns the enviroment, used to check if an action can be
       applied. */
-  PinguEnvironment get_environment();
+  virtual PinguEnvironment get_environment() const =0;
   
   /** Used to load all data, which is needed by the action, its
       seperated and called in set_pingu(), because some data will be
@@ -91,18 +78,13 @@ public:
 
   /** Draws the surfaced defined by the action, can be overwritten if
       the action needs a more complicated way of drawing. */
-  virtual void  draw_offset(int x, int y, float s);
-
-  ///
-  virtual int    x_offset(void);
-  ///
-  virtual int    y_offset(void);
+  virtual void  draw_offset(int x, int y, float s) =0;
 
   /// Returns the action type
   virtual ActionType get_type(void);
 
   /// The name of the action, used in PinguInfo.hh
-  const std::string& name(void);
+  virtual std::string get_name(void) const =0;
   
   /// Catch another pingu and act on it (see blocker.hh)
   virtual bool  need_catch();

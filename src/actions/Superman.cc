@@ -1,4 +1,4 @@
-//  $Id: Superman.cc,v 1.1 2001/07/21 20:41:03 grumbel Exp $
+//  $Id: Superman.cc,v 1.2 2001/08/02 21:51:03 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,8 +29,6 @@ Superman::init()
 {
   x_pos = pingu->pos.x;
   counter = 0.0;
-  action_name = "Superman";
-  environment = (PinguEnvironment)land;
   sprite = Sprite (PingusResource::load_surface 
 		   ("Pingus/superman" + to_string(pingu->get_owner ()),
 		    "pingus"));

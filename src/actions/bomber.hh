@@ -1,4 +1,4 @@
-//  $Id: bomber.hh,v 1.13 2001/06/11 08:45:21 grumbel Exp $
+//  $Id: bomber.hh,v 1.14 2001/08/02 21:51:03 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,20 +41,15 @@ private:
   CL_Surface explo_surf;
 
 public:
-  ///
   Bomber();
-  ///
+  
   void   init(void);
-  ///
+  std::string get_name () const { return "Bomber"; }
+  PinguEnvironment get_environment() const { return PinguEnvironment(ENV_LAND|ENV_AIR); }
   void   draw_offset(int x, int y, float s);
-  ///
   void   update(float delta);
-  ///
   bool   can_reset() { return false; }
-  ///
   int    activation_time() { return 50; }
-  ///
-  PinguAction* allocate(void);
 };
 
 REGISTER_PINGUACTION(BomberFactory, Bomber, "bomber");

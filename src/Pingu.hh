@@ -1,4 +1,4 @@
-//  $Id: Pingu.hh,v 1.31 2001/07/22 12:47:00 grumbel Exp $
+//  $Id: Pingu.hh,v 1.32 2001/08/02 21:51:02 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -103,8 +103,14 @@ public:
   /** @return The world the pingu lives in */
   static World* get_world();
 
-  /** Return the pingus position */
+  /** Return the logical pingus position, this is the position which
+      is used for collision detection to the ground (the pingus
+      feet) */
   CL_Vector get_pos () { return pos; }
+
+  /** Returns the visible position of the pingu, the graphical center
+      of the pingu. */
+  CL_Vector get_center_pos ();
 
   /** Returns the x position of the pingu
    * For backward comp. only
@@ -114,15 +120,6 @@ public:
   /** Returns the y position of the pingu
       For backward comp. only */
   int  get_y(void);
-
-  /** FIXME: Ugly hack to get the sprites drawn at the correct
-      positions, can be removed when Sprite is available */
-  int  x_offset(void);
-  
-  /** FIXME: Ugly hack to get the sprites drawn at the correct
-      positions, can be removed when Sprite is available */
-  int  y_offset(void);
-  
   ///
   PinguEnvironment get_environment(); 
 

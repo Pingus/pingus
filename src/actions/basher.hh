@@ -1,4 +1,4 @@
-//  $Id: basher.hh,v 1.13 2001/06/09 20:37:35 grumbel Exp $
+//  $Id: basher.hh,v 1.14 2001/08/02 21:51:03 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,20 +31,17 @@ private:
   int basher_c;
   bool first_bash;
 public:
-  ///
   Basher();
-  ///
+  virtual ~Basher() {}
+  
   void   init(void);
-  ///
+  std::string get_name () const { return "Basher"; }
+  PinguEnvironment get_environment() const { return PinguEnvironment(ENV_LAND); }
   void draw_offset(int x, int y, float s);
-  ///
-  void   update(float delta);
-  ///
-  bool   have_something_to_dig();
-  ///
-  void   walk_forward();
-  ///
-  void   bash();
+  void update(float delta);
+  bool have_something_to_dig();
+  void walk_forward();
+  void bash();
 };
 
 REGISTER_PINGUACTION(BasherFactory, Basher, "basher");

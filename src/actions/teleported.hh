@@ -24,24 +24,19 @@
 class Teleported : public PinguAction
 {
 private:
-  ///
   bool particle_thrown;
-  ///
   bool sound_played;
   Sprite sprite;
 public:
-  ///
   Teleported();
 
-  ///
-  PinguAction* allocate(void);
-  ///
-  void   init(void);
-  ///
-  void   update(float delta);
+  std::string get_name() const { return "LaserKill"; }
+  PinguEnvironment get_environment() const { return (PinguEnvironment)ENV_LAND; }
+  void init(void);
+  void update(float delta);
+  void  draw_offset(int x, int y, float s);
 
-  ///
-  int x_target, y_target;
+  int x_target, y_target; // <- FIXME: Ugly!
 };
 
 REGISTER_PINGUACTION(TeleportedFactory, Teleported, "teleported");

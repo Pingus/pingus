@@ -1,4 +1,4 @@
-//  $Id: Teleporter.hh,v 1.14 2001/07/24 21:39:47 grumbel Exp $
+//  $Id: Teleporter.hh,v 1.15 2001/08/02 21:51:03 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -71,9 +71,7 @@ class EditorTeleporterTargetObj : public EditorObj
 {
 public:
   /// Basic constructor
-  EditorTeleporterTargetObj ();
   EditorTeleporterTargetObj (WorldObjData* obj, CL_Vector*);
-
   virtual ~EditorTeleporterTargetObj () {}
     
   static std::list<boost::shared_ptr<EditorObj> > create (TeleporterData*);

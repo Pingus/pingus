@@ -1,4 +1,4 @@
-//  $Id: Waiter.cc,v 1.14 2001/05/20 13:00:58 grumbel Exp $
+//  $Id: Waiter.cc,v 1.15 2001/08/02 21:51:03 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,11 +38,9 @@ Waiter::update(float delta)
 void
 Waiter::init()
 {
-  action_name = " Bridger ";
   sprite = PingusResource::load_surface ("Pingus/blocker0", "pingus");
   sprite.set_align_center_bottom ();
   countdown = 2.0;
-  environment = (PinguEnvironment)always;
 }
 
 void

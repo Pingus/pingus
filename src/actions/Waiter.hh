@@ -1,4 +1,4 @@
-//  $Id: Waiter.hh,v 1.7 2001/05/18 19:17:08 grumbel Exp $
+//  $Id: Waiter.hh,v 1.8 2001/08/02 21:51:03 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,7 +35,8 @@ public:
   Waiter();
   /// 
   void init();
-  ///
+  std::string get_name() const { return "Waiter"; }
+  PinguEnvironment get_environment() const { return ENV_LAND; }
   void update(float delta);
   void  draw_offset(int x, int y, float s);
 };

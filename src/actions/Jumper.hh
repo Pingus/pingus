@@ -1,4 +1,4 @@
-//  $Id: Jumper.hh,v 1.11 2001/04/20 20:53:54 grumbel Exp $
+//  $Id: Jumper.hh,v 1.12 2001/08/02 21:51:02 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,16 +27,15 @@
 class Jumper : public PinguAction
 {
 private:
-  ///
   Sprite sprite;
 public:
-  ///
   Jumper();
 
-  ///
   void  init(void);
-  ///
+  PinguEnvironment get_environment () const { return (PinguEnvironment)ENV_LAND; }
+  std::string get_name() const { return "Jumper"; }
   void  update(float delta);
+  void  draw_offset(int x, int y, float s);
 };
 
 REGISTER_PINGUACTION(JumperFactory, Jumper, "jumper");

@@ -1,4 +1,4 @@
-//  $Id: CaptureRectangle.cc,v 1.9 2001/06/11 08:45:21 grumbel Exp $ 
+//  $Id: CaptureRectangle.cc,v 1.10 2001/08/02 21:51:02 grumbel Exp $ 
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #include <cstdio>
 #include <cassert>
 #include <boost/smart_ptr.hpp>
+#include "boost/dummy_ptr.hpp"
 
 #include "globals.hh"
 #include "Pingu.hh"
@@ -28,6 +29,7 @@
 #include "StringConverter.hh"
 #include "PinguAction.hh"
 #include "PingusResource.hh"
+#include "Sprite.hh"
 #include "CaptureRectangle.hh"
 
 using namespace boost;
@@ -36,14 +38,17 @@ shared_ptr<Pingu> CaptureRectangle::pingu;
 shared_ptr<PinguAction> CaptureRectangle::button_action;
 
 CaptureRectangle::CaptureRectangle()
-  : owner_id (0)
+  : owner_id (0),
+    good (PingusResource::load_surface("Cursors/capgood", "game")),
+    bad (PingusResource::load_surface("Cursors/capbad",  "game")),
+    font (PingusResource::load_font("Fonts/courier_small", "fonts")),
+    arrow_left (PingusResource::load_surface("Cursors/arrow_left",  "game")),
+    arrow_right (PingusResource::load_surface("Cursors/arrow_right", "game"))
 {
-  good = PingusResource::load_surface("Cursors/capgood", "game");
-  bad  = PingusResource::load_surface("Cursors/capbad",  "game"); 
-  font = PingusResource::load_font("Fonts/courier_small", "fonts");
-
-  arrow_left  = PingusResource::load_surface("Cursors/arrow_left",  "game"); 
-  arrow_right = PingusResource::load_surface("Cursors/arrow_right", "game"); 
+  good.set_align_center ();
+  bad.set_align_center ();
+  arrow_left.set_align_center ();
+  arrow_right.set_align_center ();
 } 
 
 CaptureRectangle::~CaptureRectangle()
@@ -59,54 +64,44 @@ CaptureRectangle::draw_offset(int x_offset, int y_offset, float s)
     } 
   else 
     {
-      CL_Surface sur;
+      boost::dummy_ptr<Sprite> sur;
       
       if (button_action.get() 
 	  && (button_action->get_environment() & pingu->get_environment()))
-	{
-	  sur = bad;
-	} 
+	sur = &bad;
       else 
-	{
-	  sur = good;
-	}
-    
+	sur = &good;
+      
       if (s == 1.0) 
 	{
 	  // Draw the caputure rectangle
-	  sur.put_screen(pingu->get_x() + pingu->x_offset() + x_offset - 4,
-			 pingu->get_y() + pingu->y_offset() + y_offset - 4);
-
+	  sur->put_screen(pingu->get_center_pos() + CL_Vector(x_offset,y_offset));
+	  
 	  // If pingu has an action, print its name
 	  if (pingu->get_action().get()) 
 	    {
-	      font->print_center(pingu->get_x() + pingu->x_offset() + x_offset + 16,
-				 pingu->get_y() + pingu->y_offset() + y_offset - 16,
-				 pingu->get_action()->name().c_str());
+	      font->print_center(pingu->get_center_pos().x + x_offset,
+				 pingu->get_center_pos().y + y_offset - 32,
+				 pingu->get_action()->get_name().c_str());
 	    }
-
-	  font->print_center(pingu->get_x() + pingu->x_offset() + x_offset + 16,
-			     pingu->get_y() + pingu->y_offset() + y_offset - 16 + 62,
-			     to_string(pingu->get_owner()).c_str());
+	  /*font->print_center(pingu->get_center_pos().x + x_offset,
+			     pingu->get_center_pos().y + y_offset - 16 + 62,
+			     to_string(pingu->get_owner()).c_str());*/
 	  
 
 	  // Paint the direction arrow
 	  if (pingu->direction.is_left()) 
 	    {
-	      arrow_left.put_screen(pingu->get_x() + x_offset - 10,
-				     pingu->get_y() + y_offset + 4);
+	      arrow_left.put_screen(pingu->get_center_pos() + CL_Vector (x_offset, y_offset + 28));
 	    }
 	  else
 	    {
-	      arrow_right.put_screen(pingu->get_x() + x_offset - 10,
-				     pingu->get_y() + y_offset + 4);
+	      arrow_right.put_screen(pingu->get_center_pos() + CL_Vector (x_offset, y_offset + 28));
 	    }
 	} 
       else 
 	{
-	  sur.put_screen(int(pingu->get_x() + pingu->y_offset() + x_offset * s) - 4,
-			  int(pingu->get_y() + pingu->y_offset() + y_offset * s) - 4,
-			  s, s);
+	  sur->put_screen(pingu->get_center_pos() + CL_Vector (x_offset, y_offset));
 	}
     }
 }

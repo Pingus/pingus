@@ -1,4 +1,4 @@
-//  $Id: Jumper.cc,v 1.14 2001/06/11 08:45:21 grumbel Exp $
+//  $Id: Jumper.cc,v 1.15 2001/08/02 21:51:02 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,12 +28,14 @@ Jumper::Jumper()
 void
 Jumper::init(void)
 {
-  action_name = "Jumper";
-  
   sprite = Sprite("Pingus/jumper" + to_string(pingu->get_owner ()),
 		  "pingus");
+}
 
-  environment = (PinguEnvironment)(land);
+void 
+Jumper::draw_offset(int x, int y, float s)
+{
+  sprite.put_screen (x, y);
 }
 
 void

@@ -1,4 +1,4 @@
-//  $Id: PinguAction.cc,v 1.16 2001/07/27 15:00:47 grumbel Exp $
+//  $Id: PinguAction.cc,v 1.17 2001/08/02 21:51:02 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -80,74 +80,10 @@ PinguAction::rel_getpixel(int x, int y)
   return pingu->get_world()->get_colmap()->getpixel(pingu->get_x() + (x * pingu->direction), (pingu->get_y ()) - y);
 }
 
-void
-PinguAction::draw_offset(int x, int y, float s)
-{
-  std::cout << action_name << ": Bug: draw_offset no longer supported" << std::endl;
-  // FIXME: This can be removed
-  if (pingu->get_status() == dead || pingu->get_status() == exited)
-    {
-      std::cout << "PinguAction: This should never be reached, please report." << std::endl;
-      assert(0);
-      return;
-    }
-  
-  if (s == 1.0) 
-    {
-      if (is_multi_direct) 
-	{
-	  //surface.put_screen(pingu->get_x () + x + x_offset(), pingu->get_y () + y + y_offset(), 
-			     //		     ++counter + ((pingu->direction.is_left()) ? 0 : counter.size()));
-	} 
-      else 
-	{
-	  //	  surface.put_screen(pingu->get_x () + x + x_offset(), pingu->get_y () + y + y_offset(),
-	  //++counter);
-	}
-    } 
-  else 
-    {
-      if (is_multi_direct) 
-	{
-	  //surface.put_screen(int((pingu->get_x () + x + x_offset()) * s), int((pingu->get_y () + y + y_offset()) * s), 
-	  //			      s, s, ++counter + ((pingu->direction.is_left()) ? 0 : counter.size()));
-	} 
-      else
-	{
-	  //	  surface.put_screen(int((pingu->get_x () + x + x_offset()) * s), int((pingu->get_y () + y + y_offset()) * s),
-	  //	     s, s, ++counter);
-	}
-    }
-}
-
-PinguEnvironment
-PinguAction::get_environment()
-{
-  return environment;
-}
-
 ActionType
 PinguAction::get_type(void)
 {
   return (ActionType)ONCE;
-}
-
-const std::string&
-PinguAction::name()
-{
-  return action_name;
-}
-
-int
-PinguAction::x_offset(void)
-{
-  return -16;
-}
-
-int
-PinguAction::y_offset(void)
-{
-  return -32;
 }
 
 /* EOF */

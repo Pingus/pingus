@@ -1,4 +1,4 @@
-//  $Id: PinguEnums.hh,v 1.6 2001/06/17 17:18:27 grumbel Exp $
+//  $Id: PinguEnums.hh,v 1.7 2001/08/02 21:51:02 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,11 +26,11 @@ enum PinguStatus { alive, exited, dead, sleeping, ko, not_catchable };
 
 /// The environment in which a PinguAction get be activated.
 enum PinguEnvironment {
-  land   = 1<<0,
-  water  = 1<<1,
-  fire   = 1<<2,
-  sky    = 1<<3,
-  always = 1<<4
+  ENV_LAND   = 1<<0,
+  ENV_WATER  = 1<<1,
+  ENV_FIRE   = 1<<2,
+  ENV_AIR    = 1<<3,
+  ENV_ALWAYS = ~0
 };
 
 ///

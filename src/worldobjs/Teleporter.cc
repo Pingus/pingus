@@ -1,4 +1,4 @@
-//  $Id: Teleporter.cc,v 1.20 2001/07/24 21:39:46 grumbel Exp $
+//  $Id: Teleporter.cc,v 1.21 2001/08/02 21:51:03 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,7 +35,7 @@ TeleporterData::write_xml(std::ofstream* xml)
   (*xml) << "  <worldobj type=\"teleporter\">";
   XMLhelper::write_position_xml (xml, pos);
   (*xml) << "    <target>" << std::endl;
-  XMLhelper::write_position_xml (xml, pos);
+  XMLhelper::write_position_xml (xml, target_pos);
   (*xml) << "    </target>" << std::endl;
   (*xml) << "  </worldobj>" << std::endl;
 }
@@ -190,20 +190,21 @@ EditorTeleporterObj::status_line()
   return str;
 }
 
-EditorTeleporterTargetObj::EditorTeleporterTargetObj ()
-{
-}
-
 EditorTeleporterTargetObj::EditorTeleporterTargetObj (WorldObjData* obj, CL_Vector* pos)
 {
   surf = PingusResource::load_surface ("teleporter2", "worldobjs");
+
+  x_of = -int(surf.get_width ())/2;
+  y_of = -int(surf.get_height ())/2;
+
+  std::cout << "OFFSETS:" << x_of << " " << y_of << std::endl;
+
   width = surf.get_width ();
   height = surf.get_height ();
 
   TeleporterData* data = dynamic_cast<TeleporterData*> (obj);
   assert (data);
   assert (pos);
-  //*pos = data->target_pos;
   position = pos;
 
   std::cout << "EditorTeleporterTargetObj: " << pos << " - " << *pos << std::endl;
@@ -215,8 +216,8 @@ EditorTeleporterObj::draw (boost::dummy_ptr<EditorView> view)
   //std::cout << "Drawing line" << std::endl;
   view->draw_line (int(pos.x + width/2), 
 		   int(pos.y + height/2),
-		   int(target_pos.x + 32), 
-		   int(target_pos.y + 32),
+		   int(target_pos.x), 
+		   int(target_pos.y),
 		   0.0, 1.0, 0.0, 0.5);
   EditorObj::draw (view);
 }

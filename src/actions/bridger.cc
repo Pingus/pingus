@@ -1,4 +1,4 @@
-//  $Id: bridger.cc,v 1.39 2001/06/11 08:45:21 grumbel Exp $
+//  $Id: bridger.cc,v 1.40 2001/08/02 21:51:03 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,9 +38,6 @@ Bridger::Bridger()
 void
 Bridger::init(void)
 {
-  environment = (PinguEnvironment)land;
-  action_name = "Bridger";
-
   if (!static_surfaces_loaded)
     {
       static_surface = PingusResource::load_surface ("Pingus/bridger0", "pingus");
@@ -172,18 +169,6 @@ Bridger::walk_one_step_up()
   pingu->pos.x += 4.0 * pingu->direction;
   pingu->pos.y -= 2.0;
   counter = 0;
-}
-
-int
-Bridger::x_offset(void)
-{
-  return -16;
-}
-
-int
-Bridger::y_offset(void)
-{
-  return -29;
 }
 
 /* EOF */

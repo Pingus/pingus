@@ -1,4 +1,4 @@
-//  $Id: RocketLauncher.cc,v 1.1 2001/07/24 17:01:25 grumbel Exp $
+//  $Id: RocketLauncher.cc,v 1.2 2001/08/02 21:51:03 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,17 +24,16 @@
 void
 RocketLauncher::init()
 {
-  environment = (PinguEnvironment)land;
   sprite = Sprite (PingusResource::load_surface 
 		   ("Pingus/rocketlauncher" + to_string(pingu->get_owner ()),
 		    "pingus"), 10.0f, Sprite::NONE, Sprite::ONCE);
   sprite.set_align_center_bottom ();
   launched = false;
 
-      pingu->get_world ()->get_particle_holder()->add_particle 
-	(new ExplosiveParticle (pingu->pos.x, pingu->pos.y - 12, 
-				pingu->direction.is_left() ? -400.0f : 400.0f,
-				0.0f));
+  pingu->get_world ()->get_particle_holder()->add_particle 
+    (new ExplosiveParticle (pingu->pos.x, pingu->pos.y - 12, 
+			    pingu->direction.is_left() ? -400.0f : 400.0f,
+			    0.0f));
 }
 
 void

@@ -1,4 +1,4 @@
-//  $Id: PinguMap.cc,v 1.4 2000/12/14 21:35:55 grumbel Exp $
+//  $Id: PinguMap.cc,v 1.5 2001/08/02 21:51:02 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,7 +25,7 @@ PinguMap::PinguMap()
 
 PinguMap::~PinguMap()
 {
-  std::cout << "PinguMap:~PinguMap()" << std::endl;
+  //std::cout << "PinguMap:~PinguMap()" << std::endl;
 }
 
 void 

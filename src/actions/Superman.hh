@@ -1,4 +1,4 @@
-//  $Id: Superman.hh,v 1.1 2001/07/21 20:41:03 grumbel Exp $
+//  $Id: Superman.hh,v 1.2 2001/08/02 21:51:03 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,8 +31,10 @@ private:
 public:
   Superman ();
   void  init();
+  std::string get_name() const { return "Superman"; }
+  PinguEnvironment get_environment() const { return ENV_ALWAYS; }
   void  update(float delta);
-  void   draw_offset(int, int, float s);
+  void  draw_offset(int, int, float s);
 
 };
 

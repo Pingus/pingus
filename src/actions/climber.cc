@@ -1,4 +1,4 @@
-//  $Id: climber.cc,v 1.14 2001/04/20 20:53:55 grumbel Exp $
+//  $Id: climber.cc,v 1.15 2001/08/02 21:51:03 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,27 +27,7 @@ Climber::Climber()
 void
 Climber::init(void)
 {
-  action_name = "climber";
-  environment = PinguEnvironment(sky | land);
-
   sprite = Sprite ("Pingus/climber0", "pingus");
-
-  is_multi_direct = true;
-}
-
-int 
-Climber::x_offset(void)
-{
-  if (pingu->direction.is_left())
-    return 0;
-  else 
-    return -32;
-}
-
-int 
-Climber::y_offset(void)
-{
-  return -16;
 }
 
 void

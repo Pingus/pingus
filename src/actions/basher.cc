@@ -1,4 +1,4 @@
-//  $Id: basher.cc,v 1.23 2001/06/09 20:37:35 grumbel Exp $
+//  $Id: basher.cc,v 1.24 2001/08/02 21:51:03 grumbel Exp $
 //
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -32,9 +32,6 @@ Basher::Basher()
 void
 Basher::init(void)
 {
-  action_name = "Basher";
-  environment = (PinguEnvironment)land;
-
   bash_radius = PingusResource::load_surface ("Other/bash_radius", "pingus");
   
   sprite = Sprite (PingusResource::load_surface ("Pingus/basher0", "pingus"));

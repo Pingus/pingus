@@ -1,4 +1,4 @@
-//  $Id: Angel.hh,v 1.1 2001/07/21 20:28:12 grumbel Exp $
+//  $Id: Angel.hh,v 1.2 2001/08/02 21:51:02 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,8 +31,10 @@ private:
 public:
   Angel ();
   void  init();
+  std::string get_name() const { return "Angel"; }
+  PinguEnvironment get_environment() const { return ENV_ALWAYS; }
   void  update(float delta);
-  void   draw_offset(int, int, float s);
+  void  draw_offset(int, int, float s);
 
 };
 

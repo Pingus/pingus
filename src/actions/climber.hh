@@ -1,4 +1,4 @@
-//  $Id: climber.hh,v 1.9 2001/05/20 13:00:58 grumbel Exp $
+//  $Id: climber.hh,v 1.10 2001/08/02 21:51:03 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,21 +28,12 @@ class Climber : public PinguAction
 private:
   Sprite sprite;
 public:
-  ///
   Climber();
-
-  ///
   void   init();
+  std::string get_name () const { return "Climber"; }
+  PinguEnvironment get_environment() const { return PinguEnvironment(ENV_LAND|ENV_AIR); }
   void draw_offset(int x, int y, float s=1.0);
-  ///
-  void   update(float delta);
-  ///
-  int    x_offset();
-  ///
-  int    y_offset();
-  ///
-  PinguAction* allocate();
-  ///
+  void update(float delta);
   ActionType get_type(void) { return (ActionType)WALL; }
 };
 

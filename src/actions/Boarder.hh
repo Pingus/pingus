@@ -1,4 +1,4 @@
-//  $Id: Boarder.hh,v 1.2 2001/07/24 17:01:25 grumbel Exp $
+//  $Id: Boarder.hh,v 1.3 2001/08/02 21:51:02 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,6 +34,8 @@ private:
 public:
   Boarder ();
   void  init();
+  std::string get_name() const { return "Boarder"; }
+  PinguEnvironment get_environment() const { return ENV_LAND; }
   void  update(float delta);
   void  draw_offset(int, int, float s);
 private:

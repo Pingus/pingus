@@ -1,4 +1,4 @@
-//  $Id: Drown.hh,v 1.6 2001/04/20 20:53:54 grumbel Exp $
+//  $Id: Drown.hh,v 1.7 2001/08/02 21:51:02 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,12 +27,13 @@ class Drown : public PinguAction
 private:
   Sprite sprite;
 public:
-  ///
   Drown();
-  ///
+  
   void init();
-  ///
+  std::string get_name() const { return "Drown"; }
+  PinguEnvironment get_environment() const { return ENV_ALWAYS; }
   void update(float delta);
+  void  draw_offset(int x, int y, float s);
 };
 
 REGISTER_PINGUACTION(DrownFactory, Drown, "drown");

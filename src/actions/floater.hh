@@ -1,4 +1,4 @@
-//  $Id: floater.hh,v 1.7 2001/07/24 21:39:45 grumbel Exp $
+//  $Id: floater.hh,v 1.8 2001/08/02 21:51:03 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,15 +33,11 @@ public:
   ///
   Floater();
 
-  ///
-  PinguAction* allocate(void);  
-  ///
+  std::string get_name() const { return "Floater"; }
+  PinguEnvironment get_environment() const { return PinguEnvironment(ENV_LAND|ENV_AIR); }
   ActionType get_type(void) { return FALL; };
-  ///
-  void   init(void);
-  ///
-  void   update(float delta);
-
+  void init(void);
+  void update(float delta);
   void draw_offset (int x, int y, float s);
 };
 

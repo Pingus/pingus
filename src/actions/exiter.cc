@@ -1,4 +1,4 @@
-//  $Id: exiter.cc,v 1.14 2001/07/27 15:00:48 grumbel Exp $
+//  $Id: exiter.cc,v 1.15 2001/08/02 21:51:03 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,9 +34,6 @@ Exiter::~Exiter()
 void
 Exiter::init(void)
 {
-  environment = (PinguEnvironment)(land | sky);
-  action_name = "Exiter";
-  
   sprite = Sprite ("Pingus/exit0", "pingus");
   sprite.set_align_center_bottom ();
 }

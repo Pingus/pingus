@@ -1,4 +1,4 @@
-//  $Id: Theme.hh,v 1.12 2001/07/27 21:53:22 grumbel Exp $
+//  $Id: Theme.hh,v 1.13 2001/08/02 21:51:02 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -58,7 +58,8 @@ private:
   std::vector<std::string> level_filenames;
 
   ///
-  std::string   status_file;
+  std::string title_name;
+  std::string status_file;
 
   /** This is the position at which the levelnames are printed, it is
       used to calculate mark_level_at_point() */

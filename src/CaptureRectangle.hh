@@ -1,4 +1,4 @@
-//  $Id: CaptureRectangle.hh,v 1.7 2001/04/10 23:00:43 grumbel Exp $
+//  $Id: CaptureRectangle.hh,v 1.8 2001/08/02 21:51:02 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,7 +23,9 @@
 #include <ClanLib/core.h>
 #include "boost/smart_ptr.hpp"
 
-///
+class Sprite;
+
+/** */
 class CaptureRectangle
 {
 private:
@@ -35,15 +37,11 @@ private:
   /// The id of the owner of this capture rectangle
   int owner_id;
   
-  ///
-  CL_Surface good; 
-  ///
-  CL_Surface bad;
-  ///
-  CL_Surface arrow_left;
-  ///
-  CL_Surface arrow_right;
-  ///
+  Sprite good; 
+  Sprite bad;
+  Sprite arrow_left;
+  Sprite arrow_right;
+
   CL_Font* font;
 public:
   ///

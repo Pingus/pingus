@@ -1,4 +1,4 @@
-//  $Id: smashed.cc,v 1.10 2001/04/20 20:53:55 grumbel Exp $
+//  $Id: smashed.cc,v 1.11 2001/08/02 21:51:03 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,13 +27,15 @@ Smashed::Smashed(void)
 void
 Smashed::init(void)
 {
-  environment = (PinguEnvironment)(land | sky);
-  action_name = "Smashed";
-
   sprite = Sprite ("Pingus/bomber0", "pingus");
-  is_multi_direct = false;
   sound_played = false;
   pingu->set_status(not_catchable);
+}
+
+void 
+Smashed::draw_offset(int x, int y, float s)
+{
+  sprite.put_screen (x, y);
 }
 
 void

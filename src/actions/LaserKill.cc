@@ -1,4 +1,4 @@
-//  $Id: LaserKill.cc,v 1.10 2001/04/20 20:53:54 grumbel Exp $
+//  $Id: LaserKill.cc,v 1.11 2001/08/02 21:51:02 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,13 +31,14 @@ LaserKill::LaserKill()
 void
 LaserKill::init(void)
 {
-  action_name = "LaserKill";
-  environment = (PinguEnvironment)always;
-
   sprite = Sprite ("Other/laser_kill0", "pingus");
-  
-  is_multi_direct = true;
   pingu->set_status(not_catchable);
+}
+
+void 
+LaserKill::draw_offset(int x, int y, float s)
+{
+  sprite.put_screen (x, y);
 }
 
 void
