@@ -1,4 +1,4 @@
-//  $Id: XMLPLF.cc,v 1.33 2001/08/07 19:55:22 grumbel Exp $
+//  $Id: XMLPLF.cc,v 1.34 2001/08/09 12:04:49 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,6 +25,7 @@
 #include "System.hh"
 #include "PingusError.hh"
 #include "StringConverter.hh"
+#include "WorldObjDataFactory.hh"
 
 XMLPLF::XMLPLF(const std::string& filename)
 {
@@ -649,8 +650,10 @@ XMLPLF::parse_hotspot(xmlNodePtr cur)
 void 
 XMLPLF::parse_worldobj (xmlNodePtr cur)
 {
+  std::cout << "Creating WorldObjData..." << std::endl;
   // The alloctated objects are delete'd in the destructor
-  worldobjs_data.push_back(WorldObjData::create (doc, cur));
+  worldobjs_data.push_back(WorldObjDataFactory::instance ()->create (doc, cur));
+ std::cout << "Creating WorldObjData...done" << std::endl;
 }
 
 /* EOF */

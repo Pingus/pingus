@@ -1,4 +1,4 @@
-// $Id: EditorObj.cc,v 1.36 2001/08/07 18:14:15 grumbel Exp $
+// $Id: EditorObj.cc,v 1.37 2001/08/09 12:04:49 grumbel Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -100,6 +100,7 @@ EditorObj::create(WeatherData data)
   return make_list(new WeatherObj(data));
 }
 
+/*
 std::list<boost::shared_ptr<EditorObj> >
 EditorObj::create (WorldObjData* obj)
 {
@@ -122,7 +123,7 @@ EditorObj::create (WorldObjData* obj)
   
   return objs;
 }
-
+*/
 bool
 EditorObj::operator< (const EditorObj& w)
 {
@@ -253,6 +254,9 @@ EditorObj::gui_edit_obj()
   
 /*
 $Log: EditorObj.cc,v $
+Revision 1.37  2001/08/09 12:04:49  grumbel
+Some more worldobj handling cleanup
+
 Revision 1.36  2001/08/07 18:14:15  grumbel
 Some support for launching a level directly in the editor
 

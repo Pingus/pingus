@@ -1,4 +1,4 @@
-//  $Id: SwitchDoor.cc,v 1.17 2001/08/09 08:56:45 grumbel Exp $
+//  $Id: SwitchDoor.cc,v 1.18 2001/08/09 12:04:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -297,7 +297,7 @@ EditorSwitchDoorObj::create (const CL_Vector& pos)
   data.switch_pos = pos;
   data.door_height = 15;
 
-  return EditorObj::create (&data);
+  return data.create_EditorObj ();
 }
 
 void

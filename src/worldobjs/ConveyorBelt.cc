@@ -1,4 +1,4 @@
-//  $Id: ConveyorBelt.cc,v 1.20 2001/08/09 08:56:45 grumbel Exp $
+//  $Id: ConveyorBelt.cc,v 1.21 2001/08/09 12:04:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -221,7 +221,7 @@ EditorConveyorBeltObj::create (const CL_Vector& pos)
 
   data.pos = pos;
 
-  return EditorObj::create (&data);
+  return data.create_EditorObj ();
 }
   
 void

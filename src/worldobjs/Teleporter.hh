@@ -1,4 +1,4 @@
-//  $Id: Teleporter.hh,v 1.16 2001/08/09 08:56:45 grumbel Exp $
+//  $Id: Teleporter.hh,v 1.17 2001/08/09 12:04:49 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,8 @@
 #include "../WorldObj.hh"
 #include "../editor/EditorWorldObj.hh"
 #include "../WorldObjData.hh"
+
+class EditorTeleporterObj;
 
 class TeleporterData : public WorldObjData
 {
@@ -55,17 +57,11 @@ private:
   CL_Surface sur;
   
 public:
-  ///
-  Teleporter () {};
-  ///
-  Teleporter (boost::shared_ptr<WorldObjData> data);
-  ///
+  Teleporter (const TeleporterData& data);
   virtual ~Teleporter () {}
-  ///
+  
   virtual void draw (boost::dummy_ptr<EditorView> view);
-  ///
   virtual void update(float delta);
-  ///
   virtual int  get_z_pos() const { return (int) pos.z; }
 };
 
@@ -77,7 +73,7 @@ class EditorTeleporterTargetObj : public EditorObj
 {
 public:
   /// Basic constructor
-  EditorTeleporterTargetObj (WorldObjData* obj, CL_Vector*);
+  EditorTeleporterTargetObj (EditorTeleporterObj* obj);
   virtual ~EditorTeleporterTargetObj () {}
     
   static std::list<boost::shared_ptr<EditorObj> > create (TeleporterData*);
@@ -96,12 +92,12 @@ private:
   EditorTeleporterTargetObj* target;
 
 public:
-  EditorTeleporterObj (WorldObjData* obj);
+  EditorTeleporterObj (const TeleporterData& data);
   virtual ~EditorTeleporterObj ();
 
   CL_Vector* get_target_pos_p () { return &target_pos; }
 
-  static std::list<boost::shared_ptr<EditorObj> > create (WorldObjData* obj);
+  static std::list<boost::shared_ptr<EditorObj> > create (const TeleporterData& data);
 
   /** Create this object (and child objects) with reasonable defaults
       for the editor */

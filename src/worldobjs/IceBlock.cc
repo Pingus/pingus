@@ -1,4 +1,4 @@
-//  $Id: IceBlock.cc,v 1.15 2001/08/09 08:56:45 grumbel Exp $
+//  $Id: IceBlock.cc,v 1.16 2001/08/09 12:04:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -72,24 +72,21 @@ IceBlockData::create(xmlDocPtr doc, xmlNodePtr cur)
 boost::shared_ptr<WorldObj> 
 IceBlockData::create_WorldObj ()
 {
-  return boost::shared_ptr<WorldObj> (new IceBlock (this));
+  return boost::shared_ptr<WorldObj> (new IceBlock (*this));
 }
 
 std::list<boost::shared_ptr<EditorObj> > 
 IceBlockData::create_EditorObj ()
 {
   EditorObjLst lst; 
-  lst.push_back(boost::shared_ptr<EditorObj> (new EditorIceBlockObj (this)));
+  lst.push_back(boost::shared_ptr<EditorObj> (new EditorIceBlockObj (*this)));
   return lst;
 }
 
-IceBlock::IceBlock (WorldObjData* data)
+IceBlock::IceBlock (const IceBlockData& data)
 {
-  IceBlockData* ice_block = dynamic_cast<IceBlockData*>(data);
-  assert (ice_block);
-
-  pos = ice_block->pos;
-  width = ice_block->width;
+  pos   = data.pos;
+  width = data.width;
   block_sur = PingusResource::load_surface ("iceblock", "worldobjs");
   thickness = 1.0;
   is_finished = false;
@@ -149,26 +146,25 @@ IceBlock::update(float delta)
     }
 }
 
-EditorIceBlockObj::EditorIceBlockObj (WorldObjData* obj)
+EditorIceBlockObj::EditorIceBlockObj (const IceBlockData& data)
 {
-  IceBlockData* data = dynamic_cast<IceBlockData*> (obj);
-  surf = PingusResource::load_surface ("iceblock", "worldobjs");
-  pos = data->pos;
+  surf     = PingusResource::load_surface ("iceblock", "worldobjs");
+  pos      = data.pos;
   position = &pos;
-  IceBlockData::width = data->width;
+  IceBlockData::width = data.width;
 }
 
 EditorIceBlockObj::~EditorIceBlockObj ()
 {
 }
-
+/*
 std::list<boost::shared_ptr<EditorObj> > 
 EditorIceBlockObj::create (WorldObjData* obj)
 {
   std::list<boost::shared_ptr<EditorObj> > objs;
   objs.push_back (boost::shared_ptr<EditorObj>(new EditorIceBlockObj(obj)));
   return objs;
-}
+}*/
 
 /** Create the object with resonable defaults */
 std::list<boost::shared_ptr<EditorObj> > 
@@ -178,7 +174,7 @@ EditorIceBlockObj::create (const CL_Vector& pos)
   
   data.pos = pos;
 
-  return EditorObj::create (&data);
+  return data.create_EditorObj ();
 }
 
 void

@@ -1,4 +1,4 @@
-//  $Id: IceBlock.hh,v 1.11 2001/08/09 08:56:45 grumbel Exp $
+//  $Id: IceBlock.hh,v 1.12 2001/08/09 12:04:49 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -58,7 +58,7 @@ private:
   bool is_finished;
 public:
   ///
-  IceBlock (WorldObjData* data);
+  IceBlock (const IceBlockData& data);
   ///
   virtual ~IceBlock ();
   ///
@@ -79,7 +79,7 @@ private:
   
 public:
   EditorIceBlockObj();
-  EditorIceBlockObj (WorldObjData* obj);
+  EditorIceBlockObj (const IceBlockData& data);
   virtual ~EditorIceBlockObj ();
 
   static std::list<boost::shared_ptr<EditorObj> > create (WorldObjData* obj);

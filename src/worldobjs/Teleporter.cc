@@ -1,4 +1,4 @@
-//  $Id: Teleporter.cc,v 1.22 2001/08/09 08:56:45 grumbel Exp $
+//  $Id: Teleporter.cc,v 1.23 2001/08/09 12:04:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -83,34 +83,37 @@ TeleporterData::create(xmlDocPtr doc, xmlNodePtr cur)
 boost::shared_ptr<WorldObj> 
 TeleporterData::create_WorldObj ()
 {
-  std::cout << "TeleportData::create_WorldObj () not implemented" << std::endl;
-  return boost::shared_ptr<WorldObj>();
+  //std::cout << "TeleportData::create_WorldObj () not implemented" << std::endl;
+  return boost::shared_ptr<WorldObj> (new Teleporter (*this));
 }
 
 std::list<boost::shared_ptr<EditorObj> > 
 TeleporterData::create_EditorObj ()
 {
-  std::cout << "TeleportData::create_EditorObj () not implemented" << std::endl;
-  EditorObjLst lst; 
-  //lst.push_back(boost::shared_ptr<EditorObj> (new EditorTeleporterObj(this)));
-  return lst;
+  std::cout << "TeleportData::create_EditorObj () " << std::endl;
+  std::list<boost::shared_ptr<EditorObj> > objs;
+  
+  boost::shared_ptr<EditorTeleporterObj> teleporter(new EditorTeleporterObj (*this));
+  boost::shared_ptr<EditorTeleporterTargetObj> teleporter_target(new EditorTeleporterTargetObj (teleporter.get ()));
+
+  objs.push_back (teleporter);
+  objs.push_back (teleporter_target);
+
+  return objs;
 }
 
 /**************/
 /* Teleporter */
 /**************/
 
-Teleporter::Teleporter (boost::shared_ptr<WorldObjData> data)
+Teleporter::Teleporter (const TeleporterData& data)
 {
-  TeleporterData* teleporter = dynamic_cast<TeleporterData*>(data.get());
-  assert (teleporter);
-  
   sur = PingusResource::load_surface("teleporter", "worldobjs");
 
-  pos = teleporter->pos;
-  target_pos = teleporter->target_pos;
+  pos = data.pos;
+  target_pos = data.target_pos;
 
-  std::cout << "pos: " << pos.x << " "  << pos.y << " " << pos.z << std::endl;
+  std::cout << "Teleporter: pos: " << pos.x << " "  << pos.y << " " << pos.z << std::endl;
 }
 
 void 
@@ -135,19 +138,20 @@ Teleporter::update (float delta)
     }
 }
 
-EditorTeleporterObj::EditorTeleporterObj (WorldObjData* obj)
+/********************/
+/* EditorTeleporter */
+/********************/
+
+EditorTeleporterObj::EditorTeleporterObj (const TeleporterData& data)
 {
   surf = PingusResource::load_surface ("teleporter", "worldobjs");
   width = surf.get_width ();
   height = surf.get_height ();
 
-  TeleporterData* data = dynamic_cast<TeleporterData*> (obj);  
-  assert (data);
-  
-  pos = data->pos;
-  position = &pos;
-  target_pos = data->target_pos;
-  std::cout << "EditorTeleporter(): " << &target_pos << " - " << target_pos << std::endl;
+  pos        = data.pos;
+  position   = &pos;
+  target_pos = data.target_pos;
+  //std::cout << "EditorTeleporter(): " << &target_pos << " - " << target_pos << std::endl;
 }
 
 EditorTeleporterObj::~EditorTeleporterObj ()
@@ -156,15 +160,14 @@ EditorTeleporterObj::~EditorTeleporterObj ()
 }
 
 std::list<boost::shared_ptr<EditorObj> > 
-EditorTeleporterObj::create (WorldObjData* data)
+EditorTeleporterObj::create (const TeleporterData& data)
 {
   std::list<boost::shared_ptr<EditorObj> > objs;
 
-  TeleporterData* tdata = dynamic_cast<TeleporterData*> (data);    
-  std::cout << "EditorTeleporterObj: " << tdata << " - " << tdata->target_pos << std::endl;
+  //std::cout << "EditorTeleporterObj: " << tdata << " - " << tdata->target_pos << std::endl;
 
   boost::shared_ptr<EditorTeleporterObj> teleporter(new EditorTeleporterObj (data));
-  boost::shared_ptr<EditorTeleporterTargetObj> teleporter_target(new EditorTeleporterTargetObj (data, teleporter->get_target_pos_p ()));
+  boost::shared_ptr<EditorTeleporterTargetObj> teleporter_target(new EditorTeleporterTargetObj (teleporter.get ()));
 
   objs.push_back (teleporter);
   objs.push_back (teleporter_target);
@@ -183,7 +186,7 @@ EditorTeleporterObj::create (const CL_Vector& pos)
   data.target_pos.x = pos.x + 50;
   data.target_pos.y = pos.y + 50;
 
-  return EditorObj::create (&data);
+  return data.create_EditorObj ();
 }
 
 void
@@ -205,7 +208,7 @@ EditorTeleporterObj::status_line()
   return str;
 }
 
-EditorTeleporterTargetObj::EditorTeleporterTargetObj (WorldObjData* obj, CL_Vector* pos)
+EditorTeleporterTargetObj::EditorTeleporterTargetObj (EditorTeleporterObj* teleporter)
 {
   surf = PingusResource::load_surface ("teleporter2", "worldobjs");
 
@@ -214,15 +217,11 @@ EditorTeleporterTargetObj::EditorTeleporterTargetObj (WorldObjData* obj, CL_Vect
 
   std::cout << "OFFSETS:" << x_of << " " << y_of << std::endl;
 
-  width = surf.get_width ();
-  height = surf.get_height ();
+  width    = surf.get_width ();
+  height   = surf.get_height ();
+  position = teleporter->get_target_pos_p ();
 
-  TeleporterData* data = dynamic_cast<TeleporterData*> (obj);
-  assert (data);
-  assert (pos);
-  position = pos;
-
-  std::cout << "EditorTeleporterTargetObj: " << pos << " - " << *pos << std::endl;
+  //std::cout << "EditorTeleporterTargetObj: " << pos << " - " << *pos << std::endl;
 }
 
 void

@@ -1,4 +1,4 @@
-//  $Id: WorldObj.hh,v 1.16 2001/08/05 21:20:53 grumbel Exp $
+//  $Id: WorldObj.hh,v 1.17 2001/08/09 12:04:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -71,12 +71,6 @@ public:
    * specifies how much time is passed since the last update
    * delta = 1.0 means that one second of realtime has passed. */
   virtual void update(float delta);
-
-  /** Create an WorldObj out of some WorldObj data
-   *  @return a new suitable WorldObj for the specified data, or null if no 
-   *          suitable WorldObj could be found.
-   */
-  static boost::shared_ptr<WorldObj> create (boost::shared_ptr<WorldObjData> data);
 
   /** Set the world pointer for all world objects */
   static void   set_world(World*);

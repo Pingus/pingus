@@ -1,4 +1,4 @@
-//  $Id: WorldObj.cc,v 1.13 2001/03/31 11:21:50 grumbel Exp $
+//  $Id: WorldObj.cc,v 1.14 2001/08/09 12:04:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -66,6 +66,7 @@ WorldObj::operator< (const WorldObj& w)
   return (get_z_pos () < w.get_z_pos ());
 }
 
+/*
 shared_ptr<WorldObj>
 WorldObj::create (shared_ptr<WorldObjData> data)
 {
@@ -81,6 +82,6 @@ WorldObj::create (shared_ptr<WorldObjData> data)
     {
       throw PingusError ("WorldObj::create (): Unknown WorldObjData");
     }
-}
+}*/
 
 /* EOF */
