@@ -1,4 +1,4 @@
-//  $Id: sound.cxx,v 1.3 2003/03/04 13:59:44 grumbel Exp $
+//  $Id: sound.cxx,v 1.4 2003/04/12 15:33:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <ClanLib/Core/System/error.h>
 #include <iostream>
 #include <assert.h>
 #include "../path_manager.hxx"
@@ -37,8 +38,14 @@ PingusSound::init (PingusSound* s)
         {
           if (verbose)
             std::cout << "Init Sound" << std::endl;
-
-          PingusSound::init (new PingusSoundReal ());
+          
+          try {
+            PingusSound::init (new PingusSoundReal ());
+          } catch (CL_Error& err) {
+            std::cout << "CL_Error: " << err.message << std::endl;
+            std::cout << "Sound will be disabled" << std::endl;
+            PingusSound::init (new PingusSoundDummy ());
+          }
         }
       else
         {
