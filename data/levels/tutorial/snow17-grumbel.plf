@@ -9,7 +9,8 @@
     <levelname lang="tr">Yüksekten düþen Pingu ölür...</levelname>
     <levelname lang="fr">De trop haut, les Pingus en morceaux...</levelname>
     <levelname lang="sr">Ko visoko leti, nisko pada...</levelname>
- 
+    <levelname lang="fi">Liian korkea pudotus vaarantaa terveytesi...</levelname>
+
     <description lang="en">Teamwork is the way to the exit this time. You don't have enough
                            Floaters to reach the exit, so just send a few and let them
                            prepare the path for the rest.
@@ -37,6 +38,10 @@
     <description lang="sr">Ovog puta je potreban timski rad da bi se doslo do izlaza. Nema dovoljno
                            Padobranaca da bi svi dosli do izlaza, tako da je potrebno poslati nekoliko
                            njih, koji moraju pripremiti stazu za ostale.
+    </description>
+    <description lang="fi">Tästä kentästä selviää yhteistyöllä. Koska leijujia ei ole riittävästi,
+                           kannattaa lähettää muutama pingu edeltä raivaamaan tietä ennen kuin päästää
+                           muut liikkeelle.
     </description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>

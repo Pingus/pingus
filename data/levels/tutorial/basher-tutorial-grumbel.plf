@@ -9,6 +9,7 @@
     <levelname lang="it">Se la strada è bloccata, sfonda i muri</levelname>
     <levelname lang="fr">Si la route est bloquée, défonce le mur!</levelname>
     <levelname lang="sr">Ako je put blokiran, prokopaj tunel</levelname>
+    <levelname lang="fi">Kun tie on tukossa, murskaaja auttaa</levelname>
 
     <description lang="en">Similar to the Digger action that you already know from previous
                            levels, there is also an action that allows the Pingus to dig
@@ -20,10 +21,10 @@
                            verticalmente come nello 'Scavatore'. Questa nuova abilità è detta
                            'Sfondamuri'
     </description>
-    <description lang="de">Vergleichbar zum Digger der bereits aus den vorhergehenden Levels
-                           bekannt ist, gibt es auch eine Fähigkeit die es einem Pingu erlaubt
+    <description lang="de">Vergleichbar zum Digger, der bereits aus den vorherigen Levels
+                           bekannt ist, gibt es auch eine Fähigkeit, die es einem Pingu erlaubt
                            horizontal zu graben, im Gegensatz zur Fähigkeit zum vertikalen
-                           Graben eines Digger. Diese neue Fähigkeit heisst Basher.
+                           Graben eines Digger. Diese neue Fähigkeit heißt Basher.
     </description>
     <description lang="cs">Podobne jako kopani, ktere uz znas z minulych urovni, existuje
                            take moznost vodorovneho hrabani. Pingove pak nekopou jamu pod
@@ -40,8 +41,12 @@
     </description>
     <description lang="sr">Slicno kopanju na dole iz prethodnih nivoa postoji akcija koja
                            omogucava Pingusima da kopaju horizontalno, umesto vertikalnog
-                           kopanja pomocu akcije Kopac. Ova nova uloga Pingusa se zove 
+                           kopanja pomocu akcije Kopac. Ova nova uloga Pingusa se zove
                            Glodac.
+    </description>
+    <description lang="fi">Kuten jo aiemmista kentistä tuttu Kaivaja, myös tällä kertaa
+                           esiteltävä Murskaaja kaivaa tunneleita. Toisin kuin Kaivaja, se
+                           kuitenkin etenee vaakasuoraan eikä alaspäin.
     </description>
 
 

@@ -9,6 +9,7 @@
     <levelname lang="tr">Ýki grup ayný anda, dikkatli yönlendir</levelname>
     <levelname lang="fr">Deux groupes en parallèle, coordination essentielle</levelname>
     <levelname lang="sr">Dve grupe istovremeno, budi mudar</levelname>
+    <levelname lang="fi">Kaksi ryhmää rinnakkain, koordinoi viisaasti</levelname>
 
     <description lang="en">You have two groups to coordinate this time. No need to panic, since
                            this level gives you enough time to think your actions through. No
@@ -37,6 +38,10 @@
     <description lang="sr">Ovog puta treba koordinirati dve grupe, ali bez panike, jer ovaj
                            nivo daje dovoljno vremena da se razmisli o potrebnim akcijama. Nema
                            vise sta da se doda, osim: Srecno!
+    </description>
+    <description lang="fi">Tällä kertaa johdettavanasi on kaksi eri ryhmää. Ei kuitenkaan syytä
+                           paniikkiin, sillä kentän ratkaisuun on varattu aikaa yllin kyllin.
+                           Siinä tämänkertaiset vihjeet, onnea matkaan!
     </description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>

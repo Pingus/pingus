@@ -9,6 +9,7 @@
     <levelname lang="tr">Madenci cenneti</levelname>
     <levelname lang="fr">Paradis des mineurs</levelname>
     <levelname lang="sr">Rudarski raj</levelname>
+    <levelname lang="fi">Louhijan toiveuni</levelname>
 
     <description lang="en">Another action hits the street - another digging action, this
                            time a diagonal one. It allows a Pingu to dig diagonally through
@@ -21,15 +22,15 @@
     <description lang="de">Und eine weitere Fähigkeit taucht auf, es ist wieder eine grabende
                            Fähigkeit, dieses mal eine diagonale. Sie erlaubt es einem Pingu
                            diagonal durch den Boden zu graben und damit einen Pfad für die
-                           folgen Pingu zu erschaffen. Diese Fähigkeit heisst Miner.
+                           folgenden Pingu zu erschaffen. Diese Fähigkeit heißt Miner.
     </description>
     <description lang="cs">A dalsi akce se dostava na vysluni a opet se jedna o kopani do
                            zeme, tentokrat sikmo. Dolovani umozni pingum vyhloubit sikme
                            chodby, kterymi pak mohou ostatni projit.
     </description>
     <description lang="sr">Ucimo jos jednu akciju koja obuhvata kopanje. Ovog puta se radi o 
-	                       kopanju ukoso, cime omogucavamo Pingusu da dijagonalno kopa kroz
-						   zemljiste i stvara put za ostale. Ova akcija se zove Rudar.
+	                   kopanju ukoso, cime omogucavamo Pingusu da dijagonalno kopa kroz
+			   zemljiste i stvara put za ostale. Ova akcija se zove Rudar.
     </description>
     <description lang="tr">Þimdi bir baþka kazma eylemi göreceðiz. Bu eylemi kullandýðýmýzda
                            Pingu çapraz bir oyuk açarak diðer Pingularýn da geçebileceði bir
@@ -43,6 +44,11 @@
     <description lang="sr">Ucimo jos jednu akciju koja obuhvata kopanje. Ovog puta se radi o 
                            kopanju ukoso, cime omogucavamo Pingusu da dijagonalno kopa kroz
                            zemljiste i stvara put za ostale. Ova akcija se zove Rudar.
+    </description>
+    <description lang="fi">Uusi toiminto astuu kehiin - tämä toinen kaivuutapa
+                           tuottaa suoran sijaan viiston tunnelin. Sen avulla perästä tulevat
+                           pingut pääsevät samaan aikaan sekä sivulle että alaspäin. Toiminnon
+                           nimi on Louhija.
     </description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>

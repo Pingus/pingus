@@ -1,4 +1,4 @@
-//  $Id: worldmap.cxx,v 1.49 2003/08/19 19:56:55 torangan Exp $
+//  $Id: worldmap.cxx,v 1.50 2003/08/21 20:52:23 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -242,6 +242,7 @@ WorldMap::draw (GraphicContext& gc)
                           display_gc.get_width ()/2,
                           display_gc.get_height() - 20,
                           System::translate(leveldot->get_plf()->get_levelname()));
+          
         }
       else
         {

@@ -9,6 +9,7 @@
     <levelname lang="tr">Katý bloklar yolu týkayabilir</levelname>
     <levelname lang="fr">L'acier bloque le passage</levelname>
     <levelname lang="sr">Cvrsto zemljiste moze blokirati put</levelname>
+    <levelname lang="fi">Maasto voi tukkia tien</levelname>
 
     <description lang="en">As you have learned in earlier levels your Pingus can dig through
                            basically any terrain, but there is one material which they can't
@@ -51,6 +52,12 @@
                            prokopati. To su celicni objekti. Oni su oznaceni tamno sivom
 			   bojom na mapi nivoa i ne mogu biti unisteni, vec treba pronaci
 			   nacin da se zaobidju.
+    </description>
+    <description lang="fi">Kuten olet jo aiemmissa kentissä oppinutkin, pingut pystyvät
+                           kaivautumaan lähes millaisen maaston läpi tahansa, mutta yhtä
+                           materiaalia ne eivät saa rikki: terästä. Teräksiset alueet
+                           on merkittu karttaan tummanharmaalla ja koska niitä ei hajotettua
+			   mitenkään, ne täytyy vain kiertää.
     </description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>

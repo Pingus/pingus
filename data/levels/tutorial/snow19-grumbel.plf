@@ -9,6 +9,7 @@
     <levelname lang="tr">Köprü yapmayý öðreniyoruz</levelname>
     <levelname lang="fr">Apprenez a utiliser le pont</levelname>
     <levelname lang="sr">Nauci da koristis most</levelname>
+    <levelname lang="fi">Opettele rakentamaan siltoja</levelname>
 
     <description lang="en">If no Jumper is at hand and a large hole needs to be passed, a bridge
 			   can be pretty helpful. It takes some time to build, but unlike the
@@ -41,6 +42,11 @@
     <description lang="sr">Ako nema na raspolaganju Skakaca a treba preci preko velike rupe, onda
                            je most vrlo korisna stvar. Potrebno je malo vremena da se most izgradi, ali
 						   svi Pingusi koji slede mogu da ga koriste, za razliku o skakanja.
+    </description>
+    <description lang="fi">Jos yhtään Hyppääjä ei ole käytettävissä ja edessä on iso kolo,
+                           Siltaajasta voi olla hyötyä. Sillan rakentaminen kestää hieman,
+                           mutta toisin kuin Hypääjän kanssa, sillan avulla muutkin pingut
+                           pääsevät perille.
     </description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>

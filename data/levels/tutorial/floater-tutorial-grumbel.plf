@@ -9,6 +9,7 @@
     <levelname lang="tr">Uçamazsan ölürsün</levelname>
     <levelname lang="fr">Flotte ou Meurt</levelname>
     <levelname lang="sr">Lebdi ili umri</levelname>
+    <levelname lang="fi">Leiju tai kuole</levelname>
 
     <description lang="en">Well done in mission one! Now let's start the next one. This
                            time you will need to equip your Pingus with a little propeller,
@@ -23,8 +24,8 @@
     <description lang="de">Erste Mission erfolgreich abgeschlossen, nun lass uns mit
                            der nächsten beginnen. Dieses Mal musst du deine Pingus mit einem
                            kleinen Propellor versehen, so dass sie langsam zu Boden schweben
-                           können. Wenn ein Pingu zu tief fällt, wird er dies nicht überleben,
-                           drum halte die Augen offen!
+                           können. Wenn ein Pingu zu tief fällt, wird er dies nicht überleben.
+                           Darum halte die Augen offen!
     </description>
     <description lang="cs">V prvni misi jsi dopadl dobre, takze se ted podivame na dalsi.
                            Tentokrat budes muset sve sverence vybavit malou vrtuli, aby se
@@ -44,6 +45,11 @@
                            treba da opremis Pinguse sa malim propelerom, da bi mogli da lebde
                            i lagano se spuste na zemlju. Ako padnu predaleko, nece uspeti da
                            prezive pad. Zato obrati paznju!
+    </description>
+    <description lang="fi">Ykköskenttähän sujui hyvin! Tällä kertaa tehtäväsi on varustaa
+                           pingut pienillä propelleilla, joiden avulla ne leijuvat pehmeästi
+                           maahan. Pingut nimittäin liiskautuvat pudotessaan liian korkealta.
+                           Pidä siis silmät auki ja hermot kurissa!
     </description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>

@@ -9,6 +9,7 @@
     <levelname lang="tr">Giriþ yüksek, Çýkýþ alçak</levelname>
     <levelname lang="fr">Entrée haute, Sortie basse</levelname>
     <levelname lang="sr">Ulaz visoko, izlaz nisko</levelname>
+    <levelname lang="fi">Sisäänkäynti ylhäällä, uloskäynti alhaalla</levelname>
 
     <description lang="en">If you don't have enough floaters to bring all the Pingus down to
                            the exit - you have to find other ways to guide them down. You
@@ -46,6 +47,11 @@
                            dole do izlaza, potrebno je pronaci drugi nacin. Sve sto je
                            potrebno koristiti na ovom nivou je vec nauceno ranije tako
                            da ovo ne bi trebalo da bude velik problem za tebe.
+    </description>
+    <description lang="fi">Jos Leijujia ei riitä kaikkien pingujen saamiseksi uloskäynnille, on
+                           löydettävä muita tapoja saattaa pingut ehjänä alas. Olet jo varmasti
+                           oppinut edellisissä kentissä riittävästi tämänkin kentän ratkaisemiseen,
+                           joten suuria ongelmia tuskin on odotettavissa.
     </description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>

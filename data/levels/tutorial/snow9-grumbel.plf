@@ -9,6 +9,7 @@
     <levelname lang="tr">Kaz, oy ve diðer sorunlar</levelname>
     <levelname lang="fr">Creuse, défonce et d'autres problèmes</levelname>
     <levelname lang="sr">Kopanje, glodanje i drugi problemi</levelname>
+    <levelname lang="fi">Kaivamista, murskausta ja muuta mukavaa</levelname>
 
     <description lang="en">The more levels you master, the more difficult they will get,
                            but don't panic, as this one is still pretty easy. Just use the stuff that
@@ -50,6 +51,12 @@
                            naucene na prethodnim nivoima i ne bi trebalo da imas puno problema
                            Ako mislis da se nalazis u situaciji da vise nisi u stanju da resis
                            novi, pritisni dupli-klik misem na dugme armageddon u donjem delu ekrana.
+    </description>
+    <description lang="fi">Mitä pidemmälle pääset, sitä vaikeammiksi kentät muuttuvat. Älä silti
+                           hätäänny, sillä tämä on vielä aika helppo. Käytä vain aiemmin oppimiasi
+                           temppuja niin se tuskin tuottaa erityisemmin ongelmia. Jos alkaa tuntua,
+                           että olet onnistunut pilaamaan ratkaisumahdollisuutesi, paina ruudun
+                           alanurkassa olevaa joukkotuhonappia ja yritä uudelleen.
     </description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>

@@ -9,6 +9,7 @@
     <levelname lang="tr">Kazmayý öðreniyoruz</levelname>
     <levelname lang="fr">Apprendre à creuser</levelname>
     <levelname lang="sr">Ucimo kopanje</levelname>
+    <levelname lang="fi">Opettele kaivamaan</levelname>
 
     <description lang="en">This is your first mission. As always, it's pretty easy. All you
                            have to do is to give a Pingu the command to dig a hole into the
@@ -22,7 +23,7 @@
     </description>
     <description lang="de">Dies ist Deine erste Mission. Wie immer, ist sie ziemlich 
                            einfach. Alles was Du tun musst, ist einem Pingu den Befehl zum Graben
-                           eines Lochs in den Boden zu erteilen, damit sie den Ausgang erreichen
+                           eines Lochs in den Boden zu erteilen, damit alle den Ausgang erreichen
                            können. Dies kann einfach dadurch erreicht werden, auf einen Pingu zu klicken.
     </description>
     <description lang="cs">Toto je tvuj prvni ukol a bude celkem jednoduchy. Vsechno, co
@@ -49,6 +50,11 @@
                            treba da uradis je da naredis Pingusima da iskopaju rupu u
                            zemlji da bi mogli da dodju do izlaza. Naredjenja se izdaju
                            kliktanjem misa na Pinugsu.
+    </description>
+    <description lang="fi">Tässä tulee ensimmäinen tehtäväsi - ja kuten tavallista, se on vielä
+                           melko halppo. Komennat vain haluamaasi pingua kaivamaan
+                           kolon maahan niin, että kaikki pääsevät uloskäynnille. Kaivaminen
+                           hoituu yksinkertaisesti klikkaamalla pingua.
     </description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>

@@ -1,12 +1,13 @@
 # Pingus.
 # Copyright (C) YEAR Free Software foundation, Inc.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#
+# 
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Pingus 0.6.0\n"
-"POT-Creation-Date: 2003-04-23 22:24+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2003-08-21 22:45+0200\n"
 "PO-Revision-Date: 2003-04-23 22:26+0200\n"
 "Last-Translator: Jan Morén <jan.moren@lucs.lu.se>\n"
 "Language-Team: sv <jan.moren@lucs.lu.se>\n"
@@ -26,10 +27,6 @@ msgstr "Oväntat tecken: '"
 msgid "Unexpected char '"
 msgstr "Oväntat tecken '"
 
-#. The credits vector holds the strings to display. The first
-#. character of each string is a special character, which indicates
-#. the size of the font or other special stuff. "-" means large
-#. font, "_" is a small font and "n" means a newline.
 #: src/credits.cxx:46
 msgid "-Idea"
 msgstr "-Idé"
@@ -50,51 +47,51 @@ msgstr "-Portning (Win32)"
 msgid "-Gfx"
 msgstr "-Grafik"
 
-#: src/credits.cxx:79
+#: src/credits.cxx:80
 msgid "-Music"
 msgstr "-Musik"
 
-#: src/credits.cxx:85
+#: src/credits.cxx:86
 msgid "-Level Design"
 msgstr "-Nivådesign"
 
-#: src/credits.cxx:90
+#: src/credits.cxx:91
 msgid "-Story"
 msgstr "-Berättelse"
 
-#: src/credits.cxx:94
+#: src/credits.cxx:95
 msgid "-Translation"
 msgstr "-Översättning"
 
-#: src/credits.cxx:105
+#: src/credits.cxx:106
 msgid "-Special"
 msgstr "-Special"
 
-#: src/credits.cxx:106
+#: src/credits.cxx:107
 msgid "-Thanks to"
 msgstr "-Tack till"
 
-#: src/credits.cxx:146
+#: src/credits.cxx:147
 msgid "_And a very Special Thanks"
 msgstr "_Och ett Särskilt Tack"
 
-#: src/credits.cxx:147
+#: src/credits.cxx:148
 msgid "_to all the people who"
 msgstr "_till alla de som"
 
-#: src/credits.cxx:148
+#: src/credits.cxx:149
 msgid "_contribute to"
 msgstr "_bidrar till"
 
-#: src/credits.cxx:149
+#: src/credits.cxx:150
 msgid "_Free Software!"
 msgstr "_Fri mjukvara!"
 
-#: src/credits.cxx:155
+#: src/credits.cxx:156
 msgid "_Thank you for"
 msgstr "_Tack för att"
 
-#: src/credits.cxx:156
+#: src/credits.cxx:157
 msgid "_playing!"
 msgstr "_du spelar!"
 
@@ -227,7 +224,8 @@ msgid "Ctrl PageDown - decrease objects z-pos by 1"
 msgstr "Ctrl PageDown   - minska objektets z-position med 1"
 
 #: src/editor/editor_help_screen.cxx:84
-msgid "Naming Convention: <LEVELNAME><NUMBER>-<CREATOR>.xml"
+#, fuzzy
+msgid "Naming Convention: <LEVELNAME><NUMBER>-<CREATOR>.plf"
 msgstr "Namnstandard: <NIVÅNAMN><NUMMER>-<SKAPARE>.xml"
 
 #: src/editor/editor_help_screen.cxx:86
@@ -428,7 +426,8 @@ msgid "Save this level (F6)"
 msgstr "Spara nivån (F6)"
 
 #: src/editor/panel_icons.cxx:68
-msgid "Delete marked objects (delete"
+#, fuzzy
+msgid "Delete marked objects (delete)"
 msgstr "Ta bort markerade objekt (ta bort"
 
 #: src/editor/panel_icons.cxx:80
@@ -521,18 +520,14 @@ msgstr "Inläsning klar. Tryck på en musknapp för att starta nivån"
 msgid "Results:"
 msgstr "Resultat:"
 
-#. Ending messages are censored for the momement
-#. font->print_center(CL_Display::get_width() / 2, 100,
-#. get_message(100 * world->get_saved_pingus() / world->get_allowed_pingus()).c_str());
-#.
 #: src/level_result.cxx:64
 #, c-format
 msgid "Pingus saved:   %3d/%3d"
 msgstr "Räddade Pingus: %3d/%3d"
 
 #: src/level_result.cxx:69
-#, c-format
-msgid "Pingus killed:  %3d/%3d"
+#, fuzzy, c-format
+msgid "Pingus died:  %3d/%3d"
 msgstr "Dödade Pingus: %3d/%3d"
 
 #: src/level_result.cxx:85
@@ -605,25 +600,18 @@ msgstr "Snälla säg att du använde Armageddon-knappen."
 msgid "You've got a negative save/total value, something is buggy."
 msgstr "Du har negativ räddad/totalt-värde, någonting är trasigt."
 
-#.  desc["en"] = "..:: Starts the level you played at last ::..";
 #: src/menu_button.cxx:177
 msgid "..:: The people who brought this game to you ::.."
 msgstr "..:: De som skapat spelet åt dig ::.."
 
-#. desc["de"] = "..:: Wer hat den dieses Spiel verbrochen...? ::..";
 #: src/menu_button.cxx:180
 msgid "Credits"
 msgstr "Tack"
 
-#. x_pos = CL_Display::get_width() * 150 / 640; //150;
-#. y_pos = CL_Display::get_height() * 330 / 480; //330;
-#. 150;
-#. 330;
 #: src/menu_button.cxx:212
 msgid "..:: Takes you to the options menu ::.."
 msgstr "..:: Tar dig till inställningsmenyn ::.."
 
-#.  desc["de"] = "..:: Einstellungen und Mogeleien ::..";
 #: src/menu_button.cxx:215
 msgid "Options"
 msgstr "Inställningar"
@@ -632,7 +620,6 @@ msgstr "Inställningar"
 msgid "..:: Bye, bye ::.."
 msgstr "..:: Adjö ::.."
 
-#. desc["de"] = "..:: Auf Wiedersehen ::..";
 #: src/menu_button.cxx:251
 msgid "Exit"
 msgstr "Avsluta"
@@ -641,7 +628,6 @@ msgstr "Avsluta"
 msgid "..:: Launch the level editor ::.."
 msgstr "..:: Starta nivåeditorn ::.."
 
-#. desc["de"] = "..:: Den Level Editor starten ::..";
 #: src/menu_button.cxx:305
 msgid "Create a"
 msgstr "Skapa en"
@@ -771,309 +757,304 @@ msgstr "Gångare"
 msgid "Released:%3d/%-3d   Out:%3d   Saved:%3d/%-3d"
 msgstr "Utsläppt:%3d/%-3d   Ut:%3d   Räddade:%3d/%-3d"
 
-#: src/pingus_main.cxx:93
+#: src/pingus_main.cxx:96
 msgid "| segfault_handler: catched a SIGSEGV."
 msgstr "| segfault_handler: fångade en SIGSEGV."
 
-#: src/pingus_main.cxx:95
+#: src/pingus_main.cxx:98
 msgid "| Woops, Pingus just crashed, congratulations you've found a bug."
 msgstr "| Oops, Pingus krashade, grattis, du har hittat en bugg."
 
-#: src/pingus_main.cxx:96
+#: src/pingus_main.cxx:99
 msgid ""
 "| Please write a little bug report to <grumbel@gmx.de>, include informations"
 msgstr ""
 "| Snälla skiv en liten buggrapport till <grumbel@gmx.de>, inkludera "
 "information"
 
-#: src/pingus_main.cxx:97
+#: src/pingus_main.cxx:100
 msgid "| where exacly the SIGSEGV occured and how to reproduce it."
 msgstr "| om precis var SIGSEGV hände och hur man gör det igen."
 
-#: src/pingus_main.cxx:98
+#: src/pingus_main.cxx:101
 msgid "| Also try include a backtrace, you can get it like this:"
 msgstr "| Försök också inkludera en backtrace, du får en så här:"
 
-#: src/pingus_main.cxx:104
+#: src/pingus_main.cxx:107
 msgid "| If that doesn't work, try this:"
 msgstr "| Om det inte fungerar, försök med det här:"
 
-#: src/pingus_main.cxx:108
+#: src/pingus_main.cxx:111
 msgid "| [play until it crashes again]"
 msgstr "| [spela tills det krashar igen]"
 
-#: src/pingus_main.cxx:116
+#: src/pingus_main.cxx:119
 msgid "| Warning: Pingus recieved a SIGINT, exiting now."
 msgstr "| Warning: Pingus fick en SIGINT, avlsutar nu."
 
-#: src/pingus_main.cxx:306
+#: src/pingus_main.cxx:310
 msgid "Warning: Larger resolution than 800x600 will result in visual problems"
 msgstr "Warning: högre upplösning än 800x600 resulterar i visuella problem"
 
-#: src/pingus_main.cxx:487
+#: src/pingus_main.cxx:497
 msgid "Unknow char: "
 msgstr "Okänt tecken: "
 
-#: src/pingus_main.cxx:488
+#: src/pingus_main.cxx:498
 msgid "Usage: "
 msgstr "Användning: "
 
-#: src/pingus_main.cxx:488
+#: src/pingus_main.cxx:498
 msgid " [OPTIONS]... [LEVELFILE]"
 msgstr " [FLAGGOR]... [NIVÅFIL]"
 
-#: src/pingus_main.cxx:491
+#: src/pingus_main.cxx:501
 msgid "Options:"
 msgstr "Flaggor:"
 
-#: src/pingus_main.cxx:493
+#: src/pingus_main.cxx:503
 msgid "Set the resolution for pingus (default: 800x600)"
 msgstr "Sätt upplösningen för pingus (standard: 800x600)"
 
-#: src/pingus_main.cxx:494
+#: src/pingus_main.cxx:504
 msgid "Displays this help"
 msgstr "Visar den här hjälpen"
 
-#: src/pingus_main.cxx:495
+#: src/pingus_main.cxx:505
 msgid "Disable intro"
 msgstr "Avaktivera intro"
 
-#: src/pingus_main.cxx:497
+#: src/pingus_main.cxx:507
 msgid "Use OpenGL"
 msgstr "Använd OpenGL"
 
-#: src/pingus_main.cxx:500
+#: src/pingus_main.cxx:510
 msgid "Start in Window Mode"
 msgstr "Starta i fönster"
 
-#: src/pingus_main.cxx:501
+#: src/pingus_main.cxx:511
 msgid "Start in Fullscreen"
 msgstr "Starta i fullskärm"
 
-#. "   --use-datafile           Use the pre-compiled datafile (default)\n"
-#.          "   --use-scriptfile         Use the scriptfile and read all data from files\n"
-#: src/pingus_main.cxx:505
+#: src/pingus_main.cxx:515
 msgid "FILE      "
 msgstr "FIL       "
 
-#: src/pingus_main.cxx:505
+#: src/pingus_main.cxx:515
 msgid "Load a custom level from FILE"
 msgstr "Läs in en särskild nivå från FIL"
 
-#: src/pingus_main.cxx:506
+#: src/pingus_main.cxx:516
 msgid "FILE        "
 msgstr "FIL         "
 
-#: src/pingus_main.cxx:506
+#: src/pingus_main.cxx:516
 msgid "Load a custom worldmap from FILE"
 msgstr "Läs in en särskild världskarta från FIL"
 
-#: src/pingus_main.cxx:507
+#: src/pingus_main.cxx:517
 msgid "Print some more messages to stdout, can be set"
 msgstr "Skriv ut fler meddelanden till stdout, kan sättas"
 
-#: src/pingus_main.cxx:508
+#: src/pingus_main.cxx:518
 msgid "multiple times to increase verbosity"
 msgstr "flera gånger för att öka detaljnivån"
 
-#: src/pingus_main.cxx:509
+#: src/pingus_main.cxx:519
 msgid "Prints version number and exit"
 msgstr "Skriver ut versionen och avslutar"
 
-#: src/pingus_main.cxx:510
+#: src/pingus_main.cxx:520
 msgid "Launch the Level editor (experimental)"
 msgstr "Starta nivåeditorn (experimentell)"
 
-#: src/pingus_main.cxx:511
+#: src/pingus_main.cxx:521
 msgid "Disable automatic scrolling"
 msgstr "Avaktivera automatisk skärmrullning"
 
-#.          "   --disable-swcursor       Disable software cursor, use hw cursor instead\n"
-#: src/pingus_main.cxx:513
+#: src/pingus_main.cxx:523
 msgid "Enable software cursor"
 msgstr "Aktivera mjukvarupekare"
 
-#. "   --disable-action-help    Disable action button help strings\n"
-#. "   --enable-action-help     Enable action button help strings(default)\n"
-#: src/pingus_main.cxx:516
+#: src/pingus_main.cxx:526
 msgid "Don't read ~/.pingus/config"
 msgstr "Läs inte ~/.pingus/config"
 
-#: src/pingus_main.cxx:517
+#: src/pingus_main.cxx:527
 msgid "FILE       "
 msgstr "FIL        "
 
-#: src/pingus_main.cxx:517
+#: src/pingus_main.cxx:527
 msgid "Read config from FILE (default: ~/.pingus/config)"
 msgstr "Läs in konfiguration från fil (standard: ~/.pingus/config)"
 
-#: src/pingus_main.cxx:518
+#: src/pingus_main.cxx:528
 msgid "reduce CPU usage, might speed up the game on slower machines"
 msgstr ""
 "minska processoranvändning, kan öka hastigheten på spelet för långsammare "
 "maskiner"
 
-#: src/pingus_main.cxx:519
+#: src/pingus_main.cxx:529
 msgid "Uses the controller given in FILE"
 msgstr "Använd kontrollern som ges i FIL"
 
-#: src/pingus_main.cxx:521
+#: src/pingus_main.cxx:531
 msgid "Debugging and experimental stuff:"
 msgstr "Avlusnings- och experimentella saker:"
 
-#: src/pingus_main.cxx:522
+#: src/pingus_main.cxx:532
 msgid "Enables some features, only interesting programmers"
 msgstr "Aktiverar vissa egenskaper, bara intressant programmerare"
 
-#: src/pingus_main.cxx:523
+#: src/pingus_main.cxx:533
 msgid "Enable the output of debugging infos, possible"
 msgstr "Aktivera utskrift av avslusningsinfo, möjliga"
 
-#: src/pingus_main.cxx:524
+#: src/pingus_main.cxx:534
 msgid "OPTION's are tiles, gametime, actions, sound, resources, gui,"
 msgstr "FLAGGOR är tiles, gametime, actions, sound, resources, gui,"
 
-#: src/pingus_main.cxx:526
+#: src/pingus_main.cxx:536
 msgid "Skip at least N frames, larger values speed the game up"
 msgstr "Hoppa över minst N bildrutor, högre värde ökar hastigheten på spelet"
 
-#: src/pingus_main.cxx:527
+#: src/pingus_main.cxx:537
 msgid "Skip at most N frames"
 msgstr "Hoppa över högst N bildrutor"
 
-#: src/pingus_main.cxx:528
+#: src/pingus_main.cxx:538
 msgid "Set both min and max frameskip to N"
 msgstr "Sätt både minsta och största bildrutehoppet till N"
 
-#: src/pingus_main.cxx:529
+#: src/pingus_main.cxx:539
 msgid "Set the game speed (0=fastest, >0=slower)"
 msgstr "Sätt spelhastigheten (0=snabbast, >0=långsammare)"
 
-#: src/pingus_main.cxx:530
+#: src/pingus_main.cxx:540
 msgid "Prints the fps to stdout"
 msgstr "Skriver ut fps till stdout"
 
-#: src/pingus_main.cxx:531
+#: src/pingus_main.cxx:541
 msgid "Set the size of the map tiles (default: 32)"
 msgstr "Sätter storleken på kartrutorna (standard: 32)"
 
-#: src/pingus_main.cxx:532
+#: src/pingus_main.cxx:542
 msgid "Disable some cpu intensive features"
 msgstr "Avaktivera vissa processorintensiva egenskaper"
 
-#: src/pingus_main.cxx:533
+#: src/pingus_main.cxx:543
 msgid "Reduces the CPU usage by issuing sleep()"
 msgstr "Minskar processoranvändandet genom att använda sleep()"
 
-#: src/pingus_main.cxx:535
+#: src/pingus_main.cxx:545
 msgid "Demo playing and recording:"
 msgstr "Spela upp och spela in demo:"
 
-#: src/pingus_main.cxx:536
+#: src/pingus_main.cxx:546
 msgid "FILE     "
 msgstr "FIL      "
 
-#: src/pingus_main.cxx:536
+#: src/pingus_main.cxx:546
 msgid "Plays a demo session from FILE"
 msgstr "Spelar upp en demo från FIL"
 
-#: src/pingus_main.cxx:538
+#: src/pingus_main.cxx:548
 msgid "Record demos for each played level"
 msgstr "Spela in en demo för varje spelad nivå"
 
-#: src/pingus_main.cxx:540
+#: src/pingus_main.cxx:550
 msgid "Sound:"
 msgstr "Ljud:"
 
-#: src/pingus_main.cxx:541
+#: src/pingus_main.cxx:551
 msgid "Disable sound"
 msgstr "Avaktivera ljud"
 
-#: src/pingus_main.cxx:542
+#: src/pingus_main.cxx:552
 msgid "Disable music"
 msgstr "Avaktivera musik"
 
-#: src/pingus_main.cxx:712
+#: src/pingus_main.cxx:726
 msgid "clanVorbis support:           ok"
 msgstr "clanVorbis-support:           ok"
 
-#: src/pingus_main.cxx:714
+#: src/pingus_main.cxx:728
 msgid "clanVoribs support:  missing (.ogg music files will not be playable)"
 msgstr "clanVorbis-support:  saknas (.ogg musikfiler kommer inte kunna spelas)"
 
-#: src/pingus_main.cxx:718
+#: src/pingus_main.cxx:732
 msgid "clanMikMod support:           ok"
 msgstr "clanMikMod-support:           ok"
 
-#: src/pingus_main.cxx:720
+#: src/pingus_main.cxx:734
 msgid "clanMikMod support:  missing (music files will not be playable)"
 msgstr "clanMikMod-support:  saknas (musikfiler kommer inte kunna spelas)"
 
-#: src/pingus_main.cxx:724
+#: src/pingus_main.cxx:738
 msgid "getext support:               ok"
 msgstr "getext-support:               ok"
 
-#: src/pingus_main.cxx:725
+#: src/pingus_main.cxx:739
 msgid "gettext language:        english"
 msgstr "gettext-språk:        engelska"
 
-#: src/pingus_main.cxx:731
+#: src/pingus_main.cxx:745
 msgid "sound support:           enabled"
 msgstr "ljudsupport:           på"
 
-#: src/pingus_main.cxx:733
+#: src/pingus_main.cxx:747
 msgid "sound support:          disabled"
 msgstr "ljudsupport:          av"
 
-#: src/pingus_main.cxx:736
+#: src/pingus_main.cxx:750
 msgid "music support:           enabled"
 msgstr "musiksupport:           på"
 
-#: src/pingus_main.cxx:738
+#: src/pingus_main.cxx:752
 msgid "music support:          disabled"
 msgstr "musiksupport:          av"
 
-#: src/pingus_main.cxx:740
+#: src/pingus_main.cxx:754
 msgid "resolution set to:       "
 msgstr "upplösning satt till:       "
 
-#: src/pingus_main.cxx:741
+#: src/pingus_main.cxx:755
 msgid "fullscreen:              "
 msgstr "fullskärm:              "
 
-#: src/pingus_main.cxx:742
+#: src/pingus_main.cxx:756
 msgid " enabled"
 msgstr " på"
 
-#: src/pingus_main.cxx:742
+#: src/pingus_main.cxx:756
 msgid "disabled"
 msgstr "av"
 
-#: src/pingus_main.cxx:752
+#: src/pingus_main.cxx:766
 msgid "PingusMain: Starting Main: "
 msgstr "PingusMain: Startar Main: "
 
-#: src/pingus_main.cxx:782
+#: src/pingus_main.cxx:811
 msgid "PingusMain: Levelfile not found, ignoring: "
 msgstr "PingusMain: Nivåfil hittas inte, ignorerar: "
 
-#: src/pingus_main.cxx:883
+#: src/pingus_main.cxx:915
 msgid "Error caught from ClanLib: "
 msgstr "Fel fångat från ClanLib: "
 
-#: src/pingus_main.cxx:887
+#: src/pingus_main.cxx:919
 msgid "Error caught from Pingus: "
 msgstr "Fel fångat från Pingus: "
 
-#: src/pingus_main.cxx:891
+#: src/pingus_main.cxx:923
 msgid "Pingus: Out of memory!"
 msgstr "Pingus: Slut på minnet!"
 
-#: src/pingus_main.cxx:895
+#: src/pingus_main.cxx:927
 msgid "Pingus: Standard exception caught!:\n"
 msgstr "Pingus: standardavbrott fångat!:\n"
 
-#: src/pingus_main.cxx:899
+#: src/pingus_main.cxx:931
 msgid "Pingus: Unknown throw caught!"
 msgstr "Pingus: okänt kast fångat!"
 
@@ -1150,7 +1131,8 @@ msgid "Saved: "
 msgstr "Räddade: "
 
 #: src/result_screen.cxx:234
-msgid "Killed: "
+#, fuzzy
+msgid "Died: "
 msgstr "Dödade: "
 
 #: src/result_screen.cxx:238
@@ -1169,7 +1151,7 @@ msgstr "Skärmdump: Skärmdump är klar."
 msgid "Screenshot: Couldn't save screenshot"
 msgstr "Skärmdump: Kunde inte spara skärmdump"
 
-#: src/screenshot.cxx:134
+#: src/screenshot.cxx:132
 msgid "Screenshot: Couldn't write file: "
 msgstr "Skärmdump: Kunde inte skriva till fil: "
 
@@ -1211,10 +1193,11 @@ msgid "The Journey Continues"
 msgstr "Resan Fortsätter"
 
 #: src/story.cxx:44
+#, fuzzy
 msgid ""
 "Now after you and the Pingus have learned the basics and\n"
 "practiced a bit it is time to move on and begin the journey into\n"
-"the world. Since the flow with which the Pingus traveled to the\n"
+"the world. Since the ice floe with which the Pingus traveled to the\n"
 "Tutorial Island isn't going to hold on the whole way into the warmer\n"
 "climates the Pingus have to find something else to guide\n"
 "them on their journey.\n"
@@ -1393,6 +1376,34 @@ msgstr "Gå in?"
 msgid "WorldMap: File not found: "
 msgstr "Världskarta: Fil kan inte hittas: "
 
-#: src/worldmap/worldmap.cxx:249
+#: src/worldmap/worldmap.cxx:260
 msgid "...walking..."
 msgstr "...går..."
+
+#, fuzzy
+#~ msgid "Perfect! You saved all the Pingus. Great!"
+#~ msgstr "Perfekt! Du räddade alla som var möjliga - jättebra!"
+
+#, fuzzy
+#~ msgid ""
+#~ "You saved just the ones you needed, you made it, but\n"
+#~ "maybe you can do it better next time?"
+#~ msgstr ""
+#~ "Du räddade precis vad du behövde, du klarade det, men\n"
+#~ "kanske kan du bättre?"
+
+#, fuzzy
+#~ msgid "Not everybody got saved, but still good work!"
+#~ msgstr "Inte alla kunde räddas, men bra gjort ändå!"
+
+#, fuzzy
+#~ msgid ""
+#~ "You didn't save enough, but you still saved a few, next\n"
+#~ "time you might be better."
+#~ msgstr ""
+#~ "Du räddade inte tillräckligt, men några ändå, nästa\n"
+#~ "gång blir det bättre."
+
+#, fuzzy
+#~ msgid "Only a handful more and you would have made it, try again!"
+#~ msgstr "Bara några till så hade du klarat det - försök igen!"

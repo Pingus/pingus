@@ -9,6 +9,7 @@
     <levelname lang="tr">Blokla ve patlat</levelname>
     <levelname lang="fr">Bloque la route</levelname>
     <levelname lang="sr">Blok i stena</levelname>
+    <levelname lang="fi">Stop'n Roll</levelname>
 
     <description lang="en">Once again it's time to combine the stuff you have learned in your
                            previous levels. Blast your way free and make sure you also keep the
@@ -37,6 +38,10 @@
     <description lang="sr">Ponovo je vreme da se kombinuju stvari naucene iz prethodnih
                            nivoa. Razori put do slobode eksplozijama, ali takodje i drzi
                            ostale Pinguse pod kontrolom. Akcija Bloker ce pomoci.
+    </description>
+    <description lang="fi">Jälleen on aika yhdistellä edellisissä kentissä opittua.
+                           Räjäytä tie auki mutta varmista samalla, että loput pingut
+                           pysyvät hallinnassa. Pysäyttäjistä on apua.
     </description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>

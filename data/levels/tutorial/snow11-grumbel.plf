@@ -9,6 +9,7 @@
     <levelname lang="tr">Zýpla, düþ... ve Kaz...</levelname>
     <levelname lang="fr">Saute, rebondis ... et défonce...</levelname>
     <levelname lang="sr">Skakutanje... i glodanje...</levelname>
+    <levelname lang="fi">Hypi, pompi... murskaa...</levelname>
 
     <description lang="en">It's panic time again. The Pingus will not come out very fast, but
 		           since they turn around when they hit walls you will soon have some trouble
@@ -48,6 +49,12 @@
                            se kod zidova okrecu, ubrzo ce biti tesko koordinirati ih sve. Posto je
                            potrebno spasiti samo 3, trebalo bi da je izvodljivo. Ako ne uspe iz
                            prve koristite pauzu (taster 'p') da bolje sagledate nivo.
+    </description>
+    <description lang="fi">Paniikkipäivät ovat täällä taas! Vaikka pinguja tulee kohtuullisen hitaasti,
+                           ne törmäilevät seiniin ja koko lauman ohjailu muuttuu varsin pian hankalaksi.
+                           Koska uloskäynnille täytyy kuitenkin saada vain 5 pingua, kentän ratkaiseminen
+                           ei pitäisi olla lainkaan mahdotonta. Jos mikään muu ei tunnu onnistuvan,
+                           kokeile pysäyttää peli 'p'-näppäimellä tai alareunan painikkeella.
     </description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>

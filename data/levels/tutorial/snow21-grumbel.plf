@@ -9,6 +9,7 @@
     <levelname lang="tr">Týrman, Climber, týrman ve bir köprü yap</levelname>
     <levelname lang="fr">Grimpe, Grimpe, Grimpe... et construit un pont</levelname>
     <levelname lang="sr">Penjanje, pentranje... i mostogradnja</levelname>
+    <levelname lang="fi">Kiipeä, Kiipeäjä, kiipeä... ja rakenna sitten silta</levelname>
 
     <description lang="en">Once again you get access to a new action. The Climber action allows
 			   a Pingu to climb up straight walls, thus allowing him to reach stuff
@@ -37,6 +38,10 @@
     <description lang="sr">Jos jednom je dobijen pristup novoj akciji. Akcija: Penjac omogucava
                            Pingusu da se penje uz prave vertikalne zidove, i na taj nacin dodje
 			   tamo gde inace nikako ne bi mogao doci, jer je previsoko.
+    </description>
+    <description lang="fi">Saat taas käyttöösi uuden toiminnon. Kiipeäjän avulla
+                           pingun saa nousemaan pystysuoraa seinää pitkin ja pääsemään siten
+                           paikkoihin, joihin ei niiden korkeuden vuoksi muilla keinoin ole asiaa.
     </description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>

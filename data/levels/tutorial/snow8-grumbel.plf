@@ -9,6 +9,7 @@
     <levelname lang="tr">Kaz ve uç, ama sakýn düþüp ölme</levelname>
     <levelname lang="fr">Creuse et flotte, mais ne tombe pas et éclate</levelname>
     <levelname lang="sr">Kopaj i lebdi, samo nemoj pasti i razbiti se</levelname>
+    <levelname lang="fi">Kaiva ja leiju, älä putoa ja liiskaannu</levelname>
 
     <description lang="en">Unlike the first two levels, you have two actions available in
                            this level. Your job is again simple: select an action at the panel
@@ -46,6 +47,12 @@
                            akcije. Tvoj posao je opet jednostavan: izaberi akciju na panelu
                            levo i izdaj naredjenja Pingusima kako bi oni dosli do izlaza.
                            Postaraj se da ne umre previse njih.
+    </description>
+    <description lang="fi">Toisin kuin ensimmäisissä kentissä, tällä kertaa käytettävissäsi on
+                           kahta eri toimintoa. Tehtävä on yksinkertainen: valitse
+                           vasemman reunan valikosta haluamiasi toimintoja ja käytä niitä
+                           pinguihin, että ne pääsevät uloskäynnille. Pidä huolta, ettei
+                           liian moni kuole matkalla.
     </description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>

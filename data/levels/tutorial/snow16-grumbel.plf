@@ -9,6 +9,7 @@
     <levelname lang="tr">Köprü yapýmý karmaþýklaþýyor...</levelname>
     <levelname lang="fr">La construction de pont devient complexe...</levelname>
     <levelname lang="sr">Mostogradnja se komplikuje...</levelname>
+    <levelname lang="fi">Mutkikkaampaa siltailua...</levelname>
 
     <description lang="en">Once again you have to combine actions carefully and wisely. If you
                            don't you could end up in the hole just before the exit, so
@@ -37,6 +38,10 @@
     <description lang="sr">Jos jednom se akcije moraju mudro i pazljivo kombinovati, jer bi
                            bez toga zacas zavrsili u rupi pre izlaza, zato smisli kako da
                            to izbegnes.
+    </description>
+    <description lang="fi">On jälleen aika yhdistellä viisaasti eri toimintoja. Hätiköimällä
+                           voit saada aikaan kolon juuri ennen uloskäyntiä, joten mieti
+                           tarkaan mitä teet.
     </description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>

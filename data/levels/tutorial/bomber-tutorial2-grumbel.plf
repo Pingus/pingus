@@ -9,6 +9,7 @@
     <levelname lang="tr">Çoðunluk için birkaçýný feda etmek gerek</levelname>
     <levelname lang="fr">Sacrifie quelques-uns pour sauver les autres</levelname>
     <levelname lang="sr">Zrtvuj nekoliko da spases ostale</levelname>
+    <levelname lang="fi">Uhraa muutama ja pelasta loput</levelname>
 
     <description lang="en">Sometimes no other actions are available, so you have to bomb your
                            way through the ground. The Pingus can do this by actually self-
@@ -21,9 +22,9 @@
                            alcuni per salvare gli altri.
     </description>
     <description lang="de">Manchmal, wenn kein anderer Weg existiert, musst Du dir deinen Weg
-                           durch den Boden sprengen. Ein Pingu kann dies tun in dem er
-                           sich selbst sprengt. Dies wird ihn töten, aber es ist von
-                           Zeit zu Zeit notwendig einige zu opfern um den Rest zu retten.
+                           durch den Boden sprengen. Ein Pingu kann dies tun, indem er
+                           sich selbst sprengt. Dies wird ihn töten, aber es ist
+                           gelegentlich notwendig einige zu opfern, um den Rest zu retten.
     </description>
     <description lang="cs">Obcas, kdyz zadna jina akce neni k dispozici, musis si uvolnit
                            cestu skrz zemi vybuchem. Pingove to ale umi udelat jen tak, ze se
@@ -43,6 +44,11 @@
                            zemljiste eksplozijama. Pingusi mogu to da rade tako sto ce sami
                            sebe unistiti. Iako ih to ubija, ponekad je neophodno da se zrtvuje
                            nekoliko Pingusa da bi se ostali spasili.
+    </description>
+    <description lang="fi">Jos muita kaivutoimintoja ei ole kätettävissä, täytyy joskus vain
+                           räjäytellä tie selväksi. Räjäyttämisen yhteydessä pingu
+                           tietysti kuolee, mutta toisinaan on tarpeen uhrata muutama loppujen
+                           hyväksi.
     </description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>

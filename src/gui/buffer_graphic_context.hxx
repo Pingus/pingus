@@ -1,4 +1,4 @@
-//  $Id: buffer_graphic_context.hxx,v 1.2 2003/08/17 20:53:17 grumbel Exp $
+//  $Id: buffer_graphic_context.hxx,v 1.3 2003/08/21 20:52:23 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -54,10 +54,10 @@ public:
   int   get_height () { return canvas->get_height(); }
 
   float get_zoom () { return 1.0f; }
-  void  set_zoom (float new_zoom) {}
+  void  set_zoom (float new_zoom) { UNUSED_ARG(new_zoom); }
 
-  void zoom_to (const CL_Rect & rect) {}
-  void move (const Vector & delta) {}
+  void zoom_to (const CL_Rect & rect) { UNUSED_ARG(rect); }
+  void move (const Vector & delta) { UNUSED_ARG(delta); }
 
   Vector screen_to_world (Vector pos) { return pos; }
   Vector world_to_screen (Vector pos) { return pos; }
@@ -69,22 +69,22 @@ public:
   void draw (CL_Surface& sur, int x_pos, int y_pos,
              float size_x, float size_y, int frame);
 
-  void draw_line (const Vector& pos1, const Vector& pos2,
-                  float r, float g, float b, float a = 1.0f) {}
-  void draw_line (int x1, int y1, int x2, int y2,
-                  float r, float g, float b, float a = 1.0f) {}
-  void draw_fillrect (int x1, int y1, int x2, int y2,
-                      float r, float g, float b, float a = 1.0f) {}
-  void draw_rect (int x1, int y1, int x2, int y2,
-			  float r, float g, float b, float a = 1.0f) {}
-  void draw_pixel (int x_pos, int y_pos,
-                   float r, float g, float b, float a = 1.0f) {}
-  void draw_circle (int x_pos, int y_pos, int radius,
-                    float r, float g, float b, float a = 1.0f) {}
+  void draw_line (const Vector& /*pos1*/, const Vector& /*pos2*/,
+                  float /*r*/, float /*g*/, float /*b*/, float a = 1.0f) { UNUSED_ARG(a); }
+  void draw_line (int /*x1*/, int /*y1*/, int /*x2*/, int /*y2*/,
+                  float /*r*/, float /*g*/, float /*b*/, float a = 1.0f) { UNUSED_ARG(a); }
+  void draw_fillrect (int /*x1*/, int /*y1*/, int /*x2*/, int /*y2*/,
+                      float /*r*/, float /*g*/, float /*b*/, float a = 1.0f) { UNUSED_ARG(a); }
+  void draw_rect (int /*x1*/, int /*y1*/, int /*x2*/, int /*y2*/,
+                  float /*r*/, float /*g*/, float /*b*/, float a = 1.0f) { UNUSED_ARG(a); }
+  void draw_pixel (int /*x_pos*/, int /*y_pos*/,
+                   float /*r*/, float /*g*/, float /*b*/, float a = 1.0f) { UNUSED_ARG(a); }
+  void draw_circle (int /*x_pos*/, int /*y_pos*/, int /*radius*/,
+                    float /*r*/, float /*g*/, float /*b*/, float a = 1.0f) { UNUSED_ARG(a); }
 
-  void print_left (FontHandle font, int x_pos, int y_pos, const std::string& str) {}
-  void print_center (FontHandle font, int x_pos, int y_pos, const std::string& str) {}
-  void print_right (FontHandle font, int x_pos, int y_pos, const std::string& str) {}
+  void print_left (FontHandle /*font*/, int /*x_pos*/, int /*y_pos*/, const std::string& /*str*/) {}
+  void print_center (FontHandle /*font*/, int /*x_pos*/, int /*y_pos*/, const std::string& /*str*/) {}
+  void print_right (FontHandle /*font*/, int /*x_pos*/, int /*y_pos*/, const std::string& /*str*/) {}
 
   /** Write the current content of the buffer down to a pnm file */
   void write(const std::string& filename);

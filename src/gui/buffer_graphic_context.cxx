@@ -1,4 +1,4 @@
-//  $Id: buffer_graphic_context.cxx,v 1.1 2003/08/16 16:20:30 grumbel Exp $
+//  $Id: buffer_graphic_context.cxx,v 1.2 2003/08/21 20:52:23 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,6 +37,9 @@ BufferGraphicContext::get_clip_rect()
 void
 BufferGraphicContext::clear (float r, float g, float b)
 {
+  UNUSED_ARG(r);
+  UNUSED_ARG(g);
+  UNUSED_ARG(b);
   std::cout << "BufferGraphicContext: clear" << std::endl;
 }
 
@@ -60,6 +63,7 @@ BufferGraphicContext::draw (CL_Surface& sur, int x_pos, int y_pos, int frame)
   } catch (PingusError& err) {
     std::cout << "BufferGraphicContext: " << err.get_message() << std::endl;
   }
+  UNUSED_ARG(frame);
 }
 
 void
@@ -67,6 +71,12 @@ BufferGraphicContext::draw (CL_Surface& sur, int x_pos, int y_pos,
                             float size_x, float size_y, int frame)
 {
   std::cout << "BufferGraphicContext: unsupported" << std::endl;
+  UNUSED_ARG(sur);
+  UNUSED_ARG(x_pos);
+  UNUSED_ARG(y_pos);
+  UNUSED_ARG(size_x);
+  UNUSED_ARG(size_y);
+  UNUSED_ARG(frame);
 }
 
 void

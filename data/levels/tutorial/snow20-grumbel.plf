@@ -9,6 +9,7 @@
     <levelname lang="tr">Üç çözüm, istediðini kullan</levelname>
     <levelname lang="fr">Trois solutions, c'est votre choix</levelname>
     <levelname lang="sr">Tri resenja, pa ti vidi</levelname>
+    <levelname lang="fi">Kolme ratkaisua, valitse minkä haluat</levelname>
 
     <description lang="en">Now that you've learned all the actions, it's time for some
                            more practice. This levels presents you with at least three
@@ -37,6 +38,10 @@
     <description lang="sr">Sada kada su naucene sve akcije, vreme je za malo vezbe ovi
                            nivoi nude bar tri razlicite mogucnosti za resavanje, pa
                            izaberi onu koja ti se svidja.
+    </description>
+    <description lang="fi">Nyt kun hallitset kaikki toiminnot, on aika pienen
+                           lisäharjoituksen. Tämän kentän voi ratkaista kolmella eri tavalla.
+                           Valitse itse, mitä niistä haluat kokeilla.
     </description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>

@@ -9,6 +9,7 @@
     <levelname lang="tr">Panik adasý</levelname>
     <levelname lang="fr">Ile de la Panique (float/bash)</levelname>
     <levelname lang="sr">Ostrvo panike (lebdi/glodaj)</levelname>
+    <levelname lang="fi">Paniikkisaari (leiju/murksaa)</levelname>
 
     <description lang="en">While the previous levels have not required much quick action from
                            you, this one gets a bit trickier. The Pingus are coming
@@ -41,6 +42,11 @@
     <description lang="sr">Dok prethodni nivoi nisu zahtevali puno brze akcije od tebe, ovaj
                            je malo komplikovaniji. Pingusi dolaze iz dva paralelna ulaza i 
 			   ti treba da istovremeno mudro koordiniras obe grupe.
+    </description>
+    <description lang="fi">Siinä missä edelliset kentät eivät ole vaatineet paljon työtä, tämä
+                           alkaakin olla jo vähän hankalampi. Pinguja tulee samaan aikaan
+                           kahdesta eri sisäänkäynnistä ja tehtäväsi on koordinoida ryhmiä
+                           järkevästi.
     </description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
