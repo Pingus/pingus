@@ -1,4 +1,4 @@
-//  $Id: world.hxx,v 1.6 2002/08/16 13:03:35 torangan Exp $
+//  $Id: world.hxx,v 1.7 2002/08/22 02:17:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #define HEADER_PINGUS_WORLD_HXX
 
 #include <list>
+#include <vector>
 #include <string>
 #include "pingus.hxx"
 
@@ -73,8 +74,9 @@ private:
   /// The time you have to finish a level
   int exit_time;
 
-  std::list<WorldObj*> * world_obj;
-
+  std::vector<WorldObj*> world_obj;
+  typedef std::vector<WorldObj*>::iterator WorldObjIter;
+  
   // These pointers hold objects and must be deleted
   ParticleHolder* particle_holder;
   PinguHolder*    pingus;

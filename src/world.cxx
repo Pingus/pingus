@@ -1,4 +1,4 @@
-//  $Id: world.cxx,v 1.15 2002/08/22 00:36:30 grumbel Exp $
+//  $Id: world.cxx,v 1.16 2002/08/22 02:17:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,9 +36,6 @@ using namespace std;
 using boost::shared_ptr;
 using Pingus::Actions::Bomber;
 
-typedef std::list<WorldObj*>::iterator WorldObjIter;
-
-
 static 
 bool WorldObj_less (WorldObj* a, WorldObj* b) 
 {
@@ -59,7 +56,6 @@ bool WorldObj_less (WorldObj* a, WorldObj* b)
 
 World::World(PLF* arg_plf)
   : game_time (new GameTime (game_speed)),
-    world_obj (new std::list<WorldObj*>),
     particle_holder (new ParticleHolder()),
     pingus (new PinguHolder()),
     plf (arg_plf),
@@ -87,11 +83,10 @@ World::~World()
 {
   delete particle_holder;
   
-  for (WorldObjIter it = world_obj->begin(); it != world_obj->end(); ++it) {
+  for (WorldObjIter it = world_obj.begin(); it != world_obj.end(); ++it) {
     delete *it;
   }
   
-  delete world_obj;
   delete game_time;
 }
 
@@ -104,7 +99,7 @@ World::draw(int x1, int y1, int /*w*/, int /*h*/,
   y_of += y1;
 
   //unsigned int time = CL_System::get_time (); 
-  for(WorldObjIter obj = world_obj->begin(); obj != world_obj->end(); ++obj)
+  for(WorldObjIter obj = world_obj.begin(); obj != world_obj.end(); ++obj)
     {
       //unsigned int time = CL_System::get_time (); 
       (*obj)->draw_offset(x_of, y_of, s);
@@ -145,7 +140,7 @@ World::update(float delta)
   // Let the pingus catch each other and
   // Let the traps catch the pingus and
   // Let the exit catch the pingus
-  for(WorldObjIter obj = world_obj->begin(); obj != world_obj->end(); ++obj)
+  for(WorldObjIter obj = world_obj.begin(); obj != world_obj.end(); ++obj)
     {
       // catch_pingu() is now done in relevant update() if WorldObj
       // needs to catch pingus.
@@ -178,7 +173,7 @@ World::init_map()
   gfx_map = new PingusSpotMap(plf);
   colmap = gfx_map->get_colmap();
 
-  world_obj->push_back (gfx_map);
+  world_obj.push_back (gfx_map);
 }
 
 void
@@ -191,7 +186,7 @@ World::init_worldobjs()
       i != weather_d.end();
       ++i)
     {
-      world_obj->push_back(WeatherGenerator::create(*i));
+      world_obj.push_back(WeatherGenerator::create(*i));
     }
 
   for (vector<WorldObjData*>::iterator i = worldobj_d.begin ();
@@ -200,25 +195,16 @@ World::init_worldobjs()
     {
       WorldObj* obj = (*i)->create_WorldObj ();
       if (obj)
-      	world_obj->push_back(obj);
+      	world_obj.push_back(obj);
     }
 
-   world_obj->push_back(pingus);
+   world_obj.push_back(pingus);
 
-  // After all objects are in world_obj, sort them to there z_pos
-#ifdef WIN32
-  //FIXME: ingo: This is a workaround around the std::list::sort()
-  //FIXME: problem under MSVC6. This is copy&paste from an usenet
-  //FIXME: article, so it might work or not, never tested it.
-// world_obj->sort(std::greater<CWorldObjPtr>());
-#else
-   world_obj->sort(WorldObj_less);
-#endif
-  // FIXME: If the above thing causes throuble under windows we could
-  // use a vector instead of a list and use stable_sort() instead.
+   //world_obj->sort(WorldObj_less);
+   std::stable_sort (world_obj.begin (), world_obj.end (), WorldObj_less);
 
   // Drawing all world objs to the colmap
-  for(WorldObjIter obj = world_obj->begin(); obj != world_obj->end(); ++obj)
+  for(WorldObjIter obj = world_obj.begin(); obj != world_obj.end(); ++obj)
     (*obj)->draw_colmap();
 
   // Setup the gravity force
