@@ -1,4 +1,4 @@
-//  $Id: EditorEvent.cc,v 1.46 2001/05/20 13:00:59 grumbel Exp $
+//  $Id: EditorEvent.cc,v 1.47 2001/07/22 21:17:58 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -580,6 +580,9 @@ EditorEvent::editor_duplicate_current_selection()
 						    *i);
       
       boost::shared_ptr<EditorObj> obj = (*i)->duplicate();
+
+      obj->set_position_offset (8, 8);
+
       if (obj.get())
 	{
 	  object_manager->editor_objs.insert(iter, obj);

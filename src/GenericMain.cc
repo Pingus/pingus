@@ -1,4 +1,4 @@
-//  $Id: GenericMain.cc,v 1.10 2001/07/21 20:28:12 grumbel Exp $
+//  $Id: GenericMain.cc,v 1.11 2001/07/22 21:17:57 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -56,6 +56,8 @@ GenericMain::main(int argc, char* argv[])
   // Init stuff needed by gettext
 #ifdef HAVE_GETTEXT
   std::cout << "Gettext: PACKAGE=" << PACKAGE  << ", LOCALEDIR=" << LOCALEDIR << std::endl;
+  // FIXME: We try to read from the install directory, even if we are
+  // not installed
   bindtextdomain (PACKAGE, LOCALEDIR);
   textdomain (PACKAGE);
 #endif

@@ -545,4 +545,39 @@ section Entrances {
 }
 
 
+section Ywlam
+{
+	bigsand = images/ywlam/old/bigsand.tga (type=surface, x=0, y=0, width=300,  height=150); 
+	mediumsand = images/ywlam/old/mediumsand.tga (type=surface, x=0, y=0, width=150,  height=75); 
+	smallsand = images/ywlam/old/smallsand.tga (type=surface, x=0, y=0, width=75,  height=37); 
+	rightsmallsand = images/ywlam/old/rightsmallsand.tga (type=surface, x=0, y=0, width=75,  height=37); 
+	leftsmallsand = images/ywlam/old/leftsmallsand.tga (type=surface, x=0, y=0, width=75,  height=37); 
+	bigblack = images/ywlam/old/bigblack.tga (type=surface, x=0, y=0, width=300,  height=150); 
+	mediumblack = images/ywlam/old/mediumblack.tga (type=surface, x=0, y=0, width=150,  height=75); 
+	smallblack = images/ywlam/old/smallblack.tga (type=surface, x=0, y=0, width=75,  height=37); 
+	rightsmallbrick = images/ywlam/old/rightsmallbrick.tga (type=surface, x=0, y=0, width=76,  height=38); 
+	leftsmallbrick = images/ywlam/old/leftsmallbrick.tga (type=surface, x=0, y=0, width=76,  height=38); 
+	bigegpytpict = images/ywlam/old/bigegyptpic.tga (type=surface, x=0, y=0, width=386,  height=485); 
+	mediumegpytpict = images/ywlam/old/mediumegyptpic.tga (type=surface, x=0, y=0, width=193,  height=242); 
+	smallegpytpict = images/ywlam/old/smallegyptpic.tga (type=surface, x=0, y=0, width=96,  height=121); 
+	bigdimwall = images/ywlam/old/bigdimwall.tga (type=surface, x=0, y=0, width=300,  height=150); 
+	mediumdimwall = images/ywlam/old/mediumdimwall.tga (type=surface, x=0, y=0, width=150,  height=75); 
+	smalldimwall = images/ywlam/old/smalldimwall.tga (type=surface, x=0, y=0, width=75,  height=37); 
+	mediummummy = images/ywlam/old/mediummummy.tga (type=surface, x=0, y=0, width=133,  height=56); 
+	mediumsphinx = images/ywlam/old/mediumsphinx.tga (type=surface, x=0, y=0, width=150,  height=97); 
+	smallsphinx = images/ywlam/old/smallsphinx.tga (type=surface, x=0, y=0, width=75,  height=48); 
+	smallD = images/ywlam/old/smallD.tga (type=surface, x=0, y=0, width=30,  height=38); 
+	smallO = images/ywlam/old/smallO.tga (type=surface, x=0, y=0, width=30,  height=38); 
+	smallG = images/ywlam/old/smallG.tga (type=surface, x=0, y=0, width=30,  height=38); 
+	smallE = images/ywlam/old/smallE.tga (type=surface, x=0, y=0, width=30,  height=38); 
+	pacmaze = images/ywlam/old/pacman-maze.tga (type=surface, x=0, y=0, width=453,  height=582); 
+	pacframe = images/ywlam/old/pacman-frame.tga (type=surface, x=0, y=0, width=453,  height=582); 
+	pacbkg = images/ywlam/old/pacman-bkg.tga (type=surface, x=0, y=0, width=453,  height=582); 
+	pacman = images/ywlam/old/pacman.tga (type=surface, x=0, y=0, width=32,  height=32); 
+	inky = images/ywlam/old/inky.tga (type=surface, x=0, y=0, width=32,  height=32); 
+	blinky = images/ywlam/old/blinky.tga (type=surface, x=0, y=0, width=32,  height=32); 
+	pinky = images/ywlam/old/pinky.tga (type=surface, x=0, y=0, width=32,  height=32); 
+	clyde = images/ywlam/old/clyde.tga (type=surface, x=0, y=0, width=32,  height=32); 
+}
+
 // EOF //

@@ -1,4 +1,4 @@
-//   $Id: PingusMain.cc,v 1.30 2001/07/22 12:47:00 grumbel Exp $
+//   $Id: PingusMain.cc,v 1.31 2001/07/22 21:17:58 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -267,6 +267,7 @@ PingusMain::check_args(int argc, char* argv[])
       break;
     case 'e':
       start_editor = true;
+      intro_disabled = true;
       std::cout << "PingusMain: Starting Editor" << std::endl;
       break;
     case 'q':

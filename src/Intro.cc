@@ -1,4 +1,4 @@
-//  $Id: Intro.cc,v 1.18 2001/06/16 15:01:53 grumbel Exp $
+//  $Id: Intro.cc,v 1.19 2001/07/22 21:17:57 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,6 +29,7 @@
 Intro::Intro(PingusMenuManager* m)
   : PingusSubMenu (m)
 {
+  blink_time = 0;
 }
 
 Intro::~Intro()
@@ -44,12 +45,24 @@ Intro::draw()
       CL_Display::clear_display (0.0, 0.0, 0.0);
       break;
     case SLOWDOWN:
-      CL_Display::clear_display (0.0, 0.0, 0.0, 0.5);
+      CL_Display::clear_display (0.0, 0.0, 0.0, 
+				 abs(int(CL_Display::get_height ()/2 - pos.y)) / 75.0f);
+      break;
+    case WAITING:
       break;
     case FINISHED:
-      font->print_center (CL_Display::get_width ()/2, 
-			  CL_Display::get_height ()/2 + CL_Display::get_height ()/4,
-			  "..:: Press Start ::..");
+      if (blink_time == 0)
+	blink_time = CL_System::get_time ();
+
+      // One second has passed
+      if (blink_time + 1500 < CL_System::get_time ())
+	blink_time = CL_System::get_time ();
+      
+      // A half second has passed so draw the image
+      if (blink_time + 500 < CL_System::get_time ())
+	font->print_center (CL_Display::get_width ()/2, 
+			    CL_Display::get_height ()/2 + CL_Display::get_height ()/4,
+			    "..:: Press Start ::..");
       break;
     }
 
@@ -75,8 +88,13 @@ Intro::update (float delta)
       if (pos.y < CL_Display::get_height ()/2) {
 	pos.y = CL_Display::get_height ()/2;
 	stage = FINISHED;
+	start_time = CL_System::get_time ();
       }
       break;      
+    case WAITING:
+      if (start_time + 1000 < CL_System::get_time ())
+	stage = FINISHED;
+      break;
     case FINISHED:
       break;
     }
@@ -98,6 +116,10 @@ Intro::preload ()
   pos = CL_Vector (CL_Display::get_width ()/2,
 		   CL_Display::get_height () + logo.get_height ());
   
+  
+  font->print_center (CL_Display::get_width ()/2, 
+		      CL_Display::get_height ()/2 + CL_Display::get_height ()/4,
+		      "..:: Press Start ::..");
   stage = SCROLL_UP;
 }
 

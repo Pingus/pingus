@@ -1,4 +1,4 @@
-//  $Id: Intro.hh,v 1.12 2001/06/16 15:01:53 grumbel Exp $
+//  $Id: Intro.hh,v 1.13 2001/07/22 21:17:57 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,9 +33,10 @@ private:
   CL_Vector  pos;
   CL_Vector  velocity;
   unsigned int start_time;
-  enum { SCROLL_UP, SLOWDOWN, FINISHED } stage;
+  enum { SCROLL_UP, SLOWDOWN, WAITING, FINISHED } stage;
   CL_Font* font;
 
+  unsigned int blink_time;
 public:
   Intro(PingusMenuManager* m);
   ~Intro();

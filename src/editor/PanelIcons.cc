@@ -1,4 +1,4 @@
-//  $Id: PanelIcons.cc,v 1.11 2001/06/11 20:40:17 grumbel Exp $
+//  $Id: PanelIcons.cc,v 1.12 2001/07/22 21:17:58 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,12 +17,13 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "../my_gettext.hh"
 #include "../PingusResource.hh"
 #include "PanelIcons.hh"
 
 PanelIconLoad::PanelIconLoad()
 {
-  tooltip = "Load a level";
+  tooltip = _("Load a level");
   sur = PingusResource::load_surface("editor/open", "core");
 }
 
@@ -35,7 +36,7 @@ PanelIconLoad::on_click()
 
 PanelIconExit::PanelIconExit()
 {
-  tooltip = "Exit the editor";
+  tooltip = _("Exit the editor");
   sur = PingusResource::load_surface("editor/exit", "core");  
 }
 
@@ -47,7 +48,7 @@ PanelIconExit::on_click()
 
 PanelIconSave::PanelIconSave()
 {
-  tooltip = "Save this level";
+  tooltip = _("Save this level");
   sur = PingusResource::load_surface("editor/save", "core");
 }
 
@@ -59,7 +60,7 @@ PanelIconSave::on_click()
 
 PanelIconDelete::PanelIconDelete()
 {
-  tooltip = "Delete marked objects";
+  tooltip = _("Delete marked objects");
   sur = PingusResource::load_surface("editor/delete", "core");
 }
 
@@ -71,6 +72,7 @@ PanelIconDelete::on_click()
 
 PanelIconCopy::PanelIconCopy()
 {
+  tooltip = _("Duplicate current object");
   sur = PingusResource::load_surface("editor/copy", "core");
 }
 
@@ -82,13 +84,13 @@ PanelIconCopy::on_click()
 
 PanelIconEdit::PanelIconEdit()
 {
-  tooltip = "???";
+  tooltip = _("Edit Properties (not implemented)");
   sur = PingusResource::load_surface("editor/edit", "core");  
 }
 
 PanelIconPreferences::PanelIconPreferences()
 {
-  tooltip = "???";
+  tooltip = _("Edit Preferences (not implemented)");
   sur = PingusResource::load_surface("editor/preferences", "core");
 }
 
@@ -107,7 +109,7 @@ PanelIconEdit::on_click()
 
 PanelIconRun::PanelIconRun()
 {
-  tooltip = "Start the level and test it";
+  tooltip = _("Start the level and test it");
   sur = PingusResource::load_surface("editor/clock_run", "core");  
 }
 
@@ -119,7 +121,7 @@ PanelIconRun::on_click()
 
 PanelIconNew::PanelIconNew()
 {
-  tooltip = "Create a new level from scratch";
+  tooltip = _("Create a new level from scratch");
   sur = PingusResource::load_surface("editor/new", "core");  
 }
 
@@ -131,7 +133,7 @@ PanelIconNew::on_click()
 
 PanelIconInsertObject::PanelIconInsertObject()
 {
-  tooltip = "Insert an object";
+  tooltip = _("Insert an object");
   sur = PingusResource::load_surface("editor/index", "core");  
 }
 
@@ -143,7 +145,7 @@ PanelIconInsertObject::on_click()
 
 PanelIconRegionZoom::PanelIconRegionZoom ()
 {
-  tooltip = "Zoom into a region";
+  tooltip = _("Zoom into a region");
   sur = PingusResource::load_surface("editor/region-zoom", "core");
 }
 
@@ -155,7 +157,7 @@ PanelIconRegionZoom::on_click()
 
 PanelIconZoomIn::PanelIconZoomIn()
 {
-  tooltip = "Zoom in";
+  tooltip = _("Zoom in");
   sur = PingusResource::load_surface("editor/zoom-in", "core");
 }
 
@@ -167,7 +169,7 @@ PanelIconZoomIn::on_click()
 
 PanelIconZoomOut::PanelIconZoomOut()
 {
-  tooltip = "Zoom out";
+  tooltip = _("Zoom out");
   sur = PingusResource::load_surface("editor/zoom-out", "core");
 }
 

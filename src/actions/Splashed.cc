@@ -1,4 +1,4 @@
-//  $Id: Splashed.cc,v 1.15 2001/07/22 12:47:00 grumbel Exp $
+//  $Id: Splashed.cc,v 1.16 2001/07/22 21:17:58 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,7 +32,8 @@ Splashed::init(void)
   environment = (PinguEnvironment)always;
   action_name = "splashed";
 
-  sprite = Sprite ("Pingus/splat0", "pingus");
+  sprite = Sprite ("Pingus/splat0", "pingus", 30.0f,
+		   Sprite::NONE, Sprite::ONCE);
   sprite.set_align_center_bottom ();
   
   pingu->set_status(not_catchable);
@@ -45,6 +46,8 @@ Splashed::init(void)
 void
 Splashed::update(float delta)
 {
+  sprite.update (delta);
+
   if (pingu->get_status() == dead)
     return;
 
@@ -54,10 +57,17 @@ Splashed::update(float delta)
       PingusSound::play_wav("splat");
     }
 
-  //if (counter == 11)
-  //{
-      pingu->set_status(dead);
-      //}
+  if (sprite.finished ())
+  {
+    pingu->set_status(dead);
+  }
+}
+
+void 
+Splashed::draw_offset(int x_of, int y_of, float s)
+{
+  sprite.put_screen (pingu->get_x () + x_of,
+		     pingu->get_y () + y_of);
 }
 
 /* EOF */

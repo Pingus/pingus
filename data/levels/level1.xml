@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0"  encoding="ISO-8859-1"?>
 
 <pingus-level>
   <global>
     <levelname lang="de">Ziemlich viel zu graben!</levelname>
     <levelname lang="en">Hard work to dig!</levelname>
-    <description lang="de">Die Pingus scheinen nun in der Hölle gelandet zu sein, um sie herum Lava und Fallen. Der Ausgang scheint unerreichbar.
+    <description lang="de">Die Pingus scheinen nun in der HÃƒÂ¶lle gelandet zu sein, um sie herum Lava und Fallen. Der Ausgang scheint unerreichbar.
 Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
     <description lang="en">This level demonstrates the woodthing entrance. Its is not meant to be finished or playable.</description>
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
@@ -53,32 +53,6 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
   <stretch-y>0</stretch-y>
 </background>
 
-<!--
-<background type="surface">
-  <surface><resource type="datafile">
-    <resource-datafile>textures</resource-datafile>
-  <resource-ident>Textures/mountain</resource-ident>
-  </resource></surface>
-  <color>
-    <red>0</red>
-    <green>0</green>
-    <blue>0</blue>
-    <alpha>0</alpha>
-  </color>
-  <scroll-x>0</scroll-x>
-  <scroll-y>0</scroll-y>
-  <para-x>0.4</para-x>
-  <para-y>0.4</para-y>
-  <stretch-x>0</stretch-x>
-  <stretch-y>0</stretch-y>
-</background>
-
-<background type="starfield">
-  <small-stars count="100"/>
-  <middle-stars count="50"/>
-  <large-stars count="25"/>
-</background>
--->
   <action-list>
     <angel count="20"/>
     <boarder count="20"/>
@@ -94,19 +68,67 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
     <miner count="20"/>
   </action-list>
 
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/bpice4</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>715</x-pos>
+    <y-pos>765</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
 <liquid>
   <surface><resource type="datafile">
     <resource-datafile>global</resource-datafile>
   <resource-ident>Liquid/slime</resource-ident>
   </resource></surface>
   <position>
-    <x-pos>-5</x-pos>
-    <y-pos>802</y-pos>
+    <x-pos>-8</x-pos>
+    <y-pos>791</y-pos>
     <z-pos>-100</z-pos>
   </position>
-  <width>64</width>
+  <width>1024</width>
   <speed>50</speed>
 </liquid>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/bpice4</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>670</x-pos>
+    <y-pos>765</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/bpice4</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>691</x-pos>
+    <y-pos>729</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="remove">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-remove</resource-datafile>
+  <resource-ident>misc/rect1</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>771</x-pos>
+    <y-pos>709</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
 
 <entrance>
   <position>
@@ -132,6 +154,18 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
   <owner-id>0</owner-id>
 </entrance>
 
+<groundpiece type="remove">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-remove</resource-datafile>
+  <resource-ident>misc/rect1</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>758</x-pos>
+    <y-pos>733</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
 <entrance>
   <position>
     <x-pos>399</x-pos>
@@ -146,8 +180,8 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
 
 <exit use-old-pos-handling="0">
   <position>
-    <x-pos>562</x-pos>
-    <y-pos>789</y-pos>
+    <x-pos>560</x-pos>
+    <y-pos>790</y-pos>
     <z-pos>0</z-pos>
   </position>
   <surface><resource type="datafile">
@@ -162,8 +196,8 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
   <resource-ident>GroundPieces/bpice5</resource-ident>
   </resource></surface>
   <position>
-    <x-pos>271</x-pos>
-    <y-pos>515</y-pos>
+    <x-pos>273</x-pos>
+    <y-pos>511</y-pos>
     <z-pos>41</z-pos>
   </position>
 </groundpiece>
@@ -195,18 +229,6 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
 <groundpiece type="ground">
   <surface><resource type="datafile">
     <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice4</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>719</x-pos>
-    <y-pos>759</y-pos>
-    <z-pos>41</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
   <resource-ident>GroundPieces/bpice1</resource-ident>
   </resource></surface>
   <position>
@@ -222,8 +244,8 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
   <resource-ident>GroundPieces/bpice6</resource-ident>
   </resource></surface>
   <position>
-    <x-pos>434</x-pos>
-    <y-pos>523</y-pos>
+    <x-pos>426</x-pos>
+    <y-pos>513</y-pos>
     <z-pos>41</z-pos>
   </position>
 </groundpiece>
@@ -348,18 +370,6 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
   </position>
 </groundpiece>
 
-<groundpiece type="remove">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-remove</resource-datafile>
-  <resource-ident>images/groundpieces/remove/rect1.png/rect1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>393</x-pos>
-    <y-pos>497</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
 <groundpiece type="ground">
   <surface><resource type="datafile">
     <resource-datafile>global</resource-datafile>
@@ -381,18 +391,6 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
     <x-pos>254</x-pos>
     <y-pos>830</y-pos>
     <z-pos>41</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="remove">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-remove</resource-datafile>
-  <resource-ident>images/groundpieces/remove/rect1.png/rect1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>457</x-pos>
-    <y-pos>497</y-pos>
-    <z-pos>0</z-pos>
   </position>
 </groundpiece>
 
@@ -474,8 +472,8 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
   <resource-ident>GroundPieces/bpice5</resource-ident>
   </resource></surface>
   <position>
-    <x-pos>442</x-pos>
-    <y-pos>516</y-pos>
+    <x-pos>496</x-pos>
+    <y-pos>511</y-pos>
     <z-pos>41</z-pos>
   </position>
 </groundpiece>
@@ -654,8 +652,8 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
   <resource-ident>GroundPieces/bpice5</resource-ident>
   </resource></surface>
   <position>
-    <x-pos>404</x-pos>
-    <y-pos>530</y-pos>
+    <x-pos>392</x-pos>
+    <y-pos>499</y-pos>
     <z-pos>41</z-pos>
   </position>
 </groundpiece>
@@ -711,6 +709,18 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
 <groundpiece type="ground">
   <surface><resource type="datafile">
     <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/bpice1</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>384</x-pos>
+    <y-pos>787</y-pos>
+    <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
   <resource-ident>GroundPieces/bpice4</resource-ident>
   </resource></surface>
   <position>
@@ -741,6 +751,18 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
     <x-pos>1381</x-pos>
     <y-pos>570</y-pos>
     <z-pos>41</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="remove">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-remove</resource-datafile>
+  <resource-ident>misc/rect1</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>366</x-pos>
+    <y-pos>486</y-pos>
+    <z-pos>400</z-pos>
   </position>
 </groundpiece>
 
@@ -846,8 +868,8 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
   <resource-ident>GroundPieces/bpice1</resource-ident>
   </resource></surface>
   <position>
-    <x-pos>408</x-pos>
-    <y-pos>789</y-pos>
+    <x-pos>433</x-pos>
+    <y-pos>787</y-pos>
     <z-pos>41</z-pos>
   </position>
 </groundpiece>
@@ -858,7 +880,7 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
   <resource-ident>GroundPieces/bpice1</resource-ident>
   </resource></surface>
   <position>
-    <x-pos>383</x-pos>
+    <x-pos>408</x-pos>
     <y-pos>789</y-pos>
     <z-pos>41</z-pos>
   </position>
@@ -1080,11 +1102,11 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
   <resource-ident>Liquid/slime</resource-ident>
   </resource></surface>
   <position>
-    <x-pos>-40</x-pos>
-    <y-pos>812</y-pos>
+    <x-pos>-37</x-pos>
+    <y-pos>807</y-pos>
     <z-pos>100</z-pos>
   </position>
-  <width>64</width>
+  <width>1024</width>
   <speed>50</speed>
 </liquid>
 
@@ -1097,6 +1119,18 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
   </position>
 </trap>
 
+<groundpiece type="remove">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-remove</resource-datafile>
+  <resource-ident>misc/rect1</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>552</x-pos>
+    <y-pos>486</y-pos>
+    <z-pos>400</z-pos>
+  </position>
+</groundpiece>
+
   <weather>
     <type>rain</type>
   <position>
@@ -1106,30 +1140,6 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
   </position>
   </weather>
 
-<groundpiece type="remove">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-remove</resource-datafile>
-  <resource-ident>images/groundpieces/remove/rect1.png/rect1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>562</x-pos>
-    <y-pos>488</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="remove">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-remove</resource-datafile>
-  <resource-ident>images/groundpieces/remove/rect1.png/rect1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>329</x-pos>
-    <y-pos>497</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
   <start-position>
   <position>
     <x-pos>732</x-pos>
@@ -1137,6 +1147,30 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
     <z-pos>1000</z-pos>
   </position>
   </start-position>
+
+<groundpiece type="remove">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-remove</resource-datafile>
+  <resource-ident>misc/rect1</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>428</x-pos>
+    <y-pos>486</y-pos>
+    <z-pos>400</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="remove">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-remove</resource-datafile>
+  <resource-ident>misc/rect1</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>491</x-pos>
+    <y-pos>486</y-pos>
+    <z-pos>550</z-pos>
+  </position>
+</groundpiece>
 
 </pingus-level>
 

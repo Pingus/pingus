@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Pingus 0.5.0\n"
-"POT-Creation-Date: 2001-06-17 12:57+0200\n"
-"PO-Revision-Date: 2001-05-14 08:09+02:00\n"
+"POT-Creation-Date: 2001-07-22 20:41+0200\n"
+"PO-Revision-Date: 2001-07-22 20:45+02:00\n"
 "Last-Translator: Ingo Ruhnke <grumbel@gmx.de>\n"
 "Language-Team: Ingo Ruhnke <grumbel@gmx.de>\n"
 "MIME-Version: 1.0\n"
@@ -273,7 +273,7 @@ msgstr ""
 
 #: src/editor/EditorEvent.cc:538
 msgid "Enter filename to save as (without .plf!)"
-msgstr ""
+msgstr "Datei speichern als:  "
 
 #: src/editor/EditorObj.cc:119
 msgid "EditorObj: Warrning unknown WorldObjData pointer!"
@@ -369,27 +369,27 @@ msgstr "g - Bodenstück (ground)"
 
 #: src/editor/ObjectSelector.cc:323
 msgid "s - Groundpiece (solid)"
-msgstr ""
+msgstr "Bodenelement (Solide)"
 
 #: src/editor/ObjectSelector.cc:324
 msgid "b - Groundpiece (bridge)"
-msgstr ""
+msgstr "Bodenelement (Bruecke)"
 
 #: src/editor/ObjectSelector.cc:325
 msgid "n - Groundpiece (transparent)"
-msgstr ""
+msgstr "Bodenelement (transparent)"
 
 #: src/editor/ObjectSelector.cc:326
 msgid "r - Groundpiece (remove)"
-msgstr ""
+msgstr "Bodenelement (entfernen)"
 
 #: src/editor/ObjectSelector.cc:327
 msgid "h - Hotspot"
-msgstr ""
+msgstr "h - Grafikelement"
 
 #: src/editor/ObjectSelector.cc:328
 msgid "e - Entrance"
-msgstr ""
+msgstr "e - Eingang"
 
 #: src/editor/ObjectSelector.cc:329
 #, fuzzy
@@ -398,15 +398,67 @@ msgstr "Beenden"
 
 #: src/editor/ObjectSelector.cc:330
 msgid "l - Liquid"
-msgstr ""
+msgstr "l - Fluessigkeit"
 
 #: src/editor/ObjectSelector.cc:331
 msgid "w - Weather"
-msgstr ""
+msgstr "w - Wetter"
 
 #: src/editor/ObjectSelector.cc:332
 msgid "o - WorldObject"
 msgstr ""
+
+#: src/editor/PanelIcons.cc:26
+msgid "Load a level"
+msgstr ""
+
+#: src/editor/PanelIcons.cc:39
+msgid "Exit the editor"
+msgstr ""
+
+#: src/editor/PanelIcons.cc:51
+msgid "Save this level"
+msgstr ""
+
+#: src/editor/PanelIcons.cc:63
+msgid "Delete marked objects"
+msgstr ""
+
+#: src/editor/PanelIcons.cc:75
+msgid "Duplicate current object"
+msgstr ""
+
+#: src/editor/PanelIcons.cc:87
+msgid "Edit Properties (not implemented)"
+msgstr "Objecteigenschaften (nicht implementiert)"
+
+#: src/editor/PanelIcons.cc:93
+msgid "Edit Preferences (not implemented)"
+msgstr ""
+
+#: src/editor/PanelIcons.cc:112
+msgid "Start the level and test it"
+msgstr "Level starten"
+
+#: src/editor/PanelIcons.cc:124
+msgid "Create a new level from scratch"
+msgstr "Neuen Level erstellen"
+
+#: src/editor/PanelIcons.cc:136
+msgid "Insert an object"
+msgstr "Objekt einfuegen"
+
+#: src/editor/PanelIcons.cc:148
+msgid "Zoom into a region"
+msgstr "in eine Region Zoomen"
+
+#: src/editor/PanelIcons.cc:160
+msgid "Zoom in"
+msgstr "Ausschnitt vergroessern"
+
+#: src/editor/PanelIcons.cc:172
+msgid "Zoom out"
+msgstr "Ausschnitt verkleinern"
 
 #: src/worldmap/PingusWorldMapGraph.cc:66
 #, fuzzy
@@ -459,7 +511,7 @@ msgstr "-Dank an"
 
 #: src/FPSCounter.cc:44
 msgid "unknown"
-msgstr ""
+msgstr "unbekannt"
 
 #: src/Screenshot.cc:39
 msgid "Screenshot: Saving screenshot to: "
@@ -478,15 +530,15 @@ msgstr "Screenshot: Screenshot konnte nicht gespeichert werden"
 msgid "Screenshot: Couldn't write file: "
 msgstr "Screenshot: Datei konnte nicht geschrieben werden: "
 
-#: src/PingusMain.cc:320
+#: src/PingusMain.cc:321
 msgid " (with sound support)"
 msgstr " (mit Sound Unterstützung)"
 
-#: src/PingusMain.cc:322
+#: src/PingusMain.cc:323
 msgid " (without sound support)"
 msgstr " (ohne Sound Unterstützung)"
 
-#: src/PingusMain.cc:326
+#: src/PingusMain.cc:327
 msgid ""
 "\n"
 "Copyright (C) 1998 Ingo Ruhnke <grumbel@pingus.cx>\n"
@@ -501,49 +553,49 @@ msgstr ""
 "Einsatz-\n"
 "faehigkeit fuer einen bestimmten Zweck."
 
-#: src/PingusMain.cc:480
+#: src/PingusMain.cc:481
 msgid "Unknow char: "
 msgstr "Unbekannter Buchstabe: "
 
-#: src/PingusMain.cc:481
+#: src/PingusMain.cc:482
 msgid "Usage: "
 msgstr "Benutzung: "
 
-#: src/PingusMain.cc:481
+#: src/PingusMain.cc:482
 msgid " [OPTIONS]... [LEVELFILE]"
 msgstr "[OPTIONEN]... [LEVELDATEI]"
 
-#: src/PingusMain.cc:764
+#: src/PingusMain.cc:760
 msgid "PingusMain: Starting Main: "
 msgstr "PingusMain: Hauptteil wird gestartet: "
 
-#: src/PingusMain.cc:788
+#: src/PingusMain.cc:783
 msgid "PingusMain: Levelfile not found, ignoring: "
 msgstr "PingusMain: Leveldatei nicht gefunden, Fehler wird ignoriert: "
 
-#: src/PingusMain.cc:863
+#: src/PingusMain.cc:824
 msgid "Error caught from ClanLib: "
 msgstr "ClanLib Fehler abgefangen: "
 
-#: src/PingusMain.cc:867
+#: src/PingusMain.cc:828
 msgid "Error caught from Pingus: "
 msgstr "Pingus Fehler wurde abgefangen: "
 
-#: src/PingusMain.cc:871
+#: src/PingusMain.cc:832
 msgid "Pingus: Out of memory!"
 msgstr "Pingus: Speicher ist ausgegangen"
 
-#: src/PingusMain.cc:875
+#: src/PingusMain.cc:836
 msgid "Pingus: Standard exception caught!:\n"
 msgstr "Pingus: Standard Ausnahme abgefangen!:\n"
 
-#: src/PingusMain.cc:879
+#: src/PingusMain.cc:840
 msgid "Pingus: Unknown throw caught!"
 msgstr "Pingus: Unbekannte Ausnahme abgefangen!"
 
 #: src/GenericMain.cc:69
 msgid "Starting Pingus "
-msgstr ""
+msgstr "Pingus wird gestartet"
 
 #. /
 #: src/QuestionDialog.hh:41

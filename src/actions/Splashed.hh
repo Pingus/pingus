@@ -1,4 +1,4 @@
-//  $Id: Splashed.hh,v 1.8 2001/04/20 20:53:54 grumbel Exp $
+//  $Id: Splashed.hh,v 1.9 2001/07/22 21:17:58 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,7 +35,8 @@ public:
   ///
   void   init(void);
   ///
-  void   update(float delta);
+  void update(float delta);
+  void draw_offset(int x, int y, float s);
   ///
   bool   can_reset(void) { return false; };
 };

@@ -1,4 +1,4 @@
-//  $Id: Panel.cc,v 1.13 2001/06/11 08:45:22 grumbel Exp $
+//  $Id: Panel.cc,v 1.14 2001/07/22 21:17:58 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -56,11 +56,11 @@ PanelIcon::put_screen(int x, int y)
       if (mouse_over_time == 0)
 	mouse_over_time = CL_System::get_time ();
       
-      if (CL_System::get_time () - mouse_over_time > 500) {
+      if (CL_System::get_time () - mouse_over_time > 5) {
 	int width = font->get_text_width (tooltip.c_str ());
-	CL_Display::fill_rect (32, y, 32 + width, y + font->get_height (),
-			       0.3f, 0.3f, 0.3f);
-	font->print_left (24, y, tooltip.c_str ());
+	CL_Display::fill_rect (28, y + 6 - 2, 32 + width, y + font->get_height () + 6 + 2,
+			       0.4f, 0.4f, 0.0f);
+	font->print_left (30, y + 6, tooltip.c_str ());
       }
     }
   else

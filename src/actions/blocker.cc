@@ -1,4 +1,4 @@
-//  $Id: blocker.cc,v 1.16 2001/06/11 08:45:21 grumbel Exp $
+//  $Id: blocker.cc,v 1.17 2001/07/22 21:17:58 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -63,7 +63,6 @@ Blocker::update(float delta)
 void
 Blocker::draw_offset(int x, int y, float s)
 {
-  std::cout << " Drawing blocker" << std::endl;
   sprite.put_screen (pingu->pos + CL_Vector(x, y));
 }
 
