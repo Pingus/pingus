@@ -17,6 +17,6 @@
 
 SUBDIRS = src data doc
 
-EXTRA_DIST = BUGS FAQ CREDITS autogen.sh pingus.dsp pingus.dsw vcfix.reg
+EXTRA_DIST = BUGS FAQ CREDITS autogen.sh pingus.dsp pingus.dsw vcfix.reg INSTALL.Win32
 
 
