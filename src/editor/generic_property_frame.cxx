@@ -1,4 +1,4 @@
-//  $Id: generic_property_frame.cxx,v 1.6 2003/04/19 10:23:18 torangan Exp $
+//  $Id: generic_property_frame.cxx,v 1.7 2003/08/19 19:56:55 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,7 +17,6 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <iostream>
 #include <assert.h>
 #include <ClanLib/GUI/label.h>
 #include <ClanLib/GUI/inputbox.h>

@@ -1,4 +1,4 @@
-//  $Id: editor_help_screen.cxx,v 1.12 2003/04/24 15:18:19 grumbel Exp $
+//  $Id: editor_help_screen.cxx,v 1.13 2003/08/19 19:56:55 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -81,7 +81,7 @@ EditorHelpScreen::draw ()
 
   x_pos = 64;
   y_pos = 500;
-  font->print_left (x_pos, y_pos + 0, _("Naming Convention: <LEVELNAME><NUMBER>-<CREATOR>.xml"));
+  font->print_left (x_pos, y_pos + 0, _("Naming Convention: <LEVELNAME><NUMBER>-<CREATOR>.plf"));
 
   font->print_left (x_pos, y_pos + 30, _("When you have created a level and want to have it in the next Pingus release,\n"
 					 "please mail it to pingus-devel@nongnu.org."));

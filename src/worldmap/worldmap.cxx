@@ -1,4 +1,4 @@
-//  $Id: worldmap.cxx,v 1.48 2003/06/04 17:22:33 torangan Exp $
+//  $Id: worldmap.cxx,v 1.49 2003/08/19 19:56:55 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -325,7 +325,7 @@ WorldMap::on_primary_button_press(int x, int y)
         << "      <z-pos>0</z-pos>\n"
         << "    </position>\n"
         << "  </dot>\n"
-        << "  <levelname>level10.xml</levelname>\n"
+        << "  <levelname>level10.plf</levelname>\n"
         << "</leveldot>\n" << std::endl;
     }
 

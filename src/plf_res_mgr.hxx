@@ -1,4 +1,4 @@
-//  $Id: plf_res_mgr.hxx,v 1.4 2003/06/04 17:22:33 torangan Exp $
+//  $Id: plf_res_mgr.hxx,v 1.5 2003/08/19 19:56:55 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -47,7 +47,7 @@ public:
   /** @return a handle to the PLF, instead of loading it from a
       res_name, load it from a system dependend filename
 
-      @param filename The filename of the plf, aka "../data/levels/snow11-grumbel.xml" */
+      @param filename The filename of the plf, aka "../data/levels/snow11-grumbel.plf" */
   static PLFHandle load_plf_from_filename(const std::string& filename);
   static  void free_plf_map();
 };

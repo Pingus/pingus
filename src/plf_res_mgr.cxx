@@ -1,4 +1,4 @@
-//  $Id: plf_res_mgr.cxx,v 1.6 2003/06/04 17:22:33 torangan Exp $
+//  $Id: plf_res_mgr.cxx,v 1.7 2003/08/19 19:56:55 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -98,8 +98,7 @@ PLFResMgr::load_plf_from_filename(const std::string& filename)
 PLFHandle
 PLFResMgr::load_plf(const std::string& res_name)
 {
-  return load_plf_raw(res_name,
-                      path_manager.complete("levels/" + res_name + ".xml"));
+  return load_plf_raw(res_name, path_manager.complete("levels/" + res_name + ".plf"));
 }
 
 void PLFResMgr::free_plf_map()

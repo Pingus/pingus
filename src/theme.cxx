@@ -1,4 +1,4 @@
- //  $Id: theme.cxx,v 1.18 2003/04/22 16:40:41 grumbel Exp $
+ //  $Id: theme.cxx,v 1.19 2003/08/19 19:56:55 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -322,7 +322,8 @@ Theme::load_levels()
 {
   std::string filename;
 
-  if (verbose) std::cout << "Theme opening levels... " << std::flush;
+  if (verbose)
+    std::cout << "Theme opening levels... " << std::flush;
 
   for(std::vector<std::string>::iterator i = level_filenames.begin();
       i != level_filenames.end(); ++i)
@@ -330,24 +331,17 @@ Theme::load_levels()
       filename = path_manager.complete("levels/" + *i);
 
       try
-	{
-	  if (filename.substr(filename.size() - 4) == ".plf")
-	    {
-	      PingusError::raise ("Loading of plf's no longer supported");
-	    }
-	  else
-	    {
-	      //std::cout << "Theme: Loading level: " << filename << std::endl;
-	      XMLPLF plf(filename);
-	      levelnames.push_back(System::translate(plf.get_levelname()));
-	    }
-	}
-      catch (PingusError& err)
-	{
-	  std::cout << "Theme: PingusError: " << err.get_message () << std::endl;
-	}
+	      {
+          XMLPLF plf(filename);
+	        levelnames.push_back(System::translate(plf.get_levelname()));
+	      }
+	    catch (PingusError& err)
+	      {
+	        std::cout << "Theme: PingusError: " << err.get_message () << std::endl;
+	      }
     }
-  if (verbose) std::cout << "done." << std::endl;
+  if (verbose)
+    std::cout << "done." << std::endl;
 
   std::cout << "Levelnames: " << levelnames.size () << std::endl;
 }

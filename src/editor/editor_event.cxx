@@ -1,4 +1,4 @@
-//  $Id: editor_event.cxx,v 1.60 2003/08/16 20:51:28 grumbel Exp $
+//  $Id: editor_event.cxx,v 1.61 2003/08/19 19:56:55 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -580,7 +580,7 @@ EditorEvent::editor_save_level_as()
   StringReader reader(_("Enter filename to save as:"), editor->last_level);
 
   // FIXME: The pattern '*' will not work on windows, we should use
-  // FIXME: *.xml or better switch to CL_DirectoryScanner
+  // FIXME: *.plf or better switch to CL_DirectoryScanner
   dir = System::opendir(System::get_statdir() + "levels/", "*");
 
   for (System::Directory::iterator i = dir.begin(); i != dir.end(); ++i)
@@ -599,10 +599,10 @@ EditorEvent::editor_save_level_as()
 
   if (!str.empty())
     {
-      if (str.substr(str.size() - 4) ==  ".xml")
+      if (str.substr(str.size() - 4) ==  ".plf")
 	object_manager->save_level_xml(str);
       else
-	object_manager->save_level_xml(str + ".xml");
+	object_manager->save_level_xml(str + ".plf");
 
       editor->last_level = str;
     }

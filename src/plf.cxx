@@ -1,4 +1,4 @@
-//  $Id: plf.cxx,v 1.16 2003/04/19 10:23:17 torangan Exp $
+//  $Id: plf.cxx,v 1.17 2003/08/19 19:56:55 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -172,17 +172,7 @@ PLF::get_worldobjs_data ()
 PLF*
 PLF::create (const std::string& pathname)
 {
-  std::string extension = System::extension (pathname);
-
-  if (extension == "xml")
-    return new XMLPLF (pathname);
-  else if (extension == "plf")
-    {
-      PingusError::raise ("Loading of plf's no longer supported");
-      return 0;
-    }
-  else // filename does not have an extension, default to xml
-    return new XMLPLF (pathname);
+  return new XMLPLF (pathname);
 }
 
 /* EOF */

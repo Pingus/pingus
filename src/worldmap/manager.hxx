@@ -1,4 +1,4 @@
-//  $Id: manager.hxx,v 1.22 2003/06/04 17:22:33 torangan Exp $
+//  $Id: manager.hxx,v 1.23 2003/08/19 19:56:55 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -101,7 +101,7 @@ public:
 
   @param filename the filename of the new map, filename must be
   @param filename relative to the worldmap directory
-  @param filename Example: "volcano.xml" */
+  @param filename Example: "volcano.plf" */
   void change_map (const std::string& filename, NodeId node);
 
   /** Singleton access function */

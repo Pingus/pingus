@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.97 2003/08/18 11:47:40 grumbel Exp $
+//   $Id: pingus_main.cxx,v 1.98 2003/08/19 19:56:55 torangan Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___
@@ -164,7 +164,6 @@ PingusMain::read_rc_file (void)
 
       //constructor of config must be run
       Config config(rcfile);
-      //ConfigXML("/home/ingo/projects/pingus/cvs/data/levels/stone3-grumbel.xml");
     }
 }
 
@@ -804,9 +803,9 @@ PingusMain::start_game ()
       if (!System::exist(levelfile))
         {
           if (System::exist(levelfile + ".xml"))
-            levelfile += ".xml";
-          else if (System::exist("levels/" + levelfile + ".xml"))
-            levelfile = "levels/" + levelfile + ".xml";
+            levelfile += ".plf";
+          else if (System::exist("levels/" + levelfile + ".plf"))
+            levelfile = "levels/" + levelfile + ".plf";
           else
             {
               pout << _("PingusMain: Levelfile not found, ignoring: ") << levelfile << std::endl;
