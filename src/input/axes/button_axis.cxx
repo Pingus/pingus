@@ -1,4 +1,4 @@
-//  $Id: button_axis.cxx,v 1.4 2002/10/29 17:47:15 torangan Exp $
+//  $Id: button_axis.cxx,v 1.5 2002/10/29 19:25:58 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,7 +19,6 @@
 
 #include "button_axis.hxx"
 #include "../button.hxx"
-#include "../../debug.hxx"
 
 namespace Input {
 
@@ -73,9 +72,6 @@ namespace Input {
         pos = -1.0f;
       else if (pos > 1.0f)
         pos = 1.0f;
-	
-      if (pos)
-        pwarn << "Pos: " << pos << std::endl;
     }
 
   }
