@@ -106,8 +106,7 @@ MenuButton::draw (DrawingContext& gc)
       gc.draw(surface_p,
               Vector(x_pos - surface_p.get_width()/2 * shrink,
                      y_pos - surface_p.get_height()/2 * shrink));
-      //#ifdef CLANLIB_0_6
-      //      shrink, shrink, 0);
+
       gc.print_center(font_large,
                       x_pos + 32,
                       y_pos - 32 - font_large.get_height()/2,

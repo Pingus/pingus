@@ -39,6 +39,8 @@ Playfield::Playfield (Client* client_, const CL_Rect& rect_)
     client(client_),
     buttons(client->get_button_panel()),
     current_pingu(0),
+    // We keep the SceneContext has member variable so that we don't
+    // have to reallocate it every frame, which is quite a costly operation
     scene_context(new SceneContext()),
     state(rect.get_width(), rect.get_height()),
     cap(client->get_button_panel())
@@ -50,7 +52,7 @@ Playfield::Playfield (Client* client_, const CL_Rect& rect_)
   state.set_limit(CL_Rect(CL_Point(0, 0), CL_Size(world->get_width(), world->get_height())));
 
   if (0)
-    {
+    { // FIXME: Fix this
       // Special handling for levels smaller than the screen
       int x1, x2, y1, y2;
 
