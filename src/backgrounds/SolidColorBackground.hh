@@ -1,4 +1,4 @@
-//  $Id: SolidColorBackground.hh,v 1.8 2001/08/13 21:35:37 grumbel Exp $
+//  $Id: SolidColorBackground.hh,v 1.9 2002/01/03 13:29:10 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,6 +30,8 @@ class SolidColorBackgroundData : public WorldObjData
 public:
   Color color;
 
+  // FIXME: Add z_pos handling here
+
   SolidColorBackgroundData() {}
   virtual ~SolidColorBackgroundData() {}
 
@@ -49,7 +51,8 @@ public:
   SolidColorBackground (const SolidColorBackgroundData&);
   virtual ~SolidColorBackground () {}
 
-  float get_z_pos() const { return 0; }  
+  // FIXME: Make z_position editable
+  float get_z_pos() const { return -10; }  
   void update (float delta) {}
   void draw_offset (int x_of, int y_of, float s = 1.0);
 };

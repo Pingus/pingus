@@ -1,4 +1,4 @@
-//  $Id: StarfieldBackground.hh,v 1.9 2001/08/13 21:35:37 grumbel Exp $
+//  $Id: StarfieldBackground.hh,v 1.10 2002/01/03 13:29:10 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -64,8 +64,9 @@ public:
 
   StarfieldBackgroundStars () {}
   StarfieldBackgroundStars (Type type);
-
-  float get_z_pos() const { return 0; }
+  
+  // Never used
+  float get_z_pos() const { return -100; }
 
   void init ();
   void update(float delta);
@@ -85,7 +86,8 @@ public:
 
   virtual ~StarfieldBackground ();
 
-  float get_z_pos() const { return 0; }
+  // FIXME: Make z_pos handling editable via xml
+  float get_z_pos() const { return -10; }
 
   void update(float delta);
   void draw_offset(int x_of, int y_of, float s = 1.0);
