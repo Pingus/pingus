@@ -1,0 +1,1472 @@
+? conftest.subs
+Index: configure.in
+===================================================================
+RCS file: /usr/local/cvsroot/Games/Pingus/configure.in,v
+retrieving revision 1.21
+diff -u -r1.21 configure.in
+--- configure.in	2000/07/10 18:42:25	1.21
++++ configure.in	2001/05/08 05:19:40
+@@ -101,22 +101,17 @@
+ fi
+ 
+ AC_CHECK_LIB(Hermes,   main,,)
+-	
+ AC_CHECK_LIB( clanCore,   main,, [
+ 	echo "ClanLib installed, but -lclanCore not found, run 'ldconfig' and try again,"
+ 	echo "if that doesn't help have a look at the file config.log and look into"
+ 	echo "the FAQ."
+ 	exit
+ 	])
+-
+-AC_CHECK_LIB( clanMagick,   main,, [
+-	echo "ClanLib is installed, but clanMagick was not found. You probably"
+-	echo "forgot to compile clanMagick, which is part of the ClanLib package"
+-	echo "or you need to run 'ldconfig'."
+-	echo "If you think you have everything correctly installed have a look at"
+-	echo "the file 'config.log' to see what went wrong"
+-	exit
+-	])
++AC_CHECK_LIB( clanApp,   main)
++AC_CHECK_LIB( clanDisplay,   main)
++AC_CHECK_LIB( clanSound,   main)
++AC_CHECK_LIB( clanJPEG,   main)
++dnl AC_CHECK_LIB( clanSound,   main)
+ 
+ dnl AC_CHECK_PROG( HAVE_CLANLIB_CONFIG, clanlib-config, "yes")
+ 
+Index: src/AlphaButton.hh
+===================================================================
+RCS file: /usr/local/cvsroot/Games/Pingus/src/AlphaButton.hh,v
+retrieving revision 1.4
+diff -u -r1.4 AlphaButton.hh
+--- src/AlphaButton.hh	2000/06/18 17:01:49	1.4
++++ src/AlphaButton.hh	2001/05/08 05:19:43
+@@ -23,7 +23,7 @@
+ #include <string>
+ 
+ #include <ClanLib/core.h>
+-
++#include <ClanLib/display.h>
+ 
+ ///
+ class AlphaButton
+Index: src/ButtonPanel.cc
+===================================================================
+RCS file: /usr/local/cvsroot/Games/Pingus/src/ButtonPanel.cc,v
+retrieving revision 1.8
+diff -u -r1.8 ButtonPanel.cc
+--- src/ButtonPanel.cc	2000/05/26 17:59:35	1.8
++++ src/ButtonPanel.cc	2001/05/08 05:19:44
+@@ -146,7 +146,7 @@
+ bool
+ ButtonPanel::on_button_press(const CL_Key &key)
+ {
+-  if (key.id == 0)
++  if (key.id == CL_MOUSE_LEFTBUTTON)
+     {
+       for(AButtonIter button = a_buttons.begin(); button != a_buttons.end(); button++)
+ 	{
+Index: src/ClientEvent.cc
+===================================================================
+RCS file: /usr/local/cvsroot/Games/Pingus/src/Attic/ClientEvent.cc,v
+retrieving revision 1.10
+diff -u -r1.10 ClientEvent.cc
+--- src/ClientEvent.cc	2000/06/10 07:56:58	1.10
++++ src/ClientEvent.cc	2001/05/08 05:19:44
+@@ -38,8 +38,12 @@
+ ClientEvent::register_event_handler()
+ {
+   if (verbose > 1) std::cout << "ClientEvent: register_event_handler()" << std::endl;
+-  CL_Input::chain_button_press.push_back(this);
+-  CL_Input::chain_button_release.push_back(this);
++  //CL_Input::chain_button_press.push_back(this);
++  //CL_Input::chain_button_release.push_back(this);
++
++  slot_press   = CL_Input::sig_button_press.connect(CL_CreateSlot(this, &ClientEvent::on_button_press));
++  slot_release = CL_Input::sig_button_release.connect(CL_CreateSlot(this, &ClientEvent::on_button_release));
++
+   enabled = true;
+ }
+ 
+@@ -47,8 +51,8 @@
+ ClientEvent::unregister_event_handler()
+ {
+   if (verbose > 1) std::cout << "ClientEvent: unregister_event_handler()" << std::endl;
+-  CL_Input::chain_button_release.remove(this);
+-  CL_Input::chain_button_press.remove(this);
++  //CL_Input::chain_button_release.remove(this);
++  //CL_Input::chain_button_press.remove(this);
+   enabled = false;
+ }
+ 
+@@ -64,47 +68,51 @@
+   enabled = true;
+ }
+ 
+-bool
++void
+ ClientEvent::on_button_press(CL_InputDevice *device, const CL_Key &key)
+ {
+   if (!enabled)
+-    return true;
++    return; //- true;
+   
+   if (device == CL_Input::keyboards[0])
+     {
+-      return on_keyboard_button_press(key);
++      on_keyboard_button_press(key);
++      return;
+     }
+   else if (device == CL_Input::pointers[0])
+     {
+-      return on_mouse_button_press(key);
++      on_mouse_button_press(key);
++      return;
+     }
+   else
+     {
+       if (verbose > 1) std::cout << "Unknown device pressed: device=" << device << "; key.id=" << key.id << std::endl;
+-      return true;
++      return; //- true;
+     }
+ }
+ 
+-bool
++void
+ ClientEvent::on_button_release(CL_InputDevice *device, const CL_Key &key)
+ {
+   if (!enabled)
+-    return true;
++    return; //- true;
+ 
+   if (device == CL_Input::keyboards[0])
+     {
+-      return on_keyboard_button_release(key);
++      on_keyboard_button_release(key);
++      return;
+     }
+   else if (device == CL_Input::pointers[0])
+     {
+-      return on_mouse_button_release(key);
++      on_mouse_button_release(key);
++      return ;
+     }
+   else
+     {
+       if (verbose > 1) std::cout << "Unknown device released: device=" << device << "; key.id=" << key.id << std::endl;
+-      return true;
++      return; //- true;
+     }  
+-  return true;
++  return; //- true;
+ }
+ 
+ bool
+@@ -225,12 +233,12 @@
+ 
+   switch(key.id)
+     {
+-    case 0:
++    case CL_MOUSE_LEFTBUTTON:
+       playfield->on_button_press(key);
+       break;
+-    case 1:
++    case CL_MOUSE_MIDDLEBUTTON:
+       break;
+-    case 2:
++    case CL_MOUSE_RIGHTBUTTON:
+       playfield->enable_scroll_mode();
+       break;
+     default:
+@@ -247,11 +255,11 @@
+ 
+   switch(key.id)
+     {
+-    case 0:
++    case CL_MOUSE_LEFTBUTTON:
+       break;
+-    case 1:
++    case CL_MOUSE_MIDDLEBUTTON:
+       break;
+-    case 2:
++    case CL_MOUSE_RIGHTBUTTON:
+       playfield->disable_scroll_mode();
+       break;
+     default:
+Index: src/ClientEvent.hh
+===================================================================
+RCS file: /usr/local/cvsroot/Games/Pingus/src/Attic/ClientEvent.hh,v
+retrieving revision 1.3
+diff -u -r1.3 ClientEvent.hh
+--- src/ClientEvent.hh	2000/06/18 17:01:49	1.3
++++ src/ClientEvent.hh	2001/05/08 05:19:44
+@@ -28,9 +28,11 @@
+ class Client;
+ class Playfield;
+ 
+-class ClientEvent : public CL_Event_ButtonPress, public CL_Event_ButtonRelease
++class ClientEvent // : public CL_Event_ButtonPress, public CL_Event_ButtonRelease
+ {
+ private:
++  CL_Slot slot_press;
++  CL_Slot slot_release;
+   ///
+   friend Client;
+   ///
+@@ -43,12 +45,12 @@
+   ///
+   ClientEvent();
+   ///
+-  ~ClientEvent();
++  virtual ~ClientEvent();
+ 
+   ///
+-  virtual bool on_button_press(CL_InputDevice *device, const CL_Key &key);
++  virtual void on_button_press(CL_InputDevice *device, const CL_Key &key);
+   ///
+-  virtual bool on_button_release(CL_InputDevice *device, const CL_Key &key);
++  virtual void on_button_release(CL_InputDevice *device, const CL_Key &key);
+ 
+   ///
+   bool on_mouse_button_press(const CL_Key &key);
+Index: src/ColMap.hh
+===================================================================
+RCS file: /usr/local/cvsroot/Games/Pingus/src/ColMap.hh,v
+retrieving revision 1.6
+diff -u -r1.6 ColMap.hh
+--- src/ColMap.hh	2000/06/18 17:01:49	1.6
++++ src/ColMap.hh	2001/05/08 05:19:44
+@@ -20,6 +20,7 @@
+ #ifndef COLMAP_HH
+ #define COLMAP_HH
+ 
++#include <ClanLib/display.h>
+ #include <vector>
+ #include <string>
+ 
+Index: src/Display.cc
+===================================================================
+RCS file: /usr/local/cvsroot/Games/Pingus/src/Display.cc,v
+retrieving revision 1.6
+diff -u -r1.6 Display.cc
+--- src/Display.cc	2000/06/23 18:39:56	1.6
++++ src/Display.cc	2001/05/08 05:19:45
+@@ -17,6 +17,7 @@
+ //  along with this program; if not, write to the Free Software
+ //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+ 
++#include <algorithm>
+ #include <ClanLib/core.h>
+ 
+ #include "globals.hh"
+@@ -95,7 +96,7 @@
+ void
+ Display:: add_flip_screen_hook(DisplayHook* hook)
+ {
+-  if (find(display_hooks.begin(), display_hooks.end(), hook) == display_hooks.end())
++  if (std::find(display_hooks.begin(), display_hooks.end(), hook) == display_hooks.end())
+     display_hooks.push_back(hook);
+   else
+     std::cout << "Display: Trying to insert a display hook multiple times..." << std::endl;
+Index: src/Display.hh
+===================================================================
+RCS file: /usr/local/cvsroot/Games/Pingus/src/Display.hh,v
+retrieving revision 1.7
+diff -u -r1.7 Display.hh
+--- src/Display.hh	2000/06/23 18:39:56	1.7
++++ src/Display.hh	2001/05/08 05:19:45
+@@ -22,6 +22,7 @@
+ 
+ #include <list>
+ #include <ClanLib/core.h>
++#include <ClanLib/display.h>
+ 
+ ///
+ class DisplayHook
+Index: src/GlobalEvent.cc
+===================================================================
+RCS file: /usr/local/cvsroot/Games/Pingus/src/GlobalEvent.cc,v
+retrieving revision 1.9
+diff -u -r1.9 GlobalEvent.cc
+--- src/GlobalEvent.cc	2000/06/19 20:10:38	1.9
++++ src/GlobalEvent.cc	2001/05/08 05:19:45
+@@ -24,7 +24,7 @@
+ 
+ GlobalEvent global_event;
+ 
+-bool
++void
+ GlobalEvent::on_button_press(CL_InputDevice *device, const CL_Key &key)
+ {
+   if (device == CL_Input::keyboards[0])
+@@ -59,8 +59,8 @@
+ 	case CL_KEY_F11:
+ 	  fps_counter.toggle_display();
+ 	  console << "Toggling fps counter display" << Console::endl;
+-	  return false;
+-
++	  return; //- false;
++	  
+ 	case CL_KEY_F12:
+ 	  {
+ 	    string filename;
+@@ -70,24 +70,24 @@
+ 	    //console << "!\"#$%&'()*+,-./0123456789:;<=>?@";
+ 	    console.newline();
+ 	  }
+-	  return false;
++	  return; //- false;
+ 
+ 	default:
+ 	  // console << "GlobalEvent: Unknown key pressed: " << key.id;
+ 	  break;
+ 	}
+     }
+-  return true;
++  return;//- true;
+ }
+ 
+-bool
++void
+ GlobalEvent::on_button_release(CL_InputDevice *device, const CL_Key &key)
+ {
+   if (device == CL_Input::keyboards[0])
+     {
+       
+     }  
+-  return true;
++  return;//- true;
+ }
+ 
+ /* EOF */
+Index: src/GlobalEvent.hh
+===================================================================
+RCS file: /usr/local/cvsroot/Games/Pingus/src/GlobalEvent.hh,v
+retrieving revision 1.3
+diff -u -r1.3 GlobalEvent.hh
+--- src/GlobalEvent.hh	2000/06/18 17:01:49	1.3
++++ src/GlobalEvent.hh	2001/05/08 05:19:45
+@@ -23,16 +23,16 @@
+ #include <ClanLib/core.h>
+ 
+ ///
+-class GlobalEvent : public CL_Event_ButtonPress, 
+-		    public CL_Event_ButtonRelease
++class GlobalEvent //-: public CL_Event_ButtonPress, 
++  //-public CL_Event_ButtonRelease
+ {
+ private:
+   
+ public:
+   ///
+-  virtual bool on_button_press(CL_InputDevice *device, const CL_Key &key);
++  virtual void on_button_press(CL_InputDevice *device, const CL_Key &key);
+   ///
+-  virtual bool on_button_release(CL_InputDevice *device, const CL_Key &key);
++  virtual void on_button_release(CL_InputDevice *device, const CL_Key &key);
+   
+ }///
+ ;
+Index: src/GuiObj.cc
+===================================================================
+RCS file: /usr/local/cvsroot/Games/Pingus/src/GuiObj.cc,v
+retrieving revision 1.3
+diff -u -r1.3 GuiObj.cc
+--- src/GuiObj.cc	2000/07/04 22:59:13	1.3
++++ src/GuiObj.cc	2001/05/08 05:19:45
+@@ -18,6 +18,7 @@
+ //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+ 
+ #include <ClanLib/core.h>
++#include <ClanLib/display.h>
+ #include "GuiObj.hh"
+ 
+ GuiObj::GuiObj()
+Index: src/Intro.cc
+===================================================================
+RCS file: /usr/local/cvsroot/Games/Pingus/src/Intro.cc,v
+retrieving revision 1.12
+diff -u -r1.12 Intro.cc
+--- src/Intro.cc	2000/06/27 16:05:16	1.12
++++ src/Intro.cc	2001/05/08 05:19:45
+@@ -46,7 +46,9 @@
+ 
+   if (verbose) std::cout << "Intro: adding event handler" << std::endl;
+ 
+-  CL_Input::chain_button_release.push_back(event);
++  //-CL_Input::chain_button_release.push_back(event);
++  slot_release = CL_Input::sig_button_release.connect (CL_CreateSlot(event, &Intro::Event::on_button_release));
++
+   /*
+   pingus_story.init();
+   pingus_story.display();
+@@ -87,10 +89,11 @@
+     loading_screen.draw();
+ 
+   if (verbose) std::cout << "Intro: Removing event handler" << std::endl;
+-  CL_Input::chain_button_release.remove(event);
++  //CL_Input::chain_button_release.remove(event);
++  CL_Input::sig_button_release.disconnect (slot_release);
+ }
+ 
+-bool
++void
+ Intro::Event::on_button_release(CL_InputDevice* device, const CL_Key& key)
+ {
+   switch (key.id)
+@@ -102,7 +105,7 @@
+       intro->quit = true;
+       break;
+     }
+-  return true;
++  //return true;
+ }
+ 
+ /* EOF */
+Index: src/Intro.hh
+===================================================================
+RCS file: /usr/local/cvsroot/Games/Pingus/src/Intro.hh,v
+retrieving revision 1.6
+diff -u -r1.6 Intro.hh
+--- src/Intro.hh	2000/06/18 17:01:49	1.6
++++ src/Intro.hh	2001/05/08 05:19:45
+@@ -21,11 +21,14 @@
+ #define INTRO_HH
+ 
+ #include <ClanLib/core.h>
++#include <ClanLib/display.h>
++#include <ClanLib/sound.h>
+ 
+ ///
+ class Intro
+ {
+ private:
++  CL_Slot slot_release;
+   ///
+   CL_Surface*     logo;
+   ///
+@@ -40,13 +43,13 @@
+   bool quit;
+ 
+   ///
+-  class Event : public CL_Event_ButtonRelease
++  class Event //-: public CL_Event_ButtonRelease
+   {
+   public:
+     ///
+     Intro* intro;
+     ///
+-    virtual bool on_button_release(CL_InputDevice *device, const CL_Key &key);
++    virtual void on_button_release(CL_InputDevice *device, const CL_Key &key);
+   }///
+ ;
+   ///
+Index: src/MultiLineText.hh
+===================================================================
+RCS file: /usr/local/cvsroot/Games/Pingus/src/MultiLineText.hh,v
+retrieving revision 1.2
+diff -u -r1.2 MultiLineText.hh
+--- src/MultiLineText.hh	2000/06/18 17:01:49	1.2
++++ src/MultiLineText.hh	2001/05/08 05:19:46
+@@ -23,6 +23,7 @@
+ #include <string>
+ #include <vector>
+ #include <ClanLib/core.h>
++#include <ClanLib/display.h>
+ 
+ ///
+ class MultiLineText
+Index: src/OptionMenu.cc
+===================================================================
+RCS file: /usr/local/cvsroot/Games/Pingus/src/OptionMenu.cc,v
+retrieving revision 1.24
+diff -u -r1.24 OptionMenu.cc
+--- src/OptionMenu.cc	2000/07/10 18:42:25	1.24
++++ src/OptionMenu.cc	2001/05/08 05:19:46
+@@ -17,6 +17,9 @@
+ //  along with this program; if not, write to the Free Software
+ //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+ 
++#include <ClanLib/core.h>
++#include <ClanLib/display.h>
++#include <ClanLib/signals.h>
+ #include <cstdio>
+ 
+ #include "globals.hh"
+@@ -127,13 +130,13 @@
+   }
+ }
+ 
+-bool
++void
+ OptionMenu::Event::on_button_press(CL_InputDevice *device, const CL_Key &key)
+ {
+-  return true;
++  //return true;
+ }
+ 
+-bool
++void
+ OptionMenu::Event::on_button_release(CL_InputDevice *device, const CL_Key &key)
+ {
+   if (device == CL_Input::keyboards[0])
+@@ -152,14 +155,14 @@
+     {
+       switch(key.id)
+ 	{
+-	case 0:
++	case CL_MOUSE_LEFTBUTTON:
+ 	  if (verbose) std::cout << "Button 0 pressed" << std::endl;
+ 	  break;
+-	case 1:
++	case CL_MOUSE_MIDDLEBUTTON:
+ 	  option_menu->quit = true;
+ 	  if (verbose) std::cout << "Button 1 pressed" << std::endl;
+ 	  break;
+-	case 2:
++	case CL_MOUSE_RIGHTBUTTON:
+ 	  if (verbose) std::cout << "Button 2 pressed" << std::endl;
+ 	  break;
+ 	default:
+@@ -168,7 +171,7 @@
+ 	}
+     }
+ 
+-  return true;
++  //return true;
+ }
+ 
+ // ----- OptionMenu -----
+@@ -300,9 +303,12 @@
+ 
+   quit = false;
+ 
+-  CL_Input::chain_button_press.push_back(event);
+-  CL_Input::chain_button_release.push_back(event);
++  //-CL_Input::chain_button_press.push_back(event);
++  //-CL_Input::chain_button_release.push_back(event);
+ 
++  slot_press   = CL_Input::sig_button_press.connect(CL_CreateSlot(event, &OptionMenu::Event::on_button_press));
++  slot_release = CL_Input::sig_button_release.connect(CL_CreateSlot(event, &OptionMenu::Event::on_button_release));
++ 
+   Display::set_cursor(CL_MouseCursorProvider::load("Cursors/cursor",
+ 						   PingusResource::get("game")));
+   Display::show_cursor();
+@@ -351,8 +357,11 @@
+ 
+   Display::hide_cursor();
+ 
+-  CL_Input::chain_button_release.remove(event);
+-  CL_Input::chain_button_press.remove(event);
++  //-CL_Input::chain_button_release.remove(event);
++  //-CL_Input::chain_button_press.remove(event);
++  
++  CL_Input::sig_button_press.disconnect (slot_press);
++  CL_Input::sig_button_release.disconnect (slot_release);
+ }
+ 
+ std::vector<OptionEntry>::iterator
+Index: src/OptionMenu.hh
+===================================================================
+RCS file: /usr/local/cvsroot/Games/Pingus/src/OptionMenu.hh,v
+retrieving revision 1.7
+diff -u -r1.7 OptionMenu.hh
+--- src/OptionMenu.hh	2000/06/21 20:29:21	1.7
++++ src/OptionMenu.hh	2001/05/08 05:19:46
+@@ -23,8 +23,8 @@
+ #include <vector>
+ 
+ #include <ClanLib/core.h>
++#include <ClanLib/display.h>
+ 
+-
+ ///
+ class OptionEntry
+ {
+@@ -64,6 +64,8 @@
+ class OptionMenu
+ {
+ private:
++  CL_Slot slot_press;
++  CL_Slot slot_release;
+   ///
+   CL_Font* font;
+   ///
+@@ -84,15 +86,15 @@
+   std::vector<OptionEntry> entry;
+ 
+   ///
+-  class Event : public CL_Event_ButtonPress, public CL_Event_ButtonRelease
++  class Event //-: public CL_Event_ButtonPress, public CL_Event_ButtonRelease
+   {
+   public:
+     ///
+     OptionMenu* option_menu;
+     ///
+-    virtual bool on_button_press(CL_InputDevice *device, const CL_Key &key);
++    virtual void on_button_press(CL_InputDevice *device, const CL_Key &key);
+     ///
+-    virtual bool on_button_release(CL_InputDevice *device, const CL_Key &key);
++    virtual void on_button_release(CL_InputDevice *device, const CL_Key &key);
+   };
+   ///
+   friend class Event;
+Index: src/PSMParser.hh
+===================================================================
+RCS file: /usr/local/cvsroot/Games/Pingus/src/PSMParser.hh,v
+retrieving revision 1.10
+diff -u -r1.10 PSMParser.hh
+--- src/PSMParser.hh	2000/07/11 15:53:57	1.10
++++ src/PSMParser.hh	2001/05/08 05:19:46
+@@ -25,7 +25,7 @@
+ #include <fstream>
+ 
+ #include <ClanLib/core.h>
+-
++#include <ClanLib/display.h>
+ #include "ResDescriptor.hh"
+ 
+ ///
+Index: src/Pingu.hh
+===================================================================
+RCS file: /usr/local/cvsroot/Games/Pingus/src/Pingu.hh,v
+retrieving revision 1.12
+diff -u -r1.12 Pingu.hh
+--- src/Pingu.hh	2000/06/18 18:06:56	1.12
++++ src/Pingu.hh	2001/05/08 05:19:47
+@@ -21,6 +21,7 @@
+ #define PINGU_HH
+ 
+ #include <ClanLib/core.h>
++#include <ClanLib/display.h>
+ 
+ #include "ColMap.hh"
+ #include "PinguMap.hh"
+Index: src/PinguAction.hh
+===================================================================
+RCS file: /usr/local/cvsroot/Games/Pingus/src/PinguAction.hh,v
+retrieving revision 1.7
+diff -u -r1.7 PinguAction.hh
+--- src/PinguAction.hh	2000/06/23 17:13:32	1.7
++++ src/PinguAction.hh	2001/05/08 05:19:47
+@@ -21,6 +21,7 @@
+ #define PINGU_ACTION_HH
+ 
+ #include <ClanLib/core.h>
++#include <ClanLib/display.h>
+ 
+ #include "AnimCounter.hh"
+ #include "Pingu.hh"
+Index: src/PinguMap.hh
+===================================================================
+RCS file: /usr/local/cvsroot/Games/Pingus/src/PinguMap.hh,v
+retrieving revision 1.5
+diff -u -r1.5 PinguMap.hh
+--- src/PinguMap.hh	2000/06/18 17:01:50	1.5
++++ src/PinguMap.hh	2001/05/08 05:19:47
+@@ -21,7 +21,7 @@
+ #define PINGUMAP_HH
+ 
+ #include <ClanLib/core.h>
+-
++#include <ClanLib/display.h>
+ #include "WorldObj.hh"
+ #include "ColMap.hh"
+ 
+Index: src/Pingus.cc
+===================================================================
+RCS file: /usr/local/cvsroot/Games/Pingus/src/Attic/Pingus.cc,v
+retrieving revision 1.45
+diff -u -r1.45 Pingus.cc
+--- src/Pingus.cc	2000/07/14 12:18:49	1.45
++++ src/Pingus.cc	2001/05/08 05:19:49
+@@ -41,7 +41,8 @@
+ #endif /* !WIN32 */
+ 
+ #include <ClanLib/core.h>
+-#include <ClanLib/magick.h>
++#include <ClanLib/display.h>
++#include <ClanLib/jpeg.h>
+ 
+ // #include "efence.h"
+ 
+@@ -114,11 +115,12 @@
+ PingusMain::init_modules()
+ {
+   CL_SetupCore::init();
+-  CL_SetupMagick::init();
++  CL_SetupJPEG::init ();
+ }
+ 
+ void PingusMain::deinit_modules()
+ {
++  CL_SetupJPEG::deinit ();
+   CL_SetupCore::deinit();   
+ }
+ 
+@@ -732,7 +734,7 @@
+   if (verbose) 
+     std::cout << "Init ClanLib" << std::endl;
+ 
+-  CL_SetupCore::init_display();
++  CL_SetupDisplay::init();
+ 
+   if (sound_enabled || music_enabled) 
+     {
+@@ -764,9 +766,12 @@
+     Display::add_flip_screen_hook(&fps_counter);
+   //Display::add_flip_screen_hook(&console);
+ 
+-  CL_Input::chain_button_release.push_back(&global_event);
+-  CL_Input::chain_button_press.push_back(&global_event);
++  //-CL_Input::chain_button_release.push_back(&global_event);
++  //-CL_Input::chain_button_press.push_back(&global_event);
+ 
++  slot_release = CL_Input::sig_button_release.connect(CL_CreateSlot(&global_event, &GlobalEvent::on_button_release));
++  slot_press   = CL_Input::sig_button_press.connect(CL_CreateSlot(&global_event, &GlobalEvent::on_button_press));
++
+   if (!levelfile.empty()) 
+     {
+       PingusGame game;
+@@ -794,8 +799,10 @@
+     PingusMessageBox(" PingusError: " + err.message);
+   }
+ 
+-  CL_Input::chain_button_press.remove(&global_event);
+-  CL_Input::chain_button_release.remove(&global_event);
++  //-CL_Input::chain_button_press.remove(&global_event);
++  //-CL_Input::chain_button_release.remove(&global_event);
++  CL_Input::sig_button_press.disconnect (slot_press);
++  CL_Input::sig_button_release.disconnect (slot_release);
+ 
+   //  Display::remove_flip_screen_hook(&console);
+   //  Display::remove_flip_screen_hook(&fps_counter);
+@@ -842,6 +849,7 @@
+ PingusMain::main(int argc, char** argv)
+ {
+   bool quit = false;
++  init_modules ();
+ 
+   // Register the segfault_handler
+   //signal(SIGSEGV, segfault_handler);
+@@ -889,6 +897,8 @@
+   catch (...) {
+     std::cout << "Pingus: Unknown throw caught!" << std::endl;
+   }
++
++  deinit_modules ();
+ 
+   return 0;
+ }
+Index: src/Pingus.hh
+===================================================================
+RCS file: /usr/local/cvsroot/Games/Pingus/src/Attic/Pingus.hh,v
+retrieving revision 1.11
+diff -u -r1.11 Pingus.hh
+--- src/Pingus.hh	2000/07/04 22:59:13	1.11
++++ src/Pingus.hh	2001/05/08 05:19:49
+@@ -22,7 +22,7 @@
+ 
+ #include <string>
+ #include <ClanLib/core.h>
+-
++#include <ClanLib/application.h>
+ #include "Intro.hh"
+ 
+ ///
+@@ -32,6 +32,8 @@
+ class PingusMain : public CL_ClanApplication
+ {
+ private:
++  CL_Slot slot_press;
++  CL_Slot slot_release;
+   ///
+   bool    pingus_datadir_set;
+   ///
+Index: src/PingusMenu.cc
+===================================================================
+RCS file: /usr/local/cvsroot/Games/Pingus/src/PingusMenu.cc,v
+retrieving revision 1.27
+diff -u -r1.27 PingusMenu.cc
+--- src/PingusMenu.cc	2000/07/04 22:59:13	1.27
++++ src/PingusMenu.cc	2001/05/08 05:19:49
+@@ -41,9 +41,13 @@
+   event->enabled = false;
+   event->menu = this;
+ 
+-  CL_Input::chain_button_press.push_back(event);
+-  CL_Input::chain_button_release.push_back(event);
+-  CL_Input::chain_mouse_move.push_back(event);
++  //-CL_Input::chain_button_press.push_back(event);
++  //-CL_Input::chain_button_release.push_back(event);
++  //-CL_Input::chain_mouse_move.push_back(event);
++
++  slot_press   = CL_Input::sig_button_press.connect(CL_CreateSlot(event, &PingusMenu::Event::on_button_press));
++  slot_release = CL_Input::sig_button_release.connect(CL_CreateSlot(event, &PingusMenu::Event::on_button_release));
++  slot_mousemove = CL_Input::sig_mouse_move.connect(CL_CreateSlot(event, &PingusMenu::Event::on_mouse_move));
+ 
+   editor_button  = new EditorButton;
+   options_button = new OptionsButton;
+@@ -68,9 +72,13 @@
+   delete editor_button;
+   delete theme_button;
+ 
+-  CL_Input::chain_mouse_move.remove(event);
+-  CL_Input::chain_button_release.remove(event);
+-  CL_Input::chain_button_press.remove(event);
++  //-CL_Input::chain_mouse_move.remove(event);
++  //-CL_Input::chain_button_release.remove(event);
++  //-CL_Input::chain_button_press.remove(event);
++
++  CL_Input::sig_button_press.disconnect (slot_press);
++  CL_Input::sig_button_release.disconnect (slot_release);
++  CL_Input::sig_mouse_move.disconnect (slot_mousemove);
+ 
+   delete event;
+ }
+@@ -132,20 +140,20 @@
+   Display::hide_cursor();
+ }
+ 
+-bool
+-PingusMenu::Event::on_mouse_move(CL_InputDevice *device)
++void
++PingusMenu::Event::on_mouse_move(CL_InputDevice *device, int, int)
+ {
+-  if (!enabled) return true;
++  if (!enabled) return; //- true;
+  
+   menu->draw();
+ 
+-  return true;
++  //-return //-true;
+ }
+ 
+-bool
++void
+ PingusMenu::Event::on_button_press(CL_InputDevice *device, const CL_Key &key)
+ {
+-  if (!enabled) return true;
++  if (!enabled) return; //-true;
+ 
+   menu->draw();
+   
+@@ -166,13 +174,13 @@
+ 	  std::cout << "PingusMenu: Unknown key pressed:" << key.ascii << std::endl;
+ 	}
+     }
+-  return true;
++  return ;//-true;
+ }
+ 
+-bool
++void
+ PingusMenu::Event::on_button_release(CL_InputDevice *device, const CL_Key &key)
+ {
+-  if (!enabled) return true;
++  if (!enabled) return; //-true;
+   
+   menu->draw();
+ 
+@@ -209,7 +217,7 @@
+ 	}
+   
+     }
+-  return true;
++  return; //-true;
+ }
+ 
+ /* EOF */
+Index: src/PingusMenu.hh
+===================================================================
+RCS file: /usr/local/cvsroot/Games/Pingus/src/PingusMenu.hh,v
+retrieving revision 1.6
+diff -u -r1.6 PingusMenu.hh
+--- src/PingusMenu.hh	2000/06/18 17:01:50	1.6
++++ src/PingusMenu.hh	2001/05/08 05:19:49
+@@ -22,6 +22,8 @@
+ 
+ #include <list>
+ #include <ClanLib/core.h>
++#include <ClanLib/display.h>
++#include <ClanLib/signals.h>
+ 
+ #include "SurfaceButton.hh"
+ #include "OptionMenu.hh"
+@@ -43,11 +45,15 @@
+ ;
+ 
+ private:
++  CL_Slot slot_press;
++  CL_Slot slot_release;
++  CL_Slot slot_mousemove;
++
+   ///
+-  class Event : 
+-    public CL_Event_ButtonPress, 
+-    public CL_Event_ButtonRelease, 	
+-    public CL_Event_MouseMove
++  class Event //-: 
++  //- public CL_Event_ButtonPress, 
++  //- public CL_Event_ButtonRelease, 	
++  //- public CL_Event_MouseMove
+   {
+   public:
+     ///
+@@ -56,13 +62,12 @@
+     ///
+     PingusMenu* menu;
+     ///
+-    virtual bool on_button_press(CL_InputDevice *device, const CL_Key &key);
++    void on_button_press(CL_InputDevice *device, const CL_Key &key);
+     ///
+-    virtual bool on_button_release(CL_InputDevice *device, const CL_Key &key);
++    void on_button_release(CL_InputDevice *device, const CL_Key &key);
+     ///
+-    virtual bool on_mouse_move(CL_InputDevice *device);
+-  }///
+-;
++    void on_mouse_move(CL_InputDevice *device, int, int);
++  };
+ 
+   ///
+   friend class Event;
+Index: src/PingusMessageBox.hh
+===================================================================
+RCS file: /usr/local/cvsroot/Games/Pingus/src/PingusMessageBox.hh,v
+retrieving revision 1.5
+diff -u -r1.5 PingusMessageBox.hh
+--- src/PingusMessageBox.hh	2000/06/18 17:01:50	1.5
++++ src/PingusMessageBox.hh	2001/05/08 05:19:49
+@@ -22,7 +22,7 @@
+ 
+ #include <string>
+ #include <ClanLib/core.h>
+-
++#include <ClanLib/display.h>
+ 
+ ///
+ class PingusMessageBox
+Index: src/PingusResource.cc
+===================================================================
+RCS file: /usr/local/cvsroot/Games/Pingus/src/PingusResource.cc,v
+retrieving revision 1.9
+diff -u -r1.9 PingusResource.cc
+--- src/PingusResource.cc	2000/07/10 18:42:25	1.9
++++ src/PingusResource.cc	2001/05/08 05:19:50
+@@ -112,8 +112,8 @@
+   else
+     {
+       std::string res_filename = find_file(pingus_datadir, "data/" + filename);
+-      res_manager = CL_ResourceManager::create(res_filename.c_str(),
+-					       /* is_datafile = */ use_datafile);
++      res_manager = new CL_ResourceManager (res_filename.c_str(),
++					    /* is_datafile = */ use_datafile);
+       resource_map[filename] = res_manager;
+       return res_manager;
+     }
+Index: src/PingusResource.hh
+===================================================================
+RCS file: /usr/local/cvsroot/Games/Pingus/src/PingusResource.hh,v
+retrieving revision 1.7
+diff -u -r1.7 PingusResource.hh
+--- src/PingusResource.hh	2000/06/26 06:45:59	1.7
++++ src/PingusResource.hh	2001/05/08 05:19:50
+@@ -25,6 +25,7 @@
+ #include <map>
+ 
+ #include <ClanLib/core.h>
++#include <ClanLib/display.h>
+ #include "ResDescriptor.hh"
+ 
+ /** General Resource Managing class, wrappers around
+Index: src/Screenshot.hh
+===================================================================
+RCS file: /usr/local/cvsroot/Games/Pingus/src/Screenshot.hh,v
+retrieving revision 1.5
+diff -u -r1.5 Screenshot.hh
+--- src/Screenshot.hh	2000/06/23 18:39:56	1.5
++++ src/Screenshot.hh	2001/05/08 05:19:50
+@@ -21,6 +21,7 @@
+ #define SCREENSHOT_HH
+ 
+ #include <ClanLib/core.h>
++#include <ClanLib/display.h>
+ 
+ using namespace std;
+ 
+Index: src/Server.cc
+===================================================================
+RCS file: /usr/local/cvsroot/Games/Pingus/src/Server.cc,v
+retrieving revision 1.14
+diff -u -r1.14 Server.cc
+--- src/Server.cc	2000/06/25 20:22:18	1.14
++++ src/Server.cc	2001/05/08 05:19:50
+@@ -20,6 +20,7 @@
+ #include <cstdio>
+ #include <cstdlib>
+ #include <functional>
++#include <algorithm>
+ 
+ #include "System.hh"
+ #include "globals.hh"
+@@ -163,7 +164,7 @@
+       pingus = world->get_pingu_p();
+       
+       // FIXME: This could need some optimization
+-      PinguIter pingu = find_if(pingus->begin(), pingus->end(), PinguId(pingu_id));
++      PinguIter pingu = std::find_if(pingus->begin(), pingus->end(), PinguId(pingu_id));
+ 
+       if (pingu != pingus->end()) 
+ 	{
+Index: src/SmallMap.cc
+===================================================================
+RCS file: /usr/local/cvsroot/Games/Pingus/src/SmallMap.cc,v
+retrieving revision 1.17
+diff -u -r1.17 SmallMap.cc
+--- src/SmallMap.cc	2000/06/26 15:32:26	1.17
++++ src/SmallMap.cc	2001/05/08 05:19:51
+@@ -247,7 +247,7 @@
+ {
+   switch(key.id)
+     {
+-    case 0:
++    case CL_MOUSE_LEFTBUTTON:
+       if (mouse_over())
+ 	{
+ 	  scroll_mode = true;
+@@ -263,7 +263,7 @@
+ {
+   switch(key.id)
+     {
+-    case 0:
++    case CL_MOUSE_LEFTBUTTON:
+       scroll_mode = false;
+       break;
+     }
+Index: src/SurfaceButton.hh
+===================================================================
+RCS file: /usr/local/cvsroot/Games/Pingus/src/SurfaceButton.hh,v
+retrieving revision 1.7
+diff -u -r1.7 SurfaceButton.hh
+--- src/SurfaceButton.hh	2000/06/23 17:13:32	1.7
++++ src/SurfaceButton.hh	2001/05/08 05:19:51
+@@ -23,6 +23,7 @@
+ #include <string>
+ 
+ #include <ClanLib/core.h>
++#include <ClanLib/display.h>
+ 
+ #include "PingusMenu.hh"
+ #include "editor/Editor.hh"
+Index: src/ThemeSelector.cc
+===================================================================
+RCS file: /usr/local/cvsroot/Games/Pingus/src/ThemeSelector.cc,v
+retrieving revision 1.27
+diff -u -r1.27 ThemeSelector.cc
+--- src/ThemeSelector.cc	2000/07/04 22:59:13	1.27
++++ src/ThemeSelector.cc	2001/05/08 05:19:52
+@@ -66,18 +66,18 @@
+ 
+ // ---=== ThemeSelector ===---
+ 
+-bool 
++void 
+ ThemeSelector::Event::on_button_release(CL_InputDevice *device, const CL_Key &key)
+ {
+-  if (!enabled) return true;  
++  if (!enabled) return;//- true;  
+ 
+-  return true;
++  return; //-true;
+ }
+ 
+-bool
++void
+ ThemeSelector::Event::on_button_press(CL_InputDevice *device, const CL_Key &key)
+ {
+-  if (!enabled) return true;
++  if (!enabled) return;//- true;
+ 
+   if (device == CL_Input::keyboards[0])
+     {
+@@ -121,7 +121,7 @@
+       int tmp_level;
+       switch (key.id)
+ 	{
+-	case 0: // Left mouse button
++	case CL_MOUSE_LEFTBUTTON: // Left mouse button
+ 	  tmp_level = theme_selector->mark_level_at_point(key.x, key.y);
+ 	  if (tmp_level != -1) 
+ 	    {
+@@ -158,7 +158,7 @@
+ 		}
+ 	    }
+ 	  break;
+-	case 1: // Middle mouse
++	case CL_MOUSE_MIDDLEBUTTON: // Middle mouse
+ 	  theme_selector->finished = true;	  
+ 	  break;
+ 	default:
+@@ -168,17 +168,17 @@
+   
+   theme_selector->draw();
+ 
+-  return true;
++  return; //- true;
+ }
+ 
+-bool
+-ThemeSelector::Event::on_mouse_move(CL_InputDevice *device)
++void
++ThemeSelector::Event::on_mouse_move(CL_InputDevice *device, int, int)
+ {
+   //std::cout << "Event: on_mouse_move called.." << std::endl;
+-  if (!enabled) return true;  
++  if (!enabled) return; //- true;  
+   //std::cout << "Event: on_mouse_move active.." << std::endl;  
+   theme_selector->mark_level_at_point(CL_Mouse::get_x(), CL_Mouse::get_y());
+-  return false;
++  return; //- false;
+ } 
+ 
+ ThemeSelector::ThemeSelector()
+@@ -196,9 +196,13 @@
+ 
+   event->theme_selector = this;
+   
+-  CL_Input::chain_button_press.push_back(event);
+-  CL_Input::chain_button_release.push_back(event);
+-  CL_Input::chain_mouse_move.push_back(event);
++  //-CL_Input::chain_button_press.push_back(event);
++  //-CL_Input::chain_button_release.push_back(event);
++  //-CL_Input::chain_mouse_move.push_back(event);
++
++  slot_press   = CL_Input::sig_button_press.connect(CL_CreateSlot(event, &ThemeSelector::Event::on_button_press));
++  slot_release = CL_Input::sig_button_release.connect(CL_CreateSlot(event, &ThemeSelector::Event::on_button_release));
++  slot_mousemove = CL_Input::sig_mouse_move.connect(CL_CreateSlot(event, &ThemeSelector::Event::on_mouse_move));
+ }
+ 
+ ThemeSelector::~ThemeSelector()
+@@ -208,10 +212,12 @@
+   for(std::vector<Theme*>::iterator i = themes.begin(); i != themes.end(); i++)
+     delete (*i);
+ 
+-  CL_Input::chain_mouse_move.remove(event);
+-  CL_Input::chain_button_press.remove(event);
+-  CL_Input::chain_button_release.remove(event);
+-  
++  //-CL_Input::chain_mouse_move.remove(event);
++  //-CL_Input::chain_button_press.remove(event);
++  //-CL_Input::chain_button_release.remove(event);
++  CL_Input::sig_button_press.disconnect (slot_press);
++  CL_Input::sig_button_release.disconnect (slot_release);
++  CL_Input::sig_mouse_move.disconnect (slot_mousemove);
+   delete event;
+ }
+ 
+Index: src/ThemeSelector.hh
+===================================================================
+RCS file: /usr/local/cvsroot/Games/Pingus/src/ThemeSelector.hh,v
+retrieving revision 1.10
+diff -u -r1.10 ThemeSelector.hh
+--- src/ThemeSelector.hh	2000/06/21 20:29:21	1.10
++++ src/ThemeSelector.hh	2001/05/08 05:19:52
+@@ -67,10 +67,13 @@
+ class ThemeSelector
+ {
+ public:
++  CL_Slot slot_press;
++  CL_Slot slot_release;
++  CL_Slot slot_mousemove;
+   ///
+-  class Event : public CL_Event_ButtonPress, 
+-		public CL_Event_ButtonRelease,
+-		public CL_Event_MouseMove
++  class Event //-: public CL_Event_ButtonPress, 
++		//-public CL_Event_ButtonRelease,
++		//-public CL_Event_MouseMove
+   {
+   public:
+     ///
+@@ -78,11 +81,11 @@
+     ///
+     ThemeSelector* theme_selector;
+     ///
+-    virtual bool on_button_press(CL_InputDevice *device, const CL_Key &key);
++    virtual void on_button_press(CL_InputDevice *device, const CL_Key &key);
+     ///
+-    virtual bool on_button_release(CL_InputDevice *device, const CL_Key &key);
++    virtual void on_button_release(CL_InputDevice *device, const CL_Key &key);
+     ///
+-    virtual bool on_mouse_move(CL_InputDevice *device);
++    virtual void on_mouse_move(CL_InputDevice *device, int, int);
+   }///
+ ;
+   ///
+Index: src/blitter.hh
+===================================================================
+RCS file: /usr/local/cvsroot/Games/Pingus/src/blitter.hh,v
+retrieving revision 1.7
+diff -u -r1.7 blitter.hh
+--- src/blitter.hh	2000/06/18 18:14:47	1.7
++++ src/blitter.hh	2001/05/08 05:19:52
+@@ -21,6 +21,7 @@
+ #define BLITTER_HH
+ 
+ #include <ClanLib/core.h>
++#include <ClanLib/display.h>
+ 
+ /** A bunch of blitting and creation functions to operate on
+     CL_Canvas.  Some of them a similar to the ones in ClanLib, but
+Index: src/globals.cc
+===================================================================
+RCS file: /usr/local/cvsroot/Games/Pingus/src/globals.cc,v
+retrieving revision 1.24
+diff -u -r1.24 globals.cc
+--- src/globals.cc	2000/07/14 12:18:49	1.24
++++ src/globals.cc	2001/05/08 05:19:52
+@@ -42,7 +42,7 @@
+ bool   start_editor       = false;
+ bool   auto_scrolling     = true;
+ int    tile_size          = 32;
+-bool   fullscreen_enabled = true;
++bool   fullscreen_enabled = false;
+ int    screen_width  = 800;
+ int    screen_height = 600;
+ bool   preload_data  = false; // FIXME: Should be default if it would work
+@@ -52,7 +52,7 @@
+ std::string config_file;   // --config-file
+ bool   background_manipulation_enabled = false; // --enable-bg-manipulation
+ bool   debug_game_time = false; // --debug-game-time
+-bool   use_datafile = true; // --use-datafile
++bool   use_datafile = false; // --use-datafile
+ 
+ std::string global_username;
+ std::string global_email; 
+Index: src/editor/Editor.cc
+===================================================================
+RCS file: /usr/local/cvsroot/Games/Pingus/src/editor/Editor.cc,v
+retrieving revision 1.14
+diff -u -r1.14 Editor.cc
+--- src/editor/Editor.cc	2000/07/04 22:59:13	1.14
++++ src/editor/Editor.cc	2001/05/08 05:19:53
+@@ -17,10 +17,10 @@
+ //  along with this program; if not, write to the Free Software
+ //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+ 
++#include <ClanLib/core.h>
++#include <ClanLib/display.h>
+ #include <cstdio>
+ #include <algorithm>
+-#include <ClanLib/core.h>
+-
+ #include "../algo.hh"
+ #include "../globals.hh"
+ #include "../PingusError.hh"
+@@ -28,6 +28,7 @@
+ #include "../Display.hh"
+ #include "../PingusResource.hh"
+ #include "../System.hh"
++#include "EditorEvent.hh"
+ #include "Editor.hh"
+ 
+ Editor::Editor ()
+@@ -61,8 +62,8 @@
+       event_handler_ref_counter++;
+       CL_System::keep_alive();
+       if (verbose) std::cout << "Editor: Registering event handler..." << event << std::flush; 
+-      CL_Input::chain_button_press.push_back(event);
+-      CL_Input::chain_button_release.push_back(event);
++      slot_press   = CL_Input::sig_button_press.connect(CL_CreateSlot(event, &EditorEvent::on_button_press));
++      slot_release = CL_Input::sig_button_release.connect(CL_CreateSlot(event, &EditorEvent::on_button_release));
+       if (verbose) std::cout << "done: " << event_handler_ref_counter << std::endl;
+     }
+   else
+@@ -76,8 +77,8 @@
+ {
+   event_handler_ref_counter--;
+   if (verbose) std::cout << "Editor: unregestering event handler" << event << "... " << std::flush; 
+-  CL_Input::chain_button_release.remove(event);
+-  CL_Input::chain_button_press.remove(event);
++  CL_Input::sig_button_press.disconnect(slot_press);
++  CL_Input::sig_button_release.disconnect(slot_release);
+   CL_System::keep_alive();
+   if (verbose) std::cout << "done: " << event_handler_ref_counter << std::endl;
+ }
+Index: src/editor/Editor.hh
+===================================================================
+RCS file: /usr/local/cvsroot/Games/Pingus/src/editor/Editor.hh,v
+retrieving revision 1.5
+diff -u -r1.5 Editor.hh
+--- src/editor/Editor.hh	2000/06/18 17:01:50	1.5
++++ src/editor/Editor.hh	2001/05/08 05:19:53
+@@ -28,7 +28,6 @@
+ #include "../PLF.hh"
+ #include "ObjectSelector.hh"
+ #include "StatusLine.hh"
+-#include "EditorEvent.hh"
+ #include "ObjectManager.hh"
+ #include "Panel.hh"
+ 
+@@ -39,6 +38,8 @@
+ class Editor
+ {
+ private:
++  CL_Slot slot_press;
++  CL_Slot slot_release;
+   ///
+   EditorEvent* event;
+   ///
+Index: src/editor/EditorEvent.cc
+===================================================================
+RCS file: /usr/local/cvsroot/Games/Pingus/src/editor/EditorEvent.cc,v
+retrieving revision 1.22
+diff -u -r1.22 EditorEvent.cc
+--- src/editor/EditorEvent.cc	2000/07/11 15:53:57	1.22
++++ src/editor/EditorEvent.cc	2001/05/08 05:19:54
+@@ -17,6 +17,7 @@
+ //  along with this program; if not, write to the Free Software
+ //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+ 
++#include <algorithm>
+ #include "../globals.hh"
+ #include "../PingusGame.hh"
+ #include "../PingusMessageBox.hh"
+@@ -27,6 +28,7 @@
+ #include "../Loading.hh"
+ #include "../Display.hh"
+ #include "StringReader.hh"
++#include "Editor.hh"
+ #include "EditorEvent.hh"
+ 
+ EditorEvent::EditorEvent()
+@@ -59,11 +61,11 @@
+   is_enabled = false;
+ }
+ 
+-bool
++void
+ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key &key)
+ {
+   if (!is_enabled)
+-    return true;
++    return; // true;
+ 
+   if (device == CL_Input::keyboards[0])
+     {
+@@ -250,7 +252,7 @@
+     {
+       switch (key.id)
+ 	{
+-	case 0:
++	case CL_MOUSE_LEFTBUTTON:
+ 	  if (editor->panel->mouse_over(key.x, key.y))
+ 	    {
+ 	      editor->panel->on_click();
+@@ -260,10 +262,10 @@
+ 	      editor_mark_or_move_object();
+ 	    }
+ 	  break;
+-	case 1:
++	case CL_MOUSE_MIDDLEBUTTON:
+ 	  editor->rect_get_current_objs();
+ 	  break;
+-	case 2:
++	case CL_MOUSE_RIGHTBUTTON:
+ 	  editor->scroll();
+ 	  break;
+ 	}
+@@ -275,28 +277,28 @@
+   
+   // Redraw the screen, since something may have changed
+   editor->draw();
+-  return true;
++  //-return true;
+ }
+ 
+-bool
++void
+ EditorEvent::on_button_release(CL_InputDevice *device, const CL_Key &key)
+ {
+   if (!is_enabled)
+-    return true;
++    return; // true;
+ 
+   if (device == CL_Input::keyboards[0])
+     {
+     }
+   else if (device == CL_Input::pointers[0])
+     {
+-      if (key.id == 0)
++      if (key.id == CL_MOUSE_LEFTBUTTON)
+ 	editor->panel->on_release();
+     }
+   else
+     {
+     }
+   
+-  return true;
++  //-return true;
+ }
+ 
+ void
+Index: src/editor/EditorEvent.hh
+===================================================================
+RCS file: /usr/local/cvsroot/Games/Pingus/src/editor/EditorEvent.hh,v
+retrieving revision 1.5
+diff -u -r1.5 EditorEvent.hh
+--- src/editor/EditorEvent.hh	2000/06/18 17:01:50	1.5
++++ src/editor/EditorEvent.hh	2001/05/08 05:19:54
+@@ -22,13 +22,12 @@
+ 
+ #include <ClanLib/core.h>
+ 
+-#include "Editor.hh"
+ #include "ObjectManager.hh"
+ 
+ ///
+ class Editor;
+ 
+-class EditorEvent : public CL_Event_ButtonPress, public CL_Event_ButtonRelease
++class EditorEvent //: public CL_Event_ButtonPress, public CL_Event_ButtonRelease
+ {
+ private:
+   ///
+@@ -47,9 +46,9 @@
+   ObjectManager* object_manager;
+   
+   ///
+-  virtual bool on_button_press(CL_InputDevice *device, const CL_Key &key);
++  virtual void on_button_press(CL_InputDevice *device, const CL_Key &key);
+   ///
+-  virtual bool on_button_release(CL_InputDevice *device, const CL_Key &key);
++  virtual void on_button_release(CL_InputDevice *device, const CL_Key &key);
+ 
+   ///
+   void enable();
+@@ -85,8 +84,7 @@
+   void editor_insert_new_object();
+   ///
+   void editor_display_help();
+-}///
+-;
++};
+ 
+ #endif
+ 
+Index: src/editor/StringReader.hh
+===================================================================
+RCS file: /usr/local/cvsroot/Games/Pingus/src/editor/StringReader.hh,v
+retrieving revision 1.6
+diff -u -r1.6 StringReader.hh
+--- src/editor/StringReader.hh	2000/06/18 17:01:50	1.6
++++ src/editor/StringReader.hh	2001/05/08 05:19:54
+@@ -23,6 +23,7 @@
+ #include <list>
+ #include <string>
+ #include <ClanLib/core.h>
++#include <ClanLib/display.h>
+ 
+ ///
+ class StringReader
