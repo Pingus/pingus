@@ -1,5 +1,6 @@
 Release Critical:
 ~~~~~~~~~~~~~~~~~
+ o You can scroll when you shoudn't be able to scroll (800x600)
  o climber capturing doesn't work
  o check for ./configure --disable-sound
  o bottom tile isn't draw (foliage1.plf)
@@ -20,19 +21,19 @@ Release Critical:
  o miner and basher needs to be slower
  o *.wav not found erros if sound is disabled.
  o test if put_target() works or where it fails (small surfaces?!)
- o Segfaults in CL_MouseCursor...?!
  o basher isn't falling if he goes over a hole in the ground
  o Splashed can be captured.
  o Bombers with unlimited actions turn crazy
  o z_pos handlig im editor braucht nen fix
  o miner doesn't dick to the complete ground, some pixel are left.
  o QuickPlay sollte den Level anzeigen, bzw entfernt werden.
- o Standard World braucht hoeheren feuer-hintergrund.
  o Jumper harken sich fest
  o glibc2.1 as requirement auf Pingus site
 
 Probably fixed:
 ~~~~~~~~~~~~~~~
+ o Standard World braucht hoeheren feuer-hintergrund. [anderer hintergrund]
+ o Segfaults in CL_MouseCursor...?! [gibt es hwcursor]
  o Mouse Zeiger im Result screen
  o Zerquetschte Pinguine sollten keine Pixel werfen (smasher)
  o Bridger verhacken sich in Waenden
@@ -160,6 +161,6 @@ DOOR.WAV      MOUSEPRE.WAV  OING.WAV	     THUD.WAV
 
 
 
-$Date: 2000/06/10 08:23:47 $
+$Date: 2000/06/15 21:08:52 $
 
 -= EOF =-
