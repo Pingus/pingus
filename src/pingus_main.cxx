@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.92 2003/06/04 17:22:33 torangan Exp $
+//   $Id: pingus_main.cxx,v 1.93 2003/08/13 13:46:39 sphair Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___
@@ -685,7 +685,7 @@ PingusMain::init_path_finder()
 #ifndef WIN32
   bindtextdomain(PACKAGE, path_manager.complete("/../../locale/").c_str());
 #else
-  bindtextdomain(PACKAGE, path_manager.complete("/locale/").c_str());
+  bindtextdomain(PACKAGE, path_manager.complete("../locale/").c_str());
 #endif
 
   // We use another LOCALEDIR to make static binaries possible
@@ -851,8 +851,12 @@ PingusMain::main(int argc, char** argv)
   //signal(SIGINT,  signal_handler);
 
   // Redirect stdout to somewhere where it is readable
-  //CL_ConsoleWindow cl_console(PACKAGE VERSION);
-  //cl_console.redirect_stdio();
+  #ifdef WIN32 
+  #ifdef _DEBUG
+  CL_ConsoleWindow cl_console(PACKAGE VERSION);
+  cl_console.redirect_stdio();
+  #endif
+  #endif
 
   // Init error/warning/notice streams
   pout.add (std::cout);
@@ -905,6 +909,13 @@ PingusMain::main(int argc, char** argv)
 
       deinit_pingus();
       deinit_clanlib();
+
+  #ifdef WIN32 
+  #ifdef _DEBUG
+  cl_console.wait_for_key();
+  #endif
+  #endif
+
   return 0;
 }
 

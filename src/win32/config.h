@@ -21,6 +21,7 @@
 #define HAVE_GETCWD 1
 #define HAVE_SETLOCALE 1
 #define HAVE_STRDUP 1
+#define HAVE_GETTEXT 1
 
 /* MSVC specifics */
 #if defined(_MSC_VER) && !defined(__cplusplus)

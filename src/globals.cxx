@@ -1,4 +1,4 @@
-//  $Id: globals.cxx,v 1.14 2003/04/19 10:23:17 torangan Exp $
+//  $Id: globals.cxx,v 1.15 2003/08/13 13:46:39 sphair Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,7 +34,11 @@ bool        start_editor                    = false;
 bool        auto_scrolling                  = true;
 int         tile_size                       = 32;
 #ifdef WIN32
+#ifdef _DEBUG
+bool        fullscreen_enabled              = false;
+#else
 bool        fullscreen_enabled              = true;
+#endif
 #else
 bool        fullscreen_enabled              = false;
 #endif
