@@ -1,4 +1,4 @@
-//  $Id: PingusStream.hh,v 1.2 2002/06/06 13:56:48 torangan Exp $
+//  $Id: PingusStream.hh,v 1.3 2002/06/07 11:06:49 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,15 +24,14 @@
 #include <vector>
 #include <iostream>
 
+class NilStream;
 
-class DebugStream
-  : public std::ostream
+class DebugStream : public std::ostream
 {
 
 private:
 
-  class Buffer
-    : public std::streambuf
+  class Buffer : public std::streambuf
   {
   private:
 
@@ -62,14 +61,57 @@ private:
   
   } buffer;
 
+  static NilStream nilstream;
 
 public:
 
   DebugStream (const std::string& prefix);
   virtual ~DebugStream ();
 
+  std::ostream & operator () (int component);
+
   void add (std::ostream& s);
   void set_prefix (const std::string & prefix);
+};
+
+
+
+/// Stream used to consume unwanted debugmessages
+class NilStream : public std::ostream
+{
+  private:
+
+    /// Do nothing Buffer for NilStream
+    class NilBuffer : public std::streambuf
+    {
+      private:
+      
+        char char_buffer[4];
+      
+      public:
+      
+         NilBuffer () { setp(char_buffer, char_buffer + 3); setg(0,0,0); }
+        ~NilBuffer () { }
+        
+        int overflow () { return 0; }
+        int sync     () { return 0; }
+    } buffer;
+
+    NilStream () : std::ostream(&buffer) { }
+   ~NilStream () { }
+
+    NilStream (const NilStream &); ///< not supported    
+
+  public:
+            
+    // Avoid unneccessary calls to internal buffer and conversions
+    NilStream & operator << (const char *)        { return *this; }
+    NilStream & operator << (const std::string &) { return *this; }
+    NilStream & operator << (int &)               { return *this; }
+    NilStream & operator << (unsigned int &)      { return *this; }
+
+
+  friend class DebugStream;
 };
 
 #endif

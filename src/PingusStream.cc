@@ -1,4 +1,4 @@
-//  $Id: PingusStream.cc,v 1.2 2002/06/06 13:56:48 torangan Exp $
+//  $Id: PingusStream.cc,v 1.3 2002/06/07 11:06:49 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,9 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "PingusStream.hh"
+#include "globals.hh"
+
+NilStream DebugStream::nilstream;
 
 DebugStream::Buffer::Buffer (const std::string& p)
   : prefix (p)
@@ -44,10 +47,10 @@ DebugStream::Buffer::overflow (int c)
       str += *ptr;
       
       if (*ptr == '\n') 
-	{
-	  put_line (prefix + str);
-	  str = "";
-	}
+      	{
+      	  put_line (prefix + str);
+      	  str = "";
+      	}
     }
   str += c;
   put_line (str);
@@ -62,10 +65,10 @@ DebugStream::Buffer::put_line (const std::string& line)
   if (!out_streams.empty ())
     {
       for (std::vector<std::ostream*>::iterator i = out_streams.begin ();
-	   i != out_streams.end (); ++i)
-	{
-	  *(*i) << line;
-	}
+	    i != out_streams.end (); ++i)
+      	{
+      	  *(*i) << line;
+      	}
     }
   else
     {
@@ -81,13 +84,13 @@ DebugStream::Buffer::sync ()
   // Walk through the buffer 
   for (char* c = pbase (); c != pptr (); ++c)
     {
-	str += *c;
+    	str += *c;
 
       if (*c == '\n') 
-	{
-	  put_line (prefix + str);
-	  str = "";
-	}
+      	{
+      	  put_line (prefix + str);
+      	  str = "";
+      	}
     }
     
   if (!str.empty ()) // Why to we check this?
@@ -124,6 +127,16 @@ DebugStream::DebugStream (const std::string& prefix)
 
 DebugStream::~DebugStream ()
 {
+}
+
+/// returns self if the debug flag is set, else nilstream
+std::ostream & DebugStream::operator () (int component) {
+
+  if (pingus_debug_flags & component) {
+    return *this;
+  } else {
+    return nilstream;
+  }  
 }
 
 void
