@@ -43,7 +43,7 @@ RSC=rc.exe
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /YX /FD /c
-# ADD CPP /nologo /MT /W3 /Gi /vd0 /GX /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "LIBXML_2" /YX /FD /TP /c
+# ADD CPP /nologo /MT /W3 /Gi /vd0 /GR /GX /I "src" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "LIBXML_2" /YX /FD /TP /c
 # SUBTRACT CPP /Gf /Gy /u /Fr
 # ADD BASE MTL /nologo /D "NDEBUG" /mktyplib203 /win32
 # ADD MTL /nologo /D "NDEBUG" /mktyplib203 /win32
@@ -72,7 +72,7 @@ LINK32=link.exe
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /YX /FD /GZ /c
-# ADD CPP /nologo /MTd /Gm /vd0 /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /D "LIBXML_2" /YX /FD /GZ /TP /c
+# ADD CPP /nologo /MTd /Gm /vd0 /GR /GX /ZI /Od /I "src" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /D "LIBXML_2" /YX /FD /GZ /TP /c
 # SUBTRACT CPP /X
 # ADD BASE MTL /nologo /D "_DEBUG" /mktyplib203 /win32
 # ADD MTL /nologo /D "_DEBUG" /mktyplib203 /win32
@@ -676,10 +676,6 @@ SOURCE=.\src\PinguMap.cc
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\pingus.rc
-# End Source File
-# Begin Source File
-
 SOURCE=.\src\PingusCounter.cc
 # End Source File
 # Begin Source File
@@ -997,6 +993,10 @@ SOURCE=.\src\boost\smart_ptr.hpp
 # Begin Source File
 
 SOURCE=.\src\icon1.ico
+# End Source File
+# Begin Source File
+
+SOURCE=.\pingus.rc
 # End Source File
 # End Group
 # End Target
