@@ -1074,10 +1074,6 @@ SOURCE=.\src\game_time.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\generic_main.cxx
-# End Source File
-# Begin Source File
-
 SOURCE=.\src\global_event.cxx
 # End Source File
 # Begin Source File
