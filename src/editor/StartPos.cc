@@ -1,4 +1,4 @@
-//  $Id: StartPos.cc,v 1.3 2000/11/16 10:23:04 grumbel Exp $
+//  $Id: StartPos.cc,v 1.4 2000/11/17 19:09:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,7 +31,10 @@ StartPos::StartPos(int arg_x_pos, int arg_y_pos)
   y_of = -17;
 
   surf = PingusResource::load_surface("editor/start_pos", "core");
-  init();
+  
+  // We are calling init() here since this object is not constructed
+  // like the other ones and can exist only once
+  init ();
 }
 
 StartPos::~StartPos()

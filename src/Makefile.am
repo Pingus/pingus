@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.46 2000/10/30 16:17:49 grumbel Exp $
+#  $Id: Makefile.am,v 1.47 2000/11/17 19:09:21 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -48,6 +48,7 @@ EXTRA_DIST = README \
 bin_PROGRAMS = pingus
 
 LDADD = caimagemanipulation/libcaimagemanipulation.a \
+        worldobjs/libpingus_worldobjs.a \
 	traps/libpingu_traps.a          \
         actions/libpingu_actions.a      \
         entrances/libpingus_entrances.a \
@@ -56,7 +57,6 @@ LDADD = caimagemanipulation/libcaimagemanipulation.a \
         backgrounds/libpingus_backgrounds.a       \
         war/libpingus_war.a \
         worldmap/libpingus_worldmap.a \
-        worldobjs/libpingus_worldobjs.a \
         generic/libpingus_generic.a
 
 pingus_SOURCES = \

@@ -1,4 +1,4 @@
-//  $Id: ObjectManager.cc,v 1.35 2000/10/30 16:17:51 grumbel Exp $
+//  $Id: ObjectManager.cc,v 1.36 2000/11/17 19:09:21 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -177,7 +177,7 @@ ObjectManager::load_level (std::string filename)
     editor_objs.push_back(EditorObj::create(*i));
 
   for(vector<WorldObjData*>::iterator i = temp_worldobj.begin(); i != temp_worldobj.end(); ++i)
-    ListHelper::append (editor_objs, EditorWorldObj::create (*i));
+    ListHelper::append (editor_objs, EditorObj::create (*i));
 
 #ifndef WIN32 // FIXME: Compiler error in Windows
   editor_objs.sort(EditorObj_less());
@@ -265,7 +265,7 @@ ObjectManager::save_level (string filename)
   // FIXME: we need some error checking
   
   plf_out << "/* This level was created with the PLE\n"
-	  << " * $Id: ObjectManager.cc,v 1.35 2000/10/30 16:17:51 grumbel Exp $\n"
+	  << " * $Id: ObjectManager.cc,v 1.36 2000/11/17 19:09:21 grumbel Exp $\n"
 	  << " */"
 	  << endl;
   

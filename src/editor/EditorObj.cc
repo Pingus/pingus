@@ -1,4 +1,4 @@
-// $Id: EditorObj.cc,v 1.22 2000/11/16 10:23:04 grumbel Exp $
+// $Id: EditorObj.cc,v 1.23 2000/11/17 19:09:21 grumbel Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,8 +43,8 @@ EditorObj::EditorObj()
   surf = 0;
   x_of = 0;
   y_of = 0;
-  width = 0;
-  height = 0;
+  width = -1;
+  height = -1;
   mark_color.r = 0.0;
   mark_color.g = 1.0;
   mark_color.b = 0.0;
@@ -65,7 +65,7 @@ EditorObj::init()
 
   is_init = true;
 
-  if (surf)
+  if (surf && width != -1 && height != -1)
     {
       width = surf->get_width();
       height = surf->get_height();
@@ -182,7 +182,12 @@ EditorObj::set_position_offset(int x_pos_add, int y_pos_add,
 void
 EditorObj::draw_offset(int x_offset, int y_offset)
 {
-  assert (is_init || !"EditorObj: init () wasn't called");
+  if (!(is_init || !"EditorObj: init () wasn't called"))
+    {
+      std::cout << "----" << this->status_line () << std::endl;
+      assert (false);
+    }
+
   assert(surf);
   if (surf) {
     surf->put_screen(position->x_pos + x_offset + x_of,
@@ -285,6 +290,9 @@ EditorObj::gui_edit_obj()
   
 /*
 $Log: EditorObj.cc,v $
+Revision 1.23  2000/11/17 19:09:21  grumbel
+fixed conveyor belt support in the editor
+
 Revision 1.22  2000/11/16 10:23:04  grumbel
 More fixes to the conveoyr belt, it works now :-)
 changed the way positions are handled by EditorObj

@@ -1,4 +1,4 @@
-//  $Id: Teleporter.cc,v 1.3 2000/11/16 10:23:04 grumbel Exp $
+//  $Id: Teleporter.cc,v 1.4 2000/11/17 19:09:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -158,7 +158,11 @@ EditorTeleporterObj::save_xml (std::ofstream* xml)
 std::string
 EditorTeleporterObj::status_line()
 {
-  return "EditorTeleporterObj";
+  // FIXME: replace with string streams
+  char str[1024];
+  sprintf (str, "Teleporter - %d %d %d", 
+	   pos.x_pos, pos.y_pos, pos.z_pos);
+  return str;
 }
 
 EditorTeleporterTargetObj::EditorTeleporterTargetObj ()
@@ -191,7 +195,10 @@ EditorTeleporterTargetObj::save_xml (std::ofstream* xml)
 std::string
 EditorTeleporterTargetObj::status_line()
 {
-  return "EditorTeleporterTargetObj";
+  char str[1024];
+  sprintf (str, "TeleporterTarget - %d %d %d", 
+	   position->x_pos, position->y_pos, position->z_pos);
+  return str;
 }
 
 /* EOF */

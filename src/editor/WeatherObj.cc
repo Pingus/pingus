@@ -1,4 +1,4 @@
-//  $Id: WeatherObj.cc,v 1.3 2000/11/16 10:23:04 grumbel Exp $
+//  $Id: WeatherObj.cc,v 1.4 2000/11/17 19:09:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,7 +25,6 @@ WeatherObj::WeatherObj(const WeatherObj& obj)
 {
   surf = obj.surf;
   type = obj.type;
-  init();
   *position = Position(0,0,200);
 }
 
@@ -47,7 +46,6 @@ WeatherObj::WeatherObj(WeatherData data)
       std::cout << "WeatherObj: Unknown weather type: " << type << std::endl;
       surf = PingusResource::load_surface("editor/weather_rain", "core");
     }
-  init();
 }
 
 WeatherObj::~WeatherObj()

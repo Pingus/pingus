@@ -1,4 +1,4 @@
-//  $Id: EditorWorldObj.cc,v 1.4 2000/11/14 22:22:56 grumbel Exp $
+//  $Id: EditorWorldObj.cc,v 1.5 2000/11/17 19:09:21 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "../worldobjs/ConveyorBelt.hh"
 #include "../worldobjs/IceBlock.hh"
 #include "../worldobjs/Teleporter.hh"
 #include "../PingusResource.hh"
@@ -26,7 +27,7 @@ EditorWorldObj::EditorWorldObj ()
 {
   surf = PingusResource::load_surface ("misc/404", "core");
 }
-
+/*
 list<EditorObj*> 
 EditorWorldObj::create (WorldObjData* data)
 {
@@ -38,13 +39,17 @@ EditorWorldObj::create (WorldObjData* data)
     {
       return EditorIceBlockObj::create (data);
     }
+  else if (dynamic_cast <ConveyorBelt*>(data))
+    {
+      return EditorConveyorBeltObj::create (data);
+    }
   else
     {
       std::cout << "EditorWorldObj: Warrning! Unsupported object type!" << std::endl;
       return list<EditorObj*>();
     }
 }
-
+*/
 EditorObj* 
 EditorWorldObj::duplicate()
 {

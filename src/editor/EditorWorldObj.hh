@@ -1,4 +1,4 @@
-//  $Id: EditorWorldObj.hh,v 1.3 2000/10/30 16:17:51 grumbel Exp $
+//  $Id: EditorWorldObj.hh,v 1.4 2000/11/17 19:09:21 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,8 +31,7 @@ public:
   EditorWorldObj ();
   ///
   virtual ~EditorWorldObj () {}
-  ///
-  static list<EditorObj*> create (WorldObjData*);
+  //static list<EditorObj*> create (WorldObjData*);
   ///
   virtual EditorObj* duplicate();
   ///

@@ -1,4 +1,4 @@
-//  $Id: ConveyorBelt.cc,v 1.2 2000/11/16 10:23:04 grumbel Exp $
+//  $Id: ConveyorBelt.cc,v 1.3 2000/11/17 19:09:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -140,10 +140,19 @@ EditorConveyorBeltObj::EditorConveyorBeltObj (WorldObjData* obj)
 {
   ConveyorBeltData* conveyor_belt = dynamic_cast<ConveyorBeltData*>(obj);
 
+  left_sur   = PingusResource::load_surface ("conveyorbelt_left", "worldobjs");
+  right_sur  = PingusResource::load_surface ("conveyorbelt_right", "worldobjs");
+  middle_sur = PingusResource::load_surface ("conveyorbelt_middle", "worldobjs");
+
+  EditorObj::width  = left_sur->get_width() + right_sur->get_width()
+    + ConveyorBeltData::width * middle_sur->get_width ();
+  EditorObj::height = 10;
+
   pos = conveyor_belt->pos;
   position = &pos;
   ConveyorBeltData::width = conveyor_belt->width;
   speed = conveyor_belt->speed;
+  ConveyorBeltData::width = conveyor_belt->width;
   counter = 0;
 }
 
@@ -151,8 +160,14 @@ EditorConveyorBeltObj::~EditorConveyorBeltObj ()
 {
 }
 
+EditorObj* 
+EditorConveyorBeltObj::duplicate()
+{
+  return new EditorConveyorBeltObj (this);
+}
+
 void   
-EditorConveyorBeltObj::draw_offset(int, int)
+EditorConveyorBeltObj::draw_offset(int x_of, int y_of)
 {
   left_sur->put_screen (pos.x_pos + x_of, pos.y_pos + y_of, counter);
   for (int i=0; i < ConveyorBeltData::width; i++)
@@ -189,7 +204,9 @@ EditorConveyorBeltObj::save_xml (std::ofstream* xml)
 std::string 
 EditorConveyorBeltObj::status_line()
 {
-  return "ConveyorBelt";
+  char str[1024];
+  sprintf (str, "ConveyorBelt - (%d, %d, %d) Speed: %d", pos.x_pos, pos.y_pos, pos.z_pos, speed);
+  return str;
 }
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: PLFObj.cc,v 1.30 2000/11/16 10:23:04 grumbel Exp $
+//  $Id: PLFObj.cc,v 1.31 2000/11/17 19:09:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -54,7 +54,6 @@ HotspotObj::HotspotObj(HotspotData data)
   para  = data.para;
   cout << "Lodaing Hotspot: " << desc.res_name << endl;
   surf = PingusResource::load_surface(desc);
-  init();
 }
 
 HotspotObj::~HotspotObj()
@@ -140,7 +139,6 @@ EntranceObj::EntranceObj(EntranceData data)
       cout << "Entrance obj error!" << endl;
       throw PingusError("EntranceObj: Unknown entrance type: " + type);
     }
-  init();
 }
 
 EntranceObj::~EntranceObj()
@@ -240,7 +238,6 @@ ExitObj::ExitObj(ExitData data)
   *position  = data.pos;
   desc = data.desc;
   surf = PingusResource::load_surface(desc);
-  init();
 }
 
 ExitObj::~ExitObj()
@@ -319,7 +316,6 @@ TrapObj::TrapObj(TrapData data)
   } else {
     throw PingusError(type + ": trap is not implemented in editor");
   }
-  init();
 }
 
 TrapObj::~TrapObj()
@@ -375,7 +371,6 @@ LiquidObj::LiquidObj(const LiquidObj& data)
   speed = data.speed;
   surf  = data.surf;
   counter = data.counter;
-  //init();
   height = surf->get_height();
 }
 
@@ -388,7 +383,6 @@ LiquidObj::LiquidObj(LiquidData data)
   surf = PingusResource::load_surface(desc);
   counter.set_size(surf->get_num_frames());
   counter.set_speed(50);
-  init();
 }
 
 LiquidObj::~LiquidObj()
