@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Pingus 0.5.0\n"
-"POT-Creation-Date: 2003-04-15 17:27+0200\n"
+"POT-Creation-Date: 2003-04-15 22:09+0200\n"
 "PO-Revision-Date: 2003-04-15 17:28+0200\n"
 "Last-Translator: Çaðrý Çöltekin <cagri@metu.edu.tr>\n"
 "Language-Team: Giray Devlet <giray@devlet.cc>, Caðrý Çöltekin <cagri@metu."
@@ -517,25 +517,25 @@ msgstr "Yükleniyor..."
 msgid "Loading finished. Press a mouse button to start the level"
 msgstr "Yüklendi! Devam etmek için farenin tuþunu týklat"
 
-#: src/level_result.cxx:59
+#: src/level_result.cxx:57
 msgid "Results:"
 msgstr "Sonuçlar:"
 
-#: src/level_result.cxx:65
+#: src/level_result.cxx:63
 #, c-format
 msgid "Pingus saved:   %3d/%3d"
 msgstr "Kurtarýlýcak Pingus: %3d/%3d"
 
-#: src/level_result.cxx:70
+#: src/level_result.cxx:68
 #, c-format
 msgid "Pingus killed:  %3d/%3d"
 msgstr "Ölen Pingular:  %3d/%3d"
 
-#: src/level_result.cxx:86
+#: src/level_result.cxx:84
 msgid "Press button to continue..."
 msgstr "Devam etmek için tuþa bas..."
 
-#: src/level_result.cxx:100
+#: src/level_result.cxx:98
 msgid ""
 "As many Pingus escaped as entered the level. That's going to be hard to "
 "beat.... unless this game becomes pornographic."
@@ -543,19 +543,19 @@ msgstr ""
 "Hocam, Hepsi kurtuldu!  Bu skoru aþabilmek için bu oyuna pornografik biþiler "
 "katmamýz gerekecek."
 
-#: src/level_result.cxx:102
+#: src/level_result.cxx:100
 msgid "Very impressive indeed."
 msgstr "Helal Olsun ..."
 
-#: src/level_result.cxx:104
+#: src/level_result.cxx:102
 msgid "Good work. Still room for improvement though."
 msgstr "Aferin. Ama daha fazla çalýþman lazým çekirge."
 
-#: src/level_result.cxx:106
+#: src/level_result.cxx:104
 msgid "Not too shabby, not too shabby at all."
 msgstr "Fena deðil, hiç fena deðil."
 
-#: src/level_result.cxx:108
+#: src/level_result.cxx:106
 msgid ""
 "That was OK, but Pingu life insurance premiums have just gotten more "
 "expensive."
@@ -563,44 +563,43 @@ msgstr ""
 "Fena deðil. Fakat Pingu hayat sigortasý aydatlarýnýn pahalýþtýrmayakatkýda "
 "bulundun."
 
-#: src/level_result.cxx:110
+#: src/level_result.cxx:108
 msgid "Maybe this level calls for a different strategy."
 msgstr "Farklý bir stateji uygulamakta yarar olabilir."
 
-#: src/level_result.cxx:112
+#: src/level_result.cxx:110
 msgid "Exactly half. Are you saving only the female ones?"
 msgstr "Tam yarýsý. Ne o? Sadece diþileri falan mý kurtarýyoruz?!?"
 
-#: src/level_result.cxx:114
+#: src/level_result.cxx:112
 msgid "If I were a Pingu, I never would have left that entrance."
 msgstr "Ben bir Pingu olsaydým, o kapýdan adýmýmý atmazdým."
 
-#: src/level_result.cxx:116
+#: src/level_result.cxx:114
 msgid "Maybe you would feel more at home playing Quake."
 msgstr "Abisi, belki de Quake sana daha uygun bi oyun."
 
-#: src/level_result.cxx:118
-#, fuzzy
+#: src/level_result.cxx:116
 msgid ""
-"Maybe this level calls for a different stratagy. Like attempting to save "
+"Maybe this level calls for a different strategy. Like attempting to save "
 "them, for example."
 msgstr ""
 "Tikkat tikkat! Stateji deðiþikliði! Bir daha sefere þunlarý kurtarmaya "
 "çalýþalým!"
 
-#: src/level_result.cxx:120
+#: src/level_result.cxx:118
 msgid "Ever considered a career as a Pingu exterminator?"
 msgstr "Pingo Terminatörü olarak iþ mi arýyoruz?"
 
-#: src/level_result.cxx:122
+#: src/level_result.cxx:120
 msgid "You missed one! What's your excuse!?"
 msgstr "Ne o? Bi tane kaçýrdýk bakýyorum."
 
-#: src/level_result.cxx:124
+#: src/level_result.cxx:122
 msgid "Please reassure me that you hit the Armageddon button."
 msgstr "Bu da bir baþarý tabii. Hepsini nasil helak ettin?"
 
-#: src/level_result.cxx:126
+#: src/level_result.cxx:124
 msgid "You've got a negative save/total value, something is buggy."
 msgstr "Eksi sayýda Pingus kurtardýn, biyerde kesin hata var."
 
@@ -670,10 +669,6 @@ msgstr "..:: Çok oyunculu kipler... Deneysel þeyler ::.."
 #: src/menu_button.cxx:395
 msgid "Multi"
 msgstr "Çoklu"
-
-#: src/pingu.cxx:122
-msgid "Setting action to a dead pingu"
-msgstr "Ölü pingu'ya atanan aksiyon"
 
 #: src/pingu_info.cxx:49
 #, c-format
@@ -810,6 +805,11 @@ msgstr "Seviye editörü'nu baþlat (deneysel)"
 #: src/pingus_main.cxx:511
 msgid "Disable automatic scrolling"
 msgstr "Automatik kaydýrmayý kapat"
+
+#: src/pingus_main.cxx:513
+#, fuzzy
+msgid "Enable software cursor"
+msgstr "   --enable-swcursor        Yazýlým imleçini kullan\n"
 
 #: src/pingus_main.cxx:516
 msgid "Don't read ~/.pingus/config"
@@ -1293,7 +1293,7 @@ msgstr ""
 msgid "Environment variable $HOME not set, fix that and start again."
 msgstr "$HOME deðiþkeni atanmamýþ, düzeltip yeniden dene."
 
-#: src/worldmap/level_dot.cxx:159
+#: src/worldmap/level_dot.cxx:162
 msgid "locked"
 msgstr "kapalý"
 
@@ -1320,6 +1320,9 @@ msgstr "WorldMap: Dosya bulunamadý: "
 #: src/worldmap/worldmap.cxx:249
 msgid "...walking..."
 msgstr "...yürüyor..."
+
+#~ msgid "Setting action to a dead pingu"
+#~ msgstr "Ölü pingu'ya atanan aksiyon"
 
 #~ msgid "input"
 #~ msgstr "girdi"
@@ -1705,9 +1708,6 @@ msgstr "...yürüyor..."
 #~ "instead\n"
 #~ msgstr ""
 #~ "   --disable-swcursor       Yazýlým imleçi kapa, domaným imleçini kullan\n"
-
-#~ msgid "   --enable-swcursor        Enable software cursor\n"
-#~ msgstr "   --enable-swcursor        Yazýlým imleçini kullan\n"
 
 #~ msgid ""
 #~ "   --max-cpu-usage          Use all of the cpu power available, instead "

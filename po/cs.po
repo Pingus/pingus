@@ -7,14 +7,15 @@
 # Tomáš Bláha, 2003
 # Tomáš Bláha, 2003
 # Tomáš Bláha, 2003
+# Tomáš Bláha, 2003
 # Copyright (C) YEAR Ingo Ruhnke
 # Tomáš Bláha, 2003
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: cs\n"
-"POT-Creation-Date: 2003-04-15 17:27+0200\n"
-"PO-Revision-Date: 2003-04-15 17:29+0200\n"
+"POT-Creation-Date: 2003-04-15 22:09+0200\n"
+"PO-Revision-Date: 2003-04-15 21:05+0200\n"
 "Last-Translator: Tomáš Bláha\n"
 "Language-Team: czech\n"
 "MIME-Version: 1.0\n"
@@ -108,7 +109,7 @@ msgstr "Zadejte jmeno pro ulozeni:"
 
 #: src/editor/editor_help_screen.cxx:38
 msgid "Editor Helpscreen (hide with F1)"
-msgstr ""
+msgstr "Napoveda editoru (F1 skryje)"
 
 #: src/editor/editor_help_screen.cxx:45
 msgid "F1 - show/hide this help screen"
@@ -521,25 +522,25 @@ msgstr "Nahravam..."
 msgid "Loading finished. Press a mouse button to start the level"
 msgstr "Nahrano. Spustis zmacknutim mysiho tlacitka."
 
-#: src/level_result.cxx:59
+#: src/level_result.cxx:57
 msgid "Results:"
 msgstr "Vysledky:"
 
-#: src/level_result.cxx:65
+#: src/level_result.cxx:63
 #, c-format
 msgid "Pingus saved:   %3d/%3d"
 msgstr "Pingu zachraneno:   %3d/%3d"
 
-#: src/level_result.cxx:70
+#: src/level_result.cxx:68
 #, c-format
 msgid "Pingus killed:  %3d/%3d"
 msgstr "Pingu zabito:  %3d/%3d"
 
-#: src/level_result.cxx:86
+#: src/level_result.cxx:84
 msgid "Press button to continue..."
 msgstr "Pro pokracovani zmacknete tlacitko..."
 
-#: src/level_result.cxx:100
+#: src/level_result.cxx:98
 msgid ""
 "As many Pingus escaped as entered the level. That's going to be hard to "
 "beat.... unless this game becomes pornographic."
@@ -547,60 +548,59 @@ msgstr ""
 "Zachranil jsi vsechny pingy. To bude tezke prekonat... pokud se hra nestane "
 "pornografickou."
 
-#: src/level_result.cxx:102
+#: src/level_result.cxx:100
 msgid "Very impressive indeed."
 msgstr "Velmi dobre."
 
-#: src/level_result.cxx:104
+#: src/level_result.cxx:102
 msgid "Good work. Still room for improvement though."
 msgstr "Dobra prace. Stale jeste ale lze zlepsovat."
 
-#: src/level_result.cxx:106
+#: src/level_result.cxx:104
 msgid "Not too shabby, not too shabby at all."
 msgstr "Priste by si se mel vice snazit."
 
-#: src/level_result.cxx:108
+#: src/level_result.cxx:106
 msgid ""
 "That was OK, but Pingu life insurance premiums have just gotten more "
 "expensive."
 msgstr "No celkem to uslo. Jen, ze asi prave pingum podrazily zivotni pojisty."
 
-#: src/level_result.cxx:110
+#: src/level_result.cxx:108
 msgid "Maybe this level calls for a different strategy."
 msgstr "Mozna by to chtelo jinou strategii."
 
-#: src/level_result.cxx:112
+#: src/level_result.cxx:110
 msgid "Exactly half. Are you saving only the female ones?"
 msgstr "Presne polovina. Zachranoval jsi jen samicky?"
 
-#: src/level_result.cxx:114
+#: src/level_result.cxx:112
 msgid "If I were a Pingu, I never would have left that entrance."
 msgstr "Kdybych byl pingem, nevysel bych ze vchodu."
 
-#: src/level_result.cxx:116
+#: src/level_result.cxx:114
 msgid "Maybe you would feel more at home playing Quake."
 msgstr "Treba by si radeji hral Quake."
 
-#: src/level_result.cxx:118
-#, fuzzy
+#: src/level_result.cxx:116
 msgid ""
-"Maybe this level calls for a different stratagy. Like attempting to save "
+"Maybe this level calls for a different strategy. Like attempting to save "
 "them, for example."
 msgstr "Mozna by to chtelo jinou strategii. Treba se pokusit nekoho zachranit."
 
-#: src/level_result.cxx:120
+#: src/level_result.cxx:118
 msgid "Ever considered a career as a Pingu exterminator?"
 msgstr "Uz jsi zvazoval karieru hubice pingu?"
 
-#: src/level_result.cxx:122
+#: src/level_result.cxx:120
 msgid "You missed one! What's your excuse!?"
 msgstr "Skoro, az na jednoho. Jakou mas pro to omluvu?"
 
-#: src/level_result.cxx:124
+#: src/level_result.cxx:122
 msgid "Please reassure me that you hit the Armageddon button."
 msgstr "To urcite byl vysledek pouziti tlacitka armagedon, nebo snad ne?!"
 
-#: src/level_result.cxx:126
+#: src/level_result.cxx:124
 msgid "You've got a negative save/total value, something is buggy."
 msgstr "Ziskal jsi zaporny pocet zachranenych/celkem, nekde je chyba."
 
@@ -663,10 +663,6 @@ msgstr "..:: Vice hracu... experimentalni zalezitost ::.."
 #: src/menu_button.cxx:395
 msgid "Multi"
 msgstr "Vice hracu"
-
-#: src/pingu.cxx:122
-msgid "Setting action to a dead pingu"
-msgstr "Nastavuji akci mrtvemu pingovi"
 
 #: src/pingu_info.cxx:49
 #, c-format
@@ -802,6 +798,10 @@ msgstr "Spustit editor urovni (experimentalni)"
 msgid "Disable automatic scrolling"
 msgstr "Vypnout automaticky posuv"
 
+#: src/pingus_main.cxx:513
+msgid "Enable software cursor"
+msgstr ""
+
 #: src/pingus_main.cxx:516
 msgid "Don't read ~/.pingus/config"
 msgstr "Zakazat nacteni ~/.pingus/config"
@@ -820,7 +820,7 @@ msgstr "Snizit zatez CPU, coz muze zrychlit hru na pomalych strojich"
 
 #: src/pingus_main.cxx:519
 msgid "Uses the controller given in FILE"
-msgstr ""
+msgstr "Pouzit ovladac ze zadaneho souboru"
 
 #: src/pingus_main.cxx:521
 msgid "Debugging and experimental stuff:"
@@ -876,7 +876,7 @@ msgstr "Snizovat zatez CPU volanim sleep()"
 
 #: src/pingus_main.cxx:535
 msgid "Demo playing and recording:"
-msgstr ""
+msgstr "Nahravani a prehravani dem:"
 
 #: src/pingus_main.cxx:536
 msgid "FILE     "
@@ -1277,7 +1277,7 @@ msgstr ""
 msgid "Environment variable $HOME not set, fix that and start again."
 msgstr "Promena prostredi $HOME neni nastavena. Po oprave spustte znovu."
 
-#: src/worldmap/level_dot.cxx:159
+#: src/worldmap/level_dot.cxx:162
 msgid "locked"
 msgstr "zamknuto"
 
@@ -1304,3 +1304,6 @@ msgstr "WorldMap: Soubor nenalezen: "
 #: src/worldmap/worldmap.cxx:249
 msgid "...walking..."
 msgstr "...jdu..."
+
+#~ msgid "Setting action to a dead pingu"
+#~ msgstr "Nastavuji akci mrtvemu pingovi"

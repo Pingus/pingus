@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Pingus 0.6.0\n"
-"POT-Creation-Date: 2003-04-15 17:27+0200\n"
+"POT-Creation-Date: 2003-04-15 22:09+0200\n"
 "PO-Revision-Date: 2003-04-15 17:29+0200\n"
 "Last-Translator: Milan Babuskov <mbabuskov@yahoo.com>\n"
 "Language-Team: <mbabuskov@yahoo.com>\n"
@@ -513,25 +513,25 @@ msgstr "Ucitavanje..."
 msgid "Loading finished. Press a mouse button to start the level"
 msgstr "Ucitavanje gotovo. Pritisni dugme misa da pocne nivo"
 
-#: src/level_result.cxx:59
+#: src/level_result.cxx:57
 msgid "Results:"
 msgstr "Rezultati:"
 
-#: src/level_result.cxx:65
+#: src/level_result.cxx:63
 #, c-format
 msgid "Pingus saved:   %3d/%3d"
 msgstr "Spaseno Pingusa:   %3d/%3d"
 
-#: src/level_result.cxx:70
+#: src/level_result.cxx:68
 #, c-format
 msgid "Pingus killed:  %3d/%3d"
 msgstr "Ubijeno Pingusa:  %3d/%3d"
 
-#: src/level_result.cxx:86
+#: src/level_result.cxx:84
 msgid "Press button to continue..."
 msgstr "Pritisni dugme za nastavak..."
 
-#: src/level_result.cxx:100
+#: src/level_result.cxx:98
 msgid ""
 "As many Pingus escaped as entered the level. That's going to be hard to "
 "beat.... unless this game becomes pornographic."
@@ -539,19 +539,19 @@ msgstr ""
 "Spaseno je onoliko Pingusa koliko je uslo u nivo. To ce biti tesko "
 "nadmasiti.... osim ako igra postane pornografska."
 
-#: src/level_result.cxx:102
+#: src/level_result.cxx:100
 msgid "Very impressive indeed."
 msgstr "Zaista vrlo impresivno."
 
-#: src/level_result.cxx:104
+#: src/level_result.cxx:102
 msgid "Good work. Still room for improvement though."
 msgstr "Dobro uradjeno. Mada, moze to i bolje."
 
-#: src/level_result.cxx:106
+#: src/level_result.cxx:104
 msgid "Not too shabby, not too shabby at all."
 msgstr "Nije lose, uopste nije lose."
 
-#: src/level_result.cxx:108
+#: src/level_result.cxx:106
 msgid ""
 "That was OK, but Pingu life insurance premiums have just gotten more "
 "expensive."
@@ -559,44 +559,43 @@ msgstr ""
 "To je bilo dobro, ali polise zivotnog osiguranja za Pinguse upravo "
 "poskupljuju."
 
-#: src/level_result.cxx:110
+#: src/level_result.cxx:108
 msgid "Maybe this level calls for a different strategy."
 msgstr "Mozda ovaj nivo zahteva drugaciji pristup."
 
-#: src/level_result.cxx:112
+#: src/level_result.cxx:110
 msgid "Exactly half. Are you saving only the female ones?"
 msgstr "Tacno pola. Da li mozda spasavas samo zenske?"
 
-#: src/level_result.cxx:114
+#: src/level_result.cxx:112
 msgid "If I were a Pingu, I never would have left that entrance."
 msgstr "Da sam ja Pingus, nikad ne bih ni krenuo sa ulaza."
 
-#: src/level_result.cxx:116
+#: src/level_result.cxx:114
 msgid "Maybe you would feel more at home playing Quake."
 msgstr "Mozda si vrsta osobe koja vise voli Quake."
 
-#: src/level_result.cxx:118
-#, fuzzy
+#: src/level_result.cxx:116
 msgid ""
-"Maybe this level calls for a different stratagy. Like attempting to save "
+"Maybe this level calls for a different strategy. Like attempting to save "
 "them, for example."
 msgstr ""
 "Mozda ovaj nivo zahteva drugaciji pristup. Na primer, bilo bi dobro da ih "
 "probas spasiti."
 
-#: src/level_result.cxx:120
+#: src/level_result.cxx:118
 msgid "Ever considered a career as a Pingu exterminator?"
 msgstr "Da li razmisljas da se profesionalno bavis ubijanjem Pingusa?"
 
-#: src/level_result.cxx:122
+#: src/level_result.cxx:120
 msgid "You missed one! What's your excuse!?"
 msgstr "Propustio si jednog! Koji je tvoj izgovor?!"
 
-#: src/level_result.cxx:124
+#: src/level_result.cxx:122
 msgid "Please reassure me that you hit the Armageddon button."
 msgstr "Molim te, ubedi me da si aktivirao Armageddon dugme."
 
-#: src/level_result.cxx:126
+#: src/level_result.cxx:124
 msgid "You've got a negative save/total value, something is buggy."
 msgstr "Imas negativan odnos spaseno/ukupno, postoji neka greska."
 
@@ -660,10 +659,6 @@ msgstr "..:: Modovi za vise igraca... eksperimentalno ::.."
 msgid "Multi"
 msgstr "Vise"
 
-#: src/pingu.cxx:122
-msgid "Setting action to a dead pingu"
-msgstr "Postavljanje akcije za mrtvog pingusa"
-
 #: src/pingu_info.cxx:49
 #, c-format
 msgid "pingu_id %d"
@@ -720,7 +715,8 @@ msgstr "| Upozorenje: Pingus je primio SIGINT, izlaz odmah."
 
 #: src/pingus_main.cxx:306
 msgid "Warning: Larger resolution than 800x600 will result in visual problems"
-msgstr "Upozorenje: Rezolucije vece od 800x600 mogu da izazovu vizuelne probleme"
+msgstr ""
+"Upozorenje: Rezolucije vece od 800x600 mogu da izazovu vizuelne probleme"
 
 #: src/pingus_main.cxx:487
 msgid "Unknow char: "
@@ -797,6 +793,10 @@ msgstr "Pokrece editor nivoa (eksperimentalno)"
 #: src/pingus_main.cxx:511
 msgid "Disable automatic scrolling"
 msgstr "Onemoguci automatsko skrolovanje"
+
+#: src/pingus_main.cxx:513
+msgid "Enable software cursor"
+msgstr ""
 
 #: src/pingus_main.cxx:516
 msgid "Don't read ~/.pingus/config"
@@ -1277,7 +1277,7 @@ msgstr ""
 msgid "Environment variable $HOME not set, fix that and start again."
 msgstr "Varijabla okruzenja $HOME nije postavljena, ispravi pa ponovi."
 
-#: src/worldmap/level_dot.cxx:159
+#: src/worldmap/level_dot.cxx:162
 msgid "locked"
 msgstr "zakljucano"
 
@@ -1304,6 +1304,9 @@ msgstr "WorldMap: Fajl nije nadjen: "
 #: src/worldmap/worldmap.cxx:249
 msgid "...walking..."
 msgstr "...hodanje..."
+
+#~ msgid "Setting action to a dead pingu"
+#~ msgstr "Postavljanje akcije za mrtvog pingusa"
 
 #~ msgid "input"
 #~ msgstr "ulaz"
