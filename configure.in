@@ -1,4 +1,4 @@
-#  $Id: configure.in,v 1.21 2000/07/10 18:42:25 grumbel Exp $
+#  $Id: configure.in,v 1.22 2000/07/30 23:52:21 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -99,6 +99,10 @@ if test "x$with_sound" != "xno"; then
 	AC_CHECK_LIB(SDL,   main,,)
 	AC_CHECK_LIB(SDL_mixer,   main,,SOUND_SUPPORT=false)
 fi
+
+AC_CHECK_LIB(xml, main,, [
+	echo "Please install libxml correctly and try again."
+	exit])
 
 AC_CHECK_LIB(Hermes,   main,,)
 	
@@ -219,7 +223,7 @@ AC_OUTPUT( Makefile
 
 echo "sdlmixer: $HAVE_LIBSDL_MIXER"
 
-env
+# env
 
 if test $HAVE_LIBSDL_MIXER; then
 	echo "Sound support enabled"
