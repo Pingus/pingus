@@ -1,4 +1,4 @@
-#  $Id: configure.in,v 1.71 2002/09/25 10:19:58 grumbel Exp $
+#  $Id: configure.in,v 1.72 2002/09/27 11:30:33 torangan Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -337,18 +337,18 @@ AC_DEFINE_UNQUOTED(LOCALEDIR, "$localedir")
 AC_OUTPUT( Makefile 
            src/Makefile 
            src/actions/Makefile
+           src/caimagemanipulation/Makefile
+           src/editor/Makefile
+	   src/editorobjs/Makefile
+           src/gui/Makefile
            src/input/Makefile
 	   src/input/axes/Makefile
 	   src/input/buttons/Makefile
 	   src/input/pointers/Makefile
 	   src/input/scrollers/Makefile
-           src/gui/Makefile
            src/particles/Makefile
-           src/entrances/Makefile
-           src/editor/Makefile
-	   src/editorobjs/Makefile
-           src/caimagemanipulation/Makefile
            src/worldobjs/Makefile
+           src/worldobjs/entrances/Makefile
 	   src/worldobjsdata/Makefile
 	   src/worldmap/Makefile
            data/Makefile 
