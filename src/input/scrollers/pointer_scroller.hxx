@@ -1,4 +1,4 @@
-//  $Id: pointer_scroller.hxx,v 1.1 2002/08/24 11:37:31 torangan Exp $
+//  $Id: pointer_scroller.hxx,v 1.2 2002/08/26 13:53:04 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,17 +20,12 @@
 #ifndef HEADER_PINGUS_INPUT_POINTER_SCROLLER_HXX
 #define HEADER_PINGUS_INPUT_POINTER_SCROLLER_HXX
 
-#include "scroller.hxx"
+#include "../scroller.hxx"
 
 namespace Input {
 
-  namespace Buttons {
-    class Button;
-  }
-  
-  namespace Pointers {
-    class Pointer;
-  }
+  class Button;
+  class Pointer;
 
   namespace Scrollers {
 
@@ -45,8 +40,8 @@ namespace Input {
       */
     class PointerScroller : public Scroller {
       private:
-        Pointers::Pointer* const pointer;
-        Buttons::Button*   const modifier;
+        Pointer* const pointer;
+        Button*  const modifier;
       
         float x_delta;
         float y_delta;
@@ -55,7 +50,7 @@ namespace Input {
       
       public:
       
-        PointerScroller (Pointers::Pointer* pointer_, Buttons::Button* modifier_);
+        PointerScroller (Pointer* pointer_, Button* modifier_);
        ~PointerScroller ();
       
         const float& get_x_delta () const;

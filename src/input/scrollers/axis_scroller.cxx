@@ -1,4 +1,4 @@
-//  $Id: axis_scroller.cxx,v 1.1 2002/08/24 11:37:31 torangan Exp $
+//  $Id: axis_scroller.cxx,v 1.2 2002/08/26 13:53:04 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,12 +19,10 @@
 
 #include <math.h>
 #include <assert.h>
-#include "../axes/axis.hxx"
+#include "../axis.hxx"
 #include "axis_scroller.hxx"
 
 namespace Input {
-
-  using Axes::Axis;
 
   namespace Scrollers {
 

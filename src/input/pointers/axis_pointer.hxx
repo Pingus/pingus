@@ -1,4 +1,4 @@
-//  $Id: axis_pointer.hxx,v 1.1 2002/08/24 11:37:31 torangan Exp $
+//  $Id: axis_pointer.hxx,v 1.2 2002/08/26 13:53:04 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,14 +21,12 @@
 #define HEADER_PINGUS_INPUT_AXIS_POINTER_HXX
 
 #include <vector>
-#include "pointer.hxx"
+#include "../pointer.hxx"
 
 
 namespace Input {
 
-  namespace Axes {
-    class Axis;
-  }
+  class Axis;
 
   namespace Pointers {
   
@@ -46,14 +44,14 @@ namespace Input {
       private:
 
         const float        speed;
-        std::vector<Axes::Axis*> axes;
+        std::vector<Axis*> axes;
            
         float              x_pos;
         float              y_pos;
       
       public:
 
-        AxisPointer (float speed, const std::vector<Axes::Axis*>& axes_);
+        AxisPointer (float speed, const std::vector<Axis*>& axes_);
        ~AxisPointer ();
 
         virtual const float& get_x_pos () const;

@@ -21,7 +21,6 @@ libpingus_input_pointers_a_SOURCES =       \
         axis_pointer.hxx axis_pointer.cxx \
 	dummy_pointer.hxx \
         mouse_pointer.hxx mouse_pointer.cxx \
-	multiple_pointer.hxx multiple_pointer.cxx \
-        pointer.hxx
+	multiple_pointer.hxx multiple_pointer.cxx
 
 # EOF #

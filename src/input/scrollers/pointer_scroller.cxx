@@ -1,4 +1,4 @@
-//  $Id: pointer_scroller.cxx,v 1.1 2002/08/24 11:37:31 torangan Exp $
+//  $Id: pointer_scroller.cxx,v 1.2 2002/08/26 13:53:04 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,14 +17,11 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "../buttons/button.hxx"
-#include "../pointers/pointer.hxx"
+#include "../button.hxx"
+#include "../pointer.hxx"
 #include "pointer_scroller.hxx"
 
 namespace Input {
-
-  using Buttons::Button;
-  using Pointers::Pointer;
 
   namespace Scrollers {
 

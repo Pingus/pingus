@@ -18,7 +18,6 @@
 noinst_LIBRARIES = libpingus_input_axes.a
 
 libpingus_input_axes_a_SOURCES =       \
-        axis.hxx \
         button_axis.hxx button_axis.cxx \
 	dummy_axis.hxx \
 	inverted_axis.hxx inverted_axis.cxx \

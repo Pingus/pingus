@@ -1,4 +1,4 @@
-//  $Id: joystick_scroller.hxx,v 1.1 2002/08/24 11:37:31 torangan Exp $
+//  $Id: joystick_scroller.hxx,v 1.2 2002/08/26 13:53:04 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,13 +20,11 @@
 #ifndef HEADER_PINGUS_INPUT_JOYSTICK_SCROLLER_HXX
 #define HEADER_PINGUS_INPUT_JOYSTICK_SCROLLER_HXX
 
-#include "scroller.hxx"
+#include "../scroller.hxx"
 
 namespace Input {
 
-  namespace Axes {
-    class Axis;
-  }
+  class Axis;
 
   namespace Scrollers {
 
@@ -39,8 +37,8 @@ namespace Input {
       private:
         int id;
       
-        Axes::Axis* const axis1;
-        Axes::Axis* const axis2;
+        Axis* const axis1;
+        Axis* const axis2;
       
         const float speed;
       

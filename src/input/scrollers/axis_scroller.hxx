@@ -1,4 +1,4 @@
-//  $Id: axis_scroller.hxx,v 1.1 2002/08/24 11:37:31 torangan Exp $
+//  $Id: axis_scroller.hxx,v 1.2 2002/08/26 13:53:04 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,13 +21,11 @@
 #define HEADER_PINGUS_INPUT_AXIS_SCROLLER_HXX
 
 #include <vector>
-#include "scroller.hxx"
+#include "../scroller.hxx"
 
 namespace Input {
 
-  namespace Axes {
-    class Axis;
-  }
+  class Axis;
 
   namespace Scrollers {
 
@@ -41,14 +39,14 @@ namespace Input {
       */
     class AxisScroller : public Scroller {
       private:
-        const std::vector<Axes::Axis*> axes;
+        const std::vector<Axis*> axes;
       
         const float speed;
               float x_delta;
               float y_delta;
       
       public:
-        AxisScroller (const std::vector<Axes::Axis*>& axes_, float speed_);
+        AxisScroller (const std::vector<Axis*>& axes_, float speed_);
        ~AxisScroller ();
       
         const float& get_x_delta () const;

@@ -1,4 +1,4 @@
-//  $Id: pointer_factory.cxx,v 1.6 2002/08/24 11:37:30 torangan Exp $
+//  $Id: pointer_factory.cxx,v 1.7 2002/08/26 13:53:04 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,13 +24,11 @@
 #include "pointers/axis_pointer.hxx"
 #include "pointers/mouse_pointer.hxx"
 #include "pointers/multiple_pointer.hxx"
-#include "pointers/pointer.hxx"
 #include "pointer_factory.hxx"
 
 namespace Input {
 
   using namespace Pointers;
-  using Axes::Axis;
   
   Pointer* PointerFactory::create (xmlNodePtr cur)
   {

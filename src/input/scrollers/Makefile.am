@@ -24,7 +24,6 @@ libpingus_input_scrollers_a_SOURCES =       \
 	joystick_scroller.hxx joystick_scroller.cxx \
 	mouse_scroller.hxx mouse_scroller.cxx \
 	multiple_scroller.hxx multiple_scroller.cxx \
-	pointer_scroller.hxx pointer_scroller.cxx \
-	scroller.hxx
+	pointer_scroller.hxx pointer_scroller.cxx
 
 # EOF #

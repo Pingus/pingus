@@ -1,4 +1,4 @@
-//  $Id: scroller.hxx,v 1.1 2002/08/24 11:37:31 torangan Exp $
+//  $Id: axis.hxx,v 1.8 2002/08/26 13:53:04 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,38 +17,33 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef HEADER_PINGUS_INPUT_SCROLLER_HXX
-#define HEADER_PINGUS_INPUT_SCROLLER_HXX
+#ifndef HEADER_PINGUS_INPUT_AXIS_HXX
+#define HEADER_PINGUS_INPUT_AXIS_HXX
 
-#include "../../pingus.hxx"
+#include "../pingus.hxx"
 
 namespace Input {
 
-  namespace Scrollers {
+  /// abstract base class which defines the axis interface
+  class Axis {
 
-    /// abstract base class defining the scroller interface
-    class Scroller {
-      public:
-        Scroller () { }
-        virtual ~Scroller () { }
-      
-        /// returns the scroll delta in X direction
-        virtual const float& get_x_delta () const =0;
-      
-        /// returns the scroll delta in Y direction
-        virtual const float& get_y_delta () const =0;
-      
-        /// writes the X/Y scroll delta into it's parameters
-        virtual void  get_delta (float&, float&) const =0;
-      
-        virtual void  update (float) =0;
-      
-      private:
-        Scroller (const Scroller&);
-        Scroller operator= (const Scroller&);
-    };
+    public:
+      Axis () { }
+      virtual ~Axis () { }
+  
+      /// yields the position of the axis in [-1;1]
+      virtual const float& get_pos () const =0;
     
-  }
+      /// yields the angle of axis in [0;360[ degree
+      virtual const float& get_angle () const =0;
+    
+      virtual void  update(float) =0;
+    
+    private:
+      Axis (const Axis&);
+      Axis operator= (const Axis&);
+  };
+    
 }
 
 #endif

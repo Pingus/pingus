@@ -1,4 +1,4 @@
-//  $Id: multiple_button.hxx,v 1.1 2002/08/24 11:37:31 torangan Exp $
+//  $Id: multiple_button.hxx,v 1.2 2002/08/26 13:53:04 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,7 @@
 #define HEADER_PINGUS_INPUT_MULTIPLE_BUTTON_HXX
 
 #include <vector>
-#include "button.hxx"
+#include "../button.hxx"
 
 namespace Input {
 

@@ -18,7 +18,6 @@
 noinst_LIBRARIES = libpingus_input_buttons.a
 
 libpingus_input_buttons_a_SOURCES =       \
-	button.hxx  \
 	double_button.hxx double_button.cxx \
 	dummy_button.hxx \
         joystick_button.hxx joystick_button.cxx \

@@ -1,4 +1,4 @@
-//  $Id: button_axis.cxx,v 1.1 2002/08/24 11:37:30 torangan Exp $
+//  $Id: button_axis.cxx,v 1.2 2002/08/26 13:53:04 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,11 +18,9 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "button_axis.hxx"
-#include "../buttons/button.hxx"
+#include "../button.hxx"
 
 namespace Input {
-
-  using Buttons::Button;
 
   namespace Axes {
 

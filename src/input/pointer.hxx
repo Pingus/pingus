@@ -1,4 +1,4 @@
-//  $Id: axis.hxx,v 1.1 2002/08/24 11:37:30 torangan Exp $
+//  $Id: pointer.hxx,v 1.9 2002/08/26 13:53:04 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,36 +17,36 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef HEADER_PINGUS_INPUT_AXIS_HXX
-#define HEADER_PINGUS_INPUT_AXIS_HXX
+#ifndef HEADER_PINGUS_INPUT_POINTER_HXX
+#define HEADER_PINGUS_INPUT_POINTER_HXX
 
-#include "../../pingus.hxx"
+#include "../pingus.hxx"
 
 namespace Input {
 
-  namespace Axes {
-
-    /// abstract base class which defines the axis interface
-    class Axis {
+  /// abstract base class defining the pointer interface
+  class Pointer
+  {
+  public:
+    Pointer () { }
+    virtual ~Pointer() { }  
   
-      public:
-        Axis () { }
-        virtual ~Axis () { }
-    
-        /// yields the position of the axis in [-1;1]
-        virtual const float& get_pos () const =0;
-      
-        /// yields the angle of axis in [0;360[ degree
-        virtual const float& get_angle () const =0;
-      
-        virtual void  update(float) =0;
-      
-      private:
-        Axis (const Axis&);
-        Axis operator= (const Axis&);
-    };
-    
-  }
+    /// returns the X coordinate of the pointer
+    virtual const float& get_x_pos () const =0;
+  
+    /// returns the Y coordinate of the pointer
+    virtual const float& get_y_pos () const =0;
+
+    /// sets the pointer to the given position    
+    virtual void  set_pos (float, float) =0;
+  
+    virtual void  update (float) =0;
+  
+   private:
+     Pointer (const Pointer&);
+     Pointer operator= (const Pointer&);
+  };
+
 }
 
 #endif

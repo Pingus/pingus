@@ -1,4 +1,4 @@
-//  $Id: button_axis.hxx,v 1.1 2002/08/24 11:37:30 torangan Exp $
+//  $Id: button_axis.hxx,v 1.2 2002/08/26 13:53:04 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,13 +20,11 @@
 #ifndef HEADER_PINGUS_INPUT_BUTTON_AXIS_HXX
 #define HEADER_PINGUS_INPUT_BUTTON_AXIS_HXX
 
-#include "axis.hxx"
+#include "../axis.hxx"
 
 namespace Input {
 
-  namespace Buttons {
-    class Button;
-  }
+  class Button;
 
   namespace Axes {
   
@@ -41,12 +39,12 @@ namespace Input {
       float   pos;
       float   angle;
     
-      Buttons::Button* const button1;
-      Buttons::Button* const button2;
+      Button* const button1;
+      Button* const button2;
     
     public:
   
-      ButtonAxis (float angle_, Buttons::Button* button1_, Buttons::Button* button2_);
+      ButtonAxis (float angle_, Button* button1_, Button* button2_);
      ~ButtonAxis ();
   
       virtual const float& get_pos () const;

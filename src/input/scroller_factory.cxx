@@ -1,4 +1,4 @@
-//  $Id: scroller_factory.cxx,v 1.7 2002/08/24 11:37:30 torangan Exp $
+//  $Id: scroller_factory.cxx,v 1.8 2002/08/26 13:53:04 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,13 +20,13 @@
 #include <stdlib.h>
 #include "../xml_helper.hxx"
 #include "../pingus_error.hxx"
+#include "axis.hxx"
 #include "axis_factory.hxx"
+#include "button.hxx"
 #include "button_factory.hxx"
+#include "pointer.hxx"
 #include "pointer_factory.hxx"
 #include "scroller_factory.hxx"
-#include "axes/axis.hxx"
-#include "buttons/button.hxx"
-#include "pointers/pointer.hxx"
 #include "scrollers/axis_scroller.hxx"
 #include "scrollers/inverted_scroller.hxx"
 #include "scrollers/joystick_scroller.hxx"
@@ -38,9 +38,6 @@
 namespace Input {
 
   using namespace Scrollers;
-  using Axes::Axis;
-  using Buttons::Button;
-  using Pointers::Pointer;
 
   Scroller*
   ScrollerFactory::create(xmlNodePtr cur)
