@@ -1,4 +1,4 @@
-//  $Id: surface_background_data.cxx,v 1.4 2002/09/28 11:52:27 torangan Exp $
+//  $Id: surface_background_data.cxx,v 1.5 2002/10/12 00:22:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,28 +25,29 @@
 
 namespace WorldObjsData {
 
-SurfaceBackgroundData::SurfaceBackgroundData () : para_x(0.5),
-						  para_y(0.5),
-						  pos(Vector(0, 0, -150)),
-						  scroll_x(0.0),
-                                                  scroll_y(0.0),
-						  color(Color(0,0,0,0)),
-						  stretch_x(false),
-						  stretch_y(false)
+SurfaceBackgroundData::SurfaceBackgroundData ()
+  : para_x(0.5),
+    para_y(0.5),
+    pos(Vector(0, 0, -150)),
+    scroll_x(0.0),
+    scroll_y(0.0),
+    color(Color(0,0,0,0)),
+    stretch_x(false),
+    stretch_y(false)
 {
 }
 
 SurfaceBackgroundData::SurfaceBackgroundData (const SurfaceBackgroundData& old) 
-                                             : WorldObjData(old),
-					       desc(old.desc),
-                                               para_x(old.para_x),
-					       para_y(old.para_y),
-					       pos(old.pos),
-					       scroll_x(old.scroll_x),
-					       scroll_y(old.scroll_y),
-					       color(old.color),
-					       stretch_x(old.stretch_x),
-					       stretch_y(old.stretch_y)
+  : WorldObjData(old),
+    desc(old.desc),
+    para_x(old.para_x),
+    para_y(old.para_y),
+    pos(old.pos),
+    scroll_x(old.scroll_x),
+    scroll_y(old.scroll_y),
+    color(old.color),
+    stretch_x(old.stretch_x),
+    stretch_y(old.stretch_y)
 {
 }
 
@@ -112,11 +113,11 @@ SurfaceBackgroundData::SurfaceBackgroundData (xmlDocPtr doc, xmlNodePtr cur)
 	}
       else if (XMLhelper::equal_str(cur->name, "stretch-x"))
 	{
-	  stretch_x = XMLhelper::parse_float(doc, cur);
+	  stretch_x = XMLhelper::parse_bool(doc, cur);
 	}
       else if (XMLhelper::equal_str(cur->name, "stretch-y"))
 	{
-	  stretch_y = XMLhelper::parse_float(doc, cur);
+	  stretch_y = XMLhelper::parse_bool(doc, cur);
 	}
       else if (XMLhelper::equal_str(cur->name, "position"))
 	{
