@@ -1,14 +1,12 @@
 /* This level was created with the PLE
- * $Id: real1.plf,v 1.3 2000/07/10 12:42:27 grumbel Exp $
+ * $Id: real1.plf,v 1.4 2000/07/10 14:46:43 grumbel Exp $
  */
 global {
   author = "";
   start_x_pos = 450;
   start_y_pos = 480;
-  levelname = "PLE Level";
-  description = "This level has no name
-
-";
+  levelname = "Blocked Exit";
+  description = "The exit is surrounded by iron plates, how can they reach it?";
   number_of_pingus = 50;
   number_to_save = 10;
   time = 9000;
