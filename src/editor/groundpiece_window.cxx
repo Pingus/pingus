@@ -1,4 +1,4 @@
-//  $Id: groundpiece_window.cxx,v 1.4 2002/06/30 22:32:26 grumbel Exp $
+//  $Id: groundpiece_window.cxx,v 1.5 2002/07/01 09:09:31 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,9 +22,9 @@
 /************************
  Groundpiece Properties
  ------------------------
- [convert to hotspot]
-
  Type: [ground|bridger|transparent|...]
+
+ [convert to hotspot]
  ------------------------
  [ok] [cancel]
 *************************/
@@ -32,17 +32,17 @@
 using namespace Pingus::Editor;
 
 GroundpieceWindow::GroundpieceWindow (CL_Component* parent,  EditorGroundpieceObj* arg_data)
-  : PropertyFrame (200, 180, parent),
+  : PropertyFrame (200, 120, parent),
     data (arg_data),
-    convert_to_hotspot_button (CL_Rect (10, 30, 190, 30 + 20), "Convert to HotSpot", this),
+    convert_to_hotspot_button (CL_Rect (10, 90, 190, 90 + 20), "Convert to HotSpot", this),
 
-    groundtype_label (CL_Rect (10, 60, 90, 60 + 20), "Groundtype", this),
+    groundtype_label (CL_Rect (10, 10, 90, 10 + 20), "Groundtype", this),
     //groundtype_listbox (CL_Rect (110, 60, 190, 60 + 60), this),
 
-    ground_radiobutton (CL_Point (110, 60), "ground", this),
-    transparent_radiobutton (CL_Point (110, 80), "transparent", this),
-    solid_radiobutton (CL_Point (110, 100), "solid", this),
-    bridge_radiobutton (CL_Point (110, 120), "bridge", this)
+    ground_radiobutton (CL_Point (110, 10), "ground", this),
+    transparent_radiobutton (CL_Point (110, 30), "transparent", this),
+    solid_radiobutton (CL_Point (110, 50), "solid", this),
+    bridge_radiobutton (CL_Point (110, 70), "bridge", this)
 {
   groundtype_group.add (&ground_radiobutton);
   groundtype_group.add (&transparent_radiobutton);

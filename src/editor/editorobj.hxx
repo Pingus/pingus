@@ -1,4 +1,4 @@
-//  $Id: editorobj.hxx,v 1.6 2002/06/30 22:03:13 grumbel Exp $
+//  $Id: editorobj.hxx,v 1.7 2002/07/01 09:09:31 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,6 +30,14 @@ class CL_Vector;
 class EditorView;
 class CL_Component;
 class Editor;
+
+namespace Pingus
+{
+  namespace Editor
+  {
+    class PropertyFrame;
+  }
+}
 
 namespace boost {
   template <class T> class shared_ptr;
@@ -114,7 +122,7 @@ public:
       responsible for deleting the object after usage. The
       CL_Component* should/must be a CL_Frame so that it can get
       embedded in the properties window */
-  virtual CL_Component* get_gui_dialog (CL_Component* parent);
+  virtual Pingus::Editor::PropertyFrame* get_gui_dialog (CL_Component* parent);
 };
 
 #endif

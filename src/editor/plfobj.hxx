@@ -1,4 +1,4 @@
-//  $Id: plfobj.hxx,v 1.3 2002/06/25 12:20:33 grumbel Exp $
+//  $Id: plfobj.hxx,v 1.4 2002/07/01 09:09:31 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -40,6 +40,7 @@ public:
   boost::shared_ptr<EditorObj> duplicate();
   void write_xml(std::ostream& xml) { EntranceData::write_xml (xml); }
   std::string status_line();
+  Pingus::Editor::PropertyFrame* get_gui_dialog (CL_Component* parent);
 };
 
 ///

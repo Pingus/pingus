@@ -1,4 +1,4 @@
-//  $Id: groundpiece_window.hxx,v 1.4 2002/06/30 22:32:26 grumbel Exp $
+//  $Id: groundpiece_window.hxx,v 1.5 2002/07/01 09:09:31 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -53,6 +53,8 @@ namespace Pingus
 
       void read_data ();
       void write_data ();
+
+      std::string get_title () { return "Groundpiece Properties"; }
     };
   }
 }

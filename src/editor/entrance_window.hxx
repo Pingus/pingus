@@ -1,4 +1,4 @@
-//  $Id: entrance_window.hxx,v 1.2 2002/06/30 22:03:13 grumbel Exp $
+//  $Id: entrance_window.hxx,v 1.3 2002/07/01 09:09:31 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,15 +20,35 @@
 #ifndef HEADER_PINGUS_EDITOR_ENTRANCE_WINDOW_HXX
 #define HEADER_PINGUS_EDITOR_ENTRANCE_WINDOW_HXX
 
-namespace Editor
+#include "property_frame.hxx"
+
+class EntranceObj;
+
+namespace Pingus
 {
-  class EntranceWindow : public CL_Window
+  namespace Editor
   {
-  private:
-    
-  public:
-    EntranceWindow ();
-  };
+    class EntranceWindow : public PropertyFrame
+    {
+    private:
+      EntranceObj* entrance;
+
+      CL_Label       direction_label;
+      CL_RadioGroup  direction_group;
+      CL_RadioButton direction_left;
+      CL_RadioButton direction_misc;
+      CL_RadioButton direction_right;
+
+      CL_Label       release_rate_label;
+      CL_InputBox    release_rate_input;
+
+    public:
+      EntranceWindow (CL_Component* parent, EntranceObj* );
+      ~EntranceWindow ();
+
+      std::string get_title () { return "Entrance Properties"; }
+    };
+  }
 }
 
 #endif

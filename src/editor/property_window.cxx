@@ -1,4 +1,4 @@
-//  $Id: property_window.cxx,v 1.2 2002/06/30 22:32:26 grumbel Exp $
+//  $Id: property_window.cxx,v 1.3 2002/07/01 09:09:31 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,7 @@
 
 #include "../boost/smart_ptr.hpp"
 #include "editorobj.hxx"
+#include "property_frame.hxx"
 #include "property_window.hxx"
 
 using namespace Pingus::Editor;
@@ -44,10 +45,11 @@ PropertyWindow::update_frame (boost::shared_ptr<EditorObj> obj)
   if (obj.get ())
     {
       // We are responsible to delete comp
-      CL_Component* comp = obj->get_gui_dialog (this);
+      Pingus::Editor::PropertyFrame* comp = obj->get_gui_dialog (this);
    
       if (comp)
 	{
+	  set_title(comp->get_title ());
 	  label.show (false);
 	  // FIXME: This looks like a workaround for a missing feature in
 	  // FIXME: CL_Window

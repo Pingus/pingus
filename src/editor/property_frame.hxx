@@ -1,4 +1,4 @@
-//  $Id: property_frame.hxx,v 1.1 2002/06/30 22:32:26 grumbel Exp $
+//  $Id: property_frame.hxx,v 1.2 2002/07/01 09:09:31 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,6 +32,8 @@ namespace Pingus
 
     public:
       PropertyFrame (int width, int height, CL_Component*);
+
+      virtual std::string get_title () =0;
     };
   }
 }

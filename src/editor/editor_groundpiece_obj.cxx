@@ -1,4 +1,4 @@
-//  $Id: editor_groundpiece_obj.cxx,v 1.6 2002/06/29 11:54:22 grumbel Exp $
+//  $Id: editor_groundpiece_obj.cxx,v 1.7 2002/07/01 09:09:31 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -97,7 +97,7 @@ EditorGroundpieceObj::rotate_270 ()
   pos.y -= sprite.get_height ()/2;
 }
 
-CL_Component*
+Pingus::Editor::PropertyFrame*
 EditorGroundpieceObj::get_gui_dialog(CL_Component* parent)
 {
   return new Pingus::Editor::GroundpieceWindow (parent, this);

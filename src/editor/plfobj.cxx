@@ -1,4 +1,4 @@
-//  $Id: plfobj.cxx,v 1.3 2002/06/20 11:13:02 grumbel Exp $
+//  $Id: plfobj.cxx,v 1.4 2002/07/01 09:09:31 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,7 @@
 #include "../boost/smart_ptr.hpp"
 #include "editor_view.hxx"
 #include "plfobj.hxx"
+#include "entrance_window.hxx"
 
 using namespace std;
 
@@ -87,6 +88,14 @@ EntranceObj::status_line()
 	  type.c_str(), release_rate, dir_str.c_str(), owner_id);
 
   return std::string(str);
+}
+
+Pingus::Editor::PropertyFrame*
+EntranceObj::get_gui_dialog (CL_Component* parent)
+{
+  // FIXME: due to the shared_ptr<> this is not guaranted to stay here
+  // FIXME: long enough
+  return new Pingus::Editor::EntranceWindow (parent, this);
 }
 
 ExitObj::ExitObj(const ExitData& data)
