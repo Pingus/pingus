@@ -1,4 +1,4 @@
-//  $Id: TimeDisplay.cc,v 1.8 2002/01/15 10:48:49 grumbel Exp $
+//  $Id: TimeDisplay.cc,v 1.9 2002/01/15 11:10:17 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -45,7 +45,7 @@ TimeDisplay::draw()
     {  
       if (!(pingus_debug_flags & PINGUS_DEBUG_GAMETIME))
 	{
-	  int millisecs = (((time_value * 100)) / game_speed) % 100;
+	  //int millisecs = (((time_value * 100)) / game_speed) % 100;
 	  int seconds   = (time_value / game_speed % 60);
 	  int minutes   = (time_value / (60 * game_speed));
 	  char* p;
