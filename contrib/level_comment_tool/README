@@ -1,0 +1,38 @@
+Pingus Level Feedback System
+
+Installing:
+
+  1) Make sure you have installed
+     Apache and PHP 4.2+
+
+  2) Uncompress the tar into a directory where Apache
+     can see it.
+
+  3) Create directory 'comments' where the script will
+     write the xml comment files and MAKE IT WRITABLE
+     for Apache.
+
+  4) Create directory 'data' and copy Pingus source directories
+     'levels' into it.
+
+  5) Tweak your .htaccess - you might want to deny from all
+     comments/* and add "AddType application/pingus-level plf"
+
+Copyright
+
+Pingus Level Feedback System is (c) 2003 by Jarno Elonen
+
+  This program is free software; you can redistribute it and/or
+  modify it under the terms of the GNU General Public License
+  as published by the Free Software Foundation; either version 2
+  of the License, or (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program; if not, write to the Free Software
+  Foundation, Inc., 59 Temple Place - Suite 330, Boston,
+  MA  02111-1307, USA.

@@ -1,0 +1,187 @@
+/* */
+
+h1,h2,h3,h4
+{
+  font-family: Sans-Serif;
+  margin-top: 0px;
+}
+
+h1
+{
+        background: #607f9b;
+        color: white;
+        border-style: solid;
+        border-color: black;
+	padding-left: 1em;
+        margin-top: 0px;
+        margin-bottom: .5em;
+}
+
+div.menu
+{
+        width: 205px;
+        margin-top: 10px;
+}
+
+div.menu a
+{
+	text-decoration: none;
+}
+
+a.menuitem:hover
+{
+        color: black;
+        background-color: #E0FfFF;
+}
+
+a.menuitem:visited
+{
+        color: black;
+}
+
+a.currentmenuitem:hover
+{
+        color:black;
+}
+
+
+a.currentmenuitem:visited
+{
+        color:black;
+}
+
+
+a.currentmenuitem
+{
+	font-size: 18px;
+	font-family: Sans-Serif;
+	text-align: center;
+        border-color: black;
+        border-style: solid;
+        border-width: thin;
+        background-color: #FFFFFF;
+        background-repeat: repeat-y;
+        color: black;        
+        padding: 5px 0px 5px 0px;
+        display: block;
+        margin: 10px 15px 10px 15px;
+}
+
+a.menuitem
+{
+	font-size: 18px;
+	font-family: Sans-Serif;
+	text-align: center;
+
+        border-color: black;
+        border-style: solid;
+        border-width: thin;
+        background-color: #607f9b;
+/*	background-image: url(images/menubackground.png);*/
+        background-repeat: repeat-y;
+        color: black;        
+        padding: 5px 0px 5px 0px;
+        display: block;
+        margin: 10px 15px 10px 15px;
+}
+
+div.mainbody
+{
+        background-color: silver;
+        color: black;
+        border-color: black;
+        border-style: solid;
+        padding: 1em;
+}
+
+p.warning {
+        font-size: 1.5em;
+        color: red;
+        background-color: black;
+	font-family: Sans-Serif;
+        border-style: solid;
+        border-color: red;
+        padding: .3em;
+}
+
+p.warning a {
+        color: red;
+}
+
+p.message {
+	background: gray;
+	border-style: dotted;
+	border-color: black;
+	border-width: 1px;
+	color: white;
+	padding-left: 1em;
+}
+
+table.question {
+	font-family: Sans-Serif;
+        background: #607f9b;
+        border-style: solid;
+        border-width: thin;
+        border-color: black;
+        color: white;
+        padding-left: 1em;
+}
+
+P.answer {
+        color: black;
+}
+
+TT.irc {
+        color: rgb(0,0,150);
+}
+
+TT.command {
+        color: rgb(200, 0, 0);
+}
+
+img
+{
+        border-style: none;
+}
+
+img.screenshot {
+        border-style: solid;
+        border-width: medium;
+}
+
+a img.screenshot {
+        border-color: red;
+}
+
+a:visited img.screenshot {
+        border-color: gray;
+}
+
+
+a:hover img.screenshot {
+        border-color: white;
+}
+
+
+a:visited {
+        color: rgb(0,0,100);
+}
+
+a:hover {
+        color: white;
+}
+
+a {
+        color: rgb(50,50,200);
+}
+
+
+body
+{
+	background-position: left top;
+	background-image: url(images/snow_background.jpg);
+	background-repeat: repeat-x;
+	background-color: #707f9b;
+        color: black;
+ /* desert #cdb09e; */
+}

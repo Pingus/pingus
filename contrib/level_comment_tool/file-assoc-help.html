@@ -1,0 +1,71 @@
+<html>
+  <head>
+    <title>Configuring browsers to test Pingus levels</title>
+  </head>
+  <body bgcolor="#ffffcc">
+    <p><big><strong>Configuring browsers to test Pingus levels</strong></big></p>
+
+    <p>When you click on the <em>play</em>-link, the Pingus level comment
+    system tells your web browser that the file it is about to download is
+    of MIME type <code>application/pingus-level</code>. To make it convenient
+    to test the levels, you should configure your browser to launch Pingus
+    automatically. Here's how:</p>
+
+    <p><strong><em>Mozilla / Netscape:</strong></em></p>
+
+    <ol>
+      <li>Click on a 'play' link</li>
+      <li>Pick "Open it with" and browse for Pingus executable</li>
+      <li>(OPTIONAL) Pingus levels don't contain any potentially dangerous
+      executable scripts so you might want to make sure "always show this
+      dialog before handling files of this type" is *not* checked</li>
+      <li>Click OK</li>
+    </ol>
+
+    <p>ALTERNATIVELY: choose from the menu Edit / Preferences /
+    Navigator / Helper Applications / New Type, add...</p>
+    <ul>
+      <li>MIME type "application/pingus-level"</li>
+      <li>Extension "plf" and</li>
+      <li>Open it with "&lt;path and name of pingus executable&gt;".</li>
+    </ul>
+    <p>...and click OK.</p>
+
+    <p><strong><em>Konqueror:</strong></em></p>
+
+    <ol>
+      <li>Open Settings / Configure Konqueror / File Associations</li>
+      <li>Click 'Add'</li>
+      <li>Select 'application' as Group and type "pingus-level" as Type name.</li>
+      <li>Click OK</li>
+      <li>Click Filename Patterns / Add</li>
+      <li>Type "*.plf" and click OK</li>
+      <li>Click Application Preference Order / Add</li>
+      <li>Browse for or type the path to Pingus executable</li>
+      <li>Click OK</li>
+      <li>(OPTIONAL) Write a "Pingus level" (or anything) as Description and choose a nice icon</li>
+      <li>Click Apply or OK</li>
+    </ol>
+
+    <p>You can now also click level files on local disk to try them out.</p>
+
+    <p><strong><em>Internet Explorer:</strong></em></p>
+
+    <p>(Written on a non-english XP workstation; your mileage may vary)</p>
+
+    <ol>
+      <li>Click on a 'play' link</li>
+      <li>Don't save the file, but rather Open/View it with an application</li>
+      <li>Opt to pick an application manually</li>
+      <li>(OPTIONAL) Pingus levels don't contain any potentially dangerous executable
+      scripts so you might want to clear the "warn before opening" checkbox</li>
+      <li>Click OK</li>
+      <li>Find Pingus with "browse" if it's not already listed</li>
+      <li>Make sure "always open this type of files in selected
+      application" (or something similar) is checked</li>
+      <li>Click OK</li>
+    </ol>
+
+
+  </body>
+</html>
