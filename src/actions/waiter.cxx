@@ -1,4 +1,4 @@
-//  $Id: waiter.cxx,v 1.15 2003/08/15 17:33:17 torangan Exp $
+//  $Id: waiter.cxx,v 1.16 2003/08/15 17:37:36 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,7 +28,7 @@ namespace Actions {
 Waiter::Waiter (Pingu* p)
   : PinguAction(p),
     countdown(2.0f),
-    sprite(PingusResource::load_surface("Pingus/waiter", "pingus"))
+    sprite(PingusResource::load_surface("Pingus/waiter", "pingus"), 5.0f)
 {
   sprite.set_align_center_bottom();
 }
