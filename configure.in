@@ -1,4 +1,4 @@
-#  $Id: configure.in,v 1.1 2000/02/04 23:45:09 mbn Exp $
+#  $Id: configure.in,v 1.2 2000/02/09 22:13:18 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,12 +28,12 @@ PACKAGE=pingus
 # The Pingus Version
 MAJOR_VERSION=0
 MINOR_VERSION=3
-PATCH_VERSION=1
+PATCH_VERSION=1pre2
 
 # The required ClanLib version
 CLANLIB_MAJOR_VERSION=0
-CLANLIB_MINOR_VERSION=1
-CLANLIB_PATCH_VERSION=18
+CLANLIB_MINOR_VERSION=3
+CLANLIB_PATCH_VERSION=1
 
 VERSION=${MAJOR_VERSION}.${MINOR_VERSION}.${PATCH_VERSION}
 
@@ -81,6 +81,12 @@ dnl FIXME this is a hack:
 LIBS="$LIBS -lHermes"
 
 AC_CHECK_HEADER(ClanLib/core.h,, [echo "Please get ClanLib from http://www.clanlib.org"; exit])
+
+AC_CHECK_LIB( clanMagick,   main,, [
+	echo " ---------"
+	exit
+	], -lclanCore)
+
 AC_CHECK_LIB( clanCore,   main,, [
 	echo "ClanLib installed, but -lclanCore not found, run 'ldconfig' and try again,"
 	echo "if that doesn't help have a look at the file config.log and look into"
@@ -88,10 +94,11 @@ AC_CHECK_LIB( clanCore,   main,, [
 	exit
 	], -lclanCore)
 
+
 dnl AC_CHECK_LIB( clanlayer2,   main,, [echo "Only half of ClanLib detected, something is really wrong. Try to reinstall ClanLib."; exit])
 
 dnl Checking if ClanLib is new enough
-echo -n "checking for working ClanLib >= $CLANLIB_MAJOR_VERSION.$CLANLIB_MINOR_VERSION.$CLANLIB_PATCH_VERSION... "
+# echo -n "checking for working ClanLib >= $CLANLIB_MAJOR_VERSION.$CLANLIB_MINOR_VERSION.$CLANLIB_PATCH_VERSION... "
 # # AC_TRY_RUN([
 # #include <ClanLib/clanlib.h>
 # main(){

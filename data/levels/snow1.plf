@@ -18,7 +18,7 @@ ground {
 }
 
 background {
-  image = (resource)"Textures/icetile";
+  image = (resource:textures.dat)"Textures/icetile";
   dim = "0.5";
   scroll_x = 0;
   scroll_y = 0;

@@ -19,7 +19,7 @@ ground {
 }
 
 background {
-  image = (resource)"Textures/rocktile";
+  image = (resource:textures.dat)"Textures/rocktile";
   dim = "0.3";
   red = "0.6";
   scroll_x = 0;

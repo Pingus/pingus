@@ -24,7 +24,7 @@ background {
  * file "global.dat" is used. (file)"bla.pcx" would refer to the file
  * "bla.pcx", somewhere in the search path of pingus.
  */
-	image = (resource) "Textures/crystal";
+	image = (resource:textures.dat) "Textures/crystal";
 	scroll_x = "-1.0";
 	scroll_y = "0.0";
 	dim = "0.1";

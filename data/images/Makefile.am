@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.1 2000/02/04 23:45:09 mbn Exp $
+#  $Id: Makefile.am,v 1.2 2000/02/09 22:13:20 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,9 +19,12 @@
 
 EXITS = \
         exits/stone.pcx \
-        exits/ice.pcx
+        exits/ice.pcx   \
+        exits/desertexit.pcx \
+        exits/space1.tga
 
 EDITOR = \
+        editor/logo.tga           \
         editor/button.pcx          \
         editor/button_pressed.pcx   \
         editor/tb_clock_run.pcx    \
@@ -48,6 +51,11 @@ TRAPS = \
 	traps/teleporter.tga 
 
 HOTSPOTS = \
+        hotspots/left_arrow.pcx     \
+        hotspots/right_arrow.pcx    \
+        hotspots/up_arrow.pcx       \
+        hotspots/down_arrow.pcx     \
+        hotspots/danger.pcx         \
         hotspots/bridge.pcx       \
         hotspots/colum.pcx        \
         hotspots/colum_flat.pcx   \
@@ -70,7 +78,12 @@ HOTSPOTS = \
         hotspots/stone1.pcx       \
         hotspots/stone2.pcx       \
         hotspots/well.pcx         \
-        hotspots/crystal.tga
+        hotspots/crystal.tga      \
+        \
+        hotspots/tutorial_digger.pcx \
+        hotspots/tutorial_bridger.pcx \
+        hotspots/tutorial_left.pcx   \
+        hotspots/tutorial_right.pcx
 
 BUTTONS = \
         buttons/armageddon.tga      \
@@ -96,24 +109,25 @@ BUTTONS = \
 TEXTURES = \
         textures/README          \
         textures/stones.pcx      \
-        textures/rocktile.pcx    \
-        textures/rooftile.pcx    \
-        textures/crystal.pcx     \
-        textures/icetile.pcx     \
-        textures/solartile.pcx   \
-        textures/lunartile.pcx   \
-        textures/rooftile2.pcx   \
-        textures/rockagglo.pcx   \
-        textures/stars.pcx       \
-        textures/blueflame.pcx   \
-        textures/flamebg.pcx     \
-        textures/stone.pcx       \
-        textures/nightjungle.tga     \
-        textures/latejungle.tga      \
-        textures/darkjungle.tga      \
-        textures/enchantedjungle.tga
+        textures/rocktile.jpg    \
+        textures/rooftile.jpg    \
+        textures/crystal.jpg     \
+        textures/icetile.jpg     \
+        textures/lunartile.jpg   \
+        textures/rooftile2.jpg   \
+        textures/rockagglo.jpg   \
+        textures/stars.jpg       \
+        textures/blueflame.jpg   \
+        textures/flamebg.jpg     \
+        textures/stone.jpg       \
+        textures/nightjungle.jpg     \
+        textures/latejungle.jpg      \
+        textures/darkjungle.jpg      \
+        textures/enchantedjungle.jpg \
+        textures/clouds.jpg
 
 #        textures/greenjungle.pcx
+#        textures/solartile.jpg   
 
 PINGUS = \
         pingus/explo.pcx      \
@@ -144,12 +158,10 @@ FONTS = \
         fonts/smallfont.pcx      \
         fonts/smallfont_h.pcx    \
         fonts/number_fnt.pcx     \
-        fonts/danger.pcx         \
-        fonts/clanfont.pcx       \
-        fonts/left_arrow.pcx     \
-        fonts/right_arrow.pcx    \
-        fonts/up_arrow.pcx        \
-        fonts/down_arrow.pcx
+        fonts/pingus2.tga        \
+        fonts/pingus_small3.tga       
+
+#        fonts/clanfont.pcx       \
 
 
 CURSORS = \
@@ -163,8 +175,8 @@ CURSORS = \
 ENTRANCES = \
              entrances/woodthing_mov.pcx  \
              entrances/woodthing_nmov.tga \
-             entrances/entrance.pcx       \
-             entrances/gate.tga
+             entrances/entrance.pcx       
+#             entrances/gate.tga
 
 GROUNDPIECES = \
                groundpieces/pipe1.pcx  \
@@ -266,8 +278,11 @@ GROUNDPIECES = \
                groundpieces/foliage/flax1.pcx           \
                groundpieces/foliage/flax2.pcx           \
                groundpieces/foliage/midtree1.pcx        \
+               groundpieces/foliage/midtree2.pcx        \
                groundpieces/foliage/oak1.pcx            \
                groundpieces/foliage/smallbush.pcx       \
+               groundpieces/foliage/smallbush2.pcx       \
+               groundpieces/foliage/smallbush3.pcx       \
                groundpieces/foliage/talltree.pcx        \
                                                         \
                groundpieces/rock/rock1.pcx    \
@@ -281,7 +296,13 @@ GROUNDPIECES = \
                groundpieces/test/test2.pcx     \
                groundpieces/test/test3.pcx     \
                groundpieces/test/test4.pcx     \
-               groundpieces/test/test5.pcx
+               groundpieces/test/test5.pcx   \
+                    \
+               groundpieces/space/grid1.pcx \
+               groundpieces/space/grid2.pcx \
+               groundpieces/space/grid3.pcx \
+               groundpieces/space/block1.pcx \
+               groundpieces/space/tower1.pcx
 
 LIQUIDS = \
           liquids/water.pcx  \
@@ -291,9 +312,6 @@ LIQUIDS = \
           liquids/water3.tga \
           liquids/swater.pcx \
           liquids/lava.pcx
-
-BACKGROUNDS = \
-            backgrounds/clouds.pcx
 
 PARTICLES = \
             particles/particle.pcx \
@@ -310,11 +328,13 @@ MISC = \
 
 THEMES = \
          themes/crystal.pcx \
-         themes/xmas99.tga
+         themes/xmas99.tga  \
+         themes/tutorial.tga \
+         themes/space.tga
 
 EXTRA_DIST = \
              $(EXITS) $(TRAPS) $(BUTTONS) $(TEXTURES) $(PINGUS)   \
              $(FONTS) $(CURSORS) $(HOTSPOTS) $(GROUNDPIECES)      \
-             $(ENTRANCES) $(LIQUIDS) $(PARTICLES) $(BACKGROUNDS)  \
+             $(ENTRANCES) $(LIQUIDS) $(PARTICLES) \
              $(MISC) $(THEMES) $(EDITOR)
 

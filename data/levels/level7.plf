@@ -20,7 +20,7 @@ ground {
 }
 
 background {
-	image = (resource)"Textures/clouds";
+	image = (resource:textures.dat)"Textures/clouds";
 	scroll_x = 50;
 	scroll_y = 0;
 	dim = "0.8"; // You have to quote double values, sorry will fix that later

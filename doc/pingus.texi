@@ -38,6 +38,7 @@ contain some usefull informations
 
 @menu
 * Introduction::        A small overview of pingus.
+* Command-line::        Command-line options
 * Actions::             What can the Pingus do?
 * Level Editor::        How to use the level editor
 * Levels::              A short intro to the inner levelformat
@@ -59,7 +60,24 @@ The newest version of Pingus can always be found at:
 
 @url{http://pingus.seul.org}
 
-@node    Actions, Level Editor, Introduction, Top
+@node    Command-line
+@chapter Command-line
+
+@table @code
+
+@item -g GEOMETRY
+@itemx --geometry GEOMETRY
+
+Set the screen resolution or the window size to GEOMETRY, where
+GEOMETRIE is WIDTHxHEIGHT. For example the option could look like this: 
+
+@example
+$ pingus -g 800x600
+@end example
+
+@end table
+
+@node    Actions
 @comment node-name,    next,  previous,      up
 @chapter Actions
 
@@ -145,6 +163,9 @@ vertically, he will dig diagonal.
 @item F2
 Toggles if animated objects are animated in the editor or not.
 
+@item F3
+Toggles the background color
+
 @item F4
 Play/Test the level, which is loaded into the editor. The level will
 be saved temporary to @file{/tmp/}
@@ -195,6 +216,9 @@ Move all marked objects around.
 
 @item A
 Add all objects to the selection.
+
+@item D
+Duplicate the current selection
 
 @end table
 

@@ -15,7 +15,7 @@ ground {
 }
 
 background {
-  image = (resource)"Textures/stars";
+  image = (resource:textures.dat)"Textures/stars";
   dim = "0.0";
   scroll_x = 0;
   scroll_y = 0;

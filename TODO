@@ -1,7 +1,9 @@
 Last updated: Sat Jul 31 15:11:43 1999
 
-For 0.3.0
+For 0.3.1
 ~~~~~~~~~
+left/right buttons in Themes
+fix missing levels
 * fixed Cursor keys for scrolling
 * fixed PgUp/PgDown for zooming
 * fixed Info pannel for dead, etc pingus

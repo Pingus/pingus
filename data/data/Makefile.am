@@ -17,9 +17,9 @@
 
 pkgdatadir = $(datadir)/games/@PACKAGE@/data
 
-pkgdata_DATA = pingus.dat global.dat menu.dat editor.dat fonts.dat traps.dat game.dat
+pkgdata_DATA = pingus.dat global.dat menu.dat editor.dat fonts.dat traps.dat game.dat textures.dat
 
-EXTRA_DIST = pingus.scr global.scr menu.scr editor.scr fonts.scr traps.scr game.scr
+EXTRA_DIST = pingus.scr global.scr menu.scr editor.scr fonts.scr traps.scr game.scr textures.scr
 CLEANFILES = $(pkgdata_DATA)
 
 pingus.dat : pingus.scr
@@ -41,4 +41,7 @@ game.dat : game.scr
 	../../src/pingus -datafile $< $@
 
 traps.dat : traps.scr
+	../../src/pingus -datafile $< $@
+
+textures.dat : textures.scr
 	../../src/pingus -datafile $< $@

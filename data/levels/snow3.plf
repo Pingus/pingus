@@ -14,7 +14,7 @@ ground {
 }
 
 background {
-  image = (resource)"Game/clouds";
+  image = (resource:textures.dat)"Textures/clouds";
   dim = "0.0";
   scroll_x = 0;
   scroll_y = 0;

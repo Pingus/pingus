@@ -14,7 +14,7 @@ ground {
 }
 
 background {
-  image = (resource)"Textures/clouds";
+  image = (resource:textures.dat)"Textures/clouds";
   dim = "0.5";
   scroll_x = 0;
   scroll_y = 0;
@@ -46,24 +46,5 @@ exit {
   y_pos = 293;
   z_pos = 0;
 }
-
-hotspot {
-  image = (resource)"Entrances/gate";
-  x_pos = 225;
-  y_pos = 75; 
-  z_pos = 100;
-  speed = 10;
-  para = "2.0";
-}
-
-hotspot {
-  image = (resource)"Entrances/gate";
-  x_pos = 900;
-  y_pos = 300; 
-  z_pos = -200;
-  speed = 10;
-  para = "0.5";
-}
-
 
 /* EOF */

@@ -47,6 +47,13 @@ section Buttons
 section Hotspots
 {
 //	star        = ../images/star.tga       (type=surface, x=0, y=0, width=173,  height=173);
+	left_arrow = ../images/hotspots/left_arrow.pcx (type=surface, x=0, y=0, width=100, height=73, tcol=0);
+	right_arrow = ../images/hotspots/right_arrow.pcx (type=surface, x=0, y=0, width=100, height=73, tcol=0);
+
+	up_arrow = ../images/hotspots/up_arrow.pcx (type=surface, x=0, y=0, width=73, height=99, tcol=0);
+	down_arrow = ../images/hotspots/down_arrow.pcx (type=surface, x=0, y=0, width=73, height=99, tcol=0);
+
+	danger      = ../images/hotspots/danger.pcx (type=surface, x=0, y=0, width=215, height=121, tcol=0);
 	crystal     = ../images/hotspots/crystal.tga    (type=surface, x=0, y=0, width=60,  height=109);
         tree        = ../images/hotspots/tree.pcx      (type=surface, x=0, y=0, width=189, height=303, tcol=0);
 	weed1       = ../images/groundpieces/weed1.pcx      (type=surface, x=0, y=0, width=29,  height=149, tcol=0);
@@ -74,47 +81,26 @@ section Hotspots
 	plate       = ../images/hotspots/plate.pcx   (type=surface, x=0, y=0, width=64, height=32);
 	plate2      = ../images/hotspots/plate2.pcx  (type=surface, x=0, y=0, width=64, height=64);
 	plate_small = ../images/hotspots/plate_small.pcx  (type=surface, x=0, y=0, width=32, height=32);
+
+	tutorial_digger = ../images/hotspots/tutorial_digger.pcx  (type=surface, x=0, y=0, width=28, height=46, tcol=0);
+	tutorial_bridger  = ../images/hotspots/tutorial_bridger.pcx  (type=surface, x=0, y=0, width=28, height=46, tcol=0);
+	tutorial_left   = ../images/hotspots/tutorial_left.pcx  (type=surface, x=0, y=0, width=28, height=46, tcol=0);
+	tutorial_right  = ../images/hotspots/tutorial_right.pcx  (type=surface, x=0, y=0, width=28, height=46, tcol=0);
 }
 
 section Exits {
 	ice        = ../images/exits/ice.pcx       (type=surface, x=0, y=0, width=64, height=64, tcol=0);
 	stone      = ../images/exits/stone.pcx     (type=surface, x=0, y=0, width=75, height=60, tcol=0);
+	desert     = ../images/exits/desertexit.pcx  (type=surface, x=0, y=0, width=150, height=100, tcol=0);
+	space     = ../images/exits/space1.tga  (type=surface, x=0, y=0, width=154, height=118, array=4x1);
 }
 
 section Entrances {
-	gate        = ../images/entrances/gate.tga      (type=surface, x=0, y=0, width=150, height=150, array=6x1);
+//	gate        = ../images/entrances/gate.tga      (type=surface, x=0, y=0, width=150, height=150, array=6x1);
 	entrance    = ../images/entrances/entrance.pcx   (type=surface, x=0, y=0, width=64, height=32, tcol=0);
 
 	woodthing_nmov = ../images/entrances/woodthing_nmov.tga   (type=surface, x=0, y=0, width=151, height=157);
 	woodthing_mov  = ../images/entrances/woodthing_mov.pcx   (type=surface, x=0, y=0, width=105, height=17, array=17x1, tcol=0);
-}
-
-section Textures
-{
-	clouds          = ../images/backgrounds/clouds.pcx     (type=surface, x=0, y=0, width=256, height=480);
-	crystal         = ../images/textures/crystal.pcx  (type=surface, x=0, y=0, width=169, height=286);
-	stone		= ../images/textures/stones.pcx (type=surface, x=0, y=0, width=256, height=256);
-	rocktile	= ../images/textures/rocktile.pcx (type=surface, x=0, y=0, width=256, height=256);
-	rooftile	= ../images/textures/rooftile.pcx (type=surface, x=0, y=0, width=256, height=256);
-	rooftile2	= ../images/textures/rooftile2.pcx (type=surface, x=0, y=0, width=256, height=256);
-
-	rockagglo	= ../images/textures/rockagglo.pcx (type=surface, x=0, y=0, width=256, height=256);
-
-	icetile         = ../images/textures/icetile.pcx (type=surface, x=0, y=0, width=150, height=400);
-	solartile       = ../images/textures/solartile.pcx (type=surface, x=0, y=0, width=150, height=400);
-	lunartile       = ../images/textures/lunartile.pcx (type=surface, x=0, y=0, width=150, height=400);
-
-	blueflame       = ../images/textures/blueflame.pcx (type=surface, x=0, y=0, width=150, height=400);
-	stones           = ../images/textures/stone.pcx (type=surface, x=0, y=0, width=148, height=398);
-	flame           = ../images/textures/flamebg.pcx (type=surface, x=0, y=0, width=256, height=480);
-
-	stars         =   ../images/textures/stars.pcx (type=surface, x=0, y=0, width=256, height=480);
-
-//  jungle section
-	enchantedjungle = ../images/textures/enchantedjungle.tga (type=surface, x=0, y=0, width=300,height=500);
-	darkjungle = ../images/textures/darkjungle.tga (type=surface, x=0, y=0, width=300,height=500);
-	latejungle = ../images/textures/latejungle.tga (type=surface, x=0, y=0, width=300,height=500);
-	nightjungle = ../images/textures/nightjungle.tga (type=surface, x=0, y=0, width=300,height=500);
 }
 
 section GroundPieces
@@ -162,11 +148,11 @@ section GroundPieces
 		twist = ../images/groundpieces/jungle/twist.pcx (type=surface, x=0, y=0, width=405,  height=70, tcol=0);
 		twistsmooth = ../images/groundpieces/jungle/twist.pcx (type=surface, x=0, y=0, width=405,  height=70, tcol=0);
 
-		stick1.pcx = ../images/groundpieces/jungle/stick1.pcx (type=surface, x=0, y=0, width=446,  height=21, tcol=0);
-		stick2.pcx = ../images/groundpieces/jungle/stick2.pcx (type=surface, x=0, y=0, width=312,  height=21, tcol=0);
-		stick3.pcx = ../images/groundpieces/jungle/stick3.pcx (type=surface, x=0, y=0, width=289,  height=21, tcol=0);
-		stick4.pcx = ../images/groundpieces/jungle/stick4.pcx (type=surface, x=0, y=0, width=232,  height=21, tcol=0);
-		stick5.pcx = ../images/groundpieces/jungle/stick5.pcx (type=surface, x=0, y=0, width=185,  height=21, tcol=0);
+		stick1 = ../images/groundpieces/jungle/stick1.pcx (type=surface, x=0, y=0, width=446,  height=21, tcol=0);
+		stick2 = ../images/groundpieces/jungle/stick2.pcx (type=surface, x=0, y=0, width=312,  height=21, tcol=0);
+		stick3 = ../images/groundpieces/jungle/stick3.pcx (type=surface, x=0, y=0, width=289,  height=21, tcol=0);
+		stick4 = ../images/groundpieces/jungle/stick4.pcx (type=surface, x=0, y=0, width=232,  height=21, tcol=0);
+		stick5 = ../images/groundpieces/jungle/stick5.pcx (type=surface, x=0, y=0, width=185,  height=21, tcol=0);
 	}
 
 	section Crystal 
@@ -228,8 +214,11 @@ section GroundPieces
 		flax1     = ../images/groundpieces/foliage/flax1.pcx     (type=surface, x=0, y=0, width=100,  height=91, tcol=0);
 		flax2     = ../images/groundpieces/foliage/flax2.pcx     (type=surface, x=0, y=0, width=92,  height=84, tcol=0);
 		midtree1  = ../images/groundpieces/foliage/midtree1.pcx  (type=surface, x=0, y=0, width=114,  height=161, tcol=0);
+		midtree2  = ../images/groundpieces/foliage/midtree2.pcx  (type=surface, x=0, y=0, width=169,  height=189, tcol=0);
 		oak1      = ../images/groundpieces/foliage/oak1.pcx      (type=surface, x=0, y=0, width=168,  height=215, tcol=0);
 		smallbush = ../images/groundpieces/foliage/smallbush.pcx (type=surface, x=0, y=0, width=57,  height=24, tcol=0);
+		smallbush2 = ../images/groundpieces/foliage/smallbush2.pcx (type=surface, x=0, y=0, width=107,  height=88, tcol=0);
+		smallbush3 = ../images/groundpieces/foliage/smallbush3.pcx (type=surface, x=0, y=0, width=95,  height=37, tcol=0);
 		talltree  = ../images/groundpieces/foliage/talltree.pcx  (type=surface, x=0, y=0, width=84,  height=200, tcol=0);
 	}
 
@@ -267,12 +256,24 @@ section GroundPieces
 
 		pfosten = ../images/groundpieces/misc/pfosten.pcx  (type=surface, x=0, y=0, width=163,  height=201, tcol=0); 
 	}
+	
+	section Space
+	{
+		grid1 = ../images/groundpieces/space/grid1.pcx  (type=surface, x=0, y=0, width=51,  height=51, tcol=0); 
+		grid2 = ../images/groundpieces/space/grid2.pcx  (type=surface, x=0, y=0, width=51,  height=51, tcol=0); 
+		grid3 = ../images/groundpieces/space/grid3.pcx  (type=surface, x=0, y=0, width=41,  height=41, tcol=0); 
+
+		block1 = ../images/groundpieces/space/block1.pcx  (type=surface, x=0, y=0, width=201,  height=61); 
+		tower1 = ../images/groundpieces/space/tower1.pcx  (type=surface, x=0, y=0, width=64,  height=166); 
+	}
 }
 
 section Themes
 {
 	crystal = ../images/themes/crystal.pcx   (type=surface, x=0, y=0, width=256,  height=128);
 	xmas99  = ../images/themes/xmas99.tga    (type=surface, x=0, y=0, width=512,  height=256);
+	tutorial = ../images/themes/tutorial.tga    (type=surface, x=0, y=0, width=236,  height=154);
+	space = ../images/themes/space.tga    (type=surface, x=0, y=0, width=258,  height=145);
 }
 
 

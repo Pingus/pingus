@@ -18,7 +18,7 @@ ground {
 }
 
 background {
-	image = (resource)"Textures/rooftile";
+	image = (resource:textures.dat)"Textures/rooftile";
 }
 
 entrance {
