@@ -55,7 +55,7 @@ BSC32=bscmake.exe
 # ADD BSC32 /nologo
 LINK32=link.exe
 # ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /machine:I386
-# ADD LINK32 clanApp.lib clanCore.lib clanDisplay.lib clanGL.lib clanGUI.lib clanJPEG.lib clanMikMod.lib clanNetwork.lib clanPNG.lib clanSignals.lib clanSmallJPEG.lib clanVorbis.lib kernel32.lib user32.lib gdi32.lib dsound.lib /nologo /version:0.5 /subsystem:windows /machine:I386 /nodefaultlib:"msvcrt.lib" /libpath:"d:\games\pingus\release"
+# ADD LINK32 ClanApp.lib clanCore.lib ClanDisplay.lib ClanGL.lib ClanGUI.lib ClanJPEG.lib ClanMikMod.lib ClanNetwork.lib ClanPNG.lib ClanSignals.lib ClanVorbis.lib zlib.lib kernel32.lib user32.lib gdi32.lib libxml2.lib ClanSound.lib dsound.lib /nologo /version:0.5 /subsystem:windows /machine:I386 /nodefaultlib:"msvcrt.lib" /libpath:"d:\games\pingus\release"
 # SUBTRACT LINK32 /verbose /profile /pdb:none /incremental:yes /map /debug /nodefaultlib
 
 !ELSEIF  "$(CFG)" == "pingus - Win32 Debug"
@@ -72,7 +72,7 @@ LINK32=link.exe
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /YX /FD /GZ /c
-# ADD CPP /nologo /MTd /Gm /vd0 /GR /GX /ZI /Od /I "src" /I "src\win32" /D "_DEBUG" /D "WIN32" /D "_WINDOWS" /D "_MBCS" /D "LIBXML_2" /D "HAVE_LIBCLANVORBIS" /D "HAVE_LIBCLANMIKMOD" /YX /FD /GZ /TP /c
+# ADD CPP /nologo /MTd /Gm /vd0 /GR /GX /ZI /Od /I "src" /I "src\win32" /D "_DEBUG" /D "WIN32" /D "_WINDOWS" /D "_MBCS" /D "LIBXML_2" /D "HAVE_LIBCLANVORBIS" /D "HAVE_LIBCLANMIKMOD" /U "HAVE_LIBCLANMIKMOD" /YX /FD /GZ /TP /c
 # SUBTRACT CPP /X /Fr
 # ADD BASE MTL /nologo /D "_DEBUG" /mktyplib203 /win32
 # ADD MTL /nologo /D "_DEBUG" /mktyplib203 /win32
@@ -83,8 +83,8 @@ BSC32=bscmake.exe
 # ADD BSC32 /nologo
 LINK32=link.exe
 # ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /debug /machine:I386 /pdbtype:sept
-# ADD LINK32 ClanAppd.lib clanCored.lib ClanDisplayd.lib ClanGLd.lib ClanGUId.lib ClanJPEGd.lib ClanMikModd.lib ClanNetworkd.lib ClanPNGd.lib ClanSignalsd.lib ClanTTFd.lib ClanVorbisd.lib zlib.lib kernel32.lib user32.lib gdi32.lib libxml2.lib ClanSoundd.lib dsound.lib /nologo /subsystem:windows /incremental:no /debug /machine:I386 /nodefaultlib:"libcmt.lib" /pdbtype:sept
-# SUBTRACT LINK32 /verbose /profile /map
+# ADD LINK32 ClanApp.lib clanCore.lib ClanDisplay.lib ClanGL.lib ClanGUI.lib ClanJPEG.lib ClanMikMod.lib ClanNetwork.lib ClanPNG.lib ClanSignals.lib ClanVorbis.lib zlib.lib kernel32.lib user32.lib gdi32.lib libxml2.lib ClanSound.lib dsound.lib /nologo /subsystem:windows /debug /machine:I386 /nodefaultlib:"libcmt.lib" /pdbtype:sept
+# SUBTRACT LINK32 /verbose /profile /incremental:no /map
 
 !ENDIF 
 
@@ -92,42 +92,54 @@ LINK32=link.exe
 
 # Name "pingus - Win32 Release"
 # Name "pingus - Win32 Debug"
-# Begin Group "Sources"
+# Begin Group "Headers"
 
-# PROP Default_Filter "cpp;c;cxx;rc;def;r;odl;idl;hpj;bat;cc"
-# Begin Group "Traps Src"
+# PROP Default_Filter "h;hpp;hxx;hm;inl;hh"
+# Begin Group "Boost"
 
 # PROP Default_Filter ""
 # Begin Source File
 
-SOURCE=.\src\traps\bumper.cxx
+SOURCE=.\src\boost\auto_ptr.hpp
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\traps\fake_exit.cxx
+SOURCE=.\src\boost\dummy_ptr.hpp
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\traps\guillotine.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\traps\hammer.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\traps\laser_exit.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\traps\smasher.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\traps\spike.cxx
+SOURCE=.\src\boost\smart_ptr.hpp
 # End Source File
 # End Group
-# Begin Group "Actions Src"
+# Begin Source File
+
+SOURCE=.\src\debug_stream.hxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\math.hxx
+# End Source File
+# End Group
+# Begin Group "Resources"
+
+# PROP Default_Filter "ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe"
+# Begin Source File
+
+SOURCE=.\icon1.ico
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\icon1.ico
+# End Source File
+# Begin Source File
+
+SOURCE=.\pingus.rc
+# End Source File
+# End Group
+# Begin Group "src"
+
+# PROP Default_Filter ""
+# Begin Group "actions"
 
 # PROP Default_Filter ""
 # Begin Source File
@@ -223,7 +235,7 @@ SOURCE=.\src\actions\waiter.cxx
 SOURCE=.\src\actions\walker.cxx
 # End Source File
 # End Group
-# Begin Group "Editor Src"
+# Begin Group "editor"
 
 # PROP Default_Filter ""
 # Begin Source File
@@ -237,10 +249,6 @@ SOURCE=.\src\editor\editor.cxx
 # Begin Source File
 
 SOURCE=.\src\editor\editor_event.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editor\editor_groundpiece_obj.cxx
 # End Source File
 # Begin Source File
 
@@ -260,7 +268,15 @@ SOURCE=.\src\editor\editorobj_group.cxx
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\editor\editorobj_group_data.cxx
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\editor\entrance_window.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\editor\exit_window.cxx
 # End Source File
 # Begin Source File
 
@@ -285,10 +301,6 @@ SOURCE=.\src\editor\panel.cxx
 # Begin Source File
 
 SOURCE=.\src\editor\panel_icons.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editor\plfobj.cxx
 # End Source File
 # Begin Source File
 
@@ -339,19 +351,247 @@ SOURCE=.\src\editor\thumb_cache.cxx
 SOURCE=.\src\editor\weather_obj.cxx
 # End Source File
 # End Group
-# Begin Group "Entrances Src"
+# Begin Group "editorobjs"
 
 # PROP Default_Filter ""
 # Begin Source File
 
-SOURCE=.\src\entrances\cloud.cxx
+SOURCE=.\src\editorobjs\bumper_obj.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\entrances\woodthing.cxx
+SOURCE=.\src\editorobjs\conveyor_belt_obj.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\editorobjs\entrance_obj.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\editorobjs\exit_obj.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\editorobjs\fake_exit_obj.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\editorobjs\groundpiece_obj.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\editorobjs\guillotine_obj.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\editorobjs\hammer_obj.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\editorobjs\hotspot_obj.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\editorobjs\ice_block_obj.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\editorobjs\info_box_obj.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\editorobjs\laser_exit_obj.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\editorobjs\liquid_obj.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\editorobjs\prefab_obj.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\editorobjs\smasher_obj.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\editorobjs\solid_color_background_obj.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\editorobjs\spike_obj.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\editorobjs\starfield_background_obj.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\editorobjs\surface_background_obj.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\editorobjs\switch_door_obj.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\editorobjs\switch_door_switch_obj.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\editorobjs\teleporter_obj.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\editorobjs\teleporter_target_obj.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\editorobjs\thunderstorm_background_obj.cxx
 # End Source File
 # End Group
-# Begin Group "Particles Src"
+# Begin Group "gui"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=.\src\gui\gui_manager.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\gui\gui_surface_button.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\gui\root_gui_manager.cxx
+# End Source File
+# End Group
+# Begin Group "input"
+
+# PROP Default_Filter ""
+# Begin Group "axes"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=.\src\input\axes\button_axis.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\input\axes\inverted_axis.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\input\axes\joystick_axis.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\input\axes\mouse_axis.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\input\axes\multiple_axis.cxx
+# End Source File
+# End Group
+# Begin Group "buttons"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=.\src\input\buttons\double_button.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\input\buttons\joystick_button.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\input\buttons\key_button.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\input\buttons\mouse_button.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\input\buttons\multiple_button.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\input\buttons\triple_button.cxx
+# End Source File
+# End Group
+# Begin Group "pointers"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=.\src\input\pointers\axis_pointer.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\input\pointers\mouse_pointer.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\input\pointers\multiple_pointer.cxx
+# End Source File
+# End Group
+# Begin Group "scrollers"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=.\src\input\scrollers\axis_scroller.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\input\scrollers\inverted_scroller.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\input\scrollers\joystick_scroller.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\input\scrollers\mouse_scroller.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\input\scrollers\multiple_scroller.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\input\scrollers\pointer_scroller.cxx
+# End Source File
+# End Group
+# Begin Source File
+
+SOURCE=.\src\input\axis_factory.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\input\button_factory.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\input\controller.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\input\key_helper.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\input\pointer_factory.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\input\scroller_factory.cxx
+# End Source File
+# End Group
+# Begin Group "particles"
 
 # PROP Default_Filter ""
 # Begin Source File
@@ -380,10 +620,6 @@ SOURCE=.\src\particles\pingu_particle.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\particles\rain_generator.cxx
-# End Source File
-# Begin Source File
-
 SOURCE=.\src\particles\rain_particle.cxx
 # End Source File
 # Begin Source File
@@ -392,31 +628,91 @@ SOURCE=.\src\particles\smoke_particle.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\particles\snow_generator.cxx
-# End Source File
-# Begin Source File
-
 SOURCE=.\src\particles\snow_particle.cxx
 # End Source File
 # End Group
-# Begin Group "Win32 Src"
+# Begin Group "worldmap"
 
 # PROP Default_Filter ""
 # Begin Source File
 
-SOURCE=.\src\win32\Getopt.c
+SOURCE=.\src\worldmap\graph.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\win32\Getopt1.c
+SOURCE=.\src\worldmap\manager.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\worldmap\node.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\worldmap\node_data.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\worldmap\pingus.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\worldmap\stat.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\worldmap\worldmap.cxx
 # End Source File
 # End Group
-# Begin Group "WorldObjs Src"
+# Begin Group "worldobjs"
 
-# PROP Default_Filter "cc"
+# PROP Default_Filter ""
+# Begin Group "entraces"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=.\src\worldobjs\entrances\cloud.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\worldobjs\entrances\woodthing.cxx
+# End Source File
+# End Group
+# Begin Source File
+
+SOURCE=.\src\worldobjs\bumper.cxx
+# End Source File
 # Begin Source File
 
 SOURCE=.\src\worldobjs\conveyor_belt.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\worldobjs\entrance.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\worldobjs\exit.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\worldobjs\fake_exit.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\worldobjs\groundpiece.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\worldobjs\guillotine.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\worldobjs\hammer.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\worldobjs\hotspot.cxx
 # End Source File
 # Begin Source File
 
@@ -428,7 +724,43 @@ SOURCE=.\src\worldobjs\info_box.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\playfield_view.cxx
+SOURCE=.\src\worldobjs\laser_exit.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\worldobjs\liquid.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\worldobjs\rain_generator.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\worldobjs\smasher.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\worldobjs\snow_generator.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\worldobjs\solid_color_background.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\worldobjs\spike.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\worldobjs\starfield_background.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\worldobjs\starfield_background_stars.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\worldobjs\surface_background.cxx
 # End Source File
 # Begin Source File
 
@@ -438,141 +770,134 @@ SOURCE=.\src\worldobjs\switch_door.cxx
 
 SOURCE=.\src\worldobjs\teleporter.cxx
 # End Source File
+# Begin Source File
+
+SOURCE=.\src\worldobjs\thunderstorm_background.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\worldobjs\worldobj_group.cxx
+# End Source File
 # End Group
-# Begin Group "Worldmap Src"
+# Begin Group "worldobjsdata"
 
 # PROP Default_Filter ""
 # Begin Source File
 
-SOURCE=.\src\worldmap\node.cxx
+SOURCE=.\src\worldobjsdata\bumper_data.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\worldmap\node_data.cxx
+SOURCE=.\src\worldobjsdata\conveyor_belt_data.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\worldobjsdata\entrance_data.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\worldobjsdata\exit_data.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\worldobjsdata\fake_exit_data.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\worldobjsdata\groundpiece_data.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\worldobjsdata\guillotine_data.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\worldobjsdata\hammer_data.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\worldobjsdata\hotspot_data.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\worldobjsdata\ice_block_data.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\worldobjsdata\info_box_data.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\worldobjsdata\laser_exit_data.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\worldobjsdata\liquid_data.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\worldobjsdata\prefab_obj_data.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\worldobjsdata\rain_generator_data.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\worldobjsdata\smasher_data.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\worldobjsdata\snow_generator_data.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\worldobjsdata\solid_color_background_data.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\worldobjsdata\spike_data.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\worldobjsdata\starfield_background_data.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\worldobjsdata\surface_background_data.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\worldobjsdata\switch_door_data.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\worldobjsdata\teleporter_data.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\worldobjsdata\thunderstorm_background_data.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\worldobjsdata\worldobj_group_data.cxx
 # End Source File
 # End Group
-# Begin Group "GUI"
+# Begin Group "win32"
 
-# PROP Default_Filter "cxx;hxx"
+# PROP Default_Filter ""
 # Begin Source File
 
-SOURCE=.\src\gui\gui_manager.cxx
+SOURCE=.\src\win32\Getopt.c
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\gui_screen.cxx
+SOURCE=.\src\win32\Getopt1.c
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\input_debug_screen.cxx
-# End Source File
-# End Group
-# Begin Group "input"
-
-# PROP Default_Filter "cxx;hxx"
-# Begin Source File
-
-SOURCE=.\src\input\axis_factory.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\input\axis_pointer.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\input\axis_scroller.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\input\button_axis.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\input\button_factory.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\input\controller.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\input\double_button.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\input\inverted_axis.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\input\inverted_scroller.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\input\joystick_axis.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\input\joystick_button.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\input\joystick_scroller.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\input\key_button.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\input\key_helper.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\input\mouse_axis.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\input\mouse_button.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\input\mouse_pointer.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\input\mouse_scroller.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\input\multiple_axis.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\input\multiple_button.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\input\multiple_pointer.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\input\multiple_scroller.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\input\pointer_factory.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\input\pointer_scroller.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\input\scroller_factory.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\input\triple_button.cxx
+SOURCE=.\src\win32\pingus.rc
+# PROP Exclude_From_Build 1
 # End Source File
 # End Group
 # Begin Source File
@@ -606,10 +931,6 @@ SOURCE=.\src\audio.cxx
 # Begin Source File
 
 SOURCE=.\src\blitter.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\bmp_map.cxx
 # End Source File
 # Begin Source File
 
@@ -673,19 +994,7 @@ SOURCE=.\src\display.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\entrance.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\entrance_data.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\exit.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\exit_data.cxx
+SOURCE=.\src\display_graphic_context.cxx
 # End Source File
 # Begin Source File
 
@@ -694,6 +1003,10 @@ SOURCE=.\src\exit_menu.cxx
 # Begin Source File
 
 SOURCE=.\src\fade_out.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\fonts.cxx
 # End Source File
 # Begin Source File
 
@@ -733,11 +1046,7 @@ SOURCE=.\src\globals.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\worldmap\graph.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\groundpiece_data.cxx
+SOURCE=.\src\groundtype.cxx
 # End Source File
 # Begin Source File
 
@@ -745,11 +1054,7 @@ SOURCE=.\src\gui_obj.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\hotspot.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\hotspot_data.cxx
+SOURCE=.\src\gui_screen.cxx
 # End Source File
 # Begin Source File
 
@@ -758,6 +1063,10 @@ SOURCE=.\src\html_browser.cxx
 # Begin Source File
 
 SOURCE=.\src\hurry_up.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\input_debug_screen.cxx
 # End Source File
 # Begin Source File
 
@@ -781,23 +1090,11 @@ SOURCE=.\src\level_result.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\liquid.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\liquid_data.cxx
-# End Source File
-# Begin Source File
-
 SOURCE=.\src\loading.cxx
 # End Source File
 # Begin Source File
 
 SOURCE=.\src\main_menu.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\worldmap\manager.cxx
 # End Source File
 # Begin Source File
 
@@ -869,10 +1166,6 @@ SOURCE=.\src\pingu_map.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\worldmap\pingus.cxx
-# End Source File
-# Begin Source File
-
 SOURCE=.\src\pingus_counter.cxx
 # End Source File
 # Begin Source File
@@ -913,19 +1206,11 @@ SOURCE=.\src\playfield.cxx
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\playfield_view.cxx
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\plf.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\plf_parser.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\plf_plf.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\plf_preview.cxx
 # End Source File
 # Begin Source File
 
@@ -937,7 +1222,7 @@ SOURCE=.\src\plt_xml.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\psm_parser.cxx
+SOURCE=.\src\prefab.cxx
 # End Source File
 # Begin Source File
 
@@ -954,6 +1239,10 @@ SOURCE=.\src\resource_modifier.cxx
 # Begin Source File
 
 SOURCE=.\src\result.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\screen.cxx
 # End Source File
 # Begin Source File
 
@@ -974,10 +1263,6 @@ SOURCE=.\src\smallmap.cxx
 # Begin Source File
 
 SOURCE=.\src\smallmap_image.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\backgrounds\solidcolor_background.cxx
 # End Source File
 # Begin Source File
 
@@ -1005,27 +1290,11 @@ SOURCE=.\src\sprite.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\backgrounds\starfield_background.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\worldmap\stat.cxx
-# End Source File
-# Begin Source File
-
 SOURCE=.\src\story.cxx
 # End Source File
 # Begin Source File
 
 SOURCE=.\src\string_converter.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\backgrounds\surface_background.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\backgrounds\surface_background_data.cxx
 # End Source File
 # Begin Source File
 
@@ -1049,14 +1318,6 @@ SOURCE=.\src\theme_selector.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\backgrounds\thunderstorm_background.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\backgrounds\thunderstorm_background_data.cxx
-# End Source File
-# Begin Source File
-
 SOURCE=.\src\time_display.cxx
 # End Source File
 # Begin Source File
@@ -1065,15 +1326,11 @@ SOURCE=.\src\timer.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\trap.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\trap_data.cxx
-# End Source File
-# Begin Source File
-
 SOURCE=.\src\true_server.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\vector.cxx
 # End Source File
 # Begin Source File
 
@@ -1085,19 +1342,7 @@ SOURCE=.\src\wav_provider.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\weather_data.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\particles\weather_generator.cxx
-# End Source File
-# Begin Source File
-
 SOURCE=.\src\world.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\worldmap\worldmap.cxx
 # End Source File
 # Begin Source File
 
@@ -1113,59 +1358,11 @@ SOURCE=.\src\worldobj_data_factory.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\worldobj_group_data.cxx
-# End Source File
-# Begin Source File
-
 SOURCE=.\src\xml_helper.cxx
 # End Source File
 # Begin Source File
 
 SOURCE=.\src\xml_plf.cxx
-# End Source File
-# End Group
-# Begin Group "Headers"
-
-# PROP Default_Filter "h;hpp;hxx;hm;inl;hh"
-# Begin Group "Boost"
-
-# PROP Default_Filter ""
-# Begin Source File
-
-SOURCE=.\src\boost\auto_ptr.hpp
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\boost\dummy_ptr.hpp
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\boost\smart_ptr.hpp
-# End Source File
-# End Group
-# Begin Source File
-
-SOURCE=.\src\debug_stream.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\math.hxx
-# End Source File
-# End Group
-# Begin Group "Resources"
-
-# PROP Default_Filter "ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe"
-# Begin Source File
-
-SOURCE=.\icon1.ico
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\icon1.ico
-# End Source File
-# Begin Source File
-
-SOURCE=.\pingus.rc
 # End Source File
 # End Group
 # End Target
