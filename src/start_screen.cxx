@@ -1,4 +1,4 @@
-//  $Id: start_screen.cxx,v 1.12 2003/04/09 21:57:24 grumbel Exp $
+//  $Id: start_screen.cxx,v 1.13 2003/04/10 16:59:57 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
+#include "sprite.hxx"
 #include "gui/gui_manager.hxx"
 #include "gui/surface_button.hxx"
 #include "gui/component.hxx"
@@ -38,7 +39,7 @@ class StartScreenComponent : public GUI::Component
 {
 private:
   PLFHandle plf;
-  CL_Surface background;
+  Sprite background;
   std::string time_str;
  
 public:
@@ -56,7 +57,8 @@ private:
   StartScreen* parent;
 public:
   StartScreenOkButton(StartScreen* p)
-    : GUI::SurfaceButton(625, 425, 
+    : GUI::SurfaceButton(CL_Display::get_width()/2 + 225,
+                         CL_Display::get_height()/2 + 125, 
                          ResDescriptor("start/ok", "core", ResDescriptor::RD_RESOURCE),
                          ResDescriptor("start/ok_clicked", "core", ResDescriptor::RD_RESOURCE),
                          ResDescriptor("start/ok_hover", "core", ResDescriptor::RD_RESOURCE)),
@@ -91,7 +93,8 @@ private:
   StartScreen* parent;
 public:
   StartScreenAbortButton(StartScreen* p)
-    : GUI::SurfaceButton(122, 444, 
+    : GUI::SurfaceButton(CL_Display::get_width()/2 - 278,
+                         CL_Display::get_height()/2 + 144, 
                          ResDescriptor("start/back", "core", ResDescriptor::RD_RESOURCE),
                          ResDescriptor("start/back_clicked", "core", ResDescriptor::RD_RESOURCE),
                          ResDescriptor("start/back_hover", "core", ResDescriptor::RD_RESOURCE)),
@@ -123,7 +126,8 @@ StartScreen::~StartScreen()
 StartScreenComponent::StartScreenComponent(PLFHandle p)
   : plf(p)
 {
-  background = PingusResource::load_surface("menu/startscreenbg", "core");
+  background = Sprite("menu/startscreenbg", "core");
+  background.set_align_center();
   time_str = GameTime::ticks_to_realtime_string(plf->get_time());
 }
 
@@ -131,28 +135,40 @@ void
 StartScreenComponent::draw(GraphicContext& gc)
 {
   //gc.clear(0,0,0);
-  background.put_screen(0,0);
+  background.put_screen(CL_Display::get_width()/2,CL_Display::get_height()/2);
   
-  gc.print_center(Fonts::chalk_large, gc.get_width()/2, 100, System::translate(plf->get_levelname()));
-  gc.print_left(Fonts::chalk_normal, 130, 160, format_description(gc.get_width() - 260));
+  int left_x  = CL_Display::get_width()/2 - 120;
+  int right_x = CL_Display::get_width()/2 + 120;
+  int y = CL_Display::get_height()/2 + 10;
 
-  gc.print_left (Fonts::chalk_normal, 280, 310, _("Number of Pingus: "));
-  gc.print_right(Fonts::chalk_normal, 520, 310, to_string(plf->get_pingus()));
+  gc.print_center(Fonts::chalk_large, 
+                  gc.get_width()/2, 
+                  CL_Display::get_height()/2 - 200,
+                  System::translate(plf->get_levelname()));
 
-  gc.print_left (Fonts::chalk_normal, 280, 340, _("Number to Save: "));
-  gc.print_right(Fonts::chalk_normal, 520, 340, to_string(plf->get_number_to_save()));
+  gc.print_left(Fonts::chalk_normal,
+                CL_Display::get_width()/2 - 270,
+                CL_Display::get_height()/2 - 140,
+                format_description(800 - 260));
 
-  gc.print_left (Fonts::chalk_normal, 280, 370, _("Time: "));
-  gc.print_right(Fonts::chalk_normal, 520, 370, time_str);
+  gc.print_left (Fonts::chalk_normal, left_x,  y, _("Number of Pingus: "));
+  gc.print_right(Fonts::chalk_normal, right_x, y, to_string(plf->get_pingus()));
+
+  gc.print_left (Fonts::chalk_normal, left_x,  y += 30, _("Number to Save: "));
+  gc.print_right(Fonts::chalk_normal, right_x, y, to_string(plf->get_number_to_save()));
+
+  gc.print_left (Fonts::chalk_normal, left_x,  y += 30, _("Time: "));
+  gc.print_right(Fonts::chalk_normal, right_x, y, time_str);
   
-  gc.print_left (Fonts::chalk_normal, 280, 400, _("Difficulty:"));
-  gc.print_right(Fonts::chalk_normal, 520, 400, to_string(plf->get_difficulty()) + "/100");
+  gc.print_left (Fonts::chalk_normal, left_x,  y += 30, _("Difficulty:"));
+  gc.print_right(Fonts::chalk_normal, right_x, y, to_string(plf->get_difficulty()) + "/100");
 
   /*for (int i = 0; plf->get_difficulty())
     {
     }*/
 
-  gc.print_center(Fonts::chalk_small, 400, 470, _("Author: ") + plf->get_author());
+  gc.print_center(Fonts::chalk_small, CL_Display::get_width()/2,
+                  CL_Display::get_height()/2 + 270, _("Author: ") + plf->get_author());
 
   if (maintainer_mode)
     gc.print_left(Fonts::chalk_small, 110, 430, _("Filename: ") + plf->get_resname());

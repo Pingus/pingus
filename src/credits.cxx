@@ -1,4 +1,4 @@
-//  $Id: credits.cxx,v 1.20 2003/04/10 11:51:32 grumbel Exp $
+//  $Id: credits.cxx,v 1.21 2003/04/10 16:59:57 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -61,7 +61,7 @@ Credits::Credits()
   credits.push_back("_Alberto Curro");
   credits.push_back("_Björn Christoph Fischer");
   credits.push_back("_Kenneth Gangstø");
-  credits.push_back("_Michael KŽäser");
+  credits.push_back("_Michael KÂŽäser");
   credits.push_back("_Neil Mitchell");
   credits.push_back("n");
 
@@ -195,7 +195,9 @@ Credits::draw_background (GraphicContext& gc)
   x = CL_Display::get_width()/2;
   y = int(offset);
 
-  gc.draw(background, 0, 0);
+  gc.draw(background,
+          gc.get_width()/2 - background.get_width()/2,
+          gc.get_height()/2 - background.get_height()/2);
   
   gc.draw(pingu, (gc.get_width() / 2) - (pingu.get_width() / 2),
           (gc.get_height() / 2) - (pingu.get_height() / 2) - 20);
@@ -204,7 +206,7 @@ Credits::draw_background (GraphicContext& gc)
 			CL_Display::get_width(), CL_Display::get_height(),
 			0.0, 0.0, 0.0, 1.0);*/
 
-  CL_Display::push_clip_rect(CL_ClipRect(0, 75, 600, 500));
+  CL_Display::push_clip_rect(CL_ClipRect(0, gc.get_height()/2-225, 600, gc.get_height()/2+200));
   yof = 0;
   for (std::vector<std::string>::iterator i = credits.begin(); i != credits.end(); ++i)
     {

@@ -1,4 +1,4 @@
-//  $Id: result_screen.cxx,v 1.13 2003/04/09 21:57:24 grumbel Exp $
+//  $Id: result_screen.cxx,v 1.14 2003/04/10 16:59:57 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,7 @@
 
 #include <iostream>
 #include "my_gettext.hxx"
+#include "sprite.hxx"
 #include "gui/surface_button.hxx"
 #include "gui/gui_manager.hxx"
 #include "gui/screen_manager.hxx"
@@ -37,7 +38,7 @@ class ResultScreenComponent : public GUI::Component
 {
 public:
   Result result;
-  CL_Surface background;
+  Sprite background;
   std::string time_str;
 
   std::vector<CL_Surface> chalk_pingus;
@@ -54,7 +55,8 @@ private:
   ResultScreen* parent;
 public:
   ResultScreenOkButton(ResultScreen* p)
-    : GUI::SurfaceButton(625, 425, 
+    : GUI::SurfaceButton(CL_Display::get_width()/2 + 225,
+                         CL_Display::get_height()/2 + 125, 
                          ResDescriptor("start/ok", "core", ResDescriptor::RD_RESOURCE),
                          ResDescriptor("start/ok_clicked", "core", ResDescriptor::RD_RESOURCE),
                          ResDescriptor("start/ok_hover", "core", ResDescriptor::RD_RESOURCE)),
@@ -81,7 +83,8 @@ private:
   ResultScreen* parent;
 public:
   ResultScreenAbortButton(ResultScreen* p)
-    : GUI::SurfaceButton(122, 444, 
+    : GUI::SurfaceButton(CL_Display::get_width()/2 - 278,
+                         CL_Display::get_height()/2 + 144, 
                          ResDescriptor("start/back", "core", ResDescriptor::RD_RESOURCE),
                          ResDescriptor("start/back_clicked", "core", ResDescriptor::RD_RESOURCE),
                          ResDescriptor("start/back_hover", "core", ResDescriptor::RD_RESOURCE)),
@@ -113,7 +116,8 @@ private:
   ResultScreen* parent;
 public:
   ResultScreenRetryButton(ResultScreen* p)
-    : GUI::SurfaceButton(625, 425, 
+    : GUI::SurfaceButton(CL_Display::get_width()/2 + 225,
+                         CL_Display::get_height()/2 + 125, 
                          ResDescriptor("start/ok", "core", ResDescriptor::RD_RESOURCE),
                          ResDescriptor("start/ok_clicked", "core", ResDescriptor::RD_RESOURCE),
                          ResDescriptor("start/ok_hover", "core", ResDescriptor::RD_RESOURCE)),
@@ -136,7 +140,8 @@ public:
 ResultScreenComponent::ResultScreenComponent(Result arg_result)
   : result(arg_result)
 {
-  background = PingusResource::load_surface("menu/startscreenbg", "core");
+  background = Sprite("menu/startscreenbg", "core");
+  background.set_align_center();
 
   chalk_pingus.push_back(PingusResource::load_surface("misc/chalk_pingu1", "core"));
   chalk_pingus.push_back(PingusResource::load_surface("misc/chalk_pingu2", "core"));
@@ -152,23 +157,27 @@ ResultScreenComponent::ResultScreenComponent(Result arg_result)
 void
 ResultScreenComponent::draw(GraphicContext& gc) 
 {
-  gc.draw(background, 0, 0);
+  gc.draw(background, Vector(gc.get_width()/2, gc.get_height()/2));
 
   if (!result.success())
-    gc.print_right(Fonts::chalk_normal, 675, 410, _("Retry"));
+    gc.print_right(Fonts::chalk_normal, 
+                   CL_Display::get_width()/2 + 275,
+                   CL_Display::get_height()/2 + 110, _("Retry"));
 
-  gc.print_center(Fonts::chalk_large, gc.get_width()/2, 100, 
+  gc.print_center(Fonts::chalk_large, gc.get_width()/2, CL_Display::get_height()/2 - 200, 
                   System::translate(result.plf->get_levelname()));
 
   if (result.success())
     {
-      gc.print_center(Fonts::chalk_large, gc.get_width()/2, 160, _("Success!"));
+      gc.print_center(Fonts::chalk_large, gc.get_width()/2,
+                      CL_Display::get_height()/2 - 140, _("Success!"));
       /*gc.print_center(Fonts::pingus_small, gc.get_width()/2, gc.get_height()-30,
         "..:: Press Space to continue ::..");*/
     }
   else
     {
-      gc.print_center(Fonts::chalk_large, gc.get_width()/2, 160, _("Failure!"));
+      gc.print_center(Fonts::chalk_large, gc.get_width()/2, CL_Display::get_height()/2 - 140,
+                      _("Failure!"));
       /*gc.print_center(Fonts::pingus_normal, gc.get_width()/2, gc.get_height()-30,
                       "..:: Press Space to retry the level ::..");*/
     }
@@ -204,7 +213,8 @@ ResultScreenComponent::draw(GraphicContext& gc)
       else
         message = _("Better luck next time!");
     }
-  gc.print_center(Fonts::chalk_normal, gc.get_width()/2, 230, message);
+  gc.print_center(Fonts::chalk_normal, gc.get_width()/2, 
+                  CL_Display::get_height()/2 - 70, message);
 
 
 #if 0
@@ -213,16 +223,20 @@ ResultScreenComponent::draw(GraphicContext& gc)
       gc.draw(chalk_pingus[rand() % chalk_pingus.size()], 230 + i * 15, 210);
     }
 #endif
-  gc.print_left(Fonts::chalk_normal,  300, 310, _("Saved: "));
-  gc.print_right(Fonts::chalk_normal, 500, 310, to_string(result.saved) 
+  int left_x  = CL_Display::get_width()/2 - 100;
+  int right_x = CL_Display::get_width()/2 + 100;
+  int y = CL_Display::get_height()/2 + 10;
+    
+  gc.print_left(Fonts::chalk_normal,  left_x,  y, _("Saved: "));
+  gc.print_right(Fonts::chalk_normal, right_x, y, to_string(result.saved) 
                  + "/" + to_string(result.needed));;
 
-  gc.print_left(Fonts::chalk_normal,  300, 340, _("Killed: "));
-  gc.print_right(Fonts::chalk_normal, 500, 340, to_string(result.killed));
+  gc.print_left(Fonts::chalk_normal,  left_x,  y+=30, _("Killed: "));
+  gc.print_right(Fonts::chalk_normal, right_x, y, to_string(result.killed));
 
 
-  gc.print_left(Fonts::chalk_normal,   300, 370, _("Time left: "));
-  gc.print_right(Fonts::chalk_normal, 500, 370, time_str);
+  gc.print_left(Fonts::chalk_normal,   left_x, y+=30, _("Time left: "));
+  gc.print_right(Fonts::chalk_normal, right_x, y, time_str);
 }
 
 ResultScreen::ResultScreen(Result arg_result)
