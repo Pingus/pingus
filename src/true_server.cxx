@@ -1,4 +1,4 @@
-//  $Id: true_server.cxx,v 1.10 2002/09/28 11:52:22 torangan Exp $
+//  $Id: true_server.cxx,v 1.11 2002/09/28 18:34:21 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -75,8 +75,8 @@ TrueServer::update(float delta)
     }
   else
     {
-      std::cout << "Sleeping: " << time_till_next_update() << std::endl;
-      CL_System::sleep(time_till_next_update());
+      //std::cout << "Sleeping: " << time_till_next_update() << std::endl;
+      //CL_System::sleep(time_till_next_update());
     }
 }
 
