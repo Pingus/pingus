@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-08-29 19:12+0200\n"
+"POT-Creation-Date: 2004-04-09 13:25+0000\n"
 "PO-Revision-Date: 2003-04-21 14:09+0200\n"
 "Last-Translator: Giuseppe D'Aqui' <kumber@tiscalinet.it>\n"
 "Language-Team: Italiano\n"
@@ -14,6 +14,11 @@ msgstr ""
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.0\n"
+
+#: src/actions/bridger.cxx:47 src/actions/bridger.cxx:231
+#: src/pingu_enums.cxx:39
+msgid "Bridger"
+msgstr "Ingeniero"
 
 #: src/config.cxx:71
 msgid "Couldn't open: "
@@ -47,51 +52,51 @@ msgstr "-Versión (Win32)"
 msgid "-Gfx"
 msgstr "-Gráficos"
 
-#: src/credits.cxx:80
+#: src/credits.cxx:81
 msgid "-Music"
 msgstr "-Música"
 
-#: src/credits.cxx:86
+#: src/credits.cxx:87
 msgid "-Level Design"
 msgstr "-Diseño de niveles"
 
-#: src/credits.cxx:91
+#: src/credits.cxx:92
 msgid "-Story"
 msgstr "-Historia"
 
-#: src/credits.cxx:95
+#: src/credits.cxx:96
 msgid "-Translation"
 msgstr "-Traducción"
 
-#: src/credits.cxx:107
+#: src/credits.cxx:110
 msgid "-Special"
 msgstr "-Especial"
 
-#: src/credits.cxx:108
+#: src/credits.cxx:111
 msgid "-Thanks to"
 msgstr "-Agradecimientos a"
 
-#: src/credits.cxx:149
+#: src/credits.cxx:152
 msgid "_And a very Special Thanks"
 msgstr "_Y sobretodo gracias"
 
-#: src/credits.cxx:150
+#: src/credits.cxx:153
 msgid "_to all the people who"
 msgstr "_a toda la gente que"
 
-#: src/credits.cxx:151
+#: src/credits.cxx:154
 msgid "_contribute to"
 msgstr "_ha contribuido al"
 
-#: src/credits.cxx:152
+#: src/credits.cxx:155
 msgid "_Free Software!"
 msgstr "_Software Libre!"
 
-#: src/credits.cxx:158
+#: src/credits.cxx:161
 msgid "_Thank you for"
 msgstr "_Gracias por"
 
-#: src/credits.cxx:159
+#: src/credits.cxx:162
 msgid "_playing!"
 msgstr "_jugar!"
 
@@ -236,8 +241,7 @@ msgid ""
 "release,\n"
 "please mail it to pingus-devel@nongnu.org."
 msgstr ""
-"Si has creado un nivel y quieres incluirlo en la próxima"
-"versión de Pingus,\n"
+"Si has creado un nivel y quieres incluirlo en la próximaversión de Pingus,\n"
 "envíalo a: pingus-devel@nongnu.org."
 
 #: src/editor/object_selector.cxx:107
@@ -562,7 +566,8 @@ msgid ""
 "That was OK, but Pingu life insurance premiums have just gotten more "
 "expensive."
 msgstr ""
-"Bien, pero las aseguranzas de vida de los pingüinos se han revalorizado al alza."
+"Bien, pero las aseguranzas de vida de los pingüinos se han revalorizado al "
+"alza."
 
 #: src/level_result.cxx:109
 msgid "Maybe this level calls for a different strategy."
@@ -585,8 +590,8 @@ msgid ""
 "Maybe this level calls for a different strategy. Like attempting to save "
 "them, for example."
 msgstr ""
-"Quizá éste nivel requiere una estrategia distinta. Cómo intentar salvarlos "
-"a todos, por ejemplo."
+"Quizá éste nivel requiere una estrategia distinta. Cómo intentar salvarlos a "
+"todos, por ejemplo."
 
 #: src/level_result.cxx:119
 msgid "Ever considered a career as a Pingu exterminator?"
@@ -603,8 +608,8 @@ msgstr "Porfa asegúrame que le has dado al botón de Armageddon"
 #: src/level_result.cxx:125
 msgid "You've got a negative save/total value, something is buggy."
 msgstr ""
-"I Pingus da salvare sono più che nel totale, qualcosa non va."
-"Tu relación de pingüinos en total/salvados es negativa. Algo falla."
+"I Pingus da salvare sono più che nel totale, qualcosa non va.Tu relación de "
+"pingüinos en total/salvados es negativa. Algo falla."
 
 #: src/menu_button.cxx:177
 msgid "..:: The people who brought this game to you ::.."
@@ -686,10 +691,6 @@ msgstr "Patinador"
 msgid "Bomber"
 msgstr "Bomba"
 
-#: src/pingu_enums.cxx:39
-msgid "Bridger"
-msgstr "Ingeniero"
-
 #: src/pingu_enums.cxx:40
 msgid "Climber"
 msgstr "Escalador"
@@ -698,7 +699,7 @@ msgstr "Escalador"
 msgid "Digger"
 msgstr "Excavador"
 
-#: src/pingu_enums.cxx:42 *MISSING*
+#: src/pingu_enums.cxx:42
 msgid "Drown"
 msgstr "Ahogado"
 
@@ -769,15 +770,14 @@ msgstr "| segfault_handler: interceptado SIGSEGV."
 
 #: src/pingus_main.cxx:98
 msgid "| Woops, Pingus just crashed, congratulations you've found a bug."
-msgstr ""
-"| Oops, Pingus acaba de fallar, felicidades, has encontrado un error."
+msgstr "| Oops, Pingus acaba de fallar, felicidades, has encontrado un error."
 
 #: src/pingus_main.cxx:99
 msgid ""
 "| Please write a little bug report to <grumbel@gmx.de>, include informations"
 msgstr ""
-"| Puedes escribir un pequeño informe a <pingus-devel@nongnu.org>, "
-"incluyendo información "
+"| Puedes escribir un pequeño informe a <pingus-devel@nongnu.org>, incluyendo "
+"información "
 
 #: src/pingus_main.cxx:100
 msgid "| where exacly the SIGSEGV occured and how to reproduce it."
@@ -785,7 +785,9 @@ msgstr "| de donde ha ocurrido exactamente el SIGSEV y como reproducirlo."
 
 #: src/pingus_main.cxx:101
 msgid "| Also try include a backtrace, you can get it like this:"
-msgstr "| Puedes incluir además un trazado inverso, lo puedes obtener con algo como ésto:"
+msgstr ""
+"| Puedes incluir además un trazado inverso, lo puedes obtener con algo como "
+"ésto:"
 
 #: src/pingus_main.cxx:107
 msgid "| If that doesn't work, try this:"
@@ -802,8 +804,8 @@ msgstr "| Atención: Pingus ha recibido un SIGINT, saliendo..."
 #: src/pingus_main.cxx:310
 msgid "Warning: Larger resolution than 800x600 will result in visual problems"
 msgstr ""
-"Atención: Una resolución más grande de 800x600 puede resultar "
-"en problemas de visión"
+"Atención: Una resolución más grande de 800x600 puede resultar en problemas "
+"de visión"
 
 #: src/pingus_main.cxx:497
 msgid "Unknow char: "
@@ -899,7 +901,8 @@ msgstr "Lee la configuración de ARCHIVO (por defecto: ~/.pingus/config)"
 
 #: src/pingus_main.cxx:528
 msgid "reduce CPU usage, might speed up the game on slower machines"
-msgstr "reduce el uso de la CPU, puede acelerar el juego en computadoras lentas"
+msgstr ""
+"reduce el uso de la CPU, puede acelerar el juego en computadoras lentas"
 
 #: src/pingus_main.cxx:529
 msgid "Uses the controller given in FILE"
@@ -919,7 +922,9 @@ msgstr "Activa la información de análisis ('debug'), de posibles opciones"
 
 #: src/pingus_main.cxx:534
 msgid "OPTION's are tiles, gametime, actions, sound, resources, gui,"
-msgstr "como mosaicos, tiempo de juego, acciones, sonido, recursos, interfaz de usuario,"
+msgstr ""
+"como mosaicos, tiempo de juego, acciones, sonido, recursos, interfaz de "
+"usuario,"
 
 #: src/pingus_main.cxx:536
 msgid "Skip at least N frames, larger values speed the game up"
@@ -981,88 +986,89 @@ msgstr "Desactiva el sonido"
 msgid "Disable music"
 msgstr "Desactiva la musica"
 
-#: src/pingus_main.cxx:726
+#: src/pingus_main.cxx:730
 msgid "clanVorbis support:           ok"
 msgstr "Soporte de clanVorbis:          Vale"
 
-#: src/pingus_main.cxx:728
+#: src/pingus_main.cxx:732
 msgid "clanVoribs support:  missing (.ogg music files will not be playable)"
 msgstr ""
-"Soporte de clanVorbis: ausente (archivos de música .ogg no serán reproducidos)"
+"Soporte de clanVorbis: ausente (archivos de música .ogg no serán "
+"reproducidos)"
 
-#: src/pingus_main.cxx:732
+#: src/pingus_main.cxx:736
 msgid "clanMikMod support:           ok"
 msgstr "Soporte clanMikMod:          Vale"
 
-#: src/pingus_main.cxx:734
+#: src/pingus_main.cxx:738
 msgid "clanMikMod support:  missing (music files will not be playable)"
 msgstr "Soporte clanMikMod: ausente (archivos de música no serán reproducidos)"
 
-#: src/pingus_main.cxx:738
+#: src/pingus_main.cxx:742
 msgid "getext support:               ok"
 msgstr "Soporte gettext:             Vale"
 
-#: src/pingus_main.cxx:739
+#: src/pingus_main.cxx:743
 msgid "gettext language:        english"
 msgstr "lenguaje de gettext:          español"
 
-#: src/pingus_main.cxx:745
+#: src/pingus_main.cxx:749
 msgid "sound support:           enabled"
 msgstr "Soporte de sonido:          activado"
 
-#: src/pingus_main.cxx:747
+#: src/pingus_main.cxx:751
 msgid "sound support:          disabled"
 msgstr "Soporte de sonido:         desactivado"
 
-#: src/pingus_main.cxx:750
+#: src/pingus_main.cxx:754
 msgid "music support:           enabled"
 msgstr "Soporte de música:         activado"
 
-#: src/pingus_main.cxx:752
+#: src/pingus_main.cxx:756
 msgid "music support:          disabled"
 msgstr "Soporte de música:        desactivado"
 
-#: src/pingus_main.cxx:754
+#: src/pingus_main.cxx:758
 msgid "resolution set to:       "
 msgstr "resolución fijada a:  "
 
-#: src/pingus_main.cxx:755
+#: src/pingus_main.cxx:759
 msgid "fullscreen:              "
 msgstr "pantalla completa:        "
 
-#: src/pingus_main.cxx:756
+#: src/pingus_main.cxx:760
 msgid " enabled"
 msgstr " activado"
 
-#: src/pingus_main.cxx:756
+#: src/pingus_main.cxx:760
 msgid "disabled"
 msgstr "desactivado"
 
-#: src/pingus_main.cxx:766
+#: src/pingus_main.cxx:770
 msgid "PingusMain: Starting Main: "
 msgstr "PingusMain: Iniciando Principal: "
 
-#: src/pingus_main.cxx:811
+#: src/pingus_main.cxx:815
 msgid "PingusMain: Levelfile not found, ignoring: "
 msgstr "PingusMain: Archivo del nivel ausente, ignorando: "
 
-#: src/pingus_main.cxx:915
+#: src/pingus_main.cxx:919
 msgid "Error caught from ClanLib: "
 msgstr "Error interceptado de ClanLib: "
 
-#: src/pingus_main.cxx:919
+#: src/pingus_main.cxx:923
 msgid "Error caught from Pingus: "
 msgstr "Error interceptado de Pingus: "
 
-#: src/pingus_main.cxx:923
+#: src/pingus_main.cxx:927
 msgid "Pingus: Out of memory!"
 msgstr "Pingus: ¡memoria insuficiente!"
 
-#: src/pingus_main.cxx:927
+#: src/pingus_main.cxx:931
 msgid "Pingus: Standard exception caught!:\n"
 msgstr "Pingus: ¡Interceptada excepción estándar!:\n"
 
-#: src/pingus_main.cxx:931
+#: src/pingus_main.cxx:935
 msgid "Pingus: Unknown throw caught!"
 msgstr "Pingus: ¡Interceptado lanzamiento desconocido!"
 
@@ -1238,7 +1244,8 @@ msgid ""
 "their familiar ground and enter the unknown parts of the world.\n"
 msgstr ""
 "Así que los pingüinos salieron y construyeron algunas canoas, suficientes\n"
-"para transportarlos a todos ellos. Después de empaquetar algunas provisiones\n"
+"para transportarlos a todos ellos. Después de empaquetar algunas "
+"provisiones\n"
 "se prepararon para empezar su aventura y abandonar su tierra natal,\n"
 "para entrar en las tierras desconocidas del mundo.\n"
 
@@ -1250,7 +1257,8 @@ msgid ""
 "To be continued..."
 msgstr ""
 "De ésta forma los pingüinos se sentaron en sus canoas, preocupándose\n"
-"sobre donde les llevaría su destino, mientras viajaban rumbo a la puesta de sol.\n"
+"sobre donde les llevaría su destino, mientras viajaban rumbo a la puesta de "
+"sol.\n"
 "\n"
 "Continuará..."
 
@@ -1306,7 +1314,6 @@ msgstr ""
 "la causa de éstas inclemencias. La expedición consistió en cientos de\n"
 "los más valientes pingüinos del Polo Sur."
 
-
 #: src/story.cxx:135
 msgid ""
 "And they picked you to lead them on their journey around the\n"
@@ -1359,7 +1366,7 @@ msgstr ""
 "\n"
 "¡Buena suerte!"
 
-#: src/system.cxx:265
+#: src/system.cxx:271
 msgid "Environment variable $HOME not set, fix that and start again."
 msgstr ""
 "La variable de ambiente $HOME no está definida, corrígela y prueva de nuevo."

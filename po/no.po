@@ -7,13 +7,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.6.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-08-30 14:55+0200\n"
+"POT-Creation-Date: 2004-04-09 13:25+0000\n"
 "PO-Revision-Date: 2003-08-24 21:08+0200\n"
 "Last-Translator: Skule Solvang <sk-so@online.no>\n"
 "Language-Team: no <sk-so@online.no>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: src/actions/bridger.cxx:47 src/actions/bridger.cxx:231
+#: src/pingu_enums.cxx:39
+msgid "Bridger"
+msgstr "Bridger"
 
 #: src/config.cxx:71
 msgid "Couldn't open: "
@@ -47,51 +52,51 @@ msgstr "-Porting (Win32)"
 msgid "-Gfx"
 msgstr "-Grafikk"
 
-#: src/credits.cxx:80
+#: src/credits.cxx:81
 msgid "-Music"
 msgstr "-Musikk"
 
-#: src/credits.cxx:86
+#: src/credits.cxx:87
 msgid "-Level Design"
 msgstr "-Brett Design"
 
-#: src/credits.cxx:91
+#: src/credits.cxx:92
 msgid "-Story"
 msgstr "-Historie"
 
-#: src/credits.cxx:95
+#: src/credits.cxx:96
 msgid "-Translation"
 msgstr "-Oversetting"
 
-#: src/credits.cxx:108
+#: src/credits.cxx:110
 msgid "-Special"
 msgstr "-Spesielt"
 
-#: src/credits.cxx:109
+#: src/credits.cxx:111
 msgid "-Thanks to"
 msgstr "-Takk til"
 
-#: src/credits.cxx:150
+#: src/credits.cxx:152
 msgid "_And a very Special Thanks"
 msgstr "_Og en veldig spesiell takk"
 
-#: src/credits.cxx:151
+#: src/credits.cxx:153
 msgid "_to all the people who"
 msgstr "_til alle folkene som"
 
-#: src/credits.cxx:152
+#: src/credits.cxx:154
 msgid "_contribute to"
 msgstr "_bidrar til"
 
-#: src/credits.cxx:153
+#: src/credits.cxx:155
 msgid "_Free Software!"
 msgstr "_Åpen programvare!"
 
-#: src/credits.cxx:159
+#: src/credits.cxx:161
 msgid "_Thank you for"
 msgstr "_Takk for at"
 
-#: src/credits.cxx:160
+#: src/credits.cxx:162
 msgid "_playing!"
 msgstr "_du spiller!"
 
@@ -678,10 +683,6 @@ msgstr "Boarder"
 msgid "Bomber"
 msgstr "Bomber"
 
-#: src/pingu_enums.cxx:39
-msgid "Bridger"
-msgstr "Bridger"
-
 #: src/pingu_enums.cxx:40
 msgid "Climber"
 msgstr "Climber"
@@ -971,87 +972,87 @@ msgstr "Deaktiver lyd"
 msgid "Disable music"
 msgstr "Deaktiver musikk"
 
-#: src/pingus_main.cxx:726
+#: src/pingus_main.cxx:730
 msgid "clanVorbis support:           ok"
 msgstr "clavVorbis støtte:           ok"
 
-#: src/pingus_main.cxx:728
+#: src/pingus_main.cxx:732
 msgid "clanVoribs support:  missing (.ogg music files will not be playable)"
 msgstr "clanVorbis støtte:  mangler (.ogg musikk vil ikke være spillbar)"
 
-#: src/pingus_main.cxx:732
+#: src/pingus_main.cxx:736
 msgid "clanMikMod support:           ok"
 msgstr "clanMikMod støtte:           ok"
 
-#: src/pingus_main.cxx:734
+#: src/pingus_main.cxx:738
 msgid "clanMikMod support:  missing (music files will not be playable)"
 msgstr "claMikMod støtte:  mangler (musikkfiler vill ikke være spillbare)"
 
-#: src/pingus_main.cxx:738
+#: src/pingus_main.cxx:742
 msgid "getext support:               ok"
 msgstr "gettext støtte:               ok"
 
-#: src/pingus_main.cxx:739
+#: src/pingus_main.cxx:743
 msgid "gettext language:        english"
 msgstr "gettext språk:        engelsk"
 
-#: src/pingus_main.cxx:745
+#: src/pingus_main.cxx:749
 msgid "sound support:           enabled"
 msgstr "lyd støtte:           aktivert"
 
-#: src/pingus_main.cxx:747
+#: src/pingus_main.cxx:751
 msgid "sound support:          disabled"
 msgstr "lyd støtte:          deaktivert"
 
-#: src/pingus_main.cxx:750
+#: src/pingus_main.cxx:754
 msgid "music support:           enabled"
 msgstr "musikk støtte:           aktivert"
 
-#: src/pingus_main.cxx:752
+#: src/pingus_main.cxx:756
 msgid "music support:          disabled"
 msgstr "musikk støtte:          deaktivert"
 
-#: src/pingus_main.cxx:754
+#: src/pingus_main.cxx:758
 msgid "resolution set to:       "
 msgstr "oppløsning satt til:       "
 
-#: src/pingus_main.cxx:755
+#: src/pingus_main.cxx:759
 msgid "fullscreen:              "
 msgstr "fullskjerm:              "
 
-#: src/pingus_main.cxx:756
+#: src/pingus_main.cxx:760
 msgid " enabled"
 msgstr " aktivert"
 
-#: src/pingus_main.cxx:756
+#: src/pingus_main.cxx:760
 msgid "disabled"
 msgstr " deaktivert"
 
-#: src/pingus_main.cxx:766
+#: src/pingus_main.cxx:770
 msgid "PingusMain: Starting Main: "
 msgstr "PingusMain: Starter Main: "
 
-#: src/pingus_main.cxx:811
+#: src/pingus_main.cxx:815
 msgid "PingusMain: Levelfile not found, ignoring: "
 msgstr "PingusMain: Brettfil ikke funnet, ignorerer: "
 
-#: src/pingus_main.cxx:915
+#: src/pingus_main.cxx:919
 msgid "Error caught from ClanLib: "
 msgstr "Fikk feil fra ClanLib: "
 
-#: src/pingus_main.cxx:919
+#: src/pingus_main.cxx:923
 msgid "Error caught from Pingus: "
 msgstr "Fikk feil fra Pingus: "
 
-#: src/pingus_main.cxx:923
+#: src/pingus_main.cxx:927
 msgid "Pingus: Out of memory!"
 msgstr "Pingus: Ikke nok minne!"
 
-#: src/pingus_main.cxx:927
+#: src/pingus_main.cxx:931
 msgid "Pingus: Standard exception caught!:\n"
 msgstr "Pingus: Fikk standard unntak!:\n"
 
-#: src/pingus_main.cxx:931
+#: src/pingus_main.cxx:935
 msgid "Pingus: Unknown throw caught!"
 msgstr "Pingus: Fikk ukjent kast!"
 
@@ -1342,7 +1343,7 @@ msgstr ""
 "\n"
 "Lykke til!"
 
-#: src/system.cxx:265
+#: src/system.cxx:271
 msgid "Environment variable $HOME not set, fix that and start again."
 msgstr "Miljøvariabel $HOME er ikke satt, fiks det og start om igjen."
 

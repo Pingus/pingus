@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-08-29 19:12+0200\n"
+"POT-Creation-Date: 2004-04-09 13:25+0000\n"
 "PO-Revision-Date: 2003-08-21 18:29+0300\n"
 "Last-Translator: Jarno Elonen <elonen@iki.fi>\n"
 "Language-Team: Finnish <elonen@iki.fi>\n"
@@ -16,6 +16,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.0.2\n"
+
+#: src/actions/bridger.cxx:47 src/actions/bridger.cxx:231
+#: src/pingu_enums.cxx:39
+msgid "Bridger"
+msgstr "Siltaaja"
 
 #: src/config.cxx:71
 msgid "Couldn't open: "
@@ -49,51 +54,51 @@ msgstr "-Porttaus (Win32)"
 msgid "-Gfx"
 msgstr "-Grafiikka"
 
-#: src/credits.cxx:80
+#: src/credits.cxx:81
 msgid "-Music"
 msgstr "-Musiikki"
 
-#: src/credits.cxx:86
+#: src/credits.cxx:87
 msgid "-Level Design"
 msgstr "-Kenttäsuunnittelu"
 
-#: src/credits.cxx:91
+#: src/credits.cxx:92
 msgid "-Story"
 msgstr "-Tarina"
 
-#: src/credits.cxx:95
+#: src/credits.cxx:96
 msgid "-Translation"
 msgstr "-Käännöstyö"
 
-#: src/credits.cxx:107
+#: src/credits.cxx:110
 msgid "-Special"
 msgstr "-Erityiset"
 
-#: src/credits.cxx:108
+#: src/credits.cxx:111
 msgid "-Thanks to"
 msgstr "-Kiitokset"
 
-#: src/credits.cxx:149
+#: src/credits.cxx:152
 msgid "_And a very Special Thanks"
 msgstr "_Ja aivan erityiskiitokset"
 
-#: src/credits.cxx:150
+#: src/credits.cxx:153
 msgid "_to all the people who"
 msgstr "_kaikille niille, jotka"
 
-#: src/credits.cxx:151
+#: src/credits.cxx:154
 msgid "_contribute to"
 msgstr "_osallistuvat kehittämään"
 
-#: src/credits.cxx:152
+#: src/credits.cxx:155
 msgid "_Free Software!"
 msgstr "_vapaita ohjelmia!"
 
-#: src/credits.cxx:158
+#: src/credits.cxx:161
 msgid "_Thank you for"
 msgstr "_Kiitos sinulle"
 
-#: src/credits.cxx:159
+#: src/credits.cxx:162
 msgid "_playing!"
 msgstr "_pelaamisesta!"
 
@@ -683,10 +688,6 @@ msgstr "Laatoittaja"
 msgid "Bomber"
 msgstr "Pommittaja"
 
-#: src/pingu_enums.cxx:39
-msgid "Bridger"
-msgstr "Siltaaja"
-
 #: src/pingu_enums.cxx:40
 msgid "Climber"
 msgstr "Kiipeilijä"
@@ -976,87 +977,87 @@ msgstr "Ei ääniä"
 msgid "Disable music"
 msgstr "Ei musiikkia"
 
-#: src/pingus_main.cxx:726
+#: src/pingus_main.cxx:730
 msgid "clanVorbis support:           ok"
 msgstr "clanVorbis-tuki:           ok"
 
-#: src/pingus_main.cxx:728
+#: src/pingus_main.cxx:732
 msgid "clanVoribs support:  missing (.ogg music files will not be playable)"
 msgstr "clanVoribs-tuki:  puuttuu (.ogg-musiikkia ei voida soittaa)"
 
-#: src/pingus_main.cxx:732
+#: src/pingus_main.cxx:736
 msgid "clanMikMod support:           ok"
 msgstr "clanMikMod-tuki:           ok"
 
-#: src/pingus_main.cxx:734
+#: src/pingus_main.cxx:738
 msgid "clanMikMod support:  missing (music files will not be playable)"
 msgstr "clanMikMod-tuki:  puuttuu (musiikkitiedostoja ei voida soittaa)"
 
-#: src/pingus_main.cxx:738
+#: src/pingus_main.cxx:742
 msgid "getext support:               ok"
 msgstr "getext-tuki:               ok"
 
-#: src/pingus_main.cxx:739
+#: src/pingus_main.cxx:743
 msgid "gettext language:        english"
 msgstr "gettext-kieli:        englanti"
 
-#: src/pingus_main.cxx:745
+#: src/pingus_main.cxx:749
 msgid "sound support:           enabled"
 msgstr "äänituki:           päällä"
 
-#: src/pingus_main.cxx:747
+#: src/pingus_main.cxx:751
 msgid "sound support:          disabled"
 msgstr "äänituki:          pois päältä"
 
-#: src/pingus_main.cxx:750
+#: src/pingus_main.cxx:754
 msgid "music support:           enabled"
 msgstr "musiikkituki:           päällä"
 
-#: src/pingus_main.cxx:752
+#: src/pingus_main.cxx:756
 msgid "music support:          disabled"
 msgstr "musiikkituki:          pois päältä"
 
-#: src/pingus_main.cxx:754
+#: src/pingus_main.cxx:758
 msgid "resolution set to:       "
 msgstr "ruutukooksi asetettu:       "
 
-#: src/pingus_main.cxx:755
+#: src/pingus_main.cxx:759
 msgid "fullscreen:              "
 msgstr "koko ruudun tila:              "
 
-#: src/pingus_main.cxx:756
+#: src/pingus_main.cxx:760
 msgid " enabled"
 msgstr " päällä"
 
-#: src/pingus_main.cxx:756
+#: src/pingus_main.cxx:760
 msgid "disabled"
 msgstr "pois päältä"
 
-#: src/pingus_main.cxx:766
+#: src/pingus_main.cxx:770
 msgid "PingusMain: Starting Main: "
 msgstr "PingusMain: Käynnistetään Main: "
 
-#: src/pingus_main.cxx:811
+#: src/pingus_main.cxx:815
 msgid "PingusMain: Levelfile not found, ignoring: "
 msgstr "PingusMain: Kenttätiedostoa ei löytynyt, jätetään väliin: "
 
-#: src/pingus_main.cxx:915
+#: src/pingus_main.cxx:919
 msgid "Error caught from ClanLib: "
 msgstr "Virhe ClanLib:ltä: "
 
-#: src/pingus_main.cxx:919
+#: src/pingus_main.cxx:923
 msgid "Error caught from Pingus: "
 msgstr "Virhe Pingusilta: "
 
-#: src/pingus_main.cxx:923
+#: src/pingus_main.cxx:927
 msgid "Pingus: Out of memory!"
 msgstr "Pingus: Muisti loppu!"
 
-#: src/pingus_main.cxx:927
+#: src/pingus_main.cxx:931
 msgid "Pingus: Standard exception caught!:\n"
 msgstr "Pingus: Standardikeskeytys!:\n"
 
-#: src/pingus_main.cxx:931
+#: src/pingus_main.cxx:935
 msgid "Pingus: Unknown throw caught!"
 msgstr "Pingus: Tuntematon keskytys!"
 
@@ -1353,7 +1354,7 @@ msgstr ""
 "\n"
 "Onnea matkaan!"
 
-#: src/system.cxx:265
+#: src/system.cxx:271
 msgid "Environment variable $HOME not set, fix that and start again."
 msgstr ""
 "Ympäristömuuttuja $HOME:a ei ole asetetty, korjataan tilanne ja aloitetaan "

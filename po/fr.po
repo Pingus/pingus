@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Pingus 0.6.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-08-29 19:12+0200\n"
+"POT-Creation-Date: 2004-04-09 13:25+0000\n"
 "PO-Revision-Date: 2004-04-08 01:50+0200\n"
 "Last-Translator: Philippe Saint-Pierre <stpere@linuxmail.org>\n"
 "Language-Team: David Philippi <david@torangan.de>, Ingo Ruhnke <grumbel@gmx."
@@ -14,6 +14,11 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: src/actions/bridger.cxx:47 src/actions/bridger.cxx:231
+#: src/pingu_enums.cxx:39
+msgid "Bridger"
+msgstr "Charpentier"
 
 #: src/config.cxx:71
 msgid "Couldn't open: "
@@ -47,51 +52,51 @@ msgstr "-Portage (Win32)"
 msgid "-Gfx"
 msgstr "-Graphiques"
 
-#: src/credits.cxx:80
+#: src/credits.cxx:81
 msgid "-Music"
 msgstr "-Musique"
 
-#: src/credits.cxx:86
+#: src/credits.cxx:87
 msgid "-Level Design"
 msgstr "-Conception des niveaux"
 
-#: src/credits.cxx:91
+#: src/credits.cxx:92
 msgid "-Story"
 msgstr "-Scénario"
 
-#: src/credits.cxx:95
+#: src/credits.cxx:96
 msgid "-Translation"
 msgstr "-Traduction"
 
-#: src/credits.cxx:107
+#: src/credits.cxx:110
 msgid "-Special"
 msgstr "-Spécial"
 
-#: src/credits.cxx:108
+#: src/credits.cxx:111
 msgid "-Thanks to"
 msgstr "-Remerciements à"
 
-#: src/credits.cxx:149
+#: src/credits.cxx:152
 msgid "_And a very Special Thanks"
 msgstr "_Et un merci spécial"
 
-#: src/credits.cxx:150
+#: src/credits.cxx:153
 msgid "_to all the people who"
 msgstr "_à tout ceux qui"
 
-#: src/credits.cxx:151
+#: src/credits.cxx:154
 msgid "_contribute to"
 msgstr "_contribuent"
 
-#: src/credits.cxx:152
+#: src/credits.cxx:155
 msgid "_Free Software!"
 msgstr "_aux logiciels libres!"
 
-#: src/credits.cxx:158
+#: src/credits.cxx:161
 msgid "_Thank you for"
 msgstr "_Merci"
 
-#: src/credits.cxx:159
+#: src/credits.cxx:162
 msgid "_playing!"
 msgstr "_d'avoir joué!"
 
@@ -527,7 +532,7 @@ msgid "Pingus saved:   %3d/%3d"
 msgstr "Pingus sauvés: %3d/%3d"
 
 #: src/level_result.cxx:69
-#, fuzzy, c-format
+#, c-format
 msgid "Pingus died:  %3d/%3d"
 msgstr "Pingus tués: %3d/%3d"
 
@@ -682,10 +687,6 @@ msgstr ""
 #: src/pingu_enums.cxx:38
 msgid "Bomber"
 msgstr "Démolisseur"
-
-#: src/pingu_enums.cxx:39
-msgid "Bridger"
-msgstr "Charpentier"
 
 #: src/pingu_enums.cxx:40
 msgid "Climber"
@@ -987,90 +988,90 @@ msgstr "Désactive le son"
 msgid "Disable music"
 msgstr "Désactive la musique"
 
-#: src/pingus_main.cxx:726
+#: src/pingus_main.cxx:730
 msgid "clanVorbis support:           ok"
 msgstr "Support clanVorbis:          ok"
 
-#: src/pingus_main.cxx:728
+#: src/pingus_main.cxx:732
 msgid "clanVoribs support:  missing (.ogg music files will not be playable)"
 msgstr ""
 "Support clanVorbis: absent (les fichiers musicaux .ogg ne pourront être "
 "joués)"
 
-#: src/pingus_main.cxx:732
+#: src/pingus_main.cxx:736
 msgid "clanMikMod support:           ok"
 msgstr "Support clanMikMod:          ok"
 
-#: src/pingus_main.cxx:734
+#: src/pingus_main.cxx:738
 msgid "clanMikMod support:  missing (music files will not be playable)"
 msgstr ""
 "Support clanMikMod: absent (les fichiers musicaux ne pourront être joués)"
 
-#: src/pingus_main.cxx:738
+#: src/pingus_main.cxx:742
 msgid "getext support:               ok"
 msgstr "gettext Unterstützung:       ok"
 
-#: src/pingus_main.cxx:739
+#: src/pingus_main.cxx:743
 msgid "gettext language:        english"
 msgstr "gettext langue:        français"
 
-#: src/pingus_main.cxx:745
+#: src/pingus_main.cxx:749
 msgid "sound support:           enabled"
 msgstr "Support sons:            activé"
 
-#: src/pingus_main.cxx:747
+#: src/pingus_main.cxx:751
 msgid "sound support:          disabled"
 msgstr "Support sons:         désactivé"
 
-#: src/pingus_main.cxx:750
+#: src/pingus_main.cxx:754
 msgid "music support:           enabled"
 msgstr "Support musique:         activé"
 
-#: src/pingus_main.cxx:752
+#: src/pingus_main.cxx:756
 msgid "music support:          disabled"
 msgstr "Support musique:      désactivé"
 
-#: src/pingus_main.cxx:754
+#: src/pingus_main.cxx:758
 msgid "resolution set to:       "
 msgstr "résolution fixée à:     "
 
-#: src/pingus_main.cxx:755
+#: src/pingus_main.cxx:759
 msgid "fullscreen:              "
 msgstr "plein-écran:            "
 
-#: src/pingus_main.cxx:756
+#: src/pingus_main.cxx:760
 msgid " enabled"
 msgstr "   activé"
 
-#: src/pingus_main.cxx:756
+#: src/pingus_main.cxx:760
 msgid "disabled"
 msgstr "désactivé"
 
-#: src/pingus_main.cxx:766
+#: src/pingus_main.cxx:770
 msgid "PingusMain: Starting Main: "
 msgstr "PingusMain: Démarrage de Main: "
 
-#: src/pingus_main.cxx:811
+#: src/pingus_main.cxx:815
 msgid "PingusMain: Levelfile not found, ignoring: "
 msgstr "PingusMain: Fichier de niveau absent, ignore: "
 
-#: src/pingus_main.cxx:915
+#: src/pingus_main.cxx:919
 msgid "Error caught from ClanLib: "
 msgstr "Erreur provenant de ClanLib: "
 
-#: src/pingus_main.cxx:919
+#: src/pingus_main.cxx:923
 msgid "Error caught from Pingus: "
 msgstr "Erreur provenant de Pingus: "
 
-#: src/pingus_main.cxx:923
+#: src/pingus_main.cxx:927
 msgid "Pingus: Out of memory!"
 msgstr "Pingus: mémoire insuffisante"
 
-#: src/pingus_main.cxx:927
+#: src/pingus_main.cxx:931
 msgid "Pingus: Standard exception caught!:\n"
 msgstr "Pingus: Exception standard interceptée!:\n"
 
-#: src/pingus_main.cxx:931
+#: src/pingus_main.cxx:935
 msgid "Pingus: Unknown throw caught!"
 msgstr "Pingus: Sortie (throw) inconnue interceptée!"
 
@@ -1103,8 +1104,8 @@ msgid ""
 "You saved exactly what you needed - you made it, but\n"
 "maybe you can do better?"
 msgstr ""
-"Vous avez sauvé juste ce qui était requis, vous avez réussi, mais pouvez-vous "
-"faire mieux?"
+"Vous avez sauvé juste ce qui était requis, vous avez réussi, mais pouvez-"
+"vous faire mieux?"
 
 #: src/result_screen.cxx:196
 msgid "Not everybody was saved, but still good work!"
@@ -1367,7 +1368,7 @@ msgstr ""
 "\n"
 "                                                  Bonne Chance!"
 
-#: src/system.cxx:265
+#: src/system.cxx:271
 msgid "Environment variable $HOME not set, fix that and start again."
 msgstr ""
 "La variable d'environnement $HOME n'est pas définie, corrigez cela et "
@@ -1408,11 +1409,12 @@ msgstr "...marche..."
 #~ "You saved just the ones you needed, you made it, but\n"
 #~ "maybe you can do it better next time?"
 #~ msgstr ""
-#~ "Vous avez sauvé juste ceux qui étaient requis, vous avez réussi, mais"
-#~ "peut-être pouvez-vous faire mieux la prochaine fois?"
+#~ "Vous avez sauvé juste ceux qui étaient requis, vous avez réussi, maispeut-"
+#~ "être pouvez-vous faire mieux la prochaine fois?"
 
 #~ msgid "Not everybody got saved, but still good work!"
-#~ msgstr "Pas tous n'ont pu être sauvés, mais c'est quand même du bon travail!"
+#~ msgstr ""
+#~ "Pas tous n'ont pu être sauvés, mais c'est quand même du bon travail!"
 
 #~ msgid ""
 #~ "You didn't save enough, but you still saved a few, next\n"

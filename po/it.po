@@ -6,15 +6,20 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
-"POT-Creation-Date: 2004-04-07 15:49+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-04-09 13:25+0000\n"
 "PO-Revision-Date: 2004-04-07 18:48+0200\n"
 "Last-Translator: Giuseppe D'Aqui' <kumber@tiscalinet.it>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Report-Msgid-Bugs-To: \n"
 "X-Generator: KBabel 1.3.1\n"
+
+#: src/actions/bridger.cxx:47 src/actions/bridger.cxx:231
+#: src/pingu_enums.cxx:39
+msgid "Bridger"
+msgstr "Pontiere"
 
 #: src/config.cxx:71
 msgid "Couldn't open: "
@@ -559,8 +564,8 @@ msgid ""
 "That was OK, but Pingu life insurance premiums have just gotten more "
 "expensive."
 msgstr ""
-"Tutto ok, ma i premi dell'assicurazione sulla vita dei Pingus costeranno "
-"di più."
+"Tutto ok, ma i premi dell'assicurazione sulla vita dei Pingus costeranno di "
+"più."
 
 #: src/level_result.cxx:109
 msgid "Maybe this level calls for a different strategy."
@@ -682,10 +687,6 @@ msgstr "Skater"
 msgid "Bomber"
 msgstr "Bombarolo"
 
-#: src/pingu_enums.cxx:39
-msgid "Bridger"
-msgstr "Pontiere"
-
 #: src/pingu_enums.cxx:40
 msgid "Climber"
 msgstr "Scalatore"
@@ -765,10 +766,12 @@ msgstr "| segfault_handler: intercettato SIGSEGV."
 
 #: src/pingus_main.cxx:98
 msgid "| Woops, Pingus just crashed, congratulations you've found a bug."
-msgstr "| Oops, Pingus è appena andato in crash. Congratulazioni, hai trovato un bug."
+msgstr ""
+"| Oops, Pingus è appena andato in crash. Congratulazioni, hai trovato un bug."
 
 #: src/pingus_main.cxx:99
-msgid "| Please write a little bug report to <grumbel@gmx.de>, include informations"
+msgid ""
+"| Please write a little bug report to <grumbel@gmx.de>, include informations"
 msgstr ""
 "| Per favore, scrivi un piccolo bug-report a <pingus-devel@nongnu.org>, "
 "includendo informazioni"
@@ -981,7 +984,8 @@ msgstr "Supporto clanVorbis:          ok"
 
 #: src/pingus_main.cxx:732
 msgid "clanVoribs support:  missing (.ogg music files will not be playable)"
-msgstr "Supporto clanVorbis: assente (i file musicali .ogg non saranno suonati)"
+msgstr ""
+"Supporto clanVorbis: assente (i file musicali .ogg non saranno suonati)"
 
 #: src/pingus_main.cxx:736
 msgid "clanMikMod support:           ok"
@@ -1352,7 +1356,8 @@ msgstr ""
 
 #: src/system.cxx:271
 msgid "Environment variable $HOME not set, fix that and start again."
-msgstr "La variabile d'ambiente $HOME non è definita, correggila e prova ancora."
+msgstr ""
+"La variabile d'ambiente $HOME non è definita, correggila e prova ancora."
 
 #: src/worldmap/level_dot.cxx:172 src/worldmap/level_dot.cxx:182
 msgid "locked"
@@ -1381,4 +1386,3 @@ msgstr "Worldmap: File assente: "
 #: src/worldmap/worldmap.cxx:260
 msgid "...walking..."
 msgstr "...sto andando..."
-
