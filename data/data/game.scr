@@ -2,7 +2,7 @@
 section Game
 {
 //	logo_bg       = images/misc/logo_bg.png       (type=surface, x=0, y=0, width=640, height=300);
-	logo_t        = images/misc/logo.tga       (type=surface, x=0, y=0, width=598, height=259);
+	logo_t        = images/misc/logo.png       (type=surface, x=0, y=0, width=598, height=259);
 
 //	logo        = images/misc/logo.png       (type=surface, x=0, y=0, width=640, height=480);
 
@@ -11,8 +11,8 @@ section Game
 
 	404 = images/core/misc/404.png (type=surface, x=0, y=0, width=64, height=64);
 
-	dot_green = images/core/worldmap/dot_green.tga (type=surface, x=0, y=0, width=32, height=12);
-        dot_red = images/core/worldmap/dot_red.tga (type=surface, x=0, y=0, width=32, height=12);
+	dot_green = images/core/worldmap/dot_green.png (type=surface, x=0, y=0, width=32, height=12);
+        dot_red = images/core/worldmap/dot_red.png (type=surface, x=0, y=0, width=32, height=12);
         dot_border = images/core/worldmap/dot_border.png (type=surface, x=0, y=0, width=34, height=14, tcol=0);
 }
 
@@ -24,11 +24,11 @@ section Cursors
 	scroll_cur  = images/core/cursors/scroll.png (type=surface, x=0, y=0, width=32, height=32, tcol=0);
 
 //	capgood     = images/core/misc/cap.png        (type=surface, x=0, y=0, width=34, height=34, tcol=0);
-	capgood     = images/core/cursors/cap.tga        (type=surface, x=0, y=0, width=40, height=40);
+	capgood     = images/core/cursors/cap.png        (type=surface, x=0, y=0, width=40, height=40);
 //	capbad	    = images/core/misc/capwrong.png   (type=surface, x=0, y=0, width=34, height=34, tcol=0);
-	capbad	    = images/core/cursors/capwrong.tga   (type=surface, x=0, y=0, width=40, height=40);
+	capbad	    = images/core/cursors/capwrong.png   (type=surface, x=0, y=0, width=40, height=40);
 
-	cross	    = images/core/cursors/cross.tga   (type=surface, x=0, y=0, width=40, height=40);
+	cross	    = images/core/cursors/cross.png   (type=surface, x=0, y=0, width=40, height=40);
 
 	arrow_right = images/core/cursors/arrow_right.png (type=surface, x=0, y=0, width=23, height=9, tcol=0);
 	arrow_left = images/core/cursors/arrow_left.png  (type=surface, x=0, y=0, width=23, height=9, tcol=0);

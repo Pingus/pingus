@@ -8,16 +8,16 @@ section Liquid
 	water       = images/liquids/water.png      (type=surface, x=0, y=0, width=32,  height=32, tcol=0, array=16x1);
 	water2      = images/liquids/water2.png     (type=surface, x=0, y=0, width=64,  height=64, tcol=0, array=12x1);
 	water3      = images/liquids/water3.png     (type=surface, x=0, y=0, width=64,  height=64, tcol=0, array=8x1);
-	water4      = images/liquids/water4.tga     (type=surface, x=0, y=0, width=64,  height=64, array=8x1);
-	water5      = images/liquids/water3.tga     (type=surface, x=0, y=0, width=64,  height=64, array=4x1);
+	water4      = images/liquids/water4.png     (type=surface, x=0, y=0, width=64,  height=64, array=8x1);
+	water5      = images/liquids/water3.png     (type=surface, x=0, y=0, width=64,  height=64, array=4x1);
 	swater      = images/liquids/swater.png     (type=surface, x=0, y=0, width=64,  height=64, tcol=0, array=4x1);
 	lava        = images/liquids/lava.png       (type=surface, x=0, y=0, width=64,  height=64, tcol=0, array=12x1);
-	slime        = images/liquids/slime.tga       (type=surface, x=0, y=0, width=64,  height=64, tcol=0, array=12x1);
+	slime        = images/liquids/slime.png       (type=surface, x=0, y=0, width=64,  height=64, tcol=0, array=12x1);
 }
 
 section Hotspots
 {
-        engine = images/hotspots/space/engine.tga (type=surface, x=0, y=0, width=108, height=166, array=4x1);
+        engine = images/hotspots/space/engine.png (type=surface, x=0, y=0, width=108, height=166, array=4x1);
 
 	left_arrow = images/hotspots/left_arrow.png (type=surface, x=0, y=0, width=100, height=73, tcol=0);
 	right_arrow = images/hotspots/right_arrow.png (type=surface, x=0, y=0, width=100, height=73, tcol=0);
@@ -26,7 +26,7 @@ section Hotspots
 	down_arrow = images/hotspots/down_arrow.png (type=surface, x=0, y=0, width=73, height=99, tcol=0);
 
 	danger      = images/hotspots/danger.png (type=surface, x=0, y=0, width=215, height=121, tcol=0);
-	crystal     = images/hotspots/crystal.tga    (type=surface, x=0, y=0, width=60,  height=109);
+	crystal     = images/hotspots/crystal.png    (type=surface, x=0, y=0, width=60,  height=109);
 	colum       = images/groundpieces/ground/misc/colum.png      (type=surface, x=0, y=0, width=142, height=184, tcol=0);
 	colum_flat  = images/groundpieces/ground/misc/colum_flat.png (type=surface, x=0, y=0, width=184, height=122, tcol=0);
 
@@ -49,9 +49,9 @@ section Hotspots
 	pillar3     = images/hotspots/pillar3.png (type=surface, x=0, y=0, width=36, height=147, tcol=0);
 
 	well        = images/hotspots/well.png    (type=surface, x=0, y=0, width=32, height=54, tcol=0);
-	plate       = images/groundpieces/solid/misc/plate.png   (type=surface, x=0, y=0, width=64, height=32);
-	plate2      = images/groundpieces/solid/misc/plate2.png  (type=surface, x=0, y=0, width=64, height=64);
-	plate_small = images/groundpieces/solid/misc/plate_small.png  (type=surface, x=0, y=0, width=32, height=32);
+	plate       = images/groundpieces/solid/misc/metalplate.png   (type=surface, x=0, y=0, width=64, height=32);
+	plate2      = images/groundpieces/solid/misc/metalplate_horz.png  (type=surface, x=0, y=0, width=64, height=64);
+	plate_small = images/groundpieces/solid/misc/metalplate_small.png  (type=surface, x=0, y=0, width=32, height=32);
 
 	section signposts {
 		basher = images/hotspots/signposts/basher.png (type=surface, x=0, y=0, width=28, height=46, tcol=0);
@@ -291,15 +291,15 @@ section GroundPieces
 		greenjellybaby = images/groundpieces/ground/sweets/greenjellybaby.png (type=surface, x=0, y=0, width=64, height=84, tcol=0);
 		icecream          = images/groundpieces/ground/sweets/icecream.png (type=surface, x=0, y=0, width=114,  height=273, tcol=0);
 		icecream = images/groundpieces/ground/sweets/icecream.png (type=surface, x=0, y=0, width=114, height=273, tcol=0);
-		jellybaby = images/groundpieces/ground/sweets/jellybaby.tga (type=surface, x=0, y=0, width=64, height=83);
-		jellybaby2 = images/groundpieces/ground/sweets/jellybaby2.tga (type=surface, x=0, y=0, width=85, height=63);
-		jellybaby2 = images/groundpieces/ground/sweets/jellybaby2.tga (type=surface, x=0, y=0, width=85, height=63);
+		jellybaby = images/groundpieces/ground/sweets/jellybaby.png (type=surface, x=0, y=0, width=64, height=83);
+		jellybaby2 = images/groundpieces/ground/sweets/jellybaby2.png (type=surface, x=0, y=0, width=85, height=63);
+		jellybaby2 = images/groundpieces/ground/sweets/jellybaby2.png (type=surface, x=0, y=0, width=85, height=63);
 		jube1 = images/groundpieces/ground/sweets/jube1.png (type=surface, x=0, y=0, width=49, height=42, tcol=0);
-		jube2 = images/groundpieces/ground/sweets/jube2.tga (type=surface, x=0, y=0, width=45, height=48);
-		lollipop = images/groundpieces/ground/sweets/lollipop.tga (type=surface, x=0, y=0, width=42, height=238);
-		lollipop = images/groundpieces/ground/sweets/lollipop.tga (type=surface, x=0, y=0, width=42, height=238);
-		lollipop-purp = images/groundpieces/ground/sweets/lollipop-purp.tga (type=surface, x=0, y=0, width=42, height=238);
-		lollipop-purp = images/groundpieces/ground/sweets/lollipop-purp.tga (type=surface, x=0, y=0, width=42, height=238);
+		jube2 = images/groundpieces/ground/sweets/jube2.png (type=surface, x=0, y=0, width=45, height=48);
+		lollipop = images/groundpieces/ground/sweets/lollipop.png (type=surface, x=0, y=0, width=42, height=238);
+		lollipop = images/groundpieces/ground/sweets/lollipop.png (type=surface, x=0, y=0, width=42, height=238);
+		lollipop-purp = images/groundpieces/ground/sweets/lollipop-purp.png (type=surface, x=0, y=0, width=42, height=238);
+		lollipop-purp = images/groundpieces/ground/sweets/lollipop-purp.png (type=surface, x=0, y=0, width=42, height=238);
 		mmblue = images/groundpieces/ground/sweets/mmblue.png (type=surface, x=0, y=0, width=50, height=41, tcol=0);
 		mmbrown = images/groundpieces/ground/sweets/mmbrown.png (type=surface, x=0, y=0, width=50, height=41, tcol=0);
 		mmred = images/groundpieces/ground/sweets/mmred.png (type=surface, x=0, y=0, width=54, height=31, tcol=0);
@@ -307,7 +307,7 @@ section GroundPieces
 		purpchoc = images/groundpieces/ground/sweets/purpchoc.png (type=surface, x=0, y=0, width=189, height=70, tcol=0);
 		purplechoc = images/groundpieces/ground/sweets/purplechoc.png (type=surface, x=0, y=0, width=150, height=57, tcol=0);
 		redjellybaby = images/groundpieces/ground/sweets/redjellybaby.png (type=surface, x=0, y=0, width=85, height=63, tcol=0);
-//		jube1 = images/groundpieces/ground/sweets/jube1.tga (type=surface, x=0, y=0, width=49, height=42);
+//		jube1 = images/groundpieces/ground/sweets/jube1.png (type=surface, x=0, y=0, width=49, height=42);
 	        cake1 = images/groundpieces/ground/sweets/cake1.png (type=surface, x=0, y=0, width=163, height=101, tcol=0);
 	        cake2 = images/groundpieces/ground/sweets/cake2.png (type=surface, x=0, y=0, width=121, height=142, tcol=0);
 	        cake3 = images/groundpieces/ground/sweets/cake3.png (type=surface, x=0, y=0, width=153, height=97, tcol=0);
@@ -326,7 +326,7 @@ section GroundPieces
 		smallbrickpiece = images/groundpieces/ground/desert/smallbrickpiece.png (type=surface, x=0, y=0, width=76,  height=38); 
 		// End: Only here for backward compatibility
 
-		black     = images/groundpieces/ground/misc/black.tga    (type=surface, x=0, y=0, width=256, height=228);
+		black     = images/groundpieces/ground/misc/black.png    (type=surface, x=0, y=0, width=256, height=228);
 
                 bridge1     = images/groundpieces/ground/misc/bridge1.png    (type=surface, x=0, y=0, width=216, height=42, tcol=0);
 		way         = images/groundpieces/ground/misc/way.png        (type=surface, x=0, y=0, width=117, height=35, tcol=0);
@@ -496,9 +496,9 @@ section Grass
 section Themes
 {
 //	crystal = images/themes/crystal.png   (type=surface, x=0, y=0, width=256,  height=128);
-//	xmas99  = images/themes/xmas99.tga    (type=surface, x=0, y=0, width=240,  height=98);
-//	tutorial = images/themes/tutorial.tga    (type=surface, x=0, y=0, width=236,  height=154);
-//	space = images/themes/space.tga    (type=surface, x=0, y=0, width=258,  height=145);
+//	xmas99  = images/themes/xmas99.png    (type=surface, x=0, y=0, width=240,  height=98);
+//	tutorial = images/themes/tutorial.png    (type=surface, x=0, y=0, width=236,  height=154);
+//	space = images/themes/space.png    (type=surface, x=0, y=0, width=258,  height=145);
 }
 
 
@@ -508,35 +508,35 @@ section Exits {
 	ice        = images/exits/ice.png       (type=surface, x=0, y=0, width=64, height=64, tcol=0);
 	stone      = images/exits/stone.png     (type=surface, x=0, y=0, width=75, height=60, tcol=0);
 	desert     = images/exits/desertexit.png  (type=surface, x=0, y=0, width=150, height=100, tcol=0);
-	space      = images/exits/space1.tga  (type=surface, x=0, y=0, width=154, height=118, array=4x1);
+	space      = images/exits/space1.png  (type=surface, x=0, y=0, width=154, height=118, array=4x1);
 	sweetexit  = images/exits/sweetexit.png (type=surface, x=0, y=0, width=180,  height=121, tcol=0);
 	sortie  = images/exits/sortie.png (type=surface, x=0, y=0, width=78,  height=78, tcol=0);
-	sortie_anim  = images/exits/sortie.tga (type=surface, x=0, y=0, width=78,  height=90, array=11x1);
+	sortie_anim  = images/exits/sortie.png (type=surface, x=0, y=0, width=78,  height=90, array=11x1);
 //	industrial = images/exits/industrial.png (type=surface, x=0, y=0, width=228, height=184, tcol=0);
 	industrial = images/exits/industrial.png (type=surface, x=0, y=0, width=145, height=118, tcol=0);
         crystal = images/exits/crystal.png (type=surface, x=0, y=0, width=154, height=105, tcol=0);
 }
 
 section Entrances {
-//	gate        = images/entrances/gate.tga      (type=surface, x=0, y=0, width=150, height=150, array=6x1);
+//	gate        = images/entrances/gate.png      (type=surface, x=0, y=0, width=150, height=150, array=6x1);
 	entrance    = images/entrances/entrance.png   (type=surface, x=0, y=0, width=64, height=32, tcol=0);
 
 	generic =  images/entrances/generic.png (type=surface, x=0, y=0, width=64, height=64, tcol=0);
 
-	woodthing_nmov = images/entrances/woodthing_nmov.tga   (type=surface, x=0, y=0, width=151, height=157);
+	woodthing_nmov = images/entrances/woodthing_nmov.png   (type=surface, x=0, y=0, width=151, height=157);
 	woodthing_mov  = images/entrances/woodthing_mov.png   (type=surface, x=0, y=0, width=105, height=17, array=17x1, tcol=0);
 
 	cloud  = images/entrances/cloudent.png   (type=surface, x=0, y=0, width=188, height=90, tcol=0);
-	space = images/entrances/space.tga (type=surface, x=0, y=0, width=62, height=64, array=5x1);
+	space = images/entrances/space.png (type=surface, x=0, y=0, width=62, height=64, array=5x1);
 
-//	sun = images/hotspots/sun.tga (type=surface, x=0, y=0, width=215, height=215);
+//	sun = images/hotspots/sun.png (type=surface, x=0, y=0, width=215, height=215);
 
         wood_bottom = images/entrances/wood_bottom.png (type=surface, x=0, y=0, width=100, height=57, tcol=0);
         wood_top = images/entrances/wood_top.png (type=surface, x=0, y=0, width=100, height=44, tcol=0);
 
-	entrance_eyes = images/entrances/entrance_eyes.tga (type=surface, x=0, y=0, width=273, height=221);
-	entrance_eyes_anim = images/entrances/entrance_eyes_anim.tga (type=surface, x=0, y=0, width=166, height=72, array=7x1);
-	underlay_eyes = images/entrances/underlay_eyes.tga (type=surface, x=0, y=0, width=166, height=72);
+	entrance_eyes = images/entrances/eyes_entrance.png (type=surface, x=0, y=0, width=273, height=221);
+	entrance_eyes_anim = images/entrances/eyes_entrance_anim.png (type=surface, x=0, y=0, width=166, height=72, array=7x1);
+	underlay_eyes = images/entrances/eyes_underlay.png (type=surface, x=0, y=0, width=166, height=72);
 
         industrial = images/entrances/industrial.png (type=surface, x=0, y=0, width=105, height=158, tcol=0);
         industrial_top = images/entrances/industrial_top.png (type=surface, x=0, y=0, width=43, height=53, tcol=0);

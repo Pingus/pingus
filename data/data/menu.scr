@@ -2,28 +2,7 @@
 
 section Buttons
 {
-	back = images/buttons/back.pcx (type=surface, x=0, y=0, width=64, height=34, tcol=0);
-
-	editor        = images/buttons/editor.tga         (type=surface, x=0, y=0, width=105, height=227);
-	editor_p      = images/buttons/editor_p.tga       (type=surface, x=0, y=0, width=105, height=227);
-
-	load        = images/buttons/load.tga         (type=surface, x=0, y=0, width=200, height=105);
-	load_p      = images/buttons/load_p.tga       (type=surface, x=0, y=0, width=200, height=105);
-
-	quit        = images/buttons/quit.tga         (type=surface, x=0, y=0, width=191, height=100);
-	quit_p      = images/buttons/quit_p.tga       (type=surface, x=0, y=0, width=191, height=100);
-
-	play        = images/buttons/play.tga         (type=surface, x=0, y=0, width=196, height=97);
-	play_p      = images/buttons/play_p.tga       (type=surface, x=0, y=0, width=196, height=97);
-
-	options        = images/buttons/options.tga         (type=surface, x=0, y=0, width=266, height=78);
-	options_p      = images/buttons/options_p.tga       (type=surface, x=0, y=0, width=266, height=78);
-
-//	theme          = images/buttons/theme.tga         (type=surface, x=0, y=0, width=250, height=106);
-//	theme_p        = images/buttons/theme_p.tga       (type=surface, x=0, y=0, width=250, height=106);
-
-	worlds          = images/buttons/worlds.tga         (type=surface, x=0, y=0, width=245, height=104);
-	worlds_p        = images/buttons/worlds_p.tga       (type=surface, x=0, y=0, width=245, height=104);
+	back = images/core/buttons/back.pcx (type=surface, x=0, y=0, width=64, height=34, tcol=0);
 }
 
 section NewButtons
