@@ -1,4 +1,4 @@
-//  $Id: pingus.cxx,v 1.20 2002/10/15 22:09:55 grumbel Exp $
+//  $Id: pingus.cxx,v 1.21 2002/10/15 22:14:42 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -94,16 +94,24 @@ Pingus::walk_to_node (NodeId target)
     {
       const PathfinderResult& res = path->get_path (current_node, target);
 
-      std::cout << "XXXXXXX Path cost: " << res.cost << std::endl;
-      node_path = res.path;
+      if (res.path.empty())
+        {
+          // No path could be found
+          return false;
+        }
+      else
+        {
+          std::cout << "XXXXXXX Path cost: " << res.cost << std::endl;
+          node_path = res.path;
 
-      // Simulate that we just reached current_node, then update the edge_path
-      target_node = node_path.back(); // equal to current_node;
-      node_path.pop_back();
-      update_edge_path();
+          // Simulate that we just reached current_node, then update the edge_path
+          target_node = node_path.back(); // equal to current_node;
+          node_path.pop_back();
+          update_edge_path();
 
-      current_node = NoNode;
-      return true;
+          current_node = NoNode;
+          return true;
+        }
     }
   else // pingu between two nodes
     {
@@ -123,24 +131,40 @@ Pingus::walk_to_node (NodeId target)
         }
       else
         {
-          PathfinderResult node_path1 = path->get_path (source_node, target);
-          PathfinderResult node_path2 = path->get_path (target_node, target);
+          const PathfinderResult& node_path1 = path->get_path (source_node, target);
+          const PathfinderResult& node_path2 = path->get_path (target_node, target);
 	
-          // Select the shorter path
-          if (node_path1.cost + edge_path_position
-              < node_path2.cost + (edge_path.length() - edge_path_position))
-            { // walk to source node, which means to reverse the pingu
-              node_path = node_path1.path;
-
-              // Reverse the pingu
-              std::swap(target_node, source_node);
-              edge_path.reverse();
-              edge_path_position = edge_path.length() - edge_path_position;
+          // Check that a path exist
+          if (node_path1.path.empty())
+            {
+              if (node_path2.path.empty())
+                {
+                  return false;
+                }
+              else
+                {
+                  node_path = node_path2.path;
+                }
             }
           else
-            { // walk to target_node
-              node_path = node_path2.path;
+            {
+              // Select the shorter path
+              if (node_path1.cost + edge_path_position
+                  < node_path2.cost + (edge_path.length() - edge_path_position))
+                { // walk to source node, which means to reverse the pingu
+                  node_path = node_path1.path;
+
+                  // Reverse the pingu
+                  std::swap(target_node, source_node);
+                  edge_path.reverse();
+                  edge_path_position = edge_path.length() - edge_path_position;
+                }
+              else
+                { // walk to target_node
+                  node_path = node_path2.path;
+                }
             }
+
           // Pop the first element on the stack, since we are already targeting it
           node_path.pop_back();
 
