@@ -1,4 +1,4 @@
-//  $Id: editor.cxx,v 1.19 2002/07/03 17:14:25 grumbel Exp $
+//  $Id: editor.cxx,v 1.20 2002/08/04 15:42:23 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -144,7 +144,7 @@ Editor::unregister_event_handler()
 }
 
 void
-Editor::edit ()
+Editor::on_startup ()
 {
   quit = false;
 
@@ -153,49 +153,40 @@ Editor::edit ()
   Display::show_cursor();
 
   register_event_handler();
-
-  std::vector<EditorObj*> tmp_selection;
-
-  while (!quit) 
-    {
-      // FIXME: This busy loop should be replaced by redraw events
-      CL_System::sleep (20);
-      CL_System::keep_alive();
-      move_objects();
-      draw();
-      if (get_gui_manager ()->get_focus () == get_gui_manager ())
-	CL_Display::draw_rect (25, 0, CL_Display::get_width (), CL_Display::get_height (),
-			       1.0f, 1.0f, 1.0f);
-      gui->show ();
-      //std::cout << "GUI has Focus: " << (gui->get_focus () !=  gui) << std::endl;
-      Display::flip_display(true);
-
-      // FIXME: This should be moved to the object manager
-      if (tmp_selection != selection->get_objects ())
-	{
-	  std::cout << "Selection changed" << std::endl;
-	  tmp_selection = selection->get_objects ();
-
-	  // FIXME: dirty hack
-	  if (selection->size() == 1)
-	    {
-	      EditorObj* obj = selection->get_current_obj ();
-	      property_window->update_frame (obj);
-	      //CL_Component* comp = obj->get_gui_dialog (editor->property_window);
-	    }
-	  else
-	    {
-	      property_window->update_frame (0);
-	      std::cout << "EditorEvent::editor_show_object_properties (): error: multiple objects selected" << std::endl;
-	    }
-	}
-    }
-
-  unregister_event_handler();
-
-  Display::hide_cursor();
 }
 
+void
+Editor::on_shutdown ()
+{
+  unregister_event_handler();
+  Display::hide_cursor(); 
+}
+
+void
+Editor::update (const GameDelta& delta)
+{
+  // FIXME: This should be moved to the object manager
+  if (tmp_selection != selection->get_objects ())
+    {
+      std::cout << "Exit: Selection changed" << std::endl;
+      tmp_selection = selection->get_objects ();
+
+      // FIXME: dirty hack
+      if (selection->size() == 1)
+	{
+	  EditorObj* obj = selection->get_current_obj ();
+	  property_window->update_frame (obj);
+	  //CL_Component* comp = obj->get_gui_dialog (editor->property_window);
+	}
+      else
+	{
+	  property_window->update_frame (0);
+	  std::cout << "EditorEvent::editor_show_object_properties (): error: multiple objects selected" << std::endl;
+	}
+    }  
+
+  move_objects();
+}
 
 void
 Editor::draw ()
@@ -206,24 +197,6 @@ Editor::draw ()
   selection->draw (view);
   panel->draw();
 
-  /*  {
-      int x1_pos = CL_Display::get_width() - 200;
-      int y1_pos = CL_Display::get_height() - 150;
-      int x2_pos = CL_Display::get_width() - 1;
-      int y2_pos = CL_Display::get_height() - 1;
-      int width  = (CL_Display::get_width() - 25) * 200 / object_manager.width;
-      int height = CL_Display::get_height() * 150 / object_manager.height;;
-
-      Display::draw_rect(x1_pos, y1_pos , x2_pos, y2_pos,
-      1.0, 1.0, 1.0, 1.0);
-
-      Display::draw_rect(x1_pos - (object_manager.x_offset * 200 / object_manager.width),
-      y1_pos - (object_manager.y_offset * 150 / object_manager.height),
-      x1_pos - (object_manager.x_offset * 200 / object_manager.width) + width,  
-      y1_pos - (object_manager.y_offset * 150 / object_manager.height) + height,
-      1.0, 1.0, 1.0, 1.0);
-      }*/
-
   status_line->draw(view);
   scroll_map->draw();
     
@@ -231,6 +204,13 @@ Editor::draw ()
     {
       help_screen.draw ();
     }
+
+  gui->show ();
+
+  if (get_gui_manager ()->get_focus () == get_gui_manager ())
+    CL_Display::draw_rect (25, 0, CL_Display::get_width (), CL_Display::get_height (),
+			   1.0f, 1.0f, 1.0f);
+
 }
 
 

@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.9 2002/08/02 11:25:46 grumbel Exp $
+//   $Id: pingus_main.cxx,v 1.10 2002/08/04 15:42:23 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -827,26 +827,24 @@ PingusMain::start_game(void)
 	      successfull = false;
 	    }
 	}
-#if 0
+
       if (successfull)
 	{
-	  if (start_editor) {
-	    Editor::instance ()->load_level (levelfile);
-	    levelfile = "";
-	  } else {
-	    PingusGameSession game (levelfile);
-	    game.start ();
-	  }
-	}
-#endif
-      
+	  if (start_editor) 
+	    {
+	      Editor::instance ()->load_level (levelfile);
+	      levelfile = "";
+	      ScreenManager::instance()->push_screen(Editor::instance (), false);
+	    } 
+	  else
+	    {
+	      ScreenManager::instance()->push_screen(new PingusGameSession (levelfile), true);
+	    }
+	}    
     }
 
   // show the main menu, the rest of the game is spawn from there
   try {
-    //PingusMenuManager menu;
-    // This is the main loop
-    //menu.display ();
     std::cout << "PingusMain::start screen manager" << std::endl;
     ScreenManager::instance ()->display ();
     std::cout << "PingusMain::quit game and screen_manager" << std::endl;

@@ -1,4 +1,4 @@
-//  $Id: editor.hxx,v 1.8 2002/07/02 09:14:20 grumbel Exp $
+//  $Id: editor.hxx,v 1.9 2002/08/04 15:42:23 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,12 +21,15 @@
 #define HEADER_PINGUS_EDITOR_EDITOR_HXX
 
 #include <string>
+#include <vector>
 #include <ClanLib/Signals/slot.h>
 
+#include "../screen.hxx"
 #include "editor_help_screen.hxx"
 
 ///
 class EditorView;
+class EditorObj;
 class EditorEvent;
 class Panel;
 class ScrollMap;
@@ -48,7 +51,7 @@ namespace Pingus
 class CL_StyleManager_Default;
 class CL_GUIManager;
 
-class Editor
+class Editor : public Screen
 {
 private:
   EditorEvent* event;
@@ -92,6 +95,8 @@ private:
 
   static Editor* instance_;
 
+  std::vector<EditorObj*> tmp_selection;
+
   Editor ();
 public:
   ~Editor ();
@@ -99,8 +104,7 @@ public:
   static Editor* instance ();
 
   std::string read_string (const std::string & prefix = "", const std::string & default_str = "");
-  void edit ();
-  void draw ();
+
   void draw_noflip();
   void interactive_move_object();
   void move_objects();
@@ -122,6 +126,13 @@ public:
   EditorEvent* get_event() { return event; }
 
   CL_GUIManager* get_gui_manager ();
+
+  // overloaded Screen stuff
+  void draw ();
+  void update (const GameDelta& delta);
+
+  void on_startup ();
+  void on_shutdown ();
 };
 
 #endif

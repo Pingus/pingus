@@ -1,4 +1,4 @@
-//  $Id: pingus_menu_manager.cxx,v 1.8 2002/08/03 17:20:37 grumbel Exp $
+//  $Id: pingus_menu_manager.cxx,v 1.9 2002/08/04 15:42:23 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -45,139 +45,6 @@ PingusMenuManager::~PingusMenuManager ()
 {
 }
 
-/// Register all event-handling stuff
-void 
-PingusMenuManager::register_events ()
-{
-  //FIXME: I don't like event handling in pingus, should be handled
-  //FIXME: otherwise. 
-
-  if (event_register_counter == 0)
-    {
-      ++event_register_counter;
-      
-      /*
-      on_button_press_slot
-	= CL_Input::sig_button_press ().connect (this, &PingusMenuManager::on_button_press);
-      on_button_release_slot
-	= CL_Input::sig_button_release ().connect (this, &PingusMenuManager::on_button_release);
-      on_mouse_move_slot
-	= CL_Input::sig_mouse_move ().connect (this, &PingusMenuManager::on_mouse_move);
-      */
-    }
-  else
-    {
-      std::cout << "PingusMenuManager::register_events (): handler already registered" << std::endl;
-    }
-}
-
-void 
-PingusMenuManager::unregister_events ()
-{
-  /*
-  CL_Input::sig_button_press ().disconnect (on_button_press_slot);
-  CL_Input::sig_button_release ().disconnect (on_button_release_slot);
-  CL_Input::sig_mouse_move ().disconnect (on_mouse_move_slot);
-  */
-}
-
-void 
-PingusMenuManager::enable_events ()
-{
-  ++event_register_counter;
-}
-
-void 
-PingusMenuManager::disable_events ()
-{
-  --event_register_counter;
-}
-
-/*
-void 
-PingusMenuManager::on_button_press (CL_InputDevice* device,const CL_Key& key)
-{
-  if (event_register_counter <= 0) return;
-
-  std::cout << "PingusMenuManager::on_button_press (" 
-	    << device << ", " << key.id 
-	    << ")" << std::endl;
-  if (device == CL_Input::keyboards[0] && key.id == CL_KEY_ESCAPE)
-    {
-      if (menu_stack.size () > 2)
-	pop_menu ();
-      else if (menu_stack.size () == 2 && current_menu () != &mainmenu)
-	set_menu (&mainmenu);
-      else if (menu_stack.size () == 2 && current_menu () == &mainmenu)
-	push_menu (&exitmenu);
-    }
-  else
-    current_menu ()->on_button_press (device, key);
-}
-
-void
-PingusMenuManager::on_button_release (CL_InputDevice* device,const CL_Key& key)
-{
-  if (event_register_counter <= 0) return;
-  current_menu ()->on_button_release (device, key);
-}
-
-void 
-PingusMenuManager::on_mouse_move (CL_InputDevice* device, int x, int y)
-{
-  if (event_register_counter <= 0) return;
-  //  std::cout << "PingusMenuManager::on_mouse_move ("
-  //<< device << ", " << x << ", " << y << ")" << std::endl;
-  current_menu ()->on_mouse_move (device, x, y);
-}
-*/
-
-/*
-void 
-PingusMenuManager::display ()
-{
-  //std::cout << "Pingusmenumanager: display ()" << std::endl;
-  DeltaManager delta_manager;
-
-  current_menu ()->preload ();
-  register_events ();
-  loop = true;
-
-  Input::Controller input_controller("../doc/mycontroller.xml");
-  // Main loop for the menu
-  while (loop)
-    {
-      //std::cout << "Displaying menu..." << std::endl;
-      float time_delta = delta_manager.getset ();
-
-      input_controller.update (time_delta);
-
-      // We ignore delta's larger then one second, to avoid jumps in
-      // the scrolling (for example when starting a level and then
-      // after some minutes going back to the menu would cause delta's
-      // from >100, not nice)
-
-      GameDelta delta (time_delta, input_controller.get_events ());
-
-      // We copy the menu_stack so that we don't invalidate our
-      // iterators when menu's are removed/added in update()
-      std::vector<PingusSubMenu *> tmp_menu_stack = menu_stack;
-
-      for (MenuStackIter i = tmp_menu_stack.begin (); i != tmp_menu_stack.end (); ++i)
-	(*i)->draw ();
-
-      for (MenuStackIter i = tmp_menu_stack.begin (); i != tmp_menu_stack.end (); ++i)
-	(*i)->update (delta);
-      
-      Display::flip_display ();
-
-      
-      CL_System::keep_alive ();
-      CL_System::sleep (0);
-    }
-  unregister_events ();
-}
-*/
 void
 PingusMenuManager::draw ()
 {
@@ -203,12 +70,8 @@ PingusMenuManager::update (const GameDelta& delta)
 void 
 PingusMenuManager::set_menu (PingusSubMenu * menu)
 {
-  /*if (current_menu.get ())
-    fadeout ();*/
   pop_menu ();
   push_menu (menu);
-  //current_menu = menu;
-  //current_menu->preload ();
 }
 
 void 

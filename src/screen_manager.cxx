@@ -1,4 +1,4 @@
-//  $Id: screen_manager.cxx,v 1.6 2002/08/03 17:20:37 grumbel Exp $
+//  $Id: screen_manager.cxx,v 1.7 2002/08/04 15:42:23 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,6 +35,7 @@ ScreenManager::ScreenManager ()
   replace_screen_arg = std::pair<Screen*, bool>(0, false);
   cached_action = none;
 
+  // Set the root screen
   push_screen (PingusMenuManager::instance (), false);
 }
 

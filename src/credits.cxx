@@ -1,4 +1,4 @@
-//  $Id: credits.cxx,v 1.2 2002/06/19 15:19:26 torangan Exp $
+//  $Id: credits.cxx,v 1.3 2002/08/04 15:42:23 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,17 +27,19 @@
 #include "sound.hxx"
 #include "pingus_resource.hxx"
 #include "credits.hxx"
+#include "game_delta.hxx"
+#include "screen_manager.hxx"
 
 /* Headers needed for i18n / gettext */
 #include <clocale>
 #include <config.h>
 #include "my_gettext.hxx"
 
+Credits* Credits::instance_ = 0;
 
-Credits credit_screen;
-
-Credits::Credits() : is_init(false)
-{  
+Credits::Credits() 
+  : is_init(false)
+{
 }
 
 ///
@@ -94,6 +96,8 @@ Credits::init ()
       credits.push_back("_Keir Fraser");  
 
       credits.push_back("n");
+
+      credits.push_back("-### END ###");
     }
 }
 
@@ -102,45 +106,13 @@ Credits::~Credits()
   
 }
 
-// FIXME: We have no time handling here, so it might run too fast on
-// fast computers
-void
-Credits::display()
-{
-  init ();
-  offset = 0;
-
-  bool quit = false;
-
-  PingusSound::play_music("music/pingus-2.it");
-
-  offset = CL_Display::get_height() + 50;
-
-  DeltaManager delta;
-  while(!quit)
-    {
-      if (CL_Keyboard::get_keycode(CL_KEY_ESCAPE))
-	quit = true;
-
-      if (CL_Keyboard::get_keycode(CL_KEY_SPACE))
-	update (delta.getset () * 500.0f);
-      else
-	update (delta.getset () * 25.0f);	
-	
-      draw ();
-      Display::flip_display ();
-
-      CL_System::keep_alive();
-    }
-
-  while (CL_Keyboard::get_keycode(CL_KEY_ESCAPE))
-    CL_System::keep_alive ();
-}
-
 void 
-Credits::update (float delta)
+Credits::update (const GameDelta& delta)
 {
-  offset -= 1.0f * delta;
+  offset -= 50.0f * delta.get_time ();
+
+  if (offset < -1200.0f)
+    ScreenManager::instance()->pop_screen ();
 }
 
 void 
@@ -183,6 +155,25 @@ Credits::draw ()
 	  break;
 	}
     }
+}
+
+void
+Credits::on_startup ()
+{
+  init ();
+
+  offset = CL_Display::get_height() + 50;
+
+  PingusSound::play_music("music/pingus-2.it");
+}
+
+Credits*
+Credits::instance ()
+{
+  if (instance_)
+    return instance_;
+  else
+    return instance_ = new Credits ();
 }
 
 /* EOF */

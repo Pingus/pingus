@@ -1,4 +1,4 @@
-//  $Id: surface_button.cxx,v 1.6 2002/08/03 17:20:37 grumbel Exp $
+//  $Id: surface_button.cxx,v 1.7 2002/08/04 15:42:23 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,6 +27,7 @@
 #include "editor/editor.hxx"
 #include "theme_selector.hxx"
 #include "surface_button.hxx"
+#include "screen_manager.hxx"
 
 /* Headers needed for i18n / gettext */
 #include <clocale>
@@ -185,8 +186,8 @@ CreditButton::~CreditButton()
 void 
 CreditButton::on_click()
 {
-  Credits credits;
-  credits.display();
+  std::cout << "Pushing credits screen" << std::endl;
+  ScreenManager::instance()->push_screen (Credits::instance(), false);
 }
 
 ///////////////////////////////////////////////
@@ -326,9 +327,7 @@ EditorButton::load_level(const std::string& str)
 void
 EditorButton::on_click()
 {
-  menu->get_manager ()->disable_events ();
-  Editor::instance()->edit();
-  menu->get_manager ()->enable_events ();
+  ScreenManager::instance()->push_screen (Editor::instance(), false);
 }
 
 StoryButton::StoryButton (PingusMenu* menu)
@@ -382,10 +381,8 @@ ThemeButton::on_click()
 {
   PingusSound::play_sound ("sounds/letsgo.wav");
   
-  menu->get_manager ()->disable_events ();
   ThemeSelector theme_selector;
   theme_selector.display();
-  menu->get_manager ()->enable_events ();
 }
 
 MultiplayerButton::MultiplayerButton (PingusMenu* menu)
@@ -409,9 +406,7 @@ MultiplayerButton::~MultiplayerButton ()
 void
 MultiplayerButton::on_click()
 {
-  menu->get_manager ()->disable_events ();
   multiplayer_config.display ();
-  menu->get_manager ()->enable_events ();
 }
 
 /* EOF */

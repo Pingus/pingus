@@ -1,4 +1,4 @@
-//  $Id: credits.hxx,v 1.2 2002/06/24 22:52:54 grumbel Exp $
+//  $Id: credits.hxx,v 1.3 2002/08/04 15:42:23 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,20 +23,20 @@
 #include <string>
 #include <vector>
 #include <ClanLib/Display/Display/surface.h>
+#include "screen.hxx"
 
 class CL_Font;
+class GameDelta;
 
-///
-class Credits
+class Credits : public Screen
 {
 private:
-  ///
+  static Credits* instance_;
+
   CL_Surface surface;
-  ///
   CL_Font*    font;
-  ///
   CL_Font*    font_small;
-  ///
+
   bool is_init;
 
   float offset;
@@ -49,20 +49,19 @@ private:
       '-' - Use large font
   */
   std::vector<std::string> credits;
-public:
-  ///
-  Credits();
-  ///
-  ~Credits();
-  ///
-  void init ();
-  void update (float delta);
-  void draw ();
-  ///
-  void display();
-};
 
-extern Credits credit_screen;
+  Credits();
+public:
+  ~Credits();
+
+  void init ();
+  void update (const GameDelta& delta);
+  void draw ();
+
+  void on_startup ();
+
+  static Credits* instance ();
+};
 
 #endif
 

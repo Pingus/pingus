@@ -1,4 +1,4 @@
-//  $Id: gui_manager.cxx,v 1.7 2002/08/02 22:55:19 grumbel Exp $
+//  $Id: gui_manager.cxx,v 1.8 2002/08/04 15:42:23 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -111,7 +111,7 @@ GUIManager::process_input (const std::list<Input::Event*>& events)
 	case Input::ButtonEventType:
 	  {
 	    ButtonEvent* event = dynamic_cast<ButtonEvent*>(*i);
-	    std::cout << "GUIManager: Got button event: " << event->name << " " << event->state << std::endl;
+	    //std::cout << "GUIManager: Got button event: " << event->name << " " << event->state << std::endl;
 
 	    Component* comp = component_at (x_pos, y_pos);//FIXME
 
@@ -132,7 +132,7 @@ GUIManager::process_input (const std::list<Input::Event*>& events)
 
 			if (primary_pressed_component == comp)
 			  {
-			    std::cout << "GUIManager: calling on_primary_button_click ()" << std::endl;
+			    //std::cout << "GUIManager: calling on_primary_button_click ()" << std::endl;
 			    comp->on_primary_button_click (x_pos, y_pos);
 			  }
 			else
@@ -168,7 +168,7 @@ GUIManager::process_input (const std::list<Input::Event*>& events)
 
 			if (secondary_pressed_component == comp)
 			  {
-			    std::cout << "GUIManager: calling on_secondary_button_click ()" << std::endl;
+			    //std::cout << "GUIManager: calling on_secondary_button_click ()" << std::endl;
 			    comp->on_secondary_button_click (x_pos, y_pos);
 			  }
 			else
@@ -184,7 +184,7 @@ GUIManager::process_input (const std::list<Input::Event*>& events)
 			   FIXME: on_secondary_button_press() method to another
 			   FIXME: manager, not sure if there is or
 			   FIXME: should be a workaround */
-			std::cout << "GUIManager: Got a release without a press, possibly a bug" << std::endl;
+			//std::cout << "GUIManager: Got a release without a press, possibly a bug" << std::endl;
 		      }
 		  }
 
