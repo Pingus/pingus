@@ -24,7 +24,7 @@
     <surface-background>
       <surface>
         <image>textures/lunartile</image>
-        <modifier>ROT0</modifer>
+        <modifier>ROT0</modifier>
       </surface>
       <color>
         <red>0</red>
@@ -48,7 +48,7 @@
     <hotspot>
       <surface>
         <image>entrances/snow_back</image>
-        <modifier>ROT0</modifer>
+        <modifier>ROT0</modifier>
       </surface>
       <position>
         <x>371.236</x>
@@ -62,7 +62,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/misc/grey_stone6</image>
-        <modifier>ROT0</modifer>
+        <modifier>ROT0</modifier>
       </surface>
       <position>
         <x>363</x>
@@ -74,7 +74,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/misc/stone4</image>
-        <modifier>ROT0</modifer>
+        <modifier>ROT0</modifier>
       </surface>
       <position>
         <x>945</x>
@@ -86,7 +86,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/misc/grey_stone6</image>
-        <modifier>ROT0</modifer>
+        <modifier>ROT0</modifier>
       </surface>
       <position>
         <x>413</x>
@@ -98,7 +98,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/misc/grey_stone1</image>
-        <modifier>ROT0</modifer>
+        <modifier>ROT0</modifier>
       </surface>
       <position>
         <x>249</x>
@@ -110,7 +110,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/misc/grey_stone2</image>
-        <modifier>ROT0</modifer>
+        <modifier>ROT0</modifier>
       </surface>
       <position>
         <x>246</x>
@@ -122,7 +122,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/misc/grey_stone2</image>
-        <modifier>ROT0</modifer>
+        <modifier>ROT0</modifier>
       </surface>
       <position>
         <x>168</x>
@@ -134,7 +134,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/misc/grey_stone2</image>
-        <modifier>ROT0</modifer>
+        <modifier>ROT0</modifier>
       </surface>
       <position>
         <x>584</x>
@@ -146,7 +146,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/misc/grey_stone2</image>
-        <modifier>ROT0</modifer>
+        <modifier>ROT0</modifier>
       </surface>
       <position>
         <x>319</x>
@@ -158,7 +158,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/misc/grey_stone3</image>
-        <modifier>ROT0</modifer>
+        <modifier>ROT0</modifier>
       </surface>
       <position>
         <x>200</x>
@@ -170,7 +170,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/misc/grey_stone3</image>
-        <modifier>ROT0</modifer>
+        <modifier>ROT0</modifier>
       </surface>
       <position>
         <x>265</x>
@@ -182,7 +182,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/misc/grey_stone3</image>
-        <modifier>ROT0</modifer>
+        <modifier>ROT0</modifier>
       </surface>
       <position>
         <x>71</x>
@@ -194,7 +194,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/misc/grey_stone3</image>
-        <modifier>ROT0</modifer>
+        <modifier>ROT0</modifier>
       </surface>
       <position>
         <x>425</x>
@@ -206,7 +206,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/misc/grey_stone3</image>
-        <modifier>ROT0</modifer>
+        <modifier>ROT0</modifier>
       </surface>
       <position>
         <x>70</x>
@@ -218,7 +218,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/misc/grey_stone3</image>
-        <modifier>ROT0</modifer>
+        <modifier>ROT0</modifier>
       </surface>
       <position>
         <x>273</x>
@@ -230,7 +230,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/misc/grey_stone4</image>
-        <modifier>ROT0</modifer>
+        <modifier>ROT0</modifier>
       </surface>
       <position>
         <x>435</x>
@@ -242,7 +242,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/misc/grey_stone4</image>
-        <modifier>ROT0</modifer>
+        <modifier>ROT0</modifier>
       </surface>
       <position>
         <x>812</x>
@@ -254,7 +254,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/misc/grey_stone4</image>
-        <modifier>ROT0</modifer>
+        <modifier>ROT0</modifier>
       </surface>
       <position>
         <x>654</x>
@@ -266,7 +266,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/misc/grey_stone4</image>
-        <modifier>ROT0</modifer>
+        <modifier>ROT0</modifier>
       </surface>
       <position>
         <x>543</x>
@@ -278,7 +278,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/misc/grey_stone5</image>
-        <modifier>ROT0</modifer>
+        <modifier>ROT0</modifier>
       </surface>
       <position>
         <x>378</x>
@@ -290,7 +290,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/misc/grey_stone5</image>
-        <modifier>ROT0</modifer>
+        <modifier>ROT0</modifier>
       </surface>
       <position>
         <x>848</x>
@@ -302,7 +302,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/misc/grey_stone5</image>
-        <modifier>ROT0</modifer>
+        <modifier>ROT0</modifier>
       </surface>
       <position>
         <x>625</x>
@@ -314,7 +314,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/misc/grey_stone5</image>
-        <modifier>ROT0</modifer>
+        <modifier>ROT0</modifier>
       </surface>
       <position>
         <x>734</x>
@@ -326,7 +326,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/misc/grey_stone5</image>
-        <modifier>ROT0</modifer>
+        <modifier>ROT0</modifier>
       </surface>
       <position>
         <x>85</x>
@@ -338,7 +338,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/misc/grey_stone5</image>
-        <modifier>ROT0</modifer>
+        <modifier>ROT0</modifier>
       </surface>
       <position>
         <x>231</x>
@@ -350,7 +350,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/misc/grey_stone6</image>
-        <modifier>ROT0</modifer>
+        <modifier>ROT0</modifier>
       </surface>
       <position>
         <x>216</x>
@@ -362,7 +362,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/misc/grey_stone6</image>
-        <modifier>ROT0</modifer>
+        <modifier>ROT0</modifier>
       </surface>
       <position>
         <x>213</x>
@@ -374,7 +374,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/misc/grey_stone6</image>
-        <modifier>ROT0</modifer>
+        <modifier>ROT0</modifier>
       </surface>
       <position>
         <x>212</x>
@@ -386,7 +386,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/misc/grey_stone6</image>
-        <modifier>ROT0</modifer>
+        <modifier>ROT0</modifier>
       </surface>
       <position>
         <x>147</x>
@@ -398,7 +398,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/misc/grey_stone3</image>
-        <modifier>ROT0</modifer>
+        <modifier>ROT0</modifier>
       </surface>
       <position>
         <x>41</x>
@@ -410,7 +410,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/misc/grey_stone6</image>
-        <modifier>ROT0</modifer>
+        <modifier>ROT0</modifier>
       </surface>
       <position>
         <x>385</x>
@@ -422,7 +422,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/misc/grey_stone6</image>
-        <modifier>ROT0</modifer>
+        <modifier>ROT0</modifier>
       </surface>
       <position>
         <x>175</x>
@@ -434,7 +434,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/misc/grey_stone6</image>
-        <modifier>ROT0</modifer>
+        <modifier>ROT0</modifier>
       </surface>
       <position>
         <x>231</x>
@@ -446,7 +446,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/misc/grey_stone6</image>
-        <modifier>ROT0</modifer>
+        <modifier>ROT0</modifier>
       </surface>
       <position>
         <x>315</x>
@@ -458,7 +458,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/misc/grey_stone6</image>
-        <modifier>ROT0</modifer>
+        <modifier>ROT0</modifier>
       </surface>
       <position>
         <x>308</x>
@@ -470,7 +470,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/misc/grey_stone2</image>
-        <modifier>ROT0</modifer>
+        <modifier>ROT0</modifier>
       </surface>
       <position>
         <x>125</x>
@@ -482,7 +482,7 @@
       <type>ground</type>
       <surface>
         <image>groundpieces/ground/misc/grey_stone2</image>
-        <modifier>ROT0</modifer>
+        <modifier>ROT0</modifier>
       </surface>
       <position>
         <x>288</x>
@@ -498,7 +498,7 @@
       </position>
       <surface>
         <image>exits/stone</image>
-        <modifier>ROT0</modifer>
+        <modifier>ROT0</modifier>
       </surface>
       <owner-id>0</owner-id>
     </exit>
@@ -516,7 +516,7 @@
     <hotspot>
       <surface>
         <image>hotspots/signposts/floater</image>
-        <modifier>ROT0</modifer>
+        <modifier>ROT0</modifier>
       </surface>
       <position>
         <x>865</x>
@@ -529,7 +529,7 @@
     <hotspot>
       <surface>
         <image>hotspots/signposts/arrow_southeast</image>
-        <modifier>ROT0</modifer>
+        <modifier>ROT0</modifier>
       </surface>
       <position>
         <x>718</x>
@@ -542,7 +542,7 @@
     <hotspot>
       <surface>
         <image>entrances/snow_front</image>
-        <modifier>ROT0</modifer>
+        <modifier>ROT0</modifier>
       </surface>
       <position>
         <x>371.238</x>
