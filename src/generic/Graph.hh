@@ -1,4 +1,4 @@
-//  $Id: Graph.hh,v 1.1 2000/09/19 10:40:38 grumbel Exp $
+//  $Id: Graph.hh,v 1.2 2000/09/20 07:20:22 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,7 +31,8 @@ class GraphNode
 {
 public:
   T data;
-  list<GraphNode<T>*> attached_nodes;
+  list<GraphNode<T>*> next_nodes;
+  list<GraphNode<T>*> previous_nodes;
 
   GraphNode () {}
   GraphNode (T obj) 
@@ -39,13 +40,14 @@ public:
     data = obj;
   }
 
-  void attach(GraphNode<T>* next_node)
+  void attach(GraphNode<T>* previous_node, GraphNode<T>* next_node)
   {
-    attached_nodes.push_back (next_node);
+    previous_nodes.push_back (previous_node);
+    next_nodes.push_back (next_node);
   }
 };
 
-/* A general class for handling a bidirectional graph */
+/** A general class for handling a bidirectional graph */
 template<class T>
 class Graph
 {
@@ -140,7 +142,7 @@ public:
   GraphIterator attach(T obj) 
   {
     GraphNode<T>* node = new GraphNode<T>(obj);
-    current_node->attach (node);
+    current_node->attach (current_node, node);
     return GraphIterator (graph, node);
   }
 

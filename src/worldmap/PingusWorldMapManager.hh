@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapManager.hh,v 1.1 2000/09/19 10:33:23 grumbel Exp $
+//  $Id: PingusWorldMapManager.hh,v 1.2 2000/09/20 07:20:22 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,20 +20,39 @@
 #ifndef PINGUSWORLDMAPMANAGER_HH
 #define PINGUSWORLDMAPMANAGER_HH
 
+#include "PingusWorldMap.hh"
+
 class PingusWorldMapManager
 {
 private:
   bool is_init;
+  PingusWorldMap* worldmap;
+
+  /// Some slots to manage the event handling
+  //@{
+  thSlot on_button_press_slot;
+  thSlot on_button_release_slot;
+  thSlot on_mouse_move_slot;
+  thSlot on_resize_slot;
+  //@}
 
 public:
   PingusWorldMapManager ();
   ~PingusWorldMapManager ();
   
 private:
+  /// Load all required resources if not already don
   void init ();
+  /// Display the worldmap and let the user select a level
   void display ();
-  void on_button_press ();
-  void on_button_release ();
+  ///
+  void on_button_press (CL_InputDevice *device, const CL_Key &key);
+  ///
+  void on_button_release (CL_InputDevice *device, const CL_Key &key);
+  ///
+  void on_mouse_move(CL_InputDevice *,int mouse_x, int mouse_y);
+  ///
+  void on_resize(int w, int h);
 };
 
 #endif

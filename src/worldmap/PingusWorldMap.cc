@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMap.cc,v 1.1 2000/09/19 10:33:23 grumbel Exp $
+//  $Id: PingusWorldMap.cc,v 1.2 2000/09/20 07:20:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,10 +17,12 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "../PingusResource.hh"
 #include "PingusWorldMap.hh"
 
 PingusWorldMap::PingusWorldMap (std::string filename)
 {
+  background = PingusResource::load_surface ("volcano", "worldmaps");
 }
 
 PingusWorldMap::~PingusWorldMap ()
@@ -34,6 +36,18 @@ PingusWorldMap::on_button_press ()
 
 void
 PingusWorldMap::on_button_release ()
+{
+  
+}
+
+void
+PingusWorldMap::draw ()
+{
+  background->put_screen (0,0);
+}
+
+void
+PingusWorldMap::let_move ()
 {
   
 }

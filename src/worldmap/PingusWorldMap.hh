@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMap.hh,v 1.1 2000/09/19 10:33:23 grumbel Exp $
+//  $Id: PingusWorldMap.hh,v 1.2 2000/09/20 07:20:22 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,7 +32,7 @@ public:
   /** Load a worldmap from a given worldmap description file */
   PingusWorldMap (std::string filename);
   /** Destruct the worldmap */
-  ~PingusWorldMap ();
+  virtual ~PingusWorldMap ();
 
   /** React on button press:
       - calculate which level was clicked
@@ -42,6 +42,13 @@ public:
 
   /** React on button release */
   void on_button_release ();
+
+  /** Draw the world worldmap */
+  virtual void draw ();
+  
+  /** Let the woldmap do some stuff, like animating smoke, playing
+      sounds or reacting on special events */
+  virtual void let_move ();
 };
 
 #endif

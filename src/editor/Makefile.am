@@ -50,3 +50,5 @@ libpingus_editor_a_SOURCES = \
      WeatherObj.hh        \
      ScrollMap.hh         \
      ScrollMap.cc
+
+# EOF #

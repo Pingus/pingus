@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapManager.cc,v 1.1 2000/09/19 10:33:23 grumbel Exp $
+//  $Id: PingusWorldMapManager.cc,v 1.2 2000/09/20 07:20:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,27 +31,46 @@ PingusWorldMapManager::~PingusWorldMapManager ()
 void 
 PingusWorldMapManager::init ()
 {
-  
+  if (!is_init)
+    {
+      //sur = PingusResource::load_surface ("volcano", "worldmaps");
+      is_init = true;
+    }
 }
 
 void
 PingusWorldMapManager::display ()
 {
+  on_button_press_slot   = CL_Input::sig_button_press.connect (thCreateSlot(this, &PingusWorldMapManager::on_button_press));
+  on_button_release_slot = CL_Input::sig_button_release.connect (thCreateSlot(this, &PingusWorldMapManager::on_button_release));
+  on_mouse_move_slot     = CL_Input::sig_mouse_move.connect (thCreateSlot(this, &PingusWorldMapManager::on_mouse_move));
+
   while (true)
     {
-      sur->put_screen();
+      worldmap->draw ();
     }
 }
 
+void
+PingusWorldMapManager::on_mouse_move (CL_InputDevice *, int mouse_x, int mouse_y)
+{
+}
+
 void 
-PingusWorldMapManager::on_button_press ()
+PingusWorldMapManager::on_button_press (CL_InputDevice *device, const CL_Key &key)
 {
   
 }
 
 void 
-PingusWorldMapManager::on_button_release ()
+PingusWorldMapManager::on_button_release (CL_InputDevice *device, const CL_Key &key)
 {
+}
+
+void
+PingusWorldMapManager::on_resize(int w, int h)
+{
+  std::cout << "Width: " << w << " Height: " << h << std::endl;
 }
 
 /* EOF */
