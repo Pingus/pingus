@@ -1,4 +1,4 @@
-//  $Id: smoke_particle_holder.cxx,v 1.3 2003/02/19 09:50:36 grumbel Exp $
+//  $Id: smoke_particle_holder.cxx,v 1.4 2003/03/05 15:29:47 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -48,8 +48,8 @@ SmokeParticleHolder::add_particle (int x, int y, float vel_x, float vel_y)
     if (!it->livetime)
       {
         *it = SmokeParticle(x, y, vel_x, vel_y);
-	      return;
-	    }
+	    return;
+	  }
 	
 	// create new entry
   particles.push_back(SmokeParticle(x, y, vel_x, vel_y));
@@ -65,10 +65,10 @@ SmokeParticleHolder::update ()
       if (!it->livetime)
         continue;
 
-	    it->pos.x += it->velocity.x;
-	    it->pos.y += it->velocity.y;
+      it->pos.x += it->velocity.x;
+	  it->pos.y += it->velocity.y;
 	    
-	    --it->livetime;
+	  --it->livetime;
     }
 }
 
@@ -83,8 +83,8 @@ SmokeParticleHolder::draw (GraphicContext& gc)
     
       if (!it->use_surf2)
         gc.draw(surf1, it->pos);
-	    else
-	      gc.draw(surf2, it->pos);
+	  else
+	    gc.draw(surf2, it->pos);
     }
 }
 

@@ -1,4 +1,4 @@
-//  $Id: pingu_particle_holder.cxx,v 1.4 2003/02/19 09:50:36 grumbel Exp $
+//  $Id: pingu_particle_holder.cxx,v 1.5 2003/03/05 15:29:47 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,7 @@
 #include "../world.hxx"
 #include "pingu_particle_holder.hxx"
 
+#include <iostream>
 
 namespace Particles {
 
@@ -33,7 +34,7 @@ namespace {
 }
 
 PinguParticleHolder::PinguParticle::PinguParticle (int x, int y)
-  : livetime(50 + (rand() % 50)),
+  : livetime(50 + (rand() % 75)),
     use_frame2((rand() % 5) == 0),
     pos(Vector(x, y)),
     velocity(Vector(Math::frand() * 7 - 3.5, Math::frand() * -7))
@@ -51,20 +52,23 @@ void
 PinguParticleHolder::add_particle (int x, int y)
 {
   int i = 0;
+  
   // fill gaps from dead entries
-  for (std::vector<PinguParticle>::iterator it=particles.begin(); i < 50 && it != particles.end(); ++i, ++it)
+  for (std::vector<PinguParticle>::iterator it=particles.begin(); it != particles.end(); ++it)
     {
       if (!it->livetime)
         {
           *it = PinguParticle(x, y);
-          break;
+          ++i;
         }
     }
   
+  // allocate space for all remaining particles at once
+  particles.reserve(particles.size() + 50 - i);
+    
   // create remaining entries
   for (; i < 50; ++i)
     particles.push_back(PinguParticle(x, y));
-
 }
 
 void
