@@ -1,0 +1,46 @@
+<pingus-worldmap>
+  <surface>
+    <resource type="datafile">
+      <resource-datafile>worldmaps</resource-datafile>
+      <resource-ident>pacman</resource-ident>
+    </resource>
+  </surface>
+
+  <node-list>
+    <node id="1" accessible="1">
+      <link id="2"/>
+      <level name="pacman1-yingwan.xml"/>
+      <position>
+	<x-pos>321</x-pos>
+	<y-pos>297</y-pos>
+      </position>
+    </node>
+
+    <tube id="4">
+      <link id="1"/>
+      <worldmap linknode="12">volcano.xml</worldmap>
+      <position>
+	<x-pos>232</x-pos>
+	<y-pos>297</y-pos>
+      </position>
+    </tube>
+
+    <node id="2">
+      <link id="3"/>
+      <level name="pacman2-yingwan.xml"/>
+      <position>
+	<x-pos>432</x-pos>
+	<y-pos>297</y-pos>
+      </position>
+    </node>
+
+    <node id="3">
+      <level name="pacman3-yingwan.xml"/>
+      <position>
+	<x-pos>542</x-pos>
+	<y-pos>297</y-pos>
+      </position>
+    </node>
+  </node-list>
+
+</pingus-worldmap>
