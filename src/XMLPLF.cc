@@ -1,4 +1,4 @@
-//  $Id: XMLPLF.cc,v 1.2 2000/07/31 23:45:02 grumbel Exp $
+//  $Id: XMLPLF.cc,v 1.3 2000/08/01 22:47:24 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #include <cstdlib>
 #include "XMLPLF.hh"
 
+#include "globals.hh"
 #include "System.hh"
 #include "PingusError.hh"
 #include "StringConverter.hh"
@@ -290,7 +291,7 @@ XMLPLF::parse_global(xmlNodePtr cur)
 	    if (lang)
 	      levelname[lang] = name;
 	    else
-	      levelname[System::get_language()] = name;
+	      levelname[default_language] = name;
 	  }
 
 	  if (name) free(name);
@@ -305,7 +306,7 @@ XMLPLF::parse_global(xmlNodePtr cur)
 	    if (lang)		    
 	      description[lang] = desc;
 	    else
-	      description[System::get_language()] = desc;
+	      description[default_language] = desc;
 	  }
 
 	  if (desc) free(desc);	  
@@ -318,7 +319,7 @@ XMLPLF::parse_global(xmlNodePtr cur)
 	    author = tmp_author;
 	    free(tmp_author);
 	  }
-	  std::cout << "Author: " << author << " -----------------------" << std::endl;
+	  //std::cout << "Author: " << author << " -----------------------" << std::endl;
 	}
       else if (strcmp((char*)cur->name, "number-of-pingus") == 0)
 	{
@@ -326,27 +327,19 @@ XMLPLF::parse_global(xmlNodePtr cur)
 	}
       else if (strcmp((char*)cur->name, "number-to-save") == 0)
 	{
-	  char* number = (char*)xmlNodeListGetString(doc, cur->childs, 1);
-	  if (number) {
-	    number_to_save = StringConverter::to_int(number);
-	    free(number);
-	  }
+	  number_to_save = parse_int(cur);
+	}
+      else if (strcmp((char*)cur->name, "time") == 0)
+	{
+	  max_time = parse_int(cur);
 	}
       else if (strcmp((char*)cur->name, "height") == 0)
 	{
-	  char* number = (char*)xmlNodeListGetString(doc, cur->childs, 1);
-	  if (number) {
-	    height = StringConverter::to_int(number);
-	    free(number);
-	  }
+	  height = parse_int(cur);
 	}
       else if (strcmp((char*)cur->name, "width") == 0)
 	{
-	  char* number = (char*)xmlNodeListGetString(doc, cur->childs, 1);
-	  if (number) {
-	    width = StringConverter::to_int(number);
-	    free(number);
-	  }	  
+	  width = parse_int(cur);
 	}
       else
 	{
@@ -367,7 +360,7 @@ XMLPLF::parse_groundpiece(xmlNodePtr cur)
   char* type = (char*)xmlGetProp(cur, (xmlChar*)"type");
   if (type)
     {
-      std::cout << "groundpiece type: " << type << std::endl;
+      // std::cout << "groundpiece type: " << type << std::endl;
 
       if (strcmp(type, "solid") == 0) 
 	surface.type = SurfaceData::SOLID;
@@ -417,7 +410,7 @@ XMLPLF::parse_traps(xmlNodePtr cur)
 	  char* name = (char*)xmlNodeListGetString(doc, cur->childs, 1);
 	  if (name)
 	    {
-	      std::cout << "parse_trap: name = " << name << std::endl;
+	      // std::cout << "parse_trap: name = " << name << std::endl;
 	      trap.type = name;
 	      free(name);
 	    }
@@ -498,7 +491,7 @@ XMLPLF::parse_int(xmlNodePtr cur)
   cur = cur->childs;
   
   int number = 999;
-  char* number_str = (char*)xmlNodeListGetString(doc, cur->childs, 1);
+  char* number_str = (char*)xmlNodeListGetString(doc, cur, 1);
   if (number_str) {
     number = StringConverter::to_int(number_str);
     free(number_str);
