@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.75 2003/04/11 21:15:40 grumbel Exp $
+//   $Id: pingus_main.cxx,v 1.76 2003/04/12 15:39:20 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -203,9 +203,8 @@ PingusMain::check_args(int argc, char** argv)
   // FIXME: We need some clean up here
   struct option long_options[] =
     {
-      {"enable-music",      no_argument,       0, 'm'},
-      {"enable-sound",      no_argument,       0, 's'},
-      {"enable-gimmicks",   no_argument,       0, 'i'},
+      {"disable-music",      no_argument,       0, 'm'},
+      {"disable-sound",      no_argument,       0, 's'},
       {"enable-cursor",     no_argument,       0, 'c'},
       {"disable-intro",     no_argument,       0, 'n'},
       {"play-demo",         required_argument, 0, 'p'},
@@ -301,8 +300,8 @@ PingusMain::check_args(int argc, char** argv)
       break;
 #endif
 
-    case 's': // -s, --enable-sound
-      sound_enabled = true;
+    case 's': // -s, --disable-sound
+      sound_enabled = false;
       break;
     case 'g':
       {
@@ -321,9 +320,8 @@ PingusMain::check_args(int argc, char** argv)
       //if (verbose) 
       //std::cout << "check_args: Sound File = " << pingus_soundfile << std::endl;
       break;
-    case 'm': // -m, --enable-music
-      if (verbose) std::cout << "check_args: Music enabled" << std::endl;
-      music_enabled = true;
+    case 'm': // -m, --disable-music
+      music_enabled = false;
       break;
     case 'd': // -d, --datadir
       if (optarg) 
@@ -538,8 +536,8 @@ PingusMain::check_args(int argc, char** argv)
         << "\n"
         << "\n"
         << _("Sound:")
-        << "\n   -s, --enable-sound       " << _("Enable sound")
-        << "\n   -m, --enable-music       " << _("Enable music")
+        << "\n   -s, --disable-sound       " << _("Disable sound")
+        << "\n   -m, --disable-music       " << _("Disable music")
         << "\n"
         << std::endl;
 
