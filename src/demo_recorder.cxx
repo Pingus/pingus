@@ -1,4 +1,4 @@
-//  $Id: demo_recorder.cxx,v 1.7 2002/10/03 12:33:08 grumbel Exp $
+//  $Id: demo_recorder.cxx,v 1.8 2002/10/06 19:20:14 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -82,7 +82,7 @@ DemoRecorder::get_date()
   struct tm *loctime;
   curtime = time (NULL);
   loctime = localtime(&curtime);
-  strftime(buffer, 32, "%Y-%m-%d_%H:%M:%S", loctime);
+  strftime(buffer, 32, "%Y-%m-%d_%H%M%S", loctime);
 
   return string(buffer);
 }
