@@ -1,4 +1,4 @@
-//  $Id: smallmap.cxx,v 1.20 2002/10/06 09:01:32 torangan Exp $
+//  $Id: smallmap.cxx,v 1.21 2002/10/06 23:14:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -225,11 +225,13 @@ SmallMap::draw_pingus ()
 
   for(PinguIter i = pingus->begin(); i != pingus->end(); ++i)
     {
-      //FIXME: Replace this with put pixel
       x = static_cast<int>(x_pos + ((*i)->get_x() * width  / world->get_colmap()->get_width()));
       y = static_cast<int>(y_pos + ((*i)->get_y() * height / world->get_colmap()->get_height()));
 
-      CL_Display::draw_line(x, y, x, y-1, 1.0, 1.0, 0.0, 1.0);
+      //FIXME: Replace this with draw_pixel (only availabe in 0.7)
+      CL_Display::draw_line(x,   y, x,   y, 1.0, 1.0, 0.0, 1.0);
+      CL_Display::draw_line(x, y-1, x, y-1, 1.0, 1.0, 0.0, 1.0);
+      CL_Display::draw_line(x, y-2, x, y-2, 1.0, 1.0, 0.0, 1.0);
     }
 }
 
