@@ -1,4 +1,4 @@
-//  $Id: faller.cxx,v 1.37 2003/03/09 20:41:30 torangan Exp $
+//  $Id: faller.cxx,v 1.38 2003/03/18 17:03:02 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -76,7 +76,7 @@ Faller::update ()
   do
     {
       // Move the Pingu as far is it can go
-      mover.update(move, Colliders::PinguCollider(velocity, pingu_height));
+      mover.update(move, Colliders::PinguCollider(pingu_height));
 
       pingu->set_pos(mover.get_pos());
 

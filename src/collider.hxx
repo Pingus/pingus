@@ -1,4 +1,4 @@
-//  $Id: collider.hxx,v 1.2 2003/03/09 20:41:30 torangan Exp $
+//  $Id: collider.hxx,v 1.3 2003/03/18 17:03:01 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,9 +32,9 @@ class Collider
     /** Destructor for abstract class */
     virtual ~Collider() = 0;
 
-    /** Find out if a Pingu at the specified position is colliding with
-        something */
-    virtual bool operator() (World* const world, Vector pos) const = 0;
+    /** Find out if object will collide with something */
+    virtual bool operator() (World* const world, Vector current_pos,
+			      const Vector& step_vector) const = 0;
 
   protected:
     /** Get the Collision Map pixel at the specified position in the specified

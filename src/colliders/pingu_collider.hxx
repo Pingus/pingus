@@ -1,4 +1,4 @@
-//  $Id: pingu_collider.hxx,v 1.2 2003/03/09 20:41:30 torangan Exp $
+//  $Id: pingu_collider.hxx,v 1.3 2003/03/18 17:03:02 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,20 +28,18 @@ class PinguCollider : public Collider
 {
   public:
     /** Constructor */
-    PinguCollider(const Vector& direction, const int height_arg);
+    PinguCollider(const int height_arg);
 
     /** Destructor */
     ~PinguCollider();
 
     /** Find out if a Pingu at the specified position is colliding with
         something */
-    bool operator() (World* const world, Vector pos) const;
+    bool operator() (World* const world, Vector current_pos,
+		      const Vector& step_vector) const;
 
   private:
-    /** Indicates whether a Pingu is falling or not */
-    bool falling;
-
-    /** Pingu could by on its belly.  Therefore, this is the current height of
+    /** Pingu could be on its belly.  Therefore, this is the current height of
 	the Pingu. */
     int height;
 };

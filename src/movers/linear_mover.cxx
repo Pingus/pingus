@@ -1,4 +1,4 @@
-//  $Id: linear_mover.cxx,v 1.2 2003/03/09 20:41:30 torangan Exp $
+//  $Id: linear_mover.cxx,v 1.3 2003/03/18 17:03:02 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,11 +31,13 @@ LinearMover::~LinearMover()
 {
 }
 
-void LinearMover::update(const Vector& move, const Collider& collision_at)
+void LinearMover::update(const Vector& move, const Collider& collision_check)
 {
-  float move_length = move.length();
   Vector target_pos = pos + move;
   Vector step_vector = move;
+
+  // Static cast to stop warning
+  int move_length = static_cast<int>(move.length());
 
   // Make the step vector (i.e. change to a unit vector)
   step_vector.normalize();
@@ -43,11 +45,11 @@ void LinearMover::update(const Vector& move, const Collider& collision_at)
   collision = false;
 
   // Move to the destination one unit vector at a time
-  for (float i = 0; i < move_length && !collision; ++i)
+  for (int i = 0; i < move_length && !collision; ++i)
     {
-      pos += step_vector;
+      collision = collision_check(world, pos, step_vector);
 
-      collision = collision_at(world, pos);
+      pos += step_vector;
     }
 
   // If on a collision pixel, back away from it.

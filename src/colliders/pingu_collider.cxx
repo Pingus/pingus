@@ -1,4 +1,4 @@
-//  $Id: pingu_collider.cxx,v 1.2 2003/03/09 20:41:30 torangan Exp $
+//  $Id: pingu_collider.cxx,v 1.3 2003/03/18 17:03:02 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,9 +24,7 @@
 
 namespace Colliders {
 
-PinguCollider::PinguCollider(const Vector& direction, const int height_arg)
-  : falling(direction.y > 0.0f),
-    height(height_arg)
+PinguCollider::PinguCollider(const int height_arg) : height(height_arg)
 {
 }
 
@@ -34,25 +32,52 @@ PinguCollider::~PinguCollider()
 {
 }
 
-bool PinguCollider::operator() (World* const world, Vector pos) const
+bool PinguCollider::operator() (World* const world, Vector current_pos,
+				  const Vector& step_vector) const
 {
+  Vector new_pos = current_pos + step_vector;
   int pixel;
+  bool falling = false;
   bool collided = false;
-  float top_of_pingu = pos.y - height;
 
-  for (; pos.y >= top_of_pingu; --pos.y)
+  if (step_vector.y > 0.0f)
+    falling = true;
+
+  // If the Pingu is going to move sideways to the next pixel...
+  if (static_cast<int>(new_pos.x) != static_cast<int>(current_pos.x))
     {
-      pixel = getpixel(world, pos);
+      float top_of_pingu = new_pos.y - height;
 
-      // If there is something in the way, then Pingu has collided with
-      // something.  However, if not falling and colliding with a
-      // Bridge, allow Pingu to go through it.
-      if ((!falling || pixel != Groundtype::GP_BRIDGE)
-	  && pixel != Groundtype::GP_NOTHING)
+      for (; new_pos.y >= top_of_pingu; --new_pos.y)
+	{
+	  pixel = getpixel(world, new_pos);
+
+	  // If there is something in the way, then Pingu has collided with
+	  // something.  However, if not falling and colliding with a
+	  // Bridge, allow Pingu to go through it.
+	  if ((!falling || pixel != Groundtype::GP_BRIDGE)
+	      && pixel != Groundtype::GP_NOTHING)
+	    {
+	      collided = true;
+	      break;
+	    }
+	}
+    }
+  // If the Pingu is not falling...
+  else if (!falling)
+    {
+      pixel = getpixel(world, Vector(new_pos.x, new_pos.y - height));
+
+      // If the top of the Pingu has hit something except a bridge...
+      if (pixel != Groundtype::GP_NOTHING && pixel != Groundtype::GP_BRIDGE)
 	{
 	  collided = true;
-	  break;
 	}
+    }
+  // If the Pingu's "feet" has hit something...
+  else if (getpixel(world, new_pos) != Groundtype::GP_NOTHING)
+    {
+      collided = true;
     }
 
   return collided;

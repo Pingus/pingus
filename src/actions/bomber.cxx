@@ -1,4 +1,4 @@
-//  $Id: bomber.cxx,v 1.31 2003/03/09 20:41:30 torangan Exp $
+//  $Id: bomber.cxx,v 1.32 2003/03/18 17:03:02 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -87,7 +87,7 @@ Bomber::update ()
   Vector velocity = pingu->get_velocity();
 
   // Move the Pingu
-  mover.update(velocity, Colliders::PinguCollider(velocity, pingu_height));
+  mover.update(velocity, Colliders::PinguCollider(pingu_height));
 
   pingu->set_pos(mover.get_pos());
 

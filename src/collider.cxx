@@ -1,4 +1,4 @@
-//  $Id: collider.cxx,v 1.2 2003/03/09 20:41:30 torangan Exp $
+//  $Id: collider.cxx,v 1.3 2003/03/18 17:03:01 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,10 +30,13 @@ Collider::~Collider()
 {
 }
 
-bool Collider::operator() (World* const world, Vector pos) const
+bool Collider::operator() (World* const world, Vector current_pos,
+			    const Vector& step_vector) const
 {
   UNUSED_ARG(world);
-  UNUSED_ARG(pos);
+  UNUSED_ARG(current_pos);
+  UNUSED_ARG(step_vector);
+
   return false;
 }
 
