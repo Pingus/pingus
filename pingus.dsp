@@ -67,13 +67,13 @@ LINK32=link.exe
 # PROP BASE Target_Dir ""
 # PROP Use_MFC 0
 # PROP Use_Debug_Libraries 1
-# PROP Output_Dir ".."
+# PROP Output_Dir "."
 # PROP Intermediate_Dir "Debug"
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /YX /FD /GZ /c
 # ADD CPP /nologo /MTd /Gm /vd0 /GR /GX /ZI /Od /I "src" /I "src\win32" /D "_DEBUG" /D "WIN32" /D "_WINDOWS" /D "_MBCS" /D "LIBXML_2" /D "HAVE_LIBCLANVORBIS" /D "HAVE_LIBCLANMIKMOD" /YX /FD /GZ /TP /c
-# SUBTRACT CPP /X
+# SUBTRACT CPP /X /Fr
 # ADD BASE MTL /nologo /D "_DEBUG" /mktyplib203 /win32
 # ADD MTL /nologo /D "_DEBUG" /mktyplib203 /win32
 # ADD BASE RSC /l 0x807 /d "_DEBUG"
@@ -83,7 +83,8 @@ BSC32=bscmake.exe
 # ADD BSC32 /nologo
 LINK32=link.exe
 # ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /debug /machine:I386 /pdbtype:sept
-# ADD LINK32 ClanAppd.lib clanCored.lib ClanDisplayd.lib ClanGLd.lib ClanGUId.lib ClanJPEGd.lib ClanMikModd.lib ClanNetworkd.lib ClanPNGd.lib ClanSignalsd.lib ClanTTFd.lib ClanVorbisd.lib zlib.lib kernel32.lib user32.lib gdi32.lib libxml2.lib ClanSoundd.lib dsound.lib /nologo /subsystem:windows /debug /machine:I386 /nodefaultlib:"libcmt.lib" /pdbtype:sept
+# ADD LINK32 ClanAppd.lib clanCored.lib ClanDisplayd.lib ClanGLd.lib ClanGUId.lib ClanJPEGd.lib ClanMikModd.lib ClanNetworkd.lib ClanPNGd.lib ClanSignalsd.lib ClanTTFd.lib ClanVorbisd.lib zlib.lib kernel32.lib user32.lib gdi32.lib libxml2.lib ClanSoundd.lib dsound.lib /nologo /subsystem:windows /incremental:no /debug /machine:I386 /nodefaultlib:"libcmt.lib" /pdbtype:sept
+# SUBTRACT LINK32 /verbose /profile /map
 
 !ENDIF 
 
@@ -461,6 +462,10 @@ SOURCE=.\src\gui\gui_manager.cxx
 
 SOURCE=.\src\gui_screen.cxx
 # End Source File
+# Begin Source File
+
+SOURCE=.\src\input_debug_screen.cxx
+# End Source File
 # End Group
 # Begin Group "input"
 
@@ -487,11 +492,11 @@ SOURCE=.\src\input\button_factory.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\input\double_button.cxx
+SOURCE=.\src\input\controller.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\input\input_controller.cxx
+SOURCE=.\src\input\double_button.cxx
 # End Source File
 # Begin Source File
 
@@ -632,14 +637,6 @@ SOURCE=.\src\console.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\controllable.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\controller.cxx
-# End Source File
-# Begin Source File
-
 SOURCE=.\src\counter.cxx
 # End Source File
 # Begin Source File
@@ -653,10 +650,6 @@ SOURCE=.\src\cursor.cxx
 # Begin Source File
 
 SOURCE=.\src\debug.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\debug_gui.cxx
 # End Source File
 # Begin Source File
 
@@ -728,10 +721,6 @@ SOURCE=.\src\game_time.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\gamepad_controller.cxx
-# End Source File
-# Begin Source File
-
 SOURCE=.\src\generic_main.cxx
 # End Source File
 # Begin Source File
@@ -776,10 +765,6 @@ SOURCE=.\src\intro.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\keyboard_controller.cxx
-# End Source File
-# Begin Source File
-
 SOURCE=.\src\layer_manager.cxx
 # End Source File
 # Begin Source File
@@ -821,10 +806,6 @@ SOURCE=.\src\menu_background.cxx
 # Begin Source File
 
 SOURCE=.\src\message_box.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\mouse_controller.cxx
 # End Source File
 # Begin Source File
 
