@@ -1,4 +1,4 @@
-//  $Id: blitter.cxx,v 1.19 2002/10/16 11:29:30 grumbel Exp $
+//  $Id: blitter.cxx,v 1.20 2002/10/19 19:40:34 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -670,13 +670,13 @@ Blitter::rotate_90 (const CL_Surface& sur)
 CL_Surface
 Blitter::rotate_180 (const CL_Surface& sur)
 {
-  return BlitterImpl::modify(sur, BlitterImpl::transform_rot180());
+  return BlitterImpl::modify<BlitterImpl::transform_rot180>(sur);
 }
 
 CL_Surface
 Blitter::rotate_270 (const CL_Surface& sur)
 {
-  return BlitterImpl::modify(sur, BlitterImpl::transform_rot270());
+  return BlitterImpl::modify<BlitterImpl::transform_rot270>(sur);
 }
 
 CL_Surface

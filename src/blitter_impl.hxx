@@ -1,4 +1,4 @@
-//  $Id: blitter_impl.hxx,v 1.1 2002/10/16 11:29:30 grumbel Exp $
+//  $Id: blitter_impl.hxx,v 1.2 2002/10/19 19:40:34 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -48,38 +48,38 @@ struct transform_rot180
     return (width * height) - (y * width + x);
   }
 
-  static inline int get_x(int width, int height, int x, int y) {
+  static inline int get_x(int width, int height, int x, int y) { UNUSED_ARG(height); UNUSED_ARG(y);
     return width - x - 1;
   }
 
-  static inline int get_y(int width, int height, int x, int y) {
+  static inline int get_y(int width, int height, int x, int y) { UNUSED_ARG(width);  UNUSED_ARG(x);
     return height - y - 1;
   }
 
-  static inline int get_width(int width, int height) { return width; }
-  static inline int get_height(int width, int height) { return height; }
+  static inline int get_width (int width, int height) { UNUSED_ARG(height); return width; }
+  static inline int get_height(int width, int height) { UNUSED_ARG(width);  return height; }
 };
 
 struct transform_rot270
 {
-  static inline int get_index(int width, int height, int x, int y) {
+  static inline int get_index(int width, int height, int x, int y) { UNUSED_ARG(height);
     return (x * width) + y;
   }
 
-  static inline int get_x(int width, int height, int x, int y) {
+  static inline int get_x(int width, int height, int x, int y) { UNUSED_ARG(width); UNUSED_ARG(height); UNUSED_ARG(x);
     return y;
   }
 
-  static inline int get_y(int width, int height, int x, int y) {
+  static inline int get_y(int width, int height, int x, int y) { UNUSED_ARG(width); UNUSED_ARG(y);
     return height - x - 1;
   }
 
-  static inline int get_width(int width, int height) { return height; }
-  static inline int get_height(int width, int height) { return width; }
+  static inline int get_width (int width, int height) { UNUSED_ARG(width);  return height; }
+  static inline int get_height(int width, int height) { UNUSED_ARG(height); return width; }
 };
 
 template<class TransF>
-CL_Surface modify(const CL_Surface& sur, TransF transf) 
+CL_Surface modify(const CL_Surface& sur)
 {
   CL_SurfaceProvider* prov = sur.get_provider ();
   int pwidth  = prov->get_width();
