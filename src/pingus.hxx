@@ -1,4 +1,4 @@
-//  $Id: pingus.hxx,v 1.7 2003/04/19 10:23:17 torangan Exp $
+//  $Id: pingus.hxx,v 1.8 2004/03/29 16:00:54 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,7 +28,7 @@
  * @file pingus.hxx
  **/
 
-#ifdef WIN32
+#if defined(WIN32) && !defined(__GNUC__)
 #  define for if(0);else for
 
 #  define snprintf _snprintf
