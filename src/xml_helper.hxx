@@ -1,4 +1,4 @@
-//  $Id: xml_helper.hxx,v 1.13 2002/09/28 19:31:06 torangan Exp $
+//  $Id: xml_helper.hxx,v 1.14 2002/09/30 14:20:49 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -94,6 +94,10 @@ public:
       @param value gets the value if the property exists or remains unchanged
       @return indicates whether the property existed  */
   static bool get_prop (xmlNodePtr cur, const char* name, bool& value);
+
+  static bool node_list_get_string (xmlDocPtr doc, xmlNodePtr cur, int inLine, std::string& value);
+  static bool node_list_get_string (xmlDocPtr doc, xmlNodePtr cur, int inLine, float& value);
+  static bool node_list_get_string (xmlDocPtr doc, xmlNodePtr cur, int inLine, int& value);
 
 
   /// A set of function to parse an xml file

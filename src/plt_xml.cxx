@@ -1,4 +1,4 @@
-//  $Id: plt_xml.cxx,v 1.9 2002/09/28 19:31:06 torangan Exp $
+//  $Id: plt_xml.cxx,v 1.10 2002/09/30 14:20:48 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -97,34 +97,30 @@ PLTXML::parse_background (xmlNodePtr cur)
 void 
 PLTXML::parse_description(xmlNodePtr cur)
 {
-  char* desc = (char*)xmlNodeListGetString(doc, cur->children, 1);
+  std::string desc;
   std::string lang;
   
-  if (desc) {
+  if (XMLhelper::node_list_get_string(doc, cur->children, 1, desc)) {
     if (XMLhelper::get_prop(cur, "lang", lang))
       description[lang] = desc;
     else
       description[default_language] = desc;
   }
-
-  if (desc) xmlFree(desc);	  
 }
 
 void 
 PLTXML::parse_world_name (xmlNodePtr cur)
 {
-  char* name = (char*)xmlNodeListGetString(doc, cur->children, 1);
+  std::string name;
   std::string lang;
 
-  if (name) 
+  if (XMLhelper::node_list_get_string(doc, cur->children, 1, name))
     {
       if (XMLhelper::get_prop(cur, "lang", lang))
 	world_name[lang] = name;
       else
 	world_name[default_language] = name;
     }
-
-  if (name) xmlFree(name);
 }
 
 void
@@ -136,11 +132,10 @@ PLTXML::parse_level_list (xmlNodePtr cur)
     {
       if (XMLhelper::equal_str(cur->name, "level"))
 	{
-	  char* name = (char*)xmlNodeListGetString(doc, cur->children, 1);
-	  if (name)
+	  std::string name;
+	  if (XMLhelper::node_list_get_string(doc, cur->children, 1, name))
 	    {
 	      level_list.push_back(name);
-	      xmlFree(name);
 	    }
 	}
       else

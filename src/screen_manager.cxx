@@ -1,4 +1,4 @@
-//  $Id: screen_manager.cxx,v 1.17 2002/09/28 22:24:24 grumbel Exp $
+//  $Id: screen_manager.cxx,v 1.18 2002/09/30 14:20:49 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -204,6 +204,8 @@ void
 ScreenManager::fade_over (Screen* old_screen, Screen* new_screen)
 {
   FadeOut::fade_to_black();
+  UNUSED_ARG(old_screen);
+  UNUSED_ARG(new_screen);
 
 #if 0
   DeltaManager delta_manager;

@@ -1,4 +1,4 @@
-//  $Id: entrance_data.cxx,v 1.2 2002/09/28 11:52:26 torangan Exp $
+//  $Id: entrance_data.cxx,v 1.3 2002/09/30 14:20:49 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -50,9 +50,7 @@ EntranceData::EntranceData (xmlDocPtr doc, xmlNodePtr cur) : direction(MISC),
 
       if (XMLhelper::equal_str(cur->name, "type"))
 	{
-	  char* name = (char*)xmlNodeListGetString(doc, cur->children, 1); 
-	  type = name;
-	  xmlFree(name);
+	  XMLhelper::node_list_get_string(doc, cur->children, 1, type);
 	}
       else if (XMLhelper::equal_str(cur->name, "owner-id"))
 	{
@@ -64,22 +62,19 @@ EntranceData::EntranceData (xmlDocPtr doc, xmlNodePtr cur) : direction(MISC),
 	}
       else if (XMLhelper::equal_str(cur->name, "release-rate"))
 	{
-	  char* release_rate_str = (char*)xmlNodeListGetString(doc, cur->children, 1);
-	  release_rate = StringConverter::to_int(release_rate_str);
-	  xmlFree(release_rate_str);
+	  XMLhelper::node_list_get_string(doc, cur->children, 1, release_rate);
 	}
       else if (XMLhelper::equal_str(cur->name, "direction"))
 	{
-	  char* direction_str = (char*)xmlNodeListGetString(doc, cur->children, 1);
+	  std::string direction_str;
+	  XMLhelper::node_list_get_string(doc, cur->children, 1, direction_str);
 
-	  if (! strcmp(direction_str, "left"))
+	  if (direction_str == "left")
 	    direction = EntranceData::LEFT;
-	  else if (! strcmp(direction_str, "right"))
+	  else if (direction_str == "right")
 	    direction = EntranceData::RIGHT;
-	  else if (! strcmp(direction_str, "misc"))
+	  else if (direction_str == "misc")
 	    direction = EntranceData::MISC;
-	  
-	  xmlFree(direction_str);
 	}
       else
 	{

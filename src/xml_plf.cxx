@@ -1,4 +1,4 @@
-//  $Id: xml_plf.cxx,v 1.27 2002/09/28 19:31:06 torangan Exp $
+//  $Id: xml_plf.cxx,v 1.28 2002/09/30 14:20:49 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -295,14 +295,8 @@ XMLPLF::parse_actions (xmlNodePtr cur)
       if (!XMLhelper::get_prop(cur, "count", button.number_of))
 	{
 	  //std::cout << "XMLPLF::parse_actions (): No 'count' given, fallback to the old format" << std::endl;
-	  char* number = reinterpret_cast<char*>(xmlNodeListGetString(doc, cur->children, 1));
-	  if (number) {
-	    //std::cout << "xmlNoder..Result: " << number << std::endl;
-	    button.number_of = StringConverter::to_int(number);
-	  } else {
+	  if (!XMLhelper::node_list_get_string(doc, cur->children, 1, button.number_of))
 	    std::cout << "XMLPLF:parse_actions: no action number given" << std::endl;
-	  }
-	  xmlFree(number);
 	}
 
       actions.push_back(button);
@@ -325,41 +319,31 @@ XMLPLF::parse_global (xmlNodePtr cur)
 
       if (XMLhelper::equal_str(cur->name, "levelname"))
 	{
-	  char* name = reinterpret_cast<char*>(xmlNodeListGetString(doc, cur->children, 1));
+	  std::string name;
 	  std::string lang;
 
-	  if (name) {
+	  if (XMLhelper::node_list_get_string(doc, cur->children, 1, name)) {
 	    if (XMLhelper::get_prop(cur, "lang", lang))
 	      levelname[lang] = name;
 	    else
 	      levelname[default_language] = name;
 	  }
-
-	  if (name)
-	    xmlFree(name);
 	}
       else if (XMLhelper::equal_str(cur->name, "description"))
 	{
-	  char* desc = reinterpret_cast<char*>(xmlNodeListGetString(doc, cur->children, 1));
+	  std::string desc;
 	  std::string lang;
 
-	  if (desc) {
+	  if (XMLhelper::node_list_get_string(doc, cur->children, 1, desc)) {
 	    if (XMLhelper::get_prop(cur, "lang", lang))		    
 	      description[lang] = desc;
 	    else
 	      description[default_language] = desc;
 	  }
-
-	  if (desc)
-	    xmlFree(desc);	  
 	}
       else if (XMLhelper::equal_str(cur->name, "author"))
 	{
-	  char* tmp_author = reinterpret_cast<char*>(xmlNodeListGetString(doc, cur->children, 1));
-	  if (tmp_author) {
-	    author = tmp_author;
-	    xmlFree(tmp_author);
-	  }
+	  XMLhelper::node_list_get_string(doc, cur->children, 1, author);
 	  //std::cout << "Author: " << author << " -----------------------" << std::endl;
 	}
       else if (XMLhelper::equal_str(cur->name, "number-of-pingus"))
@@ -416,11 +400,10 @@ XMLPLF::parse_traps (xmlNodePtr cur)
   
   if (XMLhelper::equal_str(cur_->name, "type"))
     {
-      char* name = reinterpret_cast<char*>(xmlNodeListGetString(doc, cur_->children, 1));
-      if (name)
+      std::string name;
+      if (XMLhelper::node_list_get_string(doc, cur->children, 1, name))
 	{
-	  worldobjs_data.push_back(WorldObjDataFactory::instance()->create (name, doc, XMLhelper::skip_blank(cur)));
-	  xmlFree(name);
+	  worldobjs_data.push_back(WorldObjDataFactory::instance()->create(name, doc, XMLhelper::skip_blank(cur)));
 	  return;
 	}
     }

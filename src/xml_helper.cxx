@@ -1,4 +1,4 @@
-//  $Id: xml_helper.cxx,v 1.19 2002/09/28 19:31:06 torangan Exp $
+//  $Id: xml_helper.cxx,v 1.20 2002/09/30 14:20:49 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -96,6 +96,42 @@ XMLhelper::get_prop (xmlNodePtr cur, const char* name, bool& value)
   return true;
 }
 
+bool
+XMLhelper::node_list_get_string (xmlDocPtr doc, xmlNodePtr cur, int inLine, std::string& value)
+{
+  char * retval = reinterpret_cast<char*>(xmlNodeListGetString(doc, cur, inLine));
+  if (!retval)
+    return false;
+    
+  value = retval;
+  xmlFree(retval);
+  return true;
+}
+
+bool
+XMLhelper::node_list_get_string (xmlDocPtr doc, xmlNodePtr cur, int inLine, float& value)
+{
+  char * retval = reinterpret_cast<char*>(xmlNodeListGetString(doc, cur, inLine));
+  if (!retval)
+    return false;
+    
+  value = strtod(retval, reinterpret_cast<char**>(NULL));
+  xmlFree(retval);
+  return true;
+}
+
+bool
+XMLhelper::node_list_get_string (xmlDocPtr doc, xmlNodePtr cur, int inLine, int& value)
+{
+  char * retval = reinterpret_cast<char*>(xmlNodeListGetString(doc, cur, inLine));
+  if (!retval)
+    return false;
+    
+  value = strtol(retval, reinterpret_cast<char**>(NULL), 10);
+  xmlFree(retval);
+  return true;
+}
+
 std::string
 XMLhelper::encode_entities (const std::string& arg_str)
 {
@@ -118,7 +154,7 @@ XMLhelper::encode_entities (const std::string& arg_str)
 }
 
 Vector
-XMLhelper::parse_vector(xmlDocPtr doc, xmlNodePtr cur)
+XMLhelper::parse_vector (xmlDocPtr doc, xmlNodePtr cur)
 {
   Vector pos;
   cur = cur->children;  
@@ -130,21 +166,19 @@ XMLhelper::parse_vector(xmlDocPtr doc, xmlNodePtr cur)
 	  continue;
 	}
 
-      char* ident = (char*)xmlNodeListGetString(doc, cur->children, 1);
-
-      if (ident)
+      float ident;
+      if (node_list_get_string(doc, cur->children, 1, ident))
 	{
 	  //std::cout << "parse_position: ident = " << ident << std::endl;
 	  if (XMLhelper::equal_str(cur->name, "x-pos")) {
-	    pos.x = StringConverter::to_float(ident);
+	    pos.x = ident;
 	  } else if (XMLhelper::equal_str(cur->name, "y-pos")) {
-	    pos.y = StringConverter::to_float(ident);
+	    pos.y = ident;
 	  } else if (XMLhelper::equal_str(cur->name, "z-pos")) {
-	    pos.z = StringConverter::to_float(ident);
+	    pos.z = ident;
 	  } else {
 	    std::cout << "Unhandled position ident: " << ident << std::endl;
 	  }
-	  xmlFree(ident);
 	}
       cur = cur->next;
     }
@@ -152,39 +186,31 @@ XMLhelper::parse_vector(xmlDocPtr doc, xmlNodePtr cur)
 }
 
 int
-XMLhelper::parse_int(xmlDocPtr doc, xmlNodePtr cur)
+XMLhelper::parse_int (xmlDocPtr doc, xmlNodePtr cur)
 {
   cur = cur->children;
   
   int number = 999;
-  char* number_str = (char*)xmlNodeListGetString(doc, cur, 1);
-  if (number_str) {
-    number = StringConverter::to_int(number_str);
-    xmlFree(number_str);
-  } else {
+  if (!node_list_get_string(doc, cur, 1, number)) {
     std::cout << "Error: XMLhelper: parse_int: Field empty" << std::endl;
   }
   return number;
 }
 
 float
-XMLhelper::parse_float(xmlDocPtr doc, xmlNodePtr cur)
+XMLhelper::parse_float (xmlDocPtr doc, xmlNodePtr cur)
 {
   cur = cur->children;
   
   float number = 3.1415927f;
-  char* number_str = (char*)xmlNodeListGetString(doc, cur, 1);
-  if (number_str) {
-    number = StringConverter::to_float(number_str);
-    xmlFree(number_str);
-  } else {
+  if (!node_list_get_string(doc, cur, 1, number)) {
     std::cout << "XMLhelper: parse_int: Field empty" << std::endl;
   }
   return number;
 }
 
 Color
-XMLhelper::parse_color(xmlDocPtr doc, xmlNodePtr cur)
+XMLhelper::parse_color (xmlDocPtr doc, xmlNodePtr cur)
 {
   Color color;
   cur = cur->children;
@@ -253,23 +279,19 @@ XMLhelper::parse_surface(xmlDocPtr doc, xmlNodePtr cur)
 
 		  if (XMLhelper::equal_str(ccur->name, "resource-file"))
 		    {
-		      char* filename = (char*)xmlNodeListGetString(doc, ccur->children, 1);
-		      if (filename) 
+		      if (node_list_get_string(doc, ccur->children, 1, desc.res_name))
 			{
-			  desc.res_name = filename;
 			  desc.type = ResDescriptor::RD_FILE;
-			  xmlFree(filename);
 			}       
 		    }
 		  else if (XMLhelper::equal_str(ccur->name, "modifier"))
 		    {
-		      char* ident = (char*)xmlNodeListGetString(doc, ccur->children, 1);
-		      if (ident) 
+		      std::string ident;
+		      if (node_list_get_string(doc, ccur->children, 1, ident))
 			{
 			  //std::cout << "Seen: modifier: " << ident << std::endl;
 
 			  desc.modifier = ResourceModifierNS::rs_from_string(ident);
-			  xmlFree(ident);
 			}
 		    }
 		  else
@@ -294,36 +316,22 @@ XMLhelper::parse_surface(xmlDocPtr doc, xmlNodePtr cur)
 
 		  if (XMLhelper::equal_str(ccur->name, "resource-datafile"))
 		    {
-		      char* datafile = (char*)xmlNodeListGetString(doc, ccur->children, 1);
-		      if (datafile) 
-			{
-			  desc.datafile = datafile;
-			  xmlFree(datafile);
-			}
-		      else
-			{
-			  std::cout << "XMLhelper: parse_surface() Empty" << std::endl;
-			}
+		      if (!node_list_get_string(doc, ccur->children, 1, desc.datafile))
+ 		        std::cout << "XMLhelper: parse_surface() Empty" << std::endl;
 		    }
 		  else if (XMLhelper::equal_str(ccur->name, "resource-ident"))
 		    {
-		      char* ident = (char*)xmlNodeListGetString(doc, ccur->children, 1);
-		      if (ident) 
-			{
-			  desc.res_name = ident;
-			  xmlFree(ident);		  
-			}
+		      node_list_get_string(doc, ccur->children, 1, desc.res_name);
 		    }
 		  else if (XMLhelper::equal_str(ccur->name, "modifier"))
 		    {
 		      //std::cout << "Modifier!!!!!" << std::endl;
-		      char* ident = (char*)xmlNodeListGetString(doc, ccur->children, 1);
-		      if (ident) 
+		      std::string ident;
+		      if (node_list_get_string(doc, ccur->children, 1, ident)) 
 			{
 			  //std::cout << "Seen: modifier: " << ident << std::endl;
 		      
 			  desc.modifier = ResourceModifierNS::rs_from_string(ident);
-			  xmlFree(ident);
 			}
 		    }
 		  else
@@ -347,28 +355,21 @@ XMLhelper::parse_surface(xmlDocPtr doc, xmlNodePtr cur)
 }
 
 std::string 
-XMLhelper::parse_string(xmlDocPtr doc, xmlNodePtr cur)
+XMLhelper::parse_string (xmlDocPtr doc, xmlNodePtr cur)
 {
   std::string ret_str;
-  cur = cur->children;
 
-  char* str = (char*)xmlNodeListGetString(doc, cur, 1);
-  if (str) 
-    {
-      ret_str = str;
-      xmlFree(str);
-      return ret_str;
-    }
-  else
+  if (!node_list_get_string(doc,cur->children, 1, ret_str))
     {  
       std::cout << "XMLhelper::parse_string: Field empty" << std::endl;
-      return "";
     }
+
+  return ret_str;
 }
 
 
 void
-XMLhelper::write_desc_xml(std::ostream& xml, ResDescriptor desc)
+XMLhelper::write_desc_xml (std::ostream& xml, ResDescriptor desc)
 {
   xml << "  <surface><resource type=\"";
   switch (desc.type)
