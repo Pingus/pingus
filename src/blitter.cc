@@ -1,4 +1,4 @@
-string//  $Id: blitter.cc,v 1.12 2000/06/23 18:39:56 grumbel Exp $
+//  $Id: blitter.cc,v 1.13 2000/06/23 20:41:33 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
