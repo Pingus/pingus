@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Pingus 0.5.0\n"
-"POT-Creation-Date: 2002-01-20 15:10+0100\n"
+"POT-Creation-Date: 2002-01-20 15:54+0100\n"
 "PO-Revision-Date: 2001-12-19 13:50+0100\n"
 "Last-Translator: Martijn Santen <martijn@jomarsoft.nl>\n"
 "Language-Team: Giray Devlet <giray@devlet.cc>, Martijn Santen "

@@ -57,7 +57,6 @@ src/editor/EditorObj.cc
 src/editor/EditorObjGroup.cc
 src/editor/EditorObjGroupData.cc
 src/editor/EditorView.cc
-src/editor/EditorWorldObj.cc
 src/editor/ObjectManager.cc
 src/editor/ObjectSelector.cc
 src/editor/Panel.cc
@@ -85,7 +84,6 @@ src/FVec.cc
 src/GameCounter.cc
 src/GamepadController.cc
 src/GameTime.cc
-src/generic/Graph.cc
 src/GenericMain.cc
 src/GlobalEvent.cc
 src/globals.cc
@@ -132,7 +130,6 @@ src/PinguInfo.cc
 src/PinguMap.cc
 src/PingusCounterBar.cc
 src/PingusCounter.cc
-src/PingusDemo.cc
 src/PingusError.cc
 src/PingusGameSession.cc
 src/PingusLevelDesc.cc
@@ -142,7 +139,6 @@ src/PingusMapManager.cc
 src/PingusMenu.cc
 src/PingusMenuManager.cc
 src/PingusMessageBox.cc
-src/PingusMode.cc
 src/PingusMusicProvider.cc
 src/PingusResource.cc
 src/PingusSound.cc

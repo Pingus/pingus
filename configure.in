@@ -1,4 +1,4 @@
-#  $Id: configure.in,v 1.52 2002/01/04 01:19:45 grumbel Exp $
+#  $Id: configure.in,v 1.53 2002/01/20 15:49:54 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,12 +28,12 @@ PACKAGE=pingus
 # The Pingus Version
 MAJOR_VERSION=0
 MINOR_VERSION=5
-PATCH_VERSION=0pre2
+PATCH_VERSION=0pre3
 
 # The required ClanLib version
 CLANLIB_MAJOR_VERSION=0
 CLANLIB_MINOR_VERSION=5
-CLANLIB_PATCH_VERSION=0
+CLANLIB_PATCH_VERSION=3
 
 VERSION=${MAJOR_VERSION}.${MINOR_VERSION}.${PATCH_VERSION}
 
@@ -354,10 +354,8 @@ AC_OUTPUT( Makefile
   data/images/core/Makefile
   data/images/core/worldmap/Makefile
   data/images/core/buttons/Makefile
-  data/images/menu/Makefile
   data/images/backgrounds/Makefile
   data/images/particles/Makefile
-  data/images/cursors/Makefile
   data/images/exits/Makefile
   data/images/fonts/Makefile
   data/images/story/Makefile
@@ -406,7 +404,6 @@ AC_OUTPUT( Makefile
   data/images/hotspots/Makefile
   data/images/hotspots/signposts/Makefile
   data/images/pingus/Makefile
-  data/images/themes/Makefile
   data/images/entrances/Makefile
           )
 # find . -name "Makefile.am" | grep "\./data/images" | grep -v old | grep -v unsorted | sed "s/^\.\//  /" | sed "s/.am\$//"

@@ -17,6 +17,6 @@
 
 SUBDIRS = src data doc intl po
 
-EXTRA_DIST = ABOUT-NLS BUGS FAQ CREDITS autogen.sh pingus.dsp pingus.dsw vcfix.reg INSTALL.Win32 sstream
+EXTRA_DIST = ABOUT-NLS BUGS FAQ CREDITS autogen.sh pingus.dsp pingus.dsw vcfix.reg INSTALL.Win32 
 
 # EOF #
