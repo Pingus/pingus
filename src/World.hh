@@ -1,4 +1,4 @@
-//  $Id: World.hh,v 1.40 2002/06/12 11:04:03 torangan Exp $
+//  $Id: World.hh,v 1.41 2002/06/12 11:08:46 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,7 +22,6 @@
 
 #include <list>
 #include <string>
-#include "WorldObj.hh"
 
 // Forward declarations
 class CL_Vector;
@@ -40,6 +39,7 @@ class Trap;
 class View;
 class ColMap;
 class WorldImpl;
+class WorldObj;
 
 /** The World holds all objects of the pingu enviroment. 
     
