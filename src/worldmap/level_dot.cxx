@@ -1,4 +1,4 @@
-//  $Id: level_dot.cxx,v 1.23 2003/04/24 15:18:19 grumbel Exp $
+//  $Id: level_dot.cxx,v 1.24 2003/08/23 18:14:33 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,7 @@
 
 #include <iostream>
 #include <math.h>
+#include <ClanLib/Display/Font/font.h>
 #include "../input/controller.hxx"
 #include "../input/pointer.hxx"
 #include "../gettext.h"
@@ -146,19 +147,38 @@ LevelDot::accessible()
     return false;
 }
 
+
 void
 LevelDot::draw_hover(GraphicContext& gc)
 {
+  int pos_correction = 0;
+
   if (accessible())
     {
+      int length = Fonts::pingus_small->get_text_width(System::translate(get_plf()->get_levelname())) / 2;
+      int realpos = static_cast<int>(gc.world_to_screen(Vector(pos.x, pos.y, 0)).x);
+      if (realpos - length < 0)
+        pos_correction = realpos - length;
+      else if (realpos + length > gc.get_width())
+        pos_correction = realpos + length - gc.get_width();
+      
       gc.print_center(Fonts::pingus_small,
-                      int(pos.x), int(pos.y - 40),
+                      static_cast<int>(pos.x) - pos_correction,
+                      static_cast<int>(pos.y - 40),
                       System::translate(get_plf()->get_levelname()));
     }
   else
     {
+      int length = Fonts::pingus_small->get_text_width(_("locked")) / 2;
+      int realpos = static_cast<int>(gc.world_to_screen(Vector(pos.x, pos.y, 0)).x);
+      if (realpos - length < 0)
+        pos_correction = realpos - length;
+      else if (realpos + length > gc.get_width())
+        pos_correction = realpos + length - gc.get_width();
+        
       gc.print_center(Fonts::pingus_small,
-                      int(pos.x), int(pos.y - 30),
+                      static_cast<int>(pos.x) - pos_correction,
+                      static_cast<int>(pos.y - 30),
                       _("locked"));
     }
 
