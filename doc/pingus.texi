@@ -147,7 +147,7 @@ for slower machines.
 Sets the audio-rate (Hz) to the supplied value, lower values (11000) are
 recommend for slower machines.
 
-@item --audio-channels {1,2}
+@item --audio-channels @{1,2@}
 Sets the sound support to mone(1) or stereo(2).
 
 @item --audio-buffers INT

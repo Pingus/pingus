@@ -1,4 +1,4 @@
-//  $Id: Console.cc,v 1.3 2000/06/14 14:57:54 grumbel Exp $
+//  $Id: Console.cc,v 1.4 2000/06/14 16:11:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,7 @@
 
 // Globale console
 Console console;
+Console::Endl Console::endl;
 
 Console::Console()
 {
@@ -82,32 +83,31 @@ Console::draw()
 		     current_line.c_str());
 }
 
-void
-Console::print(char* format, ...) 
+void 
+Console::add_line(string str)
 {
-  char str_buffer[128];
+  
+}
+
+// Simple wrapper around sprintf, warrning it will only be able to
+// handle up to 1023 characters
+void
+Console::printf(char* format, ...) 
+{
+  char str_buffer[1024];
   va_list argp;
 
   va_start(argp, format);
   vsnprintf(str_buffer, 128, format, argp);
   va_end(argp);
 
-  output_buffer.push_back(str_buffer);
-  current_pos++;
+  this->add_line(str_buffer);
 }
 
 void
-Console::println(char* format, ...)
+Console::puts(string str)
 {
-  char str_buffer[128];
-  va_list argp;
-
-  va_start(argp, format);
-  vsnprintf(str_buffer, 128, format, argp);
-  va_end(argp);
-
-  output_buffer.push_back(str_buffer);
-  current_pos++;
+  add_line(current_line);
   newline();
 }
 
@@ -120,17 +120,23 @@ Console::newline()
 }
 
 Console& 
+Console::operator<<(const Console::Endl& endl)
+{
+  newline();
+  return *this;
+}
+
+Console& 
 Console::operator<<(string str)
 {
-  output_buffer.push_back(str);
-  current_pos++;
-  std::cout << str << std::endl;
+  current_line += str;
   return *this;
 }
 
 Console&
-Console::operator<<(int)
+Console::operator<<(int a)
 {
+  this->printf("%d", a);
   return *this;
 }
 

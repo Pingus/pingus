@@ -1,4 +1,4 @@
-//  $Id: Console.hh,v 1.3 2000/06/14 14:57:54 grumbel Exp $
+//  $Id: Console.hh,v 1.4 2000/06/14 16:11:56 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,6 +28,7 @@
 class Console : public DisplayHook
 {
 private:
+  class Endl {};
   CL_Font* font;
   bool is_init;
   int  current_pos;
@@ -37,15 +38,18 @@ private:
   void draw();
 
 public:
+  static Endl endl;
+
   Console();
   virtual ~Console();
 
   void init();
   virtual void on_event();
+  Console& operator<<(const Console::Endl&);
   Console& operator<<(string);
   Console& operator<<(int);
-  void println(char* format, ...);
-  void print(char* format, ...);
+  void printf(char* format, ...);
+  void puts(string);
   void newline();
 };
 

@@ -1,8 +1,11 @@
-Release 0.3.2 (15/Mar/1999)
+Release 0.4.0 (??/Jun/2000)
 ===========================
 * Changed the config file syntax (see doc/config)
 * Changed default resolution to 800x600
-* Added a better config file parser
+* Added a simple console (output only)
+* Added a global fps counter =:-)
+* Added screenshot support (F12)
+* Added a better config file parser (it still sucks...)
 * Added option for disabling fullscreen support
 * Added a credits screen
 * Added a small quick scroll map
@@ -23,7 +26,7 @@ Release 0.3.2 (15/Mar/1999)
 * Software mouse cursor support
 
 
-Release 0.3.1 (17/Feb/1999)
+Release 0.3.1 (17/Feb/2000)
 ===========================
 * Updated Pingus to use ClanLib 0.3.x
 * ~/.pingus/options is renamed to ~/.pingus/config
