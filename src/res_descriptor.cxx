@@ -1,4 +1,4 @@
-//  $Id: res_descriptor.cxx,v 1.14 2003/04/02 19:43:04 grumbel Exp $
+//  $Id: res_descriptor.cxx,v 1.15 2003/04/02 19:59:04 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -70,32 +70,6 @@ ResDescriptor::ResDescriptor(const std::string& arg_res_name,
   modifier = arg_modifier;
 }
 
-ResDescriptor::ResDescriptor(const std::string& str) 
-{
-  modifier = ResourceModifierNS::ROT0;
-
-  std::string::size_type pos1;
-  std::string::size_type pos2;
-
-  //cout << "Resdes: " << str << std::endl;
-
-  type = RD_RESOURCE;
-  
-  pos1 = str.find_first_of(':');
-  pos2 = str.find_first_of(')');
-  
-  if (pos1 != std::string::npos && pos2 != std::string::npos)
-    {
-      datafile = str.substr(pos1 + 1, (pos2 - pos1 - 1));
-      res_name = str.substr(pos2 + 1);
-    }
-  else
-    {
-      res_name = str;
-      datafile = "global";
-    }
-}
-
 bool
 ResDescriptor::operator<(const ResDescriptor& res_desc) const
 {
@@ -137,8 +111,8 @@ std::ostream& operator<<(std::ostream& s, const ResDescriptor& desc)
   switch (desc.type)
     {
     case ResDescriptor::RD_RESOURCE:
-      return s << "(datafile: " << desc.datafile << ", res_name: " << desc.res_name 
-               << ", modifier: " << rs_to_string(desc.modifier) << ")";
+      return s << "[" << desc.res_name << ", " << desc.datafile 
+               << ", " << ResourceModifierNS::rs_to_string(desc.modifier) << "]";
       break;
     case ResDescriptor::RD_FILE:
       return s << "(plainfile:" << desc.res_name << ")";

@@ -1,4 +1,4 @@
-//  $Id: groundpiece_obj.cxx,v 1.13 2003/04/02 19:11:27 grumbel Exp $
+//  $Id: groundpiece_obj.cxx,v 1.14 2003/04/02 20:02:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -64,7 +64,7 @@ GroundpieceObj::status_line ()
 {
   return "Groundpiece: " + data->desc.res_name
     + " Type: " + Groundtype::type_to_string(data->gptype)
-    + " Rot: " + rs_to_string(data->desc.modifier);
+    + " Rot: " + ResourceModifierNS::rs_to_string(data->desc.modifier);
 }
 
 void

@@ -1,4 +1,4 @@
-//  $Id: pingus_resource.cxx,v 1.25 2003/04/02 19:43:04 grumbel Exp $
+//  $Id: pingus_resource.cxx,v 1.26 2003/04/02 19:59:04 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -117,7 +117,6 @@ PingusResource::load_surface(const ResDescriptor& res_desc)
 	  pout(PINGUS_DEBUG_RESOURCES) << "PingusResource: Loading surface from cache 1/2: " << res_desc << std::endl;
 	  surf = apply_modifier (surf, res_desc);
       
-	  // add to cache (FIXME: doesn't work)
 	  surface_map[res_desc] = surf;
 	}
       else // never loaded, need to load it from source
@@ -147,7 +146,6 @@ PingusResource::load_from_cache (const ResDescriptor& res_desc)
   std::map<ResDescriptor, CL_Surface>::iterator i = surface_map.find(res_desc);
   if (i == surface_map.end())
     {
-      std::cout << "PingusResource::load_from_cache: no surface cached: " << res_desc << std::endl;
       return CL_Surface();
     }
   else
