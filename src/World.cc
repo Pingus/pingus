@@ -1,4 +1,4 @@
-//  $Id: World.cc,v 1.10 2000/03/08 01:57:02 grumbel Exp $
+//  $Id: World.cc,v 1.11 2000/03/12 01:43:23 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,7 +29,6 @@
 
 #include "PingusError.hh"
 #include "algo.hh"
-#include "PingusSound.hh"
 #include "globals.hh"
 #include "Background.hh"
 #include "World.hh"
@@ -344,6 +343,12 @@ ColMap*
 World::get_colmap()
 {
   return colmap;
+}
+
+PLF*    
+World::get_plf()
+{
+  return plf;
 }
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: SmallMap.cc,v 1.3 2000/02/26 16:15:42 grumbel Exp $
+//  $Id: SmallMap.cc,v 1.4 2000/03/12 01:43:23 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,10 +17,16 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <vector>
+
+#include "exit_data.hh"
+#include "entrance_data.hh"
+
 #include "PinguHolder.hh"
 #include "Display.hh"
 #include "Playfield.hh"
 #include "World.hh"
+#include "PingusResource.hh"
 #include "SmallMap.hh"
 
 SmallMap::SmallMap()
@@ -40,14 +46,18 @@ void
 SmallMap::init()
 {
   CL_Canvas*  canvas;
-  ColMap* colmap;
-  World* world = client->get_server()->get_world();
   unsigned char* buffer;
   unsigned char* cbuffer;
   int tx, ty;
 
+  entrance_sur = CL_Surface::load("SmallMap/entrance", PingusResource::get("game.dat"));
+  exit_sur = CL_Surface::load("SmallMap/exit", PingusResource::get("game.dat"));
+
+  world = client->get_server()->get_world();
+
   colmap = world->get_colmap(); 
   buffer = colmap->get_data();
+  plf = world->get_plf();
 
   canvas = new CL_Canvas(width, height);
  
@@ -85,7 +95,25 @@ SmallMap::init()
 	    }
 	}
     }
+  /*
+  std::cout << "Generating entrances..." << std::endl;
+  vector<exit_data>     exit_d     = plf->get_exit();
+  for(std::vector<exit_data>::iterator i = exit_d.begin(); i != exit_d.end(); i++)
+    {
+      exit_sur->put_target(i->x_pos * width / colmap->get_width(), 
+			   i->y_pos * height / colmap->get_height(), 
+			   0, canvas);
+    }
 
+  vector<entrance_data>     entrance_d     = plf->get_entrance();
+  for(std::vector<entrance_data>::iterator i = entrance_d.begin(); i != entrance_d.end(); i++)
+    {
+      entrance_sur->put_target(i->x_pos * width / colmap->get_width(),
+			       i->y_pos * height / colmap->get_height(),
+			       0, canvas);
+    }
+  std::cout << "Done" << std::endl;
+  */
   canvas->unlock();
   
   sur = CL_Surface::create(canvas, true);
@@ -120,6 +148,22 @@ SmallMap::draw()
   Display::draw_rect(x_of, y_of + CL_Display::get_height() - sur->get_height(),
 		     x_of + rwidth, y_of + rheight + CL_Display::get_height() - sur->get_height(),
 		     0.0, 1.0, 0.0, 1.0);
+
+  // FIXME: This should use put_target(), but put_target(), does not
+  // seem to work?!
+  vector<exit_data>     exit_d     = plf->get_exit();
+  for(std::vector<exit_data>::iterator i = exit_d.begin(); i != exit_d.end(); i++)
+    {
+      exit_sur->put_screen(i->x_pos * width / colmap->get_width() +  x_pos - 3, 
+			   i->y_pos * height / colmap->get_height() + y_pos - 3);
+    }
+
+  vector<entrance_data>     entrance_d     = plf->get_entrance();
+  for(std::vector<entrance_data>::iterator i = entrance_d.begin(); i != entrance_d.end(); i++)
+    {
+      entrance_sur->put_screen(i->x_pos * width / colmap->get_width() + x_pos - 3,
+			       i->y_pos * height / colmap->get_height() + y_pos);
+    }
 
   draw_pingus();
 }

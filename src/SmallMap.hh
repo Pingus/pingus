@@ -1,4 +1,4 @@
-//  $Id: SmallMap.hh,v 1.3 2000/02/26 16:15:42 grumbel Exp $
+//  $Id: SmallMap.hh,v 1.4 2000/03/12 01:43:23 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,8 +28,13 @@ class Client;
 class SmallMap : public GuiObj
 {
 private:
+  PLF* plf;
+  ColMap* colmap;
+  World* world;
   CL_Surface* sur;
   Client*     client;
+  CL_Surface* exit_sur;
+  CL_Surface* entrance_sur;
   int x_pos;
   int y_pos;
   int width;
