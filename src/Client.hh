@@ -1,4 +1,4 @@
-//  $Id: Client.hh,v 1.37 2002/06/07 19:10:33 grumbel Exp $
+//  $Id: Client.hh,v 1.38 2002/06/08 18:39:57 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,30 +20,28 @@
 #ifndef CLIENT_HH
 #define CLIENT_HH
 
-#include <string>
+#include <ClanLib/core.h>
+#include <ClanLib/display.h>
 
+#include <string>
+#include <vector>
 #include "boost/smart_ptr.hpp"
 
-#include "Server.hh"
 #include "Result.hh"
 
-#include "ButtonPanel.hh"
-#include "TimeDisplay.hh"
-#include "PinguInfo.hh"
-#include "PingusCounter.hh"
-#include "SmallMap.hh"
-#include "HurryUp.hh"
-#include "Controller.hh"
-#include "Cursor.hh"
-#include "Playfield.hh"
-#include "SmallMap.hh"
-
-class Playfield;
 class ButtonPanel;
-class PingusCounter;
+class Controller;
+class Cursor;
+class GuiObj;
 class HurryUp;
+class PLF;
+class PingusCounter;
+class Playfield;
+class Server;
+class SmallMap;
+class TimeDisplay;
 
-/** FIXME: This whole Server/Client concept is screwed */
+/** FIXME: This whole Server/Client concept is a bit screwed */
 class Client
 {
 private:
@@ -51,7 +49,6 @@ private:
   PLF* plf;
   Result result;
   Server* server;
-  PingusGameMode mode;
 
   bool fast_forward;
   bool pause;
@@ -62,14 +59,12 @@ private:
   std::vector<GuiObj*> obj;
   typedef std::vector<GuiObj*>::iterator GuiObjIter;
 
-  static bool gui_is_init;
-
-  static boost::shared_ptr<ButtonPanel>   button_panel;
-  static boost::shared_ptr<PingusCounter> pcounter;
-  static boost::shared_ptr<Playfield>     playfield;
-  static boost::shared_ptr<TimeDisplay>   time_display;
-  static boost::shared_ptr<SmallMap>      small_map;
-  static boost::shared_ptr<HurryUp>       hurry_up;
+  ButtonPanel*   button_panel;
+  PingusCounter* pcounter;
+  Playfield*     playfield;
+  TimeDisplay*   time_display;
+  SmallMap*      small_map;
+  HurryUp*       hurry_up;
 
   boost::shared_ptr<Controller> controller;
   boost::shared_ptr<Cursor>     cursor;
@@ -97,7 +92,7 @@ public:
   virtual ~Client();
 
   Server* get_server() { return server; }
-  boost::shared_ptr<Playfield> get_playfield() { return playfield; }
+  Playfield* get_playfield() { return playfield; }
 
   /** Display the game and enter the main game loop */
   void display();

@@ -1,4 +1,4 @@
-//  $Id: PingusCounter.cc,v 1.9 2002/01/15 17:52:02 grumbel Exp $
+//  $Id: PingusCounter.cc,v 1.10 2002/06/08 18:39:57 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,6 +28,7 @@
 #include <clocale>
 #include <config.h>
 #include "my_gettext.hh"
+#include "Server.hh"
 
 
 PingusCounter::PingusCounter()

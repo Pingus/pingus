@@ -1,4 +1,4 @@
-//  $Id: Client.cc,v 1.80 2002/06/07 19:10:33 grumbel Exp $
+//  $Id: Client.cc,v 1.81 2002/06/08 18:39:57 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,21 +33,19 @@
 #include "PingusSound.hh"
 #include "PingusError.hh"
 #include "OptionMenu.hh"
+#include "TimeDisplay.hh"
+#include "PingusCounter.hh"
+#include "SmallMap.hh"
 #include "PLF.hh"
+#include "HurryUp.hh"
 #include "DeltaManager.hh"
 #include "MouseController.hh"
 #include "PathManager.hh"
 #include "GamepadController.hh"
+#include "Cursor.hh"
+#include "Server.hh"
 
 using boost::shared_ptr;
-
-bool Client::gui_is_init;
-shared_ptr<ButtonPanel>   Client::button_panel;
-shared_ptr<PingusCounter> Client::pcounter;
-shared_ptr<Playfield>     Client::playfield;
-shared_ptr<TimeDisplay>   Client::time_display;
-shared_ptr<SmallMap>      Client::small_map;
-shared_ptr<HurryUp>       Client::hurry_up;
 
 Client::Client(boost::shared_ptr<Controller> arg_controller, Server * s)
   : controller (arg_controller),
@@ -60,6 +58,13 @@ Client::Client(boost::shared_ptr<Controller> arg_controller, Server * s)
   skip_frame = 0;
   do_replay = false;
   is_finished = false;
+
+  playfield = 0;    
+  button_panel = 0;
+  pcounter = 0;
+  small_map = 0;
+  time_display = 0;
+  hurry_up = 0;
  
   Display::add_flip_screen_hook(cursor.get ());
   //Display::add_flip_screen_hook(new Cursor ("cursors/cursor", "core", boost::shared_ptr<Controller>(new MouseController ())));
@@ -70,6 +75,13 @@ Client::~Client()
   //std::cout << "Client:~Client" << std::endl;
   Display::remove_flip_screen_hook(cursor.get ());
   deinit_display();
+
+  delete playfield;    
+  delete button_panel;
+  delete pcounter;
+  delete small_map;
+  delete time_display;
+  delete hurry_up;
 }
 
 void
@@ -104,15 +116,13 @@ Client::init_display()
 						   PingusResource::get("game")));
   Display::show_cursor();
   
-  playfield = shared_ptr<Playfield>(new Playfield(plf, server->get_world(),
-						  controller));
+  playfield = new Playfield(plf, server->get_world(), controller);
     
-  button_panel = shared_ptr<ButtonPanel>(new ButtonPanel(plf, controller, 2, CL_Display::get_height()/2));
-  pcounter     = shared_ptr<PingusCounter>(new PingusCounter());
-  small_map    = shared_ptr<SmallMap>(new SmallMap());
-  time_display = shared_ptr<TimeDisplay>(new TimeDisplay());
-  hurry_up     = shared_ptr<HurryUp>(new HurryUp());
-  gui_is_init = true;
+  button_panel = new ButtonPanel(plf, controller, 2, CL_Display::get_height()/2);
+  pcounter     = new PingusCounter();
+  small_map    = new SmallMap();
+  time_display = new TimeDisplay();
+  hurry_up     = new HurryUp();
    
   button_panel->set_server(server);
   time_display->set_server(server);
@@ -131,12 +141,12 @@ Client::init_display()
   playfield->set_client(this);
 
   // Adding all GuiObj's to the screen
-  obj.push_back(playfield.get());
-  obj.push_back(pcounter.get());
-  obj.push_back(time_display.get());
-  obj.push_back(button_panel.get());
-  obj.push_back(small_map.get());
-  obj.push_back(hurry_up.get());
+  obj.push_back(playfield);
+  obj.push_back(pcounter);
+  obj.push_back(time_display);
+  obj.push_back(button_panel);
+  obj.push_back(small_map);
+  obj.push_back(hurry_up);
 
   if (verbose) std::cout << "done " << timer.stop() << std::endl;
 }

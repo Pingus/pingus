@@ -1,4 +1,4 @@
-//  $Id: SmallMap.cc,v 1.40 2002/06/08 16:08:16 grumbel Exp $
+//  $Id: SmallMap.cc,v 1.41 2002/06/08 18:39:57 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -156,7 +156,7 @@ SmallMap::set_client(Client* c)
 void
 SmallMap::draw()
 {
-  boost::shared_ptr<Playfield> playfield = client->get_playfield();
+  Playfield* playfield = client->get_playfield();
 
   int x_of = playfield->get_x_offset();
   int y_of = playfield->get_y_offset();

@@ -1,4 +1,4 @@
-//  $Id: ButtonPanel.cc,v 1.27 2002/06/07 19:10:33 grumbel Exp $
+//  $Id: ButtonPanel.cc,v 1.28 2002/06/08 18:39:57 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,6 +25,8 @@
 #include "Controller.hh"
 #include "PLF.hh"
 #include "Client.hh"
+#include "Server.hh"
+#include "World.hh"
 
 using boost::shared_ptr;
 CL_Surface ButtonPanel::button_cap;

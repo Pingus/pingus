@@ -1,4 +1,4 @@
-//  $Id: Playfield.hh,v 1.22 2002/06/08 16:08:16 grumbel Exp $
+//  $Id: Playfield.hh,v 1.23 2002/06/08 18:39:57 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -45,7 +45,7 @@ private:
   Server* server;
   Client* client;
   ///Range x_offset2, y_offset2;
-  boost::shared_ptr<ButtonPanel> buttons;
+  ButtonPanel* buttons;
   PinguHolder* pingus;
   PinguInfo* pingu_info;
   World* world;
@@ -105,7 +105,7 @@ public:
 
   /// Members used to communicate between different screen objs
   void set_pingu_info(PinguInfo*);
-  void set_buttons(boost::shared_ptr<ButtonPanel>);
+  void set_buttons(ButtonPanel*);
   void set_server(Server*);
   void set_client(Client*);
 };

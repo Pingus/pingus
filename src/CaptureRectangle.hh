@@ -1,4 +1,4 @@
-//  $Id: CaptureRectangle.hh,v 1.13 2002/06/08 16:08:16 grumbel Exp $
+//  $Id: CaptureRectangle.hh,v 1.14 2002/06/08 18:39:57 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,8 +37,8 @@ namespace boost {
 class CaptureRectangle
 {
 private:
-  static Pingu*       pingu; 
-  static boost::shared_ptr<PinguAction> button_action;
+  Pingu*       pingu; 
+  boost::shared_ptr<PinguAction> button_action;
 
   /// The id of the owner of this capture rectangle
   int owner_id;
@@ -51,11 +51,10 @@ private:
   CL_Font* font;
 public:
   CaptureRectangle();  
-  virtual ~CaptureRectangle(); 
+  ~CaptureRectangle(); 
   
-  static void load_data();
-  static void set_pingu(Pingu* pingu);  
-  static void set_action(boost::shared_ptr<PinguAction>);
+  void set_pingu(Pingu* pingu);  
+  void set_action(boost::shared_ptr<PinguAction>);
 
   void draw_offset(int x_offset, int y_offset, float s = 1.0); 
 };

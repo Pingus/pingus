@@ -1,4 +1,4 @@
-//  $Id: CaptureRectangle.cc,v 1.17 2002/06/08 16:08:16 grumbel Exp $ 
+//  $Id: CaptureRectangle.cc,v 1.18 2002/06/08 18:39:57 grumbel Exp $ 
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,11 +32,9 @@
 
 using namespace boost;
 
-Pingu* CaptureRectangle::pingu; 
-shared_ptr<PinguAction> CaptureRectangle::button_action;
-
 CaptureRectangle::CaptureRectangle()
-  : owner_id (0),
+  : pingu (0),
+    owner_id (0),
     good (PingusResource::load_surface("Cursors/capgood", "game")),
     bad (PingusResource::load_surface("Cursors/capbad",  "game")),
     arrow_left (PingusResource::load_surface("Cursors/arrow_left",  "game")),
