@@ -1,4 +1,4 @@
-//  $Id: screen_ptr.hxx,v 1.2 2003/04/19 10:23:18 torangan Exp $
+//  $Id: screen_ptr.hxx,v 1.3 2003/10/18 23:17:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,8 @@
 #define HEADER_PINGUS_SCREEN_PTR_HXX
 
 #include "screen.hxx"
+
+namespace Pingus {
 
 /** The ScreenPtr is a simple smart pointer to point at a Screen. It
     either deletes the pointer or not, depending on the value of
@@ -102,6 +104,8 @@ private:
   void decrease_refcount();
   void increase_refcount();
 };
+
+} // namespace Pingus
 
 #endif
 

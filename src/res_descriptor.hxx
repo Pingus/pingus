@@ -1,4 +1,4 @@
-//  $Id: res_descriptor.hxx,v 1.13 2003/04/19 10:23:17 torangan Exp $
+//  $Id: res_descriptor.hxx,v 1.14 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,8 @@
 #define HEADER_PINGUS_RES_DESCRIPTOR_HXX
 
 #include "resource_modifier.hxx"
+
+namespace Pingus {
 
 /// Resource descriptor, tells were to find a resource.
 class ResDescriptor
@@ -52,8 +54,10 @@ public:
 
 };
 
+} // namespace Pingus
+
 /// Our own function to print out the ResDescriptor
-std::ostream& operator<<(std::ostream& s, const ResDescriptor& desc);
+std::ostream& operator<<(std::ostream& s, const Pingus::ResDescriptor& desc);
 
 #endif
 

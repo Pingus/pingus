@@ -1,4 +1,4 @@
-//  $Id: game_session.cxx,v 1.40 2003/04/19 10:23:17 torangan Exp $
+//  $Id: game_session.cxx,v 1.41 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,6 +31,8 @@
 #include "result_screen.hxx"
 #include "savegame_manager.hxx"
 #include "globals.hxx"
+
+namespace Pingus {
 
 PingusGameSession::PingusGameSession (PLFHandle arg_plf, bool arg_show_result_screen)
   : plf(arg_plf),
@@ -196,5 +198,7 @@ PingusGameSession::on_escape_press ()
 {
   client->on_escape_press ();
 }
+
+} // namespace Pingus
 
 /* EOF */

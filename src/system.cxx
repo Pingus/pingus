@@ -1,4 +1,4 @@
-//  $Id: system.cxx,v 1.21 2003/08/13 13:46:39 sphair Exp $
+//  $Id: system.cxx,v 1.22 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -40,6 +40,8 @@
 #include "string_converter.hxx"
 #include "system.hxx"
 #include "gettext.h"
+
+namespace Pingus {
 
 int System::verbose;
 std::string System::default_email;
@@ -499,5 +501,7 @@ System::readlink(const std::string& filename)
     }
 #endif
 }
+
+} // namespace Pingus
 
 /* EOF */

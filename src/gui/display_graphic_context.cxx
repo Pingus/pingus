@@ -1,4 +1,4 @@
-//  $Id: display_graphic_context.cxx,v 1.7 2003/10/18 12:11:31 grumbel Exp $
+//  $Id: display_graphic_context.cxx,v 1.8 2003/10/18 23:17:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,9 +21,12 @@
 #include <ClanLib/Display/display.h>
 #include <ClanLib/Display/font.h>
 #include <config.h>
+#include "display.hxx"
 #include "display_graphic_context.hxx"
 #include "../math.hxx"
 #include "../sprite.hxx"
+
+namespace Pingus {
 
 DisplayGraphicContext::DisplayGraphicContext (int x1_, int y1_, int x2_, int y2_,
 					      int /*x_offset*/, int /*y_offset*/)
@@ -79,13 +82,13 @@ DisplayGraphicContext::zoom_to (const CL_Rect & arg_rect)
 {
   CL_Rect rect;
 
-  rect.x1 = Math::min (arg_rect.x1, arg_rect.x2);
-  rect.x2 = Math::max (arg_rect.x1, arg_rect.x2);
-  rect.y1 = Math::min (arg_rect.y1, arg_rect.y2);
-  rect.y2 = Math::max (arg_rect.y1, arg_rect.y2);
+  rect.left = Math::min (arg_rect.left, arg_rect.right);
+  rect.right = Math::max (arg_rect.left, arg_rect.right);
+  rect.top = Math::min (arg_rect.top, arg_rect.bottom);
+  rect.bottom = Math::max (arg_rect.top, arg_rect.bottom);
 
-  Vector pos1 = screen_to_world (Vector(rect.x1, rect.y1));
-  Vector pos2 = screen_to_world (Vector(rect.x2, rect.y2));
+  Vector pos1 = screen_to_world (Vector(rect.left, rect.top));
+  Vector pos2 = screen_to_world (Vector(rect.right, rect.bottom));
 
   Vector center_ = (pos2 + pos1) * 0.5f;
   offset = -center_;
@@ -154,7 +157,7 @@ DisplayGraphicContext::get_y_offset ()
 void
 DisplayGraphicContext::clear (float r, float g, float b)
 {
-  CL_Display::clear_display(r, g, b);
+  CL_Display::clear(Display::to_color(r, g, b, 1.0f));
 }
 
 void
@@ -162,12 +165,12 @@ DisplayGraphicContext::draw (CL_Surface& sur, int x_pos, int y_pos)
 {
   if (offset.z == 1.0)
     {
-      sur.put_screen(w2s_x(x_pos), w2s_y(y_pos));
+      sur.draw(w2s_x(x_pos), w2s_y(y_pos));
     }
   else
     {
-      sur.put_screen(w2s_x(x_pos), w2s_y(y_pos),
-                     offset.z, offset.z);
+      sur.draw(w2s_x(x_pos), w2s_y(y_pos),
+               offset.z, offset.z);
     }
 }
 
@@ -176,13 +179,13 @@ DisplayGraphicContext::draw (CL_Surface& sur, int x_pos, int y_pos, int frame)
 {
   if (offset.z == 1.0)
     {
-      sur.put_screen (w2s_x(x_pos), w2s_y(y_pos), frame);
+      sur.draw(w2s_x(x_pos), w2s_y(y_pos), frame);
     }
   else
     {
-      sur.put_screen (w2s_x(x_pos), w2s_y(y_pos),
-		      offset.z, offset.z,
-		      frame);
+      sur.draw(w2s_x(x_pos), w2s_y(y_pos),
+               offset.z, offset.z,
+               frame);
     }
 }
 
@@ -190,9 +193,9 @@ void
 DisplayGraphicContext::draw (CL_Surface& sur, int x_pos, int y_pos,
 	    float size_x, float size_y, int frame)
 {
-  sur.put_screen (w2s_x(x_pos), w2s_y(y_pos),
-		  size_x * offset.z,
-		  size_y * offset.z, frame);
+  sur.draw(w2s_x(x_pos), w2s_y(y_pos),
+           size_x * offset.z,
+           size_y * offset.z, frame);
 }
 
 void
@@ -275,5 +278,7 @@ DisplayGraphicContext::print_right (FontHandle font, int x_pos, int y_pos, const
 {
   font->print_right(w2s_x(x_pos), w2s_y(y_pos), str.c_str ());
 }
+
+} // namespace Pingus
 
 /* EOF */

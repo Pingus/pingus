@@ -1,4 +1,4 @@
-//  $Id: worldobj_data_factory.hxx,v 1.8 2003/06/04 17:22:33 torangan Exp $
+//  $Id: worldobj_data_factory.hxx,v 1.9 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,6 +27,8 @@ class WorldObjData;
 class WorldObjDataAbstractFactory;
 
 #include "libxmlfwd.hxx"
+
+namespace Pingus {
 
 /** WorldObjDataFactory which can be used to create all kinds of
     WorldObjData's by given its id */
@@ -94,6 +96,8 @@ private:
   WorldObjDataFactoryImpl (const WorldObjDataFactoryImpl&);
   WorldObjDataFactoryImpl& operator= (const WorldObjDataFactoryImpl&);
 };
+
+} // namespace Pingus
 
 #endif
 

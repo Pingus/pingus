@@ -1,4 +1,4 @@
-//  $Id: action_window.cxx,v 1.16 2003/04/19 10:23:18 torangan Exp $
+//  $Id: action_window.cxx,v 1.17 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,6 +38,8 @@
 
 // FIXME: [+][-] buttons are missing, need an own widget, anybody
 // FIXME: wants to write that?
+
+namespace Pingus {
 
 using namespace Actions;
 
@@ -175,5 +177,6 @@ ActionWindow::write_data ()
 }
 
 } // namespace EditorNS
+} // namespace Pingus
 
 /* EOF */

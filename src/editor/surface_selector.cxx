@@ -1,4 +1,4 @@
-//  $Id: surface_selector.cxx,v 1.9 2003/04/22 16:40:41 grumbel Exp $
+//  $Id: surface_selector.cxx,v 1.10 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,12 +19,15 @@
 
 #include <iostream>
 #include <ClanLib/Core/System/system.h>
-#include <ClanLib/Display/Display/display.h>
-#include <ClanLib/Display/Input/mouse.h>
+#include <ClanLib/Display/display.h>
+#include <ClanLib/Display/mouse.h>
 #include "../gui/display.hxx"
 #include "../fonts.hxx"
 #include "../pingus_resource.hxx"
 #include "surface_selector.hxx"
+
+namespace Pingus {
+namespace EditorNS {
 
 SurfaceSelector::SurfaceSelector (std::vector<surface_obj>* s)
   : font(Fonts::courier_small),
@@ -90,19 +93,19 @@ SurfaceSelector::draw ()
 
   CL_System::keep_alive();
 
-  CL_Display::clear_display();
+  CL_Display::clear();
 
   // Draw all surfaces
   for(std::vector<surface_obj>::iterator i = sur_list->begin(); i != sur_list->end(); ++i)
     {
       if (i->thumbnail.get_width() <= 50 && i->thumbnail.get_height() <= 50)
 	{
-	  i->thumbnail.put_screen(x + 25 - (i->thumbnail.get_width()  / 2),
+	  i->thumbnail.draw(x + 25 - (i->thumbnail.get_width()  / 2),
 			          y + 25 - (i->thumbnail.get_height() / 2));
 	}
       else
 	{
-	  i->thumbnail.put_screen(x, y);
+	  i->thumbnail.draw(x, y);
 	}
 
       if (i == c_obj)
@@ -125,8 +128,7 @@ SurfaceSelector::draw ()
   // Draw the current object in the bottom/left corner when the
   // surface is selected for more then 1sec
   if (c_obj != std::vector<surface_obj>::iterator()
-      && (c_obj->display_time + 350 < CL_System::get_time ()
-	  || c_obj->large_sur))
+      && (c_obj->display_time + 350 < CL_System::get_time() || c_obj->large_sur))
     {
       if (!c_obj->large_sur)
 	{
@@ -137,7 +139,7 @@ SurfaceSelector::draw ()
       CL_Display::fill_rect(0, CL_Display::get_height() - c_obj->large_sur.get_height(),
 			    c_obj->large_sur.get_width(), CL_Display::get_height(),
 			    0.5f, 0.5f, 0.5f, 0.8f);
-      c_obj->large_sur.put_screen(0, CL_Display::get_height() - c_obj->large_sur.get_height());
+      c_obj->large_sur.draw(0, CL_Display::get_height() - c_obj->large_sur.get_height());
     }
   Display::flip_display();
 }
@@ -167,7 +169,7 @@ SurfaceSelector::select ()
   std::string str;
   std::vector<surface_obj>::iterator iter;
 
-  while (!CL_Mouse::left_pressed())
+  while (!CL_Mouse::get_keycode(CL_MOUSE_LEFT))
     {
       draw();
 
@@ -211,5 +213,8 @@ surface_obj& surface_obj::operator= (const surface_obj& old)
 
   return *this;
 }
+
+} // namespace EditorNS
+} // namespace Pingus
 
 /* EOF */

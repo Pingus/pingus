@@ -1,4 +1,4 @@
-//  $Id: playfield.cxx,v 1.35 2003/04/19 10:23:17 torangan Exp $
+//  $Id: playfield.cxx,v 1.36 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,6 +29,8 @@
 #include "true_server.hxx"
 #include "pingu.hxx"
 #include "button_panel.hxx"
+
+namespace Pingus {
 
 Playfield::Playfield (Client* client_)
   : client(client_), current_pingu(0), current_view(0)
@@ -99,7 +101,6 @@ Playfield::draw (GraphicContext& gc)
 
   if (needs_clear_screen)
     {
-      //CL_Display::clear_display();
       for(std::vector<CL_Rect>::iterator i = clipping_rectangles.begin();
 	  i != clipping_rectangles.end();
 	  i++)
@@ -303,6 +304,8 @@ Playfield::scroll (int x, int y)
   view[current_view]->shift_x_offset(x);
   view[current_view]->shift_y_offset(y);
 }
+
+} // namespace Pingus
 
 /* EOF */
 

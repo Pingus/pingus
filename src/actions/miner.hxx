@@ -1,4 +1,4 @@
-//  $Id: miner.hxx,v 1.14 2003/04/19 10:23:18 torangan Exp $
+//  $Id: miner.hxx,v 1.15 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,16 +20,18 @@
 #ifndef HEADER_PINGUS_ACTIONS_MINER_HXX
 #define HEADER_PINGUS_ACTIONS_MINER_HXX
 
+#include <ClanLib/display.h>
 #include "../pingu_action.hxx"
 #include "../sprite.hxx"
 
+namespace Pingus {
 namespace Actions {
 
 class Miner : public PinguAction
 {
 private:
-  CL_Surface miner_radius;
-  CL_Surface miner_radius_gfx;
+  CL_PixelBuffer miner_radius;
+  CL_PixelBuffer miner_radius_gfx;
   Sprite sprite;
   int slow_count;
 
@@ -54,6 +56,7 @@ private:
 };
 
 } // namespace Actions
+} // namespace Pingus
 
 #endif
 

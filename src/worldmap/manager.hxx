@@ -1,4 +1,4 @@
-//  $Id: manager.hxx,v 1.23 2003/08/19 19:56:55 torangan Exp $
+//  $Id: manager.hxx,v 1.24 2003/10/18 23:17:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,6 +29,7 @@ class CL_InputDevice;
 class CL_Key;
 class GameDelta;
 
+namespace Pingus {
 namespace WorldMapNS {
 
 typedef int NodeId;
@@ -116,6 +117,7 @@ private:
 };
 
 } // namespace WorldMapNS
+} // namespace Pingus
 
 #endif
 

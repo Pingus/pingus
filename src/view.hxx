@@ -1,4 +1,4 @@
-//  $Id: view.hxx,v 1.12 2003/04/19 10:23:17 torangan Exp $
+//  $Id: view.hxx,v 1.13 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,8 @@
 #include "range.hxx"
 #include "capture_rectangle.hxx"
 #include "gui/display_graphic_context.hxx"
+
+namespace Pingus {
 
 class Pingu;
 class World;
@@ -102,6 +104,8 @@ private:
   View (const View&);
   View& operator= (const View&);
 };
+
+} // namespace Pingus
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: entrance.cxx,v 1.13 2003/04/19 10:23:19 torangan Exp $
+//  $Id: entrance.cxx,v 1.14 2003/10/18 23:17:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,6 +28,7 @@
 #include "../smallmap.hxx"
 #include "entrance.hxx"
 
+namespace Pingus {
 namespace WorldObjs {
 
 Entrance::Entrance (const WorldObjsData::EntranceData& data_)
@@ -143,5 +144,6 @@ Entrance::draw_smallmap(SmallMap* smallmap)
 }
 
 } // namespace WorldObjs
+} // namespace Pingus
 
 /* EOF */

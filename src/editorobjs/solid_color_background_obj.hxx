@@ -1,4 +1,4 @@
-//  $Id: solid_color_background_obj.hxx,v 1.7 2003/04/19 10:23:18 torangan Exp $
+//  $Id: solid_color_background_obj.hxx,v 1.8 2003/10/18 23:17:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,7 +34,7 @@ class SolidColorBackgroundData;
 
 namespace EditorObjs {
 
-class SolidColorBackgroundObj : public RectEditorObj
+class SolidColorBackgroundObj : public EditorNS::RectEditorObj
 {
 private:
   WorldObjsData::SolidColorBackgroundData* const data;

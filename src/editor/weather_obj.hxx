@@ -1,4 +1,4 @@
-//  $Id: weather_obj.hxx,v 1.12 2003/04/19 10:23:18 torangan Exp $
+//  $Id: weather_obj.hxx,v 1.13 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,9 @@
 #include "../vector.hxx"
 #include "sprite_editorobj.hxx"
 
+namespace Pingus {
+namespace EditorNS {
+
 class WeatherObj : public SpriteEditorObj
 {
 private:
@@ -46,6 +49,9 @@ private:
   WeatherObj (const WeatherObj&);
   WeatherObj& operator= (const WeatherObj&);
 };
+
+} // namespace EditorNS
+} // namespace Pingus
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: display_graphic_context.hxx,v 1.5 2003/08/16 20:51:28 grumbel Exp $
+//  $Id: display_graphic_context.hxx,v 1.6 2003/10/18 23:17:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,6 +25,8 @@
 #include <ClanLib/Core/Math/rect.h>
 
 #include "graphic_context.hxx"
+
+namespace Pingus {
 
 /** A GraphicContext which represents the display and allows you to
     paint on it */
@@ -130,6 +132,8 @@ private:
   DisplayGraphicContext (const DisplayGraphicContext&);
   DisplayGraphicContext& operator= (const DisplayGraphicContext&);
 };
+
+} // namespace Pingus
 
 #endif
 

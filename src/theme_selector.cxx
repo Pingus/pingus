@@ -1,4 +1,4 @@
-//  $Id: theme_selector.cxx,v 1.13 2003/04/22 16:40:41 grumbel Exp $
+//  $Id: theme_selector.cxx,v 1.14 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,13 +20,12 @@
 #include <config.h>
 
 #include <iostream>
-#include <ClanLib/Display/Display/display.h>
-#include <ClanLib/Display/Font/font.h>
-#include <ClanLib/Display/Input/input.h>
-#include <ClanLib/Display/Input/keyboard.h>
-#include <ClanLib/Display/Input/mouse.h>
+#include <ClanLib/Display/display.h>
+#include <ClanLib/Display/font.h>
+#include <ClanLib/Display/input.h>
+#include <ClanLib/Display/keyboard.h>
+#include <ClanLib/Display/mouse.h>
 #include <ClanLib/Core/System/system.h>
-#include <ClanLib/Display/Display/mousecursor_provider.h>
 
 #include "gui/display.hxx"
 #include "globals.hxx"
@@ -39,6 +38,8 @@
 #include "system.hxx"
 #include "fonts.hxx"
 #include "theme.hxx"
+
+namespace Pingus {
 
 ListBox::ListBox ()
 {
@@ -297,10 +298,10 @@ ThemeSelector::draw()
 		       0.0, 1.0, 0.0, 1.0);
   }
 
-  left_arrow.put_screen(0, (CL_Display::get_height() - left_arrow.get_height()) / 2);
-  right_arrow.put_screen(CL_Display::get_width() - right_arrow.get_width(),
+  left_arrow.draw(0, (CL_Display::get_height() - left_arrow.get_height()) / 2);
+  right_arrow.draw(CL_Display::get_width() - right_arrow.get_width(),
 			  (CL_Display::get_height() - right_arrow.get_height()) / 2);
-  back.put_screen(0, 0);
+  back.draw(0, 0);
   if (CL_Mouse::get_x() < (int)back.get_width()
       && CL_Mouse::get_y() < (int)back.get_height())
     CL_Display::fill_rect(0, 0, back.get_width(), back.get_height(),
@@ -368,5 +369,7 @@ ThemeSelector::mark_level_at_point(int x, int y)
   else
     return (*current_theme)->mark_level_at_point(x, y);
 }
+
+} // namespace Pingus
 
 /* EOF */

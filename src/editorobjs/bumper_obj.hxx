@@ -1,4 +1,4 @@
-//  $Id: bumper_obj.hxx,v 1.10 2003/04/19 10:23:18 torangan Exp $
+//  $Id: bumper_obj.hxx,v 1.11 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,13 +22,15 @@
 
 #include "../editor/sprite_editorobj.hxx"
 
+namespace Pingus {
+
 namespace WorldObjsData {
-  class BumperData;
+class BumperData;
 }
 
 namespace EditorObjs {
 
-class BumperObj : public SpriteEditorObj
+class BumperObj : public EditorNS::SpriteEditorObj
 {
 private:
   WorldObjsData::BumperData* const data;
@@ -38,7 +40,7 @@ public:
   BumperObj (const WorldObjsData::BumperData& data_);
  ~BumperObj ();
 
-  static EditorObjLst create (const Vector& pos);
+  static EditorNS::EditorObjLst create (const Vector& pos);
 
   EditorObj* duplicate ();
 
@@ -53,6 +55,7 @@ private:
 };
 
 } // namespace EditorObjs
+} // namespace Pingus
 
 #endif
 

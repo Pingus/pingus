@@ -1,4 +1,4 @@
-//  $Id: hotspot_data.cxx,v 1.8 2003/04/19 10:23:19 torangan Exp $
+//  $Id: hotspot_data.cxx,v 1.9 2003/10/18 23:17:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,6 +27,7 @@
 #include "../editor/editorobj_mgr.hxx"
 #include "hotspot_data.hxx"
 
+namespace Pingus {
 namespace WorldObjsData {
 
 HotspotData::HotspotData () : speed(-1), para(1.0)
@@ -73,6 +74,7 @@ HotspotData::insert_EditorObjs (EditorNS::EditorObjMgr* obj_mgr)
   obj_mgr->add(new EditorObjs::HotspotObj(*this));
 }
 
-} //namespace WorldObjsData
+} // namespace WorldObjsData
+} // namespace Pingus 
 
 /* EOF */

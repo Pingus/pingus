@@ -1,4 +1,4 @@
-//  $Id: pingu_holder.cxx,v 1.21 2003/04/19 10:23:17 torangan Exp $
+//  $Id: pingu_holder.cxx,v 1.22 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,8 @@
 #include "pingu_holder.hxx"
 #include "pingu.hxx"
 #include "plf.hxx"
+
+namespace Pingus {
 
 PinguHolder::PinguHolder(PLF* plf)
   : number_of_allowed(plf->get_pingus()),
@@ -180,5 +182,7 @@ PinguHolder::get_end_id()
 {
   return all_pingus.size();
 }
+
+} // namespace Pingus
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: solid_color_background.cxx,v 1.4 2002/12/05 20:38:10 torangan Exp $
+//  $Id: solid_color_background.cxx,v 1.5 2003/10/18 23:17:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,7 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <ClanLib/Display/Display/display.h>
+#include <ClanLib/Display/display.h>
 #include "../worldobjsdata/solid_color_background_data.hxx"
 #include "solid_color_background.hxx"
 
@@ -37,7 +37,7 @@ void
 SolidColorBackground::draw (GraphicContext& gc)
 {
   // FIXME: should use GraphicContext, not CL_Display
-  CL_Display::clear_display (data->color.red, data->color.green, data->color.blue, data->color.alpha);
+  CL_Display::clear(data->color.red, data->color.green, data->color.blue, data->color.alpha);
   UNUSED_ARG(gc);
 }
 

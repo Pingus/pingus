@@ -1,4 +1,4 @@
-//  $Id: string_format.cxx,v 1.2 2003/04/19 10:23:17 torangan Exp $
+//  $Id: string_format.cxx,v 1.3 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,8 +17,10 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <ClanLib/Display/Font/font.h>
+#include <ClanLib/Display/font.h>
 #include "string_format.hxx"
+
+namespace Pingus {
 
 std::string
 StringFormat::break_line (std::string text, int length, CL_Font* font)
@@ -80,5 +82,7 @@ StringFormat::break_line (std::string text, int length, CL_Font* font)
 
   return text;
 }
+
+} // namespace Pingus
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: scroll_map.hxx,v 1.7 2003/04/19 10:23:18 torangan Exp $
+//  $Id: scroll_map.hxx,v 1.8 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,10 +22,11 @@
 
 class CL_Key;
 class CL_InputDevice;
-class EditorView;
 
+namespace Pingus {
 namespace EditorNS {
 
+class EditorView;
 class EditorEvent;
 
 class ScrollMap
@@ -43,8 +44,8 @@ public:
 
   void draw();
 
-  void  on_button_press(CL_InputDevice *device, const CL_Key& key);
-  void  on_button_release(CL_InputDevice *device, const CL_Key& key);
+  void  on_button_press(const CL_InputEvent& event);
+  void  on_button_release(const CL_InputEvent& event);
   bool  mouse_over(int x, int y);
 
 private:
@@ -53,6 +54,7 @@ private:
 };
 
 } // namespace EditorNS
+} // namespace Pingus
 
 #endif
 

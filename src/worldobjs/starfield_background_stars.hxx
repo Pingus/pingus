@@ -1,4 +1,4 @@
-//  $Id: starfield_background_stars.hxx,v 1.6 2003/06/17 14:09:20 grumbel Exp $
+//  $Id: starfield_background_stars.hxx,v 1.7 2003/10/18 23:17:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_WORLDOBJS_STARFIELD_BACKGROUND_STARS_HXX
 #define HEADER_PINGUS_WORLDOBJS_STARFIELD_BACKGROUND_STARS_HXX
 
-#include <ClanLib/Display/Display/surface.h>
+#include <ClanLib/Display/surface.h>
 #include "../worldobj.hxx"
 
 namespace WorldObjs {

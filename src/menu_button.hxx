@@ -1,4 +1,4 @@
-//  $Id: menu_button.hxx,v 1.3 2003/04/19 10:23:17 torangan Exp $
+//  $Id: menu_button.hxx,v 1.4 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,6 +26,9 @@
 #include "gui/component.hxx"
 
 class CL_Font;
+
+namespace Pingus {
+
 class PingusMenu;
 
 /** Framework for menu buttons */
@@ -183,6 +186,8 @@ private:
   MultiplayerButton& operator= (const MultiplayerButton&);
 };
 #endif
+
+} // namespace Pingus
 
 #endif
 

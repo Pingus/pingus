@@ -1,4 +1,4 @@
-//  $Id: object_selector.cxx,v 1.42 2003/04/24 15:18:19 grumbel Exp $
+//  $Id: object_selector.cxx,v 1.43 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,13 +17,9 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <ClanLib/Core/IOData/directory_scanner.h>
-#include <ClanLib/Core/Resources/resource_manager.h>
-#include <ClanLib/Core/System/system.h>
-#include <ClanLib/Display/Display/display.h>
-#include <ClanLib/Display/Font/font.h>
-#include <ClanLib/Display/Input/inputbuffer.h>
-#include <ClanLib/Display/Input/mouse.h>
+#include <ClanLib/core.h>
+#include <ClanLib/display.h>
+
 #include "../console.hxx"
 #include "../globals.hxx"
 #include "../loading.hxx"
@@ -32,7 +28,6 @@
 #include "../pingus_resource.hxx"
 #include "../string_converter.hxx"
 #include "../system.hxx"
-#include "object_selector.hxx"
 #include "object_manager.hxx"
 #include "string_reader.hxx"
 #include "thumb_cache.hxx"
@@ -65,6 +60,10 @@
 #include "../editorobjs/switch_door_obj.hxx"
 #include "../editorobjs/teleporter_obj.hxx"
 #include "../fonts.hxx"
+
+#include "object_selector.hxx"
+
+namespace Pingus {
 
 using namespace EditorObjs;
 using namespace WorldObjsData;
@@ -103,14 +102,14 @@ ObjectSelector::get_obj (ObjectManager* arg_obj_mgr,
 void
 ObjectSelector::get_trap ()
 {
-  CL_Display::clear_display();
-  font->print_left(20, 20, _("1 - guillotine"));
-  font->print_left(20, 50, _("2 - hammer"));
-  font->print_left(20, 80, _("3 - spike"));
-  font->print_left(20,110, _("4 - laser_exit"));
-  font->print_left(20,140, _("5 - fake_exit"));
-  font->print_left(20,170, _("6 - smasher"));
-  font->print_left(20,200, _("7 - bumper"));
+  CL_Display::clear();
+  font.draw(20, 20, _("1 - guillotine"));
+  font.draw(20, 50, _("2 - hammer"));
+  font.draw(20, 80, _("3 - spike"));
+  font.draw(20,110, _("4 - laser_exit"));
+  font.draw(20,140, _("5 - fake_exit"));
+  font.draw(20,170, _("6 - smasher"));
+  font.draw(20,200, _("7 - bumper"));
   Display::flip_display();
 
   while (true)
@@ -183,14 +182,14 @@ ObjectSelector::get_hotspot (const std::string& filename)
 void
 ObjectSelector::get_worldobj ()
 {
-  CL_Display::clear_display();
-  font->print_left(20,  20, _("Select a WorldObj"));
-  font->print_left(20,  50, _("1 - teleporter"));
-  font->print_left(20,  70, _("2 - switch and door"));
-  font->print_left(20,  90, _("3 - ConveyorBelt"));
-  font->print_left(20, 110, _("4 - IceBlock"));
-  font->print_left(20, 130, _("5 - InfoBox"));
-  //font->print_left(20, 110, _("5 - Liquid"));
+  CL_Display::clear();
+  font.draw(20,  20, _("Select a WorldObj"));
+  font.draw(20,  50, _("1 - teleporter"));
+  font.draw(20,  70, _("2 - switch and door"));
+  font.draw(20,  90, _("3 - ConveyorBelt"));
+  font.draw(20, 110, _("4 - IceBlock"));
+  font.draw(20, 130, _("5 - InfoBox"));
+  //font.draw(20, 110, _("5 - Liquid"));
   Display::flip_display();
 
   while (true)
@@ -229,10 +228,10 @@ ObjectSelector::get_weather ()
   std::string type;
   bool done = false;
 
-  CL_Display::clear_display();
-  font->print_left(20, 20, _("Select a weather"));
-  font->print_left(20, 50, _("1 - snow"));
-  font->print_left(20, 70, _("2 - rain"));
+  CL_Display::clear();
+  font.draw(20, 20, _("Select a weather"));
+  font.draw(20, 50, _("1 - snow"));
+  font.draw(20, 70, _("2 - rain"));
   Display::flip_display();
 
   while (!done)
@@ -262,12 +261,12 @@ ObjectSelector::get_entrance ()
   bool have_name = false;
   entrance.pos = pos;
 
-  CL_Display::clear_display();
-  font->print_left(20, 20, _("Select an entrance"));
-  font->print_left(20, 50, _("1 - generic"));
-  font->print_left(20, 70, _("2 - woodthing"));
-  font->print_left(20, 90, _("3 - cloud"));
-  font->print_left(20, 120, _("h - entrance surface (hotspot)"));
+  CL_Display::clear();
+  font.draw(20, 20, _("Select an entrance"));
+  font.draw(20, 50, _("1 - generic"));
+  font.draw(20, 70, _("2 - woodthing"));
+  font.draw(20, 90, _("3 - cloud"));
+  font.draw(20, 120, _("h - entrance surface (hotspot)"));
   Display::flip_display();
 
   while (!have_name)
@@ -340,10 +339,10 @@ ObjectSelector::get_liquid ()
 void
 ObjectSelector::get_from_file ()
 {
-  CL_Display::clear_display();
-  font->print_left(20, 20, _("What object type do you want?"));
-  font->print_left(20, 50, _("h - Hotspot"));
-  font->print_left(20, 70, _("g - Groundpiece (ground) [not implemented]"));
+  CL_Display::clear();
+  font.draw(20, 20, _("What object type do you want?"));
+  font.draw(20, 50, _("h - Hotspot"));
+  font.draw(20, 70, _("g - Groundpiece (ground) [not implemented]"));
   Display::flip_display();
 
   while (true)
@@ -391,23 +390,23 @@ ObjectSelector::get_from_file ()
 void
 ObjectSelector::select_obj_type ()
 {
-  CL_Display::clear_display();
-  font->print_left(20, 20, _("Which object do you want?"));
-  font->print_left(20, 70, _("g - Groundpiece (ground)"));
-  font->print_left(20, 90, _("s - Groundpiece (solid)"));
-  font->print_left(20,110, _("b - Groundpiece (bridge)"));
-  font->print_left(20,130, _("n - Groundpiece (transparent)"));
-  font->print_left(20,150, _("r - Groundpiece (remove)"));
-  font->print_left(20,170, _("h - Hotspot"));
-  font->print_left(20,190, _("e - Entrance"));
-  font->print_left(20,210, _("x - Exit"));
-  font->print_left(20,230, _("l - Liquid"));
-  font->print_left(20,250, _("w - Weather"));
-  font->print_left(20,270, _("t - Traps"));
-  font->print_left(20,290, _("o - WorldObject"));
-  font->print_left(20,310, _("z - Background"));
-  font->print_left(20,330, _("p - Prefab (ObjectGroup)"));
-  font->print_left(20,350, _("f - something from file (~/.pingus/images/)"));
+  CL_Display::clear();
+  font.draw(20, 20, _("Which object do you want?"));
+  font.draw(20, 70, _("g - Groundpiece (ground)"));
+  font.draw(20, 90, _("s - Groundpiece (solid)"));
+  font.draw(20,110, _("b - Groundpiece (bridge)"));
+  font.draw(20,130, _("n - Groundpiece (transparent)"));
+  font.draw(20,150, _("r - Groundpiece (remove)"));
+  font.draw(20,170, _("h - Hotspot"));
+  font.draw(20,190, _("e - Entrance"));
+  font.draw(20,210, _("x - Exit"));
+  font.draw(20,230, _("l - Liquid"));
+  font.draw(20,250, _("w - Weather"));
+  font.draw(20,270, _("t - Traps"));
+  font.draw(20,290, _("o - WorldObject"));
+  font.draw(20,310, _("z - Background"));
+  font.draw(20,330, _("p - Prefab (ObjectGroup)"));
+  font.draw(20,350, _("f - something from file (~/.pingus/images/)"));
   Display::flip_display();
 
   while (1)
@@ -495,12 +494,12 @@ ObjectSelector::get_prefab ()
       }
     }
 
-  CL_Display::clear_display();
-  font->print_left(20, 20, _("Which prefab do you want?"));
+  CL_Display::clear();
+  font.draw(20, 20, _("Which prefab do you want?"));
 
   for (std::vector<std::string>::size_type i = 0; i < dir_lst.size (); ++i)
     {
-      font->print_left(20, 60 + i * 30, to_string(i + 1) + " - " + dir_lst[i]);
+      font.draw(20, 60 + i * 30, to_string(i + 1) + " - " + dir_lst[i]);
     }
 
   Display::flip_display();
@@ -559,12 +558,12 @@ ObjectSelector::get_prefab ()
 void
 ObjectSelector::get_background ()
 {
-  CL_Display::clear_display();
-  font->print_left(20, 20, _("Which object do you want?"));
-  font->print_left(20, 50, _("1 - Surface Background"));
-  font->print_left(20, 70, _("2 - Solid Color Background"));
-  font->print_left(20, 90, _("3 - Starfield Background"));
-  font->print_left(20,110, _("4 - Thunderstorm Background"));
+  CL_Display::clear();
+  font.draw(20, 20, _("Which object do you want?"));
+  font.draw(20, 50, _("1 - Surface Background"));
+  font.draw(20, 70, _("2 - Solid Color Background"));
+  font.draw(20, 90, _("3 - Starfield Background"));
+  font.draw(20,110, _("4 - Thunderstorm Background"));
   Display::flip_display();
 
   while (1)
@@ -647,7 +646,7 @@ int
 ObjectSelector::read_key ()
 {
   CL_InputBuffer keys;
-  CL_Key key;
+  CL_InputEvent  event;
 
   keys.clear();
 
@@ -655,10 +654,9 @@ ObjectSelector::read_key ()
     {
       CL_System::keep_alive();
 
-      if (keys.peek_key().state != CL_Key::NoKey)
+      if (keys.peek_key().type != CL_InputEvent::no_key)
 	{
-	  key = keys.get_key();
-	  //std::cout << "key: " << key.ascii << std::endl;
+	  event = keys.pop_key();
 	  return key.id;
 	}
     }
@@ -673,5 +671,6 @@ ObjectSelector::read_string (const std::string & description, const std::string 
 }
 
 } // namespace EditorNS
+} // namespace Pingus
 
 /* EOF */

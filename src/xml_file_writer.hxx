@@ -1,4 +1,4 @@
-//  $Id: xml_file_writer.hxx,v 1.5 2003/04/19 10:23:17 torangan Exp $
+//  $Id: xml_file_writer.hxx,v 1.6 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,8 @@
 #include <stack>
 #include <iosfwd>
 #include "file_writer.hxx"
+
+namespace Pingus {
 
 class Color;
 
@@ -60,6 +62,8 @@ private:
   XMLFileWriter (const XMLFileWriter&);
   XMLFileWriter& operator= (const XMLFileWriter&);
 };
+
+} // namespace Pingus
 
 #endif
 

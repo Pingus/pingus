@@ -1,4 +1,4 @@
-//  $Id: object_manager.cxx,v 1.48 2003/04/19 10:23:18 torangan Exp $
+//  $Id: object_manager.cxx,v 1.49 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,6 +35,8 @@
 #include "level_resizer.hxx"
 #include "object_manager.hxx"
 #include "editor_view.hxx"
+
+namespace Pingus {
 
 using namespace Actions;
 using namespace WorldObjsData;
@@ -415,5 +417,6 @@ ObjectManager::z_pos_sort ()
 }
 
 } // namespace EditorNS
+} // namespace Pingus
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: laser_exit_data.hxx,v 1.8 2003/04/19 10:23:19 torangan Exp $
+//  $Id: laser_exit_data.hxx,v 1.9 2003/10/18 23:17:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,12 +20,13 @@
 #ifndef HEADER_PINGUS_WORLDOBJSDATA_LASER_EXIT_DATA_HXX
 #define HEADER_PINGUS_WORLDOBJSDATA_LASER_EXIT_DATA_HXX
 
-#include <ClanLib/Display/Display/surface.h>
+#include <ClanLib/Display/surface.h>
 #include "../vector.hxx"
 #include "../game_counter.hxx"
 #include "../libxmlfwd.hxx"
 #include "../worldobj_data.hxx"
 
+namespace Pingus {
 namespace WorldObjsData {
 
 class LaserExitData : public WorldObjData {
@@ -51,6 +52,7 @@ private:
 };
 
 } // namespace WorldObjsData
+} // namespace Pingus
 
 #endif
 

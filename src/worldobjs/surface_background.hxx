@@ -1,4 +1,4 @@
-//  $Id: surface_background.hxx,v 1.6 2003/04/19 10:23:19 torangan Exp $
+//  $Id: surface_background.hxx,v 1.7 2003/10/18 23:17:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,9 +20,11 @@
 #ifndef HEADER_PINGUS_WORLDOBJS_SURFACE_BACKGROUND_HXX
 #define HEADER_PINGUS_WORLDOBJS_SURFACE_BACKGROUND_HXX
 
-#include <ClanLib/Display/Display/surface.h>
+#include <ClanLib/Display/surface.h>
 #include "../worldobj.hxx"
 #include "../game_counter.hxx"
+
+namespace Pingus {
 
 namespace WorldObjsData {
 class SurfaceBackgroundData;
@@ -60,6 +62,7 @@ private:
 };
 
 } // namespace WorldObjs
+} // namespace Pingus
 
 #endif
 

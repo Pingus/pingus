@@ -1,4 +1,4 @@
-//  $Id: usb_mouse_controller.hxx,v 1.7 2003/04/19 10:23:17 torangan Exp $
+//  $Id: usb_mouse_controller.hxx,v 1.8 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,6 +32,8 @@
 #ifdef WIN32
 #  error "This file must not included in Win32, its GNU/Linux only"
 #endif
+
+namespace Pingus {
 
 class USBMouseData
 {
@@ -71,6 +73,8 @@ public:
 
   void keep_alive ();
 };
+
+} // namespace Pingus
 
 #endif
 

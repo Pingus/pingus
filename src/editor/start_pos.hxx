@@ -1,4 +1,4 @@
-//  $Id: start_pos.hxx,v 1.11 2003/04/19 10:23:18 torangan Exp $
+//  $Id: start_pos.hxx,v 1.12 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,9 @@
 #include "../vector.hxx"
 #include "sprite_editorobj.hxx"
 
+namespace Pingus {
+namespace EditorNS {
+
 /** */
 class StartPos : public SpriteEditorObj
 {
@@ -36,10 +39,14 @@ public:
   EditorObj* duplicate();
 
   EditorNS::PropertyFrame* get_gui_dialog(EditorNS::Editor*) { return 0; }
+
 private:
   StartPos (const StartPos&);
   StartPos& operator= (const StartPos&);
 };
+
+} // namespace EditorNS
+} // namespace Pingus
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: level_interrupt.hxx,v 1.6 2003/04/19 10:23:17 torangan Exp $
+//  $Id: level_interrupt.hxx,v 1.7 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,8 @@
 
 #include "pingus.hxx"
 
+namespace Pingus {
+
 class LevelInterrupt
 {
 public:
@@ -37,6 +39,8 @@ private:
   LevelInterrupt (const LevelInterrupt&);
   LevelInterrupt& operator= (const LevelInterrupt&);
 };
+
+} // namespace Pingus
 
 #endif
 

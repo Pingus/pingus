@@ -1,4 +1,4 @@
-//  $Id: path_manager.hxx,v 1.6 2003/04/19 10:23:17 torangan Exp $
+//  $Id: path_manager.hxx,v 1.7 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,8 @@
 #include "pingus.hxx"
 #include <string>
 #include <list>
+
+namespace Pingus {
 
 class PathManager
 {
@@ -62,6 +64,8 @@ private:
 };
 
 extern PathManager path_manager;
+
+} // namespace Pingus
 
 #endif
 

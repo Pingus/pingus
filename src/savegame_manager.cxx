@@ -1,4 +1,4 @@
-//  $Id: savegame_manager.cxx,v 1.8 2003/06/04 17:22:33 torangan Exp $
+//  $Id: savegame_manager.cxx,v 1.9 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,8 @@
 #include "system.hxx"
 #include "xml_helper.hxx"
 #include "savegame_manager.hxx"
+
+namespace Pingus {
 
 SavegameManager* SavegameManager::instance_ = 0;
 
@@ -163,5 +165,7 @@ SavegameManager::flush()
   xml << "</pingus-savegame>\n"
       << std::endl;
 }
+
+} // namespace Pingus
 
 /* EOF */

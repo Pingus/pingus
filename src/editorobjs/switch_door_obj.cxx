@@ -1,4 +1,4 @@
-//  $Id: switch_door_obj.cxx,v 1.8 2003/04/19 10:23:18 torangan Exp $
+//  $Id: switch_door_obj.cxx,v 1.9 2003/10/18 23:17:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,7 @@
 #include "../pingus_resource.hxx"
 #include "../worldobjsdata/switch_door_data.hxx"
 
+namespace Pingus {
 namespace EditorObjs {
 
 SwitchDoorObj::SwitchDoorObj (const WorldObjsData::SwitchDoorData& data_)
@@ -144,5 +145,6 @@ SwitchDoorObj::set_position_offset (const Vector& offset)
 }
 
 } // namespace EditorObjs
+} // namespace Pingus
 
 /* EOF */

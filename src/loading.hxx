@@ -1,4 +1,4 @@
-//  $Id: loading.hxx,v 1.6 2003/04/19 10:23:17 torangan Exp $
+//  $Id: loading.hxx,v 1.7 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,9 +21,11 @@
 #define HEADER_PINGUS_LOADING_HXX
 
 #include "pingus.hxx"
-#include <ClanLib/Display/Display/surface.h>
+#include <ClanLib/Display/surface.h>
 
 class CL_Font;
+
+namespace Pingus {
 
 class Loading
 {
@@ -46,6 +48,8 @@ private:
 };
 
 extern Loading loading_screen;
+
+} // namespace Pingus
 
 #endif
 

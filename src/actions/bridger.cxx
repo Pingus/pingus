@@ -1,4 +1,4 @@
-//  $Id: bridger.cxx,v 1.30 2003/04/19 10:23:18 torangan Exp $
+//  $Id: bridger.cxx,v 1.31 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,6 +28,7 @@
 #include "../world.hxx"
 #include "bridger.hxx"
 
+namespace Pingus {
 namespace Actions {
 
 // Initialise class static
@@ -268,5 +269,6 @@ Bridger::get_name () const
 }
 
 } // namespace Actions
+} // namespace Pingus
 
 /* EOF */

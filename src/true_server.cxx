@@ -1,4 +1,4 @@
-//  $Id: true_server.cxx,v 1.20 2003/04/19 10:23:17 torangan Exp $
+//  $Id: true_server.cxx,v 1.21 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,8 @@
 
 #include "goal_manager.hxx"
 #include "true_server.hxx"
+
+namespace Pingus {
 
 TrueServer::TrueServer(PLF* arg_plf)
   : Server (arg_plf)
@@ -80,5 +82,7 @@ TrueServer::set_finished ()
   goal_manager->set_abort_goal();
   set_pause(false);
 }
+
+} // namespace Pingus
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: server.hxx,v 1.15 2003/04/19 10:23:17 torangan Exp $
+//  $Id: server.hxx,v 1.16 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,8 @@
 
 #include "server_event.hxx"
 #include "action_holder.hxx"
+
+namespace Pingus {
 
 class Pingu;
 class PLF;
@@ -72,6 +74,8 @@ private:
   Server (const Server&);
   Server& operator= (const Server&);
 };
+
+} // namespace Pingus
 
 #endif
 

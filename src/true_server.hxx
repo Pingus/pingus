@@ -1,4 +1,4 @@
-//  $Id: true_server.hxx,v 1.13 2003/04/19 10:23:17 torangan Exp $
+//  $Id: true_server.hxx,v 1.14 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,8 @@
 #define HEADER_PINGUS_TRUE_SERVER_HXX
 
 #include "server.hxx"
+
+namespace Pingus {
 
 /** FIXME: This whole Server/Client concept is screwed and the
     TrueServer/Server thing even more... */
@@ -50,6 +52,8 @@ private:
   TrueServer (const TrueServer&);
   TrueServer& operator= (const TrueServer&);
 };
+
+} // namespace Pingus
 
 #endif
 

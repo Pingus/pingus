@@ -1,4 +1,4 @@
-//  $Id: display.cxx,v 1.4 2003/10/18 12:11:31 grumbel Exp $
+//  $Id: display.cxx,v 1.5 2003/10/18 23:17:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,8 +20,7 @@
 #include <algorithm>
 #include <stdio.h>
 #include <iostream>
-#include <ClanLib/Display/Display/display.h>
-#include <ClanLib/Display/Display/mousecursor.h>
+#include <ClanLib/Display/display.h>
 #include "../globals.hxx"
 #include "display.hxx"
 
@@ -44,13 +43,22 @@ DisplayHook::toggle_display()
   is_visible = !is_visible;
 }
 
+CL_Color
+Display::to_color(float r, float g, float b, float a)
+{
+  return CL_Color(static_cast<int>(r*255),
+                  static_cast<int>(g*255),
+                  static_cast<int>(b*255), 
+                  static_cast<int>(a*255));
+}
+
 void
 Display::draw_rect(int x1, int y1, int x2, int y2, float r, float g, float b, float a)
 {
-  CL_Display::draw_line(x1, y1, x2, y1, r, g, b, a);
-  CL_Display::draw_line(x1, y2, x2, y2, r, g, b, a);
-  CL_Display::draw_line(x1, y1, x1, y2, r, g, b, a);
-  CL_Display::draw_line(x2, y1, x2, y2, r, g, b, a);
+  CL_Display::draw_line(x1, y1, x2, y1, to_color(r, g, b, a));
+  CL_Display::draw_line(x1, y2, x2, y2, to_color(r, g, b, a));
+  CL_Display::draw_line(x1, y1, x1, y2, to_color(r, g, b, a));
+  CL_Display::draw_line(x2, y1, x2, y2, to_color(r, g, b, a));
 }
 
 void
@@ -63,7 +71,7 @@ Display::flip_display(bool sync)
       (*i)->on_event();
     }
 
-  CL_Display::flip_display(sync);
+  CL_Display::flip();
   //CL_Display::put_display (CL_Rect (320, 0, 800, 600));
 }
 

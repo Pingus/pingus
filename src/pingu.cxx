@@ -1,4 +1,4 @@
-//  $Id: pingu.cxx,v 1.43 2003/04/24 15:18:19 grumbel Exp $
+//  $Id: pingu.cxx,v 1.44 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,6 +30,8 @@
 #include "debug.hxx"
 #include "worldobj.hxx"
 #include "fonts.hxx"
+
+namespace Pingus {
 
 using namespace Actions;
 
@@ -433,5 +435,7 @@ Pingu::catchable ()
 {
   return action->catchable ();
 }
+
+} // namespace Pingus
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: indexed_canvas.hxx,v 1.3 2003/04/19 10:23:17 torangan Exp $
+//  $Id: indexed_canvas.hxx,v 1.4 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,11 +21,11 @@
 #define HEADER_PINGUS_INDEXED_CANVAS_HXX
 
 #include <ClanLib/Display/SurfaceProviders/generic_surfaceprovider.h>
-#include <ClanLib/Display/Display/palette.h>
+#include <ClanLib/Display/palette.h>
 
 /** This class is analog to CL_Canvas, but instead of being true
     color, it is indexed */
-class IndexedCanvas : public CL_SurfaceProvider
+class IndexedCanvas : public CL_PixelBuffer
 {
 private:
   unsigned int width;

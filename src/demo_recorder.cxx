@@ -1,4 +1,4 @@
-//  $Id: demo_recorder.cxx,v 1.19 2003/04/24 15:18:19 grumbel Exp $
+//  $Id: demo_recorder.cxx,v 1.20 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,6 +25,8 @@
 #include "server.hxx"
 #include "plf.hxx"
 #include "gettext.h"
+
+namespace Pingus {
 
 DemoRecorder::DemoRecorder (Server* server)
   : record_demo (true)
@@ -103,5 +105,7 @@ DemoRecorder::get_date ()
 
   return std::string(buffer);
 }
+
+} // namespace Pingus
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: layer_manager.cxx,v 1.6 2003/04/19 10:23:17 torangan Exp $
+//  $Id: layer_manager.cxx,v 1.7 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,8 @@
 
 #include <iostream>
 #include "layer_manager.hxx"
+
+namespace Pingus {
 
 LayerManager::LayerManager ()
 {
@@ -49,5 +51,7 @@ LayerManager::update (float delta)
        i != layers.end (); ++i)
     i->update (delta);
 }
+
+} // namespace Pingus
 
 /* EOF */

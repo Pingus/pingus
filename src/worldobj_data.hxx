@@ -1,4 +1,4 @@
-//  $Id: worldobj_data.hxx,v 1.11 2003/04/19 10:23:17 torangan Exp $
+//  $Id: worldobj_data.hxx,v 1.12 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,14 +23,14 @@
 #include <iosfwd>
 #include <vector>
 
+namespace Pingus {
+
 class World;
 class EditorObj;
 
 namespace EditorNS {
 class EditorObjMgr;
 }
-
-typedef std::vector<EditorObj*> EditorObjLst;
 
 /** The root data class for all objects in the Pingus world.  Each
     objects needs a data object for creating, which should be
@@ -63,6 +63,8 @@ public:
       responible for deleting the pointers in the vector */
   virtual void insert_EditorObjs (EditorNS::EditorObjMgr*) =0;
 };
+
+} // namespace Pingus
 
 #endif
 

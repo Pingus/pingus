@@ -1,4 +1,4 @@
-//  $Id: level_resizer.cxx,v 1.5 2003/04/19 10:23:18 torangan Exp $
+//  $Id: level_resizer.cxx,v 1.6 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,11 +18,12 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <stdio.h>
-#include <ClanLib/Display/Font/font.h>
+#include <ClanLib/Display/font.h>
 #include "../fonts.hxx"
 #include "object_manager.hxx"
 #include "level_resizer.hxx"
 
+namespace Pingus {
 namespace EditorNS {
 
 LevelResizer::LevelResizer(ObjectManager* m)
@@ -51,7 +52,7 @@ LevelResizer::draw (EditorNS::EditorView* view)
     {
       char str[64];
       snprintf(str, 64, "Level Size: %4dx%4d", obj_manager->get_width(), obj_manager->get_height());
-      Fonts::pingus_small->print_left( 300, 200, str);
+      Fonts::pingus_small.draw(300, 200, str);
     }
 }
 
@@ -74,5 +75,6 @@ LevelResizer::drop()
 }
 
 } // namespace EditorNS
+} // namespace Pingus
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: range.cxx,v 1.2 2003/04/19 10:23:17 torangan Exp $
+//  $Id: range.cxx,v 1.3 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,8 @@
 
 #include <algorithm>
 #include "range.hxx"
+
+namespace Pingus {
 
 #ifdef WIN32
 void swap(int& a, int& b)
@@ -127,5 +129,7 @@ Range::check_range()
   if (count < start)
     count = start;
 }
+
+} // namespace Pingus
 
 /* EOF */

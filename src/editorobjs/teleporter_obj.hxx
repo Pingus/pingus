@@ -1,4 +1,4 @@
-//  $Id: teleporter_obj.hxx,v 1.10 2003/04/19 10:23:18 torangan Exp $
+//  $Id: teleporter_obj.hxx,v 1.11 2003/10/18 23:17:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,19 +22,21 @@
 
 #include "../editor/sprite_editorobj.hxx"
 
+namespace Pingus {
+
 namespace EditorNS {
 class EditorView;
 } // namespace EditorNS
 
 namespace WorldObjsData {
 class TeleporterData;
-}
+} // namespace WorldObjsData
 
 namespace EditorObjs {
 
 class TeleporterTargetObj;
 
-class TeleporterObj : public SpriteEditorObj
+class TeleporterObj : public EditorNS::SpriteEditorObj
 {
 private:
   WorldObjsData::TeleporterData* const data;
@@ -46,13 +48,13 @@ public:
 
   Vector& get_target_pos_ref ();
 
-  EditorObj* duplicate ();
+  EditorNS::EditorObj* duplicate ();
 
   void write_xml (std::ostream& xml);
 
   /** Create this object (and child objects) with reasonable defaults
       for the editor */
-  static EditorObjLst create (const Vector& pos);
+  static EditorNS::EditorObjLst create (const Vector& pos);
 
   void draw (EditorNS::EditorView * view);
   std::string status_line ();
@@ -63,6 +65,7 @@ private:
 };
 
 } // namespace EditorObjs
+} // namespace Pingus
 
 #endif
 

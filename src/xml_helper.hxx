@@ -1,4 +1,4 @@
-//  $Id: xml_helper.hxx,v 1.21 2003/04/19 10:23:17 torangan Exp $
+//  $Id: xml_helper.hxx,v 1.22 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,7 +24,6 @@
 #include <config.h>
 #include <string>
 #include <iosfwd>
-
 
 // FIX: Under windows, it's necessary to use libxml/parser.h, or MS's
 // compiler will fails.
@@ -52,6 +51,8 @@
 #ifdef NO_XMLISBLANKNODE
   int xmlIsBlankNode(xmlNodePtr node);
 #endif
+
+namespace Pingus {
 
 class Vector;
 class Color;
@@ -133,6 +134,8 @@ private:
   XMLhelper (const XMLhelper&);
   XMLhelper& operator= (const XMLhelper&);
 };
+
+} // namespace Pingus
 
 std::ostream& operator<<(std::ostream& s, xmlNode& node);
 

@@ -1,4 +1,4 @@
-//  $Id: spike_data.cxx,v 1.12 2003/03/25 23:15:23 grumbel Exp $
+//  $Id: spike_data.cxx,v 1.13 2003/10/18 23:17:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,6 +27,7 @@
 #include "../pingus_resource.hxx"
 #include "../editor/editorobj_mgr.hxx"
 
+namespace Pingus {
 namespace WorldObjsData {
 
 SpikeData::SpikeData ()
@@ -68,5 +69,6 @@ SpikeData::insert_EditorObjs (EditorNS::EditorObjMgr* obj_mgr)
 }
 
 } // namespace WorldObjsData
+} // namespace Pingus
 
 /* EOF */

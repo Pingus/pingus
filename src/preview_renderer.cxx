@@ -1,4 +1,4 @@
-//  $Id: preview_renderer.cxx,v 1.1 2003/08/16 16:20:30 grumbel Exp $
+//  $Id: preview_renderer.cxx,v 1.2 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,8 @@
 #include "gui/buffer_graphic_context.hxx"
 #include "preview_renderer.hxx"
 
+namespace Pingus {
+
 void
 PreviewRenderer::render(PLFHandle plf,
                         const std::string& output_file)
@@ -34,5 +36,7 @@ PreviewRenderer::render(PLFHandle plf,
   buffer.write(output_file);
   delete world;
 }
+
+} // namespace Pingus
 
 /* EOF */

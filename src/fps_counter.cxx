@@ -1,4 +1,4 @@
-//  $Id: fps_counter.cxx,v 1.8 2003/04/24 15:18:19 grumbel Exp $
+//  $Id: fps_counter.cxx,v 1.9 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,8 +19,8 @@
 
 #include <stdio.h>
 #include <ClanLib/Core/System/system.h>
-#include <ClanLib/Display/Display/display.h>
-#include <ClanLib/Display/Font/font.h>
+#include <ClanLib/Display/display.h>
+#include <ClanLib/Display/font.h>
 #include "fonts.hxx"
 #include "fps_counter.hxx"
 #include "gettext.h"

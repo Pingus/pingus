@@ -1,4 +1,4 @@
-//  $Id: pingu_map.hxx,v 1.6 2003/04/19 10:23:17 torangan Exp $
+//  $Id: pingu_map.hxx,v 1.7 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,10 +22,12 @@
 
 #include "worldobj.hxx"
 
-class ColMap;
 class CL_Surface;
-class CL_SurfaceProvider;
+class CL_PixelBuffer;
 
+namespace Pingus {
+
+class ColMap;
 
 /** The type of the map, currently we have a random, a bitmap and a
     spot map, the only map, which is currently supported is the spot
@@ -46,16 +48,18 @@ public:
   virtual int  get_height() = 0;
 
   virtual void remove(int, int) {};
-  virtual void remove(CL_SurfaceProvider*, int, int);
+  virtual void remove(const CL_PixelBuffer&, int, int);
   virtual void remove(const CL_Surface&, int, int);
 
   virtual void put(const CL_Surface&, int, int);
-  virtual void put(CL_SurfaceProvider*, int, int);
+  virtual void put(const CL_PixelBuffer&, int, int);
 
 private:
   PinguMap (const PinguMap&);
   PinguMap& operator= (const PinguMap&);
 };
+
+} // namespace Pingus
 
 #endif
 

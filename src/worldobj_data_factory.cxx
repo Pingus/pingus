@@ -1,4 +1,4 @@
-//  $Id: worldobj_data_factory.cxx,v 1.35 2003/06/04 17:22:33 torangan Exp $
+//  $Id: worldobj_data_factory.cxx,v 1.36 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -48,6 +48,8 @@
 #include "worldobjsdata/thunderstorm_background_data.hxx"
 #include "worldobjsdata/worldobj_group_data.hxx"
 #include "worldobjsdata/prefab_obj_data.hxx"
+
+namespace Pingus {
 
 using namespace WorldObjsData;
 
@@ -201,5 +203,7 @@ WorldObjDataFactory::free_factories()
 	  delete i->second;
   }
 }
+
+} // namespace Pingus
 
 /* EOF */

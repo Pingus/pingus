@@ -1,4 +1,4 @@
-//  $Id: config_xml.cxx,v 1.4 2003/04/19 10:23:17 torangan Exp $
+//  $Id: config_xml.cxx,v 1.5 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,8 @@
 #include "xml_helper.hxx"
 #include "pingus_error.hxx"
 #include "config_xml.hxx"
+
+namespace Pingus {
 
 ConfigXML::ConfigXML(const std::string& arg_filename)
 {
@@ -92,5 +94,7 @@ ConfigXML::is_value(xmlDocPtr doc, xmlNodePtr cur)
   UNUSED_ARG(doc);
   return cur->children && xmlNodeIsText(cur->children);
 }
+
+} // namespace Pingus
 
 /* EOF */

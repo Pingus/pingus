@@ -1,4 +1,4 @@
-//  $Id: button_panel.hxx,v 1.18 2003/04/19 10:23:17 torangan Exp $
+//  $Id: button_panel.hxx,v 1.19 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,6 +25,9 @@
 #include "action_button.hxx"
 
 class CL_Key;
+
+namespace Pingus {
+
 class Client;
 class PLF;
 
@@ -76,6 +79,8 @@ private:
   ButtonPanel (const ButtonPanel&);
   ButtonPanel& operator= (const ButtonPanel&);
 };
+
+} // namespace Pingus
 
 #endif
 

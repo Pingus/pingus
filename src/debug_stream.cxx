@@ -1,4 +1,4 @@
-//  $Id: debug_stream.cxx,v 1.8 2003/04/19 10:23:17 torangan Exp $
+//  $Id: debug_stream.cxx,v 1.9 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,8 @@
 #include "globals.hxx"
 
 using std::ostream;
+
+namespace Pingus {
 
 NilStream DebugStream::nilstream;
 
@@ -156,5 +158,7 @@ NilStream::NilStream ()
   : ostream(&buffer)
 {
 }
+
+} // namespace Pingus
 
 /* EOF */

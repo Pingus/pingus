@@ -1,4 +1,4 @@
-//  $Id: pingus_error.cxx,v 1.10 2003/04/24 15:18:19 grumbel Exp $
+//  $Id: pingus_error.cxx,v 1.11 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,8 @@
 
 #include "pingus_error.hxx"
 #include "gettext.h"
+
+namespace Pingus {
 
 PingusException::PingusException (const std::string& mes) : message(mes)
 {
@@ -103,5 +105,7 @@ PingusError::get_message () const
 {
   return message;
 }
+
+} // namespace Pingus
 
 /* EOF */

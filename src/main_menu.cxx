@@ -1,4 +1,4 @@
-//  $Id: main_menu.cxx,v 1.2 2002/06/13 14:25:12 torangan Exp $
+//  $Id: main_menu.cxx,v 1.3 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,8 @@
 
 #include "main_menu.hxx"
 
+namespace Pingus {
+
 MainMenu::MainMenu()
 {
   //  gui_obj.push_back(new AlphaButton("Play"));
@@ -29,5 +31,7 @@ void
 MainMenu::start(void)
 {
 }
+
+} // namespace Pingus
 
 /* EOF */

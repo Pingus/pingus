@@ -1,4 +1,4 @@
-//  $Id: walker.cxx,v 1.33 2003/04/19 10:23:18 torangan Exp $
+//  $Id: walker.cxx,v 1.34 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,6 +25,7 @@
 #include "../debug.hxx"
 #include "walker.hxx"
 
+namespace Pingus {
 namespace Actions {
 
 Walker::Walker (Pingu* p)
@@ -224,5 +225,6 @@ Walker::draw (GraphicContext& gc)
 }
 
 } // namespace Actions
+} // namespace Pingus
 
 /* EOF */

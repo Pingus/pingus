@@ -1,4 +1,4 @@
-//  $Id: story.hxx,v 1.14 2003/04/19 10:23:17 torangan Exp $
+//  $Id: story.hxx,v 1.15 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,8 @@
 
 #include "story_screen.hxx"
 
+namespace Pingus {
+
 /** */
 class Story
 {
@@ -38,6 +40,8 @@ private:
   static void init_intro();
   static void init_credits();
 };
+
+} // namespace Pingus
 
 #endif
 

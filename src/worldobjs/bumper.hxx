@@ -1,4 +1,4 @@
-//  $Id: bumper.hxx,v 1.8 2003/04/19 10:23:19 torangan Exp $
+//  $Id: bumper.hxx,v 1.9 2003/10/18 23:17:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,8 @@
 #define HEADER_PINGUS_WORLDOBJS_BUMPER_HXX
 
 #include "../worldobj.hxx"
+
+namespace Pingus {
 
 namespace WorldObjsData {
 class BumperData;
@@ -55,6 +57,7 @@ private:
 };
 
 } // namespace WorldObjs
+} // namespace Pingus
 
 #endif
 

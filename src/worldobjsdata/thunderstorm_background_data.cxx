@@ -1,4 +1,4 @@
-//  $Id: thunderstorm_background_data.cxx,v 1.7 2003/03/05 19:13:59 grumbel Exp $
+//  $Id: thunderstorm_background_data.cxx,v 1.8 2003/10/18 23:17:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,6 +26,7 @@
 #include "../editor/editorobj_mgr.hxx"
 #include "thunderstorm_background_data.hxx"
 
+namespace Pingus {
 namespace WorldObjsData {
 
 void
@@ -60,5 +61,6 @@ ThunderstormBackgroundData::insert_EditorObjs (EditorNS::EditorObjMgr* obj_mgr)
 }
 
 } // namespace WorldObjsData
+} // namespace Pingus
 
 /* EOF */

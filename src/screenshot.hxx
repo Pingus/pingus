@@ -1,4 +1,4 @@
-//  $Id: screenshot.hxx,v 1.7 2003/04/19 10:23:17 torangan Exp $
+//  $Id: screenshot.hxx,v 1.8 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,6 +25,8 @@
 
 class CL_Target;
 
+namespace Pingus {
+
 /** Simple class to get a screenshot and save it as pnm */
 class Screenshot
 {
@@ -45,10 +47,8 @@ private:
   Screenshot& operator= (const Screenshot&);
 };
 
+} // namespace Pingus
+
 #endif
 
 /* EOF */
-
-
-
-

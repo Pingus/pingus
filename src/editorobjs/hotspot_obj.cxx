@@ -1,4 +1,4 @@
-//  $Id: hotspot_obj.cxx,v 1.3 2003/04/19 10:23:18 torangan Exp $
+//  $Id: hotspot_obj.cxx,v 1.4 2003/10/18 23:17:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #include "../string_converter.hxx"
 #include "hotspot_obj.hxx"
 
+namespace Pingus {
 namespace EditorObjs {
 
 HotspotObj::HotspotObj (const WorldObjsData::HotspotData& data_)
@@ -52,5 +53,6 @@ HotspotObj::status_line ()
 }
 
 } // namespace EditorObjs
+} // namespace Pingus
 
 /* EOF */

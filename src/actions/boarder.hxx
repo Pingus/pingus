@@ -1,4 +1,4 @@
-//  $Id: boarder.hxx,v 1.14 2003/04/19 10:23:18 torangan Exp $
+//  $Id: boarder.hxx,v 1.15 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,7 @@
 #include "../pingu_action.hxx"
 #include "../sprite.hxx"
 
+namespace Pingus {
 namespace Actions {
 
 /** The Boarder action causes a pingu to use a skateboard to move
@@ -50,6 +51,7 @@ private:
 };
 
 } // namespace Actions
+} // namespace Pingus
 
 #endif
 

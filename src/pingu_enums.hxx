@@ -1,4 +1,4 @@
-//  $Id: pingu_enums.hxx,v 1.12 2003/04/18 17:08:56 grumbel Exp $
+//  $Id: pingu_enums.hxx,v 1.13 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,6 +32,7 @@
     FIXME: splashed, smashed, etc.) */
 enum PinguStatus { PS_ALIVE, PS_EXITED, PS_DEAD };
 
+namespace Pingus {
 namespace Actions {
 
 /** The order of the actions here are the same as the order of actions
@@ -76,6 +77,7 @@ ActionName  action_from_string(const std::string& action);
 std::string action_to_screenname(ActionName action);
 
 } // namespace Actions
+} // namespace Pingus
 
 // Pingu "globals"
 extern const int pingu_height;

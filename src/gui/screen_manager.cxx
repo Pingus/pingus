@@ -1,4 +1,4 @@
-//  $Id: screen_manager.cxx,v 1.10 2003/08/16 20:51:28 grumbel Exp $
+//  $Id: screen_manager.cxx,v 1.11 2003/10/18 23:17:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,8 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
-#include <ClanLib/Display/Display/display.h>
-#include <ClanLib/Display/Display/mousecursor.h>
+#include <ClanLib/display.h>
 
 #include "../globals.hxx"
 #include "cursor.hxx"
@@ -30,6 +29,8 @@
 #include "../fade_out.hxx"
 #include "../path_manager.hxx"
 #include "../input/controller.hxx"
+
+namespace Pingus {
 
 ScreenManager* ScreenManager::instance_ = 0;
 
@@ -64,7 +65,7 @@ ScreenManager::display ()
     {
       cursor = new Cursor("cursors/animcross", "core");
       Display::add_flip_screen_hook(cursor);
-      CL_MouseCursor::hide();
+      //CL_MouseCursor::hide();
     }
 
   DeltaManager delta_manager;
@@ -256,10 +257,11 @@ ScreenManager::fade_over (ScreenPtr& old_screen, ScreenPtr& new_screen)
       int border_y = int((CL_Display::get_height ()/2) * (1.0f - progress));
 
       old_screen->draw(*display_gc);
-      CL_Display::push_clip_rect(CL_ClipRect (0 + border_x,
-					      0 + border_y,
-					      CL_Display::get_width () - border_x,
-					      CL_Display::get_height () - border_y));
+      CL_Display::get_current_window()->get_gc()
+        ->push_cliprect(CL_Rect(0 + border_x,
+                                0 + border_y,
+                                CL_Display::get_width () - border_x,
+                                CL_Display::get_height () - border_y));
       new_screen->draw(*display_gc);
 
       //GameDelta delta (time_delta, CL_System::get_time(), events);
@@ -267,7 +269,7 @@ ScreenManager::fade_over (ScreenPtr& old_screen, ScreenPtr& new_screen)
       //new_screen->update (delta);
       //old_screen->update (delta);
 
-      CL_Display::pop_clip_rect ();
+      CL_Display::get_current_window()->get_gc()->pop_cliprect ();
 
       Display::flip_display ();
       CL_System::keep_alive ();
@@ -289,5 +291,7 @@ ScreenManager::deinit()
 {
   delete instance_;
 }
+
+} // namespace Pingus
 
 /* EOF */

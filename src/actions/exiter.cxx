@@ -1,4 +1,4 @@
-//  $Id: exiter.cxx,v 1.18 2003/04/19 10:23:18 torangan Exp $
+//  $Id: exiter.cxx,v 1.19 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,7 @@
 #include "../sound/sound.hxx"
 #include "exiter.hxx"
 
+namespace Pingus {
 namespace Actions {
 
 Exiter::Exiter (Pingu* p)
@@ -65,5 +66,6 @@ Exiter::draw (GraphicContext& gc)
 }
 
 } // namespace Actions
+} // namespace Pingus
 
 /* EOF */

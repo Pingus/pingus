@@ -1,4 +1,4 @@
-//  $Id: usb_mouse_controller.cxx,v 1.4 2003/04/19 10:23:17 torangan Exp $
+//  $Id: usb_mouse_controller.cxx,v 1.5 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,8 @@
 #include <ClanLib/Display/Display/display.h>
 #include "pingus_error.hxx"
 #include "usb_mouse_controller.hxx"
+
+namespace Pingus {
 
 USBMouseController::USBMouseController (int /*arg_owner_id*/, std::string mousedev)
 {
@@ -99,6 +101,8 @@ USBMouseController::keep_alive ()
       else if (mouse.y > CL_Display::get_height () - 1) mouse.y = CL_Display::get_height () - 1;
     }
 }
+
+} // namespace Pingus
 
 #endif //WIN32
 

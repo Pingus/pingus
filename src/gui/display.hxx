@@ -1,4 +1,4 @@
-//  $Id: display.hxx,v 1.4 2003/10/18 12:11:31 grumbel Exp $
+//  $Id: display.hxx,v 1.5 2003/10/18 23:17:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #define HEADER_PINGUS_DISPLAY_HXX
 
 #include "../pingus.hxx"
+#include <ClanLib/Display/color.h>
 #include <list>
 
 namespace Pingus {
@@ -53,6 +54,7 @@ class Display
 private:
   static std::list<DisplayHook*> display_hooks;
 public:
+  static CL_Color to_color(float r, float g, float b, float a);
   static void draw_rect(int x1, int y1, int x2, int y2, float r, float g, float b, float a);
 
   static void flip_display(bool sync=false);

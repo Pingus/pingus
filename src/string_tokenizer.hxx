@@ -1,4 +1,4 @@
-//  $Id: string_tokenizer.hxx,v 1.3 2003/04/19 10:23:17 torangan Exp $
+//  $Id: string_tokenizer.hxx,v 1.4 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,8 @@
 #include <string>
 #include <vector>
 
+namespace Pingus {
+
 /** */
 class StringTokenizer
 {
@@ -41,6 +43,8 @@ private:
   StringTokenizer (const StringTokenizer&);
   StringTokenizer& operator= (const StringTokenizer&);
 };
+
+} // namespace Pingus
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: game_delta.hxx,v 1.2 2003/04/19 10:23:18 torangan Exp $
+//  $Id: game_delta.hxx,v 1.3 2003/10/18 23:17:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,8 @@
 #include <list>
 #include "../delta_manager.hxx"
 #include "../input/event_fwd.hxx"
+
+namespace Pingus {
 
 /** Input for the game engine */
 class GameDelta
@@ -60,6 +62,8 @@ private:
   GameDelta (const GameDelta&);
   GameDelta& operator= (const GameDelta&);
 };
+
+} // namespace Pingus
 
 #endif
 

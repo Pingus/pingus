@@ -1,4 +1,4 @@
-//  $Id: object_selector_window.cxx,v 1.3 2003/03/04 12:53:47 grumbel Exp $
+//  $Id: object_selector_window.cxx,v 1.4 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,8 @@
 #include "object_manager.hxx"
 #include "../groundtype.hxx"
 #include "object_selector_window.hxx"
+
+namespace Pingus {
 
 using namespace EditorNS;
 
@@ -47,7 +49,7 @@ ObjectSelectorWindow::ObjectSelectorWindow(CL_Component* parent)
   y_pos += 10;
   add_button("Close",                      &ObjectSelectorWindow::on_close_press);
 
-  set_client_size(200, y_pos + 10);
+  set_size(200, y_pos + 10);
 }
 
 ObjectSelectorWindow::~ObjectSelectorWindow()
@@ -145,5 +147,7 @@ void
 ObjectSelectorWindow::on_from_file_press()
 {
 }
+
+} // namespace Pingus
 
 /* EOF */

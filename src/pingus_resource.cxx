@@ -1,4 +1,4 @@
-//  $Id: pingus_resource.cxx,v 1.29 2003/06/04 17:22:33 torangan Exp $
+//  $Id: pingus_resource.cxx,v 1.30 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,15 +25,17 @@
 
 #include <assert.h>
 
-#include <ClanLib/png.h>
-#include <ClanLib/Display/Font/font.h>
+#include <ClanLib/core.h>
+#include <ClanLib/display.h>
+#include <ClanLib/Display/font.h>
 #include "system.hxx"
 #include "path_manager.hxx"
 #include "globals.hxx"
 #include "pingus_resource.hxx"
 #include "blitter.hxx"
 #include "debug.hxx"
-#include "debug.hxx"
+
+namespace Pingus {
 
 std::map<std::string, CL_ResourceManager*> PingusResource::resource_map;
 std::map<ResDescriptor, CL_Surface>        PingusResource::surface_map;
@@ -99,6 +101,29 @@ PingusResource::load_surface(const std::string& res_name,
   return load_surface(ResDescriptor(res_name, datafile,
 				    ResDescriptor::RD_RESOURCE,
 				    modifier));
+}
+
+CL_Sprite
+PingusResource::load_sprite(const std::string& res_name, 
+                            const std::string& datafile)
+{
+  CL_ResourceManager* res = get(res_name, datafile);
+  return CL_Sprite(res_name, res);
+}
+
+CL_PixelBuffer
+PingusResource::load_surface_provider(const ResDescriptor&)
+{
+  assert(0);
+  return CL_PixelBuffer();
+}
+
+CL_PixelBuffer
+PingusResource::load_surface_provider(const std::string& res_name,
+                                      const std::string& datafile)
+{
+  assert(0);
+  return CL_PixelBuffer(); 
 }
 
 CL_Surface
@@ -300,9 +325,10 @@ PingusResource::cleanup ()
       if (i->first.type == ResDescriptor::RD_FILE
 	  && i->second.get_reference_count () == 1)
 	{
-	  pout(PINGUS_DEBUG_RESOURCES) << "XXX Releasing File: " << i->first
-	                               << " => " << i->second.get_reference_count () << std::endl;
-	  surface_map.erase(i);
+          // FIXME:
+	  //pout(PINGUS_DEBUG_RESOURCES) << "XXX Releasing File: " << i->first
+          //                             << " => " << i->second.get_reference_count () << std::endl;
+	  //surface_map.erase(i);
 	}
       else if (i->first.type == ResDescriptor::RD_RESOURCE
 	       && i->second.get_reference_count () == 2)
@@ -322,28 +348,20 @@ PingusResource::get_mtime (const std::string& res_name,
     {
       CL_ResourceManager* res_man = PingusResource::get(datafile);
 
-      if (!res_man->is_from_source ())
-	{
-	  // FIXME: not implemented
-	  return 0;
-	}
-      else
-	{
-	  CL_Resource& res = res_man->get_resource(res_name);
+      CL_Resource& res = res_man->get_resource(res_name);
 
-	  std::string filename = res.get_full_location();
+      std::string filename = res.get_full_location();
 
 #ifndef WIN32
-	  struct stat stat_buf;
-	  if (stat(filename.c_str(), &stat_buf) == 0)
-	    return stat_buf.st_mtime;
-	  else
-	    return 0;
+      struct stat stat_buf;
+      if (stat(filename.c_str(), &stat_buf) == 0)
+        return stat_buf.st_mtime;
+      else
+        return 0;
 #else
-	  // FIXME: Win32 mtime getter not implemented
-	  return 0;
+      // FIXME: Win32 mtime getter not implemented
+      return 0;
 #endif
-	}
     }
   catch (CL_Error& err)
     {
@@ -351,5 +369,7 @@ PingusResource::get_mtime (const std::string& res_name,
       return 0;
     }
 }
+
+} // namespace Pingus
 
 /* EOF */

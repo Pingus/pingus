@@ -1,4 +1,4 @@
-//  $Id: thunderstorm_background_obj.cxx,v 1.3 2002/09/28 11:52:25 torangan Exp $
+//  $Id: thunderstorm_background_obj.cxx,v 1.4 2003/10/18 23:17:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #include "../worldobjsdata/thunderstorm_background_data.hxx"
 #include "thunderstorm_background_obj.hxx"
 
+namespace Pingus {
 namespace EditorObjs {
 
 ThunderstormBackgroundObj::ThunderstormBackgroundObj (const WorldObjsData::ThunderstormBackgroundData& data_)
@@ -54,5 +55,6 @@ ThunderstormBackgroundObj::status_line ()
 }
 
 } // namespace EditorObjs
+} // namespace Pingus
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: graphic_context.hxx,v 1.5 2003/08/16 20:51:28 grumbel Exp $
+//  $Id: graphic_context.hxx,v 1.6 2003/10/18 23:17:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,11 +24,13 @@
 #include "../vector.hxx"
 #include <ClanLib/Core/Math/rect.h>
 
-class Sprite;
 class CL_Surface;
+class CL_Sprite;
 class CL_Font;
 
-typedef CL_Font* FontHandle;
+namespace Pingus {
+
+class Sprite;
 
 /** Abstract interface */
 class GraphicContext
@@ -64,6 +66,8 @@ public:
   virtual Vector world_to_screen (Vector pos) =0;
 
   virtual void clear (float r, float g, float b) =0;
+
+  virtual void draw (CL_Sprite& sprite, const Vector& pos);
 
   virtual void draw (Sprite& sprite, const Vector& pos);
   virtual void draw (Sprite& sprite, const Vector& pos, int frame);
@@ -103,14 +107,16 @@ public:
 
   // Font handling routines
   /** Print a text left aligned */
-  virtual void print_left (FontHandle font, int x_pos, int y_pos, const std::string& str) =0;
+  virtual void print_left (CL_Font font, int x_pos, int y_pos, const std::string& str) =0;
 
   /** Print a text centred to the given position */
-  virtual void print_center (FontHandle font, int x_pos, int y_pos, const std::string& str) =0;
+  virtual void print_center (CL_Font font, int x_pos, int y_pos, const std::string& str) =0;
 
   /** Print a text right aligned */
-  virtual void print_right (FontHandle font, int x_pos, int y_pos, const std::string& str) =0;
+  virtual void print_right (CL_Font font, int x_pos, int y_pos, const std::string& str) =0;
 };
+
+} // namespace Pingus
 
 #endif
 

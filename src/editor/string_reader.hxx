@@ -1,4 +1,4 @@
-//  $Id: string_reader.hxx,v 1.7 2003/04/19 10:23:18 torangan Exp $
+//  $Id: string_reader.hxx,v 1.8 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,8 +23,10 @@
 #include "../pingus.hxx"
 #include <list>
 #include <string>
+#include <ClanLib/display.h>
 
-class CL_Font;
+namespace Pingus {
+namespace EditorNS {
 
 class StringReader
 {
@@ -35,7 +37,7 @@ private:
   std::string default_string;
   bool finished;
   std::string description;
-  CL_Font* font;
+  CL_Font font;
 
 public:
   StringReader ();
@@ -53,6 +55,9 @@ private:
   StringReader (const StringReader&);
   StringReader& operator= (const StringReader&);
 };
+
+} // namespace EditorNS
+} // namespace Pingus
 
 #endif
 

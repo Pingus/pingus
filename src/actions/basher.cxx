@@ -1,4 +1,4 @@
-//  $Id: basher.cxx,v 1.29 2003/04/19 10:23:18 torangan Exp $
+//  $Id: basher.cxx,v 1.30 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -27,6 +27,7 @@
 #include "../world.hxx"
 #include "basher.hxx"
 
+namespace Pingus {
 namespace Actions {
 
 Basher::Basher (Pingu* p)
@@ -171,5 +172,6 @@ Basher::have_something_to_dig()
 }
 
 } // namespace Actions
+} // namespace Pingus
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: counter.hxx,v 1.4 2002/08/23 15:49:48 torangan Exp $
+//  $Id: counter.hxx,v 1.5 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,8 @@
 #define HEADER_PINGUS_COUNTER_HXX
 
 #include "pingus.hxx"
+
+namespace Pingus {
 
 class Counter
 {
@@ -51,6 +53,8 @@ public:
   void set_type(CounterType);
   operator int() const { return count; };
 };
+
+} // namespace Pingus
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: pingu_action_factory.cxx,v 1.15 2003/04/19 10:23:17 torangan Exp $
+//  $Id: pingu_action_factory.cxx,v 1.16 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -45,6 +45,8 @@
 #include "actions/walker.hxx"
 
 #include "pingu_action_factory.hxx"
+
+namespace Pingus {
 
 using namespace Actions;
 
@@ -157,5 +159,7 @@ PinguActionFactory::register_factory (ActionName id, PinguActionAbstractFactory*
   // FIXME: Could need some more error checking
   factories[id] = factory;
 }
+
+} // namespace Pingus
 
 /* EOF */

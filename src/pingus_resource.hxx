@@ -1,4 +1,4 @@
-//  $Id: pingus_resource.hxx,v 1.15 2003/10/18 12:11:30 grumbel Exp $
+//  $Id: pingus_resource.hxx,v 1.16 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,6 +28,8 @@
 class CL_Font;
 class CL_ResourceManager;
 
+namespace Pingus {
+
 /** General Resource Managing class, it provides wrappers around
     CL_Surface::load(), CL_Font::load() and friends.  This class is
     needed to do a better handling of the resources. */
@@ -36,7 +38,7 @@ class PingusResource
 private:
   static std::map<std::string, CL_ResourceManager*> resource_map;
   static std::map<ResDescriptor, CL_Surface> surface_map;
-  static std::map<ResDescriptor, CL_Font*> font_map;
+  static std::map<ResDescriptor, CL_Font> font_map;
 
   static CL_Surface load_from_source (const ResDescriptor& res_desc);
   static CL_Surface load_from_cache (const ResDescriptor& res_desc);
@@ -58,13 +60,19 @@ public:
 
   /** Load a surface from the ResDescriptor */
   static CL_Surface load_surface(const ResDescriptor&);
+  static CL_Sprite  load_sprite(const std::string& res_name,
+                                const std::string& datafile);
+
+  static CL_PixelBuffer load_surface_provider(const std::string& res_name,
+                                              const std::string& datafile);
+  static CL_PixelBuffer load_surface_provider(const ResDescriptor&);
 
   /** Load a font with res_name from datafile */
-  static CL_Font* load_font(const std::string& res_name,
+  static CL_Font load_font(const std::string& res_name,
 			    const std::string& datafile);
 
   /** Load a font from the ResDescriptor */
-  static CL_Font* load_font(const ResDescriptor&);
+  static CL_Font load_font(const ResDescriptor&);
 
   /** Cleanup all currently unused surfaces */
   static void cleanup ();
@@ -76,6 +84,8 @@ private:
   PingusResource (const PingusResource&);
   PingusResource& operator= (const PingusResource&);
 };
+
+} // namespace Pingus
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: resource_modifier.hxx,v 1.5 2003/04/19 10:23:17 torangan Exp $
+//  $Id: resource_modifier.hxx,v 1.6 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,7 @@
 #include "pingus.hxx"
 #include <string>
 
+namespace Pingus {
 namespace ResourceModifierNS {
 
 /** This array contains possible modifications of a surface */
@@ -48,6 +49,7 @@ std::string rs_to_string (ResourceModifier);
 ResourceModifier rs_from_string (const std::string&);
 
 } // namespace ResourceModifierNS
+} // namespace Pingus
 
 #endif
 

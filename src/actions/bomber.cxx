@@ -1,4 +1,4 @@
-//  $Id: bomber.cxx,v 1.34 2003/04/19 10:23:18 torangan Exp $
+//  $Id: bomber.cxx,v 1.35 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,6 +33,7 @@
 #include "../movers/linear_mover.hxx"
 #include "bomber.hxx"
 
+namespace Pingus {
 namespace Actions {
 
 bool Bomber::static_surface_loaded = false;
@@ -141,5 +142,6 @@ Bomber::update ()
 }
 
 } // namespace Actions
+} // namespace Pingus
 
 /* EOF */

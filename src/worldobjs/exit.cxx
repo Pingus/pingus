@@ -1,4 +1,4 @@
-//  $Id: exit.cxx,v 1.8 2003/02/19 09:50:36 grumbel Exp $
+//  $Id: exit.cxx,v 1.9 2003/10/18 23:17:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,6 +29,7 @@
 #include "../smallmap.hxx"
 #include "exit.hxx"
 
+namespace Pingus {
 namespace WorldObjs {
 
 Exit::Exit (const WorldObjsData::ExitData& data_)
@@ -107,5 +108,6 @@ Exit::get_z_pos () const
 }
 
 } // namespace WorldObjs
+} // namespace Pingus
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: pingu.hxx,v 1.25 2003/04/19 10:23:17 torangan Exp $
+//  $Id: pingu.hxx,v 1.26 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,8 @@
 
 #include "direction.hxx"
 #include "pingu_enums.hxx"
+
+namespace Pingus {
 
 // Forward declarations
 class Vector;
@@ -213,6 +215,8 @@ private:
   Pingu (const Pingu&);
   Pingu& operator= (const Pingu&);
 };
+
+} // namespace Pingus
 
 #endif /* PINGU_HH */
 

@@ -1,4 +1,4 @@
-//  $Id: game_time.cxx,v 1.10 2003/04/24 15:18:19 grumbel Exp $
+//  $Id: game_time.cxx,v 1.11 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,8 @@
 #include "gettext.h"
 #include "globals.hxx"
 #include "game_time.hxx"
+
+namespace Pingus {
 
 GameTime::GameTime (int arg_tick_time)
   : count (0), tick_time (arg_tick_time)
@@ -82,5 +84,7 @@ GameTime::ticks_to_realtime_string(int ticks)
     }
   return time_str;
 }
+
+} // namespace Pingus
 
 /* EOF */

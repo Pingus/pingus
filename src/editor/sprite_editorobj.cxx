@@ -1,4 +1,4 @@
-//  $Id: sprite_editorobj.cxx,v 1.10 2003/04/19 10:23:18 torangan Exp $
+//  $Id: sprite_editorobj.cxx,v 1.11 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,10 +19,13 @@
 
 #include <iostream>
 #include <assert.h>
-#include <ClanLib/Display/Display/surfaceprovider.h>
+#include <ClanLib/Display/pixel_buffer.h>
 #include "../math.hxx"
 #include "editor_view.hxx"
 #include "sprite_editorobj.hxx"
+
+namespace Pingus {
+namespace EditorNS {
 
 SpriteEditorObj::SpriteEditorObj ()
   : pos_ref (0)
@@ -106,8 +109,8 @@ SpriteEditorObj::is_over(const Vector& pos)
   // FIXME: We don't handle animated objects special (do we need to?)
   if (RectEditorObj::is_over (pos))
     {
-#if 1 // EDITOR_PIXEL_PERFECT_IS_OVER
-      CL_SurfaceProvider* provider = sprite.get_surface ().get_provider ();
+#if 0 // EDITOR_PIXEL_PERFECT_IS_OVER
+      CL_PixelBuffer* provider = sprite.get_surface ().get_provider ();
       if (provider)
         {
           // Position relative to the surface, not world
@@ -141,5 +144,8 @@ SpriteEditorObj::is_over(const Vector& pos)
       return false;
     }
 }
+
+} // namespace EditorNS
+} // namespace Pingus
 
 /* EOF */

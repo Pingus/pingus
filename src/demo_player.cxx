@@ -1,4 +1,4 @@
-//  $Id: demo_player.cxx,v 1.9 2003/04/19 10:23:17 torangan Exp $
+//  $Id: demo_player.cxx,v 1.10 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,8 @@
 #include "server.hxx"
 #include "demo_player.hxx"
 #include "xml_pdf.hxx"
+
+namespace Pingus {
 
 DemoPlayer::DemoPlayer(Server* s, XMLPDF* pdf)
   : server(s),
@@ -52,5 +54,7 @@ DemoPlayer::update()
       std::cout << "DemoPlayer Bug: We missed a timestamp: " << events.back().time_stamp << std::endl;
     }
 }
+
+} // namespace Pingus
 
 /* EOF */

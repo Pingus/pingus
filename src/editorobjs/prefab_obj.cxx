@@ -1,4 +1,4 @@
-//  $Id: prefab_obj.cxx,v 1.1 2002/09/15 20:33:45 grumbel Exp $
+//  $Id: prefab_obj.cxx,v 1.2 2003/10/18 23:17:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,10 @@
 
 #include "prefab_obj.hxx"
 
+namespace EditorObjs {
+namespace Pingus {
 
+} // namespace EditorObjs
+} // namespace Pingus
 
 /* EOF */

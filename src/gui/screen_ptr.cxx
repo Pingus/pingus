@@ -1,4 +1,4 @@
-//  $Id: screen_ptr.cxx,v 1.3 2003/04/19 10:23:18 torangan Exp $
+//  $Id: screen_ptr.cxx,v 1.4 2003/10/18 23:17:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,8 @@
 #include <typeinfo>
 #include <iostream>
 #include "screen_ptr.hxx"
+
+namespace Pingus {
 
 void
 ScreenPtr::decrease_refcount()
@@ -53,5 +55,7 @@ ScreenPtr::increase_refcount()
       *ref_count += 1;
     }
 }
+
+} // namespace Pingus
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: collider.cxx,v 1.3 2003/03/18 17:03:01 torangan Exp $
+//  $Id: collider.cxx,v 1.4 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,8 @@
 #include "col_map.hxx"
 #include "vector.hxx"
 #include "world.hxx"
+
+namespace Pingus {
 
 Collider::Collider()
 {
@@ -45,5 +47,7 @@ int Collider::getpixel(World* const world, const Vector& pos) const
   return world->get_colmap()->getpixel(static_cast<int>(pos.x),
 					static_cast<int>(pos.y));
 }
+
+} // namespace Pingus
 
 /* EOF */

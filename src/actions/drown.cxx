@@ -1,4 +1,4 @@
-//  $Id: drown.cxx,v 1.14 2003/04/19 10:23:18 torangan Exp $
+//  $Id: drown.cxx,v 1.15 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,7 @@
 #include "../pingu.hxx"
 #include "drown.hxx"
 
+namespace Pingus {
 namespace Actions {
 
 Drown::Drown (Pingu* p)
@@ -54,5 +55,6 @@ Drown::update ()
 }
 
 } // namespace Actions
+} // namespace Pingus
 
 /* EOF */

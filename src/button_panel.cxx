@@ -1,4 +1,4 @@
-//  $Id: button_panel.cxx,v 1.25 2003/04/19 10:23:17 torangan Exp $
+//  $Id: button_panel.cxx,v 1.26 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,8 @@
 #include "button_panel.hxx"
 #include "true_server.hxx"
 #include "client.hxx"
+
+namespace Pingus {
 
 using namespace Actions;
 
@@ -180,5 +182,7 @@ ButtonPanel::previous_action ()
 {
   pressed_button = (pressed_button - 1 + a_buttons.size()) % a_buttons.size();
 }
+
+} // namespace Pingus
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: status_line.hxx,v 1.11 2003/04/19 10:23:18 torangan Exp $
+//  $Id: status_line.hxx,v 1.12 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,16 +25,17 @@
 
 class CL_Font;
 
-class EditorObj;
+namespace Pingus {
 
 namespace EditorNS {
 
+class EditorObj;
 class EditorView;
 
 class StatusLine
 {
 private:
-  CL_Font* font;
+  CL_Font font;
   const std::vector<EditorObj*>* current_objs;
 
 public:
@@ -50,9 +51,8 @@ private:
 };
 
 } // namespace EditorNS
+} // namespace Pingus
 
 #endif
 
 /* EOF */
-
-

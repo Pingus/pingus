@@ -1,4 +1,4 @@
-//  $Id: buffer_graphic_context.cxx,v 1.2 2003/08/21 20:52:23 torangan Exp $
+//  $Id: buffer_graphic_context.cxx,v 1.3 2003/10/18 23:17:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,8 @@
 #include "../blitter.hxx"
 #include "../screenshot.hxx"
 #include "buffer_graphic_context.hxx"
+
+namespace Pingus {
 
 BufferGraphicContext::BufferGraphicContext(int width, int height)
 {
@@ -87,5 +89,7 @@ BufferGraphicContext::write(const std::string& filename)
   Screenshot::save_target_to_file(canvas, filename);
   canvas->unlock();
 }
+
+} // namespace Pingus
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: layer_manager.hxx,v 1.11 2003/10/18 12:11:30 grumbel Exp $
+//  $Id: layer_manager.hxx,v 1.12 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,8 @@
 #include <cmath>
 #include <ClanLib/Display/surface.h>
 #include "gui/graphic_context.hxx"
+
+namespace Pingus {
 
 class LayerManager
 {
@@ -85,6 +87,8 @@ private:
   LayerManager (const LayerManager&);
   LayerManager& operator= (const LayerManager&);
 };
+
+} // namespace Pingus
 
 #endif
 

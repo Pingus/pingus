@@ -1,4 +1,4 @@
-//  $Id: bomber.hxx,v 1.20 2003/04/19 10:23:18 torangan Exp $
+//  $Id: bomber.hxx,v 1.21 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,7 @@
 #include "../sprite.hxx"
 #include "../pingu_action.hxx"
 
+namespace Pingus {
 namespace Actions {
 
 /** An action with lets the Pingu explode. After the explosion the the
@@ -60,6 +61,7 @@ private:
 };
 
 } // namespace Actions
+} // namespace Pingus
 
 #endif
 

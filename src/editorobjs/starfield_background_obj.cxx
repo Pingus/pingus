@@ -1,4 +1,4 @@
-//  $Id: starfield_background_obj.cxx,v 1.6 2003/04/19 10:23:18 torangan Exp $
+//  $Id: starfield_background_obj.cxx,v 1.7 2003/10/18 23:17:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,6 +26,7 @@
 
 using namespace EditorNS;
 
+namespace Pingus {
 namespace EditorObjs {
 
 StarfieldBackgroundObj::StarfieldBackgroundObj (const WorldObjsData::StarfieldBackgroundData& data_)
@@ -77,5 +78,6 @@ StarfieldBackgroundObj::get_gui_dialog(Editor* editor)
 }
 
 } // namespace EditorObjs
+} // namespace Pingus
 
 /* EOF */

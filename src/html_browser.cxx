@@ -1,4 +1,4 @@
-//  $Id: html_browser.cxx,v 1.2 2003/04/01 22:43:32 grumbel Exp $
+//  $Id: html_browser.cxx,v 1.3 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,8 @@
 #include <iostream>
 #include "html_browser.hxx"
 
+namespace Pingus {
+
 void
 HTMLBrowser::launch (const std::string& url)
 {
@@ -33,5 +35,7 @@ HTMLBrowser::launch (const std::string& url)
   std::cout << "HTMLBrowser not implemented" << std::endl;
 #endif
 }
+
+} // namespace Pingus
 
 /* EOF */

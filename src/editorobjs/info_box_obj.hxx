@@ -1,4 +1,4 @@
-//  $Id: info_box_obj.hxx,v 1.7 2003/04/19 10:23:18 torangan Exp $
+//  $Id: info_box_obj.hxx,v 1.8 2003/10/18 23:17:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,13 +22,15 @@
 
 #include "../editor/sprite_editorobj.hxx"
 
+namespace Pingus {
+
 namespace WorldObjsData {
 class InfoBoxData;
 }
 
 namespace EditorObjs {
 
-class InfoBoxObj : public SpriteEditorObj
+class InfoBoxObj : public EditorNS::SpriteEditorObj
 {
 private:
   WorldObjsData::InfoBoxData* const data;
@@ -37,10 +39,10 @@ public:
   InfoBoxObj (const WorldObjsData::InfoBoxData& data_);
  ~InfoBoxObj ();
 
-  static EditorObjLst create (const Vector& pos);
+  static EditorNS::EditorObjLst create (const Vector& pos);
 
   void write_xml (std::ostream& xml);
-  EditorObj* duplicate ();
+  EditorNS::EditorObj* duplicate ();
   std::string status_line ();
   EditorNS::PropertyFrame* get_gui_dialog(EditorNS::Editor*) { return 0; }
 private:
@@ -49,6 +51,7 @@ private:
 };
 
 } // namespace EditorObjs
+} // namespace Pingus
 
 #endif
 

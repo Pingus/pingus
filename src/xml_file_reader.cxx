@@ -1,4 +1,4 @@
-//  $Id: xml_file_reader.cxx,v 1.4 2003/04/19 10:23:17 torangan Exp $
+//  $Id: xml_file_reader.cxx,v 1.5 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,8 @@
 #include "debug.hxx"
 #include "globals.hxx"
 #include "xml_file_reader.hxx"
+
+namespace Pingus {
 
 XMLFileReader::XMLFileReader(xmlDocPtr doc_, xmlNodePtr node)
   : doc(doc_), section_node(node)
@@ -183,5 +185,7 @@ XMLFileReader::read_section(const char* name, XMLFileReader& value)
     }
   return false;
 }
+
+} // namespace Pingus
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: rect_editorobj.hxx,v 1.8 2003/04/19 10:23:18 torangan Exp $
+//  $Id: rect_editorobj.hxx,v 1.9 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,9 @@
 
 #include "editorobj.hxx"
 
+namespace Pingus {
+namespace EditorNS {
+
 /** Abstract class which can be used for all objects which have a
     rectangular shape. */
 class RectEditorObj : public EditorObj
@@ -38,19 +41,22 @@ public:
   virtual int get_height () =0;
 
   /** Draw the caputre rectangle around the object */
-  virtual void   draw_mark (EditorNS::EditorView * view);
+  virtual void   draw_mark(EditorView * view);
 
   /** Return true when the object is under the given coordinates */
-  virtual bool   is_over (const Vector&);
+  virtual bool   is_over(const Vector&);
 
   /** Return true if the current object is inside the current
       selection rectangle */
-  virtual bool   is_in_rect (const CL_Rect&);
+  virtual bool   is_in_rect(const CL_Rect&);
 
 protected:
-  RectEditorObj (const RectEditorObj& old);
-  RectEditorObj& operator= (const RectEditorObj& old);
+  RectEditorObj(const RectEditorObj& old);
+  RectEditorObj& operator=(const RectEditorObj& old);
 };
+
+} // namespace EditorNS
+} // namespace Pingus
 
 #endif
 

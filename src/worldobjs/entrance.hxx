@@ -1,4 +1,4 @@
-//  $Id: entrance.hxx,v 1.5 2003/04/19 10:23:19 torangan Exp $
+//  $Id: entrance.hxx,v 1.6 2003/10/18 23:17:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,9 +20,11 @@
 #ifndef HEADER_PINGUS_ENTRANCE_HXX
 #define HEADER_PINGUS_ENTRANCE_HXX
 
-#include <ClanLib/Display/Display/surface.h>
+#include <ClanLib/Display/surface.h>
 #include "../sprite.hxx"
 #include "../worldobj.hxx"
+
+namespace Pingus {
 
 namespace WorldObjsData {
 class EntranceData;
@@ -64,6 +66,7 @@ private:
 };
 
 } // namespace WorldObjs
+} // namespace Pingus
 
 #endif
 

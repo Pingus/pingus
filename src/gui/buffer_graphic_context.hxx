@@ -1,4 +1,4 @@
-//  $Id: buffer_graphic_context.hxx,v 1.3 2003/08/21 20:52:23 torangan Exp $
+//  $Id: buffer_graphic_context.hxx,v 1.4 2003/10/18 23:17:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,14 +24,17 @@
 #include "../vector.hxx"
 #include <ClanLib/Core/Math/rect.h>
 #include <ClanLib/Display/SurfaceProviders/canvas.h>
+#include <ClanLib/Display/font.h>
 #include "graphic_context.hxx"
 
-class Sprite;
 class CL_Surface;
 class CL_Font;
 class CL_Canvas;
 
-typedef CL_Font* FontHandle;
+namespace Pingus {
+
+class Sprite;
+typedef CL_Font FontHandle;
 
 /** Abstract interface */
 class BufferGraphicContext : public GraphicContext
@@ -89,6 +92,8 @@ public:
   /** Write the current content of the buffer down to a pnm file */
   void write(const std::string& filename);
 };
+
+} // namespace Pingus
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: prefab_obj.hxx,v 1.4 2003/04/19 10:23:18 torangan Exp $
+//  $Id: prefab_obj.hxx,v 1.5 2003/10/18 23:17:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,8 @@
 #define HEADER_PREFAB_OBJ_HXX
 
 #include "../editor/editorobj.hxx"
+
+namespace Pingus {
 
 class WorldObjGroup;
 class PrefabObjData;
@@ -47,6 +49,7 @@ private:
 };
 
 } // namespace EditorObjs
+} // namespace Pingus
 
 #endif
 

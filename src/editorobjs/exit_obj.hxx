@@ -1,4 +1,4 @@
-//  $Id: exit_obj.hxx,v 1.3 2003/04/19 10:23:18 torangan Exp $
+//  $Id: exit_obj.hxx,v 1.4 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,13 +22,15 @@
 
 #include "../editor/sprite_editorobj.hxx"
 
+namespace Pingus {
+
 namespace WorldObjsData {
 class ExitData;
 }
 
 namespace EditorObjs {
 
-class ExitObj : public SpriteEditorObj
+class ExitObj : public EditorNS::SpriteEditorObj
 {
 private:
   WorldObjsData::ExitData* const data;
@@ -49,6 +51,7 @@ private:
 };
 
 } // namespace EditorObjs
+} // namespace Pingus {
 
 #endif
 

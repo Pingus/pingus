@@ -1,4 +1,4 @@
-//  $Id: slider.cxx,v 1.18 2003/04/19 10:23:18 torangan Exp $
+//  $Id: slider.cxx,v 1.19 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,7 @@
 #include "../pingu.hxx"
 #include "slider.hxx"
 
+namespace Pingus {
 namespace Actions {
 
 Slider::Slider (Pingu* p)
@@ -77,5 +78,6 @@ Slider::draw (GraphicContext& gc)
 }
 
 } // namespace Actions
+} // namespace Pingus
 
 /* EOF */

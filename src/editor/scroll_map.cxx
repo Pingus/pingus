@@ -1,4 +1,4 @@
-//  $Id: scroll_map.cxx,v 1.7 2003/04/19 10:23:18 torangan Exp $
+//  $Id: scroll_map.cxx,v 1.8 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,12 +17,13 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <ClanLib/Display/Display/display.h>
+#include <ClanLib/Display/display.h>
 #include "editor.hxx"
 #include "editor_view.hxx"
 #include "object_manager.hxx"
 #include "scroll_map.hxx"
 
+namespace Pingus {
 namespace EditorNS {
 
 EditorEvent* ScrollMap::editor_event;
@@ -44,14 +45,14 @@ ScrollMap::~ScrollMap()
 
 ///
 void
-ScrollMap::on_button_release(CL_InputDevice * /*device*/, const CL_Key& /*key*/)
+ScrollMap::on_button_release(const CL_InputEvent& event)
 {
 
 }
 
 ///
 void
-ScrollMap::on_button_press(CL_InputDevice * /*device*/, const CL_Key& /*key*/)
+ScrollMap::on_button_press(const CL_InputEvent& event)
 {
   //int click_x_pos = (int) key.x - x_pos;
   //int click_y_pos = (int) key.y - y_pos;
@@ -76,8 +77,8 @@ ScrollMap::mouse_over(int x, int y)
 void
 ScrollMap::draw()
 {
-  CL_Display::fill_rect (x_pos, y_pos, x_pos + width, y_pos + height,
-			 0.4f, 0.4f, 0.0f);
+  CL_Display::fill_rect (CL_Rect(x_pos, y_pos, x_pos + width, y_pos + height),
+			 CL_Color(100, 100, 0));
   Editor::instance()->get_object_manager()->draw(view);
   /*
   int viewarea_width = (CL_Display::get_width() * width
@@ -115,6 +116,7 @@ ScrollMap::draw()
 }
 
 } // namespace EditorNS
+} // namespace Pingus
 
 /* EOF */
 

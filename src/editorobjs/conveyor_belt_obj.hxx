@@ -1,4 +1,4 @@
-//  $Id: conveyor_belt_obj.hxx,v 1.8 2003/04/19 10:23:18 torangan Exp $
+//  $Id: conveyor_belt_obj.hxx,v 1.9 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,8 +20,10 @@
 #ifndef HEADER_PINGUS_EDITOROBJS_CONVEYOR_BELT_OBJ_HXX
 #define HEADER_PINGUS_EDITOROBJS_CONVEYOR_BELT_OBJ_HXX
 
-#include <ClanLib/Display/Display/surface.h>
+#include <ClanLib/Display/surface.h>
 #include "../editor/rect_editorobj.hxx"
+
+namespace Pingus {
 
 class WorldObjData;
 
@@ -31,7 +33,7 @@ class ConveyorBeltData;
 
 namespace EditorObjs {
 
-class ConveyorBeltObj : public RectEditorObj
+class ConveyorBeltObj : public EditorNS::RectEditorObj
 {
 private:
   WorldObjsData::ConveyorBeltData* const data;
@@ -43,7 +45,7 @@ private:
 public:
   ConveyorBeltObj (const WorldObjsData::ConveyorBeltData& data_);
 
-  EditorObj* duplicate ();
+  EditorNS::EditorObj* duplicate ();
 
   void draw (EditorNS::EditorView * view);
   void draw_scroll_map (int x_pos, int y_pos, int arg_width, int arg_height);
@@ -55,10 +57,10 @@ public:
 
   void set_position_offset (const Vector &);
 
-  static EditorObjLst create (WorldObjData* obj);
+  static EditorNS::EditorObjLst create (WorldObjData* obj);
 
   /** Create the object with reasonable defaults */
-  static EditorObjLst create (const Vector& pos);
+  static EditorNS::EditorObjLst create (const Vector& pos);
 
   Vector get_upper_left_corner ();
 
@@ -75,6 +77,7 @@ private:
 };
 
 } // namespace EditorObjs
+} // namespace Pingus {
 
 #endif
 

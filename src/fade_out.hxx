@@ -1,4 +1,4 @@
-//  $Id: fade_out.hxx,v 1.6 2003/04/19 10:23:17 torangan Exp $
+//  $Id: fade_out.hxx,v 1.7 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,8 @@
 #define HEADER_PINGUS_FADE_OUT_HXX
 
 #include "color.hxx"
+
+namespace Pingus {
 
 ///
 class FadeOut
@@ -77,6 +79,8 @@ private:
   EnlargingRectFadeOut (const EnlargingRectFadeOut&);
   EnlargingRectFadeOut& operator= (const EnlargingRectFadeOut&);
 };
+
+} // namespace Pingus
 
 #endif
 

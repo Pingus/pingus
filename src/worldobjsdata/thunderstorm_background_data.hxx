@@ -1,4 +1,4 @@
-//  $Id: thunderstorm_background_data.hxx,v 1.7 2003/04/19 10:23:19 torangan Exp $
+//  $Id: thunderstorm_background_data.hxx,v 1.8 2003/10/18 23:17:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,7 @@
 #include "../worldobj_data.hxx"
 #include "../libxmlfwd.hxx"
 
+namespace Pingus {
 namespace WorldObjsData {
 
 class ThunderstormBackgroundData : public WorldObjData
@@ -49,6 +50,7 @@ private:
 };
 
 } // namespace WorldObjsData
+} // namespace Pingus
 
 #endif
 

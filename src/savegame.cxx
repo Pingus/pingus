@@ -1,4 +1,4 @@
-//  $Id: savegame.cxx,v 1.4 2003/10/18 12:11:30 grumbel Exp $
+//  $Id: savegame.cxx,v 1.5 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,8 @@
 #include "xml_file_writer.hxx"
 #include "string_converter.hxx"
 #include "savegame.hxx"
+
+namespace Pingus {
 
 std::string
 Savegame::status_to_string (Status status)
@@ -96,5 +98,7 @@ Savegame::read_xml (xmlDocPtr doc, xmlNodePtr node)
   reader.read_int    ("saved-pingus", saved_pingus);
 
 }
+
+} // namespace Pingus
 
 /* EOF */

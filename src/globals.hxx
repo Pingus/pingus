@@ -1,4 +1,4 @@
-//  $Id: globals.hxx,v 1.18 2003/08/16 20:51:28 grumbel Exp $
+//  $Id: globals.hxx,v 1.19 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,6 +25,8 @@
 
 #include "pingus.hxx"
 #include <string>
+
+namespace Pingus {
 
 extern int         game_speed;                      ///< -t, --set-speed
 extern bool        print_fps;                       ///< --print-fps
@@ -83,6 +85,7 @@ enum { PINGUS_DEBUG_ACTIONS    = (1 << 0),
        PINGUS_DEBUG_ALL        = (~0)
      };
 
+} // namespace Pingus
 
 #endif
 

@@ -1,4 +1,4 @@
-// $Id: miner.cxx,v 1.23 2003/08/17 11:48:39 grumbel Exp $
+// $Id: miner.cxx,v 1.24 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,12 +26,13 @@
 #include "../pingu.hxx"
 #include "miner.hxx"
 
+namespace Pingus {
 namespace Actions {
 
 Miner::Miner (Pingu* p)
   : PinguAction(p),
-    miner_radius(PingusResource::load_surface("Other/bash_radius", "pingus")),
-    miner_radius_gfx(PingusResource::load_surface("Other/bash_radius_gfx", "pingus")),
+    miner_radius(PingusResource::load_surface_provider("Other/bash_radius", "pingus")),
+    miner_radius_gfx(PingusResource::load_surface_provider("Other/bash_radius_gfx", "pingus")),
     sprite(Sprite("Pingus/miner0", "pingus", 20.0f)),
     slow_count(0)
 {
@@ -56,10 +57,10 @@ Miner::update ()
     {
       if (!(slow_count % 3))
 	{
-	  WorldObj::get_world()->get_colmap()->remove(miner_radius.get_provider(),
+	  WorldObj::get_world()->get_colmap()->remove(miner_radius,
 						      static_cast<int>(pingu->get_x() - (miner_radius_width / 2) + pingu->direction),
 						      static_cast<int>(pingu->get_y() - miner_radius_width + 1) );
-	  WorldObj::get_world()->get_gfx_map()->remove(miner_radius_gfx.get_provider(),
+	  WorldObj::get_world()->get_gfx_map()->remove(miner_radius_gfx,
 						       static_cast<int>(pingu->get_x() - (miner_radius_gfx_width / 2) + pingu->direction),
 						       static_cast<int>(pingu->get_y() - miner_radius_gfx_width + 1) );
 	}
@@ -88,7 +89,7 @@ Miner::update ()
 						   static_cast<int>(pingu->get_y() - miner_radius_width + 1) );
       WorldObj::get_world()->get_gfx_map()->remove(miner_radius_gfx,
 						   static_cast<int>(pingu->get_x() - (miner_radius_gfx_width / 2) + pingu->direction),
-						   static_cast<int>(pingu->get_y() - miner_radius_gfx_width + 1) );
+						   static_cast<int>(pingu->get_y() - miner_radius_gfx_width + 1));
       pingu->set_action(Actions::Walker);
 
       // Stop Pingu walking further into the solid.
@@ -103,5 +104,6 @@ Miner::draw (GraphicContext& gc)
 }
 
 } // namespace Actions
+} // namespace Pingus
 
 /* EOF */

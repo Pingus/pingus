@@ -1,4 +1,4 @@
-//  $Id: world.cxx,v 1.45 2003/04/19 10:23:17 torangan Exp $
+//  $Id: world.cxx,v 1.46 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,6 +32,8 @@
 #include "particles/snow_particle_holder.hxx"
 #include "pingu.hxx"
 #include "game_time.hxx"
+
+namespace Pingus {
 
 using Actions::Bomber;
 
@@ -299,5 +301,7 @@ float World::get_gravity()
 {
   return gravitational_acceleration;
 }
+
+} // namespace Pingus
 
 /* EOF */

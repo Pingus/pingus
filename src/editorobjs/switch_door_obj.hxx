@@ -1,4 +1,4 @@
-//  $Id: switch_door_obj.hxx,v 1.8 2003/04/19 10:23:18 torangan Exp $
+//  $Id: switch_door_obj.hxx,v 1.9 2003/10/18 23:17:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,13 +22,15 @@
 
 #include "switch_door_switch_obj.hxx"
 
+namespace Pingus {
+
 namespace WorldObjsData {
 class SwitchDoorData;
 } // namespace WorldObjsData
 
 namespace EditorObjs {
 
-class SwitchDoorObj : public RectEditorObj
+class SwitchDoorObj : public EditorNS::RectEditorObj
 {
 private:
   WorldObjsData::SwitchDoorData* const data;
@@ -46,9 +48,9 @@ public:
 
   /** Create this object (and child objects) with reasonable defaults
       for the editor */
-  static EditorObjLst create (const Vector& pos);
+  static EditorNS::EditorObjLst create (const Vector& pos);
 
-  EditorObj* duplicate();
+  EditorNS::EditorObj* duplicate();
   float get_z_pos ();
 
   int get_width  ();
@@ -72,6 +74,7 @@ private:
 };
 
 } // namespace EditorObjs
+} // namespace Pingus
 
 #endif
 

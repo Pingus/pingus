@@ -1,4 +1,4 @@
-// $Id: groundpiece_obj.hxx,v 1.5 2003/04/19 10:23:18 torangan Exp $
+// $Id: groundpiece_obj.hxx,v 1.6 2003/10/18 23:17:28 grumbel Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,8 @@
 #include "../editor/sprite_editorobj.hxx"
 #include "../groundtype.hxx"
 
+namespace Pingus {
+
 namespace WorldObjsData {
 class GroundpieceData;
 }
@@ -33,7 +35,7 @@ class GroundpieceWindow;
 
 namespace EditorObjs {
 
-class GroundpieceObj : public SpriteEditorObj
+class GroundpieceObj : public EditorNS::SpriteEditorObj
 {
   friend class EditorNS::GroundpieceWindow;
 private:
@@ -57,7 +59,7 @@ public:
 
   void write_xml (std::ostream& xml);
 
-  EditorObj* duplicate ();
+  EditorNS::EditorObj* duplicate ();
   std::string status_line ();
 
   EditorNS::PropertyFrame* get_gui_dialog (EditorNS::Editor* parent);
@@ -68,6 +70,7 @@ private:
 };
 
 } // namespace EditorObjs
+} // namespace Pingus
 
 #endif
 

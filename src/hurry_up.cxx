@@ -1,4 +1,4 @@
-//  $Id: hurry_up.cxx,v 1.8 2003/04/22 16:40:41 grumbel Exp $
+//  $Id: hurry_up.cxx,v 1.9 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,11 +18,13 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <ClanLib/Core/System/system.h>
-#include <ClanLib/Display/Display/display.h>
-#include <ClanLib/Display/Font/font.h>
+#include <ClanLib/Display/display.h>
+#include <ClanLib/Display/font.h>
 #include "pingus_resource.hxx"
 #include "hurry_up.hxx"
 #include "fonts.hxx"
+
+namespace Pingus {
 
 HurryUp::HurryUp (Client* c)
   : font(Fonts::pingus_large),
@@ -100,5 +102,7 @@ HurryUp::update(float /*delta*/)
 #endif
     }
 }
+
+} // namespace Pingus
 
 /* EOF */

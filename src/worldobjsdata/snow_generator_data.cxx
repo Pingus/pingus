@@ -1,4 +1,4 @@
-//  $Id: snow_generator_data.cxx,v 1.8 2003/03/05 19:13:59 grumbel Exp $
+//  $Id: snow_generator_data.cxx,v 1.9 2003/10/18 23:17:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,6 +25,7 @@
 #include "../editor/editorobj_mgr.hxx"
 #include "snow_generator_data.hxx"
 
+namespace Pingus {
 namespace WorldObjsData {
 
 SnowGeneratorData::SnowGeneratorData(xmlDocPtr doc, xmlNodePtr cur)
@@ -57,5 +58,6 @@ SnowGeneratorData::insert_EditorObjs (EditorNS::EditorObjMgr* obj_mgr)
 }
 
 } // namespace WorldObjsData
+} // namespace Pingus
 
 /* EOF */

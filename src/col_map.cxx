@@ -1,4 +1,4 @@
-//  $Id: col_map.cxx,v 1.19 2003/04/24 15:18:19 grumbel Exp $
+//  $Id: col_map.cxx,v 1.20 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,6 +26,8 @@
 #include "gettext.h"
 
 #define COLMAP_WITH_MEMORY_HOLE 1
+
+namespace Pingus {
 
 // Obtain the colmap from a memory area
 ColMap::ColMap(int w, int h)
@@ -79,7 +81,7 @@ ColMap::remove(const CL_Surface& sur, int x, int y)
 }
 
 void
-ColMap::remove(CL_SurfaceProvider* provider, int x, int y)
+ColMap::remove(CL_PixelBuffer* provider, int x, int y)
 {
   ++serial;
 
@@ -187,7 +189,7 @@ ColMap::put(const CL_Surface& sur, int sur_x, int sur_y, Groundtype::GPType gpty
 
 // Puts a surface on the colmap
 void
-ColMap::put(CL_SurfaceProvider* provider, int sur_x, int sur_y, Groundtype::GPType pixel)
+ColMap::put(const CL_PixelBuffer& provider, int sur_x, int sur_y, Groundtype::GPType pixel)
 {
   // transparent groundpieces are only drawn on the gfx map, not on the colmap
   if (pixel == Groundtype::GP_TRANSPARENT)
@@ -323,5 +325,7 @@ ColMap::get_serial()
 {
   return serial;
 }
+
+} // namespace Pingus
 
 /* EOF */

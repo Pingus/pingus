@@ -1,4 +1,4 @@
-//  $Id: blocker.hxx,v 1.15 2003/04/19 10:23:18 torangan Exp $
+//  $Id: blocker.hxx,v 1.16 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,15 +20,16 @@
 #ifndef HEADER_PINGUS_ACTIONS_BLOCKER_HXX
 #define HEADER_PINGUS_ACTIONS_BLOCKER_HXX
 
-#include "../sprite.hxx"
+#include <ClanLib/Display/sprite.h>
 #include "../pingu_action.hxx"
 
+namespace Pingus {
 namespace Actions {
 
 class Blocker : public PinguAction
 {
 private:
-  Sprite sprite;
+  CL_Sprite sprite;
 
 public:
   Blocker (Pingu* p);
@@ -49,6 +50,7 @@ private:
 };
 
 } // namespace Actions
+} // namespace Pingus
 
 #endif
 

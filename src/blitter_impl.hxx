@@ -1,4 +1,4 @@
-//  $Id: blitter_impl.hxx,v 1.12 2003/10/18 12:11:30 grumbel Exp $
+//  $Id: blitter_impl.hxx,v 1.13 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,6 +26,7 @@
 #include "indexed_canvas.hxx"
 #include "pingus.hxx"
 
+namespace Pingus {
 
 /** A collection of helper functions for the blitter class */
 namespace BlitterImpl
@@ -182,7 +183,7 @@ template<class TransF>
 inline
 CL_Surface modify(const CL_Surface& sur, const TransF&)
 {
-  CL_SurfaceProvider* prov = sur.get_provider ();
+  CL_PixelBuffer* prov = sur.get_provider ();
   int pwidth  = prov->get_width();
   int pheight = prov->get_height();
 
@@ -252,6 +253,7 @@ CL_Surface modify(const CL_Surface& sur, const TransF&)
 }
 
 } // namespace BlitterImpl
+} // namespace Pingus
 
 #endif
 

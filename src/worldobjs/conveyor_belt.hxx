@@ -1,4 +1,4 @@
-//  $Id: conveyor_belt.hxx,v 1.17 2003/04/19 10:23:19 torangan Exp $
+//  $Id: conveyor_belt.hxx,v 1.18 2003/10/18 23:17:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_WORLDOBJS_CONVEYOR_BELT_HXX
 #define HEADER_PINGUS_WORLDOBJS_CONVEYOR_BELT_HXX
 
-#include <ClanLib/Display/Display/surface.h>
+#include <ClanLib/Display/surface.h>
 #include "../worldobj.hxx"
 #include "../worldobj_data.hxx"
 #include "../editor/rect_editorobj.hxx"

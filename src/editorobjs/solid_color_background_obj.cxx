@@ -1,4 +1,4 @@
-//  $Id: solid_color_background_obj.cxx,v 1.7 2003/04/19 10:23:18 torangan Exp $
+//  $Id: solid_color_background_obj.cxx,v 1.8 2003/10/18 23:17:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,6 +29,7 @@
 
 using namespace EditorNS;
 
+namespace Pingus {
 namespace EditorObjs {
 
 SolidColorBackgroundObj::SolidColorBackgroundObj (const WorldObjsData::SolidColorBackgroundData& data_)
@@ -108,5 +109,6 @@ SolidColorBackgroundObj::get_gui_dialog(Editor* editor)
 }
 
 } // namespace EditorObjs
+} // namespace Pingus {
 
 /* EOF */

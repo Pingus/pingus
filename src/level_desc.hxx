@@ -1,4 +1,4 @@
-//  $Id: level_desc.hxx,v 1.6 2003/04/19 10:23:17 torangan Exp $
+//  $Id: level_desc.hxx,v 1.7 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,9 @@
 #include "multiline_text.hxx"
 
 class CL_Font;
+
+namespace Pingus {
+
 class PLF;
 
 ///
@@ -48,6 +51,8 @@ private:
   PingusLevelDesc (const PingusLevelDesc&);
   PingusLevelDesc& operator= (const PingusLevelDesc&);
 };
+
+} // namespace Pingus
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: plf.hxx,v 1.11 2003/04/19 10:23:17 torangan Exp $
+//  $Id: plf.hxx,v 1.12 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,8 @@
 #include <map>
 #include "action_data.hxx"
 #include "worldobjsdata/groundpiece_data.hxx"
+
+namespace Pingus {
 
 class WorldObjData;
 
@@ -165,6 +167,8 @@ private:
   PLF (const PLF&);
   PLF& operator= (const PLF&);
 };
+
+} // namespace Pingus
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: status_line.cxx,v 1.11 2003/04/22 16:40:41 grumbel Exp $
+//  $Id: status_line.cxx,v 1.12 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,15 +19,16 @@
 
 #include <stdio.h>
 
-#include <ClanLib/Display/Font/font.h>
-#include <ClanLib/Display/Input/mouse.h>
-#include <ClanLib/Display/Display/display.h>
+#include <ClanLib/Display/font.h>
+#include <ClanLib/Display/mouse.h>
+#include <ClanLib/Display/display.h>
 #include "../pingus_resource.hxx"
 #include "../fonts.hxx"
 #include "editor_view.hxx"
 #include "status_line.hxx"
 #include "editorobj.hxx"
 
+namespace Pingus {
 namespace EditorNS {
 
 StatusLine::StatusLine()
@@ -61,12 +62,12 @@ StatusLine::draw(EditorView * view)
 	}
     }
 
-  font->print_left(50, 5, status_line_text.c_str());
+  font.draw(50, 5, status_line_text.c_str());
 
   Vector pos = view->screen_to_world(Vector (CL_Mouse::get_x(), CL_Mouse::get_y ()));
   snprintf(mouse_co, 256, "X:%-3d Y:%-3d", static_cast<int>(pos.x), static_cast<int>(pos.y));
 
-  font->print_left(CL_Display::get_width() - 100, 5, mouse_co);
+  font.draw(CL_Display::get_width() - 100, 5, mouse_co);
 }
 
 void
@@ -76,6 +77,7 @@ StatusLine::set_current_objs(const std::vector<EditorObj*>* c_objs)
 }
 
 } // namespace EditorNS
+} // namespace Pingus
 
 /* EOF */
 

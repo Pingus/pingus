@@ -1,4 +1,4 @@
-//  $Id: blocker.cxx,v 1.20 2003/08/16 18:37:43 torangan Exp $
+//  $Id: blocker.cxx,v 1.21 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,8 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <ClanLib/Core/Math/origin.h>
+
 #include "../col_map.hxx"
 #include "../gui/graphic_context.hxx"
 #include "../pingu.hxx"
@@ -26,13 +28,14 @@
 #include "../world.hxx"
 #include "blocker.hxx"
 
+namespace Pingus {
 namespace Actions {
 
 Blocker::Blocker(Pingu* p)
   : PinguAction(p),
-    sprite(PingusResource::load_surface("Pingus/blocker" + to_string(pingu->get_owner()), "pingus"), 6.0f)
+    sprite(PingusResource::load_sprite("Pingus/blocker" + to_string(pingu->get_owner()), "pingus")) // 6.0f)
 {
-  sprite.set_align_center_bottom();
+  sprite.set_alignment(origin_bottom_center);
 
   if (   rel_getpixel(0,-1)  ==  Groundtype::GP_NOTHING
       && rel_getpixel(0, -2) ==  Groundtype::GP_GROUND)
@@ -61,7 +64,7 @@ Blocker::update()
       for(PinguIter i = pingus->begin(); i != pingus->end(); ++i)
         {
           catch_pingu(*i);
-	      }
+        }
     }
   sprite.update();
 }
@@ -105,5 +108,6 @@ Blocker::y_offset(void)
 }
 
 } // namespace Actions
+} // namespace Pingus
 
 /* EOF */

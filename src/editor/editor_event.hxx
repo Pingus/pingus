@@ -1,4 +1,4 @@
-//  $Id: editor_event.hxx,v 1.19 2003/08/22 10:19:48 grumbel Exp $
+//  $Id: editor_event.hxx,v 1.20 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,23 +21,25 @@
 #define HEADER_PINGUS_EDITOR_EDITOR_EVENT_HXX
 
 #include <vector>
+#include <ClanLib/Display/font.h>
 #include "../color.hxx"
 
 class CL_Key;
 class CL_Font;
-class CL_InputDevice;
+class CL_InputEvent;
 
+namespace Pingus {
 namespace EditorNS {
 
 class ObjectManager;
 class Selection;
 class Editor;
 
-class EditorEvent //: public CL_Event_ButtonPress, public CL_Event_ButtonRelease
+class EditorEvent
 {
 private:
   bool is_enabled;
-  CL_Font* font;
+  CL_Font font;
 
   std::vector<Color> background_colors;
 
@@ -49,8 +51,8 @@ public:
   ObjectManager* object_manager;
   Selection* selection;
 
-  virtual void on_button_press(CL_InputDevice *device, const CL_Key &key);
-  virtual void on_button_release(CL_InputDevice *device, const CL_Key &key);
+  virtual void on_button_press(const CL_InputEvent& event);
+  virtual void on_button_release(const CL_InputEvent& event);
 
   void enable();
   void disable();
@@ -118,6 +120,7 @@ private:
 };
 
 } // namespace EditorNS
+} // namespace Pingus
 
 #endif
 

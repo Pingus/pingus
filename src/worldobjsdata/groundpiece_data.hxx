@@ -1,4 +1,4 @@
-//  $Id: groundpiece_data.hxx,v 1.8 2003/04/19 10:23:19 torangan Exp $
+//  $Id: groundpiece_data.hxx,v 1.9 2003/10/18 23:17:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,11 +21,13 @@
 #define HEADER_PINGUS_GROUNDPIECE_DATA_HXX
 
 #include "../vector.hxx"
-#include <ClanLib/Display/Display/surface.h>
+#include <ClanLib/Display/surface.h>
 #include "../libxmlfwd.hxx"
 #include "../res_descriptor.hxx"
 #include "../worldobj_data.hxx"
 #include "../groundtype.hxx"
+
+namespace Pingus {
 
 class FileWriter;
 class FileReader;
@@ -59,6 +61,7 @@ public:
 };
 
 } // namespace WorldObjsData
+} // namespace Pingus
 
 #endif
 

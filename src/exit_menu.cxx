@@ -1,4 +1,4 @@
-//  $Id: exit_menu.cxx,v 1.20 2003/04/24 15:18:19 grumbel Exp $
+//  $Id: exit_menu.cxx,v 1.21 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,8 @@
 #include "gui/surface_button.hxx"
 #include "gui/gui_manager.hxx"
 #include "sound/sound.hxx"
+
+namespace Pingus {
 
 class ExitMenuYesButton : public GUI::SurfaceButton
 {
@@ -119,5 +121,7 @@ ExitMenu::preload ()
 {
   sur = PingusResource::load_surface ("menu/exit_menu", "core");
 }
+
+} // namespace Pingus
 
 /* EOF */

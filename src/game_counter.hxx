@@ -1,4 +1,4 @@
-//  $Id: game_counter.hxx,v 1.7 2003/04/19 10:23:17 torangan Exp $
+//  $Id: game_counter.hxx,v 1.8 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,8 @@
 #define HEADER_PINGUS_GAME_COUNTER_HXX
 
 #include "pingus.hxx"
+
+namespace Pingus {
 
 class GameCounter
 {
@@ -56,6 +58,8 @@ private:
   GameCounter (const GameCounter&);
   GameCounter& operator= (const GameCounter&);
 };
+
+} // namespace Pingus
 
 #endif
 

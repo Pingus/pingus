@@ -1,4 +1,4 @@
-//  $Id: pingu_collider.cxx,v 1.3 2003/03/18 17:03:02 torangan Exp $
+//  $Id: pingu_collider.cxx,v 1.4 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,7 @@
 #include "../vector.hxx"
 #include "pingu_collider.hxx"
 
+namespace Pingus {
 namespace Colliders {
 
 PinguCollider::PinguCollider(const int height_arg) : height(height_arg)
@@ -84,5 +85,6 @@ bool PinguCollider::operator() (World* const world, Vector current_pos,
 }
 
 } // namespace Colliders
+} // namespace Pingus
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: blitter.hxx,v 1.10 2003/04/19 10:23:17 torangan Exp $
+//  $Id: blitter.hxx,v 1.11 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,7 +24,9 @@
 
 class CL_Canvas;
 class CL_Surface;
-class CL_SurfaceProvider;
+class CL_PixelBuffer;
+
+namespace Pingus {
 
 /** A bunch of blitting and creation functions to operate on
     CL_Canvas.  Some of them a similar to the ones in ClanLib, but
@@ -33,15 +35,15 @@ class Blitter
 {
 private:
   ///
-  static void put_surface_8bit(CL_Canvas*, CL_SurfaceProvider*,
+  static void put_surface_8bit(CL_Canvas*, CL_PixelBuffer*,
 			       int x, int y);
   ///
-  static void put_surface_32bit(CL_Canvas*, CL_SurfaceProvider*,
+  static void put_surface_32bit(CL_Canvas*, CL_PixelBuffer*,
 			       int x, int y);
 public:
   /*void put_surface(CL_LockableSurface* provider, CL_Surface surface,
     int x, int y);
-    void put_surface(CL_LockableSurface* provider, CL_SurfaceProvider* surface,
+    void put_surface(CL_LockableSurface* provider, CL_PixelBuffer* surface,
     int x, int y);
   */
 
@@ -50,12 +52,12 @@ public:
 			  int x, int y);
 
   /// Puts a given surface provider to a given canvas at position x, y.
-  static void put_surface(CL_Canvas*, CL_SurfaceProvider*,
+  static void put_surface(CL_Canvas*, CL_PixelBuffer*,
 			  int x, int y);
 
   /** Makes all pixels in canvas tranparent, when their indexed value
       in provider is larger than zero.*/
-  static void put_alpha_surface(CL_Canvas* canvas, CL_SurfaceProvider* provider,
+  static void put_alpha_surface(CL_Canvas* canvas, CL_PixelBuffer* provider,
 				int x, int y);
 
   /** Returns a newly allocated canvas. The canvas contains the same
@@ -64,7 +66,7 @@ public:
 
   /** Returns a newly allocated canvas. The canvas contains the same
       image as the given surface provider */
-  static CL_Canvas* create_canvas(CL_SurfaceProvider*);
+  static CL_Canvas* create_canvas(CL_PixelBuffer*);
 
   /** Sets all pixels of a canvas to zero */
   static CL_Canvas* clear_canvas(CL_Canvas*);
@@ -111,6 +113,8 @@ private:
   Blitter (const Blitter&);
   Blitter& operator= (const Blitter&);
 };
+
+} // namespace Pingus
 
 #endif
 

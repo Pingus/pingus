@@ -1,4 +1,4 @@
-//  $Id: snow_particle_holder.hxx,v 1.4 2003/04/19 10:23:19 torangan Exp $
+//  $Id: snow_particle_holder.hxx,v 1.5 2003/10/18 23:17:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,9 +21,11 @@
 #define HEADER_PINGUS_PARTICLES_SNOW_PARTICLE_HOLDER_HXX
 
 #include <vector>
-#include <ClanLib/Display/Display/surface.h>
+#include <ClanLib/Display/surface.h>
 #include "../vector.hxx"
 #include "../worldobj.hxx"
+
+namespace Pingus {
 
 class GraphicContext;
 
@@ -75,6 +77,7 @@ private:
 };
 
 } //namespace Particles
+} // namespace Pingus
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: switch_door_switch_obj.hxx,v 1.5 2003/04/19 10:23:18 torangan Exp $
+//  $Id: switch_door_switch_obj.hxx,v 1.6 2003/10/18 23:17:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,21 +22,22 @@
 
 #include "../editor/sprite_editorobj.hxx"
 
+namespace Pingus {
 namespace EditorObjs {
 
 class SwitchDoorObj;
 
 /** A dummy object to represent the switch for a switchdoor, all real
     work is done inside EditorSwitchDoorObj */
-class SwitchDoorSwitchObj : public SpriteEditorObj
+class SwitchDoorSwitchObj : public EditorNS::SpriteEditorObj
 {
 private:
   SwitchDoorObj* door;
 
 public:
   SwitchDoorSwitchObj (SwitchDoorObj* data);
-
-  EditorObj* duplicate ();
+  
+  EditorNS::EditorObj* duplicate ();
 
   void write_xml (std::ostream&) {}
   std::string status_line ();
@@ -48,6 +49,7 @@ private:
 };
 
 } // namespace EditorObjs
+} // namespace Pingus
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: preview_renderer.hxx,v 1.1 2003/08/16 16:20:30 grumbel Exp $
+//  $Id: preview_renderer.hxx,v 1.2 2003/10/18 23:17:27 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,8 @@
 
 #include "plf_res_mgr.hxx"
 
+namespace Pingus {
+
 /** By given a PLF, the PreviewRenderer renders a CL_Canvas with a
     graphic of the complete level, it also allows to save it down to a
     file */
@@ -37,6 +39,8 @@ public:
    */
   static void render(PLFHandle plf, const std::string& output_file); 
 };
+
+} // namespace Pingus
 
 #endif
 

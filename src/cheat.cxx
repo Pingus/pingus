@@ -1,4 +1,4 @@
-//  $Id: cheat.cxx,v 1.3 2003/04/19 10:23:17 torangan Exp $
+//  $Id: cheat.cxx,v 1.4 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,8 @@
 #include <iostream>
 #include "pingus_error.hxx"
 #include "cheat.hxx"
+
+namespace Pingus {
 
 bool Cheat::unlimited_actions = false;
 bool Cheat::no_time_limit     = false;
@@ -64,5 +66,7 @@ Cheat::print_help()
 
   exit(EXIT_SUCCESS);
 }
+
+} // namespace Pingus
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: pingus_counter.cxx,v 1.16 2003/04/24 15:18:19 grumbel Exp $
+//  $Id: pingus_counter.cxx,v 1.17 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,8 +18,8 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <stdio.h>
-#include <ClanLib/Display/Display/display.h>
-#include <ClanLib/Display/Font/font.h>
+#include <ClanLib/Display/display.h>
+#include <ClanLib/Display/font.h>
 #include "gettext.h"
 #include "pingus_resource.hxx"
 #include "pingus_counter.hxx"
@@ -29,6 +29,8 @@
 #include "plf.hxx"
 #include "globals.hxx"
 #include "fonts.hxx"
+
+namespace Pingus {
 
 PingusCounter::PingusCounter(Server* s)
   : server(s),
@@ -43,7 +45,7 @@ PingusCounter::draw(GraphicContext& gc)
   char str[128];
 
   if (!fast_mode)
-    background.put_screen (CL_Display::get_width ()/2 - background.get_width()/2, 0);
+    background.draw (CL_Display::get_width ()/2 - background.get_width()/2, 0);
 
   World* world = server->get_world();
 
@@ -57,5 +59,7 @@ PingusCounter::draw(GraphicContext& gc)
   font->print_center(CL_Display::get_width ()/2,3, str);
   UNUSED_ARG(gc);
 }
+
+} // namespace Pingus
 
 /* EOF */

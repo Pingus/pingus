@@ -1,4 +1,4 @@
-//  $Id: selection.cxx,v 1.19 2003/04/19 10:23:18 torangan Exp $
+//  $Id: selection.cxx,v 1.20 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,11 +19,12 @@
 
 #include <algorithm>
 #include "../vector.hxx"
-#include <ClanLib/Display/Input/keyboard.h>
-#include <ClanLib/Display/Input/key.h>
+#include <ClanLib/Display/keyboard.h>
+#include <ClanLib/Display/keys.h>
 #include "selection.hxx"
 #include "../math.hxx"
 
+namespace Pingus {
 namespace EditorNS {
 
 void
@@ -161,5 +162,6 @@ Selection::draw(EditorView * view)
 }
 
 } // namespace EditorNS
+} // namespace Pingus
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: groundtype.cxx,v 1.2 2003/04/19 10:23:17 torangan Exp $
+//  $Id: groundtype.cxx,v 1.3 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,8 @@
 
 #include <iostream>
 #include "groundtype.hxx"
+
+namespace Pingus {
 
 Groundtype::GPType
 Groundtype::string_to_type(const std::string& arg_type)
@@ -69,5 +71,7 @@ Groundtype::type_to_string(GPType arg_type)
       return "ground";
     }
 }
+
+} // namespace Pingus
 
 /* EOF */

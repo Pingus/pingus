@@ -1,4 +1,4 @@
-//  $Id: sound_dummy.cxx,v 1.2 2003/04/19 10:23:19 torangan Exp $
+//  $Id: sound_dummy.cxx,v 1.3 2003/10/18 23:17:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #include "../debug.hxx"
 #include "sound_dummy.hxx"
 
+namespace Pingus {
 namespace Sound {
 
 void
@@ -42,6 +43,7 @@ PingusSoundDummy::real_stop_music()
 }
 
 } // namespace Sound
+} // namespace Pingus
 
 /* EOF */
 

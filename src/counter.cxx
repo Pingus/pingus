@@ -1,4 +1,4 @@
-//  $Id: counter.cxx,v 1.5 2003/04/19 10:23:17 torangan Exp $
+//  $Id: counter.cxx,v 1.6 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,8 @@
 #include <assert.h>
 #include <iostream>
 #include "counter.hxx"
+
+namespace Pingus {
 
 Counter::Counter() : s(1), count(0), add(1), type(loop)
 {
@@ -157,5 +159,7 @@ Counter::set_type(CounterType new_type)
 {
   type = new_type;
 }
+
+} // namespace Pingus
 
 /* EOF */

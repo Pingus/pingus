@@ -1,4 +1,4 @@
-//  $Id: starfield_background_obj.hxx,v 1.7 2003/04/19 10:23:18 torangan Exp $
+//  $Id: starfield_background_obj.hxx,v 1.8 2003/10/18 23:17:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,8 @@
 #include "../vector.hxx"
 #include "../string_converter.hxx"
 #include "../editor/sprite_editorobj.hxx"
+
+namespace Pingus {
 
 namespace WorldObjsData {
 class StarfieldBackgroundData;
@@ -52,6 +54,7 @@ private:
 };
 
 } // namespace EditorObjs
+} // namespace Pingus
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: client.cxx,v 1.47 2003/10/18 12:11:30 grumbel Exp $
+//  $Id: client.cxx,v 1.48 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,6 +35,8 @@
 #include "true_server.hxx"
 #include "button_panel.hxx"
 #include "gui/gui_manager.hxx"
+
+namespace Pingus {
 
 Client::Client (TrueServer * s)
   : server       (s),
@@ -371,5 +373,7 @@ void
 Client::on_shutdown ()
 {
 }
+
+} // namespace Pingus
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: ice_block_obj.hxx,v 1.6 2003/04/19 10:23:18 torangan Exp $
+//  $Id: ice_block_obj.hxx,v 1.7 2003/10/18 23:17:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,13 +22,15 @@
 
 #include "../editor/sprite_editorobj.hxx"
 
+namespace Pingus {
+
 namespace WorldObjsData {
 class IceBlockData;
 }
 
 namespace EditorObjs {
 
-class IceBlockObj : public SpriteEditorObj
+class IceBlockObj : public EditorNS::SpriteEditorObj
 {
 private:
   WorldObjsData::IceBlockData* const data;
@@ -38,7 +40,7 @@ public:
  ~IceBlockObj ();
 
   /** Create the object with resonable defaults */
-  static EditorObjLst create (const Vector& pos);
+  static EditorNS::EditorObjLst create (const Vector& pos);
 
   void write_xml (std::ostream& xml);
 
@@ -51,6 +53,7 @@ private:
 };
 
 } // namespace EditorObjs
+} // namespace Pingus
 
 #endif
 

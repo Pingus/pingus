@@ -1,4 +1,4 @@
-//  $Id: spot_map.hxx,v 1.9 2003/04/19 10:23:17 torangan Exp $
+//  $Id: spot_map.hxx,v 1.10 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,9 +26,12 @@
 #include "pingu_map.hxx"
 #include "worldobjsdata/groundpiece_data.hxx"
 
+class CL_Canvas;
+
+namespace Pingus {
+
 class PLF;
 class ColMap;
-class CL_Canvas;
 
 class MapTileSurface
 {
@@ -81,18 +84,18 @@ public:
   int  get_width();
 
   /** Put the gives surface provider onto the given coordinates */
-  void put(CL_SurfaceProvider*, int x, int y);
+  void put(CL_PixelBuffer*, int x, int y);
 
   /** Remove the gives surface provider onto the given coordinates
       (everything non-transparent is removed from the map) */
-  void remove(CL_SurfaceProvider*, int x, int y);
+  void remove(CL_PixelBuffer*, int x, int y);
 
   float get_z_pos () const { return 0; }
 
 private:
   /** Low level version of the remove() call, acts on a single canvas
       instead on the complete map-tiles */
-  void put_alpha_surface(CL_Canvas* provider, CL_SurfaceProvider* sprovider,
+  void put_alpha_surface(CL_Canvas* provider, CL_PixelBuffer* sprovider,
 			 int x, int y, int real_x, int real_y);
 
   /** Draw the collision map onto the screen */
@@ -101,6 +104,8 @@ private:
   PingusSpotMap (const PingusSpotMap&);
   PingusSpotMap& operator= (const PingusSpotMap&);
 };
+
+} // namespace Pingus
 
 #endif
 

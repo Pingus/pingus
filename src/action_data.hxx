@@ -1,4 +1,4 @@
-//  $Id: action_data.hxx,v 1.7 2003/04/19 10:23:17 torangan Exp $
+//  $Id: action_data.hxx,v 1.8 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,8 @@
 #include <vector>
 #include "pingu_enums.hxx"
 
+namespace Pingus {
+
 class ActionData
 {
 public:
@@ -39,6 +41,8 @@ public:
     are not here */
 extern std::vector<ActionData> default_actions;
 void init_default_actions ();
+
+} // namespace Pingus
 
 #endif
 

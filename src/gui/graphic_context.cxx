@@ -1,4 +1,4 @@
-//  $Id: graphic_context.cxx,v 1.1 2003/08/16 20:52:38 grumbel Exp $
+//  $Id: graphic_context.cxx,v 1.2 2003/10/18 23:17:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,8 +17,17 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <assert.h>
 #include "../sprite.hxx"
 #include "graphic_context.hxx"
+
+namespace Pingus {
+
+void
+GraphicContext::draw (CL_Sprite& sprite, const Vector& pos)
+{
+  assert(0);
+}
 
 void
 GraphicContext::draw (Sprite& sprite, const Vector& pos)
@@ -45,5 +54,7 @@ GraphicContext::draw (CL_Surface& sur, const Vector& pos)
 {
   draw(sur, int(pos.x), int(pos.y));
 }
+
+} // namespace Pingus
 
 /* EOF */

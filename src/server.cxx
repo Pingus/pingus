@@ -1,4 +1,4 @@
-//  $Id: server.cxx,v 1.28 2003/04/19 10:23:17 torangan Exp $
+//  $Id: server.cxx,v 1.29 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,8 @@
 #include "world.hxx"
 #include "demo_recorder.hxx"
 #include "goal_manager.hxx"
+
+namespace Pingus {
 
 using Actions::action_from_string;
 
@@ -102,5 +104,7 @@ Server::get_time ()
 {
   return get_world()->get_game_time()->get_ticks();
 }
+
+} // namespace Pingus
 
 /* EOF */

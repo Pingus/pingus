@@ -1,4 +1,4 @@
-//  $Id: gui_manager.cxx,v 1.21 2003/04/19 10:23:18 torangan Exp $
+//  $Id: gui_manager.cxx,v 1.22 2003/10/18 23:17:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,8 @@
 #include "game_delta.hxx"
 
 #include "gui_manager.hxx"
+
+namespace Pingus {
 
 using namespace GUI;
 using namespace Input;
@@ -264,5 +266,7 @@ GUIManager::process_button_event (unsigned int time_stamp, const Input::ButtonEv
 
   UNUSED_ARG(time_stamp);
 }
+
+} // namespace Pingus
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: action_button.hxx,v 1.18 2003/10/18 12:11:30 grumbel Exp $
+//  $Id: action_button.hxx,v 1.19 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,11 +26,12 @@
 #include "sprite.hxx"
 #include "gui/component.hxx"
 
-using Actions::ActionName;
+class CL_Font;
+
+namespace Pingus {
 
 class TrueServer;
 class ActionHolder;
-class CL_Font;
 class Vector;
 
 /** ArmageddonButton, press it to start the armageddon and to turn all
@@ -188,6 +189,8 @@ private:
   VerticalActionButton (const VerticalActionButton&);
   VerticalActionButton& operator= (const VerticalActionButton&);
 };
+
+} // namespace Pingus
 
 #endif /* ACTIONBUTTON */
 

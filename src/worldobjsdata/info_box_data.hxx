@@ -1,4 +1,4 @@
-//  $Id: info_box_data.hxx,v 1.8 2003/04/19 10:23:19 torangan Exp $
+//  $Id: info_box_data.hxx,v 1.9 2003/10/18 23:17:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,6 +27,7 @@
 
 class CL_Font;
 
+namespace Pingus {
 namespace WorldObjsData {
 
 class InfoBoxData : public WorldObjData
@@ -55,6 +56,7 @@ private:
 };
 
 } // namespace WorldObjsData
+} // namespace Pingus
 
 #endif
 

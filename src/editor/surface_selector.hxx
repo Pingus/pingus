@@ -1,4 +1,4 @@
-//  $Id: surface_selector.hxx,v 1.8 2003/04/19 10:23:18 torangan Exp $
+//  $Id: surface_selector.hxx,v 1.9 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,17 +23,19 @@
 #include "../pingus.hxx"
 #include <string>
 #include <vector>
-#include <ClanLib/Display/Display/surface.h>
+#include <ClanLib/display.h>
 
 class CL_Font;
+
+namespace Pingus {
 
 struct surface_obj
 {
   /** Thumbnail of the surface */
-  CL_Surface thumbnail;
+  ::CL_Surface thumbnail;
 
   /** The real surface */
-  CL_Surface large_sur;
+  ::CL_Surface large_sur;
 
   /** Resource ID */
   std::string      name;
@@ -53,7 +55,7 @@ struct surface_obj
 class SurfaceSelector
 {
 private:
-  CL_Font* font;
+  ::CL_Font font;
   std::vector<surface_obj>* sur_list;
   int y_of;
   int width;
@@ -76,6 +78,7 @@ private:
   SurfaceSelector& operator= (const SurfaceSelector&);
 };
 
+} // namespace Pingus
 
 #endif
 

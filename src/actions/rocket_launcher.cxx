@@ -1,4 +1,4 @@
-//  $Id: rocket_launcher.cxx,v 1.15 2003/04/19 10:23:18 torangan Exp $
+//  $Id: rocket_launcher.cxx,v 1.16 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,6 +27,7 @@
 #include "../worldobj.hxx"
 #include "rocket_launcher.hxx"
 
+namespace Pingus {
 namespace Actions {
 
 RocketLauncher::RocketLauncher (Pingu* p)
@@ -67,5 +68,6 @@ RocketLauncher::draw (GraphicContext& gc)
 }
 
 } // namespace Actions
+} // namespace Pingus
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: surface_background.cxx,v 1.11 2003/08/16 21:04:37 grumbel Exp $
+//  $Id: surface_background.cxx,v 1.12 2003/10/18 23:17:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,7 +19,7 @@
 
 #include <iostream>
 #include <ClanLib/Display/SurfaceProviders/canvas.h>
-#include <ClanLib/Display/Display/display.h>
+#include <ClanLib/Display/display.h>
 #include "../gui/graphic_context.hxx"
 #include "../world.hxx"
 #include "../timer.hxx"
@@ -29,6 +29,7 @@
 #include "../worldobjsdata/surface_background_data.hxx"
 #include "surface_background.hxx"
 
+namespace Pingus {
 namespace WorldObjs {
 
 SurfaceBackground::SurfaceBackground (const WorldObjsData::SurfaceBackgroundData& data_)
@@ -151,7 +152,7 @@ SurfaceBackground::draw (GraphicContext& gc)
 {
   if (fast_mode)
     {
-      CL_Display::clear_display();
+      CL_Display::clear();
     }
   else
     {
@@ -196,5 +197,6 @@ SurfaceBackground::draw (GraphicContext& gc)
 }
 
 } // namespace WorldObjs
+} // namespace Pingus
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: conveyor_belt_obj.cxx,v 1.8 2003/04/19 10:23:18 torangan Exp $
+//  $Id: conveyor_belt_obj.cxx,v 1.9 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,6 +26,7 @@
 #include "../worldobjsdata/conveyor_belt_data.hxx"
 #include "conveyor_belt_obj.hxx"
 
+namespace Pingus {
 namespace EditorObjs {
 
 ConveyorBeltObj::ConveyorBeltObj (const WorldObjsData::ConveyorBeltData& data_)
@@ -36,7 +37,7 @@ ConveyorBeltObj::ConveyorBeltObj (const WorldObjsData::ConveyorBeltData& data_)
 {
 }
 
-EditorObj*
+EditorNS::EditorObj*
 ConveyorBeltObj::duplicate ()
 {
   return new ConveyorBeltObj(*data);
@@ -77,7 +78,7 @@ ConveyorBeltObj::draw_scroll_map (int x_pos, int y_pos, int arg_width, int arg_h
   UNUSED_ARG(arg_height);
 }
 
-EditorObjLst
+EditorNS::EditorObjLst
 ConveyorBeltObj::create (const Vector& pos)
 {
   WorldObjsData::ConveyorBeltData newdata;
@@ -156,5 +157,6 @@ ConveyorBeltObj::get_gui_dialog(EditorNS::Editor* editor)
 }
 
 } // namespace EditorObjs
+} // namespace Pingus
 
 /* EOF */

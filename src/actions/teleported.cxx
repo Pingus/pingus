@@ -1,4 +1,4 @@
-//  $Id: teleported.cxx,v 1.13 2003/04/19 10:23:18 torangan Exp $
+//  $Id: teleported.cxx,v 1.14 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #include "../pingu.hxx"
 #include "teleported.hxx"
 
+namespace Pingus {
 namespace Actions {
 
 Teleported::Teleported(Pingu* p)
@@ -47,5 +48,6 @@ Teleported::update()
 }
 
 } // namespace Actions
+} // namespace Pingus
 
 /* EOF */

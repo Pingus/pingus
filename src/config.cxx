@@ -1,4 +1,4 @@
-//  $Id: config.cxx,v 1.16 2003/04/24 15:18:19 grumbel Exp $
+//  $Id: config.cxx,v 1.17 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,6 +26,8 @@
 #include "system.hxx"
 #include "cheat.hxx"
 #include "gettext.h"
+
+namespace Pingus {
 
 struct ConfigParserEOF {};
 
@@ -406,6 +408,8 @@ Config::str_to_int(const std::string& str)
 
   return ret_val;
 }
+
+} // namespace Pingus
 
 /* EOF */
 

@@ -1,4 +1,4 @@
-//  $Id: editorobj.hxx,v 1.19 2003/04/19 10:23:18 torangan Exp $
+//  $Id: editorobj.hxx,v 1.20 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,18 +26,17 @@
 #include <vector>
 
 class CL_Rect;
-class Vector;
 class CL_Component;
 
-class EditorObj;
+namespace Pingus {
 
-typedef std::vector<EditorObj*> EditorObjLst;
+class Vector;
 
 namespace EditorNS {
+
 class PropertyFrame;
 class Editor;
 class EditorView;
-} // namespace EditorNS
 
 /** Interface for all objects which can be shown in the editor */
 class EditorObj
@@ -124,6 +123,11 @@ protected:
   EditorObj (const EditorObj&) { }
   EditorObj& operator= (const EditorObj&) { return *this; }
 };
+
+typedef std::vector<EditorObj*> EditorObjLst;
+
+} // namespace EditorNS
+} // namespace Pingus
 
 #endif
 

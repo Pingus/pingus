@@ -1,4 +1,4 @@
-//  $Id: panel.cxx,v 1.8 2003/04/22 16:40:41 grumbel Exp $
+//  $Id: panel.cxx,v 1.9 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,14 +19,15 @@
 
 #include <iostream>
 #include <ClanLib/Core/System/system.h>
-#include <ClanLib/Display/Input/mouse.h>
-#include <ClanLib/Display/Display/display.h>
-#include <ClanLib/Display/Font/font.h>
+#include <ClanLib/Display/mouse.h>
+#include <ClanLib/Display/display.h>
+#include <ClanLib/Display/font.h>
 #include "../globals.hxx"
 #include "../pingus_resource.hxx"
 #include "../fonts.hxx"
 #include "panel_icons.hxx"
 
+namespace Pingus {
 namespace EditorNS {
 
 Editor* PanelIcon::editor;
@@ -48,33 +49,33 @@ PanelIcon::start()
 }
 
 void
-PanelIcon::put_screen(int /*x*/, int y)
+PanelIcon::draw(int /*x*/, int y)
 {
   if (CL_Mouse::get_x() < 25 && CL_Mouse::get_y() > y && CL_Mouse::get_y() < y + 25)
     {
-      if (CL_Mouse::left_pressed())
+      if (CL_Mouse::get_keycode(CL_MOUSE_LEFT))
 	{
-	  button_pressed.put_screen(0, y);
+	  button_pressed.draw(0, y);
 	}
       else
 	{
-	  button.put_screen(0, y);
+	  button.draw(0, y);
 	}
       if (mouse_over_time == 0)
 	mouse_over_time = CL_System::get_time ();
 
       if (CL_System::get_time () - mouse_over_time > 5) {
-	int width = font->get_text_width (tooltip.c_str ());
-	CL_Display::fill_rect (28, y + 6 - 2, 32 + width, y + font->get_height () + 6 + 2,
-			       0.4f, 0.4f, 0.0f);
-	font->print_left (30, y + 6, tooltip.c_str ());
+	int width = font.bounding_rect(0, 0, tooltip.c_str()).get_width();
+	CL_Display::fill_rect(CL_Rect(28, y + 6 - 2, 32 + width, y + font.get_height () + 6 + 2),
+                              CL_Color(100, 100, 0));
+	font.draw(30, y + 6, tooltip.c_str ());
       }
     }
   else
     {
       mouse_over_time = 0;
     }
-  sur.put_screen(0, y);
+  sur.draw(0, y);
 }
 
 void
@@ -99,14 +100,14 @@ Panel::draw()
 {
   int y = 0;
 
-  CL_Display::fill_rect(0, 0, 25, CL_Display::get_height(),
-			0.75, 0.75, 0.75, 1.0);
+  CL_Display::fill_rect(CL_Rect(0, 0, 25, CL_Display::get_height()),
+                        CL_Color(190, 190, 190, 1));
 
-  logo.put_screen(0, CL_Display::get_height() - logo.get_height());
+  logo.draw(0, CL_Display::get_height() - logo.get_height());
 
   for (std::vector<PanelIcon*>::iterator i = buttons.begin(); i != buttons.end(); ++i)
     {
-      (*i)->put_screen(0, y);
+      (*i)->draw(0, y);
       y += 25;
     }
 }
@@ -199,5 +200,6 @@ Panel::set_editor(Editor* e)
 }
 
 } // namespace EditorNS
+} // namespace Pingus
 
 /* EOF */

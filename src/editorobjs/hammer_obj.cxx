@@ -1,4 +1,4 @@
-//  $Id: hammer_obj.cxx,v 1.11 2003/04/19 10:23:18 torangan Exp $
+//  $Id: hammer_obj.cxx,v 1.12 2003/10/18 23:17:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,7 @@
 #include "../editor/editor_view.hxx"
 #include "../worldobjsdata/hammer_data.hxx"
 
+namespace Pingus {
 namespace EditorObjs {
 
 HammerObj::HammerObj (const WorldObjsData::HammerData& data_)
@@ -38,18 +39,18 @@ HammerObj::~HammerObj ()
   delete data;
 }
 
-EditorObj*
+EditorNS::EditorObj*
 HammerObj::duplicate ()
 {
   return new HammerObj(*data);
 }
 
-EditorObjLst
+EditorNS::EditorObjLst
 HammerObj::create (const Vector& pos)
 {
   WorldObjsData::HammerData hammer_data;
   hammer_data.pos = pos;
-  return EditorObjLst(1, new HammerObj(hammer_data));
+  return EditorNS::EditorObjLst(1, new HammerObj(hammer_data));
 }
 
 void
@@ -73,5 +74,6 @@ HammerObj::status_line ()
 }
 
 } // namespace EditorObjs
+} // namespace Pingus
 
 /* EOF */

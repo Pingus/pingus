@@ -1,4 +1,4 @@
-//  $Id: stat_manager.hxx,v 1.2 2003/04/19 10:23:17 torangan Exp $
+//  $Id: stat_manager.hxx,v 1.3 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,8 @@
 
 #include <map>
 #include <string>
+
+namespace Pingus {
 
 /** */
 class StatManager
@@ -59,6 +61,8 @@ private:
   StatManager (const StatManager&);
   StatManager& operator= (const StatManager&);
 };
+
+} // namespace Pingus
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: fade_out.cxx,v 1.8 2003/04/19 10:23:17 torangan Exp $
+//  $Id: fade_out.cxx,v 1.9 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,8 @@
 #include "fade_out.hxx"
 #include "globals.hxx"
 #include "math.hxx"
+
+namespace Pingus {
 
 FadeOut::FadeOut (float seconds, Color color_)
   : complete_time(seconds), passed_time(0),
@@ -72,7 +74,7 @@ void
 FadeOut::random (void)
 {
   if (maintainer_mode) {
-    CL_Display::clear_display();
+    CL_Display::clear();
   } else {
     switch(rand() % 2) {
     case 0:
@@ -84,7 +86,7 @@ FadeOut::random (void)
       fade_to_black();
       break;
     case 2:
-      CL_Display::clear_display();
+      CL_Display::clear();
       if (verbose) std::cout << "FadeOut::clear_display()" << std::endl;
       break;
     default:
@@ -137,7 +139,7 @@ FadeOut::fade_to_black (int steps)
 void
 FadeOut::clear (void)
 {
-  CL_Display::clear_display();
+  CL_Display::clear();
   Display::flip_display();
   CL_Display::sync_buffers();
 }
@@ -151,8 +153,6 @@ EnlargingRectFadeOut::draw ()
 			 color.red,  color.green, color.blue);
 }
 
+} // namespace Pingus
+
 /* EOF */
-
-
-
-

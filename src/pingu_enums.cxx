@@ -1,4 +1,4 @@
-//  $Id: pingu_enums.cxx,v 1.8 2003/04/24 15:18:19 grumbel Exp $
+//  $Id: pingu_enums.cxx,v 1.9 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,6 +25,7 @@
 const float deadly_velocity = 10.0f;
 const int pingu_height = 26;
 
+namespace Pingus {
 namespace Actions {
 
 std::string action_to_screenname (ActionName action)
@@ -118,6 +119,7 @@ ActionName action_from_string(const std::string& action)
   return Walker;
 }
 
-}
+} // namespace Actions
+} // namespace Pingus
 
 /* EOF */

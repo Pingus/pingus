@@ -1,4 +1,4 @@
-//  $Id: config_xml.hxx,v 1.4 2003/04/19 10:23:17 torangan Exp $
+//  $Id: config_xml.hxx,v 1.5 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,8 @@
 #include <string>
 #include "libxmlfwd.hxx"
 
+namespace Pingus {
+
 /** Reader for the pingus config file */
 class ConfigXML
 {
@@ -40,6 +42,8 @@ private:
   ConfigXML (const ConfigXML&);
   ConfigXML& operator= (const ConfigXML&);
 };
+
+} // namespace Pingus
 
 #endif
 

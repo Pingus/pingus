@@ -1,4 +1,4 @@
-//  $Id: pingu_particle_holder.hxx,v 1.5 2003/10/18 12:11:31 grumbel Exp $
+//  $Id: pingu_particle_holder.hxx,v 1.6 2003/10/18 23:17:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,8 @@
 #include <ClanLib/Display/surface.h>
 #include "../vector.hxx"
 #include "../worldobj.hxx"
+
+namespace Pingus {
 
 class GraphicContext;
 
@@ -66,6 +68,7 @@ private:
 };
 
 } // namespace Particles
+} // namespace Pingus
 
 #endif
 

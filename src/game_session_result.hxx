@@ -1,4 +1,4 @@
-//  $Id: game_session_result.hxx,v 1.6 2003/04/19 10:23:17 torangan Exp $
+//  $Id: game_session_result.hxx,v 1.7 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,8 @@
 
 #include "pingus.hxx"
 
+namespace Pingus {
+
 /** With this class you can obtain information about the success or
     failure of a level, in addition you can get details like how many
     penguins where saved or killed, etc. */
@@ -43,6 +45,8 @@ public:
   /** @return The percentage of time, which was used to finish this level */
   float percentage_time ();
 };
+
+} // namespace Pingus
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: pingus_menu_manager.hxx,v 1.21 2003/04/19 10:23:17 torangan Exp $
+//  $Id: pingus_menu_manager.hxx,v 1.22 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,8 @@
 #include "exit_menu.hxx"
 #include "pingus_menu.hxx"
 #include "sprite.hxx"
+
+namespace Pingus {
 
 class PingusSubMenu;
 
@@ -92,6 +94,8 @@ private:
   PingusMenuManager (const PingusMenuManager&);
   PingusMenuManager& operator= (const PingusMenuManager&);
 };
+
+} // namespace Pingus
 
 #endif
 

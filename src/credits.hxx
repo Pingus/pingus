@@ -1,4 +1,4 @@
-//  $Id: credits.hxx,v 1.14 2003/10/18 12:11:30 grumbel Exp $
+//  $Id: credits.hxx,v 1.15 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,6 +26,9 @@
 #include "gui/gui_screen.hxx"
 
 class CL_Font;
+
+namespace Pingus {
+
 class GameDelta;
 
 class Credits : public GUIScreen
@@ -79,7 +82,8 @@ private:
 
 };
 
+} // namespace Pingus
+
 #endif
 
 /* EOF */
-

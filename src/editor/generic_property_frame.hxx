@@ -1,4 +1,4 @@
-//  $Id: generic_property_frame.hxx,v 1.3 2003/04/19 10:23:18 torangan Exp $
+//  $Id: generic_property_frame.hxx,v 1.4 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,6 +27,7 @@
 
 class CL_Component;
 
+namespace Pingus {
 namespace EditorNS {
 
 /** Interface for holding data pointers */
@@ -118,6 +119,7 @@ private:
 };
 
 } // namespace EditorNS
+} // namespace Pingus
 
 #endif
 

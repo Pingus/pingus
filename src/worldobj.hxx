@@ -1,4 +1,4 @@
-//  $Id: worldobj.hxx,v 1.12 2003/04/19 10:23:17 torangan Exp $
+//  $Id: worldobj.hxx,v 1.13 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,8 @@
 #define HEADER_PINGUS_WORLDOBJ_HXX
 
 #include "pingus.hxx"
+
+namespace Pingus {
 
 class GraphicContext;
 class SmallMap;
@@ -88,6 +90,8 @@ public:
 
   virtual WorldObjData* get_data () { return 0; }
 };
+
+} // namespace Pingus
 
 #endif
 

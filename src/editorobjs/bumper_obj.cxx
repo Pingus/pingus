@@ -1,4 +1,4 @@
-//  $Id: bumper_obj.cxx,v 1.10 2003/04/19 10:23:18 torangan Exp $
+//  $Id: bumper_obj.cxx,v 1.11 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,7 +22,10 @@
 #include "../editor/editor_view.hxx"
 #include "../worldobjsdata/bumper_data.hxx"
 
+namespace Pingus {
 namespace EditorObjs {
+
+using namespace EditorNS;
 
 BumperObj::BumperObj (const WorldObjsData::BumperData& data_)
   : data(new WorldObjsData::BumperData(data_)),
@@ -40,7 +43,7 @@ BumperObj::~BumperObj ()
   delete data;
 }
 
-EditorObjLst
+EditorNS::EditorObjLst
 BumperObj::create (const Vector& pos)
 {
   WorldObjsData::BumperData newdata;
@@ -48,7 +51,7 @@ BumperObj::create (const Vector& pos)
   return EditorObjLst(1, new BumperObj(newdata));
 }
 
-EditorObj*
+EditorNS::EditorObj*
 BumperObj::duplicate ()
 {
   return new BumperObj(*data);
@@ -75,5 +78,6 @@ BumperObj::status_line ()
 }
 
 } // namespace EditorObjs
+} // namespace Pingus
 
 /* EOF */

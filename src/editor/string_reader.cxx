@@ -1,4 +1,4 @@
-//  $Id: string_reader.cxx,v 1.9 2003/04/22 16:40:41 grumbel Exp $
+//  $Id: string_reader.cxx,v 1.10 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,13 +18,14 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <ClanLib/Core/System/system.h>
-#include <ClanLib/Display/Input/inputbuffer.h>
-#include <ClanLib/Display/Display/display.h>
-#include <ClanLib/Display/Font/font.h>
+#include <ClanLib/display.h>
 #include "../console.hxx"
 #include "../pingus_resource.hxx"
 #include "../fonts.hxx"
 #include "string_reader.hxx"
+
+namespace Pingus {
+namespace EditorNS {
 
 StringReader::StringReader()
 {
@@ -55,7 +56,7 @@ StringReader::read_string()
 {
   finished = false;
   CL_InputBuffer keys;
-  CL_Key key;
+  CL_InputEvent  event;
 
   CL_System::keep_alive();
 
@@ -70,13 +71,13 @@ StringReader::read_string()
     {
       CL_System::keep_alive();
 
-      if (keys.peek_key().state != CL_Key::NoKey)
+      if (keys.peek_key().type != CL_InputEvent::no_key)
 	{
-	  key = keys.get_key();
+	  event = keys.pop_key();
 
-	  if (key.state == CL_Key::Pressed)
+	  if (event.type == CL_InputEvent::pressed)
 	    {
-	      switch (key.id)
+	      switch (event.id)
 		{
 		case CL_KEY_ENTER:
 		  finished = true;
@@ -95,8 +96,8 @@ StringReader::read_string()
 		  complete_string();
 		  break;
 		default:
-		  if (key.ascii > 0)
-		    current_string += key.ascii;
+		  if (!event.str.empty())
+		    current_string += event.str;
 		}
 	      draw();
 	    }
@@ -168,11 +169,13 @@ StringReader::while_eq(const std::string& a, const std::string& b)
 void
 StringReader::draw()
 {
-  CL_Display::clear_display();
-  font->print_left(20, 20, description.c_str());
-  font->print_left(20, 40, current_string.c_str());
+  CL_Display::clear();
+  font.draw(20, 20, description.c_str());
+  font.draw(20, 40, current_string.c_str());
   Display::flip_display();
 }
 
+} // namespace EditorNS
+} // namespace Pingus
 
 /* EOF */

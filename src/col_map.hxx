@@ -1,4 +1,4 @@
-//  $Id: col_map.hxx,v 1.11 2003/04/19 10:23:17 torangan Exp $
+//  $Id: col_map.hxx,v 1.12 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,11 +22,14 @@
 
 #include "groundtype.hxx"
 
+class CL_Surface;
+class CL_PixelBuffer;
+
+namespace Pingus {
+
 class GraphicContext;
 class ResDescriptor;
 class PixelStatus;
-class CL_Surface;
-class CL_SurfaceProvider;
 
 // Collsion Map
 /** The collision map is used to represent the enviroment where the
@@ -77,11 +80,11 @@ public:
 
   void put(int x, int y, Groundtype::GPType p = Groundtype::GP_GROUND);
   void put(const CL_Surface&, int x, int y, Groundtype::GPType);
-  void put(CL_SurfaceProvider*, int x, int y, Groundtype::GPType);
+  void put(CL_PixelBuffer*, int x, int y, Groundtype::GPType);
 
   /// void remove(int x, int y);
   void remove(const CL_Surface&, int x, int y);
-  void remove(CL_SurfaceProvider*, int x, int y);
+  void remove(const CL_PixelBuffer&, int x, int y);
 
   void draw(GraphicContext& gc);
 
@@ -89,6 +92,8 @@ private:
   ColMap (const ColMap&);
   ColMap& operator= (const ColMap&);
 };
+
+} // namespace Pingus
 
 #endif /* COLMAP_HH */
 

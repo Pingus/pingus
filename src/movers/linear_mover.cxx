@@ -1,4 +1,4 @@
-//  $Id: linear_mover.cxx,v 1.3 2003/03/18 17:03:02 torangan Exp $
+//  $Id: linear_mover.cxx,v 1.4 2003/10/18 23:17:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #include "linear_mover.hxx"
 #include "../collider.hxx"
 
+namespace Pingus {
 namespace Movers {
 
 LinearMover::LinearMover(World* const world_arg, const Vector& pos_arg)
@@ -60,5 +61,6 @@ void LinearMover::update(const Vector& move, const Collider& collision_check)
 }
 
 } // namespace Movers
+} // namespace Pingus
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: editor_event.cxx,v 1.62 2003/08/22 10:19:48 grumbel Exp $
+//  $Id: editor_event.cxx,v 1.63 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,37 +22,38 @@
 #include <fstream>
 #include <ClanLib/GUI/gui_manager.h>
 #include <ClanLib/Core/System/error.h>
-#include <ClanLib/Display/Input/input.h>
-#include <ClanLib/Display/Input/keyboard.h>
-#include <ClanLib/Display/Display/display.h>
-#include <ClanLib/Display/Input/mouse.h>
+#include <ClanLib/Display/input_event.h>
+#include <ClanLib/Display/keyboard.h>
+#include <ClanLib/Display/display.h>
+#include <ClanLib/Display/mouse.h>
 
-#include "../debug.hxx"
+#include "object_manager.hxx"
+#include "string_reader.hxx"
+#include "scroll_map.hxx"
+#include "editor_event.hxx"
+
 #include "../game_session.hxx"
+#include "../gettext.h"
 #include "../globals.hxx"
 #include "../gui/screen_manager.hxx"
 #include "../html_browser.hxx"
 #include "../loading.hxx"
-#include "../gettext.h"
 #include "../pingus_error.hxx"
-#include "../pingus_resource.hxx"
 #include "../plf_res_mgr.hxx"
 #include "../system.hxx"
+#include "../vector.hxx"
 #include "action_window.hxx"
 #include "editor.hxx"
-#include "editor_event.hxx"
 #include "editor_view.hxx"
 #include "editorobj_group.hxx"
 #include "level_property_window.hxx"
 #include "level_resizer.hxx"
 #include "object_selector.hxx"
-#include "object_selector_window.hxx"
 #include "panel.hxx"
 #include "property_window.hxx"
-#include "scroll_map.hxx"
 #include "selection.hxx"
-#include "string_reader.hxx"
 
+namespace Pingus {
 namespace EditorNS {
 
 EditorEvent::EditorEvent()
@@ -72,7 +73,6 @@ EditorEvent::EditorEvent()
 
 EditorEvent::~EditorEvent()
 {
-
 }
 
 void
@@ -105,16 +105,16 @@ EditorEvent::disable()
 }
 
 void
-EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key& key)
+EditorEvent::on_button_press(const CL_InputEvent& event)
 {
   //std::cout << "EditorEvent::on_button_press: " << is_enabled << std::endl;
 
   if (!accept_input ())
     return;
 
-  if (device == CL_Input::keyboards[0])
+  if (event.device.get_type() == CL_InputDevice::keyboard)
     {
-      switch (key.id)
+      switch (event.id)
 	{
 	case CL_KEY_R:
 	  if (CL_Keyboard::get_keycode(CL_KEY_RSHIFT)
@@ -243,27 +243,27 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key& key)
 	  break;
 
 	  // Lower all object in the current selection
-	case CL_KEY_PAGEDOWN:
+	case CL_KEY_PRIOR:
 	  selection->lower();
 
 	  if (CL_Keyboard::get_keycode(CL_KEY_RSHIFT))
 	    {
 	      selection->move(Vector(0, 0, -50));
 	    }
-	  else if (CL_Keyboard::get_keycode(CL_KEY_RCTRL))
+	  else if (CL_Keyboard::get_keycode(CL_KEY_RCONTROL))
 	    {
 	      selection->move(Vector(0, 0, -1));
 	    }
 	  break;
 
 	  // Raise all objects in the current selection.
-	case CL_KEY_PAGEUP:
+	case CL_KEY_NEXT:
 	  selection->raise();
 	  if (CL_Keyboard::get_keycode(CL_KEY_RSHIFT))
 	    {
 	      selection->move(Vector(0, 0, 50));
 	    }
-	  else if (CL_Keyboard::get_keycode(CL_KEY_RCTRL))
+	  else if (CL_Keyboard::get_keycode(CL_KEY_RCONTROL))
 	    {
 	      selection->move(Vector(0, 0, 1));
 	    }
@@ -324,10 +324,10 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key& key)
 
 	default:
 	  if (verbose)
-	    std::cout << "EditorEvent: Unknown key pressed: id=" << key.id << " ascii=" << key.ascii << std::endl;
+	    std::cout << "EditorEvent: Unknown key pressed: id=" << event.id << " ascii=" << event.str << std::endl;
 	}
     }
-  else if (device == CL_Input::pointers[0])
+  else if (event.device.get_type() == CL_InputDevice::mouse)
     {
       if (0)
         {
@@ -336,32 +336,32 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key& key)
                     << std::endl;
         }
 
-      switch (key.id)
+      switch (event.id)
 	{
-	case CL_MOUSE_LEFTBUTTON:
-	  if (editor->panel->mouse_over((int) key.x, (int)key.y))
+	case CL_MOUSE_LEFT:
+	  if (editor->panel->mouse_over((int)event.mouse_pos.x, (int)event.mouse_pos.y))
 	    editor->panel->on_click();
-	  else if (editor->scroll_map->mouse_over ((int)key.x, (int)key.y))
-	    editor->scroll_map->on_button_press(device, key);
+	  else if (editor->scroll_map->mouse_over ((int)event.mouse_pos.x, (int)event.mouse_pos.y))
+	    editor->scroll_map->on_button_press(event);
 	  else
 	    editor_mark_or_move_object();
 	  break;
 
-	case CL_MOUSE_MIDDLEBUTTON:
+	case CL_MOUSE_MIDDLE:
 	  editor->rect_get_current_objs();
 	  break;
 
-        case CL_MOUSE_WHEELDOWN:
-	  editor_zoom_out(static_cast<int>(key.x),
-                          static_cast<int>(key.y));
+        case CL_MOUSE_WHEEL_DOWN:
+	  editor_zoom_out(static_cast<int>(event.mouse_pos.x),
+                          static_cast<int>(event.mouse_pos.y));
           break;
 
-        case CL_MOUSE_WHEELUP:
-	  editor_zoom_in(static_cast<int>(key.x),
-                         static_cast<int>(key.y)); 
+        case CL_MOUSE_WHEEL_UP:
+	  editor_zoom_in(static_cast<int>(event.mouse_pos.x),
+                         static_cast<int>(event.mouse_pos.y)); 
           break;
 
-	case CL_MOUSE_RIGHTBUTTON:
+	case CL_MOUSE_RIGHT:
 	  editor->scroll();
 	  break;
 	}
@@ -376,19 +376,19 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key& key)
 }
 
 void
-EditorEvent::on_button_release(CL_InputDevice *device, const CL_Key &key)
+EditorEvent::on_button_release(const CL_InputEvent& event)
 {
   //std::cout << "EditorEvent::on_button_release: " << is_enabled << std::endl;
 
   if (!accept_input ())
     return;
 
-  if (device == CL_Input::keyboards[0])
+  if (event.device.get_type() == CL_InputDevice::keyboard)
     {
     }
-  else if (device == CL_Input::pointers[0])
+  else if (event.device.get_type() == CL_InputDevice::mouse)
     {
-      if (key.id == CL_MOUSE_LEFTBUTTON)
+      if (event.id == CL_MOUSE_LEFT)
 	editor->panel->on_release();
     }
   else
@@ -703,7 +703,7 @@ EditorEvent::editor_mark_or_move_object()
   int y = CL_Mouse::get_y();
   bool move_selection = false;
 
-  while (CL_Mouse::left_pressed() && move_selection == false)
+  while (CL_Mouse::get_keycode(CL_MOUSE_LEFT) && move_selection == false)
     {
       if ((abs(x - CL_Mouse::get_x()) > 3)
           || (abs(y - CL_Mouse::get_y()) > 3))
@@ -738,8 +738,6 @@ EditorEvent::editor_mark_or_move_object()
 void
 EditorEvent::editor_display_help()
 {
-  /*  CL_Display::clear_display();
-      font->print_center(CL_Display::get_width() / 2, 20, "Help Screen");*/
 }
 
 void
@@ -855,5 +853,6 @@ EditorEvent::accept_input ()
 }
 
 } // namespace EditorNS
+} // namespace Pingus
 
 /* EOF */

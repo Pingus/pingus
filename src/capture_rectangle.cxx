@@ -1,4 +1,4 @@
-//  $Id: capture_rectangle.cxx,v 1.14 2003/04/22 16:40:41 grumbel Exp $
+//  $Id: capture_rectangle.cxx,v 1.15 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,8 +17,9 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <ClanLib/Display/font.h>
+
 #include "vector.hxx"
-#include <ClanLib/Display/Font/font.h>
 #include "pingu.hxx"
 #include "pingus_resource.hxx"
 #include "capture_rectangle.hxx"
@@ -27,6 +28,8 @@
 #include "globals.hxx"
 #include "string_converter.hxx"
 #include "fonts.hxx"
+
+namespace Pingus {
 
 CaptureRectangle::CaptureRectangle (ButtonPanel* arg_button_panel)
   : pingu(0),
@@ -65,7 +68,7 @@ CaptureRectangle::draw_offset (int x_offset, int y_offset, float s)
 	{ // FIXME: this should use GC
 
 	  // Draw the caputure rectangle
-	  sur->put_screen(pingu->get_center_pos() + Vector(x_offset,y_offset));
+	  sur->draw(pingu->get_center_pos() + Vector(x_offset,y_offset));
 
 	  font->print_center(static_cast<int>(pingu->get_center_pos().x) + x_offset,
 			     static_cast<int>(pingu->get_center_pos().y) + y_offset - 32,
@@ -78,16 +81,16 @@ CaptureRectangle::draw_offset (int x_offset, int y_offset, float s)
 	  // Paint the direction arrow
 	  if (pingu->direction.is_left())
 	    {
-	      arrow_left.put_screen(pingu->get_center_pos() + Vector(x_offset, y_offset + 28));
+	      arrow_left.draw(pingu->get_center_pos() + Vector(x_offset, y_offset + 28));
 	    }
 	  else
 	    {
-	      arrow_right.put_screen(pingu->get_center_pos() + Vector(x_offset, y_offset + 28));
+	      arrow_right.draw(pingu->get_center_pos() + Vector(x_offset, y_offset + 28));
 	    }
 	}
       else
 	{
-	  sur->put_screen(pingu->get_center_pos() + Vector(x_offset, y_offset));
+	  sur->draw(pingu->get_center_pos() + Vector(x_offset, y_offset));
 	}
     }
 }
@@ -121,5 +124,7 @@ CaptureRectangle::set_pingu (Pingu* p)
         }
     }
 }
+
+} // namespace Pingus
 
 /* EOF */

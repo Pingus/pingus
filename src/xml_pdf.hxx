@@ -1,4 +1,4 @@
-//  $Id: xml_pdf.hxx,v 1.3 2003/04/19 10:23:17 torangan Exp $
+//  $Id: xml_pdf.hxx,v 1.4 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,6 +25,8 @@
 #include <iosfwd>
 
 #include "server_event.hxx"
+
+namespace Pingus {
 
 class PLF;
 
@@ -55,6 +57,8 @@ private:
   XMLPDF (const XMLPDF&);
   XMLPDF& operator= (const XMLPDF&);
 };
+
+} // namespace Pingus
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: plf_res_mgr.hxx,v 1.5 2003/08/19 19:56:55 torangan Exp $
+//  $Id: plf_res_mgr.hxx,v 1.6 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,8 @@
 #define HEADER_PINGUS_PLF_RES_MGR_HXX
 
 #include "plf_handle.hxx"
+
+namespace Pingus {
 
 /** */
 class PLFResMgr
@@ -51,6 +53,8 @@ public:
   static PLFHandle load_plf_from_filename(const std::string& filename);
   static  void free_plf_map();
 };
+
+} // namespace Pingus
 
 #endif
 

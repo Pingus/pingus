@@ -1,4 +1,4 @@
-//  $Id: level_resizer.hxx,v 1.4 2003/04/19 10:23:18 torangan Exp $
+//  $Id: level_resizer.hxx,v 1.5 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,7 @@
 #include "../vector.hxx"
 #include "sprite_editorobj.hxx"
 
+namespace Pingus {
 namespace EditorNS {
 
 class ObjectManager;
@@ -60,6 +61,7 @@ private:
 };
 
 } // namespace EditorNS
+} // namespace Pingus
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: prefab.hxx,v 1.6 2003/04/19 10:23:17 torangan Exp $
+//  $Id: prefab.hxx,v 1.7 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,8 @@
 #define HEADER_PINGUS_PREFAB_HXX
 
 #include <string>
+
+namespace Pingus {
 
 class WorldObjData;
 
@@ -72,6 +74,8 @@ private:
   Prefab (const Prefab&);
   Prefab& operator= (const Prefab&);
 };
+
+} // namespace Pingus
 
 #endif
 

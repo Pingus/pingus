@@ -1,4 +1,4 @@
-//  $Id: cheat.hxx,v 1.2 2003/04/19 10:23:17 torangan Exp $
+//  $Id: cheat.hxx,v 1.3 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,8 @@
 
 #include <string>
 
+namespace Pingus {
+
 /** */
 namespace Cheat
 {
@@ -40,6 +42,8 @@ void activate(const std::string&);
 /** Print a list off possible cheats to stdout */
 void print_help();
 }
+
+} // namespace Pingus
 
 #endif
 

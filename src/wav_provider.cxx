@@ -1,4 +1,4 @@
-//  $Id: wav_provider.cxx,v 1.6 2003/04/19 10:23:17 torangan Exp $
+//  $Id: wav_provider.cxx,v 1.7 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,8 @@
 #include "pingus_error.hxx"
 #include "wav_provider.hxx"
 #include "debug.hxx"
+
+namespace Pingus {
 
 std::map<std::string, Mix_Chunk*> PingusWavProvider::wave;
 
@@ -67,5 +69,7 @@ PingusWavProvider::load (const std::string& str)
   UNUSED_ARG(str); // suppress warning about unused argument
   return 0;
 }
+
+} // namespace Pingus
 
 /* EOF */

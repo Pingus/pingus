@@ -1,4 +1,4 @@
-//  $Id: client.hxx,v 1.27 2003/02/19 09:50:35 grumbel Exp $
+//  $Id: client.hxx,v 1.28 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,6 +25,8 @@
 #include "gui/gui_screen.hxx"
 #include "result.hxx"
 #include "sprite.hxx"
+
+namespace Pingus {
 
 namespace Input {
 class Controller;
@@ -72,6 +74,7 @@ private:
   HurryUp*       hurry_up;
 
   bool enabled;
+
 public:
   Client(TrueServer* s);
   virtual ~Client();
@@ -116,6 +119,8 @@ private:
   Client (const Client&);
   Client& operator= (const Client&);
 };
+
+} // namespace Pingus
 
 #endif
 

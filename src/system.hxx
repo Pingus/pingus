@@ -1,4 +1,4 @@
-//  $Id: system.hxx,v 1.10 2003/04/19 10:23:17 torangan Exp $
+//  $Id: system.hxx,v 1.11 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,6 +25,8 @@
 #include <string>
 #include <list>
 #include <map>
+
+namespace Pingus {
 
 /** A wrapper class around some system dependend functions (mostly
     POSIX stuff) */
@@ -144,6 +146,8 @@ private:
   System (const System&);
   System& operator= (const System&);
 };
+
+} // namespace Pingus
 
 #endif
 

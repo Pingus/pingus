@@ -1,4 +1,4 @@
-//  $Id: waiter.cxx,v 1.16 2003/08/15 17:37:36 torangan Exp $
+//  $Id: waiter.cxx,v 1.17 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,7 @@
 #include "../pingus_resource.hxx"
 #include "waiter.hxx"
 
+namespace Pingus {
 namespace Actions {
 
 Waiter::Waiter (Pingu* p)
@@ -51,5 +52,6 @@ Waiter::draw (GraphicContext& gc)
 }
 
 } // namespace Actions
+} // namespace Pingus
 
 /* EOF */

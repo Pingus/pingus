@@ -1,4 +1,4 @@
-//  $Id: smallmap.cxx,v 1.38 2003/06/17 14:09:20 grumbel Exp $
+//  $Id: smallmap.cxx,v 1.39 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,6 +30,8 @@
 #include "pingu.hxx"
 #include "math.hxx"
 #include "globals.hxx"
+
+namespace Pingus {
 
 SmallMap::SmallMap(Client* c)
   : client(c),
@@ -194,7 +196,7 @@ SmallMap::draw (GraphicContext& gc)
   int x_of = playfield->get_x_offset();
   int y_of = playfield->get_y_offset();
 
-  sur.put_screen(x_pos, y_pos);
+  sur.draw(x_pos, y_pos);
 
 #if 0
   if (has_focus)
@@ -218,14 +220,14 @@ SmallMap::draw (GraphicContext& gc)
   /*  vector<exit_data>     exit_d     = plf->get_exit();
   for(std::vector<exit_data>::iterator i = exit_d.begin(); i != exit_d.end(); ++i)
     {
-      exit_sur->put_screen(i->x_pos * width / colmap->get_width() +  x_pos - 3,
+      exit_sur->draw(i->x_pos * width / colmap->get_width() +  x_pos - 3,
 			   i->y_pos * height / colmap->get_height() + y_pos - 3);
     }
 
   vector<entrance_data>     entrance_d     = plf->get_entrance();
   for(std::vector<entrance_data>::iterator i = entrance_d.begin(); i != entrance_d.end(); ++i)
     {
-      entrance_sur->put_screen(i->x_pos * width / colmap->get_width() + x_pos - 3,
+      entrance_sur->draw(i->x_pos * width / colmap->get_width() + x_pos - 3,
 			       i->y_pos * height / colmap->get_height() + y_pos);
     }
   */
@@ -339,5 +341,7 @@ SmallMap::on_pointer_leave ()
 {
   has_focus = false;
 }
+
+} // namespace Pingus
 
 /* EOF */

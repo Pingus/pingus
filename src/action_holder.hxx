@@ -1,4 +1,4 @@
-//  $Id: action_holder.hxx,v 1.12 2003/04/19 10:23:17 torangan Exp $
+//  $Id: action_holder.hxx,v 1.13 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,7 +24,7 @@
 #include <vector>
 #include "pingu_enums.hxx"
 
-using Actions::ActionName;
+namespace Pingus {
 
 class PLF;
 class PinguAction;
@@ -80,6 +80,8 @@ private:
   ActionHolder (const ActionHolder&);
   ActionHolder& operator= (const ActionHolder&);
 };
+
+} // namespace Pingus
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: smasher_data.cxx,v 1.11 2003/03/05 19:13:59 grumbel Exp $
+//  $Id: smasher_data.cxx,v 1.12 2003/10/18 23:17:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,6 +27,7 @@
 #include "../editor/editorobj_mgr.hxx"
 #include "../pingus_resource.hxx"
 
+namespace Pingus {
 namespace WorldObjsData {
 
 SmasherData::SmasherData ()
@@ -66,5 +67,6 @@ SmasherData::insert_EditorObjs (EditorNS::EditorObjMgr* obj_mgr)
 }
 
 } // namespace WorldObjsData
+} // namespace Pingus
 
 /* EOF */

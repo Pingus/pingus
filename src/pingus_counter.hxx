@@ -1,4 +1,4 @@
-//  $Id: pingus_counter.hxx,v 1.10 2003/10/18 10:49:42 grumbel Exp $
+//  $Id: pingus_counter.hxx,v 1.11 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,9 @@
 #include "gui/component.hxx"
 
 class CL_Font;
+
+namespace Pingus {
+
 class World;
 class Server;
 
@@ -42,6 +45,8 @@ private:
   PingusCounter (const PingusCounter&);
   PingusCounter& operator= (const PingusCounter&);
 };
+
+} // namespace Pingus
 
 #endif
 

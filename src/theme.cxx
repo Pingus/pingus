@@ -1,4 +1,4 @@
- //  $Id: theme.cxx,v 1.19 2003/08/19 19:56:55 torangan Exp $
+ //  $Id: theme.cxx,v 1.20 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,10 +20,10 @@
 #include <fstream>
 #include <iostream>
 #include <ClanLib/Core/System/error.h>
-#include <ClanLib/Display/Display/display.h>
-#include <ClanLib/Display/Font/font.h>
-#include <ClanLib/Display/Input/keyboard.h>
-#include <ClanLib/Display/Input/key.h>
+#include <ClanLib/Display/display.h>
+#include <ClanLib/Display/font.h>
+#include <ClanLib/Display/keyboard.h>
+#include <ClanLib/Display/key.h>
 #include "path_manager.hxx"
 #include "system.hxx"
 #include "pingus_resource.hxx"
@@ -35,6 +35,8 @@
 #include "xml_plf.hxx"
 #include "fonts.hxx"
 #include "gui/screen_manager.hxx"
+
+namespace Pingus {
 
 Theme::Theme (const std::string& filename_)
             : font(Fonts::pingus_small),
@@ -141,7 +143,7 @@ Theme::draw_title()
 
   if (!background)
     {
-      CL_Display::clear_display();
+      CL_Display::clear();
     }
   else
     {
@@ -149,7 +151,7 @@ Theme::draw_title()
       for(int y=0; y < CL_Display::get_height(); y += background.get_height())
 	{
 	  for(int x=0; x < CL_Display::get_width(); x += background.get_width())
-	    background.put_screen(x, y);
+	    background.draw(x, y);
 	}
     }
 
@@ -162,7 +164,7 @@ Theme::draw_title()
   if (surface)
     {
       x_pos -= surface.get_width() / 2;
-      surface.put_screen(x_pos, y_pos);
+      surface.draw(x_pos, y_pos);
 
       y_pos += surface.get_height() + 20;
     }
@@ -355,5 +357,7 @@ Theme::preload ()
       is_loaded = true;
     }
 }
+
+} // namespace Pingus
 
 /* EOF */

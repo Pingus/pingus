@@ -1,4 +1,4 @@
-//  $Id: editor.hxx,v 1.25 2003/04/19 10:23:18 torangan Exp $
+//  $Id: editor.hxx,v 1.26 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,13 +27,13 @@
 #include "../gui/screen.hxx"
 #include "editor_help_screen.hxx"
 
-class CL_StyleManager_Default;
+class CL_StyleManager_Silver;
 class CL_GUIManager;
 
-class EditorObj;
-
+namespace Pingus {
 namespace EditorNS {
 
+class EditorObj;
 class EditorView;
 class EditorEvent;
 class Panel;
@@ -57,7 +57,7 @@ private:
 
   int event_handler_ref_counter;
 
-  CL_Font* font;
+  CL_Font font;
 
   int move_x;
   int move_y;
@@ -77,7 +77,7 @@ private:
   ObjectSelector* object_selector;
 
   // GUI Stuff
-  CL_StyleManager_Default* style_manager;
+  CL_StyleManager_Silver* style_manager;
   CL_GUIManager* gui;
 
   ActionWindow*   action_window;
@@ -138,11 +138,8 @@ private:
 };
 
 } // namespace EditorNS
+} // namespace Pingus
 
 #endif
 
 /* EOF */
-
-
-
-

@@ -1,4 +1,4 @@
-//  $Id: multiline_text.cxx,v 1.7 2003/04/19 10:23:17 torangan Exp $
+//  $Id: multiline_text.cxx,v 1.8 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,9 +18,11 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <assert.h>
-#include <ClanLib/Display/Font/font.h>
+#include <ClanLib/Display/font.h>
 #include "multiline_text.hxx"
 #include "math.hxx"
+
+namespace Pingus {
 
 MultiLineText::MultiLineText()
 {
@@ -135,6 +137,8 @@ MultiLineText::get_height()
 {
   return height;
 }
+
+} // namespace Pingus
 
 /* EOF */
 

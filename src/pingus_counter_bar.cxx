@@ -1,4 +1,4 @@
-//  $Id: pingus_counter_bar.cxx,v 1.6 2003/04/19 10:23:17 torangan Exp $
+//  $Id: pingus_counter_bar.cxx,v 1.7 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,8 @@
 #include "pingu_holder.hxx"
 #include "server.hxx"
 #include "world.hxx"
+
+namespace Pingus {
 
 PingusCounterBar::PingusCounterBar (Server * s, Orientation o, const CL_Rect& arg_rect)
   : server (s),
@@ -65,5 +67,7 @@ PingusCounterBar::draw ()
 			 1.0f, 0.0f, 0.0f, 0.8f);
   tmp_y_pos = y_pos;
 }
+
+} // namespace Pingus
 
 /* EOF */

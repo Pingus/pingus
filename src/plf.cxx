@@ -1,4 +1,4 @@
-//  $Id: plf.cxx,v 1.17 2003/08/19 19:56:55 torangan Exp $
+//  $Id: plf.cxx,v 1.18 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,8 @@
 #include "system.hxx"
 #include "pingus_error.hxx"
 #include "cheat.hxx"
+
+namespace Pingus {
 
 PLF::PLF()
 {
@@ -174,5 +176,7 @@ PLF::create (const std::string& pathname)
 {
   return new XMLPLF (pathname);
 }
+
+} // namespace Pingus
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: start_screen.cxx,v 1.20 2003/04/24 15:18:19 grumbel Exp $
+//  $Id: start_screen.cxx,v 1.21 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,6 +35,8 @@
 #include "game_time.hxx"
 #include "sound/sound.hxx"
 #include "string_format.hxx"
+
+namespace Pingus {
 
 class StartScreenComponent : public GUI::Component
 {
@@ -137,7 +139,7 @@ void
 StartScreenComponent::draw(GraphicContext& gc)
 {
   //gc.clear(0,0,0);
-  background.put_screen(CL_Display::get_width()/2,CL_Display::get_height()/2);
+  background.draw(CL_Display::get_width()/2,CL_Display::get_height()/2);
 
   int left_x  = CL_Display::get_width()/2 - 120;
   int right_x = CL_Display::get_width()/2 + 120;
@@ -234,5 +236,7 @@ StartScreen::cancel_game()
 {
   ScreenManager::instance()->pop_screen();
 }
+
+} // namespace Pingus
 
 /* EOF */

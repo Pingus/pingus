@@ -1,4 +1,4 @@
-//  $Id: spike_data.hxx,v 1.9 2003/04/19 10:23:19 torangan Exp $
+//  $Id: spike_data.hxx,v 1.10 2003/10/18 23:17:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,11 +21,12 @@
 #define HEADER_PINGUS_WORLDOBJSDATA_SPIKE_DATA_HXX
 
 #include "../vector.hxx"
-#include <ClanLib/Display/Display/surface.h>
+#include <ClanLib/Display/surface.h>
 #include "../game_counter.hxx"
 #include "../libxmlfwd.hxx"
 #include "../worldobj_data.hxx"
 
+namespace Pingus {
 namespace WorldObjsData {
 
 class SpikeData : public WorldObjData
@@ -52,6 +53,7 @@ private:
 };
 
 } // namespace WorldObjsData
+} // namespace Pingus {
 
 #endif
 

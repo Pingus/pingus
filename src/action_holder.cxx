@@ -1,4 +1,4 @@
-//  $Id: action_holder.cxx,v 1.12 2003/04/19 10:23:17 torangan Exp $
+//  $Id: action_holder.cxx,v 1.13 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,10 +19,11 @@
 
 #include <iostream>
 #include "plf.hxx"
-
 #include "pingu_action_factory.hxx"
 #include "action_holder.hxx"
 #include "cheat.hxx"
+
+namespace Pingus {
 
 ActionHolder::ActionHolder (PLF* plf)
 {
@@ -96,5 +97,7 @@ ActionHolder::get_available (ActionName name)
 {
   return available_actions[name];
 }
+
+} // namespace Pingus
 
 /* EOF */

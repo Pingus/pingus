@@ -1,4 +1,4 @@
-//  $Id: sprite_editorobj.hxx,v 1.10 2003/04/19 10:23:18 torangan Exp $
+//  $Id: sprite_editorobj.hxx,v 1.11 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,7 +23,11 @@
 #include "../sprite.hxx"
 #include "rect_editorobj.hxx"
 
+namespace Pingus {
+
 class Vector;
+
+namespace EditorNS {
 
 class SpriteEditorObj : public RectEditorObj
 {
@@ -58,7 +62,7 @@ public:
 
   virtual Vector get_upper_left_corner ();
 
-  virtual void draw (EditorNS::EditorView *);
+  virtual void draw(EditorView*);
 
   virtual void set_position_offset (const Vector& offset);
 
@@ -70,6 +74,9 @@ protected:
   SpriteEditorObj (const SpriteEditorObj& old);
   SpriteEditorObj& operator= (const SpriteEditorObj& old);
 };
+
+} // namespace EditorNS
+} // namespace Pingus
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: level_result.cxx,v 1.17 2003/06/17 14:09:20 grumbel Exp $
+//  $Id: level_result.cxx,v 1.18 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,9 +19,9 @@
 
 #include <stdio.h>
 #include <ClanLib/Core/System/system.h>
-#include <ClanLib/Display/Display/display.h>
-#include <ClanLib/Display/Font/font.h>
-#include <ClanLib/Display/Input/mouse.h>
+#include <ClanLib/Display/display.h>
+#include <ClanLib/Display/font.h>
+#include <ClanLib/Display/mouse.h>
 
 #include "gui/display.hxx"
 #include "pingus_resource.hxx"
@@ -51,7 +51,7 @@ PingusLevelResult::draw(void)
 
   for(int y = 0; y < CL_Display::get_height(); y += background.get_height())
     for(int x = 0; x < CL_Display::get_width(); x += background.get_width())
-      background.put_screen(x, y);
+      background.draw(x, y);
 
   CL_Display::fill_rect(0, 0, CL_Display::get_width(), CL_Display::get_height(), 0.0, 0.0, 0.0, 0.5);
 

@@ -1,4 +1,4 @@
-//  $Id: worldobj_group_data.hxx,v 1.8 2003/04/19 10:23:19 torangan Exp $
+//  $Id: worldobj_group_data.hxx,v 1.9 2003/10/18 23:17:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,7 @@
 #include "../libxmlfwd.hxx"
 #include "../worldobj_data.hxx"
 
+namespace Pingus {
 namespace WorldObjsData {
 
 /** */
@@ -54,6 +55,7 @@ private:
 };
 
 } // namespace WorldObjsData
+} // namespace Pingus
 
 #endif
 

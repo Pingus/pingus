@@ -1,4 +1,4 @@
-//  $Id: game_event.hxx,v 1.7 2003/04/19 10:23:17 torangan Exp $
+//  $Id: game_event.hxx,v 1.8 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,8 @@
 
 #include "pingus.hxx"
 #include <string>
+
+namespace Pingus {
 
 /** This will need some^H^H^H^H a lot of work */
 typedef enum {
@@ -51,6 +53,8 @@ class ArmageddonGameEvent : public GameEvent
 {
   // nothing
 };
+
+} // namespace Pingus
 
 #endif
 

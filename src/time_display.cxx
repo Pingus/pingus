@@ -1,4 +1,4 @@
-//  $Id: time_display.cxx,v 1.15 2003/04/22 16:40:41 grumbel Exp $
+//  $Id: time_display.cxx,v 1.16 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,7 @@
 #include <assert.h>
 #include <stdio.h>
 #include <ClanLib/Display/Display/display.h>
-#include <ClanLib/Display/Font/font.h>
+#include <ClanLib/Display/font.h>
 #include "globals.hxx"
 #include "pingus_resource.hxx"
 #include "time_display.hxx"
@@ -47,7 +47,7 @@ TimeDisplay::draw (GraphicContext& gc)
 
   if (server->get_plf()->get_time() == -1 && !(pingus_debug_flags & PINGUS_DEBUG_GAMETIME))
     {
-      infinity_symbol.put_screen(CL_Display::get_width()
+      infinity_symbol.draw(CL_Display::get_width()
 				  - infinity_symbol.get_width() - 6,
 				  2);
     }

@@ -1,4 +1,4 @@
-//  $Id: info_box.cxx,v 1.20 2003/04/19 10:23:19 torangan Exp $
+//  $Id: info_box.cxx,v 1.21 2003/10/18 23:17:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,8 +17,8 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <ClanLib/Display/Font/font.h>
-#include <ClanLib/Display/Display/display.h>
+#include <ClanLib/Display/font.h>
+#include <ClanLib/Display/display.h>
 #include "../gui/graphic_context.hxx"
 #include "../pingu.hxx"
 #include "../pingu_holder.hxx"

@@ -1,4 +1,4 @@
-//  $Id: level_desc.cxx,v 1.14 2003/10/18 12:11:30 grumbel Exp $
+//  $Id: level_desc.cxx,v 1.15 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,6 +28,8 @@
 #include "plf.hxx"
 #include "gettext.h"
 
+namespace Pingus {
+
 PingusLevelDesc::PingusLevelDesc(PLF* arg_plf)
 {
   plf = arg_plf;
@@ -49,7 +51,7 @@ PingusLevelDesc::draw(PingusLevelDesc::LoadingStatus status)
 
   for(int y = 0; y < CL_Display::get_height(); y += background.get_height())
     for(int x = 0; x < CL_Display::get_width(); x += background.get_width())
-      background.put_screen(x, y);
+      background.draw(x, y);
 
   CL_Display::fill_rect(0, 0, CL_Display::get_width(), CL_Display::get_height(), 0.0, 0.0, 0.0, 0.5);
 
@@ -97,6 +99,8 @@ PingusLevelDesc::draw(PingusLevelDesc::LoadingStatus status)
     */
   }
 }
+
+} // namespace Pingus
 
 /* EOF */
 

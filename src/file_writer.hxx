@@ -1,4 +1,4 @@
-//  $Id: file_writer.hxx,v 1.3 2003/04/19 10:23:17 torangan Exp $
+//  $Id: file_writer.hxx,v 1.4 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,8 @@
 
 #include <string>
 
+namespace Pingus {
+
 class Vector;
 
 /** Interface to write out name/value pairs out of some kind of file or
@@ -39,6 +41,8 @@ public:
   virtual void write_string (const char* name, const std::string&) =0;
   virtual void write_vector (const char* name, const Vector&) =0;
 };
+
+} // namespace Pingus
 
 #endif
 

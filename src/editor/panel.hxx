@@ -1,4 +1,4 @@
-//  $Id: panel.hxx,v 1.9 2003/04/19 10:23:18 torangan Exp $
+//  $Id: panel.hxx,v 1.10 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,10 +22,12 @@
 
 #include "../pingus.hxx"
 #include <vector>
-#include <ClanLib/Display/Display/surface.h>
+#include <ClanLib/Display/surface.h>
+#include <ClanLib/Display/font.h>
 
 class CL_Font;
 
+namespace Pingus {
 namespace EditorNS {
 
 class Editor;
@@ -34,7 +36,7 @@ class EditorEvent;
 class PanelIcon
 {
 protected:
-  CL_Font* font;
+  CL_Font    font;
   CL_Surface sur;
   CL_Surface button;
   CL_Surface button_pressed;
@@ -46,7 +48,7 @@ public:
   virtual ~PanelIcon();
 
   void start();
-  void put_screen(int x, int y);
+  void draw(int x, int y);
   virtual void on_click();
 
 private:
@@ -61,7 +63,7 @@ private:
   std::vector<PanelIcon*> buttons;
   std::vector<PanelIcon*>::iterator pressed_button;
   Editor* editor;
-  CL_Surface logo;
+  ::CL_Surface logo;
 
 public:
   Panel();
@@ -80,6 +82,7 @@ private:
 };
 
 } // namespace EditorNS
+} // namespace Pingus
 
 #endif
 

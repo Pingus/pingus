@@ -1,4 +1,4 @@
-//  $Id: story_screen.cxx,v 1.21 2003/06/17 14:09:20 grumbel Exp $
+//  $Id: story_screen.cxx,v 1.22 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,6 +36,8 @@
 #include "story.hxx"
 #include "credits.hxx"
 #include "sound/sound.hxx"
+
+namespace Pingus {
 
 class StoryScreenComponent : public GUI::Component
 {
@@ -202,6 +204,8 @@ StoryScreenComponent::next_text()
         }
     }
 }
+
+} // namespace Pingus
 
 // Local Variables: ***
 // coding:iso-latin-1

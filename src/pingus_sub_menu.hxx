@@ -1,4 +1,4 @@
-//  $Id: pingus_sub_menu.hxx,v 1.9 2003/04/19 10:23:17 torangan Exp $
+//  $Id: pingus_sub_menu.hxx,v 1.10 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,9 @@
 
 class CL_Key;
 class CL_InputDevice;
+
+namespace Pingus {
+
 class PingusMenuManager;
 
 class PingusSubMenu : public GUIScreen
@@ -45,6 +48,8 @@ private:
   PingusSubMenu (const PingusSubMenu&);
   PingusSubMenu& operator= (const PingusSubMenu&);
 };
+
+} // namespace Pingus
 
 #endif
 

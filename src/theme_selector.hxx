@@ -1,4 +1,4 @@
-//  $Id: theme_selector.hxx,v 1.6 2003/04/19 10:23:17 torangan Exp $
+//  $Id: theme_selector.hxx,v 1.7 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,6 +29,9 @@
 class CL_Key;
 class CL_Font;
 class CL_InputDevice;
+
+namespace Pingus {
+
 class Theme;
 class AlphaButton;
 
@@ -137,6 +140,8 @@ private:
   ThemeSelector (const ThemeSelector&);
   ThemeSelector& operator= (const ThemeSelector&);
 };
+
+} // namespace Pingus
 
 #endif
 

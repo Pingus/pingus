@@ -1,4 +1,4 @@
-//  $Id: loading.cxx,v 1.6 2003/04/22 16:40:41 grumbel Exp $
+//  $Id: loading.cxx,v 1.7 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,12 +17,14 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <ClanLib/Display/Display/display.h>
-#include <ClanLib/Display/Font/font.h>
+#include <ClanLib/Display/display.h>
+#include <ClanLib/Display/font.h>
 #include "pingus_resource.hxx"
 #include "gui/display.hxx"
 #include "fonts.hxx"
 #include "loading.hxx"
+
+namespace Pingus {
 
 Loading loading_screen;
 
@@ -49,9 +51,9 @@ Loading::draw()
   if (!is_init)
     init();
 
-  CL_Display::clear_display();
+  CL_Display::clear();
 
-  sur.put_screen((CL_Display::get_width() - sur.get_width())/2,
+  sur.draw((CL_Display::get_width() - sur.get_width())/2,
 		 (CL_Display::get_height() - sur.get_height())/2);
 
   Display::flip_display();
@@ -63,9 +65,9 @@ Loading::draw_progress(const std::string& str, float progress)
   if (!is_init)
     init();
 
-  CL_Display::clear_display();
+  CL_Display::clear();
 
-  sur.put_screen((CL_Display::get_width() - sur.get_width())/2,
+  sur.draw((CL_Display::get_width() - sur.get_width())/2,
 		 (CL_Display::get_height() - sur.get_height())/2);
 
   font->print_center(CL_Display::get_width() / 2,
@@ -83,7 +85,6 @@ Loading::draw_progress(const std::string& str, float progress)
   Display::flip_display();
 }
 
+} // namespace Pingus
+
 /* EOF */
-
-
-

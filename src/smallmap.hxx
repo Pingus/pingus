@@ -1,4 +1,4 @@
-//  $Id: smallmap.hxx,v 1.18 2003/04/19 10:23:17 torangan Exp $
+//  $Id: smallmap.hxx,v 1.19 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,6 +25,9 @@
 
 class CL_Key;
 class CL_Canvas;
+
+namespace Pingus {
+
 class Client;
 class Sprite;
 class Vector;
@@ -123,6 +126,8 @@ private:
   SmallMap (const SmallMap&);
   SmallMap& operator= (const SmallMap&);
 };
+
+} // namespace Pingus
 
 #endif
 

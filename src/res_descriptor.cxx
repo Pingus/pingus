@@ -1,4 +1,4 @@
-//  $Id: res_descriptor.cxx,v 1.16 2003/04/19 10:23:17 torangan Exp $
+//  $Id: res_descriptor.cxx,v 1.17 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,8 @@
 #include <iostream>
 #include "res_descriptor.hxx"
 #include "pingus_error.hxx"
+
+namespace Pingus {
 
 /*
    uri -> file:///home/ingo/.pingus/images/...
@@ -106,7 +108,9 @@ ResDescriptor::operator<(const ResDescriptor& res_desc) const
     }
 }
 
-std::ostream& operator<<(std::ostream& s, const ResDescriptor& desc)
+} // namespace Pingus
+
+std::ostream& operator<<(std::ostream& s, const Pingus::ResDescriptor& desc)
 {
   switch (desc.type)
     {

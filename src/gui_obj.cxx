@@ -1,4 +1,4 @@
-//  $Id: gui_obj.cxx,v 1.2 2003/04/19 10:23:17 torangan Exp $
+//  $Id: gui_obj.cxx,v 1.3 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,8 +17,10 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <ClanLib/Display/Display/display.h>
+#include <ClanLib/Display/display.h>
 #include "gui_obj.hxx"
+
+namespace Pingus {
 
 GuiObj::GuiObj()
 {
@@ -61,8 +63,6 @@ GuiObj::updateX()
 {
 }
 
+} // namespace Pingus
+
 /* EOF */
-
-
-
-

@@ -1,4 +1,4 @@
-//  $Id: root_gui_manager.hxx,v 1.6 2003/04/19 10:23:18 torangan Exp $
+//  $Id: root_gui_manager.hxx,v 1.7 2003/10/18 23:17:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,31 +22,34 @@
 
 #include "gui_manager.hxx"
 
-namespace Input
-{
-  class Controller;
+namespace Pingus {
+
+namespace Input {
+class Controller;
 }
 
-namespace GUI
+namespace GUI {
+
+/** Root GUI manager
+ */
+class RootGUIManager : public GUIManager
 {
-  /** Root GUI manager
-   */
-  class RootGUIManager : public GUIManager
-  {
-  private:
-    Input::Controller* controller;
+private:
+  Input::Controller* controller;
 
-  public:
-    RootGUIManager (Input::Controller* c);
-    ~RootGUIManager ();
+public:
+  RootGUIManager (Input::Controller* c);
+  ~RootGUIManager ();
 
-    void update (float delta);
+  void update (float delta);
 
-  private:
-    RootGUIManager (const RootGUIManager&);
-    RootGUIManager& operator= (const RootGUIManager&);
-  };
+private:
+  RootGUIManager (const RootGUIManager&);
+  RootGUIManager& operator= (const RootGUIManager&);
+};
 }
+
+} // namespace Pingus
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: target_provider.hxx,v 1.6 2003/04/19 10:23:17 torangan Exp $
+//  $Id: target_provider.hxx,v 1.7 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,7 +27,7 @@ class CL_Target;
 class CL_Palette;
 class CL_Canvas;
 
-class TargetProvider : public CL_SurfaceProvider
+class TargetProvider : public CL_PixelBuffer
 {
 private:
   CL_Target* target;

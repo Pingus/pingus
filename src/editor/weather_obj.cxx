@@ -1,4 +1,4 @@
-//  $Id: weather_obj.cxx,v 1.12 2003/04/19 10:23:18 torangan Exp $
+//  $Id: weather_obj.cxx,v 1.13 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,9 @@
 #include "../xml_helper.hxx"
 #include "editor_view.hxx"
 #include "weather_obj.hxx"
+
+namespace Pingus {
+namespace EditorNS {
 
 WeatherObj::WeatherObj(const std::string& type_)
   : type(type_),
@@ -103,5 +106,8 @@ WeatherObj::drop ()
   pos.y = int((pos.y - sprite.get_height ()/2)
 	      /sprite.get_height ()) * sprite.get_height ();
 }
+
+} // namespace EditorNS
+} // namespace Pingus
 
 /* EOF */

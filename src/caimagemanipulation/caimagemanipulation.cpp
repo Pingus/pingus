@@ -17,8 +17,7 @@
  ***************************************************************************/
 
 #include <cmath>
-#include <ClanLib/Display/Display/surface.h>
-#include <ClanLib/Display/SurfaceProviders/canvas.h>
+#include <ClanLib/display.h>
 #include "caimagemanipulation.h"
 
 /** Returns a pointer to a new image, based on 'surface'

@@ -1,4 +1,4 @@
-//  $Id: property_window.cxx,v 1.16 2003/04/19 10:23:18 torangan Exp $
+//  $Id: property_window.cxx,v 1.17 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,13 +18,14 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
-#include <ClanLib/Display/Display/display.h>
+#include <ClanLib/Display/display.h>
 #include <ClanLib/GUI/gui_manager.h>
 #include "editor.hxx"
 #include "editorobj.hxx"
 #include "property_frame.hxx"
 #include "property_window.hxx"
 
+namespace Pingus {
 namespace EditorNS {
 
 PropertyWindow::PropertyWindow (Editor* parent)
@@ -36,7 +37,7 @@ PropertyWindow::PropertyWindow (Editor* parent)
 {
   close_button_slot = close_button.sig_clicked().connect(this, &PropertyWindow::on_close_click);
   label.show (true);
-  set_client_size (200, 50);
+  set_size (200, 50);
   show (false);
 
   set_position(CL_Display::get_width() - get_width() - 50,
@@ -80,5 +81,6 @@ PropertyWindow::update_frame (EditorObj* obj)
 }
 
 } // namespace EditorNS
+} // namespace Pingus
 
 /* EOF */

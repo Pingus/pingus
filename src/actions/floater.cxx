@@ -1,4 +1,4 @@
-//  $Id: floater.cxx,v 1.24 2003/04/19 10:23:18 torangan Exp $
+//  $Id: floater.cxx,v 1.25 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,7 @@
 #include "../groundtype.hxx"
 #include "floater.hxx"
 
+namespace Pingus {
 namespace Actions {
 
 Floater::Floater(Pingu* p)
@@ -68,5 +69,6 @@ Floater::change_allowed (ActionName)
 }
 
 } // namespace Actions
+} // namespace Pingus
 
 /* EOF */

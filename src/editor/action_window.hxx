@@ -1,4 +1,4 @@
-//  $Id: action_window.hxx,v 1.9 2003/04/19 10:23:18 torangan Exp $
+//  $Id: action_window.hxx,v 1.10 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,13 +30,14 @@ class CL_CheckBox;
 class CL_InputBox;
 class CL_Component;
 
+namespace Pingus {
 namespace EditorNS {
 
 class ActionWindow
 {
 private:
   CL_Component* parent;
-  std::vector<ActionData>* actions;
+  std::vector<Pingus::ActionData>* actions;
   CL_Window* window;
   std::vector<CL_CheckBox*> checkboxes;
   std::vector<CL_InputBox*> inputs;
@@ -63,6 +64,7 @@ private:
 };
 
 } // namespace EditorNS
+} // namespace Pingus
 
 #endif
 

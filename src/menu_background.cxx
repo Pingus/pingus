@@ -1,4 +1,4 @@
-//  $Id: menu_background.cxx,v 1.9 2003/04/19 10:23:17 torangan Exp $
+//  $Id: menu_background.cxx,v 1.10 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,8 @@
 #include "gui/graphic_context.hxx"
 #include "menu_background.hxx"
 #include "pingus_resource.hxx"
+
+namespace Pingus {
 
 MenuBackground::MenuBackground ()
 {
@@ -45,5 +47,7 @@ MenuBackground::update (float delta)
 {
   layer_manager.update (delta);
 }
+
+} // namespace Pingus
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: rain_generator.cxx,v 1.10 2003/04/19 10:23:19 torangan Exp $
+//  $Id: rain_generator.cxx,v 1.11 2003/10/18 23:17:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,7 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
-#include <ClanLib/Display/Display/display.h>
+#include <ClanLib/Display/display.h>
 #include "../particles/rain_particle_holder.hxx"
 #include "../sound/sound.hxx"
 #include "../world.hxx"

@@ -21,6 +21,7 @@
 #include "../sprite.hxx"
 #include "../pingu_action.hxx"
 
+namespace Pingus {
 namespace Actions {
 
 class Teleported : public PinguAction
@@ -46,7 +47,8 @@ private:
   Teleported& operator= (const Teleported&);
 };
 
-}
+} // namespace Actions
+} // namespace Pingus
 
 #endif
 

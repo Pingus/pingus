@@ -1,4 +1,4 @@
-//  $Id: editor_help_screen.hxx,v 1.6 2003/04/19 10:23:18 torangan Exp $
+//  $Id: editor_help_screen.hxx,v 1.7 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,14 +21,16 @@
 #define HEADER_PINGUS_EDITOR_EDITOR_HELP_SCREEN_HXX
 
 #include "../pingus.hxx"
+#include <ClanLib/Display/font.h>
 
-class CL_Font;
+namespace Pingus {
+namespace EditorNS {
 
 class EditorHelpScreen
 {
 private:
-  CL_Font* font;
-  CL_Font* large_font;
+  CL_Font font;
+  CL_Font large_font;
 public:
   EditorHelpScreen ();
   void draw ();
@@ -38,6 +40,9 @@ private:
   EditorHelpScreen (const EditorHelpScreen&);
   EditorHelpScreen& operator= (const EditorHelpScreen&);
 };
+
+} // namespace EditorNS
+} // namespace Pingus
 
 #endif
 

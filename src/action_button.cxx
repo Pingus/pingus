@@ -1,4 +1,4 @@
-//  $Id: action_button.cxx,v 1.33 2003/10/18 12:11:30 grumbel Exp $
+//  $Id: action_button.cxx,v 1.34 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,6 +28,8 @@
 #include "gui/graphic_context.hxx"
 #include "string_converter.hxx"
 #include "fonts.hxx"
+
+namespace Pingus {
 
 using namespace Actions;
 
@@ -120,7 +122,7 @@ VerticalActionButton::draw (GraphicContext& gc)
       } else {
         //CL_Display::fill_rect(x_pos, y_pos, x_pos + 60, y_pos + 35 ,
         //1.0, 1.0, 1.0, 0.5);
-        backgroundhl.put_screen(x_pos, y_pos);
+        backgroundhl.draw(x_pos, y_pos);
       }
     }
   else
@@ -130,7 +132,7 @@ VerticalActionButton::draw (GraphicContext& gc)
       if (fast_mode) {
         // do nothing
       } else {
-        background.put_screen (x_pos, y_pos);
+        background.draw (x_pos, y_pos);
       }
     }
 
@@ -178,13 +180,13 @@ ArmageddonButton::draw (GraphicContext& gc)
 {
   if (server->get_world()->check_armageddon ())
     {
-      backgroundhl.put_screen (x_pos, y_pos);
+      backgroundhl.draw(x_pos, y_pos);
       gc.draw(sprite, Vector(x_pos, y_pos));
     }
   else
     {
       if (!fast_mode)
-        background.put_screen (x_pos, y_pos);
+        background.draw(x_pos, y_pos);
 
       sprite.set_frame(7);
       gc.draw(sprite, Vector(x_pos, y_pos));
@@ -256,15 +258,15 @@ ForwardButton::draw (GraphicContext& gc)
 {
   if (server->get_fast_forward())
     {
-      backgroundhl.put_screen (x_pos, y_pos);
+      backgroundhl.draw(x_pos, y_pos);
     }
   else
     {
       if (!fast_mode)
-        background.put_screen (x_pos, y_pos);
+        background.draw(x_pos, y_pos);
     }
 
-  surface.put_screen(x_pos, y_pos);
+  surface.draw(x_pos, y_pos);
   UNUSED_ARG(gc);
 }
 
@@ -304,14 +306,14 @@ void
 PauseButton::draw (GraphicContext& gc)
 {
   if (server->get_pause())
-    backgroundhl.put_screen (x_pos, y_pos);
+    backgroundhl.draw(x_pos, y_pos);
   else
     {
     if (!fast_mode)
-      background.put_screen (x_pos, y_pos);
+      background.draw(x_pos, y_pos);
     }
 
-  surface.put_screen(x_pos, y_pos);
+  surface.draw(x_pos, y_pos);
   UNUSED_ARG(gc);
 }
 
@@ -335,5 +337,7 @@ PauseButton::on_primary_button_click (int x, int y)
   UNUSED_ARG(x);
   UNUSED_ARG(y);
 }
+
+} // namespace Pingus
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: collider.hxx,v 1.3 2003/03/18 17:03:01 torangan Exp $
+//  $Id: collider.hxx,v 1.4 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,8 @@
 
 #ifndef HEADER_PINGUS_COLLIDER_HXX
 #define HEADER_PINGUS_COLLIDER_HXX
+
+namespace Pingus {
 
 class Vector;
 class World;
@@ -41,6 +43,8 @@ class Collider
 	world */
     int getpixel(World* const world, const Vector& pos) const;
 };
+
+} // namespace Pingus
 
 #endif
 

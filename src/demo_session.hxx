@@ -1,4 +1,4 @@
-//  $Id: demo_session.hxx,v 1.5 2003/04/19 10:23:17 torangan Exp $
+//  $Id: demo_session.hxx,v 1.6 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,8 @@
 #define HEADER_PINGUS_DEMO_SESSION_HXX
 
 #include "gui/gui_screen.hxx"
+
+namespace Pingus {
 
 class Server;
 class XMLPDF;
@@ -54,6 +56,8 @@ private:
   DemoSession (const DemoSession&);
   DemoSession& operator= (const DemoSession&);
 };
+
+} // namespace Pingus
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: cursor.hxx,v 1.2 2003/04/19 10:23:18 torangan Exp $
+//  $Id: cursor.hxx,v 1.3 2003/10/18 23:17:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,8 @@
 #include "display.hxx"
 #include "../sprite.hxx"
 
+namespace Pingus {
+
 /** A simple mouse cursor class and stupid. We can't use the X11/win32
     nativ mouse cursor because we want also to support non-mouse input
     devices and because we want to support multiple cursors */
@@ -43,6 +45,8 @@ private:
   Cursor (const Cursor&);
   Cursor& operator= (const Cursor&);
 };
+
+} // namespace Pingus
 
 #endif
 

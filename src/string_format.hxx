@@ -1,4 +1,4 @@
-//  $Id: string_format.hxx,v 1.1 2003/04/16 18:02:27 torangan Exp $
+//  $Id: string_format.hxx,v 1.2 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,11 +24,15 @@
 
 class CL_Font;
 
+namespace Pingus {
+
 class StringFormat {
 
 public:
   static std::string break_line (std::string text, int length, CL_Font* font);
 };
+
+} // namespace Pingus
 
 #endif
 

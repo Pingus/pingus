@@ -1,4 +1,4 @@
-//  $Id: direction.hxx,v 1.6 2003/04/19 10:23:17 torangan Exp $
+//  $Id: direction.hxx,v 1.7 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,8 @@
 
 #include "pingus.hxx"
 
+namespace Pingus {
+
 /// Simple class for managing the direction of a pingu
 class Direction
 {
@@ -44,6 +46,8 @@ public:
   bool is_left () const;
   bool is_right () const;
 };
+
+} // namespace Pingus
 
 #endif
 

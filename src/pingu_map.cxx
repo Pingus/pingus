@@ -1,4 +1,4 @@
-//  $Id: pingu_map.cxx,v 1.7 2003/04/19 10:23:17 torangan Exp $
+//  $Id: pingu_map.cxx,v 1.8 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,8 @@
 
 #include <ClanLib/Display/Display/surface.h>
 #include "pingu_map.hxx"
+
+namespace Pingus {
 
 PinguMap::PinguMap()
 {
@@ -53,13 +55,13 @@ PinguMap::remove(const CL_Surface& sur, int x, int y)
 }
 
 void
-PinguMap::remove(CL_SurfaceProvider*, int, int)
+PinguMap::remove(const CL_PixelBuffer&, int, int)
 {
 
 }
 
 void
-PinguMap::put(CL_SurfaceProvider*, int, int)
+PinguMap::put(const CL_PixelBuffer&, int, int)
 {
 
 }
@@ -69,5 +71,7 @@ PinguMap::put(const CL_Surface& sur, int x, int y)
 {
   put (sur.get_provider (), x, y);
 }
+
+} // namespace Pingus
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: ice_block.hxx,v 1.16 2003/04/19 10:23:19 torangan Exp $
+//  $Id: ice_block.hxx,v 1.17 2003/10/18 23:17:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,8 +20,10 @@
 #ifndef HEADER_PINGUS_WORLDOBJS_ICE_BLOCK_HXX
 #define HEADER_PINGUS_WORLDOBJS_ICE_BLOCK_HXX
 
-#include <ClanLib/Display/Display/surface.h>
+#include <ClanLib/Display/surface.h>
 #include "../worldobj.hxx"
+
+namespace Pingus {
 
 namespace WorldObjsData {
 class IceBlockData;
@@ -54,6 +56,7 @@ private:
 };
 
 } // namespace WorldObjs
+} // namespace Pingus
 
 #endif
 

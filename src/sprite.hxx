@@ -1,4 +1,4 @@
-//  $Id: sprite.hxx,v 1.12 2003/10/18 12:11:30 grumbel Exp $
+//  $Id: sprite.hxx,v 1.13 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,9 @@
 #define HEADER_PINGUS_SPRITE_HXX
 
 #include "pingus.hxx"
-#include <ClanLib/Display/surface.h>
+#include <ClanLib/display.h>
+
+namespace Pingus {
 
 class Vector;
 class ResDescriptor;
@@ -36,7 +38,6 @@ public:
 private:
   float frame;
   float frames_per_second;
-  CL_Surface sur;
   Direction direction;
   LoopType looptype;
   bool is_finished;
@@ -72,16 +73,16 @@ public:
 	  Direction dir = NONE,
 	  LoopType arg_loop_type = ENDLESS);
 
-  /** High level version of put_screen (), it handles the frame count
+  /** High level version of draw (), it handles the frame count
       and the aligment, might be used when you don't have a Vector
       at hand. */
-  void put_screen (int x, int y);
+  void draw (int x, int y);
 
-  /** High level version put_screen (), it handles the framecount and
+  /** High level version draw (), it handles the framecount and
       the alignment */
-  void put_screen (const Vector& pos);
+  void draw (const Vector& pos);
 
-  /** Equal to put_screen() except that it draws to a GraphicContext */
+  /** Equal to draw() except that it draws to a GraphicContext */
   void draw(GraphicContext& gc, const Vector& pos );
 
   /** Set the alignment (aka offset) of the surface
@@ -133,10 +134,10 @@ public:
   void update ();
 
   // @return width of the sprite
-  int get_width () { return sur.get_width (); }
+  int get_width (); 
 
   // @return height of the sprite
-  int get_height () { return sur.get_height (); }
+  int get_height ();
 
   /// @return true when the animation is played/finished
   bool finished ();
@@ -151,6 +152,8 @@ public:
   /// @return the surface which is used internally
   CL_Surface& get_surface ();
 };
+
+} // namespace Pingus
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: snow_generator.cxx,v 1.8 2003/04/19 10:23:19 torangan Exp $
+//  $Id: snow_generator.cxx,v 1.9 2003/10/18 23:17:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,6 +25,7 @@
 #include "../worldobjsdata/snow_generator_data.hxx"
 #include "snow_generator.hxx"
 
+namespace Pingus {
 namespace WorldObjs {
 
 SnowGenerator::SnowGenerator (const WorldObjsData::SnowGeneratorData& data_)
@@ -71,5 +72,6 @@ SnowGenerator::on_startup()
 }
 
 } // namespace WorldObjs
+} // namespace Pingus
 
 /* EOF */

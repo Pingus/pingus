@@ -1,4 +1,4 @@
-//  $Id: story.cxx,v 1.31 2003/08/18 06:51:26 torangan Exp $
+//  $Id: story.cxx,v 1.32 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,8 @@
 #include "story.hxx"
 #include "string_format.hxx"
 #include "fonts.hxx"
+
+namespace Pingus {
 
 Story Story::credits;
 Story Story::intro;
@@ -171,5 +173,7 @@ Story::init_intro()
 
   std::reverse(intro.pages.begin(), intro.pages.end());
 }
+
+} // namespace Pingus
 
 /* EOF */

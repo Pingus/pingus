@@ -1,4 +1,4 @@
-//  $Id: level_interrupt.cxx,v 1.1 2002/06/12 19:09:37 grumbel Exp $
+//  $Id: level_interrupt.cxx,v 1.2 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,8 @@
 
 #include "level_interrupt.hxx"
 
+namespace Pingus {
+
 LevelInterrupt::LevelInterrupt()
 {
 }
@@ -33,5 +35,7 @@ LevelInterrupt::get_status()
 {
   return status;
 }
+
+} // namespace Pingus
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: result_screen.cxx,v 1.18 2003/06/17 14:09:20 grumbel Exp $
+//  $Id: result_screen.cxx,v 1.19 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,6 +33,8 @@
 #include "sound/sound.hxx"
 #include "game_time.hxx"
 #include "result_screen.hxx"
+
+namespace Pingus {
 
 class ResultScreenComponent : public GUI::Component
 {
@@ -307,5 +309,7 @@ ResultScreen::on_escape_press()
 {
   close_screen();
 }
+
+} // namespace Pingus
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: fake_exit_obj.cxx,v 1.11 2003/04/19 10:23:18 torangan Exp $
+//  $Id: fake_exit_obj.cxx,v 1.12 2003/10/18 23:17:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,7 @@
 #include "../editor/editor_view.hxx"
 #include "../worldobjsdata/fake_exit_data.hxx"
 
+namespace Pingus {
 namespace EditorObjs {
 
 FakeExitObj::FakeExitObj (const WorldObjsData::FakeExitData& data_)
@@ -75,5 +76,6 @@ FakeExitObj::status_line ()
 }
 
 } // namespace EditorObjs
+} // namespace Pingus
 
 /* EOF */

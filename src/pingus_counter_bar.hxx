@@ -1,4 +1,4 @@
-//  $Id: pingus_counter_bar.hxx,v 1.5 2003/04/19 10:23:17 torangan Exp $
+//  $Id: pingus_counter_bar.hxx,v 1.6 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,8 @@
 #include <ClanLib/Core/Math/rect.h>
 #include "gui_obj.hxx"
 
+namespace Pingus {
+
 class Server;
 
 class PingusCounterBar : public GuiObj
@@ -45,9 +47,8 @@ private:
   PingusCounterBar& operator= (const PingusCounterBar&);
 };
 
+} // namespace Pingus
+
 #endif
 
 /* EOF */
-
-
-

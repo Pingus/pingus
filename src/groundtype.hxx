@@ -1,4 +1,4 @@
-//  $Id: groundtype.hxx,v 1.3 2003/04/19 10:23:17 torangan Exp $
+//  $Id: groundtype.hxx,v 1.4 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,8 @@
 
 #include <string>
 
+namespace Pingus {
+
 /** This class olds the definitions of the different types of ground
     available in pingus, it might also provide converter function from
     GPType to std::string and vice verse. */
@@ -43,6 +45,8 @@ public:
   static GPType      string_to_type (const std::string& arg_type);
   static std::string type_to_string (GPType arg_type);
 };
+
+} // namespace Pingus
 
 #endif
 

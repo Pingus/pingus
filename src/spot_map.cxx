@@ -1,4 +1,4 @@
-//  $Id: spot_map.cxx,v 1.27 2003/04/24 15:18:19 grumbel Exp $
+//  $Id: spot_map.cxx,v 1.28 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,6 +27,8 @@
 #include "gettext.h"
 #include "col_map.hxx"
 #include "math.hxx"
+
+namespace Pingus {
 
 using namespace WorldObjsData;
 
@@ -77,7 +79,7 @@ void
 MapTileSurface::check_empty()
 {
   // FIXME: obsolete
-  CL_SurfaceProvider* provider = surface.get_provider();
+  CL_PixelBuffer* provider = surface.get_provider();
   unsigned char* buffer;
   int lenght;
 
@@ -225,7 +227,7 @@ PingusSpotMap::get_height(void)
 }
 
 void
-PingusSpotMap::remove(CL_SurfaceProvider* sprovider, int x, int y)
+PingusSpotMap::remove(CL_PixelBuffer* sprovider, int x, int y)
 {
   // Get the start tile and end tile
   int start_x = Math::max(x / tile_size, 0);
@@ -256,7 +258,7 @@ PingusSpotMap::remove(CL_SurfaceProvider* sprovider, int x, int y)
 }
 
 void
-PingusSpotMap::put_alpha_surface(CL_Canvas* provider, CL_SurfaceProvider* sprovider,
+PingusSpotMap::put_alpha_surface(CL_Canvas* provider, CL_PixelBuffer* sprovider,
 				 int x, int y, int real_x_arg, int real_y_arg)
 {
   int start_i;
@@ -354,7 +356,7 @@ PingusSpotMap::put_alpha_surface(CL_Canvas* provider, CL_SurfaceProvider* sprovi
 }
 
 void
-PingusSpotMap::put(CL_SurfaceProvider* sprovider, int x, int y)
+PingusSpotMap::put(CL_PixelBuffer* sprovider, int x, int y)
 {
   // Get the start tile and end tile
   int start_x = x / tile_size;
@@ -410,5 +412,7 @@ PingusSpotMap::get_colmap(void)
 {
   return colmap;
 }
+
+} // namespace Pingus
 
 /* EOF */

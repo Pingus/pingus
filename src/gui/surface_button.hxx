@@ -1,4 +1,4 @@
-//  $Id: surface_button.hxx,v 1.8 2003/04/19 10:23:18 torangan Exp $
+//  $Id: surface_button.hxx,v 1.9 2003/10/18 23:17:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,8 +25,9 @@
 
 class ResDescriptor;
 
-namespace GUI
-{
+namespace Pingus {
+namespace GUI {
+
 /** A simple surface button, which different surfaces for pressed,
     released and mouse over */
 class SurfaceButton : public Component
@@ -62,7 +63,9 @@ private:
   SurfaceButton (const SurfaceButton&);
   SurfaceButton& operator= (const SurfaceButton&);
 };
-}
+
+} // namespace GUI
+} // namespace Pingus
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: editor.cxx,v 1.54 2003/08/22 10:19:48 grumbel Exp $
+//  $Id: editor.cxx,v 1.55 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,15 +18,10 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <ClanLib/Core/System/system.h>
-#include <ClanLib/Display/Display/display.h>
-#include <ClanLib/Display/Input/input.h>
-#include <ClanLib/Display/Display/mousecursor_provider.h>
-#include <ClanLib/Display/Input/mouse.h>
-#include <ClanLib/Display/Font/font.h>
-#include <ClanLib/Display/Input/inputbuffer.h>
-#include <ClanLib/Display/Input/keyboard.h>
-#include <ClanLib/GUI/gui_manager.h>
-#include <ClanLib/GUI/stylemanager_default.h>
+#include <ClanLib/display.h>
+#include <ClanLib/guistylesilver.h>
+#include <ClanLib/core.h>
+#include <ClanLib/gui.h>
 
 #include "../globals.hxx"
 #include "../gui/display.hxx"
@@ -49,8 +44,9 @@
 #include "../fonts.hxx"
 #include "editor_view.hxx"
 
-#include <cstdio>
+#include <stdio.h>
 
+namespace Pingus {
 namespace EditorNS {
 
 Editor* Editor::instance_ = 0;
@@ -95,8 +91,8 @@ Editor::Editor () : event_handler_ref_counter(0),
   // FIXME: Should use PingusResource, Memleak
   CL_ResourceManager* gui_resources = new CL_ResourceManager(path_manager.complete("data/gui.scr"), false);
 
-  style_manager = new CL_StyleManager_Default (gui_resources);
-  gui   = new CL_GUIManager (style_manager);
+  style_manager = new CL_StyleManager_Silver(gui_resources);
+  gui           = new CL_GUIManager(style_manager);
 
   action_window = new ActionWindow (gui, object_manager->get_actions ());
   property_window = new PropertyWindow (this);
@@ -186,7 +182,7 @@ Editor::draw (GraphicContext& gc)
 void
 Editor::draw ()
 {
-  CL_Display::clear_display();
+  CL_Display::clear();
 
   object_manager->draw(view);
   selection->draw (view);
@@ -265,15 +261,15 @@ Editor::read_string (const std::string & prefix, const std::string & default_str
       str = default_str;
     }
 
-  CL_Display::clear_display();
-  font->print_left(20, 20, prefix.c_str());
-  font->print_left(20, 40, str.c_str());
-  font->print_left(20, 400, "For information about the editor, have a look at the info pages.");
-  font->print_left(20, 420, "$ info pingus");
+  CL_Display::clear();
+  font.draw(20, 20, prefix.c_str());
+  font.draw(20, 40, str.c_str());
+  font.draw(20, 400, "For information about the editor, have a look at the info pages.");
+  font.draw(20, 420, "$ info pingus");
   Display::flip_display();
   CL_Display::sync_buffers();
 
-  CL_Key key;
+  CL_InputEvent event;
   CL_InputBuffer* keys = new CL_InputBuffer;
   bool  finished = false;
 
@@ -281,13 +277,13 @@ Editor::read_string (const std::string & prefix, const std::string & default_str
     {
       CL_System::keep_alive();
 
-      if (keys->peek_key().state != CL_Key::NoKey)
+      if (keys->peek_key().type != CL_InputEvent::no_key)
 	{
-	  key = keys->get_key();
+	  event = keys->get_key();
 
-	  if (key.state == CL_Key::Pressed)
+	  if (event.type == CL_InputEvent::pressed)
 	    {
-	      switch (key.id)
+	      switch (event.id)
 		{
 		case CL_KEY_ENTER:
 		  finished = true;
@@ -310,14 +306,13 @@ Editor::read_string (const std::string & prefix, const std::string & default_str
 		  break;
 
 		default:
-		  if (key.ascii > 0)
-		    str += key.ascii;
+                  str += event.str;
 		  break;
 		}
 	    }
-	  CL_Display::clear_display();
-	  font->print_left(20, 20, prefix.c_str());
-	  font->print_left(20, 40, str.c_str());
+	  CL_Display::clear();
+	  font.draw(20, 20, prefix.c_str());
+	  font.draw(20, 40, str.c_str());
 	  Display::flip_display();
 	}
     }
@@ -366,13 +361,13 @@ Editor::zoom_mode ()
     {
       CL_System::keep_alive();
 
-      if (CL_Mouse::left_pressed () && !mouse_down)
+      if (CL_Mouse::get_keycode(CL_MOUSE_LEFT) && !mouse_down)
 	{
 	  mouse_down = true;
-	  rect.x1 = CL_Mouse::get_x ();
-	  rect.y1 = CL_Mouse::get_y ();
+	  rect.left = CL_Mouse::get_x ();
+	  rect.top  = CL_Mouse::get_y ();
 	}
-      else if (!CL_Mouse::left_pressed () && mouse_down)
+      else if (!CL_Mouse::get_keycode(CL_MOUSE_LEFT) && mouse_down)
 	{
 	  break;
 	}
@@ -381,14 +376,14 @@ Editor::zoom_mode ()
 
       if (mouse_down)
 	{
-	  rect.x2 = CL_Mouse::get_x ();
-	  rect.y2 = CL_Mouse::get_y ();
+	  rect.right  = CL_Mouse::get_x ();
+	  rect.bottom = CL_Mouse::get_y ();
 
-	  CL_Display::draw_rect (rect.x1, rect.y1, rect.x2, rect.y2,
+	  CL_Display::draw_rect (rect.left, rect.top, rect.right, rect.bottom,
 				 1.0, 1.0, 0.0, 1.0);
 	}
 
-      mouse_cursor.put_screen (CL_Mouse::get_x (), CL_Mouse::get_y ());
+      mouse_cursor.draw(CL_Mouse::get_x (), CL_Mouse::get_y ());
 
       Display::flip_display(true);
     }
@@ -404,7 +399,7 @@ Editor::rect_get_current_objs()
 		       CL_Mouse::get_y ());
   Vector end_pos;
 
-  while (CL_Mouse::middle_pressed())
+  while (CL_Mouse::get_keycode(CL_MOUSE_MIDDLE))
     {
       CL_System::keep_alive();
 
@@ -412,7 +407,7 @@ Editor::rect_get_current_objs()
 			  CL_Mouse::get_y ());
 
       // Draw the screen
-      CL_Display::clear_display();
+      CL_Display::clear();
       object_manager->draw(view);
       selection->draw (view);
 
@@ -484,7 +479,7 @@ Editor::interactive_move_object()
 
   selection->drag ();
   Vector old_pos (view->screen_to_world(Vector(CL_Mouse::get_x(), CL_Mouse::get_y())));
-  while (CL_Mouse::left_pressed())
+  while (CL_Mouse::get_keycode(CL_MOUSE_LEFT))
     {
       Vector new_pos (view->screen_to_world(Vector(CL_Mouse::get_x(), CL_Mouse::get_y())));
 
@@ -574,5 +569,6 @@ Editor::get_gui_manager ()
 }
 
 } // namespace EditorNS
+} // namespace Pingus
 
 /* EOF */

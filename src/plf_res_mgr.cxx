@@ -1,4 +1,4 @@
-//  $Id: plf_res_mgr.cxx,v 1.7 2003/08/19 19:56:55 torangan Exp $
+//  $Id: plf_res_mgr.cxx,v 1.8 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,8 @@
 #include "system.hxx"
 #include "path_manager.hxx"
 #include "plf_res_mgr.hxx"
+
+namespace Pingus {
 
 PLFResMgr::PLFMap PLFResMgr::plf_map;
 
@@ -108,4 +110,7 @@ void PLFResMgr::free_plf_map()
 	  delete i->second.plf;
   }
 }
+
+} // namespace Pingus
+
 /* EOF */

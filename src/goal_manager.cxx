@@ -1,4 +1,4 @@
-//  $Id: goal_manager.cxx,v 1.7 2003/04/19 10:23:17 torangan Exp $
+//  $Id: goal_manager.cxx,v 1.8 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,8 @@
 #include "globals.hxx"
 #include "pingu_holder.hxx"
 #include "goal_manager.hxx"
+
+namespace Pingus {
 
 GoalManager::GoalManager(Server* s)
   : server(s), goal(GT_NONE), exit_time(0)
@@ -87,5 +89,7 @@ GoalManager::set_abort_goal()
       exit_time = server->get_time();
     }
 }
+
+} // namespace Pingus
 
 /* EOF */

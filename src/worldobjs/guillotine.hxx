@@ -1,4 +1,4 @@
-//  $Id: guillotine.hxx,v 1.6 2002/10/01 19:53:46 grumbel Exp $
+//  $Id: guillotine.hxx,v 1.7 2003/10/18 23:17:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,8 @@
 #define HEADER_PINGUS_WORLDOBJS_GUILLOTINE_HXX
 
 #include "../worldobj.hxx"
+
+namespace Pingus {
 
 namespace WorldObjsData {
 class GuillotineData;
@@ -53,6 +55,7 @@ private:
 };
 
 } // namespace WorldObjs
+} // namespace Pingus
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: pingus_menu.cxx,v 1.20 2003/04/19 10:23:17 torangan Exp $
+//  $Id: pingus_menu.cxx,v 1.21 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,8 @@
 #include "debug.hxx"
 #include "pingus_menu_manager.hxx"
 #include "gui/gui_manager.hxx"
+
+namespace Pingus {
 
 PingusMenu::PingusMenu (PingusMenuManager* m)
   : PingusSubMenu (m)
@@ -95,5 +97,7 @@ PingusMenu::draw_foreground(GraphicContext& gc)
                 "Pingus comes with ABSOLUTELY NO WARRANTY. This is free software, and you are welcome\n"
                 "to redistribute it under certain conditions; see the file COPYING for details.\n");
 }
+
+} // namespace Pingus
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: pingus_error.hxx,v 1.8 2003/04/19 10:23:17 torangan Exp $
+//  $Id: pingus_error.hxx,v 1.9 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,8 @@
 
 #include "pingus.hxx"
 #include <string>
+
+namespace Pingus {
 
 class PingusException
 {
@@ -68,6 +70,8 @@ public:
 
   static void raise (const std::string& msg);
 };
+
+} // namespace Pingus
 
 #endif
 

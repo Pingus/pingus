@@ -1,4 +1,4 @@
-//  $Id: liquid_obj.cxx,v 1.6 2003/04/19 10:23:18 torangan Exp $
+//  $Id: liquid_obj.cxx,v 1.7 2003/10/18 23:17:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,7 @@
 #include "../editor/generic_property_frame.hxx"
 #include "liquid_obj.hxx"
 
+namespace Pingus {
 namespace EditorObjs {
 
 LiquidObj::LiquidObj (const WorldObjsData::LiquidData& data_)
@@ -114,5 +115,6 @@ LiquidObj::get_gui_dialog(EditorNS::Editor* editor)
 }
 
 } // namespace EditorObjs
+} // namespace Pingus
 
 /* EOF */

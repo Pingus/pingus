@@ -1,4 +1,4 @@
-//  $Id: game_session.hxx,v 1.19 2003/04/19 10:23:17 torangan Exp $
+//  $Id: game_session.hxx,v 1.20 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,6 +28,8 @@ class Client;
 class TrueServer;
 class PingusGameSessionResult;
 class DemoPlayer;
+
+namespace Pingus {
 
 /** You can use this class to start up a game session, which consist
     of a single level. */
@@ -83,6 +85,8 @@ private:
   PingusGameSession (const PingusGameSession&);
   PingusGameSession& operator= (const PingusGameSession&);
 };
+
+} // namespace Pingus
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: starfield_background_stars.cxx,v 1.8 2003/06/17 14:09:20 grumbel Exp $
+//  $Id: starfield_background_stars.cxx,v 1.9 2003/10/18 23:17:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,7 @@
 #include "../pingus_resource.hxx"
 #include "starfield_background_stars.hxx"
 
+namespace Pingus {
 namespace WorldObjs {
 
 StarfieldBackgroundStars::StarfieldBackgroundStars (Type type)
@@ -66,5 +67,6 @@ StarfieldBackgroundStars::draw (GraphicContext& gc)
 }
 
 } // namespace WorldObjs
+} // namespace Pingus {
 
 /* EOF */

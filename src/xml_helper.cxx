@@ -1,4 +1,4 @@
-//  $Id: xml_helper.cxx,v 1.32 2003/04/24 17:59:15 grumbel Exp $
+//  $Id: xml_helper.cxx,v 1.33 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -49,6 +49,8 @@ std::ostream& operator<<(std::ostream& s, xmlNode& node)
   return s;
 #endif
 }
+
+namespace Pingus {
 
 xmlNodePtr
 XMLhelper::skip_blank (xmlNodePtr cur)
@@ -488,5 +490,7 @@ XMLhelper::xmlChar2string(const xmlChar* in)
       return ret_str;
     }
 }
+
+} // namespace Pingus
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: sprite.cxx,v 1.15 2003/08/16 20:51:28 grumbel Exp $
+//  $Id: sprite.cxx,v 1.16 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,19 +26,21 @@
 #include "gui/graphic_context.hxx"
 #include "globals.hxx"
 
+namespace Pingus {
+
 Sprite::Sprite ()
 {
 }
 
-Sprite::Sprite (const Sprite& sprite) :
-                frame (sprite.frame),
-                frames_per_second (sprite.frames_per_second),
-                sur (sprite.sur),
-                direction (sprite.direction),
-                looptype (sprite.looptype),
-                is_finished (sprite.is_finished),
-                x_align (sprite.x_align),
-                y_align (sprite.y_align)
+Sprite::Sprite (const Sprite& sprite) 
+  : frame (sprite.frame),
+    frames_per_second (sprite.frames_per_second),
+    sur (sprite.sur),
+    direction (sprite.direction),
+    looptype (sprite.looptype),
+    is_finished (sprite.is_finished),
+    x_align (sprite.x_align),
+    y_align (sprite.y_align)
 {
 }
 
@@ -79,7 +81,7 @@ Sprite::Sprite (const CL_Surface& arg_sur,
 		float arg_frames_per_second,
 		Sprite::Direction dir,
 		LoopType arg_loop_type)
-      : frame (0.0f),
+  : frame (0.0f),
     frames_per_second (arg_frames_per_second),
     direction (dir),
     looptype (arg_loop_type),
@@ -104,10 +106,11 @@ Sprite::Sprite (const ResDescriptor& desc,
 }
 
 void
-Sprite::put_screen (int x, int y)
+Sprite::draw (int x, int y)
 {
-  if (!sur)
-    return;
+  //if (!sur)// FIXME: CL0.7
+  //return;
+
   // FIXME: HACK
   update (0.0f);
   //std::cout << "Frame: " << round(frame) << " " << frame << " " << max_frames () << std::endl;
@@ -115,13 +118,13 @@ Sprite::put_screen (int x, int y)
   switch (direction)
     {
     case Sprite::NONE:
-      sur.put_screen (x + x_align, y + y_align, Math::round(frame));
+      sur.draw(x + x_align, y + y_align, Math::round(frame));
       break;
     case Sprite::LEFT:
-      sur.put_screen (x + x_align, y + y_align, Math::round(frame));
+      sur.draw(x + x_align, y + y_align, Math::round(frame));
       break;
     case Sprite::RIGHT:
-      sur.put_screen (x + x_align, y + y_align, Math::round(frame) + max_frames ());
+      sur.draw (x + x_align, y + y_align, Math::round(frame) + max_frames ());
       break;
     default:
       std::cout << "Direction: " << direction << std::endl;
@@ -130,9 +133,9 @@ Sprite::put_screen (int x, int y)
 }
 
 void
-Sprite::put_screen (const Vector& pos)
+Sprite::draw (const Vector& pos)
 {
-  put_screen (int(pos.x), int(pos.y));
+  draw (int(pos.x), int(pos.y));
 }
 
 void
@@ -195,8 +198,6 @@ Sprite::next_frame ()
     frame = 0;
 }
 
-
-
 void
 Sprite::previous_frame ()
 {
@@ -231,7 +232,7 @@ Sprite::max_frames ()
       return sur.get_num_frames ()/2;
     default:
       assert (0);
-	  return 0;
+      return 0;
     }
 }
 
@@ -315,5 +316,7 @@ Sprite::set_frame (int n)
 {
   frame = n;
 }
+
+} // namespace Pingus
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: pingu_action_factory.hxx,v 1.12 2003/04/19 10:23:17 torangan Exp $
+//  $Id: pingu_action_factory.hxx,v 1.13 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,8 @@
 #include <map>
 #include <vector>
 #include "pingu.hxx"
+
+namespace Pingus {
 
 class PinguAction;
 class PinguActionAbstractFactory;
@@ -92,6 +94,8 @@ private:
   PinguActionFactoryImpl (const PinguActionFactoryImpl&);
   PinguActionFactoryImpl& operator= (const PinguActionFactoryImpl&);
 };
+
+} // namespace Pingus
 
 #endif
 

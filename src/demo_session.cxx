@@ -1,4 +1,4 @@
-//  $Id: demo_session.cxx,v 1.9 2003/06/17 14:09:20 grumbel Exp $
+//  $Id: demo_session.cxx,v 1.10 2003/10/18 23:17:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,6 +28,8 @@
 #include "gui/gui_manager.hxx"
 #include "gui/graphic_context.hxx"
 #include "demo_session.hxx"
+
+namespace Pingus {
 
 DemoSession::DemoSession(const std::string& filename)
 {
@@ -107,5 +109,7 @@ DemoSession::update(float delta)
       demo_player->update();
     }
 }
+
+} // namespace Pingus
 
 /* EOF */
