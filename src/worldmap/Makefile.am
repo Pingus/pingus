@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.11 2002/10/15 19:13:33 grumbel Exp $
+#  $Id: Makefile.am,v 1.12 2003/04/11 13:12:54 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,22 +20,34 @@
 noinst_LIBRARIES = libpingus_worldmap.a
 
 libpingus_worldmap_a_SOURCES = \
-graph.hxx    	    pingus.hxx	worldmap.hxx \
-manager.hxx    stat.hxx \
-pingus.cxx	worldmap.cxx \
-manager.cxx   stat.cxx \
-drawable.hxx drawable.cxx \
-sprite_drawable.hxx sprite_drawable.cxx \
-surface_drawable.hxx surface_drawable.cxx \
-drawable_factory.hxx drawable_factory.cxx \
-path_graph.hxx path_graph.cxx \
-dot_factory.hxx dot_factory.cxx \
 dot.hxx dot.cxx \
-level_dot.hxx level_dot.cxx \
-pathfinder.hxx \
-path_drawable.hxx path_drawable.cxx \
+dot_factory.cxx \
+dot_factory.hxx \
+drawable.cxx \
+drawable.hxx \
+drawable_factory.cxx \
+drawable_factory.hxx \
 graph.cxx \
-path.hxx path.cxx
+graph.hxx    \
+level_dot.cxx   \
+level_dot.hxx   \
+manager.cxx  \
+manager.hxx  \
+path.cxx  \
+path.hxx  \
+path_drawable.cxx \
+path_drawable.hxx \
+path_graph.cxx  \
+path_graph.hxx  \
+pathfinder.hxx  \
+pingus.cxx   \
+pingus.hxx   \
+sprite_drawable.cxx \
+sprite_drawable.hxx \
+surface_drawable.cxx \
+surface_drawable.hxx \
+worldmap.cxx \
+worldmap.hxx
 
 #node.cxx
 #node.hxx

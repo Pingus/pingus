@@ -1,4 +1,4 @@
-//  $Id: worldmap.hxx,v 1.27 2003/04/10 11:51:32 grumbel Exp $
+//  $Id: worldmap.hxx,v 1.28 2003/04/11 13:12:54 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,7 +23,6 @@
 #include <ClanLib/Display/Display/surface.h>
 #include <vector>
 #include "../libxmlfwd.hxx"
-#include "stat.hxx"
 #include "../gui/display_graphic_context.hxx"
 
 class GraphicContext;
