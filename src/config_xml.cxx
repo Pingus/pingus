@@ -1,4 +1,4 @@
-//  $Id: config_xml.cxx,v 1.1 2002/10/08 22:58:02 grumbel Exp $
+//  $Id: config_xml.cxx,v 1.2 2002/10/13 13:34:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,7 +24,7 @@
 
 ConfigXML::ConfigXML(const std::string& arg_filename)
 {
-  doc = xmlParseFile(arg_filename.c_str());
+  xmlDocPtr doc = xmlParseFile(arg_filename.c_str());
   if (doc == NULL)
     PingusError::raise("ConfigXML: Couldn't open \"" + arg_filename + "\"");
 
@@ -35,7 +35,7 @@ ConfigXML::ConfigXML(const std::string& arg_filename)
       cur = cur->children;
       cur = XMLhelper::skip_blank(cur);
 
-      parse_directory(cur, "");
+      parse_directory(doc, cur, "");
     }
   else
     {
@@ -43,18 +43,23 @@ ConfigXML::ConfigXML(const std::string& arg_filename)
     }
 }
 
+ConfigXML::ConfigXML(xmlDocPtr doc, xmlNodePtr cur)
+{
+  parse_directory(doc, cur, "");
+}
+
 void 
-ConfigXML::parse_directory(xmlNodePtr cur, const std::string& prefix)
+ConfigXML::parse_directory(xmlDocPtr doc, xmlNodePtr cur, const std::string& prefix)
 {
   while(cur)
     {
       std::string name = reinterpret_cast<const char*>(cur->name);
   
-      if (is_directory(cur))
+      if (is_directory(doc, cur))
         {
-          parse_directory(cur->children, prefix + name + "/");
+          parse_directory(doc, cur->children, prefix + name + "/");
         }
-      else if (is_value(cur))
+      else if (is_value(doc, cur))
         {
           std::string value;
           XMLhelper::node_list_get_string(doc, cur->children, 1, value);
@@ -75,13 +80,13 @@ ConfigXML::parse_directory(xmlNodePtr cur, const std::string& prefix)
 }
 
 bool
-ConfigXML::is_directory(xmlNodePtr cur)
+ConfigXML::is_directory(xmlDocPtr doc, xmlNodePtr cur)
 {
   return cur->children && (xmlIsBlankNode(cur->children) || !xmlNodeIsText(cur->children));
 }
 
 bool
-ConfigXML::is_value(xmlNodePtr cur)
+ConfigXML::is_value(xmlDocPtr doc, xmlNodePtr cur)
 {
   return cur->children && xmlNodeIsText(cur->children);
 }

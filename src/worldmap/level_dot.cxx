@@ -1,4 +1,4 @@
-//  $Id: level_dot.cxx,v 1.1 2002/10/13 01:09:18 grumbel Exp $
+//  $Id: level_dot.cxx,v 1.2 2002/10/13 13:34:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,19 +19,24 @@
 
 #include <iostream>
 #include "../xml_helper.hxx"
+#include "../pingus_resource.hxx"
+#include "../graphic_context.hxx"
 #include "level_dot.hxx"
 
 namespace WorldMapNS {
 
 LevelDot::LevelDot(xmlDocPtr doc, xmlNodePtr cur)
-  : Dot(doc, XMLhelper::skip_blank(cur->children))
+  : Dot(doc, XMLhelper::skip_blank(cur->children)),
+    green_dot_sur(PingusResource::load_surface("misc/dot_green", "core")),
+    red_dot_sur(PingusResource::load_surface("misc/dot_red", "core"))
 {
 }
 
 void
 LevelDot::draw(GraphicContext& gc)
 {
-  std::cout << "Drawing level dat" << std::endl;
+  std::cout << "Drawing level dat: " << pos << std::endl;
+  gc.draw (green_dot_sur, pos);
 }
 
 void

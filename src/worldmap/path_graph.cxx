@@ -1,4 +1,4 @@
-//  $Id: path_graph.cxx,v 1.2 2002/10/13 01:09:18 grumbel Exp $
+//  $Id: path_graph.cxx,v 1.3 2002/10/13 13:34:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -120,9 +120,26 @@ PathGraph::parse_edges(xmlDocPtr doc, xmlNodePtr cur)
             }
 
           // FIXME: add path-data parsing here
-
+          Path* path = new Path();
+          xmlNodePtr child_cur = cur;
+          while (child_cur)
+            {
+              if (XMLhelper::equal_str(child_cur->name, "position"))
+                {
+                  Vector pos = XMLhelper::parse_vector(doc, child_cur);
+                  path->push_back(pos);
+                }
+              else
+                {
+                  std::cout << "12929929" << std::endl;
+                }
+              
+              child_cur = child_cur->next;
+              child_cur = XMLhelper::skip_blank(child_cur);
+            }    
+          
           // FIXME: No error checking, 
-          graph.add_bi_edge(new Path(), // FIXME: Memory leak!
+          graph.add_bi_edge(path, // FIXME: Memory leak!
                             node_lookup[source], node_lookup[destination], 
                             0 /* costs */);
         }
@@ -133,7 +150,7 @@ PathGraph::parse_edges(xmlDocPtr doc, xmlNodePtr cur)
 
       cur = cur->next;
       cur = XMLhelper::skip_blank(cur);
-    }   
+    }    
 }
 
 std::vector<Vector>

@@ -1,4 +1,4 @@
-//  $Id: dot.cxx,v 1.1 2002/10/13 01:09:18 grumbel Exp $
+//  $Id: dot.cxx,v 1.2 2002/10/13 13:34:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,20 +17,38 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <iostream>
 #include "dot.hxx"
 
 namespace WorldMapNS {
 
 Dot::Dot(xmlDocPtr doc, xmlNodePtr cur)
-  : Drawable("bla")
+  : Drawable()
 {
-  
-}
+  assert(cur);
 
-std::string
-Dot::get_name()
-{
-  return name;
+  // cur = <dot>...</dot>
+  cur = cur->children;
+  cur = XMLhelper::skip_blank(cur);
+	  
+  while (cur)
+    {
+      if (XMLhelper::equal_str(cur->name, "position"))
+        {
+          pos = XMLhelper::parse_vector(doc, cur);
+        }
+      else if (XMLhelper::equal_str(cur->name, "name"))
+        {
+          XMLhelper::node_list_get_string(doc, cur, 1, name);
+        }
+      else
+        {
+          std::cout << "1234" << std::endl;
+        }
+
+      cur = cur->next;
+      cur = XMLhelper::skip_blank(cur);
+    }
 }
 
 } // namespace WorldMapNS

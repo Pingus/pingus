@@ -1,4 +1,4 @@
-//  $Id: drawable.hxx,v 1.2 2002/10/13 01:09:18 grumbel Exp $
+//  $Id: drawable.hxx,v 1.3 2002/10/13 13:34:40 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,7 +31,7 @@ namespace WorldMapNS {
     sprite, interface only */
 class Drawable
 {
-private:
+protected:
   /** The symbolic id of the drawable */
   std::string name;
   
@@ -39,12 +39,16 @@ private:
   bool visible;
 
 public:
+  Drawable()
+    :visible(true)
+  {
+  }
+
   Drawable(std::string arg_name)
     : name(arg_name),
       visible(true)
   {
-  }
-    
+  }    
 
   Drawable(xmlDocPtr doc, xmlNodePtr cur) 
     : visible(true)

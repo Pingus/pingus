@@ -1,4 +1,4 @@
-//  $Id: dot.hxx,v 1.1 2002/10/13 01:09:18 grumbel Exp $
+//  $Id: dot.hxx,v 1.2 2002/10/13 13:34:40 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,7 @@
 
 #include <string>
 #include "../libxmlfwd.hxx"
+#include "../vector.hxx"
 #include "drawable.hxx"
 
 namespace WorldMapNS {
@@ -30,12 +31,12 @@ namespace WorldMapNS {
     LevelDots TubeDots and other availabe. */
 class Dot : public Drawable
 {
-private:
-  std::string name;
+protected:
+  Vector pos;
+
 public:
   Dot(xmlDocPtr doc, xmlNodePtr cur);
 
-  std::string get_name();
 private:
   Dot (const Dot&);
   Dot& operator= (const Dot&);

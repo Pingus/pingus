@@ -1,4 +1,4 @@
-//  $Id: goal_manager.cxx,v 1.2 2002/10/09 23:09:45 grumbel Exp $
+//  $Id: goal_manager.cxx,v 1.3 2002/10/13 13:34:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -79,7 +79,10 @@ void
 GoalManager::set_abort_goal()
 {
   if (exit_time == 0)
-    goal = GT_GAME_ABORTED;
+    {
+      goal = GT_GAME_ABORTED;
+      exit_time = server->get_time();
+    }
 }
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: config_xml.hxx,v 1.1 2002/10/08 22:58:02 grumbel Exp $
+//  $Id: config_xml.hxx,v 1.2 2002/10/13 13:34:40 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,14 +26,15 @@
 class ConfigXML
 {
 private:
-  xmlDocPtr doc;
+  //std::map<std::string, Prop> 
 public:
   ConfigXML(const std::string& filename);
+  ConfigXML(xmlDocPtr doc, xmlNodePtr cur);
   
 private:
-  void parse_directory(xmlNodePtr cur, const std::string& prefix);
-  bool is_directory(xmlNodePtr cur);
-  bool is_value(xmlNodePtr cur);
+  void parse_directory(xmlDocPtr doc, xmlNodePtr cur, const std::string& prefix);
+  bool is_directory(xmlDocPtr doc, xmlNodePtr cur);
+  bool is_value(xmlDocPtr doc, xmlNodePtr cur);
 
   ConfigXML (const ConfigXML&);
   ConfigXML& operator= (const ConfigXML&);
