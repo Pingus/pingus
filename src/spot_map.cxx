@@ -1,4 +1,4 @@
-//  $Id: spot_map.cxx,v 1.21 2002/10/17 00:10:46 grumbel Exp $
+//  $Id: spot_map.cxx,v 1.22 2002/12/20 23:06:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -236,9 +236,9 @@ PingusSpotMap::remove(CL_SurfaceProvider* sprovider, int x, int y)
   int start_x = Math::max(x / tile_size, 0);
   int start_y = Math::max(y / tile_size, 0);
   int end_x   = Math::min((x + sprovider->get_width()) / tile_size, 
-                          static_cast<unsigned int>(width/tile_size));
+                          static_cast<unsigned int>((width - 1) / tile_size));
   int end_y   = Math::min((y + sprovider->get_height()) / tile_size, 
-                          static_cast<unsigned int>(height/tile_size));
+                          static_cast<unsigned int>((height - 1) / tile_size));
      
   
 
