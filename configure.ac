@@ -99,7 +99,7 @@ AC_SUBST(PINGUS_LIBS)
 # po/Makefile.in intl/Makefile <- this must be in one line, if its not
 # po/Makefile will not be generated.
 
-AC_OUTPUT( Makefile  m4/Makefile  intl/Makefile 
+AC_OUTPUT( Makefile  m4/Makefile
            contrib/Makefile 
            src/Makefile 
            src/actions/Makefile
