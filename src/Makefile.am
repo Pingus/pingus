@@ -298,6 +298,8 @@ worldobj_data_factory.hxx \
 xml_helper.cxx \
 xml_helper.hxx \
 xml_file_reader.hxx \
+xmlgz_reader.hxx \
+xmlgz_reader.cxx \
 xml_file_reader.cxx \
 xml_file_writer.hxx \
 xml_file_writer.cxx \
