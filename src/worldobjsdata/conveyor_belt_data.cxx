@@ -1,4 +1,4 @@
-//  $Id: conveyor_belt_data.cxx,v 1.6 2002/09/28 11:52:26 torangan Exp $
+//  $Id: conveyor_belt_data.cxx,v 1.7 2003/02/18 00:15:32 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,16 +36,8 @@ ConveyorBeltData::ConveyorBeltData (xmlDocPtr doc, xmlNodePtr cur)
 {
   cur = cur->children;
   
-  while (cur)
-    {
-      if (xmlIsBlankNode(cur)) 
-	{
-	  cur = cur->next;
-	  continue;
-	}
-      else if (XMLhelper::equal_str(cur->name, "position"))
-	{
-	  pos = XMLhelper::parse_vector(doc, cur);
+  XMLReader reader(doc, cur);
+  reader.read_vector("position", pos);
 	}
       else if (XMLhelper::equal_str(cur->name, "width"))
 	{
