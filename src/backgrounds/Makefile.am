@@ -21,6 +21,8 @@ libpingus_backgrounds_a_SOURCES = ThunderstormBackground.cc     ThunderstormBack
                                   ThunderstormBackgroundData.cc ThunderstormBackgroundData.hh \
                                   SurfaceBackground.cc          SurfaceBackground.hh          \
                                   SurfaceBackgroundData.cc      SurfaceBackgroundData.hh      \
+                                  StarfieldBackground.cc        StarfieldBackground.hh \
+                                  SolidColorBackground.cc       SolidColorBackground.hh \
                                   Background.cc                 Background.hh        \
                                   BackgroundData.cc             BackgroundData.hh
 

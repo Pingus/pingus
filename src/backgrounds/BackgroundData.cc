@@ -1,4 +1,4 @@
-//  $Id: BackgroundData.cc,v 1.1 2000/09/09 18:11:30 grumbel Exp $
+//  $Id: BackgroundData.cc,v 1.2 2000/09/29 15:43:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,8 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "SurfaceBackgroundData.hh"
+#include "StarfieldBackground.hh"
+#include "SolidColorBackground.hh"
 #include "ThunderstormBackgroundData.hh"
 #include "BackgroundData.hh"
 
@@ -45,9 +47,17 @@ BackgroundData::create(xmlDocPtr doc, xmlNodePtr cur)
 	{
 	  data = ThunderstormBackgroundData::create (doc, cur);
 	}
+      else if (strcmp(type, "starfield") == 0)
+	{
+	  data = StarfieldBackgroundData::create (doc, cur);
+	}
+      else if (strcmp (type, "solidcolor") == 0)
+	{
+	  data = SolidColorBackgroundData::create (doc, cur);
+	}
       else
 	{
-	  std::cout << "BackgroundData: Unhandeld background type, default to surface-background" << std::endl;
+	  std::cout << "BackgroundData: Unhandeld background type, default to surface-background, probally evil!" << std::endl;
 	  data = SurfaceBackgroundData::create(doc, cur);
 	}
     }

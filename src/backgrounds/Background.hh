@@ -1,4 +1,4 @@
-//  $Id: Background.hh,v 1.1 2000/09/09 18:11:30 grumbel Exp $
+//  $Id: Background.hh,v 1.2 2000/09/29 15:43:52 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,12 +20,13 @@
 #ifndef BACKGROUND_HH
 #define BACKGROUND_HH
 
+#include "../WorldObj.hh"
 #include "BackgroundData.hh"
 
 /** Abstract representation of the background, all classes, which
     inherit from this can be used as background 
     @see BackgroundData */
-class Background
+class Background : public WorldObj
 {
 public:
   /// Empty costructor

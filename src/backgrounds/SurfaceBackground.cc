@@ -1,4 +1,4 @@
-//  $Id: SurfaceBackground.cc,v 1.1 2000/08/28 00:23:50 grumbel Exp $
+//  $Id: SurfaceBackground.cc,v 1.2 2000/09/29 15:43:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -272,7 +272,7 @@ SurfaceBackground::draw_offset(int x_of, int y_of, float s)
 	}
       else 
 	{
-	  std::cout << "Zooming not supported" << std::endl;
+	  std::cout << "SurfaceBackground: Zooming not supported: " << s << std::endl;
 	  for(int y=(y_of/2); y < CL_Display::get_height(); y += (int)(bg_surface->get_height() * s)) {
 	    for(int x = start_x; x < CL_Display::get_width(); x += (int)(bg_surface->get_width() * s)) {
 	      bg_surface->put_screen(x, y, s, s);

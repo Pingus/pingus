@@ -1,4 +1,4 @@
-// $Id: BackgroundData.hh,v 1.3 2000/09/29 15:43:52 grumbel Exp $
+//  $Id: SolidColorBackground.hh,v 1.1 2000/09/29 15:43:52 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,32 +17,38 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef BACKGROUNDDATA_HH
-#define BACKGROUNDDATA_HH
+#ifndef SOLIDCOLORBACKGROUND_HH
+#define SOLIDCOLORBACKGROUND_HH
 
-#include <fstream>
-#include <libxml/parser.h>
-
-#include "../ResDescriptor.hh"
 #include "../Color.hh"
+#include "Background.hh"
+#include "BackgroundData.hh"
 
-/** This class represents the data that is needed to create a
- background.  To create a new background type you have to hinherit
- from BackgroundData and supply members to write the xml data, you
- also have to provide a create() member which parses the xml data and
- returns a newly allocated BackgroundData object, this member needs to
- be hooked up into BackgroundData::create(). */
-class BackgroundData
+class SolidColorBackgroundData : public BackgroundData
 {
 public:
-  BackgroundData();
-  virtual ~BackgroundData();
+  Color color;
+
+  SolidColorBackgroundData() {}
+  virtual ~SolidColorBackgroundData() {}
 
   /** Writte the content of this object formated as xml to the given
       stream */
-  virtual void write_xml(ofstream* xml) =0;
-  
-  static BackgroundData* create(xmlDocPtr doc, xmlNodePtr cur);
+  virtual void write_xml(ofstream* xml);
+  static SolidColorBackgroundData* create (xmlDocPtr doc, xmlNodePtr cur);
+};
+
+class SolidColorBackground : public Background,
+			     private SolidColorBackgroundData
+{
+public:
+  SolidColorBackground () {}
+  virtual ~SolidColorBackground () {}
+
+  static SolidColorBackground* create (BackgroundData* arg_data);
+
+  void let_move () {}
+  void draw_offset (int x_of, int y_of, float s = 1.0);
 };
 
 #endif
