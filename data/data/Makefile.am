@@ -35,7 +35,8 @@ groundpieces-ground.scr      \
 groundpieces-transparent.scr \
 groundpieces-solid.scr       \
 groundpieces-bridge.scr      \
-groundpieces-remove.scr
+groundpieces-remove.scr      \
+gui.scr
 
 pkgdata_DATA = $(EXTRA_DIST)
 
