@@ -1,4 +1,4 @@
-//  $Id: PanelIcons.cc,v 1.2 2000/02/09 21:43:43 grumbel Exp $
+//  $Id: PanelIcons.cc,v 1.3 2000/02/11 16:58:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,7 +28,7 @@ PanelIconLoad::PanelIconLoad()
 void
 PanelIconLoad::on_click()
 {
-  cout << "Load level..." << endl;
+  std::cout << "Load level..." << std::endl;
   event->editor_load_level();
 }
 
@@ -89,13 +89,13 @@ PanelIconPreferences::PanelIconPreferences()
 void
 PanelIconPreferences::on_click()
 {
-  cout << "Preferences not implemented" << endl;
+  std::cout << "Preferences not implemented" << std::endl;
 }
 
 void 
 PanelIconEdit::on_click()
 {
-  cout << "Edit not implemented" << endl;
+  std::cout << "Edit not implemented" << std::endl;
 }
 
 PanelIconRun::PanelIconRun()

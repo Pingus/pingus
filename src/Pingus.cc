@@ -1,4 +1,4 @@
-//   $Id: Pingus.cc,v 1.2 2000/02/09 21:43:40 grumbel Exp $
+//   $Id: Pingus.cc,v 1.3 2000/02/11 16:58:26 grumbel Exp $
 //    ___
 //   |  _\ A free Lemmings clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -55,13 +55,9 @@
 #include "PingusMessageBox.hh"
 #include "particles/GroundParticle.hh"
 
-#ifdef WIN32
-using namespace std;
-#endif /* WIN32 */
-
 PingusMain::PingusMain()
 {
-  string temp;
+  std::string temp;
   resolution = "640x480";
 
   temp = string(PACKAGE) + " " + VERSION + " - A free Lemmings clone";
@@ -102,7 +98,7 @@ void
 PingusMain::read_rc_file(void)
 {
   char*    homedir = getenv("HOME");
-  string   rcfile;
+  std::string   rcfile;
   char     line[1024];
   char     option[1024];
   char     argument[1024];
@@ -121,11 +117,11 @@ PingusMain::read_rc_file(void)
   ifstream in(rcfile.c_str());
 
   if (!in) {
-    cout << "PingusMain: No config file found at: " << rcfile << endl;
+    std::cout << "PingusMain: No config file found at: " << rcfile << std::endl;
     return;
   } 
   
-  cout << "PingusMain: Parsing config file" << endl;
+  std::cout << "PingusMain: Parsing config file" << std::endl;
   while(true) {
     in.getline(line, 1023);
     ++lineno;
@@ -203,38 +199,38 @@ PingusMain::check_args(int argc, char* argv[])
     switch(c) {
     case 'c': // -c, --enable-cursor
       cursor_enabled = true;
-      if (verbose) cout << "PingusMain:check_args: Cursor enabled" << endl;
+      if (verbose) std::cout << "PingusMain:check_args: Cursor enabled" << std::endl;
       break;
     case 'b': // -b, --print-fps
       print_fps = true;
-      if (verbose) cout << "PingusMain:check_args: Printing fps enabled" << endl;
+      if (verbose) std::cout << "PingusMain:check_args: Printing fps enabled" << std::endl;
       break;
     case 'l': // -l, --level
       levelfile = optarg;
-      if (verbose) cout << "PingusMain:check_args: Levelfile = " << levelfile << endl;
+      if (verbose) std::cout << "PingusMain:check_args: Levelfile = " << levelfile << std::endl;
       break;
     case 't': // -t, --set-speed
       game_speed = atoi(optarg);
       if (verbose) 
-	cout << "PingusMain:check_args: Game Speed = " << game_speed << endl;
+	cout << "PingusMain:check_args: Game Speed = " << game_speed << std::endl;
       break;
     case 'e':
       start_editor = true;
-      cout << "PingusMain: Starting Editor" << endl;
+      std::cout << "PingusMain: Starting Editor" << std::endl;
       break;
     case 'q':
       quick_play = true;
       break;
     case 's': // -s, --enable-sound
-      if (verbose) cout << "check_args: Sound Effects enabled" << endl;
-      cout <<
+      if (verbose) std::cout << "check_args: Sound Effects enabled" << std::endl;
+      std::cout <<
 	"\n"
 	"=================================================================\n"
 	"                            WARNING!                             \n"
 	"=================================================================\n"
 	"Be warned, at the moment there is only some sound code pressent, \n"
 	"there are *no* sound files, so this will fail.\n"
-	"=================================================================\n" << endl;
+	"=================================================================\n" << std::endl;
       sound_enabled = true;
       break;
     case 'g':
@@ -243,36 +239,36 @@ PingusMain::check_args(int argc, char* argv[])
     case 'S':
       pingus_soundfile = optarg;
       if (verbose) 
-	cout << "check_args: Sound File = " << pingus_soundfile << endl;
+	cout << "check_args: Sound File = " << pingus_soundfile << std::endl;
       break;
     case 'm': // -m, --enable-music
-      if (verbose) cout << "check_args: Music enabled" << endl;
+      if (verbose) std::cout << "check_args: Music enabled" << std::endl;
       music_enabled = true;
       break;
     case 'd': // -d, --datadir
       pingus_datadir = optarg;
       pingus_datadir_set = true;
       if (verbose)
-	cout << "check_args: Pingus Data Dir = " << pingus_datadir << endl;
+	cout << "check_args: Pingus Data Dir = " << pingus_datadir << std::endl;
       break;
     case 'n':
       intro_disabled = true;
       break;
     case 'V':
-      cout << "Pingus" << " version " << VERSION << endl;
-      cout <<
+      std::cout << "Pingus" << " version " << VERSION << std::endl;
+      std::cout <<
 	"\n"
 	"Copyright (C) 1998 Ingo Ruhnke <grumbel@gmx.de>\n"
 	"There is NO warranty.  You may redistribute this software\n"
 	"under the terms of the GNU General Public License.\n"
 	"For more information about these matters, see the files named COPYING."
-	   << endl;
+	   << std::endl;
 
       exit(EXIT_SUCCESS);
       break;
     case 'i':
       gimmicks_enabled = true;
-      if (verbose) cout << "Pingus: Gimmicks enabled" << endl;
+      if (verbose) std::cout << "Pingus: Gimmicks enabled" << std::endl;
       break; 
     case 'r': // -r, --record-demo
       record_demo = true;
@@ -282,11 +278,11 @@ PingusMain::check_args(int argc, char* argv[])
       play_demo = true;
       demo_file = optarg;
       if (verbose)
-	cout << "Using demofile: " << demo_file << endl;
+	cout << "Using demofile: " << demo_file << std::endl;
       break;
     case 'v':
       sscanf(optarg, "%d", &verbose);
-      cout << "Pingus: Verbose level is " << verbose << endl;
+      std::cout << "Pingus: Verbose level is " << verbose << std::endl;
       break;
     case 129: // --debug-actions
       debug_actions = true;
@@ -302,9 +298,9 @@ PingusMain::check_args(int argc, char* argv[])
       previews_enabled = false;
       break;
     case 134: // --maintainer_mode
-      cout << "---------------------------------" << endl
+      std::cout << "---------------------------------" << endl
 	   << "--- Maintainer Mode activated ---" << endl
-	   << "---------------------------------" << endl; 
+	   << "---------------------------------" << std::endl; 
       maintainer_mode = true;
       break;
     case 135:
@@ -318,9 +314,9 @@ PingusMain::check_args(int argc, char* argv[])
       break;
     default:
       
-      cout << "Unknow char: " << c << endl << endl;
-      cout << "Usage: " << argv[0] << " [OPTIONS]... [LEVELFILE]" << endl;
-      cout <<
+      std::cout << "Unknow char: " << c << endl << std::endl;
+      std::cout << "Usage: " << argv[0] << " [OPTIONS]... [LEVELFILE]" << std::endl;
+      std::cout <<
 	"\n"
 	"Options:\n"
 	"   -g, --geometry {width}x{height}\n"
@@ -345,7 +341,7 @@ PingusMain::check_args(int argc, char* argv[])
 	"   --disable-previews       Disables all level preview in the level selector\n"
 	"   --maintainer-mode        Enables some features, only interesting programmers\n"
 	"   -e, --editor             Launch the Level editor (experimental)\n"
-	   << endl;
+	   << std::endl;
       exit(EXIT_SUCCESS);
       break;
     }
@@ -357,8 +353,8 @@ PingusMain::check_args(int argc, char* argv[])
     if (levelfile.empty()) {
       levelfile = argv[i];
     } else {
-      cout << "Wrong argument: '" << argv[i] << "'" << endl;
-      cout << "A levelfile is already given," << endl;
+      std::cout << "Wrong argument: '" << argv[i] << "'" << std::endl;
+      std::cout << "A levelfile is already given," << std::endl;
       exit(EXIT_FAILURE);
     }
   }
@@ -370,13 +366,13 @@ PingusMain::init_pingus()
   /*
     if (verbose) 
     {
-    cout << "Loading data... " << endl;
-      cout << "Pingus Datafile: " << pingus_datafile << endl;
-      cout << "Global Datafile: " << global_datafile << endl;
+    std::cout << "Loading data... " << std::endl;
+      std::cout << "Pingus Datafile: " << pingus_datafile << std::endl;
+      std::cout << "Global Datafile: " << global_datafile << std::endl;
     }
   
   if (verbose)
-    cout << "PingusMain::load_data: created resource successfully" << endl;
+    std::cout << "PingusMain::load_data: created resource successfully" << std::endl;
     */
 }
 
@@ -387,7 +383,7 @@ PingusMain::get_filenames()
   char* home = getenv("HOME");
   
   if (verbose)
-    clog << "Getting filenames..." << endl;
+    clog << "Getting filenames..." << std::endl;
   
   if (home) 
     {
@@ -401,24 +397,24 @@ PingusMain::get_filenames()
   
   if (exist(pingus_homedir)) 
     {
-      cout << "PingusMain: pingus_homedir = " << pingus_homedir << endl;
+      std::cout << "PingusMain: pingus_homedir = " << pingus_homedir << std::endl;
     } 
   else 
     {
-      cout << "PingusMain: Creating directory: " << pingus_homedir << "... " << flush;
+      std::cout << "PingusMain: Creating directory: " << pingus_homedir << "... " << std::flush;
       
       if (mkdir(pingus_homedir.c_str(), S_IRUSR | S_IWUSR | S_IXUSR | S_IRGRP | S_IXGRP) == 0
 	  && mkdir((pingus_homedir + "levels/").c_str(), S_IRUSR | S_IWUSR | S_IXUSR | S_IWGRP | S_IXGRP) == 0
 	  && mkdir((pingus_homedir + "stat").c_str(), S_IRUSR | S_IWUSR | S_IXUSR | S_IRGRP | S_IXGRP) == 0)
 	{
-	  cout << "finished" << endl;
+	  std::cout << "finished" << std::endl;
 	}
       else 
 	{
-	  cout << "error" << endl;
-	  cout << "---------------------------------------------------------------" << endl;
+	  std::cout << "error" << std::endl;
+	  std::cout << "---------------------------------------------------------------" << std::endl;
 	  perror(pingus_homedir.c_str());
-	  cout << "---------------------------------------------------------------" << endl;
+	  std::cout << "---------------------------------------------------------------" << std::endl;
 	}
     }
   
@@ -445,7 +441,7 @@ PingusMain::get_filenames()
       if (env) 
 	{
 	  if (verbose > 1)
-	    cout << "Using envar $PINGUS_DATADIR" << endl;
+	    std::cout << "Using envar $PINGUS_DATADIR" << std::endl;
 	
 	  pingus_datadir = env;
 	  pingus_datadir_set = true;
@@ -457,7 +453,7 @@ PingusMain::get_filenames()
       if (exist("../data/data/global.dat")) 
 	{
 	  if (verbose > 1)
-	    cout << "Assuming that you haven't installed pingus, overriding current value." << endl;
+	    std::cout << "Assuming that you haven't installed pingus, overriding current value." << std::endl;
 	
 	  pingus_datadir += ":../data/";
 	}
@@ -465,7 +461,7 @@ PingusMain::get_filenames()
       if (!pingus_datadir_set) 
 	{
 	  if (verbose > 1)
-	    cout << "Using intern macro PINGUS_DATADIR" << endl;
+	    std::cout << "Using intern macro PINGUS_DATADIR" << std::endl;
 	
 	  pingus_datadir += ":";
 	  pingus_datadir += PINGUS_DATADIR;
@@ -473,7 +469,7 @@ PingusMain::get_filenames()
     }
 
   if (verbose)
-    cout << "pingus_datadir: " << pingus_datadir << endl;
+    std::cout << "pingus_datadir: " << pingus_datadir << std::endl;
 
   // FIXME: find_file() sucks.
   global_datafile   = find_file(pingus_datadir, "data/global.dat");
@@ -482,14 +478,14 @@ PingusMain::get_filenames()
   if (exist(pingus_datafile)) 
     {
       if (verbose > 1)
-	cout << "Pingus Datadir exist, all looks ok" << endl;
+	cout << "Pingus Datadir exist, all looks ok" << std::endl;
     } 
   else 
     {
-      cout << "Pingus Datafile: " << pingus_datafile << endl << endl;
-      cout << "Couldn't find `global.dat', please set the enviroment variable\n"
+      std::cout << "Pingus Datafile: " << pingus_datafile << endl << std::endl;
+      std::cout << "Couldn't find `global.dat', please set the enviroment variable\n"
 	   << "PINGUS_DATADIR to the path of the file `pingus.dat' or use the\n"
-	   << "-p option." << endl;
+	   << "-p option." << std::endl;
       exit(EXIT_SUCCESS);
     } 
 
@@ -504,25 +500,25 @@ PingusMain::get_filenames()
   if (sound_enabled) {
     if (pingus_soundfile.empty())
       pingus_soundfile = find_file(pingus_datadir, "sounds/sound.specs");
-    cout << "PingusMain: Reading Sound Specs" << endl;
+    std::cout << "PingusMain: Reading Sound Specs" << std::endl;
 
     PingusSound::init(pingus_soundfile);
-    cout << "PingusMain: Reading Sound Specs finished" << endl;
+    std::cout << "PingusMain: Reading Sound Specs finished" << std::endl;
   }
 
-  string custom_levelfile = levelfile;
+  std::string custom_levelfile = levelfile;
   if (!levelfile.empty()) 
     {
       if (!exist(custom_levelfile)) 
 	{
 	  if (verbose)
-	    cout << "Levelfile not found, trying fallbacks" << endl;
+	    std::cout << "Levelfile not found, trying fallbacks" << std::endl;
 	  
 	  // Search for the level in the datadir
 	  custom_levelfile = find_file(pingus_datadir, "/levels/" + custom_levelfile);
 	  if (!exist(custom_levelfile.c_str())) 
 	    {
-	      cout << "Couldn't find level file: \"" << custom_levelfile << "\"" << endl;
+	      std::cout << "Couldn't find level file: \"" << custom_levelfile << "\"" << std::endl;
 	      exit(EXIT_FAILURE);
 	    }
 	}
@@ -530,7 +526,7 @@ PingusMain::get_filenames()
   levelfile = custom_levelfile;
   
   if (verbose)
-    cout << "Pingus Level File: " << levelfile << endl;
+    std::cout << "Pingus Level File: " << levelfile << std::endl;
 }
   
 void
@@ -545,14 +541,14 @@ PingusMain::init(int argc, char* argv[])
 
   if (verbose) 
     {
-      cout << PACKAGE << " version " << VERSION << endl;
+      std::cout << PACKAGE << " version " << VERSION << std::endl;
     }
 
-  // Translate the geometry string to some int's
+  // Translate the geometry std::string to some int's
   if (sscanf(resolution.c_str(), "%d%c%d", &screen_width, &c, &screen_height) != 3) 
     {
-      cerr << "Resolution string is wrong, it should be like: \n" 
-	   << "\"640x480\" or \"800x600\"" << endl;
+      cerr << "Resolution std::string is wrong, it should be like: \n" 
+	   << "\"640x480\" or \"800x600\"" << std::endl;
       exit(EXIT_FAILURE);
     }
 
@@ -566,21 +562,21 @@ PingusMain::init_clanlib()
 {
   // Init ClanLib
   if (verbose) 
-    cout << "Init ClanLib" << endl;
+    std::cout << "Init ClanLib" << std::endl;
   // CL_System::init_display();
   CL_SetupCore::init_display();
 
   if (sound_enabled || music_enabled) 
     {
       if (verbose)
-	cout << "Init ClanSound" << endl;
+	cout << "Init ClanSound" << std::endl;
       //CL_System::init_sound();
     }
 
   if (verbose) 
     {
-      cout << "Using resolution: " 
-	   << screen_width << "x" << screen_height << endl;
+      std::cout << "Using resolution: " 
+	   << screen_width << "x" << screen_height << std::endl;
     }
 
   // Setting the display resolution
@@ -592,7 +588,7 @@ PingusMain::do_lemmings_mode(void)
 {
   if (verbose) 
     {
-      cout << "PingusMain: Starting Main: " << CL_System::get_time() << endl;
+      std::cout << "PingusMain: Starting Main: " << CL_System::get_time() << std::endl;
     }
 
   if (!levelfile.empty()) 
@@ -609,7 +605,7 @@ PingusMain::do_lemmings_mode(void)
   
   catch (CL_Error err) 
     {
-      string str;
+      std::string str;
       str = "CL_Error: ";
       str += err.message;
       PingusMessageBox box(str);
@@ -620,7 +616,7 @@ PingusMain::do_lemmings_mode(void)
       PingusMessageBox(" PingusError: " + err.message);
     }
   
-  cout << "Pingus exit normaly" << endl;
+  std::cout << "Pingus exit normaly" << std::endl;
   
   return true;
 }
@@ -628,7 +624,7 @@ PingusMain::do_lemmings_mode(void)
 bool
 PingusMain::do_worms_mode(void)
 {
-  cout << "do_worms_mode() not implemented" << endl;
+  std::cout << "do_worms_mode() not implemented" << std::endl;
   return false;
 }
 
@@ -669,23 +665,23 @@ PingusMain::main(int argc, char** argv)
   }
   
   catch (CL_Error err) {
-    cout << "Error caught from ClanLib: " << err.message << endl;
+    std::cout << "Error caught from ClanLib: " << err.message << std::endl;
   }
 
   catch (PingusError err) {
-    cout << "Error caught from Pingus: " << err.message << endl;
+    std::cout << "Error caught from Pingus: " << err.message << std::endl;
   }
 
   catch (bad_alloc a) {
-    cout << "Pingus: Out of memory!" << endl;
+    std::cout << "Pingus: Out of memory!" << std::endl;
   }
 
   catch (exception a) {
-    cout << "Pingus: Standard exception caught!:\n" << a.what() << endl;
+    std::cout << "Pingus: Standard exception caught!:\n" << a.what() << std::endl;
   }
 
   catch (...) {
-    cout << "Pingus: Unknown throw caught!" << endl;
+    std::cout << "Pingus: Unknown throw caught!" << std::endl;
   }
 
   return 0;

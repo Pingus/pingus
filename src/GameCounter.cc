@@ -1,4 +1,4 @@
-//  $Id: GameCounter.cc,v 1.2 2000/02/09 21:43:39 grumbel Exp $
+//  $Id: GameCounter.cc,v 1.3 2000/02/11 16:58:25 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,10 +21,6 @@
 #include <cassert>
 
 #include "GameCounter.hh"
-
-#ifdef WIN32
-using namespace std;
-#endif /* WIN32 */
 
 GameCounter::GameCounter()
 {
@@ -75,7 +71,7 @@ GameCounter::check_overflow(void)
       is_finished = true;
       break;
     default:
-      cout << "GameCounter: Bug" << endl;
+      std::cout << "GameCounter: Bug" << std::endl;
     }
   } else if (count < 0) {
     switch(type) {
@@ -90,8 +86,8 @@ GameCounter::check_overflow(void)
     }
   }
   if (count >= size || count < 0) {
-    cout << "Size: " << size << endl;
-    cout << "Count: " << count << endl;
+    std::cout << "Size: " << size << std::endl;
+    std::cout << "Count: " << count << std::endl;
   }
 }
 

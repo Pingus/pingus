@@ -1,4 +1,4 @@
-//  $Id: PingusMessageBox.hh,v 1.2 2000/02/09 21:43:40 grumbel Exp $
+//  $Id: PingusMessageBox.hh,v 1.3 2000/02/11 16:58:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,7 +27,7 @@
 class PingusMessageBox
 {
 private:
-  string str;
+  std::string str;
   CL_Font* font;
 public:
   PingusMessageBox(string);

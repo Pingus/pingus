@@ -1,4 +1,4 @@
-//  $Id: PingusResource.cc,v 1.2 2000/02/09 21:43:40 grumbel Exp $
+//  $Id: PingusResource.cc,v 1.3 2000/02/11 16:58:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,21 +28,21 @@ vector<PingusResource::Res> PingusResource::resource;
 
 PingusResource::PingusResource()
 {
-  cout << "PingusResource Constructor called" << endl;
+  std::cout << "PingusResource Constructor called" << std::endl;
 }
 
 void
-PingusResource::open(string filename)
+PingusResource::open(std::string filename)
 {
-  string file_n;
+  std::string file_n;
 
   if (verbose)
-    cout << "PingusResource: Searching for file: " << filename << endl;
+    std::cout << "PingusResource: Searching for file: " << filename << std::endl;
 
   file_n = find_file(pingus_datadir, "data/" + filename);
 
   if (verbose)
-    cout << "PingusResource: Found file: " << file_n << endl;
+    std::cout << "PingusResource: Found file: " << file_n << std::endl;
 
   if (filename != file_n) {
     Res res;
@@ -56,9 +56,9 @@ PingusResource::open(string filename)
 }
 
 CL_ResourceManager*
-PingusResource::get(string filename)
+PingusResource::get(std::string filename)
 {
-  for(vector<Res>::iterator i = resource.begin(); i != resource.end(); i++) 
+  for(std::vector<Res>::iterator i = resource.begin(); i != resource.end(); i++) 
     {
       if (filename == i->filename)
 	{

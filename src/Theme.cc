@@ -1,4 +1,4 @@
-//  $Id: Theme.cc,v 1.2 2000/02/09 21:43:41 grumbel Exp $
+//  $Id: Theme.cc,v 1.3 2000/02/11 16:58:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,7 +35,7 @@ Theme::Theme()
   background = 0;
 }
 
-Theme::Theme(string filename)
+Theme::Theme(std::string filename)
 {
   title = CL_Font::load("Fonts/pingus", PingusResource::get("fonts.dat"));
   font  = CL_Font::load("Fonts/pingus_small", PingusResource::get("fonts.dat"));
@@ -48,11 +48,11 @@ Theme::~Theme()
 }
   
 void
-Theme::load(string filename)
+Theme::load(std::string filename)
 {
-  if (verbose) cout << "Theme: loading: " << filename << endl;
+  if (verbose) std::cout << "Theme: loading: " << filename << std::endl;
   plt.parse(filename);
-  if (verbose > 1) cout << "Theme: Surface: " << plt.get_surface() << endl;
+  if (verbose > 1) std::cout << "Theme: Surface: " << plt.get_surface() << std::endl;
 
   levels = plt.get_levels();
   load_levels();
@@ -61,7 +61,7 @@ Theme::load(string filename)
     surface = CL_Surface::load(plt.get_surface().c_str(), PingusResource::get("global.dat"));
   }
   catch (CL_Error err) {
-    cout << err.message << endl;
+    std::cout << err.message << std::endl;
     surface = 0;
   }
 
@@ -69,7 +69,7 @@ Theme::load(string filename)
     background = CL_Surface::load(plt.get_background().res_name.c_str(), PingusResource::get(plt.get_background().filename));
   }
   catch (CL_Error err) {
-    cout << err.message << endl;
+    std::cout << err.message << std::endl;
     background = 0;
   }
   load_status(filename);
@@ -110,25 +110,30 @@ Theme::draw_title()
       y_pos += surface->get_height() + 20;
     }
 
-  font->print_center(x_center, y_pos, plt.get_description().c_str());
+  if (plt.get_description() != "-")
+    font->print_center(x_center, y_pos, plt.get_description().c_str());
 
   int j = 0;
 
-  for(vector<string>::iterator i = levelnames.begin(); i < levelnames.end(); i++) 
+  for(std::vector<std::string>::iterator i = levelnames.begin(); i < levelnames.end(); i++) 
     {
-      y_pos += 20;
+      y_pos += font->get_height() + 4;
       
       if (j > accessible_levels) 
 	{
 	  font->print_center(x_center, y_pos, (*i).c_str());
-	  CL_Display::fill_rect(x_center - 100, y_pos - 3,
-				x_center + 100, y_pos + 13,
+	  CL_Display::fill_rect(x_center - font->get_text_width(i->c_str())/2 - 1,
+				y_pos - 1,
+				x_center + font->get_text_width(i->c_str())/2 + 1, 
+				y_pos + font->get_height() + 1,
 				0.0, 0.0, 0.0, 0.5);
 	} 
       else if (j == current_level) 
 	{
-	  CL_Display::fill_rect(x_center - 100, y_pos - 3,
-				x_center + 100, y_pos + 13,
+	  CL_Display::fill_rect(x_center - font->get_text_width(i->c_str())/2 - 1,
+				y_pos - 1,
+				x_center + font->get_text_width(i->c_str())/2 + 1, 
+				y_pos + font->get_height() + 1,
 				1.0, 1.0, 1.0, 0.9);
 	  font->print_center(x_center, y_pos, (*i).c_str());
 	} 
@@ -144,28 +149,28 @@ Theme::draw_title()
 }
 
 void
-Theme::load_status(string name)
+Theme::load_status(std::string name)
 {
   status_file = System::basename(name);
-  string rawname  = status_file.substr(0, status_file.rfind("."));
+  std::string rawname  = status_file.substr(0, status_file.rfind("."));
   
-  if (verbose > 1) cout << "Filename: " << status_file << endl;
-  if (verbose > 1) cout << "Rawfile: " << status_file.substr(0, status_file.rfind(".")) << endl;
+  if (verbose > 1) std::cout << "Filename: " << status_file << std::endl;
+  if (verbose > 1) std::cout << "Rawfile: " << status_file.substr(0, status_file.rfind(".")) << std::endl;
   
   status_file = pingus_homedir + "stat/" + rawname + ".pst";
-  if (verbose > 1) cout << "Filename to open: " << status_file << endl;
+  if (verbose > 1) std::cout << "Filename to open: " << status_file << std::endl;
 
   if (exist(status_file)) {
-    ifstream in;
+    std::ifstream in;
     in.open(status_file.c_str());
     in >> accessible_levels;
     in.close();
   } else {
-    if (verbose) cout << "Theme: No Savegame for this theme found" << endl;
+    if (verbose) std::cout << "Theme: No Savegame for this theme found" << std::endl;
     accessible_levels = 0;
   }
   if ((unsigned int)(accessible_levels) >= levels.size()) {
-    if (verbose) cout << "Warrning: Accessible_Level is to high! " << accessible_levels << endl;
+    if (verbose) std::cout << "Warrning: Accessible_Level is to high! " << accessible_levels << std::endl;
     accessible_levels = levels.size() - 1;
   }
   current_level = accessible_levels;
@@ -194,7 +199,7 @@ Theme::play()
 
   catch (PingusError err) 
     {
-      string str = "Pingus_Error: ";
+      std::string str = "Pingus_Error: ";
       str += err.message;
       PingusMessageBox box(str);
     }
@@ -211,7 +216,7 @@ Theme::next_level()
   if (current_level > accessible_levels) 
     current_level  = accessible_levels;
   
-  cout << "Level: " << current_level << endl;
+  std::cout << "Level: " << current_level << std::endl;
 }
 
 void
@@ -222,16 +227,16 @@ Theme::previous_level()
   if (current_level < 0)
     current_level = 0;
   
-  cout << "Level: " << current_level << endl;
+  std::cout << "Level: " << current_level << std::endl;
 }
 
 void
 Theme::load_levels()
 {
-  string filename;
-  cout << "Theme opening levels... " << flush;
+  std::string filename;
+  std::cout << "Theme opening levels... " << std::flush;
 
-  for(vector<string>::iterator i = levels.begin(); i < levels.end(); i++)
+  for(std::vector<std::string>::iterator i = levels.begin(); i < levels.end(); i++)
     {
       filename = find_file(pingus_datadir, "levels/" + *i);
 
@@ -243,12 +248,12 @@ Theme::load_levels()
 	}
       catch (PingusError err) 
 	{
-	  string str = "PingusError: ";
+	  std::string str = "PingusError: ";
 	  str += err.message;
-	  cout << err.message << endl;
+	  std::cout << err.message << std::endl;
 	}
     }
-  cout << "done." << endl;
+  std::cout << "done." << std::endl;
 }
 
 /* EOF */

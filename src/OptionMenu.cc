@@ -1,4 +1,4 @@
-//  $Id: OptionMenu.cc,v 1.2 2000/02/09 21:43:40 grumbel Exp $
+//  $Id: OptionMenu.cc,v 1.3 2000/02/11 16:58:25 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,7 +29,7 @@ OptionMenu   option_menu;
 
 // ----- OptionEntry -----
 
-OptionEntry::OptionEntry(string s, bool* v, int x, int y)
+OptionEntry::OptionEntry(std::string s, bool* v, int x, int y)
 {
   font = CL_Font::load("Fonts/smallfont_h",  PingusResource::get("fonts.dat"));
   str = s;
@@ -40,7 +40,7 @@ OptionEntry::OptionEntry(string s, bool* v, int x, int y)
   y_pos = y;
 }
 
-OptionEntry::OptionEntry(string s, string* v, int x, int y)
+OptionEntry::OptionEntry(std::string s, string* v, int x, int y)
 {
   font = CL_Font::load("Fonts/smallfont_h",  PingusResource::get("fonts.dat"));
   str = s;
@@ -51,7 +51,7 @@ OptionEntry::OptionEntry(string s, string* v, int x, int y)
   y_pos = y;
 }
 
-OptionEntry::OptionEntry(string s, int* v, int x, int y)
+OptionEntry::OptionEntry(std::string s, int* v, int x, int y)
 {
   font = CL_Font::load("Fonts/smallfont_h",  PingusResource::get("fonts.dat"));
   str = s;
@@ -97,7 +97,7 @@ OptionEntry::toggle()
   if (value_bool) {
     *(value_bool) = !*(value_bool);
   } else if (value_str) {
-    cout << "Not implemented" << endl;
+    std::cout << "Not implemented" << std::endl;
   } else if (value_int) {
     ++(*value_int);
   }
@@ -109,7 +109,7 @@ OptionEntry::rtoggle()
   if (value_bool) {
     *(value_bool) = !*(value_bool);
   } else if (value_str) {
-    cout << "Not implemented" << endl;
+    std::cout << "Not implemented" << std::endl;
   } else if (value_int) {
     --(*value_int);    
   }
@@ -129,7 +129,7 @@ OptionEntry::mouse_over()
 bool
 OptionMenu::Event::on_button_press(CL_InputDevice *device, const CL_Key &key)
 {
-  cout << "Got putten press" << endl;
+  std::cout << "Got putten press" << std::endl;
   return true;
 }
 
@@ -144,7 +144,7 @@ OptionMenu::Event::on_button_release(CL_InputDevice *device, const CL_Key &key)
 	  option_menu->quit = true;
 	  break;
 	default:
-	  cout << "OptionMenu::Event: Unknown key released: id=" << key.id << endl;
+	  std::cout << "OptionMenu::Event: Unknown key released: id=" << key.id << std::endl;
 	  break;
 	} 
     }
@@ -159,7 +159,7 @@ OptionMenu::Event::on_button_release(CL_InputDevice *device, const CL_Key &key)
 	  option_menu->quit = true;
 	  break;
 	default:
-	  cout << "OptionMenu::Event: Unknown mouse key released: id=" << key.id << endl;
+	  std::cout << "OptionMenu::Event: Unknown mouse key released: id=" << key.id << std::endl;
 	  break;  
 	}
     }
@@ -212,21 +212,21 @@ OptionMenu::init()
 }
 
 void
-OptionMenu::add_entry(string e, bool* v)
+OptionMenu::add_entry(std::string e, bool* v)
 {
   entry.push_back(OptionEntry(e, v, entry_x, entry_y));
   entry_y += 20;
 }
 
 void 
-OptionMenu::add_entry(string e, int* v)
+OptionMenu::add_entry(std::string e, int* v)
 {
   entry.push_back(OptionEntry(e, v, entry_x, entry_y));
   entry_y += 20;
 }
 
 void 
-OptionMenu::add_entry(string e, string* v)
+OptionMenu::add_entry(std::string e, string* v)
 {
   entry.push_back(OptionEntry(e, v, entry_x, entry_y));
   entry_y += 20;

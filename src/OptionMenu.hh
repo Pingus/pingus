@@ -1,4 +1,4 @@
-//  $Id: OptionMenu.hh,v 1.2 2000/02/09 21:43:40 grumbel Exp $
+//  $Id: OptionMenu.hh,v 1.3 2000/02/11 16:58:25 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,7 +28,7 @@
 class OptionEntry
 {
 private:
-  string str;
+  std::string str;
   bool*   value_bool;
   string* value_str;
   int*    value_int;
@@ -78,9 +78,9 @@ public:
   void draw();
   void check_click();
   EntryIter current_item();
-  void add_entry(string e, bool* v);
-  void add_entry(string e, int* v);
-  void add_entry(string e, string* v);
+  void add_entry(std::string e, bool* v);
+  void add_entry(std::string e, int* v);
+  void add_entry(std::string e, string* v);
 };
 
 extern OptionMenu option_menu;

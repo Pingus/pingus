@@ -1,4 +1,4 @@
-//  $Id: EditorEvent.cc,v 1.2 2000/02/09 21:43:43 grumbel Exp $
+//  $Id: EditorEvent.cc,v 1.3 2000/02/11 16:58:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #include "../PingusGame.hh"
 #include "../globals.hh"
 #include "../System.hh"
+#include "../PingusError.hh"
 #include "StringReader.hh"
 #include "EditorEvent.hh"
 
@@ -69,7 +70,7 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key &key)
 	case CL_KEY_F7:
 	  editor->save_tmp_level();
 	  editor->checkpoint = string(tmpnam(0)) + ".pingus";
-	  cout << "Setting checkpoint: " << editor->checkpoint << endl;
+	  std::cout << "Setting checkpoint: " << editor->checkpoint << std::endl;
 	  object_manager->save_level(editor->checkpoint);
 	  break;
 	
@@ -78,12 +79,12 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key &key)
 	  editor->save_tmp_level();
 	  if (!editor->checkpoint.empty()) 
 	    {
-	      cout << "Restoring checkpoint: " << editor->checkpoint << endl;
+	      std::cout << "Restoring checkpoint: " << editor->checkpoint << std::endl;
 	      object_manager->load_level(editor->checkpoint);
 	    } 
 	  else 
 	    {
-	      cout << "No checkpoint set, no restoring done. " << endl;
+	      std::cout << "No checkpoint set, no restoring done. " << std::endl;
 	    }
 	  break;
       
@@ -151,7 +152,7 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key &key)
 	  // Change the width and height of the current level.
 	case CL_KEY_F9:
 	  {
-	    string tmp_str;
+	    std::string tmp_str;
 	    char str[1024];
 	    int  theight, twidth;
 
@@ -163,9 +164,9 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key &key)
 		if ((twidth % tile_size) != 0)
 		  {
 		    twidth += (tile_size - (twidth % tile_size));
-		    cout << "Editor: Width not a multiple of " 
+		    std::cout << "Editor: Width not a multiple of " 
 			 << tile_size << ", fixing width to " << twidth
-			 << endl; 
+			 << std::endl; 
 		  }
 		object_manager->width = twidth;
 	      }
@@ -178,9 +179,9 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key &key)
 		if ((theight % tile_size) != 0)
 		  {
 		    theight += (tile_size - (theight % tile_size));
-		    cout << "Editor: Height not a multiple of " 
+		    std::cout << "Editor: Height not a multiple of " 
 			 << tile_size << ", fixing height to " << theight 
-			 << endl; 
+			 << std::endl; 
 		  }
 	   
 		object_manager->height = theight;
@@ -194,12 +195,12 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key &key)
 	  break;
 	  
 	default:
-	  cout << "EdiorEvent: Unknown key pressed: id=" << key.id << " ascii=" << key.ascii << endl;
+	  std::cout << "EdiorEvent: Unknown key pressed: id=" << key.id << " ascii=" << key.ascii << std::endl;
 	}
     }
   else if (device == CL_Input::pointers[0])
     {
-      // cout << "Mouse Button Pressed" << endl;
+      // std::cout << "Mouse Button Pressed" << std::endl;
 
       switch (key.id)
 	{
@@ -214,18 +215,18 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key &key)
 	    }
 	  break;
 	case 1:
-	  //cout << "Middle button pressed" << endl;
+	  //cout << "Middle button pressed" << std::endl;
 	  editor->rect_get_current_objs();
 	  break;
 	case 2:
-	  //cout << "Right button pressed" << endl;
+	  //cout << "Right button pressed" << std::endl;
 	  editor->scroll();
 	  break;
 	}
     }
   else
     {
-      cout << "Unkown input device" << endl;
+      std::cout << "Unkown input device" << std::endl;
     }
   
   // Redraw the screen, since something may have changed
@@ -247,7 +248,7 @@ EditorEvent::on_button_release(CL_InputDevice *device, const CL_Key &key)
     {
       if (key.id == 0)
 	{
-	  // cout << "Mouse release: " << key.x << key.y << endl;
+	  // std::cout << "Mouse release: " << key.x << key.y << std::endl;
 	  editor->panel->on_release();
 	}
     }
@@ -307,11 +308,22 @@ EditorEvent::editor_start_current_level()
 {
   enabled = false;
 
-  PingusGame game;
-  string levelfile = editor->save_tmp_level();
-	
-  game.start(levelfile + ".plf",
-	     levelfile + ".psm");
+  try {
+    PingusGame game;
+    std::string levelfile = editor->save_tmp_level();
+    
+    game.start(levelfile + ".plf",
+	       levelfile + ".psm");
+  }
+  
+  catch(PingusError err) {
+    std::cout << "Editor: Error caught from Pingus: " << err.message << std::endl;
+  }
+  
+  catch (CL_Error err) {
+    std::cout << "Editor: Error caught from ClanLib: " << err.message << std::endl;
+  }
+
   
   enabled = true;
 }
@@ -319,19 +331,19 @@ EditorEvent::editor_start_current_level()
 void 
 EditorEvent::editor_load_level()
 {
-  string str;
+  std::string str;
   System::Directory dir;
-  list<string> strings;
-  string temp_str;
+  list<std::string> strings;
+  std::string temp_str;
 
   StringReader reader("Input filename to load the file (without .plf!)", editor->last_level);
-  cout << "Loading level, input filename" << endl;
+  std::cout << "Loading level, input filename" << std::endl;
 
   dir = System::opendir(pingus_homedir + "levels/dist/", "*.plf");
 
   for (System::Directory::iterator i = dir.begin(); i != dir.end(); i++)
     {
-      cout << "dirs: " << pingus_homedir + "levels/dist/" +  i->name << endl;
+      std::cout << "dirs: " << pingus_homedir + "levels/dist/" +  i->name << std::endl;
       
       temp_str = pingus_homedir + "levels/dist/" + i->name;
 
@@ -353,11 +365,11 @@ EditorEvent::editor_load_level()
 void
 EditorEvent::editor_save_level_as()
 {
-  cout << "Saving level, input filename" << endl;
+  std::cout << "Saving level, input filename" << std::endl;
 
-  string str;
+  std::string str;
   System::Directory dir;
-  list<string> strings;
+  list<std::string> strings;
 
   StringReader reader("Input filename to save the file (without .plf!)", editor->last_level);
 
@@ -365,7 +377,7 @@ EditorEvent::editor_save_level_as()
 
   for (System::Directory::iterator i = dir.begin(); i != dir.end(); i++)
     {
-      cout << "dirs: " << pingus_homedir + "levels/dist/" +  i->name << endl;
+      std::cout << "dirs: " << pingus_homedir + "levels/dist/" +  i->name << std::endl;
       strings.push_back((pingus_homedir + "levels/dist/" + i->name).substr(0, str.size() - 4));
     }
 
@@ -384,6 +396,8 @@ EditorEvent::editor_save_level_as()
 void
 EditorEvent::editor_duplicate_current_selection()
 {
+  list<EditorObj*> new_objs;
+  
   for (ObjectManager::CurrentObjIter i = object_manager->current_objs.begin(); 
        i != object_manager->current_objs.end();
        i++)
@@ -391,9 +405,14 @@ EditorEvent::editor_duplicate_current_selection()
       ObjectManager::EditorObjIter iter = find(object_manager->editor_objs.begin(), 
 					       object_manager->editor_objs.end(), 
 					       *i);
-      cout << "Editor: Inserting Object: " << *iter << endl;
-      object_manager->editor_objs.insert(iter, (*i)->duplicate());
+      EditorObj* obj = (*i)->duplicate();
+
+      object_manager->editor_objs.insert(iter, obj);
+      new_objs.push_back(obj);
     }
+
+  object_manager->delete_selection();
+  object_manager->add_to_selection(new_objs);
 }
 
 void
@@ -409,7 +428,7 @@ EditorEvent::editor_insert_new_object()
   }
   
   catch (CL_Error err) {
-    cout << "Editor: Error caught from ClanLib: " << err.message << endl;
+    std::cout << "Editor: Error caught from ClanLib: " << err.message << std::endl;
     enabled = true;
     obj = 0;
   }
@@ -417,7 +436,7 @@ EditorEvent::editor_insert_new_object()
   if (obj) {
     object_manager->editor_objs.push_back(obj);
   } else {
-    cout << "Something went wrong while inserting" << endl;
+    std::cout << "Something went wrong while inserting" << std::endl;
   }
 }
 
@@ -430,7 +449,7 @@ EditorEvent::editor_new_level()
 void 
 EditorEvent::editor_exit()
 {
-  cout << "Exit editor" << endl;
+  std::cout << "Exit editor" << std::endl;
   editor->save_tmp_level();
   editor->quit = true;
 }

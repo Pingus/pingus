@@ -1,4 +1,4 @@
-//  $Id: StatusLine.cc,v 1.2 2000/02/09 21:43:43 grumbel Exp $
+//  $Id: StatusLine.cc,v 1.3 2000/02/11 16:58:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,7 +35,7 @@ void
 StatusLine::draw(int x_offset, int y_offset)
 {
   char str[1024];
-  string obj_name = " - None - ";
+  std::string obj_name = " - None - ";
   
   if (current_objs) 
     {
@@ -61,7 +61,7 @@ StatusLine::draw(int x_offset, int y_offset)
 }
 
 void
-StatusLine::set_current_objs(list<EditorObj*>* c_objs)
+StatusLine::set_current_objs(std::list<EditorObj*>* c_objs)
 {
   current_objs = c_objs;
 }

@@ -1,4 +1,4 @@
-//  $Id: Editor.cc,v 1.2 2000/02/09 21:43:43 grumbel Exp $
+//  $Id: Editor.cc,v 1.3 2000/02/11 16:58:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -58,14 +58,14 @@ Editor::register_event_handler()
     {
       event_handler_ref_counter++;
       CL_System::keep_alive();
-      cout << "Editor: Registering event handler..." << event << flush; 
+      std::cout << "Editor: Registering event handler..." << event << std::flush; 
       CL_Input::chain_button_press.push_back(event);
       CL_Input::chain_button_release.push_back(event);
-      cout << "done: " << event_handler_ref_counter << endl;
+      std::cout << "done: " << event_handler_ref_counter << std::endl;
     }
   else
     {
-      cout << "Editor: event_handler allready installed" << endl;
+      std::cout << "Editor: event_handler allready installed" << std::endl;
     }
 }
 
@@ -73,11 +73,11 @@ void
 Editor::unregister_event_handler()
 {
   event_handler_ref_counter--;
-  cout << "Editor: unregestering event handler" << event << "... " << flush; 
+  std::cout << "Editor: unregestering event handler" << event << "... " << std::flush; 
   CL_Input::chain_button_release.remove(event);
   CL_Input::chain_button_press.remove(event);
   CL_System::keep_alive();
-  cout << "done: " << event_handler_ref_counter << endl;
+  std::cout << "done: " << event_handler_ref_counter << std::endl;
 }
 
 void
@@ -127,7 +127,7 @@ Editor::scroll()
   int mouse_x = CL_Mouse::get_x();
   int mouse_y = CL_Mouse::get_y();
 
-  cout << "Editor::scroll()..." << flush;
+  std::cout << "Editor::scroll()..." << std::flush;
 
   while (CL_Mouse::right_pressed())
     {
@@ -140,21 +140,21 @@ Editor::scroll()
 	  
 	  /*cout << "ObjectManager: "
 	       << "X: " << object_manager.x_offset 
-	       << " Y: " << object_manager.y_offset << endl;
+	       << " Y: " << object_manager.y_offset << std::endl;
 	  */
 	  draw();
 	}
     }
   
-  cout << "finished" << endl;
+  std::cout << "finished" << std::endl;
 }
 
 string
-Editor::read_string (string prefix, string default_str)
+Editor::read_string (std::string prefix, std::string default_str)
 {
   // unregister_event_handler();
 
-  string str;
+  std::string str;
 
   if (default_str.empty()) 
     {
@@ -198,7 +198,7 @@ Editor::read_string (string prefix, string default_str)
 		{
 		case CL_KEY_ENTER:
 		  finished = true;
-		  cout << "--- Enter pressed" << endl;
+		  std::cout << "--- Enter pressed" << std::endl;
 		  break;
 	   
 		case CL_KEY_ESCAPE:
@@ -213,7 +213,7 @@ Editor::read_string (string prefix, string default_str)
 		  break;
 	      
 		case CL_KEY_TAB:
-		  cout << "Tab completion not implemented" << endl;
+		  std::cout << "Tab completion not implemented" << std::endl;
 		  break;
 	    
 		default:
@@ -236,9 +236,9 @@ Editor::read_string (string prefix, string default_str)
 string
 Editor::save_tmp_level ()
 {
-  string filename = string(tmpnam(0)) + ".pingus";
+  std::string filename = string(tmpnam(0)) + ".pingus";
   
-  cout << "Saving level to: " << filename << endl;
+  std::cout << "Saving level to: " << filename << std::endl;
   
   object_manager.save_level(filename.c_str());
 
@@ -253,7 +253,7 @@ Editor::rect_get_current_objs()
   int x2 = CL_Mouse::get_x();
   int y2 = CL_Mouse::get_y();
 
-  cout << "Editor: Selecting rectangle... " << flush;
+  std::cout << "Editor: Selecting rectangle... " << std::flush;
   
   while (CL_Mouse::middle_pressed())
     {
@@ -274,7 +274,7 @@ Editor::rect_get_current_objs()
   
   object_manager.rect_get_current_objs(x1, y1, x2, y2);
 
-  cout << "finished" << endl;
+  std::cout << "finished" << std::endl;
 }
 
 bool
@@ -336,7 +336,7 @@ Editor::interactive_move_object()
 void
 Editor::interactive_load()
 {
-  string levelfile;
+  std::string levelfile;
 
   levelfile = read_string("Input level to load (without the .plf ending!):");
   if (!levelfile.empty()) 
@@ -351,7 +351,7 @@ Editor::interactive_load()
 	    }
 	  else
 	    {
-	      cout << "Creating new level, removing the current one..." << endl;
+	      std::cout << "Creating new level, removing the current one..." << std::endl;
 	      current_objs.erase(current_objs.begin(), current_objs.end());
 	      editor_objs.erase(editor_objs.begin(), editor_objs.end());
 	      
@@ -380,6 +380,9 @@ Editor::interactive_load()
 
 /***********************************************
 $Log: Editor.cc,v $
+Revision 1.3  2000/02/11 16:58:28  grumbel
+Added correct namespaces
+
 Revision 1.2  2000/02/09 21:43:43  grumbel
 CVS should be up to date again...
 

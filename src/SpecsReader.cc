@@ -1,4 +1,4 @@
-//  $Id: SpecsReader.cc,v 1.2 2000/02/09 21:43:41 grumbel Exp $
+//  $Id: SpecsReader.cc,v 1.3 2000/02/11 16:58:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,20 +23,16 @@
 #include "globals.hh"
 #include "SpecsReader.hh"
 
-#ifdef WIN32
-using namespace std;
-#endif /* WIN32 */
-
 SpecsReader::SpecsReader()
 {
 }
 
 void 
-SpecsReader::register_token(int token_id, string token_string)
+SpecsReader::register_token(int token_id, std::string token_string)
 {
   if (verbose > 2)
-    cout << "SpecsReader: Register token: " 
-	 << token_id << " - " << token_string << endl;
+    std::cout << "SpecsReader: Register token: " 
+	 << token_id << " - " << token_string << std::endl;
 
   token_ids[token_string] = token_id;
 }
@@ -44,20 +40,20 @@ SpecsReader::register_token(int token_id, string token_string)
 int
 SpecsReader::next_token()
 {
-  string token;
+  std::string token;
   in >> token;
   
   if (token == "//") {
     // Jumps to the end of the current line
     if (verbose > 2)
-      cout << "SpecsReader: Found comment, ignoring line" << endl;
+      std::cout << "SpecsReader: Found comment, ignoring line" << std::endl;
     in.ignore(255, '\n');
     return next_token();
   }
 
   if (token == "/*") {
     if (verbose > 2)
-      cout << "SpecsReader: Long Comment, ignoring until '*/'" << endl;
+      std::cout << "SpecsReader: Long Comment, ignoring until '*/'" << std::endl;
  
     while (true) {
       in >> token;
@@ -74,7 +70,7 @@ SpecsReader::next_token()
 string 
 SpecsReader::operator[](int token_id)
 {
-  string str = values[token_id];
+  std::string str = values[token_id];
   
   if (str.empty())
     str = "<undef>";
@@ -88,7 +84,7 @@ SpecsReader::open(const char* filename)
   in.open(filename);
 
   if (!in) {
-    string mes;
+    std::string mes;
 
     mes += "SpecsReader: Couldn't open '";
     mes += filename;
@@ -99,15 +95,15 @@ SpecsReader::open(const char* filename)
 
   while(!in.eof()) {
     if (verbose > 2)
-      cout << "SpecsReader: Getting next token pair: " << endl;
+      std::cout << "SpecsReader: Getting next token pair: " << std::endl;
     
     int n_token = next_token();
-    string token;
+    std::string token;
     
     in >> token;
  
     if (verbose > 2)
-      cout << "Token: " << token << endl;
+      std::cout << "Token: " << token << std::endl;
 
     values[n_token] = token;
   }
@@ -118,7 +114,7 @@ void
 SpecsReader::close()
 {
   if (verbose > 2)
-    cout << "SpecsReader: Closing" << endl;
+    std::cout << "SpecsReader: Closing" << std::endl;
   in.close();
 }
 

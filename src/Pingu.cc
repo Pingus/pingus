@@ -1,4 +1,4 @@
-//  $Id: Pingu.cc,v 1.2 2000/02/09 21:43:40 grumbel Exp $
+//  $Id: Pingu.cc,v 1.3 2000/02/11 16:58:25 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -163,17 +163,17 @@ Pingu::set_action(PinguAction* act, int t)
 
   if (act->get_type() ^ (ActionType)ONCE) 
     {
-      cout << "Pingu: Found some persistant action" << endl;
-      cout << "Pingu: Action is FALL: " 
-	   << int(act->get_type() & (ActionType)FALL) << endl;
-      cout << "Pingu: Action is WALL: " 
-	   << int(act->get_type() & (ActionType)WALL) << endl;
+      std::cout << "Pingu: Found some persistant action" << std::endl;
+      std::cout << "Pingu: Action is FALL: " 
+	   << int(act->get_type() & (ActionType)FALL) << std::endl;
+      std::cout << "Pingu: Action is WALL: " 
+	   << int(act->get_type() & (ActionType)WALL) << std::endl;
 
-      for(vector<PinguAction*>::iterator i = persist.begin(); i != persist.end(); i++)
+      for(std::vector<PinguAction*>::iterator i = persist.begin(); i != persist.end(); i++)
 	{
 	  if ((*i)->name() == act->name()) 
 	    {
-	      cout << "Not using action, we have allready" << endl;
+	      std::cout << "Not using action, we have allready" << std::endl;
 	      return 0;
 	    }
 	}
@@ -195,7 +195,7 @@ Pingu::set_action(PinguAction* act, int t)
 	    {
 	      if (act->name() == action->name())
 		{
-		  cout << "Allready have action" << endl;
+		  std::cout << "Allready have action" << std::endl;
 		  return false;
 		}
 	    }
@@ -301,7 +301,7 @@ Pingu::let_move(void)
 	    {
 	      if (action && persist[i]->name() == action->name()) 
 		{
-		  cout << "Not using action, we have allready" << endl;
+		  std::cout << "Not using action, we have allready" << std::endl;
 		} 
 	      else 
 		{
@@ -464,11 +464,11 @@ Pingu::let_move(void)
 			{
 			  if (action && persist[i]->name() == action->name()) 
 			    {
-			      cout << "Not using action, we have allready" << endl;
+			      std::cout << "Not using action, we have allready" << std::endl;
 			    } 
 			  else 
 			    {
-			      cout << "We are infront of a wall, setting persistant action" << endl;
+			      std::cout << "We are infront of a wall, setting persistant action" << std::endl;
 			      set_paction(ActionHolder::get_uaction(persist[i]->name()));
 			    }
 			  return;

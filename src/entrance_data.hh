@@ -1,4 +1,4 @@
-//  $Id: entrance_data.hh,v 1.2 2000/02/09 21:43:41 grumbel Exp $
+//  $Id: entrance_data.hh,v 1.3 2000/02/11 16:58:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,7 +34,7 @@ struct entrance_data
   int  y_pos;
   int  z_pos;
   int  release_rate;
-  string type;
+  std::string type;
 
   entrance_data();
 

@@ -1,4 +1,4 @@
-//  $Id: PSMParser.hh,v 1.2 2000/02/09 21:43:40 grumbel Exp $
+//  $Id: PSMParser.hh,v 1.3 2000/02/11 16:58:25 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,9 +34,9 @@ struct surface_data {
   ResDescriptor res_desc;
   int x_pos;
   int y_pos;
-  string res_name;
-  string name;
-  string type_str; 
+  std::string res_name;
+  std::string name;
+  std::string type_str; 
   enum Type { SOLID, GROUND,BRIDGE } type ;
   
 };
@@ -45,9 +45,9 @@ struct PSMEOF {};
 
 struct PSMParseError 
 {
-  string message;
+  std::string message;
 
-  PSMParseError(string str) { 
+  PSMParseError(std::string str) { 
     message = str; 
   }
 };
@@ -63,12 +63,12 @@ public:
   PSMParser();
   ~PSMParser();
   
-  void   parse(string filename);
+  void   parse(std::string filename);
   void   load_surfaces(void);
   char   get_char(void);
   char   get_atom(void);
   int    get_int(void);
-  string get_string(void);
+  std::string get_string(void);
   void   expect(char);
   ResDescriptor get_resdesc(void);
   void   jump_spaces(void);

@@ -1,4 +1,4 @@
-//  $Id: PSMParser.cc,v 1.2 2000/02/09 21:43:40 grumbel Exp $
+//  $Id: PSMParser.cc,v 1.3 2000/02/11 16:58:25 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,10 +37,10 @@ PSMParser::~PSMParser()
 }
 
 void
-PSMParser::parse(string filename)
+PSMParser::parse(std::string filename)
 {
   try {
-    cout << "PSMParser: Filename: " << filename << endl;
+    std::cout << "PSMParser: Filename: " << filename << std::endl;
     in.open(filename.c_str());
 
     if (!in) 
@@ -80,7 +80,7 @@ PSMParser::parse(string filename)
     }
   }
   catch (PSMParseError err) {
-    cout << "PSMParseError occured: " << err.message << " at line: " << lines << endl;
+    std::cout << "PSMParseError occured: " << err.message << " at line: " << lines << std::endl;
     throw PingusError(err.message);
   }
   catch (PSMEOF) {}
@@ -93,10 +93,10 @@ PSMParser::load_surfaces(void)
 {
   assert(file_parsed);
 
-  for (vector<surface_data>::size_type i=0; i < surface.size(); ++i) {
+  for (std::vector<surface_data>::size_type i=0; i < surface.size(); ++i) {
     if (verbose > 1) {
-      cout << "Surface: " << "(" << surface[i].res_desc.res_name << ":" << surface[i].res_desc.filename << ") " 
-	   << surface[i].name << endl;
+      std::cout << "Surface: " << "(" << surface[i].res_desc.res_name << ":" << surface[i].res_desc.filename << ") " 
+	   << surface[i].name << std::endl;
     }
     surface[i].surface = CL_Surface::load(surface[i].name.c_str(), 
 					      PingusResource::get(surface[i].res_name));
@@ -142,7 +142,7 @@ PSMParser::jump_spaces()
 string
 PSMParser::get_string(void)
 {
-  string str;
+  std::string str;
   char   c;
 
   while (!isspace(c = get_atom()) && c != ':') {
@@ -161,7 +161,7 @@ PSMParser::get_string(void)
 int
 PSMParser::get_int(void)
 {
-  string str;
+  std::string str;
   char   c;
   int    i;
 

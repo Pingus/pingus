@@ -1,4 +1,4 @@
-//  $Id: Exit.cc,v 1.2 2000/02/09 21:43:39 grumbel Exp $
+//  $Id: Exit.cc,v 1.3 2000/02/11 16:58:25 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,7 +37,7 @@ Exit::Exit(int x, int y)
 Exit::Exit(exit_data data)
 {
   if (verbose > 2)
-    cout << "Creating Exit" << endl;
+    std::cout << "Creating Exit" << std::endl;
   x_pos = data.x_pos;
   y_pos = data.y_pos;
   z_pos = data.z_pos;

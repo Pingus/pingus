@@ -1,4 +1,4 @@
-//  $Id: pingu_actions.cc,v 1.1 2000/02/04 23:45:19 mbn Exp $
+//  $Id: pingu_actions.cc,v 1.2 2000/02/11 16:58:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,7 +41,7 @@
 // makePinguAction() translate a action name into the according
 // PinguAction object.
 PinguAction*
-makePinguAction(string action_name)
+makePinguAction(std::string action_name)
 {
 #ifdef DYNAMIC_ACTIONS
   // add some support for dynamic actions
@@ -78,8 +78,8 @@ makePinguAction(string action_name)
   } else if (action_name == "jumper") {
     return new Jumper;
   } else {
-    cout << "makePinguAction: Action `" << action_name << "' unkown"
-	 << endl;
+    std::cout << "makePinguAction: Action `" << action_name << "' unkown"
+	 << std::endl;
     exit(EXIT_FAILURE);
   }
 #endif

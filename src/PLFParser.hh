@@ -1,4 +1,4 @@
-//  $Id: PLFParser.hh,v 1.2 2000/02/09 21:43:40 grumbel Exp $
+//  $Id: PLFParser.hh,v 1.3 2000/02/11 16:58:25 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,11 +24,6 @@
 #include <string>
 #include <vector>
 
-#ifdef WIN32
-using namespace std;
-#endif /* WIN32 */
-
-
 class PLFParserEOF {
 public:
   PLFParserEOF();
@@ -38,21 +33,21 @@ public:
 class PLFParser
 {
 private:
-  ifstream in;                 // The file to parse
+  std::ifstream in;                 // The file to parse
 
   char   last_atom;            // The last returned atom
   int    lineno;               // Current line number
   bool   eof;
-  //  string filename;             // The name of the current file
+  //  std::string filename;             // The name of the current file
 
   // private functions    
   char   get_char(void);       // Return the next char and to a eof check
   char   get_atom(void);       // Return the next atom and keep the old one
   char   get_raw_atom(void);   // Return the next atom (removes all comments)
-  string get_groupname(void);  // Return the groupname and check for errors
-  string get_valueid(void);    // Return the value identifer
-  string get_value(void);      // Return the value
-  string get_cast(void);       // Return the cast, else ""
+  std::string get_groupname(void);  // Return the groupname and check for errors
+  std::string get_valueid(void);    // Return the value identifer
+  std::string get_value(void);      // Return the value
+  std::string get_cast(void);       // Return the cast, else ""
   void   jump_after(char);     // Jump to the next token, after char
   void   jump(void);           // Jump over spaces to the next token
   void   syntax_error(string); // Do a clean shutdown on a syntax error
@@ -61,9 +56,9 @@ private:
 
   // Some virtual functions
   // Put the retrieved value in the correct struct
-  virtual void set_value(string valueid,
-			 string cast,
-			 string value) = 0; 
+  virtual void set_value(std::string valueid,
+			 std::string cast,
+			 std::string value) = 0; 
   virtual void set_group_start(string) = 0;
   virtual void set_group_end(void) = 0;
 public:                        //

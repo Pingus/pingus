@@ -1,4 +1,4 @@
-//  $Id: PingusSpotMap.cc,v 1.2 2000/02/09 21:43:40 grumbel Exp $
+//  $Id: PingusSpotMap.cc,v 1.3 2000/02/11 16:58:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -95,11 +95,11 @@ PingusSpotMap::PingusSpotMap(PLF* plf)
       break;
 
     case ResDescriptor::FILE:
-      cout << "PingusSpotMap: Loading..." << endl;
+      std::cout << "PingusSpotMap: Loading..." << std::endl;
       load(plf);
-      cout << "PingusSpotMap: Generating Tiles..." << endl;
+      std::cout << "PingusSpotMap: Generating Tiles..." << std::endl;
       gen_tiles();
-      cout << "PingusSpotMap: Generating Tiles... done" << endl;    
+      std::cout << "PingusSpotMap: Generating Tiles... done" << std::endl;    
       break;
 
     default:
@@ -111,23 +111,23 @@ PingusSpotMap::PingusSpotMap(PLF* plf)
 PingusSpotMap::~PingusSpotMap(void)
 {
   delete map_surface;
-  cout << "Trying to delete the map..." << flush;
-  for(vector<vector<MapTileSurface> >::size_type x = 0; x < tile.size(); x++) 
+  std::cout << "Trying to delete the map..." << std::flush;
+  for(std::vector<vector<MapTileSurface> >::size_type x = 0; x < tile.size(); x++) 
     {
-      for(vector<MapTileSurface>::size_type y = 0; y < tile[x].size(); y++) {
+      for(std::vector<MapTileSurface>::size_type y = 0; y < tile[x].size(); y++) {
 	delete tile[x][y].surface;
       }
     }
   delete colmap;
-  cout << "finished" << endl;
+  std::cout << "finished" << std::endl;
 }
 
 void
 PingusSpotMap::gen_tiles(void)
 {
   if (verbose) {
-    cout << "PingusSpotMap_TilewWidth: " << width / tile_size << endl;
-    cout << "PingusSpotMap_TilewHeight: " << height / tile_size << endl;
+    std::cout << "PingusSpotMap_TilewWidth: " << width / tile_size << std::endl;
+    std::cout << "PingusSpotMap_TilewHeight: " << height / tile_size << std::endl;
   }  
   
   tile.resize(width/tile_size);
@@ -148,7 +148,7 @@ PingusSpotMap::load(PLF* plf)
 
 // Load the map from a *.psm (Pingu Spot Map) file and load the surfaces
 void
-PingusSpotMap::load(string filename)
+PingusSpotMap::load(std::string filename)
 {
   psm_parser.parse(filename);
   psm_parser.load_surfaces();
@@ -156,23 +156,23 @@ PingusSpotMap::load(string filename)
 
   if ((width % tile_size) != 0) 
     {
-      cerr << "Warrning: Width is not a multible of " << tile_size << endl;
+      cerr << "Warrning: Width is not a multible of " << tile_size << std::endl;
       width += (tile_size - (width % tile_size));
-      cerr << "Warning: Fixing height to: " << width << endl;
+      cerr << "Warning: Fixing height to: " << width << std::endl;
     }
   
   if ((height % tile_size) != 0) 
     {
-      cerr << "Warning: Width is not a multible of " << tile_size << endl;
+      cerr << "Warning: Width is not a multible of " << tile_size << std::endl;
       height += (tile_size - (height % tile_size));
-      cerr << "Warning: Fixing height to: " << height << endl;
+      cerr << "Warning: Fixing height to: " << height << std::endl;
     }
   
   // Allocating the map provider
   provider = new CL_Canvas(width, height, 1);
 
   // Drawing all surfaces to the provider
-  for(vector<surface_data>::size_type i=0; i < surfaces.size(); ++i) 
+  for(std::vector<surface_data>::size_type i=0; i < surfaces.size(); ++i) 
     {
       // test cause png
        put_surface(provider, surfaces[i].surface->get_provider(),
@@ -236,7 +236,7 @@ PingusSpotMap::remove(CL_SurfaceProvider* sprovider, int x, int y)
 {
   if (debug_actions) 
     {
-      cout << "Bug: Debug actions is no longer supported" << endl;
+      std::cout << "Bug: Debug actions is no longer supported" << std::endl;
       put_surface(provider, sprovider, x, y);  
     } 
   else 
@@ -300,32 +300,32 @@ PingusSpotMap::get_colmap(void)
     } 
   else 
     {
-      cout << "PingusSpotMap: Starting ColMap creation" << endl;
+      std::cout << "PingusSpotMap: Starting ColMap creation" << std::endl;
       unsigned char* buffer;
       
       // Allocate the space for the colmap buffer
       // But don't delete it, since the ColMap will do that.
       buffer = new unsigned char[width * height];
       
-      cout << "PingusSpotMap: Clearing ColMap buffer..." << flush;
+      std::cout << "PingusSpotMap: Clearing ColMap buffer..." << std::flush;
       for(int i=0; i < width * height; ++i) 
 	{
 	  buffer[i] = 0;
 	}
       
-      cout << " done" << endl;
+      std::cout << " done" << std::endl;
 
       // Create a empty ColMap
       colmap = new ColMap(buffer, width, height);
       
-      cout << "PingusSpotMap: Putting objects to ColMap" << endl;
-      for(vector<surface_data>::iterator i = surfaces.begin(); i != surfaces.end(); i++) 
+      std::cout << "PingusSpotMap: Putting objects to ColMap" << std::endl;
+      for(std::vector<surface_data>::iterator i = surfaces.begin(); i != surfaces.end(); i++) 
 	{
 	  colmap->put(i->surface, i->x_pos, i->y_pos, i->type);
 	}
       
       if (verbose)
-	cout << "Returning ColMap" << endl;
+	cout << "Returning ColMap" << std::endl;
       
       return colmap;
     }

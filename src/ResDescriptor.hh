@@ -1,4 +1,4 @@
-//  $Id: ResDescriptor.hh,v 1.2 2000/02/09 21:43:41 grumbel Exp $
+//  $Id: ResDescriptor.hh,v 1.3 2000/02/11 16:58:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,21 +22,17 @@
 
 #include <string>
 
-#ifdef WIN32
-using namespace std;
-#endif /* WIN32 */
-
 // Resource descriptor, tells were to find a resource
 class ResDescriptor
 {
 public:
   enum ResourceType { RESOURCE, FILE, AUTO } type; // Where to get the data from?
-  string filename; // The name of the resource file
-  string res_name; // The name of the data, filename or resourcename.
+  std::string filename; // The name of the resource file
+  std::string res_name; // The name of the data, filename or resourcename.
 
   ResDescriptor();
-  ResDescriptor(string cast, string value);
-  ResDescriptor(string str);
+  ResDescriptor(std::string cast, std::string value);
+  ResDescriptor(std::string str);
 };
 
 #endif

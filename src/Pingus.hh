@@ -1,4 +1,4 @@
-//  $Id: Pingus.hh,v 1.2 2000/02/09 21:43:40 grumbel Exp $
+//  $Id: Pingus.hh,v 1.3 2000/02/11 16:58:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,16 +30,16 @@ class PingusMain : public CL_ClanApplication
 {
 private:
   char*  title;
-  string argv_0;
+  std::string argv_0;
   bool    pingus_datadir_set;
 
-  string  pingus_datafile;
+  std::string  pingus_datafile;
 
-  string  global_datafile;
+  std::string  global_datafile;
 
-  string  pingus_soundfile;
-  string  levelfile;
-  string resolution;
+  std::string  pingus_soundfile;
+  std::string  levelfile;
+  std::string resolution;
   
   int   level;  // the number of the current level, -1 if the level is custom  
   //  char* levelfile; // the name of the level_file
@@ -74,7 +74,7 @@ public:
   // void intro(void);
   void init_pingus(void);
 
-  void play_level(string filename, PingusGameMode);
+  void play_level(std::string filename, PingusGameMode);
 } my_app; // notice this line. It creates the global instance.
 
 #endif

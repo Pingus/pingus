@@ -1,4 +1,4 @@
-//  $Id: EditorObj.hh,v 1.2 2000/02/09 21:43:43 grumbel Exp $
+//  $Id: EditorObj.hh,v 1.3 2000/02/11 16:58:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -67,7 +67,7 @@ public:
   virtual bool   mouse_over(int, int);
   virtual bool   is_in_rect(int x1, int y1, int x2, int y2);
   virtual void   save(ofstream* plf, ofstream* psm) = 0;
-  virtual string obj_type();
+  virtual std::string obj_type();
   virtual EditorObj* duplicate() = 0;
 };
 

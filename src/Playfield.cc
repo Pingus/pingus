@@ -1,4 +1,4 @@
-//  $Id: Playfield.cc,v 1.2 2000/02/09 21:43:40 grumbel Exp $
+//  $Id: Playfield.cc,v 1.3 2000/02/11 16:58:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -82,13 +82,13 @@ Playfield::Playfield(PLF* level_data, World* w)
 	     << x1 << ", "
 	     << y1 << ", " 
 	     << x2 << ", "
-	     << y2 << endl;
+	     << y2 << std::endl;
       }
     
     if (gimmicks_enabled) 
       {
 	if (verbose)
-	  cout << "Playfield: Using gimmick" << endl;
+	  std::cout << "Playfield: Using gimmick" << std::endl;
 	view.push_back(View(x2/2, y1, x2, y2));
 	view.push_back(View(0, 21, x2/2, y2/2, 0.5));
 	view.push_back(View(0, y2/2, x2/2, y2, 2.0));
@@ -97,8 +97,8 @@ Playfield::Playfield(PLF* level_data, World* w)
       { // !gimmicks_enabled
 	view.push_back(View(x1, y1, x2, y2));
 	
-	cout << "Playfield: start_X: " << ((x2 - x1) / 2) - level_data->get_startx() << endl;
-	cout << "Playfield: start_Y: " << ((y2 - y1) / 2) - level_data->get_starty() << endl;
+	cout << "Playfield: start_X: " << ((x2 - x1) / 2) - level_data->get_startx() << std::endl;
+	cout << "Playfield: start_Y: " << ((y2 - y1) / 2) - level_data->get_starty() << std::endl;
 	
 	view[0].set_x_offset(((x2 - x1) / 2) - level_data->get_startx());
 	view[0].set_y_offset(((y2 - y1) / 2) - level_data->get_starty());
@@ -109,7 +109,7 @@ Playfield::Playfield(PLF* level_data, World* w)
 Playfield::~Playfield()
 {
   if (verbose)
-    cout << "Playfield going down" << endl;
+    std::cout << "Playfield going down" << std::endl;
 }
 
 void
@@ -221,9 +221,9 @@ Playfield::process_input_interactive()
   /*
   if (CL_Mouse::middle_pressed()) 
     {
-      cout << "Mouse Coordinates ="
+      std::cout << "Mouse Coordinates ="
 	   << " X: " << CL_Mouse::get_x() + x_offset
-	   << " Y: " << CL_Mouse::get_y() + y_offset << endl;
+	   << " Y: " << CL_Mouse::get_y() + y_offset << std::endl;
       world->print_status();
     }*/
 }
@@ -280,7 +280,7 @@ Playfield::set_client(Client* c)
 void
 Playfield::enable_scroll_mode()
 {
-  cout << "Started scrolling..." << flush;
+  std::cout << "Started scrolling..." << std::flush;
   mouse_scrolling = true;
 
   scroll_center_x = CL_Mouse::get_x();
@@ -303,7 +303,7 @@ Playfield::do_scrolling()
 void
 Playfield::disable_scroll_mode()
 {
-  cout << "done" << endl;
+  std::cout << "done" << std::endl;
   mouse_scrolling = false;
 }
 

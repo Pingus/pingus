@@ -1,4 +1,4 @@
-//  $Id: PinguBmpMap.cc,v 1.2 2000/02/09 21:43:40 grumbel Exp $
+//  $Id: PinguBmpMap.cc,v 1.3 2000/02/11 16:58:25 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,7 +32,7 @@ PinguBmpMap::PinguBmpMap(ResDescriptor fg)
 {
   colmap = 0;
   if (verbose > 1)
-    cout << "Creating BMP Map" << endl;
+    std::cout << "Creating BMP Map" << std::endl;
 
   surface = CL_Surface::load(fg.res_name.c_str(), PingusResource::get(fg.filename));
   
@@ -77,7 +77,7 @@ PinguBmpMap::get_colmap()
   void* vbuffer;
   CL_SurfaceProvider* provider;
 
-  cout << "PinguBmpMap::get_colmap" << endl;
+  std::cout << "PinguBmpMap::get_colmap" << std::endl;
 
   assert(surface);
 

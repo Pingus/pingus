@@ -1,4 +1,4 @@
-//  $Id: SpecsReader.hh,v 1.2 2000/02/09 21:43:41 grumbel Exp $
+//  $Id: SpecsReader.hh,v 1.3 2000/02/11 16:58:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,16 +26,15 @@
 
 #ifdef WIN32
 #pragma warning( disable : 4786)
-using namespace std;
 #endif /* WIN32 */
 
 class SpecsReader
 {
 private:
-  map<string, int> token_ids;
-  map<int, string> values;
+  std::map<std::string, int> token_ids;
+  std::map<int, string> values;
 
-  ifstream in;
+  std::ifstream in;
 
 public:
   SpecsReader();
@@ -43,8 +42,8 @@ public:
   int  open(const char*);
   void close();
   int  next_token();
-  void register_token(int token_id, string token_value);
-  string operator[](int t);
+  void register_token(int token_id, std::string token_value);
+  std::string operator[](int t);
 };
 
 #endif

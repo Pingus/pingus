@@ -1,4 +1,4 @@
-//  $Id: PLFPreview.cc,v 1.2 2000/02/09 21:43:40 grumbel Exp $
+//  $Id: PLFPreview.cc,v 1.3 2000/02/11 16:58:25 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -58,7 +58,7 @@ PLFPreview::load(PLF* p)
     }
     break;
   default:
-    cout << "PLFPreview::load not implemented" << endl;
+    std::cout << "PLFPreview::load not implemented" << std::endl;
     surface = CL_Surface::load("Game/logo", PingusResource::get("global.dat"));
     break;
   }

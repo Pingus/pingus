@@ -1,4 +1,4 @@
-//  $Id: Client.hh,v 1.2 2000/02/09 21:43:39 grumbel Exp $
+//  $Id: Client.hh,v 1.3 2000/02/11 16:58:25 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -61,9 +61,9 @@ private:
 
 public:
   Client(Server* s);
-  void start(string filename, PingusGameMode m = (PingusGameMode)INTERACTIVE_MODE);
-  void start(string plf_filename, string psm_filename);
-  void play_level(string plf_filename, string psm_filename = "");
+  void start(std::string filename, PingusGameMode m = (PingusGameMode)INTERACTIVE_MODE);
+  void start(std::string plf_filename, std::string psm_filename);
+  void play_level(std::string plf_filename, std::string psm_filename = "");
 
   void set_fast_forward(bool value);
   bool get_fast_forward();

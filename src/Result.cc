@@ -1,4 +1,4 @@
-//  $Id: Result.cc,v 1.2 2000/02/09 21:43:41 grumbel Exp $
+//  $Id: Result.cc,v 1.3 2000/02/11 16:58:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,10 +19,6 @@
 
 #include <iostream>
 #include "Result.hh"
-
-#ifdef WIN32
-using namespace std;
-#endif
 
 /*Result::Result()
 {
@@ -82,14 +78,14 @@ Result::set_time(int t)
 void
 Result::print()
 {
-  cout << "Pingus Results:" << endl
+  std::cout << "Pingus Results:" << endl
        << "-=-=-=-=-=-=-=-=-=-=-=-=-" << endl
        << "Saved:       "   << saved  << endl
        << "Killed:      "   << killed << endl
        << "Unknown:     "  << unknown << endl
        << "Unreleased:          ???"  << endl
        << "-------------------------" << endl
-       << "Pingus total:  " << total  << endl;
+       << "Pingus total:  " << total  << std::endl;
 }
 
 LevelInterrupt

@@ -1,4 +1,4 @@
-//  $Id: PLFParser.cc,v 1.2 2000/02/09 21:43:40 grumbel Exp $
+//  $Id: PLFParser.cc,v 1.3 2000/02/11 16:58:25 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,10 +27,6 @@
 #include "PingusError.hh"
 #include "globals.hh"
 
-#ifdef WIN32
-using namespace std;
-#endif /* WIN32 */
-
 PLFParserEOF::PLFParserEOF()
 {
 }
@@ -40,7 +36,7 @@ PLFParser::PLFParser()
 }
 
 // Create a PLF object and start parsing the given file.
-PLFParser::PLFParser(string filename)
+PLFParser::PLFParser(std::string filename)
 {
   init(filename);
 }
@@ -51,7 +47,7 @@ PLFParser::~PLFParser()
 }
 
 void
-PLFParser::init(string filename)
+PLFParser::init(std::string filename)
 {
   // Init local vars
   last_atom = ' ';
@@ -64,7 +60,7 @@ PLFParser::init(string filename)
 
 // Open the file and do some error checking.
 void
-PLFParser::open(string filename)
+PLFParser::open(std::string filename)
 {
   in.open(filename.c_str());
   eof = false;
@@ -74,7 +70,7 @@ PLFParser::open(string filename)
   }
   
   if (verbose > 1)
-    cout << "Opened plf file successfully" << endl;
+    std::cout << "Opened plf file successfully" << std::endl;
 }
 
 // Return the next char from file and check for eof.
@@ -84,14 +80,14 @@ PLFParser::get_char(void)
   int c;
 
   if (eof) {
-    cout << "PLFParser: Result of get_char() will be undefined" << endl;
+    std::cout << "PLFParser: Result of get_char() will be undefined" << std::endl;
     // throw PingusError("");
   }
 
   c = in.get();
 
   if (c == EOF) {
-    if (verbose > 1) cout << "PLF::get_char(): Found EOF!" << endl;
+    if (verbose > 1) std::cout << "PLF::get_char(): Found EOF!" << std::endl;
     eof = true;
     // throw PLFParserEOF();
   }
@@ -159,7 +155,7 @@ string
 PLFParser::get_groupname(void)
 {
   char atom;
-  string ret_val;
+  std::string ret_val;
   
   jump();
 
@@ -181,7 +177,7 @@ PLFParser::get_groupname(void)
 string
 PLFParser::get_valueid(void)
 {
-  string ret_val;
+  std::string ret_val;
   char   atom;
   
   jump();
@@ -211,7 +207,7 @@ PLFParser::get_valueid(void)
 string
 PLFParser::get_value(void)
 {
-  string ret_val;
+  std::string ret_val;
   char   atom;
 
   jump();
@@ -248,7 +244,7 @@ PLFParser::get_value(void)
 string
 PLFParser::get_cast(void)
 {
-  string ret_val;
+  std::string ret_val;
   char   atom;
   jump();
   
@@ -305,9 +301,9 @@ PLFParser::jump(void)
 
 // Print a error message with lineno and filename.
 void
-PLFParser::syntax_error(string error = "")
+PLFParser::syntax_error(std::string error = "")
 {
-  string error_str;
+  std::string error_str;
   char tmp[256];
 
   sprintf(tmp, "%d\n", lineno);
@@ -324,10 +320,10 @@ PLFParser::syntax_error(string error = "")
 void
 PLFParser::parse(void)
 {
-  string groupname;
-  string valueid;
-  string cast;
-  string value;
+  std::string groupname;
+  std::string valueid;
+  std::string cast;
+  std::string value;
 
   while(!eof) 
     {
@@ -352,9 +348,9 @@ PLFParser::parse(void)
 	  
 	  if (verbose > 2) 
 	    {
-	      cout << "ValueID: " << valueid << endl;
-	      cout << "Cast: " << cast << endl;
-	      cout << "Value: " << value << endl;
+	      std::cout << "ValueID: " << valueid << std::endl;
+	      std::cout << "Cast: " << cast << std::endl;
+	      std::cout << "Value: " << value << std::endl;
 	    }
 	  set_value(valueid, cast, value);
 	}
@@ -363,7 +359,7 @@ PLFParser::parse(void)
     }
   
   /*  catch(PLFParserEOF a) {
-    if (verbose > 1) cout << "PLF: Catched EOF" << endl;
+    if (verbose > 1) std::cout << "PLF: Catched EOF" << std::endl;
     }*/
 }
 

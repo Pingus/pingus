@@ -1,4 +1,4 @@
-//  $Id: PLF.hh,v 1.2 2000/02/09 21:43:40 grumbel Exp $
+//  $Id: PLF.hh,v 1.3 2000/02/11 16:58:25 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,9 +38,9 @@
 class PLF : public PLFParser
 {
 private:
-  string levelname;
-  string psm_filename;
-  string description;
+  std::string levelname;
+  std::string psm_filename;
+  std::string description;
   ResDescriptor fg;
 
   background_data bg;
@@ -77,9 +77,9 @@ private:
   // Private functions
   void set_group_start(string);
   void set_group_end(void);
-  void set_value(string valueid,
-		 string cast,
-		 string value);
+  void set_value(std::string valueid,
+		 std::string cast,
+		 std::string value);
   int    str_to_int(const string& str);
   double str_to_double(const string& str);
 public:
@@ -89,7 +89,7 @@ public:
   background_data get_bg(void);
   ResDescriptor get_fg(void);
   ResDescriptor get_mapfile(void);
-  void set_psm_filename(string name);
+  void set_psm_filename(std::string name);
   ResDescriptor get_music(void);
   int         get_startx(void);
   int         get_starty(void);
@@ -100,8 +100,8 @@ public:
   int         get_difficulty();
   MapType     map_type(void);
   int         get_number_to_save();
-  string                 get_description(void);
-  string                 get_levelname(void);
+  std::string                 get_description(void);
+  std::string                 get_levelname(void);
   vector<hotspot_data>   get_hotspot(void);
   vector<entrance_data>  get_entrance(void);
   vector<exit_data>      get_exit(void);

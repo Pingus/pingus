@@ -1,4 +1,4 @@
-//  $Id: StringReader.cc,v 1.2 2000/02/09 21:43:43 grumbel Exp $
+//  $Id: StringReader.cc,v 1.3 2000/02/11 16:58:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,7 +27,7 @@ StringReader::StringReader()
   font = CL_Font::load("Fonts/courier_small",PingusResource::get("fonts.dat"));
 }
 
-StringReader::StringReader(string d, string def)
+StringReader::StringReader(std::string d, std::string def)
 {
   strings = 0;
   description = d;
@@ -40,7 +40,7 @@ StringReader::~StringReader()
 }
 
 void
-StringReader::set_strings(list<string>* s)
+StringReader::set_strings(std::list<std::string>* s)
 {
   strings = s;
 }
@@ -110,14 +110,14 @@ StringReader::complete_string()
 
   completions.clear();
     
-  cout << "\nCompletions:\n" 
-       <<   "~~~~~~~~~~~~" << endl;
+  std::cout << "\nCompletions:\n" 
+       <<   "~~~~~~~~~~~~" << std::endl;
 
-  for(list<string>::iterator i = strings->begin(); i != strings->end(); i++)
+  for(std::list<std::string>::iterator i = strings->begin(); i != strings->end(); i++)
     {
       if (i->find(current_string) == 0)
 	{
-	  cout << *i << endl;
+	  std::cout << *i << std::endl;
 	  completions_counter++;
 	  completion = &(*i);
 	  completions.push_back(&(*i));
@@ -128,14 +128,14 @@ StringReader::complete_string()
     {
       current_string = find_uniq(); 
     }
-  // cout << "Searching finished" << endl;
+  // std::cout << "Searching finished" << std::endl;
 }
 
 string
 StringReader::find_uniq()
 {
-  list<string*>::iterator i = completions.begin();
-  string ret_string = **(completions.begin());
+  list<std::string*>::iterator i = completions.begin();
+  std::string ret_string = **(completions.begin());
 
   while (i != completions.end())
     {
@@ -149,7 +149,7 @@ StringReader::find_uniq()
 string
 StringReader::while_eq(const string& a, const string& b)
 {
-  string ret_string;
+  std::string ret_string;
   
   for(string::size_type i = 0;
       i < a.size() && i < b.size() && a[i] == b[i];

@@ -1,4 +1,4 @@
-//  $Id: PingusGame.hh,v 1.2 2000/02/09 21:43:40 grumbel Exp $
+//  $Id: PingusGame.hh,v 1.3 2000/02/11 16:58:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,10 +38,10 @@ public:
   PingusGame();
   ~PingusGame();
 
-  string read_lastlevel_file();
-  void   write_lastlevel_file(string levelfile);
-  void   start(string plf_filename = "",
-	       string psm_filename = "");
+  std::string read_lastlevel_file();
+  void   write_lastlevel_file(std::string levelfile);
+  void   start(std::string plf_filename = "",
+	       std::string psm_filename = "");
   Result get_result();
 };
 

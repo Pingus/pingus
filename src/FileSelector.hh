@@ -1,4 +1,4 @@
-//  $Id: FileSelector.hh,v 1.1 2000/02/04 23:45:18 mbn Exp $
+//  $Id: FileSelector.hh,v 1.2 2000/02/11 16:58:25 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,11 +28,11 @@
 
 struct FileSelectorEntry 
 {
-  string directory;
+  std::string directory;
   PLF* plf;
   PLFPreview* preview;
 
-  FileSelectorEntry(string d) {
+  FileSelectorEntry(std::string d) {
     directory = d;
     plf = new PLF(directory);
     preview = new PLFPreview(plf);
@@ -72,10 +72,10 @@ private:
   // FIXMEEND
 public:
   FileSelector();
-  string select(string pathname, string pattern);
+  std::string select(std::string pathname, std::string pattern);
   void draw(int highlight = 0);
   void readdir(string, string);
-  string select_file();
+  std::string select_file();
 };
 
 #endif

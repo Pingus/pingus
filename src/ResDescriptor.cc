@@ -1,4 +1,4 @@
-//  $Id: ResDescriptor.cc,v 1.2 2000/02/09 21:43:41 grumbel Exp $
+//  $Id: ResDescriptor.cc,v 1.3 2000/02/11 16:58:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,12 +27,12 @@ ResDescriptor::ResDescriptor()
   filename = "global.dat";
 }
 
-ResDescriptor::ResDescriptor(string str) 
+ResDescriptor::ResDescriptor(std::string str) 
 {
   string::size_type pos1;
   string::size_type pos2;
 
-  //cout << "Resdes: " << str << endl;
+  //cout << "Resdes: " << str << std::endl;
 
   type = RESOURCE;
 
@@ -45,8 +45,8 @@ ResDescriptor::ResDescriptor(string str)
       filename = str.substr(pos1 + 1, (pos2 - pos1 - 1));
       res_name = str.substr(pos2 + 1);
       /*
-      cout << "res: " <<  filename << endl;
-      cout << "data: " << res_name  << endl;
+      std::cout << "res: " <<  filename << std::endl;
+      std::cout << "data: " << res_name  << std::endl;
       */
     }
   else
@@ -56,9 +56,9 @@ ResDescriptor::ResDescriptor(string str)
     }
 }
 
-ResDescriptor::ResDescriptor(string c_cast, string value) 
+ResDescriptor::ResDescriptor(std::string c_cast, std::string value) 
 {
-  string cast;
+  std::string cast;
 
   if (c_cast.find_first_of(":") == string::npos) {
     cast = c_cast;
@@ -71,7 +71,7 @@ ResDescriptor::ResDescriptor(string c_cast, string value)
   }
 
   //  if (verbose > 1)
-  //cout << "C_Cast: " << value << " - " <<  cast << ":" << filename << endl;
+  //cout << "C_Cast: " << value << " - " <<  cast << ":" << filename << std::endl;
   
   if (cast == "file") {
     type = FILE;

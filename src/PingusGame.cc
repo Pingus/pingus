@@ -1,4 +1,4 @@
-//  $Id: PingusGame.cc,v 1.2 2000/02/09 21:43:40 grumbel Exp $
+//  $Id: PingusGame.cc,v 1.3 2000/02/11 16:58:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,46 +46,46 @@ string
 PingusGame::read_lastlevel_file()
 {
   ifstream in;
-  string filename;
-  string levelfile;
+  std::string filename;
+  std::string levelfile;
 
   filename = pingus_homedir + "stat/last_level";
 
   in.open(filename.c_str());
 
   if (!in) {
-    cout << "Warrning: Couldn't open lastlevel file \"" << filename << "\", using default level1.plf" << endl;
+    std::cout << "Warrning: Couldn't open lastlevel file \"" << filename << "\", using default level1.plf" << std::endl;
     return find_file(pingus_datadir, "levels/level1.plf");
   } else {
     in >> levelfile;
-    cout << "Read lastlevel file: " << levelfile << endl;
+    std::cout << "Read lastlevel file: " << levelfile << std::endl;
     in.close();
     return levelfile;
   }
 }
 
 void
-PingusGame::write_lastlevel_file(string levelfile)
+PingusGame::write_lastlevel_file(std::string levelfile)
 {
   ofstream out;
-  string filename;
+  std::string filename;
 
   filename += pingus_homedir + "stat/last_level";
 
   out.open(filename.c_str());
   
   if (!out) {
-    cout << "Warrning: Couldn't write lastlevel file: " << filename << endl;
+    std::cout << "Warrning: Couldn't write lastlevel file: " << filename << std::endl;
   } else {
-    cout << "Writing lastlevel file: " << levelfile << endl;
-    out <<  levelfile << endl;
+    std::cout << "Writing lastlevel file: " << levelfile << std::endl;
+    out <<  levelfile << std::endl;
     out.close();
   }
 }
 
 // Start the given level
 void
-PingusGame::start(string plf_filename, string psm_filename)
+PingusGame::start(std::string plf_filename, std::string psm_filename)
 {
   if (plf_filename.empty()) {
     plf_filename = read_lastlevel_file();

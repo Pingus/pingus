@@ -1,4 +1,4 @@
-//  $Id: ParticleHolder.cc,v 1.2 2000/02/09 21:43:44 grumbel Exp $
+//  $Id: ParticleHolder.cc,v 1.3 2000/02/11 16:58:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,7 +35,7 @@ ParticleHolder::~ParticleHolder()
 void
 ParticleHolder::let_move()
 {
-  for(list<Particle*>::iterator i=this->begin(); i != this->end(); i++) 
+  for(std::list<Particle*>::iterator i = this->begin(); i != this->end(); i++) 
     {
       if ((*i)->is_alive()) 
 	{
@@ -52,7 +52,7 @@ ParticleHolder::let_move()
 void
 ParticleHolder::draw_offset(int x, int y, double s) // const
 {
-  for(list<Particle*>::iterator i = this->begin(); i != this->end(); i++) 
+  for(std::list<Particle*>::iterator i = this->begin(); i != this->end(); i++) 
     { 
       (*i)->draw_offset(x, y, s);
     }
@@ -70,7 +70,7 @@ ParticleHolder::add_pingu_explo(int x, int y)
 void
 ParticleHolder::add_particle(Particle* p)
 {
-  if (verbose > 1) cout << "--- ParticleHolder: Warrning add_particle() is slow" << endl;
+  if (verbose > 1) std::cout << "--- ParticleHolder: Warrning add_particle() is slow" << std::endl;
   this->push_back(p);
 }
 
@@ -94,8 +94,8 @@ ParticleHolder::init_particles()
 void 
 ParticleHolder::clear_particles()
 {
-  cout << "ParticleHolder:: Clearing particles" << endl;
-  for(vector<Particle*>::iterator i = all_particles.begin(); i != all_particles.end(); i++)
+  std::cout << "ParticleHolder:: Clearing particles" << std::endl;
+  for(std::vector<Particle*>::iterator i = all_particles.begin(); i != all_particles.end(); i++)
     {
       delete (*i);
     }

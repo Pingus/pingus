@@ -1,4 +1,4 @@
-//  $Id: pingu_actions.hh,v 1.1 2000/02/04 23:45:19 mbn Exp $
+//  $Id: pingu_actions.hh,v 1.2 2000/02/11 16:58:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,7 +29,7 @@
 // here. 
 
 void register_actions();
-PinguAction* makePinguAction(string action_name);
+PinguAction* makePinguAction(std::string action_name);
 
 #endif
 

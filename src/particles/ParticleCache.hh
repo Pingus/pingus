@@ -1,4 +1,4 @@
-//  $Id: ParticleCache.hh,v 1.2 2000/02/09 21:43:44 grumbel Exp $
+//  $Id: ParticleCache.hh,v 1.3 2000/02/11 16:58:28 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,8 +25,8 @@
 class ParticleCache
 {
 private:
-  vector<Particle*>::iterator position;
-  vector<Particle*> particles;
+  std::vector<Particle*>::iterator position;
+  std::vector<Particle*> particles;
 public:
   ParticleCache();
   ~ParticleCache();

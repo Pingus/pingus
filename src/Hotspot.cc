@@ -1,4 +1,4 @@
-//  $Id: Hotspot.cc,v 1.2 2000/02/09 21:43:40 grumbel Exp $
+//  $Id: Hotspot.cc,v 1.3 2000/02/11 16:58:25 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,7 +28,7 @@
 Hotspot::Hotspot(hotspot_data spot)
 {
   if (verbose > 2)
-    cout << "Creating Hotspot" << endl;
+    std::cout << "Creating Hotspot" << std::endl;
 
   x_pos = spot.x_pos;
   y_pos = spot.y_pos;
@@ -51,13 +51,13 @@ void
 Hotspot::draw_offset(int x, int y, float s)
 {
   /*
-  cout << "Hotspot: " 
+  std::cout << "Hotspot: " 
        << x << " : "
        << y << " : "
        << x_pos << " : "
        << y_pos << " : " 
        << para << " : " 
-       << endl;
+       << std::endl;
 */  
   if (s == 1.0)
     {

@@ -1,4 +1,4 @@
-//  $Id: algo.hh,v 1.2 2000/02/09 21:43:41 grumbel Exp $
+//  $Id: algo.hh,v 1.3 2000/02/11 16:58:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,7 +29,6 @@
 #include <io.h>
 #include <iostream>
 #define F_OK 0
-using namespace std;
 #endif /* WIN32 */
 
 // This file contains different algorithmens and other usefull
@@ -40,22 +39,22 @@ bool rect_col(int ax1, int ax2, int ay1, int ay2,
               int bx1, int bx2, int by1, int by2);
 
 string add_slash(string& str);
-string get_directory(string s);
-bool   exist(string filename);
+string get_directory(std::string s);
+bool   exist(std::string filename);
 bool   exist(const char* filename);
 char*  tolowerstr(char*);
-string find_file(string paths, string filename);
-//string basename(string filename);
-/*template<class T> inline string to_string(const T& n)
+string find_file(std::string paths, std::string filename);
+//string basename(std::string filename);
+/*template<class T> inline std::string to_string(const T& n)
 {
- ostringstream tmp;
+ std::ostringstream tmp;
  tmp << n;
  return tmp.str();
  }*/
 /*
 template<class T> inline void from_string(const string& s, T& n)
 {
- istringstream tmp(s);
+ std::istringstream tmp(s);
  tmp >> n;
 }
 */

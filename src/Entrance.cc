@@ -1,4 +1,4 @@
-//  $Id: Entrance.cc,v 1.2 2000/02/09 21:43:39 grumbel Exp $
+//  $Id: Entrance.cc,v 1.3 2000/02/11 16:58:25 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,7 +41,7 @@ Entrance::Entrance()
 Entrance::Entrance(entrance_data data)
 {
   if (verbose > 2)
-    cout << "Creating Entrance" << endl;
+    std::cout << "Creating Entrance" << std::endl;
   x_pos = data.x_pos;
   y_pos = data.y_pos;
   release_rate = data.release_rate;

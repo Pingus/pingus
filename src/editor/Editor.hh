@@ -1,4 +1,4 @@
-//  $Id: Editor.hh,v 1.2 2000/02/09 21:43:43 grumbel Exp $
+//  $Id: Editor.hh,v 1.3 2000/02/11 16:58:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -48,8 +48,8 @@ private:
 
   int move_x;
   int move_y;
-  string checkpoint;
-  string last_level;
+  std::string checkpoint;
+  std::string last_level;
   bool always_animate;
 
   Panel*  panel;
@@ -61,7 +61,7 @@ public:
   Editor ();
   ~Editor ();
 
-  string read_string (string prefix = "", string default_str = "");
+  std::string read_string (std::string prefix = "", std::string default_str = "");
   void edit ();
   //  EditorObj* get_current_obj();
   void draw ();
@@ -88,7 +88,7 @@ public:
   void raise_current_objs();
   void lower_current_objs();
   */
-  string save_tmp_level ();
+  std::string save_tmp_level ();
   /*  void   save_level (string);
   void   save_plf (string);
   void   save_psm (string);

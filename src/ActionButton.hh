@@ -1,4 +1,4 @@
-//  $Id: ActionButton.hh,v 1.2 2000/02/09 21:43:39 grumbel Exp $
+//  $Id: ActionButton.hh,v 1.3 2000/02/11 16:58:24 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -106,7 +106,7 @@ protected:
   CL_Font*    font_h;
 
   // The x and y position of the button
-  string name;
+  std::string name;
   int available;
 
   ActionHolder* action_holder;
@@ -117,7 +117,7 @@ public:
   ActionButton();
   virtual ~ActionButton();
 
-  void init(int x, int y, string str);
+  void init(int x, int y, std::string str);
 
   // Draws the button and increase the animation counter.
   virtual void   draw() = 0;
@@ -126,7 +126,7 @@ public:
   void   let_move();
 
   // Returns the name of the action the button represents.
-  string get_action_name();
+  std::string get_action_name();
 
   // Returns true if the button is pressed.
   bool   is_pressed();
@@ -142,7 +142,7 @@ class HorizontalActionButton : public ActionButton
 {
 private:
 public:
-  HorizontalActionButton(int x, int y, string str);
+  HorizontalActionButton(int x, int y, std::string str);
   ~HorizontalActionButton();
   void draw();
   bool mouse_over();
@@ -154,7 +154,7 @@ class VerticalActionButton : public ActionButton
 {
 private:
 public:
-  VerticalActionButton(int x, int y, string str);
+  VerticalActionButton(int x, int y, std::string str);
   ~VerticalActionButton();
   void draw();
   bool mouse_over();

@@ -1,4 +1,4 @@
-//  $Id: PLTParser.hh,v 1.2 2000/02/09 21:43:40 grumbel Exp $
+//  $Id: PLTParser.hh,v 1.3 2000/02/11 16:58:25 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,29 +35,29 @@ private:
   int lineno;
   bool in_header;
 
-  vector<string> levels;
-  string theme_name;
-  string theme_description;
-  string theme_image;
-  string background_image;
+  vector<std::string> levels;
+  std::string theme_name;
+  std::string theme_description;
+  std::string theme_image;
+  std::string background_image;
 public:
   PLTParser();
   ~PLTParser();
 
   void   parse(string);
-  vector<string> get_levels();
-  string get_name();
-  string get_description();
-  string get_surface();
+  vector<std::string> get_levels();
+  std::string get_name();
+  std::string get_description();
+  std::string get_surface();
   ResDescriptor get_background();
 
 private:
   char   get_char();
   void   expect(char);
   void   jump_spaces();
-  string get_string();
+  std::string get_string();
   void   check_newline();
-  string get_line();
+  std::string get_line();
   void   add_pair(string, string);
 };
 

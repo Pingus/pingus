@@ -1,4 +1,4 @@
-//  $Id: ParticleHolder.hh,v 1.2 2000/02/09 21:43:44 grumbel Exp $
+//  $Id: ParticleHolder.hh,v 1.3 2000/02/11 16:58:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,10 +24,10 @@
 #include "Particle.hh"
 #include "ParticleCache.hh"
 
-class ParticleHolder : public list<Particle*>
+class ParticleHolder : public std::list<Particle*>
 {
 private:
-  vector<Particle*> all_particles;
+  std::vector<Particle*> all_particles;
   ParticleCache     pingu_particles;
   
 public:

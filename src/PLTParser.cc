@@ -1,4 +1,4 @@
-//  $Id: PLTParser.cc,v 1.2 2000/02/09 21:43:40 grumbel Exp $
+//  $Id: PLTParser.cc,v 1.3 2000/02/11 16:58:25 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,10 +35,10 @@ PLTParser::~PLTParser()
 }
 
 void
-PLTParser::parse(string filename)
+PLTParser::parse(std::string filename)
 {
-  string keyword;
-  string value;
+  std::string keyword;
+  std::string value;
 
   in.open(filename.c_str());
 
@@ -50,31 +50,31 @@ PLTParser::parse(string filename)
       while (in_header) 
 	{
 	  keyword = get_string();
-	  // cout << "Keyword: " << keyword << endl;
+	  // std::cout << "Keyword: " << keyword << std::endl;
 	  expect(':');
 	  value = get_line();
-	  // cout << "Value: " << value << endl;
+	  // std::cout << "Value: " << value << std::endl;
 	  add_pair(keyword, value);
 	  check_newline();
 	}
       
-      // cout << " ---- " << endl;
+      // std::cout << " ---- " << std::endl;
       
       while (true) 
 	{
-	  string str = get_line();
+	  std::string str = get_line();
 	  levels.push_back(str);
 	}
     }
   
   catch (PLTEOF a) 
     {
-      // cout << "PLT: EOF found" << endl;
+      // std::cout << "PLT: EOF found" << std::endl;
     }
 }
 
 void
-PLTParser::add_pair(string keyword, string value)
+PLTParser::add_pair(std::string keyword, std::string value)
 {
   if (keyword == "Name") {
     theme_name = value;
@@ -137,7 +137,7 @@ string
 PLTParser::get_string()
 {
   char c;
-  string str;
+  std::string str;
   
   while (isalnum(c = get_char())) {
     str += c;
@@ -151,7 +151,7 @@ string
 PLTParser::get_line()
 {
   char c;
-  string str;
+  std::string str;
 
   while ((c = get_char()) != '\n') {
     str += c;
@@ -160,7 +160,7 @@ PLTParser::get_line()
   return str;
 }
 
-vector<string>
+vector<std::string>
 PLTParser::get_levels()
 {
   return levels;

@@ -1,4 +1,4 @@
-//  $Id: globals.hh,v 1.2 2000/02/09 21:43:41 grumbel Exp $
+//  $Id: globals.hh,v 1.3 2000/02/11 16:58:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,10 +22,6 @@
 
 #include <string>
 
-#ifdef WIN32
-using namespace std;
-#endif /* WIN32 */
-
 // This file defines some global variables, most of them are used to
 // keep the values of command line arguments.
 extern int    game_speed;        // -t, --set-speed
@@ -33,7 +29,7 @@ extern bool   print_fps;         // --print-fps
 extern int    verbose;           // -v, --verbose
 extern bool   music_enabled;     // -m, --enable-music
 extern bool   sound_enabled;     // -s, --enable-sound
-extern string pingus_datadir;    // -p, --datadir
+extern std::string pingus_datadir;    // -p, --datadir
 extern bool   gimmicks_enabled;  // -i, --enable-gimmicks
 extern bool   intro_disabled;    // -n, --disable-intro
 extern bool   record_demo;       // --record-demo
@@ -49,8 +45,8 @@ extern bool   quick_play;        // -q, --quick_play
 extern bool   maintainer_mode;   // --maintainer-mode
 extern bool   horizontal_button_panel; 
 extern bool   start_editor;     
-extern string demo_file;
-extern string pingus_homedir;    //
+extern std::string demo_file;
+extern std::string pingus_homedir;    //
 extern bool   auto_scrolling;    // --enable-auto-scrolling
 extern int    tile_size;         // --tile-size  
 

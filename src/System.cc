@@ -1,4 +1,4 @@
-//  $Id: System.cc,v 1.2 2000/02/09 21:43:41 grumbel Exp $
+//  $Id: System.cc,v 1.3 2000/02/11 16:58:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,7 +46,7 @@ System::opendir(const string& pathname, const string& pattern)
 
   if (dp == 0)
     {
-      cout << "Couldn't open: " << pathname << endl;
+      std::cout << "Couldn't open: " << pathname << std::endl;
     }
   else
     {
@@ -71,14 +71,14 @@ System::opendir(const string& pathname, const string& pattern)
   // FIXME: This Windows code is untested and may not work!
 
   WIN32_FIND_DATA coFindData;
-  string FindFileDir = pathname + "\\" + pattern;
-  string FileLocation;
+  std::string FindFileDir = pathname + "\\" + pattern;
+  std::string FileLocation;
   HANDLE hFind = FindFirstFile(TEXT(FindFileDir.c_str()),&coFindData);
 
   if (hFind == INVALID_HANDLE_VALUE)
     {
       //BUG, errors aren't supported :)
-      cout << "Error: No theme files found";
+      std::cout << "Error: No theme files found";
     }
   
   do
@@ -95,13 +95,13 @@ System::opendir(const string& pathname, const string& pattern)
 
 // Returns the basic filename without the path
 string
-System::basename(string filename)
+System::basename(std::string filename)
 {
   // Should be replaced with STL
   
   const char* str = filename.c_str();
   int i;
-  //cout << "Getting basename of: " << str << endl;
+  //cout << "Getting basename of: " << str << std::endl;
 
   for(i = filename.size() - 1; i >= 0; --i) 
     {
@@ -110,7 +110,7 @@ System::basename(string filename)
       }
     }
   
-  //cout << "Basename: " << (str+i + 1) << endl;
+  //cout << "Basename: " << (str+i + 1) << std::endl;
   return (str+i + 1);
 }
 

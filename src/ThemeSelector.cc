@@ -1,4 +1,4 @@
-//  $Id: ThemeSelector.cc,v 1.2 2000/02/09 21:43:41 grumbel Exp $
+//  $Id: ThemeSelector.cc,v 1.3 2000/02/11 16:58:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,14 +41,14 @@ ListBox::draw_offset(int x, int y)
 }
 
 void
-ListBox::add_item(string l)
+ListBox::add_item(std::string l)
 {
   items.push_back(ListItem(l));
 }
 
 // ---=== List item ===---
 
-ListItem::ListItem(string l)
+ListItem::ListItem(std::string l)
 {
   label = l;
   font = CL_Font::load("Fonts/smallfont_h", PingusResource::get("fonts.dat"));
@@ -149,10 +149,10 @@ ThemeSelector::draw()
 }
 
 void
-ThemeSelector::readdir(string path)
+ThemeSelector::readdir(std::string path)
 {
   System::Directory dir; 
-  string pathname;
+  std::string pathname;
   string::size_type pos = 0; 
   string::size_type last_pos = 0; 
   bool exit_for = false;
@@ -175,7 +175,7 @@ ThemeSelector::readdir(string path)
       
       for(System::Directory::iterator entry = dir.begin(); entry != dir.end(); entry++)
 	{
-	  cout << "Entry Name: " << pathname + "/themes/" + entry->name << endl;
+	  std::cout << "Entry Name: " << pathname + "/themes/" + entry->name << std::endl;
 	  themes.push_back(new Theme(pathname + "/themes/" + entry->name));
 	}
     }

@@ -1,4 +1,4 @@
-//  $Id: FadeOut.cc,v 1.2 2000/02/09 21:43:39 grumbel Exp $
+//  $Id: FadeOut.cc,v 1.3 2000/02/11 16:58:25 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,16 +30,16 @@ FadeOut::random(void)
   } else {
     switch(rand() % 2) {
     case 0:
-      if (verbose) cout << "FadeOut::black_rect" << endl;
+      if (verbose) std::cout << "FadeOut::black_rect" << std::endl;
       black_rect();
       break;
     case 1:
-      if (verbose) cout << "FadeOut::fade_to_black" << endl;
+      if (verbose) std::cout << "FadeOut::fade_to_black" << std::endl;
       fade_to_black();
       break;
     case 2:
       CL_Display::clear_display();
-      if (verbose) cout << "FadeOut::clear_display()" << endl;    
+      if (verbose) std::cout << "FadeOut::clear_display()" << std::endl;    
       break;
     default:
       black_rect();

@@ -1,4 +1,4 @@
-//  $Id: digger.cc,v 1.2 2000/02/09 21:43:42 grumbel Exp $
+//  $Id: digger.cc,v 1.3 2000/02/11 16:58:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -73,7 +73,7 @@ Digger::let_move()
   if (rel_getpixel(0, -1) == ColMap::NOTHING
       || rel_getpixel(0, -1) == ColMap::SOLID)
     { 
-      // cout << "Digging into solid" << endl;
+      // std::cout << "Digging into solid" << std::endl;
       is_finished = true;
     }
 }

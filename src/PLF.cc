@@ -1,4 +1,4 @@
-//  $Id: PLF.cc,v 1.2 2000/02/09 21:43:40 grumbel Exp $
+//  $Id: PLF.cc,v 1.3 2000/02/11 16:58:25 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,7 +32,7 @@ int    str_to_int(const string& str);
 double str_to_double(const string& str);
 
 // Create a PLF object and start parsing the given file.
-PLF::PLF(string filename)
+PLF::PLF(std::string filename)
 {
   x_pos = y_pos = 0;
   width = 0; height = 0;
@@ -44,7 +44,7 @@ PLF::PLF(string filename)
   music = ResDescriptor("file", "gd-walk.it");
 
   col = ResDescriptor("auto", "-Auto ColMap-");
-  if (verbose > 1) cout << "Starting Parsing" << endl;
+  if (verbose > 1) std::cout << "Starting Parsing" << std::endl;
   init(filename);
 }
 
@@ -54,9 +54,9 @@ PLF::~PLF()
 }
 
 void
-PLF::set_value(string valueid,
-	       string cast,
-	       string value)
+PLF::set_value(std::string valueid,
+	       std::string cast,
+	       std::string value)
 {
   switch(current_group) {
 
@@ -151,15 +151,15 @@ PLF::set_value(string valueid,
   case PLF::EXIT:
     if (valueid == "x_pos") {
       exit_s.x_pos = str_to_int(value);
-      if (verbose > 2) cout << "Exit.x_pos: " << exit_s.x_pos << ":'" << value << "'" << endl;
+      if (verbose > 2) std::cout << "Exit.x_pos: " << exit_s.x_pos << ":'" << value << "'" << std::endl;
     } else if (valueid == "y_pos") {
       exit_s.y_pos = str_to_int(value);
     } else if (valueid == "z_pos") {
       exit_s.z_pos = str_to_int(value);
-      if (verbose > 2) cout << "Exit.y_pos: " << exit_s.y_pos << endl;
+      if (verbose > 2) std::cout << "Exit.y_pos: " << exit_s.y_pos << std::endl;
     } else if (valueid == "image") {
       exit_s.desc = ResDescriptor(cast, value);
-      if (verbose > 2) cout << "Exit.desc: " << exit_s.desc.res_name << endl;
+      if (verbose > 2) std::cout << "Exit.desc: " << exit_s.desc.res_name << std::endl;
     } else {
       throw PingusError("Exit: Unknown ValueID: " + valueid);
     }
@@ -262,7 +262,7 @@ PLF::set_value(string valueid,
 }
 
 void
-PLF::set_group_start(string groupname)
+PLF::set_group_start(std::string groupname)
 {
   if (groupname == "global") {
     current_group = PLF::GLOBAL;
@@ -321,7 +321,7 @@ PLF::set_group_end(void)
 
   default:
     if (verbose > 2)
-      cout << "PLF:set_group_end(): Nothing to flush" << endl;
+      std::cout << "PLF:set_group_end(): Nothing to flush" << std::endl;
     break;
   }
 
@@ -346,7 +346,7 @@ PLF::get_fg()
       ret_val.res_name = find_file(pingus_datadir, "levels/" + fg.res_name);
       break;
     case  ResDescriptor::RESOURCE:
-      if (verbose > 1) cout << "Not supported" << endl;
+      if (verbose > 1) std::cout << "Not supported" << std::endl;
       break;
     default:
       assert(false);
@@ -473,7 +473,7 @@ PLF::str_to_int(const string& str)
   int ret_val;
 
   if (sscanf(str.c_str(), "%d", &ret_val) != 1) {
-    throw PingusError("PLF: Couldn't covert string to integer: " + str);
+    throw PingusError("PLF: Couldn't covert std::string to integer: " + str);
   }
 
   return ret_val;
@@ -485,14 +485,14 @@ PLF::str_to_double(const string& str)
   double ret_val;
 
   if (sscanf(str.c_str(), "%lf", &ret_val) != 1) {
-    throw PingusError("PLF: Couldn't covert string to double: " + str);
+    throw PingusError("PLF: Couldn't covert std::string to double: " + str);
   }
 
   return ret_val;
 }
 
 void
-PLF::set_psm_filename(string name)
+PLF::set_psm_filename(std::string name)
 {
   psm_filename = name;
 }

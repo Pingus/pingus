@@ -1,4 +1,4 @@
-//  $Id: System.hh,v 1.2 2000/02/09 21:43:41 grumbel Exp $
+//  $Id: System.hh,v 1.3 2000/02/11 16:58:26 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,7 +32,7 @@ public:
   struct DirectoryEntry
   {
     enum FileType { DIRECTORY, FILE } type;
-    string name;
+    std::string name;
 
     DirectoryEntry(const string&);
   };
@@ -41,7 +41,7 @@ public:
   
   static Directory opendir(const string& pathname, const string& pattern = "*");
 
-  static string basename(string);
+  static std::string basename(string);
 };
 
 #endif

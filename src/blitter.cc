@@ -1,4 +1,4 @@
-//  $Id: blitter.cc,v 1.2 2000/02/09 21:43:41 grumbel Exp $
+//  $Id: blitter.cc,v 1.3 2000/02/11 16:58:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -217,7 +217,7 @@ put_surface(CL_LockableSurface* tsurface, CL_SurfaceProvider* sprovider,
     x_offset = 0;
 
   for(int line=y_offset; line < sheight && (line + y) < theight; ++line) {
-    //    cout << "Line: " << line << endl;
+    //    std::cout << "Line: " << line << std::endl;
     start_i = ((line + y) * tpitch) + (x*4);
 
     for(int i=start_i+(4*x_offset),j=line*spitch+x_offset; 
@@ -293,8 +293,8 @@ convert_to_emptyprovider(CL_SurfaceProvider* sprov)
       tprov->unlock();      
       break;
     default:
-      cout << "convert_to_emptyprovider(): Wrong source format: " 
-	   << static_cast<int>(sprov->get_depth()) << endl;
+      std::cout << "convert_to_emptyprovider(): Wrong source format: " 
+	   << static_cast<int>(sprov->get_depth()) << std::endl;
       assert(false);
       break;
     }

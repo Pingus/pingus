@@ -1,4 +1,4 @@
-//  $Id: PingusMusic.cc,v 1.2 2000/02/09 21:43:40 grumbel Exp $
+//  $Id: PingusMusic.cc,v 1.3 2000/02/11 16:58:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,29 +24,29 @@
 
 PingusMusic::PingusMusic(PLF* data)
 {
-  string filename;
+  std::string filename;
 
   if (verbose) 
-    cout << "PingusMusic: Creating PingusMusic" << endl;
+    std::cout << "PingusMusic: Creating PingusMusic" << std::endl;
 
   filename = data->get_music().res_name;
 
   filename = find_file(pingus_datadir, "music/" + filename);
   
   if (verbose)
-    cout << "PingusMusic: Opening file: " << filename << endl;
+    std::cout << "PingusMusic: Opening file: " << filename << std::endl;
 
   if (!exist(filename)) {
-    string error_mes;
+    std::string error_mes;
     error_mes += "PingusMusic: Couldn't open \'";
     error_mes += filename;
     error_mes +=  "\'";
-    cout <<
+    std::cout <<
       "=====================================================================\n"
       "   You probably forgot to download the pingus sound pakage, it is\n"
       "   available at the pingus webpage at: http://pingus.home.pages.de\n"
       "=====================================================================\n"
-	 << endl;
+	 << std::endl;
     throw PingusError(error_mes);
   }
 }

@@ -1,4 +1,4 @@
-//  $Id: ActionButton.cc,v 1.2 2000/02/09 21:43:39 grumbel Exp $
+//  $Id: ActionButton.cc,v 1.3 2000/02/11 16:58:24 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,7 +32,7 @@ Button::~Button()
 {
 }
 
-EventButton::EventButton(int x, int y, string str)
+EventButton::EventButton(int x, int y, std::string str)
 {
   surface = CL_Surface::load(str.c_str(), PingusResource::get("global.dat"));
   x_pos = x;
@@ -73,7 +73,7 @@ ActionButton::~ActionButton()
 }
 
 void
-ActionButton::init(int x, int y, string str)
+ActionButton::init(int x, int y, std::string str)
 {
   //  make_action = func;
   x_pos = x;
@@ -121,7 +121,7 @@ ActionButton::set_action_holder(ActionHolder* h)
 }
 
 
-HorizontalActionButton::HorizontalActionButton(int x, int y, string str)
+HorizontalActionButton::HorizontalActionButton(int x, int y, std::string str)
 {
   init(x, y, str);  
 }
@@ -183,7 +183,7 @@ HorizontalActionButton::draw()
   surface->put_screen(x_pos + 3, y_pos + 20, action_c);
 }
 
-VerticalActionButton::VerticalActionButton(int x, int y, string str)
+VerticalActionButton::VerticalActionButton(int x, int y, std::string str)
 {
   init(x, y, str);
 }

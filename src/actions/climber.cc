@@ -1,4 +1,4 @@
-//  $Id: climber.cc,v 1.2 2000/02/09 21:43:42 grumbel Exp $
+//  $Id: climber.cc,v 1.3 2000/02/11 16:58:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,7 +26,7 @@ Climber::Climber()
 PinguAction* 
 Climber::allocate(void)
 {
-  // cout << "Creating new Climber" << endl;
+  // std::cout << "Creating new Climber" << std::endl;
   return new Climber;
 }
 
@@ -63,8 +63,8 @@ void
 Climber::let_move(void)
 {
   /*
-  cout << "Climer let_move()" << endl;
-  cout << "Direction: " << pingu->direction << endl;
+  std::cout << "Climer let_move()" << std::endl;
+  std::cout << "Direction: " << pingu->direction << std::endl;
   printf("%3d %3d %3d\n", rel_getpixel(1,1), rel_getpixel(0,1), rel_getpixel(-1,1));
   printf("%3d %3d %3d\n", rel_getpixel(1,0), rel_getpixel(0,0), rel_getpixel(-1,0));
   printf("%3d %3d %3d\n", rel_getpixel(1,-1), rel_getpixel(0,-1),rel_getpixel(-1, -1));
@@ -72,17 +72,17 @@ Climber::let_move(void)
   // If above is free
   if (rel_getpixel(0, 1) == ColMap::NOTHING) {
     if (rel_getpixel(1, 1) & ColMap::WALL) {
-      //cout << "Go one step up" << endl;
+      //cout << "Go one step up" << std::endl;
       --pingu->y_pos;
       return;
     } else if (rel_getpixel(1, 1) == ColMap::NOTHING) {
-      //      cout << "Climber failed, falling down" << endl;
+      //      std::cout << "Climber failed, falling down" << std::endl;
       --pingu->y_pos;
       pingu->x_pos += pingu->direction;
       is_finished = true;
     }
   } else {
-    //    cout << "Climber failed, falling down" << endl;
+    //    std::cout << "Climber failed, falling down" << std::endl;
     pingu->direction.change();
     is_finished = true;
   }

@@ -1,4 +1,4 @@
-//  $Id: PingusSound.cc,v 1.2 2000/02/09 21:43:40 grumbel Exp $
+//  $Id: PingusSound.cc,v 1.3 2000/02/11 16:58:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,14 +32,14 @@ PingusSound::PingusSound(void)
 }
 
 void
-PingusSound::init(string filename)
+PingusSound::init(std::string filename)
 {
   t = new PingusSound();
 
   directory = get_directory(filename);
 
   if (verbose)
-    cout << "PingusSound: " << directory << endl;
+    std::cout << "PingusSound: " << directory << std::endl;
 
   t->register_token(OHNO, "OhNo");
   t->register_token(DOOR, "Door");
@@ -49,17 +49,17 @@ PingusSound::init(string filename)
   t->register_token(OING, "Oing");
   t->register_token(SPLAT, "Splat");
   
-  cout << "Reading File" << endl;
+  std::cout << "Reading File" << std::endl;
 
   t->open(filename.c_str());
 
   if (verbose > 2) {
-    cout << "Testing Tokens" << endl;
-    cout << "Test OhNo: " << (*t)[OHNO] << endl;
-    cout << "Test Door: " << (*t)[DOOR] << endl;
-    cout << "Test Explode: " << (*t)[EXPLODE] << endl;
-    cout << "Test Yipee: " << (*t)[YIPEE] << endl;
-    cout << "Test LetsGo: " << (*t)[LETSGO] << endl;
+    std::cout << "Testing Tokens" << std::endl;
+    std::cout << "Test OhNo: " << (*t)[OHNO] << std::endl;
+    std::cout << "Test Door: " << (*t)[DOOR] << std::endl;
+    std::cout << "Test Explode: " << (*t)[EXPLODE] << std::endl;
+    std::cout << "Test Yipee: " << (*t)[YIPEE] << std::endl;
+    std::cout << "Test LetsGo: " << (*t)[LETSGO] << std::endl;
   }
   t->close();
 }
@@ -69,8 +69,8 @@ PingusSound::play(Sounds s)
 {
   if (sound_enabled) {
     if (verbose > 2)
-      cout << "PingusSound: playing \"" << directory + (*t)[s] << "\""
-	   << " " << static_cast<int>(s) << endl;
+      std::cout << "PingusSound: playing \"" << directory + (*t)[s] << "\""
+	   << " " << static_cast<int>(s) << std::endl;
 
     CL_SoundBuffer *soundbuffer = CL_Sample::create((directory + (*t)[s]).c_str(), NULL);
     soundbuffer->play();

@@ -1,4 +1,4 @@
-//  $Id: ActionHolder.cc,v 1.2 2000/02/09 21:43:39 grumbel Exp $
+//  $Id: ActionHolder.cc,v 1.3 2000/02/11 16:58:24 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,24 +42,24 @@
 
 #define MAX_ACTION_BUFFER_SIZE 200
 
-vector<PinguAction*> ActionHolder::uactions;
-map<string, ActionCounter> ActionHolder::uaction_buffer;
+std::vector<PinguAction*> ActionHolder::uactions;
+std::map<std::string, ActionCounter> ActionHolder::uaction_buffer;
 
 ActionHolder::ActionHolder()
 {
-  cout << "Init u actions" << endl;
+  std::cout << "Init u actions" << std::endl;
   init_uactions();
 }
 
 ActionHolder::~ActionHolder()
 {
-  cout << "ActionHolder: Destructing ActionHolder" << endl;
+  std::cout << "ActionHolder: Destructing ActionHolder" << std::endl;
 
-  for (vector<string>::iterator i = action_name.begin(); i != action_name.end(); i++)
+  for (std::vector<std::string>::iterator i = action_name.begin(); i != action_name.end(); i++)
     {
-      for (vector<PinguAction*>::iterator j = action[(*i)].action.begin(); j != action[(*i)].action.end(); j++)
+      for (std::vector<PinguAction*>::iterator j = action[(*i)].action.begin(); j != action[(*i)].action.end(); j++)
 	{
-	  cout << "ActionHolder: Deleting action from: " << *i << endl;
+	  std::cout << "ActionHolder: Deleting action from: " << *i << std::endl;
 	  delete *j;
 	}
     }
@@ -70,7 +70,7 @@ void
 ActionHolder::add_action(const string& name, int available)
 {
   if (verbose > 1)
-    cout << "ActionHolder::add_action(" << name << ", " << available << ");" << endl;
+    std::cout << "ActionHolder::add_action(" << name << ", " << available << ");" << std::endl;
   action[name].number = available;
   
   for (int i = 0; i < available; i++)
@@ -84,7 +84,7 @@ int
 ActionHolder::get_available(const string& name)
 {
   if (verbose > 1)
-    cout << "ActionHolder::get_available: " << name << ":" << action[name].number << endl;
+    std::cout << "ActionHolder::get_available: " << name << ":" << action[name].number << std::endl;
   return action[name].number;
 }
 
@@ -120,7 +120,7 @@ ActionHolder::push_action(const string& name)
   action[name].number++;
   
   if (verbose > 1)
-    cout << "ActionHolder: " << name << ": " << action[name].number << endl;
+    std::cout << "ActionHolder: " << name << ": " << action[name].number << std::endl;
 }
 
 PinguAction*
@@ -197,8 +197,8 @@ ActionHolder::init_uactions()
 void
 ActionHolder::clear_uactions()
 {
-  cout << "ActionHolder: Clearing Uactions" << endl;
-  for(vector<PinguAction*>::iterator act = uactions.begin(); act != uactions.end(); act++)
+  std::cout << "ActionHolder: Clearing Uactions" << std::endl;
+  for(std::vector<PinguAction*>::iterator act = uactions.begin(); act != uactions.end(); act++)
     {
       delete *act;
     }

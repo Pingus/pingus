@@ -1,4 +1,4 @@
-//  $Id: ParticleCache.cc,v 1.2 2000/02/09 21:43:44 grumbel Exp $
+//  $Id: ParticleCache.cc,v 1.3 2000/02/11 16:58:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,10 +23,10 @@
 
 ParticleCache::ParticleCache()
 {
-  cout << "ParticleCache created" << endl;
+  std::cout << "ParticleCache created" << std::endl;
   allocate(10000);
   position = particles.begin();
-  cout << "Position: " << position << endl;
+  std::cout << "Position: " << position << std::endl;
 }
 
 ParticleCache::~ParticleCache()
@@ -39,16 +39,16 @@ ParticleCache::create()
 {
   if (position != particles.end())
     {
-      vector<Particle*>::iterator particle = position;
+      std::vector<Particle*>::iterator particle = position;
       
       position++;
       return *particle;
     }
   else 
     {
-      vector<Particle*>::iterator particle = position;
+      std::vector<Particle*>::iterator particle = position;
       
-      cout << "OUt of particles" << endl;
+      std::cout << "OUt of particles" << std::endl;
       particles.push_back(new PinguParticle());
       position++;
 
@@ -59,7 +59,7 @@ ParticleCache::create()
 void
 ParticleCache::allocate(int num_objs)
 {
-  cout << "Reallocating: " << num_objs << endl;
+  std::cout << "Reallocating: " << num_objs << std::endl;
   for(int i=0; i < num_objs; i++)
     {
       particles.push_back(new PinguParticle());
@@ -69,7 +69,7 @@ ParticleCache::allocate(int num_objs)
 void
 ParticleCache::clear()
 {
-  for(vector<Particle*>::iterator i = particles.begin(); i != particles.end(); i++)
+  for(std::vector<Particle*>::iterator i = particles.begin(); i != particles.end(); i++)
     {
       delete (*i);
     }  

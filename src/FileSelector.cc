@@ -1,4 +1,4 @@
-//  $Id: FileSelector.cc,v 1.1 2000/02/04 23:45:18 mbn Exp $
+//  $Id: FileSelector.cc,v 1.2 2000/02/11 16:58:25 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,7 +31,6 @@
 #include <fnmatch.h>
 #else /* !WIN32 */
 #include <windows.h>
-using namespace std;
 #endif /* !WIN32 */
 
 #include "globals.hh"
@@ -65,14 +64,14 @@ struct Entry_less : public binary_function<FileSelectorEntry, FileSelectorEntry,
 };
 
 void
-display_string(CL_Font* font, int x, int y, string str)
+display_string(CL_Font* font, int x, int y, std::string str)
 {
-  //vector<string> strs;
+  //vector<std::string> strs;
   string::size_type pos = pos = str.find("\n", 0);
   
   for(int i = 0;; pos = str.find("\n", 0), ++i) {
     font->print_left(x, y + (20*i), str.substr(0, pos).c_str());
-    //cout << "Pos: " << pos << "Str: " << str.substr(0, pos) << endl;
+    //cout << "Pos: " << pos << "Str: " << str.substr(0, pos) << std::endl;
     if (pos == string::npos) break;
     if (pos >= str.size()) break;
     str = str.substr(pos + 1);
@@ -84,8 +83,8 @@ FileSelector::FileSelector()
 #ifdef WIN32
   file_npos = -1;
 #endif
-  cout << "File npos: " << file_npos << endl;
-  if (verbose > 1) cout << "Construction FileSelector" << endl;
+  std::cout << "File npos: " << file_npos << std::endl;
+  if (verbose > 1) std::cout << "Construction FileSelector" << std::endl;
   font_h = CL_Res_Font::load("Fonts/smallfont", *PingusResource::get("fonts.dat"));
   font   = CL_Res_Font::load("Fonts/smallfont_h",*PingusResource::get("fonts.dat"));  
   up     = CL_Res_Surface::load("Buttons/up", *PingusResource::get("global.dat"));
@@ -105,9 +104,9 @@ FileSelector::FileSelector()
 }
 
 string
-FileSelector::select(string pathname, string pattern)
+FileSelector::select(std::string pathname, std::string pattern)
 {
-  string filename;
+  std::string filename;
 
   CL_Display::sync_buffers();
 
@@ -177,7 +176,7 @@ FileSelector::select_file(void)
       }
     }
     catch (CL_Error err) {
-      string str = "CL_Error: ";
+      std::string str = "CL_Error: ";
       str += err.message.get_string();
       
       PingusMessageBox box(str);
@@ -185,7 +184,7 @@ FileSelector::select_file(void)
     }
 
     catch (PingusError err) {
-      string str = "PingusError: ";
+      std::string str = "PingusError: ";
       str += err.message;
       PingusMessageBox box(str);
       file_index = file_npos;
@@ -201,19 +200,19 @@ FileSelector::select_file(void)
 }
 
 void
-FileSelector::readdir(string path, string pattern)
+FileSelector::readdir(std::string path, std::string pattern)
 {
   if (dir_read) {
-    cout << "FileSelector: Dir allready read, skipping" << endl;
+    std::cout << "FileSelector: Dir allready read, skipping" << std::endl;
     return;
   }
-  cout << "FileSelector: Reading directory" << endl;
+  std::cout << "FileSelector: Reading directory" << std::endl;
 
 #ifndef WIN32
   DIR* dp;
   dirent* de;
       
-  string pathname;
+  std::string pathname;
   string::size_type pos = 0; 
   string::size_type last_pos = 0; 
   bool exit_for = false;
@@ -236,7 +235,7 @@ FileSelector::readdir(string path, string pattern)
       dp = opendir(pathname.c_str());
     
       if (!dp) {
-	cout << "Warrning: Couldn't open directory: " << pathname << endl;
+	cout << "Warrning: Couldn't open directory: " << pathname << std::endl;
       } else {
 	while ((de = ::readdir(dp)) != NULL) {
 	  if (fnmatch(pattern.c_str(), de->d_name, FNM_PATHNAME) == 0) {
@@ -244,7 +243,7 @@ FileSelector::readdir(string path, string pattern)
 	      entry.push_back(FileSelectorEntry(pathname + "/" + de->d_name));
 	    }
 	    catch (PingusError err) {
-	      cout << "Warning: " << err.message << endl;
+	      std::cout << "Warning: " << err.message << std::endl;
 	    }
 	  }
 	} // BUG, errors aren't checked
@@ -253,14 +252,14 @@ FileSelector::readdir(string path, string pattern)
     }
 #else /* !WIN32 */
   WIN32_FIND_DATA coFindData;
-  string FindFileDir = pingus_datadir + "levels\\*.plf";
-  string LevelLocation;
+  std::string FindFileDir = pingus_datadir + "levels\\*.plf";
+  std::string LevelLocation;
   HANDLE hFind = FindFirstFile(TEXT(FindFileDir.c_str()),&coFindData);
 
   if (hFind == INVALID_HANDLE_VALUE)
   {
      //BUG, errors aren't supported :)
-    cout << "Error: No Files found";
+    std::cout << "Error: No Files found";
   }
 
   do
@@ -274,11 +273,11 @@ FileSelector::readdir(string path, string pattern)
   FindClose(hFind);  
 #endif
   if (fs_preload) {
-    cout << "Preloading level preview images" << endl;
-    cout << "That could take a while, sorry." << endl;
+    std::cout << "Preloading level preview images" << std::endl;
+    std::cout << "That could take a while, sorry." << std::endl;
     for (index_type i=0; i < entry.size(); ++i) {
       entry[i].preview->load();
-      cout << i * 100 / (entry.size()-1) << "% done\r" << flush;
+      std::cout << i * 100 / (entry.size()-1) << "% done\r" << std::flush;
     }
   }
 
@@ -308,7 +307,7 @@ FileSelector::draw(int highlight)
 			    20*(i-file_offset)  + FS_START + font_h->get_height() + 15,
 			    1.0, 1.0, 1.0, 0.5);
       font_h->print_left(20,20*(i-file_offset) + FS_START + 10, entry[i].plf->get_levelname().c_str());
-      cout << "Levelfile: " << entry[i].directory.c_str() << endl;
+      std::cout << "Levelfile: " << entry[i].directory.c_str() << std::endl;
     } else {
       font->print_left(20,20*(i-file_offset) + FS_START + 10, entry[i].plf->get_levelname().c_str());
     }

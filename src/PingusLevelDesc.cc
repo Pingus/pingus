@@ -1,4 +1,4 @@
-//  $Id: PingusLevelDesc.cc,v 1.2 2000/02/09 21:43:40 grumbel Exp $
+//  $Id: PingusLevelDesc.cc,v 1.3 2000/02/11 16:58:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,7 +28,7 @@ PingusLevelDesc::PingusLevelDesc(PLF* tplf)
 {
   typedef string::size_type ST;
   ST pos, pos_next;
-  string desc_string;
+  std::string desc_string;
   plf = tplf;
 
   desc_string = plf->get_description();

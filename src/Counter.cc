@@ -1,4 +1,4 @@
-//  $Id: Counter.cc,v 1.2 2000/02/09 21:43:39 grumbel Exp $
+//  $Id: Counter.cc,v 1.3 2000/02/11 16:58:25 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,10 +21,6 @@
 #include <cstdlib>
 #include <cassert>
 #include "Counter.hh"
-
-#ifdef WIN32
-using namespace std;
-#endif /* WIN32 */
 
 Counter::Counter()
 {
@@ -109,7 +105,7 @@ Counter::operator++()
     break;
 
   default:
-    cout << "Counter: Unknomn type" << endl;
+    std::cout << "Counter: Unknomn type" << std::endl;
     assert(false); 
     break;
   }

@@ -1,4 +1,4 @@
-//  $Id: GameObj.cc,v 1.1 2000/02/04 23:45:18 mbn Exp $
+//  $Id: GameObj.cc,v 1.2 2000/02/11 16:58:25 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,7 +32,7 @@ GameObj::~GameObj()
 CL_ResourceManager*
 GameObj::resource()
 {
-  //  cout << "GameObj: resource_p=" << resource_p << endl;
+  //  std::cout << "GameObj: resource_p=" << resource_p << std::endl;
   return resource_p;
 }
 
@@ -46,13 +46,13 @@ GameObj::SetResourceManager(CL_ResourceManager* res)
 void 
 GameObj::let_move()
 {
-  //  cout << "GameObj::let_move: doing nothing" << endl;
+  //  std::cout << "GameObj::let_move: doing nothing" << std::endl;
 }
 
 void 
 GameObj::draw_offset(int x, int y)
 {
-  //  cout << "GameObj::let_move: doing nothing" << endl;
+  //  std::cout << "GameObj::let_move: doing nothing" << std::endl;
 }
 
 

@@ -1,4 +1,4 @@
-//  $Id: Client.cc,v 1.2 2000/02/09 21:43:39 grumbel Exp $
+//  $Id: Client.cc,v 1.3 2000/02/11 16:58:25 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,7 +39,7 @@ Client::Client(Server* s)
 }
 
 void
-Client::start(string filename, PingusGameMode m)
+Client::start(std::string filename, PingusGameMode m)
 {
   fast_forward = false;
   pause = false;
@@ -53,16 +53,16 @@ Client::start(string filename, PingusGameMode m)
 
   FadeOut::random();
 
-  cout << "Displaying results..." << flush;
+  std::cout << "Displaying results..." << std::flush;
   
   PingusLevelResult r(server->get_world()->get_result());
   r.draw();
   
-  cout << "finished" << endl;
+  std::cout << "finished" << std::endl;
 }
 
 void
-Client::start(string plf_filename, string psm_filename)
+Client::start(std::string plf_filename, std::string psm_filename)
 {
   play_level(plf_filename, psm_filename);
   do_replay = false;
@@ -70,14 +70,14 @@ Client::start(string plf_filename, string psm_filename)
 }
 
 void
-Client::play_level(string plf_filename, string psm_filename)
+Client::play_level(std::string plf_filename, std::string psm_filename)
 {
   vector<GuiObj* > obj;
  
   if (verbose) 
     {
-      cout << "Constructing Window Objs: " << plf_filename << endl;
-      cout << "Starting Level: '" << plf_filename << "'" << endl;
+      std::cout << "Constructing Window Objs: " << plf_filename << std::endl;
+      std::cout << "Starting Level: '" << plf_filename << "'" << std::endl;
     }
 
   PLF*         plf          = new PLF(plf_filename);
@@ -110,7 +110,7 @@ Client::play_level(string plf_filename, string psm_filename)
     server->set_record_file(demo_file);
     
   if (verbose)
-    cout << "Constructing Window Objs finished" << endl;
+    std::cout << "Constructing Window Objs finished" << std::endl;
 
   if (music_enabled) {
     // Constructing Pingus Music
@@ -129,8 +129,8 @@ Client::play_level(string plf_filename, string psm_filename)
   playfield->set_client(this);
 
   if (verbose)
-    cout << "Client: Entering main_loop. Startup time: " 
-	 << CL_System::get_time() << " msec." << endl;
+    std::cout << "Client: Entering main_loop. Startup time: " 
+	 << CL_System::get_time() << " msec." << std::endl;
 
     // Adding all GuiObj's to the screen
   //  obj.push_back(pingu_info);
@@ -168,14 +168,14 @@ Client::play_level(string plf_filename, string psm_filename)
     }
     
     // Let the window move its content
-    for(vector<GuiObj*>::size_type i=0; i < obj.size(); ++i) 
+    for(std::vector<GuiObj*>::size_type i=0; i < obj.size(); ++i) 
       obj[i]->let_move();
     
     if (!fast_forward || skip_frame >= 10) {
       skip_frame = 0;
       //    if (server->needs_redraw() && (skip_frame % 10 == 0)) {
 
-      for(vector<GuiObj*>::size_type i=0; i < obj.size(); ++i) {
+      for(std::vector<GuiObj*>::size_type i=0; i < obj.size(); ++i) {
 	obj[i]->draw_clipped();
       }
       CL_Display::flip_display();
@@ -183,7 +183,7 @@ Client::play_level(string plf_filename, string psm_filename)
       ++fps_count;
       // Print the fps rate every 2secs
       if (print_fps && (last_time + 1000 < CL_System::get_time())) {
-	cout << "Client: " << fps_count << "fps" << endl;
+	cout << "Client: " << fps_count << "fps" << std::endl;
 	fps_count = 0;
 	last_time = CL_System::get_time();
       }

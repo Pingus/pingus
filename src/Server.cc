@@ -1,4 +1,4 @@
-//  $Id: Server.cc,v 1.2 2000/02/09 21:43:41 grumbel Exp $
+//  $Id: Server.cc,v 1.3 2000/02/11 16:58:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -64,20 +64,20 @@ Server::let_move()
     get_next_event = true;
   } else if (GameTime::get_time() >= event.game_time) {
     // BUG: If this is reached the demo code is buggy
-    cout << "Demo out of sync!: " 
+    std::cout << "Demo out of sync!: " 
 	 << "GameTime: " << GameTime::get_time()
 	 << " EventTime: " << event.game_time
-	 << endl;
+	 << std::endl;
     get_next_event = true;
   }
 }
 
 // Some simple event management
 void
-Server::send_event(string event)
+Server::send_event(std::string event)
 {
   if (record_demo) {
-    string str;
+    std::string str;
     char temp[256];
     sprintf(temp, "%d", GameTime::get_time());
     str += temp;
@@ -89,10 +89,10 @@ Server::send_event(string event)
 }
 
 void
-Server::process_event(string event)
+Server::process_event(std::string event)
 {
   char* event_str = strdup(event.c_str());
-  string token;
+  std::string token;
   const char delimiters[] = ":";
 
   token = strtok(event_str, delimiters); // Get GameTime
@@ -100,14 +100,14 @@ Server::process_event(string event)
   if (token == "armageddon")
     {
       world->armageddon();
-      cout << endl;
+      std::cout << std::endl;
     }
   else if (token == "Pingu")
     {
       int pingu_id;
       PinguHolder* pingus;
       
-      string action;
+      std::string action;
       
       token = strtok(NULL, delimiters); // Get Pingu id
       pingu_id = atoi(token.c_str());
@@ -136,8 +136,8 @@ Server::process_event(string event)
     }
   else 
     {
-      cout << "Couldn't ident token: \""  << token << "\"" << endl;
-      cout << "Unknown Event: " << event << endl;
+      std::cout << "Couldn't ident token: \""  << token << "\"" << std::endl;
+      std::cout << "Unknown Event: " << event << std::endl;
     }
   
   free(event_str);
@@ -147,7 +147,7 @@ bool
 Server::is_finished()
 {
   if (finished) {
-    cout << "Finished" << endl;
+    std::cout << "Finished" << std::endl;
     return true;
   } else {
     return world->is_finished();
@@ -161,17 +161,17 @@ Server::set_finished()
 }
 
 void
-Server::set_demo(string s)
+Server::set_demo(std::string s)
 {
   demo_mode = true;
   demo_file = s;
   demo_in->open(demo_file, (PingusDemoMode)play);
 
-  cout << "Set_demo(): " << demo_file << " file opened" << endl;
+  std::cout << "Set_demo(): " << demo_file << " file opened" << std::endl;
 }
 
 void 
-Server::set_record_file(string file)
+Server::set_record_file(std::string file)
 {
   demo_out.open(file.c_str(), (PingusDemoMode)record);
 };

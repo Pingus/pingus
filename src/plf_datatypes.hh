@@ -1,4 +1,4 @@
-//  $Id: plf_datatypes.hh,v 1.1 2000/02/04 23:45:19 mbn Exp $
+//  $Id: plf_datatypes.hh,v 1.2 2000/02/11 16:58:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,7 +28,7 @@
 struct button_data
 {
   //MakeAction make_action;
-  string   name;
+  std::string   name;
   int number_of;
 };
 

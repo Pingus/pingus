@@ -1,4 +1,4 @@
-//  $Id: ClientEvent.cc,v 1.2 2000/02/09 21:43:39 grumbel Exp $
+//  $Id: ClientEvent.cc,v 1.3 2000/02/11 16:58:25 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,7 +35,7 @@ ClientEvent::~ClientEvent()
 void 
 ClientEvent::register_event_handler()
 {
-  cout << "ClientEvent: register_event_handler()" << endl;
+  std::cout << "ClientEvent: register_event_handler()" << std::endl;
   CL_Input::chain_button_press.push_back(this);
   CL_Input::chain_button_release.push_back(this);
   enabled = true;
@@ -44,7 +44,7 @@ ClientEvent::register_event_handler()
 void
 ClientEvent::unregister_event_handler()
 {
-  cout << "ClientEvent: unregister_event_handler()" << endl;
+  std::cout << "ClientEvent: unregister_event_handler()" << std::endl;
   CL_Input::chain_button_release.remove(this);
   CL_Input::chain_button_press.remove(this);
   enabled = false;
@@ -78,7 +78,7 @@ ClientEvent::on_button_press(CL_InputDevice *device, const CL_Key &key)
     }
   else
     {
-      cout << "Unknown device pressed: device=" << device << "; key.id=" << key.id << endl;
+      std::cout << "Unknown device pressed: device=" << device << "; key.id=" << key.id << std::endl;
       return false;
     }
 }
@@ -99,7 +99,7 @@ ClientEvent::on_button_release(CL_InputDevice *device, const CL_Key &key)
     }
   else
     {
-      cout << "Unknown device released: device=" << device << "; key.id=" << key.id << endl;
+      std::cout << "Unknown device released: device=" << device << "; key.id=" << key.id << std::endl;
       return false;
     }  
   return false;
@@ -208,7 +208,7 @@ ClientEvent::on_keyboard_button_release(const CL_Key& key)
       client->button_panel->set_button(7);
       break;      
     default:
-      cout << "ClientEvent: Got unknown button: ID=" << key.id << " ASCII=" << char(key.ascii) << endl;
+      std::cout << "ClientEvent: Got unknown button: ID=" << key.id << " ASCII=" << char(key.ascii) << std::endl;
     }
   return true;
 }
@@ -228,7 +228,7 @@ ClientEvent::on_mouse_button_press(const CL_Key& key)
       playfield->enable_scroll_mode();
       break;
     default:
-      cout << "ClientEvent: Unknown mouse button released: " << key.id << endl;
+      std::cout << "ClientEvent: Unknown mouse button released: " << key.id << std::endl;
     }
   return false;
 }
@@ -248,7 +248,7 @@ ClientEvent::on_mouse_button_release(const CL_Key& key)
       playfield->disable_scroll_mode();
       break;
     default:
-      cout << "ClientEvent: Unknown mouse button released: " << key.id << endl;
+      std::cout << "ClientEvent: Unknown mouse button released: " << key.id << std::endl;
     }
   return false;
 }

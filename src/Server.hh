@@ -1,4 +1,4 @@
-//  $Id: Server.hh,v 1.2 2000/02/09 21:43:41 grumbel Exp $
+//  $Id: Server.hh,v 1.3 2000/02/11 16:58:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,7 +32,7 @@ protected:
   World* world;
   ActionHolder action_holder;
   bool demo_mode;
-  string demo_file;
+  std::string demo_file;
   bool get_next_event;
   PingusDemo demo_out;
   PingusDemo* demo_in;

@@ -1,4 +1,4 @@
-//  $Id: PingusDemo.cc,v 1.2 2000/02/09 21:43:40 grumbel Exp $
+//  $Id: PingusDemo.cc,v 1.3 2000/02/11 16:58:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,7 +34,7 @@ PingusDemo::~PingusDemo()
 }
 
 void
-PingusDemo::open(string filename, PingusDemoMode mode)
+PingusDemo::open(std::string filename, PingusDemoMode mode)
 {
   switch(mode) {
   case (PingusDemoMode)play:
@@ -58,7 +58,7 @@ PingusDemo::get_next_event(void)
   PingusEvent event;
   // BUG: This could be very slow:
   char c = ' ';
-  string temp;
+  std::string temp;
 
   while ((c = in.get()) != '\n' && !in.eof()){
     temp += c;
@@ -67,7 +67,7 @@ PingusDemo::get_next_event(void)
   // spliting the string
   {
     if (verbose) {
-      cout << "Event:"  << temp << endl;
+      std::cout << "Event:"  << temp << std::endl;
     }
 
     char tmp[1024];
@@ -80,10 +80,10 @@ PingusDemo::get_next_event(void)
 }
 
 void
-PingusDemo::set_next_event(string event)
+PingusDemo::set_next_event(std::string event)
 {
-  out << event << endl;
-  cout << event << endl;
+  out << event << std::endl;
+  std::cout << event << std::endl;
 }
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: ObjectManager.cc,v 1.2 2000/02/09 21:43:43 grumbel Exp $
+//  $Id: ObjectManager.cc,v 1.3 2000/02/11 16:58:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -48,6 +48,7 @@ ObjectManager::new_level ()
   number_to_save   = 50;
   number_of_pingus = 100;
 
+  background.desc.filename = "(resource:textures.dat)";
   background.desc.res_name = "Textures/crystal";
 
   editor_objs.erase(editor_objs.begin(), editor_objs.end());
@@ -64,15 +65,15 @@ ObjectManager::new_level ()
 }
 
 void
-ObjectManager::load_level (string filename)
+ObjectManager::load_level (std::string filename)
 {
-  cout << "ObjectManager::Loading level: " << filename << endl;
+  std::cout << "ObjectManager::Loading level: " << filename << std::endl;
 
   current_objs.erase(current_objs.begin(), current_objs.end());
   editor_objs.erase(editor_objs.begin(), editor_objs.end());
 
-  cout << "Editor: Clearing current level..." << endl;
-  cout << "Loading new level: " << filename << endl;
+  std::cout << "Editor: Clearing current level..." << std::endl;
+  std::cout << "Loading new level: " << filename << std::endl;
   
   PSMParser psm;
   PLF       plf(filename + ".plf");
@@ -87,22 +88,22 @@ ObjectManager::load_level (string filename)
   vector<liquid_data>   temp_liquid   = plf.get_liquids();
   vector<trap_data>     temp_traps    = plf.get_traps();
 
-  for(vector<surface_data>::iterator i = temp_surfaces.begin(); i != temp_surfaces.end(); ++i)
+  for(std::vector<surface_data>::iterator i = temp_surfaces.begin(); i != temp_surfaces.end(); ++i)
     editor_objs.push_back(EditorObj::create(*i));
       
-  for(vector<entrance_data>::iterator i = temp_entraces.begin(); i != temp_entraces.end(); ++i)
+  for(std::vector<entrance_data>::iterator i = temp_entraces.begin(); i != temp_entraces.end(); ++i)
     editor_objs.push_back(EditorObj::create(*i));
       
-  for(vector<exit_data>::iterator i = temp_exits.begin(); i != temp_exits.end(); ++i)
+  for(std::vector<exit_data>::iterator i = temp_exits.begin(); i != temp_exits.end(); ++i)
     editor_objs.push_back(EditorObj::create(*i));
       
-  for(vector<hotspot_data>::iterator i = temp_hotspots.begin(); i != temp_hotspots.end(); ++i)
+  for(std::vector<hotspot_data>::iterator i = temp_hotspots.begin(); i != temp_hotspots.end(); ++i)
     editor_objs.push_back(EditorObj::create(*i));
       
-  for(vector<liquid_data>::iterator i = temp_liquid.begin(); i != temp_liquid.end(); ++i)
+  for(std::vector<liquid_data>::iterator i = temp_liquid.begin(); i != temp_liquid.end(); ++i)
     editor_objs.push_back(EditorObj::create(*i));
       
-  for(vector<trap_data>::iterator i = temp_traps.begin(); i != temp_traps.end(); ++i)
+  for(std::vector<trap_data>::iterator i = temp_traps.begin(); i != temp_traps.end(); ++i)
     editor_objs.push_back(EditorObj::create(*i));
       
   description = plf.get_description();
@@ -136,9 +137,9 @@ ObjectManager::draw()
 }
 
 void
-ObjectManager::save_level (string filename)
+ObjectManager::save_level (std::string filename)
 {
-  cout << "Saving Levelfile: " << filename << endl;
+  std::cout << "Saving Levelfile: " << filename << std::endl;
 
   ofstream plf_out;
   ofstream psm_out;
@@ -147,21 +148,21 @@ ObjectManager::save_level (string filename)
   psm_out.open((filename + ".psm").c_str());
 
   if (!plf_out) {
-    cout << "Couldn't open plf: " << filename << endl;
+    std::cout << "Couldn't open plf: " << filename << std::endl;
     return;
   }
 
   if (!psm_out) {
-    cout << "Couldn't open psm: " << filename << endl;
+    std::cout << "Couldn't open psm: " << filename << std::endl;
     return;
   }
 
   // FIXME: we need some error checking
   
   plf_out << "/* This level was created with the PLE\n"
-	  << " * $Id: ObjectManager.cc,v 1.2 2000/02/09 21:43:43 grumbel Exp $\n"
+	  << " * $Id: ObjectManager.cc,v 1.3 2000/02/11 16:58:28 grumbel Exp $\n"
 	  << " */"
-	  << endl;
+	  << std::endl;
   
   plf_out << "global {\n"
 	  << "  start_x_pos = " << start_x_pos << ";\n"
@@ -172,7 +173,7 @@ ObjectManager::save_level (string filename)
 	  << "  number_to_save = " << number_to_save << ";\n"
 	  << "  time = " << level_time << ";\n"
 	  << "}\n"
-	  << endl;
+	  << std::endl;
 
   plf_out << "ground {\n"
 	  << "  maptype = \"SPOT\";\n"
@@ -181,10 +182,10 @@ ObjectManager::save_level (string filename)
 	  << "  height  = " << height << ";\n"
 	  << "  colmap  = (auto);\n"
 	  << "}\n"
-	  << endl;
+	  << std::endl;
   
   plf_out << "background {\n"
-	  << "  image = (resource)\"" << background.desc.res_name << "\";\n"
+	  << "  image = (resource:" << background.desc.filename << ")\"" << background.desc.res_name << "\";\n"
 	  << "  dim   = \"" << background.dim   << "\";\n"
 	  << "  red   = \"" << background.red   << "\";\n"
 	  << "  green = \"" << background.green << "\";\n"
@@ -192,24 +193,24 @@ ObjectManager::save_level (string filename)
 	  << "  scroll_x = " << background.scroll_x << ";\n"
 	  << "  scroll_y = " << background.scroll_x << ";\n"
 	  << "}\n"
-	  << endl;
+	  << std::endl;
 
   // Printing actions to file
   plf_out << "buttons {\n";
-  for (vector<button_data>::iterator i = actions.begin(); i != actions.end(); ++i) {
-    plf_out << "  " << (*i).name << " = " << (*i).number_of << ";" << endl;
+  for (std::vector<button_data>::iterator i = actions.begin(); i != actions.end(); ++i) {
+    plf_out << "  " << (*i).name << " = " << (*i).number_of << ";" << std::endl;
   }
-  plf_out << "}\n" << endl;
+  plf_out << "}\n" << std::endl;
 
   for (EditorObjIter i = editor_objs.begin(); i != editor_objs.end(); ++i) {
     (*i)->save(&plf_out, &psm_out);
   }
   
-  plf_out << "/* EOF */" << endl;
+  plf_out << "/* EOF */" << std::endl;
 
   psm_out.close();
   plf_out.close();
-  cout << "Saveing finished" << endl;
+  std::cout << "Saveing finished" << std::endl;
 }
 
 void
@@ -252,7 +253,7 @@ ObjectManager::lower_obj(EditorObj* obj)
 
   if (current == editor_objs.begin()) 
     {
-      cout << "Editor: Cannot lower object" << endl;
+      std::cout << "Editor: Cannot lower object" << std::endl;
       return false;
     }
   
@@ -275,7 +276,7 @@ ObjectManager::raise_obj(EditorObj* obj)
   
   if (next == editor_objs.end())
     {
-      cout << "Cannot raise object" << endl;
+      std::cout << "Cannot raise object" << std::endl;
       return false;
     }
   
@@ -288,7 +289,9 @@ ObjectManager::raise_obj(EditorObj* obj)
 void
 ObjectManager::rect_get_current_objs(int x1, int y1, int x2, int y2)
 {
-  delete_selection();
+  if (!CL_Keyboard::get_keycode(CL_KEY_RSHIFT)
+      && !CL_Keyboard::get_keycode(CL_KEY_RSHIFT))
+    delete_selection();
   
   for(EditorObjIter i = editor_objs.begin(); i != editor_objs.end(); ++i) 
     {
@@ -339,5 +342,11 @@ ObjectManager::add_to_selection(EditorObj* obj)
   current_objs.push_back(obj);
 }
 
+void 
+ObjectManager::add_to_selection(std::list<EditorObj*> objs)
+{
+  for(std::list<EditorObj*>::iterator i = objs.begin(); i != objs.end(); i++)
+    current_objs.push_back(*i);
+}
 
 /* EOF */

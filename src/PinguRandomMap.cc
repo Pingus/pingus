@@ -1,4 +1,4 @@
-//  $Id: PinguRandomMap.cc,v 1.2 2000/02/09 21:43:40 grumbel Exp $
+//  $Id: PinguRandomMap.cc,v 1.3 2000/02/11 16:58:25 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -131,7 +131,7 @@ PinguRandomMap::get_colmap()
   unsigned char* buffer;
   unsigned char* data;
 
-  cout << "Locking surface" << endl;
+  std::cout << "Locking surface" << std::endl;
   sur_provider->lock();
 
   data = static_cast<unsigned char*>(sur_provider->get_data());
@@ -139,7 +139,7 @@ PinguRandomMap::get_colmap()
   buffer = new unsigned char[sur_provider->get_width() 
 			    * sur_provider->get_height()];
 
-  cout << "Getting pointer: data: " << (int)data << " buffer: " << (int)buffer << endl;
+  std::cout << "Getting pointer: data: " << (int)data << " buffer: " << (int)buffer << std::endl;
 
   for(unsigned int i=0; 
       i < sur_provider->get_width() * sur_provider->get_height(); 

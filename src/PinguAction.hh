@@ -1,4 +1,4 @@
-//  $Id: PinguAction.hh,v 1.2 2000/02/09 21:43:40 grumbel Exp $
+//  $Id: PinguAction.hh,v 1.3 2000/02/11 16:58:25 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -65,7 +65,7 @@ protected:
   PinguEnvironment environment;
 
   // The name of the action, needs to be set in PinguAction::init().
-  string action_name;
+  std::string action_name;
 
   // See is_active()
   bool        active;  

@@ -1,4 +1,4 @@
-//  $Id: PLFObj.cc,v 1.2 2000/02/09 21:43:43 grumbel Exp $
+//  $Id: PLFObj.cc,v 1.3 2000/02/11 16:58:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,7 +43,7 @@ HotspotObj::HotspotObj(hotspot_data data)
   desc  = data.desc;
   speed = data.speed;
   para  = data.para;
-  cout << "Lodaing Hotspot: " << desc.res_name << endl;
+  std::cout << "Lodaing Hotspot: " << desc.res_name << std::endl;
   surf = CL_Surface::load(desc.res_name.c_str(), 
 			  PingusResource::get(desc.filename));
 }
@@ -68,7 +68,7 @@ HotspotObj::save(ofstream* plf, ofstream* psm)
 	 << "  z_pos = " << z_pos << ";\n"
     	 << "  speed = " << speed << ";\n"
 	 << "}\n"
-	 << endl;  
+	 << std::endl;  
 }
 
 EntranceObj::EntranceObj(entrance_data data)
@@ -89,18 +89,18 @@ EntranceObj::EntranceObj(entrance_data data)
   else if (type == "woodthing") 
     {
       surf = CL_Surface::load("Entrances/woodthing_mov", PingusResource::get("global.dat"));
-      cout << "Loading woodthing..." << endl;
+      std::cout << "Loading woodthing..." << std::endl;
       if (!surf) {
 	throw PingusError("EntranceObj: Fatal error!");
       }
       // FIXME: This are hardcoded, because the values are incorrectf!?
       x_of = - (int)(surf->get_width())/2;
       y_of = 32 - (int)(surf->get_height());
-      cout << "Loading woodthing..." << x_of << " " << y_of << endl;
+      std::cout << "Loading woodthing..." << x_of << " " << y_of << std::endl;
     } 
   else 
     {
-      cout << "Entrance obj error!" << endl;
+      std::cout << "Entrance obj error!" << std::endl;
       throw PingusError("EntranceObj: Unknown entrance type: " + type);
     }
 }
@@ -126,7 +126,7 @@ EntranceObj::save(ofstream* plf, ofstream* psm)
 	 << "  release_rate = " << release_rate << ";\n"
 	 << "  direction = left;\n"
 	 << "}\n"
-	 << endl;
+	 << std::endl;
 }
 
 ExitObj::ExitObj(exit_data data)
@@ -157,7 +157,7 @@ ExitObj::save(ofstream* plf, ofstream* psm)
 	 << "  y_pos = " << y_pos << ";\n"
 	 << "  z_pos = 0;\n"
 	 << "}\n"
-	 << endl;
+	 << std::endl;
 }
 TrapObj::TrapObj(trap_data data)
 {
@@ -182,7 +182,7 @@ TrapObj::TrapObj(trap_data data)
   } else if (name == "smasher") {
     surf = CL_Surface::load("Traps/smasher", PingusResource::get("traps.dat"));    
   } else {
-    cout << name << ": trap is not implemented in editor" << endl;
+    std::cout << name << ": trap is not implemented in editor" << std::endl;
   }
 }
 
@@ -217,7 +217,7 @@ TrapObj::save(ofstream* plf, ofstream* psm)
 	 << "  y_pos = " << y_pos << ";\n"
 	 << "  z_pos = " << z_pos << ";\n"
 	 << "}\n"
-	 << endl;
+	 << std::endl;
 }
 
 LiquidObj::LiquidObj(liquid_data data)
@@ -329,7 +329,7 @@ LiquidObj::save(ofstream* plf, ofstream* psm)
 	 << "  width = " << width << ";\n"
     	 << "  speed = " << speed << ";\n"
 	 << "}\n" 
-	 << endl;
+	 << std::endl;
 }
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: ObjectSelector.cc,v 1.2 2000/02/09 21:43:43 grumbel Exp $
+//  $Id: ObjectSelector.cc,v 1.3 2000/02/11 16:58:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -49,8 +49,8 @@ ObjectSelector::get_obj(int x_off, int y_off)
 EditorObj* 
 ObjectSelector::get_trap()
 {
-  vector<string> traps;
-  vector<string>::iterator current_trap;
+  vector<std::string> traps;
+  vector<std::string>::iterator current_trap;
   int j = 0;
   trap_data trap;
   bool have_name = false;
@@ -74,9 +74,9 @@ ObjectSelector::get_trap()
       font->print_left(20, 20, "Select a trap");
       j = -3;
       
-      for(vector<string>::iterator i = traps.begin(); i != traps.end(); i++, j += font->get_height())
+      for(std::vector<std::string>::iterator i = traps.begin(); i != traps.end(); i++, j += font->get_height())
 	{
-	  cout << "Trap Name: " << *i << endl;
+	  std::cout << "Trap Name: " << *i << std::endl;
 	  if (i == current_trap)
 	    CL_Display::fill_rect(10, 150 + j, 200, 170 + j,
 				  0.5, 0.5, 0.5, 1.0);
@@ -104,7 +104,7 @@ ObjectSelector::get_trap()
 	  have_name = true;
 	  break;
 	default:
-	  cout << "ObjectSelector:get_trap(): Unknow key pressed" << endl;
+	  std::cout << "ObjectSelector:get_trap(): Unknow key pressed" << std::endl;
 	}
     }
  
@@ -116,7 +116,7 @@ ObjectSelector::get_trap()
 EditorObj*
 ObjectSelector::get_groundpiece()
 {
-  string str;
+  std::string str;
   surface_data data;
   data.x_pos = CL_Mouse::get_x() - x_offset;
   data.y_pos = CL_Mouse::get_y() - y_offset;
@@ -124,13 +124,13 @@ ObjectSelector::get_groundpiece()
   // FIXME: Hack
   {
     CL_ResourceManager* res = PingusResource::get("global.dat");
-    list<string>* liste = res->get_resources_of_type("surface");
+    list<std::string>* liste = res->get_resources_of_type("surface");
 
-    for(list<string>::iterator i = liste->begin(); i != liste->end(); i++)
+    for(std::list<std::string>::iterator i = liste->begin(); i != liste->end(); i++)
       {
 	cout << "Resource: " << *i << "\n";
       }
-    cout << flush;
+    std::cout << std::flush;
   }
     
   str = read_string("Input Hotspot gfx:", last_object);
@@ -154,7 +154,7 @@ ObjectSelector::get_groundpiece()
 EditorObj*
 ObjectSelector::get_hotspot()
 {
-  string str;
+  std::string str;
   hotspot_data data;
   data.x_pos = CL_Mouse::get_x() - x_offset;
   data.y_pos = CL_Mouse::get_y() - y_offset;
@@ -207,7 +207,7 @@ ObjectSelector::get_entrance()
 	  break;
 
 	default:
-	  cout << "unknow keypressed" << endl;
+	  std::cout << "unknow keypressed" << std::endl;
 	}
     }
   
@@ -217,7 +217,7 @@ ObjectSelector::get_entrance()
 EditorObj* 
 ObjectSelector::get_exit()
 {
-  string str;
+  std::string str;
   exit_data data;
   data.x_pos = CL_Mouse::get_x() - x_offset;
   data.y_pos = CL_Mouse::get_y() - y_offset;
@@ -288,14 +288,14 @@ ObjectSelector::read_key()
       if (keys.peek_key().state != CL_Key::NoKey) 
 	{
 	  key = keys.get_key();
-	  cout << "key: " << key.ascii << endl;
+	  std::cout << "key: " << key.ascii << std::endl;
 	  return key.id;
 	}
     }
 }
 
 string
-ObjectSelector::read_string(string description, string def_str)
+ObjectSelector::read_string(std::string description, std::string def_str)
 {
   StringReader reader(description, def_str);
 
@@ -306,6 +306,9 @@ ObjectSelector::read_string(string description, string def_str)
 /*
 
 $Log: ObjectSelector.cc,v $
+Revision 1.3  2000/02/11 16:58:28  grumbel
+Added correct namespaces
+
 Revision 1.2  2000/02/09 21:43:43  grumbel
 CVS should be up to date again...
 

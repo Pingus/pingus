@@ -1,4 +1,4 @@
-//  $Id: PSMObj.cc,v 1.2 2000/02/09 21:43:43 grumbel Exp $
+//  $Id: PSMObj.cc,v 1.3 2000/02/11 16:58:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -61,12 +61,12 @@ PSMObj::save(ofstream* plf, ofstream* psm)
   } else if (type == surface_data::GROUND) {
     (*psm) << "ground : ";
   } else {
-    cout << "Warning: PSMObj: type not set!" << endl;
+    std::cout << "Warning: PSMObj: type not set!" << std::endl;
     (*psm) << "ground : ";
   }
   
   (*psm) << "(resource:global.dat)" << desc.res_name << " : " 
-	 << x_pos << " : " << y_pos << ";" << endl;
+	 << x_pos << " : " << y_pos << ";" << std::endl;
 }
 
 /* EOF */

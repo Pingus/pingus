@@ -1,4 +1,4 @@
-//  $Id: TrueServer.cc,v 1.2 2000/02/09 21:43:41 grumbel Exp $
+//  $Id: TrueServer.cc,v 1.3 2000/02/11 16:58:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -59,7 +59,7 @@ TrueServer::start(PLF* level_data)
 
   bdata = level_data->get_buttons();
 
-  for(vector<button_data>::iterator b = bdata.begin(); b != bdata.end(); ++b) {
+  for(std::vector<button_data>::iterator b = bdata.begin(); b != bdata.end(); ++b) {
     action_holder.add_action(b->name, b->number_of);
   }
 
@@ -94,7 +94,7 @@ TrueServer::enough_time_passed(void)
     if (last_time + local_game_speed > CL_System::get_time())
       return false;
     else {
-      // cout << "Delta Time: " << CL_System::get_time() - last_time + local_game_speed << endl;
+      // std::cout << "Delta Time: " << CL_System::get_time() - last_time + local_game_speed << std::endl;
       last_time = CL_System::get_time();
       return true;
     }

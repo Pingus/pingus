@@ -1,4 +1,4 @@
-//  $Id: Intro.cc,v 1.2 2000/02/09 21:43:40 grumbel Exp $
+//  $Id: Intro.cc,v 1.3 2000/02/11 16:58:25 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -47,7 +47,7 @@ Intro::draw()
 {
   quit = false;
 
-  if (verbose) cout << "Intro: adding event handler" << endl;
+  if (verbose) std::cout << "Intro: adding event handler" << std::endl;
 
   CL_Input::chain_button_release.push_back(event);
 
@@ -95,7 +95,7 @@ Intro::draw()
       CL_Display::flip_display(true);
     }
 
-  if (verbose) cout << "Intro: Removing event handler" << endl;
+  if (verbose) std::cout << "Intro: Removing event handler" << std::endl;
   CL_Input::chain_button_release.remove(event);
 }
 
@@ -107,7 +107,7 @@ Intro::Event::on_button_release(CL_InputDevice* device, const CL_Key& key)
     case CL_KEY_SPACE:
     case CL_KEY_ESCAPE:
     case CL_KEY_ENTER:
-      if (verbose) cout << "Intro::Event: Recieved event, stopping intro" << endl;
+      if (verbose) std::cout << "Intro::Event: Recieved event, stopping intro" << std::endl;
       intro->quit = true;
       break;
     }

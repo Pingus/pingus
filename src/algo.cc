@@ -1,4 +1,4 @@
-//  $Id: algo.cc,v 1.2 2000/02/09 21:43:41 grumbel Exp $
+//  $Id: algo.cc,v 1.3 2000/02/11 16:58:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,10 +37,10 @@ bool rect_col(int ax1, int ax2, int ay1, int ay2,
 // Returns the directory name, of a complete file name:
 // /usr/bin/bla would return /usr/bin/
 string
-get_directory(string filename)
+get_directory(std::string filename)
 {
   char* str;
-  string t_str;
+  std::string t_str;
 
   str = strdup(filename.c_str());
 
@@ -70,7 +70,7 @@ add_slash(string& str)
   return str;
 }
 
-bool exist(string filename)
+bool exist(std::string filename)
 {
   return exist(filename.c_str());
 }
@@ -95,11 +95,11 @@ tolowerstr(char* s)
 // Searches the given path to find the given file, it returns the
 // complete filename of the searched file.
 string
-find_file(string paths, string filename)
+find_file(std::string paths, std::string filename)
 {
   char* path;
   char* token;
-  string token_str;
+  std::string token_str;
   path = strdup(paths.c_str());
 
   for(token = strtok(path, ":"); token != 0; token = strtok(0, ":")) {
@@ -114,24 +114,24 @@ find_file(string paths, string filename)
     }
 #endif
   }
-  cout << "find_file(): " << filename << ": File not found!" << endl;
+  std::cout << "find_file(): " << filename << ": File not found!" << std::endl;
   free(path);
   return filename;
 }
 /*
 string
-basename(string filename)
+basename(std::string filename)
 {
   const char* str = filename.c_str();
   int i;
-  cout << "Getting basename of: " << str << endl;
+  std::cout << "Getting basename of: " << str << std::endl;
   for(i = filename.size() - 1; i >= 0; --i) {
-    //cout << str[i] << endl;
+    //cout << str[i] << std::endl;
     if (*(str + i) == '/') {
 	break;
     }
   }
-  cout << "Basename: " << (str+i + 1) << endl;
+  std::cout << "Basename: " << (str+i + 1) << std::endl;
   return (str+i + 1);
 }
 */

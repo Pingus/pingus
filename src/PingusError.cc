@@ -1,4 +1,4 @@
-//  $Id: PingusError.cc,v 1.2 2000/02/09 21:43:40 grumbel Exp $
+//  $Id: PingusError.cc,v 1.3 2000/02/11 16:58:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,11 +21,11 @@
 
 #include "PingusError.hh"
 
-PingusError::PingusError(string mes)
+PingusError::PingusError(std::string mes)
 {
   message = mes;
 
-  cout << "PingusError: " << message << endl;
+  std::cout << "PingusError: " << message << std::endl;
 }
 
 

@@ -1,4 +1,4 @@
-//  $Id: Panel.cc,v 1.2 2000/02/09 21:43:43 grumbel Exp $
+//  $Id: Panel.cc,v 1.3 2000/02/11 16:58:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -59,7 +59,7 @@ PanelIcon::put_screen(int x, int y)
 void
 PanelIcon:: on_click()
 {
-  cout << "PanelIcon: No event bound to this button?!" << endl;
+  std::cout << "PanelIcon: No event bound to this button?!" << std::endl;
 }
 
 Panel::Panel()
@@ -83,7 +83,7 @@ Panel::draw()
  
   logo->put_screen(0, CL_Display::get_height() - logo->get_height());
 
-  for (vector<PanelIcon*>::iterator i = buttons.begin(); i != buttons.end(); i++)
+  for (std::vector<PanelIcon*>::iterator i = buttons.begin(); i != buttons.end(); i++)
     {
       (*i)->put_screen(0, y);
       y += 25;
@@ -118,9 +118,9 @@ Panel::on_click()
   if (CL_Mouse::get_x() <= 25)
     {
       int y = 0;
-      // cout << "Click" << endl;
+      // std::cout << "Click" << std::endl;
 
-      for (vector<PanelIcon*>::iterator i = buttons.begin(); i != buttons.end(); i++)
+      for (std::vector<PanelIcon*>::iterator i = buttons.begin(); i != buttons.end(); i++)
 	{
 	  if (CL_Mouse::get_y() > y && CL_Mouse::get_y() < y + 25)
 	    {
@@ -138,25 +138,25 @@ Panel::on_release()
   if (CL_Mouse::get_x() <= 25)
     {
       int y = 0;
-      // cout << "Click" << endl;
+      // std::cout << "Click" << std::endl;
       
-      for (vector<PanelIcon*>::iterator i = buttons.begin(); i != buttons.end(); i++)
+      for (std::vector<PanelIcon*>::iterator i = buttons.begin(); i != buttons.end(); i++)
 	{
 	  if (CL_Mouse::get_y() > y && CL_Mouse::get_y() < y + 25)
 	    {
-	      cout << "Recive: " << i << endl;
+	      std::cout << "Recive: " << i << std::endl;
 	      if (pressed_button == i)
 		{
-		  cout << "Doing button..." << endl;
+		  std::cout << "Doing button..." << std::endl;
 		  (*i)->on_click();
-		  cout << "done" << endl;
+		  std::cout << "done" << std::endl;
 		}
 	    }
 	  y += 25;
 	}
     }
   pressed_button = 0;
-  cout << "On release finished" << endl;
+  std::cout << "On release finished" << std::endl;
 }
 
 bool

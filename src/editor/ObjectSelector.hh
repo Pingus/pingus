@@ -1,4 +1,4 @@
-// $Id: ObjectSelector.hh,v 1.2 2000/02/09 21:43:43 grumbel Exp $
+// $Id: ObjectSelector.hh,v 1.3 2000/02/11 16:58:28 grumbel Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,7 +33,7 @@ private:
   CL_Font* font;
   int x_offset;
   int y_offset;
-  string last_object;
+  std::string last_object;
 
 public:
   ObjectSelector();
@@ -41,7 +41,7 @@ public:
   
   EditorObj* select_obj_type();
   int    read_key();
-  string read_string(string, string);
+  std::string read_string(string, string);
   
   EditorObj* get_obj(int, int);
   EditorObj* get_trap();

@@ -1,4 +1,4 @@
-//  $Id: ColMap.cc,v 1.2 2000/02/09 21:43:39 grumbel Exp $
+//  $Id: ColMap.cc,v 1.3 2000/02/11 16:58:25 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -148,7 +148,7 @@ ColMap::put(int x, int y, PixelStatus p)
   else
     {
       if (verbose > 2)
-	cout << "ColMap: remove: Out of map" << endl;
+	cout << "ColMap: remove: Out of map" << std::endl;
     }
 }
 
@@ -157,7 +157,7 @@ ColMap::load(unsigned char* b, int w, int h)
 {
   if (!init) 
     {
-      cout << "ColMap: loading..." << endl;
+      std::cout << "ColMap: loading..." << std::endl;
       init = true;
       colmap = b;
       width = w;
@@ -181,14 +181,14 @@ ColMap::put(CL_SurfaceProvider* provider, int sur_x, int sur_y, surface_data::Ty
 {
   if ((sur_x > width) || (sur_y > height)) {
     //    throw PingusError("Spot out of screen, please repair");
-    cerr << "Warning: ColMap: Spot out of screen, please repair" << endl;
+    cerr << "Warning: ColMap: Spot out of screen, please repair" << std::endl;
     return;
   }
 
   provider->lock();
   
   if (provider->get_depth() != 8) {
-    cout << "ColMap: Not a 256 color hotspot! Ignoring the surface." << endl;
+    std::cout << "ColMap: Not a 256 color hotspot! Ignoring the surface." << std::endl;
   } else {
     unsigned char* buffer;
     int w = provider->get_width();
@@ -219,7 +219,7 @@ ColMap::put(CL_SurfaceProvider* provider, int sur_x, int sur_y, surface_data::Ty
 	      colmap[i] = BRIDGE;
 	      break;
 	    default:
-	      cout << "Colmap::put() Undefinit type" << endl;
+	      std::cout << "Colmap::put() Undefinit type" << std::endl;
 	      break;
 	    }
 	  }

@@ -1,4 +1,4 @@
-//  $Id: QuestionDialog.cc,v 1.2 2000/02/09 21:43:41 grumbel Exp $
+//  $Id: QuestionDialog.cc,v 1.3 2000/02/11 16:58:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,11 +21,11 @@
 
 #include "QuestionDialog.hh"
 
-QuestionDialog::QuestionDialog(string q, 
-			       string b1, 
-			       string b2,
-			       string b3,
-			       string b4)
+QuestionDialog::QuestionDialog(std::string q, 
+			       std::string b1, 
+			       std::string b2,
+			       std::string b3,
+			       std::string b4)
 {
   buttons = 3;
 

@@ -1,4 +1,4 @@
-//  $Id: View.cc,v 1.2 2000/02/09 21:43:41 grumbel Exp $
+//  $Id: View.cc,v 1.3 2000/02/11 16:58:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -49,8 +49,8 @@ View::View(int x1, int y1, int x2, int y2, float s)
 
   if (verbose) 
     {
-      cout << "XOffset: " << world->get_width()  << endl;
-      cout << "YOffset: " << world->get_height() << endl;
+      std::cout << "XOffset: " << world->get_width()  << std::endl;
+      std::cout << "YOffset: " << world->get_height() << std::endl;
     }
 }
 
@@ -81,11 +81,11 @@ View::draw()
 		  get_y_pos() + get_y_offset(),
 		  size);
   
-  /*  cout <<  "XPos: " << -get_x_pos() - get_x_offset() + CL_Mouse::get_x()
+  /*  std::cout <<  "XPos: " << -get_x_pos() - get_x_offset() + CL_Mouse::get_x()
       << " YPos: " << -get_y_pos() - get_y_offset() + CL_Mouse::get_y()
       << " XOffset: " << get_x_offset()
       << " YOffset: " << get_y_offset()
-      << endl;  */
+      << std::endl;  */
 
   CL_Display::pop_clip_rect();  
 }

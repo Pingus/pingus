@@ -1,4 +1,4 @@
-//  $Id: ThemeSelector.hh,v 1.2 2000/02/09 21:43:41 grumbel Exp $
+//  $Id: ThemeSelector.hh,v 1.3 2000/02/11 16:58:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,7 +32,7 @@
 class ListItem
 {
 private:
-  string label;
+  std::string label;
   CL_Font* font;
 public:
   ListItem(string);
@@ -65,7 +65,7 @@ public:
   ThemeSelector();
   ~ThemeSelector();
  
-  void   readdir(string path);
+  void   readdir(std::string path);
   void   select();
   void   draw();
   bool key_pressed(int key);
