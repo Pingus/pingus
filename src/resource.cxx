@@ -66,7 +66,6 @@ Resource::init()
   resmgr.add_resources(CL_ResourceManager(path_manager.complete("data/exits.xml")));
   resmgr.add_resources(CL_ResourceManager(path_manager.complete("data/fonts.xml")));
   resmgr.add_resources(CL_ResourceManager(path_manager.complete("data/game.xml")));
-  resmgr.add_resources(CL_ResourceManager(path_manager.complete("data/global.xml")));
   resmgr.add_resources(CL_ResourceManager(path_manager.complete("data/groundpieces-bridge.xml")));
   resmgr.add_resources(CL_ResourceManager(path_manager.complete("data/groundpieces-ground.xml")));
   resmgr.add_resources(CL_ResourceManager(path_manager.complete("data/groundpieces-remove.xml")));
@@ -81,7 +80,6 @@ Resource::init()
   resmgr.add_resources(CL_ResourceManager(path_manager.complete("data/worldmaps.xml")));
   resmgr.add_resources(CL_ResourceManager(path_manager.complete("data/worldobjs.xml")));
   resmgr.add_resources(CL_ResourceManager(path_manager.complete("data/alias.xml")));
-
 }
 
 void
