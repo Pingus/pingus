@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapGraph.cc,v 1.14 2001/05/18 19:17:10 grumbel Exp $
+//  $Id: PingusWorldMapGraph.cc,v 1.15 2001/05/22 16:10:12 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #include <ClanLib/core.h>
 #include <ClanLib/display.h>
 
+#include "../my_gettext.hh"
 #include "../PingusError.hh"
 #include "../XMLPLF.hh"
 #include "../Console.hh"
@@ -60,6 +61,11 @@ void
 PingusWorldMapGraph::parse_file (std::string filename)
 {
   doc = xmlParseFile(filename.c_str());
+
+  if (!doc) {
+    throw PingusError (_("PingusWorldMapGraph: File not found: ") + filename);
+  }    
+
   xmlNodePtr cur = doc->ROOT;
 
   if (cur != NULL && strcmp((const char*)cur->name, "pingus-worldmap") == 0)

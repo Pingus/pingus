@@ -46,27 +46,6 @@ section buttons
 {
 	back = images/core/buttons/back.png (type=surface, x=0, y=0, width=64, height=34, tcol=0);
 
-	editor        = images/core/buttons/editor.png         (type=surface, x=0, y=0, width=105, height=227);
-	editor_p      = images/core/buttons/editor_p.png       (type=surface, x=0, y=0, width=105, height=227);
-
-	load        = images/core/buttons/load.png         (type=surface, x=0, y=0, width=200, height=105);
-	load_p      = images/core/buttons/load_p.png       (type=surface, x=0, y=0, width=200, height=105);
-
-	quit        = images/core/buttons/quit.png         (type=surface, x=0, y=0, width=191, height=100);
-	quit_p      = images/core/buttons/quit_p.png       (type=surface, x=0, y=0, width=191, height=100);
-
-	play        = images/core/buttons/play.png         (type=surface, x=0, y=0, width=196, height=97);
-	play_p      = images/core/buttons/play_p.png       (type=surface, x=0, y=0, width=196, height=97);
-
-	options        = images/core/buttons/options.png         (type=surface, x=0, y=0, width=266, height=78);
-	options_p      = images/core/buttons/options_p.png       (type=surface, x=0, y=0, width=266, height=78);
-
-//	theme          = images/core/buttons/theme.png         (type=surface, x=0, y=0, width=250, height=106);
-//	theme_p        = images/core/buttons/theme_p.png       (type=surface, x=0, y=0, width=250, height=106);
-
-	worlds          = images/core/buttons/worlds.png         (type=surface, x=0, y=0, width=245, height=104);
-	worlds_p        = images/core/buttons/worlds_p.png       (type=surface, x=0, y=0, width=245, height=104);
-
         pause = images/core/buttons/pause.png (type=surface, x=0, y=0, width=38, height=56);
         fast_forward = images/core/buttons/fast_forward.png (type=surface, x=0, y=0, width=38, height=56);
         armageddon_anim = images/core/buttons/armageddon_anim.png (type=surface, x=0, y=0, width=36, height=57, array=14x1);
@@ -74,7 +53,7 @@ section buttons
 
 section menu 
 {
-	background = images/core/menu/background.jpg (type=surface, x=0, y=0, width=800, height=600);
+	//background = images/core/menu/background.jpg (type=surface, x=0, y=0, width=800, height=600);
 
 	create_on = images/core/menu/create_on.png (type=surface, x=0, y=0, width=200, height=128);
 	credits_on = images/core/menu/credits_on.png (type=surface, x=0, y=0, width=200, height=128);

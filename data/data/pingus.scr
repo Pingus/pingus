@@ -35,7 +35,7 @@ section Pingus
 	miner1       = images/pingus/miner1.png      (type=surface, x=0, y=0, width=32, height=32, array=12x2);
 	exit1        = images/pingus/exit1.png (type=surface, x=0, y=0, width=32, height=32, array=9x2);
 	drownfall1   = images/pingus/drownfall1.png (type=surface, x=0, y=0, width=32, height=32, array=15x2);
-	drownwalk1   = images/pingus/drownwalk1.png (type=surface, x=0, y=0, width=32, height=32, array=15x2);
+//	drownwalk1   = images/pingus/drownwalk1.png (type=surface, x=0, y=0, width=32, height=32, array=15x2);
 
 	bomber2      = images/pingus/bomber2.png     (type=surface, x=0, y=0, width=32, height=32, array=16x1);
 	basher2      = images/pingus/basher2.png     (type=surface, x=0, y=0, width=32, height=32, array=12x2);
@@ -51,7 +51,7 @@ section Pingus
 	miner2       = images/pingus/miner2.png      (type=surface, x=0, y=0, width=32, height=32, array=12x2);
 	exit2        = images/pingus/exit2.png (type=surface, x=0, y=0, width=32, height=32, array=9x2);
 	drownfall2   = images/pingus/drownfall2.png (type=surface, x=0, y=0, width=32, height=32, array=15x2);
-	drownwalk2   = images/pingus/drownwalk2.png (type=surface, x=0, y=0, width=32, height=32, array=15x2);
+//	drownwalk2   = images/pingus/drownwalk2.png (type=surface, x=0, y=0, width=32, height=32, array=15x2);
 
 	bomber3      = images/pingus/bomber3.png     (type=surface, x=0, y=0, width=32, height=32, array=16x1);
 	basher3      = images/pingus/basher3.png     (type=surface, x=0, y=0, width=32, height=32, array=12x2);
@@ -67,7 +67,7 @@ section Pingus
 	miner3       = images/pingus/miner3.png      (type=surface, x=0, y=0, width=32, height=32, array=12x2);
 	exit3        = images/pingus/exit3.png (type=surface, x=0, y=0, width=32, height=32, array=9x2);
 	drownfall3   = images/pingus/drownfall3.png (type=surface, x=0, y=0, width=32, height=32, array=15x2);
-	drownwalk3   = images/pingus/drownwalk3.png (type=surface, x=0, y=0, width=32, height=32, array=15x2);
+//	drownwalk3   = images/pingus/drownwalk3.png (type=surface, x=0, y=0, width=32, height=32, array=15x2);
 }
 
 section Other
@@ -82,7 +82,7 @@ section Other
 	explo1        = images/pingus/explo1.png         (type=surface, x=0, y=0, width=64, height=64);
 	explo2        = images/pingus/explo2.png         (type=surface, x=0, y=0, width=64, height=64);
 	explo3        = images/pingus/explo3.png         (type=surface, x=0, y=0, width=64, height=64);
-	laser_kill    = images/pingus/laser_kill.tga    (type=surface, x=0, y=0, width=33, height=32, array=9x2);
+//	laser_kill    = images/pingus/laser_kill.tga    (type=surface, x=0, y=0, width=33, height=32, array=9x2);
 }
 
 section XMas

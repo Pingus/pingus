@@ -83,7 +83,7 @@ all-yes: $(srcdir)/cat-id-tbl.c $(CATALOGS)
 all-no:
 
 $(srcdir)/$(PACKAGE).pot: $(POTFILES)
-	$(XGETTEXT) --default-domain=$(PACKAGE) --directory=$(top_srcdir) \
+	$(XGETTEXT) --language=C++ --default-domain=$(PACKAGE) --directory=$(top_srcdir) \
 	  --add-comments --keyword=_ --keyword=N_ \
 	  --files-from=$(srcdir)/POTFILES.in \
 	&& test ! -f $(PACKAGE).po \

@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMap.cc,v 1.24 2001/04/27 20:44:38 grumbel Exp $
+//  $Id: PingusWorldMap.cc,v 1.25 2001/05/22 16:10:12 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -54,7 +54,8 @@ PingusWorldMap::PingusWorldMap (std::string filename) :
   
   pingus = new PingusWorldMapPingus;
 
-  stat = boost::shared_ptr<PingusWorldMapStat>(new PingusWorldMapStat (System::basename(filename)));
+  stat = boost::shared_ptr<PingusWorldMapStat>
+    (new PingusWorldMapStat (System::basename(filename)));
   
   if (!stat->empty ())
     {

@@ -2,7 +2,7 @@
 section Game
 {
 //	logo_bg       = images/misc/logo_bg.png       (type=surface, x=0, y=0, width=640, height=300);
-	logo_t        = images/misc/logo.png       (type=surface, x=0, y=0, width=598, height=259);
+//	logo_t        = images/misc/logo.png       (type=surface, x=0, y=0, width=598, height=259);
 
 //	logo        = images/misc/logo.png       (type=surface, x=0, y=0, width=640, height=480);
 

@@ -19,10 +19,10 @@ section Icons
 	delete = images/core/editor/tb_trash.png (type=surface, x=0, y=0, width=24,  height=24, tcol=0);
 	index = images/core/editor/tb_index.png (type=surface, x=0, y=0, width=24,  height=24, tcol=0);
 
-	button = images/editor/button.png (type=surface, x=0, y=0, width=24,  height=24);
-	button_pressed = images/editor/button_pressed.png (type=surface, x=0, y=0, width=24,  height=24);
+//	button = images/editor/button.png (type=surface, x=0, y=0, width=24,  height=24);
+//	button_pressed = images/editor/button_pressed.png (type=surface, x=0, y=0, width=24,  height=24);
 	
-	logo = images/editor/logo.tga (type=surface, x=0, y=0, width=25,  height=207);
+	//logo = images/editor/logo.tga (type=surface, x=0, y=0, width=25,  height=207);
 	region-zoom = images/core/editor/region-zoom.png (type=surface, x=0, y=0, width=24, height=24);
 	zoom-in = images/core/editor/zoom-in.png (type=surface, x=0, y=0, width=24, height=24);
 	zoom-out = images/core/editor/zoom-out.png (type=surface, x=0, y=0, width=24, height=24);

@@ -17,36 +17,25 @@
 
 pkgdatadir = $(datadir)/games/@PACKAGE@/data
 
-# pkgdata_DATA = pingus.dat global.dat menu.dat editor.dat fonts.dat traps.dat game.dat textures.dat story.dat
-EXTRA_DIST   = pingus.scr global.scr menu.scr editor.scr fonts.scr traps.scr game.scr textures.scr story.scr
+EXTRA_DIST  = \
+pingus.scr    \
+global.scr    \
+fonts.scr     \
+entrances.scr \
+traps.scr     \
+game.scr      \
+exits.scr     \
+textures.scr  \
+story.scr     \
+core.scr      \
+worldobjs.scr \
+worldmaps.scr \
+groundpieces-ground.scr      \
+groundpieces-transparent.scr \
+groundpieces-solid.scr       \
+groundpieces-bridge.scr      \
+groundpieces-remove.scr
+
 pkgdata_DATA = $(EXTRA_DIST)
-# CLEANFILES   = $(pkgdata_DATA)
-
-# pingus.dat : pingus.scr
-# 	../../src/pingus -datafile $< $@
-
-# global.dat : global.scr
-# 	../../src/pingus -datafile $< $@
-
-# menu.dat : menu.scr
-# 	../../src/pingus -datafile $< $@
-
-# editor.dat : editor.scr
-# 	../../src/pingus -datafile $< $@
-
-# fonts.dat : fonts.scr
-# 	../../src/pingus -datafile $< $@
-
-# game.dat : game.scr
-# 	../../src/pingus -datafile $< $@
-
-# traps.dat : traps.scr
-# 	../../src/pingus -datafile $< $@
-
-# textures.dat : textures.scr
-# 	../../src/pingus -datafile $< $@
-
-# story.dat : story.scr
-# 	../../src/pingus -datafile $< $@
 
 ## EOF ##

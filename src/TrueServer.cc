@@ -1,4 +1,4 @@
-//  $Id: TrueServer.cc,v 1.23 2001/04/13 22:17:46 grumbel Exp $
+//  $Id: TrueServer.cc,v 1.24 2001/05/22 16:10:12 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -49,6 +49,12 @@ TrueServer::update(float delta)
     {
       client_needs_redraw = true;
       GameTime::increase();
+
+      if (fast_forward)
+	{
+	  Server::update(delta);
+	  world->update(delta);
+	}
       Server::update(delta);
       world->update(delta);
     }
@@ -100,7 +106,7 @@ TrueServer::enough_time_passed(void)
   }
 
   if (fast_forward) {
-    // BUG: This should skip some frames, so it also works on slower
+    // FIXME: This should skip some frames, so it also works on slower
     // machines
     last_time = CL_System::get_time();
     return true;
