@@ -1,4 +1,4 @@
-//  $Id: World.hh,v 1.8 2000/04/24 13:15:41 grumbel Exp $
+//  $Id: World.hh,v 1.9 2000/06/06 18:51:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -68,10 +68,12 @@ private:
 
   ParticleHolder particle;
   CL_InputSourceProvider* datafile;
+  ActionHolder* action_holder;
 
   PinguHolder pingus;
   ColMap* colmap;
   PLF*    plf;
+
 public:
   World();
   World(PLF*);
@@ -91,13 +93,15 @@ public:
   int     get_time (void);
   ColMap* get_colmap();
   PLF*    get_plf();
+
   unsigned int get_released_pingus() { return released_pingus; }
   unsigned int get_allowed_pingus() { return allowed_pingus; }
-  unsigned int get_pingus_out() { return pingus.size(); } 
+  unsigned int get_pingus_out() { return pingus.size(); }
   unsigned int get_saved_pingus() { return pingus.get_saved(); }
   unsigned int get_number_to_save() { return number_to_save; }
 
   PinguHolder* get_pingu_p(void);
+  void set_action_holder(ActionHolder*);
 };
 
 #endif

@@ -1,4 +1,4 @@
-//  $Id: PinguAction.hh,v 1.4 2000/02/11 21:26:37 grumbel Exp $
+//  $Id: PinguAction.hh,v 1.5 2000/06/06 18:51:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,6 +27,7 @@
 #include "PinguEnums.hh"
 
 class Pingu; // FIXME: IMHO Bad style, declare Pingus in an file different than pingu.hh
+class ActionHolder;
 
 enum ActionType
 {

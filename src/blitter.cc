@@ -1,4 +1,4 @@
-//  $Id: blitter.cc,v 1.5 2000/05/26 18:04:11 grumbel Exp $
+//  $Id: blitter.cc,v 1.6 2000/06/06 18:51:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -82,16 +82,17 @@ put_surface(CL_Canvas* provider, CL_SurfaceProvider* sprovider,
       start_i = ((line + y) * tpitch) + (x*4);
       
       for(int i=start_i+(4*x_offset),j=line*spitch+x_offset; 
-	  i < start_i + (4*swidth) && (i-start_i+(x*4)) < (4*twidth); i+=4,++j) {
-	// FIXME: What is this in Clanlib 0.3.0
-	if (sbuffer[j] != sprovider->get_src_colorkey()) 
-	  {
-	    tbuffer[i + 0] = 255;                                  // alpha
-	    tbuffer[i + 1] = palette->palette[sbuffer[j] * 3 + 2]; // blue
-	    tbuffer[i + 2] = palette->palette[sbuffer[j] * 3 + 1]; // green
-	    tbuffer[i + 3] = palette->palette[sbuffer[j] * 3 + 0]; // red
-	  }
-      }
+	  i < start_i + (4*swidth) && (i-start_i+(x*4)) < (4*twidth);
+	  i += 4, ++j) 
+	{
+	  if (sbuffer[j] != sprovider->get_src_colorkey()) 
+	    {
+	      tbuffer[i + 0] = 255;                                  // alpha
+	      tbuffer[i + 1] = palette->palette[sbuffer[j] * 3 + 2]; // blue
+	      tbuffer[i + 2] = palette->palette[sbuffer[j] * 3 + 1]; // green
+	      tbuffer[i + 3] = palette->palette[sbuffer[j] * 3 + 0]; // red
+	    }
+	}
     }
 
   sprovider->unlock();

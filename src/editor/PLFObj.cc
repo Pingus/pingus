@@ -1,4 +1,4 @@
-//  $Id: PLFObj.cc,v 1.11 2000/05/28 19:30:10 grumbel Exp $
+//  $Id: PLFObj.cc,v 1.12 2000/06/06 18:51:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -81,6 +81,8 @@ HotspotObj::save(ofstream* plf, ofstream* psm)
 	 << "  y_pos = " << y_pos << ";\n"
 	 << "  z_pos = " << z_pos << ";\n"
     	 << "  speed = " << speed << ";\n"
+	 << "  para = \"" << para << "\";\n"
+    //	 << "  para_y = \"" << para.y << "\";\n"
 	 << "}\n"
 	 << endl;  
 }

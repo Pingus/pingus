@@ -1,4 +1,4 @@
-//  $Id: Server.cc,v 1.8 2000/05/03 16:53:14 grumbel Exp $
+//  $Id: Server.cc,v 1.9 2000/06/06 18:51:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -124,7 +124,7 @@ Server::process_event(std::string event)
     
       pingus = world->get_pingu_p();
       
-      //BUG: This could need some optimization
+      // FIXME: This could need some optimization
       for(PinguIter pingu=pingus->begin(); pingu != pingus->end(); ++pingu) 
 	{
 	  if ((*pingu)->get_id() == pingu_id) 

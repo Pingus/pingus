@@ -1,4 +1,4 @@
-//  $Id: ObjectManager.cc,v 1.11 2000/05/24 15:45:02 grumbel Exp $
+//  $Id: ObjectManager.cc,v 1.12 2000/06/06 18:51:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,6 +32,12 @@ ObjectManager::ObjectManager()
 
 ObjectManager::~ObjectManager()
 {
+  for(std::list<EditorObj*>::iterator i = editor_objs.begin();
+      i != editor_objs.end(); 
+      i++)
+    {
+      delete *i;
+    }
 }
 
 void
@@ -56,6 +62,7 @@ ObjectManager::new_level ()
   background.desc.filename = "textures.dat";
   background.desc.res_name = "Textures/crystal";
 
+  // FIXME: Memory hole
   editor_objs.erase(editor_objs.begin(), editor_objs.end());
 
   // Set some default actions
@@ -77,6 +84,7 @@ ObjectManager::load_level (string filename)
   cout << "ObjectManager::Loading level: " << filename << endl;
 
   current_objs.erase(current_objs.begin(), current_objs.end());
+  //FIXME: Memory hole
   editor_objs.erase(editor_objs.begin(), editor_objs.end());
 
   cout << "Editor: Clearing current level..." << endl;
@@ -170,7 +178,7 @@ ObjectManager::save_level (string filename)
   // FIXME: we need some error checking
   
   plf_out << "/* This level was created with the PLE\n"
-	  << " * $Id: ObjectManager.cc,v 1.11 2000/05/24 15:45:02 grumbel Exp $\n"
+	  << " * $Id: ObjectManager.cc,v 1.12 2000/06/06 18:51:52 grumbel Exp $\n"
 	  << " */"
 	  << endl;
   

@@ -1,4 +1,4 @@
-//  $Id: TrueServer.cc,v 1.9 2000/05/28 16:47:24 grumbel Exp $
+//  $Id: TrueServer.cc,v 1.10 2000/06/06 18:51:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -71,7 +71,7 @@ TrueServer::start(PLF* level_data)
   bdata = level_data->get_buttons();
 
   for(std::vector<button_data>::iterator b = bdata.begin(); b != bdata.end(); ++b) {
-    action_holder.add_action(b->name, 0); //b->number_of);
+    action_holder.set_actions(b->name, b->number_of);
   }
   std::cout << "done " << timer.stop() << std::endl;
   
@@ -82,6 +82,14 @@ TrueServer::start(PLF* level_data)
   local_game_speed = game_speed;
 
   world = new World;
+
+  // FIXME: this is complete trash, delete it and place it in world
+  // object or so...
+  world->set_action_holder(&action_holder);
+  Entrance::set_action_holder(&action_holder);
+  Pingu::set_action_holder(&action_holder);
+  Trap::set_action_holder(&action_holder);
+
   leveldesc.draw(PingusLevelDesc::LOADING);
   world->init(level_data);
   leveldesc.draw(PingusLevelDesc::FINISHED);

@@ -1,4 +1,4 @@
-//  $Id: FakeExit.cc,v 1.3 2000/03/01 02:57:48 grumbel Exp $
+//  $Id: FakeExit.cc,v 1.4 2000/06/06 18:51:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -66,7 +66,7 @@ FakeExit::catch_pingu(Pingu* pingu)
       }
 
       if (counter >= 3 && counter <= 5) {
-	pingu->set_action(ActionHolder::get_uaction("smashed"));
+	pingu->set_action(action_holder->get_uaction("smashed"));
       }
       return true;
     } else {

@@ -1,4 +1,4 @@
-//  $Id: ActionHolder.hh,v 1.7 2000/05/25 17:16:21 grumbel Exp $
+//  $Id: ActionHolder.hh,v 1.8 2000/06/06 18:51:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,58 +22,51 @@
 
 #include <string>
 #include <map>
-
-#include "actions/basher.hh"
-#include "actions/blocker.hh"
-#include "actions/bomber.hh"
-#include "actions/bridger.hh"
-#include "actions/climber.hh"
-#include "actions/digger.hh"
-#include "actions/exiter.hh"
-#include "actions/floater.hh"
-#include "actions/miner.hh"
-#include "actions/Jumper.hh"
-#include "actions/teleported.hh"
-#include "actions/exiter.hh"
-#include "actions/smashed.hh"
-#include "actions/LaserKill.hh"
-#include "actions/Splashed.hh"
+#include <vector>
 
 #include "PinguAction.hh"
 
-struct ActionCounter {
-  std::vector<PinguAction*> action;
-  int   number;
-};
+class PinguAction;
 
 class ActionHolder
 {
 private:
-  std::vector<std::string>   action_name;
-  std::map<std::string, ActionCounter> action;
-  
-  static std::vector<Basher>   bashers;
-  static std::vector<Blocker>  blockers;
-  static std::vector<Bomber>   bombers;
-  static std::vector<Bridger> bridgers;
-  static std::vector<Climber>  climbers;
+  // A map holding the number of available actions.
+  std::map<std::string, int> available_actions;
 
-  static std::vector<PinguAction*> uactions;
-  static std::map<std::string, ActionCounter> uaction_buffer;
+  // A stack of all the allocated actions, they will be deleted on
+  // destruction. 
+  std::vector<PinguAction*> action_stack;
 
+  // Returns a newed action coresponding to the given name.
   static PinguAction* translate_action(const std::string&);
+
 public:
   ActionHolder();
   ~ActionHolder();
 
-  void add_action(const std::string& name, int available);
-  void push_action(const std::string& name);
+  // Sets the number of actions, which are available in the pool.
+  void ActionHolder::set_actions(const std::string& name, int available);
+  
+  // Adds an action to the pool of actions.
+  void ActionHolder::push_action(const std::string& name);
+
+  // Sets a given number of actions to the pool.
+  void set_action(const std::string& name, int available);
+
+  // Returns the number of actions which are available thru
+  // get_action() 
   int  get_available(const std::string&);
+
+  // Returns a newly allocated or cached action by a given name. It
+  // returns it from a pool of action, if the actions are out, it
+  // returns 0. The deletion of the action is handled by this class.  
   PinguAction* get_action(const std::string&);
 
-  static void init_uactions();
-  static void clear_uactions();
-  static PinguAction* get_uaction(const std::string&);
+  // Returns a newly allocated action, an unlimited number of actions
+  // can be returned, so this will never return 0, but it throws an
+  // exception if the given action name is unknown.
+  PinguAction* get_uaction(const std::string&);
 };
 
 #endif

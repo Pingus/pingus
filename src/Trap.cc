@@ -1,4 +1,4 @@
-//  $Id: Trap.cc,v 1.3 2000/02/11 16:58:26 grumbel Exp $
+//  $Id: Trap.cc,v 1.4 2000/06/06 18:51:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,7 @@
 #include "Trap.hh"
 
 ParticleHolder* Trap::particle;
+ActionHolder*   Trap::action_holder;
 
 Trap::Trap()
 {
@@ -63,6 +64,12 @@ void
 Trap::SetParticleHolder(ParticleHolder* p)
 {
   particle = p;
+}
+
+void
+Trap::set_action_holder(ActionHolder* a)
+{
+  action_holder = a;
 }
 
 /* EOF */

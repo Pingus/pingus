@@ -1,4 +1,4 @@
-//  $Id: Exit.cc,v 1.6 2000/05/01 11:40:56 grumbel Exp $
+//  $Id: Exit.cc,v 1.7 2000/06/06 18:51:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,8 +22,9 @@
 #include "globals.hh"
 #include "PingusResource.hh"
 #include "Exit.hh"
-#include "ActionHolder.hh"
 #include "actions/exiter.hh"
+
+static ActionHolder* Exit::action_holder;
 
 Exit::Exit(int x, int y)
 {
@@ -59,7 +60,7 @@ Exit::catch_pingu(Pingu* pingu)
       if (pingu->get_status() != exited
 	  && pingu->get_status() != dead)
 	{
-	  pingu->set_action(ActionHolder::get_uaction("exiter"));
+	  pingu->set_action(action_holder->get_uaction("exiter"));
 	}
       return true;
     }
@@ -81,6 +82,12 @@ Exit::draw_offset(int x_of, int y_of, float s)
     surface->put_screen((int)((x_pos + x_of) * s), (int)((y_pos + y_of) * s),
 			s, s);
   }
+}
+
+void
+Exit::set_action_holder(ActionHolder* a)
+{
+  action_holder = a;
 }
 
 /* EOF */

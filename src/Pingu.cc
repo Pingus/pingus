@@ -1,4 +1,4 @@
-//  $Id: Pingu.cc,v 1.20 2000/05/12 13:34:47 grumbel Exp $
+//  $Id: Pingu.cc,v 1.21 2000/06/06 18:51:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,6 +36,7 @@ const float deadly_velocity = 20.0;
 // Create the static objects of the class
 ColMap*             Pingu::colmap;
 PinguMap*           Pingu::map;
+ActionHolder*       Pingu::action_holder;
 
 bool                Pingu::init;
 CL_Surface*         Pingu::walker;
@@ -278,7 +279,7 @@ Pingu::do_persistent()
 		} 
 	      else 
 		{
-		  set_paction(ActionHolder::get_uaction(persist[i]->name()));
+		  set_paction(action_holder->get_uaction(persist[i]->name()));
 		}
 	    }
 	}
@@ -411,7 +412,7 @@ Pingu::do_falling()
 	{
 	  // FIXME: This is a LinuxTag Hack and should be replaced
 	  // with a real ground smashing action! 
-	  set_action(ActionHolder::get_uaction("splashed"));
+	  set_action(action_holder->get_uaction("splashed"));
 	}
       else if (std::fabs(velocity.x) > deadly_velocity)
 	{
@@ -473,7 +474,7 @@ Pingu::do_walking()
 		  else 
 		    {
 		      if (verbose) std::cout << "We are infront of a wall, setting persistant action" << std::endl;
-		      set_paction(ActionHolder::get_uaction(persist[i]->name()));
+		      set_paction(action_holder->get_uaction(persist[i]->name()));
 		    }
 		  return;
 		}
@@ -661,6 +662,12 @@ Pingu::apply_force(CL_Vector arg_v)
   velocity += arg_v;
   // Moving the pingu on pixel up, so that the force can take effect
   y_pos -= 1; 
+}
+
+void
+Pingu::set_action_holder(ActionHolder* a)
+{
+  action_holder = a;
 }
 
 /* EOF */

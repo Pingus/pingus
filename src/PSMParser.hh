@@ -1,4 +1,4 @@
-//  $Id: PSMParser.hh,v 1.7 2000/05/24 15:39:56 grumbel Exp $
+//  $Id: PSMParser.hh,v 1.8 2000/06/06 18:51:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -59,19 +59,21 @@ private:
   bool file_parsed;
   std::ifstream in;
   int lines;
-public:
-  PSMParser();
-  ~PSMParser();
-  
-  void   parse(std::string filename);
-  void   load_surfaces(void);
+
   char   get_char(void);
   char   get_atom(void);
   int    get_int(void);
   std::string get_string(void);
-  void   expect(char);
   ResDescriptor get_resdesc(void);
   void   jump_spaces(void);
+
+  void   expect(char);
+public:
+  PSMParser();
+  ~PSMParser();
+
+  void   load_surfaces(void);
+  void   parse(std::string filename);
   std::vector<surface_data> get_surfaces(void);
 };
 

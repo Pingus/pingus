@@ -1,4 +1,4 @@
-//  $Id: World.cc,v 1.19 2000/05/26 18:13:35 grumbel Exp $
+//  $Id: World.cc,v 1.20 2000/06/06 18:51:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -130,7 +130,7 @@ World::let_move()
 
   if (do_armageddon && armageddon_count != pingus.end())
     {
-      (*armageddon_count)->set_action(ActionHolder::get_uaction("bomber"));
+      (*armageddon_count)->set_action(action_holder->get_uaction("bomber"));
       armageddon_count++;
     }
   
@@ -391,6 +391,12 @@ PLF*
 World::get_plf()
 {
   return plf;
+}
+
+void
+World::set_action_holder(ActionHolder* a)
+{
+  action_holder = a;
 }
 
 /* EOF */

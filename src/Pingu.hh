@@ -1,4 +1,4 @@
-//  $Id: Pingu.hh,v 1.9 2000/05/12 13:34:47 grumbel Exp $
+//  $Id: Pingu.hh,v 1.10 2000/06/06 18:51:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,8 +27,10 @@
 #include "particles/ParticleHolder.hh"
 #include "Direction.hh"
 #include "PinguAction.hh"
+#include "ActionHolder.hh"
 #include "PinguEnums.hh"
 
+class ActionHolder;
 class PinguAction; 
 
 class Pingu
@@ -71,6 +73,7 @@ public:
   static void SetParticleHolder(ParticleHolder* );
   static ColMap* colmap;
   static PinguMap*  map;
+  static ActionHolder* action_holder;
 
   Direction direction;
 
@@ -113,6 +116,7 @@ public:
   
   static void set_colmap(ColMap*);
   static void set_map(PinguMap*);
+  static void set_action_holder(ActionHolder*);
 };
 
 #endif /* PINGU_HH */

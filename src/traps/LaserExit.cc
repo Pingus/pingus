@@ -1,4 +1,4 @@
-//  $Id: LaserExit.cc,v 1.2 2000/02/09 21:43:44 grumbel Exp $
+//  $Id: LaserExit.cc,v 1.3 2000/06/06 18:51:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -67,7 +67,7 @@ LaserExit::catch_pingu(Pingu* pingu)
       {
 	if (!(pingu->get_action() && pingu->get_action()->name() == "LaserKill")) {
 	  killing = true;
-	  pingu->set_action(ActionHolder::get_uaction("laserkill"));
+	  pingu->set_action(action_holder->get_uaction("laserkill"));
 	}
       }
     return true;

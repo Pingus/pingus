@@ -1,4 +1,4 @@
-//  $Id: Trap.hh,v 1.3 2000/04/10 21:33:06 grumbel Exp $
+//  $Id: Trap.hh,v 1.4 2000/06/06 18:51:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,6 +26,7 @@
 #include "GameCounter.hh"
 #include "Pingu.hh"
 #include "WorldObj.hh"
+#include "ActionHolder.hh"
 #include "particles/ParticleHolder.hh"
 
 // An abstract class for all trap or moving objects in the pingu word
@@ -39,6 +40,7 @@ protected:
   int x_pos;
   int y_pos;
 
+  static ActionHolder* action_holder;
   static ParticleHolder* particle; 
 public:
   Trap();
@@ -50,6 +52,7 @@ public:
   virtual bool catch_pingu(Pingu* ); // return true if the pingu was catched
 
   static void SetParticleHolder(ParticleHolder* p);
+  static void set_action_holder(ActionHolder*);
 };
 
 #endif
