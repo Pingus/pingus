@@ -1,4 +1,4 @@
-//  $Id: path_graph.cxx,v 1.13 2002/10/15 21:48:43 grumbel Exp $
+//  $Id: path_graph.cxx,v 1.14 2002/10/15 23:56:17 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -163,9 +163,10 @@ PathGraph::parse_edges(xmlDocPtr doc, xmlNodePtr cur)
 
           Path* path2 = new Path();
           path2->reverse_insert(*path);
-          EdgeId id2 = graph.add_edge(path2, // FIXME: Memory leak!
-                                      lookup_node(source), lookup_node(destination), 
-                                      cost /* costs */);
+          //EdgeId id2 =
+          graph.add_edge(path2, // FIXME: Memory leak!
+                         lookup_node(source), lookup_node(destination), 
+                         cost /* costs */);
           
           //std::cout << "Cost: " << cost << std::endl;
 
