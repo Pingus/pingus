@@ -1,4 +1,4 @@
-//  $Id: Editor.cc,v 1.16 2000/08/09 14:39:37 grumbel Exp $
+//  $Id: Editor.cc,v 1.17 2000/08/11 01:07:34 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,6 +38,7 @@ Editor::Editor ()
 
   event = new EditorEvent;
   panel = new Panel;
+  scroll_map = new ScrollMap;
   
   event->set_editor(this);
   
@@ -45,6 +46,7 @@ Editor::Editor ()
   panel->init();
   status_line.set_current_objs(&object_manager.current_objs);
   panel->set_event(event);
+  scroll_map->editor_event = event;
 }
 
 Editor::~Editor ()
@@ -123,7 +125,7 @@ Editor::draw ()
   object_manager.draw();
   panel->draw();
 
-  {
+  /*  {
     int x1_pos = CL_Display::get_width() - 200;
     int y1_pos = CL_Display::get_height() - 150;
     int x2_pos = CL_Display::get_width() - 1;
@@ -139,9 +141,11 @@ Editor::draw ()
 		       x1_pos - (object_manager.x_offset * 200 / object_manager.width) + width,  
 		       y1_pos - (object_manager.y_offset * 150 / object_manager.height) + height,
 		       1.0, 1.0, 1.0, 1.0);
-  }
+		       }*/
 
   status_line.draw(object_manager.x_offset, object_manager.y_offset);
+  scroll_map->draw();
+
   Display::flip_display(true);
 }
 
@@ -410,6 +414,9 @@ Editor::interactive_load()
 
 /***********************************************
 $Log: Editor.cc,v $
+Revision 1.17  2000/08/11 01:07:34  grumbel
+Some more fixes for the scrollmap, it work now basically.
+
 Revision 1.16  2000/08/09 14:39:37  grumbel
 Updated Pingus to use ClanLib 0.5 CVS, it will no longer work with ClanLib 0.4
 

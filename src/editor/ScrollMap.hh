@@ -1,4 +1,4 @@
-//  $Id: ScrollMap.hh,v 1.1 2000/08/10 15:48:02 grumbel Exp $
+//  $Id: ScrollMap.hh,v 1.2 2000/08/11 01:07:35 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,9 +20,9 @@
 #ifndef SCROLLMAP_HH
 #define SCROLLMAP_HH
 
-#include "Editor.hh"
+#include "EditorEvent.hh"
 
-class Editor;
+class EditorEvent;
 
 class ScrollMap
 {
@@ -30,12 +30,16 @@ private:
   int x_pos, y_pos;
   int width, height;
 public:
-  static Editor* editor;
+  static EditorEvent* editor_event;
 
   ScrollMap();
   virtual ~ScrollMap();
 
   void draw();
+
+  void  on_button_press(CL_InputDevice *device, const CL_Key& key);
+  void  on_button_release(CL_InputDevice *device, const CL_Key& key);
+  bool  mouse_over(int x, int y);
 };
 
 #endif

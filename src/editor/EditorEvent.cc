@@ -1,4 +1,4 @@
-//  $Id: EditorEvent.cc,v 1.28 2000/08/10 15:13:08 grumbel Exp $
+//  $Id: EditorEvent.cc,v 1.29 2000/08/11 01:07:34 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -265,13 +265,11 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key& key)
 	{
 	case 0:
 	  if (editor->panel->mouse_over(key.x, key.y))
-	    {
-	      editor->panel->on_click();
-	    }
+	    editor->panel->on_click();
+	  else if (editor->scroll_map->mouse_over (key.x, key.y))
+	    editor->scroll_map->on_button_press(device, key);
 	  else
-	    {
-	      editor_mark_or_move_object();
-	    }
+	    editor_mark_or_move_object();
 	  break;
 	case 1:
 	  editor->rect_get_current_objs();
@@ -479,7 +477,7 @@ EditorEvent::editor_load_level()
       
       temp_str = System::get_statdir() + "levels/dist/" + i->name;
 
-      strings.push_back(temp_str.substr(0, temp_str.size() - 4));
+      strings.push_back(temp_str);
     }
 
   reader.set_strings(&strings);
@@ -512,14 +510,14 @@ EditorEvent::editor_save_level_as()
 
   StringReader reader("Input filename to save the file (without .plf!)", editor->last_level);
 
-  dir = System::opendir(System::get_statdir() + "levels/dist/", "*.plf");
+  dir = System::opendir(System::get_statdir() + "levels/dist/", "*");
 
   for (System::Directory::iterator i = dir.begin(); i != dir.end(); i++)
     {
       std::cout << "dirs: " << System::get_statdir() + "levels/dist/" +  i->name << std::endl;
       str = System::get_statdir() + "levels/dist/" + i->name;
 
-      strings.push_back(str.substr(0, str.size() - 4));
+      strings.push_back(str);
     }
 
   reader.set_strings(&strings);

@@ -1,4 +1,4 @@
-//  $Id: Editor.hh,v 1.6 2000/08/09 14:39:37 grumbel Exp $
+//  $Id: Editor.hh,v 1.7 2000/08/11 01:07:34 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,10 +31,12 @@
 #include "EditorEvent.hh"
 #include "ObjectManager.hh"
 #include "Panel.hh"
+#include "ScrollMap.hh"
 
 ///
 class EditorEvent;
 class Panel;
+class ScrollMap;
 
 class Editor
 {
@@ -70,6 +72,8 @@ private:
 
   ///
   Panel*  panel;
+  ///
+  ScrollMap* scroll_map;
   ///
   ObjectManager object_manager;
   ///

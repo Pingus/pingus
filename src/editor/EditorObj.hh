@@ -1,4 +1,4 @@
-//  $Id: EditorObj.hh,v 1.16 2000/08/05 18:52:22 grumbel Exp $
+//  $Id: EditorObj.hh,v 1.17 2000/08/11 01:07:34 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -127,6 +127,8 @@ public:
 
   /** Draw the object */
   virtual void   draw_offset(int, int);
+
+  virtual void draw_scroll_map(int x_pos, int y_pos, int arg_width, int arg_height);
 
   /** Draw the caputre rectangle around the object */
   virtual void   draw_mark_offset(int, int, EditorObj::Color* color = 0);

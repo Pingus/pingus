@@ -1,4 +1,4 @@
-//  $Id: ObjectManager.hh,v 1.9 2000/08/04 16:08:40 grumbel Exp $
+//  $Id: ObjectManager.hh,v 1.10 2000/08/11 01:07:35 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -104,8 +104,11 @@ public:
   void save_level (std::string filename);
   /// Save the current level in an xml file
   void save_level_xml (std::string filename);
+
   ///
   void draw();
+  ///
+  void draw_scroll_map(int x_pos, int y_pos, int arg_width, int arg_height);
   
   ///
   bool object_selected(EditorObj* c_obj);
@@ -117,6 +120,17 @@ public:
   void delete_all_objs();
   ///
   void rect_get_current_objs(int x1, int y1, int x2, int y2);
+
+  ///
+  int get_x_offset() { return x_offset; }
+  ///
+  int get_y_offset() { return y_offset; }
+  ///
+  int get_width() { return width; }
+  ///
+  int get_height() { return height; }
+  ///
+  void set_viewpoint(int x, int y);
 
   ///
   void move_current_objs(int x, int y);

@@ -1,4 +1,4 @@
-// $Id: EditorObj.cc,v 1.14 2000/08/05 18:52:22 grumbel Exp $
+// $Id: EditorObj.cc,v 1.15 2000/08/11 01:07:34 grumbel Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -141,6 +141,14 @@ EditorObj::draw_offset(int x_offset, int y_offset)
 }
 
 void
+EditorObj::draw_scroll_map(int x_pos, int y_pos, int arg_width, int arg_height)
+{
+  /*  x_pos = x_pos + pos.x_pos / 
+
+      Display::draw_rect(x_pos + */
+}
+
+void
 EditorObj::draw_mark_offset(int x_offset, int y_offset, EditorObj::Color* arg_color) 
 {
   Color color;
@@ -250,6 +258,9 @@ EditorObj::save_position_xml(std::ofstream* xml, Position pos)
   
 /*
 $Log: EditorObj.cc,v $
+Revision 1.15  2000/08/11 01:07:34  grumbel
+Some more fixes for the scrollmap, it work now basically.
+
 Revision 1.14  2000/08/05 18:52:22  grumbel
 Added support for weather loading/saving and inserting into the editor
 Weather is now saved in the level file

@@ -47,4 +47,6 @@ libpingus_editor_a_SOURCES = \
      StartPos.cc          \
      StartPos.hh          \
      WeatherObj.cc        \
-     WeatherObj.hh
+     WeatherObj.hh        \
+     ScrollMap.hh         \
+     ScrollMap.cc
