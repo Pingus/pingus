@@ -1,4 +1,4 @@
-//  $Id: Client.hh,v 1.6 2000/03/08 01:36:14 grumbel Exp $
+//  $Id: Client.hh,v 1.7 2000/03/12 01:57:32 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,7 +24,6 @@
 
 #include "Server.hh"
 #include "Result.hh"
-#include "PingusMusic.hh"
 #include "ClientEvent.hh"
 
 #include "ButtonPanel.hh"
@@ -46,7 +45,6 @@ private:
   PLF* plf;
   Result result;
   Server* server;
-  PingusMusic*     music;
   PingusGameMode       mode;
   bool fast_forward;
   bool pause;
