@@ -1,4 +1,4 @@
-//  $Id: Exit.cc,v 1.18 2001/04/15 11:00:41 grumbel Exp $
+//  $Id: Exit.cc,v 1.19 2001/04/16 11:58:34 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,6 +37,11 @@ Exit::Exit(ExitData data)
   pos  = data.pos;
   desc = data.desc;
   owner_id = data.owner_id;
+  use_old_pos_handling = data.use_old_pos_handling;
+
+  if (!use_old_pos_handling) {
+    sprite.set_align_center_bottom ();
+  }
 }
 
 Exit::~Exit()
@@ -46,8 +51,19 @@ Exit::~Exit()
 bool
 Exit::catch_pingu(boost::shared_ptr<Pingu> pingu)
 {
-  int x = pos.x_pos + (sprite.get_width() / 2);
-  int y = pos.y_pos + sprite.get_height();
+  int x;
+  int y;
+  
+  if (use_old_pos_handling)
+    {
+      x = pos.x_pos + (sprite.get_width() / 2);
+      y = pos.y_pos + sprite.get_height();
+    }
+  else
+    {
+      x = pos.x_pos;
+      y = pos.y_pos;
+    }
 
   if (pingu->get_x() > x - 1 && pingu->get_x() < x + 1
       && pingu->get_y() > y - 5 && pingu->get_y() < y + 1)
@@ -65,7 +81,9 @@ Exit::catch_pingu(boost::shared_ptr<Pingu> pingu)
 void
 Exit::draw_colmap()
 {
-  world->get_colmap()->remove(sprite.get_surface (), pos.x_pos, pos.y_pos);
+  world->get_colmap()->remove(sprite.get_surface (), 
+			      pos.x_pos - sprite.get_width ()/2,
+			      pos.y_pos - sprite.get_height ());
 }
 
 void

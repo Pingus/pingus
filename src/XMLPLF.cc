@@ -1,4 +1,4 @@
-//  $Id: XMLPLF.cc,v 1.22 2001/04/15 00:53:11 grumbel Exp $
+//  $Id: XMLPLF.cc,v 1.23 2001/04/16 11:58:34 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -401,6 +401,18 @@ void
 XMLPLF::parse_exit(xmlNodePtr cur)
 {
   ExitData exit;
+
+  char* pos_handling = (char*)xmlGetProp(cur, (xmlChar*)"use-old-pos-handling");
+  if (pos_handling)
+    {
+      exit.use_old_pos_handling = StringConverter::to_int (pos_handling);
+      free (pos_handling);
+    }
+  else
+    {
+      exit.use_old_pos_handling = true;
+    }
+
   cur = cur->children;
   while (cur != NULL)
     {

@@ -1,4 +1,4 @@
-//  $Id: ExitData.hh,v 1.3 2001/04/15 18:34:43 grumbel Exp $
+//  $Id: ExitData.hh,v 1.4 2001/04/16 11:58:34 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,10 +30,22 @@ public:
   Position pos;
   ResDescriptor desc;
   int owner_id;
+  
+  /** Causes the entrance handling to fall back to the old position
+      treatment, that means the position is treaten as the upper/left
+      corner of the exit surface. The new handling treats the position
+      of the bottom/center position of the surface, which is much more
+      convenience. */
+  bool use_old_pos_handling;
+
   ///
   ExitData() { clean (); }
   /// Reset the values to default
-  void clean(void){ owner_id = 0; }
+  void clean(void) 
+  { 
+    owner_id = 0; 
+    use_old_pos_handling = true;
+  }
 };
 
 #endif

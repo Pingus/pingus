@@ -1,4 +1,4 @@
-//  $Id: PLFObj.cc,v 1.37 2001/04/15 18:34:43 grumbel Exp $
+//  $Id: PLFObj.cc,v 1.38 2001/04/16 11:58:34 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -248,6 +248,7 @@ ExitObj::ExitObj(ExitData data)
   width = surf.get_width ();
   height = surf.get_height ();
   owner_id = data.owner_id;
+  use_old_pos_handling = data.use_old_pos_handling;
 }
 
 ExitObj::~ExitObj()
@@ -275,7 +276,7 @@ ExitObj::save(ofstream* plf, ofstream* psm)
 void
 ExitObj::save_xml(std::ofstream* xml)
 {
-  (*xml) << "<exit>\n";
+  (*xml) << "<exit use-old-pos-handling=\"" << use_old_pos_handling << "\">\n";
   XMLhelper::write_position_xml(xml, *position);
   XMLhelper::write_desc_xml(xml, desc);
   (*xml) << "  <owner-id>" << owner_id << "</owner-id>"

@@ -1,4 +1,4 @@
-//  $Id: PLFObj.hh,v 1.15 2001/04/15 18:34:43 grumbel Exp $
+//  $Id: PLFObj.hh,v 1.16 2001/04/16 11:58:34 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -99,6 +99,7 @@ class ExitObj : public PLFObj
 {
 private:
   int owner_id;
+  bool use_old_pos_handling;
 public:
   ///
   ExitObj(ExitData);

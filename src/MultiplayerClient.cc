@@ -1,4 +1,4 @@
-//  $Id: MultiplayerClient.cc,v 1.2 2001/04/15 00:53:11 grumbel Exp $
+//  $Id: MultiplayerClient.cc,v 1.3 2001/04/16 11:58:34 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,7 +17,10 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "SmallMapImage.hh"
 #include "MultiplayerClient.hh"
+
+using boost::shared_ptr;
 
 MultiplayerClient::MultiplayerClient (boost::dummy_ptr<Server> s,
 				      boost::shared_ptr<MultiplayerClientChild> child1,
@@ -30,6 +33,9 @@ MultiplayerClient::MultiplayerClient (boost::dummy_ptr<Server> s,
   gui_objs.push_back (child2);
   gui_objs.push_back (child3);
   gui_objs.push_back (child4);
+  gui_objs.push_back (shared_ptr<GuiObj> (new SmallMapImage (s, CL_Vector (CL_Display::get_width ()/2 - 100,
+									   CL_Display::get_height ()/2 - 75), 
+							     200, 150)));
 }
 
 MultiplayerClient::MultiplayerClient (boost::dummy_ptr<Server> s,

@@ -3161,10 +3161,10 @@
   <owner-id>3</owner-id>
 </entrance>
 
-<exit>
-  <position>
-    <x-pos>400</x-pos>
-    <y-pos>501</y-pos>
+<exit use-old-pos-handling="0">
+    <position>
+    <x-pos>437</x-pos>
+    <y-pos>560</y-pos>
     <z-pos>0</z-pos>
   </position>
   <surface><resource type="datafile">
@@ -3174,10 +3174,10 @@
     <owner-id>0</owner-id>
 </exit>
 
-<exit>
+<exit use-old-pos-handling="0">
   <position>
-    <x-pos>631</x-pos>
-    <y-pos>501</y-pos>
+    <x-pos>665</x-pos>
+    <y-pos>560</y-pos>
     <z-pos>0</z-pos>
   </position>
   <surface><resource type="datafile">
@@ -3187,10 +3187,10 @@
     <owner-id>1</owner-id>
 </exit>
 
-<exit>
+<exit use-old-pos-handling="0">
   <position>
-    <x-pos>605</x-pos>
-    <y-pos>271</y-pos>
+    <x-pos>642</x-pos>
+    <y-pos>331</y-pos>
     <z-pos>0</z-pos>
   </position>
   <surface><resource type="datafile">
@@ -3200,10 +3200,10 @@
     <owner-id>2</owner-id>
 </exit>
 
-<exit>
+<exit use-old-pos-handling="0">
   <position>
-    <x-pos>437</x-pos>
-    <y-pos>268</y-pos>
+    <x-pos>470</x-pos>
+    <y-pos>328</y-pos>
     <z-pos>0</z-pos>
   </position>
   <surface><resource type="datafile">
