@@ -1,4 +1,4 @@
-//  $Id: ThemeSelector.cc,v 1.39 2001/06/17 17:18:27 grumbel Exp $
+//  $Id: ThemeSelector.cc,v 1.40 2001/07/25 19:49:48 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -186,7 +186,7 @@ ThemeSelector::ThemeSelector()
 
   left_arrow  = PingusResource::load_surface("Hotspots/left_arrow", "global");
   right_arrow = PingusResource::load_surface("Hotspots/right_arrow", "global");
-  back        = PingusResource::load_surface("Buttons/back", "menu");
+  back        = PingusResource::load_surface("buttons/back", "core");
 
   event = new ThemeSelector::Event;
   event->enabled = false;
@@ -223,7 +223,7 @@ ThemeSelector::~ThemeSelector()
 }
 
 void
-ThemeSelector::select()
+ThemeSelector::display()
 {
   event->enabled = true;
   
@@ -234,7 +234,7 @@ ThemeSelector::select()
     {
       loading_screen.draw();
       
-      readdir(".");
+      readdir("../data/themes/");
       dir_read = true;
     }
   current_theme = themes.end()-1;
@@ -252,6 +252,7 @@ ThemeSelector::select()
     {
       CL_System::keep_alive();
       draw();
+      CL_System::sleep (50);
     }
 
   Display::hide_cursor();
@@ -313,12 +314,17 @@ ThemeSelector::readdir(std::string path)
 	  pathname = path.substr(last_pos, pos - last_pos);
 	}
       
-      dir = System::opendir(pathname + "/data/themes", "*.xml");
+      std::cout << "ThemeSelector: " << pathname << std::endl;
+      dir = System::opendir(pathname, "*.xml");
       
       for(System::Directory::iterator entry = dir.begin(); entry != dir.end(); entry++)
 	{
-	  if (verbose) std::cout << "Name of entry: " << pathname + "/data/themes/" + entry->name << std::endl;
-	  themes.push_back(new Theme(pathname + "/data/themes/" + entry->name));
+	  if (verbose) std::cout << "Name of entry: " << pathname + entry->name << std::endl;
+	  try {
+	    themes.push_back(new Theme(pathname + entry->name));
+	  } catch (PingusError err) {
+	    std::cout << "ThemeSelector: PingusError: " << err.get_message () << std::endl;
+	  }
 	}
     }
 

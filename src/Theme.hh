@@ -1,4 +1,4 @@
-//  $Id: Theme.hh,v 1.10 2000/12/14 21:35:55 grumbel Exp $
+//  $Id: Theme.hh,v 1.11 2001/07/25 19:49:48 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -49,7 +49,7 @@ private:
   /** The currently selected level, valid in the interval [0,
       accessible_levels */
   int      current_level;
-  
+  std::string filename;
   ///
   std::vector<std::string> levels;
   ///
@@ -65,29 +65,32 @@ private:
   bool has_description;
   ///
   MultiLineText description;
-public:
+  
+  bool is_loaded;
+
   ///
-  Theme();
+  void load_status(std::string);
+  ///
+  void load_levels();
+
+public:
   ///
   Theme(std::string);
   ///
   ~Theme();
 
+  void preload ();
+
   /** Marks the level, which is under the given coordinates 
       @param x X-Position (normaly CL_Mouse::get_x())
       @param y Y-Position (normaly CL_Mouse::get_y()) */
   int mark_level_at_point(int x, int y);
-
   ///
   void next_level();
   ///
   void previous_level();
   ///
   void load(std::string);
-  ///
-  void load_status(std::string);
-  ///
-  void load_levels();
   ///
   void draw_title();
   ///

@@ -1,4 +1,4 @@
-//  $Id: SurfaceButton.cc,v 1.28 2001/06/17 17:18:27 grumbel Exp $
+//  $Id: SurfaceButton.cc,v 1.29 2001/07/25 19:49:48 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -348,10 +348,11 @@ ThemeButton::on_click()
 {
   PingusSound::play_wav ("letsgo");
   
-  menu->get_manager ()->set_menu (&menu->get_manager ()->story);
+  //menu->get_manager ()->set_menu (&menu->get_manager ()->story);
 
+  ThemeSelector theme_selector;
+  theme_selector.display();
    //worldmap_manager.display();
-  //theme_selector.select();
 }
 
 MultiplayerButton::MultiplayerButton ()

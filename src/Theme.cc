@@ -1,4 +1,4 @@
- //  $Id: Theme.cc,v 1.25 2001/06/16 15:01:53 grumbel Exp $
+ //  $Id: Theme.cc,v 1.26 2001/07/25 19:49:48 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,18 +31,13 @@
 #include "PLFPLF.hh"
 #include "XMLPLF.hh"
 
-Theme::Theme()
-{
-  current_level = 0;
-}
-
 Theme::Theme(std::string filename)
+  : filename (filename)
 {
   std::cout << "Constructing a theme...: " << filename << std::endl;
   title = PingusResource::load_font("Fonts/pingus","fonts");
   font  = PingusResource::load_font("Fonts/pingus_small","fonts");
-  
-  load(filename);
+  is_loaded = false;
 }
 
 Theme::~Theme()
@@ -100,6 +95,8 @@ Theme::load(std::string filename)
 int
 Theme::mark_level_at_point(int x, int y)
 {
+  preload ();
+
   int j = 0;
   int y_pos = level_start_y_pos;
 
@@ -130,6 +127,8 @@ Theme::mark_level_at_point(int x, int y)
 void
 Theme::draw_title()
 {
+  preload ();
+
   int x_center =  CL_Display::get_width() / 2;
   int x_pos = x_center;
   int y_pos = 10;
@@ -245,6 +244,8 @@ Theme::load_status(std::string name)
 void
 Theme::play()
 {
+  preload ();
+
   PingusGame game;
   std::ofstream out;
       
@@ -269,11 +270,17 @@ Theme::play()
       str += err.get_message ();
       PingusMessageBox box(str);
     }
+
+  // Wait for escape release
+  while (CL_Keyboard::get_keycode (CL_KEY_ESCAPE))
+    CL_System::keep_alive ();
 }
 
 void
 Theme::next_level()
 {
+  preload ();
+
   current_level++;
 
   if ((unsigned int)(current_level) >= levels.size()) 
@@ -288,6 +295,8 @@ Theme::next_level()
 void
 Theme::previous_level()
 {
+  preload ();
+
   current_level--;
 
   if (current_level < 0)
@@ -328,6 +337,16 @@ Theme::load_levels()
 	}
     }
   if (verbose) std::cout << "done." << std::endl;
+}
+
+void 
+Theme::preload ()
+{
+  if (!is_loaded)
+    {
+      load(filename);
+      is_loaded = true;
+    }
 }
 
 /* EOF */

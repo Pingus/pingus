@@ -1,4 +1,4 @@
-//  $Id: ThemeSelector.hh,v 1.14 2001/03/18 17:45:04 grumbel Exp $
+//  $Id: ThemeSelector.hh,v 1.15 2001/07/25 19:49:48 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,6 @@
 #define THEMESELECTOR_HH
 
 #include <ClanLib/core.h>
-
 
 #include <vector>
 #include <string>
@@ -123,17 +122,6 @@ private:
   bool finished;
   ///
   ListBox list_box;
-
-public:
-  ///
-  ThemeSelector();
-  ///
-  ~ThemeSelector();
- 
-  ///
-  void   readdir(std::string path);
-  ///
-  void   select();
   ///
   void   draw();
   ///
@@ -144,6 +132,18 @@ public:
       @param y Y-Position (normaly CL_Mouse::get_y())
       @return The current_level at point or -1 if no level is under point */
   int mark_level_at_point(int x, int y);
+
+  ///
+  void   readdir(std::string path);
+
+public:
+  ///
+  ThemeSelector();
+  ///
+  ~ThemeSelector();
+ 
+  /** Display the theme selector */
+  void   display ();
 };
 
 #endif
