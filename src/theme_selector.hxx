@@ -97,7 +97,6 @@ public:
   Event* event;
 
 private:
-  std::vector<AlphaButton*> theme;
   std::vector<Theme*> themes;
   std::vector<Theme*>::iterator current_theme;
 

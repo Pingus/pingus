@@ -88,8 +88,6 @@ action_button.hxx \
 action_data.hxx \
 action_holder.cxx \
 action_holder.hxx \
-alpha_button.cxx \
-alpha_button.hxx \
 blitter.cxx \
 blitter.hxx \
 blitter_test.hxx \
@@ -164,8 +162,6 @@ layer_manager.cxx \
 layer_manager.hxx \
 loading.cxx \
 loading.hxx \
-main_menu.cxx \
-main_menu.hxx \
 math.hxx \
 menu_background.cxx \
 menu_background.hxx \

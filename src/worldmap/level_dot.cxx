@@ -139,7 +139,8 @@ LevelDot::draw_hover(DrawingContext& gc)
       gc.print_center(Fonts::pingus_small,
                       static_cast<int>(pos.x) - pos_correction,
                       static_cast<int>(pos.y - 40),
-                      System::translate(get_plf().get_levelname()));
+                      System::translate(get_plf().get_levelname()), 
+                      1000);
     }
   else
     {
@@ -153,14 +154,16 @@ LevelDot::draw_hover(DrawingContext& gc)
       gc.print_center(Fonts::pingus_small,
                       static_cast<int>(pos.x) - pos_correction,
                       static_cast<int>(pos.y - 30),
-                      _("locked"));
+                      _("locked"), 
+                      1000);
     }
 
   if (maintainer_mode)
     {
       gc.print_center(Fonts::pingus_small,
                       int(pos.x), int(pos.y - 56),
-                      get_plf().get_resname());
+                      get_plf().get_resname(), 
+                      1000);
     }
 }
 

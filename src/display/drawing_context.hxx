@@ -112,13 +112,13 @@ public:
   float get_height() const;
 
   /** Print a text left aligned */
-  void print_left (const CL_Font& font, float x_pos, float y_pos, const std::string& str);
+  void print_left (const CL_Font& font, float x_pos, float y_pos, const std::string& str, float z = 0.0f);
 
   /** Print a text centred to the given position */
-  void print_center (const CL_Font& font, float x_pos, float y_pos, const std::string& str);
+  void print_center (const CL_Font& font, float x_pos, float y_pos, const std::string& str, float z = 0.0f);
 
   /** Print a text right aligned */
-  void print_right (const CL_Font& font, float x_pos, float y_pos, const std::string& str);
+  void print_right (const CL_Font& font, float x_pos, float y_pos, const std::string& str, float z = 0.0f);
 
   Vector screen_to_world (Vector pos);
   Vector world_to_screen (Vector pos);

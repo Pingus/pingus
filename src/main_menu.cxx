@@ -23,8 +23,6 @@ namespace Pingus {
 
 MainMenu::MainMenu()
 {
-  //  gui_obj.push_back(new AlphaButton("Play"));
-  //  gui_obj.push_back(new AlphaButton("Stop"));
 }
 
 void

@@ -75,8 +75,8 @@ private:
   float x;
   float y;
 public:
-  FontDrawingRequest(CL_Font font_, CL_Origin origin, const CL_Vector& pos, const std::string& text_)
-    : DrawingRequest(pos),
+  FontDrawingRequest(CL_Font font_, CL_Origin origin, const CL_Vector& pos, const std::string& text_, float z)
+    : DrawingRequest(CL_Vector(pos.x, pos.y, z)),
       font(font_), text(text_)
   {
     font.set_alignment(origin);
@@ -381,33 +381,36 @@ DrawingContext::get_height() const
 }
 
 void
-DrawingContext::print_left (const CL_Font& font_, float x_pos, float y_pos, const std::string& str)
+DrawingContext::print_left (const CL_Font& font_, float x_pos, float y_pos, const std::string& str, float z)
 {
   draw(new FontDrawingRequest(font_, 
                               origin_top_left,
                               CL_Vector(x_pos + translate_stack.back().x,
                                         y_pos + translate_stack.back().y),
-                              str));
+                              str,
+                              z));
 }
 
 void
-DrawingContext::print_center (const CL_Font& font_, float x_pos, float y_pos, const std::string& str)
+DrawingContext::print_center (const CL_Font& font_, float x_pos, float y_pos, const std::string& str, float z)
 {
   draw(new FontDrawingRequest(font_, 
                               origin_top_center,
                               CL_Vector(x_pos + translate_stack.back().x,
                                         y_pos + translate_stack.back().y),
-                              str));
+                              str,
+                              z));
 }
 
 void
-DrawingContext::print_right (const CL_Font& font_, float x_pos, float y_pos, const std::string& str)
+DrawingContext::print_right (const CL_Font& font_, float x_pos, float y_pos, const std::string& str, float z)
 {
   draw(new FontDrawingRequest(font_, 
                               origin_top_right,
                               CL_Vector(x_pos + translate_stack.back().x,
                                         y_pos + translate_stack.back().y),
-                              str));
+                              str,
+                              z));
 }
 
 Vector
