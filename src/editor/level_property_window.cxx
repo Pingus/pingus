@@ -1,4 +1,4 @@
-//  $Id: level_property_window.cxx,v 1.11 2002/11/29 22:54:22 grumbel Exp $
+//  $Id: level_property_window.cxx,v 1.12 2002/11/30 17:11:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <iostream>
 #include "object_manager.hxx"
 #include "../string_converter.hxx"
 #include "level_property_window.hxx"
@@ -82,25 +83,93 @@ LevelPropertyWindow::LevelPropertyWindow (CL_Component* parent, ObjectManager* m
     comment_label (CL_Rect(10, 190, 90, 210), "Comment", get_client_area ()),
     playable_checkbox (CL_Point(10, 210), "Playable", get_client_area ()),
     
-    ok_button(CL_Rect(10, 200, 90, 220), "Ok", get_client_area()),
-    cancel_button(CL_Rect(110, 200, 190, 220), "Cancel", get_client_area())
+    ok_button(CL_Rect(210, 240, 290, 260), "Ok", get_client_area()),
+    cancel_button(CL_Rect(310, 240, 390, 260), "Cancel", get_client_area())
 {
-  if (manager->get_playable ())
-    playable_checkbox.set_checked (true);
-  else
-    playable_checkbox.set_checked (false);
+  playable_checkbox.set_checked (manager->get_playable ());
 
-  levelname_input.set_read_only (true);
-  description_input.set_read_only (true);
-  
+  ok_button_slot = ok_button.sig_clicked().connect(this, &LevelPropertyWindow::on_ok_click);
+  cancel_button_slot = cancel_button.sig_clicked().connect(this, &LevelPropertyWindow::on_cancel_click);
+
+  set_position(200, 100);
   show (false);
 }
 
 LevelPropertyWindow::~LevelPropertyWindow ()
 {
-  
-
   manager->set_playable (playable_checkbox.is_checked ());
+}
+
+void
+LevelPropertyWindow::on_ok_click()
+{
+  write_data();
+  show(false);
+}
+
+void
+LevelPropertyWindow::on_cancel_click()
+{
+  show(false);
+}
+
+void
+LevelPropertyWindow::show(bool show_window)
+{
+  if (show_window)
+    read_data();
+
+  CL_Window::show(show_window);
+}
+
+void
+LevelPropertyWindow::write_data()
+{
+  manager->set_levelname (levelname_input.get_text());
+  manager->set_description (description_input.get_text());
+
+  manager->set_author (author_input.get_text());
+
+  int number_of_pingus;
+  if (from_string(number_of_pingus_input.get_text(), number_of_pingus))
+    manager->set_number_of_pingus (number_of_pingus);
+
+  int pingus_to_save;
+  if (from_string(pingus_to_save_input.get_text(), pingus_to_save))
+    manager->set_number_to_save (pingus_to_save);
+  
+  int time;
+  if (from_string (time_input.get_text(), time))
+    manager->set_leveltime (time);
+
+  int width;
+  if (from_string(width_input.get_text(), width))
+    manager->set_width(width);
+
+  int height;
+  if (from_string(height_input.get_text(), height))
+    manager->set_height(height);
+  
+  int difficulty = 40;
+  if (from_string(difficulty_input.get_text(), difficulty))
+    manager->set_difficulty(difficulty);
+
+  manager->set_playable (playable_checkbox.is_checked());
+}
+
+void
+LevelPropertyWindow::read_data()
+{
+  levelname_input.set_text(manager->get_levelname ());
+  description_input.set_text(manager->get_description ());
+  author_input.set_text(manager->get_author ());
+  number_of_pingus_input.set_text(to_string (manager->get_number_of_pingus ()));
+  pingus_to_save_input.set_text(to_string (manager->get_number_to_save ()));
+  time_input.set_text(to_string (manager->get_leveltime ()));
+  width_input.set_text(to_string(manager->get_width ()));
+  height_input.set_text(to_string(manager->get_height ()));
+  difficulty_input.set_text(to_string (manager->get_difficulty ()));
+  playable_checkbox.set_checked(manager->get_playable ());
 }
 
 } // namespace EditorNS

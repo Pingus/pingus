@@ -1,4 +1,4 @@
-//  $Id: level_resizer.hxx,v 1.1 2002/11/29 22:54:22 grumbel Exp $
+//  $Id: level_resizer.hxx,v 1.2 2002/11/30 17:11:55 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -40,6 +40,7 @@ public:
 
   void set_position_offset(const Vector& offset);
   void draw (EditorNS::EditorView *);
+  void update(float delta);
 
   void write_xml(std::ostream&) {}
   EditorObj* duplicate() { return 0; }

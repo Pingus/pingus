@@ -1,4 +1,4 @@
-//  $Id: level_resizer.cxx,v 1.2 2002/11/30 15:06:31 grumbel Exp $
+//  $Id: level_resizer.cxx,v 1.3 2002/11/30 17:11:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,6 +30,13 @@ LevelResizer::LevelResizer(ObjectManager* m)
 {
   sprite.set_align_center();
 
+  pos.x = obj_manager->get_width();
+  pos.y = obj_manager->get_height();
+}
+
+void
+LevelResizer::update(float delta)
+{
   pos.x = obj_manager->get_width();
   pos.y = obj_manager->get_height();
 }

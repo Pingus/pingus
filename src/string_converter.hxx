@@ -1,4 +1,4 @@
-//  $Id: string_converter.hxx,v 1.8 2002/09/28 11:52:22 torangan Exp $
+//  $Id: string_converter.hxx,v 1.9 2002/11/30 17:11:55 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -49,9 +49,11 @@ std::string to_string (const T& any)
   return oss.str();
 }
 
-
+/** Convert the contents in string \a rep to type \a T, if conversion
+    fails false is returned and the value of \a x is unchanged, if
+    true is returned the conversation was successfull. */
 template <class T>
-void from_string(const std::string& rep, T& x)
+bool from_string(const std::string& rep, T& x)
 {
  // this is necessary so that if "x" is not modified if the conversion fails
   T temp;
@@ -61,10 +63,20 @@ void from_string(const std::string& rep, T& x)
   std::istrstream iss(rep.c_str());
 #endif
   iss >> temp;
-  if (iss.fail())
+
+  /*if (iss.fail())
     throw std::invalid_argument
-      ("Exception: 'failed to extract type T from rep' " __FILE__ ": " + rep);
-  x = temp;
+    ("Exception: 'failed to extract type T from rep' " __FILE__ ": " + rep);*/
+
+  if (iss.fail())
+    {
+      return false;
+    }
+  else
+    {
+      x = temp;
+      return true;
+    }
 }
 
 std::string string_upcase (const std::string&);

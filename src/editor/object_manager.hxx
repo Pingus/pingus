@@ -1,4 +1,4 @@
-//  $Id: object_manager.hxx,v 1.23 2002/11/29 22:54:22 grumbel Exp $
+//  $Id: object_manager.hxx,v 1.24 2002/11/30 17:11:55 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -91,6 +91,9 @@ public:
   /** FIXME: translation must be handled otherwise */
   std::string get_levelname () { return levelname["en"]; }
   std::string get_description () { return description["en"]; }
+
+  void set_levelname (const std::string& str) { levelname["en"] = str; }
+  void set_description (const std::string& str) { description["en"] = str; }
 
   // Get and Setter functions
   int get_width() { return width; }

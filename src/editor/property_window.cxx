@@ -1,4 +1,4 @@
-//  $Id: property_window.cxx,v 1.13 2002/11/30 15:06:31 grumbel Exp $
+//  $Id: property_window.cxx,v 1.14 2002/11/30 17:11:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
+#include <ClanLib/Display/Display/display.h>
 #include <ClanLib/GUI/gui_manager.h>
 #include "editor.hxx"
 #include "editorobj.hxx"
@@ -37,6 +38,9 @@ PropertyWindow::PropertyWindow (Editor* parent)
   label.show (true);
   set_client_size (200, 50);
   show (false);
+
+  set_position(CL_Display::get_width() - get_width() - 50, 
+               50);
 }
 
 void 

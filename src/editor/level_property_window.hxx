@@ -1,4 +1,4 @@
-//  $Id: level_property_window.hxx,v 1.9 2002/11/29 22:54:22 grumbel Exp $
+//  $Id: level_property_window.hxx,v 1.10 2002/11/30 17:11:55 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -68,10 +68,21 @@ private:
   CL_Button ok_button;
   CL_Button cancel_button;
 
+  CL_Slot ok_button_slot;
+  CL_Slot cancel_button_slot;
+
 public:
   LevelPropertyWindow (CL_Component* parent, ObjectManager*);
   ~LevelPropertyWindow ();
       
+  void show(bool);
+
+  void on_ok_click();
+  void on_cancel_click();
+
+  void write_data();
+  void read_data();
+
 private:
   LevelPropertyWindow (const LevelPropertyWindow&);
   LevelPropertyWindow& operator= (const LevelPropertyWindow&);

@@ -1,4 +1,4 @@
-//  $Id: solid_color_background_obj.cxx,v 1.5 2002/11/29 22:54:23 grumbel Exp $
+//  $Id: solid_color_background_obj.cxx,v 1.6 2002/11/30 17:11:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -93,7 +93,7 @@ SolidColorBackgroundObj::status_line ()
 	 + to_string(data->pos.z);
 }
 
-PropertyFrame* 
+EditorNS::PropertyFrame* 
 SolidColorBackgroundObj::get_gui_dialog(Editor* editor)
 {
   GenericPropertyFrame* propframe 

@@ -1,4 +1,4 @@
-//  $Id: groundpiece_obj.cxx,v 1.8 2002/11/30 15:06:32 grumbel Exp $
+//  $Id: groundpiece_obj.cxx,v 1.9 2002/11/30 17:11:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -169,9 +169,9 @@ GroundpieceObj::get_gui_dialog (EditorNS::Editor* editor)
   propframe->add_enum_value("Bridge",      Groundtype::GP_BRIDGE);
   propframe->end_add_enum_box();
   
-  propframe->add_button_box("Rotate 90",       GroundpieceObjRotate(this));
-  propframe->add_button_box("Flip Vertical",   GroundpieceObjFlipVertical(this));
-  propframe->add_button_box("Flip Horizontal", GroundpieceObjFlipHorizontal(this));
+  propframe->add_button_box("Rotate 90 (r)",       GroundpieceObjRotate(this));
+  propframe->add_button_box("Flip Vertical (v)",   GroundpieceObjFlipVertical(this));
+  propframe->add_button_box("Flip Horizontal (h)", GroundpieceObjFlipHorizontal(this));
   
   return propframe;
 }
