@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMap.cc,v 1.8 2000/10/01 21:29:30 grumbel Exp $
+//  $Id: PingusWorldMap.cc,v 1.9 2000/10/02 14:30:04 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -143,7 +143,7 @@ PingusWorldMap::draw ()
 	}
     }
   
-  PingusWorldMapNode* node = get_node (CL_Mouse::get_x () * x_scale, CL_Mouse::get_y () * y_scale);
+  PingusWorldMapNode* node = get_node (CL_Mouse::get_x (), CL_Mouse::get_y ());
 
   if (node)
     {
@@ -163,13 +163,16 @@ PingusWorldMap::let_move ()
 PingusWorldMapNode* 
 PingusWorldMap::get_node (int x, int y)
 {
+  float x_scale = 800.0 / CL_Display::get_width ();
+  float y_scale = 600.0 / CL_Display::get_height ();
+
   for (list<PingusWorldMapNode>::iterator i = graph_data.nodes.begin ();
        i != graph_data.nodes.end ();
        i++)
-    if (i->pos.x_pos - (int)(red_dot->get_width()/2) - 3 < x
-	&& i->pos.x_pos + (int)(red_dot->get_width()/2) + 3 > x
-	&& i->pos.y_pos - (int)(red_dot->get_width()/2) - 3 < y
-	&& i->pos.y_pos + (int)(red_dot->get_width()/2) + 3 > y)
+    if (i->pos.x_pos - (int)(red_dot->get_width()/2) - 3 < x * x_scale
+	&& i->pos.x_pos + (int)(red_dot->get_width()/2) + 3 > x * x_scale
+	&& i->pos.y_pos - (int)(red_dot->get_width()/2) - 3 < y * y_scale
+	&& i->pos.y_pos + (int)(red_dot->get_width()/2) + 3 > y * y_scale)
       {
 	if (!i->levelname.empty ())
 	  return &(*i);
