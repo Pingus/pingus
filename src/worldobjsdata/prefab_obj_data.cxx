@@ -1,4 +1,4 @@
-//  $Id: prefab_obj_data.cxx,v 1.10 2003/03/05 19:13:59 grumbel Exp $
+//  $Id: prefab_obj_data.cxx,v 1.11 2003/03/05 19:55:14 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,31 +21,49 @@
 #include "../xml_file_reader.hxx"
 #include "../xml_helper.hxx"
 #include "../prefab.hxx"
+#include "../pingus_error.hxx"
 #include "prefab_obj_data.hxx"
 
 namespace WorldObjsData {
 
 PrefabObjData::PrefabObjData (xmlDocPtr doc, xmlNodePtr cur)
 {
+  std::cout << "PrefabObjData::PrefabObjData (xmlDocPtr doc, xmlNodePtr cur)" << std::endl;
   XMLFileReader reader(doc, cur);
   reader.read_vector("position", pos);
   reader.read_string("type", type);
   
   // try to load the data for this prefab-uid
   data = Prefab::create (type);
+  if (data == 0)
+    {
+      PingusError::raise("PrefabObjData: Couldn't create prefab '" + type + "'");
+    }
 }
 
 void
-PrefabObjData::insert_WorldObjs ()
+PrefabObjData::write_xml (std::ostream& xml)
 {
-  // FIXME:
+  xml << "<prefab>\n"
+      << "  <type>" << type << "</type>\n";
+  XMLhelper::write_vector_xml(xml, pos);
+  xml << "</prefab>\n" << std::endl;
+}
+
+void
+PrefabObjData::insert_WorldObjs (World* world)
+{
+  std::cout << "PrefabObjData::insert_WorldObjs (World* world)" << std::endl;
+  data->get_data()->insert_WorldObjs(world);
 }
 
 void
 PrefabObjData::insert_EditorObjs (EditorNS::EditorObjMgr* obj_mgr)
 {
-  UNUSED_ARG(obj_mgr);
-  // FIXME:
+  std::cout << "PrefabObjData::insert_EditorObjs (EditorNS::EditorObjMgr* obj_mgr)" << std::endl;
+
+  // FIXME: Wrong
+  data->get_data()->insert_EditorObjs(obj_mgr);
 }
 
 } // namespace WorldObjsData

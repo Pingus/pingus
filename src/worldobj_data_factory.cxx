@@ -1,4 +1,4 @@
-//  $Id: worldobj_data_factory.cxx,v 1.31 2003/03/05 19:13:59 grumbel Exp $
+//  $Id: worldobj_data_factory.cxx,v 1.32 2003/03/05 19:55:14 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -47,6 +47,7 @@
 #include "worldobjsdata/teleporter_data.hxx"
 #include "worldobjsdata/thunderstorm_background_data.hxx"
 #include "worldobjsdata/worldobj_group_data.hxx"
+#include "worldobjsdata/prefab_obj_data.hxx"
 
 using namespace WorldObjsData;
 
@@ -69,6 +70,7 @@ WorldObjDataFactory::instance ()
       new WorldObjDataFactoryImpl<HotspotData>("hotspot");
       new WorldObjDataFactoryImpl<EntranceData>("entrance");
       new WorldObjDataFactoryImpl<ExitData>("exit");
+      new WorldObjDataFactoryImpl<PrefabObjData>("prefab");
       new WorldObjDataFactoryImpl<WorldObjGroupData>("group");
 
       // traps
@@ -132,6 +134,10 @@ WorldObjDataFactory::create (xmlDocPtr doc, xmlNodePtr cur)
   else if (XMLhelper::equal_str(cur->name, "group"))
     {
       return create ("group", doc, cur);
+    }
+  else if (XMLhelper::equal_str(cur->name, "prefab"))
+    {
+      return create ("prefab", doc, cur);
     }
   else
     {

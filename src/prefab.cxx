@@ -1,4 +1,4 @@
-//  $Id: prefab.cxx,v 1.5 2003/03/05 19:13:59 grumbel Exp $
+//  $Id: prefab.cxx,v 1.6 2003/03/05 19:55:14 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,8 +43,6 @@ Prefab::Prefab (const std::string& filename)
 
 	  while (cur)
 	    {
-	      cur = XMLhelper::skip_blank (cur);
-	     
 	      if (XMLhelper::equal_str (cur->name, "name"))
 		{
 		  name = XMLhelper::parse_string (doc, cur);
@@ -69,7 +67,11 @@ Prefab::Prefab (const std::string& filename)
 		      delete data; 
 		    }
 
-		  data = WorldObjDataFactory::instance ()->create (doc, cur->children);
+                  std::cout << "XXX Prefab Object is a: " 
+                            << XMLhelper::skip_blank(cur->children)->name 
+                            << std::endl;
+		  data = WorldObjDataFactory::instance ()->create (doc, 
+                                                                   XMLhelper::skip_blank(cur->children));
 		}
 	      else
 		{
@@ -77,7 +79,8 @@ Prefab::Prefab (const std::string& filename)
 		}
  
 	      cur = cur->next;
-	    }
+	      cur = XMLhelper::skip_blank (cur);
+            }
 	}
       else
 	{
@@ -89,6 +92,9 @@ Prefab::Prefab (const std::string& filename)
     {
       std::cout << "ObjectManager::add_prefab_from_file: read error: " << filename << std::endl;
     }
+
+  if (data == 0)
+    PingusError::raise ("Prefab: Object section empty");
 }
 
 Prefab::~Prefab ()
@@ -99,7 +105,7 @@ Prefab::~Prefab ()
 Prefab*
 Prefab::create (const std::string& type)
 {
-  return new Prefab (path_manager.complete ("prefab/") + type);
+  return new Prefab (path_manager.complete ("prefabs/") + type + ".xml");
 }
 
 std::string

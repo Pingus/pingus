@@ -1,4 +1,4 @@
-//  $Id: prefab_obj_data.hxx,v 1.7 2003/03/05 19:13:59 grumbel Exp $
+//  $Id: prefab_obj_data.hxx,v 1.8 2003/03/05 19:55:14 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -56,11 +56,12 @@ public:
 
   /** The PrefabData is flattened to a WorldObjGroup, the World
       doesn't need to keep track of prefabs */
-  void insert_WorldObjs ();
+  void insert_WorldObjs (World*);
   
   /** Create a EditorObjs::PrefabObj from the prefab data */
   void insert_EditorObjs (EditorNS::EditorObjMgr*);
 
+  void write_xml (std::ostream& xml);
 private:
   PrefabObjData (const PrefabObjData&);
   PrefabObjData& operator= (const PrefabObjData&);
