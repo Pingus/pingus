@@ -1,4 +1,4 @@
-\input texinfo   @c -*-texinfo-*-
+\\input texinfo   @c -*-texinfo-*-
 @c %**start of header
 @setfilename pingus.info
 @settitle Pingus
@@ -50,7 +50,7 @@ contain some usefull informations
 @chapter Introduction
 
 Pingus is a free Lemmings clone covered under the GPL. It is mainly
-coded by Ingo Ruhnke @email{grumbel@@gmx.de}, graphics are mainly
+coded by Ingo Ruhnke @email{grumbel@@pingus.cx}, graphics are mainly
 painted by Joel Fauche @email{joel.fauche@@wanadoo.fr}, Craig Timpany
 @email{timpany@@es.co.nz} and Michael Mestre
 @email{mmestre@@teaser.fr}. For a full list of contributors have a look
@@ -58,7 +58,7 @@ at the @file{AUTHORS} file.
 
 The newest version of Pingus can always be found at:
 
-@url{http://pingus.seul.org}
+@url{http://www.pingus.cx}
 
 @node    Command-line
 @chapter Command-line
@@ -88,18 +88,74 @@ Prints the version number and exit.
 Set the speed (0 = maximum speed)
 
 @item -v, --verbose VERBOSITY
-
 Sets the verboseness of Pingus to VERBOSITY. The default value is 1 for
 the moment.  
 
 @item --disable-intro
+Disables the intro.
 
-Disables the intro scroller.
+@item -F, --disable-fullscreen
+Disables fullscrenn support and start Pingus in a window if supported by
+the display target.
+
+@item -f, --enable-fullscreen
+Starts Pingus in fullscreen instead of a window if supported by the
+display target (default).
+
+@item -i, --enable-gimmicks
+Enables some experimental or useless stuff (out of date). 
+
+@item -d, --datadir PATH
+Set the datafile search patch for Pingus to PATH.
+
+@item -l, --level FILE
+Directly start the fiven level, without going throu the main menu. Its
+not required to use -l or --level, since the last argument will be
+allways treat as a level.
+
+@item -b, --print-fps
+Prints the number of frames per seconds in the upper upper right corner
+of the Statusbar, when the game is running.
+
+@item --fast
+Disables the background and the particle throwing, to make the game some
+fps faster.
+
+@item -e, --editor
+Directly start the editor, without going throu the main menu.
+
+@item --disable-auto-scrolling
+Don't scroll the game area when the mouse it at the window border.
+
+@item -p, --play-deme FILE
+Loads a demo file and plays it. Demos are automatically recorded to
+@file{~/.pingus/demos/}.
+
+@item -s, --enable-sound
+Enables sound playback in the game, its only available when Pingus was
+compiled with sound support.
+
+@item -m, --enable-music
+Enables the backgronud music playback in the game, its only available
+when Pingus was compiled with sound support.
+
+@item --audio-format 
+Sets the bit bandwidth the sound driver should use. 8bit is recommend
+for slower machines.
+
+@item --audio-rate INT
+Sets the audio-rate (Hz) to the supplied value, lower values (11000) are
+recommend for slower machines.
+
+@item --audio-channels {1,2}
+Sets the sound support to mone(1) or stereo(2).
+
+@item --audio-buffers INT
+Sets the memory size Pingus should use to buffer sound (default: 4096).
 
 @end table
 
 @node    Actions
-@comment node-name,    next,  previous,      up
 @chapter Actions
 
 @itemize @bullet
@@ -118,20 +174,16 @@ A blocker will turn around all pingus which reach him, no pingu can pass
 a blocker. If a pingu was turned into a blocker, he can not get any
 other action, he will stay as a blocker until he his turned into a
 bomber or until the ground below him is digged away.
-
-
+        
 @item Bomber
 
 If a pingu got this action, he will count down from 50 to 0. If he has
 finished the counting, he will blow up and then explode.
 
-
 @item Builder
-
 A builder will start to build a bridge, but he has only a limited number of
 stones so the bridge will not be very large. If the pingu is out of
 stones he will turn back into a walker.
-
 
 @item Climber
 

@@ -1,4 +1,4 @@
-//  $Id: Background.cc,v 1.13 2000/06/11 17:38:55 grumbel Exp $
+//  $Id: Background.cc,v 1.14 2000/06/11 20:59:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -75,7 +75,7 @@ Background::load (background_data bg_data)
 	  // Testing animatied backgrounds...
 	  bg_surface = CL_Surface::load(bg_data.desc.res_name.c_str(), PingusResource::get(bg_data.desc.filename));
 	  
-	  if (bg_surface->get_num_frames() != 1)
+	  if (bg_surface->get_num_frames() == 1)
 	    {
 	      // We have a static surface
      
