@@ -1,4 +1,4 @@
-//  $Id: spot_map.cxx,v 1.10 2002/09/04 19:40:19 grumbel Exp $
+//  $Id: spot_map.cxx,v 1.11 2002/09/05 16:47:46 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -257,8 +257,8 @@ PingusSpotMap::draw(GraphicContext& gc)
   // FIXME: delete the next four lines and replace them with gc.get_clip_rect()
   int w = CL_Display::get_width ();
   int h = CL_Display::get_height ();
-  int of_x = gc.get_x_offset () + (gc.get_width ()/2); 
-  int of_y = gc.get_y_offset () + (gc.get_height ()/2);
+  int of_x = static_cast<int>(gc.get_x_offset () + (gc.get_width  ()/2));
+  int of_y = static_cast<int>(gc.get_y_offset () + (gc.get_height ()/2));
 
   if (draw_collision_map)
     {

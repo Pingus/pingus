@@ -1,4 +1,4 @@
-//  $Id: debug_stream.cxx,v 1.6 2002/08/23 15:49:48 torangan Exp $
+//  $Id: debug_stream.cxx,v 1.7 2002/09/05 16:47:46 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -69,7 +69,7 @@ DebugStream::Buffer::put_line (const std::string& line)
       for (std::vector<std::ostream*>::iterator i = out_streams.begin ();
 	    i != out_streams.end (); ++i)
       	{
-      	  *(*i) << line;
+      	  *(*i) << line << std::flush;
       	}
     }
   else
