@@ -21,8 +21,8 @@
 #define HEADER_PINGUS_WORLDOBJS_CONVEYOR_BELT_HXX
 
 #include <ClanLib/Display/sprite.h>
+#include "../vector.hxx"
 #include "../worldobj.hxx"
-#include "../worldobj_data.hxx"
 
 namespace Pingus {
 
@@ -35,14 +35,17 @@ namespace WorldObjs {
 class ConveyorBelt : public  WorldObj
 {
 private:
-  WorldObjsData::ConveyorBeltData* const data;
-
   CL_Sprite left_sur;
   CL_Sprite right_sur;
   CL_Sprite middle_sur;
 
+  Vector pos;
+  int    width;
+  float  speed;
+  float  counter;
+
 public:
-  ConveyorBelt (const WorldObjsData::ConveyorBeltData& data_);
+  ConveyorBelt(const FileReader& reader);
 
   void draw (SceneContext& gc);
   void on_startup ();

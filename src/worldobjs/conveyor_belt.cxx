@@ -23,34 +23,35 @@
 #include "../pingu_holder.hxx"
 #include "../resource.hxx"
 #include "../world.hxx"
-#include "../worldobjsdata/conveyor_belt_data.hxx"
 #include "conveyor_belt.hxx"
 
 namespace Pingus {
 namespace WorldObjs {
 
-ConveyorBelt::ConveyorBelt (const WorldObjsData::ConveyorBeltData& data_)
-  : data(new WorldObjsData::ConveyorBeltData(data_)),
-    left_sur  (Resource::load_sprite ("worldobjs/conveyorbelt_left")),
+ConveyorBelt::ConveyorBelt(const FileReader& reader)
+  : left_sur  (Resource::load_sprite ("worldobjs/conveyorbelt_left")),
     right_sur (Resource::load_sprite ("worldobjs/conveyorbelt_right")),
     middle_sur(Resource::load_sprite ("worldobjs/conveyorbelt_middle"))
 {
+  reader.read_vector("position", pos);
+  reader.read_int   ("width",    width);
+  reader.read_float ("speed",    speed);
 }
 
 void
 ConveyorBelt::draw (SceneContext& gc)
 {
-  gc.color().draw(left_sur, data->pos, static_cast<int>(data->counter));
-  for (int i=0; i < data->width; ++i)
+  gc.color().draw(left_sur, pos, static_cast<int>(counter));
+  for (int i=0; i < width; ++i)
     gc.color().draw(middle_sur,
-	    Vector(static_cast<int>(data->pos.x + left_sur.get_width() + i * middle_sur.get_width()),
-                  static_cast<int>(data->pos.y)),
-	    static_cast<int>(data->counter));
+	    Vector(static_cast<int>(pos.x + left_sur.get_width() + i * middle_sur.get_width()),
+                  static_cast<int>(pos.y)),
+	    static_cast<int>(counter));
 
   gc.color().draw(right_sur,
-	  Vector(static_cast<int>(data->pos.x + left_sur.get_width() + data->width * middle_sur.get_width()),
-                 static_cast<int>(data->pos.y)),
-	  static_cast<int>(data->counter));
+	  Vector(static_cast<int>(pos.x + left_sur.get_width() + width * middle_sur.get_width()),
+                 static_cast<int>(pos.y)),
+	  static_cast<int>(counter));
 }
 
 void
@@ -58,33 +59,33 @@ ConveyorBelt::on_startup ()
 {
   CL_PixelBuffer sur(Resource::load_pixelbuffer("conveyorbelt_cmap", "worldobjs"));
 
-  for (int i=0; i < (data->width + 2); ++i)
+  for (int i=0; i < (width + 2); ++i)
     world->get_colmap()->put(sur,
-                             static_cast<int>(data->pos.x) + (15 * i),
-			     static_cast<int>(data->pos.y),
+                             static_cast<int>(pos.x) + (15 * i),
+			     static_cast<int>(pos.y),
 			     Groundtype::GP_SOLID);
 }
 
 void
 ConveyorBelt::update ()
 {
-  data->counter += data->speed * 0.025f;
+  counter += speed * 0.025f;
 
-  if (data->counter >= 14.0f)
-    data->counter = 0.0f;
-  else if (data->counter < 0.0f)
-    data->counter = middle_sur.get_frame_count() - 1;
+  if (counter >= 14.0f)
+    counter = 0.0f;
+  else if (counter < 0.0f)
+    counter = middle_sur.get_frame_count() - 1;
 
   PinguHolder* holder = world->get_pingus();
   for (PinguIter pingu = holder->begin(); pingu != holder->end(); ++pingu)
     {
-      if (   (*pingu)->get_x() > data->pos.x
-	  && (*pingu)->get_x() < data->pos.x + 15 * (data->width + 2)
-	  && (*pingu)->get_y() > data->pos.y - 2
-	  && (*pingu)->get_y() < data->pos.y + 10)
+      if (   (*pingu)->get_x() > pos.x
+	  && (*pingu)->get_x() < pos.x + 15 * (width + 2)
+	  && (*pingu)->get_y() > pos.y - 2
+	  && (*pingu)->get_y() < pos.y + 10)
 	{
 	  Vector pos = (*pingu)->get_pos();
-	  pos.x -= data->speed * 0.025f;
+	  pos.x -= speed * 0.025f;
 	  (*pingu)->set_pos(pos);
 	}
     }
@@ -93,7 +94,7 @@ ConveyorBelt::update ()
 float
 ConveyorBelt::get_z_pos () const
 {
-  return data->pos.z;
+  return pos.z;
 }
 
 } // namespace WorldObjs

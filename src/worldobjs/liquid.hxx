@@ -21,6 +21,7 @@
 #define HEADER_PINGUS_WORLDOBJS_LIQUID_HXX
 
 #include <ClanLib/Display/sprite.h>
+#include "../res_descriptor.hxx"
 #include "../worldobj.hxx"
 
 namespace Pingus {
@@ -34,12 +35,21 @@ namespace WorldObjs {
 class Liquid : public WorldObj
 {
 private:
-  WorldObjsData::LiquidData* const data;
   CL_Sprite sur;
 
+  ResDescriptor desc;
+  Vector pos;
+
+  /** Cause to interpret the width in pixels instead of tiles */
+  bool old_width_handling;
+
+  int width;
+
+  /** Number of miliseconds between frames */
+  int speed;
+
 public:
-  Liquid (const WorldObjsData::LiquidData& data_);
-  ~Liquid ();
+  Liquid(const FileReader& reader);
 
   float get_z_pos () const;
   void  on_startup();

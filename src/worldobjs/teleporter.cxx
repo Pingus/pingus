@@ -23,35 +23,33 @@
 #include "../pingu_holder.hxx"
 #include "../world.hxx"
 #include "../resource.hxx"
-#include "../worldobjsdata/teleporter_data.hxx"
 #include "teleporter.hxx"
 
 namespace Pingus {
 namespace WorldObjs {
 
-Teleporter::Teleporter (const WorldObjsData::TeleporterData& data_)
-  : data(new WorldObjsData::TeleporterData(data_)),
-    sprite(Resource::load_sprite("teleporter", "worldobjs")),
+Teleporter::Teleporter(const FileReader& reader)
+  : sprite(Resource::load_sprite("teleporter", "worldobjs")),
     target_sprite(Resource::load_sprite("teleportertarget", "worldobjs"))
 {
-}
+  FileReader subreader;
 
-Teleporter::~Teleporter ()
-{
-  delete data;
+  reader.read_vector   ("position", pos);
+  reader.read_section  ("target",   subreader);
+  subreader.read_vector("position", target_pos);
 }
 
 float
 Teleporter::get_z_pos () const
 {
-  return data->pos.z;
+  return pos.z;
 }
 
 void
 Teleporter::draw (SceneContext& gc)
 {
-  gc.color().draw(sprite, data->pos);
-  gc.color().draw(target_sprite, data->target_pos);
+  gc.color().draw(sprite, pos);
+  gc.color().draw(target_sprite, target_pos);
 }
 
 void
@@ -64,10 +62,10 @@ Teleporter::update ()
 
   for (PinguIter pingu = holder->begin (); pingu != holder->end (); ++pingu)
     {
-      if (   (*pingu)->get_x() > data->pos.x - 3  && (*pingu)->get_x() < data->pos.x + 3
-	     && (*pingu)->get_y() > data->pos.y - 52 && (*pingu)->get_y() < data->pos.y)
+      if (   (*pingu)->get_x() > pos.x - 3  && (*pingu)->get_x() < pos.x + 3
+	     && (*pingu)->get_y() > pos.y - 52 && (*pingu)->get_y() < pos.y)
 	{
-	  (*pingu)->set_pos (data->target_pos.x, data->target_pos.y);
+	  (*pingu)->set_pos (target_pos.x, target_pos.y);
 	  sprite.restart();
           target_sprite.restart();
 	}

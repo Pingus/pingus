@@ -21,12 +21,14 @@
 #define HEADER_XML_FILE_READER_HXX
 
 #include <ClanLib/Display/color.h>
+#include "file_reader.hxx"
+#include "file_reader_impl.hxx"
 #include "xml_helper.hxx"
 
 namespace Pingus {
 
 /** */
-class XMLFileReader
+class XMLFileReaderImpl : public FileReaderImpl
 {
 private:
   /** Pointer to the XML document */
@@ -36,28 +38,29 @@ private:
       content of the section one has to use cur->children */
   xmlNodePtr section_node;
 
-  xmlNodePtr find_node(const char* name);
+  xmlNodePtr find_node(const char* name) const;
 public:
   /** @param doc is a pointer to the xml document tree
       @param node is a pointer to the node of the section to read, but
       not a pointer to the first element of the section! */
-  XMLFileReader(xmlDocPtr doc, xmlNodePtr node);
+  XMLFileReaderImpl(xmlDocPtr doc, xmlNodePtr node);
 
-  XMLFileReader();
+  XMLFileReaderImpl();
 
-  /** Reinit a reader with a new section to parse */
-  void init(xmlDocPtr d, xmlNodePtr node);
+  ~XMLFileReaderImpl();
 
-  bool read_int   (const char* name, int&);
-  bool read_desc  (const char* name, ResDescriptor&);
-  bool read_color (const char* name, CL_Colorf&);
-  bool read_float (const char* name, float&);
-  bool read_bool  (const char* name, bool&);
-  bool read_string(const char* name, std::string&);
-  bool read_vector(const char* name, Vector&);
+  std::string get_name() const;
+
+  bool read_int   (const char* name, int&)           const;
+  bool read_desc  (const char* name, ResDescriptor&) const;
+  bool read_color (const char* name, CL_Colorf&)     const;
+  bool read_float (const char* name, float&)         const;
+  bool read_bool  (const char* name, bool&)          const;
+  bool read_string(const char* name, std::string&)   const;
+  bool read_vector(const char* name, Vector&)        const;
 
   template<class E, class T>
-  bool read_enum  (const char* name, E& value, T enum2string)
+  bool read_enum  (const char* name, E& value, T enum2string) const
   {
     xmlNodePtr node = find_node(name);
 
@@ -70,11 +73,19 @@ public:
     return false;
   }
 
-  bool read_section(const char* name, XMLFileReader&);
+  bool read_section(const char* name, FileReader&) const;
 
 private:
-  XMLFileReader (const XMLFileReader&);
-  XMLFileReader& operator= (const XMLFileReader&);
+  XMLFileReaderImpl (const XMLFileReaderImpl&);
+  XMLFileReaderImpl& operator= (const XMLFileReaderImpl&);
+};
+
+class XMLFileReader : public FileReader
+{
+public:
+  XMLFileReader(xmlDocPtr doc, xmlNodePtr node)
+    : FileReader(CL_SharedPtr<FileReaderImpl>(new XMLFileReaderImpl(doc, node)))
+  {}
 };
 
 } // namespace Pingus

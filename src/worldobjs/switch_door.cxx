@@ -23,41 +23,41 @@
 #include "../pingu.hxx"
 #include "../pingu_holder.hxx"
 #include "../world.hxx"
-#include "../worldobjsdata/switch_door_data.hxx"
 #include "../resource.hxx"
 #include "switch_door.hxx"
 
 namespace Pingus {
 namespace WorldObjs {
 
-SwitchDoor::SwitchDoor (const WorldObjsData::SwitchDoorData& data_)
-  : data(new WorldObjsData::SwitchDoorData(data_)),
-    door_box      (Resource::load_sprite("worldobjs/switchdoor_box")),
+SwitchDoor::SwitchDoor(const FileReader& reader)
+  : door_box      (Resource::load_sprite("worldobjs/switchdoor_box")),
     door_tile     (Resource::load_sprite("worldobjs/switchdoor_tile")),
     door_tile_cmap(Resource::load_pixelbuffer("worldobjs/switchdoor_tile_cmap")),
     switch_sur    (Resource::load_sprite("worldobjs/switchdoor_switch")),
     is_opening(false),
-    current_door_height(data->door_height)
+    current_door_height(door_height)
 {
-}
+  FileReader subreader;
+  reader.read_section("switch", subreader);
+  subreader.read_vector("position", switch_pos);
 
-SwitchDoor::~SwitchDoor ()
-{
-  delete data;
+  reader.read_section("door", subreader);
+  subreader.read_vector("position", door_pos);
+  subreader.read_int("height", door_height);
 }
 
 void
 SwitchDoor::on_startup ()
 {
   world->get_colmap()->put(door_box.get_frame_surface(0).get_pixeldata(),
-                           static_cast<int>(data->door_pos.x),
-			   static_cast<int>(data->door_pos.y),
+                           static_cast<int>(door_pos.x),
+			   static_cast<int>(door_pos.y),
 			   Groundtype::GP_SOLID);
 
-  for (int i=0; i < data->door_height; ++i)
+  for (int i=0; i < door_height; ++i)
     world->get_colmap()->put(door_tile_cmap,
-			     static_cast<int>(data->door_pos.x),
-			     static_cast<int>(data->door_pos.y)
+			     static_cast<int>(door_pos.x),
+			     static_cast<int>(door_pos.y)
 			     + i * door_tile.get_height()
 			     + door_box.get_height(),
 			     Groundtype::GP_SOLID);
@@ -66,15 +66,15 @@ SwitchDoor::on_startup ()
 void
 SwitchDoor::draw (SceneContext& gc)
 {
-  gc.color().draw (door_box, data->door_pos);
+  gc.color().draw (door_box, door_pos);
   for (int i=0; i < current_door_height; ++i)
     gc.color().draw(door_tile,
-	    Vector(static_cast<int>(data->door_pos.x),
-                   static_cast<int>(data->door_pos.y)
+	    Vector(static_cast<int>(door_pos.x),
+                   static_cast<int>(door_pos.y)
                    + i * door_tile.get_height()
                    + door_box.get_height()));
 
-  gc.color().draw(switch_sur, data->switch_pos);
+  gc.color().draw(switch_sur, switch_pos);
 }
 
 void
@@ -89,10 +89,10 @@ SwitchDoor::update ()
 
 	  for (PinguIter pingu = holder->begin (); pingu != holder->end (); ++pingu)
 	    {
-	      if (   (*pingu)->get_x() > data->switch_pos.x
-		  && (*pingu)->get_x() < data->switch_pos.x + static_cast<int>(switch_sur.get_width())
-		  && (*pingu)->get_y() > data->switch_pos.y
-		  && (*pingu)->get_y() < data->switch_pos.y + static_cast<int>(switch_sur.get_height()))
+	      if (   (*pingu)->get_x() > switch_pos.x
+		  && (*pingu)->get_x() < switch_pos.x + static_cast<int>(switch_sur.get_width())
+		  && (*pingu)->get_y() > switch_pos.y
+		  && (*pingu)->get_y() < switch_pos.y + static_cast<int>(switch_sur.get_height()))
 		{
 		  is_opening = true;
 		}
@@ -105,16 +105,16 @@ SwitchDoor::update ()
 
 	  // If the door is opend enough, so that a pingus fits under
 	  // it, we remove the door from the colmap
-	  if (current_door_height + 10 < data->door_height)
+	  if (current_door_height + 10 < door_height)
 	    {
 	      world->get_colmap()->put(door_box.get_frame_surface(0).get_pixeldata(),
-	                               static_cast<int>(data->door_pos.x),
-				       static_cast<int>(data->door_pos.y),
+	                               static_cast<int>(door_pos.x),
+				       static_cast<int>(door_pos.y),
 				       Groundtype::GP_NOTHING);
-	      for (int i=0; i < data->door_height; ++i)
+	      for (int i=0; i < door_height; ++i)
 		world->get_colmap()->put(door_tile_cmap,
-					 static_cast<int>(data->door_pos.x),
-					 static_cast<int>(data->door_pos.y) + i * door_tile.get_height()
+					 static_cast<int>(door_pos.x),
+					 static_cast<int>(door_pos.y) + i * door_tile.get_height()
 					                                    + door_box.get_height(),
 					 Groundtype::GP_NOTHING);
 	    }

@@ -85,8 +85,8 @@ Theme::load (const std::string& filename)
 
   try
     {
-      if (plt.get_background().desc.res_name != "-")
-	background = Resource::load_surface(plt.get_background().desc);
+      //if (plt.get_background().desc.res_name != "-")
+      background = Resource::load_surface("textures/default");
     }
   catch (CL_Error& err)
     {

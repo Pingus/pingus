@@ -19,11 +19,8 @@
 
 noinst_LIBRARIES = libpingus_worldobjs.a
 
-SUBDIRS = entrances
-
 libpingus_worldobjs_a_CPPFLAGS = @PINGUS_CFLAGS@
 libpingus_worldobjs_a_SOURCES = \
-	bumper.cxx                     bumper.hxx                     \
         conveyor_belt.cxx              conveyor_belt.hxx              \
 	entrance.cxx		       entrance.hxx  		      \
 	exit.cxx                       exit.hxx			      \
@@ -46,6 +43,7 @@ libpingus_worldobjs_a_SOURCES = \
 	surface_background.cxx	       surface_background.hxx         \
         switch_door.cxx                switch_door.hxx                \
         teleporter.cxx                 teleporter.hxx                 \
-	thunderstorm_background.cxx    thunderstorm_background.hxx
+	thunderstorm_background.cxx    thunderstorm_background.hxx    \
+        woodthing.cxx                  woodthing.hxx
 
 ## EOF ##

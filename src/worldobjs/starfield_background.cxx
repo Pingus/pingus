@@ -18,31 +18,34 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
-#include "../worldobjsdata/starfield_background_data.hxx"
 #include "starfield_background.hxx"
 #include "starfield_background_stars.hxx"
 
 namespace Pingus {
 namespace WorldObjs {
 
-StarfieldBackground::StarfieldBackground (const WorldObjsData::StarfieldBackgroundData& data_)
-  : data(new WorldObjsData::StarfieldBackgroundData(data_))
+StarfieldBackground::StarfieldBackground(const FileReader& reader)
 {
-  int i;
+  small_stars_count  = 100;
+  middle_stars_count =  50;
+  large_stars_count  =  25;
 
-  for (i=0; i < data->small_stars_count; ++i)
+  reader.read_int("small-stars",  small_stars_count);
+  reader.read_int("middle-stars", middle_stars_count);
+  reader.read_int("large-stars",  large_stars_count);
+
+  for (int i=0; i < small_stars_count; ++i)
     stars.push_back(new StarfieldBackgroundStars(StarfieldBackgroundStars::SMALL_STAR));
 
-  for (i=0; i < data->middle_stars_count; ++i)
+  for (int i=0; i < middle_stars_count; ++i)
     stars.push_back(new StarfieldBackgroundStars(StarfieldBackgroundStars::MIDDLE_STAR));
 
-  for (i=0; i < data->large_stars_count; ++i)
+  for (int i=0; i < large_stars_count; ++i)
     stars.push_back(new StarfieldBackgroundStars(StarfieldBackgroundStars::LARGE_STAR));
 }
 
 StarfieldBackground::~StarfieldBackground ()
 {
-  delete data;
   for (unsigned int i = 0; i < stars.size(); ++i)
     delete stars[i];
 }

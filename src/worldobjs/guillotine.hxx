@@ -20,6 +20,8 @@
 #ifndef HEADER_PINGUS_WORLDOBJS_GUILLOTINE_HXX
 #define HEADER_PINGUS_WORLDOBJS_GUILLOTINE_HXX
 
+#include "../game_counter.hxx"
+#include "../direction.hxx"
 #include "../worldobj.hxx"
 
 namespace Pingus {
@@ -35,23 +37,28 @@ namespace WorldObjs {
 class Guillotine : public WorldObj
 {
 private:
-  WorldObjsData::GuillotineData* const data;
+  CL_Sprite   surface;
+  CL_Sprite   idle_surf;
+  Vector      pos;
+  Direction   direction;
+  GameCounter counter;
+  GameCounter idle_counter;
+
   bool killing;
 
 public:
-  Guillotine (const WorldObjsData::GuillotineData& data_);
-  ~Guillotine ();
+  Guillotine(const FileReader& reader);
 
-  float get_z_pos () const;
+  float get_z_pos() const;
 
-  void update ();
-  void draw (SceneContext& gc);
+  void update();
+  void draw(SceneContext& gc);
 protected:
-  void catch_pingu (Pingu*);
+  void catch_pingu(Pingu*);
 
 private:
-  Guillotine (const Guillotine&);
-  Guillotine& operator= (const Guillotine&);
+  Guillotine(const Guillotine&);
+  Guillotine& operator=(const Guillotine&);
 };
 
 } // namespace WorldObjs

@@ -20,6 +20,7 @@
 #ifndef HEADER_PINGUS_TRAPS_FAKE_EXIT_HXX
 #define HEADER_PINGUS_TRAPS_FAKE_EXIT_HXX
 
+#include "../game_counter.hxx"
 #include "../worldobj.hxx"
 
 namespace Pingus {
@@ -38,13 +39,16 @@ namespace WorldObjs {
 class FakeExit : public WorldObj
 {
 private:
-  WorldObjsData::FakeExitData* const data;
+  CL_Sprite   surface;
+  CL_Sprite   smallmap_symbol;
+
+  Vector      pos;
+  GameCounter counter;
+
   bool smashing;
-  CL_Sprite smallmap_symbol;
 
 public:
-  FakeExit (const WorldObjsData::FakeExitData& data_);
-  ~FakeExit ();
+  FakeExit(const FileReader& reader);
 
   float get_z_pos () const;
 

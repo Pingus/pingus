@@ -18,29 +18,23 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "../resource.hxx"
-#include "../worldobjsdata/thunderstorm_background_data.hxx"
 #include "../display/scene_context.hxx"
 #include "thunderstorm_background.hxx"
 
 namespace Pingus {
 namespace WorldObjs {
 
-ThunderstormBackground::ThunderstormBackground (const WorldObjsData::ThunderstormBackgroundData& data_)
-  : data(new WorldObjsData::ThunderstormBackgroundData(data_)),
-    clouds_sur(Resource::load_sprite("textures/thunderstorm")),
+ThunderstormBackground:: ThunderstormBackground(const FileReader& reader)
+  : clouds_sur(Resource::load_sprite("textures/thunderstorm")),
     x_pos(0)
 {
-}
-
-ThunderstormBackground::~ThunderstormBackground ()
-{
-  delete data;
+  reader.read_vector("position", pos);
 }
 
 float
 ThunderstormBackground::get_z_pos () const
 {
-  return data->pos.z;
+  return pos.z;
 }
 
 void

@@ -34,16 +34,19 @@ namespace WorldObjs {
 class Hotspot : public WorldObj
 {
 private:
-  WorldObjsData::HotspotData* const data;
-  CL_Sprite sprite;
+  CL_Sprite     sprite;
+  int           speed;
+  float         para;
+  ResDescriptor desc;
+  Vector        pos;
 
 public:
-  Hotspot (const WorldObjsData::HotspotData& data_);
- ~Hotspot ();
+  Hotspot(const FileReader& reader);
+  ~Hotspot();
 
   void  draw(SceneContext& gc);
   void  update();
-  float get_z_pos () const;
+  float get_z_pos() const;
 
 private:
   Hotspot (const Hotspot&);

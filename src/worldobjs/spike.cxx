@@ -21,38 +21,34 @@
 #include "../pingu.hxx"
 #include "../pingu_holder.hxx"
 #include "../world.hxx"
-#include "../worldobjsdata/spike_data.hxx"
+#include "../resource.hxx"
 #include "spike.hxx"
 
 namespace Pingus {
 namespace WorldObjs {
 
-Spike::Spike (const WorldObjsData::SpikeData& data_)
-  : data(new WorldObjsData::SpikeData(data_)),
+Spike::Spike (const FileReader& reader)
+  : surface(Resource::load_sprite("traps/spike")),
     killing(false)
 {
-  data->counter.set_size(data->surface.get_frame_count());
-  data->counter.set_type(GameCounter::once);
-  data->counter.set_speed(1);
-  data->counter = 0;
-}
-
-Spike::~Spike ()
-{
-  delete data;
+  reader.read_vector("position", pos);
+  counter.set_size(surface.get_frame_count());
+  counter.set_type(GameCounter::once);
+  counter.set_speed(1);
+  counter = 0;
 }
 
 float
 Spike::get_z_pos () const
 {
-  return data->pos.z;
+  return pos.z;
 }
 
 void
 Spike::draw (SceneContext& gc)
 {
   if (killing) {
-    gc.color().draw (data->surface, data->pos, data->counter);
+    gc.color().draw (surface, pos, counter);
   } else {
     // do nothing
   }
@@ -62,16 +58,16 @@ void
 Spike::update()
 {
   if (killing)
-    ++data->counter;
+    ++counter;
 
   PinguHolder* holder = world->get_pingus();
   for (PinguIter pingu = holder->begin (); pingu != holder->end (); ++pingu){
     catch_pingu(*pingu);
   }
 
-  if (data->counter == static_cast<int>(data->surface.get_frame_count()) - 1) {
+  if (counter == static_cast<int>(surface.get_frame_count()) - 1) {
     killing = false;
-    data->counter = 0;
+    counter = 0;
   }
 }
 
@@ -79,16 +75,16 @@ void
 Spike::catch_pingu (Pingu* pingu)
 {
   if (!killing) {
-    if (   pingu->get_x () > data->pos.x + 16 - 5 && pingu->get_x () < data->pos.x + 16 + 5
-	   && pingu->get_y () > data->pos.y          && pingu->get_y () < data->pos.y + 32)
+    if (   pingu->get_x () > pos.x + 16 - 5 && pingu->get_x () < pos.x + 16 + 5
+	   && pingu->get_y () > pos.y          && pingu->get_y () < pos.y + 32)
       {
-	data->counter = 0;
+	counter = 0;
 	killing = true;
       }
   } else {
-    if (   data->counter == 3
-	   && pingu->get_x () > data->pos.x +16 - 12  && pingu->get_x () < data->pos.x + 16 + 12
-	   && pingu->get_y () > data->pos.y           && pingu->get_y () < data->pos.y + 32)
+    if (   counter == 3
+	   && pingu->get_x () > pos.x +16 - 12  && pingu->get_x () < pos.x + 16 + 12
+	   && pingu->get_y () > pos.y           && pingu->get_y () < pos.y + 32)
       {
 	pingu->set_status(PS_DEAD);
       }

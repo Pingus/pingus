@@ -33,11 +33,10 @@ namespace WorldObjs {
 class SolidColorBackground : public WorldObj
 {
 private:
-  WorldObjsData::SolidColorBackgroundData* data;
+  CL_Colorf color;
 
 public:
-  SolidColorBackground (const WorldObjsData::SolidColorBackgroundData& data_);
- ~SolidColorBackground ();
+  SolidColorBackground(const FileReader& reader);
 
   // FIXME: Make z_position editable
   float get_z_pos () const { return -10; }

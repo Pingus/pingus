@@ -25,24 +25,19 @@
 #include "../pingu_map.hxx"
 #include "../resource.hxx"
 #include "../world.hxx"
-#include "../worldobjsdata/ice_block_data.hxx"
 #include "ice_block.hxx"
 
 namespace Pingus {
 namespace WorldObjs {
 
-IceBlock::IceBlock (const WorldObjsData::IceBlockData& data_)
-  : data(new WorldObjsData::IceBlockData(data_)),
-    thickness(1.0),
+IceBlock::IceBlock(const FileReader& reader)
+  : thickness(1.0),
     is_finished(false),
     last_contact(0),
     block_sur(Resource::load_sprite ("worldobjs/iceblock"))
 {
-}
-
-IceBlock::~IceBlock ()
-{
-  delete data;
+  reader.read_vector("position", pos);
+  reader.read_int   ("width",    width);
 }
 
 void
@@ -51,8 +46,8 @@ IceBlock::on_startup ()
   CL_PixelBuffer surf(Resource::load_pixelbuffer("worldobjs/iceblock_cmap"));
 
   world->get_colmap()->put(surf,
-                           static_cast<int>(data->pos.x),
-                           static_cast<int>(data->pos.y),
+                           static_cast<int>(pos.x),
+                           static_cast<int>(pos.y),
 			   Groundtype::GP_GROUND);
 }
 
@@ -63,7 +58,7 @@ IceBlock::draw (SceneContext& gc)
     return;
 
   gc.color().draw(block_sur,
-          data->pos,
+          pos,
 	  static_cast<int>((1.0 - thickness) * (block_sur.get_frame_count() - 1)));
 }
 
@@ -77,8 +72,8 @@ IceBlock::update()
 
   for (PinguIter pingu = holder->begin(); pingu != holder->end(); ++pingu)
     {
-      if (   (*pingu)->get_x() > data->pos.x     && (*pingu)->get_x() < data->pos.x + block_sur.get_width()
-	  && (*pingu)->get_y() > data->pos.y - 4 && (*pingu)->get_y() < data->pos.y + block_sur.get_height())
+      if (   (*pingu)->get_x() > pos.x     && (*pingu)->get_x() < pos.x + block_sur.get_width()
+	  && (*pingu)->get_y() > pos.y - 4 && (*pingu)->get_y() < pos.y + block_sur.get_height())
 	{
 	  last_contact = world->get_game_time()->get_ticks();
 	}
@@ -95,8 +90,8 @@ IceBlock::update()
 	  thickness = 0;
 
 	  CL_PixelBuffer surf(Resource::load_pixelbuffer("worldobjs/iceblock_cmap"));
-	  world->get_colmap ()->remove(surf, static_cast<int>(data->pos.x), static_cast<int>(data->pos.y));
-	  world->get_gfx_map()->remove(surf, static_cast<int>(data->pos.x), static_cast<int>(data->pos.y));
+	  world->get_colmap ()->remove(surf, static_cast<int>(pos.x), static_cast<int>(pos.y));
+	  world->get_gfx_map()->remove(surf, static_cast<int>(pos.x), static_cast<int>(pos.y));
 	  return;
 	}
     }

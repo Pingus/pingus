@@ -34,13 +34,14 @@ namespace WorldObjs {
 class Teleporter : public WorldObj
 {
 private:
-  WorldObjsData::TeleporterData* const data;
+  Vector pos;
+  Vector target_pos;
+
   CL_Sprite sprite;
   CL_Sprite target_sprite;
 
 public:
-  Teleporter (const WorldObjsData::TeleporterData& data_);
- ~Teleporter ();
+  Teleporter(const FileReader& reader);
 
   int   get_z_pos () { return 0; }
 

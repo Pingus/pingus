@@ -18,7 +18,6 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
-#include "../worldobjsdata/hotspot_data.hxx"
 #include "../globals.hxx"
 #include "../display/scene_context.hxx"
 #include "../resource.hxx"
@@ -27,17 +26,18 @@
 namespace Pingus {
 namespace WorldObjs {
 
-Hotspot::Hotspot (const WorldObjsData::HotspotData& data_)
-  : data(new WorldObjsData::HotspotData(data_)),
-    sprite(Resource::load_sprite(data->desc))
+Hotspot::Hotspot(const FileReader& reader)
 {
-  if (verbose > 2)
-    std::cout << "Creating Hotspot" << std::endl;
+  reader.read_vector("position", pos);
+  reader.read_desc  ("surface",  desc);
+  reader.read_int   ("speed",    speed);
+  reader.read_float ("parallax", para);
+
+  sprite = Resource::load_sprite(desc);
 }
 
 Hotspot::~Hotspot ()
 {
-  delete data;
 }
 
 void
@@ -50,13 +50,13 @@ void
 Hotspot::draw (SceneContext& gc)
 {
   // FIXME: para support doesnn't work correctly
-  gc.color().draw (sprite, data->pos);
+  gc.color().draw (sprite, pos);
 }
 
 float
 Hotspot::get_z_pos () const
 {
-  return data->pos.z;
+  return pos.z;
 }
 
 } // namespace WorldObjs

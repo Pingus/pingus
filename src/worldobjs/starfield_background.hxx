@@ -36,12 +36,15 @@ class StarfieldBackgroundStars;
 class StarfieldBackground : public WorldObj
 {
 private:
-  WorldObjsData::StarfieldBackgroundData* const data;
+  int  small_stars_count;
+  int middle_stars_count;
+  int  large_stars_count;
+
   std::vector<StarfieldBackgroundStars*>        stars;
 
 public:
-  StarfieldBackground (const WorldObjsData::StarfieldBackgroundData& data_);
- ~StarfieldBackground ();
+  StarfieldBackground(const FileReader& reader);
+  ~StarfieldBackground();
 
   // FIXME: Make z_pos handling editable via xml
   float get_z_pos() const { return -10; }

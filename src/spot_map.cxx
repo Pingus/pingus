@@ -33,8 +33,6 @@
 
 namespace Pingus {
 
-using namespace WorldObjsData;
-
 MapTile::MapTile () 
 {
 }

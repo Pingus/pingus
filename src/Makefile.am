@@ -34,7 +34,6 @@ SUBDIRS = \
 	particles           \
 	sound               \
         worldobjs           \
-	worldobjsdata       \
 	worldmap
 
 EXTRA_DIST = \
@@ -58,11 +57,7 @@ pingus_LDADD = \
         @LIBS@     \
         \
         caimagemanipulation/libcaimagemanipulation.a \
-        worldobjs/entrances/libpingus_worldobjs_entrances.a \
-	worldobjsdata/libpingus_worldobjsdata.a \
         worldobjs/libpingus_worldobjs.a \
-	worldobjsdata/libpingus_worldobjsdata.a \
-        worldobjs/entrances/libpingus_worldobjs_entrances.a \
         actions/libpingus_actions.a      \
 	movers/libpingus_movers.a \
 	colliders/libpingus_colliders.a \
@@ -218,8 +213,6 @@ plf_res_mgr.hxx \
 plf_res_mgr.cxx \
 plt_xml.cxx \
 plt_xml.hxx \
-prefab.cxx \
-prefab.hxx \
 preview_renderer.hxx \
 preview_renderer.cxx \
 range.cxx \
@@ -274,14 +267,13 @@ world.cxx \
 world.hxx \
 worldobj.cxx \
 worldobj.hxx \
-worldobj_data.hxx \
-worldobj_data_factory.cxx \
-worldobj_data_factory.hxx \
+worldobj_factory.cxx \
+worldobj_factory.hxx \
 xml_helper.cxx \
 xml_helper.hxx \
-xml_file_reader.hxx \
 xmlgz_reader.hxx \
 xmlgz_reader.cxx \
+xml_file_reader.hxx \
 xml_file_reader.cxx \
 xml_file_writer.hxx \
 xml_file_writer.cxx \

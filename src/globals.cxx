@@ -50,7 +50,7 @@ bool        draw_collision_map              = false;
 bool        swcursor_enabled                = false;
 std::string config_file;
 bool        max_cpu_usage                   = true;
-bool        use_opengl                      = false;
+bool        use_opengl                      = true;
 bool        action_help                     = true;
 bool        show_input_debug_screen         = false;
 bool        render_preview                  = false;

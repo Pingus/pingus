@@ -41,11 +41,13 @@ PLF::PLF()
 // Destroy all data
 PLF::~PLF()
 {
-  for (std::vector<WorldObjData*>::iterator i = worldobjs_data.begin ();
-       i != worldobjs_data.end (); ++i)
+  /*
+  for (std::vector<WorldObj*>::iterator i = worldobjs.begin ();
+       i != worldobjs.end (); ++i)
     {
       delete *i;
     }
+  */
 }
 
 int
@@ -157,11 +159,11 @@ PLF::get_author()
   return author;
 }
 
-std::vector<WorldObjData*>
-PLF::get_worldobjs_data ()
+std::vector<WorldObj*>
+PLF::get_worldobjs()
 {
   //std::cout << "World: " << worldobjs_data.size () << std::endl;
-  return worldobjs_data;
+  return worldobjs;
 }
 
 PLF*

@@ -22,41 +22,42 @@
 #include "../pingu_map.hxx"
 #include "../col_map.hxx"
 #include "../resource.hxx"
-#include "../worldobjsdata/groundpiece_data.hxx"
 #include "groundpiece.hxx"
 
 namespace Pingus {
 namespace WorldObjs {
 
-Groundpiece::Groundpiece (const WorldObjsData::GroundpieceData& data_)
-  : data(new WorldObjsData::GroundpieceData(data_)),
-    surface (Resource::load_sprite(data->desc))
+Groundpiece::Groundpiece(const FileReader& reader)
 {
+  reader.read_vector("position", pos);
+  reader.read_desc  ("surface",  desc);
+
+  surface = Resource::load_sprite(desc);
+
+  gptype = Groundtype::GP_GROUND;
+
+  reader.read_enum("type", gptype, &Groundtype::string_to_type);
+
   // FIXME: we don't need to load surfaces here, providers would be
   // FIXME: enough and should be faster
-}
-
-Groundpiece::~Groundpiece ()
-{
-  delete data;
 }
 
 void
 Groundpiece::on_startup ()
 {
-  CL_PixelBuffer surface = Resource::load_pixelbuffer(data->desc);
+  CL_PixelBuffer surface = Resource::load_pixelbuffer(desc);
 
   // FIXME: overdrawing of bridges and similar things aren't handled
   // FIXME: here
-  if (data->gptype == Groundtype::GP_REMOVE)
-    get_world()->get_gfx_map()->remove(surface, static_cast<int>(data->pos.x), static_cast<int>(data->pos.y));
+  if (gptype == Groundtype::GP_REMOVE)
+    get_world()->get_gfx_map()->remove(surface, static_cast<int>(pos.x), static_cast<int>(pos.y));
   else
-    get_world()->get_gfx_map()->put(surface, static_cast<int>(data->pos.x), static_cast<int>(data->pos.y));
+    get_world()->get_gfx_map()->put(surface, static_cast<int>(pos.x), static_cast<int>(pos.y));
 
-  if (data->gptype == Groundtype::GP_REMOVE)
-    get_world()->get_colmap()->remove(surface, static_cast<int>(data->pos.x), static_cast<int>(data->pos.y));
+  if (gptype == Groundtype::GP_REMOVE)
+    get_world()->get_colmap()->remove(surface, static_cast<int>(pos.x), static_cast<int>(pos.y));
   else
-    get_world()->get_colmap()->put(surface, static_cast<int>(data->pos.x), static_cast<int>(data->pos.y), data->gptype);
+    get_world()->get_colmap()->put(surface, static_cast<int>(pos.x), static_cast<int>(pos.y), gptype);
 }
 
 } // namespace WorldObjs

@@ -32,8 +32,8 @@ private:
   float thunder_count;
   float waiter_count;
 public:
-  RainGenerator ();
-  ~RainGenerator ();
+  RainGenerator(const FileReader& reader);
+  ~RainGenerator();
 
   void update ();
   void draw (SceneContext& gc);

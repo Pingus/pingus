@@ -24,23 +24,18 @@
 #include "../pingu_holder.hxx"
 #include "../fonts.hxx"
 #include "../world.hxx"
-#include "../worldobjsdata/info_box_data.hxx"
 #include "../resource.hxx"
 #include "info_box.hxx"
 
 namespace Pingus {
 namespace WorldObjs {
 
-InfoBox::InfoBox (const WorldObjsData::InfoBoxData& data_)
-  : data(new WorldObjsData::InfoBoxData(data_)),
-    sprite(Resource::load_sprite("infobox", "worldobjs")),
+InfoBox::InfoBox(const FileReader& reader)
+  : sprite(Resource::load_sprite("infobox", "worldobjs")),
     is_open (false)
 {
-}
-
-InfoBox::~InfoBox ()
-{
-  delete data;
+  reader.read_vector("position", pos);
+  reader.read_string("info-text", info_text);
 }
 
 void
@@ -50,25 +45,25 @@ InfoBox::draw (SceneContext& gc)
   int x = static_cast<int>(gc.get_x_offset() + (gc.get_width ()/2));
   int y = static_cast<int>(gc.get_y_offset() + (gc.get_height()/2));
 
-  int x_pos = static_cast<int>(data->pos.x) + x;
-  int y_pos = static_cast<int>(data->pos.y) + y - 100;
+  int x_pos = static_cast<int>(pos.x) + x;
+  int y_pos = static_cast<int>(pos.y) + y - 100;
 
   if (is_open)
     {
-      int width = Fonts::pingus_small.bounding_rect(0, 0, data->info_text).get_width();
+      int width = Fonts::pingus_small.bounding_rect(0, 0, info_text).get_width();
       int border = 6;
-      gc.color().draw_line(data->pos, data->pos + Vector(0, 0 - 100), 0.0f, 1.0f, 0.0f, 1.0f);
-      gc.color().draw(sprite, data->pos);
+      gc.color().draw_line(pos, pos + Vector(0, 0 - 100), 0.0f, 1.0f, 0.0f, 1.0f);
+      gc.color().draw(sprite, pos);
       CL_Display::fill_rect(CL_Rect(x_pos - width/2 - border,
                                     y_pos - border,
                                     x_pos + width/2 + border,
                                     y_pos + Fonts::pingus_small.get_height() + border),
 			    CL_Color(0, 0, 0, 255));
-      gc.print_center(Fonts::pingus_small, x_pos, y_pos, data->info_text);
+      gc.print_center(Fonts::pingus_small, x_pos, y_pos, info_text);
     }
   else
     {
-      gc.color().draw(sprite, data->pos);
+      gc.color().draw(sprite, pos);
     }
 #endif
 }
@@ -81,10 +76,10 @@ InfoBox::update ()
   PinguHolder* holder = world->get_pingus();
   for (PinguIter pingu = holder->begin (); pingu != holder->end (); ++pingu)
     {
-      if ((*pingu)->is_inside (static_cast<int>(data->pos.x - 16),
-                               static_cast<int>(data->pos.y - 32),
-			       static_cast<int>(data->pos.x + 16),
-			       static_cast<int>(data->pos.y)))
+      if ((*pingu)->is_inside (static_cast<int>(pos.x - 16),
+                               static_cast<int>(pos.y - 32),
+			       static_cast<int>(pos.x + 16),
+			       static_cast<int>(pos.y)))
 	{
 	  is_open = true;
 	}
@@ -92,8 +87,9 @@ InfoBox::update ()
 }
 
 float
-InfoBox::get_z_pos () const {
-  return data->pos.z;
+InfoBox::get_z_pos() const 
+{
+  return pos.z;
 }
 
 } // namespace WorldObjs

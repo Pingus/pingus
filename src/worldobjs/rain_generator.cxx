@@ -28,7 +28,7 @@
 namespace Pingus {
 namespace WorldObjs {
 
-RainGenerator::RainGenerator ()
+RainGenerator::RainGenerator (const FileReader& reader)
   : do_thunder (false),
     thunder_count (0)
 {

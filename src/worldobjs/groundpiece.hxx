@@ -21,7 +21,10 @@
 #define HEADER_PINGUS_WORLDOBJS_GROUNDPIECE_HXX
 
 #include <ClanLib/Display/sprite.h>
+#include "../res_descriptor.hxx"
+#include "../groundtype.hxx"
 #include "../worldobj.hxx"
+#include "../vector.hxx"
 
 namespace Pingus {
 
@@ -36,12 +39,14 @@ namespace WorldObjs {
 class Groundpiece : public WorldObj
 {
 private:
-  WorldObjsData::GroundpieceData* const data;
+  ResDescriptor desc;
+  Vector        pos;
+
+  Groundtype::GPType gptype;
   CL_Sprite surface;
 
 public:
-  Groundpiece (const WorldObjsData::GroundpieceData& data_);
-  ~Groundpiece ();
+  Groundpiece(const FileReader& reader);
 
   float get_z_pos () const { return 0; }
 

@@ -21,38 +21,33 @@
 #include "../pingu.hxx"
 #include "../pingu_holder.hxx"
 #include "../world.hxx"
-#include "../worldobjsdata/laser_exit_data.hxx"
 #include "laser_exit.hxx"
 
 namespace Pingus {
 namespace WorldObjs {
 
-LaserExit::LaserExit (const WorldObjsData::LaserExitData& data_) 
-  : data(new WorldObjsData::LaserExitData(data_)),
-    killing(false)
+LaserExit::LaserExit(const FileReader& reader)
+  : killing(false)
 {
-  data->counter.set_size(data->surface.get_frame_count());
-  data->counter.set_type(GameCounter::once);
-  data->counter.set_speed(5);
-  data->counter = 0;
-}
+  reader.read_vector("position", pos);
 
-LaserExit::~LaserExit ()
-{
-  delete data;
+  counter.set_size(surface.get_frame_count());
+  counter.set_type(GameCounter::once);
+  counter.set_speed(5);
+  counter = 0;
 }
 
 float
 LaserExit::get_z_pos () const
 {
-  return data->pos.z;
+  return pos.z;
 }
 
 void
 LaserExit::draw (SceneContext& gc)
 {
-  gc.color().draw (data->surface, data->pos,
-	   data->counter.value());
+  gc.color().draw (surface, pos,
+	   counter.value());
 }
 
 void
@@ -65,11 +60,11 @@ LaserExit::update ()
   }
 
   if (killing) {
-    if (data->counter.finished()) {
-      data->counter = 0;
+    if (counter.finished()) {
+      counter = 0;
       killing = false;
     } else {
-      ++data->counter;
+      ++counter;
     }
   }
 }
@@ -79,8 +74,8 @@ LaserExit::catch_pingu (Pingu* pingu)
 {
   if (!killing)
     {
-      if (   pingu->get_x () < data->pos.x + 34 + 10 && pingu->get_x () > data->pos.x + 34
-	     && pingu->get_y () < data->pos.y + 43 + 20 && pingu->get_y () > data->pos.y + 43)
+      if (   pingu->get_x () < pos.x + 34 + 10 && pingu->get_x () > pos.x + 34
+	     && pingu->get_y () < pos.y + 43 + 20 && pingu->get_y () > pos.y + 43)
 	{
 	  if (pingu->get_action() != Actions::Laserkill)
 	    {

@@ -35,7 +35,7 @@ class SnowGenerator : public WorldObj
 private:
   float intensity;
 public:
-  SnowGenerator (const WorldObjsData::SnowGeneratorData& data_);
+  SnowGenerator(const FileReader& reader);
   ~SnowGenerator ();
 
   /** fill the screen with snow flocks */

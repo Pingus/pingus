@@ -34,13 +34,12 @@ namespace WorldObjs {
 class ThunderstormBackground : public WorldObj
 {
 private:
-  WorldObjsData::ThunderstormBackgroundData* const data;
+  Vector    pos;
   CL_Sprite clouds_sur;
   int x_pos;
 
 public:
-  ThunderstormBackground (const WorldObjsData::ThunderstormBackgroundData& data_);
- ~ThunderstormBackground ();
+  ThunderstormBackground(const FileReader& reader);
 
   float get_z_pos () const;
 

@@ -35,17 +35,16 @@ namespace WorldObjs {
 class Hammer : public WorldObj
 {
 private:
-  WorldObjsData::HammerData* const data;
   CL_Sprite sprite;
+  Vector    pos;
 
 public:
-  Hammer (const WorldObjsData::HammerData& data_);
- ~Hammer ();
+  Hammer(const FileReader& reader);
 
-  float get_z_pos () const;
+  float get_z_pos() const;
 
-  void draw (SceneContext& gc);
-  void update ();
+  void draw(SceneContext& gc);
+  void update();
 
 private:
   Hammer (const Hammer&);

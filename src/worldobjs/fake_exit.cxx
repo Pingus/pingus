@@ -21,7 +21,6 @@
 #include "../pingu.hxx"
 #include "../pingu_holder.hxx"
 #include "../world.hxx"
-#include "../worldobjsdata/fake_exit_data.hxx"
 #include "../smallmap.hxx"
 #include "../resource.hxx"
 #include "fake_exit.hxx"
@@ -29,34 +28,31 @@
 namespace Pingus {
 namespace WorldObjs {
 
-FakeExit::FakeExit (const WorldObjsData::FakeExitData& data_)
-  : data (new WorldObjsData::FakeExitData(data_)),
-    smashing(false),
-    smallmap_symbol(Resource::load_sprite("misc/smallmap_exit", "core"))
+FakeExit::FakeExit(const FileReader& reader)
+  : surface(Resource::load_sprite("traps/fake_exit")),
+    smallmap_symbol(Resource::load_sprite("misc/smallmap_exit", "core")),
+    smashing(false)
 {
-  data->counter.set_size(data->surface.get_frame_count());
-  data->counter.set_type(GameCounter::once);
-  data->counter.set_speed(2.5);
-  data->counter = data->surface.get_frame_count() - 1;
+  reader.read_vector("position", pos);
 
-  data->pos -= Vector(data->surface.get_width ()/2, data->surface.get_height ());
-}
+  counter.set_size(surface.get_frame_count());
+  counter.set_type(GameCounter::once);
+  counter.set_speed(2.5);
+  counter = surface.get_frame_count() - 1;
 
-FakeExit::~FakeExit()
-{
-  delete data;
+  pos -= Vector(surface.get_width ()/2, surface.get_height ());
 }
 
 float
 FakeExit::get_z_pos () const
 {
-  return data->pos.z;
+  return pos.z;
 }
 
 void
 FakeExit::draw (SceneContext& gc)
 {
-  gc.color().draw (data->surface, data->pos, data->counter.value());
+  gc.color().draw (surface, pos, counter.value());
 }
 
 
@@ -69,27 +65,27 @@ FakeExit::update ()
   }
 
   if (smashing)
-    ++data->counter;
+    ++counter;
 }
 
 void
 FakeExit::catch_pingu (Pingu* pingu)
 {
-  if (data->counter.finished()) {
+  if (counter.finished()) {
     smashing = false;
   }
 
-  if (   pingu->get_x() > data->pos.x + 31 && pingu->get_x() < data->pos.x + 31 + 15
-      && pingu->get_y() > data->pos.y + 56 && pingu->get_y() < data->pos.y + 56 + 56)
+  if (   pingu->get_x() > pos.x + 31 && pingu->get_x() < pos.x + 31 + 15
+      && pingu->get_y() > pos.y + 56 && pingu->get_y() < pos.y + 56 + 56)
     {
       if (pingu->get_action() != Actions::Splashed)
 	{
 	  if (!smashing) {
-	    data->counter = 0;
+	    counter = 0;
 	    smashing = true;
 	  }
 
-	  if (data->counter >= 3 && data->counter <= 5) {
+	  if (counter >= 3 && counter <= 5) {
 	    pingu->set_action(Actions::Splashed);
 	  }
 	}
@@ -99,7 +95,7 @@ FakeExit::catch_pingu (Pingu* pingu)
 void
 FakeExit::draw_smallmap(SmallMap* smallmap)
 {
-  smallmap->draw_sprite(smallmap_symbol, data->pos);
+  smallmap->draw_sprite(smallmap_symbol, pos);
 }
 
 } // namespace WorldObjs

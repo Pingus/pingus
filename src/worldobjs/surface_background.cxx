@@ -26,33 +26,58 @@
 #include "../resource.hxx"
 #include "../globals.hxx"
 #include "../blitter.hxx"
-#include "../worldobjsdata/surface_background_data.hxx"
 #include "surface_background.hxx"
 
 namespace Pingus {
 namespace WorldObjs {
 
-SurfaceBackground::SurfaceBackground (const WorldObjsData::SurfaceBackgroundData& data_)
-  : scroll_ox(0),
-    scroll_oy(0),
-    data(new WorldObjsData::SurfaceBackgroundData(data_))
-
+SurfaceBackground::SurfaceBackground(const FileReader& reader)
+  : para_x(0.5),
+    para_y(0.5),
+    pos(Vector(0, 0, -150)),
+    scroll_x(0.0),
+    scroll_y(0.0),
+    color(CL_Colorf(0,0,0,0)),
+    stretch_x(false),
+    stretch_y(false),
+    keep_aspect(false),
+    scroll_ox(0),
+    scroll_oy(0)
 {
+  pos.z = -150;
+
+  reader.read_vector("position", pos);
+
+  reader.read_desc("surface", desc);
+  reader.read_color("color", color);
+
+  reader.read_float("para-x", para_x);
+  reader.read_float("para-y", para_y);
+
+  reader.read_float("scroll-x", scroll_x);
+  reader.read_float("scroll-y", scroll_y);
+
+  reader.read_bool("stretch-x", stretch_x);
+  reader.read_bool("stretch-y", stretch_y);
+
+  reader.read_bool("keep-aspect", keep_aspect);
+
+
   Timer timer("Background creation");
 
-  if (data->color.alpha > 1.0)
+  if (color.alpha > 1.0)
     std::cout << "Background: Warning dim larger than 1.0 are no longer supported" << std::endl;
 
-  CL_PixelBuffer canvas = Resource::load_pixelbuffer(data->desc);
+  CL_PixelBuffer canvas = Resource::load_pixelbuffer(desc);
 
   // Scaling Code
-  if (data->stretch_x && data->stretch_y)
+  if (stretch_x && stretch_y)
     {
       canvas = Blitter::scale_surface_to_canvas(canvas, world->get_width(), world->get_height());
     }
-  else if (data->stretch_x && !data->stretch_y)
+  else if (stretch_x && !stretch_y)
     {
-      if (data->keep_aspect)
+      if (keep_aspect)
         {
           float aspect = canvas.get_height()/float(canvas.get_width());
           canvas = Blitter::scale_surface_to_canvas(canvas,
@@ -64,9 +89,9 @@ SurfaceBackground::SurfaceBackground (const WorldObjsData::SurfaceBackgroundData
           canvas = Blitter::scale_surface_to_canvas(canvas, canvas.get_width(), world->get_height());
         }
     }
-  else if (!data->stretch_x && data->stretch_y)
+  else if (!stretch_x && stretch_y)
     {
-      if (data->keep_aspect)
+      if (keep_aspect)
         {
           float aspect = float(canvas.get_width())/canvas.get_height();
           canvas = Blitter::scale_surface_to_canvas(canvas,
@@ -85,11 +110,11 @@ SurfaceBackground::SurfaceBackground (const WorldObjsData::SurfaceBackgroundData
      FIXME: the bug might be in create_canvas() and not in fill_rect()
   */
 
-  if (data->color.alpha != 0.0 && data->color != CL_Colorf(0, 0, 0, 1.0f))
+  if (color.alpha != 0.0 && color != CL_Colorf(0, 0, 0, 1.0f))
     { // Workaround for a bug which caused all levels to have the
       // wrong background color
       Blitter::fill_rect(canvas, CL_Rect(0, 0, canvas.get_width(), canvas.get_height()),
-                         CL_Color(data->color));
+                         CL_Color(color));
     }
 
   //bg_surface = CAImageManipulation::changeHSV(bg_surface, 150, 100, 0);
@@ -105,15 +130,10 @@ SurfaceBackground::SurfaceBackground (const WorldObjsData::SurfaceBackgroundData
   timer.stop();
 }
 
-SurfaceBackground::~SurfaceBackground ()
-{
-  delete data;
-}
-
 float
 SurfaceBackground::get_z_pos () const
 {
-  return data->pos.z;
+  return pos.z;
 }
 
 void
@@ -121,8 +141,8 @@ SurfaceBackground::update()
 {
   counter++;
 
-  scroll_ox += data->scroll_x;
-  scroll_oy += data->scroll_y;
+  scroll_ox += scroll_x;
+  scroll_oy += scroll_y;
 
   if (scroll_ox > bg_surface.get_width())
     {
@@ -170,8 +190,8 @@ SurfaceBackground::draw (SceneContext& gc)
           int start_x;
           int start_y;
 
-          start_x = static_cast<int>((x_of * data->para_x) + scroll_ox);
-          start_y = static_cast<int>((y_of * data->para_y) + scroll_oy);
+          start_x = static_cast<int>((x_of * para_x) + scroll_ox);
+          start_y = static_cast<int>((y_of * para_y) + scroll_oy);
 
           if (start_x >= 0)
             start_x = start_x - bg_surface.get_width();

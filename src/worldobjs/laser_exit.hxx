@@ -20,6 +20,7 @@
 #ifndef HEADER_PINGUS_WORLDOBJS_LASER_EXIT_HXX
 #define HEADER_PINGUS_WORLDOBJS_LASER_EXIT_HXX
 
+#include "../game_counter.hxx"
 #include "../worldobj.hxx"
 
 namespace Pingus {
@@ -35,12 +36,14 @@ namespace WorldObjs {
 class LaserExit : public WorldObj
 {
 private:
-  WorldObjsData::LaserExitData* const data;
+  CL_Sprite   surface;
+  Vector      pos;
+  GameCounter counter;
+
   bool killing;
 
 public:
-  LaserExit (const WorldObjsData::LaserExitData& data_);
-  ~LaserExit ();
+  LaserExit(const FileReader& reader);
 
   float get_z_pos () const;
 

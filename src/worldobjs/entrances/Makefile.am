@@ -21,7 +21,6 @@ noinst_LIBRARIES = libpingus_worldobjs_entrances.a
 
 libpingus_worldobjs_entrances_a_CPPFLAGS = @PINGUS_CFLAGS@
 libpingus_worldobjs_entrances_a_SOURCES = \
-	cloud.cxx	cloud.hxx \
 	woodthing.cxx	woodthing.hxx
 
 ## EOF ##

@@ -18,14 +18,13 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "../../resource.hxx"
-#include "../../worldobjsdata/entrance_data.hxx"
 #include "cloud.hxx"
 
 namespace Pingus {
 namespace WorldObjs {
 namespace Entrances {
 
-Cloud::Cloud (const WorldObjsData::EntranceData& data_)
+Cloud::Cloud() (const WorldObjsData::EntranceData& data_)
   : Entrance(data_)
 {
   data->pos.z = 100;

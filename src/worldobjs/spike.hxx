@@ -20,6 +20,7 @@
 #ifndef HEADER_PINGUS_TRAPS_SPIKE_HXX
 #define HEADER_PINGUS_TRAPS_SPIKE_HXX
 
+#include "../game_counter.hxx"
 #include "../worldobj.hxx"
 
 namespace Pingus {
@@ -35,12 +36,13 @@ namespace WorldObjs {
 class Spike : public WorldObj
 {
 private:
-  WorldObjsData::SpikeData* data;
-  bool killing;
+  CL_Sprite   surface;
+  Vector      pos;
+  GameCounter counter;
+  bool        killing;
 
 public:
-  Spike (const WorldObjsData::SpikeData& data_);
-  ~Spike ();
+  Spike(const FileReader& reader);
 
   float get_z_pos () const;
 

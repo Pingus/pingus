@@ -25,29 +25,26 @@
 
 namespace Pingus {
 
-XMLFileReader::XMLFileReader(xmlDocPtr doc_, xmlNodePtr node)
+XMLFileReaderImpl::XMLFileReaderImpl(xmlDocPtr doc_, xmlNodePtr node)
   : doc(doc_), section_node(node)
 {
 }
 
-XMLFileReader::XMLFileReader()
+XMLFileReaderImpl::XMLFileReaderImpl()
   : doc(NULL), section_node(NULL)
 {
 }
 
-void
-XMLFileReader::init(xmlDocPtr doc_, xmlNodePtr node)
+XMLFileReaderImpl::~XMLFileReaderImpl()
 {
-  doc = doc_;
-  section_node = node;
 }
 
 xmlNodePtr
-XMLFileReader::find_node(const char* name)
+XMLFileReaderImpl::find_node(const char* name) const
 {
   if (doc == NULL)
     {
-      perr(PINGUS_DEBUG_LOADING) << "XMLFileReader points to nothing, probally not inited" << std::endl;
+      perr(PINGUS_DEBUG_LOADING) << "XMLFileReaderImpl points to nothing, probally not inited" << std::endl;
       return NULL;
     }
   else if (section_node == NULL)
@@ -77,7 +74,7 @@ XMLFileReader::find_node(const char* name)
 }
 
 bool
-XMLFileReader::read_desc  (const char* name, ResDescriptor& value)
+XMLFileReaderImpl::read_desc  (const char* name, ResDescriptor& value) const
 {
   xmlNodePtr node = find_node(name);
 
@@ -91,7 +88,7 @@ XMLFileReader::read_desc  (const char* name, ResDescriptor& value)
 }
 
 bool
-XMLFileReader::read_color (const char* name, CL_Colorf& value)
+XMLFileReaderImpl::read_color (const char* name, CL_Colorf& value) const
 {
   xmlNodePtr node = find_node(name);
 
@@ -105,7 +102,7 @@ XMLFileReader::read_color (const char* name, CL_Colorf& value)
 }
 
 bool
-XMLFileReader::read_int   (const char* name, int& value)
+XMLFileReaderImpl::read_int   (const char* name, int& value) const
 {
   xmlNodePtr node = find_node(name);
 
@@ -119,7 +116,7 @@ XMLFileReader::read_int   (const char* name, int& value)
 }
 
 bool
-XMLFileReader::read_float (const char* name, float& value)
+XMLFileReaderImpl::read_float (const char* name, float& value) const
 {
   xmlNodePtr node = find_node(name);
 
@@ -133,7 +130,7 @@ XMLFileReader::read_float (const char* name, float& value)
 }
 
 bool
-XMLFileReader::read_bool  (const char* name, bool& value)
+XMLFileReaderImpl::read_bool  (const char* name, bool& value) const
 {
   xmlNodePtr node = find_node(name);
 
@@ -147,7 +144,7 @@ XMLFileReader::read_bool  (const char* name, bool& value)
 }
 
 bool
-XMLFileReader::read_string(const char* name, std::string& value)
+XMLFileReaderImpl::read_string(const char* name, std::string& value) const
 {
   xmlNodePtr node = find_node(name);
 
@@ -161,7 +158,7 @@ XMLFileReader::read_string(const char* name, std::string& value)
 }
 
 bool
-XMLFileReader::read_vector(const char* name, Vector& value)
+XMLFileReaderImpl::read_vector(const char* name, Vector& value) const
 {
   xmlNodePtr node = find_node(name);
 
@@ -175,15 +172,21 @@ XMLFileReader::read_vector(const char* name, Vector& value)
 }
 
 bool
-XMLFileReader::read_section(const char* name, XMLFileReader& value)
+XMLFileReaderImpl::read_section(const char* name, FileReader& value) const
 {
   xmlNodePtr node = find_node(name);
   if (node)
     {
-      value.init(doc, node);
+      value = XMLFileReader(doc, node);
       return true;
     }
   return false;
+}
+
+std::string
+XMLFileReaderImpl::get_name() const
+{
+  return XMLhelper::xmlChar2string(section_node->name);
 }
 
 } // namespace Pingus

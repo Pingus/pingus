@@ -73,7 +73,7 @@
 #include "blitter_test.hxx"
 #include "preview_renderer.hxx"
 #include "worldmap/manager.hxx"
-#include "worldobj_data_factory.hxx"
+#include "worldobj_factory.hxx"
 
 namespace Pingus {
 
@@ -938,7 +938,7 @@ PingusMain::deinit_pingus()
   Sound::PingusSound::deinit();
   PingusMenuManager::deinit();
   PLFResMgr::free_plf_map();
-  WorldObjDataFactory::deinit();
+  WorldObjFactory::deinit();
   WorldMapNS::WorldMapManager::deinit();
   ScreenManager::deinit();
   Fonts::deinit();

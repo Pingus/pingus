@@ -24,7 +24,6 @@
 #include "../globals.hxx"
 #include "../pingu.hxx"
 #include "../game_time.hxx"
-#include "../worldobjsdata/entrance_data.hxx"
 #include "../smallmap.hxx"
 #include "../resource.hxx"
 #include "entrance.hxx"
@@ -32,30 +31,46 @@
 namespace Pingus {
 namespace WorldObjs {
 
-Entrance::Entrance (const WorldObjsData::EntranceData& data_)
-  : data(new WorldObjsData::EntranceData(data_)),
-    smallmap_symbol(Resource::load_sprite("misc/smallmap_entrance", "core")),
-    last_release(150 - data->release_rate) // wait ~2sec at startup to allow a 'lets go' sound
+Entrance::Entrance(const FileReader& reader)
+  : smallmap_symbol(Resource::load_sprite("misc/smallmap_entrance", "core"))
 {
-  if (verbose > 2)
-    std::cout << "Creating Entrance" << std::endl;
+  reader.read_string("type",         type);
+  reader.read_int   ("owner-id",     owner_id);
+  reader.read_vector("position",     pos);
+  reader.read_int   ("release-rate", release_rate);
+
+  std::string direction_str;
+  reader.read_string("direction", direction_str);
+
+  if (direction_str == "left")
+    direction = LEFT;
+  else if (direction_str == "right")
+    direction = RIGHT;
+  else if (direction_str == "misc")
+    direction = MISC;
+  else
+    {
+      std::cout << "EntranceData: Unknown direction: '" << direction_str << "'" << std::endl;
+      direction = MISC;
+    }
+
+  last_release = 150 - release_rate; // wait ~2sec at startup to allow a 'lets go' sound
 }
 
 Entrance::~Entrance ()
 {
-  delete data;
 }
 
 float
 Entrance::get_z_pos () const
 {
-  return data->pos.z;
+  return pos.z;
 }
 
 bool
 Entrance::pingu_ready ()
 {
-  if (last_release + data->release_rate < (world->get_game_time()->get_ticks())) {
+  if (last_release + release_rate < (world->get_game_time()->get_ticks())) {
     last_release = world->get_game_time()->get_ticks();
     return true;
   } else {
@@ -69,18 +84,18 @@ Entrance::create_pingu ()
   static int last_direction;
   Direction d;
 
-  Pingu* pingu = world->get_pingus()->create_pingu(data->pos, data->owner_id);
+  Pingu* pingu = world->get_pingus()->create_pingu(pos, owner_id);
 
   if (pingu) // still pingus in the pool
     {
-      switch (data->direction)
+      switch (direction)
         {
-        case WorldObjsData::EntranceData::LEFT:
+        case LEFT:
           d.left();
           pingu->set_direction(d);
           break;
 
-        case WorldObjsData::EntranceData::MISC:
+        case MISC:
           if (last_direction)
             {
               d.left();
@@ -94,19 +109,19 @@ Entrance::create_pingu ()
           pingu->set_direction(d);
           break;
 
-        case WorldObjsData::EntranceData::RIGHT:
+        case RIGHT:
           d.right();
           pingu->set_direction(d);
           break;
 
         default:
-          std::cout << "Entrance:: Warning direction is wrong: " << data->direction << std::endl;
+          std::cout << "Entrance:: Warning direction is wrong: " << direction << std::endl;
           d.right();
           pingu->set_direction(d);
           break;
         }
 
-      world->play_sound("oing", data->pos);
+      world->play_sound("oing", pos);
     }
   else
     {
@@ -134,13 +149,13 @@ Entrance::draw (SceneContext& gc)
     }
 
   // FIXME: Why do we still have these hardcoded offsets?!
-  gc.color().draw(surface, Vector(data->pos.x - 32, data->pos.y - 16));
+  gc.color().draw(surface, Vector(pos.x - 32, pos.y - 16));
 }
 
 void
 Entrance::draw_smallmap(SmallMap* smallmap)
 {
-  smallmap->draw_sprite(smallmap_symbol, data->pos);
+  smallmap->draw_sprite(smallmap_symbol, pos);
 }
 
 } // namespace WorldObjs

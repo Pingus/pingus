@@ -21,6 +21,7 @@
 #define HEADER_PINGUS_WORLDOBJS_EXIT_HXX
 
 #include <ClanLib/Display/sprite.h>
+#include "../res_descriptor.hxx"
 #include "../worldobj.hxx"
 
 namespace Pingus {
@@ -34,14 +35,17 @@ namespace WorldObjs {
 class Exit : public WorldObj
 {
 private:
-  WorldObjsData::ExitData* const data;
+  Vector pos;
+  ResDescriptor desc;
+  int owner_id;
+
   CL_Sprite sprite;
   CL_Sprite flag;
   CL_Sprite smallmap_symbol;
 
 public:
-  Exit (const WorldObjsData::ExitData& data_);
- ~Exit ();
+  Exit(const FileReader& reader);
+  ~Exit();
 
   void  on_startup ();
 

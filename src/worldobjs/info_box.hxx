@@ -34,16 +34,18 @@ namespace WorldObjs {
 class InfoBox : public WorldObj
 {
 private:
-  WorldObjsData::InfoBoxData* const data;
+  std::string info_text;
+  Vector pos;
+  Vector text_pos;
+
   CL_Sprite sprite;
   bool is_open;
 
 public:
-  InfoBox (const WorldObjsData::InfoBoxData& data_);
- ~InfoBox ();
+  InfoBox(const FileReader& reader);
 
-  void draw (SceneContext& gc);
-  void update ();
+  void draw(SceneContext& gc);
+  void update();
   float get_z_pos () const;
 
 private:

@@ -34,7 +34,11 @@ namespace WorldObjs {
 class IceBlock : public WorldObj
 {
 private:
-  WorldObjsData::IceBlockData* const data;
+  /// The upper/left position  of the iceblock's
+  Vector pos;
+
+  /** The number of iceblocks, only complete blocks are supported */
+  int width;
 
   float thickness;
   bool  is_finished;
@@ -42,8 +46,7 @@ private:
   CL_Sprite block_sur;
 
 public:
-  IceBlock (const WorldObjsData::IceBlockData& data_);
- ~IceBlock ();
+  IceBlock(const FileReader& reader);
 
   float get_z_pos () const { return 100; }
   void on_startup ();

@@ -26,6 +26,9 @@ namespace Pingus {
 class FileReaderImpl
 {
 public:
+  FileReaderImpl() {}
+  virtual ~FileReaderImpl() {}
+
   virtual std::string get_name()                           const =0;
   virtual bool read_int   (const char* name, int&)         const =0;
   virtual bool read_float (const char* name, float&)       const =0;
@@ -33,6 +36,8 @@ public:
   virtual bool read_string(const char* name, std::string&) const =0;
   virtual bool read_vector(const char* name, Vector&)      const =0;
   virtual bool read_color (const char* name, CL_Colorf&)   const =0;
+  virtual bool read_desc  (const char* name, ResDescriptor&) const =0;
+  virtual bool read_section(const char* name, FileReader&)   const =0;
 };
 
 } // namespace Pingus

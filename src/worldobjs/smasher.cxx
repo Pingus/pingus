@@ -27,29 +27,24 @@
 #include "../resource.hxx"
 #include "../sound/sound.hxx"
 #include "../world.hxx"
-#include "../worldobjsdata/smasher_data.hxx"
 #include "smasher.hxx"
 
 namespace Pingus {
 namespace WorldObjs {
 
-Smasher::Smasher (const WorldObjsData::SmasherData& data_)
-  : data (new WorldObjsData::SmasherData(data_)),
+Smasher::Smasher(const FileReader& reader)
+  : surface(Resource::load_sprite("traps/smasher")),
     smashing(false),
     downwards(false),
     count(0)
 {
-}
-
-Smasher::~Smasher ()
-{
-  delete data;
+  reader.read_vector("position", pos);
 }
 
 float
 Smasher::get_z_pos () const
 {
-  return data->pos.z;
+  return pos.z;
 }
 
 void
@@ -74,17 +69,17 @@ Smasher::update ()
 	            for(int i=0; i < 20; ++i)
 		            {
 		              world->get_smoke_particle_holder()->
-                                add_particle(static_cast<int>(data->pos.x + 20 + rand() % 260),
-                                             static_cast<int>(data->pos.y + 180),
+                                add_particle(static_cast<int>(pos.x + 20 + rand() % 260),
+                                             static_cast<int>(pos.y + 180),
                                              Math::frand()-0.5f, Math::frand()-0.5f);
 		            }
 
 	            for (PinguIter pingu = holder->begin (); pingu != holder->end (); ++pingu)
 		            {
-		              if ((*pingu)->is_inside(static_cast<int>(data->pos.x + 30),
-					              static_cast<int>(data->pos.y + 90),
-					              static_cast<int>(data->pos.x + 250),
-					              static_cast<int>(data->pos.y + 190)))
+		              if ((*pingu)->is_inside(static_cast<int>(pos.x + 30),
+					              static_cast<int>(pos.y + 90),
+					              static_cast<int>(pos.x + 250),
+					              static_cast<int>(pos.y + 190)))
 		                {
 		                  if ((*pingu)->get_action() != Actions::Splashed)
 			            (*pingu)->set_action(Actions::Splashed);
@@ -115,15 +110,15 @@ Smasher::on_startup ()
   std::cout << "Drawing colmap entry" << std::endl;
   CL_PixelBuffer buf = Resource::load_pixelbuffer("traps/smasher_cmap");
   world->get_colmap()->put(buf, 
-			   static_cast<int>(data->pos.x),
-			   static_cast<int>(data->pos.y),
+			   static_cast<int>(pos.x),
+			   static_cast<int>(pos.y),
 			   Groundtype::GP_SOLID);
 }
 
 void
 Smasher::draw (SceneContext& gc)
 {
-  gc.color().draw (data->surface, data->pos, count);
+  gc.color().draw (surface, pos, count);
 }
 
 void
@@ -131,12 +126,12 @@ Smasher::catch_pingu (Pingu* pingu)
 {
   // Activate the smasher if a Pingu is under it
   if ((   pingu->direction.is_left()
-	  && pingu->get_x() > data->pos.x + 65
-	  && pingu->get_x() < data->pos.x + 85)
+	  && pingu->get_x() > pos.x + 65
+	  && pingu->get_x() < pos.x + 85)
       ||
       (   pingu->direction.is_right()
-	  && pingu->get_x() > data->pos.x + 190
-	  && pingu->get_x() < data->pos.x + 210))
+	  && pingu->get_x() > pos.x + 190
+	  && pingu->get_x() < pos.x + 210))
     {
       if (pingu->get_action() != Actions::Splashed)
 	{

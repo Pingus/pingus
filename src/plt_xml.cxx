@@ -50,53 +50,6 @@ PLTXML::parse (std::string filename)
 }
 
 void
-PLTXML::parse_background (xmlNodePtr cur)
-{
-  cur = cur->children;
-
-  while (cur)
-    {
-      if (XMLhelper::equal_str(cur->name, "surface"))
-	{
-	  background.desc = XMLhelper::parse_surface(doc, cur);
-	}
-      else if (XMLhelper::equal_str(cur->name, "color"))
-	{
-	  background.color = XMLhelper::parse_color(doc, cur);
-	}
-      else if (XMLhelper::equal_str(cur->name, "para-x"))
-	{
-	  background.para_x = XMLhelper::parse_float(doc, cur);
-	}
-      else if (XMLhelper::equal_str(cur->name, "para-y"))
-	{
-	  background.para_y = XMLhelper::parse_float(doc, cur);
-	}
-      else if (XMLhelper::equal_str(cur->name, "scroll-x"))
-	{
-	  background.scroll_x = XMLhelper::parse_float(doc, cur);
-	}
-      else if (XMLhelper::equal_str(cur->name, "scroll-y"))
-	{
-	  background.scroll_y = XMLhelper::parse_float(doc, cur);
-	}
-      else if (XMLhelper::equal_str(cur->name, "stretch-x"))
-	{
-	  background.stretch_x = XMLhelper::parse_bool(doc, cur);
-	}
-      else if (XMLhelper::equal_str(cur->name, "stretch-y"))
-	{
-	  background.stretch_y = XMLhelper::parse_bool(doc, cur);
-	}
-      else
-	{
-	  std::cout << "PLTXML::parse_background(): Unhandled: " << cur->name << std::endl;
-	}
-      cur = cur->next;
-    }
-}
-
-void
 PLTXML::parse_description(xmlNodePtr cur)
 {
   std::string desc;
@@ -165,7 +118,7 @@ PLTXML::parse_file()
 	    }
 	  else if (XMLhelper::equal_str(cur->name, "background"))
 	    {
-	      parse_background(cur);
+	      //parse_background(cur);
 	    }
 	  else if (XMLhelper::equal_str(cur->name, "world-name"))
 	    {
@@ -201,12 +154,6 @@ PLTXML::get_description ()
 {
 
   return description;
-}
-
-SurfaceBackgroundData
-PLTXML::get_background ()
-{
-  return background;
 }
 
 } // namespace Pingus

@@ -22,15 +22,15 @@
 #include "../math.hxx"
 #include "../world.hxx"
 #include "../particles/snow_particle_holder.hxx"
-#include "../worldobjsdata/snow_generator_data.hxx"
 #include "snow_generator.hxx"
 
 namespace Pingus {
 namespace WorldObjs {
 
-SnowGenerator::SnowGenerator (const WorldObjsData::SnowGeneratorData& data_)
+SnowGenerator::SnowGenerator(const FileReader& reader)
 {
-  intensity = data_.intensity;
+  intensity = 1.0f;
+  reader.read_float("intensity", intensity);
 }
 
 SnowGenerator::~SnowGenerator()

@@ -23,9 +23,9 @@
 
 #include <vector>
 #include <ClanLib/Display/pixel_buffer.h>
+#include <ClanLib/Display/surface.h>
 #include "globals.hxx"
 #include "pingu_map.hxx"
-#include "worldobjsdata/groundpiece_data.hxx"
 
 class CL_PixelBuffer;
 

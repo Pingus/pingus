@@ -35,14 +35,15 @@ namespace WorldObjs {
 class Smasher : public WorldObj
 {
 private:
-  WorldObjsData::SmasherData* const data;
+  CL_Sprite  surface;
+  Vector pos;
+
   bool smashing;
   bool downwards;
   int  count;
 
 public:
-  Smasher (const WorldObjsData::SmasherData& data_);
-  ~Smasher ();
+  Smasher(const FileReader& reader);
 
   float get_z_pos () const;
 

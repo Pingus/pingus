@@ -24,10 +24,11 @@
 #include <ClanLib/Core/System/sharedptr.h>
 
 class CL_Colorf;
-class Vector;
 
 namespace Pingus {
 
+class ResDescriptor;
+class Vector;
 class FileReaderImpl;
 
 /** Interface to read name/value pairs out of some kind of file or
@@ -40,13 +41,27 @@ public:
 
   std::string get_name() const;
 
-  bool read_int   (const char* name, int&);
-  bool read_float (const char* name, float&);
-  bool read_bool  (const char* name, bool&);
-  bool read_string(const char* name, std::string&);
-  bool read_vector(const char* name, Vector&);
-  bool read_color (const char* name, CL_Colorf&);
-  
+  bool read_int   (const char* name, int&)           const;
+  bool read_float (const char* name, float&)         const;
+  bool read_bool  (const char* name, bool&)          const;
+  bool read_string(const char* name, std::string&)   const;
+  bool read_vector(const char* name, Vector&)        const;
+  bool read_color (const char* name, CL_Colorf&)     const;
+  bool read_desc  (const char* name, ResDescriptor&) const;
+  bool read_section(const char* name, FileReader&)   const;
+
+  template<class E, class T>
+  bool read_enum  (const char* name, E& value, T enum2string) const
+  {
+    std::string str;
+    if (read_string(name, str))
+      {
+        value = enum2string(str);
+        return true;
+      }
+
+    return false;
+  }
 private:
   CL_SharedPtr<FileReaderImpl> impl;
 };

@@ -36,7 +36,14 @@ namespace WorldObjs {
 class SwitchDoor : public WorldObj
 {
 private:
-  WorldObjsData::SwitchDoorData* const data;
+  /// The upper/middle pos of the door
+  Vector door_pos;
+
+  /// The bottom/middle pos of the switch
+  Vector switch_pos;
+
+  // The height of the door in graphic tiles
+  int door_height;
 
   CL_Sprite door_box;
   CL_Sprite door_tile;
@@ -51,8 +58,7 @@ private:
   int current_door_height;
 
 public:
-  SwitchDoor (const WorldObjsData::SwitchDoorData& data_);
- ~SwitchDoor ();
+  SwitchDoor(const FileReader& reader);
 
   void on_startup();
   void draw (SceneContext& gc);

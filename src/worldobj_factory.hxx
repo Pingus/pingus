@@ -23,78 +23,79 @@
 #include <map>
 #include <string>
 
+#include "xml_file_reader.hxx"
 #include "libxmlfwd.hxx"
 
 namespace Pingus {
 
-class WorldObjData;
-class WorldObjDataAbstractFactory;
+class WorldObj;
+class WorldObjAbstractFactory;
 
-/** WorldObjDataFactory which can be used to create all kinds of
-    WorldObjData's by given its id */
-class WorldObjDataFactory
+/** WorldObjFactory which can be used to create all kinds of
+    WorldObj's by given its id */
+class WorldObjFactory
 {
 private:
-  std::map<std::string, WorldObjDataAbstractFactory*> factories;
+  std::map<std::string, WorldObjAbstractFactory*> factories;
 
-  static WorldObjDataFactory* instance_;
+  static WorldObjFactory* instance_;
 
-  WorldObjDataFactory ();
+  WorldObjFactory ();
   void free_factories();
 public:
   /** Return the singleton instance */
-  static WorldObjDataFactory* instance ();
+  static WorldObjFactory* instance ();
   static void deinit();
   /** Register a factory for object creation */
   void register_factory(const std::string& id,
-                        WorldObjDataAbstractFactory* factory);
+                        WorldObjAbstractFactory* factory);
 
-  /** Create a WorldObjData type from a given piece of xml, use the
+  /** Create a WorldObj type from a given piece of xml, use the
       'type' property for determinating the object type. */
-  WorldObjData* create (xmlDocPtr doc, xmlNodePtr cur);
+  WorldObj* create (xmlDocPtr doc, xmlNodePtr cur);
 
-  /** Create a WorldObjData type from a given piece of xml, use the
+  /** Create a WorldObj type from a given piece of xml, use the
       given id value for determinating the object type instead of the
       'type' property. This is for backward compatibility only! */
-  WorldObjData* create (const std::string& id,
+  WorldObj* create (const std::string& id,
 			xmlDocPtr doc, xmlNodePtr cur);
 
 private:
-  WorldObjDataFactory (const WorldObjDataFactory&);
-  WorldObjDataFactory& operator= (const WorldObjDataFactory&);
+  WorldObjFactory (const WorldObjFactory&);
+  WorldObjFactory& operator= (const WorldObjFactory&);
 };
 
-/** WorldObjDataAbstractFactory, interface for creating factories */
-class WorldObjDataAbstractFactory
+/** WorldObjAbstractFactory, interface for creating factories */
+class WorldObjAbstractFactory
 {
 public:
-  WorldObjDataAbstractFactory (const std::string& id) {
-    WorldObjDataFactory::instance ()->register_factory (id, this);
+  WorldObjAbstractFactory (const std::string& id) {
+    WorldObjFactory::instance ()->register_factory (id, this);
   }
 
-  virtual WorldObjData* create (xmlDocPtr doc, xmlNodePtr cur) =0;
+  virtual WorldObj* create (xmlDocPtr doc, xmlNodePtr cur) =0;
 
 private:
-  WorldObjDataAbstractFactory (const WorldObjDataAbstractFactory&);
-  WorldObjDataAbstractFactory& operator= (const WorldObjDataAbstractFactory&);
+  WorldObjAbstractFactory (const WorldObjAbstractFactory&);
+  WorldObjAbstractFactory& operator= (const WorldObjAbstractFactory&);
 };
 
 /** Template to create factories, usage:
-    new WorldObjDataFactoryImpl<"liquid", Liquid>; */
+    new WorldObjFactoryImpl<"liquid", Liquid>; */
 template<class T>
-class WorldObjDataFactoryImpl : public WorldObjDataAbstractFactory
+class WorldObjFactoryImpl : public WorldObjAbstractFactory
 {
 public:
-  WorldObjDataFactoryImpl (const std::string& id)
-    : WorldObjDataAbstractFactory (id) {}
+  WorldObjFactoryImpl (const std::string& id)
+    : WorldObjAbstractFactory (id) {}
 
-  WorldObjData* create (xmlDocPtr doc, xmlNodePtr cur) {
-    return new T (doc, cur);
+  WorldObj* create (xmlDocPtr doc, xmlNodePtr cur) {
+    return new T(XMLFileReader(doc, cur));
   }
 
 private:
-  WorldObjDataFactoryImpl (const WorldObjDataFactoryImpl&);
-  WorldObjDataFactoryImpl& operator= (const WorldObjDataFactoryImpl&);
+  WorldObjFactoryImpl (const WorldObjFactoryImpl&);
+  WorldObjFactoryImpl& operator= (const WorldObjFactoryImpl&);
 };
 
 } // namespace Pingus

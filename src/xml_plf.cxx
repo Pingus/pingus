@@ -24,12 +24,10 @@
 #include "xml_plf.hxx"
 #include "globals.hxx"
 #include "system.hxx"
+#include "vector.hxx"
 #include "pingus_error.hxx"
-#include "worldobj_data_factory.hxx"
-#include "worldobjsdata/entrance_data.hxx"
-#include "worldobjsdata/exit_data.hxx"
-#include "worldobjsdata/hotspot_data.hxx"
-#include "worldobjsdata/liquid_data.hxx"
+#include "worldobj_factory.hxx"
+#include "worldobjs/groundpiece.hxx"
 
 namespace Pingus {
 
@@ -129,7 +127,7 @@ XMLPLF::parse_worldobjs(xmlNodePtr cur)
            XMLhelper::equal_str(cur->name, "weather")     ||
            XMLhelper::equal_str(cur->name, "entrance"))
     {
-      worldobjs_data.push_back(WorldObjDataFactory::instance()->create(doc, cur));
+      worldobjs.push_back(WorldObjFactory::instance()->create(doc, cur));
     }
   else if (XMLhelper::equal_str(cur->name, "trap"))
     {
@@ -199,13 +197,13 @@ XMLPLF::parse_background (xmlNodePtr cur)
   std::string type;
   if (XMLhelper::get_prop(cur, "type", type))
     {
-      worldobjs_data.push_back(WorldObjDataFactory::instance()
+      worldobjs.push_back(WorldObjFactory::instance()
 			       ->create (type + "-background", doc, cur));
     }
   else
     {
-      worldobjs_data.push_back(WorldObjDataFactory::instance()
-			       ->create ("surface-background", doc, cur));
+      worldobjs.push_back(WorldObjFactory::instance()
+                          ->create ("surface-background", doc, cur));
     }
 }
 
@@ -292,13 +290,13 @@ XMLPLF::parse_global (xmlNodePtr cur)
 }
 
 void
-XMLPLF::parse_groundpiece (xmlNodePtr cur)
+XMLPLF::parse_groundpiece(xmlNodePtr cur)
 {
-  worldobjs_data.push_back(new WorldObjsData::GroundpieceData (doc, cur));
+  worldobjs.push_back(new WorldObjs::Groundpiece(XMLFileReader(doc, cur)));
 }
 
 void
-XMLPLF::parse_traps (xmlNodePtr cur)
+XMLPLF::parse_traps(xmlNodePtr cur)
 {
   xmlNodePtr child_cur = XMLhelper::skip_blank(cur->children);
 
@@ -307,7 +305,7 @@ XMLPLF::parse_traps (xmlNodePtr cur)
       std::string name;
       if (XMLhelper::node_list_get_string(doc, child_cur->children, 1, name))
 	{
-	  worldobjs_data.push_back(WorldObjDataFactory::instance()->create(name, doc, cur));
+	  worldobjs.push_back(WorldObjFactory::instance()->create(name, doc, cur));
 	  return;
 	}
     }

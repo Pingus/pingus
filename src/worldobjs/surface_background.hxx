@@ -21,8 +21,9 @@
 #define HEADER_PINGUS_WORLDOBJS_SURFACE_BACKGROUND_HXX
 
 #include <ClanLib/Display/sprite.h>
-#include "../worldobj.hxx"
+#include "../res_descriptor.hxx"
 #include "../game_counter.hxx"
+#include "../worldobj.hxx"
 
 namespace Pingus {
 
@@ -35,6 +36,36 @@ namespace WorldObjs {
 class SurfaceBackground : public WorldObj
 {
 private:
+  ResDescriptor desc;
+  float para_x;
+  float para_y;
+
+  /** Position of the background, only the z_pos is really used. */
+  Vector pos;
+
+  /** The amount of pixel the background is scrolled each frame in x
+      direction. */
+  float scroll_x;
+
+  /** The amount of pixel the background is scrolled each frame in x
+      direction. */
+  float scroll_y;
+
+  /** fill_rect() components
+      An fill_rect() can be drawn over the background, the following
+      for components are passed to the fill_rect() call. */
+  CL_Colorf color;
+
+  /** Stretch the background to the full screen size in x direction */
+  bool stretch_x;
+
+  /** Stretch the background to the full screen size in x direction */
+  bool stretch_y;
+
+  /** If streched in x or y direction keep the aspect ratio */
+  bool keep_aspect;
+
+
   GameCounter counter;
 
   CL_Surface bg_surface;
@@ -45,11 +76,8 @@ private:
   /** The vertical scrolling speed in pixels per tick */
   float scroll_oy;
 
-  WorldObjsData::SurfaceBackgroundData* const data;
-
 public:
-  SurfaceBackground (const WorldObjsData::SurfaceBackgroundData& data_);
- ~SurfaceBackground ();
+  SurfaceBackground(const FileReader& reader);
 
   float get_z_pos () const;
 

@@ -20,30 +20,24 @@
 #include <ClanLib/Display/display.h>
 #include "../gui/display.hxx"
 #include "../display/scene_context.hxx"
-#include "../worldobjsdata/solid_color_background_data.hxx"
 #include "solid_color_background.hxx"
 
 namespace Pingus {
 namespace WorldObjs {
 
-SolidColorBackground::SolidColorBackground (const WorldObjsData::SolidColorBackgroundData& data_)
-  : data(new WorldObjsData::SolidColorBackgroundData(data_))
+SolidColorBackground::SolidColorBackground(const FileReader& reader)
 {
-}
-
-SolidColorBackground::~SolidColorBackground ()
-{
-  delete data;
+  reader.read_color("color", color);
 }
 
 void
 SolidColorBackground::draw (SceneContext& gc)
 {
   // FIXME: should use SceneContext, not CL_Display
-  gc.color().fill_screen(CL_Color(CL_Colorf(data->color.red,
-                                            data->color.green, 
-                                            data->color.blue, 
-                                            data->color.alpha)));
+  gc.color().fill_screen(CL_Color(CL_Colorf(color.red,
+                                            color.green, 
+                                            color.blue, 
+                                            color.alpha)));
 }
 
 } // namespace WorldObjs

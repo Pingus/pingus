@@ -39,39 +39,51 @@ FileReader::get_name() const
 }
 
 bool
-FileReader::read_int(const char* name, int& value)
+FileReader::read_int(const char* name, int& value) const
 {
   return impl->read_int(name, value);
 }
 
 bool
-FileReader::read_float (const char* name, float& value)
+FileReader::read_float (const char* name, float& value) const
 {
   return impl->read_float(name, value);
 }
 
 bool
-FileReader::read_bool  (const char* name, bool& value)
+FileReader::read_bool  (const char* name, bool& value) const
 {
   return impl->read_bool(name, value);
 }
 
 bool
-FileReader::read_string(const char* name, std::string& value)
+FileReader::read_string(const char* name, std::string& value) const
 {
   return impl->read_string(name, value);
 }
 
 bool
-FileReader::read_vector(const char* name, Vector& value)
+FileReader::read_vector(const char* name, Vector& value) const
 {
   return impl->read_vector(name, value);
 }
 
 bool
-FileReader::read_color (const char* name, CL_Colorf& value)
+FileReader::read_color(const char* name, CL_Colorf& value) const
 {
   return impl->read_color(name, value);
+}
+
+bool
+FileReader::read_desc(const char* name, ResDescriptor& desc) const
+{
+  return impl->read_desc(name, desc);
+}
+
+bool
+FileReader::read_section(const char* name, FileReader& reader) const
+{
+  return impl->read_section(name, reader);
 }
 
 } // namespace Pingus

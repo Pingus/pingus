@@ -21,13 +21,13 @@
 #define HEADER_PINGUS_WORLDOBJ_HXX
 
 #include "pingus.hxx"
+#include "file_reader.hxx"
 
 namespace Pingus {
 
 class SceneContext;
 class SmallMap;
 class World;
-class WorldObjData;
 
 /** All objects that act in the world should be derived from this
  *  class, it provides access to all the important data from the world.
@@ -87,8 +87,6 @@ public:
    * specifies how much time is passed since the last update
    * delta = 1.0 means that one second of realtime has passed. */
   virtual void update ();
-
-  virtual WorldObjData* get_data () { return 0; }
 };
 
 } // namespace Pingus

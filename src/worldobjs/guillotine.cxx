@@ -21,42 +21,40 @@
 #include "../pingu.hxx"
 #include "../pingu_holder.hxx"
 #include "../world.hxx"
-#include "../worldobjsdata/guillotine_data.hxx"
+#include "../resource.hxx"
 #include "guillotine.hxx"
 
 namespace Pingus {
 namespace WorldObjs {
 
-Guillotine::Guillotine (const WorldObjsData::GuillotineData& data_)
-  : data(new WorldObjsData::GuillotineData(data_)),
+Guillotine::Guillotine(const FileReader& reader)
+  : surface  (Resource::load_sprite("traps/guillotinekill")),
+    idle_surf(Resource::load_sprite("traps/guillotineidle")),
     killing(false)
 {
-  data->counter.set_size(data->surface.get_frame_count()/2);
-  data->counter.set_type(GameCounter::once);
-  data->counter.set_speed(0.7);
-  data->counter = 0;
+  reader.read_vector("position", pos);
 
-  data->idle_counter.set_size(data->idle_surf.get_frame_count());
-  data->idle_counter.set_type(GameCounter::loop);
-  data->idle_counter.set_speed(0.3);
-  data->idle_counter = 0;
-}
+  counter.set_size(surface.get_frame_count()/2);
+  counter.set_type(GameCounter::once);
+  counter.set_speed(0.7);
+  counter = 0;
 
-Guillotine::~Guillotine ()
-{
-  delete data;
+  idle_counter.set_size(idle_surf.get_frame_count());
+  idle_counter.set_type(GameCounter::loop);
+  idle_counter.set_speed(0.3);
+  idle_counter = 0;
 }
 
 void
 Guillotine::draw (SceneContext& gc)
 {
   if (killing) {
-    if (data->direction.is_left())
-      gc.color().draw(data->surface, data->pos, data->counter);
+    if (direction.is_left())
+      gc.color().draw(surface, pos, counter);
     else
-      gc.color().draw (data->surface, data->pos, data->counter + 12);
+      gc.color().draw (surface, pos, counter + 12);
   } else {
-    gc.color().draw (data->idle_surf, data->pos, data->idle_counter);
+    gc.color().draw (idle_surf, pos, idle_counter);
   }
 }
 
@@ -64,14 +62,14 @@ Guillotine::draw (SceneContext& gc)
 float
 Guillotine::get_z_pos () const
 {
-  return data->pos.z;
+  return pos.z;
 }
 
 void
 Guillotine::update ()
 {
-  if (data->counter.finished()) {
-    data->counter = 0;
+  if (counter.finished()) {
+    counter = 0;
     killing = false;
   }
 
@@ -80,9 +78,9 @@ Guillotine::update ()
     catch_pingu(*pingu);
 
   if (killing) {
-    ++data->counter;
+    ++counter;
   } else {
-    ++data->idle_counter;
+    ++idle_counter;
   }
 }
 
@@ -91,12 +89,12 @@ Guillotine::catch_pingu (Pingu* pingu)
 {
   if (!killing)
     {
-      if (pingu->is_inside (static_cast<int>(data->pos.x + 38), static_cast<int>(data->pos.y + 90),
-			    static_cast<int>(data->pos.x + 42), static_cast<int>(data->pos.y + 98)))
+      if (pingu->is_inside (static_cast<int>(pos.x + 38), static_cast<int>(pos.y + 90),
+			    static_cast<int>(pos.x + 42), static_cast<int>(pos.y + 98)))
 	{
 	  killing = true;
 	  pingu->set_status(PS_DEAD);
-	  data->direction = pingu->direction;
+	  direction = pingu->direction;
 	}
     }
 }

@@ -21,7 +21,7 @@
 #define HEADER_PINGUS_PARTICLES_PINGU_PARTICLE_HOLDER_HXX
 
 #include <vector>
-#include <ClanLib/Display/surface.h>
+#include <ClanLib/Display/sprite.h>
 #include "../vector.hxx"
 #include "../worldobj.hxx"
 

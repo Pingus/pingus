@@ -22,30 +22,40 @@
 #include "../display/scene_context.hxx"
 #include "../resource.hxx"
 #include "../world.hxx"
-#include "../worldobjsdata/liquid_data.hxx"
 #include "liquid.hxx"
 
 namespace Pingus {
 namespace WorldObjs {
 
-Liquid::Liquid (const WorldObjsData::LiquidData& data_) :
-  data(new WorldObjsData::LiquidData(data_)),
-  sur(Resource::load_sprite(data->desc))
-  //(data->speed == 0) ? 30 : 1000.0f/data->speed)
+Liquid::Liquid(const FileReader& reader)
+  : old_width_handling(true),
+    width(0),
+    speed(20)
+  //(speed == 0) ? 30 : 1000.0f/speed)
 {
-  if (!data->old_width_handling)
-    data->width *= sur.get_width();
-}
+  /*
+  if (XMLhelper::get_prop(cur, "use-old-width-handling", old_width_handling))
+    {
+      if (old_width_handling)
+        std::cout << "XMLPLF: Using Old Width Handling: " << std::endl;
+    }
+  */
 
-Liquid::~Liquid ()
-{
-  delete data;
+  reader.read_vector("position", pos);
+  reader.read_desc  ("surface",  desc);
+  reader.read_int   ("speed",    speed);
+  reader.read_int   ("width",    width);
+
+  if (!old_width_handling)
+    width *= sur.get_width();
+
+  sur = Resource::load_sprite(desc);
 }
 
 float
 Liquid::get_z_pos () const
 {
-  return data->pos.z;
+  return pos.z;
 }
 
 void
@@ -53,20 +63,20 @@ Liquid::on_startup ()
 {
   CL_PixelBuffer colmap_sur = Resource::load_pixelbuffer("liquids/water_cmap");
 
-  for(int i=0; i < data->width; ++i)
+  for(int i=0; i < width; ++i)
     world->get_colmap()->put(colmap_sur,
-                             static_cast<int>(data->pos.x + i),
-			     static_cast<int>(data->pos.y),
+                             static_cast<int>(pos.x + i),
+			     static_cast<int>(pos.y),
 			     Groundtype::GP_WATER);
 }
 
 void
 Liquid::draw (SceneContext& gc)
 {
-  for(int x = static_cast<int>(data->pos.x);
-      x < data->pos.x + data->width;
+  for(int x = static_cast<int>(pos.x);
+      x < pos.x + width;
       x += sur.get_width())
-    gc.color().draw(sur, Vector(x, data->pos.y));
+    gc.color().draw(sur, Vector(x, pos.y));
 }
 
 void

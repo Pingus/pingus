@@ -21,38 +21,32 @@
 #include "../pingu.hxx"
 #include "../pingu_holder.hxx"
 #include "../world.hxx"
-#include "../worldobjsdata/hammer_data.hxx"
 #include "../resource.hxx"
 #include "hammer.hxx"
 
 namespace Pingus {
 namespace WorldObjs {
 
-Hammer::Hammer (const WorldObjsData::HammerData& data_)
-  : data(new WorldObjsData::HammerData(data_))
+Hammer::Hammer(const FileReader& reader)
+  : sprite(Resource::load_sprite("traps/hammer"))
 {
-  sprite = Resource::load_sprite("traps/hammer");
-}
-
-Hammer::~Hammer ()
-{
-  delete data;
+  reader.read_vector("position", pos);
 }
 
 float
-Hammer::get_z_pos () const
+Hammer::get_z_pos() const
 {
-  return data->pos.z;
+  return pos.z;
 }
 
 void
-Hammer::draw (SceneContext& gc)
+Hammer::draw(SceneContext& gc)
 {
-  gc.color().draw(sprite, data->pos);
+  gc.color().draw(sprite, pos);
 }
 
 void
-Hammer::update ()
+Hammer::update()
 {
   sprite.update();
 
@@ -65,8 +59,8 @@ Hammer::update ()
 	  Pingu* pingu = *pingu_it;
 	  if (pingu->get_action() != Actions::Splashed)
 	    {
-	      if (pingu->get_x() > data->pos.x + 55  && pingu->get_x() < data->pos.x + 77
-		    && pingu->get_y() > data->pos.y + 146 && pingu->get_y() < data->pos.y + 185)
+	      if (pingu->get_x() > pos.x + 55  && pingu->get_x() < pos.x + 77
+		    && pingu->get_y() > pos.y + 146 && pingu->get_y() < pos.y + 185)
 		  pingu->set_action(Actions::Splashed);
 	    }
 	}

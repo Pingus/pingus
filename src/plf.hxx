@@ -22,11 +22,10 @@
 
 #include <map>
 #include "action_data.hxx"
-#include "worldobjsdata/groundpiece_data.hxx"
 
 namespace Pingus {
 
-class WorldObjData;
+class WorldObj;
 
 /** The Pingus Level File
 
@@ -94,7 +93,7 @@ protected:
 
   /** FIXME: PLF should probally become and interface only, it currently is a
       bit overfull */
-  std::vector<WorldObjData*> worldobjs_data;
+  std::vector<WorldObj*> worldobjs;
 
 public:
   PLF();
@@ -155,7 +154,7 @@ public:
 
   /** Return a access to the worldobj_data, the caller must not delete
       anything in this vector */
-  std::vector<WorldObjData*> get_worldobjs_data ();
+  std::vector<WorldObj*> get_worldobjs();
 
   /** Creates a PLF (XMLPLF or PLFPLF, depending on the file
       extension) from a file. The pathname must be complete */

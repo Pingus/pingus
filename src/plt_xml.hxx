@@ -21,11 +21,9 @@
 #define HEADER_PINGUS_PLT_XML_HXX
 
 #include <map>
-#include "worldobjsdata/surface_background_data.hxx"
+#include "xml_helper.hxx"
 
 namespace Pingus {
-
-using WorldObjsData::SurfaceBackgroundData;
 
 class PLTXML
 {
@@ -34,7 +32,6 @@ private:
   std::vector<std::string> level_list;
   std::map<std::string, std::string> world_name;
   std::map<std::string, std::string> description;
-  SurfaceBackgroundData background;
 
   void parse_file();
   void parse_background(xmlNodePtr cur);
@@ -50,7 +47,6 @@ public:
 
   std::map<std::string,std::string> get_name ();
   std::map<std::string,std::string> get_description ();
-  SurfaceBackgroundData get_background ();
   std::string get_surface () { return ""; }
   std::vector<std::string> get_levels ();
 

@@ -78,13 +78,13 @@ World::add_object (WorldObj* obj)
 void
 World::init_worldobjs(PLF* plf)
 {
-  std::vector<WorldObjData*> worldobj_d = plf->get_worldobjs_data();
+  std::vector<WorldObj*> worldobj_d = plf->get_worldobjs();
 
-  for (std::vector<WorldObjData*>::iterator i = worldobj_d.begin();
+  for (std::vector<WorldObj*>::iterator i = worldobj_d.begin();
        i != worldobj_d.end ();
        ++i)
     {
-      (*i)->insert_WorldObjs (this);
+      add_object(*i); //->insert_WorldObjs(this);
     }
 
    world_obj.push_back(pingus);
