@@ -1,4 +1,4 @@
-//  $Id: liquid_data.cxx,v 1.5 2002/10/02 19:20:19 grumbel Exp $
+//  $Id: liquid_data.cxx,v 1.6 2003/02/18 01:23:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,7 @@
 #include "../worldobjs/liquid.hxx"
 #include "../string_converter.hxx"
 #include "../xml_helper.hxx"
+#include "../xml_file_reader.hxx"
 #include "liquid_data.hxx"
 
 namespace WorldObjsData {
@@ -45,30 +46,11 @@ LiquidData::LiquidData (xmlDocPtr doc, xmlNodePtr cur)
       std::cout << "XMLPLF: Use Old Width Handling: " << old_width_handling << std::endl;
     }
 
-  cur = cur->children;
-  while (cur)
-    {
-      if (xmlIsBlankNode(cur)) 
-	{
-	  cur = cur->next;
-	  continue;
-	}
-
-      if (XMLhelper::equal_str(cur->name, "position"))
-	pos = XMLhelper::parse_vector(doc, cur);
-      else if (XMLhelper::equal_str(cur->name, "surface"))
-	desc = XMLhelper::parse_surface(doc, cur);
-      else if (XMLhelper::equal_str(cur->name, "speed"))
-	speed = XMLhelper::parse_int(doc, cur);
-      else if (XMLhelper::equal_str(cur->name, "width"))
-	width = XMLhelper::parse_int(doc, cur);
-      else
-	{
-	  std::cout << "XMLPLF::parse_liquid: Unhandled: " << cur->name << std::endl;
-	}	
-
-      cur = cur->next;
-    }
+  XMLFileReader reader(doc, cur);
+  reader.read_vector("position", pos);
+  reader.read_desc("surface", desc);
+  reader.read_int("speed", speed);
+  reader.read_int("width", width);
 }
 
 LiquidData::LiquidData (const LiquidData& old) : WorldObjData(old),

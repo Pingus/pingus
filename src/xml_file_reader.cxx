@@ -1,4 +1,4 @@
-//  $Id: xml_file_reader.cxx,v 1.1 2002/12/20 18:45:41 grumbel Exp $
+//  $Id: xml_file_reader.cxx,v 1.2 2003/02/18 01:23:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,8 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "res_descriptor.hxx"
+#include "color.hxx"
 #include "xml_file_reader.hxx"
 
 XMLFileReader::XMLFileReader(xmlDocPtr doc_, xmlNodePtr node)
@@ -41,18 +43,20 @@ XMLFileReader::find_node(const char* name)
         {
           return node;
         }
+
+      node = node->next;
     }
-  return 0;
+  return NULL;
 }
 
 bool
-XMLFileReader::read_int   (const char* name, int* value)
+XMLFileReader::read_desc  (const char* name, ResDescriptor& value)
 {
   xmlNodePtr node = find_node(name);
 
   if (node)
     {
-      *value = XMLhelper::parse_int(doc, node);
+      value = XMLhelper::parse_surface(doc, node);
       return true;
     }
 
@@ -60,13 +64,27 @@ XMLFileReader::read_int   (const char* name, int* value)
 }
 
 bool
-XMLFileReader::read_float (const char* name, float* value)
+XMLFileReader::read_color (const char* name, Color& value)
 {
   xmlNodePtr node = find_node(name);
 
   if (node)
     {
-      *value = XMLhelper::parse_float(doc, node);
+      value = XMLhelper::parse_color(doc, node);
+      return true;
+    }
+
+  return false;  
+}
+
+bool
+XMLFileReader::read_int   (const char* name, int& value)
+{
+  xmlNodePtr node = find_node(name);
+
+  if (node)
+    {
+      value = XMLhelper::parse_int(doc, node);
       return true;
     }
 
@@ -74,13 +92,13 @@ XMLFileReader::read_float (const char* name, float* value)
 }
 
 bool
-XMLFileReader::read_bool  (const char* name, bool* value)
+XMLFileReader::read_float (const char* name, float& value)
 {
   xmlNodePtr node = find_node(name);
 
   if (node)
     {
-      *value = XMLhelper::parse_bool(doc, node);
+      value = XMLhelper::parse_float(doc, node);
       return true;
     }
 
@@ -88,13 +106,13 @@ XMLFileReader::read_bool  (const char* name, bool* value)
 }
 
 bool
-XMLFileReader::read_string(const char* name, std::string* value)
+XMLFileReader::read_bool  (const char* name, bool& value)
 {
   xmlNodePtr node = find_node(name);
 
   if (node)
     {
-      *value = XMLhelper::parse_string(doc, node);
+      value = XMLhelper::parse_bool(doc, node);
       return true;
     }
 
@@ -102,13 +120,27 @@ XMLFileReader::read_string(const char* name, std::string* value)
 }
 
 bool
-XMLFileReader::read_vector(const char* name, Vector* value)
+XMLFileReader::read_string(const char* name, std::string& value)
 {
   xmlNodePtr node = find_node(name);
 
   if (node)
     {
-      *value = XMLhelper::parse_vector(doc, node);
+      value = XMLhelper::parse_string(doc, node);
+      return true;
+    }
+
+  return false;
+}
+
+bool
+XMLFileReader::read_vector(const char* name, Vector& value)
+{
+  xmlNodePtr node = find_node(name);
+
+  if (node)
+    {
+      value = XMLhelper::parse_vector(doc, node);
       return true;
     }
 

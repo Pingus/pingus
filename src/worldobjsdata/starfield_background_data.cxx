@@ -1,4 +1,4 @@
-//  $Id: starfield_background_data.cxx,v 1.5 2002/09/28 19:31:07 torangan Exp $
+//  $Id: starfield_background_data.cxx,v 1.6 2003/02/18 01:23:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,7 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
-#include "../xml_helper.hxx"
+#include "../xml_file_reader.hxx"
 #include "../editorobjs/starfield_background_obj.hxx"
 #include "../worldobjs/starfield_background.hxx"
 #include "starfield_background_data.hxx"
@@ -34,48 +34,23 @@ StarfieldBackgroundData::StarfieldBackgroundData ()
 
 StarfieldBackgroundData::StarfieldBackgroundData (const StarfieldBackgroundData& old)
   : WorldObjData(old),
-     small_stars_count(old. small_stars_count),
+    small_stars_count(old. small_stars_count),
     middle_stars_count(old.middle_stars_count),
-     large_stars_count(old. large_stars_count)
+    large_stars_count(old. large_stars_count)
 {
 }
  
 StarfieldBackgroundData::StarfieldBackgroundData (xmlDocPtr doc, xmlNodePtr cur)
 {
-   small_stars_count = 100;
+  small_stars_count = 100;
   middle_stars_count = 50;
-   large_stars_count = 25;
+  large_stars_count = 25;
 
-  cur = cur->children;
 
-  while (cur)
-    {
-      if (xmlIsBlankNode(cur)) 
-	{
-	  cur = cur->next;
-	  continue;
-	}
-      
-      if (XMLhelper::equal_str(cur->name, "small-stars"))
-	{
-	  XMLhelper::get_prop(cur, "count", small_stars_count);
-	}
-      else if (XMLhelper::equal_str(cur->name, "middle-stars"))
-	{
-	  XMLhelper::get_prop(cur, "count", middle_stars_count);
-	}
-      else if (XMLhelper::equal_str(cur->name, "large-stars"))
-	{
-	  XMLhelper::get_prop(cur, "count", large_stars_count);
-	}
-      else
-	{
-	  std::cout << "StarfildBackgroundData:create: Unhandled tag: " << cur->name << std::endl;
-	} 
-      cur = cur->next;
-    }
-    
-  UNUSED_ARG(doc);
+  XMLFileReader reader(doc, cur);
+  reader.read_int("small-stars", small_stars_count);
+  reader.read_int("middle-stars", middle_stars_count);
+  reader.read_int("large-stars", large_stars_count);
 }
 
 void 

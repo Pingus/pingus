@@ -1,4 +1,4 @@
-//  $Id: xml_file_writer.hxx,v 1.2 2002/12/28 16:57:38 torangan Exp $
+//  $Id: xml_file_writer.hxx,v 1.3 2003/02/18 01:23:51 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,8 @@
 #include <iosfwd>
 #include "file_writer.hxx"
 
+class Color;
+
 /** */
 class XMLFileWriter : public FileWriter
 {
@@ -38,11 +40,13 @@ public:
   virtual ~XMLFileWriter();
 
   void begin_section (const char* name);
+  void begin_section (const char* name, const char* attributes);
   void end_section ();
 
   void write_int    (const char* name, int);
   void write_float  (const char* name, float);
   void write_bool   (const char* name, bool);
+  void write_color  (const char* name, const Color&);
   void write_string (const char* name, const std::string&);
   void write_vector (const char* name, const Vector&);
   

@@ -1,4 +1,4 @@
-//  $Id: xml_file_reader.hxx,v 1.1 2002/12/20 18:45:41 grumbel Exp $
+//  $Id: xml_file_reader.hxx,v 1.2 2003/02/18 01:23:51 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,13 +36,18 @@ private:
 
   xmlNodePtr find_node(const char* name);
 public:
+  /** @param doc is a pointer to the xml document tree
+      @param node is a pointer to the node of the section to read, but
+      not a pointer to the first element of the section! */
   XMLFileReader(xmlDocPtr doc, xmlNodePtr node);
   
-  bool read_int   (const char* name, int*);
-  bool read_float (const char* name, float*);
-  bool read_bool  (const char* name, bool*);
-  bool read_string(const char* name, std::string*);
-  bool read_vector(const char* name, Vector*);
+  bool read_int   (const char* name, int&);
+  bool read_desc  (const char* name, ResDescriptor&);
+  bool read_color (const char* name, Color&);
+  bool read_float (const char* name, float&);
+  bool read_bool  (const char* name, bool&);
+  bool read_string(const char* name, std::string&);
+  bool read_vector(const char* name, Vector&);
 
 private:
   XMLFileReader (const XMLFileReader&);

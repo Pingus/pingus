@@ -1,4 +1,4 @@
-//  $Id: solid_color_background_data.cxx,v 1.3 2002/09/27 18:36:41 torangan Exp $
+//  $Id: solid_color_background_data.cxx,v 1.4 2003/02/18 01:23:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,7 +18,8 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
-#include "../xml_helper.hxx"
+#include "../xml_file_reader.hxx"
+#include "../xml_file_writer.hxx"
 #include "../editorobjs/solid_color_background_obj.hxx"
 #include "../worldobjs/solid_color_background.hxx"
 #include "solid_color_background_data.hxx"
@@ -27,25 +28,8 @@ namespace WorldObjsData {
 
 SolidColorBackgroundData::SolidColorBackgroundData (xmlDocPtr doc, xmlNodePtr cur)
 {
-  cur = cur->children;
-  while (cur)
-    {
-      if (xmlIsBlankNode(cur)) 
-	{
-	  cur = cur->next;
-	  continue;
-	}
-
-      if (XMLhelper::equal_str(cur->name, "color"))
-	{
-	  color = XMLhelper::parse_color (doc, cur);
-	}
-      else
-	{
-	  std::cout << "SolidColorBackground: Unhandled tag: " << cur->name << std::endl;
-	}
-      cur = cur->next;
-    }
+  XMLFileReader reader(doc, cur);
+  reader.read_color("color", color);
 }
 
 SolidColorBackgroundData::SolidColorBackgroundData (const SolidColorBackgroundData& old)
@@ -58,7 +42,10 @@ SolidColorBackgroundData::SolidColorBackgroundData (const SolidColorBackgroundDa
 void
 SolidColorBackgroundData::write_xml (std::ostream& xml)
 {
-  xml << "<worldobj type=\"solidcolor-background\"></worldobj>" << std::endl;
+  XMLFileWriter writer(xml);
+  writer.begin_section("worldobj", "type=\"solidcolor-background\"");
+  writer.write_color("color", color);
+  writer.end_section();
 }
 
 WorldObj* 

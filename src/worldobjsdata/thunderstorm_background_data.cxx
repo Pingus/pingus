@@ -1,4 +1,4 @@
-//  $Id: thunderstorm_background_data.cxx,v 1.3 2002/09/27 18:36:42 torangan Exp $
+//  $Id: thunderstorm_background_data.cxx,v 1.4 2003/02/18 01:23:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,7 @@
 
 #include <iostream>
 #include "../xml_helper.hxx"
+#include "../xml_file_reader.hxx"
 #include "../editorobjs/thunderstorm_background_obj.hxx"
 #include "../worldobjs/thunderstorm_background.hxx"
 #include "thunderstorm_background_data.hxx"
@@ -40,20 +41,8 @@ ThunderstormBackgroundData::ThunderstormBackgroundData (const ThunderstormBackgr
 
 ThunderstormBackgroundData::ThunderstormBackgroundData (xmlDocPtr doc, xmlNodePtr cur)
 {
-  cur = cur->children; 
-  while (cur)
-    {
-      if (xmlIsBlankNode(cur)) {
-	cur = cur->next;
-	continue;
-      }
-
-      if (XMLhelper::equal_str(cur->name, "position")) {
-	pos = XMLhelper::parse_vector (doc, cur);
-      } else {
-	std::cout << "ThunderstormBackgroundData::create(xmlDocPtr doc, xmlNodePtr cur) error" << std::endl;
-      }
-    }
+  XMLFileReader reader(doc, cur);
+  reader.read_vector("position", pos);
 }
 
 WorldObj* 

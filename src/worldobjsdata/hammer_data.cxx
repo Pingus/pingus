@@ -1,4 +1,4 @@
-//  $Id: hammer_data.cxx,v 1.8 2002/10/01 23:40:19 grumbel Exp $
+//  $Id: hammer_data.cxx,v 1.9 2003/02/18 01:23:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #include <iostream>
 #include "hammer_data.hxx"
 #include "../xml_helper.hxx"
+#include "../xml_file_reader.hxx"
 #include "../editorobjs/hammer_obj.hxx"
 #include "../worldobjs/hammer.hxx"
 #include "../pingus_resource.hxx"
@@ -32,18 +33,8 @@ HammerData::HammerData ()
 
 HammerData::HammerData (xmlDocPtr doc, xmlNodePtr cur)
 {
-  cur = cur->children;
-  while (cur)
-    {
-      XMLhelper::skip_blank(cur);
-
-      if (XMLhelper::equal_str(cur->name, "position")) 
-	{
-	  pos = XMLhelper::parse_vector(doc, cur);
-	}
-	  
-      cur = cur->next;
-    }
+  XMLFileReader reader(doc, cur);
+  reader.read_vector("position", pos);
 }
 
 HammerData::HammerData (const HammerData& old) 

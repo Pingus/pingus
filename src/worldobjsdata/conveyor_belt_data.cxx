@@ -1,4 +1,4 @@
-//  $Id: conveyor_belt_data.cxx,v 1.7 2003/02/18 00:15:32 grumbel Exp $
+//  $Id: conveyor_belt_data.cxx,v 1.8 2003/02/18 01:23:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,7 +18,8 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
-#include "../xml_helper.hxx"
+#include "../xml_file_reader.hxx"
+#include "../xml_file_writer.hxx"
 #include "../editorobjs/conveyor_belt_obj.hxx"
 #include "../worldobjs/conveyor_belt.hxx"
 #include "conveyor_belt_data.hxx"
@@ -34,23 +35,10 @@ ConveyorBeltData::ConveyorBeltData ()
 
 ConveyorBeltData::ConveyorBeltData (xmlDocPtr doc, xmlNodePtr cur)
 {
-  cur = cur->children;
-  
-  XMLReader reader(doc, cur);
+  XMLFileReader reader(doc, cur);
   reader.read_vector("position", pos);
-	}
-      else if (XMLhelper::equal_str(cur->name, "width"))
-	{
-	  width = XMLhelper::parse_int(doc, cur);
-	}
-      else if (XMLhelper::equal_str(cur->name, "speed"))
-	{
-	  speed = XMLhelper::parse_int(doc, cur);
-	}
-      else
-	std::cout << "ConveyorBeltData::create (): Unhandled " << cur->name << std::endl;
-      cur = cur->next;
-    }
+  reader.read_int("width", width);
+  reader.read_float("speed", speed);
 }
 
 ConveyorBeltData::ConveyorBeltData (const ConveyorBeltData& old)
@@ -67,11 +55,12 @@ ConveyorBeltData::ConveyorBeltData (const ConveyorBeltData& old)
 void 
 ConveyorBeltData::write_xml (std::ostream& xml)
 {
-  xml << "  <worldobj type=\"conveyorbelt\">";
-  XMLhelper::write_vector_xml (xml, pos);
-  xml << "    <width>" << width << "</width>\n"
-      << "    <speed>" << speed << "</speed>\n"
-      << "  </worldobj>\n" << std::endl;
+  XMLFileWriter writer(xml);
+  writer.begin_section("worldobj", "type=\"conveyorbelt\"");
+  writer.write_vector("position", pos);
+  writer.write_int("width", width);
+  writer.write_float("speed", speed);
+  writer.end_section();
 }
 
 WorldObj* 

@@ -1,4 +1,4 @@
-//  $Id: spike_data.hxx,v 1.4 2002/09/28 11:52:27 torangan Exp $
+//  $Id: spike_data.hxx,v 1.5 2003/02/18 01:23:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,7 +28,8 @@
 
 namespace WorldObjsData {
 
-class SpikeData : public WorldObjData {
+class SpikeData : public WorldObjData 
+{
 public:
   CL_Surface  surface;
   Vector   pos;

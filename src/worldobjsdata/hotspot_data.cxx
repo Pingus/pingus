@@ -1,4 +1,4 @@
-//  $Id: hotspot_data.cxx,v 1.3 2002/09/27 18:36:41 torangan Exp $
+//  $Id: hotspot_data.cxx,v 1.4 2003/02/18 01:23:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #include "../editorobjs/hotspot_obj.hxx"
 #include "../worldobjs/hotspot.hxx"
 #include "../xml_helper.hxx"
+#include "../xml_file_reader.hxx"
 #include "hotspot_data.hxx"
 
 namespace WorldObjsData {
@@ -42,37 +43,11 @@ HotspotData::write_xml(std::ostream& xml)
 
 HotspotData::HotspotData (xmlDocPtr doc, xmlNodePtr cur)
 {
-  cur = cur->children;
-  while (cur)
-    {
-      if (xmlIsBlankNode(cur)) 
-	{
-	  cur = cur->next;
-	  continue;
-	}
-      
-      if (XMLhelper::equal_str(cur->name, "surface"))
-	{
-	  desc = XMLhelper::parse_surface(doc, cur);
-	} 
-      else if (XMLhelper::equal_str(cur->name, "position")) 
-	{
-	  pos = XMLhelper::parse_vector(doc, cur);
-	}
-      else if (XMLhelper::equal_str(cur->name, "speed")) 
-	{
-	  speed = XMLhelper::parse_int(doc, cur);
-	}
-      else if (XMLhelper::equal_str(cur->name, "parallax"))
-	{
-	  para = XMLhelper::parse_int(doc, cur);
-	}
-      else
-	{
-	  std::cout << "XMLPLF: parse_hotspot: Unhandled: " << cur->name << std::endl;
-	}
-      cur = cur->next;
-    }
+  XMLFileReader reader(doc, cur);
+  reader.read_vector("position", pos);
+  reader.read_desc("surface", desc);
+  reader.read_int("speed", speed);
+  reader.read_float("parallax", para);
 }
 
 HotspotData::HotspotData (const HotspotData& old) : WorldObjData(old),

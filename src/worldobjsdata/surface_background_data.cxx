@@ -1,4 +1,4 @@
-//  $Id: surface_background_data.cxx,v 1.5 2002/10/12 00:22:56 grumbel Exp $
+//  $Id: surface_background_data.cxx,v 1.6 2003/02/18 01:23:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,7 @@
 
 #include <iostream>
 #include "../xml_helper.hxx"
+#include "../xml_file_reader.hxx"
 #include "../editorobjs/surface_background_obj.hxx"
 #include "../worldobjs/surface_background.hxx"
 #include "surface_background_data.hxx"
@@ -78,57 +79,21 @@ SurfaceBackgroundData::SurfaceBackgroundData (xmlDocPtr doc, xmlNodePtr cur)
 {
   pos.z = -150;
 
-  cur = cur->children;  
-  while (cur)
-    {
-      if (xmlIsBlankNode(cur)) 
-	{
-	  cur = cur->next;
-	  continue;
-	}
+  XMLFileReader reader(doc, cur);
 
-      if (XMLhelper::equal_str(cur->name, "surface"))
-	{
-	  desc = XMLhelper::parse_surface(doc, cur);
-	}
-      else if (XMLhelper::equal_str(cur->name, "color"))
-	{
-	  color = XMLhelper::parse_color(doc, cur);
-	}
-      else if (XMLhelper::equal_str(cur->name, "para-x"))
-	{
-	  para_x = XMLhelper::parse_float(doc, cur);
-	}
-      else if (XMLhelper::equal_str(cur->name, "para-y"))
-	{
-	  para_y = XMLhelper::parse_float(doc, cur);
-	}
-      else if (XMLhelper::equal_str(cur->name, "scroll-x"))
-	{
-	  scroll_x = XMLhelper::parse_float(doc, cur);
-	}
-      else if (XMLhelper::equal_str(cur->name, "scroll-y"))
-	{
-	  scroll_y = XMLhelper::parse_float(doc, cur);
-	}
-      else if (XMLhelper::equal_str(cur->name, "stretch-x"))
-	{
-	  stretch_x = XMLhelper::parse_bool(doc, cur);
-	}
-      else if (XMLhelper::equal_str(cur->name, "stretch-y"))
-	{
-	  stretch_y = XMLhelper::parse_bool(doc, cur);
-	}
-      else if (XMLhelper::equal_str(cur->name, "position"))
-	{
-	  pos = XMLhelper::parse_vector(doc, cur);  
-	}
-      else
-	{
-	  std::cout << "XMLPLF::parse_background(): Unhandled: " << cur->name << std::endl;
-	}
-      cur = cur->next;
-    }      
+  reader.read_desc("surface", desc);
+  reader.read_color("color", color);
+
+  reader.read_float("para-x", para_x);
+  reader.read_float("para-y", para_y);
+
+  reader.read_float("scroll-x", scroll_x);
+  reader.read_float("scroll-y", scroll_y);
+  
+  reader.read_bool("stretch-x", stretch_x);
+  reader.read_bool("stretch-y", stretch_y);
+
+  reader.read_vector("position", pos);
 }
 
 WorldObj* 

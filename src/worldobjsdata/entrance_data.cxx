@@ -1,4 +1,4 @@
-//  $Id: entrance_data.cxx,v 1.3 2002/09/30 14:20:49 torangan Exp $
+//  $Id: entrance_data.cxx,v 1.4 2003/02/18 01:23:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,7 @@
 #include "../pingus_error.hxx"
 #include "../string_converter.hxx"
 #include "../xml_helper.hxx"
+#include "../xml_file_reader.hxx"
 #include "entrance_data.hxx"
 
 namespace WorldObjsData {
@@ -39,49 +40,23 @@ EntranceData::EntranceData (xmlDocPtr doc, xmlNodePtr cur) : direction(MISC),
 							     owner_id(0),
 							     type("generic")
 {
-  cur = cur->children;  
-  while (cur)
-    {
-      if (xmlIsBlankNode(cur)) 
-	{
-	  cur = cur->next;
-	  continue;
-	}
+  XMLFileReader reader(doc,cur);
+  reader.read_string("type", type);
+  reader.read_int("owner-id", owner_id);
+  reader.read_vector("position", pos);
+  reader.read_int("release-rate", release_rate);
+  
+  std::string direction_str;
+  reader.read_string("directorion-rate", direction_str);
 
-      if (XMLhelper::equal_str(cur->name, "type"))
-	{
-	  XMLhelper::node_list_get_string(doc, cur->children, 1, type);
-	}
-      else if (XMLhelper::equal_str(cur->name, "owner-id"))
-	{
-	  owner_id = XMLhelper::parse_int(doc, cur);
-	}
-      else if (XMLhelper::equal_str(cur->name, "position"))
-	{
-	  pos = XMLhelper::parse_vector(doc, cur);
-	}
-      else if (XMLhelper::equal_str(cur->name, "release-rate"))
-	{
-	  XMLhelper::node_list_get_string(doc, cur->children, 1, release_rate);
-	}
-      else if (XMLhelper::equal_str(cur->name, "direction"))
-	{
-	  std::string direction_str;
-	  XMLhelper::node_list_get_string(doc, cur->children, 1, direction_str);
-
-	  if (direction_str == "left")
-	    direction = EntranceData::LEFT;
-	  else if (direction_str == "right")
-	    direction = EntranceData::RIGHT;
-	  else if (direction_str == "misc")
-	    direction = EntranceData::MISC;
-	}
-      else
-	{
-	  printf("Unhandled: %s\n", (char*)cur->name);
-	}	
-      cur = cur->next;	
-    }
+  if (direction_str == "left")
+    direction = EntranceData::LEFT;
+  else if (direction_str == "right")
+    direction = EntranceData::RIGHT;
+  else if (direction_str == "misc")
+    direction = EntranceData::MISC;
+  else
+    direction = EntranceData::MISC;
 }
 
 EntranceData::EntranceData (const EntranceData& old) : WorldObjData(old),

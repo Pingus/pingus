@@ -1,4 +1,4 @@
-//  $Id: smasher_data.cxx,v 1.7 2002/09/27 18:36:41 torangan Exp $
+//  $Id: smasher_data.cxx,v 1.8 2003/02/18 01:23:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #include <iostream>
 #include "smasher_data.hxx"
 #include "../xml_helper.hxx"
+#include "../xml_file_reader.hxx"
 #include "../editorobjs/smasher_obj.hxx"
 #include "../worldobjs/smasher.hxx"
 #include "../pingus_resource.hxx"
@@ -32,18 +33,8 @@ SmasherData::SmasherData ()
 
 SmasherData::SmasherData (xmlDocPtr doc, xmlNodePtr cur) : surface(PingusResource::load_surface("Traps/smasher", "traps"))
 {
-  cur = cur->children;
-  while (cur)
-    {
-      XMLhelper::skip_blank(cur);
-
-      if (XMLhelper::equal_str(cur->name, "position")) 
-	{
-	  pos = XMLhelper::parse_vector(doc, cur);
-	}
-	  
-      cur = cur->next;
-    }
+  XMLFileReader reader(doc, cur);
+  reader.read_vector("position", pos);
 }
 
 SmasherData::SmasherData (const SmasherData& old) : WorldObjData(old),

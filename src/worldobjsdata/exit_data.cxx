@@ -1,4 +1,4 @@
-//  $Id: exit_data.cxx,v 1.4 2002/10/28 20:13:40 grumbel Exp $
+//  $Id: exit_data.cxx,v 1.5 2003/02/18 01:23:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #include <iostream>
 #include "../string_converter.hxx"
 #include "../xml_helper.hxx"
+#include "../xml_file_reader.hxx"
 #include "../editorobjs/exit_obj.hxx"
 #include "../worldobjs/exit.hxx"
 #include "exit_data.hxx"
@@ -39,40 +40,10 @@ ExitData::ExitData (xmlDocPtr doc, xmlNodePtr cur) : owner_id(0),
       std::cout << "XMLPLF: Use Old Pos Handling: " << use_old_pos_handling << std::endl;
     }
 
-  /* 
-     PropertyReader reader();
-
-     reader.reg_bool("use-old-pos-handling", false, OPTIONAL);
-     reader.reg_pos ("position", false, OPTIONAL);
-   */
-
-  cur = cur->children;
-  while (cur)
-    {
-      if (xmlIsBlankNode(cur)) 
-	{
-	  cur = cur->next;
-	  continue;
-	}
-      
-      if (XMLhelper::equal_str(cur->name, "position"))
-	{
-	  pos = XMLhelper::parse_vector(doc, cur);
-	}
-      else if (XMLhelper::equal_str(cur->name, "surface"))
-	{
-	  desc = XMLhelper::parse_surface(doc, cur);
-	}
-      else if (XMLhelper::equal_str(cur->name, "owner-id"))
-	{
-	  owner_id = XMLhelper::parse_int(doc, cur);
-	}
-      else
-	{
-	  std::cout << "XMLPLF: Unhandled exit tag: " << (char*)cur->name << std::endl;
-	}
-      cur = cur->next;	
-    }
+  XMLFileReader reader(doc, cur);
+  reader.read_vector("position", pos);
+  reader.read_desc("surface", desc);
+  reader.read_int("owner-id", owner_id);
 }
 
 ExitData::ExitData (const ExitData& old) : WorldObjData(old),
