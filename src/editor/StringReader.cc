@@ -1,4 +1,4 @@
-//  $Id: StringReader.cc,v 1.3 2000/02/11 16:58:28 grumbel Exp $
+//  $Id: StringReader.cc,v 1.4 2000/02/11 21:26:38 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -147,7 +147,7 @@ StringReader::find_uniq()
 }
 
 string
-StringReader::while_eq(const string& a, const string& b)
+StringReader::while_eq(const std::string& a, const std::string& b)
 {
   std::string ret_string;
   

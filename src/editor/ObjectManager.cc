@@ -1,4 +1,4 @@
-//  $Id: ObjectManager.cc,v 1.3 2000/02/11 16:58:28 grumbel Exp $
+//  $Id: ObjectManager.cc,v 1.4 2000/02/11 21:26:38 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -48,7 +48,7 @@ ObjectManager::new_level ()
   number_to_save   = 50;
   number_of_pingus = 100;
 
-  background.desc.filename = "(resource:textures.dat)";
+  background.desc.filename = "textures.dat";
   background.desc.res_name = "Textures/crystal";
 
   editor_objs.erase(editor_objs.begin(), editor_objs.end());
@@ -160,7 +160,7 @@ ObjectManager::save_level (std::string filename)
   // FIXME: we need some error checking
   
   plf_out << "/* This level was created with the PLE\n"
-	  << " * $Id: ObjectManager.cc,v 1.3 2000/02/11 16:58:28 grumbel Exp $\n"
+	  << " * $Id: ObjectManager.cc,v 1.4 2000/02/11 21:26:38 grumbel Exp $\n"
 	  << " */"
 	  << std::endl;
   
@@ -177,7 +177,7 @@ ObjectManager::save_level (std::string filename)
 
   plf_out << "ground {\n"
 	  << "  maptype = \"SPOT\";\n"
-    	  << "  data    = (file)\"" << System::basename(filename + ".psm") << "\";\n"
+    //    	  << "  data    = (file)\"" << System::basename(filename + ".psm") << "\";\n"
 	  << "  width   = " << width << ";\n"
 	  << "  height  = " << height << ";\n"
 	  << "  colmap  = (auto);\n"

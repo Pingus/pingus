@@ -1,4 +1,4 @@
-//  $Id: System.cc,v 1.3 2000/02/11 16:58:26 grumbel Exp $
+//  $Id: System.cc,v 1.4 2000/02/11 21:26:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,13 +28,13 @@
  
 #include "System.hh"
 
-System::DirectoryEntry::DirectoryEntry(const string& n)
+System::DirectoryEntry::DirectoryEntry(const std::string& n)
 {
   name = n;
 }
 
 System::Directory
-System::opendir(const string& pathname, const string& pattern)
+System::opendir(const std::string& pathname, const std::string& pattern)
 {
   list<System::DirectoryEntry> dir_list;
 

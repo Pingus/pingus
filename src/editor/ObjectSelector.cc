@@ -1,4 +1,4 @@
-//  $Id: ObjectSelector.cc,v 1.3 2000/02/11 16:58:28 grumbel Exp $
+//  $Id: ObjectSelector.cc,v 1.4 2000/02/11 21:26:38 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -189,6 +189,7 @@ ObjectSelector::get_entrance()
   font->print_left(20, 20, "Select an entrance");
   font->print_left(20, 50, "1 - generic");
   font->print_left(20, 70, "2 - woodthing");
+  font->print_left(20, 90, "3 - cloud");
   CL_Display::flip_display();
 
   while (!have_name) 
@@ -203,6 +204,11 @@ ObjectSelector::get_entrance()
 
 	case CL_KEY_2:
 	  entrance.type = "woodthing";
+	  have_name = true;
+	  break;
+
+	case CL_KEY_3:
+	  entrance.type = "cloud";
 	  have_name = true;
 	  break;
 
@@ -306,6 +312,9 @@ ObjectSelector::read_string(std::string description, std::string def_str)
 /*
 
 $Log: ObjectSelector.cc,v $
+Revision 1.4  2000/02/11 21:26:38  grumbel
+Misc namespace cleanups
+
 Revision 1.3  2000/02/11 16:58:28  grumbel
 Added correct namespaces
 

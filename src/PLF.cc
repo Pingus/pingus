@@ -1,4 +1,4 @@
-//  $Id: PLF.cc,v 1.3 2000/02/11 16:58:25 grumbel Exp $
+//  $Id: PLF.cc,v 1.4 2000/02/11 21:26:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,8 +28,8 @@
 #include "globals.hh"
 #include "PingusError.hh"
 
-int    str_to_int(const string& str);
-double str_to_double(const string& str);
+int    str_to_int(const std::string& str);
+double str_to_double(const std::string& str);
 
 // Create a PLF object and start parsing the given file.
 PLF::PLF(std::string filename)
@@ -468,7 +468,7 @@ PLF::get_time(void)
 }
 
 int
-PLF::str_to_int(const string& str)
+PLF::str_to_int(const std::string& str)
 {
   int ret_val;
 
@@ -480,7 +480,7 @@ PLF::str_to_int(const string& str)
 }
 
 double
-PLF::str_to_double(const string& str)
+PLF::str_to_double(const std::string& str)
 {
   double ret_val;
 

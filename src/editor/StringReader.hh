@@ -1,4 +1,4 @@
-//  $Id: StringReader.hh,v 1.3 2000/02/11 16:58:28 grumbel Exp $
+//  $Id: StringReader.hh,v 1.4 2000/02/11 21:26:38 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -44,7 +44,7 @@ public:
   std::string read_string();
   void   draw();
   std::string find_uniq();
-  std::string while_eq(const string& a, const string& b);
+  std::string while_eq(const std::string& a, const std::string& b);
   void   complete_string();
 };
 

@@ -1,4 +1,4 @@
-//  $Id: Client.cc,v 1.3 2000/02/11 16:58:25 grumbel Exp $
+//  $Id: Client.cc,v 1.4 2000/02/11 21:26:37 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,7 @@
 #include "FadeOut.hh"
 #include "Playfield.hh"
 #include "LevelInterrupt.hh"
+#include "System.hh"
 #include "Result.hh"
 #include "PingusLevelResult.hh"
 
@@ -82,10 +83,15 @@ Client::play_level(std::string plf_filename, std::string psm_filename)
 
   PLF*         plf          = new PLF(plf_filename);
 
-  if (!psm_filename.empty()) {
-    plf->set_psm_filename(psm_filename);
+  // FIXME: dirty hack, should replace or merge the psm files
+  {
+    string filename = plf_filename.substr(0, plf_filename.size() - 4);
+    
+    std::cout << "PSM: " << filename + ".psm" << std::endl;
+    
+    plf->set_psm_filename(filename + ".psm");
   }
-
+  
   server->start(plf);
   event->register_event_handler();
 

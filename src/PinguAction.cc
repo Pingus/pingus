@@ -1,4 +1,4 @@
-//  $Id: PinguAction.cc,v 1.3 2000/02/11 16:58:25 grumbel Exp $
+//  $Id: PinguAction.cc,v 1.4 2000/02/11 21:26:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -123,7 +123,7 @@ PinguAction::get_type(void)
   return (ActionType)ONCE;
 }
 
-const string&
+const std::string&
 PinguAction::name()
 {
   return action_name;

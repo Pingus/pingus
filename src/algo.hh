@@ -1,4 +1,4 @@
-//  $Id: algo.hh,v 1.3 2000/02/11 16:58:26 grumbel Exp $
+//  $Id: algo.hh,v 1.4 2000/02/11 21:26:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -52,7 +52,7 @@ string find_file(std::string paths, std::string filename);
  return tmp.str();
  }*/
 /*
-template<class T> inline void from_string(const string& s, T& n)
+template<class T> inline void from_string(const std::string& s, T& n)
 {
  std::istringstream tmp(s);
  tmp >> n;

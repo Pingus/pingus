@@ -1,4 +1,4 @@
-//  $Id: ActionHolder.cc,v 1.3 2000/02/11 16:58:24 grumbel Exp $
+//  $Id: ActionHolder.cc,v 1.4 2000/02/11 21:26:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -67,7 +67,7 @@ ActionHolder::~ActionHolder()
 }
 
 void
-ActionHolder::add_action(const string& name, int available)
+ActionHolder::add_action(const std::string& name, int available)
 {
   if (verbose > 1)
     std::cout << "ActionHolder::add_action(" << name << ", " << available << ");" << std::endl;
@@ -81,7 +81,7 @@ ActionHolder::add_action(const string& name, int available)
 }
 
 int
-ActionHolder::get_available(const string& name)
+ActionHolder::get_available(const std::string& name)
 {
   if (verbose > 1)
     std::cout << "ActionHolder::get_available: " << name << ":" << action[name].number << std::endl;
@@ -89,7 +89,7 @@ ActionHolder::get_available(const string& name)
 }
 
 PinguAction*
-ActionHolder::get_action(const string& name)
+ActionHolder::get_action(const std::string& name)
 {
   ActionCounter* count;
   
@@ -115,7 +115,7 @@ ActionHolder::get_action(const string& name)
 }
 
 void
-ActionHolder::push_action(const string& name)
+ActionHolder::push_action(const std::string& name)
 {
   action[name].number++;
   
@@ -124,7 +124,7 @@ ActionHolder::push_action(const string& name)
 }
 
 PinguAction*
-ActionHolder::translate_action(const string& name)
+ActionHolder::translate_action(const std::string& name)
 {
   if (name == "climber") {
     return new Climber;
@@ -158,7 +158,7 @@ ActionHolder::translate_action(const string& name)
 }
 
 PinguAction* 
-ActionHolder::get_uaction(const string& name)
+ActionHolder::get_uaction(const std::string& name)
 {
   PinguAction* tmp_action;
   

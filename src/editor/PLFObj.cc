@@ -1,4 +1,4 @@
-//  $Id: PLFObj.cc,v 1.3 2000/02/11 16:58:28 grumbel Exp $
+//  $Id: PLFObj.cc,v 1.4 2000/02/11 21:26:38 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -98,6 +98,13 @@ EntranceObj::EntranceObj(entrance_data data)
       y_of = 32 - (int)(surf->get_height());
       std::cout << "Loading woodthing..." << x_of << " " << y_of << std::endl;
     } 
+  else if (type == "cloud")
+    {
+      surf = CL_Surface::load("Entrances/cloud", PingusResource::get("global.dat"));
+      x_of = -115;
+      y_of = -75;
+    } 
+
   else 
     {
       std::cout << "Entrance obj error!" << std::endl;

@@ -1,4 +1,4 @@
-//  $Id: PinguAction.hh,v 1.3 2000/02/11 16:58:25 grumbel Exp $
+//  $Id: PinguAction.hh,v 1.4 2000/02/11 21:26:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -119,7 +119,7 @@ public:
   virtual ActionType get_type(void);
 
   // The name of the action, used in PinguInfo.hh
-  const string& name(void);
+  const std::string& name(void);
   
   // Catch another pingu and act on it (see blocker.hh)
   virtual bool  need_catch();
