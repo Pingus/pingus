@@ -1,4 +1,4 @@
-//  $Id: XMLhelper.hh,v 1.15 2002/01/21 11:13:54 grumbel Exp $
+//  $Id: XMLhelper.hh,v 1.16 2002/05/07 08:49:23 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,7 +28,6 @@
 #include <config.h>
 #include <ClanLib/core.h>
 
-
 // FIX: Under windows, it's necessary to use libxml/parser.h, or MS's
 // compiler will fails.
 #ifdef WIN32
@@ -36,7 +35,11 @@
   #include <libxml/parser.h>
   #undef list
 #else
-  #include <parser.h>
+#ifdef LIBXML_2
+#include <libxml/parser.h>
+#else
+#include <parser.h>
+#endif
 #endif
 
 #include "ResDescriptor.hh"
