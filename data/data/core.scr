@@ -107,6 +107,8 @@ section misc
 
         unplayable  = ../images/core/misc/unplayable.png (type=surface);
         unplayable2 = ../images/core/misc/unplayable2.png (type=surface);
+
+	infinity = ../images/core/misc/infinity.png (type=surface);
 }
 
 section worldmap

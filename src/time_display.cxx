@@ -1,4 +1,4 @@
-//  $Id: time_display.cxx,v 1.9 2002/10/08 18:18:21 grumbel Exp $
+//  $Id: time_display.cxx,v 1.10 2002/10/24 15:32:48 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,6 +29,7 @@
 #include "plf.hxx"
 
 TimeDisplay::TimeDisplay ()
+  : infinity_symbol(PingusResource::load_surface("misc/infinity", "core"))
 {
   //font = PingusResource::load_font("Fonts/numbers","fonts");
   font = PingusResource::load_font("Fonts/pingus_small","fonts");
@@ -42,7 +43,9 @@ TimeDisplay::draw (GraphicContext& gc)
   
   if (server->get_plf()->get_time() == -1 && !(pingus_debug_flags & PINGUS_DEBUG_GAMETIME))
     {
-      snprintf(time_string, 8, "00");
+      infinity_symbol.put_screen(CL_Display::get_width()
+				  - infinity_symbol.get_width() - 6,
+				  2);
     }
   else
     {  
@@ -69,8 +72,9 @@ TimeDisplay::draw (GraphicContext& gc)
 	  time_value = server->get_world()->get_time_passed();
 	  snprintf(time_string, 8, "%4d", time_value);
 	}
+
+      font->print_right(CL_Display::get_width() - 5, 1, time_string);
     }
-  font->print_right(CL_Display::get_width() - 5, 1, time_string);
 
   UNUSED_ARG(gc);
 }
