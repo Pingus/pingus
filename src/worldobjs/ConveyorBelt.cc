@@ -1,4 +1,4 @@
-//  $Id: ConveyorBelt.cc,v 1.15 2001/04/21 20:31:53 grumbel Exp $
+//  $Id: ConveyorBelt.cc,v 1.16 2001/04/27 20:44:38 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,7 +32,7 @@ ConveyorBeltData::ConveyorBeltData ()
 /** Writte the content of this object formated as xml to the given
     stream */
 void 
-ConveyorBeltData::write_xml(ofstream* xml)
+ConveyorBeltData::write_xml(std::ofstream* xml)
 {
   (*xml) << "  <worldobj type=\"conveyorbelt\">";
   XMLhelper::write_position_xml (xml, pos);
@@ -96,13 +96,13 @@ ConveyorBelt::ConveyorBelt (WorldObjData* data)
 void
 ConveyorBelt::draw_offset (int x_of, int y_of, float s = 1.0)
 {
-  left_sur.put_screen (pos.x + x_of, pos.y + y_of, counter);
+  left_sur.put_screen (int(pos.x + x_of), int(pos.y + y_of), counter);
   for (int i=0; i < width; i++)
-    middle_sur.put_screen (pos.x + left_sur.get_width () + i*middle_sur.get_width () + x_of, 
-			   pos.y + y_of, 
+    middle_sur.put_screen (int(pos.x + left_sur.get_width () + i*middle_sur.get_width () + x_of), 
+			   int(pos.y + y_of), 
 			   counter);
-  right_sur.put_screen (pos.x + left_sur.get_width () + width*middle_sur.get_width () + x_of,
-			pos.y + y_of, counter);
+  right_sur.put_screen (int(pos.x + left_sur.get_width () + width*middle_sur.get_width () + x_of),
+			int(pos.y + y_of), counter);
 }
 
 void
@@ -171,7 +171,7 @@ EditorConveyorBeltObj::duplicate()
 void
 EditorConveyorBeltObj::draw_offset(CL_Vector offset, float zoom)
 {
-  left_sur.put_screen (pos.x + offset.x, pos.y + offset.y, counter);
+  left_sur.put_screen (int(pos.x + offset.x), int(pos.y + offset.y), counter);
   for (int i=0; i < ConveyorBeltData::width; i++)
     middle_sur.put_screen (pos.x + left_sur.get_width () + i*middle_sur.get_width () + offset.x,
 			   pos.y + offset.y,

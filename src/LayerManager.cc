@@ -1,4 +1,4 @@
-//  $Id: LayerManager.cc,v 1.4 2001/04/04 10:21:16 grumbel Exp $
+//  $Id: LayerManager.cc,v 1.5 2001/04/27 20:44:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,7 +43,7 @@ LayerManager::add_layer (const CL_Surface& sur, float x_o, float y_o, float x_u,
 void
 LayerManager::draw ()
 {
-  for (vector<Layer>::iterator i = layers.begin (); 
+  for (std::vector<Layer>::iterator i = layers.begin (); 
        i != layers.end (); ++i)
     i->draw ();
 }
@@ -51,7 +51,7 @@ LayerManager::draw ()
 void 
 LayerManager::update (float delta)
 {
-  for (vector<Layer>::iterator i = layers.begin (); 
+  for (std::vector<Layer>::iterator i = layers.begin (); 
        i != layers.end (); i++)
     i->update (delta);
 }

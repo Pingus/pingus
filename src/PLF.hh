@@ -1,4 +1,4 @@
-//  $Id: PLF.hh,v 1.21 2000/12/30 23:54:05 grumbel Exp $
+//  $Id: PLF.hh,v 1.22 2001/04/27 20:44:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -158,10 +158,10 @@ public:
 
   /** Returns the description of the level, which fit to the current
       language */
-  map<std::string, std::string> get_description();
+  std::map<std::string, std::string> get_description();
 
   /** Returns the name of the current level, {\em not} the level file name. */
-  map<std::string, std::string> get_levelname();
+  std::map<std::string, std::string> get_levelname();
 
   /// Returns the name of the plf file.
   std::string get_filename();

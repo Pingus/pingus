@@ -1,4 +1,4 @@
-//  $Id: SolidColorBackground.cc,v 1.4 2001/03/18 17:45:04 grumbel Exp $
+//  $Id: SolidColorBackground.cc,v 1.5 2001/04/27 20:44:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,7 +25,7 @@
   /** Writte the content of this object formated as xml to the given
       stream */
 void
-SolidColorBackgroundData:: write_xml(ofstream* xml)
+SolidColorBackgroundData:: write_xml(std::ofstream* xml)
 {
   (*xml) << "<background type=\"solidcolor\"></background>" << std::endl;
 }

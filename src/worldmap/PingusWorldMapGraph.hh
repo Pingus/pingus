@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapGraph.hh,v 1.10 2001/04/07 16:48:30 grumbel Exp $
+//  $Id: PingusWorldMapGraph.hh,v 1.11 2001/04/27 20:44:38 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,7 +26,7 @@
 #include "../XMLhelper.hh"
 #include "../ResDescriptor.hh"
 #include "../Position.hh"
-#include "../generic/Graph.hh"
+//#include "../generic/Graph.hh"
 
 class PingusWorldMapNode
 {
@@ -41,7 +41,7 @@ public:
   }
   std::string levelname;
   CL_Vector pos;
-  list<int> links;
+  std::list<int> links;
   int id;
   bool accessible;
   bool finished;
@@ -51,19 +51,19 @@ public:
 class PingusWorldMapGraph
 {
 private:
-  Graph<PingusWorldMapNode>* graph;
+  //Graph<PingusWorldMapNode>* graph;
   ResDescriptor bg_desc;
   std::string music;
   xmlDocPtr doc;
   
 public:
-  list<PingusWorldMapNode>   nodes;
+  std::list<PingusWorldMapNode>   nodes;
 
   PingusWorldMapGraph ();
   ~PingusWorldMapGraph ();
  
   ResDescriptor              get_background ();
-  Graph<PingusWorldMapNode>* get_graph ();
+  //Graph<PingusWorldMapNode>* get_graph ();
   std::string get_music ();
   
   void draw (const CL_Vector&);

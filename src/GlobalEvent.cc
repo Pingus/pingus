@@ -1,4 +1,4 @@
-//  $Id: GlobalEvent.cc,v 1.13 2001/04/06 12:49:19 grumbel Exp $
+//  $Id: GlobalEvent.cc,v 1.14 2001/04/27 20:44:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -65,7 +65,7 @@ GlobalEvent::on_button_press(CL_InputDevice *device, const CL_Key &key)
 
 	case CL_KEY_F12:
 	  {
-	    string filename;
+	    std::string filename;
 	    std::cout << "GlobalEvent::Makeing scrennshoot..." << std::endl;
 	    filename = Screenshot::make_screenshot();
 	    console << "GlobalEvent: Saved screenshot to \"" << filename << "\"" << std::endl;

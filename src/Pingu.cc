@@ -1,4 +1,4 @@
-//  $Id: Pingu.cc,v 1.53 2001/04/20 20:53:54 grumbel Exp $
+//  $Id: Pingu.cc,v 1.54 2001/04/27 20:44:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -509,9 +509,9 @@ Pingu::draw_offset(int x, int y, float s)
       if (falling > 3) 
 	{
 	  if (is_tumbling ()) {
-	    tumble.put_screen (pos.x + x, pos.y + y);
+	    tumble.put_screen (int(pos.x + x), int(pos.y + y));
 	  } else {
-	    faller.put_screen (pos.x + x, pos.y + y);
+	    faller.put_screen (int(pos.x + x), int(pos.y + y));
 	  }
 	} 
       else // If not falling
@@ -523,7 +523,7 @@ Pingu::draw_offset(int x, int y, float s)
 	      else
 		walker.set_direction (Sprite::RIGHT);
 	      
-	      walker.put_screen(pos.x + x, pos.y + y);
+	      walker.put_screen(int(pos.x + x), int(pos.y + y));
 	    } 
 	}
     }
@@ -534,7 +534,7 @@ Pingu::draw_offset(int x, int y, float s)
       
       if (s == 1.0) 
 	{
-	  font->print_center(pos.x + x, pos.y - 45 + y, str);
+	  font->print_center(int(pos.x + x), int(pos.y - 45) + y, str);
 	} 
       else if (s > 1.0) 
 	{
@@ -554,7 +554,7 @@ int
 Pingu::rel_getpixel(int x, int y)
 {
   //assert(colmap);
-  return world->get_colmap()->getpixel(pos.x + (x * direction), (pos.y) - y);
+  return world->get_colmap()->getpixel(int(pos.x + (x * direction)), int((pos.y) - y));
 }
 
 // Let the pingu catch another pingu, so that an action can be aplied

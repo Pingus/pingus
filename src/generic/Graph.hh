@@ -1,4 +1,4 @@
-//  $Id: Graph.hh,v 1.2 2000/09/20 07:20:22 grumbel Exp $
+//  $Id: Graph.hh,v 1.3 2001/04/27 20:44:38 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,18 +31,26 @@ class GraphNode
 {
 public:
   T data;
-  list<GraphNode<T>*> next_nodes;
-  list<GraphNode<T>*> previous_nodes;
+  std::list<GraphNode<T>*> next_nodes;
+  typedef std::list<GraphNode<T>*> NodeIter;
 
   GraphNode () {}
-  GraphNode (T obj) 
+  GraphNode (const T& obj) 
   {
     data = obj;
   }
 
-  void attach(GraphNode<T>* previous_node, GraphNode<T>* next_node)
+  void biconnect (GraphNode<T>* next_node)
   {
-    previous_nodes.push_back (previous_node);
+    next_node->connect (this);
+    next_nodes.connect (next_node);
+  }
+
+  void connect (GraphNode<T>* next_node)
+  {
+    for (NodeIter i = next_nodes.begin (); i != next_nodes.end (); ++i)
+      if (*i == next_node)
+	return;
     next_nodes.push_back (next_node);
   }
 };
@@ -52,39 +60,42 @@ template<class T>
 class Graph
 {
 private:
-  GraphNode<T>* first_node;
-
-public:
-  Graph () 
-  {
-    first_node = 0;
-  }
-
-  /// Create a new graph with a first element 
-  Graph (T obj) 
-  {
-    first_node = new GraphNode<T>;
-    first_node->data = obj;
-  }
+  std::list<GraphNodes<T> > nodes;
+  typedef std::list<GraphNodes<T> >::iterator NodeIter;
   
+public:
+  Graph ()
+  {
+  }
+
   ~Graph () 
   {
   }
 
-  /// Returns an iterator which points to the first node
-  GraphIterator<T> begin()
+  void add (const GraphNode<T>& node)
   {
-    assert (first_node);
-    return GraphIterator<T>(this, first_node);
+    nodes.push_back (node);
+  }
+
+  void add (const T& data)
+  {
+    nodes.push_back (GraphNode<T>(data));
+  }
+  
+  GraphNode* find (const T& data)
+  {
+    for (NodeIter i = nodes.begin (); nodes.end (); ++i)
+      {
+	if (data == i->data)
+	  return &(*i);
+      }
+    return 0;
   }
 
   /// Returns true if the graph doesn't contain any nodes
   bool empty() const
   {
-    if (first_node) 
-      return false;
-    else
-      return true;
+    return nodes.empty ();
   }
 };
 

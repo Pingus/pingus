@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapPingus.hh,v 1.8 2001/04/06 15:04:46 grumbel Exp $
+//  $Id: PingusWorldMapPingus.hh,v 1.9 2001/04/27 20:44:38 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,7 +31,7 @@ class PingusWorldMapPingus
 private:
   Sprite sprite;
   CL_Vector pos;
-  queue<PingusWorldMapNode*> targets;
+  std::queue<PingusWorldMapNode*> targets;
   bool is_left;
   PingusWorldMapNode* current_node;
 

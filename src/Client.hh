@@ -1,4 +1,4 @@
-//  $Id: Client.hh,v 1.32 2001/04/23 08:00:08 grumbel Exp $
+//  $Id: Client.hh,v 1.33 2001/04/27 20:44:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,6 +36,7 @@
 #include "HurryUp.hh"
 #include "Controller.hh"
 #include "Cursor.hh"
+#include "Playfield.hh"
 #include "SmallMap.hh"
 
 class Playfield;

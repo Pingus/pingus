@@ -1,4 +1,4 @@
-//  $Id: SwitchDoor.hh,v 1.10 2001/04/21 20:31:53 grumbel Exp $
+//  $Id: SwitchDoor.hh,v 1.11 2001/04/27 20:44:38 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,7 +46,7 @@ public:
 
   /** Writte the content of this object formated as xml to the given
       stream */
-  virtual void write_xml(ofstream* xml);
+  virtual void write_xml(std::ofstream* xml);
   ///
   static boost::shared_ptr<WorldObjData> create(xmlDocPtr doc, xmlNodePtr cur);
 };

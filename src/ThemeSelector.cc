@@ -1,4 +1,4 @@
-//  $Id: ThemeSelector.cc,v 1.36 2001/03/30 09:19:23 grumbel Exp $
+//  $Id: ThemeSelector.cc,v 1.37 2001/04/27 20:44:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -120,7 +120,7 @@ ThemeSelector::Event::on_button_press(CL_InputDevice *device, const CL_Key &key)
       switch (key.id)
 	{
 	case CL_MOUSE_LEFTBUTTON: // Left mouse button
-	  tmp_level = theme_selector->mark_level_at_point(key.x, key.y);
+	  tmp_level = theme_selector->mark_level_at_point(int(key.x), int(key.y));
 	  if (tmp_level != -1) 
 	    {
 	      // We clicked on a level, start it now.

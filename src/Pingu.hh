@@ -1,4 +1,4 @@
-//  $Id: Pingu.hh,v 1.29 2001/04/20 20:53:54 grumbel Exp $
+//  $Id: Pingu.hh,v 1.30 2001/04/27 20:44:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,6 +30,7 @@
 #include "Direction.hh"
 #include "PinguEnums.hh"
 #include "Sprite.hh"
+#include "PinguAction.hh"
 
 // Forward declarations
 class ActionHolder;

@@ -1,4 +1,4 @@
-// $Id: EditorObj.cc,v 1.30 2001/04/21 14:40:23 grumbel Exp $
+// $Id: EditorObj.cc,v 1.31 2001/04/27 20:44:38 grumbel Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -155,11 +155,11 @@ EditorObj::draw_offset (CL_Vector offset, float zoom)
 {
   assert(surf);
   if (surf) {
-    surf.put_screen(position->x + offset.x + x_of,
-		    position->y + offset.y + y_of);
+    surf.put_screen(int(position->x + offset.x + x_of),
+		    int(position->y + offset.y + y_of));
   } else {
-    CL_Display::fill_rect(position->x + offset.x, position->y + offset.y, 
-			  position->x + 10 + offset.x, position->y + 10 + offset.y,
+    CL_Display::fill_rect(int(position->x + offset.x), int(position->y + offset.y), 
+			  int(position->x + 10 + offset.x), int(position->y + 10 + offset.y),
 			  1.0, 0.0, 0.0, 1.0);
   }
 }
@@ -169,17 +169,17 @@ EditorObj::draw_scroll_map(int x_pos, int y_pos, int arg_width, int arg_height)
 {
   if (surf)
     {
-      surf.put_screen(x_pos + position->x * arg_width / editor->get_object_manager()->get_width(),
-		       y_pos + position->y * arg_height / editor->get_object_manager()->get_height(),
-		       width * arg_width / editor->get_object_manager()->get_width(),
-		       height * arg_height / editor->get_object_manager()->get_height());
+      surf.put_screen(int(x_pos + position->x * arg_width / editor->get_object_manager()->get_width()),
+		      int(y_pos + position->y * arg_height / editor->get_object_manager()->get_height()),
+		      width * arg_width / editor->get_object_manager()->get_width(),
+		      height * arg_height / editor->get_object_manager()->get_height());
     }
   else
     {
-      Display::draw_rect(x_pos + position->x * arg_width / editor->get_object_manager()->get_width(),
-			 y_pos + position->y * arg_height / editor->get_object_manager()->get_height(),
-			 x_pos + (position->x + width) * arg_width / editor->get_object_manager()->get_width(),
-			 y_pos + (position->y + height) * arg_height / editor->get_object_manager()->get_height(),
+      Display::draw_rect(int(x_pos + position->x * arg_width / editor->get_object_manager()->get_width()),
+			 int(y_pos + position->y * arg_height / editor->get_object_manager()->get_height()),
+			 int(x_pos + (position->x + width) * arg_width / editor->get_object_manager()->get_width()),
+			 int(y_pos + (position->y + height) * arg_height / editor->get_object_manager()->get_height()),
 			 1.0, 1.0, 0.0, 1.0);       
     }
 }
@@ -194,9 +194,9 @@ EditorObj::draw_mark_offset(int x_offset, int y_offset, EditorObj::Color* arg_co
   else
     color = mark_color;
   
-  Display::draw_rect(position->x + x_offset + x_of, position->y + y_offset + y_of,
-		     position->x + get_width() + x_offset + x_of - 1,
-		     position->y + get_height() + y_offset + y_of - 1,
+  Display::draw_rect(int(position->x + x_offset + x_of), int(position->y + y_offset + y_of),
+		     int(position->x + get_width() + x_offset + x_of - 1),
+		     int(position->y + get_height() + y_offset + y_of - 1),
 		     color.r, 
 		     color.g,
 		     color.b,
@@ -255,6 +255,9 @@ EditorObj::gui_edit_obj()
   
 /*
 $Log: EditorObj.cc,v $
+Revision 1.31  2001/04/27 20:44:38  grumbel
+Some fixes to make it work with g++-3.0 and current ClanLib-CVS
+
 Revision 1.30  2001/04/21 14:40:23  grumbel
 Fixed the insertion of traps
 

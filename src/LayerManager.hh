@@ -1,4 +1,4 @@
-//  $Id: LayerManager.hh,v 1.5 2001/04/04 10:21:16 grumbel Exp $
+//  $Id: LayerManager.hh,v 1.6 2001/04/27 20:44:37 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -59,7 +59,7 @@ private:
     float y_pos;
   };
 
-  vector<Layer> layers;
+  std::vector<Layer> layers;
 
 public:
   LayerManager ();

@@ -1,4 +1,4 @@
-//  $Id: Graph.cc,v 1.1 2000/09/19 10:40:38 grumbel Exp $
+//  $Id: Graph.cc,v 1.2 2001/04/27 20:44:38 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,6 +27,10 @@ void display_subgraph(GraphIterator<int> graph);
 
 int main ()
 {
+  Graph<CL_Vector> graph;
+
+  graph.add (CL_Vector (10, 10));
+
   Graph<int> graph (5);
   GraphIterator<int> iter = graph.begin ();
 

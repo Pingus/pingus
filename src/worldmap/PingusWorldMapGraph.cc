@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapGraph.cc,v 1.12 2001/04/07 21:03:43 grumbel Exp $
+//  $Id: PingusWorldMapGraph.cc,v 1.13 2001/04/27 20:44:38 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -48,12 +48,12 @@ PingusWorldMapNode::get_plf ()
 PingusWorldMapGraph::PingusWorldMapGraph ()
 {
   music = "pingus-1.it";
-  graph = 0;
+  //graph = 0;
 }
 
 PingusWorldMapGraph::~PingusWorldMapGraph ()
 {
-  if (graph) delete graph;
+  //llif (graph) delete graph;
 }
   
 void
@@ -210,11 +210,11 @@ PingusWorldMapGraph::get_music ()
   return music;
 }
 
-Graph<PingusWorldMapNode>* 
+/*Graph<PingusWorldMapNode>* 
 PingusWorldMapGraph::get_graph ()
 {
   return graph;
-}
+}*/
 
 void
 PingusWorldMapGraph::draw (const CL_Vector& offset)
@@ -222,15 +222,15 @@ PingusWorldMapGraph::draw (const CL_Vector& offset)
   //float x_scale = CL_Display::get_width () / 800.0;
   //float y_scale = CL_Display::get_height () / 600.0;
 
-  for (list<PingusWorldMapNode>::iterator i = nodes.begin();
+  for (std::list<PingusWorldMapNode>::iterator i = nodes.begin();
        i != nodes.end();
        ++i)
     {
-      for (list<PingusWorldMapNode>::iterator j = nodes.begin();
+      for (std::list<PingusWorldMapNode>::iterator j = nodes.begin();
 	   j != nodes.end();
 	   ++j)
 	{
-	  for (list<int>::iterator k = i->links.begin();
+	  for (std::list<int>::iterator k = i->links.begin();
 	       k != i->links.end();
 	       ++k)
 	    if (j->id == *k)

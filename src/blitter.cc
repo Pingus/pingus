@@ -1,4 +1,4 @@
-//  $Id: blitter.cc,v 1.26 2001/04/13 22:17:46 grumbel Exp $
+//  $Id: blitter.cc,v 1.27 2001/04/27 20:44:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -188,17 +188,17 @@ Blitter::put_surface_32bit(CL_Canvas* canvas, CL_SurfaceProvider* provider,
   provider->lock();
   if (1) // slow
     {
-      for(int y = max(0, -y_pos); y < sheight && (y + y_pos) < theight ; y++) 
-	for(int x = max(0,-x_pos); x < swidth && (x + x_pos) < twidth; x++) 
+      for(int y = std::max(0, -y_pos); y < sheight && (y + y_pos) < theight ; y++) 
+	for(int x = std::max(0,-x_pos); x < swidth && (x + x_pos) < twidth; x++) 
 	  {
 	    provider->get_pixel(x, y, &red, &green, &blue, &alpha);
 	    canvas->get_pixel(x + x_pos, y + y_pos, &tred, &tgreen, &tblue, &talpha);
 	  
 	    canvas->draw_pixel(x + x_pos, y + y_pos, 
-			       max(0.0, min(1.0, (red * alpha) + (tred * (1.0-alpha)))),
-			       max(0.0, min(1.0, (green * alpha) +(tgreen * (1.0-alpha)))),
-			       max(0.0, min(1.0, (blue * alpha)  + (tblue * (1.0-alpha)))),
-			       max(0.0, min(1.0, alpha * alpha + (talpha*(1.0-alpha)))));
+			       std::max(0.0, std::min(1.0, (red * alpha) + (tred * (1.0-alpha)))),
+			       std::max(0.0, std::min(1.0, (green * alpha) +(tgreen * (1.0-alpha)))),
+			       std::max(0.0, std::min(1.0, (blue * alpha)  + (tblue * (1.0-alpha)))),
+			       std::max(0.0, std::min(1.0, alpha * alpha + (talpha*(1.0-alpha)))));
 	  }
     }
   else // fast?!

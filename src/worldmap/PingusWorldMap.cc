@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMap.cc,v 1.23 2001/04/15 18:34:43 grumbel Exp $
+//  $Id: PingusWorldMap.cc,v 1.24 2001/04/27 20:44:38 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -58,7 +58,7 @@ PingusWorldMap::PingusWorldMap (std::string filename) :
   
   if (!stat->empty ())
     {
-      for (list<PingusWorldMapNode>::iterator i = graph_data.nodes.begin ();
+      for (std::list<PingusWorldMapNode>::iterator i = graph_data.nodes.begin ();
 	   i != graph_data.nodes.end ();
 	   ++i)
 	{
@@ -78,7 +78,7 @@ PingusWorldMap::PingusWorldMap (std::string filename) :
 
 PingusWorldMap::~PingusWorldMap ()
 {
-  delete graph;
+  //delete graph;
   delete pingus;
 }
 
@@ -272,11 +272,11 @@ PingusWorldMap::start_level (PingusWorldMapNode* node)
 	{
 	  node->finished = true;
 	  
-	  for (list<int>::iterator k = node->links.begin();
+	  for (std::list<int>::iterator k = node->links.begin();
 	       k != node->links.end();
 	       ++k)
 	    {
-	      for (list<PingusWorldMapNode>::iterator i = graph_data.nodes.begin ();
+	      for (std::list<PingusWorldMapNode>::iterator i = graph_data.nodes.begin ();
 		   i != graph_data.nodes.end ();
 		   ++i)
 		{
@@ -307,7 +307,7 @@ PingusWorldMap::draw ()
 
   graph_data.draw(offset);
 
-  for (list<PingusWorldMapNode>::iterator i = graph_data.nodes.begin ();
+  for (std::list<PingusWorldMapNode>::iterator i = graph_data.nodes.begin ();
        i != graph_data.nodes.end ();
        ++i)
     {
@@ -370,7 +370,7 @@ PingusWorldMap::update (float delta)
 PingusWorldMapNode* 
 PingusWorldMap::get_node (int x, int y)
 {
-  for (list<PingusWorldMapNode>::iterator i = graph_data.nodes.begin ();
+  for (std::list<PingusWorldMapNode>::iterator i = graph_data.nodes.begin ();
        i != graph_data.nodes.end ();
        i++)
     if (i->pos.x - (int)(red_dot.get_width()/2) - 3 < x

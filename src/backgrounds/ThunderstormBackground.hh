@@ -1,4 +1,4 @@
-//  $Id: ThunderstormBackground.hh,v 1.7 2001/04/01 18:00:40 grumbel Exp $
+//  $Id: ThunderstormBackground.hh,v 1.8 2001/04/27 20:44:37 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,7 +34,7 @@ class ThunderstormBackground : public Background,
 private:
   //SurfaceBackground* background;
   CL_Surface clouds_sur;
-  vector<CL_Surface> flash_sur;
+  std::vector<CL_Surface> flash_sur;
   int x_pos;
 public:
   ///

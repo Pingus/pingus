@@ -1,4 +1,4 @@
-//  $Id: smasher.cc,v 1.20 2001/04/21 10:55:16 grumbel Exp $
+//  $Id: smasher.cc,v 1.21 2001/04/27 20:44:38 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -58,16 +58,16 @@ Smasher::update(float delta)
 	      for(int i=0; i < 20; i++)
 		{
 		  world->get_particle_holder()
-		    ->add_particle(new SmokeParticle(pos.x + 20 + rand() % 260,
-						     pos.y + 180,
+		    ->add_particle(new SmokeParticle(int(pos.x + 20 + rand() % 260),
+						     int(pos.y + 180),
 						     frand()-0.5, frand()-0.5));
 		}
 
 	      PinguHolder* holder = world->get_pingu_p();
 	      for (PinguIter pingu = holder->begin (); pingu != holder->end (); ++pingu)
 		{
-		  if ((*pingu)->is_inside (pos.x + 30, pos.y + 90,
-					   pos.x + 250, pos.y + 190))
+		  if ((*pingu)->is_inside (int(pos.x + 30), int(pos.y + 90),
+					   int(pos.x + 250), int(pos.y + 190)))
 		    {
 		      if ((*pingu)->get_status () != not_catchable)
 			(*pingu)->set_action (shared_ptr<PinguAction>(new Splashed ()));

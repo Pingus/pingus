@@ -1,4 +1,4 @@
-//  $Id: MultiLineText.cc,v 1.1 2000/05/28 16:37:45 grumbel Exp $
+//  $Id: MultiLineText.cc,v 1.2 2001/04/27 20:44:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -76,7 +76,7 @@ MultiLineText::set_text(const std::string& str, int text_width)
   */
   width = 0;
   for(std::vector<std::string>::iterator i = text.begin(); i != text.end(); i++)
-    width = max(width, font->get_text_width(i->c_str()));
+    width = std::max(width, font->get_text_width(i->c_str()));
 
   height = text.size() * font->get_height();
 }

@@ -1,4 +1,4 @@
-//  $Id: ThunderstormBackgroundData.hh,v 1.3 2000/12/16 23:11:22 grumbel Exp $
+//  $Id: ThunderstormBackgroundData.hh,v 1.4 2001/04/27 20:44:37 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,7 +30,7 @@ public:
 
   /** Writte the content of this object formated as xml to the given
       stream */
-  virtual void write_xml(ofstream* xml);
+  virtual void write_xml(std::ofstream* xml);
   
   static boost::shared_ptr<ThunderstormBackgroundData> create(xmlDocPtr doc, xmlNodePtr cur);
 };

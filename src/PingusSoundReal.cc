@@ -1,4 +1,4 @@
-//  $Id: PingusSoundReal.cc,v 1.8 2001/04/03 10:45:49 grumbel Exp $
+//  $Id: PingusSoundReal.cc,v 1.9 2001/04/27 20:44:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,7 @@
 
 #include <string>
 #include <cstdio>
+#include <iostream>
 #include <config.h>
 
 #include "algo.hh"

@@ -1,4 +1,4 @@
-//  $Id: Client.cc,v 1.55 2001/04/23 08:00:08 grumbel Exp $
+//  $Id: Client.cc,v 1.56 2001/04/27 20:44:37 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -203,7 +203,7 @@ Client::play_level(boost::shared_ptr<PLF> arg_plf)
 	}
       else
 	{
-	  CL_System::sleep (1000 * (wannabe_delta - delta.get ()));
+	  CL_System::sleep (int(1000 * (wannabe_delta - delta.get ())));
 	}
     }
 

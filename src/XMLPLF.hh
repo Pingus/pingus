@@ -1,4 +1,4 @@
-//  $Id: XMLPLF.hh,v 1.9 2000/09/30 21:34:42 grumbel Exp $
+//  $Id: XMLPLF.hh,v 1.10 2001/04/27 20:44:37 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -48,7 +48,7 @@ private:
 
 public:
   XMLPLF();
-  XMLPLF(const string& filename);
+  XMLPLF(const std::string& filename);
   virtual ~XMLPLF();
 };
 

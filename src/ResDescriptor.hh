@@ -1,4 +1,4 @@
-//  $Id: ResDescriptor.hh,v 1.7 2000/10/30 16:17:50 grumbel Exp $
+//  $Id: ResDescriptor.hh,v 1.8 2001/04/27 20:44:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -56,7 +56,7 @@ public:
 };
 
 /// Our own function to print out the ResDescriptor
-ostream& operator<<(ostream& s, const ResDescriptor& desc);
+std::ostream& operator<<(std::ostream& s, const ResDescriptor& desc);
 
 #endif
 

@@ -1,4 +1,4 @@
-//   $Id: PingusMain.cc,v 1.24 2001/04/13 13:45:09 grumbel Exp $
+//   $Id: PingusMain.cc,v 1.25 2001/04/27 20:44:37 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -536,7 +536,7 @@ For more information about these matters, see the files named COPYING.\
 	levelfile = argv[i];
 	char cwd[1024];
 	if (getcwd (cwd, 1024))
-	  levelfile = string(cwd) + "/" + levelfile;
+	  levelfile = std::string(cwd) + "/" + levelfile;
       } else {
 	std::cout << "Wrong argument: '" << argv[i] << "'" << std::endl;
 	std::cout << "A levelfile is already given," << std::endl;

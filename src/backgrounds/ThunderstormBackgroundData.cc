@@ -1,4 +1,4 @@
-//  $Id: ThunderstormBackgroundData.cc,v 1.2 2000/12/16 23:11:22 grumbel Exp $
+//  $Id: ThunderstormBackgroundData.cc,v 1.3 2001/04/27 20:44:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,7 @@
 #include "ThunderstormBackgroundData.hh"
 
 void
-ThunderstormBackgroundData::write_xml(ofstream* xml)
+ThunderstormBackgroundData::write_xml(std::ofstream* xml)
 {
   (*xml) << "<background type=\"thunderstorm\">\n"
 	 << "</background>" << std::endl;

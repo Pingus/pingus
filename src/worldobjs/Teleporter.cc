@@ -1,4 +1,4 @@
-//  $Id: Teleporter.cc,v 1.16 2001/04/21 20:31:53 grumbel Exp $
+//  $Id: Teleporter.cc,v 1.17 2001/04/27 20:44:38 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,7 +30,7 @@ TeleporterData::TeleporterData (const TeleporterData& data)
 }
 
 void 
-TeleporterData::write_xml(ofstream* xml)
+TeleporterData::write_xml(std::ofstream* xml)
 {
   (*xml) << "  <worldobj type=\"teleporter\">";
   XMLhelper::write_position_xml (xml, pos);
@@ -102,7 +102,7 @@ void
 Teleporter::draw_offset (int x_of, int y_of, float s = 1.0)
 {
   //std::cout << "Teleporter::draw_offset ()" << std::endl;
-  sur.put_screen (pos.x + x_of, pos.y + y_of);
+  sur.put_screen (int(pos.x + x_of), int(pos.y + y_of));
 }
 
 void 
@@ -115,7 +115,7 @@ Teleporter::update (float delta)
       if ((*pingu)->get_x() > pos.x  && (*pingu)->get_x() < pos.x + 35
 	  && (*pingu)->get_y() > pos.y && (*pingu)->get_y() < pos.y + 52)
 	{
-	  (*pingu)->set_pos (target_pos.x, target_pos.y);
+	  (*pingu)->set_pos (int(target_pos.x), int(target_pos.y));
 	}
     }
 }
@@ -212,8 +212,8 @@ EditorTeleporterTargetObj::EditorTeleporterTargetObj (WorldObjData* obj, CL_Vect
 void
 EditorTeleporterObj::draw_offset (CL_Vector offset, float zoom)
 {
-  CL_Display::draw_line (pos.x + x_of + width/2, pos.y + y_of + height/2,
-			 target_pos.x + x_of + 32, target_pos.y + y_of + 32,
+  CL_Display::draw_line (int(pos.x + x_of + width/2), int(pos.y + y_of + height/2),
+			 int(target_pos.x + x_of + 32), int(target_pos.y + y_of + 32),
 			 0.0, 1.0, 0.0, 0.5);
   EditorObj::draw_offset (x_of, y_of);
 }

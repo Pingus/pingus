@@ -1,4 +1,4 @@
-//  $Id: PingusWavProvider.cc,v 1.7 2001/04/10 10:45:14 grumbel Exp $
+//  $Id: PingusWavProvider.cc,v 1.8 2001/04/27 20:44:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <config.h>
+#include <iostream>
 #include "globals.hh"
 #include "audio.hh"
 #include "PingusError.hh"

@@ -1,4 +1,4 @@
-//  $Id: PingusCounterBar.cc,v 1.2 2001/04/20 20:53:54 grumbel Exp $
+//  $Id: PingusCounterBar.cc,v 1.3 2001/04/27 20:44:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,7 @@
 
 #include "PingusCounterBar.hh"
 
-ostream& operator<<(ostream& s, const CL_Rect& rect)
+std::ostream& operator<<(std::ostream& s, const CL_Rect& rect)
 {
   return s << "[" << rect.x1 << ", " << rect.y1 << ", " << rect.x2 << ", " << rect.y2 << "]";
 }

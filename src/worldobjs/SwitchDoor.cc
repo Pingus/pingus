@@ -1,4 +1,4 @@
-//  $Id: SwitchDoor.cc,v 1.10 2001/04/21 20:31:53 grumbel Exp $
+//  $Id: SwitchDoor.cc,v 1.11 2001/04/27 20:44:38 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,7 +28,7 @@ SwitchDoorData::SwitchDoorData ()
 }
 
 void 
-SwitchDoorData::write_xml(ofstream* xml)
+SwitchDoorData::write_xml(std::ofstream* xml)
 {
   (*xml) << "  <worldobj type=\"switchdoor\">\n";
   (*xml) << "    <switch>\n";

@@ -1,4 +1,4 @@
-//  $Id: PLTXML.cc,v 1.6 2001/04/04 10:21:16 grumbel Exp $
+//  $Id: PLTXML.cc,v 1.7 2001/04/27 20:44:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -196,13 +196,13 @@ PLTXML::get_levels()
   return level_list;
 }
 
-map<std::string,std::string> 
+std::map<std::string,std::string> 
 PLTXML::get_name()
 {
   return world_name;
 }
 
-map<std::string,std::string> 
+std::map<std::string,std::string> 
 PLTXML::get_description()
 {
 

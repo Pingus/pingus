@@ -1,4 +1,4 @@
-//  $Id: Spike.cc,v 1.10 2001/04/21 10:55:16 grumbel Exp $
+//  $Id: Spike.cc,v 1.11 2001/04/27 20:44:38 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -44,7 +44,7 @@ void
 Spike::draw_offset(int x, int y, float s)
 {
   if (killing) {
-    surface.put_screen(pos.x + x, pos.y + y, counter);
+    surface.put_screen(int(pos.x + x), int(pos.y + y), counter);
   } else {
     // do nothing
   }

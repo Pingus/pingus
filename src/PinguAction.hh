@@ -1,4 +1,4 @@
-//  $Id: PinguAction.hh,v 1.15 2001/04/20 20:53:54 grumbel Exp $
+//  $Id: PinguAction.hh,v 1.16 2001/04/27 20:44:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,36 +38,6 @@ enum ActionType
   WALL = 1<<2,
   FALL = 1<<3
 };
-
-
-class PinguActionFactory
-{  
-private:
-  static std::map<std::string, PinguActionFactory*>  actions;
-  
-protected:
-  PinguActionFactory (std::string);
-  virtual ~PinguActionFactory ();
-  virtual PinguAction* create () =0; 
-
-public:
-  static  boost::shared_ptr<PinguAction> create (std::string action_name);
-};
-
-// Now follows a little Factory Macro
-//
-#define REGISTER_PINGUACTION(f_class, a_class, name)   \
-class f_class : public PinguActionFactory              \
-{                                                      \
-public:                                                \
-  f_class () : PinguActionFactory (name) {             \
-     std::cout << "Name: " << name << std::endl;       \
-  }                                                    \
-  PinguAction* create () {                             \
-    return new a_class ();                             \
-  }                                                    \
-}
-
 
 // This class provides an abstract interface for pingu actions. It is 
 // used to inherit classes which represent the actions. The actions
@@ -149,6 +119,34 @@ public:
   /// The time the action needs to get activated (see bomber.cc)
   virtual int   activation_time() { return -1; };
 };
+
+class PinguActionFactory
+{  
+private:
+  static std::map<std::string, PinguActionFactory*>  actions;
+  
+protected:
+  PinguActionFactory (std::string);
+  virtual ~PinguActionFactory ();
+  virtual PinguAction* create () =0; 
+
+public:
+  static  boost::shared_ptr<PinguAction> create (std::string action_name);
+};
+
+// Now follows a little Factory Macro
+//
+#define REGISTER_PINGUACTION(f_class, a_class, name)   \
+class f_class : public PinguActionFactory              \
+{                                                      \
+public:                                                \
+  f_class () : PinguActionFactory (name) {             \
+     std::cout << "Name: " << name << std::endl;       \
+  }                                                    \
+  PinguAction* create () {                             \
+    return new a_class ();                             \
+  }                                                    \
+}
 
 #endif /* PINGU_ACTION_HH */
 

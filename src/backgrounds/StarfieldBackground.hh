@@ -1,4 +1,4 @@
-//  $Id: StarfieldBackground.hh,v 1.5 2001/04/01 18:00:40 grumbel Exp $
+//  $Id: StarfieldBackground.hh,v 1.6 2001/04/27 20:44:37 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,7 +37,7 @@ public:
   StarfieldBackgroundData () {}
   virtual ~StarfieldBackgroundData () {}
 
-  void write_xml(ofstream* xml);
+  void write_xml(std::ofstream* xml);
   static boost::shared_ptr<StarfieldBackgroundData> create(xmlDocPtr doc, xmlNodePtr cur);
 };
 
@@ -76,7 +76,7 @@ class StarfieldBackground : public Background,
 			    private StarfieldBackgroundData
 {
 private:
-  vector<StarfieldBackgroundStars> stars;
+  std::vector<StarfieldBackgroundStars> stars;
 
 public:
   ///

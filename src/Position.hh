@@ -1,4 +1,4 @@
-//  $Id: Position.hh,v 1.6 2001/04/10 19:42:57 grumbel Exp $
+//  $Id: Position.hh,v 1.7 2001/04/27 20:44:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -67,7 +67,7 @@ public:
   int z_pos;
 };
 
-ostream& operator<<(ostream& s, const Position& pos);
+std::ostream& operator<<(std::ostream& s, const Position& pos);
 
 #endif
 

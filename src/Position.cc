@@ -1,4 +1,4 @@
-//  $Id: Position.cc,v 1.1 2000/12/05 01:10:51 grumbel Exp $
+//  $Id: Position.cc,v 1.2 2001/04/27 20:44:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,7 +19,7 @@
 
 #include "Position.hh"
 
-ostream& operator<<(ostream& s, const Position& pos)
+std::ostream& operator<<(std::ostream& s, const Position& pos)
 {
   return (s << "(pos: " << pos.x_pos << ", " << pos.y_pos << ", " << pos.z_pos << ")");
 }

@@ -1,4 +1,4 @@
-// $Id: TrapData.hh,v 1.5 2001/04/21 14:40:22 grumbel Exp $
+// $Id: TrapData.hh,v 1.6 2001/04/27 20:44:37 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,7 +38,7 @@ public:
   virtual ~TrapData(){}
   void clean(){}
 
-  void write_xml(ofstream* xml);
+  void write_xml(std::ofstream* xml);
 
   static boost::shared_ptr<WorldObjData> create(xmlDocPtr doc, xmlNodePtr cur);
 };

@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMap.hh,v 1.17 2001/04/07 21:03:43 grumbel Exp $
+//  $Id: PingusWorldMap.hh,v 1.18 2001/04/27 20:44:38 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,7 +22,7 @@
 
 #include <string>
 #include <ClanLib/core.h>
-#include "../generic/Graph.hh"
+//#include "../generic/Graph.hh"
 #include "../Position.hh"
 #include "PingusWorldMapGraph.hh"
 #include "PingusWorldMapPingus.hh"
@@ -40,7 +40,7 @@ private:
   Sprite dot_border;
   Sprite green_flag; 
 
-  Graph<PingusWorldMapNode>* graph;
+  //Graph<PingusWorldMapNode>* graph;
   PingusWorldMapGraph graph_data;
 
   PingusWorldMapPingus* pingus;

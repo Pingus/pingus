@@ -1,4 +1,4 @@
-//  $Id: TrapData.cc,v 1.3 2001/04/21 10:55:15 grumbel Exp $
+//  $Id: TrapData.cc,v 1.4 2001/04/27 20:44:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,7 @@
 #include "TrapData.hh"
 
 void
-TrapData::write_xml(ofstream* xml)
+TrapData::write_xml(std::ofstream* xml)
 {
   (*xml) << "<trap>\n"
 	 << "  <type>" << type << "</type>\n";

@@ -1,4 +1,4 @@
-//  $Id: StarfieldBackground.cc,v 1.8 2001/04/01 18:00:40 grumbel Exp $
+//  $Id: StarfieldBackground.cc,v 1.9 2001/04/27 20:44:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,7 +22,7 @@
 #include "StarfieldBackground.hh"
 
 void 
-StarfieldBackgroundData::write_xml(ofstream* xml)
+StarfieldBackgroundData::write_xml(std::ofstream* xml)
 {
   (*xml) << "<background type=\"starfield\">\n"
 	 << "  <small-stars count=\"" << small_stars_count << "\"/>\n"
@@ -145,7 +145,7 @@ StarfieldBackgroundStars::update(float delta)
 void
 StarfieldBackgroundStars::draw_offset(int x_of, int y_of, float s = 1.0)
 {
-  sur.put_screen (x_pos + x_of, y_pos + y_of);
+  sur.put_screen (int(x_pos + x_of), int(y_pos + y_of));
 }
 
 StarfieldBackground::StarfieldBackground ()
@@ -185,7 +185,7 @@ StarfieldBackground::create (boost::shared_ptr<BackgroundData> arg_data)
 void 
 StarfieldBackground::update(float delta)
 {
-  for (vector<StarfieldBackgroundStars>::iterator i = stars.begin ();
+  for (std::vector<StarfieldBackgroundStars>::iterator i = stars.begin ();
        i != stars.end (); i++)
     {
       i->update (delta);
@@ -195,7 +195,7 @@ StarfieldBackground::update(float delta)
 void 
 StarfieldBackground::draw_offset(int x_of, int y_of, float s = 1.0)
 {
-  for (vector<StarfieldBackgroundStars>::iterator i = stars.begin ();
+  for (std::vector<StarfieldBackgroundStars>::iterator i = stars.begin ();
        i != stars.end (); i++)
     {
       i->draw_offset (x_of, y_of);

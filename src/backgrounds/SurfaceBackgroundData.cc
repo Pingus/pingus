@@ -1,4 +1,4 @@
-//  $Id: SurfaceBackgroundData.cc,v 1.5 2000/12/16 23:11:22 grumbel Exp $
+//  $Id: SurfaceBackgroundData.cc,v 1.6 2001/04/27 20:44:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,7 +35,7 @@ SurfaceBackgroundData::~SurfaceBackgroundData()
 }
 
 void
-SurfaceBackgroundData::write_xml(ofstream* xml)
+SurfaceBackgroundData::write_xml(std::ofstream* xml)
 {
   (*xml) << "<background type=\"surface\">\n";
   XMLhelper::write_desc_xml(xml, desc);
@@ -53,7 +53,7 @@ SurfaceBackgroundData::write_xml(ofstream* xml)
 	  << "  <stretch-x>" << stretch_x << "</stretch-x>\n"
 	  << "  <stretch-y>" << stretch_y << "</stretch-y>\n" 
 	  << "</background>\n"
-	  << endl;
+	  << std::endl;
 }
 
 boost::shared_ptr<SurfaceBackgroundData>

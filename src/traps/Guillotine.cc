@@ -1,4 +1,4 @@
-//  $Id: Guillotine.cc,v 1.11 2001/04/21 10:55:16 grumbel Exp $
+//  $Id: Guillotine.cc,v 1.12 2001/04/27 20:44:38 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -48,11 +48,11 @@ Guillotine::draw_offset(int x, int y, float s)
 {
   if (killing) {
     if (direction.is_left())
-      surface.put_screen(pos.x + x, pos.y + y, counter);
+      surface.put_screen(int(pos.x + x), int(pos.y + y), counter);
     else
-      surface.put_screen(pos.x + x, pos.y + y, counter + 12);
+      surface.put_screen(int(pos.x + x), int(pos.y + y), counter + 12);
   } else {
-    idle_surf.put_screen(pos.x + x, pos.y + y, idle_counter);
+    idle_surf.put_screen(int(pos.x + x), int(pos.y + y), idle_counter);
   }
 }
 
@@ -76,8 +76,8 @@ Guillotine::catch_pingu(boost::shared_ptr<Pingu> pingu)
 {
   if (!killing) 
     {
-      if (pingu->is_inside (pos.x + 38, pos.y + 90,
-			    pos.x + 42, pos.y + 98))
+      if (pingu->is_inside (int(pos.x + 38), int(pos.y + 90),
+			    int(pos.x + 42), int(pos.y + 98)))
 	{
 	  killing = true;
 	  pingu->set_status(dead);

@@ -1,4 +1,4 @@
-//  $Id: RainParticle.cc,v 1.7 2001/04/23 08:00:08 grumbel Exp $
+//  $Id: RainParticle.cc,v 1.8 2001/04/27 20:44:38 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -74,8 +74,8 @@ RainParticle::draw_offset(int x_of, int y_of, float s)
     }
   else
     {
-      rain_splash.put_screen(x_pos + x_of, 
-			     y_pos + y_of);			     
+      rain_splash.put_screen(int(x_pos + x_of),
+			     int(y_pos + y_of)); 
     }
 }
 
@@ -97,8 +97,8 @@ RainParticle::update(float delta)
     }
   else
     {
-      if (world->get_colmap()->getpixel(x_pos, y_pos) != ColMap::NOTHING
-	  && world->get_colmap()->getpixel(x_pos, y_pos) != ColMap::OUTOFSCREEN)
+      if (world->get_colmap()->getpixel(int(x_pos), int(y_pos)) != ColMap::NOTHING
+	  && world->get_colmap()->getpixel(int(x_pos), int(y_pos)) != ColMap::OUTOFSCREEN)
 	{
 	  splash = true;
 	}

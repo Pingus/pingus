@@ -1,4 +1,4 @@
-//  $Id: Screenshot.cc,v 1.8 2000/12/30 23:54:05 grumbel Exp $
+//  $Id: Screenshot.cc,v 1.9 2001/04/27 20:44:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,11 +30,11 @@
 
 // Saves a screenshot to file, it return the filename the screenshot
 // was saved to.
-string
+std::string
 Screenshot::make_screenshot()
 {
   CL_Target* target = CL_Display::get_target();
-  string filename = get_filename();
+  std::string filename = get_filename();
   if (target) {
     std::cout << _("Screenshot: Saving screenshot to: ") << filename << std::endl;
     save_target_to_file(target, filename);
@@ -49,7 +49,7 @@ Screenshot::make_screenshot()
 // FIXME: The name sucks, to lazy to change it... this function might
 // not be endian clean. save_generic_target_to_file() should be endian clean
 void
-Screenshot::save_16bit_target_to_file(CL_Target* target, string filename)
+Screenshot::save_16bit_target_to_file(CL_Target* target, std::string filename)
 {
   // Warring this doesn't work
   
@@ -102,7 +102,7 @@ Screenshot::save_16bit_target_to_file(CL_Target* target, string filename)
 }
 
 void
-Screenshot::save_target_to_file(CL_Target* target, string filename)
+Screenshot::save_target_to_file(CL_Target* target, std::string filename)
 {
   /*
     switch(target->get_depth()) {
@@ -119,9 +119,9 @@ Screenshot::save_target_to_file(CL_Target* target, string filename)
 }
 
 void
-Screenshot::save_generic_target_to_file(CL_Target* target, string filename)
+Screenshot::save_generic_target_to_file(CL_Target* target, std::string filename)
 {
-  ofstream out(filename.c_str());
+  std::ofstream out(filename.c_str());
   float red, green, blue, alpha;
 
   std::cout << "Target: bit: " << target->get_depth() << "\n"
@@ -152,24 +152,24 @@ Screenshot::save_generic_target_to_file(CL_Target* target, string filename)
   target->unlock();
 }
 
-string
+std::string
 Screenshot::get_filename()
 {
-  string tmp_filename;
+  std::string tmp_filename;
   char str [256];
   int i = 1;
 
   do {
     sprintf(str, "%d.pnm", i);
     tmp_filename = System::get_statdir() + "screenshots/" 
-      + "pingus-" + get_date() + "-" + string(str);
+      + "pingus-" + get_date() + "-" + std::string(str);
     i++;
   } while (System::exist(tmp_filename));
   
   return tmp_filename;
 }
 
-string 
+std::string 
 Screenshot::get_date()
 {
   char buffer[64];
@@ -179,7 +179,7 @@ Screenshot::get_date()
   loctime = localtime(&curtime);
   strftime(buffer, 64, "%Y%m%d-%H%M%S", loctime);
 
-  return string(buffer);
+  return std::string(buffer);
 }
 
 

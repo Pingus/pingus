@@ -1,4 +1,4 @@
-//  $Id: ObjectManager.hh,v 1.14 2000/12/16 23:11:24 grumbel Exp $
+//  $Id: ObjectManager.hh,v 1.15 2001/04/27 20:44:38 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,9 +35,9 @@ private:
   friend class Editor;
   
   /// Other Level data
-  map<std::string, std::string> description;
+  std::map<std::string, std::string> description;
   ///
-  map<std::string, std::string> levelname;
+  std::map<std::string, std::string> levelname;
   ///
   std::vector<ActionData> actions;
   ///

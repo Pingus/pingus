@@ -1,4 +1,4 @@
-//  $Id: SurfaceBackgroundData.hh,v 1.5 2001/01/17 22:02:15 grumbel Exp $
+//  $Id: SurfaceBackgroundData.hh,v 1.6 2001/04/27 20:44:37 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -63,7 +63,7 @@ public:
 
   /** Writte the content of this object formated as xml to the given
       stream */
-  void write_xml(ofstream* xml);
+  void write_xml(std::ofstream* xml);
   
   /** Parse the xml snip and return a newly allocated
       SurfaceBackgroundData*, the user is responsible to delete the

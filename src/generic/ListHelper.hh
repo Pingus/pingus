@@ -1,4 +1,4 @@
-//  $Id: ListHelper.hh,v 1.1 2000/11/01 10:53:13 grumbel Exp $
+//  $Id: ListHelper.hh,v 1.2 2001/04/27 20:44:38 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,9 +32,9 @@ public:
   @param a The vector to which the data should be attached 
   @param b The vector from which the data for the attach is taken */
   template<class T>
-  static void append (list<T> &a, list<T> b)
+  static void append (std::list<T> &a, std::list<T> b)
   {
-    for (list<T>::iterator i = b.begin (); i != b.end (); i++)
+    for (std::list<T>::iterator i = b.begin (); i != b.end (); i++)
       a.push_back (*i);
   }
 };

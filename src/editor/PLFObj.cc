@@ -1,4 +1,4 @@
-//  $Id: PLFObj.cc,v 1.42 2001/04/21 20:31:53 grumbel Exp $
+//  $Id: PLFObj.cc,v 1.43 2001/04/27 20:44:38 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -349,9 +349,9 @@ void
 TrapObj::draw_offset(CL_Vector offset, float zoom)
 {
   if (surf) {
-    surf.put_screen(position->x + offset.x + x_of,
-		     position->y + offset.y + y_of,
-		     frame);
+    surf.put_screen(int(position->x + offset.x + x_of),
+		    int(position->y + offset.y + y_of),
+		    frame);
   } else {
     EditorObj::draw_offset(offset, zoom);
   }
@@ -453,7 +453,7 @@ LiquidObj::draw_offset(CL_Vector offset, float zoom)
   CL_Display::set_clip_rect(CL_ClipRect(x1, y1, x2, y2));
 
   for(float x = position->x; x <= position->x + LiquidData::width; x += surf.get_width())
-    surf.put_screen(x + offset.x, position->y + offset.y);
+    surf.put_screen(int(x + offset.x), int(position->y + offset.y));
 
   CL_Display::pop_clip_rect();
 }
@@ -461,10 +461,10 @@ LiquidObj::draw_offset(CL_Vector offset, float zoom)
 void
 LiquidObj::draw_mark_offset(int x_offset, int y_offset) 
 {
-  Display::draw_rect(position->x + x_offset,
-		     position->y + y_offset,
-		     position->x + LiquidData::width + x_offset,
-		     position->y + surf.get_height() + y_offset,
+  Display::draw_rect(int(position->x + x_offset),
+		     int(position->y + y_offset),
+		     int(position->x + LiquidData::width + x_offset),
+		     int(position->y + surf.get_height() + y_offset),
 		     mark_color.r, 
 		     mark_color.g,
 		     mark_color.b,
