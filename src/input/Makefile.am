@@ -18,8 +18,8 @@
 noinst_LIBRARIES = libpingus_input.a
 
 libpingus_input_a_SOURCES =       \
-	action_axis_event.hxx \
         axis.hxx \
+	axis_event.hxx \
 	axis_factory.hxx axis_factory.cxx \
         axis_pointer.hxx axis_pointer.cxx \
 	button.hxx  \
@@ -39,11 +39,11 @@ libpingus_input_a_SOURCES =       \
 	mouse_axis.hxx mouse_axis.cxx \
 	mouse_button.hxx mouse_button.cxx \
         mouse_pointer.hxx mouse_pointer.cxx \
-	move_event.hxx \
 	multiple_axis.hxx multiple_axis.cxx \
 	multiple_button.hxx multiple_button.cxx \
 	multiple_pointer.hxx multiple_pointer.cxx \
         pointer.hxx \
+	pointer_event.hxx \
 	pointer_factory.hxx pointer_factory.cxx
 
 # EOF #
