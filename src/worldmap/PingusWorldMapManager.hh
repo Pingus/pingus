@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapManager.hh,v 1.2 2000/09/20 07:20:22 grumbel Exp $
+//  $Id: PingusWorldMapManager.hh,v 1.3 2000/09/20 14:31:11 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,8 +43,6 @@ public:
 private:
   /// Load all required resources if not already don
   void init ();
-  /// Display the worldmap and let the user select a level
-  void display ();
   ///
   void on_button_press (CL_InputDevice *device, const CL_Key &key);
   ///
@@ -53,6 +51,10 @@ private:
   void on_mouse_move(CL_InputDevice *,int mouse_x, int mouse_y);
   ///
   void on_resize(int w, int h);
+
+public:
+  /// Display the worldmap and let the user select a level
+  void display ();
 };
 
 #endif

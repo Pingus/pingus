@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMap.hh,v 1.2 2000/09/20 07:20:22 grumbel Exp $
+//  $Id: PingusWorldMap.hh,v 1.3 2000/09/20 14:31:11 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,11 +22,18 @@
 
 #include <string>
 #include <ClanLib/core.h>
+#include "../generic/Graph.hh"
+#include "../Position.hh"
+#include "PingusWorldMapGraph.hh"
 
 class PingusWorldMap
 {
 private:
   CL_Surface* background;
+  CL_Surface* green_dot;
+  CL_Surface* red_dot;
+  Graph<PingusWorldMapNode>* graph;
+  PingusWorldMapGraph graph_data;
   
 public:
   /** Load a worldmap from a given worldmap description file */
@@ -38,10 +45,10 @@ public:
       - calculate which level was clicked
       - calculate the shortest path
       - let the pingu walk */
-  void on_button_press ();
-
+  void on_button_press (CL_InputDevice *device, const CL_Key &key);
+ 
   /** React on button release */
-  void on_button_release ();
+  void on_button_release (CL_InputDevice *device, const CL_Key &key);
 
   /** Draw the world worldmap */
   virtual void draw ();
