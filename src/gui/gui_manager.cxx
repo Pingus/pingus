@@ -1,4 +1,4 @@
-//  $Id: gui_manager.cxx,v 1.9 2002/08/13 18:44:50 grumbel Exp $
+//  $Id: gui_manager.cxx,v 1.10 2002/08/15 10:57:39 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #include <vector>
 #include <list>
 #include "../input/event.hxx"
+#include "../input/axis_event.hxx"
 #include "../input/button_event.hxx"
 #include "../input/pointer_event.hxx"
 #include "../game_delta.hxx"
@@ -203,6 +204,13 @@ GUIManager::process_input (const std::list<Input::Event*>& events)
 	    break;
 	  }
 	  
+	case Input::AxisEventType:
+	  {
+	    AxisEvent* event = dynamic_cast<AxisEvent*>(*i);
+	    std::cout << "GUIManager: AxisEvent: " << event->dir << std::endl;
+	    break;
+	  }
+	  
 	default:
 	  std::cout << "GUIManager: unhandled event type " << (*i)->get_type() << std::endl;
 	  break;
@@ -214,12 +222,14 @@ void
 GUIManager::add (Component* c, bool delete_component) 
 { 
   components.push_back(c); 
+  if(delete_component);
 }
 
 void
 GUIManager::remove (Component* c)
 {
   /* components.erase(c); */ 
+  if(c);
 }
 
 Component*
