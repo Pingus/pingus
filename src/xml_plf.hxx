@@ -1,4 +1,4 @@
-//  $Id: xml_plf.hxx,v 1.7 2002/09/15 20:33:45 grumbel Exp $
+//  $Id: xml_plf.hxx,v 1.8 2002/09/16 10:18:51 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,6 +30,7 @@ private:
 
   void parse_file ();
 
+  void parse_group       (xmlNodePtr cur);
   void parse_background  (xmlNodePtr cur);
   void parse_actions     (xmlNodePtr cur);
   void parse_global      (xmlNodePtr cur);

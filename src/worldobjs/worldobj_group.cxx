@@ -1,4 +1,4 @@
-//  $Id: worldobj_group.cxx,v 1.3 2002/09/15 21:49:58 grumbel Exp $
+//  $Id: worldobj_group.cxx,v 1.4 2002/09/16 10:18:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,7 +38,7 @@ void
 WorldObjGroup::draw (GraphicContext& gc)
 {
   for (std::vector<WorldObj*>::iterator i = objs.begin (); i != objs.end (); ++i)
-    (*i)->draw (gc);  
+    (*i)->draw (gc);
 }
 
 } // namespace WorldObjs

@@ -1,4 +1,4 @@
-//  $Id: worldobj_group.hxx,v 1.3 2002/09/15 21:49:58 grumbel Exp $
+//  $Id: worldobj_group.hxx,v 1.4 2002/09/16 10:18:51 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,6 +37,7 @@ public:
   void update (float delta);
   void draw (GraphicContext& gc);
 
+  // FIXME: Position handling is incorrect...
   float get_z_pos() const { return 10; }
 
 private:

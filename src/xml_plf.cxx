@@ -1,4 +1,4 @@
-//  $Id: xml_plf.cxx,v 1.16 2002/09/15 21:21:47 grumbel Exp $
+//  $Id: xml_plf.cxx,v 1.17 2002/09/16 10:18:51 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -139,7 +139,8 @@ XMLPLF::parse_file()
 	    }
 	  else if (XMLhelper::equal_str(cur->name, "group"))
 	    {
-	      worldobjs_data.push_back (new WorldObjsData::WorldObjGroupData (doc, cur));
+	      //worldobjs_data.push_back (new WorldObjsData::WorldObjGroupData (doc, cur));
+	      parse_group (cur);
 	    }
 	  else if (XMLhelper::equal_str(cur->name, "start-position"))
 	    {
@@ -158,6 +159,66 @@ XMLPLF::parse_file()
       //puts("global done");
     } else {
       PingusError::raise("XMLPLF: This is no valid Pingus level");
+    }
+}
+
+void
+XMLPLF::parse_group (xmlNodePtr cur)
+{
+  cur = cur->children;
+  
+  while (cur)
+    {
+      if (XMLhelper::equal_str(cur->name, "background"))
+	{
+	  parse_background(cur);
+	}
+      else if (XMLhelper::equal_str(cur->name, "groundpiece"))
+	{
+	  parse_groundpiece(cur);
+	}
+      else if (XMLhelper::equal_str(cur->name, "exit"))
+	{
+	  worldobjs_data.push_back (new ExitData (doc, cur));
+	}
+      else if (XMLhelper::equal_str(cur->name, "entrance"))
+	{
+	  worldobjs_data.push_back (new EntranceData (doc, cur));
+	}
+      else if (XMLhelper::equal_str(cur->name, "trap"))
+	{
+	  parse_traps(cur);
+	}
+      else if (XMLhelper::equal_str(cur->name, "hotspot"))
+	{
+	  worldobjs_data.push_back(new HotspotData (doc, cur));
+	}
+      else if (XMLhelper::equal_str(cur->name, "liquid"))
+	{
+	  worldobjs_data.push_back(new LiquidData (doc, cur));
+	}
+      else if (XMLhelper::equal_str(cur->name, "worldobj"))
+	{
+	  worldobjs_data.push_back(WorldObjDataFactory::instance()->create (doc, cur));
+	}
+      else if (XMLhelper::equal_str(cur->name, "group"))
+	{
+	  //worldobjs_data.push_back (new WorldObjsData::WorldObjGroupData (doc, cur));
+	  parse_group (cur);
+	}
+      else if (XMLhelper::equal_str(cur->name, "start-position"))
+	{
+	  parse_start_pos(cur);
+	}
+      else if (XMLhelper::equal_str(cur->name, "weather"))
+	{
+	  parse_weather(cur);
+	}	  
+      else
+	{
+	  printf("XMLPLF: Unhandled parse_group: %s\n", reinterpret_cast<const char*>(cur->name));
+	}
+      cur = cur->next;
     }
 }
 
