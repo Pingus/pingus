@@ -1,10 +1,12 @@
 // Some not yet sorted gfx
 section Game
 {
-	logo_bg       = ../images/misc/logo_bg.pcx       (type=surface, x=0, y=0, width=640, height=300);
+//	logo_bg       = ../images/misc/logo_bg.pcx       (type=surface, x=0, y=0, width=640, height=300);
 	logo_t        = ../images/misc/logo.tga       (type=surface, x=0, y=0, width=598, height=259);
 
-	logo        = ../images/misc/logo.pcx       (type=surface, x=0, y=0, width=640, height=480);
+//	logo        = ../images/misc/logo.pcx       (type=surface, x=0, y=0, width=640, height=480);
+
+	loading        = ../images/misc/loading.pcx       (type=surface, x=0, y=0, width=175, height=66,tcol=0);
 }
 
 section Cursors
