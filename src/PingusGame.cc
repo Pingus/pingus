@@ -1,4 +1,4 @@
-//  $Id: PingusGame.cc,v 1.7 2000/03/12 01:56:56 grumbel Exp $
+//  $Id: PingusGame.cc,v 1.8 2000/04/14 18:18:23 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -92,6 +92,8 @@ void
 PingusGame::start(std::string plf_filename, std::string psm_filename)
 {
   if (verbose) std::cout << "PingusGame: start" << std::endl;
+
+  std::cout << "Level: " << plf_filename << std::endl;
 
   try 
     {

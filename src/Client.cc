@@ -1,4 +1,4 @@
-//  $Id: Client.cc,v 1.15 2000/03/20 18:55:26 grumbel Exp $
+//  $Id: Client.cc,v 1.16 2000/04/14 18:18:23 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,10 +24,10 @@
 #include "LevelInterrupt.hh"
 #include "System.hh"
 #include "Result.hh"
-#include "MikMod.hh"
 #include "algo.hh"
 #include "PingusResource.hh"
 #include "PingusLevelResult.hh"
+#include "PingusSound.hh"
 
 Client::Client(Server* s)
 {
@@ -70,6 +70,7 @@ Client::start(std::string plf_filename, std::string psm_filename)
 {
   play_level(plf_filename, psm_filename);
   do_replay = false;
+  Mix_FadeOutMusic(1000);
   FadeOut::random();
 }
 
@@ -140,7 +141,7 @@ Client::resize_display()
 void
 Client::play_level(std::string plf_filename, std::string psm_filename)
 {
-  MODULE* module;
+  //MODULE* module;
   std::cout << "Client::play_level(), Reading PLF..." << std::flush;
   plf          = new PLF(plf_filename);
 
@@ -171,14 +172,13 @@ Client::play_level(std::string plf_filename, std::string psm_filename)
   CL_Display::flip_display();
   CL_Display::clear_display();
     
-  module = MikMod::load(find_file(pingus_datadir, "music/" + plf->get_music().res_name));
-  MikMod::play(module);
+  PingusSound::play(find_file(pingus_datadir, "music/" + plf->get_music().res_name));
   
   // Main Game Loop
   while (!server->is_finished()) 
     {
       CL_System::keep_alive(); 
-      MikMod::keep_alive();
+      //MikMod::keep_alive();
     
       server->let_move();
     
@@ -202,7 +202,7 @@ Client::play_level(std::string plf_filename, std::string psm_filename)
 	  ++skip_frame;
 	}
     }
-  MikMod::free(module);
+  //  MikMod::free(module);
   event->unregister_event_handler();
 }
 

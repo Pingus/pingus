@@ -1,4 +1,4 @@
-//   $Id: Pingus.cc,v 1.18 2000/04/10 21:33:06 grumbel Exp $
+//   $Id: Pingus.cc,v 1.19 2000/04/14 18:18:23 grumbel Exp $
 //    ___
 //   |  _\ A free Lemmings clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -53,9 +53,9 @@
 #include "Playfield.hh"
 #include "PingusError.hh"
 #include "Loading.hh"
-#include "MikMod.hh"
 #include "Config.hh"
 
+#include "PingusSound.hh"
 #include "PingusMenu.hh"
 #include "PingusMessageBox.hh"
 #include "particles/GroundParticle.hh"
@@ -151,6 +151,10 @@ PingusMain::check_args(int argc, char* argv[])
     {"maintainer-mode", no_argument,       0, 134},
     {"enable-uactions", no_argument,       0, 136},
     {"disable-auto-scrolling",   no_argument,       0, 137},
+    {"sample-rate",     required_argument, 0, 138},
+    {"bit-rate",        required_argument, 0, 139},
+    {"mono",        required_argument, 0, 140},
+    {"stereo",        required_argument, 0, 141},
     {0, 0, 0, 0}
   };
 
@@ -350,7 +354,13 @@ PingusMain::init_pingus()
     }
 
   if (music_enabled)
-    MikMod::init();
+    {
+      //#ifdef HAVE_LIBSDL_MIXER
+      //      PingusSound::init(44000, AUDIO_S16, 2, 4096);
+      PingusSound::init(11000, AUDIO_S8, 1, 4096);
+      //#endif
+      //      MikMod::init();
+    }
 
   if (preload_data)
     {

@@ -1,4 +1,4 @@
-//  $Id: PingusMenu.cc,v 1.14 2000/04/08 20:20:25 grumbel Exp $
+//  $Id: PingusMenu.cc,v 1.15 2000/04/14 18:18:23 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,7 +29,7 @@
 #include "PingusError.hh"
 #include "PingusMenu.hh"
 #include "Loading.hh"
-#include "MikMod.hh"
+#include "PingusSound.hh"
 
 PingusMenu::PingusMenu()
 {
@@ -97,8 +97,6 @@ PingusMenu::draw()
 void
 PingusMenu::select(void)
 {
-  MikMod::load("../data/music/pingus-1.it");
-
   if (quick_play) 
     {
       PingusGame game;
@@ -118,16 +116,15 @@ PingusMenu::select(void)
 
   CL_MouseCursor::set_cursor(CL_MouseCursorProvider::load("Cursors/cursor", PingusResource::get("game.dat")));
   CL_MouseCursor::show();
- 
-  MikMod::play();
 
+  PingusSound::play("../data/music/pingus-1.it");
+  
   while(!do_quit) 
     {
       CL_System::keep_alive();
-      MikMod::keep_alive();
+      CL_System::sleep(20);
     }
 
-  MikMod::stop();
   event->enabled = false;
 
   CL_MouseCursor::hide();

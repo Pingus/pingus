@@ -1,4 +1,4 @@
-//  $Id: PingusLevelResult.cc,v 1.7 2000/02/17 01:25:26 grumbel Exp $
+//  $Id: PingusLevelResult.cc,v 1.8 2000/04/14 18:18:23 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,7 @@
 #include "globals.hh"
 #include "PingusResource.hh"
 #include "PingusLevelResult.hh"
+#include "PingusSound.hh"
 
 PingusLevelResult::PingusLevelResult(World* w)
 {
@@ -37,6 +38,8 @@ void
 PingusLevelResult::draw(void)
 {
   char  str[1024];
+
+  PingusSound::play("../data/music/pingus-2.it");
 
   for(int y = 0; y < CL_Display::get_height(); y += background->get_height())
     for(int x = 0; x < CL_Display::get_width(); x += background->get_width())
