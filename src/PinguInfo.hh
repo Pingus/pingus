@@ -1,4 +1,4 @@
-//  $Id: PinguInfo.hh,v 1.6 2002/06/08 16:08:16 grumbel Exp $
+//  $Id: PinguInfo.hh,v 1.7 2002/06/10 13:03:34 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,8 @@
 #define PINGUINFO_HH
 
 #include "GuiObj.hh"
-#include "Pingu.hh"
+
+class Pingu;
 
 ///
 class PinguInfo : public GuiObj

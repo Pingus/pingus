@@ -1,4 +1,4 @@
-//  $Id: MultiplayerGame.cc,v 1.10 2002/06/10 11:00:26 torangan Exp $
+//  $Id: MultiplayerGame.cc,v 1.11 2002/06/10 13:03:34 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,6 +27,7 @@
 #include "GamepadController.hh"
 #include "KeyboardController.hh"
 #include "MultiplayerGame.hh"
+#include "MultiplayerClientChild.hh"
 
 using boost::shared_ptr;
 

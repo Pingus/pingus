@@ -1,4 +1,4 @@
-//  $Id: MultiplayerClient.hh,v 1.9 2002/06/08 23:11:07 torangan Exp $
+//  $Id: MultiplayerClient.hh,v 1.10 2002/06/10 13:03:34 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,11 +20,10 @@
 #ifndef MULTIPLAYERCLIENT_HH
 #define MULTIPLAYERCLIENT_HH
 
-#include "MultiplayerClientChild.hh"
+#include "GuiObj.hh"
+#include "boost/smart_ptr.hpp"
 
-namespace boost {
-  template <class T> class smart_ptr;
-}
+class Server;
 
 class MultiplayerClient : public GuiObj
 {

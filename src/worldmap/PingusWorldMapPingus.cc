@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapPingus.cc,v 1.15 2002/06/06 09:34:28 grumbel Exp $
+//  $Id: PingusWorldMapPingus.cc,v 1.16 2002/06/10 13:03:36 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 
 #include "../PingusResource.hh"
 #include "PingusWorldMapPingus.hh"
+#include "../boost/smart_ptr.hpp"
 
 using namespace Pingus::WorldMap;
 

@@ -1,4 +1,4 @@
-//  $Id: Teleporter.cc,v 1.38 2002/06/10 11:00:29 torangan Exp $
+//  $Id: Teleporter.cc,v 1.39 2002/06/10 13:03:36 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,7 @@
 #include "../XMLhelper.hh"
 #include "../editor/EditorView.hh"
 #include "Teleporter.hh"
+#include "../Pingu.hh"
 
 TeleporterData::TeleporterData (const TeleporterData& data) : WorldObjData(data)
 {

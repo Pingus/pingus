@@ -1,4 +1,4 @@
-//  $Id: View.hh,v 1.14 2002/06/10 11:00:27 torangan Exp $
+//  $Id: View.hh,v 1.15 2002/06/10 13:03:35 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,11 +22,11 @@
 
 #include <ClanLib/Display/Display/cliprect.h>
 #include "Range.hh"
-#include "Controller.hh"
 #include "CaptureRectangle.hh"
 
 class Pingu;
 class World;
+class Controller;
 
 /** A class to controll the rentering of the playfield, each display on 
     the screen, which displays the pingus world is an view object. */

@@ -1,4 +1,4 @@
-//  $Id: Entrance.cc,v 1.31 2002/06/09 13:29:26 grumbel Exp $
+//  $Id: Entrance.cc,v 1.32 2002/06/10 13:03:34 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,6 +27,8 @@
 #include "globals.hh"
 #include "Entrance.hh"
 #include "GameTime.hh"
+#include "Direction.hh"
+#include "Pingu.hh"
 
 Entrance::Entrance(const EntranceData& data)
 {

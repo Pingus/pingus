@@ -1,4 +1,4 @@
-//  $Id: PinguHolder.cc,v 1.21 2002/06/09 11:18:50 grumbel Exp $
+//  $Id: PinguHolder.cc,v 1.22 2002/06/10 13:03:34 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,8 +17,11 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <iostream>
 #include "globals.hh"
 #include "PinguHolder.hh"
+#include "boost/smart_ptr.hpp"
+#include "Pingu.hh"
 
 using namespace boost;
 

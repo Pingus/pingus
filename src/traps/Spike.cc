@@ -1,4 +1,4 @@
-//  $Id: Spike.cc,v 1.17 2002/06/08 23:11:09 torangan Exp $
+//  $Id: Spike.cc,v 1.18 2002/06/10 13:03:35 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #include "../PingusResource.hh"
 #include "../PinguHolder.hh"
 #include "../World.hh"
+#include "../Pingu.hh"
 
 #include "Spike.hh"
 

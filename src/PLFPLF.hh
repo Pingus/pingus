@@ -1,4 +1,4 @@
-//  $Id: PLFPLF.hh,v 1.7 2002/06/08 23:11:07 torangan Exp $
+//  $Id: PLFPLF.hh,v 1.8 2002/06/10 13:03:34 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,18 +20,13 @@
 #ifndef PLFPLF_HH
 #define PLFPLF_HH
 
-#include <iostream>
-#include <vector>
-
 #include "PLF.hh"
 #include "PLFParser.hh"
-#include "PinguMap.hh"
-#include "ActionData.hh"
 #include "EntranceData.hh"
 #include "ExitData.hh"
 #include "HotspotData.hh"
-#include "LiquidData.hh"
 #include "TrapData.hh"
+#include "LiquidData.hh"
 #include "backgrounds/SurfaceBackgroundData.hh"
 
 class SurfaceBackgroundData;

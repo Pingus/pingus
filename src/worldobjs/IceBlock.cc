@@ -1,4 +1,4 @@
-//  $Id: IceBlock.cc,v 1.29 2002/06/10 11:00:29 torangan Exp $
+//  $Id: IceBlock.cc,v 1.30 2002/06/10 13:03:36 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,6 +26,7 @@
 #include "../PinguMap.hh"
 #include "../GameTime.hh"
 #include "IceBlock.hh"
+#include "../Pingu.hh"
 
 IceBlockData::IceBlockData ()
 {

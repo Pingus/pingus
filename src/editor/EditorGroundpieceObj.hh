@@ -1,4 +1,4 @@
-// $Id: EditorGroundpieceObj.hh,v 1.3 2001/08/11 18:53:39 grumbel Exp $
+// $Id: EditorGroundpieceObj.hh,v 1.4 2002/06/10 13:03:35 torangan Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,6 @@
 #ifndef PSMOBJ_HH
 #define PSMOBJ_HH
 
-#include <cstdio>
 #include "SpriteEditorObj.hh"
 #include "../GroundpieceData.hh"
 

@@ -1,4 +1,4 @@
-//  $Id: PingusLevelResult.hh,v 1.8 2002/06/09 20:59:43 grumbel Exp $
+//  $Id: PingusLevelResult.hh,v 1.9 2002/06/10 13:03:35 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,8 +20,11 @@
 #ifndef PINGUSLEVELRESULT_HH
 #define PINGUSLEVELRESULT_HH
 
-#include "Controller.hh"
-#include "World.hh"
+#include <ClanLib/Display/Display/surface.h>
+
+class CL_Font;
+class World;
+class Controller;
 
 ///
 class PingusLevelResult

@@ -1,4 +1,4 @@
-//  $Id: ActionData.hh,v 1.2 2002/06/07 09:42:16 torangan Exp $
+//  $Id: ActionData.hh,v 1.3 2002/06/10 13:03:34 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,8 +21,6 @@
 #define BUTTON_DATA_HH
 
 #include <string>
-#include <vector>
-
 
 ///
 class ActionData

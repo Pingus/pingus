@@ -1,4 +1,4 @@
-//  $Id: PingusMenu.hh,v 1.23 2002/06/09 20:59:43 grumbel Exp $
+//  $Id: PingusMenu.hh,v 1.24 2002/06/10 13:03:35 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,14 +21,16 @@
 #define PINGUSMENU_HH
 
 #include <list>
-#include "SurfaceButton.hh"
-#include "OptionMenu.hh"
-#include "AlphaButton.hh"
+#include "PingusSubMenu.hh"
 #include "LayerManager.hh"
+#include "boost/smart_ptr.hpp"
+#include "SurfaceButton.hh"
 
-///
+class CL_Key;
+class CL_InputDevice;
 class SurfaceButton;
 
+///
 class PingusMenu : public PingusSubMenu
 {
 public:

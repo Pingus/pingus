@@ -1,4 +1,4 @@
-//  $Id: World.cc,v 1.73 2002/06/10 10:28:50 grumbel Exp $
+//  $Id: World.cc,v 1.74 2002/06/10 13:03:35 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,6 +39,7 @@
 #include "GameTime.hh"
 #include "particles/ParticleHolder.hh"
 #include "particles/WeatherGenerator.hh"
+#include "Pingu.hh"
 
 using namespace std;
 using boost::shared_ptr;

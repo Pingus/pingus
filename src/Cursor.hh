@@ -1,4 +1,4 @@
-//  $Id: Cursor.hh,v 1.7 2002/06/09 20:59:43 grumbel Exp $
+//  $Id: Cursor.hh,v 1.8 2002/06/10 13:03:34 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,8 +22,9 @@
 
 #include <string>
 #include "Display.hh"
-#include "Controller.hh"
 #include "Sprite.hh"
+
+class Controller;
 
 /** A simple mouse cursor class and stupid. We can't use the X11/win32
     nativ mouse cursor because we want also to support non-mouse input

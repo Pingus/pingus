@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapNode.hh,v 1.4 2002/06/10 11:00:29 torangan Exp $
+//  $Id: PingusWorldMapNode.hh,v 1.5 2002/06/10 13:03:36 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,11 +21,11 @@
 #define PINGUSWORLDMAPNODE_HH
 
 #include "../Sprite.hh"
-#include "../boost/smart_ptr.hpp"
-#include "../PingusSound.hh"
 #include "../globals.hh"
-#include "../PLF.hh"
 #include "PingusWorldMapNodeData.hh"
+
+class CL_Vector;
+class PLF;
 
 namespace Pingus
 {

@@ -1,4 +1,4 @@
-//  $Id: Controllable.hh,v 1.6 2002/06/09 20:59:43 grumbel Exp $
+//  $Id: Controllable.hh,v 1.7 2002/06/10 13:03:34 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,10 @@
 #ifndef CONTROLLABLE_HH
 #define CONTROLLABLE_HH
 
-#include "Controller.hh"
+#include <ClanLib/Signals/slot.h>
+
+class CL_Vector;
+class Controller;
 
 class Controllable
 {

@@ -1,4 +1,4 @@
-//  $Id: PinguInfo.cc,v 1.13 2002/06/10 11:00:27 torangan Exp $
+//  $Id: PinguInfo.cc,v 1.14 2002/06/10 13:03:34 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,6 +25,7 @@
 #include "PinguAction.hh"
 #include "PingusResource.hh"
 #include "PinguInfo.hh"
+#include "Pingu.hh"
 
 /* Headers needed for i18n / gettext */
 #include <clocale>

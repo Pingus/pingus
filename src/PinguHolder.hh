@@ -1,4 +1,4 @@
-//  $Id: PinguHolder.hh,v 1.15 2002/06/08 16:08:16 grumbel Exp $
+//  $Id: PinguHolder.hh,v 1.16 2002/06/10 13:03:34 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,10 +21,10 @@
 #define PINGUHOLDER_HH
 
 #include <list>
-
-#include "Pingu.hh"
+#include <vector>
 #include "WorldObj.hh"
 
+class CL_Vector;
 class Pingu;
 
 typedef std::list<Pingu*>::iterator PinguIter;

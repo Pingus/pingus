@@ -1,4 +1,4 @@
-//  $Id: WorldObjDataFactory.hh,v 1.7 2002/06/09 14:04:10 torangan Exp $
+//  $Id: WorldObjDataFactory.hh,v 1.8 2002/06/10 13:03:35 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,11 +21,11 @@
 #define WORLDOBJFACTORY_HH
 
 #include <map>
-#include "WorldObj.hh"
-#include "PingusError.hh"
-#include "XMLhelper.hh"
 
+class WorldObjData;
 class WorldObjDataAbstractFactory;
+class _xmlDoc;  typedef _xmlDoc*  xmlDocPtr;
+class _xmlNode;  typedef _xmlNode*  xmlNodePtr;
 
 /** WorldObjDataFactory which can be used to create all kinds of
     WorldObjData's by given its id */

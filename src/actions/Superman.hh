@@ -1,4 +1,4 @@
-//  $Id: Superman.hh,v 1.4 2001/08/16 17:46:51 grumbel Exp $
+//  $Id: Superman.hh,v 1.5 2002/06/10 13:03:35 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,8 +21,6 @@
 #define SUPERMAN_HH
 
 #include "../PinguAction.hh"
-
-class Sprite;
 
 class Superman : public PinguAction
 {

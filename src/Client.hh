@@ -1,4 +1,4 @@
-//  $Id: Client.hh,v 1.40 2002/06/10 11:00:25 torangan Exp $
+//  $Id: Client.hh,v 1.41 2002/06/10 13:03:34 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,7 +22,6 @@
 
 #include <ClanLib/Signals/slot.h>
 #include <ClanLib/Display/Input/inputdevice.h>
-#include <string>
 #include <vector>
 #include "boost/smart_ptr.hpp"
 

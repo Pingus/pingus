@@ -1,4 +1,4 @@
-//  $Id: Exit.cc,v 1.31 2002/06/08 21:43:36 grumbel Exp $
+//  $Id: Exit.cc,v 1.32 2002/06/10 13:03:34 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,6 +27,7 @@
 #include "PinguHolder.hh"
 #include "actions/exiter.hh"
 #include "StringConverter.hh"
+#include "Pingu.hh"
 
 Exit::Exit(const ExitData& data)
   : sprite (data.desc, 10.0f),

@@ -1,4 +1,4 @@
-//  $Id: StatusLine.hh,v 1.9 2002/06/08 20:19:54 torangan Exp $
+//  $Id: StatusLine.hh,v 1.10 2002/06/10 13:03:35 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,9 +21,10 @@
 #define STATUSLINE_HH
 
 #include <list>
-#include "EditorObj.hh"
 
 class CL_Font;
+class EditorObj;
+class EditorView;
 
 ///
 class StatusLine

@@ -1,4 +1,4 @@
-//  $Id: Cursor.cc,v 1.5 2002/06/09 20:59:43 grumbel Exp $
+//  $Id: Cursor.cc,v 1.6 2002/06/10 13:03:34 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "Cursor.hh"
+#include "Controller.hh"
 
 Cursor::Cursor (std::string ident, std::string datafile,
 		Controller* arg_controller)

@@ -1,4 +1,4 @@
-//  $Id: smasher.cc,v 1.34 2002/06/09 00:56:26 grumbel Exp $
+//  $Id: smasher.cc,v 1.35 2002/06/10 13:03:35 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,6 +29,7 @@
 #include "../algo.hh"
 #include "smasher.hh"
 #include "../PinguActionFactory.hh"
+#include "../Pingu.hh"
 
 Smasher::Smasher(const TrapData& data)
 {

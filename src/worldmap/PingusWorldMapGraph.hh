@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapGraph.hh,v 1.23 2002/06/08 23:11:09 torangan Exp $
+//  $Id: PingusWorldMapGraph.hh,v 1.24 2002/06/10 13:03:36 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,8 +21,11 @@
 #define PINGUSWORLDMAPGRAPH_HH
 
 #include "../ResDescriptor.hh"
-#include "../XMLhelper.hh"
+#include "../boost/smart_ptr.hpp"
 #include "PingusWorldMapNode.hh"
+
+class _xmlDoc;  typedef _xmlDoc*  xmlDocPtr;
+class _xmlNode; typedef _xmlNode* xmlNodePtr;
 
 namespace Pingus
 {

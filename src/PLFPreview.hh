@@ -1,4 +1,4 @@
-//  $Id: PLFPreview.hh,v 1.7 2002/06/10 11:00:26 torangan Exp $
+//  $Id: PLFPreview.hh,v 1.8 2002/06/10 13:03:34 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #ifndef PLFPREVIEW_HH
 #define PLFPREVIEW_HH
 
+class CL_Canvas;
 class PLF;
 
 /// A class to load and manage a small level preview surface

@@ -1,4 +1,4 @@
-//  $Id: LayerManager.hh,v 1.9 2002/06/10 11:00:26 torangan Exp $
+//  $Id: LayerManager.hh,v 1.10 2002/06/10 13:03:34 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,7 @@
 #ifndef LAYERMANAGER_HH
 #define LAYERMANAGER_HH
 
-#include <math.h>
+#include <cmath>
 #include <vector>
 #include <ClanLib/Display/Display/surface.h>
 

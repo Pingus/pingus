@@ -1,4 +1,4 @@
-//  $Id: PingusSubMenu.hh,v 1.2 2002/06/08 20:19:54 torangan Exp $
+//  $Id: PingusSubMenu.hh,v 1.3 2002/06/10 13:03:35 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,7 +22,6 @@
 
 class CL_Key;
 class CL_InputDevice;
-
 class PingusMenuManager;
 
 class PingusSubMenu

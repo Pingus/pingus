@@ -1,4 +1,4 @@
-//  $Id: SmallMap.cc,v 1.44 2002/06/10 11:00:27 torangan Exp $
+//  $Id: SmallMap.cc,v 1.45 2002/06/10 13:03:35 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,6 +36,7 @@
 #include "PLF.hh"
 #include "ColMap.hh"
 #include "Server.hh"
+#include "Pingu.hh"
 
 using namespace std;
 

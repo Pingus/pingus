@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapPingus.hh,v 1.13 2002/06/08 23:11:09 torangan Exp $
+//  $Id: PingusWorldMapPingus.hh,v 1.14 2002/06/10 13:03:36 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,10 @@
 
 #include <queue>
 #include "PingusWorldMapNode.hh"
+
+namespace boost {
+  template <class T> class shared_ptr;
+}
 
 /** This is the representation of the horde of Pingus which will walk
     on the worldmap */

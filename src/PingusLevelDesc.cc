@@ -1,4 +1,4 @@
-//  $Id: PingusLevelDesc.cc,v 1.29 2002/06/10 11:00:27 torangan Exp $
+//  $Id: PingusLevelDesc.cc,v 1.30 2002/06/10 13:03:34 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,6 +27,8 @@
 #include "PingusResource.hh"
 #include "PingusLevelDesc.hh"
 #include "System.hh"
+#include "PLF.hh"
+#include "Controller.hh"
 
 /* Headers needed for i18n / gettext */
 #include <clocale>

@@ -1,4 +1,4 @@
-//  $Id: Client.cc,v 1.84 2002/06/10 11:00:25 torangan Exp $
+//  $Id: Client.cc,v 1.85 2002/06/10 13:03:34 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -47,6 +47,7 @@
 #include "GamepadController.hh"
 #include "Cursor.hh"
 #include "Server.hh"
+#include "ButtonPanel.hh"
 
 using boost::shared_ptr;
 

@@ -1,4 +1,4 @@
-//  $Id: Cloud.hh,v 1.7 2001/08/10 10:56:14 grumbel Exp $
+//  $Id: Cloud.hh,v 1.8 2002/06/10 13:03:35 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,6 @@
 #ifndef CLOUD_HH
 #define CLOUD_HH
 
-#include "../GameCounter.hh"
 #include "../Entrance.hh"
 
 ///

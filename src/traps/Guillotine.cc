@@ -1,4 +1,4 @@
-//  $Id: Guillotine.cc,v 1.17 2002/06/08 16:08:16 grumbel Exp $
+//  $Id: Guillotine.cc,v 1.18 2002/06/10 13:03:35 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #include "Guillotine.hh"
 #include "../PinguHolder.hh"
 #include "../World.hh"
+#include "../Pingu.hh"
 
 Guillotine::Guillotine(const TrapData& data)
 {

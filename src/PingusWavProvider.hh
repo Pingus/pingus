@@ -1,4 +1,4 @@
-//  $Id: PingusWavProvider.hh,v 1.3 2001/04/01 18:00:37 grumbel Exp $
+//  $Id: PingusWavProvider.hh,v 1.4 2002/06/10 13:03:35 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,7 +22,8 @@
 
 #include <map>
 #include <string>
-#include "audio.hh"
+
+class Mix_Chunk;
 
 ///
 class PingusWavProvider

@@ -16,7 +16,7 @@
  *                                                                         *
  ***************************************************************************/
 
-#include <math.h>
+#include <cmath>
 #include <ClanLib/Display/Display/surface.h>
 #include <ClanLib/Display/SurfaceProviders/canvas.h>
 #include "caimagemanipulation.h"
@@ -501,3 +501,4 @@ CAImageManipulation::getDistance( float x1, float y1, float x2, float y2 )
 
 
 // EOF
+

@@ -1,4 +1,4 @@
-//  $Id: FakeExit.cc,v 1.20 2002/06/09 00:56:26 grumbel Exp $
+//  $Id: FakeExit.cc,v 1.21 2002/06/10 13:03:35 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,7 @@
 #include "../PingusResource.hh"
 #include "../PinguActionFactory.hh"
 #include "../PinguHolder.hh"
+#include "../Pingu.hh"
 
 FakeExit::FakeExit(const TrapData& data)
 {

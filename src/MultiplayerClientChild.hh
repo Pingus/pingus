@@ -1,4 +1,4 @@
-//  $Id: MultiplayerClientChild.hh,v 1.9 2002/06/09 20:59:43 grumbel Exp $
+//  $Id: MultiplayerClientChild.hh,v 1.10 2002/06/10 13:03:34 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,13 +20,13 @@
 #ifndef TWOPLAYERCLIENT_HH
 #define TWOPLAYERCLIENT_HH
 
-#include "Server.hh"
 #include "Cursor.hh"
 #include "ButtonPanel.hh"
 #include "Controllable.hh"
 #include "PlayfieldView.hh"
 #include "PingusCounterBar.hh"
-#include "PLF.hh"
+
+class Server;
 
 class MultiplayerClientChild : public Controllable,
 			       public GuiObj

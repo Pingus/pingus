@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapStat.cc,v 1.7 2002/06/10 11:00:29 torangan Exp $
+//  $Id: PingusWorldMapStat.cc,v 1.8 2002/06/10 13:03:36 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,7 @@
 #include "../System.hh"
 #include "../StringConverter.hh"
 #include "../PingusError.hh"
+#include "../XMLhelper.hh"
 #include "PingusWorldMapStat.hh"
 
 using namespace Pingus::WorldMap;

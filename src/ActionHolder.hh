@@ -1,4 +1,4 @@
-//  $Id: ActionHolder.hh,v 1.16 2002/06/09 00:56:25 grumbel Exp $
+//  $Id: ActionHolder.hh,v 1.17 2002/06/10 13:03:34 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,14 +22,8 @@
 
 #include <string>
 #include <map>
-#include <vector>
-#include "boost/smart_ptr.hpp"
-
-#include "PinguAction.hh"
 
 class PLF;
-
-///
 class PinguAction;
 
 /**

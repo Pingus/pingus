@@ -1,4 +1,4 @@
-//  $Id: Faller.hh,v 1.5 2002/06/04 10:25:40 torangan Exp $
+//  $Id: Faller.hh,v 1.6 2002/06/10 13:03:35 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,7 +22,6 @@
 
 #include "../PinguAction.hh"
 
-class Sprite;
 
 class Faller : public PinguAction
 {

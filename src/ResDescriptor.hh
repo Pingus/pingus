@@ -1,4 +1,4 @@
-//  $Id: ResDescriptor.hh,v 1.11 2002/06/08 20:19:54 torangan Exp $
+//  $Id: ResDescriptor.hh,v 1.12 2002/06/10 13:03:35 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,7 +22,6 @@
 
 #include <iosfwd>
 #include <string>
-#include <assert.h>
 
 /// Resource descriptor, tells were to find a resource.
 class ResDescriptor

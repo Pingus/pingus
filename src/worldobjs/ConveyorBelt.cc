@@ -1,4 +1,4 @@
-//  $Id: ConveyorBelt.cc,v 1.35 2002/06/10 11:00:29 torangan Exp $
+//  $Id: ConveyorBelt.cc,v 1.36 2002/06/10 13:03:36 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,6 +26,7 @@
 #include "../XMLhelper.hh"
 #include "ConveyorBelt.hh"
 #include "../GroundpieceData.hh"
+#include "../Pingu.hh"
 
 ConveyorBeltData::ConveyorBeltData ()
 {

@@ -1,4 +1,4 @@
-//  $Id: StatusLine.cc,v 1.12 2002/06/10 11:00:28 torangan Exp $
+//  $Id: StatusLine.cc,v 1.13 2002/06/10 13:03:35 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,6 +25,7 @@
 #include "../boost/smart_ptr.hpp"
 #include "EditorView.hh"
 #include "StatusLine.hh"
+#include "EditorObj.hh"
 
 StatusLine::StatusLine()
 {

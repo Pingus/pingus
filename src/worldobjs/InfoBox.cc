@@ -1,4 +1,4 @@
-//  $Id: InfoBox.cc,v 1.8 2002/06/10 11:00:29 torangan Exp $
+//  $Id: InfoBox.cc,v 1.9 2002/06/10 13:03:36 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,6 +25,7 @@
 #include "../PingusResource.hh"
 #include "../XMLhelper.hh"
 #include "InfoBox.hh"
+#include "../Pingu.hh"
 
 InfoBoxData::InfoBoxData ()
 {
