@@ -1,4 +1,4 @@
-//  $Id: Editor.cc,v 1.11 2000/06/10 07:57:00 grumbel Exp $
+//  $Id: Editor.cc,v 1.12 2000/06/12 20:31:31 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -132,7 +132,7 @@ Editor::draw ()
   }
 
   status_line.draw(object_manager.x_offset, object_manager.y_offset);
-  CL_Display::flip_display(true);
+  Display::flip_display(true);
 }
 
 
@@ -192,7 +192,7 @@ Editor::read_string (std::string prefix, std::string default_str)
   font->print_left(20, 40, str.c_str());
   font->print_left(20, 400, "For informations on the editor, have a look at the info pages.");
   font->print_left(20, 420, "$ info pingus");
-  CL_Display::flip_display();
+  Display::flip_display();
   CL_Display::sync_buffers();
 
   CL_Key key;
@@ -240,7 +240,7 @@ Editor::read_string (std::string prefix, std::string default_str)
 	  CL_Display::clear_display();
 	  font->print_left(20, 20, prefix.c_str());
 	  font->print_left(20, 40, str.c_str());
-	  CL_Display::flip_display();
+	  Display::flip_display();
 	}
     }
   delete keys;
@@ -285,7 +285,7 @@ Editor::rect_get_current_objs()
 			 0.0, 1.0, 0.0, 1.0);
       panel->draw();
       status_line.draw(object_manager.x_offset, object_manager.y_offset);
-      CL_Display::flip_display(true);
+      Display::flip_display(true);
     }
   
   object_manager.rect_get_current_objs(x1, y1, x2, y2);
@@ -396,6 +396,11 @@ Editor::interactive_load()
 
 /***********************************************
 $Log: Editor.cc,v $
+Revision 1.12  2000/06/12 20:31:31  grumbel
+Fixed handling of transparent spots in the editor
+Added a faster screenshot function (only for 16bit)
+Added global fps display
+
 Revision 1.11  2000/06/10 07:57:00  grumbel
 Added wrapper around CL_MouseCursor and added an option to disable the software cursor, due to probable bugs in CL_MouseCursor
 

@@ -1,4 +1,4 @@
-//  $Id: Screenshot.cc,v 1.1 2000/06/12 14:42:11 grumbel Exp $
+//  $Id: Screenshot.cc,v 1.2 2000/06/12 20:31:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,7 +17,9 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+
 #include <cstdio>
+#include "globals.hh"
 #include "System.hh"
 #include "Screenshot.hh"
 
@@ -36,7 +38,73 @@ Screenshot::make_screenshot()
 }
 
 void
+Screenshot::save_16bit_target_to_file(CL_Target* target, string filename)
+{
+  // Warring this doesn't work
+  
+  unsigned char* buffer;
+  unsigned char* sbuffer;
+  unsigned int sbuffer_size;
+  unsigned int buffer_size;
+  FILE* out = fopen(filename.c_str(), "wb");
+
+  if (!out) {
+    perror(filename.c_str());
+    std::cout << "Screenshot: Coudn't write file: " << filename << std::endl;
+    return;
+  }
+
+  fprintf(out,
+	  "P6\n"
+	  "# CREATOR: Pingus %s\n"
+	  "%d %d\n"
+	  "255\n",
+	  VERSION,
+	  target->get_width(),
+	  target->get_height());
+
+  buffer_size = target->get_width() * target->get_height() * 3;
+  buffer = new unsigned char[buffer_size];
+
+  target->lock();
+  sbuffer = (unsigned char*)target->get_data();
+  sbuffer_size = target->get_height() * target->get_pitch();
+
+  std::cout << "sbuffer: " << sbuffer_size << std::endl;
+  std::cout << "buffer: " << buffer_size << std::endl;
+
+  for (unsigned int i=0,j=0; i < sbuffer_size; i+=2, j+=3)
+    {
+      buffer[j + 0] = (*((unsigned short*)(sbuffer+i)) & target->get_red_mask())
+		       * 255 / target->get_red_mask();
+      buffer[j + 1] = (*((unsigned short*)(sbuffer+i)) & target->get_green_mask()) 
+		       * 255 / target->get_green_mask();
+      buffer[j + 2] = (*((unsigned short*)(sbuffer+i)) & target->get_blue_mask())
+		       * 255 / target->get_blue_mask();
+    }
+  
+  target->unlock();
+  
+  fwrite(buffer, sizeof(unsigned char), buffer_size, out);
+  fclose(out);
+  delete[] buffer;
+}
+
+void
 Screenshot::save_target_to_file(CL_Target* target, string filename)
+{
+  switch(target->get_depth()) {
+  case 16:
+    save_16bit_target_to_file(target, filename);
+    break;
+  default:
+    save_generic_target_to_file(target, filename);
+    break;
+  }
+}
+
+void
+Screenshot::save_generic_target_to_file(CL_Target* target, string filename)
 {
   ofstream out(filename.c_str());
   float red, green, blue, alpha;

@@ -1,4 +1,4 @@
-//  $Id: Screenshot.hh,v 1.1 2000/06/12 14:42:11 grumbel Exp $
+//  $Id: Screenshot.hh,v 1.2 2000/06/12 20:31:30 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,6 +27,8 @@ class Screenshot
 private:
   static string get_date();
   static string get_filename();
+  static void save_16bit_target_to_file(CL_Target*, string filename);
+  static void save_generic_target_to_file(CL_Target*, string filename);
 public:
   static void make_screenshot();
   static void save_target_to_file(CL_Target*, string filename);

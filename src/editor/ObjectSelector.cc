@@ -1,4 +1,4 @@
-//  $Id: ObjectSelector.cc,v 1.16 2000/06/10 07:57:00 grumbel Exp $
+//  $Id: ObjectSelector.cc,v 1.17 2000/06/12 20:31:32 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -92,7 +92,7 @@ ObjectSelector::get_trap()
 	  font->print_left(20,150 + j, i->c_str());
 	}
       
-      CL_Display::flip_display();
+      Display::flip_display();
 
       switch (read_key()) 
 	{
@@ -210,7 +210,7 @@ ObjectSelector::get_entrance()
   font->print_left(20, 50, "1 - generic");
   font->print_left(20, 70, "2 - woodthing");
   font->print_left(20, 90, "3 - cloud");
-  CL_Display::flip_display();
+  Display::flip_display();
 
   while (!have_name) 
     {
@@ -273,10 +273,11 @@ ObjectSelector::select_obj_type()
   font->print_left(20, 70, "g - Groundpiece (ground)");
   font->print_left(20, 90, "s - Groundpiece (solid)");
   font->print_left(20,110, "b - Groundpiece (bridge)");
+  font->print_left(20,110, "n - Groundpiece (transparent)");
   font->print_left(20,130, "h - Hotspot");
   font->print_left(20,150, "e - Entrance");
   font->print_left(20,170, "x - Exit");
-  CL_Display::flip_display();
+  Display::flip_display();
     
   while (true) 
     {
@@ -293,6 +294,9 @@ ObjectSelector::select_obj_type()
 	  break;
 	case CL_KEY_G:
 	  return get_groundpiece(surface_data::GROUND);
+	  break;
+	case CL_KEY_N:
+	  return get_groundpiece(surface_data::TRANSPARENT);
 	  break;
 	case CL_KEY_H:
 	  return get_hotspot();
@@ -348,6 +352,11 @@ ObjectSelector::read_string(string description, string def_str)
 /*
 
 $Log: ObjectSelector.cc,v $
+Revision 1.17  2000/06/12 20:31:32  grumbel
+Fixed handling of transparent spots in the editor
+Added a faster screenshot function (only for 16bit)
+Added global fps display
+
 Revision 1.16  2000/06/10 07:57:00  grumbel
 Added wrapper around CL_MouseCursor and added an option to disable the software cursor, due to probable bugs in CL_MouseCursor
 

@@ -1,4 +1,4 @@
-//  $Id: PSMObj.cc,v 1.9 2000/05/28 19:30:10 grumbel Exp $
+//  $Id: PSMObj.cc,v 1.10 2000/06/12 20:31:32 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -60,6 +60,10 @@ PSMObj::save(std::ofstream* plf, std::ofstream* psm)
     (*psm) << "solid : ";
   } else if (type == surface_data::GROUND) {
     (*psm) << "ground : ";
+  } else if (type == surface_data::TRANSPARENT) {
+    (*psm) << "transparent : ";
+  } else if (type == surface_data::BRIDGE) {
+    (*psm) << "bridge : ";
   } else {
     std::cout << "Warning: PSMObj: type not set!" << std::endl;
     (*psm) << "ground : ";
@@ -86,6 +90,9 @@ PSMObj::status_line()
       break;
     case surface_data::BRIDGE:
       type_name = "bridge";	
+      break;
+    case surface_data::TRANSPARENT:
+      type_name = "transparent";
       break;
     default:
       type_name = "Unknown";

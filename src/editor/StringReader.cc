@@ -1,4 +1,4 @@
-//  $Id: StringReader.cc,v 1.5 2000/04/24 13:15:43 grumbel Exp $
+//  $Id: StringReader.cc,v 1.6 2000/06/12 20:31:32 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,7 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "../PingusResource.hh"
-
+#include "../Display.hh"
 #include "StringReader.hh"
 
 StringReader::StringReader()
@@ -167,7 +167,7 @@ StringReader::draw()
   CL_Display::clear_display();
   font->print_left(20, 20, description.c_str());
   font->print_left(20, 40, current_string.c_str());
-  CL_Display::flip_display();
+  Display::flip_display();
 }
 
 

@@ -1,4 +1,4 @@
-//   $Id: Pingus.cc,v 1.32 2000/06/12 14:42:11 grumbel Exp $
+//   $Id: Pingus.cc,v 1.33 2000/06/12 20:31:30 grumbel Exp $
 //    ___
 //   |  _\ A free Lemmings clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -56,6 +56,7 @@
 #include "GlobalEvent.hh"
 #include "Config.hh"
 
+#include "FPSCounter.hh"
 #include "PingusSound.hh"
 #include "PingusMenu.hh"
 #include "PingusMessageBox.hh"
@@ -694,6 +695,9 @@ bool
 PingusMain::do_lemmings_mode(void)
 {
   GlobalEvent* global_event = new GlobalEvent();
+  FPSCounter   fps_counter;
+
+  Display::add_flip_screen_hook(&fps_counter);
 
   if (verbose) {
     std::cout << "PingusMain: Starting Main: " << CL_System::get_time() << std::endl;
@@ -731,6 +735,8 @@ PingusMain::do_lemmings_mode(void)
 
   CL_Input::chain_button_press.remove(global_event);
   CL_Input::chain_button_release.remove(global_event);
+
+  Display::remove_flip_screen_hook(&fps_counter);
   
   std::cout << "\n"
 	    << ",-------------------------------------------.\n"
