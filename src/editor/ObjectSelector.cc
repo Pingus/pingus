@@ -1,4 +1,4 @@
-//  $Id: ObjectSelector.cc,v 1.7 2000/02/16 03:06:33 grumbel Exp $
+//  $Id: ObjectSelector.cc,v 1.8 2000/02/16 03:15:05 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -136,7 +136,7 @@ ObjectSelector::get_groundpiece()
     std::cout << std::flush;
   }
     
-  str = read_string("Input Hotspot gfx:", last_object);
+  str = read_string("Input GroundPiece gfx:", last_object);
   
   last_object = str;
 
@@ -318,6 +318,9 @@ ObjectSelector::read_string(std::string description, std::string def_str)
 /*
 
 $Log: ObjectSelector.cc,v $
+Revision 1.8  2000/02/16 03:15:05  grumbel
+Fixed scrolling save bug
+
 Revision 1.7  2000/02/16 03:06:33  grumbel
 Disabled smoke particles
 Fixed saved Pingus counter

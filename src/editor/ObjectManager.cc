@@ -1,4 +1,4 @@
-//  $Id: ObjectManager.cc,v 1.4 2000/02/11 21:26:38 grumbel Exp $
+//  $Id: ObjectManager.cc,v 1.5 2000/02/16 03:15:05 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -160,7 +160,7 @@ ObjectManager::save_level (std::string filename)
   // FIXME: we need some error checking
   
   plf_out << "/* This level was created with the PLE\n"
-	  << " * $Id: ObjectManager.cc,v 1.4 2000/02/11 21:26:38 grumbel Exp $\n"
+	  << " * $Id: ObjectManager.cc,v 1.5 2000/02/16 03:15:05 grumbel Exp $\n"
 	  << " */"
 	  << std::endl;
   
@@ -191,7 +191,7 @@ ObjectManager::save_level (std::string filename)
 	  << "  green = \"" << background.green << "\";\n"
 	  << "  blue  = \"" <<  background.blue << "\";\n"
 	  << "  scroll_x = " << background.scroll_x << ";\n"
-	  << "  scroll_y = " << background.scroll_x << ";\n"
+	  << "  scroll_y = " << background.scroll_y << ";\n"
 	  << "}\n"
 	  << std::endl;
 
