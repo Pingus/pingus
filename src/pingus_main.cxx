@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.96 2003/08/16 20:51:28 grumbel Exp $
+//   $Id: pingus_main.cxx,v 1.97 2003/08/18 11:47:40 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___
@@ -770,9 +770,12 @@ PingusMain::start_game ()
   if (print_fps)
     Display::add_flip_screen_hook(&fps_counter);
 
-  // Register the global event catcher
-  on_button_press_slot = CL_Input::sig_button_press ().connect (&global_event, &GlobalEvent::on_button_press);
-  on_button_release_slot = CL_Input::sig_button_release ().connect (&global_event, &GlobalEvent::on_button_release);
+  if (!render_preview)
+    {
+      // Register the global event catcher
+      on_button_press_slot = CL_Input::sig_button_press ().connect (&global_event, &GlobalEvent::on_button_press);
+      on_button_release_slot = CL_Input::sig_button_release ().connect (&global_event, &GlobalEvent::on_button_release);
+    }
 
   // Set the root screen
   if (show_input_debug_screen) // show a debug screen
@@ -846,16 +849,19 @@ PingusMain::start_game ()
       //ScreenManager::instance()->push_screen (new StoryScreen(), true);
     }
 
-  // show the main menu, the rest of the game is spawn from there
-  if (maintainer_mode)
-    std::cout << "PingusMain::start screen manager" << std::endl;
-  ScreenManager::instance ()->display ();
-  if (maintainer_mode)
-    std::cout << "PingusMain::quit game and screen_manager" << std::endl;
+  if (!render_preview)
+    {
+      // show the main menu, the rest of the game is spawn from there
+      if (maintainer_mode)
+        std::cout << "PingusMain::start screen manager" << std::endl;
+      ScreenManager::instance ()->display ();
+      if (maintainer_mode)
+        std::cout << "PingusMain::quit game and screen_manager" << std::endl;
 
-  // unregister the global event catcher
-  CL_Input::sig_button_press ().disconnect (on_button_press_slot);
-  CL_Input::sig_button_release ().disconnect(on_button_release_slot);
+      // unregister the global event catcher
+      CL_Input::sig_button_press ().disconnect (on_button_press_slot);
+      CL_Input::sig_button_release ().disconnect(on_button_release_slot);
+    }
 }
 
 int
@@ -897,9 +903,11 @@ PingusMain::main(int argc, char** argv)
       init_pingus();
 
       // Avoid uglyness on window opening
-      CL_Display::clear_display();
-      CL_Display::flip_display();
-
+      if (!render_preview)
+        {
+          CL_Display::clear_display();
+          CL_Display::flip_display();
+        }
       start_game();
 
     }
@@ -943,37 +951,46 @@ PingusMain::init_clanlib()
   CL_SetupJPEG::init ();
   CL_SetupGUI::init ();
 
-#ifdef HAVE_LIBCLANGL
-  if (use_opengl) {
-    CL_SetupGL::init();
-    std::cout << "Using OpenGL" << std::endl;
-  }
-#endif
-
-  CL_SetupDisplay::init();
-
-  on_exit_press_slot = CL_System::sig_quit().connect(this, &PingusMain::on_exit_press);
-
-  if (verbose)
+  if (render_preview)
     {
-      std::cout << "Using resolution: "
-		<< screen_width << "x" << screen_height << std::endl;
+      // Register only the resource types
+      CL_SetupDisplay::init(true);
     }
-
-  // Initing the display
-  CL_Display::set_videomode(screen_width, screen_height, 16,
-			    fullscreen_enabled,
-			    false); // allow resize
-  CL_Display::clear_display();
-  CL_Display::flip_display();
+  else
+    {
 
 #ifdef HAVE_LIBCLANGL
-  if (use_opengl)
-    {
-      CL_OpenGL::begin_2d ();
-      glEnable (GL_BLEND);
-    }
+      if (use_opengl) {
+        CL_SetupGL::init();
+        std::cout << "Using OpenGL" << std::endl;
+      }
 #endif
+
+      CL_SetupDisplay::init();
+
+      on_exit_press_slot = CL_System::sig_quit().connect(this, &PingusMain::on_exit_press);
+
+      if (verbose)
+        {
+          std::cout << "Using resolution: "
+                    << screen_width << "x" << screen_height << std::endl;
+        }
+
+      // Initing the display
+      CL_Display::set_videomode(screen_width, screen_height, 16,
+                                fullscreen_enabled,
+                                false); // allow resize
+      CL_Display::clear_display();
+      CL_Display::flip_display();
+    
+#ifdef HAVE_LIBCLANGL
+      if (use_opengl)
+        {
+          CL_OpenGL::begin_2d ();
+          glEnable (GL_BLEND);
+        }
+#endif
+    }
 }
 
 void
