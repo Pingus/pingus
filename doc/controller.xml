@@ -1,83 +1,82 @@
 <pingus-controller>
-  <variables>
-    <def var="sidewinder-gamepad" value="/dev/input/js0"/>
-    <def var="mouseman1" value="1"/>
-    <def var="mouseman2" value="/dev/input/mouse3"/>
-  </variables>
-
   <controller-config>
     <standard-pointer>
       <axis-pointer>
-	<axis-modifier angle=90><joystick-axis id="sidewinder-gamepad" axis="0"/></axis-modifier>
-	<axis-modifier angle=0><joystick-axis id="sidewinder-gamepad" axis="1"/></axis-modifier>
+	<joystick-axis angle="0"  id="0" axis="0"/>
+	<joystick-axis angle="90" id="0" axis="1"/>
       </axis-pointer>
 
       <axis-pointer>
 	<button-axis angle=0>
-	  <keyboard-button id="0" key="4"/>
-	  <keyboard-button id="0" key="6"/>
+	  <key-button key="CL_KEY_KP_4"/>
+	  <key-button key="CL_KEY_KP_6"/>
 	</button-axis>
 	
 	<button-axis angle=90>
-	  <keyboard-button id="0" key="8"/>
-	  <keyboard-button id="0" key="2"/>
+	  <key-button key="CL_KEY_KP_8"/>
+	  <key-button key="CL_KEY_KP_2"/>
 	</button-axis>
 
 	<button-axis angle="45">
-	  <keyboard-button id="0" key="9"/>
-	  <keyboard-button id="0" key="1"/>
+	  <key-button key="CL_KEY_KP_9"/>
+	  <key-button key="CL_KEY_KP_1"/>
 	</button-axis>
 
 	<button-axis angle="-45">
-	  <keyboard-button id="0" key="7"/>
-	  <keyboard-button id="0" key="3"/>
+	  <key-button key="CL_KEY_KP_7"/>
+	  <key-button key="CL_KEY_KP_3"/>
 	</button-axis>
       </axis-pointer>
     </standard-pointer>
 
     <scroll-pointer>
-      <mouse-pointer id="mouseman1"/>
-      <usb-mouse-pointer id="mouseman2"/>
+      <mouse-pointer/>
     </scroll-pointer>
 
     <primary-button>
-      <joystick-button id="sidewinder-gamepad" button="1"/>
+      <joystick-button id="0" button="1"/>
     </primary-button>
 
     <secondary-button>
-      <mouse-button id="mouseman2" button="3"/>
+      <mouse-button button="2"/>
     </secondary-button>
 
     <scroll-modifier>
-      <mouse-button id="mouseman1" button="3"/>
+      <mouse-button button="3"/>
     </scroll-modifier>
 
     <pause-button>
-      <keyboard-button id="0" button="3"/>
+      <key-button button="3"/>
     </pause-button>
 
     <fast-forward-button>
-      <keyboard-button id="0" key="12"/>
+      <key-button key="CL_KEY_F"/>    
     </fast-forward-button>
+
+    <armageddon-button>
+      <key-button key="CL_KEY_A"/>
+    </armageddon-button>
 
     <action-axis>
       <button-axis>
-	<joystick-button id="sidewinder-gamepad" button="2"/>
-	<joystick-button id="sidewinder-gamepad" button="3"/>
+	<joystick-button id="0" button="2"/>
+	<joystick-button id="0" button="3"/>
       </button-axis>
     </action-axis>
 
     <escape-button>
-      <joystick-button id="sidewinder-gamepad" button="13"/>
-      <keyboard-button id="0" key="ESCAPE"/>
+      <joystick-button id="0" button="13"/>
+      <key-button key="ESCAPE"/>
     </escape-button>
 
-    <action-1-select>
-      <keyboard-button id="0" key="F3"/>
-    </action-1-select>
+    <action-buttons>
+      <action-button>
+        <key-button key="CL_KEY_F3"/>
+      </action-button>
 
-    <action-2-select>
-      <keyboard-button id="0" key="F4"/>
-    </action-2-select>
+      <action-button>
+        <key-button key="CL_KEY_F4"/>
+      </action-button>
+    <action-buttons>
   </controller-config>
 </pingus-controller>
