@@ -99,14 +99,12 @@ public:
   bool read_vector(const char* name, Vector& value) const
   {
     CL_DomElement node = get_node_by_name(name);
-    if (!node.is_null())
+    if (node.is_element())
       {
-        CL_DomNamedNodeMap m = node.get_attributes();
-        
-        CL_String::from(m.get_named_item("x").get_node_value(), value.x);
-        CL_String::from(m.get_named_item("y").get_node_value(), value.y);
-        CL_String::from(m.get_named_item("z").get_node_value(), value.z);
-
+        XMLFileReader reader(node.to_element());
+        reader.read_float("x", value.x);
+        reader.read_float("y", value.y);
+        reader.read_float("z", value.z);
         return true;
       }
     else
@@ -118,15 +116,13 @@ public:
   bool read_color(const char* name, CL_Colorf& value) const
   {
     CL_DomElement node = get_node_by_name(name);
-    if (!node.is_null())
+    if (node.is_element())
       {
-        CL_DomNamedNodeMap m = node.get_attributes();
-        
-        CL_String::from(m.get_named_item("red").get_node_value(),   value.red);
-        CL_String::from(m.get_named_item("green").get_node_value(), value.green);
-        CL_String::from(m.get_named_item("blue").get_node_value(),  value.blue);
-        CL_String::from(m.get_named_item("alpha").get_node_value(), value.alpha);
-        
+        XMLFileReader reader(node.to_element());
+        reader.read_float("red",   value.red);
+        reader.read_float("green", value.green);
+        reader.read_float("blue",  value.blue);
+        reader.read_float("alpha", value.alpha);
         return true;
       }
     else
@@ -138,13 +134,11 @@ public:
   bool read_size(const char* name, CL_Size& value) const
   {
     CL_DomElement node = get_node_by_name(name);
-    if (!node.is_null())
+    if (node.is_element())
       {
-        CL_DomNamedNodeMap m = node.get_attributes();
-        
-        CL_String::from(m.get_named_item("width").get_node_value(),  value.width);
-        CL_String::from(m.get_named_item("height").get_node_value(), value.height);
-
+        XMLFileReader reader(node.to_element());
+        reader.read_int("width",  value.width);
+        reader.read_int("height", value.height);
         return true;
       }
     else

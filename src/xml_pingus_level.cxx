@@ -55,7 +55,7 @@ XMLPingusLevel::XMLPingusLevel(const std::string& filename)
               XMLFileReader reader(node);
               reader.read_string("levelname",        impl->levelname);
               reader.read_string("description",      impl->description);
-              reader.read_size  ("size",             impl->size);
+              reader.read_size  ("levelsize",             impl->size);
               reader.read_string("music",            impl->music);
               reader.read_int   ("time",             impl->number_of_pingus);
               reader.read_int   ("difficulty",       impl->difficulty);
@@ -63,14 +63,16 @@ XMLPingusLevel::XMLPingusLevel(const std::string& filename)
               reader.read_int   ("number-to-save",   impl->number_to_save);
               reader.read_string("author",           impl->author);
               
-              /* FIXME:
-                FileReader actions_reader;
-                reader.read_section("actions", actions_reader);
-              
-                actions_reader.read_int()
-              */
-              impl->actions["basher"] = 5;
-              impl->actions["jumper"] = 50;
+              FileReader actions_reader;
+              reader.read_section("actions", actions_reader);
+              const std::vector<std::string>& actions = actions_reader.get_section_names();
+              for(std::vector<std::string>::const_iterator i = actions.begin(); 
+                  i != actions.end(); ++i)
+                {
+                  int count = 0;
+                  actions_reader.read_int(i->c_str(), count);
+                  impl->actions[*i] = count;
+                }
             }
           else if (node.get_tag_name() == "objects")
             {
