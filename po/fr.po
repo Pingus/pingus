@@ -343,7 +343,7 @@ msgstr "g - Bordure (sol)"
 
 #: src/editor/object_selector.cxx:396
 msgid "s - Groundpiece (solid)"
-msgstr "s - Bordure (roc)"
+msgstr "s - Bordure (acier/solide)"
 
 #: src/editor/object_selector.cxx:397
 msgid "b - Groundpiece (bridge)"

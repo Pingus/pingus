@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Pingus 0.6.0\n"
-"POT-Creation-Date: 2003-04-16 01:21+0200\n"
+"POT-Creation-Date: 2003-04-16 01:50+0200\n"
 "PO-Revision-Date: 2003-04-15 17:31+0200\n"
 "Last-Translator: Ingo Ruhnke <grumbel@gmx.de>\n"
 "Language-Team: David Philippi <david@torangan.de>, Ingo Ruhnke <grumbel@gmx."
@@ -825,10 +825,6 @@ msgstr "Aktiviere die Ausgabe von Debug Informationen, mögliche"
 msgid "OPTION's are tiles, gametime, actions, sound, resources, gui,"
 msgstr "Optionen sind tiles, gametime, actions, sound, resources, gui,"
 
-#: src/pingus_main.cxx:525
-msgid "input, pathmgr"
-msgstr "input, pathmgr"
-
 #: src/pingus_main.cxx:526
 msgid "Skip at least N frames, larger values speed the game up"
 msgstr ""
@@ -1302,6 +1298,9 @@ msgstr "Worldmap: Datei nicht gefunden: "
 #: src/worldmap/worldmap.cxx:249
 msgid "...walking..."
 msgstr "...laufe..."
+
+#~ msgid "input, pathmgr"
+#~ msgstr "input, pathmgr"
 
 #~ msgid "pingu_id %d"
 #~ msgstr "Pingu_id %d"

@@ -14,7 +14,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: cs\n"
-"POT-Creation-Date: 2003-04-16 01:21+0200\n"
+"POT-Creation-Date: 2003-04-16 01:50+0200\n"
 "PO-Revision-Date: 2003-04-15 21:05+0200\n"
 "Last-Translator: Tomáš Bláha\n"
 "Language-Team: czech\n"
@@ -826,10 +826,6 @@ msgstr "Zapnout vypisovani ladicich hlasek, mozna"
 msgid "OPTION's are tiles, gametime, actions, sound, resources, gui,"
 msgstr "nastaveni jsou: tiles, gametime, actions, sound, resources, gui,"
 
-#: src/pingus_main.cxx:525
-msgid "input, pathmgr"
-msgstr "input, pathmgr"
-
 #: src/pingus_main.cxx:526
 msgid "Skip at least N frames, larger values speed the game up"
 msgstr "Preskocit alespon N snimku, vyssi hodnota zrychluje hru"
@@ -1292,6 +1288,9 @@ msgstr "WorldMap: Soubor nenalezen: "
 #: src/worldmap/worldmap.cxx:249
 msgid "...walking..."
 msgstr "...jdu..."
+
+#~ msgid "input, pathmgr"
+#~ msgstr "input, pathmgr"
 
 #~ msgid "pingu_id %d"
 #~ msgstr "pingu_id %d"

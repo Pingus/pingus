@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Pingus 0.6.0\n"
-"POT-Creation-Date: 2003-04-16 01:21+0200\n"
+"POT-Creation-Date: 2003-04-16 01:50+0200\n"
 "PO-Revision-Date: 2003-04-15 17:29+0200\n"
 "Last-Translator: Milan Babuskov <mbabuskov@yahoo.com>\n"
 "Language-Team: <mbabuskov@yahoo.com>\n"
@@ -822,10 +822,6 @@ msgstr "Omogucuje ispis dibaging informacija, moguce"
 msgid "OPTION's are tiles, gametime, actions, sound, resources, gui,"
 msgstr "OPCIJE su polja, vreme igre, akcije, zvuk, resursi, interfejs,"
 
-#: src/pingus_main.cxx:525
-msgid "input, pathmgr"
-msgstr "kontrole, putanje"
-
 #: src/pingus_main.cxx:526
 msgid "Skip at least N frames, larger values speed the game up"
 msgstr "Preskoci N frejmova, vece vrednosti ubrzavaju igru"
@@ -1292,6 +1288,9 @@ msgstr "WorldMap: Fajl nije nadjen: "
 #: src/worldmap/worldmap.cxx:249
 msgid "...walking..."
 msgstr "...hodanje..."
+
+#~ msgid "input, pathmgr"
+#~ msgstr "kontrole, putanje"
 
 #~ msgid "pingu_id %d"
 #~ msgstr "pingus_id %d"
