@@ -1,4 +1,4 @@
-//  $Id: ButtonPanel.cc,v 1.17 2001/04/10 21:51:22 grumbel Exp $
+//  $Id: ButtonPanel.cc,v 1.18 2001/04/12 19:47:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,7 +26,9 @@
 using boost::shared_ptr;
 CL_Surface ButtonPanel::button_cap;
 
-ButtonPanel::ButtonPanel(boost::shared_ptr<PLF> plf)
+ButtonPanel::ButtonPanel(boost::shared_ptr<PLF> plf,
+			 boost::shared_ptr<Controller> arg_controller)
+  : controller (arg_controller)
 {
   last_press = 0;
 
@@ -160,11 +162,11 @@ ButtonPanel::on_button_press(const CL_Key &key)
     {
       for(AButtonIter button = a_buttons.begin(); button != a_buttons.end(); button++)
 	{
-	  if ((*button)->mouse_over())
+	  if ((*button)->mouse_over(controller->get_pos ()))
 	    pressed_button = *button;
 	}
   
-      if (armageddon->mouse_over()) 
+      if (armageddon->mouse_over(CL_Vector (key.x, key.y)))
 	{
 	  last_press = CL_System::get_time();
       
@@ -181,12 +183,12 @@ ButtonPanel::on_button_press(const CL_Key &key)
 	  return;
 	}
     
-      if (pause->mouse_over())
+      if (pause->mouse_over(controller->get_pos ()))
 	{
 	  client->set_pause(!client->get_pause());
 	  return;
 	}
-      else if (forward->mouse_over())
+      else if (forward->mouse_over(controller->get_pos ()))
 	{
 	  client->set_fast_forward(!client->get_fast_forward());
 	  return;

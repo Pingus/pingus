@@ -1,4 +1,4 @@
-//  $Id: ActionButton.hh,v 1.14 2001/04/08 14:10:34 grumbel Exp $
+//  $Id: ActionButton.hh,v 1.15 2001/04/12 19:47:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -52,7 +52,7 @@ public:
   ///
   virtual void   draw() = 0;
   ///
-  virtual bool   mouse_over() = 0;
+  virtual bool   mouse_over(const CL_Vector& pos) = 0;
 };
 
 // ----------------- snip --------------------
@@ -69,7 +69,7 @@ public:
   ///
   void   draw();
   ///
-  bool   mouse_over();
+  bool   mouse_over(const CL_Vector& pos);
 };
 
 // ----------------- snip --------------------
@@ -92,9 +92,8 @@ public:
   ///
   void draw();
   ///
-  bool mouse_over();
-}///
-;
+  bool mouse_over(const CL_Vector& pos);
+};
 
 // ----------------- snip --------------------
 
@@ -115,7 +114,7 @@ public:
   ///
   void draw();
   ///
-  bool mouse_over();
+  bool mouse_over(const CL_Vector& pos);
 };
 
 // ----------------- snip --------------------
@@ -137,9 +136,8 @@ public:
   ///
   void draw();
   ///
-  bool mouse_over();
-}///
-;
+  bool mouse_over(const CL_Vector& pos);
+};
 
 // ----------------- snip --------------------
 
@@ -189,12 +187,11 @@ public:
   bool   is_pressed();
 
   ///
-  virtual bool   mouse_over() = 0;
+  virtual bool   mouse_over(const CL_Vector& pos) = 0;
 
   ///
   void set_action_holder(ActionHolder* h);
-}///
-;
+};
 
 // ----------------- snip --------------------
 
@@ -210,9 +207,8 @@ public:
   ///
   void draw();
   ///
-  bool mouse_over();
-}///
-;
+  bool mouse_over(const CL_Vector& pos);
+};
 
 // ----------------- snip --------------------
 ///
@@ -227,7 +223,7 @@ public:
   ///
   void draw();
   ///
-  bool mouse_over();
+  bool mouse_over(const CL_Vector& pos);
 };
 
 // ----------------- snip --------------------

@@ -1,4 +1,4 @@
-//  $Id: Client.hh,v 1.21 2001/04/11 20:31:40 grumbel Exp $
+//  $Id: Client.hh,v 1.22 2001/04/12 19:47:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -81,7 +81,7 @@ private:
   static boost::shared_ptr<SmallMap>      small_map;
   /// 
   static boost::shared_ptr<HurryUp>       hurry_up;
-
+  boost::shared_ptr<Controller>   controller;
   ///
   CL_Slot on_button_press_slot;
   ///

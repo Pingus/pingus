@@ -1,4 +1,4 @@
-//  $Id: Display.cc,v 1.6 2000/06/23 18:39:56 grumbel Exp $
+//  $Id: Display.cc,v 1.7 2001/04/12 19:47:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>

@@ -1,4 +1,4 @@
-//  $Id: Playfield.hh,v 1.17 2001/04/10 21:51:22 grumbel Exp $
+//  $Id: Playfield.hh,v 1.18 2001/04/12 19:47:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,6 +30,7 @@
 #include "PinguInfo.hh"
 #include "Server.hh"
 #include "Client.hh"
+#include "Controller.hh"
 
 ///
 class Client;
@@ -87,16 +88,17 @@ private:
     }
     ///
     int x1, y1, x2, y2;
-  }///
-;
+  };
 
   ///
   std::vector<Rect> clipping_rectangles;
+
+  ///
+  boost::shared_ptr<Controller> controller;
 public:
   ///
-  Playfield();
-  ///
-  Playfield(boost::shared_ptr<PLF>, World*);
+  Playfield(boost::shared_ptr<PLF>, World*,
+	    boost::shared_ptr<Controller>);
   ///
   ~Playfield();
 

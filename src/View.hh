@@ -1,4 +1,4 @@
-//  $Id: View.hh,v 1.8 2001/04/03 10:45:49 grumbel Exp $
+//  $Id: View.hh,v 1.9 2001/04/12 19:47:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,7 @@
 
 #include "Range.hh"
 #include "World.hh"
+#include "Controller.hh"
 #include "CaptureRectangle.hh"
 
 /** A class to controll the rentering of the playfield, each display on 
@@ -44,6 +45,7 @@ private:
 
   ///
   void make_range();
+  boost::shared_ptr<Controller> controller;
 public:
   /** @name The position of the View.
       

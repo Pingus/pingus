@@ -1,4 +1,4 @@
-//  $Id: Playfield.cc,v 1.22 2001/04/10 21:51:22 grumbel Exp $
+//  $Id: Playfield.cc,v 1.23 2001/04/12 19:47:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,14 +35,9 @@
 
 using boost::shared_ptr;
 
-Playfield::Playfield()
-{
-  server = 0;
-  client = 0;
-  mouse_scrolling = false;
-}
-
-Playfield::Playfield(boost::shared_ptr<PLF> level_data, World* w)
+Playfield::Playfield(boost::shared_ptr<PLF> level_data, World* w,
+		     boost::shared_ptr<Controller> arg_controller)
+  : controller (arg_controller)
 {
   world = w;
   pingus = world->get_pingu_p();
@@ -173,20 +168,20 @@ Playfield::process_input_interactive()
     {
       scroll_speed = 30;
 
-      if (CL_Mouse::get_x() < 2) 
+      if (controller->get_x() < 2) 
 	{
 	  view[current_view]->set_x_offset(view[current_view]->get_x_offset() + scroll_speed);
 	} 
-      else if (CL_Mouse::get_x() > CL_Display::get_width() - 3) 
+      else if (controller->get_x() > CL_Display::get_width() - 3) 
 	{
 	  view[current_view]->set_x_offset(view[current_view]->get_x_offset() - scroll_speed);
 	}
   
-      if (CL_Mouse::get_y() < 2) 
+      if (controller->get_y() < 2) 
 	{
 	  view[current_view]->set_y_offset(view[current_view]->get_y_offset() + scroll_speed);
 	}
-      else if (CL_Mouse::get_y() > CL_Display::get_height() - 3) 
+      else if (controller->get_y() > CL_Display::get_height() - 3) 
 	{
 	  view[current_view]->set_y_offset(view[current_view]->get_y_offset() - scroll_speed);
 	}
@@ -209,8 +204,8 @@ Playfield::update(float delta)
       if (view[i]->is_current() && !mouse_scrolling)
 	{ 
 	  current_view = i;
-	  current_pingu = current_pingu_find(CL_Mouse::get_x() - view[i]->get_x_pos() - (view[i]->get_x_offset()),
-					     CL_Mouse::get_y() - view[i]->get_y_pos() - (view[i]->get_y_offset())); 
+	  current_pingu = current_pingu_find(controller->get_x() - view[i]->get_x_pos() - (view[i]->get_x_offset()),
+					     controller->get_y() - view[i]->get_y_pos() - (view[i]->get_y_offset())); 
 	  view[i]->set_pingu(current_pingu);
 	  break;
 	}
@@ -260,8 +255,8 @@ Playfield::enable_scroll_mode()
   if (verbose) std::cout << "Started scrolling..." << std::flush;
   mouse_scrolling = true;
 
-  scroll_center_x = CL_Mouse::get_x();
-  scroll_center_y = CL_Mouse::get_y();
+  scroll_center_x = controller->get_x();
+  scroll_center_y = controller->get_y();
 }  
 
 void
@@ -269,8 +264,8 @@ Playfield::do_scrolling()
 {
   if (mouse_scrolling)
     {
-      view[current_view]->shift_x_offset((scroll_center_x - CL_Mouse::get_x()) / 5);
-      view[current_view]->shift_y_offset((scroll_center_y - CL_Mouse::get_y()) / 5);
+      view[current_view]->shift_x_offset((scroll_center_x - controller->get_x()) / 5);
+      view[current_view]->shift_y_offset((scroll_center_y - controller->get_y()) / 5);
     }
 }
 

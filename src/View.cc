@@ -1,4 +1,4 @@
-//  $Id: View.cc,v 1.11 2001/04/03 10:45:49 grumbel Exp $
+//  $Id: View.cc,v 1.12 2001/04/12 19:47:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #include <cassert>
 #include <ClanLib/core.h>
 
+#include "MouseController.hh"
 #include "View.hh"
 #include "globals.hh"
 
@@ -27,6 +28,7 @@
 World* View::world;
 
 View::View(int x1, int y1, int x2, int y2, float s)
+  : controller (new MouseController ())
 {
   assert(world);
 
@@ -52,7 +54,7 @@ View::draw()
   assert(world);
   float color;
 
-  if (is_over(CL_Mouse::get_x(), CL_Mouse::get_y()))
+  if (is_over(controller->get_x(), controller->get_y()))
     {
       color = 1.0;
       mouse_over = true;

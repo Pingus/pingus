@@ -1,4 +1,4 @@
-//  $Id: Client.cc,v 1.42 2001/04/11 20:31:40 grumbel Exp $
+//  $Id: Client.cc,v 1.43 2001/04/12 19:47:09 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,15 +35,19 @@
 #include "OptionMenu.hh"
 #include "PLFPLF.hh"
 #include "XMLPLF.hh"
+#include "MouseController.hh"
 #include "DeltaManager.hh"
+#include "Cursor.hh"
+
+using boost::shared_ptr;
 
 bool Client::gui_is_init;
-boost::shared_ptr<ButtonPanel>   Client::button_panel;
-boost::shared_ptr<PingusCounter> Client::pcounter;
-boost::shared_ptr<Playfield>     Client::playfield;
-boost::shared_ptr<TimeDisplay>   Client::time_display;
-boost::shared_ptr<SmallMap>      Client::small_map;
-boost::shared_ptr<HurryUp>       Client::hurry_up;
+shared_ptr<ButtonPanel>   Client::button_panel;
+shared_ptr<PingusCounter> Client::pcounter;
+shared_ptr<Playfield>     Client::playfield;
+shared_ptr<TimeDisplay>   Client::time_display;
+shared_ptr<SmallMap>      Client::small_map;
+shared_ptr<HurryUp>       Client::hurry_up;
 
 Client::Client(Server* s)
 {
@@ -54,6 +58,8 @@ Client::Client(Server* s)
   skip_frame = 0;
   do_replay = false;
   is_finished = false;
+  controller = shared_ptr<Controller>(new MouseController ());
+  Display::add_flip_screen_hook(new Cursor (controller));
 }
 
 Client::~Client()
@@ -118,13 +124,14 @@ Client::init_display()
 						   PingusResource::get("game")));
   Display::show_cursor();
   
-  playfield = boost::shared_ptr<Playfield>(new Playfield(plf, server->get_world()));
+  playfield = shared_ptr<Playfield>(new Playfield(plf, server->get_world(),
+						  controller));
     
-  button_panel = boost::shared_ptr<ButtonPanel>(new ButtonPanel(plf));
-  pcounter     = boost::shared_ptr<PingusCounter>(new PingusCounter());
-  small_map    = boost::shared_ptr<SmallMap>(new SmallMap());
-  time_display = boost::shared_ptr<TimeDisplay>(new TimeDisplay());
-  hurry_up     = boost::shared_ptr<HurryUp>(new HurryUp());
+  button_panel = shared_ptr<ButtonPanel>(new ButtonPanel(plf, controller));
+  pcounter     = shared_ptr<PingusCounter>(new PingusCounter());
+  small_map    = shared_ptr<SmallMap>(new SmallMap());
+  time_display = shared_ptr<TimeDisplay>(new TimeDisplay());
+  hurry_up     = shared_ptr<HurryUp>(new HurryUp());
   gui_is_init = true;
    
   button_panel->set_server(server);
@@ -178,11 +185,11 @@ Client::play_level(std::string plf_filename, std::string psm_filename)
 
   if (plf_filename.substr(plf_filename.size() - 4) == ".xml")
     {
-      plf = boost::shared_ptr<PLF>(new XMLPLF(plf_filename));
+      plf = shared_ptr<PLF>(new XMLPLF(plf_filename));
     }
   else // Assuming we are reading a .plf file
     {
-      plf = boost::shared_ptr<PLF>(new PLFPLF(plf_filename));
+      plf = shared_ptr<PLF>(new PLFPLF(plf_filename));
 
       std::cout << "done " << timer.stop() << std::endl;
 

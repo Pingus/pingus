@@ -1,4 +1,4 @@
-//  $Id: Display.hh,v 1.8 2001/03/18 17:45:04 grumbel Exp $
+//  $Id: Display.hh,v 1.9 2001/04/12 19:47:09 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,12 +35,11 @@ public:
   DisplayHook();
   ///
   virtual ~DisplayHook() {}
-  ///
+  /** Called sortly before a flip_display () */
   virtual void on_event() = 0;
   ///
   virtual void toggle_display();
-}///
-;
+};
 
 ///
 class Display
