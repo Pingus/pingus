@@ -71,8 +71,6 @@ src/collider.cxx
 src/collider.hxx
 src/colliders/pingu_collider.cxx
 src/colliders/pingu_collider.hxx
-src/color.cxx
-src/color.hxx
 src/config.cxx
 src/config.hxx
 src/config_xml.cxx
@@ -441,8 +439,6 @@ src/story.cxx
 src/story.hxx
 src/story_screen.cxx
 src/story_screen.hxx
-src/string_converter.cxx
-src/string_converter.hxx
 src/string_format.cxx
 src/string_format.hxx
 src/string_tokenizer.cxx

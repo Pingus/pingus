@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-04-09 18:37+0000\n"
+"POT-Creation-Date: 2005-02-11 19:43+0100\n"
 "PO-Revision-Date: 2003-08-21 18:29+0300\n"
 "Last-Translator: Jarno Elonen <elonen@iki.fi>\n"
 "Language-Team: Finnish <elonen@iki.fi>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.0.2\n"
 
-#: src/actions/bridger.cxx:48 src/actions/bridger.cxx:232
+#: src/actions/bridger.cxx:40 src/actions/bridger.cxx:213
 #: src/pingu_enums.cxx:40
 msgid "Bridger"
 msgstr "Siltaaja"
@@ -34,75 +34,75 @@ msgstr "Odottamaton merkki: '"
 msgid "Unexpected char '"
 msgstr "Odottamaton merkki '"
 
-#: src/credits.cxx:48
+#: src/credits.cxx:51
 msgid "-Idea"
 msgstr "-Idea"
 
-#: src/credits.cxx:52
+#: src/credits.cxx:55
 msgid "-Maintaining"
 msgstr "-Ylläpito"
 
-#: src/credits.cxx:56
+#: src/credits.cxx:59
 msgid "-Programming"
 msgstr "-Ohjelmointi"
 
-#: src/credits.cxx:62
+#: src/credits.cxx:65
 msgid "-Porting (Win32)"
 msgstr "-Porttaus (Win32)"
 
-#: src/credits.cxx:70
+#: src/credits.cxx:73
 msgid "-Gfx"
 msgstr "-Grafiikka"
 
-#: src/credits.cxx:82
+#: src/credits.cxx:86
 msgid "-Music"
 msgstr "-Musiikki"
 
-#: src/credits.cxx:88
+#: src/credits.cxx:93
 msgid "-Level Design"
 msgstr "-Kenttäsuunnittelu"
 
-#: src/credits.cxx:93
+#: src/credits.cxx:99
 msgid "-Story"
 msgstr "-Tarina"
 
-#: src/credits.cxx:97
+#: src/credits.cxx:103
 msgid "-Translation"
 msgstr "-Käännöstyö"
 
-#: src/credits.cxx:112
+#: src/credits.cxx:117
 msgid "-Special"
 msgstr "-Erityiset"
 
-#: src/credits.cxx:113
+#: src/credits.cxx:118
 msgid "-Thanks to"
 msgstr "-Kiitokset"
 
-#: src/credits.cxx:154
+#: src/credits.cxx:162
 msgid "_And a very Special Thanks"
 msgstr "_Ja aivan erityiskiitokset"
 
-#: src/credits.cxx:155
+#: src/credits.cxx:163
 msgid "_to all the people who"
 msgstr "_kaikille niille, jotka"
 
-#: src/credits.cxx:156
+#: src/credits.cxx:164
 msgid "_contribute to"
 msgstr "_osallistuvat kehittämään"
 
-#: src/credits.cxx:157
+#: src/credits.cxx:165
 msgid "_Free Software!"
 msgstr "_vapaita ohjelmia!"
 
-#: src/credits.cxx:163
+#: src/credits.cxx:171
 msgid "_Thank you for"
 msgstr "_Kiitos sinulle"
 
-#: src/credits.cxx:164
+#: src/credits.cxx:172
 msgid "_playing!"
 msgstr "_pelaamisesta!"
 
-#: src/editor/editor_event.cxx:588
+#: src/editor/editor_event.cxx:589
 msgid "Enter filename to save as:"
 msgstr "Tallennettavan tiedoston nimi:"
 
@@ -231,7 +231,8 @@ msgid "Ctrl PageDown - decrease objects z-pos by 1"
 msgstr "Ctrl + PageDown - vähennä objektin z-tasoa yhdellä"
 
 #: src/editor/editor_help_screen.cxx:89
-msgid "Naming Convention: <LEVELNAME><NUMBER>-<CREATOR>.plf"
+#, fuzzy
+msgid "Naming Convention: <LEVELNAME><NUMBER>-<CREATOR>.pingus"
 msgstr "Nimeämiskäytäntö: <KENTÄNNIMI><NUMERO>-<TEKIJÄ>.plf"
 
 #: src/editor/editor_help_screen.cxx:91
@@ -243,87 +244,87 @@ msgstr ""
 "Jos haluat tekemäsi kentän mukaan Pingusin seuraavaan versioon,\n"
 "lähetä se osoitteeseen pingus-devel@nongnu.org."
 
-#: src/editor/object_selector.cxx:106
+#: src/editor/object_selector.cxx:105
 msgid "1 - guillotine"
 msgstr "1 - giljotiini"
 
-#: src/editor/object_selector.cxx:107
+#: src/editor/object_selector.cxx:106
 msgid "2 - hammer"
 msgstr "2 - vasara"
 
-#: src/editor/object_selector.cxx:108
+#: src/editor/object_selector.cxx:107
 msgid "3 - spike"
 msgstr "3 - piikki"
 
-#: src/editor/object_selector.cxx:109
+#: src/editor/object_selector.cxx:108
 msgid "4 - laser_exit"
 msgstr "4 - laser-uloskäynti"
 
-#: src/editor/object_selector.cxx:110
+#: src/editor/object_selector.cxx:109
 msgid "5 - fake_exit"
 msgstr "5 - vale-uloskäynti"
 
-#: src/editor/object_selector.cxx:111
+#: src/editor/object_selector.cxx:110
 msgid "6 - smasher"
 msgstr "6 - murskain"
 
-#: src/editor/object_selector.cxx:112
+#: src/editor/object_selector.cxx:111
 msgid "7 - bumper"
 msgstr "7 - katapultti"
 
-#: src/editor/object_selector.cxx:186
+#: src/editor/object_selector.cxx:185
 msgid "Select a WorldObj"
 msgstr "Valitse maailmaobjekti"
 
-#: src/editor/object_selector.cxx:187
+#: src/editor/object_selector.cxx:186
 msgid "1 - teleporter"
 msgstr "1 - teleportti"
 
-#: src/editor/object_selector.cxx:188
+#: src/editor/object_selector.cxx:187
 msgid "2 - switch and door"
 msgstr "2 - kytkin ja ovi"
 
-#: src/editor/object_selector.cxx:189
+#: src/editor/object_selector.cxx:188
 msgid "3 - ConveyorBelt"
 msgstr "3 - Liukuhihna"
 
-#: src/editor/object_selector.cxx:190
+#: src/editor/object_selector.cxx:189
 msgid "4 - IceBlock"
 msgstr "4 - Jääpala"
 
-#: src/editor/object_selector.cxx:191
+#: src/editor/object_selector.cxx:190
 msgid "5 - InfoBox"
 msgstr "5 - Tietolaatikko"
 
-#: src/editor/object_selector.cxx:232
+#: src/editor/object_selector.cxx:231
 msgid "Select a weather"
 msgstr "Valitse sää"
 
-#: src/editor/object_selector.cxx:233
+#: src/editor/object_selector.cxx:232
 msgid "1 - snow"
 msgstr "1 - lumisade"
 
-#: src/editor/object_selector.cxx:234
+#: src/editor/object_selector.cxx:233
 msgid "2 - rain"
 msgstr "2 - sade"
 
-#: src/editor/object_selector.cxx:265
+#: src/editor/object_selector.cxx:264
 msgid "Select an entrance"
 msgstr "Valitse sisäänkäynti"
 
-#: src/editor/object_selector.cxx:266
+#: src/editor/object_selector.cxx:265
 msgid "1 - generic"
 msgstr "1 - yleinen"
 
-#: src/editor/object_selector.cxx:267
+#: src/editor/object_selector.cxx:266
 msgid "2 - woodthing"
 msgstr "2 - puinen"
 
-#: src/editor/object_selector.cxx:268
+#: src/editor/object_selector.cxx:267
 msgid "3 - cloud"
 msgstr "3 - pilvi"
 
-#: src/editor/object_selector.cxx:269
+#: src/editor/object_selector.cxx:268
 msgid "h - entrance surface (hotspot)"
 msgstr "h - taustasisäänkäynti (hotspot)"
 
@@ -496,6 +497,7 @@ msgid "unknown"
 msgstr "tuntematon"
 
 #: src/game_time.cxx:70
+#, c-format
 msgid "unlimited"
 msgstr "rajaton"
 
@@ -608,66 +610,6 @@ msgid "You've got a negative save/total value, something is buggy."
 msgstr ""
 "Onnistuit saamaan negatiivisen tuloksen, pelissä on luultavasti jotain vikaa."
 
-#: src/menu_button.cxx:181
-msgid "..:: The people who brought this game to you ::.."
-msgstr "..:: Näytä pelin tekijät ::.."
-
-#: src/menu_button.cxx:184
-msgid "Credits"
-msgstr "Tekijät"
-
-#: src/menu_button.cxx:216
-msgid "..:: Takes you to the options menu ::.."
-msgstr "..:: Näytä asetusvalikko ::.."
-
-#: src/menu_button.cxx:219
-msgid "Options"
-msgstr "Asetukset"
-
-#: src/menu_button.cxx:252
-msgid "..:: Bye, bye ::.."
-msgstr "..:: Hei, hei! ::.."
-
-#: src/menu_button.cxx:255
-msgid "Exit"
-msgstr "Poistu"
-
-#: src/menu_button.cxx:306
-msgid "..:: Launch the level editor ::.."
-msgstr "..:: Käynnistä kenttäeditori ::.."
-
-#: src/menu_button.cxx:309
-msgid "Create a"
-msgstr "Luo uusi"
-
-#: src/menu_button.cxx:310
-msgid "Level"
-msgstr "kenttä"
-
-#: src/menu_button.cxx:344
-msgid "..:: Start the game ::.."
-msgstr "..:: Aloita peli ::.."
-
-#: src/menu_button.cxx:345
-msgid "Start"
-msgstr "Aloita"
-
-#: src/menu_button.cxx:375
-msgid "..:: Start a contrib level ::.."
-msgstr "..:: Aloita lisäkenttä ::.."
-
-#: src/menu_button.cxx:377
-msgid "Contrib"
-msgstr "Lisäkenttä"
-
-#: src/menu_button.cxx:399
-msgid "..:: Multiplayer Modes... experimental stuff ::.."
-msgstr "..:: Moninpelit... kokeellista tavaraa ::.."
-
-#: src/menu_button.cxx:401
-msgid "Multi"
-msgstr "Moninpeli"
-
 #: src/pingu_enums.cxx:35
 msgid "Angel"
 msgstr "Enkeli"
@@ -761,305 +703,364 @@ msgstr "Kävelijä"
 msgid "Released:%3d/%-3d   Out:%3d   Saved:%3d/%-3d"
 msgstr "Tullut:%3d/%-3d   Irti:%3d   Pelastettu:%3d/%-3d"
 
-#: src/pingus_main.cxx:90
+#: src/pingus_main.cxx:91
 msgid "| segfault_handler: catched a SIGSEGV."
 msgstr "| segfault_handler: catched a SIGSEGV."
 
-#: src/pingus_main.cxx:92
+#: src/pingus_main.cxx:93
 msgid "| Woops, Pingus just crashed, congratulations you've found a bug."
 msgstr ""
 "| Hups, Pingus juuri kaatui, onnittelut ohjelmointivirheen löytämisestä."
 
-#: src/pingus_main.cxx:93
+#: src/pingus_main.cxx:94
 msgid ""
 "| Please write a little bug report to <grumbel@gmx.de>, include informations"
 msgstr ""
 "| Ole hyvä ja kirjoita lyhyt, englanninkielinen virheraportti osoitteeseen "
 "<grumbel@gmx.de> ja liitä mukaan tieto siitä,"
 
-#: src/pingus_main.cxx:94
+#: src/pingus_main.cxx:95
 msgid "| where exacly the SIGSEGV occured and how to reproduce it."
 msgstr "| missä SIGSEGV tarkalleen tapahtui ja miten sen saa aikaan."
 
-#: src/pingus_main.cxx:95
+#: src/pingus_main.cxx:96
 msgid "| Also try include a backtrace, you can get it like this:"
 msgstr "| Liitä mukaan myös 'backtrace', jonka saa näin:"
 
-#: src/pingus_main.cxx:101
+#: src/pingus_main.cxx:102
 msgid "| If that doesn't work, try this:"
 msgstr "| Ellei se toimi, kokeile tätä:"
 
-#: src/pingus_main.cxx:105
+#: src/pingus_main.cxx:106
 msgid "| [play until it crashes again]"
 msgstr "| [pelaa kunnes se kaatuu uudestaan]"
 
-#: src/pingus_main.cxx:113
+#: src/pingus_main.cxx:114
 msgid "| Warning: Pingus recieved a SIGINT, exiting now."
 msgstr "| Varoitus: Pingus vastaanotti SIGINT-signaalin, peli lopetetaan."
 
-#: src/pingus_main.cxx:301
+#: src/pingus_main.cxx:304
 msgid "Warning: Larger resolution than 800x600 will result in visual problems"
 msgstr "Varoitus: Suurempi ruutukoko kuin 800x600 aiheuttaa grafiikkaongelmia"
 
-#: src/pingus_main.cxx:488
+#: src/pingus_main.cxx:495
 msgid "Unknow char: "
 msgstr "Tuntematon merkki: "
 
-#: src/pingus_main.cxx:489
+#: src/pingus_main.cxx:496
 msgid "Usage: "
 msgstr "Käyttö: "
 
-#: src/pingus_main.cxx:489
+#: src/pingus_main.cxx:496
 msgid " [OPTIONS]... [LEVELFILE]"
 msgstr " [VALITSIMET]... [KENTTÄTIEDOSTO]"
 
-#: src/pingus_main.cxx:492
+#: src/pingus_main.cxx:499
 msgid "Options:"
 msgstr "Valitsimet:"
 
-#: src/pingus_main.cxx:494
+#: src/pingus_main.cxx:501
 msgid "Set the resolution for pingus (default: 800x600)"
 msgstr "Määritä ruutukoko (oletusarvo: 800x600)"
 
-#: src/pingus_main.cxx:495
+#: src/pingus_main.cxx:502
 msgid "Displays this help"
 msgstr "Näytä tämä ohje"
 
-#: src/pingus_main.cxx:496
+#: src/pingus_main.cxx:503
 msgid "Disable intro"
 msgstr "Älä näytä esittelyä"
 
-#: src/pingus_main.cxx:497
+#: src/pingus_main.cxx:504
 msgid "Use OpenGL"
 msgstr "Käytä OpenGL:ää"
 
-#: src/pingus_main.cxx:499
+#: src/pingus_main.cxx:506
 msgid "Start in Window Mode"
 msgstr "Käynnistä ikkunassa"
 
-#: src/pingus_main.cxx:500
+#: src/pingus_main.cxx:507
 msgid "Start in Fullscreen"
 msgstr "Käynnistä koko ruudulla"
 
-#: src/pingus_main.cxx:504
+#: src/pingus_main.cxx:511
 msgid "FILE      "
 msgstr "TIEDOSTO      "
 
-#: src/pingus_main.cxx:504
+#: src/pingus_main.cxx:511
 msgid "Load a custom level from FILE"
 msgstr "Lataa kenttä TIEDOSTOsta"
 
-#: src/pingus_main.cxx:505
+#: src/pingus_main.cxx:512
 msgid "FILE        "
 msgstr "TIEDOSTO        "
 
-#: src/pingus_main.cxx:505
+#: src/pingus_main.cxx:512
 msgid "Load a custom worldmap from FILE"
 msgstr "Lataa maailman kartta TIEDOSTOsta"
 
-#: src/pingus_main.cxx:506
+#: src/pingus_main.cxx:513
 msgid "Print some more messages to stdout, can be set"
 msgstr "Kirjoita enemmän tietoa stdout:iin, voidaan asettaa"
 
-#: src/pingus_main.cxx:507
+#: src/pingus_main.cxx:514
 msgid "multiple times to increase verbosity"
 msgstr "useita kertoja tekstin lisäämiseksi"
 
-#: src/pingus_main.cxx:508
+#: src/pingus_main.cxx:515
 msgid "Prints version number and exit"
 msgstr "Näytä versionumero ja poistu"
 
-#: src/pingus_main.cxx:509
+#: src/pingus_main.cxx:516
 msgid "Launch the Level editor (experimental)"
 msgstr "Käynnistä kenttäeditori (kokeellinen)"
 
-#: src/pingus_main.cxx:510
+#: src/pingus_main.cxx:517
 msgid "Disable automatic scrolling"
 msgstr "Poista automaattinen vieritys käytöstä"
 
-#: src/pingus_main.cxx:512
+#: src/pingus_main.cxx:519
 msgid "Enable software cursor"
 msgstr "Ota käyttöön ohjelmallinen osoitin"
 
-#: src/pingus_main.cxx:515
+#: src/pingus_main.cxx:522
 msgid "Don't read ~/.pingus/config"
 msgstr "Älä lue ~/.pingus/config:a"
 
-#: src/pingus_main.cxx:516
+#: src/pingus_main.cxx:523
 msgid "FILE       "
 msgstr "TIEDOSTO       "
 
-#: src/pingus_main.cxx:516
+#: src/pingus_main.cxx:523
 msgid "Read config from FILE (default: ~/.pingus/config)"
 msgstr "Lue asetukset TIEDOSTO:sta (oletusarvo: ~/.pingus/config)"
 
-#: src/pingus_main.cxx:517
+#: src/pingus_main.cxx:524
 msgid "reduce CPU usage, might speed up the game on slower machines"
 msgstr "vähennä suorittimen käyttöä; saattaa nopeuttaa peliä hitailla koneilla"
 
-#: src/pingus_main.cxx:518
+#: src/pingus_main.cxx:525
 msgid "Uses the controller given in FILE"
 msgstr "Käyttää TIEDOSTO:ssa annettua ohjainta"
 
-#: src/pingus_main.cxx:520
+#: src/pingus_main.cxx:527
 msgid "Debugging and experimental stuff:"
 msgstr "Kokeellista ja testaukseen liittyvää tavaraa"
 
-#: src/pingus_main.cxx:521
+#: src/pingus_main.cxx:528
 msgid "Enables some features, only interesting programmers"
 msgstr "Kytkee päälle joitain vain ohjelmoijia kiinnostavia ominaisuuksia"
 
-#: src/pingus_main.cxx:522
+#: src/pingus_main.cxx:529
 msgid "Enable the output of debugging infos, possible"
 msgstr "Tulosta testaukseen liittyvää tietoa; mahdolliset"
 
-#: src/pingus_main.cxx:523
+#: src/pingus_main.cxx:530
 msgid "OPTION's are tiles, gametime, actions, sound, resources, gui,"
 msgstr "VALITSImet ovat tiles, gametime, actions, sound, resources, gui,"
 
-#: src/pingus_main.cxx:525
+#: src/pingus_main.cxx:532
 msgid "Skip at least N frames, larger values speed the game up"
 msgstr "Hyppää yli ainakin N ruutua; suuremmat arvot nopeuttavat peliä"
 
-#: src/pingus_main.cxx:526
+#: src/pingus_main.cxx:533
 msgid "Skip at most N frames"
 msgstr "Hyppää yli korkeintaan N ruutua"
 
-#: src/pingus_main.cxx:527
+#: src/pingus_main.cxx:534
 msgid "Set both min and max frameskip to N"
 msgstr "Aseta sekä minimi- että maksimi-ruudunhyppäys N:ään"
 
-#: src/pingus_main.cxx:528
+#: src/pingus_main.cxx:535
 msgid "Set the game speed (0=fastest, >0=slower)"
 msgstr "Aseta pelin nopeus (0=nopein, >0=hitaampi)"
 
-#: src/pingus_main.cxx:529
+#: src/pingus_main.cxx:536
 msgid "Prints the fps to stdout"
 msgstr "Kirjoittaa fps:n stdout:iin"
 
-#: src/pingus_main.cxx:530
+#: src/pingus_main.cxx:537
 msgid "Set the size of the map tiles (default: 32)"
 msgstr "Aseta karttaruutujen koko (oletusarvo: 32)"
 
-#: src/pingus_main.cxx:531
+#: src/pingus_main.cxx:538
 msgid "Disable some cpu intensive features"
 msgstr "Poista jotain suoritinsyöppöjä ominaisuuksia käytöstä"
 
-#: src/pingus_main.cxx:532
+#: src/pingus_main.cxx:539
 msgid "Reduces the CPU usage by issuing sleep()"
 msgstr "Vähentää suoritinajan käyttöä kutsumalla sleep():iä"
 
-#: src/pingus_main.cxx:534
+#: src/pingus_main.cxx:541
 msgid "Demo playing and recording:"
 msgstr "Demon näyttäminen ja nauhoitus:"
 
-#: src/pingus_main.cxx:535
+#: src/pingus_main.cxx:542
 msgid "FILE     "
 msgstr "TIEDOSTO     "
 
-#: src/pingus_main.cxx:535
+#: src/pingus_main.cxx:542
 msgid "Plays a demo session from FILE"
 msgstr "Näyttää demopelin TIEDOSTOsta"
 
-#: src/pingus_main.cxx:537
+#: src/pingus_main.cxx:544
 msgid "Record demos for each played level"
 msgstr "Nauhoittaa demopelit jokaiselle pelatulle kentälle"
 
-#: src/pingus_main.cxx:539
+#: src/pingus_main.cxx:546
 msgid "Sound:"
 msgstr "Äänet:"
 
-#: src/pingus_main.cxx:540
+#: src/pingus_main.cxx:547
 msgid "Disable sound"
 msgstr "Ei ääniä"
 
-#: src/pingus_main.cxx:541
+#: src/pingus_main.cxx:548
 msgid "Disable music"
 msgstr "Ei musiikkia"
 
-#: src/pingus_main.cxx:720
+#: src/pingus_main.cxx:727
 msgid "clanVorbis support:           ok"
 msgstr "clanVorbis-tuki:           ok"
 
-#: src/pingus_main.cxx:722
+#: src/pingus_main.cxx:729
 msgid "clanVoribs support:  missing (.ogg music files will not be playable)"
 msgstr "clanVoribs-tuki:  puuttuu (.ogg-musiikkia ei voida soittaa)"
 
-#: src/pingus_main.cxx:726
+#: src/pingus_main.cxx:733
 msgid "clanMikMod support:           ok"
 msgstr "clanMikMod-tuki:           ok"
 
-#: src/pingus_main.cxx:728
+#: src/pingus_main.cxx:735
 msgid "clanMikMod support:  missing (music files will not be playable)"
 msgstr "clanMikMod-tuki:  puuttuu (musiikkitiedostoja ei voida soittaa)"
 
-#: src/pingus_main.cxx:732
+#: src/pingus_main.cxx:739
 msgid "getext support:               ok"
 msgstr "getext-tuki:               ok"
 
-#: src/pingus_main.cxx:733
+#: src/pingus_main.cxx:740
 msgid "gettext language:        english"
 msgstr "gettext-kieli:        englanti"
 
-#: src/pingus_main.cxx:739
+#: src/pingus_main.cxx:746
 msgid "sound support:           enabled"
 msgstr "äänituki:           päällä"
 
-#: src/pingus_main.cxx:741
+#: src/pingus_main.cxx:748
 msgid "sound support:          disabled"
 msgstr "äänituki:          pois päältä"
 
-#: src/pingus_main.cxx:744
+#: src/pingus_main.cxx:751
 msgid "music support:           enabled"
 msgstr "musiikkituki:           päällä"
 
-#: src/pingus_main.cxx:746
+#: src/pingus_main.cxx:753
 msgid "music support:          disabled"
 msgstr "musiikkituki:          pois päältä"
 
-#: src/pingus_main.cxx:748
+#: src/pingus_main.cxx:755
 msgid "resolution set to:       "
 msgstr "ruutukooksi asetettu:       "
 
-#: src/pingus_main.cxx:749
+#: src/pingus_main.cxx:756
 msgid "fullscreen:              "
 msgstr "koko ruudun tila:              "
 
-#: src/pingus_main.cxx:750
+#: src/pingus_main.cxx:757
 msgid " enabled"
 msgstr " päällä"
 
-#: src/pingus_main.cxx:750
+#: src/pingus_main.cxx:757
 msgid "disabled"
 msgstr "pois päältä"
 
-#: src/pingus_main.cxx:760
+#: src/pingus_main.cxx:767
 msgid "PingusMain: Starting Main: "
 msgstr "PingusMain: Käynnistetään Main: "
 
-#: src/pingus_main.cxx:805
+#: src/pingus_main.cxx:812
 msgid "PingusMain: Levelfile not found, ignoring: "
 msgstr "PingusMain: Kenttätiedostoa ei löytynyt, jätetään väliin: "
 
-#: src/pingus_main.cxx:909
+#: src/pingus_main.cxx:924
 msgid "Error caught from ClanLib: "
 msgstr "Virhe ClanLib:ltä: "
 
-#: src/pingus_main.cxx:913
+#: src/pingus_main.cxx:928
 msgid "Error caught from Pingus: "
 msgstr "Virhe Pingusilta: "
 
-#: src/pingus_main.cxx:917
+#: src/pingus_main.cxx:932
 msgid "Pingus: Out of memory!"
 msgstr "Pingus: Muisti loppu!"
 
-#: src/pingus_main.cxx:921
+#: src/pingus_main.cxx:936
 msgid "Pingus: Standard exception caught!:\n"
 msgstr "Pingus: Standardikeskeytys!:\n"
 
-#: src/pingus_main.cxx:925
+#: src/pingus_main.cxx:940
 msgid "Pingus: Unknown throw caught!"
 msgstr "Pingus: Tuntematon keskytys!"
+
+#: src/pingus_menu.cxx:48
+#, fuzzy
+msgid ""
+"Create a\n"
+"Level"
+msgstr "Luo uusi"
+
+#: src/pingus_menu.cxx:49
+msgid "..:: Launch the level editor ::.."
+msgstr "..:: Käynnistä kenttäeditori ::.."
+
+#: src/pingus_menu.cxx:54
+msgid "Start"
+msgstr "Aloita"
+
+#: src/pingus_menu.cxx:55
+msgid "..:: Start the game ::.."
+msgstr "..:: Aloita peli ::.."
+
+#: src/pingus_menu.cxx:60
+msgid "Exit"
+msgstr "Poistu"
+
+#: src/pingus_menu.cxx:61
+msgid "..:: Bye, bye ::.."
+msgstr "..:: Hei, hei! ::.."
+
+#: src/pingus_menu.cxx:66
+#, fuzzy
+msgid ""
+"Contrib\n"
+"Levels"
+msgstr "Lisäkenttä"
+
+#: src/pingus_menu.cxx:67
+#, fuzzy
+msgid "..:: Play User Build levels ::.."
+msgstr "..:: Aloita lisäkenttä ::.."
+
+#: src/pingus_menu.cxx:72
+#, fuzzy
+msgid "Story"
+msgstr "-Tarina"
+
+#: src/pingus_menu.cxx:73
+#, fuzzy
+msgid "..:: Start the story ::.."
+msgstr "..:: Aloita peli ::.."
+
+#: src/pingus_menu.cxx:78
+#, fuzzy
+msgid "Multiplayer"
+msgstr "Moninpeli"
+
+#: src/pingus_menu.cxx:79
+#, fuzzy
+msgid "..:: Multiplayer Match ::.."
+msgstr "..:: Moninpelit... kokeellista tavaraa ::.."
 
 #: src/result_screen.cxx:99 src/start_screen.cxx:111
 msgid "Abort"
@@ -1143,15 +1144,15 @@ msgstr "Kuoli: "
 msgid "Time left: "
 msgstr "Aikaa jäljellä: "
 
-#: src/screenshot.cxx:45
+#: src/screenshot.cxx:47
 msgid "Screenshot: Saving screenshot to: "
 msgstr "Ruutukaappaus: Tallennetaan kaappausta: "
 
-#: src/screenshot.cxx:47
+#: src/screenshot.cxx:49
 msgid "Screenshot: Screenshot is done."
 msgstr "Ruutukaappaus: Ruutukaappaus valmis."
 
-#: src/screenshot.cxx:53
+#: src/screenshot.cxx:55
 msgid "Screenshot: Couldn't save screenshot"
 msgstr "Ruutukaappaus: Tallennus ei onnistunut"
 
@@ -1159,7 +1160,7 @@ msgstr "Ruutukaappaus: Tallennus ei onnistunut"
 msgid "Screenshot: Couldn't write file: "
 msgstr "Ruutukaappaus: Tiedostoon ei voitu kirjoittaa: "
 
-#: src/spot_map.cxx:286
+#: src/spot_map.cxx:209
 #, c-format
 msgid "Image has wrong color depth: %d"
 msgstr "Kuvassa on väärä määrä värejä: %d"
@@ -1360,7 +1361,7 @@ msgstr ""
 "Ympäristömuuttuja $HOME:a ei ole asetetty, korjataan tilanne ja aloitetaan "
 "alusta."
 
-#: src/worldmap/level_dot.cxx:174 src/worldmap/level_dot.cxx:184
+#: src/worldmap/level_dot.cxx:167 src/worldmap/level_dot.cxx:177
 msgid "locked"
 msgstr "lukittu"
 
@@ -1387,3 +1388,18 @@ msgstr "WorldMap: Tiedostoa ei löydy: "
 #: src/worldmap/worldmap.cxx:261
 msgid "...walking..."
 msgstr "...kävelee..."
+
+#~ msgid "..:: The people who brought this game to you ::.."
+#~ msgstr "..:: Näytä pelin tekijät ::.."
+
+#~ msgid "Credits"
+#~ msgstr "Tekijät"
+
+#~ msgid "..:: Takes you to the options menu ::.."
+#~ msgstr "..:: Näytä asetusvalikko ::.."
+
+#~ msgid "Options"
+#~ msgstr "Asetukset"
+
+#~ msgid "Level"
+#~ msgstr "kenttä"

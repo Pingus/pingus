@@ -26,6 +26,7 @@
 #include <ClanLib/Display/pixel_format.h>
 #include <ClanLib/Display/pixel_buffer.h>
 #include <ClanLib/Display/display.h>
+#include <ClanLib/Display/Providers/provider_factory.h>
 #include "system.hxx"
 #include "screenshot.hxx"
 #include "gettext.h"
@@ -37,26 +38,12 @@ namespace Pingus {
 std::string
 Screenshot::make_screenshot()
 {
-#ifdef CLANLIB_0_6
-  CL_Target* target = CL_Display::get_target();
-
-  if (target)
-    {
-      std::string filename = get_filename();
-
-      std::cout << _("Screenshot: Saving screenshot to: ") << filename << std::endl;
-      save_target_to_file(target, filename);
-      std::cout << _("Screenshot: Screenshot is done.") << std::endl;
-
-      return filename;
-    }
-  else
-    {
-      std::cout << _("Screenshot: Couldn't save screenshot") << std::endl;
-      return "";
-    }
-#endif
-  return "";
+  std::string filename = get_filename();
+  std::cout << _("Screenshot: Saving screenshot to: ") << filename << std::endl;
+  CL_ProviderFactory::save(CL_Display::get_front_buffer(), filename);
+  std::cout << _("Screenshot: Screenshot is done.") << std::endl;
+  
+  return filename;
 }
 
 void
