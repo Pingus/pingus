@@ -1,4 +1,4 @@
-//  $Id: PingusCounter.hh,v 1.4 2000/06/18 17:01:50 grumbel Exp $
+//  $Id: PingusCounter.hh,v 1.5 2002/01/15 17:52:02 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,6 +34,7 @@ class PingusCounter : public GuiObj
 private:
   ///
   CL_Font* font;
+  CL_Surface background;
   ///
   World* world;
   ///

@@ -45,6 +45,8 @@ section editor
 
 section buttons
 {
+	info = ../images/core/buttons/info.png (type=surface);
+
 	buttonbackground = ../images/core/buttons/buttonbackground.png (type=surface);
 	buttonbackgroundhl = ../images/core/buttons/buttonbackgroundhl.png (type=surface);
 

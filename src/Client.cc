@@ -1,4 +1,4 @@
-//  $Id: Client.cc,v 1.71 2002/01/15 16:55:56 grumbel Exp $
+//  $Id: Client.cc,v 1.72 2002/01/15 17:52:02 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -109,7 +109,7 @@ Client::init_display()
   playfield = shared_ptr<Playfield>(new Playfield(plf, server->get_world(),
 						  controller));
     
-  button_panel = shared_ptr<ButtonPanel>(new ButtonPanel(plf, controller, 2, 2));//2,25));
+  button_panel = shared_ptr<ButtonPanel>(new ButtonPanel(plf, controller, 2, CL_Display::get_height()/2));
   pcounter     = shared_ptr<PingusCounter>(new PingusCounter());
   small_map    = shared_ptr<SmallMap>(new SmallMap());
   time_display = shared_ptr<TimeDisplay>(new TimeDisplay());

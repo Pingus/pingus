@@ -1,4 +1,4 @@
-//  $Id: PingusCounter.cc,v 1.8 2001/12/05 09:15:51 grumbel Exp $
+//  $Id: PingusCounter.cc,v 1.9 2002/01/15 17:52:02 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,6 +31,7 @@
 
 
 PingusCounter::PingusCounter()
+  : background (PingusResource::load_surface("Buttons/info","core"))
 {
   font = PingusResource::load_font("Fonts/pingus_small","fonts");
 }
@@ -39,6 +40,8 @@ void
 PingusCounter::draw(void)
 {
   char str[256];
+
+  background.put_screen (CL_Display::get_width ()/2 - background.get_width()/2, 0);
   
   // FIXME: Buffer overflow...
   sprintf(str, _("Released: %3d/%3d  Out: %3d  Saved: %3d/%3d"),
@@ -48,7 +51,7 @@ PingusCounter::draw(void)
 	  world->get_saved_pingus(),
 	  world->get_number_to_save());
 
-  font->print_left(10,5, str);
+  font->print_center(CL_Display::get_width ()/2,3, str);
 }
 
 void
