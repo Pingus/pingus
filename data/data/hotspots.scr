@@ -1,0 +1,63 @@
+section Hotspots
+{
+        engine = images/hotspots/engine.tga (type=surface, x=0, y=0, width=108, height=166, array=4x1);
+
+//	star        = images/star.tga       (type=surface, x=0, y=0, width=173,  height=173);
+	left_arrow = images/hotspots/left_arrow.pcx (type=surface, x=0, y=0, width=100, height=73, tcol=0);
+	right_arrow = images/hotspots/right_arrow.pcx (type=surface, x=0, y=0, width=100, height=73, tcol=0);
+
+	up_arrow = images/hotspots/up_arrow.pcx (type=surface, x=0, y=0, width=73, height=99, tcol=0);
+	down_arrow = images/hotspots/down_arrow.pcx (type=surface, x=0, y=0, width=73, height=99, tcol=0);
+
+	danger      = images/hotspots/danger.pcx (type=surface, x=0, y=0, width=215, height=121, tcol=0);
+	crystal     = images/hotspots/crystal.tga    (type=surface, x=0, y=0, width=60,  height=109);
+//        tree        = images/hotspots/tree.pcx      (type=surface, x=0, y=0, width=189, height=303, tcol=0);
+//	weed1       = images/groundpieces/weed1.pcx      (type=surface, x=0, y=0, width=29,  height=149, tcol=0);
+//	weed2       = images/groundpieces/weed2.pcx      (type=surface, x=0, y=0, width=12,  height=132, tcol=0);
+	colum       = images/hotspots/colum.pcx      (type=surface, x=0, y=0, width=142, height=184, tcol=0);
+	colum_flat  = images/hotspots/colum_flat.pcx (type=surface, x=0, y=0, width=184, height=122, tcol=0);
+
+	colum_pice1 = images/hotspots/colum_pice1.pcx      (type=surface, x=0, y=0, width=103, height=66, tcol=0);
+	colum_pice2 = images/hotspots/colum_pice2.pcx      (type=surface, x=0, y=0, width=128, height=66, tcol=0);
+	colum_pice3 = images/hotspots/colum_pice3.pcx      (type=surface, x=0, y=0, width=128, height=111, tcol=0);
+
+	bridge     = images/hotspots/bridge.pcx    (type=surface, x=0, y=0, width=150,  height=58, tcol=0);
+
+	stone0      = images/hotspots/stone0.pcx     (type=surface, x=0, y=0, width=106,  height=91, tcol=0);
+	stone1      = images/hotspots/stone1.pcx     (type=surface, x=0, y=0, width=73,  height=21, tcol=0);
+	stone2      = images/hotspots/stone2.pcx     (type=surface, x=0, y=0, width=86,  height=54, tcol=0);
+
+	cabin       = images/hotspots/cabin.pcx   (type=surface, x=0, y=0, width=129, height=94, tcol=0);
+	cabin_winter= images/hotspots/cabin_winter.pcx (type=surface, x=0, y=0, width=129, height=94, tcol=0);
+	dragon      = images/hotspots/dragon.pcx  (type=surface, x=0, y=0, width=255, height=169, tcol=0);
+
+	pillar1     = images/hotspots/pillar1.pcx (type=surface, x=0, y=0, width=36, height=161, tcol=0);
+	pillar2     = images/hotspots/pillar2.pcx (type=surface, x=0, y=0, width=37, height=130, tcol=0);
+	pillar3     = images/hotspots/pillar3.pcx (type=surface, x=0, y=0, width=36, height=147, tcol=0);
+
+	well        = images/hotspots/well.pcx    (type=surface, x=0, y=0, width=32, height=54, tcol=0);
+	plate       = images/hotspots/plate.pcx   (type=surface, x=0, y=0, width=64, height=32);
+	plate2      = images/hotspots/plate2.pcx  (type=surface, x=0, y=0, width=64, height=64);
+	plate_small = images/hotspots/plate_small.pcx  (type=surface, x=0, y=0, width=32, height=32);
+
+	section signposts {
+		basher = images/hotspots/signposts/basher.pcx (type=surface, x=0, y=0, width=28, height=46, tcol=0);
+		blocker = images/hotspots/signposts/blocker.pcx (type=surface, x=0, y=0, width=28, height=46, tcol=0);
+		bomber = images/hotspots/signposts/bomber.pcx (type=surface, x=0, y=0, width=28, height=46, tcol=0);
+		bridger = images/hotspots/signposts/bridger.pcx (type=surface, x=0, y=0, width=28, height=46, tcol=0);
+		climber = images/hotspots/signposts/climber.pcx (type=surface, x=0, y=0, width=28, height=46, tcol=0);
+		digger = images/hotspots/signposts/digger.pcx (type=surface, x=0, y=0, width=28, height=46, tcol=0);
+		floater = images/hotspots/signposts/floater.pcx (type=surface, x=0, y=0, width=28, height=46, tcol=0);
+		miner = images/hotspots/signposts/miner.pcx (type=surface, x=0, y=0, width=28, height=46, tcol=0);
+		nogo = images/hotspots/signposts/nogo.pcx (type=surface, x=0, y=0, width=28, height=46, tcol=0);
+		e = images/hotspots/signposts/e.pcx (type=surface, x=0, y=0, width=28, height=46, tcol=0);
+		ne = images/hotspots/signposts/ne.pcx (type=surface, x=0, y=0, width=28, height=46, tcol=0);
+		n = images/hotspots/signposts/n.pcx (type=surface, x=0, y=0, width=28, height=46, tcol=0);
+		nw = images/hotspots/signposts/nw.pcx (type=surface, x=0, y=0, width=28, height=46, tcol=0);
+		w = images/hotspots/signposts/w.pcx (type=surface, x=0, y=0, width=28, height=46, tcol=0);	
+		sw = images/hotspots/signposts/sw.pcx (type=surface, x=0, y=0, width=28, height=46, tcol=0);
+		s = images/hotspots/signposts/s.pcx (type=surface, x=0, y=0, width=28, height=46, tcol=0);
+		se = images/hotspots/signposts/se.pcx (type=surface, x=0, y=0, width=28, height=46, tcol=0);
+	}
+}
+

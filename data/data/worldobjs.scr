@@ -1,0 +1,5 @@
+
+teleporter = images/worldobjs/teleporter.tga    (type=surface, x=0, y=0, width=35, height=52, tcol = 0, array=6x1);
+teleporter2 = images/worldobjs/teleporter2.tga (type=surface, x=0, y=0, width=64, height=64);
+
+// EOF //
