@@ -6,11 +6,13 @@
     <levelname lang="de">Kletter, Climber, kletter.. und bau eine Brücke</levelname>
 
     <description lang="en">Once again you get access to a new action. The Climber action allows
-a Pingu to climb of straight walls, thus allowing him to reach stuff
-that might be too high to reach by other means.</description>
+			   a Pingu to climb of straight walls, thus allowing him to reach stuff
+		           that might be too high to reach by other means.
+    </description>
     <description lang="de">Wieder erhälst du Zugriff auf eine neue Fähigkeit. Die Climber
-Fähigkeit ermöglich tes einem Pingu senkrechte Wände zu erklettern und
-dadurch Dinge zu erreichen die sonst unmöglich wären.</description>
+			   Fähigkeit ermöglicht es einem Pingu senkrechte Wände zu erklettern und
+			   dadurch Dinge zu erreichen die sonst unmöglich wären.
+    </description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
     <number-of-pingus>10</number-of-pingus>

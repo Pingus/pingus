@@ -1,4 +1,4 @@
-//  $Id: start_screen.hxx,v 1.2 2003/03/30 13:12:35 grumbel Exp $
+//  $Id: start_screen.hxx,v 1.3 2003/04/09 20:20:20 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,7 +38,9 @@ public:
   void on_pause_press();
   void on_fast_forward_press();
   void on_escape_press();
+  
 private:
+
   StartScreen (const StartScreen&);
   StartScreen& operator= (const StartScreen&);
 };

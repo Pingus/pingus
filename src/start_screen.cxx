@@ -1,4 +1,4 @@
-//  $Id: start_screen.cxx,v 1.10 2003/04/06 14:37:07 grumbel Exp $
+//  $Id: start_screen.cxx,v 1.11 2003/04/09 20:20:20 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -40,10 +40,14 @@ private:
   PLFHandle plf;
   CL_Surface background;
   std::string time_str;
+ 
 public:
   StartScreenComponent(PLFHandle plf);
-  virtual ~StartScreenComponent() {}
   void draw(GraphicContext& gc);
+  virtual ~StartScreenComponent() {}
+  
+private:
+  std::string format_description(int length);
 };
 
 class StartScreenOkButton : public GUI::SurfaceButton
@@ -130,7 +134,7 @@ StartScreenComponent::draw(GraphicContext& gc)
   background.put_screen(0,0);
   
   gc.print_center(Fonts::chalk_large, gc.get_width()/2, 100, System::translate(plf->get_levelname()));
-  gc.print_left(Fonts::chalk_normal, 130, 160, System::translate(plf->get_description()));
+  gc.print_left(Fonts::chalk_normal, 130, 160, format_description(gc.get_width() - 260));
 
   gc.print_left (Fonts::chalk_normal, 300, 310, _("Number of Pingus: "));
   gc.print_right(Fonts::chalk_normal, 500, 310, to_string(plf->get_pingus()));
@@ -153,6 +157,47 @@ StartScreenComponent::draw(GraphicContext& gc)
   if (maintainer_mode)
     gc.print_left(Fonts::chalk_small, 110, 430, _("Filename: ") + plf->get_resname());
 }
+
+std::string
+StartScreenComponent::format_description(int length)
+{
+  std::string description = System::translate(plf->get_description());
+
+  unsigned int pos = 0;
+  while ((pos = description.find('\t', pos)) != std::string::npos)
+    description.replace(pos, 1, 1, ' ');
+  
+  pos = 0;  
+  while ((pos = description.find('\n', pos)) != std::string::npos)
+    {
+      if (description[pos + 1] == '\n')          // double enter marks paragraph
+        description.replace(pos++, 2, 1, '\n');  // replace the two \n by one and move pos behind it
+      else
+        description.replace(pos, 1, 1, ' ');
+    }
+        
+  pos = 0;
+  while ((pos = description.find("  ", pos)) != std::string::npos)
+    description.replace(pos, 2, 1, ' ');
+
+  int start_pos      = 0;
+  int previous_space = 0;
+  pos = 0;
+  while ((pos = description.find(' ', pos + 1)) != std::string::npos)
+    {
+      if (Fonts::chalk_normal->get_text_width(description.substr(start_pos, pos - start_pos)) > length)
+        {
+	  description[previous_space] = '\n';
+	  start_pos = previous_space + 1;
+	}
+      else if (Fonts::chalk_normal->get_text_width(description.substr(start_pos, description.length())) <= length)
+        break;
+
+      previous_space = pos;
+    }
+  return description;
+}
+
 
 StartScreen::StartScreen(PLFHandle arg_plf)
   : plf(arg_plf)

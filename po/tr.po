@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Pingus 0.5.0\n"
-"POT-Creation-Date: 2003-04-08 19:51+0200\n"
+"POT-Creation-Date: 2003-04-08 22:18+0200\n"
 "PO-Revision-Date: 2001-12-04 22:50+02:00\n"
 "Last-Translator: Giray Devlet <giray@devlet.cc>\n"
 "Language-Team: Giray Devlet <giray@devlet.cc>, Caðrý Çöltekin <cagri@metu."
@@ -808,14 +808,6 @@ msgstr ""
 msgid "Released:%3d/%-3d   Out:%3d   Saved:%3d/%-3d"
 msgstr "Çýkan: %3d/%3d Dýþarýda olan: %3d  Kurtulan: %3d/%3d"
 
-#: src/pingus_error.cxx:45
-msgid "PingusBug: "
-msgstr "PingusBöceðý:"
-
-#: src/pingus_error.cxx:76
-msgid "PingusError: "
-msgstr "PingusHatasý:"
-
 #: src/pingus_main.cxx:101 src/pingus_main.cxx:124
 msgid ""
 "\n"
@@ -898,9 +890,9 @@ msgstr ""
 #, fuzzy
 msgid ""
 "\n"
-"Copyright (C) 2003 Ingo Ruhnke <grumbel@pingus.cx>\n"
+"Copyright (C) 2003 Ingo Ruhnke <grumbel@gmx.de>\n"
 "There is NO warranty.  You may redistribute this software\n"
-"under the terms of the GN General Public License.\n"
+"under the terms of the GNU General Public License.\n"
 "For more information about these matters, see the files named COPYING."
 msgstr ""
 "\n"
@@ -910,39 +902,39 @@ msgstr ""
 "özgürce daðýtýlabilir. Ayrýntýlar için kaynak \n"
 "kodunda COPYING belgesini okuyun."
 
-#: src/pingus_main.cxx:508
+#: src/pingus_main.cxx:507
 msgid "Unknow char: "
 msgstr "Bilinmeyen karakter: "
 
-#: src/pingus_main.cxx:509
+#: src/pingus_main.cxx:508
 msgid "Usage: "
 msgstr "Kullaným: "
 
-#: src/pingus_main.cxx:509
+#: src/pingus_main.cxx:508
 msgid " [OPTIONS]... [LEVELFILE]"
 msgstr "[SEÇENEKLER]... [SEVÝYE DOSYASI]"
 
-#: src/pingus_main.cxx:511
+#: src/pingus_main.cxx:510
 msgid ""
 "\n"
 "Options:\n"
 "   -g, --geometry {width}x{height}\n"
 "                            Set the resolution for pingus (default: "
-"640x480)\n"
+"800x600)\n"
 "   -h, --help               Displays this screen\n"
 "   --disable-intro          Disable intro\n"
 msgstr ""
 
-#: src/pingus_main.cxx:520
+#: src/pingus_main.cxx:519
 msgid "   -G, --use-opengl         Use OpenGL\n"
 msgstr "   -G, --use-opengl         OpenGL kullan\n"
 
 #. 	"   --fs-preload             Preload all Levelpreviews\n"a
 #. 	"   --disable-previews       Disables all level preview in the level selector\n"
-#: src/pingus_main.cxx:524
+#: src/pingus_main.cxx:523
 msgid ""
-"   -F, --disable-fullscreen Disable Fullscreen\n"
-"   -f, --enable-fullscreen  Enable Fullscreen (default)\n"
+"   -F, --disable-fullscreen Disable Fullscreen (default)\n"
+"   -f, --enable-fullscreen  Enable Fullscreen\n"
 "   -d, --datadir PATH       Set the path to load the data files to `path'\n"
 "   --use-datafile           Use the pre-compiled datafile (default)\n"
 "   --use-scriptfile         Use the scriptfile and read all data from files\n"
@@ -988,7 +980,7 @@ msgid ""
 "   -p, --play-demo FILE     Plays a demo session from FILE\n"
 msgstr ""
 
-#: src/pingus_main.cxx:567
+#: src/pingus_main.cxx:566
 msgid ""
 "\n"
 "Sound:\n"
@@ -996,91 +988,91 @@ msgid ""
 "   -m, --enable-music       Enable music\n"
 msgstr ""
 
-#: src/pingus_main.cxx:676
+#: src/pingus_main.cxx:675
 msgid "clanVorbis support:           ok"
 msgstr ""
 
-#: src/pingus_main.cxx:678
+#: src/pingus_main.cxx:677
 msgid "clanVoribs support:  missing (.ogg music files will not be playable)"
 msgstr ""
 
-#: src/pingus_main.cxx:682
+#: src/pingus_main.cxx:681
 msgid "clanMikMod support:           ok"
 msgstr ""
 
-#: src/pingus_main.cxx:684
+#: src/pingus_main.cxx:683
 msgid "clanMikMod support:  missing (music files will not be playable)"
 msgstr ""
 
-#: src/pingus_main.cxx:688
+#: src/pingus_main.cxx:687
 msgid "getext support:               ok"
 msgstr ""
 
-#: src/pingus_main.cxx:689
+#: src/pingus_main.cxx:688
 msgid "gettext language:        english"
 msgstr ""
 
-#: src/pingus_main.cxx:695
+#: src/pingus_main.cxx:694
 msgid "sound support:           enabled"
 msgstr ""
 
-#: src/pingus_main.cxx:697
+#: src/pingus_main.cxx:696
 msgid "sound support:          disabled"
 msgstr ""
 
-#: src/pingus_main.cxx:700
+#: src/pingus_main.cxx:699
 msgid "music support:           enabled"
 msgstr ""
 
-#: src/pingus_main.cxx:702
+#: src/pingus_main.cxx:701
 msgid "music support:          disabled"
 msgstr ""
 
-#: src/pingus_main.cxx:704
+#: src/pingus_main.cxx:703
 msgid "resolution set to:       "
 msgstr ""
 
-#: src/pingus_main.cxx:705
-msgid "fullcscreen:            "
+#: src/pingus_main.cxx:704
+msgid "fullscreen:              "
 msgstr ""
 
-#: src/pingus_main.cxx:706
+#: src/pingus_main.cxx:705
 #, fuzzy
 msgid " enabled"
 msgstr "Ýmleç etkin"
 
-#: src/pingus_main.cxx:706
+#: src/pingus_main.cxx:705
 msgid "disabled"
 msgstr ""
 
 # 'Main' yerine baþka biþi uydurmak lazim buraya -gd
-#: src/pingus_main.cxx:716
+#: src/pingus_main.cxx:715
 msgid "PingusMain: Starting Main: "
 msgstr "PingusMain: Main Baþlatýlýyor: "
 
-#: src/pingus_main.cxx:742
+#: src/pingus_main.cxx:741
 msgid "PingusMain: Levelfile not found, ignoring: "
 msgstr "PingusMain: Seviye Dosyasý bulunamadý, yok sayýlacak: "
 
-#: src/pingus_main.cxx:833
+#: src/pingus_main.cxx:832
 msgid "Error caught from ClanLib: "
 msgstr "ClanLib hatasý: "
 
-#: src/pingus_main.cxx:837
+#: src/pingus_main.cxx:836
 msgid "Error caught from Pingus: "
 msgstr "Pingus'ta hata saptandý: "
 
-#: src/pingus_main.cxx:841
+#: src/pingus_main.cxx:840
 msgid "Pingus: Out of memory!"
 msgstr "Pingus: Bellek yetersiz!"
 
 # bu komik oldu -cagri
 # daha mi iyi boyle :) -gd
-#: src/pingus_main.cxx:845
+#: src/pingus_main.cxx:844
 msgid "Pingus: Standard exception caught!:\n"
 msgstr "Pingus: Genel olaðan dýþý durum saptandý!:\n"
 
-#: src/pingus_main.cxx:849
+#: src/pingus_main.cxx:848
 msgid "Pingus: Unknown throw caught!"
 msgstr "Pingus: Bilinmeyen bir hata saptandý!"
 
@@ -1229,29 +1221,29 @@ msgid ""
 "the world. Since the floe with which the Pingus traveled to the\n"
 "Tutorial Island isn't going to hold the whole way into the warmer\n"
 "climated regions the Pingus have to find something else to guide\n"
-"there on there journey.\n"
+"there on their journey.\n"
 msgstr ""
 
 #: src/story.cxx:51
 msgid ""
 "But as the eldest have said, the Tutorial Island provides not\n"
 "only a way to practive, but it is also the starting point into\n"
-"the world, cause the wood if the large tree at the end of the\n"
-"island is brings good wood to construct a float.\n"
+"the world, cause the wood of the large tree at the end of the\n"
+"island brings good wood to construct a float.\n"
 msgstr ""
 
 #: src/story.cxx:59
 msgid ""
 "So the Pingus set out and constructed a some large floats, enough\n"
 "to carry them all. After also packaging up a bunch of provisions\n"
-"they where prepared to finally start of there journey and leave\n"
+"they where prepared to finally start of their journey and leave\n"
 "their familiar ground and entering the unknown parts of the\n"
 "world.\n"
 msgstr ""
 
 #: src/story.cxx:68
 msgid ""
-"So the Pingus sat on there float, worrying whats to come and\n"
+"So the Pingus sat on their float, worrying whats to come and\n"
 "where to go, while floating into the sunset.\n"
 "\n"
 "To be continued..."
@@ -1265,7 +1257,7 @@ msgstr ""
 msgid ""
 "For a long time now the Pingus have lived happily in peace on the\n"
 "south pole along with all the other animals, everything was in\n"
-"balance and it seemed like nothing could disrupt there peace.  The\n"
+"balance and it seemed like nothing could disrupt their peace.  The\n"
 "Pingus where happy and it seemed like this could never end.\n"
 msgstr ""
 
@@ -1295,8 +1287,8 @@ msgstr ""
 
 #: src/story.cxx:116
 msgid ""
-"And they picked you to lead them on there journey around the\n"
-"world. Since the journey will be dangerous and difficult. Your\n"
+"And they picked you to lead them on their journey around the\n"
+"world. Since the journey will be dangerous and difficult, your\n"
 "first goal is the Island of Mogorok, also know has Tutorial\n"
 "Island. According to the eldest, this island has always been the\n"
 "first stop of Pingus which where send out into the world."
@@ -1306,13 +1298,13 @@ msgstr ""
 msgid ""
 "The island consists of many regions which are ideally to train the\n"
 "abilities of the Pingus. The Pingus can train there their ability\n"
-"to build bridges, climb, bash and all the rest of there talents\n"
-"which they will surly need on there long and dangerous journey."
+"to build bridges, climb, bash and all the rest of their talents\n"
+"which they will surly need on their long and dangerous journey."
 msgstr ""
 
 #: src/story.cxx:133
 msgid ""
-"While you on the other site can practice there your ability to\n"
+"While you on the other side can practice there your ability to\n"
 "command and guide the Pingus. You can also get familiar there with\n"
 "all the abilities the Pingus provide and learn to master them,\n"
 "since you will need them all for sure an your journey around the\n"
@@ -1321,8 +1313,8 @@ msgstr ""
 
 #: src/story.cxx:142
 msgid ""
-"Now that you and the Pingus have arrive at tutorial island it\n"
-"is time to take over the command and begin your mission\n"
+"Now that you and the Pingus have arrived at tutorial island it\n"
+"is time to take over the command and begin your mission.\n"
 "\n"
 "                                                  Good Luck!"
 msgstr ""
@@ -1382,6 +1374,12 @@ msgstr "PingusWorldMapGraph: Dosya bulunamadý: "
 #, fuzzy
 msgid "...walking..."
 msgstr "Yükleniyor..."
+
+#~ msgid "PingusBug: "
+#~ msgstr "PingusBöceðý:"
+
+#~ msgid "PingusError: "
+#~ msgstr "PingusHatasý:"
 
 #~ msgid "Couldn't find palette: %d"
 #~ msgstr "Bulunamayan palet: %d"

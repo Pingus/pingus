@@ -1,4 +1,4 @@
-//  $Id: xml_helper.cxx,v 1.28 2003/04/04 11:23:27 grumbel Exp $
+//  $Id: xml_helper.cxx,v 1.29 2003/04/09 20:20:20 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -458,7 +458,7 @@ XMLhelper::get_line(xmlNodePtr cur)
 std::string
 XMLhelper::xmlChar2string(const xmlChar* in)
 {
-  int in_len = xmlUTF8Strlen(in) + 1;
+  int in_len = xmlUTF8Strsize(in, xmlUTF8Strlen(in)) + 1;
   int out_len = in_len;
   unsigned char* out = new unsigned char[out_len];
   int ret = UTF8Toisolat1(out, &out_len, in,  &in_len);
