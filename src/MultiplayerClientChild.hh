@@ -1,4 +1,4 @@
-//  $Id: MultiplayerClientChild.hh,v 1.3 2001/04/15 11:00:41 grumbel Exp $
+//  $Id: MultiplayerClientChild.hh,v 1.4 2001/04/15 20:55:03 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,6 +30,7 @@
 #include "Controllable.hh"
 #include "PlayfieldView.hh"
 #include "Sprite.hh"
+#include "PingusCounterBar.hh"
 
 class MultiplayerClientChild : public Controllable,
 			       public GuiObj
@@ -44,6 +45,7 @@ private:
   typedef std::vector<boost::shared_ptr<GuiObj> >::iterator GuiObjIter;
 
   boost::shared_ptr<PlayfieldView> playfield;
+  boost::shared_ptr<PingusCounterBar> counterbar;
 
   CL_Rect rect;
 

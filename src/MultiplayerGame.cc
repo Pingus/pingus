@@ -1,4 +1,4 @@
-//  $Id: MultiplayerGame.cc,v 1.1 2001/04/15 17:01:51 grumbel Exp $
+//  $Id: MultiplayerGame.cc,v 1.2 2001/04/15 20:55:03 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -88,24 +88,24 @@ MultiplayerGame::start ()
 										server.get (),
 										CL_Rect (0,
 											 0, 
-											 CL_Display::get_width ()/2-2,
-											 CL_Display::get_height ()/2-2))),
+											 CL_Display::get_width ()/2 - 4,
+											 CL_Display::get_height ()/2 - 4))),
 		 shared_ptr<MultiplayerClientChild>(new MultiplayerClientChild (controller2,
 										server.get (),
-										CL_Rect (CL_Display::get_width ()/2, 
+										CL_Rect (CL_Display::get_width ()/2 + 4,
 											 0,
 											 CL_Display::get_width (), 
-											 CL_Display::get_height ()/2-2))),
+											 CL_Display::get_height ()/2 - 4))),
 		 shared_ptr<MultiplayerClientChild>(new MultiplayerClientChild (controller3,
 										server.get (),
 										CL_Rect (0,
-											 CL_Display::get_height ()/2,
-											 CL_Display::get_width (), 
+											 CL_Display::get_height ()/2 + 4,
+											 CL_Display::get_width ()/2 - 4, 
 											 CL_Display::get_height ()))),
 		 shared_ptr<MultiplayerClientChild>(new MultiplayerClientChild (controller4,
 										server.get (),
-										CL_Rect (CL_Display::get_width ()/2,
-											 CL_Display::get_height ()/2,
+										CL_Rect (CL_Display::get_width ()/2 + 4,
+											 CL_Display::get_height ()/2 + 4,
 											 CL_Display::get_width (), 
 											 CL_Display::get_height ())))
 		 ));
@@ -119,6 +119,8 @@ MultiplayerGame::start ()
       client->update (delta);
       client->draw ();
       Display::flip_display ();
+      // FIXME: Remove me to gain some fps
+      CL_Display::clear_display (1.0, 1.0, 1.0);
       CL_System::keep_alive ();
       CL_System::sleep (40);
     }

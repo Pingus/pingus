@@ -1,4 +1,4 @@
-//  $Id: MultiplayerClientChild.cc,v 1.4 2001/04/15 11:00:41 grumbel Exp $
+//  $Id: MultiplayerClientChild.cc,v 1.5 2001/04/15 20:55:03 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,6 +32,8 @@ MultiplayerClientChild::MultiplayerClientChild (shared_ptr<Controller> arg_contr
     button_panel (new ButtonPanel (s->get_plf (), controller, arg_rect.x1, arg_rect.y1)),
     capture_rect ("cursors/capgood", "core"),
     playfield (new PlayfieldView (server->get_world (), arg_rect)),
+    counterbar (new PingusCounterBar (server, PingusCounterBar::VERTICAL, 
+				      CL_Rect (arg_rect.x2 - 20, arg_rect.y1, arg_rect.x2, arg_rect.y2))),
     rect (arg_rect)
 {
   capture_rect.set_align_center ();
@@ -42,6 +44,7 @@ MultiplayerClientChild::MultiplayerClientChild (shared_ptr<Controller> arg_contr
   std::cout << "MultiplayerClientChild: Creating: " << server.get() << std::endl;
   gui_objs.push_back (playfield);
   gui_objs.push_back (button_panel);
+  gui_objs.push_back (counterbar);
 
   controller->set_range (rect);
 

@@ -1,4 +1,4 @@
-//  $Id: MultiplayerClient.hh,v 1.4 2001/04/15 20:55:03 grumbel Exp $
+//  $Id: PingusCounterBar.hh,v 1.1 2001/04/15 20:55:03 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,33 +17,27 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef MULTIPLAYERCLIENT_HH
-#define MULTIPLAYERCLIENT_HH
+#ifndef PINGUSCOUNTERBAR_HH
+#define PINGUSCOUNTERBAR_HH
 
-#include <vector>
+#include <ClanLib/core.h>
+#include "Server.hh"
 #include "GuiObj.hh"
-#include "boost/smart_ptr.hpp"
-#include "MultiplayerClientChild.hh"
+#include "boost/dummy_ptr.hpp"
 
-class MultiplayerClient
+class PingusCounterBar : public GuiObj
 {
-private:
-  std::vector<boost::shared_ptr<GuiObj> > gui_objs;
-  typedef std::vector<boost::shared_ptr<GuiObj> >::iterator GuiObjIter;
-  boost::dummy_ptr<Server> server;
-    
 public:
-  MultiplayerClient (boost::dummy_ptr<Server> s,
-		     boost::shared_ptr<MultiplayerClientChild> child1,
-		     boost::shared_ptr<MultiplayerClientChild> child2);
-  MultiplayerClient (boost::dummy_ptr<Server> s,
-		     boost::shared_ptr<MultiplayerClientChild> child1,
-		     boost::shared_ptr<MultiplayerClientChild> child2,
-		     boost::shared_ptr<MultiplayerClientChild> child3,
-		     boost::shared_ptr<MultiplayerClientChild> child4);
-  ~MultiplayerClient ();
+    enum Orientation { VERTICAL, HORIZONTAL };
+private:
+  boost::dummy_ptr<Server> server;
+  Orientation orientation;
+  CL_Rect rect;
+public:
+  PingusCounterBar (boost::dummy_ptr<Server> s, Orientation o, const CL_Rect& arg_rect);
+  virtual ~PingusCounterBar ();
 
-  void update (float delta);
+  void update(float delta);
   void draw ();
 };
 
