@@ -1,4 +1,4 @@
-//  $Id: ObjectManager.cc,v 1.61 2002/06/07 14:50:34 torangan Exp $
+//  $Id: ObjectManager.cc,v 1.62 2002/06/07 19:10:33 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,7 +32,6 @@
 #include "../backgrounds/SurfaceBackgroundData.hh"
 #include "../WorldObjData.hh"
 #include "StartPos.hh"
-#include "../generic/ListHelper.hh"
 #include "ObjectManager.hh"
 #include "EditorObj.hh"
 #include "EditorView.hh"
@@ -160,16 +159,23 @@ ObjectManager::load_level (const std::string & filename)
   vector<WeatherData>  temp_weather  = plf->get_weather();
   vector<boost::shared_ptr<WorldObjData> > temp_worldobj = plf->get_worldobjs_data();
 
-  for (vector<GroundpieceData>::iterator i = temp_surfaces.begin(); i != temp_surfaces.end(); ++i)
-    ListHelper::append (editor_objs, i->create_EditorObj ());
+  for (vector<GroundpieceData>::iterator i = temp_surfaces.begin(); i != temp_surfaces.end(); ++i) {
+    const list<boost::shared_ptr<EditorObj> > & temp = i->create_EditorObj();
+    editor_objs.insert(editor_objs.end(), temp.begin(), temp.end() );
+  }
 
-  for (vector<WeatherData>::iterator i = temp_weather.begin(); i != temp_weather.end(); ++i)
-    ListHelper::append (editor_objs, i->create_EditorObj ());
+
+  for (vector<WeatherData>::iterator i = temp_weather.begin(); i != temp_weather.end(); ++i) {
+    const list<boost::shared_ptr<EditorObj> > & temp = i->create_EditorObj();
+    editor_objs.insert(editor_objs.end(), temp.begin(), temp.end() );
+  }
 
   for (vector<boost::shared_ptr<WorldObjData> >::iterator i = temp_worldobj.begin();
       i != temp_worldobj.end();
-      ++i)
-    ListHelper::append (editor_objs, (*i)->create_EditorObj ());
+      ++i) {
+    const list<boost::shared_ptr<EditorObj> > & temp = (*i)->create_EditorObj();
+    editor_objs.insert(editor_objs.end(), temp.begin(), temp.end() );
+  }
 
 #ifndef WIN32 // FIXME: Compiler error in Windows
   editor_objs.sort(EditorObj_z_pos_sorter());
