@@ -1,0 +1,136 @@
+/* This level was created with the PLE
+ * $Id: pacman2-yingwan.plf,v 1.1 2001/01/07 22:32:34 grumbel Exp $
+ */
+global {
+  author = "Ying-Wan Lam <yingwan.lam@yale.edu>";
+  start_x_pos = 0;
+  start_y_pos = 0;
+  levelname = "Pacman 2";
+  description = "Another tour in Pacman's maze.";
+  number_of_pingus = 50;
+  number_to_save = 40;
+  time = 9000;
+}
+
+ground {
+  maptype = "SPOT";
+  width   = 800;
+  height  = 600;
+  colmap  = (auto);
+}
+
+background {
+  image = (resource:textures)"Textures/stars";
+  dim   = "0";
+  red   = "0";
+  green = "0";
+  blue  = "0";
+  scroll_x = 0;
+  scroll_y = 0;
+  para_x = 0.5;
+  para_y = 0.5;
+  stretch_x = 0;
+  stretch_y = 0;
+}
+
+buttons {
+  basher = 5;
+  blocker = 10;
+  bomber = 10;
+  bridger = 10;
+  digger = 5;
+  floater = 10;
+  jumper = 5;
+  miner = 5;
+}
+
+hotspot {
+  image = (resource:global)"Ywlam/pacbkg";
+  x_pos = 174;
+  y_pos = 16;
+  z_pos = -5;
+  speed = -1;
+  para = "1";
+}
+
+entrance {
+  type  = generic;
+  x_pos = 567;
+  y_pos = 102;
+  z_pos = 0;
+  release_rate = 30;
+  direction = right;
+}
+
+exit {
+  image = (resource:global)"Ywlam/pacman";
+  x_pos = 188;
+  y_pos = 523;
+  z_pos = 0;
+}
+
+hotspot {
+  image = (resource:global)"Ywlam/blinky";
+  x_pos = 484;
+  y_pos = 283;
+  z_pos = 80;
+  speed = -1;
+  para = "1";
+}
+
+hotspot {
+  image = (resource:global)"Ywlam/inky";
+  x_pos = 307;
+  y_pos = 378;
+  z_pos = 80;
+  speed = -1;
+  para = "1";
+}
+
+hotspot {
+  image = (resource:global)"Ywlam/pinky";
+  x_pos = 459;
+  y_pos = 379;
+  z_pos = 80;
+  speed = -1;
+  para = "1";
+}
+
+hotspot {
+  image = (resource:global)"Ywlam/clyde";
+  x_pos = 410;
+  y_pos = 232;
+  z_pos = 80;
+  speed = -1;
+  para = "1";
+}
+
+trap {
+  name = "spike";
+  x_pos = 409;
+  y_pos = 234;
+  z_pos = 100;
+}
+
+trap {
+  name = "spike";
+  x_pos = 307;
+  y_pos = 378;
+  z_pos = 100;
+}
+
+trap {
+  name = "spike";
+  x_pos = 459;
+  y_pos = 377;
+  z_pos = 100;
+}
+
+trap {
+  name = "spike";
+  x_pos = 484;
+  y_pos = 283;
+  z_pos = 100;
+}
+
+/* EOF */

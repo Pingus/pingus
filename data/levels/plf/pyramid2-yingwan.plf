@@ -1,0 +1,233 @@
+/* This level was created with the PLE
+ * $Id: pyramid2-yingwan.plf,v 1.1 2001/01/07 22:32:34 grumbel Exp $
+ */
+global {
+  author = "Ying-Wan Lam <yingwan.lam@yale.edu>";
+  start_x_pos = 1240;
+  start_y_pos = 200;
+  levelname = "The Great Pyramid 2";
+  description = "Getting in is easy. How about getting out?";
+  number_of_pingus = 40;
+  number_to_save = 30;
+  time = 9000;
+}
+
+ground {
+  maptype = "SPOT";
+  width   = 1504;
+  height  = 608;
+  colmap  = (auto);
+}
+
+background {
+  image = (resource:textures)"Textures/desert";
+  dim   = "0";
+  red   = "0";
+  green = "0";
+  blue  = "0";
+  scroll_x = 0;
+  scroll_y = 0;
+  para_x = 0.5;
+  para_y = 0.5;
+  stretch_x = 0;
+  stretch_y = 0;
+}
+
+buttons {
+  basher = 10;
+  blocker = 15;
+  bomber = 5;
+  bridger = 25;
+  climber = 5;
+  digger = 5;
+  floater = 10;
+  jumper = 5;
+  miner = 5;
+}
+
+hotspot {
+  image = (resource:global)"Ywlam/bigdimwall";
+  x_pos = 518;
+  y_pos = 323;
+  z_pos = -15;
+  speed = -1;
+  para = "1";
+}
+
+hotspot {
+  image = (resource:global)"Ywlam/bigdimwall";
+  x_pos = 782;
+  y_pos = 323;
+  z_pos = -15;
+  speed = -1;
+  para = "1";
+}
+
+hotspot {
+  image = (resource:global)"Ywlam/bigdimwall";
+  x_pos = 743;
+  y_pos = 174;
+  z_pos = -15;
+  speed = -1;
+  para = "1";
+}
+
+hotspot {
+  image = (resource:global)"Ywlam/mediumdimwall";
+  x_pos = 404;
+  y_pos = 399;
+  z_pos = -15;
+  speed = -1;
+  para = "1";
+}
+
+hotspot {
+  image = (resource:global)"Ywlam/mediumdimwall";
+  x_pos = 1043;
+  y_pos = 249;
+  z_pos = -15;
+  speed = -1;
+  para = "1";
+}
+
+hotspot {
+  image = (resource:global)"Ywlam/mediumdimwall";
+  x_pos = 1269;
+  y_pos = 398;
+  z_pos = -15;
+  speed = -1;
+  para = "1";
+}
+
+hotspot {
+  image = (resource:global)"Ywlam/mediumdimwall";
+  x_pos = 630;
+  y_pos = 249;
+  z_pos = -15;
+  speed = -1;
+  para = "1";
+}
+
+hotspot {
+  image = (resource:global)"Ywlam/mediumdimwall";
+  x_pos = 828;
+  y_pos = 99;
+  z_pos = -15;
+  speed = -1;
+  para = "1";
+}
+
+hotspot {
+  image = (resource:global)"Ywlam/smalldimwall";
+  x_pos = 1043;
+  y_pos = 212;
+  z_pos = -15;
+  speed = -1;
+  para = "1";
+}
+
+hotspot {
+  image = (resource:global)"Ywlam/bigdimwall";
+  x_pos = 1007;
+  y_pos = 323;
+  z_pos = -15;
+  speed = -1;
+  para = "1";
+}
+
+exit {
+  image = (resource:global)"Exits/desert";
+  x_pos = 10;
+  y_pos = 361;
+  z_pos = -5;
+}
+
+hotspot {
+  image = (resource:global)"Ywlam/smallegpytpict";
+  x_pos = 741;
+  y_pos = 279;
+  z_pos = -5;
+  speed = -1;
+  para = "1";
+}
+
+hotspot {
+  image = (resource:global)"GroundPieces/Desert/pillar3";
+  x_pos = 891;
+  y_pos = 135;
+  z_pos = -5;
+  speed = -1;
+  para = "1";
+}
+
+entrance {
+  type  = generic;
+  x_pos = 1132;
+  y_pos = 431;
+  z_pos = 0;
+  release_rate = 25;
+  direction = left;
+}
+
+hotspot {
+  image = (resource:global)"Entrances/entrance";
+  x_pos = 1101;
+  y_pos = 419;
+  z_pos = 0;
+  speed = -1;
+  para = "1";
+}
+
+hotspot {
+  image = (resource:global)"Ywlam/mediummummy";
+  x_pos = 441;
+  y_pos = 432;
+  z_pos = 5;
+  speed = -1;
+  para = "1";
+}
+
+hotspot {
+  image = (resource:global)"GroundPieces/Misc/smallbrickpiece";
+  x_pos = 584;
+  y_pos = 434;
+  z_pos = 80;
+  speed = -1;
+  para = "1";
+}
+
+hotspot {
+  image = (resource:global)"GroundPieces/Misc/smallbrickpiece";
+  x_pos = 526;
+  y_pos = 360;
+  z_pos = 80;
+  speed = -1;
+  para = "1";
+}
+
+hotspot {
+  image = (resource:global)"GroundPieces/Misc/smallbrickpiece";
+  x_pos = 837;
+  y_pos = 434;
+  z_pos = 100;
+  speed = -1;
+  para = "1";
+}
+
+hotspot {
+  image = (resource:global)"GroundPieces/Misc/smallbrickpiece";
+  x_pos = 913;
+  y_pos = 434;
+  z_pos = 100;
+  speed = -1;
+  para = "1";
+}
+
+trap {
+  name = "spike";
+  x_pos = 733;
+  y_pos = 440;
+  z_pos = 100;
+}
+
+/* EOF */

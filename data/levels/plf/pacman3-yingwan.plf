@@ -1,0 +1,137 @@
+/* This level was created with the PLE
+ * $Id: pacman3-yingwan.plf,v 1.1 2001/01/07 22:32:34 grumbel Exp $
+ */
+global {
+  author = "Ying-Wan Lam <yingwan.lam@yale.edu>";
+  start_x_pos = 0;
+  start_y_pos = 0;
+  levelname = "Pacman 3";
+  description = "One more Pacman level. Yes. It can be solved :).";
+  number_of_pingus = 20;
+  number_to_save = 12;
+  time = 9000;
+}
+
+ground {
+  maptype = "SPOT";
+  width   = 800;
+  height  = 600;
+  colmap  = (auto);
+}
+
+background {
+  image = (resource:textures)"Textures/stars";
+  dim   = "0";
+  red   = "0";
+  green = "0";
+  blue  = "0";
+  scroll_x = 0;
+  scroll_y = 0;
+  para_x = 0.5;
+  para_y = 0.5;
+  stretch_x = 0;
+  stretch_y = 0;
+}
+
+buttons {
+  basher = 20;
+  blocker = 20;
+  bomber = 20;
+  bridger = 20;
+  climber = 20;
+  digger = 20;
+  floater = 20;
+  jumper = 20;
+  miner = 20;
+}
+
+hotspot {
+  image = (resource:global)"Ywlam/pacbkg";
+  x_pos = 174;
+  y_pos = 16;
+  z_pos = -5;
+  speed = -1;
+  para = "1";
+}
+
+entrance {
+  type  = generic;
+  x_pos = 578;
+  y_pos = 291;
+  z_pos = 0;
+  release_rate = 150;
+  direction = left;
+}
+
+exit {
+  image = (resource:global)"Ywlam/pacman";
+  x_pos = 176;
+  y_pos = 283;
+  z_pos = 0;
+}
+
+hotspot {
+  image = (resource:global)"Ywlam/blinky";
+  x_pos = 417;
+  y_pos = 274;
+  z_pos = 80;
+  speed = -1;
+  para = "1";
+}
+
+hotspot {
+  image = (resource:global)"Ywlam/inky";
+  x_pos = 362;
+  y_pos = 106;
+  z_pos = 80;
+  speed = -1;
+  para = "1";
+}
+
+hotspot {
+  image = (resource:global)"Ywlam/pinky";
+  x_pos = 382;
+  y_pos = 522;
+  z_pos = 80;
+  speed = -1;
+  para = "1";
+}
+
+hotspot {
+  image = (resource:global)"Ywlam/clyde";
+  x_pos = 384;
+  y_pos = 291;
+  z_pos = 80;
+  speed = -1;
+  para = "1";
+}
+
+trap {
+  name = "spike";
+  x_pos = 386;
+  y_pos = 290;
+  z_pos = 100;
+}
+
+trap {
+  name = "spike";
+  x_pos = 363;
+  y_pos = 106;
+  z_pos = 100;
+}
+
+trap {
+  name = "spike";
+  x_pos = 418;
+  y_pos = 275;
+  z_pos = 100;
+}
+
+trap {
+  name = "spike";
+  x_pos = 386;
+  y_pos = 522;
+  z_pos = 100;
+}
+
+/* EOF */
