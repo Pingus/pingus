@@ -1,4 +1,4 @@
-//  $Id: hammer.hh,v 1.4 2000/07/30 01:47:39 grumbel Exp $
+//  $Id: hammer.hh,v 1.5 2000/09/18 12:22:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,9 +37,8 @@ public:
   ///
   void let_move();
   ///
-  bool catch_pingu(Pingu* pingu);
-}///
-;
+  void catch_pingu(Pingu* pingu);
+};
 
 #endif
 

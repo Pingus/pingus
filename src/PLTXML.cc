@@ -1,4 +1,4 @@
-//  $Id: PLTXML.cc,v 1.3 2000/08/28 00:34:39 grumbel Exp $
+//  $Id: PLTXML.cc,v 1.4 2000/09/18 12:22:15 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -50,7 +50,7 @@ PLTXML::parse(std::string filename)
 void 
 PLTXML::parse_background(xmlNodePtr cur)
 {
-  cur = cur->childs;
+  cur = cur->children;
 
   while (cur != NULL)
     {
@@ -97,7 +97,7 @@ PLTXML::parse_background(xmlNodePtr cur)
 void 
 PLTXML::parse_description(xmlNodePtr cur)
 {
-  char* desc = (char*)xmlNodeListGetString(doc, cur->childs, 1);
+  char* desc = (char*)xmlNodeListGetString(doc, cur->children, 1);
   char* lang = (char*)xmlGetProp(cur, (xmlChar*)"lang");
 
   if (desc) {
@@ -114,7 +114,7 @@ PLTXML::parse_description(xmlNodePtr cur)
 void 
 PLTXML::parse_world_name(xmlNodePtr cur)
 {
-  char* name = (char*)xmlNodeListGetString(doc, cur->childs, 1);
+  char* name = (char*)xmlNodeListGetString(doc, cur->children, 1);
   char* lang = (char*)xmlGetProp(cur, (xmlChar*)"lang");
 
   if (name) 
@@ -132,13 +132,13 @@ PLTXML::parse_world_name(xmlNodePtr cur)
 void
 PLTXML::parse_level_list(xmlNodePtr cur)
 {
-  cur = cur->childs;
+  cur = cur->children;
 
   while (cur != NULL)
     {
       if (strcmp((char*)cur->name, "level") == 0)
 	{
-	  char* name = (char*)xmlNodeListGetString(doc, cur->childs, 1);
+	  char* name = (char*)xmlNodeListGetString(doc, cur->children, 1);
 	  if (name)
 	    {
 	      level_list.push_back(name);
@@ -156,11 +156,11 @@ PLTXML::parse_level_list(xmlNodePtr cur)
 void
 PLTXML::parse_file()
 {
-  xmlNodePtr cur = doc->root;
+  xmlNodePtr cur = doc->children;
 
   if (cur != NULL && strcmp((const char*)cur->name, "pingus-world") == 0)
     {
-      cur = cur->childs;
+      cur = cur->children;
 
       while (cur != NULL)
 	{

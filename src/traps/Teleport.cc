@@ -1,4 +1,4 @@
-//  $Id: Teleport.cc,v 1.5 2000/07/30 01:47:39 grumbel Exp $
+//  $Id: Teleport.cc,v 1.6 2000/09/18 12:22:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -52,13 +52,13 @@ Teleport::let_move()
     ++counter;
 }
 
-bool
+void
 Teleport::catch_pingu(Pingu* pingu)
 {
   Teleported *teleported;
 
-  if (!pingu->is_alive())
-    return false;
+  //if (!pingu->is_alive())
+  //return false;
   
   if (counter.finished()) {
     teleporting = false;

@@ -1,4 +1,4 @@
-//  $Id: LaserExit.cc,v 1.6 2000/08/03 10:31:18 grumbel Exp $
+//  $Id: LaserExit.cc,v 1.7 2000/09/18 12:22:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -53,11 +53,11 @@ LaserExit::let_move(void)
   }
 }
 
-bool
+void
 LaserExit::catch_pingu(Pingu* pingu)
 {
-  if (!pingu->is_alive())
-    return false;
+  //if (!pingu->is_alive())
+  //return;
 
   if (!killing) {
     if (pingu->x_pos < pos.x_pos + 34 + 10 && pingu->x_pos > pos.x_pos + 34 
@@ -68,9 +68,7 @@ LaserExit::catch_pingu(Pingu* pingu)
 	  pingu->set_action(world->get_action_holder()->get_uaction("laserkill"));
 	}
       }
-    return true;
   }
-  return false;  
 }
 
 /* EOF */

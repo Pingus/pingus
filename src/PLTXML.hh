@@ -1,4 +1,4 @@
-//  $Id: PLTXML.hh,v 1.2 2000/08/28 00:34:39 grumbel Exp $
+//  $Id: PLTXML.hh,v 1.3 2000/09/18 12:22:15 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,7 @@
 #ifndef PLTXML_HH
 #define PLTXML_HH
 
-#include <gnome-xml/parser.h>
+#include <libxml/parser.h>
 #include <vector>
 #include <string>
 #include <map>

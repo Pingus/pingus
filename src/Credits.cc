@@ -1,4 +1,4 @@
-//  $Id: Credits.cc,v 1.7 2000/06/27 16:05:16 grumbel Exp $
+//  $Id: Credits.cc,v 1.8 2000/09/18 12:22:15 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,8 +21,17 @@
 #include "PingusResource.hh"
 #include "Credits.hh"
 
+Credits credit_screen;
+
 Credits::Credits()
 {  
+  is_init = false;
+}
+
+///
+void
+Credits::init ()
+{
   surface = PingusResource::load_surface("Game/pingubw", "game");
   font = PingusResource::load_font("Fonts/pingus","fonts");
   font_small = PingusResource::load_font("Fonts/pingus_small","fonts");
@@ -35,6 +44,7 @@ Credits::Credits()
   credits.push_back("_If I forgot somebody in this");
   credits.push_back("_list, just drop me a line and");
   credits.push_back("_I'll fix this.");
+  credits.push_back("_Last Updated: 2000/06/27");
   credits.push_back("n");
 
   credits.push_back("-Programming");
@@ -68,7 +78,6 @@ Credits::Credits()
   credits.push_back("_Keir Fraser");  
 
   credits.push_back("n");
-
 }
 
 Credits::~Credits()
@@ -118,7 +127,7 @@ Credits::display()
 	      yof += 50;
 	      break;
 	    default:
-	      std::cout << "Credits: Syntax error" << std::endl;
+	      std::cout << "Credits: Syntax error: Unknown format: '" << (*i)[0] << "'" << std::endl;
 	      break;
 	    }
 	}

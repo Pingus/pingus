@@ -1,4 +1,4 @@
-//  $Id: Credits.hh,v 1.3 2000/06/18 17:01:49 grumbel Exp $
+//  $Id: Credits.hh,v 1.4 2000/09/18 12:22:15 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,19 +30,29 @@ private:
   CL_Font*    font;
   ///
   CL_Font*    font_small;
-
   ///
+  bool is_init;
+
+  /** The string's which are shown in the scrolling text, the first
+      character of the string can be used to apply a special format.
+      
+      'n' - Inserts a newline
+      '_' - Use small font
+      '-' - Use large font
+  */
   std::vector<std::string> credits;
 public:
   ///
   Credits();
   ///
   ~Credits();
-  
+  ///
+  void init ();
   ///
   void display();
-}///
-;
+};
+
+extern Credits credit_screen;
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: Trap.cc,v 1.6 2000/08/03 10:31:17 grumbel Exp $
+//  $Id: Trap.cc,v 1.7 2000/09/18 12:22:15 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -52,10 +52,9 @@ Trap::let_move()
   // do nothing
 }
 
-bool 
+void 
 Trap::catch_pingu(Pingu* pingu)
 {
-  return false;
 }
 
 /* EOF */

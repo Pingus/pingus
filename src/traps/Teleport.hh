@@ -39,9 +39,8 @@ public:
   ///
   void let_move(void);
   ///
-  bool catch_pingu(Pingu*);
-}///
-;
+  void catch_pingu(Pingu*);
+};
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: XMLPLF.cc,v 1.9 2000/09/13 00:14:56 grumbel Exp $
+//  $Id: XMLPLF.cc,v 1.10 2000/09/18 12:22:15 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -50,11 +50,11 @@ XMLPLF::~XMLPLF()
 void
 XMLPLF::parse_file()
 {
-  xmlNodePtr cur = doc->root;
+  xmlNodePtr cur = doc->children; // ex root
 
   if (cur != NULL && strcmp((const char*)cur->name, "pingus-level") == 0)
     {
-      cur = cur->childs;
+      cur = cur->children;
       while (cur != NULL)
 	{
 	  //puts("global loop");
@@ -120,7 +120,7 @@ XMLPLF::parse_file()
 void
 XMLPLF::parse_start_pos(xmlNodePtr cur)
 {
-  cur = cur->childs;
+  cur = cur->children;
 
   while (cur != NULL)
     {
@@ -142,7 +142,7 @@ void
 XMLPLF::parse_weather(xmlNodePtr cur)
 {
   WeatherData weather;
-  cur = cur->childs;
+  cur = cur->children;
 
   while (cur != NULL)
     {
@@ -162,7 +162,7 @@ XMLPLF::parse_weather(xmlNodePtr cur)
 void
 XMLPLF::parse_group(xmlNodePtr cur)
 {
-  cur = cur->childs;
+  cur = cur->children;
 
   while (cur != NULL)
     {
@@ -207,7 +207,7 @@ XMLPLF::parse_liquid(xmlNodePtr cur)
 {
   LiquidData liquid;
 
-  cur = cur->childs;
+  cur = cur->children;
 
   while (cur != NULL)
     {
@@ -239,10 +239,10 @@ XMLPLF::parse_background(xmlNodePtr cur)
 void 
 XMLPLF::parse_actions(xmlNodePtr cur)
 {
-  cur = cur->childs;
+  cur = cur->children;
   while (cur != NULL)
     {
-      char* number = (char*)xmlNodeListGetString(doc, cur->childs, 1);
+      char* number = (char*)xmlNodeListGetString(doc, cur->children, 1);
 
       ActionData button((char*)cur->name, StringConverter::to_int(number));
 
@@ -257,12 +257,12 @@ void
 XMLPLF::parse_entrance(xmlNodePtr cur)
 {
   EntranceData entrance;
-  cur = cur->childs;  
+  cur = cur->children;  
   while (cur != NULL)
     {
       if (strcmp((char*)cur->name, "type") == 0)
 	{
-	  char* name = (char*)xmlNodeListGetString(doc, cur->childs, 1); 
+	  char* name = (char*)xmlNodeListGetString(doc, cur->children, 1); 
 	  entrance.type = name;
 	  free(name);
 	}
@@ -272,13 +272,13 @@ XMLPLF::parse_entrance(xmlNodePtr cur)
 	}
       else if (strcmp((char*)cur->name, "release-rate") == 0)
 	{
-	  char* release_rate = (char*)xmlNodeListGetString(doc, cur->childs, 1);
+	  char* release_rate = (char*)xmlNodeListGetString(doc, cur->children, 1);
 	  entrance.release_rate = StringConverter::to_int(release_rate);
 	  free(release_rate);
 	}
       else if (strcmp((char*)cur->name, "direction") == 0)
 	{
-	  char* direction = (char*)xmlNodeListGetString(doc, cur->childs, 1);
+	  char* direction = (char*)xmlNodeListGetString(doc, cur->children, 1);
 
 	  if (strcmp(direction, "left") == 0)
 	    entrance.direction = EntranceData::LEFT;
@@ -302,7 +302,7 @@ void
 XMLPLF::parse_exit(xmlNodePtr cur)
 {
   ExitData exit;
-  cur = cur->childs;
+  cur = cur->children;
   while (cur != NULL)
     {
       if (strcmp((char*)cur->name, "position") == 0)
@@ -322,12 +322,12 @@ XMLPLF::parse_exit(xmlNodePtr cur)
 void
 XMLPLF::parse_global(xmlNodePtr cur)
 {
-  cur = cur->childs;
+  cur = cur->children;
   while (cur != NULL)
     {
       if (strcmp((char*)cur->name, "levelname") == 0)
 	{
-	  char* name = (char*)xmlNodeListGetString(doc, cur->childs, 1);
+	  char* name = (char*)xmlNodeListGetString(doc, cur->children, 1);
 	  char* lang = (char*)xmlGetProp(cur, (xmlChar*)"lang");
 
 	  if (name) {
@@ -342,7 +342,7 @@ XMLPLF::parse_global(xmlNodePtr cur)
 	}
       else if (strcmp((char*)cur->name, "description") == 0)
 	{
-	  char* desc = (char*)xmlNodeListGetString(doc, cur->childs, 1);
+	  char* desc = (char*)xmlNodeListGetString(doc, cur->children, 1);
 	  char* lang = (char*)xmlGetProp(cur, (xmlChar*)"lang");
 
 	  if (desc) {
@@ -357,7 +357,7 @@ XMLPLF::parse_global(xmlNodePtr cur)
 	}
       else if (strcmp((char*)cur->name, "author") == 0)
 	{
-	  char* tmp_author = (char*)xmlNodeListGetString(doc, cur->childs, 1);
+	  char* tmp_author = (char*)xmlNodeListGetString(doc, cur->children, 1);
 	  if (tmp_author) {
 	    author = tmp_author;
 	    free(tmp_author);
@@ -420,7 +420,7 @@ XMLPLF::parse_groundpiece(xmlNodePtr cur)
   else
     std::cout << "XMLPLF: groundtype empty" << std::endl;
 
-  cur = cur->childs;
+  cur = cur->children;
 
   while (cur != NULL)
     {
@@ -445,12 +445,12 @@ void
 XMLPLF::parse_traps(xmlNodePtr cur)
 {
   TrapData trap;
-  cur = cur->childs;
+  cur = cur->children;
   while (cur != NULL)
     {
       if (strcmp((char*)cur->name, "type") == 0)
 	{
-	  char* name = (char*)xmlNodeListGetString(doc, cur->childs, 1);
+	  char* name = (char*)xmlNodeListGetString(doc, cur->children, 1);
 	  if (name)
 	    {
 	      // std::cout << "parse_trap: name = " << name << std::endl;
@@ -472,7 +472,7 @@ void
 XMLPLF::parse_hotspot(xmlNodePtr cur)
 {
   HotspotData hotspot;
-  cur = cur->childs;
+  cur = cur->children;
   while (cur != NULL)
     {
       if (strcmp((char*)cur->name, "surface") == 0)

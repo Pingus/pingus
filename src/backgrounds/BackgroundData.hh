@@ -1,4 +1,4 @@
-// $Id: BackgroundData.hh,v 1.1 2000/09/09 18:11:30 grumbel Exp $
+// $Id: BackgroundData.hh,v 1.2 2000/09/18 12:22:16 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,7 @@
 #define BACKGROUNDDATA_HH
 
 #include <fstream>
-#include <gnome-xml/parser.h>
+#include <libxml/parser.h>
 
 #include "../ResDescriptor.hh"
 #include "../Color.hh"

@@ -1,4 +1,4 @@
-//  $Id: smasher.cc,v 1.10 2000/08/03 10:31:18 grumbel Exp $
+//  $Id: smasher.cc,v 1.11 2000/09/18 12:22:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -84,11 +84,11 @@ Smasher::draw_offset(int x, int y, float s)
   surface->put_screen(pos.x_pos + x, pos.y_pos + y, count);
 }
 
-bool 
+void 
 Smasher::catch_pingu(Pingu* pingu)
 {
-  if (!pingu->is_alive())
-    return false;
+  //if (!pingu->is_alive())
+  //return;
 
   // FIXME: The kill catch much be different from the ausloesungs catch
   if (pingu->get_y() > pos.y_pos + 90 && pingu->get_y() < pos.y_pos + 190) {
@@ -114,11 +114,9 @@ Smasher::catch_pingu(Pingu* pingu)
 	  {
 	    //pingu->set_action(ActionHolder::get_uaction("smashed"));
 	    pingu->set_status((PinguStatus)dead);
-	    return true;
 	  }
       } 
   }
-  return false;
 }
 
 /* EOF */

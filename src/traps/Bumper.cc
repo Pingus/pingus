@@ -1,4 +1,4 @@
-//  $Id: Bumper.cc,v 1.5 2000/08/03 10:31:18 grumbel Exp $
+//  $Id: Bumper.cc,v 1.6 2000/09/18 12:22:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -65,11 +65,11 @@ Bumper::draw_offset(int x, int y, float s)
   surface->put_screen(pos.x_pos + x, pos.y_pos + y, count);
 }
 
-bool 
+void 
 Bumper::catch_pingu(Pingu* pingu)
 {
-  if (!pingu->is_alive())
-    return false;
+  //  if (!pingu->is_alive())
+  //  return;
 
   if (pingu->get_y() > pos.y_pos + 60 && pingu->get_y() < pos.y_pos + 100)
     {
@@ -84,7 +84,6 @@ Bumper::catch_pingu(Pingu* pingu)
 	  pingu->apply_force(CL_Vector((pingu->get_x() - 30)/6, -5));
 	}
     }
-  return false;
 }
 
 /* EOF */

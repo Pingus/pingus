@@ -1,4 +1,4 @@
-//  $Id: XMLhelper.cc,v 1.4 2000/08/28 00:34:39 grumbel Exp $
+//  $Id: XMLhelper.cc,v 1.5 2000/09/18 12:22:15 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -47,10 +47,10 @@ Position
 XMLhelper::parse_position(xmlDocPtr doc, xmlNodePtr cur)
 {
   Position pos;
-  cur = cur->childs;  
+  cur = cur->children;  
   while (cur != NULL)
     {
-      char* ident = (char*)xmlNodeListGetString(doc, cur->childs, 1);
+      char* ident = (char*)xmlNodeListGetString(doc, cur->children, 1);
 
       if (ident)
 	{
@@ -74,7 +74,7 @@ XMLhelper::parse_position(xmlDocPtr doc, xmlNodePtr cur)
 int
 XMLhelper::parse_int(xmlDocPtr doc, xmlNodePtr cur)
 {
-  cur = cur->childs;
+  cur = cur->children;
   
   int number = 999;
   char* number_str = (char*)xmlNodeListGetString(doc, cur, 1);
@@ -90,7 +90,7 @@ XMLhelper::parse_int(xmlDocPtr doc, xmlNodePtr cur)
 float
 XMLhelper::parse_float(xmlDocPtr doc, xmlNodePtr cur)
 {
-  cur = cur->childs;
+  cur = cur->children;
   
   float number = 3.1415927;
   char* number_str = (char*)xmlNodeListGetString(doc, cur, 1);
@@ -107,7 +107,7 @@ Color
 XMLhelper::parse_color(xmlDocPtr doc, xmlNodePtr cur)
 {
   Color color;
-  cur = cur->childs;
+  cur = cur->children;
 
   while (cur != NULL)
     {  
@@ -140,7 +140,7 @@ ResDescriptor
 XMLhelper::parse_surface(xmlDocPtr doc, xmlNodePtr cur)
 {
   ResDescriptor desc;
-  cur = cur->childs;  
+  cur = cur->children;  
   while (cur != NULL)
     {
       char* type = (char*)xmlGetProp(cur, (xmlChar*)"type");
@@ -150,13 +150,13 @@ XMLhelper::parse_surface(xmlDocPtr doc, xmlNodePtr cur)
 	  if (strcmp(type, "file") == 0)
 	    {
 	      desc.type = ResDescriptor::FILE;	 
-	      xmlNodePtr ccur = cur->childs;
+	      xmlNodePtr ccur = cur->children;
 	      desc.type = ResDescriptor::RESOURCE;
 	      while (ccur != NULL)
 		{
 		  if (strcmp((char*)ccur->name, "resource-file") == 0)
 		    {
-		      char* filename = (char*)xmlNodeListGetString(doc, ccur->childs, 1);
+		      char* filename = (char*)xmlNodeListGetString(doc, ccur->children, 1);
 		      if (filename) 
 			{
 			  desc.res_name = filename;
@@ -167,13 +167,13 @@ XMLhelper::parse_surface(xmlDocPtr doc, xmlNodePtr cur)
 	    }
 	  else if (strcmp(type, "datafile") == 0)
 	    {
-	      xmlNodePtr ccur = cur->childs;
+	      xmlNodePtr ccur = cur->children;
 	      desc.type = ResDescriptor::RESOURCE;
 	      while (ccur != NULL)
 		{
 		  if (strcmp((char*)ccur->name, "resource-datafile") == 0)
 		    {
-		      char* datafile = (char*)xmlNodeListGetString(doc, ccur->childs, 1);
+		      char* datafile = (char*)xmlNodeListGetString(doc, ccur->children, 1);
 		      if (datafile) 
 			{
 			  desc.datafile = datafile;
@@ -186,7 +186,7 @@ XMLhelper::parse_surface(xmlDocPtr doc, xmlNodePtr cur)
 		    }
 		  else if (strcmp((char*)ccur->name, "resource-ident") == 0)
 		    {
-		      char* ident = (char*)xmlNodeListGetString(doc, ccur->childs, 1);
+		      char* ident = (char*)xmlNodeListGetString(doc, ccur->children, 1);
 		      if (ident) 
 			{
 			  desc.res_name = ident;
@@ -214,7 +214,7 @@ std::string
 XMLhelper::parse_string(xmlDocPtr doc, xmlNodePtr cur)
 {
   std::string ret_str;
-  cur = cur->childs;
+  cur = cur->children;
 
   char* str = (char*)xmlNodeListGetString(doc, cur, 1);
   if (str) 

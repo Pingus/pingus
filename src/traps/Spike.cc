@@ -1,4 +1,4 @@
-//  $Id: Spike.cc,v 1.4 2000/07/30 01:47:38 grumbel Exp $
+//  $Id: Spike.cc,v 1.5 2000/09/18 12:22:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -62,7 +62,7 @@ Spike::let_move(void)
   }
 }
 
-bool
+void
 Spike::catch_pingu(Pingu* pingu)
 {
   if (!killing) {
@@ -71,17 +71,14 @@ Spike::catch_pingu(Pingu* pingu)
       {
 	counter = 0;
 	killing = true;
-	return true;
       }
   } else {
     if (counter == 3 && pingu->x_pos > pos.x_pos +16 - 12 && pingu->x_pos < pos.x_pos + 16 + 12
 	&& pingu->y_pos > pos.y_pos && pingu->y_pos < pos.y_pos + 32) 
       {
 	pingu->set_status((PinguStatus)dead);
-	return true;
       }
   }  
-  return false;
 }
 
 /* EOF */
