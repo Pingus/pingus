@@ -1,4 +1,4 @@
-#  $Id: configure.ac,v 1.11 2003/04/13 17:29:06 grumbel Exp $
+#  $Id: configure.ac,v 1.12 2003/04/15 13:19:32 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,7 +25,7 @@ CLANLIB_MINOR_VERSION=6
 CLANLIB_PATCH_VERSION=5
 
 dnl Process this file with autoconf to produce a configure script.
-AC_INIT(Pingus, 0.6.0rc2)
+AC_INIT(Pingus, 0.6.0)
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_SRCDIR(src/pingus_main.cxx)
 AM_INIT_AUTOMAKE(dist-bzip2)
@@ -50,7 +50,7 @@ AC_ARG_WITH(clanGL,
 
 if test "x$with_gettext" != "xno"; then
 	dnl -- gettext macros --
-	ALL_LINGUAS="de tr cs" # nl it"
+	ALL_LINGUAS="cs de nl sr tr" #it"
 
 	dnl AM_WITH_NLS
 	dnl AM_LC_MESSAGES
