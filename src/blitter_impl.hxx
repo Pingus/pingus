@@ -1,4 +1,4 @@
-//  $Id: blitter_impl.hxx,v 1.10 2003/04/19 10:23:17 torangan Exp $
+//  $Id: blitter_impl.hxx,v 1.11 2003/06/04 17:34:38 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -180,7 +180,7 @@ struct transform_rot270_flip
 
 template<class TransF>
 inline
-CL_Surface modify(const CL_Surface& sur)
+CL_Surface modify(const CL_Surface& sur, const TransF&)
 {
   CL_SurfaceProvider* prov = sur.get_provider ();
   int pwidth  = prov->get_width();
