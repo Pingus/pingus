@@ -1,4 +1,4 @@
-//  $Id: component.hxx,v 1.11 2002/09/27 11:26:46 torangan Exp $
+//  $Id: component.hxx,v 1.12 2002/09/28 22:24:24 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,61 +24,63 @@
 
 class GraphicContext;
 
-namespace GUI
+namespace GUI 
 {
-  /** A component represents an area which recivies events in the GUI,
-      some people might call it a widget */
-  class Component
-  {
-  private:
 
-  public:
-    Component () { }
+/** A component represents an area which recivies events in the GUI,
+    some people might call it a widget */
+class Component
+{
+private:
+
+public:
+  Component () { }
     
-    virtual void draw (GraphicContext& gc) =0;
-    virtual void update (float delta) { UNUSED_ARG(delta);}
+  virtual void draw (GraphicContext& gc) =0;
+  virtual void update (float delta) { UNUSED_ARG(delta);}
     
-    virtual bool is_at (int x, int y) { UNUSED_ARG(x); UNUSED_ARG(y); return false; }
+  virtual bool is_at (int x, int y) { UNUSED_ARG(x); UNUSED_ARG(y); return false; }
 
-    // Events
-    /** Gets issued once the primary button is pressed */
-    virtual void on_primary_button_press (int x, int y) { UNUSED_ARG(x); UNUSED_ARG(y); }
+  // Events
+  /** Gets issued once the primary button is pressed */
+  virtual void on_primary_button_press (int x, int y) { UNUSED_ARG(x); UNUSED_ARG(y); }
     
-    /** Gets issued once the primary button is released */
-    virtual void on_primary_button_release (int x, int y) { UNUSED_ARG(x); UNUSED_ARG(y); }
+  /** Gets issued once the primary button is released */
+  virtual void on_primary_button_release (int x, int y) { UNUSED_ARG(x); UNUSED_ARG(y); }
 
-    virtual void on_secondary_button_press (int x, int y) { UNUSED_ARG(x); UNUSED_ARG(y); }
-    virtual void on_secondary_button_release (int x, int y) { UNUSED_ARG(x); UNUSED_ARG(y); }
+  virtual void on_secondary_button_press (int x, int y) { UNUSED_ARG(x); UNUSED_ARG(y); }
+  virtual void on_secondary_button_release (int x, int y) { UNUSED_ARG(x); UNUSED_ARG(y); }
 
-    /** Gets emmited when a button is pressed and released over the
-	same component */
-    virtual void on_primary_button_click (int x, int y) { UNUSED_ARG(x); UNUSED_ARG(y); }
+  /** Gets emmited when a button is pressed and released over the
+      same component */
+  virtual void on_primary_button_click (int x, int y) { UNUSED_ARG(x); UNUSED_ARG(y); }
 
-    virtual void on_secondary_button_click (int x, int y) { UNUSED_ARG(x); UNUSED_ARG(y); }
+  virtual void on_secondary_button_click (int x, int y) { UNUSED_ARG(x); UNUSED_ARG(y); }
 
-    /** Emmitted when pointer enters the region of the component */
-    virtual void on_pointer_enter () {}
+  /** Emmitted when pointer enters the region of the component */
+  virtual void on_pointer_enter () {}
 
-    /** Emmitted when pointer leaves the region of the component */
-    virtual void on_pointer_leave () {}
+  /** Emmitted when pointer leaves the region of the component */
+  virtual void on_pointer_leave () {}
 
-    /** Emitted when the pointer moved, x and y are the new pointer
-	coordinates */
-    virtual void on_pointer_move (int x, int y) { UNUSED_ARG(x); UNUSED_ARG(y); }
+  /** Emitted when the pointer moved, x and y are the new pointer
+      coordinates */
+  virtual void on_pointer_move (int x, int y) { UNUSED_ARG(x); UNUSED_ARG(y); }
 
-    // status functions for use in the update() function
-    /** return true if currently pressed */
-    bool is_pressed ();
+  // status functions for use in the update() function
+  /** return true if currently pressed */
+  bool is_pressed ();
 
-    /** true if mouse is currently over, FIXME: these seem to be
-	unimplementable without renaming on_pointer_enter() and wrapp them */
-    bool pointer_over ();
-    
-  private:
-    Component (const Component&);
-    Component& operator= (const Component&); 
-  };
-}
+  /** true if mouse is currently over, FIXME: these seem to be
+      unimplementable without renaming on_pointer_enter() and wrapp them */
+  bool pointer_over ();
+  
+private:
+  Component (const Component&);
+  Component& operator= (const Component&); 
+};
+
+} // namespace GUI
 
 #endif
 

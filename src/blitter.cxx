@@ -1,4 +1,4 @@
-//  $Id: blitter.cxx,v 1.15 2002/09/14 19:06:33 torangan Exp $
+//  $Id: blitter.cxx,v 1.16 2002/09/28 22:24:24 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,6 +32,8 @@
 #include <clocale>
 #include <config.h>
 #include "my_gettext.hxx"
+
+#define COMPILE_WITH_MEMORY_HOLE 0
 
 void
 Blitter::put_surface(CL_Canvas* canvas, const CL_Surface& sur,
@@ -164,9 +166,12 @@ Blitter::put_surface_8bit(CL_Canvas* provider, CL_SurfaceProvider* sprovider,
 	}
     }
 
-  // FIXME: Memory hole
-  //sprovider->unlock();
-  //provider->unlock();  
+#if COMPILE_WITH_MEMORY_HOLE
+#warning "FIXME: Blitter::put_surface_8bit(CL_Canvas* provider, CL_SurfaceProvider* sprovider, int x, int y) contains memory hole"
+#else 
+  sprovider->unlock();
+  provider->unlock();  
+#endif
 }
 
 void
@@ -217,9 +222,12 @@ Blitter::put_surface_32bit(CL_Canvas* canvas, CL_SurfaceProvider* provider,
       
     }
 
-  // FIXME: Memory hole
-  //provider->unlock();
-  //canvas->unlock();
+#if COMPILE_WITH_MEMORY_HOLE
+#warning "FIXME: Blitter::put_surface_32bit(CL_Canvas* canvas, CL_SurfaceProvider* provider, const int x_pos, const int y_pos) contains memory hole"
+#else
+  provider->unlock();
+  canvas->unlock();
+#endif
 }
 
 void
@@ -244,9 +252,13 @@ Blitter::put_alpha_surface(CL_Canvas* provider, CL_SurfaceProvider* sprovider,
   //  assert(sprovider->get_depth() == 8);
   if (sprovider->get_depth() != 8)
     {
-      // FIXME: Memory hole
-      //sprovider->unlock ();
-      //provider->unlock ();
+      // FIXME: memory hole
+#if COMPILE_WITH_MEMORY_HOLE
+#warning "FIXME: Blitter::put_alpha_surface(CL_Canvas* provider, CL_SurfaceProvider* sprovider, int x, int y) contains memory hole"
+#else
+      sprovider->unlock ();
+      provider->unlock ();
+#endif
       PingusError::raise("Image has wrong color depth: " + to_string(sprovider->get_depth()));
     }
   //  assert(provider->get_pixel_format() == RGBA8888);
@@ -286,9 +298,12 @@ Blitter::put_alpha_surface(CL_Canvas* provider, CL_SurfaceProvider* sprovider,
     }
   }
 
-  // FIXME: Memory hole
-  //sprovider->unlock();
-  //provider->unlock();  
+#if COMPILE_WITH_MEMORY_HOLE
+#warning "FIXME: Blitter::put_alpha_surface(CL_Canvas* provider, CL_SurfaceProvider* sprovider, int x, int y) contains memory hole"
+#else
+  sprovider->unlock();
+  provider->unlock();  
+#endif
 }
 
 CL_Canvas*
@@ -300,7 +315,7 @@ Blitter::clear_canvas(CL_Canvas* canvas)
   canvas->lock();
   buffer = static_cast<unsigned char*>(canvas->get_data());
   memset(buffer, 0, sizeof(unsigned char) * canvas->get_pitch() * canvas->get_height());
-  // FIXME: Memory hole
+  // FIXME: memory hole
   //canvas->unlock();
 
   return canvas;
@@ -339,7 +354,7 @@ Blitter::create_canvas(CL_SurfaceProvider* prov)
 	    tbuffer[ti + 3] = sbuffer[si + 2];
 	  }
 	  
-	// -FIXME: Memory hole
+	// -FIXME: memory hole
 	prov->unlock();
 	canvas->unlock();
       }
@@ -468,9 +483,12 @@ Blitter::scale_surface_to_canvas (const CL_Surface& sur, int width, int height)
 	}
     }
 
-  // FIXME: Memory hole
-  //canvas->unlock ();
-  //provider->unlock ();
+#if COMPILE_WITH_MEMORY_HOLE
+#warning "FIXME: Blitter::scale_surface_to_canvas (const CL_Surface& sur, int width, int height) contains memory leak"
+#else
+  canvas->unlock ();
+  provider->unlock ();
+#endif
 
   return canvas;
 }

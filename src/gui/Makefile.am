@@ -18,6 +18,7 @@
 noinst_LIBRARIES = libpingus_gui.a
 
 libpingus_gui_a_SOURCES =       \
+        component.hxx \
 	gui_manager.hxx \
 	gui_manager.cxx \
 	root_gui_manager.hxx \

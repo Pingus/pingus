@@ -1,4 +1,4 @@
-//  $Id: screen_manager.cxx,v 1.16 2002/09/14 19:06:33 torangan Exp $
+//  $Id: screen_manager.cxx,v 1.17 2002/09/28 22:24:24 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,6 +27,7 @@
 #include "screen_manager.hxx"
 #include "path_manager.hxx"
 #include "input_debug_screen.hxx"
+#include "fade_out.hxx"
 
 ScreenManager* ScreenManager::instance_ = 0;
 
@@ -57,7 +58,6 @@ ScreenManager::display ()
   // Main loop for the menu
   while (!screens.empty())
     {
-      Screen* current_screen = screens.back ().first;
       float time_delta = delta_manager.getset ();
       
       if (time_delta > 1.0)
@@ -76,15 +76,14 @@ ScreenManager::display ()
       // Fill the delta with values
       GameDelta delta (time_delta, input_controller.get_events ());
 
-      last_screen = current_screen;
+      last_screen = get_current_screen();
 
       // Most likly the screen will get changed in this update call
-      current_screen->update (delta);    
+      get_current_screen()->update (delta);    
 
+      // Last screen has poped, so we are going to end here
       if (screens.empty ())
 	continue;
-
-      current_screen = screens.back ().first;
 
       if (cached_action == pop)
 	{
@@ -97,15 +96,16 @@ ScreenManager::display ()
 	  cached_action = none;
 	}
       
-      // skip draw if the screen changed
-      if (last_screen == current_screen)
+      // skip draw if the screen changed to avoid glitches
+      if (last_screen == get_current_screen())
       	{
-	  current_screen->draw (display_gc);
+	  get_current_screen()->draw (display_gc);
 	  Display::flip_display ();
 	}
       else
 	{
-	  //fade_over (last_screen, current_screen);
+	  std::cout << "ScreenManager: fading screens" << std::endl;
+	  fade_over (last_screen, get_current_screen());
 	}
 
       // Stupid hack to make this thing take less CPU
@@ -120,6 +120,12 @@ ScreenManager::display ()
 	}
       delete_screens.clear ();
     } 
+}
+
+Screen*
+ScreenManager::get_current_screen()
+{
+  return screens.back ().first;
 }
 
 ScreenManager*
@@ -197,6 +203,9 @@ ScreenManager::real_pop_screen ()
 void
 ScreenManager::fade_over (Screen* old_screen, Screen* new_screen)
 {
+  FadeOut::fade_to_black();
+
+#if 0
   DeltaManager delta_manager;
   float passed_time = 0;
 
@@ -229,6 +238,7 @@ ScreenManager::fade_over (Screen* old_screen, Screen* new_screen)
       Display::flip_display ();
       CL_System::keep_alive ();
     }
+#endif 
 }
 
 /* EOF */

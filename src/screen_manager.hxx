@@ -1,4 +1,4 @@
-//  $Id: screen_manager.hxx,v 1.12 2002/09/27 11:26:44 torangan Exp $
+//  $Id: screen_manager.hxx,v 1.13 2002/09/28 22:24:24 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -76,6 +76,10 @@ private:
 
   /** FadeOver test*/
   void fade_over (Screen* old_screen, Screen* new_screen);
+
+  /** @return a pointer to the current Screen */
+  Screen* get_current_screen();
+
 public:  
   static ScreenManager* instance ();
   
