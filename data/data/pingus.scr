@@ -82,9 +82,15 @@ section Other
 	brick_right   = ../images/pingus/brick_right.png     (type=surface, x=0, y=0, width=16, height=2);
 	brick_left    = ../images/pingus/brick_left.png      (type=surface, x=0, y=0, width=16, height=2);
 
-	bash_radius   = ../images/pingus/bash_radius.png (type=surface, x=0, y=0, width=32, height=32);
-	digger_radius = ../images/pingus/digger_radius.png (type=surface, x=0, y=0, width=32, height=16);
+	bash_radius       = ../images/pingus/bash_radius.png (type=surface, x=0, y=0, width=32, height=32);
+	bash_radius_gfx   = ../images/pingus/bash_radius_gfx.png (type=surface, x=0, y=0, width=32, height=32);
+
+	digger_radius     = ../images/pingus/digger_radius.png (type=surface, x=0, y=0, width=32, height=16);
+	digger_radius_gfx = ../images/pingus/digger_radius_gfx.png (type=surface, x=0, y=0, width=32, height=16);
+
 	bomber_radius = ../images/pingus/bomber_radius.png (type=surface, x=0, y=0, width=64, height=64);
+	bomber_radius_gfx = ../images/pingus/bomber_radius_gfx.png (type=surface, x=0, y=0, width=64, height=64);
+
 	explo0        = ../images/pingus/explo0.png         (type=surface, x=0, y=0, width=64, height=64);
 	explo1        = ../images/pingus/explo1.png         (type=surface, x=0, y=0, width=64, height=64);
 	explo2        = ../images/pingus/explo2.png         (type=surface, x=0, y=0, width=64, height=64);

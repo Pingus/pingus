@@ -39,6 +39,7 @@ section misc
         metalplate_horiz = ../images/groundpieces/solid/misc/metalplate_horiz.png (type=surface);
         metalplate_large = ../images/groundpieces/solid/misc/metalplate_large.png (type=surface);
         metalplate_small = ../images/groundpieces/solid/misc/metalplate_small.png (type=surface);
+        metalplate_vert = ../images/groundpieces/solid/misc/metalplate_vert.png (type=surface);
 }
 
 section rock

@@ -1,4 +1,4 @@
-//  $Id: miner.hh,v 1.11 2001/08/16 17:46:51 grumbel Exp $
+//  $Id: miner.hh,v 1.12 2002/02/17 23:49:32 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,6 +28,7 @@ class Miner : public PinguAction
 {
 private:  
   CL_Surface miner_radius;
+  CL_Surface miner_radius_gfx;
   Sprite sprite;
   int slow_count;
 public:

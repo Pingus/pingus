@@ -49,6 +49,21 @@ Major Items:
   - all docu should be included in the tarball (source code docu might
     only be on the webpage due to space issues)
 
+- seperate colmap and gfx remover surfaces for digger, miner, etc. would be nice
+  the current ones don't work very good since the remove path is too smooth
+  - keep_trans,alpha blitters would also be very nice (darken the border of a digging path or something like that)
+
+- diggers leave a small pixel barier when finished with there digging,
+  which can be abused as a step
+
+- check for z-pos on groundpieces, which don't make much sense
+
+- replace all '9000' time levels with '-1' time or correct time
+
+- fix author in all levels
+
+- update email addrs and missing author fields in level files
+
 - floater and jumper don't work together
 
 - hint system via herring or flower (it should show the path to walk)
@@ -107,11 +122,9 @@ Major Items:
 
 - pingus can walk over slime (hellmouth2)
 
-- diggers can dead-lock
+- diggers can dead-lock and not start digging
 
 - show floater and climber in the 'cursor'
-
-- groundpiece sorting in the editor is causing throuble, see level9
 
 - insertion of surface backgrounds in the editor
 

@@ -1,4 +1,4 @@
-#  $Id: configure.in,v 1.55 2002/02/14 22:23:51 grumbel Exp $
+#  $Id: configure.in,v 1.56 2002/02/17 23:49:28 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -62,7 +62,7 @@ AC_ARG_WITH(gettext,
 	[  --without-gettext       disable support for multiple languages])
 
 AC_ARG_WITH(clanGL,
-        [  --with-clanGL        disable OpenGL support])
+        [  --with-clanGL        enable OpenGL support])
 
 if test "x$with_gettext" != "xno"; then
 	dnl -- gettext macros --

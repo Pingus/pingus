@@ -26,7 +26,6 @@ section desert
         bigblock-broken3 = ../images/groundpieces/ground/desert/bigblock-broken3.png (type=surface);
         bigdune1 = ../images/groundpieces/ground/desert/bigdune1.png (type=surface);
         bigprickpiece = ../images/groundpieces/ground/desert/bigprickpiece.png (type=surface);
-        bigsand = ../images/groundpieces/ground/desert/bigsand.jpg (type=surface);
         bigsand = ../images/groundpieces/ground/desert/bigsand.png (type=surface);
         blobdune = ../images/groundpieces/ground/desert/blobdune.png (type=surface);
         column_piece1 = ../images/groundpieces/ground/desert/column_piece1.png (type=surface);

@@ -2,13 +2,32 @@
 --debug -e main -s
 !#
 
+;;   Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
+;;     
+;;   This program is free software; you can redistribute it and/or modify
+;;   it under the terms of the GNU General Public License as published by
+;;   the Free Software Foundation; either version 2 of the License, or
+;;   (at your option) any later version.
+;;
+;;   This program is distributed in the hope that it will be useful,
+;;   but WITHOUT ANY WARRANTY; without even the implied warranty of
+;;   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;;   GNU General Public License for more details.
+;;
+;;   You should have received a copy of the GNU General Public License
+;;   along with this program; if not, write to the Free Software
+;;   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+
+
 ;; Helper Application to view level information
 (use-modules (xml expat)
 	     (xml mixp)
-	     (ice-9 format))
+	     (ice-9 format)
+	     (oop goops)
+	     (ice-9 getopt-long))
 
-(use-modules (oop goops))
-
+(define *short-output* #f)
+(define *verbose-output* #f)
 
 (define (file->string filename)
   (let ((port (open-input-file filename))
@@ -102,8 +121,7 @@
   (cond ((not (null? tree))  
 	 (let ((node (car tree)))
 	   (case (car node)
-	     ((element) 
-	      
+	     ((element)	      
 	      (case (string->symbol (caadr node))
 		((global) (plf:parse-global plf (cdr node)))
 		((groundpiece) #f);(println "-groundpiece-: " (caadr node)))
@@ -121,22 +139,74 @@
 
 ;; (type element content ...)
 
+(define (print-usage)
+  (println "Usage: pingus-level [OPTIONS]... [LEVELFILES]...")
+  (println "")
+  (println "  --verbose    Verbose output")
+  (println "  --short      Short one-line output for easy parsing. The format is:")
+  (println "               filename:playable:difficulty:time")
+  (println "  --help       Print this help")
+  (newline)
+  (println "Examples:")  
+  (println "~~~~~~~~~")
+  (println "  % pingus-level --short somelevel.xml")
+  (println "  % pingus-level --verbose somelevel.xml")
+  (newline))
+
+(define grammar '((verbose (required? #f)
+			   (single-char #\v)
+			   (value #f))
+		  (short (required? #f)
+			(single-char #\s)
+			(value #f))
+		  (help (required? #f)
+			(single-char #\h)
+			(value #f))))
+
+(define-method (print-short-info (plf <pingus-level>))
+  (println (filename plf) ":" (playable plf) ":" (difficulty plf) ":" (time plf)))
+
+
+(define-method (print-long-info (plf <pingus-level>))
+  (println "---- Filename:   " (filename plf) " ----")
+  (println "Author:     " (author plf))
+  (println "Difficulty: " (difficulty plf))
+  (println "Playable:   " (playable plf))
+  (println "Time:       " (time plf))
+  (println "Comment:    " (comment plf))
+  (println))
+
+(define (print-level-info fname)
+  (catch #t
+	 (lambda ()
+	   (let ((plf (file->pingus-level fname)))
+	     (cond (*short-output*
+		    (print-short-info plf))
+		   (else
+		    (print-long-info plf)))))
+	 (lambda stuff
+	   (println fname ":error: " stuff))))
+
 (define (main args)
-  (for-each 
-   (lambda (fname)
-     (catch #t
-	    (lambda ()
-	      (let ((plf (file->pingus-level fname)))
-		(println "---- Filename:   " (filename plf) " ----")
-		(println "Author:     " (author plf))
-		(println "Difficulty: " (difficulty plf))
-		(println "Playable:   " (playable plf))
-		(println "Time:       " (time plf))
-		(println "Comment:    " (comment plf))
-		(println)
-		))
-	    (lambda stuff
-	      (println fname ":error: " stuff))))
-   (cdr args)))
+  (catch 'misc-error
+	 (lambda ()
+	   (let ((result (getopt-long args grammar)))
+	     (cond ((assoc-ref result 'verbose)
+		    (set! *verbose* #t)))
+	     (cond ((assoc-ref result 'short)
+		    (set! *short-output* #t)))
+	     (cond ((assoc-ref result 'help)
+		    (print-usage)
+		    (exit 0)))
+	     (cond ((not (null? (assoc-ref result '())))
+		    (for-each print-level-info
+			      (assoc-ref result '())))
+		   (else
+		    (println "Error: You must supply a level-filename. Use --help for more infos.")
+		    (exit 1)
+		    ))))
+	 (lambda err
+	   (println "Error while parsing command line args: " err)
+	   (exit 1))))
 
   ;; EOF ;;

@@ -1,4 +1,4 @@
-// $Id: miner.cc,v 1.28 2001/12/02 11:02:13 torangan Exp $
+// $Id: miner.cc,v 1.29 2002/02/17 23:49:32 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,6 +33,7 @@ void
 Miner::init(void)
 {
   miner_radius = PingusResource::load_surface ("Other/bash_radius", "pingus");
+  miner_radius_gfx = PingusResource::load_surface ("Other/bash_radius_gfx", "pingus");
   sprite = Sprite ("Pingus/miner0", "pingus", 20.0f);
   sprite.set_align_center_bottom ();
   slow_count = 0;
@@ -57,7 +58,7 @@ Miner::update(float delta)
 	  pingu->get_world()->get_colmap()->remove(miner_radius.get_provider(), 
 						   pingu->get_x () - 16 + pingu->direction, 
 						   pingu->get_y () - 31);
-	  pingu->get_world()->get_gfx_map()->remove(miner_radius.get_provider(), 
+	  pingu->get_world()->get_gfx_map()->remove(miner_radius_gfx.get_provider(), 
 						    pingu->get_x () - 16 + pingu->direction, 
 						    pingu->get_y () - 31);
 	}
@@ -71,7 +72,7 @@ Miner::update(float delta)
       pingu->get_world()->get_colmap()->remove(miner_radius, 
 					       pingu->get_x () - 16 + pingu->direction, 
 					       pingu->get_y () - 29);
-      pingu->get_world()->get_gfx_map()->remove(miner_radius,
+      pingu->get_world()->get_gfx_map()->remove(miner_radius_gfx,
 						pingu->get_x () - 16 + pingu->direction, 
 						pingu->get_y () - 29);
       is_finished = true;
@@ -81,7 +82,7 @@ Miner::update(float delta)
       PingusSound::play_sound("sounds/chink.wav");
       pingu->get_world()->get_colmap()->remove(miner_radius, pingu->get_x () - 16 + pingu->direction, 
 					       pingu->get_y () - 31);
-      pingu->get_world()->get_gfx_map()->remove(miner_radius, pingu->get_x () - 16 + pingu->direction, 
+      pingu->get_world()->get_gfx_map()->remove(miner_radius_gfx, pingu->get_x () - 16 + pingu->direction, 
 						pingu->get_y () - 31);
       is_finished = true;
     }

@@ -1,4 +1,4 @@
-//  $Id: bomber.cc,v 1.28 2001/12/02 11:02:13 torangan Exp $
+//  $Id: bomber.cc,v 1.29 2002/02/17 23:49:31 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,6 +30,7 @@
 
 bool Bomber::static_surface_loaded = false;
 CL_Surface Bomber::bomber_radius;
+CL_Surface Bomber::bomber_radius_gfx;
 
 Bomber::Bomber()
 {
@@ -46,6 +47,7 @@ Bomber::init()
     {
       static_surface_loaded = true;
       bomber_radius = PingusResource::load_surface ("Other/bomber_radius", "pingus");
+      bomber_radius_gfx = PingusResource::load_surface ("Other/bomber_radius_gfx", "pingus");
     }
 
   explo_surf = PingusResource::load_surface ("Other/explo" + to_string (pingu->get_owner ()), "pingus");
@@ -92,7 +94,7 @@ Bomber::update(float delta)
       pingu->get_world()->get_colmap()->remove(bomber_radius,
 					       pingu->get_x () - (bomber_radius.get_width()/2),
 					       pingu->get_y () - 16 - (bomber_radius.get_width()/2));
-      pingu->get_world()->get_gfx_map()->remove(bomber_radius, 
+      pingu->get_world()->get_gfx_map()->remove(bomber_radius_gfx, 
 						pingu->get_x () - (bomber_radius.get_width()/2),
 						pingu->get_y () - 16 - (bomber_radius.get_width()/2));
       
