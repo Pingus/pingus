@@ -1,0 +1,56 @@
+Maintaining Pingus
+==================
+
+Source Releases
+~~~~~~~~~~~~~~~
+
+Source releases can be created with a call to 
+
+ % make dist-bzip2
+
+that will generate a tarball called pingus-VERSION.tar.bz2, a call to
+
+ % make dist-gzip
+
+will generated a gzipped one and a call to:
+
+ % make dist-zip
+
+should generate a zipped one for the Windows people.
+
+One has to be carefull to to check the created tarball if it contains
+all graphics, etc. a call to:
+
+ % make distcheck
+
+might help, but might not be sufficient, further testing might be
+needed (FIXME: should be automatised).
+
+
+Binary Releases
+~~~~~~~~~~~~~~~
+
+Binary release are different, they are basically build by a
+
+ % make install prefix=/tmp/pingus/
+ % cp -v pingus.static /tmp/pingus/usr/local/games/pingus
+
+and by adding a start script, using the Loki Installer might also be a
+good idea, even so I tend to prefer tarballs, it automatically creates
+KDE and Gnome links and such.
+
+FIXME: a make-target should automatise this.
+FIXME: Binary Release should include source code (source is small, so
+it should be shipped together with the binary)
+FIXME: How to build windows binaries?
+
+
+What to Release?
+~~~~~~~~~~~~~~~~
+
+Source Release as .zip and .tar.bz2, .tar.gz shouldn't be needed.
+Binary Release as tar.bz2 for GNU/Linux and .zip for Windows, some
+people might prefer a clickable .exe.
+
+
+# EOF #
