@@ -1,4 +1,4 @@
-// $Id: miner.cc,v 1.24 2001/08/05 23:50:14 grumbel Exp $
+// $Id: miner.cc,v 1.25 2001/08/12 18:36:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,8 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "../PinguMap.hh"
+#include "../ColMap.hh"
 #include "../World.hh"
 #include "../PingusResource.hh"
 #include "../PingusSound.hh"

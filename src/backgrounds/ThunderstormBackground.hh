@@ -1,4 +1,4 @@
-//  $Id: ThunderstormBackground.hh,v 1.8 2001/04/27 20:44:37 grumbel Exp $
+//  $Id: ThunderstormBackground.hh,v 1.9 2001/08/12 18:36:41 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,11 +24,10 @@
 #include <ClanLib/display.h>
 #include <vector>
 #include "../boost/smart_ptr.hpp"
-#include "Background.hh"
 #include "SurfaceBackground.hh"
 #include "ThunderstormBackgroundData.hh"
 
-class ThunderstormBackground : public Background,
+class ThunderstormBackground : public WorldObj,
 			       public ThunderstormBackgroundData
 {
 private:
@@ -42,7 +41,7 @@ public:
   ///
   virtual ~ThunderstormBackground();
   ///
-  static boost::shared_ptr<ThunderstormBackground> create (boost::shared_ptr<BackgroundData>);
+  //static boost::shared_ptr<ThunderstormBackground> create (boost::shared_ptr<BackgroundData>);
   ///
   void update(float delta);
   ///

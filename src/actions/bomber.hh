@@ -1,4 +1,4 @@
-//  $Id: bomber.hh,v 1.15 2001/08/05 21:20:53 grumbel Exp $
+//  $Id: bomber.hh,v 1.16 2001/08/12 18:36:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,6 @@
 #define BOMBER_HH
 
 #include "../PinguAction.hh"
-
 
 /** An action with lets the Pingu explode. After the explosion the the
     Pingu leaves a hole inside the ground. */

@@ -1,4 +1,4 @@
-// $Id: ObjectSelector.hh,v 1.21 2001/08/07 19:55:22 grumbel Exp $
+// $Id: ObjectSelector.hh,v 1.22 2001/08/12 18:36:41 grumbel Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -45,41 +45,25 @@ private:
   std::map<std::string, bool> data_loaded;
   
 public:
-  ///
   ObjectSelector();
-  ///
   ~ObjectSelector();
   
-  ///
   std::list<boost::shared_ptr<EditorObj> > select_obj_type();
-  ///
   std::string select_surface(std::vector<surface_obj>& sur_list);
-  ///
   std::string select_surface(std::string resource_file);
-  ///
   int    read_key();
-  ///
   std::string read_string(std::string, std::string);
   
-  ///
   std::list<boost::shared_ptr<EditorObj> > get_obj(int, int);
-  ///
   std::list<boost::shared_ptr<EditorObj> > get_trap();
-  ///
   std::list<boost::shared_ptr<EditorObj> > get_groundpiece(GroundpieceData::Type type);
-  ///
   std::list<boost::shared_ptr<EditorObj> > get_hotspot();
-  ///
   std::list<boost::shared_ptr<EditorObj> > get_entrance();
-  ///
   std::list<boost::shared_ptr<EditorObj> > get_exit();
-  /// 
   std::list<boost::shared_ptr<EditorObj> > get_liquid();
-  ///
   std::list<boost::shared_ptr<EditorObj> > get_weather();
-  ///
   std::list<boost::shared_ptr<EditorObj> > get_worldobj();
-  ///
+
   std::string get_background();
 };
 

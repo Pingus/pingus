@@ -1,4 +1,4 @@
-//  $Id: basher.cc,v 1.24 2001/08/02 21:51:03 grumbel Exp $
+//  $Id: basher.cc,v 1.25 2001/08/12 18:36:41 grumbel Exp $
 //
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -16,6 +16,8 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "../ColMap.hh"
+#include "../PinguMap.hh"
 #include "../World.hh"
 #include "../PingusResource.hh"
 #include "../particles/GroundParticle.hh"
@@ -33,11 +35,8 @@ void
 Basher::init(void)
 {
   bash_radius = PingusResource::load_surface ("Other/bash_radius", "pingus");
-  
   sprite = Sprite (PingusResource::load_surface ("Pingus/basher0", "pingus"));
-
   sprite.set_align_center_bottom ();
-
   first_bash = true;
 }
 

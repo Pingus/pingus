@@ -1,4 +1,4 @@
-//  $Id: XMLPLF.cc,v 1.35 2001/08/10 10:56:13 grumbel Exp $
+//  $Id: XMLPLF.cc,v 1.36 2001/08/12 18:36:40 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -263,7 +263,7 @@ void
 XMLPLF::parse_background(xmlNodePtr cur)
 {
   // The allocated objects are delete'd in the destructor
-  backgrounds.push_back(BackgroundData::create (doc, cur));
+  //FIXME: Repair me backgrounds.push_back(BackgroundData::create (doc, cur));
 }
 
 void 

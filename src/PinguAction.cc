@@ -1,4 +1,4 @@
-//  $Id: PinguAction.cc,v 1.18 2001/08/09 08:56:44 grumbel Exp $
+//  $Id: PinguAction.cc,v 1.19 2001/08/12 18:36:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <cassert>
+#include "ColMap.hh"
 #include "PingusError.hh"
 #include "World.hh"
 #include "PingusResource.hh"

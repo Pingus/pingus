@@ -1,4 +1,4 @@
-//  $Id: Editor.cc,v 1.31 2001/08/11 18:53:39 grumbel Exp $
+//  $Id: Editor.cc,v 1.32 2001/08/12 18:36:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -435,7 +435,8 @@ void
 Editor::interactive_move_object()
 {
   CL_System::keep_alive();
-  
+
+  object_manager->drag_current_objs ();
   CL_Vector old_pos (view->screen_to_world(CL_Vector(CL_Mouse::get_x(), CL_Mouse::get_y())));
   while (CL_Mouse::left_pressed()) 
     {
@@ -448,6 +449,7 @@ Editor::interactive_move_object()
       Display::flip_display (true);
       CL_System::keep_alive();
     }
+  object_manager->drop_current_objs ();
 }
 
 void

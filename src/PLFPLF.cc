@@ -1,4 +1,4 @@
-//  $Id: PLFPLF.cc,v 1.11 2001/08/10 10:56:13 grumbel Exp $
+//  $Id: PLFPLF.cc,v 1.12 2001/08/12 18:36:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -316,7 +316,7 @@ PLFPLF::set_group_start(string groupname)
   } else if (groupname == "background") {
     current_group = PLFPLF::BACKGROUND;
     sur_background = boost::shared_ptr<SurfaceBackgroundData>(new SurfaceBackgroundData());
-    backgrounds.push_back(sur_background);
+    //backgrounds.push_back(sur_background);
   } else if (groupname == "ground") {
     current_group = PLFPLF::GROUND;
   } else if (groupname == "music") {

@@ -1,4 +1,4 @@
-//  $Id: View.cc,v 1.12 2001/04/12 19:47:09 grumbel Exp $
+//  $Id: View.cc,v 1.13 2001/08/12 18:36:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #include <cassert>
 #include <ClanLib/core.h>
 
+#include "Pingu.hh"
 #include "MouseController.hh"
 #include "View.hh"
 #include "globals.hh"

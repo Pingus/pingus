@@ -1,4 +1,4 @@
-//  $Id: Exit.cc,v 1.25 2001/08/10 10:56:13 grumbel Exp $
+//  $Id: Exit.cc,v 1.26 2001/08/12 18:36:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,7 @@
 
 #include <cassert>
 
+#include "ColMap.hh"
 #include "World.hh"
 #include "globals.hh"
 #include "PingusResource.hh"

@@ -1,4 +1,4 @@
-//  $Id: World.hh,v 1.27 2001/08/10 10:56:13 grumbel Exp $
+//  $Id: World.hh,v 1.28 2001/08/12 18:36:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,35 +21,23 @@
 #define WORLD_HH
 
 #include <ClanLib/core.h>
-#include <vector>
-#include <iterator>
 #include "boost/smart_ptr.hpp"
 
-#include "WorldObj.hh"
-#include "Pingu.hh"
-#include "backgrounds/Background.hh"
-#include "ColMap.hh"
-#include "Entrance.hh"
-#include "Exit.hh"
-#include "Hotspot.hh"
-#include "Liquid.hh"
-#include "Trap.hh"
-#include "particles/ParticleHolder.hh"
-#include "PinguMap.hh"
-
 // Forward declarations
-class PLF;
-class WorldObj;
-class Exit;
-class Entrance;
-class Liquid;
-class Hotspot;
-class PinguHolder;
-class Trap;
-class ParticleHolder;
 class ActionHolder;
-class Background;
+class Entrance;
+class Exit;
+class Hotspot;
+class Liquid;
+class PLF;
+class ParticleHolder;
+class PinguHolder;
+class PinguMap;
+class Pingu;
+class Trap;
 class View;
+class ColMap;
+class WorldObj;
 
 class WorldImpl;
 
@@ -79,7 +67,6 @@ private:
   /// The time you have to finish a level
   int exit_time;
 
-  std::vector<boost::shared_ptr<Background> > backgrounds;
   std::vector<boost::shared_ptr<WorldObj> > world_obj_bg;
   std::vector<boost::shared_ptr<WorldObj> > world_obj_fg;
   std::vector<boost::shared_ptr<Exit> >     exits;
@@ -93,7 +80,6 @@ private:
   boost::shared_ptr<PLF>  plf;
   boost::shared_ptr<View> view;
 
-  void    init_background (void);
   void    init_worldobjs (void);
   void    init_map (void);
 

@@ -1,4 +1,4 @@
-//  $Id: SurfaceBackgroundData.cc,v 1.6 2001/04/27 20:44:37 grumbel Exp $
+//  $Id: SurfaceBackgroundData.cc,v 1.7 2001/08/12 18:36:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,7 +17,9 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "../editor/EditorObj.hh"
 #include "../XMLhelper.hh"
+#include "SurfaceBackground.hh"
 #include "SurfaceBackgroundData.hh"
 
 SurfaceBackgroundData::SurfaceBackgroundData()
@@ -110,6 +112,19 @@ SurfaceBackgroundData::create(xmlDocPtr doc, xmlNodePtr cur)
       cur = cur->next;
     }      
   return background;
+}
+
+boost::shared_ptr<WorldObj> 
+SurfaceBackgroundData::create_WorldObj()
+{
+  return boost::shared_ptr<WorldObj> (new SurfaceBackground (*this));
+}
+
+EditorObjLst 
+SurfaceBackgroundData::create_EditorObj()
+{
+  std::cout << "SurfaceBackgroundData::create_EditorObj(): not implemented" << std::endl;
+  return EditorObjLst ();
 }
 
 /* EOF */

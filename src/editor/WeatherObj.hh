@@ -1,4 +1,4 @@
-//  $Id: WeatherObj.hh,v 1.4 2001/08/11 18:53:39 grumbel Exp $
+//  $Id: WeatherObj.hh,v 1.5 2001/08/12 18:36:41 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,10 +29,15 @@ class WeatherObj
 {
 private:
   CL_Vector pos;
+  bool dragging;
 public:
    WeatherObj(const WeatherData& data);
   virtual ~WeatherObj();
 
+  virtual void drag ();
+  virtual void drop ();
+
+  virtual void draw (boost::dummy_ptr<EditorView> view);
   virtual void write_xml(std::ofstream* xml);
   virtual boost::shared_ptr<EditorObj> duplicate();
 };

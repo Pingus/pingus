@@ -1,4 +1,4 @@
-//  $Id: Pingu.cc,v 1.63 2001/08/10 10:56:13 grumbel Exp $
+//  $Id: Pingu.cc,v 1.64 2001/08/12 18:36:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,6 +37,7 @@ using namespace boost;
 #include "PingusSound.hh"
 #include "algo.hh"
 #include "actions/smashed.hh"
+#include "ColMap.hh"
 #include "FVec.hh"
 
 const float deadly_velocity = 20.0;

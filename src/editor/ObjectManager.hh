@@ -1,4 +1,4 @@
-//  $Id: ObjectManager.hh,v 1.19 2001/08/11 18:53:39 grumbel Exp $
+//  $Id: ObjectManager.hh,v 1.20 2001/08/12 18:36:41 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -40,7 +40,6 @@ private:
   std::map<std::string, std::string> description;
   std::map<std::string, std::string> levelname;
   std::vector<ActionData> actions;
-  std::vector<boost::shared_ptr<BackgroundData> > backgrounds;
 
   int    number_to_save;
   int    number_of_pingus;
@@ -110,11 +109,11 @@ public:
       multiple objects are selected return 0 */
   boost::shared_ptr<EditorObj> get_current_obj();
   
-  ///
   void move_current_objs(float x, float y);
-  ///
+  void drag_current_objs ();
+  void drop_current_objs ();
+
   void add_to_selection(boost::shared_ptr<EditorObj> obj);
-  ///
   void add_to_selection(std::list<boost::shared_ptr<EditorObj> > objs);
 
   ///

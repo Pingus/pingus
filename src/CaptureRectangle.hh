@@ -1,4 +1,4 @@
-//  $Id: CaptureRectangle.hh,v 1.8 2001/08/02 21:51:02 grumbel Exp $
+//  $Id: CaptureRectangle.hh,v 1.9 2001/08/12 18:36:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,9 +21,10 @@
 #define CAPTURERECTANGLE_HH
 
 #include <ClanLib/core.h>
+#include "Sprite.hh"
 #include "boost/smart_ptr.hpp"
 
-class Sprite;
+class PinguAction;
 
 /** */
 class CaptureRectangle

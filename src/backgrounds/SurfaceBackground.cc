@@ -1,4 +1,4 @@
-//  $Id: SurfaceBackground.cc,v 1.12 2001/08/04 17:39:13 grumbel Exp $
+//  $Id: SurfaceBackground.cc,v 1.13 2001/08/12 18:36:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,13 +31,7 @@
 
 #include "SurfaceBackground.hh"
 
-SurfaceBackground::SurfaceBackground()
-{
-  desc.datafile = "textures";
-  desc.res_name = "Textures/default";
-}
-
-SurfaceBackground::SurfaceBackground(SurfaceBackgroundData* bg_data)
+SurfaceBackground::SurfaceBackground(const SurfaceBackgroundData& bg_data)
 {
   Timer timer;
 
@@ -48,24 +42,24 @@ SurfaceBackground::SurfaceBackground(SurfaceBackgroundData* bg_data)
   
   surface_need_deletion = false;
 
-  if (bg_data->color.alpha > 1.0) 
+  if (bg_data.color.alpha > 1.0) 
     std::cout << "Background: Warning dim larger than 1.0 are no longer supported" << std::endl;
   
   // Testing animatied backgrounds...
-  /*std::cout << "Res: " << bg_data->desc.res_name << std::endl
-    << "file: " << bg_data->desc.datafile << std::endl;*/
+  /*std::cout << "Res: " << bg_data.desc.res_name << std::endl
+    << "file: " << bg_data.desc.datafile << std::endl;*/
 
-  if (background_manipulation_enabled && bg_data->color.alpha != 0.0)
+  if (background_manipulation_enabled && bg_data.color.alpha != 0.0)
     {
       std::cout << "SurfaceBackground:: Manipulating background" << std::endl;
       // FIXME: This is extremly buggy and it will crash, no idea why....
-      CL_Surface source_surface(PingusResource::load_surface(bg_data->desc));
+      CL_Surface source_surface(PingusResource::load_surface(bg_data.desc));
       
       //CL_Canvas* canvas = Blitter::create_canvas(source_surface);
       //	  canvas->fill_rect(0, 0, 
 			    //			    canvas->get_width(), canvas->get_height(),
-      //			    bg_data->color.red, bg_data->color.green, bg_data->color.blue, 
-      //			    bg_data->color.alpha);
+      //			    bg_data.color.red, bg_data.color.green, bg_data.color.blue, 
+      //			    bg_data.color.alpha);
       
       // FIXME: Sat Jul 21 21:57:15 2001
       std::cout << "BUG: Stuff removed because of linker error" << std::endl;
@@ -73,21 +67,21 @@ SurfaceBackground::SurfaceBackground(SurfaceBackgroundData* bg_data)
     }
   else
     {
-      bg_surface = PingusResource::load_surface(bg_data->desc);
+      bg_surface = PingusResource::load_surface(bg_data.desc);
     }
 
   //bg_surface = CAImageManipulation::changeHSV(bg_surface, 150, 100, 0);
   counter.set_size(bg_surface.get_num_frames());
   counter.set_speed(1.0);
 
-  stretch_x = bg_data->stretch_x;
-  stretch_y = bg_data->stretch_y;
+  stretch_x = bg_data.stretch_x;
+  stretch_y = bg_data.stretch_y;
 
-  scroll_x = bg_data->scroll_x;
-  scroll_y = bg_data->scroll_y;
+  scroll_x = bg_data.scroll_x;
+  scroll_y = bg_data.scroll_y;
 
-  para_x = bg_data->para_x;
-  para_y = bg_data->para_y;
+  para_x = bg_data.para_x;
+  para_y = bg_data.para_y;
 
   scroll_ox = 0;
   scroll_oy = 0;
@@ -117,13 +111,13 @@ SurfaceBackground::~SurfaceBackground()
   */
 }
 
-///
+/*
 boost::shared_ptr<SurfaceBackground>
 SurfaceBackground::create (boost::shared_ptr<BackgroundData> arg_data)
 {
   SurfaceBackgroundData* data = dynamic_cast<SurfaceBackgroundData*>(arg_data.get());
   return boost::shared_ptr<SurfaceBackground>(new SurfaceBackground (data));
-}
+}*/
 
 /*
 void
@@ -131,7 +125,7 @@ SurfaceBackground::load (SurfaceBackgroundData bg_data)
 {
   surface_need_deletion = false;
 
-  if (bg_data->color.alpha > 1.0) 
+  if (bg_data.color.alpha > 1.0) 
     std::cout << "Background: Warning dim larger than 1.0 are no longer supported" << std::endl;
   
   // Testing animatied backgrounds...

@@ -1,4 +1,4 @@
-//  $Id: IceBlock.cc,v 1.19 2001/08/11 18:53:39 grumbel Exp $
+//  $Id: IceBlock.cc,v 1.20 2001/08/12 18:36:42 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,10 +17,12 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "../ColMap.hh"
 #include "../World.hh"
 #include "../PinguHolder.hh"
 #include "../PingusResource.hh"
 #include "../XMLhelper.hh"
+#include "../GroundpieceData.hh"
 #include "IceBlock.hh"
 
 IceBlockData::IceBlockData ()
@@ -97,6 +99,7 @@ void
 IceBlock::draw_colmap()
 {
   CL_Surface surf (PingusResource::load_surface("iceblock_cmap", "worldobjs"));
+
   world->get_colmap()->put(surf, (int)pos.x, (int)pos.y, GroundpieceData::GP_GROUND);
 }
 

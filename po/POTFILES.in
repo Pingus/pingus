@@ -9,8 +9,6 @@ src/backgrounds/SolidColorBackground.cc
 src/backgrounds/ThunderstormBackground.cc
 src/backgrounds/SurfaceBackgroundData.cc
 src/backgrounds/SurfaceBackground.cc
-src/backgrounds/Background.cc
-src/backgrounds/BackgroundData.cc
 src/backgrounds/ThunderstormBackgroundData.cc
 src/backgrounds/StarfieldBackground.cc
 src/CaptureRectangle.cc
@@ -40,7 +38,6 @@ src/Direction.cc
 src/PingusGameSession.cc
 src/Position.cc
 src/PinguHolder.cc
-src/traps/traps.cc
 src/traps/smasher.cc
 src/traps/hammer.cc
 src/traps/FakeExit.cc
@@ -176,7 +173,6 @@ src/SmallMap.cc
 src/PingusMenuManager.cc
 src/TrapData.cc
 src/Exit.cc
-src/entrances/entrances.cc
 src/entrances/Cloud.cc
 src/entrances/WoodThing.cc
 src/PingusMapManager.cc

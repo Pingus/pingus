@@ -1,4 +1,4 @@
-//  $Id: World.cc,v 1.55 2001/08/10 19:59:19 grumbel Exp $
+//  $Id: World.cc,v 1.56 2001/08/12 18:36:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,23 +23,26 @@
 #include <algorithm>
 #include <functional>
 
-#include "PingusSpotMap.hh"
-#include "PinguHolder.hh"
+#include "ActionHolder.hh"
+#include "Exit.hh"
+#include "FVec.hh"
+#include "Hotspot.hh"
+#include "Liquid.hh"
 #include "PLF.hh"
-#include "PingusSound.hh"
-#include "View.hh"
+#include "PinguHolder.hh"
 #include "PingusError.hh"
+#include "PingusSound.hh"
+#include "PingusSpotMap.hh"
+#include "Result.hh"
+#include "Timer.hh"
+#include "View.hh"
+#include "World.hh"
+#include "WorldObjData.hh"
 #include "algo.hh"
 #include "globals.hh"
-#include "backgrounds/SurfaceBackground.hh"
-#include "World.hh"
-#include "Result.hh"
-#include "Liquid.hh"
-#include "ActionHolder.hh"
-#include "FVec.hh"
-#include "Timer.hh"
+#include "GameTime.hh"
+#include "particles/ParticleHolder.hh"
 #include "particles/WeatherGenerator.hh"
-#include "WorldObjData.hh"
 
 using namespace std;
 using boost::shared_ptr;
@@ -69,23 +72,11 @@ World::World()
 World::World(boost::shared_ptr<PLF> plf)
 { 
   WorldObj::set_world(this);
-  init(plf);
+  init (plf);
 }
 
 World::~World()
 {
-  //std::cout << "World:~World" << std::endl;
-
-  /*  for (vector<shared_ptr<Background> >::iterator i = backgrounds.begin();
-      i != backgrounds.end(); i++)
-      delete *i;
-
-      for(vector<WorldObj*>::iterator obj = world_obj_bg.begin();
-      obj != world_obj_bg.end();
-      obj++)
-      {
-      delete *obj;
-      }*/
 }
 
 // Merge the different layers on the screen together
@@ -96,12 +87,8 @@ World::draw(int x1, int y1, int w, int h,
   x_of += x1;
   y_of += y1;
   
-  for (vector<shared_ptr<Background> >::iterator i = backgrounds.begin();
-       i != backgrounds.end(); i++)
-    (*i)->draw_offset(x_of, y_of, s);
-
   for(vector<shared_ptr<WorldObj> >::iterator obj = world_obj_bg.begin();
-      obj != world_obj_bg.end(); obj++)
+      obj != world_obj_bg.end(); ++obj)
     {
       (*obj)->draw_offset(x_of, y_of, s);
     }
@@ -109,7 +96,7 @@ World::draw(int x1, int y1, int w, int h,
   gfx_map->draw(x1, y1, w, h, x_of, y_of, s);
 
   for(vector<shared_ptr<WorldObj> >::iterator obj = world_obj_fg.begin(); 
-      obj != world_obj_fg.end(); obj++)
+      obj != world_obj_fg.end(); ++obj)
     {
       (*obj)->draw_offset(x_of, y_of, s);
     }
@@ -193,9 +180,6 @@ World::update(float delta)
   */    
   particle_holder->update(delta);
 
-  for (vector<shared_ptr<Background> >::iterator i = backgrounds.begin(); i != backgrounds.end(); i++)
-    (*i)->update(delta);
-
   // Clear the explosion force list
   ForcesHolder::clear_explo_list();
 }
@@ -215,7 +199,6 @@ World::init(boost::shared_ptr<PLF> plf_data)
   shutdown_time = -1;
 
   init_map();
-  init_background();
 
   particle_holder = shared_ptr<ParticleHolder>(new ParticleHolder());
   pingus = shared_ptr<PinguHolder>(new PinguHolder());
@@ -243,18 +226,6 @@ World::init_map()
       break;
     } */
   colmap = gfx_map->get_colmap();
-}
-
-void 
-World::init_background()
-{
-  vector<shared_ptr<BackgroundData> > bg_data = plf->get_backgrounds();
-
-  // load the background map
-  for (vector<shared_ptr<BackgroundData> >::iterator i = bg_data.begin();
-       i != bg_data.end();
-       ++i)
-    backgrounds.push_back(Background::create(*i));
 }
 
 void

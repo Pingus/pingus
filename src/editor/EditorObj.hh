@@ -1,4 +1,4 @@
-//  $Id: EditorObj.hh,v 1.35 2001/08/11 18:53:39 grumbel Exp $
+//  $Id: EditorObj.hh,v 1.36 2001/08/12 18:36:41 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -49,6 +49,10 @@ public:
   /** Draw the object to the given view */
   virtual void draw (boost::dummy_ptr<EditorView> view) =0;
 
+  /** Called once a game loop, the delta is the time passed since the
+      last update in seconds */
+  virtual void update (float delta) {};
+
   /** Draw a rectangle or shape around the object to the given view */
   virtual void draw_mark (boost::dummy_ptr<EditorView> view) =0;
 
@@ -72,6 +76,12 @@ public:
   /** Generic operations that can make an object smaller, what exactly
       happens is object dependend. Default is to do nothing */
   virtual void make_smaller () {}
+
+  /** This function is called once at the start of an interactive move */
+  virtual void drag () {}
+
+  /** This function is called once at the end of an interactive move */
+  virtual void drop () {}
 
   /** Write the given object down into a XML file */
   virtual void write_xml(std::ofstream* xml) =0;

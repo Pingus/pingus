@@ -1,4 +1,4 @@
-//  $Id: PingusLevelResult.cc,v 1.19 2001/05/18 19:17:08 grumbel Exp $
+//  $Id: PingusLevelResult.cc,v 1.20 2001/08/12 18:36:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,7 @@
 
 #include <config.h>
 
+#include "my_gettext.hh"
 #include "globals.hh"
 #include "PingusResource.hh"
 #include "PingusLevelResult.hh"
@@ -81,7 +82,7 @@ PingusLevelResult::draw(void)
   //font->print_center(CL_Display::get_width() / 2, 180, str);
 
   font->print_center(CL_Display::get_width()/2, CL_Display::get_height() - 80,
-		     _("Press button to continue..."));  
+		     _("Press button to continue..."));
   Display::flip_display();
 
   while(!CL_Mouse::left_pressed())

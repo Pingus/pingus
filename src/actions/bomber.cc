@@ -1,4 +1,4 @@
-//  $Id: bomber.cc,v 1.25 2001/08/05 21:20:53 grumbel Exp $
+//  $Id: bomber.cc,v 1.26 2001/08/12 18:36:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,8 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "../PinguMap.hh"
+#include "../ColMap.hh"
 #include "../World.hh"
 #include "../globals.hh"
 #include "../algo.hh"
@@ -24,6 +26,7 @@
 #include "../FVec.hh"
 #include "../StringConverter.hh"
 #include "bomber.hh"
+#include "../particles/ParticleHolder.hh"
 
 bool Bomber::static_surface_loaded = false;
 CL_Surface Bomber::bomber_radius;

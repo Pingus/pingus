@@ -1,4 +1,4 @@
-//  $Id: SolidColorBackground.cc,v 1.5 2001/04/27 20:44:37 grumbel Exp $
+//  $Id: SolidColorBackground.cc,v 1.6 2001/08/12 18:36:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -58,6 +58,7 @@ SolidColorBackgroundData::create (xmlDocPtr doc, xmlNodePtr cur)
   return data;
 }
 
+/*
 boost::shared_ptr<SolidColorBackground>
 SolidColorBackground::create (boost::shared_ptr<BackgroundData> arg_data)
 {
@@ -68,7 +69,7 @@ SolidColorBackground::create (boost::shared_ptr<BackgroundData> arg_data)
 
   background->color = data->color;
   return background;
-}
+}*/
 
 void
 SolidColorBackground::draw_offset (int x_of, int y_of, float s = 1.0)

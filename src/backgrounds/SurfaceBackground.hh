@@ -1,4 +1,4 @@
-//  $Id: SurfaceBackground.hh,v 1.6 2001/04/01 18:00:40 grumbel Exp $
+//  $Id: SurfaceBackground.hh,v 1.7 2001/08/12 18:36:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,42 +21,33 @@
 #define SURFACEBACKGROUND_HH
 
 #include <ClanLib/core.h>
+#include <ClanLib/display.h>
 #include "../boost/smart_ptr.hpp"
+#include "../WorldObj.hh"
 #include "../AnimCounter.hh"
 #include "../GameCounter.hh"
 #include "../ResDescriptor.hh"
-#include "Background.hh"
 #include "SurfaceBackgroundData.hh"
 
 ///
-class SurfaceBackground : public Background, 
+class SurfaceBackground : public WorldObj, 
 			  private SurfaceBackgroundData
 {
 private:
-  ///
   AnimCounter scroll;
-  ///
   GameCounter counter;
-  ///
   bool surface_need_deletion;
-  ///
   CL_Surface bg_surface_raw;
-  ///
   CL_Surface bg_surface;
-  ///
   float scroll_ox, scroll_oy;
-  ///
   int x1, x2, y1, y2;
 
 public:
-  ///
-  SurfaceBackground();
-  ///
-  SurfaceBackground(SurfaceBackgroundData*);
+  SurfaceBackground(const SurfaceBackgroundData&);
   ///
   virtual ~SurfaceBackground();
-  ///
-  static boost::shared_ptr<SurfaceBackground> create (boost::shared_ptr<BackgroundData>);
+
+  //static boost::shared_ptr<SurfaceBackground> create (boost::shared_ptr<BackgroundData>);
   ///
   void update(float delta);
   ///

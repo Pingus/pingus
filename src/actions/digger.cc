@@ -1,4 +1,4 @@
-//  $Id: digger.cc,v 1.26 2001/08/02 21:51:03 grumbel Exp $
+//  $Id: digger.cc,v 1.27 2001/08/12 18:36:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,8 @@
 
 #include <cstdio>
 
+#include "../ColMap.hh"
+#include "../PinguMap.hh"
 #include "../World.hh"
 #include "../PingusResource.hh"
 #include "../PingusSound.hh"

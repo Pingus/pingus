@@ -1,4 +1,4 @@
-//  $Id: ThunderstormBackgroundData.hh,v 1.4 2001/04/27 20:44:37 grumbel Exp $
+//  $Id: ThunderstormBackgroundData.hh,v 1.5 2001/08/12 18:36:41 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,9 +20,9 @@
 #ifndef THUNDERSTORMBACKGROUNDDATA_HH
 #define THUNDERSTORMBACKGROUNDDATA_HH
 
-#include "BackgroundData.hh"
+#include "../WorldObjData.hh"
 
-class ThunderstormBackgroundData : public BackgroundData
+class ThunderstormBackgroundData : public WorldObjData
 {
 public:
   ThunderstormBackgroundData() {}
@@ -32,7 +32,10 @@ public:
       stream */
   virtual void write_xml(std::ofstream* xml);
   
-  static boost::shared_ptr<ThunderstormBackgroundData> create(xmlDocPtr doc, xmlNodePtr cur);
+  static boost::shared_ptr<WorldObjData> create(xmlDocPtr doc, xmlNodePtr cur);
+
+  boost::shared_ptr<WorldObj> create_WorldObj();
+  EditorObjLst create_EditorObj();
 };
 
 #endif

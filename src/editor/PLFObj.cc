@@ -1,4 +1,4 @@
-//  $Id: PLFObj.cc,v 1.50 2001/08/11 18:53:39 grumbel Exp $
+//  $Id: PLFObj.cc,v 1.51 2001/08/12 18:36:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -133,16 +133,11 @@ ExitObj::ExitObj(const ExitData& data)
   : SpriteEditorObj (data.desc.res_name, data.desc.datafile, pos),
     ExitData (data)
 {
-  /*  surf      = PingusResource::load_surface(desc);
-  width     = surf.get_width ();
-  height    = surf.get_height ();
-  *position = data.pos;
-
   if (!use_old_pos_handling)
     {
-      position->x -= surf.get_width ()/2;
-      position->y -= surf.get_height ();
-      }*/
+      pos.x -= sprite.get_width ()/2;
+      pos.y -= sprite.get_height ();
+    }
 }
 
 boost::shared_ptr<EditorObj>   
@@ -153,13 +148,13 @@ ExitObj::duplicate()
 
 std::string 
 ExitObj::status_line()
-{/*
+{
   char str[256] = {};
   
   sprintf(str, "Exit - %s - X:%4.2f Y:%4.2f Z:%4.2f OwnerId: %d",
 	  desc.res_name.c_str(),
-	  position->x, position->y, position->z, owner_id);
- */
+	  pos.x, pos.y, pos.z, owner_id);
+
   return std::string("unset");
 }
 

@@ -1,4 +1,4 @@
-//  $Id: WeatherObj.cc,v 1.8 2001/08/11 18:53:39 grumbel Exp $
+//  $Id: WeatherObj.cc,v 1.9 2001/08/12 18:36:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,7 @@
 
 #include "../XMLhelper.hh"
 #include "../PingusResource.hh"
+#include "EditorView.hh"
 #include "WeatherObj.hh"
 
 WeatherObj::WeatherObj(const WeatherData& data)
@@ -26,6 +27,7 @@ WeatherObj::WeatherObj(const WeatherData& data)
 {
   type = data.type;
   pos = CL_Vector(0,0,200);
+  dragging = false;
 
   if (type == "rain")
     {
@@ -45,6 +47,30 @@ WeatherObj::WeatherObj(const WeatherData& data)
 WeatherObj::~WeatherObj()
 {
 }
+
+void 
+WeatherObj::draw (boost::dummy_ptr<EditorView> view)
+{
+  std::cout << "Dragging: " << dragging << std::endl;
+      
+  if (dragging)
+    {
+      for (int x = 0; x < 320; x += sprite.get_width () + 4)
+	{
+	  view->draw_fillrect (x, 0,
+			       x + sprite.get_width (), sprite.get_height (),
+			       1.0f, 1.0f, 1.0f, 0.5f);
+	}
+    }
+
+  CL_Vector tmp_pos (pos);
+  pos.x = int((pos.x + sprite.get_width ()/2)
+	      /sprite.get_width ()) * sprite.get_width ();
+  pos.y = int((pos.y - sprite.get_height ()/2)
+	      /sprite.get_height ()) * sprite.get_height ();
+  SpriteEditorObj::draw (view);
+  pos = tmp_pos;
+}
   
 void   
 WeatherObj::write_xml(std::ofstream* xml)
@@ -60,6 +86,22 @@ boost::shared_ptr<EditorObj>
 WeatherObj::duplicate()
 {
   return boost::shared_ptr<EditorObj>(new WeatherObj(*this));
+}
+
+void 
+WeatherObj::drag ()
+{
+  dragging = true;
+}
+
+void 
+WeatherObj::drop ()
+{
+  dragging = false;
+  pos.x = int((pos.x + sprite.get_width ()/2)
+	      /sprite.get_width ()) * sprite.get_width ();
+  pos.y = int((pos.y - sprite.get_height ()/2)
+	      /sprite.get_height ()) * sprite.get_height ();
 }
 
 /* EOF */

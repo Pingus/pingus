@@ -1,4 +1,4 @@
-//  $Id: ObjectManager.cc,v 1.49 2001/08/11 18:53:39 grumbel Exp $
+//  $Id: ObjectManager.cc,v 1.50 2001/08/12 18:36:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -186,7 +186,7 @@ ObjectManager::load_level (std::string filename)
   number_of_pingus = plf->get_pingus();
   height      = plf->get_height();
   width       = plf->get_width();
-  backgrounds  = plf->get_backgrounds();
+  //backgrounds  = plf->get_backgrounds();
   author      = plf->get_author();
   start_x_pos = plf->get_startx();
   start_y_pos = plf->get_starty();
@@ -276,11 +276,11 @@ ObjectManager::save_level_xml (std::string filename)
       << "  </global>\n"
       << std::endl;
   
-  for (std::vector<boost::shared_ptr<BackgroundData> >::iterator i = backgrounds.begin();
+  /*for (std::vector<boost::shared_ptr<BackgroundData> >::iterator i = backgrounds.begin();
        i != backgrounds.end();
        i++)
     (*i)->write_xml(&xml);
-
+  */
   /*  xml << "<background>\n";
       EditorObj::save_desc_xml(&xml, background.desc);
   
@@ -442,7 +442,21 @@ ObjectManager::move_current_objs(float x, float y)
   for (CurrentObjIter i = current_objs.begin(); i != current_objs.end(); i++) 
     {
       (*i)->set_position_offset(CL_Vector(x, y));
-    }     
+    }
+}
+
+void 
+ObjectManager::drag_current_objs ()
+{
+  for (CurrentObjIter i = current_objs.begin(); i != current_objs.end(); ++i)
+    (*i)->drag ();
+}
+
+void 
+ObjectManager::drop_current_objs ()
+{
+  for (CurrentObjIter i = current_objs.begin(); i != current_objs.end(); ++i)
+    (*i)->drop ();
 }
 
 void

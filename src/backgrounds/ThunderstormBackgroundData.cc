@@ -1,4 +1,4 @@
-//  $Id: ThunderstormBackgroundData.cc,v 1.3 2001/04/27 20:44:37 grumbel Exp $
+//  $Id: ThunderstormBackgroundData.cc,v 1.4 2001/08/12 18:36:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,7 +26,7 @@ ThunderstormBackgroundData::write_xml(std::ofstream* xml)
 	 << "</background>" << std::endl;
 }
 
-boost::shared_ptr<ThunderstormBackgroundData>
+boost::shared_ptr<WorldObjData>
 ThunderstormBackgroundData::create(xmlDocPtr doc, xmlNodePtr cur)
 {
   return boost::shared_ptr<ThunderstormBackgroundData>(new ThunderstormBackgroundData());

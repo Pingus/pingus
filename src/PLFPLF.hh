@@ -1,4 +1,4 @@
-//  $Id: PLFPLF.hh,v 1.4 2001/08/10 10:56:13 grumbel Exp $
+//  $Id: PLFPLF.hh,v 1.5 2001/08/12 18:36:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,14 +28,14 @@
 #include "PLF.hh"
 #include "PLFParser.hh"
 #include "PinguMap.hh"
-#include "backgrounds/BackgroundData.hh"
-#include "backgrounds/SurfaceBackgroundData.hh"
 #include "ActionData.hh"
 #include "EntranceData.hh"
 #include "ExitData.hh"
 #include "HotspotData.hh"
 #include "LiquidData.hh"
 #include "TrapData.hh"
+
+class SurfaceBackgroundData;
 
 /** The Pingus Level File
     

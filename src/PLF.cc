@@ -1,4 +1,4 @@
-//  $Id: PLF.cc,v 1.24 2001/08/04 12:46:22 grumbel Exp $
+//  $Id: PLF.cc,v 1.25 2001/08/12 18:36:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -51,12 +51,12 @@ PLF::PLF()
 PLF::~PLF()
 {
 }
-
+/*
 vector<shared_ptr<BackgroundData> >
 PLF::get_backgrounds()
 {
   return backgrounds;
-}
+}*/
 
 ResDescriptor
 PLF::get_foreground()

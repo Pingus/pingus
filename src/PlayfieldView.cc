@@ -1,4 +1,4 @@
-//  $Id: PlayfieldView.cc,v 1.3 2001/04/14 14:37:04 grumbel Exp $
+//  $Id: PlayfieldView.cc,v 1.4 2001/08/12 18:36:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <ClanLib/display.h>
 #include "PlayfieldView.hh"
 
 PlayfieldView::PlayfieldView (boost::dummy_ptr<World> w,

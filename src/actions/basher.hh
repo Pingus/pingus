@@ -1,4 +1,4 @@
-//  $Id: basher.hh,v 1.14 2001/08/02 21:51:03 grumbel Exp $
+//  $Id: basher.hh,v 1.15 2001/08/12 18:36:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #ifndef BASHER_HH
 #define BASHER_HH
 
+#include "../Sprite.hh"
 #include "../PinguAction.hh"
 
 ///

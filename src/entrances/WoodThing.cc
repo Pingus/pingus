@@ -1,4 +1,4 @@
-//  $Id: WoodThing.cc,v 1.14 2001/08/10 10:56:14 grumbel Exp $
+//  $Id: WoodThing.cc,v 1.15 2001/08/12 18:36:42 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,7 @@
 
 #include <cstdlib>
 
+#include "../particles/ParticleHolder.hh"
 #include "../World.hh"
 #include "../PingusResource.hh"
 #include "../particles/SmokeParticle.hh"

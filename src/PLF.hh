@@ -1,4 +1,4 @@
-//  $Id: PLF.hh,v 1.23 2001/08/10 10:56:13 grumbel Exp $
+//  $Id: PLF.hh,v 1.24 2001/08/12 18:36:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,7 +28,6 @@
 
 #include "boost/smart_ptr.hpp"
 
-#include "backgrounds/BackgroundData.hh"
 #include "WeatherData.hh"
 #include "ActionData.hh"
 #include "EntranceData.hh"
@@ -57,7 +56,6 @@ protected:
   std::map<std::string, std::string> description;
   std::string author;
   ResDescriptor foreground;
-  std::vector<boost::shared_ptr<BackgroundData> > backgrounds;
   ResDescriptor music;
   ResDescriptor col;
 
@@ -85,9 +83,6 @@ public:
   PLF();
   ///
   virtual ~PLF();
-
-  ///
-  std::vector<boost::shared_ptr<BackgroundData> > get_backgrounds(void);
   ///
   ResDescriptor get_foreground(void);
   ///

@@ -1,4 +1,4 @@
-//  $Id: StarfieldBackground.cc,v 1.9 2001/04/27 20:44:37 grumbel Exp $
+//  $Id: StarfieldBackground.cc,v 1.10 2001/08/12 18:36:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -173,13 +173,13 @@ StarfieldBackground::~StarfieldBackground ()
   
 }
 
-///
+/*
 boost::shared_ptr<StarfieldBackground>
 StarfieldBackground::create (boost::shared_ptr<BackgroundData> arg_data)
 {
   StarfieldBackgroundData* data = dynamic_cast<StarfieldBackgroundData*>(arg_data.get());
   return boost::shared_ptr<StarfieldBackground>(new StarfieldBackground (data));
-}
+}*/
 
 ///
 void 

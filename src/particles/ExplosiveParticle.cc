@@ -1,4 +1,4 @@
-//  $Id: ExplosiveParticle.cc,v 1.2 2001/08/04 12:46:23 grumbel Exp $
+//  $Id: ExplosiveParticle.cc,v 1.3 2001/08/12 18:36:42 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,7 +17,10 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "../ColMap.hh"
+#include "../PinguMap.hh"
 #include "../World.hh"
+#include "../particles/ParticleHolder.hh"
 #include "ExplosiveParticle.hh"
 
 ExplosiveParticle::ExplosiveParticle (int x, int y, float x_a, float y_a)

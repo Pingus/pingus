@@ -1,4 +1,4 @@
-//  $Id: PinguParticle.cc,v 1.14 2001/08/04 12:46:23 grumbel Exp $
+//  $Id: PinguParticle.cc,v 1.15 2001/08/12 18:36:42 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "../ColMap.hh"
 #include "../World.hh"
 #include "../algo.hh"
 #include "../PingusResource.hh"

@@ -1,4 +1,4 @@
-//  $Id: SurfaceBackgroundData.hh,v 1.6 2001/04/27 20:44:37 grumbel Exp $
+//  $Id: SurfaceBackgroundData.hh,v 1.7 2001/08/12 18:36:41 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,18 +21,15 @@
 #define SURFACEBACKGROUNDDATA_HH
 
 #include "../boost/smart_ptr.hpp"
-#include "BackgroundData.hh"
+#include "../WorldObjData.hh"
 
 class SurfaceBackground;
 
-class SurfaceBackgroundData : public BackgroundData
+class SurfaceBackgroundData : public WorldObjData
 {
 public:
-  ///
   ResDescriptor desc;
-  ///
   float para_x;
-  ///
   float para_y;
 
   /** The amount of pixel the background is scrolled each frame in x
@@ -69,6 +66,9 @@ public:
       SurfaceBackgroundData*, the user is responsible to delete the
       object */
   static boost::shared_ptr<SurfaceBackgroundData> create(xmlDocPtr doc, xmlNodePtr cur);
+
+  boost::shared_ptr<WorldObj> create_WorldObj();
+  EditorObjLst create_EditorObj();
 };
 
 #endif
