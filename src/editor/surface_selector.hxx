@@ -28,6 +28,7 @@
 class CL_Font;
 
 namespace Pingus {
+namespace EditorNS {
 
 struct surface_obj
 {
@@ -78,6 +79,7 @@ private:
   SurfaceSelector& operator= (const SurfaceSelector&);
 };
 
+} // namespace EditorNS
 } // namespace Pingus
 
 #endif

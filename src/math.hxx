@@ -35,6 +35,14 @@ namespace Math {
 const double pi   = 3.14159265358979323846;	/* pi */
 const double pi_2 = 1.57079632679489661923;	/* pi/2 */
 
+// Win32 defines these are defines already, so we have to undef them
+#ifdef min
+#undef min
+#endif
+#ifdef max
+#undef max
+#endif
+
 template<class T>
 T min (const T& a, const T& b)
 {
