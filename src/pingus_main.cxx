@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.90 2003/04/24 15:18:19 grumbel Exp $
+//   $Id: pingus_main.cxx,v 1.91 2003/04/24 17:59:15 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___
@@ -680,10 +680,10 @@ PingusMain::init_path_finder()
         std::cout << "setlocale returned '" << ret << "'" << std::endl;
     }
 
-#ifdef WIN32
+#ifndef WIN32
   bindtextdomain(PACKAGE, path_manager.complete("/../../locale/").c_str());
 #else
-  bindtextdomain(PACKAGE, path_manager.complete("locale/").c_str());
+  bindtextdomain(PACKAGE, path_manager.complete("/locale/").c_str());
 #endif
 
   // We use another LOCALEDIR to make static binaries possible

@@ -11,6 +11,7 @@
 #define VERSION_STRING "0.6.0"
 #define PINGUS_DATADIR "data"
 #define LIBXML_2 1
+#define ENABLE_NLS 1
 
 /* 'real' config values */
 #define HAVE_STDDEF_H 1

@@ -1,4 +1,4 @@
-//  $Id: xml_helper.cxx,v 1.31 2003/04/19 10:23:17 torangan Exp $
+//  $Id: xml_helper.cxx,v 1.32 2003/04/24 17:59:15 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,7 +32,7 @@ int xmlIsBlankNode(xmlNodePtr node) { return 0; }
 
 std::ostream& operator<<(std::ostream& s, xmlNode& node)
 {
-#ifdef LIBXML_2
+#if LIBXML_VERSION >= 20506
   xmlChar* path = xmlGetNodePath(&node);
   s << path;
   xmlFree(path);
