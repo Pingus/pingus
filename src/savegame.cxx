@@ -1,4 +1,4 @@
-//  $Id: savegame.cxx,v 1.1 2003/03/26 12:01:17 grumbel Exp $
+//  $Id: savegame.cxx,v 1.2 2003/04/01 15:13:33 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -52,6 +52,13 @@ Savegame::string_to_status (std::string str)
     return NONE;
   else 
     return NONE;
+}
+
+Savegame::Savegame()
+{
+  status = ACCESSIBLE;
+  saved_pingus = 0;
+  time = 0;
 }
 
 Savegame::Savegame(xmlDocPtr doc, xmlNodePtr node)

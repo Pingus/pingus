@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.61 2003/04/01 13:21:20 grumbel Exp $
+//   $Id: pingus_main.cxx,v 1.62 2003/04/01 15:13:33 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -144,7 +144,11 @@ PingusMain::~PingusMain()
 char* 
 PingusMain::get_title()
 {
-  static char title[] = "Pingus - http://pingus.seul.org";
+#ifdef OFFICIAL_PINGUS_BUILD
+  static char title[] = "Pingus "VERSION" - http://pingus.seul.org";
+#else
+  static char title[] = "Pingus "VERSION" (unofficial build) - http://pingus.seul.org";
+#endif
   return title;
   //return (string(PACKAGE) + " " + VERSION + " - http://pingus.seul.org").c_str();
 }

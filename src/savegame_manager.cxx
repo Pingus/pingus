@@ -1,4 +1,4 @@
-//  $Id: savegame_manager.cxx,v 1.2 2003/03/28 12:06:32 grumbel Exp $
+//  $Id: savegame_manager.cxx,v 1.3 2003/04/01 15:13:33 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,10 +34,6 @@ SavegameManager::instance()
     return (instance_ = new SavegameManager(System::get_statdir() + "stat/savegame.xml")); 
 }
 
-SavegameManager::SavegameManager()
-{
-}
-
 SavegameManager::SavegameManager(const std::string& arg_filename)
   : filename(arg_filename)
 {
@@ -47,6 +43,11 @@ SavegameManager::SavegameManager(const std::string& arg_filename)
     {
       std::cout << "SavegameManager: Couldn't find savegame file '" << filename
                 << "', starting with a empty one." << std::endl;
+      // FIXME: Unlock the first level
+      Savegame savegame;
+      savegame.status = Savegame::ACCESSIBLE;
+      savegame.levelname = "tutorial/digger-tutorial2-grumbel";
+      store(savegame);
     }
   else
     {

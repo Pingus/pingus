@@ -1,4 +1,4 @@
-//  $Id: global_event.cxx,v 1.8 2003/04/01 13:21:20 grumbel Exp $
+//  $Id: global_event.cxx,v 1.9 2003/04/01 15:13:33 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,8 +37,6 @@ GlobalEvent::GlobalEvent ()
 void
 GlobalEvent::on_button_press(CL_InputDevice *device, const CL_Key &key)
 {
-  //  std::cout << "Button pressed..." << std::endl;
-
   if (device == CL_Input::keyboards[0])
     {
       switch (key.id)
@@ -89,8 +87,17 @@ GlobalEvent::on_button_press(CL_InputDevice *device, const CL_Key &key)
 	  break;
 
 	case CL_KEY_C:
-	  draw_collision_map = !draw_collision_map;
+          if (maintainer_mode)
+            draw_collision_map = !draw_collision_map;
 	  break;
+
+        case CL_KEY_M:
+          if (CL_Keyboard::get_keycode(CL_KEY_LCTRL) || CL_Keyboard::get_keycode(CL_KEY_RCTRL) )
+            {
+              std::cout << "Maintainer Mode: " << maintainer_mode << std::endl;
+              maintainer_mode = !maintainer_mode;
+            }
+          break;
 
 	case CL_KEY_END:
 	  if (CL_Keyboard::get_keycode(CL_KEY_LCTRL) 

@@ -1,4 +1,4 @@
-//  $Id: stat_manager.cxx,v 1.5 2003/03/30 13:12:35 grumbel Exp $
+//  $Id: stat_manager.cxx,v 1.6 2003/04/01 15:13:33 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -79,7 +79,7 @@ StatManager::load(const std::string& filename)
             {
               std::string name  = (const char*)(cur->name);
               std::string value = XMLhelper::parse_string(doc, cur);
-              std::cout << "Stat: " << name << " = " << value << std::endl;
+              //std::cout << "Stat: " << name << " = " << value << std::endl;
               stats[name] = value;
 
               cur = cur->next;

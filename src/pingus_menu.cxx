@@ -1,4 +1,4 @@
-//  $Id: pingus_menu.cxx,v 1.16 2003/04/01 13:21:20 grumbel Exp $
+//  $Id: pingus_menu.cxx,v 1.17 2003/04/01 15:13:33 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,7 +35,7 @@ PingusMenu::preload ()
 {
   if (!is_init)
     {
-      pout << "PingusMenu::init ()" << std::endl;
+      //pout << "PingusMenu::init ()" << std::endl;
       //event_enabled = true;
       is_init = true;
 

@@ -1,4 +1,4 @@
-//  $Id: savegame.hxx,v 1.1 2003/03/26 12:01:17 grumbel Exp $
+//  $Id: savegame.hxx,v 1.2 2003/04/01 15:13:33 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -45,7 +45,7 @@ public:
   /** Number of Pingus that where saved while playing the level */
   int saved_pingus;
 
-  Savegame() {}
+  Savegame();
   Savegame(xmlDocPtr doc, xmlNodePtr node);
   Savegame(std::string arg_levelname, Status arg_status, int arg_time, int arg_saved_pingus);
 

@@ -1,4 +1,4 @@
-# Compile with CL_HAS_KEY_GRAVE!
+# Compile with -DCL_HAS_KEY_GRAVE -DOFFICIAL_PINGUS_BUILD
 
 LDADD = backgrounds/libpingus_backgrounds.a \
 colliders/libpingus_colliders.a \
