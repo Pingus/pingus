@@ -43,7 +43,7 @@ RSC=rc.exe
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /YX /FD /c
-# ADD CPP /nologo /MT /W3 /Gi /vd0 /GR /GX /I "src" /I "src\win32" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "LIBXML_2" /YX /FD /TP /c
+# ADD CPP /nologo /MT /W3 /Gi /vd0 /GR /GX /I "src" /I "src\win32" /D "NDEBUG" /D "WIN32" /D "_WINDOWS" /D "_MBCS" /D "LIBXML_2" /D "HAVE_LIBCLANVORBIS" /YX /FD /TP /c
 # SUBTRACT CPP /Gf /Gy /u /Fr
 # ADD BASE MTL /nologo /D "NDEBUG" /mktyplib203 /win32
 # ADD MTL /nologo /D "NDEBUG" /mktyplib203 /win32
@@ -55,7 +55,7 @@ BSC32=bscmake.exe
 # ADD BSC32 /nologo
 LINK32=link.exe
 # ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /machine:I386
-# ADD LINK32 kernel32.lib user32.lib gdi32.lib libxml2.lib /nologo /version:0.5 /subsystem:windows /machine:I386 /nodefaultlib:"msvcrt.lib" /libpath:"d:\games\pingus\release"
+# ADD LINK32 clanApp.lib clanCore.lib clanDisplay.lib clanGL.lib clanGUI.lib clanJPEG.lib clanMikMod.lib clanNetwork.lib clanPNG.lib clanSignals.lib clanSmallJPEG.lib clanVorbis.lib kernel32.lib user32.lib gdi32.lib dsound.lib /nologo /version:0.5 /subsystem:windows /machine:I386 /nodefaultlib:"msvcrt.lib" /libpath:"d:\games\pingus\release"
 # SUBTRACT LINK32 /verbose /profile /pdb:none /incremental:yes /map /debug /nodefaultlib
 
 !ELSEIF  "$(CFG)" == "pingus - Win32 Debug"
@@ -67,12 +67,12 @@ LINK32=link.exe
 # PROP BASE Target_Dir ""
 # PROP Use_MFC 0
 # PROP Use_Debug_Libraries 1
-# PROP Output_Dir "Debug"
+# PROP Output_Dir ".."
 # PROP Intermediate_Dir "Debug"
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /YX /FD /GZ /c
-# ADD CPP /nologo /MTd /Gm /vd0 /GR /GX /ZI /Od /I "src" /I "src\win32" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /D "LIBXML_2" /YX /FD /GZ /TP /c
+# ADD CPP /nologo /MTd /Gm /vd0 /GR /GX /ZI /Od /I "src" /I "src\win32" /D "_DEBUG" /D "WIN32" /D "_WINDOWS" /D "_MBCS" /D "LIBXML_2" /D "HAVE_LIBCLANVORBIS" /D "HAVE_LIBCLANMIKMOD" /YX /FD /GZ /TP /c
 # SUBTRACT CPP /X
 # ADD BASE MTL /nologo /D "_DEBUG" /mktyplib203 /win32
 # ADD MTL /nologo /D "_DEBUG" /mktyplib203 /win32
@@ -83,7 +83,7 @@ BSC32=bscmake.exe
 # ADD BSC32 /nologo
 LINK32=link.exe
 # ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /debug /machine:I386 /pdbtype:sept
-# ADD LINK32 kernel32.lib user32.lib gdi32.lib libxml2.lib /nologo /subsystem:windows /debug /machine:I386 /nodefaultlib:"msvcrt.lib" /pdbtype:sept
+# ADD LINK32 ClanAppd.lib clanCored.lib ClanDisplayd.lib ClanGLd.lib ClanGUId.lib ClanJPEGd.lib ClanMikModd.lib ClanNetworkd.lib ClanPNGd.lib ClanSignalsd.lib ClanTTFd.lib ClanVorbisd.lib zlib.lib kernel32.lib user32.lib gdi32.lib libxml2.lib ClanSoundd.lib dsound.lib /nologo /subsystem:windows /debug /machine:I386 /nodefaultlib:"libcmt.lib" /pdbtype:sept
 
 !ENDIF 
 
@@ -227,6 +227,10 @@ SOURCE=.\src\actions\walker.cxx
 # PROP Default_Filter ""
 # Begin Source File
 
+SOURCE=.\src\editor\action_window.cxx
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\editor\editor.cxx
 # End Source File
 # Begin Source File
@@ -255,6 +259,18 @@ SOURCE=.\src\editor\editorobj_group.cxx
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\editor\entrance_window.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\editor\groundpiece_window.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\editor\level_property_window.cxx
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\editor\object_manager.cxx
 # End Source File
 # Begin Source File
@@ -275,11 +291,23 @@ SOURCE=.\src\editor\plfobj.cxx
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\editor\property_frame.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\editor\property_window.cxx
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\editor\rect_editorobj.cxx
 # End Source File
 # Begin Source File
 
 SOURCE=.\src\editor\scroll_map.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\editor\selection.cxx
 # End Source File
 # Begin Source File
 
@@ -422,9 +450,133 @@ SOURCE=.\src\worldmap\node.cxx
 SOURCE=.\src\worldmap\node_data.cxx
 # End Source File
 # End Group
+# Begin Group "GUI"
+
+# PROP Default_Filter "cxx;hxx"
+# Begin Source File
+
+SOURCE=.\src\gui\gui_manager.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\gui_screen.cxx
+# End Source File
+# End Group
+# Begin Group "input"
+
+# PROP Default_Filter "cxx;hxx"
+# Begin Source File
+
+SOURCE=.\src\input\axis_factory.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\input\axis_pointer.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\input\axis_scroller.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\input\button_axis.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\input\button_factory.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\input\double_button.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\input\input_controller.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\input\inverted_axis.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\input\inverted_scroller.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\input\joystick_axis.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\input\joystick_button.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\input\joystick_scroller.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\input\key_button.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\input\key_helper.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\input\mouse_axis.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\input\mouse_button.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\input\mouse_pointer.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\input\mouse_scroller.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\input\multiple_axis.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\input\multiple_button.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\input\multiple_pointer.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\input\multiple_scroller.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\input\pointer_factory.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\input\pointer_scroller.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\input\scroller_factory.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\input\triple_button.cxx
+# End Source File
+# End Group
 # Begin Source File
 
 SOURCE=.\src\action_button.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\action_data.cxx
 # End Source File
 # Begin Source File
 
@@ -720,6 +872,10 @@ SOURCE=.\src\pingu_action_factory.cxx
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\pingu_enums.cxx
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\pingu_holder.cxx
 # End Source File
 # Begin Source File
@@ -800,10 +956,6 @@ SOURCE=.\src\plt_xml.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\Position.cc
-# End Source File
-# Begin Source File
-
 SOURCE=.\src\psm_parser.cxx
 # End Source File
 # Begin Source File
@@ -816,7 +968,15 @@ SOURCE=.\src\res_descriptor.cxx
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\resource_modifier.cxx
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\result.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\screen_manager.cxx
 # End Source File
 # Begin Source File
 
@@ -937,18 +1097,6 @@ SOURCE=.\src\true_server.cxx
 # Begin Source File
 
 SOURCE=.\src\view.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\war\WarGame.cc
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\war\WarGlobals.cc
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\war\WarMain.cc
 # End Source File
 # Begin Source File
 
