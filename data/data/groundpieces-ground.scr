@@ -111,13 +111,13 @@ section misc {
 	brick5 = ../images/groundpieces/ground/misc/brick5.png (type=surface, x=0, y=0, width=64, height=32);
 	bridge1 = ../images/groundpieces/ground/misc/bridge1.png (type=surface, x=0, y=0, width=216, height=42);
 
-	colum_up = ../images/groundpieces/ground/misc/colum_up.png (type=surface);
-	colum_down = ../images/groundpieces/ground/misc/colum_down.png (type=surface);
-	colum_flat_left = ../images/groundpieces/ground/misc/colum_flat_left.png (type=surface);
-	colum_flat_right = ../images/groundpieces/ground/misc/colum_flat_right.png (type=surface);
+	column_up = ../images/groundpieces/ground/misc/column_up.png (type=surface);
+	column_down = ../images/groundpieces/ground/misc/column_down.png (type=surface);
+	column_flat_left = ../images/groundpieces/ground/misc/column_flat_left.png (type=surface);
+	column_flat_right = ../images/groundpieces/ground/misc/column_flat_right.png (type=surface);
 
-	colum = ../images/groundpieces/ground/misc/colum.png (type=surface, x=0, y=0, width=142, height=184);
-	colum_flat = ../images/groundpieces/ground/misc/colum_flat.png (type=surface, x=0, y=0, width=184, height=122);
+	column = ../images/groundpieces/ground/misc/column.png (type=surface, x=0, y=0, width=142, height=184);
+	column_flat = ../images/groundpieces/ground/misc/column_flat.png (type=surface, x=0, y=0, width=184, height=122);
 	dragon = ../images/groundpieces/ground/misc/dragon.png (type=surface, x=0, y=0, width=255, height=169);
 	green1 = ../images/groundpieces/ground/misc/green1.png (type=surface, x=0, y=0, width=190, height=73);
 	green2 = ../images/groundpieces/ground/misc/green2.png (type=surface, x=0, y=0, width=109, height=128);

@@ -1,7 +1,17 @@
 <pingus-world>
   <world-name lang="en">Tutorials</world-name>
-  <description lang="en">Before the real life starts, the Pingus can do some practice in this tutorial levels.</description>
-  
+
+  <description lang="en">Before the real life starts, the Pingus can
+  do some practice in this tutorial levels. Here you can learn how to
+  control them, how to apply actions to them and how to guide them safely to
+  the exit.</description>
+
+  <description lang="de">Bevor die Pingus ins wirkliche Leben
+  aufbrechen koennen sie in diesen Uebungs Leveln noch etwas ueben.
+  Hier kannst du lernen sie zu steuern, ihnen Aufgaben zu geben und
+  sie sicher zum Ausgang zu begleiten.</description>
+   
+  <!-- FIXME: this could use worldobj's backgrounds -->
   <background>
     <surface>
       <resource type="datafile">
