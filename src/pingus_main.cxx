@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.91 2003/04/24 17:59:15 grumbel Exp $
+//   $Id: pingus_main.cxx,v 1.92 2003/06/04 17:22:33 torangan Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___
@@ -80,6 +80,8 @@
 #include "string_tokenizer.hxx"
 #include "story.hxx"
 #include "cheat.hxx"
+#include "worldmap/manager.hxx"
+#include "worldobj_data_factory.hxx"
 
 using EditorNS::Editor;
 
@@ -879,8 +881,6 @@ PingusMain::main(int argc, char** argv)
 
       start_game();
 
-      deinit_pingus();
-      deinit_clanlib();
     }
 
   catch (const CL_Error& err) {
@@ -903,6 +903,8 @@ PingusMain::main(int argc, char** argv)
     std::cout << _("Pingus: Unknown throw caught!") << std::endl;
   }
 
+      deinit_pingus();
+      deinit_clanlib();
   return 0;
 }
 
@@ -978,6 +980,7 @@ PingusMain::init_pingus()
   Fonts::init();
   Story::init();
   ScreenManager::init();
+  PingusMenuManager::init();
   PingusSound::init();
   PingusResource::init();
   XMLhelper::init();
@@ -1002,8 +1005,14 @@ PingusMain::deinit_pingus()
   Fonts::deinit();
   PingusResource::deinit();
   PingusSound::deinit();
+  PingusMenuManager::deinit();
+  PLFResMgr::free_plf_map();
+  WorldObjDataFactory::deinit();
+  WorldMapNS::WorldMapManager::deinit();
   ScreenManager::deinit();
   StatManager::deinit();
+  SavegameManager::deinit();
+  xmlCleanupParser();
 }
 
 /* EOF */

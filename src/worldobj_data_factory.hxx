@@ -1,4 +1,4 @@
-//  $Id: worldobj_data_factory.hxx,v 1.7 2003/04/19 10:23:17 torangan Exp $
+//  $Id: worldobj_data_factory.hxx,v 1.8 2003/06/04 17:22:33 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,10 +38,11 @@ private:
   static WorldObjDataFactory* instance_;
 
   WorldObjDataFactory ();
+  void free_factories();
 public:
   /** Return the singleton instance */
   static WorldObjDataFactory* instance ();
-
+  static void deinit();
   /** Register a factory for object creation */
   void register_factory (const std::string& id,
 			 WorldObjDataAbstractFactory* factory);

@@ -1,4 +1,4 @@
-//  $Id: sound_real.cxx,v 1.8 2003/04/19 10:23:19 torangan Exp $
+//  $Id: sound_real.cxx,v 1.9 2003/06/04 17:22:33 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -58,6 +58,7 @@ PingusSoundReal::PingusSoundReal ()
 PingusSoundReal::~PingusSoundReal()
 {
   real_stop_music();
+  SoundResMgr::free_sound_map();
 
 #ifdef HAVE_LIBCLANMIKMOD
   CL_SetupMikMod::deinit();

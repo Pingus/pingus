@@ -1,4 +1,4 @@
-//  $Id: sound_res_mgr.cxx,v 1.2 2003/04/19 10:23:19 torangan Exp $
+//  $Id: sound_res_mgr.cxx,v 1.3 2003/06/04 17:22:33 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -47,4 +47,11 @@ SoundResMgr::load(const std::string& name)
     }
 }
 
+void SoundResMgr::free_sound_map()
+{
+  for (SoundMap::iterator i = sound_map.begin(); i != sound_map.end(); ++i)
+  {
+	  delete i->second;
+  }
+}
 /* EOF */

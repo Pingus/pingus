@@ -1,4 +1,4 @@
-//  $Id: path_graph.hxx,v 1.10 2003/04/19 10:23:19 torangan Exp $
+//  $Id: path_graph.hxx,v 1.11 2003/06/04 17:22:33 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -61,6 +61,8 @@ public:
       PathGraph, it is used so that the PathGraph can insert its
       drawables into the world */
   PathGraph(WorldMap* worldmap, xmlDocPtr doc, xmlNodePtr cur);
+
+  ~PathGraph();
 
   /** @return a list of positions to walk to reach node \a end, by
       starting from \a start */

@@ -1,4 +1,4 @@
-//  $Id: savegame_manager.hxx,v 1.3 2003/04/19 10:23:17 torangan Exp $
+//  $Id: savegame_manager.hxx,v 1.4 2003/06/04 17:22:33 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,7 +34,7 @@ private:
   SavegameTable savegames;
 public:
   static SavegameManager* instance();
-
+  static void deinit();
   SavegameManager(const std::string& filename);
   ~SavegameManager();
 

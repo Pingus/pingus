@@ -1,4 +1,4 @@
-//  $Id: worldmap.cxx,v 1.47 2003/04/24 15:18:19 grumbel Exp $
+//  $Id: worldmap.cxx,v 1.48 2003/06/04 17:22:33 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -106,12 +106,22 @@ WorldMap::WorldMap(const std::string& arg_filename)
   add_drawable(pingus);
 
   levelname_bg = PingusResource::load_surface("worldmap/levelname_bg", "core");
+  xmlFreeDoc(doc);
 }
 
 WorldMap::~WorldMap()
 {
-  //delete pingus;
-  //delete path_graph;
+  for (DrawableLst::iterator i = drawables.begin (); i != drawables.end (); ++i)
+    {
+      delete (*i);
+    }
+//  for (ObjectLst::iterator j = objects.begin (); j != objects.end (); ++j)
+//    {
+//      delete (*j);
+//    }
+
+//  delete pingus;
+  delete path_graph;
 }
 
 void

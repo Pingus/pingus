@@ -1,4 +1,4 @@
-//  $Id: manager.cxx,v 1.38 2003/04/24 15:18:19 grumbel Exp $
+//  $Id: manager.cxx,v 1.39 2003/06/04 17:22:33 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -338,6 +338,11 @@ WorldMapManager::instance ()
     return instance_;
   else
     return instance_ = new WorldMapManager ();
+}
+
+void WorldMapManager::deinit()
+{
+	delete instance_;
 }
 
 } // namespace WorldMapNS

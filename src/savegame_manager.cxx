@@ -1,4 +1,4 @@
-//  $Id: savegame_manager.cxx,v 1.7 2003/04/19 10:23:17 torangan Exp $
+//  $Id: savegame_manager.cxx,v 1.8 2003/06/04 17:22:33 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,7 +24,7 @@
 #include "xml_helper.hxx"
 #include "savegame_manager.hxx"
 
-SavegameManager* SavegameManager::instance_;
+SavegameManager* SavegameManager::instance_ = 0;
 
 SavegameManager*
 SavegameManager::instance()
@@ -33,6 +33,11 @@ SavegameManager::instance()
     return instance_;
   else
     return (instance_ = new SavegameManager(System::get_statdir() + "savegames/savegames.xml"));
+}
+
+void SavegameManager::deinit()
+{
+	delete instance_;
 }
 
 SavegameManager::SavegameManager(const std::string& arg_filename)
@@ -94,6 +99,12 @@ SavegameManager::SavegameManager(const std::string& arg_filename)
 
       xmlFreeDoc(doc);
     }
+}
+
+SavegameManager::~SavegameManager()
+{
+  for (SavegameTable::iterator i =  savegames.begin(); i !=  savegames.end (); ++i)
+    delete i->second;
 }
 
 Savegame*

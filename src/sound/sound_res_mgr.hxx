@@ -1,4 +1,4 @@
-//  $Id: sound_res_mgr.hxx,v 1.2 2003/04/19 10:23:19 torangan Exp $
+//  $Id: sound_res_mgr.hxx,v 1.3 2003/06/04 17:22:33 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,7 +35,7 @@ private:
 
 public:
   static SoundHandle load(const std::string& name);
-
+  static void free_sound_map();
 private:
   SoundResMgr (const SoundResMgr&);
   SoundResMgr& operator= (const SoundResMgr&);

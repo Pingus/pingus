@@ -1,4 +1,4 @@
-//  $Id: plf_res_mgr.hxx,v 1.3 2003/04/19 10:23:17 torangan Exp $
+//  $Id: plf_res_mgr.hxx,v 1.4 2003/06/04 17:22:33 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,7 +33,6 @@ private:
 
   typedef std::map<std::string, PLFEntry> PLFMap;
   static  PLFMap plf_map;
-
   /** Loads PLF from filename and stores it under 'res_name' in the
       map */
   static PLFHandle load_plf_raw(const std::string& res_name,
@@ -50,6 +49,7 @@ public:
 
       @param filename The filename of the plf, aka "../data/levels/snow11-grumbel.xml" */
   static PLFHandle load_plf_from_filename(const std::string& filename);
+  static  void free_plf_map();
 };
 
 #endif

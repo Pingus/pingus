@@ -1,4 +1,4 @@
-//  $Id: manager.hxx,v 1.21 2003/04/19 10:23:19 torangan Exp $
+//  $Id: manager.hxx,v 1.22 2003/06/04 17:22:33 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -106,7 +106,7 @@ public:
 
   /** Singleton access function */
   static WorldMapManager* instance ();
-
+  static void deinit();
 private:
   /** Startup Hook of the Screen */
   void on_startup ();

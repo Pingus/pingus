@@ -1,4 +1,4 @@
-//  $Id: plf_res_mgr.cxx,v 1.5 2003/04/19 10:23:17 torangan Exp $
+//  $Id: plf_res_mgr.cxx,v 1.6 2003/06/04 17:22:33 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -102,4 +102,11 @@ PLFResMgr::load_plf(const std::string& res_name)
                       path_manager.complete("levels/" + res_name + ".xml"));
 }
 
+void PLFResMgr::free_plf_map()
+{
+  for (PLFMap::iterator i = plf_map.begin(); i != plf_map.end(); ++i)
+  {
+	  delete i->second.plf;
+  }
+}
 /* EOF */

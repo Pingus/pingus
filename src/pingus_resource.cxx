@@ -1,4 +1,4 @@
-//  $Id: pingus_resource.cxx,v 1.28 2003/04/19 10:23:17 torangan Exp $
+//  $Id: pingus_resource.cxx,v 1.29 2003/06/04 17:22:33 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -48,6 +48,7 @@ PingusResource::init()
 void
 PingusResource::deinit()
 {
+//  cleanup();
   for (std::map<std::string, CL_ResourceManager*>::iterator i = resource_map.begin();
        i != resource_map.end ();
        ++i)
@@ -57,6 +58,9 @@ PingusResource::deinit()
        i != font_map.end ();
        ++i)
     delete i->second;
+  resource_map.clear();
+  surface_map.clear();
+  font_map.clear();
 }
 
 CL_ResourceManager*
@@ -291,6 +295,8 @@ PingusResource::cleanup ()
   for (std::map<ResDescriptor, CL_Surface>::iterator i = surface_map.begin ();
        i != surface_map.end (); ++i)
     {
+	  pout(PINGUS_DEBUG_RESOURCES) << "XXXX Lookat Resource : " << i->first
+	                               << " => " << i->second.get_reference_count () << std::endl;
       if (i->first.type == ResDescriptor::RD_FILE
 	  && i->second.get_reference_count () == 1)
 	{

@@ -1,4 +1,4 @@
-//  $Id: path_graph.cxx,v 1.21 2003/04/19 10:23:19 torangan Exp $
+//  $Id: path_graph.cxx,v 1.22 2003/06/04 17:22:33 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -64,6 +64,16 @@ PathGraph::PathGraph(WorldMap* arg_worldmap, xmlDocPtr doc, xmlNodePtr cur)
   for(PFinderCache::iterator i = pathfinder_cache.begin();
       i != pathfinder_cache.end(); ++i)
     *i = 0;
+}
+
+void delete_Path(Edge<Path*> x)
+{
+	delete x.data;
+}
+
+PathGraph::~PathGraph()
+{
+	graph.for_each_edge(delete_Path);
 }
 
 void

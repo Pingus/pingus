@@ -1,4 +1,4 @@
-//  $Id: worldobj_data_factory.cxx,v 1.34 2003/04/19 10:23:17 torangan Exp $
+//  $Id: worldobj_data_factory.cxx,v 1.35 2003/06/04 17:22:33 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -109,6 +109,15 @@ WorldObjDataFactory::instance ()
   return instance_;
 }
 
+void WorldObjDataFactory::deinit()
+{
+	if (instance_)
+	{
+		instance_->free_factories();
+		delete instance_;
+	}
+}
+
 WorldObjData*
 WorldObjDataFactory::create (xmlDocPtr doc, xmlNodePtr cur)
 {
@@ -182,6 +191,15 @@ WorldObjDataFactory::register_factory (const std::string& id,
 				       WorldObjDataAbstractFactory* factory)
 {
   factories[id] = factory;
+}
+
+void
+WorldObjDataFactory::free_factories()
+{
+  for (std::map<std::string, WorldObjDataAbstractFactory*>::iterator i = factories.begin(); i != factories.end(); ++i)
+  {
+	  delete i->second;
+  }
 }
 
 /* EOF */
