@@ -1,4 +1,4 @@
-//  $Id: graphic_context.hxx,v 1.6 2003/10/18 23:17:28 grumbel Exp $
+//  $Id: graphic_context.hxx,v 1.7 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,7 @@
 #include <string>
 #include "../vector.hxx"
 #include <ClanLib/Core/Math/rect.h>
+#include <ClanLib/Display/font.h>
 
 class CL_Surface;
 class CL_Sprite;

@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.1 2002/09/27 15:01:20 torangan Exp $
+#  $Id: Makefile.am,v 1.2 2003/10/19 12:25:48 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,7 @@
 
 noinst_LIBRARIES = libpingus_worldobjs_entrances.a
 
+libpingus_worldobjs_entrances_a_CPPFLAGS = @PINGUS_CFLAGS@
 libpingus_worldobjs_entrances_a_SOURCES = \
 	cloud.cxx	cloud.hxx \
 	woodthing.cxx	woodthing.hxx

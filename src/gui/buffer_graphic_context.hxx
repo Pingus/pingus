@@ -1,4 +1,4 @@
-//  $Id: buffer_graphic_context.hxx,v 1.4 2003/10/18 23:17:28 grumbel Exp $
+//  $Id: buffer_graphic_context.hxx,v 1.5 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,13 +23,12 @@
 #include <string>
 #include "../vector.hxx"
 #include <ClanLib/Core/Math/rect.h>
-#include <ClanLib/Display/SurfaceProviders/canvas.h>
+#include <ClanLib/Display/pixel_buffer.h>
 #include <ClanLib/Display/font.h>
 #include "graphic_context.hxx"
 
 class CL_Surface;
 class CL_Font;
-class CL_Canvas;
 
 namespace Pingus {
 
@@ -40,7 +39,7 @@ typedef CL_Font FontHandle;
 class BufferGraphicContext : public GraphicContext
 {
 private:
-  CL_Canvas* canvas; 
+  CL_PixelBuffer* canvas; 
 
 public:
   BufferGraphicContext(int width, int height);

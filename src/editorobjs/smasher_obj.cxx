@@ -1,4 +1,4 @@
-//  $Id: smasher_obj.cxx,v 1.10 2003/10/18 23:17:28 grumbel Exp $
+//  $Id: smasher_obj.cxx,v 1.11 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,15 +39,15 @@ SmasherObj::~SmasherObj ()
   delete data;
 }
 
-EditorObjLst
+EditorNS::EditorObjLst
 SmasherObj::create (const Vector& pos)
 {
   WorldObjsData::SmasherData smasher_data;
   smasher_data.pos = pos;
-  return EditorObjLst(1, new SmasherObj(smasher_data));
+  return EditorNS::EditorObjLst(1, new SmasherObj(smasher_data));
 }
 
-EditorObj*
+EditorNS::EditorObj*
 SmasherObj::duplicate ()
 {
   return new SmasherObj(*data);

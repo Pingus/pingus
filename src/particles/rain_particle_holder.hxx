@@ -1,4 +1,4 @@
-//  $Id: rain_particle_holder.hxx,v 1.6 2003/10/18 23:17:28 grumbel Exp $
+//  $Id: rain_particle_holder.hxx,v 1.7 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,9 +21,11 @@
 #define HEADER_PINGUS_PARTICLES_RAIN_PARTICLE_HOLDER_HXX
 
 #include <vector>
-#include <ClanLib/Display/surface.h>
+#include <ClanLib/Display/sprite.h>
 #include "../vector.hxx"
 #include "../worldobj.hxx"
+
+namespace Pingus {
 
 class GraphicContext;
 
@@ -45,9 +47,9 @@ class RainParticleHolder : public WorldObj
   };
 
 private:
-  CL_Surface rain1_surf;
-  CL_Surface rain2_surf;
-  CL_Surface rain_splash;
+  CL_Sprite rain1_surf;
+  CL_Sprite rain2_surf;
+  CL_Sprite rain_splash;
 
   std::vector<RainParticle> particles;
 
@@ -70,6 +72,7 @@ private:
 };
 
 } // namespace Particles
+} // namespace Pingus
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: playfield_view.hxx,v 1.9 2003/04/19 10:23:17 torangan Exp $
+//  $Id: playfield_view.hxx,v 1.10 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,9 @@
 #include "gui_obj.hxx"
 
 class CL_Rect;
+
+namespace Pingus {
+
 class Vector;
 class World;
 class Pingu;
@@ -56,6 +59,8 @@ private:
   PlayfieldView (const PlayfieldView&);
   PlayfieldView& operator= (const PlayfieldView&);
 };
+
+} // namespace Pingus
 
 #endif
 

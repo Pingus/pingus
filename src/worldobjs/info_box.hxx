@@ -1,4 +1,4 @@
-//  $Id: info_box.hxx,v 1.16 2003/04/19 10:23:19 torangan Exp $
+//  $Id: info_box.hxx,v 1.17 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,8 @@
 
 #include "../worldobj.hxx"
 #include "../editor/sprite_editorobj.hxx"
+
+namespace Pingus {
 
 namespace WorldObjsData {
 class InfoBoxData;
@@ -50,7 +52,7 @@ private:
 };
 
 } // namespace WorldObjs
-
+} // namespace Pingus
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: gui_manager.hxx,v 1.14 2003/04/19 10:23:18 torangan Exp $
+//  $Id: gui_manager.hxx,v 1.15 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,64 +24,68 @@
 #include "../input/event.hxx"
 #include "component.hxx"
 
+namespace Pingus {
+
 class GameDelta;
 
-namespace GUI
+namespace GUI {
+
+/** The GUIManager class holds a group of components and manages
+    them. It dispatches the GameDelta to each individual
+    component
+
+    FIXME: We translate GameDelta into another 'language' which is
+    then understood by the GUI, this seems unclear, not sure at
+    which point it is best to split the GameDelta into
+    on_primary_button_press(), etc.
+*/
+class GUIManager : public Component
 {
-  /** The GUIManager class holds a group of components and manages
-      them. It dispatches the GameDelta to each individual
-      component
+private:
+  std::vector<Component*> components;
 
-      FIXME: We translate GameDelta into another 'language' which is
-      then understood by the GUI, this seems unclear, not sure at
-      which point it is best to split the GameDelta into
-      on_primary_button_press(), etc.
-  */
-  class GUIManager : public Component
-  {
-  private:
-    std::vector<Component*> components;
+  /** The component which recieved the last pressed event */
+  Component* primary_pressed_component;
+  Component* secondary_pressed_component;
 
-    /** The component which recieved the last pressed event */
-    Component* primary_pressed_component;
-    Component* secondary_pressed_component;
+  /** The component over which the mouse was in the last update,
+      used to detecte enter/leave events */
+  Component* mouse_over_component;
 
-    /** The component over which the mouse was in the last update,
-	used to detecte enter/leave events */
-    Component* mouse_over_component;
+  // FIXME: Hack: should be handled inside the controller
+  int x_pos;
+  int y_pos;
 
-    // FIXME: Hack: should be handled inside the controller
-    int x_pos;
-    int y_pos;
+  void process_input (const GameDelta& delta);
+  void process_pointer_event (const Input::PointerEvent& event);
+  void process_button_event (unsigned int time_stamp, const Input::ButtonEvent& event);
+public:
+  GUIManager ();
+  virtual ~GUIManager () {}
 
-    void process_input (const GameDelta& delta);
-    void process_pointer_event (const Input::PointerEvent& event);
-    void process_button_event (unsigned int time_stamp, const Input::ButtonEvent& event);
-  public:
-    GUIManager ();
-    virtual ~GUIManager () {}
+  virtual void draw (GraphicContext& gc);
+  virtual void update (const GameDelta& delta);
+  virtual void update (float delta) { UNUSED_ARG (delta); }
 
-    virtual void draw (GraphicContext& gc);
-    virtual void update (const GameDelta& delta);
-    virtual void update (float delta) { UNUSED_ARG (delta); }
+  /** Add a component to the manager, if delete_component is true
+      the component will get deleted on destruction of the manager,
+      if false is supplied the user has to handle the component
+      itself */
+  void add (Component*, bool delete_component = true);
 
-    /** Add a component to the manager, if delete_component is true
-	the component will get deleted on destruction of the manager,
-	if false is supplied the user has to handle the component
-	itself */
-    void add (Component*, bool delete_component = true);
+  /** */
+  void remove (Component*);
 
-    /** */
-    void remove (Component*);
+  Component* component_at (int x, int y);
+  virtual bool is_at (int x, int y);
 
-    Component* component_at (int x, int y);
-    virtual bool is_at (int x, int y);
+private:
+  GUIManager (const GUIManager&);
+  GUIManager& operator= (const GUIManager&);
+};
 
-  private:
-    GUIManager (const GUIManager&);
-    GUIManager& operator= (const GUIManager&);
-  };
-}
+} // namespace GUI
+} // namespace Pingus
 
 #endif
 

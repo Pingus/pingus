@@ -1,4 +1,4 @@
-//  $Id: editor.cxx,v 1.55 2003/10/18 23:17:27 grumbel Exp $
+//  $Id: editor.cxx,v 1.56 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -109,16 +109,20 @@ Editor::Editor () : event_handler_ref_counter(0),
   scroll_map->editor_event = event;
 
   //std::cout << "Editor: registering event handler" << event << "... " << std::flush;
+#ifdef CLANLIB_0_6
   on_button_press_slot   = CL_Input::sig_button_press ().connect(event, &EditorEvent::on_button_press);
   on_button_release_slot = CL_Input::sig_button_release ().connect(event, &EditorEvent::on_button_release);
+#endif
 }
 
 Editor::~Editor ()
 {
   StatManager::instance()->set_bool("show-editor-help-screen", show_help_screen);
 
+#ifdef CLANLIB_0_6
   CL_Input::sig_button_press ().disconnect (on_button_press_slot);
   CL_Input::sig_button_release ().disconnect (on_button_release_slot);
+#endif 
 
   delete object_manager;
   delete status_line;
@@ -199,8 +203,8 @@ Editor::draw ()
   gui->show ();
 
   if (get_gui_manager()->get_focus () == get_gui_manager ())
-    CL_Display::draw_rect (25, 0, CL_Display::get_width (), CL_Display::get_height (),
-			   1.0f, 1.0f, 1.0f);
+    CL_Display::draw_rect(CL_Rect(25, 0, CL_Display::get_width (), CL_Display::get_height ()),
+                          CL_Color(255, 255, 255));
 
 }
 
@@ -215,7 +219,7 @@ Editor::scroll ()
 
   CL_System::keep_alive();
 
-  while (CL_Mouse::right_pressed())
+  while (CL_Mouse::get_keycode(CL_MOUSE_RIGHT))
     {
       CL_System::keep_alive();
 
@@ -267,58 +271,63 @@ Editor::read_string (const std::string & prefix, const std::string & default_str
   font.draw(20, 400, "For information about the editor, have a look at the info pages.");
   font.draw(20, 420, "$ info pingus");
   Display::flip_display();
+#ifdef CLANLIB_0_6
   CL_Display::sync_buffers();
+#endif
 
-  CL_InputEvent event;
-  CL_InputBuffer* keys = new CL_InputBuffer;
-  bool  finished = false;
+  {
+    CL_InputEvent event;
+    CL_InputBuffer* keys = new CL_InputBuffer;
+    bool  finished = false;
 
-  while (!finished)
-    {
-      CL_System::keep_alive();
+    while (!finished)
+      {
+        CL_System::keep_alive();
 
-      if (keys->peek_key().type != CL_InputEvent::no_key)
-	{
-	  event = keys->get_key();
+        if (keys->peek_key().type != CL_InputEvent::no_key)
+          {
+            event = keys->pop_key();
 
-	  if (event.type == CL_InputEvent::pressed)
-	    {
-	      switch (event.id)
-		{
-		case CL_KEY_ENTER:
-		  finished = true;
-		  std::cout << "--- Enter pressed" << std::endl;
-		  break;
+            if (event.type == CL_InputEvent::pressed)
+              {
+                switch (event.id)
+                  {
+                  case CL_KEY_ENTER:
+                    finished = true;
+                    std::cout << "--- Enter pressed" << std::endl;
+                    break;
 
-		case CL_KEY_ESCAPE:
-		  str = "";
-		  finished = true;
-		  break;
+                  case CL_KEY_ESCAPE:
+                    str = "";
+                    finished = true;
+                    break;
 
-		case CL_KEY_DELETE:
-		case CL_KEY_BACKSPACE:
-		  if (!str.empty())
-		    str = str.substr(0, str.size() - 1);
-		  break;
+                  case CL_KEY_DELETE:
+                  case CL_KEY_BACKSPACE:
+                    if (!str.empty())
+                      str = str.substr(0, str.size() - 1);
+                    break;
 
-		case CL_KEY_TAB:
-		  std::cout << "Tab completion not implemented" << std::endl;
-		  break;
+                  case CL_KEY_TAB:
+                    std::cout << "Tab completion not implemented" << std::endl;
+                    break;
 
-		default:
-                  str += event.str;
-		  break;
-		}
-	    }
-	  CL_Display::clear();
-	  font.draw(20, 20, prefix.c_str());
-	  font.draw(20, 40, str.c_str());
-	  Display::flip_display();
-	}
-    }
-  delete keys;
+                  default:
+                    str += event.str;
+                    break;
+                  }
+              }
+            CL_Display::clear();
+            font.draw(20, 20, prefix.c_str());
+            font.draw(20, 40, str.c_str());
+            Display::flip_display();
+          }
+      }
+    delete keys;
+  }
+  
   event->enable();
-
+  
   return str;
 }
 
@@ -379,15 +388,15 @@ Editor::zoom_mode ()
 	  rect.right  = CL_Mouse::get_x ();
 	  rect.bottom = CL_Mouse::get_y ();
 
-	  CL_Display::draw_rect (rect.left, rect.top, rect.right, rect.bottom,
-				 1.0, 1.0, 0.0, 1.0);
+	  CL_Display::draw_rect(CL_Rect(rect.left, rect.top, rect.right, rect.bottom),
+                                CL_Color(255, 255, 0, 255));
 	}
 
       mouse_cursor.draw(CL_Mouse::get_x (), CL_Mouse::get_y ());
 
       Display::flip_display(true);
     }
-
+  
   view->zoom_to (rect);
   tool = SELECTOR_TOOL;
 }
@@ -476,7 +485,7 @@ Editor::interactive_move_object()
   // FIXME: To fix this the whole editor should be build up out of CL_Components
 
   CL_System::keep_alive();
-
+  
   selection->drag ();
   Vector old_pos (view->screen_to_world(Vector(CL_Mouse::get_x(), CL_Mouse::get_y())));
   while (CL_Mouse::get_keycode(CL_MOUSE_LEFT))

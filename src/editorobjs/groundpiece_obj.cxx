@@ -1,4 +1,4 @@
-//  $Id: groundpiece_obj.cxx,v 1.16 2003/10/18 23:17:28 grumbel Exp $
+//  $Id: groundpiece_obj.cxx,v 1.17 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -44,7 +44,7 @@ GroundpieceObj::~GroundpieceObj ()
   delete data;
 }
 
-EditorObj*
+EditorNS::EditorObj*
 GroundpieceObj::duplicate ()
 {
   return new GroundpieceObj(*data);

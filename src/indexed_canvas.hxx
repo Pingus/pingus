@@ -1,4 +1,4 @@
-//  $Id: indexed_canvas.hxx,v 1.4 2003/10/18 23:17:27 grumbel Exp $
+//  $Id: indexed_canvas.hxx,v 1.5 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_INDEXED_CANVAS_HXX
 #define HEADER_PINGUS_INDEXED_CANVAS_HXX
 
-#include <ClanLib/Display/SurfaceProviders/generic_surfaceprovider.h>
+#include <ClanLib/Display/pixel_buffer.h>
 #include <ClanLib/Display/palette.h>
 
 /** This class is analog to CL_Canvas, but instead of being true

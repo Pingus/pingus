@@ -1,4 +1,4 @@
-//  $Id: object_selector.cxx,v 1.43 2003/10/18 23:17:27 grumbel Exp $
+//  $Id: object_selector.cxx,v 1.44 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -365,7 +365,7 @@ ObjectSelector::get_from_file ()
 
 	    StringReader reader("Input the image name:",
 				System::get_statdir () + "images/");
-	    reader.set_strings(&strs);
+	    reader.set_strings(strs);
 	    std::string file = reader.read_string();
 	    HotspotData data;
 	    data.pos = pos;
@@ -617,12 +617,12 @@ ObjectSelector::select_surface (const std::string & resource_file)
 
   data.pos = pos;
 
-  std::list<std::string>* liste = res->get_resources_of_type("surface");
+  std::list<std::string> liste = res->get_resources_of_type("surface");
   surface_obj sur_obj;
   std::vector<surface_obj> sur_list;
   int j = 0;
 
-  for(std::list<std::string>::iterator i = liste->begin(); i != liste->end(); ++i)
+  for(std::list<std::string>::iterator i = liste.begin(); i != liste.end(); ++i)
     {
       // FIXME: This should be moved to ThumbCache
       ++j;
@@ -634,7 +634,7 @@ ObjectSelector::select_surface (const std::string & resource_file)
 
       if (!datafile_loaded && (j % 25) == 0)
 	{
-	  loading_screen.draw_progress(i->c_str(), (float)j / liste->size());
+	  loading_screen.draw_progress(i->c_str(), (float)j / liste.size());
 	}
     }
   data_loaded[resource_file] = true;
@@ -657,7 +657,7 @@ ObjectSelector::read_key ()
       if (keys.peek_key().type != CL_InputEvent::no_key)
 	{
 	  event = keys.pop_key();
-	  return key.id;
+	  return event.id;
 	}
     }
 }

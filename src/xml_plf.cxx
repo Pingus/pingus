@@ -1,4 +1,4 @@
-//  $Id: xml_plf.cxx,v 1.39 2003/10/18 23:17:27 grumbel Exp $
+//  $Id: xml_plf.cxx,v 1.40 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -393,6 +393,6 @@ XMLPLF::parse_traps (xmlNodePtr cur)
   std::cout << "XMLPLF::parse_traps: Invalid data structure" << std::endl;
 }
 
-} namespace Pingus
+} // namespace Pingus
 
 /* EOF */

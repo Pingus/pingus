@@ -1,4 +1,4 @@
-//  $Id: display_graphic_context.hxx,v 1.6 2003/10/18 23:17:28 grumbel Exp $
+//  $Id: display_graphic_context.hxx,v 1.7 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -122,11 +122,11 @@ public:
   void draw_circle (int x_pos, int y_pos, int radius,
 		    float r, float g, float b, float a = 1.0f);
 
-  void print_left (FontHandle font, int x_pos, int y_pos, const std::string& str);
+  void print_left (CL_Font font, int x_pos, int y_pos, const std::string& str);
 
-  void print_center (FontHandle font, int x_pos, int y_pos, const std::string& str);
+  void print_center (CL_Font font, int x_pos, int y_pos, const std::string& str);
 
-  void print_right (FontHandle font, int x_pos, int y_pos, const std::string& str);
+  void print_right (CL_Font font, int x_pos, int y_pos, const std::string& str);
 
 private:
   DisplayGraphicContext (const DisplayGraphicContext&);

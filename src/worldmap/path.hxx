@@ -1,4 +1,4 @@
-//  $Id: path.hxx,v 1.4 2003/04/19 10:23:19 torangan Exp $
+//  $Id: path.hxx,v 1.5 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,7 @@
 #include <vector>
 #include "../vector.hxx"
 
+namespace Pingus {
 namespace WorldMapNS {
 
 /** a wrapper class around std::vector<Vector>, which can calculate
@@ -86,6 +87,7 @@ public:
 };
 
 } // namespace WorldMapNS
+} // namespace Pingus
 
 #endif
 

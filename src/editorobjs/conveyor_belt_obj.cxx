@@ -1,4 +1,4 @@
-//  $Id: conveyor_belt_obj.cxx,v 1.9 2003/10/18 23:17:27 grumbel Exp $
+//  $Id: conveyor_belt_obj.cxx,v 1.10 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,9 +31,9 @@ namespace EditorObjs {
 
 ConveyorBeltObj::ConveyorBeltObj (const WorldObjsData::ConveyorBeltData& data_)
   : data(new WorldObjsData::ConveyorBeltData(data_)),
-    left_sur  (PingusResource::load_surface ("conveyorbelt_left",   "worldobjs")),
-    right_sur (PingusResource::load_surface ("conveyorbelt_right",  "worldobjs")),
-    middle_sur(PingusResource::load_surface ("conveyorbelt_middle", "worldobjs"))
+    left_sur  (PingusResource::load_sprite("conveyorbelt_left",   "worldobjs")),
+    right_sur (PingusResource::load_sprite("conveyorbelt_right",  "worldobjs")),
+    middle_sur(PingusResource::load_sprite("conveyorbelt_middle", "worldobjs"))
 {
 }
 
@@ -47,16 +47,20 @@ void
 ConveyorBeltObj::draw (EditorNS::EditorView * view)
 {
   view->draw(left_sur, data->pos, static_cast<int>(data->counter));
+
+#ifdef CLANLIB_0_6
   for (int i=0; i < data->width; ++i)
     {
       view->draw(middle_sur,
-                 static_cast<int>(data->pos.x) + left_sur.get_width() + i * middle_sur.get_width(),
+                 static_cast<int>(data->pos.x) + left_sur.get_frame_size(0).width 
+                 + i * middle_sur.get_frame_size(0).width,
 	         static_cast<int>(data->pos.y),
 	         static_cast<int>(data->counter));
     }
 
   view->draw(right_sur,
-	     static_cast<int>(data->pos.x) + left_sur.get_width() + data->width * middle_sur.get_width(),
+	     static_cast<int>(data->pos.x) + left_sur.get_frame_size().width 
+             + data->width * middle_sur.get_frame_size().width,
 	     static_cast<int>(data->pos.y),
 	     static_cast<int>(data->counter));
 
@@ -66,6 +70,7 @@ ConveyorBeltObj::draw (EditorNS::EditorView * view)
   else if (data->counter < 0)
     data->counter = middle_sur.get_num_frames() - 1;
 
+#endif
 }
 
 void
@@ -83,7 +88,7 @@ ConveyorBeltObj::create (const Vector& pos)
 {
   WorldObjsData::ConveyorBeltData newdata;
   newdata.pos = pos;
-  return EditorObjLst(1, new ConveyorBeltObj(newdata));
+  return EditorNS::EditorObjLst(1, new ConveyorBeltObj(newdata));
 }
 
 std::string
@@ -97,15 +102,19 @@ ConveyorBeltObj::status_line ()
 int
 ConveyorBeltObj::get_width ()
 {
-  return   left_sur  .get_width()
-         + right_sur .get_width()
-	 + middle_sur.get_width() * data->width;
+  return   left_sur  .get_frame_size(0).width
+         + right_sur .get_frame_size(0).width
+	 + middle_sur.get_frame_size(0).width * data->width;
 }
 
 int
 ConveyorBeltObj::get_height ()
 {
+#ifdef CLANLIB_0_6
   return middle_sur.get_height();
+#else
+  return 24;
+#endif
 }
 
 float

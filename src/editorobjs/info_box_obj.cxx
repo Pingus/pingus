@@ -1,4 +1,4 @@
-//  $Id: info_box_obj.cxx,v 1.6 2003/10/18 23:17:28 grumbel Exp $
+//  $Id: info_box_obj.cxx,v 1.7 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,12 +35,12 @@ InfoBoxObj::~InfoBoxObj ()
   delete data;
 }
 
-EditorObjLst
+EditorNS::EditorObjLst
 InfoBoxObj::create (const Vector& pos)
 {
   WorldObjsData::InfoBoxData newdata;
   newdata.pos = pos;
-  return EditorObjLst(1, new InfoBoxObj(newdata));
+  return EditorNS::EditorObjLst(1, new InfoBoxObj(newdata));
 }
 
 void
@@ -49,7 +49,7 @@ InfoBoxObj::write_xml (std::ostream& xml)
   data->write_xml(xml);
 }
 
-EditorObj*
+EditorNS::EditorObj*
 InfoBoxObj::duplicate ()
 {
   return new InfoBoxObj(*data);

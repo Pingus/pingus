@@ -1,4 +1,4 @@
-//  $Id: guillotine_data.hxx,v 1.9 2003/10/18 23:17:28 grumbel Exp $
+//  $Id: guillotine_data.hxx,v 1.10 2003/10/19 12:25:48 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,7 @@
 #define HEADER_PINGUS_WORLDOBJSDATA_GUILLOTINE_DATA_HXX
 
 #include "../vector.hxx"
-#include <ClanLib/Display/Display/surface.h>
+#include <ClanLib/Display/surface.h>
 #include "../direction.hxx"
 #include "../game_counter.hxx"
 #include "../libxmlfwd.hxx"

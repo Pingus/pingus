@@ -1,4 +1,4 @@
-//  $Id: prefab.cxx,v 1.7 2003/04/19 10:23:17 torangan Exp $
+//  $Id: prefab.cxx,v 1.8 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,8 @@
 #include "worldobj_data_factory.hxx"
 #include "path_manager.hxx"
 #include "pingus_error.hxx"
+
+namespace Pingus {
 
 Prefab::Prefab (const std::string& filename)
   : data (0)
@@ -132,5 +134,6 @@ Prefab::get_data ()
   return data;
 }
 
+} // namespace Pingus
 
 /* EOF */

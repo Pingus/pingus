@@ -1,4 +1,4 @@
-//  $Id: mouse_button.hxx,v 1.5 2003/06/19 11:00:10 torangan Exp $
+//  $Id: mouse_button.hxx,v 1.6 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,37 +26,36 @@
 class CL_Key;
 
 namespace Input {
+namespace Buttons {
 
-  namespace Buttons {
+/**
+   @brief represents a mouse button
 
-    /**
-      @brief represents a mouse button
+   XML definition: <mouse-button button="button num"/>
+*/
+class MouseButton : public Button {
 
-      XML definition: <mouse-button button="button num"/>
-      */
-    class MouseButton : public Button {
+private:
+  int button;
+  CL_Slot button_press_slot;
+  CL_Slot button_release_slot;
+  bool pressed;
 
-      private:
-        int button;
-        CL_Slot button_press_slot;
-        CL_Slot button_release_slot;
-        bool pressed;
+public:
+  MouseButton (int button_);
 
-      public:
-        MouseButton (int button_);
+  virtual bool is_pressed () const { return pressed; }
+  virtual void update (float);
 
-        virtual bool is_pressed () const { return pressed; }
-        virtual void update (float);
-
-      private:
-        void   press_handler (const CL_Key& number);
-        void release_handler (const CL_Key& number);
+private:
+  void   press_handler (const CL_Key& number);
+  void release_handler (const CL_Key& number);
       
-        MouseButton (const MouseButton&);
-        MouseButton& operator= (const MouseButton&);
-    };
+  MouseButton (const MouseButton&);
+  MouseButton& operator= (const MouseButton&);
+};
 
-  }
+}
 }
 
 #endif

@@ -1,4 +1,4 @@
-//  $Id: prefab_obj.hxx,v 1.5 2003/10/18 23:17:28 grumbel Exp $
+//  $Id: prefab_obj.hxx,v 1.6 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,7 +31,7 @@ namespace EditorObjs {
 
 /** The PrefabObj represents a Prefab inside the editor workspace
  */
-class PrefabObj : public EditorObj
+class PrefabObj : public EditorNS::EditorObj
 {
 private:
   /** The object group which this prefab wraps */

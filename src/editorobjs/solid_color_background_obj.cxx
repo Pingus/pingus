@@ -1,4 +1,4 @@
-//  $Id: solid_color_background_obj.cxx,v 1.8 2003/10/18 23:17:28 grumbel Exp $
+//  $Id: solid_color_background_obj.cxx,v 1.9 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,9 +27,10 @@
 
 #include "solid_color_background_obj.hxx"
 
+namespace Pingus {
+
 using namespace EditorNS;
 
-namespace Pingus {
 namespace EditorObjs {
 
 SolidColorBackgroundObj::SolidColorBackgroundObj (const WorldObjsData::SolidColorBackgroundData& data_)
@@ -48,7 +49,7 @@ SolidColorBackgroundObj::write_xml (std::ostream& xml)
   data->write_xml(xml);
 }
 
-EditorObj*
+EditorNS::EditorObj*
 SolidColorBackgroundObj::duplicate ()
 {
   return new SolidColorBackgroundObj(*data);

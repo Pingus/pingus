@@ -17,6 +17,7 @@
 
 noinst_LIBRARIES = libpingus_input_buttons.a
 
+libpingus_input_buttons_a_CPPFLAGS = @PINGUS_CFLAGS@
 libpingus_input_buttons_a_SOURCES =       \
 	double_button.hxx double_button.cxx \
 	dummy_button.hxx \

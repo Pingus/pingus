@@ -1,4 +1,4 @@
-//  $Id: hammer.cxx,v 1.13 2003/04/19 10:23:19 torangan Exp $
+//  $Id: hammer.cxx,v 1.14 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,7 @@
 #include "../worldobjsdata/hammer_data.hxx"
 #include "hammer.hxx"
 
+namespace Pingus {
 namespace WorldObjs {
 
 Hammer::Hammer (const WorldObjsData::HammerData& data_)
@@ -73,5 +74,6 @@ Hammer::update ()
 }
 
 } // namespace WorldObjs
+} // namespace Pingus
 
 /* EOF */

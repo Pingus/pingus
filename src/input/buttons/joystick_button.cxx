@@ -1,4 +1,4 @@
-//  $Id: joystick_button.cxx,v 1.3 2003/04/19 10:23:19 torangan Exp $
+//  $Id: joystick_button.cxx,v 1.4 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,38 +17,37 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <ClanLib/Display/Input/input.h>
-#include <ClanLib/Display/Input/inputdevice.h>
-#include <ClanLib/Display/Input/inputbutton.h>
+//#include <ClanLib/Display/input.h>
+#include <ClanLib/Display/input_device.h>
+//#include <ClanLib/Display/input_button.h>
 #include "joystick_button.hxx"
 #include "../../string_converter.hxx"
 #include "../../pingus_error.hxx"
 
 namespace Input {
+namespace Buttons {
 
-  namespace Buttons {
+JoystickButton::JoystickButton(int id_, int button_) : id(id_), button(button_)
+{
+  if (static_cast<unsigned int>(id) >= CL_Input::joysticks.size())
+    PingusError::raise("JoystickButton: Invalid joystick id: " + to_string(id));
 
-    JoystickButton::JoystickButton(int id_, int button_) : id(id_), button(button_)
-    {
-      if (static_cast<unsigned int>(id) >= CL_Input::joysticks.size())
-        PingusError::raise("JoystickButton: Invalid joystick id: " + to_string(id));
+  if (button > CL_Input::joysticks[id]->get_num_buttons())
+    PingusError::raise("JoystickButton: Invalid joystick button id: " + to_string(button));
+}
 
-      if (button > CL_Input::joysticks[id]->get_num_buttons())
-        PingusError::raise("JoystickButton: Invalid joystick button id: " + to_string(button));
-    }
+void
+JoystickButton::update(float)
+{
+}
 
-    void
-    JoystickButton::update(float)
-    {
-    }
+bool
+JoystickButton::is_pressed() const
+{
+  return CL_Input::joysticks[id]->get_button(button)->is_pressed();
+}
 
-    bool
-    JoystickButton::is_pressed() const
-    {
-      return CL_Input::joysticks[id]->get_button(button)->is_pressed();
-    }
-
-  }
+}
 }
 
 /* EOF */

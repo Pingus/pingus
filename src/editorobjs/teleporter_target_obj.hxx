@@ -1,4 +1,4 @@
-//  $Id: teleporter_target_obj.hxx,v 1.6 2003/10/18 23:17:28 grumbel Exp $
+//  $Id: teleporter_target_obj.hxx,v 1.7 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,7 +31,7 @@ class TeleporterObj;
     itself is handled inside the EditorObjsTeleporterObj, but we need
     this helper object to be able to show and move the teleporter
     target inside the editor */
-class TeleporterTargetObj : public SpriteEditorObj
+class TeleporterTargetObj : public EditorNS::SpriteEditorObj
 {
 private:
   TeleporterObj* teleporter;

@@ -1,4 +1,4 @@
-//  $Id: editor_view.hxx,v 1.10 2003/10/18 23:17:27 grumbel Exp $
+//  $Id: editor_view.hxx,v 1.11 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,6 +25,7 @@
 
 class CL_Rect;
 class CL_Surface;
+class CL_Sprite;
 
 namespace Pingus {
 
@@ -81,6 +82,8 @@ public:
   Vector screen_to_world (Vector pos);
   Vector world_to_screen (Vector pos);
 
+  void draw (CL_Sprite& sur, const Vector& pos, int frame);
+  void draw (CL_Sprite& sur, const Vector& pos);
   void draw (Sprite& sprite, const Vector& pos);
   void draw (Sprite& sprite, const Vector& pos, int frame);
   void draw (CL_Surface& sur, const Vector& pos);

@@ -1,4 +1,4 @@
-//  $Id: plt_xml.cxx,v 1.12 2003/04/19 10:23:17 torangan Exp $
+//  $Id: plt_xml.cxx,v 1.13 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,8 @@
 #include "pingus_error.hxx"
 #include "xml_helper.hxx"
 #include "plt_xml.hxx"
+
+namespace Pingus {
 
 PLTXML::PLTXML ()
 {
@@ -206,5 +208,7 @@ PLTXML::get_background ()
 {
   return background;
 }
+
+} // namespace Pingus
 
 /* EOF */

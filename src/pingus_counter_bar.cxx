@@ -1,4 +1,4 @@
-//  $Id: pingus_counter_bar.cxx,v 1.7 2003/10/18 23:17:27 grumbel Exp $
+//  $Id: pingus_counter_bar.cxx,v 1.8 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,7 +28,7 @@ namespace Pingus {
 PingusCounterBar::PingusCounterBar (Server * s, Orientation o, const CL_Rect& arg_rect)
   : server (s),
     orientation (o),
-    rect (arg_rect.x1 + 2, arg_rect.y1 + 2, arg_rect.x2 - 2, arg_rect.y2 - 2)
+    rect (arg_rect.left + 2, arg_rect.top + 2, arg_rect.right - 2, arg_rect.bottom - 2)
 {
 }
 
@@ -44,26 +44,26 @@ PingusCounterBar::update(float /*delta*/)
 void
 PingusCounterBar::draw ()
 {
-  int length = rect.y2 - rect.y1;
+  int length = rect.bottom - rect.top;
 
   int complete      = server->get_world ()->get_pingus()->get_number_of_allowed();
   int current_out   = server->get_world ()->get_pingus()->get_number_of_released();
   int current_saved = server->get_world ()->get_pingus()->get_number_of_exited();
 
   //std::cout << "Drawing Counterbar: " << rect << std::endl;
-  CL_Display::fill_rect (rect.x1, rect.y1, rect.x2, rect.y2,
+  CL_Display::fill_rect (rect.left, rect.top, rect.right, rect.bottom,
 			 0.0, 0.0, 1.0, 0.5);
 
-  int y_pos = rect.y2;
+  int y_pos = rect.bottom;
   int tmp_y_pos = y_pos;
 
   y_pos -= (current_saved * length) / complete;
-  CL_Display::fill_rect (rect.x1, tmp_y_pos, rect.x2, y_pos,
+  CL_Display::fill_rect (rect.left, tmp_y_pos, rect.right, y_pos,
 			 0.0f, 1.0f, 0.0f, 0.8f);
   tmp_y_pos = y_pos;
 
   y_pos -= ((current_out - current_saved) * length) / complete;
-  CL_Display::fill_rect (rect.x1, tmp_y_pos, rect.x2, y_pos,
+  CL_Display::fill_rect (rect.left, tmp_y_pos, rect.right, y_pos,
 			 1.0f, 0.0f, 0.0f, 0.8f);
   tmp_y_pos = y_pos;
 }

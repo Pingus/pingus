@@ -1,4 +1,4 @@
-//  $Id: smallmap.hxx,v 1.19 2003/10/18 23:17:27 grumbel Exp $
+//  $Id: smallmap.hxx,v 1.20 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_SMALLMAP_HXX
 #define HEADER_PINGUS_SMALLMAP_HXX
 
-#include <ClanLib/Display/Display/surface.h>
+#include <ClanLib/Display/surface.h>
 #include "gui/component.hxx"
 
 class CL_Key;

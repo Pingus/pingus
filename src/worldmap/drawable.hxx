@@ -1,4 +1,4 @@
-//  $Id: drawable.hxx,v 1.8 2003/04/19 10:23:19 torangan Exp $
+//  $Id: drawable.hxx,v 1.9 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,8 @@
 
 #include "../pingus_error.hxx"
 #include "../xml_helper.hxx"
+
+namespace Pingus {
 
 class GraphicContext;
 
@@ -76,6 +78,7 @@ private:
 };
 
 } // namespace WorldMapNS
+} // namespace Pingus
 
 #endif
 

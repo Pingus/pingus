@@ -1,4 +1,4 @@
-//  $Id: conveyor_belt.cxx,v 1.23 2003/04/19 10:23:19 torangan Exp $
+//  $Id: conveyor_belt.cxx,v 1.24 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,6 +26,7 @@
 #include "../worldobjsdata/conveyor_belt_data.hxx"
 #include "conveyor_belt.hxx"
 
+namespace Pingus {
 namespace WorldObjs {
 
 ConveyorBelt::ConveyorBelt (const WorldObjsData::ConveyorBeltData& data_)
@@ -95,5 +96,6 @@ ConveyorBelt::get_z_pos () const
 }
 
 } // namespace WorldObjs
+} // namespace Pingus
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: guillotine.cxx,v 1.9 2003/04/19 10:23:19 torangan Exp $
+//  $Id: guillotine.cxx,v 1.10 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,7 @@
 #include "../worldobjsdata/guillotine_data.hxx"
 #include "guillotine.hxx"
 
+namespace Pingus {
 namespace WorldObjs {
 
 Guillotine::Guillotine (const WorldObjsData::GuillotineData& data_)
@@ -101,6 +102,6 @@ Guillotine::catch_pingu (Pingu* pingu)
 }
 
 } // namespace WorldObjs
-
+} // namespace Pingus
 
 /* EOF */

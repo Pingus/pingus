@@ -1,4 +1,4 @@
-//  $Id: spike_obj.cxx,v 1.12 2003/10/18 23:17:28 grumbel Exp $
+//  $Id: spike_obj.cxx,v 1.13 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,15 +38,15 @@ SpikeObj::~SpikeObj ()
   delete data;
 }
 
-EditorObjLst
+EditorNS::EditorObjLst
 SpikeObj::create (const Vector& pos)
 {
   WorldObjsData::SpikeData spike_data;
   spike_data.pos = pos;
-  return EditorObjLst(1, new SpikeObj(spike_data));
+  return EditorNS::EditorObjLst(1, new SpikeObj(spike_data));
 }
 
-EditorObj*
+EditorNS::EditorObj*
 SpikeObj::duplicate ()
 {
   return new SpikeObj(*data);

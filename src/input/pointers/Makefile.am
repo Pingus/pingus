@@ -17,6 +17,7 @@
 
 noinst_LIBRARIES = libpingus_input_pointers.a
 
+libpingus_input_pointers_a_CPPFLAGS = @PINGUS_CFLAGS@
 libpingus_input_pointers_a_SOURCES =       \
         axis_pointer.hxx axis_pointer.cxx \
 	dummy_pointer.hxx \

@@ -1,4 +1,4 @@
-//  $Id: pingu_particle_holder.cxx,v 1.9 2003/04/19 10:23:19 torangan Exp $
+//  $Id: pingu_particle_holder.cxx,v 1.10 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,12 +24,11 @@
 #include "../world.hxx"
 #include "pingu_particle_holder.hxx"
 
+namespace Pingus {
 namespace Particles {
 
-namespace {
-  const float x_collision_decrease = 0.3f;
-  const float y_collision_decrease = 0.6f;
-}
+const float x_collision_decrease = 0.3f;
+const float y_collision_decrease = 0.6f;
 
 PinguParticleHolder::PinguParticle::PinguParticle (int x, int y)
   : livetime(50 + (rand() % 75)),
@@ -167,5 +166,6 @@ PinguParticleHolder::draw (GraphicContext& gc)
 }
 
 } // namespace Particles
+} // namespace Pingus
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: dot.cxx,v 1.6 2003/04/18 12:48:50 grumbel Exp $
+//  $Id: dot.cxx,v 1.7 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,7 @@
 #include "../xml_file_reader.hxx"
 #include "dot.hxx"
 
+namespace Pingus {
 namespace WorldMapNS {
 
 Dot::Dot(xmlDocPtr doc, xmlNodePtr cur)
@@ -41,5 +42,6 @@ Dot::Dot(xmlDocPtr doc, xmlNodePtr cur)
 }
 
 } // namespace WorldMapNS
+} // namespace Pingus
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: pingus_resource.hxx,v 1.16 2003/10/18 23:17:27 grumbel Exp $
+//  $Id: pingus_resource.hxx,v 1.17 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,6 @@
 #define HEADER_PINGUS_PINGUS_RESOURCE_HXX
 
 #include <map>
-
 #include <ClanLib/display.h>
 #include "res_descriptor.hxx"
 

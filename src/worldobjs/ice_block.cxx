@@ -1,4 +1,4 @@
-//  $Id: ice_block.cxx,v 1.22 2003/04/19 10:23:19 torangan Exp $
+//  $Id: ice_block.cxx,v 1.23 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,6 +28,7 @@
 #include "../worldobjsdata/ice_block_data.hxx"
 #include "ice_block.hxx"
 
+namespace Pingus {
 namespace WorldObjs {
 
 IceBlock::IceBlock (const WorldObjsData::IceBlockData& data_)
@@ -101,5 +102,6 @@ IceBlock::update()
 }
 
 } // namespace WorldObjs
+} // namespace Pingus
 
 /* EOF */

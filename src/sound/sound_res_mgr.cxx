@@ -1,4 +1,4 @@
-//  $Id: sound_res_mgr.cxx,v 1.3 2003/06/04 17:22:33 torangan Exp $
+//  $Id: sound_res_mgr.cxx,v 1.4 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,8 @@
 #include "../globals.hxx"
 #include "../debug.hxx"
 #include "sound_res_mgr.hxx"
+
+namespace Pingus {
 
 SoundResMgr::SoundMap SoundResMgr::sound_map;
 
@@ -54,4 +56,7 @@ void SoundResMgr::free_sound_map()
 	  delete i->second;
   }
 }
+
+} // namespace Pingus
+
 /* EOF */

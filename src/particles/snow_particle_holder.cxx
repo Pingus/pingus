@@ -1,4 +1,4 @@
-//  $Id: snow_particle_holder.cxx,v 1.7 2003/04/19 10:23:19 torangan Exp $
+//  $Id: snow_particle_holder.cxx,v 1.8 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,6 +26,7 @@
 #include "../world.hxx"
 #include "snow_particle_holder.hxx"
 
+namespace Pingus {
 namespace Particles {
 
 SnowParticleHolder::SnowParticle::SnowParticle (int x, int y, bool colliding_)
@@ -149,6 +150,7 @@ SnowParticleHolder::draw (GraphicContext& gc)
     }
 }
 
-} //namespace Particles
+} // namespace Particles
+} // namespace Pingus
 
 /* EOF */

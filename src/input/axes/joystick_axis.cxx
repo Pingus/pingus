@@ -1,4 +1,4 @@
-//  $Id: joystick_axis.cxx,v 1.2 2003/04/19 10:23:19 torangan Exp $
+//  $Id: joystick_axis.cxx,v 1.3 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,49 +17,48 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <ClanLib/Display/Input/input.h>
-#include <ClanLib/Display/Input/inputdevice.h>
-#include <ClanLib/Display/Input/inputaxis.h>
+#include <ClanLib/Display/input.h>
+#include <ClanLib/Display/inputdevice.h>
+#include <ClanLib/Display/inputaxis.h>
 #include "joystick_axis.hxx"
 #include "../../pingus_error.hxx"
 
 namespace Input {
+namespace Axes {
 
-  namespace Axes {
+JoystickAxis::JoystickAxis(int id_, int axis_, float angle_) : id(id_), axis(axis_), pos(0), angle(angle_)
+{
+  if (static_cast<unsigned int> (id) >= CL_Input::joysticks.size())
+    PingusError::raise("JoystickAxis: Invalid joystick id");
 
-    JoystickAxis::JoystickAxis(int id_, int axis_, float angle_) : id(id_), axis(axis_), pos(0), angle(angle_)
-    {
-      if (static_cast<unsigned int> (id) >= CL_Input::joysticks.size())
-        PingusError::raise("JoystickAxis: Invalid joystick id");
+  if (axis > CL_Input::joysticks[id]->get_num_axes())
+    PingusError::raise("JoystickAxis: Invalid joystick axis id");
 
-      if (axis > CL_Input::joysticks[id]->get_num_axes())
-        PingusError::raise("JoystickAxis: Invalid joystick axis id");
+  if (angle < 0)
+    angle = (static_cast<int>(angle) % 360) + 360;
+  else if (angle > 360)
+    angle = static_cast<int>(angle) % 360;
+}
 
-      if (angle < 0)
-        angle = (static_cast<int>(angle) % 360) + 360;
-      else if (angle > 360)
-        angle = static_cast<int>(angle) % 360;
-    }
+const float&
+JoystickAxis::get_pos () const
+{
+  return pos;
+}
 
-    const float&
-    JoystickAxis::get_pos () const
-    {
-      return pos;
-    }
+const float&
+JoystickAxis::get_angle () const
+{
+  return angle;
+}
 
-    const float&
-    JoystickAxis::get_angle () const
-    {
-      return angle;
-    }
+void
+JoystickAxis::update (float)
+{
+  pos = CL_Input::joysticks[id]->get_axis(axis)->get_pos();
+}
 
-    void
-    JoystickAxis::update (float)
-    {
-      pos = CL_Input::joysticks[id]->get_axis(axis)->get_pos();
-    }
-
-  }
+}
 }
 
 /* EOF */

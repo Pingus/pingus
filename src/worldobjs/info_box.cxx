@@ -1,4 +1,4 @@
-//  $Id: info_box.cxx,v 1.21 2003/10/18 23:17:28 grumbel Exp $
+//  $Id: info_box.cxx,v 1.22 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,6 +27,7 @@
 #include "../worldobjsdata/info_box_data.hxx"
 #include "info_box.hxx"
 
+namespace Pingus {
 namespace WorldObjs {
 
 InfoBox::InfoBox (const WorldObjsData::InfoBoxData& data_)
@@ -53,7 +54,7 @@ InfoBox::draw (GraphicContext& gc)
 
   if (is_open)
     {
-      int width = Fonts::pingus_small->get_text_width(data->info_text.c_str());
+      int width = Fonts::pingus_small.get_text_width(data->info_text.c_str());
       int border = 6;
       gc.draw_line(data->pos, data->pos + Vector(0, 0 - 100), 0.0f, 1.0f, 0.0f, 1.0f);
       gc.draw(data->sprite, data->pos);
@@ -94,5 +95,6 @@ InfoBox::get_z_pos () const {
 }
 
 } // namespace WorldObjs
+} // namespace Pingus
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: view.hxx,v 1.13 2003/10/18 23:17:27 grumbel Exp $
+//  $Id: view.hxx,v 1.14 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,8 @@
 #ifndef HEADER_PINGUS_VIEW_HXX
 #define HEADER_PINGUS_VIEW_HXX
 
-#include <ClanLib/Display/Display/cliprect.h>
+#include <ClanLib/display.h>
+#include <ClanLib/core.h>
 #include "range.hxx"
 #include "capture_rectangle.hxx"
 #include "gui/display_graphic_context.hxx"

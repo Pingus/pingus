@@ -1,4 +1,4 @@
-//  $Id: exit_obj.cxx,v 1.3 2003/10/18 23:17:27 grumbel Exp $
+//  $Id: exit_obj.cxx,v 1.4 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -44,7 +44,7 @@ ExitObj::~ExitObj ()
   delete data;
 }
 
-EditorObj*
+EditorNS::EditorObj*
 ExitObj::duplicate ()
 {
   return new ExitObj(*data);

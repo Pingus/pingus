@@ -1,4 +1,4 @@
-//  $Id: dot.hxx,v 1.7 2003/04/19 10:23:19 torangan Exp $
+//  $Id: dot.hxx,v 1.8 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,6 +25,7 @@
 #include "../vector.hxx"
 #include "drawable.hxx"
 
+namespace Pingus {
 namespace WorldMapNS {
 
 /** A Dot is a node between all the pathes on the worldmap, there are
@@ -55,6 +56,7 @@ private:
 };
 
 } // namespace WorldMapNS
+} // namespace Pingus
 
 #endif
 

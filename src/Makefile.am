@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.154 2003/10/18 12:11:30 grumbel Exp $
+#  $Id: Makefile.am,v 1.155 2003/10/19 12:25:47 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -91,6 +91,8 @@ blitter.hxx \
 blitter_impl.hxx \
 button_panel.cxx \
 button_panel.hxx \
+canvas.hxx \
+canvas.cxx \
 capture_rectangle.cxx \
 capture_rectangle.hxx \
 cheat.hxx \
@@ -158,8 +160,6 @@ html_browser.hxx \
 hurry_up.cxx \
 hurry_up.hxx \
 input_event.hxx \
-indexed_canvas.hxx \
-indexed_canvas.cxx \
 layer_manager.cxx \
 layer_manager.hxx \
 libxmlfwd.hxx \

@@ -18,128 +18,33 @@
 
 #include <cmath>
 #include <ClanLib/display.h>
+#include "../canvas.hxx"
 #include "caimagemanipulation.h"
 
-/** Returns a pointer to a new image, based on 'surface'
-    but rotated by an angle of 'degrees' degrees.
-    \param surface The original surface
-    \param angle Rotation angle in degrees (clock-wise)
-    \param exact true: Exact, smooth coloring (calculates color 'between' pixels)
-                 false: Inexact but faster.
-*/
-CL_Surface*
-CAImageManipulation::rotate( CL_Surface* surface,
-                             float angle,
-                             bool exact )
-{
-  int width = surface->get_width();
-  int height = surface->get_height();
-
-  // Create a temporary canvas which contains the original surface:
-  CL_Canvas* tmpCan = new CL_Canvas( width, height );
-  surface->put_target( 0,0, 0, tmpCan );
-
-  // Create a new canvas which will contain the rotated surface:
-  CL_Canvas* newCan = new CL_Canvas( width, height );
-
-  // Calc size in bytes:
-  int bpp = tmpCan->get_bytes_per_pixel();
-  int size = width * height * bpp;
-
-  // Only 24bit supported:
-  //
-  if( bpp==4 ) {
-
-    newCan->lock();
-
-    int i;             // i is the index for the rotated data
-    int r, g, b, a;
-    float xo, yo;      // Original pixel
-    float xr, yr;      // Rotated pixel
-    float cx, cy;      // Rotation center
-
-    r=g=b=a=0;
-
-    cx = (float)width/2;
-    cy = (float)height/2;
-
-    // Store original image:
-    //
-    unsigned char *oriData = (unsigned char*)tmpCan->get_data();
-    unsigned char *newData = (unsigned char*)newCan->get_data();
-
-    // needs to be calculated only once since angle doesn't change!!
-    //
-    float cos_angle = cos( angle/ARAD );     // rotating it clockwise (!) by angle,
-    float sin_angle = sin( angle/ARAD );
-
-    float x0;
-    float y0;
-
-    // Rotate:
-    //
-    for( i=0; i<size; i+=bpp ) {
-      xr = getCoordinateX( width, i );
-      yr = getCoordinateY( width, i );
-
-      x0 = (xr - cx);         // rotation around origin, so i create a relative
-      y0 = (yr - cy);         //   vector by subtracting (cx, cy) ...
-
-      xo = cx +  x0 * cos_angle + y0 * sin_angle;  // ... and add it again after rotation
-      yo = cy +  y0 * cos_angle - x0 * sin_angle;
-
-      if( (int)xo>-0.5 && (int)xo<width+0.5 &&
-          (int)yo>-0.5 && (int)yo<height+0.5   ) {
-
-        getExactColor( oriData,
-                       width, height,
-                       xo, yo,
-                       &r, &g, &b, &a,
-                       exact );
-
-        newData[i  ] = a;
-        newData[i+1] = b;
-        newData[i+2] = g;
-        newData[i+3] = r;
-      }
-      else {
-        newData[i  ] = 0;
-        newData[i+1] = 0;
-        newData[i+2] = 0;
-        newData[i+3] = 0;
-      }
-    }
-    newCan->unlock();
-  }
-  delete tmpCan;
-
-  // Return new surface based on the canvas:
-  //
-  return CL_Surface::create( newCan );
-}
-
-
+using namespace Pingus;
 
 /** Returns a pointer to a new image, based on 'surface'
     but fliped horizontal or vertical.
     \param horizontal true: Flip horizontal (left to right)
                       false: Flip vertical (upsidedown)
 */
-CL_Surface*
-CAImageManipulation::flip( CL_Surface* surface, bool horizontal )
+CL_Surface
+CAImageManipulation::flip( CL_Surface surface, bool horizontal )
 {
   // Create a canvas which contains the original surface:
   //
-  CL_Canvas* can = new CL_Canvas( surface->get_width(),
-                                  surface->get_height() );
-
-  surface->put_target( 0,0, 0, can );
+  CL_PixelBuffer* can = Canvas::create_rgba8888(surface.get_width(), surface.get_height());
+  
+  // FIXME:
+  assert(0);
+  // surface->put_target( 0,0, 0, can );
 
   // Calc size in bytes:
   //
-  int bpp = can->get_bytes_per_pixel();
-  int size = surface->get_width() * surface->get_height() * bpp;
-  int width = surface->get_width();
+  int bpp = 0;// FIXME: can->get_bytes_per_pixel();
+
+  int size  = surface.get_width() * surface.get_height() * bpp;
+  int width = surface.get_width();
 
   // Only 24bit supported:
   //
@@ -180,7 +85,7 @@ CAImageManipulation::flip( CL_Surface* surface, bool horizontal )
 
   // Return new surface based on the canvas:
   //
-  return CL_Surface::create( can );
+  return CL_Surface( can );
 }
 
 
@@ -199,21 +104,22 @@ CAImageManipulation::flip( CL_Surface* surface, bool horizontal )
     \param saturation Changing of saturation: -100...100
     \param value Changing of value (Color intensity): -100...100
 */
-CL_Surface*
-CAImageManipulation::changeHSV( CL_Surface* surface, 
-                                int hue, int saturation, int value )
+CL_Surface
+CAImageManipulation::changeHSV(CL_Surface surface, 
+                               int hue, int saturation, int value)
 {
   // Create a canvas which contains the original surface:
   //
-  CL_Canvas* can = new CL_Canvas( surface->get_width(),
-                                  surface->get_height() );
+  CL_PixelBuffer* can = Canvas::create_rgba8888(surface.get_width(),
+                                                surface.get_height());
 
-  surface->put_target( 0,0, 0, can );
+  assert(0);
+  // FIXME: surface->put_target( 0,0, 0, can );
 
   // Calc size in bytes:
   //
-  int bpp = can->get_bytes_per_pixel();
-  int size = surface->get_width() * surface->get_height() * bpp;
+  int bpp = 0;// FIXME: can->get_bytes_per_pixel();
+  int size = surface.get_width() * surface.get_height() * bpp;
 
   // Only 24bit supported:
   //
@@ -258,7 +164,7 @@ CAImageManipulation::changeHSV( CL_Surface* surface,
 
   // Return new surface based on the canvas:
   //
-  return CL_Surface::create( can );
+  return CL_Surface( can );
 }
 
 

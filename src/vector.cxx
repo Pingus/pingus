@@ -1,4 +1,4 @@
-//  $Id: vector.cxx,v 1.5 2003/10/18 23:17:27 grumbel Exp $
+//  $Id: vector.cxx,v 1.6 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,8 @@
 #include <math.h>
 #include <iostream>
 #include "vector.hxx"
+
+namespace Pingus {
 
 Vector::Vector (float x_, float y_, float z_) : x(x_), y(y_), z(z_)
 {
@@ -157,6 +159,8 @@ Vector::interpolate(const Vector& a, const Vector& b, float perc)
   Vector c = b - a;
   return a + (c * perc);
 }
+
+} // namespace Pingus
 
 std::ostream& operator<< (std::ostream& os, const Pingus::Vector& v)
 {

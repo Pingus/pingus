@@ -1,4 +1,4 @@
-//  $Id: hotspot_obj.cxx,v 1.4 2003/10/18 23:17:28 grumbel Exp $
+//  $Id: hotspot_obj.cxx,v 1.5 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,7 +37,7 @@ HotspotObj::write_xml (std::ostream& xml)
   data->write_xml(xml);
 }
 
-EditorObj*
+EditorNS::EditorObj*
 HotspotObj::duplicate ()
 {
   return new HotspotObj(*data);

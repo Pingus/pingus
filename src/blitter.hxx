@@ -1,4 +1,4 @@
-//  $Id: blitter.hxx,v 1.11 2003/10/18 23:17:27 grumbel Exp $
+//  $Id: blitter.hxx,v 1.12 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,23 +22,22 @@
 
 #include "pingus.hxx"
 
-class CL_Canvas;
 class CL_Surface;
 class CL_PixelBuffer;
 
 namespace Pingus {
 
 /** A bunch of blitting and creation functions to operate on
-    CL_Canvas.  Some of them a similar to the ones in ClanLib, but
+    CL_PixelBuffer.  Some of them a similar to the ones in ClanLib, but
     this are slower and work. */
 class Blitter
 {
 private:
   ///
-  static void put_surface_8bit(CL_Canvas*, CL_PixelBuffer*,
+  static void put_surface_8bit(CL_PixelBuffer*, CL_PixelBuffer*,
 			       int x, int y);
   ///
-  static void put_surface_32bit(CL_Canvas*, CL_PixelBuffer*,
+  static void put_surface_32bit(CL_PixelBuffer*, CL_PixelBuffer*,
 			       int x, int y);
 public:
   /*void put_surface(CL_LockableSurface* provider, CL_Surface surface,
@@ -48,28 +47,28 @@ public:
   */
 
   /// Puts a given surface to a given canvas at position x, y.
-  static void put_surface(CL_Canvas*, const CL_Surface&,
+  static void put_surface(CL_PixelBuffer*, const CL_Surface&,
 			  int x, int y);
 
   /// Puts a given surface provider to a given canvas at position x, y.
-  static void put_surface(CL_Canvas*, CL_PixelBuffer*,
+  static void put_surface(CL_PixelBuffer*, CL_PixelBuffer*,
 			  int x, int y);
 
   /** Makes all pixels in canvas tranparent, when their indexed value
       in provider is larger than zero.*/
-  static void put_alpha_surface(CL_Canvas* canvas, CL_PixelBuffer* provider,
+  static void put_alpha_surface(CL_PixelBuffer* canvas, CL_PixelBuffer* provider,
 				int x, int y);
 
   /** Returns a newly allocated canvas. The canvas contains the same
       image as the given surface. */
-  static CL_Canvas* create_canvas(const CL_Surface&);
+  static CL_PixelBuffer* create_canvas(const CL_Surface&);
 
   /** Returns a newly allocated canvas. The canvas contains the same
       image as the given surface provider */
-  static CL_Canvas* create_canvas(CL_PixelBuffer*);
+  static CL_PixelBuffer* create_canvas(CL_PixelBuffer*);
 
   /** Sets all pixels of a canvas to zero */
-  static CL_Canvas* clear_canvas(CL_Canvas*);
+  static CL_PixelBuffer* clear_canvas(CL_PixelBuffer*);
 
   /** Creates a new surface (based on a canvas) with the given width
       and height and stretches the source surface onto it
@@ -101,13 +100,13 @@ public:
 
   /** Creates a new canvas with the given width and height and
       stretches the source surface onto it, the caller is responsible
-      to delete the returned CL_Canvas.
+      to delete the returned CL_PixelBuffer.
 
       @param sur The source surface
       @param width The new width of the surface.
       @param height The new height of the surface.
       @return A newly created surface, the caller is responsible to delete it. */
-  static CL_Canvas* scale_surface_to_canvas (const CL_Surface& sur, int width, int height);
+  static CL_PixelBuffer* scale_surface_to_canvas (const CL_Surface& sur, int width, int height);
 
 private:
   Blitter (const Blitter&);

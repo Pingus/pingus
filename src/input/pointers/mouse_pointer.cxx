@@ -1,4 +1,4 @@
-//  $Id: mouse_pointer.cxx,v 1.3 2003/06/19 11:00:10 torangan Exp $
+//  $Id: mouse_pointer.cxx,v 1.4 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,50 +17,55 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <ClanLib/Display/Input/mouse.h>
+#include <ClanLib/Display/mouse.h>
 #include "mouse_pointer.hxx"
 
 namespace Input {
+namespace Pointers {
 
-  namespace Pointers {
+MousePointer::MousePointer () 
+  : x_pos(0),
+    y_pos(0)
+#ifdef CLANLIB_0_6
+,
+    move_slot(CL_Mouse::sig_move().connect(this, &Input::Pointers::MousePointer::move_signal))
+#endif
+{
+}
 
-    MousePointer::MousePointer () : x_pos(0),
-                                    y_pos(0),
-                                    move_slot(CL_Mouse::sig_move().connect(this, &Input::Pointers::MousePointer::move_signal))
-    {
-    }
+const float&
+MousePointer::get_x_pos () const
+{
+  return x_pos;
+}
 
-    const float&
-    MousePointer::get_x_pos () const
-    {
-      return x_pos;
-    }
+const float&
+MousePointer::get_y_pos () const
+{
+  return y_pos;
+}
 
-    const float&
-    MousePointer::get_y_pos () const
-    {
-      return y_pos;
-    }
+void
+MousePointer::set_pos (float new_x, float new_y)
+{
+#ifdef CLANLIB_0_6
+  CL_Mouse::set_position(new_x, new_y);
+#endif
+}
 
-    void
-    MousePointer::set_pos (float new_x, float new_y)
-    {
-      CL_Mouse::set_position(new_x, new_y);
-    }
+void
+MousePointer::update (float)
+{
+}
 
-    void
-    MousePointer::update (float)
-    {
-    }
+void
+MousePointer::move_signal (int x, int y)
+{
+  x_pos = x;
+  y_pos = y;
+}
 
-    void
-    MousePointer::move_signal (int x, int y)
-    {
-      x_pos = x;
-      y_pos = y;
-    }
-
-  }
+}
 }
 
 /* EOF */

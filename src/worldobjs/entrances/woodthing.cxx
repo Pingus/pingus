@@ -1,4 +1,4 @@
-//  $Id: woodthing.cxx,v 1.7 2003/04/19 10:23:19 torangan Exp $
+//  $Id: woodthing.cxx,v 1.8 2003/10/19 12:25:48 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,6 +25,7 @@
 #include "../../worldobjsdata/entrance_data.hxx"
 #include "woodthing.hxx"
 
+namespace Pingus {
 namespace WorldObjs {
 namespace Entrances {
 
@@ -67,5 +68,6 @@ WoodThing::draw (GraphicContext& gc)
 
 } // namespace Entrances
 } // namespace WorldObjs
+} // namespace Pingus
 
 /* EOF */

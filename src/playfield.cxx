@@ -1,4 +1,4 @@
-//  $Id: playfield.cxx,v 1.36 2003/10/18 23:17:27 grumbel Exp $
+//  $Id: playfield.cxx,v 1.37 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,7 +19,7 @@
 
 #include <stdio.h>
 #include <iostream>
-#include <ClanLib/Display/Display/display.h>
+#include <ClanLib/Display/display.h>
 #include "globals.hxx"
 #include "playfield.hxx"
 #include "plf.hxx"

@@ -1,4 +1,4 @@
-//  $Id: spike.cxx,v 1.10 2003/04/19 10:23:19 torangan Exp $
+//  $Id: spike.cxx,v 1.11 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,7 @@
 #include "../worldobjsdata/spike_data.hxx"
 #include "spike.hxx"
 
+namespace Pingus {
 namespace WorldObjs {
 
 Spike::Spike (const WorldObjsData::SpikeData& data_)
@@ -95,5 +96,6 @@ Spike::catch_pingu (Pingu* pingu)
 }
 
 } // namespace WorldObjs
+} // namespace Pingus
 
 /* EOF */

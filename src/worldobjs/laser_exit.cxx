@@ -1,4 +1,4 @@
-//  $Id: laser_exit.cxx,v 1.13 2003/10/18 23:17:28 grumbel Exp $
+//  $Id: laser_exit.cxx,v 1.14 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,7 @@
 #include "../worldobjsdata/laser_exit_data.hxx"
 #include "laser_exit.hxx"
 
+namespace Pingus {
 namespace WorldObjs {
 
 LaserExit::LaserExit (const WorldObjsData::LaserExitData& data_) 
@@ -91,5 +92,6 @@ LaserExit::catch_pingu (Pingu* pingu)
 }
 
 } // namespace WorldObjs
+} // namespace Pingus
 
 /* EOF */

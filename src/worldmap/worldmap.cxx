@@ -1,4 +1,4 @@
-//  $Id: worldmap.cxx,v 1.50 2003/08/21 20:52:23 torangan Exp $
+//  $Id: worldmap.cxx,v 1.51 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -50,6 +50,7 @@
 #include "../story_screen.hxx"
 #include "../gui/screen_manager.hxx"
 
+namespace Pingus {
 namespace WorldMapNS {
 
 struct z_pos_sorter
@@ -451,5 +452,6 @@ WorldMap::update_locked_nodes()
 }
 
 } // namespace WorldMapNS
+} // namespace Pingus
 
 /* EOF */

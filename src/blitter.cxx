@@ -1,4 +1,4 @@
-//  $Id: blitter.cxx,v 1.31 2003/10/18 23:17:27 grumbel Exp $
+//  $Id: blitter.cxx,v 1.32 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,8 @@
 #include <config.h>
 #include <stdio.h>
 #include <assert.h>
+#include <ClanLib/Display/pixel_buffer.h>
+
 #include "pingus_error.hxx"
 #include "color.hxx"
 #include "string_converter.hxx"
@@ -37,7 +39,7 @@
 namespace Pingus {
 
 void
-Blitter::put_surface(CL_Canvas* canvas, const CL_Surface& sur,
+Blitter::put_surface(CL_PixelBuffer* canvas, const CL_Surface& sur,
 		     int x, int y)
 {
   //Blitter::put_surface(canvas, sur->get_provider(), x, y);
@@ -50,7 +52,7 @@ Blitter::put_surface(CL_Canvas* canvas, const CL_Surface& sur,
 }
 
 void
-Blitter::put_surface(CL_Canvas* canvas, CL_PixelBuffer* provider,
+Blitter::put_surface(CL_PixelBuffer* canvas, CL_PixelBuffer* provider,
 		     int x, int y)
 {
   assert (provider);
@@ -70,7 +72,7 @@ Blitter::put_surface(CL_Canvas* canvas, CL_PixelBuffer* provider,
 }
 
 void
-Blitter::put_surface_8bit(CL_Canvas* provider, CL_PixelBuffer* sprovider,
+Blitter::put_surface_8bit(CL_PixelBuffer* provider, CL_PixelBuffer* sprovider,
 			  int x, int y)
 {
   assert (provider);
@@ -168,7 +170,7 @@ Blitter::put_surface_8bit(CL_Canvas* provider, CL_PixelBuffer* sprovider,
     }
 
 #if COMPILE_WITH_MEMORY_HOLE
-#warning "FIXME: Blitter::put_surface_8bit(CL_Canvas* provider, CL_PixelBuffer* sprovider, int x, int y) contains memory hole"
+#warning "FIXME: Blitter::put_surface_8bit(CL_PixelBuffer* provider, CL_PixelBuffer* sprovider, int x, int y) contains memory hole"
 #else
   sprovider->unlock();
   provider->unlock();
@@ -176,7 +178,7 @@ Blitter::put_surface_8bit(CL_Canvas* provider, CL_PixelBuffer* sprovider,
 }
 
 void
-Blitter::put_surface_32bit(CL_Canvas* canvas, CL_PixelBuffer* provider,
+Blitter::put_surface_32bit(CL_PixelBuffer* canvas, CL_PixelBuffer* provider,
 			   const int x_pos, const int y_pos)
 {
   assert (canvas);
@@ -224,7 +226,7 @@ Blitter::put_surface_32bit(CL_Canvas* canvas, CL_PixelBuffer* provider,
     }
 
 #if COMPILE_WITH_MEMORY_HOLE
-#warning "FIXME: Blitter::put_surface_32bit(CL_Canvas* canvas, CL_PixelBuffer* provider, const int x_pos, const int y_pos) contains memory hole"
+#warning "FIXME: Blitter::put_surface_32bit(CL_PixelBuffer* canvas, CL_PixelBuffer* provider, const int x_pos, const int y_pos) contains memory hole"
 #else
   provider->unlock();
   canvas->unlock();
@@ -232,7 +234,7 @@ Blitter::put_surface_32bit(CL_Canvas* canvas, CL_PixelBuffer* provider,
 }
 
 void
-Blitter::put_alpha_surface(CL_Canvas* provider, CL_PixelBuffer* sprovider,
+Blitter::put_alpha_surface(CL_PixelBuffer* provider, CL_PixelBuffer* sprovider,
 			   int x, int y)
 {
   assert (provider);
@@ -255,7 +257,7 @@ Blitter::put_alpha_surface(CL_Canvas* provider, CL_PixelBuffer* sprovider,
     {
       // FIXME: memory hole
 #if COMPILE_WITH_MEMORY_HOLE
-#warning "FIXME: Blitter::put_alpha_surface(CL_Canvas* provider, CL_PixelBuffer* sprovider, int x, int y) contains memory hole"
+#warning "FIXME: Blitter::put_alpha_surface(CL_PixelBuffer* provider, CL_PixelBuffer* sprovider, int x, int y) contains memory hole"
 #else
       sprovider->unlock ();
       provider->unlock ();
@@ -300,15 +302,15 @@ Blitter::put_alpha_surface(CL_Canvas* provider, CL_PixelBuffer* sprovider,
   }
 
 #if COMPILE_WITH_MEMORY_HOLE
-#warning "FIXME: Blitter::put_alpha_surface(CL_Canvas* provider, CL_PixelBuffer* sprovider, int x, int y) contains memory hole"
+#warning "FIXME: Blitter::put_alpha_surface(CL_PixelBuffer* provider, CL_PixelBuffer* sprovider, int x, int y) contains memory hole"
 #else
   sprovider->unlock();
   provider->unlock();
 #endif
 }
 
-CL_Canvas*
-Blitter::clear_canvas(CL_Canvas* canvas)
+CL_PixelBuffer*
+Blitter::clear_canvas(CL_PixelBuffer* canvas)
 {
   assert (canvas);
   unsigned char* buffer;
@@ -322,18 +324,18 @@ Blitter::clear_canvas(CL_Canvas* canvas)
   return canvas;
 }
 
-CL_Canvas*
+CL_PixelBuffer*
 Blitter::create_canvas(const CL_Surface& sur)
 {
   assert (sur);
   return create_canvas(sur.get_provider());
 }
 
-CL_Canvas*
+CL_PixelBuffer*
 Blitter::create_canvas(CL_PixelBuffer* prov)
 {
   assert (prov);
-  CL_Canvas* canvas = new CL_Canvas(prov->get_width(), prov->get_height());
+  CL_PixelBuffer* canvas = new CL_PixelBuffer(prov->get_width(), prov->get_height());
 
   switch (prov->get_bytes_per_pixel())
     {
@@ -385,14 +387,14 @@ Blitter::scale_surface (const CL_Surface& sur, int width, int height)
   return CL_Surface(Blitter::scale_surface_to_canvas(sur, width, height), true);
 }
 
-CL_Canvas*
+CL_PixelBuffer*
 Blitter::scale_surface_to_canvas (const CL_Surface& sur, int width, int height)
 {
   assert (sur);
 
   Color color;
   CL_PixelBuffer* provider = sur.get_provider ();
-  CL_Canvas* canvas = new CL_Canvas (width, height);
+  CL_PixelBuffer* canvas = new CL_PixelBuffer (width, height);
 
   provider->lock ();
   canvas->lock ();
@@ -500,16 +502,16 @@ Blitter::scale_surface_to_canvas (const CL_Surface& sur, int width, int height)
 CL_Surface
 Blitter::convert_to_emptyprovider(CL_Surface ssurf)
 {
-CL_Canvas* tprov = convert_to_emptyprovider(ssurf->get_provider());
+CL_PixelBuffer* tprov = convert_to_emptyprovider(ssurf->get_provider());
 return CL_Surface::create(tprov, true);
 }
 
 // Converts a SurfaceProvider, to an Canvas and returns
 // the newly allocated provider, you need to delete it yourself.
-CL_Canvas*
+CL_PixelBuffer*
 Blitter::convert_to_emptyprovider(CL_PixelBuffer* sprov)
 {
-  CL_Canvas* tprov;
+  CL_PixelBuffer* tprov;
   CL_Palette* palette;
   unsigned char* sbuffer;
   unsigned char* tbuffer;
@@ -519,7 +521,7 @@ Blitter::convert_to_emptyprovider(CL_PixelBuffer* sprov)
   switch(sprov->get_depth())
     {
     case 32:
-      tprov = new CL_Canvas(sprov->get_width(),
+      tprov = new CL_PixelBuffer(sprov->get_width(),
 			    sprov->get_height());
       tprov->lock();
 
@@ -534,7 +536,7 @@ Blitter::convert_to_emptyprovider(CL_PixelBuffer* sprov)
       tprov->unlock();
       break;
     case 8:
-      tprov = new CL_Canvas(sprov->get_width(),
+      tprov = new CL_PixelBuffer(sprov->get_width(),
 			    sprov->get_height());
       palette = sprov->get_palette();
       tprov->lock();
@@ -614,7 +616,7 @@ Blitter::rotate_90 (const CL_Surface& sur)
     }
   else
     {
-      CL_Canvas* canvas = new CL_Canvas (sur.get_height (), sur.get_width ());
+      CL_PixelBuffer* canvas = new CL_PixelBuffer (sur.get_height (), sur.get_width ());
 
       prov->lock ();
       canvas->lock ();

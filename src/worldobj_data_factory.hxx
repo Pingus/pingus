@@ -1,4 +1,4 @@
-//  $Id: worldobj_data_factory.hxx,v 1.9 2003/10/18 23:17:27 grumbel Exp $
+//  $Id: worldobj_data_factory.hxx,v 1.10 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,12 +23,12 @@
 #include <map>
 #include <string>
 
-class WorldObjData;
-class WorldObjDataAbstractFactory;
-
 #include "libxmlfwd.hxx"
 
 namespace Pingus {
+
+class WorldObjData;
+class WorldObjDataAbstractFactory;
 
 /** WorldObjDataFactory which can be used to create all kinds of
     WorldObjData's by given its id */
@@ -46,8 +46,8 @@ public:
   static WorldObjDataFactory* instance ();
   static void deinit();
   /** Register a factory for object creation */
-  void register_factory (const std::string& id,
-			 WorldObjDataAbstractFactory* factory);
+  void register_factory(const std::string& id,
+                        WorldObjDataAbstractFactory* factory);
 
   /** Create a WorldObjData type from a given piece of xml, use the
       'type' property for determinating the object type. */
@@ -69,7 +69,7 @@ class WorldObjDataAbstractFactory
 {
 public:
   WorldObjDataAbstractFactory (const std::string& id) {
-    WorldObjDataFactory::instance ()-> register_factory (id, this);
+    WorldObjDataFactory::instance ()->register_factory (id, this);
   }
 
   virtual WorldObjData* create (xmlDocPtr doc, xmlNodePtr cur) =0;

@@ -1,4 +1,4 @@
-//  $Id: theme_selector.hxx,v 1.7 2003/10/18 23:17:27 grumbel Exp $
+//  $Id: theme_selector.hxx,v 1.8 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,7 +24,7 @@
 #include <vector>
 #include <string>
 #include <ClanLib/Signals/slot.h>
-#include <ClanLib/Display/Display/surface.h>
+#include <ClanLib/Display/surface.h>
 
 class CL_Key;
 class CL_Font;

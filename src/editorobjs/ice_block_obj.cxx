@@ -1,4 +1,4 @@
-//  $Id: ice_block_obj.cxx,v 1.8 2003/10/18 23:17:28 grumbel Exp $
+//  $Id: ice_block_obj.cxx,v 1.9 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,12 +37,12 @@ IceBlockObj::~IceBlockObj ()
 }
 
 /** Create the object with resonable defaults */
-EditorObjLst
+EditorNS::EditorObjLst
 IceBlockObj::create (const Vector& pos)
 {
   WorldObjsData::IceBlockData newdata;
   newdata.pos = pos;
-  return EditorObjLst(1, new IceBlockObj(newdata));
+  return EditorNS::EditorObjLst(1, new IceBlockObj(newdata));
 }
 
 std::string
@@ -59,7 +59,7 @@ IceBlockObj::write_xml (std::ostream& xml)
   data->write_xml(xml);
 }
 
-EditorObj*
+EditorNS::EditorObj*
 IceBlockObj::duplicate ()
 {
   return new IceBlockObj(*data);

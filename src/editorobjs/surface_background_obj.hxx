@@ -1,4 +1,4 @@
-//  $Id: surface_background_obj.hxx,v 1.8 2003/10/18 23:17:28 grumbel Exp $
+//  $Id: surface_background_obj.hxx,v 1.9 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,7 +30,7 @@ class SurfaceBackgroundData;
 
 namespace EditorObjs {
 
-class SurfaceBackgroundObj : public SpriteEditorObj
+class SurfaceBackgroundObj : public EditorNS::SpriteEditorObj
 {
 private:
   WorldObjsData::SurfaceBackgroundData* const data;

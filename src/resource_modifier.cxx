@@ -1,4 +1,4 @@
-//  $Id: resource_modifier.cxx,v 1.3 2003/04/19 10:23:17 torangan Exp $
+//  $Id: resource_modifier.cxx,v 1.4 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #include <assert.h>
 #include "resource_modifier.hxx"
 
+namespace Pingus {
 namespace ResourceModifierNS {
 
 ResourceModifier horizontal_flip (ResourceModifier modifier)
@@ -178,5 +179,6 @@ ResourceModifier rs_from_string (const std::string& modifier)
 }
 
 } // namespace ResourceModifierNS
+} // namespace Pingus
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: sound_real.cxx,v 1.9 2003/06/04 17:22:33 torangan Exp $
+//  $Id: sound_real.cxx,v 1.10 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,6 +35,7 @@
 #  include <ClanLib/MikMod/setupmikmod.h>
 #endif
 
+namespace Pingus {
 namespace Sound {
 
 PingusSoundReal::PingusSoundReal ()
@@ -166,6 +167,7 @@ PingusSoundReal::real_play_music (const std::string & arg_filename, float volume
 }
 
 } // namespace Sound
+} // namespace Pingus
 
 /* EOF */
 

@@ -1,4 +1,4 @@
-//  $Id: surface_background_obj.cxx,v 1.11 2003/10/18 23:17:28 grumbel Exp $
+//  $Id: surface_background_obj.cxx,v 1.12 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,10 +25,10 @@
 #include "../editor/property_window.hxx"
 #include "surface_background_obj.hxx"
 
-using namespace EditorNS;
-
 namespace Pingus {
 namespace EditorObjs {
+
+using namespace EditorNS;
 
 SurfaceBackgroundObj::SurfaceBackgroundObj (const WorldObjsData::SurfaceBackgroundData& data_)
   : SpriteEditorObj (data_.desc.res_name, data_.desc.datafile),
@@ -48,7 +48,7 @@ SurfaceBackgroundObj::write_xml (std::ostream& xml)
   data->write_xml(xml);
 }
 
-EditorObj*
+EditorNS::EditorObj*
 SurfaceBackgroundObj::duplicate ()
 {
   return new SurfaceBackgroundObj(*data);

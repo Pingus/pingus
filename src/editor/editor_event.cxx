@@ -1,4 +1,4 @@
-//  $Id: editor_event.cxx,v 1.63 2003/10/18 23:17:27 grumbel Exp $
+//  $Id: editor_event.cxx,v 1.64 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -564,7 +564,7 @@ EditorEvent::editor_load_level()
       strings.push_back(temp_str);
     }
 
-  reader.set_strings(&strings);
+  reader.set_strings(strings);
 
   disable();
   str = reader.read_string();
@@ -606,7 +606,7 @@ EditorEvent::editor_save_level_as()
       strings.push_back(str);
     }
 
-  reader.set_strings(&strings);
+  reader.set_strings(strings);
 
   disable();
   str = reader.read_string();

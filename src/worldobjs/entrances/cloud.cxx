@@ -1,4 +1,4 @@
-//  $Id: cloud.cxx,v 1.2 2003/04/19 10:23:19 torangan Exp $
+//  $Id: cloud.cxx,v 1.3 2003/10/19 12:25:48 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #include "../../worldobjsdata/entrance_data.hxx"
 #include "cloud.hxx"
 
+namespace Pingus {
 namespace WorldObjs {
 namespace Entrances {
 
@@ -36,16 +37,19 @@ void
 Cloud::draw_offset (int x, int y, float s)
 {
   if (s == 1.0) {
-    surface.put_screen(static_cast<int>(x + data->pos.x - 115),
+    surface.draw(static_cast<int>(x + data->pos.x - 115),
 		       static_cast<int>(y + data->pos.y - 100));
   } else {
-    surface.put_screen(static_cast<int>((data->pos.x - 32 + x) * s),
+#ifdef CLANLIB_0_6
+    surface.draw(static_cast<int>((data->pos.x - 32 + x) * s),
 		       static_cast<int>((data->pos.y - 16 + y) * s),
-		       s, s);
+                 s, s);
+#endif
   }
 }
 
 } // namespace Entrances
 } // namespace WorldObjs
+} // namespace Pingus
 
 /* EOF */

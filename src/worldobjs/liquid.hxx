@@ -1,4 +1,4 @@
-//  $Id: liquid.hxx,v 1.6 2003/04/19 10:23:19 torangan Exp $
+//  $Id: liquid.hxx,v 1.7 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,8 @@
 
 #include "../sprite.hxx"
 #include "../worldobj.hxx"
+
+namespace Pingus {
 
 namespace WorldObjsData {
 class LiquidData;
@@ -52,6 +54,7 @@ private:
 };
 
 } // namespace WorldObjs
+} // namespace Pingus
 
 #endif
 

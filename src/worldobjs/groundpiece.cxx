@@ -1,4 +1,4 @@
-//  $Id: groundpiece.cxx,v 1.3 2002/09/27 18:36:41 torangan Exp $
+//  $Id: groundpiece.cxx,v 1.4 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,7 @@
 #include "../worldobjsdata/groundpiece_data.hxx"
 #include "groundpiece.hxx"
 
+namespace Pingus {
 namespace WorldObjs {
 
 Groundpiece::Groundpiece (const WorldObjsData::GroundpieceData& data_)
@@ -56,5 +57,6 @@ Groundpiece::on_startup ()
 }
 
 } // namespace WorldObjs
+} // namespace Pingus
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: worldobj.cxx,v 1.12 2003/04/19 10:23:17 torangan Exp $
+//  $Id: worldobj.cxx,v 1.13 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,8 @@
 #include <iostream>
 #include "worldobj.hxx"
 #include "gui/graphic_context.hxx"
+
+namespace Pingus {
 
 World* WorldObj::world;
 
@@ -77,5 +79,7 @@ WorldObj::draw (GraphicContext& gc)
 	       static_cast<int>(gc.get_y_offset () + gc.get_height ()/2),
 	       gc.get_zoom ());
 }
+
+} // namespace Pingus
 
 /* EOF */

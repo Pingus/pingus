@@ -40,9 +40,8 @@ public:
 	CAImageManipulation();
 	~CAImageManipulation();
 	
-  static CL_Surface* rotate( CL_Surface* surface, float angle, bool exact=true );
-  static CL_Surface* flip( CL_Surface* surface, bool horizontal );
-  static CL_Surface* changeHSV( CL_Surface* surface, int hue, int saturation, int value );
+  static CL_Surface flip( CL_Surface surface, bool horizontal );
+  static CL_Surface changeHSV( CL_Surface surface, int hue, int saturation, int value );
 	
   static void rgbToHsv( int r, int g, int b,
                         int *h, int *s, int *v );

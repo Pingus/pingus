@@ -1,4 +1,4 @@
-//  $Id: rain_particle_holder.cxx,v 1.6 2003/04/19 10:23:19 torangan Exp $
+//  $Id: rain_particle_holder.cxx,v 1.7 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,6 +25,7 @@
 #include "../world.hxx"
 #include "rain_particle_holder.hxx"
 
+namespace Pingus {
 namespace Particles {
 
 RainParticleHolder::RainParticle::RainParticle(int x, int y)
@@ -36,9 +37,9 @@ RainParticleHolder::RainParticle::RainParticle(int x, int y)
 
 
 RainParticleHolder::RainParticleHolder ()
-  : rain1_surf (PingusResource::load_surface("Particles/rain1", "pingus")),
-    rain2_surf (PingusResource::load_surface("Particles/rain2", "pingus")),
-    rain_splash(PingusResource::load_surface("Particles/rain_splash", "pingus"))
+  : rain1_surf (PingusResource::load_sprite("Particles/rain1", "pingus")),
+    rain2_surf (PingusResource::load_sprite("Particles/rain2", "pingus")),
+    rain_splash(PingusResource::load_sprite("Particles/rain_splash", "pingus"))
 {
 }
 
@@ -70,7 +71,7 @@ RainParticleHolder::update ()
 
       if (it->splash)
 	{
-	  if (it->splash_frame >= rain_splash.get_num_frames())
+	  if (it->splash_frame >= rain_splash.get_frame_count())
 	    {
 	      it->alive = false;
 	      continue;
@@ -107,6 +108,7 @@ RainParticleHolder::update ()
 void
 RainParticleHolder::draw (GraphicContext& gc)
 {
+#ifdef CLANLIB_0_6
   for (std::vector<RainParticle>::iterator it=particles.begin(); it != particles.end(); ++it)
     {
       // skip dead/invisible particles
@@ -121,8 +123,10 @@ RainParticleHolder::draw (GraphicContext& gc)
         else
           gc.draw(rain1_surf, static_cast<int>(it->pos.x), static_cast<int>(it->pos.y - rain1_surf.get_height()));
     }
+#endif
 }
 
 } // namespace Particles
+} // namespace Pingus
 
 /* EOF */

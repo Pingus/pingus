@@ -1,4 +1,4 @@
-//  $Id: thumb_cache.cxx,v 1.15 2003/10/18 23:17:27 grumbel Exp $
+//  $Id: thumb_cache.cxx,v 1.16 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,10 +21,11 @@
 #include <ClanLib/Core/IOData/outputsource_file.h>
 #include <ClanLib/Core/IOData/inputsource_file.h>
 #include <ClanLib/Core/System/error.h>
-#include <ClanLib/Display/SurfaceProviders/canvas.h>
+#include <ClanLib/Display/pixel_buffer.h>
 #include "../globals.hxx"
 #include "../blitter.hxx"
 #include "../system.hxx"
+#include "../canvas.hxx"
 #include "../debug.hxx"
 #include "../pingus_resource.hxx"
 #include "../math.hxx"
@@ -97,7 +98,7 @@ ThumbCache::load (const std::string & res_ident, const std::string & datafile)
 	      return uncached_load (res_ident, datafile);
 	    }
 
-	  CL_Canvas* canvas = new CL_Canvas (width, height);
+	  CL_PixelBuffer* canvas = Canvas::create_rgba8888(width, height);
 	  canvas->lock ();
 	  void* buffer = canvas->get_data ();
 	  size_t buffer_size = width * height * 4;
@@ -125,8 +126,11 @@ ThumbCache::load (const std::string & res_ident, const std::string & datafile)
 }
 
 CL_Surface
-ThumbCache::cache (const CL_Surface& sur, const std::string & res_ident, const std::string & datafile)
+ThumbCache::cache (const CL_Surface& sur,
+                   const std::string & res_ident,
+                   const std::string & datafile)
 {
+#ifdef CLANLIB_0_6
   if (sur.get_provider ()->get_height () < 50
       && sur.get_provider ()->get_width () < 50)
     {
@@ -179,7 +183,7 @@ ThumbCache::cache (const CL_Surface& sur, const std::string & res_ident, const s
 
       canvas->unlock ();
       // Canvas will get deleted on the end of the lifetime of this surface
-      return CL_Surface (canvas, true);
+      return CL_Surface(canvas, true);
     }
   catch (CL_Error&)
     {
@@ -191,6 +195,8 @@ ThumbCache::cache (const CL_Surface& sur, const std::string & res_ident, const s
       unsigned int height = Math::min(50, sur.get_height ());
       return Blitter::scale_surface (sur, width, height);
     }
+#endif
+  return 0;
 }
 
 } // namespace EditorNS

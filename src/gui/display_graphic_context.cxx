@@ -1,4 +1,4 @@
-//  $Id: display_graphic_context.cxx,v 1.8 2003/10/18 23:17:28 grumbel Exp $
+//  $Id: display_graphic_context.cxx,v 1.9 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -169,14 +169,17 @@ DisplayGraphicContext::draw (CL_Surface& sur, int x_pos, int y_pos)
     }
   else
     {
+#ifdef CLANLIB_0_6
       sur.draw(w2s_x(x_pos), w2s_y(y_pos),
                offset.z, offset.z);
+#endif
     }
 }
 
 void
 DisplayGraphicContext::draw (CL_Surface& sur, int x_pos, int y_pos, int frame)
 {
+#ifdef CLANLIB_0_6
   if (offset.z == 1.0)
     {
       sur.draw(w2s_x(x_pos), w2s_y(y_pos), frame);
@@ -187,15 +190,18 @@ DisplayGraphicContext::draw (CL_Surface& sur, int x_pos, int y_pos, int frame)
                offset.z, offset.z,
                frame);
     }
+#endif
 }
 
 void
 DisplayGraphicContext::draw (CL_Surface& sur, int x_pos, int y_pos,
 	    float size_x, float size_y, int frame)
 {
+#ifdef CLANLIB_0_6
   sur.draw(w2s_x(x_pos), w2s_y(y_pos),
            size_x * offset.z,
            size_y * offset.z, frame);
+#endif
 }
 
 void
@@ -227,9 +233,9 @@ void
 DisplayGraphicContext::draw_rect (int x1, int y1, int x2, int y2,
                                   float r, float g, float b, float a)
 {
-  CL_Display::draw_rect(w2s_x(x1), w2s_y(y1),
-                        w2s_x(x2), w2s_y(y2),
-                        r, g, b, a);
+  CL_Display::draw_rect(CL_Rect(w2s_x(x1), w2s_y(y1),
+                                w2s_x(x2), w2s_y(y2)),
+                        Display::to_color(r, g, b, a));
 }
 
 void
@@ -262,19 +268,19 @@ DisplayGraphicContext::draw_circle (int x_pos, int y_pos, int radius,
 }
 
 void
-DisplayGraphicContext::print_left (FontHandle font, int x_pos, int y_pos, const std::string& str)
+DisplayGraphicContext::print_left (CL_Font font, int x_pos, int y_pos, const std::string& str)
 {
-  font->print_left(w2s_x(x_pos), w2s_y(y_pos), str.c_str ());
+  font.draw(w2s_x(x_pos), w2s_y(y_pos), str.c_str ());
 }
 
 void
-DisplayGraphicContext::print_center (FontHandle font, int x_pos, int y_pos, const std::string& str)
+DisplayGraphicContext::print_center (CL_Font font, int x_pos, int y_pos, const std::string& str)
 {
-  font->print_center(w2s_x(x_pos), w2s_y(y_pos), str.c_str ());
+  font.print_center(w2s_x(x_pos), w2s_y(y_pos), str.c_str ());
 }
 
 void
-DisplayGraphicContext::print_right (FontHandle font, int x_pos, int y_pos, const std::string& str)
+DisplayGraphicContext::print_right (CL_Font font, int x_pos, int y_pos, const std::string& str)
 {
   font->print_right(w2s_x(x_pos), w2s_y(y_pos), str.c_str ());
 }

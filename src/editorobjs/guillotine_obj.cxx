@@ -1,4 +1,4 @@
-//  $Id: guillotine_obj.cxx,v 1.11 2003/10/18 23:17:28 grumbel Exp $
+//  $Id: guillotine_obj.cxx,v 1.12 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,15 +39,15 @@ GuillotineObj::~GuillotineObj ()
   delete data;
 }
 
-EditorObjLst
+EditorNS::EditorObjLst
 GuillotineObj::create (const Vector& pos)
 {
   WorldObjsData::GuillotineData newdata;
   newdata.pos = pos;
-  return EditorObjLst(1, new GuillotineObj(newdata));
+  return EditorNS::EditorObjLst(1, new GuillotineObj(newdata));
 }
 
-EditorObj*
+EditorNS::EditorObj*
 GuillotineObj::duplicate ()
 {
   return new GuillotineObj(*data);

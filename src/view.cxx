@@ -1,4 +1,4 @@
-//  $Id: view.cxx,v 1.14 2003/04/19 10:23:17 torangan Exp $
+//  $Id: view.cxx,v 1.15 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,8 @@
 #include "view.hxx"
 #include "world.hxx"
 #include "client.hxx"
+
+namespace Pingus {
 
 // static variables
 World* View::world;
@@ -190,5 +192,7 @@ View::on_pointer_move (int x, int y)
   mouse_x = x;
   mouse_y = y;
 }
+
+} // namespace Pingus
 
 /* EOF */

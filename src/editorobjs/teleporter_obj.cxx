@@ -1,4 +1,4 @@
-//  $Id: teleporter_obj.cxx,v 1.10 2003/04/19 10:23:18 torangan Exp $
+//  $Id: teleporter_obj.cxx,v 1.11 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,7 @@
 #include "../editor/editor_view.hxx"
 #include "../worldobjsdata/teleporter_data.hxx"
 
+namespace Pingus {
 namespace EditorObjs {
 
 TeleporterObj::TeleporterObj (const WorldObjsData::TeleporterData& data_)
@@ -43,14 +44,14 @@ TeleporterObj::get_target_pos_ref ()
   return data->target_pos;
 }
 
-EditorObj*
+EditorNS::EditorObj*
 TeleporterObj::duplicate()
 {
   pwarn << "EditorTeleporterObj::duplicate(): not implemented" << std::endl;
   return 0;
 }
 
-EditorObjLst
+EditorNS::EditorObjLst
 TeleporterObj::create (const Vector& pos)
 {
   WorldObjsData::TeleporterData newdata;
@@ -59,7 +60,7 @@ TeleporterObj::create (const Vector& pos)
   newdata.target_pos.x = pos.x + 50;
   newdata.target_pos.y = pos.y + 50;
 
-  return EditorObjLst(1, new TeleporterObj(newdata));
+  return EditorNS::EditorObjLst(1, new TeleporterObj(newdata));
 }
 
 void
@@ -87,5 +88,6 @@ TeleporterObj::status_line ()
 }
 
 } // namespace EditorObjs
+} // namespace Pingus
 
 /* EOF */

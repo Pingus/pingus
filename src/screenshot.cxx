@@ -1,4 +1,4 @@
-//  $Id: screenshot.cxx,v 1.15 2003/08/16 16:23:30 grumbel Exp $
+//  $Id: screenshot.cxx,v 1.16 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,8 +23,8 @@
 #include <fstream>
 #include <iostream>
 
-#include <ClanLib/Display/Display/display.h>
-#include <ClanLib/Display/Display/target.h>
+#include <ClanLib/Display/display.h>
+#include <ClanLib/Display/target.h>
 #include "system.hxx"
 #include "screenshot.hxx"
 #include "gettext.h"

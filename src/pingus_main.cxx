@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.99 2003/10/18 12:11:30 grumbel Exp $
+//   $Id: pingus_main.cxx,v 1.100 2003/10/19 12:25:47 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___
@@ -83,9 +83,9 @@
 #include "worldmap/manager.hxx"
 #include "worldobj_data_factory.hxx"
 
-using EditorNS::Editor;
-
 namespace Pingus {
+
+using EditorNS::Editor;
 
 void
 signal_handler(int signo)

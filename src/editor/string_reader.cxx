@@ -1,4 +1,4 @@
-//  $Id: string_reader.cxx,v 1.10 2003/10/18 23:17:27 grumbel Exp $
+//  $Id: string_reader.cxx,v 1.11 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,13 +29,11 @@ namespace EditorNS {
 
 StringReader::StringReader()
 {
-  strings = 0;
   font = Fonts::courier_small;
 }
 
 StringReader::StringReader(const std::string & d, const std::string & def)
 {
-  strings = 0;
   description = d;
   default_string = def;
   font = Fonts::courier_small;
@@ -46,7 +44,7 @@ StringReader::~StringReader()
 }
 
 void
-StringReader::set_strings(std::list<std::string>* s)
+StringReader::set_strings(const std::list<std::string>& s)
 {
   strings = s;
 }
@@ -118,7 +116,7 @@ StringReader::complete_string()
 
   console << "\nCompletions:\n" <<   "~~~~~~~~~~~~" << std::endl;
 
-  for(std::list<std::string>::iterator i = strings->begin(); i != strings->end(); ++i)
+  for(std::list<std::string>::iterator i = strings.begin(); i != strings.end(); ++i)
     {
       if (i->find(current_string) == 0)
 	{

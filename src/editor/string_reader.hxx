@@ -1,4 +1,4 @@
-//  $Id: string_reader.hxx,v 1.8 2003/10/18 23:17:27 grumbel Exp $
+//  $Id: string_reader.hxx,v 1.9 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,7 +31,7 @@ namespace EditorNS {
 class StringReader
 {
 private:
-  std::list<std::string>* strings;
+  std::list<std::string> strings;
   std::list<std::string*> completions;
   std::string current_string;
   std::string default_string;
@@ -44,7 +44,7 @@ public:
   StringReader (const std::string &, const std::string &);
   virtual ~StringReader ();
 
-  void   set_strings (std::list<std::string>*);
+  void set_strings (const std::list<std::string>& );
   std::string read_string ();
   void draw ();
   std::string find_uniq ();

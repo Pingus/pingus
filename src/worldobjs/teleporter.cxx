@@ -1,4 +1,4 @@
-//  $Id: teleporter.cxx,v 1.17 2003/04/19 10:23:19 torangan Exp $
+//  $Id: teleporter.cxx,v 1.18 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,6 +25,7 @@
 #include "../worldobjsdata/teleporter_data.hxx"
 #include "teleporter.hxx"
 
+namespace Pingus {
 namespace WorldObjs {
 
 Teleporter::Teleporter (const WorldObjsData::TeleporterData& data_)
@@ -79,5 +80,6 @@ Teleporter::update ()
 }
 
 } // namespace WorldObjs
+} // namespace Pingus
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: switch_door_obj.cxx,v 1.9 2003/10/18 23:17:28 grumbel Exp $
+//  $Id: switch_door_obj.cxx,v 1.10 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,7 +41,7 @@ SwitchDoorObj::~SwitchDoorObj ()
   delete data;
 }
 
-EditorObj*
+EditorNS::EditorObj*
 SwitchDoorObj::duplicate ()
 {
   pwarn << "SwitchDoorObj::duplicate(): not implemented" << std::endl;
@@ -67,7 +67,7 @@ SwitchDoorObj::get_height ()
 
 /** Create this object (and child objects) with resonable defaults
     for the editor */
-EditorObjLst
+EditorNS::EditorObjLst
 SwitchDoorObj::create (const Vector& pos)
 {
   WorldObjsData::SwitchDoorData newdata;
@@ -76,7 +76,7 @@ SwitchDoorObj::create (const Vector& pos)
   newdata.switch_pos  = pos;
   newdata.door_height = 15;
 
-  return EditorObjLst(1, new SwitchDoorObj(newdata));
+  return EditorNS::EditorObjLst(1, new SwitchDoorObj(newdata));
 }
 
 void

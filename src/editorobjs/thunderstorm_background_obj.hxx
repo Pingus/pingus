@@ -1,4 +1,4 @@
-//  $Id: thunderstorm_background_obj.hxx,v 1.6 2003/10/18 23:17:28 grumbel Exp $
+//  $Id: thunderstorm_background_obj.hxx,v 1.7 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,7 +30,7 @@ class ThunderstormBackgroundData;
 
 namespace EditorObjs {
 
-class ThunderstormBackgroundObj : public SpriteEditorObj
+class ThunderstormBackgroundObj : public EditorNS::SpriteEditorObj
 {
 private:
   WorldObjsData::ThunderstormBackgroundData* const data;
@@ -41,7 +41,7 @@ public:
 
   void write_xml (std::ostream& xml);
 
-  EditorObj* duplicate ();
+  EditorNS::EditorObj* duplicate ();
 
   std::string status_line ();
   EditorNS::PropertyFrame* get_gui_dialog(EditorNS::Editor*) { return 0; }

@@ -1,4 +1,4 @@
-//  $Id: conveyor_belt.hxx,v 1.18 2003/10/18 23:17:28 grumbel Exp $
+//  $Id: conveyor_belt.hxx,v 1.19 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,8 @@
 #include "../worldobj.hxx"
 #include "../worldobj_data.hxx"
 #include "../editor/rect_editorobj.hxx"
+
+namespace Pingus {
 
 namespace WorldObjsData {
 class ConveyorBeltData;
@@ -54,6 +56,7 @@ private:
 };
 
 } // namespace WorldObjs
+} // namespace Pingus
 
 #endif
 

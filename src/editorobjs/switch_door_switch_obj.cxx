@@ -1,4 +1,4 @@
-//  $Id: switch_door_switch_obj.cxx,v 1.4 2003/10/18 23:17:28 grumbel Exp $
+//  $Id: switch_door_switch_obj.cxx,v 1.5 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,7 +36,7 @@ SwitchDoorSwitchObj::status_line ()
   return "--- SwitchDoorSwitchObj ---";
 }
 
-EditorObj*
+EditorNS::EditorObj*
 SwitchDoorSwitchObj::duplicate ()
 {
   return door->duplicate ();

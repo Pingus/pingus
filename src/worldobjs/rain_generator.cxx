@@ -1,4 +1,4 @@
-//  $Id: rain_generator.cxx,v 1.11 2003/10/18 23:17:28 grumbel Exp $
+//  $Id: rain_generator.cxx,v 1.12 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,6 +25,7 @@
 #include "../gui/graphic_context.hxx"
 #include "rain_generator.hxx"
 
+namespace Pingus {
 namespace WorldObjs {
 
 RainGenerator::RainGenerator ()
@@ -75,5 +76,6 @@ RainGenerator::update()
 }
 
 } // namespace WorldObjs
+} // namespace Pingus
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: fake_exit.cxx,v 1.14 2003/04/19 10:23:19 torangan Exp $
+//  $Id: fake_exit.cxx,v 1.15 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,6 +25,7 @@
 #include "../smallmap.hxx"
 #include "fake_exit.hxx"
 
+namespace Pingus {
 namespace WorldObjs {
 
 FakeExit::FakeExit (const WorldObjsData::FakeExitData& data_)
@@ -103,5 +104,6 @@ FakeExit::draw_smallmap(SmallMap* smallmap)
 }
 
 } // namespace WorldObjs
+} // namespace Pingus
 
 /* EOF */

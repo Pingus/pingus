@@ -1,4 +1,4 @@
-//  $Id: blitter_impl.hxx,v 1.13 2003/10/18 23:17:27 grumbel Exp $
+//  $Id: blitter_impl.hxx,v 1.14 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,9 +21,8 @@
 #define HEADER_PINGUS_BLITTER_IMPL_HXX
 
 #include <iostream>
-#include <ClanLib/Display/SurfaceProviders/canvas.h>
+#include <ClanLib/Display/pixel_buffer.h>
 #include <ClanLib/Display/surface.h>
-#include "indexed_canvas.hxx"
 #include "pingus.hxx"
 
 namespace Pingus {
@@ -231,7 +230,7 @@ CL_Surface modify(const CL_Surface& sur, const TransF&)
     }
   else
     {
-      CL_Canvas* canvas = new CL_Canvas (sur.get_height (), sur.get_width ());
+      CL_PixelBuffer* canvas = Canvas::create(sur.get_height(), sur.get_width());
 
       prov->lock ();
       canvas->lock ();

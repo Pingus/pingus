@@ -1,4 +1,4 @@
-//  $Id: buffer_graphic_context.cxx,v 1.3 2003/10/18 23:17:28 grumbel Exp $
+//  $Id: buffer_graphic_context.cxx,v 1.4 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #include <iostream>
 #include "../pingus_error.hxx"
 #include "../blitter.hxx"
+#include "../canvas.hxx"
 #include "../screenshot.hxx"
 #include "buffer_graphic_context.hxx"
 
@@ -27,7 +28,7 @@ namespace Pingus {
 
 BufferGraphicContext::BufferGraphicContext(int width, int height)
 {
-  canvas = new CL_Canvas(width, height);
+  canvas = Canvas::create_rgba8888(width, height);
 }
 
 CL_Rect
@@ -48,12 +49,14 @@ BufferGraphicContext::clear (float r, float g, float b)
 void
 BufferGraphicContext::draw (CL_Surface& sur, int x_pos, int y_pos)
 {
+#ifdef CLANLIB_0_6
   //std::cout << "BufferGraphicContext: " << x_pos << ", " << y_pos  << std::endl;
   try {
     Blitter::put_surface(canvas, sur.get_provider(), x_pos, y_pos);
   } catch (PingusError& err) {
     std::cout << "BufferGraphicContext: " << err.get_message() << std::endl;
   }
+#endif
 }
 
 void

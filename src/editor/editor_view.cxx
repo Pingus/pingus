@@ -1,4 +1,4 @@
-//  $Id: editor_view.cxx,v 1.11 2003/10/18 23:17:27 grumbel Exp $
+//  $Id: editor_view.cxx,v 1.12 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -185,6 +185,7 @@ EditorView::draw (Sprite& sprite, const Vector& pos, int frame)
 void
 EditorView::draw (CL_Surface& sur, const Vector& pos)
 {
+#ifdef CLANLIB_0_6
   if (offset.z == 1.0)
     {
       sur.draw(int(pos.x + get_x_offset () + center.x),
@@ -196,6 +197,7 @@ EditorView::draw (CL_Surface& sur, const Vector& pos)
                int((pos.y + get_y_offset ()) * offset.z + center.y),
                offset.z, offset.z);
     }
+#endif
   //CL_Display::draw_line (x1, y1, x2, y2, 1.0, 1.0, 0.0);
   //CL_Display::draw_line (x1, y2, x2, y1, 1.0, 1.0, 0.0);
 }
@@ -216,15 +218,18 @@ EditorView::draw (CL_Surface& sur, int x_pos, int y_pos)
     }
   else
     {
+#ifdef CLANLIB_0_6
       sur.draw(int((x_pos + get_x_offset ()) * offset.z + center.x),
                int((y_pos + get_y_offset ()) * offset.z + center.y),
                offset.z, offset.z);
+#endif
     }
 }
 
 void
 EditorView::draw (CL_Surface& sur, int x_pos, int y_pos, int frame)
 {
+#ifdef CLANLIB_0_6
   if (offset.z == 1.0)
     {
       sur.draw(int(x_pos + get_x_offset () + center.x),
@@ -238,16 +243,19 @@ EditorView::draw (CL_Surface& sur, int x_pos, int y_pos, int frame)
                offset.z, offset.z,
                frame);
     }
+#endif
 }
 
 void
 EditorView::draw (CL_Surface& sur, int x_pos, int y_pos,
                   float size_x, float size_y, int frame)
 {
+#ifdef CLANLIB_0_6
   sur.draw(int(x_pos + get_x_offset () + center.x),
            int(y_pos + get_y_offset () + center.y),
            size_x * offset.z,
            size_y * offset.z, frame);
+#endif
 }
 
 void

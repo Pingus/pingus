@@ -1,4 +1,4 @@
-//  $Id: solid_color_background_obj.hxx,v 1.8 2003/10/18 23:17:28 grumbel Exp $
+//  $Id: solid_color_background_obj.hxx,v 1.9 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,6 +25,8 @@
 #include "../editor/generic_property_frame.hxx"
 #include "../editor/property_window.hxx"
 #include "surface_background_obj.hxx"
+
+namespace Pingus {
 
 using namespace EditorNS;
 
@@ -69,6 +71,7 @@ private:
 };
 
 } // namespace EditorObjs
+} // namespace Pingus
 
 #endif
 

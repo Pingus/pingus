@@ -1,4 +1,4 @@
-//  $Id: teleporter_target_obj.cxx,v 1.7 2003/04/19 10:23:18 torangan Exp $
+//  $Id: teleporter_target_obj.cxx,v 1.8 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,7 @@
 #include "teleporter_obj.hxx"
 #include "teleporter_target_obj.hxx"
 
+namespace Pingus {
 namespace EditorObjs {
 
 TeleporterTargetObj::TeleporterTargetObj (TeleporterObj* arg_teleporter)
@@ -33,7 +34,7 @@ TeleporterTargetObj::TeleporterTargetObj (TeleporterObj* arg_teleporter)
   sprite.set_align_center();
 }
 
-EditorObj*
+EditorNS::EditorObj*
 TeleporterTargetObj::duplicate ()
 {
   return teleporter->duplicate();
@@ -48,5 +49,6 @@ TeleporterTargetObj::status_line()
 }
 
 } // namespace EditorObjs
+} // namespace Pingus
 
 /* EOF */

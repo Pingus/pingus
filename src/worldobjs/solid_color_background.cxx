@@ -1,4 +1,4 @@
-//  $Id: solid_color_background.cxx,v 1.5 2003/10/18 23:17:28 grumbel Exp $
+//  $Id: solid_color_background.cxx,v 1.6 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,9 +18,11 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <ClanLib/Display/display.h>
+#include "../display.hxx"
 #include "../worldobjsdata/solid_color_background_data.hxx"
 #include "solid_color_background.hxx"
 
+namespace Pingus {
 namespace WorldObjs {
 
 SolidColorBackground::SolidColorBackground (const WorldObjsData::SolidColorBackgroundData& data_)
@@ -37,12 +39,11 @@ void
 SolidColorBackground::draw (GraphicContext& gc)
 {
   // FIXME: should use GraphicContext, not CL_Display
-  CL_Display::clear(data->color.red, data->color.green, data->color.blue, data->color.alpha);
+  CL_Display::clear(Display::to_color(data->color.red, data->color.green, data->color.blue, data->color.alpha));
   UNUSED_ARG(gc);
 }
 
 } // namespace WorldObjs
+} // namespace Pingus
 
 /* EOF */
-
-

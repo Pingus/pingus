@@ -1,4 +1,4 @@
-//  $Id: thunderstorm_background.cxx,v 1.5 2003/02/19 09:50:37 grumbel Exp $
+//  $Id: thunderstorm_background.cxx,v 1.6 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,7 @@
 #include "../gui/graphic_context.hxx"
 #include "thunderstorm_background.hxx"
 
+namespace Pingus {
 namespace WorldObjs {
 
 ThunderstormBackground::ThunderstormBackground (const WorldObjsData::ThunderstormBackgroundData& data_)
@@ -59,5 +60,6 @@ ThunderstormBackground::draw (GraphicContext& gc)
 }
 
 } // namespace WorldObjs
+} // namespace Pingus
 
 /* EOF */

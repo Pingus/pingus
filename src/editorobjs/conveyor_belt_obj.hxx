@@ -1,4 +1,4 @@
-//  $Id: conveyor_belt_obj.hxx,v 1.9 2003/10/18 23:17:27 grumbel Exp $
+//  $Id: conveyor_belt_obj.hxx,v 1.10 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,9 +38,9 @@ class ConveyorBeltObj : public EditorNS::RectEditorObj
 private:
   WorldObjsData::ConveyorBeltData* const data;
 
-  CL_Surface left_sur;
-  CL_Surface right_sur;
-  CL_Surface middle_sur;
+  CL_Sprite left_sur;
+  CL_Sprite right_sur;
+  CL_Sprite middle_sur;
 
 public:
   ConveyorBeltObj (const WorldObjsData::ConveyorBeltData& data_);

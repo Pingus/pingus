@@ -1,4 +1,4 @@
-//  $Id: pingus_menu_manager.cxx,v 1.26 2003/04/19 10:23:17 torangan Exp $
+//  $Id: pingus_menu_manager.cxx,v 1.27 2003/10/19 12:25:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,7 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
-#include <ClanLib/Display/Display/display.h>
+#include <ClanLib/Display/display.h>
 #include "gui/screen_manager.hxx"
 #include "sound/sound.hxx"
 #include "pingus_menu_manager.hxx"
