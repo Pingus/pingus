@@ -1,0 +1,34 @@
+
+Pingus Installation Guide for Windows
+     _________________________________________________________________
+   
+Introduction
+
+   The following instructions are only tested with Microsoft Visual C++ 6.
+   To be able to compile pingus you need a working version of ClanLib
+   which is correct installed. You need also a working version of
+   ClanMagick. You should have both debug and release builds of the
+   librarys.
+   Please read also the normal INSTALL documentation.
+     _________________________________________________________________
+   
+Preparing compilation
+
+   First you have to make sure that you have all required libaries
+   installed (see Introduction).
+
+   You have to execute the vcfix.reg. It adds support for .cc files to
+   Visual C++.
+
+   You have to copy the win32\config.h into the directory where your global
+   includes are.
+
+     _________________________________________________________________
+   
+Configuration and Compilation
+
+   Open Pingus.dsw, change the active configuration to the release build and
+   compile it.
+ 
+   Copy pingus.exe to the data\data directory.
+   Do "pingus.exe -datafile name.scr name.dat" for every .scr file.
