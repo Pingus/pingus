@@ -26,7 +26,6 @@
 #include "display_graphic_context.hxx"
 #include "buffer_graphic_context.hxx"
 #include "screen_manager.hxx"
-#include "../fade_out.hxx"
 #include "../path_manager.hxx"
 #include "../input/controller.hxx"
 
@@ -232,19 +231,8 @@ ScreenManager::real_clear()
 }
 
 void
-ScreenManager::fade_out()
-{
-  FadeOut::black_rect();
-}
-
-void
 ScreenManager::fade_over (ScreenPtr& old_screen, ScreenPtr& new_screen)
 {
-#if 0
-  FadeOut::fade_to_black();
-  UNUSED_ARG(old_screen);
-  UNUSED_ARG(new_screen);
-#else
   DeltaManager delta_manager;
   float passed_time = 0;
 
@@ -279,7 +267,6 @@ ScreenManager::fade_over (ScreenPtr& old_screen, ScreenPtr& new_screen)
 
       progress = passed_time/1.0f;
     }
-#endif
 }
 
 void

@@ -130,8 +130,6 @@ direction.cxx \
 direction.hxx \
 exit_menu.cxx \
 exit_menu.hxx \
-fade_out.cxx \
-fade_out.hxx \
 file_reader.hxx \
 file_writer.hxx \
 fonts.hxx \

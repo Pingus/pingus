@@ -66,9 +66,6 @@ public:
   /** Remove the current screen and fall back to the last one */
   void pop_screen ();
 
-  /** Fade the screen out, this call blocks till the screen is black */
-  void fade_out();
-
   /** Remove all screens from the stack */
   void clear();
 private:
