@@ -1,4 +1,4 @@
-//  $Id: pingu.cxx,v 1.16 2002/06/28 15:12:22 torangan Exp $
+//  $Id: pingu.cxx,v 1.17 2002/06/28 18:11:10 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -129,27 +129,33 @@ Pingu::request_set_action(PinguAction* act)
         {
           pout(PINGUS_DEBUG_ACTIONS) << "Pingu: Already have action" << std::endl;
           return false;
-        }
-                    
-        if (action->change_allowed(act->get_type()))
-          {
-            act->set_pingu(this);
-            set_action(act);
-            return true;
-          }
-                    
-      return false;
+        } 
+      else if (action->change_allowed(act->get_type()))
+	{
+	  pout(PINGUS_DEBUG_ACTIONS) << "setting instant action" << std::endl;
+	  act->set_pingu(this);
+	  set_action(act);
+	  return true;
+	}
+      else
+	{
+	  pout(PINGUS_DEBUG_ACTIONS) << "change from action " << action->get_name () << " not allowed" << std::endl;
+	  return false;
+	}
                   
     case WALL_TRIGGERED:
-    
+      
       if (wall_action && wall_action->get_type() == act->get_type())
         {
           pout(PINGUS_DEBUG_ACTIONS) << "Not using wall action, we have already" << std::endl;
           return false;
         }
-
-      wall_action = act;
-      return true;
+      else
+	{
+	  pout(PINGUS_DEBUG_ACTIONS) << "Setting wall action" << std::endl;
+	  wall_action = act;
+	  return true;
+	}
       
     case FALL_TRIGGERED:
     
@@ -158,9 +164,12 @@ Pingu::request_set_action(PinguAction* act)
           pout(PINGUS_DEBUG_ACTIONS) << "Not using fall action, we have already" << std::endl;
           return false;
         }
-      
-      fall_action = act;
-      return true;
+      else
+	{
+	  pout(PINGUS_DEBUG_ACTIONS) << "Setting fall action" << std::endl;
+	  fall_action = act;
+	  return true;
+	}
 
     case COUNTDOWN_TRIGGERED:
     
@@ -170,13 +179,14 @@ Pingu::request_set_action(PinguAction* act)
           return false;
         }
         
+      pout(PINGUS_DEBUG_ACTIONS) << "Setting countdown action" << std::endl;
       // We set the action and start the countdown
       action_time = act->activation_time();
       countdown_action = act;
       return true;
       
    default:
-     
+      pout(PINGUS_DEBUG_ACTIONS) << "unknown action activation_mode" << std::endl;     
      assert(0);
      return false;
   }
@@ -204,7 +214,7 @@ Pingu::set_action(PinguAction* act)
 }
 
 bool
-Pingu::set_fall_action ()
+Pingu::request_fall_action ()
 {
   if (fall_action)
     {
@@ -216,7 +226,7 @@ Pingu::set_fall_action ()
 }
 
 bool
-Pingu::set_wall_action ()
+Pingu::request_wall_action ()
 {
   if (wall_action)
     {

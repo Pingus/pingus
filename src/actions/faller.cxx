@@ -1,4 +1,4 @@
-//  $Id: faller.cxx,v 1.11 2002/06/28 15:12:22 torangan Exp $
+//  $Id: faller.cxx,v 1.12 2002/06/28 18:11:10 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -63,7 +63,7 @@ Faller::update (float delta)
 
   // FIXME: This should be triggered at a later point, when close to
   // FIXME: deadly_velocity or something like that
-  if (pingu->set_fall_action())
+  if (pingu->velocity.y > 5.0 && pingu->request_fall_action())
     return;
 
   // Apply all forces

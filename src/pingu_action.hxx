@@ -1,4 +1,4 @@
-//  $Id: pingu_action.hxx,v 1.7 2002/06/28 17:48:42 grumbel Exp $
+//  $Id: pingu_action.hxx,v 1.8 2002/06/28 18:11:10 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,10 +30,10 @@ class ActionHolder;
 
 enum ActionType
 {
-  INSTANT             = 1<<1,
-  WALL_TRIGGERED      = 1<<2,
-  FALL_TRIGGERED      = 1<<3,
-  COUNTDOWN_TRIGGERED = 1<<4
+  INSTANT,
+  WALL_TRIGGERED,
+  FALL_TRIGGERED,
+  COUNTDOWN_TRIGGERED
 };
 
 // This class provides an abstract interface for pingu actions. It is 

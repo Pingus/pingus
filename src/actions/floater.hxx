@@ -1,4 +1,4 @@
-//  $Id: floater.hxx,v 1.4 2002/06/28 15:12:22 torangan Exp $
+//  $Id: floater.hxx,v 1.5 2002/06/28 18:11:10 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,7 +36,7 @@ public:
 
   std::string get_name() const { return "Floater"; }
   ActionName get_type() const { return Pingus::Actions::Faller; }
-  ActionType get_activation_mode() { return FALL_TRIGGERED; };
+  ActionType get_activation_mode() const { return FALL_TRIGGERED; }
   void init(void);
   void update(float delta);
   void draw_offset (int x, int y, float s);

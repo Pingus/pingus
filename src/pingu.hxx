@@ -1,4 +1,4 @@
-//  $Id: pingu.hxx,v 1.8 2002/06/28 15:12:22 torangan Exp $
+//  $Id: pingu.hxx,v 1.9 2002/06/28 18:11:10 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -150,10 +150,10 @@ public:
   void set_action (ActionName action_name);
   
   /// set the wall action if we have one
-  bool set_wall_action ();
+  bool request_wall_action ();
   
   /// set the fall action if we have one
-  bool set_fall_action ();
+  bool request_fall_action ();
 
   PinguAction* get_wall_action() { return wall_action; }
   

@@ -1,4 +1,4 @@
-//  $Id: walker.cxx,v 1.12 2002/06/28 17:04:21 grumbel Exp $
+//  $Id: walker.cxx,v 1.13 2002/06/28 18:11:10 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -143,7 +143,7 @@ Walker::update(float delta)
 	  if (rel_getpixel(1, 0) !=  GroundpieceData::GP_NOTHING)
 	    {
 	      // We reached a wall
-              if (pingu->set_wall_action()) 
+              if (pingu->request_wall_action()) 
                 {
 		  pout(PINGUS_DEBUG_ACTIONS) 
 		    << "Pingu: We are in front of a wall, setting persistant action" << std::endl;
