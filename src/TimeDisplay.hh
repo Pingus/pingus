@@ -1,4 +1,4 @@
-//  $Id: TimeDisplay.hh,v 1.3 2000/06/18 17:01:50 grumbel Exp $
+//  $Id: TimeDisplay.hh,v 1.4 2000/08/09 14:39:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,10 +31,6 @@ private:
   Server*  server;
   ///
   CL_Font* font;
-  ///
-  char time_string[256];
-  ///
-  int  time_value;
 public:
   ///
   TimeDisplay();

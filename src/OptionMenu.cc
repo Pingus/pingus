@@ -1,4 +1,4 @@
-//  $Id: OptionMenu.cc,v 1.24 2000/07/10 18:42:25 grumbel Exp $
+//  $Id: OptionMenu.cc,v 1.25 2000/08/09 14:39:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -127,13 +127,12 @@ OptionEntry::mouse_over()
   }
 }
 
-bool
+void
 OptionMenu::Event::on_button_press(CL_InputDevice *device, const CL_Key &key)
 {
-  return true;
 }
 
-bool
+void
 OptionMenu::Event::on_button_release(CL_InputDevice *device, const CL_Key &key)
 {
   if (device == CL_Input::keyboards[0])
@@ -167,8 +166,6 @@ OptionMenu::Event::on_button_release(CL_InputDevice *device, const CL_Key &key)
 	  break;  
 	}
     }
-
-  return true;
 }
 
 // ----- OptionMenu -----
@@ -300,8 +297,11 @@ OptionMenu::display()
 
   quit = false;
 
-  CL_Input::chain_button_press.push_back(event);
-  CL_Input::chain_button_release.push_back(event);
+  //CL_Input::chain_button_press.push_back(event);
+  //CL_Input::chain_button_release.push_back(event);
+  
+  CL_Input::sig_button_press.connect (thCreateSlot(event, &OptionMenu::Event::on_button_press));
+  CL_Input::sig_button_release.connect (thCreateSlot(event, &OptionMenu::Event::on_button_release));
 
   Display::set_cursor(CL_MouseCursorProvider::load("Cursors/cursor",
 						   PingusResource::get("game")));
@@ -351,8 +351,8 @@ OptionMenu::display()
 
   Display::hide_cursor();
 
-  CL_Input::chain_button_release.remove(event);
-  CL_Input::chain_button_press.remove(event);
+  //CL_Input::chain_button_release.remove(event);
+  //CL_Input::chain_button_press.remove(event);
 }
 
 std::vector<OptionEntry>::iterator

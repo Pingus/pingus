@@ -1,4 +1,4 @@
-//  $Id: Editor.cc,v 1.15 2000/07/30 01:47:37 grumbel Exp $
+//  $Id: Editor.cc,v 1.16 2000/08/09 14:39:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -61,8 +61,13 @@ Editor::register_event_handler()
       event_handler_ref_counter++;
       CL_System::keep_alive();
       if (verbose) std::cout << "Editor: Registering event handler..." << event << std::flush; 
-      CL_Input::chain_button_press.push_back(event);
-      CL_Input::chain_button_release.push_back(event);
+
+      //CL_Input::chain_button_press.push_back(event);
+      //CL_Input::chain_button_release.push_back(event);
+
+      on_button_press_slot = CL_Input::sig_button_press.connect(thCreateSlot(event, &EditorEvent::on_button_press));
+      on_button_release_slot = CL_Input::sig_button_release.connect(thCreateSlot(event, &EditorEvent::on_button_release));
+
       if (verbose) std::cout << "done: " << event_handler_ref_counter << std::endl;
     }
   else
@@ -76,8 +81,13 @@ Editor::unregister_event_handler()
 {
   event_handler_ref_counter--;
   if (verbose) std::cout << "Editor: unregestering event handler" << event << "... " << std::flush; 
-  CL_Input::chain_button_release.remove(event);
-  CL_Input::chain_button_press.remove(event);
+
+  //CL_Input::chain_button_release.remove(event);
+  //CL_Input::chain_button_press.remove(event);
+
+  CL_Input::sig_button_press.disconnect (on_button_press_slot);
+  CL_Input::sig_button_release.disconnect (on_button_release_slot);
+
   CL_System::keep_alive();
   if (verbose) std::cout << "done: " << event_handler_ref_counter << std::endl;
 }
@@ -143,6 +153,8 @@ Editor::scroll()
   int mouse_y = CL_Mouse::get_y();
 
   if (verbose) std::cout << "Editor::scroll()..." << std::flush;
+
+  CL_System::keep_alive();
 
   while (CL_Mouse::right_pressed())
     {
@@ -337,6 +349,8 @@ Editor::interactive_move_object()
 {
   int mouse_x = CL_Mouse::get_x();
   int mouse_y = CL_Mouse::get_y();
+
+  CL_System::keep_alive();
   
   while (CL_Mouse::left_pressed()) 
     {
@@ -396,6 +410,9 @@ Editor::interactive_load()
 
 /***********************************************
 $Log: Editor.cc,v $
+Revision 1.16  2000/08/09 14:39:37  grumbel
+Updated Pingus to use ClanLib 0.5 CVS, it will no longer work with ClanLib 0.4
+
 Revision 1.15  2000/07/30 01:47:37  grumbel
 XML support, currently not activated
 

@@ -1,4 +1,4 @@
-//  $Id: EditorEvent.hh,v 1.6 2000/07/31 23:45:02 grumbel Exp $
+//  $Id: EditorEvent.hh,v 1.7 2000/08/09 14:39:37 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,7 +28,7 @@
 ///
 class Editor;
 
-class EditorEvent : public CL_Event_ButtonPress, public CL_Event_ButtonRelease
+class EditorEvent //: public CL_Event_ButtonPress, public CL_Event_ButtonRelease
 {
 private:
   ///
@@ -47,9 +47,9 @@ public:
   ObjectManager* object_manager;
   
   ///
-  virtual bool on_button_press(CL_InputDevice *device, const CL_Key &key);
+  virtual void on_button_press(CL_InputDevice *device, const CL_Key &key);
   ///
-  virtual bool on_button_release(CL_InputDevice *device, const CL_Key &key);
+  virtual void on_button_release(CL_InputDevice *device, const CL_Key &key);
 
   ///
   void enable();

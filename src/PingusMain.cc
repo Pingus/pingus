@@ -1,4 +1,4 @@
-//   $Id: PingusMain.cc,v 1.1 2000/08/09 01:26:52 grumbel Exp $
+//   $Id: PingusMain.cc,v 1.2 2000/08/09 14:39:37 grumbel Exp $
 //    ___
 //   |  _\ A free Lemmings clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -764,8 +764,10 @@ PingusMain::do_lemmings_mode(void)
     Display::add_flip_screen_hook(&fps_counter);
   //Display::add_flip_screen_hook(&console);
 
-  CL_Input::chain_button_release.push_back(&global_event);
-  CL_Input::chain_button_press.push_back(&global_event);
+  //CL_Input::chain_button_release.push_back(&global_event);
+  //CL_Input::chain_button_press.push_back(&global_event);
+  CL_Input::sig_button_press.connect (thCreateSlot(&global_event, &GlobalEvent::on_button_press));
+  CL_Input::sig_button_release.connect (thCreateSlot(&global_event, &GlobalEvent::on_button_release));
 
   if (!levelfile.empty()) 
     {
@@ -794,8 +796,8 @@ PingusMain::do_lemmings_mode(void)
     PingusMessageBox(" PingusError: " + err.message);
   }
 
-  CL_Input::chain_button_press.remove(&global_event);
-  CL_Input::chain_button_release.remove(&global_event);
+  //CL_Input::chain_button_press.remove(&global_event);
+  //CL_Input::chain_button_release.remove(&global_event);
 
   //  Display::remove_flip_screen_hook(&console);
   //  Display::remove_flip_screen_hook(&fps_counter);

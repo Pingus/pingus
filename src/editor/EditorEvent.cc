@@ -1,4 +1,4 @@
-//  $Id: EditorEvent.cc,v 1.26 2000/08/04 16:08:40 grumbel Exp $
+//  $Id: EditorEvent.cc,v 1.27 2000/08/09 14:39:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -63,11 +63,11 @@ EditorEvent::disable()
   is_enabled = false;
 }
 
-bool
-EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key &key)
+void
+EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key& key)
 {
   if (!is_enabled)
-    return true;
+    return;
 
   if (device == CL_Input::keyboards[0])
     {
@@ -288,14 +288,13 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key &key)
   
   // Redraw the screen, since something may have changed
   editor->draw();
-  return true;
 }
 
-bool
+void
 EditorEvent::on_button_release(CL_InputDevice *device, const CL_Key &key)
 {
   if (!is_enabled)
-    return true;
+    return;
 
   if (device == CL_Input::keyboards[0])
     {
@@ -309,7 +308,7 @@ EditorEvent::on_button_release(CL_InputDevice *device, const CL_Key &key)
     {
     }
   
-  return true;
+  return;
 }
 
 void

@@ -1,4 +1,4 @@
-//  $Id: OptionMenu.hh,v 1.7 2000/06/21 20:29:21 grumbel Exp $
+//  $Id: OptionMenu.hh,v 1.8 2000/08/09 14:39:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -84,15 +84,15 @@ private:
   std::vector<OptionEntry> entry;
 
   ///
-  class Event : public CL_Event_ButtonPress, public CL_Event_ButtonRelease
+  class Event //: public CL_Event_ButtonPress, public CL_Event_ButtonRelease
   {
   public:
     ///
     OptionMenu* option_menu;
     ///
-    virtual bool on_button_press(CL_InputDevice *device, const CL_Key &key);
+    virtual void on_button_press(CL_InputDevice *device, const CL_Key &key);
     ///
-    virtual bool on_button_release(CL_InputDevice *device, const CL_Key &key);
+    virtual void on_button_release(CL_InputDevice *device, const CL_Key &key);
   };
   ///
   friend class Event;

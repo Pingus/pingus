@@ -1,4 +1,4 @@
-//  $Id: PingusMenu.hh,v 1.6 2000/06/18 17:01:50 grumbel Exp $
+//  $Id: PingusMenu.hh,v 1.7 2000/08/09 14:39:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -40,29 +40,34 @@ class PingusMenu
 public:
   ///
   enum PingusMenuItem { pmiSTART, pmiLOAD, pmiQUIT, pmiVOID }///
-;
-
+  ;
+  
 private:
   ///
-  class Event : 
+  thSlot on_button_press_slot;
+  ///
+  thSlot on_button_release_slot;
+  ///
+  thSlot on_mouse_move_slot;
+
+  ///
+  class Event /*: 
     public CL_Event_ButtonPress, 
     public CL_Event_ButtonRelease, 	
-    public CL_Event_MouseMove
+    public CL_Event_MouseMove*/
   {
   public:
     ///
     bool enabled;
-    
     ///
     PingusMenu* menu;
     ///
-    virtual bool on_button_press(CL_InputDevice *device, const CL_Key &key);
+    virtual void on_button_press(CL_InputDevice *device, const CL_Key &key);
     ///
-    virtual bool on_button_release(CL_InputDevice *device, const CL_Key &key);
+    virtual void on_button_release(CL_InputDevice *device, const CL_Key &key);
     ///
-    virtual bool on_mouse_move(CL_InputDevice *device);
-  }///
-;
+    virtual void on_mouse_move(CL_InputDevice *,int mouse_x, int mouse_y);
+  };
 
   ///
   friend class Event;

@@ -1,4 +1,4 @@
-//  $Id: ThemeSelector.cc,v 1.28 2000/08/05 00:00:42 grumbel Exp $
+//  $Id: ThemeSelector.cc,v 1.29 2000/08/09 14:39:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -66,18 +66,16 @@ ListItem::draw_offset(int x, int y)
 
 // ---=== ThemeSelector ===---
 
-bool 
+void 
 ThemeSelector::Event::on_button_release(CL_InputDevice *device, const CL_Key &key)
 {
-  if (!enabled) return true;  
-
-  return true;
+  if (!enabled) return;  
 }
 
-bool
+void
 ThemeSelector::Event::on_button_press(CL_InputDevice *device, const CL_Key &key)
 {
-  if (!enabled) return true;
+  if (!enabled) return;
 
   if (device == CL_Input::keyboards[0])
     {
@@ -168,17 +166,16 @@ ThemeSelector::Event::on_button_press(CL_InputDevice *device, const CL_Key &key)
   
   theme_selector->draw();
 
-  return true;
+  return;
 }
 
-bool
-ThemeSelector::Event::on_mouse_move(CL_InputDevice *device)
+void
+ThemeSelector::Event::on_mouse_move(CL_InputDevice *, int mouse_x, int mouse_y)
 {
   //std::cout << "Event: on_mouse_move called.." << std::endl;
-  if (!enabled) return true;  
+  if (!enabled) return;  
   //std::cout << "Event: on_mouse_move active.." << std::endl;  
-  theme_selector->mark_level_at_point(CL_Mouse::get_x(), CL_Mouse::get_y());
-  return false;
+  theme_selector->mark_level_at_point(mouse_x, mouse_y);
 } 
 
 ThemeSelector::ThemeSelector()
@@ -196,9 +193,13 @@ ThemeSelector::ThemeSelector()
 
   event->theme_selector = this;
   
-  CL_Input::chain_button_press.push_back(event);
-  CL_Input::chain_button_release.push_back(event);
-  CL_Input::chain_mouse_move.push_back(event);
+  //CL_Input::chain_button_press.push_back(event);
+  //CL_Input::chain_button_release.push_back(event);
+  //CL_Input::chain_mouse_move.push_back(event);
+
+  on_button_press_slot = CL_Input::sig_button_press.connect (thCreateSlot(event, &ThemeSelector::Event::on_button_press));
+  on_button_release_slot = CL_Input::sig_button_release.connect (thCreateSlot(event, &ThemeSelector::Event::on_button_release));
+  on_mouse_move_slot = CL_Input::sig_mouse_move.connect (thCreateSlot(event, &ThemeSelector::Event::on_mouse_move));
 }
 
 ThemeSelector::~ThemeSelector()
@@ -208,9 +209,13 @@ ThemeSelector::~ThemeSelector()
   for(std::vector<Theme*>::iterator i = themes.begin(); i != themes.end(); i++)
     delete (*i);
 
-  CL_Input::chain_mouse_move.remove(event);
-  CL_Input::chain_button_press.remove(event);
-  CL_Input::chain_button_release.remove(event);
+  // CL_Input::chain_mouse_move.remove(event);
+  // CL_Input::chain_button_press.remove(event);
+  // CL_Input::chain_button_release.remove(event);
+  
+  CL_Input::sig_button_press.disconnect (on_button_press_slot);
+  CL_Input::sig_button_release.disconnect (on_button_release_slot);
+  CL_Input::sig_mouse_move.disconnect (on_mouse_move_slot);
   
   delete event;
 }

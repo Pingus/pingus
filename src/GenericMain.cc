@@ -1,4 +1,4 @@
-//  $Id: GenericMain.cc,v 1.1 2000/08/06 13:05:31 grumbel Exp $
+//  $Id: GenericMain.cc,v 1.2 2000/08/09 14:39:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,6 +31,7 @@ GenericMain my_app; // notice this line. It creates the global instance.
 void
 GenericMain::init_modules()
 {
+  std::cout << "Module init.." << std::endl;
   CL_SetupCore::init();
   CL_SetupMagick::init();
 }
@@ -38,6 +39,7 @@ GenericMain::init_modules()
 void
 GenericMain::deinit_modules()
 {
+  std::cout << "Module deinit.." << std::endl;
   CL_SetupCore::deinit();
 }
 
@@ -50,6 +52,10 @@ GenericMain::get_title()
 int 
 GenericMain::main(int argc, char* argv[])
 {
+  int ret_value;
+  CL_SetupCore::init();
+  CL_SetupMagick::init();
+
   std::cout << "Starting..." << std::endl;
 
   if (System::basename(argv[0]) == "warpingus")
@@ -67,7 +73,12 @@ GenericMain::main(int argc, char* argv[])
       main_obj = new PingusMain();
     }
 
-  return main_obj->main(argc, argv);
+  ret_value = main_obj->main(argc, argv);
+
+  CL_SetupMagick::deinit();
+  CL_SetupCore::deinit();
+
+  return ret_value;
 }
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: World.hh,v 1.14 2000/08/03 10:31:17 grumbel Exp $
+//  $Id: World.hh,v 1.15 2000/08/09 14:39:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -146,9 +146,17 @@ public:
   /** @return The absolute width of the world */
   int     get_width(void);
   ///
-  bool    is_finished(void);
-  ///
-  int     get_time (void);
+  bool    is_finished ();
+
+  /** Returns the time passed since the level was started */
+  int get_time_passed();
+
+  /** Returns the time left until the time is out or -1 if there is no
+      time limit */
+  int get_time_left();
+
+  /** True if there is a time limit in this world */
+  bool    has_time_limit();
 
   /** @return A pointer to the collision map used in this world */
   ColMap* get_colmap();

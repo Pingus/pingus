@@ -1,4 +1,4 @@
-//  $Id: SmallMap.cc,v 1.18 2000/07/30 01:47:35 grumbel Exp $
+//  $Id: SmallMap.cc,v 1.19 2000/08/09 14:39:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -231,6 +231,8 @@ SmallMap::let_move()
 bool
 SmallMap::mouse_over()
 {
+  std::cout << "x_pos: " << CL_Mouse::get_x() << " y_pos: " << CL_Mouse::get_y() << std::endl;
+
   if (CL_Mouse::get_x() > x_pos && CL_Mouse::get_x() < x_pos + (int)width
       && CL_Mouse::get_y() > y_pos && CL_Mouse::get_y() < y_pos + (int)height)
     {

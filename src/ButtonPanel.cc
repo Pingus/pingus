@@ -1,4 +1,4 @@
-//  $Id: ButtonPanel.cc,v 1.10 2000/07/31 23:45:02 grumbel Exp $
+//  $Id: ButtonPanel.cc,v 1.11 2000/08/09 14:39:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -153,7 +153,7 @@ ButtonPanel::set_button(int i)
     }
 }
 
-bool
+void
 ButtonPanel::on_button_press(const CL_Key &key)
 {
   if (key.id == 0)
@@ -178,31 +178,29 @@ ButtonPanel::on_button_press(const CL_Key &key)
 	      armageddon->pressed = true;
 	      world->armageddon();
 	    }
-	  return true;
+	  return;
 	}
     
       if (pause->mouse_over())
 	{
 	  client->set_pause(!client->get_pause());
-	  return true;
+	  return;
 	}
       else if (forward->mouse_over())
 	{
 	  client->set_fast_forward(!client->get_fast_forward());
-	  return true;
+	  return;
 	}
     }
-  return false;
 }
 
-bool
+void
 ButtonPanel::on_button_release(const CL_Key &key)
 {
 
   //forward->pressed = false;
   //pause->pressed = false;
   
-  return true;
 }
 
 /* EOF */

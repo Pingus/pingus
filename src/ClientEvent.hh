@@ -1,4 +1,4 @@
-//  $Id: ClientEvent.hh,v 1.3 2000/06/18 17:01:49 grumbel Exp $
+//  $Id: ClientEvent.hh,v 1.4 2000/08/09 14:39:37 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,7 +28,7 @@
 class Client;
 class Playfield;
 
-class ClientEvent : public CL_Event_ButtonPress, public CL_Event_ButtonRelease
+class ClientEvent //: public CL_Event_ButtonPress, public CL_Event_ButtonRelease
 {
 private:
   ///
@@ -37,6 +37,12 @@ private:
   Client* client;
   ///
   Playfield* playfield;
+
+  ///
+  thSlot on_button_press_slot;
+  ///
+  thSlot on_button_release_slot;
+
   ///
   bool enabled;
 public:
@@ -46,19 +52,19 @@ public:
   ~ClientEvent();
 
   ///
-  virtual bool on_button_press(CL_InputDevice *device, const CL_Key &key);
+  virtual void on_button_press(CL_InputDevice *device, const CL_Key &key);
   ///
-  virtual bool on_button_release(CL_InputDevice *device, const CL_Key &key);
+  virtual void on_button_release(CL_InputDevice *device, const CL_Key &key);
 
   ///
-  bool on_mouse_button_press(const CL_Key &key);
+  void on_mouse_button_press(const CL_Key &key);
   ///
-  bool on_mouse_button_release(const CL_Key &key);
+  void on_mouse_button_release(const CL_Key &key);
   
   ///
-  bool on_keyboard_button_press(const CL_Key &key);
+  void on_keyboard_button_press(const CL_Key &key);
   ///
-  bool on_keyboard_button_release(const CL_Key &key);
+  void on_keyboard_button_release(const CL_Key &key);
 
   ///
   void register_event_handler();

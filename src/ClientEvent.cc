@@ -1,4 +1,4 @@
-//  $Id: ClientEvent.cc,v 1.10 2000/06/10 07:56:58 grumbel Exp $
+//  $Id: ClientEvent.cc,v 1.11 2000/08/09 14:39:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,8 +38,12 @@ void
 ClientEvent::register_event_handler()
 {
   if (verbose > 1) std::cout << "ClientEvent: register_event_handler()" << std::endl;
-  CL_Input::chain_button_press.push_back(this);
-  CL_Input::chain_button_release.push_back(this);
+  //CL_Input::chain_button_press.push_back(this);
+  //CL_Input::chain_button_release.push_back(this);
+
+  on_button_press_slot = CL_Input::sig_button_press.connect (thCreateSlot(this, &ClientEvent::on_button_press));
+  on_button_release_slot = CL_Input::sig_button_release.connect (thCreateSlot(this, &ClientEvent::on_button_release));
+
   enabled = true;
 }
 
@@ -47,8 +51,12 @@ void
 ClientEvent::unregister_event_handler()
 {
   if (verbose > 1) std::cout << "ClientEvent: unregister_event_handler()" << std::endl;
-  CL_Input::chain_button_release.remove(this);
-  CL_Input::chain_button_press.remove(this);
+  //CL_Input::chain_button_release.remove(this);
+  //CL_Input::chain_button_press.remove(this);
+
+  CL_Input::sig_button_press.disconnect (on_button_press_slot); 
+  CL_Input::sig_button_release.disconnect (on_button_release_slot); 
+
   enabled = false;
 }
 
@@ -64,50 +72,47 @@ ClientEvent::enable_event_handler()
   enabled = true;
 }
 
-bool
+void
 ClientEvent::on_button_press(CL_InputDevice *device, const CL_Key &key)
 {
   if (!enabled)
-    return true;
+    return;
   
   if (device == CL_Input::keyboards[0])
     {
-      return on_keyboard_button_press(key);
+      on_keyboard_button_press(key);
     }
   else if (device == CL_Input::pointers[0])
     {
-      return on_mouse_button_press(key);
+      on_mouse_button_press(key);
     }
   else
     {
       if (verbose > 1) std::cout << "Unknown device pressed: device=" << device << "; key.id=" << key.id << std::endl;
-      return true;
     }
 }
 
-bool
+void
 ClientEvent::on_button_release(CL_InputDevice *device, const CL_Key &key)
 {
   if (!enabled)
-    return true;
+    return;
 
   if (device == CL_Input::keyboards[0])
     {
-      return on_keyboard_button_release(key);
+      on_keyboard_button_release(key);
     }
   else if (device == CL_Input::pointers[0])
     {
-      return on_mouse_button_release(key);
+      on_mouse_button_release(key);
     }
   else
     {
       if (verbose > 1) std::cout << "Unknown device released: device=" << device << "; key.id=" << key.id << std::endl;
-      return true;
     }  
-  return true;
 }
 
-bool
+void
 ClientEvent::on_keyboard_button_press(const CL_Key& key)
 {
   if (CL_Keyboard::get_keycode(CL_KEY_LSHIFT)
@@ -119,10 +124,9 @@ ClientEvent::on_keyboard_button_press(const CL_Key& key)
     {
       playfield->scroll_speed = 15;
     }
-  return false;
 }
 
-bool
+void
 ClientEvent::on_keyboard_button_release(const CL_Key& key)
 {
   switch (key.id)
@@ -214,14 +218,13 @@ ClientEvent::on_keyboard_button_release(const CL_Key& key)
     default:
       if (verbose > 1) std::cout << "ClientEvent: Got unknown button: ID=" << key.id << " ASCII=" << char(key.ascii) << std::endl;
     }
-  return true;
 }
 
-bool
+void
 ClientEvent::on_mouse_button_press(const CL_Key& key)
 {
-  if (client->button_panel->on_button_press(key)) return false;
-  if (client->small_map->on_button_press(key)) return false;
+  client->button_panel->on_button_press(key);
+  client->small_map->on_button_press(key);
 
   switch(key.id)
     {
@@ -236,10 +239,9 @@ ClientEvent::on_mouse_button_press(const CL_Key& key)
     default:
       if (verbose > 1) std::cout << "ClientEvent: Unknown mouse button released: " << key.id << std::endl;
     }
-  return false;
 }
 
-bool
+void
 ClientEvent::on_mouse_button_release(const CL_Key& key)
 {
   client->button_panel->on_button_release(key);
@@ -257,7 +259,7 @@ ClientEvent::on_mouse_button_release(const CL_Key& key)
     default:
       if (verbose > 1) std::cout << "ClientEvent: Unknown mouse button released: " << key.id << std::endl;
     }
-  return false;
+  return;
 }
 
 /* EOF */

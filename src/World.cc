@@ -1,4 +1,4 @@
-//  $Id: World.cc,v 1.31 2000/08/05 18:52:22 grumbel Exp $
+//  $Id: World.cc,v 1.32 2000/08/09 14:39:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -211,7 +211,9 @@ World::init(PLF* plf_data)
   released_pingus = 0;
 
   exit_time = plf->get_time();
-  shutdown_time = exit_time;
+  if (exit_time != -1 && !(exit_time > 100))
+    std::cout << "World: Time is not in the tolerated range: " << exit_time << std::endl;
+  shutdown_time = -1;
 
   init_map();
   init_background();
@@ -375,16 +377,22 @@ World::get_height(void)
 }
 
 int
-World::get_time(void)
+World::get_time_left()
 {
-  if (exit_time) // There is a time limit
+  if (exit_time != -1) // There is a time limit
     {
       return exit_time - GameTime::get_time();
     }
-  else // No timelimit given, lets run forever
+  else // No timelimit given
     {
-      return GameTime::get_time();
-    }
+      return -1;
+    }  
+}
+
+int
+World::get_time_passed()
+{
+  return GameTime::get_time();
 }
 
 unsigned int
@@ -410,9 +418,12 @@ bool
 World::is_finished(void)
 {
   // Return true if the world is finished and some time has passed
-  if (exit_time < GameTime::get_time()
-      || shutdown_time < GameTime::get_time())
+  if (((exit_time != -1) && (exit_time < (GameTime::get_time())))
+      || ((shutdown_time != -1) && shutdown_time < GameTime::get_time()))
     {
+      std::cout << "ExitTime: " << exit_time << std::endl
+		<< "GameTime: " << GameTime::get_time() << std::endl
+		<< "ShutDown: " << shutdown_time << std::endl;
       return true;
     } 
   else 

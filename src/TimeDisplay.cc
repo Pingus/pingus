@@ -1,4 +1,4 @@
-//  $Id: TimeDisplay.cc,v 1.4 2000/06/27 16:05:16 grumbel Exp $
+//  $Id: TimeDisplay.cc,v 1.5 2000/08/09 14:39:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,32 +32,41 @@ TimeDisplay::TimeDisplay()
 void
 TimeDisplay::draw()
 {
-  if (!debug_game_time)
+  int time_value = server->get_world()->get_time_left();
+  char time_string[256];
+  
+  if (time_value == -1 && !debug_game_time)
     {
-      time_value = server->get_world()->get_time();
-
-      int millisecs = (((time_value * 100)) / game_speed) % 100;
-      int seconds   = (time_value / game_speed % 60);
-      int minutes   = (time_value / (60 * game_speed));
-      char* p;
-      // FIXME: Buffer overflow...
-      sprintf(time_string, "%2d:%2d:%2d", minutes, seconds, millisecs);
-
-      p = time_string;
-
-      while(*p++)
-	{
-	  if (*p == ' ')
-	    *p = '0';
-	}
+      sprintf(time_string, "00");
     }
   else
-    {
-      time_value = server->get_world()->get_time();
-      // FIXME: Buffer overflow...
-      sprintf(time_string, "%4d", time_value);
-    }
+    {  
+      if (!debug_game_time)
+	{
+	  int millisecs = (((time_value * 100)) / game_speed) % 100;
+	  int seconds   = (time_value / game_speed % 60);
+	  int minutes   = (time_value / (60 * game_speed));
+	  char* p;
 
+	  // FIXME: Buffer overflow...
+	  sprintf(time_string, "%2d:%2d:%2d", minutes, seconds, millisecs);
+
+	  p = time_string;
+
+	  // Replace any space with a zero
+	  while(*p++)
+	    {
+	      if (*p == ' ')
+		*p = '0';
+	    }
+	}
+      else
+	{
+	  time_value = server->get_world()->get_time_passed();
+	  // FIXME: Buffer overflow...
+	  sprintf(time_string, "%4d", time_value);
+	}
+    }
   font->print_right(CL_Display::get_width() - 5, 1, time_string);
 }
 

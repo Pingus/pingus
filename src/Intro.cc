@@ -1,4 +1,4 @@
-//  $Id: Intro.cc,v 1.12 2000/06/27 16:05:16 grumbel Exp $
+//  $Id: Intro.cc,v 1.13 2000/08/09 14:39:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,7 +46,8 @@ Intro::draw()
 
   if (verbose) std::cout << "Intro: adding event handler" << std::endl;
 
-  CL_Input::chain_button_release.push_back(event);
+  //CL_Input::chain_button_release.push_back(event);
+  CL_Input::sig_button_release.connect(thCreateSlot(event, &Intro::Event::on_button_release));
   /*
   pingus_story.init();
   pingus_story.display();
@@ -87,10 +88,10 @@ Intro::draw()
     loading_screen.draw();
 
   if (verbose) std::cout << "Intro: Removing event handler" << std::endl;
-  CL_Input::chain_button_release.remove(event);
+  //CL_Input::chain_button_release.remove(event);
 }
 
-bool
+void
 Intro::Event::on_button_release(CL_InputDevice* device, const CL_Key& key)
 {
   switch (key.id)
@@ -102,7 +103,6 @@ Intro::Event::on_button_release(CL_InputDevice* device, const CL_Key& key)
       intro->quit = true;
       break;
     }
-  return true;
 }
 
 /* EOF */

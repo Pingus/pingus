@@ -1,4 +1,4 @@
-//  $Id: HurryUp.cc,v 1.4 2000/07/08 13:21:33 grumbel Exp $
+//  $Id: HurryUp.cc,v 1.5 2000/08/09 14:39:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -84,7 +84,8 @@ void HurryUp::let_move()
     }
   else if (!is_finished)
     {
-      if (client->get_server()->get_world()->get_time() < 10 * 15)
+      if (client->get_server()->get_world()->get_time_left() != -1 &&
+	  client->get_server()->get_world()->get_time_left() < 10 * 15)
 	is_running = true;
     }
 }

@@ -1,8 +1,5 @@
-// ! " # $ % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ? @ A B C D E F G H I J K L M N O P Q R S T U V W X Y Z [ \ ] ^ _ ` a b c d e f g h i j k l m n o p q r s t u v w x y z { | } ~ 
-
 section Fonts
 {
-	font	= ../images/fonts/font.pcx (type=font, x=1, y=1, tcol=0, spacelen=8, letters=abcdefghijklmnopqrstuvwxyz1234567890-?!.);
 	numbers = ../images/fonts/number_fnt.pcx (type=font, x=1, y=1, tcol=0, spacelen=0, letters=" 0123456789:");
 
 // courier font with size 20
@@ -11,6 +8,9 @@ section Fonts
 	smallfont = ../images/fonts/smallfont.pcx (type=font, x=1, y=1, tcol=0, spacelen=8, letters="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890_-\/=[]().,");
 	smallfont_h = ../images/fonts/smallfont_h.pcx (type=font, x=1, y=1, tcol=0, spacelen=8, letters="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890_-\/=[]().,");
 //	clanfont  = ../images/fonts/clanfont.pcx (type=font, x=129, y=209, tcol=0, spacelen=6, letters=ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789);
+
+	font	= ../images/fonts/font.pcx (type=font, x=1, y=1, tcol=0, spacelen=8, letters="abcdefghijklmnopqrstuvwxyz1234567890-?!.");
+
 
 	courier_small = ../images/fonts/courier_small2.tga (type=font, spacelen=8, trans_limit=0.25, subtract_width=0,letters="!""#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~");
 

@@ -1,4 +1,4 @@
-//  $Id: GlobalEvent.cc,v 1.9 2000/06/19 20:10:38 grumbel Exp $
+//  $Id: GlobalEvent.cc,v 1.10 2000/08/09 14:39:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,9 +24,11 @@
 
 GlobalEvent global_event;
 
-bool
+void
 GlobalEvent::on_button_press(CL_InputDevice *device, const CL_Key &key)
 {
+  std::cout << "Button pressed..." << std::endl;
+
   if (device == CL_Input::keyboards[0])
     {
       switch (key.id)
@@ -59,7 +61,7 @@ GlobalEvent::on_button_press(CL_InputDevice *device, const CL_Key &key)
 	case CL_KEY_F11:
 	  fps_counter.toggle_display();
 	  console << "Toggling fps counter display" << Console::endl;
-	  return false;
+	  break;
 
 	case CL_KEY_F12:
 	  {
@@ -70,24 +72,22 @@ GlobalEvent::on_button_press(CL_InputDevice *device, const CL_Key &key)
 	    //console << "!\"#$%&'()*+,-./0123456789:;<=>?@";
 	    console.newline();
 	  }
-	  return false;
+	  break;
 
 	default:
 	  // console << "GlobalEvent: Unknown key pressed: " << key.id;
 	  break;
 	}
     }
-  return true;
 }
 
-bool
+void
 GlobalEvent::on_button_release(CL_InputDevice *device, const CL_Key &key)
 {
   if (device == CL_Input::keyboards[0])
     {
       
     }  
-  return true;
 }
 
 /* EOF */

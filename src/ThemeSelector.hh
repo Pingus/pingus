@@ -1,4 +1,4 @@
-//  $Id: ThemeSelector.hh,v 1.11 2000/07/30 01:47:36 grumbel Exp $
+//  $Id: ThemeSelector.hh,v 1.12 2000/08/09 14:39:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -68,9 +68,16 @@ class ThemeSelector
 {
 public:
   ///
-  class Event : public CL_Event_ButtonPress, 
+  thSlot on_button_press_slot;
+  ///
+  thSlot on_button_release_slot;
+  ///
+  thSlot on_mouse_move_slot;
+
+  ///
+  class Event /*: public CL_Event_ButtonPress, 
 		public CL_Event_ButtonRelease,
-		public CL_Event_MouseMove
+		public CL_Event_MouseMove*/
   {
   public:
     ///
@@ -78,11 +85,11 @@ public:
     ///
     ThemeSelector* theme_selector;
     ///
-    virtual bool on_button_press(CL_InputDevice *device, const CL_Key &key);
+    virtual void on_button_press(CL_InputDevice *device, const CL_Key &key);
     ///
-    virtual bool on_button_release(CL_InputDevice *device, const CL_Key &key);
+    virtual void on_button_release(CL_InputDevice *device, const CL_Key &key);
     ///
-    virtual bool on_mouse_move(CL_InputDevice *device);
+    virtual void on_mouse_move(CL_InputDevice *,int mouse_x, int mouse_y);
   };
   ///
   friend class Event;
