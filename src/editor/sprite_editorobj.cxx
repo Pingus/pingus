@@ -115,7 +115,7 @@ SpriteEditorObj::is_over(const Vector& pos)
   if (RectEditorObj::is_over (pos))
     {
 #if 0 // EDITOR_PIXEL_PERFECT_IS_OVER
-      CL_PixelBuffer* provider = sprite.get_surface ().get_provider ();
+      CL_PixelBuffer provider = sprite.get_surface ().get_pixeldata();
       if (provider)
         {
           // Position relative to the surface, not world
@@ -132,7 +132,7 @@ SpriteEditorObj::is_over(const Vector& pos)
           provider_pos_y = Math::mid(0, provider_pos_y, int(provider->get_height()-1));
 
           float r, g, b, a;
-          provider->get_pixel (int(provider_pos_x), int(provider_pos_y), &r, &g, &b, &a);
+          provider->get_pixel(int(provider_pos_x), int(provider_pos_y), &r, &g, &b, &a);
           return (a > 0.0f);
         }
       else

@@ -72,7 +72,7 @@ Liquid::draw (GraphicContext& gc)
 void
 Liquid::update()
 {
-  sur.update();
+  sur.update(0.033f); 
 }
 
 } // namespace WorldObjs

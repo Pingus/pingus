@@ -1,3 +1,10 @@
+Roadmap for Pingus 0.7.0
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+* split screen multiplayer
+* two new worlds 
+* 
+
 Resource String Cleanup:
 ========================
 Old:
@@ -705,33 +712,6 @@ Sortie Theme:
  - this theme needs 'normal' groundpieces which can be used to dig
    throught and things like that, it currently only has horizontal and
    vertical bars, which make building levels quite difficult
-
-Wed Nov 27 19:20:28 2002 - crashes on level exit
-Program received signal SIGSEGV, Segmentation fault.
-[Switching to Thread 16384 (LWP 7072)]
-0x0807b225 in PinguActionFactory::delete_actions() (this=0x88cbbe8)
-    at /usr/include/c++/3.2/bits/stl_iterator.h:593
-593	      operator*() const { return *_M_current; }
-Current language:  auto; currently c++
-(gdb) where
-#0  0x0807b225 in PinguActionFactory::delete_actions() (this=0x88cbbe8)
-    at /usr/include/c++/3.2/bits/stl_iterator.h:593
-#1  0x08055bde in ~ActionHolder (this=0x824945c) at action_holder.cxx:48
-#2  0x08090086 in ~Server (this=0x8249450) at server.cxx:53
-#3  0x080a722e in ~TrueServer (this=0x8249450) at true_server.cxx:38
-#4  0x0806e6b9 in ~PingusGameSession (this=0x8248c38)
-    at /usr/include/c++/3.2/bits/basic_string.h:187
-#5  0x0808fe34 in ScreenPtr::decrease_refcount() (this=0x8a6ced0) at screen_ptr.cxx:40
-#6  0x0808ee78 in ~ScreenManager (this=0x88cd178) at screen_ptr.hxx:83
-#7  0x0808f8dd in ScreenManager::deinit() () at screen_manager.cxx:252
-#8  0x08080e6e in PingusMain::main(int, char**) (this=0x816a6dc, argc=2, argv=0xbffffac4)
-    at pingus_main.cxx:783
-#9  0x401a8d5b in main (argc=2, argv=0xbffffac4) at Sources/Application/Unix/clanapp.cpp:32
-(gdb) 
-
-Generic Property Frame for objects
-==================================
-
 
 
 # EOF #

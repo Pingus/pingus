@@ -507,4 +507,14 @@
 <alias name="pingus/particles/rain1" link="particles/rain1" />
 <alias name="pingus/particles/rain2" link="particles/rain2" />
 
+<alias name="liquids/Liquid/water_cmap" link="liquids/water_cmap" />
+<alias name="liquids/Liquid/water" link="liquids/water" />
+<alias name="liquids/Liquid/water2" link="liquids/water2" />
+<alias name="liquids/Liquid/water3" link="liquids/water3" />
+<alias name="liquids/Liquid/water4" link="liquids/water4" />
+<alias name="liquids/Liquid/water5" link="liquids/water5" />
+<alias name="liquids/Liquid/swater" link="liquids/swater" />
+<alias name="liquids/Liquid/lava" link="liquids/lava" />
+<alias name="liquids/Liquid/slime" link="liquids/slime" />
+
 </resources>

@@ -167,12 +167,6 @@ PingusGameSession::update (const GameDelta& delta)
 
   // Client is independend of the update limit, well, not completly...
   client->update (delta);
-
-#if 0
-  // Move the game one loop further
-  server->update ();
-  client->update (delta);
-#endif
 }
 
 void
