@@ -1,4 +1,4 @@
-//  $Id: path_graph.cxx,v 1.8 2002/10/13 23:02:29 grumbel Exp $
+//  $Id: path_graph.cxx,v 1.9 2002/10/14 00:38:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -188,7 +188,7 @@ PathGraph::lookup_edge(const std::string& name)
   if (i == edge_lookup.end())
     {
       std::cout << "Couldn't find EdgeId for: " << name << std::endl;
-      return 0;
+      return NoEdge;
     }
   else
     {
@@ -203,7 +203,7 @@ PathGraph::lookup_node(const std::string& name)
   if (i == node_lookup.end())
     {
       std::cout << "Couldn't find NodeId for: " << name << std::endl;
-      return 0;
+      return NoNode;
     }
   else
     {

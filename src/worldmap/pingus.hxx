@@ -1,4 +1,4 @@
-//  $Id: pingus.hxx,v 1.15 2002/10/13 23:02:29 grumbel Exp $
+//  $Id: pingus.hxx,v 1.16 2002/10/14 00:38:22 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -53,7 +53,9 @@ private:
   NodeId source_node;
  
   /** The node to which the pingu is currently walking, value is
-      undefined when the pingu is currently standing on a node */
+      undefined when the pingu is currently standing on a node. This
+      is not the final target node (aka node_path.back()), but instead
+      the end node of an edge */
   NodeId target_node;
 
   /** The node path to walk. The edge between two nodes is itself
@@ -76,7 +78,6 @@ private:
   /** Current position of the pingu, only for caching purpose */
   Vector pos;
 
-  float velocity;
 public:
   /** */
   Pingus (PathGraph* arg_path);
@@ -105,7 +106,14 @@ public:
 
 private:
   void  update_walk (float delta);
+  void  update_edge_path();
   float calc_edge_path_length();
+  
+  /** */
+  Vector interpolate(const Vector& a, const Vector& b, float perc);
+
+  float distance(const Vector& a, const Vector& b);
+
 
   Pingus (const Pingus&);
   Pingus& operator= (const Pingus&);

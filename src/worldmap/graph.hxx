@@ -1,4 +1,4 @@
-//  $Id: graph.hxx,v 1.17 2002/10/13 23:02:29 grumbel Exp $
+//  $Id: graph.hxx,v 1.18 2002/10/14 00:38:22 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,6 +29,7 @@ typedef int NodeId;
 typedef int EdgeId;
 
 extern const NodeId NoNode;
+extern const EdgeId NoEdge;
 
 template<class NodeType>
 class Node 
@@ -125,12 +126,14 @@ public:
 
   Edge<EdgeType>& resolve_edge (const EdgeId& node)
   {
+    // FIXME: No error handling
     return edges[node];
   }
 
   /** Translates a NodeId into the corresponding Node */
   Node<NodeType>& resolve_node (const NodeId& node)
   {
+    // FIXME: No error handling
     return nodes[node];
   }
 
@@ -144,6 +147,7 @@ public:
             && i->destination == destination)
           return *i;
       }
+    std::cout << "couldn't resolve edge: source=" << source << " destination=" << destination << std::endl;
     assert(false);
   }
   

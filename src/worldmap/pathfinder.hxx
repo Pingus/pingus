@@ -1,4 +1,4 @@
-//  $Id: pathfinder.hxx,v 1.3 2002/10/13 23:02:29 grumbel Exp $
+//  $Id: pathfinder.hxx,v 1.4 2002/10/14 00:38:22 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -96,6 +96,8 @@ public:
     std::cout << "---DONE---" << std::endl;
   }
 
+  /** The nodes to walk to reach end is returned in reverse order! so
+      you have to handle the vector like a stack with .back() == .top() */
   std::vector<NodeId> get_path (NodeId end) 
   {
     std::vector<NodeId> path;
@@ -109,7 +111,7 @@ public:
 
 	if (handle == start)
 	  {
-	    std::reverse (path.begin (), path.end ());
+	    //std::reverse (path.begin (), path.end ());
 	    return path;
 	  }
 	else if (handle == -1)

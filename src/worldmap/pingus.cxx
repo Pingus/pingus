@@ -1,4 +1,4 @@
-//  $Id: pingus.cxx,v 1.13 2002/10/13 23:02:29 grumbel Exp $
+//  $Id: pingus.cxx,v 1.14 2002/10/14 00:38:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <iostream>
 #include <math.h>
 #include "../boost/smart_ptr.hpp"
 #include "../graphic_context.hxx"
@@ -50,16 +51,20 @@ Pingus::draw (GraphicContext& gc)
 void
 Pingus::update ()
 {
-  float delta = 0.25f;
+  float delta = 0.025f;
   
   sprite.update ();
-  update_walk(delta);
+  if (current_node == NoNode)
+    update_walk(delta);
 }
 
 void
 Pingus::update_walk (float delta)
 {
-  // Update the position
+  float velocity = 50.0f;
+
+  std::cout << "Updating Walk: " << edge_path_position << "/" << edge_path_length << std::endl;
+  // Update the edge_path_position
   edge_path_position += velocity * delta;
 
   if (edge_path_position > edge_path_length) // target reached
@@ -70,23 +75,7 @@ Pingus::update_walk (float delta)
         }
       else // edge is traveled, now go to the next node
         {
-          source_node = target_node;
-          target_node = node_path.back ();
-          node_path.pop_back ();
-
-          edge_path_position = 0.0f;
-
-          // Generate the new edges path
-          edge_path.clear();
-
-          Edge<Path*>& edge = path->graph.resolve_edge(source_node, target_node);
-          Path* partial_path = edge.data;
-          
-          edge_path.push_back(path->graph.resolve_node(source_node).data->get_pos());
-          edge_path.insert(edge_path.end(), partial_path->begin(), partial_path->end());
-          edge_path.push_back(path->graph.resolve_node(target_node).data->get_pos());
-          
-          edge_path_length = calc_edge_path_length();
+          update_edge_path();
         }
     }
 
@@ -97,12 +86,12 @@ Pingus::update_walk (float delta)
 float 
 Pingus::calc_edge_path_length()
 {
+  std::cout << "Edgepath size: " << edge_path.size() << std::endl;
   float length = 0;
   Path::iterator prev = edge_path.begin();
   for(Path::iterator next = prev + 1; next != edge_path.end(); ++next)
     {
-      length += sqrt(prev->x * next->x 
-                     + prev->y * next->y);
+      length += distance(*prev, *next);
       prev = next;
     }
   return length;
@@ -114,7 +103,13 @@ Pingus::walk_to_node (NodeId target)
   if (current_node != NoNode) // pingu stands still
     {
       node_path = path->get_path (current_node, target);
-      // FIXME: Edge path and co get invalid here
+
+      // Simulate that we just reached current_node, then update the edge_path
+      target_node = node_path.back(); // equal to current_node;
+      node_path.pop_back();
+      update_edge_path();
+
+      current_node = NoNode;
       return true;
     }
   else // pingu between two nodes
@@ -146,7 +141,7 @@ Pingus::walk_to_node (NodeId target)
 Vector
 Pingus::calc_pos ()
 {
-  if (current_node) // pingu stands still
+  if (current_node != NoNode) // pingu stands still
     {
       return path->graph.resolve_node(current_node).data->get_pos ();
     }
@@ -158,14 +153,14 @@ Pingus::calc_pos ()
       float comp_length = 0.0f;
       while (next != edge_path.end())
         {
-          float length = 10; // FIXME: line_length (current, next);
+          float length = distance(*current, *next);
 
           if (comp_length + length > edge_path_position) 
             {
               float perc = (edge_path_position - comp_length) // length to walk from current node
                 / length;
 
-              return Vector(); // FIXME: interpol (current, next, perc);
+              return interpolate (*current, *next, perc);
             }
 
           ++current;
@@ -176,16 +171,52 @@ Pingus::calc_pos ()
     }
 }
 
+float
+Pingus::distance(const Vector& a, const Vector& b)
+{
+  return fabsf(sqrt((a.x * b.x) + (a.y * b.y)));
+}
+
+Vector
+Pingus::interpolate(const Vector& a, const Vector& b, float perc)
+{
+  Vector c = b - a;
+  return a + (c * perc);
+}
+
 void
 Pingus::set_position (NodeId node)
 {
   pos = path->get_dot(node)->get_pos();
+  current_node = node;
+  std::cout << "Pingu Pos: " << pos << std::endl;
+  walk_to_node(0);
 }
 
 float
 Pingus::get_z_pos() const
 {
   return 2000.0f;
+}
+
+void
+Pingus:: update_edge_path()
+{
+  // Update source and target nodes
+  source_node = target_node;
+  target_node = node_path.back ();
+  node_path.pop_back (); // remove target node from list of nodes
+
+  edge_path_position = 0.0f;
+  edge_path.clear();
+
+  Path* partial_path = path->graph.resolve_edge(source_node, target_node).data;
+          
+  edge_path.push_back(path->graph.resolve_node(source_node).data->get_pos());
+  edge_path.insert(edge_path.end(), partial_path->begin(), partial_path->end());
+  edge_path.push_back(path->graph.resolve_node(target_node).data->get_pos());
+  
+  edge_path_length = calc_edge_path_length();
 }
 
 } // namespace WorldMapNS
