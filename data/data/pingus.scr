@@ -12,6 +12,8 @@ section Pingus
 	jumper0     = images/pingus/faller.png     (type=surface, x=0, y=0, width=32, height=32, array=8x1);
 	tumble0     = images/pingus/tumble.png     (type=surface, x=0, y=0, width=32, height=32, array=8x1);
 	bridger0    = images/pingus/bridger.png    (type=surface, x=0, y=0, width=32, height=32, array=15x2);
+	bridger_walk0  = images/pingus/bridger_walk.png    (type=surface, x=0, y=0, width=32, height=32, array=4x2);
+	bridger_build0 = images/pingus/bridger_build.png    (type=surface, x=0, y=0, width=32, height=32, array=11x2);
         walker0     = images/pingus/walker.png     (type=surface, x=0, y=0, width=32, height=32, array=8x2);
 	blocker0    = images/pingus/blocker.png    (type=surface, x=0, y=0, width=32, height=32, array=6x1);
 	floater0    = images/pingus/floater.png    (type=surface, x=0, y=0, width=32, height=32, array=8x1);
