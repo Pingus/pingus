@@ -1,4 +1,4 @@
-//  $Id: MultiplayerClientChild.hh,v 1.11 2002/06/10 15:01:23 torangan Exp $
+//  $Id: MultiplayerClientChild.hh,v 1.12 2002/06/12 14:37:36 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,16 +33,17 @@ class MultiplayerClientChild : public Controllable,
 			       public GuiObj
 {
 private:
-  Server * server;
-  boost::shared_ptr<Cursor> cursor;
-  boost::shared_ptr<ButtonPanel> button_panel;
-  Sprite capture_rect;
+
+  Server*      server;
+  Cursor*      cursor;
+  ButtonPanel* button_panel;
+  Sprite       capture_rect;
   
   std::vector<GuiObj*> gui_objs;
   typedef std::vector<GuiObj*>::iterator GuiObjIter;
 
-  boost::shared_ptr<PlayfieldView> playfield;
-  boost::shared_ptr<PingusCounterBar> counterbar;
+  PlayfieldView*    playfield;
+  PingusCounterBar* counterbar;
 
   CL_Rect rect;
 

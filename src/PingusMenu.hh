@@ -1,4 +1,4 @@
-//  $Id: PingusMenu.hh,v 1.25 2002/06/10 15:01:23 torangan Exp $
+//  $Id: PingusMenu.hh,v 1.26 2002/06/12 14:37:36 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,7 +23,6 @@
 #include <list>
 #include "PingusSubMenu.hh"
 #include "LayerManager.hh"
-#include "SurfaceButton.hh"
 
 class CL_Key;
 class CL_InputDevice;
@@ -37,7 +36,7 @@ public:
   bool is_init;
 private:
   ///
-  std::list<boost::shared_ptr<SurfaceButton> > buttons;
+  std::list<SurfaceButton*> buttons;
   ///
   SurfaceButton * temp_button;
   ///

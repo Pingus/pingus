@@ -1,4 +1,4 @@
-//  $Id: MultiplayerClientChild.cc,v 1.16 2002/06/10 15:01:23 torangan Exp $
+//  $Id: MultiplayerClientChild.cc,v 1.17 2002/06/12 14:37:36 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,7 +23,6 @@
 #include "Server.hh"
 #include "Controller.hh"
 
-using boost::shared_ptr;
 
 MultiplayerClientChild::MultiplayerClientChild (Controller* arg_controller,
 						Server * s, const CL_Rect& arg_rect)
@@ -43,20 +42,24 @@ MultiplayerClientChild::MultiplayerClientChild (Controller* arg_controller,
   button_panel->set_server (server);
   
   //std::cout << "MultiplayerClientChild: Creating: " << server.get() << std::endl;
-  gui_objs.push_back (playfield.get());
-  gui_objs.push_back (button_panel.get());
-  gui_objs.push_back (counterbar.get());
+  gui_objs.push_back (playfield);
+  gui_objs.push_back (button_panel);
+  gui_objs.push_back (counterbar);
 
   controller->set_range (rect);
 
   set_clip_rect(rect.x1, rect.y1, rect.x2, rect.y2);
 
-  Display::add_flip_screen_hook (cursor.get ());
+  Display::add_flip_screen_hook (cursor);
 }
 
 MultiplayerClientChild::~MultiplayerClientChild ()
 {
-  Display::remove_flip_screen_hook (cursor.get ());
+  Display::remove_flip_screen_hook (cursor);
+  delete cursor;
+  delete button_panel;
+  delete playfield;
+  delete counterbar;
 }
 
 void 

@@ -1,4 +1,4 @@
-//  $Id: Story.cc,v 1.16 2002/06/10 11:00:27 torangan Exp $
+//  $Id: Story.cc,v 1.17 2002/06/12 14:37:36 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,7 @@
 #include "PingusResource.hh"
 #include "PingusMenuManager.hh"
 #include "Story.hh"
+#include "worldmap/PingusWorldMapManager.hh"
 
 Story::Story(PingusMenuManager* manager)
   : PingusSubMenu (manager)

@@ -1,4 +1,4 @@
-//  $Id: SurfaceBackground.hh,v 1.10 2002/06/10 11:00:28 torangan Exp $
+//  $Id: SurfaceBackground.hh,v 1.11 2002/06/12 14:37:37 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -45,7 +45,6 @@ public:
 
   float get_z_pos() const { return pos.z; }
 
-  //static boost::shared_ptr<SurfaceBackground> create (boost::shared_ptr<BackgroundData>);
   ///
   void update(float delta);
   ///

@@ -1,4 +1,4 @@
-//  $Id: ButtonPanel.hh,v 1.18 2002/06/10 15:01:23 torangan Exp $
+//  $Id: ButtonPanel.hh,v 1.19 2002/06/12 14:37:36 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,6 @@
 #define BUTTON_PANEL_HH
 
 #include <vector>
-#include "boost/smart_ptr.hpp"
 
 #include "GuiObj.hh"
 #include "ActionButton.hh"
@@ -37,12 +36,12 @@ class ButtonPanel : public GuiObj
 private:
   friend class ClientEvent;
 
-  std::vector<boost::shared_ptr<ActionButton> > a_buttons;
-  typedef std::vector<boost::shared_ptr<ActionButton> >::iterator AButtonIter;
+  std::vector<ActionButton*> a_buttons;
+  typedef std::vector<ActionButton*>::iterator AButtonIter;
   AButtonIter  pressed_button;
-  boost::shared_ptr<ArmageddonButton> armageddon;
-  boost::shared_ptr<ForwardButton>    forward;
-  boost::shared_ptr<PauseButton>      pause;
+  ArmageddonButton* armageddon;
+  ForwardButton*    forward;
+  PauseButton*      pause;
 
   Server* server;
   Client* client;

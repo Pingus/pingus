@@ -1,4 +1,4 @@
-//  $Id: Client.cc,v 1.87 2002/06/11 09:55:12 torangan Exp $
+//  $Id: Client.cc,v 1.88 2002/06/12 14:37:36 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -47,8 +47,6 @@
 #include "Cursor.hh"
 #include "Server.hh"
 #include "ButtonPanel.hh"
-
-using boost::shared_ptr;
 
 Client::Client(Controller* arg_controller, Server * s)
   : // plf ?

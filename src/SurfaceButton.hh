@@ -1,4 +1,4 @@
-//  $Id: SurfaceButton.hh,v 1.24 2002/06/10 11:00:27 torangan Exp $
+//  $Id: SurfaceButton.hh,v 1.25 2002/06/12 14:37:36 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,7 @@
 #include <string>
 #include "worldmap/PingusWorldMapManager.hh"
 #include "MultiplayerConfig.hh"
+#include <ClanLib/Display/Display/surface.h>
 
 class PingusMenu;
 

@@ -1,4 +1,4 @@
-//  $Id: EntranceData.cc,v 1.11 2002/06/11 18:28:31 torangan Exp $
+//  $Id: EntranceData.cc,v 1.12 2002/06/12 14:37:36 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,7 @@
 #include "PingusError.hh"
 #include "StringConverter.hh"
 #include "XMLhelper.hh"
+#include "boost/smart_ptr.hpp"
 
 EntranceData::EntranceData (xmlDocPtr doc, xmlNodePtr cur)
 {

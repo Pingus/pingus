@@ -1,4 +1,4 @@
-//  $Id: ThunderstormBackground.hh,v 1.12 2002/06/09 14:04:10 torangan Exp $
+//  $Id: ThunderstormBackground.hh,v 1.13 2002/06/12 14:37:37 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,7 +38,6 @@ public:
   ///
   virtual ~ThunderstormBackground();
   ///
-  //static boost::shared_ptr<ThunderstormBackground> create (boost::shared_ptr<BackgroundData>);
 
   float get_z_pos() const { return pos.z; }
   

@@ -1,4 +1,4 @@
-//  $Id: MultiplayerGame.cc,v 1.11 2002/06/10 13:03:34 torangan Exp $
+//  $Id: MultiplayerGame.cc,v 1.12 2002/06/12 14:37:36 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <memory>
 #include <ClanLib/Display/Input/input.h>
 #include <ClanLib/Display/Display/display.h>
 #include "PathManager.hh"
@@ -46,27 +47,27 @@ MultiplayerGame::start ()
   try {
     PLF* plf = new XMLPLF (path_manager.complete("levels/multi2-grumbel.xml"));
     shared_ptr<Server>     server (new TrueServer (plf));
-    shared_ptr<Controller> controller1;
-    shared_ptr<Controller> controller2;
-    shared_ptr<Controller> controller3;
-    shared_ptr<Controller> controller4;
+    std::auto_ptr<Controller> controller1;
+    std::auto_ptr<Controller> controller2;
+    std::auto_ptr<Controller> controller3;
+    std::auto_ptr<Controller> controller4;
 
     if (CL_Input::joysticks.size () > 0)
-      controller1 = shared_ptr<Controller>(new GamepadController (CL_Input::joysticks[0], 0));
+      controller1 = std::auto_ptr<Controller>(new GamepadController (CL_Input::joysticks[0], 0));
     else 
-      controller1 = shared_ptr<Controller>(new KeyboardController (0));
+      controller1 = std::auto_ptr<Controller>(new KeyboardController (0));
 
     if (CL_Input::joysticks.size () > 1)
-      controller2 = shared_ptr<Controller>(new GamepadController (CL_Input::joysticks[1], 0));
+      controller2 = std::auto_ptr<Controller>(new GamepadController (CL_Input::joysticks[1], 0));
     else
-      controller2 = shared_ptr<Controller>(new MouseController (1));
+      controller2 = std::auto_ptr<Controller>(new MouseController (1));
 
     if (CL_Input::joysticks.size () > 2)
-      controller3 = shared_ptr<Controller>(new GamepadController (CL_Input::joysticks[2], 0));
+      controller3 = std::auto_ptr<Controller>(new GamepadController (CL_Input::joysticks[2], 0));
     else
-      controller3 = shared_ptr<Controller>(new KeyboardController (2));
+      controller3 = std::auto_ptr<Controller>(new KeyboardController (2));
 
-    controller4 = shared_ptr<Controller>(new MouseController (3));
+    controller4 = std::auto_ptr<Controller>(new MouseController (3));
 
     shared_ptr<MultiplayerClient> client;
     int player = 2;

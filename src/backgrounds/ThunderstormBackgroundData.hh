@@ -1,4 +1,4 @@
-//  $Id: ThunderstormBackgroundData.hh,v 1.10 2002/06/11 18:28:37 torangan Exp $
+//  $Id: ThunderstormBackgroundData.hh,v 1.11 2002/06/12 14:37:37 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,7 @@
 
 #include "../WorldObjData.hh"
 #include "../editor/SpriteEditorObj.hh"
+#include "../boost/smart_ptr.hpp"
 
 class _xmlDoc;  typedef _xmlDoc*  xmlDocPtr;
 class _xmlNode; typedef _xmlNode* xmlNodePtr;

@@ -1,4 +1,4 @@
-//  $Id: ButtonPanel.cc,v 1.34 2002/06/11 09:55:12 torangan Exp $
+//  $Id: ButtonPanel.cc,v 1.35 2002/06/12 14:37:36 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,7 +30,6 @@
 #include "World.hh"
 #include "PLF.hh"
 
-using boost::shared_ptr;
 CL_Surface ButtonPanel::button_cap;
 
 ButtonPanel::ButtonPanel(PLF* plf, Controller* arg_controller,
@@ -56,19 +55,14 @@ ButtonPanel::ButtonPanel(PLF* plf, Controller* arg_controller,
 
   for(std::vector<ActionData>::size_type i = 0; i < buttons_data.size(); i++)
     {
-      a_buttons.push_back(shared_ptr<ActionButton>(new VerticalActionButton
-						   (x_pos,
-						    i * 38 + y_pos,
+      a_buttons.push_back(new VerticalActionButton (x_pos, i * 38 + y_pos,
 						    buttons_data[i].name,
-						    controller->get_owner ())));
+						    controller->get_owner ()));
     }
 
-  armageddon = shared_ptr<ArmageddonButton>(new ArmageddonButton(CL_Display::get_width() - 40, 
-								 CL_Display::get_height() - 62));
-  forward    = shared_ptr<ForwardButton>(new ForwardButton(CL_Display::get_width() - 40 * 2,
-							   CL_Display::get_height() - 62));
-  pause      = shared_ptr<PauseButton>(new PauseButton(CL_Display::get_width() - 40 * 3,
-						       CL_Display::get_height() - 62));
+  armageddon = new ArmageddonButton(CL_Display::get_width() - 40,     CL_Display::get_height() - 62);
+  forward    = new ForwardButton   (CL_Display::get_width() - 40 * 2, CL_Display::get_height() - 62);
+  pause      = new PauseButton     (CL_Display::get_width() - 40 * 3, CL_Display::get_height() - 62);
 
   forward->pressed = false;
   pause->pressed   = false;
@@ -81,6 +75,14 @@ ButtonPanel::ButtonPanel(PLF* plf, Controller* arg_controller,
 
 ButtonPanel::~ButtonPanel()
 {
+  for (AButtonIter it = a_buttons.begin(); it != a_buttons.end(); ++it) 
+  {
+    delete *it;
+  }
+  
+  delete armageddon;
+  delete forward;
+  delete pause;
 }
 
 void

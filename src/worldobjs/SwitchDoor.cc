@@ -1,4 +1,4 @@
-//  $Id: SwitchDoor.cc,v 1.33 2002/06/11 18:28:37 torangan Exp $
+//  $Id: SwitchDoor.cc,v 1.34 2002/06/12 14:37:37 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,6 +26,7 @@
 #include "../XMLhelper.hh"
 #include "SwitchDoor.hh"
 #include "../Pingu.hh"
+#include "../boost/smart_ptr.hpp"
 
 SwitchDoorData::SwitchDoorData ()
 {

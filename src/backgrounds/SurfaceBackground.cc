@@ -1,4 +1,4 @@
-//  $Id: SurfaceBackground.cc,v 1.21 2002/06/10 11:00:28 torangan Exp $
+//  $Id: SurfaceBackground.cc,v 1.22 2002/06/12 14:37:37 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -121,14 +121,6 @@ SurfaceBackground::~SurfaceBackground()
   }
   */
 }
-
-/*
-boost::shared_ptr<SurfaceBackground>
-SurfaceBackground::create (boost::shared_ptr<BackgroundData> arg_data)
-{
-  SurfaceBackgroundData* data = dynamic_cast<SurfaceBackgroundData*>(arg_data.get());
-  return boost::shared_ptr<SurfaceBackground>(new SurfaceBackground (data));
-}*/
 
 /*
 void

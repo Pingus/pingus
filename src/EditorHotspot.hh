@@ -1,4 +1,4 @@
-//  $Id: EditorHotspot.hh,v 1.4 2002/06/08 21:43:36 grumbel Exp $
+//  $Id: EditorHotspot.hh,v 1.5 2002/06/12 14:37:36 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,7 @@
 #include "HotspotData.hh"
 #include "StringConverter.hh"
 #include "editor/SpriteEditorObj.hh" 
+#include "boost/smart_ptr.hpp"
 
 class EditorHotspot : public HotspotData,
 		      public SpriteEditorObj

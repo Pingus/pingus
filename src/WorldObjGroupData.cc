@@ -1,4 +1,4 @@
-//  $Id: WorldObjGroupData.cc,v 1.7 2002/06/11 18:28:35 torangan Exp $
+//  $Id: WorldObjGroupData.cc,v 1.8 2002/06/12 14:37:36 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,9 @@
 #include "editor/EditorObjGroup.hh"
 #include "WorldObj.hh"
 #include "WorldObjGroupData.hh"
+
+typedef EditorObjLst::iterator EditorObjLstIter;
+
 
 WorldObjGroupData::WorldObjGroupData ()
 {

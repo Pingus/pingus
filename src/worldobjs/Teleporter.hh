@@ -1,4 +1,4 @@
-//  $Id: Teleporter.hh,v 1.31 2002/06/11 18:28:37 torangan Exp $
+//  $Id: Teleporter.hh,v 1.32 2002/06/12 14:37:37 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,7 @@
 #include "../WorldObj.hh"
 #include "../WorldObjData.hh"
 #include "../editor/SpriteEditorObj.hh"
+#include "../boost/smart_ptr.hpp"
 
 class EditorTeleporterObj;
 class _xmlDoc;  typedef _xmlDoc*  xmlDocPtr;

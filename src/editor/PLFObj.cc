@@ -1,4 +1,4 @@
-//  $Id: PLFObj.cc,v 1.60 2002/06/07 14:50:34 torangan Exp $
+//  $Id: PLFObj.cc,v 1.61 2002/06/12 14:37:37 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,7 @@
 #include "../Display.hh"
 #include "../PingusError.hh"
 #include "../PingusResource.hh"
+#include "../boost/smart_ptr.hpp"
 #include "EditorView.hh"
 #include "PLFObj.hh"
 

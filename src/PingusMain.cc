@@ -1,4 +1,4 @@
-//   $Id: PingusMain.cc,v 1.64 2002/06/10 15:01:23 torangan Exp $
+//   $Id: PingusMain.cc,v 1.65 2002/06/12 14:37:36 torangan Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -69,7 +69,7 @@
 #include "PingusGameSession.hh"
 #include "Debug.hh"
 #include "editor/Editor.hh"
-
+#include "boost/smart_ptr.hpp"
 #include "PingusMenuManager.hh"
 #include "PingusSoundDummy.hh"
 
