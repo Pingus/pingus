@@ -1,0 +1,44 @@
+## Pingus Configuration File
+## ~~~~~~~~~~~~~~~~~~~~~~~~~
+## This is an example config file for pingus, it should be placed in
+## $HOME/.pingus/config. You can use all long options which pingus
+## understands (pingus --help), if the option needs an argument,
+## seperate it with some spaces from the option.
+
+## Have you seen the intro often enough?
+# disable-intro = true;
+
+## Want some more error messages?
+# verbose      = 0;
+
+## For slower systems it is a good idea to srink the size of the
+## window
+# width = 640;
+# height = 480;
+
+## Use a horizontal buttonpanel instead of the vertical one (this
+## option might get removed in the future
+# horizontal_button_panel = false;
+
+## Scroll if the mouse it outside the window?
+# auto_scrolling = false;
+
+## Enable sound playback?
+music = true;
+
+## Enable sound playback?
+sound = true;
+
+## Sound options
+audio-format = 16;
+audio-rate = 44000;
+audio-channels = 2;
+audio-buffers = 4096;
+
+## Enable the (buggy and slow) software cursor?
+# swcursor-enabled = true;
+
+username = "Harry Musterman";
+email = "musterman@musterman.de";
+
+# EOF
