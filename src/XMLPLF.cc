@@ -1,4 +1,4 @@
-//  $Id: XMLPLF.cc,v 1.23 2001/04/16 11:58:34 grumbel Exp $
+//  $Id: XMLPLF.cc,v 1.24 2001/04/17 04:59:11 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -405,6 +405,7 @@ XMLPLF::parse_exit(xmlNodePtr cur)
   char* pos_handling = (char*)xmlGetProp(cur, (xmlChar*)"use-old-pos-handling");
   if (pos_handling)
     {
+      std::cout << "XMLPLF: Use Old Pos Handling: " << pos_handling << std::endl;
       exit.use_old_pos_handling = StringConverter::to_int (pos_handling);
       free (pos_handling);
     }
@@ -433,6 +434,10 @@ XMLPLF::parse_exit(xmlNodePtr cur)
       else if (strcmp((char*)cur->name, "owner-id") == 0)
 	{
 	  exit.owner_id = XMLhelper::parse_int(doc, cur);
+	}
+      else
+	{
+	  std::cout << "XMLPLF: Unhandled exit tag: " << (char*)cur->name << std::endl;
 	}
       cur = cur->next;	
     }
