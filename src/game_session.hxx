@@ -22,7 +22,7 @@
 
 #include <string>
 #include "gui/screen.hxx"
-#include "plf_handle.hxx"
+#include "pingus_level.hxx"
 
 namespace Pingus {
 
@@ -37,7 +37,7 @@ class PingusGameSession : public Screen
 {
 private:
   /// The level data
-  PLFHandle plf;
+  PingusLevel plf;
 
   bool show_result_screen;
 
@@ -58,7 +58,7 @@ private:
   unsigned int number_of_redraws;
 
 public:
-  PingusGameSession (PLFHandle arg_plf, bool arg_show_result_screen);
+  PingusGameSession(const PingusLevel& arg_plf, bool arg_show_result_screen);
 
   /** Clean up */
   ~PingusGameSession ();

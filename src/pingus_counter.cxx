@@ -26,7 +26,6 @@
 #include "world.hxx"
 #include "pingu_holder.hxx"
 #include "true_server.hxx"
-#include "plf.hxx"
 #include "globals.hxx"
 #include "fonts.hxx"
 
@@ -34,7 +33,7 @@ namespace Pingus {
 
 PingusCounter::PingusCounter(Server* s)
   : server(s),
-    background(Resource::load_sprite("buttons/info","core"))
+    background(Resource::load_sprite("core/buttons/info"))
 {
   font = Fonts::pingus_small_fix_num;
 }
@@ -54,7 +53,7 @@ PingusCounter::draw(DrawingContext& gc)
 	   world->get_pingus()->get_number_of_allowed(),
 	   world->get_pingus()->get_number_of_alive(),
 	   world->get_pingus()->get_number_of_exited(),
-	   server->get_plf()->get_number_to_save());
+	   server->get_plf().get_number_to_save());
 
   gc.print_center(font, gc.get_width()/2, 3, str);
 }

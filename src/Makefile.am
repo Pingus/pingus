@@ -80,7 +80,8 @@ pingus_level.cxx      \
 xml_pingus_level.cxx  \
 xml_file_reader.cxx   \
 file_reader.cxx       \
-pingus_error.cxx   
+pingus_error.cxx      \
+resource_modifier.cxx
 
 pingus_SOURCES = \
 action_button.cxx \
@@ -215,13 +216,10 @@ pingus_sub_menu.cxx \
 pingus_sub_menu.hxx \
 playfield.cxx \
 playfield.hxx \
-plf.cxx \
-plf.hxx \
 pingus_level.hxx \
 pingus_level.cxx \
 xml_pingus_level.hxx \
 xml_pingus_level.cxx \
-plf_handle.hxx \
 plf_res_mgr.hxx \
 plf_res_mgr.cxx \
 plt_xml.cxx \
@@ -292,8 +290,6 @@ xml_file_reader.hxx \
 xml_file_reader.cxx \
 xml_file_writer.hxx \
 xml_file_writer.cxx \
-xml_plf.cxx \
-xml_plf.hxx \
 xml_pdf.hxx \
 xml_pdf.cxx \
 display/drawing_context.cxx \

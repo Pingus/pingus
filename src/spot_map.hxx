@@ -31,7 +31,7 @@ class CL_PixelBuffer;
 
 namespace Pingus {
 
-class PLF;
+class PingusLevel;
 class ColMap;
 
 class MapTile
@@ -71,7 +71,7 @@ private:
   int tile_width;
   int tile_height;
 public:
-  PingusSpotMap(PLF*);
+  PingusSpotMap(const PingusLevel& arg_plf);
   virtual ~PingusSpotMap();
 
   void draw(SceneContext& gc);

@@ -75,6 +75,9 @@ public:
   /** Returns the body of this file */
   const std::vector<FileReader>& get_objects() const;
 
+  /** Return the 'resource name' of the level ('snow22-grumbel', etc. ) */
+  const std::string get_resname() const;
+
 protected:
   CL_SharedPtr<PingusLevelImpl> impl;
 };

@@ -33,7 +33,7 @@ public:
   void run() 
   {
     //CL_Surface surf = Resource::load_surface("textures/stone", "textures");
-    CL_Surface surf = Resource::load_surface("textures/greentex", "textures");
+    CL_Surface surf = Resource::load_surface("textures/greentex");
 
     CL_PixelBuffer buf(256, 256, 256*4, CL_PixelFormat::rgba8888);
     CL_PixelBuffer data = surf.get_pixeldata();

@@ -40,24 +40,6 @@ namespace Pingus {
 CL_ResourceManager Resource::resmgr;
 std::map<ResDescriptor, CL_Surface>       Resource::surface_map;
 
-/** Take a res_name and a datafile name and generate */
-std::string 
-fix_file(std::string res_name, std::string datafile)
-{
-  if (datafile.empty())
-    {
-      return res_name;
-    }
-  else
-    {
-      for (std::string::size_type i = 0; i != datafile.size(); ++i)
-        if (datafile[i] == '-')
-          datafile[i] = '/';
-
-      return datafile + "/" + res_name;
-    }
-}
-
 void
 Resource::init()
 {
@@ -90,40 +72,36 @@ Resource::deinit()
 
 CL_Surface
 Resource::load_surface(const std::string& res_name,
-                       const std::string& datafile,
                        ResourceModifierNS::ResourceModifier modifier)
 {
-  return load_surface(ResDescriptor(res_name, datafile,
-				    modifier));
+  return load_surface(ResDescriptor(res_name, modifier));
 }
 
 CL_Sprite
 Resource::load_sprite(const ResDescriptor& desc)
 {
-  return load_sprite(desc.res_name, desc.datafile);
+  return load_sprite(desc.res_name);
 }
 
 CL_Sprite
-Resource::load_sprite(const std::string& res_name, 
-                      const std::string& datafile)
+Resource::load_sprite(const std::string& res_name)
 {
   try {
-    return CL_Sprite(fix_file(res_name, datafile), &resmgr);
+    return CL_Sprite(res_name, &resmgr);
   } catch (CL_Error& err) {
-    std::cout << "Resource::load_sprite: CL_Error: '" << res_name << "', '" << datafile  << "'" << std::endl;
+    std::cout << "Resource::load_sprite: CL_Error: '" << res_name << "'" << std::endl;
     std::cout << "CL_Error: " << err.message << std::endl;
     return CL_Sprite("core/misc/404sprite", &resmgr);
   }
 }
 
 CL_SpriteDescription
-Resource::load_sprite_desc(const std::string& res_name,
-                           const std::string& datafile)
+Resource::load_sprite_desc(const std::string& res_name)
 {
   try {
-    return CL_SpriteDescription(fix_file(res_name, datafile), &resmgr);
+    return CL_SpriteDescription(res_name, &resmgr);
   } catch(CL_Error& err) {
-    std::cout << "Resource::load_sprite_desc: CL_Error: '" << res_name << "', '" << datafile  << "'" << std::endl;
+    std::cout << "Resource::load_sprite_desc: CL_Error: '" << res_name << "'" << std::endl;
     std::cout << "CL_Error: " << err.message << std::endl;
     return CL_SpriteDescription("core/misc/404sprite", &resmgr);
   }
@@ -132,11 +110,11 @@ Resource::load_sprite_desc(const std::string& res_name,
 CL_PixelBuffer
 Resource::load_pixelbuffer(const ResDescriptor& desc_)
 {
-  CL_SpriteDescription desc = load_sprite_desc(desc_.res_name, desc_.datafile);
+  CL_SpriteDescription desc = load_sprite_desc(desc_.res_name);
 
   if (desc.get_frames().size() == 0)
     {
-      std::cout << "Error: load_pixelbuffer: " << desc_.res_name << " " << desc_.datafile << std::endl;
+      std::cout << "Error: load_pixelbuffer: " << desc_.res_name << std::endl;
       assert(0);
     }
 
@@ -144,10 +122,9 @@ Resource::load_pixelbuffer(const ResDescriptor& desc_)
 }
 
 CL_PixelBuffer
-Resource::load_pixelbuffer(const std::string& res_name,
-                           const std::string& datafile)
+Resource::load_pixelbuffer(const std::string& res_name)
 {
-  return load_pixelbuffer(ResDescriptor(res_name, datafile));
+  return load_pixelbuffer(ResDescriptor(res_name));
 }
 
 CL_Surface
@@ -282,7 +259,7 @@ CL_Surface
 Resource::load_from_source (const ResDescriptor& res_desc)
 {
   try {
-    return CL_Surface(fix_file(res_desc.res_name, res_desc.datafile), &resmgr);
+    return CL_Surface(res_desc.res_name, &resmgr);
   } catch (CL_Error err) {
     pout << "CL_Error: " << err.message << std::endl;
     pout << "Resource:" << res_desc
@@ -333,8 +310,7 @@ Resource::cleanup ()
 }
 
 unsigned int
-Resource::get_mtime (const std::string& res_name,
-                     const std::string& datafile)
+Resource::get_mtime (const std::string& res_name)
 {
 #ifdef CLANLIB_0_6
   try

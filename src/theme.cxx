@@ -31,7 +31,7 @@
 #include "game_session.hxx"
 #include "globals.hxx"
 #include "theme.hxx"
-#include "xml_plf.hxx"
+#include "xml_pingus_level.hxx"
 #include "fonts.hxx"
 #include "gui/screen_manager.hxx"
 
@@ -75,7 +75,7 @@ Theme::load (const std::string& filename)
   try
     {
       if (!plt.get_surface().empty ())
-	surface = Resource::load_surface(plt.get_surface(), "global");
+	surface = Resource::load_surface(plt.get_surface());
     }
 
   catch (CL_Error& err)
@@ -337,7 +337,7 @@ Theme::load_levels()
 
       try
 	      {
-          XMLPLF plf(filename);
+                XMLPingusLevel plf(filename);
 	        levelnames.push_back(System::translate(plf.get_levelname()));
 	      }
 	    catch (PingusError& err)

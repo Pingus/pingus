@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_START_SCREEN_HXX
 #define HEADER_PINGUS_START_SCREEN_HXX
 
-#include "plf_handle.hxx"
+#include "pingus_level.hxx"
 #include "gui/gui_screen.hxx"
 
 namespace Pingus {
@@ -29,10 +29,10 @@ namespace Pingus {
 class StartScreen : public GUIScreen
 {
 private:
-  PLFHandle   plf;
+  PingusLevel plf;
 
 public:
-  StartScreen(PLFHandle plf);
+  StartScreen(const PingusLevel& plf);
   ~StartScreen();
 
   void start_game();

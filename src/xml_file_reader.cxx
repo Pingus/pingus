@@ -27,6 +27,7 @@
 #include "file_reader_impl.hxx"
 #include "vector.hxx"
 #include "res_descriptor.hxx"
+#include "resource_modifier.hxx"
 #include "xml_file_reader.hxx"
 
 namespace Pingus {
@@ -152,9 +153,11 @@ public:
     CL_DomElement node = get_node_by_name(name);
     if (!node.is_null())
       {
-        value.datafile = "";
-        value.res_name = node.get_first_child().get_node_value();
-        value.modifier = ResourceModifierNS::ROT0;
+        using ResourceModifierNS::rs_from_string;
+
+        XMLFileReader reader(node);
+        reader.read_string("image",    value.res_name);
+        reader.read_enum  ("modifier", value.modifier, rs_from_string);
 
         return true;
       }

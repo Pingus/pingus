@@ -24,18 +24,17 @@
 #include <vector>
 #include <iosfwd>
 
+#include "pingus_level.hxx"
 #include "server_event.hxx"
 
 namespace Pingus {
-
-class PLF;
 
 /** XMLPDF stands for Pingus Demo File, it contains all the infos
     necesarry to play a pingus demo recording */
 class XMLPDF
 {
 private:
-  PLF* plf;
+  PingusLevel plf;
   std::string levelname;
   std::vector<ServerEvent> events;
 public:
@@ -43,7 +42,7 @@ public:
   ~XMLPDF();
 
   /** @return a pointer to the level structure */
-  PLF* get_plf();
+  PingusLevel get_plf();
 
   /** @return the levelname */
   std::string get_levelname();

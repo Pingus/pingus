@@ -34,46 +34,20 @@ namespace Pingus {
 ResDescriptor::ResDescriptor()
 {
   res_name = "";
-  datafile = "global";
   modifier = ResourceModifierNS::ROT0;
 }
 
 ResDescriptor::ResDescriptor(const std::string& arg_res_name,
-			     const std::string& arg_datafile,
 			     ResourceModifierNS::ResourceModifier arg_modifier)
 {
   res_name = arg_res_name;
-  datafile = arg_datafile;
   modifier = arg_modifier;
 }
 
 bool
 ResDescriptor::operator<(const ResDescriptor& res_desc) const
 {
-  // FIXME: This is ugly and slow
-  //return (datafile + res_name + CL_String::to (type) + to_string (modifier))
-  //  < (res_desc.datafile + res_desc.res_name + CL_String::to (res_desc.type) + to_string (res_desc.modifier));
-
-  if (datafile < res_desc.datafile)
-    return true;
-  else if (datafile > res_desc.datafile)
-    return false;
-  else
-    {
-      if (res_name < res_desc.res_name)
-	return true;
-      else if (res_name > res_desc.res_name)
-	return false;
-      else
-	{
-	  if (modifier < res_desc.modifier)
-	    return true;
-	  else if (modifier > res_desc.modifier)
-	    return false;
-	  else
-            return false;
-	}
-    }
+  return (res_name < res_desc.res_name) && (modifier < res_desc.modifier);
 }
 
 } // namespace Pingus
@@ -82,8 +56,8 @@ std::ostream& operator<<(std::ostream& s, const Pingus::ResDescriptor& desc)
 {
   using namespace Pingus;
 
-  return s << "[" << desc.res_name << ", " << desc.datafile
-           << ", " << ResourceModifierNS::rs_to_string(desc.modifier) << "]";
+  return s << "[" << desc.res_name << ", "
+           << ResourceModifierNS::rs_to_string(desc.modifier) << "]";
 }
 
 /* EOF */

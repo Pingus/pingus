@@ -29,8 +29,8 @@ namespace Pingus {
 namespace WorldObjs {
 
 Teleporter::Teleporter(const FileReader& reader)
-  : sprite(Resource::load_sprite("teleporter", "worldobjs")),
-    target_sprite(Resource::load_sprite("teleportertarget", "worldobjs"))
+  : sprite(Resource::load_sprite("worldobjs/teleporter")),
+    target_sprite(Resource::load_sprite("worldobjs/teleportertarget"))
 {
   FileReader subreader;
 

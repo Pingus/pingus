@@ -20,13 +20,13 @@
 #include <iostream>
 #include <assert.h>
 #include "pingu_holder.hxx"
+#include "pingus_level.hxx"
 #include "pingu.hxx"
-#include "plf.hxx"
 
 namespace Pingus {
 
-PinguHolder::PinguHolder(PLF* plf)
-  : number_of_allowed(plf->get_pingus()),
+PinguHolder::PinguHolder(const PingusLevel& plf)
+  : number_of_allowed(plf.get_number_of_pingus()),
     number_of_exited(0)
 {
 }

@@ -20,7 +20,6 @@
 #include <iostream>
 #include "server.hxx"
 #include "world.hxx"
-#include "plf.hxx"
 #include "globals.hxx"
 #include "pingu_holder.hxx"
 #include "goal_manager.hxx"
@@ -61,7 +60,7 @@ GoalManager::update()
     {
       World*       world  = server->get_world();
       PinguHolder* pingus = world->get_pingus();
-      PLF*         plf    = server->get_plf();
+      const PingusLevel& plf    = server->get_plf();
 
       if (pingus->get_number_of_allowed() == pingus->get_number_of_released()
           && pingus->get_number_of_alive() == 0)
@@ -72,8 +71,8 @@ GoalManager::update()
         {
           goal = GT_ARMAGEDDON;
         }
-      else if (plf->get_time() != -1
-               && plf->get_time() <= server->get_time())
+      else if (plf.get_time() != -1
+               && plf.get_time() <= server->get_time())
         {
           goal = GT_OUT_OF_TIME;
         }

@@ -20,14 +20,13 @@
 #include <algorithm>
 #include <iostream>
 #include "pingus_error.hxx"
-#include "plf.hxx"
 #include "path_manager.hxx"
+#include "xml_pingus_level.hxx"
 #include "xml_pdf.hxx"
 
 namespace Pingus {
 
 XMLPDF::XMLPDF(const std::string& filename)
-  : plf(0)
 {
   xmlDocPtr doc = xmlParseFile(filename.c_str());
   if (doc == NULL)
@@ -85,7 +84,7 @@ XMLPDF::XMLPDF(const std::string& filename)
   if (levelname.empty())
     PingusError::raise("XMLPDF: No level given");
 
-  plf = PLF::create(path_manager.complete("levels/" + levelname + ".pingus"));
+  plf = XMLPingusLevel(path_manager.complete("levels/" + levelname + ".pingus"));
 
   std::cout << "XXXXXXXXX Read Demo file: " << std::endl;
   write_xml(std::cout);
@@ -93,7 +92,6 @@ XMLPDF::XMLPDF(const std::string& filename)
 
 XMLPDF::~XMLPDF()
 {
-  delete plf;
 }
 
 void
@@ -112,7 +110,7 @@ XMLPDF::write_xml(std::ostream& xml)
 }
 
 /** @return a pointer to the level structure */
-PLF*
+PingusLevel
 XMLPDF::get_plf()
 {
   return plf;

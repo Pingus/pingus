@@ -27,7 +27,6 @@
 #include "time_display.hxx"
 #include "pingus_counter.hxx"
 #include "smallmap.hxx"
-#include "plf.hxx"
 #include "hurry_up.hxx"
 #include "path_manager.hxx"
 #include "gui/cursor.hxx"
@@ -336,15 +335,15 @@ Client::on_startup ()
   skip_frame = 0;
 
   if (maintainer_mode)
-    std::cout << "Starting Music: " << server->get_plf()->get_music() << std::endl;
+    std::cout << "Starting Music: " << server->get_plf().get_music() << std::endl;
 
-  if (server->get_plf()->get_music() == "none")
+  if (server->get_plf().get_music() == "none")
     {
       Sound::PingusSound::stop_music();
     }
   else
     {
-      Sound::PingusSound::play_music(server->get_plf ()->get_music());
+      Sound::PingusSound::play_music(server->get_plf().get_music());
     }
 
   if (verbose)

@@ -40,7 +40,7 @@ Loading::~Loading()
 void
 Loading::init()
 {
-  sur  = Resource::load_surface("Game/loading", "game");
+  sur  = Resource::load_surface("game/Game/loading");
   font = Fonts::courier_small;
   is_init = true;
 }

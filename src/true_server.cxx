@@ -22,8 +22,8 @@
 
 namespace Pingus {
 
-TrueServer::TrueServer(PLF* arg_plf)
-  : Server (arg_plf)
+TrueServer::TrueServer(const PingusLevel& arg_plf)
+  : Server(arg_plf)
 {
   fast_forward = false;
   pause = false;

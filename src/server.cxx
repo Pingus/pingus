@@ -29,7 +29,7 @@ namespace Pingus {
 
 using Actions::action_from_string;
 
-Server::Server (PLF* arg_plf)
+Server::Server(const PingusLevel& arg_plf)
   : plf(arg_plf),
     world(new World (plf)),
     action_holder (plf),

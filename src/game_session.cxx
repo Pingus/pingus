@@ -25,7 +25,6 @@
 #include "game_session_result.hxx"
 #include "timer.hxx"
 #include "resource.hxx"
-#include "plf.hxx"
 #include "pingu_holder.hxx"
 #include "world.hxx"
 #include "result_screen.hxx"
@@ -34,7 +33,7 @@
 
 namespace Pingus {
 
-PingusGameSession::PingusGameSession (PLFHandle arg_plf, bool arg_show_result_screen)
+PingusGameSession::PingusGameSession (const PingusLevel& arg_plf, bool arg_show_result_screen)
   : plf(arg_plf),
     show_result_screen(arg_show_result_screen)
 {
@@ -43,7 +42,7 @@ PingusGameSession::PingusGameSession (PLFHandle arg_plf, bool arg_show_result_sc
   plf_timer.stop();
 
   Timer server_timer("GameSession server creation");
-  server = new TrueServer(*plf);
+  server = new TrueServer(plf);
   server_timer.stop();
 
   Timer client_timer("GameSession client creation");
@@ -109,16 +108,16 @@ PingusGameSession::update (const GameDelta& delta)
 
       result.saved  = pingu_holder->get_number_of_exited();
       result.killed = pingu_holder->get_number_of_killed();
-      result.total  = server->get_plf()->get_pingus();
+      result.total  = server->get_plf().get_number_of_pingus();
 
-      result.needed = server->get_plf()->get_number_to_save();
+      result.needed = server->get_plf().get_number_to_save();
 
-      result.max_time  = server->get_plf()->get_time();
+      result.max_time  = server->get_plf().get_time();
       result.used_time = server->get_time();
 
       { // Write the savegame
         Savegame savegame;
-        savegame.levelname    = result.plf->get_resname();
+        savegame.levelname    = result.plf.get_resname();
         savegame.needed_time  = result.used_time;
         savegame.saved_pingus = result.saved;
 

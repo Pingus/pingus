@@ -123,7 +123,7 @@ SmallMapImage::create_surface (Server * server, int width, int height)
   CL_Surface entrance_sur = Resource::load_surface("misc/smallmap_entrance", "core");
   CL_Surface exit_sur     = Resource::load_surface("misc/smallmap_exit", "core");
 
-  PLF* plf = world->get_plf();
+  PingusLevel plf = world->get_plf();
 
   std::vector<ExitData>     exit_d     = plf->get_exit();
   for(std::vector<ExitData>::iterator i = exit_d.begin(); i != exit_d.end(); i++)

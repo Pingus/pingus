@@ -461,6 +461,12 @@ System::get_mtime(const std::string& filename)
 #endif
 }
 
+std::string
+System::translate(const std::string& str)
+{
+  return str;
+}
+
 } // namespace Pingus
 
 /* EOF */

@@ -115,65 +115,14 @@ void WorldObjFactory::deinit()
 }
 
 WorldObj*
-WorldObjFactory::create (xmlDocPtr doc, xmlNodePtr cur)
+WorldObjFactory::create(const FileReader& reader)
 {
-  //std::cout << "WorldObjFactory::create (xmlDocPtr doc, xmlNodePtr cur)" << std::endl;
-
-  // Compatibility stuff
-  if (XMLhelper::equal_str(cur->name, "hotspot"))
-    {
-      return create ("hotspot", doc, cur);
-    }
-  else if (XMLhelper::equal_str(cur->name, "exit"))
-    {
-      return create ("exit", doc, cur);
-    }
-  else if (XMLhelper::equal_str(cur->name, "entrance"))
-    {
-      return create ("entrance", doc, cur);
-    }
-  else if (XMLhelper::equal_str(cur->name, "groundpiece"))
-    {
-      return create ("groundpiece", doc, cur);
-    }
-  else if (XMLhelper::equal_str(cur->name, "prefab"))
-    {
-      return create ("prefab", doc, cur);
-    }
-  else if (XMLhelper::equal_str(cur->name, "liquid"))
-    {
-      return create ("liquid", doc, cur);
-    }
-  else
-    {
-      std::string type;
-      if (XMLhelper::get_prop(cur, "type", type))
-        {
-          return create (type, doc, cur);
-	}
-      else
-	{
-	  PingusError::raise ("WorldObjFactory::create: Error, no type given. - "
-			      + std::string((char*) cur->name));
-	}
-    }
-
-  return 0; //never reached
-}
-
-WorldObj*
-WorldObjFactory::create (const std::string& id,
-			     xmlDocPtr doc, xmlNodePtr cur)
-{
-  //std::cout << "WorldObjFactory::create (id, xmlDocPtr doc, xmlNodePtr cur)" << std::endl;
-
-  std::map<std::string, WorldObjAbstractFactory*>::iterator it = factories.find(id);
+  std::map<std::string, WorldObjAbstractFactory*>::iterator it = factories.find(reader.get_name());
 
   if (it == factories.end())
-    PingusError::raise("WorldObjFactory: Invalid id: '" + id + "' at line "
-		       + CL_String::to(XMLhelper::get_line(cur)));
+    PingusError::raise("WorldObjFactory: Invalid id: '" + reader.get_name() + "'");
   else
-    return it->second->create (doc, cur);
+    return it->second->create(reader);
 
   return 0; // never reached
 }

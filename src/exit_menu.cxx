@@ -35,9 +35,9 @@ public:
   ExitMenuYesButton (PingusMenuManager* m)
     : GUI::SurfaceButton(CL_Display::get_width()/2 - 170,
                          CL_Display::get_height()/2 + 15,
-                         ResDescriptor("menu/exit_button_normal", "core"),
-                         ResDescriptor("menu/exit_button_pressed", "core"),
-                         ResDescriptor("menu/exit_button_hover", "core")),
+                         ResDescriptor("core/menu/exit_button_normal"),
+                         ResDescriptor("core/menu/exit_button_pressed"),
+                         ResDescriptor("core/menu/exit_button_hover")),
       manager (m)
   {
   }
@@ -68,10 +68,10 @@ private:
 public:
   ExitMenuNoButton (PingusMenuManager* m)
     : GUI::SurfaceButton(CL_Display::get_width()/2, CL_Display::get_height()/2 + 15,
-                         ResDescriptor("menu/exit_button_normal", "core"),
-                         ResDescriptor("menu/exit_button_pressed", "core"),
-                         ResDescriptor("menu/exit_button_hover", "core")),
-      manager (m)
+                         ResDescriptor("core/menu/exit_button_normal"),
+                         ResDescriptor("core/menu/exit_button_pressed"),
+                         ResDescriptor("core/menu/exit_button_hover")),
+      manager(m)
   {
   }
 
@@ -119,7 +119,7 @@ ExitMenu::draw (DrawingContext& gc)
 void
 ExitMenu::preload ()
 {
-  sur = Resource::load_sprite("menu/exit_menu", "core");
+  sur = Resource::load_sprite("core/menu/exit_menu");
 }
 
 } // namespace Pingus

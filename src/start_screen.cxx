@@ -28,11 +28,11 @@
 #include "globals.hxx"
 #include "system.hxx"
 #include "fonts.hxx"
-#include "plf.hxx"
 #include "resource.hxx"
 #include "start_screen.hxx"
 #include "game_time.hxx"
 #include "sound/sound.hxx"
+#include "pingus_level.hxx"
 #include "string_format.hxx"
 
 namespace Pingus {
@@ -40,13 +40,13 @@ namespace Pingus {
 class StartScreenComponent : public GUI::Component
 {
 private:
-  PLFHandle plf;
+  PingusLevel plf;
   CL_Sprite background;
   std::string time_str;
   std::string description;
 
 public:
-  StartScreenComponent(PLFHandle plf);
+  StartScreenComponent(const PingusLevel& plf);
   void draw(DrawingContext& gc);
   virtual ~StartScreenComponent() {}
 
@@ -62,9 +62,9 @@ public:
   StartScreenOkButton(StartScreen* p)
     : GUI::SurfaceButton(CL_Display::get_width()/2 + 225,
                          CL_Display::get_height()/2 + 125,
-                         ResDescriptor("start/ok", "core"),
-                         ResDescriptor("start/ok_clicked", "core"),
-                         ResDescriptor("start/ok_hover", "core")),
+                         ResDescriptor("core/start/ok"),
+                         ResDescriptor("core/start/ok_clicked"),
+                         ResDescriptor("core/start/ok_hover")),
       parent(p)
   {
   }
@@ -98,9 +98,9 @@ public:
   StartScreenAbortButton(StartScreen* p)
     : GUI::SurfaceButton(CL_Display::get_width()/2 - 278,
                          CL_Display::get_height()/2 + 144,
-                         ResDescriptor("start/back", "core"),
-                         ResDescriptor("start/back_clicked", "core"),
-                         ResDescriptor("start/back_hover", "core")),
+                         ResDescriptor("core/start/back"),
+                         ResDescriptor("core/start/back_clicked"),
+                         ResDescriptor("core/start/back_hover")),
       parent(p)
   {
   }
@@ -126,12 +126,12 @@ StartScreen::~StartScreen()
 
 }
 
-StartScreenComponent::StartScreenComponent(PLFHandle p)
+StartScreenComponent::StartScreenComponent(const PingusLevel& p)
   : plf(p)
 {
   background = Resource::load_sprite("core/menu/startscreenbg");
   background.set_alignment(origin_center);
-  time_str = GameTime::ticks_to_realtime_string(plf->get_time());
+  time_str = GameTime::ticks_to_realtime_string(plf.get_time());
 }
 
 void
@@ -147,7 +147,7 @@ StartScreenComponent::draw(DrawingContext& gc)
   gc.print_center(Fonts::chalk_large,
                   gc.get_width()/2,
                   CL_Display::get_height()/2 - 200,
-                  System::translate(plf->get_levelname()));
+                  System::translate(plf.get_levelname()));
 
   gc.print_left(Fonts::chalk_normal,
                 CL_Display::get_width()/2 - 290,
@@ -155,26 +155,26 @@ StartScreenComponent::draw(DrawingContext& gc)
                 format_description(800 - 230));
 
   gc.print_left (Fonts::chalk_normal, left_x,  y, _("Number of Pingus: "));
-  gc.print_right(Fonts::chalk_normal, right_x, y, CL_String::to(plf->get_pingus()));
+  gc.print_right(Fonts::chalk_normal, right_x, y, CL_String::to(plf.get_number_of_pingus()));
 
   gc.print_left (Fonts::chalk_normal, left_x,  y += 30, _("Number to Save: "));
-  gc.print_right(Fonts::chalk_normal, right_x, y, CL_String::to(plf->get_number_to_save()));
+  gc.print_right(Fonts::chalk_normal, right_x, y, CL_String::to(plf.get_number_to_save()));
 
   gc.print_left (Fonts::chalk_normal, left_x,  y += 30, _("Time: "));
   gc.print_right(Fonts::chalk_normal, right_x, y, time_str);
 
   gc.print_left (Fonts::chalk_normal, left_x,  y += 30, _("Difficulty:"));
-  gc.print_right(Fonts::chalk_normal, right_x, y, CL_String::to(plf->get_difficulty()) + "/100");
+  gc.print_right(Fonts::chalk_normal, right_x, y, CL_String::to(plf.get_difficulty()) + "/100");
 
-  /*for (int i = 0; plf->get_difficulty())
+  /*for (int i = 0; plf.get_difficulty())
     {
     }*/
 
   gc.print_center(Fonts::chalk_small, CL_Display::get_width()/2,
-                  CL_Display::get_height()/2 + 270, _("Author: ") + plf->get_author());
+                  CL_Display::get_height()/2 + 270, _("Author: ") + plf.get_author());
 
   if (maintainer_mode)
-    gc.print_left(Fonts::chalk_small, 110, 430, _("Filename: ") + plf->get_resname());
+    gc.print_left(Fonts::chalk_small, 110, 430, _("Filename: ") + plf.get_resname());
 
   CL_System::sleep(30);
 }
@@ -185,7 +185,7 @@ StartScreenComponent::format_description(int length)
   if (description != "")
     return description;
 
-  description = System::translate(plf->get_description());
+  description = System::translate(plf.get_description());
 
   if (description == "")
     return description;
@@ -196,7 +196,7 @@ StartScreenComponent::format_description(int length)
 }
 
 
-StartScreen::StartScreen(PLFHandle arg_plf)
+StartScreen::StartScreen(const PingusLevel& arg_plf)
   : plf(arg_plf)
 {
   StartScreenComponent* comp = new StartScreenComponent(plf);

@@ -71,9 +71,9 @@ private:
 public:
   StoryScreenContinueButton(StoryScreenComponent* arg_story_comp)
     : GUI::SurfaceButton(CL_Display::get_width()/2 + 220, CL_Display::get_height()/2 + 160,
-                         ResDescriptor("misc/next", "core"),
-                         ResDescriptor("misc/next", "core"),
-                         ResDescriptor("misc/next_hover", "core")),
+                         ResDescriptor("core/misc/next"),
+                         ResDescriptor("core/misc/next"),
+                         ResDescriptor("core/misc/next_hover")),
       story_comp(arg_story_comp)
   {
   }

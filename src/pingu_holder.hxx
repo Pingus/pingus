@@ -26,7 +26,7 @@
 
 namespace Pingus {
 
-class PLF;
+class PingusLevel;
 class Vector;
 class Pingu;
 
@@ -54,7 +54,7 @@ private:
   std::list<Pingu*> pingus;
 
 public:
-  PinguHolder(PLF*);
+  PinguHolder(const PingusLevel&);
   ~PinguHolder();
 
   /*@{

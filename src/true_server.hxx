@@ -20,6 +20,7 @@
 #ifndef HEADER_PINGUS_TRUE_SERVER_HXX
 #define HEADER_PINGUS_TRUE_SERVER_HXX
 
+#include "pingus_level.hxx"
 #include "server.hxx"
 
 namespace Pingus {
@@ -33,7 +34,7 @@ private:
   bool pause;
 
 public:
-  TrueServer(PLF* plf);
+  TrueServer(const PingusLevel& plf);
   virtual ~TrueServer();
 
   void update();

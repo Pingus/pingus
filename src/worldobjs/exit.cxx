@@ -33,13 +33,13 @@ namespace Pingus {
 namespace WorldObjs {
 
 Exit::Exit(const FileReader& reader)
-  : smallmap_symbol(Resource::load_sprite("misc/smallmap_exit", "core"))
+  : smallmap_symbol(Resource::load_sprite("core/misc/smallmap_exit"))
 {
   reader.read_vector("position", pos);
   reader.read_desc  ("surface",  desc);
   reader.read_int   ("owner-id", owner_id);
 
-  flag = Resource::load_sprite("misc/flag" + CL_String::to(owner_id), "core");
+  flag = Resource::load_sprite("core/misc/flag" + CL_String::to(owner_id));
 
   sprite = Resource::load_sprite(desc);
 

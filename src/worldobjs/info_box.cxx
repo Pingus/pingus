@@ -31,7 +31,7 @@ namespace Pingus {
 namespace WorldObjs {
 
 InfoBox::InfoBox(const FileReader& reader)
-  : sprite(Resource::load_sprite("infobox", "worldobjs")),
+  : sprite(Resource::load_sprite("worldobjs/infobox")),
     is_open (false)
 {
   reader.read_vector("position", pos);

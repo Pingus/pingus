@@ -66,7 +66,7 @@ ScreenManager::display ()
   Cursor* cursor = 0;
   if (swcursor_enabled)
     {
-      cursor = new Cursor("cursors/animcross", "core");
+      cursor = new Cursor("core/cursors/animcross");
       Display::add_flip_screen_hook(cursor);
       //CL_MouseCursor::hide();
     }

@@ -52,13 +52,7 @@ public:
 
   /** Create a WorldObj type from a given piece of xml, use the
       'type' property for determinating the object type. */
-  WorldObj* create (xmlDocPtr doc, xmlNodePtr cur);
-
-  /** Create a WorldObj type from a given piece of xml, use the
-      given id value for determinating the object type instead of the
-      'type' property. This is for backward compatibility only! */
-  WorldObj* create (const std::string& id,
-			xmlDocPtr doc, xmlNodePtr cur);
+  WorldObj* create(const FileReader& reader);
 
 private:
   WorldObjFactory (const WorldObjFactory&);
@@ -73,7 +67,7 @@ public:
     WorldObjFactory::instance ()->register_factory (id, this);
   }
 
-  virtual WorldObj* create (xmlDocPtr doc, xmlNodePtr cur) =0;
+  virtual WorldObj* create(const FileReader& reader) =0;
 
 private:
   WorldObjAbstractFactory (const WorldObjAbstractFactory&);
@@ -89,8 +83,8 @@ public:
   WorldObjFactoryImpl (const std::string& id)
     : WorldObjAbstractFactory (id) {}
 
-  WorldObj* create (xmlDocPtr doc, xmlNodePtr cur) {
-    return new T(XMLFileReaderOld(doc, cur));
+  WorldObj* create(const FileReader& reader) {
+    return new T(reader);
   }
 
 private:

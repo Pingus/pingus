@@ -32,6 +32,8 @@ namespace Pingus {
 class PingusLevelImpl
 {
 public:
+  std::string resname;
+
   std::string levelname;
   std::string description;
 

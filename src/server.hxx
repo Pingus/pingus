@@ -22,11 +22,11 @@
 
 #include "server_event.hxx"
 #include "action_holder.hxx"
+#include "pingus_level.hxx"
 
 namespace Pingus {
 
 class Pingu;
-class PLF;
 class World;
 class DemoRecorder;
 class GoalManager;
@@ -35,7 +35,7 @@ class GoalManager;
 class Server
 {
 protected:
-  PLF* plf;
+  PingusLevel plf;
   World* world;
 
   /** Manager class for the number of available actions */
@@ -46,12 +46,12 @@ protected:
   DemoRecorder* demo_recorder;
 
 public:
-  Server(PLF*);
+  Server(const PingusLevel& arg_plf);
   virtual ~Server();
 
   virtual void update();
 
-  PLF* get_plf () { return plf; }
+  PingusLevel get_plf () { return plf; }
 
   int get_time();
 

@@ -41,8 +41,6 @@
 #include "dot.hxx"
 #include "level_dot.hxx"
 #include "path_graph.hxx"
-#include "../plf_handle.hxx"
-#include "../plf.hxx"
 #include "../math.hxx"
 #include "../stat_manager.hxx"
 
@@ -106,7 +104,7 @@ WorldMap::WorldMap(const std::string& arg_filename)
 
   add_drawable(pingus);
 
-  levelname_bg = Resource::load_sprite("worldmap/levelname_bg", "core");
+  levelname_bg = Resource::load_sprite("core/worldmap/levelname_bg");
   xmlFreeDoc(doc);
 }
 
@@ -244,7 +242,7 @@ WorldMap::draw (DrawingContext& gc)
           gc.print_center(Fonts::chalk_small,
                           display_gc->get_width ()/2,
                           display_gc->get_height() - 20,
-                          System::translate(leveldot->get_plf()->get_levelname()));
+                          System::translate(leveldot->get_plf().get_levelname()));
           
         }
       else

@@ -32,7 +32,7 @@ namespace Pingus {
 namespace WorldObjs {
 
 Entrance::Entrance(const FileReader& reader)
-  : smallmap_symbol(Resource::load_sprite("misc/smallmap_entrance", "core"))
+  : smallmap_symbol(Resource::load_sprite("core/misc/smallmap_entrance"))
 {
   reader.read_string("type",         type);
   reader.read_int   ("owner-id",     owner_id);

@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_PLF_RES_MGR_HXX
 #define HEADER_PINGUS_PLF_RES_MGR_HXX
 
-#include "plf_handle.hxx"
+#include "pingus_level.hxx"
 
 namespace Pingus {
 
@@ -29,7 +29,7 @@ class PLFResMgr
 {
 private:
   struct PLFEntry {
-    PLF* plf;
+    PingusLevel plf;
     unsigned int mtime;
   };
 
@@ -37,21 +37,20 @@ private:
   static  PLFMap plf_map;
   /** Loads PLF from filename and stores it under 'res_name' in the
       map */
-  static PLFHandle load_plf_raw(const std::string& res_name,
+  static PingusLevel load_plf_raw(const std::string& res_name,
                                 const std::string& filename);
 public:
   /** @returns a handle to the PLF, which the caller *must not* delete
 
       @param res_name The resource name of the level, aka "snow11-grumbel"
    */
-  static PLFHandle load_plf(const std::string& res_name);
+  static PingusLevel load_plf(const std::string& res_name);
 
   /** @return a handle to the PLF, instead of loading it from a
       res_name, load it from a system dependend filename
 
       @param filename The filename of the plf, aka "../data/levels/snow11-grumbel.pingus" */
-  static PLFHandle load_plf_from_filename(const std::string& filename);
-  static  void free_plf_map();
+  static PingusLevel load_plf_from_filename(const std::string& filename);
 };
 
 } // namespace Pingus

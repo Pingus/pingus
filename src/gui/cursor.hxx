@@ -35,7 +35,7 @@ private:
   CL_Sprite sprite;
 
 public:
-  Cursor (std::string ident, std::string datafile);
+  Cursor (const std::string& ident);
   virtual ~Cursor ();
 
   virtual void update (float delta);

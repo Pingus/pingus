@@ -57,7 +57,7 @@ ConveyorBelt::draw (SceneContext& gc)
 void
 ConveyorBelt::on_startup ()
 {
-  CL_PixelBuffer sur(Resource::load_pixelbuffer("conveyorbelt_cmap", "worldobjs"));
+  CL_PixelBuffer sur(Resource::load_pixelbuffer("worldobjs/conveyorbelt_cmap"));
 
   for (int i=0; i < (width + 2); ++i)
     world->get_colmap()->put(sur,

@@ -30,7 +30,6 @@
 #include "../gui/screen_manager.hxx"
 #include "../xml_helper.hxx"
 #include "../resource.hxx"
-#include "../plf.hxx"
 #include "../path_manager.hxx"
 #include "../start_screen.hxx"
 #include "../plf_res_mgr.hxx"
@@ -42,12 +41,11 @@ namespace WorldMapNS {
 
 LevelDot::LevelDot(xmlDocPtr doc, xmlNodePtr cur)
   : Dot(doc, XMLhelper::skip_blank(cur->children)),
-    green_dot_sur(Resource::load_sprite("worldmap/dot_green", "core")),
-    red_dot_sur(Resource::load_sprite("worldmap/dot_red", "core")),
-    unaccessible_dot_sur(Resource::load_sprite("worldmap/dot_invalid", "core")),
-    highlight_green_dot_sur(Resource::load_sprite("worldmap/dot_green_hl", "core")),
-    highlight_red_dot_sur(Resource::load_sprite("worldmap/dot_red_hl", "core")),
-    plf(0)
+    green_dot_sur(Resource::load_sprite("core/worldmap/dot_green")),
+    red_dot_sur(Resource::load_sprite("core/worldmap/dot_red")),
+    unaccessible_dot_sur(Resource::load_sprite("core/worldmap/dot_invalid")),
+    highlight_green_dot_sur(Resource::load_sprite("core/worldmap/dot_green_hl")),
+    highlight_red_dot_sur(Resource::load_sprite("core/worldmap/dot_red_hl"))
 {
   cur = cur->children;
   // Skip dot entry
@@ -150,7 +148,7 @@ LevelDot::draw_hover(DrawingContext& gc)
 
   if (accessible())
     {
-      int length = Fonts::pingus_small.bounding_rect(0, 0, System::translate(get_plf()->get_levelname())).get_width() / 2;
+      int length = Fonts::pingus_small.bounding_rect(0, 0, System::translate(get_plf().get_levelname())).get_width() / 2;
       int realpos = static_cast<int>(gc.world_to_screen(Vector(pos.x, pos.y, 0)).x);
       if (realpos - length < 0)
         pos_correction = realpos - length;
@@ -160,7 +158,7 @@ LevelDot::draw_hover(DrawingContext& gc)
       gc.print_center(Fonts::pingus_small,
                       static_cast<int>(pos.x) - pos_correction,
                       static_cast<int>(pos.y - 40),
-                      System::translate(get_plf()->get_levelname()));
+                      System::translate(get_plf().get_levelname()));
     }
   else
     {
@@ -181,7 +179,7 @@ LevelDot::draw_hover(DrawingContext& gc)
     {
       gc.print_center(Fonts::pingus_small,
                       int(pos.x), int(pos.y - 56),
-                      get_plf()->get_resname());
+                      get_plf().get_resname());
     }
 }
 

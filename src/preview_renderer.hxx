@@ -37,7 +37,7 @@ public:
    *  @param plf          PLF that describes the level
    *  @param output_file  filename of the file to which the result should be written
    */
-  static void render(PLFHandle plf, const std::string& output_file); 
+  static void render(const PingusLevel& plf, const std::string& output_file); 
 };
 
 } // namespace Pingus

@@ -25,12 +25,11 @@
 #include "level_desc.hxx"
 #include "fonts.hxx"
 #include "system.hxx"
-#include "plf.hxx"
 #include "gettext.h"
 
 namespace Pingus {
 
-PingusLevelDesc::PingusLevelDesc(PLF* arg_plf)
+PingusLevelDesc::PingusLevelDesc(const PingusLevel& arg_plf)
 {
   plf = arg_plf;
 

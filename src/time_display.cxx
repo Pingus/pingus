@@ -28,7 +28,6 @@
 #include "world.hxx"
 #include "true_server.hxx"
 #include "client.hxx"
-#include "plf.hxx"
 #include "game_time.hxx"
 #include "fonts.hxx"
 
@@ -36,7 +35,7 @@ namespace Pingus {
 
 TimeDisplay::TimeDisplay (Client* c)
   : server(c->get_server()),
-    infinity_symbol(Resource::load_sprite("misc/infinity", "core"))
+    infinity_symbol(Resource::load_sprite("core/misc/infinity"))
 {
   font = Fonts::pingus_small_fix_num;
 }
@@ -44,10 +43,10 @@ TimeDisplay::TimeDisplay (Client* c)
 void
 TimeDisplay::draw (DrawingContext& gc)
 {
-  int  time_value = server->get_plf()->get_time() - server->get_world()->get_time_passed();
+  int  time_value = server->get_plf().get_time() - server->get_world()->get_time_passed();
   std::string time_string;
 
-  if (server->get_plf()->get_time() == -1 && !(pingus_debug_flags & PINGUS_DEBUG_GAMETIME))
+  if (server->get_plf().get_time() == -1 && !(pingus_debug_flags & PINGUS_DEBUG_GAMETIME))
     {
       infinity_symbol.draw(CL_Display::get_width()
 				  - infinity_symbol.get_width() - 6,

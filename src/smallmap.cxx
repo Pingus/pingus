@@ -68,8 +68,8 @@ SmallMap::init()
   unsigned char  current_pixel;
   int tx, ty;
 
-  entrance_sur = Resource::load_sprite("misc/smallmap_entrance", "core");
-  exit_sur     = Resource::load_sprite("misc/smallmap_exit", "core");
+  entrance_sur = Resource::load_sprite("core/misc/smallmap_entrance");
+  exit_sur     = Resource::load_sprite("core/misc/smallmap_exit");
 
   ColMap* colmap = client->get_server()->get_world()->get_colmap();
   buffer = colmap->get_data();

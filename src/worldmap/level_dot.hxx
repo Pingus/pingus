@@ -21,7 +21,7 @@
 #define HEADER_PINGUS_WORLDMAP_LEVEL_DOT_HXX
 
 #include <ClanLib/Display/sprite.h>
-#include "../plf_handle.hxx"
+#include "../pingus_level.hxx"
 #include "dot.hxx"
 
 namespace Pingus {
@@ -38,7 +38,7 @@ private:
   CL_Sprite highlight_red_dot_sur;
 
   std::string levelname;
-  PLFHandle plf;
+  PingusLevel plf;
 
 public:
   LevelDot(xmlDocPtr doc, xmlNodePtr cur);
@@ -47,12 +47,13 @@ public:
   void draw_hover(DrawingContext& gc);
 
   void update(float delta);
-  PLFHandle get_plf () const { return plf; }
+  PingusLevel get_plf () const { return plf; }
   void on_click();
 
   bool finished();
   bool accessible();
   void unlock();
+
 private:
   LevelDot (const LevelDot&);
   LevelDot& operator= (const LevelDot&);

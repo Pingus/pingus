@@ -17,18 +17,18 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "plf.hxx"
 #include "globals.hxx"
 #include "debug.hxx"
 #include "system.hxx"
 #include "path_manager.hxx"
+#include "xml_pingus_level.hxx"
 #include "plf_res_mgr.hxx"
 
 namespace Pingus {
 
 PLFResMgr::PLFMap PLFResMgr::plf_map;
 
-PLFHandle
+PingusLevel
 PLFResMgr::load_plf_raw(const std::string& res_name,
                         const std::string& filename)
 {
@@ -40,7 +40,7 @@ PLFResMgr::load_plf_raw(const std::string& res_name,
     { // Entry not cached, so load it and add it to cache
       pout(PINGUS_DEBUG_LOADING) << "PLFResMgr: Loading level from DISK: '" << res_name << "' -> '" << filename << "'" << std::endl;
 
-      PLF* plf = PLF::create(filename);
+      PingusLevel plf = XMLPingusLevel(filename);
 
       PLFEntry entry;
 
@@ -51,19 +51,17 @@ PLFResMgr::load_plf_raw(const std::string& res_name,
 
       // FIXME: leaking pointers to the outsite work is not such a good
       // idea, could lead to throuble sooner or later
-      return PLFHandle (entry.plf);
+      return PingusLevel (entry.plf);
     }
   else
     {
       unsigned int current_mtime = System::get_mtime(filename);
       if (current_mtime != i->second.mtime)
         {
-          delete i->second.plf;
-
           pout(PINGUS_DEBUG_LOADING) << "PLFResMgr: level changed on DISK, reloading: '" << res_name << "' -> '" << filename << "'" << std::endl;
 
           // Reload the file since it has changed on disk
-          PLF* plf = PLF::create(filename);
+          PingusLevel plf = XMLPingusLevel(filename);
 
           PLFEntry entry;
 
@@ -74,7 +72,7 @@ PLFResMgr::load_plf_raw(const std::string& res_name,
 
           // FIXME: leaking pointers to the outsite work is not such a good
           // idea, could lead to throuble sooner or later
-          return PLFHandle (entry.plf);
+          return PingusLevel (entry.plf);
         }
       else
         { // File in cache is up to date, everything is already, return it
@@ -85,7 +83,7 @@ PLFResMgr::load_plf_raw(const std::string& res_name,
     }
 }
 
-PLFHandle
+PingusLevel
 PLFResMgr::load_plf_from_filename(const std::string& filename)
 {
   std::string res_name = System::basename(filename);
@@ -97,18 +95,10 @@ PLFResMgr::load_plf_from_filename(const std::string& filename)
                       filename);
 }
 
-PLFHandle
+PingusLevel
 PLFResMgr::load_plf(const std::string& res_name)
 {
   return load_plf_raw(res_name, path_manager.complete("levels/" + res_name + ".pingus"));
-}
-
-void PLFResMgr::free_plf_map()
-{
-  for (PLFMap::iterator i = plf_map.begin(); i != plf_map.end(); ++i)
-  {
-	  delete i->second.plf;
-  }
 }
 
 } // namespace Pingus

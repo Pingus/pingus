@@ -81,9 +81,9 @@ public:
 
 WorldMapManagerCreditsButton::WorldMapManagerCreditsButton()
   : GUI::SurfaceButton(CL_Display::get_width() - 150, 0,
-                       ResDescriptor("worldmap/credits_button_normal", "core"),
-                       ResDescriptor("worldmap/credits_button_pressed", "core"),
-                       ResDescriptor("worldmap/credits_button_hover", "core"))
+                       ResDescriptor("core/worldmap/credits_button_normal"),
+                       ResDescriptor("core/worldmap/credits_button_pressed"),
+                       ResDescriptor("core/worldmap/credits_button_hover"))
 {
 }
 
@@ -111,9 +111,9 @@ WorldMapManagerCreditsButton::on_click()
 
 WorldMapManagerStoryButton::WorldMapManagerStoryButton()
   : GUI::SurfaceButton(0, 0,
-                       ResDescriptor("worldmap/story_button_normal", "core"),
-                       ResDescriptor("worldmap/story_button_pressed", "core"),
-                       ResDescriptor("worldmap/story_button_hover", "core"))
+                       ResDescriptor("core/worldmap/story_button_normal"),
+                       ResDescriptor("core/worldmap/story_button_pressed"),
+                       ResDescriptor("core/worldmap/story_button_hover"))
 {
 }
 
@@ -141,9 +141,9 @@ WorldMapManagerStoryButton::on_click()
 
 WorldMapManagerCloseButton::WorldMapManagerCloseButton()
   : GUI::SurfaceButton(0, CL_Display::get_height() - 37,
-                       ResDescriptor("worldmap/leave_button_normal", "core"),
-                       ResDescriptor("worldmap/leave_button_pressed", "core"),
-                       ResDescriptor("worldmap/leave_button_hover", "core"))
+                       ResDescriptor("core/worldmap/leave_button_normal"),
+                       ResDescriptor("core/worldmap/leave_button_pressed"),
+                       ResDescriptor("core/worldmap/leave_button_hover"))
 {
 }
 
@@ -169,9 +169,9 @@ WorldMapManagerCloseButton::on_click()
 
 WorldMapManagerEnterButton::WorldMapManagerEnterButton()
   : GUI::SurfaceButton(CL_Display::get_width() - 119, CL_Display::get_height() - 37,
-                       ResDescriptor("worldmap/enter_button_normal", "core"),
-                       ResDescriptor("worldmap/enter_button_pressed", "core"),
-                       ResDescriptor("worldmap/enter_button_hover", "core"))
+                       ResDescriptor("core/worldmap/enter_button_normal"),
+                       ResDescriptor("core/worldmap/enter_button_pressed"),
+                       ResDescriptor("core/worldmap/enter_button_hover"))
 {
 }
 

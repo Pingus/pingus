@@ -33,9 +33,9 @@ class Entrance;
 class Exit;
 class Hotspot;
 class Liquid;
-class PLF;
 class PinguHolder;
 class PinguMap;
+class PingusLevel;
 class Pingu;
 class Trap;
 class View;
@@ -87,13 +87,13 @@ private:
   ActionHolder*   action_holder;
   ColMap*         colmap;
 
-  void    init_worldobjs (PLF* plf);
+  void    init_worldobjs (const PingusLevel& plf);
 
   /** Acceleration due to gravity in the world */
   const float gravitational_acceleration;
 
 public:
-  World(PLF*);
+  World(const PingusLevel& level);
   virtual ~World();
 
   /** Add an object to the world, obj needs to be new'ed the World

@@ -36,6 +36,8 @@ namespace Pingus {
 
 XMLPingusLevel::XMLPingusLevel(const std::string& filename)
 {
+  impl->resname = filename;
+
   CL_InputSourceProvider_File provider(".");
   CL_DomDocument doc(provider.open_source(filename), true);
 
@@ -69,9 +71,9 @@ XMLPingusLevel::XMLPingusLevel(const std::string& filename)
               XMLFileReader reader(node);
               reader.read_string("levelname",        impl->levelname);
               reader.read_string("description",      impl->description);
-              reader.read_size  ("levelsize",             impl->size);
+              reader.read_size  ("levelsize",        impl->size);
               reader.read_string("music",            impl->music);
-              reader.read_int   ("time",             impl->number_of_pingus);
+              reader.read_int   ("time",             impl->time);
               reader.read_int   ("difficulty",       impl->difficulty);
               reader.read_int   ("number-of-pingus", impl->number_of_pingus);
               reader.read_int   ("number-to-save",   impl->number_to_save);
@@ -91,7 +93,8 @@ XMLPingusLevel::XMLPingusLevel(const std::string& filename)
           else if (node.get_tag_name() == "objects")
             {
               CL_DomNodeList objects = node.get_child_nodes();
-              for(int i = 0; i < lst.get_length(); ++i)
+              std::cout << "objects: " << objects.get_length() << std::endl;
+              for(int i = 0; i < objects.get_length(); ++i)
                 {
                   impl->objects.push_back(XMLFileReader(objects.item(i).to_element()));
                 }

@@ -21,7 +21,6 @@
 #include <assert.h>
 #include <iostream>
 #include <typeinfo>
-#include "plf.hxx"
 #include "pingu_holder.hxx"
 #include "sound/sound.hxx"
 #include "spot_map.hxx"
@@ -31,6 +30,8 @@
 #include "particles/smoke_particle_holder.hxx"
 #include "particles/snow_particle_holder.hxx"
 #include "pingu.hxx"
+#include "pingus_level.hxx"
+#include "worldobj_factory.hxx"
 #include "game_time.hxx"
 
 namespace Pingus {
@@ -43,7 +44,7 @@ bool WorldObj_less (WorldObj* a, WorldObj* b)
   return a->get_z_pos () < b->get_z_pos ();
 }
 
-World::World(PLF* plf)
+World::World(const PingusLevel& plf)
   : gfx_map(new PingusSpotMap(plf)),
     game_time(new GameTime (game_speed)),
     do_armageddon(false),
@@ -76,15 +77,15 @@ World::add_object (WorldObj* obj)
 }
 
 void
-World::init_worldobjs(PLF* plf)
+World::init_worldobjs(const PingusLevel& plf)
 {
-  std::vector<WorldObj*> worldobj_d = plf->get_worldobjs();
+  const std::vector<FileReader>& objects = plf.get_objects();
 
-  for (std::vector<WorldObj*>::iterator i = worldobj_d.begin();
-       i != worldobj_d.end ();
+  for (std::vector<FileReader>::const_iterator i = objects.begin();
+       i != objects.end ();
        ++i)
     {
-      add_object(*i); //->insert_WorldObjs(this);
+      add_object(WorldObjFactory::instance()->create(*i));
     }
 
    world_obj.push_back(pingus);

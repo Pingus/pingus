@@ -22,7 +22,6 @@
 #include <ClanLib/Display/display.h>
 #include "globals.hxx"
 #include "playfield.hxx"
-#include "plf.hxx"
 #include "pingu_holder.hxx"
 #include "display/drawing_context.hxx"
 #include "display/scene_context.hxx"

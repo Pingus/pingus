@@ -23,7 +23,6 @@
 #include "system.hxx"
 #include "demo_recorder.hxx"
 #include "server.hxx"
-#include "plf.hxx"
 #include "gettext.h"
 
 namespace Pingus {
@@ -31,7 +30,7 @@ namespace Pingus {
 DemoRecorder::DemoRecorder (Server* server)
   : record_demo (true)
 {
-  std::string levelname = server->get_plf()->get_resname();
+  std::string levelname = server->get_plf().get_resname();
   std::string flat_levelname = levelname;
 
   // 'Flatten' the levelname so that we don't need directories

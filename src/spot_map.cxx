@@ -23,10 +23,10 @@
 #include <ClanLib/Display/pixel_format.h>
 #include <ClanLib/Core/core_iostream.h>
 #include "display/scene_context.hxx"
-#include "plf.hxx"
 #include "pingus_error.hxx"
 #include "blitter.hxx"
 #include "spot_map.hxx"
+#include "pingus_level.hxx"
 #include "gettext.h"
 #include "col_map.hxx"
 #include "math.hxx"
@@ -69,10 +69,10 @@ MapTile::put(CL_PixelBuffer obj, int x, int y)
   surface = CL_Surface(pixelbuffer);
 }
 
-PingusSpotMap::PingusSpotMap(PLF* plf)
+PingusSpotMap::PingusSpotMap(const PingusLevel& plf)
 {
-  width  = plf->get_width();
-  height = plf->get_height();
+  width  = plf.get_size().width;
+  height = plf.get_size().height;
 
   colmap = new ColMap(width, height);
 
@@ -98,8 +98,8 @@ PingusSpotMap::PingusSpotMap(PLF* plf)
     tile[i].resize(tile_height);
 
   // fix the height back to the correct values
-  width  = plf->get_width();
-  height = plf->get_height();
+  width  = plf.get_size().width;
+  height = plf.get_size().height;
 }
 
 PingusSpotMap::~PingusSpotMap(void)

@@ -26,7 +26,7 @@
 
 namespace Pingus {
 
-class PLF;
+class PingusLevel;
 class PinguAction;
 
 /**
@@ -47,9 +47,9 @@ private:
 
 public:
   /** Create an action holder from the number of actions given in a
-      PLF file */
-  ActionHolder (PLF* plf);
-  ~ActionHolder ();
+      Pingus Level file */
+  ActionHolder(const PingusLevel& plf);
+  ~ActionHolder();
 
   /** @return a list of available actions in the current level */
   std::vector<Actions::ActionName> get_available_actions();

@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_RESULT_HXX
 #define HEADER_PINGUS_RESULT_HXX
 
-#include "plf_handle.hxx"
+#include "pingus_level.hxx"
 #include "pingus.hxx"
 
 namespace Pingus {
@@ -29,7 +29,7 @@ namespace Pingus {
 struct Result
 {
   /** Leveldata */
-  PLFHandle plf;
+  PingusLevel plf;
 
   /** Total number of that got saved */
   int saved;

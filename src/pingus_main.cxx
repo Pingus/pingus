@@ -937,7 +937,6 @@ PingusMain::deinit_pingus()
   XMLhelper::deinit();
   Sound::PingusSound::deinit();
   PingusMenuManager::deinit();
-  PLFResMgr::free_plf_map();
   WorldObjFactory::deinit();
   WorldMapNS::WorldMapManager::deinit();
   ScreenManager::deinit();

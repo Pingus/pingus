@@ -41,31 +41,31 @@ PingusMenu::PingusMenu (PingusMenuManager* m)
     
   start_button = new MenuButton(CL_Point(CL_Display::get_width() * 400 / 800,
                                          CL_Display::get_height() * 370 / 600),
-                                Resource::load_sprite("menu/play_on", "core"),
+                                Resource::load_sprite("core/menu/play_on"),
                                 _("Start"),
                                 _("..:: Start the game ::.."));
   
   quit_button = new MenuButton(CL_Point(CL_Display::get_width() * 650 / 800,
                                         CL_Display::get_height() * 370 / 600),
-                               Resource::load_sprite("menu/exit_on", "core"),
+                               Resource::load_sprite("core/menu/exit_on"),
                                _("Exit"),
                                _("..:: Bye, bye ::.."));
 
   contrib_button = new MenuButton(CL_Point(CL_Display::get_width() * 150 / 800,
                                           CL_Display::get_height() * 370 / 600),
-                                  Resource::load_sprite("menu/options_on", "core"),
+                                  Resource::load_sprite("core/menu/options_on"),
                                   _("Contrib\nLevels"),
                                   _("..:: Play User Build levels ::.."));
 
   story_button  = new MenuButton(CL_Point(CL_Display::get_width() * 400 / 800,
                                           CL_Display::get_height() * 370 / 600),
-                                 Resource::load_sprite("menu/credits_on", "core"),
+                                 Resource::load_sprite("core/menu/credits_on"),
                                  _("Story"),
                                  _("..:: Start the story ::.."));
   
   multiplayer_button = new MenuButton(CL_Point(CL_Display::get_width() * 650 / 800,
                                                CL_Display::get_height() * 370 / 600),
-                                      Resource::load_sprite("menu/multi_on", "core"),
+                                      Resource::load_sprite("core/menu/multi_on"),
                                       _("Multiplayer"),
                                       _("..:: Multiplayer Match ::.."));
 
@@ -105,7 +105,7 @@ PingusMenu::preload ()
     {
       is_init = true;
 
-      background = Resource::load_sprite("misc/logo", "core");
+      background = Resource::load_sprite("core/misc/logo");
       setup_main_menu();
     }
 }

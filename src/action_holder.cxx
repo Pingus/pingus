@@ -18,7 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
-#include "plf.hxx"
+#include "pingus_level.hxx"
 #include "pingu_action_factory.hxx"
 #include "action_holder.hxx"
 #include "cheat.hxx"
@@ -27,18 +27,14 @@ namespace Pingus {
 
 using namespace Actions;
 
-ActionHolder::ActionHolder(PLF* plf)
+ActionHolder::ActionHolder(const PingusLevel& plf)
 {
-  std::vector<ActionData> action_data = plf->get_actions();
+  const std::map<std::string, int>& actions = plf.get_actions();
 
-  if (action_data.size() == 0 || Cheat::all_actions)
+  for(std::map<std::string, int>::const_iterator i = actions.begin(); i != actions.end(); ++i)
     {
-      std::cout << "Error: ActionHolder: No actions given in this level!" << std::endl;
+      set_actions(Actions::action_from_string(i->first), i->second);
     }
-
-  for (std::vector<ActionData>::iterator i = action_data.begin(); i != action_data.end(); ++i) {
-    set_actions(i->name, i->number_of);
-  }
 }
 
 ActionHolder::~ActionHolder ()

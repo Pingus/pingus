@@ -297,13 +297,7 @@ XMLhelper::parse_surface(xmlDocPtr doc, xmlNodePtr cur)
               ccur = ccur->next;
               continue;
             }
-
-          if (XMLhelper::equal_str(ccur->name, "resource-datafile"))
-            {
-              if (!node_list_get_string(doc, ccur->children, 1, desc.datafile))
-                std::cout << "XMLhelper: parse_surface() Empty" << std::endl;
-            }
-          else if (XMLhelper::equal_str(ccur->name, "resource-ident"))
+          if (XMLhelper::equal_str(ccur->name, "resource-ident"))
             {
               node_list_get_string(doc, ccur->children, 1, desc.res_name);
             }

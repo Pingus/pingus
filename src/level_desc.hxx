@@ -27,8 +27,6 @@ class CL_Font;
 
 namespace Pingus {
 
-class PLF;
-
 ///
 class PingusLevelDesc
 {
@@ -37,13 +35,13 @@ private:
   CL_Surface level;
   CL_Font font;
   CL_Font title;
-  PLF* plf;
-
+  PingusLevel plf;
+  
   MultiLineText description;
   std::string levelname;
 public:
   enum LoadingStatus { LOADING, FINISHED };
-  PingusLevelDesc(PLF*);
+  PingusLevelDesc(const PingusLevel&);
 
   void draw(PingusLevelDesc::LoadingStatus status);
 

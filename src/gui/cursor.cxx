@@ -24,8 +24,8 @@
 
 namespace Pingus {
 
-Cursor::Cursor (std::string ident, std::string datafile)
-  : sprite(Resource::load_sprite(ident, datafile))
+Cursor::Cursor(const std::string& ident)
+  : sprite(Resource::load_sprite(ident))
 {
 }
 

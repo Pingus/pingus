@@ -155,11 +155,11 @@ ArmageddonButton::ArmageddonButton (TrueServer* s, int x, int y)
   : server (s),
     x_pos (x),
     y_pos (y),
-    background  (Resource::load_sprite("buttons/hbuttonbgb", "core")),
-    backgroundhl(Resource::load_sprite("buttons/hbuttonbg", "core"))
+    background  (Resource::load_sprite("core/buttons/hbuttonbgb")),
+    backgroundhl(Resource::load_sprite("core/buttons/hbuttonbg"))
 {
   pressed      = false;
-  sprite       = Resource::load_sprite("buttons/armageddon_anim", "core");
+  sprite       = Resource::load_sprite("core/buttons/armageddon_anim");
 }
 
 ArmageddonButton::~ArmageddonButton () { }
@@ -234,10 +234,10 @@ ArmageddonButton::on_primary_button_click (int x, int y)
 ForwardButton::ForwardButton (TrueServer* s, int x, int y)
   : server (s),
     x_pos (x), y_pos (y),
-    background  (Resource::load_sprite("buttons/hbuttonbgb", "core")),
-    backgroundhl(Resource::load_sprite("buttons/hbuttonbg", "core"))
+    background  (Resource::load_sprite("core/buttons/hbuttonbgb")),
+    backgroundhl(Resource::load_sprite("core/buttons/hbuttonbg"))
 {
-  surface = Resource::load_sprite("buttons/fast_forward", "core");
+  surface = Resource::load_sprite("core/buttons/fast_forward");
 }
 
 ForwardButton::~ForwardButton () {}
@@ -282,10 +282,10 @@ ForwardButton::on_primary_button_click (int x, int y)
 PauseButton::PauseButton (TrueServer* s, int x, int y)
   : server (s),
     x_pos(x), y_pos(y),
-    background  (Resource::load_sprite("buttons/hbuttonbgb", "core")),
-    backgroundhl(Resource::load_sprite("buttons/hbuttonbg", "core"))
+    background  (Resource::load_sprite("core/buttons/hbuttonbgb")),
+    backgroundhl(Resource::load_sprite("core/buttons/hbuttonbg"))
 {
-  surface = Resource::load_sprite("buttons/pause", "core");
+  surface = Resource::load_sprite("core/buttons/pause");
 }
 
 PauseButton::~PauseButton () {}

@@ -18,7 +18,6 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
-#include "plf.hxx"
 #include "world.hxx"
 //#include "gui/buffer_graphic_context.hxx"
 #include "preview_renderer.hxx"
@@ -26,7 +25,7 @@
 namespace Pingus {
 
 void
-PreviewRenderer::render(PLFHandle plf,
+PreviewRenderer::render(const PingusLevel& plf,
                         const std::string& output_file)
 {
 #if 0 // FIXME:

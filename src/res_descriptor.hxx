@@ -28,17 +28,13 @@ namespace Pingus {
 class ResDescriptor
 {
 public:
-  /// The name of the resource (.dat) file
-  std::string datafile;
-
-  /// The name of the data, filename or resourcename ("Textures/desert")
+  /// The name of the data, filename or resourcename ("textures/desert")
   std::string res_name;
 
   ResourceModifierNS::ResourceModifier modifier;
 
   ResDescriptor ();
   ResDescriptor (const std::string& res_name, 
-                 const std::string& datafile = "",
 		 ResourceModifierNS::ResourceModifier modifier = ResourceModifierNS::ROT0);
 
   bool operator< (const ResDescriptor&) const;
