@@ -1,0 +1,249 @@
+- fix all the bugs at
+  http://sourceforge.net/tracker/?group_id=5358&atid=105358
+
+- check that the editor is fully working
+
+- background manipulation in the editor should be working
+
+- a property gui in the editor would be nice
+
+- one tutorial world should be present, other worlds have to wait for
+  the 1.0.0 release
+
+- contrib could need a bit cleanup
+
+- playable and non-playable levels should be sorted
+
+- add better load-from-file support for hotspots, backgrounds, etc.
+
+- fix screenshot segfault
+
+- pingus doesn't die when out-of-screen
+
+- result screens
+
+- html like behaviour for level descriptions
+
+- description screen and result screen must be reworked
+
+- thumbnail handling should be reviewed
+
+
+BUGS:
+~~~~~
+
+Happened while doing an armageddon in level one (probally out-of-screen remove):
+
+#0  PingusSpotMap::remove(CL_SurfaceProvider*, int, int) (this=0x8258f00, 
+    sprovider=0x8debc80, x=1673, y=815) at PingusSpotMap.hh:59
+59	  inline bool is_empty(void) { return empty; }
+(gdb) where
+#0  PingusSpotMap::remove(CL_SurfaceProvider*, int, int) (this=0x8258f00, 
+    sprovider=0x8debc80, x=1673, y=815) at PingusSpotMap.hh:59
+#1  0x08081dac in PinguMap::remove(CL_Surface const&, int, int) (this=0x8258f00, 
+    sur=@0x81da0a8, x=1673, y=815) at PinguMap.cc:49
+#2  0x080ea60c in Bomber::update(float) (this=0x8df6f00, delta=0.063000001)
+    at ../WorldObj.hh:44
+#3  0x0807f817 in Pingu::update(float) (this=0x8cddcb0, delta=0.063000001)
+    at boost/smart_ptr.hpp:207
+#4  0x080a72b6 in World::update(float) (this=0x8258e78, delta=0.063000001)
+    at boost/smart_ptr.hpp:207
+#5  0x080a5748 in TrueServer::update(float) (this=0x8258d20, delta=0.063000001)
+    at TrueServer.cc:72
+#6  0x080637b6 in Client::update(float) (this=0x899ad00, delta=0.063000001)
+    at boost/dummy_ptr.hpp:37
+#7  0x08063505 in Client::play_level(boost::shared_ptr<PLF>) (this=0x899ad00, 
+    arg_plf=0xbffff780) at DeltaManager.hh:35
+#8  0x08062334 in Client::display() (this=0x899ad00) at boost/dummy_ptr.hpp:37
+#9  0x080c1712 in PingusGameSession::start() (this=0xbffff960) at boost/smart_ptr.hpp:207
+#10 0x080562a1 in PingusMain::start_game() (this=0x81dd570) at PingusMain.cc:836
+#11 0x08056a6c in PingusMain::main(int, char**) (this=0x81dd560, argc=2, argv=0xbffffbc4)
+    at PingusMain.cc:875
+#12 0x08053730 in GenericMain::main(int, char**) (this=0x81d9a64, argc=2, argv=0xbffffbc4)
+    at GenericMain.cc:90
+#13 0x4014c303 in main (argc=2, argv=0xbffffbc4) at Sources/Application/Unix/clanapp.cpp:32
+#14 0x4035665f in __libc_start_main () from /lib/libc.so.6
+
+
+In the editor while increasing an liquid object (pressing Pos1)
+
+#0  0x080fbfcc in EditorEvent::on_button_press(CL_InputDevice*, CL_Key const&) (
+    this=0x82a8c90, device=0x81e8750, key=@0xbffff2a0) at ../boost/smart_ptr.hpp:207
+207	   T* operator->() const         { return px; }  // never throws
+(gdb) where
+#0  0x080fbfcc in EditorEvent::on_button_press(CL_InputDevice*, CL_Key const&) (
+    this=0x82a8c90, device=0x81e8750, key=@0xbffff2a0) at ../boost/smart_ptr.hpp:207
+#1  0x08143274 in CL_MethodSlot_v2<EditorEvent, CL_InputDevice*, CL_Key const&>::call(CL_Input
+Device*, CL_Key const&) (this=0x89ce7b8, param1=0x81e8750, param2=@0xbffff2a0)
+    at /usr/local/include/ClanLib/Signals/slot_v2.h:62
+#2  0x4012c5fa in CL_Signal_v2<CL_InputDevice*, CL_Key const&>::call(CL_InputDevice*, CL_Key c
+onst&) (this=0x81d98ac, param1=0x81e8750, param2=@0xbffff2a0)
+    at Sources/API/Signals/signal_v2.h:80
+#3  0x40115223 in CL_XWindowKeyboard::on_xevent(_XEvent&) (this=0x81e8750, e=@0xbffff390)
+    at Sources/API/Signals/signal_v2.h:59
+#4  0x4012c851 in CL_MethodSlot_v1<CL_XWindowKeyboard, _XEvent&>::call(_XEvent&) (this=0x0, 
+    param1=@0xbffff390) at Sources/API/Signals/slot_v1.h:62
+#5  0x40118731 in CL_XWindow_DisplayCard::keep_alive() (this=0x81e80e0)
+    at Sources/API/Signals/signal_v1.h:80
+#6  0x40170763 in CL_System::keep_alive() () at /usr/include/g++-v3/bits/stl_list.h:114
+#7  0x080f9cb3 in Editor::edit() (this=0x82abf28) at Editor.cc:144
+#8  0x080991f1 in EditorButton::on_click() (this=0x82575e0) at SurfaceButton.cc:331
+#9  0x080889e1 in PingusMenu::on_button_release(CL_InputDevice*, CL_Key const&) (
+    this=0xbffff860, device=0x81e8938, key=@0xbffff6c0) at boost/smart_ptr.hpp:207
+#10 0x080d46ec in PingusMenuManager::on_button_release(CL_InputDevice*, CL_Key const&) (
+    this=0xbffff800, device=0x81e8938, key=@0xbffff6c0) at boost/dummy_ptr.hpp:37
+#11 0x0813fa44 in CL_MethodSlot_v2<PingusMenuManager, CL_InputDevice*, CL_Key const&>::call(CL
+_InputDevice*, CL_Key const&) (this=0x8a1a520, param1=0x81e8938, param2=@0xbffff6c0)
+    at /usr/local/include/ClanLib/Signals/slot_v2.h:62
+#12 0x4012c5fa in CL_Signal_v2<CL_InputDevice*, CL_Key const&>::call(CL_InputDevice*, CL_Key c
+onst&) (this=0x81d98dc, param1=0x81e8938, param2=@0xbffff6c0)
+    at Sources/API/Signals/signal_v2.h:80
+#13 0x40117354 in CL_Mouse_XWin::keep_alive() (this=0x81e8938)
+    at Sources/API/Signals/signal_v2.h:59
+#14 0x40170763 in CL_System::keep_alive() () at /usr/include/g++-v3/bits/st
+
+Playability status of levels:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+fully := fully playable
+half  := half playable and needs some cleanup/testplay
+nonplayable := currently not playable, but can be fixed
+test := just a test level, completly useless
+
+level1 - fully
+level2 - half, FakeExit has position bug
+level3 - nonplayable, looks boring
+level5 - half, boring
+level7 - nonplayable, but usefull
+level8 - see level7, hammer trap needs fixing
+level9 - nonplayable, exit is missing (position bug)
+level10 - nonplayable, boring
+level12 - half, currently to hard/boring
+level13 - half, has bugs (solid)
+foliage1 - nonplayable
+foliage3 - half
+foliage4 - nonplayable
+doors-grumbel - fully, nedes actions cleanup
+doors2-grumbel - maybe playable, needs testing (currently to large)
+Dentist - 
+Lev4 - 
+Stair - 
+bg-test - 
+bla - 
+block-timpany - 
+block - 
+blockers-timpany-tutorial - 
+bombing - 
+cages - 
+candy-timpany-premoi - 
+candy1 - 
+chouser02 - 
+conv - 
+crystal1 - 
+crystal2 - 
+crystal3 - 
+crystal4 - 
+crystal5 - 
+desert1 - 
+desert2 - 
+desert3-tflavel - 
+desert3 - 
+desert4 - 
+desert5-tflavel - 
+desert5 - 
+doors-grumbel - 
+doors2-grumbel - 
+editor_tut - 
+foliage1 - 
+foliage3 - 
+foliage4 - 
+future1-jgoebbert - 
+future2-jgoebbert - 
+future3-jgoebbert - 
+granit1 - 
+headbang - 
+hellmouth1-grumbel - 
+iceblock-grumbel1 - 
+indiana-yingwan - 
+industrial1-grumbel - 
+industrial2-grumbel - 
+intensiv-timpany - 
+intersec - 
+isle1-grumbel - 
+jewel - 
+jungle-crisscross-timpany - 
+jungle1 - 
+jungle2 - 
+large1 - 
+level0 - 
+level1-xml - 
+level1 - 
+level10 - 
+level12 - 
+level13 - 
+level2 - 
+level3 - 
+level5 - 
+level7 - 
+level8 - 
+level9 - 
+lone_jumper - 
+lonely - 
+longway - 
+multi1-grumbel - 
+multi2-grumbel - 
+mushroom - 
+pacman1-yingwan - 
+pacman2-yingwan - 
+pacman3-yingwan - 
+parallel - 
+park-mkoller - 
+partic2 - 
+particle - 
+pipes1 - 
+pyramid1-yingwan - 
+pyramid2-yingwan - 
+real1 - 
+real2 - 
+real3 - 
+real4 - 
+real5 - 
+real6 - 
+rinse - 
+rock1 - 
+rockhopping - 
+sample_groundpieces - 
+sas - 
+small1 - 
+snow1 - 
+snow2 - 
+snow3 - 
+snow4 - 
+snow5 - 
+snow6 - 
+sortie1 - 
+sortie2 - 
+sortie3 - 
+space-9-tom - 
+space1 - 
+space2 - 
+space3 - 
+space4-grumbel - 
+stone-castle-timpany - 
+stone - 
+stone2 - 
+stone3-grumbel - 
+stone4-grumbel - 
+teleporter1-grumbel - 
+tutorial1 - 
+tutorial2 - 
+tutorial3 - 
+tutorial4 - 
+tutorial5 - 
+wland - 
+xmas-blockblow-timpany - 
+
+
+
+
+-- EOF --
