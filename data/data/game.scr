@@ -1,49 +1,49 @@
 // Some not yet sorted gfx
 section Game
 {
-//	logo_bg       = images/misc/logo_bg.pcx       (type=surface, x=0, y=0, width=640, height=300);
+//	logo_bg       = images/misc/logo_bg.png       (type=surface, x=0, y=0, width=640, height=300);
 	logo_t        = images/misc/logo.tga       (type=surface, x=0, y=0, width=598, height=259);
 
-//	logo        = images/misc/logo.pcx       (type=surface, x=0, y=0, width=640, height=480);
+//	logo        = images/misc/logo.png       (type=surface, x=0, y=0, width=640, height=480);
 
-	loading        = images/misc/loading.pcx       (type=surface, x=0, y=0, width=175, height=66,tcol=0);
-	pingubw = images/misc/pingubw.pcx (type=surface, x=0, y=0, width=307, height=400, tcol=0);
+	loading        = images/core/misc/loading.png       (type=surface, x=0, y=0, width=175, height=66,tcol=0);
+	pingubw = images/core/misc/pingubw.png (type=surface, x=0, y=0, width=307, height=400);
 
-	404 = images/misc/404.pcx (type=surface, x=0, y=0, width=64, height=64);
+	404 = images/core/misc/404.png (type=surface, x=0, y=0, width=64, height=64);
 
-	dot_green = images/misc/dot_green.tga (type=surface, x=0, y=0, width=32, height=12);
-        dot_red = images/misc/dot_red.tga (type=surface, x=0, y=0, width=32, height=12);
-        dot_border = images/misc/dot_border.pcx (type=surface, x=0, y=0, width=34, height=14, tcol=0);
+	dot_green = images/core/worldmap/dot_green.tga (type=surface, x=0, y=0, width=32, height=12);
+        dot_red = images/core/worldmap/dot_red.tga (type=surface, x=0, y=0, width=32, height=12);
+        dot_border = images/core/worldmap/dot_border.png (type=surface, x=0, y=0, width=34, height=14, tcol=0);
 }
 
 section Cursors
 {
-	editor      = images/cursors/editor.pcx     (type=surface, x=0, y=0, width=38, height=38, translate-x=19, translate-y=19, tcol=0);
+	editor      = images/core/cursors/editor.png     (type=surface, x=0, y=0, width=38, height=38, translate-x=19, translate-y=19, tcol=0);
 
-	cursor      = images/cursors/cursor.pcx     (type=surface, x=0, y=0, width=16, height=16, tcol=0);
-	scroll_cur  = images/cursors/scroll.pcx (type=surface, x=0, y=0, width=32, height=32, tcol=0);
+	cursor      = images/core/cursors/cursor.png     (type=surface, x=0, y=0, width=16, height=16, tcol=0);
+	scroll_cur  = images/core/cursors/scroll.png (type=surface, x=0, y=0, width=32, height=32, tcol=0);
 
-//	capgood     = images/misc/cap.pcx        (type=surface, x=0, y=0, width=34, height=34, tcol=0);
-	capgood     = images/cursors/cap.tga        (type=surface, x=0, y=0, width=40, height=40);
-//	capbad	    = images/misc/capwrong.pcx   (type=surface, x=0, y=0, width=34, height=34, tcol=0);
-	capbad	    = images/cursors/capwrong.tga   (type=surface, x=0, y=0, width=40, height=40);
+//	capgood     = images/core/misc/cap.png        (type=surface, x=0, y=0, width=34, height=34, tcol=0);
+	capgood     = images/core/cursors/cap.tga        (type=surface, x=0, y=0, width=40, height=40);
+//	capbad	    = images/core/misc/capwrong.png   (type=surface, x=0, y=0, width=34, height=34, tcol=0);
+	capbad	    = images/core/cursors/capwrong.tga   (type=surface, x=0, y=0, width=40, height=40);
 
-	cross	    = images/cursors/cross.tga   (type=surface, x=0, y=0, width=40, height=40);
+	cross	    = images/core/cursors/cross.tga   (type=surface, x=0, y=0, width=40, height=40);
 
-	arrow_right = images/cursors/arrow_right.pcx (type=surface, x=0, y=0, width=23, height=9, tcol=0);
-	arrow_left = images/cursors/arrow_left.pcx  (type=surface, x=0, y=0, width=23, height=9, tcol=0);
+	arrow_right = images/core/cursors/arrow_right.png (type=surface, x=0, y=0, width=23, height=9, tcol=0);
+	arrow_left = images/core/cursors/arrow_left.png  (type=surface, x=0, y=0, width=23, height=9, tcol=0);
 }
 
 
 section SmallMap
 {
-	entrance = images/misc/smallmap_entrance.pcx (type=surface, x=0, y=0, width=6, height=6, tcol=0);
-	exit     = images/misc/smallmap_exit.pcx     (type=surface, x=0, y=0, width=6, height=6, tcol=0);
+	entrance = images/core/misc/smallmap_entrance.png (type=surface, x=0, y=0, width=6, height=6);
+	exit     = images/core/misc/smallmap_exit.png     (type=surface, x=0, y=0, width=6, height=6);
 }
 
 section Stars
 {
-        large_star = images/misc/large_star.pcx (type=surface, x=0, y=0, width=23, height=24, tcol=0);
-        middle_star = images/misc/middle_star.pcx (type=surface, x=0, y=0, width=9, height=9, tcol=0);
-        small_star = images/misc/small_star.pcx (type=surface, x=0, y=0, width=6, height=6, tcol=0);
+        large_star = images/backgrounds/large_star.png (type=surface, x=0, y=0, width=23, height=24, tcol=0);
+        middle_star = images/backgrounds/middle_star.png (type=surface, x=0, y=0, width=9, height=9, tcol=0);
+        small_star = images/backgrounds/small_star.png (type=surface, x=0, y=0, width=6, height=6, tcol=0);
 }

@@ -2,14 +2,14 @@ section Textures
 {
         fruitcaketile = images/textures/fruitcaketile.jpg (type=surface, x=0, y=0, width=256, height=256);
 
-	default          = images/textures/default.pcx  (type=surface, x=0, y=0, width=64, height=64);
+	default          = images/textures/default.png  (type=surface, x=0, y=0, width=64, height=64);
 	industrial       = images/textures/industrial.jpg (type=surface, x=0, y=0, width=400, height=600);
 
 //	industrial_anim       = images/textures/industrial-anim.jpg (type=surface, x=0, y=0, width=400, height=600, array=15x1);
 
 	clouds          = images/textures/clouds.jpg  (type=surface, x=0, y=0, width=256, height=480);
 	crystal         = images/textures/crystal.jpg  (type=surface, x=0, y=0, width=169, height=286);
-	stone		= images/textures/stones.pcx (type=surface, x=0, y=0, width=256, height=256);
+	stone		= images/textures/stones.png (type=surface, x=0, y=0, width=256, height=256);
 	rocktile	= images/textures/rocktile.jpg (type=surface, x=0, y=0, width=256, height=256);
 	rooftile	= images/textures/rooftile.jpg (type=surface, x=0, y=0, width=256, height=256);
 	rooftile2	= images/textures/rooftile2.jpg (type=surface, x=0, y=0, width=256, height=256);
@@ -44,7 +44,7 @@ section Textures
 	cyanspace = images/textures/cyanspace.jpg (type=surface, x=0, y=0, width=400, height=600);
 	bwsortiebg = images/textures/bwsortiebg.jpg (type=surface, x=0, y=0, width=400, height=600);
 
-	green_tendrils = images/textures/green_tendrils.pcx (type=surface, x=0, y=0, width=256, height=256, tcol=0);
-	mountain = images/textures/mountain.pcx (type=surface, x=0, y=0, width=400, height=600, tcol=0);
+	green_tendrils = images/textures/green_tendrils.png (type=surface, x=0, y=0, width=256, height=256);
+	mountain = images/textures/mountain.png (type=surface, x=0, y=0, width=400, height=600);
 }
 

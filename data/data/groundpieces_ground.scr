@@ -1,0 +1,393 @@
+
+section GroundPieces
+{
+	bpice1  = images/groundpieces/bpice1.pcx (type=surface, x=0, y=0, width=217, height=154, tcol=0);
+	bpice2  = images/groundpieces/bpice2.pcx (type=surface, x=0, y=0, width=166, height=192, tcol=0);
+	bpice3  = images/groundpieces/bpice3.pcx (type=surface, x=0, y=0, width=220, height=146, tcol=0);
+	bpice4  = images/groundpieces/bpice4.pcx (type=surface, x=0, y=0, width=156, height=215, tcol=0);
+	bpice5  = images/groundpieces/bpice5.pcx (type=surface, x=0, y=0, width=226, height=100, tcol=0);
+	bpice6  = images/groundpieces/bpice6.pcx (type=surface, x=0, y=0, width=161, height=168, tcol=0);
+
+	pice1  = images/groundpieces/gpice1.pcx (type=surface, x=0, y=0, width=190, height=109, tcol=0);
+	pice2  = images/groundpieces/gpice2.pcx (type=surface, x=0, y=0, width=125, height=222, tcol=0);
+	pice3  = images/groundpieces/gpice3.pcx (type=surface, x=0, y=0, width=140, height=145, tcol=0);
+	pice4  = images/groundpieces/gpice4.pcx (type=surface, x=0, y=0, width=216, height=68, tcol=0);
+	pice5  = images/groundpieces/gpice5.pcx (type=surface, x=0, y=0, width=218, height=91, tcol=0);
+
+	green1 = images/groundpieces/green1.pcx (type=surface, x=0, y=0, width=190, height=73, tcol=0);
+	green2 = images/groundpieces/green2.pcx (type=surface, x=0, y=0, width=109, height=128, tcol=0);
+
+	// Begin: Only here for backward compatibility
+	pipe_h       = images/groundpieces/industrial/pipe1.pcx     (type=surface, x=0, y=0, width=32,  height=22, tcol=0);
+	pipe_v       = images/groundpieces/industrial/pipe2.pcx     (type=surface, x=0, y=0, width=22,  height=32, tcol=0);
+
+	pipe_ph       = images/groundpieces/industrial/pipe4.pcx     (type=surface, x=0, y=0, width=32,  height=22, tcol=0);
+	pipe_pv       = images/groundpieces/industrial/pipe5.pcx     (type=surface, x=0, y=0, width=22,  height=32, tcol=0);
+
+	pipe_ul       = images/groundpieces/industrial/pipe_ul.pcx     (type=surface, x=0, y=0, width=32,  height=32, tcol=0);
+	pipe_ur       = images/groundpieces/industrial/pipe_ur.pcx     (type=surface, x=0, y=0, width=32,  height=32, tcol=0);
+	pipe_dl       = images/groundpieces/industrial/pipe_bl.pcx     (type=surface, x=0, y=0, width=32,  height=32, tcol=0);
+	pipe_dr       = images/groundpieces/industrial/pipe_br.pcx     (type=surface, x=0, y=0, width=32,  height=32, tcol=0);
+	// End: Only here for backward compatibility
+
+	tree          = images/groundpieces/tree.pcx     (type=surface, x=0, y=0, width=192,  height=257, tcol=0);
+
+	section Jungle 
+	{
+		branch1 = images/groundpieces/jungle/branch1.pcx (type=surface, x=0, y=0, width=337,  height=40, tcol=0);
+		branch2 = images/groundpieces/jungle/branch2.pcx (type=surface, x=0, y=0, width=326,  height=112, tcol=0);
+		branch3 = images/groundpieces/jungle/branch3.pcx (type=surface, x=0, y=0, width=226,  height=269, tcol=0);
+		branch4 = images/groundpieces/jungle/branch4.pcx (type=surface, x=0, y=0, width=326,  height=112, tcol=0);
+		branch5 = images/groundpieces/jungle/branch5.pcx (type=surface, x=0, y=0, width=226,  height=269, tcol=0);
+		branch6 = images/groundpieces/jungle/branch6.pcx (type=surface, x=0, y=0, width=41,  height=337, tcol=0);
+
+		carabatree = images/groundpieces/jungle/carabatree.pcx (type=surface, x=0, y=0, width=325,  height=408, tcol=0);
+		carabatreemedium = images/groundpieces/jungle/carabatreemedium.pcx (type=surface, x=0, y=0, width=257,  height=300, tcol=0);
+		carabatreesmall = images/groundpieces/jungle/carabatreesmall.pcx (type=surface, x=0, y=0, width=164,  height=190, tcol=0);
+		twist = images/groundpieces/jungle/twist.pcx (type=surface, x=0, y=0, width=405,  height=70, tcol=0);
+		twistsmooth = images/groundpieces/jungle/twistsmooth.pcx (type=surface, x=0, y=0, width=405,  height=70, tcol=0);
+
+		stick1 = images/groundpieces/jungle/stick1.pcx (type=surface, x=0, y=0, width=446,  height=21, tcol=0);
+		stick2 = images/groundpieces/jungle/stick2.pcx (type=surface, x=0, y=0, width=312,  height=21, tcol=0);
+		stick3 = images/groundpieces/jungle/stick3.pcx (type=surface, x=0, y=0, width=289,  height=21, tcol=0);
+		stick4 = images/groundpieces/jungle/stick4.pcx (type=surface, x=0, y=0, width=232,  height=21, tcol=0);
+		stick5 = images/groundpieces/jungle/stick5.pcx (type=surface, x=0, y=0, width=185,  height=21, tcol=0);
+	}
+
+	section Crystal 
+	{
+		block         = images/groundpieces/crystal/block.pcx         (type=surface, x=0, y=0, width=32,  height=32);
+		column        = images/groundpieces/crystal/column.pcx        (type=surface, x=0, y=0, width=32,  height=95, tcol=0);
+		diagcrystal   = images/groundpieces/crystal/diagcrystal.pcx   (type=surface, x=0, y=0, width=100,  height=138, tcol=0);
+		hexcrystal    = images/groundpieces/crystal/hexcrystal.pcx    (type=surface, x=0, y=0, width=175,  height=139, tcol=0);
+		horiz         = images/groundpieces/crystal/horiz.pcx         (type=surface, x=0, y=0, width=84,  height=41, tcol=0);
+		horiz2        = images/groundpieces/crystal/horiz2.pcx        (type=surface, x=0, y=0, width=87,  height=42, tcol=0);
+		pipe          = images/groundpieces/crystal/pipe.pcx	         (type=surface, x=0, y=0, width=101,  height=32);
+		pipeend       = images/groundpieces/crystal/pipeend.pcx       (type=surface, x=0, y=0, width=41,  height=41, tcol=0);
+		platform      = images/groundpieces/crystal/platform.pcx      (type=surface, x=0, y=0, width=126,  height=74, tcol=0);
+		platform2     = images/groundpieces/crystal/platform2.pcx     (type=surface, x=0, y=0, width=81,  height=80, tcol=0);
+		pointleft     = images/groundpieces/crystal/pointleft.pcx     (type=surface, x=0, y=0, width=32,  height=32);
+		pointright    = images/groundpieces/crystal/pointright.pcx    (type=surface, x=0, y=0, width=32,  height=32);
+		skinnycrystal = images/groundpieces/crystal/skinnycrystal.pcx (type=surface, x=0, y=0, width=65,  height=208, tcol=0);
+		smcrystal     = images/groundpieces/crystal/smcrystal.pcx     (type=surface, x=0, y=0, width=100,  height=50, tcol=0);
+		tesselate     = images/groundpieces/crystal/tesselate.pcx     (type=surface, x=0, y=0, width=64,  height=64);
+	}
+
+	section Snow 
+	{
+		snowman   = images/groundpieces/snow/snowman.pcx  (type=surface, x=0, y=0, width=67,  height=110, tcol=0);
+		xmas-tree = images/groundpieces/snow/xmas-tree.pcx (type=surface, x=0, y=0, width=74,  height=98, tcol=0);
+		piece1    = images/groundpieces/snow/piece1.pcx  (type=surface, x=0, y=0, width=126,  height=73, tcol=0);
+		slopedr = images/groundpieces/snow/slopedr.pcx (type=surface, x=0, y=0, width=126, height=73, tcol=0);
+
+		piece2    = images/groundpieces/snow/piece2.pcx  (type=surface, x=0, y=0, width=80,  height=19, tcol=0);
+		piece3    = images/groundpieces/snow/piece3.pcx  (type=surface, x=0, y=0, width=178,  height=22, tcol=0);
+
+		ice1      = images/groundpieces/snow/ice1.pcx    (type=surface, x=0, y=0, width=54,  height=65, tcol=0);
+		ice2      = images/groundpieces/snow/ice2.pcx    (type=surface, x=0, y=0, width=74,  height=41, tcol=0);
+
+		igloo     = images/groundpieces/snow/igloo.pcx    (type=surface, x=0, y=0, width=93,  height=54, tcol=0);
+
+		gpiece1   = images/groundpieces/snow/gpiece1.pcx    (type=surface, x=0, y=0, width=93,  height=218, tcol=0);
+	}
+
+	section Rock 
+	{
+	        real1 = images/groundpieces/rock/real1.pcx (type=surface, x=0, y=0, width=222, height=134, tcol=0);
+	        real2 = images/groundpieces/rock/real2.pcx (type=surface, x=0, y=0, width=351, height=163, tcol=0);
+	        real3 = images/groundpieces/rock/real3.pcx (type=surface, x=0, y=0, width=263, height=156, tcol=0);
+	        real4 = images/groundpieces/rock/real4.pcx (type=surface, x=0, y=0, width=200, height=93, tcol=0);
+	        real5 = images/groundpieces/rock/real5.pcx (type=surface, x=0, y=0, width=220, height=49, tcol=0);
+	        real6 = images/groundpieces/rock/real6.pcx (type=surface, x=0, y=0, width=110, height=206, tcol=0);
+	        real7 = images/groundpieces/rock/real7.pcx (type=surface, x=0, y=0, width=247, height=132, tcol=0);
+	        real8 = images/groundpieces/rock/real8.pcx (type=surface, x=0, y=0, width=263, height=132, tcol=0);
+	        real9 = images/groundpieces/rock/real9.pcx (type=surface, x=0, y=0, width=79, height=76, tcol=0);
+
+	        real10 = images/groundpieces/rock/real10.pcx (type=surface, x=0, y=0, width=100, height=95, tcol=0);
+	        real11 = images/groundpieces/rock/real11.pcx (type=surface, x=0, y=0, width=149, height=91, tcol=0);
+	        real12 = images/groundpieces/rock/real12.pcx (type=surface, x=0, y=0, width=180, height=79, tcol=0);
+	        real13 = images/groundpieces/rock/real13.pcx (type=surface, x=0, y=0, width=300, height=56, tcol=0);
+	        real14 = images/groundpieces/rock/real14.pcx (type=surface, x=0, y=0, width=100, height=110, tcol=0);
+	        real15 = images/groundpieces/rock/real15.pcx (type=surface, x=0, y=0, width=150, height=114, tcol=0);
+	        real16 = images/groundpieces/rock/real16.pcx (type=surface, x=0, y=0, width=150, height=94, tcol=0);
+	        real17 = images/groundpieces/rock/real17.pcx (type=surface, x=0, y=0, width=175, height=94, tcol=0);
+	        real18 = images/groundpieces/rock/real18.pcx (type=surface, x=0, y=0, width=160, height=106, tcol=0);
+        	real19 = images/groundpieces/rock/real19.pcx (type=surface, x=0, y=0, width=184, height=79, tcol=0);
+	        real20 = images/groundpieces/rock/real20.pcx (type=surface, x=0, y=0, width=181, height=82, tcol=0);
+	        real21 = images/groundpieces/rock/real21.pcx (type=surface, x=0, y=0, width=185, height=106, tcol=0);
+	        real22 = images/groundpieces/rock/real22.pcx (type=surface, x=0, y=0, width=160, height=142, tcol=0);
+        	real23 = images/groundpieces/rock/real23.pcx (type=surface, x=0, y=0, width=200, height=81, tcol=0);
+	        real24 = images/groundpieces/rock/real24.pcx (type=surface, x=0, y=0, width=138, height=84, tcol=0);
+	        real25 = images/groundpieces/rock/real25.pcx (type=surface, x=0, y=0, width=184, height=128, tcol=0);
+	        real26 = images/groundpieces/rock/real26.pcx (type=surface, x=0, y=0, width=154, height=95, tcol=0);
+	        real27 = images/groundpieces/rock/real27.pcx (type=surface, x=0, y=0, width=180, height=133, tcol=0);
+	        real28 = images/groundpieces/rock/real28.pcx (type=surface, x=0, y=0, width=140, height=155, tcol=0);
+	        real29 = images/groundpieces/rock/real29.pcx (type=surface, x=0, y=0, width=150, height=89, tcol=0);
+	        real30 = images/groundpieces/rock/real30.pcx (type=surface, x=0, y=0, width=171, height=101, tcol=0);
+	        real31 = images/groundpieces/rock/real31.pcx (type=surface, x=0, y=0, width=136, height=171, tcol=0);
+	        real32 = images/groundpieces/rock/real32.pcx (type=surface, x=0, y=0, width=150, height=171, tcol=0);
+	        real33 = images/groundpieces/rock/real33.pcx (type=surface, x=0, y=0, width=170, height=175, tcol=0);
+	        real34 = images/groundpieces/rock/real34.pcx (type=surface, x=0, y=0, width=156, height=150, tcol=0);
+	        real35 = images/groundpieces/rock/real35.pcx (type=surface, x=0, y=0, width=179, height=48, tcol=0);
+        	real36 = images/groundpieces/rock/real36.pcx (type=surface, x=0, y=0, width=181, height=60, tcol=0);
+	       	real37 = images/groundpieces/rock/real37.pcx (type=surface, x=0, y=0, width=184, height=64, tcol=0);
+
+	        fish = images/groundpieces/rock/fish.pcx (type=surface, x=0, y=0, width=166, height=50, tcol=0);
+	        green1 = images/groundpieces/rock/green1.pcx (type=surface, x=0, y=0, width=122, height=374, tcol=0);
+	        green2 = images/groundpieces/rock/green2.pcx (type=surface, x=0, y=0, width=207, height=191, tcol=0);
+
+	        granit1 = images/groundpieces/rock/granit1.pcx (type=surface, x=0, y=0, width=173, height=107, tcol=0);
+	        granit2 = images/groundpieces/rock/granit2.pcx (type=surface, x=0, y=0, width=139, height=112, tcol=0);
+	        granit3 = images/groundpieces/rock/granit3.pcx (type=surface, x=0, y=0, width=126, height=182, tcol=0);
+	        granit4 = images/groundpieces/rock/granit4.pcx (type=surface, x=0, y=0, width=127, height=87, tcol=0);
+	        granit5 = images/groundpieces/rock/granit5.pcx (type=surface, x=0, y=0, width=138, height=101, tcol=0);
+	        granit6 = images/groundpieces/rock/granit6.pcx (type=surface, x=0, y=0, width=88, height=150, tcol=0);
+
+		rock1   = images/groundpieces/rock/rock1.pcx    (type=surface, x=0, y=0, width=188,  height=98, tcol=0);
+		rock2   = images/groundpieces/rock/rock2.pcx    (type=surface, x=0, y=0, width=152,  height=196, tcol=0);
+		rock3   = images/groundpieces/rock/rock3.pcx    (type=surface, x=0, y=0, width=210,  height=121, tcol=0);
+		rock4   = images/groundpieces/rock/rock4.pcx    (type=surface, x=0, y=0, width=136,  height=191, tcol=0);
+		rock5   = images/groundpieces/rock/rock5.pcx    (type=surface, x=0, y=0, width=101,  height=88, tcol=0);
+		rock6   = images/groundpieces/rock/rock6.pcx    (type=surface, x=0, y=0, width=143,  height=185, tcol=0);
+	}
+
+	section Test
+	{
+		test1 = images/groundpieces/test/test1.pcx     (type=surface, x=0, y=0, width=105,  height=49, tcol=0);
+		test2 = images/groundpieces/test/test2.pcx     (type=surface, x=0, y=0, width=71,  height=38, tcol=0);
+		test3 = images/groundpieces/test/test3.pcx     (type=surface, x=0, y=0, width=104,  height=59, tcol=0);
+		test4 = images/groundpieces/test/test4.pcx     (type=surface, x=0, y=0, width=107,  height=45, tcol=0);
+		test5 = images/groundpieces/test/test5.pcx     (type=surface, x=0, y=0, width=47,  height=42, tcol=0);
+	        test6 = images/groundpieces/test/test6.pcx     (type=surface, x=0, y=0, width=13, height=64, tcol=0);
+	}
+
+	section Foliage 
+	{
+		flax1     = images/groundpieces/foliage/flax1.pcx     (type=surface, x=0, y=0, width=100,  height=91, tcol=0);
+		flax2     = images/groundpieces/foliage/flax2.pcx     (type=surface, x=0, y=0, width=92,  height=84, tcol=0);
+		midtree1  = images/groundpieces/foliage/midtree1.pcx  (type=surface, x=0, y=0, width=114,  height=161, tcol=0);
+		midtree2  = images/groundpieces/foliage/midtree2.pcx  (type=surface, x=0, y=0, width=169,  height=189, tcol=0);
+		oak1      = images/groundpieces/foliage/oak1.pcx      (type=surface, x=0, y=0, width=168,  height=215, tcol=0);
+		smallbush = images/groundpieces/foliage/smallbush.pcx (type=surface, x=0, y=0, width=57,  height=24, tcol=0);
+		smallbush2 = images/groundpieces/foliage/smallbush2.pcx (type=surface, x=0, y=0, width=107,  height=88, tcol=0);
+		smallbush3 = images/groundpieces/foliage/smallbush3.pcx (type=surface, x=0, y=0, width=95,  height=37, tcol=0);
+		talltree  = images/groundpieces/foliage/talltree.pcx  (type=surface, x=0, y=0, width=84,  height=200, tcol=0);
+
+		turfconcave      =  images/groundpieces/foliage/turfconcave.pcx     (type=surface, x=0, y=0, width=59,  height=16, tcol=0);
+		turfflat         =  images/groundpieces/foliage/turfflat.pcx        (type=surface, x=0, y=0, width=90,  height=13, tcol=0);
+		turfslopeleft    =  images/groundpieces/foliage/turfslopeleft.pcx   (type=surface, x=0, y=0, width=70,  height=17, tcol=0);
+		turfslopeleft20  =  images/groundpieces/foliage/turfslopeleft20.pcx (type=surface, x=0, y=0, width=52,  height=20, tcol=0);
+		turfsloperight   =  images/groundpieces/foliage/turfsloperight.pcx  (type=surface, x=0, y=0, width=40,  height=17, tcol=0);
+		turfsloperight20 = images/groundpieces/foliage/turfsloperight20.pcx (type=surface, x=0, y=0, width=52,  height=20, tcol=0);
+		turfsmallbump    =  images/groundpieces/foliage/turfsmallbump.pcx   (type=surface, x=0, y=0, width=20,  height=16, tcol=0);
+		turfsmallnook    =  images/groundpieces/foliage/turfsmallnook.pcx   (type=surface, x=0, y=0, width=20,  height=17, tcol=0);
+		turftufty        = images/groundpieces/foliage/turftufty.pcx        (type=surface, x=0, y=0, width=20,  height=17, tcol=0);
+	}
+
+	section Mushroom
+	{
+        	toadstool1 = images/groundpieces/mushroom/toadstool1.pcx (type=surface, x=0, y=0, width=211, height=187, tcol=0);
+	        toadstool2 = images/groundpieces/mushroom/toadstool2.pcx (type=surface, x=0, y=0, width=63, height=56, tcol=0);
+	        toadstool3 = images/groundpieces/mushroom/toadstool3.pcx (type=surface, x=0, y=0, width=214, height=178, tcol=0);
+	        toadstool4 = images/groundpieces/mushroom/toadstool4.pcx (type=surface, x=0, y=0, width=197, height=210, tcol=0);
+	}
+
+	section Sweets
+	{
+		allsort1          = images/groundpieces/sweets/allsort1.pcx (type=surface, x=0, y=0, width=61,  height=60, tcol=0);
+		allsort2          = images/groundpieces/sweets/allsort2.pcx (type=surface, x=0, y=0, width=67,  height=52, tcol=0);
+		aquachoc = images/groundpieces/sweets/aquachoc.pcx (type=surface, x=0, y=0, width=189, height=71, tcol=0);
+		canestalk = images/groundpieces/sweets/canestalk.pcx (type=surface, x=0, y=0, width=15, height=61, tcol=0);
+		canestub = images/groundpieces/sweets/canestub.pcx (type=surface, x=0, y=0, width=16, height=7, tcol=0);
+		canetop = images/groundpieces/sweets/canetop.pcx (type=surface, x=0, y=0, width=115, height=72, tcol=0);
+		chocbar = images/groundpieces/sweets/chocbar.pcx (type=surface, x=0, y=0, width=300, height=74, tcol=0);
+		chocbloc = images/groundpieces/sweets/chocbloc.pcx (type=surface, x=0, y=0, width=64, height=64, tcol=0);
+		chocbloc-lowleft = images/groundpieces/sweets/chocbloc-lowleft.pcx (type=surface, x=0, y=0, width=64, height=64, tcol=0);
+		chocbloc-lowright = images/groundpieces/sweets/chocbloc-lowright.pcx (type=surface, x=0, y=0, width=64, height=64, tcol=0);
+		chocbloc-topleft = images/groundpieces/sweets/chocbloc-topleft.pcx (type=surface, x=0, y=0, width=64, height=64, tcol=0);
+		chocbloc-topright = images/groundpieces/sweets/chocbloc-topright.pcx (type=surface, x=0, y=0, width=64, height=64, tcol=0);
+		goldchoc = images/groundpieces/sweets/goldchoc.pcx (type=surface, x=0, y=0, width=190, height=71, tcol=0);
+		greenjellybaby = images/groundpieces/sweets/greenjellybaby.pcx (type=surface, x=0, y=0, width=64, height=84, tcol=0);
+		icecream          = images/groundpieces/sweets/icecream.pcx (type=surface, x=0, y=0, width=114,  height=273, tcol=0);
+		icecream = images/groundpieces/sweets/icecream.pcx (type=surface, x=0, y=0, width=114, height=273, tcol=0);
+		jellybaby = images/groundpieces/sweets/jellybaby.tga (type=surface, x=0, y=0, width=64, height=83);
+		jellybaby2 = images/groundpieces/sweets/jellybaby2.tga (type=surface, x=0, y=0, width=85, height=63);
+		jellybaby2 = images/groundpieces/sweets/jellybaby2.tga (type=surface, x=0, y=0, width=85, height=63);
+		jube1 = images/groundpieces/sweets/jube1.pcx (type=surface, x=0, y=0, width=49, height=42, tcol=0);
+		jube2 = images/groundpieces/sweets/jube2.tga (type=surface, x=0, y=0, width=45, height=48);
+		lollipop = images/groundpieces/sweets/lollipop.tga (type=surface, x=0, y=0, width=42, height=238);
+		lollipop = images/groundpieces/sweets/lollipop.tga (type=surface, x=0, y=0, width=42, height=238);
+		lollipop-purp = images/groundpieces/sweets/lollipop-purp.tga (type=surface, x=0, y=0, width=42, height=238);
+		lollipop-purp = images/groundpieces/sweets/lollipop-purp.tga (type=surface, x=0, y=0, width=42, height=238);
+		mmblue = images/groundpieces/sweets/mmblue.pcx (type=surface, x=0, y=0, width=50, height=41, tcol=0);
+		mmbrown = images/groundpieces/sweets/mmbrown.pcx (type=surface, x=0, y=0, width=50, height=41, tcol=0);
+		mmred = images/groundpieces/sweets/mmred.pcx (type=surface, x=0, y=0, width=54, height=31, tcol=0);
+		mmyellow = images/groundpieces/sweets/mmyellow.pcx (type=surface, x=0, y=0, width=40, height=51, tcol=0);
+		purpchoc = images/groundpieces/sweets/purpchoc.pcx (type=surface, x=0, y=0, width=189, height=70, tcol=0);
+		purplechoc = images/groundpieces/sweets/purplechoc.pcx (type=surface, x=0, y=0, width=150, height=57, tcol=0);
+		redjellybaby = images/groundpieces/sweets/redjellybaby.pcx (type=surface, x=0, y=0, width=85, height=63, tcol=0);
+//		jube1 = images/groundpieces/sweets/jube1.tga (type=surface, x=0, y=0, width=49, height=42);
+	        cake1 = images/groundpieces/sweets/cake1.pcx (type=surface, x=0, y=0, width=163, height=101, tcol=0);
+	        cake2 = images/groundpieces/sweets/cake2.pcx (type=surface, x=0, y=0, width=121, height=142, tcol=0);
+	        cake3 = images/groundpieces/sweets/cake3.pcx (type=surface, x=0, y=0, width=153, height=97, tcol=0);
+	        cake4 = images/groundpieces/sweets/cake4.pcx (type=surface, x=0, y=0, width=148, height=98, tcol=0);
+	        cake5 = images/groundpieces/sweets/cake5.pcx (type=surface, x=0, y=0, width=152, height=165, tcol=0);
+	}
+
+	section Misc
+	{
+	        bridge_left = images/groundpieces/misc/bridge_left.pcx (type=surface, x=0, y=0, width=72, height=30, tcol=0);
+	        bridge_right = images/groundpieces/misc/bridge_right.pcx (type=surface, x=0, y=0, width=72, height=30, tcol=0);
+
+		// Begin: Only here for backward compatibility
+		bigprickpiece    = images/groundpieces/desert/bigprickpiece.pcx (type=surface, x=0, y=0, width=300,  height=150); 
+		middleprickpiece = images/groundpieces/desert/middleprickpiece.pcx (type=surface, x=0, y=0, width=150,  height=75); 
+		smallbrickpiece = images/groundpieces/desert/smallbrickpiece.pcx (type=surface, x=0, y=0, width=76,  height=38); 
+		// End: Only here for backward compatibility
+
+		black     = images/groundpieces/misc/black.tga    (type=surface, x=0, y=0, width=256, height=228);
+
+                bridge1     = images/groundpieces/misc/bridge1.pcx    (type=surface, x=0, y=0, width=216, height=42, tcol=0);
+		way         = images/groundpieces/misc/way.pcx        (type=surface, x=0, y=0, width=117, height=35, tcol=0);
+
+		way_left    = images/groundpieces/misc/way_left.pcx        (type=surface, x=0, y=0, width=81, height=28, tcol=0);
+		way_right   = images/groundpieces/misc/way_right.pcx        (type=surface, x=0, y=0, width=62, height=26, tcol=0);
+
+		spike     = images/groundpieces/misc/spike.pcx    (type=surface, x=0, y=0, width=262,  height=125, tcol=0);
+
+		piece1 = images/groundpieces/misc/piece1.pcx  (type=surface, x=0, y=0, width=302,  height=92, tcol=0);
+		piece2 = images/groundpieces/misc/piece2.pcx  (type=surface, x=0, y=0, width=99,  height=283, tcol=0);
+		piece3 = images/groundpieces/misc/piece3.pcx  (type=surface, x=0, y=0, width=96,  height=371, tcol=0);
+		piece4 = images/groundpieces/misc/piece4.pcx  (type=surface, x=0, y=0, width=116,  height=341, tcol=0);
+		piece5 = images/groundpieces/misc/piece5.pcx  (type=surface, x=0, y=0, width=119,  height=271, tcol=0); 
+		piece6 = images/groundpieces/misc/piece6.pcx  (type=surface, x=0, y=0, width=137,  height=117, tcol=0); 
+		piece7 = images/groundpieces/misc/piece7.pcx  (type=surface, x=0, y=0, width=171,  height=126, tcol=0); 
+		piece8 = images/groundpieces/misc/piece8.pcx  (type=surface, x=0, y=0, width=367,  height=107, tcol=0); 
+		piece9 = images/groundpieces/misc/piece9.pcx  (type=surface, x=0, y=0, width=273,  height=86, tcol=0); 
+		
+		brick1 = images/groundpieces/misc/brick1.pcx  (type=surface, x=0, y=0, width=32,  height=16); 
+		brick2 = images/groundpieces/misc/brick2.pcx  (type=surface, x=0, y=0, width=64,  height=48, tcol=0); 
+		brick3 = images/groundpieces/misc/brick3.pcx  (type=surface, x=0, y=0, width=16,  height=16); 
+		brick4 = images/groundpieces/misc/brick4.pcx  (type=surface, x=0, y=0, width=32,  height=16, tcol=0); 
+
+		stoneblock1 = images/groundpieces/misc/stoneblock1.pcx  (type=surface, x=0, y=0, width=64,  height=64); 
+		stoneblock2 = images/groundpieces/misc/stoneblock2.pcx  (type=surface, x=0, y=0, width=64,  height=64); 
+		stoneblock3 = images/groundpieces/misc/stoneblock3.pcx  (type=surface, x=0, y=0, width=64,  height=64); 
+
+		stoneblock5 = images/groundpieces/misc/stoneblock5.pcx (type=surface, x=0, y=0, width=64, height=64);
+		stoneblock6 = images/groundpieces/misc/stoneblock6.pcx (type=surface, x=0, y=0, width=64, height=64);
+
+		pfosten = images/groundpieces/misc/pfosten.pcx  (type=surface, x=0, y=0, width=163,  height=201, tcol=0); 
+	}
+	
+	section Space
+	{
+		grid1 = images/groundpieces/space/grid1.pcx  (type=surface, x=0, y=0, width=51,  height=51, tcol=0); 
+		grid2 = images/groundpieces/space/grid2.pcx  (type=surface, x=0, y=0, width=51,  height=51, tcol=0); 
+		grid3 = images/groundpieces/space/grid3.pcx  (type=surface, x=0, y=0, width=41,  height=41, tcol=0); 
+
+	        smallblock1 = images/groundpieces/space/smallblock1.pcx (type=surface, x=0, y=0, width=32, height=32);
+	        smallblock2 = images/groundpieces/space/smallblock2.pcx (type=surface, x=0, y=0, width=32, height=32);
+	        smallblock3 = images/groundpieces/space/smallblock3.pcx (type=surface, x=0, y=0, width=32, height=32);
+
+	        diagonal = images/groundpieces/space/diagonal.pcx (type=surface, x=0, y=0, width=125, height=68, tcol=0);
+	        diagonalr = images/groundpieces/space/diagonalr.pcx (type=surface, x=0, y=0, width=125, height=68, tcol=0);
+		block1 = images/groundpieces/space/block1.pcx  (type=surface, x=0, y=0, width=201,  height=61);
+		tower1 = images/groundpieces/space/tower1.pcx  (type=surface, x=0, y=0, width=64,  height=166, tcol=0); 
+		smalltower = images/groundpieces/space/smalltower.pcx  (type=surface, x=0, y=0, width=6,  height=200); 
+		way        = images/groundpieces/space/way.pcx  (type=surface, x=0, y=0, width=100,  height=6); 
+	}
+
+	section Desert
+	{
+	        Sluggydu = images/groundpieces/desert/Sluggydu.pcx (type=surface, x=0, y=0, width=192, height=36, tcol=0);
+	        blobdune = images/groundpieces/desert/blobdune.pcx (type=surface, x=0, y=0, width=112, height=32, tcol=0);
+
+		domedune = images/groundpieces/desert/domedune.pcx (type=surface, x=0, y=0, width=154, height=45, tcol=0);
+		flatdune = images/groundpieces/desert/flatdune.pcx (type=surface, x=0, y=0, width=166, height=30, tcol=0);
+		peakdune = images/groundpieces/desert/peakdune.pcx (type=surface, x=0, y=0, width=136, height=57, tcol=0);
+
+		bigblock-broken1 = images/groundpieces/desert/bigblock-broken1.pcx (type=surface, x=0, y=0, width=300, height=150, tcol=0);
+		bigblock-broken2 = images/groundpieces/desert/bigblock-broken2.pcx (type=surface, x=0, y=0, width=254, height=144, tcol=0);
+		bigdune1 = images/groundpieces/desert/bigdune1.pcx (type=surface, x=0, y=0, width=318, height=107, tcol=0);
+
+		bigprickpiece    = images/groundpieces/desert/bigprickpiece.pcx (type=surface, x=0, y=0, width=300,  height=150); 
+		middleprickpiece = images/groundpieces/desert/middleprickpiece.pcx (type=surface, x=0, y=0, width=150,  height=75); 
+		smallbrickpiece = images/groundpieces/desert/smallbrickpiece.pcx (type=surface, x=0, y=0, width=76,  height=38); 
+
+		pillar1     = images/groundpieces/desert/pillar1.pcx (type=surface, x=0, y=0, width=36, height=161, tcol=0);
+		pillar2     = images/groundpieces/desert/pillar2.pcx (type=surface, x=0, y=0, width=37, height=130, tcol=0);
+		pillar3     = images/groundpieces/desert/pillar3.pcx (type=surface, x=0, y=0, width=36, height=147, tcol=0);
+	}
+
+	section Sortie
+	{
+	        column1   = images/groundpieces/sortie/column.pcx (type=surface, x=0, y=0, width=168, height=312, tcol=0);
+	        column2   = images/groundpieces/sortie/column2.pcx (type=surface, x=0, y=0, width=168, height=312, tcol=0);
+	        column3   = images/groundpieces/sortie/column3.pcx (type=surface, x=0, y=0, width=168, height=312, tcol=0);
+
+	        plate_forme       = images/groundpieces/sortie/plate_forme.pcx (type=surface, x=0, y=0, width=267, height=94, tcol=0);
+	        plate_forme_left  = images/groundpieces/sortie/plate_forme_left.pcx (type=surface, x=0, y=0, width=243, height=94, tcol=0);
+	        plate_forme_right = images/groundpieces/sortie/plate_forme_right.pcx (type=surface, x=0, y=0, width=138, height=84, tcol=0);
+	}
+}
+
+section Industrial
+{
+	section Gunge
+	{
+		gunge1 = images/groundpieces/industrial/gunge/gunge1.pcx (type=surface, x=0, y=0, width=65, height=59, tcol=0);
+		gunge10 = images/groundpieces/industrial/gunge/gunge10.pcx (type=surface, x=0, y=0, width=147, height=45, tcol=0);
+		gunge11 = images/groundpieces/industrial/gunge/gunge11.pcx (type=surface, x=0, y=0, width=69, height=51, tcol=0);
+		gunge12 = images/groundpieces/industrial/gunge/gunge12.pcx (type=surface, x=0, y=0, width=32, height=4, tcol=0);
+		gunge13 = images/groundpieces/industrial/gunge/gunge13.pcx (type=surface, x=0, y=0, width=75, height=4, tcol=0);
+		gunge14 = images/groundpieces/industrial/gunge/gunge14.pcx (type=surface, x=0, y=0, width=129, height=10, tcol=0);
+		gunge15 = images/groundpieces/industrial/gunge/gunge15.pcx (type=surface, x=0, y=0, width=98, height=10, tcol=0);
+		gunge2 = images/groundpieces/industrial/gunge/gunge2.pcx (type=surface, x=0, y=0, width=13, height=17, tcol=0);
+		gunge3 = images/groundpieces/industrial/gunge/gunge3.pcx (type=surface, x=0, y=0, width=18, height=10, tcol=0);
+		gunge4 = images/groundpieces/industrial/gunge/gunge4.pcx (type=surface, x=0, y=0, width=38, height=16, tcol=0);
+		gunge5 = images/groundpieces/industrial/gunge/gunge5.pcx (type=surface, x=0, y=0, width=9, height=26, tcol=0);
+		gunge6 = images/groundpieces/industrial/gunge/gunge6.pcx (type=surface, x=0, y=0, width=14, height=27, tcol=0);
+		gunge7 = images/groundpieces/industrial/gunge/gunge7.pcx (type=surface, x=0, y=0, width=11, height=24, tcol=0);
+		gunge8 = images/groundpieces/industrial/gunge/gunge8.pcx (type=surface, x=0, y=0, width=89, height=33, tcol=0);
+		gunge9 = images/groundpieces/industrial/gunge/gunge9.pcx (type=surface, x=0, y=0, width=24, height=9, tcol=0);
+	}
+
+	steel1 = images/groundpieces/industrial/steel1.pcx (type=surface, x=0, y=0, width=84, height=43, tcol=0);
+	steel2 = images/groundpieces/industrial/steel2.pcx (type=surface, x=0, y=0, width=44, height=167, tcol=0);
+	steel3 = images/groundpieces/industrial/steel3.pcx (type=surface, x=0, y=0, width=167, height=44, tcol=0);
+	steel4 = images/groundpieces/industrial/steel4.pcx (type=surface, x=0, y=0, width=233, height=105, tcol=0);
+	steel5 = images/groundpieces/industrial/steel5.pcx (type=surface, x=0, y=0, width=253, height=106, tcol=0);
+
+	greybri1 = images/groundpieces/industrial/greybri1.pcx (type=surface, x=0, y=0, width=198, height=62);
+	greybri2 = images/groundpieces/industrial/greybri2.pcx (type=surface, x=0, y=0, width=198, height=62);
+	greybri3 = images/groundpieces/industrial/greybri3.pcx (type=surface, x=0, y=0, width=198, height=62);
+	greybri5 = images/groundpieces/industrial/greybri5.pcx (type=surface, x=0, y=0, width=99, height=62);
+
+	screw = images/groundpieces/industrial/screw.pcx (type=surface, x=0, y=0, width=23, height=23, tcol=0);
+	rivet = images/groundpieces/industrial/rivet.pcx (type=surface, x=0, y=0, width=23, height=23, tcol=0);
+
+	pipe_h       = images/groundpieces/industrial/pipe1.pcx     (type=surface, x=0, y=0, width=32,  height=22, tcol=0);
+	pipe_v       = images/groundpieces/industrial/pipe2.pcx     (type=surface, x=0, y=0, width=22,  height=32, tcol=0);
+
+	pipe_ph       = images/groundpieces/industrial/pipe4.pcx     (type=surface, x=0, y=0, width=32,  height=22, tcol=0);
+	pipe_pv       = images/groundpieces/industrial/pipe5.pcx     (type=surface, x=0, y=0, width=22,  height=32, tcol=0);
+
+	pipe_ul       = images/groundpieces/industrial/pipe_ul.pcx     (type=surface, x=0, y=0, width=32,  height=32, tcol=0);
+	pipe_ur       = images/groundpieces/industrial/pipe_ur.pcx     (type=surface, x=0, y=0, width=32,  height=32, tcol=0);
+	pipe_dl       = images/groundpieces/industrial/pipe_bl.pcx     (type=surface, x=0, y=0, width=32,  height=32, tcol=0);
+	pipe_dr       = images/groundpieces/industrial/pipe_br.pcx     (type=surface, x=0, y=0, width=32,  height=32, tcol=0);
+
+	weld1  = images/groundpieces/industrial/weld1.pcx (type=surface, x=0, y=0, width=9, height=21, tcol=0);
+        weld2  = images/groundpieces/industrial/weld2.pcx (type=surface, x=0, y=0, width=8, height=26, tcol=0);
+        weld3  = images/groundpieces/industrial/weld3.pcx (type=surface, x=0, y=0, width=7, height=55, tcol=0);
+        weld4  = images/groundpieces/industrial/weld4.pcx (type=surface, x=0, y=0, width=17, height=9, tcol=0);
+        weld5  = images/groundpieces/industrial/weld5.pcx (type=surface, x=0, y=0, width=9, height=30, tcol=0);
+        weld6  = images/groundpieces/industrial/weld6.pcx (type=surface, x=0, y=0, width=101, height=10, tcol=0);
+        weld7  = images/groundpieces/industrial/weld7.pcx (type=surface, x=0, y=0, width=53, height=7, tcol=0);
+        joint1 = images/groundpieces/industrial/joint1.pcx (type=surface, x=0, y=0, width=60, height=54, tcol=0);
+        joint2 = images/groundpieces/industrial/joint2.pcx (type=surface, x=0, y=0, width=44, height=53, tcol=0);
+        joint3 = images/groundpieces/industrial/joint3.pcx (type=surface, x=0, y=0, width=55, height=44, tcol=0);
+        joint4 = images/groundpieces/industrial/joint4.pcx (type=surface, x=0, y=0, width=53, height=50, tcol=0);
+        joint5 = images/groundpieces/industrial/joint5.pcx (type=surface, x=0, y=0, width=57, height=56, tcol=0);
+}

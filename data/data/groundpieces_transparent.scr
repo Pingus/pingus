@@ -1,0 +1,19 @@
+section Grass
+{
+	grass1 = images/groundpieces/foliage/grass/grass1.pcx (type=surface, x=0, y=0, width=31, height=21, tcol=0);
+	grass10 = images/groundpieces/foliage/grass/grass10.pcx (type=surface, x=0, y=0, width=14, height=7, tcol=0);
+	grass11 = images/groundpieces/foliage/grass/grass11.pcx (type=surface, x=0, y=0, width=14, height=10, tcol=0);
+	grass12 = images/groundpieces/foliage/grass/grass12.pcx (type=surface, x=0, y=0, width=12, height=10, tcol=0);
+	grass13 = images/groundpieces/foliage/grass/grass13.pcx (type=surface, x=0, y=0, width=10, height=6, tcol=0);
+	grass14 = images/groundpieces/foliage/grass/grass14.pcx (type=surface, x=0, y=0, width=13, height=6, tcol=0);
+	grass15 = images/groundpieces/foliage/grass/grass15.pcx (type=surface, x=0, y=0, width=54, height=9, tcol=0);
+	grass16 = images/groundpieces/foliage/grass/grass16.pcx (type=surface, x=0, y=0, width=11, height=7, tcol=0);
+	grass2 = images/groundpieces/foliage/grass/grass2.pcx (type=surface, x=0, y=0, width=14, height=21, tcol=0);
+	grass3 = images/groundpieces/foliage/grass/grass3.pcx (type=surface, x=0, y=0, width=12, height=11, tcol=0);
+	grass4 = images/groundpieces/foliage/grass/grass4.pcx (type=surface, x=0, y=0, width=13, height=21, tcol=0);
+	grass5 = images/groundpieces/foliage/grass/grass5.pcx (type=surface, x=0, y=0, width=9, height=5, tcol=0);
+	grass6 = images/groundpieces/foliage/grass/grass6.pcx (type=surface, x=0, y=0, width=37, height=23, tcol=0);
+	grass7 = images/groundpieces/foliage/grass/grass7.pcx (type=surface, x=0, y=0, width=12, height=9, tcol=0);
+	grass8 = images/groundpieces/foliage/grass/grass8.pcx (type=surface, x=0, y=0, width=13, height=7, tcol=0);
+	grass9 = images/groundpieces/foliage/grass/grass9.pcx (type=surface, x=0, y=0, width=14, height=8, tcol=0);
+}
