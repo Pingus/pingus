@@ -1,4 +1,4 @@
-//  $Id: object_selector.cxx,v 1.31 2003/03/04 12:53:47 grumbel Exp $
+//  $Id: object_selector.cxx,v 1.32 2003/03/05 21:19:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,6 +37,7 @@
 #include "string_reader.hxx"
 #include "thumb_cache.hxx"
 #include "weather_obj.hxx"
+#include "../prefab.hxx"
 
 #include "../worldobjsdata/entrance_data.hxx"
 #include "../worldobjsdata/exit_data.hxx"
@@ -485,7 +486,8 @@ ObjectSelector::get_prefab ()
   if (dir.scan(path_manager.complete ("prefabs/"), "*.xml"))
     {
       while (dir.next ()) {
-	dir_lst.push_back (dir.get_name ());
+        std::string filename = dir.get_name ();
+	dir_lst.push_back (filename.substr(0, filename.length()-4));
       }
     }
 
@@ -498,24 +500,55 @@ ObjectSelector::get_prefab ()
     }
 
   Display::flip_display();
-
-  bool exit_loop = false;
-    
-  while (!exit_loop) 
+  
+  int item = -1;
+  while (item == -1) 
     {
       switch (read_key()) 
 	{
 	case CL_KEY_1:
-	  {
-	    std::string prefab_filename = path_manager.complete ("prefabs/") + dir_lst[0];
-	    std::cout << "prefab_filename: " << prefab_filename << std::endl;
-	  }
-	  break;
-
+          item = 1;
+          break;
+	case CL_KEY_2:
+          item = 2;
+          break;
+	case CL_KEY_3:
+          item = 3;
+          break;
+	case CL_KEY_4:
+          item = 4;
+          break;
+	case CL_KEY_5:
+          item = 5;
+          break;
+	case CL_KEY_6:
+          item = 6;
+          break;
+	case CL_KEY_7:
+          item = 7;
+          break;
+	case CL_KEY_8:
+          item = 8;
+          break;
+	case CL_KEY_9:
+          item = 9;
+          break;
+          
 	case CL_KEY_ESCAPE: 
-	  exit_loop = true;
-	  break;
+          return;
 	}
+    }
+
+  if ((item-1) < static_cast<int>(dir_lst.size()))
+    {
+      std::cout << "ObjectSelector: Inserting prefab: " << dir_lst[item-1] << std::endl;
+      Prefab* prefab = Prefab::create(dir_lst[item-1]);
+      prefab->get_data()->insert_EditorObjs(obj_mgr);
+      delete prefab;
+    }
+  else
+    {
+      std::cout << "ObjectSelector: invalid prefab selected" << std::endl;
     }
 }
 

@@ -1,4 +1,4 @@
-//  $Id: editor_event.cxx,v 1.51 2003/03/04 12:53:46 grumbel Exp $
+//  $Id: editor_event.cxx,v 1.52 2003/03/05 21:19:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -744,7 +744,7 @@ EditorEvent::zoom_mode ()
 void
 EditorEvent::editor_export_prefab_from_selection ()
 {
-  std::cout << "EditorEvent:editor_export_object_group_from_selection ()" << std::endl;
+  std::cout << "EditorEvent:editor_export_object_group_from_selection (): /tmp/metaobj.xml" << std::endl;
   
   std::vector<EditorObj*> temp;
   for (std::vector<EditorObj*>::const_iterator it  = selection->get_objects().begin();
@@ -753,7 +753,12 @@ EditorEvent::editor_export_prefab_from_selection ()
   
   EditorObjGroup group (temp);
   std::ofstream xml ("/tmp/metaobj.xml");
+  xml << "<pingus-prefab>\n"
+      << "  <name>Unnamed Prefab</name>\n"
+      << "  <object>\n";
   group.write_xml (xml);
+  xml << "  </object>\n"
+      << "</pingus-prefab>\n";
 }
 
 void
