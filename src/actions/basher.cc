@@ -1,4 +1,4 @@
-//  $Id: basher.cc,v 1.4 2000/03/01 21:12:44 grumbel Exp $
+//  $Id: basher.cc,v 1.5 2000/03/08 01:44:33 grumbel Exp $
 //
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -45,10 +45,25 @@ Basher::init(void)
   counter.set_speed(1);
 
   basher_c.set_size(2);
-  basher_c.set_speed(1);
+  basher_c.set_speed(.3);
 
   is_multi_direct = true;
   first_bash = true;
+}
+
+void
+Basher::draw_offset(int x, int y, float s)
+{
+  if (s == 1.0) 
+    {
+      surface->put_screen(pingu->x_pos + x + x_offset(), pingu->y_pos + y + y_offset(), 
+			  counter + ((pingu->direction.is_left()) ? 0 : counter.get_size()));
+    } 
+  else 
+    {
+      surface->put_screen(int((pingu->x_pos + x + x_offset()) * s), int((pingu->y_pos + y + y_offset()) * s), 
+			  s, s, counter + ((pingu->direction.is_left()) ? 0 : counter.get_size()));
+    }
 }
 
 void
@@ -74,9 +89,9 @@ void
 Basher::bash()
 {
   pingu->colmap->remove(bash_radius->get_provider(), 
-			pingu->x_pos - (bash_radius->get_width()/2), pingu->y_pos - 32);
+			pingu->x_pos - (bash_radius->get_width()/2), pingu->y_pos - 31);
   pingu->map->remove(bash_radius->get_provider(), 
-		     pingu->x_pos - (bash_radius->get_width()/2), pingu->y_pos - 32);
+		     pingu->x_pos - (bash_radius->get_width()/2), pingu->y_pos - 31);
 }
 
 void

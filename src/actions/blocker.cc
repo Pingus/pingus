@@ -1,4 +1,4 @@
-//  $Id: blocker.cc,v 1.3 2000/02/25 02:35:27 grumbel Exp $
+//  $Id: blocker.cc,v 1.4 2000/03/08 01:44:33 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -44,24 +44,31 @@ Blocker::init(void)
   counter.set_type(Counter::ping_pong);
   is_multi_direct = false;
 
-  if (rel_getpixel(0,-1) == ColMap::NOTHING && rel_getpixel(0, -2) == ColMap::WALL) {
-    ++pingu->y_pos;
-  } else if (rel_getpixel(0,-1) == ColMap::NOTHING && rel_getpixel(0, -2) == ColMap::NOTHING
-    && rel_getpixel(0,-3) == ColMap::WALL) {
-    ++pingu->y_pos;
-    ++pingu->y_pos;
-  }
+  if (rel_getpixel(0,-1) == ColMap::NOTHING && rel_getpixel(0, -2) == ColMap::WALL) 
+    {
+      ++pingu->y_pos;
+    } 
+  else if (rel_getpixel(0,-1) == ColMap::NOTHING && rel_getpixel(0, -2) == ColMap::NOTHING
+	   && rel_getpixel(0,-3) == ColMap::WALL) 
+    {
+      ++pingu->y_pos;
+      ++pingu->y_pos;
+    }
 }
 
 void
 Blocker::let_move()
 {
-  /*
-    pure aproche to fix the bug, that actions can be set, but they
-    will fail immediately after they were set.
-    if (rel_getpixel(0,-1) == 0) 
-    is_finished = true;
-  */
+  if (!standing_on_ground())
+    {
+      is_finished = true;
+    }
+}
+
+bool
+Blocker::standing_on_ground()
+{
+  return (rel_getpixel(0,-1) != ColMap::NOTHING);
 }
 
 bool
@@ -76,7 +83,7 @@ Blocker::catch_pingu(Pingu* pingu_data)
 {
   if (pingu_data->x_pos > pingu->x_pos - 16 
       && pingu_data->x_pos < pingu->x_pos + 16
-      && pingu_data->y_pos > pingu->y_pos - 2
+      && pingu_data->y_pos > pingu->y_pos - 32
       && pingu_data->y_pos < pingu->y_pos + 2
       ) 
     {

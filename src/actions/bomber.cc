@@ -1,4 +1,4 @@
-//  $Id: bomber.cc,v 1.4 2000/02/27 21:05:06 grumbel Exp $
+//  $Id: bomber.cc,v 1.5 2000/03/08 01:44:33 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -112,7 +112,7 @@ Bomber::let_move()
   if (counter > 12 && !particle_thrown) 
     {
       particle_thrown = true;
-      pingu->particle->add_pingu_explo(pingu->x_pos, pingu->y_pos - 16);
+      pingu->particle->add_pingu_explo(pingu->x_pos, pingu->y_pos - 5);
     }
 
   // The pingu explode
