@@ -8,23 +8,23 @@
 
       <axis-pointer>
 	<button-axis angle=0>
-	  <key-button key="CL_KEY_KP_4"/>
-	  <key-button key="CL_KEY_KP_6"/>
+	  <key-button key="KP_4"/>
+	  <key-button key="KP_6"/>
 	</button-axis>
 	
 	<button-axis angle=90>
-	  <key-button key="CL_KEY_KP_8"/>
-	  <key-button key="CL_KEY_KP_2"/>
+	  <key-button key="KP_8"/>
+	  <key-button key="KP_2"/>
 	</button-axis>
 
 	<button-axis angle="45">
-	  <key-button key="CL_KEY_KP_9"/>
-	  <key-button key="CL_KEY_KP_1"/>
+	  <key-button key="KP_9"/>
+	  <key-button key="KP_1"/>
 	</button-axis>
 
 	<button-axis angle="-45">
-	  <key-button key="CL_KEY_KP_7"/>
-	  <key-button key="CL_KEY_KP_3"/>
+	  <key-button key="KP_7"/>
+	  <key-button key="KP_3"/>
 	</button-axis>
       </axis-pointer>
     </standard-pointer>
@@ -50,11 +50,11 @@
     </pause-button>
 
     <fast-forward-button>
-      <key-button key="CL_KEY_F"/>    
+      <key-button key="F"/>    
     </fast-forward-button>
 
     <armageddon-button>
-      <key-button key="CL_KEY_A"/>
+      <key-button key="A"/>
     </armageddon-button>
 
     <action-axis>
@@ -71,11 +71,11 @@
 
     <action-buttons>
       <action-button>
-        <key-button key="CL_KEY_F3"/>
+        <key-button key="F3"/>
       </action-button>
 
       <action-button>
-        <key-button key="CL_KEY_F4"/>
+        <key-button key="F4"/>
       </action-button>
     <action-buttons>
   </controller-config>
