@@ -1,4 +1,4 @@
-//  $Id: Intro.hh,v 1.4 2000/04/21 11:26:06 grumbel Exp $
+//  $Id: Intro.hh,v 1.5 2000/04/21 13:25:46 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,7 +26,6 @@ class Intro
 {
 private:
   CL_Surface*     logo;
-  MODULE*    module;
   CL_SoundBuffer* sound;
   
   CL_SoundBuffer_Session ses_sound;
