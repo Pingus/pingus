@@ -1,4 +1,4 @@
-//  $Id: config.hxx,v 1.6 2002/09/27 11:26:43 torangan Exp $
+//  $Id: config.hxx,v 1.7 2002/11/08 01:38:27 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,7 @@
 #include <string>
 #include <fstream>
 
+/** FIXME: Rewrite or replace me */
 class ConfigParser
 {
 private:

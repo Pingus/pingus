@@ -1,4 +1,4 @@
-//  $Id: action_holder.hxx,v 1.9 2002/10/12 00:24:26 grumbel Exp $
+//  $Id: action_holder.hxx,v 1.10 2002/11/08 01:38:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -44,12 +44,15 @@ private:
    *  called <i>name</i> can be created.
    */
   std::map<ActionName, int> available_actions;
-
+  
 public:
   /** Create an action holder from the number of actions given in a
       PLF file */
   ActionHolder (PLF* plf);
   ~ActionHolder ();
+
+  /** @return a list of available actions in the current level */
+  std::vector<ActionName> get_available_actions();
 
   /** Sets the number of actions, which are available in the pool.
    * @param name the name of the action

@@ -1,4 +1,4 @@
-//  $Id: surface_button.cxx,v 1.17 2002/11/03 23:31:35 grumbel Exp $
+//  $Id: surface_button.cxx,v 1.18 2002/11/08 01:38:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -392,6 +392,7 @@ ThemeButton::on_click ()
   theme_selector.display();
 }
 
+#if 0
 MultiplayerButton::MultiplayerButton (PingusMenu* menu_)
   : menu(menu_)
 {
@@ -415,5 +416,5 @@ MultiplayerButton::on_click ()
 {
   multiplayer_config.display ();
 }
-
+#endif
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: surface_button.hxx,v 1.11 2002/10/14 11:15:15 torangan Exp $
+//  $Id: surface_button.hxx,v 1.12 2002/11/08 01:38:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,7 +23,6 @@
 #include <string>
 #include <ClanLib/Display/Display/surface.h>
 
-#include "multiplayer_config.hxx"
 #include "gui/component.hxx"
 
 class CL_Font;
@@ -169,6 +168,7 @@ private:
   ThemeButton& operator= (const ThemeButton&);
 };
 
+#if 0
 class MultiplayerButton : public SurfaceButton
 {
 private:
@@ -183,6 +183,7 @@ private:
   MultiplayerButton (const MultiplayerButton&);
   MultiplayerButton& operator= (const MultiplayerButton&);
 };
+#endif 
 
 #endif
 

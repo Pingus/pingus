@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.36 2002/11/05 03:02:48 grumbel Exp $
+//   $Id: pingus_main.cxx,v 1.37 2002/11/08 01:38:27 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -87,6 +87,7 @@
 #include "pingu_action_factory.hxx"
 #include "credits.hxx"
 #include "sound.hxx"
+#include "cheat.hxx"
 
 using EditorNS::Editor;
 
@@ -226,6 +227,7 @@ PingusMain::check_args(int argc, char** argv)
       {"min-cpu-usage",     no_argument,       0, 153},
       {"min-frame-skip",    required_argument, 0, 154},
       {"max-frame-skip",    required_argument, 0, 155},
+      {"cheat",             required_argument, 0, 156},
 #ifdef HAVE_LIBCLANGL
       {"use-opengl",        no_argument,       0, 'G'},
 #endif
@@ -234,7 +236,6 @@ PingusMain::check_args(int argc, char** argv)
       {"fast",            no_argument,       0, 132},
       {"disable-previews",no_argument,       0, 133}, 
       {"maintainer-mode", no_argument,       0, 134},
-      {"enable-uactions", no_argument,       0, 136},
       {"disable-auto-scrolling",   no_argument,       0, 137},
 
 #ifdef HAVE_LIBSDL_MIXER
@@ -409,10 +410,6 @@ For more information about these matters, see the files named COPYING.\
       maintainer_mode = true;
       break;
 
-    case 136:
-      unlimited_actions = true;
-      break;
-
     case 137:
       auto_scrolling = false;
       break;
@@ -533,12 +530,8 @@ For more information about these matters, see the files named COPYING.\
       sscanf(optarg, "%d", &max_frame_skip);
       break;
 
-    case 156:
-      action_help = false;
-      break;
-
-    case 157:
-      action_help = true;
+    case 156: // Cheats
+      Cheat::activate(optarg);
       break;
 
     default:

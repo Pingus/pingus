@@ -1,4 +1,4 @@
-//  $Id: option_menu.cxx,v 1.9 2002/10/03 12:33:08 grumbel Exp $
+//  $Id: option_menu.cxx,v 1.10 2002/11/08 01:38:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,6 +30,7 @@
 #include "string_converter.hxx"
 #include "pingus_menu_manager.hxx"
 #include "display.hxx"
+#include "cheat.hxx"
 
 /* Headers needed for i18n / gettext */
 #include <clocale>
@@ -277,7 +278,7 @@ OptionMenu::init()
 
   // Bool options
   add_entry(_("Gimmicks"),  &gimmicks_enabled);
-  add_entry(_("Unlimited Actions"),  &unlimited_actions);
+  add_entry(_("Unlimited Actions"),  &Cheat::unlimited_actions);
   add_entry(_("Print fps"), &print_fps);
   //  add_entry("Debug actions", &debug_actions);  
   add_entry(_("Cursor enabled"), &cursor_enabled);  

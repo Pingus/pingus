@@ -1,4 +1,4 @@
-//  $Id: client.cxx,v 1.34 2002/10/30 09:34:22 grumbel Exp $
+//  $Id: client.cxx,v 1.35 2002/11/08 01:38:27 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -69,15 +69,14 @@ Client::Client (TrueServer * s)
 						   PingusResource::get("game")));
 
   // These object will get deleted by the gui_manager
-  button_panel = new ButtonPanel(server->get_plf (), 2, CL_Display::get_height()/2);
+  button_panel = new ButtonPanel(this, 2, CL_Display::get_height()/2);
   playfield    = new Playfield(this, server->get_plf (), server->get_world());
   hurry_up     = new HurryUp();
   pcounter     = new PingusCounter(server);  
   small_map    = new SmallMap();
   time_display = new TimeDisplay();
 
-  button_panel->set_client(this);
-  button_panel->set_server(server);
+  // FIXME: add all this to the constructor
   hurry_up->set_client(this);
   small_map->set_client(this);
   time_display->set_server(server);

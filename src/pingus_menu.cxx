@@ -1,4 +1,4 @@
-//  $Id: pingus_menu.cxx,v 1.9 2002/09/19 13:30:08 torangan Exp $
+//  $Id: pingus_menu.cxx,v 1.10 2002/11/08 01:38:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,7 +46,7 @@ PingusMenu::preload ()
       gui_manager->add(new OptionsButton(this));
       gui_manager->add(new CreditButton(this));
       gui_manager->add(new QuitButton(this));
-      gui_manager->add(new MultiplayerButton(this));
+      //gui_manager->add(new MultiplayerButton(this));
       gui_manager->add(new ThemeButton(this));
       gui_manager->add(new StoryButton(this));
       gui_manager->add(editor_button);

@@ -1,4 +1,4 @@
-//  $Id: config.cxx,v 1.6 2002/10/14 11:15:15 torangan Exp $
+//  $Id: config.cxx,v 1.7 2002/11/08 01:38:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,6 +28,8 @@
 /* Headers needed for i18n / gettext */
 #include <clocale>
 #include <config.h>
+
+#include "cheat.hxx"
 #include "my_gettext.hxx"
 
 struct ConfigParserEOF {};
@@ -332,7 +334,7 @@ Config::set_value(std::string valueid,
     }
   else if (valueid == "unlimited_actions")
     {
-      unlimited_actions = str_to_bool(value);
+      Cheat::unlimited_actions = str_to_bool(value);
     }
   else if (valueid == "quick_play")
     {

@@ -1,4 +1,4 @@
-//  $Id: button_panel.cxx,v 1.21 2002/11/03 13:29:09 grumbel Exp $
+//  $Id: button_panel.cxx,v 1.22 2002/11/08 01:38:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,47 +24,46 @@
 #include "button_panel.hxx"
 #include "true_server.hxx"
 #include "plf.hxx"
+#include "client.hxx"
 
 using namespace Actions;
 
 CL_Surface ButtonPanel::button_cap;
 
 struct action_sorter {
-  bool operator() (const ActionData& a, const ActionData& b) {
-    return a.name < b.name;
+  bool operator() (const ActionName& a, const ActionName& b) {
+    return a < b;
   }
 };
 
-ButtonPanel::ButtonPanel(PLF* plf, int arg_x_pos, int arg_y_pos)
-  : armageddon_pressed(false),
+ButtonPanel::ButtonPanel(Client* c, int arg_x_pos, int arg_y_pos)
+  : client(c),
+    server(client->get_server()),
+    armageddon_pressed(false),
     left_pressed(0),
     last_press(0),
     x_pos (arg_x_pos), 
     y_pos (arg_y_pos)
 {
+  ActionHolder* aholder = server->get_action_holder();
 
-  std::vector<ActionData> buttons_data = plf->get_actions();
-
-  if (buttons_data.size() == 0)
-    {
-      std::cout << "Error: ButtonPanel: No actions given in this level! Using defaults" << std::endl;
-      buttons_data = default_actions;
-    }
+  std::vector<ActionName> actions = aholder->get_available_actions();
 
   // Sort the action so that they always have the same order in the
   // panel
-  std::sort(buttons_data.begin(), buttons_data.end(), action_sorter());
+  std::sort(actions.begin(), actions.end(), action_sorter());
 
-  y_pos -= (buttons_data.size() * 38)/2 + 70;
+  y_pos -= (actions.size() * 38)/2 + 70;
 
-
-  for(std::vector<ActionData>::size_type i = 0; i < buttons_data.size(); ++i)
+  for(std::vector<ActionName>::iterator i = actions.begin();
+      i != actions.end(); ++i)
     {
-      a_buttons.push_back(new VerticalActionButton (x_pos, i * 38 + y_pos,
-						    buttons_data[i].name,
+      a_buttons.push_back(new VerticalActionButton (aholder,
+                                                    x_pos, (i - actions.begin()) * 38 + y_pos,
+						    *i,
 						    0)); //FIXMEcontroller->get_owner ()));
     }
-  
+
   pressed_button = 0;
 }
 
@@ -112,23 +111,6 @@ ButtonPanel::draw(GraphicContext& gc)
 
       a_buttons[i]->draw(gc);
     }
-}
-
-void
-ButtonPanel::set_server(TrueServer* s)
-{
-  server = s;
-
-  for(AButtonIter button = a_buttons.begin(); button != a_buttons.end(); ++button) 
-    {
-      (*button)->set_action_holder(server->get_action_holder());
-    }
-}
-
-void
-ButtonPanel::set_client(Client* c)
-{
-  client = c;
 }
 
 void

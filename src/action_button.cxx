@@ -1,4 +1,4 @@
-//  $Id: action_button.cxx,v 1.20 2002/10/20 18:28:48 torangan Exp $
+//  $Id: action_button.cxx,v 1.21 2002/11/08 01:38:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,7 @@
 #include <ClanLib/Display/Input/mouse.h>
 
 #include "globals.hxx"
+#include "cheat.hxx"
 #include "pingus_resource.hxx"
 #include "action_button.hxx"
 #include "true_server.hxx"
@@ -30,7 +31,8 @@
 
 using namespace Actions;
 
-ActionButton::ActionButton() {}
+ActionButton::ActionButton(ActionHolder* h)
+: action_holder(h){}
 
 ActionButton::~ActionButton() {}
 
@@ -59,7 +61,6 @@ ActionButton::init(int x, int y, ActionName name_, int owner_id)
   */
 
   font   = PingusResource::load_font("Fonts/pingus_small", "fonts");
-  font_h = PingusResource::load_font("Fonts/pingus_small", "fonts");
   font_b = PingusResource::load_font("Fonts/pingus",       "fonts");
 
   surface = PingusResource::load_surface("Pingus/" + action_to_string(name) + to_string(owner_id), "pingus");
@@ -94,13 +95,9 @@ ActionButton::get_action_name()
   return name;
 }
 
-void
-ActionButton::set_action_holder(ActionHolder* h)
-{
-  action_holder = h;
-}
-
-VerticalActionButton::VerticalActionButton(int x, int y, ActionName name_, int owner_id) :
+VerticalActionButton::VerticalActionButton(ActionHolder* h, 
+                                           int x, int y, ActionName name_, int owner_id) 
+  : ActionButton(h),
     background (PingusResource::load_surface("buttons/buttonbackground", "core")),
     backgroundhl (PingusResource::load_surface("buttons/buttonbackgroundhl", "core"))
 {
@@ -126,51 +123,55 @@ VerticalActionButton::is_at (int x, int y)
 void
 VerticalActionButton::draw (GraphicContext& gc)
 {
-  std::string str;
-  // FIXME: This could need some optimization, throwing strings all
-  // FIXME: around, doesn't look like a good idea. 
-  available = action_holder->get_available(name);
-
-  if (!unlimited_actions)
-    str = to_string(available);
+  UNUSED_ARG(gc);
 
   if (pressed) 
     {
       if (fast_mode) {
-	CL_Display::fill_rect(x_pos, y_pos, x_pos + 60, y_pos + 35,
-			      1.0, 1.0, 1.0, 1.0);
+        CL_Display::fill_rect(x_pos, y_pos, x_pos + 60, y_pos + 35,
+                              1.0, 1.0, 1.0, 1.0);
       } else {
-	//CL_Display::fill_rect(x_pos, y_pos, x_pos + 60, y_pos + 35 ,
-	//1.0, 1.0, 1.0, 0.5);
-	backgroundhl.put_screen(x_pos, y_pos);
+        //CL_Display::fill_rect(x_pos, y_pos, x_pos + 60, y_pos + 35 ,
+        //1.0, 1.0, 1.0, 0.5);
+        backgroundhl.put_screen(x_pos, y_pos);
       }
-      font_h->print_center(x_pos + 46, y_pos + 10, str.c_str ());
     }
   else
     {
       action_c = 0;
 
       if (fast_mode) {
-	// do nothing
+        // do nothing
       } else {
-	background.put_screen (x_pos, y_pos);
+        background.put_screen (x_pos, y_pos);
       }
-      font->print_center(x_pos + 46, y_pos + 10, str.c_str ());
     }
 
-  // print the action name next to the button, when mouse pointer is on
-  // the button.
-  if (    action_help 
-      && CL_Mouse::get_x() > x_pos      && CL_Mouse::get_x() < x_pos + 60
-      && CL_Mouse::get_y() < y_pos + 35 && CL_Mouse::get_y() > y_pos) 
-  {
-	font_b->print_left(x_pos + 65, y_pos, action_to_string(name).c_str());
-  }
 
   surface.put_screen(x_pos + 20 - surface.get_width ()/2,
-		     y_pos + 17 - surface.get_height()/2,
-		     action_c);
-  UNUSED_ARG(gc);
+                     y_pos + 17 - surface.get_height()/2,
+                     action_c);
+      
+  // print the action name next to the button, when mouse pointer is on
+  // the button.
+  // FIXME: this should use the GUI events, not CL_Mouse
+  if (action_help 
+      && CL_Mouse::get_x() > x_pos      && CL_Mouse::get_x() < x_pos + 60
+      && CL_Mouse::get_y() < y_pos + 35 && CL_Mouse::get_y() > y_pos) 
+    {
+      font_b->print_left(x_pos + 65, y_pos, action_to_string(name).c_str());
+    }
+
+  if (Cheat::unlimited_actions)
+    {
+      // FIXME: insert unlimited surface here
+      font->print_center(x_pos + 46, y_pos + 10, "oo");
+    }
+  else
+    {
+      std::string str = to_string(action_holder->get_available(name));
+      font->print_center(x_pos + 46, y_pos + 10, str.c_str ());
+    }
 }
 
 ArmageddonButton::ArmageddonButton (TrueServer* s, int x, int y)

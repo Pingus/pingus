@@ -1,4 +1,4 @@
-//  $Id: action_button.hxx,v 1.14 2002/10/04 16:54:03 grumbel Exp $
+//  $Id: action_button.hxx,v 1.15 2002/11/08 01:38:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -134,12 +134,10 @@ protected:
   int x_pos;
   int y_pos;
   CL_Font*    font;
-  CL_Font*    font_h;
   // Added for printing action names next to the button.
   CL_Font*    font_b;
 
   ActionName name;
-  int available;
   bool is_multi_direct;
 
   ActionHolder* action_holder;
@@ -147,7 +145,7 @@ protected:
 public:  
   bool pressed;
 
-  ActionButton();
+  ActionButton(ActionHolder*);
   virtual ~ActionButton();
 
   void init(int x, int y, ActionName name_, int owner_id);
@@ -163,8 +161,6 @@ public:
 
   virtual bool   is_at(int x, int y) = 0;
 
-  void set_action_holder(ActionHolder* h);
-  
 private:
   ActionButton (const ActionButton&);
   ActionButton& operator= (const ActionButton&);
@@ -183,7 +179,7 @@ private:
   CL_Surface backgroundhl;
 
 public:
-  VerticalActionButton(int x, int y, ActionName name, int owner_id);
+  VerticalActionButton(ActionHolder* h, int x, int y, ActionName name, int owner_id);
   virtual ~VerticalActionButton();
 
   void draw(GraphicContext& gc);

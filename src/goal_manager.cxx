@@ -1,4 +1,4 @@
-//  $Id: goal_manager.cxx,v 1.3 2002/10/13 13:34:40 grumbel Exp $
+//  $Id: goal_manager.cxx,v 1.4 2002/11/08 01:38:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,7 +38,7 @@ GoalManager::is_finished()
   else if (exit_time == 0)
     {
       // we are finished, now wait a few second so that everybody can
-      // the the particles, etc.
+      // see the particles, etc.
       std::cout << "XXXX goal reached: " << goal << std::endl;
       exit_time = server->get_time() + 125;
       return false;

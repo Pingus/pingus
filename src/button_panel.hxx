@@ -1,4 +1,4 @@
-//  $Id: button_panel.hxx,v 1.14 2002/10/29 12:47:55 grumbel Exp $
+//  $Id: button_panel.hxx,v 1.15 2002/11/08 01:38:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,12 +33,12 @@ class ButtonPanel : public GUI::Component
 private:
   friend class ClientEvent;
 
+  Client* client;
+  TrueServer* server;
+
   std::vector<ActionButton*> a_buttons;
   typedef std::vector<ActionButton*>::iterator AButtonIter;
   int pressed_button;
-
-  TrueServer* server;
-  Client* client;
 
   int  armageddon_pressed;
   AnimCounter arma_counter;
@@ -49,7 +49,7 @@ private:
 
   int x_pos, y_pos;
 public:
-  ButtonPanel(PLF* plf, int arg_x_pos, int arg_y_pos);
+  ButtonPanel(Client* c, int arg_x_pos, int arg_y_pos);
   virtual ~ButtonPanel();
 
   void on_primary_button_press(int x, int y);
@@ -60,8 +60,6 @@ public:
   ActionName get_action_name();
   void   update(float delta);
   void   draw(GraphicContext& gc);
-  void   set_server(TrueServer*);
-  void   set_client(Client*);
 
   /// Set n'th action
   void   set_button(int);

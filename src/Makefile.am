@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.121 2002/11/04 00:00:05 grumbel Exp $
+#  $Id: Makefile.am,v 1.122 2002/11/08 01:38:27 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -93,6 +93,8 @@ button_panel.cxx \
 button_panel.hxx \
 capture_rectangle.cxx \
 capture_rectangle.hxx \
+cheat.hxx \
+cheat.cxx \
 client.cxx \
 client.hxx \
 col_map.cxx \
@@ -189,14 +191,6 @@ message_box.cxx \
 message_box.hxx \
 multiline_text.cxx \
 multiline_text.hxx \
-multiplayer_client.cxx \
-multiplayer_client.hxx \
-multiplayer_client_child.cxx \
-multiplayer_client_child.hxx \
-multiplayer_config.cxx \
-multiplayer_config.hxx \
-multiplayer_game.cxx \
-multiplayer_game.hxx \
 music_provider.cxx \
 music_provider.hxx \
 my_gettext.hxx \

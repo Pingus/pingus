@@ -1,4 +1,4 @@
-//  $Id: plf.cxx,v 1.11 2002/10/04 16:54:04 grumbel Exp $
+//  $Id: plf.cxx,v 1.12 2002/11/08 01:38:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,7 @@
 #include "globals.hxx"
 #include "system.hxx"
 #include "pingus_error.hxx"
+#include "cheat.hxx"
 
 PLF::PLF()
 {
@@ -111,7 +112,13 @@ PLF::get_levelname()
 int
 PLF::get_time(void)
 {
-  return max_time;
+  // FIXME: Cheats shouldn't be handled in the PLF, but instead in the
+  // client code, but since we havn't any holder for the time in the
+  // client, we quick&dirty place it here.
+  if (Cheat::no_time_limit)
+    return -1;
+  else
+    return max_time;
 }
 
 int

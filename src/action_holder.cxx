@@ -1,4 +1,4 @@
-//  $Id: action_holder.cxx,v 1.8 2002/11/03 13:29:09 grumbel Exp $
+//  $Id: action_holder.cxx,v 1.9 2002/11/08 01:38:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,12 +23,13 @@
 
 #include "pingu_action_factory.hxx"
 #include "action_holder.hxx"
+#include "cheat.hxx"
 
 ActionHolder::ActionHolder (PLF* plf)
 {
   std::vector<ActionData> action_data = plf->get_actions();
   
-  if (action_data.size() == 0)
+  if (action_data.size() == 0 || Cheat::all_actions)
     {
       std::cout << "Error: ActionHolder: No actions given in this level! Using defaults" << std::endl;
       action_data = default_actions;
@@ -47,6 +48,18 @@ ActionHolder::~ActionHolder ()
   PinguActionFactory::instance()->delete_actions();
 }
 
+std::vector<ActionName>
+ActionHolder::get_available_actions()
+{
+  std::vector<ActionName> ret;
+
+  for(std::map<ActionName, int>::iterator i= available_actions.begin();
+      i != available_actions.end(); ++i)
+    ret.push_back(i->first);
+  
+  return ret;
+}
+
 void
 ActionHolder::set_actions (ActionName name, int available)
 {
@@ -56,22 +69,30 @@ ActionHolder::set_actions (ActionName name, int available)
 void
 ActionHolder::push_action (ActionName name)
 {
-  available_actions[name]++;
+  if (!Cheat::unlimited_actions)
+    available_actions[name]++;
 }
 
 bool
 ActionHolder::pop_action (ActionName name)
 {
-  int& avail = available_actions[name];
-
-  if (avail > 0)
+  if (Cheat::unlimited_actions)
     {
-      --avail;
       return true;
     }
   else
     {
-      return false;    
+      int& avail = available_actions[name];
+
+      if (avail > 0)
+        {
+          --avail;
+          return true;
+        }
+      else
+        {
+          return false;    
+        }
     }
 }
 
