@@ -1,4 +1,4 @@
-//  $Id: joystick_axis.hxx,v 1.1 2002/07/04 14:03:43 torangan Exp $
+//  $Id: joystick_axis.hxx,v 1.2 2002/07/08 14:49:08 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,7 +30,6 @@ namespace Input
     int     id;
     int     axis;
     float   angle;
-    float   pos;
     
   public:
   
@@ -38,7 +37,7 @@ namespace Input
 
     virtual float get_pos ();
     virtual float get_angle ();
-    virtual void  update (float delta);
+    virtual void  update (float);
   };
 }
 
