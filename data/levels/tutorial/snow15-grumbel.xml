@@ -2,12 +2,17 @@
 
 <pingus-level>
   <global>
-    <levelname lang="en">Climb, climber,... Boom!</levelname>
+    <levelname lang="en">Climb, Climber,... Boom!</levelname>
+    <levelname lang="de">Kletter, Climber... Boom!</levelname> 
 
     <description lang="en">As you might have already figured out from previous levels you
 often have to combine different actions to get the job done. Due
 to the lack of a digger action in this level the bomber needs to
 jump in, but how can it reach the place to bomb?</description>
+    <description lang="de">Wie Du wohl bereits in den vorherigen Levels bemerkt hast,
+musst du oftmal mehere Fähigkeiten kombinieren, um das Ziel zu
+erreichen. Da die Digger Fähigkeit fehlt, muss der Bomber 
+einspringen, aber wie erreicht er den Platz zum sprengen?</description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
     <number-of-pingus>30</number-of-pingus>

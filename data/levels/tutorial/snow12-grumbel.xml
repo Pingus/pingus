@@ -3,10 +3,14 @@
 <pingus-level>
   <global>
     <levelname lang="en">Two groups in parallel, coordinate wisely</levelname>
+    <levelname lang="de">Zwei Gruppen gleichzeitig, koordiniere weise</levelname>
 
     <description lang="en">You have two groups to coordinate this time, no need to panic, since
 this level gives you enough time to think your actions through. No
 more tips this time, but good luck!</description>
+    <description lang="de">Diesmal hast Du zwei Gruppen zu koordinieren, aber keine Panik, denn
+dieses Level gibt Dir genug Zeit zum Überlegen. Keine weiteren Tipps
+dieses Mal, aber Viel Glück!</description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
     <number-of-pingus>10</number-of-pingus>

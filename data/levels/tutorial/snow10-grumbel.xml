@@ -3,12 +3,16 @@
 <pingus-level>
   <global>
     <levelname lang="en">Panic Island (float/bash)</levelname>
+    <levelname lang="de">Insel der Panik (schwebe/grabe)</levelname>
 
     <description lang="en">While the previous levels have not required much fast actions of
 yourself, this one gets a bit trickier. The Pingus are coming
 out of two entrances in parallel and it is your job to coordinate
-both of these groups wisely.
-    </description>
+both of these groups wisely.</description>
+    <description lang="de">Während die vorangegangen Level nicht viel schnelle Reaktionen von
+Dir gefordert haben, wird dieser etwas schwieriger. Die Pingus
+kommen aus zwei Eingängen gleichzeitig und es ist Deine Aufgabe
+beide Gruppen weise zu koordinieren.</description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
     <number-of-pingus>40</number-of-pingus>

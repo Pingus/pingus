@@ -5,10 +5,15 @@
     <levelname lang="en">Learning to dig</levelname>
     <levelname lang="de">Lernen zu graben</levelname>
 
-    <description lang="en">This is your first mission, as always, its pretty easy. All you
+    <description lang="en">This is your first mission. As always, its pretty easy. All you
 have to do is to give a Pingu the command to dig a hole into the
 ground so that they can reach the exit. This can be acomplished by
 simply clicking on a Pingu.</description>
+    <description lang="de">Dies ist Deine erste Mission. Wie immer, ist sie ziemlich 
+einfach. Alles was Du tun musst, ist einem Pingu den Befehl zum graben
+eines Lochs in den Boden zu erteilen, damit sie den Ausgang erreichen
+können. Dies kann einfach dadurch erreicht werden, auf einen Pingu zu
+klicken.</description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
     <number-of-pingus>10</number-of-pingus>

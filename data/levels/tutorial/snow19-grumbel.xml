@@ -3,11 +3,16 @@
 <pingus-level>
   <global>
     <levelname lang="en">Learn to use the bridge</levelname>
+    <levelname lang="de">Lerne Brücken zu bauen</levelname>
 
-    <description lang="en">If no jumper is at hand and a large hole needs to be passed a bridge
+    <description lang="en">If no Jumper is at hand and a large hole needs to be passed a bridge
 can be pretty helpfull. It takes some time to build, but it allows
 following Pingus to also reach the other end, which the jumper action
 didn't.</description>
+    <description lang="de">Wenn kein Jumper da ist und ein grosses Loch passiert werden muss,
+kann eine Brücke sehr nützlich sein. Es dauert einige Zeit sie zu
+bauen, aber sie erlaubt den nachfolgenden Pingus auch die andere
+Seite zu erreichen, was die Jumper Fähigkeit nicht tat.</description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
     <number-of-pingus>15</number-of-pingus>

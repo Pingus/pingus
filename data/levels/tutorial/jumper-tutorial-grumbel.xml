@@ -3,11 +3,16 @@
 <pingus-level>
   <global>
     <levelname lang="en">Jump for joy</levelname>
+    <levelname lang="de">Springe aus Freude</levelname>
 
     <description lang="en">Sometimes a Pingu needs to reach a platform that is far away, 
-but not reachable by walking, thats when the jumper comes in handy,
-it allows the Pingu to make a small jump and enableds him so to
+but not reachable by walking, thats when the Jumper comes in handy,
+it allows the Pingu to make a small jump and enables him so to
 reach the platform.</description>
+    <description lang="de">Manchmal muss ein Pingu eine Platform erreichen, die weit weg
+ist und nicht durch laufen erreicht werden kann. Dann ist der Jumper
+hilfreich, er erlaubt es einem Pingu einen kleinen Sprung zu machen
+und ermöglicht es so die Platform zu erreichen.</description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
     <number-of-pingus>25</number-of-pingus>

@@ -3,7 +3,13 @@
 <pingus-level>
   <global>
     <levelname lang="en">Tutorial 5 - Danger in Space</levelname>
-    <description lang="en">If there is no action left to dig through a barrier, there is only a last hope... the bomber</description>
+    <levelname lang="de">Tutorial 5 - Gefahr im Weltall</levelname>
+
+    <description lang="en">If there is no action left to dig through a barrier, 
+there is only a last hope... the bomber.</description>
+    <description lang="de">Wenn die Fähigkeit durch eine Barriere zu graben nicht mehr zur
+Verfügung steht, bleibt nur eine letzte Hoffnung... der Bomber. </description>
+
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
     <number-of-pingus>30</number-of-pingus>
     <number-to-save>10</number-to-save>

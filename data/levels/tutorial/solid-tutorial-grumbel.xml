@@ -3,12 +3,18 @@
 <pingus-level>
   <global>
     <levelname lang="en">Solid ground can block the path</levelname>
+    <levelname lang="de">Fester Boden kann den Weg blockieren</levelname>
 
     <description lang="en">As you have learned in earlier levels your Pingus can dig through
 basically every ground, but there is one thing which they can't
-penetrate and that are steal objects. Those reagions are marked
-dark-grey on the levelmap and cannot be destroyed, so find a way
+penetrate and that are steal objects. Those regions are marked
+darkgrey on the levelmap and cannot be destroyed, so find a way
 around them.</description>
+    <description lang="de">Wie du in den früheren Levels gelernt hast, kann ein Pingu durch
+fast alles graben, aber es gibt etwas, dass sie nicht durchdringen
+können und zwar Stahl Objekte. Diese Bereiche sind auf der Karte
+dunkelgrau markiert und können nicht zerstört werden, also finde
+einen Weg, sie zu umgehen.</description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
     <number-of-pingus>20</number-of-pingus>
