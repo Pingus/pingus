@@ -99,31 +99,31 @@ LINK32=link.exe
 # PROP Default_Filter ""
 # Begin Source File
 
-SOURCE=.\src\traps\Bumper.cc
+SOURCE=.\src\traps\bumper.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\traps\FakeExit.cc
+SOURCE=.\src\traps\fake_exit.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\traps\Guillotine.cc
+SOURCE=.\src\traps\guillotine.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\traps\hammer.cc
+SOURCE=.\src\traps\hammer.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\traps\LaserExit.cc
+SOURCE=.\src\traps\laser_exit.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\traps\smasher.cc
+SOURCE=.\src\traps\smasher.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\traps\Spike.cc
+SOURCE=.\src\traps\spike.cxx
 # End Source File
 # End Group
 # Begin Group "Actions Src"
@@ -131,95 +131,95 @@ SOURCE=.\src\traps\Spike.cc
 # PROP Default_Filter ""
 # Begin Source File
 
-SOURCE=.\src\actions\Angel.cc
+SOURCE=.\src\actions\angel.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\actions\basher.cc
+SOURCE=.\src\actions\basher.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\actions\blocker.cc
+SOURCE=.\src\actions\blocker.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\actions\Boarder.cc
+SOURCE=.\src\actions\boarder.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\actions\bomber.cc
+SOURCE=.\src\actions\bomber.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\actions\bridger.cc
+SOURCE=.\src\actions\bridger.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\actions\climber.cc
+SOURCE=.\src\actions\climber.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\actions\digger.cc
+SOURCE=.\src\actions\digger.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\actions\Drown.cc
+SOURCE=.\src\actions\drown.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\actions\exiter.cc
+SOURCE=.\src\actions\exiter.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\actions\Faller.cc
+SOURCE=.\src\actions\faller.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\actions\floater.cc
+SOURCE=.\src\actions\floater.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\actions\Jumper.cc
+SOURCE=.\src\actions\jumper.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\actions\LaserKill.cc
+SOURCE=.\src\actions\laser_kill.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\actions\miner.cc
+SOURCE=.\src\actions\miner.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\actions\RocketLauncher.cc
+SOURCE=.\src\actions\rocket_launcher.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\actions\Slider.cc
+SOURCE=.\src\actions\slider.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\actions\smashed.cc
+SOURCE=.\src\actions\smashed.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\actions\Splashed.cc
+SOURCE=.\src\actions\splashed.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\actions\Superman.cc
+SOURCE=.\src\actions\superman.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\actions\teleported.cc
+SOURCE=.\src\actions\teleported.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\actions\Waiter.cc
+SOURCE=.\src\actions\waiter.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\actions\Walker.cc
+SOURCE=.\src\actions\walker.cxx
 # End Source File
 # End Group
 # Begin Group "Editor Src"
@@ -227,87 +227,87 @@ SOURCE=.\src\actions\Walker.cc
 # PROP Default_Filter ""
 # Begin Source File
 
-SOURCE=.\src\editor\Editor.cc
+SOURCE=.\src\editor\editor.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\editor\EditorEvent.cc
+SOURCE=.\src\editor\editor_event.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\editor\EditorGroundpieceObj.cc
+SOURCE=.\src\editor\editor_groundpiece_obj.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\editor\EditorHelpScreen.cc
+SOURCE=.\src\editor\editor_help_screen.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\editor\EditorObj.cc
+SOURCE=.\src\editor\editorobj.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\editor\EditorObjGroup.cc
+SOURCE=.\src\editor\editorobj_group.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\editor\EditorView.cc
+SOURCE=.\src\editor\editor_view.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\editor\ObjectManager.cc
+SOURCE=.\src\editor\object_manager.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\editor\ObjectSelector.cc
+SOURCE=.\src\editor\object_selector.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\editor\Panel.cc
+SOURCE=.\src\editor\panel.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\editor\PanelIcons.cc
+SOURCE=.\src\editor\panel_icons.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\editor\PLFObj.cc
+SOURCE=.\src\editor\plfobj.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\editor\RectEditorObj.cc
+SOURCE=.\src\editor\rect_editorobj.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\editor\ScrollMap.cc
+SOURCE=.\src\editor\scroll_map.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\editor\SpriteEditorObj.cc
+SOURCE=.\src\editor\sprite_editorobj.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\editor\StartPos.cc
+SOURCE=.\src\editor\start_pos.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\editor\StatusLine.cc
+SOURCE=.\src\editor\status_line.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\editor\StringReader.cc
+SOURCE=.\src\editor\string_reader.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\editor\SurfaceSelector.cc
+SOURCE=.\src\editor\surface_selector.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\editor\ThumbCache.cc
+SOURCE=.\src\editor\thumb_cache.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\editor\WeatherObj.cc
+SOURCE=.\src\editor\weather_obj.cxx
 # End Source File
 # End Group
 # Begin Group "Entrances Src"
@@ -315,11 +315,11 @@ SOURCE=.\src\editor\WeatherObj.cc
 # PROP Default_Filter ""
 # Begin Source File
 
-SOURCE=.\src\entrances\Cloud.cc
+SOURCE=.\src\entrances\cloud.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\entrances\WoodThing.cc
+SOURCE=.\src\entrances\woodthing.cxx
 # End Source File
 # End Group
 # Begin Group "Particles Src"
@@ -327,47 +327,47 @@ SOURCE=.\src\entrances\WoodThing.cc
 # PROP Default_Filter ""
 # Begin Source File
 
-SOURCE=.\src\particles\ExplosiveParticle.cc
+SOURCE=.\src\particles\explosive_particle.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\particles\GroundParticle.cc
+SOURCE=.\src\particles\ground_particle.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\particles\Particle.cc
+SOURCE=.\src\particles\particle.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\particles\ParticleCache.cc
+SOURCE=.\src\particles\particle_cache.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\particles\ParticleHolder.cc
+SOURCE=.\src\particles\particle_holder.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\particles\PinguParticle.cc
+SOURCE=.\src\particles\pingu_particle.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\particles\RainGenerator.cc
+SOURCE=.\src\particles\rain_generator.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\particles\RainParticle.cc
+SOURCE=.\src\particles\rain_particle.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\particles\SmokeParticle.cc
+SOURCE=.\src\particles\smoke_particle.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\particles\SnowGenerator.cc
+SOURCE=.\src\particles\snow_generator.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\particles\SnowParticle.cc
+SOURCE=.\src\particles\snow_particle.cxx
 # End Source File
 # End Group
 # Begin Group "Win32 Src"
@@ -387,416 +387,416 @@ SOURCE=.\src\win32\Getopt1.c
 # PROP Default_Filter "cc"
 # Begin Source File
 
-SOURCE=.\src\worldobjs\ConveyorBelt.cc
+SOURCE=.\src\worldobjs\conveyor_belt.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\worldobjs\IceBlock.cc
+SOURCE=.\src\worldobjs\ice_block.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\worldobjs\InfoBox.cc
+SOURCE=.\src\worldobjs\info_box.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\PlayfieldView.cc
+SOURCE=.\src\playfield_view.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\worldobjs\SwitchDoor.cc
+SOURCE=.\src\worldobjs\switch_door.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\worldobjs\Teleporter.cc
+SOURCE=.\src\worldobjs\teleporter.cxx
 # End Source File
 # End Group
 # Begin Source File
 
-SOURCE=.\src\ActionButton.cc
+SOURCE=.\src\action_button.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\ActionHolder.cc
+SOURCE=.\src\action_holder.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\algo.cc
+SOURCE=.\src\algo.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\AlphaButton.cc
+SOURCE=.\src\alpha_button.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\AnimCounter.cc
+SOURCE=.\src\anim_counter.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\audio.cc
+SOURCE=.\src\audio.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\blitter.cc
+SOURCE=.\src\blitter.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\ButtonPanel.cc
+SOURCE=.\src\button_panel.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\CaptureRectangle.cc
+SOURCE=.\src\capture_rectangle.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\Client.cc
+SOURCE=.\src\client.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\ColMap.cc
+SOURCE=.\src\col_map.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\Config.cc
+SOURCE=.\src\config.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\Console.cc
+SOURCE=.\src\console.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\Controllable.cc
+SOURCE=.\src\controllable.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\Controller.cc
+SOURCE=.\src\controller.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\Counter.cc
+SOURCE=.\src\counter.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\Credits.cc
+SOURCE=.\src\credits.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\Cursor.cc
+SOURCE=.\src\cursor.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\DebugGui.cc
+SOURCE=.\src\debug_gui.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\DemoPlayer.cc
+SOURCE=.\src\demo_player.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\DemoRecorder.cc
+SOURCE=.\src\demo_recorder.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\Direction.cc
+SOURCE=.\src\direction.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\Display.cc
+SOURCE=.\src\display.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\Entrance.cc
+SOURCE=.\src\entrance.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\EntranceData.cc
+SOURCE=.\src\entrance_data.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\Exit.cc
+SOURCE=.\src\exit.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\ExitData.cc
+SOURCE=.\src\exit_data.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\ExitMenu.cc
+SOURCE=.\src\exit_menu.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\FadeOut.cc
+SOURCE=.\src\fade_out.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\FPSCounter.cc
+SOURCE=.\src\fps_counter.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\FVec.cc
+SOURCE=.\src\force_vector.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\GameCounter.cc
+SOURCE=.\src\game_counter.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\GamepadController.cc
+SOURCE=.\src\gamepad_controller.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\GameTime.cc
+SOURCE=.\src\game_time.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\GenericMain.cc
+SOURCE=.\src\generic_main.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\GlobalEvent.cc
+SOURCE=.\src\global_event.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\globals.cc
+SOURCE=.\src\globals.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\GroundpieceData.cc
+SOURCE=.\src\groundpiece_data.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\GuiObj.cc
+SOURCE=.\src\gui_obj.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\Hotspot.cc
+SOURCE=.\src\hotspot.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\HotspotData.cc
+SOURCE=.\src\hotspot_data.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\HurryUp.cc
+SOURCE=.\src\hurry_up.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\Intro.cc
+SOURCE=.\src\intro.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\KeyboardController.cc
+SOURCE=.\src\keyboard_controller.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\LayerManager.cc
+SOURCE=.\src\layer_manager.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\LevelInterrupt.cc
+SOURCE=.\src\level_interrupt.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\Liquid.cc
+SOURCE=.\src\liquid.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\LiquidData.cc
+SOURCE=.\src\liquid_data.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\Loading.cc
+SOURCE=.\src\loading.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\MainMenu.cc
+SOURCE=.\src\main_menu.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\MenuBackground.cc
+SOURCE=.\src\menu_background.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\MouseController.cc
+SOURCE=.\src\mouse_controller.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\MultiLineText.cc
+SOURCE=.\src\multiline_text.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\MultiplayerClient.cc
+SOURCE=.\src\multiplayer_client.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\MultiplayerClientChild.cc
+SOURCE=.\src\multiplayer_client_child.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\MultiplayerConfig.cc
+SOURCE=.\src\multiplayer_config.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\MultiplayerGame.cc
+SOURCE=.\src\multiplayer_game.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\OptionMenu.cc
+SOURCE=.\src\option_menu.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\PathManager.cc
+SOURCE=.\src\path_manager.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\Pingu.cc
+SOURCE=.\src\pingu.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\PinguAction.cc
+SOURCE=.\src\pingu_action.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\PinguActionFactory.cc
+SOURCE=.\src\pingu_action_factory.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\PinguBmpMap.cc
+SOURCE=.\src\bmp_map.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\PinguHolder.cc
+SOURCE=.\src\pingu_holder.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\PinguInfo.cc
+SOURCE=.\src\pingu_info.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\PinguMap.cc
+SOURCE=.\src\pingu_map.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\PingusCounter.cc
+SOURCE=.\src\pingus_counter.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\PingusCounterBar.cc
+SOURCE=.\src\pingus_counter_bar.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\PingusError.cc
+SOURCE=.\src\pingus_error.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\PingusGameSession.cc
+SOURCE=.\src\game_session.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\PingusLevelDesc.cc
+SOURCE=.\src\level_desc.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\PingusLevelResult.cc
+SOURCE=.\src\level_result.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\PingusMain.cc
+SOURCE=.\src\pingus_main.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\PingusMapManager.cc
+SOURCE=.\src\pingus_map_manager.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\PingusMenu.cc
+SOURCE=.\src\pingus_menu.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\PingusMenuManager.cc
+SOURCE=.\src\pingus_menu_manager.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\PingusMessageBox.cc
+SOURCE=.\src\message_box.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\PingusMusicProvider.cc
+SOURCE=.\src\music_provider.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\PingusResource.cc
+SOURCE=.\src\pingus_resource.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\PingusSound.cc
+SOURCE=.\src\sound.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\PingusSoundDummy.cc
+SOURCE=.\src\sound_dummy.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\PingusSoundReal.cc
+SOURCE=.\src\sound_real.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\PingusSpotMap.cc
+SOURCE=.\src\spot_map.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\PingusSubMenu.cc
+SOURCE=.\src\pingus_sub_menu.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\PingusWavProvider.cc
+SOURCE=.\src\wav_provider.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\worldmap\PingusWorldMap.cc
+SOURCE=.\src\worldmap\worldmap.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\worldmap\PingusWorldMapGraph.cc
+SOURCE=.\src\worldmap\graph.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\worldmap\PingusWorldMapManager.cc
+SOURCE=.\src\worldmap\manager.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\worldmap\PingusWorldMapPingus.cc
+SOURCE=.\src\worldmap\pingus.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\worldmap\PingusWorldMapStat.cc
+SOURCE=.\src\worldmap\stat.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\Playfield.cc
+SOURCE=.\src\playfield.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\PLF.cc
+SOURCE=.\src\plf.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\PLFParser.cc
+SOURCE=.\src\plf_parser.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\PLFPLF.cc
+SOURCE=.\src\plf_plf.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\PLFPreview.cc
+SOURCE=.\src\plf_preview.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\PLTParser.cc
+SOURCE=.\src\plt_parser.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\PLTXML.cc
+SOURCE=.\src\plt_xml.cxx
 # End Source File
 # Begin Source File
 
@@ -804,119 +804,119 @@ SOURCE=.\src\Position.cc
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\PSMParser.cc
+SOURCE=.\src\psm_parser.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\Range.cc
+SOURCE=.\src\range.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\ResDescriptor.cc
+SOURCE=.\src\res_descriptor.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\Result.cc
+SOURCE=.\src\result.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\Screenshot.cc
+SOURCE=.\src\screenshot.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\Server.cc
+SOURCE=.\src\server.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\SmallMap.cc
+SOURCE=.\src\smallmap.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\SmallMapImage.cc
+SOURCE=.\src\smallmap_image.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\backgrounds\SolidColorBackground.cc
+SOURCE=.\src\backgrounds\solidcolor_background.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\SpecsReader.cc
+SOURCE=.\src\specs_reader.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\Sprite.cc
+SOURCE=.\src\sprite.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\backgrounds\StarfieldBackground.cc
+SOURCE=.\src\backgrounds\starfield_background.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\Story.cc
+SOURCE=.\src\story.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\StringConverter.cc
+SOURCE=.\src\string_converter.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\backgrounds\SurfaceBackground.cc
+SOURCE=.\src\backgrounds\surface_background.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\backgrounds\SurfaceBackgroundData.cc
+SOURCE=.\src\backgrounds\surface_background_data.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\SurfaceButton.cc
+SOURCE=.\src\surface_button.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\System.cc
+SOURCE=.\src\system.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\TargetProvider.cc
+SOURCE=.\src\target_provider.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\Theme.cc
+SOURCE=.\src\theme.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\ThemeSelector.cc
+SOURCE=.\src\theme_selector.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\backgrounds\ThunderstormBackground.cc
+SOURCE=.\src\backgrounds\thunderstorm_background.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\backgrounds\ThunderstormBackgroundData.cc
+SOURCE=.\src\backgrounds\thunderstorm_background_data.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\TimeDisplay.cc
+SOURCE=.\src\time_display.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\Timer.cc
+SOURCE=.\src\timer.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\Trap.cc
+SOURCE=.\src\trap.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\TrapData.cc
+SOURCE=.\src\trap_data.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\TrueServer.cc
+SOURCE=.\src\true_server.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\View.cc
+SOURCE=.\src\view.cxx
 # End Source File
 # Begin Source File
 
@@ -932,39 +932,39 @@ SOURCE=.\src\war\WarMain.cc
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\WeatherData.cc
+SOURCE=.\src\weather_data.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\particles\WeatherGenerator.cc
+SOURCE=.\src\particles\weather_generator.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\World.cc
+SOURCE=.\src\world.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\WorldObj.cc
+SOURCE=.\src\worldobj.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\WorldObjData.cc
+SOURCE=.\src\worldobj_data.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\WorldObjDataFactory.cc
+SOURCE=.\src\worldobj_data_factory.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\WorldObjGroupData.cc
+SOURCE=.\src\worldobj_group_data.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\XMLhelper.cc
+SOURCE=.\src\xml_helper.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\XMLPLF.cc
+SOURCE=.\src\xml_plf.cxx
 # End Source File
 # End Group
 # Begin Group "Headers"
