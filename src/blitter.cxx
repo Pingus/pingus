@@ -407,7 +407,7 @@ Blitter::clear_canvas(CL_PixelBuffer canvas, CL_Color color)
 
   canvas.lock();
   buffer = static_cast<unsigned char*>(canvas.get_data());
-  memset(buffer, color, sizeof(unsigned char) * canvas.get_pitch() * canvas.get_height());
+  memset(buffer, color.color, sizeof(unsigned char) * canvas.get_pitch() * canvas.get_height());
   canvas.unlock();
 }
 
@@ -498,9 +498,9 @@ Blitter::scale_surface_to_canvas (CL_PixelBuffer provider, int width, int height
 	      unsigned char pixel = *(static_cast<unsigned char*>(provider.get_data ())
 				      + (y * pheight/height) * provider.get_pitch() + (x * pwidth/width));
 
-	      color.red   = provider.get_palette().colors[pixel*3 +0] / 255.0f;
-	      color.green = provider.get_palette().colors[pixel*3 +1] / 255.0f;
-	      color.blue  = provider.get_palette().colors[pixel*3 +2] / 255.0f;
+	      color.red   = provider.get_palette().colors[pixel*3 +0].color / 255.0f;
+	      color.green = provider.get_palette().colors[pixel*3 +1].color / 255.0f;
+	      color.blue  = provider.get_palette().colors[pixel*3 +2].color / 255.0f;
 
 	      if (provider.get_format().has_colorkey()
                   && provider.get_format().get_colorkey() == pixel)
