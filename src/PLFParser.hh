@@ -1,4 +1,4 @@
-//  $Id: PLFParser.hh,v 1.3 2000/02/11 16:58:25 grumbel Exp $
+//  $Id: PLFParser.hh,v 1.4 2000/03/10 18:54:12 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,7 +28,6 @@ class PLFParserEOF {
 public:
   PLFParserEOF();
 };
-
 
 class PLFParser
 {
@@ -63,7 +62,6 @@ private:
   virtual void set_group_end(void) = 0;
 public:                        //
   PLFParser();
-  PLFParser(string);           // Open the file and parse it
   virtual ~PLFParser();        // Close the file
 
   void init(string);           // Init the PLFParser and start parsing

@@ -1,4 +1,4 @@
-//  $Id: PLFParser.cc,v 1.5 2000/02/16 23:34:11 grumbel Exp $
+//  $Id: PLFParser.cc,v 1.6 2000/03/10 18:54:12 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,12 +33,6 @@ PLFParserEOF::PLFParserEOF()
 
 PLFParser::PLFParser()
 {
-}
-
-// Create a PLF object and start parsing the given file.
-PLFParser::PLFParser(std::string filename)
-{
-  init(filename);
 }
 
 // Destroy all data
