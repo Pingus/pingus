@@ -1,4 +1,4 @@
-//  $Id: climber.cxx,v 1.18 2002/10/13 20:25:00 torangan Exp $
+//  $Id: climber.cxx,v 1.19 2002/10/26 09:14:23 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,23 +26,10 @@ namespace Actions {
 
 Climber::Climber (Pingu* p)
   : PinguAction(p),
-    sprite(Sprite ("Pingus/climber0", "pingus"))
+    sprite(Sprite ("Pingus/climber0", "pingus")),
+    sprite_width(sprite.get_width()),
+    sprite_height(sprite.get_height())
 {
-  // these alignments are necessary to prevent climber walking 
-  // inside the wall.
-  int sprite_height = sprite.get_height();
-  int sprite_width  = sprite.get_width();
-
-  if (pingu->direction.is_left()) 
-    {
-      sprite.set_align(0, -sprite_height/2);
-      sprite.set_direction(Sprite::LEFT); 
-    } 
-  else 
-    {
-      sprite.set_align(-sprite_width, -sprite_height/2);
-      sprite.set_direction(Sprite::RIGHT);
-    }
 }
 
 void
@@ -56,14 +43,26 @@ Climber::update ()
     printf("%3d %3d %3d\n", rel_getpixel(1,-1), rel_getpixel(0,-1),rel_getpixel(-1, -1));
   */  
 
+  // This is necessary to prevent climber walking inside a wall.
+  if (pingu->direction.is_left()) 
+    {
+      sprite.set_align(0, -sprite_height/2);
+      sprite.set_direction(Sprite::LEFT); 
+    } 
+  else 
+    {
+      sprite.set_align(-sprite_width, -sprite_height/2);
+      sprite.set_direction(Sprite::RIGHT);
+    }
+
   sprite.update();
 
   // If above is free
-  if (rel_getpixel(0, 1) ==  Groundtype::GP_NOTHING
-      || rel_getpixel (0, 1) ==  Groundtype::GP_BRIDGE)
+  if (   rel_getpixel(0, 1) == Groundtype::GP_NOTHING
+      || rel_getpixel(0, 1) == Groundtype::GP_BRIDGE)
     {
       // and there is still ground to walk on
-      if (rel_getpixel(1, 1) !=  Groundtype::GP_NOTHING) 
+      if (rel_getpixel(1, 1) != Groundtype::GP_NOTHING) 
 	{
 	  pingu->set_pos(pingu->get_x(), 
 			 pingu->get_y() - 1);
