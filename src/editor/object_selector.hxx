@@ -1,4 +1,4 @@
-// $Id: object_selector.hxx,v 1.3 2002/06/24 22:52:58 grumbel Exp $
+// $Id: object_selector.hxx,v 1.4 2002/06/24 23:31:24 grumbel Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -62,6 +62,7 @@ public:
   std::list<boost::shared_ptr<EditorObj> > get_worldobj();
   std::list<boost::shared_ptr<EditorObj> > get_from_file();
   std::list<boost::shared_ptr<EditorObj> > get_background();
+  std::list<boost::shared_ptr<EditorObj> > get_prefab();
 };
 
 #endif

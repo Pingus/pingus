@@ -1,4 +1,4 @@
-//  $Id: object_manager.cxx,v 1.6 2002/06/21 08:11:27 grumbel Exp $
+//  $Id: object_manager.cxx,v 1.7 2002/06/24 23:31:24 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,6 +27,8 @@
 #include "../xml_helper.hxx"
 #include "../pingus_resource.hxx"
 #include "../pingus_error.hxx"
+#include "../xml_helper.hxx"
+#include "../worldobj_group_data.hxx"
 #include "start_pos.hxx"
 #include "object_manager.hxx"
 #include "editor_view.hxx"
@@ -172,18 +174,18 @@ ObjectManager::load_level (const std::string & filename)
   }
 
   for (vector<WorldObjData*>::iterator i = temp_worldobj.begin();
-      i != temp_worldobj.end();
-      ++i) {
+       i != temp_worldobj.end();
+       ++i) {
     const list<boost::shared_ptr<EditorObj> > & temp = (*i)->create_EditorObj();
     editor_objs.insert(editor_objs.end(), temp.begin(), temp.end() );
   }
 
 #ifdef WIN32
-//FIXME: ingo: This is a workaround around the std::list::sort()
-//FIXME: problem under MSVC6. This is copy&paste from an usenet
-//FIXME: article, so it might work or not, never tested it.
-// Alpha notes that this does NOT work.
-//  world_obj.sort(std::greater<CWorldObjPtr>());
+  //FIXME: ingo: This is a workaround around the std::list::sort()
+  //FIXME: problem under MSVC6. This is copy&paste from an usenet
+  //FIXME: article, so it might work or not, never tested it.
+  // Alpha notes that this does NOT work.
+  //  world_obj.sort(std::greater<CWorldObjPtr>());
 #else
   editor_objs.sort(EditorObj_z_pos_sorter);
 #endif
@@ -213,16 +215,16 @@ void
 ObjectManager::draw_scroll_map(int /*x_pos*/, int /*y_pos*/, int /*arg_width*/, int /*arg_height*/)
 {
   /*
-  for (EditorObjIter i = editor_objs.begin(); i != editor_objs.end(); ++i) 
+    for (EditorObjIter i = editor_objs.begin(); i != editor_objs.end(); ++i) 
     {
-      (*i)->draw_scroll_map(x_pos, y_pos,
-			    arg_width, arg_height);
+    (*i)->draw_scroll_map(x_pos, y_pos,
+    arg_width, arg_height);
 			    
-	Display::draw_rect(x_pos + (*i)->get_x_pos() * arg_width / width,
-	y_pos + (*i)->get_y_pos() * arg_height / height,
-	x_pos + (*i)->get_x_pos() * arg_width / width + 10,
-	y_pos + (*i)->get_y_pos() * arg_height / height + 10,
-	0.0, 1.0, 0.0, 1.0);
+    Display::draw_rect(x_pos + (*i)->get_x_pos() * arg_width / width,
+    y_pos + (*i)->get_y_pos() * arg_height / height,
+    x_pos + (*i)->get_x_pos() * arg_width / width + 10,
+    y_pos + (*i)->get_y_pos() * arg_height / height + 10,
+    0.0, 1.0, 0.0, 1.0);
     }*/
 }
 
@@ -291,8 +293,8 @@ ObjectManager::save_level_xml (const std::string & filename)
       << std::endl;
   
   /*for (std::vector<boost::shared_ptr<BackgroundData> >::iterator i = backgrounds.begin();
-       i != backgrounds.end();
-       i++)
+    i != backgrounds.end();
+    i++)
     (*i)->write_xml(&xml);
   */
   /*  xml << "<background>\n";
@@ -377,10 +379,10 @@ ObjectManager::lower_obj(boost::shared_ptr<EditorObj> obj)
 
   swap(*prev, *current);
   /* FIXME: not sure if we need this on windows, if not delete it
-  boost::shared_ptr<EditorObj> tmp = *prev;
-  *prev = *current;
-  *current = tmp;
-  */
+     boost::shared_ptr<EditorObj> tmp = *prev;
+     *prev = *current;
+     *current = tmp;
+     */
   return true;
 }
 
@@ -402,10 +404,10 @@ ObjectManager::raise_obj(boost::shared_ptr<EditorObj> obj)
   
   swap(*next, *current);
   /* FIXME: not sure if we need this on windows, if not delete it
-  boost::shared_ptr<EditorObj> tmp = *next;
-  *next = *current;
-  *current = tmp;
-  */
+     boost::shared_ptr<EditorObj> tmp = *next;
+     *next = *current;
+     *current = tmp;
+     */
   return true;
 }
 
@@ -500,6 +502,26 @@ ObjectManager::get_current_obj()
     return *current_objs.begin();
   else
     return boost::shared_ptr<EditorObj>();
+}
+
+void
+ObjectManager::add_object_group_from_file (const std::string& filename)
+{
+  std::cout << "ObjectManager::add_object_group_from_file(" << filename << ")" << std::endl;
+  xmlDocPtr doc = xmlParseFile(filename.c_str ());
+
+  if (doc)
+    {
+      xmlNodePtr cur = doc->ROOT;
+      WorldObjGroupData* group = new WorldObjGroupData (doc, cur);
+      const std::list<boost::shared_ptr<EditorObj> >& temp = group->create_EditorObj ();
+      editor_objs.insert(editor_objs.end(),temp.begin(), temp.end());
+      delete group;
+    }
+  else
+    {
+      std::cout << "ObjectManager::add_object_group_from_file: read error: " << filename << std::endl;
+    }
 }
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: object_selector.cxx,v 1.3 2002/06/23 12:47:50 grumbel Exp $
+//  $Id: object_selector.cxx,v 1.4 2002/06/24 23:31:24 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <ClanLib/Core/System/system.h>
+#include <ClanLib/Core/IOData/directory_scanner.h>
 #include <ClanLib/Display/Input/mouse.h>
 #include <ClanLib/Display/Display/display.h>
 #include <ClanLib/Display/Font/font.h>
@@ -37,6 +38,7 @@
 #include "plfobj.hxx"
 #include "../my_gettext.hxx"
 #include "../system.hxx"
+#include "../path_manager.hxx"
 #include "../editor_hotspot.hxx"
 
 #include "../backgrounds/starfield_background.hxx"
@@ -405,7 +407,8 @@ ObjectSelector::select_obj_type()
   font->print_left(20,250, _("w - Weather"));
   font->print_left(20,270, _("o - WorldObject"));
   font->print_left(20,290, _("z - Background"));
-  font->print_left(20,310, _("f - something from file (~/.pingus/images/)"));
+  font->print_left(20,310, _("p - Prefab (ObjectGroup)"));
+  font->print_left(20,330, _("f - something from file (~/.pingus/images/)"));
   Display::flip_display();
 
   exit_loop = false;
@@ -448,6 +451,9 @@ ObjectSelector::select_obj_type()
 	case CL_KEY_W:
 	  return get_weather();
 
+	case CL_KEY_P:
+	  return get_prefab ();
+
 	case CL_KEY_O:
 	  return get_worldobj();
 
@@ -465,10 +471,41 @@ ObjectSelector::select_obj_type()
   return std::list<boost::shared_ptr<EditorObj> > ();
 }
 
+
+std::list<boost::shared_ptr<EditorObj> >
+ObjectSelector::get_prefab()
+{
+  CL_Display::clear_display();
+  font->print_left(20, 20, _("Which prefab do you want?"));
+
+  CL_DirectoryScanner dir;
+  
+  int y = 60;
+  dir.scan(path_manager.complete ("prefabs/"), "*.xml");
+  while (dir.next ())
+    {
+      font->print_left(20, y, dir.get_name ().c_str ());
+      y += 30;
+    }
+  
+  Display::flip_display();
+
+  bool exit_loop = false;
+    
+  while (!exit_loop) 
+    {
+      switch (read_key()) 
+	{
+	default: 
+	  exit_loop = true;
+	}      
+    }
+  return std::list<boost::shared_ptr<EditorObj> >();
+}
+
 std::list<boost::shared_ptr<EditorObj> >
 ObjectSelector::get_background()
 {
-
   CL_Display::clear_display();
   font->print_left(20, 20, _("Which object do you want?"));
   font->print_left(20, 50, _("1 - Surface Background"));

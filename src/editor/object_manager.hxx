@@ -1,4 +1,4 @@
-//  $Id: object_manager.hxx,v 1.3 2002/06/24 22:52:58 grumbel Exp $
+//  $Id: object_manager.hxx,v 1.4 2002/06/24 23:31:24 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -94,6 +94,8 @@ public:
 
   void delete_selection();
   void delete_all_objs();
+
+  void add_object_group_from_file (const std::string& filename);
 
   void rect_get_current_objs(float x1, float y1, float x2, float y2);
 
