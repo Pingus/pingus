@@ -1,4 +1,4 @@
-//  $Id: ExitData.cc,v 1.2 2001/08/11 18:53:39 grumbel Exp $
+//  $Id: ExitData.cc,v 1.3 2001/08/15 07:35:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,7 +24,7 @@
 void 
 ExitData::write_xml(ofstream* xml)
 {
-  (*xml) << "<exit use-old-pos-handling=\"0\">\n";
+  (*xml) << "<exit use-old-pos-handling=\"" << use_old_pos_handling << "\">\n";
 
   // FIXME: Repair me
   //pos.x += surf.get_width ()/2;

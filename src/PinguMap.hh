@@ -1,4 +1,4 @@
-//  $Id: PinguMap.hh,v 1.9 2001/03/18 17:45:04 grumbel Exp $
+//  $Id: PinguMap.hh,v 1.10 2001/08/15 07:35:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,7 +22,9 @@
 
 #include <ClanLib/core.h>
 #include <ClanLib/display.h>
-#include "ColMap.hh"
+#include "WorldObj.hh"
+
+class ColMap;
 
 /** The type of the map, currently we have a random, a bitmap and a
     spot map, the only map, which is currently supported is the spot
@@ -30,7 +32,7 @@
 enum MapType { BMP, SPOT, RANDOM, UNDEF };
 
 ///
-class PinguMap
+class PinguMap : public WorldObj
 {
 private:
 public:
@@ -50,6 +52,8 @@ public:
    */
   virtual void draw(int x1, int y1, int w, int h,
 		    int x_of, int y_of, float s=1.0) = 0;
+  virtual void update (float delta); 
+  virtual void draw_offset (int, int, float delta); 
   ///
   virtual void mark_dirty(int,int,int,int);
   ///

@@ -1,4 +1,4 @@
-//  $Id: PinguMap.cc,v 1.5 2001/08/02 21:51:02 grumbel Exp $
+//  $Id: PinguMap.cc,v 1.6 2001/08/15 07:35:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "ColMap.hh"
 #include "PinguMap.hh"
 
 PinguMap::PinguMap()
@@ -64,6 +65,19 @@ void
 PinguMap::put(const CL_Surface& sur, int x, int y)
 {
   put (sur.get_provider (), x, y);
+}
+
+void 
+PinguMap::update (float delta)
+{
+  
+}
+
+void 
+PinguMap::draw_offset (int x_of, int y_of, float zoom)
+{
+  draw (0, 0, CL_Display::get_width(), CL_Display::get_height (),
+	x_of, y_of, zoom);
 }
 
 /* EOF */

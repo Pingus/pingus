@@ -1,4 +1,4 @@
-//  $Id: PLFObj.cc,v 1.53 2001/08/13 21:35:37 grumbel Exp $
+//  $Id: PLFObj.cc,v 1.54 2001/08/15 07:35:29 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -99,10 +99,13 @@ ExitObj::ExitObj(const ExitData& data)
 {
   std::cout << "EXITOBJ: " << &pos << std::endl;
   
-  if (!use_old_pos_handling)
+  sprite.set_align_center_bottom ();
+         
+  if (use_old_pos_handling)
     {
-      pos.x -= sprite.get_width ()/2;
-      pos.y -= sprite.get_height ();
+      pos.x += sprite.get_width ()/2;
+      pos.y += sprite.get_height ();
+      use_old_pos_handling = false;
     }
 }
 

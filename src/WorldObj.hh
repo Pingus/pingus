@@ -1,4 +1,4 @@
-//  $Id: WorldObj.hh,v 1.19 2001/08/13 21:35:37 grumbel Exp $
+//  $Id: WorldObj.hh,v 1.20 2001/08/15 07:35:29 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -49,12 +49,6 @@ public:
 
   /** Destroys a world object */
   virtual ~WorldObj();
-
-  /** Compares two world objects. An expression $w1 < w2$ is true if the
-   *  object $w1$ has a smaller $z$-position; in other words, $w1 < w2$ iff
-   *  $w1$ is in front of $w2$. (XXX)
-   */
-  bool operator< (const WorldObj& w);
 
   /** Returns the $z$-position of this object. */
   virtual float get_z_pos() const =0;

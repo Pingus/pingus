@@ -1,4 +1,4 @@
-//  $Id: Exit.hh,v 1.17 2001/08/13 21:35:37 grumbel Exp $
+//  $Id: Exit.hh,v 1.18 2001/08/15 07:35:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,7 +43,6 @@ public:
   void  draw_colmap();
   void  draw_offset(int x, int y, float s = 1.0);
   void  update (float delta);
-  bool  catch_pingu(boost::shared_ptr<Pingu> pingu);
   float get_z_pos() const { return (int) pos.z; }
 };
 

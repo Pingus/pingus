@@ -1,4 +1,4 @@
-//  $Id: World.hh,v 1.28 2001/08/12 18:36:40 grumbel Exp $
+//  $Id: World.hh,v 1.29 2001/08/15 07:35:29 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -67,11 +67,8 @@ private:
   /// The time you have to finish a level
   int exit_time;
 
-  std::vector<boost::shared_ptr<WorldObj> > world_obj_bg;
-  std::vector<boost::shared_ptr<WorldObj> > world_obj_fg;
-  std::vector<boost::shared_ptr<Exit> >     exits;
-  std::vector<boost::shared_ptr<Hotspot> >  hotspot;
-  std::vector<boost::shared_ptr<Liquid> >   liquid;
+  typedef std::list<boost::shared_ptr<WorldObj> >::iterator WorldObjIter;
+  std::list<boost::shared_ptr<WorldObj> > world_obj;
 
   boost::shared_ptr<ParticleHolder> particle_holder;
   ActionHolder* action_holder;

@@ -1,4 +1,4 @@
-//  $Id: bridger.cc,v 1.43 2001/08/12 18:36:41 grumbel Exp $
+//  $Id: bridger.cc,v 1.44 2001/08/15 07:35:29 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,7 @@
 #include "../PingusSound.hh"
 #include "../algo.hh"
 #include "../ActionHolder.hh"
+#include "../ColMap.hh"
 #include "bridger.hh"
 
 using namespace std;

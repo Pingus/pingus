@@ -1,4 +1,4 @@
-//  $Id: WorldObj.cc,v 1.15 2001/08/13 21:35:37 grumbel Exp $
+//  $Id: WorldObj.cc,v 1.16 2001/08/15 07:35:29 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -58,12 +58,6 @@ void
 WorldObj::update(float delta)
 {
   // do nothing
-}
-
-bool
-WorldObj::operator< (const WorldObj& w)
-{
-  return (get_z_pos () < const_cast<WorldObj&>(w).get_z_pos ());
 }
 
 /*

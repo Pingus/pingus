@@ -1,4 +1,4 @@
-//  $Id: EditorObjGroup.cc,v 1.10 2001/08/11 18:53:39 grumbel Exp $
+//  $Id: EditorObjGroup.cc,v 1.11 2001/08/15 07:35:29 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -55,26 +55,36 @@ EditorObjGroup::draw (boost::dummy_ptr<EditorView> view)
     }
 }
 
+float 
+EditorObjGroup::get_z_pos()
+{
+  /*for(std::list<boost::shared_ptr<EditorObj> >::iterator i = objs.begin();
+      i != objs.end();
+      ++i)
+    {
+    }*/
+  // FIXME: Hack
+  return 100;
+}
+
 /** Draw the caputre rectangle around the object */
 void
 EditorObjGroup::draw_mark (boost::dummy_ptr<EditorView> view)
 {
   for(std::list<boost::shared_ptr<EditorObj> >::iterator i = objs.begin();
       i != objs.end();
-      i++)
+      ++i)
     {
       (*i)->draw_mark (view);
     }
-  
-  RectEditorObj::draw_mark (view);
 }
 
 void
 EditorObjGroup::add (boost::shared_ptr<EditorObj> obj)
 {
   // Updating the width/height and x_pos/y_pos of the object group
-
-  /*if (!objs.empty ())
+  /*
+  if (!objs.empty ())
     {
       if (position->x > obj->get_x_pos())
 	position->x = obj->get_x_pos();
@@ -92,8 +102,8 @@ EditorObjGroup::add (boost::shared_ptr<EditorObj> obj)
       position->y = obj->get_y_pos ();
       width = obj->get_width ();
       height = obj->get_height ();
-    }*/
-
+    }
+  */
   objs.push_back(obj);
 }
 
@@ -125,13 +135,39 @@ EditorObjGroup::duplicate()
   
   for(std::list<boost::shared_ptr<EditorObj> >::iterator i = objs.begin();
       i != objs.end();
-      i++)
+      ++i)
     {
       boost::shared_ptr<EditorObj> obj = (*i)->duplicate();
       if (obj.get())
 	editor_obj->objs.push_back(obj);
     }
   return editor_obj;
+}
+
+bool 
+EditorObjGroup::is_over(const CL_Vector& pos)
+{
+  for(std::list<boost::shared_ptr<EditorObj> >::iterator i = objs.begin();
+      i != objs.end();
+      ++i)
+    {
+      if ((*i)->is_over (pos))
+	return true;
+    }
+  return false;
+}
+
+bool 
+EditorObjGroup::is_in_rect(const CL_Rect& rect)
+{
+  for(std::list<boost::shared_ptr<EditorObj> >::iterator i = objs.begin();
+      i != objs.end();
+      ++i)
+    {
+      if ((*i)->is_in_rect (rect))
+	return true;
+    }
+  return false;
 }
 
 /* EOF */

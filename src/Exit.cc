@@ -1,4 +1,4 @@
-//  $Id: Exit.cc,v 1.26 2001/08/12 18:36:40 grumbel Exp $
+//  $Id: Exit.cc,v 1.27 2001/08/15 07:35:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,7 @@
 #include "globals.hh"
 #include "PingusResource.hh"
 #include "Exit.hh"
+#include "PinguHolder.hh"
 #include "actions/exiter.hh"
 #include "StringConverter.hh"
 
@@ -40,43 +41,17 @@ Exit::Exit(const ExitData& data)
   owner_id = data.owner_id;
   use_old_pos_handling = data.use_old_pos_handling;
 
-  if (!use_old_pos_handling) {
-    sprite.set_align_center_bottom ();
+  sprite.set_align_center_bottom ();
+
+  if (use_old_pos_handling) {
+    pos += pos.x + (sprite.get_width() / 2);
+    pos += pos.y + sprite.get_height();
+    use_old_pos_handling = false;
   }
 }
 
 Exit::~Exit()
 {
-}
-
-bool
-Exit::catch_pingu(boost::shared_ptr<Pingu> pingu)
-{
-  float x;
-  float y;
-  
-  if (use_old_pos_handling)
-    {
-      x = pos.x + (sprite.get_width() / 2);
-      y = pos.y + sprite.get_height();
-    }
-  else
-    {
-      x = pos.x;
-      y = pos.y;
-    }
-
-  if (pingu->get_x() > x - 1 && pingu->get_x() < x + 1
-      && pingu->get_y() > y - 5 && pingu->get_y() < y + 1)
-    {
-      if (pingu->get_status() != PS_EXITED
-	  && pingu->get_status() != PS_DEAD)
-	{
-	  pingu->set_action(world->get_action_holder()->get_uaction("exiter"));
-	}
-      return true;
-    }
-  return false;
 }
 
 void
@@ -92,8 +67,7 @@ Exit::draw_offset(int x_of, int y_of, float s)
 {
   if (s == 1.0) {
     sprite.put_screen(pos.x + x_of, pos.y + y_of);
-    if (!use_old_pos_handling)
-      flag.put_screen (pos.x + 40 + x_of, pos.y + y_of);
+    flag.put_screen (pos.x + 40 + x_of, pos.y + y_of);
   } else {
     //sprite.put_screen((int)((pos.x + x_of) * s), (int)((pos.y + y_of) * s),
     //s, s);
@@ -105,6 +79,21 @@ void
 Exit::update (float delta)
 {
   sprite.update (delta);
+
+  PinguHolder* holder = world->get_pingu_p ();
+
+  for (PinguIter pingu = holder->begin (); pingu != holder->end (); ++pingu)
+    {
+      if ((*pingu)->get_x() > pos.x - 1 && (*pingu)->get_x() < pos.x + 1
+	  && (*pingu)->get_y() > pos.y - 5 && (*pingu)->get_y() < pos.y + 1)
+	{
+	  if ((*pingu)->get_status() != PS_EXITED
+	      && (*pingu)->get_status() != PS_DEAD)
+	    {
+	      (*pingu)->set_action(world->get_action_holder()->get_uaction("exiter"));
+	    }
+	}
+    }
 }
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: exiter.cc,v 1.17 2001/08/10 10:56:14 grumbel Exp $
+//  $Id: exiter.cc,v 1.18 2001/08/15 07:35:29 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,14 +23,6 @@
 #include "../PingusResource.hh"
 #include "../algo.hh"
 #include "exiter.hh"
-
-Exiter::Exiter()
-{
-}
-
-Exiter::~Exiter()
-{
-}
 
 void
 Exiter::init(void)

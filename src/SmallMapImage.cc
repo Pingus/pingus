@@ -1,4 +1,4 @@
-//  $Id: SmallMapImage.cc,v 1.3 2001/08/10 10:56:13 grumbel Exp $
+//  $Id: SmallMapImage.cc,v 1.4 2001/08/15 07:35:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,7 @@
 #include "World.hh"
 #include "SmallMapImage.hh"
 #include "PLF.hh"
+#include "ColMap.hh"
 
 using boost::dummy_ptr;
 using boost::shared_ptr;

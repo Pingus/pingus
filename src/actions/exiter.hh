@@ -1,4 +1,4 @@
-//  $Id: exiter.hh,v 1.10 2001/08/10 10:56:14 grumbel Exp $
+//  $Id: exiter.hh,v 1.11 2001/08/15 07:35:29 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,9 +29,6 @@ class Exiter : public PinguAction
 private:
   Sprite sprite;
 public:
-  Exiter();
-  ~Exiter();
-
   void init(void);
   std::string get_name () const { return "Exiter"; }
   PinguEnvironment get_environment() const { return (PinguEnvironment)ENV_LAND; }

@@ -1,4 +1,4 @@
-//  $Id: EditorObjGroup.hh,v 1.6 2001/08/11 18:53:39 grumbel Exp $
+//  $Id: EditorObjGroup.hh,v 1.7 2001/08/15 07:35:29 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,7 +25,7 @@
 #include "../boost/smart_ptr.hpp"
 #include "RectEditorObj.hh"
 
-class EditorObjGroup : public RectEditorObj
+class EditorObjGroup : public EditorObj
 {
 private:
   std::list<boost::shared_ptr<EditorObj> > objs;
@@ -37,12 +37,7 @@ public:
   EditorObjGroup();
   virtual ~EditorObjGroup();
 
-  /** Returns the position of the upper left corner of the object */
-  CL_Vector get_upper_left_corner () { return upper_left_corner; }
-  int get_width () { return width; }
-  int get_height () { return height; }
-
-  float get_z_pos() { return upper_left_corner.z; }
+  float get_z_pos();
 
   void set_position_offset(const CL_Vector& offset);
   void draw(boost::dummy_ptr<EditorView>);
@@ -52,9 +47,11 @@ public:
   void EditorObjGroup::add (boost::shared_ptr<EditorObj>);
   ///
   std::list<boost::shared_ptr<EditorObj> >* EditorObjGroup::get_objs();
-  ///
+  
+  bool is_over(const CL_Vector &);
+  bool is_in_rect(const CL_Rect &);
+    
   void   write_xml(std::ofstream* xml);
-  ///
   boost::shared_ptr<EditorObj> duplicate();
 };
 
