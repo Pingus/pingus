@@ -1,4 +1,4 @@
-//  $Id: GenericMain.cc,v 1.12 2001/07/27 19:35:35 grumbel Exp $
+//  $Id: GenericMain.cc,v 1.13 2001/11/30 09:11:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -70,6 +70,7 @@ GenericMain::main(int argc, char* argv[])
 
   std::cout << std::string(_("Starting Pingus ")) + VERSION  << std::endl;
   std::cout << "Build:" << __TIME__ << " " << __DATE__ << std::endl;
+
 
   if (System::basename(argv[0]) == "warpingus")
     {

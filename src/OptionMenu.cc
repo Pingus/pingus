@@ -1,4 +1,4 @@
-//  $Id: OptionMenu.cc,v 1.35 2001/11/22 20:08:33 grumbel Exp $
+//  $Id: OptionMenu.cc,v 1.36 2001/11/30 09:11:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -99,7 +99,7 @@ OptionEntry::toggle()
   if (value_bool) {
     *(value_bool) = !*(value_bool);
   } else if (value_str) {
-    std::cout << "Not implemented" << std::endl;
+    std::cout << _("Not implemented") << std::endl;
   } else if (value_int) {
     ++(*value_int);
   }
@@ -111,7 +111,7 @@ OptionEntry::rtoggle()
   if (value_bool) {
     *(value_bool) = !*(value_bool);
   } else if (value_str) {
-    std::cout << "Not implemented" << std::endl;
+    std::cout << _("Not implemented") << std::endl;
   } else if (value_int) {
     --(*value_int);    
   }
@@ -144,7 +144,7 @@ OptionMenu::Event::on_button_release(CL_InputDevice *device, const CL_Key &key)
 	  option_menu->quit = true;
 	  break;
 	default:
-	  if (verbose) std::cout << "OptionMenu::Event: Unknown key released: id=" << key.id << std::endl;
+	  if (verbose) std::cout << _("OptionMenu::Event: Unknown key released: id=") << key.id << std::endl;
 	  break;
 	} 
     }
@@ -153,17 +153,17 @@ OptionMenu::Event::on_button_release(CL_InputDevice *device, const CL_Key &key)
       switch(key.id)
 	{
 	case CL_MOUSE_LEFTBUTTON:
-	  if (verbose) std::cout << "Button 0 pressed" << std::endl;
+	  if (verbose) std::cout << _("Button 0 pressed") << std::endl;
 	  break;
 	case CL_MOUSE_MIDDLEBUTTON:
 	  option_menu->quit = true;
-	  if (verbose) std::cout << "Button 1 pressed" << std::endl;
+	  if (verbose) std::cout << _("Button 1 pressed") << std::endl;
 	  break;
 	case CL_MOUSE_RIGHTBUTTON:
-	  if (verbose) std::cout << "Button 2 pressed" << std::endl;
+	  if (verbose) std::cout << _("Button 2 pressed") << std::endl;
 	  break;
 	default:
-	  if (verbose) std::cout << "OptionMenu::Event: Unknown mouse button released: id=" << key.id << std::endl;
+	  if (verbose) std::cout << _("OptionMenu::Event: Unknown mouse button released: id=") << key.id << std::endl;
 	  break;  
 	}
     }

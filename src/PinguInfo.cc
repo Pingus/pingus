@@ -1,4 +1,4 @@
-//  $Id: PinguInfo.cc,v 1.7 2001/11/22 20:08:34 grumbel Exp $
+//  $Id: PinguInfo.cc,v 1.8 2001/11/30 09:11:17 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,7 @@
 #include "PinguAction.hh"
 #include "PingusResource.hh"
 #include "PinguInfo.hh"
+#include "my_gettext.hh"
 
 PinguInfo::PinguInfo()
 {
@@ -41,15 +42,15 @@ PinguInfo::draw()
     char str1[256];
     char str2[256];
 
-    sprintf(str1, "pingu_id %d", pingu->get_id());
+    sprintf(str1, _("pingu_id %d"), pingu->get_id());
     font->print_left(CL_Display::get_width() - 185, 
 		     CL_Display::get_height() - 50,
 		     tolowerstr(str1));
 
     if (pingu->get_action().get()) {
-      sprintf(str2, "action %s", pingu->get_action()->get_name().c_str());
+      sprintf(str2, _("action %s"), pingu->get_action()->get_name().c_str());
     } else {
-      sprintf(str2, "action none");
+      sprintf(str2, _("action none"));
     }
 
     font->print_left(CL_Display::get_width() - 185, 

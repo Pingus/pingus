@@ -1,4 +1,4 @@
-//  $Id: PLTParser.cc,v 1.5 2000/04/26 15:27:39 grumbel Exp $
+//  $Id: PLTParser.cc,v 1.6 2001/11/30 09:11:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 
 #include "PingusError.hh"
 #include "PLTParser.hh"
+#include "my_gettext.hh"
 
 using namespace std;
 
@@ -88,7 +89,7 @@ PLTParser::add_pair(string keyword, string value)
     background_image = value;
   } else {
     char str[1024];
-    sprintf(str, "Unexpected keyword: '%s' at line: %d", keyword.c_str(), lineno);
+    sprintf(str, _("Unexpected keyword: '%s' at line: %d"), keyword.c_str(), lineno);
     throw PingusError(str);
   }
 }

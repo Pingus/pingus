@@ -1,4 +1,4 @@
-//  $Id: blitter.cc,v 1.31 2001/08/04 12:46:22 grumbel Exp $
+//  $Id: blitter.cc,v 1.32 2001/11/30 09:11:17 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,6 +25,7 @@
 #include "StringConverter.hh"
 #include "globals.hh"
 #include "blitter.hh"
+#include "my_gettext.hh"
 
 using namespace std;
 
@@ -89,7 +90,7 @@ Blitter::put_surface_8bit(CL_Canvas* provider, CL_SurfaceProvider* sprovider,
   if (!cl_palette)
     {
       char str[1024];
-      sprintf(str, "Couldn't find palette: %d", sprovider->get_depth());
+      sprintf(str, _("Couldn't find palette: %d"), sprovider->get_depth());
       throw PingusError(str);
     }
 

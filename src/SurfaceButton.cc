@@ -1,4 +1,4 @@
-//  $Id: SurfaceButton.cc,v 1.34 2001/11/22 20:08:34 grumbel Exp $
+//  $Id: SurfaceButton.cc,v 1.35 2001/11/30 09:11:17 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,7 +17,6 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "my_gettext.hh"
 
 #include "PingusSound.hh"
 #include "globals.hh"
@@ -30,6 +29,11 @@
 #include "editor/Editor.hh"
 
 #include "SurfaceButton.hh"
+
+/* Headers needed for i18n / gettext */
+#include <clocale>
+#include <config.h>
+#include "my_gettext.hh"
 
 SurfaceButton::SurfaceButton()
 {
@@ -327,6 +331,7 @@ EditorButton::on_click()
 StoryButton::StoryButton (PingusMenu* menu)
   : menu (menu)
 {
+
   // x_pos = CL_Display::get_width() * 150 / 640; 
   // y_pos = CL_Display::get_height() * 430 / 480;
 
@@ -337,6 +342,7 @@ StoryButton::StoryButton (PingusMenu* menu)
   //desc["de"] = "..:: Such dir eine Welt zum beginnen aus ::..";
 
   line1 = _("Start");
+
   // surface   = PingusResource::load_surface("Buttons/worlds", "menu");
   // surface_p = PingusResource::load_surface("Buttons/worlds_p", "menu");     
 

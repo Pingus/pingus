@@ -1,4 +1,4 @@
-//  $Id$
+//  $Id: dummy_ptr.hpp,v 1.1.1.1 2001/11/27 16:47:33 cagri Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>

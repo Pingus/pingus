@@ -1,4 +1,4 @@
-//  $Id: PingusLevelDesc.cc,v 1.23 2001/11/29 10:47:44 grumbel Exp $
+//  $Id: PingusLevelDesc.cc,v 1.24 2001/11/30 09:11:17 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -93,7 +93,7 @@ PingusLevelDesc::draw(PingusLevelDesc::LoadingStatus status)
     while (!controller->pause->is_pressed () && !controller->left->is_pressed ())
       {
 	CL_System::keep_alive();
-	CL_System::sleep (0);
+	CL_System::sleep (50);
       }
   }
 }

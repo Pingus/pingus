@@ -1,4 +1,4 @@
-//  $Id: PingusSpotMap.cc,v 1.46 2001/08/31 07:51:51 grumbel Exp $
+//  $Id: PingusSpotMap.cc,v 1.47 2001/11/30 09:11:17 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,6 +27,7 @@
 #include "globals.hh"
 #include "Timer.hh"
 #include "PingusSpotMap.hh"
+#include "my_gettext.hh"
 
 using namespace std;
 
@@ -357,7 +358,7 @@ PingusSpotMap::put_alpha_surface(CL_Canvas* provider, CL_SurfaceProvider* sprovi
   if (sprovider->get_depth() != 8)
     {
       char str[1024];
-      sprintf(str, "Image has wrong color depth: %d", sprovider->get_depth());
+      sprintf(str, _("Image has wrong color depth: %d"), sprovider->get_depth());
       throw PingusError(str);
     }
   //  assert(provider->get_pixel_format() == RGBA8888);

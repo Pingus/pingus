@@ -1,4 +1,4 @@
-//  $Id: PingusCounter.cc,v 1.6 2000/06/27 16:05:16 grumbel Exp $
+//  $Id: PingusCounter.cc,v 1.7 2001/11/30 09:11:17 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,7 +35,7 @@ PingusCounter::draw(void)
   char str[256];
   
   // FIXME: Buffer overflow...
-  sprintf(str, "Released: %3d/%3d  Out: %3d  Saved: %3d/%3d",
+  sprintf(str, _("Released: %3d/%3d  Out: %3d  Saved: %3d/%3d"),
 	  world->get_released_pingus(),
 	  world->get_allowed_pingus(),
 	  world->get_pingus_out(),

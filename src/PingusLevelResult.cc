@@ -1,4 +1,4 @@
-//  $Id: PingusLevelResult.cc,v 1.23 2001/11/18 23:21:33 grumbel Exp $
+//  $Id: PingusLevelResult.cc,v 1.24 2001/11/30 09:11:17 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -54,24 +54,24 @@ PingusLevelResult::draw(void)
 
   CL_Display::fill_rect(0, 0, CL_Display::get_width(), CL_Display::get_height(), 0.0, 0.0, 0.0, 0.5);
   
-  title->print_center(CL_Display::get_width() / 2, 50, "Results:");
+  title->print_center(CL_Display::get_width() / 2, 50, _("Results:"));
   
   /* Ending messages are censored for the momement
     font->print_center(CL_Display::get_width() / 2, 100,
 		     get_message(100 * world->get_saved_pingus() / world->get_allowed_pingus()).c_str());
   */
-  sprintf(str,  "Pingus saved:   %3d/%3d", 
+  sprintf(str,  _("Pingus saved:   %3d/%3d"), 
 	  world->get_saved_pingus(),
 	  world->get_allowed_pingus());
   font->print_center(CL_Display::get_width() / 2, 140, str);
 
-  sprintf(str,  "Pingus killed:  %3d/%3d", 
+  sprintf(str,  _("Pingus killed:  %3d/%3d"), 
 	  world->get_allowed_pingus() - world->get_saved_pingus(),
 	  world->get_allowed_pingus());
   font->print_center(CL_Display::get_width() / 2, 160, str);
 
   /*
-  sprintf(str,  "Required Time: %2d:%2d:%2d", 
+  sprintf(str,  _("Required Time: %2d:%2d:%2d"), 
 	  result.time / (60 * game_speed),
 	  result.time / game_speed % 60, 
 	  (result.time * 100) / game_speed % 100);

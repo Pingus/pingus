@@ -1,4 +1,4 @@
-//  $Id: Intro.cc,v 1.19 2001/07/22 21:17:57 grumbel Exp $
+//  $Id: Intro.cc,v 1.20 2001/11/30 09:11:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,6 +25,7 @@
 #include "algo.hh"
 #include "Story.hh"
 #include "Intro.hh"
+#include "my_gettext.hh"
 
 Intro::Intro(PingusMenuManager* m)
   : PingusSubMenu (m)
@@ -62,7 +63,7 @@ Intro::draw()
       if (blink_time + 500 < CL_System::get_time ())
 	font->print_center (CL_Display::get_width ()/2, 
 			    CL_Display::get_height ()/2 + CL_Display::get_height ()/4,
-			    "..:: Press Start ::..");
+			    _("..:: Press Start ::.."));
       break;
     }
 
@@ -103,7 +104,7 @@ Intro::update (float delta)
 void 
 Intro::on_click ()
 {
-  std::cout << "Start menu" << std::endl;
+  std::cout << _("Start menu") << std::endl;
 }
 
 void 
@@ -119,7 +120,7 @@ Intro::preload ()
   
   font->print_center (CL_Display::get_width ()/2, 
 		      CL_Display::get_height ()/2 + CL_Display::get_height ()/4,
-		      "..:: Press Start ::..");
+		      _("..:: Press Start ::.."));
   stage = SCROLL_UP;
 }
 
