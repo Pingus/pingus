@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <ClanLib/Display/mouse.h>
+#include <ClanLib/Core/System/error.h>
 #include "mouse_scroller.hxx"
 
 namespace Pingus {
@@ -26,6 +27,9 @@ namespace Scrollers {
 
 MouseScroller::MouseScroller(int id) : old_x(0), old_y(0), x_delta(0), y_delta(0)
 {
+  if (id < 0 || id >= CL_Mouse::get_device_count())
+    throw CL_Error("MouseScroller: id is outside of the range");
+
   device = CL_Mouse::get_device(id);
 }
 

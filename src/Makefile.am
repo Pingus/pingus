@@ -280,8 +280,6 @@ vector.cxx \
 vector.hxx \
 view.cxx \
 view.hxx \
-wav_provider.cxx \
-wav_provider.hxx \
 world.cxx \
 world.hxx \
 worldobj.cxx \
