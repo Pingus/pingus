@@ -1,4 +1,4 @@
-//  $Id: PLF.hh,v 1.8 2000/06/18 17:01:49 grumbel Exp $
+//  $Id: PLF.hh,v 1.9 2000/06/19 07:26:08 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,7 +35,11 @@
 #include "liquid_data.hh"
 #include "trap_data.hh"
 
-///
+/** The Pingus Level File
+    
+    The PLF class holds all object information, which are needed to
+    build a level, like the levelname, description, number of pingus,
+    etc. */
 class PLF : public PLFParser
 {
 private:

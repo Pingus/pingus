@@ -1,4 +1,4 @@
-//  $Id: Console.hh,v 1.8 2000/06/18 22:19:48 grumbel Exp $
+//  $Id: Console.hh,v 1.9 2000/06/19 07:26:08 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -67,19 +67,18 @@ public:
   /// Sets the number of lines to the given int.
   void set_height(int);
 
-  /// Returns the height in number of lines, <em>not</em> in pixels.
+  /// Returns the height in number of lines, {\em not} in pixels.
   int  get_height();
 
-  /** Output operators, similar to std::cout */
+  /** @name Output operators, similar to std::cout */
   //@{
-  /** Wrapper around the end-of-line operator, its just insert a
-      newline in the console. */
+  /// Wrapper around the end-of-line operator, its just insert a newline in the console.
   Console& operator<<(const Console::Endl&);
 
-  /** Prints the given string to the console. */
+  /// Prints the given string to the console.
   Console& operator<<(std::string);
 
-  /** Converts the given int to a string and prints it to the console. */
+  /// Converts the given int to a string and prints it to the console.
   Console& operator<<(int);
   //@}
 

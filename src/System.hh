@@ -1,4 +1,4 @@
-//  $Id: System.hh,v 1.7 2000/06/18 17:01:50 grumbel Exp $
+//  $Id: System.hh,v 1.8 2000/06/19 07:26:08 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,7 +24,8 @@
 #include <string>
 #include <list>
 
-///
+/** A wrapper class around some system dependend functions (mostly
+    POSIX stuff) */
 class System
 {
 private:
@@ -41,8 +42,7 @@ public:
 
     ///
     DirectoryEntry(const std::string&);
-  }///
-;
+  };
 
   ///
   typedef std::list<DirectoryEntry> Directory;
@@ -50,28 +50,31 @@ public:
   ///
   static Directory opendir(const std::string& pathname, const std::string& pattern = "*");
 
-  ///
+  /** Check if a file is avaiblable (no checking for permissens is currently performed)
+      @param filename The name of the file
+      @return True, if the file exist, false otherwise */
   static bool exist(std::string filename);
 
-  /// Creates directory if it does not already exist.
+  /** Creates directory if it does not already exist.
+      @param dir The name of the directory */
   static void create_dir(std::string dir);
   
-  // Check if all needed directories are available, if not then create 
-  /// them. 
+  /** Check if all needed directories are available, if not then create 
+      them. */
   static void init_directories();
 
-  /// Strips directory from filenames
-  static std::string basename(std::string);
+  /** Strips directory from filenames
+      @param filename The complete filename */
+  static std::string basename(std::string filename);
 
-  // Returns the directory were Pingus can store its user specific
-  /// state and config data (savegames, config files, demos, etc.)
+  /** Returns the directory were Pingus can store its user specific
+      state and config data (savegames, config files, demos, etc.) */
   static std::string get_statdir();
 
-  // Returns the directory were Pingus can store its system wide
-  /// variable game data (highscores, cache images, ...) 
+  /** Returns the directory were Pingus can store its system wide
+      variable game data (highscores, cache images, ...) */
   static std::string get_vardir();
-}///
-;
+};
 
 #endif
 

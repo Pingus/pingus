@@ -1,4 +1,4 @@
-//  $Id: View.hh,v 1.4 2000/06/18 17:01:50 grumbel Exp $
+//  $Id: View.hh,v 1.5 2000/06/19 07:26:08 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,8 +24,8 @@
 #include "World.hh"
 #include "CaptureRectangle.hh"
 
-// A class to controll the rentering of the playfield, each display on 
-/// the screen, which displays the pingus world is an view object.
+/** A class to controll the rentering of the playfield, each display on 
+    the screen, which displays the pingus world is an view object. */
 class View
 {
 private:
@@ -45,9 +45,20 @@ private:
   ///
   void make_range();
 public:
+  /** @name The position of the View.
+      
+      The View should reach from [x1_pos, x2_pos), x2_pos is not
+      included in the View, just like in {\tt CL_Display::fill_rect()}. */
+  //@{
+  /// 
+  int x1_pos;
   ///
-  int x1_pos, y1_pos;       /// The upper/left corner of the view
-  int x2_pos, y2_pos;       /// The buttom/right corner of the view
+  int y1_pos;
+  ///
+  int x2_pos;
+  ///
+  int y2_pos;
+  //@}
 
   View(int, int, int, int, float s = 1.0);
   ///

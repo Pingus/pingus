@@ -1,4 +1,4 @@
-//  $Id: CaptureRectangle.cc,v 1.2 2000/02/09 21:43:39 grumbel Exp $ 
+//  $Id: CaptureRectangle.cc,v 1.3 2000/06/19 07:26:08 grumbel Exp $ 
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,9 +26,6 @@
 #include "Pingu.hh"
 #include "PingusResource.hh"
 #include "CaptureRectangle.hh"
-
-//CL_Surface* CaptureRectangle::good; 
-//CL_Surface* CaptureRectangle::bad; 
 
 Pingu* CaptureRectangle::pingu; 
 PinguAction* CaptureRectangle::button_action;

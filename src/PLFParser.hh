@@ -1,4 +1,4 @@
-//  $Id: PLFParser.hh,v 1.6 2000/06/18 17:01:50 grumbel Exp $
+//  $Id: PLFParser.hh,v 1.7 2000/06/19 07:26:08 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,42 +24,66 @@
 #include <string>
 #include <vector>
 
-///
+/** This gets thrown if a end of file is found inside a PLF file */
 class PLFParserEOF {
 public:
-  ///
   PLFParserEOF();
-}///
-;
+};
 
-///
+/** A parser for PLF files */
 class PLFParser
 {
 private:
-  ///
-  std::ifstream in;                 /// The file to parse
+  /// The file to parse
+  std::ifstream in;               
 
-  char   last_atom;            /// The last returned atom
-  int    lineno;               /// Current line number
+  /// The last returned atom
+  char   last_atom;    
+  /// Current line number
+  int    lineno; 
+  
   bool   eof;
-  //  std::string filename;             // The name of the current file
+  
+  // private functions  
+  
+  /// Return the next char and to a eof check  
+  char   get_char(void);
+  
+  /// Return the next atom and keep the old one
+  char   get_atom(void);
+  
+  /// Return the next atom (removes all comments)
+  char   get_raw_atom(void);  
+  
+  /// Return the groupname and check for errors
+  std::string get_groupname(void);  
+  
+  /// Return the value identifer
+  std::string get_valueid(void);
+  
+  /// Return the value
+  std::string get_value(void);
 
-  /// private functions    
-  char   get_char(void);       /// Return the next char and to a eof check
-  char   get_atom(void);       /// Return the next atom and keep the old one
-  char   get_raw_atom(void);   /// Return the next atom (removes all comments)
-  std::string get_groupname(void);  /// Return the groupname and check for errors
-  std::string get_valueid(void);    /// Return the value identifer
-  std::string get_value(void);      /// Return the value
-  std::string get_cast(void);       /// Return the cast, else ""
-  void   jump_after(char);     /// Jump to the next token, after char
-  void   jump(void);           /// Jump over spaces to the next token
-  void   syntax_error(std::string); /// Do a clean shutdown on a syntax error
-  void   parse(void);          /// Parse the opened file
-  void  open(std::string);          // Open the file
+  /// Return the cast, else ""
+  std::string get_cast(void);
+  
+  /// Jump to the next token, after char
+  void   jump_after(char);   
 
-  // Some virtual functions
-  /// Put the retrieved value in the correct struct
+  /// Jump over spaces to the next token
+  void   jump(void);
+
+  /// Do a clean shutdown on a syntax error
+  void   syntax_error(std::string);
+
+  /// Parse the opened file
+  void   parse(void);          
+
+  /// Open the file
+  void  open(std::string);
+
+  /** Some virtual functions
+      Put the retrieved value in the correct struct */
   virtual void set_value(std::string valueid,
 			 std::string cast,
 			 std::string value) = 0; 
@@ -67,12 +91,16 @@ private:
   virtual void set_group_start(std::string) = 0;
   ///
   virtual void set_group_end(void) = 0;
-public:                        ///
-  PLFParser();
+public:
   ///
-  virtual ~PLFParser();        /// Close the file
+  PLFParser();
+  
+  /// Close the file
+  virtual ~PLFParser();
 
-  void init(std::string);           /// Init the PLFParser and start parsing
+  /** Init the PLFParser and start parsing
+      @param filename The filename which should be parsed */
+  void init(std::string filename); 
 };
 
 #endif

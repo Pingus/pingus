@@ -1,4 +1,4 @@
-//  $Id: Background.cc,v 1.16 2000/06/15 19:31:32 grumbel Exp $
+//  $Id: Background.cc,v 1.17 2000/06/19 07:26:08 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -63,7 +63,7 @@ Background::load (background_data bg_data)
 {
   surface_need_deletion = false;
 
-  if (bg_data.dim > 1.0) 
+  if (bg_data.alpha > 1.0) 
     std::cout << "Background: Warning dim larger than 1.0 are no longer supported" << std::endl;
   
   // Testing animatied backgrounds...

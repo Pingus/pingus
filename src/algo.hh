@@ -1,4 +1,4 @@
-//  $Id: algo.hh,v 1.9 2000/06/18 17:01:50 grumbel Exp $
+//  $Id: algo.hh,v 1.10 2000/06/19 07:26:08 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,22 +31,32 @@
 #define F_OK 0
 #endif /* WIN32 */
 
-// This file contains different algorithmens and other usefull
-// routines which are completly indepentantly of the game.
+/** This file contains different algorithmens and other usefull
+    routines which are completly indepentantly of the game. */
 #define frand() ((double) rand() / (RAND_MAX+1.0))
 
-///
+/** Check if the two given rectangles collide.
+    @return Return true if they collide. */
 bool rect_col(int ax1, int ax2, int ay1, int ay2,
               int bx1, int bx2, int by1, int by2);
 
-///
+/** Add the tailing string to a directory name, if it is not allready
+    there. */
 std::string add_slash(std::string& str);
-///
+
+/// Returns the directory part of a filename.
 std::string get_directory(std::string s);
+
 ///
 char*  tolowerstr(char*);
-///
-std::string find_file(std::string paths, std::string filename);
+
+/** Search for a filename in the given path.
+    @return The complete filename when found, else the given filename 
+    @param path A colon seperated list of directories 
+    @param filename An uncomplete/relative filename, it might consist
+           of directories */
+std::string find_file(std::string path, std::string filename);
+
 //std::string basename(std::string filename);
 /*template<class T> inline std::string to_string(const T& n)
 {

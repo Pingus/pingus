@@ -1,4 +1,4 @@
-//  $Id: FVec.hh,v 1.4 2000/06/18 17:01:49 grumbel Exp $
+//  $Id: FVec.hh,v 1.5 2000/06/19 07:26:08 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,7 +28,7 @@
 /// Gravity
 extern CL_Vector grav;
 
-///
+/** A Gravity Force is a force which points in one direction */
 class GravityForce {
 protected:
   /// The force vector
@@ -40,16 +40,16 @@ public:
     ifv = fv;
   }
   
-  // Applies the force to a velocity vector, v, a position p and
-  // returns the new velicty vector. Just adds fv to v, p is ignored
-  /// as gravity is universal.
+  /** Applies the force to a velocity vector, v, a position p and
+      returns the new velicty vector. Just adds fv to v, p is ignored
+      as gravity is universal. */
   CL_Vector apply_forces(CL_Vector p,CL_Vector v){
     return v + ifv;
   }
-}///
-;
+};
 
-/// The ExplosionForce class.
+/** An Explosion Force is a radial force which points away from its
+    origin */
 class ExplosionForce {
 protected:
   /// The intensity
@@ -71,8 +71,7 @@ public:
 
   ///
   CL_Vector apply_forces(CL_Vector p,CL_Vector v);
-}///
-;
+};
 
 /// The force holder
 class ForcesHolder {
@@ -103,8 +102,7 @@ public:
 
   /// Apply forces
   static CL_Vector apply_forces(CL_Vector p,CL_Vector v);
-}///
-;
+};
 
 #endif /* FVEC_HH */
 

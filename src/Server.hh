@@ -1,4 +1,4 @@
-//  $Id: Server.hh,v 1.7 2000/06/18 17:01:50 grumbel Exp $
+//  $Id: Server.hh,v 1.8 2000/06/19 07:26:08 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,7 +26,10 @@
 #include "ActionHolder.hh"
 #include "DemoRecorder.hh"
 
-///
+/** An Event in the Pingus World
+
+    Possible events are the applying of an action, an armageddon,
+    scrolling, etc. */
 class PingusEvent {
 public:
   ///
@@ -34,14 +37,13 @@ public:
   ///
   PingusEvent(std::string);
 
-  ///
+  /// The GameTime at which the event happend
   int          game_time;
-  ///
+  /// A string describing the event
   std::string  str;
-}///
-;
+};
 
-///
+/** A abstract server-like class */
 class Server
 {
 protected:
@@ -71,8 +73,7 @@ public:
   ///
   virtual void let_move();
   ///
-  virtual void start(PLF* level_data) {}///
-;
+  virtual void start(PLF* level_data) {}
 
   ///
   virtual void set_fast_forward(bool) = 0;

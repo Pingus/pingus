@@ -1,4 +1,4 @@
-//  $Id: World.hh,v 1.11 2000/06/18 22:19:48 grumbel Exp $
+//  $Id: World.hh,v 1.12 2000/06/19 07:26:08 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -128,16 +128,18 @@ public:
   /// Issue an armageddon, all Pingus will explode in some seconds.
   void    armageddon (void);
 
-  /// @return The absolute height of the world.
+  /** @return The absolute height of the world. */
   int     get_height (void);
-  ///
+  /** @return The absolute width of the world */
   int     get_width(void);
   ///
   bool    is_finished(void);
   ///
   int     get_time (void);
-  ///
+
+  /** @return A pointer to the collision map used in this world */
   ColMap* get_colmap();
+
   ///
   PLF*    get_plf();
 

@@ -1,4 +1,4 @@
-//  $Id: button_data.hh,v 1.5 2000/06/18 17:01:50 grumbel Exp $
+//  $Id: button_data.hh,v 1.6 2000/06/19 07:26:08 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,8 +38,7 @@ struct button_data
   std::string   name;
   ///
   int number_of;
-}///
-;
+};
 
 #endif
 

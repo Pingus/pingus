@@ -1,4 +1,4 @@
-//  $Id: PingusSound.hh,v 1.10 2000/06/18 17:01:50 grumbel Exp $
+//  $Id: PingusSound.hh,v 1.11 2000/06/19 07:26:08 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,29 +23,37 @@
 #include "audio.hh"
 #include <string>
 
-///
+/** A simple wrapper class around SDL_Mixer, it will init itself
+    automatically if a sound is played. */
 class PingusSound
 {
 private:
   ///
   static bool is_init;
-  ///
+  /// 
   static int audio_open;
-  ///
+  /// The current music file
   static Mix_Music *music;
 
-  ///
+  /// Init SDL_mixer
   static void init(int audio_rate, Uint16 audio_format,
 		   int audio_channels, int audio_buffers);
 public:
-  ///
-  static void play_mod(std::string);
-  ///
-  static void play_wav(std::string);
-  ///
+  /** Load a mod and play it immediately.
+
+      @param filename The complete filename, it will be passed to the
+      PingusMusicProvider */
+  static void play_mod(std::string filename);
+
+  /** Load a wav and play it immediately.
+
+      @param filename The complete filename, it will be passed to the
+             PingusSoundProvider */
+  static void play_wav(std::string filename);
+
+  /** Shut down the sound and the music and quit SDL */
   static void clean_up();
-}///
-;
+};
 
 #endif
 
