@@ -1,4 +1,4 @@
-//  $Id: blitter.cxx,v 1.6 2002/06/23 11:08:29 grumbel Exp $
+//  $Id: blitter.cxx,v 1.7 2002/06/23 14:15:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,7 +42,7 @@ Blitter::put_surface(CL_Canvas* canvas, const CL_Surface& sur,
   //Blitter::put_surface(canvas, sur->get_provider(), x, y);
   /*  if (sur->get_provider()->get_depth() != 8)
       sur->put_target(x, y, 0, canvas);
-  else*/
+      else*/
   assert (sur);
   assert (canvas);
   Blitter::put_surface(canvas, sur.get_provider(), x, y);
@@ -392,59 +392,87 @@ Blitter::scale_surface_to_canvas (const CL_Surface& sur, int width, int height)
   unsigned char* tbuffer = static_cast<unsigned char*>(canvas->get_data ());
   int pwidth = provider->get_width ();
   int pheight = provider->get_height ();
-  
-  switch (provider->get_bytes_per_pixel ())
+
+  if (provider->is_indexed ())
     {
-    case 3:
-      {
-	// We assume that we have the data in RGB888, which might not be
-	// the case
-	for (int y = 0; y < height; y++)
-	  for (int x = 0; x < width; x++)
-	    {
-	      int ti = (y * width + x) * 4;
-	      int si = ((y * pheight / height) * pwidth
-			+ (x * pwidth / width)) * 3;
-		
-	      tbuffer[ti + 0] = 255; // alpha
-	      tbuffer[ti + 1] = sbuffer[(si + 0)]; // blue
-	      tbuffer[ti + 2] = sbuffer[(si + 1)]; // green
-	      tbuffer[ti + 3] = sbuffer[(si + 2)]; // red
-	    }
-      }
-      break;
-    case 4:
-      {
-	// We assume that we have the data in RGBA8888, which might not be
-	// the case
-	for (int y = 0; y < height; y++)
-	  for (int x = 0; x < width; x++)
-	    {
-	      int ti = (y * width + x) * 4;
-	      int si = ((y * pheight / height) * pwidth
-			+ (x * pwidth / width)) * 4;
-		
-	      tbuffer[ti + 0] = sbuffer[(si + 0)]; // alpha
-	      tbuffer[ti + 1] = sbuffer[(si + 1)]; // blue
-	      tbuffer[ti + 2] = sbuffer[(si + 2)]; // green
-	      tbuffer[ti + 3] = sbuffer[(si + 3)]; // red
-	    }
-      }
-      break;
-    default:
       // Slow but generic, using get_data () would be better, but would
       // require quite a bit of work
       for (int y = 0; y < height; y++)
-	for (int x = 0; x < width; x++)
+	{
+	  for (int x = 0; x < width; x++)
+	    {
+	      unsigned char pixel = *(static_cast<unsigned char*>(provider->get_data ()) 
+				      + (y * pheight/height) * provider->get_pitch() + (x * pwidth/width));
+
+	      color.red   = provider->get_palette()->palette[pixel*3 +0] / 255.0f;
+	      color.green = provider->get_palette()->palette[pixel*3 +1] / 255.0f;
+	      color.blue  = provider->get_palette()->palette[pixel*3 +2] / 255.0f;
+
+	      if (provider->get_src_colorkey () == pixel)
+		color.alpha = 0.0f;
+	      else
+		color.alpha = 1.0f;
+
+	      // FIXME: ignoring the source alpha due to get_pixel brokeness... no time to test the patch
+	      canvas->draw_pixel (x, y, color.red, color.green, color.blue, color.alpha);
+	    }
+	}
+    }
+  else
+    {
+      switch (provider->get_bytes_per_pixel ())
+	{
+	case 3:
 	  {
-	    // std::cout << "X: " << x << " Y: " << y << std::endl;
-	    provider->get_pixel (x * provider->get_width () / width ,
-				 y * provider->get_height () / height,
-				 &color.red, &color.green, &color.blue, &color.alpha);
-	    // ignoring the source alpha due to get_pixel brokeness... no time to test the patch
-	    canvas->draw_pixel (x, y, color.red, color.green, color.blue, color.alpha);
+	    // We assume that we have the data in RGB888, which might not be
+	    // the case
+	    for (int y = 0; y < height; y++)
+	      for (int x = 0; x < width; x++)
+		{
+		  int ti = (y * width + x) * 4;
+		  int si = ((y * pheight / height) * pwidth
+			    + (x * pwidth / width)) * 3;
+		
+		  tbuffer[ti + 0] = 255; // alpha
+		  tbuffer[ti + 1] = sbuffer[(si + 0)]; // blue
+		  tbuffer[ti + 2] = sbuffer[(si + 1)]; // green
+		  tbuffer[ti + 3] = sbuffer[(si + 2)]; // red
+		}
 	  }
-      break;
+	  break;
+	case 4:
+	  {
+	    // We assume that we have the data in RGBA8888, which might not be
+	    // the case
+	    for (int y = 0; y < height; y++)
+	      for (int x = 0; x < width; x++)
+		{
+		  int ti = (y * width + x) * 4;
+		  int si = ((y * pheight / height) * pwidth
+			    + (x * pwidth / width)) * 4;
+		
+		  tbuffer[ti + 0] = sbuffer[(si + 0)]; // alpha
+		  tbuffer[ti + 1] = sbuffer[(si + 1)]; // blue
+		  tbuffer[ti + 2] = sbuffer[(si + 2)]; // green
+		  tbuffer[ti + 3] = sbuffer[(si + 3)]; // red
+		}
+	  }
+	  break;
+	default:
+	  // Slow but generic, using get_data () would be better, but would
+	  // require quite a bit of work
+	  for (int y = 0; y < height; y++)
+	    for (int x = 0; x < width; x++)
+	      {
+		// std::cout << "X: " << x << " Y: " << y << std::endl;
+		provider->get_pixel (x * provider->get_width () / width,
+				     y * provider->get_height () / height,
+				     &color.red, &color.green, &color.blue, &color.alpha);
+		// FIXME: ignoring the source alpha due to get_pixel brokeness... no time to test the patch
+		canvas->draw_pixel (x, y, color.red, color.green, color.blue, color.alpha);
+	      }
+	  break;
+	}
     }
 
   // FIXME: Memory hole
@@ -455,20 +483,20 @@ Blitter::scale_surface_to_canvas (const CL_Surface& sur, int width, int height)
 }
 
 /*
-  // Converts a SurfaceProvider based surface, to a Canvas
-  // based one. The old one will not be deleted.
-  CL_Surface
-  Blitter::convert_to_emptyprovider(CL_Surface ssurf)
-  {
-  CL_Canvas* tprov = convert_to_emptyprovider(ssurf->get_provider());
-  return CL_Surface::create(tprov, true);
-  }
+// Converts a SurfaceProvider based surface, to a Canvas
+// based one. The old one will not be deleted.
+CL_Surface
+Blitter::convert_to_emptyprovider(CL_Surface ssurf)
+{
+CL_Canvas* tprov = convert_to_emptyprovider(ssurf->get_provider());
+return CL_Surface::create(tprov, true);
+}
 
-  // Converts a SurfaceProvider, to an Canvas and returns
-  // the newly allocated provider, you need to delete it yourself.
-  CL_Canvas*
-  Blitter::convert_to_emptyprovider(CL_SurfaceProvider* sprov)
-  {
+// Converts a SurfaceProvider, to an Canvas and returns
+// the newly allocated provider, you need to delete it yourself.
+CL_Canvas*
+Blitter::convert_to_emptyprovider(CL_SurfaceProvider* sprov)
+{
   CL_Canvas* tprov;
   CL_Palette* palette;
   unsigned char* sbuffer;
@@ -477,51 +505,51 @@ Blitter::scale_surface_to_canvas (const CL_Surface& sur, int width, int height)
 
   sprov->lock();
   switch(sprov->get_depth()) 
-  {
-  case 32:
-  tprov = new CL_Canvas(sprov->get_width(),
-  sprov->get_height());
-  tprov->lock();
+    {
+    case 32:
+      tprov = new CL_Canvas(sprov->get_width(),
+			    sprov->get_height());
+      tprov->lock();
 
-  sbuffer = static_cast<unsigned char*>(sprov->get_data());
-  tbuffer = static_cast<unsigned char*>(tprov->get_data());
+      sbuffer = static_cast<unsigned char*>(sprov->get_data());
+      tbuffer = static_cast<unsigned char*>(tprov->get_data());
 
-  for(i=0; i < (tprov->get_height() * tprov->get_pitch()); ++i)
-  {
-  tbuffer[i] = sbuffer[i];
-  }
+      for(i=0; i < (tprov->get_height() * tprov->get_pitch()); ++i)
+	{
+	  tbuffer[i] = sbuffer[i];
+	}
 
-  tprov->unlock();
-  break;
-  case 8:
-  tprov = new CL_Canvas(sprov->get_width(),
-  sprov->get_height());
-  palette = sprov->get_palette();
-  tprov->lock();
+      tprov->unlock();
+      break;
+    case 8:
+      tprov = new CL_Canvas(sprov->get_width(),
+			    sprov->get_height());
+      palette = sprov->get_palette();
+      tprov->lock();
       
-  sbuffer = static_cast<unsigned char*>(sprov->get_data());
-  tbuffer = static_cast<unsigned char*>(tprov->get_data());    
+      sbuffer = static_cast<unsigned char*>(sprov->get_data());
+      tbuffer = static_cast<unsigned char*>(tprov->get_data());    
 
-  for(i=0; i < (sprov->get_height() * sprov->get_pitch()); ++i)
-  {
-  tbuffer[i * 4 + 0] = 255;
-  tbuffer[i * 4 + 1] = palette->palette[sbuffer[i] * 3 + 2];
-  tbuffer[i * 4 + 2] = palette->palette[sbuffer[i] * 3 + 1];
-  tbuffer[i * 4 + 3] = palette->palette[sbuffer[i] * 3 + 0];
-  }
+      for(i=0; i < (sprov->get_height() * sprov->get_pitch()); ++i)
+	{
+	  tbuffer[i * 4 + 0] = 255;
+	  tbuffer[i * 4 + 1] = palette->palette[sbuffer[i] * 3 + 2];
+	  tbuffer[i * 4 + 2] = palette->palette[sbuffer[i] * 3 + 1];
+	  tbuffer[i * 4 + 3] = palette->palette[sbuffer[i] * 3 + 0];
+	}
       
-  tprov->unlock();      
-  break;
-  default:
-  std::cout << "convert_to_emptyprovider(): Wrong source format: " 
-  << static_cast<int>(sprov->get_depth()) << std::endl;
-  assert(false);
-  break;
-  }
+      tprov->unlock();      
+      break;
+    default:
+      std::cout << "convert_to_emptyprovider(): Wrong source format: " 
+		<< static_cast<int>(sprov->get_depth()) << std::endl;
+      assert(false);
+      break;
+    }
   sprov->unlock();
   
   return tprov;
-  }
+}
 */ 
 
 /* EOF */
