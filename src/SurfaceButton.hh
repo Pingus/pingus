@@ -1,4 +1,4 @@
-//  $Id: SurfaceButton.hh,v 1.19 2001/07/27 15:00:47 grumbel Exp $
+//  $Id: SurfaceButton.hh,v 1.20 2001/08/07 18:14:14 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,7 +25,6 @@
 #include <ClanLib/core.h>
 
 #include "PingusMenu.hh"
-#include "editor/Editor.hh"
 #include "worldmap/PingusWorldMapManager.hh"
 #include "ThemeSelector.hh"
 #include "PingusMenu.hh"
@@ -133,8 +132,7 @@ class EditorButton : public SurfaceButton
 {
 private:
   PingusMenu* menu;
-  ///
-  Editor editor;
+
 public:
   ///
   EditorButton(  PingusMenu* menu);
@@ -142,6 +140,7 @@ public:
   virtual ~EditorButton();
   ///
   void on_click();
+  void load_level(const std::string& str);
 };
 
 class StoryButton : public SurfaceButton

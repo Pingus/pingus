@@ -1,4 +1,4 @@
-//   $Id: PingusMain.cc,v 1.35 2001/07/27 21:53:22 grumbel Exp $
+//   $Id: PingusMain.cc,v 1.36 2001/08/07 18:14:14 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -65,6 +65,7 @@
 #include "PingusMessageBox.hh"
 #include "audio.hh"
 #include "PingusGameSession.hh"
+#include "editor/Editor.hh"
 
 #include "PingusMenuManager.hh"
 //#include "Story.hh"
@@ -552,6 +553,12 @@ For more information about these matters, see the files named COPYING.\
 	if (getcwd (cwd, 1024))
 	  levelfile = std::string(cwd) + "/" + levelfile;
 	intro_disabled = true;
+
+	if (!System::exist(levelfile))
+	  {
+	    std::cout << "PingusMain: " << levelfile << " not found" << std::endl;
+	    exit (EXIT_FAILURE);
+	  }
       } else {
 	std::cout << "Wrong argument: '" << argv[i] << "'" << std::endl;
 	std::cout << "A levelfile is already given," << std::endl;
@@ -787,8 +794,13 @@ PingusMain::start_game(void)
 	}
       if (successfull)
 	{
-	  PingusGameSession game (levelfile);
-	  game.start ();
+	  if (start_editor) {
+	    Editor::instance ()->load_level (levelfile);
+	    levelfile = "";
+	  } else {
+	    PingusGameSession game (levelfile);
+	    game.start ();
+	  }
 	}
       
     }

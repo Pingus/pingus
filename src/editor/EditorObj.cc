@@ -1,4 +1,4 @@
-// $Id: EditorObj.cc,v 1.35 2001/08/07 11:24:40 grumbel Exp $
+// $Id: EditorObj.cc,v 1.36 2001/08/07 18:14:15 grumbel Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,7 +33,8 @@
 #include "WeatherObj.hh"
 #include "EditorObj.hh"
 #include "EditorWorldObj.hh"
-#include "config.h"
+#include "ObjectManager.hh"
+#include "../../config.h"
 
 using namespace std;
 using namespace boost;
@@ -252,6 +253,9 @@ EditorObj::gui_edit_obj()
   
 /*
 $Log: EditorObj.cc,v $
+Revision 1.36  2001/08/07 18:14:15  grumbel
+Some support for launching a level directly in the editor
+
 Revision 1.35  2001/08/07 11:24:40  grumbel
 Added some functions to handle resizement of objects (liquid/switchdoor)
 

@@ -1,4 +1,4 @@
-//  $Id: Editor.hh,v 1.14 2001/05/20 13:00:59 grumbel Exp $
+//  $Id: Editor.hh,v 1.15 2001/08/07 18:14:15 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,14 +26,9 @@
 
 #include "../PSMParser.hh"
 #include "../PLF.hh"
-#include "ObjectSelector.hh"
-#include "StatusLine.hh"
-#include "EditorEvent.hh"
-#include "ObjectManager.hh"
-#include "Panel.hh"
-#include "ScrollMap.hh"
 
 ///
+class EditorView;
 class EditorEvent;
 class Panel;
 class ScrollMap;
@@ -89,48 +84,34 @@ private:
   
   enum { SELECTOR_TOOL, ZOOM_TOOL } tool;
 
-public:
-  ///
-  Editor ();
-  ///
-  ~Editor ();
+  static Editor* instance_;
 
-  ///
+  Editor ();
+public:
+  ~Editor ();
+  
+  static Editor* instance ();
+
   std::string read_string (std::string prefix = "", std::string default_str = "");
-  ///
   void edit ();
-  ///
   void draw ();
-  ///
   void draw_noflip();
-  ///
   void interactive_move_object();
-  ///
   void move_objects();
 
-  ///
   void rect_get_current_objs();
 
-  ///
   bool mouse_moved();
-
-  ///
   void scroll();
-
-  ///
   void edit_current_objs();
-
   void zoom_mode ();
+  void load_level (const std::string& str);
 
-  ///
   void register_event_handler();
-  ///
   void unregister_event_handler();
-  ///
+
   ObjectManager* get_object_manager() { return object_manager; }
-  ///
   std::string save_tmp_level ();
-  ///
   EditorEvent* get_event() { return event; }
 };
 

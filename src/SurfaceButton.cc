@@ -1,4 +1,4 @@
-//  $Id: SurfaceButton.cc,v 1.30 2001/07/27 15:00:47 grumbel Exp $
+//  $Id: SurfaceButton.cc,v 1.31 2001/08/07 18:14:14 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,6 +27,7 @@
 #include "System.hh"
 #include "PingusMenuManager.hh"
 #include "Credits.hh"
+#include "editor/Editor.hh"
 
 #include "SurfaceButton.hh"
 
@@ -309,11 +310,17 @@ EditorButton::~EditorButton()
 
 }
 
+void 
+EditorButton::load_level(const std::string& str)
+{
+  Editor::instance ()->load_level (str);
+}
+
 void
 EditorButton::on_click()
 {
   menu->get_manager ()->disable_events ();
-  editor.edit();
+  Editor::instance()->edit();
   menu->get_manager ()->enable_events ();
 }
 

@@ -1,4 +1,4 @@
-//  $Id: Editor.cc,v 1.29 2001/08/04 12:46:22 grumbel Exp $
+//  $Id: Editor.cc,v 1.30 2001/08/07 18:14:15 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,7 +28,24 @@
 #include "../Display.hh"
 #include "../PingusResource.hh"
 #include "../System.hh"
+#include "EditorObj.hh"
 #include "Editor.hh"
+#include "EditorEvent.hh"
+#include "Panel.hh"
+#include "ScrollMap.hh"
+#include "StatusLine.hh"
+#include "ObjectSelector.hh"
+
+Editor* Editor::instance_ = 0;
+
+Editor*
+Editor::instance ()
+{ 
+  if (instance_ == 0)
+    instance_ = new Editor ();
+  
+  return instance_; 
+}
 
 Editor::Editor ()
 {
@@ -444,6 +461,12 @@ Editor::edit_current_objs()
     std::cout << "No single object selected" << std::endl;
 }
 
+void 
+Editor::load_level (const std::string& str)
+{
+  std::cout << "Editor::load_level(" << str << std::endl;
+  object_manager->load_level(str);
+}
 
 /*
 void
@@ -493,6 +516,9 @@ Editor::interactive_load()
 
 /***********************************************
 $Log: Editor.cc,v $
+Revision 1.30  2001/08/07 18:14:15  grumbel
+Some support for launching a level directly in the editor
+
 Revision 1.29  2001/08/04 12:46:22  grumbel
 Some code cleanup and warning removal
 

@@ -1,4 +1,4 @@
-//  $Id: PingusMenu.cc,v 1.49 2001/07/27 15:00:47 grumbel Exp $
+//  $Id: PingusMenu.cc,v 1.50 2001/08/07 18:14:14 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -49,7 +49,10 @@ PingusMenu::preload ()
       boost::shared_ptr<SurfaceButton> editor_button (new EditorButton (this));
  
       if (start_editor)
-	editor_button->on_click ();
+	{
+	  
+	  editor_button->on_click ();
+	}
 
       background         = PingusResource::load_surface("misc/logo", "core");
 
