@@ -43,7 +43,7 @@ RSC=rc.exe
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /YX /FD /c
-# ADD CPP /nologo /MT /W3 /Gi /vd0 /GR- /GX /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /YX /FD /TP /c
+# ADD CPP /nologo /MT /W3 /Gi /vd0 /GX /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "LIBXML_2" /YX /FD /TP /c
 # SUBTRACT CPP /Gf /Gy /u /Fr
 # ADD BASE MTL /nologo /D "NDEBUG" /mktyplib203 /win32
 # ADD MTL /nologo /D "NDEBUG" /mktyplib203 /win32
@@ -56,7 +56,7 @@ BSC32=bscmake.exe
 LINK32=link.exe
 # ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /machine:I386
 # ADD LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib ddraw.lib dsound.lib dinput.lib winmm.lib wsock32.lib hermes.lib ClanApp.lib clanCore.lib clanDisplay.lib clanGL.lib clanPNG.lib clanGUI.lib clanSound.lib libxml2.lib jpeg.lib libpng.lib zlib.lib clanTTF.lib clanJavaScript.lib clanVorbis.lib clanJPEG.lib /nologo /version:0.5 /subsystem:windows /machine:I386 /nodefaultlib:"msvcrt.lib" /libpath:"d:\games\pingus\release"
-# SUBTRACT LINK32 /verbose /profile /pdb:none /incremental:yes /map /debug /nodefaultlib /pdbtype:<none>
+# SUBTRACT LINK32 /verbose /profile /pdb:none /incremental:yes /map /debug /nodefaultlib
 
 !ELSEIF  "$(CFG)" == "pingus - Win32 Debug"
 
@@ -72,7 +72,7 @@ LINK32=link.exe
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /YX /FD /GZ /c
-# ADD CPP /nologo /MTd /Ze /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /YX /FD /GZ /TP /c
+# ADD CPP /nologo /MTd /Gm /vd0 /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /D "LIBXML_2" /YX /FD /GZ /TP /c
 # SUBTRACT CPP /X
 # ADD BASE MTL /nologo /D "_DEBUG" /mktyplib203 /win32
 # ADD MTL /nologo /D "_DEBUG" /mktyplib203 /win32
@@ -83,7 +83,7 @@ BSC32=bscmake.exe
 # ADD BSC32 /nologo
 LINK32=link.exe
 # ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /debug /machine:I386 /pdbtype:sept
-# ADD LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib ddraw.lib dsound.lib dinput.lib winmm.lib wsock32.lib hermes.lib ClanApp.lib clanCore.lib clanDisplay.lib clanGL.lib clanPNG.lib clanGUI.lib clanSound.lib libxml2.lib jpeg.lib libpng.lib zlib.lib clanTTF.lib clanJavaScript.lib clanVorbis.lib clanJPEG.lib /nologo /subsystem:windows /debug /machine:I386 /pdbtype:sept
+# ADD LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib ddraw.lib dsound.lib dinput.lib winmm.lib wsock32.lib hermes.lib ClanApp.lib clanCore.lib clanDisplay.lib clanGL.lib clanPNG.lib clanGUI.lib clanSound.lib libxml2.lib jpeg.lib libpng.lib zlib.lib clanTTF.lib clanJavaScript.lib clanVorbis.lib clanJPEG.lib /nologo /subsystem:windows /debug /machine:I386 /nodefaultlib:"msvcrt.lib" /pdbtype:sept
 
 !ENDIF 
 
@@ -235,6 +235,10 @@ SOURCE=.\src\editor\EditorGroundpieceObj.cc
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\editor\EditorHelpScreen.cc
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\editor\EditorObj.cc
 # End Source File
 # Begin Source File
@@ -248,10 +252,6 @@ SOURCE=.\src\editor\EditorObjGroupData.cc
 # Begin Source File
 
 SOURCE=.\src\editor\EditorView.cc
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\editor\EditorWorldObj.cc
 # End Source File
 # Begin Source File
 
@@ -540,10 +540,6 @@ SOURCE=.\src\GameCounter.cc
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\GameObj.cc
-# End Source File
-# Begin Source File
-
 SOURCE=.\src\GamepadController.cc
 # End Source File
 # Begin Source File
@@ -680,10 +676,6 @@ SOURCE=.\src\PinguMap.cc
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\PinguRandomMap.cc
-# End Source File
-# Begin Source File
-
 SOURCE=.\src\pingus.rc
 # End Source File
 # Begin Source File
@@ -693,10 +685,6 @@ SOURCE=.\src\PingusCounter.cc
 # Begin Source File
 
 SOURCE=.\src\PingusCounterBar.cc
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\PingusDemo.cc
 # End Source File
 # Begin Source File
 
@@ -733,10 +721,6 @@ SOURCE=.\src\PingusMenuManager.cc
 # Begin Source File
 
 SOURCE=.\src\PingusMessageBox.cc
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\PingusMode.cc
 # End Source File
 # Begin Source File
 
@@ -961,10 +945,6 @@ SOURCE=.\src\particles\WeatherGenerator.cc
 # Begin Source File
 
 SOURCE=.\src\World.cc
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\WorldImpl.cc
 # End Source File
 # Begin Source File
 
