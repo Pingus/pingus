@@ -1,4 +1,4 @@
-//  $Id: PLF.cc,v 1.6 2000/03/08 01:48:43 grumbel Exp $
+//  $Id: PLF.cc,v 1.7 2000/03/16 21:33:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,7 +29,7 @@
 #include "PingusError.hh"
 
 int    str_to_int(const std::string& str);
-double str_to_double(const std::string& str);
+float str_to_float(const std::string& str);
 
 // Create a PLF object and start parsing the given file.
 PLF::PLF(std::string filename)
@@ -91,27 +91,43 @@ PLF::set_value(std::string valueid,
       } 
     else if (valueid == "scroll_x") 
       {
-	bg.scroll_x  = str_to_double(value);
+	bg.scroll_x  = str_to_float(value);
       } 
     else if (valueid == "scroll_y") 
       {
-	bg.scroll_y = str_to_double(value);
+	bg.scroll_y = str_to_float(value);
       } 
+    else if (valueid == "para_x")
+      {
+	bg.para_x = str_to_float(value);
+      }
+    else if (valueid == "para_y")
+      {
+	bg.para_y = str_to_float(value);
+      }
+    else if (valueid == "stretch_x")
+      {
+	bg.stretch_x = str_to_bool(value);
+      }
+    else if (valueid == "stretch_y")
+      {
+	bg.stretch_y = str_to_bool(value);
+      }
     else if (valueid == "dim") 
       {
-	bg.dim = str_to_double(value);
+	bg.dim = str_to_float(value);
       } 
     else if (valueid == "red") 
       {
-	bg.red = str_to_double(value);	
+	bg.red = str_to_float(value);	
       } 
     else if (valueid == "green") 
       {
-	bg.green = str_to_double(value);	
+	bg.green = str_to_float(value);	
       } 
     else if (valueid == "blue") 
       {
-	bg.blue = str_to_double(value);	
+	bg.blue = str_to_float(value);	
       } 
     else 
       {
@@ -225,7 +241,7 @@ PLF::set_value(std::string valueid,
     } else if (valueid == "image") {
       hotspot_s.desc = ResDescriptor(cast, value);
     } else if (valueid == "para") {
-      hotspot_s.para = str_to_double(value);
+      hotspot_s.para = str_to_float(value);
     } else {
       throw PingusError("PLF:Hotspot: Unknown value id " + valueid);
     }
@@ -481,16 +497,33 @@ PLF::str_to_int(const std::string& str)
   return ret_val;
 }
 
-double
-PLF::str_to_double(const std::string& str)
+float
+PLF::str_to_float(const std::string& str)
 {
-  double ret_val;
+  float ret_val;
 
-  if (sscanf(str.c_str(), "%lf", &ret_val) != 1) {
-    throw PingusError("PLF: Couldn't covert std::string to double: " + str);
+  if (sscanf(str.c_str(), "%f", &ret_val) != 1) {
+    throw PingusError("PLF: Couldn't covert std::string to float: " + str);
   }
 
   return ret_val;
+}
+
+bool
+PLF::str_to_bool(const std::string& str)
+{
+  if (str == "true" || str == "1")
+    {
+      return true;
+    }
+  else if (str == "false" || str == "0")
+    {
+      return false;
+    }
+  else
+    {
+      throw PingusError("PLF: value: " + str + " is not of type bool.");
+    }
 }
 
 void

@@ -1,4 +1,4 @@
-//  $Id: PLF.hh,v 1.5 2000/03/08 01:48:43 grumbel Exp $
+//  $Id: PLF.hh,v 1.6 2000/03/16 21:33:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -81,8 +81,9 @@ private:
   void set_value(std::string valueid,
 		 std::string cast,
 		 std::string value);
-  int    str_to_int(const std::string& str);
-  double str_to_double(const std::string& str);
+  int   str_to_int(const std::string& str);
+  float str_to_float(const std::string& str);
+  bool  str_to_bool(const std::string& str);
 public:
   PLF(string);
   ~PLF();
