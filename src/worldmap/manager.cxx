@@ -1,4 +1,4 @@
-//  $Id: manager.cxx,v 1.35 2003/04/10 11:51:32 grumbel Exp $
+//  $Id: manager.cxx,v 1.36 2003/04/10 15:40:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -79,7 +79,7 @@ public:
 
 
 WorldMapManagerCreditsButton::WorldMapManagerCreditsButton()
-  : GUI::SurfaceButton(800 - 150, 0,
+  : GUI::SurfaceButton(CL_Display::get_width() - 150, 0,
                        ResDescriptor("worldmap/credits_button_normal", "core"),
                        ResDescriptor("worldmap/credits_button_pressed", "core"),
                        ResDescriptor("worldmap/credits_button_hover", "core"))
@@ -99,7 +99,7 @@ void
 WorldMapManagerCreditsButton::draw (GraphicContext& gc)
 {
   SurfaceButton::draw(gc);
-  gc.print_left(Fonts::chalk_small, 800 - 150 + 15, 5, _("Show Ending?"));
+  gc.print_left(Fonts::chalk_small, CL_Display::get_width() - 150 + 15, 5, _("Show Ending?"));
 }
 
 void
@@ -139,7 +139,7 @@ WorldMapManagerStoryButton::on_click()
 }
 
 WorldMapManagerCloseButton::WorldMapManagerCloseButton()
-  : GUI::SurfaceButton(0, 600 - 37,
+  : GUI::SurfaceButton(0, CL_Display::get_height() - 37,
                        ResDescriptor("worldmap/leave_button_normal", "core"),
                        ResDescriptor("worldmap/leave_button_pressed", "core"),
                        ResDescriptor("worldmap/leave_button_hover", "core"))
@@ -157,7 +157,7 @@ void
 WorldMapManagerCloseButton::draw (GraphicContext& gc)
 {
   SurfaceButton::draw(gc);
-  gc.print_left(Fonts::chalk_small, 10, 580, _("Leave?"));
+  gc.print_left(Fonts::chalk_small, 10, CL_Display::get_height() - 20, _("Leave?"));
 }
 
 void
@@ -167,7 +167,7 @@ WorldMapManagerCloseButton::on_click()
 }
 
 WorldMapManagerEnterButton::WorldMapManagerEnterButton()
-  : GUI::SurfaceButton(800 - 119, 600 - 37,
+  : GUI::SurfaceButton(CL_Display::get_width() - 119, CL_Display::get_height() - 37,
                        ResDescriptor("worldmap/enter_button_normal", "core"),
                        ResDescriptor("worldmap/enter_button_pressed", "core"),
                        ResDescriptor("worldmap/enter_button_hover", "core"))
@@ -194,7 +194,10 @@ WorldMapManagerEnterButton::draw (GraphicContext& gc)
   else
     {
       SurfaceButton::draw(gc);
-      gc.print_left(Fonts::chalk_small, 700, 580, _("Enter?"));
+      gc.print_left(Fonts::chalk_small, 
+                    CL_Display::get_width() - 100,
+                    CL_Display::get_height() - 20, 
+                    _("Enter?"));
     }
 }
 

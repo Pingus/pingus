@@ -1,4 +1,4 @@
-//  $Id: story_screen.cxx,v 1.14 2003/04/09 23:57:03 grumbel Exp $
+//  $Id: story_screen.cxx,v 1.15 2003/04/10 15:40:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -121,7 +121,7 @@ void
 StoryScreenComponent::draw (GraphicContext& gc)
 {
   gc.draw(background, 0, 0);
-  gc.print_center(Fonts::chalk_large, 400, 100, story.title);
+  gc.print_center(Fonts::chalk_large, CL_Display::get_width()/2, 100, story.title);
   gc.draw(page_surface,  gc.get_width()/2 - page_surface.get_width()/2,
           160);
   gc.print_left(Fonts::chalk_normal, 120, 335, display_text);
