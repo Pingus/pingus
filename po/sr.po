@@ -1,227 +1,226 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR Ingo Ruhnke
+# Translation of Pingus to Serbian.
+# Prevod Pingusa na Srpski.
+# Copyright (C) 2003. Ingo Ruhnke
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2003-04-11 17:16+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Project-Id-Version: Pingus 0.6.0\n"
+"POT-Creation-Date: 2003-04-13 12:28+0200\n"
+"PO-Revision-Date: 2003-04-11 17:16+0200\n"
+"Last-Translator: Milan Babuskov <mbabuskov@yahoo.com>\n"
+"Language-Team: <mbabuskov@yahoo.com>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: src/config.cxx:68
 msgid "Couldn't open: "
-msgstr ""
+msgstr "Nije moguce otvoriti: "
 
 #: src/config.cxx:167
 msgid "Unexpected char: '"
-msgstr ""
+msgstr "Neocekivan karakter: '"
 
 #: src/config.cxx:201
 msgid "Unexpected char '"
-msgstr ""
+msgstr "Neocekivan karakter: '"
 
 #: src/credits.cxx:46
 msgid "-Idea"
-msgstr ""
+msgstr "-Ideja"
 
 #: src/credits.cxx:50
 msgid "-Maintaining"
-msgstr ""
+msgstr "-Odrzavanje"
 
 #: src/credits.cxx:54
 msgid "-Programming"
-msgstr ""
+msgstr "-Programiranje"
 
 #: src/credits.cxx:60
 msgid "-Porting (Win32)"
-msgstr ""
+msgstr "-Windows verzija"
 
 #: src/credits.cxx:68
 msgid "-Gfx"
-msgstr ""
+msgstr "-Grafika"
 
 #: src/credits.cxx:79
 msgid "-Music"
-msgstr ""
+msgstr "-Muzika"
 
 #: src/credits.cxx:85
 msgid "-Level Design"
-msgstr ""
+msgstr "-Dizajn nivoa"
 
 #: src/credits.cxx:90
 msgid "-Story"
-msgstr ""
+msgstr "-Prica"
 
 #: src/credits.cxx:94
 msgid "-Translation (german)"
-msgstr ""
+msgstr "-Prevod (nemacki)"
 
 #: src/credits.cxx:100
 msgid "-Special"
-msgstr ""
+msgstr "-Posebno"
 
 #: src/credits.cxx:101
 msgid "-Thanks to"
-msgstr ""
+msgstr "-se zahvaljujemo"
 
 #: src/credits.cxx:135
 msgid "_And a very Special Thanks"
-msgstr ""
+msgstr "_A narocito se zahvaljujemo"
 
 #: src/credits.cxx:136
 msgid "_to all the people who"
-msgstr ""
+msgstr "_svim ljudima"
 
 #: src/credits.cxx:137
 msgid "_contribute to"
-msgstr ""
+msgstr "_koji doprinose"
 
 #: src/credits.cxx:138
 msgid "_Free Software!"
-msgstr ""
+msgstr "_Free Softveru!"
 
 #: src/credits.cxx:144
 msgid "_Thank you for"
-msgstr ""
+msgstr "_Hvala sto"
 
 #: src/credits.cxx:145
 msgid "_playing!"
-msgstr ""
+msgstr "_ste igrali!"
 
 #: src/editor/editor_event.cxx:580
 msgid "Enter filename to save as:"
-msgstr ""
+msgstr "Unesi naziv fajla za snimanje:"
 
 #: src/editor/editor_help_screen.cxx:45
 msgid "F1 - show/hide this help screen"
-msgstr ""
+msgstr "F1 - prikazi/sakrij ovaj pomocni ekran"
 
 #: src/editor/editor_help_screen.cxx:46
 msgid "F2 - launch level building tutorial"
-msgstr ""
+msgstr "F2 - pokreni kurs za kreiranje nivoa"
 
 #: src/editor/editor_help_screen.cxx:47
 msgid "F3 - toggle background color"
-msgstr ""
+msgstr "F3 - izmeni boju pozadine"
 
 #: src/editor/editor_help_screen.cxx:48
 msgid "F4 - play/test the level"
-msgstr ""
+msgstr "F4 - igraj/testiraj nivo"
 
 #: src/editor/editor_help_screen.cxx:49
 msgid "F5 - load a level"
-msgstr ""
+msgstr "F5 - ucitaj nivo"
 
 #: src/editor/editor_help_screen.cxx:50
 msgid "F6 - save this level"
-msgstr ""
+msgstr "F6 - snimi ovaj nivo"
 
 #: src/editor/editor_help_screen.cxx:51
 msgid "F7 - [unset]"
-msgstr ""
+msgstr "F7 - [nista]"
 
 #: src/editor/editor_help_screen.cxx:52
 msgid "F8 - quick save/backup save?!"
-msgstr ""
+msgstr "F9 - brzo snimi/snimi rezervu?!"
 
 #: src/editor/editor_help_screen.cxx:53
 msgid "F9 - change level width and height"
-msgstr ""
+msgstr "F9 - promeni sirinu i visinu nivoa"
 
 #: src/editor/editor_help_screen.cxx:54
 msgid "F10 - [unset]"
-msgstr ""
+msgstr "F10 - [nista]"
 
 #: src/editor/editor_help_screen.cxx:55
 msgid "F11 - toggle fps counter"
-msgstr ""
+msgstr "F11 - promeni brojac fps"
 
 #: src/editor/editor_help_screen.cxx:56
 msgid "F12 - make screenshot"
-msgstr ""
+msgstr "F12 - uslikaj ekran"
 
 #: src/editor/editor_help_screen.cxx:60
 msgid "Pos1 - increase object size"
-msgstr ""
+msgstr "Posl - povecaj objekat"
 
 #: src/editor/editor_help_screen.cxx:61
 msgid "End  - decrease object size"
-msgstr ""
+msgstr "End  - smanji objekat"
 
 #: src/editor/editor_help_screen.cxx:62
 msgid "Cursor Keys - Move object"
-msgstr ""
+msgstr "Kursorske strelice - Pomeri objekat"
 
 #: src/editor/editor_help_screen.cxx:63
 msgid "Shift 'Cursor Keys' - Move objects fast "
-msgstr ""
+msgstr "Shift i 'Kursorske strelice' - Brzo pomeri objekte"
 
 #: src/editor/editor_help_screen.cxx:64
 msgid "PageUp   - level object up"
-msgstr ""
+msgstr "PageUp   - podigni objekat"
 
 #: src/editor/editor_help_screen.cxx:65
 msgid "PageDown - level object down"
-msgstr ""
+msgstr "PageDown - spusti objekat"
 
 #: src/editor/editor_help_screen.cxx:66
 msgid "Shift PageUp   - increase objects z-pos by 50"
-msgstr ""
+msgstr "Shift PageUp   - povecaj z-koordinatu za 50"
 
 #: src/editor/editor_help_screen.cxx:67
 msgid "Shift PageDown - decrease objects z-pos by 50"
-msgstr ""
+msgstr "Shift PageDown - smanji z-koordinatu za 50"
 
 #: src/editor/editor_help_screen.cxx:68
 msgid "Enter - Set default zoom (1:1)"
-msgstr ""
+msgstr "Enter - Postavi standardni zum (1:1)"
 
 #: src/editor/editor_help_screen.cxx:69
 msgid "d - duplicate object"
-msgstr ""
+msgstr "d - dupliraj objekat"
 
 #: src/editor/editor_help_screen.cxx:70
 msgid "a - mark all objects"
-msgstr ""
+msgstr "a - oznaci sve objekte"
 
 #: src/editor/editor_help_screen.cxx:71
 msgid "shift leftmouseclick - add object to selection"
-msgstr ""
+msgstr "shift levo_dugme_misa - dodaj objekat odabiru"
 
 #: src/editor/editor_help_screen.cxx:72
 msgid "leftmouseclick - select object"
-msgstr ""
+msgstr "levo_dugme_misa - izaberi objekat"
 
 #: src/editor/editor_help_screen.cxx:73
 msgid "Insert - insert new object"
-msgstr ""
+msgstr "Insert - ubaci novi objekat"
 
 #: src/editor/editor_help_screen.cxx:74
 msgid "Remove - remove selected object"
-msgstr ""
+msgstr "Remove - ukloni izabrani objekat"
 
 #: src/editor/editor_help_screen.cxx:75
 msgid "g - ungroup/group current selection"
-msgstr ""
+msgstr "g - grupisi/razdvoj trenutni odabir"
 
 #: src/editor/editor_help_screen.cxx:76
 msgid "Ctrl PageUp   - increase objects z-pos by 1"
-msgstr ""
+msgstr "Ctrl PageUp   - povecaj z-koordinatu za 1"
 
 #: src/editor/editor_help_screen.cxx:77
 msgid "Ctrl PageDown - decrease objects z-pos by 1"
-msgstr ""
+msgstr "Ctrl PageDown - smanji z-koordinatu za 1"
 
 #: src/editor/editor_help_screen.cxx:83
 msgid "Naming Convention: <LEVELNAME><NUMBER>-<CREATOR>.xml"
-msgstr ""
+msgstr "Konvencija Nazivanja: <NAZIVNIVOA><BROJ>-<AUTOR>.xml"
 
 #: src/editor/editor_help_screen.cxx:85
 msgid ""
@@ -229,857 +228,871 @@ msgid ""
 "release,\n"
 "please mail it to pingus-devel@nongnu.org."
 msgstr ""
+"Ako si kreirao nivo i zelis da se pojavi u sledecem izdanju Pingusa,\n"
+"treba poslati e-mail na pingus-devel@nongnu.org."
 
 #: src/editor/object_selector.cxx:106
 msgid "1 - guillotine"
-msgstr ""
+msgstr "1 - giljotina"
 
 #: src/editor/object_selector.cxx:107
 msgid "2 - hammer"
-msgstr ""
+msgstr "2 - cekic"
 
 #: src/editor/object_selector.cxx:108
 msgid "3 - spike"
-msgstr ""
+msgstr "3 - koplje"
 
 #: src/editor/object_selector.cxx:109
 msgid "4 - laser_exit"
-msgstr ""
+msgstr "4 - laserski_izlaz"
 
 #: src/editor/object_selector.cxx:110
 msgid "5 - fake_exit"
-msgstr ""
+msgstr "5 - lazni_izlaz"
 
 #: src/editor/object_selector.cxx:111
 msgid "6 - smasher"
-msgstr ""
+msgstr "6 - gnjecilica"
 
 #: src/editor/object_selector.cxx:112
 msgid "7 - bumper"
-msgstr ""
+msgstr "7 - odbijac"
 
 #: src/editor/object_selector.cxx:186
 msgid "Select a WorldObj"
-msgstr ""
+msgstr "Izaberi SvetskiObj"
 
 #: src/editor/object_selector.cxx:187
 msgid "1 - teleporter"
-msgstr ""
+msgstr "1 - teleport"
 
 #: src/editor/object_selector.cxx:188
 msgid "2 - switch and door"
-msgstr ""
+msgstr "2 - prekidac i vrata"
 
 #: src/editor/object_selector.cxx:189
 msgid "3 - ConveyorBelt"
-msgstr ""
+msgstr "3 - PokretnaTraka"
 
 #: src/editor/object_selector.cxx:190
 msgid "4 - IceBlock"
-msgstr ""
+msgstr "4 - SantaLeda"
 
 #: src/editor/object_selector.cxx:191
 msgid "5 - InfoBox"
-msgstr ""
+msgstr "5 - Obavestenje"
 
 #: src/editor/object_selector.cxx:232
 msgid "Select a weather"
-msgstr ""
+msgstr "Odaberi vreme"
 
 #: src/editor/object_selector.cxx:233
 msgid "1 - snow"
-msgstr ""
+msgstr "1 - sneg"
 
 #: src/editor/object_selector.cxx:234
 msgid "2 - rain"
-msgstr ""
+msgstr "2 - kisa"
 
 #: src/editor/object_selector.cxx:265
 msgid "Select an entrance"
-msgstr ""
+msgstr "Odaberi ulaz"
 
 #: src/editor/object_selector.cxx:266
 msgid "1 - generic"
-msgstr ""
+msgstr "1 - genericki"
 
 #: src/editor/object_selector.cxx:267
 msgid "2 - woodthing"
-msgstr ""
+msgstr "2 - drveni"
 
 #: src/editor/object_selector.cxx:268
 msgid "3 - cloud"
-msgstr ""
+msgstr "3 - oblak"
 
 #: src/editor/object_selector.cxx:269
 msgid "h - entrance surface (hotspot)"
-msgstr ""
+msgstr "h - povrsina ulaza (senzor)"
 
 #: src/editor/object_selector.cxx:343
 msgid "What object type do you want?"
-msgstr ""
+msgstr "Koju vrstu objekta zelis?"
 
 #: src/editor/object_selector.cxx:344 src/editor/object_selector.cxx:400
 msgid "h - Hotspot"
-msgstr ""
+msgstr "h - Senzor"
 
 #: src/editor/object_selector.cxx:345
 msgid "g - Groundpiece (ground) [not implemented]"
-msgstr ""
+msgstr "g - Zemljiste (zemlja) [nije napravljeno]"
 
 #: src/editor/object_selector.cxx:394 src/editor/object_selector.cxx:562
 msgid "Which object do you want?"
-msgstr ""
+msgstr "Koji objekat zelis?"
 
 #: src/editor/object_selector.cxx:395
 msgid "g - Groundpiece (ground)"
-msgstr ""
+msgstr "g - Zemljiste (zemlja)"
 
 #: src/editor/object_selector.cxx:396
 msgid "s - Groundpiece (solid)"
-msgstr ""
+msgstr "s - Zemljiste (cvrsto)"
 
 #: src/editor/object_selector.cxx:397
 msgid "b - Groundpiece (bridge)"
-msgstr ""
+msgstr "b - Zemljiste (most)"
 
 #: src/editor/object_selector.cxx:398
 msgid "n - Groundpiece (transparent)"
-msgstr ""
+msgstr "n - Zemljiste (providno)"
 
 #: src/editor/object_selector.cxx:399
 msgid "r - Groundpiece (remove)"
-msgstr ""
+msgstr "r - Zemljiste (ukloni)"
 
 #: src/editor/object_selector.cxx:401
 msgid "e - Entrance"
-msgstr ""
+msgstr "e - Ulaz"
 
 #: src/editor/object_selector.cxx:402
 msgid "x - Exit"
-msgstr ""
+msgstr "x - Izlaz"
 
 #: src/editor/object_selector.cxx:403
 msgid "l - Liquid"
-msgstr ""
+msgstr "l - Tecnost"
 
 #: src/editor/object_selector.cxx:404
 msgid "w - Weather"
-msgstr ""
+msgstr "w - Vreme"
 
 #: src/editor/object_selector.cxx:405
 msgid "t - Traps"
-msgstr ""
+msgstr "t - Zamke"
 
 #: src/editor/object_selector.cxx:406
 msgid "o - WorldObject"
-msgstr ""
+msgstr "o - ObjekatSveta"
 
 #: src/editor/object_selector.cxx:407
 msgid "z - Background"
-msgstr ""
+msgstr "z - Pozadina"
 
 #: src/editor/object_selector.cxx:408
 msgid "p - Prefab (ObjectGroup)"
-msgstr ""
+msgstr "p - Montaza (GrupaObjekata)"
 
 #: src/editor/object_selector.cxx:409
 msgid "f - something from file (~/.pingus/images/)"
-msgstr ""
+msgstr "f - nesto iz fajla (~/.pingus/images/)"
 
 #: src/editor/object_selector.cxx:498
 msgid "Which prefab do you want?"
-msgstr ""
+msgstr "Koju montazu zelis?"
 
 #: src/editor/object_selector.cxx:563
 msgid "1 - Surface Background"
-msgstr ""
+msgstr "1 - Pozadina sa dezenom"
 
 #: src/editor/object_selector.cxx:564
 msgid "2 - Solid Color Background"
-msgstr ""
+msgstr "2 - Jednobojna Pozadina"
 
 #: src/editor/object_selector.cxx:565
 msgid "3 - Starfield Background"
-msgstr ""
+msgstr "3 - Zvezdana Pozadina"
 
 #: src/editor/object_selector.cxx:566
 msgid "4 - Thunderstorm Background"
-msgstr ""
+msgstr "4 - Olujna Pozadina"
 
 #: src/editor/panel_icons.cxx:31
 msgid "Load a level (F5)"
-msgstr ""
+msgstr "Ucitaj nivo (F5)"
 
 #: src/editor/panel_icons.cxx:44
 msgid "Exit the editor (Escape)"
-msgstr ""
+msgstr "Izlaz iz editora (Escape)"
 
 #: src/editor/panel_icons.cxx:56
 msgid "Save this level (F6)"
-msgstr ""
+msgstr "Snimi ovaj nivo (F6)"
 
 #: src/editor/panel_icons.cxx:68
 msgid "Delete marked objects (delete"
-msgstr ""
+msgstr "Brisanje oznacenih objekata (delete"
 
 #: src/editor/panel_icons.cxx:80
 msgid "Duplicate current object (d)"
-msgstr ""
+msgstr "Dupliraj trenutni objekat (d)"
 
 #: src/editor/panel_icons.cxx:92
 msgid "Edit Level Properties"
-msgstr ""
+msgstr "Podesi Karakteristike Nivoa"
 
 #: src/editor/panel_icons.cxx:104
 msgid "Edit Object Properties"
-msgstr ""
+msgstr "Podesi Karakteristike Objekta"
 
 #: src/editor/panel_icons.cxx:116
 msgid "Start the level and test it (F4)"
-msgstr ""
+msgstr "Pokreni i testiraj nivo(F4)"
 
 #: src/editor/panel_icons.cxx:128
 msgid "Create a new level from scratch"
-msgstr ""
+msgstr "Kreiraj novi nivo iz pocetka"
 
 #: src/editor/panel_icons.cxx:140
 msgid "Insert an object (Insert)"
-msgstr ""
+msgstr "Ubaci objekat (Insert)"
 
 #: src/editor/panel_icons.cxx:152
 msgid "Zoom into a region"
-msgstr ""
+msgstr "Priblizi oblast"
 
 #: src/editor/panel_icons.cxx:164
 msgid "Zoom in"
-msgstr ""
+msgstr "Priblizi"
 
 #: src/editor/panel_icons.cxx:176
 msgid "Zoom out"
-msgstr ""
+msgstr "Udalji"
 
 #: src/editor/panel_icons.cxx:188
 msgid "Setup Number of Actions"
-msgstr ""
+msgstr "Podesi broj akcija"
 
 #: src/editor/panel_icons.cxx:200
 msgid "Display Help Screen (F1)"
-msgstr ""
+msgstr "Prikazi pomocni ekran (F1)"
 
 #: src/exit_menu.cxx:46
 msgid "Yes"
-msgstr ""
+msgstr "Da"
 
 #: src/exit_menu.cxx:79
 msgid "No"
-msgstr ""
+msgstr "Ne"
 
 #: src/exit_menu.cxx:112
 msgid "Exit Pingus?"
-msgstr ""
+msgstr "Izlaz iz Pingusa?"
 
 #: src/fps_counter.cxx:46
 msgid "unknown"
-msgstr ""
+msgstr "nepoznato"
 
 #: src/game_time.cxx:67
 msgid "unlimited"
-msgstr ""
+msgstr "neograniceno"
 
 #: src/level_desc.cxx:71
 msgid "Designed by "
-msgstr ""
+msgstr "Dizajnirao"
 
 #: src/level_desc.cxx:76
 #, c-format
 msgid "Pingus to Save: %d"
-msgstr ""
+msgstr "Spasiti Pingusa: %d"
 
 #: src/level_desc.cxx:78
 #, c-format
 msgid "Number of Pingus: %d"
-msgstr ""
+msgstr "Broj Pingusa: %d"
 
 #: src/level_desc.cxx:83
 msgid "Loading..."
-msgstr ""
+msgstr "Ucitavanje..."
 
 #: src/level_desc.cxx:86
 msgid "Loading finished. Press a mouse button to start the level"
-msgstr ""
+msgstr "Ucitavanje gotovo. Pritisni dugme misa da pocne nivo"
 
 #: src/level_result.cxx:59
 msgid "Results:"
-msgstr ""
+msgstr "Rezultati:"
 
 #: src/level_result.cxx:65
 #, c-format
 msgid "Pingus saved:   %3d/%3d"
-msgstr ""
+msgstr "Spaseno Pingusa:   %3d/%3d"
 
 #: src/level_result.cxx:70
 #, c-format
 msgid "Pingus killed:  %3d/%3d"
-msgstr ""
+msgstr "Ubijeno Pingusa:  %3d/%3d"
 
 #: src/level_result.cxx:86
 msgid "Press button to continue..."
-msgstr ""
+msgstr "Pritisni dugme za nastavak..."
 
 #: src/level_result.cxx:100
 msgid ""
 "As many Pingus escaped as entered the level. That's going to be hard to "
 "beat.... unless this game becomes pornographic."
 msgstr ""
+"Spaseno je onoliko Pingusa koliko je uslo u nivo. To ce biti tesko "
+"nadmasiti.... osim ako igra postane pornografska."
 
 #: src/level_result.cxx:102
 msgid "Very impressive indeed."
-msgstr ""
+msgstr "Zaista vrlo impresivno."
 
 #: src/level_result.cxx:104
 msgid "Good work. Still room for improvement though."
-msgstr ""
+msgstr "Dobro uradjeno. Mada, moze to i bolje."
 
 #: src/level_result.cxx:106
 msgid "Not too shabby, not too shabby at all."
-msgstr ""
+msgstr "Nije lose, uopste nije lose."
 
 #: src/level_result.cxx:108
 msgid ""
 "That was OK, but Pingu life insurance premiums have just gotten more "
 "expensive."
 msgstr ""
+"To je bilo dobro, ali polise zivotnog osiguranja za Pinguse upravo "
+"poskupljuju."
 
 #: src/level_result.cxx:110
 msgid "Maybe this level calls for a different strategy."
-msgstr ""
+msgstr "Mozda ovaj nivo zahteva drugaciji pristup."
 
 #: src/level_result.cxx:112
 msgid "Exactly half. Are you saving only the female ones?"
-msgstr ""
+msgstr "Tacno pola. Da li mozda spasavas samo zenske?"
 
 #: src/level_result.cxx:114
 msgid "If I were a Pingu, I never would have left that entrance."
-msgstr ""
+msgstr "Da sam ja Pingus, nikad ne bih ni krenuo sa ulaza."
 
 #: src/level_result.cxx:116
 msgid "Maybe you would feel more at home playing Quake."
-msgstr ""
+msgstr "Mozda si vrsta osobe koja vise voli Quake."
 
 #: src/level_result.cxx:118
 msgid ""
 "Maybe this level calls for a different stratagy. Like attempting to save "
 "them, for example."
 msgstr ""
+"Mozda ovaj nivo zahteva drugaciji pristup. Na primer, bilo bi dobro da ih "
+"probas spasiti."
 
 #: src/level_result.cxx:120
 msgid "Ever considered a career as a Pingu exterminator?"
-msgstr ""
+msgstr "Da li razmisljas da se profesionalno bavis ubijanjem Pingusa?"
 
 #: src/level_result.cxx:122
 msgid "You missed one! What's your excuse!?"
-msgstr ""
+msgstr "Propustio si jednog! Koji je tvoj izgovor?!"
 
 #: src/level_result.cxx:124
 msgid "Please reassure me that you hit the Armageddon button."
-msgstr ""
+msgstr "Molim te, ubedi me da si aktivirao Armageddon dugme."
 
 #: src/level_result.cxx:126
 msgid "You've got a negative save/total value, something is buggy."
-msgstr ""
+msgstr "Imas negativan odnos spaseno/ukupno, postoji neka greska."
 
-#: src/menu_button.cxx:179
+#: src/menu_button.cxx:177
 msgid "..:: The people who brought this game to you ::.."
-msgstr ""
+msgstr "..:: Ljudi koji su Vam omogucili ovu igru ::.."
 
-#: src/menu_button.cxx:182
+#: src/menu_button.cxx:180
 msgid "Credits"
-msgstr ""
+msgstr "Zasluge"
+
+#: src/menu_button.cxx:212
+msgid "..:: Takes you to the options menu ::.."
+msgstr "..:: Vodi Vas na meni sa opcijama ::.."
 
 #: src/menu_button.cxx:215
-msgid "..:: Takes you to the options menu ::.."
-msgstr ""
-
-#: src/menu_button.cxx:218
 msgid "Options"
-msgstr ""
+msgstr "Opcije"
 
-#: src/menu_button.cxx:252
+#: src/menu_button.cxx:248
 msgid "..:: Bye, bye ::.."
-msgstr ""
+msgstr "..:: Vidimo se ::.."
 
-#: src/menu_button.cxx:255
+#: src/menu_button.cxx:251
 msgid "Exit"
-msgstr ""
+msgstr "Izlaz"
 
-#: src/menu_button.cxx:307
+#: src/menu_button.cxx:302
 msgid "..:: Launch the level editor ::.."
-msgstr ""
+msgstr "..:: Pokreni editor nivoa ::.."
 
-#: src/menu_button.cxx:310
+#: src/menu_button.cxx:305
 msgid "Create a"
-msgstr ""
+msgstr "Kreiraj"
 
-#: src/menu_button.cxx:311
+#: src/menu_button.cxx:306
 msgid "Level"
-msgstr ""
+msgstr "Nivo"
 
-#: src/menu_button.cxx:347
+#: src/menu_button.cxx:340
 msgid "..:: Start the game ::.."
-msgstr ""
+msgstr "..:: Pokreni igru ::.."
 
-#: src/menu_button.cxx:350
+#: src/menu_button.cxx:341
 msgid "Start"
-msgstr ""
+msgstr "Pokreni"
 
-#: src/menu_button.cxx:386
+#: src/menu_button.cxx:371
 msgid "..:: Start a contrib level ::.."
-msgstr ""
+msgstr "..:: Pokreni dodatni nivo ::.."
 
-#: src/menu_button.cxx:388
+#: src/menu_button.cxx:373
 msgid "Contrib"
-msgstr ""
+msgstr "Dodaci"
 
-#: src/menu_button.cxx:409
+#: src/menu_button.cxx:393
 msgid "..:: Multiplayer Modes... experimental stuff ::.."
-msgstr ""
+msgstr "..:: Modovi za vise igraca... eksperimentalno ::.."
 
-#: src/menu_button.cxx:411
+#: src/menu_button.cxx:395
 msgid "Multi"
-msgstr ""
+msgstr "Vise"
 
 #: src/pingu.cxx:122
 msgid "Setting action to a dead pingu"
-msgstr ""
+msgstr "Postavljanje akcije za mrtvog pingusa"
 
 #: src/pingu_info.cxx:49
 #, c-format
 msgid "pingu_id %d"
-msgstr ""
+msgstr "pingus_id %d"
 
 #: src/pingu_info.cxx:55
 #, c-format
 msgid "action %s"
-msgstr ""
+msgstr "akcija %s"
 
 #: src/pingu_info.cxx:57
 msgid "action none"
-msgstr ""
+msgstr "bez akcije"
 
 #: src/pingus_counter.cxx:49
 #, c-format
 msgid "Released:%3d/%-3d   Out:%3d   Saved:%3d/%-3d"
-msgstr ""
+msgstr "Pusteno:%3d/%-3d   Izaslo:%3d   Spaseno:%3d/%-3d"
 
 #: src/pingus_main.cxx:102
 msgid "| segfault_handler: catched a SIGSEGV."
-msgstr ""
+msgstr "| segfault_handler: uhvacen SIGSEGV."
 
 #: src/pingus_main.cxx:104
 msgid "| Woops, Pingus just crashed, congratulations you've found a bug."
-msgstr ""
+msgstr "| Oops, Pingus sa zakucao, cestitke na pronadjenoj greski."
 
 #: src/pingus_main.cxx:105
 msgid ""
 "| Please write a little bug report to <grumbel@gmx.de>, include informations"
 msgstr ""
+"| Molimo Vas da napisete mali izvestaj o greski na <grumbel@gmx.de>, sa "
+"informacijama"
 
 #: src/pingus_main.cxx:106
 msgid "| where exacly the SIGSEGV occured and how to reproduce it."
-msgstr ""
+msgstr "| gde se tacno SIGSEGV desio i kako da ga reprodukujemo."
 
 #: src/pingus_main.cxx:107
 msgid "| Also try include a backtrace, you can get it like this:"
-msgstr ""
+msgstr "| Takodje pokusajte dati i backtrace, koji mozete dobiti ovako:"
 
 #: src/pingus_main.cxx:113
 msgid "| If that doesn't work, try this:"
-msgstr ""
+msgstr "| Ako ne radi, probajte ovo:"
 
 #: src/pingus_main.cxx:117
 msgid "| [play until it crashes again]"
-msgstr ""
+msgstr "| [igrajte dok se opet ne zakuca]"
 
 #: src/pingus_main.cxx:125
 msgid "| Warning: Pingus recieved a SIGINT, exiting now."
-msgstr ""
+msgstr "| Upozorenje: Pingus je primio SIGINT, izlaz odmah."
 
-#: src/pingus_main.cxx:488
+#: src/pingus_main.cxx:486
 msgid "Unknow char: "
-msgstr ""
+msgstr "Nepoznat karakter: "
 
-#: src/pingus_main.cxx:489
+#: src/pingus_main.cxx:487
 msgid "Usage: "
-msgstr ""
+msgstr "Upotreba: "
 
-#: src/pingus_main.cxx:489
+#: src/pingus_main.cxx:487
 msgid " [OPTIONS]... [LEVELFILE]"
-msgstr ""
+msgstr " [OPCIJE]... [FAJL_NIVOA]"
+
+#: src/pingus_main.cxx:490
+msgid "Options:"
+msgstr "Opcije:"
 
 #: src/pingus_main.cxx:492
-msgid "Options:"
-msgstr ""
+msgid "Set the resolution for pingus (default: 800x600)"
+msgstr "Postavi rezoluciju za pingus (osnovna: 800x600)"
+
+#: src/pingus_main.cxx:493
+msgid "Displays this help"
+msgstr "Prikazi ovu pomoc"
 
 #: src/pingus_main.cxx:494
-msgid "Set the resolution for pingus (default: 800x600)"
-msgstr ""
-
-#: src/pingus_main.cxx:495
-msgid "Displays this help"
-msgstr ""
+msgid "Disable intro"
+msgstr "Onemoguci uvod"
 
 #: src/pingus_main.cxx:496
-msgid "Disable intro"
-msgstr ""
-
-#: src/pingus_main.cxx:498
 msgid "Use OpenGL"
-msgstr ""
+msgstr "Koristi OpenGL"
 
-#: src/pingus_main.cxx:501
+#: src/pingus_main.cxx:499
 msgid "Start in Window Mode"
-msgstr ""
+msgstr "Pokreni u prozoru"
 
-#: src/pingus_main.cxx:502
+#: src/pingus_main.cxx:500
 msgid "Start in Fullscreen"
-msgstr ""
+msgstr "Pokreni preko celog ekrana"
 
-#: src/pingus_main.cxx:506 src/pingus_main.cxx:507
+#: src/pingus_main.cxx:504 src/pingus_main.cxx:505
 msgid "FILE      "
-msgstr ""
+msgstr "FAJL      "
+
+#: src/pingus_main.cxx:504
+msgid "Load a custom level from FILE"
+msgstr "Ucitaj neki nivo iz FAJLA"
+
+#: src/pingus_main.cxx:505
+msgid "Load a custom worldmap from FILE"
+msgstr "Ucitaj neku mapu sveta iz FAJLA"
 
 #: src/pingus_main.cxx:506
-msgid "Load a custom level from FILE"
-msgstr ""
+msgid "Print some more messages to stdout, can be set"
+msgstr "Ispis jos nekih poruka na stdout, moze biti postavljeno"
 
 #: src/pingus_main.cxx:507
-msgid "Load a custom worldmap from FILE"
-msgstr ""
+msgid "multible times to increase verbosity"
+msgstr "vise puta da se poveca informativnost"
 
 #: src/pingus_main.cxx:508
-msgid "Print some more messages to stdout, can be set"
-msgstr ""
+msgid "Prints version number and exit"
+msgstr "Ispisuje verziju i izlazi"
 
 #: src/pingus_main.cxx:509
-msgid "multible times to increase verbosity"
-msgstr ""
+msgid "Launch the Level editor (experimental)"
+msgstr "Pokrece editor nivoa (eksperimentalno)"
 
 #: src/pingus_main.cxx:510
-msgid "Prints version number and exit"
-msgstr ""
-
-#: src/pingus_main.cxx:511
-msgid "Launch the Level editor (experimental)"
-msgstr ""
-
-#: src/pingus_main.cxx:512
 msgid "Disable automatic scrolling"
-msgstr ""
+msgstr "Onemoguci automatsko skrolovanje"
+
+#: src/pingus_main.cxx:515
+msgid "Don't read ~/.pingus/config"
+msgstr "Ne citaj ~/.pingus/config"
+
+#: src/pingus_main.cxx:516
+msgid "FILE       "
+msgstr "FAJL       "
+
+#: src/pingus_main.cxx:516
+msgid "Read config from FILE (default: ~/.pingus/config)"
+msgstr "Citaj podesavanja iz FAJLA (osnovni: ~/.pingus/config)"
 
 #: src/pingus_main.cxx:517
-msgid "Don't read ~/.pingus/config"
-msgstr ""
+msgid "reduce CPU usage, might speed up the game on slower machines"
+msgstr "smanji upotrebu procesora, da se ubrza igra na sporim masinama"
 
 #: src/pingus_main.cxx:518
-msgid "FILE       "
-msgstr ""
-
-#: src/pingus_main.cxx:518
-msgid "Read config from FILE (default: ~/.pingus/config)"
-msgstr ""
+msgid "Debugging and experimental stuff:"
+msgstr "Stvari za dibaging i eksperimente:"
 
 #: src/pingus_main.cxx:519
-msgid "reduce CPU usage, might speed up the game on slower machines"
-msgstr ""
+msgid "Enables some features, only interesting programmers"
+msgstr "Ukljucuje neke mogucnosti, samo za programere"
 
 #: src/pingus_main.cxx:520
-msgid "Debugging and experimental stuff:"
-msgstr ""
+msgid "Enable the output of debugging infos, possible"
+msgstr "Omogucuje ispis dibaging informacija, moguce"
 
 #: src/pingus_main.cxx:521
-msgid "Enables some features, only interesting programmers"
-msgstr ""
+msgid "OPTION's are tiles, gametime, actions, sound, resources, gui,"
+msgstr "OPCIJE su polja, vreme igre, akcije, zvuk, resursi, interfejs,"
 
 #: src/pingus_main.cxx:522
-msgid "Enable the output of debugging infos, possible"
-msgstr ""
+msgid "input"
+msgstr "ulaz"
 
 #: src/pingus_main.cxx:523
-msgid "OPTION's are tiles, gametime, actions, sound, resources, gui,"
-msgstr ""
+msgid "Skip at least N frames, larger values speed the game up"
+msgstr "Preskoci N frejmova, vece vrednosti ubrzavaju igru"
 
 #: src/pingus_main.cxx:524
-msgid "input"
-msgstr ""
+msgid "Skip at most N frames"
+msgstr "Preskoci najvise N frejmova"
 
 #: src/pingus_main.cxx:525
-msgid "Skip at least N frames, larger values speed the game up"
-msgstr ""
+msgid "Set both min and max frameskip to N"
+msgstr "Postavi min i max preskakanje frejmova na N"
 
 #: src/pingus_main.cxx:526
-msgid "Skip at most N frames"
-msgstr ""
+msgid "Set the game speed (0=fastest, >0=slower)"
+msgstr "Podesi brzinu igre (0=najbrze, >0=sporije)"
 
 #: src/pingus_main.cxx:527
-msgid "Set both min and max frameskip to N"
-msgstr ""
+msgid "Prints the fps to stdout"
+msgstr "Ispisi fps na stdout"
 
 #: src/pingus_main.cxx:528
-msgid "Set the game speed (0=fastest, >0=slower)"
-msgstr ""
+msgid "Set the size of the map tiles (default: 32)"
+msgstr "Podesi velicinu polja mape (osnovna: 32)"
 
 #: src/pingus_main.cxx:529
-msgid "Prints the fps to stdout"
-msgstr ""
+msgid "Disable some cpu intensive features"
+msgstr "Onemoguci neke intenzivne mogucnosti"
 
 #: src/pingus_main.cxx:530
-msgid "Set the size of the map tiles (default: 32)"
-msgstr ""
-
-#: src/pingus_main.cxx:531
-msgid "Disable some cpu intensive features"
-msgstr ""
-
-#: src/pingus_main.cxx:532
 msgid "Reduces the CPU usage by issuing sleep()"
-msgstr ""
+msgstr "Smanjuje upotrebu procesora koriscenjem sleep()-a"
 
-#: src/pingus_main.cxx:535
+#: src/pingus_main.cxx:533
 msgid "FILE     "
-msgstr ""
+msgstr "FAJL     "
+
+#: src/pingus_main.cxx:533
+msgid "Plays a demo session from FILE"
+msgstr "Igra demo na osnovu FAJLA"
 
 #: src/pingus_main.cxx:535
-msgid "Plays a demo session from FILE"
-msgstr ""
-
-#: src/pingus_main.cxx:537
 msgid "Record demos for each played level"
-msgstr ""
+msgstr "Snimi demo za svaki odigran nivo"
+
+#: src/pingus_main.cxx:538
+msgid "Sound:"
+msgstr "Zvuk:"
+
+#: src/pingus_main.cxx:539
+msgid "Disable sound"
+msgstr "Omoguci zvuk"
 
 #: src/pingus_main.cxx:540
-msgid "Sound:"
-msgstr ""
+msgid "Disable music"
+msgstr "Omoguci muziku"
 
-#: src/pingus_main.cxx:541
-msgid "Enable sound"
-msgstr ""
-
-#: src/pingus_main.cxx:542
-msgid "Enable music"
-msgstr ""
-
-#: src/pingus_main.cxx:651
+#: src/pingus_main.cxx:661
 msgid "clanVorbis support:           ok"
-msgstr ""
-
-#: src/pingus_main.cxx:653
-msgid "clanVoribs support:  missing (.ogg music files will not be playable)"
-msgstr ""
-
-#: src/pingus_main.cxx:657
-msgid "clanMikMod support:           ok"
-msgstr ""
-
-#: src/pingus_main.cxx:659
-msgid "clanMikMod support:  missing (music files will not be playable)"
-msgstr ""
+msgstr "podrska za clanVorbis:        ok"
 
 #: src/pingus_main.cxx:663
+msgid "clanVoribs support:  missing (.ogg music files will not be playable)"
+msgstr "podrska za clanVorbis:  nedostaje (.ogg fajlovi nece biti pusteni)"
+
+#: src/pingus_main.cxx:667
+msgid "clanMikMod support:           ok"
+msgstr "podrska za clanMikMod:        ok"
+
+#: src/pingus_main.cxx:669
+msgid "clanMikMod support:  missing (music files will not be playable)"
+msgstr "podrska za clanMikMod:  nedostaje (nece biti muzike)"
+
+#: src/pingus_main.cxx:673
 msgid "getext support:               ok"
-msgstr ""
+msgstr "podrska za gettext:           ok"
 
-#: src/pingus_main.cxx:664
+#: src/pingus_main.cxx:674
 msgid "gettext language:        english"
-msgstr ""
-
-#: src/pingus_main.cxx:670
-msgid "sound support:           enabled"
-msgstr ""
-
-#: src/pingus_main.cxx:672
-msgid "sound support:          disabled"
-msgstr ""
-
-#: src/pingus_main.cxx:675
-msgid "music support:           enabled"
-msgstr ""
-
-#: src/pingus_main.cxx:677
-msgid "music support:          disabled"
-msgstr ""
-
-#: src/pingus_main.cxx:679
-msgid "resolution set to:       "
-msgstr ""
+msgstr "gettext jezik:           engleski"
 
 #: src/pingus_main.cxx:680
+msgid "sound support:           enabled"
+msgstr "podrska za zvuk:       omogucena"
+
+#: src/pingus_main.cxx:682
+msgid "sound support:          disabled"
+msgstr "podrska za zvuk:     onemogucena"
+
+#: src/pingus_main.cxx:685
+msgid "music support:           enabled"
+msgstr "podrska za muziku:     omogucena"
+
+#: src/pingus_main.cxx:687
+msgid "music support:          disabled"
+msgstr "podrska za muziku:   onemogucena"
+
+#: src/pingus_main.cxx:689
+msgid "resolution set to:       "
+msgstr "rezolucija postavljna na:"
+
+#: src/pingus_main.cxx:690
 msgid "fullscreen:              "
-msgstr ""
-
-#: src/pingus_main.cxx:681
-msgid " enabled"
-msgstr ""
-
-#: src/pingus_main.cxx:681
-msgid "disabled"
-msgstr ""
+msgstr "ceo ekran:               "
 
 #: src/pingus_main.cxx:691
+msgid " enabled"
+msgstr " omoguceno"
+
+#: src/pingus_main.cxx:691
+msgid "disabled"
+msgstr "onemoguceno"
+
+#: src/pingus_main.cxx:701
 msgid "PingusMain: Starting Main: "
-msgstr ""
+msgstr "PingusMain: Pokretanje Main: "
 
-#: src/pingus_main.cxx:721
+#: src/pingus_main.cxx:731
 msgid "PingusMain: Levelfile not found, ignoring: "
-msgstr ""
+msgstr "PingusMain: Fajl nivoa nije nadjen, ignorisano: "
 
-#: src/pingus_main.cxx:812
+#: src/pingus_main.cxx:822
 msgid "Error caught from ClanLib: "
-msgstr ""
+msgstr "Uhvacena greska iz ClanLiba: "
 
-#: src/pingus_main.cxx:816
+#: src/pingus_main.cxx:826
 msgid "Error caught from Pingus: "
-msgstr ""
+msgstr "Uhvacena greska iz Pingusa: "
 
-#: src/pingus_main.cxx:820
+#: src/pingus_main.cxx:830
 msgid "Pingus: Out of memory!"
-msgstr ""
+msgstr "Pingus: Nema memorije!"
 
-#: src/pingus_main.cxx:824
+#: src/pingus_main.cxx:834
 msgid "Pingus: Standard exception caught!:\n"
-msgstr ""
+msgstr "Pingus: Uhvacen standardan izuzetak!:\n"
 
-#: src/pingus_main.cxx:828
+#: src/pingus_main.cxx:838
 msgid "Pingus: Unknown throw caught!"
-msgstr ""
+msgstr "Pingus: Uhvacen nepoznat throw!"
 
 #: src/result_screen.cxx:97 src/start_screen.cxx:108
 msgid "Abort"
-msgstr ""
+msgstr "Odustani"
 
 #: src/result_screen.cxx:165
 msgid "Retry"
-msgstr ""
+msgstr "Pokusaj ponovo"
 
 #: src/result_screen.cxx:173
 msgid "Success!"
-msgstr ""
+msgstr "Uspeh!"
 
 #: src/result_screen.cxx:180
 msgid "Failure!"
-msgstr ""
+msgstr "Neuspeh!"
 
 #: src/result_screen.cxx:189
 msgid "Perfect! You saved everybody possibly, great!"
-msgstr ""
+msgstr "Savrseno! Spaseni su svi moguci, sjajno!"
 
 #: src/result_screen.cxx:191
 msgid "None got killed, pretty good work"
-msgstr ""
+msgstr "Niko nije zaginuo, prilicno dobro uradjeno"
 
 #: src/result_screen.cxx:193
 msgid ""
 "You saved just what you needed, you made it, but\n"
 "maybe you can do better?"
 msgstr ""
+"Spaseno je koliko je i trebalo, svaka cast, ali\n"
+"mozda mozes jos bolje?"
 
 #: src/result_screen.cxx:196
 msgid "Not everybody could get saved, but still good work!"
-msgstr ""
+msgstr "Nisu svi mogli biti spaseni, ali ipak dobro uradjeno!"
 
 #: src/result_screen.cxx:198
 msgid "What can I say, you made it, congratulations!"
-msgstr ""
+msgstr "Sta da kazem, uspesno obavljeno, cestitam!"
 
 #: src/result_screen.cxx:203
 msgid "You killed everybody, not good."
-msgstr ""
+msgstr "Sve si ih pobio, ne valja."
 
 #: src/result_screen.cxx:205
 msgid "None got saved, I know you can do better."
-msgstr ""
+msgstr "Niko nije spasen, znam da mozes bolje."
 
 #: src/result_screen.cxx:207
 msgid ""
 "You didn't saved enough, but still saved a few, next\n"
 "time you might be better."
 msgstr ""
+"Nisi spasao dovoljno, ali si spasao nekoliko, mozda\n"
+"ce sledeci put biti bolje."
 
 #: src/result_screen.cxx:210
 msgid "Only one more and you would have made it, try again!"
-msgstr ""
+msgstr "Samo jos jedan i uspeo bi, probaj ponovo!"
 
 #: src/result_screen.cxx:212
 msgid "Only a handfull more and you would have made it, try again!"
-msgstr ""
+msgstr "Samo jos nekoliko i uspeo bi, probaj ponovo!"
 
 #: src/result_screen.cxx:214
 msgid "Better luck next time!"
-msgstr ""
+msgstr "Vise srece sledeci put!"
 
 #: src/result_screen.cxx:230
 msgid "Saved: "
-msgstr ""
+msgstr "Spaseno: "
 
 #: src/result_screen.cxx:234
 msgid "Killed: "
-msgstr ""
+msgstr "Ubijeno: "
 
 #: src/result_screen.cxx:238
 msgid "Time left: "
-msgstr ""
+msgstr "Preostalo vreme: "
 
 #: src/screenshot.cxx:43
 msgid "Screenshot: Saving screenshot to: "
-msgstr ""
+msgstr "Snimak ekrana: Snimam snimak u: "
 
 #: src/screenshot.cxx:45
 msgid "Screnshot: Screenshot is done."
-msgstr ""
+msgstr "Snimak ekrana: snimak napravljen."
 
 #: src/screenshot.cxx:51
 msgid "Screenshot: Couldn't save screenshot"
-msgstr ""
+msgstr "Snimak ekrana: Nije moguce napraviti"
 
 #: src/screenshot.cxx:134
 msgid "Screenshot: Couldn't write file: "
-msgstr ""
+msgstr "Snimak ekrana: Nije moguce snimiti fajl: "
 
 #: src/spot_map.cxx:278
 #, c-format
 msgid "Image has wrong color depth: %d"
-msgstr ""
+msgstr "Slika ima pogresan color depth: %d"
 
 #: src/start_screen.cxx:72
 msgid "Ok"
-msgstr ""
+msgstr "Ok"
 
 #: src/start_screen.cxx:155
 msgid "Number of Pingus: "
-msgstr ""
+msgstr "Broj Pingusa: "
 
 #: src/start_screen.cxx:158
 msgid "Number to Save: "
-msgstr ""
+msgstr "Spasiti: "
 
 #: src/start_screen.cxx:161
 msgid "Time: "
-msgstr ""
+msgstr "Vreme: "
 
 #: src/start_screen.cxx:164
 msgid "Difficulty:"
-msgstr ""
+msgstr "Tezina:"
 
 #: src/start_screen.cxx:172
 msgid "Author: "
-msgstr ""
+msgstr "Autor: "
 
 #: src/start_screen.cxx:175
 msgid "Filename: "
-msgstr ""
+msgstr "Fajl: "
 
 #: src/story.cxx:37
 msgid "The Journey Continues"
-msgstr ""
+msgstr "Putovanje se nastavlja"
 
 #: src/story.cxx:41
 msgid ""
@@ -1088,25 +1101,40 @@ msgid ""
 "the world. Since the floe with which the Pingus traveled to the\n"
 "Tutorial Island isn't going to hold the whole way into the warmer\n"
 "climated regions the Pingus have to find something else to guide\n"
-"there on their journey.\n"
+"them on their journey.\n"
 msgstr ""
+"Sada kada si sa Pingusima naucio osnove i malo vezbao\n"
+"vreme je da se krene dalje i zapocne putovanje u svet.\n"
+"Posto ledena santa na kojoj su Pingusi putovali do\n"
+"Tutorskog ostrva ne bi izdrzala celo putovanje u toplijim\n"
+"krajevima, Pingusi moraju pronaci nesto drugo da ih\n"
+"vodi na njihovom putovanju.\n"
 
 #: src/story.cxx:51
 msgid ""
 "But as the eldest have said, the Tutorial Island provides not\n"
 "only a way to practive, but it is also the starting point into\n"
-"the world, cause the wood of the large tree at the end of the\n"
-"island brings good wood to construct a float.\n"
+"the world. After some search the Pingus discovered the meaning\n"
+"of this, the large tree at the end of the island provides good\n"
+"wood to construct a float.\n"
 msgstr ""
+"Ali, kao sto su najstariji rekli, Tutorsko ostrvo ne pruza\n"
+"samo mogucnost vezbanja, vec je takodje i pocetna tacka ka\n"
+"svetu, jer ce materijal od velikog drveta sa kraja ostrva\n"
+"biti dobra gradja za konstruisanje splava.\n"
 
-#: src/story.cxx:59
+#: src/story.cxx:60
 msgid ""
-"So the Pingus set out and constructed a some large floats, enough\n"
+"So the Pingus set out and constructed some large floats, enough\n"
 "to carry them all. After also packaging up a bunch of provisions\n"
 "they where prepared to finally start of their journey and leave\n"
-"their familiar ground and entering the unknown parts of the\n"
-"world.\n"
+"their familiar ground and enter the unknown parts of the world.\n"
 msgstr ""
+"Tako su Pingusi otisli i napravili nekoliko velikih splavova,\n"
+"dovoljno da ih sve ponesu. Nakon pakovanja raznih namirnica\n"
+"bili su konacno spremni da zapocnu svoje putovanje i napuste\n"
+"sebi poznate krajeve i zadju u nepoznate delove\n"
+"sveta.\n"
 
 #: src/story.cxx:68
 msgid ""
@@ -1115,10 +1143,14 @@ msgid ""
 "\n"
 "To be continued..."
 msgstr ""
+"Tako su Pingusi seli u svoj splav, i brinuli sta ce da se\n"
+"desi i kuda ce ici, i plovili prema zalasku sunca.\n"
+"\n"
+"Nastavice se..."
 
 #: src/story.cxx:79
 msgid "The Journey Begins"
-msgstr ""
+msgstr "Putovanje pocinje"
 
 #: src/story.cxx:83
 msgid ""
@@ -1127,6 +1159,10 @@ msgid ""
 "balance and it seemed like nothing could disrupt their peace.  The\n"
 "Pingus where happy and it seemed like this could never end.\n"
 msgstr ""
+"Dugo vremena su Pingusi ziveli srecno i u miru na juznom polu uz\n"
+"sve druge zivotinje. Sve je bilo u ravnotezi i izgledalo je kao\n"
+"da nista ne moze narusiti njihov mir. Bili su vrlo srecni i\n"
+"izgledalo je kao da tome nema kraja.\n"
 
 #: src/story.cxx:91
 msgid ""
@@ -1135,14 +1171,22 @@ msgid ""
 "normal fluctuation in the worlds climate, but things seemed to get\n"
 "worse and worse with every year."
 msgstr ""
+"Ali, jednog dana, stvari su pocele da se polako menjaju, nebo\n"
+"se zacrnilo, zemlja se ugrejala. Prvo su pomislili da je to\n"
+"samo normalna fluktuacija u svetkskom klimatu, ali izgledalo je\n"
+"kao da se iz godine u godinu stvari sve vise i vise pogorsavaju."
 
 #: src/story.cxx:100
 msgid ""
 "The snow began to melt away in a few regions and food became an\n"
 "issue. Other animals already tend to leave the region to search\n"
-"for colder areas, but the Pingus knew that this couldn't help,\n"
+"for colder areas, but the Pingus knew that this wouldn't help,\n"
 "they knew that they had to do something about this problem."
 msgstr ""
+"Sneg je poceo da se topi i u nekim delovima hrana je postala\n"
+"vazno pitanje. Druge zivotinje su vec pocele da napustaju\n"
+"region u potrazi za hladnijim podrucjima, ali Pingusi su\n"
+"znali da to nece pomoci, vec su morali da ucine nesto."
 
 #: src/story.cxx:108
 msgid ""
@@ -1151,6 +1195,10 @@ msgid ""
 "to find the cause for this warming. The expedition consisted of\n"
 "hundreds of the bravest Pingus around on the south pole."
 msgstr ""
+"Tako se okupio krug najstarijih da odluce sta ce da urade\n"
+"povodom situacije. Odlucili su da posalju ekspediciju na put oko\n"
+"sveta da nadje razlog zagrevanju. Ekspedicija se sastojala od\n"
+"stotina najhrabrijih Pingusa sa Juznog pola."
 
 #: src/story.cxx:116
 msgid ""
@@ -1160,6 +1208,11 @@ msgid ""
 "Island. According to the eldest, this island has always been the\n"
 "first stop of Pingus which where send out into the world."
 msgstr ""
+"A tebe su izabrali da ih vodis na njihovom putuovanju oko\n"
+"sveta. Posto ce putovanje biti opasno i tesko, tvoj prvi cilj\n"
+"je Ostrvo Mogorok, takodje poznato i kao Tutorsko Ostrvo. Po\n"
+"prici najstarijih, to ostrvo je oduvek bilo pocetna tacka\n"
+"Pingusa poslatih u svet."
 
 #: src/story.cxx:125
 msgid ""
@@ -1168,6 +1221,10 @@ msgid ""
 "to build bridges, climb, bash and all the rest of their talents\n"
 "which they will surly need on their long and dangerous journey."
 msgstr ""
+"Ostrvo se sastoji iz mnostva regiona, koji su idealni za\n"
+"uvezbavanje sposobnosti Pingusa. Pingusi mogu tamo vezbati svoje\n"
+"sposobnosti mostogradnje, penjanja, kopanja, kad i razne druge\n"
+"vestine koje ce im sigurno zatrebati u dugom i opasnom putovanju."
 
 #: src/story.cxx:133
 msgid ""
@@ -1177,6 +1234,11 @@ msgid ""
 "since you will need them all for sure an your journey around the\n"
 "world."
 msgstr ""
+"Sa druge strane, ti mozes uvezbati svoju sposobnost da\n"
+"naredjujes i vodis Pinguse. Takodje se mozes upoznati sa svim\n"
+"sposobnostima koje Pingusi poseduju i nauciti da koristis, jer\n"
+"ce ti sve te vestine sigurno trebati na vasem putu oko\n"
+"sveta"
 
 #: src/story.cxx:142
 msgid ""
@@ -1185,55 +1247,54 @@ msgid ""
 "\n"
 "                                                  Good Luck!"
 msgstr ""
+"Sada, kada ste Pingusi i ti stigli na Tutorsko ostrvo, vreme\n"
+"je da preuzmes komandu i zapocnes svoju misiju.\n"
+"\n"
+"                                                     Srecno!"
 
-#: src/system.cxx:65 src/system.cxx:97
-msgid "System: Couldn't open: "
-msgstr ""
-
-#: src/system.cxx:192
-msgid "Successfully created: "
-msgstr ""
-
-#: src/system.cxx:197
-msgid "Found: "
-msgstr ""
-
-#: src/system.cxx:264
+#: src/system.cxx:265
 msgid "Environment variable $HOME not set, fix that and start again."
-msgstr ""
-
-#: src/system.cxx:426
-msgid "System::checksum: Couldn't open file: "
-msgstr ""
-
-#: src/system.cxx:436
-msgid "System:checksum: file read error"
-msgstr ""
+msgstr "Varijabla okruzenja $HOME nije postavljena, ispravi pa ponovi."
 
 #: src/worldmap/level_dot.cxx:159
 msgid "locked"
-msgstr ""
+msgstr "zakljucano"
 
 #: src/worldmap/manager.cxx:102
 msgid "Show Ending?"
-msgstr ""
+msgstr "Prikazi kraj?"
 
 #: src/worldmap/manager.cxx:132
 msgid "Show Story?"
-msgstr ""
+msgstr "Prikazi pricu?"
 
 #: src/worldmap/manager.cxx:160
 msgid "Leave?"
-msgstr ""
+msgstr "Napusti?"
 
 #: src/worldmap/manager.cxx:200
 msgid "Enter?"
-msgstr ""
+msgstr "Udji?"
 
 #: src/worldmap/worldmap.cxx:73
 msgid "WorldMap: File not found: "
-msgstr ""
+msgstr "WorldMap: Fajl nije nadjen: "
 
 #: src/worldmap/worldmap.cxx:246
 msgid "...walking..."
-msgstr ""
+msgstr "...hodanje..."
+
+#~ msgid "System: Couldn't open: "
+#~ msgstr "System: Ne mogu da otvorim: "
+
+#~ msgid "Successfully created: "
+#~ msgstr "Uspesno kreirano: "
+
+#~ msgid "Found: "
+#~ msgstr "Nadjeno: "
+
+#~ msgid "System::checksum: Couldn't open file: "
+#~ msgstr "System::checksum: Ne mogu da otvorim fajl: "
+
+#~ msgid "System:checksum: file read error"
+#~ msgstr "System:checksum: greska pri citanju fajla"
