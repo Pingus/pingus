@@ -1,7 +1,8 @@
 /* This level was created with the PLE
- * $Id: level7.plf,v 1.7 2000/04/08 20:05:12 grumbel Exp $
+ * $Id: level7.plf,v 1.8 2000/07/14 12:10:17 grumbel Exp $
  */
 global {
+  author = "Ingo Ruhnke <grumbel@gmx.de>";
   start_x_pos = 1200;
   start_y_pos = 240;
   levelname = "Evil in the dark";

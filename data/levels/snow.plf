@@ -1,4 +1,5 @@
 global {
+  author = "Ingo Ruhnke <grumbel@gmx.de>";
 	start_x_pos = 950;
 	start_y_pos = 185;
 	levelname = "Level 1";

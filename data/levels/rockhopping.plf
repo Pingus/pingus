@@ -1,8 +1,8 @@
 /* This level was created with the PLE
- * $Id: rockhopping.plf,v 1.3 2000/07/10 14:46:43 grumbel Exp $
+ * $Id: rockhopping.plf,v 1.4 2000/07/14 12:10:17 grumbel Exp $
  */
 global {
-  author = "";
+  author = "Ingo Ruhnke <grumbel@gmx.de>";
   start_x_pos = 0;
   start_y_pos = 0;
   levelname = "Rockhoppin'";

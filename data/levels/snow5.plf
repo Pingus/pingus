@@ -1,7 +1,8 @@
 /* This level was created with the PLE
- * $Id: snow5.plf,v 1.3 2000/05/28 16:46:51 grumbel Exp $
+ * $Id: snow5.plf,v 1.4 2000/07/14 12:10:17 grumbel Exp $
  */
 global {
+  author = "Ingo Ruhnke <grumbel@gmx.de>";
   start_x_pos = 720;
   start_y_pos = 780;
   levelname = "Snow 5 - Higher and higher";

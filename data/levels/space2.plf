@@ -1,7 +1,8 @@
 /* This level was created with the PLE
- * $Id: space2.plf,v 1.5 2000/06/23 17:13:32 grumbel Exp $
+ * $Id: space2.plf,v 1.6 2000/07/14 12:10:17 grumbel Exp $
  */
 global {
+  author = "Ingo Ruhnke <grumbel@gmx.de>";
   start_x_pos = 0;
   start_y_pos = 0;
   levelname = "Lost in Space";

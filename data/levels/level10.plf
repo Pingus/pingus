@@ -1,7 +1,8 @@
 /* This level was created with the PLE
- * $Id: level10.plf,v 1.5 2000/06/20 20:35:15 grumbel Exp $
+ * $Id: level10.plf,v 1.6 2000/07/14 12:10:17 grumbel Exp $
  */
 global {
+  author = "Ingo Ruhnke <grumbel@gmx.de>";
   start_x_pos = 1000;
   start_y_pos = 200;
   levelname = "Beat the pyramid";
