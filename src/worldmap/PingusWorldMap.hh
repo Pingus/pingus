@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMap.hh,v 1.14 2001/04/06 15:04:46 grumbel Exp $
+//  $Id: PingusWorldMap.hh,v 1.15 2001/04/06 18:07:58 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,12 +27,12 @@
 #include "PingusWorldMapGraph.hh"
 #include "PingusWorldMapPingus.hh"
 
+/** A class for loading, displaying and managing the worldmap. */
 class PingusWorldMap
 {
 private:
   CL_Surface background;
 
-  CL_Surface scaled_background;
   Sprite green_dot;
   Sprite red_dot;
   Sprite dot_border;
@@ -46,6 +46,7 @@ private:
 public:
   /** Load a worldmap from a given worldmap description file */
   PingusWorldMap (std::string filename);
+
   /** Destruct the worldmap */
   virtual ~PingusWorldMap ();
 
@@ -75,6 +76,12 @@ public:
 
   /** Returns a pointer to the node under the given coordinates */
   PingusWorldMapNode* get_node (int x, int y);
+
+  /** Callculate the offset which is used for drawing and collision
+      detection. The offset will be used for scrolling when the
+      background is larger than the screen. 
+      @return the currently used draw offset */
+  CL_Vector get_offset ();
 };
 
 #endif

@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMap.cc,v 1.18 2001/04/06 15:04:45 grumbel Exp $
+//  $Id: PingusWorldMap.cc,v 1.19 2001/04/06 18:07:58 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -56,6 +56,44 @@ PingusWorldMap::~PingusWorldMap ()
   delete pingus;
 }
 
+CL_Vector 
+PingusWorldMap::get_offset ()
+{
+  // FIXME: Handling of background smaller than screen isn't handled
+  assert (pingus);
+
+  CL_Vector offset = pingus->get_pos ();
+  offset *= -1.0;
+
+  if (CL_Display::get_width () <= int(background.get_width ()))
+    {
+      offset.x += float(CL_Display::get_width ())/2;
+      // When offset is larger then zero the background wouldn't fill the
+      // complet screen, so we reset.
+      if (offset.x > 0) offset.x = 0;
+      if (offset.x < float(CL_Display::get_width ()) - background.get_width ())
+	offset.x = float(CL_Display::get_width ()) - background.get_width ();
+    } 
+  else
+    {
+      offset.x = (float(CL_Display::get_width ()) - background.get_width ()) / 2.0f;
+    }
+
+  if (CL_Display::get_height () <= int(background.get_height ()))
+    {
+      offset.y += float(CL_Display::get_height ())/2;
+      if (offset.y > 0) offset.y = 0;
+      if (offset.y < float(CL_Display::get_height ()) - background.get_height ())
+	offset.y = float(CL_Display::get_height ()) - background.get_height ();
+    }
+  else
+    {
+      offset.y = (float(CL_Display::get_height ()) - background.get_height ()) / 2.0f;
+    }
+  
+  return offset;
+}
+
 void
 PingusWorldMap::init ()
 {
@@ -69,11 +107,11 @@ PingusWorldMap::on_button_press (CL_InputDevice *device, const CL_Key &key)
 {
   if (device == CL_Input::pointers[0])
     {
+      CL_Vector offset = get_offset ();
+      
       if (key.id == CL_MOUSE_LEFTBUTTON)
 	{
-	  PingusWorldMapNode* node = get_node (key.x, key.y);
-	  //PingusGame game;
-	  //game.start_game(find_file(pingus_datadir, "levels/" + i->levelname));
+	  PingusWorldMapNode* node = get_node (key.x - offset.x, key.y - offset.y);
 
 	  if (node && !node->accessible)
 	    {
@@ -108,14 +146,14 @@ PingusWorldMap::on_button_press (CL_InputDevice *device, const CL_Key &key)
 	  if (maintainer_mode)
 	    {
 	      std::cout << "<position>" << std::endl;
-	      std::cout << "  <x-pos>" << key.x << "</x-pos>" << std::endl;
-	      std::cout << "  <y-pos>" << key.y << "</y-pos>" << std::endl;
+	      std::cout << "  <x-pos>" << key.x - offset.x << "</x-pos>" << std::endl;
+	      std::cout << "  <y-pos>" << key.y - offset.y << "</y-pos>" << std::endl;
 	      std::cout << "</position>" << std::endl;
 	    }
 	}
       else if (key.id == CL_MOUSE_RIGHTBUTTON)
 	{
-	  PingusWorldMapNode* node = get_node (key.x, key.y);
+	  PingusWorldMapNode* node = get_node (key.x - offset.x, key.y - offset.y);
 	  if (node) {
 	    std::cout << "Node: " << node->id << std::endl;
 	  } else {
@@ -193,14 +231,8 @@ PingusWorldMap::start_level (PingusWorldMapNode* node)
 void
 PingusWorldMap::draw ()
 {
-  CL_Vector offset = pingus->get_pos ();
-  offset *= -1.0;
-  offset.x += CL_Display::get_width ()/2;
-  offset.y += CL_Display::get_height ()/2;
-
-  if (offset.x > 0) offset.x = 0;
-  if (offset.y > 0) offset.y = 0;
-
+  CL_Vector offset = get_offset ();
+  
   background.put_screen (offset.x, offset.y);
 
   graph_data.draw(offset);
@@ -215,7 +247,7 @@ PingusWorldMap::draw ()
 	    {
 	      green_dot.put_screen (i->pos + offset);
 	      if (i->finished) {
-		green_flag.put_screen (i->pos);
+		green_flag.put_screen (i->pos + offset);
 	      }
 	    }
 	  else
@@ -225,7 +257,8 @@ PingusWorldMap::draw ()
 	}
     }
   
-  PingusWorldMapNode* node = get_node (CL_Mouse::get_x (), CL_Mouse::get_y ());
+  PingusWorldMapNode* node = get_node (CL_Mouse::get_x () - offset.x,
+				       CL_Mouse::get_y () - offset.y);
   if (node)
     {
       dot_border.put_screen (node->pos + offset);
