@@ -298,6 +298,8 @@ xml_file_reader.hxx \
 xml_file_reader.cxx \
 xml_file_writer.hxx \
 xml_file_writer.cxx \
+xmlgz_reader.hxx \
+xmlgz_reader.cxx \
 xml_plf.cxx \
 xml_plf.hxx \
 xml_pdf.hxx \

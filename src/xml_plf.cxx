@@ -19,6 +19,7 @@
 
 #include <iostream>
 #include "xml_helper.hxx"
+#include "xmlgz_reader.hxx"
 #include "xml_file_reader.hxx"
 #include "xml_plf.hxx"
 #include "globals.hxx"
@@ -37,7 +38,7 @@ XMLPLF::XMLPLF (const std::string& arg_filename)
   filename = arg_filename;
   std::string str = System::checksum (filename);
 
-  doc = xmlParseFile(filename.c_str());
+  doc = xmlgzParseFile(filename.c_str());
 
   if (doc == NULL)
     PingusError::raise("XMLPLF: Couldn't open \"" + filename + "\"");
