@@ -1,4 +1,4 @@
-//  $Id: smashed.hxx,v 1.8 2002/09/10 19:24:19 grumbel Exp $
+//  $Id: smashed.hxx,v 1.9 2002/09/16 16:47:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,6 +25,8 @@
 
 namespace Actions {
 
+/** FIXME: this action doesn't have a purpose, its pretty much equal
+    to the new splashed action */
 class Smashed : public PinguAction
 {
 private:

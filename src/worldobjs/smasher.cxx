@@ -1,4 +1,4 @@
-//  $Id: smasher.cxx,v 1.4 2002/09/14 19:06:34 torangan Exp $
+//  $Id: smasher.cxx,v 1.5 2002/09/16 16:47:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,10 +32,11 @@
 
 namespace WorldObjs {
 
-Smasher::Smasher (WorldObjsData::SmasherData* data_) : smashing(false),
-						       downwards(false),
-						       count(0),
-						       data (new WorldObjsData::SmasherData(*data_))
+Smasher::Smasher (WorldObjsData::SmasherData* data_)
+  : smashing(false),
+    downwards(false),
+    count(0),
+    data (new WorldObjsData::SmasherData(*data_))
 {
 }
 

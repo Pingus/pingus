@@ -1,4 +1,4 @@
-//  $Id: rain_generator.cxx,v 1.2 2002/09/16 16:04:58 grumbel Exp $
+//  $Id: rain_generator.cxx,v 1.3 2002/09/16 16:47:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,7 @@
 #include "../particles/rain_particle.hxx"
 #include "../sound.hxx"
 #include "../world.hxx"
+#include "../graphic_context.hxx"
 #include "rain_generator.hxx"
 
 namespace WorldObjs {
@@ -38,7 +39,7 @@ RainGenerator::~RainGenerator ()
 }
 
 void 
-RainGenerator::draw_offset(int /*x*/, int /*y*/, float /*s*/)
+RainGenerator::draw(GraphicContext& gc)
 {
   if (do_thunder)
     {
@@ -48,8 +49,8 @@ RainGenerator::draw_offset(int /*x*/, int /*y*/, float /*s*/)
 	waiter_count = 1.0f;
       }
 
-      CL_Display::fill_rect (0, 0, CL_Display::get_width (), CL_Display::get_height (),
-			     1.0, 1.0, 1.0, thunder_count);
+      gc.draw_fillrect (0, 0, CL_Display::get_width (), CL_Display::get_height (),
+			1.0, 1.0, 1.0, thunder_count);
     }
 }
 

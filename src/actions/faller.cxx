@@ -1,4 +1,4 @@
-//  $Id: faller.cxx,v 1.22 2002/09/14 19:06:33 torangan Exp $
+//  $Id: faller.cxx,v 1.23 2002/09/16 16:47:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -152,7 +152,7 @@ Faller::draw (GraphicContext& gc)
   if (is_tumbling()) {
     gc.draw(tumbler, pingu->get_pos ());
   } else {
-    gc.draw(tumbler, pingu->get_pos ());
+    gc.draw(faller, pingu->get_pos ());
   }
 }
 
@@ -160,8 +160,8 @@ bool
 Faller::is_tumbling () const
 {
   // If we are going fast enough to get smashed, start tumbling
-  if (   fabs(pingu->get_velocity().x) > deadly_velocity
-	 || fabs(pingu->get_velocity().y) > deadly_velocity)
+  if (fabs(pingu->get_velocity().x) > deadly_velocity
+      || fabs(pingu->get_velocity().y) > deadly_velocity)
     {
       return true;
     }

@@ -1,4 +1,4 @@
-//  $Id: rain_generator.hxx,v 1.2 2002/09/16 16:04:58 grumbel Exp $
+//  $Id: rain_generator.hxx,v 1.3 2002/09/16 16:47:41 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,7 +35,7 @@ public:
   ~RainGenerator();
 
   void update(float delta);
-  void draw_offset(int x, int y, float s = 1.0f);
+  void draw(GraphicContext& gc);
   float get_z_pos() const { return 1000; }
 
 private:
