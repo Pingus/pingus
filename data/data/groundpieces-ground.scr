@@ -120,8 +120,8 @@ section misc
         column_flat = ../images/groundpieces/ground/misc/column_flat.png (type=surface);
         column_flat_left = ../images/groundpieces/ground/misc/column_flat_left.png (type=surface);
         column_flat_right = ../images/groundpieces/ground/misc/column_flat_right.png (type=surface);
-        column_up = ../images/groundpieces/ground/misc/column_up.png (type=surface);
         column_horz = ../images/groundpieces/ground/misc/column_horz.png (type=surface);
+        column_up = ../images/groundpieces/ground/misc/column_up.png (type=surface);
         column_vert = ../images/groundpieces/ground/misc/column_vert.png (type=surface);
         dragon = ../images/groundpieces/ground/misc/dragon.png (type=surface);
         green1 = ../images/groundpieces/ground/misc/green1.png (type=surface);
@@ -209,10 +209,6 @@ section real
         real29 = ../images/groundpieces/ground/real/real29.png (type=surface);
         real3 = ../images/groundpieces/ground/real/real3.png (type=surface);
         real30 = ../images/groundpieces/ground/real/real30.png (type=surface);
-        real31 = ../images/groundpieces/ground/real/real31.png (type=surface);
-        real32 = ../images/groundpieces/ground/real/real32.png (type=surface);
-        real33 = ../images/groundpieces/ground/real/real33.png (type=surface);
-        real34 = ../images/groundpieces/ground/real/real34.png (type=surface);
         real35 = ../images/groundpieces/ground/real/real35.png (type=surface);
         real36 = ../images/groundpieces/ground/real/real36.png (type=surface);
         real37 = ../images/groundpieces/ground/real/real37.png (type=surface);
@@ -269,12 +265,17 @@ section snow
 
 section sortie
 {
+        ball1 = ../images/groundpieces/ground/sortie/ball1.png (type=surface);
+        ball2 = ../images/groundpieces/ground/sortie/ball2.png (type=surface);
+        ball3 = ../images/groundpieces/ground/sortie/ball3.png (type=surface);
+        ball4 = ../images/groundpieces/ground/sortie/ball4.png (type=surface);
         column = ../images/groundpieces/ground/sortie/column.png (type=surface);
         column2 = ../images/groundpieces/ground/sortie/column2.png (type=surface);
         column3 = ../images/groundpieces/ground/sortie/column3.png (type=surface);
         plate_forme = ../images/groundpieces/ground/sortie/plate_forme.png (type=surface);
         plate_forme_left = ../images/groundpieces/ground/sortie/plate_forme_left.png (type=surface);
         plate_forme_right = ../images/groundpieces/ground/sortie/plate_forme_right.png (type=surface);
+        tentacle1 = ../images/groundpieces/ground/sortie/tentacle1.png (type=surface);
 }
 
 section space

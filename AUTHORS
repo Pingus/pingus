@@ -134,4 +134,7 @@ Gervase Lam <gervase@group.force9.co.uk>
 Alberto Curro <acurrop@wanadoo.es>
 	* Win32 Port for Pingus 0.5.0
 
+Mattias Andersson <mattiasa@neod.com>
+	* some fixes for Win32 Port
+
 -- EOF --
