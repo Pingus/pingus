@@ -1,4 +1,4 @@
-//  $Id: WoodThing.cc,v 1.2 2000/02/09 21:43:43 grumbel Exp $
+//  $Id: WoodThing.cc,v 1.3 2000/05/12 13:30:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,6 @@
 
 #include "../PingusResource.hh"
 #include "../particles/SmokeParticle.hh"
-#include "../particles/GroundParticle.hh"
 #include "../algo.hh"
 
 #include "WoodThing.hh"
@@ -49,19 +48,14 @@ WoodThing::let_move(void)
 {
   --counter;
 
-  if (rand() % 5 == 0) {
-    /*
-    particle->add_particle(new GroundParticle(x_pos - (surface->get_width()/2) - 24,
-					     y_pos - surface->get_height() + 32 - 147,
-					     frand() * 4 - 4,
-					     (frand()/ 2.0) * - 4.0));*/
-    // This does not work and I have no idea why?!
-    /*    particle->add_particle(new SmokeParticle(x_pos - (surface->get_width()/2) - 24,
-					     y_pos - surface->get_height() + 32 - 147,
-					     frand() * 4 - 4,
-					     (frand()/ 2.0) * - 4.0));
-   particle->add_particle(new SmokeParticle());*/
-  }
+  if (rand() % 5 == 0) 
+    {
+      // This does not work and I have no idea why?!
+      particle->add_particle(new SmokeParticle(x_pos - (surface->get_width()/2) - 24,
+					       y_pos - surface->get_height() + 32 - 147,
+					       -0.6 * (frand() + 1), -0.6 * (frand() + 1)));
+      // particle->add_particle(new SmokeParticle());
+    }
 }
 
 void
