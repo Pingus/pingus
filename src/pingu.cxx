@@ -1,4 +1,4 @@
-//  $Id: pingu.cxx,v 1.2 2002/06/13 14:25:12 torangan Exp $
+//  $Id: pingu.cxx,v 1.3 2002/06/19 17:19:41 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -273,6 +273,8 @@ void
 Pingu::update(float delta)
 {
   if (status == PS_DEAD)
+    return;
+
   // FIXME: Out of screen check is ugly
   /** The Pingu has hit the edge of the screen, a good time to let him
       die. */
