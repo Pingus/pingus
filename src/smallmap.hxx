@@ -1,4 +1,4 @@
-//  $Id: smallmap.hxx,v 1.5 2002/07/29 10:44:12 grumbel Exp $
+//  $Id: smallmap.hxx,v 1.6 2002/07/29 11:57:38 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,13 +21,12 @@
 #define HEADER_PINGUS_SMALLMAP_HXX
 
 #include <ClanLib/Display/Display/surface.h>
-#include "gui_obj.hxx"
-
+#include "gui/component.hxx"
 
 class CL_Key;
 class Client;
 
-class SmallMap : public GuiObj
+class SmallMap : public GUI::Component
 {
 private:
   Client* client;
@@ -46,10 +45,11 @@ private:
   bool has_focus;
 public:
   SmallMap();
-  ~SmallMap();
+  virtual ~SmallMap();
   
-  bool on_button_press(const CL_Key& key);
-  bool on_button_release(const CL_Key& key);
+  void on_button_press(int x, int y);
+  void on_button_release(int x, int y);
+  void on_pointer_move(int x, int y);
 
   void set_client(Client* c);
   bool mouse_over();
@@ -58,7 +58,7 @@ public:
   void draw_pingus();
   void update(float delta);
 
-  bool mouse_over(int x, int y);
+  bool is_at (int x, int y);
 
   // Events
   void on_mouse_enter ();

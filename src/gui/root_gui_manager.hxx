@@ -1,4 +1,4 @@
-//  $Id: root_gui_manager.hxx,v 1.1 2002/07/29 10:44:12 grumbel Exp $
+//  $Id: root_gui_manager.hxx,v 1.2 2002/07/29 11:57:38 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -49,6 +49,8 @@ namespace GUI
     
     void draw ();
     void update (float delta);
+
+    bool is_at (int x, int y);
 
     void process_input (float delta);
     Component* component_at (int x, int y);

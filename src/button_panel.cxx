@@ -1,4 +1,4 @@
-//  $Id: button_panel.cxx,v 1.5 2002/06/28 15:12:22 torangan Exp $
+//  $Id: button_panel.cxx,v 1.6 2002/07/29 11:57:38 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -160,48 +160,56 @@ ButtonPanel::set_button(int i)
 }
 
 void
-ButtonPanel::on_button_press(const CL_Key &key)
+ButtonPanel::on_button_press(int x, int y)
 {
-  if (key.id == CL_MOUSE_LEFTBUTTON)
+  for(AButtonIter button = a_buttons.begin(); button != a_buttons.end(); button++)
     {
-      for(AButtonIter button = a_buttons.begin(); button != a_buttons.end(); button++)
-	{
-	  if ((*button)->mouse_over(controller->get_pos ()))
-	    pressed_button = button;
-	}
+      if ((*button)->mouse_over(controller->get_pos ()))
+	pressed_button = button;
+    }
   
-      if (armageddon->mouse_over(CL_Vector (key.x, key.y)))
-	{
-	  last_press = CL_System::get_time();
+  if (armageddon->mouse_over(CL_Vector (x, y)))
+    {
+      last_press = CL_System::get_time();
       
-	  if (verbose) std::cout << "Armageddon: " << armageddon_pressed << std::endl;
-	  armageddon_pressed++;
+      if (verbose) std::cout << "Armageddon: " << armageddon_pressed << std::endl;
+      armageddon_pressed++;
            
-	  if (armageddon_pressed == 2)
-	    {
-	      arma_counter = 0;
-	      armageddon_pressed = 4;
-	      armageddon->pressed = true;
-	      server->get_world()->armageddon();
-	    }
-	  return;
+      if (armageddon_pressed == 2)
+	{
+	  arma_counter = 0;
+	  armageddon_pressed = 4;
+	  armageddon->pressed = true;
+	  server->get_world()->armageddon();
 	}
+      return;
+    }
     
-      if (pause->mouse_over(controller->get_pos ()))
-	{
-	  client->set_pause(!client->get_pause());
-	  return;
-	}
-      else if (forward->mouse_over(controller->get_pos ()))
-	{
-	  client->set_fast_forward(!client->get_fast_forward());
-	  return;
-	}
+  if (pause->mouse_over(controller->get_pos ()))
+    {
+      client->set_pause(!client->get_pause());
+      return;
+    }
+  else if (forward->mouse_over(controller->get_pos ()))
+    {
+      client->set_fast_forward(!client->get_fast_forward());
+      return;
     }
 }
 
+bool
+ButtonPanel::is_at (int x, int y)
+{
+  for(AButtonIter button = a_buttons.begin(); button != a_buttons.end(); button++)
+    {
+      if ((*button)->mouse_over(CL_Vector (x, y)))
+	return true;
+    }
+  return false;
+}
+
 void
-ButtonPanel::on_button_release(const CL_Key & /*key*/)
+ButtonPanel::on_button_release(int x, int y)
 {
 
   //forward->pressed = false;

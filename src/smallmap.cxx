@@ -1,4 +1,4 @@
-//  $Id: smallmap.cxx,v 1.6 2002/07/29 10:44:12 grumbel Exp $
+//  $Id: smallmap.cxx,v 1.7 2002/07/29 11:57:38 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -214,59 +214,40 @@ SmallMap::draw_pingus()
 void
 SmallMap::update(float /*delta*/)
 {
-  int cx, cy;
-  ColMap* colmap = client->get_server()->get_world()->get_colmap();
-  
-  if (scroll_mode)
-    {
-      cx = (int(CL_Mouse::get_x()) - x_pos) * int(colmap->get_width()) / width;
-      cy = (int(CL_Mouse::get_y()) - y_pos) * int(colmap->get_height()) / height ;
-
-      client->get_playfield()->set_viewpoint(cx, cy);
-    }
 }
 
 bool
-SmallMap::mouse_over()
+SmallMap::is_at (int x, int y)
 {
-  return (CL_Mouse::get_x() > x_pos && CL_Mouse::get_x() < x_pos + (int)width
-	  && CL_Mouse::get_y() > y_pos && CL_Mouse::get_y() < y_pos + (int)height);
-}
-
-bool
-SmallMap::mouse_over(int x, int y)
-{
-  std::cout << "............." << x << " " << y << std::endl;
   return (x > x_pos && x < x_pos + (int)width
 	  && y > y_pos && y < y_pos + (int)height);
 }
 
-bool
-SmallMap::on_button_press(const CL_Key& key)
+void
+SmallMap::on_pointer_move(int x, int y)
 {
-  switch(key.id)
+  int cx, cy;
+  ColMap* colmap = client->get_server()->get_world()->get_colmap();
+
+  if (scroll_mode)
     {
-    case CL_MOUSE_LEFTBUTTON:
-      if (mouse_over())
-	{
-	  scroll_mode = true;
-	  return true;
-	}
-      break;
+      cx = (x - x_pos) * int(colmap->get_width()) / width;
+      cy = (y - y_pos) * int(colmap->get_height()) / height ;
+      
+      client->get_playfield()->set_viewpoint(cx, cy);
     }
-  return false;
 }
 
-bool
-SmallMap::on_button_release(const CL_Key& key)
+void
+SmallMap::on_button_press(int x, int y)
 {
-  switch(key.id)
-    {
-    case CL_MOUSE_LEFTBUTTON:
-      scroll_mode = false;
-      break;
-    }
-  return false;
+  scroll_mode = true;
+}
+
+void
+SmallMap::on_button_release(int x, int y)
+{
+  scroll_mode = false;
 }
 
 void

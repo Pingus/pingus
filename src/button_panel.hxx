@@ -1,4 +1,4 @@
-//  $Id: button_panel.hxx,v 1.4 2002/06/28 15:12:22 torangan Exp $
+//  $Id: button_panel.hxx,v 1.5 2002/07/29 11:57:38 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,13 +24,14 @@
 
 #include "gui_obj.hxx"
 #include "action_button.hxx"
+#include "gui/component.hxx"
 
 class CL_Key;
 class Client;
 class PLF;
 class Controller;
 
-class ButtonPanel : public GuiObj
+class ButtonPanel : public GUI::Component
 {
 private:
   friend class ClientEvent;
@@ -57,10 +58,12 @@ private:
   int x_pos, y_pos;
 public:
   ButtonPanel(PLF* plf, Controller*, int arg_x_pos, int arg_y_pos);
-  ~ButtonPanel();
+  virtual ~ButtonPanel();
 
-  void on_button_press(const CL_Key& key);
-  void on_button_release(const CL_Key& key);
+  void on_button_press(int x, int y);
+  void on_button_release(int x, int y);
+
+  bool is_at (int x, int y);
 
   ActionName get_action_name();
   void   update(float delta);

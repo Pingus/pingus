@@ -1,4 +1,4 @@
-//  $Id: client.cxx,v 1.6 2002/07/29 10:44:12 grumbel Exp $
+//  $Id: client.cxx,v 1.7 2002/07/29 11:57:38 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -160,9 +160,11 @@ Client::init_display()
   obj.push_back(playfield);
   obj.push_back(pcounter);
   obj.push_back(time_display);
-  obj.push_back(button_panel);
-  obj.push_back(small_map);
   obj.push_back(hurry_up);
+
+  gui_manager->add (small_map);
+  gui_manager->add (button_panel);
+
 
   if (verbose) std::cout << "done " << timer.stop() << std::endl;
 }
@@ -650,8 +652,8 @@ Client::on_keyboard_button_release(const CL_Key& key)
 void
 Client::on_mouse_button_press(const CL_Key& key)
 {
-  button_panel->on_button_press(key);
-  small_map->on_button_press(key);
+  // button_panel->on_button_press(key);
+  //small_map->on_button_press(key);
 
   switch(key.id)
     {
@@ -671,8 +673,8 @@ Client::on_mouse_button_press(const CL_Key& key)
 void
 Client::on_mouse_button_release(const CL_Key& key)
 {
-  button_panel->on_button_release(key);
-  small_map->on_button_release(key);
+  //button_panel->on_button_release(key);
+  //small_map->on_button_release(key);
 
   switch(key.id)
     {
@@ -698,8 +700,8 @@ Client:: on_left_pressed (const CL_Vector& pos)
   key.x = pos.x;
   key.y = pos.y;
   
-  button_panel->on_button_press(key);
-  small_map->on_button_press(key);
+  //button_panel->on_button_press(key);
+  //small_map->on_button_press(key);
   playfield->on_button_press(key);
 }
 
@@ -712,8 +714,8 @@ Client:: on_left_released (const CL_Vector& pos)
   key.x = pos.x;
   key.y = pos.y;
   
-  button_panel->on_button_release(key);
-  small_map->on_button_release(key);
+  //button_panel->on_button_release(key);
+  //small_map->on_button_release(key);
 }
 
 

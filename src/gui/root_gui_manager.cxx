@@ -1,4 +1,4 @@
-//  $Id: root_gui_manager.cxx,v 1.1 2002/07/29 10:44:12 grumbel Exp $
+//  $Id: root_gui_manager.cxx,v 1.2 2002/07/29 11:57:38 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -75,10 +75,17 @@ RootGUIManager::process_input (float delta)
 	case Input::PointerEventType:
 	  {
 	    PointerEvent* event = dynamic_cast<PointerEvent*>(*i);
-	    x_pos = event->x;
-	    y_pos = event->y;
+	    x_pos = int(event->x);
+	    y_pos = int(event->y);
 
 	    Component* comp = component_at (x_pos, y_pos);//FIXME
+
+	    if (pressed_component)
+	      pressed_component->on_pointer_move (x_pos, y_pos);
+	    else if (comp)
+	      {
+		comp->on_pointer_move (x_pos, y_pos);
+	      }
 
 	    if (comp)
 	      {
@@ -167,6 +174,19 @@ RootGUIManager::component_at (int x, int y)
 	return *i;
     }
   return 0;
+}
+
+bool
+RootGUIManager::is_at (int x, int y)
+{
+  for (std::vector<Component*>::iterator i = components.begin (); 
+       i != components.end (); ++i)
+    {
+      if ((*i)->is_at (x, y))
+	return true;
+    }
+
+  return false;
 }
 
 /* EOF */

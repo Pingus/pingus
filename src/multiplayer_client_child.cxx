@@ -1,4 +1,4 @@
-//  $Id: multiplayer_client_child.cxx,v 1.4 2002/07/02 21:46:36 grumbel Exp $
+//  $Id: multiplayer_client_child.cxx,v 1.5 2002/07/29 11:57:38 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -44,7 +44,7 @@ MultiplayerClientChild::MultiplayerClientChild (Controller* arg_controller,
   
   //std::cout << "MultiplayerClientChild: Creating: " << server.get() << std::endl;
   gui_objs.push_back (playfield);
-  gui_objs.push_back (button_panel);
+  //gui_objs.push_back (button_panel);
   gui_objs.push_back (counterbar);
 
   controller->set_range (rect);
@@ -90,7 +90,7 @@ void MultiplayerClientChild::on_left_press (const CL_Vector& pos)
   key.id = CL_MOUSE_LEFTBUTTON;
   key.x = pos.x;
   key.y = pos.y;
-  button_panel->on_button_press(key);
+  //button_panel->on_button_press(key);
 
   Pingu* pingu = playfield->get_pingu (controller->get_pos ());
   if (pingu && pingu->get_owner () == controller->get_owner ())
