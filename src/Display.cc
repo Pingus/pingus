@@ -1,4 +1,4 @@
-//  $Id: Display.cc,v 1.7 2001/04/12 19:47:09 grumbel Exp $
+//  $Id: Display.cc,v 1.8 2001/04/15 15:41:32 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <algorithm>
 #include <ClanLib/core.h>
 
 #include "globals.hh"

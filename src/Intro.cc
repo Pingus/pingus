@@ -1,4 +1,4 @@
-//  $Id: Intro.cc,v 1.15 2000/12/14 21:35:54 grumbel Exp $
+//  $Id: Intro.cc,v 1.16 2001/04/15 15:41:32 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -68,12 +68,7 @@ Intro::draw()
       Display::flip_display(true);
       CL_System::keep_alive();
     }
-  
-  if (sound_enabled) 
-    {
-      ses_sound = sound->play();
-    }
-  
+    
   for(float i=1.0; (i > 0.0) && !quit; i -= 0.05)
     {
       CL_Display::fill_rect(0,0, CL_Display::get_width(), CL_Display::get_height(),

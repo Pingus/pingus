@@ -1,4 +1,4 @@
-//  $Id: PingusResource.cc,v 1.15 2000/12/14 21:35:55 grumbel Exp $
+//  $Id: PingusResource.cc,v 1.16 2001/04/15 15:41:32 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -73,7 +73,6 @@ PingusResource::PingusResource()
 CL_ResourceManager*
 PingusResource::get(const std::string& arg_filename)
 {
-
   string filename = suffix_fixer(arg_filename);
   //std::cout << "PingusResource: getting: " << filename << std::endl;
 
@@ -89,8 +88,14 @@ PingusResource::get(const std::string& arg_filename)
     {
       std::string res_filename = "data/" + filename;
 
+      // FIXME: Memory hole... 
+      // For Sun Apr 15 17:34:38 2001 ClanLib CVS
+      //res_manager = new CL_ResourceManager(res_filename.c_str(),
+      //					   /* is_datafile = */ use_datafile);
+      // For some older CVS
       res_manager = CL_ResourceManager::create(res_filename.c_str(),
 					       /* is_datafile = */ use_datafile);
+
       resource_map[filename] = res_manager;
       return res_manager;
     }

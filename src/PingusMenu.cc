@@ -1,4 +1,4 @@
-//  $Id: PingusMenu.cc,v 1.42 2001/04/10 10:45:14 grumbel Exp $
+//  $Id: PingusMenu.cc,v 1.43 2001/04/15 15:41:32 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -64,7 +64,7 @@ PingusMenu::init ()
   on_button_release_slot = CL_Input::sig_button_release.connect (CL_CreateSlot(this, &PingusMenu::on_button_release));
   //on_mouse_move_slot     = CL_Input::sig_mouse_move.connect (CL_CreateSlot(event, &PingusMenu::on_mouse_move));
 
-  on_resize_slot = CL_Display::get_sig_resize().connect(CL_CreateSlot(this, &PingusMenu::on_resize));
+  //on_resize_slot = CL_Display::sig_resized().connect(CL_CreateSlot(this, &PingusMenu::on_resize));
 
   buttons.push_back(boost::shared_ptr<SurfaceButton>(new OptionsButton ()));
   buttons.push_back(boost::shared_ptr<SurfaceButton>(new PlayButton ()));
