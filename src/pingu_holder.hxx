@@ -1,4 +1,4 @@
-//  $Id: pingu_holder.hxx,v 1.13 2002/10/04 16:54:04 grumbel Exp $
+//  $Id: pingu_holder.hxx,v 1.14 2002/10/08 00:09:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -101,6 +101,9 @@ public:
       @return the pingu with the id, or 0 if none found or pingu is
       dead or exited */
   Pingu* get_pingu(unsigned int id);
+
+  /** @return the id of the last pingu + 1 */
+  unsigned int get_end_id();
 
   // FIXME: Dirty cruft, needs cleanup
   std::list<Pingu*>::iterator  begin () { return pingus.begin (); }

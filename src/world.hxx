@@ -1,4 +1,4 @@
-//  $Id: world.hxx,v 1.17 2002/10/04 16:54:04 grumbel Exp $
+//  $Id: world.hxx,v 1.18 2002/10/08 00:09:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -65,7 +65,7 @@ private:
 
   /** FIXME: ugly hack to iterate over all pingus and make bombers out
       of them, should use pingus_id instead */
-  std::list<Pingu*>::iterator armageddon_count;
+  unsigned int armageddon_count;
 
   std::vector<WorldObj*> world_obj;
   typedef std::vector<WorldObj*>::iterator WorldObjIter;

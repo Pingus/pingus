@@ -1,4 +1,4 @@
-//  $Id: world.cxx,v 1.30 2002/10/04 16:54:04 grumbel Exp $
+//  $Id: world.cxx,v 1.31 2002/10/08 00:09:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -150,10 +150,23 @@ World::update()
 {
   game_time->update ();
 
-  if (do_armageddon && armageddon_count != pingus->end())
+  if (do_armageddon)
     {
-      // The iterator here might be invalid
-      (*armageddon_count)->request_set_action(Bomber);
+      while (armageddon_count < pingus->get_end_id())
+        {
+          Pingu* pingu = pingus->get_pingu(armageddon_count);
+      
+          if (pingu && pingu->get_status() == PS_ALIVE)
+            {
+              pingu->request_set_action(Bomber);
+              break;
+            }
+          else
+            {
+              ++armageddon_count;
+            }
+        }
+      
       ++armageddon_count;
     }
     
@@ -206,8 +219,7 @@ World::armageddon(void)
 {
   PingusSound::play_sound ("sounds/goodidea.wav");
   do_armageddon = true;
-  // FIXME: Ugly to use iterator, since it can get invalid
-  armageddon_count = pingus->begin();
+  armageddon_count = 0;
 }
 
 ColMap*
