@@ -1,4 +1,4 @@
-//  $Id: sprite.cxx,v 1.14 2003/04/19 10:23:17 torangan Exp $
+//  $Id: sprite.cxx,v 1.15 2003/08/16 20:51:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,15 +22,9 @@
 #include "vector.hxx"
 #include "pingus_resource.hxx"
 #include "sprite.hxx"
+#include "math.hxx"
+#include "gui/graphic_context.hxx"
 #include "globals.hxx"
-
-int round (float f)
-{
-  if (f >= 0.0f)
-    return int(f + 0.5f);
-  else
-    return int(f - 0.5f);
-}
 
 Sprite::Sprite ()
 {
@@ -121,13 +115,13 @@ Sprite::put_screen (int x, int y)
   switch (direction)
     {
     case Sprite::NONE:
-      sur.put_screen (x + x_align, y + y_align, round(frame));
+      sur.put_screen (x + x_align, y + y_align, Math::round(frame));
       break;
     case Sprite::LEFT:
-      sur.put_screen (x + x_align, y + y_align, round(frame));
+      sur.put_screen (x + x_align, y + y_align, Math::round(frame));
       break;
     case Sprite::RIGHT:
-      sur.put_screen (x + x_align, y + y_align, round(frame) + max_frames ());
+      sur.put_screen (x + x_align, y + y_align, Math::round(frame) + max_frames ());
       break;
     default:
       std::cout << "Direction: " << direction << std::endl;
@@ -135,13 +129,40 @@ Sprite::put_screen (int x, int y)
     }
 }
 
-
 void
 Sprite::put_screen (const Vector& pos)
 {
   put_screen (int(pos.x), int(pos.y));
 }
 
+void
+Sprite::draw(GraphicContext& gc, const Vector& pos)
+{
+  if (!sur)
+    return;
+
+  // FIXME: HACK
+  update (0.0f);
+
+  int x = int(pos.x);
+  int y = int(pos.y);
+
+  switch (direction)
+    {
+    case Sprite::NONE:
+    case Sprite::LEFT:
+      gc.draw(sur, x + x_align, y + y_align, Math::round(frame));
+      break;
+
+    case Sprite::RIGHT:
+      gc.draw(sur, x + x_align, y + y_align, Math::round(frame) + max_frames ());
+      break;
+
+    default:
+      std::cout << "Direction: " << direction << std::endl;
+      assert(0);
+    }
+}
 
 void
 Sprite::set_align (int arg_x, int arg_y)
@@ -170,7 +191,7 @@ Sprite::next_frame ()
 {
   ++frame;
 
-  if (round(frame) >= int(sur.get_num_frames ()))
+  if (Math::round(frame) >= int(sur.get_num_frames ()))
     frame = 0;
 }
 
@@ -181,7 +202,7 @@ Sprite::previous_frame ()
 {
   --frame;
 
-  if (round(frame) < 0)
+  if (Math::round(frame) < 0)
     frame = sur.get_num_frames () - 1;
 }
 
@@ -236,12 +257,12 @@ Sprite::update (float delta)
     case ENDLESS:
       frame += frames_per_second * delta;
 
-      if (round(frame) < 0) {
+      if (Math::round(frame) < 0) {
 	std::cout << "frame below zero: " << frame << std::endl;
 	frame  = (max_frames ()-1.0f);
       }
 
-      if (round(frame) >= max_frames ()) {
+      if (Math::round(frame) >= max_frames ()) {
 	is_finished = true;
 	frame = 0;
       }
@@ -249,7 +270,7 @@ Sprite::update (float delta)
 
     case ONCE:
       frame += frames_per_second * delta;
-      if (round(frame) >= max_frames ())
+      if (Math::round(frame) >= max_frames ())
 	{
 	  is_finished = true;
 	  frame = max_frames () - 1;

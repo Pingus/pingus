@@ -1,4 +1,4 @@
-//  $Id: graphic_context.hxx,v 1.4 2003/04/19 10:23:18 torangan Exp $
+//  $Id: graphic_context.hxx,v 1.5 2003/08/16 20:51:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -65,10 +65,11 @@ public:
 
   virtual void clear (float r, float g, float b) =0;
 
-  virtual void draw (Sprite& sprite, const Vector& pos) =0;
-  virtual void draw (Sprite& sprite, const Vector& pos, int frame) =0;
-  virtual void draw (CL_Surface& sur, const Vector& pos) =0;
-  virtual void draw (CL_Surface& sur, const Vector& pos, int frame) =0;
+  virtual void draw (Sprite& sprite, const Vector& pos);
+  virtual void draw (Sprite& sprite, const Vector& pos, int frame);
+
+  virtual void draw (CL_Surface& sur, const Vector& pos);
+  virtual void draw (CL_Surface& sur, const Vector& pos, int frame);
 
   virtual void draw (CL_Surface& sur, int x_pos, int y_pos) =0;
   virtual void draw (CL_Surface& sur, int x_pos, int y_pos, int frame) =0;

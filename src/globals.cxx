@@ -1,4 +1,4 @@
-//  $Id: globals.cxx,v 1.15 2003/08/13 13:46:39 sphair Exp $
+//  $Id: globals.cxx,v 1.16 2003/08/16 20:51:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -51,6 +51,7 @@ bool        max_cpu_usage                   = true;
 bool        use_opengl                      = false;
 bool        action_help                     = true;
 bool        show_input_debug_screen         = false;
+bool        render_preview                  = false;
 
 int         min_frame_skip                  = 1;
 int         max_frame_skip                  = 5;

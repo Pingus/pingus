@@ -1,4 +1,4 @@
-//  $Id: screen_manager.hxx,v 1.4 2003/04/19 10:23:18 torangan Exp $
+//  $Id: screen_manager.hxx,v 1.5 2003/08/16 20:51:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,8 +24,8 @@
 #include <vector>
 
 #include "screen_ptr.hxx"
-#include "display_graphic_context.hxx"
 
+class GraphicContext;
 class Screen;
 
 class ScreenManager
@@ -33,7 +33,7 @@ class ScreenManager
 private:
   static ScreenManager* instance_;
 
-  DisplayGraphicContext display_gc;
+  GraphicContext* display_gc;
 
   /** Screen stack (first is the screen, second is delete_screen,
       which tells if the screen should be deleted onces it got poped

@@ -1,4 +1,4 @@
-//  $Id: display_graphic_context.hxx,v 1.4 2003/04/19 10:23:18 torangan Exp $
+//  $Id: display_graphic_context.hxx,v 1.5 2003/08/16 20:51:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -89,11 +89,6 @@ public:
   Vector world_to_screen (Vector pos);
 
   void clear (float r, float g, float b);
-
-  void draw (Sprite& sprite, const Vector& pos);
-  void draw (Sprite& sprite, const Vector& pos, int frame);
-  void draw (CL_Surface& sur, const Vector& pos);
-  void draw (CL_Surface& sur, const Vector& pos, int frame);
 
   void draw (CL_Surface& sur, int x_pos, int y_pos);
   void draw (CL_Surface& sur, int x_pos, int y_pos, int frame);

@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.152 2003/04/24 15:18:19 grumbel Exp $
+#  $Id: Makefile.am,v 1.153 2003/08/16 20:51:28 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -159,12 +159,6 @@ indexed_canvas.hxx \
 indexed_canvas.cxx \
 layer_manager.cxx \
 layer_manager.hxx \
-level_desc.cxx \
-level_desc.hxx \
-level_interrupt.cxx \
-level_interrupt.hxx \
-level_result.cxx \
-level_result.hxx \
 libxmlfwd.hxx \
 loading.cxx \
 loading.hxx \
@@ -227,6 +221,8 @@ plt_xml.cxx \
 plt_xml.hxx \
 prefab.cxx \
 prefab.hxx \
+preview_renderer.hxx \
+preview_renderer.cxx \
 range.cxx \
 range.hxx \
 res_descriptor.cxx \

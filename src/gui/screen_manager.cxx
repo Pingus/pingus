@@ -1,4 +1,4 @@
-//  $Id: screen_manager.cxx,v 1.9 2003/04/19 10:23:18 torangan Exp $
+//  $Id: screen_manager.cxx,v 1.10 2003/08/16 20:51:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,8 @@
 #include "../globals.hxx"
 #include "cursor.hxx"
 #include "display.hxx"
+#include "display_graphic_context.hxx"
+#include "buffer_graphic_context.hxx"
 #include "screen_manager.hxx"
 #include "../fade_out.hxx"
 #include "../path_manager.hxx"
@@ -32,8 +34,12 @@
 ScreenManager* ScreenManager::instance_ = 0;
 
 ScreenManager::ScreenManager ()
-  : display_gc (0, 0, CL_Display::get_width (), CL_Display::get_height (), 0, 0)
 {
+  if (render_preview)
+    display_gc = new BufferGraphicContext(800, 600);
+  else
+    display_gc = new DisplayGraphicContext(0, 0, CL_Display::get_width (), CL_Display::get_height (), 0, 0);
+
   cached_action = CA_NONE;
 }
 
@@ -124,7 +130,7 @@ ScreenManager::display ()
       // skip draw if the screen changed to avoid glitches
       if (last_screen == get_current_screen())
       	{
-	  if (get_current_screen()->draw (display_gc))
+	  if (get_current_screen()->draw (*display_gc))
 	    Display::flip_display ();
 	}
       else
@@ -249,12 +255,12 @@ ScreenManager::fade_over (ScreenPtr& old_screen, ScreenPtr& new_screen)
       int border_x = int((CL_Display::get_width ()/2) * (1.0f - progress));
       int border_y = int((CL_Display::get_height ()/2) * (1.0f - progress));
 
-      old_screen->draw (display_gc);
+      old_screen->draw(*display_gc);
       CL_Display::push_clip_rect(CL_ClipRect (0 + border_x,
 					      0 + border_y,
 					      CL_Display::get_width () - border_x,
 					      CL_Display::get_height () - border_y));
-      new_screen->draw (display_gc);
+      new_screen->draw(*display_gc);
 
       //GameDelta delta (time_delta, CL_System::get_time(), events);
       // FIXME: Animation looks nifty but doesn't work all that good

@@ -1,4 +1,4 @@
-//  $Id: math.hxx,v 1.8 2003/04/19 10:23:17 torangan Exp $
+//  $Id: math.hxx,v 1.9 2003/08/16 20:51:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -67,6 +67,15 @@ inline
 bool rand_bool()
 {
   return rand()%2 == 0;
+}
+
+inline
+int round (float f)
+{
+  if (f >= 0.0f)
+    return int(f + 0.5f);
+  else
+    return int(f - 0.5f);
 }
 
 } // namespace Math

@@ -1,4 +1,4 @@
-//  $Id: action_button.cxx,v 1.31 2003/04/22 16:40:41 grumbel Exp $
+//  $Id: action_button.cxx,v 1.32 2003/08/16 20:51:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -153,12 +153,12 @@ VerticalActionButton::draw (GraphicContext& gc)
   if (Cheat::unlimited_actions)
     {
       // FIXME: insert unlimited surface here
-      font->print_center(x_pos + 46, y_pos + 10, "oo");
+      font->print_center(x_pos + 46, y_pos + 5, "oo");
     }
   else
     {
       std::string str = to_string(action_holder->get_available(name));
-      font->print_center(x_pos + 46, y_pos + 10, str.c_str ());
+      font->print_center(x_pos + 46, y_pos + 5, str.c_str ());
     }
 }
 

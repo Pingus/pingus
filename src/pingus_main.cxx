@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.95 2003/08/14 20:08:25 torangan Exp $
+//   $Id: pingus_main.cxx,v 1.96 2003/08/16 20:51:28 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___
@@ -80,6 +80,7 @@
 #include "string_tokenizer.hxx"
 #include "story.hxx"
 #include "cheat.hxx"
+#include "preview_renderer.hxx"
 #include "worldmap/manager.hxx"
 #include "worldobj_data_factory.hxx"
 
@@ -229,6 +230,7 @@ PingusMain::check_args(int argc, char** argv)
       {"frame-skip",        required_argument, 0, 157},
       {"cheat",             required_argument, 0, 156},
       {"controller",        required_argument, 0, 160},
+      {"render-preview",    required_argument, 0, 161},
 #ifdef HAVE_LIBCLANGL
       {"use-opengl",        no_argument,       0, 'G'},
 #endif
@@ -484,6 +486,12 @@ PingusMain::check_args(int argc, char** argv)
 
     case 160:
       controller_file = optarg;
+      break;
+
+    case 161:
+      std::cout << "Rendering a Level Preview..." << std::endl;
+      render_preview = true;
+      preview_file   = optarg;
       break;
 
     default:
@@ -771,6 +779,18 @@ PingusMain::start_game ()
     {
       ScreenManager::instance()->push_screen(new InputDebugScreen (), true);
     }
+  else if (render_preview)
+    {
+      if (levelfile.empty())
+        {
+          PingusError::raise("You need to give a level file to render a preview");
+        }
+      else
+        {
+          PreviewRenderer::render(PLFResMgr::load_plf_from_filename(levelfile),
+                                  preview_file);
+        }
+    }
   else if (show_credits)
     {
       ScreenManager::instance()->push_screen(Credits::instance(), false);
@@ -801,8 +821,6 @@ PingusMain::start_game ()
             }
           else
             {
-              /*ScreenManager::instance()->push_screen
-                (new PingusGameSession (PLFResMgr::load_plf_from_filename(levelfile), false), true);*/
               ScreenManager::instance()->push_screen
                 (new StartScreen(PLFResMgr::load_plf_from_filename(levelfile)),
                  true);

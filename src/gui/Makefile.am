@@ -18,6 +18,8 @@
 noinst_LIBRARIES = libpingus_gui.a
 
 libpingus_gui_a_SOURCES = \
+        buffer_graphic_context.hxx \
+        buffer_graphic_context.cxx \
 	cursor.cxx \
 	cursor.hxx \
 	display.cxx \
@@ -41,6 +43,7 @@ libpingus_gui_a_SOURCES = \
 	screen_ptr.hxx \
         component.hxx \
         graphic_context.hxx \
+        graphic_context.cxx \
         surface_button.cxx \
         surface_button.hxx
 

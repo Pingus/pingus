@@ -1,4 +1,4 @@
-//  $Id: sprite.hxx,v 1.10 2003/04/19 10:23:17 torangan Exp $
+//  $Id: sprite.hxx,v 1.11 2003/08/16 20:51:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,6 +25,7 @@
 
 class Vector;
 class ResDescriptor;
+class GraphicContext;
 
 class Sprite
 {
@@ -79,6 +80,9 @@ public:
   /** High level version put_screen (), it handles the framecount and
       the alignment */
   void put_screen (const Vector& pos);
+
+  /** Equal to put_screen() except that it draws to a GraphicContext */
+  void draw(GraphicContext& gc, const Vector& pos );
 
   /** Set the alignment (aka offset) of the surface
    @param arg_x The x offset by which the surface drawn

@@ -1,4 +1,4 @@
-//  $Id: display_graphic_context.cxx,v 1.5 2003/04/19 10:23:18 torangan Exp $
+//  $Id: display_graphic_context.cxx,v 1.6 2003/08/16 20:51:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -155,44 +155,6 @@ void
 DisplayGraphicContext::clear (float r, float g, float b)
 {
   CL_Display::clear_display(r, g, b);
-}
-
-void
-DisplayGraphicContext::draw (Sprite& sprite, const Vector& pos)
-{
-  sprite.put_screen(pos + offset + center);
-}
-
-void
-DisplayGraphicContext::draw (Sprite& sprite, const Vector& pos, int frame)
-{
-  CL_Surface sur (sprite.get_surface ());
-  draw (sur,
-	w2s_x(pos.x + sprite.get_x_align ()),
-	w2s_y(pos.y + sprite.get_y_align ()),
-	frame);
-}
-
-void
-DisplayGraphicContext::draw (CL_Surface& sur, const Vector& pos)
-{
-  if (offset.z == 1.0)
-    {
-      sur.put_screen (w2s_x(pos.x), w2s_y(pos.y));
-    }
-  else
-    {
-      sur.put_screen (w2s_x(pos.x), w2s_y(pos.y),
-		      offset.z, offset.z);
-    }
-  //CL_Display::draw_line (x1, y1, x2, y2, 1.0, 1.0, 0.0);
-  //CL_Display::draw_line (x1, y2, x2, y1, 1.0, 1.0, 0.0);
-}
-
-void
-DisplayGraphicContext::draw (CL_Surface& sur, const Vector& pos, int frame)
-{
-  draw (sur, int(pos.x), int(pos.y), frame);
 }
 
 void

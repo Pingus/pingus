@@ -1,4 +1,4 @@
-//  $Id: globals.hxx,v 1.17 2003/04/19 10:23:17 torangan Exp $
+//  $Id: globals.hxx,v 1.18 2003/08/16 20:51:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -56,7 +56,8 @@ extern std::string controller_file;                 ///< --controller
 extern bool        max_cpu_usage;                   ///< --max-cpu-usage
 extern bool        use_opengl;                      ///< --use-opengl
 extern bool        action_help;                     ///< --action-help
-extern bool        show_input_debug_screen;         ///
+extern bool        show_input_debug_screen;         ///<
+extern bool        render_preview;                  ///<
 
 extern std::string global_username;                 ///< The name of the currently logged in user
 extern std::string global_email;                    ///< The email address of the currently logged in user

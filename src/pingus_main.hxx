@@ -1,4 +1,4 @@
-//  $Id: pingus_main.hxx,v 1.12 2003/04/19 10:23:17 torangan Exp $
+//  $Id: pingus_main.hxx,v 1.13 2003/08/16 20:51:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,6 +35,10 @@ private:
   /// the name of the exe: argv[0]
   std::string executable_name;
   std::string levelfile;
+
+  /** Filename to which the level preview should be saved */
+  std::string preview_file;
+
   std::string worldmapfile;
   std::string resolution;
 

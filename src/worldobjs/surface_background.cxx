@@ -1,4 +1,4 @@
-//  $Id: surface_background.cxx,v 1.9 2003/04/19 10:23:19 torangan Exp $
+//  $Id: surface_background.cxx,v 1.10 2003/08/16 20:51:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -155,34 +155,43 @@ SurfaceBackground::draw (GraphicContext& gc)
     }
   else
     {
-      int x_of = static_cast<int>(gc.get_x_offset () + (gc.get_width ()/2));
-      int y_of = static_cast<int>(gc.get_y_offset () + (gc.get_height ()/2));
+      if (render_preview)
+        {
+          for(int y = 0; y < gc.get_height();  y += bg_surface.get_height())
+            for(int x = 0; x < gc.get_width(); x += bg_surface.get_height())
+              gc.draw(bg_surface, x, y, counter);
+        }
+      else
+        {
+          int x_of = static_cast<int>(gc.get_x_offset () + (gc.get_width ()/2));
+          int y_of = static_cast<int>(gc.get_y_offset () + (gc.get_height ()/2));
 
-      int start_x;
-      int start_y;
+          int start_x;
+          int start_y;
 
-      start_x = static_cast<int>((x_of * data->para_x) + scroll_ox);
-      start_y = static_cast<int>((y_of * data->para_y) + scroll_oy);
+          start_x = static_cast<int>((x_of * data->para_x) + scroll_ox);
+          start_y = static_cast<int>((y_of * data->para_y) + scroll_oy);
 
-      if (start_x >= 0)
-	start_x = start_x - bg_surface.get_width();
+          if (start_x >= 0)
+            start_x = start_x - bg_surface.get_width();
 
-      if (start_y >= 0)
-	start_y -= bg_surface.get_height();
-      else if (start_y < 0 - static_cast<int>(bg_surface.get_height()))
-	start_y += bg_surface.get_height();
+          if (start_y >= 0)
+            start_y -= bg_surface.get_height();
+          else if (start_y < 0 - static_cast<int>(bg_surface.get_height()))
+            start_y += bg_surface.get_height();
 
-      for(int y = start_y;
-	  y < CL_Display::get_height();
-	  y += bg_surface.get_height())
-	{
-	  for(int x = start_x;
-	      x < CL_Display::get_width();
-	      x += bg_surface.get_width())
-	    {
-	      bg_surface.put_screen(x, y, counter); // FIXME: should use gc
-	    }
-	}
+          for(int y = start_y;
+              y < CL_Display::get_height();
+              y += bg_surface.get_height())
+            {
+              for(int x = start_x;
+                  x < CL_Display::get_width();
+                  x += bg_surface.get_width())
+                {
+                  bg_surface.put_screen(x, y, counter); // FIXME: should use gc
+                }
+            }
+        }
     }
 }
 
