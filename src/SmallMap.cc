@@ -1,4 +1,4 @@
-//  $Id: SmallMap.cc,v 1.8 2000/04/29 20:03:04 grumbel Exp $
+//  $Id: SmallMap.cc,v 1.9 2000/05/27 23:09:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <vector>
+#include <algorithm>
 
 #include "exit_data.hh"
 #include "entrance_data.hh"
@@ -143,10 +144,12 @@ SmallMap::draw()
   x_of = -x_of * width / client->get_server()->get_world()->get_colmap()->get_width();
   y_of = -y_of * height / client->get_server()->get_world()->get_colmap()->get_height();
 
-  Display::draw_rect(x_of, y_of + CL_Display::get_height() - sur->get_height(),
-		     x_of + rwidth, y_of + rheight + CL_Display::get_height() - sur->get_height(),
+  Display::draw_rect(x_of, 
+		     y_of + CL_Display::get_height() - sur->get_height(),
+		     x_of + min(rwidth, sur->get_width()),
+		     y_of + min(rheight, sur->get_height()) + CL_Display::get_height() - sur->get_height(),
 		     0.0, 1.0, 0.0, 1.0);
-
+  
   // FIXME: This should use put_target(), but put_target(), does not
   // seem to work?!
   /*  vector<exit_data>     exit_d     = plf->get_exit();
