@@ -1,7 +1,7 @@
 Name:        Misc
 Image:       -
-Description: All Pingus are traped in a work of crystals and danger, can you free them.
-Background:  (resource:textures.dat)Textures/crystal
+Description: -
+Background:  (resource:textures.dat)Textures/rooftile2
 
 stone.plf
 block.plf

@@ -1,6 +1,6 @@
 Name:        -
 Image:       Themes/crystal
-Description: All Pingus are traped in a work of crystals and danger, can you free them.
+Description: -
 Background:  (resource:textures.dat)Textures/crystal
 
 level1.plf
