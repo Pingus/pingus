@@ -23,3 +23,5 @@ libpingus_particle_a_SOURCES = Particle.cc    Particle.hh          \
                                SmokeParticle.cc  SmokeParticle.hh  \
                                GroundParticle.cc GroundParticle.hh \
                                PinguParticle.cc  PinguParticle.hh
+
+## EOF ##

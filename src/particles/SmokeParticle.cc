@@ -1,4 +1,4 @@
-//  $Id: SmokeParticle.cc,v 1.3 2000/03/08 01:37:22 grumbel Exp $
+//  $Id: SmokeParticle.cc,v 1.4 2000/05/12 13:31:24 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <cstdlib>
 #include "../globals.hh"
 #include "../PingusResource.hh"
 #include "SmokeParticle.hh"
@@ -29,7 +30,12 @@ SmokeParticle::SmokeParticle()
 // WoodThing.cc when I try to use SmokeParticle there?!
 SmokeParticle::SmokeParticle(int x, int y, float x_a, float y_a)
 {
-  surface = CL_Surface::load("Particles/smoke", PingusResource::get("pingus.dat"));
+  // FIXME: Probably slow??
+  if (std::rand() % 2)
+    surface = CL_Surface::load("Particles/smoke", PingusResource::get("pingus.dat"));
+  else
+    surface = CL_Surface::load("Particles/smoke2", PingusResource::get("pingus.dat"));
+
   x_pos = x;
   y_pos = y;
   x_add = x_a;
