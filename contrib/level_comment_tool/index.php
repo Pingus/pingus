@@ -168,13 +168,21 @@ if  ( !isset($_GET["l"]) || !isset($_GET["c"]) )
             $celcolor = "bgcolor='#A0A0A0'";
 
           $jpg = htmlentities($c["name"]) . "/" . htmlentities($l) . ".jpg";
-          print "<td valign='top' $celcolor width='25%'><small>\n".
-            "<a href='$PHP_SELF?c=" .
-            urlencode($c["name"]) . "&l=" . urlencode($l) . "'>";
-          if ( $show_thumbs )
-            print "<img src='http://pingus.seul.org/levels/thumb/$jpg' align='left' border='0'>";
-          print "" . htmlentities( $l ) . "</a>";
-
+          print "<td valign='top' $celcolor width='50%'>\n";
+          if ( $show_thumbs )//additional column only when thumbs are shown
+	  {
+            print "<table width='100%' border='0'>\n" .
+             "<tr><td style='width:160px; height:120px;'>" .
+             "<a href='$PHP_SELF?c=" . urlencode($c["name"]) . "&l=" . urlencode($l) . "'>".
+             "<img src='http://pingus.seul.org/levels/thumb/$jpg' align='left' border='0'>".
+             "</a></td><td>\n";
+          }
+            
+          print "<small>".
+          "<a href='$PHP_SELF?c=" .
+          urlencode($c["name"]) . "&l=" . urlencode($l) . "'>".
+          urlencode($l) . "</a>\n";
+            
           if ( $cnt < 1 ) $cnt = "-";
           print " (<strong>$cnt</strong>)<br>";
           print "<em>&quot;" . htmlentities($ldata["name"]) . "&quot;</em><br>";
@@ -185,12 +193,18 @@ if  ( !isset($_GET["l"]) || !isset($_GET["c"]) )
             print "<b>Not playable</b><br>";
           if ( $cnt > 0 )
             print "Rating:" . str_repeat( "*", intval($ldata["avgrating"])) . "<br>";
-          print " view <a href='http://pingus.seul.org/levels/50/$jpg' target='levelview'>half</a>" .
-            "/<a href='http://pingus.seul.org/levels/100/$jpg' target='levelview'>full</a> | " .
-            "play with <a href='data/levels/" . urlencode($c["name"]) . "/" . urlencode($l) . ".pingus'>Subversion</a>" .
+          print " view <a href='http://pingus.seul.org/levels/33/$jpg' target='levelview'>third</a>".
+            " / <a href='http://pingus.seul.org/levels/50/$jpg' target='levelview'>half</a>" .
+            " / <a href='http://pingus.seul.org/levels/100/$jpg' target='levelview'>full</a><br>" .
+            /*"play with <a href='data/levels/" . urlencode($c["name"]) . "/" . urlencode($l) . ".pingus'>Subversion</a>" .
             " / <a href='data/levels/" . urlencode($c["name"]) . "/" . urlencode($l) . ".xml'>0.6</a> version" .
-            "<br>";
-          print "</small></td>\n";
+            "<br>";*/
+            "<a href='data/levels/" . urlencode($c["name"]) . "/" . urlencode($l) . ".pingus'>play level</a>" .
+            " (requires Pingus 0.6.1 or later)".
+            "</small>\n";
+          if ( $show_thumbs )
+            print "</td></tr></table>\n";
+          print "</td>\n";
 
 
           if ($col_cnt++ == 1 )
