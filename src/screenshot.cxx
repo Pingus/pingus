@@ -1,4 +1,4 @@
-//  $Id: screenshot.cxx,v 1.7 2002/10/06 17:13:24 torangan Exp $
+//  $Id: screenshot.cxx,v 1.8 2002/10/06 17:33:32 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -58,10 +58,10 @@ Screenshot::save_16bit_target_to_file(CL_Target* target, std::string filename)
 {
   // Warring this doesn't work
   
-  unsigned char* buffer;
-  unsigned char* sbuffer;
-  unsigned int sbuffer_size;
+  unsigned char*  buffer;
+  unsigned short* sbuffer;
   unsigned int buffer_size;
+  unsigned int sbuffer_size;
   FILE* out = fopen(filename.c_str(), "wb");
 
   if (!out) {
@@ -83,7 +83,7 @@ Screenshot::save_16bit_target_to_file(CL_Target* target, std::string filename)
   buffer = new unsigned char[buffer_size];
 
   target->lock();
-  sbuffer = (unsigned char*)target->get_data();
+  sbuffer = reinterpret_cast<unsigned short*>(target->get_data());
   sbuffer_size = target->get_height() * target->get_pitch();
   unsigned int sbytes_per_pixel = target->get_bytes_per_pixel();
 
@@ -93,14 +93,11 @@ Screenshot::save_16bit_target_to_file(CL_Target* target, std::string filename)
   for (unsigned int i = 0, j = 0; i < sbuffer_size;
 	i += sbytes_per_pixel, j += 3)
     {
-      buffer[j + 0] = (*((unsigned short*)(sbuffer+i)) & target->get_red_mask())
-		       * 255 / target->get_red_mask();
-      buffer[j + 1] = (*((unsigned short*)(sbuffer+i)) & target->get_green_mask()) 
-		       * 255 / target->get_green_mask();
-      buffer[j + 2] = (*((unsigned short*)(sbuffer+i)) & target->get_blue_mask())
-		       * 255 / target->get_blue_mask();
+      buffer[j + 0] = (*(sbuffer+i) & target->get_red_mask())   * 255 / target->get_red_mask();
+      buffer[j + 1] = (*(sbuffer+i) & target->get_green_mask()) * 255 / target->get_green_mask();
+      buffer[j + 2] = (*(sbuffer+i) & target->get_blue_mask())  * 255 / target->get_blue_mask();
     }
-  
+
   target->unlock();
   
   fwrite(buffer, sizeof(unsigned char), buffer_size, out);
