@@ -1,4 +1,4 @@
-//  $Id: editor.cxx,v 1.32 2002/09/14 19:06:34 torangan Exp $
+//  $Id: editor.cxx,v 1.33 2002/09/15 00:19:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -301,12 +301,17 @@ Editor::read_string (const std::string & prefix, const std::string & default_str
 std::string
 Editor::save_tmp_level ()
 {
-  std::string filename = std::string(tmpnam(0)) + ".pingus.xml";
-  
-  std::cout << "Saving level to: " << filename << std::endl;
-  
-  object_manager->save_level_xml(filename.c_str());
+  /*
+  char buffer[32];
+  struct tm current_time;
+  time_t t = time ();
 
+  localtime_r (&t, &current_time);
+  strftime (buffer, 32, "%s", &current_time);
+*/
+  std::string filename = System::get_backupdir () + "pingus-backup" + ".xml";
+  std::cout << "Editor: saving backup level to: " << filename << std::endl;
+  object_manager->save_level_xml(filename.c_str());
   return filename;
 }
 

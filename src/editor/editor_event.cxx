@@ -1,4 +1,4 @@
-//  $Id: editor_event.cxx,v 1.33 2002/09/14 23:31:12 grumbel Exp $
+//  $Id: editor_event.cxx,v 1.34 2002/09/15 00:19:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -163,6 +163,7 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key& key)
 	
 	  // Restore a previously created checkpoint.
 	case CL_KEY_F8:
+	  /* 
 	  editor->save_tmp_level();
 	  if (!editor->checkpoint.empty()) 
 	    {
@@ -173,7 +174,7 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key& key)
 	  else 
 	    {
 	      if (verbose) std::cout << "No checkpoint set, no restoring done. " << std::endl;
-	    }
+	      }*/
 	  break;
       
 	  // Insert a new object, present the ObjectsSelector to select

@@ -1,4 +1,4 @@
-//  $Id: system.hxx,v 1.4 2002/08/23 15:49:51 torangan Exp $
+//  $Id: system.hxx,v 1.5 2002/09/15 00:19:19 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -96,6 +96,10 @@ public:
   /** Returns the directory where Pingus can store things that needs
       to be cached, for example thumbnails */
   static std::string get_cachedir();
+
+  /** Returns the pathname of a directory where pingus can store its
+      backup files when creating backup files in the editor */
+  static std::string get_backupdir();
 
   /** Returns the directory were Pingus can store its system wide
       variable game data (highscores, cache images, ...) */
