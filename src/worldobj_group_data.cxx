@@ -1,4 +1,4 @@
-//  $Id: worldobj_group_data.cxx,v 1.2 2002/06/13 14:25:12 torangan Exp $
+//  $Id: worldobj_group_data.cxx,v 1.3 2002/06/24 18:53:14 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,13 +19,74 @@
 
 #include <fstream>
 #include "editor/editorobj_group.hxx"
+#include "xml_helper.hxx"
 #include "worldobj_group_data.hxx"
+#include "worldobj_data_factory.hxx"
+
+// FIXME: Factory pattern for this would be nice
+#include "exit_data.hxx"
+#include "entrance_data.hxx"
+#include "trap_data.hxx"
+#include "hotspot_data.hxx"
+#include "liquid_data.hxx"
 
 typedef EditorObjLst::iterator EditorObjLstIter;
 
 
 WorldObjGroupData::WorldObjGroupData ()
 {
+}
+
+WorldObjGroupData::WorldObjGroupData (xmlDocPtr doc, xmlNodePtr cur)
+{
+  cur = cur->children;
+
+  std::cout << "WorldObjGroupData::WorldObjGroupData (xmlDocPtr doc, xmlNodePtr cur)" << std::endl;
+
+  while (cur != NULL)
+    {
+      if (xmlIsBlankNode(cur)) 
+	{
+	  cur = cur->next;
+	  continue;
+	}
+      
+      std::cout << "Obj: " << cur->name << std::endl;
+
+      if (strcmp((char*)cur->name, "exit") == 0)
+	{
+	  add (new ExitData (doc, cur));
+	}
+      else if (strcmp((char*)cur->name, "entrance") == 0)
+	{
+	  add (new EntranceData (doc, cur));
+	}
+      else if (strcmp((char*)cur->name, "trap") == 0)
+	{
+	  add (new TrapData (doc, cur));
+	}
+      else if (strcmp((char*)cur->name, "hotspot") == 0)
+	{
+	  add(new HotspotData (doc, cur));
+	}
+      else if (strcmp((char*)cur->name, "liquid") == 0)
+	{
+	  add(new LiquidData (doc, cur));
+	}
+      else if (strcmp((char*)cur->name, "group") == 0)
+	{
+	  add(new WorldObjGroupData (doc, cur));
+	}
+      else if (strcmp ((char*)cur->name, "worldobj") == 0)
+	{
+	  add(WorldObjDataFactory::instance ()->create (doc, cur));
+	}
+      else
+	{
+	  printf("WorldObjGroupData: Unhandled: %s\n", (char*)cur->name);
+	}
+      cur = cur->next;
+    }
 }
 
 WorldObjGroupData::~WorldObjGroupData ()

@@ -1,4 +1,4 @@
-//  $Id: xml_plf.cxx,v 1.3 2002/06/13 14:25:12 torangan Exp $
+//  $Id: xml_plf.cxx,v 1.4 2002/06/24 18:53:14 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -427,44 +427,7 @@ XMLPLF::parse_global(xmlNodePtr cur)
 void 
 XMLPLF::parse_groundpiece(xmlNodePtr cur)
 {
-  GroundpieceData surface;
-
-  surface.gptype = GroundpieceData::GP_GROUND;
-
-  char* gptype = (char*)xmlGetProp(cur, (xmlChar*)"type");
-  if (gptype)
-    {
-      surface.gptype = GroundpieceData::string_to_type (gptype);
-      free(gptype);
-    }
-  else
-    std::cout << "XMLPLF: groundtype empty" << std::endl;
-
-  cur = cur->children;
-
-  while (cur != NULL)
-    {
-      if (xmlIsBlankNode(cur)) 
-	{
-	  cur = cur->next;
-	  continue;
-	}
-      
-      if (strcmp((char*)cur->name, "position") == 0)
-	{
-	  surface.pos = XMLhelper::parse_vector(doc, cur);
-	}
-      else if (strcmp((char*)cur->name, "surface") == 0)
-	{
-	  surface.desc = XMLhelper::parse_surface(doc, cur);
-	}	
-      else
-	{
-	  printf("Unhandled: %s\n", (char*)cur->name);
-	}
-      cur = cur->next;	
-    }
-  groundpieces.push_back(surface);
+  groundpieces.push_back(GroundpieceData (doc, cur));
 }
 
 /* EOF */

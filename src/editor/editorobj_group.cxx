@@ -1,4 +1,4 @@
-//  $Id: editorobj_group.cxx,v 1.1 2002/06/12 19:11:31 grumbel Exp $
+//  $Id: editorobj_group.cxx,v 1.2 2002/06/24 18:53:14 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,6 +25,11 @@
 /******************/
 
 EditorObjGroup::EditorObjGroup()
+{
+}
+
+EditorObjGroup::EditorObjGroup(const std::list<boost::shared_ptr<EditorObj> >& arg_objs)
+  : objs (arg_objs)
 {
 }
 

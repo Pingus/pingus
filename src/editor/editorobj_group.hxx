@@ -1,4 +1,4 @@
-//  $Id: editorobj_group.hxx,v 1.3 2002/06/19 15:19:26 torangan Exp $
+//  $Id: editorobj_group.hxx,v 1.4 2002/06/24 18:53:14 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,6 +35,7 @@ private:
   //bool init;
 public:
   EditorObjGroup();
+  EditorObjGroup(const std::list<boost::shared_ptr<EditorObj> >& arg_objs);
   virtual ~EditorObjGroup();
 
   float get_z_pos();
@@ -53,6 +54,8 @@ public:
     
   void   write_xml(std::ofstream* xml);
   boost::shared_ptr<EditorObj> duplicate();
+
+  unsigned int size () { return objs.size (); }
 };
 
 #endif

@@ -1,4 +1,4 @@
-//  $Id: editor_event.cxx,v 1.5 2002/06/22 17:40:56 grumbel Exp $
+//  $Id: editor_event.cxx,v 1.6 2002/06/24 18:53:14 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,7 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <stdio.h>
-
+#include <fstream>
 #include <ClanLib/Display/Input/input.h>
 #include <ClanLib/Display/Input/keyboard.h>
 #include <ClanLib/Core/System/error.h>
@@ -43,6 +43,8 @@
 #include "panel.hxx"
 #include "object_selector.hxx"
 #include "editor.hxx"
+#include "../xml_helper.hxx"
+#include "../worldobj_group_data.hxx"
 
 EditorEvent::EditorEvent()
   : is_enabled (0)
@@ -86,6 +88,14 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key& key)
     {
       switch (key.id)
 	{
+	case CL_KEY_I: // import meta-object
+	  editor_import_object_group ();
+	  break;
+
+	case CL_KEY_X: // export meta-object
+	  editor_export_object_group_from_selection ();
+	  break;
+
 	case CL_KEY_F3:
 	  editor_toggle_background_color();
 	  break;
@@ -607,10 +617,10 @@ EditorEvent::editor_duplicate_current_selection()
       
       boost::shared_ptr<EditorObj> obj = (*i)->duplicate();
 
-      obj->set_position_offset (CL_Vector(8, 8));
-
-      if (obj.get())
+      if (obj.get ())
 	{
+	  obj->set_position_offset (CL_Vector(8, 8));
+
 	  object_manager->editor_objs.insert(iter, obj);
 	  new_objs.push_back(obj);
 	}
@@ -731,6 +741,34 @@ void
 EditorEvent::zoom_mode ()
 {
   editor->zoom_mode ();
+}
+
+void
+EditorEvent::editor_export_object_group_from_selection ()
+{
+  std::cout << "EditorEvent:editor_export_object_group_from_selection ()" << std::endl;
+  EditorObjGroup group (editor->object_manager->current_objs);
+  std::ofstream xml ("/tmp/metaobj.xml");
+  group.write_xml (&xml);
+}
+
+void
+EditorEvent::editor_import_object_group ()
+{
+  std::cout << "EditorEvent:editor_import_object_group ()" << std::endl;
+  xmlDocPtr doc = xmlParseFile("/tmp/metaobj.xml");
+  xmlNodePtr cur = doc->ROOT;
+  WorldObjGroupData* group = new WorldObjGroupData (doc, cur);
+  
+  std::list<boost::shared_ptr<EditorObj> > temp = group->create_EditorObj ();
+  
+  std::cout << "Size: " << temp.size () << std::endl;
+
+  std::cout << "1 Size: " << editor->object_manager->editor_objs.size () << std::endl;
+  editor->object_manager->editor_objs.insert(editor->object_manager->editor_objs.end(), temp.begin(), temp.end() );
+  std::cout << "1 Size: " << editor->object_manager->editor_objs.size () << std::endl; 
+
+  delete group;
 }
 
 /* EOF */

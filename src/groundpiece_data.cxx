@@ -1,4 +1,4 @@
-//  $Id: groundpiece_data.cxx,v 1.2 2002/06/13 14:25:12 torangan Exp $
+//  $Id: groundpiece_data.cxx,v 1.3 2002/06/24 18:53:14 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,51 @@
 #include "xml_helper.hxx"
 #include "editor/editor_groundpiece_obj.hxx"
 #include "boost/smart_ptr.hpp"
+#include "xml_helper.hxx"
+
+GroundpieceData::GroundpieceData ()
+{
+  // do nothing
+}
+
+GroundpieceData::GroundpieceData (xmlDocPtr doc, xmlNodePtr cur)
+{
+  gptype = GroundpieceData::GP_GROUND;
+
+  char* gptype_c_str = (char*)xmlGetProp(cur, (xmlChar*)"type");
+  if (gptype_c_str)
+    {
+      gptype = GroundpieceData::string_to_type (gptype_c_str);
+      free(gptype_c_str);
+    }
+  else
+    std::cout << "XMLPLF: groundtype empty" << std::endl;
+
+  cur = cur->children;
+
+  while (cur != NULL)
+    {
+      if (xmlIsBlankNode(cur)) 
+	{
+	  cur = cur->next;
+	  continue;
+	}
+      
+      if (strcmp((char*)cur->name, "position") == 0)
+	{
+	  pos = XMLhelper::parse_vector(doc, cur);
+	}
+      else if (strcmp((char*)cur->name, "surface") == 0)
+	{
+	  desc = XMLhelper::parse_surface(doc, cur);
+	}
+      else
+	{
+	  printf("Unhandled: %s\n", (char*)cur->name);
+	}
+      cur = cur->next;	
+    }
+}
 
 GroundpieceData::GPType 
 GroundpieceData::string_to_type(const std::string& arg_type) 

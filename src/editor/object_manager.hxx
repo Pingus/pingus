@@ -1,4 +1,4 @@
-//  $Id: object_manager.hxx,v 1.1 2002/06/12 19:11:31 grumbel Exp $
+//  $Id: object_manager.hxx,v 1.2 2002/06/24 18:53:14 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -71,16 +71,11 @@ private:
   PLF* plf;
   
 public:
-  ///
   typedef std::list<boost::shared_ptr<EditorObj> >::iterator EditorObjIter;
-  ///
   typedef std::list<boost::shared_ptr<EditorObj> >::reverse_iterator EditorObjRIter;
-  ///
   typedef std::list<boost::shared_ptr<EditorObj> >::iterator CurrentObjIter;
 
-  ///
   ObjectManager();
-  ///
   ~ObjectManager();
 
   /// Create a new level
@@ -91,25 +86,18 @@ public:
   /// Save the current level in an xml file
   void save_level_xml (const std::string & filename);
 
-  ///
   void draw(EditorView * view);
-  ///
   void draw_scroll_map(int x_pos, int y_pos, int arg_width, int arg_height);
-  
-  ///
+
   bool object_selected(boost::shared_ptr<EditorObj> c_obj);
-  ///
   void move_obj();
-  ///
+
   void delete_selection();
-  ///
   void delete_all_objs();
-  ///
+
   void rect_get_current_objs(float x1, float y1, float x2, float y2);
 
-  ///
   int get_width() { return width; }
-  ///
   int get_height() { return height; }
 
   /** Return the currently selected object, if none is selected or
@@ -123,14 +111,10 @@ public:
   void add_to_selection(boost::shared_ptr<EditorObj> obj);
   void add_to_selection(std::list<boost::shared_ptr<EditorObj> > objs);
 
-  ///
   bool raise_obj(boost::shared_ptr<EditorObj> obj);
-  ///
   void raise_current_objs();
-  ///
   bool lower_obj(boost::shared_ptr<EditorObj> obj);
 
-  ///
   void lower_current_objs();
 
   /** Remove an object from the current selection */
