@@ -1,4 +1,4 @@
-//  $Id: pingus.cxx,v 1.19 2002/10/15 21:48:43 grumbel Exp $
+//  $Id: pingus.cxx,v 1.20 2002/10/15 22:09:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -86,7 +86,11 @@ Pingus::update_walk (float delta)
 bool
 Pingus::walk_to_node (NodeId target)
 {
-  if (current_node != NoNode) // pingu stands still
+  if (current_node == target)
+    {
+      // do nothing
+    }
+  else if (current_node != NoNode) // pingu stands still
     {
       const PathfinderResult& res = path->get_path (current_node, target);
 
