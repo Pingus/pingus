@@ -1,4 +1,4 @@
-//  $Id: rain_particle_holder.cxx,v 1.1 2002/12/28 16:10:18 torangan Exp $
+//  $Id: rain_particle_holder.cxx,v 1.2 2002/12/31 15:09:33 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,7 +37,8 @@ RainParticleHolder::RainParticle::RainParticle(int x, int y)
 RainParticleHolder::RainParticleHolder ()
   : rain1_surf (PingusResource::load_surface("Particles/rain1", "pingus")),
     rain2_surf (PingusResource::load_surface("Particles/rain2", "pingus")),
-    rain_splash(PingusResource::load_surface("Particles/rain_splash", "pingus"))
+    rain_splash(PingusResource::load_surface("Particles/rain_splash", "pingus")),
+    world_width(1000.0f) // working default in case set_width() wasn't called
 {
 }
 
@@ -108,8 +109,8 @@ RainParticleHolder::draw (GraphicContext& gc)
 {
   for (std::vector<RainParticle>::iterator it=particles.begin(); it != particles.end(); ++it)
     {
-      // skip dead particles
-      if (!it->alive)
+      // skip dead/invisible particles
+      if (!it->alive || it->pos.x > world_width)
         continue;
 
       if (it->splash)
@@ -120,6 +121,12 @@ RainParticleHolder::draw (GraphicContext& gc)
         else
           gc.draw(rain1_surf, static_cast<int>(it->pos.x), static_cast<int>(it->pos.y - rain1_surf.get_height()));
     }
+}
+
+void
+RainParticleHolder::set_world_width(int width)
+{
+  world_width = width;
 }
 
 /* EOF */

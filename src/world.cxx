@@ -1,4 +1,4 @@
-//  $Id: world.cxx,v 1.34 2002/12/28 16:10:17 torangan Exp $
+//  $Id: world.cxx,v 1.35 2002/12/31 15:09:33 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -73,7 +73,9 @@ World::World(PLF* plf)
   world_obj.push_back (rain_particle_holder);
   world_obj.push_back(smoke_particle_holder);
   world_obj.push_back (snow_particle_holder);
+
   init_worldobjs(plf);
+  rain_particle_holder->set_world_width(get_width());
 }
 
 void
