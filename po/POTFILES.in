@@ -346,7 +346,6 @@ src/movers/linear_mover.cxx
 src/movers/linear_mover.hxx
 src/multiline_text.cxx
 src/multiline_text.hxx
-src/my_gettext.hxx
 src/particles/pingu_particle_holder.cxx
 src/particles/pingu_particle_holder.hxx
 src/particles/rain_particle_holder.cxx
