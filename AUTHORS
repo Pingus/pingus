@@ -2,19 +2,19 @@ I tried to list here all people, which have contributed to pingus. If
 you know somebody who I have missed please drop me a quick reminder to 
 <grumbel@gmx.de>.
 
-Ingo Ruhnke <grumbel@gmx.de>
+Ingo Ruhnke <grumbel@gmx.de> - http://pingus.seul.org/~grumbel/
 	* some gfx (mostly placeholder, ...)
 	* level design
 	* project maintainer
 	* programming
 
-Michael KÅ‰ser <michaelk@gmx.ch>
-	* maintainer of the Windows version
+Michael K‰ser <michaelk@gmx.ch>
+	* maintainer of the Windows version for Pingus 0.4.0
 
-Joel Fauche <joel-fauche@worldonline.fr>
+Joel Fauche <joel-fauche@worldonline.fr> - http://www.multimania.com/jfauche/
 	* most of the pingus (floater, walker, ...)
 
-Michael Mestre <mmestre@teaser.fr>
+Michael Mestre <mmestre@teaser.fr> - http://www.teaser.fr/~mmestre/
 	* some gfx (rock tile, weed, traps)
 
 Craig Timpany <timpany@es.co.nz>
@@ -23,7 +23,7 @@ Craig Timpany <timpany@es.co.nz>
 	* lots of levels
 
 Jules Bean <jmlb2@hermes.cam.ac.uk>
-	* Mailing List
+	* first pingus Mailing List
 
 David Philippi <david@torangan.de>
 	* RPM version maintainer
@@ -44,13 +44,13 @@ Werner Steiner <werner@rmdata-linux.dhs.org>
 H. Matthew Smith <matthew@synature.com>
 	* music
 
-Joseph Toscano <scarjt@buffnet.net>
+Joseph Toscano <zhaytee@zhaymusic.com> - http://zhaymusic.com/
 	* music
 
-Magnus Norddahl <mbn@dark.x.dtu.dk>
+Magnus Norddahl <mbn@dark.x.dtu.dk> - http://dark.x.dtu.dk/~mbn/
 	* RPM Packages
 
-Stefan Stiasny <sc@swi.priv.at>
+Stefan Stiasny <sc@swi.priv.at> - http://sc.ist.org/
 	* miner, stopper
 	* http://sc.ist.org/pingus/
 
@@ -62,11 +62,10 @@ Alan Tennent <rdt@post.queensu.ca>
 Kenneth GangstÅ¯ <kennethg@iname.com>
 	* Some fonts
 
-Peter Todd <retep@penguinpowered.com>
+Peter Todd <retep@penguinpowered.com> - http://www.petertodd.ca
 	* Programming (forces)
-	* http://retep.tripod.com
 
-David Fauthoux <david.fauthoux@free.fr>
+David Fauthoux <david.fauthoux@free.fr> - http://david.fauthoux.free.fr/
 	* armageddon button animation
 
 David M. Turner <turnerd@reed.edu>
@@ -77,7 +76,7 @@ David Flores <davidf@linuxfan.com>
 	* Programming
 	* fixed the bridger
 
-Tuomas (Tigert) Kuosmanen <tigert@gimp.org>
+Tuomas (Tigert) Kuosmanen <tigert@gimp.org> - http://tigert.gimp.org/
 	* Editor Icons (riped out of gnome-stock)
 
 Keir Fraser <Keir.Fraser@cl.cam.ac.uk>
