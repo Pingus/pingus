@@ -1,4 +1,4 @@
-//  $Id: action_button.cxx,v 1.6 2002/08/02 22:55:19 grumbel Exp $
+//  $Id: action_button.cxx,v 1.7 2002/08/03 11:37:45 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -238,10 +238,14 @@ void
 ForwardButton::draw()
 {
   if (server->get_fast_forward())
-    backgroundhl.put_screen (x_pos, y_pos);
+    {
+      backgroundhl.put_screen (x_pos, y_pos);
+    }
   else
-    background.put_screen (x_pos, y_pos);
-  
+    {
+      background.put_screen (x_pos, y_pos);
+    }
+
   surface.put_screen(x_pos, y_pos);
 }
 
@@ -260,7 +264,7 @@ ForwardButton::is_at(int x, int y)
 void
 ForwardButton::on_primary_button_click (int x, int y)
 {
-  server->set_fast_forward(server->get_fast_forward());
+  server->set_fast_forward(!server->get_fast_forward());
 }
 
 PauseButton::PauseButton(Server* s, int x, int y) 

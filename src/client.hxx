@@ -1,4 +1,4 @@
-//  $Id: client.hxx,v 1.10 2002/08/03 09:59:23 grumbel Exp $
+//  $Id: client.hxx,v 1.11 2002/08/03 11:37:45 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -59,8 +59,6 @@ private:
   Result result;
   Server* server;
 
-  bool fast_forward;
-  bool pause;
   int  skip_frame;
   bool do_replay;
   bool is_finished;
@@ -86,17 +84,10 @@ public:
   Server* get_server() { return server; }
   Playfield* get_playfield() { return playfield; }
 
-  void set_fast_forward(bool value);
-  bool get_fast_forward();
-
-  bool get_pause();
-  void set_pause(bool value);
-
   bool replay();
   void do_restart();
   bool finished();
   void set_finished();
-  Result get_result();
 
   /** Update all parts of the world */
   void update (float delta);

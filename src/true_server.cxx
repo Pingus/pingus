@@ -1,4 +1,4 @@
-//  $Id: true_server.cxx,v 1.3 2002/06/28 09:51:46 grumbel Exp $
+//  $Id: true_server.cxx,v 1.4 2002/08/03 11:37:45 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,7 +31,6 @@ TrueServer::TrueServer(PLF* arg_plf)
     plf (arg_plf)
 {
   filename = plf->get_filename();
-  local_game_speed = game_speed;
   world = 0;
   finished = false;
   client_needs_redraw = true;
@@ -71,6 +70,8 @@ TrueServer::update(float delta)
 
       if (fast_forward)
 	{
+	  
+
 	  // To let the game run faster we just update it multiple
 	  // times
 	  for (int i = 0; i < 4; ++i)
@@ -114,10 +115,12 @@ void
 TrueServer::set_fast_forward(bool value)
 {
   fast_forward = value;
-  if (fast_forward)
-    local_game_speed = 5;
-  else 
-    local_game_speed = game_speed;
+}
+
+bool
+TrueServer::get_fast_forward()
+{
+  return fast_forward;
 }
 
 void 
@@ -130,12 +133,6 @@ bool
 TrueServer::get_pause()
 {
   return pause;
-}
-
-bool
-TrueServer::get_fast_forward()
-{
-  return fast_forward;
 }
 
 bool

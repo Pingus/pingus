@@ -1,4 +1,4 @@
-//  $Id: client.cxx,v 1.12 2002/08/03 09:59:23 grumbel Exp $
+//  $Id: client.cxx,v 1.13 2002/08/03 11:37:45 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,7 +27,6 @@
 #include "playfield.hxx"
 #include "timer.hxx"
 #include "pingus_resource.hxx"
-#include "level_result.hxx"
 #include "sound.hxx"
 #include "option_menu.hxx"
 #include "time_display.hxx"
@@ -47,8 +46,6 @@
 
 Client::Client(Server * s)
   : server       (s),
-    fast_forward (false),
-    pause        (false),
     skip_frame   (0),
     do_replay    (false),
     is_finished  (false),
@@ -281,38 +278,7 @@ Client::send_next_event()
 {
 }
 #endif
-void
-Client::set_fast_forward(bool value)
-{
-  fast_forward = value;
-  skip_frame = 0;
-  server->set_fast_forward(value);
-}
 
-bool
-Client::get_fast_forward()
-{
-  return fast_forward;
-}
-
-void
-Client::set_pause(bool value)
-{
-  pause = value;
-  server->set_pause(value);
-}
-
-bool
-Client::get_pause()
-{
-  return pause;
-}
-
-Result
-Client::get_result()
-{
-  return result;
-}
 
 bool
 Client::replay()
@@ -460,13 +426,13 @@ Client:: on_escape_press ()
 void
 Client:: on_pause_press ()
 {
-  set_pause (!get_pause ());
+  server->set_pause (!server->get_pause ());
 }
 
 void 
 Client::on_fast_forward_press ()
 {
-  set_fast_forward(!get_fast_forward());
+  server->set_fast_forward(!server->get_fast_forward());
 }
 
 void 
@@ -491,8 +457,6 @@ Client::on_startup ()
   // FIXME: using this twice will crash with an X Error
   //CL_MouseCursor::hide ();
 
-  fast_forward = false;
-  pause = false;
   do_replay = false;
   is_finished = false;
   skip_frame = 0;
