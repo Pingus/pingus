@@ -1,4 +1,4 @@
-//  $Id: ObjectManager.cc,v 1.7 2000/03/16 18:19:09 grumbel Exp $
+//  $Id: ObjectManager.cc,v 1.8 2000/04/09 17:22:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "../algo.hh"
 #include "../System.hh"
 #include "ObjectManager.hh"
 
@@ -162,7 +163,7 @@ ObjectManager::save_level (std::string filename)
   // FIXME: we need some error checking
   
   plf_out << "/* This level was created with the PLE\n"
-	  << " * $Id: ObjectManager.cc,v 1.7 2000/03/16 18:19:09 grumbel Exp $\n"
+	  << " * $Id: ObjectManager.cc,v 1.8 2000/04/09 17:22:22 grumbel Exp $\n"
 	  << " */"
 	  << std::endl;
   
@@ -293,12 +294,22 @@ ObjectManager::raise_obj(EditorObj* obj)
 
 
 void
-ObjectManager::rect_get_current_objs(int x1, int y1, int x2, int y2)
+ObjectManager::rect_get_current_objs(int x_1, int y_1, int x_2, int y_2)
 {
-  if (!CL_Keyboard::get_keycode(CL_KEY_RSHIFT)
+  int x1, x2, y1, y2;
+
+  if (!CL_Keyboard::get_keycode(CL_KEY_LSHIFT)
       && !CL_Keyboard::get_keycode(CL_KEY_RSHIFT))
     delete_selection();
   
+  x1 = MIN(x_1, x_2);
+  x2 = MAX(x_1, x_2);
+  y1 = MIN(y_1, y_2);
+  y2 = MAX(y_1, y_2);  
+
+  cout << "X1: " << x1 << " X2: " << x2 << endl;
+  cout << "Y1: " << y1 << " Y2: " << y2 << endl;
+
   for(EditorObjIter i = editor_objs.begin(); i != editor_objs.end(); ++i) 
     {
       if ((*i)->is_in_rect(x1 - x_offset, y1 - y_offset, 
@@ -321,7 +332,7 @@ ObjectManager::object_selected(EditorObj* c_obj)
 EditorObj*
 ObjectManager::select_object(int x, int y)
 {
-  for (EditorObjRIter i = editor_objs.rbegin(); i != editor_objs.rend(); ++i) 
+  for(EditorObjRIter i = editor_objs.rbegin(); i != editor_objs.rend(); ++i) 
     {
       if ((*i)->mouse_over(x_offset, y_offset)) 
 	{
