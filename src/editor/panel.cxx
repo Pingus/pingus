@@ -34,8 +34,8 @@ Editor* PanelIcon::editor;
 
 PanelIcon::PanelIcon()
 {
-  button = PingusResource::load_surface("editor/button","core");
-  button_pressed = PingusResource::load_surface("editor/button_pressed", "core");
+  button = PingusResource::load_sprite("editor/button","core");
+  button_pressed = PingusResource::load_sprite("editor/button_pressed", "core");
   font = Fonts::courier_small;
 }
 
@@ -88,7 +88,7 @@ PanelIcon:: on_click()
 Panel::Panel()
 {
   is_init = false;
-  logo = PingusResource::load_surface ("editor/logo", "core");
+  logo = PingusResource::load_sprite("editor/logo", "core");
 }
 
 Panel::~Panel()

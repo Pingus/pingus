@@ -34,7 +34,7 @@ SwitchDoor::SwitchDoor (const WorldObjsData::SwitchDoorData& data_)
   : data(new WorldObjsData::SwitchDoorData(data_)),
     door_box      (PingusResource::load_sprite("switchdoor_box"      , "worldobjs")),
     door_tile     (PingusResource::load_sprite("switchdoor_tile"     , "worldobjs")),
-    door_tile_cmap(PingusResource::load_surface_provider("switchdoor_tile_cmap", "worldobjs")),
+    door_tile_cmap(PingusResource::load_pixelbuffer("switchdoor_tile_cmap", "worldobjs")),
     switch_sur    (PingusResource::load_sprite("switchdoor_switch"   , "worldobjs")),
     is_opening(false),
     current_door_height(data->door_height)

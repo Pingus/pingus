@@ -37,9 +37,9 @@ class PanelIcon
 {
 protected:
   CL_Font    font;
-  CL_Surface sur;
-  CL_Surface button;
-  CL_Surface button_pressed;
+  CL_Sprite sur;
+  CL_Sprite button;
+  CL_Sprite button_pressed;
   std::string tooltip;
   unsigned int mouse_over_time;
 public:
@@ -63,7 +63,7 @@ private:
   std::vector<PanelIcon*> buttons;
   std::vector<PanelIcon*>::iterator pressed_button;
   Editor* editor;
-  ::CL_Surface logo;
+  CL_Sprite logo;
 
 public:
   Panel();

@@ -105,12 +105,6 @@ PingusResource::load_sprite(const std::string& res_name,
     CL_Sprite sprite(res_name, &res);
     return sprite;
   } catch (CL_Error& err) {
-      std::list<std::string> liste = res.get_resources_of_type("sprite");
-      for(std::list<std::string>::iterator i = liste.begin(); i != liste.end(); ++i)
-        {
-          std::cout << datafile << ": '" << *i << "'" <<  std::endl;
-        }
-
       std::cout << "PingusResource::load_sprite: CL_Error: '" << res_name << "', '" << datafile  << "'" << std::endl;
       std::cout << "CL_Error: " << err.message << std::endl;
     CL_ResourceManager res_mgr = get("core");
@@ -118,29 +112,41 @@ PingusResource::load_sprite(const std::string& res_name,
   }
 }
 
-CL_PixelBuffer
-PingusResource::load_surface_provider(const ResDescriptor& desc)
+CL_SpriteDescription
+PingusResource::load_sprite_desc(const std::string& res_name,
+                                 const std::string& datafile)
 {
-  CL_Sprite sprite = load_sprite(desc);
-  if (sprite.get_frame_count() == 0)
-    {
-      std::cout << "Error: Desc: " << desc << std::endl;
-      assert(0);
-    }
-  return sprite.get_frame_surface(0).get_pixeldata();
+  CL_ResourceManager res = get(datafile);
+  try {
+    CL_SpriteDescription desc(res_name, &res);
+    return desc;
+  } catch(CL_Error& err) {
+    std::cout << "PingusResource::load_sprite_desc: CL_Error: '" << res_name << "', '" << datafile  << "'" << std::endl;
+    std::cout << "CL_Error: " << err.message << std::endl;
+    res = get("core");
+    return CL_SpriteDescription("misc/404sprite", &res);
+  }
 }
 
 CL_PixelBuffer
-PingusResource::load_surface_provider(const std::string& res_name,
+PingusResource::load_pixelbuffer(const ResDescriptor& desc)
+{
+  return load_pixelbuffer(desc.res_name, desc.datafile);
+}
+
+CL_PixelBuffer
+PingusResource::load_pixelbuffer(const std::string& res_name,
                                       const std::string& datafile)
 {
-  CL_Sprite sprite = load_sprite(res_name, datafile);
-  if (sprite.get_frame_count() == 0)
+  CL_SpriteDescription desc = load_sprite_desc(res_name, datafile);
+
+  if (desc.get_frames().size() == 0)
     {
-      std::cout << "Error: Desc: " << res_name << " " << datafile << std::endl;
+      std::cout << "Error: load_pixelbuffer: " << res_name << " " << datafile << std::endl;
       assert(0);
     }
-  return sprite.get_frame_surface(0).get_pixeldata();
+
+  return *desc.get_frames().begin()->first;
 }
 
 CL_Surface

@@ -417,9 +417,8 @@ Blitter::scale_surface (const CL_Surface& sur, int width, int height)
 }
 
 CL_PixelBuffer
-Blitter::scale_surface_to_canvas(const CL_Surface& sur, int width, int height)
+Blitter::scale_surface_to_canvas (CL_PixelBuffer provider, int width, int height)
 {
-  CL_PixelBuffer provider = sur.get_pixeldata();
   CL_PixelBuffer canvas(width, height, width*4, CL_PixelFormat::rgba8888);
 
   provider.lock ();
@@ -518,7 +517,13 @@ Blitter::scale_surface_to_canvas(const CL_Surface& sur, int width, int height)
   canvas.unlock ();
   provider.unlock ();
 
-  return canvas;
+  return canvas; 
+}
+
+CL_PixelBuffer
+Blitter::scale_surface_to_canvas(const CL_Surface& sur, int width, int height)
+{
+  return Blitter::scale_surface_to_canvas(sur.get_pixeldata(), width, height);
 }
 
 /*
@@ -609,7 +614,6 @@ Blitter::flip_vertical (const CL_Surface& sur)
 CL_Surface
 Blitter::rotate_90 (const CL_Surface& sur)
 {
-#ifdef CLANLIB_0_6
   CL_PixelBuffer prov = sur.get_pixeldata();
 
   if (prov.get_format().get_type() ==  pixelformat_index)
@@ -617,15 +621,14 @@ Blitter::rotate_90 (const CL_Surface& sur)
       //std::cout << "Using indexed blitter" << std::endl;
       int pwidth  = prov.get_width();
       int pheight = prov.get_height();
-
-      IndexedCanvas* canvas = new IndexedCanvas(pheight, pwidth);
-      if (prov->uses_src_colorkey())
-        canvas->set_src_colorkey(prov->get_src_colorkey());
+      
+      CL_PixelFormat format(8, 0, 0, 0, 0, 
+                            prov.get_format().has_colorkey(), prov.get_format().get_colorkey(),
+                            pixelformat_index);
+      CL_PixelBuffer canvas(pheight, pwidth, pwidth, format, prov.get_palette());
 
       prov.lock();
       canvas.lock();
-
-      canvas.set_palette(prov.get_palette());
 
       unsigned char* source_buf = static_cast<unsigned char*>(prov.get_data());
       unsigned char* target_buf = static_cast<unsigned char*>(canvas.get_data());
@@ -638,11 +641,12 @@ Blitter::rotate_90 (const CL_Surface& sur)
 
       canvas.unlock();
       prov.unlock();
-      return CL_Surface(canvas, true);
+
+      return CL_Surface(new CL_PixelBuffer(canvas), true);
     }
   else
     {
-      CL_PixelBuffer* canvas = new CL_PixelBuffer (sur.get_height (), sur.get_width ());
+      CL_PixelBuffer canvas(sur.get_height (), sur.get_width (), sur.get_height()*4, CL_PixelFormat::rgba8888);
 
       prov.lock ();
       canvas.lock ();
@@ -651,16 +655,14 @@ Blitter::rotate_90 (const CL_Surface& sur)
       for (int y = 0; y < sur.get_height (); ++y)
         for (int x = 0; x < sur.get_width (); ++x)
           {
-            color = prov->get_pixel (x, y);
+            color = prov.get_pixel (x, y);
             canvas.draw_pixel (sur.get_height () - 1 - y, x , color);
           }
 
       canvas.unlock ();
       prov.unlock ();
-      return CL_Surface(canvas, true);
+      return CL_Surface(new CL_PixelBuffer(canvas), true);
     }
-#endif
-  return CL_Surface();
 }
 
 

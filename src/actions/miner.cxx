@@ -31,8 +31,8 @@ namespace Actions {
 
 Miner::Miner (Pingu* p)
   : PinguAction(p),
-    miner_radius(PingusResource::load_surface_provider("Other/bash_radius", "pingus")),
-    miner_radius_gfx(PingusResource::load_surface_provider("Other/bash_radius_gfx", "pingus")),
+    miner_radius(PingusResource::load_pixelbuffer("Other/bash_radius", "pingus")),
+    miner_radius_gfx(PingusResource::load_pixelbuffer("Other/bash_radius_gfx", "pingus")),
     sprite(Sprite("Pingus/miner0", "pingus", 20.0f)),
     slow_count(0)
 {

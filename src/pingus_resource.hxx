@@ -61,10 +61,12 @@ public:
   static CL_Sprite  load_sprite(const ResDescriptor&);
   static CL_Sprite  load_sprite(const std::string& res_name,
                                 const std::string& datafile);
+  static CL_SpriteDescription load_sprite_desc(const std::string& res_name,
+                                               const std::string& datafile);
 
-  static CL_PixelBuffer load_surface_provider(const std::string& res_name,
+  static CL_PixelBuffer load_pixelbuffer(const std::string& res_name,
                                               const std::string& datafile);
-  static CL_PixelBuffer load_surface_provider(const ResDescriptor&);
+  static CL_PixelBuffer load_pixelbuffer(const ResDescriptor&);
 
   /** Load a font with res_name from datafile */
   static CL_Font load_font(const std::string& res_name,

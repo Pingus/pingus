@@ -48,7 +48,7 @@ IceBlock::~IceBlock ()
 void
 IceBlock::on_startup ()
 {
-  CL_PixelBuffer surf(PingusResource::load_surface_provider("iceblock_cmap", "worldobjs"));
+  CL_PixelBuffer surf(PingusResource::load_pixelbuffer("iceblock_cmap", "worldobjs"));
 
   world->get_colmap()->put(surf,
                            static_cast<int>(data->pos.x),
@@ -94,7 +94,7 @@ IceBlock::update()
 	  is_finished = true;
 	  thickness = 0;
 
-	  CL_PixelBuffer surf(PingusResource::load_surface_provider("iceblock_cmap", "worldobjs"));
+	  CL_PixelBuffer surf(PingusResource::load_pixelbuffer("iceblock_cmap", "worldobjs"));
 	  world->get_colmap ()->remove(surf, static_cast<int>(data->pos.x), static_cast<int>(data->pos.y));
 	  world->get_gfx_map()->remove(surf, static_cast<int>(data->pos.x), static_cast<int>(data->pos.y));
 	  return;

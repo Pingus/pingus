@@ -356,7 +356,7 @@ Editor::zoom_mode ()
 
   tool = ZOOM_TOOL;
 
-  CL_Surface mouse_cursor = PingusResource::load_surface("editor/region-zoom", "core");
+  CL_Sprite mouse_cursor = PingusResource::load_sprite("editor/region-zoom", "core");
 
   while (true)
     {

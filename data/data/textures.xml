@@ -1,43 +1,124 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
 <resources>
-  <section name="Textures">
-    <surface file="../images/textures/fruitcaketile.jpg" height="256" name="fruitcaketile" width="256" x="0" y="0" />
-    <surface file="../images/textures/default.png" height="64" name="default" width="64" x="0" y="0" />
-    <surface file="../images/textures/industrial.jpg" height="600" name="industrial" width="400" x="0" y="0" />
-    <surface file="../images/textures/clouds2.jpg" name="clouds2" />
-    <surface file="../images/textures/clouds3.png" name="clouds3" />
-    <surface file="../images/textures/clouds.jpg" height="480" name="clouds" width="256" x="0" y="0" />
-    <surface file="../images/textures/crystal.jpg" height="286" name="crystal" width="169" x="0" y="0" />
-    <surface file="../images/textures/stones.png" height="256" name="stone" width="256" x="0" y="0" />
-    <surface file="../images/textures/rocktile.jpg" height="256" name="rocktile" width="256" x="0" y="0" />
-    <surface file="../images/textures/rooftile.jpg" height="256" name="rooftile" width="256" x="0" y="0" />
-    <surface file="../images/textures/rooftile2.jpg" height="256" name="rooftile2" width="256" x="0" y="0" />
-    <surface file="../images/textures/greentex.jpg" name="greentex" />
-    <surface file="../images/textures/rock6.jpg" name="rock6" />
-    <surface file="../images/textures/rockagglo.jpg" height="256" name="rockagglo" width="256" x="0" y="0" />
-    <surface file="../images/textures/icetile.jpg" height="400" name="icetile" width="150" x="0" y="0" />
-    <surface file="../images/textures/lunartile.jpg" height="400" name="lunartile" width="150" x="0" y="0" />
-    <surface file="../images/textures/blueflame.jpg" height="400" name="blueflame" width="150" x="0" y="0" />
-    <surface file="../images/textures/stone.jpg" height="398" name="stones" width="148" x="0" y="0" />
-    <surface file="../images/textures/flamebg.jpg" height="480" name="flame" width="256" x="0" y="0" />
-    <surface array="15x1" file="../images/textures/anim_fire.jpg" height="590" name="anim_fire" width="64" x="0" y="0" />
-    <surface file="../images/textures/stars.jpg" height="480" name="stars" width="256" x="0" y="0" />
-    <surface file="../images/textures/enchantedjungle.jpg" height="500" name="enchantedjungle" width="300" x="0" y="0" />
-    <surface file="../images/textures/darkjungle.jpg" height="500" name="darkjungle" width="300" x="0" y="0" />
-    <surface file="../images/textures/latejungle.jpg" height="500" name="latejungle" width="300" x="0" y="0" />
-    <surface file="../images/textures/nightjungle.jpg" height="500" name="nightjungle" width="300" x="0" y="0" />
-    <surface file="../images/textures/happyclouds.jpg" height="600" name="happyclouds" width="384" x="0" y="0" />
-    <surface file="../images/textures/desert.jpg" height="600" name="desert" width="256" x="0" y="0" />
-    <surface file="../images/textures/desert_room.jpg" height="378" name="desert_room" width="378" x="0" y="0" />
-    <surface file="../images/textures/sortie.jpg" height="256" name="sortie" width="256" x="0" y="0" />
-    <surface file="../images/textures/cyanspace.jpg" height="600" name="cyanspace" width="400" x="0" y="0" />
-    <surface file="../images/textures/bwsortiebg.jpg" height="600" name="bwsortiebg" width="400" x="0" y="0" />
-    <surface file="../images/textures/green_tendrils.png" height="256" name="green_tendrils" width="256" x="0" y="0" />
-    <surface file="../images/textures/mountain.png" height="600" name="mountain" width="400" x="0" y="0" />
-    <surface file="../images/textures/thunderstorm.png" height="800" name="thunderstorm" width="256" x="0" y="0" />
-    <surface file="../images/textures/creepers.png" height="256" width="256" name="creepers" x="0" y="0"/>
-    <surface file="../images/textures/creepers-mirrored.png" height="256" width="256" name="creepers-mirrored" x="0" y="0"/>
-    <surface file="../images/textures/swirljungle.png" height="256" width="256" name="swirljungle" x="0" y="0"/>
-    <surface file="../images/textures/ordina.jpg" name="ordina" />
-    <surface file="../images/textures/ordina.jpg" name="fond1" />
+  <section name="textures">
+    <sprite name="fruitcaketile">
+      <image file="../images/textures/fruitcaketile.jpg"/>
+    </sprite>
+    <sprite name="default">
+      <image file="../images/textures/default.png"/>
+    </sprite>
+    <sprite name="industrial">
+      <image file="../images/textures/industrial.jpg"/>
+    </sprite>
+    <sprite name="clouds2">
+      <image file="../images/textures/clouds2.jpg"/>
+    </sprite>
+    <sprite name="clouds3">
+      <image file="../images/textures/clouds3.png"/>
+    </sprite>
+    <sprite name="clouds">
+      <image file="../images/textures/clouds.jpg"/>
+    </sprite>
+    <sprite name="crystal">
+      <image file="../images/textures/crystal.jpg"/>
+    </sprite>
+    <sprite name="stone">
+      <image file="../images/textures/stones.png"/>
+    </sprite>
+    <sprite name="rocktile">
+      <image file="../images/textures/rocktile.jpg"/>
+    </sprite>
+    <sprite name="rooftile">
+      <image file="../images/textures/rooftile.jpg"/>
+    </sprite>
+    <sprite name="rooftile2">
+      <image file="../images/textures/rooftile2.jpg"/>
+    </sprite>
+    <sprite name="greentex">
+      <image file="../images/textures/greentex.jpg"/>
+    </sprite>
+    <sprite name="rock6">
+      <image file="../images/textures/rock6.jpg"/>
+    </sprite>
+    <sprite name="rockagglo">
+      <image file="../images/textures/rockagglo.jpg"/>
+    </sprite>
+    <sprite name="icetile">
+      <image file="../images/textures/icetile.jpg"/>
+    </sprite>
+    <sprite name="lunartile">
+      <image file="../images/textures/lunartile.jpg"/>
+    </sprite>
+    <sprite name="blueflame">
+      <image file="../images/textures/blueflame.jpg"/>
+    </sprite>
+    <sprite name="stones">
+      <image file="../images/textures/stone.jpg"/>
+    </sprite>
+    <sprite name="flame">
+      <image file="../images/textures/flamebg.jpg"/>
+    </sprite>
+    <sprite name="anim_fire">
+      <image file="../images/textures/anim_fire.jpg">
+        <grid pos="0,0" size="64,590" array="15x1"/>
+      </image>
+    </sprite>
+    <sprite name="stars">
+      <image file="../images/textures/stars.jpg"/>
+    </sprite>
+    <sprite name="enchantedjungle">
+      <image file="../images/textures/enchantedjungle.jpg"/>
+    </sprite>
+    <sprite name="darkjungle">
+      <image file="../images/textures/darkjungle.jpg"/>
+    </sprite>
+    <sprite name="latejungle">
+      <image file="../images/textures/latejungle.jpg"/>
+    </sprite>
+    <sprite name="nightjungle">
+      <image file="../images/textures/nightjungle.jpg"/>
+    </sprite>
+    <sprite name="happyclouds">
+      <image file="../images/textures/happyclouds.jpg"/>
+    </sprite>
+    <sprite name="desert">
+      <image file="../images/textures/desert.jpg"/>
+    </sprite>
+    <sprite name="desert_room">
+      <image file="../images/textures/desert_room.jpg"/>
+    </sprite>
+    <sprite name="sortie">
+      <image file="../images/textures/sortie.jpg"/>
+    </sprite>
+    <sprite name="cyanspace">
+      <image file="../images/textures/cyanspace.jpg"/>
+    </sprite>
+    <sprite name="bwsortiebg">
+      <image file="../images/textures/bwsortiebg.jpg"/>
+    </sprite>
+    <sprite name="green_tendrils">
+      <image file="../images/textures/green_tendrils.png"/>
+    </sprite>
+    <sprite name="mountain">
+      <image file="../images/textures/mountain.png"/>
+    </sprite>
+    <sprite name="thunderstorm">
+      <image file="../images/textures/thunderstorm.png"/>
+    </sprite>
+    <sprite name="creepers">
+      <image file="../images/textures/creepers.png"/>
+    </sprite>
+    <sprite name="creepers-mirrored">
+      <image file="../images/textures/creepers-mirrored.png"/>
+    </sprite>
+    <sprite name="swirljungle">
+      <image file="../images/textures/swirljungle.png"/>
+    </sprite>
+    <sprite name="ordina">
+      <image file="../images/textures/ordina.jpg"/>
+    </sprite>
+    <sprite name="fond1">
+      <image file="../images/textures/ordina.jpg"/>
+    </sprite>
   </section>
 </resources>

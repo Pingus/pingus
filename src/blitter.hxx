@@ -113,6 +113,8 @@ public:
       @return A newly created surface, the caller is responsible to delete it. */
   static CL_PixelBuffer scale_surface_to_canvas (const CL_Surface& sur, int width, int height);
 
+  static CL_PixelBuffer scale_surface_to_canvas (CL_PixelBuffer sur, int width, int height);
+
 private:
   Blitter (const Blitter&);
   Blitter& operator= (const Blitter&);

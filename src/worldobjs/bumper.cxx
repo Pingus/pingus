@@ -73,7 +73,7 @@ Bumper::on_startup ()
 {
   std::cout << "Drawing colmap entry" << std::endl;
 
-  CL_PixelBuffer prov = PingusResource::load_surface_provider("Traps/bumper_cmap", "traps");
+  CL_PixelBuffer prov = PingusResource::load_pixelbuffer("Traps/bumper_cmap", "traps");
   world->get_colmap()->put(prov, static_cast<int>(data->pos.x), static_cast<int>(data->pos.y), Groundtype::GP_SOLID);
 }
 

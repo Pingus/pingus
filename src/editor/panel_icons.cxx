@@ -31,7 +31,7 @@ namespace EditorNS {
 PanelIconLoad::PanelIconLoad()
 {
   tooltip = _("Load a level (F5)");
-  sur = PingusResource::load_surface("editor/open", "core");
+  sur = PingusResource::load_sprite("editor/open", "core");
 }
 
 void
@@ -44,7 +44,7 @@ PanelIconLoad::on_click()
 PanelIconExit::PanelIconExit()
 {
   tooltip = _("Exit the editor (Escape)");
-  sur = PingusResource::load_surface("editor/exit", "core");
+  sur = PingusResource::load_sprite("editor/exit", "core");
 }
 
 void
@@ -56,7 +56,7 @@ PanelIconExit::on_click()
 PanelIconSave::PanelIconSave()
 {
   tooltip = _("Save this level (F6)");
-  sur = PingusResource::load_surface("editor/save", "core");
+  sur = PingusResource::load_sprite("editor/save", "core");
 }
 
 void
@@ -68,7 +68,7 @@ PanelIconSave::on_click()
 PanelIconDelete::PanelIconDelete()
 {
   tooltip = _("Delete marked objects (delete)");
-  sur = PingusResource::load_surface("editor/delete", "core");
+  sur = PingusResource::load_sprite("editor/delete", "core");
 }
 
 void
@@ -80,7 +80,7 @@ PanelIconDelete::on_click()
 PanelIconCopy::PanelIconCopy()
 {
   tooltip = _("Duplicate current object (d)");
-  sur = PingusResource::load_surface("editor/copy", "core");
+  sur = PingusResource::load_sprite("editor/copy", "core");
 }
 
 void
@@ -92,7 +92,7 @@ PanelIconCopy::on_click()
 PanelIconLevelProperties::PanelIconLevelProperties()
 {
   tooltip = _("Edit Level Properties");
-  sur = PingusResource::load_surface("editor/edit", "core");
+  sur = PingusResource::load_sprite("editor/edit", "core");
 }
 
 void
@@ -104,7 +104,7 @@ PanelIconLevelProperties::on_click()
 PanelIconObjectProperties::PanelIconObjectProperties()
 {
   tooltip = _("Edit Object Properties");
-  sur = PingusResource::load_surface("editor/preferences", "core");
+  sur = PingusResource::load_sprite("editor/preferences", "core");
 }
 
 void
@@ -116,7 +116,7 @@ PanelIconObjectProperties::on_click()
 PanelIconRun::PanelIconRun()
 {
   tooltip = _("Start the level and test it (F4)");
-  sur = PingusResource::load_surface("editor/clock_run", "core");
+  sur = PingusResource::load_sprite("editor/clock_run", "core");
 }
 
 void
@@ -128,7 +128,7 @@ PanelIconRun::on_click()
 PanelIconNew::PanelIconNew()
 {
   tooltip = _("Create a new level from scratch");
-  sur = PingusResource::load_surface("editor/new", "core");
+  sur = PingusResource::load_sprite("editor/new", "core");
 }
 
 void
@@ -140,7 +140,7 @@ PanelIconNew::on_click()
 PanelIconInsertObject::PanelIconInsertObject()
 {
   tooltip = _("Insert an object (Insert)");
-  sur = PingusResource::load_surface("editor/index", "core");
+  sur = PingusResource::load_sprite("editor/index", "core");
 }
 
 void
@@ -152,7 +152,7 @@ PanelIconInsertObject::on_click()
 PanelIconRegionZoom::PanelIconRegionZoom ()
 {
   tooltip = _("Zoom into a region");
-  sur = PingusResource::load_surface("editor/region-zoom", "core");
+  sur = PingusResource::load_sprite("editor/region-zoom", "core");
 }
 
 void
@@ -164,7 +164,7 @@ PanelIconRegionZoom::on_click()
 PanelIconZoomIn::PanelIconZoomIn()
 {
   tooltip = _("Zoom in");
-  sur = PingusResource::load_surface("editor/zoom-in", "core");
+  sur = PingusResource::load_sprite("editor/zoom-in", "core");
 }
 
 void
@@ -177,7 +177,7 @@ PanelIconZoomIn::on_click()
 PanelIconZoomOut::PanelIconZoomOut()
 {
   tooltip = _("Zoom out");
-  sur = PingusResource::load_surface("editor/zoom-out", "core");
+  sur = PingusResource::load_sprite("editor/zoom-out", "core");
 }
 
 void
@@ -190,7 +190,7 @@ PanelIconZoomOut::on_click()
 PanelIconSetupActions::PanelIconSetupActions ()
 {
   tooltip = _("Setup Number of Actions");
-  sur = PingusResource::load_surface("editor/actions", "core");
+  sur = PingusResource::load_sprite("editor/actions", "core");
 }
 
 void
@@ -202,7 +202,7 @@ PanelIconSetupActions::on_click()
 PanelIconHelp::PanelIconHelp ()
 {
   tooltip = _("Display Help Screen (F1)");
-  sur = PingusResource::load_surface("editor/help", "core");
+  sur = PingusResource::load_sprite("editor/help", "core");
 }
 
 void

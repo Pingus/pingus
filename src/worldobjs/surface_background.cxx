@@ -43,46 +43,40 @@ SurfaceBackground::SurfaceBackground (const WorldObjsData::SurfaceBackgroundData
   if (data->color.alpha > 1.0)
     std::cout << "Background: Warning dim larger than 1.0 are no longer supported" << std::endl;
 
-  CL_Surface source_surface = PingusResource::load_surface(data->desc);
-
-  CL_PixelBuffer canvas;
+  CL_PixelBuffer canvas = PingusResource::load_pixelbuffer(data->desc);
 
   // Scaling Code
   if (data->stretch_x && data->stretch_y)
     {
-      canvas = Blitter::scale_surface_to_canvas(source_surface, world->get_width(), world->get_height());
+      canvas = Blitter::scale_surface_to_canvas(canvas, world->get_width(), world->get_height());
     }
   else if (data->stretch_x && !data->stretch_y)
     {
       if (data->keep_aspect)
         {
-          float aspect = source_surface.get_height()/float(source_surface.get_width());
-          canvas = Blitter::scale_surface_to_canvas(source_surface,
+          float aspect = canvas.get_height()/float(canvas.get_width());
+          canvas = Blitter::scale_surface_to_canvas(canvas,
                                                     world->get_width(),
                                                     int(world->get_width()*aspect));
         }
       else
         {
-          canvas = Blitter::scale_surface_to_canvas(source_surface, source_surface.get_width(), world->get_height());
+          canvas = Blitter::scale_surface_to_canvas(canvas, canvas.get_width(), world->get_height());
         }
     }
   else if (!data->stretch_x && data->stretch_y)
     {
       if (data->keep_aspect)
         {
-          float aspect = float(source_surface.get_width())/source_surface.get_height();
-          canvas = Blitter::scale_surface_to_canvas(source_surface,
+          float aspect = float(canvas.get_width())/canvas.get_height();
+          canvas = Blitter::scale_surface_to_canvas(canvas,
                                                     int(world->get_height() * aspect),
                                                     world->get_height());
         }
       else
         {
-          canvas = Blitter::scale_surface_to_canvas(source_surface, source_surface.get_width(), world->get_height());
+          canvas = Blitter::scale_surface_to_canvas(canvas, canvas.get_width(), world->get_height());
         }
-    }
-  else
-    {
-      canvas = Blitter::create_canvas(source_surface);
     }
 
   /* FIXME: fill_rect doesn't work with RGB images

@@ -50,7 +50,7 @@ const unsigned int thumbcache_version = 3;
 CL_Surface
 ThumbCache::uncached_load (const std::string & res_ident, const std::string & datafile)
 {
-  CL_Surface sur = PingusResource::load_surface (res_ident, datafile);
+  CL_Surface sur = PingusResource::load_surface(res_ident, datafile);
 
   if (maintainer_mode)
     pout << "ThumbCache: Loading: " << res_ident << " (" << datafile << ")"  << std::endl;
