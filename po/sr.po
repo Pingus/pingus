@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Pingus 0.6.0\n"
-"POT-Creation-Date: 2003-04-16 03:22+0200\n"
+"POT-Creation-Date: 2003-04-16 19:54+0200\n"
 "PO-Revision-Date: 2003-04-15 17:29+0200\n"
 "Last-Translator: Milan Babuskov <mbabuskov@yahoo.com>\n"
 "Language-Team: <mbabuskov@yahoo.com>\n"
@@ -62,35 +62,35 @@ msgstr "-Prica"
 msgid "-Translation"
 msgstr "-Prevod"
 
-#: src/credits.cxx:103
+#: src/credits.cxx:104
 msgid "-Special"
 msgstr "-Posebno"
 
-#: src/credits.cxx:104
+#: src/credits.cxx:105
 msgid "-Thanks to"
 msgstr "-se zahvaljujemo"
 
-#: src/credits.cxx:138
+#: src/credits.cxx:139
 msgid "_And a very Special Thanks"
 msgstr "_A narocito se zahvaljujemo"
 
-#: src/credits.cxx:139
+#: src/credits.cxx:140
 msgid "_to all the people who"
 msgstr "_svim ljudima"
 
-#: src/credits.cxx:140
+#: src/credits.cxx:141
 msgid "_contribute to"
 msgstr "_koji doprinose"
 
-#: src/credits.cxx:141
+#: src/credits.cxx:142
 msgid "_Free Software!"
 msgstr "_Free Softveru!"
 
-#: src/credits.cxx:147
+#: src/credits.cxx:148
 msgid "_Thank you for"
 msgstr "_Hvala sto"
 
-#: src/credits.cxx:148
+#: src/credits.cxx:149
 msgid "_playing!"
 msgstr "_ste igrali!"
 
@@ -966,7 +966,7 @@ msgstr "Pingus: Uhvacen standardan izuzetak!:\n"
 msgid "Pingus: Unknown throw caught!"
 msgstr "Pingus: Uhvacen nepoznat throw!"
 
-#: src/result_screen.cxx:97 src/start_screen.cxx:108
+#: src/result_screen.cxx:97 src/start_screen.cxx:109
 msgid "Abort"
 msgstr "Odustani"
 
@@ -1067,39 +1067,39 @@ msgstr "Snimak ekrana: Nije moguce snimiti fajl: "
 msgid "Image has wrong color depth: %d"
 msgstr "Slika ima pogresan color depth: %d"
 
-#: src/start_screen.cxx:72
+#: src/start_screen.cxx:73
 msgid "Ok"
 msgstr "Ok"
 
-#: src/start_screen.cxx:155
+#: src/start_screen.cxx:156
 msgid "Number of Pingus: "
 msgstr "Broj Pingusa: "
 
-#: src/start_screen.cxx:158
+#: src/start_screen.cxx:159
 msgid "Number to Save: "
 msgstr "Spasiti: "
 
-#: src/start_screen.cxx:161
+#: src/start_screen.cxx:162
 msgid "Time: "
 msgstr "Vreme: "
 
-#: src/start_screen.cxx:164
+#: src/start_screen.cxx:165
 msgid "Difficulty:"
 msgstr "Tezina:"
 
-#: src/start_screen.cxx:172
+#: src/start_screen.cxx:173
 msgid "Author: "
 msgstr "Autor: "
 
-#: src/start_screen.cxx:175
+#: src/start_screen.cxx:176
 msgid "Filename: "
 msgstr "Fajl: "
 
-#: src/story.cxx:37
+#: src/story.cxx:39
 msgid "The Journey Continues"
 msgstr "Putovanje se nastavlja"
 
-#: src/story.cxx:41
+#: src/story.cxx:44
 msgid ""
 "Now after you and the Pingus have learned the basics and\n"
 "practiced a bit it is time to move on and begin the journey into\n"
@@ -1115,7 +1115,7 @@ msgstr ""
 "krajevima, Pingusi moraju pronaci nesto drugo da ih\n"
 "vodi na njihovom putovanju.\n"
 
-#: src/story.cxx:51
+#: src/story.cxx:56
 msgid ""
 "But as the eldest have said, the Tutorial Island provides not\n"
 "only a way to practive, but it is also the starting point into\n"
@@ -1128,7 +1128,7 @@ msgstr ""
 "svetu, jer ce materijal od velikog drveta sa kraja ostrva\n"
 "biti dobra gradja za konstruisanje splava.\n"
 
-#: src/story.cxx:60
+#: src/story.cxx:67
 msgid ""
 "So the Pingus set out and constructed some large floats, enough\n"
 "to carry them all. After also packaging up a bunch of provisions\n"
@@ -1141,7 +1141,7 @@ msgstr ""
 "sebi poznate krajeve i zadju u nepoznate delove\n"
 "sveta.\n"
 
-#: src/story.cxx:68
+#: src/story.cxx:77
 msgid ""
 "So the Pingus sat on their float, worrying whats to come and\n"
 "where to go, while floating into the sunset.\n"
@@ -1153,11 +1153,11 @@ msgstr ""
 "\n"
 "Nastavice se..."
 
-#: src/story.cxx:79
+#: src/story.cxx:89
 msgid "The Journey Begins"
 msgstr "Putovanje pocinje"
 
-#: src/story.cxx:83
+#: src/story.cxx:94
 msgid ""
 "For a long time now the Pingus have lived happily in peace on the\n"
 "south pole along with all the other animals, everything was in\n"
@@ -1169,7 +1169,7 @@ msgstr ""
 "da nista ne moze narusiti njihov mir. Bili su vrlo srecni i\n"
 "izgledalo je kao da tome nema kraja.\n"
 
-#: src/story.cxx:91
+#: src/story.cxx:104
 msgid ""
 "But then one day, things began to change slowly, the sky got darker\n"
 "and the earth got warmer, first of they thought this was just a\n"
@@ -1181,7 +1181,7 @@ msgstr ""
 "samo normalna fluktuacija u svetkskom klimatu, ali izgledalo je\n"
 "kao da se iz godine u godinu stvari sve vise i vise pogorsavaju."
 
-#: src/story.cxx:100
+#: src/story.cxx:115
 msgid ""
 "The snow began to melt away in a few regions and food became an\n"
 "issue. Other animals already tend to leave the region to search\n"
@@ -1193,7 +1193,7 @@ msgstr ""
 "region u potrazi za hladnijim podrucjima, ali Pingusi su\n"
 "znali da to nece pomoci, vec su morali da ucine nesto."
 
-#: src/story.cxx:108
+#: src/story.cxx:125
 msgid ""
 "So the circle of the eldest came together to decide what to do\n"
 "about it. They decided to send out an expedition around the world\n"
@@ -1205,7 +1205,7 @@ msgstr ""
 "sveta da nadje razlog zagrevanju. Ekspedicija se sastojala od\n"
 "stotina najhrabrijih Pingusa sa Juznog pola."
 
-#: src/story.cxx:116
+#: src/story.cxx:135
 msgid ""
 "And they picked you to lead them on their journey around the\n"
 "world. Since the journey will be dangerous and difficult, your\n"
@@ -1219,7 +1219,7 @@ msgstr ""
 "prici najstarijih, to ostrvo je oduvek bilo pocetna tacka\n"
 "Pingusa poslatih u svet."
 
-#: src/story.cxx:125
+#: src/story.cxx:146
 msgid ""
 "The island consists of many regions which are ideally to train the\n"
 "abilities of the Pingus. The Pingus can train there their ability\n"
@@ -1231,7 +1231,7 @@ msgstr ""
 "sposobnosti mostogradnje, penjanja, kopanja, kad i razne druge\n"
 "vestine koje ce im sigurno zatrebati u dugom i opasnom putovanju."
 
-#: src/story.cxx:133
+#: src/story.cxx:156
 msgid ""
 "While you on the other side can practice there your ability to\n"
 "command and guide the Pingus. You can also get familiar there with\n"
@@ -1245,12 +1245,13 @@ msgstr ""
 "ce ti sve te vestine sigurno trebati na vasem putu oko\n"
 "sveta"
 
-#: src/story.cxx:142
+#: src/story.cxx:167
+#, fuzzy
 msgid ""
 "Now that you and the Pingus have arrived at tutorial island it\n"
 "is time to take over the command and begin your mission.\n"
 "\n"
-"                                                  Good Luck!"
+"Good Luck!"
 msgstr ""
 "Sada, kada ste Pingusi i ti stigli na Tutorsko ostrvo, vreme\n"
 "je da preuzmes komandu i zapocnes svoju misiju.\n"

@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.85 2003/04/15 23:56:40 grumbel Exp $
+//   $Id: pingus_main.cxx,v 1.86 2003/04/16 18:02:27 torangan Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -122,7 +122,7 @@ signal_handler(int signo)
       break;
     }
   puts ("exit(EXIT_FAILURE);");
-  exit (EXIT_FAILURE);
+  abort();
 }
 
 PingusMain::PingusMain()
@@ -971,11 +971,11 @@ PingusMain::init_pingus()
   SavegameManager::instance();
   StatManager::init();
  
+  Fonts::init();
   Story::init();
   ScreenManager::init();
   PingusSound::init();
   PingusResource::init();
-  Fonts::init();
   XMLhelper::init();
   PinguActionFactory::init();
   Editor::init(); 

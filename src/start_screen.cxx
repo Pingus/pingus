@@ -1,4 +1,4 @@
-//  $Id: start_screen.cxx,v 1.17 2003/04/12 15:52:17 torangan Exp $
+//  $Id: start_screen.cxx,v 1.18 2003/04/16 18:02:27 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,6 +34,7 @@
 #include "start_screen.hxx"
 #include "game_time.hxx"
 #include "sound/sound.hxx"
+#include "string_format.hxx"
 
 class StartScreenComponent : public GUI::Component
 {
@@ -188,61 +189,8 @@ StartScreenComponent::format_description(int length)
   if (description == "")
     return description;
 
-  unsigned int pos = 0;
-  while ((pos = description.find('\t', pos)) != std::string::npos)
-    description.replace(pos, 1, 1, ' ');
+  description = StringFormat::break_line(description, length, Fonts::chalk_normal);
   
-  pos = 0;
-  while ((pos = description.find("  ", pos)) != std::string::npos)
-    description.replace(pos, 2, 1, ' ');
-
-  pos = 0;  
-  while ((pos = description.find('\n', pos)) != std::string::npos)
-    {
-      if (pos < description.length() && description[pos + 1] == '\n')   // double enter marks paragraph
-      	{
-          description.replace(pos, 2, 1, '\n');  			// replace the two \n by one
-	}
-      else if (pos < description.length() - 1 && description[pos + 1] == ' ' && description[pos + 2] == '\n')
-        {
-            description.replace(pos, 3, 1, '\n');			// whitespace between the two \n doesn't matter
-	}
-      else
-        {
-          description.replace(pos, 1, 1, ' ');
-	  continue;							// no \n here anymore, so continue searching
-        }
-
-      if (pos && description[pos - 1] == ' ')
-        description.replace(pos - 1, 2, 1, '\n');			// no whitespace in front
-	
-      if (pos < description.length() && description[pos + 1] == ' ')
-         description.replace(pos, 2, 1, '\n');				// no whitespace behind
-	
-      ++pos;								// we don't want to find it again
-    }
-        
-  pos = 0;
-  while ((pos = description.find("  ", pos)) != std::string::npos)
-    description.replace(pos, 2, 1, ' ');
-
-
-  int start_pos      = 0;
-  int previous_space = 0;
-  pos = 0;
-  while ((pos = description.find(' ', pos + 1)) != std::string::npos)
-    {
-      if (Fonts::chalk_normal->get_text_width(description.substr(start_pos, pos - start_pos)) > length)
-        {
-	  description[previous_space] = '\n';
-	  start_pos = previous_space + 1;
-	}
-      else if (Fonts::chalk_normal->get_text_width(description.substr(start_pos, description.length())) <= length)
-        break;
-
-      previous_space = pos;
-    }
-    
   return description;
 }
 
