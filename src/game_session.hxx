@@ -1,4 +1,4 @@
-//  $Id: game_session.hxx,v 1.13 2002/10/04 16:54:04 grumbel Exp $
+//  $Id: game_session.hxx,v 1.14 2002/10/26 17:27:52 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,9 +46,8 @@ private:
   /// The client
   Client* client;
 
-  unsigned int last_redraw;
-  unsigned int last_update;
-
+  /** Time in 1/1000 second's that was not used in the last
+      update() */
   int left_over_time;
 
   /** Number of updates */

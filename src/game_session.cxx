@@ -1,4 +1,4 @@
-//  $Id: game_session.cxx,v 1.22 2002/10/10 12:25:53 grumbel Exp $
+//  $Id: game_session.cxx,v 1.23 2002/10/26 17:27:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,9 +43,6 @@ PingusGameSession::PingusGameSession (std::string arg_filename)
   client = new Client(server);
   client_timer.stop();
 
-  last_redraw = CL_System::get_time();
-  last_update = CL_System::get_time();
-  
   number_of_redraws = 0;
   number_of_updates = 0;
 
@@ -76,26 +73,18 @@ PingusGameSession::draw(GraphicContext& gc)
 {
   ++number_of_redraws;
   client->draw (gc);
-  last_redraw = CL_System::get_time();
   return true;
 }
 
 void
 PingusGameSession::update (const GameDelta& delta)
 {
-  if (number_of_redraws == 1)
-    {
-      last_update = CL_System::get_time();
-    }
-
   if (server->is_finished())
     {
       ScreenManager::instance()->pop_screen();
     }
 
-  //std::cout << "Left Over Time: " << left_over_time << std::endl;
-
-  int time_passed = (CL_System::get_time() - last_update) + left_over_time;
+  int time_passed = int(delta.get_time() * 1000) + left_over_time;
   int update_time = game_speed;
 
   left_over_time = 0;
@@ -117,10 +106,9 @@ PingusGameSession::update (const GameDelta& delta)
   // Time that got not used for updates
   left_over_time = time_passed - (i * update_time);
 
-  last_update = CL_System::get_time();
-  
   if (!max_cpu_usage && left_over_time < 0)
     {
+      // FIXME: This doesn't really belong here
       CL_System::sleep(-left_over_time);
     }
   
