@@ -25,7 +25,6 @@
 #include "../pingus_resource.hxx"
 #include "../pingu.hxx"
 #include "../world.hxx"
-#include "../resources.hxx"
 #include "basher.hxx"
 
 namespace Pingus {
@@ -33,7 +32,7 @@ namespace Actions {
 
 Basher::Basher (Pingu* p)
   : PinguAction(p),
-    sprite("Pingus/basher0", resources),
+    sprite(PingusResource::load_sprite("Pingus/basher0", "pingus")),
     bash_radius(PingusResource::load_pixelbuffer("Other/bash_radius", "pingus")),
     bash_radius_gfx(PingusResource::load_pixelbuffer("Other/bash_radius_gfx", "pingus")),
     basher_c(0),

@@ -234,8 +234,6 @@ range.cxx \
 range.hxx \
 res_descriptor.cxx \
 res_descriptor.hxx \
-resources.hxx \
-resources.cxx \
 resource_modifier.cxx \
 resource_modifier.hxx \
 result_screen.cxx \
