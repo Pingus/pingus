@@ -1,4 +1,4 @@
-//  $Id: Editor.cc,v 1.34 2001/08/15 22:01:45 grumbel Exp $
+//  $Id: Editor.cc,v 1.35 2001/12/22 15:15:11 cagri Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -97,9 +97,9 @@ Editor::register_event_handler()
       //CL_Input::chain_button_release.push_back(event);
 
       on_button_press_slot
-	= CL_Input::sig_button_press.connect(CL_CreateSlot(event, &EditorEvent::on_button_press));
+	= CL_Input::sig_button_press.connect(event, &EditorEvent::on_button_press);
       on_button_release_slot
-	= CL_Input::sig_button_release.connect(CL_CreateSlot(event, &EditorEvent::on_button_release));
+	= CL_Input::sig_button_release.connect(event, &EditorEvent::on_button_release);
 
       if (verbose) std::cout << "done: " << event_handler_ref_counter << std::endl;
     }

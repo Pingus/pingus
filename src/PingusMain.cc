@@ -1,4 +1,4 @@
-//   $Id: PingusMain.cc,v 1.47 2001/12/06 10:50:39 grumbel Exp $
+//   $Id: PingusMain.cc,v 1.48 2001/12/22 15:15:09 cagri Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -829,8 +829,8 @@ PingusMain::start_game(void)
   if (print_fps)
     Display::add_flip_screen_hook(&fps_counter);
   
-  on_button_press_slot = CL_Input::sig_button_press.connect (CL_CreateSlot(&global_event, &GlobalEvent::on_button_press));
-  on_button_release_slot = CL_Input::sig_button_release.connect (CL_CreateSlot(&global_event, &GlobalEvent::on_button_release));
+  on_button_press_slot = CL_Input::sig_button_press.connect (&global_event, &GlobalEvent::on_button_press);
+  on_button_release_slot = CL_Input::sig_button_release.connect (&global_event, &GlobalEvent::on_button_release);
 
   //pingus_story.display ();
 

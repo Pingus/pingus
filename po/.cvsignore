@@ -1,5 +1,5 @@
 cat-id-tbl.c
-de.gmo
+*.gmo
 stamp-cat-id
 Makefile
 Makefile.in

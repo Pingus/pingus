@@ -1,1 +1,3 @@
 *.xcf
+Makefile.in
+Makefile

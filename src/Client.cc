@@ -1,4 +1,4 @@
-//  $Id: Client.cc,v 1.67 2001/11/22 20:08:33 grumbel Exp $
+//  $Id: Client.cc,v 1.68 2001/12/22 15:15:09 cagri Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -305,19 +305,19 @@ Client::register_event_handler()
 {
   if (verbose > 1) std::cout << "Client: register_event_handler()" << std::endl;
 
-  slot_left_pressed   = controller->left->signal_pressed.connect (CL_CreateSlot (this, &Client::on_left_pressed));
-  slot_left_released  = controller->left->signal_released.connect (CL_CreateSlot (this, &Client::on_left_released));
-  slot_middle_pressed = controller->middle->signal_pressed.connect (CL_CreateSlot (this, &Client::on_middle_pressed));
-  slot_right_pressed  = controller->right->signal_pressed.connect (CL_CreateSlot (this, &Client::on_right_pressed));
-  slot_right_released = controller->right->signal_released.connect (CL_CreateSlot (this, &Client::on_right_released));
-  slot_abort_pressed  = controller->abort->signal_pressed.connect (CL_CreateSlot (this, &Client::on_abort_pressed));
-  slot_pause_pressed  = controller->pause->signal_pressed.connect (CL_CreateSlot (this, &Client::on_pause_pressed));
-  slot_fast_forward_pressed = controller->fast_forward->signal_pressed.connect (CL_CreateSlot (this, &Client::on_fast_forward_pressed));
-  slot_scroll_left_pressed  = controller->scroll_left->signal_pressed.connect (CL_CreateSlot (this, &Client::on_scroll_left_pressed));
-  slot_scroll_right_pressed = controller->scroll_right->signal_pressed.connect (CL_CreateSlot (this, &Client::on_scroll_right_pressed));
+  slot_left_pressed   = controller->left->signal_pressed.connect (this, &Client::on_left_pressed);
+  slot_left_released  = controller->left->signal_released.connect (this, &Client::on_left_released);
+  slot_middle_pressed = controller->middle->signal_pressed.connect (this, &Client::on_middle_pressed);
+  slot_right_pressed  = controller->right->signal_pressed.connect (this, &Client::on_right_pressed);
+  slot_right_released = controller->right->signal_released.connect (this, &Client::on_right_released);
+  slot_abort_pressed  = controller->abort->signal_pressed.connect (this, &Client::on_abort_pressed);
+  slot_pause_pressed  = controller->pause->signal_pressed.connect (this, &Client::on_pause_pressed);
+  slot_fast_forward_pressed = controller->fast_forward->signal_pressed.connect (this, &Client::on_fast_forward_pressed);
+  slot_scroll_left_pressed  = controller->scroll_left->signal_pressed.connect (this, &Client::on_scroll_left_pressed);
+  slot_scroll_right_pressed = controller->scroll_right->signal_pressed.connect (this, &Client::on_scroll_right_pressed);
 
-  slot_next_action_pressed  = controller->next_action->signal_pressed.connect (CL_CreateSlot (this, &Client::on_next_action_pressed));
-  slot_previous_action_pressed = controller->previous_action->signal_pressed.connect (CL_CreateSlot (this, &Client::on_previous_action_pressed));
+  slot_next_action_pressed  = controller->next_action->signal_pressed.connect (this, &Client::on_next_action_pressed);
+  slot_previous_action_pressed = controller->previous_action->signal_pressed.connect (this, &Client::on_previous_action_pressed);
 
   enabled = true;
 }
