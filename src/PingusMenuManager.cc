@@ -1,4 +1,4 @@
-//  $Id: PingusMenuManager.cc,v 1.7 2002/06/02 21:09:11 grumbel Exp $
+//  $Id: PingusMenuManager.cc,v 1.8 2002/06/07 14:50:34 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -102,9 +102,9 @@ PingusMenuManager::on_button_press (CL_InputDevice* device,const CL_Key& key)
     {
       if (menu_stack.size () > 2)
 	pop_menu ();
-      else if (menu_stack.size () == 2 && current_menu ().get () != &mainmenu)
+      else if (menu_stack.size () == 2 && current_menu () != &mainmenu)
 	set_menu (&mainmenu);
-      else if (menu_stack.size () == 2 && current_menu ().get () == &mainmenu)
+      else if (menu_stack.size () == 2 && current_menu () == &mainmenu)
 	push_menu (&exitmenu);
     }
   else
@@ -167,7 +167,7 @@ PingusMenuManager::display ()
 }
 
 void 
-PingusMenuManager::set_menu (boost::dummy_ptr<PingusSubMenu> menu)
+PingusMenuManager::set_menu (PingusSubMenu * menu)
 {
   /*if (current_menu.get ())
     fadeout ();*/
@@ -178,7 +178,7 @@ PingusMenuManager::set_menu (boost::dummy_ptr<PingusSubMenu> menu)
 }
 
 void 
-PingusMenuManager::push_menu (boost::dummy_ptr<PingusSubMenu> menu)
+PingusMenuManager::push_menu (PingusSubMenu * menu)
 {
   menu->preload ();
   menu_stack.push_back (menu);
@@ -191,14 +191,14 @@ PingusMenuManager::pop_menu ()
     menu_stack.pop_back();
 }
 
-boost::dummy_ptr<PingusSubMenu> 
+PingusSubMenu *
 PingusMenuManager::current_menu ()
 {
   if (!menu_stack.empty ())
     {
       MenuStackRIter i = menu_stack.rbegin ();
-      if (!i->get ())
-	std::cout << "PingusMenuManager: Error: current_menu is " << i->get () << std::endl;
+      if (! *i)
+	std::cout << "PingusMenuManager: Error: current_menu is " << *i << std::endl;
       return *i;
     }
   else

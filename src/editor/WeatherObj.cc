@@ -1,4 +1,4 @@
-//  $Id: WeatherObj.cc,v 1.10 2002/01/29 20:43:18 grumbel Exp $
+//  $Id: WeatherObj.cc,v 1.11 2002/06/07 14:50:35 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -49,7 +49,7 @@ WeatherObj::~WeatherObj()
 }
 
 void 
-WeatherObj::draw (boost::dummy_ptr<EditorView> view)
+WeatherObj::draw (EditorView * view)
 {
   //std::cout << "Dragging: " << dragging << std::endl;
       

@@ -1,4 +1,4 @@
-//  $Id: MultiplayerClient.cc,v 1.4 2002/01/04 01:19:46 grumbel Exp $
+//  $Id: MultiplayerClient.cc,v 1.5 2002/06/07 14:50:34 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,7 +22,7 @@
 
 using boost::shared_ptr;
 
-MultiplayerClient::MultiplayerClient (boost::dummy_ptr<Server> s,
+MultiplayerClient::MultiplayerClient (Server * s,
 				      boost::shared_ptr<GuiObj> child1,
 				      boost::shared_ptr<GuiObj> child2,
 				      boost::shared_ptr<GuiObj> child3,
@@ -38,7 +38,7 @@ MultiplayerClient::MultiplayerClient (boost::dummy_ptr<Server> s,
 							     200, 150)));
 }
 
-MultiplayerClient::MultiplayerClient (boost::dummy_ptr<Server> s,
+MultiplayerClient::MultiplayerClient (Server * s,
 				      boost::shared_ptr<GuiObj> child1,
 				      boost::shared_ptr<GuiObj> child2)
   : server (s)

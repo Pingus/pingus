@@ -1,4 +1,4 @@
-//  $Id: Controller.cc,v 1.10 2002/06/06 15:55:02 torangan Exp $
+//  $Id: Controller.cc,v 1.11 2002/06/07 14:50:34 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,7 +28,7 @@
 #include "my_gettext.hh"
 
 
-ControllerButton::ControllerButton (boost::dummy_ptr<Controller> arg_controller)
+ControllerButton::ControllerButton (Controller * arg_controller)
   : controller (arg_controller),
     pressed (false)
 {
@@ -71,7 +71,7 @@ InputDeviceButton::is_pressed ()
   return button->is_pressed ();
 }
 
-KeyboardButton::KeyboardButton (boost::dummy_ptr<Controller> c, int arg_button_id)
+KeyboardButton::KeyboardButton (Controller * c, int arg_button_id)
   : ControllerButton (c),
     button_id (arg_button_id)
     
@@ -85,7 +85,7 @@ KeyboardButton::is_pressed ()
 }
 
 
-MultiplexButton::MultiplexButton (boost::dummy_ptr<Controller> c)
+MultiplexButton::MultiplexButton (Controller * c)
   : ControllerButton (c)
 {
 }

@@ -1,4 +1,4 @@
-//  $Id: PingusMenuManager.hh,v 1.3 2001/06/17 17:18:27 grumbel Exp $
+//  $Id: PingusMenuManager.hh,v 1.4 2002/06/07 14:50:34 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,6 @@
 #define PINGUSMENUMANAGER_HH
 
 #include <list>
-#include "boost/dummy_ptr.hpp"
 #include "PingusSubMenu.hh"
 #include "MenuBackground.hh"
 #include "ExitMenu.hh"
@@ -34,9 +33,9 @@ class PingusMenuManager
 {
 private:
   /** Menu stack. the menu on top is .end (), the bottom menu .begin () */
-  std::list<boost::dummy_ptr<PingusSubMenu> > menu_stack;
-  typedef std::list<boost::dummy_ptr<PingusSubMenu> >::iterator MenuStackIter;
-  typedef std::list<boost::dummy_ptr<PingusSubMenu> >::reverse_iterator MenuStackRIter;
+  std::list<PingusSubMenu *> menu_stack;
+  typedef std::list<PingusSubMenu *>::iterator MenuStackIter;
+  typedef std::list<PingusSubMenu *>::reverse_iterator MenuStackRIter;
 
   bool loop;
 
@@ -83,18 +82,17 @@ public:
   /// Exit the menu manager (which means to exit the while() loop in display ())
   void exit ();
 
-  boost::dummy_ptr<PingusSubMenu> current_menu ();
+  PingusSubMenu * current_menu();
 
   // Replace the current menu with a new one
-  void set_menu (boost::dummy_ptr<PingusSubMenu> menu);
-
+  void set_menu (PingusSubMenu * menu);
   /** Remove the current menu and fall back to the last one.
       This is used for yes/no dialoges and such things. */
   void pop_menu ();
   
   /** Add's a new menu to the menu stack. This is used for yes/no
       dialoges and such things.*/
-  void push_menu (boost::dummy_ptr<PingusSubMenu> menu);
+  void push_menu (PingusSubMenu * menu);
 };
 
 #endif

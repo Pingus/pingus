@@ -1,4 +1,4 @@
-//  $Id: SolidColorBackground.hh,v 1.12 2002/06/01 18:05:36 torangan Exp $
+//  $Id: SolidColorBackground.hh,v 1.13 2002/06/07 14:50:34 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -90,7 +90,7 @@ public:
     return pos; 
   }
 
-  void draw(boost::dummy_ptr<EditorView> view)
+  void draw(EditorView * view)
   {
     view->draw_fillrect ((int)pos.x, (int)pos.y, (int)pos.x + 256, (int)pos.y + 256, 
 			 color.red, color.green, color.blue, color.alpha);

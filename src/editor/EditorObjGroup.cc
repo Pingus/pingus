@@ -1,4 +1,4 @@
-//  $Id: EditorObjGroup.cc,v 1.12 2002/01/15 10:48:51 grumbel Exp $
+//  $Id: EditorObjGroup.cc,v 1.13 2002/06/07 14:50:34 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -45,7 +45,7 @@ EditorObjGroup::set_position_offset(const CL_Vector& offset)
 
 /** Draw the object */
 void
-EditorObjGroup::draw (boost::dummy_ptr<EditorView> view)
+EditorObjGroup::draw (EditorView * view)
 {
   for(std::list<boost::shared_ptr<EditorObj> >::iterator i = objs.begin();
       i != objs.end();
@@ -69,7 +69,7 @@ EditorObjGroup::get_z_pos()
 
 /** Draw the caputre rectangle around the object */
 void
-EditorObjGroup::draw_mark (boost::dummy_ptr<EditorView> view)
+EditorObjGroup::draw_mark (EditorView * view)
 {
   for(std::list<boost::shared_ptr<EditorObj> >::iterator i = objs.begin();
       i != objs.end();

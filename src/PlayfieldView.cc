@@ -1,4 +1,4 @@
-//  $Id: PlayfieldView.cc,v 1.5 2002/06/01 18:05:35 torangan Exp $
+//  $Id: PlayfieldView.cc,v 1.6 2002/06/07 14:50:34 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,8 +20,7 @@
 #include <ClanLib/display.h>
 #include "PlayfieldView.hh"
 
-PlayfieldView::PlayfieldView (boost::dummy_ptr<World> w,
-			      const CL_Rect& rect)
+PlayfieldView::PlayfieldView (World * w, const CL_Rect& rect)
   : world (w), x_offset (0), y_offset (0)
 {
   set_clip_rect(rect.x1, rect.y1, rect.x2, rect.y2);

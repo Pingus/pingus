@@ -1,4 +1,4 @@
-//  $Id: SwitchDoor.hh,v 1.19 2002/06/01 18:05:37 torangan Exp $
+//  $Id: SwitchDoor.hh,v 1.20 2002/06/07 14:50:35 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -132,7 +132,7 @@ public:
 
   void set_position_offset(const CL_Vector &);
 
-  void draw (boost::dummy_ptr<EditorView> view);
+  void draw (EditorView * view);
   void save_xml (std::ofstream* xml);
   std::string status_line();
 };

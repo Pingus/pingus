@@ -1,4 +1,4 @@
-//  $Id: PlayfieldView.hh,v 1.4 2001/11/18 00:03:29 grumbel Exp $
+//  $Id: PlayfieldView.hh,v 1.5 2002/06/07 14:50:34 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,6 @@
 #ifndef PLAYFIELDVIEW_HH
 #define PLAYFIELDVIEW_HH
 
-#include "boost/dummy_ptr.hpp"
 #include "GuiObj.hh"
 #include "World.hh"
 #include "Pingu.hh"
@@ -28,12 +27,11 @@
 class PlayfieldView : public GuiObj
 {
 private:
-  boost::dummy_ptr<World> world;
+  World * world;
   int x_offset;
   int y_offset;
 public:
-  PlayfieldView (boost::dummy_ptr<World> w,
-		 const CL_Rect& rect);
+  PlayfieldView (World * w, const CL_Rect& rect);
   virtual ~PlayfieldView ();
 
   // Update the playfield

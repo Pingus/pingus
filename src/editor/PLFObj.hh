@@ -1,4 +1,4 @@
-//  $Id: PLFObj.hh,v 1.27 2002/01/15 10:48:52 grumbel Exp $
+//  $Id: PLFObj.hh,v 1.28 2002/06/07 14:50:34 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -70,7 +70,7 @@ public:
 
   boost::shared_ptr<EditorObj> duplicate();
   void write_xml(std::ofstream* xml) { TrapData::write_xml (xml); }
-  void draw (boost::dummy_ptr<EditorView> view);
+  void draw (EditorView * view);
   std::string  status_line();
 };
 
@@ -83,8 +83,8 @@ public:
   LiquidObj(const LiquidData& data);
 
   boost::shared_ptr<EditorObj> duplicate();
-  void draw (boost::dummy_ptr<EditorView> view);
-  void draw_mark (boost::dummy_ptr<EditorView> view);
+  void draw (EditorView * view);
+  void draw_mark (EditorView * view);
   void save(std::ofstream* plf, std::ofstream* psm);
   void write_xml(std::ofstream* xml) { LiquidData::write_xml (xml); }
   std::string  status_line();

@@ -1,4 +1,4 @@
-//  $Id: SpriteEditorObj.cc,v 1.2 2002/03/23 07:37:09 grumbel Exp $
+//  $Id: SpriteEditorObj.cc,v 1.3 2002/06/07 14:50:35 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,7 +46,7 @@ SpriteEditorObj::~SpriteEditorObj ()
 }
 
 void 
-SpriteEditorObj::draw(boost::dummy_ptr<EditorView> view)
+SpriteEditorObj::draw(EditorView * view)
 {
   view->draw (sprite, pos_ref);
 }

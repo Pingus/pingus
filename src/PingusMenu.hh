@@ -1,4 +1,4 @@
-//  $Id: PingusMenu.hh,v 1.20 2002/06/01 18:05:35 torangan Exp $
+//  $Id: PingusMenu.hh,v 1.21 2002/06/07 14:50:34 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,7 +23,6 @@
 #include <list>
 #include <ClanLib/core.h>
 #include <boost/smart_ptr.hpp>
-#include <boost/dummy_ptr.hpp>
 
 #include "PingusSubMenu.hh"
 #include "SurfaceButton.hh"
@@ -43,9 +42,9 @@ private:
   ///
   std::list<boost::shared_ptr<SurfaceButton> > buttons;
   ///
-  boost::dummy_ptr<SurfaceButton> temp_button;
+  SurfaceButton * temp_button;
   ///
-  boost::dummy_ptr<SurfaceButton> current_button;
+  SurfaceButton * current_button;
   ///
   CL_Surface background;
   ///

@@ -1,4 +1,4 @@
-//  $Id: SmallMapImage.cc,v 1.7 2002/06/01 18:05:35 torangan Exp $
+//  $Id: SmallMapImage.cc,v 1.8 2002/06/07 14:50:34 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,10 +24,9 @@
 #include "PLF.hh"
 #include "ColMap.hh"
 
-using boost::dummy_ptr;
 using boost::shared_ptr;
 
-SmallMapImage::SmallMapImage (boost::dummy_ptr<Server> s, CL_Vector arg_pos, int width, int height)
+SmallMapImage::SmallMapImage (Server * s, CL_Vector arg_pos, int width, int height)
   : sur (create_surface (s, width, height)),
     pos (arg_pos)
 {  
@@ -50,7 +49,7 @@ SmallMapImage::update (float /*delta*/)
 }
 
 CL_Surface
-SmallMapImage::create_surface (dummy_ptr<Server> server, int width, int height)
+SmallMapImage::create_surface (Server * server, int width, int height)
 {
   CL_Canvas*  canvas;
   unsigned char* buffer;

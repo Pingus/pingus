@@ -1,4 +1,4 @@
-//  $Id: Teleporter.cc,v 1.33 2002/06/01 18:05:37 torangan Exp $
+//  $Id: Teleporter.cc,v 1.34 2002/06/07 14:50:35 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -204,7 +204,7 @@ EditorTeleporterObj::create (const CL_Vector& pos)
 }
 
 void
-EditorTeleporterObj::draw (boost::dummy_ptr<EditorView> view)
+EditorTeleporterObj::draw (EditorView * view)
 {
   //std::cout << "Drawing line" << std::endl;
   view->draw_line (int(pos.x), 

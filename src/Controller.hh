@@ -1,4 +1,4 @@
-//  $Id: Controller.hh,v 1.11 2002/06/06 15:54:14 torangan Exp $
+//  $Id: Controller.hh,v 1.12 2002/06/07 14:50:34 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,7 +22,6 @@
 
 #include <ClanLib/core.h>
 #include "boost/smart_ptr.hpp"
-#include "boost/dummy_ptr.hpp"
 
 template <class T> class CL_Signal_v1;
 class Controller;
@@ -31,12 +30,11 @@ class CL_InputButton;
 class ControllerButton 
 {
 private:
-  // FIXME: Do we really need this?! I guess no...
-  boost::dummy_ptr<Controller> controller;
+  Controller * controller;
   bool pressed;
 
 public:
-  ControllerButton (boost::dummy_ptr<Controller>);
+  ControllerButton (Controller *);
   virtual ~ControllerButton () {}
   
   virtual bool is_pressed () =0;
@@ -71,7 +69,7 @@ class KeyboardButton : public ControllerButton
 private:
   int button_id;
 public:
-  KeyboardButton (boost::dummy_ptr<Controller>, int arg_button_id);
+  KeyboardButton (Controller *, int arg_button_id);
   
   virtual bool is_pressed ();
 };
@@ -82,7 +80,7 @@ private:
   std::list<boost::shared_ptr<ControllerButton> > buttons;
   typedef std::list<boost::shared_ptr<ControllerButton> >::iterator ButtonIter;
 public:
-  MultiplexButton (boost::dummy_ptr<Controller>);
+  MultiplexButton (Controller *);
   
   void add (boost::shared_ptr<ControllerButton> button);
   void remove (boost::shared_ptr<ControllerButton> button);

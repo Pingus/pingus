@@ -1,4 +1,4 @@
-//  $Id: PLFObj.cc,v 1.59 2002/01/24 23:07:37 grumbel Exp $
+//  $Id: PLFObj.cc,v 1.60 2002/06/07 14:50:34 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -173,7 +173,7 @@ TrapObj::duplicate()
 }
 
 void
-TrapObj::draw (boost::dummy_ptr<EditorView> view)
+TrapObj::draw (EditorView * view)
 {
     view->draw(sprite, pos, frame);
 }
@@ -204,14 +204,14 @@ LiquidObj::duplicate()
 }
 
 void
-LiquidObj::draw (boost::dummy_ptr<EditorView> view)
+LiquidObj::draw (EditorView * view)
 {
   for(int i = 0; i < width; i++)
     view->draw (sprite, pos + CL_Vector (i * sprite.get_width (), 0));
 }
 
 void
-LiquidObj::draw_mark (boost::dummy_ptr<EditorView> view) 
+LiquidObj::draw_mark (EditorView * view) 
 {
   view->draw_rect(int(pos.x),
 		  int(pos.y),

@@ -1,4 +1,4 @@
-//  $Id: PingusCounterBar.hh,v 1.1 2001/04/15 20:55:03 grumbel Exp $
+//  $Id: PingusCounterBar.hh,v 1.2 2002/06/07 14:50:34 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,18 +23,17 @@
 #include <ClanLib/core.h>
 #include "Server.hh"
 #include "GuiObj.hh"
-#include "boost/dummy_ptr.hpp"
 
 class PingusCounterBar : public GuiObj
 {
 public:
     enum Orientation { VERTICAL, HORIZONTAL };
 private:
-  boost::dummy_ptr<Server> server;
+  Server * server;
   Orientation orientation;
   CL_Rect rect;
 public:
-  PingusCounterBar (boost::dummy_ptr<Server> s, Orientation o, const CL_Rect& arg_rect);
+  PingusCounterBar (Server * s, Orientation o, const CL_Rect& arg_rect);
   virtual ~PingusCounterBar ();
 
   void update(float delta);

@@ -1,4 +1,4 @@
-//  $Id: SmallMapImage.hh,v 1.1 2001/04/17 05:00:04 grumbel Exp $
+//  $Id: SmallMapImage.hh,v 1.2 2002/06/07 14:50:34 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,6 @@
 #define SMALLMAPIMAGE_HH
 
 #include <ClanLib/display.h>
-#include "boost/dummy_ptr.hpp"
 #include "GuiObj.hh"
 #include "Server.hh"
 
@@ -33,13 +32,13 @@ private:
   CL_Surface sur;
   CL_Vector pos;
 public:
-  SmallMapImage (boost::dummy_ptr<Server> s, CL_Vector pos, int width, int height);
+  SmallMapImage (Server * s, CL_Vector pos, int width, int height);
   virtual ~SmallMapImage ();
 
   void draw ();
   void update (float delta);
 
-  static CL_Surface create_surface (boost::dummy_ptr<Server> server, int width, int height);
+  static CL_Surface create_surface (Server * server, int width, int height);
 };
 
 #endif

@@ -1,4 +1,4 @@
-//  $Id: ObjectManager.hh,v 1.23 2002/06/04 13:43:19 torangan Exp $
+//  $Id: ObjectManager.hh,v 1.24 2002/06/07 14:50:34 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,7 +23,6 @@
 #include <iostream>
 #include <fstream>
 
-#include "../boost/dummy_ptr.hpp"
 #include "../ActionData.hh"
 #include "../Color.hh"
 
@@ -91,7 +90,7 @@ public:
   void save_level_xml (const std::string & filename);
 
   ///
-  void draw(boost::dummy_ptr<EditorView> view);
+  void draw(EditorView * view);
   ///
   void draw_scroll_map(int x_pos, int y_pos, int arg_width, int arg_height);
   

@@ -1,4 +1,4 @@
-//  $Id: MultiplayerClient.hh,v 1.6 2002/01/15 10:48:49 grumbel Exp $
+//  $Id: MultiplayerClient.hh,v 1.7 2002/06/07 14:50:34 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,13 +30,13 @@ class MultiplayerClient : public GuiObj
 private:
   std::vector<boost::shared_ptr<GuiObj> > gui_objs;
   typedef std::vector<boost::shared_ptr<GuiObj> >::iterator GuiObjIter;
-  boost::dummy_ptr<Server> server;
+  Server * server;
     
 public:
-  MultiplayerClient (boost::dummy_ptr<Server> s,
+  MultiplayerClient (Server * s,
 		     boost::shared_ptr<GuiObj> child1,
 		     boost::shared_ptr<GuiObj> child2);
-  MultiplayerClient (boost::dummy_ptr<Server> s,
+  MultiplayerClient (Server * s,
 		     boost::shared_ptr<GuiObj> child1,
 		     boost::shared_ptr<GuiObj> child2,
 		     boost::shared_ptr<GuiObj> child3,

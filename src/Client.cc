@@ -1,4 +1,4 @@
-//  $Id: Client.cc,v 1.78 2002/06/01 18:05:34 torangan Exp $
+//  $Id: Client.cc,v 1.79 2002/06/07 14:50:34 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -50,8 +50,7 @@ shared_ptr<TimeDisplay>   Client::time_display;
 shared_ptr<SmallMap>      Client::small_map;
 shared_ptr<HurryUp>       Client::hurry_up;
 
-Client::Client(boost::shared_ptr<Controller> arg_controller, 
-	       boost::dummy_ptr<Server> s)
+Client::Client(boost::shared_ptr<Controller> arg_controller, Server * s)
   : controller (arg_controller),
     cursor (new Cursor ("cursors/animcross", "core", controller))
 {
@@ -116,8 +115,8 @@ Client::init_display()
   hurry_up     = shared_ptr<HurryUp>(new HurryUp());
   gui_is_init = true;
    
-  button_panel->set_server(server.get ());
-  time_display->set_server(server.get ());
+  button_panel->set_server(server);
+  time_display->set_server(server);
   button_panel->set_client(this);
   pcounter->set_client(this);
   small_map->set_client(this);
@@ -129,7 +128,7 @@ Client::init_display()
 
   // Connect the button_panel with the playfield
   playfield->set_buttons(button_panel);
-  playfield->set_server(server.get ());
+  playfield->set_server(server);
   playfield->set_client(this);
 
   // Adding all GuiObj's to the screen

@@ -1,4 +1,4 @@
-//  $Id: CaptureRectangle.cc,v 1.15 2002/02/10 22:14:06 grumbel Exp $ 
+//  $Id: CaptureRectangle.cc,v 1.16 2002/06/07 14:50:34 torangan Exp $ 
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,6 @@
 #include <cstdio>
 #include <cassert>
 #include <boost/smart_ptr.hpp>
-#include "boost/dummy_ptr.hpp"
 
 #include "globals.hh"
 #include "Pingu.hh"
@@ -63,7 +62,7 @@ CaptureRectangle::draw_offset(int x_offset, int y_offset, float s)
     } 
   else if (pingu->catchable ())
     {
-      boost::dummy_ptr<Sprite> sur;
+      Sprite * sur;
       
       if (button_action.get() 
 	  && (button_action->get_environment() & pingu->get_environment()))

@@ -1,4 +1,4 @@
-//  $Id: SpriteEditorObj.hh,v 1.2 2002/03/23 07:37:09 grumbel Exp $
+//  $Id: SpriteEditorObj.hh,v 1.3 2002/06/07 14:50:35 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -51,7 +51,7 @@ public:
 
   virtual CL_Vector get_upper_left_corner();
 
-  virtual void draw(boost::dummy_ptr<EditorView>);
+  virtual void draw(EditorView *);
 
   virtual void set_position_offset(const CL_Vector& offset);
 

@@ -1,4 +1,4 @@
-//  $Id: EditorObj.hh,v 1.38 2002/06/01 18:05:36 torangan Exp $
+//  $Id: EditorObj.hh,v 1.39 2002/06/07 14:50:34 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,7 +24,6 @@
 #include <fstream>
 
 #include "../boost/smart_ptr.hpp"
-#include "../boost/dummy_ptr.hpp"
 
 using namespace std;
 
@@ -49,14 +48,14 @@ public:
   virtual ~EditorObj ();
 
   /** Draw the object to the given view */
-  virtual void draw (boost::dummy_ptr<EditorView> view) =0;
+  virtual void draw (EditorView * view) =0;
 
   /** Called once a game loop, the delta is the time passed since the
       last update in seconds */
   virtual void update (float /*delta*/) {};
 
   /** Draw a rectangle or shape around the object to the given view */
-  virtual void draw_mark (boost::dummy_ptr<EditorView> view) =0;
+  virtual void draw_mark (EditorView * view) =0;
 
   /** Return true when the object is under the given coordinates */
   virtual bool is_over(const CL_Vector&) =0;

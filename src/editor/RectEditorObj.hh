@@ -1,4 +1,4 @@
-//  $Id: RectEditorObj.hh,v 1.1 2001/08/16 17:46:51 grumbel Exp $
+//  $Id: RectEditorObj.hh,v 1.2 2002/06/07 14:50:35 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,6 @@
 #define RECTEDITOROBJ_HH
 
 #include "../boost/smart_ptr.hpp"
-#include "../boost/dummy_ptr.hpp"
 
 #include "EditorObj.hh"
 
@@ -42,7 +41,7 @@ public:
   virtual int get_height() =0;
 
   /** Draw the caputre rectangle around the object */
-  virtual void   draw_mark (boost::dummy_ptr<EditorView> view);
+  virtual void   draw_mark (EditorView * view);
   
   /** Return true when the object is under the given coordinates */
   virtual bool   is_over(const CL_Vector&);

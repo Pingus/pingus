@@ -1,4 +1,4 @@
-//  $Id: EditorObjGroup.hh,v 1.8 2002/01/15 10:48:51 grumbel Exp $
+//  $Id: EditorObjGroup.hh,v 1.9 2002/06/07 14:50:34 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -40,8 +40,8 @@ public:
   float get_z_pos();
 
   void set_position_offset(const CL_Vector& offset);
-  void draw(boost::dummy_ptr<EditorView>);
-  void draw_mark (boost::dummy_ptr<EditorView> view);
+  void draw(EditorView *);
+  void draw_mark (EditorView * view);
   
   /** Add an object to the group */
   void EditorObjGroup::add (boost::shared_ptr<EditorObj>);

@@ -1,4 +1,4 @@
-//  $Id: Teleporter.hh,v 1.25 2002/06/01 18:05:37 torangan Exp $
+//  $Id: Teleporter.hh,v 1.26 2002/06/07 14:50:35 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -90,7 +90,7 @@ public:
       for the editor */
   static std::list<boost::shared_ptr<EditorObj> > create (const CL_Vector& pos);
 
-  void draw (boost::dummy_ptr<EditorView> view);
+  void draw (EditorView * view);
   void save_xml (std::ofstream* xml);
   std::string status_line();
 };

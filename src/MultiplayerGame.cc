@@ -1,4 +1,4 @@
-//  $Id: MultiplayerGame.cc,v 1.5 2002/01/21 11:13:54 grumbel Exp $
+//  $Id: MultiplayerGame.cc,v 1.6 2002/06/07 14:50:34 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,7 +19,6 @@
 
 #include "DeltaManager.hh"
 #include "boost/smart_ptr.hpp"
-#include "boost/dummy_ptr.hpp"
 #include "Server.hh"
 #include "PathManager.hh"
 #include "TrueServer.hh"
@@ -32,7 +31,6 @@
 #include "KeyboardController.hh"
 #include "MultiplayerGame.hh"
 
-using boost::dummy_ptr;
 using boost::shared_ptr;
 
 MultiplayerGame::MultiplayerGame ()

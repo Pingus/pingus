@@ -1,4 +1,4 @@
-//  $Id: StatusLine.cc,v 1.9 2001/08/15 22:01:45 grumbel Exp $
+//  $Id: StatusLine.cc,v 1.10 2002/06/07 14:50:35 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,7 +32,7 @@ StatusLine::~StatusLine()
 }
   
 void
-StatusLine::draw(boost::dummy_ptr<EditorView> view)
+StatusLine::draw(EditorView * view)
 {
   char mouse_co[256];
   // FIXME: This is a potential buffer overrun, to lazy to fix it right now

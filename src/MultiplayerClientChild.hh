@@ -1,4 +1,4 @@
-//  $Id: MultiplayerClientChild.hh,v 1.6 2002/01/04 01:19:46 grumbel Exp $
+//  $Id: MultiplayerClientChild.hh,v 1.7 2002/06/07 14:50:34 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,7 +22,6 @@
 
 #include "Controller.hh"
 #include "boost/smart_ptr.hpp"
-#include "boost/dummy_ptr.hpp"
 #include "Server.hh"
 #include "GuiObj.hh"
 #include "Cursor.hh"
@@ -37,7 +36,7 @@ class MultiplayerClientChild : public Controllable,
 			       public GuiObj
 {
 private:
-  boost::dummy_ptr<Server> server;
+  Server * server;
   boost::shared_ptr<Cursor> cursor;
   boost::shared_ptr<ButtonPanel> button_panel;
   Sprite capture_rect;
@@ -54,7 +53,7 @@ private:
 
 public:
   MultiplayerClientChild (boost::shared_ptr<Controller> arg_controller, 
-			  boost::dummy_ptr<Server> s, const CL_Rect& arg_rect);
+			  Server * s, const CL_Rect& arg_rect);
   ~MultiplayerClientChild ();
 
   void draw ();

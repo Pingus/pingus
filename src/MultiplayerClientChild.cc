@@ -1,4 +1,4 @@
-//  $Id: MultiplayerClientChild.cc,v 1.9 2002/06/01 18:05:34 torangan Exp $
+//  $Id: MultiplayerClientChild.cc,v 1.10 2002/06/07 14:50:34 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,15 +17,13 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "boost/smart_ptr.hpp"
 #include "Display.hh"
 #include "MultiplayerClientChild.hh"
 
 using boost::shared_ptr;
-using boost::dummy_ptr;
 
 MultiplayerClientChild::MultiplayerClientChild (boost::shared_ptr<Controller> arg_controller,
-						boost::dummy_ptr<Server> s, const CL_Rect& arg_rect)
+					Server * s, const CL_Rect& arg_rect)
   : Controllable (arg_controller),
     server (s),
     cursor (new Cursor ("cursors/cross", "core", controller)),
@@ -39,7 +37,7 @@ MultiplayerClientChild::MultiplayerClientChild (boost::shared_ptr<Controller> ar
   capture_rect.set_align_center ();
 
   // FIXME: The buttonpanel sucks...
-  button_panel->set_server (server.get ());
+  button_panel->set_server (server);
   
   //std::cout << "MultiplayerClientChild: Creating: " << server.get() << std::endl;
   gui_objs.push_back (playfield.get());
