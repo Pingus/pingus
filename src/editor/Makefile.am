@@ -33,7 +33,6 @@ libpingus_editor_a_SOURCES = \
 	object_selector.cxx object_selector.hxx \
 	panel.cxx panel.hxx \
 	panel_icons.cxx panel_icons.hxx \
-	plfobj.cxx plfobj.hxx \
 	property_frame.cxx property_frame.hxx \
 	property_window.cxx property_window.hxx \
 	rect_editorobj.cxx rect_editorobj.hxx \

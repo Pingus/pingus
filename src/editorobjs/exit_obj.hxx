@@ -1,4 +1,4 @@
-//  $Id: plfobj.cxx,v 1.14 2002/09/27 11:26:45 torangan Exp $
+//  $Id: exit_obj.hxx,v 1.1 2002/09/27 16:01:55 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,38 +17,40 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <stdio.h>
-#include "plfobj.hxx"
+#ifndef HEADER_PINGUS_EDITOROBJS_EDIT_OBJ_HXX
+#define HEADER_PINGUS_EDITOROBJS_EXIT_OBJ_HXX
 
-ExitObj::ExitObj (const ExitData& data)
-  : SpriteEditorObj (data.desc.res_name, data.desc.datafile, &pos),
-    ExitData (data)
-{
-  sprite.set_align_center_bottom ();
-         
-  if (use_old_pos_handling)
-    {
-      pos.x += sprite.get_width ()/2;
-      pos.y += sprite.get_height ();
-      use_old_pos_handling = false;
-    }
+#include "../editor/sprite_editorobj.hxx"
+
+namespace WorldObjsData {
+class ExitData;
 }
 
-EditorObj*
-ExitObj::duplicate()
-{
-  // FIXME: The static_cast<> looks ugly.. 
-  return new ExitObj(static_cast<ExitData>(*this));
-}
+namespace EditorObjs {
 
-std::string 
-ExitObj::status_line()
+class ExitObj : public SpriteEditorObj
 {
-  char str[256];
+private:
+  WorldObjsData::ExitData* const data;
   
-  snprintf(str, 256, "Exit - %s - X:%4.2f Y:%4.2f Z:%4.2f OwnerId: %d", desc.res_name.c_str(), pos.x, pos.y, pos.z, owner_id);
+public:
+  ExitObj (const WorldObjsData::ExitData& data_);
+ ~ExitObj ();
 
-  return str;
-}
+  EditorObj* duplicate ();
+  
+  void write_xml (std::ostream& xml);
+  
+  std::string status_line ();
+  
+private:
+  ExitObj (const ExitObj&);
+  ExitObj& operator= (const ExitObj&);
+};
+
+} // namespace EditorObjs
+
+#endif
 
 /* EOF */
+

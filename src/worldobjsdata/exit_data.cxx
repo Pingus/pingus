@@ -1,4 +1,4 @@
-//  $Id: exit_data.cxx,v 1.7 2002/09/27 11:26:43 torangan Exp $
+//  $Id: exit_data.cxx,v 1.1 2002/09/27 16:01:55 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,26 +17,29 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <fstream>
-#include "exit.hxx"
-#include "editor/plfobj.hxx"
-#include "string_converter.hxx"
-#include "xml_helper.hxx"
+#include <iostream>
+#include "../string_converter.hxx"
+#include "../xml_helper.hxx"
+#include "../editorobjs/exit_obj.hxx"
+#include "../worldobjs/exit.hxx"
+#include "exit_data.hxx"
 
-ExitData::ExitData (xmlDocPtr doc, xmlNodePtr cur)
+namespace WorldObjsData {
+
+ExitData::ExitData () : owner_id(0),
+                        use_old_pos_handling(true)
 {
-  clean ();
+}
 
+ExitData::ExitData (xmlDocPtr doc, xmlNodePtr cur) : owner_id(0),
+                                                     use_old_pos_handling(true)
+{
   char* pos_handling = XMLhelper::get_prop(cur, "use-old-pos-handling");
   if (pos_handling)
     {
       std::cout << "XMLPLF: Use Old Pos Handling: " << pos_handling << std::endl;
-      use_old_pos_handling = static_cast<bool>(StringConverter::to_int (pos_handling));
+      use_old_pos_handling = StringConverter::to_int(pos_handling);
       xmlFree (pos_handling);
-    }
-  else
-    {
-      use_old_pos_handling = true;
     }
 
   cur = cur->children;
@@ -76,24 +79,8 @@ ExitData::ExitData (const ExitData& old) : WorldObjData(old),
 {
 }
 
-ExitData&
-ExitData::operator= (const ExitData& old)
-{
-  if (this == &old)
-    return *this;
-    
-  WorldObjData::operator=(old);
-  
-  pos                  = old.pos;
-  desc                 = old.desc;
-  owner_id             = old.owner_id;
-  use_old_pos_handling = old.use_old_pos_handling;
-  
-  return *this;
-}
-
 void 
-ExitData::write_xml(std::ostream& xml)
+ExitData::write_xml (std::ostream& xml)
 {
   xml << "<exit use-old-pos-handling=\"" << use_old_pos_handling << "\">\n";
 
@@ -109,18 +96,18 @@ ExitData::write_xml(std::ostream& xml)
 }
 
 WorldObj* 
-ExitData::create_WorldObj()
+ExitData::create_WorldObj ()
 {
-  return new Exit (*this);
+  return new WorldObjs::Exit(*this);
 }
 
 EditorObjLst 
-ExitData::create_EditorObj()
+ExitData::create_EditorObj ()
 {
-  EditorObjLst lst;
-  lst.push_back (new ExitObj (*this));
-  return lst;
+  return EditorObjLst(1, new EditorObjs::ExitObj(*this));
 }
+
+} // namespace WorldObjsData
 
 /* EOF */
 

@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.16 2002/09/27 11:26:49 torangan Exp $
+#  $Id: Makefile.am,v 1.17 2002/09/27 16:01:55 torangan Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,6 +25,7 @@ libpingus_worldobjs_a_SOURCES = \
 	bumper.cxx                     bumper.hxx                     \
         conveyor_belt.cxx              conveyor_belt.hxx              \
 	entrance.cxx		       entrance.hxx  		      \
+	exit.cxx                       exit.hxx			      \
 	fake_exit.cxx                  fake_exit.hxx                  \
 	guillotine.cxx                 guillotine.hxx                 \
         groundpiece.hxx                groundpiece.cxx                \

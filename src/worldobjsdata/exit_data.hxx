@@ -1,4 +1,4 @@
-//  $Id: exit_data.hxx,v 1.6 2002/09/27 11:26:43 torangan Exp $
+//  $Id: exit_data.hxx,v 1.1 2002/09/27 16:01:55 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,16 +17,16 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef HEADER_PINGUS_EXIT_DATA_HXX
-#define HEADER_PINGUS_EXIT_DATA_HXX
+#ifndef HEADER_PINGUS_WORLDOBJSDATA_EXIT_DATA_HXX
+#define HEADER_PINGUS_WORLDOBJSDATA_EXIT_DATA_HXX
 
 #include <ClanLib/Core/Math/cl_vector.h>
-#include "res_descriptor.hxx"
-#include "worldobj_data.hxx"
+#include "../libxmlfwd.hxx"
+#include "../res_descriptor.hxx"
+#include "../worldobj_data.hxx"
 
-#include "libxmlfwd.hxx"
+namespace WorldObjsData {
 
-///
 class ExitData : public WorldObjData
 {
 public:
@@ -42,24 +42,21 @@ public:
   bool use_old_pos_handling;
 
 public:
-  ExitData() { clean (); }
+  ExitData ();
   ExitData (xmlDocPtr doc, xmlNodePtr cur);
   
   ExitData (const ExitData& old);
-  ExitData& operator= (const ExitData& old);
 
-  /// Reset the values to default
-  void clean(void) 
-  { 
-    owner_id = 0; 
-    use_old_pos_handling = true;
-  }
-
-  void write_xml(std::ostream&);
+  void write_xml (std::ostream&);
   
-  WorldObj* create_WorldObj();
-  EditorObjLst create_EditorObj();
+  WorldObj* create_WorldObj ();
+  EditorObjLst create_EditorObj ();
+
+private:
+  ExitData& operator= (const ExitData& old);
 };
+
+} // namespace WorldObjsData
 
 #endif
 

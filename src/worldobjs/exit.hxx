@@ -1,4 +1,4 @@
-//  $Id: plfobj.hxx,v 1.12 2002/09/27 11:26:45 torangan Exp $
+//  $Id: exit.hxx,v 1.1 2002/09/27 16:01:55 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,28 +17,43 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef HEADER_PINGUS_EDITOR_PLFOBJ_HXX
-#define HEADER_PINGUS_EDITOR_PLFOBJ_HXX
+#ifndef HEADER_PINGUS_WORLDOBJS_EXIT_HXX
+#define HEADER_PINGUS_WORLDOBJS_EXIT_HXX
 
-#include "../exit_data.hxx"
-#include "sprite_editorobj.hxx"
+#include "../worldobj.hxx"
+#include "../sprite.hxx"
 
-class ExitObj : public SpriteEditorObj,
-		public ExitData
+namespace WorldObjsData {
+class ExitData;
+}
+
+namespace WorldObjs {
+
+class Exit : public WorldObj
 {
-public:
-  ExitObj (const ExitData&);
+private:
+  WorldObjsData::ExitData* const data;
+  Sprite sprite;
+  Sprite flag;
 
-  EditorObj* duplicate();
-  void write_xml(std::ostream& xml) { ExitData::write_xml (xml); }
-  std::string  status_line();
+public:
+  Exit (const WorldObjsData::ExitData& data_);
+ ~Exit ();
+  
+  void  on_startup ();
+  void  draw (GraphicContext& gc);
+  
+  void  update (float delta);
+  
+  float get_z_pos () const;
   
 private:
-  ExitObj (const ExitObj&);
-  ExitObj& operator= (const ExitObj&);
+  Exit (const Exit&);
+  Exit& operator= (const Exit&);
 };
+
+} // namespace WorldObjs
 
 #endif
 
 /* EOF */
-

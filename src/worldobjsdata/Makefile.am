@@ -21,6 +21,7 @@ libpingus_worldobjsdata_a_SOURCES = \
 	bumper_data.cxx                  bumper_data.hxx \
 	conveyor_belt_data.cxx           conveyor_belt_data.hxx \
 	entrance_data.cxx		 entrance_data.hxx \
+	exit_data.cxx			 exit_data.hxx \
 	fake_exit_data.cxx               fake_exit_data.hxx \
         groundpiece_data.hxx             groundpiece_data.cxx \
 	guillotine_data.cxx              guillotine_data.hxx \

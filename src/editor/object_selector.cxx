@@ -1,4 +1,4 @@
-//  $Id: object_selector.cxx,v 1.26 2002/09/27 11:26:45 torangan Exp $
+//  $Id: object_selector.cxx,v 1.27 2002/09/27 16:01:55 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,12 +33,12 @@
 #include "../string_converter.hxx"
 #include "../system.hxx"
 #include "object_selector.hxx"
-#include "plfobj.hxx"
 #include "string_reader.hxx"
 #include "thumb_cache.hxx"
 #include "weather_obj.hxx"
 
 #include "../worldobjsdata/entrance_data.hxx"
+#include "../worldobjsdata/exit_data.hxx"
 #include "../worldobjsdata/groundpiece_data.hxx"
 #include "../worldobjsdata/hotspot_data.hxx"
 #include "../worldobjsdata/liquid_data.hxx"
@@ -49,6 +49,7 @@
 
 #include "../editorobjs/bumper_obj.hxx"
 #include "../editorobjs/conveyor_belt_obj.hxx"
+#include "../editorobjs/exit_obj.hxx"
 #include "../editorobjs/fake_exit_obj.hxx"
 #include "../editorobjs/guillotine_obj.hxx"
 #include "../editorobjs/groundpiece_obj.hxx"

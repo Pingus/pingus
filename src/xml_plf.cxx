@@ -1,4 +1,4 @@
-//  $Id: xml_plf.cxx,v 1.24 2002/09/27 11:26:44 torangan Exp $
+//  $Id: xml_plf.cxx,v 1.25 2002/09/27 16:01:55 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,8 +24,8 @@
 #include "pingus_error.hxx"
 #include "string_converter.hxx"
 #include "worldobj_data_factory.hxx"
-#include "exit_data.hxx"
 #include "worldobjsdata/entrance_data.hxx"
+#include "worldobjsdata/exit_data.hxx"
 #include "worldobjsdata/hotspot_data.hxx"
 #include "worldobjsdata/liquid_data.hxx"
 #include "worldobjsdata/worldobj_group_data.hxx"
@@ -123,7 +123,7 @@ XMLPLF::parse_file()
 	    }
 	  else if (XMLhelper::equal_str(cur->name, "exit"))
 	    {
-	      worldobjs_data.push_back (new ExitData(doc, cur));
+	      worldobjs_data.push_back (new WorldObjsData::ExitData(doc, cur));
 	    }
 	  else if (XMLhelper::equal_str(cur->name, "entrance"))
 	    {
@@ -187,7 +187,7 @@ XMLPLF::parse_group (xmlNodePtr cur)
 	}
       else if (XMLhelper::equal_str(cur->name, "exit"))
 	{
-	  worldobjs_data.push_back(new ExitData(doc, cur));
+	  worldobjs_data.push_back(new WorldObjsData::ExitData(doc, cur));
 	}
       else if (XMLhelper::equal_str(cur->name, "entrance"))
 	{

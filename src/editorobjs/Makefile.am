@@ -21,6 +21,7 @@ libpingus_editorobjs_a_SOURCES = \
 	bumper_obj.cxx                  bumper_obj.hxx \
 	conveyor_belt_obj.cxx           conveyer_belt_obj.hxx \
 	entrance_obj.cxx		entrance_obj.hxx \
+	exit_obj.cxx			exit_obj.hxx \
 	fake_exit_obj.cxx               fake_exit_obj.hxx \
 	guillotine_obj.cxx              guillotine_obj.hxx \
 	groundpiece_obj.cxx             groundpiece_obj.hxx \
