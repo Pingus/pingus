@@ -1,4 +1,4 @@
-//  $Id: exit.cxx,v 1.3 2002/06/28 15:12:22 torangan Exp $
+//  $Id: exit.cxx,v 1.4 2002/06/28 16:45:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,7 @@
 #include "exit.hxx"
 #include "pingu_holder.hxx"
 #include "string_converter.hxx"
+#include "pingu_action.hxx"
 #include "pingu.hxx"
 
 using namespace Pingus::Actions;
@@ -87,7 +88,8 @@ Exit::update (float delta)
 	  && (*pingu)->get_y() > pos.y - 5 && (*pingu)->get_y() < pos.y + 1)
 	{
 	  if ((*pingu)->get_status() != PS_EXITED
-	      && (*pingu)->get_status() != PS_DEAD)
+	      && (*pingu)->get_status() != PS_DEAD
+	      && (*pingu)->get_action ()->get_type () != Exiter)
 	    {
 	      (*pingu)->set_action(Exiter);
 	    }
