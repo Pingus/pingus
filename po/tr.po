@@ -725,7 +725,7 @@ msgstr "| Uyarý: SIGINT sinyali aldýk, oyundan çýkýyoruz."
 
 #: src/pingus_main.cxx:304
 msgid "Warning: Larger resolution than 800x600 will result in visual problems"
-msgstr ""
+msgstr "Dikkat: 800x600'den büyük çözünürlük görüntü sorunu yaratabilir"
 
 #: src/pingus_main.cxx:481
 msgid "Unknow char: "
@@ -777,9 +777,8 @@ msgid "Load a custom level from FILE"
 msgstr "DOSYAdan özel seviye yükle"
 
 #: src/pingus_main.cxx:500
-#, fuzzy
 msgid "FILE        "
-msgstr "DOSYA      "
+msgstr "DOSYA       "
 
 # worldmap = ??
 #: src/pingus_main.cxx:500
@@ -841,7 +840,7 @@ msgstr "SEÇENEKLER: tiles, gametime, actions, sound, resources, gui."
 
 #: src/pingus_main.cxx:517
 msgid "input, pathmgr"
-msgstr ""
+msgstr "input, pathmgr"
 
 #: src/pingus_main.cxx:518
 msgid "Skip at least N frames, larger values speed the game up"
