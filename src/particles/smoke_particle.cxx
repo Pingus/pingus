@@ -1,4 +1,4 @@
-//  $Id: smoke_particle.cxx,v 1.2 2002/06/13 14:25:13 torangan Exp $
+//  $Id: smoke_particle.cxx,v 1.3 2002/06/28 17:48:42 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,9 @@
 #include "../pingus_resource.hxx"
 #include "smoke_particle.hxx"
 
+CL_Surface SmokeParticle::surf1;
+CL_Surface SmokeParticle::surf2;
+
 SmokeParticle::SmokeParticle()
 {
 }
@@ -32,9 +35,17 @@ SmokeParticle::SmokeParticle(int x, int y, float x_a, float y_a)
 {
   // FIXME: Probably slow??
   if (rand() % 2)
-    surface = PingusResource::load_surface("Particles/smoke", "pingus");
+    {
+      if (!surf1)
+	surf1 = PingusResource::load_surface("Particles/smoke", "pingus");
+      surface = surf1;
+    }
   else
-    surface = PingusResource::load_surface("Particles/smoke2", "pingus");
+    {
+      if (!surf2)
+	surf2 = PingusResource::load_surface("Particles/smoke2", "pingus");
+      surface = surf2;
+    }
 
   livetime = 25 + (rand() % 10);
   time = livetime;

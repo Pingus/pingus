@@ -1,4 +1,4 @@
-//  $Id: pingu_action.hxx,v 1.6 2002/06/28 15:12:22 torangan Exp $
+//  $Id: pingu_action.hxx,v 1.7 2002/06/28 17:48:42 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -84,7 +84,8 @@ public:
   /// Returns the activation mode
   virtual ActionType get_activation_mode(void) const;
 
-  /// The name of the action
+  /** The name of the action, this is used in the CaputreRectangle, so
+      it can contain more than just the name */
   virtual std::string get_name(void) const =0;
   
   /// The type of the action

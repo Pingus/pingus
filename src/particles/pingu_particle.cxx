@@ -1,4 +1,4 @@
-//  $Id: pingu_particle.cxx,v 1.1 2002/06/12 19:11:31 grumbel Exp $
+//  $Id: pingu_particle.cxx,v 1.2 2002/06/28 17:48:42 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,7 +30,11 @@ CL_Surface PinguParticle::sur;
 
 PinguParticle::PinguParticle()
 {
-  surface = PingusResource::load_surface("Particles/particle", "pingus");
+  if (!sur)
+    sur = PingusResource::load_surface("Particles/particle", "pingus");
+  
+  surface = sur;
+  
   livetime = 50 + (rand() % 25);
   size  = 1.0;
   size_add = (frand() - 0.2) / 35;

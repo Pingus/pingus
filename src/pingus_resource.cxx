@@ -1,4 +1,4 @@
-//  $Id: pingus_resource.cxx,v 1.13 2002/06/28 17:02:25 grumbel Exp $
+//  $Id: pingus_resource.cxx,v 1.14 2002/06/28 17:48:42 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -123,7 +123,6 @@ PingusResource::load_surface(const std::string& res_name,
 CL_Surface
 PingusResource::load_surface(const ResDescriptor& res_desc)
 {
-  pout(PINGUS_DEBUG_RESOURCES) << "PingusResource: Loading surface: " << res_desc << std::endl;
 
   // try to load from cache
   CL_Surface surf = load_from_cache(res_desc);
@@ -138,6 +137,7 @@ PingusResource::load_surface(const ResDescriptor& res_desc)
 
       if (surf) // found unmodified version in cache
 	{
+	  pout(PINGUS_DEBUG_RESOURCES) << "PingusResource: Loading surface from cache 1/2: " << res_desc << std::endl;
 	  surf = apply_modifier (surf, res_desc);
       
 	  // add to cache (FIXME: doesn't work)
@@ -148,12 +148,17 @@ PingusResource::load_surface(const ResDescriptor& res_desc)
 	  ResDescriptor desc = res_desc;
 	  desc.modifier = ROT0;
 
+	  pout(PINGUS_DEBUG_RESOURCES) << "PingusResource: Loading surface from source: " << res_desc << std::endl;
 	  surf = load_from_source (desc);
 	  surface_map[desc] = surf; // add to cache
 
 	  surf = apply_modifier (surf, desc);
 	  surface_map[res_desc] = surf; // add modified version to cache
 	}
+    }
+  else
+    {
+      pout(PINGUS_DEBUG_RESOURCES) << "PingusResource: Loading surface from cache: " << res_desc << std::endl;
     }
 
   return surf;
@@ -258,7 +263,7 @@ PingusResource::load_font(const std::string& res_name,
 CL_Font* 
 PingusResource::load_font(const ResDescriptor& res_desc)
 {
-  pout(PINGUS_DEBUG_LOADING) << "PingusResource: Loading font: " << res_desc << std::endl;
+  pout(PINGUS_DEBUG_RESOURCES) << "PingusResource: Loading font: " << res_desc << std::endl;
 
   CL_Font* font = font_map[res_desc];
   

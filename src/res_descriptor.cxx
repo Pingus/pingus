@@ -1,4 +1,4 @@
-//  $Id: res_descriptor.cxx,v 1.6 2002/06/28 17:06:40 grumbel Exp $
+//  $Id: res_descriptor.cxx,v 1.7 2002/06/28 17:48:42 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -107,8 +107,36 @@ bool
 ResDescriptor::operator<(const ResDescriptor& res_desc) const
 {
   // FIXME: This is ugly and slow
-  return (datafile + res_name + to_string (type) + to_string (modifier)) 
-    < (res_desc.datafile + res_desc.res_name + to_string (res_desc.type) + to_string (res_desc.modifier));
+  //return (datafile + res_name + to_string (type) + to_string (modifier)) 
+  //  < (res_desc.datafile + res_desc.res_name + to_string (res_desc.type) + to_string (res_desc.modifier));
+
+  if (datafile < res_desc.datafile)
+    return true;
+  else if (datafile > res_desc.datafile)
+    return false;
+  else
+    {
+      if (res_name < res_desc.res_name)
+	return true;
+      else if (res_name > res_desc.res_name)
+	return false;
+      else
+	{
+	  if (modifier < res_desc.modifier)
+	    return true;
+	  else if (modifier > res_desc.modifier)
+	    return false;
+	  else
+	    {
+	      if (type < res_desc.type)
+		return true;
+	      else if (type > res_desc.type)
+		return false;
+	      else
+		return false;  
+	    }
+	}
+    }
 }
 
 std::ostream& operator<<(std::ostream& s, const ResDescriptor& desc)
