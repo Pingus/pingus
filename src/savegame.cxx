@@ -96,7 +96,6 @@ Savegame::read_xml (xmlDocPtr doc, xmlNodePtr node)
   reader.read_enum   ("status", status, string_to_status);
   reader.read_int    ("time", needed_time);
   reader.read_int    ("saved-pingus", saved_pingus);
-
 }
 
 } // namespace Pingus

@@ -107,11 +107,11 @@ PingusLevel::get_music() const
   return impl->music;
 }
 
-const FileReader&
+const std::vector<FileReader>&
 PingusLevel::get_body() const
 {
-  static FileReader node;
-  return node;
+  static std::vector<FileReader> nodes;
+  return nodes;
 }
 
 } // namespace Pingus

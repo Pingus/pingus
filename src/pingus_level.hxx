@@ -23,6 +23,7 @@
 #include <ClanLib/Core/System/sharedptr.h>
 #include <ClanLib/Core/Math/size.h>
 #include <string>
+#include <vector>
 #include <map>
 
 namespace Pingus {
@@ -72,7 +73,7 @@ public:
   const std::string& get_music() const;
 
   /** Returns the body of this file */
-  const FileReader& get_body() const;
+  const std::vector<FileReader>& get_body() const;
 
 private:
   CL_SharedPtr<PingusLevelImpl> impl;

@@ -20,7 +20,6 @@
 #include <iostream>
 #include "../world.hxx"
 #include "../xml_file_reader.hxx"
-#include "../xml_file_writer.hxx"
 #include "../worldobjs/solid_color_background.hxx"
 #include "solid_color_background_data.hxx"
 
