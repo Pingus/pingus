@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.80 2003/04/13 23:33:19 grumbel Exp $
+//   $Id: pingus_main.cxx,v 1.81 2003/04/14 17:56:36 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -77,6 +77,7 @@
 #include "credits.hxx"
 #include "sound/sound.hxx"
 #include "worldmap/manager.hxx"
+#include "string_tokenizer.hxx"
 #include "story.hxx"
 #include "cheat.hxx"
 
@@ -582,6 +583,8 @@ PingusMain::init_path_finder()
   path_manager.add_path("data/");        // started from base directory with 'src/pingus'
   path_manager.add_path("share/games/pingus/");  // started from base directory of the binary
   path_manager.add_path("../share/games/pingus/");  // started from base directory of the binary
+  path_manager.add_path("share/pingus/");  // started from base directory of the binary
+  path_manager.add_path("../share/pingus/");  // started from base directory of the binary
   path_manager.add_path(PINGUS_DATADIR); // started from $PATH
   
   // somebody created a symlink in /usr/bin/ or so to the real binary elsewhere
@@ -592,12 +595,50 @@ PingusMain::init_path_finder()
       path_manager.add_path(real_path + "/data/");        // started from base directory with 'src/pingus'
       path_manager.add_path(real_path + "/share/games/pingus/");  // started from base directory of the binary
       path_manager.add_path(real_path + "/../share/games/pingus/");  // started from base directory of the binary
+      path_manager.add_path(real_path + "/share/pingus/");  // started from base directory of the binary
+      path_manager.add_path(real_path + "/../share/pingus/");  // started from base directory of the binary
     }
 
   // somebody added the real binary to PATH
-  //path_manager.add_path();
+  {
+    const char* path = getenv("PATH");
+    if (path)
+      {
+        StringTokenizer tokenizer(path, ':');
+        for (StringTokenizer::iterator i = tokenizer.begin(); i != tokenizer.end(); ++i)
+          {
+            std::string exe = *i + "/pingus";
+            if (System::exist(exe))
+              {
+                path_manager.add_path(*i + "/../data/");     // started from 'src/'
+                path_manager.add_path(*i + "/data/");        // started from base directory with 'src/pingus'
+                path_manager.add_path(*i + "/share/games/pingus/");  // started from base directory of the binary
+                path_manager.add_path(*i + "/../share/games/pingus/");  // started from base directory of the binary
+                path_manager.add_path(*i + "/share/pingus/");  // started from base directory of the binary
+                path_manager.add_path(*i + "/../share/pingus/");  // started from base directory of the binary
+
+                // somebody added a symlink to the real binary to the PATH
+                if(System::is_symlink(*i + "/pingus"))
+                  {
+                    std::string real_path = System::dirname(System::readlink(exe));
+                    path_manager.add_path(real_path + "/../data/");     // started from 'src/'
+                    path_manager.add_path(real_path + "/data/");        // started from base directory with 'src/pingus'
+                    path_manager.add_path(real_path + "/share/games/pingus/");  // started from base directory of the binary
+                    path_manager.add_path(real_path + "/share/pingus/");
+                    path_manager.add_path(real_path + "/../share/games/pingus/");  // started from base directory of the binary
+                    path_manager.add_path(real_path + "/../share/pingus/");  // started from base directory of the binary
+                  }
+
+                break;
+              }
+          }
+      }
+  }
 
   // As a last hope we try this:
+  path_manager.add_path ("/usr/local/share/games/pingus/");
+  path_manager.add_path ("/usr/share/games/pingus/");
+
   path_manager.add_path ("/usr/local/share/pingus/");
   path_manager.add_path ("/usr/share/pingus/");
 

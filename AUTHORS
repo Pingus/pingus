@@ -151,4 +151,7 @@ Misc little compile patches:
 "Henri Manson" <hfmanson@home.nl>:
         * MemLeak at application shutdown fixes   
 
+Milan Babuskov <milanb@yu.net>
+        * Serbian (sr) translation
+
 -- EOF --

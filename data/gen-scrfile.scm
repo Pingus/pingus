@@ -1,4 +1,4 @@
-#!/usr/local/bin/guile \
+#!/usr/bin/guile \
 --debug -e main -s
 !#
 

@@ -450,6 +450,8 @@ src/story_screen.cxx
 src/story_screen.hxx
 src/string_converter.cxx
 src/string_converter.hxx
+src/string_tokenizer.cxx
+src/string_tokenizer.hxx
 src/system.cxx
 src/system.hxx
 src/target_provider.cxx
