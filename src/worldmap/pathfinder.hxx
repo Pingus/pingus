@@ -1,4 +1,4 @@
-//  $Id: pathfinder.hxx,v 1.9 2002/10/15 21:54:09 grumbel Exp $
+//  $Id: pathfinder.hxx,v 1.10 2002/10/15 21:58:50 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -132,7 +132,6 @@ public:
 
 	if (handle == start)
 	  {
-	    //std::reverse (path.begin (), path.end ());
 	    return path;
 	  }
 	else if (handle == -1)

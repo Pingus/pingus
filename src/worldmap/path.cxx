@@ -1,4 +1,4 @@
-//  $Id: path.cxx,v 1.2 2002/10/15 21:48:43 grumbel Exp $
+//  $Id: path.cxx,v 1.3 2002/10/15 21:58:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
+#include <algorithm>
 #include "path.hxx"
 
 namespace WorldMapNS {
