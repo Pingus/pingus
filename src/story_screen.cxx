@@ -1,4 +1,4 @@
-//  $Id: story_screen.cxx,v 1.9 2003/04/05 18:36:50 grumbel Exp $
+//  $Id: story_screen.cxx,v 1.10 2003/04/05 20:08:43 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -178,30 +178,40 @@ StoryScreenComponent::StoryScreenComponent ()
         "                                                  Good Luck!")));
 
 
-  /* 
-     Now after you and the Pingus have learned the basics and
-     practiced a bit it is time to move on and begin the journey into
-     the world. Since the floe with which the Pingus traveled to the
-     Tutorial Island isn't going to hold the whole way into the warmer
-     climated regions the Pingus have to find something else to guide
-     there on there journey.
+  pages.push_back
+    (StoryPage
+     (ResDescriptor("Story/credits1", "story"), 
+      _("Now after you and the Pingus have learned the basics and\n"
+        "practiced a bit it is time to move on and begin the journey into\n"
+        "the world. Since the floe with which the Pingus traveled to the\n"
+        "Tutorial Island isn't going to hold the whole way into the warmer\n"
+        "climated regions the Pingus have to find something else to guide\n"
+        "there on there journey.\n")));
 
-     But as the eldest have said, the Tutorial Island provides not
-     only a way to practive, but it is also the starting point into
-     the world, cause the wood if the large tree at the end of the
-     island is brings good wood to construct a float.
+  pages.push_back
+    (StoryPage
+     (ResDescriptor("Story/credits2", "story"), 
+      _("But as the eldest have said, the Tutorial Island provides not\n"
+        "only a way to practive, but it is also the starting point into\n"
+        "the world, cause the wood if the large tree at the end of the\n"
+        "island is brings good wood to construct a float.\n")));
      
-     So the Pingus set out and constructed a some large floats, enough
-     to carry them all. After also packaging up a bunch of provisions
-     they where prepared to finally start of there journey and leave
-     their familiar ground and entering the unknown parts of the
-     world.
+  pages.push_back
+    (StoryPage
+     (ResDescriptor("Story/credits3", "story"), 
+      _("So the Pingus set out and constructed a some large floats, enough\n"
+        "to carry them all. After also packaging up a bunch of provisions\n"
+        "they where prepared to finally start of there journey and leave\n"
+        "their familiar ground and entering the unknown parts of the\n"
+        "world.\n")));
      
-     So the Pingus sat on there float, worrying whats to come and
-     where to go, while floating into the sunset.
-
-     To be continued...
-   */
+  pages.push_back
+    (StoryPage
+     (ResDescriptor("Story/credits4", "story"), 
+      _("So the Pingus sat on there float, worrying whats to come and\n"
+        "where to go, while floating into the sunset.\n"
+        "\n"
+        "To be continued...")));
 
     std::reverse(pages.begin(), pages.end());
 
