@@ -1,4 +1,4 @@
-//  $Id: ObjectSelector.cc,v 1.47 2001/08/07 19:55:22 grumbel Exp $
+//  $Id: ObjectSelector.cc,v 1.48 2001/08/09 12:50:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -175,6 +175,7 @@ ObjectSelector::get_worldobj()
   font->print_left(20,  70, _("2 - switch and door"));
   font->print_left(20,  90, _("3 - ConveyorBelt"));
   font->print_left(20, 110, _("4 - IceBlock"));
+  //font->print_left(20, 110, _("5 - Liquid"));
   Display::flip_display();
 
   while (true) 
@@ -191,8 +192,10 @@ ObjectSelector::get_worldobj()
 	  return EditorConveyorBeltObj::create (pos);
 
 	case CL_KEY_4:
-	    return EditorIceBlockObj::create (pos);
+	  return EditorIceBlockObj::create (pos);
 
+	case CL_KEY_5:
+	  
 	case CL_KEY_ESCAPE:
 	  return std::list<boost::shared_ptr<EditorObj> >();
 	}
@@ -476,6 +479,9 @@ ObjectSelector::read_string(string description, string def_str)
 /*
 
 $Log: ObjectSelector.cc,v $
+Revision 1.48  2001/08/09 12:50:49  grumbel
+a IceBlock demo level
+
 Revision 1.47  2001/08/07 19:55:22  grumbel
 Some fixes to the liquid handling, inserting inside the editor does also work
 

@@ -1,6 +1,9 @@
 Pingus BUGS:
 ~~~~~~~~~~~~ 
 
+Editer arrow keys don't work
+
+Duplication doesn't work for entrances
 
 * Pressing Armageddon crashes the game from time to time
 
@@ -24,5 +27,5 @@ Pingus BUGS:
 'grep' at the sources for "Bug" or "FIXME" that should give you some
 more known bugs and other stuff. 
 
-$Date: 2001/06/16 15:03:53 $
+$Date: 2001/08/09 12:50:48 $
 

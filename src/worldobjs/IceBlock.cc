@@ -1,4 +1,4 @@
-//  $Id: IceBlock.cc,v 1.16 2001/08/09 12:04:49 grumbel Exp $
+//  $Id: IceBlock.cc,v 1.17 2001/08/09 12:50:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -127,8 +127,8 @@ IceBlock::update(float delta)
 
   for (PinguIter pingu = holder->begin (); pingu != holder->end (); pingu++)
     {
-      if ((*pingu)->get_x() > pos.x && (*pingu)->get_x() < pos.x + 25
-	  && (*pingu)->get_y() > pos.y - 2 && (*pingu)->get_y() < pos.y + 10)
+      if ((*pingu)->get_x() > pos.x && (*pingu)->get_x() < pos.x + block_sur.get_width()
+	  && (*pingu)->get_y() > pos.y - 4 && (*pingu)->get_y() < pos.y + block_sur.get_height())
 	{
 	  //std::cout << "IceBlock: Catched Pingu: " << thickness  << std::endl;
 	  thickness -= 0.02;
