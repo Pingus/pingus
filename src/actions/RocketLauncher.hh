@@ -1,4 +1,4 @@
-//  $Id: Boarder.hh,v 1.2 2001/07/24 17:01:25 grumbel Exp $
+//  $Id: RocketLauncher.hh,v 1.1 2001/07/24 17:01:25 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,30 +17,29 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef BOARDER_HH
-#define BOARDER_HH
+#ifndef ROCKETLAUNCHER_HH
+#define ROCKETLAUNCHER_HH
 
+#include "../PingusResource.hh"
+#include "../Sprite.hh"
 #include "../PinguAction.hh"
 
-/** The Boarder action causes a pingu to use a skateboard to move
-    forward. */
-class Boarder : public PinguAction
+class RocketLauncher
+  : public PinguAction
 {
 private:
-  double counter;
-  double x_pos;
-  double speed;
   Sprite sprite;
+  bool launched;
 public:
-  Boarder ();
+  RocketLauncher () {}
+  ~RocketLauncher () {}
+
   void  init();
   void  update(float delta);
   void  draw_offset(int, int, float s);
-private:
-  bool on_ground ();
 };
 
-REGISTER_PINGUACTION(BoarderFactory, Boarder, "boarder");
+REGISTER_PINGUACTION(RocketLauncherFactory, RocketLauncher, "rocketlauncher");
 
 #endif
 

@@ -68,6 +68,7 @@ libpingu_actions_a_SOURCES =       \
          Drown.cc    Drown.hh \
          Angel.cc    Angel.hh \
          Superman.cc Superman.hh \
-         Boarder.cc  Boarder.hh
+         Boarder.cc  Boarder.hh \
+         RocketLauncher.cc  RocketLauncher.hh 
 
 # EOF #

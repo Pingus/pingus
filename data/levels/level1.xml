@@ -54,6 +54,7 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
 </background>
 
   <action-list>
+    <rocketlauncher count="20"/>
     <angel count="20"/>
     <boarder count="20"/>
     <superman count="20"/>

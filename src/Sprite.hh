@@ -1,4 +1,4 @@
-//  $Id: Sprite.hh,v 1.10 2001/06/17 17:18:27 grumbel Exp $
+//  $Id: Sprite.hh,v 1.11 2001/07/24 17:01:25 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #define SPRITE_HH
 
 #include <ClanLib/display.h>
+#include <ClanLib/core.h>
 #include "ResDescriptor.hh"
 
 class Sprite

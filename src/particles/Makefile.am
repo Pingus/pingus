@@ -27,6 +27,7 @@ libpingus_particle_a_SOURCES = Particle.cc         Particle.hh       \
                                SnowGenerator.cc    SnowGenerator.hh  \
                                RainParticle.cc     RainParticle.hh   \
                                WeatherGenerator.cc WeatherGenerator.hh \
-                               RainGenerator.cc    RainGenerator.hh
+                               RainGenerator.cc    RainGenerator.hh \
+                               ExplosiveParticle.cc ExplosiveParticle.hh
 
 ## EOF ##

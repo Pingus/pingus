@@ -1,4 +1,4 @@
-//  $Id: Boarder.hh,v 1.2 2001/07/24 17:01:25 grumbel Exp $
+//  $Id: ExplosiveParticle.hh,v 1.1 2001/07/24 17:01:26 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,30 +17,31 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef BOARDER_HH
-#define BOARDER_HH
+#ifndef EXPLOSIVEPARTICLE_HH
+#define EXPLOSIVEPARTICLE_HH
 
-#include "../PinguAction.hh"
+#include "../Sprite.hh"
+#include "../PingusResource.hh"
+#include "Particle.hh"
 
-/** The Boarder action causes a pingu to use a skateboard to move
-    forward. */
-class Boarder : public PinguAction
+class ExplosiveParticle
+  : public Particle
 {
 private:
-  double counter;
-  double x_pos;
-  double speed;
   Sprite sprite;
+  bool alive;
+  
 public:
-  Boarder ();
-  void  init();
-  void  update(float delta);
-  void  draw_offset(int, int, float s);
-private:
-  bool on_ground ();
+  ExplosiveParticle (int x, int y, float x_a, float y_a);
+  ~ExplosiveParticle ();
+  ///
+  void update(float delta);
+  ///
+  void draw_offset(int ofx, int ofy, float s);
+  ///
+  bool is_alive(void);
+  void detonate ();
 };
-
-REGISTER_PINGUACTION(BoarderFactory, Boarder, "boarder");
 
 #endif
 
