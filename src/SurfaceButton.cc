@@ -1,4 +1,4 @@
-//  $Id: SurfaceButton.cc,v 1.13 2000/09/13 00:14:56 grumbel Exp $
+//  $Id: SurfaceButton.cc,v 1.14 2000/09/20 14:33:10 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -330,7 +330,8 @@ ThemeButton::~ThemeButton()
 void
 ThemeButton::on_click()
 {
-  theme_selector.select();
+  worldmap_manager.display();
+  //theme_selector.select();
 }
 
 /* EOF */

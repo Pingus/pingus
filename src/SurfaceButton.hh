@@ -1,4 +1,4 @@
-//  $Id: SurfaceButton.hh,v 1.9 2000/08/28 00:34:39 grumbel Exp $
+//  $Id: SurfaceButton.hh,v 1.10 2000/09/20 14:33:10 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,6 +26,7 @@
 
 #include "PingusMenu.hh"
 #include "editor/Editor.hh"
+#include "worldmap/PingusWorldMapManager.hh"
 #include "ThemeSelector.hh"
 #include "PingusMenu.hh"
 // #include "FileSelector.hh"
@@ -147,7 +148,8 @@ class ThemeButton : public SurfaceButton
 {
 private:
   ///
-  ThemeSelector theme_selector;
+  //ThemeSelector theme_selector;
+  PingusWorldMapManager worldmap_manager;
 public:
   ///
   ThemeButton();
