@@ -90,11 +90,11 @@ section GroundPieces
        cable2 = ../images/groundpieces/ground/ordina/cable2.png (type=surface);
        cdrom1 = ../images/groundpieces/ground/ordina/cdrom1.png (type=surface);
        clavier1 = ../images/groundpieces/ground/ordina/clavier1.png (type=surface);
-       cpu1 = ../images/groundpieces/ground/ordina/cpu13.png (type=surface);
+       cpu1 = ../images/groundpieces/ground/ordina/cpu1.png (type=surface);
        ecran = ../images/groundpieces/ground/ordina/ecran.png (type=surface);
-       sol2 = ../images/groundpieces/ground/ordina/sol2.png (type=surface);
-       sol3 = ../images/groundpieces/ground/ordina/sol3.png (type=surface);
-       sol4 = ../images/groundpieces/ground/ordina/sol4.png (type=surface);
+       sol1 = ../images/groundpieces/ground/ordina/sol2.png (type=surface);
+       sol2 = ../images/groundpieces/ground/ordina/sol3.png (type=surface);
+       sol3 = ../images/groundpieces/ground/ordina/sol4.png (type=surface);
 
 	bpiece1  = ../images/groundpieces/ground/misc/bpiece1.png (type=surface, x=0, y=0, width=217, height=154);
 	bpiece2  = ../images/groundpieces/ground/misc/bpiece2.png (type=surface, x=0, y=0, width=166, height=192);

@@ -1,3 +1,54 @@
+Roadmap for Pingus 0.5.0
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+Major Items:
+
+* two worlds should be provided, all in all maybe 25 levels, will be a
+  tutorial world, the other will be hellmouth (a little surrounding
+  story? earth opened and pingus where in danger...)
+
+* a tutorial world or at least some easy tutorial levels should be present
+
+* some text intro: This is Free Software, yada yada... this is not a
+  finished game more might follow...
+
+* contrib levels need better sorting, removal or something like that
+
+* multiplayer mode should be ripped out if not working correctly
+
+
+
+
+
+- pingus should act more gracefully on errors 
+
+  - missing music should just get printed to the console
+
+  - missing images => 404 and console error
+
+- menu background should be repainted/fixed
+
+- back-button in option menu causes freeze when music running, see backtrace:
+
+,----
+| 0x4040884e in select () from /lib/libc.so.6
+| (gdb) where
+| #0  0x4040884e in select () from /lib/libc.so.6
+| #1  0x400894a0 in __DTOR_END__ () from /usr/local/lib/libclanSound.so.1
+| #2  0x40079220 in CL_CSMixer::wait() (this=0x81e28ac)
+|     at Sources/Sound/Sound/ClanSound/mixer.cpp:62
+| #3  0x40078d8d in CL_SoundCard_ClanSound::run() (this=0x0)
+|     at Sources/Sound/Sound/ClanSound/soundcard_clan.cpp:140
+| #4  0x40187d75 in CL_Thread_Generic::run_init(void*) (_self=0x800)
+|     at Sources/Core/System/Unix/thread_pthread.cpp:99
+| #5  0x401d4f0a in pthread_start_thread () from /lib/libpthread.so.0
+| #6  0x401d4f51 in pthread_start_thread_event () from /lib/libpthread.so.0
+`----
+
+- Pingu::id handling is very dirty
+
+- music and sound should be up and running and included in the game [important - release critical]
+
 - door-duplication crashes
 
 - z_pos sorting might be incorrect 
@@ -49,6 +100,7 @@
 - description screen and result screen must be reworked
 
 - thumbnail handling should be reviewed
+
 
 
 BUGS:
