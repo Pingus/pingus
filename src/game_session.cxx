@@ -1,4 +1,4 @@
-//  $Id: game_session.cxx,v 1.18 2002/10/07 23:11:09 grumbel Exp $
+//  $Id: game_session.cxx,v 1.19 2002/10/08 17:53:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -92,14 +92,16 @@ PingusGameSession::update (const GameDelta& delta)
 
   int time_passed = (CL_System::get_time() - last_update) + left_over_time;
   int update_time = game_speed;
-  int min_frame_skip = 0;
-  int max_frame_skip = 0;
+  int min_frame_skip = 1;
+  int max_frame_skip = 1;
 
   left_over_time = 0;
 
   int i;
   for (i = 0; 
-       (i * update_time < time_passed && i < min_frame_skip + 1); 
+       ((i * update_time < time_passed)
+        || i < min_frame_skip)
+         && !(i > max_frame_skip);
        ++i)
     {
       // This updates the world and all objects
@@ -107,11 +109,13 @@ PingusGameSession::update (const GameDelta& delta)
       ++number_of_updates;
     }
 
+  //std::cout << "Number of updates: " << i << std::endl;
+
   // Time that got not used for updates
   left_over_time = time_passed - (i * update_time);
 
   last_update = CL_System::get_time();
-      
+  
   if (!max_cpu_usage && left_over_time < 0)
     {
       CL_System::sleep(-left_over_time);
