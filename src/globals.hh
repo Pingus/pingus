@@ -1,4 +1,4 @@
-//  $Id: globals.hh,v 1.4 2000/02/27 21:05:06 grumbel Exp $
+//  $Id: globals.hh,v 1.5 2000/03/08 01:57:02 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,7 @@
 
 // This file defines some global variables, most of them are used to
 // keep the values of command line arguments.
+
 extern int    game_speed;        // -t, --set-speed
 extern bool   print_fps;         // --print-fps
 extern int    verbose;           // -v, --verbose
@@ -48,6 +49,7 @@ extern std::string demo_file;
 extern std::string pingus_homedir;    //
 extern bool   auto_scrolling;    // --enable-auto-scrolling
 extern int    tile_size;         // --tile-size  
+extern bool   fullscreen_enabled;        // --enable-fullscreen
 
 #endif
 

@@ -1,4 +1,4 @@
-//   $Id: Pingus.cc,v 1.11 2000/02/27 21:05:06 grumbel Exp $
+//   $Id: Pingus.cc,v 1.12 2000/03/08 01:57:02 grumbel Exp $
 //    ___
 //   |  _\ A free Lemmings clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -164,24 +164,26 @@ PingusMain::check_args(int argc, char* argv[])
 
   struct option long_options[] =
   {
-    {"enable-music",    no_argument,       0, 'm'},
-    {"enable-sound",    no_argument,       0, 's'},
-    {"enable-gimmicks", no_argument,       0, 'i'},
-    {"enable-cursor",   no_argument,       0, 'c'},
-    {"disable-intro",   no_argument,       0, 'n'},
-    {"play-demo",       required_argument, 0, 'd'},
-    {"record-demo",     required_argument, 0, 'r'},
-    {"speed",           required_argument, 0, 't'},
-    {"datadir",         required_argument, 0, 'd'},
-    {"level",           required_argument, 0, 'l'},
-    {"help",            no_argument,       0, 'h'},
-    {"version",         no_argument,       0, 'V'},
-    {"verbose",         required_argument, 0, 'v'},
-    {"print-fps",       no_argument,       0, 'b'},
-    {"sound-specs",     required_argument, 0, 'S'},
-    {"geometry",        required_argument, 0, 'g'},
-    {"editor",          no_argument,       0, 'e'},
-    {"quick-play",      no_argument,       0, 'q'},
+    {"enable-music",      no_argument,       0, 'm'},
+    {"enable-sound",      no_argument,       0, 's'},
+    {"enable-gimmicks",   no_argument,       0, 'i'},
+    {"enable-cursor",     no_argument,       0, 'c'},
+    {"disable-intro",     no_argument,       0, 'n'},
+    {"play-demo",         required_argument, 0, 'd'},
+    {"record-demo",       required_argument, 0, 'r'},
+    {"speed",             required_argument, 0, 't'},
+    {"datadir",           required_argument, 0, 'd'},
+    {"level",             required_argument, 0, 'l'},
+    {"help",              no_argument,       0, 'h'},
+    {"version",           no_argument,       0, 'V'},
+    {"verbose",           required_argument, 0, 'v'},
+    {"print-fps",         no_argument,       0, 'b'},
+    {"sound-specs",       required_argument, 0, 'S'},
+    {"geometry",          required_argument, 0, 'g'},
+    {"editor",            no_argument,       0, 'e'},
+    {"quick-play",        no_argument,       0, 'q'},
+    {"enable-fullscreen", no_argument,       0, 'f'},
+    {"disable-fullscreen", no_argument,      0, 'F'},
     {"debug-actions",   no_argument,       0, 129},
     {"fs-preload",      no_argument,       0, 130},
     {"fast",            no_argument,       0, 132},
@@ -193,7 +195,7 @@ PingusMain::check_args(int argc, char* argv[])
   };
 
   while(true) {
-    c = getopt_long(argc, argv, "r:p:smv:d:l:hVp:bxS:g:it:cqe", long_options, &option_index);
+    c = getopt_long(argc, argv, "r:p:smv:d:l:hVp:bxS:g:it:cqefF", long_options, &option_index);
     
     if (c == -1 || c == 1)
       break;
@@ -286,6 +288,16 @@ PingusMain::check_args(int argc, char* argv[])
       sscanf(optarg, "%d", &verbose);
       std::cout << "Pingus: Verbose level is " << verbose << std::endl;
       break;
+
+    case 'f': // --enable-fullscreen
+      fullscreen_enabled = true;
+      break;
+      
+    case 'F': // --disable-fullscreen
+      fullscreen_enabled = false;
+      break;
+
+    // Starting weird number options...
     case 129: // --debug-actions
       debug_actions = true;
       break;
@@ -324,6 +336,8 @@ PingusMain::check_args(int argc, char* argv[])
 	"   --disable-intro          Disable intro\n"
 	"   -s, --enable-sound       Enable sound\n"
 	"   -m, --enable-music       Enable music\n"
+	"   -F, --disable-fullscreen Disable Fullscreen (default)\n"
+	"   -f, --enable-fullscreen  Enable Fullscreen\n"
 	"   -i, --enable-gimmicks    Enable some buggy development stuff\n"
 	"   -S, --sound-specs FILE   Use files mentioned in FILE\n"
        	"   -d, --datadir PATH       Set the path to load the data files to `path'\n"
@@ -587,8 +601,10 @@ PingusMain::init_clanlib()
 	   << screen_width << "x" << screen_height << std::endl;
     }
 
-  // Setting the display resolution
-  CL_Display::set_videomode(screen_width, screen_height, 16);
+  // Initing the display
+  CL_Display::set_videomode(screen_width, screen_height, 16, 
+			    fullscreen_enabled, 
+			    true); // allow resize
 }
 
 bool
@@ -643,13 +659,13 @@ bool
 PingusMain::do_worms_mode(void)
 {
   std::cout << "do_worms_mode() not implemented" << std::endl;
+  std::cout << "Have a look at Beans." << std::endl;
   return false;
 }
 
 PingusMain::GameMode
 PingusMain::select_game_mode(void)
 {
-  // dummy, should replace with a nice menu
   return Lemmings;
 }
 

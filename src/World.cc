@@ -1,4 +1,4 @@
-//  $Id: World.cc,v 1.9 2000/02/27 21:05:06 grumbel Exp $
+//  $Id: World.cc,v 1.10 2000/03/08 01:57:02 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -205,6 +205,8 @@ World::init_map()
     }
   
   colmap = map->get_colmap();
+
+  Particle::set_map(map);
 }
 
 void 
