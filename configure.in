@@ -1,4 +1,4 @@
-#  $Id: configure.in,v 1.17 2000/06/16 17:41:54 grumbel Exp $
+#  $Id: configure.in,v 1.18 2000/06/20 20:34:38 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -87,18 +87,15 @@ dnl -- Testing for this libs cause some systems need them in addition
 dnl -- to clanCore and SDL 
 
 dnl Checking for SDL libraries, used for sound and music support
-WITH_SOUND=true
-AC_ARG_WITH(sound,
-              [  --with-sound          Enable sound support thru SDL_mixer],
-              WITH_SOUND=true,
-              WITH_SOUND=false)
+dnl WITH_SOUND=true
+AC_ARG_WITH(sound, \
+[  --without-sound         disable sound support throu SDL and SDL_mixer])
 
+echo "checking for sound support... $with_sound"
 
-echo "checking for sound support... $WITH_SOUND"
-if test "x$WITH_SOUND" = "xtrue"; then
-  echo "checking for SDL libs..."
-  AC_CHECK_LIB(SDL,   main,,)
-  AC_CHECK_LIB(SDL_mixer,   main,,)
+if test "x$with_sound" != "xno"; then
+	AC_CHECK_LIB(SDL,   main,,)
+	AC_CHECK_LIB(SDL_mixer,   main,,)
 fi
 
 AC_CHECK_LIB(pthread,   main,,)
@@ -119,31 +116,29 @@ AC_CHECK_LIB( clanMagick,   main,, [
 	exit
 	])
 
-AC_CHECK_PROG( HAVE_CLANLIB_CONFIG, clanlib-config, "yes")
+dnl AC_CHECK_PROG( HAVE_CLANLIB_CONFIG, clanlib-config, "yes")
 
-if test "x$HAVE_CLANLIB_CONFIG" != "xyes" ; then
-	echo
-	echo "Couldn't find 'clanlib-config. Make sure that you"
-	echo "have installed ClanLib and that clanlib-config"
-	echo "is installed in you PATH.";
-	echo "Since Pingus does not use clanlib-config you can ignore"
-        echo "this... %-)" 
-	echo 
-fi
+# if test "x$HAVE_CLANLIB_CONFIG" != "xyes" ; then
+# 	echo
+# 	echo "Couldn't find 'clanlib-config. Make sure that you"
+# 	echo "have installed ClanLib and that clanlib-config"
+# 	echo "is installed in you PATH.";
+# 	echo "Since Pingus does not use clanlib-config you can ignore"
+#         echo "this... %-)" 
+# dnl 	echo 
+# dnl fi
 
-clanlib_config_major_version=`clanlib-config --version | \
-           sed 's/\([[0-9]]*\).\([[0-9]]*\).\([[0-9]]*\)/\1/'`
-clanlib_config_minor_version=`clanlib-config --version | \
-           sed 's/\([[0-9]]*\).\([[0-9]]*\).\([[0-9]]*\)/\2/'`
-clanlib_config_micro_version=`clanlib-config --version | \
-           sed 's/\([[0-9]]*\).\([[0-9]]*\).\([[0-9]]*\)/\3/'`
+dnl clanlib_config_major_version=`clanlib-config --version | \
+dnl            sed 's/\([[0-9]]*\).\([[0-9]]*\).\([[0-9]]*\)/\1/'`
+dnl clanlib_config_minor_version=`clanlib-config --version | \
+dnl            sed 's/\([[0-9]]*\).\([[0-9]]*\).\([[0-9]]*\)/\2/'`
+dnl clanlib_config_micro_version=`clanlib-config --version | \
+dnl            sed 's/\([[0-9]]*\).\([[0-9]]*\).\([[0-9]]*\)/\3/'`
 
-dnl if test $clanlib_config_major_version -eq $CLANLIB_MAJOR_VERSION; then
-dnl 	if test $clanlib_config_minor_version -eq $CLANLIB_MINOR_VERSION; then
-dnl 		if test $clanlib_config_patch_version -eq $CLANLIB_PATCH_VERSION; then
-dnl 		fi
-dnl 	fi
-dnl fi
+dnl if test $clanlib_config_major_version -eq $CLANLIB_MAJOR_VERSION;
+dnl  dnl if test $clanlib_config_minor_version -eq
+dnl $CLANLIB_MINOR_VERSION; then dnl if test $clanlib_config_patch_version
+dnl -eq $CLANLIB_PATCH_VERSION; then dnl fi dnl fi dnl fi
 
 dnl Checking if ClanLib is new enough
 echo -n "checking for working ClanLib >= $CLANLIB_MAJOR_VERSION.$CLANLIB_MINOR_VERSION.$CLANLIB_PATCH_VERSION... "
@@ -220,8 +215,14 @@ AC_OUTPUT( Makefile
 
 # ----------------------------------------
 
-echo "sound     = $WITH_SOUND"
-echo "sdl_mixer = $HAVE_LIBSDL_MIXER"
+# if test "x$with_sound" != "xno"; then
+# 	if test $HAVE_LIBSDL_MIXER
+# else
+# 	echo "Sound support is disabled"
+# fi
+
+# echo "sound     = $WITH_SOUND"
+# echo "sdl_mixer = $HAVE_LIBSDL_MIXER"
 echo ""
 echo "Pingus is now configured, now you can start \`make'."
 echo ""
