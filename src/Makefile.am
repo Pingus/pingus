@@ -46,7 +46,11 @@ EXTRA_DIST = \
              win32/config.h  \
              make_docs.sh
 
-bin_PROGRAMS = pingus
+bin_PROGRAMS = pingus xmleval
+
+xmleval_CPPFLAGS = @PINGUS_CFLAGS@
+xmleval_LDADD    = @PINGUS_LIBS@
+xmleval_SOURCES  = xml_eval.cxx xml_eval.hxx 
 
 pingus_CPPFLAGS = @PINGUS_CFLAGS@
 
