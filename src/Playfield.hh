@@ -1,4 +1,4 @@
-//  $Id: Playfield.hh,v 1.6 2000/04/29 20:03:04 grumbel Exp $
+//  $Id: Playfield.hh,v 1.7 2000/05/26 18:02:01 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -57,6 +57,18 @@ private:
   int scroll_speed;
   int scroll_center_x;
   int scroll_center_y;
+
+  struct Rect {
+    Rect(int arg_x1, int arg_y1, int arg_x2, int arg_y2) {
+      x1 = arg_x1;
+      y1 = arg_y1;
+      x2 = arg_x2;
+      y2 = arg_y2;
+    }
+    int x1, y1, x2, y2;
+  };
+
+  std::vector<Rect> clipping_rectangles;
 public:
   Playfield();
   Playfield(PLF*, World*);
@@ -80,6 +92,8 @@ public:
   void enable_scroll_mode();
   void do_scrolling();
   void disable_scroll_mode();
+
+  void generate_clipping_rects(int, int, int, int);
 
   // Members used to communicate between different screen objs
   void set_pingu_info(PinguInfo*);

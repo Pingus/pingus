@@ -1,4 +1,4 @@
-//  $Id: Playfield.cc,v 1.11 2000/04/29 20:03:04 grumbel Exp $
+//  $Id: Playfield.cc,v 1.12 2000/05/26 18:02:01 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -72,6 +72,7 @@ Playfield::Playfield(PLF* level_data, World* w)
       {
 	std::cout << "Playfiel:: Activating clear screen" << std::endl;
 	needs_clear_screen = true;
+	generate_clipping_rects(x1, y1, x2, y2);
       }
 
     if (gimmicks_enabled) 
@@ -103,7 +104,14 @@ Playfield::draw()
 { 
   if (needs_clear_screen)
     {
-      CL_Display::clear_display();
+      //CL_Display::clear_display();
+      for(std::vector<Playfield::Rect>::iterator i = clipping_rectangles.begin();
+	  i != clipping_rectangles.end();
+	  i++)
+	{
+	  CL_Display::fill_rect(i->x1, i->y1, i->x2, i->y2,
+				1.0, 0.0, 0.0, 1.0);
+	}
     }
       
   for(std::vector<View>::iterator i = view.begin(); i != view.end(); i++)
@@ -280,6 +288,15 @@ Playfield::set_viewpoint(int x, int y)
 {
   view[0].set_x_offset((CL_Display::get_width() / 2) - x);
   view[0].set_y_offset((CL_Display::get_height() / 2) - y);
+}
+
+void 
+Playfield::generate_clipping_rects(int x1, int y1, int x2, int y2)
+{
+  clipping_rectangles.push_back(Playfield::Rect(0, 0, CL_Display::get_width() - 1, y1));
+  clipping_rectangles.push_back(Playfield::Rect(0, y1, x1, y2));
+  clipping_rectangles.push_back(Playfield::Rect(x2, y1, CL_Display::get_width() - 1, y2));
+  clipping_rectangles.push_back(Playfield::Rect(0, y2, CL_Display::get_width() - 1, CL_Display::get_height() - 1));
 }
 
 /* EOF */
